@@ -44,9 +44,19 @@ const std::string& translate_string_default(const std::string& str, const std::s
 		return default_val;
 }
 
-std::vector<std::string> get_languages(config& cfg)
+std::vector<std::string> get_languages(config& c)
 {
 	std::vector<std::string> res;
+
+	config cfg;
+
+	try {
+		cfg.read(preprocess_file("data/translations/",NULL,NULL));
+	} catch(config::error& e) {
+		std::cerr << "could not open translations: '" << e.message << "' -- defaulting to English only\n";
+		res.push_back("English");
+		return res;
+	}
 
 	const config::child_list& lang = cfg.get_children("language");
 	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
@@ -92,12 +102,34 @@ bool internal_set_language(const std::string& locale, config& cfg)
 }
 }
 
-bool set_language(const std::string& locale, config& cfg)
+bool set_language(const std::string& locale, config& c)
 {
 	string_table.clear();
 
-	//default to English locale first, then set desired locale
-	internal_set_language("en",cfg);
+	std::string locale_lc;
+	locale_lc.resize(locale.size());
+	std::transform(locale.begin(),locale.end(),locale_lc.begin(),tolower);
+
+	config cfg;
+	if(locale_lc == "en" || locale_lc == "english") {
+		try {
+			cfg.read(read_file("data/translations/english.cfg"));
+		} catch(config::error& e) {
+			std::cerr << "Could not read english.cfg\n";
+			throw e;
+		}
+	} else {
+		try {
+			cfg.read(preprocess_file("data/translations/",NULL,NULL));
+			
+			//default to English locale first, then set desired locale
+			internal_set_language("en",cfg);
+		} catch(config::error& e) {
+			std::cerr << "error opening translations: '" << e.message << "' Defaulting to English\n";
+			return set_language("english",c);
+		}
+	}
+
 	return internal_set_language(locale,cfg);
 }
 
