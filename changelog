@@ -9,7 +9,7 @@ CVS HEAD:
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
  * fixed a bug where a network user may crash other game abusing recursion
  * fixed a bug where a network user may crash other games using specially crafted packets, reading out-of-bounds data
- * fixesd segfault when a [story] background image was not found
+ * fixed segfault when a [story] background image was not found
  * fixed narrator messages not being displayed sometimes
  * dummy config.h file for platforms where ./configure is not used
 
