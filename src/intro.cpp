@@ -46,11 +46,7 @@ void show_intro(display& screen, const config& data, const config& level)
 
 	bool showing = true;
 
-	const std::string& scenario_id = level["id"];
-	const std::string& scenario_name = string_table[scenario_id];
-
-	const std::string& scenario = scenario_name.empty() ? level["name"] :
-	                                                      scenario_name;
+	const std::string& scenario = level["name"];
 
 	for(config::all_children_iterator i = data.ordered_begin();
 			i != data.ordered_end() && showing; i++) {
@@ -209,9 +205,7 @@ bool show_intro_part(display& screen, const config& part,
 		}
 	}
 
-	const std::string& id = part["id"];
-	const std::string& lang_story = string_table[id];
-	const std::string& story = lang_story.empty() ? part["story"] : lang_story;
+	const std::string& story = part["story"];
 	const std::vector<std::string> story_chars = split_utf8_string(story);
 
 	std::cerr << story << std::endl;

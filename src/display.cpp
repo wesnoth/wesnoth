@@ -889,7 +889,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	const std::vector<std::string>& abilities = u.type().abilities();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
-		details << translate_string_default("ability_" + *a, *a) << "\n";
+		details << *a << "\n";
 	}
 
 	//display in green/white/red depending on hitpoints
@@ -922,9 +922,9 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 	    at_it != attacks.end(); ++at_it) {
 
-		const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
-		const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
-		const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+		const std::string& lang_weapon = at_it->name();
+		const std::string& lang_type = at_it->type();
+		const std::string& lang_special = at_it->special();
 		details << "\n"
 				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"

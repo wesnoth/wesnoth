@@ -75,13 +75,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
-		const std::string& id = (**i)["id"];
-
-		const std::string& lang_name = string_table[id];
-		if(lang_name.empty() == false)
-			options.push_back(lang_name);
-		else
-			options.push_back((**i)["name"]);
+		options.push_back((**i)["name"]);
 	}
 
 	//add the 'load game' option

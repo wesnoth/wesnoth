@@ -154,10 +154,8 @@ void show_objectives(display& disp, config& level_info)
 {
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& id = level_info["id"];
-	const std::string& lang_name = string_table[id];
-	const std::string& name = lang_name.empty() ? level_info["name"] :
-	                                              lang_name;
-	const std::string& lang_objectives = string_table[id + "_objectives"];
+	const std::string& name = level_info["name"];
+	const std::string& lang_objectives = level_info["objectives"];
 
 	const std::string& objectives = lang_objectives.empty() ?
 	        level_info["objectives"] : lang_objectives;
@@ -371,7 +369,7 @@ void save_preview_pane::draw()
 		} else if(campaign_type == "tutorial") {
 			str << _("Tutorial");
 		} else {
-			str << translate_string(campaign_type);
+			str << campaign_type;
 		}
 
 		str << "\n";
@@ -720,7 +718,7 @@ void unit_preview_pane::draw()
 
 	const std::vector<std::string>& abilities = u.type().abilities();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
-		details << translate_string_default("ability_" + *a, *a);
+		details << *a;
 		if(a+1 != abilities.end()) {
 			details << ",";
 		}
@@ -759,9 +757,9 @@ void unit_preview_pane::draw()
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 
-			const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
-			const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
-			const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+			const std::string& lang_weapon = at_it->name();
+			const std::string& lang_type = at_it->type();
+			const std::string& lang_special = at_it->special();
 			details << "\n"
 					<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 					<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
@@ -841,8 +839,7 @@ void show_unit_resistance(display& disp, const unit& u)
 		//if resistance is less than 0, display in red
 		const char prefix = resistance < 0 ? font::BAD_TEXT : font::NULL_MARKUP;
 
-		const std::string& lang_weapon = string_table["weapon_type_" + i->first];
-		const std::string& weap = lang_weapon.empty() ? i->first : lang_weapon;
+		const std::string& weap = i->first;
 
 		std::stringstream str;
 		str << weap << "," << prefix << resistance << "%";

@@ -606,12 +606,12 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			
 			const battle_stats& st = stats.back();
 
-			const std::string& attack_name = translate_string_default("weapon_name_"+st.attack_name,st.attack_name);
-			const std::string& attack_type = translate_string_default("weapon_type_"+st.attack_type,st.attack_type);
-			const std::string& attack_special = translate_string_default("weapon_special_"+st.attack_special,st.attack_special);
-			const std::string& defend_name = translate_string_default("weapon_name_"+st.defend_name,st.defend_name);
-			const std::string& defend_type = translate_string_default("weapon_type_"+st.defend_type,st.defend_type);
-			const std::string& defend_special = translate_string_default("weapon_special_"+st.defend_special,st.defend_special);
+			const std::string& attack_name = st.attack_name;
+			const std::string& attack_type = st.attack_type;
+			const std::string& attack_special = st.attack_special;
+			const std::string& defend_name = st.defend_name;
+			const std::string& defend_type = st.defend_type;
+			const std::string& defend_special = st.defend_special;
 
 			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
 
@@ -1679,7 +1679,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 
 		if(message != "") {
 			string_map symbols;
-			symbols["noun"] = string_table[u.gender() == unit_race::MALE ? "noun_male" : "noun_female"];
+			symbols["noun"] = (u.gender() == unit_race::MALE ? _("him") : _("her"));
 			message = config::interpolate_variables_into_string(message,&symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
@@ -2052,7 +2052,7 @@ void turn_info::search()
 
 void turn_info::user_command()
 {
-	create_textbox(floating_textbox::TEXTBOX_COMMAND,string_table["command_prompt"] + ":");
+  create_textbox(floating_textbox::TEXTBOX_COMMAND,_("prompt|Command:"));
 }
 
 void turn_info::show_help()
