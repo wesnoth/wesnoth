@@ -22,6 +22,7 @@ public:
 
 	std::string generate_name(GENDER gender) const;
 
+	const config::child_list& additional_traits() const;
 	int num_traits() const;
 
 	bool not_living() const;
@@ -34,6 +35,8 @@ private:
 	int chain_size_;
 
 	bool not_living_;
+
+	const config::child_list* traits_;
 };
 
 typedef std::map<std::string,unit_race> race_map;

@@ -135,11 +135,6 @@ unit::unit(const unit_type* t, const unit& u) :
 	apply_modifications();
 	heal_all();
 	statusFlags_.clear();
-
-	//generate traits for the unit if it doesn't already have some
-	//currently removed, because we are testing not giving advancing
-	//traitless units new traits
-//	generate_traits();
 }
 
 void unit::generate_traits()
@@ -161,21 +156,10 @@ void unit::generate_traits()
 	std::vector<std::string> description;
 	
 	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
-		add_modification("trait",**j);
-		description.push_back((**j)["name"]);
+		modifications_.add_child("trait",**j);
 	}
 
-	traitsDescription_ = "";
-
-	//we want to make sure the description always has a consistent ordering
-	std::sort(description.begin(),description.end());
-	for(std::vector<std::string>::const_iterator i = description.begin(); i != description.end(); ++i) {
-		if(i != description.begin()) {
-			traitsDescription_ += ", ";
-		}
-
-		traitsDescription_ += gettext(i->c_str());
-	}
+	apply_modifications();
 }
 
 const unit_type& unit::type() const
@@ -1183,13 +1167,32 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 	modificationDescriptions_.clear();
 
+	std::vector<std::string> descriptions;
+
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
 		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
+
+			const std::string& name = (**j)["name"];
+			if(name.empty() == false) {
+				descriptions.push_back(name);
+			}
 		}
+	}
+
+	traitsDescription_ = "";
+
+	//we want to make sure the description always has a consistent ordering
+	std::sort(descriptions.begin(),descriptions.end());
+	for(std::vector<std::string>::const_iterator j = descriptions.begin(); j != descriptions.end(); ++j) {
+		if(j != descriptions.begin()) {
+			traitsDescription_ += ", ";
+		}
+
+		traitsDescription_ += gettext(j->c_str());
 	}
 }
 
@@ -1222,7 +1225,7 @@ int unit::upkeep() const
 {
 	switch(upkeep_) {
 	case UPKEEP_FREE: return 0;
-	case UPKEEP_LOYAL: return minimum<int>(1,type().level());
+	case UPKEEP_LOYAL: return 0;
 	case UPKEEP_FULL_PRICE: return type().level();
 	default: wassert(false); return 0;
 	}

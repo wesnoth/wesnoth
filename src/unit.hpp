@@ -227,6 +227,7 @@ private:
 	void apply_modifications();
 	void remove_temporary_modifications();
 	void generate_traits();
+	void generate_traits_description();
 };
 
 //object which temporarily resets a unit's movement

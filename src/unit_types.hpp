@@ -277,7 +277,7 @@ private:
 
 	unit_movement_type movementType_;
 
-	const std::vector<config*>& possibleTraits_;
+	std::vector<config*> possibleTraits_;
 
 	std::vector<unit_race::GENDER> genders_;
 

@@ -580,6 +580,10 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
+		if(race_ != NULL) {
+			const config::child_list& traits = race_->additional_traits();
+			possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+		}
 	} else {
 		static const unit_race dummy_race;
 		race_ = &dummy_race;
