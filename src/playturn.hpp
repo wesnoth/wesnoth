@@ -209,7 +209,9 @@ private:
 	int start_ncmd_;
 
 	std::string last_recruit_;
+	
 	std::string last_search_;
+	gamemap::location last_search_hit_;
 
 	floating_textbox& textbox_;
 

@@ -2057,48 +2057,67 @@ void turn_info::show_statistics()
 
 void turn_info::search()
 {
-	create_textbox(floating_textbox::TEXTBOX_SEARCH,string_table["search_prompt"] + ":");
+	std::stringstream msg;
+	msg << string_table["search_prompt"];
+	if(last_search_hit_.valid()) {
+		msg << " [" << last_search_ << "]";
+	}
+	msg << ':';
+	create_textbox(floating_textbox::TEXTBOX_SEARCH,msg.str());
 }
 
 void turn_info::do_search(const std::string& new_search)
 {
-	if(new_search == "") {
-		return;
-	}
-
-	if(new_search.empty() == false)
+	if(new_search.empty() == false && new_search != last_search_)
 		last_search_ = new_search;
+	
 	if(last_search_.empty() == false) {
-		//Search labels
-		const map_labels::label_map& labels = gui_.labels().labels();
-		for(map_labels::label_map::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-			if(gui_.fogged(i->first.x,i->first.y)) continue;
-			std::string label = gui_.labels().get_label(i->second);
-			if(std::search(label.begin(), label.end(),
-						   last_search_.begin(), last_search_.end(),
-						   chars_equal_insensitive) != label.end()) {
-				gui_.scroll_to_tile(i->first.x,i->first.y,display::WARP);
-				gui_.highlight_hex(i->first);
-				return;
+		//Scan the game map
+		gamemap::location loc = last_search_hit_;
+		if(loc.valid() == false)
+			loc = gamemap::location(map_.x()-1,map_.y()-1);
+		gamemap::location start = loc;
+		bool found = false;
+		do {
+			//Move to the next location
+			loc.x = (loc.x + 1) % map_.x();
+			if(loc.x == 0)
+				loc.y = (loc.y + 1) % map_.y();
+			
+			//Search label
+			const std::string label = gui_.labels().get_label(loc);
+			if(label.empty() == false) {
+				if(std::search(label.begin(), label.end(),
+						last_search_.begin(), last_search_.end(),
+						chars_equal_insensitive) != label.end()) {
+					found = true;
+				}
 			}
-		}
-		//Search unit names
-		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(gui_.fogged(u->first.x,u->first.y)) continue;
-			std::string name = u->second.description();
-			if(std::search(name.begin(), name.end(),
-						   last_search_.begin(), last_search_.end(),
-						   chars_equal_insensitive) != name.end()) {
-				gui_.scroll_to_tile(u->first.x,u->first.y,display::WARP);
-				gui_.highlight_hex(u->first);
-				return;
+			//Search unit name
+			unit_map::const_iterator ui = units_.find(loc);
+			if(ui != units_.end()) {
+				const std::string name = ui->second.description();
+				if(std::search(name.begin(), name.end(),
+						last_search_.begin(), last_search_.end(),
+						chars_equal_insensitive) != name.end()) {
+					found = true;
+				}
 			}
+		} while (loc != start && !found);
+		
+		if(found) {
+			last_search_hit_ = loc;
+			gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
+			gui_.highlight_hex(loc);
+		} else {
+			last_search_hit_ = gamemap::location();
+			//Not found, inform the player
+			string_map symbols;
+			symbols["search"] = last_search_;
+			const std::string msg = config::interpolate_variables_into_string(
+				string_table["search_string_not_found"],&symbols);
+			gui::show_dialog(gui_,NULL,"",msg);
 		}
-		//Not found, inform the player
-		string_map symbols;
-		symbols["search"] = last_search_;
-		const std::string msg = config::interpolate_variables_into_string(string_table["search_string_not_found"],&symbols);
-		gui::show_dialog(gui_,NULL,"",msg);
 	}
 }
 
