@@ -211,7 +211,8 @@ bool unit::can_attack() const
 
 void unit::set_movement(int moves)
 {
-	if(moves_ != -1)
+// next line commented to let undo work when space is pressed
+//	if(moves_ != -1)
 		moves_ = moves;
 }
 
