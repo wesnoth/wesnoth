@@ -60,6 +60,8 @@ protected:
 	void bg_register(SDL_Rect const &rect);
 	void bg_restore() const;
 	void bg_restore(SDL_Rect const &rect) const;
+	void bg_update();
+	void bg_cancel();
 
 	display& disp() const { return *disp_; }
 
@@ -72,9 +74,6 @@ protected:
 private:
 	void volatile_draw();
 	void volatile_undraw();
-
-	void bg_update();
-	void bg_cancel();
 
 	display* disp_;
 	std::vector< surface_restorer > restorer_;
