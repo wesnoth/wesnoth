@@ -44,6 +44,7 @@ public:
 	void choose_option(int index);
 	void end_turn();
 
+	config get_data_range(int cmd_start, int cmd_end);
 	config get_last_turn(int num_turns=1);
 
 	void undo();
@@ -57,6 +58,8 @@ public:
 	bool empty();
 
 	void add_config(const config& cfg);
+
+	int ncommands();
 
 	struct error {};
 

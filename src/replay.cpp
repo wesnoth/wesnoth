@@ -208,29 +208,18 @@ void replay::end_turn()
 	cmd->children["end_turn"].push_back(new config());
 }
 
-config replay::get_last_turn(int num_turns)
+config replay::get_data_range(int cmd_start, int cmd_end)
 {
-	log_scope("get_last_turn\n");
-	//back up from the end, finding the position we're looking for
-	std::vector<config*>& cmd = commands();
-	std::vector<config*>::reverse_iterator i;
-	for(i = cmd.rbegin(); i != cmd.rend() && num_turns > 0; ++i) {
-		if((*i)->children["end_turn"].size() > 0) {
-			--num_turns;
-		}
-	}
-
-	//if we reached an end turn, we have to move one step forward so
-	//that we don't include the end turn
-	const int adjust = num_turns == 0 ? 1 : 0;
+	log_scope("get_data_range\n");
 
 	config res;
 
-	for(std::vector<config*>::const_iterator fi = i.base()+adjust;
-	    fi != cmd.end(); ++fi) {
-		res.children["command"].push_back(new config(**fi));
+	std::vector<config*>& cmd = commands();
+	while(cmd_start < cmd_end) {
+		res.children["command"].push_back(new config(*cmd[cmd_start]));
+		++cmd_start;
 	}
-	
+
 	return res;
 }
 
@@ -246,6 +235,11 @@ void replay::undo()
 std::vector<config*>& replay::commands()
 {
 	return cfg_.children["command"];
+}
+
+int replay::ncommands()
+{
+	return commands().size();
 }
 
 config* replay::add_command()

@@ -123,6 +123,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	bool replaying = (recorder.empty() == false);
 
+	const int start_command = recorder.ncommands();
+
 	std::cout << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false) {
 		try {
@@ -174,7 +176,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						if(network::nconnections() > 0) {
 							config cfg;
 							cfg.children["turn"].push_back(
-							           new config(recorder.get_last_turn(1)));
+							  new config(recorder.get_data_range(start_command,
+							                        recorder.ncommands())));
 							network::send_data(cfg);
 						}
 
@@ -185,10 +188,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						display::clear_debug_highlights();
 
 					if(network::nconnections() > 0) {
-							config cfg;
-							cfg.children["turn"].push_back(
-							           new config(recorder.get_last_turn(2)));
-							network::send_data(cfg);
+						config cfg;
+						cfg.children["turn"].push_back(
+							  new config(recorder.get_data_range(start_command,
+							                        recorder.ncommands())));
+						network::send_data(cfg);
 					}
 
 				} else if(!replaying && team_it->is_ai()) {
@@ -198,7 +202,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					if(network::nconnections() > 0) {
 						config cfg;
 						cfg.children["turn"].push_back(
-						           new config(recorder.get_last_turn(2)));
+							  new config(recorder.get_data_range(start_command,
+							                        recorder.ncommands())));
 						network::send_data(cfg);
 					}
 
