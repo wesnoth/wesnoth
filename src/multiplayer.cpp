@@ -155,6 +155,8 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	area_ = area;
 
+	map_selection_ = -1;
+
 	// Dialog width and height
 	int width = int(area.w);
 	int height = int(area.h);
@@ -164,23 +166,17 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	const int right = left + width;
 	const int bottom = top + height;
 
-	std::cerr << "a\n";
-
-	//gui::draw_dialog_background(left,top,width,height,disp_,"menu");
 	int xpos = left + border_size;
 	int ypos = top + gui::draw_dialog_title(left,top,&disp_,string_table["create_new_game"]).h + border_size;
-
-	std::cerr << "b\n";
 
 	//Name Entry
 	ypos += font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
 	                        string_table["name_of_game"] + ":",xpos,ypos).h + border_size;
 	name_entry_.assign(new gui::textbox(disp_,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]));
 	name_entry_->set_location(xpos,ypos);
+	name_entry_->set_dirty();
 
 	ypos += name_entry_->location().h + border_size;
-
-	std::cerr << "c\n";
 
 	const int minimap_width = 200;
 
@@ -190,8 +186,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	                                             string_table["map_to_play"] + ":",xpos + minimap_width + border_size,ypos).h;
 
 	maps_menu_->set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
-
-	std::cerr << "d\n";
+	maps_menu_->set_dirty();
 
 	SDL_Rect rect;
 
@@ -207,8 +202,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	rect.y += rect.h + border_size*2;
 
 	turns_slider_->set_location(rect);
-
-	std::cerr << "e\n";
+	turns_slider_->set_dirty();
 
 	//Village Gold
 	rect.y += rect.h + border_size*2;
@@ -218,66 +212,63 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	rect.y += rect.h + border_size*2;
 
 	village_gold_slider_->set_location(rect);
-
-	std::cerr << "f\n";
+	village_gold_slider_->set_dirty();
 
 	//Experience Modifier
 	rect.y += rect.h + border_size*2;
 
-	std::cerr << "fa\n";
-
 	xp_restorer_ = surface_restorer(&disp_.video(),rect);
-
-	std::cerr << "fb\n";
 
 	rect.y += rect.h + border_size*2;
 
 	xp_modifier_slider_->set_location(rect);
-
-	std::cerr << "fc\n";
+	xp_modifier_slider_->set_dirty();
 
 	//FOG of war
 	rect.y += rect.h + border_size*2;
 
 	fog_game_->set_location(rect.x,rect.y);
+	fog_game_->set_dirty();
 
 	rect.y += fog_game_->location().h + border_size;
 
-	std::cerr << "g\n";
-
 	//Shroud
 	shroud_game_->set_location(rect.x,rect.y);
+	shroud_game_->set_dirty();
 
 	rect.y += shroud_game_->location().h + border_size;
 
 	//Observers
 	observers_game_->set_location(rect.x,rect.y);
+	observers_game_->set_dirty();
 
 	rect.y += observers_game_->location().h + border_size;
 
 	//Ally shared view settings
 	vision_combo_->set_location(rect.x,rect.y);
+	vision_combo_->set_dirty();
 
 	rect.y += vision_combo_->height() + border_size;
-	
-	std::cerr << "h\n";
 
 	//Buttons
 	cancel_game_->set_location(right - cancel_game_->width() - gui::ButtonHPadding,
 	                     bottom - cancel_game_->height() - gui::ButtonVPadding);
 	launch_game_->set_location(right - cancel_game_->width() - launch_game_->width() - gui::ButtonHPadding*2,
 	                     bottom - launch_game_->height() - gui::ButtonVPadding);
+
+	cancel_game_->set_dirty();
+	launch_game_->set_dirty();
 	
 
 	regenerate_map_->set_location(rect.x,rect.y);
 	regenerate_map_->bg_backup();
+	regenerate_map_->set_dirty();
 
 	rect.y += regenerate_map_->location().h + border_size;
 
 	generator_settings_->set_location(rect.x,rect.y);
 	generator_settings_->bg_backup();
-
-	std::cerr << "i\n";
+	generator_settings_->set_dirty();
 
 	//player amount number background
 	SDL_Rect player_num_rect = {xpos+minimap_width/2 - 30,ypos+minimap_width,100,25};
@@ -286,10 +277,9 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
 	era_rect = font::draw_text(&disp_,era_rect,12,font::GOOD_COLOUR,translate_string("Era") + ":",
 	                           era_rect.x,era_rect.y);
-
-	std::cerr << "j\n";
 	
 	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
+	era_combo_->set_dirty();
 
 	SDL_Rect minimap_rect = {xpos,ypos,minimap_width,minimap_width};
 	minimap_restorer_ = surface_restorer(&disp_.video(),minimap_rect);
@@ -429,7 +419,8 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		const cursor::setter cursor_setter(cursor::WAIT);
 
 		//generate the random map
-		(*level_)["map_data"] = generator_->create_map(std::vector<std::string>());
+		scenario_data_ = generator_->create_scenario(std::vector<std::string>());
+		level_ = &scenario_data_;
 		map_changed = true;
 
 		//set the scenario to have placing of sides based on the terrain they prefer
@@ -537,7 +528,11 @@ void multiplayer_game_setup_dialog::start_game()
 
 	std::vector<std::string> messages;
 	config game_data;
-	const lobby::RESULT result = lobby::enter(disp_,game_data,cfg_,&connector,messages);
+	lobby::RESULT result = lobby::CONTINUE;
+	while(result == lobby::CONTINUE) {
+		result = lobby::enter(disp_,game_data,cfg_,&connector,messages);
+	}
+
 	if(result == lobby::CREATE) {
 		connector.start_game();
 	}

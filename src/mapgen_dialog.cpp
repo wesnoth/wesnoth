@@ -285,3 +285,16 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 	else
 		return "";
 }
+
+config default_map_generator::create_scenario(const std::vector<std::string>& args)
+{
+	config res;
+	const config* const scenario = cfg_->child("scenario");
+	if(scenario != NULL) {
+		res = *scenario;
+	}
+
+	res["map_data"] = create_map(args);
+
+	return res;
+}

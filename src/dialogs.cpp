@@ -273,7 +273,6 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 
 	CVideo& screen = disp.video();
 	SDL_Surface* const scr = screen.getSurface();
-	SDL_Rect clipRect = disp.screen_area();
 
 	const int width = 400;
 	const int height = 400;

@@ -885,7 +885,11 @@ int play_game(int argc, char** argv)
 					std::vector<std::string> chat;
 					config game_data;
 					multiplayer_game_setup_dialog mp_dialog(disp,units_data,game_config,state,true);
-					const lobby::RESULT res = lobby::enter(disp,game_data,game_config,&mp_dialog,chat);
+					lobby::RESULT res = lobby::CONTINUE;
+					while(res == lobby::CONTINUE) {
+						res = lobby::enter(disp,game_data,game_config,&mp_dialog,chat);
+					}
+
 					if(res == lobby::CREATE) {
 						mp_dialog.start_game();
 					}

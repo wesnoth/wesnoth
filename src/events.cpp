@@ -53,7 +53,6 @@ void context::add_handler(handler* ptr)
 
 void context::delete_handler_index(size_t handler)
 {
-	std::cerr << "delete handler index " << handler << "\n";
 	if(focused_handler == int(handler)) {
 		focused_handler = -1;
 	} else if(focused_handler > int(handler)) {
@@ -61,8 +60,6 @@ void context::delete_handler_index(size_t handler)
 	}
 
 	handlers.erase(handlers.begin()+handler);
-
-	std::cerr << "done delete handler index " << handler << "\n";
 }
 
 bool context::remove_handler(handler* ptr)
@@ -70,8 +67,6 @@ bool context::remove_handler(handler* ptr)
 	if(handlers.empty()) {
 		return false;
 	}
-
-	std::cerr << "remove handler...\n";
 
 	static int depth = 0;
 	++depth;
@@ -96,8 +91,6 @@ bool context::remove_handler(handler* ptr)
 	} else {
 		focused_handler = -1;
 	}
-
-	std::cerr << "done remove handler...\n";
 	
 	return true;
 }

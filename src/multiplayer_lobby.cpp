@@ -1,6 +1,7 @@
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
+#include "hotkeys.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "language.hpp"
@@ -33,7 +34,9 @@ namespace lobby {
 RESULT enter(display& disp, config& game_data, const config& terrain_data, dialog* dlg,
 			 std::vector<std::string>& messages)
 {
-	const events::resize_lock prevent_resizing;
+	const preferences::display_manager disp_manager(&disp);
+	const hotkey::basic_handler key_handler(&disp);
+	const video_change_detector disp_change_detector(disp.video());
 
 	CKey key;
 
@@ -69,19 +72,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		dlg_restorer.restore();
 		dlg_restorer = surface_restorer();
 
-		// Display Chats
-		std::stringstream text;
-		for(size_t n = messages.size() > 60 ? messages.size()-60 : 0;
-		    n != messages.size(); ++n) {
-			text << messages[n] << "\n";
-		}
-
 		const SDL_Rect chat_area = { xscale(disp,19), yscale(disp,574), xscale(disp,832), yscale(disp,130) };
 
-		gui::textbox chat_textbox(disp,chat_area.w,text.str(),false);
-		chat_textbox.set_location(chat_area);
-		chat_textbox.set_wrap(true);
-		chat_textbox.scroll_to_bottom();
+		gui::textbox chat_textbox(disp,chat_area.w,"",false);
 
 		std::vector<std::string> options;
 		std::vector<bool> game_vacant_slots, game_observers;
@@ -237,9 +230,28 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 		update_whole_screen();
 
-		bool old_enter = true;
+		bool old_enter = true, chat_invalidated = true;
 
 		for(;;) {
+
+			if(chat_invalidated) {
+				// Display Chats
+				std::stringstream text;
+				for(size_t n = messages.size() > 50 ? messages.size()-50 : 0;
+					n != messages.size(); ++n) {
+					text << messages[n] << "\n";
+				}
+
+				chat_textbox.set_text(text.str());
+
+				chat_textbox.set_location(chat_area);
+				chat_textbox.set_wrap(true);
+				chat_textbox.scroll_to_bottom();
+				chat_textbox.set_dirty();
+
+				chat_invalidated = false;
+			}
+
 			int mousex, mousey;
 			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
@@ -298,7 +310,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				std::stringstream message;
 				message << "<" << child["sender"] << ">  " << child["message"];
 				messages.push_back(message.str());
-				break;
+				chat_invalidated = true;
 			}
 
 			if(dlg == NULL && (last_escape == false && key[SDLK_ESCAPE] || quit_game.process(mousex,mousey,left_button))){
@@ -341,10 +353,12 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 					std::stringstream message;
 					message << "<" << msg["sender"] << ">  " << msg["message"];
 					messages.push_back(message.str());
-					break;
+					chat_invalidated = true;
 				}
+			}
 
-				update_whole_screen();
+			if(disp_change_detector.changed()) {
+				return CONTINUE;
 			}
 
 			events::pump();

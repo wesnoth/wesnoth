@@ -313,8 +313,6 @@ double display::zoom(int amount)
 
 	energy_bar_rects_.clear();
 
-	std::cerr << "zoomed to: " << zoom_ << "\n";
-
 	image::set_zoom(zoom_);
 	map_labels_.recalculate_labels();
 	invalidate_all();
@@ -468,8 +466,6 @@ void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::butto
 		surf.assign(scale_surface(surf.get(),loc.w,loc.h));
 	}
 
-	std::cerr << "drawing panel " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "\n";
-
 	disp.blit_surface(loc.x,loc.y,surf);
 	update_rect(loc);
 
@@ -512,7 +508,6 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 void display::draw(bool update,bool force)
 {	
 	if(!panelsDrawn_) {
-		std::cerr << "drawing panels...\n";
 		SDL_Surface* const screen = screen_.getSurface();
 
 		const std::vector<theme::panel>& panels = theme_.panels();
@@ -529,8 +524,6 @@ void display::draw(bool update,bool force)
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
-
-		std::cerr << "done panels...\n";
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -671,8 +664,6 @@ void display::draw_report(reports::TYPE report_num)
 	if(!team_valid())
 		return;
 
-	std::cerr << "drawing report " << (int)report_num << "\n";
-
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
 
@@ -687,7 +678,6 @@ void display::draw_report(reports::TYPE report_num)
 
 		//report and its location is unchanged since last time. Do nothing.
 		if(rect == new_rect && reports_[report_num] == report) {
-			std::cerr << "report needs no redrawing\n";
 			return;
 		}
 
@@ -778,8 +768,6 @@ void display::draw_report(reports::TYPE report_num)
 	} else {
 		reportSurfaces_[report_num].assign(NULL);
 	}
-
-	std::cerr << "done drawing report\n";
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
@@ -1216,9 +1204,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	const std::vector<std::string>& overlays = it->second.overlays();
 	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
 		const scoped_sdl_surface img(image::get_image(*ov));
-		std::cerr << "drawing overlay: '" << *ov << "'\n";
 		if(img.get() != NULL) {
-			std::cerr << "AA\n";
 			draw_unit(xpos,ypos,img);
 		}
 	}
@@ -1691,9 +1677,7 @@ SDL_Surface* display::getTerrain(const image::locator& image, image::TYPE image_
 
 	if((radj|gadj|badj) != 0 && im != NULL) {
 		const scoped_sdl_surface backup(im);
-		std::cerr << "adjusting surface colour " << radj << "," << gadj << "," << badj << "\n";
 		im = adjust_surface_colour(im,radj,gadj,badj);
-		std::cerr << "done adjust...\n";
 		if(im == NULL)
 			std::cerr << "could not adjust surface..\n";
 	}
@@ -1755,11 +1739,9 @@ void display::blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect
 SDL_Surface* display::getMinimap(int w, int h)
 {
 	if(minimap_ == NULL) {
-		std::cerr << "regetting minimap\n";
 		minimap_ = image::getMinimap(w,h,map_,
 				status_.get_time_of_day().lawful_bonus,
 				team_valid() ? &teams_[currentTeam_] : NULL);
-		std::cerr << "done regetting minimap\n";
 	}
 
 	sdl_add_ref(minimap_);
@@ -2087,29 +2069,20 @@ void display::begin_game()
 
 void display::create_buttons()
 {
-	std::cerr << "clearing buttons...\n";
 	buttons_.clear();
 
-	std::cerr << "creating buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		std::cerr << "a\n";
 		gui::button b(*this,i->title(),gui::button::TYPE_PRESS,i->image());
-		std::cerr << "b\n";
 		const SDL_Rect& loc = i->location(screen_area());
-		std::cerr << "c\n";
 		b.set_location(loc.x,loc.y);
 
 		if(rects_overlap(b.location(),map_area())) {
 			b.set_volatile(true);
 		}
 
-		std::cerr << "d\n";
 		buttons_.push_back(b);
-		std::cerr << "e\n";
 	}
-
-	std::cerr << "done creating buttons...\n";
 }
 
 void display::add_observer(const std::string& name)

@@ -39,6 +39,8 @@ public:
 	void enable(bool new_val);
 	bool enabled() const;
 
+	void set_dirty() { button_.set_dirty(); }
+
 private:
 	std::vector<std::string> items_;
 	int selected_;

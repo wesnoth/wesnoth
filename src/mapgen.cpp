@@ -51,8 +51,7 @@ config random_generate_scenario(const std::string& parms, const config* cfg)
 config map_generator::create_scenario(const std::vector<std::string>& args)
 {
 	config res;
-	config& item = res.add_child("scenario");
-	item.values["map_data"] = create_map(args);
+	res["map_data"] = create_map(args);
 	return res;
 }
 

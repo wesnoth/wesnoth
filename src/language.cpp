@@ -53,10 +53,18 @@ const std::string& translate_string(const std::string& str)
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
 	const string_map::const_iterator i = strings_.find(str);
-	if(i != strings_.end() && i->second != "")
+	if(i != strings_.end() && i->second != "") {
 		return i->second;
-	else
+	} else {
+		//if there are spaces, try searching for a no-space version
+		if(std::find(str.begin(),str.end(),' ') != str.end()) {
+			std::string str_copy = str;
+			str_copy.erase(std::remove(str_copy.begin(),str_copy.end(),' '),str_copy.end());
+			return translate_string_default(str_copy,default_val);
+		}
+
 		return default_val;
+	}
 }
 
 std::vector<std::string> get_languages()

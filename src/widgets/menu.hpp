@@ -54,6 +54,8 @@ public:
 
 	void scroll(int pos);
 
+	void set_dirty() { drawn_ = false; }
+
 private:
 	size_t max_items_onscreen() const;
 

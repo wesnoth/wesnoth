@@ -370,6 +370,12 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
+	combos_type_.clear();
+	combos_race_.clear();
+	combos_team_.clear();
+	combos_color_.clear();
+	sliders_gold_.clear();
+
 	config::child_iterator sd;
 
 	for(sd = sides.first; sd != sides.second; ++sd) {
@@ -407,13 +413,15 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		sliders_gold_.push_back(gui::slider(*disp_, r));
 		sliders_gold_.back().set_min(20);
 		sliders_gold_.back().set_max(1000);
-		sliders_gold_.back().set_value(100);
+		sliders_gold_.back().set_value(lexical_cast_default<int>((**sd)["gold"],100));
 		r.w = 30;
 		r.x = left+603;
 		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
 		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
 		                "100", r.x, r.y);
 	}
+
+	std::cerr << "done set_area()\n";
 
 	update_whole_screen();
 }

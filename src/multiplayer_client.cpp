@@ -64,13 +64,54 @@ void receive_gamelist(display& disp, config& data)
 class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(display& disp, config& cfg, int team_num) : got_side(false), team(team_num), status(START_GAME), disp_(disp), cancel_button_(NULL), sides_(cfg) {}
+	wait_for_start(display& disp, config& cfg, int team_num, const std::string& team_name) : got_side(false), team(team_num), name(team_name), status(START_GAME), disp_(disp), cancel_button_(NULL), menu_(NULL), sides_(cfg)
+	{
+		SDL_Rect empty_rect = {0,0,0,0};
+		area_ = empty_rect;
+	}
 
+	void generate_menu()
+	{
+		if(area_.h == 0) {
+			return;
+		}
+
+		std::vector<std::string> details;
+
+		const config::child_list& sides = sides_.get_children("side");
+		for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+			const config& sd = **s;
+
+			std::string description = sd["description"];
+			std::string side_name = sd["name"];
+			if(s - sides.begin() == size_t(team-1)) {
+				description = preferences::login();
+				side_name = name;
+			}
+
+			std::stringstream str;
+			str << description << "," << side_name << "," << sd["gold"] << " " << translate_string("gold") << "," << sd["team_name"];
+			details.push_back(str.str());
+		}
+
+		SDL_Rect rect = area_;
+		rect.h /= 2;
+		SDL_FillRect(disp_.video().getSurface(),&rect,SDL_MapRGB(disp_.video().getSurface()->format,0,0,0));
+
+		menu_.assign(new gui::menu(disp_,details,false,area_.h/2));
+		menu_->set_loc(area_.x,area_.y);
+		menu_->set_width(area_.w);
+	}
+	
 	void set_area(const SDL_Rect& area) {
+
+		area_ = area;
+		generate_menu();
+
 		const std::string text = string_table["waiting_start"];
 		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),14,font::NORMAL_COLOUR,text,0,0);
 		rect.x = area.x + area.w/2 - rect.w/2;
-		rect.y = area.y + area.h/2 - rect.h/2;
+		rect.y = area.y + (area.h*3)/4 - rect.h/2;
 		font::draw_text(&disp_,rect,14,font::NORMAL_COLOUR,text,rect.x,rect.y);
 
 		cancel_button_.assign(new gui::button(disp_,string_table["cancel"]));
@@ -81,6 +122,7 @@ public:
 
 	void clear_widgets() {
 		cancel_button_.assign(NULL);
+		menu_.assign(NULL);
 	}
 
 	lobby::RESULT process() {
@@ -98,6 +140,7 @@ public:
 			for(config::child_list::const_iterator a = assigns.begin(); a != assigns.end(); ++a) {
 				if(lexical_cast_default<int>((**a)["from"]) == team) {
 					team = lexical_cast_default<int>((**a)["to"]);
+					generate_menu();
 				}
 			}
 
@@ -118,6 +161,7 @@ public:
 			} else if(reply.child("scenario_diff")) {
 				std::cerr << "received diff for scenario....applying...\n";
 				sides_.apply_diff(*reply.child("scenario_diff"));
+				generate_menu();
 			} else if(reply.child("side")) {
 				sides_ = reply;
 				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
@@ -131,6 +175,7 @@ public:
 
 	bool got_side;
 	int team;
+	std::string name;
 	enum { START_GAME, GAME_CANCELLED, SIDE_UNAVAILABLE } status;
 
 private:
@@ -138,7 +183,10 @@ private:
 	config& sides_;
 
 	util::scoped_ptr<gui::button> cancel_button_;
+	util::scoped_ptr<gui::menu> menu_;
 	std::deque<config> data_;
+
+	SDL_Rect area_;
 
 	bool manages_network() const { return true; }
 	bool get_network_data(config& out) {
@@ -259,7 +307,11 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 					}
 					case lobby::CREATE: {
 						multiplayer_game_setup_dialog mp_dialog(disp,units_data,cfg,state,false);
-						const lobby::RESULT res = lobby::enter(disp,game_data,cfg,&mp_dialog,chat_messages);
+						lobby::RESULT res = lobby::CONTINUE;
+						while(res == lobby::CONTINUE) {
+							res = lobby::enter(disp,game_data,cfg,&mp_dialog,chat_messages);
+						}
+
 						if(res == lobby::CREATE) {
 							mp_dialog.start_game();
 						}
@@ -297,6 +349,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		const config::child_list& sides_list = sides.get_children("side");
 
 		int team_num = 0;
+		std::string team_name;
 		
 		if(!observer) {
 			//search for an appropriate vacant slot. If a description is set
@@ -368,7 +421,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			assert(choice < possible_sides.size());
 
 			const config& chosen_side = *possible_sides[choice];
-			response["name"] = chosen_side["name"];
+			team_name = response["name"] = chosen_side["name"];
 			response["type"] = chosen_side["type"];
 			response["recruit"] = chosen_side["recruit"];
 			response["music"] = chosen_side["music"];
@@ -376,10 +429,14 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			network::send_data(response);
 		}
     
-		wait_for_start waiter(disp,sides,team_num);
+		wait_for_start waiter(disp,sides,team_num,team_name);
 		std::vector<std::string> messages;
 		config game_data;
-		const lobby::RESULT dialog_res = lobby::enter(disp,game_data,cfg,&waiter,messages);
+		lobby::RESULT dialog_res = lobby::CONTINUE;
+		while(dialog_res == lobby::CONTINUE) {
+			dialog_res = lobby::enter(disp,game_data,cfg,&waiter,messages);
+		}
+
 		waiter.clear_widgets();
 
 		if(waiter.status == wait_for_start::GAME_CANCELLED) {
