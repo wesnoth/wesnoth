@@ -723,33 +723,28 @@ int check_victory(std::map<gamemap::location,unit>& units)
 	return -1;
 }
 
-gamestatus::TIME timeofday_at(const gamestatus& status,
-                              const std::map<gamemap::location,unit>& units,
-                              const gamemap::location& loc)
+const time_of_day& timeofday_at(const gamestatus& status,
+                                const std::map<gamemap::location,unit>& units,
+                                const gamemap::location& loc)
 {
-	gamemap::location locs[7];
-	locs[0] = loc;
-	get_adjacent_tiles(loc,locs+1);
-
 	bool lighten = false;
-	for(int i = 0; i != 7; ++i) {
-		const std::map<gamemap::location,unit>::const_iterator itor =
-		                                              units.find(locs[i]);
-		if(itor != units.end() &&
-		   itor->second.type().is_lightbringer()) {
-			lighten = true;
+
+	if(loc.valid()) {
+		gamemap::location locs[7];
+		locs[0] = loc;
+		get_adjacent_tiles(loc,locs+1);
+
+		for(int i = 0; i != 7; ++i) {
+			const std::map<gamemap::location,unit>::const_iterator itor =
+			                                              units.find(locs[i]);
+			if(itor != units.end() &&
+			   itor->second.type().is_lightbringer()) {
+				lighten = true;
+			}
 		}
 	}
 
-	gamestatus::TIME res = status.timeofday();
-	if(lighten) {
-		if(res == gamestatus::DUSK)
-			res = gamestatus::DAY2;
-		else if(res > gamestatus::DUSK)
-			res = gamestatus::DUSK;
-	}
-
-	return res;
+	return status.get_time_of_day(lighten);
 }
 
 double combat_modifier(const gamestatus& status,
@@ -757,21 +752,16 @@ double combat_modifier(const gamestatus& status,
 					   const gamemap::location& loc,
 					   unit_type::ALIGNMENT alignment)
 {
-	const gamestatus::TIME timeofday = timeofday_at(status,units,loc);
-		if(alignment == unit_type::LAWFUL) {
-		if(timeofday > gamestatus::DAWN && timeofday < gamestatus::DUSK)
-			return 1.25;
-		else if(timeofday > gamestatus::DUSK &&
-		        units.find(loc)->second.type().nightvision() == false)
-			return 0.75;
-	} else if(alignment == unit_type::CHAOTIC) {
-		if(timeofday > gamestatus::DAWN && timeofday < gamestatus::DUSK)
-			return 0.75;
-		else if(timeofday > gamestatus::DUSK)
-			return 1.25;
-	}
+	const time_of_day& tod = timeofday_at(status,units,loc);
 
-	return 1.0;
+	int bonus = tod.lawful_bonus;
+
+	if(alignment == unit_type::NEUTRAL)
+		bonus = 0;
+	else if(alignment == unit_type::CHAOTIC)
+		bonus = -bonus;
+
+	return 1.0 + static_cast<double>(bonus)/100.0;
 }
 
 size_t move_unit(display* disp, const gamemap& map,

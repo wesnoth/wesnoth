@@ -19,16 +19,24 @@
 #include <string>
 #include <vector>
 
+struct time_of_day
+{
+	explicit time_of_day(config& cfg);
+
+	int lawful_bonus;
+	std::string image;
+	std::string name;
+	int red, green, blue;
+};
+
 class gamestatus
 {
 public:
-	gamestatus(int num_turns);
-	enum TIME { DAWN, DAY1, DAY2, DUSK, NIGHT1, NIGHT2, NUM_TIMES };
+	gamestatus(config& time_cfg, int num_turns);
 
-	static const std::string& timeofdayDescription(TIME t);
-	TIME timeofday() const;
-	int turn() const;
-	int number_of_turns() const;
+	const time_of_day& get_time_of_day(bool illuminated=false) const;
+	size_t turn() const;
+	size_t number_of_turns() const;
 
 	bool next_turn();
 
@@ -45,9 +53,10 @@ public:
 	};
 
 private:
-	TIME timeofday_;
-	int turn_;
-	int numTurns_;
+	std::vector<time_of_day> times_, illuminatedTimes_;
+
+	size_t turn_;
+	size_t numTurns_;
 };
 
 struct game_state

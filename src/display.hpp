@@ -203,7 +203,6 @@ private:
 	std::multimap<gamemap::location,std::string> overlays_;
 
 	bool sideBarBgDrawn_;
-	int lastTimeOfDay_;
 
 	size_t currentTeam_;
 

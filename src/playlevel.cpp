@@ -27,7 +27,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						std::vector<config*>& story)
 {
 	const int num_turns = atoi(level->values["turns"].c_str());
-	gamestatus status(num_turns);
+	gamestatus status(*level,num_turns);
 
 	gamemap map(terrain_config,read_file("data/maps/" + level->values["map"]));
 

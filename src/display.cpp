@@ -82,7 +82,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
 					   invalidateGameStatus_(true), sideBarBgDrawn_(false),
-					   lastTimeOfDay_(-1), currentTeam_(0), updatesLocked_(0),
+					   currentTeam_(0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0)
 {
 	gameStatusRect_.w = 0;
@@ -353,7 +353,6 @@ void display::redraw_everything()
 	if(update_locked())
 		return;
 
-	lastTimeOfDay_ = gamestatus::NUM_TIMES;
 	sideBarBgDrawn_ = false;
 	minimapDecorationsDrawn_ = false;
 	invalidate_all();
@@ -483,22 +482,14 @@ void display::draw_game_status(int x, int y)
 	rect.y = y;
 	rect.w = this->x() - x;
 
-	gamestatus::TIME timeofday = status_.timeofday();
-	if(mouseoverHex_.valid()) {
-		timeofday = timeofday_at(status_,units_,mouseoverHex_);
-	}
+	const time_of_day& tod = timeofday_at(status_,units_,mouseoverHex_);
 
-	if(lastTimeOfDay_ != (int)timeofday) {
-		lastTimeOfDay_ = (int)timeofday;
 
-		SDL_Surface* const tod_surface = getImage(
-		         gamestatus::timeofdayDescription(timeofday) + ".png",
-				 UNSCALED);
+	SDL_Surface* const tod_surface = getImage(tod.image,UNSCALED);
 
-		if(tod_surface != NULL) {
-			//hardcoded values as to where the time of day image appears
-			blit_surface(mapx() + 21,int(196*sidebarScaling_),tod_surface);
-		}
+	if(tod_surface != NULL) {
+		//hardcoded values as to where the time of day image appears
+		blit_surface(mapx() + 21,int(196*sidebarScaling_),tod_surface);
 	}
 
 	if(gameStatusRect_.w > 0) {

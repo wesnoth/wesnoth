@@ -86,7 +86,7 @@ void write_file(const std::string& fname, const std::string& data)
 namespace {
 
 void internal_preprocess_file(const std::string& fname,
-                              std::map<std::string,std::string> defines_map,
+                              std::map<std::string,std::string>& defines_map,
                               int depth, std::vector<char>& res,
                               std::vector<line_source>* lines_src, int& line)
 {
@@ -274,13 +274,13 @@ std::string preprocess_file(const std::string& fname,
                             std::vector<line_source>* line_sources)
 {
 	log_scope("preprocessing file...");
-	static const std::map<std::string,std::string> default_defines;
+	std::map<std::string,std::string> defines_copy;
 	if(defines == NULL)
-		defines = &default_defines;
+		defines_copy = *defines;
 
 	std::vector<char> res;
 	int linenum = 0;
-	internal_preprocess_file(fname,*defines,0,res,line_sources,linenum);
+	internal_preprocess_file(fname,defines_copy,0,res,line_sources,linenum);
 	return std::string(res.begin(),res.end());
 }
 

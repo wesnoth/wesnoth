@@ -88,7 +88,7 @@ int check_victory(std::map<gamemap::location,unit>& units);
 
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that brings light is there
-gamestatus::TIME timeofday_at(const gamestatus& status,
+const time_of_day&  timeofday_at(const gamestatus& status,
                               const std::map<gamemap::location,unit>& units,
                               const gamemap::location& loc);
 

@@ -13,41 +13,65 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
+#include "language.hpp"
 
 #include <cstdio>
 #include <sstream>
 
-gamestatus::gamestatus(int num_turns) :
-                 timeofday_(DAWN),turn_(1),numTurns_(num_turns)
-{}
-
-const std::string& gamestatus::timeofdayDescription(gamestatus::TIME t)
+time_of_day::time_of_day(config& cfg)
+                 : lawful_bonus(atoi(cfg.values["lawful_bonus"].c_str())),
+                   image(cfg.values["image"]), name(cfg.values["name"]),
+                   red(atoi(cfg.values["red"].c_str())),
+                   green(atoi(cfg.values["green"].c_str())),
+                   blue(atoi(cfg.values["blue"].c_str()))
 {
-	static const std::string times[] = { "Dawn", "Morning", "Afternoon",
-	                                     "Dusk", "FirstWatch", "SecondWatch" };
-	return times[t];
+	const std::string& lang_name = string_table[cfg.values["id"]];
+	if(lang_name.empty() == false)
+		name = lang_name;
 }
 
-gamestatus::TIME gamestatus::timeofday() const
+gamestatus::gamestatus(config& time_cfg, int num_turns) :
+                 turn_(1),numTurns_(num_turns)
 {
-	return timeofday_;
+	std::vector<config*>& times = time_cfg.children["time"];
+	std::vector<config*>::iterator t;
+	for(t = times.begin(); t != times.end(); ++t) {
+		times_.push_back(time_of_day(**t));
+	}
+
+	std::vector<config*>& times_illum = time_cfg.children["illuminated_time"];
+	std::vector<config*>& illum = times_illum.empty() ? times : times_illum;
+
+	for(t = illum.begin(); t != illum.end(); ++t) {
+		illuminatedTimes_.push_back(time_of_day(**t));
+	}
 }
 
-int gamestatus::turn() const
+const time_of_day& gamestatus::get_time_of_day(bool illuminated) const
+{
+	if(illuminated && illuminatedTimes_.empty() == false) {
+		return illuminatedTimes_[(turn()-1)%illuminatedTimes_.size()];
+	} else if(times_.empty() == false) {
+		return times_[(turn()-1)%times_.size()];
+	}
+
+	config dummy_cfg;
+	const static time_of_day default_time(dummy_cfg);
+	return default_time;
+}
+
+size_t gamestatus::turn() const
 {
 	return turn_;
 }
 
-int gamestatus::number_of_turns() const
+size_t gamestatus::number_of_turns() const
 {
 	return numTurns_;
 }
 
 bool gamestatus::next_turn()
 {
-	timeofday_ = static_cast<TIME>(static_cast<int>(timeofday_)+1);
-	if(timeofday_ == NUM_TIMES)
-		timeofday_ = DAWN;
 	++turn_;
 	return turn_ <= numTurns_;
 }
