@@ -35,6 +35,14 @@ public:
 	void do_move();
 
 private:
+	void do_attack(const location& u, const location& target, int weapon);
+
+	void do_recruitment();
+
+	void move_leader_to_keep(const move_map& enemy_dstsrc);
+	void move_leader_after_recruit(const move_map& enemy_dstsrc);
+	void leader_attack();
+
 	bool recruit(const std::string& usage);
 	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
 	team& current_team();

@@ -221,106 +221,9 @@ void ai::do_move()
 			return;
 		}
 
-		//find where the leader can move
-		const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
-		const gamemap::location& start_pos = map_.starting_position(leader->second.side());
-
-		possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
-
-		bool leader_moved = false;
-		//if the leader is not on his starting location, move him there.
-		if(leader->first != start_pos) {
-			leader_moved = true;
-			const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
-			if(itor != leader_paths.routes.end() && units_.count(start_pos) == 0) {
-				move_unit(leader->first,start_pos,possible_moves);
-
-				leader = find_leader(units_,team_num_);
-				assert(leader != units_.end());
-			}
-		}
-
-		std::cout << "recruitment......\n";
-
-		//currently just spend all the gold we can!
-		const int min_gold = 0;
-
-		const int towers = map_.towers().size();
-		int taken_towers = 0;
-		for(size_t j = 0; j != teams_.size(); ++j) {
-			taken_towers += teams_[j].towers().size();
-		}
-
-		const int neutral_towers = towers - taken_towers;
-
-		//get scouts depending on how many neutral villages there are
-		int scouts_wanted = current_team().villages_per_scout() > 0 ?
-		                neutral_towers/current_team().villages_per_scout() : 0;
-
-		std::map<std::string,int> unit_types;
-		while(unit_types["scout"] < scouts_wanted) {
-			if(recruit("scout") == false)
-				break;
-
-			++unit_types["scout"];
-		}
-
-		const std::vector<std::string>& options = current_team().recruitment_pattern();
-
-		if(options.empty()) {
-			assert(false);
-			return;
-		}
-
-		//buy units as long as we have room and can afford it
-		while(recruit(options[rand()%options.size()])) {
-
-		}
-
-		//see if the leader can capture a village safely
-		if(!leader_moved) {
-			//if the keep is accessible by an enemy unit, we don't want to leave it
-			gamemap::location adj[6];
-			get_adjacent_tiles(leader->first,adj);
-			for(size_t n = 0; n != 6; ++n) {
-				if(enemy_dstsrc.count(adj[n])) {
-					leader_moved = true;
-					break;
-				}
-			}
-		}
-
-		//search through villages finding one to capture
-		if(!leader_moved) {
-			const std::vector<gamemap::location>& villages = map_.towers();
-			for(std::vector<gamemap::location>::const_iterator v = villages.begin();
-			    v != villages.end(); ++v) {
-				const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
-				if(itor == leader_paths.routes.end() || units_.count(*v) != 0) {
-					continue;
-				}
-
-				const int owner = tower_owner(*v,teams_);
-				if(owner == -1 || current_team().is_enemy(owner+1) || leader->second.hitpoints() < leader->second.max_hitpoints()) {
-
-					//check that no enemies can reach the village
-					gamemap::location adj[6];
-					get_adjacent_tiles(*v,adj);
-					size_t n;
-					for(n = 0; n != 6; ++n) {
-						if(enemy_dstsrc.count(adj[n]))
-							break;
-					}
-
-					if(n != 6)
-						continue;
-
-					move_unit(leader->first,*v,possible_moves);
-
-					break;
-				}
-			}
-		}
+		move_leader_to_keep(enemy_dstsrc);
+		do_recruitment();
+		move_leader_after_recruit(enemy_dstsrc);
 
 		recorder.end_turn();
 		return;
@@ -381,15 +284,7 @@ void ai::do_move()
 
 		move_unit(from,to,possible_moves);
 
-		std::cerr << "attacking...\n";
-		recorder.add_attack(to,target_loc,weapon);
-
-		game_events::fire("attack",to,target_loc);
-		if(units_.count(to) && units_.count(target_loc)) {
-			attack(disp_,map_,teams_,to,target_loc,weapon,units_,state_,gameinfo_,false);
-			check_victory(units_,teams_);
-		}
-		std::cerr << "done attacking...\n";
+		do_attack(to,target_loc,weapon);
 
 		//if this is the only unit in the planned attack, and the target
 		//is still alive, then also summon reinforcements
@@ -591,4 +486,169 @@ void ai::do_move()
 
 	do_move();
 	return;
+}
+
+void ai::do_attack(const location& u, const location& target, int weapon)
+{
+	recorder.add_attack(u,target,weapon);
+
+	game_events::fire("attack",u,target);
+	if(units_.count(u) && units_.count(target)) {
+		attack(disp_,map_,teams_,u,target,weapon,units_,state_,gameinfo_,false);
+		check_victory(units_,teams_);
+	}
+}
+
+void ai::do_recruitment()
+{
+	//currently just spend all the gold we can!
+	const int min_gold = 0;
+
+	const int towers = map_.towers().size();
+	int taken_towers = 0;
+	for(size_t j = 0; j != teams_.size(); ++j) {
+		taken_towers += teams_[j].towers().size();
+	}
+
+	const int neutral_towers = towers - taken_towers;
+
+	//get scouts depending on how many neutral villages there are
+	int scouts_wanted = current_team().villages_per_scout() > 0 ?
+	                neutral_towers/current_team().villages_per_scout() : 0;
+
+	std::map<std::string,int> unit_types;
+	while(unit_types["scout"] < scouts_wanted) {
+		if(recruit("scout") == false)
+			break;
+
+		++unit_types["scout"];
+	}
+
+	const std::vector<std::string>& options = current_team().recruitment_pattern();
+
+	if(options.empty()) {
+		assert(false);
+		return;
+	}
+
+	//buy units as long as we have room and can afford it
+	while(recruit(options[rand()%options.size()])) {
+	}
+}
+
+void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
+{
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end())
+		return;
+
+	//find where the leader can move
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	const gamemap::location& start_pos = map_.starting_position(leader->second.side());
+
+	std::map<gamemap::location,paths> possible_moves;
+	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+
+	bool leader_moved = false;
+	//if the leader is not on his starting location, move him there.
+	if(leader->first != start_pos) {
+		leader_moved = true;
+		const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
+		if(itor != leader_paths.routes.end() && units_.count(start_pos) == 0) {
+			move_unit(leader->first,start_pos,possible_moves);
+		}
+	}
+}
+
+void ai::leader_attack()
+{
+	std::cerr << "leader attack analysis...\n";
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end())
+		return;
+
+	gamemap::location choice;
+	double rating = 0.0;
+	int weapon = -1;
+
+	gamemap::location adj[6];
+	get_adjacent_tiles(leader->first,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		const unit_map::const_iterator u = units_.find(adj[n]);
+		if(u != units_.end() && current_team().is_enemy(u->second.side())) {
+			attack_analysis analysis;
+			analysis.target = adj[n];
+			analysis.movements.push_back(std::pair<location,location>(leader->first,leader->first));
+			analysis.analyze(map_,units_,state_,gameinfo_,20,*this);
+			const double value = analysis.chance_to_kill*analysis.target_value - analysis.avg_losses*10.0 - analysis.avg_damage_taken;
+			if(value >= rating) {
+				rating = value;
+				choice = adj[n];
+
+				assert(analysis.weapons.size() == 1);
+				weapon = analysis.weapons.front();
+			}
+		}
+	}
+
+	if(choice.valid()) {
+		do_attack(leader->first,choice,weapon);
+	}
+
+	std::cerr << "end leader attack analysis...\n";
+}
+
+void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
+{
+	std::cerr << "moving leader after recruit...\n";
+	leader_attack();
+
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end())
+		return;
+
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+
+	std::map<gamemap::location,paths> possible_moves;
+	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+
+	//see if the leader can capture a village safely
+	//if the keep is accessible by an enemy unit, we don't want to leave it
+	gamemap::location adj[6];
+	get_adjacent_tiles(leader->first,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if(enemy_dstsrc.count(adj[n])) {
+			return;
+		}
+	}
+
+	//search through villages finding one to capture
+	const std::vector<gamemap::location>& villages = map_.towers();
+	for(std::vector<gamemap::location>::const_iterator v = villages.begin();
+	    v != villages.end(); ++v) {
+		const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
+		if(itor == leader_paths.routes.end() || units_.count(*v) != 0) {
+			continue;
+		}
+
+		const int owner = tower_owner(*v,teams_);
+		if(owner == -1 || current_team().is_enemy(owner+1) || leader->second.hitpoints() < leader->second.max_hitpoints()) {
+
+			//check that no enemies can reach the village
+			gamemap::location adj[6];
+			get_adjacent_tiles(*v,adj);
+			size_t n;
+			for(n = 0; n != 6; ++n) {
+				if(enemy_dstsrc.count(adj[n]))
+					break;
+			}
+
+			if(n != 6)
+				continue;
+
+			move_unit(leader->first,*v,possible_moves);
+
+			break;
+		}
+	}
 }

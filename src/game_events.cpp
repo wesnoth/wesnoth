@@ -283,6 +283,16 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
+	//remove units from being turned to stone
+	else if(cmd == "unstone") {
+		const config* const filter = cfg.child("filter");
+		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
+			if(i->second.stone() && (filter == NULL || i->second.matches_filter(*filter))) {
+				i->second.remove_flag("stone");
+			}
+		}
+	}
+
 	//allow a side to recruit a new type of unit
 	else if(cmd == "allow_recruit") {
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
