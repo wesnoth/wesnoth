@@ -37,8 +37,6 @@ void set_font();
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
                        DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR, TITLE_COLOUR;
 
-enum MARKUP { USE_MARKUP, NO_MARKUP };
-
 //standard markups
 extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
 
@@ -68,8 +66,7 @@ const int
 //at the end of it. If use_tooltips is true, then text with an ellipsis will
 //have a tooltip set for it equivalent to the entire contents of the text.
 //
-//if use_markup is equal to USE_MARKUP, then some very basic 'markup' will
-//be done on the text:
+//some very basic 'markup' will be done on the text:
 // - any line beginning in # will be displayed in BAD_COLOUR
 // - any line beginning in @ will be displayed in GOOD_COLOUR
 // - any line beginning in + will be displayed with size increased by 2
@@ -83,8 +80,7 @@ const int
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
-                   int x, int y, surface bg=NULL,
-                   bool use_tooltips=false, MARKUP use_markup=USE_MARKUP, int style=0);
+                   int x, int y, bool use_tooltips = false, int style = 0);
 
 //function which returns the size of text if it were to be drawn.
 SDL_Rect text_area(const std::string& text, int size, int style=0);
@@ -127,7 +123,7 @@ std::string make_text_ellipsis(const std::string& text, int font_size, int max_w
 /// 
 SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
-			     int x, int y, int max_width, surface bg = NULL);
+			     int x, int y, int max_width);
 
 
 /// structure which will hide all current floating labels, and cause floating labels

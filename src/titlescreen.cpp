@@ -251,7 +251,9 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		draw_dialog_frame(area.x,area.y,area.w,area.h,screen,&style);
 
 		font::draw_text(&screen,area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
-		font::draw_text(&screen,area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w-pad,next_tip_button.location().y-tome_area.h-pad,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
+		font::draw_text(&screen, area, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+		                tome, area.x + area.w - tome_area.w - pad,
+		                next_tip_button.location().y - tome_area.h - pad, false, TTF_STYLE_ITALIC);
 	}
 
 	events::raise_draw_event();

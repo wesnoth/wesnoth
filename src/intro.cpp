@@ -245,8 +245,7 @@ bool show_intro_part(display& screen, const config& part,
 				}
 				const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),
 						font::SIZE_PLUS,font::NORMAL_COLOUR,
-						word,xpos,ypos,NULL,
-						false,font::NO_MARKUP);
+						word, xpos, ypos, false);
 
 				if(xpos + rect.w >= max_xpos) {
 					xpos = textx;
@@ -260,7 +259,7 @@ bool show_intro_part(display& screen, const config& part,
 			const SDL_Rect rect = font::draw_text(&screen,
 					screen.screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,*j,xpos,ypos,
-					NULL,false,font::NO_MARKUP);
+					false);
 
 			if(rect.h > height)
 				height = rect.h;

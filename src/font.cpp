@@ -364,7 +364,7 @@ surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& col
 		for(std::vector< surface >::const_iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
 			SDL_SetAlpha(*i, 0, 0); // direct blit without alpha blending
-			SDL_Rect dstrect = {0, ypos};
+			SDL_Rect dstrect = {0, ypos, 0, 0};
 			SDL_BlitSurface(*i, NULL, res, &dstrect);
 			ypos += (*i)->h;
 		}
@@ -442,7 +442,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
-		   int x, int y, surface bg, bool use_tooltips, int style)
+		   int x, int y, bool use_tooltips, int style)
 {
 	
 	TTF_Font* const font = get_font(size);
@@ -506,7 +506,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
-                        int x, int y, surface bg, bool use_tooltips, int style)
+                        int x, int y, bool use_tooltips, int style)
 {
 	surface surface;
 	
@@ -516,19 +516,18 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		surface = gui->video().getSurface();
 	}
 	
-	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips, style);
+	return draw_text_line(surface, area, size, colour, text, x, y, use_tooltips, style);
 }
 
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
-	return draw_text(NULL,area,size,font::NORMAL_COLOUR,text,0,0,NULL,false,USE_MARKUP,style);
+	return draw_text(NULL, area, size, font::NORMAL_COLOUR, text, 0, 0, false, style);
 }
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
-                   int x, int y, surface bg, bool use_tooltips,
-                   MARKUP use_markup, int style)
+                   int x, int y, bool use_tooltips, int style)
 {
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
@@ -555,7 +554,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 
 			config::unescape(new_string);
 
-			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips,text_style);
+			const SDL_Rect rect = draw_text_line(gui, area, sz, col, new_string, x, y, use_tooltips, text_style);
 			if(rect.w > res.w) {
 				res.w = rect.w;
 			}
@@ -720,10 +719,10 @@ namespace font {
 	
 	SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
-			     int x, int y, int max_width, surface bg)
+			     int x, int y, int max_width)
 	{
 		std::string wrapped_text = word_wrap_text(text, font_size, max_width);
-		return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, bg, false, NO_MARKUP);
+		return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, false);
 	}
 
 }

@@ -205,7 +205,8 @@ SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text)
 		rect = disp->screen_area();
 	}
 
-	return font::draw_text(disp,rect,font::SIZE_LARGE,font::TITLE_COLOUR,text,x,y+5,NULL,false,font::USE_MARKUP,TTF_STYLE_BOLD);
+	return font::draw_text(disp, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
+	                       text, x, y + 5, false, TTF_STYLE_BOLD);
 }
 
 void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
@@ -453,13 +454,13 @@ int show_dialog(display& disp, surface image,
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {
 		text_size = font::draw_text(NULL, clipRect, message_font_size,
-						            font::NORMAL_COLOUR, message, 0, 0, NULL);
+		                            font::NORMAL_COLOUR, message, 0, 0);
 	}
 
 	SDL_Rect caption_size = { 0, 0, 0, 0 };
 	if (!caption.empty() && image != NULL) {
 		caption_size = font::draw_text(NULL, clipRect, caption_font_size,
-		                               font::NORMAL_COLOUR,caption,0,0,NULL);
+		                               font::NORMAL_COLOUR, caption, 0, 0);
 	}
 
 	const char** button_list = NULL;
@@ -700,7 +701,7 @@ int show_dialog(display& disp, surface image,
 		font::draw_text(&disp, clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
 		                xloc+image_width+left_padding+image_h_padding,
-		                yloc+top_padding, NULL);
+		                yloc+top_padding);
 	}
 
 	font::draw_text(&disp, clipRect, message_font_size,

@@ -384,7 +384,7 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-	font::draw_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
+	font::draw_text(&disp(), area, font::SIZE_SMALL, font::NORMAL_COLOUR, str.str(), area.x, ypos, true);
 }
 
 } //end anon namespace
