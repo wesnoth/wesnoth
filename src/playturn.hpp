@@ -121,6 +121,8 @@ private:
 	const team& current_team() const { return teams_[team_num_-1]; }
 
 	void write_game_snapshot(config& cfg) const;
+
+	bool unit_in_cycle(unit_map::const_iterator it) const;
 	
 	//overridden from command_executor
 	virtual void cycle_units();

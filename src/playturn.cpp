@@ -1072,6 +1072,20 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	hotkey::execute_command(gui_,cmd,this);
 }
 
+bool turn_info::unit_in_cycle(unit_map::const_iterator it) const
+{
+	if(it->second.side() == team_num_ &&
+	   unit_can_move(it->first,units_,map_,teams_) &&
+	   it->second.user_end_turn() == false &&
+	   !gui_.fogged(it->first.x,it->first.y)) {
+		const bool is_enemy = current_team().is_enemy(int(gui_.viewing_team()+1));
+		return is_enemy == false || it->second.invisible(map_.underlying_terrain(it->first),status_.get_time_of_day().lawful_bonus,it->first,units_,teams_) == false;
+	}
+
+	return false;
+	
+}
+
 void turn_info::cycle_units()
 {
 
@@ -1079,10 +1093,7 @@ void turn_info::cycle_units()
 	unit_map::const_iterator yellow_it = units_.end();
 	if(it != units_.end()) {
 		for(++it; it != units_.end(); ++it) {
-			if(it->second.side() == team_num_ &&
-			   unit_can_move(it->first,units_,map_,teams_) &&
-			   it->second.user_end_turn() == false &&
-			   !gui_.fogged(it->first.x,it->first.y)) {
+			if(unit_in_cycle(it)) {
 				break;
 			}
 		}
@@ -1090,11 +1101,9 @@ void turn_info::cycle_units()
 
 	if(it == units_.end()) {
 		for(it = units_.begin(); it != units_.end(); ++it) {
-			if(it->second.side() == team_num_ &&
-			   unit_can_move(it->first,units_,map_,teams_) &&
-			   it->second.user_end_turn() == false &&
-			   !gui_.fogged(it->first.x,it->first.y))
+			if(unit_in_cycle(it)) {
 				break;
+			}
 		}
 	}
 
