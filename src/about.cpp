@@ -126,11 +126,6 @@ std::vector<std::string> get_text() {
 		"-   Mark Michelsen (skovbaer)",
 		"+ ",
 
-		_("+Brazilian Translation"),
-		"-   Ambra Viviani Loos",
-		"-   Michel Loos",
-		"+ ",
-
 		_("+Catalan Translation"),
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
@@ -147,10 +142,12 @@ std::vector<std::string> get_text() {
 
 		_("+Danish Translation"),
 		"-   Mark Michelsen (skovbaer)",
+		"-   Mathias Bundgaard Svensson (freaken)",
 		"+ ",
 
 		_("+Dutch Translation"),
 		"-   Lala",
+		"-   Pieter Vermeylen (Onne)",
 		"+ ",
 
 		_("+Finnish Translation"),
@@ -202,8 +199,11 @@ std::vector<std::string> get_text() {
 		"-   BOrsuk",
 		"+ ",
 
-		_("+Portuguese Translation"),
+		_("+Portuguese (Brazil) Translation"),
+		"-   Ambra Viviani Loos",
 		"-   Celso Goya",
+		"-   Claus Aranha",
+		"-   Michel Loos",
 		"-   Renato Cunha",
 		"+ ",
 
