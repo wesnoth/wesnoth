@@ -1,5 +1,6 @@
 CVS HEAD::
  * made it possible to recruit on any keep tile, not just a starting keeps
+ * data compression for network games
  * tutorial objectives added
  * new units:
    * Outlaw
@@ -7,9 +8,13 @@ CVS HEAD::
    * fixed leader abandoning keep when it was not safe
    * retreating, re-grouping
    * attack optimizations
+   * grouping improvements
  * updated translations:
    * french
+ * improved castle placement on random maps
  * missile images issues fixed for 'Arch Mage', Ghost, 'Sea Hag' and Wraith
+ * fixed healing units that had full hitpoints (#7574)
+ * attempt to fix bug with energy bars not displaying properly on OSX
 
 Version 0.6.99.2:
  * nightstalk ability added
