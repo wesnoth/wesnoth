@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 02:21+0200\n"
+"POT-Creation-Date: 2004-11-07 11:44+0100\n"
 "PO-Revision-Date: 2004-10-27 21:04+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/game.cfg:321 data/translations/english.cfg:61
+#: data/game.cfg:492 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "лояльный"
 
-#: data/game.cfg:329
+#: data/game.cfg:500
 msgid "strong"
 msgstr "сильный"
 
-#: data/game.cfg:344
+#: data/game.cfg:515
 msgid "quick"
 msgstr "быстрый"
 
-#: data/game.cfg:358
+#: data/game.cfg:529
 msgid "intelligent"
 msgstr "умный"
 
-#: data/game.cfg:367
+#: data/game.cfg:538
 msgid "resilient"
 msgstr "неунывающий"
 
@@ -50,11 +50,11 @@ msgstr "Игра"
 msgid "Traits"
 msgstr "Особенности"
 
-#: data/help.cfg:28 src/playturn.cpp:1536
+#: data/help.cfg:28 src/playturn.cpp:1527
 msgid "Units"
 msgstr "Соединения"
 
-#: data/help.cfg:34 src/help.cpp:611
+#: data/help.cfg:34 src/help.cpp:1042
 msgid "Abilities"
 msgstr "Способности"
 
@@ -147,7 +147,7 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:91 src/help.cpp:764 src/help.cpp:765
+#: data/help.cfg:91 src/help.cpp:1193 src/help.cpp:1194
 msgid "Movement"
 msgstr "Ходы"
 
@@ -381,7 +381,7 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:201 src/titlescreen.cpp:175
+#: data/help.cfg:201 src/titlescreen.cpp:186
 msgid "About"
 msgstr "О игре"
 
@@ -622,7 +622,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:196
-#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:663
+#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:660
 msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Случайные"
 
@@ -721,9 +721,26 @@ msgstr ""
 msgid "An Island"
 msgstr "Остров"
 
+#: data/scenarios/multiplayer/An_Island.cfg:50
+msgid ""
+"A 4 player map that is suitable for individual or team play, victory rests "
+"of dominating the centre island. North-West: Forest dominated area, North-"
+"East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
+"Mountain dominated area."
+msgstr ""
+
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
 msgstr "Блиц"
+
+#: data/scenarios/multiplayer/Blitz.cfg:9
+#: data/scenarios/multiplayer/Charge.cfg:9
+msgid "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr ""
+
+#: data/scenarios/multiplayer/BrokenBridge.cfg:2
+msgid "The Broken Bridge"
+msgstr ""
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -738,9 +755,14 @@ msgstr "Замок хмельного острова"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
 msgid ""
-"Many close by and strategically located castles. Small map for fast play. "
-"Recommended setting of 2 gold per village."
+"Many closely placed and strategically located castles. Small map for fast "
+"play. Recommended setting of 2 gold per village."
 msgstr ""
+
+#: data/scenarios/multiplayer/Charge.cfg:7
+#, fuzzy
+msgid "Charge"
+msgstr "заряд"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -834,7 +856,7 @@ msgstr "Да!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:473
+#: src/show_dialog.cpp:477
 msgid "No"
 msgstr "Нет"
 
@@ -1368,7 +1390,7 @@ msgstr "Вы хотите посмотреть уроки, которые был
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:472
+#: src/show_dialog.cpp:476
 msgid "Yes"
 msgstr "Да"
 
@@ -1820,7 +1842,7 @@ msgstr "Второе наблюдение"
 msgid "Underground"
 msgstr ""
 
-#: data/terrain.cfg:7 src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:131
+#: data/terrain.cfg:7 src/multiplayer.cpp:110 src/multiplayer_lobby.cpp:131
 msgid "Shroud"
 msgstr "Пелена"
 
@@ -1930,15 +1952,15 @@ msgid "End Turn"
 msgstr "Закончить ход"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
-#: data/themes/default.cfg:809 src/dialogs.cpp:673 src/display.cpp:941
-#: src/help.cpp:629 src/playturn.cpp:1960 src/unit.cpp:1030
+#: data/themes/default.cfg:809 src/dialogs.cpp:658 src/display.cpp:948
+#: src/help.cpp:1059 src/playturn.cpp:1951 src/unit.cpp:1041
 msgid "HP"
 msgstr "ЗД"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
-#: data/themes/default.cfg:816 src/dialogs.cpp:677 src/dialogs.cpp:685
-#: src/display.cpp:945 src/display.cpp:953 src/playturn.cpp:1799
-#: src/playturn.cpp:1961 src/unit.cpp:1089
+#: data/themes/default.cfg:816 src/dialogs.cpp:662 src/dialogs.cpp:670
+#: src/display.cpp:952 src/display.cpp:960 src/playturn.cpp:1790
+#: src/playturn.cpp:1952 src/unit.cpp:1100
 msgid "XP"
 msgstr "ОП"
 
@@ -1976,6 +1998,289 @@ msgstr "уровень"
 #: data/themes/default.cfg:1002
 msgid "statuspanel^movement"
 msgstr "движение"
+
+#: data/tips.cfg:1
+msgid ""
+"Lawful units fight better at day, and chaotic units fight better at night. "
+"Neutral units are unaffected by day and night."
+msgstr ""
+"Гражданские соединения лучше сражаются днём, а хаотичные соединения лучше "
+"сражаются ночью. Нейтральные соединения сражаются и днём и ночью с "
+"одинаковой силой."
+
+#: data/tips.cfg:2
+msgid ""
+"In a campaign, you can use veteran units from previous scenarios by using "
+"the 'recall' option."
+msgstr ""
+"При прохождении кампании, Вы можете использовать соединения-ветеранов из "
+"прошлого сценария, для этого необходимо использовать команду 'воскресить'."
+
+#: data/tips.cfg:3
+msgid ""
+"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
+"Different units have weaknesses against different types of attacks. Right-"
+"click on a unit, and then select 'Unit Description', and then click "
+"'Resistance' to see how much resistance a unit has against different attack "
+"types."
+msgstr ""
+"Существует шесть типов атаки, различающихся по применяемым типам оружия: "
+"колющее, холодное оружие, удар, огонь, холод и святое оружие. Разные "
+"соединения имеют разную сопротивляемость против каждого типа атаки. Нажмите "
+"правой кнопкой мыши на соединении и выберите 'Описание соединения', затем "
+"нажмите 'Сопротивление' чтобы увидеть как данное соединения сопротивляется "
+"против различных типов атак."
+
+#: data/tips.cfg:4
+msgid ""
+"The terrain your units are on determines the chance your opponents have of "
+"hitting them in battle. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top-right corner of "
+"the screen."
+msgstr ""
+"Особенности Вашего соединения определяют шанс Вашего противника на поражение "
+"в бою. Рейтинг сопротивления выбранного соединения на конкретной местности "
+"можно видеть в правом верхнем углу экрана."
+
+#: data/tips.cfg:5
+msgid ""
+"Poisoned units lose 8 hitpoints every turn, but they will not die from "
+"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
+"be cured by moving them to a village, or placing them next to a unit with "
+"the 'cure' ability."
+msgstr ""
+"Отравленные соединения теряют 8 единиц здоровья за каждый ход, но соединение "
+"не может умереть от яда; яд никогда не понизит здоровье ниже 1 единицы. "
+"Отравленные соединения могут исцелиться в деревне, либо с помощью другого "
+"соединения, у которого есть способность к исцелению."
+
+#: data/tips.cfg:6
+msgid ""
+"You can use units from a previous scenario by selecting 'Recall' by the game "
+"menu. By recalling the same units over and over, you can build up a powerful "
+"and experienced army."
+msgstr ""
+"Вы можете использоваться соединения с прошлого сценария, для этого "
+"существует команда 'Воскресить' в меню Действия. Воскрешая соединения, Вы "
+"создаёте более мощную и опытную армию. "
+
+#: data/tips.cfg:7
+msgid ""
+"All units have a Zone of Control in each of the hexes next to them. If a "
+"unit moves into an enemy's Zone of Control, it may not move any further that "
+"turn."
+msgstr ""
+"Все соединения имеют свою зону контроля в каждом следующем за ним квадрате. "
+"Если соединение передвигается в зону контроля противника, оно больше не "
+"может двигаться на этом же ходу."
+
+#: data/tips.cfg:8
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain it is standing in, however magical attacks always have "
+"a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
+msgstr ""
+"Шанс нанести ущерб противнику зависит от местности, на которой соединение "
+"находится в данный момент и от способности соединения защищаться, обычно "
+"магические атаки имеют шанс 70% нанести ущерб, а атаки снайперов имеют шанс "
+"60% нанести ущерб."
+
+#: data/tips.cfg:9
+msgid ""
+"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgstr ""
+"Соединения, остающиеся в деревнях, восстанавливают 8 единиц здоровья в "
+"начале своего хода."
+
+#: data/tips.cfg:10
+msgid ""
+"Units that do not move or attack during their turn rest, and will recover 2 "
+"hitpoints at the beginning of their next turn."
+msgstr ""
+"Соединения, которые не двигаются и не атакуют в течение своего хода, "
+"восстанавливают 2 единицы здоровья в начале своего следующего хода."
+
+#: data/tips.cfg:11
+msgid ""
+"Most foot units defend better in villages and castles than in most other "
+"terrain, while most mounted units don't get any defensive advantage in "
+"villages and castles."
+msgstr ""
+"Большинство пеших соединений лучше защищаются в деревнях и замках, чем на "
+"большинстве остальной территории, тогда как большинство конных соединений не "
+"получают преимущества в защите, находясь в деревнях и замках."
+
+#: data/tips.cfg:12
+msgid ""
+"Horse based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"Конные соединения хорошо защищены от атак холодным оружием и от ударов, но "
+"уязвимы против атак колющего оружия, включая стрелы и копья."
+
+#: data/tips.cfg:13
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain 8 experience for every level of "
+"the unit they kill."
+msgstr ""
+"Наносить смертельные удары соединению противника - это лучший способ "
+"приобретать опыт. Соединение, убившее противника, получает 8 единиц опыта за "
+"каждый уровень соединения, которое было убито им."
+
+#: data/tips.cfg:14
+msgid ""
+"Elvish units move and fight very well in forest. Dwarvish units move and "
+"fight very well in hills and mountains."
+msgstr ""
+"Эльфы хорошо передвигаются и сражаются в лесу. Карлики хорошо передвигаются "
+"и сражаются на холмах и в горах."
+
+#: data/tips.cfg:15
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions, or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"Главное - терпение. Не атакуйте в плохих условиях или с небольшим "
+"количеством соединений, лучше подождите лучших условий и только тогда "
+"атакуйте."
+
+#: data/tips.cfg:16
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"Если Вы атакуете с разных направлений, подумайте над тем, чтобы отправить "
+"более опытные соединения в одном и том же направлении, чтобы задержать "
+"противника."
+
+#: data/tips.cfg:17
+msgid ""
+"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgstr ""
+"Не бойтесь перегруппировывать и воскрешать соединения, обычно это и есть "
+"ключ к победе."
+
+#: data/tips.cfg:18
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map, and the number of turns you "
+"finish early. You will always earn more gold this way than through capturing "
+"villages and waiting for turns to run out."
+msgstr ""
+"В большинстве кампаний Вы получаете золотые бонусы за быстрое прохождение, в "
+"зависимости от количества деревень, принадлежащих Вам и в зависимости от "
+"количества ходов, сделанных Вами за игру. Чем больше деревень Вы захватите и "
+"чем меньше Вы сделаете ходов в игре, тем больше Вы получите золота."
+
+#: data/tips.cfg:19
+msgid ""
+"Your leader can recruit or recall units from any keep inside a castle, not "
+"just the keep they start on. You can capture a keep from an enemy and "
+"recruit from there. Also, some of your allies may be willing to make room "
+"for you on their keep so you can recruit there."
+msgstr ""
+"Ваш лидер может призывать и воскрешать соединения не только в том замке, в "
+"котором он начал игру. Вы можете захватывать замки противника и призывать "
+"новые соединения и в захваченным замках. Кроме того, некоторые Ваши союзники "
+"могут добровольно создавать комнату в своём замке для Вас, чтобы Вы могли "
+"призывать соединения."
+
+#: data/tips.cfg:20
+msgid ""
+"Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
+"impact, fire, and holy attacks."
+msgstr ""
+"Скелеты хорошо защищены от атак с применением колющего и холодного оружия, "
+"но более уязвимы атакам с применением ударов, огня и святого оружия."
+
+#: data/tips.cfg:21
+msgid ""
+"Units with leadership ability make lower level adjacent units on the same "
+"side fight better."
+msgstr ""
+"Соединения со способностью лидерства делают соседние соединения нижнего "
+"уровня более сильными и они сражаются в бою лучше. "
+
+#: data/tips.cfg:22
+msgid ""
+"Generally avoid moving next to an unoccupied village. An enemy unit may move "
+"onto the village and attack you, while enjoying the defense and healing of "
+"the village."
+msgstr ""
+"Не находитесь вблизи незахваченных деревень. Соединение противника может "
+"захватить деревню и атаковать Вас и у него будет преимущество, т.к. он "
+"находится в деревне, а соединения, находящиеся в деревне, исцеляются каждый "
+"ход."
+
+#: data/tips.cfg:23
+msgid ""
+"Holding the mouse cursor on an ability or trait shows a description of that "
+"ability or trait."
+msgstr ""
+"Удерживайте курсор мышки на способности или особенности чтобы увидеть "
+"описание данной способности или особенности."
+
+#: data/tips.cfg:24
+msgid "Use lines of units to screen injured units to let them recover."
+msgstr ""
+"Используйте линии соединений, повреждённые соединение отводите назад чтобы "
+"дать им возможность восстановиться."
+
+#: data/tips.cfg:25
+msgid "Read the hotkeys list in the preferences menu."
+msgstr "Просмотрите список горячих клавиш в меню настроек."
+
+#: data/tips.cfg:26
+msgid ""
+"If you move a unit, but don't attack or discover any additional information, "
+"you can undo your move by pressing 'u'."
+msgstr ""
+"Если Вы передвигаете соединение, но не атакуете и не исследуете любую "
+"дополнительную информацию, Вы можете отменить Ваше передвижение, нажав "
+"кнопку 'u'."
+
+#: data/tips.cfg:27
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"Вы можете видеть, как далеко может двигаться соединение противника, для "
+"этого наведите курсор мышки на соединения противника."
+
+#: data/tips.cfg:28
+msgid ""
+"Use healers to support your attacks - they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+
+#: data/tips.cfg:29
+msgid ""
+"The 'slow' attack ability makes enemy units move slower, but it also gives "
+"them one less attack than they would normally have. It is thus very "
+"effective against units that have a few powerful attacks."
+msgstr ""
+"Способность 'замедление' делает передвижения соединения противника "
+"медленней, но, кроме того, даёт ему одну дополнительную единицу атаки, в "
+"сравнеии с нормальным состоянием. Таким образом, атака 'замедление' "
+"эффективна против соединений с мощной атакой."
+
+#: data/tips.cfg:30
+msgid "Holy attacks are very powerful against undead."
+msgstr "Святые атаки очень эффектины против мертвецов."
+
+#: data/tips.cfg:31
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+
+#: data/tips.cfg:32
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr ""
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -2100,14 +2405,14 @@ msgstr ""
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:14
 #: data/units/Drake_Flameheart.cfg:16 data/units/Drake_Flare.cfg:11
 #: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
-#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:16
+#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:20
 #: data/units/Grand_Marshal.cfg:16 data/units/Lieutenant.cfg:16
 #: data/units/Lord.cfg:10 data/units/Lord.cfg:73
 #: data/units/Noble_Commander.cfg:13 data/units/Noble_Lord.cfg:13
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:17 src/actions.cpp:355 src/actions.cpp:474
+#: data/units/Warrior_King.cfg:17 src/actions.cpp:356 src/actions.cpp:476
 msgid "leadership"
 msgstr "лидер"
 
@@ -2168,7 +2473,7 @@ msgstr ""
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:13 src/actions.cpp:502
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:504
 msgid "steadfast"
 msgstr "стойкий"
 
@@ -2348,306 +2653,11 @@ msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:144
-msgid "Next tip"
-msgstr "Следующий совет"
-
-#: data/translations/english.cfg:145
-msgid "Tip of the Day"
-msgstr "Совет дня"
-
-#: data/translations/english.cfg:146
-msgid "Do not show tips"
-msgstr "Не показывать советы"
-
-#: data/translations/english.cfg:147
-msgid ""
-"Lawful units fight better at day, and chaotic units fight better at night. "
-"Neutral units are unaffected by day and night."
-msgstr ""
-"Гражданские соединения лучше сражаются днём, а хаотичные соединения лучше "
-"сражаются ночью. Нейтральные соединения сражаются и днём и ночью с "
-"одинаковой силой."
-
-#: data/translations/english.cfg:148
-msgid ""
-"In a campaign, you can use veteran units from previous scenarios by using "
-"the 'recall' option."
-msgstr ""
-"При прохождении кампании, Вы можете использовать соединения-ветеранов из "
-"прошлого сценария, для этого необходимо использовать команду 'воскресить'."
-
-#: data/translations/english.cfg:149
-msgid ""
-"There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
-"Different units have weaknesses against different types of attacks. Right-"
-"click on a unit, and then select 'Unit Description', and then click "
-"'Resistance' to see how much resistance a unit has against different attack "
-"types."
-msgstr ""
-"Существует шесть типов атаки, различающихся по применяемым типам оружия: "
-"колющее, холодное оружие, удар, огонь, холод и святое оружие. Разные "
-"соединения имеют разную сопротивляемость против каждого типа атаки. Нажмите "
-"правой кнопкой мыши на соединении и выберите 'Описание соединения', затем "
-"нажмите 'Сопротивление' чтобы увидеть как данное соединения сопротивляется "
-"против различных типов атак."
-
-#: data/translations/english.cfg:150
-msgid ""
-"The terrain your units are on determines the chance your opponents have of "
-"hitting them in battle. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top-right corner of "
-"the screen."
-msgstr ""
-"Особенности Вашего соединения определяют шанс Вашего противника на поражение "
-"в бою. Рейтинг сопротивления выбранного соединения на конкретной местности "
-"можно видеть в правом верхнем углу экрана."
-
-#: data/translations/english.cfg:151
-msgid ""
-"Poisoned units lose 8 hitpoints every turn, but they will not die from "
-"poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
-"be cured by moving them to a village, or placing them next to a unit with "
-"the 'cure' ability."
-msgstr ""
-"Отравленные соединения теряют 8 единиц здоровья за каждый ход, но соединение "
-"не может умереть от яда; яд никогда не понизит здоровье ниже 1 единицы. "
-"Отравленные соединения могут исцелиться в деревне, либо с помощью другого "
-"соединения, у которого есть способность к исцелению."
-
-#: data/translations/english.cfg:152
-msgid ""
-"You can use units from a previous scenario by selecting 'Recall' by the game "
-"menu. By recalling the same units over and over, you can build up a powerful "
-"and experienced army."
-msgstr ""
-"Вы можете использоваться соединения с прошлого сценария, для этого "
-"существует команда 'Воскресить' в меню Действия. Воскрешая соединения, Вы "
-"создаёте более мощную и опытную армию. "
-
-#: data/translations/english.cfg:153
-msgid ""
-"All units have a Zone of Control in each of the hexes next to them. If a "
-"unit moves into an enemy's Zone of Control, it may not move any further that "
-"turn."
-msgstr ""
-"Все соединения имеют свою зону контроля в каждом следующем за ним квадрате. "
-"Если соединение передвигается в зону контроля противника, оно больше не "
-"может двигаться на этом же ходу."
-
-#: data/translations/english.cfg:154
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain it is standing in, however magical attacks always have "
-"a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
-msgstr ""
-"Шанс нанести ущерб противнику зависит от местности, на которой соединение "
-"находится в данный момент и от способности соединения защищаться, обычно "
-"магические атаки имеют шанс 70% нанести ущерб, а атаки снайперов имеют шанс "
-"60% нанести ущерб."
-
-#: data/translations/english.cfg:155
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
-msgstr ""
-"Соединения, остающиеся в деревнях, восстанавливают 8 единиц здоровья в "
-"начале своего хода."
-
-#: data/translations/english.cfg:156
-msgid ""
-"Units that do not move or attack during their turn rest, and will recover 2 "
-"hitpoints at the beginning of their next turn."
-msgstr ""
-"Соединения, которые не двигаются и не атакуют в течение своего хода, "
-"восстанавливают 2 единицы здоровья в начале своего следующего хода."
-
-#: data/translations/english.cfg:157
-msgid ""
-"Most foot units defend better in villages and castles than in most other "
-"terrain, while most mounted units don't get any defensive advantage in "
-"villages and castles."
-msgstr ""
-"Большинство пеших соединений лучше защищаются в деревнях и замках, чем на "
-"большинстве остальной территории, тогда как большинство конных соединений не "
-"получают преимущества в защите, находясь в деревнях и замках."
-
-#: data/translations/english.cfg:158
-msgid ""
-"Horse based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"Конные соединения хорошо защищены от атак холодным оружием и от ударов, но "
-"уязвимы против атак колющего оружия, включая стрелы и копья."
-
-#: data/translations/english.cfg:159
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain 8 experience for every level of "
-"the unit they kill."
-msgstr ""
-"Наносить смертельные удары соединению противника - это лучший способ "
-"приобретать опыт. Соединение, убившее противника, получает 8 единиц опыта за "
-"каждый уровень соединения, которое было убито им."
-
-#: data/translations/english.cfg:160
-msgid ""
-"Elvish units move and fight very well in forest. Dwarvish units move and "
-"fight very well in hills and mountains."
-msgstr ""
-"Эльфы хорошо передвигаются и сражаются в лесу. Карлики хорошо передвигаются "
-"и сражаются на холмах и в горах."
-
-#: data/translations/english.cfg:161
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions, or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"Главное - терпение. Не атакуйте в плохих условиях или с небольшим "
-"количеством соединений, лучше подождите лучших условий и только тогда "
-"атакуйте."
-
-#: data/translations/english.cfg:162
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"Если Вы атакуете с разных направлений, подумайте над тем, чтобы отправить "
-"более опытные соединения в одном и том же направлении, чтобы задержать "
-"противника."
-
-#: data/translations/english.cfg:163
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
-msgstr ""
-"Не бойтесь перегруппировывать и воскрешать соединения, обычно это и есть "
-"ключ к победе."
-
-#: data/translations/english.cfg:164
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map, and the number of turns you "
-"finish early. You will always earn more gold this way than through capturing "
-"villages and waiting for turns to run out."
-msgstr ""
-"В большинстве кампаний Вы получаете золотые бонусы за быстрое прохождение, в "
-"зависимости от количества деревень, принадлежащих Вам и в зависимости от "
-"количества ходов, сделанных Вами за игру. Чем больше деревень Вы захватите и "
-"чем меньше Вы сделаете ходов в игре, тем больше Вы получите золота."
-
-#: data/translations/english.cfg:165
-msgid ""
-"Your leader can recruit or recall units from any keep inside a castle, not "
-"just the keep they start on. You can capture a keep from an enemy and "
-"recruit from there. Also, some of your allies may be willing to make room "
-"for you on their keep so you can recruit there."
-msgstr ""
-"Ваш лидер может призывать и воскрешать соединения не только в том замке, в "
-"котором он начал игру. Вы можете захватывать замки противника и призывать "
-"новые соединения и в захваченным замках. Кроме того, некоторые Ваши союзники "
-"могут добровольно создавать комнату в своём замке для Вас, чтобы Вы могли "
-"призывать соединения."
-
-#: data/translations/english.cfg:166
-msgid ""
-"Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
-"impact, fire, and holy attacks."
-msgstr ""
-"Скелеты хорошо защищены от атак с применением колющего и холодного оружия, "
-"но более уязвимы атакам с применением ударов, огня и святого оружия."
-
-#: data/translations/english.cfg:167
-msgid ""
-"Units with leadership ability make lower level adjacent units on the same "
-"side fight better."
-msgstr ""
-"Соединения со способностью лидерства делают соседние соединения нижнего "
-"уровня более сильными и они сражаются в бою лучше. "
-
-#: data/translations/english.cfg:168
-msgid ""
-"Generally avoid moving next to an unoccupied village. An enemy unit may move "
-"onto the village and attack you, while enjoying the defense and healing of "
-"the village."
-msgstr ""
-"Не находитесь вблизи незахваченных деревень. Соединение противника может "
-"захватить деревню и атаковать Вас и у него будет преимущество, т.к. он "
-"находится в деревне, а соединения, находящиеся в деревне, исцеляются каждый "
-"ход."
-
-#: data/translations/english.cfg:169
-msgid ""
-"Holding the mouse cursor on an ability or trait shows a description of that "
-"ability or trait."
-msgstr ""
-"Удерживайте курсор мышки на способности или особенности чтобы увидеть "
-"описание данной способности или особенности."
-
-#: data/translations/english.cfg:170
-msgid "Use lines of units to screen injured units to let them recover."
-msgstr ""
-"Используйте линии соединений, повреждённые соединение отводите назад чтобы "
-"дать им возможность восстановиться."
-
-#: data/translations/english.cfg:171
-msgid "Read the hotkeys list in the preferences menu."
-msgstr "Просмотрите список горячих клавиш в меню настроек."
-
-#: data/translations/english.cfg:172
-msgid ""
-"If you move a unit, but don't attack or discover any additional information, "
-"you can undo your move by pressing 'u'."
-msgstr ""
-"Если Вы передвигаете соединение, но не атакуете и не исследуете любую "
-"дополнительную информацию, Вы можете отменить Ваше передвижение, нажав "
-"кнопку 'u'."
-
-#: data/translations/english.cfg:173
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"Вы можете видеть, как далеко может двигаться соединение противника, для "
-"этого наведите курсор мышки на соединения противника."
-
-#: data/translations/english.cfg:174
-msgid ""
-"Use healers to support your attacks - they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-
-#: data/translations/english.cfg:175
-msgid ""
-"The 'slow' attack ability makes enemy units move slower, but it also gives "
-"them one less attack than they would normally have. It is thus very "
-"effective against units that have a few powerful attacks."
-msgstr ""
-"Способность 'замедление' делает передвижения соединения противника "
-"медленней, но, кроме того, даёт ему одну дополнительную единицу атаки, в "
-"сравнеии с нормальным состоянием. Таким образом, атака 'замедление' "
-"эффективна против соединений с мощной атакой."
-
-#: data/translations/english.cfg:176
-msgid "Holy attacks are very powerful against undead."
-msgstr "Святые атаки очень эффектины против мертвецов."
-
-#: data/translations/english.cfg:177
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-
-#: data/translations/english.cfg:178
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr ""
-
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Лич старец"
 
-#: data/units/Ancient_Lich.cfg:16
+#: data/units/Ancient_Lich.cfg:19
 msgid ""
 "The final form that mages of the undead can achieve, Ancient Liches strike "
 "terror into the hearts of those who see them. Not only is their touch that "
@@ -2656,12 +2666,12 @@ msgid ""
 "far, for they move faster than most undead."
 msgstr ""
 
-#: data/units/Ancient_Lich.cfg:19 data/units/Demilich.cfg:18
+#: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:18
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
 msgstr "прикосновение"
 
-#: data/units/Ancient_Lich.cfg:20 data/units/Ancient_Lich.cfg:33
+#: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
 #: data/units/Dark_Queen.cfg:28 data/units/Dark_Queen.cfg:29
 #: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:36
@@ -2676,7 +2686,7 @@ msgstr "прикосновение"
 msgid "cold"
 msgstr "холод"
 
-#: data/units/Ancient_Lich.cfg:24 data/units/Blood_Bat.cfg:24
+#: data/units/Ancient_Lich.cfg:27 data/units/Blood_Bat.cfg:24
 #: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:23
 #: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:30
 #: data/units/Orcish_Shaman.cfg:73 data/units/Orcish_Shaman.cfg:116
@@ -2686,13 +2696,13 @@ msgstr "холод"
 msgid "drain"
 msgstr "осушать"
 
-#: data/units/Ancient_Lich.cfg:32 data/units/Deathmaster.cfg:35
+#: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:35
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
 msgstr "магия"
 
-#: data/units/Ancient_Lich.cfg:34 data/units/Arch_Mage.cfg:42
+#: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:42
 #: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:80
 #: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
 #: data/units/Dark_Queen.cfg:30 data/units/Deathmaster.cfg:37
@@ -2880,10 +2890,11 @@ msgstr "кинжал"
 #: data/units/Drake_Fire.cfg:25 data/units/Drake_Flameheart.cfg:24
 #: data/units/Drake_Flare.cfg:24 data/units/Drake_Gladiator.cfg:26
 #: data/units/Drake_Inferno.cfg:25 data/units/Drake_Slasher.cfg:22
-#: data/units/Drake_Warrior.cfg:22 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:23
-#: data/units/Dwarvish_Lord.cfg:28 data/units/Dwarvish_Lord.cfg:61
-#: data/units/Dwarvish_Steelclad.cfg:29 data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Drake_Warrior.cfg:22 data/units/Draug.cfg:25
+#: data/units/Duelist.cfg:21 data/units/Dwarvish_Berserker.cfg:28
+#: data/units/Dwarvish_Fighter.cfg:23 data/units/Dwarvish_Lord.cfg:28
+#: data/units/Dwarvish_Lord.cfg:61 data/units/Dwarvish_Steelclad.cfg:29
+#: data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:23
 #: data/units/Elvish_Archer.cfg:102 data/units/Elvish_Avenger.cfg:24
@@ -2897,7 +2908,7 @@ msgstr "кинжал"
 #: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:22
 #: data/units/Elvish_Sharpshooter.cfg:101 data/units/Fencer.cfg:21
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
-#: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:22
+#: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:26
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Direwolver.cfg:22
 #: data/units/Goblin_Direwolver.cfg:34 data/units/Goblin_Knight.cfg:19
 #: data/units/Grand_Knight.cfg:21 data/units/Grand_Marshal.cfg:22
@@ -2907,7 +2918,7 @@ msgstr "кинжал"
 #: data/units/Lieutenant.cfg:22 data/units/Longbowman.cfg:22
 #: data/units/Lord.cfg:23 data/units/Lord.cfg:86 data/units/Mage.cfg:21
 #: data/units/Mage.cfg:88 data/units/Master_Bowman.cfg:21
-#: data/units/Merman_Triton.cfg:34 data/units/Mounted_Captain.cfg:22
+#: data/units/Merman_Triton.cfg:35 data/units/Mounted_Captain.cfg:22
 #: data/units/Mounted_Commander.cfg:22 data/units/Necrophage.cfg:20
 #: data/units/Nightgaunt.cfg:21 data/units/Noble_Commander.cfg:27
 #: data/units/Noble_Fighter.cfg:24 data/units/Noble_Lord.cfg:26
@@ -2938,7 +2949,7 @@ msgstr "клинок"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
-#: src/actions.cpp:493
+#: src/actions.cpp:495
 msgid "backstab"
 msgstr ""
 
@@ -3010,7 +3021,7 @@ msgstr ""
 #: data/units/Elvish_Ranger.cfg:98 data/units/Elvish_Rider.cfg:30
 #: data/units/Elvish_Scout.cfg:31 data/units/Elvish_Sharpshooter.cfg:21
 #: data/units/Elvish_Sharpshooter.cfg:100 data/units/Fighter.cfg:20
-#: data/units/Fighter.cfg:61 data/units/General.cfg:21
+#: data/units/Fighter.cfg:61 data/units/General.cfg:25
 #: data/units/Grand_Knight.cfg:19 data/units/Grand_Marshal.cfg:21
 #: data/units/Horse_Lord.cfg:21 data/units/Knight.cfg:20
 #: data/units/Lieutenant.cfg:21 data/units/Longbowman.cfg:21
@@ -3124,7 +3135,7 @@ msgstr "лук"
 #: data/units/Elvish_Rider.cfg:52 data/units/Elvish_Scout.cfg:53
 #: data/units/Elvish_Sharpshooter.cfg:39
 #: data/units/Elvish_Sharpshooter.cfg:118 data/units/Elvish_Shyde.cfg:71
-#: data/units/General.cfg:45 data/units/Giant_Scorpion.cfg:20
+#: data/units/General.cfg:49 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:39
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:33
 #: data/units/Grand_Knight.cfg:37 data/units/Grand_Marshal.cfg:45
@@ -3133,12 +3144,12 @@ msgstr "лук"
 #: data/units/Lieutenant.cfg:39 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:33
 #: data/units/Merman.cfg:20 data/units/Merman_Entangler.cfg:19
-#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:23
+#: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:19 data/units/Merman_Hunter.cfg:27
 #: data/units/Merman_Javelineer.cfg:19 data/units/Merman_Javelineer.cfg:27
 #: data/units/Merman_Lord.cfg:22 data/units/Merman_Netcaster.cfg:19
 #: data/units/Merman_Spearman.cfg:19 data/units/Merman_Spearman.cfg:27
-#: data/units/Merman_Triton.cfg:22 data/units/Merman_Warrior.cfg:23
+#: data/units/Merman_Triton.cfg:23 data/units/Merman_Warrior.cfg:23
 #: data/units/Naga.cfg:21 data/units/Noble_Commander.cfg:45
 #: data/units/Noble_Lord.cfg:44 data/units/Orcish_Archer.cfg:37
 #: data/units/Orcish_Crossbow.cfg:41 data/units/Orcish_Crossbowman.cfg:39
@@ -3155,7 +3166,7 @@ msgstr "лук"
 #: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:38
 #: data/units/Spearman.cfg:20 data/units/Spearman.cfg:33
 #: data/units/Transport_Galleon.cfg:17 data/units/Trapper.cfg:42
-#: data/units/Triton.cfg:20 data/units/Vampire_Lady.cfg:35
+#: data/units/Triton.cfg:23 data/units/Vampire_Lady.cfg:35
 #: data/units/Wall_Guard.cfg:36 data/units/Watch_Tower.cfg:18
 msgid "pierce"
 msgstr "пронзать"
@@ -3183,7 +3194,7 @@ msgid ""
 "armours, they are one of the best mounted troops in all know world."
 msgstr ""
 
-#: data/units/Cavalier.cfg:48 data/units/Dragoon.cfg:48
+#: data/units/Cavalier.cfg:48
 msgid "pistol"
 msgstr "пистолет"
 
@@ -3253,8 +3264,8 @@ msgstr "копьё"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:365
-#: src/actions.cpp:484
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:366
+#: src/actions.cpp:486
 msgid "charge"
 msgstr "заряд"
 
@@ -3273,7 +3284,7 @@ msgstr ""
 msgid "gaze"
 msgstr "пристальный взгляд"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:737 src/actions.cpp:884
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:739 src/actions.cpp:886
 #: src/reports.cpp:122
 msgid "stone"
 msgstr "камень"
@@ -3391,11 +3402,11 @@ msgstr ""
 msgid "battle axe"
 msgstr "боевой топор"
 
-#: data/units/Death_Knight.cfg:36 data/units/Duelist.cfg:36
-#: data/units/General.cfg:44 data/units/Grand_Marshal.cfg:44
-#: data/units/Lieutenant.cfg:38 data/units/Orcish_Crossbow.cfg:40
-#: data/units/Orcish_Crossbowman.cfg:38 data/units/Sergeant.cfg:38
-#: data/units/Wall_Guard.cfg:35
+#: data/units/Death_Knight.cfg:36 data/units/Dragoon.cfg:48
+#: data/units/Duelist.cfg:36 data/units/General.cfg:48
+#: data/units/Grand_Marshal.cfg:44 data/units/Lieutenant.cfg:38
+#: data/units/Orcish_Crossbow.cfg:40 data/units/Orcish_Crossbowman.cfg:38
+#: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
 msgid "crossbow"
 msgstr "арбалет"
 
@@ -3450,8 +3461,11 @@ msgstr "Драгун"
 
 #: data/units/Dragoon.cfg:24
 msgid ""
-"Riding a fast horse and armed with sword and a magical artifact, a Dragoon "
-"make a versatile enemy."
+"The more talented cavalrymen in the armies of Wesnoth are trained in the use "
+"of the crossbow, and outfitted with much more powerful steeds. Well-armored, "
+"and skilled in the use of their swords, these soldiers can drive forward and "
+"hold the ground they take. Their mobility and resilience make them of great "
+"value on the battlefield."
 msgstr ""
 
 #: data/units/Drake_Burner.cfg:4
@@ -3619,6 +3633,26 @@ msgid ""
 "skills of their ancestors."
 msgstr ""
 
+#: data/units/Draug.cfg:3
+#, fuzzy
+msgid "Draug"
+msgstr "Драгун"
+
+#: data/units/Draug.cfg:16
+msgid ""
+"Towering remains of what once were legendary warriors, the Draug strike fear "
+"in the hearts of all who oppose them.  They are driven not by malice, but "
+"are forever bound within the dream of unlife, wandering through the greatest "
+"battles of their memory, and fighting desperately for release, for a peace "
+"bought only by strength of arms.  The memory of their enemy, and the purpose "
+"of their struggle have long faded into oblivion."
+msgstr ""
+
+#: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
+#: data/units/Revenant.cfg:23 data/units/Skeleton.cfg:24
+msgid "axe"
+msgstr "топор"
+
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
 msgstr "Дуэлист"
@@ -3681,11 +3715,6 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
-
-#: data/units/Dwarvish_Fighter.cfg:22 data/units/Revenant.cfg:23
-#: data/units/Skeleton.cfg:24
-msgid "axe"
-msgstr "топор"
 
 #: data/units/Dwarvish_Fighter.cfg:39 data/units/Dwarvish_Lord.cfg:44
 #: data/units/Dwarvish_Steelclad.cfg:45
@@ -4249,7 +4278,7 @@ msgstr "удар"
 msgid "General"
 msgstr "Генерал"
 
-#: data/units/General.cfg:18
+#: data/units/General.cfg:22
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
 "protection of large or important areas in the human kingdoms. Generals can "
@@ -4732,10 +4761,10 @@ msgid "Merman"
 msgstr "Водяной"
 
 #: data/units/Merman.cfg:19 data/units/Merman_Fighter.cfg:22
-#: data/units/Merman_Hoplite.cfg:22 data/units/Merman_Lord.cfg:21
-#: data/units/Merman_Triton.cfg:21 data/units/Merman_Triton.cfg:33
+#: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Lord.cfg:21
+#: data/units/Merman_Triton.cfg:22 data/units/Merman_Triton.cfg:34
 #: data/units/Merman_Warrior.cfg:22 data/units/Naga.cfg:20
-#: data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
+#: data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:22
 msgid "trident"
 msgstr "трезубец"
 
@@ -4751,7 +4780,7 @@ msgstr "Водяной боец"
 msgid "Merman Hoplite"
 msgstr ""
 
-#: data/units/Merman_Hoplite.cfg:19
+#: data/units/Merman_Hoplite.cfg:32
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm.  Their powerful armor and rigid discipline allow them to hold "
@@ -4779,7 +4808,7 @@ msgstr "Водяной копьеносец"
 msgid "Merman Triton"
 msgstr "Водяной тритон"
 
-#: data/units/Merman_Triton.cfg:18 data/units/Triton.cfg:16
+#: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
@@ -5816,7 +5845,7 @@ msgstr "-   Графика и дизайн"
 msgid "+Developers"
 msgstr "+Программисты"
 
-#: src/about.cpp:67
+#: src/about.cpp:68
 msgid "+General Purpose Administrators"
 msgstr "+Администраторы"
 
@@ -5925,7 +5954,7 @@ msgstr "+Помощники"
 msgid "+ Bots"
 msgstr "+ Боты"
 
-#: src/about.cpp:282 src/help.cpp:2389 src/show_dialog.cpp:492
+#: src/about.cpp:282 src/help.cpp:2564 src/show_dialog.cpp:496
 msgid "Close"
 msgstr "Закрыть"
 
@@ -5949,7 +5978,7 @@ msgstr ""
 msgid "none"
 msgstr "нет"
 
-#: src/actions.cpp:323 src/actions.cpp:441
+#: src/actions.cpp:323 src/actions.cpp:442
 msgid "base damage"
 msgstr "базовое повреждение"
 
@@ -5961,61 +5990,61 @@ msgstr "атакующий сопротивляется"
 msgid "attacker vulnerability vs"
 msgstr "атакующий уязвим против"
 
-#: src/actions.cpp:365 src/actions.cpp:484 src/actions.cpp:493
+#: src/actions.cpp:366 src/actions.cpp:486 src/actions.cpp:495
 msgid "Doubled"
 msgstr "Удвоен"
 
-#: src/actions.cpp:393 src/actions.cpp:529
+#: src/actions.cpp:394 src/actions.cpp:531
 msgid "total damage"
 msgstr "всего повреждений"
 
-#: src/actions.cpp:451
+#: src/actions.cpp:452
 msgid "defender resistance vs"
 msgstr "защитник сопротивляется"
 
-#: src/actions.cpp:451
+#: src/actions.cpp:452
 msgid "defender vulnerability vs"
 msgstr "защитник уязвим против"
 
-#: src/actions.cpp:502
+#: src/actions.cpp:504
 msgid "Halved"
 msgstr "Уменьшен вдвое"
 
-#: src/actions.cpp:723 src/actions.cpp:869 src/display.cpp:917
+#: src/actions.cpp:725 src/actions.cpp:871 src/display.cpp:924
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr "отравлен"
 
-#: src/actions.cpp:728 src/actions.cpp:874 src/display.cpp:913
+#: src/actions.cpp:730 src/actions.cpp:876 src/display.cpp:920
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr "замедлен"
 
-#: src/actions.cpp:1746
+#: src/actions.cpp:1748
 msgid "Ambushed!"
 msgstr "Попал в засаду!"
 
-#: src/actions.cpp:1774
+#: src/actions.cpp:1776
 msgid "Friendly unit sighted"
 msgstr "Замечено дружественное соединение!"
 
-#: src/actions.cpp:1776
+#: src/actions.cpp:1778
 msgid "Enemy unit sighted!"
 msgstr "Замечено вражеское соединение!"
 
-#: src/actions.cpp:1781
+#: src/actions.cpp:1783
 msgid "$friends Friendly units sighted"
 msgstr "$friends видим дружественные соединения"
 
-#: src/actions.cpp:1783
+#: src/actions.cpp:1785
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies видим соединения противника!"
 
-#: src/actions.cpp:1787
+#: src/actions.cpp:1789
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Видим соединения! ($friends дружественные, $enemies враждебные)"
 
-#: src/actions.cpp:1808
+#: src/actions.cpp:1804
 msgid "(press $hotkey to continue)"
 msgstr "(нажмите $hotkey для продолжения)"
 
@@ -6043,7 +6072,7 @@ msgstr "Перезаписать?"
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Сохранение уже существует. Перезаписать?"
 
-#: src/dialogs.cpp:209 src/dialogs.cpp:449
+#: src/dialogs.cpp:209 src/dialogs.cpp:441
 msgid "Don't ask me again!"
 msgstr "Больше не спрашивайте меня!"
 
@@ -6051,51 +6080,51 @@ msgstr "Больше не спрашивайте меня!"
 msgid "Do you really want to delete this game?"
 msgstr "Вы действительно хотите удалить эту игру?"
 
-#: src/dialogs.cpp:350
+#: src/dialogs.cpp:342
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:363
+#: src/dialogs.cpp:355
 msgid "#(Invalid)"
 msgstr "#(Неверно)"
 
-#: src/dialogs.cpp:368 src/game.cpp:953
+#: src/dialogs.cpp:360 src/game.cpp:956
 msgid "Campaign"
 msgstr "Кампания"
 
-#: src/dialogs.cpp:370 src/game.cpp:1215
+#: src/dialogs.cpp:362 src/game.cpp:1235
 msgid "Multiplayer"
 msgstr "Сетевая игра"
 
-#: src/dialogs.cpp:372
+#: src/dialogs.cpp:364
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/dialogs.cpp:380
+#: src/dialogs.cpp:372
 msgid "replay"
 msgstr "повтор"
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:143 src/playturn.cpp:1388
+#: src/dialogs.cpp:374 src/multiplayer_lobby.cpp:143 src/playturn.cpp:1379
 msgid "Turn"
 msgstr "Шаг"
 
-#: src/dialogs.cpp:384
+#: src/dialogs.cpp:376
 msgid "Scenario Start"
 msgstr "Начать сценарий"
 
-#: src/dialogs.cpp:387 src/game.cpp:983
+#: src/dialogs.cpp:379 src/game.cpp:986
 msgid "Difficulty"
 msgstr "Сложность"
 
-#: src/dialogs.cpp:389 src/titlescreen.cpp:152
+#: src/dialogs.cpp:381 src/titlescreen.cpp:163
 msgid "Version"
 msgstr "Версия"
 
-#: src/dialogs.cpp:404
+#: src/dialogs.cpp:396
 msgid "No Saved Games"
 msgstr "Нет сохранённых игр"
 
-#: src/dialogs.cpp:405
+#: src/dialogs.cpp:397
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
@@ -6103,15 +6132,15 @@ msgstr ""
 "Нет сохранённых игр, которые можно загрузить.\n"
 "(Игра автоматически сохраняется после успешного прохождения сценария)"
 
-#: src/dialogs.cpp:424
+#: src/dialogs.cpp:416
 msgid "Delete Save"
 msgstr "Удалить сохранение"
 
-#: src/dialogs.cpp:439
+#: src/dialogs.cpp:431
 msgid "Import Saved Games"
 msgstr "Импортировать сохранённые игры"
 
-#: src/dialogs.cpp:440
+#: src/dialogs.cpp:432
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
@@ -6120,54 +6149,54 @@ msgstr ""
 "Ваша директория с сохранениями содержит файлы из устаревшей версии игры "
 "Битва за Веснот. Вы хотите обновить файлы? Это может занять некоторое время."
 
-#: src/dialogs.cpp:445
+#: src/dialogs.cpp:437
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
 
-#: src/dialogs.cpp:515
+#: src/dialogs.cpp:507
 msgid "Show replay"
 msgstr "Показать повтор"
 
-#: src/dialogs.cpp:518 src/multiplayer.cpp:81
+#: src/dialogs.cpp:510 src/multiplayer.cpp:81
 msgid "Load Game"
 msgstr "Загрузить игру"
 
-#: src/dialogs.cpp:519
+#: src/dialogs.cpp:511
 msgid "Choose the game to load"
 msgstr "Выберите игру, которую Вы хотите загрузить"
 
-#: src/dialogs.cpp:556 src/dialogs.cpp:565
+#: src/dialogs.cpp:546 src/dialogs.cpp:557
 msgid "Profile"
 msgstr "Справка"
 
-#: src/dialogs.cpp:652 src/display.cpp:923 src/help.cpp:584
-#: src/playturn.cpp:1797
+#: src/dialogs.cpp:637 src/display.cpp:930 src/help.cpp:1014
+#: src/playturn.cpp:1788
 msgid "level"
 msgstr "уровень"
 
-#: src/dialogs.cpp:690 src/display.cpp:957 src/help.cpp:630
-#: src/playturn.cpp:1962 src/unit.cpp:1066
+#: src/dialogs.cpp:675 src/display.cpp:964 src/help.cpp:1060
+#: src/playturn.cpp:1953 src/unit.cpp:1077
 msgid "Moves"
 msgstr "Ходы"
 
-#: src/dialogs.cpp:705 src/display.cpp:974 src/help.cpp:698
+#: src/dialogs.cpp:690 src/display.cpp:981 src/help.cpp:1129
 #: src/playturn.cpp:598 src/reports.cpp:230
 msgid "melee"
 msgstr "схватка"
 
-#: src/dialogs.cpp:705 src/display.cpp:975 src/help.cpp:698
+#: src/dialogs.cpp:690 src/display.cpp:982 src/help.cpp:1129
 #: src/playturn.cpp:598 src/reports.cpp:231
 msgid "ranged"
 msgstr "колебание"
 
-#: src/display.cpp:904
+#: src/display.cpp:911
 msgid "healthy"
 msgstr "здоровый"
 
-#: src/display.cpp:909 src/reports.cpp:105
+#: src/display.cpp:916 src/reports.cpp:105
 msgid "invisible"
 msgstr "невидимый"
 
@@ -6179,11 +6208,11 @@ msgstr "Bepa-Roman.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Вы действительно хотите записать повтор сценария?"
 
-#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1397
+#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1388
 msgid "Name:"
 msgstr "Название:"
 
-#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1414
+#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1405
 msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
@@ -6191,11 +6220,11 @@ msgstr "Игра не может быть сохранена"
 msgid "Do you want to save your game?"
 msgstr "Вы действительно хотите сохранить игру?"
 
-#: src/game.cpp:612
+#: src/game.cpp:620
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
-#: src/game.cpp:813 src/multiplayer_connect.cpp:100
+#: src/game.cpp:816 src/multiplayer_connect.cpp:101
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6203,293 +6232,298 @@ msgstr ""
 "Данное сохранение из другой версии игры. Вы хотите попробовать загрузить "
 "данное сохранение?"
 
-#: src/game.cpp:825 src/game.cpp:830 src/playlevel.cpp:558
-#: src/playlevel.cpp:800
+#: src/game.cpp:828 src/game.cpp:833 src/playlevel.cpp:558
+#: src/playlevel.cpp:810
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, повреждён"
 
-#: src/game.cpp:834
+#: src/game.cpp:837
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game.cpp:943
+#: src/game.cpp:946
 msgid " ,Get More Campaigns..."
 msgstr ", Другие кампании..."
 
-#: src/game.cpp:944
+#: src/game.cpp:947
 msgid "Download more campaigns from a server on Internet."
 msgstr "Загрузить другие кампании из Интернета."
 
-#: src/game.cpp:954
+#: src/game.cpp:957
 msgid "Choose the campaign you want to play:"
 msgstr "Выберите кампанию, в которую Вы хотите сыграть:"
 
-#: src/game.cpp:984
+#: src/game.cpp:987
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
 
-#: src/game.cpp:1003
+#: src/game.cpp:1006
 msgid "Connect to Server"
 msgstr "Подключиться к серверу"
 
-#: src/game.cpp:1004
+#: src/game.cpp:1007
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Вы должны подключиться к серверу чтобы скачать кампании."
 
-#: src/game.cpp:1005
+#: src/game.cpp:1008
 msgid "Server: "
 msgstr "Сервер:"
 
-#: src/game.cpp:1017
+#: src/game.cpp:1020
 msgid "Could not connect to host."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1017 src/game.cpp:1032 src/game.cpp:1038 src/game.cpp:1071
-#: src/game.cpp:1100 src/game.cpp:1114 src/game.cpp:1116 src/game.cpp:1118
-#: src/game.cpp:1130 src/game.cpp:1133 src/game.cpp:1168 src/game.cpp:1170
-#: src/game.cpp:1192 src/game.cpp:1194 src/playturn.cpp:1400
-#: src/playturn.cpp:1414
+#: src/game.cpp:1020 src/game.cpp:1035 src/game.cpp:1041 src/game.cpp:1091
+#: src/game.cpp:1120 src/game.cpp:1134 src/game.cpp:1136 src/game.cpp:1138
+#: src/game.cpp:1150 src/game.cpp:1153 src/game.cpp:1188 src/game.cpp:1190
+#: src/game.cpp:1212 src/game.cpp:1214 src/playturn.cpp:1391
+#: src/playturn.cpp:1405
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/game.cpp:1025
+#: src/game.cpp:1028
 msgid "Awaiting response from server"
 msgstr "Ждём ответа от сервера"
 
-#: src/game.cpp:1038
+#: src/game.cpp:1041
 msgid "Error communicating with the server."
 msgstr "Ошибка при подключении к серверу."
 
-#: src/game.cpp:1043
-msgid ",Name,Version,Author,Downloads"
+#: src/game.cpp:1046
+#, fuzzy
+msgid ",Name,Version,Author,Downloads,Size"
 msgstr ",Название,Версия,Автор,Загрузок"
 
-#: src/game.cpp:1063
+#: src/game.cpp:1065
+msgid "B"
+msgstr ""
+
+#: src/game.cpp:1068 src/show_dialog.cpp:946
+msgid "KB"
+msgstr ""
+
+#: src/game.cpp:1071
+msgid "MB"
+msgstr ""
+
+#: src/game.cpp:1083
 msgid "Publish campaign: "
 msgstr "Опубликовать кампанию:"
 
-#: src/game.cpp:1067
+#: src/game.cpp:1087
 msgid "Delete campaign: "
 msgstr "Удалить кампанию:"
 
-#: src/game.cpp:1071
+#: src/game.cpp:1091
 msgid "There are no campaigns available for download from this server."
 msgstr "На этом сервере нет доступных для загрузки кампаний."
 
-#: src/game.cpp:1075
+#: src/game.cpp:1095
 msgid "Choose the campaign to download."
 msgstr "Выберите кампанию для загрузки."
 
-#: src/game.cpp:1075
+#: src/game.cpp:1095
 msgid "Get Campaign"
 msgstr "Загрузить кампанию"
 
-#: src/game.cpp:1094
+#: src/game.cpp:1114
 msgid "Downloading campaign..."
 msgstr "Загружаем кампанию..."
 
-#: src/game.cpp:1112
+#: src/game.cpp:1132
 msgid "Campaign Installed"
 msgstr "Установленные кампании"
 
-#: src/game.cpp:1112
+#: src/game.cpp:1132
 msgid "The campaign has been installed."
 msgstr "Кампания успешно установлена."
 
-#: src/game.cpp:1114
+#: src/game.cpp:1134
 msgid "Network communication error."
 msgstr "Ошибка при соединение к серверу."
 
-#: src/game.cpp:1116
+#: src/game.cpp:1136
 msgid "Remote host disconnected."
 msgstr "Не могу подключиться к серверу."
 
-#: src/game.cpp:1118
+#: src/game.cpp:1138
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Возникла проблема с созданием файлов, необходимых для полной установки "
 "кампании."
 
-#: src/game.cpp:1130 src/game.cpp:1168 src/game.cpp:1192
-#: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:319
+#: src/game.cpp:1150 src/game.cpp:1188 src/game.cpp:1212
+#: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:316
 msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
-#: src/game.cpp:1133 src/game.cpp:1170 src/game.cpp:1194
+#: src/game.cpp:1153 src/game.cpp:1190 src/game.cpp:1214
 msgid "The server responded with an error: \""
 msgstr "Сервер ответил с ошибкой: \""
 
-#: src/game.cpp:1136
+#: src/game.cpp:1156
 msgid "Terms"
 msgstr "Условия"
 
-#: src/game.cpp:1172 src/game.cpp:1196
+#: src/game.cpp:1192 src/game.cpp:1216
 msgid "Response"
 msgstr "Ответ"
 
-#: src/game.cpp:1208
+#: src/game.cpp:1228
 msgid "Join Official Server"
 msgstr "Подключиться к официальному серверу"
 
-#: src/game.cpp:1208
+#: src/game.cpp:1228
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Войти на официальный игровой сервер Веснот"
 
-#: src/game.cpp:1209 src/multiplayer_lobby.cpp:161
+#: src/game.cpp:1229 src/multiplayer_lobby.cpp:161
 msgid "Join Game"
 msgstr "Подключиться к игре"
 
-#: src/game.cpp:1209
+#: src/game.cpp:1229
 msgid "Join a server or hosted game"
 msgstr "Подключиться к серверу или игре"
 
-#: src/game.cpp:1210
+#: src/game.cpp:1230
 msgid "Host Networked Game"
 msgstr "Создать игру"
 
-#: src/game.cpp:1210
+#: src/game.cpp:1230
 msgid "Host a game without using a server"
 msgstr "Создать локальную игру"
 
-#: src/game.cpp:1211
+#: src/game.cpp:1231
 msgid "Hotseat Game"
 msgstr "Сетвеая игра"
 
-#: src/game.cpp:1211
+#: src/game.cpp:1231
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Играть в сетевую игру на этой же машине"
 
-#: src/game.cpp:1212
+#: src/game.cpp:1232
 msgid "Human vs AI"
 msgstr "Человек против Компьютера"
 
-#: src/game.cpp:1212
+#: src/game.cpp:1232
 msgid "Play a game against AI opponents"
 msgstr "Игра против компьютера"
 
-#: src/game.cpp:1215 src/multiplayer_client.cpp:303
+#: src/game.cpp:1235 src/multiplayer_client.cpp:300
 msgid "Login"
 msgstr "Логин"
 
-#: src/game.cpp:1296
+#: src/game.cpp:1316
 msgid "Language"
 msgstr "Язык"
 
-#: src/game.cpp:1297
+#: src/game.cpp:1317
 msgid "Choose your preferred language"
 msgstr "Выберите предпочтительный язык"
 
-#: src/game.cpp:1547
-msgid "Could not initialize video. Exiting.\n"
-msgstr "Не могу определить видео режим. Выходим.\n"
-
-#: src/game.cpp:1549
-msgid "Could not initialize fonts. Exiting.\n"
-msgstr "Не могу определить шрифт. Выходим.\n"
-
-#: src/help.cpp:591
+#: src/help.cpp:1021
 msgid "Advances to"
 msgstr "Улучшение"
 
-#: src/help.cpp:631
+#: src/help.cpp:1061
 msgid "Alignment"
 msgstr "Тип"
 
-#: src/help.cpp:635
+#: src/help.cpp:1065
 msgid "Required XP"
 msgstr "Необходимый ОП"
 
-#: src/help.cpp:645 src/reports.cpp:233
+#: src/help.cpp:1076 src/reports.cpp:233
 msgid "attacks"
 msgstr "Атака"
 
-#: src/help.cpp:653 src/help.cpp:654 src/playturn.cpp:1959
+#: src/help.cpp:1083 src/help.cpp:1084 src/playturn.cpp:1950
 msgid "Name"
 msgstr "Название"
 
-#: src/help.cpp:657 src/help.cpp:658 src/playturn.cpp:1958
+#: src/help.cpp:1087 src/help.cpp:1088 src/playturn.cpp:1949
 msgid "Type"
 msgstr "Тип"
 
-#: src/help.cpp:661 src/help.cpp:662 src/unit_types.cpp:302
+#: src/help.cpp:1091 src/help.cpp:1092 src/unit_types.cpp:302
 msgid "Dmg"
 msgstr "Урон"
 
-#: src/help.cpp:665 src/help.cpp:666
+#: src/help.cpp:1095 src/help.cpp:1096
 msgid "Strikes"
 msgstr "Атака"
 
-#: src/help.cpp:669 src/help.cpp:670
+#: src/help.cpp:1099 src/help.cpp:1100
 msgid "Range"
 msgstr "Область"
 
-#: src/help.cpp:673 src/help.cpp:674
+#: src/help.cpp:1103 src/help.cpp:1104
 msgid "Special"
 msgstr "Специальное"
 
-#: src/help.cpp:719
+#: src/help.cpp:1149
 msgid "Resistances"
 msgstr "Сопротивление"
 
-#: src/help.cpp:723 src/help.cpp:724
+#: src/help.cpp:1153 src/help.cpp:1154
 msgid "Attack Type"
 msgstr "Тип атаки"
 
-#: src/help.cpp:727 src/help.cpp:728
+#: src/help.cpp:1157 src/help.cpp:1158
 msgid "Resistance"
 msgstr "Сопротивление"
 
-#: src/help.cpp:756
+#: src/help.cpp:1185
 msgid "Terrain Modifiers"
 msgstr "Тип местности"
 
-#: src/help.cpp:760 src/help.cpp:761
+#: src/help.cpp:1189 src/help.cpp:1190
 msgid "Terrain"
 msgstr "Местность"
 
-#: src/help.cpp:768 src/help.cpp:769
+#: src/help.cpp:1197 src/help.cpp:1198
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help.cpp:869
+#: src/help.cpp:1296
 msgid "or"
 msgstr "или"
 
-#: src/help.cpp:876
+#: src/help.cpp:1303
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 
-#: src/help.cpp:878
+#: src/help.cpp:1305
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr ""
 
-#: src/help.cpp:882
+#: src/help.cpp:1309
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
 
-#: src/help.cpp:884
+#: src/help.cpp:1311
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
 
-#: src/help.cpp:886
+#: src/help.cpp:1313
 #, fuzzy
 msgid "This terrain gives healing."
 msgstr "Эта местность исцеляет"
 
-#: src/help.cpp:1893
+#: src/help.cpp:2105
 msgid "< Back"
 msgstr "< Вернуться"
 
-#: src/help.cpp:1894
+#: src/help.cpp:2106
 msgid "Forward >"
 msgstr "Вперёд >"
 
-#: src/help.cpp:2392
+#: src/help.cpp:2567
 msgid "The Battle for Wesnoth Help"
 msgstr "Помощь по игре Бой за Веснот"
 
@@ -6517,7 +6551,7 @@ msgstr "Закрыть окно"
 msgid "Map Generator"
 msgstr "Генератор карты"
 
-#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:491
+#: src/mapgen_dialog.cpp:80 src/multiplayer.cpp:498
 msgid "Players"
 msgstr "Игроки"
 
@@ -6537,7 +6571,7 @@ msgstr "Повторения"
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:85 src/playturn.cpp:1536
+#: src/mapgen_dialog.cpp:85 src/playturn.cpp:1527
 msgid "Villages"
 msgstr "Деревни"
 
@@ -6545,131 +6579,131 @@ msgstr "Деревни"
 msgid "Landform"
 msgstr "Форма земли"
 
-#: src/mapgen_dialog.cpp:185
+#: src/mapgen_dialog.cpp:192
 msgid "Roads Between Castles"
 msgstr "Дороги между замками"
 
-#: src/mapgen_dialog.cpp:248
+#: src/mapgen_dialog.cpp:249
 msgid "/1000 tiles"
 msgstr "/1000 квадратов"
 
-#: src/mapgen_dialog.cpp:253
+#: src/mapgen_dialog.cpp:254
 msgid "Coastal"
 msgstr "Береговой"
 
-#: src/mapgen_dialog.cpp:253
+#: src/mapgen_dialog.cpp:254
 msgid "Inland"
 msgstr "Внутренний"
 
-#: src/mapgen_dialog.cpp:253
+#: src/mapgen_dialog.cpp:254
 msgid "Island"
 msgstr "Остров"
 
-#: src/multiplayer.cpp:93
+#: src/multiplayer.cpp:91
 msgid "The maximum turns the game will go for"
 msgstr "Максимальное количество ходов в игре"
 
-#: src/multiplayer.cpp:99
+#: src/multiplayer.cpp:97
 msgid "The amount of income each village yields per turn"
 msgstr "Доход, получаемый от каждой деревни за один ход"
 
-#: src/multiplayer.cpp:106
+#: src/multiplayer.cpp:104
 msgid "The amount of experience a unit needs to advance"
 msgstr "Количество опыта, необходимого для улучшения соединения"
 
-#: src/multiplayer.cpp:108
+#: src/multiplayer.cpp:106
 msgid "Fog Of War"
 msgstr "Дым войны"
 
-#: src/multiplayer.cpp:110
+#: src/multiplayer.cpp:108
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Вы не можете видеть соединения противника пока они не окажутся в поле зрения "
 "Ваших соединений"
 
-#: src/multiplayer.cpp:114
+#: src/multiplayer.cpp:112
 msgid "The map is unknown until your units explore it"
 msgstr "Карта неизвестна, пока Ваши соединения не исследуют её"
 
-#: src/multiplayer.cpp:116 src/reports.cpp:375
+#: src/multiplayer.cpp:114 src/reports.cpp:375
 msgid "Observers"
 msgstr "Наблюдатели"
 
-#: src/multiplayer.cpp:118
+#: src/multiplayer.cpp:116
 msgid "Allow users who are not playing to watch the game"
 msgstr "Разрешить наблюдать за игрой"
 
-#: src/multiplayer.cpp:120 src/multiplayer_client.cpp:148
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:480
-#: src/show_dialog.cpp:486
+#: src/multiplayer.cpp:118 src/multiplayer_client.cpp:148
+#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:484
+#: src/show_dialog.cpp:490
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/multiplayer.cpp:121 src/show_dialog.cpp:466 src/show_dialog.cpp:479
+#: src/multiplayer.cpp:119 src/show_dialog.cpp:470 src/show_dialog.cpp:483
 msgid "Ok"
 msgstr "Ok"
 
-#: src/multiplayer.cpp:123
+#: src/multiplayer.cpp:121
 msgid "Regenerate"
 msgstr "Регенерировать"
 
-#: src/multiplayer.cpp:125
+#: src/multiplayer.cpp:123
 msgid "Settings..."
 msgstr "Настройки..."
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:127
 msgid "Share View"
 msgstr ""
 
-#: src/multiplayer.cpp:130
+#: src/multiplayer.cpp:128
 msgid "Share Maps"
 msgstr ""
 
-#: src/multiplayer.cpp:131
+#: src/multiplayer.cpp:129
 msgid "Share None"
 msgstr ""
 
-#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:178
+#: src/multiplayer.cpp:140 src/multiplayer_connect.cpp:179
 msgid "No multiplayer sides."
 msgstr "Нет сетевых игроков."
 
-#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:162
+#: src/multiplayer.cpp:168 src/multiplayer_lobby.cpp:162
 msgid "Create Game"
 msgstr "Создать игру"
 
-#: src/multiplayer.cpp:174
+#: src/multiplayer.cpp:172
 msgid "Name of game"
 msgstr "Название игры"
 
-#: src/multiplayer.cpp:178
+#: src/multiplayer.cpp:176
 msgid "$login's game"
 msgstr "Игра $login"
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:187
 msgid "Map to play"
 msgstr "Карта для игры"
 
-#: src/multiplayer.cpp:289
+#: src/multiplayer.cpp:282
 msgid "Era"
 msgstr "Эра"
 
-#: src/multiplayer.cpp:351
+#: src/multiplayer.cpp:358
 msgid "Unlimited"
 msgstr "Неограничено"
 
-#: src/multiplayer.cpp:355
+#: src/multiplayer.cpp:362
 msgid "Turns"
 msgstr "Ходы"
 
-#: src/multiplayer.cpp:363
+#: src/multiplayer.cpp:370
 msgid "Village Gold"
 msgstr "Золота в деревнях"
 
-#: src/multiplayer.cpp:375
+#: src/multiplayer.cpp:382
 msgid "Experience Requirements"
 msgstr "Необходимый опыт"
 
-#: src/multiplayer.cpp:507
+#: src/multiplayer.cpp:514
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
@@ -6677,7 +6711,7 @@ msgstr ""
 "Игра не может открыть порт, необходимый для создания сервера для игры. "
 "Сетевые игроки не смогут подключиться к этой игре."
 
-#: src/multiplayer.cpp:507
+#: src/multiplayer.cpp:514
 msgid "Warning"
 msgstr "Внимание"
 
@@ -6685,9 +6719,9 @@ msgstr "Внимание"
 msgid "Receiving game list..."
 msgstr "Получаем список игр..."
 
-#: src/multiplayer_client.cpp:124 src/multiplayer_connect.cpp:386
-#: src/multiplayer_connect.cpp:388 src/playlevel.cpp:780 src/playturn.cpp:1535
-#: src/playturn.cpp:1540 src/playturn.cpp:1627
+#: src/multiplayer_client.cpp:124 src/multiplayer_connect.cpp:388
+#: src/multiplayer_connect.cpp:390 src/playlevel.cpp:790 src/playturn.cpp:1526
+#: src/playturn.cpp:1531 src/playturn.cpp:1618
 msgid "Gold"
 msgstr "Золото"
 
@@ -6695,55 +6729,55 @@ msgstr "Золото"
 msgid "Waiting for game to start..."
 msgstr "Ждём начала игры..."
 
-#: src/multiplayer_client.cpp:253
+#: src/multiplayer_client.cpp:250
 msgid "Connect to Host"
 msgstr "Подключиться к серверу"
 
-#: src/multiplayer_client.cpp:255
+#: src/multiplayer_client.cpp:252
 msgid "Choose host to connect to"
 msgstr "Выберите сервер для подключения"
 
-#: src/multiplayer_client.cpp:273
+#: src/multiplayer_client.cpp:270
 msgid "Connecting to remote host..."
 msgstr "Подключение к удалённому серверу..."
 
-#: src/multiplayer_client.cpp:302
+#: src/multiplayer_client.cpp:299
 msgid "You must log in to this server"
 msgstr "Вы должны подключиться к данному серверу"
 
-#: src/multiplayer_client.cpp:382
+#: src/multiplayer_client.cpp:379
 msgid "Getting game data..."
 msgstr "Получаем данные игры..."
 
-#: src/multiplayer_client.cpp:434
+#: src/multiplayer_client.cpp:431
 msgid "There are no available sides in this game."
 msgstr "Нет доступных сторон в этой игре."
 
-#: src/multiplayer_client.cpp:482
+#: src/multiplayer_client.cpp:479
 msgid "Choose your side:"
 msgstr "Выберите сторону:"
 
-#: src/multiplayer_client.cpp:513
+#: src/multiplayer_client.cpp:510
 msgid "The game has been cancelled"
 msgstr "Игра была отменена"
 
-#: src/multiplayer_client.cpp:517
+#: src/multiplayer_client.cpp:514
 msgid "The side you have chosen is no longer available"
 msgstr "Сторона, которую Вы выбрали, более не доступна."
 
-#: src/multiplayer_client.cpp:553
+#: src/multiplayer_client.cpp:550
 msgid "Show replay of game up to save point?"
 msgstr "Показать повтор игры до точки сохранения?"
 
-#: src/multiplayer_client.cpp:688 src/multiplayer_client.cpp:691
+#: src/multiplayer_client.cpp:685 src/multiplayer_client.cpp:688
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:782
+#: src/multiplayer_client.cpp:772
 msgid "Leader: "
 msgstr "Лидер:"
 
-#: src/multiplayer_client.cpp:784
+#: src/multiplayer_client.cpp:774
 msgid "Recruits: "
 msgstr "Новобранцы:"
 
@@ -6755,11 +6789,11 @@ msgstr "Компьютер с Компьютером"
 msgid "I'm Ready"
 msgstr "Я готов"
 
-#: src/multiplayer_connect.cpp:93
+#: src/multiplayer_connect.cpp:94
 msgid "This is not a multiplayer save"
 msgstr "Это не сетевое сохранение."
 
-#: src/multiplayer_connect.cpp:243
+#: src/multiplayer_connect.cpp:244
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -6767,81 +6801,81 @@ msgstr ""
 "Условие победы\n"
 "@Убейте лидера(ов) противника"
 
-#: src/multiplayer_connect.cpp:263
+#: src/multiplayer_connect.cpp:264
 msgid "Network Player"
 msgstr "Сетевая игра"
 
-#: src/multiplayer_connect.cpp:264
+#: src/multiplayer_connect.cpp:265
 msgid "Local Player"
 msgstr "Локальная игра"
 
-#: src/multiplayer_connect.cpp:265 src/multiplayer_connect.cpp:496
-#: src/multiplayer_connect.cpp:610 src/multiplayer_connect.cpp:716
+#: src/multiplayer_connect.cpp:266 src/multiplayer_connect.cpp:530
+#: src/multiplayer_connect.cpp:624 src/multiplayer_connect.cpp:723
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:267
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/multiplayer_connect.cpp:293 src/multiplayer_connect.cpp:376
-#: src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:294 src/multiplayer_connect.cpp:378
+#: src/multiplayer_connect.cpp:381
 msgid "Team"
 msgstr "Команда"
 
-#: src/multiplayer_connect.cpp:304
+#: src/multiplayer_connect.cpp:305
 msgid "Red"
 msgstr "Красный"
 
-#: src/multiplayer_connect.cpp:306
+#: src/multiplayer_connect.cpp:307
 msgid "Blue"
 msgstr "Синий"
 
-#: src/multiplayer_connect.cpp:308
+#: src/multiplayer_connect.cpp:309
 msgid "Green"
 msgstr "Зелёный"
 
-#: src/multiplayer_connect.cpp:310
+#: src/multiplayer_connect.cpp:311
 msgid "Yellow"
 msgstr "Жёлтый"
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:313
 msgid "Purple"
 msgstr "Фиолетовый"
 
-#: src/multiplayer_connect.cpp:314
+#: src/multiplayer_connect.cpp:315
 msgid "Orange"
 msgstr "Оранжевый"
 
-#: src/multiplayer_connect.cpp:316
+#: src/multiplayer_connect.cpp:317
 msgid "Grey"
 msgstr "Серый"
 
-#: src/multiplayer_connect.cpp:318
+#: src/multiplayer_connect.cpp:319
 msgid "White"
 msgstr "Белый"
 
-#: src/multiplayer_connect.cpp:320
+#: src/multiplayer_connect.cpp:321
 msgid "Brown"
 msgstr "Коричневый"
 
-#: src/multiplayer_connect.cpp:365
+#: src/multiplayer_connect.cpp:367
 msgid "Game Lobby"
 msgstr "Холл игры:"
 
-#: src/multiplayer_connect.cpp:368 src/multiplayer_connect.cpp:370
+#: src/multiplayer_connect.cpp:370 src/multiplayer_connect.cpp:372
 msgid "Player/Type"
 msgstr "Игрок/Тип"
 
-#: src/multiplayer_connect.cpp:371 src/multiplayer_connect.cpp:374
+#: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
 msgid "Faction"
 msgstr "Команда"
 
-#: src/multiplayer_connect.cpp:381 src/multiplayer_connect.cpp:384
+#: src/multiplayer_connect.cpp:383 src/multiplayer_connect.cpp:386
 msgid "Color"
 msgstr "Цвет"
 
-#: src/multiplayer_connect.cpp:559 src/multiplayer_connect.cpp:563
+#: src/multiplayer_connect.cpp:583
 msgid "Waiting for network players to join"
 msgstr "Ждём подключения сетевых игроков"
 
@@ -6873,52 +6907,52 @@ msgstr "Игра завершена"
 msgid "The game is over."
 msgstr "Игра завершена."
 
-#: src/playlevel.cpp:713
+#: src/playlevel.cpp:723
 msgid "Defeat"
 msgstr "Поражение"
 
-#: src/playlevel.cpp:714
+#: src/playlevel.cpp:724
 msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
-#: src/playlevel.cpp:770
+#: src/playlevel.cpp:780
 msgid "Remaining gold"
 msgstr "Остаток золота"
 
-#: src/playlevel.cpp:773
+#: src/playlevel.cpp:783
 msgid "Early finish bonus"
 msgstr "Бонус за быстрый финиш"
 
-#: src/playlevel.cpp:775
+#: src/playlevel.cpp:785
 msgid "per turn"
 msgstr "за ход"
 
-#: src/playlevel.cpp:776
+#: src/playlevel.cpp:786
 msgid "Turns finished early"
 msgstr "Количество шагов"
 
-#: src/playlevel.cpp:778
+#: src/playlevel.cpp:788
 msgid "Bonus"
 msgstr "Бонус"
 
-#: src/playlevel.cpp:785
+#: src/playlevel.cpp:795
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% золота сохраняется в следующем сценарии"
 
-#: src/playlevel.cpp:785
+#: src/playlevel.cpp:795
 msgid "Retained Gold"
 msgstr "Сохранённое золото"
 
-#: src/playlevel.cpp:789
+#: src/playlevel.cpp:799
 msgid "Victory"
 msgstr "Победа"
 
-#: src/playlevel.cpp:790
+#: src/playlevel.cpp:800
 msgid "You have emerged victorious!"
 msgstr "Вы выиграли!"
 
-#: src/playlevel.cpp:815
+#: src/playlevel.cpp:825
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6957,31 +6991,31 @@ msgstr "Атаковать противника"
 msgid "Choose weapon"
 msgstr "Выберите оружие"
 
-#: src/playturn.cpp:1126
+#: src/playturn.cpp:1117
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Вы ещё не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
-#: src/playturn.cpp:1135 src/playturn.cpp:1140
+#: src/playturn.cpp:1126 src/playturn.cpp:1131
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Некоторые соединения ещё не сделали ход. Вы действительно хотите завершить "
 "свой ход?"
 
-#: src/playturn.cpp:1156
+#: src/playturn.cpp:1147
 msgid "Auto-Save"
 msgstr "Авто-Сохранение"
 
-#: src/playturn.cpp:1158
+#: src/playturn.cpp:1149
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Авто-сохранение игры невозможно. Сохраните игру вручную."
 
-#: src/playturn.cpp:1352
+#: src/playturn.cpp:1343
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/playturn.cpp:1400
+#: src/playturn.cpp:1391
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -6989,67 +7023,67 @@ msgstr ""
 "Сохранение не должно содержать двоеточий, слэшей и обратных слэшей. Выберите "
 "другое имя."
 
-#: src/playturn.cpp:1411
+#: src/playturn.cpp:1402
 msgid "Saved"
 msgstr "Сохранено"
 
-#: src/playturn.cpp:1411
+#: src/playturn.cpp:1402
 msgid "The game has been saved"
 msgstr "Игра успешно сохранена"
 
-#: src/playturn.cpp:1535
+#: src/playturn.cpp:1526
 msgid "Leader"
 msgstr "Лидер"
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1528
 msgid "Income"
 msgstr "Доход"
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1528
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/playturn.cpp:1633
+#: src/playturn.cpp:1624
 msgid "You have no units available to recruit."
 msgstr "Нет соединений для покупки."
 
-#: src/playturn.cpp:1645
+#: src/playturn.cpp:1636
 msgid "Recruit"
 msgstr "Призвать новобранца"
 
-#: src/playturn.cpp:1646 src/playturn.cpp:1825
+#: src/playturn.cpp:1637 src/playturn.cpp:1816
 msgid "Select unit"
 msgstr "Выберите соединение"
 
-#: src/playturn.cpp:1675
+#: src/playturn.cpp:1666
 msgid "You don't have enough gold to recruit that unit"
 msgstr "У Вас недостаточно золота для покупки данного соединения"
 
-#: src/playturn.cpp:1733
+#: src/playturn.cpp:1724
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1735
+#: src/playturn.cpp:1726
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1740
+#: src/playturn.cpp:1731
 msgid "her"
 msgstr "её"
 
-#: src/playturn.cpp:1740
+#: src/playturn.cpp:1731
 msgid "him"
 msgstr "его"
 
-#: src/playturn.cpp:1781
+#: src/playturn.cpp:1772
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Вы изолированы от Ваших солдат и не можете воскресить их"
 
-#: src/playturn.cpp:1783
+#: src/playturn.cpp:1774
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7057,100 +7091,100 @@ msgstr ""
 "Нет соединений для воскрешения\n"
 "(У Вас должны быть уцелевшие с прошлого сценария соединения)"
 
-#: src/playturn.cpp:1789
+#: src/playturn.cpp:1780
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 "У Вас должно быть по крайней мере $cost единиц золота для покупки соединения"
 
-#: src/playturn.cpp:1812
+#: src/playturn.cpp:1803
 msgid "Dismiss Unit"
 msgstr "Распустить соединение"
 
-#: src/playturn.cpp:1824
+#: src/playturn.cpp:1815
 msgid "Recall"
 msgstr "Воскресить"
 
-#: src/playturn.cpp:1869
+#: src/playturn.cpp:1860
 msgid "Message"
 msgstr "Сообщение"
 
-#: src/playturn.cpp:1869
+#: src/playturn.cpp:1860
 msgid "Send to allies only"
 msgstr "Отправить только союзникам"
 
-#: src/playturn.cpp:1963
+#: src/playturn.cpp:1954
 msgid "Location"
 msgstr "Позиция"
 
-#: src/playturn.cpp:2011
+#: src/playturn.cpp:2002
 msgid "Unit List"
 msgstr "Список соединений"
 
-#: src/playturn.cpp:2045 src/playturn.cpp:2107
+#: src/playturn.cpp:2036 src/playturn.cpp:2098
 msgid "Recruits"
 msgstr "Призванные"
 
-#: src/playturn.cpp:2051 src/playturn.cpp:2111
+#: src/playturn.cpp:2042 src/playturn.cpp:2102
 msgid "Recalls"
 msgstr "Воскрешённые"
 
-#: src/playturn.cpp:2057 src/playturn.cpp:2115
+#: src/playturn.cpp:2048 src/playturn.cpp:2106
 msgid "Advancements"
 msgstr "Прогресс"
 
-#: src/playturn.cpp:2063 src/playturn.cpp:2119
+#: src/playturn.cpp:2054 src/playturn.cpp:2110
 msgid "Losses"
 msgstr "Потери"
 
-#: src/playturn.cpp:2069 src/playturn.cpp:2123
+#: src/playturn.cpp:2060 src/playturn.cpp:2114
 msgid "Kills"
 msgstr "Убийства"
 
-#: src/playturn.cpp:2075
+#: src/playturn.cpp:2066
 msgid "Damage Inflicted"
 msgstr "Нанесли ущерба"
 
-#: src/playturn.cpp:2081
+#: src/playturn.cpp:2072
 msgid "Damage Taken"
 msgstr "Получили ущебра"
 
-#: src/playturn.cpp:2087
+#: src/playturn.cpp:2078
 msgid "Damage Inflicted (EV)"
 msgstr "Нанесено урона (В среднем)"
 
-#: src/playturn.cpp:2094
+#: src/playturn.cpp:2085
 msgid "Damage Taken (EV)"
 msgstr "Получено ущерба (В среднем)"
 
-#: src/playturn.cpp:2100
+#: src/playturn.cpp:2091
 msgid "Statistics"
 msgstr "Статистика"
 
-#: src/playturn.cpp:2137
+#: src/playturn.cpp:2128
 msgid "Search"
 msgstr "Поиск"
 
-#: src/playturn.cpp:2147
+#: src/playturn.cpp:2138
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/playturn.cpp:2158
+#: src/playturn.cpp:2149
 msgid "Chat Log"
 msgstr "Лог чата"
 
-#: src/playturn.cpp:2223
+#: src/playturn.cpp:2214
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Не могу найти метку или соединение, содержащую текст '$search'."
 
-#: src/playturn.cpp:2300
+#: src/playturn.cpp:2291
 msgid "Place Label"
 msgstr "Поставить метку"
 
-#: src/playturn.cpp:2301
+#: src/playturn.cpp:2292
 msgid "Label"
 msgstr "Метка"
 
-#: src/playturn.cpp:2426
+#: src/playturn.cpp:2424
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -7158,23 +7192,23 @@ msgstr ""
 "Игра не может быть синхронизирована, выходим. Вы хотите сохранить лог ошибок "
 "Вашей игры?"
 
-#: src/playturn.cpp:2478
+#: src/playturn.cpp:2476
 msgid "Replace with AI"
 msgstr "Заменить компьютером"
 
-#: src/playturn.cpp:2479
+#: src/playturn.cpp:2477
 msgid "Replace with local player"
 msgstr "Заменить локальным игроком"
 
-#: src/playturn.cpp:2480
+#: src/playturn.cpp:2478
 msgid "Abort game"
 msgstr "Завершить игру"
 
-#: src/playturn.cpp:2483
+#: src/playturn.cpp:2481
 msgid "Replace with "
 msgstr "Заменить"
 
-#: src/playturn.cpp:2487
+#: src/playturn.cpp:2485
 msgid "has left the game. What do you want to do?"
 msgstr "вышел из игры. Что Вы будете делать?"
 
@@ -7247,82 +7281,78 @@ msgstr "Деревня врага"
 msgid "Allied village"
 msgstr "Союзническая деревня"
 
-#: src/show_dialog.cpp:629
+#: src/show_dialog.cpp:633
 msgid "Help"
 msgstr "Помощь"
 
-#: src/show_dialog.cpp:954
-msgid "KB"
-msgstr ""
-
-#: src/titlescreen.cpp:169
+#: src/titlescreen.cpp:180
 msgid "TitleScreen button^Tutorial"
 msgstr "Обучение"
 
-#: src/titlescreen.cpp:170
+#: src/titlescreen.cpp:181
 msgid "TitleScreen button^Campaign"
 msgstr "Кампания"
 
-#: src/titlescreen.cpp:171
+#: src/titlescreen.cpp:182
 msgid "TitleScreen button^Multiplayer"
 msgstr "Сетевая игра"
 
-#: src/titlescreen.cpp:172
+#: src/titlescreen.cpp:183
 msgid "TitleScreen button^Load"
 msgstr "Загрузить"
 
-#: src/titlescreen.cpp:173
+#: src/titlescreen.cpp:184
 msgid "TitleScreen button^Language"
 msgstr "Язык"
 
-#: src/titlescreen.cpp:174
+#: src/titlescreen.cpp:185
 msgid "TitleScreen button^Preferences"
 msgstr "Настройки"
 
-#: src/titlescreen.cpp:176
+#: src/titlescreen.cpp:187
 msgid "TitleScreen button^Quit"
 msgstr "Выход"
 
-#: src/titlescreen.cpp:177
+#: src/titlescreen.cpp:188
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Начать обучение для знакомства с игрой"
 
-#: src/titlescreen.cpp:178
+#: src/titlescreen.cpp:189
 msgid "Start a new single player campaign"
 msgstr "Начать новую кампанию"
 
-#: src/titlescreen.cpp:179
+#: src/titlescreen.cpp:190
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 "Сетевая игра (локальная сеть либо через интернет) или игра против компьютера"
 
-#: src/titlescreen.cpp:180
+#: src/titlescreen.cpp:191
 msgid "Load a single player saved game"
 msgstr "Загрузить сохранённую локальную игру"
 
-#: src/titlescreen.cpp:181
+#: src/titlescreen.cpp:192
 msgid "Change the language"
 msgstr "Изменить язык игры"
 
-#: src/titlescreen.cpp:182
+#: src/titlescreen.cpp:193
 msgid "Configure the game's settings"
 msgstr "Настройки игры"
 
-#: src/titlescreen.cpp:183
+#: src/titlescreen.cpp:194
 msgid "View the credits"
 msgstr "Авторы игры"
 
-#: src/titlescreen.cpp:184
+#: src/titlescreen.cpp:195
 msgid "Quit the game"
 msgstr "Выйти из игры"
 
-#: src/titlescreen.cpp:212
+#: src/titlescreen.cpp:223
 msgid "More"
 msgstr "Ещё"
 
-#: src/titlescreen.cpp:219
+#: src/titlescreen.cpp:233
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Великая книга Веснота"
 
@@ -7346,9 +7376,24 @@ msgstr "нейтральный"
 msgid "Delete File"
 msgstr "Удалить файл"
 
-#: src/widgets/file_chooser.cpp:173
+#: src/widgets/file_chooser.cpp:157
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
+
+#~ msgid "Next tip"
+#~ msgstr "Следующий совет"
+
+#~ msgid "Tip of the Day"
+#~ msgstr "Совет дня"
+
+#~ msgid "Do not show tips"
+#~ msgstr "Не показывать советы"
+
+#~ msgid "Could not initialize video. Exiting.\n"
+#~ msgstr "Не могу определить видео режим. Выходим.\n"
+
+#~ msgid "Could not initialize fonts. Exiting.\n"
+#~ msgstr "Не могу определить шрифт. Выходим.\n"
 
 #~ msgid "Next unit"
 #~ msgstr "Следующиее соединение"

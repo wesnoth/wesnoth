@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-31 02:17+0200\n"
+"POT-Creation-Date: 2004-11-07 11:45+0100\n"
 "PO-Revision-Date: 2004-09-10 15:28+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -16,235 +16,248 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:42
 msgid "Next unit"
 msgstr "Neste enhet"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:43
 msgid "End Unit Turn"
 msgstr "Avslutt enhetens tur"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:44
 msgid "Leader"
 msgstr "Leder"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:45
 msgid "Undo"
 msgstr "Ta tilbake"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:46
 msgid "Redo"
 msgstr "Gjør om"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:47
 msgid "Zoom In"
 msgstr "Gå nærmere"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:48
 msgid "Zoom Out"
 msgstr "Gå ut"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:49
 msgid "Default Zoom"
 msgstr "Standardoppløsning"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:50
 msgid "Fullscreen"
 msgstr "Full skjerm"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:51
 msgid "Accelerated"
 msgstr "Akselerert"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:52
 msgid "Unit Description"
 msgstr "Enhetsbeskrivelse"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:53
 msgid "Rename Unit"
 msgstr "Gi enheten nytt navn"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:54
 msgid "Save Game"
 msgstr "Lagre spill"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:55
 msgid "Load Game"
 msgstr "Last inn spill"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:56
 msgid "Recruit"
 msgstr "Rekrutter"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:57
 msgid "Repeat Recruit"
 msgstr "Gjenta rekruttering"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:58
 msgid "Recall"
 msgstr "Tilbakekall"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:59
 msgid "End Turn"
 msgstr "Avslutt runde"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:60
 msgid "Toggle Grid"
 msgstr "Rutenett"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:61
 msgid "Status Table"
 msgstr "Statustabell"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:62
 msgid "Mute"
 msgstr "Stum"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:63
 msgid "Speak"
 msgstr "Si"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:64
 msgid "Create Unit (Debug!)"
 msgstr "Lag enhet (Kun for testing!)"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:65
 msgid "Change Unit Side (Debug!)"
 msgstr "Endre enhetens side (Kun for testing!)"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:66 src/preferences.cpp:879
+msgid "Preferences"
+msgstr "Innstillinger"
+
+#: src/hotkeys.cpp:67
 msgid "Scenario Objectives"
 msgstr "Scenariets mål"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:68
 msgid "Unit List"
 msgstr "Liste over enheter"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:69
 msgid "Statistics"
 msgstr "Statistikk"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:70
 msgid "Quit Game"
 msgstr "Avslutt spill"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:71
 msgid "Set Label"
 msgstr "Sett merkelapp"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:72
 msgid "Show Enemy Moves"
 msgstr "Vis fiendens rekkevidde"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:73
 msgid "Best Possible Enemy Moves"
 msgstr "Vis fiendens beste mulige rekkevidde"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:75
+#, fuzzy
+msgid "Set Terrain"
+msgstr "Tegn terreng"
+
+#: src/hotkeys.cpp:76
 msgid "Quit Editor"
 msgstr "Lukk kartbehandler"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:77
 msgid "New Map"
 msgstr "Nytt kart"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:78
 msgid "Load Map"
 msgstr "Last inn kart"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:79
 msgid "Save Map"
 msgstr "Lagre kart"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:80
 msgid "Save As"
 msgstr "Lagre som"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:81
 msgid "Set Player Start Position"
 msgstr "Sett startposisjon for spiller"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:82
 msgid "Flood Fill"
 msgstr "Fyll"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:83
 msgid "Fill Selection"
 msgstr "Fyll valgt"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:84
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:85
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:86
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:87
 msgid "Revert from Disk"
 msgstr ""
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:88
 msgid "Resize Map"
 msgstr "Endre kartets dimensjoner"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:89
 msgid "Flip Map"
 msgstr "Speilvend kart"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:90
 msgid "Select All"
 msgstr "Velg alt/alle"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:91
 msgid "Draw Terrain"
 msgstr "Tegn terreng"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:93
 msgid "Delay Shroud Updates"
 msgstr "Forsink skyggeoppdateringer"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:94
 msgid "Update Shroud Now"
 msgstr "Oppdater skygge nå"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:95
 msgid "Continue Move"
 msgstr "Fortsett forflytning"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:96
 msgid "Find Label or Unit"
 msgstr "Finn merkelapp eller enhet"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:97
 msgid "Speak to Ally"
 msgstr "Snakk med allierte"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:98
 msgid "Speak to All"
 msgstr "Snakk med alle"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:99
 msgid "Help"
 msgstr "Hjelp"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:100
 msgid "View Chat Log"
 msgstr "Se pratelogg"
 
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+#: src/hotkeys.cpp:101
+msgid "Enter user command"
+msgstr ""
+
+#: src/hotkeys.cpp:351 src/hotkeys.cpp:534
 msgid "Do you really want to quit?"
 msgstr "Vil du virkelig avslutte?"
 
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+#: src/hotkeys.cpp:351 src/hotkeys.cpp:534
 msgid "Quit"
 msgstr "Avslutt"
 
-#: src/preferences.cpp:147 src/preferences.cpp:198
+#: src/preferences.cpp:148 src/preferences.cpp:199
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -254,75 +267,75 @@ msgstr ""
 "per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
 "1024x768x16 for å kunne kjøres med full skjerm."
 
-#: src/preferences.cpp:370
+#: src/preferences.cpp:371
 msgid "player"
 msgstr "spiller"
 
-#: src/preferences.cpp:658
+#: src/preferences.cpp:657
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
-#: src/preferences.cpp:659
+#: src/preferences.cpp:658
 msgid "Accelerated Speed"
 msgstr "Akselerert"
 
-#: src/preferences.cpp:660
+#: src/preferences.cpp:659
 msgid "Skip AI Moves"
 msgstr "Ignorer datamaskinens bevegelser"
 
-#: src/preferences.cpp:661
+#: src/preferences.cpp:660
 msgid "Show Grid"
 msgstr "Vis rutenett"
 
-#: src/preferences.cpp:662
+#: src/preferences.cpp:661
 msgid "Show Floating Labels"
 msgstr "Vis flytende merkelapper"
 
-#: src/preferences.cpp:663
+#: src/preferences.cpp:662
 msgid "Turn Dialog"
 msgstr "Dialogboks på ny runde"
 
-#: src/preferences.cpp:664
+#: src/preferences.cpp:663
 msgid "Turn Bell"
 msgstr "Pling på ny runde"
 
-#: src/preferences.cpp:665
+#: src/preferences.cpp:664
 msgid "Show Team Colors"
 msgstr "Vis lagenes farger"
 
-#: src/preferences.cpp:666
+#: src/preferences.cpp:665
 msgid "Show Color Cursors"
 msgstr "Vis fargede pekere"
 
-#: src/preferences.cpp:667
+#: src/preferences.cpp:666
 msgid "Show Haloing Effects"
 msgstr "Vis halo-effekter"
 
-#: src/preferences.cpp:668
+#: src/preferences.cpp:667
 msgid "Video Mode"
 msgstr "Video-modus"
 
-#: src/preferences.cpp:669
+#: src/preferences.cpp:668
 msgid "Hotkeys"
 msgstr "Hurtigtaster"
 
-#: src/preferences.cpp:670
+#: src/preferences.cpp:669
 msgid "Adjust Gamma"
 msgstr "Endre gammanivå"
 
-#: src/preferences.cpp:671
+#: src/preferences.cpp:670
 msgid "Music Volume:"
 msgstr "Musikkvolum:"
 
-#: src/preferences.cpp:671
+#: src/preferences.cpp:670
 msgid "SFX Volume:"
 msgstr "Lydeffektvolum:"
 
-#: src/preferences.cpp:672
+#: src/preferences.cpp:671
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:672
+#: src/preferences.cpp:671
 msgid "Scroll Speed:"
 msgstr "Panoreringsfart:"
 
@@ -392,50 +405,46 @@ msgstr "Bruk spesielle grafikk-effekter (kan sakke spillet)"
 msgid "View and configure keyboard shortcuts"
 msgstr "Se og endre snarveier på tastaturet"
 
-#: src/preferences.cpp:929
+#: src/preferences.cpp:867
 msgid "Prefs section^General"
 msgstr "Allmenne innstillinger"
 
-#: src/preferences.cpp:930
+#: src/preferences.cpp:868
 msgid "Prefs section^Display"
 msgstr "Skjerminnstillinger"
 
-#: src/preferences.cpp:931
+#: src/preferences.cpp:869
 msgid "Prefs section^Sound"
 msgstr "Lydinnstillinger"
 
-#: src/preferences.cpp:941
-msgid "Preferences"
-msgstr "Innstillinger"
-
-#: src/preferences.cpp:987
+#: src/preferences.cpp:925
 msgid "There are no alternative video modes available"
 msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
 
-#: src/preferences.cpp:1017
+#: src/preferences.cpp:955
 msgid "Choose Resolution"
 msgstr "Velg oppløsning"
 
-#: src/preferences.cpp:1040
+#: src/preferences.cpp:978
 msgid "Close Window"
 msgstr "Lukk vindu"
 
-#: src/preferences.cpp:1045
+#: src/preferences.cpp:983
 msgid "Hotkey Settings"
 msgstr "Innstillinger for Hurtigtaster"
 
-#: src/preferences.cpp:1049 src/preferences.cpp:1107
+#: src/preferences.cpp:987 src/preferences.cpp:1031
 msgid "Press desired HotKey"
 msgstr "Trykk ønsket hurtigtast"
 
-#: src/preferences.cpp:1068
+#: src/preferences.cpp:1008
 msgid "Change Hotkey"
 msgstr "Endre hurtigtast"
 
-#: src/preferences.cpp:1071
+#: src/preferences.cpp:1011
 msgid "Save Hotkeys"
 msgstr "Lagre hurtigtaster"
 
-#: src/preferences.cpp:1140
+#: src/preferences.cpp:1057
 msgid "This HotKey is already in use."
 msgstr "Denne hurtigtasten er allerede i bruk."
