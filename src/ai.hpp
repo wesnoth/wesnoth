@@ -427,6 +427,7 @@ protected:
 	             const move_map& enemy_srcdst, const move_map& enemy_dstsrc
             );
 
+	bool is_accessible(const location& loc, const move_map& dstsrc) const;
 
 	virtual std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 

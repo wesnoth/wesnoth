@@ -256,24 +256,32 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		return std::pair<location,location>();
 	}
 
-	//now see if any other unit can put a better bid forward
-	for(++u; u != units_.end(); ++u) {
-		if(u->second.side() != team_num_ || u->second.can_recruit() ||
-		   u->second.movement_left() <= 0 || u->second.is_guardian()) {
-			continue;
-		}
+	//if we have the 'simple_targetting' flag set, then we don't see if any other
+	//units can put a better bid forward for this target
+	const bool dumb_ai = current_team().ai_parameters()["simple_targetting"] == "yes";
 
-		user_interact();
-
-		const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
-		const paths::route cur_route = a_star_search(u->first,best_target->loc,
-			               minimum(best_target->value/best_rating,100.0),calc);
-		const double rating = best_target->value/cur_route.move_left;
-		if(best == units_.end() || rating > best_rating) {
-			best_rating = rating;
-			best = u;
-			best_route = cur_route;
+	if(dumb_ai == false) {
+		//now see if any other unit can put a better bid forward
+		for(++u; u != units_.end(); ++u) {
+			if(u->second.side() != team_num_ || u->second.can_recruit() ||
+			   u->second.movement_left() <= 0 || u->second.is_guardian()) {
+				continue;
+			}
+	
+			user_interact();
+	
+			const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
+			const paths::route cur_route = a_star_search(u->first,best_target->loc,
+				               minimum(best_target->value/best_rating,100.0),calc);
+			const double rating = best_target->value/cur_route.move_left;
+			if(best == units_.end() || rating > best_rating) {
+				best_rating = rating;
+				best = u;
+				best_route = cur_route;
+			}
 		}
+	} else {
+		u = units_.end();
 	}
 
 	assert(best_target >= targets.begin() && best_target < targets.end());

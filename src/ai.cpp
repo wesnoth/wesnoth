@@ -1333,8 +1333,9 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	std::cerr << "moving leader after recruit...\n";
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.stone())
+	if(leader == units_.end() || leader->second.stone()) {
 		return;
+	}
 
 	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
 
@@ -1343,12 +1344,8 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 
 	//see if the leader can capture a village safely
 	//if the keep is accessible by an enemy unit, we don't want to leave it
-	gamemap::location adj[6];
-	get_adjacent_tiles(leader->first,adj);
-	for(size_t n = 0; n != 6; ++n) {
-		if(enemy_dstsrc.count(adj[n])) {
-			return;
-		}
+	if(is_accessible(leader->first,enemy_dstsrc)) {
+		return;
 	}
 
 	//search through villages finding one to capture
@@ -1377,7 +1374,45 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 
 			move_unit(leader->first,*v,possible_moves);
 
-			break;
+			return;
+		}
+	}
+
+	//see if any friendly leaders can make it to our keep. If they can, then move off it so that they
+	//can recruit if they want.
+	if(nearest_keep(leader->first) == leader->first) {
+		const location keep = leader->first;
+		const std::pair<location,unit> temp_leader = *leader;
+		units_.erase(leader);
+
+		bool friend_can_reach_keep = false;
+
+		std::map<location,paths> friends_possible_moves;
+		move_map friends_srcdst, friends_dstsrc;
+		calculate_possible_moves(friends_possible_moves,friends_srcdst,friends_dstsrc,false,true);
+		for(move_map::const_iterator i = friends_dstsrc.begin(); i != friends_dstsrc.end(); ++i) {
+			if(i->first == keep) {
+				const unit_map::const_iterator itor = units_.find(i->second);
+				if(itor != units_.end() && itor->second.can_recruit()) {
+					friend_can_reach_keep = true;
+					break;
+				}
+			}
+		}
+
+		units_.insert(temp_leader);
+
+		if(friend_can_reach_keep) {
+			//find a location for our leader to vacate the keep to
+			location adj[6];
+			get_adjacent_tiles(keep,adj);
+			for(size_t n = 0; n != 6; ++n) {
+				//vacate to the first location found that is on the board, our leader can move to, and no enemies can reach
+				if(map_.on_board(adj[n]) && leader_paths.routes.count(adj[n]) != 0 && is_accessible(adj[n],enemy_dstsrc) == false) {
+					move_unit(keep,adj[n],possible_moves);
+					return;
+				}
+			}
 		}
 	}
 }
@@ -1461,6 +1496,20 @@ void ai::invalidate_defensive_position_cache()
 {
 	defensive_position_cache_.clear();
 }
+
+bool ai::is_accessible(const location& loc, const move_map& dstsrc) const
+{
+	gamemap::location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if(dstsrc.count(adj[n]) > 0) {
+			return true;
+		}
+	}
+
+	return dstsrc.count(loc) > 0;
+}
+
 
 const std::set<gamemap::location>& ai::keeps() const
 {
