@@ -129,7 +129,7 @@ public:
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
-	// Exception thrown when new map is to be loaded.
+	/// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
 		new_map_exception(const std::string &map, const std::string filename="")
 			: new_map(map), new_filename(filename) {}
@@ -218,6 +218,13 @@ private:
 	/// Commit the movement of a selection.
 	void perform_selection_move();
 
+	/// Return a string represeting the terrain and the underlying ones.
+	std::string get_terrain_string(const gamemap::TERRAIN);
+
+	/// An item in the clipboard. Consists of the copied terrain and an
+	/// offset. When pasting stuff, the offset is used to calculate
+	/// where to put the pasted hex when calculating from the one
+	/// selected when the paste takes place.
 	struct clipboard_item {
 		clipboard_item(int xo, int yo, gamemap::TERRAIN t) :
 			x_offset(xo), y_offset(yo), terrain(t) {}

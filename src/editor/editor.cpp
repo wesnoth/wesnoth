@@ -69,6 +69,7 @@ namespace {
 		const double dist = std::sqrt(xdiff * xdiff + ydiff * ydiff);
 		return dist;
 	}
+
 }
 
 namespace map_editor {
@@ -91,6 +92,10 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	hotkey::get_hotkeys().clear();
 	hotkey::add_hotkeys(theme_, true);
 	recalculate_starting_pos_labels();
+
+	reports::set_report_content(reports::SELECTED_TERRAIN,
+								get_terrain_string(palette_.selected_terrain()));
+	gui_.invalidate_all();
 }
 
 void map_editor::handle_event(const SDL_Event &event) {
@@ -118,6 +123,26 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 	}
 }
 
+std::string map_editor::get_terrain_string(const gamemap::TERRAIN t) {
+	std::stringstream str;
+	const std::string& name = map_.terrain_name(t);
+	const std::vector<std::string>& underlying_names =
+		map_.underlying_terrain_name(t);
+	str << translate_string(name);
+	if(underlying_names.size() != 1 || underlying_names.front() != name) {
+		str << " (";
+		for(std::vector<std::string>::const_iterator i = underlying_names.begin();
+			i != underlying_names.end(); ++i) {
+			str << translate_string(*i);
+			if(i+1 != underlying_names.end()) {
+				str << ",";
+			}
+		}
+		str << ")";
+	}
+	return str.str();
+}
+	
 void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 										   const int mousex, const int mousey) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -161,7 +186,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 				}
 			}
 			else {
+				const gamemap::TERRAIN old_tr = palette_.selected_terrain();
 				palette_.left_mouse_click(mousex, mousey);
+				if (palette_.selected_terrain() != old_tr) {
+					reports::set_report_content(reports::SELECTED_TERRAIN,
+												get_terrain_string(palette_.selected_terrain()));
+					gui_.invalidate_game_status();
+				}
 				brush_.left_mouse_click(mousex, mousey);
 			}
 		}

@@ -18,7 +18,7 @@ namespace reports {
 	            UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP, UNIT_MOVES, UNIT_WEAPONS,
 				UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 				TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES, INCOME, TERRAIN, POSITION,
-				SIDE_PLAYING, OBSERVERS, NUM_REPORTS};
+				SIDE_PLAYING, OBSERVERS, SELECTED_TERRAIN, NUM_REPORTS};
 
 	enum { UNIT_REPORTS_BEGIN=UNIT_DESCRIPTION, UNIT_REPORTS_END=UNIT_PROFILE+1 };
 	enum { STATUS_REPORTS_BEGIN=TIME_OF_DAY, STATUS_REPORTS_END=NUM_REPORTS};
@@ -64,6 +64,12 @@ namespace reports {
 						   const gamemap::location& loc, const gamemap::location& mouseover,
 						   const gamestatus& status, const std::set<std::string>& observers,
 						   const std::string* format_string=NULL);
+	// Set what will be shown for the report with type
+	// which_report. Note that this only works for some reports,
+	// i.e. reports that can not be deducted from the supplied arguments
+	// to generate_report. 
+	// Currently: SELECTED_TERRAIN
+	void set_report_content(const TYPE which_report, const std::string &content);
 }
 
 #endif

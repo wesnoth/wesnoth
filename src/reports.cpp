@@ -6,13 +6,15 @@
 
 #include <cassert>
 #include <sstream>
+#include <map>
 
 namespace {
 	const std::string report_names[] = { "unit_description", "unit_type", "unit_level",
 		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		"income", "terrain", "position", "side_playing", "observers" };
+		 "income", "terrain", "position", "side_playing", "observers", "selected_terrain"};
+	std::map<reports::TYPE, std::string> report_contents;
 }
 
 namespace reports {
@@ -323,10 +325,25 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 		return report("",game_config::observer_image,str.str());
 	}
-
+	case SELECTED_TERRAIN: {
+		std::map<TYPE, std::string>::const_iterator it =
+			report_contents.find(SELECTED_TERRAIN);
+		if (it != report_contents.end()) {
+			return report(it->second);
+		}
+		else {
+			return report();
+		}
 	}
-
+		
+	}
 	return report(str.str());
 }
+	
+	
+void set_report_content(const TYPE which_report, const std::string &content) {
+	report_contents[which_report] = content;
+}
+	
 
 }
