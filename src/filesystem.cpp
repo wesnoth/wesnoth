@@ -43,6 +43,13 @@
 
 #endif
 
+#ifdef __BEOS__
+#include <Directory.h>
+#include <FindDirectory.h>
+#include <Path.h>
+BPath be_path;
+#endif
+
 //for getenv
 #include <cstdlib>
 
@@ -250,6 +257,19 @@ std::string get_user_data_dir()
 	} else {
 		return "userdata";
 	}
+#elif defined(__BEOS__)
+	if (be_path.InitCheck() != B_OK) {
+		BPath tpath;
+		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
+			be_path.Append("wesnoth");
+		} else {
+			be_path.SetTo("/boot/home/config/settings/wesnoth");
+		}
+		tpath = be_path;
+		tpath.Append("editor/maps");
+		create_directory(tpath.Path(), 0775);
+	}
+	return be_path.Path();
 #else
 
 	static const char* const current_dir = ".";
