@@ -28,7 +28,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
                       HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
                       HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
-                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME,
+                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME, HOTKEY_LOAD_GAME,
                       HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
                       HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
 					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_PREFERENCES,
@@ -90,34 +90,35 @@ class command_executor
 {
 public:
 
-	virtual void cycle_units() {};
-	virtual void end_turn() {};
-	virtual void goto_leader() {};
-	virtual void end_unit_turn() {};
-	virtual void undo() {};
-	virtual void redo() {};
-	virtual void terrain_table() {};
-	virtual void attack_resistance() {};
-	virtual void unit_description() {};
-	virtual void rename_unit() {};
-	virtual void save_game() {};
-	virtual void toggle_grid() {};
-	virtual void status_table() {};
-	virtual void recall() {};
-	virtual void recruit() {};
-	virtual void repeat_recruit() {};
-	virtual void speak() {};
-	virtual void create_unit() {};
-	virtual void preferences() {};
-	virtual void objectives() {};
-	virtual void unit_list() {};
-	virtual void show_statistics() {};
-	virtual void label_terrain() {};
-	virtual void show_enemy_moves(bool /*ignore_units*/) {};
-	virtual void toggle_shroud_updates() {};
-	virtual void update_shroud_now() {};
-	virtual void continue_move() {};
-	virtual void search() {};
+	virtual void cycle_units() {}
+	virtual void end_turn() {}
+	virtual void goto_leader() {}
+	virtual void end_unit_turn() {}
+	virtual void undo() {}
+	virtual void redo() {}
+	virtual void terrain_table() {}
+	virtual void attack_resistance() {}
+	virtual void unit_description() {}
+	virtual void rename_unit() {}
+	virtual void save_game() {}
+	virtual void load_game() {}
+	virtual void toggle_grid() {}
+	virtual void status_table() {}
+	virtual void recall() {}
+	virtual void recruit() {}
+	virtual void repeat_recruit() {}
+	virtual void speak() {}
+	virtual void create_unit() {}
+	virtual void preferences() {}
+	virtual void objectives() {}
+	virtual void unit_list() {}
+	virtual void show_statistics() {}
+	virtual void label_terrain() {}
+	virtual void show_enemy_moves(bool /*ignore_units*/) {}
+	virtual void toggle_shroud_updates() {}
+	virtual void update_shroud_now() {}
+	virtual void continue_move() {}
+	virtual void search() {}
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}

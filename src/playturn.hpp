@@ -133,6 +133,7 @@ private:
 	virtual void unit_description();
 	virtual void rename_unit();
 	virtual void save_game();
+	virtual void load_game();
 	virtual void toggle_grid();
 	virtual void status_table();
 	virtual void recruit();

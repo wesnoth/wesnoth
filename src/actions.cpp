@@ -792,8 +792,7 @@ void attack(display& gui, const gamemap& map,
 				if(stats.defender_plague && !map.is_village(loc)) {
 					d = units.find(defender_loc);
 					if(d != units.end()) {
-						units.insert(std::pair<gamemap::location,unit>(
-						                                 loc,d->second));
+						units.insert(std::pair<gamemap::location,unit>(loc,d->second));
 						gui.draw_tile(loc.x,loc.y);
 					}
 				}

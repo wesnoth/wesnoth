@@ -89,6 +89,14 @@ public:
 		game_error(const std::string& msg) : error("game_error: " + msg) {}
 	};
 
+	//an exception object used to signal that the user has decided to abort
+	//a game, and load another game instead
+	struct load_game_exception {
+		load_game_exception(const std::string& game, bool show_replay) : game(game), show_replay(show_replay) {}
+		std::string game;
+		bool show_replay;
+	};
+
 private:
 	const time_of_day& get_time_of_day_turn(int nturn) const;
 

@@ -504,6 +504,11 @@ int play_game(int argc, char** argv)
 		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 	}
 
+	//these variables are used to store the game that the user selects to load
+	//from within the game
+	std::string loaded_game = "";
+	bool loaded_game_show_replay = false;
+
 	for(;;) {
 		statistics::fresh_stats();
 
@@ -670,23 +675,26 @@ int play_game(int argc, char** argv)
 
 			try {
 				play_level(units_data,game_config,&level,video,state,story);
+				return 0;
 			} catch(gamestatus::error& e) {
 				std::cerr << "caught error: '" << e.message << "'\n";
 				return 0;
+			} catch(gamestatus::load_game_exception& e) {
+				//the user's trying to load a game, so go into the normal title screen loop and load one
+				loaded_game = e.game;
+				loaded_game_show_replay = e.show_replay;
 			} catch(...) {
 				std::cerr << "caught unknown error playing level...\n";
 				return 0;
 			}
-
-			return 0;
 		}
 
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-		gui::TITLE_RESULT res = gui::TITLE_CONTINUE;
-		
+		gui::TITLE_RESULT res = loaded_game.empty() ? gui::TITLE_CONTINUE : gui::LOAD_GAME;
+
 		while(res == gui::TITLE_CONTINUE) {
 			res = gui::show_title(disp);
 		}
@@ -698,12 +706,11 @@ int play_game(int argc, char** argv)
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 
-			bool show_replay;
+			bool show_replay = loaded_game_show_replay;
 
-			const std::string game = dialogs::load_game_dialog(disp,&show_replay);
+			const std::string game = loaded_game.empty() ? dialogs::load_game_dialog(disp,&show_replay) : loaded_game;
 
-			if(game == "")
-				continue;
+			loaded_game = "";
 
 			try {
 				load_game(units_data,game,state);
@@ -766,7 +773,7 @@ int play_game(int argc, char** argv)
 					if((**sides.first)["controller"] == "network")
 						(**sides.first)["controller"] = "human";
 				}
-				
+			
 				recorder.set_save_info(state);
 				std::vector<config*> story;
 
@@ -791,10 +798,15 @@ int play_game(int argc, char** argv)
 					std::cerr << "error while playing the game: "
 					          << e.message << "\n";
 					return 0;
+				} catch(gamestatus::load_game_exception& e) {
+					//this will make it so next time through the title screen loop, this game is loaded
+					loaded_game = e.game;
+					loaded_game_show_replay = e.show_replay;
 				}
 
 				continue;
 			}
+
 		} else if(res == gui::TUTORIAL) {
 			state.campaign_type = "tutorial";
 			state.scenario = "tutorial";
@@ -915,6 +927,10 @@ int play_game(int argc, char** argv)
 				gui::show_dialog(disp,NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);
 				std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
 				continue;
+			} catch(gamestatus::load_game_exception& e) {
+				//this will make it so next time through the title screen loop, this game is loaded
+				loaded_game = e.game;
+				loaded_game_show_replay = e.show_replay;
 			}
 
 			continue;
@@ -961,12 +977,19 @@ int play_game(int argc, char** argv)
 
 		game_data units_data(*units[0]);
 
-		const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
-		if(result == VICTORY) {
-			gui::show_dialog(disp,NULL,
-			  string_table["end_game_heading"],
-			  string_table["end_game_message"],
-			  gui::OK_ONLY);
+		try {
+			const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
+			if(result == VICTORY) {
+				gui::show_dialog(disp,NULL,
+				  string_table["end_game_heading"],
+				  string_table["end_game_message"],
+				  gui::OK_ONLY);
+			}
+		} catch(gamestatus::load_game_exception& e) {
+
+			//this will make it so next time through the title screen loop, this game is loaded
+			loaded_game = e.game;
+			loaded_game_show_replay = e.show_replay;
 		}
 	}
 

@@ -926,6 +926,9 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SAVE_GAME:
 		return !commands_disabled;
 
+	case hotkey::HOTKEY_LOAD_GAME:
+		return network::nconnections() == 0; //can only load games if not in a network game
+
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return enemies_visible_;
@@ -1469,6 +1472,15 @@ void turn_info::rename_unit()
 void turn_info::save_game()
 {
 	save_game("",gui::OK_CANCEL);
+}
+
+void turn_info::load_game()
+{
+	bool show_replay = false;
+	const std::string game = dialogs::load_game_dialog(gui_,&show_replay);
+	if(game != "") {
+		throw gamestatus::load_game_exception(game,show_replay);
+	}
 }
 
 void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)

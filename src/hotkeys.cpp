@@ -50,6 +50,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
 		m.insert(val("renameunit",HOTKEY_RENAME_UNIT));
 		m.insert(val("save",HOTKEY_SAVE_GAME));
+		m.insert(val("load",HOTKEY_LOAD_GAME));
 		m.insert(val("recruit",HOTKEY_RECRUIT));
 		m.insert(val("repeatrecruit",HOTKEY_REPEAT_RECRUIT));
 		m.insert(val("recall",HOTKEY_RECALL));
@@ -352,6 +353,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_SAVE_GAME:
 			if(executor)
 				executor->save_game();
+			break;
+		case HOTKEY_LOAD_GAME:
+			if(executor)
+				executor->load_game();
 			break;
 		case HOTKEY_TOGGLE_GRID:
 			if(executor)
