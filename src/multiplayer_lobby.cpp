@@ -23,7 +23,7 @@ RESULT enter(display& disp, config& game_data)
 
 	std::vector<std::string> messages;
 
-	gui::textbox message_entry(disp,300);
+	gui::textbox message_entry(disp,500);
 
 	for(;;) {
 		std::cerr << "game data: " << game_data.write() << "\n";

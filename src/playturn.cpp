@@ -17,6 +17,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "mouse.hpp"
+#include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
@@ -104,10 +105,44 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	std::cerr << "done gotos\n";
 
+	int start_command = recorder.ncommands();
+
 	for(;;) {
-		const bool res = turn_slice(gameinfo,state_of_game,status,
-		                            terrain_config,level,video,key,gui,map,
-		                            teams,team_num,units,turn_data,false);
+		bool res = false;
+
+		try {
+			res = turn_slice(gameinfo,state_of_game,status,
+		                     terrain_config,level,video,key,gui,map,
+		                     teams,team_num,units,turn_data,false);
+		} catch(end_level_exception& e) {
+
+			//if the game is over, and it's a networked game, then
+			//tell the foreign hosts of the final moves
+			if(network::nconnections() > 0 &&
+			   start_command < recorder.ncommands()) {
+				config cfg;
+				cfg.children["turn"].push_back(
+				        new config(recorder.get_data_range(start_command,
+				                                     recorder.ncommands())));
+				network::send_data(cfg);
+			}
+
+			throw e;
+		}
+
+		//send network data if any moves have been made
+		if(network::nconnections() > 0 &&
+		   (turn_data.undo_stack.empty() || res) &&
+		   start_command < recorder.ncommands()) {
+			config cfg;
+			cfg.children["turn"].push_back(
+			        new config(recorder.get_data_range(start_command,
+			                                          recorder.ncommands())));
+			network::send_data(cfg);
+
+			start_command = recorder.ncommands();
+		}
+
 		if(res) {
 			break;
 		}

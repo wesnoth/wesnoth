@@ -172,34 +172,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						dialogs::show_objectives(gui,*level);
 					}
 
-					const int start_command = recorder.ncommands();
-
-					try {
-						play_turn(gameinfo,state_of_game,status,terrain_config,
-						          level, video, key, gui, events_manager, map,
-								  teams, player_number, units);
-					} catch(end_level_exception& e) {
-						if(network::nconnections() > 0) {
-							config cfg;
-							cfg.children["turn"].push_back(
-							  new config(recorder.get_data_range(start_command,
-							                        recorder.ncommands())));
-							network::send_data(cfg);
-						}
-
-						throw e;
-					}
+					play_turn(gameinfo,state_of_game,status,terrain_config,
+					          level, video, key, gui, events_manager, map,
+							  teams, player_number, units);
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
-
-					if(network::nconnections() > 0) {
-						config cfg;
-						cfg.children["turn"].push_back(
-							  new config(recorder.get_data_range(start_command,
-							                        recorder.ncommands())));
-						network::send_data(cfg);
-					}
 
 				} else if(!replaying && team_it->is_ai()) {
 					const int start_command = recorder.ncommands();
@@ -250,6 +228,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						      player_number,status,state_of_game,&replay_obj);
 
 						recorder.add_config(*cfg.children["turn"].front());
+
+						gui.invalidate_all();
+						gui.draw();
 					}
 
 					std::cerr << "finished networked...\n";
