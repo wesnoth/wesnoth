@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-26 10:13+0200\n"
+"POT-Creation-Date: 2004-08-27 16:15+0200\n"
 "PO-Revision-Date: 2004-08-26 10:12+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català\n"
@@ -187,7 +187,7 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:85 src/help.cpp:765 src/help.cpp:766
+#: data/help.cfg:85 src/help.cpp:766 src/help.cpp:767
 #, fuzzy
 msgid "Movement"
 msgstr "Moviments"
@@ -678,7 +678,8 @@ msgid "&human-general.png,Loyalists"
 msgstr "&human-general.png,Lleials"
 
 #: data/multiplayer.cfg:39 data/multiplayer.cfg:189
-msgid "&elvish-lord.png,Rebels"
+#, fuzzy
+msgid "&elvish-high-lord.png,Rebels"
 msgstr "&elvish-lord.png,Rebels"
 
 #: data/multiplayer.cfg:50 data/multiplayer.cfg:200
@@ -706,7 +707,8 @@ msgid "&human-general.png,Humans"
 msgstr "&human-general.png,Humans"
 
 #: data/multiplayer.cfg:114
-msgid "&elvish-lord.png,Elves"
+#, fuzzy
+msgid "&elvish-high-lord.png,Elves"
 msgstr "&elvish-lord.png,Elfs"
 
 #: data/multiplayer.cfg:125
@@ -726,7 +728,8 @@ msgid "Great War"
 msgstr "La Gran Guerra"
 
 #: data/multiplayer.cfg:254
-msgid "&elvish-lord.png,Alliance of Light"
+#, fuzzy
+msgid "&elvish-high-lord.png,Alliance of Light"
 msgstr "&elvish-lord.png,Aliança de la Llum"
 
 #: data/multiplayer.cfg:265
@@ -1630,32 +1633,51 @@ msgstr ""
 "#Mort de Kalenz\n"
 "#Fi dels torns"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:64
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:63
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:68
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:67
 msgid ""
 "The lich-lord must have flooded the valley. The undead like the swamp. It is "
 "death, decay, everything that they are themselves."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:72
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:71
 msgid "I suppose we will have to wade across it... ugh."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:76
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:75
 msgid "Die... die... my master is calling you... Die!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:88
-#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:87
 #, fuzzy
-msgid "What is that?"
+msgid "What is that?!?"
 msgstr "Què és allò?!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:92
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:91
 msgid "I leave you to your doom."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:129
+msgid "Undead are rising out of the ground! We must destroy them, quickly!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:135
+msgid "My lord, undead are rising out of the cracks in the ground!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:139
+msgid "This might be more difficult than i thought."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:181
+msgid "I will get you! I... will... get... youu...."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:185
+msgid "Now lets get out of this bog!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:3
@@ -3915,6 +3937,11 @@ msgstr ""
 #, fuzzy
 msgid "Ruaarrrrrrrr!"
 msgstr "Ruaarrrrrrrr!"
+
+#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
+#, fuzzy
+msgid "What is that?"
+msgstr "Què és allò?!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:205
 #, fuzzy
@@ -7623,7 +7650,7 @@ msgstr ""
 msgid "Toward Mountains of Haag"
 msgstr "Cap a les Muntanyes de Haag"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:26
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:27
 #, fuzzy
 msgid ""
 "\n"
@@ -7631,6 +7658,7 @@ msgid ""
 "@Move Kapou'e to the end of the mountains\n"
 "Defeat:\n"
 "#Death of Kapou'e\n"
+"#Death of Grüü\n"
 "#Turns run out"
 msgstr ""
 "\n"
@@ -7640,117 +7668,117 @@ msgstr ""
 "#Mort de Kapou'e\n"
 "#Fi dels torns"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:103
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:104
 msgid ""
 "We have nearly crossed the mountains.  I feel the lands of the free tribes "
 "are near now.  But beware, there are dwarves and wild trolls around.  Hurry "
 "up!  I can see the sign post that indicates their land."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:108
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:109
 msgid "What are these orcs doing here?  They should be too tired to live."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:122
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:123
 msgid ""
 "I've never pushed so far, we are crossing the border of the Black Eye lands."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:160
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:161
 msgid "Look!  Dwarves are fighting against orcs!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:165
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:166
 msgid "Father, we should help them.  Orcs are our allies."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:170
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:171
 msgid ""
 "I don't know if we should do that.  Orcs have been our allies in the past, "
 "but they have always treated us as fools."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:175
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:176
 msgid ""
 "But Father, we don't know what they are seeking there, maybe this is a good "
 "occasion to get rid of these dwarves."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:180
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:181
 msgid ""
 "You are right, my son.  We will help our orcish friends.  But take care of "
 "you ... I would be desperate if something would happen to you."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:192
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:193
 msgid "Argh!  I'm done.  My people is dommed!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:207
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:208
 msgid "Father!  Oh no!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:212
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:213
 msgid "Filthy dwarves!  Now I'm to kill you to the last!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:224
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:225
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:113
 msgid "Oh no, I'm defeated."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:234
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:235
 msgid ""
 "My son!  I should have never brought him to this fight.  Now we are to "
 "return to our caverns, and we will never go back."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:244
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:245
 msgid "Our troll friends are over.  Without them there is no hope."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:259
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:260
 msgid "Argh!  I die!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:286
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:314
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:287
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:315
 msgid ""
 "We've succeeded!  We've passed through the Mountains of Haag!  Look at these "
 "green hills!  The land of the free tribes is near now.  I can see the walls "
 "of Barag-Gor in the distance."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:291
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:292
 msgid ""
 "Blemaker, many thanks for your help in this fight.  Would you like to join "
 "us in our journey with your son?  Your help would be very appreciated!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:297
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:298
 msgid "Father, I'd like to join them.  Would you mind it?"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:302
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:303
 msgid ""
 "My son, you're old enough to discover the world.  Me, I have to stay here.  "
 "But take care, there are plenty of creatures that seek our end, like elves "
 "or humans.  They are as clever as merciless."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:307
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:308
 msgid "Thanks, father.  Don't worry, I'll take care of myself."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:319
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:320
 msgid ""
 "Grüü, many thanks for your help in this fight.  I'm sorry for your father.  "
 "Would you like to join us in our journey?  Your help would be very "
 "appreciated!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:324
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:325
 msgid ""
 "My father would have come to help you.  I would insult his memory not to "
 "help you.  I come!"
@@ -12087,7 +12115,7 @@ msgid ""
 "legions of the walking dead. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:19
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:20
 msgid ""
 "After a time of great struggle a peace was reached. We came to dominate most "
 "of the Isle, with the Wesfolk pushed onto the most marginal of lands. In "
@@ -12095,7 +12123,7 @@ msgid ""
 "we gleaned our first shards of knowledge about magic."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:28
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:29
 msgid ""
 "Thus history continued apace for several centuries. You must recall that the "
 "route from the Western lands to our Isle was perilous at the best of times. "
@@ -12103,7 +12131,7 @@ msgid ""
 "Isle could never be maintained."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:37
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:38
 msgid ""
 "Things only got worse when looking to the East. A strong, cold, ocean "
 "current swept down from the North in the Eastern ocean, pushing all ships "
@@ -12111,7 +12139,7 @@ msgid ""
 "nothing but open ocean, and vile sea monsters. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:50
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:51
 msgid ""
 "Over time our skills as navigators grew. Then, one day, the Crown Prince of "
 "Southbay returned home from a long voyage with a fabulous tale. He said that "
@@ -12120,7 +12148,7 @@ msgid ""
 "Southern pull of the ocean."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:59
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:60
 msgid ""
 "It wasn't long after he returned that the very Crown Prince who discovered "
 "the land to the East fell ill and died, under mysterious circumstances. His "
@@ -12128,17 +12156,17 @@ msgid ""
 "of distraction with the poor Wesfolk kingdoms, and their Lich-Lords."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:64
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:65
 msgid ""
 "The new Crown Prince departed, with the largest army ever assembled on the "
 "Isle to make war with the Wesfolk. This where our story begins. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:69
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:70
 msgid "With the plight of a different Prince on the same Isle. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:74
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:75
 msgid ""
 "For this is the story of Haldric the First, and the Rise of Wesnoth. . ."
 msgstr ""
@@ -12828,7 +12856,7 @@ msgid ""
 "with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:92 src/help.cpp:868
+#: data/translations/english.cfg:92 src/help.cpp:869
 msgid "or"
 msgstr ""
 
@@ -13457,16 +13485,17 @@ msgstr ""
 #: data/units/Deathmaster.cfg:37 data/units/Demilich.cfg:33
 #: data/units/Drake_Mage.cfg:68 data/units/Drake_Warmage.cfg:78
 #: data/units/Dwarvish_Runemaster.cfg:43 data/units/Elder_Mage.cfg:41
-#: data/units/Elvish_Druid.cfg:63 data/units/Elvish_Lord.cfg:38
-#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:72
-#: data/units/Fireball.cfg:21 data/units/Great_Mage.cfg:42
-#: data/units/Great_Mage.cfg:118 data/units/Initiate.cfg:21
-#: data/units/Lich.cfg:34 data/units/Mage.cfg:39 data/units/Mage.cfg:106
-#: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
-#: data/units/Necromancer.cfg:37 data/units/Red_Mage.cfg:42
-#: data/units/Red_Mage.cfg:111 data/units/Sea_Hag.cfg:31
-#: data/units/Silver_Mage.cfg:44 data/units/Silver_Mage.cfg:131
-#: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
+#: data/units/Elvish_Druid.cfg:63 data/units/Elvish_High_Lord.cfg:38
+#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
+#: data/units/Elvish_Shyde.cfg:72 data/units/Fireball.cfg:21
+#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
+#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Mage.cfg:39
+#: data/units/Mage.cfg:106 data/units/Mage_of_Light.cfg:48
+#: data/units/Mage_of_Light.cfg:108 data/units/Necromancer.cfg:37
+#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:111
+#: data/units/Sea_Hag.cfg:31 data/units/Silver_Mage.cfg:44
+#: data/units/Silver_Mage.cfg:131 data/units/White_Mage.cfg:47
+#: data/units/White_Mage.cfg:106
 msgid "magical"
 msgstr ""
 
@@ -13547,10 +13576,10 @@ msgid "staff"
 msgstr ""
 
 #: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
-#: data/units/Elvish_Lord.cfg:36 data/units/Great_Mage.cfg:39
-#: data/units/Great_Mage.cfg:115 data/units/Red_Mage.cfg:39
-#: data/units/Red_Mage.cfg:108 data/units/Silver_Mage.cfg:41
-#: data/units/Silver_Mage.cfg:128
+#: data/units/Elvish_High_Lord.cfg:36 data/units/Elvish_Lord.cfg:36
+#: data/units/Great_Mage.cfg:39 data/units/Great_Mage.cfg:115
+#: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
+#: data/units/Silver_Mage.cfg:41 data/units/Silver_Mage.cfg:128
 msgid "fireball"
 msgstr ""
 
@@ -13560,11 +13589,12 @@ msgstr ""
 #: data/units/Drake_Flameheart.cfg:60 data/units/Drake_Guard.cfg:46
 #: data/units/Drake_Mage.cfg:38 data/units/Drake_Warmage.cfg:43
 #: data/units/Drake_Warrior.cfg:44 data/units/Dwarvish_Runemaster.cfg:38
-#: data/units/Elder_Mage.cfg:39 data/units/Elvish_Lord.cfg:37
-#: data/units/Fire_Dragon.cfg:59 data/units/Fireball.cfg:18
-#: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:20
-#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:116
-#: data/units/Mage.cfg:37 data/units/Mage.cfg:104 data/units/Red_Mage.cfg:40
+#: data/units/Elder_Mage.cfg:39 data/units/Elvish_High_Lord.cfg:37
+#: data/units/Elvish_Lord.cfg:37 data/units/Fire_Dragon.cfg:59
+#: data/units/Fireball.cfg:18 data/units/Fireball.cfg:19
+#: data/units/Goblin_Pillager.cfg:20 data/units/Great_Mage.cfg:40
+#: data/units/Great_Mage.cfg:116 data/units/Mage.cfg:37
+#: data/units/Mage.cfg:104 data/units/Red_Mage.cfg:40
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:42
 #: data/units/Silver_Mage.cfg:129
 msgid "fire"
@@ -13625,19 +13655,19 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
-#: data/units/Elvish_Hero.cfg:22 data/units/Elvish_Lord.cfg:21
-#: data/units/Elvish_Marksman.cfg:22 data/units/Elvish_Marksman.cfg:100
-#: data/units/Elvish_Marshal.cfg:25 data/units/Elvish_Outrider.cfg:24
-#: data/units/Elvish_Ranger.cfg:22 data/units/Elvish_Ranger.cfg:99
-#: data/units/Elvish_Rider.cfg:31 data/units/Elvish_Scout.cfg:32
-#: data/units/Elvish_Sharpshooter.cfg:22
+#: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
+#: data/units/Elvish_Lord.cfg:21 data/units/Elvish_Marksman.cfg:22
+#: data/units/Elvish_Marksman.cfg:100 data/units/Elvish_Marshal.cfg:25
+#: data/units/Elvish_Outrider.cfg:24 data/units/Elvish_Ranger.cfg:22
+#: data/units/Elvish_Ranger.cfg:99 data/units/Elvish_Rider.cfg:31
+#: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:22
 #: data/units/Elvish_Sharpshooter.cfg:101 data/units/Fencer.cfg:21
 #: data/units/Fighter.cfg:21 data/units/Fire_Dragon.cfg:23
 #: data/units/General.cfg:22 data/units/Ghoul.cfg:20
 #: data/units/Goblin_Direwolver.cfg:21 data/units/Goblin_Direwolver.cfg:33
 #: data/units/Goblin_Knight.cfg:19 data/units/Grand_Knight.cfg:21
 #: data/units/Gryphon.cfg:19 data/units/Gryphon_Master.cfg:22
-#: data/units/Gryphon_Rider.cfg:20 data/units/Halbardier.cfg:27
+#: data/units/Gryphon_Rider.cfg:20 data/units/Halbardier.cfg:37
 #: data/units/Knight.cfg:21 data/units/Lieutenant.cfg:22
 #: data/units/Longbowman.cfg:22 data/units/Lord.cfg:23 data/units/Mage.cfg:21
 #: data/units/Mage.cfg:88 data/units/Master_Bowman.cfg:21
@@ -13732,12 +13762,12 @@ msgstr ""
 #: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:23
 #: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:23
 #: data/units/Elvish_Champion.cfg:21 data/units/Elvish_Fighter.cfg:23
-#: data/units/Elvish_Hero.cfg:21 data/units/Elvish_Lord.cfg:20
-#: data/units/Elvish_Marksman.cfg:21 data/units/Elvish_Marksman.cfg:99
-#: data/units/Elvish_Marshal.cfg:24 data/units/Elvish_Outrider.cfg:23
-#: data/units/Elvish_Ranger.cfg:21 data/units/Elvish_Ranger.cfg:98
-#: data/units/Elvish_Rider.cfg:30 data/units/Elvish_Scout.cfg:31
-#: data/units/Elvish_Sharpshooter.cfg:21
+#: data/units/Elvish_Hero.cfg:21 data/units/Elvish_High_Lord.cfg:20
+#: data/units/Elvish_Lord.cfg:20 data/units/Elvish_Marksman.cfg:21
+#: data/units/Elvish_Marksman.cfg:99 data/units/Elvish_Marshal.cfg:24
+#: data/units/Elvish_Outrider.cfg:23 data/units/Elvish_Ranger.cfg:21
+#: data/units/Elvish_Ranger.cfg:98 data/units/Elvish_Rider.cfg:30
+#: data/units/Elvish_Scout.cfg:31 data/units/Elvish_Sharpshooter.cfg:21
 #: data/units/Elvish_Sharpshooter.cfg:100 data/units/Fighter.cfg:20
 #: data/units/General.cfg:21 data/units/Grand_Knight.cfg:19
 #: data/units/Knight.cfg:20 data/units/Lieutenant.cfg:21
@@ -13821,7 +13851,7 @@ msgstr ""
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
 #: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
 #: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:27
-#: data/units/Death_Knight.cfg:32 data/units/Dragoon.cfg:49
+#: data/units/Death_Knight.cfg:37 data/units/Dragoon.cfg:49
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Guard.cfg:23
 #: data/units/Drake_Slasher.cfg:53 data/units/Duelist.cfg:32
 #: data/units/Dwarvish_Dragonguard.cfg:47 data/units/Dwarvish_Guardsman.cfg:40
@@ -14093,7 +14123,7 @@ msgstr ""
 msgid "battle axe"
 msgstr ""
 
-#: data/units/Death_Knight.cfg:31 data/units/Duelist.cfg:31
+#: data/units/Death_Knight.cfg:36 data/units/Duelist.cfg:31
 #: data/units/General.cfg:44 data/units/Lieutenant.cfg:38
 #: data/units/Orcish_Crossbow.cfg:39 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
@@ -14617,6 +14647,20 @@ msgstr ""
 "principalment entrenat per la lluita cos a cos amb espasa, però tammateix és "
 "hàbil amb l'arc."
 
+#: data/units/Elvish_High_Lord.cfg:3
+#, fuzzy
+msgid "Elvish High Lord"
+msgstr "Senyor Elf"
+
+#: data/units/Elvish_High_Lord.cfg:17
+#, fuzzy
+msgid ""
+"Elvish High Lords are fearsome in combat, using the sword at close range and "
+"devastating balls of fire at long range."
+msgstr ""
+"El Senyo Elf és un combatent ferotge, hàbil amb l'espasa i temible per les "
+"boles de foc que és capaç de llançar."
+
 #: data/units/Elvish_Lord.cfg:3
 #, fuzzy
 msgid "Elvish Lord"
@@ -15089,11 +15133,11 @@ msgstr ""
 "Són el resultat de promocionar els millors d'entre tots els soldats. La seva "
 "arma és lenta d'utilitzar, però són capaços de produir ferides letals."
 
-#: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:26
+#: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
 msgid "halberd"
 msgstr ""
 
-#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:31
+#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
 #: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
 msgid "firststrike"
 msgstr ""
@@ -16350,7 +16394,7 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
-#: src/about.cpp:240 src/help.cpp:2363 src/show_dialog.cpp:469
+#: src/about.cpp:240 src/help.cpp:2364 src/show_dialog.cpp:469
 msgid "Close"
 msgstr ""
 
@@ -16551,12 +16595,12 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:561
+#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:562
 #: src/playturn.cpp:1712
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:615
+#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:616
 #: src/playturn.cpp:1876 src/unit.cpp:1028
 msgid "HP"
 msgstr ""
@@ -16567,17 +16611,17 @@ msgstr ""
 msgid "XP"
 msgstr ""
 
-#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:616
+#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:617
 #: src/playturn.cpp:1878 src/unit.cpp:1064
 msgid "Moves"
 msgstr ""
 
-#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:693
+#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:694
 #: src/playturn.cpp:618 src/reports.cpp:229
 msgid "melee"
 msgstr ""
 
-#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:693
+#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:694
 #: src/playturn.cpp:618 src/reports.cpp:230
 msgid "ranged"
 msgstr ""
@@ -16685,83 +16729,83 @@ msgstr ""
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
-#: src/help.cpp:568
+#: src/help.cpp:569
 msgid "Advances to"
 msgstr ""
 
-#: src/help.cpp:594
+#: src/help.cpp:595
 msgid "Abilities"
 msgstr ""
 
-#: src/help.cpp:617
+#: src/help.cpp:618
 msgid "Alignment"
 msgstr ""
 
-#: src/help.cpp:622
+#: src/help.cpp:623
 msgid "Required XP"
 msgstr ""
 
-#: src/help.cpp:632 src/reports.cpp:232
+#: src/help.cpp:633 src/reports.cpp:232
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1875
+#: src/help.cpp:641 src/help.cpp:642 src/playturn.cpp:1875
 msgid "Name"
 msgstr ""
 
-#: src/help.cpp:644 src/help.cpp:645 src/playturn.cpp:1874
+#: src/help.cpp:645 src/help.cpp:646 src/playturn.cpp:1874
 msgid "Type"
 msgstr ""
 
-#: src/help.cpp:648 src/help.cpp:649 src/unit_types.cpp:301
+#: src/help.cpp:649 src/help.cpp:650 src/unit_types.cpp:301
 msgid "Dmg"
 msgstr ""
 
-#: src/help.cpp:652 src/help.cpp:653
+#: src/help.cpp:653 src/help.cpp:654
 msgid "Strikes"
 msgstr ""
 
-#: src/help.cpp:656 src/help.cpp:657
+#: src/help.cpp:657 src/help.cpp:658
 msgid "Range"
 msgstr ""
 
-#: src/help.cpp:660 src/help.cpp:661
+#: src/help.cpp:661 src/help.cpp:662
 msgid "Special"
 msgstr ""
 
-#: src/help.cpp:717
+#: src/help.cpp:718
 msgid "Resistances"
 msgstr ""
 
-#: src/help.cpp:721 src/help.cpp:722
+#: src/help.cpp:722 src/help.cpp:723
 msgid "Attack Type"
 msgstr ""
 
-#: src/help.cpp:725 src/help.cpp:726
+#: src/help.cpp:726 src/help.cpp:727
 msgid "Resistance"
 msgstr ""
 
-#: src/help.cpp:757
+#: src/help.cpp:758
 msgid "Terrain Modifiers"
 msgstr ""
 
-#: src/help.cpp:761 src/help.cpp:762
+#: src/help.cpp:762 src/help.cpp:763
 msgid "Terrain"
 msgstr ""
 
-#: src/help.cpp:769 src/help.cpp:770
+#: src/help.cpp:770 src/help.cpp:771
 msgid "Defense"
 msgstr ""
 
-#: src/help.cpp:1867
+#: src/help.cpp:1868
 msgid "< Back"
 msgstr ""
 
-#: src/help.cpp:1868
+#: src/help.cpp:1869
 msgid "Forward >"
 msgstr ""
 
-#: src/help.cpp:2366
+#: src/help.cpp:2367
 msgid "The Battle for Wesnoth Help"
 msgstr ""
 
@@ -17001,7 +17045,7 @@ msgstr ""
 msgid "Map Generator"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:478
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:481
 msgid "Players"
 msgstr ""
 
@@ -17117,35 +17161,31 @@ msgstr ""
 msgid "Name of game"
 msgstr ""
 
-#: src/multiplayer.cpp:175
-msgid "game name prefix^"
+#: src/multiplayer.cpp:178
+msgid "$login's game"
 msgstr ""
 
-#: src/multiplayer.cpp:175
-msgid "game name suffix^'s game"
-msgstr ""
-
-#: src/multiplayer.cpp:186
+#: src/multiplayer.cpp:189
 msgid "Map to play"
 msgstr ""
 
-#: src/multiplayer.cpp:283
+#: src/multiplayer.cpp:286
 msgid "Era"
 msgstr ""
 
-#: src/multiplayer.cpp:345
+#: src/multiplayer.cpp:348
 msgid "Unlimited"
 msgstr ""
 
-#: src/multiplayer.cpp:349
+#: src/multiplayer.cpp:352
 msgid "Turns"
 msgstr ""
 
-#: src/multiplayer.cpp:357
+#: src/multiplayer.cpp:360
 msgid "Village Gold"
 msgstr ""
 
-#: src/multiplayer.cpp:369
+#: src/multiplayer.cpp:372
 msgid "Experience Requirements"
 msgstr ""
 
@@ -17157,8 +17197,8 @@ msgstr ""
 msgid "Receiving game list..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:377
-#: src/multiplayer_connect.cpp:379 src/playlevel.cpp:732 src/playturn.cpp:1458
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:378
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1458
 #: src/playturn.cpp:1463 src/playturn.cpp:1550
 msgid "Gold"
 msgstr ""
@@ -17229,8 +17269,8 @@ msgstr ""
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:466
-#: src/multiplayer_connect.cpp:580 src/multiplayer_connect.cpp:674
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:467
+#: src/multiplayer_connect.cpp:581 src/multiplayer_connect.cpp:675
 msgid "Computer Player"
 msgstr ""
 
@@ -17238,64 +17278,64 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:367
-#: src/multiplayer_connect.cpp:370
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:368
+#: src/multiplayer_connect.cpp:371
 msgid "Team"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:295
+#: src/multiplayer_connect.cpp:296
 msgid "Red"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:297
+#: src/multiplayer_connect.cpp:298
 msgid "Blue"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:299
+#: src/multiplayer_connect.cpp:300
 msgid "Green"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:301
+#: src/multiplayer_connect.cpp:302
 msgid "Yellow"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:304
 msgid "Purple"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:305
+#: src/multiplayer_connect.cpp:306
 msgid "Orange"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:307
+#: src/multiplayer_connect.cpp:308
 msgid "Grey"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:310
 msgid "White"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:311
+#: src/multiplayer_connect.cpp:312
 msgid "Brown"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:356
+#: src/multiplayer_connect.cpp:357
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:359 src/multiplayer_connect.cpp:361
+#: src/multiplayer_connect.cpp:360 src/multiplayer_connect.cpp:362
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:362 src/multiplayer_connect.cpp:365
+#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:366
 msgid "Race"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
 msgid "Color"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:529 src/multiplayer_connect.cpp:533
+#: src/multiplayer_connect.cpp:530 src/multiplayer_connect.cpp:534
 msgid "Waiting for network players to join"
 msgstr ""
 

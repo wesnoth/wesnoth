@@ -170,10 +170,19 @@ manager::~manager()
 	}
 }
 
-server_manager::server_manager(int port, bool create_server) : free_(false)
+server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false)
 {
-	if(create_server && !server_socket) {
-		server_socket = get_socket(connect("",port));
+	if(create_server != NO_SERVER && !server_socket) {
+		try {
+			server_socket = get_socket(connect("",port));
+		} catch(network::error& e) {
+			if(create_server == MUST_CREATE_SERVER) {
+				throw e;
+			} else {
+				return;
+			}
+		}
+
 		std::cerr << "server socket initialized: " << server_socket << "\n";
 		free_ = true;
 	}
@@ -185,6 +194,11 @@ server_manager::~server_manager()
 		SDLNet_TCP_Close(server_socket);
 		server_socket = 0;
 	}
+}
+
+bool server_manager::is_running() const
+{
+	return static_cast<bool>(server_socket);
 }
 
 size_t nconnections()

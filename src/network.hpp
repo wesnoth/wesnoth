@@ -24,10 +24,18 @@ private:
 //a server manager causes listening on a given port to occur
 //for the duration of its lifetime.
 struct server_manager {
-	//if create_server is false, then the object has no effect.
+
+	//parameter to pass to the constructor.
+	
+	enum CREATE_SERVER { MUST_CREATE_SERVER, //will throw exception on failure
+	                     TRY_CREATE_SERVER, //will swallow failure
+	                     NO_SERVER }; //won't try to create a server at all
+
 	//throws error.
-	server_manager(int port, bool create_server=true);
+	server_manager(int port, CREATE_SERVER create_server=MUST_CREATE_SERVER);
 	~server_manager();
+
+	bool is_running() const;
 
 private:
 	bool free_;

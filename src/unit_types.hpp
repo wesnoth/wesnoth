@@ -27,7 +27,9 @@ class unit_animation
 {
 public:
 	struct frame {
-		frame() {}
+		frame() : xoffset(0), halo_x(0), halo_y(0) {}
+		explicit frame(const std::string& str) : xoffset(0), image(str),
+		                                         halo_x(0), halo_y(0) {}
 		explicit frame(const config& cfg);
 
 		// int start, end;

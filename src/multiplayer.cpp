@@ -491,7 +491,12 @@ void multiplayer_game_setup_dialog::start_game()
 {
 	std::cerr << "calling start_game()\n";
 	const network::manager net_manager;
-	const network::server_manager server_man(15000,server_);
+	const network::server_manager server_man(15000,server_ ? network::server_manager::TRY_CREATE_SERVER : network::server_manager::NO_SERVER);
+
+	if(server_ && server_man.is_running() == false) {
+		gui::show_dialog(disp_,NULL,_("Warning"),_("The game was unable to bind to the port needed to host games over the network. Network players will be unable to connect to this game"),
+		                 gui::OK_ONLY);
+	}
 
 	turns_restorer_ = surface_restorer();
 	village_gold_restorer_ = surface_restorer();
