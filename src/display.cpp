@@ -686,8 +686,14 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< (lang_ability.empty() ? u.type().ability() : lang_ability)<<"\n"
 			<< string_table["hp"] << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n"
-			<< string_table["xp"] << ": " << u.experience() << "/"
-			<< u.max_experience() << "\n"
+			<< string_table["xp"] << ": ";
+	
+	if(u.type().advances_to().empty())
+		details << u.experience() << "/-";
+	else
+		details << u.experience() << "/" << u.max_experience();
+	
+	details << "\n"
 			<< string_table["moves"] << ": " << u.movement_left() << "/"
 			<< u.total_movement()
 			<< "\n";

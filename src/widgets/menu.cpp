@@ -185,7 +185,25 @@ void menu::handle_event(const SDL_Event& event)
 		if(item != selected_) {
 			selected_ = item;
 			drawn_ = false;
-		}
+		}	
+	} else if(event.type == SDL_MOUSEBUTTONDOWN 
+			&& event.button.button == SDL_BUTTON_WHEELDOWN) {
+			if(first_item_on_screen_+max_menu_items<items_.size()) {
+				++first_item_on_screen_;
+				if (selected_<first_item_on_screen_)
+					selected_=first_item_on_screen_;
+				itemRects_.clear();
+				drawn_ = false;
+			}
+	} else if(event.type ==	SDL_MOUSEBUTTONDOWN
+			&& event.button.button == SDL_BUTTON_WHEELUP) {
+			if(first_item_on_screen_>0) {
+				--first_item_on_screen_;
+				if (selected_>=first_item_on_screen_+int(max_menu_items))
+					selected_=first_item_on_screen_+max_menu_items-1;
+				itemRects_.clear();
+				drawn_ = false;
+			}
 	}
 }
 
@@ -199,10 +217,9 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 			itemRects_.clear();
 			drawn_ = false;
 		}
-
 		const bool down = downarrow_.process(x,y,button);
 		if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
-				++first_item_on_screen_;
+			++first_item_on_screen_;
 			itemRects_.clear();
 			drawn_ = false;
 		}
