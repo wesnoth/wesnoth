@@ -11,9 +11,12 @@
    See the COPYING file for more details.
 */
 
+#include "display.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
 #include "global.hpp"
+#include "image.hpp"
+#include "log.hpp"
 #include "multiplayer_ui.hpp"
 #include "network.hpp"
 #include "sound.hpp"

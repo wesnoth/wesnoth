@@ -13,8 +13,8 @@
 #ifndef PREFERENCES_HPP_INCLUDED
 #define PREFERENCES_HPP_INCLUDED
 
-#include "config.hpp"
-#include "display.hpp"
+class config;
+class display;
 
 #include <string>
 #include <utility>
