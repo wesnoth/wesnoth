@@ -1,7 +1,10 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (22 scenarios)
- * improved user interface theme
- * improved change video mode dialog
+ * user interface improvements:
+   * tweaked theme
+   * tweaked change video mode dialog
+   * return can be used to navigate through help topics and sections in help browser
+   * a box is drawn around images in help browser
  * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
@@ -40,14 +43,12 @@ CVS HEAD:
    * Peasant
    * Soul Shooter
    * Warrior King
- * return can now be used to navigate through help topics and sections
- * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
- * implemented feature to tell observers when a new player has arrived in the lobby
- * disabled observers from setting labels
- * added server commands, e.g. messaging all players
- * playername checks, stripping spaces at the end of name
- * limited maximum lenght of observer messages
- * made it so variables can be used to set the number of turns in a game
+ * multiplayer improvements:
+   * implemented feature to tell observers when a new player has arrived in the lobby
+   * disabled observers from setting labels
+   * added server commands, e.g. messaging all players
+   * playername checks, stripping spaces at the end of name
+   * limited maximum lenght of observer messages
  * language fixes and polishing (english)
  * updated translations:
    * catalan
@@ -57,8 +58,11 @@ CVS HEAD:
    * slovak
    * spanish
    * swedish
+ * made it so variables can be used to set the number of turns in a game
+ * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
  * added [then] and [else] tags under [object] tags
  * added [if] [then] [else] functionality to [bigmap]
+ * added exploder and cutter tools
  * fixed the bug with multiplying help sections
  * fixed the problem where the forward and back button was shown brifly when opening the help browser
  * fixed --disable-debug not working as expected
@@ -74,13 +78,13 @@ CVS HEAD:
  * fixed items not removed after being picked up
  * fixed victory conditions in 'The Siege of Barag Gor'
  * fixed attack animation not being complete
- * fixed absence of animation when units without attack frame attack
+ * fixed absence of animation when units without attack frame perform attack
  * fixed obsolete Heavy Infantry unit still used in multiplayer
- * fixed a bug where, in some windowing environments, the colour cursor may not reappear when the user re-enters a Wesnoth window
- * fixed some duplicate units: Cavalry, Cavalryman, Scout
+ * fixed colour cursor not reappearing on some window-managers when the user re-enters a Wesnoth window
+ * fixed duplicate units: Cavalry, Cavalryman, Scout
  * fixed 'layers' not working as intended in built terrains
- * fixed some terrain glitches
- * fixed graphic glitches, added a default base-terrain
+ * fixed terrain glitches, added a default base-terrain
+ * fixed graphic glitches
  * fixed macro errors
  * fixed reverted castle tiles not being expanded to the border
  * fixed edges of the map not getting cleared of shroud and fog of war
@@ -91,32 +95,30 @@ CVS HEAD:
  * fixed [bigmap] not supporting multiple paths (#9719)
  * fixed [not] tag not working properly
  * fixed bug where clicking a menu item could generate multiple events
+ * fixed duplicate battleworld.cfg
  * small fixes to unit display in help browser
- * deleted duplicate battleworld.cfg
+ * pngcrushed images
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
  * moved items to their own hierarchy: images/items/
- * added exploder and cutter tools
  * adding a limit to number of characters in a textbox
  * adding a maximal line width for text to be drawn, to circumvent a SDL / SDL_ttf bug
- * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
- * implemented patch to aid making binary packages
- * implemented relative directory patch
+ * implemented relative directory support
  * cleaned a bit the textbox code
  * refactoring of all animation code in unit_display and halo.
- * removed an obsolete feature in terrain graphics engine that was never used
- * removing commented-out obsolete code in display.cpp
- * optimizing halo movement when unit moves
  * added animated.hpp, and the animated<T> template.
  * added proper support for animated time-of-day alternative images
- * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
- * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
- * inlining some stuff for performance reasons
- * optimizing invalide_all redraws
  * added support for animated terrain images
  * added support for animated flags on villages
  * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers.
- * ran pngcrush on images
+ * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
+ * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
+ * inlining some stuff for performance reasons
+ * optimizing halo movement when unit moves
+ * optimizing invalide_all redraws
  * concentrate all version and server changes for release-time on top of configure.ac
+ * improved making binary packages
+ * removed an obsolete feature in terrain graphics engine that was never used
+ * removing commented-out obsolete code in display.cpp
  * code cleanups
 
 Version 0.8:
