@@ -84,28 +84,12 @@ const std::string& symbol_table::operator[](const char* key) const
 
 const std::string& translate_string(const std::string& str)
 {
-	return translate_string_default(str,str);
+	return str;
 }
 
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
-#ifdef USE_OLD_TRANS
-	const string_map::const_iterator i = strings_.find(str);
-	if(i != strings_.end() && i->second != "") {
-		return i->second;
-	} else {
-		//if there are spaces, try searching for a no-space version
-		if(std::find(str.begin(),str.end(),' ') != str.end()) {
-			std::string str_copy = str;
-			str_copy.erase(std::remove(str_copy.begin(),str_copy.end(),' '),str_copy.end());
-			return translate_string_default(str_copy,default_val);
-		}
-
-		return default_val;
-	}
-#else
 	return str;
-#endif
 }
 
 std::vector<language_def> get_languages()
@@ -131,10 +115,6 @@ bool internal_set_language(const language_def& locale, config& cfg)
 
 			setlocale (LC_MESSAGES, locale.localename.c_str());
 
-			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
-				strings_[j->first] = j->second;
-			}
-
 			font::set_font((**i)["font"]);
 
 			return true;
@@ -154,31 +134,27 @@ bool set_language(const language_def& locale)
 	std::transform(locale.localename.begin(),locale.localename.end(),locale_lc.begin(),tolower);
 
 	config cfg;
-#ifdef USE_OLD_TRANS
-	if(locale_lc == "english") {
-#endif
-		try {
-			cfg.read(preprocess_file("data/translations/english.cfg"));
-		} catch(config::error& e) {
-			std::cerr << "Could not read english.cfg\n";
-			throw e;
-		}
-#ifdef USE_OLD_TRANS
-	} else if (locale.localename != "") {
-		try {
-			cfg.read(preprocess_file("data/translations/"));
-			
-			//default to English locale first, then set desired locale
-			internal_set_language(known_languages[1],cfg);
-		} catch(config::error& e) {
-			std::cerr << "error opening translations: '" << e.message << "' Defaulting to system locale\n";
-			return set_language(known_languages[0]);
-		}
-	}
-#endif
 
 	current_language = locale;
 	setlocale (LC_MESSAGES, locale.localename.c_str());
+
+	// fill string_table (should be moved somwhere else some day)
+	try {
+		cfg.read(preprocess_file("data/translations/english.cfg"));
+	} catch(config::error& e) {
+		std::cerr << "Could not read english.cfg\n";
+		throw e;
+	}
+
+	config* langp = cfg.child("language");
+	if (langp == NULL)
+	 	std::cerr << "No [language] block found in english.cfg";	
+
+	for(string_map::const_iterator j = langp->values.begin(); j != langp->values.end(); ++j) {
+		strings_[j->first] = j->second;
+	}
+	// end of string_table fill
+
 	return true;
 }
 
