@@ -286,6 +286,7 @@ void mp_connect::lists_init()
 		}
 
 		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
+		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
 	}
 
 	std::string prefix;
