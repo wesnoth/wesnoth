@@ -519,7 +519,6 @@ void mp_connect::gui_update()
 	}
 
 	const config::child_itors sides = level_->child_range("side");
-	SDL_Rect rect;
 
 	for(size_t n = 0; n != combos_type_.size(); ++n) {
 		config& side = **(sides.first+n);

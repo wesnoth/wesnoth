@@ -112,7 +112,7 @@ namespace hotkey {
 
 hotkey_item::hotkey_item(HOTKEY_COMMAND id, const std::string& command, const std::string& description, bool hidden) 
 	: id_(id), command_(command), description_(description), keycode_(0),
-	alt_(false), ctrl_(false), shift_(false), cmd_(false), hidden_(hidden)
+	  shift_(false), ctrl_(false), alt_(false), cmd_(false), hidden_(hidden)
 {
 }
 
