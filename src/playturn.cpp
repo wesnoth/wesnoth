@@ -1056,13 +1056,9 @@ void turn_info::attack_resistance()
 		int resistance = 100 - atoi(i->second.c_str());
 
 		//if resistance is less than 0, display in red
-		std::string prefix = "";
-		if(resistance < 0) {
-			prefix = "#";
-		}
+		const char prefix = resistance < 0 ? font::BAD_TEXT : font::NULL_MARKUP;
 
-		const std::string& lang_weapon =
-		               string_table["weapon_type_" + i->first];
+		const std::string& lang_weapon = string_table["weapon_type_" + i->first];
 		const std::string& weap = lang_weapon.empty() ? i->first : lang_weapon;
 
 		std::stringstream str;
@@ -1231,7 +1227,7 @@ void turn_info::status_table()
 		//cause it to be displayed in the correct colour
 		str << data.villages << ","
 		    << data.units << "," << data.upkeep << ","
-		    << (data.net_income < 0 ? "#":"") << data.net_income;
+			<< (data.net_income < 0 ? font::BAD_TEXT:font::NULL_MARKUP) << data.net_income;
 
 		if(game_config::debug)
 			str << "," << teams_[n].gold();
@@ -1272,12 +1268,12 @@ void turn_info::recruit()
 		const unit_type& type = u_type->second;
 
 		//display units that we can't afford to recruit in red
-		const std::string prefix = (type.cost() > current_team.gold() ? "#" : "");
+		const char prefix = (type.cost() > current_team.gold() ? font::BAD_TEXT : font::NULL_MARKUP);
 
 		std::stringstream description;
 
-		description << "&" << type.image() << "," << prefix << type.language_name() << ","
-		            << prefix << type.cost() << " gold";
+		description << font::IMAGE << type.image() << "," << prefix << font::LARGE_TEXT << type.language_name() << "\n"
+		            << prefix << type.cost() << " " << string_table["gold"];
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
 	}

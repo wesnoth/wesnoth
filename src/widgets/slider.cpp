@@ -39,7 +39,7 @@ slider::slider(const slider& o) :
    area_(o.area_), value_(o.value_), drawn_(o.drawn_), highlight_(o.highlight_),
    clicked_(o.clicked_), dragging_(o.dragging_)
 {
-	   background_changed();
+	background_changed();
 }
 
 slider& slider::operator=(const slider& o)

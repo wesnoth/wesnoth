@@ -158,14 +158,21 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 {
-	if(area.x + area.w > src->w || area.y + area.h > src->h)
+	if(area.x + area.w > src->w || area.y + area.h > src->h) {
+		std::cerr << "illegal surface portion...\n";
 		return NULL;
+	}
 
 	const SDL_PixelFormat* const fmt = src->format;
 	SDL_Surface* const dst = SDL_CreateRGBSurface(0,area.w,area.h,
 	                                              fmt->BitsPerPixel,fmt->Rmask,
 	                                              fmt->Gmask,fmt->Bmask,
 	                                              fmt->Amask);
+	if(dst == NULL) {
+		std::cerr << "Could not create a new surface in get_surface_portion()\n";
+		return NULL;
+	}
+
 	SDL_Rect dstarea = {0,0,0,0};
 
 	SDL_BlitSurface(src,&area,dst,&dstarea);

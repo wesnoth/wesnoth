@@ -704,23 +704,29 @@ void fade_logo(display& screen, int xpos, int ypos)
 		return;
 	}
 
-	CKey key;
+	//only once, when the game is first started, the logo fades in
+	static bool faded_in = false;
 
-	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+	if(!faded_in) {
+		faded_in = true;
+		CKey key;
 
-	for(int i = 0; i < 170; i += 5) {
-		const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
-		if(new_button && !last_button)
-			break;
+		bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
 
-		last_button = new_button;
+		for(int i = 0; i < 170; i += 5) {
+			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+			if(new_button && !last_button)
+				break;
 
-		SDL_SetAlpha(logo,SDL_SRCALPHA,i);
-		screen.blit_surface(xpos,ypos,logo);
-		update_rect(xpos,ypos,logo->w,logo->h);
-		screen.video().flip();
-		SDL_Delay(20);
-		events::pump();
+			last_button = new_button;
+
+			SDL_SetAlpha(logo,SDL_SRCALPHA,i);
+			screen.blit_surface(xpos,ypos,logo);
+			update_rect(xpos,ypos,logo->w,logo->h);
+			screen.video().flip();
+			SDL_Delay(20);
+			events::pump();
+		}
 	}
 
 	SDL_SetAlpha(logo,SDL_SRCALPHA,255);

@@ -1,4 +1,5 @@
 #include "actions.hpp"
+#include "font.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 #include "reports.hpp"
@@ -70,13 +71,13 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		std::string unit_status = "healthy", prefix = "";
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus)) {
 			unit_status = "invisible";
-			prefix = "@";
+			prefix = font::GOOD_TEXT;
 		} else if(u->second.has_flag("slowed")) {
 			unit_status = "slowed";
-			prefix = "#";
+			prefix = font::BAD_TEXT;
 		} else if(u->second.has_flag("poisoned")) {
 			unit_status = "poisoned";
-			prefix = "#";
+			prefix = font::BAD_TEXT;
 		}
 
 		report res(prefix + string_table[unit_status]);
@@ -106,9 +107,9 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	}
 	case UNIT_HP:
 		if(u->second.hitpoints() <= u->second.max_hitpoints()/3)
-			str << "#";
+			str << font::BAD_TEXT;
 		else if(u->second.hitpoints() > 2*(u->second.max_hitpoints()/3))
-			str << "@";
+			str << font::GOOD_TEXT;
 
 		str << u->second.hitpoints()
 		    << "/" << u->second.max_hitpoints() << "\n";
@@ -120,7 +121,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		} else {
 			//if killing a unit of the same level as us lets us advance, display in 'good' colour
 			if(u->second.max_experience() - u->second.experience() <= game_config::kill_experience*u->second.type().level()) {
-				str << "@";
+				str << font::GOOD_TEXT;
 			}
 
 			str << u->second.experience() << "/" << u->second.max_experience();
@@ -163,12 +164,12 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		report res("",tod.image);
 		std::stringstream tooltip;
 		
-		tooltip << "+" << translate_string_default(tod.id,tod.name) << "\n"
+		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
 		        << translate_string("lawful") << " " << string_table["units"] << ": "
-				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
+				<< (tod.lawful_bonus > 0 ? font::LARGE_TEXT : font::NULL_MARKUP) << tod.lawful_bonus << "%\n"
 				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
 				<< translate_string("chaotic") << " " << string_table["units"] << ": "
-				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
+				<< (tod.lawful_bonus < 0 ? font::LARGE_TEXT : font::NULL_MARKUP) << (tod.lawful_bonus*-1) << "%";
 		res.tooltip = tooltip.str();
 		return res;
 	}
@@ -176,7 +177,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		str << status.turn() << "/" << status.number_of_turns() << "\n";
 		break;
 	case GOLD:
-		str << (current_team.gold() < 0 ? "#" : "") << current_team.gold();
+		str << (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << current_team.gold();
 		break;
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
@@ -199,7 +200,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	}
 	case INCOME: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
-		str << (data.net_income < 0 ? "#" : "") << data.net_income;
+		str << (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
 		break;
 	}
 	case TERRAIN: {

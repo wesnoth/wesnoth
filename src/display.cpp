@@ -473,10 +473,6 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 	const std::string& text = label.text();
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(disp.screen_area());
-
-	if(text.empty() == false) {
-		font::draw_text(&disp,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
-	}
 	
 	if(icon.empty() == false) {
 		scoped_sdl_surface surf(image::get_image(icon,image::UNSCALED));
@@ -485,7 +481,14 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 		}
 
 		SDL_BlitSurface(surf.get(),NULL,target,&loc);
+
+		if(text.empty() == false) {
+			tooltips::add_tooltip(loc,text);
+		}
+	} else if(text.empty() == false) {
+		font::draw_text(&disp,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
 	}
+
 
 	update_rect(loc);
 }
@@ -756,20 +759,20 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	if(map_.on_board(loc) &&
 	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]), 
 			status_.get_time_of_day().lawful_bonus)) {
-		status = "@" + string_table["invisible"];
+		status = font::GOOD_TEXT + string_table["invisible"];
 	}
 
 	if(u.has_flag("slowed")) {
-		status = "#" + string_table["slowed"];
+		status = font::BAD_TEXT + string_table["slowed"];
 	}
 
 	if(u.has_flag("poisoned")) {
-		status = "#" + string_table["poisoned"];
+		status = font::BAD_TEXT + string_table["poisoned"];
 	}
 
 	std::stringstream details;
-	details << "+" << u.description() << "\n"
-	        << "+" << u.type().language_name()
+	details << font::LARGE_TEXT << u.description() << "\n"
+	        << font::LARGE_TEXT << u.type().language_name()
 			<< "\n-(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
@@ -784,9 +787,9 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	//display in green/white/red depending on hitpoints
 	if(u.hitpoints() <= u.max_hitpoints()/3)
-		details << "#";
+		details << font::BAD_TEXT;
 	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
-		details << "@";
+		details << font::GOOD_TEXT;
 
 	details << string_table["hp"] << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
@@ -797,7 +800,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		//if killing a unit the same level as us would level us up,
 		//then display in green
 		if(u.max_experience() - u.experience() < game_config::kill_experience) {
-			details << "@";
+			details << font::GOOD_TEXT;
 		}
 
 		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();

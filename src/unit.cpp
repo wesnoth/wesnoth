@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "font.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "language.hpp"
@@ -722,7 +724,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& violate_max = (**i.first)["violate_maximum"];
 
 			if(increase_total.empty() == false) {
-				description << (increase_total[0] != '-' ? "+" : "") << increase_total << translate_string("hp");
+				description << (increase_total[0] != '-' ? font::LARGE_TEXT : font::NULL_MARKUP) << increase_total << translate_string("hp");
 
 				//a percentage on the end means increase by that many percent
 				if(increase_total[increase_total.size()-1] == '%') {
@@ -755,7 +757,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("moves");
+				description << (increase[0] != '-' ? font::LARGE_TEXT : font::NULL_MARKUP) << increase << translate_string("moves");
 
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
@@ -778,7 +780,7 @@ void unit::add_modification(const std::string& type,
 			const std::string& increase = (**i.first)["increase"];
 
 			if(increase.empty() == false) {
-				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("xp");
+				description << (increase[0] != '-' ? font::LARGE_TEXT : font::NULL_MARKUP) << increase << translate_string("xp");
 				if(increase[increase.size()-1] == '%') {
 					const std::string inc(increase.begin(),increase.end()-1);
 					maxExperience_ += (maxExperience_*atoi(inc.c_str()))/100;

@@ -115,6 +115,10 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
                 YELLOW_COLOUR = {0xFF,0xFF,0x00,0},
                 BUTTON_COLOUR = {0xBC,0xB0,0x88,0};
 
+const char LARGE_TEXT='+', SMALL_TEXT='-', GOOD_TEXT='@', BAD_TEXT='#',
+           NORMAL_TEXT='{', BLACK_TEXT='}', IMAGE='&', NULL_MARKUP='^';
+
+
 const SDL_Color& get_side_colour(int side)
 {
 	side -= 1;
@@ -244,46 +248,47 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 
 	std::string::const_iterator i1 = text.begin();
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
+	SDL_Color col = colour;
+	int sz = size;
 	for(;;) {
 		if(i1 != i2) {
-			SDL_Color col = colour;
-			int sz = size;
 			if(use_markup == USE_MARKUP) {
-				if(*i1 == '\\') {
-					// this must either be a quoted special character or a
-					// quoted backslash - either way, we remove the leading backslash
-					++i1;
-				} else if(*i1 == '#') {
+				if(*i1 == BAD_TEXT) {
 					col = BAD_COLOUR;
 					++i1;
-				} else if(*i1 == '@') {
+					continue;
+				} else if(*i1 == GOOD_TEXT) {
 					col = GOOD_COLOUR;
 					++i1;
-				} else if(*i1 == '{') {
+					continue;
+				} else if(*i1 == NORMAL_TEXT) {
 					col = NORMAL_COLOUR;
 					++i1;
-				} else if(*i1 == '}') {
+					continue;
+				} else if(*i1 == BLACK_TEXT) {
 					col = BLACK_COLOUR;
 					++i1;
-				} else if(*i1 == '+') {
+					continue;
+				} else if(*i1 == LARGE_TEXT) {
 					sz += 2;
 					++i1;
-				} else if(*i1 == '-') {
+					continue;
+				} else if(*i1 == SMALL_TEXT) {
 					sz -= 2;
 					++i1;
-				}
-
-				if(i1 != i2 && *i1 >= 1 && *i1 <= 9) {
+					continue;
+				} else if(*i1 == NULL_MARKUP) {
+					++i1;
+					continue;
+				} else if(*i1 >= 1 && *i1 <= 9) {
 					col = get_side_colour(*i1);
 					++i1;
+					continue;
 				}
 			}
 
 			if(i1 != i2) {
-				std::string new_string(i1,i2);
-
-				config::unescape(new_string);
-
+				const std::string new_string(i1,i2);
 				const SDL_Rect rect =
 				    draw_text_line(gui,area,sz,col,new_string,x,y,bg,
 				                   use_tooltips);
@@ -293,6 +298,9 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 				y += rect.h;
 			}
 		}
+
+		col = colour;
+		sz = size;
 
 		if(i2 == text.end()) {
 			break;
@@ -308,8 +316,8 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 bool is_format_char(char c)
 {
 	switch(c) {
-	case '#':
-	case '@':
+	case GOOD_TEXT:
+	case BAD_TEXT:
 		return true;
 	default:
 		return false;

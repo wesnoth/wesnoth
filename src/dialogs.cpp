@@ -12,6 +12,7 @@
 */
 
 #include "dialogs.hpp"
+#include "font.hpp"
 #include "language.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -100,7 +101,7 @@ void show_objectives(display& disp, config& level_info)
 
 	const std::string& objectives = lang_objectives.empty() ?
 	        level_info["objectives"] : lang_objectives;
-	gui::show_dialog(disp, NULL, "", "+" + name + "\n" +
+	gui::show_dialog(disp, NULL, "", font::LARGE_TEXT + name + "\n" +
 	         (objectives.empty() ? no_objectives : objectives), gui::OK_ONLY);
 
 }
