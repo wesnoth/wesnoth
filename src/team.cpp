@@ -65,6 +65,7 @@ team::team_info::team_info(const config& cfg)
 	team_name = cfg["team_name"];
 	if(team_name.empty())
 		team_name = cfg["side"];
+	flag = cfg["flag"];
 
 	description = cfg["description"];
 
@@ -185,6 +186,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
+	cfg["flag"] = flag;
 	cfg["description"] = description;
 
 	char buf[50];
@@ -473,6 +475,11 @@ const std::string& team::team_name() const
 void team::change_team(const std::string& name)
 {
 	info_.team_name = name;
+}
+
+const std::string& team::flag() const
+{
+	return info_.flag;
 }
 
 const std::string& team::ai_algorithm() const

@@ -69,6 +69,8 @@ public:
 		std::vector<int> enemies;
 		std::string team_name;
 
+		std::string flag;
+
 		std::string description;
 
 		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
@@ -127,6 +129,8 @@ public:
 
 	const std::string& team_name() const;
 	void change_team(const std::string& name);
+
+	const std::string& flag() const;
 
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;

@@ -1,3 +1,5 @@
+<<<<<<< aclocal.m4
+=======
 # generated automatically by aclocal 1.7.9 -*- Autoconf -*-
 
 # Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2002
@@ -833,3 +835,4 @@ AC_CONFIG_COMMANDS_PRE(
 Usually this means the macro was only invoked conditionally.])
 fi])])
 
+>>>>>>> 1.9

@@ -297,15 +297,33 @@ void internal_preprocess_data(const std::string& data,
 				internal_preprocess_data(str,defines_map,depth,res,NULL,line,fname,srcline);
 			} else if(depth < 20) {
 				std::string prefix;
-				std::string fname = newfilename;
+				std::string nfname;
 
-				//if the filename begins with a '~', then look in the user's data directory
-				if(newfilename != "" && fname[0] == '~') {
+				//if the filename begins with a '~', then look
+				//in the user's data directory
+				if(newfilename != "" && newfilename[0] == '~') {
+					nfname = newfilename;
 					prefix = get_user_data_dir() + "/";
-					fname.erase(fname.begin(),fname.begin()+1);
+					nfname.erase(nfname.begin(),nfname.begin()+1);
+					nfname = prefix + "data/" + nfname;
+
+				} else if(newfilename.size() >= 2 && newfilename[0] == '.' &&
+						newfilename[1] == '/' ) {
+					//if the filename begins with a "./", then look
+					//in the same directory as the file currrently
+					//being preprocessed
+					nfname = newfilename;
+					nfname.erase(nfname.begin(),nfname.begin()+2);
+					nfname = directory_name(fname) + nfname;
+					
+					std::cerr << "Preprocessing relative path " << newfilename << " preprocessed to " << nfname << "\n";
+
+				} else {
+					nfname = "data/" + newfilename;
 				}
 
-				internal_preprocess_file(prefix + "data/" + fname,
+				std::cerr << "Preprocessing subfile " << nfname << "\n";
+				internal_preprocess_file(nfname,
 				                       defines_map, depth+1,res,
 				                       lines_src,line);
 			} else {

@@ -267,6 +267,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		for(config::child_list::const_iterator su = starting_units.begin();
 		    su != starting_units.end(); ++su) {
 			unit new_unit(gameinfo,**su);
+
+			new_unit.set_side(lexical_cast_default<int>((**ui)["side"],1));
+
 			const std::string& x = (**su)["x"];
 			const std::string& y = (**su)["y"];
 

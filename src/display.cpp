@@ -53,8 +53,8 @@ namespace {
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
-				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
-				 const config& built_terrains) :
+		const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
+		const config& built_terrains) :
 	screen_(video), xpos_(0), ypos_(0),
 	zoom_(DefaultZoom), map_(map), units_(units),
 	minimap_(NULL), redrawMinimap_(false),
@@ -84,14 +84,20 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	//inits the flag list
 	flags_.reserve(teams_.size());
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		std::string flag = game_config::flag_image;
-		std::string::size_type pos;
-		while((pos = flag.find("%d")) != std::string::npos) {
-			std::ostringstream s;
-			s << int(i+1);
-			flag.replace(pos, 2, s.str());
+		std::string flag;
+		if(teams_[i].flag().empty()) {
+			flag = game_config::flag_image;
+			std::string::size_type pos;
+			while((pos = flag.find("%d")) != std::string::npos) {
+				std::ostringstream s;
+				s << int(i+1);
+				flag.replace(pos, 2, s.str());
+			}
+		} else {
+			flag = teams_[i].flag();
 		}
-		std::cerr << "Adding flag from " << flag << "\n";
+
+		std::cerr << "Adding flag for team " << i << " from animation " << flag << "\n";
 		flags_.push_back(animated<image::locator>(flag));
 		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
 	}
