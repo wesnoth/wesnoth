@@ -26,6 +26,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai_move.cpp \
 		  cavegen.cpp \
 		  config.cpp \
+		  cursor.cpp \
 		  dialogs.cpp \
 		  display.cpp \
 		  events.cpp \
@@ -75,12 +76,13 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
-                  about.hpp \
+          about.hpp \
 		  actions.hpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
 		  cavegen.hpp \
+		  cursor.hpp \
 		  config.hpp \
 		  dialogs.hpp \
 		  display.hpp \

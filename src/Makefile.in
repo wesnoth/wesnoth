@@ -162,6 +162,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai_move.cpp \
 		  cavegen.cpp \
 		  config.cpp \
+		  cursor.cpp \
 		  dialogs.cpp \
 		  display.cpp \
 		  events.cpp \
@@ -211,12 +212,13 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
-                  about.hpp \
+          about.hpp \
 		  actions.hpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
 		  cavegen.hpp \
+		  cursor.hpp \
 		  config.hpp \
 		  dialogs.hpp \
 		  display.hpp \
@@ -385,13 +387,13 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) cavegen.$(OBJEXT) \
-	config.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
-	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
-	game.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
-	mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
+	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
+	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
+	font.$(OBJEXT) game.$(OBJEXT) game_config.$(OBJEXT) \
+	game_events.$(OBJEXT) gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) \
+	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
+	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
 	multiplayer_client.$(OBJEXT) multiplayer_connect.$(OBJEXT) \
 	multiplayer_lobby.$(OBJEXT) network.$(OBJEXT) \
 	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
@@ -436,11 +438,11 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/ai.Po ./$(DEPDIR)/ai_attack.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/ai_move.Po ./$(DEPDIR)/button.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/cavegen.Po ./$(DEPDIR)/combo.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/config.Po ./$(DEPDIR)/dialogs.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/display.Po ./$(DEPDIR)/editor.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/events.Po ./$(DEPDIR)/filesystem.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/font.Po ./$(DEPDIR)/game.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/game_config.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/config.Po ./$(DEPDIR)/cursor.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/dialogs.Po ./$(DEPDIR)/display.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/editor.Po ./$(DEPDIR)/events.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po ./$(DEPDIR)/font.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/gamestatus.Po ./$(DEPDIR)/hotkeys.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
@@ -539,6 +541,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cavegen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/combo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/config.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cursor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogs.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/display.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor.Po@am__quote@

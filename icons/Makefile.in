@@ -141,13 +141,15 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+EXTRA_DIST = wesnoth.desktop
+
 @GNOME1_TRUE@gnome1desktopdir = @GNOME1_DESKTOP@
 @GNOME1_TRUE@dist_gnome1desktop_DATA = wesnoth.desktop
 @GNOME1_TRUE@gnome1icondir = $(datadir)/icons
 @GNOME1_TRUE@gnome1icon_DATA = ../images/wesnoth-icon.png
 
 @GNOME2_TRUE@gnome2desktopdir = $(datadir)/applications
-@GNOME2_TRUE@dist_gnome2desktop_DATA = 
+@GNOME2_TRUE@dist_gnome2desktop_DATA = wesnoth.desktop 
 @GNOME2_TRUE@gnome2icondir = $(datadir)/icons
 @GNOME2_TRUE@gnome2icon_DATA = ../images/wesnoth-icon.png
 
