@@ -556,7 +556,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 							<< i->second.max_experience() << ","
 							<< i->second.movement_left() << "/"
 							<< i->second.total_movement() << ","
-							<< i->first.x << "-" << i->first.y;
+							<< (i->first.x+1) << "-" << (i->first.y+1);
 
 						items.push_back(row.str());
 
