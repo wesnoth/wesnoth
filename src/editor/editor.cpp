@@ -254,9 +254,10 @@ void map_editor::edit_new_map() {
 }
 
 void map_editor::edit_load_map() {
-	const std::string map = load_map_dialog(gui_, changed_since_save());
+	std::string fn = "";
+	const std::string map = load_map_dialog(gui_, changed_since_save(), fn);
 	if (map != "") {
-		throw new_map_exception(map);
+		throw new_map_exception(map, fn);
 	}
 }
 
@@ -677,6 +678,9 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 	std::string filename = fn;
 	if (filename == "") {
 		filename = filename_;
+	}
+	else {
+		filename_ = filename;
 	}
 	try {
 		write_file(filename, map_.write());

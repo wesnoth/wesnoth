@@ -211,7 +211,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 }
 
 
-std::string load_map_dialog(display &disp, bool confirmation_needed) {
+std::string load_map_dialog(display &disp, bool confirmation_needed,
+							std::string &loaded_file) {
 	const std::string system_path = game_config::path + "/data/maps/";
 	
 	std::vector<std::string> files;
@@ -273,6 +274,7 @@ std::string load_map_dialog(display &disp, bool confirmation_needed) {
 			&& !confirm_modification_disposal(disp)) {
 			return "";
 		}
+		loaded_file = filename;
 		return map;
 	}
 }

@@ -14,6 +14,8 @@
 #include "../config.hpp"
 #include "../map.hpp"
 
+#include <map>
+
 #ifndef EDITOR_DIALOGS_H_INCLUDED
 #define EDITOR_DIALOGS_H_INCLUDED
 
@@ -37,8 +39,10 @@ std::string new_map_dialog(display &disp, gamemap::TERRAIN fill_terrain,
 /// confirmation_needed is true, the user will be asked if she wants to
 /// continue even though the changes to the current map is lost. Return
 /// the string representation of the map that is loaded, or the empty
-/// string if none was.
-std::string load_map_dialog(display &disp, bool confirmation_needed);
+/// string if none was and the filename. loaded_file will be set to the
+/// filename loaded if the load succeeded.
+std::string load_map_dialog(display &disp, bool confirmation_needed,
+							std::string &loaded_file);
 
 
 

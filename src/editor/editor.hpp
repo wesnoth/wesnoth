@@ -131,8 +131,10 @@ public:
 	
 	// Exception thrown when new map is to be loaded.
 	struct new_map_exception {
-		new_map_exception(const std::string &new_map) : new_map_(new_map) {}
-		const std::string new_map_;
+		new_map_exception(const std::string &map, const std::string filename="")
+			: new_map(map), new_filename(filename) {}
+		const std::string new_map;
+		const std::string new_filename;
 	};
 	
 private:

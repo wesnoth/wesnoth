@@ -101,9 +101,8 @@ int main(int argc, char** argv)
 			done = true;
 		}
 		catch (map_editor::map_editor::new_map_exception &e) {
-			std::cerr << "new map " << e.new_map_ << std::endl;
-			mapdata = e.new_map_;
-			filename = "";
+			mapdata = e.new_map;
+			filename = e.new_filename;
 		}
 		catch (gamemap::incorrect_format_exception) {
 			std::cerr << "The map is not in a correct format, sorry." << std::endl;
