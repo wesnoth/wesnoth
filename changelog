@@ -1,9 +1,13 @@
 CVS HEAD:
  * improved sound quality
- * limit to username lenght in multiplayer
+ * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
+ * new units
+   * Drake Hatchling
+ * multiplayer improvements:
+   * limit to username lenght
+   * banning for multiplayer server games
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
  * support for relative {./includes} in WML files
- * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
  * fixed enemies being on wrong side in 'The Dark Hordes: A New Chance' scenario
  * fixed image::locator not building on MSVC6
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
@@ -11,6 +15,12 @@ CVS HEAD:
  * fixed a bug where a network user may crash other games using specially crafted packets, reading out-of-bounds data
  * fixed segfault when a [story] background image was not found
  * fixed narrator messages not being displayed sometimes
+ * fixed autoconf macro for checking OGG support in SDL_mixer (it depended on private symbols not always included by distributions)
+ * fixed game segfaulting when a message with no speaker is issued
+ * fixed markovian name generation not playing well with UTF-8 names
+ * fixed map border not getting changed when using [terrain] to change terrain
+ * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
+ * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * dummy config.h file for platforms where ./configure is not used
 
 Version 0.8.1:
