@@ -769,7 +769,7 @@ void menu::process_help_string(int mousex, int mousey)
 
 		if(size_t(loc.first) < help_.size()) {
 			const std::vector<std::string>& row = help_[loc.first];
-			if(size_t(loc.second) < help_.size()) {
+			if(size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
 					std::cerr << "setting help string from menu to '" << help << "'\n";

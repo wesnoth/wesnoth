@@ -17,6 +17,7 @@
 #include "game_config.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
@@ -81,6 +82,8 @@ void advance_unit(const game_data& info,
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
 {
+	const command_disabler cmd_disabler(&gui);
+	
 	std::map<gamemap::location,unit>::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {
 		return false;
