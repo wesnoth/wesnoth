@@ -175,9 +175,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		std::cerr << "found gold: '" << gold << "'\n";
 
-		int ngold = ::atoi(gold.c_str());
-		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold &&
-		   (*level)["disallow_recall"] != "yes") {
+		int ngold = lexical_cast_default<int>(gold);
+		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold) {
 			ngold = state_of_game.gold;
 		}
 
@@ -568,10 +567,6 @@ redo_turn:
 			//and the player returns 100% of gold.
 			if(end_level.result == CONTINUE) {
 				state_of_game.gold = teams[0].gold();
-				return VICTORY;
-			}
-
-			if((*level)["disallow_recall"] == "yes") {
 				return VICTORY;
 			}
 

@@ -13,6 +13,7 @@
 #ifndef MULTIPLAYER_CONNECT_H_INCLUDED
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
+#include "multiplayer_lobby.hpp"
 #include "network.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
@@ -20,12 +21,13 @@
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
 
+#include <deque>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 
-class mp_connect
+class mp_connect : public lobby::dialog
 {
 
 public:
@@ -36,11 +38,16 @@ public:
 
 	int load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
 	             bool fog_game, bool shroud_game, bool allow_observers);
-	int gui_do();
+
+	void start_game();
 
 private:
+	void set_area(const SDL_Rect& rect);
+	lobby::RESULT process();
+	bool manages_network() const { return true; }
+	bool get_network_data(config& cfg);
+
 	void lists_init();
-	void gui_init();
 	void gui_update();
 	void add_player(const std::string& name);
 	void remove_player(const std::string& name);
@@ -56,6 +63,10 @@ private:
 	game_data *data_;
 	game_state *state_;
 	config *level_;
+
+	//the state the scenario is in before changes,
+	//so that we can generate a diff to send to clients
+	config old_level_;
 	std::map<config*,network::connection> positions_;
 
 	config loaded_level_;
@@ -65,8 +76,7 @@ private:
 	int status_;
 	bool join_;
 
-	int width_;
-	int height_;
+	SDL_Rect rect_;
 
 	std::vector<std::string> player_types_;
 	std::vector<std::string> player_races_;
@@ -84,6 +94,8 @@ private:
 	gui::button cancel_;
 
 	std::vector<surface_restorer> gold_bg_;
+
+	std::deque<config> network_data_;
 };
 
 #endif

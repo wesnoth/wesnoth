@@ -264,7 +264,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				if(game_map->on_board(vacant_dst)) {
 					const int side = u->second.side();
 
-					//note that inserting into a map does NOT invalidate iterators
+					//note that inserting into a map does not invalidate iterators
 					//into the map, so this sequence is fine.
 					units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
 					units->erase(u);

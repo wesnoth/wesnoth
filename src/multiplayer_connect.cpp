@@ -41,14 +41,13 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 		       const config &cfg, game_data& data, game_state& state,
 		       bool join) : 
 	    disp_(&disp), cfg_(&cfg), data_(&data), state_(&state),
-	    show_replay_(false), save_(false), status_(0), join_(join),
+	    show_replay_(false), save_(false), join_(join),
 	    player_types_(), player_races_(), player_teams_(),
 	    player_colors_(), combos_type_(), combos_race_(),
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
-	    ai_(gui::button(disp, string_table["ai_players"])),
-	    width_(630), height_(290)
+	    ai_(gui::button(disp, string_table["ai_players"]))
 {
 	// Send Initial information
 	config response;
@@ -84,10 +83,8 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		save_ = true;
 		bool show_replay = false;
 		const std::string game = dialogs::load_game_dialog(*disp_, &show_replay);
-		if(game == "")
-		{
-			status_ = -1;
-			return status_;
+		if(game == "") {
+			return -1;
 		}
 
 		log_scope("loading save");
@@ -101,8 +98,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 			gui::show_dialog(*disp_, NULL, "", 
 					 string_table["not_multiplayer_save_message"],
 					 gui::OK_ONLY);
-			status_ = -1;
-			return status_;
+			return -1;
 		}
 
 		if(state_->version != game_config::version) {
@@ -110,8 +106,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 						string_table["version_save_message"],
 						gui::YES_NO);
 			if(res == 1) {
-				status_ = -1;
-				return status_;
+				return -1;
 			}
 		}
 
@@ -181,8 +176,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	if(era_cfg == NULL) {
 		std::cerr << "ERROR: era '" << era_ << "' not found\n";
-		status_ = -1;
-		return status_;
+		return -1;
 	}
 
 	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
@@ -192,8 +186,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 				 string_table["error_no_mp_sides"],
 				 gui::OK_ONLY);
 		std::cerr << "no multiplayer sides found\n";
-		status_ = -1;
-		return status_;
+		return -1;
 	}
 
 	config::child_iterator sd;
@@ -249,13 +242,11 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 	(*level_)["era"] = era;
 
 	lists_init();
-	gui_init();
-	status_ = 0;
 
 	//if we have any connected players when we are created, send them the data
 	network::send_data(*level_);
 
-	return status_;
+	return 0;
 }
 
 void mp_connect::lists_init()
@@ -283,9 +274,7 @@ void mp_connect::lists_init()
 
 	//Teams
 	config::child_iterator sd;
-	height_ = 120;
 	for(sd = sides.first; sd != sides.second; ++sd) {
-		height_ = height_ + 30;
 		const int team_num = sd - sides.first;
 		const std::string& team_name = (**sd)["team_name"];
 		std::stringstream str;
@@ -323,55 +312,53 @@ void mp_connect::remove_player(const std::string& name)
 		player_types_.erase(itor);
 }
 
-void mp_connect::gui_init()
+void mp_connect::set_area(const SDL_Rect& rect)
 {
+	rect_ = rect;
+
+	const int left = rect.x;
+	const int right = rect.x + rect.w;
+	const int center_x = rect.x + rect.w/2;
+	const int top = rect.y;
+	const int bottom = rect.y + rect.h;
+	const int center_y = rect.y + rect.h/2;
+
+	const int width = rect.w;
+	const int height = rect.h;
 
 	// Wait to players, Configure players
-	gui::draw_dialog_frame((disp_->x()-width_)/2, (disp_->y()-height_)/2,
-			       width_, height_, *disp_);
+	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
 
 	//Buttons
-	launch_.set_xy((disp_->x()/2)-launch_.width()/2-100,
-		       (disp_->y()-height_)/2+height_-30);
-	cancel_.set_xy((disp_->x()/2)-launch_.width()/2+100,
-		       (disp_->y()-height_)/2+height_-30);
-	ai_.set_xy((disp_->x()-width_)/2+30,
-		   (disp_->y()-height_)/2+height_-60);
+	launch_.set_xy(center_x-launch_.width()/2-100,bottom-30);
+	cancel_.set_xy(center_x-launch_.width()/2+100,bottom-30);
+	ai_.set_xy(left+30,bottom-60);
 
 	//Title and labels
-	SDL_Rect labelr;
-	font::draw_text(disp_,disp_->screen_area(),24,font::NORMAL_COLOUR,
-	                string_table["game_lobby"],-1,(disp_->y()-height_)/2+5);
-	labelr.x=0; labelr.y=0; labelr.w=disp_->x(); labelr.h=disp_->y();
-	labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-			string_table["player_type"],0,0);
+	gui::draw_dialog_title(left,top,*disp_,string_table["game_lobby"]);
+
+	SDL_Rect labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,
+			                          string_table["player_type"],0,0);
+	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	                string_table["player_type"],(left+30)+(launch_.width()/2)-(labelr.w/2),top+35);
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["race"],0,0);
+
+	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	                string_table["race"],(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
+	
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["team"],0,0);
+
 	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["player_type"],((disp_->x()-width_)/2+30)+(launch_.width()/2)-(labelr.w/2),
-			(disp_->y()-height_)/2+35);
-	labelr.x=0; labelr.y=0; labelr.w=disp_->x(); labelr.h=disp_->y();
-	labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-			string_table["race"],0,0);
+	                string_table["team"],(left+260)+(launch_.width()/2)-(labelr.w/2),top+35);
+	
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["color"],0,0);
+
 	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["race"],((disp_->x()-width_)/2+145)+(launch_.width()/2)-(labelr.w/2),
-			(disp_->y()-height_)/2+35);
-	labelr.x=0; labelr.y=0; labelr.w=disp_->x(); labelr.h=disp_->y();
-	labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-			string_table["team"],0,0);
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["team"],((disp_->x()-width_)/2+260)+(launch_.width()/2)-(labelr.w/2),
-			(disp_->y()-height_)/2+35);
-	labelr.x=0; labelr.y=0; labelr.w=disp_->x(); labelr.h=disp_->y();
-	labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-			string_table["color"],0,0);
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["color"],((disp_->x()-width_)/2+375)+(launch_.width()/2)-(labelr.w/2),
-			(disp_->y()-height_)/2+35);
-	labelr.x=0; labelr.y=0; labelr.w=disp_->x(); labelr.h=disp_->y();
-	labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-			string_table["gold"],0,0);
-	font::draw_text(disp_,disp_->screen_area(),14,font::GOOD_COLOUR,
-	                string_table["gold"],((disp_->x()-width_)/2+480)+(launch_.width()/2)-(labelr.w/2),
-			(disp_->y()-height_)/2+35);
+	                string_table["color"],(left+375)+(launch_.width()/2)-(labelr.w/2),top+35);
+	
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,string_table["gold"],0,0);
+	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
+	                string_table["gold"],(left+480)+(launch_.width()/2)-(labelr.w/2),top+35);
 
 	//Per player settings
 	const config::child_itors sides = level_->child_range("side");
@@ -384,52 +371,48 @@ void mp_connect::gui_init()
 	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	config::child_iterator sd;
-	SDL_Rect rect;
 
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int side_num = sd - sides.first;
 
 		//Player number
-		font::draw_text(disp_,disp_->screen_area(), 24, font::GOOD_COLOUR,
-		                (*sd)->values["side"], (disp_->x()-width_)/2+10,
-				(disp_->y()-height_)/2+53+(30*side_num));
+		font::draw_text(disp_,rect, 24, font::GOOD_COLOUR,
+		                (*sd)->values["side"], left+10, top+53+(30*side_num));
 
 		//Player type
 		combos_type_.push_back(gui::combo(*disp_, player_types_));
-		combos_type_.back().set_xy((disp_->x()-width_)/2+30,
-					   (disp_->y()-height_)/2+55+(30*side_num));
+		combos_type_.back().set_xy(left+30,top+55+(30*side_num));
 
 		//Player race
 		combos_race_.push_back(gui::combo(*disp_, player_races_));
-		combos_race_.back().set_xy((disp_->x()-width_)/2+145,
-					   (disp_->y()-height_)/2+55+(30*side_num));
+		combos_race_.back().set_xy(left+145,top+55+(30*side_num));
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_xy((disp_->x()-width_)/2+260,
-					   (disp_->y()-height_)/2+55+(30*side_num));
+		combos_team_.back().set_xy(left+260,top+55+(30*side_num));
 		combos_team_.back().set_selected(side_num);
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
-		combos_color_.back().set_xy((disp_->x()-width_)/2+375,
-					    (disp_->y()-height_)/2+55+(30*side_num));
+		combos_color_.back().set_xy(left+375,top+55+(30*side_num));
 		combos_color_.back().set_selected(side_num);
 
+		SDL_Rect r;
+
 		//Player gold
-		rect.x = (disp_->x()-width_)/2+490;
-		rect.y = (disp_->y()-height_)/2+55+(30*side_num);
-		rect.w = launch_.width()-5;
-		rect.h = launch_.height();
-		sliders_gold_.push_back(gui::slider(*disp_, rect));
+		r.x = left+490;
+		r.y = top+55+(30*side_num);
+		r.w = launch_.width()-5;
+		r.h = launch_.height();
+		sliders_gold_.push_back(gui::slider(*disp_, r));
 		sliders_gold_.back().set_min(20);
 		sliders_gold_.back().set_max(1000);
 		sliders_gold_.back().set_value(100);
-		rect.w = 30;
-		rect.x = (disp_->x()-width_)/2+603;
-		gold_bg_.push_back(surface_restorer(&disp_->video(),rect));
+		r.w = 30;
+		r.x = left+603;
+		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
 		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
-		                "100", rect.x, rect.y);
+		                "100", r.x, r.y);
 	}
 
 	update_whole_screen();
@@ -500,8 +483,8 @@ void mp_connect::gui_update()
 		//Player Gold
 		std::string str = side["gold"];
 		sliders_gold_[n].set_value(atoi(str.c_str()));
-		rect.x = (disp_->x() - width_) / 2 + 603;
-		rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
+		rect.x = rect_.x + 603;
+		rect.y = rect_.y + 55 + (30 * n);
 		rect.w = 30;
 		rect.h = launch_.height();
 		gold_bg_[n].restore();
@@ -514,204 +497,212 @@ void mp_connect::gui_update()
 	}
 }
 
-int mp_connect::gui_do()
+lobby::RESULT mp_connect::process()
 {
-	const events::event_context context;
-
-	SDL_Rect rect;
+	if(old_level_.empty()) {
+		old_level_ = *level_;
+	}
 
 	const config* const era_cfg = cfg_->find_child("era","id",era_);
 	if(era_cfg == NULL) {
-		return -1;
+		std::cerr << "ERROR: cannot find era '" << era_ << "'\n";
+		return lobby::QUIT;
 	}
 
 	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	const config::child_itors sides = level_->child_range("side");
-	int new_playergold = -1;
-	int cur_playergold = -1;
 
-	config orig_level = *level_;
+	int mousex, mousey;
+	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-	for(;;) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+	bool level_changed = false;
 
-		bool level_changed = false;
+	for(size_t n = 0; n != combos_team_.size(); ++n) {
+		config& side = **(sides.first+n);
 
-		for(size_t n = 0; n != combos_team_.size(); ++n) {
-			config& side = **(sides.first+n);
+		//Player type
+		//Don't let user change this if a player is sitting
+		combos_type_[n].enable(combos_type_[n].selected() < 4);
 
-			//Player type
-			//Don't let user change this if a player is sitting
-			combos_type_[n].enable(combos_type_[n].selected() < 4);
-
-			int old_select = combos_type_[n].selected();
-			if(combos_type_[n].process(mousex, mousey, left_button)) {
-				if(combos_type_[n].selected() == 0) {
-					side["controller"] = "network";
-					side["description"] = "";
-				}else if(combos_type_[n].selected() == 1){
-					side["controller"] = "human";
-					side["description"] = "";
-				}else if(combos_type_[n].selected() == 2){
-					side["controller"] = "ai";
-					side["description"] = string_table["ai_controlled"];
-				}else if(combos_type_[n].selected() == 3){
-					combos_type_[n].set_selected(old_select);
-				}else if(combos_type_[n].selected() == 4){
-					side["controller"] = "human";
-					side["description"] = preferences::login();
-					for(size_t m = 0; m != combos_type_.size(); ++m) {
-						if(m != n) {
-							if(combos_type_[m].selected() == 4){
-								combos_type_[m].set_selected(0);
-								config& si = **(sides.first+m);
-								si["controller"] = "network";
-								si["description"] = "";
-							}
+		int old_select = combos_type_[n].selected();
+		if(combos_type_[n].process(mousex, mousey, left_button)) {
+			if(combos_type_[n].selected() == 0) {
+				side["controller"] = "network";
+				side["description"] = "";
+			}else if(combos_type_[n].selected() == 1){
+				side["controller"] = "human";
+				side["description"] = "";
+			}else if(combos_type_[n].selected() == 2){
+				side["controller"] = "ai";
+				side["description"] = string_table["ai_controlled"];
+			}else if(combos_type_[n].selected() == 3){
+				combos_type_[n].set_selected(old_select);
+			}else if(combos_type_[n].selected() == 4){
+				side["controller"] = "human";
+				side["description"] = preferences::login();
+				for(size_t m = 0; m != combos_type_.size(); ++m) {
+					if(m != n) {
+						if(combos_type_[m].selected() == 4){
+							combos_type_[m].set_selected(0);
+							config& si = **(sides.first+m);
+							si["controller"] = "network";
+							si["description"] = "";
 						}
 					}
-				}else{
-					side["controller"] = "network";
-					side["description"] = "";
 				}
-
-				level_changed = true;
+			}else{
+				side["controller"] = "network";
+				side["description"] = "";
 			}
 
-			//Player race
-			combos_race_[n].enable(!save_);
-			combos_team_[n].enable(!save_);
-			combos_color_[n].enable(!save_);
-			
-			if(combos_race_[n].process(mousex, mousey, left_button)) {
-				const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
-				for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
-					side[i->first] = i->second;
-				}
-				level_changed = true;
-			}
-
-			//Player team
-			if(combos_team_[n].process(mousex, mousey, left_button)) {
-				std::stringstream str;
-				str << (combos_team_[n].selected()+1);
-				side["team_name"] = str.str();
-				level_changed = true;
-			}
-
-			if(combos_color_[n].process(mousex, mousey, left_button)) {
-				level_changed = true;
-			}
-
-			sliders_gold_[n].process();
-			if(!save_){
-				cur_playergold = sliders_gold_[n].value();
-				std::stringstream playergold;
-				playergold << cur_playergold;
-				if (side["gold"] != playergold.str())
-				{
-					side["gold"] = playergold.str();
-					rect.x = (disp_->x() - width_) / 2 + 603;
-					rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
-					rect.w = 30;
-					rect.h = launch_.height();
-					gold_bg_[n].restore();
-					font::draw_text(disp_, disp_->screen_area(), 12,
-							font::GOOD_COLOUR,
-					                (*sides.first[n])["gold"],
-							rect.x, rect.y);
-					update_rect(rect);
-					level_changed = true;
-				}
-			}
+			level_changed = true;
 		}
 
-		if(cancel_.process(mousex,mousey,left_button)) {
-			if(network::nconnections() > 0) {
-				config cfg;
-				cfg.add_child("leave_game");
-				network::send_data(cfg);
-			}
-			status_ = 0;
-			return status_;
-		}
-
-		if(ai_.process(mousex,mousey,left_button)) {
-			for(size_t m = 0; m != combos_team_.size(); ++m) {
-				config& si = **(sides.first+m);
-				si["controller"] = "ai";
-				si["description"] = string_table["ai_controlled"];
-				combos_type_[m].set_selected(2);
+		//Player race
+		combos_race_[n].enable(!save_);
+		combos_team_[n].enable(!save_);
+		combos_color_[n].enable(!save_);
+		
+		if(combos_race_[n].process(mousex, mousey, left_button)) {
+			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
+			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
+				side[i->first] = i->second;
 			}
 			level_changed = true;
 		}
 
-		launch_.enable(is_full());
-
-		if(launch_.process(mousex,mousey,left_button)) {
-			//Tell everyone to start
-			config cfg;
-			cfg.add_child("start_game");
-			network::send_data(cfg);
-	
-			recorder.set_save_info(*state_);
-
-			//see if we should show the replay of the game so far
-			if(!recorder.empty()) {
-				if(false) {
-					recorder.set_skip(0);
-				} else {
-					std::cerr << "skipping...\n";
-					recorder.set_skip(-1);
-				}
-			}
-
-			state_->snapshot = *level_;
-
-			if(save_ == false) {
-				state_->starting_pos = *level_;
-			}
-
-			//any replay data isn't meant to hang around under the level,
-			//it was just there to tell clients about the replay data
-			level_->clear_children("replay");
-			std::vector<config*> story;
-			state_->can_recruit.clear();
-			play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
-			recorder.clear();
-
-			if(network::nconnections() > 0) {
-				config cfg;
-				cfg.add_child("leave_game");
-				network::send_data(cfg);
-			}
-
-			status_ = 0;
-			return status_;
+		//Player team
+		if(combos_team_[n].process(mousex, mousey, left_button)) {
+			std::stringstream str;
+			str << (combos_team_[n].selected()+1);
+			side["team_name"] = str.str();
+			level_changed = true;
 		}
 
-		if(level_changed) {
-			config diff;
-			diff.add_child("scenario_diff",level_->get_diff(orig_level));
-
-			network::send_data(diff);
-
-			orig_level = *level_;
+		if(combos_color_[n].process(mousex, mousey, left_button)) {
+			level_changed = true;
 		}
 
-		gui_update();
-		update_positions();
-		update_network();
+		sliders_gold_[n].process();
+		if(!save_){
+			const int cur_playergold = sliders_gold_[n].value();
+			std::stringstream playergold;
+			playergold << cur_playergold;
+			if (side["gold"] != playergold.str())
+			{
+				side["gold"] = playergold.str();
 
-		events::pump();
-		disp_->video().flip();
-		SDL_Delay(20);
+				SDL_Rect rect;
+				rect.x = rect_.x + 603;
+				rect.y = rect_.y + 55 + (30 * n);
+				rect.w = 30;
+				rect.h = launch_.height();
+				gold_bg_[n].restore();
+				font::draw_text(disp_, rect_, 12,font::GOOD_COLOUR,(*sides.first[n])["gold"],
+						        rect.x, rect.y);
+				update_rect(rect);
+				level_changed = true;
+			}
+		}
 	}
 
-	return status_;
+	if(cancel_.process(mousex,mousey,left_button)) {
+		if(network::nconnections() > 0) {
+			config cfg;
+			cfg.add_child("leave_game");
+			network::send_data(cfg);
+		}
+
+		return lobby::QUIT;
+	}
+
+	if(ai_.process(mousex,mousey,left_button)) {
+		for(size_t m = 0; m != combos_team_.size(); ++m) {
+			config& si = **(sides.first+m);
+			si["controller"] = "ai";
+			si["description"] = string_table["ai_controlled"];
+			combos_type_[m].set_selected(2);
+		}
+		level_changed = true;
+	}
+
+	launch_.enable(is_full());
+
+	if(launch_.process(mousex,mousey,left_button)) {
+		return lobby::CREATE;
+	}
+
+	if(level_changed) {
+		config diff;
+		diff.add_child("scenario_diff",level_->get_diff(old_level_));
+
+		network::send_data(diff);
+
+		old_level_ = *level_;
+	}
+
+	gui_update();
+	update_positions();
+	update_network();
+
+	events::pump();
+	disp_->video().flip();
+	SDL_Delay(20);
+
+	return lobby::CONTINUE;
+}
+
+bool mp_connect::get_network_data(config& cfg)
+{
+	if(network_data_.empty() == false) {
+		cfg = network_data_.front();
+		network_data_.pop_front();
+		return true;
+	} else {
+		return false;
+	}
+}
+
+void mp_connect::start_game()
+{
+	//Tell everyone to start
+	config cfg;
+	cfg.add_child("start_game");
+	network::send_data(cfg);
+
+	recorder.set_save_info(*state_);
+
+	//see if we should show the replay of the game so far
+	if(!recorder.empty()) {
+		if(false) {
+			recorder.set_skip(0);
+		} else {
+			std::cerr << "skipping...\n";
+			recorder.set_skip(-1);
+		}
+	}
+
+	state_->snapshot = *level_;
+
+	if(save_ == false) {
+		state_->starting_pos = *level_;
+	}
+
+	//any replay data isn't meant to hang around under the level,
+	//it was just there to tell clients about the replay data
+	level_->clear_children("replay");
+	std::vector<config*> story;
+	state_->can_recruit.clear();
+	play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
+	recorder.clear();
+
+	if(network::nconnections() > 0) {
+		config cfg;
+		cfg.add_child("leave_game");
+		network::send_data(cfg);
+	}
 }
 
 void mp_connect::update_positions()
@@ -786,6 +777,12 @@ void mp_connect::update_network()
 
 	//No network errors
 	if(sock) {
+		//check if this is a message that might be useful to our caller
+		if(cfg.child("message") || cfg.child("gamelist")) {
+			network_data_.push_back(cfg);
+			return;
+		}
+
 		const int side_drop = atoi(cfg["side_drop"].c_str())-1;
 		if(side_drop >= 0 && side_drop < int(sides.size())) {
 			std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_drop]);

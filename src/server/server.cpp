@@ -173,6 +173,11 @@ void server::run()
 						             std::find_if(games_.begin(),games_.end(),
 						                          game_id_matches(nid));
 						if(it == games_.end()) {
+							//send a response saying the game has been cancelled
+							config cfg;
+							cfg.add_child("leave_game");
+							network::send_data(cfg,sock);
+
 							std::cerr << "attempt to join unknown game\n";
 							continue;
 						}
@@ -202,7 +207,7 @@ void server::run()
 						const player_map::const_iterator p = players_.find(sock);
 						assert(p != players_.end());
 						(*message)["sender"] = p->second.name();
-						lobby_players_.send_data(data);
+						lobby_players_.send_data(data,sock);
 					}
 				} else {
 					std::vector<game>::iterator g;
@@ -414,7 +419,10 @@ void server::run()
 					//forward data to all players who are in the game,
 					//except for the original data sender
 					g->send_data(data,sock);
-					g->record_data(data);
+
+					if(g->started()) {
+						g->record_data(data);
+					}
 				}
 			}
 			

@@ -28,7 +28,7 @@ const int font_size = 16;
 textbox::textbox(display& d, int width, const std::string& text)
            : widget(d), text_(string_to_wstring(text)), text_pos_(0),
              cursor_(text_.size()), selstart_(-1), selend_(-1), grabmouse_(false),
-	     show_cursor_(true), text_image_(NULL)
+	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL)
 {
 	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -117,11 +117,17 @@ void textbox::draw()
 
 void textbox::process()
 {
-	//Blink the cursor
-	bool old_cursor = show_cursor_;
-	show_cursor_ = (SDL_GetTicks()%1000) > 500;
-	if (old_cursor != show_cursor_)
-		set_dirty(true);
+	if(focus()) {
+		const int ticks = SDL_GetTicks();
+		if(ticks > show_cursor_at_+500) {
+			show_cursor_ = !show_cursor_;
+			show_cursor_at_ = ticks;
+			set_dirty();
+		}
+	} else if(show_cursor_ == true) {
+		show_cursor_ = false;
+		set_dirty();
+	}
 	
 	draw();
 }
@@ -193,6 +199,18 @@ void textbox::handle_event(const SDL_Event& event)
 	const Uint8 mousebuttons = SDL_GetMouseState(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
 		grabmouse_ = false;
+	}
+
+	//if we don't have the focus, then see if we gain the focus,
+	//otherwise return
+	if(focus() == false) {
+		if(event.type == SDL_MOUSEMOTION &&
+		   mousex >= location().x && mousey >= location().y &&
+		   mousex < location().x + location().w && mousey < location().y + location().h) {
+			events::focus_handler(this);
+		}
+		   
+		return;
 	}
 
 	if( (grabmouse_ && (event.type == SDL_MOUSEMOTION)) ||  (
@@ -299,6 +317,11 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if(is_selection() && (selend_ != cursor_))
 		selstart_ = selend_ = -1;
+
+	//since there has been cursor activity, make the cursor appear for
+	//at least the next 500ms.
+	show_cursor_ = true;
+	show_cursor_at_ = SDL_GetTicks();
 
 	update_text_cache(changed);
 	set_dirty(true);

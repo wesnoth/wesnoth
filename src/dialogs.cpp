@@ -63,6 +63,23 @@ void advance_unit(const game_data& info,
 		                       gui::OK_ONLY, &lang_options, &sample_units);
 	}
 
+	recorder.choose_option(res);
+
+	animate_unit_advancement(info,units,loc,gui,size_t(res));
+}
+
+bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
+{
+	std::map<gamemap::location,unit>::iterator u = units.find(loc);
+	if(u == units.end() || u->second.advances() == false) {
+		return false;
+	}
+
+	const std::vector<std::string>& options = u->second.type().advances_to();
+	if(choice >= options.size()) {
+		return false;
+	}
+	
 	//when the unit advances, it fades to white, and then switches to the
 	//new unit, then fades back to the normal colour
 	
@@ -75,9 +92,7 @@ void advance_unit(const game_data& info,
 		}
 	}
 
-	recorder.choose_option(res);
-
-	::advance_unit(info,units,loc,options[res]);
+	::advance_unit(info,units,loc,options[choice]);
 
 	gui.invalidate_unit();
 
@@ -94,6 +109,8 @@ void advance_unit(const game_data& info,
 
 	gui.invalidate_all();
 	gui.draw();
+
+	return true;
 }
 
 void show_objectives(display& disp, config& level_info)

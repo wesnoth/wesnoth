@@ -29,6 +29,9 @@ public:
 	virtual void handle_event(const SDL_Event& event) = 0;
 	virtual void process() {}
 	virtual void draw() const {}
+
+	virtual bool requires_event_focus() const { return false; }
+
 protected:
 	handler();
 	virtual ~handler();
@@ -36,6 +39,11 @@ protected:
 private:
 	int unicode_;
 };
+
+void focus_handler(const handler* ptr);
+void cycle_focus();
+
+bool has_focus(const handler* ptr);
 
 //event_context objects control the handler objects that SDL events are sent
 //to. When an event_context is created, it will become the current event context.

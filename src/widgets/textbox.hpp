@@ -53,6 +53,11 @@ private:
 	std::vector<int> char_pos_;
 
 	bool show_cursor_;
+
+	//records the time the cursor was shown at last
+	//the cursor should be inverted every 500 ms.
+	//this will be reset when keyboard input events occur
+	int show_cursor_at_;
 	shared_sdl_surface text_image_;
 	SDL_Rect text_size_;
 
@@ -63,6 +68,10 @@ private:
 	void update_text_cache(bool reset = false);
 	bool is_selection();
 	void erase_selection();
+
+	//make it so that only one textbox object can be receiving
+	//events at a time.
+	bool requires_event_focus() const { return true; }
 };
 
 }

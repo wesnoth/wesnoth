@@ -72,14 +72,18 @@ const SDL_Rect& widget::location() const
 
 void widget::set_focus(bool focus)
 {
+	if(focus) {
+		events::focus_handler(this);
+	}
+
 	focus_ = focus;
 	dirty_ = true;
 	draw();
 }
 
-const bool widget::focus() const
+bool widget::focus() const
 {
-	return focus_;
+	return events::has_focus(this) && focus_;
 }
 
 void widget::set_dirty(bool dirty)

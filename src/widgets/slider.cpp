@@ -59,9 +59,19 @@ void slider::set_value(int value)
 	set_dirty(true);
 }
 
-int slider::value()
+int slider::value() const
 {
 	return value_;
+}
+
+int slider::min_value() const
+{
+	return min_;
+}
+
+int slider::max_value() const
+{
+	return max_;
 }
 
 SDL_Rect slider::slider_area() const

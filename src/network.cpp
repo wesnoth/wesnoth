@@ -144,8 +144,7 @@ manager::~manager()
 	}
 }
 
-server_manager::server_manager(int port, bool create_server)
-                                    : free_(false)
+server_manager::server_manager(int port, bool create_server) : free_(false)
 {
 	if(create_server && !server_socket) {
 		server_socket = get_socket(connect("",port));

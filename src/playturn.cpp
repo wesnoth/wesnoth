@@ -1284,7 +1284,7 @@ void turn_info::terrain_table()
 
 			std::stringstream str;
 			str << lang_name << ",";
-			if(moves < 10)
+			if(moves < 100)
 				str << moves;
 			else
 				str << "--";

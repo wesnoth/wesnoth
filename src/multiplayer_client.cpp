@@ -6,6 +6,7 @@
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "scoped_resource.hpp"
 #include "show_dialog.hpp"
 
 #include <sstream>
@@ -112,46 +113,83 @@ void receive_gamelist(display& disp, config& data)
 	}
 }
 
-class wait_for_start : public gui::dialog_action
+class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(config& cfg) : got_side(false), sides_(cfg) {}
+	wait_for_start(display& disp, config& cfg) : got_side(false), status(START_GAME), disp_(disp), cancel_button_(NULL), sides_(cfg) {}
 
-	int do_action() {
+	void set_area(const SDL_Rect& area) {
+		const std::string text = string_table["waiting_start"];
+		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),14,font::NORMAL_COLOUR,text,0,0);
+		rect.x = area.x + area.w/2 - rect.w/2;
+		rect.y = area.y + area.h/2 - rect.h/2;
+		font::draw_text(&disp_,rect,14,font::NORMAL_COLOUR,text,rect.x,rect.y);
+
+		cancel_button_.assign(new gui::button(disp_,string_table["cancel"]));
+		cancel_button_->set_xy(area.x+area.w/2 - cancel_button_->width()/2,
+		                       area.y+area.h - cancel_button_->height() - 10);
+		cancel_button_->draw();
+	}
+
+	lobby::RESULT process() {
+		int mousex, mousey;
+		const bool button = SDL_GetMouseState(&mousex,&mousey)&SDL_BUTTON_LMASK;
+		if(cancel_button_->process(mousex,mousey,button)) {
+			return lobby::QUIT;
+		}
+
 		config reply;
 		const network::connection res = network::receive_data(reply);
 		if(res) {
 			std::cerr << "received data while waiting: " << reply.write() << "\n";
 			if(reply.values["failed"] == "yes") {
-				got_side = false;
-				return SIDE_UNAVAILABLE;
+				status = SIDE_UNAVAILABLE;
+				return lobby::QUIT;
 			} else if(reply["side_secured"].empty() == false) {
-				std::cerr << "received side secured message\n";
 				got_side = true;
+				std::cerr << "received side secured message\n";
 			} else if(reply.child("start_game")) {
 				std::cerr << "received start_game message\n";
 				//break out of dialog
-				return START_GAME;
+				status = START_GAME;
+				return lobby::CREATE;
 			} else if(reply.child("leave_game")) {
-				return GAME_CANCELLED;
+				status = GAME_CANCELLED;
+				return lobby::QUIT;
 			} else if(reply.child("scenario_diff")) {
 				std::cerr << "received diff for scenario....applying...\n";
 				sides_.apply_diff(*reply.child("scenario_diff"));
-			} else {
+			} else if(reply.child("side")) {
 				sides_ = reply;
 				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
+			} else {
+				data_.push_back(reply);
 			}
 		}
 
-		return CONTINUE_DIALOG;
+		return lobby::CONTINUE;
 	}
 
 	bool got_side;
-
-	enum { START_GAME = 1, GAME_CANCELLED, SIDE_UNAVAILABLE };
+	enum { START_GAME, GAME_CANCELLED, SIDE_UNAVAILABLE } status;
 
 private:
+	display& disp_;
 	config& sides_;
+
+	util::scoped_ptr<gui::button> cancel_button_;
+	std::deque<config> data_;
+
+	bool manages_network() const { return true; }
+	bool get_network_data(config& out) {
+		if(data_.empty()) {
+			return false;
+		} else {
+			out = data_.front();
+			data_.pop_front();
+			return true;
+		}
+	}
 };
 }
 
@@ -245,15 +283,23 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		if(gamelist != NULL) {
 			config game_data = data;
 			int status = -1;
+
+			std::vector<std::string> chat_messages;
 			while(status == -1) {
-				const lobby::RESULT res = lobby::enter(disp,game_data,cfg);
+				const lobby::RESULT res = lobby::enter(disp,game_data,cfg,NULL,chat_messages);
 				switch(res) {
 					case lobby::QUIT: {
 						status = 1;
 						return;
 					}
-					case lobby::CREATE: {
-						status = play_multiplayer(disp,units_data,cfg,state,false);
+					case lobby::CREATE: {;
+						multiplayer_game_setup_dialog mp_dialog(disp,units_data,cfg,state,false);
+						const lobby::RESULT res = lobby::enter(disp,game_data,cfg,&mp_dialog,chat_messages);
+						if(res == lobby::CREATE) {
+							mp_dialog.start_game();
+							status = -1;
+						}
+
 						break;
 					}
 					case lobby::JOIN: {
@@ -374,19 +420,19 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			network::send_data(response);
 		}
     
-		wait_for_start waiter(sides);
-		const int dialog_res = gui::show_dialog(disp,NULL,"",
-		                        string_table["waiting_start"],
-		                        gui::CANCEL_ONLY,NULL,NULL,"",NULL,&waiter);
-		if(dialog_res == wait_for_start::GAME_CANCELLED) {
+		wait_for_start waiter(disp,sides);
+		std::vector<std::string> messages;
+		config game_data;
+		const lobby::RESULT dialog_res = lobby::enter(disp,game_data,cfg,&waiter,messages);
+		if(waiter.status == wait_for_start::GAME_CANCELLED) {
 			gui::show_dialog(disp,NULL,"",string_table["game_cancelled"],
 			                 gui::OK_ONLY);
 			continue;
-		} else if(dialog_res == wait_for_start::SIDE_UNAVAILABLE) {
+		} else if(waiter.status == wait_for_start::SIDE_UNAVAILABLE) {
 			gui::show_dialog(disp,NULL,"",string_table["side_unavailable"],
 			                 gui::OK_ONLY);
 			continue;			
-		} else if(dialog_res != wait_for_start::START_GAME) {
+		} else if(dialog_res != lobby::CREATE) {
 			continue;
 		}
     

@@ -28,10 +28,10 @@ namespace dialogs
 //
 //note that 'loc' is not a reference, because deleting an item from the units map
 //(when replacing the unit that is being advanced) will possibly invalidate the reference
-void advance_unit(const game_data& info,
-                  std::map<gamemap::location,unit>& units,
-				  gamemap::location loc,
+void advance_unit(const game_data& info,unit_map& units, gamemap::location loc,
 				  display& gui, bool random_choice=false);
+
+bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice);
 
 void show_objectives(display& disp, config& level_info);
 

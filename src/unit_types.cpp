@@ -281,6 +281,8 @@ const std::string& unit_movement_type::name() const
 
 int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrain,int recurse_count) const
 {
+	const int impassable = 10000000;
+
 	const std::map<gamemap::TERRAIN,int>::const_iterator i = moveCosts_.find(terrain);
 	if(i != moveCosts_.end()) {
 		return i->second;
@@ -290,10 +292,10 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 	const std::string& underlying = map.underlying_terrain(terrain);
 	if(underlying.size() != 1 || underlying[0] != terrain) {
 		if(recurse_count >= 100) {
-			return 100;
+			return impassable;
 		}
 
-		int min_value = 100;
+		int min_value = impassable;
 		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
 			const int value = movement_cost(map,*i,recurse_count+1);
 			if(value < min_value) {
@@ -314,7 +316,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
 		if(names.size() != 1) {
 			std::cerr << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
-			return 100;
+			return impassable;
 		}
 
 		const std::string& name = names.front();
@@ -331,7 +333,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 	}
 
 	if(res <= 0) {
-		res = 100;
+		res = impassable;
 	}
 
 	moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));

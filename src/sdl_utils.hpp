@@ -183,6 +183,8 @@ struct surface_restorer
 	void update();
 	void cancel();
 
+	const SDL_Rect& area() const { return rect_; }
+
 private:
 	class CVideo* target_;
 	SDL_Rect rect_;

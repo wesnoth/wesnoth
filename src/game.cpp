@@ -41,6 +41,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
+#include "util.hpp"
 #include "unit_types.hpp"
 #include "unit.hpp"
 #include "video.hpp"
@@ -201,6 +202,30 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 int play_game(int argc, char** argv)
 {
+	//parse arguments that shouldn't require a display device
+	int arg;
+	for(arg = 1; arg != argc; ++arg) {
+		const std::string val(argv[arg]);
+		if(val.empty()) {
+			continue;
+		}
+
+		if(val == "--help" || val == "-h") {
+			std::cout << "usage: " << argv[0]
+		    << " [options] [data-directory]\n"
+			<< "  -d, --debug       Shows debugging information in-game\n"
+			<< "  -f, --fullscreen  Runs the game in full-screen\n"
+			<< "  -h, --help        Prints this message and exits\n"
+			<< "  -t, --test        Runs the game in a small example scenario\n"
+			<< "  -w, --windowed    Runs the game in windowed mode\n";
+			return 0;
+		} else if(val == "--version" || val == "-v") {
+			std::cout << "Battle for Wesnoth " << game_config::version << "\n";
+			return 0;
+		}
+	}
+
+
 	srand(time(NULL));
 
 	std::cerr << "starting play_game\n";
@@ -217,14 +242,27 @@ int play_game(int argc, char** argv)
 
 	bool test_mode = false, multiplayer_mode = false, no_gui = false;
 
-	int arg;
 	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
 		}
 
-		if(val == "--nogui") {
+		if(val == "--resolution" || val == "-r") {
+			if(arg+1 != argc) {
+				++arg;
+				const std::string val(argv[arg]);
+				const std::vector<std::string> res = config::split(val,'x');
+				if(res.size() == 2) {
+					const int xres = lexical_cast_default<int>(res.front());
+					const int yres = lexical_cast_default<int>(res.back());
+					if(xres > 0 && yres > 0) {
+						const std::pair<int,int> resolution(xres,yres);
+						preferences::set_resolution(resolution);
+					}
+				}
+			}
+		} else if(val == "--nogui") {
 			no_gui = true;
 		} else if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
@@ -237,19 +275,6 @@ int play_game(int argc, char** argv)
 			test_mode = true;
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
-		} else if(val == "--help" || val == "-h") {
-			std::cout << "usage: " << argv[0]
-		    << " [options] [data-directory]\n"
-			<< "  -d, --debug       Shows debugging information in-game\n"
-			<< "  -f, --fullscreen  Runs the game in full-screen\n"
-			<< "  -h, --help        Prints this message and exits\n"
-			<< "  -t, --test        Runs the game in a small example scenario\n"
-			<< "  -w, --windowed    Runs the game in windowed mode\n";
-			return 0;
-		} else if(val == "--version" || val == "-v") {
-			std::cout << "Battle for Wesnoth " << game_config::version
-			          << "\n";
-			return 0;
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
@@ -271,17 +296,14 @@ int play_game(int argc, char** argv)
 	}
 
 	if(!no_gui) {
-		#if !(defined(__APPLE__))
-                image::set_wm_icon();
-                #endif
+        image::set_wm_icon();
 
 		int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
 		std::pair<int,int> resolution = preferences::resolution();
 
 		std::cerr << "checking mode possible...\n";
-		const int bpp = video.modePossible(resolution.first,resolution.second,
-		                                   16,video_flags);
+		const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
 	
 		std::cerr << bpp << "\n";
 	
@@ -740,7 +762,13 @@ int play_game(int argc, char** argv)
 			
 			try {
 				if(res == 0) {
-					play_multiplayer(disp,units_data,game_config,state);
+					std::vector<std::string> chat;
+					config game_data;
+					multiplayer_game_setup_dialog mp_dialog(disp,units_data,game_config,state,true);
+					const lobby::RESULT res = lobby::enter(disp,game_data,game_config,&mp_dialog,chat);
+					if(res == lobby::CREATE) {
+						mp_dialog.start_game();
+					}
 				} else if(res == 1) {
 					play_multiplayer_client(disp,units_data,game_config,state);
 				}

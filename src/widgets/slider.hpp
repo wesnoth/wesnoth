@@ -31,7 +31,9 @@ public:
 	void set_min(int value);
 	void set_max(int value);
 	void set_value(int value);
-	int value();
+	int value() const;
+	int max_value() const;
+	int min_value() const;
 
 	void process();
 

@@ -136,10 +136,10 @@ void game::add_player(network::connection player)
 {
 	//if the game has already started, we add the player as an observer
 	if(started_) {
-		const player_map::const_iterator pl = player_info_->find(player);
-		if(pl != player_info_->end()) {
+		const player_map::const_iterator info = player_info_->find(player);
+		if(info != player_info_->end()) {
 			config observer_join;
-			observer_join.add_child("observer").values["name"] = pl->second.name();
+			observer_join.add_child("observer").values["name"] = info->second.name();
 			send_data(observer_join);
 		}
 	}
@@ -150,6 +150,8 @@ void game::add_player(network::connection player)
 	}
 
 	players_.push_back(player);
+
+	send_user_list();
 
 	//send the player the history of the game to-date
 	for(std::vector<config>::const_iterator i = history_.begin();
@@ -181,6 +183,8 @@ void game::remove_player(network::connection player)
 		observer = false;
 	}
 
+	send_user_list();
+
 	const player_map::const_iterator pl = player_info_->find(player);
 	if(!observer || pl == player_info_->end()) {
 		return;
@@ -191,6 +195,27 @@ void game::remove_player(network::connection player)
 	observer_quit.add_child("observer_quit").values["name"] = pl->second.name();
 	send_data(observer_quit);
 }
+
+void game::send_user_list()
+{
+	//if the game hasn't started yet, then send all players a list
+	//of the users in the game
+	if(started_ == false && description() != NULL) {
+		config cfg;
+		cfg.add_child("gamelist");
+		for(std::vector<network::connection>::const_iterator p = players_.begin(); p != players_.end(); ++p) {
+			
+			const player_map::const_iterator info = player_info_->find(*p);
+			if(info != player_info_->end()) {
+				config& user = cfg.add_child("user");
+				user["name"] = info->second.name();
+			}
+		}
+
+		send_data(cfg);
+	}
+}
+
 
 int game::id() const
 {
@@ -264,4 +289,9 @@ void game::add_players(const game& other_game)
 {
 	players_.insert(players_.end(),
 	                other_game.players_.begin(),other_game.players_.end());
+}
+
+bool game::started() const
+{
+	return started_;
 }

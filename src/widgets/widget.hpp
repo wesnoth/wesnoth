@@ -17,7 +17,7 @@ public:
 	void set_width(int w);
 	void set_height(int h);
 
-	const bool focus() const;
+	virtual bool focus() const;
 	void set_focus(bool focus);
 
 protected:
@@ -27,7 +27,7 @@ protected:
 	virtual ~widget() { restorer_.cancel(); }
 
 	void bg_restore() const;
-	void set_dirty(bool dirty);
+	void set_dirty(bool dirty=true);
 	const bool dirty() const;
 
 	display& disp() const { return *disp_; }

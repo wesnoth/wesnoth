@@ -554,19 +554,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			const std::map<gamemap::location,unit>::iterator u = units.find(advancing_units.front());
-			assert(u != units.end());
+			const int val = lexical_cast_default<int>((*child)["value"]);
 
-			const std::string& num = (*child)["value"];
-			const int val = atoi(num.c_str());
-
-			const std::vector<std::string>& options = u->second.type().advances_to();
-			if(size_t(val) >= options.size()) {
-				std::cerr << "illegal advancement type\n";
-				throw replay::error();
-			}
-
-			advance_unit(gameinfo,units,advancing_units.front(),options[val]);
+			const bool res = dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
 
 			advancing_units.pop_front();
 

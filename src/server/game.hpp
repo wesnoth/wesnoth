@@ -57,6 +57,8 @@ public:
 	//game accordingly. Will return true iff the game's description changes.
 	bool process_commands(const config& cfg);
 
+	bool started() const;
+
 private:
 
 	//function which should be called every time a player ends their turn
@@ -64,6 +66,10 @@ private:
 	//the game's description when appropriate. Will return true if there has
 	//been a change.
 	bool end_turn();
+
+	//function to send a list of users to all clients. Only sends data before
+	//the game has started.
+	void send_user_list();
 
 	const player_map* player_info_;
 

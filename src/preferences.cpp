@@ -129,13 +129,15 @@ std::pair<int,int> resolution()
 
 void set_resolution(const std::pair<int,int>& resolution)
 {
+	std::pair<int,int> res = resolution;
+
+	//make sure resolutions are always divisible by 4
+	res.first &= ~3;
+	res.second &= ~3;
+
+	bool write_resolution = true;
+
 	if(disp != NULL) {
-		std::pair<int,int> res = resolution;
-
-		//make sure resolutions are always divisible by 4
-		res.first &= ~3;
-		res.second &= ~3;
-
 		CVideo& video = disp->video();
 		const int flags = fullscreen() ? FULL_SCREEN : 0;
 		if(video.modePossible(res.first,res.second,16,flags)) {
@@ -143,15 +145,18 @@ void set_resolution(const std::pair<int,int>& resolution)
 			video.setMode(res.first,res.second,16,flags);
 			disp->redraw_everything();
 
-			char buf[50];
-			sprintf(buf,"%d",res.first);
-			prefs["xresolution"] = buf;
-			sprintf(buf,"%d",res.second);
-			prefs["yresolution"] = buf;
 		} else {
-			gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],
-			                 gui::MESSAGE);
+			write_resolution = false;
+			gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],gui::MESSAGE);
 		}
+	}
+
+	if(write_resolution) {
+		char buf[50];
+		sprintf(buf,"%d",res.first);
+		prefs["xresolution"] = buf;
+		sprintf(buf,"%d",res.second);
+		prefs["yresolution"] = buf;
 	}
 }
 
