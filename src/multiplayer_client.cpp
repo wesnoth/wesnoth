@@ -104,12 +104,12 @@ void receive_gamelist(display& disp, config& data)
 {
 	for(;;) {
 
-		const network::connection res = gui::network_data_dialog(disp,string_table["receive_game_list"],data);
-		check_response(res,data);
-
 		if(data.child("gamelist")) {
 			break;
 		}
+
+		const network::connection res = gui::network_data_dialog(disp,string_table["receive_game_list"],data);
+		check_response(res,data);
 	}
 }
 
@@ -258,10 +258,12 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			response.add_child("login")["username"] = login;
 			network::send_data(response);
 	
-			data_res = network::receive_data(data,0,5000);
+			data_res = network::receive_data(data,0,3000);
 			if(!data_res) {
 				throw network::error(string_table["connection_timeout"]);
 			}
+
+			std::cerr << "login response: '" << data.write() << "'\n";
 
 			error = data.child("error");
 		} while(error != NULL);
@@ -276,6 +278,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		if(!first_time) {
 			receive_gamelist(disp,data);
 		}
+
+		std::cerr << "when receiving gamelist got '" << data.write() << "'\n";
 
 		//if we got a gamelist back - otherwise we have
 		//got a description of the game back

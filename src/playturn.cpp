@@ -1032,8 +1032,9 @@ void turn_info::cycle_units()
 		gui_.select_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
-	} else 
+	} else {
 		next_unit_ = gamemap::location();
+	}
 }
 
 void turn_info::end_turn()
@@ -2073,8 +2074,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
 			gui_.add_observer((**ob)["name"]);
 		}
-
-		return PROCESS_CONTINUE;
 	}
 
 	if(cfg.child("observer_quit") != NULL) {
@@ -2082,12 +2081,35 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
 			gui_.remove_observer((**ob)["name"]);
 		}
-
-		return PROCESS_CONTINUE;
 	}
 
 	if(cfg.child("leave_game") != NULL) {
 		throw network::error("");
+	}
+
+	bool turn_end = false;
+
+	const config::child_list& turns = cfg.get_children("turn");
+	if(turns.empty() == false) {
+		//forward the data to other peers
+		network::send_data_all_except(cfg,from);
+	}
+
+	for(config::child_list::const_iterator t = turns.begin(); t != turns.end(); ++t) {
+
+		replay replay_obj(**t);
+		replay_obj.start_replay();
+
+		try {
+			turn_end |= do_replay(gui_,map_,gameinfo_,units_,teams_,
+			   team_num_,status_,state_of_game_,&replay_obj);
+		} catch(replay::error& e) {
+			save_game(string_table["network_sync_error"]);
+
+			//throw e;
+		}
+
+		recorder.add_config(**t,replay::MARK_AS_SENT);
 	}
 
 	//if a side has dropped out of the game.
@@ -2126,27 +2148,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		} else {
 			throw network::error("");
 		}
-	}
-
-	bool turn_end = false;
-
-	if(cfg.child("turn") != NULL) {
-		//forward the data to other peers
-		network::send_data_all_except(cfg,from);
-
-		replay replay_obj(*cfg.child("turn"));
-		replay_obj.start_replay();
-
-		try {
-			turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
-			   team_num_,status_,state_of_game_,&replay_obj);
-		} catch(replay::error& e) {
-			save_game(string_table["network_sync_error"]);
-
-			//throw e;
-		}
-
-		recorder.add_config(*cfg.child("turn"),replay::MARK_AS_SENT);
 	}
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;

@@ -188,6 +188,8 @@ bool scrollbar::set_grip_position(int pos)
 		pos = location().h - grip_height_;
 
 	grip_position_ = pos;
+
+	set_dirty();
 	return true;
 }
 

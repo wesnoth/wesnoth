@@ -913,6 +913,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		} else if(result == "continue") {
 			throw end_level_exception(CONTINUE);
 		} else {
+			std::cerr << "throwing event defeat...\n";
 			throw end_level_exception(DEFEAT);
 		}
 	}
@@ -1171,10 +1172,13 @@ bool pump()
 		const std::string& event_name = ev.name;
 		typedef std::multimap<std::string,event_handler>::iterator itor;
 
+		std::cerr << "pumping event '" << event_name << "'\n";
+
 		//find all handlers for this event in the map
 		std::pair<itor,itor> i = events_map.equal_range(event_name);
 
 		while(i.first != i.second) {
+			std::cerr << "processing event '" << event_name << "'\n";
 			event_handler& handler = i.first->second;
 			if(process_event(handler, ev))
 				result = true;

@@ -1234,6 +1234,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 			std::cout << "\n";
 		}
 
+		std::cerr << "throwing end level exception...\n";
 		throw end_level_exception(found_human ? VICTORY : DEFEAT);
 	}
 

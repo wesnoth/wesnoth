@@ -94,6 +94,17 @@ namespace {
 			}
 		}
 	}
+
+	bool is_observer(const std::vector<team>& teams)
+	{
+		for(std::vector<team>::const_iterator i = teams.begin(); i != teams.end(); ++i) {
+			if(i->is_human()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
 
 LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
@@ -355,6 +366,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				if(team_units(units,player_number) == 0)
 					continue;
 
+				if(is_observer(teams)) {
+					gui.set_team(size_t(player_number-1));
+				}
+
 				std::stringstream player_number_str;
 				player_number_str << player_number;
 				game_events::set_variable("side_number",player_number_str.str());
@@ -515,7 +530,9 @@ redo_turn:
 					std::cout << "time over (draw)\n";
 				}
 
+				std::cerr << "firing time over event...\n";
 				game_events::fire("time over");
+				std::cerr << "done firing time over event...\n";
 
 				throw end_level_exception(DEFEAT);
 			}

@@ -448,11 +448,9 @@ config::config(const std::string& data,
 	read(data,line_sources);
 }
 
-config::config(const config& cfg) : values(cfg.values)
+config::config(const config& cfg)
 {
-	for(all_children_iterator j = cfg.ordered_begin(); j != cfg.ordered_end(); ++j) {
-		add_child(*(*j).first,*(*j).second);
-	}
+	append(cfg);
 }
 
 config::~config()
@@ -468,13 +466,21 @@ config& config::operator=(const config& cfg)
 
 	clear();
 
-	values = cfg.values;
-
-	for(all_children_iterator j = cfg.ordered_begin(); j != cfg.ordered_end(); ++j) {
-		add_child(*(*j).first,*(*j).second);
-	}
+	append(cfg);
 
 	return *this;
+}
+
+void config::append(const config& cfg)
+{
+	for(all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
+		const std::pair<const std::string*,const config*>& value = *i;
+		add_child(*value.first,*value.second);
+	}
+
+	for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
+		values[j->first] = j->second;
+	}
 }
 
 void config::read(const std::string& data,

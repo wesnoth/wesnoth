@@ -95,6 +95,9 @@ private:
 
 	std::vector<surface_restorer> gold_bg_;
 
+	surface_restorer message_bg_;
+	bool message_full_;
+
 	std::deque<config> network_data_;
 };
 

@@ -478,6 +478,10 @@ void set_default_send_size(size_t max_size)
 
 void send_data(const config& cfg, connection connection_num, size_t max_size)
 {
+	if(cfg.empty()) {
+		return;
+	}
+
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0)) {
 		return;
 	}

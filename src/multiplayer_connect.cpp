@@ -47,7 +47,8 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
-	    ai_(gui::button(disp, string_table["ai_players"]))
+	    ai_(gui::button(disp, string_table["ai_players"])),
+		message_full_(true)
 {
 	// Send Initial information
 	config response;
@@ -493,7 +494,21 @@ void mp_connect::gui_update()
 		                side["gold"],
 				rect.x, rect.y);
 		update_rect(rect);
+	}
 
+	const bool full = is_full();
+	if(full != message_full_) {
+		message_full_ = full;
+		if(full) {
+			message_bg_.restore();
+			message_bg_ = surface_restorer();
+		} else {
+			SDL_Rect rect = font::draw_text(NULL,rect_,12,font::NORMAL_COLOUR,string_table["waiting_other_players"],0,0);
+			rect.x = ai_.location().x + ai_.location().w + 10;
+			rect.y = ai_.location().y;
+			message_bg_ = surface_restorer(&disp_->video(),rect);
+			font::draw_text(disp_,rect,12,font::NORMAL_COLOUR,string_table["waiting_other_players"],rect.x,rect.y);
+		}
 	}
 }
 
@@ -646,10 +661,6 @@ lobby::RESULT mp_connect::process()
 	gui_update();
 	update_positions();
 	update_network();
-
-	events::pump();
-	disp_->video().flip();
-	SDL_Delay(20);
 
 	return lobby::CONTINUE;
 }

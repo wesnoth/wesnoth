@@ -205,6 +205,10 @@ struct config
 
 	void apply_diff(const config& diff); //throw error
 
+	//append data from another config object to this one. attributes in the
+	//latter config object will clobber attributes in this one.
+	void append(const config& cfg);
+
 	//all the attributes of this node.
 	string_map values;
 

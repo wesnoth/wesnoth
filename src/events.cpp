@@ -158,7 +158,6 @@ void cycle_focus()
 
 bool has_focus(const handler* ptr)
 {
-	std::cerr << "focus query " << (int)ptr << "\n";
 	if(event_contexts.empty()) {
 		return true;
 	}

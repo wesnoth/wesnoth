@@ -357,14 +357,15 @@ void server::run()
 							const player_map::iterator pl = players_.find(sock);
 							if(pl != players_.end()) {
 								pl->second.mark_available(true);
-
-								lobby_players_.send_data(sync_initial_response());
 							} else {
 								std::cerr << "ERROR: Could not find player in map\n";
 							}
 
 							//send the player who has quit the game list
 							network::send_data(initial_response_,sock);
+
+							//send all other players in the lobby the update to the lobby
+							lobby_players_.send_data(sync_initial_response(),sock);
 						}
 
 						continue;

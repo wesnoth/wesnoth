@@ -253,8 +253,6 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 					//commented out pending reply from SDL team about bug report
 					//SDL_BlitSurface(mask,NULL,result,NULL);
 				}
-			} else {
-				std::cerr << "getting unmasked image...\n";
 			}
 
 			if(type == UNMASKED) {
