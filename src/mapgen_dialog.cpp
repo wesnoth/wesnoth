@@ -229,7 +229,7 @@ void default_map_generator::user_config(display& disp)
 
 std::string default_map_generator::name() const { return "default"; }
 
-std::string default_map_generator::create_map(const std::vector<std::string>& args) const
+std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
 	if(cfg_ != NULL)
 		return default_generate_map(width_,height_,iterations_,hill_size_,max_lakes_,nvillages_,nplayers_,*cfg_);

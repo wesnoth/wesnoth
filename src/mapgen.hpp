@@ -7,6 +7,7 @@
 #include <string>
 
 std::string random_generate_map(const std::string& parms);
+config random_generate_scenario(const std::string& parms);
 
 class map_generator
 {
@@ -27,7 +28,9 @@ public:
 
 	//creates a new map and returns it. args may contain arguments to
 	//the map generator
-	virtual std::string create_map(const std::vector<std::string>& args) const = 0;
+	virtual std::string create_map(const std::vector<std::string>& args) = 0;
+
+	virtual config create_scenario(const std::vector<std::string>& args);
 
 	struct manager
 	{

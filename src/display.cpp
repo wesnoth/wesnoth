@@ -739,6 +739,11 @@ void display::draw_report(reports::TYPE report_num)
 					for(std::vector<std::string>::const_iterator col = cols.begin(); col != cols.end(); ++col) {
 						SDL_Rect clip_rect = rect;
 						scoped_sdl_surface image(image::get_image(*col,image::UNSCALED));
+						if(image == NULL) {
+							std::cerr << "could not find image for report: '" << *col << "'\n";
+							return;
+						}
+
 						blit_surface(x,y,image,NULL,&clip_rect);
 						if(image->h > tallest_image)
 							tallest_image = image->h;

@@ -62,6 +62,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("preferences",HOTKEY_PREFERENCES));
 		m.insert(val("objectives",HOTKEY_OBJECTIVES));
 		m.insert(val("unitlist",HOTKEY_UNIT_LIST));
+		m.insert(val("statistics",HOTKEY_STATISTICS));
 		m.insert(val("quit",HOTKEY_QUIT_GAME));
 	}
 
@@ -347,6 +348,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_UNIT_LIST:
 			if(executor)
 				executor->unit_list();
+			break;
+		case HOTKEY_STATISTICS:
+			if(executor)
+				executor->show_statistics();
 			break;
 		case HOTKEY_QUIT_GAME: {
 			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);

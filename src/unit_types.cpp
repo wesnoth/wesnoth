@@ -325,23 +325,27 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 int unit_movement_type::damage_against(const attack_type& attack) const
 {
-	int res = -1;
+	const int resist = resistance_against(attack);
+	return (attack.damage()*resist)/100;
+}
+
+int unit_movement_type::resistance_against(const attack_type& attack) const
+{
+	bool result_found = false;
+	int res = 0;
 
 	const config* const resistance = cfg_.child("resistance");
 	if(resistance != NULL) {
 		const std::string& val = (*resistance)[attack.type()];
 		if(val != "") {
-			const int resist = atoi(val.c_str());
-			res = (resist*attack.damage())/100;
+			res = atoi(val.c_str());
+			result_found = true;
 		}
 	}
 
-	if(res == -1 && parent_ != NULL) {
-		res = parent_->damage_against(attack);
+	if(!result_found && parent_ != NULL) {
+		res = parent_->resistance_against(attack);
 	}
-
-	if(res <= 0)
-		res = 1;
 
 	return res;
 }

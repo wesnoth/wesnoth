@@ -98,6 +98,7 @@ private:
 	void preferences();
 	void objectives();
 	void unit_list();
+	void show_statistics();
 
 	void do_recruit(const std::string& name);
 

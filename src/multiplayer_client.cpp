@@ -136,6 +136,7 @@ public:
 				return GAME_CANCELLED;
 			} else {
 				sides_ = reply;
+				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
 			}
 		}
 

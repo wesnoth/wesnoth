@@ -830,6 +830,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		for(std::map<gamemap::location,unit>::iterator un = units->begin();
 		    un != units->end(); ++un) {
 			while(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
+				if(cfg["animate"] == "yes") {
+					screen->scroll_to_tile(un->first.x,un->first.y,display::WARP);
+					screen->unit_die(un->first);
+				}
+
 				units->erase(un);
 				un = units->begin();
 			}

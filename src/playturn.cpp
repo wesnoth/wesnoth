@@ -24,6 +24,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
 
@@ -411,6 +412,62 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 	}
 }
 
+//a class which, when a button is pressed, will display
+//how an attack was calculated
+namespace {
+class attack_calculations_displayer : public gui::dialog_button_action
+{
+public:
+	attack_calculations_displayer(display& disp, std::vector<battle_stats>& stats)
+		: disp_(disp), stats_(stats)
+	{}
+
+	void button_pressed(int selection);
+private:
+	display& disp_;
+	std::vector<battle_stats>& stats_;
+};
+
+void attack_calculations_displayer::button_pressed(int selection)
+{
+	const size_t index = size_t(selection);
+	if(index < stats_.size()) {
+		const battle_stats& stats = stats_[index];
+		std::vector<std::string> calcs;
+
+		std::stringstream str;
+		str << string_table["attacker"] << ", , ,";
+		if(stats.defend_calculations.empty() == false) {
+			str << string_table["defender"];
+		}
+
+		calcs.push_back(str.str());
+
+		for(size_t i = 0; i < maximum<size_t>(stats.attack_calculations.size(),stats.defend_calculations.size()); ++i) {
+			std::stringstream str;
+			if(i < stats.attack_calculations.size() && stats.attack_calculations.empty() == false) {
+				str << stats.attack_calculations[i];
+			} else {
+				str << ", , ";
+			}
+
+			str << ",";
+
+			if(i < stats.defend_calculations.size() && stats.defend_calculations.empty() == false) {
+				str << stats.defend_calculations[i];
+			} else {
+				str << " , , ";
+			}
+
+			calcs.push_back(str.str());
+		}
+
+		gui::show_dialog(disp_,NULL,"",string_table["damage_calculations"],gui::OK_ONLY,&calcs);
+	}
+}
+
+}
+
 void turn_info::left_click(const SDL_MouseButtonEvent& event)
 {
 	const team& current_team = teams_[team_num_-1];
@@ -443,8 +500,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
 
-	unit_map::iterator enemy = find_visible_unit(units_,
-			hex, map_,
+	unit_map::iterator enemy = find_visible_unit(units_, hex, map_,
 			status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
 	//see if we're trying to attack an enemy
@@ -464,18 +520,20 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		int best_weapon_index = -1;
 		int best_weapon_rating = 0;
 
+		std::vector<battle_stats> stats;
+
 		for(size_t a = 0; a != attacks.size(); ++a) {
 			if(attacks[a].hexes() < range)
 				continue;
 
 			attacks_in_range.push_back(a);
 
-			const battle_stats stats = evaluate_battle_stats(
+			stats.push_back(evaluate_battle_stats(
 			                               map_,selected_hex_,hex,
-										   a,units_,status_,gameinfo_);
+										   a,units_,status_,gameinfo_));
 
-			int weapon_rating = stats.chance_to_hit_defender *
-			                stats.damage_defender_takes * stats.nattacks;
+			int weapon_rating = stats.back().chance_to_hit_defender *
+			                stats.back().damage_defender_takes * stats.back().nattacks;
 			
 			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
 				best_weapon_index = items.size();
@@ -483,42 +541,41 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			}
 			
 			const std::string& lang_attack_name =
-			            string_table["weapon_name_"+stats.attack_name];
+			            string_table["weapon_name_"+stats.back().attack_name];
 			const std::string& lang_attack_type =
-			            string_table["weapon_type_"+stats.attack_type];
+			            string_table["weapon_type_"+stats.back().attack_type];
 			const std::string& lang_range =
-			            string_table[stats.range == "Melee" ?
+			            string_table[stats.back().range == "Melee" ?
 			                            "short_range" : "long_range"];
 
 			const std::string& lang_defend_name =
-			            string_table["weapon_name_"+stats.defend_name];
+			            string_table["weapon_name_"+stats.back().defend_name];
 			const std::string& lang_defend_type =
-			            string_table["weapon_type_"+stats.defend_type];
+			            string_table["weapon_type_"+stats.back().defend_type];
 
 			const std::string& attack_name = lang_attack_name.empty() ?
-			                    stats.attack_name : lang_attack_name;
+			                    stats.back().attack_name : lang_attack_name;
 			const std::string& attack_type = lang_attack_type.empty() ?
-			                    stats.attack_type : lang_attack_type;
+			                    stats.back().attack_type : lang_attack_type;
 			const std::string& defend_name = lang_defend_name.empty() ?
-			                    stats.defend_name : lang_defend_name;
+			                    stats.back().defend_name : lang_defend_name;
 			const std::string& defend_type = lang_defend_type.empty() ?
-			                    stats.defend_type : lang_defend_type;
+			                    stats.back().defend_type : lang_defend_type;
 
 			const std::string& range = lang_range.empty() ?
-			                    stats.range : lang_range;
+			                    stats.back().range : lang_range;
 
 			std::stringstream att;
-			att << "&" << stats.attack_icon << "," << attack_name
-			    << " " << stats.damage_defender_takes << "-"
-				<< stats.nattacks << " " << range << " "
-				<< stats.chance_to_hit_defender
-			    << "%";
+			att << "&" << stats.back().attack_icon << "," << attack_name
+			    << " " << stats.back().damage_defender_takes << "-"
+				<< stats.back().nattacks << " " << range << " "
+				<< stats.back().chance_to_hit_defender << "%";
 
 			att << "," << string_table["versus"] << ",";
-			att << defend_name << " " << stats.damage_attacker_takes << "-"
-				<< stats.ndefends << " "
-				<< stats.chance_to_hit_attacker
-			    << "%,&" << stats.defend_icon;
+			att << defend_name << " " << stats.back().damage_attacker_takes << "-"
+				<< stats.back().ndefends << " "
+				<< stats.back().chance_to_hit_attacker
+			    << "%,&" << stats.back().defend_icon;
 
 			items.push_back(att.str());
 			units_list.push_back(enemy->second);
@@ -534,9 +591,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		gui_.highlight_hex(gamemap::location());
 		gui_.draw(true,true);
 
+		attack_calculations_displayer calc_displayer(gui_,stats);
+		std::vector<gui::dialog_button> buttons;
+		buttons.push_back(gui::dialog_button(&calc_displayer,string_table["damage_calculations"]));
+
 		int res = gui::show_dialog(gui_,NULL,"",
 		                           string_table["choose_weapon"]+":\n",
-		                           gui::OK_CANCEL,&items,&units_list);
+		                           gui::OK_CANCEL,&items,&units_list,"",NULL,NULL,NULL,-1,-1,
+								   NULL,&buttons);
 
 		if(size_t(res) < attacks_in_range.size()) {
 			res = attacks_in_range[res];
@@ -726,11 +788,12 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
+	case hotkey::HOTKEY_STATISTICS:
 	case hotkey::HOTKEY_QUIT_GAME:
 		return true;
 
 	case hotkey::HOTKEY_SPEAK:
-		return !browse_ && network::nconnections() > 0;
+		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
 		return !browse_ && !redo_stack_.empty();
@@ -1567,6 +1630,14 @@ void turn_info::unit_list()
 		const gamemap::location& loc = locations_list[selected];
 		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
 	}
+}
+
+void turn_info::show_statistics()
+{
+	std::stringstream str;
+	str << "Kills: " << statistics::calculate_stats(0,team_num_).killed.size() << "\n"
+		<< "Deaths: " << statistics::calculate_stats(0,team_num_).deaths.size() << "\n";
+	gui::show_dialog(gui_,NULL,"",str.str(),gui::OK_ONLY);
 }
 
 unit_map::iterator turn_info::current_unit()

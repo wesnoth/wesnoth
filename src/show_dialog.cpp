@@ -214,7 +214,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
                 dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
-				const std::string* dialog_style)
+				const std::string* dialog_style, std::vector<dialog_button>* action_buttons)
 {
 	if(disp.update_locked())
 		return -1;
@@ -347,6 +347,16 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 	}
 
+	if(action_buttons != NULL) {
+		for(std::vector<dialog_button>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
+			button new_button(disp,i->label);
+			check_button_height += new_button.height() + button_height_padding;
+			check_button_width = maximum(new_button.width(),check_button_width);
+
+			check_buttons.push_back(new_button);
+		}
+	}
+
 	const int left_padding = 10;
 	const int right_padding = 10;
 	const int image_h_padding = image != NULL ? 10 : 0;
@@ -470,14 +480,17 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
-	if(options != NULL) {
+	if(check_buttons.empty() == false) {
 		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
 			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
 			check_buttons[i].set_y(options_y);
 
 			options_y += check_buttons[i].height() + button_height_padding;
-			check_buttons[i].set_check((*options)[i].checked);
+
+			if(options != NULL && i < options->size()) {
+				check_buttons[i].set_check((*options)[i].checked);
+			}
 		}
 	}
 
@@ -623,9 +636,17 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 		for(unsigned int n = 0; n != check_buttons.size(); ++n) {
-			check_buttons[n].process(mousex,mousey,left_button);
+			const bool pressed = check_buttons[n].process(mousex,mousey,left_button);
 			check_buttons[n].draw();
-			(*options)[n].checked = check_buttons[n].checked();
+
+			if(options != NULL && n < options->size()) {
+				(*options)[n].checked = check_buttons[n].checked();
+			} else if(pressed) {
+				const size_t options_size = options == NULL ? 0 : options->size();
+				assert(action_buttons != NULL && action_buttons->size() > n - options_size);
+
+				(*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
+			}
 		}
 
 		if(action != NULL) {

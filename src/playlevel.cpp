@@ -560,10 +560,7 @@ redo_turn:
 				                 string_table["defeat_message"],
 				                 gui::OK_ONLY);
 				return DEFEAT;
-			} else if(end_level.result == CONTINUE) {
-				//basically like a victory but without all the celebrations
-				return VICTORY;
-			} else if(end_level.result == VICTORY) {
+			} else if(end_level.result == VICTORY || end_level.result == CONTINUE) {
 				try {
 					game_events::fire("victory");
 				} catch(end_level_exception&) {
@@ -576,6 +573,12 @@ redo_turn:
 						un->second.new_level();
 						state_of_game.available_units.push_back(un->second);
 					}
+				}
+
+				//'continue' is like a victory, except it doesn't announce victory,
+				//and the player returns 100% of gold.
+				if(end_level.result == CONTINUE) {
+					state_of_game.gold = teams[0].gold();
 				}
 
 				if((*level)["disallow_recall"] == "yes") {

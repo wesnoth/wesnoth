@@ -277,6 +277,8 @@ public:
 
 	const theme::menu* menu_pressed(int mousex, int mousey, bool button_pressed);
 
+	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -298,8 +300,6 @@ private:
 	void draw_unit(int x, int y, SDL_Surface* image,
 	               bool reverse, bool upside_down=false,
 	               double alpha=1.0, Uint32 blendto=0, double submerged=0.0);
-
-	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
 
 	bool unit_attack_ranged(const gamemap::location& a,
 	                        const gamemap::location& b,

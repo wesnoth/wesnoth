@@ -24,6 +24,7 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -235,11 +236,6 @@ battle_stats evaluate_battle_stats(
 		if(res.attack_special == "backstab" && !backstab)
 			res.attack_special = "";
 
-		//the leader is immune to being turned to stone
-		if(d->second.can_recruit() && res.attack_special == "stone") {
-			res.attack_special = "";
-		}
-
 		res.range = (attack.range() == attack_type::SHORT_RANGE ?
 		             "Melee" : "Ranged");
 	}
@@ -270,14 +266,51 @@ battle_stats evaluate_battle_stats(
 		const int modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
 		res.damage_attacker_takes = (base_damage * (100+modifier))/100;
 
-		if(charge)
+		if(include_strings) {
+			std::stringstream str_base;
+			str_base << string_table["base_damage"] << ", ," << defender_attacks[defend].damage();
+			res.defend_calculations.push_back(str_base.str());
+
+			std::stringstream str_resist;
+
+			const int resist = a->second.type().movement_type().resistance_against(defender_attacks[defend]) - 100;
+			str_resist << string_table["attacker_resistance"] << " " << translate_string(defender_attacks[defend].type())
+			           << ",^" << (resist > 0 ? "+" : "") << resist << "%," << base_damage;
+			res.defend_calculations.push_back(str_resist.str());
+
+			std::stringstream str_mod;
+			const time_of_day& tod = timeofday_at(state,units,d->first);
+			str_mod << translate_string_default(tod.id,tod.name) << ",^"
+			        << (modifier > 0 ? "+" : "") << modifier << "%," << res.damage_attacker_takes;
+			res.defend_calculations.push_back(str_mod.str());
+		}
+
+		if(charge) {
 			res.damage_attacker_takes *= 2;
+			if(include_strings) {
+				std::stringstream str;
+				str << translate_string("charge") << ",^+100%," << res.damage_attacker_takes;
+				res.defend_calculations.push_back(str.str());
+			}
+		}
 
-		if(under_leadership(units,defender))
+		if(under_leadership(units,defender)) {
 			res.damage_attacker_takes += res.damage_attacker_takes/8 + 1;
+			if(include_strings) {
+				std::stringstream str;
+				str << translate_string("leadership") << ",^+12.5%," << res.damage_attacker_takes;
+				res.defend_calculations.push_back(str.str());
+			}
+		}
 
-		if(res.damage_attacker_takes < 1)
+		if(res.damage_attacker_takes < 1) {
 			res.damage_attacker_takes = 1;
+			if(include_strings) {
+				std::stringstream str;
+				str << translate_string("minimum_damage") << ", ,1";
+				res.defend_calculations.push_back(str.str());
+			}
+		}
 
 		res.ndefends = defender_attacks[defend].num_attacks();
 
@@ -287,10 +320,6 @@ battle_stats evaluate_battle_stats(
 		if(include_strings) {
 			res.defend_special = defender_attacks[defend].special();
 			res.defend_icon = defender_attacks[defend].icon();
-
-			//leaders are immune to being turned to stone
-			if(a->second.can_recruit() && res.defend_special == "stone")
-				res.defend_special = "";
 		}
 
 		//if the defender drains, and the attacker is a living creature, then
@@ -315,11 +344,54 @@ battle_stats evaluate_battle_stats(
 
 	const int base_damage = d->second.damage_against(attack);
 	const int modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
-	res.damage_defender_takes = ((base_damage * (100 + modifier))/100)
-			                    * (charge ? 2 : 1) * (backstab ? 2 : 1);
+	res.damage_defender_takes = ((base_damage * (100 + modifier))/100);
 
-	if(under_leadership(units,attacker))
+	if(include_strings) {
+		std::stringstream str_base;
+
+		str_base << string_table["base_damage"] << ", ," << attack.damage();
+		res.attack_calculations.push_back(str_base.str());
+
+		std::stringstream str_resist;
+
+		const int resist = d->second.type().movement_type().resistance_against(attack) - 100;
+		str_resist << string_table["defender_resistance"] << " " << translate_string(attack.type())
+			       << ",^" << (resist > 0 ? "+" : "") << resist << "%," << base_damage;
+		res.attack_calculations.push_back(str_resist.str());
+
+		std::stringstream str_mod;
+		const time_of_day& tod = timeofday_at(state,units,a->first);
+		str_mod << translate_string_default(tod.id,tod.name) << ",^"
+		        << (modifier > 0 ? "+" : "") << modifier << "%," << res.damage_defender_takes;
+		res.attack_calculations.push_back(str_mod.str());
+	}
+
+	if(charge) {
+		res.damage_defender_takes *= 2;
+		if(include_strings) {
+			std::stringstream str;
+			str << translate_string("charge") << ",^+100%," << res.damage_defender_takes;
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(backstab) {
+		res.damage_defender_takes *= 2;
+		if(include_strings) {
+			std::stringstream str;
+			str << translate_string("backstab") << ",^+100%," << res.damage_defender_takes;
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(under_leadership(units,attacker)) {
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
+		if(include_strings) {
+			std::stringstream str;
+			str << translate_string("leadership") << ",^+12.5%," << res.damage_defender_takes;
+			res.attack_calculations.push_back(str.str());
+		}
+	}
 
 	//if the attacker drains, and the defender is a living creature, then
 	//the attacker will drain for half the damage it does
@@ -348,7 +420,6 @@ void attack(display& gui, const gamemap& map,
 			const gamestatus& state,
 			const game_data& info, bool player_is_attacker)
 {
-
 	//stop the user from issuing any commands while the units are fighting
 	const command_disabler disable_commands;
 
@@ -372,6 +443,8 @@ void attack(display& gui, const gamemap& map,
 
 	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
 	                                           attack_with,units,state,info);
+
+	statistics::attack_context attack_stats(a->second,d->second,stats);
 
 	static const std::string poison_string("poison");
 
@@ -414,6 +487,9 @@ void attack(display& gui, const gamemap& map,
 			bool dies = gui.unit_attack(attacker,defender,
 				            hits ? stats.damage_defender_takes : 0,
 							a->second.attacks()[attack_with]);
+
+			attack_stats.attack_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			                           : statistics::attack_context::MISSES);
 
 			if(ran_results == NULL) {
 				config cfg;
@@ -540,6 +616,9 @@ void attack(display& gui, const gamemap& map,
 			bool dies = gui.unit_attack(defender,attacker,
 			               hits ? stats.damage_attacker_takes : 0,
 						   d->second.attacks()[stats.defend_with]);
+
+			attack_stats.defend_result(hits ? (dies ? statistics::attack_context::KILLS : statistics::attack_context::HITS)
+			                           : statistics::attack_context::MISSES);
 
 			if(ran_results == NULL) {
 				config cfg;

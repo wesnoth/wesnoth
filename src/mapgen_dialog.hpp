@@ -13,7 +13,7 @@ public:
 
 	std::string name() const;
 
-	std::string create_map(const std::vector<std::string>& args) const;
+	std::string create_map(const std::vector<std::string>& args);
 
 private:
 	size_t width_, height_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;

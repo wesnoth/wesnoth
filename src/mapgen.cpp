@@ -9,6 +9,7 @@
 #include <ctime>
 #include <vector>
 
+#include "cavegen.hpp"
 #include "mapgen.hpp"
 #include "mapgen_dialog.hpp"
 #include "pathfind.hpp"
@@ -29,6 +30,29 @@ std::string random_generate_map(const std::string& parms)
 
 	parameters.erase(parameters.begin());
 	return generator->create_map(parameters);
+}
+
+config random_generate_scenario(const std::string& parms)
+{
+	//the first token is the name of the generator, tokens after
+	//that are arguments to the generator
+	std::vector<std::string> parameters = config::split(parms,' ');
+	map_generator* const generator = get_map_generator(parameters.front());
+	if(generator == NULL) {
+		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
+		return "";
+	}
+
+	parameters.erase(parameters.begin());
+	return generator->create_scenario(parameters);
+}
+
+config map_generator::create_scenario(const std::vector<std::string>& args)
+{
+	config res;
+	config& item = res.add_child("scenario");
+	item.values["map_data"] = create_map(args);
+	return res;
 }
 
 namespace {
@@ -778,8 +802,11 @@ generator_map generators;
 
 map_generator::manager::manager(const config& game_config)
 {
-	map_generator* const gen = new default_map_generator(game_config);
+	map_generator* gen = new default_map_generator(game_config);
 	assert(generators.count(gen->name()) == 0);
+	generators[gen->name()] = gen;
+
+	gen = new cave_map_generator(game_config);
 	generators[gen->name()] = gen;
 }
 

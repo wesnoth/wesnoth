@@ -58,6 +58,23 @@ public:
 	enum { CONTINUE_DIALOG=-2 };
 };
 
+class dialog_button_action
+{
+public:
+	virtual ~dialog_button_action() {}
+
+	virtual void button_pressed(int menu_selection) = 0;
+};
+
+struct dialog_button
+{
+	dialog_button(dialog_button_action* handler, const std::string& label) : handler(handler), label(label)
+	{}
+
+	dialog_button_action* handler;
+	std::string label;
+};
+
 enum { ESCAPE_DIALOG=-3 };
 
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY };
@@ -83,7 +100,8 @@ int show_dialog(display& screen, SDL_Surface* image,
 				std::string* text_widget_text=NULL,
                 dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
-				const std::string* dialog_style=NULL
+				const std::string* dialog_style=NULL,
+				std::vector<dialog_button>* buttons=NULL
 			 );
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

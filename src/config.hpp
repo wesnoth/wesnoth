@@ -127,8 +127,7 @@ struct config
 	typedef std::vector<config*>::const_iterator const_child_iterator;
 
 	typedef std::pair<child_iterator,child_iterator> child_itors;
-	typedef std::pair<const_child_iterator,const_child_iterator>
-	                                                  const_child_itors;
+	typedef std::pair<const_child_iterator,const_child_iterator> const_child_itors;
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
