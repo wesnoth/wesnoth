@@ -496,6 +496,8 @@ int play_game(int argc, char** argv)
 
 	game_config::load_config(game_config.child("game_config"));
 
+	const binary_paths_manager bin_paths_manager(game_config);
+
 	std::cerr << "parsed config files\n";
 	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
@@ -1016,6 +1018,8 @@ int play_game(int argc, char** argv)
 		std::vector<line_source> line_src;
 		config game_config;
 		read_game_cfg(defines_map,line_src,game_config,use_caching);
+
+		const binary_paths_manager bin_paths_manager(game_config);
 
 		const config::child_list& units = game_config.get_children("units");
 		if(units.empty()) {

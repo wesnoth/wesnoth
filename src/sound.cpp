@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "sound.hpp"
@@ -81,32 +82,22 @@ void play_music(const std::string& file)
 		return;
 	}
 
-	std::map<std::string,Mix_Music*>::const_iterator itor =
-	                                              music_cache.find(file);
+	std::map<std::string,Mix_Music*>::const_iterator itor = music_cache.find(file);
 	if(itor == music_cache.end()) {
-		static const std::string music_prefix = "music/";
-
-		std::string filename;
-		Mix_Music* music = NULL;
-
-		if(game_config::path.empty() == false) {
-			filename = game_config::path + "/" + music_prefix + file;
-			music = Mix_LoadMUS(filename.c_str());
+		const std::string& filename = get_binary_file_location("music",file);
+		
+		if(filename.empty()) {
+			return;
 		}
 
-		if(music == NULL) {
-			filename = music_prefix + file;
-			music = Mix_LoadMUS(filename.c_str());
-		}
-
+		Mix_Music* const music = Mix_LoadMUS(filename.c_str());
 		if(music == NULL) {
 			std::cerr << "Could not load music file '" << filename << "': "
 			          << SDL_GetError() << "\n";
 			return;
 		}
 
-		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(
-		                                            file,music)).first;
+		itor = music_cache.insert(std::pair<std::string,Mix_Music*>(file,music)).first;
 	}
 
 	if(Mix_PlayingMusic()) {
@@ -126,31 +117,23 @@ void play_sound(const std::string& file)
 	if(!mix_ok || sound_off)
 		return;
 
-	std::map<std::string,Mix_Chunk*>::const_iterator itor =
-	                                              sound_cache.find(file);
+	std::map<std::string,Mix_Chunk*>::const_iterator itor = sound_cache.find(file);
 	if(itor == sound_cache.end()) {
-		static const std::string sound_prefix = "sounds/";
-		std::string filename;
-		Mix_Chunk* sfx = NULL;
 
-		if(game_config::path.empty() == false) {
-			filename = game_config::path + "/" + sound_prefix + file;
-			sfx = Mix_LoadWAV(filename.c_str());
+		const std::string& filename = get_binary_file_location("sounds",file);
+
+		if(filename.empty()) {
+			return;
 		}
 
-		if(sfx == NULL) {
-			filename = sound_prefix + file;
-			sfx = Mix_LoadWAV(filename.c_str());
-		}
-
+		Mix_Chunk* const sfx = Mix_LoadWAV(filename.c_str());
 		if(sfx == NULL) {
 			std::cerr << "Could not load sound file '" << filename << "': "
 			          << SDL_GetError() << "\n";
 			return;
 		}
 
-		itor = sound_cache.insert(std::pair<std::string,Mix_Chunk*>(
-		                                            file,sfx)).first;
+		itor = sound_cache.insert(std::pair<std::string,Mix_Chunk*>(file,sfx)).first;
 	}
 
 	//play on the first available channel

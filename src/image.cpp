@@ -1,3 +1,4 @@
+#include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
@@ -98,40 +99,20 @@ void flush_cache()
 	clear_surfaces(reversedImages_);
 }
 
-std::vector<std::string> get_search_locations(const std::string &file)
-{
-	std::vector<std::string> ret;
-
-	static const std::string images_path = "images/";
-	const std::string image_filename = images_path + file;
-
-	if(!game_config::path.empty()) {
-		ret.push_back(game_config::path + "/" + image_filename);
-	}
-
-	ret.push_back(image_filename);
-
-	ret.push_back(get_user_data_dir() + "/" + image_filename);
-
-	return ret;
-}
-
 SDL_Surface* load_image_file(image::locator i_locator)
 {
-	SDL_Surface* surf = NULL;
+	const std::string& location = get_binary_file_location("images",i_locator.filename);
+	if(location.empty()) {
+		return NULL;
+	} else {
+		SDL_Surface* const res = IMG_Load(location.c_str());
+		if(res == NULL) {
+			std::cerr << "Error: could not open image '" << location << "'\n";
+		}
 
-	const std::vector<std::string>& locations = get_search_locations(i_locator.filename);
-	for(std::vector<std::string>::const_iterator itor = locations.begin();
-			itor != locations.end(); ++itor) {
-
-		surf = IMG_Load(itor->c_str());
-		if(surf != NULL)
-			return surf;
+		return res;
 	}
-
-	return surf;
 }
-
 
 SDL_Surface * load_image_sub_file(image::locator i_locator)
 {
@@ -458,13 +439,10 @@ bool exists(const image::locator& i_locator)
 	if(image_existance_map.find(i_locator) != image_existance_map.end())
 		return image_existance_map[i_locator];
 
-	const std::vector<std::string>& locations = get_search_locations(i_locator.filename);
-	for(std::vector<std::string>::const_iterator itor = locations.begin();
-			itor != locations.end(); ++itor) {
-
-		if(file_exists(*itor))
-			ret = true;
+	if(get_binary_file_location("images",i_locator.filename).empty() == false) {
+		ret = true;
 	}
+
 	image_existance_map[i_locator] = ret;
 
 	return ret;

@@ -60,4 +60,30 @@ time_t data_tree_modified_time();
 //returns the size of a file, or -1 if the file doesn't exist
 int file_size(const std::string& fname);
 
+///the paths manager is responsible for recording the various paths that
+///binary files may be located at. It should be passed a config object
+///which holds binary path information. This is in the format
+///[binary_path]
+///path=<path>
+///[/binary_path]
+///Binaries will be searched for in [wesnoth-path]/data/<path>/images/
+struct binary_paths_manager
+{
+	binary_paths_manager(const struct config& cfg);
+	~binary_paths_manager();
+
+private:
+	std::vector<std::string> paths_;
+};
+
+
+//function which, given a type of binary, e.g. 'images', 'sounds', etc,
+//will return a vector with all possible paths to that type of binary
+const std::vector<std::string>& get_binary_paths(const std::string& type);
+
+//function which, given a type of binary, and the name of the binary file,
+//will return a complete path to the actual file, or an empty string if
+//the file isn't present
+std::string get_binary_file_location(const std::string& type, const std::string& filename);
+
 #endif

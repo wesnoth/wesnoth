@@ -234,6 +234,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
+	bool ambushed = false;
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
 		std::map<location,paths::route>::iterator rt = p.routes.begin();

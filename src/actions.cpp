@@ -1601,6 +1601,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			   status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
+				moves_left = 0;
 				break;
 			}
 		}

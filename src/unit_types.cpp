@@ -549,21 +549,6 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	can_advance_ = advances_to().empty() == false;
-
-	//check if the images necessary for units exist
-#ifdef linux
-	struct stat stat_buf;
-	if(game_config::path.empty() == false) {
-		if(::stat((game_config::path + "/images/" +
-		           cfg_["image"]).c_str(),&stat_buf) >= 0) {
-			return;
-		}
-	}
-
-	if(::stat(("images/" + cfg_["image"]).c_str(),&stat_buf) < 0) {
-		std::cerr << "image '" << cfg_["image"] << "' does not exist!\n";
-	}
-#endif
 }
 
 int unit_type::num_traits() const { return race_->num_traits(); }

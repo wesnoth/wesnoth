@@ -25,7 +25,7 @@
 
 #include <io.h>
 
-#define mkdir(a,b) (_mkdir(a))
+//#define mkdir(a,b) (_mkdir(a))
 
 #define mode_t int
 
@@ -41,8 +41,9 @@
 #include <cstdlib>
 
 #include <algorithm>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <set>
 
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -344,4 +345,82 @@ int file_size(const std::string& fname)
 		return -1;
 
 	return buf.st_size;
+}
+
+namespace {
+
+std::set<std::string> binary_paths;
+
+typedef std::map<std::string,std::vector<std::string> > paths_map;
+paths_map binary_paths_cache;
+
+void init_binary_paths()
+{
+	if(binary_paths.empty()) {
+		binary_paths.insert("");
+	}
+}
+
+}
+
+binary_paths_manager::binary_paths_manager(const config& cfg)
+{
+	binary_paths_cache.clear();
+	init_binary_paths();
+
+	const config::child_list& items = cfg.get_children("binary_path");
+	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+		const std::string path = (**i)["path"] + "/";
+		if(binary_paths.count(path) == 0) {
+			binary_paths.insert(path);
+			paths_.push_back(path);
+		}
+	}
+}
+
+binary_paths_manager::~binary_paths_manager()
+{
+	binary_paths_cache.clear();
+
+	for(std::vector<std::string>::const_iterator i = paths_.begin(); i != paths_.end(); ++i) {
+		binary_paths.erase(*i);
+	}
+}
+
+const std::vector<std::string>& get_binary_paths(const std::string& type)
+{
+	const paths_map::const_iterator itor = binary_paths_cache.find(type);
+	if(itor != binary_paths_cache.end()) {
+		return itor->second;
+	}
+
+	std::vector<std::string>& res = binary_paths_cache[type];
+	
+	init_binary_paths();
+
+	for(std::set<std::string>::const_iterator i = binary_paths.begin(); i != binary_paths.end(); ++i) {
+		res.push_back(get_user_data_dir() + "/" + *i + type + "/");
+		
+		if(!game_config::path.empty()) {
+			res.push_back(game_config::path + "/" + *i + type + "/");
+		}
+
+		res.push_back(*i + type + "/");
+	}
+
+	return res;
+}
+
+std::string get_binary_file_location(const std::string& type, const std::string& filename)
+{
+	const std::vector<std::string>& paths = get_binary_paths(type);
+	for(std::vector<std::string>::const_iterator i = paths.begin(); i != paths.end(); ++i) {
+		const std::string file = *i + filename;
+		std::cerr << "checking existence of file: '" << file << "'\n";
+		if(file_exists(file)) {
+			return file;
+		}
+	}
+
+	return "";
 }
