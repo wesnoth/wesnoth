@@ -848,11 +848,8 @@ void calculate_healing(display& disp, const gamemap& map,
 				if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
 				 i->second.type().regenerates())) {
 					amount_healed = game_config::cure_amount;
-				} else if(i->second.is_resting()){
-					amount_healed = game_config::rest_heal_amount;
 				}
 			}
-			i->second.set_resting(true);
 			if(amount_healed != 0)
 				healed_units.insert(std::pair<gamemap::location,int>(
 			                            i->first, amount_healed));
@@ -931,6 +928,21 @@ void calculate_healing(display& disp, const gamemap& map,
 			if(damage > 0) {
 				healed_units.insert(std::pair<gamemap::location,int>(i->first,-damage));
 			}
+		}
+	}
+
+	for(i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == side) {
+			if(i->second.is_resting()) {
+				const std::map<gamemap::location,int>::iterator u =
+					healed_units.find(i->first);
+				if(u != healed_units.end()) {
+					healed_units[i->first] += game_config::rest_heal_amount;
+				} else {
+					healed_units.insert(std::pair<gamemap::location,int>(i->first,game_config::rest_heal_amount));
+				}
+			}
+			i->second.set_resting(true);
 		}
 	}
 
