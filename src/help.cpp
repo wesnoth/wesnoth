@@ -107,7 +107,7 @@ namespace {
 				if (text_started_) {
 					std::stringstream ss;
 					if (header) {
-						ss << "<header>text='" << res << "'</header>";
+						ss << "<header>text='" << help::escape(res) << "'</header>";
 						res = ss.str();
 					}
 				}
@@ -130,7 +130,7 @@ namespace {
 	
 	std::string bold(const std::string &s) {
 		std::stringstream ss;
-		ss << "<bold>text='" << s << "'</bold>";
+		ss << "<bold>text='" << help::escape(s) << "'</bold>";
 		return ss.str();
 	}
 
@@ -346,20 +346,18 @@ std::vector<section> generate_sections(const std::string &generator) {
 }
 
 std::vector<topic> generate_topics(const std::string &generator) {
-	std::vector<topic> empty_vec;
-	if (generator == "") {
-		return empty_vec;
-	}
+	std::vector<topic> res;
 	if (generator == "units") {
-		return generate_unit_topics();
+		res = generate_unit_topics();
 	}
-	if (generator == "abilities") {
-		return generate_ability_topics();
+	else if (generator == "abilities") {
+		res = generate_ability_topics();
 	}
-	if (generator == "weapon_specials") {
-		return generate_weapon_special_topics();
+	else if (generator == "weapon_specials") {
+		res = generate_weapon_special_topics();
 	}
-	return empty_vec;
+	std::sort(res.begin(), res.end(), title_less());
+	return res;
 }
 
 std::string generate_topic_text(const std::string &generator) {
@@ -490,7 +488,7 @@ std::vector<topic> generate_unit_topics() {
 			if (female_type != NULL && female_type != male_type) {
 				ss << "<img>src='" << female_type->image() << "'</img> ";
 			}
-			ss  << "<format>font_size=11 text=' " << translate_string("level")
+			ss  << "<format>font_size=11 text=' " << escape(translate_string("level"))
 				<< " " << type.level() << "'</format>\n";
 
 			// Print the units this unit can advance to. Cross reference
@@ -511,7 +509,7 @@ std::vector<topic> generate_unit_topics() {
 					if (lang_unit == "") {
 						lang_unit = *advance_it;
 					}
-					ss << "<ref>dst='" << ref_id << "' text='" << lang_unit
+					ss << "<ref>dst='" << ref_id << "' text='" << escape(lang_unit)
 					   << "'</ref>";
 					if (advance_it + 1 != next_units.end()) {
 						ss << ", ";
@@ -531,7 +529,8 @@ std::vector<topic> generate_unit_topics() {
 					if (lang_ability == "") {
 						lang_ability = *ability_it;
 					}
-					ss << "<ref>dst='" << ref_id << "' text='" << lang_ability << "'</ref>";
+					ss << "<ref>dst='" << ref_id << "' text='" << escape(lang_ability)
+					   << "'</ref>";
 					if (ability_it + 1 != type.abilities().end()) {
 						ss << ", ";
 					}
@@ -544,10 +543,10 @@ std::vector<topic> generate_unit_topics() {
 			}
 			// Print some basic information such as HP and movement points.
 			ss << translate_string("hp") << ": " << type.hitpoints() << jump_to(100)
-			   << translate_string("moves") << ": " << type.movement() << jump_to(200)
+			   << translate_string("moves") << ": " << type.movement() << jump_to(240)
 			   << translate_string("alignment") << ": "
 			   << translate_string(type.alignment_description(type.alignment()))
-			   << jump_to(350);
+			   << jump_to(390);
 			if (type.experience_needed() != 500) {
 				// 500 is apparently used when the units cannot advance.
 				ss << translate_string("required_xp") << ": " << type.experience_needed();
@@ -560,7 +559,8 @@ std::vector<topic> generate_unit_topics() {
 			std::vector<attack_type> attacks = type.attacks();
 			if (attacks.size() > 0) {
 				// Print headers for the table.
-				ss << "\n\n<header>text='" << cap(translate_string("attacks")) << "'</header>\n\n";
+				ss << "\n\n<header>text='" << escape(cap(translate_string("attacks")))
+				   << "'</header>\n\n";
 				ss << jump_to(60) << bold(cap(translate_string("name"))) << jump_to(200)
 				   << bold(cap(translate_string("type")))
 				   << jump_to(280) << bold(cap(translate_string("dmg"))) << jump_to(340)
@@ -600,13 +600,13 @@ std::vector<topic> generate_unit_topics() {
 							lang_special = attack_it->special();
 						}
 						ss << jump_to(480) << "<ref>dst='" << ref_id << "' text='"
-						   << lang_special << "'</ref>";
+						   << escape(lang_special) << "'</ref>";
 					}
 				}
 			}
 
 			// Print the resistance table of the unit.
-			ss << "\n\n<header>text='" << cap(translate_string("resistances"))
+			ss << "\n\n<header>text='" << cap(escape(translate_string("resistances")))
 			   << "'</header>\n\n";
 			const unit_movement_type &movement_type = type.movement_type();
 			string_map dam_tab = movement_type.damage_table();
@@ -627,7 +627,7 @@ std::vector<topic> generate_unit_topics() {
 
 			if (map != NULL) {
 				// Print the terrain modifier table of the unit.
-				ss << "\n<header>text='" << cap(translate_string("terrain_info"))
+				ss << "\n<header>text='" << escape(cap(translate_string("terrain_info")))
 				   << "'</header>\n\n"
 				   << bold(cap(translate_string("terrain"))) << jump_to(140)
 				   << bold(cap(translate_string("movement"))) << jump_to(280)
@@ -2038,6 +2038,20 @@ std::string cap(const std::string &s) {
 	return res;
 }
 	
+std::string escape(const std::string &s) {
+	std::string res = s;
+	if(!res.empty()) {
+		std::string::size_type pos = 0;
+		do {
+			pos = res.find_first_of("'\\", pos);
+			if(pos != std::string::npos) {
+				res.insert(pos, 1, '\\');
+				pos += 2;
+			}
+		} while(pos < res.size() && pos != std::string::npos);
+	}
+	return res;
+}
 		
 std::string get_first_word(const std::string &s) {
 	size_t first_word_start = s.find_first_not_of(" ");

@@ -93,6 +93,12 @@ private:
 	const std::string id_;
 };
 
+/// To be used as a function object when sorting topic lists on the title.
+class title_less {
+public:
+	bool operator()(const topic &t1, const topic &t2) { return t1.title < t2.title; }
+};
+
 struct delete_section {
 	void operator()(section *s) { delete s; }
 };
@@ -464,6 +470,9 @@ std::string to_lower(const std::string &s);
 
 /// Return a copy of s with the first letter capitalized.
 std::string cap(const std::string &s);
+
+/// Prepend all chars with meaning inside attributes with a backslash.
+std::string escape(const std::string &s);
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.
