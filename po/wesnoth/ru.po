@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 09:57+0100\n"
-"PO-Revision-Date: 2005-03-05 19:10+0300\n"
+"PO-Revision-Date: 2005-03-24 11:36+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -25,9 +25,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
-msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf"
+msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -91,7 +90,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Основы игры"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -99,11 +97,8 @@ msgid ""
 "follow the links included."
 msgstr ""
 "Эта страница отображает всё, что Вам необходимо знать, чтобы играть в Битву "
-"за Веснот. Она объяснит основной механизм игры. Более детальную информацию "
-"Вы можете получить в разделах <ref>dst=basic_strategy text='Основы "
-"Стратегии'</ref> и <ref>dst=multiplayer_strategy text='Стратегия Сетевой "
-"Игры'</ref>. Помните, что это просто обзор - для отдельных случаев и "
-"ситуаций следуйте по вложенным ссылкам."
+"за Веснот. Она объяснит основной механизм игры. Помните, что это просто "
+"обзор - для отдельных случаев и ситуаций следуйте по вложенным ссылкам."
 
 #: data/help.cfg:70
 msgid ""
@@ -240,7 +235,6 @@ msgstr ""
 "назначения за отведённое количество ходов."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -257,17 +251,16 @@ msgstr ""
 "\n"
 "\n"
 "Каждое соединение имеет определённое число очков движения, затрачиваемых при "
-"вхождении в новый квадрат в соответствии с типом <ref>dst=terrain "
-"text=Местности</ref> этого квадрата. Например, для того, чтобы войти на луг, "
-"всегда нужно потратить одно очко движения. Также количество затрачиваемых "
-"очков движения зависит от типа соединения - в лесу эльфы теряют только одно "
-"очко движения, люди и орки теряют два очка, а всадники - три очка. Вы можете "
-"узнать, сколько очков движения требуется соединению для входа на "
-"определённую землю, нажав по нему правой кнопкой и выбрав 'Описание "
-"соединения' и заглянув в пункт <italic>text='Тип Местности'</italic>."
+"вхождении в новый квадрат в соответствии с типом Местности этого квадрата. "
+"Например, для того, чтобы войти на луг, всегда нужно потратить одно очко "
+"движения. Также количество затрачиваемых очков движения зависит от типа "
+"соединения - в лесу эльфы теряют только одно очко движения, люди и орки "
+"теряют два очка, а всадники - три очка. Вы можете узнать, сколько очков "
+"движения требуется соединению для входа на определённую землю, нажав по нему "
+"правой кнопкой и выбрав Описание соединения и заглянув в пункт "
+"<italic>text='Тип местности'</italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -280,12 +273,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Помните о движении по <ref>dst=zones_of_control text='Зонам Контроля'</ref>. "
-"Каждое соединение создаёт из ближайших квадратов вокруг себя зону контроля, "
-"и противник, вошедший в один из этих квадратов, теряет все свои очки "
-"движения. Поняв, как использовать зону контроля, Вы сможете управлять этой "
-"важной составляющей частью Веснота. Только <ref>dst=ability_skirmish "
-"text='Застрельщики'</ref> могут не обращать внимания на зоны контроля."
+"Помните о движении по Зонам Контроля. Каждое соединение создаёт из ближайших "
+"квадратов вокруг себя зону контроля, и любой противник, вошедший в один из "
+"этих квадратов, немедленно заканчивает своё движение. Поняв, как "
+"использовать зону контроля, Вы сможете управлять этой важной составляющей "
+"частью Веснота, только <ref>dst=ability_skirmisher text='Застрельщики'</ref> "
+"могут игнорировать зоны контроля."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -346,7 +339,6 @@ msgstr ""
 "<header>text='Шанс попадания'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -361,15 +353,14 @@ msgstr ""
 "\n"
 "\n"
 "За двумя исключениями, шанс нанести удар по соединению вычисляется на основе "
-"на рейтинге защищенности на <ref>dst=terrain text=Местности</ref>, на "
-"которой оно стоит. Это может быть выяснено при нажатии правой кнопки мыши, "
-"выборе 'Описание Соединения' и просмотре <italic>text='Типа местности'</"
-"italic>. Для примера, эльфы в лесу имеют рейтинг защищенности, равный 70%, "
-"значит, противник имеет шанс попасть по нему равный 30%. Шанс Эльфа попасть "
-"по атакующему зависит от типа местности, на которой стоит атакующий."
+"рейтинга защищенности на Местности, на которой оно стоит. Это может быть "
+"выяснено при нажатии правой кнопки мыши, выборе Описание Соединения и "
+"просмотре <italic>text='Типа местности'</italic>. Например, эльфы в лесу "
+"имеют рейтинг защищенности, равный 70%, значит, противник имеет шанс попасть "
+"по нему равный 30%. Шанс Эльфа попасть по атакующему зависит от типа "
+"местности, на которой стоит атакующий."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -379,11 +370,11 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"В этом правиле есть два исключения: <ref>dst=magical_attacks "
-"text='Магические атаки'</ref> и <ref>dst=ability_marksman text=Снайперы</"
-"ref>. Магические атаки всегда имеют шанс попадания 70%, независимо от "
-"местности. Снайперы, если используют атаку на дистанции, всегда имеют шанс "
-"выше 60% независимо от местности."
+"В этом правиле есть два исключения: <ref>dst=weaponspecial_magical "
+"text='Магические атаки'</ref> и <ref>dst=weaponspecial_marksman "
+"text=Снайперы</ref>. Магические атаки всегда имеют шанс попадания 70%, "
+"независимо от местности. Снайперы, если используют атаку на дистанции, "
+"всегда имеют шанс выше 60% независимо от местности."
 
 #: data/help.cfg:114
 msgid ""
@@ -415,7 +406,6 @@ msgstr ""
 "<ref>dst=time_of_day text='Временем Суток'</ref>, известными заранее."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -427,9 +417,9 @@ msgstr ""
 "\n"
 "\n"
 "Некоторые соединения имеют специальные возможности, позволяющие увеличить "
-"урон в бою. Большинство из них используют <ref>dst=ability_charge "
+"урон в бою. Большинство из них используют <ref>dst=weaponspecial_charge "
 "text=Бросок</ref>, который удваивает наносимый урон атакующего и "
-"обороняющегося."
+"обороняющегося когда соединение использует Бросок."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -591,7 +581,6 @@ msgstr ""
 "сможете выбрать тип будущего соединения."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -599,8 +588,9 @@ msgid ""
 "occasional units (such as <ref>dst=unit_Mage text=Mages</ref>) may have four."
 msgstr ""
 "\n"
+"\n"
 "Помните, что большинство соединений ограничены тремя уровнями, но не все, и "
-"некоторые соединения (как <ref>dst=unit_mage text=Маги</ref>) могут иметь "
+"некоторые соединения (как <ref>dst=unit_Mage text=Маги</ref>) могут иметь "
 "четыре."
 
 #: data/help.cfg:169
@@ -638,15 +628,14 @@ msgstr ""
 "Деревни: Соединение, начавшее свой ход в деревне, восстанавливает 8 ЗД."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Регенерация</ref>: Некоторые соединения "
-"(как тролли) имеют умение автоматически восстанавливать 8 ЗД за ход."
+"<ref>dst=ability_regenerates text=Регенерация</ref>: Некоторые соединения "
+"(как тролли) могут автоматически восстанавливать 8 ЗД за ход."
 
 #: data/help.cfg:175
 msgid ""
@@ -1273,12 +1262,11 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "командная игра 2 на 2 или 3 на 3."
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
-#, fuzzy
 msgid "Icy Waters"
-msgstr "Святая вода"
+msgstr "Ледяная вода"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
 msgid ""
@@ -1469,9 +1457,8 @@ msgid "King of the Hill"
 msgstr "Царь горы"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+Баскский перевод"
+msgstr "Простое обучение"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid ""
@@ -1482,7 +1469,6 @@ msgstr ""
 "несомненно, Вы можете объяснить мне искусство битвы..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1500,7 +1486,6 @@ msgid "Recruit a unit"
 msgstr "Вербовать новобранца"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:76
-#, fuzzy
 msgid "Excellent! You recruited an Elvish Fighter."
 msgstr "Отлично! Вы завербовали Эльфа Бойца."
 
@@ -1518,7 +1503,6 @@ msgid "How do I recruit units?"
 msgstr "Как покупать соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1560,15 +1544,14 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Как мне выбрать какие именно соединения покупать?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:82
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
 "Просмотрите внимательно данные о навыках, отображенных слева от выбранного "
-"соединения, цену, отображенную после имени соединения. Вы узнаете больше о "
-"навыках в руководстве"
+"соединения, цену, отображенную после имени соединения. Вы узнаете больше об "
+"этих навыках в руководстве."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:83
 msgid "What happens when I recruit a unit?"
@@ -1601,7 +1584,6 @@ msgid "End your turn"
 msgstr "Закончить ход"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:100
-#, fuzzy
 msgid "You successfully ended your turn."
 msgstr "Вы успешно завершили свой ход."
 
@@ -1654,13 +1636,12 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Переместите Вашего Эльфа бойца к Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
-#, fuzzy
 msgid ""
 "Excellent! You successfully moved your Elvish Fighter. However, when he "
 "moved next to an enemy unit, he lost all his movement for this turn; this is "
 "called the 'zone of control'."
 msgstr ""
-"Замечательно! Вы успешно передвинули Вашего Эльфа бойца. После того, как Вы "
+"Замечательно! Вы успешно передвинули своего Эльфа бойца. После того, как Вы "
 "передвинули своё соединение к соединению противника, оно больше не может "
 "двигаться на этом же ходу; это называется 'зона контроля'."
 
@@ -1749,7 +1730,6 @@ msgid "Attack Merle"
 msgstr "Атакуйте Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:163
-#, fuzzy
 msgid "You successfully attacked Merle."
 msgstr "Вы успешно атаковали Мирли."
 
@@ -1758,7 +1738,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Может ли Мирли ответить на мою атаку?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:167
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1828,7 +1807,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Завершите свой ход и подождите пока Мирли атакует Вас."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:181
-#, fuzzy
 msgid ""
 "Your fighter survived Merle's attack. Whenever a unit survives a battle, it "
 "gets experience from the combat. Once a unit gains enough experience, it "
@@ -1862,7 +1840,6 @@ msgid "What happens when a unit advances?"
 msgstr "Что происходит при улучшении соединения?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1876,14 +1853,13 @@ msgstr ""
 "в кого именно улучшаться. Улучшенные соединения уровня 1 и выше гораздо "
 "сильнее, чем начального. Также, когда соединение получает повышение, его "
 "здоровье полностью восстанавливается и все ограничения, наложенные на него, "
-"удаляются. Это называется 'восстановление улучшением'"
+"удаляются. Это называется 'восстановление улучшением'."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "Move your fighter onto a village."
 msgstr "Переместите Вашего бойца в деревню."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "Move your fighter onto a village"
 msgstr "Переместите Вашего бойца в деревню."
 
@@ -1896,7 +1872,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Что происходит когда соединение входит в деревню?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:209
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1912,16 +1887,15 @@ msgstr ""
 "под определённым флагом оказывают помощь владельцу флага,выплачивая одну "
 "золотую монету за каждый ход и снижая содержание соединений на единицу. "
 "Общее число контролируемых деревень отображено в статусной строке после "
-"изображения дома. Кроме экономической поддержки, деревни оказывают и "
-"военную. Деревня восстанавливает здоровье находящегося в ней соединения на 8 "
-"ЗД за каждый ход."
+"изображения дома. Кроме экономической поддержки, деревни могут "
+"использоваться в бою. Деревня восстанавливает здоровье находящегося в ней "
+"соединения на 8 ЗД за каждый ход."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Как я могу восстановить здоровье без деревень?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1966,28 +1940,23 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:249
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "gained wisdom from my teachings anyway."
 msgstr ""
 "К сожалению, Вы проиграли, потому что Ваш лидер был убит. Надеюсь, что Вы "
-"получили новые знания от нашего обучения и в следующий раз результат будет "
-"лучше."
+"получили новые знания от моего обучения."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:256
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:240
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you gained "
 "wisdom from my teachings anyway."
 msgstr ""
 "К сожалению, Вы проиграли, потому что кончилось время. Надеюсь, что Вы "
-"получили новые знания от нашего обучения и в следующий раз результат будет "
-"лучше."
+"получили новые знания от моего обучения."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
-#, fuzzy
 msgid "You successfully completed the first training scenario."
 msgstr "Вы успешно завершили первый обучающий сценарий."
 
@@ -2003,7 +1972,6 @@ msgstr ""
 "расскажите?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:270
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2040,7 +2008,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:277
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
-#, fuzzy
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr "Вы хотите просмотреть уроки, которые были изучены на данном уровне?"
 
@@ -2055,7 +2022,6 @@ msgid "I'm done reviewing skills!"
 msgstr "Я закончил просмотр пройденных уроков!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:298
-#, fuzzy
 msgid ""
 "Although you completed your first scenario, your training is not yet over. "
 "We will now proceed to the next scenario, in which you will fight me in a "
@@ -2078,7 +2044,6 @@ msgstr ""
 "тренировочном бою."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2093,7 +2058,6 @@ msgstr ""
 "'OK'. Вы также можете призывать Эльфов Бойцов и Эльфов Лучников."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:60
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -2105,37 +2069,31 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
-"@Описываются:\n"
+"Описываются:\n"
 "Призыв\n"
 "Особенности\n"
 "Золото\n"
 "Время суток\n"
-"Земля\n"
+"Местность\n"
 "Сопротивляемость\n"
 "Способности\n"
-"Объекты\n"
-"Игра в Веснот\n"
-"@Задания\n"
-"@Победа\n"
-"Поражение Делфадора"
+"Объекты"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Делфадор"
+msgstr "Убейте Делфадора"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 #: data/scenarios/tutorial/utils.cfg:49
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Смерть Конрада"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:70
 #: data/scenarios/tutorial/utils.cfg:57
 msgid "Turns run out"
-msgstr ""
+msgstr "Ходы закончились"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:83
-#, fuzzy
 msgid "You successfully recalled your Elvish Fighter."
 msgstr "Вы успешно призвали Вашего Эльфа Бойца."
 
@@ -2147,7 +2105,6 @@ msgstr "Вы успешно призвали Вашего Эльфа Бойца.
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:159
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:173
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:206
-#, fuzzy
 msgid "En guarde!"
 msgstr "Защищайся!"
 
@@ -2172,7 +2129,6 @@ msgid "How should I decide which units to recall?"
 msgstr "Какие соединения мне выбирать для призыва?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
-#, fuzzy
 msgid ""
 "You should usually recall units that are already advanced to the next level. "
 "However, you may also want to recall units that have high experience, and "
@@ -2185,7 +2141,6 @@ msgstr ""
 "сценарии; например, в лесу призывайте эльфов."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because of their "
@@ -2266,7 +2221,6 @@ msgid "How do I get gold?"
 msgstr "Где мне доставать золото?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
-#, fuzzy
 msgid ""
 "You begin each level with a percentage of gold from the previous level. If "
 "this is less than 100 gold, you begin with 100 gold instead. The amount of "
@@ -2335,7 +2289,6 @@ msgstr ""
 "отличительные особенности."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
-#, fuzzy
 msgid ""
 "Two terrains have properties which I described earlier: namely villages and "
 "castle. However the properties of most terrains are more subtle, and have to "
@@ -2352,7 +2305,7 @@ msgstr ""
 "количество очков движения, требуемое для входа в квадрат. Вторая особенность "
 "- защищённость, которая даётся соединению, стоящему на этой местности. Это "
 "процент, определяющий шанс соединения получить повреждение на этой "
-"местности. Например, многие эльфы имеют 70% защищённость в лесу, "
+"местности. Например, многие эльфы имеют 70% защищённость в траве, "
 "следовательно, они имеют шанс в 30% получить повреждение."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
@@ -2364,7 +2317,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Как мне найти свойства отдельной земли?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then select Terrain "
@@ -2374,13 +2326,13 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
-"Чтобы определить свойства земли для отдельного соединения, нажмите правой "
-"кнопкой мыши по соединению, выберите Описание Соединения, затем взгляните в "
-"Тип Местности. Чтобы определить, какая земля в квадрате, наведите курсор на "
-"этот курсор и посмотрите в верхний правый угол экрана. Там отображены "
-"название земли, координаты квадрата, защищённость выбранного соединения и "
-"количество очков движения, необходимых для выбранного соединения для того, "
-"чтобы дойти до этого квадрата."
+"Чтобы определить свойства местности для отдельного соединения, нажмите "
+"правой кнопкой мыши на соединении, выберите Описание Соединения, затем "
+"выберите Тип Местности. Чтобы определить, какая земля в квадрате, наведите "
+"курсор на этот курсор и посмотрите в верхний правый угол экрана. Там "
+"отображены, по порядку, тип местности, координаты квадрата, защищённость "
+"выбранного соединения и количество очков движения, необходимых для "
+"выбранного соединения для того, чтобы дойти до этого квадрата."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:157
 msgid ""
@@ -2413,7 +2365,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Как сопротивляемость влияет на ущерб\\, получаемый при атаке?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2422,13 +2373,13 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
-"Есть 6 различных типов урона - режущее, колющее, удар, огонь, холод и святое "
+"Есть 6 различных типов урона: режущее, колющее, удар, огонь, холод и святое "
 "оружие. Сильно защищённые соединения хорошо сопротивляются физическим типам "
-"урона - режущее, колющее оружие и удар, но плохо - магическим типам урона - "
-"огню и холоду. Все живые соединения имеют сопротивляемость к святой атаке, "
-"когда как мертвецы уязвимы ей. Чтобы узнать, какая сопротивляемость у "
-"соединения, нажмите правой кнопкой мыши по соединению и выберите Описание "
-"Соединения, а после загляните в Сопротивляемость."
+"урона: режущее, колющее оружие и удар, но плохо сопротивляются магическим "
+"типам урона: огню и холоду. Все живые соединения имеют сопротивляемость к "
+"святой атаке, тогда как мертвецы уязвимы ей. Чтобы узнать, какая "
+"сопротивляемость у соединения, нажмите правой кнопкой мыши по соединению и "
+"выберите Описание Соединения, а после выберите Сопротивляемость."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid "What are the different damage types?"
@@ -2539,14 +2490,13 @@ msgid "How long do these objects last?"
 msgstr "Как долго используются предметы?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:209
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
-"Большинство предметов используется соединением постоянно. Но некоторые "
-"предметы, такие как Святая Вода, используются только до конца текущего "
-"сценария."
+"Большинство предметов постоянно изменяются у соединений, которые получают "
+"их. Но некоторые предметы, такие как Святая Вода, используются только до "
+"конца текущего уровня."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:223
 msgid ""
@@ -2560,14 +2510,14 @@ msgstr ""
 "Вы можете призвать и/или вербовать."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
-#, fuzzy
 msgid ""
 "Congratulations! By defeating me, you complete the second training scenario."
-msgstr "Вы успешно завершили первый обучающий сценарий."
+msgstr "Поздравляю! Убив меня, Вы завершили второй обучающий сценарий."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:285
 msgid "Next, you may want to begin a campaign, or play multiplayer."
 msgstr ""
+"Дальше Вы можете начать кампанию или сыграть в многопользовательскую игру."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid "How do I play a campaign?"
@@ -2603,7 +2553,6 @@ msgid "That was explained well! But.."
 msgstr "Я всё понял! Но..."
 
 #: data/scenarios/tutorial/utils.cfg:42
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recruiting units\n"
@@ -2612,23 +2561,20 @@ msgid ""
 "Gaining experience\n"
 "Winning scenarios"
 msgstr ""
-"@Описываются:\n"
+"Описываются:\n"
 "Вербовка соединений\n"
 "Передвижение соединений\n"
 "Атака противника\n"
 "Получение опыта\n"
-"Победа в сценарии\n"
-"Текущая задача:\n"
-"{OBJECTIVE}"
+"Победа в сценарии"
 
 #: data/scenarios/tutorial/utils.cfg:43
 msgid "Current objective:"
-msgstr ""
+msgstr "Текущее задание:"
 
 #: data/scenarios/tutorial/utils.cfg:53
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Делфадор"
+msgstr "Смерть Делфадора"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2770,17 +2716,16 @@ msgid "Canyon"
 msgstr "Каньон"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "ruin"
-msgstr "осушать"
+msgstr "руины"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr ""
+msgstr "затопленные руины"
 
 #: data/terrain.cfg:458
 msgid "swamp ruin"
-msgstr ""
+msgstr "болотные руины"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -3134,18 +3079,16 @@ msgid "loyal"
 msgstr "преданный"
 
 #: data/traits.cfg:5
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "содержание"
+msgstr "Нулевое содержание"
 
 #: data/traits.cfg:15
-#, fuzzy
 msgid "undead"
-msgstr "Мертвецы"
+msgstr "мертвец"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr ""
+msgstr "Устойчив к отравлению"
 
 #: data/traits.cfg:23
 msgid "strong"
@@ -3153,7 +3096,7 @@ msgstr "сильный"
 
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr ""
+msgstr "ловкий"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -3448,14 +3391,13 @@ msgstr ""
 "соединениями.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "When used offensively, this attack presses the engagement until one of the "
 "combatants is slain."
 msgstr ""
 "Берсерк:\n"
-"Используемая в ярости или в защите, эта атака продолжает битву, пока один из "
+"Когда используется в наступлении, эта атака продолжает битву, пока один из "
 "бойцов не погибнет."
 
 #: data/translations/english.cfg:99
@@ -4413,7 +4355,7 @@ msgstr "скипетр"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Темный Колдун"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -7726,9 +7668,8 @@ msgid "+Slovak Translation"
 msgstr "+Словакский перевод"
 
 #: src/about.cpp:280
-#, fuzzy
 msgid "+Slovenian Translation"
-msgstr "+Словакский перевод"
+msgstr "+Словенский перевод"
 
 #: src/about.cpp:284
 msgid "+Spanish Translation"
@@ -8496,7 +8437,6 @@ msgid "Faction"
 msgstr "Фракция"
 
 #: src/multiplayer_connect.cpp:489
-#, fuzzy
 msgid "Color"
 msgstr "Цвет"
 
@@ -8697,7 +8637,7 @@ msgstr "Свободные слоты"
 
 #: src/multiplayer_lobby.cpp:126
 msgid "<no games open>"
-msgstr ""
+msgstr "<нет открытых игр>"
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
@@ -8737,7 +8677,7 @@ msgstr "Коричневый"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Неверный цвет"
 
 #: src/multiplayer_wait.cpp:113
 msgid "Leader: "
@@ -8773,11 +8713,11 @@ msgstr "Выберите сторону:"
 
 #: src/multiplayer_wait.cpp:414
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:414
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:415 src/playturn.cpp:1775
 msgid "unit^Gold"
@@ -9296,18 +9236,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:914
 msgid "neutral"
 msgstr "нейтральный"
-
-#~ msgid "Konrad"
-#~ msgstr "Конрад"
-
-#~ msgid "Merle"
-#~ msgstr "Мирли"
-
-#~ msgid ""
-#~ "Congratulations! You have defeated me, and completed the second and final "
-#~ "training scenario. Next, you may want to begin a campaign, or play "
-#~ "multiplayer."
-#~ msgstr ""
-#~ "Поздравляю! Вы нанесли мне поражение и успешно завершили второй и "
-#~ "финальный обучающий сценарий. Далее, Вы можете начать прохождение "
-#~ "кампаний, либо сыграть по сети."
