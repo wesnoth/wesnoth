@@ -1001,10 +1001,22 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		for(size_t n = 0; n != teams.size(); ++n) {
 			const team_data data = calculate_team_data(teams[n],n+1,units);
 
+			const bool on_side = n+1 == size_t(team_num) ||
+			                     !current_team.is_enemy(n+1);
+
 			std::stringstream str;
-			str << team_name(n+1,units) << ","
-			    << (data.gold < 0 ? "#":"") << data.gold << ","
-			    << data.villages << ","
+			if(!on_side)
+				str << "#";
+
+			str << team_name(n+1,units) << ",";
+
+			//only show gold for player's team and allies
+			if(on_side)
+				str << (data.gold < 0 ? "#":"") << data.gold << ",";
+			else
+				str << "?,";
+
+			str << data.villages << ","
 			    << data.units << ","
 			    << data.upkeep << ","
 			    << (data.net_income < 0 ? "#":"") << data.net_income;

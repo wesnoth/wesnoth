@@ -513,7 +513,10 @@ void show_video_mode_dialog(display& disp)
 
 	CVideo& video = disp.video();
 	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
-	if(reinterpret_cast<int>(modes) == -1 || modes == NULL) {
+
+	//the SDL documentation says that a return value of -1 if no dimension
+	//is available.
+	if(modes == reinterpret_cast<SDL_Rect**>(-1) || modes == NULL) {
 		if(modes != NULL)
 			std::cerr << "Can support any video mode\n";
 		else
