@@ -372,7 +372,7 @@ AC_ARG_ENABLE([editor],
 	      [editor=no])
 
 AC_ARG_ENABLE([tools],
-	      [  --enable-tools        Enable compilation of translation tools],
+	      [  --enable-tools        Enable compilation of tools for translators and artists],
 	      [tools=$enableval],
 	      [tools=no])
 
