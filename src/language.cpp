@@ -45,7 +45,7 @@ language_def known_languages[] = {
 	language_def("ru_RU", "Русский (Russian)"),
 	language_def("sk_SK", "Slovenčina"),
 	language_def("fi_FI", "Suomi"),
-	language_def("sv_SE", "Swedish"),
+	language_def("sv_SE", "Svenska"),
 
 	// end of list marker, do not remove
 	language_def("", "")
