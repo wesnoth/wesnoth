@@ -94,7 +94,6 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 		load_game(*data_, game, *state_);
 
-		state_->gold = -10000;
 		state_->available_units.clear();
 		state_->can_recruit.clear();
 
@@ -164,6 +163,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	level_ = level_ptr;
 	state_->label = level_->values["name"];
+	state_->gold = -10000;
 
 	std::map<int,std::string> res_to_id;
 	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
