@@ -502,8 +502,18 @@ bool unit::matches_filter(const config& cfg) const
 			return false;
 	}
 
-	if(role.empty() == false && role_ != role)
+	if(role.empty() == false && role_ != role) {
 		return false;
+	}
+
+	//if there are [not] tags below this tag, it means that the filter
+	//should not match if what is in the [not] tag does match
+	const config::child_list& negatives = cfg.get_children("not");
+	for(config::child_list::const_iterator not_it = negatives.begin(); not_it != negatives.end(); ++not_it) {
+		if(matches_filter(**not_it)) {
+			return false;
+		}
+	}
 
 	return true;
 }
