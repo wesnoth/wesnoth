@@ -112,7 +112,7 @@ public:
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
 
-	void set_defending(bool newval,
+	void set_defending(bool newval, bool hits=false, int ms=0,
 	                   attack_type::RANGE range=attack_type::LONG_RANGE);
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
@@ -150,6 +150,7 @@ private:
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
+	bool getsHit_;
 
 	int hitpoints_;
 	int maxHitpoints_, backupMaxHitpoints_;

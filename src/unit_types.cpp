@@ -28,28 +28,8 @@
 #include <unistd.h>
 #endif
 
-attack_type::attack_type(const config& cfg)
+unit_animation::unit_animation(const config& cfg)
 {
-	name_ = cfg["name"];
-	type_ = cfg["type"];
-	special_ = cfg["special"];
-	backstab_ = special_ == "backstab";
-	icon_ = cfg["icon"];
-	if(icon_.empty())
-		icon_ = "attacks/" + name_ + ".png";
-
-	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
-	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
-	damage_ = atol(cfg["damage"].c_str());
-	num_attacks_ = atol(cfg["number"].c_str());
-
-	attack_weight_ = atof(cfg["attack_weight"].c_str());
-	defense_weight_ = atof(cfg["defense_weight"].c_str());
-	if ( ! attack_weight_ )
-	  attack_weight_ = 1.0;
-	if ( ! defense_weight_ )
-	  defense_weight_ = 1.0;
-
 	config::const_child_itors range = cfg.child_range("frame");
 	for(; range.first != range.second; ++range.first){
 		const int beg = atoi((**range.first)["begin"].c_str());
@@ -95,6 +75,92 @@ attack_type::attack_type(const config& cfg)
 
 		sfx_.push_back(sound);
 	}
+}
+
+int unit_animation::get_first_frame(unit_animation::FRAME_TYPE type) const
+{
+	if(frames_[type].empty())
+		return 0;
+	else
+		return minimum<int>(frames_[type].front().start,0);
+}
+
+int unit_animation::get_last_frame(unit_animation::FRAME_TYPE type) const
+{
+	if(frames_[type].empty())
+		return 0;
+	else
+		return maximum<int>(frames_[type].back().end,0);
+}
+
+const std::string* unit_animation::get_frame(int milliseconds, int* xoff,
+                                       unit_animation::FRAME_TYPE type,
+									   unit_animation::FRAME_DIRECTION dir,
+									   const std::string** halo, int* halo_x, int* halo_y) const
+{
+	for(std::vector<frame>::const_iterator i = frames_[type].begin();
+	    i != frames_[type].end(); ++i) {
+		if(i->start > milliseconds)
+			return NULL;
+
+		if(i->start <= milliseconds && i->end > milliseconds) {
+			if(xoff != NULL) {
+				*xoff = i->xoffset;
+			}
+
+			if(halo != NULL) {
+				if(i->halo.empty()) {
+					*halo = NULL;
+				} else {
+					*halo = &i->halo;
+				}
+
+				if(halo_x != NULL) {
+					*halo_x = i->halo_x;
+				}
+
+				if(halo_y != NULL) {
+					*halo_y = i->halo_y;
+				}
+			}
+
+			if(dir == DIAGONAL && i->image_diagonal != "") {
+				return &i->image_diagonal;
+			} else {
+				return &i->image;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
+{
+	return sfx_;
+}
+
+attack_type::attack_type(const config& cfg) : animation_(cfg)
+{
+	name_ = cfg["name"];
+	type_ = cfg["type"];
+	special_ = cfg["special"];
+	backstab_ = special_ == "backstab";
+	icon_ = cfg["icon"];
+	if(icon_.empty())
+		icon_ = "attacks/" + name_ + ".png";
+
+	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
+	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
+	damage_ = atol(cfg["damage"].c_str());
+	num_attacks_ = atol(cfg["number"].c_str());
+
+	attack_weight_ = atof(cfg["attack_weight"].c_str());
+	defense_weight_ = atof(cfg["defense_weight"].c_str());
+	if ( ! attack_weight_ )
+	  attack_weight_ = 1.0;
+	if ( ! defense_weight_ )
+	  defense_weight_ = 1.0;
 }
 
 const std::string& attack_type::name() const
@@ -150,69 +216,6 @@ double attack_type::defense_weight() const
 bool attack_type::backstab() const
 {
 	return backstab_;
-}
-
-int attack_type::get_first_frame(attack_type::FRAME_TYPE type) const
-{
-	if(frames_[type].empty())
-		return 0;
-	else
-		return minimum<int>(frames_[type].front().start,0);
-}
-
-int attack_type::get_last_frame(attack_type::FRAME_TYPE type) const
-{
-	if(frames_[type].empty())
-		return 0;
-	else
-		return maximum<int>(frames_[type].back().end,0);
-}
-
-const std::string* attack_type::get_frame(int milliseconds, int* xoff,
-                                       attack_type::FRAME_TYPE type,
-									   attack_type::FRAME_DIRECTION dir,
-									   const std::string** halo, int* halo_x, int* halo_y) const
-{
-	for(std::vector<frame>::const_iterator i = frames_[type].begin();
-	    i != frames_[type].end(); ++i) {
-		if(i->start > milliseconds)
-			return NULL;
-
-		if(i->start <= milliseconds && i->end > milliseconds) {
-			if(xoff != NULL) {
-				*xoff = i->xoffset;
-			}
-
-			if(halo != NULL) {
-				if(i->halo.empty()) {
-					*halo = NULL;
-				} else {
-					*halo = &i->halo;
-				}
-
-				if(halo_x != NULL) {
-					*halo_x = i->halo_x;
-				}
-
-				if(halo_y != NULL) {
-					*halo_y = i->halo_y;
-				}
-			}
-
-			if(dir == DIAGONAL && i->image_diagonal != "") {
-				return &i->image_diagonal;
-			} else {
-				return &i->image;
-			}
-		}
-	}
-
-	return NULL;
-}
-
-const std::vector<attack_type::sfx>& attack_type::sound_effects() const
-{
-	return sfx_;
 }
 
 bool attack_type::matches_filter(const config& cfg) const
@@ -549,6 +552,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	can_advance_ = advances_to().empty() == false;
+
+	const config::child_list& defends = cfg_.get_children("defend");
+	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
+		defensive_animations_.push_back(defensive_animation(**d));
+	}
 }
 
 int unit_type::num_traits() const { return race_->num_traits(); }
@@ -866,6 +874,39 @@ const std::string& unit_type::race() const
 	}
 
 	return race_->name();
+}
+
+unit_type::defensive_animation::defensive_animation(const config& cfg) : hits(HIT_OR_MISS), range(SHORT_OR_LONG), animation(cfg)
+{
+	const std::string& hits_str = cfg["hits"];
+	if(hits_str.empty() == false) {
+		hits = (hits_str == "yes") ? HIT : MISS;
+	}
+
+	const std::string& range_str = cfg["range"];
+	if(range_str.empty() == false) {
+		range = (range_str == "short") ? SHORT : LONG;
+	}
+}
+
+bool unit_type::defensive_animation::matches(bool h, attack_type::RANGE r) const
+{
+	if(hits == HIT && h == false || hits == MISS && h == true || range == SHORT && r == attack_type::LONG_RANGE || range == LONG && r == attack_type::SHORT_RANGE) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE range) const
+{
+	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
+		if(i->matches(hits,range)) {
+			return &i->animation;
+		}
+	}
+
+	return NULL;
 }
 
 game_data::game_data(const config& cfg)

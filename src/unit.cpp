@@ -801,15 +801,24 @@ const std::string& unit::image() const
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
 		case STATE_DEFENDING_LONG:
-		           return type_->image_defensive(attack_type::LONG_RANGE);
-		case STATE_DEFENDING_SHORT:
-		           return type_->image_defensive(attack_type::SHORT_RANGE);
+		case STATE_DEFENDING_SHORT: {
+			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
+			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
+			if(anim != NULL) {
+				const std::string* img = anim->get_frame(attackingMilliseconds_);
+				if(img != NULL) {
+					return *img;
+				}
+			}
+
+			return type_->image_defensive(range);
+		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
 				return type_->image();
 
 			const std::string* const img =
-			          attackType_->get_frame(attackingMilliseconds_);
+			          attackType_->animation().get_frame(attackingMilliseconds_);
 
 			if(img == NULL)
 				return type_->image_fighting(attackType_->range());
@@ -825,10 +834,12 @@ const std::string& unit::image() const
 	}
 }
 
-void unit::set_defending(bool newval, attack_type::RANGE range)
+void unit::set_defending(bool newval, bool hits, int ms, attack_type::RANGE range)
 {
 	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
 	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
+	attackingMilliseconds_ = ms;
+	getsHit_ = hits;
 }
 
 void unit::set_attacking(bool newval, const attack_type* type, int ms)

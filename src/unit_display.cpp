@@ -203,8 +203,6 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const unit_map::iterator att = units.find(a);
 	const unit_map::iterator def = units.find(b);
 
-	def->second.set_defending(true,attack_type::LONG_RANGE);
-
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()) {
@@ -215,8 +213,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
-	const int first_missile = minimum<int>(-100,attack.get_first_frame(attack_type::MISSILE_FRAME));
-	const int last_missile = attack.get_last_frame(attack_type::MISSILE_FRAME);
+	const int first_missile = minimum<int>(-100,attack.animation().get_first_frame(unit_animation::MISSILE_FRAME));
+	const int last_missile = attack.animation().get_last_frame(unit_animation::MISSILE_FRAME);
 
 	const int real_last_missile = last_missile - first_missile;
 	const int missile_impact = -first_missile;
@@ -224,17 +222,17 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5:1;
 
-	const std::vector<attack_type::sfx>& sounds = attack.sound_effects();
-	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
+	const std::vector<unit_animation::sfx>& sounds = attack.animation().sound_effects();
+	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
 
 	const std::string& hit_sound = def->second.type().get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
 	const int play_hit_sound_at = 0;
 
 	const bool hits = damage > 0;
-	const int begin_at = attack.get_first_frame();
+	const int begin_at = attack.animation().get_first_frame();
 	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
-					       maximum(attack.get_last_frame(),real_last_missile));
+					       maximum(attack.animation().get_last_frame(),real_last_missile));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -246,8 +244,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	const bool vflip = b.y > a.y || b.y == a.y && is_even(a.x);
 	const bool hflip = b.x < a.x;
-	const attack_type::FRAME_DIRECTION dir =
-	         (a.x == b.x) ? attack_type::VERTICAL:attack_type::DIAGONAL;
+	const unit_animation::FRAME_DIRECTION dir = (a.x == b.x) ? unit_animation::VERTICAL:unit_animation::DIAGONAL;
 
 	bool dead = false;
 	const int drain_speed = 1*acceleration;
@@ -265,6 +262,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
+
+		def->second.set_defending(true,hits,i - missile_impact,attack_type::LONG_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -284,7 +283,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		const std::string* new_halo = NULL;
 		int new_halo_x = 0, new_halo_y = 0;
-		const std::string* unit_image = attack.get_frame(i,NULL,attack_type::UNIT_FRAME,attack_type::VERTICAL,&new_halo,&new_halo_x,&new_halo_y);
+		const std::string* unit_image = attack.animation().get_frame(i,NULL,unit_animation::UNIT_FRAME,unit_animation::VERTICAL,&new_halo,&new_halo_x,&new_halo_y);
 		if(att->second.facing_left() == false) {
 			new_halo_x *= -1;
 		}
@@ -354,8 +353,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 			const std::string* new_halo = NULL;
 			int new_halo_x = 0, new_halo_y = 0;
-			const std::string* missile_image = attack.get_frame(missile_frame,NULL,
-			                                                    attack_type::MISSILE_FRAME,dir,&new_halo,&new_halo_x,&new_halo_y);
+			const std::string* missile_image = attack.animation().get_frame(missile_frame,NULL,
+			                                                    unit_animation::MISSILE_FRAME,dir,&new_halo,&new_halo_x,&new_halo_y);
 
 			if(att->second.facing_left() == false) {
 				new_halo_x *= -1;
@@ -367,7 +366,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
 			if(missile_image == NULL) {
-				if(dir == attack_type::VERTICAL)
+				if(dir == unit_animation::VERTICAL)
 					missile_image = &default_missile;
 				else
 					missile_image = &default_diag_missile;
@@ -523,8 +522,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	}
 
 	const bool hits = damage > 0;
-	const std::vector<attack_type::sfx>& sounds = attack.sound_effects();
-	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
+	const std::vector<unit_animation::sfx>& sounds = attack.animation().sound_effects();
+	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
 
 	const std::string& hit_sound = def->second.type().get_hit_sound();
 	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
@@ -544,9 +543,9 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		leader->second.set_leading(true);
 	}
 
-	const int begin_at = minimum<int>(-200,attack.get_first_frame());
+	const int begin_at = minimum<int>(-200,attack.animation().get_first_frame());
 	const int end_at = maximum<int>((damage+1)*time_resolution,
-	                                       maximum<int>(200,attack.get_last_frame()));
+	                                       maximum<int>(200,attack.animation().get_last_frame()));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -582,6 +581,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
+
+		def->second.set_defending(true,hits,i,attack_type::SHORT_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -627,7 +628,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			++flash_num;
 		}
 
-
 		disp.draw_tile(b.x,b.y,NULL,defender_alpha,defender_colour);
 		if(leader_loc.valid()) {
 			disp.draw_tile(leader_loc.x,leader_loc.y);
@@ -637,8 +637,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		int new_halo_x = 0, new_halo_y = 0;
 
 		int xoffset = 0;
-		const std::string* unit_image = attack.get_frame(i,&xoffset,attack_type::UNIT_FRAME,attack_type::VERTICAL,
-		                                                 &new_halo_image,&new_halo_x,&new_halo_y);
+		const std::string* unit_image = attack.animation().get_frame(i,&xoffset,unit_animation::UNIT_FRAME,unit_animation::VERTICAL,
+		                                                             &new_halo_image,&new_halo_x,&new_halo_y);
 
 		if(!attacker.facing_left()) {
 			xoffset *= -1;

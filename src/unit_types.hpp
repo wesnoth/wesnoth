@@ -21,26 +21,11 @@
 #include <string>
 #include <vector>
 
-//the 'attack type' is the type of attack, how many times it strikes,
-//and how much damage it does.
-class attack_type
+//a class to describe a unit's animation sequence
+class unit_animation
 {
 public:
-	enum RANGE { SHORT_RANGE, LONG_RANGE };
-
-	attack_type(const config& cfg);
-	const std::string& name() const;
-	const std::string& type() const;
-	const std::string& special() const;
-	const std::string& icon() const;
-	RANGE range() const;
-	int hexes() const;
-	int damage() const;
-	int num_attacks() const;
-	double attack_weight() const;
-	double defense_weight() const;
-
-	bool backstab() const;
+	unit_animation(const config& cfg);
 
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
@@ -64,24 +49,7 @@ public:
 
 	const std::vector<sfx>& sound_effects() const;
 
-	bool matches_filter(const config& cfg) const;
-	bool apply_modification(const config& cfg,std::string* description);
 private:
-	std::string name_;
-	std::string type_;
-	std::string special_;
-	std::string icon_;
-	RANGE range_;
-	int hexes_;
-	int damage_;
-	int num_attacks_;
-	double attack_weight_;
-	double defense_weight_;
-
-	//caches whether the unit can backstab. This is important
-	//because the AI queries it alot.
-	bool backstab_;
-
 	struct frame {
 		frame(int i1, int i2, const std::string& img, const std::string& halo, int offset, int halo_x, int halo_y)
 		      : start(i1), end(i2), xoffset(offset), image(img), halo(halo), halo_x(halo_x), halo_y(halo_y)
@@ -104,6 +72,49 @@ private:
 	std::vector<frame> frames_[2];
 
 	std::vector<sfx> sfx_;
+};
+
+//the 'attack type' is the type of attack, how many times it strikes,
+//and how much damage it does.
+class attack_type
+{
+public:
+	enum RANGE { SHORT_RANGE, LONG_RANGE };
+
+	attack_type(const config& cfg);
+	const std::string& name() const;
+	const std::string& type() const;
+	const std::string& special() const;
+	const std::string& icon() const;
+	RANGE range() const;
+	int hexes() const;
+	int damage() const;
+	int num_attacks() const;
+	double attack_weight() const;
+	double defense_weight() const;
+
+	bool backstab() const;
+
+	const unit_animation& animation() const { return animation_; }
+
+	bool matches_filter(const config& cfg) const;
+	bool apply_modification(const config& cfg,std::string* description);
+private:
+	unit_animation animation_;
+	std::string name_;
+	std::string type_;
+	std::string special_;
+	std::string icon_;
+	RANGE range_;
+	int hexes_;
+	int damage_;
+	int num_attacks_;
+	double attack_weight_;
+	double defense_weight_;
+
+	//caches whether the unit can backstab. This is important
+	//because the AI queries it alot.
+	bool backstab_;
 };
 
 class unit_movement_type;
@@ -220,6 +231,8 @@ public:
 
 	const std::string& race() const;
 
+	const unit_animation* defend_animation(bool hits, attack_type::RANGE range) const;
+
 private:
 	const config& cfg_;
 
@@ -244,6 +257,18 @@ private:
 	const std::vector<config*>& possibleTraits_;
 
 	unit_race::GENDER gender_;
+
+	struct defensive_animation
+	{
+		defensive_animation(const config& cfg);
+		bool matches(bool hits, attack_type::RANGE range) const;
+
+		enum { HIT, MISS, HIT_OR_MISS } hits;
+		enum { SHORT, LONG, SHORT_OR_LONG } range;
+		unit_animation animation;
+	};
+
+	std::vector<defensive_animation> defensive_animations_;
 };
 
 struct game_data
