@@ -5,7 +5,7 @@
 #include "multiplayer_lobby.hpp"
 #include "network.hpp"
 #include "show_dialog.hpp"
-#include "textbox.hpp"
+#include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 

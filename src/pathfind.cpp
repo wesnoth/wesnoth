@@ -112,7 +112,7 @@ size_t distance_between(const gamemap::location& a, const gamemap::location& b)
 	const size_t vpenalty = (is_even(a.x) && is_odd(b.x) && a.y < b.y ||
 	                         is_even(b.x) && is_odd(a.x) && b.y < a.y) ? 1:0;
 	const size_t vdistance = abs(a.y - b.y) + vpenalty;
-	const size_t vsavings = minimum(vdistance,hdistance/2 + hdistance%2);
+	const size_t vsavings = minimum<int>(vdistance,hdistance/2 + hdistance%2);
 
 	return hdistance + vdistance - vsavings;
 }

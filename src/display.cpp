@@ -471,7 +471,7 @@ void display::draw(bool update,bool force)
 
 	//force a wait for 10 ms every frame.
 	//TODO: review whether this is the correct thing to do
-	SDL_Delay(maximum(10,wait_time));
+	SDL_Delay(maximum<int>(10,wait_time));
 
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
@@ -559,7 +559,7 @@ void display::draw_game_status(int x, int y)
 		const int upkeep = team_upkeep(units_,currentTeam_+1);
 
 		const int expenses = upkeep - teams_[currentTeam_].towers().size();
-		const int income = teams_[currentTeam_].income() - maximum(expenses,0);
+		const int income = teams_[currentTeam_].income() - maximum<int>(expenses,0);
 
 		details << char(activeTeam_+1) << string_table["turn"] << ": "
 		        << status_.turn() << "/" << status_.number_of_turns() << "\n"
@@ -656,8 +656,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		SDL_Rect srcrect = description_rect;
 		srcrect.y -= background->h;
 		srcrect.x -= mapx();
-
-		SDL_Rect dstrect = description_rect;
 
 		SDL_BlitSurface(background_bot,&srcrect,screen,&description_rect);
 	}
@@ -1070,7 +1068,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		surface_lock srclock(surface);
 		short* startsrc = srclock.pixels() + srcy*(surface->w+xpad) +
-		                  maximum(xoffset,xsrc);
+		                  maximum<int>(xoffset,xsrc);
 		short* endsrc = startsrc + len;
 
 		if(!(startsrc >= srclock.pixels() &&
@@ -1194,7 +1192,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		const int energy_w = energy_image->w + is_odd(energy_image->w);
 		if(yloc + skip < energy_image->h) {
 			startenergy = energy_lock.pixels() + (yloc+skip)*energy_w +
-			              maximum(xoffset,xsrc);
+			              maximum<int>(xoffset,xsrc);
 
 			for(int i = 0; i != len; ++i) {
 				if(startenergy != NULL && *startenergy != 0) {
@@ -1326,7 +1324,7 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 
 	const gamemap::TERRAIN current_terrain = map_.on_board(loc) ? map_[x][y]:0;
 
-	std::vector<bool> done(true,6);
+	std::vector<bool> done(6,true);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
@@ -1805,7 +1803,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		double defensive_alpha = 1.0;
 
 		if(damage > 0 && i >= missile_impact) {
-			if(def->second.gets_hit(minimum(drain_speed,damage))) {
+			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {
@@ -1814,7 +1812,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 			if(flash_num == 0 || flash_num == 2) {
 				defensive_alpha = 0.0;
-				defensive_colour = 0xF000;
+				defensive_colour = short(0xF000);
 			}
 
 			++flash_num;
@@ -2029,7 +2027,7 @@ bool display::unit_attack(const gamemap::location& a,
 		double defender_alpha = 1.0;
 
 		if(damage > 0 && i >= 0) {
-			if(def->second.gets_hit(minimum(drain_speed,damage))) {
+			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {

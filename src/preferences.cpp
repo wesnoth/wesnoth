@@ -303,8 +303,6 @@ void set_turn_dialog(bool ison)
 
 void show_preferences_dialog(display& disp)
 {
-	assert(::disp != NULL);
-
 	const events::resize_lock prevent_resizing;
 	
 	log_scope("show_preferences_dialog");
