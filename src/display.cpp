@@ -1194,7 +1194,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*zoom());
 	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
-	double blend_ratio = 0.25;
+	double blend_ratio = 0.0;
 
 	if(loc == advancingUnit_ && it != units_.end()) {
 		//the unit is advancing - set the advancing colour to white if it's a
@@ -1205,6 +1205,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	} else if(it->second.poisoned() /* && highlight_ratio == 1.0 */) {
 		//the unit is poisoned - draw with a green hue
 		blend_with = rgb(0,255,0);
+		blend_ratio = 0.25;
 		//highlight_ratio *= 0.75;
 	}
 
