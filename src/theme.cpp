@@ -90,32 +90,93 @@ namespace {
 		return resolved.str();
 	}
 
-	const config find_ref(const std::string& id, const config& resol_cfg) {
-		for(config::all_children_iterator i = resol_cfg.ordered_begin();
-		    i != resol_cfg.ordered_end(); i++) {
-			if ((*(*i).second)["id"] == id) {
-				//std::cerr << "Found a " << *(*i).first << "\n";
-				return *(*i).second;
-			}
-			// recursively look in children
-			const config c = find_ref(id, *(*i).second);
-			if (!c["id"].empty()) {
-				return c;
+	config empty_config = config();
+
+	config& find_ref(const std::string& id, config& cfg, bool remove = false) {
+		for(config::child_map::const_iterator i = cfg.all_children().begin();
+		    i != cfg.all_children().end(); i++) {
+			for (config::child_list::const_iterator j = i->second.begin();
+			     j != i->second.end(); j++) {
+				if ((**j)["id"] == id) {
+					//std::cerr << "Found a " << *(*i).first << "\n";
+					if (remove) {
+						const config* const res = cfg.find_child((*i).first,"id",id);
+						const size_t index = std::find((*i).second.begin(), (*i).second.end(),
+									       res) - (*i).second.begin();
+						cfg.remove_child((*i).first,index);
+						return empty_config;
+					} else {
+						return **j;
+					}
+				}
+
+				// recursively look in children
+				config& c = find_ref(id, **j, remove);
+				if (!c["id"].empty()) {
+					return c;
+				}
 			}
 		}
 		// not found
-		return config();
+		return empty_config;
+	}
+
+#ifdef DEBUG
+	// to be called from gdb
+	config& find_ref(const char* id, config& cfg) {
+		return find_ref(std::string(id),cfg);
+	}
+#endif
+
+	config* expand_partialresolution(const config& cfg, const config& topcfg) {
+		// start with a copy of the declared parent
+		config* outcfg = new config(*topcfg.find_child("resolution", "id", cfg["inherits"]));
+
+		// override attributes
+		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
+			outcfg->values[j->first] = j->second;
+		}
+
+		// apply operations
+		{
+			const config::child_list& c = cfg.get_children("remove");
+			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
+				const config* parent;
+				config& target = find_ref ((**i)["id"], *outcfg, true);
+			}
+		}
+		{
+			const config::child_list& c = cfg.get_children("change");
+			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
+				config& target = find_ref ((**i)["id"], *outcfg);
+				for(string_map::iterator j = (**i).values.begin();
+				    j != (**i).values.end(); ++j) {
+					target.values[j->first] = j->second;
+				}
+			}
+		}
+
+		return outcfg;
 	}
 
 	void do_resolve_rects(const config& cfg, config& resolved_config,
-			      config* resol_cfg = NULL) {
+			      const config& topcfg, config* resol_cfg = NULL) {
 
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
-			config& childcfg = resolved_config.add_child(*value.first);
-			do_resolve_rects(*value.second, childcfg,
-					 (*value.first=="resolution") ? &childcfg : resol_cfg);
+			const std::string* childname = value.first;
+			const config* sourceconfig = value.second;
+			if (*value.first == "partialresolution") {
+				childname = new std::string("resolution");
+				sourceconfig = expand_partialresolution (*sourceconfig, topcfg);
+				//std::cerr << sourceconfig->write();
+			}
+			config& childcfg = resolved_config.add_child(*childname);
+			do_resolve_rects(*sourceconfig, childcfg, topcfg,
+					 (*childname=="resolution") ? &childcfg : resol_cfg);
+
+			if (childname != value.first) delete childname;
 		}
 
 		// copy all key/values
@@ -150,7 +211,7 @@ namespace {
 	config& resolve_rects(const config& cfg) {
 		config* newcfg = new config();
 
-		do_resolve_rects(cfg, *newcfg);
+		do_resolve_rects(cfg, *newcfg, cfg);
 
 		return *newcfg;
 	}
