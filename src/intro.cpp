@@ -33,11 +33,9 @@ namespace {
 	const int min_room_at_bottom = 150;
 }
 
-bool show_intro_part(display& screen, const config& part, 
-					 game_state& state_of_game);
+bool show_intro_part(display& screen, const config& part);
 
-void show_intro(display& screen, const config& data, 
-				game_state& state_of_game)
+void show_intro(display& screen, const config& data)
 {
 	std::cerr << "showing intro sequence...\n";
 	const events::resize_lock stop_resizing;
@@ -68,20 +66,19 @@ void show_intro(display& screen, const config& data,
 				for (config::child_list::const_iterator p = parts.begin();
 					 showing && p != parts.end(); ++p) {
 					 
-					showing = show_intro_part(screen, **p, state_of_game);
+					showing = show_intro_part(screen, **p);
 				}
 			}
 		}
 		else if (*item.first == "part") {
-			showing = show_intro_part(screen, *item.second, state_of_game);
+			showing = show_intro_part(screen, *item.second);
 		}
 	}
 	std::cerr << "intro sequence finished...\n";
 			
 }
 
-bool show_intro_part(display& screen, const config& part, 
-					 game_state& /*state_of_game*/)
+bool show_intro_part(display& screen, const config& part)
 {
 	std::cerr << "showing intro part\n";
 
@@ -355,7 +352,29 @@ void display_map_scene(display& screen, const std::string& scenario,
                                      screen.video().getSurface());
 }
 
-void show_map_scene(display& screen, config& data, game_state& state_of_game)
+void show_map_scene_cfg(display& screen, const std::string& scenario,
+		const config& cfg) {
+	config::all_children_iterator i = cfg.ordered_begin();
+	std::pair<const std::string*, const config*> item = *i;
+
+	if(*item.first == "if") {
+		const std::string type = game_events::conditional_passed(
+				NULL, *item.second) ? "then":"else";
+		const config* const thens = (*item.second).child(type);
+		if(thens == NULL) {
+			std::cerr << "no map scene this way...\n";
+			return;
+		}
+		const config& selection = *thens;
+		show_map_scene_cfg(screen, scenario, selection);
+	}else{
+		const config::child_list& dots = cfg.get_children("dot");
+		const std::string& image_file = cfg["image"];
+		display_map_scene(screen, scenario, dots, image_file);
+	}
+}
+
+void show_map_scene(display& screen, config& data)
 {
 	std::cerr << "showing map scene...\n";
 	//stop the screen being resized while we're in this function
@@ -381,24 +400,5 @@ void show_map_scene(display& screen, config& data, game_state& state_of_game)
 
 	const config& cfg = *cfg_item;
 
-	config::all_children_iterator i = cfg.ordered_begin();
-	std::pair<const std::string*, const config*> item = *i;
-
-	if(*item.first == "if") {
-		const std::string type = game_events::conditional_passed(
-				NULL, *item.second) ? "then":"else";
-		const config* const thens = (*item.second).child(type);
-		if(thens == NULL) {
-			std::cerr << "no map scene this way...\n";
-			return;
-		}
-		const config& selection = *thens;
-		const config::child_list& dots = selection.get_children("dot");
-		const std::string& image_file = selection["image"];
-		display_map_scene(screen, scenario, dots, image_file);
-	}else{
-		const config::child_list& dots = cfg.get_children("dot");
-		const std::string& image_file = cfg["image"];
-		display_map_scene(screen, scenario, dots, image_file);
-	}
+	show_map_scene_cfg(screen, scenario, cfg);
 }

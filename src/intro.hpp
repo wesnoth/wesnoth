@@ -32,7 +32,7 @@
 //
 //each part of the sequence will be displayed in turn, with the
 //user able to go to the next part, or skip it entirely.
-void show_intro(display& screen, const config& data, game_state& state_of_game);
+void show_intro(display& screen, const config& data);
 
 //function to show the map before each scenario.
 //data is in a format that looks like,
@@ -49,6 +49,6 @@ void show_intro(display& screen, const config& data, game_state& state_of_game);
 //where 'map-image' is the image of the map. dots are displayed
 //at 'x','y' on the image in sequence. type=cross should be used
 //for the last dot, to show where the battle takes place.
-void show_map_scene(display& screen, config& data, game_state& state_of_game);
+void show_map_scene(display& screen, config& data);
 
 #endif
