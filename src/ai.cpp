@@ -372,11 +372,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		game_events::fire("attack",to,target_loc);
 		if(units.count(to) && units.count(target_loc)) {
 			attack(disp,map,to,target_loc,weapon,units,state,gameinfo,false);
-			const int res = check_victory(units);
-			if(res == 1)
-				throw end_level_exception(VICTORY);
-			else if(res > 1)
-				throw end_level_exception(DEFEAT);
+			check_victory(units,teams);
 		}
 		std::cerr << "done attacking...\n";
 
@@ -568,11 +564,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 				if(units.count(attacker) && units.count(defender)) {
 					attack(disp,map,attacker,defender,weapon,units,state,
 					       gameinfo,false);
-					const int res = check_victory(units);
-					if(res == 1)
-						throw end_level_exception(VICTORY);
-					else if(res > 1)
-						throw end_level_exception(DEFEAT);
+					check_victory(units,teams);
 				}
 
 				break;

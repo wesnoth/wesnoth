@@ -247,12 +247,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 				game_events::pump();
 
-				const int victory = check_victory(units);
-				if(victory > 1) {
-					throw end_level_exception(DEFEAT);
-				} else if(victory == 1) {
-					throw end_level_exception(VICTORY);
-				}
+				check_victory(units,teams);
 			}
 
 			//time has run out

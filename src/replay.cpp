@@ -526,11 +526,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(u != units.end() && tgt != units.end()) {
 				attack(disp,map,src,dst,weapon_num,units,state,gameinfo,false);
-				const int res = check_victory(units);
-				if(res == 1)
-					throw end_level_exception(VICTORY);
-				else if(res > 1)
-					throw end_level_exception(DEFEAT);
+				check_victory(units,teams);
 			}
 
 			u = units.find(src);

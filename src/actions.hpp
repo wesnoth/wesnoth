@@ -84,7 +84,8 @@ void advance_unit(const game_data& info,
 bool under_leadership(const std::map<gamemap::location,unit>& units,
                       const gamemap::location& loc);
 
-int check_victory(std::map<gamemap::location,unit>& units);
+void check_victory(std::map<gamemap::location,unit>& units,
+                   const std::vector<team>& teams);
 
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that brings light is there

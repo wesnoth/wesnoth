@@ -355,14 +355,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				gui.invalidate_unit();
 				gui.draw(); //clear the screen
 
-				const int winner = check_victory(units);
-
-				//if the player has won
-				if(winner == team_num) {
-					throw end_level_exception(VICTORY);
-				} else if(winner >= 1) {
-					throw end_level_exception(DEFEAT);
-				}
+				check_victory(units,teams);
 			}
 		}
 

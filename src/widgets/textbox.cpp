@@ -29,7 +29,7 @@ textbox::textbox(display& disp, int width, const std::string& text)
 {
 	std::fill(previousKeyState_,
 	          previousKeyState_+CHAR_LENGTH,true);
-	static const SDL_Rect area = {0,0,1024,768};
+	static const SDL_Rect area = disp.screen_area();
 	height_ = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,
 	                          "ABCD",0,0).h;
 }
@@ -89,7 +89,7 @@ void textbox::draw() const
 
 	int pos = 1;
 	std::string str(1,'x');
-	static const SDL_Rect clip = {0,0,1024,768};
+	static const SDL_Rect clip = disp_.screen_area();
 
 	//draw the text
 	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {

@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "actions.hpp"
 #include "display.hpp"
 #include "game.hpp"
@@ -19,6 +20,7 @@
 #include "language.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
+#include "playlevel.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "util.hpp"
@@ -695,33 +697,47 @@ void advance_unit(const game_data& info,
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 }
 
-int check_victory(std::map<gamemap::location,unit>& units)
+void check_victory(std::map<gamemap::location,unit>& units,
+                   const std::vector<team>& teams)
 {
-	std::set<int> seen_leaders;
+	std::vector<int> seen_leaders;
 	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit())
-			seen_leaders.insert(i->second.side());
+			seen_leaders.push_back(i->second.side());
 	}
 
-	//if only one leader remains standing, his team has won
-	if(seen_leaders.size() == 1)
-		return *seen_leaders.begin();
+	bool found_enemies = false;
+	bool found_human = false;
 
-	//if the player (team 1) isn't here, the player has lost
-	if(seen_leaders.count(1) == 0)
-		return 2;
+	for(size_t n = 0; n != seen_leaders.size(); ++n) {
+		const size_t side1 = seen_leaders[n]-1;
+
+		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
+			const size_t side2 = seen_leaders[m];
+			if(side1 < teams.size() && teams[side1].is_enemy(side2)) {
+				found_enemies = true;
+			}
+		}
+
+		if(side1 < teams.size() && teams[side1].is_human()) {
+			found_human = true;
+		}
+	}
+
+	if(found_enemies == false) {
+		throw end_level_exception(found_human ? VICTORY : DEFEAT);
+	}
 
 	//remove any units which are leaderless
 	for(std::map<gamemap::location,unit>::iterator j = units.begin();
 	    j != units.end(); ++j) {
-		if(seen_leaders.count(j->second.side()) == 0) {
+		if(std::find(seen_leaders.begin(),seen_leaders.end(),j->second.side())
+		   == seen_leaders.end()) {
 			units.erase(j);
 			j = units.begin();
 		}
 	}
-
-	return -1;
 }
 
 const time_of_day& timeofday_at(const gamestatus& status,
