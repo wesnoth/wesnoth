@@ -77,54 +77,26 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_STATUS: {
 		std::stringstream unit_status;
 		std::stringstream tooltip;
-		
-		const int cols = 3;
-
-		int num = 0;
 
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
-			if(num != 0){
-				if((num % cols) == 0) unit_status << ";";
-				else unit_status << ",";
-				tooltip << std::endl;
-			}
-			num++;
-			unit_status << "misc/invisible.png";
-			tooltip << string_table["invisible"] << "; " << 
-				string_table["invisible_description"] << std::endl;
+			unit_status << "misc/invisible.png,";
+			tooltip << string_table["invisible"] << ": " << 
+				string_table["invisible_description"] << ";";
 		}
 		if(u->second.has_flag("slowed")) {
-			if(num != 0){
-				if((num % cols) == 0) unit_status << ";";
-				else unit_status << ",";
-				tooltip << std::endl;
-			}
-			num++;
-			unit_status << "misc/slowed.png";
-			tooltip << string_table["slowed"] << "; " << 
-				string_table["slowed_description"] << std::endl;
+			unit_status << "misc/slowed.png,";
+			tooltip << string_table["slowed"] << ": " << 
+				string_table["slowed_description"] << ";";
 		}
 		if(u->second.has_flag("poisoned")) {
-			if(num != 0){
-				if((num % cols) == 0) unit_status << ";";
-				else unit_status << ",";
-				tooltip << std::endl;
-			}
-			num++;
-			unit_status << "misc/poisoned.png";
-			tooltip << string_table["poisoned"] << "; " << 
-				string_table["poisoned_description"] << std::endl;
+			unit_status << "misc/poisoned.png,";
+			tooltip << string_table["poisoned"] << ": " << 
+				string_table["poisoned_description"] << ";";
 		}
 		if(u->second.has_flag("stone")) {
-			if(num != 0){
-				if((num % cols) == 0) unit_status << ";";
-				else unit_status << ",";
-				tooltip << std::endl;
-			}
-			num++;
-			unit_status << "misc/stone.png";
-			tooltip << string_table["stone"] << "; " << 
-				string_table["stone_description"] << std::endl;
+			unit_status << "misc/stone.png,";
+			tooltip << string_table["stone"] << ": " << 
+				string_table["stone_description"] << ";";
 		}
 
 		std::cerr << "Status report: " << unit_status.str() << std::endl;

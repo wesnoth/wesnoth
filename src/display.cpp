@@ -684,7 +684,7 @@ void display::draw_report(reports::TYPE report_num)
 
 		if(report.image.empty() == false) {
 
-			//check if it's a talbe of images or a standalone image
+			//check if it's a table of images or a standalone image
 			if((report.image.find_first_of(",") == -1) &&
 					(report.image.find_first_of(";") == -1)) {
 				scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
@@ -694,52 +694,45 @@ void display::draw_report(reports::TYPE report_num)
 				}
 				draw_image_for_report(img,surf,rect);
 			} else {
-				SDL_Rect composed_rect;
-				SDL_Surface *composed_img = SDL_CreateRGBSurface(SDL_SWSURFACE,
-						rect.w, rect.h, screen_.getSurface()->format->BitsPerPixel,
-						screen_.getSurface()->format->Rmask,
-						screen_.getSurface()->format->Gmask,
-						screen_.getSurface()->format->Bmask,
-						screen_.getSurface()->format->Amask);
+				//draw a table of images...
 
-				int x_off;
-				int y_off = 0;
+				//first back up the current area for later restoration
+				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 
-				std::vector<std::string> rows = config::split(report.image,';');
+				//each image may have a seperate tooltip, so seperate the tooltips
+				tooltips::clear_tooltips(rect);
 
-				for(std::vector<std::string>::iterator row = rows.begin(); row != rows.end(); ++row) {
-					int last_image_height = 0;
+				int x = rect.x, y = rect.y;
+				const std::vector<std::string> rows = config::split(report.image,';');
+				const std::vector<std::string> tooltip_rows = config::split(report.tooltip,';');
+				std::vector<std::string>::const_iterator current_tooltip = tooltip_rows.begin();
+				for(std::vector<std::string>::const_iterator row = rows.begin(); row != rows.end(); ++row) {
 
-					std::cerr << "Row: " << *row << std::endl;
+					size_t tallest_image = 0;
 
-					x_off = 0;
 					std::vector<std::string> cols = config::split(*row);
+					for(std::vector<std::string>::const_iterator col = cols.begin(); col != cols.end(); ++col) {
+						SDL_Rect clip_rect = rect;
+						scoped_sdl_surface image(image::get_image(*col,image::UNSCALED));
+						blit_surface(x,y,image,NULL,&clip_rect);
+						if(image->h > tallest_image)
+							tallest_image = image->h;
 
-					for(std::vector<std::string>::iterator col = cols.begin(); col != cols.end(); ++col) {
-						std::cerr << "Col: " << *col << std::endl;
-						if(!col->empty()){
-							scoped_sdl_surface composing_img(image::get_image(*col,image::UNSCALED));
-							if(composing_img == NULL) {
-								std::cerr << "could not find image for report: '" << *col << "'\n";
-								return;
+						SDL_Rect tooltip_rect = {x,y,image->w,image->h};
+						if(current_tooltip != tooltip_rows.end()) {
+							if(*current_tooltip != "") {
+								tooltips::add_tooltip(tooltip_rect,*current_tooltip);
 							}
-							composed_rect.w = composing_img->w;
-							composed_rect.h = composing_img->h;
-							composed_rect.x = x_off;
-							composed_rect.y = y_off;
 
-							SDL_BlitSurface(composing_img,NULL,composed_img,&composed_rect);
-
-							x_off += composing_img->w;
-
-							last_image_height = composing_img->h;
-							std::cout << "\tImage: " << *col << std::endl;
+							++current_tooltip;
 						}
+
+						x += image->w;
 					}
-					y_off += last_image_height;
+
+					x = rect.x;
+					y += tallest_image;
 				}
-				scoped_sdl_surface img(composed_img);
-				draw_image_for_report(img,surf,rect);
 			}
 		}
 	} else {
