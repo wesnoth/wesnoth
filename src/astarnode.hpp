@@ -78,7 +78,7 @@ public:
 	a_star_node* getNodeFromLocation(gamemap::location const &loc, bool& isCreated);	
 	bool empty(void);
 	bool reallyEmpty(void);
-	a_star_world(void) : _nbNode(0), _width(0) {};	
+	a_star_world(void) : _width(0), _nbNode(0) {};	
 };
 
 /*
