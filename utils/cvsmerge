@@ -52,7 +52,7 @@ if (@ARGV == 1) {
 
 ## base of the command
 
-our $basecmd = 'cvs -f upd -dP -z4 ';
+our $basecmd = 'cvs -f -z4 upd -dP ';
 $basecmd .= '-j ' . $basetag . ' ' if defined $basetag;
 $basecmd .= '-j ' . $targettag . ' ';
 
