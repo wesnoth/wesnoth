@@ -562,6 +562,7 @@ bool game_controller::init_video()
 
 bool game_controller::init_config()
 {
+	units_data_.clear();
 	defines_map_.clear();
 
 	//load in the game's configuration files
