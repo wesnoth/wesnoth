@@ -2725,9 +2725,8 @@ msgid "Hills"
 msgstr "Collines"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
-msgstr "Village enneigé"
+msgstr "Collines enneigées"
 
 #: data/terrain.cfg:297
 msgid "Desert Hills"
@@ -2906,7 +2905,6 @@ msgstr ""
 "pouvez former une armée expérimentée et puissante."
 
 #: data/tips.cfg:7
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -2915,7 +2913,9 @@ msgid ""
 msgstr ""
 "Toutes les unités ont une zone de contrôle sur chacun des hexagones qui leur "
 "sont adjacents. Si une unité se déplace dans la zone de contrôle ennemie "
-"elle ne peut faire aucun autre mouvement pour ce tour."
+"elle ne peut faire aucun autre mouvement pour ce tour. Les unités de niveau "
+"0 sont trop faibles pour contrôler une zone ; les unités tirailleuses sont "
+"quant à elle suffisamment habiles pour ignorer ces zones."
 
 #: data/tips.cfg:8
 msgid ""
@@ -8942,9 +8942,8 @@ msgid "You have emerged victorious!"
 msgstr "Vous êtes victorieux !"
 
 #: src/playlevel.cpp:823
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Début du scénario"
+msgstr "Résultats du scénario"
 
 #: src/playlevel.cpp:844
 msgid ""
