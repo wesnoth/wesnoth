@@ -123,9 +123,15 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	if (random_map_generator == NULL) {
 		// Initialize the map generator if this is the first call,
 		// otherwise keep the settings and such.
-		const config* const cfg =
-			game_config.find_child("multiplayer","id","ranmap")->child("generator");
-		random_map_generator.assign(create_map_generator("", cfg));
+		const config* const toplevel_cfg = game_config.find_child("multiplayer","id","ranmap");
+		const config* const cfg = toplevel_cfg == NULL ? NULL : toplevel_cfg->child("generator");
+		if (cfg == NULL) {
+			config dummy_cfg("");
+			random_map_generator.assign(create_map_generator("", &dummy_cfg));
+		}
+		else {
+			random_map_generator.assign(create_map_generator("", cfg));
+		}
 	}
 
 	for(bool draw = true;; draw = false) {

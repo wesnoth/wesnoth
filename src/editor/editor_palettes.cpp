@@ -73,6 +73,7 @@ void terrain_palette::adjust_size() {
 	top_button_.set_dirty();
 	bot_button_.set_dirty();
 	bg_backup();
+	gui_.invalidate_all();
 	set_dirty();
 }
 
