@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-17 14:42+0200\n"
-"PO-Revision-Date: 2004-09-17 15:15-0000\n"
+"PO-Revision-Date: 2004-10-19 20:28-0000\n"
 "Last-Translator: Pieter Vermeylen <pitoe@iname.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -58,9 +58,8 @@ msgid "Abilities"
 msgstr "Vaardigheden"
 
 #: data/help.cfg:40
-#, fuzzy
 msgid "Weapon Specials"
-msgstr "Speciaal"
+msgstr "Wapen Bijzonderheden"
 
 #: data/help.cfg:46
 msgid "Terrains"
@@ -426,9 +425,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:194 src/titlescreen.cpp:172
-#, fuzzy
 msgid "About"
-msgstr "Jeugd"
+msgstr "Over"
 
 #: data/help.cfg:238
 msgid ""
@@ -684,62 +682,52 @@ msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Willekeurig"
 
 #: data/multiplayer.cfg:28
-#, fuzzy
 msgid "&human-lieutenant.png,Loyalists"
-msgstr "&human-general.png,Loyalen"
+msgstr "&human-lieutenant.png,Loyalen"
 
 #: data/multiplayer.cfg:40
-#, fuzzy
 msgid "&elvish-captain.png,Rebels"
-msgstr "&elvish-high-lord.png,Rebellen"
+msgstr "&elvish-captain.png,Rebellen"
 
 #: data/multiplayer.cfg:52
-#, fuzzy
 msgid "&orcish-warrior.png,Northerners"
-msgstr "&orcish-warlord.png,Noorderstammen"
+msgstr "&orcish-warrior.png,Noorderstammen"
 
 #: data/multiplayer.cfg:64 data/multiplayer.cfg:145
-#, fuzzy
 msgid "&undead-necromancer.png,Undead"
-msgstr "&undead-lich.png,Levende Doden"
+msgstr "&undead-necromancer.png,Levende Doden"
 
 #: data/multiplayer.cfg:76
-#, fuzzy
 msgid "&dwarf-warrior.png,Knalgan Alliance"
-msgstr "&dwarf-lord.png,Knalga Alliantie"
+msgstr "&dwarf-warrior.png,Knalga Alliantie"
 
 #: data/multiplayer.cfg:88 data/multiplayer.cfg:169 data/multiplayer.cfg:261
-#, fuzzy
 msgid "&drake-flare.png,Drakes"
-msgstr "&drake-warrior.png,Draken"
+msgstr "&drake-flare.png,Draken"
 
 #: data/multiplayer.cfg:101
 msgid "Classic"
 msgstr "Klassiek"
 
 #: data/multiplayer.cfg:109
-#, fuzzy
 msgid "&human-lieutenant.png,Humans"
-msgstr "&human-general.png,Mensen"
+msgstr "&human-lieutenant.png,Mensen"
 
 #: data/multiplayer.cfg:121
-#, fuzzy
 msgid "&elvish-captain.png,Elves"
-msgstr "&elvish-high-lord.png,Elven"
+msgstr "&elvish-captain.png,Elven"
 
 #: data/multiplayer.cfg:133
-#, fuzzy
 msgid "&orcish-warrior.png,Orcs"
-msgstr "&orcish-warlord.png,Orks"
+msgstr "&orcish-warrior.png,Orks"
 
 #: data/multiplayer.cfg:157
-#, fuzzy
 msgid "&dwarf-warrior.png,Dwarves"
-msgstr "&dwarf-lord.png,Dwergen"
+msgstr "&dwarf-warrior.png,Dwergen"
 
 #: data/multiplayer.cfg:180
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr ""
+msgstr "&saurian-soothsayer.png,Saurian"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -750,9 +738,8 @@ msgid "&human-general.png,Loyalists"
 msgstr "&human-general.png,Loyalen"
 
 #: data/multiplayer.cfg:213
-#, fuzzy
 msgid "&elvish-marshal.png,Rebels"
-msgstr "&elvish-high-lord.png,Rebellen"
+msgstr "&elvish-marshal.png,Rebellen"
 
 #: data/multiplayer.cfg:225
 msgid "&orcish-warlord.png,Northerners"
@@ -785,9 +772,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
-#, fuzzy
 msgid "An Island"
-msgstr "Eiland"
+msgstr "Een Eiland"
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -795,7 +781,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "Kasteel-spring-eiland"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -913,13 +899,12 @@ msgid "King of the Hill"
 msgstr "Koning van de Heuvel"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:47
-#, fuzzy
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
 msgstr ""
-"Ik ben hier om te leren beter te vechten. Jij, als ervaren Oude Magiër kunt "
-"me vast en zeker de kunst van het vechten bijbrengen."
+"Ik ben hier om beter te leren vechten. Jij, als ervaren Oude Magiër kunt me "
+"vast en zeker de oorlogskunde leren."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:51
 msgid ""
@@ -1575,7 +1560,7 @@ msgid ""
 "take from that attack."
 msgstr ""
 "Elke aanval doet een andere soort schade, de soort schade (snij, puntig,...) "
-"bepaald hoeveel schade bepaalde eenheden van bepaalde aanvallen ontvangen."
+"bepaalt hoeveel schade bepaalde eenheden van bepaalde aanvallen ontvangen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid ""
@@ -2006,9 +1991,8 @@ msgstr ""
 "is en bij valavond alsof het dag is."
 
 #: data/translations/english.cfg:61
-#, fuzzy
 msgid "illuminates"
-msgstr "verlicht,geneest"
+msgstr "verlicht"
 
 #: data/translations/english.cfg:64
 msgid ""
@@ -2954,16 +2938,15 @@ msgid "Assassin"
 msgstr "Sluipmoordenaar"
 
 #: data/units/Assassin.cfg:17
-#, fuzzy
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround an "
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
-"Sluipmoordenaars zijn de meesters van de nacht. Net als rogues beheersen ze "
+"Sluipmoordenaars zijn meesters van de nacht. Net zoals schurken beheersen ze "
 "de ruggesteek en worden ze niet tegengehouden door vijandige zones. "
-"Sluipmoordenaars gooien messen met een giftige punt van een grote afstand op "
-"hun vijand."
+"Sluipmoordenaars gooien messen met een giftige punt van veraf naar hun "
+"vijand."
 
 #: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
@@ -3080,7 +3063,6 @@ msgid "leadership,skirmisher"
 msgstr "aanvoerder,warzaaier"
 
 #: data/units/Battle_Princess.cfg:19
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3091,8 +3073,7 @@ msgstr ""
 "de grootste generalen en haar tactisch inzicht bij de sluwste strategen. Het "
 "resultaat is een groot krijger en een groot leider. Eenheden van een lager "
 "niveau putten kracht en moed uit de aanwezigheid van de Prinses en bevechten "
-"haar vijanden met volle overgave. De Prinses is tevens een meester in "
-"verwarring zaaien en negeert controle-zones."
+"haar vijanden met volle overgave."
 
 #: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:60
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -3155,7 +3136,6 @@ msgid "Blood Bat"
 msgstr "Bloedvleermuis"
 
 #: data/units/Blood_Bat.cfg:16
-#, fuzzy
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
 "healing themselves, even to the point where they become stronger than they "
@@ -3268,7 +3248,6 @@ msgid "Bowman"
 msgstr "Boogschutter"
 
 #: data/units/Bowman.cfg:17
-#, fuzzy
 msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
 "most common ranged combatants in Wesnothian armies. They do not undergo as "
@@ -3284,16 +3263,15 @@ msgid "Cavalier"
 msgstr "Cavalerie"
 
 #: data/units/Cavalier.cfg:24
-#, fuzzy
 msgid ""
 "Only the most experienced and heroic Dragoons can achieve to ride the "
 "battlefield as Cavaliers. Armed with magical artifacts, keen swords and fine "
 "armours, they are one of the best mounted troops in all know world."
 msgstr ""
-"Alleen de meest ervaren dragonders worden geaccepteerd in de cavalerie. Met "
-"pistolen en bloeddorstende zwaarden gewapend en beschermd door een harnas "
-"gemaakt van het beste staal, zijn de Cavalerie bij de beste bereden troepen "
-"in de hele wereld."
+"De vacht van dit ondode vliegende beest zit onder het rode bloed van zijn "
+"slachtoffers. De Bloedvleermuis is snel en kan het bloed opzuigen van degene "
+"die het aanvalt en zichzelf daarmee genezen. Het kan er zelfs sterker dan "
+"aan het begin van de strijd door worden!"
 
 #: data/units/Cavalier.cfg:48 data/units/Dragoon.cfg:48
 msgid "pistol"
@@ -3304,14 +3282,13 @@ msgid "Cavalryman"
 msgstr "Cavalryman"
 
 #: data/units/Cavalryman.cfg:25
-#, fuzzy
 msgid ""
 "The best riders in Wesnoth are recruited into the military to become "
 "Cavalrymen. A Cavalryman, strictly disciplined, does not charge across the "
 "field of battle like a horseman, but makes more of an effort to hold his "
 "position."
 msgstr ""
-"De beste ruiters in Wesnoth worden gerecruteerd om cavalery te worden. Deze "
+"De beste ruiters in Wesnoth worden gerecruteerd om cavalerie te worden. Deze "
 "gedisciplineerde troepen zijn uitermate geschikt om dorpen in te nemen."
 
 #: data/units/Cave_Spider.cfg:3
@@ -3337,15 +3314,14 @@ msgid "Chocobone"
 msgstr "Beenderruiter"
 
 #: data/units/Chocobone.cfg:17
-#, fuzzy
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
 "Beenderruiters rijden op het skelet van grote vogels die ooit gebruikt "
-"werden als rijdier door een verloren beschaving. Beenderruiters zijn sneller "
-"dan de meeste cavalerie eenheden."
+"werden als rijdier door een verloren gegane beschaving. Beenderruiters zijn "
+"sneller dan de meeste cavalerie-eenheden."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:39
@@ -3366,7 +3342,6 @@ msgid "Cockatrice"
 msgstr "Cockatrice"
 
 #: data/units/Cockatrice.cfg:16
-#, fuzzy
 msgid ""
 "At first sight, these mystical snake-like creatures appear weak, but looks "
 "are deceiving. With just a glance at their enemies, Cockatrices can turn "
@@ -3429,7 +3404,6 @@ msgid "Dark Adept"
 msgstr "Duistere Leerling"
 
 #: data/units/Dark_Adept.cfg:19
-#, fuzzy
 msgid ""
 "Dark Adepts are psychotic fanatics who dabble in black magic, using its "
 "power to cause death and destruction. They devote themselves completely to "
@@ -3448,7 +3422,6 @@ msgid "Dark Queen"
 msgstr "Duistere Koningin"
 
 #: data/units/Dark_Queen.cfg:15
-#, fuzzy
 msgid ""
 "The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
@@ -3490,7 +3463,6 @@ msgid "Death Knight"
 msgstr "Doodsridder"
 
 #: data/units/Death_Knight.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and a sense "
 "of betrayal, came back to this world as Death Knights. Wielding the same "
@@ -3575,13 +3547,12 @@ msgid "Dragoon"
 msgstr "Dragonder"
 
 #: data/units/Dragoon.cfg:24
-#, fuzzy
 msgid ""
 "Riding a fast horse and armed with sword and a magical artifact, a Dragoon "
 "make a versatile enemy."
 msgstr ""
-"Dragonders rijden op snelle paarden en hanteren zowel pistool als zwaard. "
-"Deze ruiters zijn zeer veelzijdig."
+"Dragonders rijden op snelle paarden en hanteren zowel zwaard als magie. Deze "
+"ruiters zijn zeer veelzijdig."
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
@@ -3660,9 +3631,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
-#, fuzzy
 msgid "Drake Flare"
-msgstr "Drako Slaaf"
+msgstr "Drako Fakkel"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -3673,9 +3643,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:4
-#, fuzzy
 msgid "Drake Gladiator"
-msgstr "Drako Strijder"
+msgstr "Drako Gladiator"
 
 #: data/units/Drake_Gladiator.cfg:19
 msgid ""
@@ -3687,9 +3656,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
-#, fuzzy
 msgid "Drake Glider"
-msgstr "Drako Hakker"
+msgstr "Drako Glijder"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -3702,14 +3670,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
-#, fuzzy
 msgid "slam"
-msgstr "Eiland"
+msgstr ""
 
 #: data/units/Drake_Inferno.cfg:4
-#, fuzzy
 msgid "Inferno Drake"
-msgstr "Vuurdraak"
+msgstr "Infernodraak"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -3721,9 +3687,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
-#, fuzzy
 msgid "Sky Drake"
-msgstr "Vuurdraak"
+msgstr "Hemeldraak"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -3753,7 +3718,6 @@ msgid "Duelist"
 msgstr "Duelist"
 
 #: data/units/Duelist.cfg:17
-#, fuzzy
 msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
@@ -3761,7 +3725,7 @@ msgid ""
 msgstr ""
 "De duelist is een meester in het zwaardvechten. Zijn kunde met het zwaard "
 "stellen hem in staat aan te vallen en te pareren met een hand. In de andere "
-"hand hanteert hij een pistool."
+"hand hanteert hij een kruisboog"
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -4063,9 +4027,8 @@ msgid "thorns"
 msgstr "doornen"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "Elvish Enchantress"
-msgstr "Elvenshamaan"
+msgstr "Tovenares"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -4127,9 +4090,8 @@ msgid "Elvish Lady"
 msgstr "Elvendame"
 
 #: data/units/Elvish_Lady.cfg:17
-#, fuzzy
 msgid "shove"
-msgstr "Stappen"
+msgstr ""
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
@@ -4273,9 +4235,8 @@ msgid "faerie touch"
 msgstr "feeënstreel"
 
 #: data/units/Elvish_Sorceress.cfg:3
-#, fuzzy
 msgid "Elvish Sorceress"
-msgstr "Elvenschutter"
+msgstr "Elvenmagiër"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4286,9 +4247,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
-#, fuzzy
 msgid "Elvish Sylph"
-msgstr "Elvenfee"
+msgstr "Elvensylf"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -4481,9 +4441,8 @@ msgid "pincers"
 msgstr "tang"
 
 #: data/units/Goblin_Impaler.cfg:4
-#, fuzzy
 msgid "Goblin Impaler"
-msgstr "Goblin Brandschatter"
+msgstr "Goblin Spieser"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -4531,9 +4490,8 @@ msgid "net"
 msgstr "net"
 
 #: data/units/Goblin_Spearman.cfg:4
-#, fuzzy
 msgid "Goblin Spearman"
-msgstr "Speerman"
+msgstr "Goblin Speerman"
 
 #: data/units/Goblin_Spearman.cfg:17
 msgid ""
@@ -5447,15 +5405,13 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
-#, fuzzy
 msgid "skirmisher,heals"
-msgstr "warzaaier"
+msgstr "warzaaier,heelt"
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
-#, fuzzy
 msgid "frost blast"
-msgstr "eerste contact"
+msgstr "noorderwind"
 
 #: data/units/Saurian_Soothsayer.cfg:4
 #, fuzzy
@@ -5470,14 +5426,13 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:20
-#, fuzzy
 msgid "skirmisher,cures"
-msgstr "warzaaier"
+msgstr "warzaaier,geneest"
 
 #: data/units/Saurian_Tribalist.cfg:4
 #, fuzzy
 msgid "Saurian Tribalist"
-msgstr "Saurian Strijder"
+msgstr "Saurian "
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -5521,7 +5476,6 @@ msgid "Sea Orc"
 msgstr "Zee Ork"
 
 #: data/units/Sea_Orc.cfg:16
-#, fuzzy
 msgid ""
 "While often viewed as inferior to their land loving counterparts, Sea Orcs "
 "represent a great leap for all goblinoids as they have adapted to aquatic "
@@ -5820,19 +5774,18 @@ msgstr ""
 "helen zelfs tijdens een gevecht!"
 
 #: data/units/Troll_Rocklobber.cfg:3
-#, fuzzy
 msgid "Troll Rocklobber"
-msgstr "Trol Held"
+msgstr "Rotslingeraar"
 
 #: data/units/Troll_Rocklobber.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
-"Trollen zijn sterke mensachtige monsters, die het verbazingwekkende talent "
-"hebben de dodelijkste wonden mettertijd zelf te genezen.\n"
+"Trollen zijn mensachtige monsters, die het verbazingwekkende talent hebben "
+"de dodelijkste wonden mettertijd zelf te genezen. Deze trollen wapenen "
+"zichzelf met rotsen die ze naar hun vijand slingeren.\n"
 "\n"
 "Trolwelpjes zijn nog zwak, maar ze ontwikkelen zeer snel."
 
@@ -6108,9 +6061,8 @@ msgid "+Internationalization Manager"
 msgstr "+Internationaliseringsmanager"
 
 #: src/about.cpp:130
-#, fuzzy
 msgid "+Basque Translation"
-msgstr "+Deense Vertaling"
+msgstr "+Baskische Vertaling"
 
 #: src/about.cpp:134
 msgid "+Catalan Translation"
@@ -6141,9 +6093,8 @@ msgid "+German Translation"
 msgstr "+Duitse Vertaling"
 
 #: src/about.cpp:184
-#, fuzzy
 msgid "+Greek Translation"
-msgstr "+Franse Vertaling"
+msgstr "+Griekse Vertaling"
 
 #: src/about.cpp:189
 msgid "+Hungarian Translation"
@@ -6162,9 +6113,8 @@ msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
 #: src/about.cpp:214
-#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Portugese Vertaling"
+msgstr "+Portugese (Brazilië) Vertaling"
 
 #: src/about.cpp:222
 msgid "+Slovak Translation"
@@ -6470,7 +6420,7 @@ msgstr ""
 
 #: src/game.cpp:925
 msgid " ,Get More Campaigns..."
-msgstr ",haal maar veldtochten..."
+msgstr ",Haal meer veldtochten..."
 
 #: src/game.cpp:926
 msgid "Download more campaigns from a server on Internet."
@@ -6522,14 +6472,12 @@ msgid ",Name,Version,Author,Downloads"
 msgstr ""
 
 #: src/game.cpp:1045
-#, fuzzy
 msgid "Publish campaign: "
-msgstr "Elvenkapitein"
+msgstr "Publiceer veldtocht:"
 
 #: src/game.cpp:1049
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Haal een Veldtocht"
+msgstr "Verwijder veldtocht:"
 
 #: src/game.cpp:1053
 msgid "There are no campaigns available for download from this server."
@@ -6552,9 +6500,8 @@ msgid "Campaign Installed"
 msgstr "Veldtocht geïnstalleerd."
 
 #: src/game.cpp:1094
-#, fuzzy
 msgid "The campaign has been installed."
-msgstr "Het spel werd opgeslagen"
+msgstr "De veldtocht werd geïnstalleerd."
 
 #: src/game.cpp:1096
 msgid "Network communication error."
@@ -6581,14 +6528,12 @@ msgid "The server responded with an error: \""
 msgstr ""
 
 #: src/game.cpp:1118
-#, fuzzy
 msgid "Terms"
-msgstr "Team"
+msgstr "Afspraken"
 
 #: src/game.cpp:1154 src/game.cpp:1178
-#, fuzzy
 msgid "Response"
-msgstr "steen"
+msgstr "Antwoord"
 
 #: src/game.cpp:1190
 msgid "Join Official Server"
@@ -6607,27 +6552,24 @@ msgid "Join a server or hosted game"
 msgstr "Log in op Server of Host een Spel"
 
 #: src/game.cpp:1192
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "Netwerk Speler"
+msgstr "Maak Netwerkspel"
 
 #: src/game.cpp:1192
 msgid "Host a game without using a server"
 msgstr "Host een spel zonder een server te gebruiken"
 
 #: src/game.cpp:1193
-#, fuzzy
 msgid "Hotseat Game"
-msgstr "Maak Spel"
+msgstr "Hotseat Spel"
 
 #: src/game.cpp:1193
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
 #: src/game.cpp:1194
-#, fuzzy
 msgid "Human vs AI"
-msgstr "Mensen"
+msgstr "Mens vs AI"
 
 #: src/game.cpp:1194
 msgid "Play a game against AI opponents"
@@ -7156,7 +7098,6 @@ msgid "Waiting for game to start..."
 msgstr "Aan het wachten op de start van het spel..."
 
 #: src/multiplayer_client.cpp:248
-#, fuzzy
 msgid "Connect to Host"
 msgstr "Verbind met Server"
 
@@ -7198,17 +7139,15 @@ msgstr "Toon opgenomen spel tot het moment van opslaan?"
 
 #: src/multiplayer_client.cpp:683 src/multiplayer_client.cpp:686
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/multiplayer_client.cpp:777
-#, fuzzy
 msgid "Leader: "
-msgstr "Leider"
+msgstr "Leider:"
 
 #: src/multiplayer_client.cpp:779
-#, fuzzy
 msgid "Recruits: "
-msgstr "Recruteringen"
+msgstr "Rekruten:"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -7495,9 +7434,8 @@ msgid "him"
 msgstr "hem"
 
 #: src/playturn.cpp:1777
-#, fuzzy
 msgid "You are separated from your soldiers and may not recall them"
-msgstr "Je bent van je troepen gescheiden en kunt hen niet oproepen."
+msgstr "Je bent van je troepen gescheiden en dus kun je hen niet oproepen."
 
 #: src/playturn.cpp:1779
 msgid ""
@@ -7784,87 +7722,3 @@ msgstr "Verwijder Bestand"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Verwijderen van het bestand is mislukt."
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Host Multiplayer Spel"
-
-#~ msgid "TitleScreen button^About"
-#~ msgstr "Over"
-
-#~ msgid "hp"
-#~ msgstr "hp"
-
-#~ msgid "xp"
-#~ msgstr "xp"
-
-#~ msgid ""
-#~ "Armed with heavy mace, Bandits are adept at robbing and killing at night."
-#~ msgstr ""
-#~ "Gewapend met een eerder onvriendelijke \n"
-#~ "goedendag doodt of berooft de bandiet in het holst van de nacht."
-
-#~ msgid "Drake Beak"
-#~ msgstr "Drako Bek"
-
-#~ msgid ""
-#~ "Smaller than most Drakes, the Beaks are therefore more agile and can "
-#~ "fight even when flying."
-#~ msgstr ""
-#~ "Kleiner dan de meeste draken, de bekken zijn behendiger in de lucht en "
-#~ "kunnen zelfs al vliegende vechten."
-
-#~ msgid "beak"
-#~ msgstr "bek"
-
-#~ msgid "Drake Guard"
-#~ msgstr "Drako Wachter"
-
-#~ msgid "Drake Hatchling"
-#~ msgstr "Drako Jong"
-
-#~ msgid "Drake Mage"
-#~ msgstr "Drako Magiër"
-
-#~ msgid ""
-#~ "Like all Mages, the Drake Mages are capable of using magic in battle."
-#~ msgstr ""
-#~ "Zoals alle Magiërs zijn de Drako Magiërs in staat om magie in een gevecht "
-#~ "te gebruiken."
-
-#~ msgid "ice shot"
-#~ msgstr "ijsschot"
-
-#~ msgid "Drake Petit"
-#~ msgstr "Drako Kleine"
-
-#~ msgid "Drake Slaves are servile members of this reptilian race."
-#~ msgstr "Drako slaven zijn de ondergeschikte leden van dit reptielras."
-
-#~ msgid "Drake Warmage"
-#~ msgstr "Drako Tovenaar"
-
-#~ msgid "Drake Worker"
-#~ msgstr "Drako Werker"
-
-#~ msgid "More advanced Drakes, the Workers fight with their own sharp claws."
-#~ msgstr ""
-#~ "Meer geavanceerde draken, de werkers vechten met hun eigen sterke klauwen."
-
-#~ msgid "+Brazilian Translation"
-#~ msgstr "+Braziliaanse Vertaling"
-
-#~ msgid "Save"
-#~ msgstr "Opslaan"
-
-#~ msgid ""
-#~ "The campaign has been installed. You will have to restart Wesnoth before "
-#~ "you can play it."
-#~ msgstr ""
-#~ "De veldtocht werd geïnstalleerd. Je moet Wesnoth herstarten vooraleer je "
-#~ "de veldtocht kunt spelen."
-
-#~ msgid "Quit?"
-#~ msgstr "Afsluiten?"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Recruteer eenheid"
