@@ -1121,8 +1121,11 @@ int main(int argc, char** argv)
 
 	const std::string& intl_dir = get_intl_dir();
 	bindtextdomain (PACKAGE, intl_dir.c_str());
-	textdomain (PACKAGE);
 	bind_textdomain_codeset (PACKAGE, "UTF-8");
+	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
+
+	textdomain (PACKAGE);
 
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
