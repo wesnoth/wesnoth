@@ -69,7 +69,11 @@ struct text_chunk
 	text_chunk(subset_id subset, std::string const & text) : subset(subset), text(text) {}
 	text_chunk(subset_id subset, ucs2_string const & ucs2_text) : subset(subset), ucs2_text(ucs2_text) {}
 	text_chunk(subset_id subset, std::string const & text, ucs2_string const & ucs2_text) : subset(subset), text(text), ucs2_text(ucs2_text) {}
+	bool operator==(text_chunk const & t) const {
+		return subset == t.subset && ucs2_text == t.ucs2_text;
+	}
 	subset_id subset;
+	//FIXME if we don't need the utf8 here remove it
 	std::string text;
 	ucs2_string ucs2_text;
 };
@@ -88,6 +92,8 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 		}
 		for(; ch != utils::utf8_iterator::end(utf8_text); ++ch) {
 			if(*ch < font_map.size() && font_map[*ch] >= 0 && font_map[*ch] != current_chunk.subset) {
+				//null-terminate ucs2_text so we can pass it to SDL_ttf later
+				current_chunk.ucs2_text.push_back(0);
 				chunks.push_back(current_chunk);
 				current_chunk.text.clear();
 				current_chunk.ucs2_text.clear();
@@ -313,26 +319,29 @@ public:
 	size_t height() const;
 	std::vector<surface> const & get_surfaces() const;
 
-	bool equals(text_surface const &t) const;
-	bool operator==(text_surface const &t) const { return hash_ == t.hash_ && equals(t); }
-	bool operator!=(text_surface const &t) const { return hash_ != t.hash_ || !equals(t); }
+	bool operator==(text_surface const &t) const {
+		return hash_ == t.hash_ && font_size_ == t.font_size_ 
+			&& color_ == t.color_ && style_ == t.style_ && chunks_ == t.chunks_;
+	}
+	bool operator!=(text_surface const &t) const { return !operator==(t); }
 private:
 	int hash_;
 	int font_size_;
-	std::string str_;
+	mutable std::vector<text_chunk> chunks_;
 	SDL_Color color_;
 	int style_;
 	mutable int w_, h_;
 	mutable std::vector<surface> surfs_;
 	mutable bool initialized_;
-	void hash();
+	void hash(std::string const & str);
 };
 
 text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
-  : font_size_(size), str_(str), color_(color), style_(style), w_(-1), h_(-1), 
+  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), 
   initialized_(false)
 {
-	hash();
+	hash(str);
+	chunks_ = split_text(str);
 }
 
 text_surface::text_surface(int size, SDL_Color color, int style)
@@ -341,25 +350,18 @@ text_surface::text_surface(int size, SDL_Color color, int style)
 
 void text_surface::set_text(std::string const &str)
 {
-	str_ = str;
+	//FIXME hash and split should be done in the same loop.
+	hash(str);
+	chunks_ = split_text(str);
 	initialized_ = false;
-	hash();
 }
 
-void text_surface::hash()
+void text_surface::hash(std::string const & str)
 {
 	int h = 0;
-	for(std::string::const_iterator it = str_.begin(), it_end = str_.end(); it != it_end; ++it)
+	for(std::string::const_iterator it = str.begin(), it_end = str.end(); it != it_end; ++it)
 		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (*it);
 	hash_ = h;
-}
-
-bool text_surface::equals(text_surface const &t) const
-{
-	return font_size_ == t.font_size_
-		&& color_ == t.color_
-		&& style_ == t.style_
-		&& str_ == t.str_;
 }
 
 void text_surface::measure() const
@@ -367,10 +369,8 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 	
-	std::vector<text_chunk> substrings = split_text(str_);
-
-	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
-			itor != substrings.end(); ++itor) {
+	for(std::vector<text_chunk>::iterator itor = chunks_.begin(); 
+			itor != chunks_.end(); ++itor) {
 
 		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
 		if(ttfont == NULL)
@@ -380,7 +380,11 @@ void text_surface::measure() const
 		int w;
 		int h;
 
-		TTF_SizeUTF8(ttfont, itor->text.c_str(), &w, &h);
+		if(itor->ucs2_text.back() != 0) {
+			itor->ucs2_text.push_back(0);
+		}
+		
+		TTF_SizeUNICODE(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), &w, &h);
 		w_ += w;
 		h_ = maximum<int>(h_, h);
 	}
@@ -412,16 +416,14 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	std::vector<text_chunk> substrings = split_text(str_);
-
-	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
-			itor != substrings.end(); ++itor) {
+	for(std::vector<text_chunk>::const_iterator itor = chunks_.begin(); 
+			itor != chunks_.end(); ++itor) {
 		TTF_Font* ttfont = get_font(font_id(itor->subset, font_size_));
 		if (ttfont == NULL)
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
-
-		surface s = surface(TTF_RenderUTF8_Blended(ttfont, itor->text.c_str(), color_));
+		
+		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
 		if(!s.null())
 			surfs_.push_back(s);
 	}
