@@ -412,7 +412,7 @@ void ai::do_move()
 
 		game_events::fire("attack",to,target_loc);
 		if(units_.count(to) && units_.count(target_loc)) {
-			attack(disp_,map_,to,target_loc,weapon,units_,state_,gameinfo_,false);
+			attack(disp_,map_,teams_,to,target_loc,weapon,units_,state_,gameinfo_,false);
 			check_victory(units_,teams_);
 		}
 		std::cerr << "done attacking...\n";
@@ -599,7 +599,7 @@ void ai::do_move()
 
 			game_events::fire("attack",attacker,target);
 			if(units_.count(attacker) && units_.count(target)) {
-				attack(disp_,map_,attacker,target,weapon,units_,state_,gameinfo_,false);
+				attack(disp_,map_,teams_,attacker,target,weapon,units_,state_,gameinfo_,false);
 
 				const std::map<gamemap::location,unit>::const_iterator tgt = units_.find(target);
 

@@ -317,7 +317,8 @@ battle_stats evaluate_battle_stats(
 	return res;
 }
 
-void attack(display& gui, const gamemap& map,
+void attack(display& gui, const gamemap& map, 
+				std::vector<team>& teams,
             const gamemap::location& attacker,
             const gamemap::location& defender,
 			int attack_with,
@@ -435,10 +436,11 @@ void attack(display& gui, const gamemap& map,
 						units.insert(std::pair<gamemap::location,unit>(
 						                                 loc,a->second));
 						gui.draw_tile(loc.x,loc.y);
-						gui.update_display();
 					}
 				}
-
+				recalculate_fog(map, info, units, teams, d->second.side()-1);
+				gui.recalculate_minimap();
+				gui.update_display();
 				break;
 			} else if(hits) {
 				if(stats.attack_special == poison_string &&
@@ -548,9 +550,11 @@ void attack(display& gui, const gamemap& map,
 						units.insert(std::pair<gamemap::location,unit>(
 						                                 loc,d->second));
 						gui.draw_tile(loc.x,loc.y);
-						gui.update_display();
 					}
 				}
+				gui.recalculate_minimap();
+				gui.update_display();
+				recalculate_fog(map, info, units, teams, a->second.side()-1);
 				break;
 			} else if(hits) {
 				if(stats.defend_special == poison_string &&
@@ -1070,6 +1074,24 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 
 }
 
+void recalculate_fog(const gamemap& map, const game_data& gamedata,
+		const unit_map& units, std::vector<team>& teams, int team) {
+
+	teams[team].refog();
+
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == team+1) {
+
+			//we're not really going to mutate the unit, just temporarily
+			//set its moves to maximum, but then switch them back
+			unit& mutable_unit = const_cast<unit&>(i->second);
+			const unit_movement_resetter move_resetter(mutable_unit);
+
+			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
+		}
+	}
+}
+
 bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team)
 {
@@ -1091,19 +1113,7 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 		}
 	}
 
-	teams[team].refog();
-
-	for(i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == team+1) {
-
-			//we're not really going to mutate the unit, just temporarily
-			//set its moves to maximum, but then switch them back
-			unit& mutable_unit = const_cast<unit&>(i->second);
-			const unit_movement_resetter move_resetter(mutable_unit);
-
-			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
-		}
-	}
+	recalculate_fog(map, gamedata, units, teams, team);
 
 	return result;
 }

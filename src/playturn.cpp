@@ -517,7 +517,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 			recorder.add_attack(selected_hex_,hex,res);
 
-			attack(gui_,map_,selected_hex_,hex,res,units_,
+			attack(gui_,map_,teams_,selected_hex_,hex,res,units_,
 			       status_,gameinfo_,true);
 
 			dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);

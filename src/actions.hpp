@@ -86,6 +86,7 @@ battle_stats evaluate_battle_stats(
 
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,
+				std::vector<team>& teams,
             const gamemap::location& attacker,
             const gamemap::location& defender,
             int attack_with,
@@ -176,6 +177,10 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
                  const std::vector<gamemap::location>& steps,
                  replay* move_recorder, undo_list* undos,
 		 gamemap::location *next_unit = NULL);
+
+//function which recalculates the fog
+void recalculate_fog(const gamemap& map, const game_data& gamedata,
+		      const unit_map& units, std::vector<team>& teams, int team);
 
 //function which will clear shroud away for the given 0-based team based on
 //current unit positions. Returns true if some shroud is actually cleared away.
