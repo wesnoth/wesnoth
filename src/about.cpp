@@ -109,6 +109,10 @@ std::vector<std::string> get_text() {
 		"-   Justin Zaun (jzaun)",
 		"+ ",
 
+		_("+Multiplayer Maps"),
+		"-   Peter Groen (pg)",
+		"+ ",
+
 		_("+Packagers"),
 		"-   Darryl Dixon",
 		"-   Jay Hopping",
