@@ -413,7 +413,6 @@ LIBS="$LIBS $SDL_LIBS"
 # it doesn't find it in FreeBSD
 # AC_CHECK_LIB([SDL], [SDL_Init])
 
-# FIXME disable all these checks in case of a cross-compile
 ac_link="$LDPREFIX $ac_link"
 AC_CHECK_LIB([SDL_image],
 	     [IMG_Load],
