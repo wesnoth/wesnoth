@@ -473,9 +473,15 @@ wide_string string_to_wstring(const std::string &src)
 	wide_string res;
 	
 	try {
-		res.insert(res.end(), utf8_iterator(src), utf8_iterator::end(src));
-	}
+		utf8_iterator i1(src);
+		const utf8_iterator i2(utf8_iterator::end(src));
 
+		//equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
+		while(i1 != i2) {
+			push_back(res,*i1);
+			++i1;
+		}
+	}
 	catch(invalid_utf8_exception e) {
 		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
 		return res;
