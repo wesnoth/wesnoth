@@ -1101,18 +1101,18 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 		std::string img(get_menu_image(hk.get_id()));
 		if(img.empty() == false) {
 			has_image = true;
-			str << '&' << img << ',';
+			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 		
-		str << hk.get_description() << "," << hk.get_name();
+		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
 
 		menu.push_back(str.str());
 	}
 	//If any of the menu items have an image, create an image column
 	if(has_image)
 		for(std::vector<std::string>::iterator i = menu.begin(); i != menu.end(); ++i)
-			if(*(i->begin()) != '&')
-				i->insert(i->begin(),',');
+			if(*(i->begin()) != IMAGE_PREFIX)
+				i->insert(i->begin(), COLUMN_SEPARATOR);
 
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",

@@ -1047,7 +1047,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 		const hotkey::hotkey_item hk = hotkey::get_hotkey(*i);
 		std::stringstream str;
 		// Try to translate it to nicer format.
-		str << hk.get_description() << "," << hk.get_name();
+		str << hk.get_description() << COLUMN_SEPARATOR << hk.get_name();
 
 		menu.push_back(str.str());
 	}
