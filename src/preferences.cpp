@@ -846,7 +846,12 @@ preferences_dialog::preferences_dialog(display& disp)
 	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
 	  slider_label_width_(0), tab_(GENERAL_TAB), disp_(disp)
 {
+	// FIXME: this box should be vertically centered on the screen, but is not
+#if USE_TINY_GUI
+	set_measurements(260, 220);		  // FIXME: should compute this, but using what data ?
+#else
 	set_measurements(400, 400);
+#endif
 
 	slider_label_width_ = maximum<unsigned>(music_label_.width(),
 	                      maximum<unsigned>(sound_label_.width(),
@@ -917,7 +922,13 @@ preferences_dialog::preferences_dialog(display& disp)
 void preferences_dialog::update_location(SDL_Rect const &rect)
 {
 	bg_register(rect);
-	const int border = 10;
+
+	const int border = font::relative_size(10);
+#if USE_TINY_GUI
+	const int item_interline = 20;
+#else
+	const int item_interline = 50;
+#endif
 
 	// General tab
 	int ypos = rect.y;
@@ -925,28 +936,28 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	SDL_Rect scroll_rect = { rect.x + slider_label_width_, ypos,
 	                         rect.w - slider_label_width_ - border, 0 };
 	scroll_slider_.set_location(scroll_rect);
-	ypos += 50; turbo_button_.set_location(rect.x, ypos);
-	ypos += 50; show_ai_moves_button_.set_location(rect.x, ypos);
-	ypos += 50; turn_dialog_button_.set_location(rect.x, ypos);
-	ypos += 50; turn_bell_button_.set_location(rect.x, ypos);
-	ypos += 50; show_team_colours_button_.set_location(rect.x, ypos);
-	ypos += 50; show_grid_button_.set_location(rect.x, ypos);
-	ypos += 50; hotkeys_button_.set_location(rect.x, ypos);
+	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
+	ypos += item_interline; turn_dialog_button_.set_location(rect.x, ypos);
+	ypos += item_interline; turn_bell_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
+	ypos += item_interline; hotkeys_button_.set_location(rect.x, ypos);
 
 	// Display tab
 	ypos = rect.y;
 	gamma_button_.set_location(rect.x, ypos);
-	ypos += 50;
+	ypos += item_interline;
 	gamma_label_.set_location(rect.x, ypos);
 	SDL_Rect gamma_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - border, 0 };
 	gamma_slider_.set_location(gamma_rect);
-	ypos += 50; flip_time_button_.set_location(rect.x,ypos);
-	ypos += 50; show_floating_labels_button_.set_location(rect.x, ypos);
-	ypos += 50; show_colour_cursors_button_.set_location(rect.x, ypos);
-	ypos += 50; show_haloing_button_.set_location(rect.x, ypos);
-	ypos += 50; fullscreen_button_.set_location(rect.x, ypos);
-	ypos += 50; video_mode_button_.set_location(rect.x, ypos);
+	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
+	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
+	ypos += item_interline; fullscreen_button_.set_location(rect.x, ypos);
+	ypos += item_interline; video_mode_button_.set_location(rect.x, ypos);
 
 	// Sound tab
 	ypos = rect.y;
@@ -954,7 +965,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - border, 0 };
 	music_slider_.set_location(music_rect);
-	ypos += 50;
+	ypos += item_interline;
 	sound_label_.set_location(rect.x, ypos);
 	SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
 				rect.w - slider_label_width_ - border, 0 };
@@ -1153,10 +1164,15 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	const int centerx = disp.x()/2;
 	const int centery = disp.y()/2;
-	const int xpos = centerx  - 300;
-	const int ypos = centery  - 250;
+#ifdef USE_TINY_GUI
+	const int width = 300;			  // FIXME: should compute this, but using what data ?
+	const int height = 220;
+#else
 	const int width = 600;
 	const int height = 500;
+#endif
+	const int xpos = centerx  - width/2;
+	const int ypos = centery  - height/2;
 
 	gui::button close_button (disp.video(), _("Close Window"));
 	std::vector<gui::button*> buttons;
@@ -1185,14 +1201,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	}
 
 	gui::menu menu_(disp.video(), menu_items, false, height);
-	menu_.set_width(400);	
-	menu_.set_location(xpos + 20, ypos);
+	menu_.set_width(font::relative_size(400));	
+	menu_.set_location(xpos + font::relative_size(20), ypos);
 	
 	gui::button change_button (disp.video(), _("Change Hotkey"));
-	change_button.set_location(xpos + width - change_button.width () -30,ypos + 80);
+	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(80));
 
 	gui::button save_button (disp.video(), _("Save Hotkeys"));
-	save_button.set_location(xpos + width - save_button.width () - 30,ypos + 130);
+	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
 
 	for(;;) {
 
@@ -1201,7 +1217,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 		if (change_button.pressed ()) {
 			// Lets change this hotkey......
-			SDL_Rect dlgr = {centerx-text_size.w/2-30,
+			SDL_Rect dlgr = {centerx-text_size.w/2 - 30,
 								centery-text_size.h/2 - 16,
 									text_size.w+60,
 									text_size.h+32};
