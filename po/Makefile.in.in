@@ -60,22 +60,25 @@ CATALOGS = @CATALOGS@
 .SUFFIXES:
 .SUFFIXES: .po .gmo .mo .sed .sin .nop .po-create .po-update
 
+all: all-@USE_NLS@
+
+$(GMOFILES): %:
+	$(MAKE) $(DOMAIN)/$@
+
 .po.mo:
 	@echo "$(MSGFMT) -c -o $@ $<"; \
-	$(MSGFMT) -c -o t-$@ $< && mv t-$@ $@
+	$(MSGFMT) -c -o $@.tmp $< && mv $@.tmp $@
 
+#$(DOMAIN)/%.gmo: $(DOMAIN)/%.po
 .po.gmo:
-	@lang=`echo $* | sed -e 's,.*/,,'`; \
-	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	echo "$${cdcmd}rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o $${lang}.gmo $${lang}.po"; \
-	cd $(srcdir) && rm -f $${lang}.gmo && $(GMSGFMT) -c --statistics -o t-$${lang}.gmo $${lang}.po && mv t-$${lang}.gmo $${lang}.gmo
+	@test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
+	echo "$${cdcmd}rm -f $@ && $(GMSGFMT) -c --statistics -o $@ $<"; \
+	cd $(srcdir) && rm -f $@ && $(GMSGFMT) -c --statistics -o $@.tmp $< && mv $@.tmp $@
 
 .sin.sed:
 	sed -e '/^#/d' $< > t-$@
 	mv t-$@ $@
 
-
-all: all-@USE_NLS@
 
 all-yes: stamp-po
 all-no:
@@ -146,12 +149,12 @@ $(srcdir)/$(DOMAIN).pot:
 # Note that a PO file is not touched if it doesn't need to be changed.
 $(POFILES): $(srcdir)/$(DOMAIN).pot
 	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
-	if test -f "$(srcdir)/$${lang}.po"; then \
+	if test -f "$(srcdir)/$(DOMAIN)/$${lang}.po"; then \
 	  test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	  echo "$${cdcmd}$(MSGMERGE_UPDATE) $${lang}.po $(DOMAIN).pot"; \
-	  cd $(srcdir) && $(MSGMERGE_UPDATE) $${lang}.po $(DOMAIN).pot; \
+	  echo "$${cdcmd}$(MSGMERGE_UPDATE) $(DOMAIN)/$${lang}.po $(DOMAIN).pot"; \
+	  cd $(srcdir) && $(MSGMERGE_UPDATE) $(DOMAIN)/$${lang}.po $(DOMAIN).pot; \
 	else \
-	  $(MAKE) $${lang}.po-create; \
+	  $(MAKE) $(DOMAIN)/$${lang}.po-create; \
 	fi
 
 
