@@ -19,6 +19,10 @@ namespace map_editor {
 
 /// Size specifications for the map editor.
 struct size_specs {
+	/// Initialize the values to dummies that will avoid floating point
+	/// errors if calculations are made before the sizes are adjuusted
+	/// through adjust_sizes().
+	size_specs();
 	size_t terrain_size;
 	size_t terrain_padding;
 	size_t terrain_space;

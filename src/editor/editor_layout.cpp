@@ -20,10 +20,19 @@ namespace {
 }
 namespace map_editor {
 
+size_specs::size_specs() {
+	terrain_size = default_terrain_size;
+	terrain_padding = 2;
+	terrain_space = terrain_size + terrain_padding;
+	brush_x = 0;
+	brush_y = 0;
+	palette_x = 0;
+	palette_y = 0;
+	palette_w = 10;
+	palette_h = 20;
+}
+
 void adjust_sizes(const display &disp, size_specs &sizes) {
-	sizes.terrain_size = default_terrain_size;
-	sizes.terrain_padding = 2;
-	sizes.terrain_space = sizes.terrain_size + sizes.terrain_padding;
 	sizes.brush_x = disp.mapx() + 33;
 	sizes.brush_y = 190;
 	sizes.palette_x = disp.mapx() + 40;
