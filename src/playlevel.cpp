@@ -306,6 +306,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				} catch(end_level_exception&) {
 				}
 
+				if((*level)["disallow_recall"] == "yes") {
+					return VICTORY;
+				}
+
 				//add all the units that survived the scenario
 				for(std::map<gamemap::location,unit>::iterator un =
 				    units.begin(); un != units.end(); ++un) {

@@ -81,6 +81,9 @@ std::string read_file(const std::string& fname)
 void write_file(const std::string& fname, const std::string& data)
 {
 	std::ofstream file(fname.c_str());
+	if(file.bad()) {
+		std::cerr << "error writing to file: '" << fname << "'\n";
+	}
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		file << *i;
 	}

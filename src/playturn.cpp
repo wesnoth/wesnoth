@@ -740,7 +740,10 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				  compare_unit_values());
 
 		gui.draw(); //clear the old menu
-		if(state_of_game.available_units.empty()) {
+
+		if((*level)["disallow_recall"] == "yes") {
+			gui::show_dialog(gui,NULL,"",string_table["recall_disallowed"]);
+		} else if(state_of_game.available_units.empty()) {
 			gui::show_dialog(gui,NULL,"",string_table["no_recall"]);
 		} else if(current_team.gold() < game_config::recall_cost) {
 			std::stringstream msg;
