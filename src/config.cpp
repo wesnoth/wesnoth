@@ -567,9 +567,11 @@ void config::read(const std::string& data,
 	enum { ELEMENT_NAME, IN_ELEMENT, VARIABLE_NAME, VALUE }
 	state = IN_ELEMENT;
 	std::string var;
+
+	std::vector<std::pair<std::string,bool> > stored_values;
 	std::string value;
 
-	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false, translatable = false;;
+	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false, translatable = false, expecting_value = false;
 
 	int line = 0;
 
@@ -723,6 +725,7 @@ void config::read(const std::string& data,
 					push_back(value, c);
 					++i; // skip the next double-quote
 				} else if(c == '"') {
+					expecting_value = false;
 					in_quotes = !in_quotes;
 					has_quotes = true;
 
@@ -735,7 +738,26 @@ void config::read(const std::string& data,
 							translatable = true;
 						}
 					}
+				} else if(c == '+' && has_quotes && !in_quotes) {
+					stored_values.push_back(std::make_pair(value,translatable));
+					value = "";
+					translatable = false;
+					expecting_value = true;
+				} else if(c == '\n' && !in_quotes && expecting_value) {
+					//do nothing...just ignore
 				} else if(c == '\n' && !in_quotes) {
+
+					stored_values.push_back(std::make_pair(value,translatable));
+					value = "";
+					for(std::vector<std::pair<std::string,bool> >::const_iterator i = stored_values.begin(); i != stored_values.end(); ++i) {
+						if(i->second) {
+							value += dsgettext(current_textdomain.c_str(),i->first.c_str());
+						} else {
+							value += i->first;
+						}
+					}
+
+					stored_values.clear();
 
 					//see if this is a CSV list=CSV list style assignment (e.g. x,y=5,8)
 					std::vector<std::string> vars, values;
@@ -776,11 +798,6 @@ void config::read(const std::string& data,
 								strip(value);
 							}
 
-							if(translatable) {
-								value = dsgettext(current_textdomain.c_str(),
-										  value.c_str());
-							}
-
 							if(n < vars.size()) {
 								elements.top()->values[vars[n]] = value;
 							} else {
@@ -796,6 +813,7 @@ void config::read(const std::string& data,
 					escape_next = false;
 					translatable = false;
 				} else if(in_quotes || !has_quotes) {
+					expecting_value = false;
 					push_back(value, c);
 				}
 
