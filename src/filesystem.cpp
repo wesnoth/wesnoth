@@ -185,6 +185,11 @@ std::string get_cache_dir()
 
 std::string get_intl_dir()
 {
+
+#ifdef __APPLE__
+	return get_cwd() + "/messages";
+#endif
+
 	std::string res;
 #if HAS_RELATIVE_LOCALEDIR
 	res = game_config::path + "/" LOCALEDIR;

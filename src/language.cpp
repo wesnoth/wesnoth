@@ -109,10 +109,15 @@ std::vector<language_def> get_languages()
 // problems, like the MacOS-X ones.
 char* wesnoth_setlocale(int category, const char *locale)
 {
-	if (setenv ("LANG", locale, 1) == -1)
+	if(setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
-	if (setenv ("LC_ALL", locale, 1) == -1)
+	if(setenv ("LC_ALL", locale, 1) == -1)
 		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
+
+	#ifdef __APPLE__
+	if(setenv ("LANGUAGE", locale, 1) == -1)
+		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
+	#endif 
 
 	char* res = setlocale (category, locale);
 	if (res == NULL)
