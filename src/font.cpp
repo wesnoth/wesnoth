@@ -322,45 +322,47 @@ public:
 
 	bool operator==(text_surface const &t) const {
 		return hash_ == t.hash_ && font_size_ == t.font_size_ 
-			&& color_ == t.color_ && style_ == t.style_ && chunks_ == t.chunks_;
+			&& color_ == t.color_ && style_ == t.style_ && str_ == t.str_;
 	}
 	bool operator!=(text_surface const &t) const { return !operator==(t); }
 private:
 	int hash_;
 	int font_size_;
-	mutable std::vector<text_chunk> chunks_;
 	SDL_Color color_;
 	int style_;
 	mutable int w_, h_;
-	mutable std::vector<surface> surfs_;
 	mutable bool initialized_;
-	void hash(std::string const & str);
+	std::string str_;
+	mutable std::vector<text_chunk> chunks_;
+	mutable std::vector<surface> surfs_;
+	void hash();
 };
 
 text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
-  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), 
+  : font_size_(size), color_(color), style_(style), w_(-1), h_(-1), str_(str),
   initialized_(false)
 {
-	hash(str);
-	chunks_ = split_text(str);
+	hash();
 }
 
 text_surface::text_surface(int size, SDL_Color color, int style)
   : hash_(0), font_size_(size), color_(color), style_(style), w_(-1), h_(-1), initialized_(false)
-{}
+{
+}
 
 void text_surface::set_text(std::string const &str)
 {
-	//FIXME hash and split should be done in the same loop.
-	hash(str);
-	chunks_ = split_text(str);
 	initialized_ = false;
+	w_ = -1;
+	h_ = -1;
+	str_ = str;
+	hash();
 }
 
-void text_surface::hash(std::string const & str)
+void text_surface::hash()
 {
 	int h = 0;
-	for(std::string::const_iterator it = str.begin(), it_end = str.end(); it != it_end; ++it)
+	for(std::string::const_iterator it = str_.begin(), it_end = str_.end(); it != it_end; ++it)
 		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (*it);
 	hash_ = h;
 }
@@ -393,15 +395,21 @@ void text_surface::measure() const
 
 size_t text_surface::width() const
 {
-	if (w_ == -1)
+	if (w_ == -1) {
+		if(chunks_.empty())
+			chunks_ = split_text(str_);
 		measure();
+	}
 	return w_;
 }
 
 size_t text_surface::height() const
 {
-	if (h_ == -1)
+	if (h_ == -1) {
+		if(chunks_.empty()) 
+			chunks_ = split_text(str_);
 		measure();
+	}
 	return h_;
 }
 
