@@ -472,11 +472,15 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.move_unit(rt->second.steps,current_unit);
 
 			current_unit.set_movement(rt->second.move_left);
-			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
 			if(map[dst.x][dst.y] == gamemap::TOWER) {
-				current_unit.set_movement(0);
-				get_tower(dst,teams,team_num-1);
+				const int orig_owner = tower_owner(dst,teams);
+				if(orig_owner != team_num) {
+					current_unit.set_movement(0);
+					get_tower(dst,teams,team_num-1);
+				}
 			}
+
+			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
 
 			if(!replayer.skipping()) {
 				disp.draw_tile(dst.x,dst.y);
