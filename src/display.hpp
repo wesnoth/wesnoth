@@ -315,7 +315,7 @@ public:
 	//selecting hexes, it is pure highlighting.
 	void add_highlighted_loc(const gamemap::location &hex);
 
-	void clear_highlighted_locs(const gamemap::location &hex);
+	void clear_highlighted_locs();
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 

@@ -17,6 +17,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <set>
 
 namespace map_editor {
 
@@ -56,34 +57,48 @@ void flood_fill(gamemap &map, const gamemap::location &start_loc,
 	if (fill_with == terrain_to_fill) {
 		return;
 	}
-	std::vector<gamemap::location> to_fill;
-	// First push the starting location onto a stack. Then, in every
-	// iteration, pop one element from the stack, fill this tile and add
-	// all adjacent tiles that have the terrain that should be
-	// filled. Continue until the stack is empty.
-	to_fill.push_back(start_loc);
-	while (!to_fill.empty()) {
-		gamemap::location loc = to_fill.back();
-		to_fill.pop_back();
+	std::set<gamemap::location> to_fill = get_component(map, start_loc);
+	std::set<gamemap::location>::iterator it;
+	for (it = to_fill.begin(); it != to_fill.end(); it++) {
+		gamemap::location loc = *it;
 		if (log != NULL) {
 			log->push_back(std::make_pair(loc, terrain_to_fill));
 		}
 		map.set_terrain(loc, fill_with);
+	}
+}
+
+std::set<gamemap::location>
+get_component(const gamemap &map, const gamemap::location &start_loc) {
+	gamemap::TERRAIN terrain_to_fill = map.get_terrain(start_loc);
+	std::set<gamemap::location> to_fill;
+	std::set<gamemap::location> filled;
+	std::set<gamemap::location>::iterator it;
+	// Insert the start location in a set. Chose an element in the set,
+	// mark this element, and add all adjacent elements that are not
+	// marked. Continue until the set is empty.
+	to_fill.insert(start_loc);
+	while (!to_fill.empty()) {
+		it = to_fill.begin();
+		gamemap::location loc = *it;
+		to_fill.erase(it);
+		filled.insert(loc);
 		// Find all adjacent tiles with the terrain that should be
 		// filled and add these to the to_fill vector.
 		std::vector<gamemap::location> adj = get_tiles(map, loc, 2);
 		for (std::vector<gamemap::location>::iterator it2 = adj.begin();
 			 it2 != adj.end(); it2++) {
-			if (map.get_terrain(*it2) == terrain_to_fill && map.on_board(*it2)) {
-				to_fill.push_back(*it2);
+			if (map.on_board(*it2) && map.get_terrain(*it2) == terrain_to_fill
+				&& filled.find(*it2) == filled.end()) {
+				to_fill.insert(*it2);
 			}
 		}
-		// Remove duplicates.
-		std::sort(to_fill.begin(), to_fill.end());
-		std::vector<gamemap::location>::iterator end_of_unique =
-			std::unique(to_fill.begin(), to_fill.end());
-		to_fill.erase(end_of_unique, to_fill.end());
 	}
+	return filled;
 }
+
+
+
+
 
 }

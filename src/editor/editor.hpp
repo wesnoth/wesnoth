@@ -21,6 +21,8 @@
 
 #include <map>
 #include <queue>
+#include <set>
+#include <vector>
 
 namespace map_editor {
 
@@ -120,7 +122,11 @@ public:
 	/// position of the given player to the currently selected hex.
 	virtual void edit_set_start_pos();
 	virtual void edit_flood_fill();
-	
+	virtual void edit_fill_selection();
+	virtual void edit_cut();
+	virtual void edit_copy();
+	virtual void edit_paste();
+
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
 	// Exception thrown when new map is to be loaded.
@@ -182,6 +188,7 @@ private:
 	/// adjacent. Rebuild the terrain on the same hexes. Make sure that
 	/// the operations only happen once per hex for efficiency purposes.
 	void invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes);
+	void invalidate_all_and_adjacent(const std::set<gamemap::location> &hexes);
 
 	/// Re-set the labels for the starting positions of the
 	/// players. Should be called when the terrain has changed, which
@@ -222,6 +229,7 @@ private:
 	std::vector<gamemap::location> starting_positions_;
 	std::set<gamemap::location> mouse_over_hexes_;
 	std::set<gamemap::location> selected_hexes_;
+	bool add_selection_;
 };
 
 }

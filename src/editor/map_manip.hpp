@@ -16,6 +16,7 @@
 #include "../map.hpp"
 
 #include <vector>
+#include <set>
 
 namespace map_editor {
 
@@ -31,6 +32,10 @@ typedef std::vector<std::pair<gamemap::location, gamemap::TERRAIN> > terrain_log
 /// started.
 void flood_fill(gamemap &map, const gamemap::location &start_loc,
 				const gamemap::TERRAIN fill_with, terrain_log *log = NULL);
+
+/// The the area that would be flood filled if a flood fill was requested.
+std::set<gamemap::location>
+get_component(const gamemap &map, const gamemap::location &start_loc);
 				
 
 }

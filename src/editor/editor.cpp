@@ -69,7 +69,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
 	  draw_terrain_(false), map_dirty_(false),
-	  palette_(gui, size_specs_, map), brush_(gui, size_specs_) {
+	  palette_(gui, size_specs_, map), brush_(gui, size_specs_), add_selection_(false) {
 
 
 	// Set size specs.
@@ -127,9 +127,30 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			show_menu(m->items(), mousex, mousey + 1, true);
 		}
 		if (button == SDL_BUTTON_LEFT) {
-			draw_terrain_ = true;
-			palette_.left_mouse_click(mousex, mousey);
-			brush_.left_mouse_click(mousex, mousey);
+			if (key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT]) {
+				// Set a boolean to indicate wether to add or remove selected hexes.
+				if (selected_hexes_.find(gui_.hex_clicked_on(mousex, mousey))
+					== selected_hexes_.end()) {
+					add_selection_ = true;
+				}
+				else {
+					add_selection_ = false;
+				}
+			}
+			else if (!selected_hexes_.empty()
+					 && map_.on_board(gui_.hex_clicked_on(mousex, mousey))
+				&& !(key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT])) {
+				// If hexes are selected, clear them and do not draw
+				// anything.
+				selected_hexes_.clear();
+				gui_.clear_highlighted_locs();
+				update_mouse_over_hexes(gui_.hex_clicked_on(mousex, mousey));
+			}
+			else {
+				draw_terrain_ = true;
+				palette_.left_mouse_click(mousex, mousey);
+				brush_.left_mouse_click(mousex, mousey);
+			}
 		}
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
@@ -222,6 +243,31 @@ void map_editor::edit_load_map() {
 	}
 }
 
+void map_editor::edit_fill_selection() {
+	map_undo_action undo_action;
+	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
+		 it != selected_hexes_.end(); it++) {
+		if (map_.on_board(*it)) {
+			undo_action.add(map_.get_terrain(*it), palette_.selected_terrain(), *it);
+			map_.set_terrain(*it, palette_.selected_terrain());
+		}
+	}
+	add_undo_action(undo_action);
+	invalidate_all_and_adjacent(selected_hexes_);
+}
+
+void map_editor::edit_cut() {
+
+}
+
+void map_editor::edit_copy() {
+
+}
+
+void map_editor::edit_paste() {
+
+}
+
 bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	switch (command) {
 	case hotkey::HOTKEY_UNDO:
@@ -238,6 +284,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_NEW_MAP:
 	case hotkey::HOTKEY_EDIT_LOAD_MAP:
 	case hotkey::HOTKEY_EDIT_FLOOD_FILL:
+	case hotkey::HOTKEY_EDIT_FILL_SELECTION:
 		return true;
 	default:
 		return false;
@@ -321,13 +368,49 @@ void map_editor::set_file_to_save_as(const std::string filename) {
 
 void map_editor::left_button_down(const int mousex, const int mousey) {
 	const gamemap::location& loc = gui_.minimap_location_on(mousex,mousey);
+	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 	if (loc.valid()) {
 		gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+	}
+	else if (key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT]) {
+		if (key_[SDLK_RALT] || key_[SDLK_LALT]) {
+			// Select/deselect a component.
+			std::set<gamemap::location> selected;
+			selected = get_component(map_, selected_hex_);
+			for (std::set<gamemap::location>::const_iterator it = selected.begin();
+				 it != selected.end(); it++) {
+				if (add_selection_) {
+					gui_.add_highlighted_loc(*it);
+					selected_hexes_.insert(*it);
+				}
+				else {
+					gui_.remove_highlighted_loc(*it);
+					selected_hexes_.erase(*it);
+				}
+			}
+			update_mouse_over_hexes(hex);
+		}
+		else {
+			// Select what the brush is over.
+			std::vector<gamemap::location> selected;
+			selected = get_tiles(map_, hex, brush_.selected_brush_size());
+			for (std::vector<gamemap::location>::const_iterator it = selected.begin();
+				 it != selected.end(); it++) {
+				if (add_selection_) {
+					gui_.add_highlighted_loc(*it);
+					selected_hexes_.insert(*it);
+				}
+				else {
+					gui_.remove_highlighted_loc(*it);
+					selected_hexes_.erase(*it);
+				}
+			}
+			update_mouse_over_hexes(hex);
+		}
 	}
 	// If the left mouse button is down and we beforhand have registred
 	// a mouse down event, draw terrain at the current location.
 	else if (draw_terrain_) {
-		const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
 		if(map_.on_board(hex)) {
 			const gamemap::TERRAIN terrain = map_[hex.x][hex.y];
 			if(key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
@@ -400,8 +483,7 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 }
 
 void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes) {
-	/// XXX Change to use a set.
-	std::vector<gamemap::location> to_invalidate;
+	std::set<gamemap::location> to_invalidate;
 	std::vector<gamemap::location>::const_iterator it;
 	for (it = hexes.begin(); it != hexes.end(); it++) {
 		terrain_changed(map_, *it);
@@ -409,25 +491,29 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 		locs[0] = *it;
 		get_adjacent_tiles(*it, locs+1);
 		for(int i = 0; i != 7; ++i) {
-			to_invalidate.push_back(locs[i]);
+			to_invalidate.insert(locs[i]);
 		}
 	}
-	std::sort(to_invalidate.begin(), to_invalidate.end());;
-	std::vector<gamemap::location>::iterator end_of_unique =
-		std::unique(to_invalidate.begin(), to_invalidate.end());
-	for (it = to_invalidate.begin(); it != end_of_unique; it++) {
-		if (!map_.on_board(*it)) {
-			gamemap::TERRAIN terrain_before = map_.get_terrain(*it);
-			map_.remove_from_border_cache(*it);
-			gamemap::TERRAIN terrain_after = map_.get_terrain(*it);
+	std::set<gamemap::location>::const_iterator its;
+	for (its = to_invalidate.begin(); its != to_invalidate.end(); its++) {
+		if (!map_.on_board(*its)) {
+			gamemap::TERRAIN terrain_before = map_.get_terrain(*its);
+			map_.remove_from_border_cache(*its);
+			gamemap::TERRAIN terrain_after = map_.get_terrain(*its);
 			if (terrain_before != terrain_after) {
-				invalidate_adjacent(*it);
+				invalidate_adjacent(*its);
 			}
 		}
-		gui_.rebuild_terrain(*it);
-		gui_.invalidate(*it);
+		gui_.rebuild_terrain(*its);
+		gui_.invalidate(*its);
 	}
 	map_dirty_ = true;
+}
+
+void map_editor::invalidate_all_and_adjacent(const std::set<gamemap::location> &hexes) {
+	std::vector<gamemap::location> v;
+	std::copy(hexes.begin(), hexes.end(), std::back_inserter(v));
+	invalidate_all_and_adjacent(v);
 }
 
 void map_editor::right_button_down(const int mousex, const int mousey) {

@@ -2133,7 +2133,7 @@ void display::add_highlighted_loc(const gamemap::location &hex) {
 	}
 }
 
-void display::clear_highlighted_locs(const gamemap::location &hex) {
+void display::clear_highlighted_locs() {
 	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
 		 it != highlighted_locations_.end(); it++) {
 		invalidate(*it);
