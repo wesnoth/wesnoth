@@ -48,7 +48,12 @@
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
 
 namespace {
+#ifdef USE_TINY_GUI
+	const int DefaultZoom = 36;
+#else
 	const int DefaultZoom = 72;
+#endif
+
 	const int MaxZoom = 200;
 
 	int MinZoom(const gamemap& map, const SDL_Rect& viewport)
