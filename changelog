@@ -42,8 +42,8 @@ CVS HEAD:
    * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement, reduced number of attacks, backstab
    * Orcish Archer: reduced cost
    * Peasant: reduced cost, increased melee damage
-   * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances, reduced cost
-   * Dwarvish Stawlart: reduced blade, pierce, impact, fire and cold resistances
+   * Dwarvish Guardsman: reduced blade, pierce, impact, fire and cold resistances, reduced cost, reduced number of ranged attacks
+   * Dwarvish Stalwart: reduced blade, pierce, impact, fire and cold resistances, reduced number of ranged attack, increased ranged damage
  * new units
    * Dark Queen
    * Dwarvish Sentinel
@@ -87,6 +87,8 @@ CVS HEAD:
  * fixed editor not being translatable
  * fixed Parandra missing in 'Heir to the Throne: The Elven Council' scenario
  * fixed king going to swimming on 'The Rise of Wesnoth: A Final Spring' scenario
+ * fixed past-the-end issue on botched UTF-8 strings
+ * fixed scroll_to_unit issues on 'The Rise of Wesnoth' campaign
  * workaround for Reiser4 feature bug (#10264)
  * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
