@@ -1009,7 +1009,22 @@ void mp_connect::update_network()
 				}
 
 				if(cfg["id"].empty() == false) {
-					pos->first->values["id"] = cfg["id"];
+					const config* const era_cfg = cfg_->find_child("era","id",era_);
+					const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+					const std::vector<std::string>::const_iterator itor = 
+						std::find(possible_faction_ids_.begin(), possible_faction_ids_.end(), cfg["id"] );
+					if(itor == possible_faction_ids_.end()) {
+						ERR_CF << "client sent unknown faction id: " << cfg["id"] << "\n";
+					} else {
+						const int index = itor - possible_faction_ids_.begin();
+						const string_map& values = possible_sides[index]->values;
+						pos->first->values["random_faction"] = "";
+						for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
+							LOG_CF << "value: " << i->first << " , " << i->second << std::endl;
+							pos->first->values[i->first] = i->second;
+						}
+						pos->first->values["id"] = cfg["id"];
+					}
 				}
 
 				if(cfg["name"].empty() == false) {
