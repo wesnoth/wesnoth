@@ -1,3 +1,25 @@
+CVS HEAD:
+ * po-header cleanups
+ * graphics improvements:
+   * leadership frames
+   * attack frames
+ * reduced 'Elvish High Lord' movement to 6
+ * language fixes and polishing (english)
+ * updated translations:
+   * italian
+   * spanish
+   * swedish
+ * fixed scheduler textdomain
+ * fixed villages being over tree tops
+ * fixed 'Direwolf Rider' incorrectly having 'smallfoot' movetype
+ * fixed 'Elvish Shaman' healing halo
+ * fixed showing faction leader incorrectly in multiplayer games when loading from savegame
+ * fixed long names in lobby going over the reserved area (#10414)
+ * fixed 'Duelist' white border problem
+ * suppressed warnings from msgfmt 
+ * logging system improvements
+ * code cleanups
+
 Version 0.8.5:
  * campaign server (campaignd) and capability to download campaigns from campaign server(s)
  * sorting of campaigns by rank
