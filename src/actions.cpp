@@ -237,9 +237,9 @@ battle_stats evaluate_battle_stats(
 		if(defender_attacks[defend].special() == magical_string)
 			res.chance_to_hit_attacker = 70;
 
-		res.damage_attacker_takes = int(double(
-		 a->second.damage_against(defender_attacks[defend]))
-		 * combat_modifier(state,units,d->first,d->second.type().alignment()));
+		const int base_damage = a->second.damage_against(defender_attacks[defend]);
+		const int modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
+		res.damage_attacker_takes = (base_damage * (100+modifier))/100;
 
 		if(charge)
 			res.damage_attacker_takes *= 2;
@@ -278,10 +278,10 @@ battle_stats evaluate_battle_stats(
 	if(res.chance_to_hit_defender < 60 && attack.special() == marksman_string)
 		res.chance_to_hit_defender = 60;
 
-	res.damage_defender_takes = int(util::round(
-			double(d->second.damage_against(attack))
-		 * combat_modifier(state,units,a->first,a->second.type().alignment())))
-			 * (charge ? 2 : 1) * (backstab ? 2 : 1);
+	const int base_damage = d->second.damage_against(attack);
+	const int modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
+	res.damage_defender_takes = ((d->second.damage_against(attack) * (100 + modifier))/100)
+			                    * (charge ? 2 : 1) * (backstab ? 2 : 1);
 
 	if(under_leadership(units,attacker))
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
@@ -774,10 +774,10 @@ const time_of_day& timeofday_at(const gamestatus& status,
 	return status.get_time_of_day(lighten);
 }
 
-double combat_modifier(const gamestatus& status,
-                       const std::map<gamemap::location,unit>& units,
-					   const gamemap::location& loc,
-					   unit_type::ALIGNMENT alignment)
+int combat_modifier(const gamestatus& status,
+                    const std::map<gamemap::location,unit>& units,
+					const gamemap::location& loc,
+					unit_type::ALIGNMENT alignment)
 {
 	const time_of_day& tod = timeofday_at(status,units,loc);
 

@@ -142,10 +142,10 @@ const time_of_day&  timeofday_at(const gamestatus& status,
 
 //returns the amount that a unit's damage should be multiplied by due to
 //the current time of day.
-double combat_modifier(const gamestatus& status,
-                       const std::map<gamemap::location,unit>& units,
-					   const gamemap::location& loc,
-					   unit_type::ALIGNMENT alignment);
+int combat_modifier(const gamestatus& status,
+                    const std::map<gamemap::location,unit>& units,
+					const gamemap::location& loc,
+					unit_type::ALIGNMENT alignment);
 
 //structure which records information to be able to undo a movement
 struct undo_action {

@@ -35,7 +35,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	gamestatus status(*level,num_turns);
 
 	std::string map_data = (*level)["map_data"];
-	if(map_data == "") {
+	if(map_data == "" && (*level)["map"] != "") {
 		map_data = read_file("data/maps/" + (*level)["map"]);
 	}
 
@@ -207,8 +207,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				if(replaying) {
 					const hotkey::basic_handler key_events_handler(gui);
 					std::cerr << "doing replay " << player_number << "\n";
-					replaying = do_replay(gui,map,gameinfo,units,teams,
-					                      player_number,status,state_of_game);
+					try {
+						replaying = do_replay(gui,map,gameinfo,units,teams,
+						                      player_number,status,state_of_game);
+					} catch(replay::error& e) {
+						std::cerr << "caught replay::error\n";
+						gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],gui::OK_ONLY);
+
+						replaying = false;
+					}
 					std::cerr << "result of replay: " << (replaying?"true":"false") << "\n";
 				}
 

@@ -804,8 +804,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				level_ptr = levels[maps_menu.selection()];
 
 				std::string map_data = (*level_ptr)["map_data"];
-				if(map_data == "") {
-					map_data = read_file("data/maps/" + level_ptr->values["map"]);
+				if(map_data == "" && (*level_ptr)["map"] != "") {
+					map_data = read_file("data/maps/" + (*level_ptr)["map"]);
 				}
 
 				gamemap map(cfg,map_data);
