@@ -293,7 +293,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		const std::set<std::string> &recruitable = help_team_it->recruits();
 		std::set<std::string> &enc_units = preferences::encountered_units();
 		std::cout << "Adding recruitable units: " << std::endl;
-		for (std::set<std::string>::iterator it = recruitable.begin();
+		for (std::set<std::string>::const_iterator it = recruitable.begin();
 			 it != recruitable.end(); it++) {
 			std::cout << *it << std::endl;
 		}
