@@ -198,7 +198,7 @@ std::vector<std::string> get_text() {
 		"-   Boris Stumm (quijote_)",
 		"-   Christoph Berg (chrber)",
 		"-   Gerfried Fuchs (Rhonda)",
-		"-   Jan Heiner (jan-heiner)",
+		"-   Jan Heiner Laberenz (jan-heiner)",
 		"-   Kai Ensenbach (Pingu)",
 		"-   Nils Kneuper (Ivanovic)",
 		"-   Stephan Grochtmann (Schattenstephan)",
@@ -210,7 +210,11 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		"_" N_("+Hungarian Translation"),
+		"-   adson",
+		"-   dentro",
+		"-   Kékkői László (BlackEvil)",
 		"-   Khiraly",
+		"-   krix",
 		"-   Széll Tamás (TomJoad)",
 		"+ ",
 
