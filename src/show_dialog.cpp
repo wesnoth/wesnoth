@@ -376,11 +376,11 @@ int show_dialog(display& disp, surface image,
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 
-	const int left_padding = 10;
-	const int right_padding = 10;
-	const int image_h_padding = image != NULL ? 10 : 0;
-	const int top_padding = 10;
-	const int bottom_padding = 10;
+	const size_t left_padding = 10;
+	const size_t right_padding = 10;
+	const size_t image_h_padding = image != NULL ? 10 : 0;
+	const size_t top_padding = 10;
+	const size_t bottom_padding = 10;
 
 	const std::string message = font::word_wrap_text(msg, message_font_size,
 			screen.getx() / 2,
@@ -503,20 +503,23 @@ int show_dialog(display& disp, surface image,
 	}
 
 	const int menu_hpadding = text_size.h > 0 && menu_.height() > 0 ? 10 : 0;
-	const int padding_width = left_padding + right_padding + image_h_padding;
-	const int padding_height = top_padding + bottom_padding + menu_hpadding;
+	const size_t padding_width = left_padding + right_padding + image_h_padding;
+	const size_t padding_height = top_padding + bottom_padding + menu_hpadding;
 	const size_t caption_width = caption_size.w;
-	const int image_width = image != NULL ? image->w : 0;
-	const int image_height = image != NULL ? image->h : 0;
-	const int total_text_height = text_size.h + caption_size.h;
+	const size_t image_width = image != NULL ? image->w : 0;
+	const size_t image_height = image != NULL ? image->h : 0;
+	const size_t total_text_height = text_size.h + caption_size.h;
 
 	size_t text_width = text_size.w;
 	if(caption_width > text_width)
 		text_width = caption_width;
+	// Prevent the menu to be larger than the screen
+	if(menu_.width() + image_width + padding_width > size_t(scr->w))
+		menu_.set_width(scr->w - image_width - padding_width);
 	if(menu_.width() > text_width)
 		text_width = menu_.width();
 
-	int total_width = image_width + text_width + padding_width;
+	size_t total_width = image_width + text_width + padding_width;
 
 	if(text_widget_width+left_padding+right_padding > total_width)
 		total_width = text_widget_width+left_padding+right_padding;
