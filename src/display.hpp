@@ -49,12 +49,13 @@ class display
 {
 public:
 	typedef std::map<gamemap::location,unit> unit_map;
-	typedef short Pixel;
 
 	display(unit_map& units, CVideo& video,
 	        const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg);
 	~display();
+
+	Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
 
 	//new_turn should be called on every new turn, to update
 	//lighting settings.
@@ -69,10 +70,6 @@ public:
 	//at a time. The previously hidden unit will be returned.
 	//'hide_energy' determines whether the unit's energy bar should be hidden too.
 	gamemap::location hide_unit(const gamemap::location& loc, bool hide_energy=false);
-
-	//function which given rgb values, will return the equivalent pixel
-	//for the frame buffer surface.
-	Pixel rgb(int r, int g, int b) const;
 
 	//function which scrolls the display by xmov,ymov. Invalidation and
 	//redrawing will be scheduled.
@@ -165,7 +162,7 @@ public:
 	//alpha controls how faded the unit is. If blend_to is not 0, then the
 	//unit will be alpha-blended to blend_to instead of the background colour
 	void draw_tile(int x, int y, SDL_Surface* unit_image=NULL,
-	               double alpha=1.0, short blend_to=0);
+	               double alpha=1.0, Uint32 blend_to=0);
 
 	//function to draw a footstep for the given location, on screen at
 	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
@@ -177,7 +174,7 @@ public:
 	CVideo& video() { return screen_; }
 
 	//blits a surface with black as alpha
-	void blit_surface(int x, int y, SDL_Surface* surface);
+	void blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 
 	//function to invalidate all tiles.
 	void invalidate_all();
@@ -287,7 +284,7 @@ private:
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, SDL_Surface* image,
 	               bool reverse, bool upside_down=false,
-	               double alpha=1.0, short blendto=0, double submerged=0.0);
+	               double alpha=1.0, Uint32 blendto=0, double submerged=0.0);
 
 	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
 
@@ -338,8 +335,8 @@ private:
 
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
-	const std::pair<int,int>& calculate_energy_bar();
-	std::pair<int,int> energy_bar_count_;
+	const SDL_Rect& calculate_energy_bar();
+	SDL_Rect energy_bar_rect_;
 
 	SDL_Surface* minimap_;
 
@@ -372,9 +369,6 @@ private:
 	//being moved or otherwise changed
 	gamemap::location hiddenUnit_;
 	bool hideEnergy_;
-
-	//used to store any unit that is currently being hit
-	gamemap::location hitUnit_;
 
 	//used to store any unit that is dying
 	gamemap::location deadUnit_;

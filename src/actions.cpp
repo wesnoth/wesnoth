@@ -864,7 +864,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		}
 
 		while(h->second > 0) {
-			const display::Pixel heal_colour = disp.rgb(0,0,200);
+			const Uint16 heal_colour = disp.rgb(0,0,200);
 			u.heal(1);
 
 			if(show_healing) {
@@ -880,7 +880,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		}
 
 		while(h->second < 0) {
-			const display::Pixel damage_colour = disp.rgb(200,0,0);
+			const Uint16 damage_colour = disp.rgb(200,0,0);
 			u.gets_hit(1);
 
 			if(show_healing) {

@@ -447,9 +447,21 @@ SDL_Rect menu::get_item_rect(int item) const
 		y = prev.y + prev.h;
 	}
 
-	static const SDL_Rect area = {0,0,display_->x(),display_->y()};
+	const SDL_Rect screen_area = display_->screen_area();
 
 	SDL_Rect res = {x_,y,width(),get_item_height(item)};
+
+	if(res.x > screen_area.w) {
+		return empty_rect;
+	} else if(res.x + res.w > screen_area.w) {
+		res.w = screen_area.w - res.x;
+	}
+
+	if(res.y > screen_area.h) {
+		return empty_rect;
+	} else if(res.y + res.h > screen_area.h) {
+		res.h = screen_area.h - res.y;
+	}
 
 	//only insert into the cache if the menu's co-ordinates have
 	//been initialized

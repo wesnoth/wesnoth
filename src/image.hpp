@@ -51,7 +51,7 @@ namespace image {
 
 	enum TYPE { UNSCALED, SCALED, FOGGED, GREYED, BRIGHTENED };
 
-	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR, NO_FORMAT_ADJUSTMENT };
+	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
 
 	//function to get the surface corresponding to an image.
 	//note that this surface must be freed by the user by calling

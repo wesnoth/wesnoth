@@ -41,17 +41,23 @@ int sdl_add_ref(SDL_Surface* surface);
 
 typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 
-void draw_unit_ellipse(SDL_Surface* surf, short colour, const SDL_Rect& clip, int unitx, int unity,
-                       SDL_Surface* behind, bool image_reverse);
+enum ELLIPSE_HALF { ELLIPSE_TOP, ELLIPSE_BOTTOM };
 
+void draw_unit_ellipse(SDL_Surface* surf, Uint16 colour, const SDL_Rect& clip, int unitx, int unity, SDL_Surface* unit_image, bool image_reverse, ELLIPSE_HALF half);
+
+SDL_Surface* make_neutral_surface(SDL_Surface* surf);
 SDL_Surface* clone_surface(SDL_Surface* surface);
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h);
-
-void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);
-
+SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);
+SDL_Surface* greyscale_image(SDL_Surface* surface);
+SDL_Surface* brighten_image(SDL_Surface* surface, double amount);
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& rect);
+SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount);
+SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour);
+SDL_Surface* flip_surface(SDL_Surface* surface);
+SDL_Surface* flop_surface(SDL_Surface* surface);
 
-SDL_Rect get_non_transperant_portion(const SDL_Surface* surf);
+SDL_Rect get_non_transperant_portion(SDL_Surface* surf);
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
@@ -125,7 +131,7 @@ struct surface_lock
 		}
 	}
 
-	short* pixels() { return reinterpret_cast<short*>(surface_->pixels); }
+	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
 private:
 	SDL_Surface* const surface_;
 	bool locked_;
@@ -174,6 +180,21 @@ private:
 	class CVideo* target_;
 	SDL_Rect rect_;
 	shared_sdl_surface surface_;
+};
+
+struct clip_rect_setter
+{
+	clip_rect_setter(SDL_Surface* surf, SDL_Rect& r) : surface(surf)
+	{
+		SDL_GetClipRect(surface,&rect);
+		SDL_SetClipRect(surface,&r);
+	}
+
+	~clip_rect_setter() { SDL_SetClipRect(surface,&rect); }
+
+private:
+	SDL_Surface* surface;
+	SDL_Rect rect;
 };
 
 #endif

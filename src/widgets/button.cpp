@@ -162,8 +162,7 @@ void button::draw()
 
 	scoped_sdl_surface greyed_image(NULL);
 	if(!enabled_) {
-		greyed_image.assign(clone_surface(image));
-		adjust_surface_colour(greyed_image,-50,-50,-50);
+		greyed_image.assign(adjust_surface_colour(image,-50,-50,-50));
 		image = greyed_image;
 	}
 

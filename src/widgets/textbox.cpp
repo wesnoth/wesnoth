@@ -54,15 +54,11 @@ void textbox::clear()
 void textbox::draw_cursor(int pos) const
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
-	static const short cursor_colour = short(0xFFFF);
 
 	if(show_cursor) {
-		surface_lock lock(disp_.video().getSurface());
-		short* dst = lock.pixels() + location().y*disp_.x() + location().x + pos;
-
-		for(int i = 0; i != location().h; ++i, dst += disp_.x()) {
-			*dst = cursor_colour;
-		}
+		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
+		SDL_Surface* const frame_buffer = disp_.video().getSurface();
+		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
 

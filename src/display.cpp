@@ -42,48 +42,8 @@ std::map<gamemap::location,double> display::debugHighlights_;
 namespace {
 	const double DefaultZoom = 70.0;
 
-	display::Pixel alpha_blend_pixels(display::Pixel p1, display::Pixel p2,
-	                         const SDL_PixelFormat* fmt, double alpha)
-	{
-		const int r1 = ((p1&fmt->Rmask) >> fmt->Rshift) << fmt->Rloss;
-		const int g1 = ((p1&fmt->Gmask) >> fmt->Gshift) << fmt->Gloss;
-		const int b1 = ((p1&fmt->Bmask) >> fmt->Bshift) << fmt->Bloss;
-
-		const int r2 = ((p2&fmt->Rmask) >> fmt->Rshift) << fmt->Rloss;
-		const int g2 = ((p2&fmt->Gmask) >> fmt->Gshift) << fmt->Gloss;
-		const int b2 = ((p2&fmt->Bmask) >> fmt->Bshift) << fmt->Bloss;
-
-		int r = int(r1*alpha);
-		int g = int(g1*alpha);
-		int b = int(b1*alpha);
-
-		if(alpha < 1.0) {
-			r += int(r2*(1.0-alpha));
-			g += int(g2*(1.0-alpha));
-			b += int(b2*(1.0-alpha));
-		} else {
-			if(r > r2)
-				r = r2;
-
-			if(g > g2)
-				g = g2;
-
-			if(b > b2)
-				b = b2;
-		}
-
-		return ((r >> fmt->Rloss) << fmt->Rshift) |
-		       ((g >> fmt->Gloss) << fmt->Gshift) |
-		       ((b >> fmt->Bloss) << fmt->Bshift);
-	}
-
-	const size_t SideBarText_x = 13;
-	const size_t SideBarUnit_y = 435;
-	const size_t SideBarUnitProfile_y = 375;
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
-	const size_t TimeOfDay_x = 13;
-	const size_t TimeOfDay_y = 167;
 
 	const SDL_Rect empty_rect = {0,0,0,0};
 }
@@ -92,7 +52,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg)
 		             : screen_(video), xpos_(0.0), ypos_(0.0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
-					   energy_bar_count_(-1,-1), minimap_(NULL),
+					   minimap_(NULL),
 					   pathsList_(NULL), status_(status),
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
@@ -101,6 +61,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area())
 {
+	energy_bar_rect_.x = -1;
+
 	create_buttons();
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
@@ -115,11 +77,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 	//clear the screen contents
 	SDL_Surface* const disp = screen_.getSurface();
-	const int length = disp->w*disp->h;
-
-	surface_lock lock(disp);
-	short* const pixels = lock.pixels();
-	std::fill(pixels,pixels+length,0);
+	SDL_Rect area = screen_area();
+	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 }
 
 //we have to go through all this trickery on clear_surfaces because
@@ -143,6 +102,11 @@ void clear_surfaces(Map& surfaces)
 display::~display()
 {
 	SDL_FreeSurface(minimap_);
+}
+
+Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
+{
+	return 0xFF000000 | (red << 16) | (green << 8) | blue;
 }
 
 void display::new_turn()
@@ -242,12 +206,6 @@ gamemap::location display::minimap_location_on(int x, int y)
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
-display::Pixel display::rgb(int r, int g, int b) const
-{
-	return SDL_MapRGB(const_cast<display*>(this)->video().getSurface()->format,
-	                  r,g,b);
-}
-
 void display::scroll(double xmove, double ymove)
 {
 	const double orig_x = xpos_;
@@ -270,8 +228,6 @@ void display::scroll(double xmove, double ymove)
 
 void display::zoom(double amount)
 {
-	energy_bar_count_ = std::pair<int,int>(-1,-1);
-
 	const double orig_xpos = xpos_;
 	const double orig_ypos = ypos_;
 
@@ -305,6 +261,8 @@ void display::zoom(double amount)
 		zoom_ = orig_zoom;
 		return;
 	}
+
+	energy_bar_rect_.x = -1;
 
 	image::set_zoom(zoom_);
 	invalidate_all();
@@ -951,7 +909,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling);
 	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling);
 
-	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
+	const Uint16 boxcolour = Uint16(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
 
 	gui::draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
@@ -1025,7 +983,7 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 }
 
 void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
-                        double highlight_ratio, Pixel blend_with)
+                        double highlight_ratio, Uint32 blend_with)
 
 {
 	if(updatesLocked_)
@@ -1102,8 +1060,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		    overlays_.equal_range(gamemap::location(x,y));
 			overlays.first != overlays.second; ++overlays.first) {
 
-			//event though the scoped surface will fall out-of-scope and call
-			//SDL_FreeSurface on the underlying surface, the surface will remain
+			//even though the scoped surface will fall out-of-scope and call
+			//SDL_FreeSurface() on the underlying surface, the surface will remain
 			//valid so long as the image cache isn't invalidated, which should not
 			//happen inside this function
 			const scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
@@ -1141,8 +1099,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	double unit_energy = 0.0;
 
-	const short energy_loss_colour = 0;
-	short energy_colour = 0;
+	const Uint16 energy_loss_colour = 0;
+	Uint16 energy_colour = 0;
 
 	const int max_energy = 80;
 	double energy_size = 1.0;
@@ -1210,7 +1168,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 		if(loc == selectedHex_ && highlight_ratio == 1.0) {
 			highlight_ratio = 1.5;
-			blend_with = short(0xFFFF);
+			blend_with = rgb(255,255,255);
 		}
 
 		{
@@ -1226,7 +1184,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 				eg = 200;
 			}
 
-			energy_colour = ::SDL_MapRGB(energy_image->format,er,eg,eb);
+			energy_colour = ::SDL_MapRGB(screen_.getSurface()->format,er,eg,eb);
 		}
 
 		if(it->second.max_hitpoints() < max_energy) {
@@ -1236,116 +1194,31 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		face_left = it->second.facing_left();
 	}
 
-	const std::pair<int,int>& energy_bar_loc = calculate_energy_bar();
-	double total_energy = double(energy_bar_loc.second - energy_bar_loc.first);
-
-	const int skip_energy_rows = int(total_energy*(1.0-energy_size));
-	total_energy -= double(skip_energy_rows);
-
-	const int show_energy_after = energy_bar_loc.first +
-	                              int((1.0-unit_energy)*total_energy);
-
-	const bool draw_hit = hitUnit_ == gamemap::location(x,y);
-	const short hit_colour = short(0xF000);
-
 	if(deadUnit_ == gamemap::location(x,y)) {
 		highlight_ratio = deadAmount_;
 	}
 
 	SDL_Surface* const dst = screen_.getSurface();
 
-	const Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
+	SDL_Rect clip_rect = map_area();
+	clip_rect_setter set_clip_rect(dst,clip_rect);
 
-	int j;
-	for(j = ypos; j != yend; ++j) {
+	const Uint16 grid_colour = SDL_MapRGB(dst->format,0,0,0);
 
-		//store the number of pixel-rows into the hex we are in yloc
-		const int yloc = ysrc+j-ypos;
-		const int xoffset = abs(yloc - static_cast<int>(zoom_/2.0))/2;
+	const int srcy = minimum<int>(ysrc,surface->h-1);
+	SDL_Rect srcrect = { xsrc, srcy, xend - xpos, yend - ypos };
+	SDL_Rect dstrect = { xpos, ypos, xend - xpos, yend - ypos };
+	SDL_BlitSurface(surface,&srcrect,dst,&dstrect);
 
-		//store the number of pixels-rows we are into the north-east hex
-		const int ne_yloc = j-ne_ypos;
-		const int ne_xoffset = abs(ne_yloc - static_cast<int>(zoom_/2.0))/2;
+	for(std::vector<SDL_Surface*>::const_iterator ov = overlaps.begin();
+	    ov != overlaps.end(); ++ov) {
+		SDL_BlitSurface(*ov,&srcrect,dst,&dstrect);
+	}
 
-		//store the number of pixels-rows we are into the south-east hex
-		const int se_yloc = j-se_ypos;
-		const int se_xoffset = abs(se_yloc - static_cast<int>(zoom_/2.0))/2;
-
-		int xdst = xpos;
-		if(xoffset > xsrc) {
-			xdst += xoffset - xsrc;
-			if(xend < xdst)
-				continue;
-		}
-
-		const int maxlen = static_cast<int>(zoom_) - xoffset*2;
-		int len = minimum(xend - xdst,maxlen);
-
-		const int neoffset = ne_xpos+ne_xoffset;
-		const int seoffset = se_xpos+se_xoffset;
-		const int minoffset = minimum<int>(neoffset,seoffset);
-
-		//FIXME: make it work with ne_ypos being <= 0
-		if(ne_ypos > 0 && xdst + len >= neoffset) {
-			len = neoffset - xdst;
-			if(len < 0)
-				len = 0;
-		} else if(ne_ypos > 0 && xdst + len >= seoffset) {
-			len = seoffset - xdst;
-			if(len < 0)
-				len = 0;
-		}
-
-		const int srcy = minimum<int>(yloc,surface->h-1);
-		assert(srcy >= 0);
-
-		const int diff = maximum<int>(0,srcy*surface->w + maximum<int>(xoffset,xsrc));
-		len = minimum<int>(len,surface->w*surface->h - diff);
-		if(len <= 0) {
-			continue;
-		}
-
-		SDL_Rect srcrect = { maximum<int>(xoffset,xsrc), srcy, len, 1 };
-		SDL_Rect dstrect = { xdst, j, 0, 0 };
-
-		SDL_BlitSurface(surface,&srcrect,dst,&dstrect);
-
-		int extra = 0;
-
-		SDL_Rect end_srcrect = { srcrect.x + srcrect.w - 1, srcrect.y, 1, 1 };
-
-		//if the line didn't make it to the next hex, then fill in with the
-		//last pixel up to the next hex
-		if(ne_ypos > 0 && xdst + len < minoffset && len > 0) {
-			extra = minimum(minoffset-(xdst + len),map_area().x+map_area().w-(xdst+len));
-			SDL_Rect rect = { dstrect.x + len, dstrect.y, 1, 1 };
-			for(int n = 0; n != extra; ++n, ++rect.x) {
-				SDL_BlitSurface(surface,&end_srcrect,dst,&rect);
-			}
-		}
-
-		//copy any overlapping tiles on
-		for(std::vector<SDL_Surface*>::const_iterator ov = overlaps.begin();
-		    ov != overlaps.end(); ++ov) {
-			SDL_BlitSurface(*ov,&srcrect,dst,&dstrect);
-
-			for(int i = 0; i != extra; ++i) {
-				SDL_Rect rect = { dstrect.x + len + i, dstrect.y, 1, 1 };
-				SDL_BlitSurface(*ov,&end_srcrect,dst,&rect);
-			}
-		}
-
-		if(grid_ && srcrect.w >= 1) {
-			SDL_Rect rect = dstrect;
-			if(j == ypos || j == yend-1) {
-				SDL_FillRect(dst,&rect,grid_colour);
-			} else {
-				rect.w = 1;
-				rect.h = 1;
-				SDL_FillRect(dst,&rect,grid_colour);
-				rect.x += srcrect.w+extra-1;
-				SDL_FillRect(dst,&rect,grid_colour);
-			}
+	if(grid_) {
+		scoped_sdl_surface grid_surface(image::get_image("terrain/grid.png"));
+		if(grid_surface != NULL) {
+			SDL_BlitSurface(grid_surface,&srcrect,dst,&dstrect);
 		}
 	}
 
@@ -1368,97 +1241,64 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		return;
 	}
 
+	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
+	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
+
 	if(loc != hiddenUnit_) {
-		if(draw_hit) {
-			blend_with = hit_colour;
-			highlight_ratio = 0.7;
-		} else if(loc == advancingUnit_ && it != units_.end()) {
+		if(loc == advancingUnit_ && it != units_.end()) {
 			//the unit is advancing - set the advancing colour to white if it's a
 			//non-chaotic unit, otherwise black
 			blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
-			                                        0x0001 : 0xFFFF;
+			                                        rgb(16,16,16) : rgb(255,255,255);
 			highlight_ratio = advancingAmount_;
 		} else if(it->second.poisoned() && highlight_ratio == 1.0) {
 			//the unit is poisoned - draw with a green hue
-			blend_with = SDL_MapRGB(dst->format,0,255,0);
+			blend_with = rgb(0,255,0);
 			highlight_ratio = 0.75;
 		}
-
-		const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
-		const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
-
-		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
-		          highlight_ratio,blend_with,submerge);
 
 		//the circle around the base of the unit
 		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 			const SDL_Color& col = font::get_side_colour(it->second.side());
-			const short colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
+			const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
 			SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
 
-			draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left);
+			draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
 		}
+
+		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
+		          highlight_ratio,blend_with,submerge);
 	}
+
+	const SDL_Rect& energy_bar_loc = calculate_energy_bar();
+	double total_energy = double(energy_bar_loc.h);
+
+	const int skip_energy_rows = int(total_energy*(1.0-energy_size));
+	total_energy -= double(skip_energy_rows);
+
+	const int lost_energy = int((1.0-unit_energy)*total_energy);
+	const int show_energy_after = energy_bar_loc.y + lost_energy;
 
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
 
-	surface_lock dstlock(dst);
-	surface_lock energy_lock(energy_image);
+	SDL_Rect first_energy = {0,0,energy_image->w,energy_bar_loc.y};
+	SDL_Rect second_energy = {0,energy_bar_loc.y+skip_energy_rows,energy_image->w,0};
+	second_energy.h = energy_image->w - second_energy.y;
 
-	for(j = ypos; j != yend; ++j) {
-		const int yloc = ysrc+j-ypos;
-		const int xoffset = abs(yloc - static_cast<int>(zoom_/2.0))/2;
+	blit_surface(xpos-xsrc,ypos-ysrc,energy_image,&first_energy,&clip_rect);
+	blit_surface(xpos-xsrc,ypos-ysrc+first_energy.h,energy_image,&second_energy,&clip_rect);
 
-		int xdst = xpos;
-		if(xoffset > xsrc) {
-			xdst += xoffset - xsrc;
-			if(xend < xdst)
-				continue;
-		}
+	SDL_Rect filled_energy_area = { xpos-xsrc + energy_bar_loc.x, ypos-ysrc+show_energy_after,
+	          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
+	SDL_FillRect(dst,&filled_energy_area,energy_colour);
 
-		const int maxlen = static_cast<int>(zoom_) - xoffset*2;
-		int len = ((xend - xdst) > maxlen) ? maxlen : xend - xdst;
+	//the bottom half of the circle around the base of the unit
+	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
+		const SDL_Color& col = font::get_side_colour(it->second.side());
+		const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
+		SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
 
-		short* startdst = dstlock.pixels() + j*dst->w + xdst;
-
-		const short new_energy = yloc >= show_energy_after ?
-		                             energy_colour : energy_loss_colour;
-
-		const int skip = yloc >= energy_bar_loc.first ? skip_energy_rows:0;
-
-		short* startenergy = NULL;
-
-		const int energy_w = energy_image->w + is_odd(energy_image->w);
-		if(yloc + skip < energy_image->h) {
-			startenergy = energy_lock.pixels() + (yloc+skip)*energy_w +
-			              maximum<int>(xoffset,xsrc);
-
-			for(int i = 0; i != len; ++i) {
-				Uint8 r, g, b;
-				SDL_GetRGB(*startenergy,energy_image->format,&r,&g,&b);
-				if(startenergy != NULL && *startenergy != 0) {
-					if(!energy_uses_alpha) {
-						if(r > 230 && g > 230 && b > 230) {
-							*startdst = new_energy;
-						} else {
-							*startdst = *startenergy;
-						}
-					} else {
-						Pixel p = *startenergy;
-						if(r > 230 && g > 230 && b > 230) {
-							p = new_energy;
-						}
-						*startdst = alpha_blend_pixels(p,*startdst,
-						                      dst->format,highlight_ratio);
-					}
-				}
-
-				++startdst;
-
-				if(startenergy != NULL)
-					++startenergy;
-			}
-		}
+		draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
 	}
 }
 
@@ -1683,24 +1523,65 @@ SDL_Surface* display::getFlag(gamemap::TERRAIN terrain, int x, int y)
 	return NULL;
 }
 
-void display::blit_surface(int x, int y, SDL_Surface* surface)
+void display::blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
 	SDL_Surface* const target = video().getSurface();
 
-	const int srcx = x < 0 ? -x : 0;
-	const int srcw = x + surface->w > target->w ? target->w - x :
-	                                              surface->w - srcx;
-	const int srcy = y < 0 ? -y : 0;
-	const int srch = y + surface->h > target->h ? target->h - x :
-	                                              surface->h - srcy;
+	SDL_Rect clip;
+	if(clip_rect == NULL) {
+		clip = screen_area();
+		clip_rect = &clip;
+	}
 
-	if(srcw <= 0 || srch <= 0 || srcx >= surface->w || srcy >= surface->h)
+	SDL_Rect src;
+	if(srcrect == NULL) {
+		src.x = 0;
+		src.y = 0;
+		src.w = surface->w;
+		src.h = surface->h;
+		srcrect = &src;
+	}
+
+	if(x + srcrect->w < clip_rect->x) {
 		return;
+	}
 
-	SDL_Rect src_rect = {srcx, srcy, srcw, srch};
-	SDL_Rect dst_rect = {x, y, srcw, srch};
+	if(y + srcrect->h < clip_rect->y) {
+		return;
+	}
 
-	SDL_BlitSurface(surface,&src_rect,target,&dst_rect);
+	if(x > clip_rect->x + clip_rect->w) {
+		return;
+	}
+
+	if(y > clip_rect->y + clip_rect->h) {
+		return;
+	}
+
+	if(x < clip_rect->x) {
+		const int diff = clip_rect->x - x;
+		srcrect->x += diff;
+		srcrect->w -= diff;
+		x = clip_rect->x;
+	}
+
+	if(y < clip_rect->y) {
+		const int diff = clip_rect->y - y;
+		srcrect->y += diff;
+		srcrect->h -= diff;
+		y = clip_rect->y;
+	}
+
+	if(x + srcrect->w > clip_rect->x + clip_rect->w) {
+		srcrect->w = clip_rect->x + clip_rect->w - x;
+	}
+
+	if(y + srcrect->h > clip_rect->y + clip_rect->h) {
+		srcrect->h = clip_rect->y + clip_rect->h - y;
+	}
+
+	SDL_Rect dstrect = {x,y,0,0};
+	SDL_BlitSurface(surface,srcrect,target,&dstrect);
 }
 
 SDL_Surface* display::getMinimap(int w, int h)
@@ -1766,7 +1647,9 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 
 double display::get_location_x(const gamemap::location& loc) const
 {
-	return map_area().x + static_cast<double>(loc.x)*zoom_*0.75 - xpos_;
+	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+
+	return map_area().x + loc.x*tile_width - xpos_;
 }
 
 double display::get_location_y(const gamemap::location& loc) const
@@ -1862,7 +1745,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			draw_tile(a.x,a.y,image);
 		}
 
-		Pixel defensive_colour = 0;
+		Uint16 defensive_colour = 0;
 		double defensive_alpha = 1.0;
 
 		if(damage > 0 && i >= missile_impact) {
@@ -1875,7 +1758,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 			if(flash_num == 0 || flash_num == 2) {
 				defensive_alpha = 0.0;
-				defensive_colour = short(0xF000);
+				defensive_colour = rgb(200,0,0);
 			}
 
 			++flash_num;
@@ -2111,7 +1994,7 @@ bool display::unit_attack(const gamemap::location& a,
 
 			if(flash_num == 0 || flash_num == 2) {
 				defender_alpha = 0.0;
-				defender_colour = 0xF000;
+				defender_colour = rgb(200,0,0);
 			}
 
 			++flash_num;
@@ -2282,153 +2165,87 @@ void display::move_unit_between(const gamemap::location& a,
 
 void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool reverse, bool upside_down,
-                        double alpha, Pixel blendto, double submerged)
+                        double alpha, Uint32 blendto, double submerged)
 {
-	//the alpha value to use for submerged units
-	static const double unit_submerged_alpha = 0.2;
+	sdl_add_ref(image);
+	scoped_sdl_surface surf(image);
 
-	if(updatesLocked_) {
+	if(upside_down) {
+		surf.assign(flop_surface(surf));
+	}
+
+	if(!reverse) {
+		surf.assign(flip_surface(surf));
+	}
+
+	if(alpha > 1.0) {
+		surf.assign(brighten_image(surf,alpha));
+	} else if(alpha != 1.0 && blendto != 0) {
+		surf.assign(blend_surface(surf,1.0-alpha,blendto));
+	} else if(alpha != 1.0) {
+		surf.assign(adjust_surface_alpha(surf,alpha));
+	}
+
+	if(surf == NULL) {
+		std::cerr << "surface lost...\n";
 		return;
 	}
 
-	const int w = map_area().x + map_area().w;
-	const int h = map_area().y + map_area().h-1;
-	if(x > w || y > h)
-		return;
+	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,surf->h*(1.0-submerged)));
 
-	const int image_w = image->w + is_odd(image->w);
+	SDL_Rect clip_rect = map_area();
+	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
+	blit_surface(x,y,surf,&srcrect,&clip_rect);
 
-	SDL_Surface* const screen = screen_.getSurface();
+	if(submerge_height != surf->h) {
+		surf.assign(adjust_surface_alpha(surf,0.2));
+		
+		srcrect.y = submerge_height;
+		srcrect.h = surf->h-submerge_height;
+		y += submerge_height;
 
-	surface_lock srclock(image);
-	const Pixel* src = srclock.pixels();
-
-	const int height = image->h;
-	const int submerge_height = y + image->h*(1.0 - submerged);
-
-	const int endy = (y + height) < h ? (y + height) : h;
-	const int endx = (x + image->w) < w ? (x + image->w) : w;
-	if(endx < x)
-		return;
-
-	const int len = endx - x;
-
-	if(y < map_area().y) {
-		src += image_w*(map_area().y - y);
-		y = map_area().y;
-		if(y >= endy)
-			return;
-	}
-
-	int xoffset = 0;
-	if(x < map_area().x) {
-		xoffset = map_area().x - x;
-		x = map_area().x;
-		if(x >= endx)
-			return;
-	}
-
-	const SDL_PixelFormat* const fmt = screen->format;
-
-	static const Pixel semi_trans = ((0x19 >> fmt->Rloss) << fmt->Rshift) |
-	                                ((0x19 >> fmt->Gloss) << fmt->Gshift) |
-	                                ((0x11 >> fmt->Bloss) << fmt->Bshift);
-
-	if(upside_down)
-		src += image_w * (endy - y - 1);
-
-	const int src_increment = image_w * (upside_down ? -1 : 1);
-
-	surface_lock screen_lock(screen);
-
-	const Pixel ShroudColour = 0;
-
-	for(; y != endy; ++y, src += src_increment) {
-		Pixel* dst = screen_lock.pixels() + y*screen->w + x;
-
-		if(y == submerge_height && alpha > unit_submerged_alpha) {
-			alpha = unit_submerged_alpha;
-			blendto = 0;
-		}
-
-		if(alpha == 1.0) {
-			if(reverse) {
-				for(int i = xoffset; i != len; ++i) {
-					if(dst[i-xoffset] == ShroudColour)
-						continue;
-
-					if(src[i] == semi_trans)
-						dst[i-xoffset] = alpha_blend_pixels(
-						                     0,dst[i-xoffset],fmt,0.5);
-					else if(src[i] != 0)
-						dst[i-xoffset] = src[i];
-				}
-			} else {
-				for(int i = image->w-1-xoffset; i != image->w-len-1; --i,++dst){
-					if(*dst == ShroudColour)
-						continue;
-
-					if(src[i] == semi_trans)
-						*dst = alpha_blend_pixels(0,*dst,fmt,0.5);
-					else if(src[i] != 0)
-						*dst = src[i];
-				}
-			}
-		} else {
-			if(reverse) {
-				for(int i = xoffset; i != len; ++i) {
-					if(dst[i-xoffset] == ShroudColour)
-						continue;
-
-					const Pixel blend = blendto ? blendto : dst[i-xoffset];
-
-					if(src[i] != 0)
-						dst[i-xoffset]
-						      = alpha_blend_pixels(src[i],blend,fmt,alpha);
-				}
-			} else {
-				for(int i = image->w-1-xoffset; i != image->w-len-1; --i,++dst){
-					if(*dst == ShroudColour)
-						continue;
-
-					const Pixel blend = blendto ? blendto : *dst;
-					if(src[i] != 0)
-						*dst = alpha_blend_pixels(src[i],blend,fmt,alpha);
-				}
-			}
-		}
+		blit_surface(x,y,surf,&srcrect,&clip_rect);
 	}
 }
 
-const std::pair<int,int>& display::calculate_energy_bar()
+struct is_energy_colour {
+	bool operator()(Uint32 colour) const { return (colour&0xFF000000) < 0x99000000 && (colour&0x00FF0000) > 0x00990000; }
+};
+
+const SDL_Rect& display::calculate_energy_bar()
 {
-	if(energy_bar_count_.first != -1) {
-		return energy_bar_count_;
+	if(energy_bar_rect_.x != -1) {
+		return energy_bar_rect_;
 	}
 
-	int first_row = -1;
-	int last_row = -1;
+	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
 
-	const scoped_sdl_surface image(image::get_image(game_config::unmoved_energy_image,image::SCALED,image::NO_ADJUST_COLOUR));
+	scoped_sdl_surface image(image::get_image(game_config::unmoved_energy_image,image::SCALED));
+	image.assign(make_neutral_surface(image));
 
 	surface_lock image_lock(image);
-	const short* const begin = image_lock.pixels();
-
-	const Pixel colour = Pixel(SDL_MapRGB(image->format,0xFF,0xFF,0xFF));
+	const Uint32* const begin = image_lock.pixels();
 
 	for(int y = 0; y != image->h; ++y) {
-		const short* const i1 = begin + image->w*y;
-		const short* const i2 = i1 + image->w;
-		if(std::find(i1,i2,colour) != i2) {
+		const Uint32* const i1 = begin + image->w*y;
+		const Uint32* const i2 = i1 + image->w;
+		const Uint32* const itor = std::find_if(i1,i2,is_energy_colour());
+		const int count = std::count_if(itor,i2,is_energy_colour());
+
+		if(itor != i2) {
 			if(first_row == -1)
 				first_row = y;
 
+			first_col = itor - i1;
+			last_col = first_col + count;
 			last_row = y;
 		}
 	}
 
-	energy_bar_count_ = std::pair<int,int>(first_row,last_row+1);
-	return energy_bar_count_;
+	const SDL_Rect res = {first_col,first_row,last_col-first_col,last_row+1-first_row};
+
+	energy_bar_rect_ = res;
+	return energy_bar_rect_;
 }
 
 void display::invalidate(const gamemap::location& loc)

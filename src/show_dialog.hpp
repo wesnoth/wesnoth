@@ -42,7 +42,7 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& dialog_style);
 
-void draw_rectangle(int x, int y, int w, int h, short colour, SDL_Surface* tg);
+void draw_rectangle(int x, int y, int w, int h, Uint16 colour, SDL_Surface* tg);
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,

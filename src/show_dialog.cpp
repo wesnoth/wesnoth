@@ -147,8 +147,7 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 	}
 }
 
-void draw_rectangle(int x, int y, int w, int h, short colour,
-                    SDL_Surface* target)
+void draw_rectangle(int x, int y, int w, int h, Uint16 colour,SDL_Surface* target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
 		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
@@ -156,21 +155,15 @@ void draw_rectangle(int x, int y, int w, int h, short colour,
 		return;
 	}
 
-	surface_lock dstlock(target);
+	SDL_Rect top = {x,y,w,1};
+	SDL_Rect bot = {x,y+h-1,w,1};
+	SDL_Rect left = {x,y,1,h};
+	SDL_Rect right = {x+w-1,y,1,h};
 
-	short* top_left = dstlock.pixels() + target->w*y+x;
-	short* top_right = top_left + w;
-	short* bot_left = top_left + target->w*h;
-	short* bot_right = bot_left + w;
-
-	std::fill(top_left,top_right+1,colour);
-	std::fill(bot_left,bot_right+1,colour);
-	while(top_left != bot_left) {
-		*top_left = colour;
-		*top_right = colour;
-		top_left += target->w;
-		top_right += target->w;
-	}
+	SDL_FillRect(target,&top,colour);
+	SDL_FillRect(target,&bot,colour);
+	SDL_FillRect(target,&left,colour);
+	SDL_FillRect(target,&right,colour);
 }
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
@@ -183,32 +176,8 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 		return;
 	}
 
-	surface_lock dstlock(target);
-
-	const SDL_PixelFormat* const fmt = target->format;
-	short* p = dstlock.pixels() + target->w*y + x;
-	while(h > 0) {
-		short* beg = p;
-		short* const end = p + w;
-		while(beg != end) {
-			const int cur_r = ((*beg&fmt->Rmask) >> fmt->Rshift) << fmt->Rloss;
-			const int cur_g = ((*beg&fmt->Gmask) >> fmt->Gshift) << fmt->Gloss;
-			const int cur_b = ((*beg&fmt->Bmask) >> fmt->Bshift) << fmt->Bloss;
-
-			const int new_r = int(double(cur_r)*(1.0-alpha) + double(r)*alpha);
-			const int new_g = int(double(cur_g)*(1.0-alpha) + double(g)*alpha);
-			const int new_b = int(double(cur_b)*(1.0-alpha) + double(b)*alpha);
-
-			*beg = ((new_r >> fmt->Rloss) << fmt->Rshift) |
-			       ((new_g >> fmt->Gloss) << fmt->Gshift) |
-			       ((new_b >> fmt->Bloss) << fmt->Bshift);
-
-			++beg;
-		}
-
-		p += target->w;
-		--h;
-	}
+	SDL_Rect rect = {x, y, w, h};
+	SDL_FillRect(target,&rect,SDL_MapRGBA(target->format,r,g,b,Uint8(alpha*255.0)));
 }
 
 } //end namespace gui
@@ -736,7 +705,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 
 void fade_logo(display& screen, int xpos, int ypos)
 {
-	const scoped_sdl_surface logo(image::get_image(game_config::game_logo,image::UNSCALED,image::NO_FORMAT_ADJUSTMENT));
+	const scoped_sdl_surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
 		std::cerr << "Could not find game logo\n";
 		return;

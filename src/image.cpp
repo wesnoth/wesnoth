@@ -49,67 +49,14 @@ SDL_Surface* get_tinted(const std::string& filename, TINT tint)
 
 	const image_map::iterator itor = images.find(filename);
 
-	if(itor != images.end())
+	if(itor != images.end()) {
 		return itor->second;
+	}
 
 	scoped_sdl_surface base(image::get_image(filename,image::SCALED));
-	if(base == NULL)
-		return NULL;
-
-	SDL_Surface* const surface =
-		           SDL_CreateRGBSurface(SDL_SWSURFACE,base->w,base->h,
-					                     base->format->BitsPerPixel,
-										 base->format->Rmask,
-										 base->format->Gmask,
-										 base->format->Bmask,
-										 base->format->Amask);
-	SDL_SetColorKey(surface,SDL_SRCCOLORKEY,SDL_MapRGB(surface->format,0,0,0));
+	SDL_Surface* const surface = (tint == GREY_IMAGE ? greyscale_image(base) : brighten_image(base,1.5));
 
 	images.insert(std::pair<std::string,SDL_Surface*>(filename,surface));
-
-	surface_lock srclock(base);
-	surface_lock dstlock(surface);
-	short* begin = srclock.pixels();
-	const short* const end = begin + base->h*(base->w + (base->w%2));
-	short* dest = dstlock.pixels();
-
-	const int rmax = 0xFF;
-	const int gmax = 0xFF;
-	const int bmax = 0xFF;
-
-	while(begin != end) {
-		Uint8 red, green, blue;
-		SDL_GetRGB(*begin,base->format,&red,&green,&blue);
-		int r = int(red), g = int(green), b = int(blue);
-
-		if(tint == GREY_IMAGE) {
-			const double greyscale = (double(r)/(double)rmax +
-					                  double(g)/(double)gmax +
-							          double(b)/(double)bmax)/3.0;
-
-			r = int(rmax*greyscale);
-			g = int(gmax*greyscale);
-			b = int(bmax*greyscale);
-		} else {
-			r = int(double(r)*1.5);
-			g = int(double(g)*1.5);
-			b = int(double(b)*1.5);
-
-			if(r > rmax)
-				r = rmax;
-
-			if(g > gmax)
-				g = gmax;
-
-			if(b > bmax)
-				b = bmax;
-		}
-
-		*dest = SDL_MapRGB(base->format,r,g,b);
-
-		++dest;
-		++begin;
-	}
 
 	return surface;
 }
@@ -184,16 +131,18 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 		const image_map::iterator i = foggedImages_.find(filename);
 		if(i != foggedImages_.end()) {
 			result = i->second;
+			SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 			sdl_add_ref(result);
 			return result;
 		}
 
-		const scoped_sdl_surface surf(get_image(filename,SCALED));
+		scoped_sdl_surface surf(get_image(filename,SCALED));
 		if(surf == NULL)
 			return NULL;
 
 		result = scale_surface(surf,surf->w,surf->h);
-		adjust_surface_colour(result,-50,-50,-50);
+		surf.assign(result);
+		result = adjust_surface_colour(result,-50,-50,-50);
 		foggedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
 	} else {
 
@@ -230,14 +179,10 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 				return NULL;
 			}
 
-			if(adjust_colour != NO_FORMAT_ADJUSTMENT) {
-				if(pixel_format != NULL) {
-					SDL_Surface* const conv = SDL_DisplayFormat(surf);
-					SDL_FreeSurface(surf);
-					surf = conv;
-				}
-
-				SDL_SetColorKey(surf,SDL_SRCCOLORKEY,SDL_MapRGB(surf->format,0,0,0));
+			if(pixel_format != NULL) {
+				SDL_Surface* const conv = SDL_DisplayFormatAlpha(surf);
+				SDL_FreeSurface(surf);
+				surf = conv;
 			}
 
 			i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf)).first;
@@ -257,11 +202,16 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 				return NULL;
 
 			if(adjust_colour == ADJUST_COLOUR) {
-				adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
+				const scoped_sdl_surface scoped_surface(result);
+				result = adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
 			}
 
 			scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
 		}
+	}
+
+	if(result != NULL) {
+		SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
 	}
 
 	sdl_add_ref(result);
@@ -343,7 +293,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 							if(u != units->end()) {
 								const SDL_Color& colour = font::get_side_colour(u->second.side());								
 								SDL_Rect rect = {0,0,surf->w,surf->h};
-								const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
+								const Uint16 col = Uint16(SDL_MapRGB(surf->format,colour.r,colour.g,colour.b));
 								SDL_FillRect(surf,&rect,col);
 							}
 
@@ -351,8 +301,9 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 							//that it gets freed after use
 							scoped_surface.assign(surf);
 						} else if(fogged) {
-							adjust_surface_colour(surf,-50,-50,-50);
-							scoped_surface.assign(surf);
+							scoped_surface.assign(adjust_surface_colour(surf,-50,-50,-50));
+							SDL_FreeSurface(surf);
+							surf = scoped_surface;
 						} else {
 							i = cache.insert(cache_map::value_type(terrain,surf)).first;
 						}
