@@ -390,6 +390,53 @@ bool is_valid_terrain::operator()(int x, int y) const
 	return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
 }
 
+bool expand_island(std::set<gamemap::location>& res, const is_valid_terrain& valid_terrain)
+{
+	std::set<gamemap::location> new_locs;
+	for(std::set<gamemap::location>::const_iterator i = res.begin(); i != res.end(); ++i) {
+		gamemap::location adj[6];
+		get_adjacent_tiles(*i,adj);
+		for(size_t n = 0; n != 6; ++n) {
+			new_locs.insert(adj[n]);
+		}
+	}
+
+	bool result = false;
+	for(std::set<gamemap::location>::const_iterator j = new_locs.begin(); j != new_locs.end(); ++j) {
+		if(valid_terrain(j->x,j->y)) {
+			result = true;
+		} else {
+			res.insert(*j);
+		}
+	}
+
+	return result;
+}
+
+//a function that takes the location of a castle, and builds an 'island' around that castle
+//if it is not on valid terrain. It will return a set of all locations on which valid terrain
+//must be inserted
+std::set<gamemap::location> build_island_for_castle(const is_valid_terrain& valid_terrain,
+                             const gamemap::location& loc, int iterations=20)
+{
+	std::set<gamemap::location> res;
+	if(valid_terrain(loc.x,loc.y)) {
+		return res;
+	}
+
+	res.insert(loc);
+	while(iterations > 0) {
+		const bool should_return = expand_island(res,valid_terrain);
+		if(should_return) {
+			break;
+		}
+
+		--iterations;
+	}
+
+	return res;
+}
+
 //a function that takes the locations of castles, villages, and the map border,
 //and repositions castles to be better located.
 //This function runs the castles through an attraction/repulsion system, where
@@ -619,7 +666,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//convert grassland terrain to other types of flat terrain.
 	//we generate a 'temperature map' which uses the height generation algorithm to
 	//generate the temperature levels all over the map. Then we can use a combination
-	//of height and terrain to divide flatland up into more interesting types than the default
+	//of height and terrain to divide terrain up into more interesting types than the default
 	const height_map temperature_map = generate_height_map(width,height,
 	                                                       atoi(cfg["temperature_iterations"].c_str()),
 														   atoi(cfg["temperature_size"].c_str()),0,0);
@@ -897,6 +944,23 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 		if(placing_bad && ntries < max_tries)
 			continue;
+
+		
+		//make sure castles are on valid terrain
+		for(c = castles.begin(); c != castles.end(); ++c) {
+			const std::set<gamemap::location>& locs = build_island_for_castle(terrain_tester,*c);
+
+			for(std::set<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+				const int x = i->x;
+				const int y = i->y;
+
+				if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
+					continue;
+				}
+
+				terrain[x][y] = flatland[0];
+			}
+		}
 
 		//plonk down the castles.
 		for(c = castles.begin(); c != castles.end(); ++c) {

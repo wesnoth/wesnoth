@@ -27,6 +27,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
+#include "unit.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -1671,19 +1672,19 @@ void turn_info::recall()
 		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
-		for(std::vector<unit>::const_iterator unit = recall_list.begin(); unit != recall_list.end(); ++unit) {
+		for(std::vector<unit>::const_iterator u = recall_list.begin(); u != recall_list.end(); ++u) {
 			std::stringstream option;
-			const std::string& description = unit->description().empty() ? "-" : unit->description();
-			option << "&" << unit->type().image() << "," << unit->type().language_name() << "," << description << ","
+			const std::string& description = u->description().empty() ? "-" : u->description();
+			option << "&" << u->type().image() << "," << u->type().language_name() << "," << description << ","
 			       << string_table["level"] << ": "
-			       << unit->type().level() << ","
+			       << u->type().level() << ","
 			       << string_table["xp"] << ": "
-			       << unit->experience() << "/";
+			       << u->experience() << "/";
 
-			if(unit->type().advances_to().empty())
+			if(u->type().advances_to().empty())
 				option << "-";
 			else
-				option << unit->max_experience();
+				option << u->max_experience();
 			options.push_back(option.str());
 		}
 
