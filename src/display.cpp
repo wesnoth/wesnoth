@@ -1663,7 +1663,9 @@ SDL_Surface* display::getMinimap(int w, int h)
 		SDL_Rect minirect = {0,0,scale,scale};
 		for(int y = 0; y != map_.y(); ++y) {
 			for(int x = 0; x != map_.x(); ++x) {
-				if(map_.on_board(gamemap::location(x,y))) {
+				const bool shrouded = team_valid() &&
+				                      teams_[currentTeam_].shrouded(x,y);
+				if(map_.on_board(gamemap::location(x,y)) && !shrouded) {
 					const gamemap::TERRAIN terrain = map_[x][y];
 					cache_map::iterator i = cache.find(terrain);
 

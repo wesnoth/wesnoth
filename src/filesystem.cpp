@@ -14,7 +14,7 @@
 //from platform to platform, since these functions are NOT ANSI-conforming
 //functions. They may have to be altered to port to new platforms
 #include <sys/types.h>
-#include <dirent.h>
+
 
 //for mkdir
 #include <sys/stat.h>
@@ -29,6 +29,10 @@
 #define mkdir(a,b) (_mkdir(a))
 
 #define mode_t int
+
+#else
+
+#include <dirent.h>
 
 #endif
 
