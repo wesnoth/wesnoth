@@ -33,7 +33,7 @@ private:
 	bool free_;
 };
 
-typedef TCPsocket connection;
+typedef int connection;
 
 //the number of peers we are connected to
 size_t nconnections();
