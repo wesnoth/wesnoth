@@ -130,7 +130,21 @@ namespace {
 
 	config* expand_partialresolution(const config& cfg, const config& topcfg) {
 		// start with a copy of the declared parent
-		config* outcfg = new config(*topcfg.find_child("resolution", "id", cfg["inherits"]));
+		config* outcfg;
+		const config* origcfg = topcfg.find_child("resolution", "id", cfg["inherits"]);
+		if (origcfg == NULL) {
+			origcfg = topcfg.find_child("partialresolution", "id", cfg["inherits"]);
+			if (origcfg == NULL) {
+				throw config::error("[partialresolution] refers to non-existant [resolution] "
+						    + cfg["inherits"]);
+			}
+			// expand parent again - not so big a deal, the only thing really
+			// done again is applying he parent's changes, since we would have
+			// copied anyway.
+			outcfg = expand_partialresolution(*origcfg, topcfg);
+		} else {
+			outcfg = new config(*origcfg);
+		}
 
 		// override attributes
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
