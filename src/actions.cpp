@@ -241,12 +241,18 @@ battle_stats evaluate_battle_stats(
 	}
 
 	res.nattacks = attack.num_attacks();
-	int defend;
+	double best_defend_rating = 0.0;
+	int defend = -1;
 	res.ndefends = 0;
-	for(defend = 0; defend != int(defender_attacks.size()); ++defend) {
-		if(defender_attacks[defend].range() == attack.range() &&
-		   defender_attacks[defend].hexes() >= combat_range)
-			break;
+	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
+		if(defender_attacks[defend_option].range() == attack.range() &&
+			defender_attacks[defend_option].hexes() >= combat_range) {
+			const double rating = a->second.damage_against(defender_attacks[defend_option])*defender_attacks[defend_option].num_attacks();
+			if(defend == -1 || rating > best_defend_rating) {
+				best_defend_rating = rating;
+				defend = defend_option;
+			}
+		}
 	}
 
 	res.defend_with = defend != int(defender_attacks.size()) ? defend : -1;
