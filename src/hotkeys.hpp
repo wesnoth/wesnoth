@@ -31,6 +31,8 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME,
                       HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
                       HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
+					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_PREFERENCES,
+					  HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_QUIT_GAME,
                       HOTKEY_NULL };
 
 struct hotkey_item {
@@ -60,12 +62,13 @@ void change_hotkey(hotkey_item& item);
 void save_hotkeys(config& cfg);
 
 // return list of current hotkeys
-std::vector<hotkey_item>  &get_hotkeys();
+std::vector<hotkey_item>& get_hotkeys();
 
 // Return "name" of hotkey for example :"ctrl+alt+g"
 std::string get_hotkey_name(hotkey_item item);
 
 std::string command_to_string(const HOTKEY_COMMAND &command);
+HOTKEY_COMMAND string_to_command(const std::string& str);
 
 //abstract base class for objects that implement the ability
 //to execute hotkey commands.
@@ -88,14 +91,22 @@ public:
 	virtual void recall() = 0;
 	virtual void recruit() = 0;
 	virtual void repeat_recruit() = 0;
+	virtual void speak() = 0;
+	virtual void create_unit() = 0;
+	virtual void preferences() = 0;
+	virtual void objectives() = 0;
+	virtual void unit_list() = 0;
+
+	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };
 
 //function to be called every time a key event is intercepted. Will
 //call the relevant function in executor if the keyboard event is
 //not NULL. Also handles some events in the function itself, and so
 //is still meaningful to call with executor=NULL
-void key_event(display& disp, const SDL_KeyboardEvent& event,
-               command_executor* executor);
+void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
+
+void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor);
 
 //object which will ensure that basic keyboard events like escape
 //are handled properly for the duration of its lifetime

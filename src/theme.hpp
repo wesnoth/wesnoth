@@ -103,11 +103,35 @@ public:
 		std::string image_;
 	};
 
+	class menu : private object
+	{
+	public:
+		menu();
+		explicit menu(const config& cfg);
+
+		using object::location;
+
+		bool is_context() const;
+
+		const std::string& title() const;
+
+		const std::string& image() const;
+
+		const std::vector<std::string>& items() const;
+	private:
+		bool context_;
+		std::string title_, image_;
+		std::vector<std::string> items_;
+	};
+
 	explicit theme(const config& cfg, const SDL_Rect& screen);
 	bool set_resolution(const SDL_Rect& screen);
 
 	const std::vector<panel>& panels() const;
 	const std::vector<label>& labels() const;
+	const std::vector<menu>& menus() const;
+
+	const menu* context_menu() const;
 
 	const status_item* get_status_item(const std::string& item) const;
 
@@ -118,6 +142,9 @@ private:
 	const config& cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
+	std::vector<menu> menus_;
+
+	menu context_;
 
 	std::map<std::string,status_item> status_;
 

@@ -101,6 +101,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area())
 {
+	create_buttons();
+
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
 	new_turn();
@@ -438,6 +440,7 @@ void display::redraw_everything()
 	tooltips::clear_tooltips();
 
 	theme_.set_resolution(screen_area());
+	create_buttons();
 
 	panelsDrawn_ = false;
 	invalidate_all();
@@ -499,6 +502,10 @@ void display::draw(bool update,bool force)
 		const std::vector<theme::label>& labels = theme_.labels();
 		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
 			draw_label(*this,screen,*i);
+		}
+		
+		for(std::vector<gui::button>::iterator b = buttons_.begin(); b != buttons_.end(); ++b) {
+			b->draw();
 		}
 
 		panelsDrawn_ = true;
@@ -1550,14 +1557,19 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
 
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
+		//draw number in yellow if terrain is light, else draw in black
+		gamemap::TERRAIN terrain = map_.get_terrain(loc);
+		bool tile_is_light = map_.get_terrain_info (terrain).is_light ();;
+		SDL_Color text_colour = tile_is_light ? font::DARK_COLOUR : font::YELLOW_COLOUR;
+
 		const SDL_Rect& rect = map_area();
 		static std::string str(1,'x');
 		str[0] = '0' + route_.move_left + 1;
 		const SDL_Rect& text_area =
-		    font::draw_text(NULL,rect,18,font::BUTTON_COLOUR,str,0,0);
+		    font::draw_text(NULL,rect,18,text_colour,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
 		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
-		font::draw_text(this,rect,18,font::BUTTON_COLOUR,str,x,y);
+		font::draw_text(this,rect,18,text_colour,str,x,y);
 	}
 }
 
@@ -2618,4 +2630,36 @@ size_t display::viewing_team() const
 size_t display::playing_team() const
 {
 	return activeTeam_;
+}
+
+const theme& display::get_theme() const
+{
+	return theme_;
+}
+
+const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pressed)
+{
+
+	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
+		if(i->process(mousex,mousey,button_pressed)) {
+			const size_t index = i - buttons_.begin();
+			assert(index < theme_.menus().size());
+			return &theme_.menus()[index];
+		}
+	}
+
+	return NULL;
+}
+
+void display::create_buttons()
+{
+	buttons_.clear();
+
+	const std::vector<theme::menu>& buttons = theme_.menus();
+	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+		gui::button b(*this,i->title(),gui::button::TYPE_PRESS,i->image());
+		const SDL_Rect& loc = i->location(screen_area());
+		b.set_xy(loc.x,loc.y);
+		buttons_.push_back(b);
+	}
 }

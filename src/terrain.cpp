@@ -45,6 +45,7 @@ terrain_type::terrain_type(const config& cfg)
 	submerge_ = atof(cfg["submerge"].c_str());
 
 	equal_precedence_ = cfg["no_overlay"] == "true";
+	is_light_ = cfg["light"] == "true";
 }
 
 const std::string& terrain_type::image(int x, int y) const
@@ -83,6 +84,11 @@ char terrain_type::type() const
 pixel_data terrain_type::get_rgb() const
 {
 	return colour_;
+}
+
+bool terrain_type::is_light() const
+{
+	return is_light_;
 }
 
 bool terrain_type::is_alias() const

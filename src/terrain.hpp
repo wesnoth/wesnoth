@@ -33,6 +33,7 @@ public:
 
 	pixel_data get_rgb() const;
 
+	bool is_light() const;
 	bool is_alias() const;
 
 	int unit_height_adjust() const;
@@ -59,6 +60,7 @@ private:
 	double submerge_;
 
 	bool equal_precedence_;
+	bool is_light_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

@@ -69,6 +69,8 @@ public:
 
 	undo_list& undos() { return undo_stack_; }
 
+	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+
 private:
 
 	void write_game_snapshot(config& cfg) const;
@@ -89,6 +91,11 @@ private:
 	void recruit();
 	void repeat_recruit();
 	void recall();
+	void speak();
+	void create_unit();
+	void preferences();
+	void objectives();
+	void unit_list();
 
 	void do_recruit(const std::string& name);
 
@@ -97,11 +104,12 @@ private:
 	void mouse_press(const SDL_MouseButtonEvent& event);
 
 	void left_click(const SDL_MouseButtonEvent& event);
-	void show_menu();
+	void show_menu(const std::vector<std::string>& items);
 
 	void show_attack_options(unit_map::const_iterator u);
 
 	unit_map::iterator current_unit();
+	unit_map::const_iterator current_unit() const;
 
 	game_data& gameinfo_;
 	game_state& state_of_game_;

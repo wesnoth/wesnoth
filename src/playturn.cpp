@@ -151,6 +151,11 @@ void turn_info::turn_slice()
 
 	const int scroll_threshold = 5;
 
+	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,mouse_flags&SDL_BUTTON_LMASK);
+	if(m != NULL) {
+		show_menu(m->items());
+	}
+
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0.0,-preferences::scroll_speed());
 
@@ -316,7 +321,13 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
 		} else {
-			show_menu();
+			const theme::menu* const m = gui_.get_theme().context_menu();
+			if(m != NULL) {
+				std::cerr << "found context menu\n";
+				show_menu(m->items());
+			} else {
+				std::cerr << "no context menu found...\n";
+			}
 		}
 	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_PRESSED) {
 		const SDL_Rect& rect = gui_.map_area();
@@ -593,154 +604,94 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
-void turn_info::show_menu()
+bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 {
-	const unit_map::const_iterator un = units_.find(last_hex_);
+	switch(command) {
 
-	static const std::string menu_items[] =
-	                         {"scenario_objectives","recruit",
-                              "recall","unit_list","status_table",
-	                          "save_game","preferences","end_turn",""};
-	static const std::string browse_menu_items[] =
-	                         {"scenario_objectives",
-	                          "status_table","save_game","preferences",
-	                          ""};
+	//commands we can always do
+	case hotkey::HOTKEY_LEADER:
+	case hotkey::HOTKEY_CYCLE_UNITS:
+	case hotkey::HOTKEY_ZOOM_IN:
+	case hotkey::HOTKEY_ZOOM_OUT:
+	case hotkey::HOTKEY_ZOOM_DEFAULT:
+	case hotkey::HOTKEY_FULLSCREEN:
+	case hotkey::HOTKEY_ACCELERATED:
+	case hotkey::HOTKEY_SAVE_GAME:
+	case hotkey::HOTKEY_TOGGLE_GRID:
+	case hotkey::HOTKEY_STATUS_TABLE:
+	case hotkey::HOTKEY_MUTE:
+	case hotkey::HOTKEY_SPEAK:
+	case hotkey::HOTKEY_PREFERENCES:
+	case hotkey::HOTKEY_OBJECTIVES:
+	case hotkey::HOTKEY_UNIT_LIST:
+		return true;
+
+	case hotkey::HOTKEY_REDO:
+		return !browse_ && !redo_stack_.empty();
+	case hotkey::HOTKEY_UNDO:
+		return !browse_ && !undo_stack_.empty();
+
+	//commands we can only do if we are actually playing, not just viewing
+	case hotkey::HOTKEY_END_UNIT_TURN:
+	case hotkey::HOTKEY_RECRUIT:
+	case hotkey::HOTKEY_REPEAT_RECRUIT:
+	case hotkey::HOTKEY_RECALL:
+	case hotkey::HOTKEY_ENDTURN:
+		return !browse_;
+
+	//commands we can only do if there is an active unit
+	case hotkey::HOTKEY_TERRAIN_TABLE:
+	case hotkey::HOTKEY_ATTACK_RESISTANCE:
+    case hotkey::HOTKEY_UNIT_DESCRIPTION:
+	case hotkey::HOTKEY_RENAME_UNIT:
+		return current_unit() != units_.end();
+
+	//commands we can only do if in debug mode
+	case hotkey::HOTKEY_CREATE_UNIT:
+		return game_config::debug;
+
+	default:
+		return false;
+	}
+}
+
+namespace {
+
+	struct cannot_execute {
+		cannot_execute(const turn_info& info) : info_(info) {}
+		bool operator()(const std::string& str) const {
+			return !info_.can_execute_command(hotkey::string_to_command(str));
+		}
+	private:
+		const turn_info& info_;
+	};
+}
+
+void turn_info::show_menu(const std::vector<std::string>& items_arg)
+{
+	std::vector<std::string> items = items_arg;
+	items.erase(std::remove_if(items.begin(),items.end(),cannot_execute(*this)),items.end());
+	if(items.empty())
+		return;
+
+	//if just one item is passed in, that means we should execute that item
+	if(items.size() == 1 && items_arg.size() == 1) {
+		hotkey::execute_command(gui_,hotkey::string_to_command(items.front()),this);
+		return;
+	}
+
 	std::vector<std::string> menu;
-
-	const std::string* items = browse_ ? browse_menu_items : menu_items;
-	for(; items->empty() == false; ++items) {
-		menu.push_back(string_table[*items]);
+	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
+		menu.push_back(translate_string("action_" + *i));
 	}
 
-	static const std::string create_unit_debug = "Create Unit (debug)";
-	if(game_config::debug && map_.on_board(last_hex_)) {
-		menu.push_back(create_unit_debug);
-	}
-
-	const unit_map::iterator leader = find_leader(units_,gui_.viewing_team()+1);
-	if(network::nconnections() > 0 && leader != units_.end()) {
-		menu.push_back(string_table["speak"]);
-	}
-
-	if(un != units_.end()) {
-		menu.push_back(string_table["describe_unit"]);
-
-		//if the unit is on our side, we can rename it
-		if(un->second.side() == gui_.viewing_team()+1)
-			menu.push_back(string_table["rename_unit"]);
-	}
-
-	const int res = gui::show_dialog(gui_,NULL,"",
-	                                 string_table["options"]+":\n",
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["options"]+":\n",
 	                                 gui::MESSAGE,&menu);
+	if(res == -1)
+		return;
 
-	const std::string result = res != -1 ? menu[res] : "";
-
-	if(un != units_.end()) {
-		menu.pop_back();
-	}
-
-	if(result == string_table["speak"]) {
-		std::string message;
-		const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
-			                             string_table["message"] + ":", &message);
-		if(res == 0) {
-			config cfg;
-			cfg["description"] = leader->second.description();
-			cfg["message"] = message;
-			char buf[50];
-			sprintf(buf,"%d",leader->second.side());
-			cfg["side"] = buf;
-
-			recorder.speak(cfg);
-			dialogs::unit_speak(cfg,gui_,units_);
-
-			//speaking is an unretractable operation
-			undo_stack_.clear();
-			redo_stack_.clear();
-		}
-	} else if(result == create_unit_debug) {
-		std::vector<std::string> options;
-		std::vector<unit> unit_choices;
-		for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin();
-		    i != gameinfo_.unit_types.end(); ++i) {
-			options.push_back(i->first);
-			unit_choices.push_back(unit(&i->second,1,false));
-		}
-
-		const int choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
-			                                gui::OK_CANCEL,&options,&unit_choices);
-		if(choice >= 0 && choice < unit_choices.size()) {
-			units_.erase(last_hex_);
-			units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
-			gui_.invalidate(last_hex_);
-			gui_.invalidate_unit();
-		}
-	} else if(result == string_table["describe_unit"]) {
-		unit_description();
-	} else if(result == string_table["rename_unit"]) {
-		rename_unit();
-	} else if(result == string_table["preferences"]) {
-		preferences::show_preferences_dialog(gui_);
-		gui_.redraw_everything();
-	} else if(result == string_table["end_turn"]) {
-		end_turn();
-	} else if(result == string_table["scenario_objectives"]) {
-		dialogs::show_objectives(gui_,*level_);
-	} else if(result == string_table["recall"]) {
-		recall();
-	} else if(result == string_table["recruit"]) {
-		recruit();
-	} else if(result == string_table["status_table"]) {
-		status_table();
-	} else if(result == string_table["unit_list"]) {
-		const std::string heading = string_table["type"] + "," +
-		                            string_table["name"] + "," +
-		                            string_table["hp"] + "," +
-		                            string_table["xp"] + "," +
-		                            string_table["moves"] + "," +
-		                            string_table["location"];
-
-		std::vector<std::string> items;
-		items.push_back(heading);
-
-		std::vector<unit> units_list;
-		for(unit_map::const_iterator i = units_.begin();
-		    i != units_.end(); ++i) {
-			if(i->second.side() != team_num_)
-				continue;
-
-			std::stringstream row;
-			row << i->second.type().language_name() << ","
-				<< i->second.description() << ","
-				<< i->second.hitpoints()
-			    << "/" << i->second.max_hitpoints() << ","
-				<< i->second.experience() << "/";
-
-			if(i->second.type().advances_to().empty())
-				row << "-";
-			else
-				row << i->second.max_experience();
-
-			row << ","
-				<< i->second.movement_left() << "/"
-				<< i->second.total_movement() << ","
-				<< (i->first.x+1) << "-" << (i->first.y+1);
-
-			items.push_back(row.str());
-
-			//extra unit for the first row to make up the heading
-			if(units_list.empty())
-				units_list.push_back(i->second);
-
-			units_list.push_back(i->second);
-		}
-
-		gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
-		                 gui::OK_ONLY,&items,&units_list);
-	} else if(result == string_table["save_game"]) {
-		save_game();
-	}
+	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
+	hotkey::execute_command(gui_,cmd,this);
 }
 
 void turn_info::cycle_units()
@@ -1010,8 +961,9 @@ void turn_info::attack_resistance()
 void turn_info::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
-	if(un == units_.end())
+	if(un == units_.end()) {
 		return;
+	}
 
 	const std::string description = un->second.type().unit_description()
 	                                + "\n\n" + string_table["see_also"];
@@ -1330,9 +1282,124 @@ void turn_info::recall()
 	}
 }
 
+
+void turn_info::speak()
+{
+	const unit_map::const_iterator leader = find_leader(units_,gui_.viewing_team()+1);
+	if(leader == units_.end())
+		return;
+
+	std::string message;
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
+		                             string_table["message"] + ":", &message);
+	if(res == 0) {
+		config cfg;
+		cfg["description"] = leader->second.description();
+		cfg["message"] = message;
+		char buf[50];
+		sprintf(buf,"%d",leader->second.side());
+		cfg["side"] = buf;
+
+		recorder.speak(cfg);
+		dialogs::unit_speak(cfg,gui_,units_);
+
+		//speaking is an unretractable operation
+		undo_stack_.clear();
+		redo_stack_.clear();
+	}
+}
+
+void turn_info::create_unit()
+{
+	std::vector<std::string> options;
+	std::vector<unit> unit_choices;
+	for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin();
+	    i != gameinfo_.unit_types.end(); ++i) {
+		options.push_back(i->first);
+		unit_choices.push_back(unit(&i->second,1,false));
+	}
+
+	const int choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
+		                                gui::OK_CANCEL,&options,&unit_choices);
+	if(choice >= 0 && choice < unit_choices.size()) {
+		units_.erase(last_hex_);
+		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
+		gui_.invalidate(last_hex_);
+		gui_.invalidate_unit();
+	}
+}
+
+void turn_info::preferences()
+{
+	preferences::show_preferences_dialog(gui_);
+	gui_.redraw_everything();
+}
+
+void turn_info::objectives()
+{
+	dialogs::show_objectives(gui_,*level_);
+}
+
+void turn_info::unit_list()
+{
+	const std::string heading = string_table["type"] + "," +
+	                            string_table["name"] + "," +
+	                            string_table["hp"] + "," +
+	                            string_table["xp"] + "," +
+	                            string_table["moves"] + "," +
+	                            string_table["location"];
+
+	std::vector<std::string> items;
+	items.push_back(heading);
+
+	std::vector<unit> units_list;
+	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+		if(i->second.side() != team_num_)
+			continue;
+
+		std::stringstream row;
+		row << i->second.type().language_name() << ","
+			<< i->second.description() << ","
+			<< i->second.hitpoints()
+		    << "/" << i->second.max_hitpoints() << ","
+			<< i->second.experience() << "/";
+
+		if(i->second.type().advances_to().empty())
+			row << "-";
+		else
+			row << i->second.max_experience();
+
+		row << ","
+			<< i->second.movement_left() << "/"
+			<< i->second.total_movement() << ","
+			<< (i->first.x+1) << "-" << (i->first.y+1);
+
+		items.push_back(row.str());
+
+		//extra unit for the first row to make up the heading
+		if(units_list.empty())
+			units_list.push_back(i->second);
+
+		units_list.push_back(i->second);
+	}
+
+	gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
+	                 gui::OK_ONLY,&items,&units_list);
+}
+
 unit_map::iterator turn_info::current_unit()
 {
 	unit_map::iterator i = units_.find(last_hex_);
+	if(i == units_.end()) {
+		i = units_.find(selected_hex_);
+	}
+
+	return i;
+}
+
+unit_map::const_iterator turn_info::current_unit() const
+{
+	unit_map::const_iterator i = units_.find(last_hex_);
 	if(i == units_.end()) {
 		i = units_.find(selected_hex_);
 	}

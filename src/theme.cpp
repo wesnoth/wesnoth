@@ -194,6 +194,23 @@ const std::string& theme::panel::image() const
 	return image_;
 }
 
+theme::menu::menu() : context_(false)
+{}
+
+theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
+                                       title_(translate_string(cfg["title"]) + cfg["title_literal"]),
+									   image_(cfg["image"]),
+									   items_(config::split(cfg["items"]))
+{}
+
+bool theme::menu::is_context() const { return context_; }
+
+const std::string& theme::menu::title() const { return title_; }
+
+const std::string& theme::menu::image() const { return image_; }
+
+const std::vector<std::string>& theme::menu::items() const { return items_; }
+
 theme::theme(const config& cfg, const SDL_Rect& screen) : cfg_(cfg)
 {
 	set_resolution(screen);
@@ -261,6 +278,16 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		labels_.push_back(label(**lb));
 	}
 
+	const config::child_list& menu_list = cfg.get_children("menu");
+	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
+		const menu new_menu(**m);
+		std::cerr << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		if(new_menu.is_context())
+			context_ = new_menu;
+		else
+			menus_.push_back(new_menu);
+	}
+
 	return result;
 }
 
@@ -272,6 +299,16 @@ const std::vector<theme::panel>& theme::panels() const
 const std::vector<theme::label>& theme::labels() const
 {
 	return labels_;
+}
+
+const std::vector<theme::menu>& theme::menus() const
+{
+	return menus_;
+}
+
+const theme::menu* theme::context_menu() const
+{
+	return context_.is_context() ? &context_ : NULL;
 }
 
 const theme::status_item* theme::get_status_item(const std::string& key) const

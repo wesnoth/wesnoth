@@ -15,9 +15,9 @@
 
 #include "SDL.h"
 
-#include "../display.hpp"
-
 #include <vector>
+
+class display;
 
 namespace gui {
 

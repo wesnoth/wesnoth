@@ -34,7 +34,7 @@ const SDL_Color& get_side_colour(int side);
 
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
-                       BUTTON_COLOUR;
+                       DARK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR;
 
 enum MARKUP { USE_MARKUP, NO_MARKUP };
 

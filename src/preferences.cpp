@@ -645,8 +645,7 @@ void show_hotkeys_dialog (display & disp)
 
 	std::vector < hotkey::hotkey_item > hotkeys =
 		hotkey::get_hotkeys ();
-	for (std::vector < hotkey::hotkey_item >::iterator i =
-	     hotkeys.begin (); i != hotkeys.end (); i++)
+	for (std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i)
 	{
 		std::stringstream str,name;
 		name << "action_"<< hotkey::command_to_string(i->action);

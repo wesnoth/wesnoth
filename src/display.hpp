@@ -24,6 +24,7 @@
 #include "theme.hpp"
 #include "unit.hpp"
 #include "video.hpp"
+#include "widgets/button.hpp"
 
 #include "SDL.h"
 
@@ -261,6 +262,10 @@ public:
 	size_t viewing_team() const;
 	size_t playing_team() const;
 
+	const theme& get_theme() const;
+
+	const theme::menu* menu_pressed(int mousex, int mousey, bool button_pressed);
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -381,6 +386,9 @@ private:
 	double sidebarScaling_;
 
 	theme theme_;
+
+	void create_buttons();
+	std::vector<gui::button> buttons_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

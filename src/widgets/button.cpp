@@ -12,6 +12,7 @@
 */
 
 #include "button.hpp"
+#include "../display.hpp"
 #include "../game.hpp"
 #include "../font.hpp"
 #include "../image.hpp"

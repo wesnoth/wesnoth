@@ -57,6 +57,12 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("togglegrid",HOTKEY_TOGGLE_GRID));
 		m.insert(val("statustable",HOTKEY_STATUS_TABLE));
 		m.insert(val("mute",HOTKEY_MUTE));
+		m.insert(val("speak",HOTKEY_SPEAK));
+		m.insert(val("createunit",HOTKEY_CREATE_UNIT));
+		m.insert(val("preferences",HOTKEY_PREFERENCES));
+		m.insert(val("objectives",HOTKEY_OBJECTIVES));
+		m.insert(val("unitlist",HOTKEY_UNIT_LIST));
+		m.insert(val("quit",HOTKEY_QUIT_GAME));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -68,10 +74,12 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 
 std::string command_to_string(const HOTKEY_COMMAND &command)
 {
-	for(std::map<std::string,HOTKEY_COMMAND>::iterator i = m.begin();
-			i!=m.end();i++)
-	if (i!=m.end())
-	   if (i->second == command) return i->first;
+	for(std::map<std::string,HOTKEY_COMMAND>::iterator i = m.begin(); i != m.end(); ++i) {
+		if(i->second == command) {
+			return i->first;
+		}
+	}
+
 	std::cerr << "\n command_to_string: No matching command found...";
 	return "";
 }
@@ -210,11 +218,8 @@ std::string get_hotkey_name(hotkey_item i)
 	return str.str();
 }
 
-void key_event(display& disp, const SDL_KeyboardEvent& event,
-               command_executor* executor)
+void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
-	const double zoom_amount = 5.0;
-
 	if(event.keysym.sym == SDLK_ESCAPE) {
 		const int res = gui::show_dialog(disp,NULL,"",
 		                   string_table["quit_message"],gui::YES_NO);
@@ -225,13 +230,22 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 		}
 	}
 
-	const std::vector<hotkey_item>::iterator i =
-	        std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
+	const std::vector<hotkey_item>::iterator i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
 
 	if(i == hotkeys.end())
 		return;
 
-	switch(i->action) {
+	execute_command(disp,i->action,executor);
+}
+
+void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor)
+{
+	const double zoom_amount = 5.0;
+
+	if(executor != NULL && executor->can_execute_command(command) == false)
+		return;
+
+	switch(command) {
 		case HOTKEY_ZOOM_IN:
 			disp.zoom(zoom_amount);
 			break;
@@ -314,6 +328,35 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 			if(executor)
 				executor->repeat_recruit();
 			break;
+		case HOTKEY_SPEAK:
+			if(executor)
+				executor->speak();
+			break;
+		case HOTKEY_CREATE_UNIT:
+			if(executor)
+				executor->create_unit();
+			break;
+		case HOTKEY_PREFERENCES:
+			if(executor)
+				executor->preferences();
+			break;
+		case HOTKEY_OBJECTIVES:
+			if(executor)
+				executor->objectives();
+			break;
+		case HOTKEY_UNIT_LIST:
+			if(executor)
+				executor->unit_list();
+			break;
+		case HOTKEY_QUIT_GAME: {
+			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
+			if(res == 0) {
+				throw end_level_exception(QUIT);
+			}
+
+			break;
+		}
+
 		default:
 			break;
 	}
