@@ -123,14 +123,18 @@ void hotkey_item::load_from_config(const config& cfg)
 	const std::string& code = cfg["key"];
 	if(code.empty()) {
 		keycode_ = 0;
-	} else if(code.size() >= 2 && tolower(code[0]) == 'f') {
-		const int num = lexical_cast_default<int>(std::string(code.begin()+1,code.end()),1);
-		keycode_ = num + SDLK_F1 - 1;
-		std::cerr << "set key to F" << num << " = " << keycode_ << "\n";
 	} else {
-		keycode_ = code[0];
+		keycode_ = sdl_keysym_from_name(code);
+		if (keycode_ == SDLK_UNKNOWN) {
+			if(code.size() >= 2  && code.size() <= 3 && tolower(code[0]) == 'f') {
+				const int num = lexical_cast_default<int>(std::string(code.begin() + 1, code.end()), 1);
+				keycode_ = num + SDLK_F1 - 1;
+			} else if (code.size() == 1) {
+				keycode_ = code[0];
+			}
+		}
 	}
-	
+
 	alt_ = (cfg["alt"] == "yes");
 	ctrl_ = (cfg["ctrl"] == "yes");
 	shift_ = (cfg["shift"] == "yes");
@@ -218,15 +222,7 @@ void save_hotkeys(config& cfg)
 		config& item = cfg.add_child("hotkey");
 
 		item["command"] = i->get_command();
-
-		if(i->get_keycode() >= SDLK_F1 && i->get_keycode() <= SDLK_F12) {
-			std::string str = "FF";
-			str[1] = '1' + i->get_keycode() - SDLK_F1;
-			item["key"] = str;
-		} else {
-			item["key"] = i->get_keycode();
-		}
-
+		item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 		item["alt"] = i->get_alt() ? "yes" : "no";
 		item["ctrl"] = i->get_ctrl() ? "yes" : "no";
 		item["shift"] = i->get_shift() ? "yes" : "no";

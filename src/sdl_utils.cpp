@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <cmath>
 #include <iostream>
+#include <map>
 
 #include "config.hpp"
 #include "game.hpp"
@@ -25,6 +26,28 @@
 #include "util.hpp"
 #include "video.hpp"
 #include "wassert.hpp"
+
+SDLKey sdl_keysym_from_name(std::string const &keyname)
+{
+	static bool initialized = false;
+	typedef std::map<std::string const, SDLKey> keysym_map_t;
+	static keysym_map_t keysym_map;
+
+	if (!initialized) {
+		for(SDLKey i = SDLK_FIRST; i < SDLK_LAST; i = SDLKey(int(i) + 1)) {
+			std::string name = SDL_GetKeyName(i);
+			if (!name.empty())
+				keysym_map[name] = i;
+		}
+		initialized = true;
+	}
+
+	keysym_map_t::const_iterator it = keysym_map.find(keyname);
+	if (it != keysym_map.end())
+		return it->second;
+	else
+		return SDLK_UNKNOWN;
+}
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
