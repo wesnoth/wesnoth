@@ -316,13 +316,10 @@ void internal_preprocess_data(const std::string& data,
 					nfname.erase(nfname.begin(),nfname.begin()+2);
 					nfname = directory_name(fname) + nfname;
 					
-					std::cerr << "Preprocessing relative path " << newfilename << " preprocessed to " << nfname << "\n";
-
 				} else {
 					nfname = "data/" + newfilename;
 				}
 
-				std::cerr << "Preprocessing subfile " << nfname << "\n";
 				internal_preprocess_file(nfname,
 				                       defines_map, depth+1,res,
 				                       lines_src,line);
