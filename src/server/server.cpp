@@ -198,6 +198,12 @@ void server::run()
 						continue;
 					}
 
+					if(username == "server") {
+						network::send_data(construct_error(
+						                   "The nick 'server' is reserved and can not be used by players"),sock);
+						continue;
+					}
+
 					//check the username isn't already taken
 					player_map::const_iterator p;
 					for(p = players_.begin(); p != players_.end(); ++p) {
