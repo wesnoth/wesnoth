@@ -132,13 +132,13 @@ size_t text_to_lines(std::string& text, size_t max_length);
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
 int show_dialog(display& screen, surface image,
-                const std::string& caption, const std::string& message,
-                DIALOG_TYPE type=MESSAGE,
-                const std::vector<std::string>* menu_items=NULL,
-                const std::vector<preview_pane*>* preview_panes=NULL,
+				const std::string& caption, const std::string& message,
+				DIALOG_TYPE type=MESSAGE,
+				const std::vector<std::string>* menu_items=NULL,
+				const std::vector<preview_pane*>* preview_panes=NULL,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
-                dialog_action* action=NULL,
+				dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
 				std::vector<dialog_button>* buttons=NULL,

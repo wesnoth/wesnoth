@@ -24,7 +24,7 @@ const int vertical_padding = 10;
 
 combo::combo(display& disp, const std::vector<std::string>& items) :
 		items_(items), selected_(0), display_(&disp),
-		button_(gui::button(disp, items[0]))
+		button_(gui::button(disp, items.empty() ? "" : items[0]))
 {
 }
 

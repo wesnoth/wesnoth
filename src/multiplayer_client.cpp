@@ -436,16 +436,27 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 			//if the client is allowed to choose their team, instead of having
 			//it set by the server, do that here.
+			std::string leader;
+
 			if(allow_changes) {
+				std::vector<gui::preview_pane* > preview_panes;
+				leader_preview_pane leader_selector(disp, &units_data, possible_sides);
+				preview_panes.push_back(&leader_selector);
+
 				choice = size_t(gui::show_dialog(disp,NULL,"",
-				     _("Choose your side:"),gui::OK_ONLY,&choices));
+				     _("Choose your side:"),gui::OK_ONLY,&choices,&preview_panes));
+				leader = leader_selector.get_selected_leader();
 			}
 
 			assert(choice < possible_sides.size());
 
 			const config& chosen_side = *possible_sides[choice];
 			team_name = response["name"] = chosen_side["name"];
-			response["type"] = chosen_side["type"];
+			if(leader.empty()) {
+				response["type"] = chosen_side["type"];
+			} else {
+				response["type"] = leader;
+			}
 			response["recruit"] = chosen_side["recruit"];
 			response["music"] = chosen_side["music"];
 
@@ -536,3 +547,234 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		recorder.clear();
 	}
 }
+
+leader_list_manager::leader_list_manager(const config::child_list& side_list,
+		const game_data* data, gui::combo* combo) :
+	combo_(combo), side_list_(side_list), data_(data)
+{
+#if 0
+	for(config::const_child_iterator itor = side_list.begin(); itor != side_list.end(); ++itor) {
+		std::cerr << "Child: " << *itor << "\n";
+		std::cerr << (**itor).write();
+	}
+#endif
+}
+
+void leader_list_manager::set_combo(gui::combo* combo)
+{
+	combo_ = combo;
+
+	if (combo_ != NULL) {
+		update_leader_list(0);
+	}
+}
+
+void leader_list_manager::update_leader_list(int side_index)
+{
+	const config& side = *side_list_[side_index];
+
+	leaders_.clear();
+
+	if(side["type"] == "random") {
+		if(combo_ != NULL) {
+			std::vector<std::string> dummy;
+			dummy.push_back("-");
+			combo_->enable(false);
+			combo_->set_items(dummy);
+			combo_->set_selected(0);
+		}
+		return;
+	} else {
+		if(combo_ != NULL)
+			combo_->enable(true);
+	}
+
+	if(!side["leader"].empty()) {
+		leaders_ = config::split(side["leader"]);
+	}
+	
+	const std::string default_leader = side["type"];
+	int default_index = 0;
+
+	std::vector<std::string>::const_iterator itor;
+
+	for (itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
+		if (*itor == default_leader) {
+			break;
+		}
+		default_index++;
+	}
+
+	if (default_index == leaders_.size()) {
+		leaders_.push_back(default_leader);
+	}
+	
+	std::vector<std::string> leader_strings;
+
+	for(itor = leaders_.begin(); itor != leaders_.end(); ++itor) {
+		
+		const game_data::unit_type_map& utypes = data_->unit_types;
+
+		//const std::string name = data_->unit_types->find(*itor).language_name();
+		if (utypes.find(*itor) != utypes.end()) {
+			const std::string name =  utypes.find(*itor)->second.language_name();
+			const std::string image = utypes.find(*itor)->second.image();
+
+			leader_strings.push_back("&" + image + "," + name);
+		} else {
+			leader_strings.push_back("?");
+		}
+	}
+
+	if(combo_ != NULL) {
+		combo_->set_items(leader_strings);
+		combo_->set_selected(default_index);
+	}
+}
+
+void leader_list_manager::set_leader(const std::string& leader)
+{
+	if(combo_ == NULL)
+		return;
+
+	int leader_index = 0;
+	for(std::vector<std::string>::const_iterator itor = leaders_.begin();
+			itor != leaders_.end(); ++itor) {
+		if (leader == *itor) 
+			combo_->set_selected(leader_index);
+		++leader_index;
+	}
+}
+
+std::string leader_list_manager::get_leader()
+{
+	if(combo_ == NULL)
+		return _("?");
+
+	if(combo_->selected() >= leaders_.size())
+		return _("?");
+
+	return leaders_[combo_->selected()];
+}
+
+namespace {
+	static const SDL_Rect leader_pane_position = {-260,-370,260,370};
+	static const int leader_pane_border = 10;
+}
+
+leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
+		const config::child_list& side_list) :
+	gui::preview_pane(disp),
+	side_list_(side_list), selection_(0),
+	leader_combo_(disp, std::vector<std::string>()), 
+	leaders_(side_list, data, &leader_combo_),
+	data_(data)
+{
+
+	set_location(leader_pane_position);
+}
+
+void leader_preview_pane::process()
+{
+	int mousex, mousey;
+	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+	if(leader_combo_.process(mousex, mousey, left_button)) {
+		set_dirty();
+	}
+}
+
+void leader_preview_pane::draw()
+{
+	if(!dirty())
+		return;
+
+	bg_restore();
+
+	surface const screen = disp().video().getSurface();
+
+	const SDL_Rect area = { location().x+leader_pane_border, location().y+leader_pane_border,
+	                        location().w-leader_pane_border*2, location().h-leader_pane_border*2 };
+	SDL_Rect clip_area = area;
+	const clip_rect_setter clipper(screen,clip_area);
+
+	if(selection_ < side_list_.size()) {
+		const config& side = *side_list_[selection_];
+		std::string faction = side["name"];
+		const std::string recruits = side["recruit"];
+		const std::vector<std::string> recruit_list = config::split(recruits);
+		std::ostringstream recruit_string;
+
+		if(faction[0] == font::IMAGE) {
+			int p = faction.find_first_of(",");
+			if(p != std::string::npos && p < faction.size())
+				faction = faction.substr(p+1);
+		}
+		std::string leader = leaders_.get_leader();
+
+		const game_data::unit_type_map& utypes = data_->unit_types;
+		std::string leader_name;
+		std::string image;
+
+		if (utypes.find(leader) != utypes.end()) {
+			leader_name = utypes.find(leader)->second.language_name();
+			image = utypes.find(leader)->second.image();
+		}
+		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
+				itor != recruit_list.end(); ++itor) {
+
+			if (utypes.find(*itor) != utypes.end()) {
+				if(itor != recruit_list.begin())
+					recruit_string << ", ";
+				recruit_string << utypes.find(*itor)->second.language_name();
+			}
+		}
+
+		SDL_Rect image_rect = {area.x,area.y,0,0};
+
+		surface unit_image(image::get_image(image, image::UNSCALED));
+	
+		if(!unit_image.null()) {
+			image_rect.w = unit_image->w;
+			image_rect.h = unit_image->h;
+			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
+		}
+
+		font::draw_text(&disp(),area,16,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
+		const SDL_Rect leader_rect = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,
+				_("Leader: "),area.x, area.y + 80);
+		font::draw_wrapped_text(&disp(),area,12,font::NORMAL_COLOUR,
+				_("Recruits: ") + recruit_string.str(),area.x, area.y + 102,
+				area.w);
+
+		leader_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
+	}
+
+
+	set_dirty(false);
+}
+
+bool leader_preview_pane::show_above() const
+{
+	return false;
+}
+
+bool leader_preview_pane::left_side() const
+{
+	return false;
+}
+
+void leader_preview_pane::set_selection(int selection)
+{
+	selection_ = selection;
+	leaders_.update_leader_list(selection_);
+	set_dirty();
+	leader_combo_.set_dirty();
+}
+
+std::string leader_preview_pane::get_selected_leader()
+{
+	return leaders_.get_leader();
+}
+

@@ -355,13 +355,13 @@ private:
 }
 
 int show_dialog(display& disp, surface image,
-                const std::string& caption, const std::string& msg,
-                DIALOG_TYPE type,
+				const std::string& caption, const std::string& msg,
+				DIALOG_TYPE type,
 				const std::vector<std::string>* menu_items_ptr,
 				const std::vector<preview_pane*>* preview_panes,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
-                dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
+				dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
 				const std::string* dialog_style, std::vector<dialog_button>* action_buttons,
 				const std::string& help_topic)
 {
@@ -382,7 +382,7 @@ int show_dialog(display& disp, surface image,
 	hotkey::basic_handler help_dispatcher(&disp,&helper);
 
 	const std::vector<std::string>& menu_items =
-	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
+		(menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
 
 	static const int message_font_size = 16;
 	static const int caption_font_size = 18;

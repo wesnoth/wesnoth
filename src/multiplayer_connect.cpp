@@ -221,6 +221,9 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		if(side["name"].empty())
 			side["name"] = (*possible_sides.front())["name"];
 
+		if(side["leader"].empty())
+			side["leader"] = (*possible_sides.front())["leader"];
+
 		if(side["type"].empty() && save_ == false)
 			side["type"] = (*possible_sides.front())["type"];
 
@@ -290,6 +293,8 @@ void mp_connect::lists_init()
 
 		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
 		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
+
+		player_leaders_.push_back(leader_list_manager(possible_sides, data_));
 	}
 
 	std::string prefix;
@@ -392,6 +397,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 	combos_type_.clear();
 	combos_race_.clear();
+	combos_leader_.clear();
 	combos_team_.clear();
 	combos_color_.clear();
 	sliders_gold_.clear();
@@ -403,31 +409,35 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 		//Player number
 		font::draw_text(disp_,rect, 24, font::GOOD_COLOUR,
-		                (*sd)->values["side"], left+10, top+53+(30*side_num));
+		                (*sd)->values["side"], left+10, top+53+(60*side_num));
 
 		//Player type
 		combos_type_.push_back(gui::combo(*disp_, player_types_));
-		combos_type_.back().set_location(left+30,top+55+(30*side_num));
+		combos_type_.back().set_location(left+30,top+55+(60*side_num));
 
 		//Player race
 		combos_race_.push_back(gui::combo(*disp_, player_races_));
-		combos_race_.back().set_location(left+145,top+55+(30*side_num));
+		combos_race_.back().set_location(left+145,top+55+(60*side_num));
+
+		//Player leader
+		combos_leader_.push_back(gui::combo(*disp_, std::vector<std::string>()));
+		combos_leader_.back().set_location(left+145,top+85+(60*side_num));
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_location(left+260,top+55+(30*side_num));
+		combos_team_.back().set_location(left+260,top+55+(60*side_num));
 		combos_team_.back().set_selected(side_num);
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
-		combos_color_.back().set_location(left+375,top+55+(30*side_num));
+		combos_color_.back().set_location(left+375,top+55+(60*side_num));
 		combos_color_.back().set_selected(side_num);
 
 		SDL_Rect r;
 
 		//Player gold
 		r.x = left+490;
-		r.y = top+55+(30*side_num);
+		r.y = top+55+(60*side_num);
 		r.w = launch_.width()-5;
 		r.h = launch_.height();
 		sliders_gold_.push_back(gui::slider(*disp_, r));
@@ -439,6 +449,13 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
 		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
 		                "100", r.x, r.y);
+	}
+
+	//Doing this after creating the combos, because growing vectors may
+	//move their elements in memory, and we need a stable pointer
+	for(sd = sides.first; sd != sides.second; ++sd) {
+		const int side_num = sd - sides.first;
+		player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
 	}
 
 	std::cerr << "done set_area()\n";
@@ -497,9 +514,15 @@ void mp_connect::gui_update()
 		//Player Faction
 		for (size_t m = 0; m != player_races_.size(); ++m) {
 			if (side["name"] == player_races_[m]) {
-				combos_race_[n].set_selected(m);
+				if (combos_race_[n].selected() != m) {
+					combos_race_[n].set_selected(m);
+					player_leaders_[n].update_leader_list(m);
+				}
 			}
 		}
+
+		// Player leader
+		player_leaders_[n].set_leader(side["type"]);
 
 		//Player Team
 		const std::string& team_name = side["team_name"];
@@ -512,7 +535,7 @@ void mp_connect::gui_update()
 		std::string str = side["gold"];
 		sliders_gold_[n].set_value(atoi(str.c_str()));
 		rect.x = rect_.x + 603;
-		rect.y = rect_.y + 55 + (30 * n);
+		rect.y = rect_.y + 55 + (60 * n);
 		rect.w = 30;
 		rect.h = launch_.height();
 		gold_bg_[n].restore();
@@ -612,17 +635,31 @@ lobby::RESULT mp_connect::process()
 			side["colour"] = lexical_cast_default<std::string>(combos_color_[n].selected()+1);
 		}
 
+			
 		//Player race
 		combos_race_[n].enable(!save_);
 		combos_team_[n].enable(!save_);
 		combos_color_[n].enable(!save_);
 		
+		old_select = combos_race_[n].selected();
 		if(combos_race_[n].process(mousex, mousey, left_button)) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 				std::cerr << "value: " << i->first << " , " << i->second<< std::endl;
 				side[i->first] = i->second;
 			}
+			level_changed = true;
+
+			if (combos_race_[n].selected() != old_select) {
+				player_leaders_[n].update_leader_list(combos_race_[n].selected());
+			}
+		}
+
+		//Player leader
+		if(combos_leader_[n].process(mousex, mousey, left_button)) {
+			std::stringstream str;
+			str << (combos_team_[n].selected()+1);
+			side["type"] = player_leaders_[n].get_leader();
 			level_changed = true;
 		}
 
@@ -649,7 +686,7 @@ lobby::RESULT mp_connect::process()
 
 				SDL_Rect rect;
 				rect.x = rect_.x + 603;
-				rect.y = rect_.y + 55 + (30 * n);
+				rect.y = rect_.y + 55 + (60 * n);
 				rect.w = 30;
 				rect.h = launch_.height();
 				gold_bg_[n].restore();

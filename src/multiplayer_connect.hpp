@@ -14,6 +14,7 @@
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
 #include "multiplayer_lobby.hpp"
+#include "multiplayer_client.hpp"
 #include "network.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
@@ -81,8 +82,12 @@ private:
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colors_;
 
+	//std::vector<std::vector<std::string> > player_leaders_;
+	std::vector<leader_list_manager> player_leaders_;
+
 	std::vector<gui::combo> combos_type_;
 	std::vector<gui::combo> combos_race_;
+	std::vector<gui::combo> combos_leader_;
 	std::vector<gui::combo> combos_team_;
 	std::vector<gui::combo> combos_color_;
 	std::vector<gui::slider> sliders_gold_;
