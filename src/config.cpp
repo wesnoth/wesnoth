@@ -561,6 +561,7 @@ void config::read(const std::string& data,
 	std::stack<std::map<std::string,config*> > last_element; //allows [+element] syntax
 	std::stack<std::string> textdomains;
 	std::string current_textdomain = PACKAGE;
+	std::string current_textdomain_location = "";
 	elements.push(this);
 	element_names.push("");
 	element_locs.push(0);
@@ -647,6 +648,7 @@ void config::read(const std::string& data,
 							current_textdomain = textdomains.top();
 							textdomains.pop();
 						}
+						current_textdomain_location = "";
 
 						state = IN_ELEMENT;
 
@@ -750,8 +752,13 @@ void config::read(const std::string& data,
 							textdomains.push(current_textdomain);
 							current_textdomain = value;
 							bindtextdomain(current_textdomain.c_str(),
-								       get_intl_dir().c_str());
+								       current_textdomain_location.empty() ?
+								       get_intl_dir().c_str() :
+								       current_textdomain_location.c_str());
 							bind_textdomain_codeset (current_textdomain.c_str(), "UTF-8");
+						} else if (var == "translations") {
+							const std::string& location = get_binary_file_location(value, ".");
+							current_textdomain_location = location;
 						}
 					}
 
