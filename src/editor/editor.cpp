@@ -129,6 +129,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	palette_.adjust_size();
 	brush_.adjust_size();
 	events::raise_draw_event();
+	redraw_everything();
 }
 
 map_editor::~map_editor() {
