@@ -81,6 +81,12 @@ int main(int argc, char** argv)
 
 	const font::manager font_manager;
 
+	std::vector<std::string> terrain_names;
+	const std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
+	for(std::vector<gamemap::TERRAIN>::const_iterator t = terrains.begin(); t != terrains.end(); ++t) {
+		terrain_names.push_back(map.terrain_name(*t));
+	}
+
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
 		if(key[SDLK_ESCAPE])
