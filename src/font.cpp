@@ -54,10 +54,10 @@ TTF_Font* open_font(const std::string& fname, int size)
 		name = game_config::path + "/fonts/" + fname;
 		LOG_FT << "Trying file '" << name << "' ...\n";
 
-		if(read_file(name).empty()) {
+		if (!file_exists(name)) {
 			name = "fonts/" + fname;
 			WRN_FT << "Failed opening '" << name << "'; now trying '" << name << "' ...\n";
-			if(read_file(name).empty()) {
+			if (!file_exists(name)) {
 				ERR_FT << "Failed opening font: " << fname << "\n";
 				return NULL;
 			}
@@ -66,7 +66,7 @@ TTF_Font* open_font(const std::string& fname, int size)
 		name = "fonts/" + fname;
 		LOG_FT << "Trying file '" << name << "' ...\n";
 
-		if(read_file(name).empty()) {
+		if(!file_exists(name)) {
 			ERR_FT << "Failed opening font '" << fname << "'\n";
 			return NULL;
 		}
@@ -76,11 +76,13 @@ TTF_Font* open_font(const std::string& fname, int size)
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 #else
-	std::string *s = new std::string(read_file("fonts/" + fname));
-	if (s->empty()) {
+	std::string tmp = read_file("fonts/" + fname);
+	if (tmp.empty()) {
 		ERR_FT << "Failed opening font file '" << fname << "'\n";
 		return NULL;
 	}
+	// the following statement would leak memory if fonts were closed
+	std::string *s = new std::string(tmp);
 	SDL_RWops* ops = SDL_RWFromMem((void*)s->c_str(), s->size());
 	TTF_Font* font = TTF_OpenFontRW(ops, 0, size);
 #endif
