@@ -1,160 +1,217 @@
 Version 0.4.8:
-- added lohari's new terrain tiles
-- adjusted the way AI will summon reinforcements to a combat area by making it still move after summoning reinforcements
-- added in new undead unit descriptions by caranha
-- fixed some minor problems with undead units pointed out by caranha
-- changed Wolf Riders, Goblin Knights, Vampire Bats and Blood Bats to deal 'blade' damage instead of 'piercing' damage, as suggested by B0rsuk
-- updated curing/healing. ability 'heals' can heal 8 hitpoints of units, with a maximum of 4 hitpoints per unit. curing does 18/8. White Mage and Druid have 'cure', Shaman and Paladin have 'heal'. Only units with curing can heal poison, however units with heal will stop units losing hitpoints from poison while they are next to them. Shaman now needs more experience to advance.
+ * lots of bugs fixed
+ * translations updated and some new translations
+ * AI improvements - grouping, waiting for reinforcements
+ * new tile graphics for grassland, shallow water, deep water, sand and keep
+ * more unit animations, sounds and descriptions
+ * reduced movement for advanced units, they don't need to be both more powerful and faster than lesser units
+ * horseman is now neutral unit
+ * paladin sword attack is now holy
+ * wolf rider, goblin knight, vampire bat and blood bat attack is now blade
+ * new healing/curing, paladin and shaman have healing, white mage and druid have cure
+ * go-to implemented
+ * ask to save replay at end of scenario
+ * autosave ("crash recovery")
+ * customizable hotkeys, configured in preferences-file
+ * pressing window close button quits the game
+ * scenario objectives are shown at the start of scenario
+ * terrain descriptions now use 'terrain (underlying terrain)' format
+ * when a unit reaches border of screen we center map on unit instead of scrolling
+ * validate saved games with version number
+ * screen resolution can be changed in preferences
+ * allow window to be dynamically resized when running windowed
+ * use video hardware surfaces where possible (Windows seems to have trouble with hardware surfaces so game always uses software surfaces when running on Windows)
+ * code cleanups
+ * added diagnostics
+ * lots of compiler warning eliminated
+ * sourcecode moved to src/
 
 Version 0.4.7:
-- patched the units config files with miyo's patch to clean up the structure
-- made it so the game will dump core if it segfaults
-- fixed crash reported by zas when a unit attacks
-- you can now zoom in and out when the AI is moving
-- added improved keyboard control that allows keys to be set in the locale settings. Keyboard shortcuts (in the English locale) are now,
-
-u: undo
-r: redo
-n: cycle units (including only partially moved units)
-l: goto leader
-z: zoom in
-x: zoom out
-c: default zoom
-control-f: toggle full screen
-control-a: toggle accelerated mode
-control-d: view unit resistance (defense) table
-control-t: view unit terrain table
-
-(some keyboard shortcuts are still not implemented, and there is currently no way to configure keyboard shortcuts in-game)
-
-- added ability to make different game-paths - e.g. the scenario you play could be determined by how you won last scenario. Dialogs can now be popped up which ask the player to make a selection, and the selection they make determines how the game progresses. (But no part of the game actually uses this feature yet).
-- added scenario objectives in scenario 10
-- now when the AI attacks an enemy and doesn't kill it, it will move other nearby units toward the place where the combat took place
-- if an AI sees only combats that result in loss nearby, it will request reinforcements from nearby.
-- made it so that if the macro WESNOTH_PATH is defined, the game will look for its data files at that path. You can thus compile with e.g. -DWESNOTH_PATH=\"/usr/local/games/wesnoth\"
-- added benchmarking of times to perform various operations in the game
-- made leaders start in a 'keep'. (But need a better image for the keep :)
-- added difficulty level settings for scenarios up to scenario 9
-- added (partially done) Italian translation
-- added 'skip turn' option, accessible by pressing space - will end the selected unit's turn, and go to the next unit that has moves left
+ * patched the units config files with miyo's patch to clean up the structure
+ * made it so the game will dump core if it segfaults
+ * fixed crash reported by zas when a unit attacks
+ * you can now zoom in and out when the AI is moving
+ * added improved keyboard control that allows keys to be set in the locale settings. Keyboard shortcuts (in the English locale) changed.
+ * added ability to make different game-paths - e.g. the scenario you play could be determined by how you won last scenario. Dialogs can now be popped up which ask the player to make a selection, and the selection they make determines how the game progresses. (But no part of the game actually uses this feature yet).
+ * added scenario objectives in scenario 10
+ * now when the AI attacks an enemy and doesn't kill it, it will move other nearby units toward the place where the combat took place
+ * if an AI sees only combats that result in loss nearby, it will request reinforcements from nearby.
+ * made it so that if the macro WESNOTH_PATH is defined, the game will look for its data files at that path. You can thus compile with e.g.  -DWESNOTH_PATH=\"/usr/local/games/wesnoth\" -- the Makefile does not currently take advantage of this.
+ * added benchmarking of times to perform various operations in the game
+ * made leaders start in a 'keep'. (But need a better image for the keep
+ * added difficulty level settings for scenarios up to scenario 9
+ * added (partially done) Italian translation
+ * added 'skip turn' option, accessible by pressing space - will end the selected unit's turn, and go to the next unit that has moves left
 
 Version 0.4.6:
-- converted over to using png images instead of bmp
-- fixed up difficulty levels for 'normal' on scenarios 3 and 4 as reported by miyo
-- made it so healing animations and sounds don't play during replays
-- removed name generation code, since it wasn't fast enough
-- added sounds to a number of Elvish units
-- made it so that when the attack-selection dialog is displayed, the attacking unit is displayed in the right side bar, so that one can easily compare the attacking and defending units
-- fixed bug where after a scenario is loaded, on new turn it wouldn't scroll to the leader
-- made the display area for units bigger when recalling, to fit in units like the Druid
-- reduced Mage's hitpoints from 25 -> 18
-- added in plague ability and gave it to walking corpse and wraith. A unit with plague will create a new unit of their own type whenever they kill an enemy unit.
-- tweaked recruitment pattern on scenario 6
-- made marksman and sharpshooter both very bad at close range
-- increased power of Mage of Light's attack
-- made it so you get a gold bonus when you complete scenario 9
-- fixed scenario 7 to say 'survive for 2 days'
-- changed Swordman -> Swordsman and Beserker -> Berserker
-- made some speed changes which will hopefully help for people who are finding it slow on startup and after selecting difficulty levels
-- fixed display problem where background of menus that had scroll arrows looked displaced
-- corrected facing of dwarvern units
-- added transition hexes at the edge of the scenario to make the edges of the map look nicer
-- added a 'show grid' option
+ * converted over to using png images instead of bmp
+ * fixed up difficulty levels for 'normal' on scenarios 3 and 4 as reported by miyo
+ * made it so healing animations and sounds don't play during replays
+ * removed name generation code, since it wasn't fast enough
+ * added sounds to a number of Elvish units
+ * made it so that when the attack-selection dialog is displayed, the attacking unit is displayed in the right side bar, so that one can easily compare the attacking and defending units
+ * fixed bug where after a scenario is loaded, on new turn it wouldn't scroll to the leader
+ * made the display area for units bigger when recalling, to fit in units like the Druid
+ * reduced Mage's hitpoints from 25 -> 18
+ * added in plague ability and gave it to walking corpse and wraith. A unit with plague will create a new unit of their own type whenever they kill an enemy unit.
+ * tweaked recruitment pattern on scenario 6
+ * made marksman and sharpshooter both very bad at close range
+ * increased power of Mage of Light's attack
+ * made it so you get a gold bonus when you complete scenario 9
+ * fixed scenario 7 to say 'survive for 2 days'
+ * changed Swordman -> Swordsman and Beserker -> Berserker
+ * made some speed changes which will hopefully help for people who are finding it slow on startup and after selecting difficulty levels
+ * fixed display problem where background of menus that had scroll arrows looked displaced
+ * corrected facing of dwarvern units
+ * added transition hexes at the edge of the scenario to make the edges of the map look nicer
+ * added a 'show grid' option
 
 Version 0.4.5:
-- added mine image for scenario 11 provided by fmunoz
-- added some missing headers to source files, problem pointed out by zas
-- made the animation for healing take a little longer
-- added new shortcut: control-F alternates between full screen and windowed mode
-- added buttons 'next' and 'skip' to introduction sequence
-- added two new images from fmunoz to introduction sequence
-- added new preferences dialog, which contains volume controls for music and sound effects
-- got rid of flicker on title screen when you cancel selection of a dialog box
-- fixed a number of drawing bugs which caused strange lines to appear across the screen sometimes, and caused the game to display badly when zoomed out alot. Zooming out should now work perfectly
+ * added mine image for scenario 11 provided by fmunoz
+ * added some missing headers to source files, problem pointed out by zas
+ * made the animation for healing take a little longer
+ * added new shortcut, control-F alternates between full screen and windowed mode
+ * added buttons 'next' and 'skip' to introduction sequence
+ * added two new images from fmunoz to introduction sequence
+ * added new preferences dialog, which contains volume controls for music and sound effects
+ * got rid of flicker on title screen when you cancel selection of a dialog box
+ * fixed a number of drawing bugs which caused strange lines to appear across the screen sometimes, and caused the game to display badly when zoomed out alot. Zooming out should now work perfectly
+ * marksman (trait) to hit chance reduced to 60 %
+ * night vision (trait) added to Elvish Ranger and Elvish Avenger
 
 Version 0.4.4:
-- fixed assertion failure if you try to start a campaign and then cancel on the difficulty level settings
-- added 'merge_translations' tool which will merge an old version of a foreign language translation to the current English translation, making a new translation that has foreign language strings where they are available, and English strings otherwise
-- fixed crash if you opened a menu that had some empty strings in it (for instance clicking preferences in the French version)
-- changed recruitment so that now a leader can only recruit if they are on a starting location. They can recruit units on any vacant castle tile connected to the starting location they are on. The player can choose a location to recruit onto by selecting it when accessing the recruit menu. TODO: Need a graphic to distinguish the starting hex from other castle hexes
-- changed maximum items displayed in a menu before up/down buttons appear from 10 to 18
-- fixed bug in scenario 8 where objectives would not be displayed
-- fixed bug in scenario 9 where major characters could die without loss
-- changed it so that when writing a configuration file, [/element-name] will be used to end an element instead of [end]
-- fixed corrupted save file bug reported by miyo
-- made the White Mages that join you in level 7 leave you at the end of the level, as they are meant to.
-- changed advancement animation colour to black for chaotic units
-- made it so that when an AI-controlled unit moves, its details are displayed on the sidebar, as suggested by miyo
-- implemented algorithm so that if an AI is moving and the map has to be scrolled, frames will be skipped if necessary to make the AI moving at a decent speed
-- added Danish translation
-- added improved French translation
-- made it so that if you mouse-over a unit, it will be displayed in the unit details on the sidebar
-- changed healing so that a healer can only heal up to 12 hitpoints per turn. Added animations and sound effects to healing.
-- added in AI type 'guardian', which is a unit that will stay in position until enemies come in range at which point it attacks. Now in scenario 3 there is a cage with many mermen in it that has 2 naga guardians around it.
-- added scenario 10 provided by Shroud and scenario 11 provided by fmunoz
+ * fixed assertion failure if you try to start a campaign and then cancel on the difficulty level settings
+ * added 'merge_translations' tool which will merge an old version of a foreign language translation to the current English translation, making a new translation that has foreign language strings where they are available, and English strings otherwise
+ * fixed crash if you opened a menu that had some empty strings in it (for instance clicking preferences in the French version)
+ * changed recruitment so that now a leader can only recruit if they are on a starting location. They can recruit units on any vacant castle tile connected to the starting location they are on. The player can choose a location to recruit onto by selecting it when accessing the recruit menu. TODO - Need a graphic to distinguish the starting hex from other castle hexes
+ * changed maximum items displayed in a menu before up/down buttons appear from 10 to 18
+ * fixed bug in scenario 8 where objectives would not be displayed
+ * fixed bug in scenario 9 where major characters could die without loss
+ * changed it so that when writing a configuration file, [/element-name] will be used to end an element instead of [end]
+ * fixed corrupted save file bug reported by miyo
+ * made the White Mages that join you in level 7 leave you at the end of the level, as they are meant to.
+ * changed advancement animation colour to black for chaotic units
+ * made it so that when an AI-controlled unit moves, its details are displayed on the sidebar, as suggested by miyo
+ * implemented algorithm so that if an AI is moving and the map has to be scrolled, frames will be skipped if necessary to make the AI moving at a decent speed
+ * added Danish translation
+ * added improved French translation
+ * made it so that if you mouse-over a unit, it will be displayed in the unit details on the sidebar
+ * changed healing so that a healer can only heal up to 12 hitpoints per turn.  Added animations and sound effects to healing.
+ * added in AI type 'guardian', which is a unit that will stay in position until enemies come in range at which point it attacks. Now in scenario 3 there is a cage with many mermen in it that has 2 naga guardians around it.
+ * added scenario 10 provided by Shroud and scenario 11 provided by fmunoz
+ * added in test version of a naming algorithm that will automatically name created units that was submitted as a patch by a wesnoth user.
 
 Version 0.4.3:
-- made it so that when a directory is scanned for files, only files ending in .cfg will be used. This is mainly to stop vim swap files from being used
-- changed AI's movement routines to make it slightly more intelligent
-- added in difficulty levels - easy, medium, and hard
-- scenarios 1 and 2 now have easy/medium/hard difficulty levels implemented for them
-- when an enemy dies, its energy bar now fades out with it
-- added 'turbo' mode in preferences area. In turbo mode, the operation of the shift key is inverted. Turbo mode and full screen mode settings are now saved to the preferences file.
-- made the time of day go dawn - day - day - dusk - night - night as suggested by miyo
-- fixed up bugs in the AI's pathfinding, the AI should now be substantially smarter
-- allowed setting of custom target units for the AI
-- added debug mode with -debug option
+ * made it so that when a directory is scanned for files, only files ending in .cfg will be used. This is mainly to stop vim swap files from being used
+ * changed AI's movement routines to make it slightly more intelligent
+ * added in difficulty levels - easy, medium, and hard
+ * scenarios 1 and 2 now have easy/medium/hard difficulty levels implemented for them
+ * when an enemy dies, its energy bar now fades out with it
+ * added 'turbo' mode in preferences area. In turbo mode, the operation of the shift key is inverted. Turbo mode and full screen mode settings are now saved to the preferences file.
+ * made the time of day go dawn - day - day - dusk - night - night as suggested by miyo
+ * fixed up bugs in the AI's pathfinding, the AI should now be substantially smarter
+ * allowed setting of custom target units for the AI
 
 Version 0.4.2:
-- the recall facility is now sorted and in a table
-- If you hold shift, the game won't scroll at all, it'll jump between locations
-- Added attack animations for necromancer and mage
-- Added in Lohari's images with corrected shadows
-- Added in Lohari's crossed daggers for battles, instead of the cross
-- Added in Paladin's patch to highlight the hex of the unit that is currently selected
-- Used new Makefile provided by zas
-- Added setting of window title as suggested by zas
-- Changed so that holding shift skips fading in recruiting units
-- Increased cost of Naga from 8 -> 11 gold to make scenario 3 easier
-- Fixed bug with recalling in mid-level saved games - should save alot of game corruption issues
-- Made it so attack sounds do not play while loading game
-- Added animations for Goblin Knight, Wolf Rider, and Troll Whelp
-- Made it so Glordorf in Scenario 2 doesn't join the player
-- Added in new missile images done by fmunoz
-- Fixed bug where merman's storm trident would run out when the merman advances, or at the end of the level
-- Page up and page down can be used to maneuver through menus
-- Fixed bug reported by Jaramir, where exiting a multiplayer game would cause the save state to be remembered
-- Fixed bug reported by Jaramir, where recruiting or recalling a unit wouldn't update your gold immediately
-- Added better guarantees that when an AI attacks a unit, the unit being attacked won't be mostly off the screen
-- Changed Necromancer to level 2
-- Fixed bug where quitting the game by pressing escape during opening dialog sequence would cause the game to crash
-- Added facility suggested by miyo where an entire directory can be scanned to look for configuration files. Re-arranged files in data/ to utilize this.
-- Changed configuration files to allow [/tagname] to end a tag instead of [end]. Added better error handling for bad configuration files
-- Added utility make_translation which when run, will construct a sample translation with all the strings that can be translated in it
-- Removed Outrider's spear/charge attack and replaced it with a sword
-- Saved games are now stored in a .wesnoth/saves directory which is located under $HOME (or under the directory the program is run from is $HOME is not defined). There is now a user preferences file in .wesnoth/preferences
-- Added facility to change languages in-game. The language used by default will be obtained from the $LANG environment variable
+ * if you hold shift, the game won't scroll at all, it'll jump between locations
+ * added attack animations for necromancer and mage
+ * added in Lohari's images with corrected shadows
+ * added in Lohari's crossed daggers for battles, instead of the cross
+ * added in Paladin's patch to highlight the hex of the unit that is currently selected
+ * used new Makefile provided by zas
+ * added setting of window title as suggested by zas
+ * changed so that holding shift skips fading in recruiting units
+ * increased cost of Naga from 8 -> 11 gold to make scenario 3 easier
+ * fixed bug with recalling in mid-level saved games - should save alot of game corruption issues
+ * made it so attack sounds do not play while loading game
+ * added animations for Goblin Knight, Wolf Rider, and Troll Whelp
+ * made it so Glordorf in Scenario 2 doesn't join the player
+ * added in new missile images done by fmunoz
+ * fixed bug where merman's storm trident would run out when the merman advances, or at the end of the level
+ * page up and page down can be used to maneuver through menus
+ * fixed bug reported by Jaramir, where exiting a multiplayer game would cause the save state to be remembered
+ * fixed bug reported by Jaramir, where recruiting or recalling a unit wouldn't update your gold immediately
+ * added better guarantees that when an AI attacks a unit, the unit being attacked won't be mostly off the screen
+ * changed Necromancer to level 2
+ * fixed bug where quitting the game by pressing escape during opening dialog sequence would cause the game to crash
+ * added facility suggested by miyo where an entire directory can be scanned to look for configuration files. Re-arranged files in data/ to utilize this.
+ * changed configuration files to allow [/tagname] to end a tag instead of [end]. Added better error handling for bad configuration files
+ * added utility make_translation which when run, will construct a sample translation with all the strings that can be translated in it
+ * removed Outrider's spear/charge attack and replaced it with a sword
+ * added sorting to recall list
 
 Version 0.4.1:
-- added music and sound support. The game has one song, provided by ZhayTee. Added some sample sounds for Elvish Fighter attacking.
-- fixed up bug where if you loaded a mid-level game, and then saved at the end of level, the save would be corrupt
-- fixed bug where the display mode would always be displayed as 'windowed'
-- make the game report an error message if switching between windowed/full screen fails
-- make the game handle switches between windowed and full screen even if exact colour depth can't be matched
-- arrow keys can now be used to maneuver menus, and enter can be used for 'ok and yes' in dialogs
-- fixed bug that caused a crash at the end of the tutorial
-- fixed bug where moving a unit along the border edges would go very slowly
+ * added music and sound support. The game has one song, provided by ZhayTee+.  Added some sample sounds for Elvish Fighter attacking.
+ * fixed up bug where if you loaded a mid-level game, and then saved at the end of level, the save would be corrupt
+ * fixed bug where the display mode would always be displayed as 'windowed'
+ * make the game report an error message if switching between windowed/full screen fails
+ * make the game handle switches between windowed and full screen even if exact colour depth can't be matched
+ * arrow keys can now be used to maneuver menus, and enter can be used for 'ok and yes' in dialogs
+ * fixed bug that caused a crash at the end of the tutorial
+ * fixed bug where moving a unit along the border edges would go very slowly
 
 Version 0.4:
-- fixed missiles up to point in the correct direction
-- fixed naming of Shallow Water and Deep Water (used to be 'ocean' and 'coast' and not internationalized properly)
-- removed bug where a dialog could overwrite part of the sidebar on the right
-- added resistance tables and terrain movement and defense tables to 'unit description'
-- added unit descriptions to many more units
-- changed rectangle on the map of Wesnoth to cross as suggested by ettin
-- completed scenario 9 
-- added gryphon rider unit and put them in scenario 9
-- now you have to 'kill' Li'sar in scenario 6 before she'll surrender
-- Wraith's damage taken up from 7 to 8.
-- when a unit is recruited, it now fades in
-- added more cleaning in Makefile as per miyo's suggestions
+ * fixed a bug with unit description images being messed up if you zoom in
+ * fixed time to load a game
+ * fixed missiles up to point in the correct direction
+ * fixed naming of Shallow Water and Deep Water (used to be 'ocean' and 'coast' and not internationalized properly)
+ * removed bug where a dialog could overwrite part of the sidebar on the right
+ * now you have to 'kill' Li'sar in scenario 6 before she'll surrender
+ * added more cleaning in Makefile
+ * use new dynamically generated buttons based
+ * use anti-aliased fonts
+ * addition of a multi-player mode that allows hot seat multiplayer games to be played
+ * added button 'n' which takes you to the 'next' unmoved unit. You can cycle through all your unmoved units by pressing 'n' repeatedly
+ * added 'preferences' item in options menu. The one preference at the moment is to be able to toggle between windowed and full-screen from within the game
+ * changed rectangle on the map of Wesnoth to cross
+ * completed scenario 9
+ * added gryphon rider unit and put them in scenario 9
+ * added resistance tables and terrain movement and defense tables to 'unit description'
+ * added unit descriptions to many more units
+ * when a unit is recruited, it now fades in
+ * AI leaders will now attack you if you move next to them
+ * the ai now targets units that are close to advancing more, and tries to protect and advance its own units better
+ * mage's attack changed to 8-2
+ * human fencer unit added
+ * wraith's damage taken up from 7 to 8
+ * changed movement of red mage, arch mage, and great mage from 7 to 6. With teleporting, 7 movement is too powerful. May even reduce to 5 later.
+
+Version 0.3.4:
+ * fixed display bug which kept the game from working on many machines
+ * added Elvish Shaman and Druid units
+ * added transperancy for some units
+ * added undo and redo using the 'u' and 'r' keys
+ * tweaked the 'valley of death' scenario
+ * changed some unit values
+
+Version 0.3.3:
+ * fixed problem in scenario 2
+ * implemented facing of units
+
+Version 0.3.2:
+ * incorrect references to images fixed
+ * basic support for animated combats added
+ * size of the energy bar scaled to the hitpoints a unit has
+
+Version 0.3.1:
+ * basic items support added
+ * support for units to have different 'traits' added
+ * combat is now animated
+ * some redraw problems fixed
+ * better interface design
+
+Version 0.3:
+ * many game rules changed/tweaked.
+ * speed improved
+ * AI improved. (Although the AI sometimes does go a little slowly now)
+ * new scenarios added
+ * new unit types added.
+ * lots of tweaking, fixing of minor things
+
+Version 0.2.1:
+ * many redraw bugs fixed
+ * new scenarios added
+ * many new graphics added that were contributed by Paco
+ * infinite recall bug fixed
+ * recalling now costs 20 gold pieces. Gold from previous scenarios carries over, and there is a bonus for finishing a scenario early
+ * better transitions between tiles added (graphics for this not complete though) 
