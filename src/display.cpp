@@ -727,7 +727,6 @@ void display::draw_report(reports::TYPE report_num)
 
 		//report and its location is unchanged since last time. Do nothing.
 		if(rect == new_rect && reports_[report_num] == report) {
-			std::cerr << "report unchanged: '" << report.text << "'\n";
 			return;
 		}
 
@@ -775,7 +774,6 @@ void display::draw_report(reports::TYPE report_num)
 
 			str += report.text.substr(nchop) + item->postfix();
 
-			std::cerr << "draw report text '" << str << "' at " << rect.x << "," << rect.y << "\n";
 			area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
 		}
 
@@ -1720,45 +1718,11 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 	if(srcw <= 0 || srch <= 0 || srcx >= surface->w || srcy >= surface->h)
 		return;
-/*    //look at why SDL_BlitSurface doesn't always handle transperancy for us.
+
 	SDL_Rect src_rect = {srcx, srcy, srcw, srch};
 	SDL_Rect dst_rect = {x, y, srcw, srch};
 
 	SDL_BlitSurface(surface,&src_rect,target,&dst_rect);
-	return;
-*/
-	if(x < 0)
-		x = 0;
-
-	if(y < 0)
-		y = 0;
-
-	//lines are padded to always fit on 4-byte boundaries, so see if there
-	//is padding at the beginning of every line
-	const int padding = is_odd(surface->w);
-	const int surface_width = surface->w + padding;
-
-	surface_lock srclock(surface);
-	surface_lock dstlock(target);
-
-	const short* src = srclock.pixels() + srcy*surface_width + srcx;
-	short* dst = dstlock.pixels() + y*target->w + x;
-
-	static const short transperant = 0;
-
-	for(int i = 0; i != srch; ++i) {
-		const short* s = src + i*surface_width + padding;
-		const short* const end = s + srcw;
-		short* d = dst + i*target->w;
-		while(s != end) {
-			if(*s != transperant) {
-				*d = *s;
-			}
-
-			++s;
-			++d;
-		}
-	}
 }
 
 SDL_Surface* display::getMinimap(int w, int h)

@@ -306,9 +306,10 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 		SDL_Rect minirect = {0,0,scale,scale};
 		for(int y = 0; y != map.y(); ++y) {
 			for(int x = 0; x != map.x(); ++x) {
-				const bool shrouded = tm != NULL && tm->shrouded(x,y);
-				if(map.on_board(gamemap::location(x,y)) && !shrouded) {
-					const gamemap::TERRAIN terrain = map[x][y];
+				
+				if(map.on_board(gamemap::location(x,y))) {
+					const bool shrouded = tm != NULL && tm->shrouded(x,y);
+					const gamemap::TERRAIN terrain = shrouded ? gamemap::VOID_TERRAIN : map[x][y];
 					cache_map::iterator i = cache.find(terrain);
 
 					if(i == cache.end()) {

@@ -599,15 +599,17 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 
 
 void get_tower(const gamemap::location& loc, std::vector<team>& teams,
-               int team_num)
+               size_t team_num, const unit_map& units)
 {
 	for(size_t i = 0; i != teams.size(); ++i) {
-		if(int(i) != team_num && teams[i].owns_tower(loc)) {
+		if(i != team_num && teams[i].owns_tower(loc)) {
 			teams[i].lose_tower(loc);
 		}
 	}
 
-	if(size_t(team_num) < teams.size())
+	//if the side doesn't have a leader, captured villages become neutral
+	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
+	if(has_leader && team_num < teams.size())
 		teams[team_num].get_tower(loc);
 }
 
@@ -623,8 +625,71 @@ std::map<gamemap::location,unit>::iterator
 	return units.end();
 }
 
+std::map<gamemap::location,unit>::const_iterator
+   find_leader(const std::map<gamemap::location,unit>& units, int side)
+{
+	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
+	    i != units.end(); ++i) {
+		if(i->second.side() == side && i->second.can_recruit())
+			return i;
+	}
+
+	return units.end();
+}
+
+namespace {
+
+//function which returns true iff the unit at 'loc' will heal a unit from side 'side'
+//on this turn.
+//
+//units heal other units if they are (1) on the same side as them; or (2) are on a
+//different but allied side, and there are no 'higher priority' sides also adjacent
+//to the healer
+bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& teams,
+			   const unit_map& units)
+{
+	const unit_map::const_iterator healer_it = units.find(loc);
+	if(healer_it == units.end() || healer_it->second.type().heals() == false)
+		return false;
+
+	const unit& healer = healer_it->second;
+	if(healer.side() == side)
+		return true;
+
+	if(size_t(side-1) >= teams.size() || size_t(healer.side()-1) >= teams.size())
+		return false;
+
+	//if the healer is an enemy, it won't heal
+	if(teams[healer.side()-1].is_enemy(side))
+		return false;
+
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc,adjacent);
+	for(int n = 0; n != 6; ++n) {
+		const unit_map::const_iterator u = units.find(adjacent[n]);
+		if(u != units.end() && u->second.hitpoints() < u->second.max_hitpoints()) {
+			const int unit_side = u->second.side();
+
+			//the healer won't heal an ally if there is a wounded unit on the same
+			//side next to her
+			if(unit_side == healer.side())
+				return false;
+
+			//choose an arbitrary order for healing
+			if(unit_side > side)
+				return false;
+		}
+	}
+
+	//there's no-one of higher priority nearby, so the ally will heal
+	return true;
+}
+
+}
+
 void calculate_healing(display& disp, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, int side)
+                       std::map<gamemap::location,unit>& units, int side,
+					   const std::vector<team>& teams)
 {
 	std::map<gamemap::location,int> healed_units, max_healing;
 
@@ -647,17 +712,14 @@ void calculate_healing(display& disp, const gamemap& map,
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(i->first,adjacent);
 			for(int j = 0; j != 6; ++j) {
-				std::map<gamemap::location,unit>::const_iterator healer =
-				                                      units.find(adjacent[j]);
-				if(healer != units.end() && healer->second.side() == side) {
-					max_heal = maximum(max_heal,
-					                 healer->second.type().max_unit_healing());
+				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
+					const unit_map::const_iterator healer = units.find(adjacent[j]);
+					max_heal = maximum(max_heal,healer->second.type().max_unit_healing());
 				}
 			}
 
 			if(max_heal > 0) {
-				max_healing.insert(std::pair<gamemap::location,int>(i->first,
-				                                                    max_heal));
+				max_healing.insert(std::pair<gamemap::location,int>(i->first,max_heal));
 			}
 		}
 	}
@@ -665,7 +727,7 @@ void calculate_healing(display& disp, const gamemap& map,
 	//now see about units that can heal other units
 	for(i = units.begin(); i != units.end(); ++i) {
 
-		if(i->second.side() == side && i->second.type().heals()) {
+		if(will_heal(i->first,side,teams,units)) {
 			gamemap::location adjacent[6];
 			bool gets_healed[6];
 			get_adjacent_tiles(i->first,adjacent);
@@ -677,7 +739,7 @@ void calculate_healing(display& disp, const gamemap& map,
 				                                   units.find(adjacent[j]);
 				if(adj != units.end() &&
 				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
-				   adj->second.side() == i->second.side() &&
+				   adj->second.side() == side &&
 				   healed_units[adj->first] < max_healing[adj->first]) {
 					++nhealed;
 					gets_healed[j] = true;
@@ -715,8 +777,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			                                i->second.hitpoints()-1);
 
 			if(damage > 0) {
-				healed_units.insert(std::pair<gamemap::location,int>(
-				                               i->first,-damage));
+				healed_units.insert(std::pair<gamemap::location,int>(i->first,-damage));
 			}
 		}
 	}
@@ -836,13 +897,20 @@ void advance_unit(const game_data& info,
 }
 
 void check_victory(std::map<gamemap::location,unit>& units,
-                   const std::vector<team>& teams)
+                   std::vector<team>& teams)
 {
 	std::vector<int> seen_leaders;
 	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
 		if(i->second.can_recruit())
 			seen_leaders.push_back(i->second.side());
+	}
+
+	//clear villages for teams that have no leader
+	for(std::vector<team>::iterator tm = teams.begin(); tm != teams.end(); ++tm) {
+		if(std::find(seen_leaders.begin(),seen_leaders.end(),tm-teams.begin() + 1) == seen_leaders.end()) {
+			tm->clear_towers();
+		}
 	}
 
 	bool found_enemies = false;
@@ -1116,7 +1184,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 		orig_tower_owner = tower_owner(steps.back(),teams);
 
 		if(orig_tower_owner != team_num) {
-			get_tower(steps.back(),teams,team_num);
+			get_tower(steps.back(),teams,team_num,units);
 			u.set_movement(0);
 		}
 	}

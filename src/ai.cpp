@@ -148,7 +148,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 	current_unit.set_movement(0);
 	units.insert(std::pair<location,unit>(to,current_unit));
 	if(map.underlying_terrain(map[to.x][to.y]) == gamemap::TOWER)
-		get_tower(to,teams,team_num-1);
+		get_tower(to,teams,team_num-1,units);
 
 	disp.draw_tile(to.x,to.y);
 	disp.draw();
@@ -161,7 +161,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 }
 
 void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
-             std::map<gamemap::location,unit>& units,
+             unit_map& units,
              std::vector<team>& teams, int team_num, const gamestatus& state,
              bool consider_combat, std::vector<target>* additional_targets)
 {
@@ -248,26 +248,12 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 	}
 
+	const unit_map::iterator leader = find_leader(units,team_num);
+
 	//no moves left, recruitment phase
 	//take stock of our current set of units
 	if(srcdst.empty()) {
 		std::cout << "recruitment......\n";
-		location leader;
-		int num_units = 0;
-		std::map<std::string,int> unit_types;
-		for(std::map<location,unit>::const_iterator i = units.begin();
-		    i != units.end(); ++i) {
-			if(i->second.side() != team_num)
-				continue;
-
-			if(i->second.can_recruit()) {
-				leader = i->first;
-				continue;
-			}
-
-			unit_types[i->second.type().usage()]++;
-			++num_units;
-		}
 
 		//currently just spend all the gold we can!
 		const int min_gold = 0;
@@ -284,8 +270,9 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		int scouts_wanted = current_team.villages_per_scout() > 0 ?
 		                neutral_towers/current_team.villages_per_scout() : 0;
 
+		std::map<std::string,int> unit_types;
 		while(unit_types["scout"] < scouts_wanted) {
-			if(recruit(map,leader,"scout",gameinfo,team_num,current_team,
+			if(recruit(map,leader->first,"scout",gameinfo,team_num,current_team,
 			           min_gold,units,disp) == false)
 				break;
 
@@ -301,7 +288,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		//buy fighters as long as we have room and can afford it
-		while(recruit(map,leader,options[rand()%options.size()].c_str(),
+		while(recruit(map,leader->first,options[rand()%options.size()].c_str(),
 		              gameinfo,team_num,current_team,min_gold,units,disp)) {
 
 		}
@@ -431,13 +418,22 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		if(map.underlying_terrain(map[i->first.x][i->first.y]) != gamemap::TOWER)
 			continue;
 
-		bool want_tower = true;
+		bool want_tower = true, owned = false;
 		for(size_t j = 0; j != teams.size(); ++j) {
-			if(!current_team.is_enemy(j+1) && teams[j].owns_tower(i->first)) {
+			owned = teams[j].owns_tower(i->first);
+			if(owned && !current_team.is_enemy(j+1)) {
 				want_tower = false;
+			}
+			
+			if(owned) {
 				break;
 			}
 		}
+
+		//if it's a neutral tower, and we have no leader, then the village is no use to us,
+		//and we don't want it.
+		if(!owned && leader == units.end())
+			want_tower = false;
 
 		if(want_tower) {
 			std::cerr << "trying to acquire village: " << i->first.x
@@ -516,7 +512,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	}
 
 	std::cout << "finding targets...\n";
-	std::vector<target> targets = find_targets(map,units,teams,team_num);
+	std::vector<target> targets = find_targets(map,units,teams,team_num,leader != units.end());
 	targets.insert(targets.end(),additional_targets->begin(),
 	                             additional_targets->end());
 	for(;;) {

@@ -530,7 +530,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				const int orig_owner = tower_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
 					current_unit.set_movement(0);
-					get_tower(dst,teams,team_num-1);
+					get_tower(dst,teams,team_num-1,units);
 				}
 			}
 

@@ -87,7 +87,7 @@ private:
 
 std::vector<target> find_targets(
                            const gamemap& map, std::map<location,unit>& units,
-						   std::vector<team>& teams, int current_team
+						   std::vector<team>& teams, int current_team, bool has_leader
 						  )
 {
 	log_scope("finding targets...");
@@ -96,10 +96,9 @@ std::vector<target> find_targets(
 
 	std::vector<target> targets;
 
-	if(tm.village_value() > 0.0) {
+	if(has_leader && tm.village_value() > 0.0) {
 		const std::vector<location>& towers = map.towers();
-		for(std::vector<location>::const_iterator t = towers.begin();
-		    t != towers.end(); ++t) {
+		for(std::vector<location>::const_iterator t = towers.begin(); t != towers.end(); ++t) {
 			assert(map.on_board(*t));
 			bool get_tower = true;
 			for(size_t i = 0; i != teams.size(); ++i) {

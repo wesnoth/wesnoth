@@ -100,17 +100,22 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams);
 //makes it so the tower at the given location is owned by the given
 //0-based team number
 void get_tower(const gamemap::location& loc, std::vector<team>& teams,
-               int team_num);
+               size_t team_num, const unit_map& units);
 
 //given the 1-based side, will find the leader of that side,
 //and return an iterator to the leader
 std::map<gamemap::location,unit>::iterator
    find_leader(std::map<gamemap::location,unit>& units, int side);
 
+std::map<gamemap::location,unit>::const_iterator
+   find_leader(const std::map<gamemap::location,unit>& units, int side);
+
+
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
 void calculate_healing(display& disp, const gamemap& map,
-                       std::map<gamemap::location,unit>& units, int side);
+                       std::map<gamemap::location,unit>& units, int side,
+					   const std::vector<team>& teams);
 
 //function which, given the location of a unit that is advancing, and the
 //name of the unit it is advancing to, will return the advanced version of
@@ -133,9 +138,9 @@ bool under_leadership(const std::map<gamemap::location,unit>& units,
                       const gamemap::location& loc);
 
 //checks to see if a side has won, and will throw an end_level_exception
-//if one has.
+//if one has. Will also remove control of villages from sides  with dead leaders
 void check_victory(std::map<gamemap::location,unit>& units,
-                   const std::vector<team>& teams);
+                   std::vector<team>& teams);
 
 //gets the time of day at a certain tile. Certain tiles may have a time of
 //day that differs from 'the' time of day, if a unit that illuminates is

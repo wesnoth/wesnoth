@@ -59,6 +59,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	const config::child_list& unit_cfg = level->get_children("side");
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
 
+		if(first_human_team == -1 && (**ui)["controller"] == "human") {
+			first_human_team = ui - unit_cfg.begin();
+		}
+
 		std::string gold = (**ui)["gold"];
 		if(gold.empty())
 			gold = "100";
@@ -109,10 +113,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		
 		if(teams.size() == 1) {
 			state_of_game.can_recruit = teams.back().recruits();
-		}
-
-		if(first_human_team == -1 && teams.back().is_human()) {
-			first_human_team = teams.size()-1;
 		}
 
 		//if there are additional starting units on this side
@@ -231,7 +231,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 						team_it->spend_gold(expense);
 					}
 
-					calculate_healing(gui,map,units,player_number);
+					calculate_healing(gui,map,units,player_number,teams);
 				}
 
 				gui.set_playing_team(size_t(player_number-1));

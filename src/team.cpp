@@ -240,6 +240,11 @@ void team::lose_tower(const gamemap::location& loc)
 	towers_.erase(towers_.find(loc));
 }
 
+void team::clear_towers()
+{
+	towers_.clear();
+}
+
 const std::set<gamemap::location>& team::towers() const
 {
 	return towers_;

@@ -33,7 +33,7 @@ struct target {
 
 std::vector<target> find_targets(
                            const gamemap& map, std::map<location,unit>& units,
-						   std::vector<team>& teams, int current_team
+						   std::vector<team>& teams, int current_team, bool has_leader
 						  );
 
 std::pair<location,location> choose_move(

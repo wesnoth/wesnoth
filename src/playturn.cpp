@@ -805,7 +805,7 @@ void turn_info::undo()
 
 	if(map_.underlying_terrain(map_[route.front().x][route.front().y]) == gamemap::TOWER) {
 		get_tower(route.front(),teams_,
-		          undo_stack_.back().original_village_owner);
+		          undo_stack_.back().original_village_owner,units_);
 	}
 
 	undo_stack_.back().starting_moves = u->second.movement_left();
@@ -868,7 +868,7 @@ void turn_info::redo()
 	recorder.add_movement(route.front(),route.back());
 
 	if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
-		get_tower(route.back(),teams_,un.side()-1);
+		get_tower(route.back(),teams_,un.side()-1,units_);
 	}
 
 	gui_.draw_tile(route.back().x,route.back().y);

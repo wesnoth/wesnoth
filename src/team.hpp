@@ -65,6 +65,7 @@ public:
 
 	void get_tower(const gamemap::location&);
 	void lose_tower(const gamemap::location&);
+	void clear_towers();
 	const std::set<gamemap::location>& towers() const;
 	bool owns_tower(const gamemap::location&) const;
 
