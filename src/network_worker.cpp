@@ -43,8 +43,6 @@ std::vector<threading::thread*> threads;
 
 int process_queue(void* data)
 {
-	threading::mutex m;
-	const threading::lock mutex_lock(m);
 	LOG_NW << "thread started...\n";
 	for(;;) {
 
@@ -172,32 +170,31 @@ void queue_data(TCPsocket sock, std::vector<char>& buf)
 	cond->notify_one();
 }
 
-bool socket_locked(TCPsocket sock)
-{
-	const threading::lock lock(*global_mutex);
-	const socket_state_map::const_iterator i = sockets_locked.find(sock);
-	if(i != sockets_locked.end()) {
-		return i->second == SOCKET_LOCKED;
-	} else {
-		return false;
-	}
-}
-
 void close_socket(TCPsocket sock)
 {
-	while(socket_locked(sock)) {
-		SDL_Delay(10);
-	}
-
-	const threading::lock lock(*global_mutex);
-	sockets_locked.erase(sock);
-	std::multiset<buffer>::iterator i = bufs.begin();
-	while(i != bufs.end()) {
-		if(i->sock == sock) {
-			bufs.erase(i++);
-		} else {
-			++i;
+	for(bool first_time = true; ; first_time = false) {
+		if(!first_time) {
+			SDL_Delay(10);
 		}
+
+		const threading::lock lock(*global_mutex);
+
+		const socket_state_map::iterator lock_it = sockets_locked.find(sock);
+		if(lock_it != sockets_locked.end() && lock_it->second == SOCKET_LOCKED) {
+			continue;
+		} else if(lock_it != sockets_locked.end()) {
+			sockets_locked.erase(lock_it);
+		}
+
+		std::multiset<buffer>::iterator i = bufs.begin();
+		while(i != bufs.end()) {
+			if(i->sock == sock) {
+				bufs.erase(i++);
+			} else {
+				++i;
+			}
+		}
+
 	}
 }
 
