@@ -800,3 +800,14 @@ std::string leader_preview_pane::get_selected_leader()
 	return leaders_.get_leader();
 }
 
+void leader_preview_pane::set_location(const SDL_Rect& rect)
+{
+	if (location().x == rect.x && location().y == rect.y && 
+			location().w == rect.w && location().h == rect.h)
+		return;
+
+	widget::set_location(rect);
+	register_rectangle(rect);
+}
+
+
