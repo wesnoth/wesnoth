@@ -29,7 +29,7 @@ class textbox : public widget
 public:
 	textbox(display& d, int width, const std::string& text="");
 
-	const std::string& text() const;
+	const std::string text() const;
 	void set_text(std::string text);
 	void clear();
 	void process();
@@ -40,7 +40,7 @@ protected:
 	using widget::dirty;
 
 private:
-	std::string text_;
+	std::wstring text_;
 	
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;

@@ -61,6 +61,12 @@ const std::string& get_language();
 //function which attempts to query and return the locale on the system
 std::string get_locale();
 
+//functions for converting Unicode wide-char strings to UTF-8 encoded
+//strings, back and forth
+std::string wstring_to_string(const std::wstring &);
+std::wstring string_to_wstring(const std::string &);
+
+
 //two character sets are supported: LATIN1 and UTF-8. This is
 //set in the translation by using encoding=(LATIN1|UTF-8)
 //the character set used affects the font rendering function called

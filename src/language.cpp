@@ -213,3 +213,144 @@ std::string get_locale()
 	std::cerr << "locale could not be determined; defaulting to locale 'en'\n";
 	return "en";
 }
+
+class invalid_utf8_exception : public std::exception {
+};
+
+namespace 
+{
+std::string wstring_to_utf8(const std::wstring &src)
+{
+        unsigned wchar_t ch;
+	std::wstring::const_iterator i;
+	int j;
+	Uint32 bitmask;
+	std::string ret;
+
+	try {
+
+		for(i = src.begin(); i != src.end(); ++i) {
+			int count;
+			ch = *i;
+			
+			/* Determine the bytes required */
+			count = 1;
+			if(ch >= 0x80)
+				count++;
+
+			bitmask = 0x800;
+			for(j = 0; j < 5; ++j) {
+				if(ch >= bitmask)
+					count++;
+				bitmask <<= 5;
+			}
+			
+			if(count > 6)
+				throw invalid_utf8_exception();
+
+			if(count == 1) {
+				ret.push_back(ch);
+			} else {
+				for(j = count-1; j >= 0; --j) {
+					unsigned char c = (ch >> (6*j)) & 0x3f;
+					if(j == count-1)
+						c |= 0xff << (8 - count);
+					ret.push_back(c) ;
+				}
+			}
+
+		}		
+	}
+	catch(invalid_utf8_exception e) {
+		std::cerr << "Invalid wide character string\n";
+		return ret;
+	}
+}
+
+std::wstring utf8_to_wstring(const std::string &src)
+{
+	std::wstring ret;	
+        unsigned wchar_t ch;
+	std::string::const_iterator i;
+	
+	try {
+		for(i = src.begin(); i != src.end(); ++i ) {
+			ch = (unsigned char)*i;
+			int count;
+
+			if ((ch & 0x80) == 0)
+				count = 1;
+			else if ((ch & 0xE0) == 0xC0)
+				count = 2;
+			else if ((ch & 0xF0) == 0xE0)
+				count = 3;
+			else if ((ch & 0xF8) == 0xF0)
+				count = 4;
+			else if ((ch & 0xFC) == 0xF8)
+				count = 5;
+			else if ((ch & 0xFE) == 0xFC)
+				count = 6;
+			else
+				throw invalid_utf8_exception(); /* stop on invalid characters */
+		
+			if(i + count - 1 == src.end())
+				throw invalid_utf8_exception();
+
+			/* Convert the first character */
+			if (count != 1) {
+				ch &= 0xFF >> (count + 1);
+			}
+			
+			/* Convert the continuation bytes */
+			for(std::string::const_iterator j = i+1; j != i+count; ++j) {
+				if((*j & 0xC0) != 0x80)
+					throw invalid_utf8_exception();
+				
+				ch = (ch << 6) | (*j & 0x3F);
+			}
+			i += (count - 1);
+			
+			ret.push_back(ch);
+		}
+	}
+	catch(invalid_utf8_exception e) {
+		std::cerr << "Invalid UTF-8 string: \"" << src << "\"\n";
+		return ret;
+	}
+
+	return ret;
+}
+
+}
+
+std::string wstring_to_string(const std::wstring &src)
+{
+	if(charset() == CHARSET_UTF8) {
+		return wstring_to_utf8(src);
+	}
+	
+	std::string ret;
+	for(std::wstring::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
+		if(*itor <= 0xff) {
+			ret.push_back(*itor);
+		} else {
+			ret.push_back('?');
+		}
+	}
+	return ret;
+}
+
+std::wstring string_to_wstring(const std::string &src)
+{
+	if(charset() == CHARSET_UTF8) {
+		return utf8_to_wstring(src);
+	}
+
+	std::wstring ret;
+	for(std::string::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
+		ret.push_back(*itor);
+	}
+	return ret;
+}
+
+

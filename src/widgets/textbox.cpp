@@ -15,6 +15,7 @@
 #include "../show_dialog.hpp"
 #include "../video.hpp"
 #include "../util.hpp"
+#include "../language.hpp"
 #include "SDL.h"
 
 #include <algorithm>
@@ -25,8 +26,8 @@ namespace gui {
 const int font_size = 16;
 
 textbox::textbox(display& d, int width, const std::string& text)
-           : widget(d), text_(text), text_pos_(0),
-             cursor_(text.size()), selstart_(-1), selend_(-1), grabmouse_(false),
+           : widget(d), text_(string_to_wstring(text)), text_pos_(0),
+             cursor_(text_.size()), selstart_(-1), selend_(-1), grabmouse_(false),
 	     show_cursor_(true), text_image_(NULL)
 {
 	static const SDL_Rect area = d.screen_area();
@@ -36,14 +37,15 @@ textbox::textbox(display& d, int width, const std::string& text)
 	update_text_cache(true);
 }
 
-const std::string& textbox::text() const
+const std::string textbox::text() const
 {
-	return text_;
+	const std::string &ret = wstring_to_string(text_);
+	return ret;
 }
 
 void textbox::set_text(std::string text)
 {
-	text_ = text;
+	text_ = string_to_wstring(text);
 	cursor_ = text_.size();
 	set_dirty(true);
 	update_text_cache(true);
@@ -51,7 +53,7 @@ void textbox::set_text(std::string text)
 
 void textbox::clear()
 {
-	text_ = "";
+	text_ = L"";
 	cursor_ = 0;
 	cursor_pos_ = 0;
 	text_pos_ = 0;
@@ -134,8 +136,12 @@ void textbox::update_text_cache(bool changed)
 		// width of each substring, but this is a flawed assumption which won't work with
 		// some more complex scripts (that is, RTL languages). This part of the work should
 		// actually be done by the font-rendering system.
-		for(int i = 0; i < text_.size(); ++i) {
-			const std::string visible_string = text_.substr(0, i+1);
+		std::string visible_string;
+		
+		for(std::wstring::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
+			std::wstring s;
+			s.push_back(*itor);
+			visible_string.append(wstring_to_string(s));
 			const int w = font::line_width(visible_string, font_size);		
 		
 			char_pos_.push_back(w);
@@ -143,10 +149,11 @@ void textbox::update_text_cache(bool changed)
 
 		text_size_.x = 0;
 		text_size_.y = 0;
-		text_size_.w = font::line_width(text_, font_size);
+		const std::string s = wstring_to_string(text_);
+		text_size_.w = font::line_width(s, font_size);
 		text_size_.h = location().h;
 
-		text_image_.assign(font::get_rendered_text(text_, font_size, font::NORMAL_COLOUR));		
+		text_image_.assign(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
 	}
 
 	int cursor_x = char_pos_[cursor_];
@@ -169,7 +176,7 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 	
-	std::string::iterator itor = text_.begin() + minimum(selstart_, selend_);
+	std::wstring::iterator itor = text_.begin() + minimum(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
 	cursor_ = minimum(selstart_, selend_);
 	selstart_ = selend_ = -1;
@@ -276,11 +283,10 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	// const char character = static_cast<char>(key.unicode);
-	int character = key.unicode;
+	wchar_t character = key.unicode;
 
 	if(character != 0)
-		std::cerr << "Char: " << character << "\n";
+		std::cerr << "Char: " << character << ", c = " << c << "\n";
 	
 	if(/*isgraph(character) || character == ' '*/ character >= 32 && character != 127) {
 		changed = true;
@@ -294,7 +300,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(is_selection() && (selend_ != cursor_))
 		selstart_ = selend_ = -1;
 
-	update_text_cache(true);
+	update_text_cache(changed);
 	set_dirty(true);
 	draw();
 }
