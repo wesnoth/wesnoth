@@ -160,9 +160,9 @@ bool show_intro_part(display& screen, const config& part,
 		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
 			continue;
 
-		surface img;
-		img.assign(image::get_image(image_name,image::UNSCALED));
-		if(image == NULL) continue;
+		if(image_name == "") continue;
+		surface img(image::get_image(img.assign(image::get_image(image_name,image::UNSCALED)));
+		if(image.null()) continue;
 
 		SDL_Rect image_rect;
 		image_rect.x = x + dstrect.x;
