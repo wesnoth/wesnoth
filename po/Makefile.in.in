@@ -105,36 +105,37 @@ stamp-po: $(srcdir)/$(DOMAIN).pot
 
 # This target rebuilds $(DOMAIN).pot; it is an expensive operation.
 # Note that $(DOMAIN).pot is not touched if it doesn't need to be changed.
-$(DOMAIN).pot-update: $(DOMAIN)/$(POTFILES) $(srcdir)/$(DOMAIN)/POTFILES.in remove-potcdate.sed
-	$(XGETTEXT) --default-domain=$(DOMAIN) --directory=$(top_srcdir) \
+#$(DOMAIN).pot-update: $(DOMAIN).pot $(srcdir)/$(DOMAIN)/POTFILES.in remove-potcdate.sed
+%.pot-update: %.pot $(srcdir)/%/POTFILES.in remove-potcdate.sed
+	$(XGETTEXT) --default-domain=$* --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
-	  `grep -v '\.cfg$$' $(srcdir)/$(DOMAIN)/POTFILES.in` \
+	  `grep -v '\.cfg$$' $(srcdir)/$*/POTFILES.in` \
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --keyword=N_ \
-	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).cpp.po
-	if test -r $(DOMAIN)/FINDCFG ;\
+	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $*.cpp.po
+	if test -r $*/FINDCFG ;\
 	then ../utils/wmlxgettext \
-	  `cd $(top_srcdir) && sh po/$(DOMAIN)/FINDCFG` > $(DOMAIN).wml.po ;\
+	  `cd $(top_srcdir) && sh po/$*/FINDCFG` > $*.wml.po ;\
 	fi
-	if test -f $(DOMAIN).wml.po ; then \
-	  msgcat --sort-by-file $(DOMAIN).cpp.po $(DOMAIN).wml.po -o $(DOMAIN).po && \
-	  rm -f $(DOMAIN).cpp.po $(DOMAIN).wml.po; \
+	if test -f $*.wml.po ; then \
+	  msgcat --sort-by-file $*.cpp.po $*.wml.po -o $*.po && \
+	  rm -f $*.cpp.po $*.wml.po; \
 	else \
-	  mv $(DOMAIN).cpp.po $(DOMAIN).po ;\
+	  mv $*.cpp.po $*.po ;\
 	fi
-	test ! -f $(DOMAIN).po || { \
-	  if test -f $(srcdir)/$(DOMAIN).pot; then \
-	    sed -f remove-potcdate.sed < $(srcdir)/$(DOMAIN).pot > $(DOMAIN).1po && \
-	    sed -f remove-potcdate.sed < $(DOMAIN).po > $(DOMAIN).2po && \
-	    if cmp $(DOMAIN).1po $(DOMAIN).2po >/dev/null 2>&1; then \
-	      rm -f $(DOMAIN).1po $(DOMAIN).2po $(DOMAIN).po; \
+	test ! -f $*.po || { \
+	  if test -f $(srcdir)/$*.pot; then \
+	    sed -f remove-potcdate.sed < $(srcdir)/$*.pot > $*.1po && \
+	    sed -f remove-potcdate.sed < $*.po > $*.2po && \
+	    if cmp $*.1po $*.2po >/dev/null 2>&1; then \
+	      rm -f $*.1po $*.2po $*.po; \
 	    else \
-	      rm -f $(DOMAIN).1po $(DOMAIN).2po $(srcdir)/$(DOMAIN).pot && \
-	      mv $(DOMAIN).po $(srcdir)/$(DOMAIN).pot; \
+	      rm -f $*.1po $*.2po $(srcdir)/$*.pot && \
+	      mv $*.po $(srcdir)/$*.pot; \
 	    fi; \
 	  else \
-	    mv $(DOMAIN).po $(srcdir)/$(DOMAIN).pot; \
+	    mv $*.po $(srcdir)/$*.pot; \
 	  fi; \
 	}
 
