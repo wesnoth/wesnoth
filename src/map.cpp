@@ -143,8 +143,8 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 	if(tiles_.empty())
 		throw incorrect_format_exception("empty map");
 
-	for(int n = 0; n != tiles_.size(); ++n) {
-		if(tiles_[n].size() != this->y()) {
+	for(size_t n = 0; n != tiles_.size(); ++n) {
+		if(tiles_[n].size() != size_t(this->y())) {
 			tiles_.erase(tiles_.begin()+n);
 			--n;
 		}

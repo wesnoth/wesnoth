@@ -66,7 +66,7 @@ void do_analysis(
 		rating_to_beat = best_res = maximum(best_res,cur_rating);
 	}
 
-	for(int i = 0; i != units.size(); ++i) {
+	for(size_t i = 0; i != units.size(); ++i) {
 		const location current_unit = units[i];
 		units.erase(units.begin() + i);
 
@@ -161,12 +161,10 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 		++cache_hits;
 		cur_stats = cache_itor->stats;
 
-		if(!(cache_itor->weapon >= 0 &&
-		       cache_itor->weapon < itor->second.attacks().size())) {
+		if(!(size_t(cache_itor->weapon) < itor->second.attacks().size())) {
 		}
 
-		assert(cache_itor->weapon >= 0 &&
-		       cache_itor->weapon < itor->second.attacks().size());
+		assert(size_t(cache_itor->weapon) < itor->second.attacks().size());
 		return cache_itor->weapon;
 	}
 
@@ -181,7 +179,7 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 	const std::vector<attack_type>& attacks = itor->second.attacks();
 	assert(!attacks.empty());
 
-	for(int a = 0; a != attacks.size(); ++a) {
+	for(size_t a = 0; a != attacks.size(); ++a) {
 		const battle_stats stats = evaluate_battle_stats(map,att,def,a,units,
 		                                          status,info,terrain,false);
 
@@ -198,7 +196,7 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 		}
 	}
 
-	assert(current_choice >= 0 && current_choice < attacks.size());
+	assert(size_t(current_choice) < attacks.size());
 
 	battle.stats = cur_stats;
 	battle.weapon = current_choice;
@@ -256,7 +254,7 @@ void attack_analysis::analyze(const gamemap& map,
 		int defenderxp = 0;
 
 		int defhp = target_hp;
-		for(int i = 0; i != movements.size() && defhp; ++i) {
+		for(size_t i = 0; i != movements.size() && defhp; ++i) {
 			const battle_stats& stat = stats[i];
 			int atthp = hitpoints[i];
 

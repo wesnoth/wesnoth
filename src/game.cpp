@@ -51,7 +51,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		type = "scenario";
 	const std::vector<config*>& scenarios = game_config.children[type];
 
-	for(int i = state.scenario; i < scenarios.size(); ++i) {
+	for(size_t i = size_t(state.scenario); i < scenarios.size(); ++i) {
 		std::vector<config*>& story = scenarios[i]->children["story"];
 
 		try {
@@ -196,11 +196,11 @@ int play_game(int argc, char** argv)
 		          << "x" << resolution.second << "x16 "
 		          << "is not supported\n";
 
-		if(video_flags == FULL_SCREEN && argc == 0)
+		if((video_flags&FULL_SCREEN) != 0 && argc == 0)
 			std::cerr << "Try running the program with the -windowed option "
 			          << "using a 16bpp X windows setting\n";
 
-		if(video_flags == 0 && argc == 0)
+		if((video_flags&FULL_SCREEN) == 0 && argc == 0)
 			std::cerr << "Try running with the -fullscreen option\n";
 
 		return 0;
@@ -331,7 +331,7 @@ int play_game(int argc, char** argv)
 			if(res == -1)
 				continue;
 
-			assert(res >= 0 && res < options.size());
+			assert(size_t(res) < options.size());
 
 			state.difficulty = difficulties[res];
 			defines_map.clear();
@@ -359,7 +359,7 @@ int play_game(int argc, char** argv)
 			const int res = gui::show_dialog(disp,NULL,"",
 			                         string_table["language_button"] + ":",
 			                         gui::OK_CANCEL,&langs);
-			if(res >= 0 && res < langs.size()) {
+			if(size_t(res) < langs.size()) {
 				set_language(langs[res], game_config);
 				preferences::set_locale(langs[res]);
 			}

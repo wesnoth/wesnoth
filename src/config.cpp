@@ -162,7 +162,7 @@ void internal_preprocess_file(const std::string& fname,
 
 			//if this is the beginning of a pre-processing definition
 			static const std::string hash_define("#define");
-			if(data.end() - i > hash_define.size() &&
+			if(size_t(data.end() - i) > hash_define.size() &&
 			   std::equal(hash_define.begin(),hash_define.end(),i)) {
 
 				i += hash_define.size();
@@ -179,7 +179,7 @@ void internal_preprocess_file(const std::string& fname,
 				std::stringstream value;
 				for(i = end+1; i != data.end(); ++i) {
 					static const std::string hash_enddef("#enddef");
-					if(data.end() - i > hash_enddef.size() &&
+					if(size_t(data.end() - i) > hash_enddef.size() &&
 					   std::equal(hash_enddef.begin(),hash_enddef.end(),i)) {
 						i += hash_enddef.size();
 						break;
@@ -197,7 +197,7 @@ void internal_preprocess_file(const std::string& fname,
 			static const std::string hash_else("#else");
 			static const std::string hash_endif("#endif");
 
-			if(data.end() - i > hash_ifdef.size() &&
+			if(size_t(data.end() - i) > hash_ifdef.size() &&
 			   std::equal(hash_ifdef.begin(),hash_ifdef.end(),i)) {
 				i += hash_ifdef.size();
 				while(i != data.end() && isspace(*i))
@@ -215,7 +215,7 @@ void internal_preprocess_file(const std::string& fname,
 				//anyway.
 				const std::string symbol(i,end);
 				if(defines_map.count(symbol) == 0) {
-					while(data.end() - i > hash_endif.size() &&
+					while(size_t(data.end() - i) > hash_endif.size() &&
 					      !std::equal(hash_endif.begin(),hash_endif.end(),i) &&
 					      !std::equal(hash_else.begin(),hash_else.end(),i)) {
 						++i;
@@ -231,9 +231,9 @@ void internal_preprocess_file(const std::string& fname,
 
 			//if we come across a #else, it must mean that we found a #ifdef
 			//earlier, and we should ignore until #endif
-			if(data.end() - i > hash_else.size() &&
+			if(size_t(data.end() - i) > hash_else.size() &&
 			   std::equal(hash_else.begin(),hash_else.end(),i)) {
-				while(data.end() - i > hash_endif.size() &&
+				while(size_t(data.end() - i) > hash_endif.size() &&
 				      !std::equal(hash_endif.begin(),hash_endif.end(),i)) {
 					++i;
 				}

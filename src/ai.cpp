@@ -234,7 +234,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		const int towers = map.towers().size();
 		int taken_towers = 0;
-		for(int j = 0; j != teams.size(); ++j) {
+		for(size_t j = 0; j != teams.size(); ++j) {
 			taken_towers += teams[j].towers();
 		}
 
@@ -395,7 +395,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			continue;
 
 		bool want_tower = true;
-		for(int j = 0; j != teams.size(); ++j) {
+		for(size_t j = 0; j != teams.size(); ++j) {
 			if(!current_team.is_enemy(j+1) && teams[j].owns_tower(i->first)) {
 				want_tower = false;
 				break;

@@ -109,9 +109,9 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 } //end namespace gui
 
 namespace {
-const int max_menu_items = 18;
-const int menu_font_size = 16;
-const int menu_cell_padding = 10;
+const size_t max_menu_items = 18;
+const size_t menu_font_size = 16;
+const size_t menu_cell_padding = 10;
 
 class menu
 {
@@ -135,8 +135,8 @@ class menu
 	const std::vector<int>& column_widths() const
 	{
 		if(column_widths_.empty()) {
-			for(int row = 0; row != items_.size(); ++row) {
-				for(int col = 0; col != items_[row].size(); ++col) {
+			for(size_t row = 0; row != items_.size(); ++row) {
+				for(size_t col = 0; col != items_[row].size(); ++col) {
 					static const SDL_Rect area =
 					                {0,0,display_->x(),display_->y()};
 
@@ -161,18 +161,12 @@ class menu
 		if(rect.w == 0)
 			return;
 
-		short* const dstptr = reinterpret_cast<short*>(
-						        display_->video().getSurface()->pixels) +
-		                             rect.y*display_->x() + x_;
-
 		if(buffer_.get() != NULL) {
 			const int ypos = items_start()+(item-first_item_on_screen_)*rect.h;
 			SDL_Rect srcrect = {0,ypos,rect.w,rect.h};
 			SDL_BlitSurface(buffer_,&srcrect,
 			                display_->video().getSurface(),&rect);
 		}
-
-		short* dst = dstptr;
 
 		gui::draw_solid_tinted_rectangle(x_,rect.y,width(),rect.h,
 		                                 item == selected_ ? 150:0,0,0,
@@ -183,7 +177,7 @@ class menu
 		const std::vector<int>& widths = column_widths();
 
 		int xpos = rect.x;
-		for(int i = 0; i != items_[item].size(); ++i) {
+		for(size_t i = 0; i != items_[item].size(); ++i) {
 			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,
 			                items_[item][i],xpos,rect.y);
 			xpos += widths[i];
@@ -193,7 +187,7 @@ class menu
 	void draw() {
 		drawn_ = true;
 
-		for(int i = 0; i != items_.size(); ++i)
+		for(size_t i = 0; i != items_.size(); ++i)
 			draw_item(i);
 
 		display_->video().update(x_,y_,width(),height());
@@ -201,7 +195,7 @@ class menu
 
 	int hit(int x, int y) const {
 		if(x > x_ && x < x_ + width() && y > y_ && y < y_ + height()){
-			for(int i = 0; i != items_.size(); ++i) {
+			for(size_t i = 0; i != items_.size(); ++i) {
 				const SDL_Rect& rect = get_item_rect(i);
 				if(y > rect.y && y < rect.y + rect.h)
 					return i;
@@ -217,7 +211,7 @@ class menu
 	{
 		const SDL_Rect empty_rect = {0,0,0,0};
 		if(item < first_item_on_screen_ ||
-		   item >= first_item_on_screen_ + max_menu_items) {
+		   size_t(item) >= first_item_on_screen_ + max_menu_items) {
 			return empty_rect;
 		}
 
@@ -289,9 +283,8 @@ public:
 
 	int height() const {
 		if(height_ == -1) {
-			const SDL_Rect area = { 0, 0, display_->x(), display_->y() };
 			height_ = 0;
-			for(int i = 0; i != items_.size() && i != max_menu_items; ++i) {
+			for(size_t i = 0; i != items_.size() && i != max_menu_items; ++i) {
 				height_ += get_item_rect(i).h;
 			}
 
@@ -334,7 +327,7 @@ public:
 
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	            bool page_up, bool page_down) {
-		if(items_.size() > max_menu_items) {
+		if(items_.size() > size_t(max_menu_items)) {
 			const bool up = uparrow_.process(x,y,button);
 			if(up && first_item_on_screen_ > 0) {
 				itemRects_.clear();
@@ -344,7 +337,8 @@ public:
 			}
 
 			const bool down = downarrow_.process(x,y,button);
-			if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
+			if(down &&
+			   size_t(first_item_on_screen_+max_menu_items) < items_.size()) {
 				itemRects_.clear();
 				++first_item_on_screen_;
 				draw();
@@ -361,9 +355,9 @@ public:
 			draw();
 		}
 
-		if(down_arrow && !click_selects_ && selected_ < items_.size()-1) {
+		if(down_arrow && !click_selects_ && selected_ < int(items_.size()-1)) {
 			++selected_;
-			if(selected_ - first_item_on_screen_ == max_menu_items) {
+			if(size_t(selected_ - first_item_on_screen_) == max_menu_items) {
 				itemRects_.clear();
 				++first_item_on_screen_;
 			}
@@ -384,7 +378,7 @@ public:
 
 		if(page_down && !click_selects_) {
 			selected_ += max_menu_items;
-			if(selected_ >= items_.size())
+			if(size_t(selected_) >= items_.size())
 				selected_ = items_.size()-1;
 
 			first_item_on_screen_ = selected_ - (max_menu_items-1);
@@ -474,7 +468,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	menu menu_(disp,menu_items,type == MESSAGE);
 
 	const int border_size = 6;
-	const short text_colour = 0xFFFF;
 	const short border_colour = 0xF000;
 	int nlines = 1;
 	int longest_line = 0;
@@ -626,7 +619,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	const int button_hpadding = total_width - button_widths;
 	int button_offset = 0;
-	for(int button_num = 0; button_num != buttons.size(); ++button_num) {
+	for(size_t button_num = 0; button_num != buttons.size(); ++button_num) {
 		const int padding_amount = button_hpadding/(buttons.size()+1);
 		buttons[button_num].set_x(xloc + padding_amount*(button_num+1) +
 		                          button_offset);
@@ -732,7 +725,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			if(first_time)
 				selection = 0;
 
-			if(selection >= 0 && selection < units.size()) {
+			if(size_t(selection) < units.size()) {
 				SDL_Surface* const screen = disp.video().getSurface();
 				if(unit_details_rect.w > 0) {
 					SDL_FillRect(screen,&unit_details_rect,0);
@@ -796,7 +789,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 				if(menu_.height() == 0) {
 					return button_it - buttons.begin();
 				} else if(buttons.size() <= 1 ||
-				        button_it - buttons.begin() != buttons.size()-1) {
+				       size_t(button_it-buttons.begin()) != buttons.size()-1) {
 					return menu_.selection();
 				} else {
 					return -1;
@@ -846,9 +839,6 @@ TITLE_RESULT show_title(display& screen)
 	language_button.set_y(400);
 	quit_button.set_y(450);
 
-	bool right_button = true;
-	bool left_button = true;
-
 	tutorial_button.draw();
 	new_button.draw();
 	load_button.draw();
@@ -863,7 +853,6 @@ TITLE_RESULT show_title(display& screen)
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
-		const bool right_button = mouse_flags&SDL_BUTTON_RMASK;
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
 		if(tutorial_button.process(mousex,mousey,left_button))

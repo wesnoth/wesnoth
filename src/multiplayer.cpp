@@ -60,7 +60,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 	}
 
 	res = 0;
-	while(res != sides.size()) {
+	while(size_t(res) != sides.size()) {
 		std::vector<std::string> sides_list;
 		for(std::vector<config*>::iterator sd = sides.begin();
 		    sd != sides.end(); ++sd) {
@@ -78,7 +78,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 		res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
 		                       gui::MESSAGE,&sides_list);
 
-		if(res >= 0 && res < sides.size()) {
+		if(size_t(res) < sides.size()) {
 			std::vector<std::string> choices;
 
 			for(int n = 0; n != 2; ++n) {
@@ -96,12 +96,12 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 			                               string_table["choose_side"],
 										   gui::MESSAGE,&choices);
 			if(result >= 0) {
-				sides[res]->values["controller"] = (result >= choices.size()/2)
-				                                    ?  "ai" : "human";
-				if(result >= choices.size()/2)
+				sides[res]->values["controller"] =
+				           (result >= int(choices.size())/2) ?  "ai" : "human";
+				if(result >= int(choices.size())/2)
 					result -= choices.size()/2;
 
-				assert(result < possible_sides.size());
+				assert(result < int(possible_sides.size()));
 
 				std::map<std::string,std::string>& values =
 				                                possible_sides[result]->values;

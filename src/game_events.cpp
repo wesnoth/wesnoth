@@ -501,7 +501,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		}
 
 		if(options.empty() == false) {
-			assert(option_chosen >= 0 && option_chosen < menu_items.size());
+			assert(size_t(option_chosen) < menu_items.size());
 			std::vector<config*>& events = *option_events[option_chosen];
 			for(std::vector<config*>::iterator ev = events.begin();
 			    ev != events.end(); ++ev) {

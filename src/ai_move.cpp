@@ -102,7 +102,7 @@ std::vector<target> find_targets(
 		    t != towers.end(); ++t) {
 			assert(map.on_board(*t));
 			bool get_tower = true;
-			for(int i = 0; i != teams.size(); ++i) {
+			for(size_t i = 0; i != teams.size(); ++i) {
 				if(!tm.is_enemy(i+1) && teams[i].owns_tower(*t)) {
 					get_tower = false;
 					break;
@@ -157,7 +157,7 @@ std::vector<target> find_targets(
 	}
 
 	assert(new_values.size() == targets.size());
-	for(int n = 0; n != new_values.size(); ++n) {
+	for(size_t n = 0; n != new_values.size(); ++n) {
 		std::cerr << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
 		targets[n].value = new_values[n];
 	}

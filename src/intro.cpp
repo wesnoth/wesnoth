@@ -105,9 +105,7 @@ void show_intro(display& screen, config& data)
 			int mousex, mousey;
 			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
-			const bool right_button = mouse_flags&SDL_BUTTON_RMASK;
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
 
 			if(key[KEY_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))

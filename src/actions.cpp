@@ -445,7 +445,7 @@ void attack(display& gui, const gamemap& map,
 
 int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 {
-	for(int i = 0; i != teams.size(); ++i) {
+	for(size_t i = 0; i != teams.size(); ++i) {
 		if(teams[i].owns_tower(loc))
 			return i;
 	}
@@ -457,13 +457,13 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 void get_tower(const gamemap::location& loc, std::vector<team>& teams,
                int team_num)
 {
-	for(int i = 0; i != teams.size(); ++i) {
-		if(i != team_num && teams[i].owns_tower(loc)) {
+	for(size_t i = 0; i != teams.size(); ++i) {
+		if(int(i) != team_num && teams[i].owns_tower(loc)) {
 			teams[i].lose_tower(loc);
 		}
 	}
 
-	if(team_num >= 0 && team_num < teams.size())
+	if(size_t(team_num) < teams.size())
 		teams[team_num].get_tower(loc);
 }
 
@@ -674,11 +674,7 @@ unit get_advanced_unit(const game_data& info,
 	     info.unit_types.find(advance_to);
 	std::map<gamemap::location,unit>::iterator un = units.find(loc);
 	if(new_type != info.unit_types.end() && un != units.end()) {
-		const int side = un->second.side();
-
-		unit new_unit(&(new_type->second),un->second);
-
-		return new_unit;
+		return unit(&(new_type->second),un->second);
 	} else {
 		throw gamestatus::game_error("Could not find the unit being advanced"
 		                             " to: " + advance_to);
