@@ -57,7 +57,7 @@ unit::unit(game_data& data, const config& cfg) : state_(STATE_NORMAL),
 }
 
 //constructor for creating a new unit
-unit::unit(const unit_type* t, int side, bool use_traits) :
+unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit) :
                type_(t), state_(STATE_NORMAL),
 			   hitpoints_(t->hitpoints()),
 			   maxHitpoints_(t->hitpoints()),
@@ -71,8 +71,8 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 			   backupAttacks_(t->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE)
 {
-
-	validate_side(side_);
+	//dummy units used by the 'move_unit_fake' command don't need to have a side.
+	if(dummy_unit == false) validate_side(side_);
 
 	if(use_traits) {
 		//units that don't have traits generated are just generic

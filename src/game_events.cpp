@@ -421,7 +421,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& type = cfg["type"];
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
-			unit dummy_unit(&itor->second,0);
+			unit dummy_unit(&itor->second,0,false,true);
 			const std::vector<std::string> xvals = config::split(cfg["x"]);
 			const std::vector<std::string> yvals = config::split(cfg["y"]);
 			std::vector<gamemap::location> path;

@@ -32,7 +32,7 @@ public:
 	friend struct unit_movement_resetter;
 
 	unit(game_data& data, const config& cfg);
-	unit(const unit_type* t, int side, bool use_traits=false);
+	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false);
 
 	//a constructor used when advancing a unit
 	unit(const unit_type* t, const unit& u);
