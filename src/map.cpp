@@ -246,6 +246,15 @@ const gamemap::location& gamemap::starting_position(int n) const
 	return startingPositions_[n];
 }
 
+int gamemap::num_valid_starting_positions() const
+{
+	const int res = is_starting_position(gamemap::location());
+	if(res == -1)
+		return num_starting_positions();
+	else
+		return res;
+}
+
 int gamemap::num_starting_positions() const
 {
 	return sizeof(startingPositions_)/sizeof(*startingPositions_);
@@ -253,10 +262,11 @@ int gamemap::num_starting_positions() const
 
 int gamemap::is_starting_position(const gamemap::location& loc) const
 {
+	const gamemap::location* const beg = startingPositions_+1;
 	const gamemap::location* const end = startingPositions_+num_starting_positions();
-	const gamemap::location* const pos = std::find(startingPositions_,end,loc);
+	const gamemap::location* const pos = std::find(beg,end,loc);
 
-	return pos == end ? -1 : pos - startingPositions_;
+	return pos == end ? -1 : pos - beg;
 }
 
 void gamemap::set_starting_position(int side, const gamemap::location& loc)

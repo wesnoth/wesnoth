@@ -96,8 +96,8 @@ public:
 
 	//functions to manipulate starting positions of the different sides.
 	const location& starting_position(int side) const;
-	int num_starting_positions() const;
 	int is_starting_position(const location& loc) const;
+	int num_valid_starting_positions() const;
 
 	void set_starting_position(int side, const location& loc);
 
@@ -128,6 +128,8 @@ public:
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, TERRAIN ter);
 private:
+	int num_starting_positions() const;
+
 	std::vector<TERRAIN> terrainPrecedence_;
 	std::map<TERRAIN,terrain_type> letterToTerrain_;
 	std::map<std::string,terrain_type> terrain_;

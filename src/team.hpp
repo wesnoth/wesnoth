@@ -45,6 +45,7 @@ public:
 		std::vector<std::string> recruitment_pattern;
 		double aggression;
 		std::vector<int> enemies;
+		std::string team_name;
 
 		enum CONTROLLER { HUMAN, AI, NETWORK };
 		CONTROLLER controller;
@@ -111,6 +112,11 @@ private:
 	std::vector<std::vector<bool> > fog_;
 
 	team_info info_;
+};
+
+struct teams_manager {
+	teams_manager(const std::vector<team>& teams);
+	~teams_manager();
 };
 
 #endif

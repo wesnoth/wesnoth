@@ -20,6 +20,20 @@
 #include <cstdlib>
 #include <sstream>
 
+namespace {
+	const std::vector<team>* teams = NULL;
+}
+
+teams_manager::teams_manager(const std::vector<team>& teams_list)
+{
+	teams = &teams_list;
+}
+
+teams_manager::~teams_manager()
+{
+	teams = NULL;
+}
+
 team::target::target(const config& cfg)
               : criteria(cfg), value(atof(cfg["value"].c_str()))
 {
@@ -35,6 +49,9 @@ team::team_info::team_info(const config& cfg)
 	gold = cfg["gold"];
 	income = cfg["income"];
 	name = cfg["name"];
+	team_name = cfg["team_name"];
+	if(team_name.empty())
+		team_name = cfg["side"];
 
 	const std::string& village_income = cfg["village_gold"];
 	if(village_income.empty())
@@ -117,6 +134,7 @@ void team::team_info::write(config& cfg) const
 	cfg["gold"] = gold;
 	cfg["income"] = income;
 	cfg["name"] = name;
+	cfg["team_name"] = team_name;
 
 	char buf[50];
 	sprintf(buf,"%d",income_per_village);
@@ -298,12 +316,17 @@ const std::string& team::name() const
 
 bool team::is_enemy(int n) const
 {
+	//if we have a team name, we are friends with anyone who has the same team name
+	if(info_.team_name.empty() == false) {
+		return teams != NULL && size_t(n-1) < teams->size() &&
+	           (*teams)[n-1].info_.team_name != info_.team_name;
+	}
+
 	//if enemies aren't listed, then everyone is an enemy
 	if(info_.enemies.empty())
 		return true;
 
-	return std::find(info_.enemies.begin(),info_.enemies.end(),n) !=
-	                                       info_.enemies.end();
+	return std::find(info_.enemies.begin(),info_.enemies.end(),n) != info_.enemies.end();
 }
 
 double team::aggression() const

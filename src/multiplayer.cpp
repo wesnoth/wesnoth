@@ -504,6 +504,22 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				gamemap map(cfg,map_data);
 
+				//if there are less sides in the configuration than there are starting
+				//positions, then generate the additional sides
+				const int map_positions = map.num_valid_starting_positions();
+				std::cerr << "map_positions: " << map_positions << "\n";
+				for(int pos = level_ptr->get_children("side").size(); pos < map_positions; ++pos) {
+					std::cerr << "adding side...\n";
+					config& side = level_ptr->add_child("side");
+					side["enemy"] = "1";
+					char buf[50];
+					sprintf(buf,"%d",(pos+1));
+					side["side"] = buf;
+					side["team_name"] = buf;
+					side["canrecruit"] = "1";
+					side["controller"] = "human";
+				}
+
 				const scoped_sdl_surface mini(image::getMinimap(145,145,map));
 
 				if(mini != NULL) {
@@ -522,14 +538,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				rect.h = 25;
 				SDL_BlitSurface(playernum_bg, NULL, disp.video().getSurface(), &rect);
 				config& level = *level_ptr;
-				const config::child_itors sides = level.child_range("side");
-				int sides_num;
-				config::child_iterator sd;
-				for(sd = sides.first; sd != sides.second; ++sd) {
-					sides_num = sd - sides.first;
-				}
+				const int nsides = level.get_children("side").size();
+
 				std::stringstream players;
-				players << "Players: " << sides_num + 1;
+				players << "Players: " << nsides;
 				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 					                players.str(),rect.x+45,rect.y);
 				update_rect(rect);
