@@ -155,6 +155,33 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"<img>src=help/recruit.png align=left float=yes</img>I starten af enhver "
+"kamp, og på tidspunkter i under den, vil du blive nødt til at rekrytere "
+"enheder til din hær. For at rekrutere, må du have din leder (Konrad i "
+"Tronarving kampagen) i Slotstårn-feltet i en Borg. Du kan rekrutere ved "
+"enten at vælge Rekruter fra menuen eller højre-klikke på et felt og vælge "
+"<italic>text=Rekruter</italic>. Dette bruger rekruterings-menuen op, der "
+"viser hvilke enheder du kan rekrutere, sammen med hvor meget guld de koster. "
+"Klik på en enhed for at se dens egenskaber, så klik på rekruter knappen for "
+"at rekrutere den.\n"
+"\n"
+"Hvis du højreklikkede på et borg felt og valgte rekruter, så vil den nye "
+"enhed komme frem på dette felt, ellers vil den nye enhed komme frem på et "
+"felt tæt på slotstårnet. Du kan kun rekrutere så mange enheder som der er "
+"frie felter i din borg, og du kan ikke bruge mere guld på rekrutering, end "
+"du rent faktisk har.\n"
+"\n"
+"Rekruterede enheder kommer med to tilfældige <ret>dst=traits "
+"text=Karatertræk</ref> der ændrer på deres egenskaber.\n"
+"\n"
+"I senere scenarier kan du også Genindkalde overlevende fra tidligere kampe. "
+"Genindkaldelse virker ligesom Rekrutering, bortset fra at Genindkaldelse "
+"altid koster 20 guldstykker og at Genindkaldelse viser dig alle overlevende "
+"enheder fra tidligere scenarier.\n"
+"\n"
+"Husk på at det enheder ikke kun koster guld at Rekrutere og Genindkalde, de "
+"koster også penge at støtte dem. Se <ref>dst=income_and_upkepp "
+"text=Inkomster og Udgifter</ref> for mere information."
 
 #: data/help.cfg:85 src/help.cpp:771 src/help.cpp:772
 msgid "Movement"
@@ -869,6 +896,11 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
+"For at rekrutere en enhed, højreklik på det borgfelt hvorpå du vil rekrutere "
+"enheden til. Så vælg Rekruter, eller hold musen over feltet og tryk Ctrl-R. "
+"Så vælg den type enhed du vil rekrutere, og tryk Ok. For at rekrutere "
+"hurtigere, kan bruge Ctrl-Shift-R for at gen-rekrutere dem samme type enhed "
+"som den sidste."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid ""
@@ -880,6 +912,13 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
+"En leder er en enhed der kan rekrutere. Det betyder at når lederen er i et "
+"slotstårn, kan han rekrutere enheder til de omkringliggende borgfelter. "
+"Ledere er normalt kraftfulde enheder som hver side kun har en af. Din leder "
+"er også normalt den enhed du først kontrollerer, og starter i et borgtårn.Du "
+"kan markere din leder ved hurtigt at trykke I. Hvis din leder dør, taber du "
+"spillet. Du kan vinde de fleste scenarier ved at overvinde alle fjendtlige "
+"ledere."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid "What's a leader?"
@@ -895,6 +934,9 @@ msgid ""
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Du må nødeligt se deres evner i gennem. De vises til venstre for boksen hvor "
+"du vælger enhederne. Du må også kigge på hvad de koster, hvilket står efter "
+"navnet på enheden. Du vil lære mere om disse evner senere i denne tutorial."
 
 #: data/scenarios/tutorial/tutorial1.cfg:86
 msgid "What happens when I recruit a unit?"
@@ -906,6 +948,9 @@ msgid ""
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
+"Når du rekruterer en enhed, kommer den frem på et borgfelt efter dit valg "
+"med fuldt liv. Den modtager og to karaktertræk. Det snakker vi om senere. "
+"Den kan ikke bevæge sig eller angribe før slutningen af din tur."
 
 #: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
@@ -1444,8 +1489,6 @@ msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
-"Solen står op over Wesnoth. Tiden på døgnet har indflydelse på hvor meget "
-"skade enheder af forskellige grupper kan gøre på hinanden."
 
 #: data/scenarios/tutorial/tutorial2.cfg:133
 msgid ""
@@ -1746,29 +1789,24 @@ msgid "xp"
 msgstr "xp"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
-#, fuzzy
 msgid "gold"
-msgstr "kulde"
+msgstr "guld"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
-#, fuzzy
 msgid "villages"
-msgstr "Landsbyer"
+msgstr "landsbyer"
 
 #: data/themes/default.cfg:158 data/themes/default.cfg:494
-#, fuzzy
 msgid "units"
-msgstr "Enheder"
+msgstr "enheder"
 
 #: data/themes/default.cfg:166 data/themes/default.cfg:502
-#, fuzzy
 msgid "upkeep"
-msgstr "Udgifter"
+msgstr "udgifter"
 
 #: data/themes/default.cfg:174 data/themes/default.cfg:510
-#, fuzzy
 msgid "income"
-msgstr "Inkomst"
+msgstr "inkomst"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
@@ -2067,6 +2105,9 @@ msgid ""
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target."
 msgstr ""
+"Dolke i Ryggen:\n"
+"Dette angreb giver dobelt skade hvis der står en enhed på den modsatte side "
+"af målet, og hvis at denne enhed holder med angriberen."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -2081,6 +2122,9 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
+"Dræne:\n"
+"Denne enhed får liv fra levende enheder, healer sig selv med halvdelen af "
+"skaden den giver."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -2102,6 +2146,8 @@ msgid ""
 "If this unit kills a living target and that unit was not stationed in a "
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
+"Sygdom: Hvis denne enhed dræber et levende mål og den enhed ikke var i en "
+"landsby, vil det døde måls lig rejse sig op af jorden og kæmpe for dig."
 
 #: data/translations/english.cfg:114
 msgid ""
@@ -2109,6 +2155,9 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Gift:\n"
+"Dette angreb forgifter målet. Forgiftede enheder taber 8 HP hver tur indtil "
+"de er kurerede eller reducerede til 1 HP."
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -2116,6 +2165,10 @@ msgid ""
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
+"Nedsløve:\n"
+"Dette angrib nedsløver målet. Nedsløvede enheder bevæger sig halvt så "
+"hurtigt og har kun en mindre angrebstur end normalt. Enheder er kun "
+"nedsløvede i en tur."
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -2235,7 +2288,7 @@ msgstr "Hulevæg"
 
 #: data/translations/english.cfg:163
 msgid "Encampment"
-msgstr ""
+msgstr "Lejrplads"
 
 #: data/translations/english.cfg:166
 msgid "$name's Bridge,$name's Crossing"
@@ -2243,7 +2296,7 @@ msgstr "$name's Bro,$name's Korsvej"
 
 #: data/translations/english.cfg:167
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "$name's Landevej, $name's Pas, Stien af $name"
 
 #: data/translations/english.cfg:168
 msgid "$name River,River $name"
@@ -2472,6 +2525,8 @@ msgstr ""
 #: data/translations/english.cfg:205
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Brug linier af enheder til at beskytte sårede enheder, for at lade dem komme "
+"til hægterne igen."
 
 #: data/translations/english.cfg:206
 msgid "Read the hotkeys list in the preferences menu."
@@ -2498,6 +2553,8 @@ msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Brug healere til at støtte dine angreb - de vil vinde dine kampe uden at "
+"behøve selv at angribe noget."
 
 #: data/translations/english.cfg:210
 msgid ""
@@ -2608,7 +2665,7 @@ msgstr "baghold,regenererer"
 #: data/units/Ancient_Wose.cfg:17 data/units/Elder_Wose.cfg:18
 #: data/units/Wose.cfg:19
 msgid "crush"
-msgstr ""
+msgstr "knus"
 
 #: data/units/Ancient_Wose.cfg:18 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
@@ -3177,7 +3234,7 @@ msgstr ""
 
 #: data/units/Dark_Adept.cfg:22 data/units/Necromancer.cfg:35
 msgid "chill wave"
-msgstr ""
+msgstr "kold bølge"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "Dark Queen"
@@ -3451,7 +3508,7 @@ msgstr "berserk"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Dværgisk Dragevagt"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
 msgid ""
@@ -3463,7 +3520,7 @@ msgstr ""
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
-msgstr ""
+msgstr "dragestav"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
@@ -3491,7 +3548,7 @@ msgstr "hammer"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Dværgisk Vagtmand"
 
 #: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
 #: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
@@ -3550,7 +3607,7 @@ msgstr "Lyn"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr "Dværgisk Stålklædt"
+msgstr ""
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
@@ -3604,7 +3661,7 @@ msgstr "tordenstav"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Dværgisk Tordenvagt"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
 msgid ""
@@ -4365,6 +4422,8 @@ msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
+"Langbueskytter kan bære store spcialiserede buer, som de har lært at bruge "
+"efter års kamp. Deres misiler kan endda gå igennem en rustning."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:66
 msgid "Lord"
@@ -4823,7 +4882,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Bonde"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -4835,7 +4894,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
-msgstr ""
+msgstr "høtyv"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
@@ -4862,7 +4921,7 @@ msgstr "Pirat Galeon"
 #: data/units/Pirate_Galleon.cfg:61 data/units/Transport_Galleon.cfg:15
 #: data/units/Watch_Tower.cfg:17
 msgid "ballista"
-msgstr ""
+msgstr "katapult"
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
@@ -5294,7 +5353,7 @@ msgstr "Vampyr Dame"
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
-msgstr ""
+msgstr "Kold og smuk, holder hun sig evig und ved at drikke de levendes blod."
 
 #: data/units/Vampire_Lady.cfg:19
 msgid "blood kiss"
@@ -5334,7 +5393,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Krigskonge"
 
 #: data/units/Warrior_King.cfg:19
 msgid ""
@@ -5431,7 +5490,7 @@ msgstr ""
 
 #: data/units/Young_Ogre.cfg:18
 msgid "meat cleaver"
-msgstr ""
+msgstr "kød-kløver"
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -5445,11 +5504,11 @@ msgstr ""
 
 #: src/about.cpp:45
 msgid "+Core Developers"
-msgstr ""
+msgstr "+Kerne Udviklere"
 
 #: src/about.cpp:46
 msgid "-   Main Developer"
-msgstr ""
+msgstr "-   Hoved Udviklere"
 
 #: src/about.cpp:49
 msgid "-   Artwork and graphics designer"
@@ -5457,7 +5516,7 @@ msgstr ""
 
 #: src/about.cpp:53
 msgid "+Developers"
-msgstr ""
+msgstr "+Udviklere"
 
 #: src/about.cpp:67
 msgid "+General Purpose Administrators"
@@ -5477,7 +5536,7 @@ msgstr "+Scenarie Designere"
 
 #: src/about.cpp:111
 msgid "+Packagers"
-msgstr ""
+msgstr "+Pakkere"
 
 #: src/about.cpp:119
 msgid "+Miscellaneous"
@@ -5541,7 +5600,7 @@ msgstr "+Portugisisk Oversættelse"
 
 #: src/about.cpp:210
 msgid "+Slovak Translation"
-msgstr ""
+msgstr "+Slovakisk Oversættelse"
 
 #: src/about.cpp:214
 msgid "+Spanish Translation"
@@ -5553,11 +5612,11 @@ msgstr "+Svensk Oversættelse"
 
 #: src/about.cpp:229
 msgid "+Contributors"
-msgstr ""
+msgstr "+Bidragere"
 
 #: src/about.cpp:237
 msgid "+ Bots"
-msgstr ""
+msgstr "+ Bots"
 
 #: src/about.cpp:264 src/help.cpp:2372 src/show_dialog.cpp:468
 msgid "Close"
@@ -5575,7 +5634,7 @@ msgstr ""
 
 #: src/actions.cpp:114
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "Der er ingen ledige borgfelter hvor du kan rekrutere en enhed til."
 
 #: src/actions.cpp:202
 msgid "none"
@@ -5583,15 +5642,15 @@ msgstr "ingen"
 
 #: src/actions.cpp:318 src/actions.cpp:435
 msgid "base damage"
-msgstr ""
+msgstr "basis skade"
 
 #: src/actions.cpp:328
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "angribers modstandskraft mod"
 
 #: src/actions.cpp:328
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "angribers svaghed mod"
 
 #: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
 msgid "Doubled"
@@ -5603,11 +5662,11 @@ msgstr "total skade"
 
 #: src/actions.cpp:445
 msgid "defender resistance vs"
-msgstr ""
+msgstr "forsvarers modstandskraft mod"
 
 #: src/actions.cpp:445
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "forsvarers svaghed mod"
 
 #: src/actions.cpp:496
 msgid "Halved"
@@ -5621,7 +5680,7 @@ msgstr "forgiftet"
 #: src/actions.cpp:708 src/actions.cpp:847 src/display.cpp:874
 #: src/reports.cpp:110
 msgid "slowed"
-msgstr ""
+msgstr "nedsløvede"
 
 #: src/actions.cpp:1718
 msgid "Ambushed!"
@@ -5641,7 +5700,7 @@ msgstr ""
 
 #: src/actions.cpp:1755
 msgid "$enemies Enemy units sighted!"
-msgstr ""
+msgstr "$enemies Fjendtlige enhed set!"
 
 #: src/actions.cpp:1759
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
@@ -5728,6 +5787,8 @@ msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
+"Der er ingen gemte spil der kan hentes.\n"
+"(Spil gemmes automatisk når du gennemfører et scenarie)"
 
 #: src/dialogs.cpp:418
 msgid "Delete Save"
@@ -5735,7 +5796,7 @@ msgstr "Slet Spil"
 
 #: src/dialogs.cpp:433
 msgid "Import Saved Games"
-msgstr ""
+msgstr "Hent Gemte Spil"
 
 #: src/dialogs.cpp:434
 msgid ""
@@ -5750,6 +5811,8 @@ msgid ""
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
+"Dine gemte mapper indeholder filer der ikke ser ud til at være lavet af "
+"denne version af Kampen om Wesnoth.Vil du registrere disse filer med spillet?"
 
 #: src/dialogs.cpp:509
 msgid "Show replay"
@@ -5796,11 +5859,11 @@ msgstr "nærkamp"
 #: src/dialogs.cpp:698 src/display.cpp:936 src/help.cpp:699
 #: src/playturn.cpp:599 src/reports.cpp:231
 msgid "ranged"
-msgstr ""
+msgstr "langrækkende"
 
 #: src/display.cpp:865
 msgid "healthy"
-msgstr ""
+msgstr "sund"
 
 #: src/display.cpp:870 src/reports.cpp:105
 msgid "invisible"
@@ -5808,7 +5871,7 @@ msgstr "usynlig"
 
 #: src/font.cpp:164
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Vera.ttf"
 
 #: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
@@ -5835,37 +5898,39 @@ msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Dette gemte spil er fra en anden version af spillet. Vil du prøve at hente "
+"det?"
 
 #: src/game.cpp:879 src/game.cpp:884 src/playlevel.cpp:549
 #: src/playlevel.cpp:789
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Der var en fejl i filen du prøvede at hente"
 
 #: src/game.cpp:984
 msgid " ,Get More Campaigns..."
-msgstr ""
+msgstr " ,Få flere kampagner..."
 
 #: src/game.cpp:990
 msgid "Choose the campaign you want to play:"
-msgstr ""
+msgstr "Vælg kampagnen du vil spille:"
 
 #: src/game.cpp:1000
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Fortsæt"
+msgstr "Forbind til Server"
 
 #: src/game.cpp:1001
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
+"Du vil nu oprette forbindelse med en kampagne server for at downloade "
+"kampagner."
 
 #: src/game.cpp:1002
 msgid "Server: "
-msgstr ""
+msgstr "Server: "
 
 #: src/game.cpp:1014
-#, fuzzy
 msgid "Could not connect to host."
-msgstr "Kunne ikke forbindes til fjern-værten"
+msgstr "Kunne ikke forbindes til hosten"
 
 #: src/game.cpp:1014 src/game.cpp:1029 src/game.cpp:1035 src/game.cpp:1046
 #: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
@@ -5875,55 +5940,54 @@ msgstr "Fejl"
 
 #: src/game.cpp:1022
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Venter på svar fra server"
 
 #: src/game.cpp:1035
 msgid "Error communicating with the server."
-msgstr ""
+msgstr "Fejl i kommunikationen med serveren."
 
 #: src/game.cpp:1046
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
-msgstr "Der er ingen sider tilgængelige i dette spil."
+msgstr "Der er ingen kampagner der kan downloades fra denne server."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Choose the campaign to download."
-msgstr "Vælg at spil at hente"
+msgstr "Vælg en kampagne at downloade."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Get Campaign"
-msgstr "Kampagne"
+msgstr "Hent kampagne"
 
 #: src/game.cpp:1059
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Downloader kampagne..."
 
 #: src/game.cpp:1071
-#, fuzzy
 msgid "Campaign Installed"
-msgstr "Kampagne"
+msgstr "Kampagne Installeret"
 
 #: src/game.cpp:1071
 msgid ""
 "The campaign has been installed. You will have to restart Wesnoth before you "
 "can play it."
 msgstr ""
+"Kampagnen er blevet installeret. Du bliver nødt til at genstarte Wesnoth før "
+"du kan spille den."
 
 #: src/game.cpp:1075
 msgid "Network communication error."
-msgstr ""
+msgstr "Netværks-kommunikations-fejl."
 
 #: src/game.cpp:1078
-#, fuzzy
 msgid "Remote host disconnected."
-msgstr "Vælg en vært at forbinde til"
+msgstr "Fjern host afbrudt."
 
 #: src/game.cpp:1081
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
+"Der var et problem med at lave de filer der skal bruges til at installere "
+"denne kampagne."
 
 #: src/game.cpp:1102
 msgid "Select difficulty level:"
@@ -5947,11 +6011,11 @@ msgstr "Tilslut en server eller et hostet spil"
 
 #: src/game.cpp:1122
 msgid "Host Multiplayer Game"
-msgstr ""
+msgstr "Bevært Et Multiplayer Spil"
 
 #: src/game.cpp:1122
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Bevært et spil uden at bruge en server"
 
 #: src/game.cpp:1125 src/multiplayer_client.cpp:269
 msgid "Login"
@@ -5967,11 +6031,11 @@ msgstr "Vælg dit foretrukne sprog"
 
 #: src/game.cpp:1291
 msgid "Could not initialize video. Exiting.\n"
-msgstr ""
+msgstr "Kunne ikke indlæse video. Afslutter.\n"
 
 #: src/game.cpp:1293
 msgid "Could not initialize fonts. Exiting.\n"
-msgstr ""
+msgstr "Kunne ikke indlæse skrifttyper. Afslutter.\n"
 
 #: src/help.cpp:574
 msgid "Advances to"
@@ -6015,11 +6079,11 @@ msgstr "Rækkevidde"
 
 #: src/help.cpp:666 src/help.cpp:667
 msgid "Special"
-msgstr ""
+msgstr "Special"
 
 #: src/help.cpp:723
 msgid "Resistances"
-msgstr ""
+msgstr "Modstandskrafter"
 
 #: src/help.cpp:727 src/help.cpp:728
 msgid "Attack Type"
@@ -6147,7 +6211,7 @@ msgstr "Indstillinger"
 
 #: src/hotkeys.cpp:145
 msgid "Scenario Objectives"
-msgstr ""
+msgstr "Scenariets Mål"
 
 #: src/hotkeys.cpp:146 src/playturn.cpp:1998
 msgid "Unit List"
@@ -6155,7 +6219,7 @@ msgstr "Enheds Liste"
 
 #: src/hotkeys.cpp:147 src/playturn.cpp:2086
 msgid "Statistics"
-msgstr ""
+msgstr "Egenskaber"
 
 #: src/hotkeys.cpp:148
 msgid "Quit Game"
@@ -6195,15 +6259,15 @@ msgstr "Gem Som"
 
 #: src/hotkeys.cpp:157
 msgid "Set Player Start Position"
-msgstr ""
+msgstr "Set Spillers Startposition"
 
 #: src/hotkeys.cpp:158
 msgid "Flood Fill"
-msgstr ""
+msgstr "Fyld op"
 
 #: src/hotkeys.cpp:159
 msgid "Fill Selection"
-msgstr ""
+msgstr "Fyld Markeringen"
 
 #: src/hotkeys.cpp:160
 msgid "Cut"
@@ -6219,11 +6283,11 @@ msgstr "Sæt Ind"
 
 #: src/hotkeys.cpp:163
 msgid "Revert from Disk"
-msgstr ""
+msgstr "<"
 
 #: src/hotkeys.cpp:164
 msgid "Resize Map"
-msgstr ""
+msgstr "Ændr Størrelse"
 
 #: src/hotkeys.cpp:165
 msgid "Flip Map"
@@ -6255,7 +6319,7 @@ msgstr "Find Label eller Enhed"
 
 #: src/hotkeys.cpp:172
 msgid "Speak to Ally"
-msgstr ""
+msgstr "Til til Allieret"
 
 #: src/hotkeys.cpp:173
 msgid "Speak to All"
@@ -6299,7 +6363,7 @@ msgstr "Luk Vindue"
 
 #: src/mapgen_dialog.cpp:72
 msgid "Map Generator"
-msgstr ""
+msgstr "Bane Generator"
 
 #: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:484
 msgid "Players"
@@ -6315,7 +6379,7 @@ msgstr "Højde"
 
 #: src/mapgen_dialog.cpp:80
 msgid "Iterations"
-msgstr ""
+msgstr "Gentagelser"
 
 #: src/mapgen_dialog.cpp:81
 msgid "Bump Size"
@@ -6327,7 +6391,7 @@ msgstr "Landsbyer"
 
 #: src/mapgen_dialog.cpp:83
 msgid "Landform"
-msgstr ""
+msgstr "Landform"
 
 #: src/mapgen_dialog.cpp:182
 msgid "Roads Between Castles"
@@ -6343,7 +6407,7 @@ msgstr "Kystlinie"
 
 #: src/mapgen_dialog.cpp:250
 msgid "Inland"
-msgstr ""
+msgstr "INdland"
 
 #: src/mapgen_dialog.cpp:250
 msgid "Island"
@@ -6626,11 +6690,11 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:141
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Tom Plads"
 
 #: src/multiplayer_lobby.cpp:141
 msgid "Vacant Slots"
-msgstr "Tom Plads"
+msgstr "Tomme Pladser"
 
 #: src/multiplayer_lobby.cpp:156
 msgid "Observe Game"
@@ -6758,6 +6822,8 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Spilnavne må ikke indeholde koloner eller nogen form for skråstrege. Vælg "
+"venligts et andet navn."
 
 #: src/playturn.cpp:1407
 msgid "Saved"
@@ -6828,9 +6894,8 @@ msgstr ""
 "(Du må have trænede soldater fra et tidligere scenarie)"
 
 #: src/playturn.cpp:1776
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "guld stykker for at genindkalde en enhed"
+msgstr "Du må have mindst $cost guldstykker for at genindkalde en enhed."
 
 #: src/playturn.cpp:1799
 msgid "Dismiss Unit"
@@ -6902,7 +6967,7 @@ msgstr "Chat Log"
 
 #: src/playturn.cpp:2209
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Kunne ikke finde label eller enhed der indeholder strengen @search."
 
 #: src/playturn.cpp:2283
 msgid "Place Label"
@@ -6968,6 +7033,7 @@ msgstr ""
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
+"Denne enhed er blevet lavet til sten. Den kan ikke bevæge sig eller angribe."
 
 #: src/reports.cpp:131 src/reports.cpp:142
 msgid "_description"
@@ -6994,19 +7060,16 @@ msgid "Chaotic units"
 msgstr "Kaotiske enheder"
 
 #: src/reports.cpp:312
-#, fuzzy
 msgid "Owned village"
-msgstr "Landsby"
+msgstr "Ejet landsby"
 
 #: src/reports.cpp:314
-#, fuzzy
 msgid "Enemy village"
-msgstr "Landsby"
+msgstr "Fjendtlig landsby"
 
 #: src/reports.cpp:316
-#, fuzzy
 msgid "Allied village"
-msgstr "Goblinsk Plyndrer"
+msgstr "Allieret landsby"
 
 #: src/show_dialog.cpp:930
 msgid "KB"
@@ -7050,7 +7113,7 @@ msgstr "Afslut"
 
 #: src/titlescreen.cpp:168
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Start en tutorial for at lære spillet at kende"
 
 #: src/titlescreen.cpp:169
 msgid "Start a new single player campaign"
@@ -7113,15 +7176,3 @@ msgstr "Slet fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Slettelse af fil mislykkedes"
-
-#~ msgid "You must have at least"
-#~ msgstr "Du må have mindst"
-
-#~ msgid "Owned"
-#~ msgstr "Ejet"
-
-#~ msgid "Enemy"
-#~ msgstr "Fjendtlig"
-
-#~ msgid "Allied"
-#~ msgstr "Allieret"
