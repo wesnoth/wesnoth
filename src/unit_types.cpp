@@ -320,7 +320,6 @@ unit_type::unit_type(config& cfg, const movement_type_map& mv_types,
 		max_heals_ = 0;
 	}
 
-	heals_ = has_ability("heals");
 	regenerates_ = has_ability("regenerates");
 	leadership_ = has_ability("leadership");
 	lightbringer_ = has_ability("lightbringer");
