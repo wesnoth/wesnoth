@@ -34,6 +34,8 @@ namespace {
 
 void show_intro(display& screen, const config& data)
 {
+	std::cerr << "showing intro sequence...\n";
+
 	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
 
@@ -106,7 +108,7 @@ void show_intro(display& screen, const config& data)
 		// xpos + image->w - 70 is the left most edge of the bounding box of the buttons.
 		// subtract 96 more than we need, so intro text does not overlap the buttons.
 		// TODO: should handle word wrap *before* drawing anything, so the text will not overlap the button.
-		const int max_xpos = xpos + image->w - 70 - 96;
+		const int max_xpos = xpos + (image != NULL ? image->w : 0) - 70 - 96;
 		size_t height = 0;
 		std::string buf;
 		for(;;) {
@@ -185,6 +187,8 @@ void show_intro(display& screen, const config& data)
 
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
                                      screen.video().getSurface());
+
+	std::cerr << "intro sequence finished...\n";
 }
 
 void show_map_scene(display& screen, config& data)
