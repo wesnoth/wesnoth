@@ -6,6 +6,7 @@
 #include "hotkeys.hpp"
 #include "key.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
@@ -15,13 +16,15 @@
 
 #include "SDL_ttf.h"
 
+#define LOG_DP lg::info(lg::display)
+
 namespace {
 
 void fade_logo(display& screen, int xpos, int ypos)
 {
 	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
-		std::cerr << "Could not find game logo\n";
+		LOG_DP << "Could not find game logo\n";
 		return;
 	}
 
@@ -37,9 +40,9 @@ void fade_logo(display& screen, int xpos, int ypos)
 	CKey key;
 	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
 
-	//std::cerr << "fading logo in....\n";
+	LOG_DP << "fading logo in....\n";
 
-	//std::cerr << "logo size: " << logo->w << "," << logo->h << "\n";
+	LOG_DP << "logo size: " << logo->w << "," << logo->h << "\n";
 
 	const video_change_detector disp_change_detector(screen.video());
 
@@ -74,7 +77,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	}
 
-	//std::cerr << "logo faded in\n";
+	LOG_DP << "logo faded in\n";
 
 	faded_in = true;
 }
@@ -130,17 +133,17 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	const surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
 
 	if(title_surface == NULL) {
-		std::cerr << "Could not find title image\n";
+		LOG_DP << "Could not find title image\n";
 	} else {
 		screen.blit_surface(0,0,title_surface);
 		update_rect(screen.screen_area());
 
-		//std::cerr << "displayed title image\n";
+		LOG_DP << "displayed title image\n";
 	}
 
 	fade_logo(screen,(game_config::title_logo_x*screen.x())/1024,(game_config::title_logo_y*screen.y())/768);
 
-	//std::cerr << "faded logo\n";
+	LOG_DP << "faded logo\n";
 
 	const std::string& version_str = _("Version") + std::string(" ") +
 	                                 game_config::version;
@@ -156,7 +159,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 				font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
-	//std::cerr << "drew version number\n";
+	LOG_DP << "drew version number\n";
 
 	//members of this array must correspond to the enumeration TITLE_RESULT
 	static const char* button_labels[] = { N_("TitleScreen button^Tutorial"),
@@ -190,7 +193,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 		buttons.push_back(button(screen,sgettext(button_labels[b])));
 		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
-		//std::cerr << "set help string for '" << button_labels[b] << "' -> '" << sgettext(help_button_labels[b]) << "'\n";
+		LOG_DP << "set help string for '" << button_labels[b] << "' -> '" << sgettext(help_button_labels[b]) << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
@@ -229,7 +232,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	events::raise_draw_event();
 
-	//std::cerr << "drew buttons dialog\n";
+	LOG_DP << "drew buttons dialog\n";
 
 	CKey key;
 
@@ -237,7 +240,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	update_whole_screen();
 
-	std::cerr << "entering interactive loop...\n";
+	LOG_DP << "entering interactive loop...\n";
 
 	for(;;) {
 		for(size_t b = 0; b != buttons.size(); ++b) {

@@ -1,10 +1,13 @@
 #include "font.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "sdl_utils.hpp"
 #include "theme.hpp"
 #include "util.hpp"
 
 #include <cstdlib>
+
+#define LOG_DP lg::info(lg::display)
 
 namespace {
 	const SDL_Rect empty_rect = {0,0,0,0};
@@ -221,9 +224,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	for(i = resolutions.begin(); i != resolutions.end(); ++i) {
 		const int width = atoi((**i)["width"].c_str());
 		const int height = atoi((**i)["height"].c_str());
-		std::cerr << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
+		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
 		if(screen.w >= width && screen.h >= height) {
-			std::cerr << "loading theme: " << width << "," << height << "\n";
+			LOG_DP << "loading theme: " << width << "," << height << "\n";
 			current = i;
 			result = true;
 			break;
@@ -238,7 +241,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if(current == resolutions.end()) {
 		if(!resolutions.empty())
-			std::cerr << "ERROR: No valid resolution found\n";
+			LOG_DP << "ERROR: No valid resolution found\n";
 		return false;
 	}
 
@@ -285,13 +288,13 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config::child_list& menu_list = cfg.get_children("menu");
 	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
 		const menu new_menu(**m);
-		//std::cerr << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		LOG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else
 			menus_.push_back(new_menu);
 
-		//std::cerr << "done adding menu...\n";
+		LOG_DP << "done adding menu...\n";
 	}
 
 	return result;
