@@ -357,29 +357,51 @@ int play_game(int argc, char** argv)
 			state.scenario = "tutorial";
 		} else if(res == gui::NEW_CAMPAIGN) {
 			state.campaign_type = "scenario";
-			state.scenario = "scenario1";
 
-			static const std::string difficulties[] = {"EASY","NORMAL","HARD"};
-			const int ndiff = sizeof(difficulties)/sizeof(*difficulties);
-			std::vector<std::string> options;
+			const config::const_child_itors campaigns = game_config.child_range("campaign");
 
-			for(int i = 0; i != ndiff; ++i) {
-				options.push_back(string_table[difficulties[i]]);
-				if(options.back().empty())
-					options.back() = difficulties[i];
+			std::vector<std::string> campaign_names;
+
+			for(config::const_child_iterator i = campaigns.first; i != campaigns.second; ++i) {
+				campaign_names.push_back((**i)["name"]);
 			}
 
-			const int res = gui::show_dialog(disp,NULL,"",
-			                            string_table["difficulty_level"],
-			                            gui::OK_CANCEL,&options);
-			if(res == -1)
+			if(campaign_names.empty()) {
+				gui::show_dialog(disp,NULL,"",string_table["error_no_campaigns"],gui::OK_ONLY);
 				continue;
+			}
 
-			assert(size_t(res) < options.size());
+			int res = 0;
 
-			state.difficulty = difficulties[res];
-			defines_map.clear();
-			defines_map[difficulties[res]] = "";
+			if(campaign_names.size() > 1) {
+				res = gui::show_dialog(disp,NULL,"",
+				                                 string_table["choose_campaign"],
+												 gui::OK_CANCEL,&campaign_names);
+
+				if(res == -1)
+					continue;
+			}
+
+			const config& campaign = **(campaigns.first+res);
+
+			state.scenario = campaign["first_scenario"];
+
+			const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
+
+			if(difficulties.empty() == false) {
+				std::vector<std::string> options(difficulties.size());
+				std::transform(difficulties.begin(),difficulties.end(),options.begin(),translate_string);
+
+				const int res = gui::show_dialog(disp,NULL,"",
+				                            string_table["difficulty_level"],
+				                            gui::OK_CANCEL,&options);
+				if(res == -1)
+					continue;
+
+				state.difficulty = difficulties[res];
+				defines_map.clear();
+				defines_map[difficulties[res]] = "";
+			}
 		} else if(res == gui::MULTIPLAYER) {
 			state.campaign_type = "multiplayer";
 			state.scenario = "";

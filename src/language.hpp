@@ -26,6 +26,10 @@
 //displayed on screen.
 extern std::map<std::string,std::string> string_table;
 
+//function which translates a string if the string is available in
+//the string table, and otherwise simply returns the string itself
+const std::string& translate_string(const std::string& str);
+
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
 std::vector<std::string> get_languages(config& cfg);

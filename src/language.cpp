@@ -26,7 +26,16 @@ namespace {
 
 CHARSET charset() { return charset_used; }
 
-std::map<std::string,std::string> string_table;
+string_map string_table;
+
+const std::string& translate_string(const std::string& str)
+{
+	const string_map::const_iterator i = string_table.find(str);
+	if(i != string_table.end())
+		return i->second;
+	else
+		return str;
+}
 
 std::vector<std::string> get_languages(config& cfg)
 {
