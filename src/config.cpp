@@ -235,16 +235,20 @@ void internal_preprocess_data(const std::string& data,
 				args.erase(args.begin());
 
 				std::stringstream value;
-				for(i = end+1; i != data.end(); ++i) {
-					static const std::string hash_enddef("#enddef");
-					if(size_t(data.end() - i) > hash_enddef.size() &&
-					   std::equal(hash_enddef.begin(),hash_enddef.end(),i)) {
-						i += hash_enddef.size();
+				static const std::string hash_enddef("#enddef");
+				for(i = end+1; i <= data.end() - hash_enddef.size(); ++i) {
+					if(std::equal(hash_enddef.begin(),hash_enddef.end(),i)) {
 						break;
 					}
 
 					value << *i;
 				}
+
+				if(i > data.end() - hash_enddef.size()) {
+					throw config::error("pre-processing condition unterminated in '" + fname + "': '" + items + "'");
+				}
+
+				i += hash_enddef.size();
 
 				defines_map.insert(std::pair<std::string,preproc_define>(
 				                    symbol,preproc_define(value.str(),args)));
