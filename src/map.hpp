@@ -82,6 +82,9 @@ public:
 		static location null_location;
 	};
 
+	const std::string& underlying_terrain(const location& loc) const
+	{ return underlying_terrain(get_terrain(loc)); }
+
 	bool is_village(TERRAIN terrain) const;
 	bool gives_healing(TERRAIN terrain) const;
 	bool is_castle(TERRAIN terrain) const;

@@ -407,7 +407,7 @@ void unit::heal_all()
 }
 
 bool unit::invisible(const std::string& terrain, int lawful_bonus, 
-		const gamemap::location loc, 
+		const gamemap::location& loc, 
 		const unit_map& units,const std::vector<team>& teams) const
 {
 	bool is_inv = false;

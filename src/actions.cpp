@@ -1644,7 +1644,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	units.erase(ui);
 	if(disp != NULL) {
-		unit_display::move_unit(*disp,map,steps,u);
+		unit_display::move_unit(*disp,map,steps,u,status.get_time_of_day(),units,teams);
 	}
 
 	u.set_movement(moves_left);

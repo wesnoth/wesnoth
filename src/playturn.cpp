@@ -1249,7 +1249,7 @@ void turn_info::undo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 		units_.erase(u);
-		unit_display::move_unit(gui_,map_,route,un);
+		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
 
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
@@ -1322,7 +1322,7 @@ void turn_info::redo()
 		unit un = u->second;
 		un.set_goto(gamemap::location());
 		units_.erase(u);
-		unit_display::move_unit(gui_,map_,route,un);
+		unit_display::move_unit(gui_,map_,route,un,status_.get_time_of_day(),units_,teams_);
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	

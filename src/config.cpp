@@ -912,6 +912,7 @@ namespace {
 	                   compress_schema_item = 2, compress_literal_word = 3,
 	                   compress_first_word = 4, compress_end_words = 256;
 	const size_t compress_max_words = compress_end_words - compress_first_word;
+	const size_t max_schema_item_length = 20;
 
 	void compress_output_literal_word(const std::string& word, std::vector<char>& output)
 	{
@@ -922,6 +923,10 @@ namespace {
 
 	compression_schema::word_char_map::const_iterator add_word_to_schema(const std::string& word, compression_schema& schema)
 	{
+		if(word.size() > max_schema_item_length) {
+			throw config::error("Schema item is too long");
+		}
+
 		unsigned int c = compress_first_word + schema.word_to_char.size();
 
 		schema.char_to_word.insert(std::pair<unsigned int,std::string>(c,word));
@@ -930,6 +935,10 @@ namespace {
 
 	compression_schema::word_char_map::const_iterator get_word_in_schema(const std::string& word, compression_schema& schema, std::vector<char>& output)
 	{
+		if(word.size() > max_schema_item_length) {
+			return schema.word_to_char.end();
+		}
+
 		//see if this word is already in the schema
 		const compression_schema::word_char_map::const_iterator w = schema.word_to_char.find(word);
 		if(w != schema.word_to_char.end()) {

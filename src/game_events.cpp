@@ -444,7 +444,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				                                 atoi(yvals[i].c_str())-1));
 			}
 
-			unit_display::move_unit(*screen,*game_map,path,dummy_unit);
+			unit_display::move_unit(*screen,*game_map,path,dummy_unit,status_ptr->get_time_of_day(),*units,*teams);
 		}
 	}
 
