@@ -19,3 +19,11 @@ uninstall-hook:
 	done
 	if test -d $(DESTDIR)$(mandir)/man6 ; then echo `rmdir $(DESTDIR)$(mandir)/man6` ; fi
 	if test -d $(DESTDIR)$(mandir) ; then echo `rmdir $(DESTDIR)$(mandir)` ; fi
+
+dist-hook:
+	for i in $(MAN_LANG); do \
+		mkdir -p $(distdir)/$$i ; \
+		for j in $(dist_man6_MANS); do \
+			$(INSTALL) -c -m 644 $(srcdir)/$$i/$$j $(distdir)/$$i/$$j ; \
+		done \
+	done
