@@ -42,11 +42,11 @@ namespace game_config
 	std::string rightside_image = "misc/rightside.png";
 	std::string rightside_image_bot = "misc/rightside-bottom.png";
 
-	std::string moved_energy_image = "moved-energy.png";
-	std::string unmoved_energy_image = "unmoved-energy.png";
-	std::string partmoved_energy_image = "partmoved-energy.png";
-	std::string enemy_energy_image = "enemy-energy.png";
-	std::string ally_energy_image = "ally-energy.png";
+	std::string moved_energy_image = "misc/bar-energy-moved.png";
+	std::string unmoved_energy_image = "misc/bar-energy-unmoved.png";
+	std::string partmoved_energy_image = "misc/bar-energy-partmoved.png";
+	std::string enemy_energy_image = "misc/bar-energy-enemy.png";
+	std::string ally_energy_image = "misc/bar-energy-ally.png";
 	std::string flag_image = "terrain/flag-team%d-1.png:150,terrain/flag-team%d-2.png:150";
 
 	std::string dot_image = "misc/dot.png";
