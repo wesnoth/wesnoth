@@ -25,6 +25,7 @@ const char* sgettext (const char *msgid)
 
 const char* dsgettext (const char * domainname, const char *msgid)
 {
+	bind_textdomain_codeset(domainname, "UTF-8");
 	const char *msgval = dgettext (domainname, msgid);
 	if (msgval == msgid) {
 		msgval = strrchr (msgid, '^');
