@@ -146,6 +146,7 @@ std::vector<std::string> get_text() {
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   Julen Landa (genars)",
+		"-   Mikel Olasagasti (Hey_neken)",
 		"+ ",
 
 		"_" N_("+Bulgarian Translation"),
