@@ -329,7 +329,7 @@ void mp_connect::gui_init()
 		sliders_gold_.push_back(gui::slider(*disp_, rect, 0.0+((80.0)/979.0)));
 		rect.w = 30;
 		rect.x = (disp_->x()-width_)/2+603;
-		gold_bg_ = surface_restorer(&disp_->video(),rect);
+		gold_bg_.push_back(surface_restorer(&disp_->video(),rect));
 		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
 		                "100", rect.x, rect.y);
 	}
@@ -345,6 +345,7 @@ void mp_connect::gui_update()
 
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	const config::child_itors sides = level_->child_range("side");
+	SDL_Rect rect;
 
 	for(size_t n = 0; n != combos_type_.size(); ++n) {
 		config& side = **(sides.first+n);
@@ -395,6 +396,20 @@ void mp_connect::gui_update()
 		//Player Color
 
 		//Player Gold
+		std::string str;
+		str = side["gold"];
+		sliders_gold_[n].set_value((atoi(str.c_str()) - 20 + 0.0) / 979.0);
+		rect.x = (disp_->x() - width_) / 2 + 603;
+		rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
+		rect.w = 30;
+		rect.h = launch_.height();
+		gold_bg_[n].restore();
+		font::draw_text(disp_, disp_->screen_area(), 12,
+				font::GOOD_COLOUR,
+		                side["gold"],
+				rect.x, rect.y);
+		update_rect(rect);
+
 	}
 }
 
@@ -500,7 +515,7 @@ int mp_connect::gui_do()
 					rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
 					rect.w = 30;
 					rect.h = launch_.height();
-					gold_bg_.restore();
+					gold_bg_[n].restore();
 					font::draw_text(disp_, disp_->screen_area(), 12,
 							font::GOOD_COLOUR,
 					                (*sides.first[n])["gold"],

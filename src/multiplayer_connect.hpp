@@ -72,7 +72,7 @@ private:
 	gui::button launch_;
 	gui::button cancel_;
 
-	surface_restorer gold_bg_;
+	std::vector<surface_restorer> gold_bg_;
 };
 
 #endif

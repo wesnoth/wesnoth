@@ -104,6 +104,11 @@ void slider::draw()
 	update_rect(area_);
 }
 
+void slider::set_value(double value)
+{
+	value_ = value;
+}
+
 double slider::process(int mousex, int mousey, bool button)
 {
 	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));

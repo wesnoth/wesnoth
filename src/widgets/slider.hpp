@@ -50,6 +50,7 @@ public:
 	double process(int mousex, int mousey, bool button);
 
 	const SDL_Rect& area() const;
+	void set_value(double value);
 
 	void background_changed();
 };
