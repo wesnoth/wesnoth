@@ -42,9 +42,7 @@ error::error(const std::string& msg, connection sock) : message(msg), socket(soc
 
 void error::disconnect()
 {
-	if(socket) {
-		network::disconnect(socket);
-	}
+	network::disconnect(socket);
 }
 
 manager::manager() : free_(true)
@@ -155,7 +153,7 @@ connection accept_connection()
 
 void disconnect(connection s)
 {
-	if(!s) {
+	if(!s && nconnections() > 1) {
 		while(sockets.empty() == false) {
 			disconnect(sockets.back());
 		}
@@ -194,7 +192,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 	}
 
 	if(bad_sockets.count(connection_num) || bad_sockets.count(0))
+{
 		return 0;
+	}
 
 	if(sockets.empty()) {
 		return 0;
