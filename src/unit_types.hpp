@@ -246,7 +246,8 @@ private:
 
 	unit_type* gender_types_[2];
 
-	std::map<std::string,unit_type> variations_;
+	typedef std::map<std::string,unit_type*> variations_map;
+	variations_map variations_;
 
 	const config& cfg_;
 

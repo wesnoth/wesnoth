@@ -524,6 +524,10 @@ unit_type::unit_type(const unit_type& o)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
+
+	for(variations_map::const_iterator i = o.variations_.begin(); i != o.variations_.end(); ++i) {
+		variations_[i->first] = new unit_type(*i->second);
+	}
 }
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
@@ -532,7 +536,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 {
 	const config::child_list& variations = cfg.get_children("variation");
 	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
-		variations_.insert(std::pair<std::string,unit_type>((**var)["variation_name"],unit_type(**var,mv_types,races,traits)));
+		variations_.insert(std::pair<std::string,unit_type*>((**var)["variation_name"],new unit_type(**var,mv_types,races,traits)));
 	}
 
 	gender_types_[0] = NULL;
@@ -621,6 +625,10 @@ unit_type::~unit_type()
 {
 	delete gender_types_[unit_race::MALE];
 	delete gender_types_[unit_race::FEMALE];
+
+	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
+		delete i->second;
+	}
 }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
@@ -635,9 +643,9 @@ const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 
 const unit_type& unit_type::get_variation(const std::string& name) const
 {
-	const std::map<std::string,unit_type>::const_iterator i = variations_.find(name);
+	const variations_map::const_iterator i = variations_.find(name);
 	if(i != variations_.end()) {
-		return i->second;
+		return *i->second;
 	} else {
 		return *this;
 	}
