@@ -26,6 +26,11 @@ void metrics::no_requests()
 	current_requests_ = 0;
 }
 
+void metrics::game_terminated(const std::string& reason)
+{
+	terminations_[reason]++;
+}
+
 std::ostream& operator<<(std::ostream& out, metrics& met)
 {
 	const time_t time_up = time(NULL) - met.started_at_;
@@ -40,5 +45,15 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	    << met.nrequests_ << " requests serviced. " << requests_immediate
 	    << " (" << percent_immediate << "%) "
 	    << " requests were serviced immediately\n"
-	    << "longest burst of requests was " << met.most_consecutive_requests_ << "\n----\n";
+	    << "longest burst of requests was " << met.most_consecutive_requests_ << "\n";
+
+	if(met.terminations_.empty() == false) {
+		out << "Games have been terminated in the following ways: \n";
+		for(std::map<std::string,int>::const_iterator i = met.terminations_.begin(); i != met.terminations_.end(); ++i) {
+			out << i->first << ": " << i->second << "\n";
+		}
+	}
+
+	out << "----\n";
+	return out;
 }

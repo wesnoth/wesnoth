@@ -2423,6 +2423,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
 				team_num_,status_,state_of_game_,&replay_obj);
 			} catch(replay::error& e) {
+				//notify remote hosts of out of sync error
+				config cfg;
+				config& info = cfg.add_child("info");
+				info["type"] = "termination";
+				info["condition"] = "out of sync";
+				network::send_data(cfg);
+
 				save_game(_("The games are out of sync and will have to exit. Do you want to save an error log of your game?"),gui::YES_NO);
 
 				//throw e;

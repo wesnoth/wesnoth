@@ -701,6 +701,16 @@ redo_turn:
 			return end_level.result;
 		}
 
+		//if we're a player, and the result is victory/defeat, then send a message to notify
+		//the server of the reason for the game ending
+		if(end_level.result == DEFEAT || end_level.result == VICTORY && network::nconnections() > 0) {
+			config cfg;
+			config& info = cfg.add_child("info");
+			info["type"] = "termination";
+			info["condition"] = "game over";
+			network::send_data(cfg);
+		}
+
 		if(end_level.result == QUIT) {
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {

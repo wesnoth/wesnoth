@@ -313,16 +313,29 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			const bool enter = key[SDLK_RETURN] && !old_enter;
 			old_enter = key[SDLK_RETURN];
 			if(enter && message_entry.text().empty() == false) {
-				config msg;
-				config& child = msg.add_child("message");
-				child["message"] = message_entry.text();
-				child["sender"] = preferences::login();
-				network::send_data(msg);
-				message_entry.clear();
+				const std::string& text = message_entry.text();
 
-				std::stringstream message;
-				message << "<" << child["sender"] << ">  " << child["message"];
-				messages.push_back(message.str());
+				static const std::string query = "/query ";
+				if(text.size() >= query.size() && std::equal(query.begin(),query.end(),text.begin())) {
+					const std::string args = text.substr(query.size());
+
+					config cfg;
+					cfg.add_child("query")["type"] = args;
+					network::send_data(cfg);
+				} else {
+
+					config msg;
+					config& child = msg.add_child("message");
+					child["message"] = text;
+					child["sender"] = preferences::login();
+					network::send_data(msg);
+
+					std::stringstream message;
+					message << "<" << child["sender"] << ">  " << child["message"];
+					messages.push_back(message.str());
+				}
+
+				message_entry.clear();
 			}
 
 			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.process(mousex,mousey,left_button)){

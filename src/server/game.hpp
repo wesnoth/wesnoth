@@ -78,6 +78,15 @@ public:
 
 	size_t nplayers() const { return players_.size(); }
 
+	const std::string& termination_reason() const {
+		static const std::string aborted = "aborted";
+		return termination_.empty() ? aborted : termination_;
+	}
+
+	void set_termination_reason(const std::string& reason) {
+		if(termination_.empty()) { termination_ = reason; }
+	}
+
 private:
 
 	//function which returns true iff 'player' is on 'team'.
@@ -122,6 +131,8 @@ private:
 	};
 
 	std::vector<ban> bans_;
+
+	std::string termination_;
 };
 
 struct game_id_matches

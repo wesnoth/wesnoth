@@ -350,6 +350,18 @@ void server::run()
 						g->send_data_observers(construct_server_message(username + " has logged into the lobby",*g));
 					}
 
+				} else if(const config* query = data.child("query")) {
+
+					//process queries from clients in here
+					std::ostringstream response;
+					if((*query)["type"] == "metrics") {
+						//a query for server data from a player
+						response << metrics_;	
+					} else {
+						response << "Error: unrecognized query";
+					}
+					
+					network::send_data(construct_server_message(response.str(),lobby_players_),sock);
 				} else if(lobby_players_.is_member(sock)) {
 					const config* const create_game = data.child("create_game");
 					if(create_game != NULL) {
@@ -444,6 +456,14 @@ void server::run()
 					if(g == games_.end()) {
 						std::cerr << "ERROR: unknown socket " << games_.size() << "\n";
 						continue;
+					}
+
+					//if info is being provided about the game state
+					if(data.child("info") != NULL) {
+						const config& info = *data.child("info");
+						if(info["type"] == "termination") {
+							g->set_termination_reason(info["condition"]);
+						}
 					}
 
 					//if the owner is changing the controller for a side
@@ -620,6 +640,7 @@ void server::run()
 							//put the players back in the lobby and send
 							//them the game list and user list again
 							g->send_data(initial_response_);
+							metrics_.game_terminated(g->termination_reason());
 							lobby_players_.add_players(*g);
 							games_.erase(g);
 
@@ -770,6 +791,8 @@ void server::run()
 
 void server::delete_game(std::vector<game>::iterator i)
 {
+	metrics_.game_terminated(i->termination_reason());
+
 	//delete the game's configuration
 	config* const gamelist = initial_response_.child("gamelist");
 	assert(gamelist != NULL);
