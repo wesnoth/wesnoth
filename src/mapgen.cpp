@@ -679,7 +679,9 @@ std::string default_generate_map(size_t width, size_t height,
 	}
 
 	std::cerr << "placing villages...\n";
-
+	std::cerr << "villages: ";
+	std::cerr << nvillages;
+	std::cerr << "...\n";
 	//place villages. We attempt to place nvillages, all at random locations.
 	//After a location is chosen, we can through [village] tags to see
 	//what kind of village we should place on that type of terrain. If no
@@ -687,8 +689,8 @@ std::string default_generate_map(size_t width, size_t height,
 	//will be placed.
 	std::set<location> villages;
 	for(size_t village = 0; village != nvillages; ++village) {
-		const int x = rand()%width;
-		const int y = rand()%height;
+		const int x = rand()%width/3+width/3;
+		const int y = rand()%height/3+height/3;
 		const std::string str(1,terrain[x][y]);
 		const config* const child = cfg.find_child("village","terrain",str);
 		if(child != NULL) {
@@ -833,7 +835,7 @@ map_generator* get_map_generator(const std::string& name)
 int main(int argc, char** argv)
 {
 	int x = 50, y = 50, iterations = 50, hill_size = 50, lakes=3,
-	    nvillages = 500, nplayers = 2;
+	    nvillages = 25, nplayers = 2;
 	if(argc >= 2) {
 		x = atoi(argv[1]);
 	}

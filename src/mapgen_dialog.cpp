@@ -12,7 +12,7 @@
 
 default_map_generator::default_map_generator(const config& game_config)
 : width_(40), height_(40), iterations_(1000), hill_size_(10), max_lakes_(20),
-  nvillages_(300), nplayers_(2), cfg_(NULL)
+  nvillages_(25), nplayers_(2), cfg_(NULL)
 {
 	const config* const cfg = game_config.find_child("map_generator","name",name());
 	if(cfg != NULL) {
@@ -117,7 +117,7 @@ void default_map_generator::user_config(display& disp)
 	gui::slider players_slider(disp,slider_rect);
 	players_slider.set_min(2);
 	players_slider.set_max(max_players);
-	players_slider.set_value(2);
+	if (players_slider.value() < 2 || players_slider.value() > 8) players_slider.set_value(2);
 
 	const int min_width = 20;
 	const int max_width = 200;
@@ -156,8 +156,8 @@ void default_map_generator::user_config(display& disp)
 	hillsize_slider.set_max(max_hillsize);
 	hillsize_slider.set_value(hill_size_);
 
-	const int min_villages = 10;
-	const int max_villages = 10000;
+	const int min_villages = 0;
+	const int max_villages = 50;
 
 	slider_rect.y = villages_rect.y;
 	gui::slider villages_slider(disp,slider_rect);
@@ -221,6 +221,12 @@ void default_map_generator::user_config(display& disp)
 		height_str << height_;
 		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
 		                slider_right+horz_margin,height_rect.y);
+		
+		std::stringstream villages_str;
+		villages_str << nvillages_;
+		villages_str << "/1000 tiles";
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,villages_str.str(),
+		                slider_right+horz_margin,villages_rect.y);
 
 		close_button.draw();
 
@@ -237,7 +243,7 @@ std::string default_map_generator::name() const { return "default"; }
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
 	if(cfg_ != NULL)
-		return default_generate_map(width_,height_,iterations_,hill_size_,max_lakes_,nvillages_,nplayers_,*cfg_);
+		return default_generate_map(width_,height_,iterations_,hill_size_,max_lakes_,nvillages_*width_*height_/1000,nplayers_,*cfg_);
 	else
 		return "";
 }
