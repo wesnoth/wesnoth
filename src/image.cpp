@@ -332,15 +332,15 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 						surf = scale_surface(tile,scale,scale);
 
 						if(units != NULL && teams != NULL && tm != NULL && !fogged) {
-							const unit_map::const_iterator u = units->find(loc);
+							const unit_map::const_iterator u = 
+								find_visible_unit(*units,loc,
+										map,lawful_bonus,
+										*teams,*tm);
 							if(u != units->end()) {
-								if(!tm->is_enemy(u->second.side()) || 
-										!u->second.invisible(terrain,lawful_bonus,loc,*units,*teams)){
-									const SDL_Color& colour = font::get_side_colour(u->second.side());								
-									SDL_Rect rect = {0,0,surf->w,surf->h};
-									const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
-									SDL_FillRect(surf,&rect,col);
-								}
+								const SDL_Color& colour = font::get_side_colour(u->second.side());								
+								SDL_Rect rect = {0,0,surf->w,surf->h};
+								const short col = SDL_MapRGB(surf->format,colour.r,colour.g,colour.b);
+								SDL_FillRect(surf,&rect,col);
 							}
 
 							//we're not caching the surface, so make sure

@@ -935,6 +935,44 @@ std::string team_name(int side, const unit_map& units)
 		return "-";
 }
 
+unit_map::iterator find_visible_unit(unit_map& units,
+		const gamemap::location loc, 
+		const gamemap& map, int lawful_bonus, 
+		const std::vector<team>& teams, const team& current_team)
+{
+	unit_map::iterator u = units.find(loc);
+	if(map.on_board(loc)){
+		if(u != units.end()){
+			if(current_team.is_enemy(u->second.side()) &&
+					u->second.invisible(
+						map.underlying_terrain(map[loc.x][loc.y]),lawful_bonus,
+						loc,units,teams)) {
+				return units.end();
+			}
+		}
+	}
+	return u;
+}
+
+unit_map::const_iterator find_visible_unit(const unit_map& units,
+		const gamemap::location loc, 
+		const gamemap& map, int lawful_bonus, 
+		const std::vector<team>& teams, const team& current_team)
+{
+	unit_map::const_iterator u = units.find(loc);
+	if(map.on_board(loc)){
+		if(u != units.end()){
+			if(current_team.is_enemy(u->second.side()) &&
+					u->second.invisible(
+						map.underlying_terrain(map[loc.x][loc.y]),lawful_bonus,
+						loc,units,teams)) {
+				return units.end();
+			}
+		}
+	}
+	return u;
+}
+
 team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 {
 	team_data res;

@@ -577,22 +577,22 @@ void display::draw_sidebar()
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
-		std::map<gamemap::location,unit>::const_iterator i
-		                                = units_.find(mouseoverHex_);
+		std::map<gamemap::location,unit>::const_iterator i = 
+			find_visible_unit(units_,mouseoverHex_,
+					map_,
+					status_.get_time_of_day().lawful_bonus,
+					teams_,teams_[viewing_team()]);
+
 		if(i == units_.end() || fogged(i->first.x,i->first.y)) {
-			i = units_.find(selectedHex_);
+			i = find_visible_unit(units_,selectedHex_,
+					map_,
+					status_.get_time_of_day().lawful_bonus,
+					teams_,teams_[viewing_team()]);
 		}
 
-		//if unit is not fogged and not an invisible enemy
-		if(i != units_.end() && !fogged(i->first.x,i->first.y) &&
-				(!teams_[viewing_team()].is_enemy(i->second.side()) ||
-				!i->second.invisible(map_.underlying_terrain(map_[i->first.x][i->first.y]),
-					status_.get_time_of_day().lawful_bonus,
-					i->first,units_,teams_))) {
-			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
+		if(i != units_.end() && !fogged(i->first.x,i->first.y))
+			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r)
 				draw_report(reports::TYPE(r));
-			}
-		}
 
 		invalidateUnit_ = false;
 	}

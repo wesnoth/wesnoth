@@ -577,12 +577,13 @@ void ai::do_move()
 		gamemap::location target;
 		int weapon = -1;
 		for(int n = 0; n != 6; ++n) {
-			const unit_map::iterator enemy = units_.find(adj[n]);
+			const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
+					map_,
+					state_.get_time_of_day().lawful_bonus,
+					teams_,current_team());
+
 			if(enemy != units_.end() &&
-			   current_team().is_enemy(enemy->second.side()) &&
-			   !enemy->second.invisible(map_.underlying_terrain(map_[enemy->first.x][enemy->first.y]),
-					state_.get_time_of_day().lawful_bonus,enemy->first,
-					units_,teams_)) {
+			   current_team().is_enemy(enemy->second.side())) {
 				target = adj[n];
 				weapon = choose_weapon(move.first,target,bat_stats,
 				                       map_[move.second.x][move.second.y]);

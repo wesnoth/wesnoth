@@ -126,13 +126,12 @@ bool enemy_zoc(const gamemap& map, const gamestatus& status,
 	get_adjacent_tiles(loc,locs);
 	for(int i = 0; i != 6; ++i) {
 		const std::map<gamemap::location,unit>::const_iterator it
-				= units.find(locs[i]);
+				= find_visible_unit(units,locs[i],
+						map,
+						status.get_time_of_day().lawful_bonus,
+						teams,current_team);
 		if(it != units.end() && it->second.side() != side &&
-		   current_team.is_enemy(it->second.side()) &&
-		   !it->second.invisible(map.underlying_terrain(
-		                             map[it->first.x][it->first.y]),
-				status.get_time_of_day().lawful_bonus,it->first,
-				units,teams)) {
+		   current_team.is_enemy(it->second.side())) {
 			return true;
 		}
 	}

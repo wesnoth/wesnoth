@@ -306,16 +306,10 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			unit_map::const_iterator un = units_.find(selected_hex_);
-
-			//deselect the unit if it's an invisible enemy
-			if(un != units_.end()){
-				if(current_team.is_enemy(un->second.side()) &&
-						un->second.invisible(map_.underlying_terrain(map_[un->first.x][un->first.y]),
-						status_.get_time_of_day().lawful_bonus,un->first,units_,teams_)) {
-					un = units_.end();
-				}
-			}
+			unit_map::const_iterator un = find_visible_unit(units_,
+					selected_hex_,
+					map_,
+					status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
 			if(un != units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
@@ -342,16 +336,10 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 			}
 		}
 
-		unit_map::iterator un = units_.find(new_hex);
-
-		//deselect the unit if it's an invisible enemy
-		if(un != units_.end()){
-			if(current_team.is_enemy(un->second.side()) &&
-					un->second.invisible(map_.underlying_terrain(map_[un->first.x][un->first.y]),
-					status_.get_time_of_day().lawful_bonus,un->first,units_,teams_)) {
-				un = units_.end();
-			}
-		}
+		unit_map::iterator un = find_visible_unit(units_,
+				new_hex,
+				map_,
+				status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
 		if(un != units_.end() && un->second.side() != team_num_ &&
 		   current_paths_.routes.empty() && !gui_.fogged(un->first.x,un->first.y)) {
@@ -451,16 +439,10 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 	std::map<gamemap::location,paths::route>::const_iterator
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
-	unit_map::iterator enemy = units_.find(hex);
 
-	//deselect the unit if it's an invisible enemy
-	if(enemy != units_.end()){
-		if(current_team.is_enemy(enemy->second.side()) &&
-				enemy->second.invisible(map_.underlying_terrain(map_[enemy->first.x][enemy->first.y]),
-				status_.get_time_of_day().lawful_bonus,enemy->first,units_,teams_)) {
-			enemy = units_.end();
-		}
-	}
+	unit_map::iterator enemy = find_visible_unit(units_,
+			hex, map_,
+			status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
 	//see if we're trying to attack an enemy
 	if(route != current_paths_.routes.end() && enemy != units_.end() &&
@@ -751,7 +733,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	//commands we can only do if there is an active unit
 	case hotkey::HOTKEY_TERRAIN_TABLE:
 	case hotkey::HOTKEY_ATTACK_RESISTANCE:
-    case hotkey::HOTKEY_UNIT_DESCRIPTION:
+   case hotkey::HOTKEY_UNIT_DESCRIPTION:
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return current_unit() != units_.end();
 
@@ -779,7 +761,9 @@ namespace {
 void turn_info::show_menu(const std::vector<std::string>& items_arg)
 {
 	std::vector<std::string> items = items_arg;
+	std::cerr << "Erasing elements" << std::endl;
 	items.erase(std::remove_if(items.begin(),items.end(),cannot_execute(*this)),items.end());
+	std::cerr << "Finished erasing elements" << std::endl;
 	if(items.empty())
 		return;
 
@@ -1554,11 +1538,19 @@ void turn_info::unit_list()
 
 unit_map::iterator turn_info::current_unit()
 {
-	unit_map::iterator i = units_.find(last_hex_);
+	unit_map::iterator i = find_visible_unit(units_,
+			last_hex_, map_,
+			status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+
 	if(i == units_.end()) {
-		i = units_.find(selected_hex_);
+		unit_map::iterator i = find_visible_unit(units_, selected_hex_, 
+				map_,
+				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
 	}
 
+	if(i != units_.end()){
+		std::cerr << "Selected " << i->second.name() << std::endl;
+	}
 	return i;
 }
 
