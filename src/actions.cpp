@@ -611,8 +611,9 @@ void attack(display& gui, const gamemap& map,
 						<< ": chance to hit defender is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_defender
 						<< " (over-riding game calculations with data source results)\n";
-					hits = results_hits;
-				} else if(hits != results_hits) {
+					stats.chance_to_hit_defender = results_chance;
+				}
+				if(hits != results_hits) {
 					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
 						<< d->second.type().name() << ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
@@ -622,7 +623,8 @@ void attack(display& gui, const gamemap& map,
 						<< (ran_num%100) << "/" << results_chance
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
-				} else if(results_damage != stats.damage_defender_takes) {
+				}
+				if(results_damage != stats.damage_defender_takes) {
 					ERR_NW << "SYNC: In attack " << a->second.type().name() << " vs "
 						<< d->second.type().name() << ": the data source says the hit did "
 						<< results_damage
@@ -761,8 +763,9 @@ void attack(display& gui, const gamemap& map,
 						<< ": chance to hit attacker is inconsistent. Data source: "
 						<< results_chance << "; Calculation: " << stats.chance_to_hit_attacker
 						<< " (over-riding game calculations with data source results)\n";
-					hits = results_hits;
-				} else if(hits != results_hits) {
+					stats.chance_to_hit_attacker = results_chance;
+				}
+				if(hits != results_hits) {
 					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
 						<< d->second.type().name() << ": the data source says the hit was "
 						<< (results_hits ? "successful" : "unsuccessful")
@@ -772,7 +775,8 @@ void attack(display& gui, const gamemap& map,
 						<< results_chance
 						<< " (over-riding game calculations with data source results)\n";
 					hits = results_hits;
-				} else if(results_damage != stats.damage_attacker_takes) {
+				}
+				if(results_damage != stats.damage_attacker_takes) {
 					ERR_NW << "SYNC: In defend " << a->second.type().name() << " vs "
 						<< d->second.type().name() << ": the data source says the hit did "
 						<< results_damage
