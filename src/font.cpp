@@ -367,7 +367,9 @@ surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& col
 	if (surfaces.empty()) {
 		return surface();
 	} else if (surfaces.size() == 1) {
-		return surfaces.front();
+		surface surf = surfaces.front();
+		SDL_SetAlpha(surf, SDL_SRCALPHA | SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
+		return surf;
 	} else {
 
 		surface res(create_compatible_surface(surfaces.front(),width,height));
