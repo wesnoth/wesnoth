@@ -811,6 +811,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(advancing_units.empty()) {
 				check_victory(units,teams);
 			}
+			if(clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1))
+				disp.recalculate_minimap();
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
