@@ -344,7 +344,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			    side != sides_list.end(); ++side) {
 				string_map& values = (*side)->values;
 				if(team_num-1 == side - sides_list.begin())
-					values["controller"] = "human";
+					values["controller"] = "ai";
 				else
 					values["controller"] = "network";
 			}

@@ -366,13 +366,15 @@ void display::bounds_check_position()
 
 	zoom_ = floor(zoom_);
 
-	if(zoom_ < min_zoom)
+	if(zoom_ < min_zoom) {
 		zoom_ = min_zoom;
+		image::set_zoom(zoom_);
+	}
 
-	if(zoom_ > max_zoom)
+	if(zoom_ > max_zoom) {
 		zoom_ = max_zoom;
-
-	image::set_zoom(zoom_);
+		image::set_zoom(zoom_);
+	}
 
 	const double xend = zoom_*map_.x()*0.75 + zoom_*0.25;
 	const double yend = zoom_*map_.y() + zoom_/2.0;
