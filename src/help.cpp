@@ -139,13 +139,25 @@ namespace help {
 help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 	game_config = cfg == NULL ? &dummy_cfg : cfg;
 	game_info = gameinfo;
+	std::cerr << "Creating help manager" << std::endl;
 	if (game_config != NULL) {
 		const config *help_config = game_config->child("help");
 		if (help_config == NULL) {
 			help_config = &dummy_cfg;
 		}
 		try {
+			section_list::const_iterator ii;
+			std::cerr << "Parsing toplevel config, toplevel before:" << std::endl;
+			for (ii = toplevel.sections.begin();
+				 ii != toplevel.sections.end(); ii++) {
+				std::cerr << (*ii)->id << std::endl;
+			}
 			toplevel = parse_config(help_config);
+			std::cerr << "Toplevel after:" << std::endl;
+			for (ii = toplevel.sections.begin();
+				 ii != toplevel.sections.end(); ii++) {
+				std::cerr << (*ii)->id << std::endl;
+			}
 			// Create a config object that contains everything that is
 			// not referenced from the toplevel element. Read this
 			// config and save these sections and topics so that they
@@ -200,10 +212,11 @@ help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 }
 
 help_manager::~help_manager() {
+	std::cerr << "Destroying help manager" << std::endl;
 	game_config = NULL;
 	game_info = NULL;
-	toplevel = section();
-	hidden_sections = section();
+	toplevel.clear();
+	hidden_sections.clear();
 }
 
 bool section_is_referenced(const std::string &section_id, const config &cfg) {
@@ -1555,6 +1568,11 @@ help_browser::help_browser(display &disp, const section &toplevel)
 	  back_button_(disp, translate_string("help_back"), gui::button::TYPE_PRESS),
 	  forward_button_(disp, translate_string("help_forward"), gui::button::TYPE_PRESS),
 	  shown_topic_(NULL) {
+	// Hide the buttons at first since we do not have any forward or
+	// back topics at this point. They will be unhidden when history
+	// appears.
+	back_button_.hide(true);
+	forward_button_.hide(true);
 	// Set sizes to some default values.
 	set_location(1, 1);
 	set_width(400);
