@@ -6,11 +6,17 @@
 #include <cstring>
 
 namespace {
-const std::string campaign_dir = get_user_data_dir() + "/data/campaigns";
+
+const std::string& campaign_dir()
+{
+	static const std::string res = get_user_data_dir() + "/data/campaigns";
+	return res;
+}
+
 void setup_dirs()
 {
 	make_directory(get_user_data_dir() + "/data");
-	make_directory(campaign_dir);
+	make_directory(campaign_dir());
 }
 
 }
@@ -20,7 +26,7 @@ std::vector<std::string> available_campaigns()
 	std::vector<std::string> res;
 
 	std::vector<std::string> files, dirs;
-	get_files_in_dir(campaign_dir,&files,&dirs);
+	get_files_in_dir(campaign_dir(),&files,&dirs);
 
 	for(std::vector<std::string>::const_iterator i = dirs.begin(); i != dirs.end(); ++i) {
 		const std::string cfg_file = *i + ".cfg";
@@ -100,8 +106,8 @@ void archive_dir(const std::string& path, const std::string& dirname, config& cf
 
 void archive_campaign(const std::string& campaign_name, config& cfg)
 {
-	archive_file(campaign_dir,campaign_name + ".cfg",cfg.add_child("file"));
-	archive_dir(campaign_dir,campaign_name,cfg.add_child("dir"));
+	archive_file(campaign_dir(),campaign_name + ".cfg",cfg.add_child("file"));
+	archive_dir(campaign_dir(),campaign_name,cfg.add_child("dir"));
 }
 
 namespace {
@@ -132,7 +138,7 @@ void unarchive_dir(const std::string& path, const config& cfg)
 void unarchive_campaign(const config& cfg)
 {
 	setup_dirs();
-	unarchive_dir(campaign_dir,cfg);
+	unarchive_dir(campaign_dir(),cfg);
 }
 
 namespace {
