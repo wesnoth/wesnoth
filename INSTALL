@@ -1,16 +1,20 @@
 PREREQUISITES
 
-# You'll need to have these libraries (with equivalent devel versions) to build Wesnoth: libsdl1.2
-# libsdl-image1.2
-# libsdl-mixer1.2
-# libsdl-ttf2.0
-# libsdl-net
+You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
+
+ libsdl1.2
+ libsdl-image1.2
+ libsdl-mixer1.2 (with Vorbis support)
+ libsdl-ttf2.0
+ libsdl-net
 
 These libraries can be found at http://www.libsdl.org
 
+
 SOURCECODE
 
-You can get it here: http://wesnoth.whitevine.net/downloads.htm or check WesnothCVS
+You can get it here: http://www.wesnoth.org/downloads or check http://www.ventu.info/wesnoth/?WesnothCVS
+
 
 COMPILING
 
@@ -21,20 +25,27 @@ First untar the package:
 then
 
  $ cd wesnoth-0.x
-	  
+
 followed by
 
  $ make
-	  
+
 and finally
 
  $ ./wesnoth 
-	  
+
 to run the program. Have fun.
 
-Note: Users compiling CVS sources should 'make clean' before 'make' after any tree update.
 
-David White
-davidnwhite@optusnet.com.au
+RELOCATING DATA
 
-/* $Id$ */
+There is a way to get Wesnoth to locate its data and have the data files not under the executable. You just add the preprocessor symbol WESNOTH_PATH to point to the path the data is at. So when compiling add the flag,
+
+ -DWESNOTH_PATH=\"/usr/share/wesnoth\" 
+
+and Wesnoth will look for its data under /usr/share/wesnoth.
+
+
+NOTE:
+
+Users compiling CVS sources should 'make clean' before 'make' after any tree update. 
