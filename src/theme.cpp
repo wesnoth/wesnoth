@@ -244,6 +244,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	panels_.clear();
 	labels_.clear();
 	status_.clear();
+	menus_.clear();
 
 	const config& cfg = **current;
 
