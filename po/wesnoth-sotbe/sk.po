@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:40+0100\n"
+"POT-Creation-Date: 2005-03-12 18:37+0100\n"
 "PO-Revision-Date: 2005-01-17 21:56+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -33,12 +33,12 @@ msgid "Warrior"
 msgstr "Bojovník"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:11
-msgid "(hardest)"
-msgstr "(ťažká)"
-
-#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
 msgid "Warlord"
 msgstr "Vojvoda"
+
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
+msgid "(hardest)"
+msgstr "(ťažká)"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:7
 msgid "Black Flag"
@@ -63,15 +63,15 @@ msgstr ""
 "#Vyprší čas"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:33
+#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:34
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
+#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:48
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:54
-#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
-#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
 msgid "Kapou'e"
 msgstr ""
 
@@ -1219,9 +1219,10 @@ msgstr ""
 "Máš pravdu, synak. Pomôžeme našim orčím priateľom. Ale dávaj si pozor... "
 "Nezniesol by som, keby sa ti niečo stalo."
 
+#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:200
-msgid "Argh!  I'm done.  My people is dommed!"
-msgstr "Argh! Koniec. Môj ľud je porazený!"
+msgid "Argh!  I'm done.  My people is doomed!"
+msgstr "Argh! Je po mne. Môj ľud zahynie!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:215
 msgid "Father!  Oh no!"
@@ -1231,9 +1232,9 @@ msgstr "Otče! Ach nie!"
 msgid "Filthy dwarves!  Now I'm to kill you to the last!"
 msgstr "Špinaví trpaslíci! Teraz vás pobijem do posledného!"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:113
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 msgid "Oh no, I'm defeated."
 msgstr "Ach nie, som porazený."
 
@@ -1318,10 +1319,6 @@ msgstr "Ouch! To bolí!"
 msgid "The council will never be complete again.  This is hopeless."
 msgstr "Rada už nikdy nebude úplná. Stratili sme nádej."
 
-#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
-msgid "Argh!  I'm done.  My people is doomed!"
-msgstr "Argh! Je po mne. Môj ľud zahynie!"
-
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:126
 msgid "Without Inarix to lead his saurians, there is no hope."
 msgstr "Bez Inarixa, ktorý povedie saurov, nemáme nádej."
@@ -1379,3 +1376,6 @@ msgstr ""
 #: data/scenarios/Son_Of_The_Black_Eye/utils.cfg:192
 msgid "Pirate Galleon"
 msgstr "Pirátska loď"
+
+#~ msgid "Argh!  I'm done.  My people is dommed!"
+#~ msgstr "Argh! Koniec. Môj ľud je porazený!"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-26 17:05+0100\n"
+"POT-Creation-Date: 2005-03-12 18:36+0100\n"
 "PO-Revision-Date: 2005-01-29 00:12+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
@@ -16,185 +16,185 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/themes/editor.cfg:217
+#: data/themes/editor.cfg:225
 msgid "File"
 msgstr "Datei"
 
-#: data/themes/editor.cfg:226
+#: data/themes/editor.cfg:234
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: data/themes/editor.cfg:234
+#: data/themes/editor.cfg:242
 msgid "Draw"
 msgstr "Zeichnen"
 
-#: data/themes/editor.cfg:243
+#: data/themes/editor.cfg:251
 msgid "Flood"
 msgstr "Füllen"
 
-#: data/themes/editor.cfg:252
+#: data/themes/editor.cfg:260
 msgid "Start P"
 msgstr "Startp."
 
-#: data/themes/editor.cfg:261
+#: data/themes/editor.cfg:269
 msgid "Paste"
 msgstr "Einfügen"
 
 # edited by Ivanovic
-#: src/editor/editor.cpp:307
+#: src/editor/editor.cpp:308
 msgid "Save the Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor/editor.cpp:311
+#: src/editor/editor.cpp:312
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "Diese Karte existiert schon. Soll sie überschrieben werden?"
 
-#: src/editor/editor.cpp:332
+#: src/editor/editor.cpp:333
 msgid "Which Player?"
 msgstr "Welcher Spieler?"
 
-#: src/editor/editor.cpp:333
+#: src/editor/editor.cpp:334
 msgid "Which player should start here?"
 msgstr "Welcher Spieler soll anfangen ?"
 
-#: src/editor/editor.cpp:383
+#: src/editor/editor.cpp:384
 msgid "Choose a Map to Load"
 msgstr "Wählt eine Karte aus die ihr laden wollt."
 
-#: src/editor/editor.cpp:400 src/editor/editor.cpp:479
+#: src/editor/editor.cpp:401 src/editor/editor.cpp:480
 msgid "The file does not contain a valid map."
 msgstr "Diese Datei enthält keine Karte oder sie ist beschädigt."
 
-#: src/editor/editor.cpp:537
+#: src/editor/editor.cpp:542
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 "Die Datei »$filename« existiert  nicht, ihr seid nicht berechtigtet sie zu "
 "lesen,oder sie kann nicht gelesen werden."
 
-#: src/editor/editor.cpp:549
+#: src/editor/editor.cpp:554
 msgid "Load failed: "
 msgstr "Laden ist leider fehlgeschlagen"
 
-#: src/editor/editor.cpp:744
+#: src/editor/editor.cpp:750
 msgid "You must have a hex selected on the board."
 msgstr "Ihr musst ein Hex-Feld auf der Karte ausgewählt haben."
 
-#: src/editor/editor.cpp:993
+#: src/editor/editor.cpp:999
 msgid "Quit Editor"
 msgstr "Editor Beenden"
 
-#: src/editor/editor.cpp:998
+#: src/editor/editor.cpp:1004
 msgid "Do you want to save the map before quitting?"
 msgstr "Soll die Karte vor dem Beenden gespeichert  werden?"
 
-#: src/editor/editor.cpp:1022
+#: src/editor/editor.cpp:1028
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor/editor.cpp:1029
+#: src/editor/editor.cpp:1035
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte leider nicht gespeichert werden: $msg"
 
-#: src/editor/editor.cpp:1085
+#: src/editor/editor.cpp:1091
 msgid "Player"
 msgstr "Spieler"
 
-#: src/editor/editor_dialogs.cpp:45
+#: src/editor/editor_dialogs.cpp:47
 msgid "Your modifications to the map will be lost.  Continue?"
 msgstr "Alle Änderungen gehen verloren. Fortsetzen?"
 
-#: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:193
+#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:195
 msgid "Create New Map"
 msgstr "Neue Karte erstellen"
 
-#: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:388
+#: src/editor/editor_dialogs.cpp:76 src/editor/editor_dialogs.cpp:390
 msgid "Width:"
 msgstr "Breite:"
 
-#: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:389
+#: src/editor/editor_dialogs.cpp:77 src/editor/editor_dialogs.cpp:391
 msgid "Height:"
 msgstr "Höhe:"
 
-#: src/editor/editor_dialogs.cpp:91
+#: src/editor/editor_dialogs.cpp:93
 msgid "Generate New Map"
 msgstr "Neue Karte erzeugen"
 
-#: src/editor/editor_dialogs.cpp:92
+#: src/editor/editor_dialogs.cpp:94
 msgid "Generate Random Map"
 msgstr "Zufallskarte erzeugen"
 
-#: src/editor/editor_dialogs.cpp:93
+#: src/editor/editor_dialogs.cpp:95
 msgid "Random Generator Settings"
 msgstr "Einstellungen für den Zufallskarten-Generator"
 
-#: src/editor/editor_dialogs.cpp:94 src/editor/editor_dialogs.cpp:405
+#: src/editor/editor_dialogs.cpp:96 src/editor/editor_dialogs.cpp:407
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/editor/editor_dialogs.cpp:179
+#: src/editor/editor_dialogs.cpp:181
 msgid "Map creation failed."
 msgstr "Erstellen der Karte ist fehlgeschlagen"
 
-#: src/editor/editor_dialogs.cpp:245
+#: src/editor/editor_dialogs.cpp:247
 msgid "Close Window"
 msgstr "Fenster schließen"
 
-#: src/editor/editor_dialogs.cpp:251 src/editor/editor_dialogs.cpp:318
+#: src/editor/editor_dialogs.cpp:253 src/editor/editor_dialogs.cpp:320
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/editor/editor_dialogs.cpp:253
+#: src/editor/editor_dialogs.cpp:255
 msgid "Scroll Speed:"
 msgstr "Scroll Geschwindigkeit:"
 
-#: src/editor/editor_dialogs.cpp:280
+#: src/editor/editor_dialogs.cpp:282
 msgid "Full Screen"
 msgstr "Vollbild"
 
-#: src/editor/editor_dialogs.cpp:287
+#: src/editor/editor_dialogs.cpp:289
 msgid "Show Grid"
 msgstr "Gitternetz einblenden"
 
-#: src/editor/editor_dialogs.cpp:294
+#: src/editor/editor_dialogs.cpp:296
 msgid "Video Mode"
 msgstr "Auflösung wechseln"
 
-#: src/editor/editor_dialogs.cpp:297
+#: src/editor/editor_dialogs.cpp:299
 msgid "Hotkeys"
 msgstr "Tastenkürzel"
 
-#: src/editor/editor_dialogs.cpp:386 src/editor/editor_dialogs.cpp:446
+#: src/editor/editor_dialogs.cpp:388 src/editor/editor_dialogs.cpp:448
 msgid "Resize Map"
 msgstr "Karten-Größe"
 
-#: src/editor/editor_dialogs.cpp:406
+#: src/editor/editor_dialogs.cpp:408
 msgid "Ok"
 msgstr "Okay"
 
-#: src/editor/editor_dialogs.cpp:489
+#: src/editor/editor_dialogs.cpp:491
 msgid "X-Axis"
 msgstr "X-Achse"
 
-#: src/editor/editor_dialogs.cpp:490
+#: src/editor/editor_dialogs.cpp:492
 msgid "Y-Axis"
 msgstr "Y-Achse"
 
-#: src/editor/editor_dialogs.cpp:491
+#: src/editor/editor_dialogs.cpp:493
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr "Karte drehen (könnte die Größe der Karte ändern)."
 
-#: src/editor/editor_palettes.cpp:316
+#: src/editor/editor_palettes.cpp:317
 msgid "FG"
 msgstr "VG"
 
-#: src/editor/editor_palettes.cpp:318
+#: src/editor/editor_palettes.cpp:319
 msgid "BG"
 msgstr "HG"
 
-#: src/widgets/file_chooser.cpp:36
+#: src/widgets/file_chooser.cpp:37
 msgid "Delete File"
 msgstr "Datei löschen"
 
-#: src/widgets/file_chooser.cpp:129
+#: src/widgets/file_chooser.cpp:130
 msgid "Deletion of the file failed."
 msgstr "Das Löschen der Datei ist fehlgeschlagen."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 20:53+0100\n"
+"POT-Creation-Date: 2005-03-12 18:39+0100\n"
 "PO-Revision-Date: 2004-10-27 23:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -21,13 +21,13 @@ msgid "The Rise of Wesnoth"
 msgstr "A Fundação de Wesnoth"
 
 #: data/campaigns/The_Rise_of_Wesnoth.cfg:9
+msgid "(easiest)"
+msgstr ""
+
+#: data/campaigns/The_Rise_of_Wesnoth.cfg:9
 #, fuzzy
 msgid "Fighter"
 msgstr "Isso."
-
-#: data/campaigns/The_Rise_of_Wesnoth.cfg:9
-msgid "(easiest)"
-msgstr ""
 
 #: data/campaigns/The_Rise_of_Wesnoth.cfg:10
 msgid "Commander"
@@ -83,9 +83,11 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Clearwater_Port.cfg:55
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:52
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:48
+#: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:34
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:69
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:58
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:34
+#: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:46
+#: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:52
 #: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:42
 #: data/scenarios/The_Rise_of_Wesnoth/Sewer.cfg:42
 #: data/scenarios/The_Rise_of_Wesnoth/Southbay_in_Winter.cfg:37
@@ -94,13 +96,11 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:43
 #: data/scenarios/The_Rise_of_Wesnoth/The_Midlands.cfg:54
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:67
-#: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:52
-#: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:43
-#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:45
-#: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:46
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:27
-#: data/scenarios/The_Rise_of_Wesnoth/Epilogue.cfg:34
-#: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:52
+#: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:52
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:45
+#: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:43
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:34
 #, fuzzy
 msgid "Prince Haldric"
 msgstr "Haldric."
@@ -2592,10 +2592,10 @@ msgid "I don't find that thought very comforting."
 msgstr "Eu não acho essa idéia muito reconfortante."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Peoples_in_Decline.cfg:286
-#: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:300
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:309
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:364
 #: data/scenarios/The_Rise_of_Wesnoth/Rise_of_Wesnoth.cfg:455
+#: data/scenarios/The_Rise_of_Wesnoth/Rough_Landing.cfg:300
 msgid "Neep! Neep!"
 msgstr "Neep! Neep!"
 
@@ -2802,8 +2802,8 @@ msgstr ""
 "Você de novo. Você vai sssofrer pelo sseu ataque contra o meu povo! "
 "Shek'kahan, amigosss Nagasss- Você pagará! Temosss novosss amigosss agora."
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:447
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:508
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:447
 msgid "Oh, to join my family again! Do not mourn my passing."
 msgstr ""
 "Oh, juntar-se à minha família novamente! Não se entristeçam por minha morte"
@@ -2831,8 +2831,8 @@ msgstr ""
 msgid "Theylook-Thesame-Toyou"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:63
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:135
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:63
 msgid "Elilmaldur-Rithrandil"
 msgstr ""
 
@@ -2895,8 +2895,8 @@ msgstr ""
 "berdade sua hospitalidade não nos trouxe muita coisa. Espere, tem alguém "
 "vindo!"
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:149
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:307
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:149
 #, fuzzy
 msgid "Lady Outlaw"
 msgstr "Pode me chamar de senhora fora-da-lei."
@@ -2985,8 +2985,8 @@ msgstr ""
 "Senhorita, por que você deixaria esses monstros mortos vivos liderarem seu "
 "povo?"
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:226
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:377
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:226
 #, fuzzy
 msgid ""
 "Haldric, we are an ancient people who lived in a land filled with all manner "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:40+0100\n"
+"POT-Creation-Date: 2005-03-12 18:37+0100\n"
 "PO-Revision-Date: 2005-02-28 14:46+0200\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
@@ -28,12 +28,12 @@ msgid "Warrior"
 msgstr "Sõdalane"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:11
-msgid "(hardest)"
-msgstr "(raskeim)"
-
-#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
 msgid "Warlord"
 msgstr "Sõjapealik"
+
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
+msgid "(hardest)"
+msgstr "(raskeim)"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:7
 msgid "Black Flag"
@@ -58,15 +58,15 @@ msgstr ""
 "#Käigud saavad otsa"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:33
+#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:34
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
+#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:48
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:54
-#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
-#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
 msgid "Kapou'e"
 msgstr "Kapou'e"
 
@@ -1144,8 +1144,9 @@ msgstr ""
 "Sul on õigus, mu poeg. Me aitame oma mäekollidest sõpru. Aga hoolitse enda "
 "eest.... Ma oleksid väga õnnetu, kui sinuga midagi juhtuma peaks."
 
+#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:200
-msgid "Argh!  I'm done.  My people is dommed!"
+msgid "Argh!  I'm done.  My people is doomed!"
 msgstr "Urr! Minuga on lõpp. Mu inimesed on kadunud."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:215
@@ -1156,9 +1157,9 @@ msgstr "Isa! Oo ei!"
 msgid "Filthy dwarves!  Now I'm to kill you to the last!"
 msgstr "Närused kääbused! Nüüd ma tapan teid viimase meheni maha!"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:113
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 msgid "Oh no, I'm defeated."
 msgstr "Oo ei, mind on alistatud!"
 
@@ -1237,10 +1238,6 @@ msgstr "Ai! See oli valus!"
 msgid "The council will never be complete again.  This is hopeless."
 msgstr "See nõukogu ei ole saa enam kunagi tervikuks. See on lootusetu."
 
-#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
-msgid "Argh!  I'm done.  My people is doomed!"
-msgstr "Urr! Minuga on lõpp. Mu inimesed on kadunud."
-
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:126
 msgid "Without Inarix to lead his saurians, there is no hope."
 msgstr "Kui pole Inarixi saure juhtimas, siis pole enam mingit lootust."
@@ -1283,3 +1280,6 @@ msgstr ""
 #: data/scenarios/Son_Of_The_Black_Eye/utils.cfg:192
 msgid "Pirate Galleon"
 msgstr "Piraatite galeoon"
+
+#~ msgid "Argh!  I'm done.  My people is dommed!"
+#~ msgstr "Urr! Minuga on lõpp. Mu inimesed on kadunud."

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:40+0100\n"
+"POT-Creation-Date: 2005-03-12 18:37+0100\n"
 "PO-Revision-Date: 2005-02-21 21:24+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: Nils Kneuper <crazy-ivanovic AT gmx DOT net>\n"
@@ -43,14 +43,14 @@ msgstr "Speerträger"
 msgid "Swordsman"
 msgstr "Schwertkämpfer"
 
-#: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
-msgstr "(schwierig)"
-
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:158
 #: data/campaigns/Eastern_Invasion.cfg:12
 msgid "Royal Guard"
 msgstr "Leibgardist"
+
+#: data/campaigns/Eastern_Invasion.cfg:12
+msgid "(hardest)"
+msgstr "(schwierig)"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid ""
@@ -84,27 +84,27 @@ msgstr ""
 "#Owaec fällt in der Schlacht\n"
 "#Konrad II fällt in der Schlacht"
 
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:41
 #: data/scenarios/Eastern_Invasion/Captured.cfg:72
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:40
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:44
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:35
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:41
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:41
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:45
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:43
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:42
+#: data/scenarios/Eastern_Invasion/Reject.cfg:43
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:36
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:48
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:33
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:41
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:41
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:40
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:38
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:54
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:41
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:41
-#: data/scenarios/Eastern_Invasion/Reject.cfg:43
-#: data/scenarios/Eastern_Invasion/The_Duel.cfg:36
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:77
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:39
 msgid "Gweddry"
 msgstr "Gweddry"
 
@@ -824,74 +824,63 @@ msgstr ""
 "verlangt ihr für eure Dienste?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:134
-msgid "Fifty gold pieces."
-msgstr "Fünfzig Goldstücke. Aber erst das Geld dann die Sprengung"
+msgid ""
+"I aint charging gold - I wants protecshun from these undead! They's "
+"d'stroy'd m' home, and there's nowhere safe f'r me to go!"
+msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:138
-msgid "Very well, but you only get it once the bridge is down."
-msgstr "In Ordnung, da es wohl keinen anderen weg gibt..."
+msgid ""
+"Very well, we'll protect you from the undead. But we can't help you until we "
+"get across this river. Now lets go!"
+msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:142
+#, fuzzy
 msgid ""
-"Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. That's where "
+"Deal. I c'n blow'er up once I get to that signpost ov'r dere. That's where "
 "my eq'pment is."
 msgstr ""
 "Abgemacht! Ich werde sie in die Luft jagen, doch erst muss ich zu diesem "
 "Schild. Dort liegt meine Ausrüstung."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:146
-msgid ""
-"All right, now everyone across the bridge! Anyone left on this side when the "
-"bridge is exploded will be left to their own devices!"
-msgstr ""
-"In Ordnung. Und jetzt alle über die Brücke. Ein jeder der auf dieser Seite "
-"zurückbleibt ist nach der Sprengung auf sich gestellt und dem Tode geweiht!"
-
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:163
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:159
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Wollt ihr das ich die Brücke jetzt schon sprenge?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:167
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:163
 msgid "Hm..."
 msgstr "Hm..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:169
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:165
 msgid "Yes, blow it up."
 msgstr "Ja, blast sie in die Luft."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:173
-msgid "I believe you owe me some money first."
-msgstr "Ich denke ihr schuldet mir erst noch nen Batzen Gold..."
-
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:177
-msgid "Here it is. Now blow up the bridge!"
-msgstr "Wir sind da. Und nun jage diese Brücke in die Luft!"
-
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:191
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:169
 msgid "Alright! Blast'n time!"
 msgstr "Nun denn! Es ist Zeit für ne zünftige Sprengung..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:219
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:194
 msgid "BOOM!!!"
 msgstr "BOOM!!!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:235
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:210
 msgid "Oops... I'm north of the bridge! That was bad planning on my part."
 msgstr ""
 "Ohh nein.... Ich bin nördlich der Brücke! Da hab ich mich aber ganzschön "
 "verschätzt!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:251
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:226
 msgid "You idiot! You left me north of the bridge!"
 msgstr "IDIOT! Ihr habt mich nördlich der Brücke vergessen..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:267
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:242
 msgid "I'm still north of the bridge, Gweddry! Why'd you blow it up!?!"
 msgstr ""
 "Ich bin immernoch nördlich der Brücke, Gweddry, warum habt ihr sie "
 "gesprengt?!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:283
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:258
 msgid ""
 "Good, we have escaped from these orcs. Now we have to go south. I think the "
 "undead probably aren't as numerous this far west, so we won't get "
@@ -901,25 +890,27 @@ msgstr ""
 "denke, dass es hier nicht ganz so viele Untote gibt, so dass wir nicht "
 "sofort getötet werden..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:287
-msgid "I ain't goin' to be going with yah. Best o' luck t'yah!"
-msgstr "Ich werde nicht mit euch kommen. Viel Glück!"
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:262
+msgid ""
+"I'll be followin' yah from now on. Hope yah can get to Weld'n an' all so I "
+"c'n stop runnin'..."
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:308
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:271
 msgid "No, wait until later."
 msgstr "Nein, wartet noch ein wenig."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:312
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:275
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Häh? Okay, dann warten wir eben bis später ..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:323
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:286
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr ""
 "Wir konnten die Brücke nicht rechtzeitig zerstören! Nun werden die Orks uns "
 "alle abschlachten..."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:331
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:294
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as numerous this far west."
@@ -928,11 +919,9 @@ msgstr ""
 "müssen wir uns weiter in Richtung Süden begeben. Hoffentlich sind soweit im "
 "Westen die Untoten nicht so zahlreich."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:335
-msgid "What? Y'got no need a me se'vices? I quit!"
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:298
+msgid "Verah' well. I'm still gonna foll'w you, thou'. Still need to su'vive!"
 msgstr ""
-"Was?!? Ihr benötigt meine Dienste doch nicht? Dann verschwinde ich lieber! "
-"Ihr werdet schon sehen was ihr davon habt!"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:4
 msgid "Lake Vrug"
@@ -1051,9 +1040,9 @@ msgid "Ravanal-Guard"
 msgstr "Wächter Ravanals"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:94
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:103
 #: data/scenarios/Eastern_Invasion/Reject.cfg:92
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:46
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:103
 msgid "Mal-Ravanal"
 msgstr "Mal-Ravanal"
 
@@ -1477,13 +1466,13 @@ msgstr ""
 msgid "Mal-Rhazal"
 msgstr "Mal-Rhazal"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:66
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:69
 msgid "What the... swamps? These were fertile plains when I was here last!"
 msgstr ""
 "Was zum... Sümpfe? Als ich zum letzten mal hier war, waren dies noch "
 "fruchtbare Ebenen!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:70
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:73
 msgid ""
 "The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
 "swamp. It is death, decay, everything that they are themselves."
@@ -1491,23 +1480,25 @@ msgstr ""
 "Der Fürst der Dunkelheit Mal-Ravanal muss das Tal geflutet haben. Die "
 "Untoten lieben Sümpfe. Sie sind tot, verfallen, eben genau wie sie selbst."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:74
-msgid "I suppose we will have to wade across it... ugh."
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:77
+#, fuzzy
+msgid "I s'ppose we'll hav' to wade across it... ugh."
 msgstr "Ich schätze wir müssen hindurchwaten... ugh."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:78
-msgid "Die... die... my master is calling you... Die!"
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:81
+#, fuzzy
+msgid "Rise... kill... my master is calling you... Rise!"
 msgstr "Sterbt... sterbt... mein Herr ruft euch... STERBT!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:84
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:87
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:91
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:94
 msgid "What is that?!?"
 msgstr "Was ist das?!?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:95
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:98
 msgid ""
 "Ah, the dragon Khrakrahs. When it was alive, it was the most powerful "
 "creature ever, living in the Eastern Mountains. It must have fled when the "
@@ -1517,7 +1508,7 @@ msgstr ""
 "Wesen, das je in den östlichen Gebirgen gelebt hat. Er muss geflohen sein, "
 "als die Untoten kamen."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:99
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:102
 msgid ""
 "Yes, the dragon fled, but not even the mightiest can escape the all-powerful "
 "clutches of the great lich Mal-Ravanal. You remember the prophecy, Dacyn. "
@@ -1527,23 +1518,23 @@ msgstr ""
 "Ravanal entkommen. Erinnert ihr euch an die Prophezeihung, Dacyn? Macht euch "
 "bereit für euren Untergang!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:106
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:109
 msgid "Prophecy?"
 msgstr "Prophezeiung?"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:141
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:147
 msgid "Undead are rising out of the ground! We must destroy them, quickly!"
 msgstr "Untote kommen aus dem Boden! Wir müssen sie zerstören! Schnell!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:147
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:153
 msgid "My lord, undead are rising out of the cracks in the ground!"
 msgstr "Untote kommen aus Spalten im Boden, mein Herrscher!"
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:151
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:157
 msgid "This might be more difficult than I thought."
 msgstr "Dies könnte schwieriger werden als ich dachte."
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:194
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:200
 msgid "Now let's get out of this bog!"
 msgstr "Nun lasst uns aus diesem Morast verschwinden!"
 
@@ -2513,20 +2504,23 @@ msgid "Konrad"
 msgstr "Konrad"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:204
+#, fuzzy
 msgid ""
-"We will fight soon, my lord. Look, night approaches - they will soon attack. "
+"We will fight soon, my lord. Look, night approaches; they will soon attack. "
 "I hope we can hold them off."
 msgstr ""
 "Wir müssen bald kämpfen, mein König. Schaut, die Nacht bricht an - sie "
 "werden bald angreifen. Ich hoffe, wir können sie zurückschlagen."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:208
-msgid "Very well. But is this... Mal-Ravanal, that you spoke of, is he here?"
+#, fuzzy
+msgid "Very well. But this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr ""
 "Sehr gut. Aber ist dies... Mal-Ravanal, von dem ihr sprachet, ist er hier?"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:212
-msgid "I do not think so, but he might be here, hiding."
+#, fuzzy
+msgid "I do not sense his magic, but he might be concealing his presence."
 msgstr "Ich glaube nicht. Doch er könnte hier sein und sich verstecken."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:216
@@ -2537,15 +2531,18 @@ msgstr ""
 "Die Untoten greifen an. Lasst uns hoffen, dass wir diese Nacht überleben."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:228
-msgid "Look, the undead are tearing down our defences!"
+#, fuzzy
+msgid "The undead are tearing down our defences!"
 msgstr "Schaut, die Untoten reißen unsere Verteidigungsanlagen nieder!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:252
-msgid "I have died, and with me the city shall fall."
+#, fuzzy
+msgid "I have died, and with me gone the city shall fall."
 msgstr "Ich bin gestorben und mit mir fällt diese Stadt."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:264
-msgid "Look, the sun has risen. The undead are retreating."
+#, fuzzy
+msgid "Look, the sun has risen, and the undead are retreating."
 msgstr "Schaut! Die Sonne geht auf. Die Untoten ziehen sich zurück."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:276
@@ -2557,39 +2554,39 @@ msgid "I come bearing a message from my leader."
 msgstr "Ich komme und überbringe eine Nachricht von meinem Herren."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:286
-msgid "Very well, you may read it. (It might tell us something useful)."
+#, fuzzy
+msgid "Very well, you may read it. It might tell us something useful."
 msgstr ""
 "Nun denn, es sei euch gestattet, es zu lesen. (Vielleicht sagt es uns etwas "
 "Nützliches.)"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:290
 msgid ""
-"He says: 'Well, you have defeated some of my captains. Good job. But that "
-"was only a small fraction of my horde. It would be very easy for me to "
-"defeat you. But I don't think it would do justice to my power. I mean my own "
-"power, not the power of my legions. And that brings me to my second point. "
-"You, Gweddry, as a commander, are a coward. You claim to have defeated my "
-"lord's captains, but it was really your hordes, not you.'"
+"He says: 'Well done; you have defeated some of my less powerful captains, "
+"and a small fraction of my horde. Were I to bring the whole might of my "
+"Dread Legions to bear I could crush you like an insect. But I seek a victory "
+"that will reveal the true extent of my personal power. Unlike the Great "
+"General Gweddry I do not seek to hide behind the armored skirts of my "
+"soldiers! You, O commander Gweddry, are a coward! The bards may sing that "
+"you defeated my captains, but in reality you did nothing but cower far "
+"behind the lines in safety while others braver than you fought and died in "
+"your name.'"
 msgstr ""
-"Er sagt: »Nun, ihr habt einige meiner Anführer besiegt. Gute Arbeit. Doch "
-"dies war nur ein Bruchteil meiner Horden. Es wäre so leicht für mich euch zu "
-"besiegen. Doch denke ich nicht, dass dies meiner Macht gerecht werden würde. "
-"Ich meine meine eigene Macht, nicht die, die meinen Legionen innewohnt. Dies "
-"bringt mich zum zweiten Punkt. Ihr, Gweddry, seid ein Feigling von "
-"Heerführer. Ihr beansprucht den Sieg über die Anführer meines Herren für "
-"euch, doch in Wirklichkeit waren es eure Truppen und nicht ihr selbst, die "
-"sie besiegten.«"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:294
-msgid "What is the point of this message? All you do is insult us!"
+#, fuzzy
+msgid ""
+"What is the point of this message? Does it consist of anything more than "
+"insults?"
 msgstr "Kommt zur Sache! Alles was ihr bisher gesagt habt, beleidigt uns nur!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:298
+#, fuzzy
 msgid ""
-"The point is that Gweddry could not have defeated my lord's minions without "
-"the help of his slaves! I doubt Gweddry could even last two seconds in "
-"actual combat. And my lord will prove it. He challenges you, Gweddry, to a "
-"contest, a battle."
+"The point is that you did not defeat my Lord's minions, it was others doing "
+"the work for you! The mighty Gweddry himself would last but a few moments in "
+"actual combat. And my master seeks to prove this. He challenges you, "
+"Gweddry, to a contest, a battle."
 msgstr ""
 "Die Sache ist, dass Gweddry die Günstlinge meines Herren ohne die Hilfe "
 "seiner Sklaven nie besiegt hätte. I bezweifle, dass Gweddry auch nur zwei "
@@ -2605,10 +2602,11 @@ msgstr ""
 "begünstigt!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:306
+#, fuzzy
 msgid ""
-"That only proves you are a coward. Anyway, these are his terms: 'You pick "
-"your six best warriors and I will pick my six best. Then we will fight, to "
-"the death, until either you or he is destroyed!'"
+"That only proves you are a coward. Nevertheless, these are his terms: You "
+"pick your six best warriors and he will pick his six best. Then you will "
+"fight, to the death; until either you or he is destroyed!"
 msgstr ""
 "Das zeigt nur wieder, dass ihr ein Feigling seid. Sei's drum, dies sind "
 "seine Bedingungen: »Ihr nehmt sechs eurer besten Streiter und ich nehme "
@@ -2616,27 +2614,31 @@ msgstr ""
 "besiegt ist.«"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:310
+#, fuzzy
 msgid ""
-"Gweddry, I don't think you should accept. He will bring more than seven "
-"undead to the battle; he will bring a whole army!"
+"Gweddry, I don't think you should accept. He is bound to bring more than six "
+"Undead to the battle; he will bring an army!"
 msgstr ""
 "Ich glaube nicht, dass ihr diese Herrausforderung annehmen solltet, Gweddry. "
 "Er wird mehr als sieben Untote in die Schlacht werfen. Er wird eine ganze "
 "Armee aufbringen!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:314
+#, fuzzy
 msgid ""
-"Well, I think you should accept. This at least guarantees a somewhat fair "
-"fight, and otherwise we will have to face the whole undead army."
+"Well, I think you should accept. There is a small chance that it will be a "
+"fair fight, and otherwise we will definitely have to face his whole undead "
+"army."
 msgstr ""
 "Ich denke ihr solltet annehmen. Dies garantiert einen nahezu ausgeglichenen "
 "und gerechten Kampf. Ansonsten müssen wir gegen die gesamte Armee der "
 "Untoten bestehen..."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:318
+#, fuzzy
 msgid ""
-"I will simplify your choice. Accept, or face the onslaught of my lord's "
-"hordes, like the coward that you are."
+"I will simplify your choice. Accept, coward, or face the onslaught of my "
+"lord's hordes at dawn tomorrow!"
 msgstr ""
 "Ich werde euch die Entscheidung erleichtern. Nehmt an, oder begegnet dem "
 "Angriff der Horden meines Herren. Verkriecht euch hier, genau wie der "
@@ -2655,6 +2657,10 @@ msgstr "Wesnoth ist verdammt! Ohne mich hat bleibt für Gweddry keine Hoffnung."
 #: data/scenarios/Eastern_Invasion/deaths.cfg:38
 msgid "I... must... advise... Gweddry..."
 msgstr "Ich... muss... Gweddry... helfen..."
+
+#: data/scenarios/Eastern_Invasion/deaths.cfg:52
+msgid "Wha'? Yah fail'd to give me protecshun..."
+msgstr ""
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:5
 msgid ""
@@ -2750,3 +2756,48 @@ msgstr ""
 "beganen unvorsichtig zu werden. Doch plötzlich, eines Tages bei "
 "Morgengrauen, wurden Gweddry und seine Männer von einem markerschütternden "
 "Schrei der Nachtwache geweckt..."
+
+#~ msgid "Fifty gold pieces."
+#~ msgstr "Fünfzig Goldstücke. Aber erst das Geld dann die Sprengung"
+
+#~ msgid "Very well, but you only get it once the bridge is down."
+#~ msgstr "In Ordnung, da es wohl keinen anderen weg gibt..."
+
+#~ msgid ""
+#~ "All right, now everyone across the bridge! Anyone left on this side when "
+#~ "the bridge is exploded will be left to their own devices!"
+#~ msgstr ""
+#~ "In Ordnung. Und jetzt alle über die Brücke. Ein jeder der auf dieser "
+#~ "Seite zurückbleibt ist nach der Sprengung auf sich gestellt und dem Tode "
+#~ "geweiht!"
+
+#~ msgid "I believe you owe me some money first."
+#~ msgstr "Ich denke ihr schuldet mir erst noch nen Batzen Gold..."
+
+#~ msgid "Here it is. Now blow up the bridge!"
+#~ msgstr "Wir sind da. Und nun jage diese Brücke in die Luft!"
+
+#~ msgid "I ain't goin' to be going with yah. Best o' luck t'yah!"
+#~ msgstr "Ich werde nicht mit euch kommen. Viel Glück!"
+
+#~ msgid "What? Y'got no need a me se'vices? I quit!"
+#~ msgstr ""
+#~ "Was?!? Ihr benötigt meine Dienste doch nicht? Dann verschwinde ich "
+#~ "lieber! Ihr werdet schon sehen was ihr davon habt!"
+
+#~ msgid ""
+#~ "He says: 'Well, you have defeated some of my captains. Good job. But that "
+#~ "was only a small fraction of my horde. It would be very easy for me to "
+#~ "defeat you. But I don't think it would do justice to my power. I mean my "
+#~ "own power, not the power of my legions. And that brings me to my second "
+#~ "point. You, Gweddry, as a commander, are a coward. You claim to have "
+#~ "defeated my lord's captains, but it was really your hordes, not you.'"
+#~ msgstr ""
+#~ "Er sagt: »Nun, ihr habt einige meiner Anführer besiegt. Gute Arbeit. Doch "
+#~ "dies war nur ein Bruchteil meiner Horden. Es wäre so leicht für mich euch "
+#~ "zu besiegen. Doch denke ich nicht, dass dies meiner Macht gerecht werden "
+#~ "würde. Ich meine meine eigene Macht, nicht die, die meinen Legionen "
+#~ "innewohnt. Dies bringt mich zum zweiten Punkt. Ihr, Gweddry, seid ein "
+#~ "Feigling von Heerführer. Ihr beansprucht den Sieg über die Anführer "
+#~ "meines Herren für euch, doch in Wirklichkeit waren es eure Truppen und "
+#~ "nicht ihr selbst, die sie besiegten.«"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-27 16:40+0100\n"
+"POT-Creation-Date: 2005-03-12 18:37+0100\n"
 "PO-Revision-Date: 2005-02-28 18:38+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -41,12 +41,12 @@ msgid "Warrior"
 msgstr "Воин"
 
 #: data/campaigns/Son_Of_The_Black_Eye.cfg:11
-msgid "(hardest)"
-msgstr "(сложнее)"
-
-#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
 msgid "Warlord"
 msgstr "Мастер войны"
+
+#: data/campaigns/Son_Of_The_Black_Eye.cfg:11
+msgid "(hardest)"
+msgstr "(сложнее)"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:7
 msgid "Black Flag"
@@ -71,15 +71,15 @@ msgstr ""
 "#Закончились ходы"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:33
+#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:34
-#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
+#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:35
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:34
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:48
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:54
-#: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:35
-#: data/scenarios/Son_Of_The_Black_Eye/Saving_Inarix.cfg:103
+#: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:44
 msgid "Kapou'e"
 msgstr "Капу'е"
 
@@ -1239,9 +1239,10 @@ msgstr ""
 "Ты прав, сын. Мы должны помочь друзьям оркам. Но тебе надо быть "
 "осторожным... Я буду в отчаянии, если что-то случится с тобой."
 
+#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:200
-msgid "Argh!  I'm done.  My people is dommed!"
-msgstr "Аргх! Я обречён. Мои тролли сломлены!"
+msgid "Argh!  I'm done.  My people is doomed!"
+msgstr "Аргх! Мне конец. Мои солдаты сломлены!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:215
 msgid "Father!  Oh no!"
@@ -1251,9 +1252,9 @@ msgstr "Отец! О нет!"
 msgid "Filthy dwarves!  Now I'm to kill you to the last!"
 msgstr "Мерзкие гномы! Я убью вас всех до последнего!"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:113
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:232
 msgid "Oh no, I'm defeated."
 msgstr "О нет, я проиграл."
 
@@ -1340,10 +1341,6 @@ msgstr "Ой! Это больно!"
 msgid "The council will never be complete again.  This is hopeless."
 msgstr "Совет никогда снова не соберётся. Это безнадёжно."
 
-#: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:87
-msgid "Argh!  I'm done.  My people is doomed!"
-msgstr "Аргх! Мне конец. Мои солдаты сломлены!"
-
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:126
 msgid "Without Inarix to lead his saurians, there is no hope."
 msgstr "Без лидера ящеров Инарикса у нас нет надежды."
@@ -1401,3 +1398,6 @@ msgstr ""
 #: data/scenarios/Son_Of_The_Black_Eye/utils.cfg:192
 msgid "Pirate Galleon"
 msgstr "Пиратский Галеон"
+
+#~ msgid "Argh!  I'm done.  My people is dommed!"
+#~ msgstr "Аргх! Я обречён. Мои тролли сломлены!"
