@@ -2169,7 +2169,18 @@ int display::set_help_string(const std::string& str)
 	font::remove_floating_label(help_string_);
 
 	const SDL_Color colour = {0x0,0x00,0x00,0x77};
-	help_string_ = font::add_floating_label(str,font::SIZE_LARGE,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
+
+	int size = font::SIZE_LARGE;
+
+	while(size > 0) {
+		if(font::line_width(str, size) > x()) {
+			size--;
+		} else {
+			break;
+		}
+	}
+
+	help_string_ = font::add_floating_label(str,size,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
 	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
 	font::move_floating_label(help_string_,0.0,-double(rect.h));
 	return help_string_;
