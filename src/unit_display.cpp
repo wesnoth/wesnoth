@@ -290,8 +290,11 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u, const 
 		while(!anim.animation_finished()) {
 
 			const unit_animation::frame& frame = anim.get_current_frame();
-
-			unit_image = surface(image::get_image(frame.image));
+			
+			const surface surf(image::get_image(frame.image));
+			if(surf.get() != NULL) {
+				unit_image = surf;
+			}
 			disp.draw_tile(loc.x,loc.y,unit_image);
 			disp.update_display();
 
