@@ -225,7 +225,16 @@ void unit::set_movement(int moves)
 
 void unit::set_attacked()
 {
-	moves_ = -1;
+	moves_ = ATTACKED; 
+}
+
+void unit::end_unit_turn()
+{
+	if(moves_ == total_movement()){
+		moves_ = NOT_MOVED;
+	} else {
+		moves_ = MOVED;
+	}
 }
 
 void unit::new_turn()
@@ -243,7 +252,7 @@ void unit::new_turn()
 void unit::end_turn()
 {
 	remove_flag("slowed");
-	if(moves_ != total_movement()){
+	if((moves_ != total_movement()) && (moves_ != NOT_MOVED)){
 		resting_ = false;
 	}
 }

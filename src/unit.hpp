@@ -58,6 +58,7 @@ public:
 	bool can_attack() const;
 	void set_movement(int moves);
 	void set_attacked();
+	void end_unit_turn();
 	void new_turn();
 	void end_turn();
 	void new_level();
@@ -140,7 +141,10 @@ private:
 
 	int side_;
 
-	//is set to the number of moves left, and -1 if the unit has attacked
+	//is set to the number of moves left, ATTACKED if attacked, 
+	// MOVED if moved and then pressed "end turn"
+	// NOT_MOVED if not moved and pressed "end turn"
+	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
 	int moves_;
 	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;

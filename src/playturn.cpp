@@ -1000,7 +1000,7 @@ void turn_info::end_unit_turn()
 		steps.push_back(selected_hex_);
 		undo_stack_.push_back(undo_action(steps,un->second.movement_left(),-1));
 		redo_stack_.clear();
-		un->second.set_movement(-1);
+		un->second.end_unit_turn();
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_paths(NULL);
