@@ -63,7 +63,7 @@ public:
 	void heal(int amount);
 	void heal_all();
 
-	bool invisible(gamemap::TERRAIN terrain) const;
+	bool invisible(gamemap::TERRAIN terrain, int lawful_bonus) const;
 
 	bool matches_filter(const config& cfg) const;
 

@@ -376,7 +376,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	log_scope("do replay");
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
-	clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
+	clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
 	disp.recalculate_minimap();
 
 	const set_random_generator generator_setter(&replayer);
@@ -498,7 +498,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const bool ignore_zocs = u->second.type().is_skirmisher();
 			const bool teleport = u->second.type().teleports();
 
-			paths paths_list(map,gameinfo,units,src,teams,ignore_zocs,teleport);
+			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport);
 			paths_wiper wiper(disp);
 
 			if(!replayer.skipping()) {
@@ -549,7 +549,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				game_events::fire("sighted",dst);
 			}
 
-			clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
+			clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);
 		}
 
 		else if((child = cfg->child("attack")) != NULL) {

@@ -754,7 +754,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	std::string status = string_table["healthy"];
 	if(map_.on_board(loc) &&
-	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]))) {
+	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]), 
+			status_.get_time_of_day().lawful_bonus)) {
 		status = "@" + string_table["invisible"];
 	}
 
@@ -1137,7 +1138,8 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		if(highlight_ratio == 1.0)
 			highlight_ratio = it->second.alpha();
 
-		if(it->second.invisible(map_.underlying_terrain(map_[x][y])) &&
+		if(it->second.invisible(map_.underlying_terrain(map_[x][y]), 
+					status_.get_time_of_day().lawful_bonus) &&
 		   highlight_ratio > 0.5) {
 			highlight_ratio = 0.5;
 		}

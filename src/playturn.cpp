@@ -111,7 +111,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		route.move_left = route_turns_to_complete(ui->second,map,route);
 		gui.set_route(&route);
-		move_unit(&gui,gameinfo,map,units,teams,route.steps,
+		move_unit(&gui,gameinfo,status,map,units,teams,route.steps,
 		          &recorder,&turn_data.undos());
 		gui.invalidate_game_status();
 	}
@@ -225,7 +225,7 @@ void turn_info::handle_event(const SDL_Event& event)
 				if(u != units_.end()) {
 					const bool ignore_zocs = u->second.type().is_skirmisher();
 					const bool teleport = u->second.type().teleports();
-					current_paths_ = paths(map_,gameinfo_,units_,u->first,
+					current_paths_ = paths(map_,status_,gameinfo_,units_,u->first,
 					                       teams_,ignore_zocs,teleport,
 					                       path_turns_);
 					gui_.set_paths(&current_paths_);
@@ -310,7 +310,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 			const bool ignore_zocs = un->second.type().is_skirmisher();
 			const bool teleport = un->second.type().teleports();
-			current_paths_ = paths(map_,gameinfo_,units_,new_hex,teams_,
+			current_paths_ = paths(map_,status_,gameinfo_,units_,new_hex,teams_,
 			                   ignore_zocs,teleport,path_turns_);
 			gui_.set_paths(&current_paths_);
 			enemy_paths_ = true;
@@ -542,7 +542,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     current_route_.steps.front() == selected_hex_) {
 
 
-		const size_t moves = move_unit(&gui_,gameinfo_,map_,units_,teams_,
+		const size_t moves = move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_, &next_unit_);
 
 		gui_.invalidate_game_status();
@@ -579,7 +579,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				gui_.set_paths(&current_paths_);
 			}
 
-			if(clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1)) {
+			if(clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1)) {
 				undo_stack_.clear();
 			}
 		}
@@ -596,7 +596,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_.fogged(it->first.x,it->first.y)) {
 			const bool ignore_zocs = it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
-			current_paths_ = paths(map_,gameinfo_,units_,hex,teams_,
+			current_paths_ = paths(map_,status_,gameinfo_,units_,hex,teams_,
 			                   ignore_zocs,teleport,path_turns_);
 
 			next_unit_ = it->first;
@@ -766,7 +766,7 @@ void turn_info::cycle_units()
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
-		current_paths_ = paths(map_,gameinfo_,units_,
+		current_paths_ = paths(map_,status_,gameinfo_,units_,
 		               it->first,teams_,ignore_zocs,teleport,path_turns_);
 		gui_.set_paths(&current_paths_);
 
@@ -904,7 +904,7 @@ void turn_info::undo()
 
 	recorder.undo();
 
-	clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1);
+	clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 	gui_.recalculate_minimap();
 }
 

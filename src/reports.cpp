@@ -67,20 +67,20 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		return res;
 	}
 	case UNIT_STATUS: {
-		std::string status = "healthy", prefix = "";
-		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]))) {
-			status = "invisible";
+		std::string unit_status = "healthy", prefix = "";
+		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus)) {
+			unit_status = "invisible";
 			prefix = "@";
 		} else if(u->second.has_flag("slowed")) {
-			status = "slowed";
+			unit_status = "slowed";
 			prefix = "#";
 		} else if(u->second.has_flag("poisoned")) {
-			status = "poisoned";
+			unit_status = "poisoned";
 			prefix = "#";
 		}
 
-		report res(prefix + string_table[status]);
-		res.tooltip = string_table[status + "_description"];
+		report res(prefix + string_table[unit_status]);
+		res.tooltip = string_table[unit_status + "_description"];
 		return res;
 	}
 	case UNIT_ALIGNMENT: {

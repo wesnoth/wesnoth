@@ -13,6 +13,7 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
+#include "gamestatus.hpp"
 #include "map.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
@@ -50,7 +51,8 @@ gamemap::location find_vacant_tile(const gamemap& map,
                                    gamemap::TERRAIN terrain=0);
 
 //function which determines if a given location is an enemy zone of control
-bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
+bool enemy_zoc(const gamemap& map,const gamestatus& status, 
+		         const std::map<gamemap::location,unit>& units,
                const gamemap::location& loc,const team& current_team,int side);
 
 //object which contains all the possible locations a unit can move to, with
@@ -65,7 +67,8 @@ struct paths
 	//additional_turns: if 0, paths for how far the unit can move this turn
 	//will be calculated. If 1, paths for how far the unit can move by the
 	//end of next turn will be calculated, and so forth.
-	paths(const gamemap& map, const game_data& gamedata,
+	paths(const gamemap& map, const gamestatus& status, 
+			const game_data& gamedata,
 	      const std::map<gamemap::location,unit>& units,
 	      const gamemap::location& loc, std::vector<team>& teams,
 		  bool ignore_zocs, bool allow_teleport, int additional_turns=0);

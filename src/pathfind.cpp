@@ -117,7 +117,8 @@ size_t distance_between(const gamemap::location& a, const gamemap::location& b)
 	return hdistance + vdistance - vsavings;
 }
 
-bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
+bool enemy_zoc(const gamemap& map, const gamestatus& status, 
+					const std::map<gamemap::location,unit>& units,
                const gamemap::location& loc, const team& current_team, int side)
 {
 	gamemap::location locs[6];
@@ -128,7 +129,8 @@ bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
 		if(it != units.end() && it->second.side() != side &&
 		   current_team.is_enemy(it->second.side()) &&
 		   !it->second.invisible(map.underlying_terrain(
-		                             map[it->first.x][it->first.y]))) {
+		                             map[it->first.x][it->first.y]),
+				status.get_time_of_day().lawful_bonus)) {
 			return true;
 		}
 	}
@@ -138,7 +140,8 @@ bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
 
 namespace {
 
-void find_routes(const gamemap& map, const game_data& gamedata,
+void find_routes(const gamemap& map, const gamestatus& status,
+		       const game_data& gamedata,
 				 const std::map<gamemap::location,unit>& units,
 				 const unit& u,
 				 const gamemap::location& loc,
@@ -209,7 +212,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 			   rtit->second.move_left >= total_movement)
 				continue;
 
-			const bool zoc = enemy_zoc(map,units,currentloc,
+			const bool zoc = enemy_zoc(map,status,units,currentloc,
 			                           current_team,u.side()) &&
 			                 !ignore_zocs;
 			paths::route new_route = routes[loc];
@@ -221,7 +224,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 			routes[currentloc] = new_route;
 
 			if(new_route.move_left > 0) {
-				find_routes(map,gamedata,units,u,currentloc,
+				find_routes(map,status,gamedata,units,u,currentloc,
 				            zoc_move_left,routes,teams,ignore_zocs,
 							allow_teleport,new_turns_left);
 			}
@@ -231,7 +234,8 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 
 } //end anon namespace
 
-paths::paths(const gamemap& map, const game_data& gamedata,
+paths::paths(const gamemap& map, const gamestatus& status,
+		       const game_data& gamedata,
              const std::map<gamemap::location,unit>& units,
              const gamemap::location& loc,
 			 std::vector<team>& teams,
@@ -244,7 +248,7 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 	}
 
 	routes[loc].move_left = i->second.movement_left();
-	find_routes(map,gamedata,units,i->second,loc,
+	find_routes(map,status,gamedata,units,i->second,loc,
 	            i->second.movement_left(),routes,teams,
 				ignore_zocs,allow_teleport,additional_turns);
 }

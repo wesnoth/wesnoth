@@ -228,6 +228,8 @@ void unit::new_turn()
 	moves_ = total_movement();
 	if(type().has_ability("ambush"))
 		set_flag("ambush");
+	if(type().has_ability("nightstalk"))
+		set_flag("nightstalk");
 }
 
 void unit::end_turn()
@@ -315,10 +317,14 @@ void unit::heal_all()
 	hitpoints_ = max_hitpoints();
 }
 
-bool unit::invisible(gamemap::TERRAIN terrain) const
+bool unit::invisible(gamemap::TERRAIN terrain, int lawful_bonus) const
 {
 	static const std::string forest_invisible("ambush");
-	if(terrain == gamemap::FOREST && has_flag(forest_invisible)) {
+	if((terrain == gamemap::FOREST) && has_flag(forest_invisible)) {
+		return true;
+	}
+	static const std::string night_invisible("nightstalk");
+	if((lawful_bonus < 0) && has_flag(night_invisible)) {
 		return true;
 	}
 

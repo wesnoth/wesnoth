@@ -113,7 +113,7 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
-	paths current_paths = paths(map_,gameinfo_,units_,from,teams_,ignore_zocs,teleport);
+	paths current_paths = paths(map_,state_,gameinfo_,units_,from,teams_,ignore_zocs,teleport);
 	paths_wiper wiper(disp_);
 
 	if(!disp_.fogged(from.x,from.y))
@@ -187,7 +187,7 @@ void ai::do_move()
 
 			const bool ignore_zocs = un_it->second.type().is_skirmisher();
 			const bool teleports = un_it->second.type().teleports();
-			const paths new_paths(map_,gameinfo_,units_,
+			const paths new_paths(map_,state_,gameinfo_,units_,
 			                      un_it->first,teams_,ignore_zocs,teleports);
 			for(paths::routes_map::const_iterator rt = new_paths.routes.begin();
 			    rt != new_paths.routes.end(); ++rt) {
@@ -218,7 +218,7 @@ void ai::do_move()
 		const bool ignore_zocs = un_it->second.type().is_skirmisher();
 		const bool teleports = un_it->second.type().teleports();
 		possible_moves.insert(std::pair<gamemap::location,paths>(
-		                un_it->first,paths(map_,gameinfo_,units_,
+		                un_it->first,paths(map_,state_,gameinfo_,units_,
 		                un_it->first,teams_,ignore_zocs,teleports)));
 	}
 
@@ -248,7 +248,7 @@ void ai::do_move()
 		}
 
 		//find where the leader can move
-		const paths leader_paths(map_,gameinfo_,units_,leader->first,teams_,false,false);
+		const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
 		const gamemap::location& start_pos = map_.starting_position(leader->second.side());
 
 		possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
@@ -580,7 +580,8 @@ void ai::do_move()
 			const unit_map::iterator enemy = units_.find(adj[n]);
 			if(enemy != units_.end() &&
 			   current_team().is_enemy(enemy->second.side()) &&
-			   !enemy->second.invisible(map_[enemy->first.x][enemy->first.y])) {
+			   !enemy->second.invisible(map_[enemy->first.x][enemy->first.y],
+					state_.get_time_of_day().lawful_bonus)) {
 				target = adj[n];
 				weapon = choose_weapon(move.first,target,bat_stats,
 				                       map_[move.second.x][move.second.y]);

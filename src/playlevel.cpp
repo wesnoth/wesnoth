@@ -283,7 +283,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 			if(first_time) {
 				const hotkey::basic_handler key_events_handler(gui);
-				clear_shroud(gui,map,gameinfo,units,teams,0);
+				clear_shroud(gui,status,map,gameinfo,units,teams,0);
 
 				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
@@ -333,7 +333,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 				gui.set_playing_team(size_t(player_number-1));
 
-				clear_shroud(gui,map,gameinfo,units,teams,player_number-1);
+				clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
 
 				//scroll the map to the leader
 				const unit_map::iterator leader = find_leader(units,player_number);

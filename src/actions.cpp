@@ -344,6 +344,8 @@ void attack(display& gui, const gamemap& map,
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string forest_invisible("ambush");
 	a->second.remove_flag(forest_invisible);
+	static const std::string night_invisible("nightstalk");
+	a->second.remove_flag(night_invisible);
 
 	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
 	                                           attack_with,units,state,info);
@@ -438,7 +440,7 @@ void attack(display& gui, const gamemap& map,
 						gui.draw_tile(loc.x,loc.y);
 					}
 				}
-				recalculate_fog(map, info, units, teams, d->second.side()-1);
+				recalculate_fog(map,state,info,units,teams,d->second.side()-1);
 				gui.recalculate_minimap();
 				gui.update_display();
 				break;
@@ -554,7 +556,7 @@ void attack(display& gui, const gamemap& map,
 				}
 				gui.recalculate_minimap();
 				gui.update_display();
-				recalculate_fog(map, info, units, teams, a->second.side()-1);
+				recalculate_fog(map,state,info,units,teams,a->second.side()-1);
 				break;
 			} else if(hits) {
 				if(stats.defend_special == poison_string &&
@@ -1032,7 +1034,9 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 //returns true iff some shroud is cleared
 //returns true/false in seen_unit if new units has/has not been seen
 //if known_units is NULL, seen_unit can be NULL and seen_unit is undefined
-bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
+bool clear_shroud_unit(const gamemap& map, 
+		                 const gamestatus& status,
+							  const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team,
 					   const std::set<gamemap::location>* known_units,
@@ -1042,7 +1046,7 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 
 	std::vector<gamemap::location> cleared_locations;
 
-	paths p(map,gamedata,units,loc,teams,true,false);
+	paths p(map,status,gamedata,units,loc,teams,true,false);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
 	    i != p.routes.end(); ++i) {
 		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
@@ -1074,8 +1078,9 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 
 }
 
-void recalculate_fog(const gamemap& map, const game_data& gamedata,
-		const unit_map& units, std::vector<team>& teams, int team) {
+void recalculate_fog(const gamemap& map, const gamestatus& status,
+		const game_data& gamedata, const unit_map& units, 
+		std::vector<team>& teams, int team) {
 
 	teams[team].refog();
 
@@ -1087,12 +1092,13 @@ void recalculate_fog(const gamemap& map, const game_data& gamedata,
 			unit& mutable_unit = const_cast<unit&>(i->second);
 			const unit_movement_resetter move_resetter(mutable_unit);
 
-			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
+			clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 }
 
-bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
+bool clear_shroud(display& disp, const gamestatus& status, 
+		            const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team)
 {
 	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
@@ -1109,16 +1115,17 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 			unit& mutable_unit = const_cast<unit&>(i->second);
 			const unit_movement_resetter move_resetter(mutable_unit);
 
-			result |= clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
+			result |= clear_shroud_unit(map,status,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 
-	recalculate_fog(map, gamedata, units, teams, team);
+	recalculate_fog(map,status,gamedata,units,teams,team);
 
 	return result;
 }
 
-size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
+size_t move_unit(display* disp, const game_data& gamedata, 
+                 const gamestatus& status, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& route,
                  replay* move_recorder, undo_list* undo_stack, gamemap::location *next_unit)
@@ -1169,7 +1176,8 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,units,*step,teams[team_num],u.side())) {
+		if(!skirmisher && enemy_zoc(map,status,units,*step,teams[team_num],
+					u.side())) {
 			moves_left = 0;
 		}
 
@@ -1182,7 +1190,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 				bool res;
 
 				should_clear_stack |= 
-					clear_shroud_unit(map,gamedata,units,*step,teams,
+					clear_shroud_unit(map,status,gamedata,units,*step,teams,
 				   	ui->second.side()-1,&seen_units,&res);
 				units.erase(*step);
 

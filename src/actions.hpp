@@ -172,19 +172,22 @@ typedef std::deque<undo_action> undo_list;
 //steps. If the unit cannot make it completely along the path this turn,
 //a goto order will be set. If move_recorder is not NULL, the move will
 //be recorded in it. If undos is not NULL, undo information will be added.
-size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
-                 unit_map& units, std::vector<team>& teams,
-                 const std::vector<gamemap::location>& steps,
-                 replay* move_recorder, undo_list* undos,
+size_t move_unit(display* disp, const game_data& gamedata, 
+						const gamestatus& status, const gamemap& map, 
+						unit_map& units, std::vector<team>& teams,
+						const std::vector<gamemap::location>& steps,
+						replay* move_recorder, undo_list* undos,
 		 gamemap::location *next_unit = NULL);
 
 //function which recalculates the fog
-void recalculate_fog(const gamemap& map, const game_data& gamedata,
+void recalculate_fog(const gamemap& map, const gamestatus& status,
+		      const game_data& gamedata,
 		      const unit_map& units, std::vector<team>& teams, int team);
 
 //function which will clear shroud away for the given 0-based team based on
 //current unit positions. Returns true if some shroud is actually cleared away.
-bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
+bool clear_shroud(display& disp, const gamestatus& status,
+		            const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team);
 
 //will return true iff the unit at 'loc' has any possible moves it can do
