@@ -27,7 +27,8 @@ struct manager {
 	~manager();
 };
 
-enum COLOUR { NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR };
+enum COLOUR { NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
+              BUTTON_COLOUR };
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size, COLOUR colour,
                    const std::string& text, int x, int y, SDL_Surface* bg=NULL,

@@ -98,8 +98,8 @@ public:
 	void remove_overlay(const gamemap::location& loc);
 
 	void draw_unit_details(int x, int y, const gamemap::location& loc,
-	        const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect,
-	        SDL_Rect* clip_rect=NULL);
+	                       const unit& u, SDL_Rect& description_rect,
+	                       int xprofile,int yprofile,SDL_Rect* clip_rect=NULL);
 
 	void update_display();
 
@@ -181,7 +181,6 @@ private:
 	std::pair<int,int> energy_bar_count_;
 
 	SDL_Surface* minimap_;
-	bool minimapDecorationsDrawn_;
 
 	const paths* pathsList_;
 	paths::route route_;

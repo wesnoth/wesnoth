@@ -26,6 +26,8 @@ namespace gui
 
 void draw_dialog_frame(int x, int y, int w, int h, display& disp);
 
+void draw_dialog_background(int x, int y, int w, int h, display& disp);
+
 void draw_rectangle(int x, int y, int w, int h, short colour, SDL_Surface* tg);
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,

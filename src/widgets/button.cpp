@@ -60,7 +60,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	textRect_.h = disp.y();
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
-	                            font::NORMAL_COLOUR,label_,0,0);
+	                            font::BUTTON_COLOUR,label_,0,0);
 	const int width = maximum(textRect_.w+horizontal_padding,button_image->w);
 	const int height = maximum(textRect_.h+horizontal_padding,button_image->h);
 
@@ -151,7 +151,7 @@ void button::draw()
 
 	display_->blit_surface(x_,y_,image);
 	font::draw_text(display_,clipArea,font_size,
-					font::NORMAL_COLOUR,label_,textx,texty);
+					font::BUTTON_COLOUR,label_,textx,texty);
 
 	display_->video().flip();
 }

@@ -71,6 +71,17 @@ namespace {
 		       ((g >> fmt->Gloss) << fmt->Gshift) |
 		       ((b >> fmt->Bloss) << fmt->Bshift);
 	}
+
+	const size_t SideBarText_x = 13;
+	const size_t SideBarUnit_y = 435;
+	const size_t SideBarUnitProfile_y = 375;
+	const size_t SideBarGameStatus_x = 16;
+	const size_t SideBarGameStatus_y = 220;
+	const size_t Minimap_x = 30;
+	const size_t Minimap_y = 35;
+	const size_t Minimap_w = 60;
+	const size_t Minimap_h = 120;
+
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -78,7 +89,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 		             : screen_(video), xpos_(0.0), ypos_(0.0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
 					   energy_bar_count_(-1,-1), minimap_(NULL),
-					   minimapDecorationsDrawn_(false),
 					   pathsList_(NULL), status_(status),
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
@@ -176,7 +186,8 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 gamemap::location display::minimap_location_on(int x, int y)
 {
 	const SDL_Rect rect =
-	      get_minimap_location(mapx()+30,35,(this->x()-mapx())-60,120);
+	      get_minimap_location(mapx()+Minimap_x,Minimap_y,
+	                           (this->x()-mapx())-Minimap_w,Minimap_h);
 
 	if(x < rect.x || y < rect.y ||
 	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
@@ -364,7 +375,6 @@ void display::redraw_everything()
 	tooltips::clear_tooltips();
 
 	sideBarBgDrawn_ = false;
-	minimapDecorationsDrawn_ = false;
 	invalidate_all();
 	draw(true,true);
 }
@@ -373,22 +383,23 @@ void display::draw(bool update,bool force)
 {
 	if(!sideBarBgDrawn_) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* image = getImage("misc/rightside.png",UNSCALED);
-		if(image != NULL) {
+		SDL_Surface* image_top = getImage("misc/rightside.png",UNSCALED);
+		SDL_Surface* image = getImage("misc/rightside-bottom.png",UNSCALED);
+		if(image_top != NULL && image != NULL && image_top->h < screen->h) {
 
-			if(image->h != screen->h) {
+			if(image_top->h+image->h != screen->h) {
 				SDL_FreeSurface(image);
-				images_.erase("misc/rightside.png");
+				images_.erase("misc/rightside-bottom.png");
 
-				image = getImage("misc/rightside.png",UNSCALED);
+				image = getImage("misc/rightside-bottom.png",UNSCALED);
 
 				SDL_Surface* const new_image
-				                   = scale_surface(image,image->w,screen->h);
+				   = scale_surface(image,image_top->w,screen->h-image_top->h);
 				if(new_image != NULL) {
-					images_["misc/rightside.png"] = new_image;
+					images_["misc/rightside-bottom.png"] = new_image;
 					SDL_FreeSurface(image);
 					image = new_image;
-					sidebarScaling_ = static_cast<double>(image->h)/768.0;
+					sidebarScaling_ = static_cast<double>(screen->h)/768.0;
 				} else {
 					std::cerr << "Could not scale image\n";
 				}
@@ -397,17 +408,21 @@ void display::draw(bool update,bool force)
 			SDL_Rect dstrect;
 			dstrect.x = mapx();
 			dstrect.y = 0;
-			dstrect.w = image->w;
-			dstrect.h = image->h;
+			dstrect.w = image_top->w;
+			dstrect.h = image_top->h;
 
 			if(dstrect.x + dstrect.w <= this->x() &&
 			   dstrect.y + dstrect.h <= this->y()) {
-				SDL_BlitSurface(image,NULL,screen,&dstrect);
+				SDL_BlitSurface(image_top,NULL,screen,&dstrect);
+
+				dstrect.y = image_top->h;
+				dstrect.h = image->h;
+				if(dstrect.y + dstrect.h <= this->y()) {
+					SDL_BlitSurface(image,NULL,screen,&dstrect);
+				}
 			} else {
 				std::cout << (dstrect.x+dstrect.w) << " > " << this->x() << " or " << (dstrect.y + dstrect.h) << " > " << this->y() << "\n";
 			}
-		} else {
-			std::cerr << "could not load 'misc/rightside.png'\n";
 		}
 
 		sideBarBgDrawn_ = true;
@@ -418,8 +433,7 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		draw_minimap(mapx()+30,35,(this->x()-mapx())-60,
-		                          int(120*sidebarScaling_));
+		draw_minimap(mapx()+13,11,119,146);
 	} else {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -471,17 +485,21 @@ void display::draw_sidebar()
 		//otherwise we display the unit that is selected
 		std::map<gamemap::location,unit>::const_iterator i
 		                                = units_.find(mouseoverHex_);
-		if(i == units_.end())
+		if(i == units_.end()) {
 			i = units_.find(selectedHex_);
+		}
 
-		if(i != units_.end())
-			draw_unit_details(mapx()+2,int(400*sidebarScaling_),selectedHex_,
-			                  i->second,unitDescriptionRect_,unitProfileRect_);
+		if(i != units_.end()) {
+			draw_unit_details(mapx()+SideBarText_x,SideBarUnit_y,selectedHex_,
+			                  i->second,unitDescriptionRect_,
+			                  mapx()+SideBarText_x,SideBarUnitProfile_y);
+		}
+
 		invalidateUnit_ = false;
 	}
 
 	if(invalidateGameStatus_) {
-		draw_game_status(mapx()+2,int(258*sidebarScaling_));
+		draw_game_status(mapx()+SideBarGameStatus_x,SideBarGameStatus_y);
 		invalidateGameStatus_ = false;
 	}
 }
@@ -502,7 +520,7 @@ void display::draw_game_status(int x, int y)
 
 	if(tod_surface != NULL) {
 		//hardcoded values as to where the time of day image appears
-		blit_surface(mapx() + 21,int(196*sidebarScaling_),tod_surface);
+		blit_surface(mapx() + 13,167,tod_surface);
 	}
 
 	if(gameStatusRect_.w > 0) {
@@ -576,33 +594,33 @@ void display::draw_game_status(int x, int y)
 
 	SDL_Rect clipRect = screen_area();
 
-	gameStatusRect_ = font::draw_text(this,clipRect,14,font::NORMAL_COLOUR,
+	gameStatusRect_ = font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
 	                                  details.str(),x,y);
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
-         const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect,
+         const unit& u, SDL_Rect& description_rect, int profilex, int profiley,
          SDL_Rect* clip_rect)
 {
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
 	SDL_Surface* const background = getImage("misc/rightside.png",UNSCALED);
+	SDL_Surface* const background_bot =
+	                         getImage("misc/rightside-bottom.png",UNSCALED);
 
-	if(background == NULL)
+	if(background == NULL || background_bot == NULL)
 		return;
 
 	SDL_Surface* const screen = screen_.getSurface();
 
 	if(description_rect.w > 0 && description_rect.x >= mapx()) {
 		SDL_Rect srcrect = description_rect;
+		srcrect.y -= background->h;
 		srcrect.x -= mapx();
-		SDL_BlitSurface(background,&srcrect,screen,&description_rect);
-	}
 
-	if(profile_rect.w > 0 && profile_rect.x >= mapx() && background != NULL) {
-		SDL_Rect srcrect = profile_rect;
-		srcrect.x -= this->mapx();
-		SDL_BlitSurface(background,&srcrect,screen,&profile_rect);
+		SDL_Rect dstrect = description_rect;
+
+		SDL_BlitSurface(background_bot,&srcrect,screen,&description_rect);
 	}
 
 	std::string status = string_table["healthy"];
@@ -661,7 +679,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			}
 
 	description_rect =
-	    font::draw_text(this,clipRect,14,font::NORMAL_COLOUR,
+	    font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
 	                    details.str(),x,y);
 
 	y += description_rect.h;
@@ -671,38 +689,31 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	if(profile == NULL)
 		return;
 
-	blit_surface(x,y,profile);
+	//blit the unit profile
+	{
+		const size_t profilew = 50;
+		const size_t profileh = 50;
+		SDL_Rect srcrect = { (profile->w-profilew)/2,(profile->h-profileh)/2,
+		                     profilew,profileh };
+		SDL_Rect dstrect = srcrect;
+		dstrect.x = profilex;
+		dstrect.y = profiley;
+		SDL_BlitSurface(profile,&srcrect,video().getSurface(),&dstrect);
+	}
+/*
+	//hard-coded values for location of unit profile
+	blit_surface(mapx()+8,366,profile);
 
 	profile_rect.x = x;
 	profile_rect.y = y;
 	profile_rect.w = profile->w;
 	profile_rect.h = profile->h;
+*/
 }
 
 SDL_Rect display::get_minimap_location(int x, int y, int w, int h)
 {
-	SDL_Rect res = {0,0,0,0};
-	SDL_Surface* const surface = getMinimap(w,h);
-	if(surface == NULL)
-		return res;
-
-	if(w > surface->w) {
-		x += (w - surface->w)/2;
-		w = surface->w;
-	}
-
-	if(h > surface->h) {
-		y += (h - surface->h)/2;
-		h = surface->h;
-	}
-
-	if(w < surface->w || h < surface->h)
-		return res;
-
-	res.x = x;
-	res.y = y;
-	res.w = w;
-	res.h = h;
+	const SDL_Rect res = {x,y,w,h};
 	return res;
 }
 
@@ -718,61 +729,16 @@ void display::draw_minimap(int x, int y, int w, int h)
 	w = minimap_location.w;
 	h = minimap_location.h;
 
-	//we only have to draw the map surroundings once per level
-	if(!minimapDecorationsDrawn_) {
-		minimapDecorationsDrawn_ = true;
-
-		//draw red borders around the map
-		const short border_colour = short(0xF000);
-		gui::draw_rectangle(x-1,y-1,w+2,h+2,border_colour,screen_.getSurface());
-		gui::draw_rectangle(x-3,y-3,w+6,h+6,border_colour,screen_.getSurface());
-		SDL_Surface* const north = getImage("misc/compass-north.png",UNSCALED);
-		SDL_Surface* const south = getImage("misc/compass-south.png",UNSCALED);
-
-		if(north != NULL && north->h < y) {
-			const int xloc = x + w/2 - north->w/2;
-			const int yloc = y - north->h;
-
-			blit_surface(xloc, yloc, north);
-
-			if(south != NULL) {
-				blit_surface(xloc, y+h, south);
-			}
-
-			//try to draw the little widgets on each corner of the map
-			SDL_Surface* const tl=getImage("misc/topleft-corner.png",UNSCALED);
-			SDL_Surface* const bl=getImage("misc/botleft-corner.png",UNSCALED);
-			SDL_Surface* const tr=getImage("misc/topright-corner.png",UNSCALED);
-			SDL_Surface* const br=getImage("misc/botright-corner.png",UNSCALED);
-
-			if(tl != NULL && bl != NULL && tr != NULL && br != NULL) {
-				const int adjust = 5;
-				int xloc = x - tl->w + adjust;
-				int yloc = y - tl->h + adjust;
-
-				blit_surface(xloc,yloc,tl);
-
-				yloc = y + h - adjust;
-				blit_surface(xloc,yloc,bl);
-
-				xloc = x + w - adjust;
-				blit_surface(xloc,yloc,br);
-
-				yloc = y - tl->h + adjust;
-				blit_surface(xloc,yloc,tr);
-			}
-		}
-	}
-
 	SDL_BlitSurface(surface,NULL,screen_.getSurface(),&minimap_location);
 
-	const double scaling = static_cast<double>(surface->w/map_.x());
+	const double xscaling = double(surface->w)/double(map_.x());
+	const double yscaling = double(surface->h)/double(map_.y());
 
-	const int xbox = static_cast<int>(scaling*xpos_/(zoom_*0.75));
-	const int ybox = static_cast<int>(scaling*ypos_/zoom_);
+	const int xbox = static_cast<int>(xscaling*xpos_/(zoom_*0.75));
+	const int ybox = static_cast<int>(yscaling*ypos_/zoom_);
 
-	const int wbox = static_cast<int>(scaling*mapx()/(zoom_*0.75) - scaling);
-	const int hbox = static_cast<int>(scaling*this->y()/zoom_ - scaling);
+	const int wbox = static_cast<int>(xscaling*mapx()/(zoom_*0.75) - xscaling);
+	const int hbox = static_cast<int>(yscaling*this->y()/zoom_ - yscaling);
 
 	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
@@ -1649,9 +1615,9 @@ SDL_Surface* display::getMinimap(int w, int h)
 		}
 	}
 
-	while(minimap_ != NULL && minimap_->w*2 < w && minimap_->h*2 < h) {
+	if(minimap_->w != w || minimap_->h != h) {
 		SDL_Surface* const surf = minimap_;
-		minimap_ = scale_surface(minimap_,minimap_->w*2,minimap_->h*2);
+		minimap_ = scale_surface(surf,w,h);
 		SDL_FreeSurface(surf);
 	}
 

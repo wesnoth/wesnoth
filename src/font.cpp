@@ -109,8 +109,11 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 						SDL_Surface* bg, bool use_tooltips)
 {
 	static const SDL_Color colours[] =
-	//     neutral         good          bad           black
-	    { {0xFF,0xFF,0,0}, {0,0xFF,0,0}, {0xFF,0,0,0}, {0,0,0,0} };
+	//     neutral            good           bad          black
+	    { {0xDD,0xDD,0xDD,0}, {0,0xFF,0,0}, {0xFF,0,0,0}, {0,0,0,0},
+
+	//    button (yellow)
+	      {0xFF,0xFF,0,0} };
 
 	const SDL_Color& col = colours[colour];
 	TTF_Font* const font = get_font(size);

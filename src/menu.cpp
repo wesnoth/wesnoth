@@ -18,6 +18,7 @@
 #include "language.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
+#include "util.hpp"
 #include "widgets/button.hpp"
 #include "widgets/textbox.hpp"
 
@@ -28,19 +29,67 @@ namespace gui {
 
 void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 {
-	const int border_size = 6;
+	draw_dialog_background(x,y,w,h,disp);
+
+
+	SDL_Surface* const top = disp.getImage("misc/menu-border-top.png",
+	                                       display::UNSCALED);
+	SDL_Surface* const bot = disp.getImage("misc/menu-border-bottom.png",
+	                                       display::UNSCALED);
+	SDL_Surface* const left = disp.getImage("misc/menu-border-left.png",
+	                                       display::UNSCALED);
+	SDL_Surface* const right = disp.getImage("misc/menu-border-right.png",
+	                                       display::UNSCALED);
+
+	if(top == NULL || bot == NULL || left == NULL || right == NULL)
+		return;
 
 	SDL_Surface* const scr = disp.video().getSurface();
 
-	const display::Pixel border_colour = SDL_MapRGB(scr->format,200,0,0);
+	scoped_sdl_surface top_image(scale_surface(top,w+left->w+right->w,top->h));
 
-	draw_solid_tinted_rectangle(x-border_size,y-border_size,
-	                            w+border_size,h+border_size,0,0,0,0.6,scr);
-	draw_solid_tinted_rectangle(x,y,w+border_size,h+border_size,0,0,0,0.6,scr);
+	if(top_image.get() != NULL) {
+		disp.blit_surface(x-left->w,y-top->h,top_image.get());
+	}
 
-	draw_rectangle(x-border_size,y-border_size,w+border_size,h+border_size,
-	               border_colour,scr);
-	draw_rectangle(x,y,w+border_size,h+border_size,border_colour,scr);
+	scoped_sdl_surface bot_image(scale_surface(bot,w+left->w+right->w,bot->h));
+
+	if(bot_image.get() != NULL) {
+		disp.blit_surface(x-left->w,y+h,bot_image.get());
+	}
+
+	scoped_sdl_surface left_image(scale_surface(left,left->w,h));
+
+	if(left_image.get() != NULL) {
+		SDL_Rect dst = {x-left->w,y,left->w,h};
+		SDL_BlitSurface(left_image.get(),NULL,scr,&dst);
+	}
+
+	scoped_sdl_surface right_image(scale_surface(right,right->w,h));
+
+	if(right_image.get() != NULL) {
+		SDL_Rect dst = {x+w,y,right->w,h};
+		SDL_BlitSurface(right_image.get(),NULL,scr,&dst);
+	}
+}
+
+void draw_dialog_background(int x, int y, int w, int h, display& disp)
+{
+	static const std::string menu_background = "misc/menu-background.png";
+
+	SDL_Surface* const bg = disp.getImage(menu_background,display::UNSCALED);
+
+	for(int i = 0; i < w; i += bg->w) {
+		for(int j = 0; j < h; j += bg->h) {
+			SDL_Rect src = {0,0,0,0};
+			src.w = minimum(w - i,bg->w);
+			src.h = minimum(h - j,bg->h);
+			SDL_Rect dst = src;
+			dst.x = x + i;
+			dst.y = y + j;
+			SDL_BlitSurface(bg,&src,disp.video().getSurface(),&dst);
+		}
+	}
 }
 
 void draw_rectangle(int x, int y, int w, int h, short colour,
@@ -171,7 +220,8 @@ class menu
 
 		gui::draw_solid_tinted_rectangle(x_,rect.y,width(),rect.h,
 		                                 item == selected_ ? 150:0,0,0,
-		                                 0.7,display_->video().getSurface());
+		                                 item == selected_ ? 0.6 : 0.2,
+		                                 display_->video().getSurface());
 
 		SDL_Rect area = {0,0,display_->x(),display_->y()};
 
@@ -652,11 +702,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 		button_offset += buttons[button_num].width();
 	}
 
+	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
+
 	if(menu_.height() > 0)
 		menu_.set_loc(xloc+total_image_width+left_padding+image_h_padding,
 		              yloc+top_padding+text_size.h);
-
-	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
 
 	if(image != NULL) {
 		const int x = xloc + left_padding;
@@ -713,9 +763,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	int cur_selection = -1;
 
-	SDL_Rect unit_details_rect, unit_profile_rect;
+	SDL_Rect unit_details_rect;
 	unit_details_rect.w = 0;
-	unit_profile_rect.w = 0;
 
 	bool first_time = true;
 
@@ -769,15 +818,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 					SDL_FillRect(screen,&unit_details_rect,0);
 				}
 
-				if(unit_profile_rect.w > 0) {
-					SDL_FillRect(screen,&unit_profile_rect,0);
-				}
-
 				SDL_Rect clip_rect = { unitx, unity, unitw, unith };
 
 				disp.draw_unit_details(unitx+left_padding,
-				   unity+top_padding, gamemap::location(), units[selection],
-				   unit_details_rect, unit_profile_rect, &clip_rect);
+				   unity+top_padding+60, gamemap::location(), units[selection],
+				   unit_details_rect, unitx+left_padding, unity+top_padding,
+				   &clip_rect);
 				disp.update_display();
 			}
 		}
