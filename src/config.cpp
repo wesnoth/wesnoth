@@ -28,7 +28,6 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "scoped_resource.hpp"
 #include "util.hpp"
 #include "wesconfig.h"
 
@@ -75,106 +74,10 @@ line_source get_line_source(const std::vector<line_source>& line_src, int line)
 	return res;
 }
 
-void read_file_internal(const std::string& fname, std::string& res)
-{
-	const int size = file_size(fname);
-	if(size < 0) {
-		return;
-	}
-
-	std::vector<char> v;
-	v.reserve(size);
-
-	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
-	const util::scoped_FILE file(fopen(fname.c_str(),"rb"));
-
-	if(file == NULL) {
-		return;
-	}
-
-	const int block_size = 65536;
-
-	while(v.size() < size) {
-		const size_t expected = minimum<size_t>(block_size,size - v.size());
-
-		if(expected > 0) {
-			v.resize(v.size() + expected);
-			const size_t nbytes = fread(&v[v.size() - expected],1,expected,file);
-			if(nbytes < expected) {
-				v.resize(v.size() - (expected - nbytes));
-				break;
-			}
-		}
-	}
-
-	res.resize(v.size());
-	std::copy(v.begin(),v.end(),res.begin());
-}
-
 } //end anon namespace
-
-std::string read_stdin()
-{
-	std::vector<char> v;
-	const int block_size = 65536;
-
-	size_t nbytes = 1;
-	while(nbytes > 0) {
-		v.resize(v.size() + block_size);
-		nbytes = fread(&v[v.size() - block_size],1,block_size,stdin);
-		if(nbytes < block_size) {
-			v.resize(v.size() - (block_size - nbytes));
-			break;
-		}
-	}
-	
-	std::string res;
-	res.resize(v.size());
-	std::copy(v.begin(),v.end(),res.begin());
-	return res;
-}
 
 const char* io_exception::what() const throw() {
 	return message.c_str();
-}
-
-std::string read_file(const std::string& fname)
-{
-	//if we have a path to the data,
-	//convert any filepath which is relative
-	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
-		std::string res;
-		read_file_internal(game_config::path + "/" + fname,res);
-		if(!res.empty()) {
-			return res;
-		}
-	}
-
-	std::string res;
-	read_file_internal(fname,res);
-	return res;
-}
-
-//throws io_exception if an error occurs
-void write_file(const std::string& fname, const std::string& data)
-{
-	//const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
-	const util::scoped_FILE file(fopen(fname.c_str(),"wb"));
-	if(file.get() == NULL) {
-		throw io_exception("Could not open file for writing: '" + fname + "'");
-	}
-
-	const size_t block_size = 4096;
-	char buf[block_size];
-
-	for(size_t i = 0; i < data.size(); i += block_size) {
-		const size_t bytes = minimum<size_t>(block_size,data.size() - i);
-		std::copy(data.begin() + i, data.begin() + i + bytes,buf);
-		const size_t res = fwrite(buf,1,bytes,file.get());
-		if(res != bytes) {
-			throw io_exception("Error writing to file: '" + fname + "'");
-		}
-	}
 }
 
 namespace {

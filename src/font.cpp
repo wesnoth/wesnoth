@@ -13,8 +13,8 @@
 
 #include "global.hpp"
 
-#include "config.hpp"
 #include "font.hpp"
+#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 #include "log.hpp"

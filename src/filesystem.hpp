@@ -44,6 +44,12 @@ std::string get_cwd();
 
 void make_directory(const std::string& dirname);
 
+//basic disk I/O
+std::string read_file(const std::string& fname);
+//throws io_exception if an error occurs
+void write_file(const std::string& fname, const std::string& data);
+std::string read_stdin();
+
 std::string read_map(const std::string& name);
 
 //function which returns true iff the given file is a directory

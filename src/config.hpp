@@ -53,12 +53,6 @@ private:
 	std::string message;
 };
 
-//basic disk I/O
-std::string read_file(const std::string& fname);
-//throws io_exception if an error occurs
-void write_file(const std::string& fname, const std::string& data);
-std::string read_stdin();
-
 struct preproc_define {
 	preproc_define() {}
 	explicit preproc_define(const std::string& val) : value(val) {}
