@@ -135,28 +135,30 @@ public:
 		}
 
 		SDL_Rect rect = area_;
-		rect.h /= 2;
+		rect.h -= 2 * gui::ButtonVPadding;
+		if (cancel_button_)
+			rect.h -= cancel_button_->height();
 		SDL_FillRect(disp_.video().getSurface(),&rect,SDL_MapRGB(disp_.video().getSurface()->format,0,0,0));
 
-		menu_.assign(new gui::menu(disp_,details,false,area_.h/2));
-		menu_->set_location(area_.x,area_.y);
-		menu_->set_width(area_.w);
+		menu_.assign(new gui::menu(disp_, details, false, rect.h));
+		menu_->set_location(rect);
 	}
 	
 	void set_area(const SDL_Rect& area) {
-
 		area_ = area;
-		generate_menu(true);
-
-		const std::string text = _("Waiting for game to start...");
-		SDL_Rect rect = font::draw_text(NULL,disp_.screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,text,0,0);
-		rect.x = area.x + area.w/2 - rect.w/2;
-		rect.y = area.y + (area.h*3)/4 - rect.h/2;
-		font::draw_text(&disp_,rect,font::SIZE_NORMAL,font::NORMAL_COLOUR,text,rect.x,rect.y);
 
 		cancel_button_.assign(new gui::button(disp_,_("Cancel")));
-		cancel_button_->set_location(area.x+area.w - cancel_button_->width() - gui::ButtonHPadding,
-			                         area.y+area.h - cancel_button_->height() - gui::ButtonVPadding);
+		int y = area.y + area.h - cancel_button_->height() - gui::ButtonVPadding;
+		cancel_button_->set_location(area.x + area.w - cancel_button_->width() - gui::ButtonHPadding, y);
+
+		std::string const text = _("Waiting for game to start...");
+		SDL_Rect rect = font::draw_text(NULL, disp_.screen_area(), font::SIZE_NORMAL,
+		                                font::NORMAL_COLOUR, text, 0, 0);
+		rect.x = area_.x + gui::ButtonHPadding;
+		rect.y = y + 4;
+		font::draw_text(&disp_, rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, text, rect.x, rect.y);
+
+		generate_menu(true);
 		events::raise_draw_event();
 	}
 
