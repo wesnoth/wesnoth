@@ -420,9 +420,6 @@ void unit::read(game_data& data, const config& cfg)
 	if(side_ <= 0)
 		side_ = 1;
 
-	if(side_ > team::nteams())
-		side_ = team::nteams();
-
 	description_ = cfg["user_description"];
 	underlying_description_ = cfg["description"];
 	if(description_ == "") {
