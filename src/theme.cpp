@@ -36,7 +36,7 @@ namespace {
 	}
 
 	_rect read_rect(const config& cfg) {
-		_rect rect;
+		_rect rect = { 0, 0, 0, 0 };
 		const std::vector<std::string> items = config::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
 			rect.x1 = atoi(items[0].c_str());
@@ -65,7 +65,7 @@ namespace {
 	}
 
 	std::string resolve_rect(const std::string& rect_str) {
-		_rect rect;
+		_rect rect = { 0, 0, 0, 0 };
 		std::stringstream resolved;
 		const std::vector<std::string> items = config::split(rect_str.c_str());
 		if(items.size() >= 1) {
@@ -158,7 +158,6 @@ namespace {
 		{
 			const config::child_list& c = cfg.get_children("remove");
 			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
-				const config* parent;
 				find_ref ((**i)["id"], *outcfg,
 					  true /* remove found child */);
 			}
