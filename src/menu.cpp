@@ -46,31 +46,46 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 
 	SDL_Surface* const scr = disp.video().getSurface();
 
-	scoped_sdl_surface top_image(scale_surface(top,w+left->w+right->w,top->h));
+	scoped_sdl_surface top_image(scale_surface(top,w,top->h));
 
 	if(top_image.get() != NULL) {
-		disp.blit_surface(x-left->w,y-top->h,top_image.get());
+		disp.blit_surface(x,y-top->h,top_image.get());
 	}
 
-	scoped_sdl_surface bot_image(scale_surface(bot,w+left->w+right->w,bot->h));
+	scoped_sdl_surface bot_image(scale_surface(bot,w,bot->h));
 
 	if(bot_image.get() != NULL) {
-		disp.blit_surface(x-left->w,y+h,bot_image.get());
+		disp.blit_surface(x,y+h,bot_image.get());
 	}
 
 	scoped_sdl_surface left_image(scale_surface(left,left->w,h));
 
 	if(left_image.get() != NULL) {
-		SDL_Rect dst = {x-left->w,y,left->w,h};
-		SDL_BlitSurface(left_image.get(),NULL,scr,&dst);
+		disp.blit_surface(x-left->w,y,left_image.get());
 	}
 
 	scoped_sdl_surface right_image(scale_surface(right,right->w,h));
 
 	if(right_image.get() != NULL) {
-		SDL_Rect dst = {x+w,y,right->w,h};
-		SDL_BlitSurface(right_image.get(),NULL,scr,&dst);
+		disp.blit_surface(x+w,y,right_image.get());
 	}
+
+	SDL_Surface* const top_left = disp.getImage("misc/menu-border-topleft.png",
+	                                            display::UNSCALED);
+	SDL_Surface* const bot_left = disp.getImage("misc/menu-border-botleft.png",
+	                                            display::UNSCALED);
+	SDL_Surface* const top_right=disp.getImage("misc/menu-border-topright.png",
+	                                            display::UNSCALED);
+	SDL_Surface* const bot_right=disp.getImage("misc/menu-border-botright.png",
+	                                            display::UNSCALED);
+	if(top_left == NULL || bot_left == NULL || top_right == NULL ||
+	   bot_right == NULL)
+		return;
+
+	disp.blit_surface(x-top_left->w,y-top_left->h,top_left);
+	disp.blit_surface(x-bot_left->w,y+h,bot_left);
+	disp.blit_surface(x+w,y-top_right->h,top_right);
+	disp.blit_surface(x+w,y+h,bot_right);
 }
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp)
