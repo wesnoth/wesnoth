@@ -137,7 +137,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 				std::vector<unit> units_list;
 
-				for(int a = 0; a != attacks.size(); ++a) {
+				for(size_t a = 0; a != attacks.size(); ++a) {
 					const battle_stats stats = evaluate_battle_stats(
 					                               map,selected_hex,hex,
 												   a,units,status,gameinfo);
@@ -193,7 +193,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				                           string_table["choose_weapon"]+":\n",
 				                           gui::OK_CANCEL,&items,&units_list);
 
-				if(res >= 0 && res < attacks.size()) {
+				if(size_t(res) < attacks.size()) {
 					undo_stack.clear();
 					redo_stack.clear();
 
@@ -208,7 +208,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					enemy = units.find(hex);
 
 					if(u == units.end() || enemy == units.end() ||
-					   res >= u->second.attacks().size())
+					   size_t(res) >= u->second.attacks().size())
 						continue;
 
 					gui.invalidate_all();

@@ -275,7 +275,7 @@ void show_preferences_dialog(display& disp)
 	grid_button.set_x(slider_left);
 	grid_button.set_y(sound_pos + 80 + 100);
 
-	gui::button resolution_button(disp,"Video Mode");
+	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_x(slider_left);
 	resolution_button.set_y(sound_pos + 80 + 150);
 
@@ -363,8 +363,10 @@ void show_video_mode_dialog(display& disp)
 
 	CVideo& video = disp.video();
 	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
-	if(reinterpret_cast<int>(modes) == -1 || modes == NULL)
+	if(reinterpret_cast<int>(modes) == -1 || modes == NULL) {
+		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
 		return;
+	}
 
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if(modes[i]->w >= 1024 && modes[i]->h >= 768) {
@@ -380,12 +382,15 @@ void show_video_mode_dialog(display& disp)
 		}
 	}
 
-	if(resolutions.size() < 2)
+	if(resolutions.size() < 2) {
+		gui::show_dialog(disp,NULL,"",string_table["video_mode_unavailable"]);
 		return;
+	}
 
-	const int result = gui::show_dialog(disp,NULL,"","Choose Resolution",
+	const int result = gui::show_dialog(disp,NULL,"",
+	                                    string_table["choose_resolution"],
 	                                    gui::MESSAGE,&options);
-	if(result >= 0 && result < resolutions.size()) {
+	if(size_t(result) < resolutions.size()) {
 		set_resolution(resolutions[result]);
 	}
 }

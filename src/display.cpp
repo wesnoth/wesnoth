@@ -150,7 +150,7 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 	const double xtile = xpos_/(zoom_*0.75) +
 			               static_cast<double>(xclick)/(zoom_*0.75) - 0.25;
 	const double ytile = ypos_/zoom_ + static_cast<double>(yclick)/zoom_
-	                      + (is_odd(xtile) ? -0.5:0.0);
+	                      + (is_odd(int(xtile)) ? -0.5:0.0);
 
 	return gamemap::location(static_cast<int>(xtile),static_cast<int>(ytile));
 }

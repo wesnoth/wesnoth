@@ -12,6 +12,7 @@
 */
 #include "game.hpp"
 #include "map.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <cassert>

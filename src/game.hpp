@@ -13,7 +13,4 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#define is_odd(x) (static_cast<unsigned int>(x) & 1)
-#define is_even(x) (!is_odd(x))
-
 #endif

@@ -307,7 +307,7 @@ const std::map<std::string,std::string>& unit_movement_type::damage_table() cons
 
 unit_type::unit_type(config& cfg, const movement_type_map& mv_types,
                      std::vector<config*>& traits)
-                              : cfg_(cfg), possibleTraits_(traits), alpha_(1.0)
+                              : cfg_(cfg), alpha_(1.0), possibleTraits_(traits)
 {
 	if(has_ability("heals")) {
 		heals_ = game_config::healer_heals_per_turn;

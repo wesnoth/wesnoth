@@ -294,7 +294,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			const std::vector<std::string>& options =
 			                       u->second.type().advances_to();
-			if(val < 0 || val >= options.size()) {
+			if(size_t(val) >= options.size()) {
 				std::cerr << "illegal advancement type\n";
 				throw replay::error();
 			}
@@ -436,7 +436,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			if(weapon_num < 0 || weapon_num >= u->second.attacks().size()) {
+			if(size_t(weapon_num) >= u->second.attacks().size()) {
 				std::cerr << "illegal weapon type in attack\n";
 				throw replay::error();
 			}

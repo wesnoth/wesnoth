@@ -42,9 +42,9 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 }
 
 //constructor for reading a unit
-unit::unit(game_data& data, config& cfg) : moves_(0), facingLeft_(true),
+unit::unit(game_data& data, config& cfg) : state_(STATE_NORMAL),
+                                           moves_(0), facingLeft_(true),
                                            recruit_(false),
-                                           state_(STATE_NORMAL),
                                            guardian_(false)
 {
 	read(data,cfg);
@@ -52,25 +52,25 @@ unit::unit(game_data& data, config& cfg) : moves_(0), facingLeft_(true),
 
 //constructor for creating a new unit
 unit::unit(const unit_type* t, int side, bool use_traits) :
-               type_(t), facingLeft_(side != 1), state_(STATE_NORMAL),
+               type_(t), state_(STATE_NORMAL),
 			   hitpoints_(t->hitpoints()),
-			   experience_(0), side_(side), moves_(0),
-			   recruit_(false), attacks_(t->attacks()),
-			   backupAttacks_(t->attacks()),
 			   maxHitpoints_(t->hitpoints()),
-               backupMaxHitpoints_(t->hitpoints()),
-			   maxMovement_(t->movement()),
-			   backupMaxMovement_(t->movement()),
+               backupMaxHitpoints_(t->hitpoints()), experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
+               side_(side), moves_(0), facingLeft_(side != 1),
+			   maxMovement_(t->movement()),
+			   backupMaxMovement_(t->movement()),
+			   recruit_(false), attacks_(t->attacks()),
+			   backupAttacks_(t->attacks()),
                guardian_(false)
 {
 	//calculate the unit's traits
 	std::vector<config*> traits = t->possible_traits();
-	const int num_traits = 2;
+	const size_t num_traits = 2;
 	if(use_traits && traits.size() >= num_traits) {
 		std::set<int> chosen_traits;
-		for(int i = 0; i != num_traits; ++i) {
+		for(size_t i = 0; i != num_traits; ++i) {
 			int num = recorder.get_random()%(traits.size()-i);
 			while(chosen_traits.count(num)) {
 				++num;
@@ -98,18 +98,19 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 
 //constructor for advancing a unit from a lower level
 unit::unit(const unit_type* t, const unit& u) :
-               type_(t), facingLeft_(u.facingLeft_), state_(STATE_NORMAL),
+               type_(t), state_(STATE_NORMAL),
 			   hitpoints_(t->hitpoints()),
-			   experience_(0), side_(u.side()), moves_(u.moves_),
-			   recruit_(u.recruit_), description_(u.description_),
-			   role_(u.role_), statusFlags_(u.statusFlags_),
-			   attacks_(t->attacks()), backupAttacks_(t->attacks()),
 			   maxHitpoints_(t->hitpoints()),
 			   backupMaxHitpoints_(t->hitpoints()),
-			   maxMovement_(t->movement()),
-			   backupMaxMovement_(t->movement()),
+			   experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
+               side_(u.side()), moves_(u.moves_), facingLeft_(u.facingLeft_),
+			   maxMovement_(t->movement()),
+			   backupMaxMovement_(t->movement()),
+			   description_(u.description_), recruit_(u.recruit_),
+			   role_(u.role_), statusFlags_(u.statusFlags_),
+			   attacks_(t->attacks()), backupAttacks_(t->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
                guardian_(false)

@@ -12,6 +12,7 @@
 */
 #include "game.hpp"
 #include "pathfind.hpp"
+#include "util.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -155,7 +156,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 	}
 
 	//iterate over all adjacent tiles
-	for(int i = 0; i != locs.size(); ++i) {
+	for(size_t i = 0; i != locs.size(); ++i) {
 		const gamemap::location& currentloc = locs[i];
 
 		//check if the adjacent location is off the board

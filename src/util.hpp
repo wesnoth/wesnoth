@@ -29,4 +29,10 @@ T& maximum(T& a, T& b) { return a < b ? b : a; }
 template<typename T>
 const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
 
+template<typename T>
+inline bool is_odd(T num) { return (static_cast<unsigned int>(num)&1) == 1; }
+
+template<typename T>
+inline bool is_even(T num) { return !is_odd(num); }
+
 #endif

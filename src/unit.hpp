@@ -98,8 +98,6 @@ public:
 private:
 	const unit_type* type_;
 
-	bool facingLeft_;
-
 	enum STATE { STATE_NORMAL, STATE_ATTACKING, STATE_DEFENDING };
 	STATE state_;
 	const attack_type* attackType_;
@@ -114,6 +112,7 @@ private:
 
 	//is set to the number of moves left, and -1 if the unit has attacked
 	int moves_;
+	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;
 
 	std::string description_;

@@ -20,8 +20,8 @@ namespace gui {
 slider::slider(display& disp, SDL_Rect& rect, double value)
 : disp_(disp), image_(disp.getImage("buttons/slider.png",display::UNSCALED)),
  selectedImage_(disp.getImage("buttons/slider-selected.png",display::UNSCALED)),
- area_(rect), buffer_(NULL), value_(value), drawn_(false),
- clicked_(true), dragging_(false), highlight_(false)
+ buffer_(NULL), area_(rect), value_(value), drawn_(false),
+ highlight_(false), clicked_(true), dragging_(false)
 {
 	background_changed();
 

@@ -15,6 +15,7 @@
 
 #include "game.hpp"
 #include "sdl_utils.hpp"
+#include "util.hpp"
 
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 {

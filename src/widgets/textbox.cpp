@@ -23,9 +23,10 @@ const int font_size = 16;
 
 textbox::textbox(display& disp, int width, const std::string& text)
            : disp_(disp), text_(text), firstOnScreen_(0),
-             cursor_(text.size()), height_(-1), width_(width), x_(-1), y_(-1),
+             cursor_(text.size()), height_(-1), width_(width),
+             buffer_(NULL), x_(-1), y_(-1),
              lastLArrow_(false), lastRArrow_(false),
-             lastDelete_(false), lastBackspace_(false), buffer_(NULL)
+             lastDelete_(false), lastBackspace_(false)
 {
 	std::fill(previousKeyState_,
 	          previousKeyState_+CHAR_LENGTH,false);
@@ -83,7 +84,7 @@ void textbox::draw() const
 	static const SDL_Rect clip = {0,0,1024,768};
 
 	//draw the text
-	for(int i = firstOnScreen_; i < text_.size(); ++i) {
+	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
 		str[0] = text_[i];
 		const SDL_Rect area =
 		    font::draw_text(NULL,clip,font_size,font::NORMAL_COLOUR,str,0,0);

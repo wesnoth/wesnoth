@@ -24,8 +24,9 @@ const int vertical_padding = 10;
 button::button(display& disp, const std::string& label, button::TYPE type,
                const std::string& button_image_name) :
                           label_(label), display_(&disp),
-                          x_(0), y_(0), button_(true), state_(UNINIT),
-						  image_(NULL), pressedImage_(NULL), type_(type)
+						  image_(NULL), pressedImage_(NULL),
+                          x_(0), y_(0), button_(true),
+                          state_(UNINIT), type_(type)
 {
 	SDL_Surface* button_image =
 	       disp.getImage("buttons/button.png",display::UNSCALED);
