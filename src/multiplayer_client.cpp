@@ -383,6 +383,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 						status = 1;
 						break;
 					}
+					default:
+						break;
 				}
 			}
     
