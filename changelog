@@ -10,7 +10,12 @@ CVS HEAD:
  * updated all uses of the 'old fireball' to use the 'new fireballs'
  * updated the attach frame sequences for the Drakes
  * added attack icons for 'slam' and 'ballista'
- * switch to the new Merfolk and Nagas in TRoW and HttT 
+ * switch to the new Merfolk and Nagas in TRoW and HttT
+ * fixed slovene being wrongly localized as sl_SL insteof sl_SI
+ * fixed zipios support so that user campaigns custom images and sounds can be loaded
+ * fixed locale-dependent numeric input/output bug,
+   it allowed units to walk on the water, and prevented
+   the AI from being correctly configured in campaigns
 
 Version 0.8.10:
  * user interface tweaks
