@@ -89,11 +89,38 @@ private:
 
 };
 
-std::vector<ai::target> ai::find_targets(bool has_leader)
+std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	log_scope("finding targets...");
 
+	const bool has_leader = leader != units_.end();
+
 	std::vector<target> targets;
+
+	//if enemy units are in range of the leader, then we rally to the leader's defense
+	if(has_leader) {
+		const double threat = power_projection(leader->first,enemy_srcdst,enemy_dstsrc);
+		if(threat > 0.0) {
+			//find the specific tiles the enemy can reach, and set them as targets
+			std::vector<gamemap::location> threatened_tiles;
+			gamemap::location adj[6];
+			get_adjacent_tiles(leader->first,adj);
+			for(size_t n = 0; n != 6; ++n) {
+				if(enemy_dstsrc.count(adj[n]) > 0) {
+					threatened_tiles.push_back(adj[n]);
+				}
+			}
+
+			assert(threatened_tiles.size() > 0);
+
+			//divide the threat into the tiles the enemy can reach, and try to
+			//get units to reach those tiles
+			const double value = threat/double(threatened_tiles.size());
+			for(std::vector<gamemap::location>::const_iterator i = threatened_tiles.begin(); i != threatened_tiles.end(); ++i) {
+				targets.push_back(target(*i,value));
+			}
+		}
+	}
 
 	if(has_leader && current_team().village_value() > 0.0) {
 		const std::vector<location>& towers = map_.towers();

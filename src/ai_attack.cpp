@@ -225,8 +225,21 @@ void ai::attack_analysis::analyze(const gamemap& map,
 						 	      const gamestatus& status,
 							      const game_data& info, int num_sims, ai& ai_obj)
 {
-	const std::map<location,unit>::const_iterator defend_it = units.find(target);
+	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
+
+	//see if the target is a threat to our leader or an ally's leader
+	gamemap::location adj[6];
+	get_adjacent_tiles(target,adj);
+	size_t tile;
+	for(tile = 0; tile != 6; ++tile) {
+		const unit_map::const_iterator leader = units.find(adj[tile]);
+		if(leader != units.end() && leader->second.can_recruit() && ai_obj.current_team().is_enemy(leader->second.side()) == false) {
+			break;
+		}
+	}
+
+	leader_threat = (tile != 6);
 
 	target_value = defend_it->second.type().cost();
 	target_value += (double(defend_it->second.experience())/
@@ -384,6 +397,10 @@ void ai::attack_analysis::analyze(const gamemap& map,
 
 double ai::attack_analysis::rating(double aggression) const
 {
+	if(leader_threat) {
+		aggression = 1.0;
+	}
+
 	double value = chance_to_kill*target_value - avg_losses;
 
 	//prefer to attack already damaged targets
@@ -394,6 +411,10 @@ double ai::attack_analysis::rating(double aggression) const
 	value += support - vulnerability*terrain_quality;
 
 	value /= ((resources_used/2) + (resources_used/2)*terrain_quality);
+
+	if(leader_threat) {
+		value *= 5.0;
+	}
 
 	return value;
 }

@@ -34,6 +34,9 @@ public:
 
 	void do_move();
 
+	team& current_team();
+	const team& current_team() const;
+
 private:
 	void do_attack(const location& u, const location& target, int weapon);
 
@@ -53,8 +56,6 @@ private:
 
 	bool recruit(const std::string& usage);
 	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
-	team& current_team();
-	const team& current_team() const;
 
 	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
 
@@ -97,7 +98,12 @@ private:
 		//the strength of its most powerful attack
 		double counter_strength_ratio;
 
+		//the vulnerability is the power projection of enemy units onto the hex
+		//we're standing on. support is the power projection of friendly units.
 		double vulnerability, support;
+
+		//is true if the unit is a threat to our leader
+		bool leader_threat;
 	};
 
 	void do_attack_analysis(
@@ -131,7 +137,7 @@ private:
 		double value;
 	};
 
-	std::vector<target> find_targets(bool has_leader);
+	std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
 	std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 

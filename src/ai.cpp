@@ -537,12 +537,15 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	std::cerr << "finding targets...\n";
-	std::vector<target> targets = find_targets(leader != units_.end());
-	targets.insert(targets.end(),additional_targets_.begin(),
-	                             additional_targets_.end());
+	std::vector<target> targets;
 	for(;;) {
 		if(targets.empty()) {
-			break;
+			targets = find_targets(leader,enemy_srcdst,enemy_dstsrc);
+			targets.insert(targets.end(),additional_targets_.begin(),
+			                             additional_targets_.end());
+			if(targets.empty()) {
+				return;
+			}
 		}
 
 		std::cerr << "choosing move...\n";
