@@ -127,8 +127,8 @@ height_map generate_height_map(size_t width, size_t height,
 
 		//we have to check whether this is actually a valley
 		if(island_size != 0) {
-			const size_t diffx = abs(x1 - center_x);
-			const size_t diffy = abs(y1 - center_y);
+			const size_t diffx = abs(x1 - int(center_x));
+			const size_t diffy = abs(y1 - int(center_y));
 			const size_t dist = size_t(sqrt(double(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}

@@ -205,38 +205,9 @@ private:
 	const config* cfg_;
 };
 
-std::pair<int,int> parse_range(const std::string& str)
-{
-	const std::string::const_iterator dash = std::find(str.begin(),str.end(),'-');
-	const std::string a(str.begin(),dash);
-	const std::string b = dash != str.end() ? std::string(dash+1,str.end()) : a;
-	std::pair<int,int> res(atoi(a.c_str()),atoi(b.c_str()));
-	if(res.second < res.first)
-		res.second = res.first;
-
-	return res;
-}
-
 std::vector<gamemap::location> multiple_locs(const config& cfg)
 {
-	std::vector<gamemap::location> res;
-	const std::vector<std::string> xvals = config::split(cfg["x"]);
-	const std::vector<std::string> yvals = config::split(cfg["y"]);
-
-	for(unsigned int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
-		const std::pair<int,int> xrange = parse_range(xvals[i]);
-		const std::pair<int,int> yrange = parse_range(yvals[i]);
-		std::cerr << "range: " << xrange.first << "-" << xrange.second << "\n";
-		std::cerr << "range: " << yrange.first << "-" << yrange.second << "\n";
-
-		for(int x = xrange.first; x <= xrange.second; ++x) {
-			for(int y = yrange.first; y <= yrange.second; ++y) {
-				res.push_back(gamemap::location(x-1,y-1));
-			}
-		}
-	}
-
-	return res;
+	return parse_location_range(cfg["x"],cfg["y"]);
 }
 
 std::multimap<std::string,event_handler> events_map;

@@ -36,6 +36,10 @@ struct time_of_day
 	std::string name;
 	std::string id;
 
+	//the image that is to be laid over all images while it's this
+	//time of day
+	std::string image_mask;
+
 	//the colour modifications that should
 	//be made to the game board to reflect the time of day.
 	int red, green, blue;
@@ -49,7 +53,8 @@ public:
 	gamestatus(config& time_cfg, int num_turns);
 	void write(config& cfg) const;
 
-	const time_of_day& get_time_of_day(bool illuminated=false) const;
+	const time_of_day& get_time_of_day() const;
+	const time_of_day& get_time_of_day(bool illuminated, const gamemap::location& loc) const;
 	size_t turn() const;
 	size_t number_of_turns() const;
 
@@ -82,6 +87,14 @@ public:
 
 private:
 	std::vector<time_of_day> times_, illuminatedTimes_;
+
+	struct area_time_of_day {
+		std::string xsrc, ysrc;
+		std::vector<time_of_day> times, illuminated_times;
+		std::set<gamemap::location> hexes;
+	};
+
+	std::vector<area_time_of_day> areas_;
 
 	size_t turn_;
 	size_t numTurns_;

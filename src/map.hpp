@@ -153,4 +153,9 @@ private:
 	mutable std::map<location,TERRAIN> borderCache_;
 };
 
+//a utility function which parses ranges of locations
+//into a vector of locations
+std::vector<gamemap::location> parse_location_range(const std::string& xvals, const std::string& yvals);
+
+
 #endif

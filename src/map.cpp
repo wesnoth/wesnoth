@@ -351,3 +351,23 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 
 	tiles_[loc.x][loc.y] = ter;
 }
+
+std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y)
+{
+	std::vector<gamemap::location> res;
+	const std::vector<std::string> xvals = config::split(x);
+	const std::vector<std::string> yvals = config::split(y);
+
+	for(unsigned int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
+		const std::pair<int,int> xrange = config::parse_range(xvals[i]);
+		const std::pair<int,int> yrange = config::parse_range(yvals[i]);
+
+		for(int x = xrange.first; x <= xrange.second; ++x) {
+			for(int y = yrange.first; y <= yrange.second; ++y) {
+				res.push_back(gamemap::location(x-1,y-1));
+			}
+		}
+	}
+
+	return res;
+}

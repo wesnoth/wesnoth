@@ -1022,6 +1022,7 @@ std::vector<std::string> config::split(const std::string& val, char c, bool remo
 
 	return res;
 }
+
 //identical to split(), except it does not split when it otherwise
 //would if the previous character was identical to the parameter 'quote'.
 //i.e. it does not split quoted commas.
@@ -1059,6 +1060,18 @@ std::vector<std::string> config::quoted_split(const std::string& val, char c, bo
 	strip(new_val);
 	if(!remove_empty || !new_val.empty())
 		res.push_back(new_val);
+
+	return res;
+}
+
+std::pair<int,int> config::parse_range(const std::string& str)
+{
+	const std::string::const_iterator dash = std::find(str.begin(),str.end(),'-');
+	const std::string a(str.begin(),dash);
+	const std::string b = dash != str.end() ? std::string(dash+1,str.end()) : a;
+	std::pair<int,int> res(atoi(a.c_str()),atoi(b.c_str()));
+	if(res.second < res.first)
+		res.second = res.first;
 
 	return res;
 }

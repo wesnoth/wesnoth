@@ -18,9 +18,11 @@ typedef std::map<gamemap::TERRAIN,SDL_Surface*> mini_terrain_cache_map;
 mini_terrain_cache_map mini_terrain_cache;
 
 typedef std::map<std::string,SDL_Surface*> image_map;
-image_map images_,scaledImages_,greyedImages_,brightenedImages_;
+image_map images_,scaledImages_,unmaskedImages_,greyedImages_,brightenedImages_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
+
+std::string image_mask;
 
 SDL_PixelFormat* pixel_format = NULL;
 
@@ -68,6 +70,7 @@ void flush_cache()
 {
 	clear_surfaces(images_);
 	clear_surfaces(scaledImages_);
+	clear_surfaces(unmaskedImages_);
 	clear_surfaces(greyedImages_);
 	clear_surfaces(brightenedImages_);
 	clear_surfaces(mini_terrain_cache);
@@ -126,6 +129,17 @@ void get_colour_adjustment(int *r, int *g, int *b)
 	}
 }
 
+void set_image_mask(const std::string& image)
+{
+	if(image_mask != image) {
+		image_mask = image;
+		clear_surfaces(scaledImages_);
+		clear_surfaces(greyedImages_);
+		clear_surfaces(brightenedImages_);
+	}
+
+}
+
 void set_zoom(double amount)
 {
 	if(amount != zoom) {
@@ -150,6 +164,15 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 		if(type == SCALED) {
 			i = scaledImages_.find(filename);
 			if(i != scaledImages_.end()) {
+				result = i->second;
+				sdl_add_ref(result);
+				return result;
+			}
+		}
+
+		if(type == UNMASKED) {
+			i = unmaskedImages_.find(filename);
+			if(i != unmaskedImages_.end()) {
 				result = i->second;
 				sdl_add_ref(result);
 				return result;
@@ -195,17 +218,41 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 		} else {
 
 			const int z = static_cast<int>(zoom);
-			result = scale_surface(i->second,z,z);
+			const scoped_sdl_surface scaled_surf(scale_surface(i->second,z,z));
 
-			if(result == NULL)
+			if(scaled_surf == NULL) {
 				return NULL;
-
-			if(adjust_colour == ADJUST_COLOUR) {
-				const scoped_sdl_surface scoped_surface(result);
-				result = adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
 			}
 
-			scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+			if(adjust_colour == ADJUST_COLOUR && (red_adjust != 0 || green_adjust != 0 || blue_adjust != 0)) {
+				const scoped_sdl_surface scoped_surface(result);
+				result = adjust_surface_colour(scaled_surf,red_adjust,green_adjust,blue_adjust);
+			} else {
+				result = clone_surface(scaled_surf);
+			}
+
+			if(result == NULL) {
+				return NULL;
+			}
+
+			if(type == SCALED && adjust_colour == ADJUST_COLOUR && image_mask != "") {
+				const scoped_sdl_surface mask(get_image(image_mask,UNMASKED,NO_ADJUST_COLOUR));
+				if(mask != NULL) {
+					SDL_SetAlpha(mask,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
+					SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
+
+					//commented out pending reply from SDL team about bug report
+					//SDL_BlitSurface(mask,NULL,result,NULL);
+				}
+			} else {
+				std::cerr << "getting unmasked image...\n";
+			}
+
+			if(type == UNMASKED) {
+				unmaskedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+			} else {
+				scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+			}
 		}
 	}
 

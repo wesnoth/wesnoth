@@ -116,7 +116,7 @@ Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
 
 void display::new_turn()
 {
-	int r,g,b;
+/*	int r,g,b;
 	image::get_colour_adjustment(&r,&g,&b);
 
 	const time_of_day& tod = status_.get_time_of_day();
@@ -140,8 +140,10 @@ void display::new_turn()
 			SDL_Delay(wanted_ticks - cur_ticks);
 		}
 	}
-
-	adjust_colours(0,0,0);
+*/
+	const time_of_day& tod = status_.get_time_of_day();
+	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
+	image::set_image_mask(tod.image_mask);
 }
 
 void display::adjust_colours(int r, int g, int b)
@@ -1290,6 +1292,15 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 
 	image::TYPE image_type = image::SCALED;
 
+	const time_of_day& tod = status_.get_time_of_day();
+	const time_of_day& tod_at = timeofday_at(status_,units_,loc);
+	std::string mask;
+	if(tod.image_mask != tod_at.image_mask) {
+		std::cerr << "drawing unmasked image at " << (x+1) << "," << (y+1) << "\n";
+		image_type = image::UNMASKED;
+		mask = tod_at.image_mask;
+	}
+
 	//find if this tile should be greyed
 	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
 					         pathsList_->routes.end()) {
@@ -1339,6 +1350,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
 			}
 		}
+	}
+
+	if(mask != "") {
+		scoped_sdl_surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(img,NULL,dst,&dstrect);
 	}
 
 	if(!is_shrouded) {

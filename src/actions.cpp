@@ -1269,7 +1269,7 @@ const time_of_day& timeofday_at(const gamestatus& status,
 		}
 	}
 
-	return status.get_time_of_day(lighten);
+	return status.get_time_of_day(lighten,loc);
 }
 
 int combat_modifier(const gamestatus& status,
