@@ -27,7 +27,7 @@ namespace ai {
 
 double power_projection(const gamemap::location& loc,
                         const move_map& srcdst, const move_map& dstsrc,
-                        const unit_map& units, const gamemap& map);
+                        const unit_map& units, const gamemap& map, bool use_terrain=true);
 
 int choose_weapon(const gamemap& map, std::map<location,unit>& units,
                   const gamestatus& status, const game_data& info,

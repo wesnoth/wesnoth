@@ -13,6 +13,7 @@
 
 #include "actions.hpp"
 #include "ai_attack.hpp"
+#include "events.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
@@ -30,6 +31,7 @@ const int max_positions = 10000;
 
 using namespace ai;
 
+//analyze possibility of attacking target on 'loc'
 void do_analysis(
                  const gamemap& map,
                  const location& loc,
@@ -43,8 +45,10 @@ void do_analysis(
 				 attack_analysis& cur_analysis
                 )
 {
-	if(cur_analysis.movements.size() >= 6)
+	if(cur_analysis.movements.size() >= 4)
 		return;
+
+	events::pump();
 
 	static double best_results[6];
 	if(result.empty()) {
@@ -53,8 +57,11 @@ void do_analysis(
 		}
 	}
 
-//	if(result.size() > max_positions && !cur_analysis.movements.empty())
-//		return;
+	const size_t max_positions = 1000;
+	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
+		std::cerr << "cut analysis short with number of positions\n";
+		return;
+	}
 
 	const double cur_rating = cur_analysis.movements.empty() ? 0 :
 	                          cur_analysis.rating(0.0);
@@ -89,12 +96,14 @@ void do_analysis(
 			cur_analysis.movements.push_back(
 			           std::pair<location,location>(current_unit,tiles[j]));
 
-			const double vulnerability =
-			  power_projection(tiles[j],enemy_srcdst,enemy_dstsrc,units_map,map);
+			//find out how vulnerable we are to attack from enemy units in this hex
+			const double vulnerability = power_projection(tiles[j],enemy_srcdst,enemy_dstsrc,units_map,map);
 			cur_analysis.vulnerability += vulnerability;
 
-			const double support =
-			   power_projection(tiles[j],srcdst,dstsrc,units_map,map);
+			//calculate how much support we have on this hex from allies. Support does not
+			//take into account terrain, because we don't want to move into a hex that is
+			//surrounded by good defensive terrain
+			const double support = power_projection(tiles[j],srcdst,dstsrc,units_map,map,false);
 			cur_analysis.support += support;
 
 			cur_analysis.analyze(map,units_map,status,data,50);
@@ -461,7 +470,7 @@ std::vector<attack_analysis> analyze_targets(
 
 double power_projection(const gamemap::location& loc,
                         const move_map& srcdst, const move_map& dstsrc,
-                        const unit_map& units, const gamemap& map)
+                        const unit_map& units, const gamemap& map, bool use_terrain)
 {
 	static gamemap::location used_locs[6];
 	static double ratings[6];
@@ -515,9 +524,9 @@ double power_projection(const gamemap::location& loc,
 				}
 
 				const bool village = map.underlying_terrain(terrain) == gamemap::TOWER;
-				const double village_bonus = village ? 1.5 : 1.0;
+				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
 
-				const double defense = double(100 - un.defense_modifier(map,terrain))/100.0;
+				const double defense = use_terrain ? double(100 - un.defense_modifier(map,terrain))/100.0 : 0.5;
 				const double rating = village_bonus*hp*defense*double(most_damage);
 				if(rating > best_rating) {
 					best_rating = rating;
