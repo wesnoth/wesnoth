@@ -7,6 +7,8 @@ CVS HEAD
    * forests
    * attack icons
    * unit images and frames
+ * scenario balancing for 'Heir to the Throne' campaign
+   * Return to Wesnoth
  * scenario balancing for 'The Rise of Wesnoth' campaign
    * pretty much all scenarios
  * scenario balancing for 'The Eastern Invasion' campaign
@@ -51,6 +53,8 @@ CVS HEAD
    * added increments to sliders
    * choose your leader
    * new map: An Island
+   * gave Goblin Spearman to northeners and removed Saurian from them
+   * gave Saurian to Drakes
  * added new AI parameter: attack_depth
  * made units only die if they have 0 or less hitpoints after the event has been fired
  * fixed 'make clean' not cleaning everything 
@@ -69,6 +73,8 @@ CVS HEAD
  * fixed bug where [modify_side] couldn't change a side's team name properly
  * fixed victory and defeat conditions on 'The Eastern Invasion: Approaching Weldyn' scenario
  * fixed fixed illegal character 'x' in 'The Eastern Invasion: Weldyn Under Attack' scenario
+ * fixed defeat conditions on 'The Eastern Invasion: Escape Tunnel' scenario
+ * fixed incorrectly using 'Heavy Infantry' instead of 'Heavy Infantryman' in some of The Eastern Invasion scenarios
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
