@@ -568,6 +568,10 @@ bool game_controller::init_config()
 	defines_map_.clear();
 
 	//load in the game's configuration files
+#if defined(APPLE)
+	defines_map_["APPLE"] = preproc_define();
+#endif
+
 	defines_map_["NORMAL"] = preproc_define();
 	defines_map_["MEDIUM"] = preproc_define();
 
