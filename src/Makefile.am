@@ -84,6 +84,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.hpp \
 		  ai_attack.hpp \
 		  ai_move.hpp \
+		  builder.hpp \
 		  cavegen.hpp \
 		  cursor.hpp \
 		  config.hpp \
