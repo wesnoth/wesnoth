@@ -814,4 +814,9 @@ void show_hotkeys_dialog (display & disp)
 
 }
 
+bool confirm_end_turn()
+{
+	return prefs["confirm_end_turn"] == "yes";
+}
+
 }
