@@ -111,14 +111,14 @@ stamp-po: $(srcdir)/*.pot
 %.pot-update: $(srcdir)/%.POTFILES.in remove-potcdate.sed
 	$(XGETTEXT) --default-domain=$* --directory=$(top_srcdir) \
 	  --add-comments=TRANSLATORS: $(XGETTEXT_OPTIONS) \
-	  `cat $(srcdir)/$*/POTFILES.in` \
+	  `cat $(srcdir)/$*.POTFILES.in` \
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --keyword=N_ \
 	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $*.cpp.po
-	if test -r $*/FINDCFG ;\
+	if test -r $*.FINDCFG ;\
 	then ../utils/wmlxgettext \
-	  `cd $(top_srcdir) && sh po/$*/FINDCFG` > $*.wml.po ;\
+	  `cd $(top_srcdir) && sh po/$*.FINDCFG` > $*.wml.po ;\
 	fi
 	if test -f $*.wml.po ; then \
 	  msgcat --sort-by-file $*.cpp.po $*.wml.po -o $*.po && \
@@ -160,14 +160,14 @@ endif
 
 # This target rebuilds a PO file if $(DOMAIN).pot has changed.
 # Note that a PO file is not touched if it doesn't need to be changed.
-$(DOMAIN)/%.po: $(srcdir)/$(DOMAIN).pot
-	@lang=`echo $@ | sed -e 's,.*/,,' -e 's/\.po$$//'`; \
-	if test -f "$(srcdir)/$(DOMAIN)/$${lang}.po"; then \
+%/$(DOMAIN).po: $(srcdir)/$(DOMAIN).pot
+	@lang=$*; \
+	if test -f "$(srcdir)/$${lang}/$(DOMAIN).po"; then \
 	  test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	  echo "$${cdcmd}$(MSGMERGE_UPDATE) $(DOMAIN)/$${lang}.po $(DOMAIN).pot"; \
-	  cd $(srcdir) && $(MSGMERGE_UPDATE) $(DOMAIN)/$${lang}.po $(DOMAIN).pot; \
+	  echo "$${cdcmd}$(MSGMERGE_UPDATE) $${lang}/$(DOMAIN).po $(DOMAIN).pot"; \
+	  cd $(srcdir) && $(MSGMERGE_UPDATE) $${lang}/$(DOMAIN).po $(DOMAIN).pot; \
 	else \
-	  $(MAKE) $(DOMAIN)/$${lang}.po-create; \
+	  $(MAKE) $${lang}/$(DOMAIN).po-create; \
 	fi
 
 
@@ -189,14 +189,12 @@ install-data: install-data-@USE_NLS@
 install-data-no: all
 install-data-yes: all
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
-	@catalogs='$(CATALOGS)'; \
-	for cat in $$catalogs; do \
-	  cat=`basename $$cat`; \
-	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
+	for lang in `cat $(srcdir)/LINGUAS`; do \
 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
 	  $(mkinstalldirs) $(DESTDIR)$$dir; \
 	 for domain in `cat $(srcdir)/DOMAINS`; do \
-	  if test -r $$cat; then realcat=$$domain/$$cat; else realcat=$(srcdir)/$$domain/$$cat; fi; \
+	  cat=$$lang/$$domain.gmo; \
+	  if test -r $$cat; then realcat=$$cat; else realcat=$(srcdir)/$$cat; fi; \
 	  $(INSTALL_DATA) $$realcat $(DESTDIR)$$dir/$$domain.mo; \
 	  echo "installing $$realcat as $(DESTDIR)$$dir/$$domain.mo"; \
 	  for lc in '' $(EXTRA_LOCALE_CATEGORIES); do \
@@ -243,10 +241,7 @@ installdirs-data: installdirs-data-@USE_NLS@
 installdirs-data-no:
 installdirs-data-yes:
 	$(mkinstalldirs) $(DESTDIR)$(datadir)
-	@catalogs='$(CATALOGS)'; \
-	for cat in $$catalogs; do \
-	  cat=`basename $$cat`; \
-	  lang=`echo $$cat | sed -e 's/\.gmo$$//'`; \
+	@for lang in `cat $(srcdir)/LINGUAS`; do \
 	  dir=$(localedir)/$$lang/LC_MESSAGES; \
 	  $(mkinstalldirs) $(DESTDIR)$$dir; \
 	  for lc in '' $(EXTRA_LOCALE_CATEGORIES); do \
@@ -340,12 +335,13 @@ dist2: $(DISTFILES)
 	done; \
 	if test -f $(srcdir)/LINGUAS; then dists="$$dists LINGUAS"; fi; \
 	for domain in `cat $(srcdir)/DOMAINS`; do \
-	  for file in $(POFILES) $(GMOFILES); do \
-	    dists="$$dists $$domain/$$file"; \
+	  for lang in `cat $(srcdir)/LINGUAS`; do \
+	    dists="$$dists $$lang/$$domain.po $$lang/$$domain.gmo"; \
 	  done; \
-	  for file in POTFILES.in FINDCFG; do \
-	    dists="$$dists $$domain/$$file"; \
-	  done; \
+	  dists="$$dists $$domain.POTFILES.in"; \
+	  if test -f $$domain.FINDCFG; then \
+	    dists="$$dists $$domain.FINDCFG"; \
+	  fi; \
 	done; \
 	for file in $$dists; do \
 	  base=`basename $$file`; \
@@ -386,22 +382,22 @@ update-po: Makefile
 	tmpdir=`pwd`; \
 	echo "$$lang:"; \
 	test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
-	echo "$${cdcmd}$(MSGMERGE) $(DOMAIN)/$$lang.po $(DOMAIN).pot -o $(DOMAIN)/$$lang.new.po"; \
+	echo "$${cdcmd}$(MSGMERGE) $$lang/$(DOMAIN).po $(DOMAIN).pot -o $$lang/$(DOMAIN).new.po"; \
 	cd $(srcdir); \
-	if $(MSGMERGE) $(DOMAIN)/$$lang.po $(DOMAIN).pot -o $$tmpdir/$(DOMAIN)/$$lang.new.po; then \
-	  if cmp $(DOMAIN)/$$lang.po $$tmpdir/$(DOMAIN)/$$lang.new.po >/dev/null 2>&1; then \
-	    rm -f $$tmpdir/$(DOMAIN)/$$lang.new.po; \
+	if $(MSGMERGE) $$lang/$(DOMAIN).po $(DOMAIN).pot -o $$tmpdir/$$lang/$(DOMAIN).new.po; then \
+	  if cmp $$lang/$(DOMAIN).po $$tmpdir/$$lang/$(DOMAIN).new.po >/dev/null 2>&1; then \
+	    rm -f $$tmpdir/$$lang/$(DOMAIN).new.po; \
 	  else \
-	    if mv -f $$tmpdir/$(DOMAIN)/$$lang.new.po $(DOMAIN)/$$lang.po; then \
+	    if mv -f $$tmpdir/$$lang/$(DOMAIN).new.po $$lang/$(DOMAIN).po; then \
 	      :; \
 	    else \
-	      echo "msgmerge for $(DOMAIN)/$$lang.po failed: cannot move $$tmpdir/$(DOMAIN)/$$lang.new.po to $(DOMAIN)/$$lang.po" 1>&2; \
+	      echo "msgmerge for $$lang/$(DOMAIN).po failed: cannot move $$tmpdir/$$lang/$(DOMAIN).new.po to $$lang/$(DOMAIN).po" 1>&2; \
 	      exit 1; \
 	    fi; \
 	  fi; \
 	else \
-	  echo "msgmerge for $(DOMAIN)/$$lang.po failed!" 1>&2; \
-	  rm -f $$tmpdir/$(DOMAIN)/$$lang.new.po; \
+	  echo "msgmerge for $$lang/$(DOMAIN).po failed!" 1>&2; \
+	  rm -f $$tmpdir/$$lang/$(DOMAIN).new.po; \
 	fi
 
 $(DUMMYPOFILES):
