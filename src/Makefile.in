@@ -266,6 +266,7 @@ LIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 
 LITE_FALSE = @LITE_FALSE@
 LITE_TRUE = @LITE_TRUE@
+LOCALEDIR = @LOCALEDIR@
 LTLIBICONV = @LTLIBICONV@
 LTLIBINTL = @LTLIBINTL@
 LTLIBOBJS = @LTLIBOBJS@
@@ -362,7 +363,6 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = . $(am__append_1) $(am__append_2) $(am__append_4)
-localedir = $(datadir)/locale
 
 #############################################################################
 #    Wesnoth                                                                #

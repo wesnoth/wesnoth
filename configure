@@ -312,7 +312,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT MKINSTALLDIRS USE_NLS MSGFMT GMSGFMT XGETTEXT MSGMERGE CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE build build_cpu build_vendor build_os host host_cpu host_vendor host_os RANLIB ac_ct_RANLIB CPP EGREP ALLOCA GLIBC21 HAVE_POSIX_PRINTF HAVE_ASPRINTF HAVE_SNPRINTF HAVE_WPRINTF LIBICONV LTLIBICONV INTLBISON BUILD_INCLUDED_LIBINTL USE_INCLUDED_LIBINTL CATOBJEXT DATADIRNAME INSTOBJEXT GENCAT INTLOBJS INTL_LIBTOOL_SUFFIX_PREFIX INTLLIBS LIBINTL LTLIBINTL POSUB DATADIR STATIC_TRUE STATIC_FALSE SERVER_TRUE SERVER_FALSE EDITOR_TRUE EDITOR_FALSE TOOLS_TRUE TOOLS_FALSE KDE_TRUE KDE_FALSE GNOME1_TRUE GNOME1_FALSE GNOME2_TRUE GNOME2_FALSE GCC_TRUE GCC_FALSE WZIP_TRUE WZIP_FALSE INCLUDEDINTL_TRUE INCLUDEDINTL_FALSE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS X11_TRUE X11_FALSE SDL_CONFIG PNG_CONFIG PNG_CFLAGS PNG_LIBS LIBPNG_TRUE LIBPNG_FALSE GNOME_CONFIG GNOME1_DESKTOP KDE_CONFIG KDE_DESKTOP KDE_ICON LTOOL LDPREFIX SDL_LIBS SDL_IMAGE_LIBS SDL_MIXER_LIBS SDL_NET_LIBS SDL_TTF_LIBS SDL_CFLAGS LIBOBJS LITE_TRUE LITE_FALSE MANUAL_FILES DATA_FILES FONT_FILES IMAGE_FILES MUSIC_FILES SOUND_FILES UTIL_FILES LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT MKINSTALLDIRS USE_NLS MSGFMT GMSGFMT XGETTEXT MSGMERGE CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE build build_cpu build_vendor build_os host host_cpu host_vendor host_os RANLIB ac_ct_RANLIB CPP EGREP ALLOCA GLIBC21 HAVE_POSIX_PRINTF HAVE_ASPRINTF HAVE_SNPRINTF HAVE_WPRINTF LIBICONV LTLIBICONV INTLBISON BUILD_INCLUDED_LIBINTL USE_INCLUDED_LIBINTL CATOBJEXT DATADIRNAME INSTOBJEXT GENCAT INTLOBJS INTL_LIBTOOL_SUFFIX_PREFIX INTLLIBS LIBINTL LTLIBINTL POSUB DATADIR LOCALEDIR STATIC_TRUE STATIC_FALSE SERVER_TRUE SERVER_FALSE EDITOR_TRUE EDITOR_FALSE TOOLS_TRUE TOOLS_FALSE KDE_TRUE KDE_FALSE GNOME1_TRUE GNOME1_FALSE GNOME2_TRUE GNOME2_FALSE GCC_TRUE GCC_FALSE WZIP_TRUE WZIP_FALSE INCLUDEDINTL_TRUE INCLUDEDINTL_FALSE CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE X_CFLAGS X_PRE_LIBS X_LIBS X_EXTRA_LIBS X11_TRUE X11_FALSE SDL_CONFIG PNG_CONFIG PNG_CFLAGS PNG_LIBS LIBPNG_TRUE LIBPNG_FALSE GNOME_CONFIG GNOME1_DESKTOP KDE_CONFIG KDE_DESKTOP KDE_ICON LTOOL LDPREFIX SDL_LIBS SDL_IMAGE_LIBS SDL_MIXER_LIBS SDL_NET_LIBS SDL_TTF_LIBS SDL_CFLAGS LIBOBJS LITE_TRUE LITE_FALSE MANUAL_FILES DATA_FILES FONT_FILES IMAGE_FILES MUSIC_FILES SOUND_FILES UTIL_FILES LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -892,6 +892,7 @@ Optional Packages:
   --with-libintl-prefix[=DIR]  search for libintl in DIR/include and DIR/lib
   --without-libintl-prefix     don't search for libintl in includedir and libdir
   --with-datadir-name[=dir]    change name of data directory. [wesnoth]
+  --with-localedir=dir    install locale data under dir [$datadir/locale]
   --with-kde              enable installation of icon and KDE menu entry
   --with-gnome            enable installation of icon and GNOME menu entry
   --with-x                use the X Window System
@@ -9846,7 +9847,7 @@ _ACEOF
 if test "${enable_debug+set}" = set; then
   enableval="$enable_debug"
   if test "x${enableval}" = "xyes" ; then
-                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3"
 	       fi
 fi;
 
@@ -9878,18 +9879,35 @@ fi;
 # Check whether --with-datadir-name or --without-datadir-name was given.
 if test "${with_datadir_name+set}" = set; then
   withval="$with_datadir_name"
-  case "${enableval}" in
+  case "${withval}" in
 	       yes)
-			DATADIR="wesnoth-data"
+			DATADIR="wesnoth"
 			;;
 		no)
 			;;
 		*)
-			DATADIR="${enableval}"
+			DATADIR="${withval}"
 			;;
 		esac
 fi;
 
+
+LOCALEDIR="$datadir/locale"
+
+# Check whether --with-localedir or --without-localedir was given.
+if test "${with_localedir+set}" = set; then
+  withval="$with_localedir"
+  case "${withval}" in
+	       yes)
+			LOCALEDIR="$datadir/locale"
+			;;
+		no)
+			;;
+		*)
+			LOCALEDIR="${withval}"
+			;;
+		esac
+fi;
 
 
 # Check whether --enable-server or --disable-server was given.
@@ -17078,6 +17096,7 @@ s,@LIBINTL@,$LIBINTL,;t t
 s,@LTLIBINTL@,$LTLIBINTL,;t t
 s,@POSUB@,$POSUB,;t t
 s,@DATADIR@,$DATADIR,;t t
+s,@LOCALEDIR@,$LOCALEDIR,;t t
 s,@STATIC_TRUE@,$STATIC_TRUE,;t t
 s,@STATIC_FALSE@,$STATIC_FALSE,;t t
 s,@SERVER_TRUE@,$SERVER_TRUE,;t t

@@ -27,7 +27,7 @@ AM_GNU_GETTEXT
 AC_ARG_ENABLE([debug],
 	      [  --enable-debug          enable debug in wesnoth],
 	      [if test "x${enableval}" = "xyes" ; then
-                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3"
 	       fi])
 
 AC_ARG_ENABLE([static],
@@ -44,18 +44,32 @@ DATADIR=$PACKAGE
 AC_ARG_ENABLE([datadir-name],,[AC_MSG_ERROR([Please use --with-datadir-name instead of obsolete --enable-datadir-name])])
 AC_ARG_WITH([datadir-name],
 	      [  --with-datadir-name[[=dir]]    change name of data directory. [[wesnoth]]], 
-	      [case "${enableval}" in
+	      [case "${withval}" in
 	       yes)
-			DATADIR="wesnoth-data"
+			DATADIR="wesnoth"
 			;;
 		no)
 			;;
 		*)
-			DATADIR="${enableval}"
+			DATADIR="${withval}"
 			;;
 		esac])
-
 AC_SUBST([DATADIR])
+
+LOCALEDIR="$datadir/locale"
+AC_ARG_WITH([localedir],
+	      [  --with-localedir=dir    install locale data under dir [[$datadir/locale]]],
+	      [case "${withval}" in
+	       yes)
+			LOCALEDIR="$datadir/locale"
+			;;
+		no)
+			;;
+		*)
+			LOCALEDIR="${withval}"
+			;;
+		esac])
+AC_SUBST([LOCALEDIR])
 
 AC_ARG_ENABLE([server],
 	      [  --enable-server         enable compilation of server],

@@ -20,8 +20,6 @@ endif
 
 pkgdatadir=$(datadir)/@DATADIR@
 
-localedir=$(datadir)/locale
-
 #############################################################################
 #    Wesnoth                                                                #
 #############################################################################
@@ -308,7 +306,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/widget.hpp \
 			 wesconfig.h
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\" \
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(LOCALEDIR)\" \
 	-I../intl -I$(top_srcdir)/intl
 
 if X11

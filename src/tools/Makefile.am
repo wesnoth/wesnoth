@@ -5,14 +5,12 @@ if LIBPNG
 bin_PROGRAMS += exploder cutter
 endif
 
-localedir=$(datadir)/locale
-
 #############################################################################
 #    Translation Tools                                                      #
 #############################################################################
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ \
-	      -DLOCALEDIR=\"$(localedir)\"
+	      -DLOCALEDIR=\"$(LOCALEDIR)\"
 AM_LDFLAGS = @SDL_LIBS@
 
 if LIBPNG
