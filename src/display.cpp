@@ -1973,6 +1973,9 @@ void display::move_unit_between(const gamemap::location& a,
 
 		double xloc = xsrc + xstep*i;
 		double yloc = ysrc + ystep*i;
+
+		double oldxpos = xpos_;
+		double oldypos = ypos_;
 		if(xloc < side_threshhold) {
 			scroll(xloc - side_threshhold,0.0);
 		}
@@ -1989,6 +1992,10 @@ void display::move_unit_between(const gamemap::location& a,
 		if(yloc + double(image->h) > this->y() - side_threshhold) {
 			scroll(0.0,((yloc + double(image->h)) -
 			           (this->y() - side_threshhold)));
+		}
+
+		if(oldxpos != xpos_ || oldypos != ypos_) {
+			scroll_to_tile(b.x,b.y,WARP);
 		}
 
 		xsrc = get_location_x(a);
