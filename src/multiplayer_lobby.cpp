@@ -89,7 +89,7 @@ void lobby::gamelist_updated()
 
 				//generate a unique id to show the map as
 				char buf[50];
-				sprintf(buf,"addr %ul",(size_t)(SDL_Surface*)mini);
+				sprintf(buf,"addr %lu",(size_t)(SDL_Surface*)mini);
 
 				image::register_image(buf,mini);
 
