@@ -961,7 +961,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				//convert to bridge means that we want to convert depending
 				//upon the direction the road is going.
 				//typically it will be in a format like,
-				//convert_to_bridge=|,/,\ 
+				//convert_to_bridge=\,|,/
 				// '|' will be used if the road is going north-south
 				// '/' will be used if the road is going south west-north east
 				// '\' will be used if the road is going south east-north west
