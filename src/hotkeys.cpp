@@ -82,6 +82,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editresize",HOTKEY_EDIT_RESIZE));
 		m.insert(val("editflip",HOTKEY_EDIT_FLIP));
 		m.insert(val("editselectall",HOTKEY_EDIT_SELECT_ALL));
+		m.insert(val("editdraw",HOTKEY_EDIT_DRAW));
 		m.insert(val("delayshroud",HOTKEY_DELAY_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 		m.insert(val("continue",HOTKEY_CONTINUE_MOVE));
@@ -512,6 +513,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_EDIT_SELECT_ALL:
 			if(executor)
 				executor->edit_select_all();
+			break;
+		 case HOTKEY_EDIT_DRAW:
+			if(executor)
+				executor->edit_draw();
 			break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";

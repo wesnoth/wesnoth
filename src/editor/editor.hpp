@@ -113,6 +113,11 @@ public:
 	/// Either select or deselect all hexes on the map depending on if
 	/// this operations has been invoked before or not.
 	virtual void edit_select_all();
+	virtual void edit_draw();
+
+	void perform_flood_fill();
+	void perform_paste();
+	void perform_set_starting_pos();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
@@ -128,10 +133,16 @@ private:
 	/// Called in every iteration when the left mouse button is held
 	/// down. Note that this differs from a click.
 	void left_button_down(const int mousex, const int mousey);
+
+	/// Handle a left click on the location.
+	void left_click(const gamemap::location loc);
 	
 	/// Called in every iteration when the right mouse button is held
 	/// down. Note that this differs from a click.
 	void right_button_down(const int mousex, const int mousey);
+
+	/// Handle a right click on the location.
+	void right_click(const gamemap::location loc);
 	
 	/// Called in every iteration when the middle mouse button is held
 	/// down. Note that this differs from a click.
@@ -223,6 +234,15 @@ private:
 	/// number done since save.
 	void save_undo_action(const map_undo_action &action);
 
+	/// Call when the left mouse button function has changed. Updated
+	/// the report indicating what will be performed. New_function is
+	/// the hotkey-string describing the action.
+	void left_button_func_changed(const std::string &new_function);
+
+	/// Draw the terrain on the hexes the mouse is over, taking account
+	/// for brush size.
+	void draw_on_mouseover_hexes(const gamemap::TERRAIN t);
+
 	/// An item in the clipboard. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate
 	/// where to put the pasted hex when calculating from the one
@@ -237,8 +257,12 @@ private:
 	};
 
 	/// What to perform while the left button is held down.
-	enum LEFT_BUTTON_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
-						   MOVE_SELECTION, NONE};
+	enum LEFT_BUTTON_HELD_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
+								MOVE_SELECTION, NONE};
+
+	/// What to perform on a left button click.
+	enum LEFT_BUTTON_FUNC {DRAW, SELECT_HEXES, FLOOD_FILL,
+						   SET_STARTING_POSITION, PASTE};
 
 	display &gui_;
 	gamemap &map_;
@@ -264,7 +288,7 @@ private:
 	std::set<gamemap::location> selected_hexes_;
 	std::vector<clipboard_item> clipboard_;
 	gamemap::location clipboard_offset_loc_;
-	LEFT_BUTTON_FUNC l_button_func_;
+	LEFT_BUTTON_HELD_FUNC l_button_held_func_;
 	gamemap::location selection_move_start_;
 	// mouse_moved_ will be true if the mouse have moved between two
 	// cycles.
@@ -273,6 +297,7 @@ private:
 	static config prefs_;
 	static config hotkeys_;
 	static bool first_time_created_;
+	static LEFT_BUTTON_FUNC l_button_func_;
 	bool all_hexes_selected_;
 	
 };

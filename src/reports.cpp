@@ -14,7 +14,8 @@ namespace {
 		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		 "income", "terrain", "position", "side_playing", "observers", "selected_terrain"};
+		 "income", "terrain", "position", "side_playing", "observers", "selected_terrain",
+		 "edit_left_button_function"};
 	std::map<reports::TYPE, std::string> report_contents;
 }
 
@@ -367,6 +368,16 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case SELECTED_TERRAIN: {
 		std::map<TYPE, std::string>::const_iterator it =
 			report_contents.find(SELECTED_TERRAIN);
+		if (it != report_contents.end()) {
+			return report(it->second);
+		}
+		else {
+			return report();
+		}
+	}
+	case EDIT_LEFT_BUTTON_FUNCTION: {
+		std::map<TYPE, std::string>::const_iterator it =
+			report_contents.find(EDIT_LEFT_BUTTON_FUNCTION);
 		if (it != report_contents.end()) {
 			return report(it->second);
 		}

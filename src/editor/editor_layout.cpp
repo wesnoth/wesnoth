@@ -36,7 +36,7 @@ void adjust_sizes(const display &disp, size_specs &sizes) {
 	sizes.brush_x = disp.mapx() + 33;
 	sizes.brush_y = 190;
 	sizes.palette_x = disp.mapx() + 40;
-	sizes.palette_y = sizes.brush_y + 30 + 10;
+	sizes.palette_y = sizes.brush_y + 160 + 10;
 	sizes.palette_w = sizes.terrain_space * 2;
 	sizes.palette_h = disp.y() - sizes.palette_y - 60;
 }

@@ -43,11 +43,15 @@ public:
 	/// Scroll the terrain palette to the bottom.
 	void scroll_bottom();
 
-	/// Return the currently selected terrain.
-	gamemap::TERRAIN selected_terrain() const;
+	/// Return the currently selected foreground terrain.
+	gamemap::TERRAIN selected_fg_terrain() const;
+	/// Return the currently selected background terrain.
+	gamemap::TERRAIN selected_bg_terrain() const;
 	
-	/// Select a terrain.
-	void select_terrain(gamemap::TERRAIN);
+	
+	/// Select a foreground terrain.
+	void select_fg_terrain(gamemap::TERRAIN);
+	void select_bg_terrain(gamemap::TERRAIN);
 
 	// Draw the palette. If force is true everything will be redrawn
 	// even though it is not invalidated.
@@ -69,6 +73,8 @@ private:
 	/// is a terrain that may be chosen, select the terrain if that is
 	/// the case.
 	void left_mouse_click(const int mousex, const int mousey);
+	void right_mouse_click(const int mousex, const int mousey);
+
 
 	/// Return the number of the tile that is at coordinates (x, y) in the
 	/// panel.
@@ -77,11 +83,14 @@ private:
 	/// Return a string represeting the terrain and the underlying ones.
 	std::string get_terrain_string(const gamemap::TERRAIN);
 
+	/// Update the report with the currently selected terrains.
+	void update_report();
+
 	const size_specs &size_specs_;
 	display &gui_;
 	unsigned int tstart_;
 	std::vector<gamemap::TERRAIN> terrains_;
-	gamemap::TERRAIN selected_terrain_;
+	gamemap::TERRAIN selected_fg_terrain_, selected_bg_terrain_;
 	const gamemap &map_;
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;

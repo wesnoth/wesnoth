@@ -42,10 +42,10 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		std::cerr << "No terrain found.\n";
 	}
 	else {
-		selected_terrain_ = terrains_[0];
+		selected_fg_terrain_ = terrains_[0];
+		selected_bg_terrain_ = terrains_[0];
 	}
-	reports::set_report_content(reports::SELECTED_TERRAIN,
-								get_terrain_string(selected_terrain()));
+	update_report();
 	adjust_size();
 }
 
@@ -110,14 +110,25 @@ void terrain_palette::scroll_bottom() {
 	}
 }
 
-gamemap::TERRAIN terrain_palette::selected_terrain() const {
-	return selected_terrain_;
+gamemap::TERRAIN terrain_palette::selected_fg_terrain() const {
+	return selected_fg_terrain_;
 }
 
-void terrain_palette::select_terrain(gamemap::TERRAIN terrain) {
-	if (selected_terrain_ != terrain) {
+gamemap::TERRAIN terrain_palette::selected_bg_terrain() const {
+	return selected_bg_terrain_;
+}
+
+void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
+	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
-		selected_terrain_ = terrain;
+		selected_fg_terrain_ = terrain;
+	}
+}
+
+void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
+	if (selected_bg_terrain_ != terrain) {
+		set_dirty();
+		selected_bg_terrain_ = terrain;
 	}
 }
 
@@ -144,9 +155,17 @@ std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0) {
-		select_terrain(terrains_[tstart_+tselect]);
-		reports::set_report_content(reports::SELECTED_TERRAIN,
-									get_terrain_string(selected_terrain()));
+		select_fg_terrain(terrains_[tstart_+tselect]);
+		update_report();
+		gui_.invalidate_game_status();
+	}
+}
+
+void terrain_palette::right_mouse_click(const int mousex, const int mousey) {
+	int tselect = tile_selected(mousex, mousey);
+	if(tselect >= 0) {
+		select_bg_terrain(terrains_[tstart_+tselect]);
+		update_report();
 		gui_.invalidate_game_status();
 	}
 }
@@ -183,6 +202,9 @@ void terrain_palette::handle_event(const SDL_Event& event) {
 	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
 		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
 			left_mouse_click(mousex, mousey);
+		}
+		if (mouse_button_event.button == SDL_BUTTON_RIGHT) {
+			right_mouse_click(mousex, mousey);
 		}
 		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
 			scroll_up();
@@ -237,9 +259,18 @@ void terrain_palette::draw(bool force) {
 		dstrect.h = image->h;
 
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h,
-							terrain == selected_terrain() ? 0xF000:0 , screen);
-	
+		if (terrain == selected_bg_terrain() && terrain == selected_fg_terrain()) {
+			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0x0F00, screen);
+		}
+		else if (terrain == selected_bg_terrain()) {
+			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0x00F0, screen);
+		}
+		else if (terrain == selected_fg_terrain()) {
+			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0xF000, screen);
+		}
+		else {
+			gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, 0, screen);
+		}
 		if (counter_from_zero % 2 != 0)
 			y += size_specs_.terrain_space;
 	}
@@ -261,6 +292,13 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 	return -1;
 }
 
+void terrain_palette::update_report() {
+	const std::string msg = translate_string("edit_foreground_short") + ": "
+		+ get_terrain_string(selected_fg_terrain()) + "\n"
+		+ translate_string("edit_background_short") +
+		": " + get_terrain_string(selected_bg_terrain());
+	reports::set_report_content(reports::SELECTED_TERRAIN, msg);
+}
 
 brush_bar::brush_bar(display &gui, const size_specs &sizes)
 	: gui::widget(gui), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
