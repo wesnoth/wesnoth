@@ -218,6 +218,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	if(state.scenario != "" && state.scenario != "null") {
 		gui::show_dialog(disp,NULL,"",
 		                 "Error - Unknown scenario: '" + state.scenario + "'");
+		return QUIT;
 	}
 
 	return VICTORY;
