@@ -68,6 +68,8 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("showenemymoves",HOTKEY_SHOW_ENEMY_MOVES));
 		m.insert(val("bestenemymoves",HOTKEY_BEST_ENEMY_MOVES));
 		m.insert(val("editquit",HOTKEY_EDIT_QUIT));
+		m.insert(val("editnewmap",HOTKEY_EDIT_NEW_MAP));
+		m.insert(val("editloadmap",HOTKEY_EDIT_LOAD_MAP));
 		m.insert(val("editsavemap",HOTKEY_EDIT_SAVE_MAP));
 		m.insert(val("editsaveas",HOTKEY_EDIT_SAVE_AS));
 		m.insert(val("editsetstartpos",HOTKEY_EDIT_SET_START_POS));
@@ -387,6 +389,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_EDIT_QUIT:
 			if(executor)
 				executor->edit_quit();
+			break;
+		 case HOTKEY_EDIT_NEW_MAP:
+			if(executor)
+				executor->edit_new_map();
+			break;
+		 case HOTKEY_EDIT_LOAD_MAP:
+			if(executor)
+				executor->edit_load_map();
 			break;
 		 case HOTKEY_EDIT_SAVE_MAP:
 			if(executor)

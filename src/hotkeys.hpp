@@ -39,7 +39,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 		      HOTKEY_EDIT_SET_TERRAIN,
 		      HOTKEY_EDIT_QUIT, HOTKEY_EDIT_SAVE_MAP, 
 		      HOTKEY_EDIT_SAVE_AS, HOTKEY_EDIT_SET_START_POS,
-		      
+		      HOTKEY_EDIT_NEW_MAP, HOTKEY_EDIT_LOAD_MAP,
 					  HOTKEY_NULL };
 
 struct hotkey_item {
@@ -110,6 +110,8 @@ public:
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}
 	virtual void edit_quit() {}
+	virtual void edit_new_map() {}
+	virtual void edit_load_map() {}
 	virtual void edit_save_map() {}
 	virtual void edit_save_as() {}
 	virtual void edit_set_start_pos() {}
