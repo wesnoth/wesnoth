@@ -49,7 +49,7 @@ public:
 	t_string(const char* string);
 	~t_string();
 
-	static t_string t_string::from_serialized(const std::string& string);
+	static t_string from_serialized(const std::string& string);
 
 	t_string& operator=(const t_string&);
 	t_string& operator=(const std::string&);
