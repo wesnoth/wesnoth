@@ -407,11 +407,14 @@ void wait::generate_menu()
 		}
 
 		std::stringstream str;
+		str << sd["side"] << ". " << COLUMN_SEPARATOR;
 		str << description << COLUMN_SEPARATOR << side_name << COLUMN_SEPARATOR;
+		// Mark parentheses translatable for languages like Japanese
 		if(!leader_name.empty())
-			str << "(" << leader_name << ")";
+			str << _("(") << leader_name << _(")");
 		str << COLUMN_SEPARATOR << sd["gold"] << ' ' << sgettext("unit^Gold")
 			<< COLUMN_SEPARATOR << sd["team_name"];
+		str << COLUMN_SEPARATOR << get_colour_string(lexical_cast_default<int>(sd["colour"], 0) - 1);
 		details.push_back(str.str());
 	}
 

@@ -853,25 +853,11 @@ void connect::lists_init()
 
 	std::string prefix;
 	prefix.resize(1);
-	//Colors
-	prefix[0] = 1;
-	player_colours_.push_back(prefix + _("Red"));
-	prefix[0] = 2;
-	player_colours_.push_back(prefix + _("Blue"));
-	prefix[0] = 3;
-	player_colours_.push_back(prefix + _("Green"));
-	prefix[0] = 4;
-	player_colours_.push_back(prefix + _("Yellow"));
-	prefix[0] = 5;
-	player_colours_.push_back(prefix + _("Purple"));
-	prefix[0] = 6;
-	player_colours_.push_back(prefix + _("Orange"));
-	prefix[0] = 7;
-	player_colours_.push_back(prefix + _("Grey"));
-	prefix[0] = 8;
-	player_colours_.push_back(prefix + _("White"));
-	prefix[0] = 9;
-	player_colours_.push_back(prefix + _("Brown"));
+
+	// Colours
+	for(int i = 0; i < 9; ++i) {
+		player_colours_.push_back(get_colour_string(i));
+	}
 
 	// Populates "sides_" from the level configuration
 	sides_.reserve(sides.second - sides.first);

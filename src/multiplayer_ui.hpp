@@ -30,6 +30,8 @@ namespace mp {
 
 void check_response(network::connection res, const config& data);
 
+std::string get_colour_string(int id);
+
 //this class memorizes a chat session.
 class chat
 {
