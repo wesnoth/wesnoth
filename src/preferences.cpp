@@ -802,7 +802,7 @@ void preferences_dialog::draw()
 			font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
 		}
 
-		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,gamma_slider_.location().h};
 		gamma_slider_.set_location(gamma_rect);
 
 		ypos += 50;
@@ -822,13 +822,13 @@ void preferences_dialog::draw()
 
 	} else if(tab_ == SOUND_TAB) {
 		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,music_label_,location().x,ypos);
-		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,music_slider_.location().h};
 		music_slider_.set_location(music_rect);
 
 		ypos += 50;
 
 		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
-		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,sound_slider_.location().h};
 		sound_slider_.set_location(sound_rect);
 	}
 
