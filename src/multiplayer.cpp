@@ -588,6 +588,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						sides[n]->values["controller"] = "network";
 						sides[n]->values["description"] = "";
 					}
+					sides[n]->values["gold"] = "100";
 
 					combo_race.push_back(gui::combo(disp,player_race));
 					combo_race.back().set_xy((disp.x()-width)/2+145,
@@ -662,8 +663,12 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						int check_playergold = 20+int(480*slider_gold[n].process(mousex,mousey,left_button));
 						if(abs(check_playergold) == check_playergold)
 							new_playergold=check_playergold;
-						if(new_playergold != cur_playergold)
+						if(new_playergold != cur_playergold) {
 							cur_playergold = new_playergold;
+							std::stringstream playergold;
+							playergold << cur_playergold;
+							sides[n]->values["gold"] = playergold.str();
+						}
 					}
 
 					if(launch2_game.process(mousex,mousey,left_button))
