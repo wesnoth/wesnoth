@@ -13,9 +13,9 @@
 #ifndef BUILDER_H_INCLUDED
 #define BUILDER_H_INCLUDED
 
-#include "config.hpp"
+class config;
+class image::locator;
 #include "map.hpp"
-#include "image.hpp"
 #include "animated.hpp"
 #include "SDL.h"
 

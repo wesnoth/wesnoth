@@ -6,6 +6,7 @@
 #include "preferences.hpp"
 #include "scoped_resource.hpp"
 #include "sdl_utils.hpp"
+#include "video.hpp"
 
 #include "SDL.h"
 

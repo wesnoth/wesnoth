@@ -11,12 +11,13 @@
    See the COPYING file for more details.
 */
 
+#include "gettext.hpp"
+#include "game_config.hpp"
 #include "global.hpp"
 #include "multiplayer_ui.hpp"
 #include "network.hpp"
-#include "game_config.hpp"
 #include "sound.hpp"
-#include "gettext.hpp"
+#include "video.hpp"
 
 #define LOG_NW lg::info(lg::network)
 #define ERR_NW lg::err(lg::network)

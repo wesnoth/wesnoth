@@ -5,6 +5,7 @@
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
+#include "video.hpp"
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 

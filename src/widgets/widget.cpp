@@ -2,6 +2,7 @@
 
 #include "widget.hpp"
 #include "../display.hpp"
+#include "../video.hpp"
 
 namespace {
 	const SDL_Rect EmptyRect = {-1234,-1234,0,0};

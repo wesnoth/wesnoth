@@ -13,7 +13,8 @@
 #ifndef DISPLAY_H_INCLUDED
 #define DISPLAY_H_INCLUDED
 
-#include "config.hpp"
+class config;
+class CVideo;
 #include "gamestatus.hpp"
 #include "image.hpp"
 #include "key.hpp"
@@ -25,7 +26,6 @@
 #include "team.hpp"
 #include "theme.hpp"
 #include "unit.hpp"
-#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include "SDL.h"

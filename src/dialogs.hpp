@@ -13,9 +13,9 @@
 #ifndef DIALOGS_H_INCLUDED
 #define DIALOGS_H_INCLUDED
 
-#include "actions.hpp"
-#include "config.hpp"
-#include "display.hpp"
+class config;
+class display;
+
 #include "map.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
