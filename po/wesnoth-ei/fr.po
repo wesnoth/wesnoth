@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-08 23:15+0100\n"
+"POT-Creation-Date: 2005-02-12 15:26+0100\n"
 "PO-Revision-Date: 2004-11-25 23:26+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -825,9 +825,10 @@ msgstr ""
 "chemin !"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:96
+#, fuzzy
 msgid ""
 "None of our troops can cross this harsh terrain. We must turn back! I told "
-"you from the beginning we should have never have ventured north of the river!"
+"you from the beginning we should never have ventured north of the river!"
 msgstr ""
 "Aucune de nos troupes ne peut se déplacer dans un terrain aussi rude. Nous "
 "devons faire demi-tour ! Je vous avais dis dès le début que nous ne devions "
@@ -873,7 +874,8 @@ msgid "This doesn't look good..."
 msgstr "Cela ne semble pas bon..."
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:4
-msgid "Mal-Ravanals Capital"
+#, fuzzy
+msgid "Mal-Ravanal's Capital"
 msgstr "La capitale de Mal-Ravanal"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:26
@@ -1135,9 +1137,11 @@ msgstr ""
 "capturer quelques uns pour les entraîner."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:89
+#, fuzzy
 msgid ""
-"Alright, we have to keep at least two of these Ogres on the grass until our "
-"troops get here to capture them."
+"Alright. We need to keep at least two of these Ogres on the grass where they "
+"can't escape until our troops get here to capture them. Then they will have "
+"to lead us to their tribe."
 msgstr ""
 "Bien, nous devons garder au moins deux de ces ogres sur l'herbe jusqu'à ce "
 "que nos troupes arrivent pour les capturer."
@@ -1158,11 +1162,9 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:154
 msgid ""
-"Good! We have managed to capture some Ogres. We can now recruit them into "
-"our army."
+"Our troops have caught up! Now, we will be able to recruit Ogres, since "
+"these will be able to convince their tribe to join us."
 msgstr ""
-"Bien ! Nous avons réussi à capturer quelques ogres. Nous pouvons maintenant "
-"en enrôler dans notre armée."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:164
 msgid ""
@@ -2333,52 +2335,42 @@ msgstr ""
 "se produisaient sur la frontière orientale de Wesnoth."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:9
+#, fuzzy
 msgid ""
 "Cattle and beasts of burden were found dead in the fields, and men went "
-"missing from their houses, with no clues but a thin stream of black blood."
+"missing from their houses, with no clues but a thin stream of black blood. "
+"At first the settlers suspected raiders, but there was nothing east of them "
+"but a small mountain range and miles of swamp."
 msgstr ""
 "Bétail et animaux de traits étaient retrouvés morts dans les champs, et des "
 "gens disparaissaient de leur foyer, sans indice si ce n'est un mince filet "
 "de sang noir."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:13
-msgid ""
-"At first the settlers suspected raiders, but there was nothing east of them "
-"but a small mountain range and miles of swamp."
-msgstr ""
-"Au début les colons suspectèrent des pillards, mais il n'y avait rien plus à "
-"l'est qu'une ligne de montagnes et des kilomètres de marais."
-
-#: data/scenarios/Eastern_Invasion/intro.cfg:17
+#, fuzzy
 msgid ""
 "Every day the terror grew greater, until the citizens of the eastern "
-"villages were forced to send a messenger to the King."
+"villages were forced to send a messenger to the King. The messenger rode "
+"hard for many days and nights, and finally reached the city of Weldyn."
 msgstr ""
 "Chaque jour la terreur s'amplifiait, jusqu'au moment où les citoyens des "
 "villages orientaux furent contraints d'envoyer un messager au roi."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:21
+#: data/scenarios/Eastern_Invasion/intro.cfg:18
 msgid ""
-"The messenger rode hard for many days and nights, and finally reached the "
-"city of Weldyn."
+"When the King received news of the problem, his advisor Dacyn had much to "
+"say. Apparently, these attacks were connected to similar ones that occurred "
+"earlier on the southern border, attacks by Undead. Dacyb outlined a plan to "
+"combat these intrusions."
 msgstr ""
-"Le messager chevaucha pendant plusieurs jours et nuits, et atteint enfin la "
-"cité de Weldyn."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:25
-msgid ""
-"The King received news of the problem, and, with the help of the White Mage "
-"Dacyn, decided upon a plan to save the eastern settlers."
-msgstr ""
-"Le roi reçut des nouvelles du problème, et, avec l'aide du magicien blanc "
-"Dacyn, il décida d'un plan pour sauver les colons orientaux."
-
-#: data/scenarios/Eastern_Invasion/intro.cfg:29
+#: data/scenarios/Eastern_Invasion/intro.cfg:23
+#, fuzzy
 msgid ""
 "In the days of the king Garard I, three outposts had been built along the "
-"eastern border to stop Orcish raiders from the east from entering Wesnoth. "
-"Since that time, the lands beyond the mountains had turned to marsh, and the "
-"orcs had left the mountains for the lands in the North."
+"south-eastern border to stop Orcish raiders from the east from entering "
+"Wesnoth. Since that time, the lands beyond the mountains had turned to "
+"marsh, and the orcs had left the mountains for the lands in the North."
 msgstr ""
 "Du temps du roi Garard I, trois avant-postes avaient été construits le long "
 "de la frontière orientale pour empêcher les pillards orcs de l'est de "
@@ -2386,40 +2378,81 @@ msgstr ""
 "sont devenues des marécages, et les orcs ont quitté les montagnes pour les "
 "terres dans le Nord."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:33
+#: data/scenarios/Eastern_Invasion/intro.cfg:27
+#, fuzzy
 msgid ""
-"Konrad II decided to re-man these outposts. He sent three of the most "
-"promising young officers to protect the settlers."
+"One of them, the South Guard, had been the site of the previous attacks. "
+"Konrad II decided to re-man the other outposts also. He sent two of the most "
+"promising young officers to them."
 msgstr ""
 "Konrad II décida de réoccuper ces avant-postes. Il envoya trois de ses "
 "jeunes officiers des plus prometteurs afin de protégers les colons."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:37
+#: data/scenarios/Eastern_Invasion/intro.cfg:31
 msgid ""
-" In the north he sent Owaec, a leader from the clans. In the south, he sent "
-"Sudoc, an accomplished fencer. And in the middle, in the place most likely "
-"to be attacked, he sent Gweddry, who would be accompanied by Dacyn the mage."
+"Deoran, a knight, was already in place in the southern outpost. To the "
+"northern outpost he sent Owaec, a clan noble. To the middle outpost, he sent "
+"Gweddry, who would be accompanied by Dacyn the mage. It is with them this "
+"story is concerned."
 msgstr ""
-"Au nord il envoya Owaec, un meneur des clans. Dans le sud, il envoya Sudoc, "
-"un bretteur accompli. Et au centre, dans l'endroit qui risquait le plus "
-"d'être attaqué, il envoya Gweddry, qui serait accompagné par Dacyn le mage."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:41
+#: data/scenarios/Eastern_Invasion/intro.cfg:35
+#, fuzzy
 msgid ""
-"All was going well once the King's forces arrived. There were no attacks for "
-"several weeks, and Gweddry's men started to grow uncautious."
+"All went well once the King's forces arrived. There were no attacks for "
+"several weeks, and Gweddry's men started to grow uncautious. Then, at dawn "
+"one day, Gweddry and his men were roused by startled cry of the night "
+"watchmen..."
 msgstr ""
 "Tout se passa bien une fois les forces du roi arrivées. Il n'y eut pas "
 "d'attaques pendant plusieurs semaines, et les hommes de Gweddry commençaient "
 "à devenir imprudents."
 
-#: data/scenarios/Eastern_Invasion/intro.cfg:45
-msgid ""
-"Then, at dawn one day, Gweddry and his men were roused by startled cry of "
-"the night watchmen..."
-msgstr ""
-"C'est alors qu'un jour, à l'aube, Gweddry et ses hommes furent tirés du lit "
-"par les cris effrayés des gardes de nuit..."
+#~ msgid ""
+#~ "Good! We have managed to capture some Ogres. We can now recruit them into "
+#~ "our army."
+#~ msgstr ""
+#~ "Bien ! Nous avons réussi à capturer quelques ogres. Nous pouvons "
+#~ "maintenant en enrôler dans notre armée."
+
+#~ msgid ""
+#~ "At first the settlers suspected raiders, but there was nothing east of "
+#~ "them but a small mountain range and miles of swamp."
+#~ msgstr ""
+#~ "Au début les colons suspectèrent des pillards, mais il n'y avait rien "
+#~ "plus à l'est qu'une ligne de montagnes et des kilomètres de marais."
+
+#~ msgid ""
+#~ "The messenger rode hard for many days and nights, and finally reached the "
+#~ "city of Weldyn."
+#~ msgstr ""
+#~ "Le messager chevaucha pendant plusieurs jours et nuits, et atteint enfin "
+#~ "la cité de Weldyn."
+
+#~ msgid ""
+#~ "The King received news of the problem, and, with the help of the White "
+#~ "Mage Dacyn, decided upon a plan to save the eastern settlers."
+#~ msgstr ""
+#~ "Le roi reçut des nouvelles du problème, et, avec l'aide du magicien blanc "
+#~ "Dacyn, il décida d'un plan pour sauver les colons orientaux."
+
+#~ msgid ""
+#~ " In the north he sent Owaec, a leader from the clans. In the south, he "
+#~ "sent Sudoc, an accomplished fencer. And in the middle, in the place most "
+#~ "likely to be attacked, he sent Gweddry, who would be accompanied by Dacyn "
+#~ "the mage."
+#~ msgstr ""
+#~ "Au nord il envoya Owaec, un meneur des clans. Dans le sud, il envoya "
+#~ "Sudoc, un bretteur accompli. Et au centre, dans l'endroit qui risquait le "
+#~ "plus d'être attaqué, il envoya Gweddry, qui serait accompagné par Dacyn "
+#~ "le mage."
+
+#~ msgid ""
+#~ "Then, at dawn one day, Gweddry and his men were roused by startled cry of "
+#~ "the night watchmen..."
+#~ msgstr ""
+#~ "C'est alors qu'un jour, à l'aube, Gweddry et ses hommes furent tirés du "
+#~ "lit par les cris effrayés des gardes de nuit..."
 
 #~ msgid "Racial Warfare"
 #~ msgstr "Conflit racial"
