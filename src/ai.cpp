@@ -16,6 +16,7 @@
 #include "actions.hpp"
 #include "ai.hpp"
 #include "ai2.hpp"
+//#include "advanced_ai.hpp"
 #include "ai_attack.hpp"
 #include "ai_move.hpp"
 #include "dialogs.hpp"
@@ -56,7 +57,7 @@ public:
 		do_recruitment();
 	}
 
-private:
+protected:
 	void do_attacks() {
 		std::map<location,paths> possible_moves;
 		move_map srcdst, dstsrc;
@@ -138,35 +139,35 @@ private:
 
 	void do_moves() {
 		unit_map::const_iterator leader;
-        for(leader = get_info().units.begin(); leader != get_info().units.end(); ++leader) {
-            if(leader->second.can_recruit() && current_team().is_enemy(leader->second.side())) {
-                break;
-            }
-        }
+		for(leader = get_info().units.begin(); leader != get_info().units.end(); ++leader) {
+			if(leader->second.can_recruit() && current_team().is_enemy(leader->second.side())) {
+				break;
+			}
+		}
 
-        if(leader == get_info().units.end())
-            return;
+		if(leader == get_info().units.end())
+			return;
 
-        std::map<location,paths> possible_moves;
-        move_map srcdst, dstsrc;
-        calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+		std::map<location,paths> possible_moves;
+		move_map srcdst, dstsrc;
+		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 
-        int closest_distance = -1;
-        std::pair<location,location> closest_move;
+		int closest_distance = -1;
+		std::pair<location,location> closest_move;
 
-        for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-            const int distance = distance_between(i->first,leader->first);
-            if(closest_distance == -1 || distance < closest_distance) {
-                closest_distance = distance;
-                closest_move = *i;
-            }
-        }
+		for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+			const int distance = distance_between(i->first,leader->first);
+			if(closest_distance == -1 || distance < closest_distance) {
+				closest_distance = distance;
+				closest_move = *i;
+			}
+		}
 
-        if(closest_distance != -1) {
-            move_unit(closest_move.second,closest_move.first,possible_moves);
-            do_moves();
-        }
-    }
+		if(closest_distance != -1) {
+			move_unit(closest_move.second,closest_move.first,possible_moves);
+			do_moves();
+		}
+	}
 
 	void do_recruitment() {
 		const std::set<std::string>& options = current_team().recruits();
@@ -192,6 +193,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new sample_ai(info);
 	else if(name == "idle_ai")
 		return new idle_ai(info);
+	//else if(name == "advanced_ai")
+	//	return new advanced_ai(info);
 	else if(name == "ai2")
 		return new ai2(info);
 	else if(name != "")
@@ -350,7 +353,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
 
-	wassert(info_.units.find(to) == info_.units.end() || from == to);
+	assert(info_.units.find(to) == info_.units.end() || from == to);
 
 	info_.disp.select_hex(from);
 	info_.disp.update_display();
@@ -359,7 +362,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
 		lg::err(lg::ai) << "Could not find unit at " << from.x << ", " << from.y << "\n";
-		wassert(false);
+		assert(false);
 		return location();
 	}
 
@@ -1276,7 +1279,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		LOG_AI << "choosing move...\n";
 		std::pair<location,location> move = choose_move(targets,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-			wassert(map_.on_board(ittg->loc));
+			assert(map_.on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false) {
@@ -1505,7 +1508,7 @@ void ai::analyze_potential_recruit_movements()
 		const shortest_path_calculator calc(temp_unit,current_team(),units,teams_,map_,state_);
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
-			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc);
+			const paths::route& route = a_star_search(start, t->loc, 100.0, &calc, get_info().map.x(), get_info().map.y());
 			if(route.steps.empty() == false) {
 				LOG_AI << "made it: " << route.move_left << "\n";
 				cost += route.move_left;
@@ -1622,7 +1625,7 @@ void ai::do_recruitment()
 	const std::vector<std::string>& options = current_team().recruitment_pattern();
 
 	if(options.empty()) {
-		wassert(false);
+		assert(false);
 		return;
 	}
 
@@ -1653,7 +1656,7 @@ void ai::move_leader_to_goals(const move_map& enemy_srcdst, const move_map& enem
 	do_recruitment();
 
 	shortest_path_calculator calc(leader->second, current_team(), units_, teams_, map_, state_);
-	const paths::route route = a_star_search(leader->first, dst, 1000.0, &calc);
+	const paths::route route = a_star_search(leader->first, dst, 1000.0, &calc, get_info().map.x(), get_info().map.y());
 	if(route.steps.empty()) {
 		LOG_AI << "route empty";
 		return;
@@ -1745,7 +1748,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 			//if this is a village of ours, that an enemy can capture on their turn, and
 			//which we might be able to reach in two turns.
 			if(map_.is_village(i->first) && current_team().owns_village(i->first) &&
-				distance_between(i->first,leader->first) <= leader->second.total_movement()*2) {
+				int(distance_between(i->first,leader->first)) <= leader->second.total_movement()*2) {
 				
 				int current_distance = distance_between(i->first,leader->first);
 				location current_loc;

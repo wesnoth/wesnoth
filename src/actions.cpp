@@ -48,11 +48,12 @@ struct castle_cost_calculator : cost_calculator
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	virtual double cost(const gamemap::location& loc, double) const
+	virtual double cost(const gamemap::location& loc, const double, const bool) const
 	{
 		if(!map_.is_castle(loc))
 			return 10000;
 
+			return (getNoPathValue());
 		return 1;
 	}
 
@@ -106,7 +107,7 @@ std::string recruit_unit(const gamemap& map, int side,
 
 	if(need_castle && map.on_board(recruit_location)) {
 		castle_cost_calculator calc(map);
-		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc);
+		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc, map.x(), map.y());		
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
 		   !map.is_castle(recruit_location))
 			recruit_location = gamemap::location();
@@ -559,6 +560,8 @@ void attack(display& gui, const gamemap& map,
 	a->second.remove_flag(forest_invisible);
 	static const std::string night_invisible("nightstalk");
 	a->second.remove_flag(night_invisible);
+	static const std::string sea_invisible("submerge");
+	a->second.remove_flag(sea_invisible);
 
 	battle_stats stats = evaluate_battle_stats(map, attacker, defender,
 	                                           attack_with, units, state);

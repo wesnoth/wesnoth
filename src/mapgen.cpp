@@ -21,9 +21,6 @@
 #include "scoped_resource.hpp"
 #include "util.hpp"
 
-#define ERR_CF lg::err(lg::config)
-#define LOG_NG lg::info(lg::engine)
-
 //function to generate a random map, from a string which describes
 //the generator to use and its arguments
 std::string random_generate_map(const std::string& parms, const config* cfg)
@@ -33,8 +30,8 @@ std::string random_generate_map(const std::string& parms, const config* cfg)
 	std::vector<std::string> parameters = config::split(parms,' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
-		return std::string();
+		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
+		return "";
 	}
 
 	parameters.erase(parameters.begin());
@@ -48,7 +45,7 @@ config random_generate_scenario(const std::string& parms, const config* cfg)
 	std::vector<std::string> parameters = config::split(parms,' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
+		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
 		return config();
 	}
 
@@ -88,7 +85,7 @@ height_map generate_height_map(size_t width, size_t height,
 	size_t center_x = width/2;
 	size_t center_y = height/2;
 
-	LOG_NG << "off-centering...\n";
+	std::cerr << "off-centering...\n";
 
 	if(island_off_center != 0) {
 		switch(rand()%4) {
@@ -136,7 +133,7 @@ height_map generate_height_map(size_t width, size_t height,
 		if(island_size != 0) {
 			const size_t diffx = abs(x1 - int(center_x));
 			const size_t diffy = abs(y1 - int(center_y));
-			const size_t dist = size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
+			const size_t dist = size_t(sqrt(double(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}
 
@@ -152,7 +149,7 @@ height_map generate_height_map(size_t width, size_t height,
 				const int xdiff = (x2-x1);
 				const int ydiff = (y2-y1);
 
-				const int height = radius - int(std::sqrt(double(xdiff*xdiff + ydiff*ydiff)));
+				const int height = radius - int(sqrt(double(xdiff*xdiff + ydiff*ydiff)));
 
 				if(height > 0) {
 					if(is_valley) {
@@ -249,7 +246,7 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 	
 	//if we're at the end of the river
 	if(!on_map || terrain[x][y] == 'c' || terrain[x][y] == 's') {
-		LOG_NG << "generating river...\n";
+		std::cerr << "generating river...\n";
 
 		//generate the river
 		for(std::vector<location>::const_iterator i = river.begin();
@@ -257,7 +254,7 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 			terrain[i->x][i->y] = 'c';
 		}
 
-		LOG_NG << "done generating river\n";
+			std::cerr << "done generating river\n";
 
 		return true;
 	}
@@ -348,7 +345,7 @@ struct road_path_calculator : cost_calculator
 
 				  //find out how windy roads should be.
 				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
-	virtual double cost(const location& loc, double so_far) const;
+	virtual double cost(const location& loc, const double so_far, const bool isDst) const;
 
 	void terrain_changed(const location& loc) { loc_cache_.erase(loc); }
 	mutable int calls;
@@ -360,11 +357,11 @@ private:
 	mutable std::map<char,double> cache_;
 };
 
-double road_path_calculator::cost(const location& loc, double) const
+double road_path_calculator::cost(const location& loc, const double so_far, const bool isDst) const
 {
 	++calls;
-	if(loc.x < 0 || loc.y < 0 || loc.x >= map_.size() || loc.y >= map_.front().size())
-		return 100000.0;
+	if (loc.x < 0 || loc.y < 0 || loc.x >= map_.size() || loc.y >= map_.front().size())
+		return (getNoPathValue());
 
 	const std::map<location,double>::const_iterator val = loc_cache_.find(loc);
 	if(val != loc_cache_.end()) {
@@ -387,7 +384,7 @@ double road_path_calculator::cost(const location& loc, double) const
 	terrain[0] = c;
 
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
-	double res = 100000.0;
+	double res = getNoPathValue();
 	if(child != NULL) {
 		res = double(atof((*child)["cost"].c_str()));
 	}
@@ -529,23 +526,23 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 	const std::vector<std::string>& options = config::split(string_table[id]);
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
-		LOG_NG << "calling name generator...\n";
+		std::cerr << "calling name generator...\n";
 		const std::string& name = name_generator.generate_name(unit_race::MALE);
-		LOG_NG << "name generator returned '" << name << "'\n";
+		std::cerr << "name generator returned '" << name << "'\n";
 		if(base_name != NULL) {
 			*base_name = name;
 		}
 
-		LOG_NG << "assigned base name..\n";
+		std::cerr << "assigned base name..\n";
 		std::map<std::string,std::string> table;
 		if(additional_symbols == NULL) {
 			additional_symbols = &table;
 		}
 
-		LOG_NG << "got additional symbols\n";
+		std::cerr << "got additional symbols\n";
 
 		(*additional_symbols)["name"] = name;
-		LOG_NG << "interpolation variables into '" << options[choice] << "'\n";
+		std::cerr << "interpolation variables into '" << options[choice] << "'\n";
 		return config::interpolate_variables_into_string(options[choice],additional_symbols);
 	}
 
@@ -661,11 +658,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	width *= 3;
 	height *= 3;
 	
-	LOG_NG << "generating height map...\n";
+	std::cerr << "generating height map...\n";
 	//generate the height of everything.
 	const height_map heights = generate_height_map(width,height,iterations,hill_size,island_size,island_off_center);
-	LOG_NG << "done generating height map...\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "done generating height map...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	const config* const names_info = cfg.child("naming");
 	config naming;
@@ -673,8 +670,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		naming = *names_info;
 	}
 
-	LOG_NG << "random map config: '" << cfg.write() << "'\n";
-	LOG_NG << "making dummy race for naming: '" << naming.write() << "'\n";
+	std::cerr << "random map config: '" << cfg.write() << "'\n";
+	std::cerr << "making dummy race for naming: '" << naming.write() << "'\n";
 	//make a dummy race for generating names
 	unit_race name_generator(naming);
 
@@ -699,8 +696,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	LOG_NG << "placed land forms\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "placed land forms\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	//now that we have our basic set of flatland/hills/mountains/water, we can place lakes
 	//and rivers on the map. All rivers are sourced at a lake. Lakes must be in high land -
@@ -725,9 +722,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
-					LOG_NG << "generating name for river...\n";
+					std::cerr << "generating name for river...\n";
 					const std::string& name = generate_name(name_generator,"river_name",&base_name);
-					LOG_NG << "named river '" << name << "'\n";
+					std::cerr << "named river '" << name << "'\n";
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
 
@@ -740,10 +737,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						river_names.insert(std::pair<location,std::string>(loc,base_name));
 					}
 
-					LOG_NG << "put down river name...\n";
+					std::cerr << "put down river name...\n";
 				}
 
-				LOG_NG << "generating lake...\n";
+				std::cerr << "generating lake...\n";
 				std::set<location> locs;
 				const bool res = generate_lake(terrain,x,y,atoi(cfg["lake_size"].c_str()),locs);
 				if(res && labels != NULL) {
@@ -788,8 +785,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	LOG_NG << "done generating rivers...\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "done generating rivers...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	const size_t default_dimensions = 40*40*9;
 
@@ -801,8 +798,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	                                                       (atoi(cfg["temperature_iterations"].c_str())*width*height)/default_dimensions,
 														   atoi(cfg["temperature_size"].c_str()),0,0);
 
-	LOG_NG << "generated temperature map...\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "generated temperature map...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
 	const config::child_list& converter_items = cfg.get_children("convert");
@@ -810,8 +807,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		converters.push_back(terrain_converter(**cv));
 	}
 
-	LOG_NG << "created terrain converters\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "created terrain converters\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 
 	//iterate over every flatland tile, and determine what type of flatland it is,
@@ -827,8 +824,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	LOG_NG << "placing villages...\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "placing villages...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	//place villages in a 'grid', to make placing fair, but with villages
 	//displaced from their position according to terrain and randomness, to
@@ -836,12 +833,12 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::set<location> villages;
 
-	LOG_NG << "placing castles...\n";
+	std::cerr << "placing castles...\n";
 
 	//try to find configuration for castles.
 	const config* const castle_config = cfg.child("castle");
 	if(castle_config == NULL) {
-		ERR_CF << "Could not find castle configuration\n";
+		std::cerr << "Could not find castle configuration\n";
 		return "";
 	}
 
@@ -858,7 +855,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::set<location> failed_locs;
 
 	for(size_t player = 0; player != nplayers; ++player) {
-		LOG_NG << "placing castle for " << player << "\n";
+		std::cerr << "placing castle for " << player << "\n";
 		log_scope("placing castle");
 		const int min_x = width/3 + 2;
 		const int min_y = height/3 + 2;
@@ -890,8 +887,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		castles.push_back(best_loc);
 	}
 
-	LOG_NG << "placing roads...\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "placing roads...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	//place roads. We select two tiles at random locations on the borders of the map,
 	//and try to build roads between them.
@@ -933,12 +930,12 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			continue;
 		}
 
-		if(calc.cost(src,0.0) >= 1000.0 || calc.cost(dst,0.0) >= 1000.0) {
+		if (calc.cost(src, 0.0, false) >= 1000.0 || calc.cost(dst, 0.0, true) >= 1000.0) {
 			continue;
 		}
 
 		//search a path out for the road
-		const paths::route rt = a_star_search(src, dst, 10000.0, &calc);
+		const paths::route rt = a_star_search(src, dst, 10000.0, &calc, width, height);
 
 		const std::string& name = generate_name(name_generator,"road_name");
 		const int name_frequency = 20;
@@ -1031,7 +1028,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			}
 		}
 
-		LOG_NG << "looked at " << calc.calls << " locations\n";
+		std::cerr << "looked at " << calc.calls << " locations\n";
 	}
 
 
@@ -1068,8 +1065,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	LOG_NG << "placed castles\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "placed castles\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	if(nvillages > 0) {
 		const config* const naming = cfg.child("village_naming");
@@ -1098,7 +1095,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		std::set<std::string> used_names;
 	
 		for(size_t vx = 0; vx < width; vx += village_x) {
-			LOG_NG << "village at " << vx << "\n";
+			std::cerr << "village at " << vx << "\n";
 			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
 				
 				const size_t add_x = rand()%3;
@@ -1192,8 +1189,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	LOG_NG << "placed villages\n";
-	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+	std::cerr << "placed villages\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 
 	return output_map(terrain);
