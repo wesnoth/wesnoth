@@ -60,6 +60,7 @@ std::vector<std::string> get_text() {
 		"-   J.R. Blain (Cowboy)",
 		"-   Kristoffer Erlandsson (erl)",
 		"-   Philippe Plantier (Ayin)",
+		"-   Yann Dirson",
 		"-   Zas",
 		"+ ",
 
