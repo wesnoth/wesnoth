@@ -255,9 +255,9 @@ battle_stats evaluate_battle_stats(
 		}
 	}
 
-	res.defend_with = defend != int(defender_attacks.size()) ? defend : -1;
+	res.defend_with = defend;
 
-	const bool counterattack = defend != int(defender_attacks.size());
+	const bool counterattack = defend != -1;
 
 	static const std::string drain_string("drain");
 	static const std::string magical_string("magical");

@@ -51,7 +51,11 @@ manager::manager()
 
 manager::~manager()
 {
-	write_file(get_prefs_file(),prefs.write());
+	try {
+		write_file(get_prefs_file(),prefs.write());
+	} catch(io_exception&) {
+		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
+	}
 }
 
 display_manager::display_manager(display* d)
