@@ -20,29 +20,16 @@ namespace {
 }
 namespace map_editor {
 
-void adjust_sizes(const display &disp, size_specs &sizes,
-				  const unsigned int num_terrains) {
-	const size_t button_height = 24;
-	const size_t button_palette_padding = 8;
+void adjust_sizes(const display &disp, size_specs &sizes) {
 	sizes.terrain_size = default_terrain_size;
 	sizes.terrain_padding = 2;
 	sizes.terrain_space = sizes.terrain_size + sizes.terrain_padding;
-	sizes.palette_x = 40;
-	sizes.button_x = sizes.palette_x + sizes.terrain_space - 12;
-	sizes.brush_x = 25;
+	sizes.brush_x = disp.mapx() + 33;
 	sizes.brush_y = 190;
-	sizes.top_button_y = sizes.brush_y + 40;
-	sizes.palette_y = sizes.top_button_y + button_height +
-		button_palette_padding;
-	const size_t max_bot_button_y = disp.y() - 60 - button_height;
-	size_t space_for_terrains = max_bot_button_y - button_palette_padding -
-		sizes.palette_y;
-	space_for_terrains = space_for_terrains / sizes.terrain_space % 2 == 0 ? 
-		space_for_terrains : space_for_terrains - sizes.terrain_space;
-	sizes.nterrains = minimum((space_for_terrains / sizes.terrain_space) * 2,
-							  num_terrains);
-	sizes.bot_button_y = sizes.palette_y +
-		(sizes.nterrains / 2) * sizes.terrain_space + button_palette_padding;
+	sizes.palette_x = disp.mapx() + 40;
+	sizes.palette_y = sizes.brush_y + 30 + 10;
+	sizes.palette_w = sizes.terrain_space * 2;
+	sizes.palette_h = disp.y() - sizes.palette_y - 60;
 }
 
 }

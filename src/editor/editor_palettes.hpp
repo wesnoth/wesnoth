@@ -18,6 +18,7 @@
 #include "../sdl_utils.hpp"
 #include "../display.hpp"
 #include "../map.hpp"
+#include "../widgets/widget.hpp"
 #include "editor_layout.hpp"
 
 #include <vector>
@@ -25,7 +26,7 @@
 namespace map_editor {
 
 /// A palette where the terrain to be drawn can be selected.
-class terrain_palette {
+class terrain_palette : public gui::widget {
 public:
 	terrain_palette(display &gui, const size_specs &sizes,
 					const gamemap &map);
@@ -36,74 +37,90 @@ public:
 	/// Scroll the terrain palette down one step if possible.
 	void scroll_down();
 
+	/// Scroll the terrain palette to the top.
+	void scroll_top();
+
+	/// Scroll the terrain palette to the bottom.
+	void scroll_bottom();
+
 	/// Return the currently selected terrain.
 	gamemap::TERRAIN selected_terrain() const;
 	
 	/// Select a terrain.
 	void select_terrain(gamemap::TERRAIN);
 
+	// Draw the palette. If force is true everything will be redrawn
+	// even though it is not invalidated.
+	void draw(bool force=false);
+	virtual void draw();
+	virtual void handle_event(const SDL_Event& event);
+	
+
+	/// Return the number of terrains in the palette.
+	size_t num_terrains() const;
+
+	/// Update the size of this widget. Use if the size_specs have
+	/// changed.
+	void terrain_palette::adjust_size();
+
+private:
+	void draw_old(bool);
 	/// To be called when a mouse click occurs. Check if the coordinates
 	/// is a terrain that may be chosen, select the terrain if that is
 	/// the case.
 	void left_mouse_click(const int mousex, const int mousey);
 
-	// Draw the palette. If force is true everything will be redrawn
-	// even though it is not invalidated.
-	void draw(bool force=false);
-
-	/// Return the number of terrains in the palette.
-	size_t num_terrains() const;
-
-
-private:
 	/// Return the number of the tile that is at coordinates (x, y) in the
 	/// panel.
 	int tile_selected(const int x, const int y) const;
-					  
+
+	/// Return a string represeting the terrain and the underlying ones.
+	std::string get_terrain_string(const gamemap::TERRAIN);
+
 	const size_specs &size_specs_;
-	scoped_sdl_surface surf_;
 	display &gui_;
 	unsigned int tstart_;
 	std::vector<gamemap::TERRAIN> terrains_;
 	gamemap::TERRAIN selected_terrain_;
 	const gamemap &map_;
-	// Set invalid_ to true if an operation that requires that the
-	// palette is redrawn takes place.
-	bool invalid_;
+	gui::button top_button_, bot_button_;
+	size_t button_x_, top_button_y_, bot_button_y_;
+	size_t nterrains_, terrain_start_;
 };
 
 /// A bar where the brush is drawin
-class brush_bar
-{
+class brush_bar : public gui::widget {
 public:
 	brush_bar(display &gui, const size_specs &sizes);
 
 	/// Return the size of currently selected brush.
  	unsigned int selected_brush_size();
 
+	// Draw the palette. If force is true everything will be redrawn
+	// even though it is not dirty.
+	void draw(bool force=false);
+	virtual void draw();
+	virtual void handle_event(const SDL_Event& event);
+
+	/// Update the size of this widget. Use if the size_specs have
+	/// changed.
+	void adjust_size();
+
+private:
 	/// To be called when a mouse click occurs. Check if the coordinates
 	/// is a terrain that may be chosen, select the terrain if that is
 	/// the case.
  	void left_mouse_click(const int mousex, const int mousey);
 
-	// Draw the palette. If force is true everything will be redrawn
-	// even though it is not invalidated.
-	void draw(bool force=false);
-
-private:
 	/// Return the index of the brush that is at coordinates (x, y) in the
 	/// panel.
 	int selected_index(const int x, const int y) const;
 					  
 	const size_specs &size_specs_;
-	scoped_sdl_surface surf_;
 	display &gui_;
 	unsigned int selected_;
 	const int total_brush_;
 	const size_t size_;
-	// Set invalid_ to true if an operation that requires that the
-	// bar is redrawn takes place.
-	bool invalid_;
 };
 
 

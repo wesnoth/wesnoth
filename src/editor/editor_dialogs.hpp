@@ -40,6 +40,10 @@ std::string new_map_dialog(display &disp, gamemap::TERRAIN fill_terrain,
 /// is chosen.
 std::string load_map_dialog(display &disp);
 
+/// Show a dialog where the user may set the preferences used in the
+/// editor.
+void preferences_dialog(display &disp);
+
 
 
 

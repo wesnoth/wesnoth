@@ -10,10 +10,17 @@
   See the COPYING file for more details.
 */
 
+#include "SDL.h"
+#include "SDL_keysym.h"
+
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
+#include "../sdl_utils.hpp"
 #include "../show_dialog.hpp"
 #include "../image.hpp"
+#include "../reports.hpp"
+#include "../language.hpp"
+#include "../util.hpp"
 
 
 namespace map_editor {
@@ -24,7 +31,9 @@ bool is_invalid_terrain(char c) {
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map)
-	: size_specs_(sizes), gui_(gui), tstart_(0), map_(map), invalid_(true) {
+	: gui::widget(gui), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
+	  top_button_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
+	  bot_button_(gui, "", gui::button::TYPE_PRESS, "downarrow-button") {
 
 	terrains_ = map_.get_terrain_precedence();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
@@ -35,28 +44,66 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	else {
 		selected_terrain_ = terrains_[0];
 	}
+	reports::set_report_content(reports::SELECTED_TERRAIN,
+								get_terrain_string(selected_terrain()));
+	adjust_size();
+}
+
+void terrain_palette::adjust_size() {
+	scroll_top();
+	const size_t button_height = 24;
+	const size_t button_palette_padding = 8;
+	set_location(size_specs_.palette_x, size_specs_.palette_y);
+	set_width(size_specs_.palette_w);
+	set_height(size_specs_.palette_h);
+	top_button_y_ = size_specs_.palette_y;
+	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
+	terrain_start_ = top_button_y_ + button_height + button_palette_padding;
+	const size_t space_for_terrains = size_specs_.palette_h -
+		(button_height + button_palette_padding) * 2;
+	nterrains_ = minimum((space_for_terrains / size_specs_.terrain_space) * 2, num_terrains());
+	bot_button_y_ = size_specs_.palette_y + (nterrains_ / 2) * size_specs_.terrain_space +
+		button_palette_padding * 2 + button_height;
+	top_button_.set_location(button_x_, top_button_y_);
+	bot_button_.set_location(button_x_, bot_button_y_);
+	top_button_.set_dirty();
+	bot_button_.set_dirty();
+	set_dirty();
 }
 
 void terrain_palette::scroll_down() {
-	if(tstart_ + size_specs_.nterrains + 2 <= num_terrains()) {
+	if(tstart_ + nterrains_ + 2 <= num_terrains()) {
 		tstart_ += 2;
-		invalid_ = true;
+		set_dirty();
 	}
-	else if (tstart_ + size_specs_.nterrains + 1 <= num_terrains()) {
+	else if (tstart_ + nterrains_ + 1 <= num_terrains()) {
 		tstart_ += 1;
-		invalid_ = true;
+		set_dirty();
 	}
 }
 
 void terrain_palette::scroll_up() {
 	unsigned int decrement = 2;
-	if (tstart_ + size_specs_.nterrains == num_terrains()
-		&& terrains_.size() % 2 != 0) {
+	if (tstart_ + nterrains_ == num_terrains()
+		&& num_terrains() % 2 != 0) {
 		decrement = 1;
 	}
 	if(tstart_ >= decrement) {
-		invalid_ = true;
+		set_dirty();
 		tstart_ -= decrement;
+	}
+}
+
+void terrain_palette::scroll_top() {
+	tstart_ = 0;
+	set_dirty();
+}
+
+void terrain_palette::scroll_bottom() {
+	unsigned int old_start = num_terrains();
+	while (old_start != tstart_) {
+		old_start = tstart_;
+		scroll_down();
 	}
 }
 
@@ -66,15 +113,38 @@ gamemap::TERRAIN terrain_palette::selected_terrain() const {
 
 void terrain_palette::select_terrain(gamemap::TERRAIN terrain) {
 	if (selected_terrain_ != terrain) {
-		invalid_ = true;
+		set_dirty();
 		selected_terrain_ = terrain;
 	}
+}
+
+std::string terrain_palette::get_terrain_string(const gamemap::TERRAIN t) {
+	std::stringstream str;
+	const std::string& name = map_.terrain_name(t);
+	const std::vector<std::string>& underlying_names =
+		map_.underlying_terrain_name(t);
+	str << translate_string(name);
+	if(underlying_names.size() != 1 || underlying_names.front() != name) {
+		str << " (";
+		for(std::vector<std::string>::const_iterator i = underlying_names.begin();
+			i != underlying_names.end(); ++i) {
+			str << translate_string(*i);
+			if(i+1 != underlying_names.end()) {
+				str << ",";
+			}
+		}
+		str << ")";
+	}
+	return str.str();
 }
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0) {
 		select_terrain(terrains_[tstart_+tselect]);
+		reports::set_report_content(reports::SELECTED_TERRAIN,
+									get_terrain_string(selected_terrain()));
+		gui_.invalidate_game_status();
 	}
 }
 
@@ -82,37 +152,59 @@ size_t terrain_palette::num_terrains() const {
 	return terrains_.size();
 }
 
-void terrain_palette::draw(bool force) {
-	if (!invalid_ && !force) {
+void terrain_palette::draw() {
+	draw(false);
+}
+
+void terrain_palette::handle_event(const SDL_Event& event) {
+	if (!focus()) {
 		return;
 	}
-	size_t x = gui_.mapx() + size_specs_.palette_x;
-	size_t y = size_specs_.palette_y;
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	const SDL_MouseButtonEvent mouse_button_event = event.button;
+	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
+		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
+			left_mouse_click(mousex, mousey);
+		}
+		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
+			scroll_up();
+		}
+		if (mouse_button_event.button == SDL_BUTTON_WHEELDOWN) {
+			scroll_down();
+		}
+	}
+	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
+		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
+		}
+	}
+}
 
+void terrain_palette::draw(bool force) {
+	if (top_button_.pressed()) {
+		scroll_up();
+	}
+	if (bot_button_.pressed()) {
+		scroll_down();
+	}
+	if (!dirty() && !force) {
+		return;
+	}
 	unsigned int starting = tstart_;
-	unsigned int ending = starting + size_specs_.nterrains;
-
-	SDL_Rect invalid_rect;
-	invalid_rect.x = x;
-	invalid_rect.y = y;
-	invalid_rect.w = 0;
-	invalid_rect.w = size_specs_.terrain_space * 2;
-	invalid_rect.h = (size_specs_.nterrains / 2) * size_specs_.terrain_space;
-	// Everything will be redrawn even though only one little part may
-	// have changed, but that happens so seldom so we'll settle with
-	// this.
+	unsigned int ending = starting + nterrains_;
 	SDL_Surface* const screen = gui_.video().getSurface();
-	SDL_BlitSurface(surf_, NULL, screen, &invalid_rect);
-	surf_.assign(get_surface_portion(screen, invalid_rect));
 	if(ending > num_terrains()){
 		ending = num_terrains();
 	}
+	const SDL_Rect &loc = location();
+	int y = terrain_start_;
 	for(unsigned int counter = starting; counter < ending; counter++){
 		const gamemap::TERRAIN terrain = terrains_[counter];
 		const std::string filename = "terrain/" +
 			map_.get_terrain_info(terrain).default_image() + ".png";
 		scoped_sdl_surface image(image::get_image(filename, image::UNSCALED));
-		if((unsigned)image->w != size_specs_.terrain_size || (unsigned)image->h != size_specs_.terrain_size) {
+		if((unsigned)image->w != size_specs_.terrain_size
+		   || (unsigned)image->h != size_specs_.terrain_size) {
 			image.assign(scale_surface(image, size_specs_.terrain_size,
 									   size_specs_.terrain_size));
 		}
@@ -122,7 +214,7 @@ void terrain_palette::draw(bool force) {
 		}
 		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
-		dstrect.x = x + (counter_from_zero % 2 != 0 ? size_specs_.terrain_space : 0);
+		dstrect.x = loc.x + (counter_from_zero % 2 != 0 ? size_specs_.terrain_space : 0);
 		dstrect.y = y;
 		dstrect.w = image->w;
 		dstrect.h = image->h;
@@ -134,15 +226,14 @@ void terrain_palette::draw(bool force) {
 		if (counter_from_zero % 2 != 0)
 			y += size_specs_.terrain_space;
 	}
-	update_rect(invalid_rect);
-	invalid_ = false;
+	update_rect(loc);
+	set_dirty(false);
 }
-
 int terrain_palette::tile_selected(const int x, const int y) const {
-	for(unsigned int i = 0; i != size_specs_.nterrains; i++) {
-		const int px = gui_.mapx() + size_specs_.palette_x +
+	for(unsigned int i = 0; i != nterrains_; i++) {
+		const int px = size_specs_.palette_x +
 			(i % 2 != 0 ? size_specs_.terrain_space : 0);
-		const int py = size_specs_.palette_y + (i / 2) * size_specs_.terrain_space;
+		const int py = terrain_start_ + (i / 2) * size_specs_.terrain_space;
 		const int pw = size_specs_.terrain_space;
 		const int ph = size_specs_.terrain_space;
 
@@ -155,8 +246,17 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 
 
 brush_bar::brush_bar(display &gui, const size_specs &sizes)
-	: size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
-	  size_(30), invalid_(true) {}
+	: gui::widget(gui), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
+	  size_(30) {
+	adjust_size();
+}
+
+void brush_bar::adjust_size() {
+	set_location(size_specs_.brush_x, size_specs_.brush_y);
+	set_width(size_ * total_brush_);
+	set_height(size_);
+	set_dirty();
+}
 
 unsigned int brush_bar::selected_brush_size() {
 	return selected_ + 1;
@@ -166,31 +266,41 @@ void brush_bar::left_mouse_click(const int mousex, const int mousey) {
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
 		if ((unsigned)index != selected_) {
-			invalid_ = true;
+			set_dirty();
 			selected_ = index;
 		}
 	}
 }
 
-void brush_bar::draw(bool force) {
-	if (!invalid_ && !force) {
+
+void brush_bar::handle_event(const SDL_Event& event) {
+	if (!focus()) {
 		return;
 	}
-	size_t x = gui_.mapx() + size_specs_.brush_x;
-	size_t y = size_specs_.brush_y;
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	const SDL_MouseButtonEvent mouse_button_event = event.button;
+	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
+		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
+			left_mouse_click(mousex, mousey);
+		}
+	}
+}
 
-	SDL_Rect invalid_rect;
-	invalid_rect.x = x;
-	invalid_rect.y = y;
-	invalid_rect.w = size_ * total_brush_;
-	invalid_rect.h = size_;
+void brush_bar::draw() {
+	draw(false);
+}
+
+void brush_bar::draw(bool force) {
+	if (!dirty() && !force) {
+		return;
+	}
+	const SDL_Rect loc = location();
+	int x = loc.x;
 	// Everything will be redrawn even though only one little part may
 	// have changed, but that happens so seldom so we'll settle with
 	// this.
 	SDL_Surface* const screen = gui_.video().getSurface();
-	SDL_BlitSurface(surf_, NULL, screen, &invalid_rect);
-	surf_.assign(get_surface_portion(screen, invalid_rect));
-
 	for (int i = 1; i <= total_brush_; i++) {
 		std::stringstream filename;
 		filename << "editor/brush-" << i << ".png";
@@ -212,12 +322,12 @@ void brush_bar::draw(bool force) {
 				    ((unsigned)i == selected_brush_size()) ? 0xF000:0 , screen);
 		x += image->w;
 	}
-	update_rect(invalid_rect);
-	invalid_ = false;
+	update_rect(loc);
+	set_dirty(false);
 }
 
 int brush_bar::selected_index(const int x, const int y) const {
-	const int bar_x = gui_.mapx() + size_specs_.brush_x;
+	const int bar_x = size_specs_.brush_x;
 	const int bar_y = size_specs_.brush_y;
 
 	if ((x < bar_x || (unsigned)x > bar_x + size_ * total_brush_)

@@ -74,17 +74,15 @@ namespace {
 
 namespace map_editor {
 map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
-	: gui_(gui), map_(map), tup_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
+	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
 	  map_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
 	  l_button_func_(NONE) {
 
 	// Set size specs.
-	adjust_sizes(gui_, size_specs_, palette_.num_terrains());
-
-	tup_.set_location(gui.mapx() + size_specs_.button_x, size_specs_.top_button_y);
-	tdown_.set_location(gui.mapx() + size_specs_.button_x, size_specs_.bot_button_y);
+	adjust_sizes(gui_, size_specs_);
+	palette_.adjust_size();
+	brush_.adjust_size();
 
 	// Clear the current hotkeys. Alot of hotkeys are already set
 	// through other configuration files (e.g. english.cfg) and we need
@@ -93,8 +91,6 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	hotkey::add_hotkeys(theme_, true);
 	recalculate_starting_pos_labels();
 
-	reports::set_report_content(reports::SELECTED_TERRAIN,
-								get_terrain_string(palette_.selected_terrain()));
 	gui_.begin_game();
 	gui_.invalidate_all();
 	gui_.draw();
@@ -126,36 +122,10 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 	}
 }
 
-std::string map_editor::get_terrain_string(const gamemap::TERRAIN t) {
-	std::stringstream str;
-	const std::string& name = map_.terrain_name(t);
-	const std::vector<std::string>& underlying_names =
-		map_.underlying_terrain_name(t);
-	str << translate_string(name);
-	if(underlying_names.size() != 1 || underlying_names.front() != name) {
-		str << " (";
-		for(std::vector<std::string>::const_iterator i = underlying_names.begin();
-			i != underlying_names.end(); ++i) {
-			str << translate_string(*i);
-			if(i+1 != underlying_names.end()) {
-				str << ",";
-			}
-		}
-		str << ")";
-	}
-	return str.str();
-}
-	
 void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 										   const int mousex, const int mousey) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		const Uint8 button = event.button;
-		if (button == SDL_BUTTON_WHEELUP) {
-			palette_.scroll_up();
-		}
-		if (button == SDL_BUTTON_WHEELDOWN) {
-			palette_.scroll_down();
-		}
 		if (button == SDL_BUTTON_RIGHT) {
 			selected_hex_ = gui_.hex_clicked_on(mousex, mousey);
 			const theme::menu* const m = gui_.get_theme().context_menu();
@@ -189,14 +159,6 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 				}
 			}
 			else {
-				const gamemap::TERRAIN old_tr = palette_.selected_terrain();
-				palette_.left_mouse_click(mousex, mousey);
-				if (palette_.selected_terrain() != old_tr) {
-					reports::set_report_content(reports::SELECTED_TERRAIN,
-												get_terrain_string(palette_.selected_terrain()));
-					gui_.invalidate_game_status();
-				}
-				brush_.left_mouse_click(mousex, mousey);
 			}
 		}
 	}
@@ -417,6 +379,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 	case hotkey::HOTKEY_FULLSCREEN:
 	case hotkey::HOTKEY_TOGGLE_GRID:
+	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_EDIT_SAVE_MAP:
 	case hotkey::HOTKEY_EDIT_SAVE_AS:
 	case hotkey::HOTKEY_EDIT_QUIT:
@@ -501,6 +464,18 @@ void map_editor::redo() {
 				  std::back_inserter(to_invalidate));
 		invalidate_all_and_adjacent(to_invalidate);
 	}
+}
+
+void map_editor::preferences() {
+	preferences_dialog(gui_);
+	// Sizes and stuff may have changed, we need to redraw and
+	// recalculate everything if that is the case.
+	adjust_sizes(gui_, size_specs_);
+	palette_.adjust_size();
+	brush_.adjust_size();
+	gui_.redraw_everything();
+	palette_.draw(true);
+	brush_.draw(true);
 }
 
 void map_editor::highlight_selected_hexes(const bool clear_old) {
@@ -882,10 +857,11 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 }
 
 void map_editor::main_loop() {
-	const int scroll_speed = preferences::scroll_speed();
 	unsigned int last_brush_size = brush_.selected_brush_size();
+	const preferences::display_manager prefs_disp_manager(&gui_);
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
+		const int scroll_speed = preferences::scroll_speed();
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool l_button_down = mouse_flags & SDL_BUTTON_LMASK;
 		const bool r_button_down = mouse_flags & SDL_BUTTON_RMASK;
@@ -942,17 +918,7 @@ void map_editor::main_loop() {
 		}
 
 		gui_.draw(false);
-		palette_.draw();
-		brush_.draw();
 		events::raise_draw_event();
-
-		if(tup_.process(mousex,mousey,l_button_down)) {
-			palette_.scroll_up();
-		}
-
-		if(tdown_.process(mousex,mousey,l_button_down)) {
-			palette_.scroll_down();
-		}
 
 		// When the map has changed, wait until the left mouse button is
 		// not held down and then update the minimap and the starting

@@ -136,6 +136,7 @@ public:
 	virtual void toggle_grid();
 	virtual void undo();
 	virtual void redo();
+	virtual void preferences();
 	virtual void edit_quit();
 	virtual void edit_new_map();
 	virtual void edit_load_map();
@@ -245,9 +246,6 @@ private:
 	/// Commit the movement of a selection.
 	void perform_selection_move();
 
-	/// Return a string represeting the terrain and the underlying ones.
-	std::string get_terrain_string(const gamemap::TERRAIN);
-
 	/// Highlight the currently selected hexes. If clear_old is true the
 	/// old highlighting is cleared, otherwise the current selection is
 	/// only added, which may leave old selected terrain still
@@ -271,7 +269,6 @@ private:
 
 	display &gui_;
 	gamemap &map_;
-	gui::button tup_, tdown_;
 	map_undo_list undo_stack_;
 	map_undo_list redo_stack_;
 	std::string filename_;

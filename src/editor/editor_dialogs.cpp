@@ -24,6 +24,7 @@
 #include "../widgets/slider.hpp"
 #include "../language.hpp"
 #include "../map.hpp"
+#include "../preferences.hpp"
 
 #include "editor_dialogs.hpp"
 
@@ -253,4 +254,143 @@ std::string load_map_dialog(display &disp) {
 	return filename;
 }
 
+void preferences_dialog(display &disp) {
+	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
+	const gui::dialog_manager dialog_mgr;
+	
+	const int width = 600;
+	const int height = 200;
+	const int xpos = disp.x()/2 - width/2;
+	const int ypos = disp.y()/2 - height/2;
+
+	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
+
+	gui::button close_button(disp,string_table["close_window"]);
+
+	std::vector<gui::button*> buttons;
+	buttons.push_back(&close_button);
+
+	surface_restorer restorer;
+	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
+
+	const std::string& scroll_label = string_table["scroll_speed"];
+
+	SDL_Rect scroll_rect = {0,0,0,0};
+	scroll_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
+	                              scroll_label,0,0);
+
+	const int text_right = xpos + scroll_rect.w + 5;
+
+	const int scroll_pos = ypos + 20;
+
+	scroll_rect.x = text_right - scroll_rect.w;
+	scroll_rect.y = scroll_pos;
+
+	const int slider_left = text_right + 10;
+	const int slider_right = xpos + width - 5;
+	if(slider_left >= slider_right)
+		return;
+
+	SDL_Rect slider_rect = { slider_left, scroll_pos, slider_right - slider_left, 10  };
+
+	slider_rect.y = scroll_pos;
+	gui::slider scroll_slider(disp,slider_rect);
+	scroll_slider.set_min(1);
+	scroll_slider.set_max(100);
+	scroll_slider.set_value(preferences::scroll_speed());
+
+	gui::button fullscreen_button(disp,string_table["full_screen"],
+	                              gui::button::TYPE_CHECK);
+
+	fullscreen_button.set_check(preferences::fullscreen());
+
+	fullscreen_button.set_location(slider_left,scroll_pos + 80);
+
+	gui::button grid_button(disp,string_table["grid_button"],
+	                        gui::button::TYPE_CHECK);
+	grid_button.set_check(preferences::grid());
+
+	grid_button.set_location(slider_left + fullscreen_button.width() + 100,
+							 scroll_pos + 80);
+
+	gui::button resolution_button(disp,string_table["video_mode"]);
+	resolution_button.set_location(slider_left,scroll_pos + 80 + 50);
+
+	//gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
+	//hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,scroll_pos + 80 + 100);
+
+	bool redraw_all = true;
+
+	for(;;) {
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+
+		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+		if(close_button.process(mousex,mousey,left_button)) {
+			break;
+		}
+
+		if(fullscreen_button.process(mousex,mousey,left_button)) {
+			//the underlying frame buffer is changing, so cancel
+			//the surface restorer restoring the frame buffer state
+			restorer.cancel();
+			preferences::set_fullscreen(fullscreen_button.checked());
+			redraw_all = true;
+		}
+
+		if(redraw_all) {
+			restorer.cancel();
+			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
+			fullscreen_button.set_dirty();
+			close_button.set_dirty();
+			resolution_button.set_dirty();
+			grid_button.set_dirty();
+			//hotkeys_button.set_dirty();
+			scroll_slider.set_dirty();
+
+			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
+	    	                scroll_rect.x,scroll_rect.y);
+
+			update_rect(disp.screen_area());
+
+			redraw_all = false;
+		}
+
+		if(grid_button.process(mousex,mousey,left_button)) {
+			preferences::set_grid(grid_button.checked());
+		}
+
+		if(resolution_button.process(mousex,mousey,left_button)) {
+			const bool mode_changed = preferences::show_video_mode_dialog(disp);
+			if(mode_changed) {
+				//the underlying frame buffer is changing, so cancel
+				//the surface restorer restoring the frame buffer state
+				restorer.cancel();
+			}
+			break;
+		}
+
+		//if(hotkeys_button.process(mousex,mousey,left_button)) {
+		//	show_hotkeys_dialog (disp);
+		//	break;
+		//}
+
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+
+		preferences::set_scroll_speed(scroll_slider.value());
+
+		disp.update_display();
+
+		SDL_Delay(20);
+	}
 }
+
+
+
+
+}
+

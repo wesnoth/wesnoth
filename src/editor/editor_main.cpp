@@ -20,6 +20,7 @@
 #include "../team.hpp"
 #include "../preferences.hpp"
 #include "../language.hpp"
+#include "../cursor.hpp"
 
 #include <cctype>
 #include <iostream>
@@ -40,11 +41,65 @@ int main(int argc, char** argv)
 	const font::manager font_manager;
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
-	std::pair<int, int> desired_resolution = preferences::resolution();
+	// Blatant cut and paste from game.cpp
+	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-	video.setMode(desired_resolution.first, desired_resolution.second,
-				  16, video_flags);
-
+	std::pair<int,int> resolution = preferences::resolution();
+	
+	std::cerr << "checking mode possible...\n";
+	const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	
+	std::cerr << bpp << "\n";
+	
+	if(bpp == 0) {
+		//Video mode not supported, maybe from bad prefs.
+		std::cerr << "The video mode, " << resolution.first
+				  << "x" << resolution.second << "x16 "
+				  << "is not supported\nAttempting 1024x768x16...\n";
+		
+		//Attempt 1024x768.
+		resolution.first = 1024;
+		resolution.second = 768;
+		
+		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	
+		if(bpp == 0) {
+				 //Attempt 1024x768.
+			resolution.first = 1024;
+			resolution.second = 768;
+			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
+			
+			resolution.first = 800;
+			resolution.second = 600;
+			
+			bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+		}
+		
+		if(bpp == 0) {
+			//couldn't do 1024x768 or 800x600
+			
+			std::cerr << "The required video mode, " << resolution.first
+					  << "x" << resolution.second << "x16 "
+					  << "is not supported\n";
+			
+			return 0;
+		}
+	}
+	
+	if(bpp != 16) {
+		std::cerr << "Video mode must be emulated; the game may run slowly. "
+				  << "For best results, run the program on a 16 bpp display\n";
+	}
+	
+	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
+	const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
+	video.setBpp(bpp);
+	if(res != 16) {
+		std::cerr << "required video mode, " << resolution.first << "x"
+				  << resolution.second << "x16 is not supported\n";
+		return 0;
+	}
+	
 	preproc_map defines_map;
 	defines_map["MEDIUM"] = preproc_define();
 	defines_map["NORMAL"] = preproc_define();

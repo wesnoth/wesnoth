@@ -19,22 +19,19 @@ namespace map_editor {
 
 /// Size specifications for the map editor.
 struct size_specs {
-	size_t nterrains;
 	size_t terrain_size;
 	size_t terrain_padding;
 	size_t terrain_space;
 	size_t palette_x;
-	size_t button_x;
+	size_t palette_y;
+	size_t palette_h;
+	size_t palette_w;
 	size_t brush_x;
 	size_t brush_y;
-	size_t top_button_y;
-	size_t palette_y;
-	size_t bot_button_y;
 };
 
 /// Adjust the internal size specifications to fit the display.
-void adjust_sizes(const display &disp, size_specs &sizes,
-				  const unsigned int num_terrains);
+void adjust_sizes(const display &disp, size_specs &sizes);
 	
 
 }
