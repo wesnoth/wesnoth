@@ -754,7 +754,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
-		return game_config::debug;
+		return game_config::debug && map_.on_board(last_hex_);
 
 	default:
 		return false;
