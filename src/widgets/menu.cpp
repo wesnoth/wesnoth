@@ -351,8 +351,7 @@ void menu::draw_item(int item)
 			const std::string image_name(str.begin()+1,str.end());
 			SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
 			if(img != NULL && xpos+img->w < display_->x() && rect.y+img->h < display_->y()) {
-				SDL_Rect dest = {xpos,rect.y,img->w,img->h};
-				SDL_BlitSurface(img,NULL,display_->video().getSurface(),&dest);
+				display_->blit_surface(xpos,rect.y,img);
 			}
 
 		} else {

@@ -432,15 +432,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			                    stats.range : lang_range;
 
 			std::stringstream att;
-			att << "&" << stats.attack_icon << "," << attack_name << " (" << attack_type
-			    << ") " << stats.damage_defender_takes << "-"
+			att << "&" << stats.attack_icon << "," << attack_name
+			    << " " << stats.damage_defender_takes << "-"
 				<< stats.nattacks << " " << range << " "
 				<< stats.chance_to_hit_defender
 			    << "%";
 
 			att << "," << string_table["versus"] << ",";
-			att << defend_name << " (" << defend_type
-			    << ") " << stats.damage_attacker_takes << "-"
+			att << defend_name << " " << stats.damage_attacker_takes << "-"
 				<< stats.ndefends << " "
 				<< stats.chance_to_hit_attacker
 			    << "%,&" << stats.defend_icon;
