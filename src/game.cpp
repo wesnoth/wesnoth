@@ -1189,7 +1189,9 @@ bool game_controller::play_multiplayer()
 	const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
 	host_or_join.push_back(std::string("&icons/icon-server.png,") + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
 	host_or_join.push_back(std::string("&icons/icon-serverother.png,") + _("Join Game") + sep + _("Join a server or hosted game"));
-	host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Multiplayer Game") + sep + _("Host a game without using a server"));
+	host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Networked Game") + sep + _("Host a game without using a server"));
+	host_or_join.push_back(std::string(",") + _("Hotseat Game") + sep + _("Play a multiplayer game sharing the same machine"));
+	host_or_join.push_back(std::string(",") + _("Human vs AI") + sep + _("Play a game against AI opponents"));
 
 	std::string login = preferences::login();
 	const int res = gui::show_dialog(disp(),NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
@@ -1204,10 +1206,14 @@ bool game_controller::play_multiplayer()
 		config game_config;
 		read_game_cfg(defines_map_,line_src,game_config,use_caching_);
 		
-		if(res == 2) {
+		if(res >= 2) {
 			std::vector<std::string> chat;
 			config game_data;
-			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config,state_,true);
+
+			const std::string controller = (res == 2 ? "network" : (res == 3 ? "human" : "ai"));
+			const bool is_server = res == 2;
+
+			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config,state_,is_server,controller);
 			lobby::RESULT res = lobby::CONTINUE;
 			while(res == lobby::CONTINUE) {
 				res = lobby::enter(disp(),game_data,game_config,&mp_dialog,chat);

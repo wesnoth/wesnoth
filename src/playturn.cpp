@@ -1603,13 +1603,14 @@ void turn_info::recruit()
 	std::vector<std::string> items;
 	const std::set<std::string>& recruits = current_team.recruits();
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
-		item_keys.push_back(*it);
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
 		if(u_type == gameinfo_.unit_types.end()) {
 			lg::err(lg::engine) << "could not find unit '" << *it << "'";
 			return;
 		}
+
+		item_keys.push_back(*it);
 
 		const unit_type& type = u_type->second;
 

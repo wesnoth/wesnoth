@@ -39,7 +39,7 @@
 
 mp_connect::mp_connect(display& disp, std::string game_name,
 		       const config &cfg, game_data& data, game_state& state,
-		       bool join) : 
+		       bool join, const std::string& default_controller) : 
 	    disp_(&disp), cfg_(&cfg), data_(&data), state_(&state),
 	    show_replay_(false), save_(false), join_(join),
 	    player_types_(), player_races_(), player_teams_(),
@@ -48,7 +48,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    ai_(gui::button(disp, _(" Computer vs Computer "))),
 	    launch_(gui::button(disp, _("I'm Ready"))),
 	    cancel_(gui::button(disp, _("Cancel"))),
-		message_full_(true)
+		message_full_(true), default_controller_(default_controller)
 {
 	// Send Initial information
 	config response;
@@ -205,7 +205,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 				(**sd)["description"] = preferences::login();
 				first = false;
 			} else {
-				(**sd)["controller"] = "ai";
+				(**sd)["controller"] = default_controller_;
 				(**sd)["description"] = "";
 			}
 		}

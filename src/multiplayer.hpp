@@ -40,7 +40,7 @@ class multiplayer_game_setup_dialog : public lobby::dialog, public font::floatin
 {
 public:
 	multiplayer_game_setup_dialog(display& disp, game_data& units_data,
-                      const config& cfg, game_state& state, bool server=false);
+                      const config& cfg, game_state& state, bool server=false, const std::string& controller="ai");
 
 	void set_area(const SDL_Rect& area);
 	lobby::RESULT process();
@@ -59,7 +59,7 @@ private:
 
 	int map_selection_;
 
-	std::vector<std::string> user_maps_;
+	std::vector<std::string> user_maps_, map_options_;
 	config scenario_data_;
 
 	util::scoped_ptr<gui::menu> maps_menu_;
@@ -75,6 +75,8 @@ private:
 
 	surface_restorer turns_restorer_, village_gold_restorer_, xp_restorer_, playernum_restorer_,
 	                 minimap_restorer_;
+
+	const std::string controller_;
 };
 
 //function to host a multiplayer game. If server is true, then the

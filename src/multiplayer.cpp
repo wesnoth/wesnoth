@@ -55,12 +55,12 @@ network_game_manager::~network_game_manager()
 
 multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
                               display& disp, game_data& units_data,
-                              const config& cfg, game_state& state, bool server)
+                              const config& cfg, game_state& state, bool server, const std::string& controller)
         : disp_(disp), units_data_(units_data), cfg_(cfg), state_(state), server_(server), level_(NULL), map_selection_(-1),
 		  maps_menu_(NULL), turns_slider_(NULL), village_gold_slider_(NULL), xp_modifier_slider_(NULL),
 		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL),
           cancel_game_(NULL), launch_game_(NULL), regenerate_map_(NULL), generator_settings_(NULL),
-		  era_combo_(NULL), vision_combo_(NULL), name_entry_(NULL), generator_(NULL)
+		  era_combo_(NULL), vision_combo_(NULL), name_entry_(NULL), generator_(NULL), controller_(controller)
 {
 	std::cerr << "setup dialog ctor\n";
 
@@ -74,18 +74,18 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	//build the list of scenarios to play
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
 
-	std::vector<std::string> options = user_maps_;
+	map_options_ = user_maps_;
 
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	for(config::child_list::const_iterator j = levels.begin(); j != levels.end(); ++j){
-		options.push_back((**j)["name"]);
+		map_options_.push_back((**j)["name"]);
 	}
 
 	//add the 'load game' option
-	options.push_back(_("Load Game") + std::string("..."));
+	map_options_.push_back(_("Load Game") + std::string("..."));
 
 	//create the scenarios menu
-	maps_menu_.assign(new gui::menu(disp_,options));
+	maps_menu_.assign(new gui::menu(disp_,map_options_));
 	maps_menu_->set_numeric_keypress_selection(false);
 
 	SDL_Rect rect = {0,0,0,0};
@@ -191,6 +191,9 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                                             _("Map to play") + std::string(":"),xpos + minimap_width + border_size,ypos).h;
 
+	maps_menu_->set_max_width(area.x + area.w - (xpos + minimap_width) - 250);
+	maps_menu_->set_max_height(area.y + area.h - (ypos + map_label_height));
+	maps_menu_->set_items(map_options_);
 	maps_menu_->set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
 	maps_menu_->set_dirty();
 
@@ -509,7 +512,7 @@ void multiplayer_game_setup_dialog::start_game()
 
 	std::cerr << "loading connector...\n";
 	//Connector
-	mp_connect connector(disp_, name_entry_->text(), cfg_, units_data_, state_);
+	mp_connect connector(disp_, name_entry_->text(), cfg_, units_data_, state_, false, controller_);
 
 	std::cerr << "done loading connector...\n";
 

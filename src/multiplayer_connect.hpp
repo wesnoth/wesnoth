@@ -34,7 +34,8 @@ class mp_connect : public lobby::dialog
 public:
 	mp_connect(display& disp, std::string game_name,
 		   const config &cfg, game_data& units_data,
-		   game_state& state, bool join = false);
+		   game_state& state, bool join = false,
+	       const std::string& default_controller="ai");
 	~mp_connect();
 
 	int load_map(const std::string& era, config& scenario, int num_turns, int village_gold, int xpmodifier,
@@ -102,6 +103,8 @@ private:
 	bool message_full_;
 
 	std::deque<config> network_data_;
+
+	const std::string default_controller_;
 };
 
 #endif

@@ -128,6 +128,11 @@ int menu::width() const
 			width_ += scrollbar_.get_max_width();
 		}
 	}
+
+	if(max_width_ > 0 && width_ > max_width_) {
+		width_ = max_width_;
+	}
+
 	return width_;
 }
 
@@ -149,7 +154,7 @@ void menu::set_loc(int x, int y)
 	buffer_.assign(get_surface_portion(screen, portion));
 
 	if(show_scrollbar()) {
-		const int menu_width = width() - scrollbar_.get_max_width();
+		const int menu_width = w - scrollbar_.get_max_width();
 
 		scrollbar_.enable(true);
 		int scr_width = scrollbar_.get_width();
