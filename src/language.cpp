@@ -144,7 +144,7 @@ bool set_language(const language_def& locale)
 			std::cerr << "Could not read english.cfg\n";
 			throw e;
 		}
-	} else {
+	} else if (locale.localename != "") {
 		try {
 			cfg.read(preprocess_file("data/translations/"));
 			
