@@ -64,7 +64,6 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		} else if(u->second.has_flag("slowed")) {
 			status = "slowed";
 			prefix = "#";
-			return report("#" + string_table["poisoned"]);
 		} else if(u->second.has_flag("poisoned")) {
 			status = "poisoned";
 			prefix = "#";
