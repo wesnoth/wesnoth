@@ -1,6 +1,8 @@
 #ifndef PUBLISH_CAMPAIGN_HPP_INCLUDED
 #define PUBLISH_CAMPAIGN_HPP_INCLUDED
 
+class config;
+
 #include <string>
 #include <vector>
 
