@@ -862,12 +862,12 @@ void turn_info::end_unit_turn()
 
 	const unit_map::iterator un = units_.find(selected_hex_);
 	if(un != units_.end() && un->second.side() == team_num_ &&
-	   un->second.movement_left() > 0) {
+	   un->second.movement_left() >= 0) {
 		std::vector<gamemap::location> steps;
 		steps.push_back(selected_hex_);
 		undo_stack_.push_back(undo_action(steps,un->second.movement_left(),-1));
 		redo_stack_.clear();
-		un->second.set_movement(0);
+		un->second.set_movement(-1);
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_paths(NULL);
