@@ -484,12 +484,8 @@ std::string copy_from_clipboard()
 	}
 	
 	//convert newlines
-	std::string str;
-	while(*buffer != '\0') {
-		if(*buffer != '\r')
-			str.push_back(*buffer);
-		++buffer;
-	}
+	std::string str(buffer);
+	str.erase(std::remove(str.begin(),str.end(),'\r'),str.end());
 	
 	GlobalUnlock(hglb);
 	CloseClipboard();
