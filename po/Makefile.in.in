@@ -153,7 +153,7 @@ $(srcdir)/$(DOMAIN).pot:
 # stricter deps and will use lang as a rule stem
 ifneq ($(NOGENERIC),1)
 %.po: *.pot
-	@domain=`basename \`dirname $@\``; \
+	@domain=`basename $@ | sed s,\.po,,`; \
 	echo " make DOMAIN=$$domain NOGENERIC=1 $@"; \
 	$(MAKE) DOMAIN=$$domain NOGENERIC=1 $@
 endif
