@@ -547,6 +547,8 @@ void unit::read(game_data& data, const config& cfg)
 		experience_ = 0;
 	else
 		experience_ = atoi(experience.c_str());
+
+	resting_ = (cfg["resting"] == "yes");
 }
 
 void unit::write(config& cfg) const
@@ -604,6 +606,8 @@ void unit::write(config& cfg) const
 
 	sprintf(buf,"%d",moves_);
 	cfg["moves"] = buf;
+
+	cfg["resting"] = resting_ ? "yes" : "no"; 
 }
 
 void unit::assign_role(const std::string& role)
