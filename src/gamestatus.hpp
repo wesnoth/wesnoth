@@ -117,12 +117,12 @@ private:
 // Information on a particular player of the game.
 struct player_info
 {
-  player_info():gold(-1) {}
+	player_info():gold(-1) {}
 
-  int gold; //amount of gold the player has saved
-  std::vector<unit> available_units; //units the player may recall
+	int gold; //amount of gold the player has saved
+	std::vector<unit> available_units; //units the player may recall
 
-  std::set<std::string> can_recruit; //units the player has the ability to recruit
+	std::set<std::string> can_recruit; //units the player has the ability to recruit
 };
 
 //object which holds all the data needed to start a scenario.
@@ -148,14 +148,14 @@ struct game_state
 	// Return the Nth player, or NULL if no such player exists
 	player_info* get_player(const std::string& id) {
 		std::cerr << "get_player('" << id << "')\n";
-	  std::map<std::string, player_info>::iterator found=players.find(id);
+		std::map<std::string, player_info>::iterator found=players.find(id);
 
-	  if(found==players.end()) {
-	    std::cerr << "WARNING: player " << id << " does not exist." << std::endl;
-	    return NULL;
-	  } else {
-	    return &found->second;
-	  }
+		if(found==players.end()) {
+			std::cerr << "WARNING: player " << id << " does not exist." << std::endl;
+			return NULL;
+		} else {
+			return &found->second;
+		}
 	}
 
 	config variables; //variables that have been set

@@ -271,7 +271,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		//then add them
 		if(player && player->can_recruit.empty() == false) {
 			std::copy(player->can_recruit.begin(),player->can_recruit.end(),
-			std::inserter(teams.back().recruits(),teams.back().recruits().end()));
+					std::inserter(teams.back().recruits(),teams.back().recruits().end()));
 		}
 		
 		if(player) {

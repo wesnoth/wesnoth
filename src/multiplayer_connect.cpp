@@ -74,8 +74,6 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 	// Setup the game
 	config* level_ptr;
 
-	era_ = era;
-
 	if(scenario_data.child("side") == NULL) {
 		//Load a saved game
 		save_ = true;
@@ -150,6 +148,13 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 	}
 
 	assert(level_ptr != NULL);
+
+	if(scenario_data["era"].empty()) {
+		era_ = era;
+	} else { 
+		std::cerr << "Era set to " << scenario_data["era"] << "!";
+		era_ = scenario_data["era"];
+	}
 
 	//this will force connecting clients to be using the same version number as us.
 	(*level_ptr)["version"] = game_config::version;
@@ -250,7 +255,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 	if(save_ == false) {
 		(*level_)["experience_modifier"] = lexical_cast<std::string>(xpmodifier);
-		(*level_)["era"] = era;
+		(*level_)["era"] = era_;
 	}
 
 	lists_init();
@@ -642,6 +647,7 @@ lobby::RESULT mp_connect::process()
 			
 		//Player race
 		combos_race_[n].enable(!save_);
+		combos_leader_[n].enable(!save_);
 		combos_team_[n].enable(!save_);
 		combos_color_[n].enable(!save_);
 		
