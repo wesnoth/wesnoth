@@ -117,7 +117,9 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 	size_t x = 0, y = 0;
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		char c = *i;
-		if(c == '\n') {
+		if(c == '\r') {
+			continue;
+		} if(c == '\n') {
 			x = 0;
 			++y;
 		} else {
@@ -126,7 +128,7 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 					startingPositions_[c - '0'] = location(x,y);
 					c = CASTLE;
 				} else {
-					std::cerr << "Illegal character in map: '" << c << "'\n";
+					std::cerr << "Illegal character in map: (" << int(c) << ") '" << c << "'\n";
 					throw incorrect_format_exception("Illegal character");
 				}
 			}
