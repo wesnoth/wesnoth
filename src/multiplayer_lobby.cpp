@@ -137,7 +137,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				if(turn != "") {
 					str << "," << _("Turn") << " " << turn;
 				} else if(slots != "") {
-					str << "," << slots << " " << string_table[slots == "1" ? "vacant_slot" : "vacant_slots"];
+					str << "," << slots << " " << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
 				}
 	
 				options.push_back(str.str());

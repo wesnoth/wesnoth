@@ -321,7 +321,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && resist != 0) {
 			std::stringstream str_resist;
 
-			str_resist << string_table[resist < 0 ? "attacker_resistance" : "attacker_vulnerability"] << " " << translate_string(defender_attacks[defend].type())
+			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << translate_string(defender_attacks[defend].type())
 				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 			res.defend_calculations.push_back(str_resist.str());
 		}
@@ -438,7 +438,7 @@ battle_stats evaluate_battle_stats(
 	if(include_strings && resist != 0) {
 		std::stringstream str_resist;
 
-		str_resist << string_table[resist < 0 ? "defender_resistance" : "defender_vulnerability"] << " " << translate_string(attack.type())
+		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs")) << " " << translate_string(attack.type())
 			       << ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 		res.attack_calculations.push_back(str_resist.str());
 	}
@@ -1702,26 +1702,26 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				std::cerr << "processed...\n";
 			}
 
-			std::string msg_id;
+			char* msg_id;
 
 			//the message we display is different depending on whether units sighted
 			//were enemies or friends, and whether there is one or more
 			if(seen_units.size() == 1) {
 				if(nfriends == 1) {
-					msg_id = "friendly_unit_sighted";
+					msg_id = N_("Friendly unit sighted");
 				} else {
-					msg_id = "enemy_unit_sighted";
+					msg_id = N_("Enemy unit sighted!");
 				}
 			}
 			else if(nfriends == 0 || nenemies == 0) {
 				if(nfriends > 0) {
-					msg_id = "friendly_units_sighted";
+					msg_id = N_("$friends Friendly units sighted");
 				} else {
-					msg_id = "enemy_units_sighted";
+					msg_id = N_("$enemies Enemy units sighted!");
 				}
 			}
 			else {
-				msg_id = "units_sighted";
+				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
 			}
 
 			string_map symbols;
@@ -1729,7 +1729,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
 
 			std::stringstream msg;
-			msg << string_table[msg_id];
+			msg << gettext(msg_id);
 			
 			if(u.movement_left() > 0) {
 				//see if the "Continue Move" action has an associated hotkey
