@@ -39,10 +39,14 @@ do
     do
 	findexpr="$findexpr -o -name $d"
     done
+
+    # locate files and dirs to move
+    things=$(cd $src && find $findexpr)
+
     if [ "x$dst" = "x--zip" ]
     then
 	rm -f $src/wesnoth-$p.zip
-	(cd $src && zip -Drm wesnoth-$p.zip $(find $findexpr))
+	(cd $src && zip -Drm wesnoth-$p.zip $things)
     else
 	for d in $(cd $src && find $findexpr)
 	do
@@ -50,4 +54,11 @@ do
 	    mv $src/$d $dst/wesnoth-$p/$(dirname $d)
 	done
     fi
+
+    # be sure there are only dirs left now
+    test -z "$(cd $src && find \( $findexpr \) -not -type d | tee /dev/stderr)"
+
+    # remove now-empty dirs
+    (cd $src && rm -rf $things)
+
 done
