@@ -1,8 +1,4 @@
 CVS HEAD:
- * balancing changes: increased cost of Orcish Assassin and Troll Whelp by 1 gold each
- * balancing changes: improved defense of gryphon units on mountains. Increased movement speed of steadfast dwarvish units. Improved attack of Dwarvish Guardsman to 5-3. Improved attack of Dwarvish Ulfserker to 5-4, and made berserk only active on offense. 
- * made 'loyal' a trait which is only given to units explicitly by the scenario designer
- * added the 'dextrous' trait and applied it to Elves
  * language and i18n
   * new translation: Estonian
   * updated translations: Dutch, French, German, Hungarian, Portuguese (Brazilian), Russian, Slovenian, Spanish
@@ -10,7 +6,16 @@ CVS HEAD:
   * language fixes and polishing (English)
  * campaign modifications
   * dialog improvements in EI
+  * new map for Drowned Plains (EI)
  * unit modifications
+  * increased cost of Orcish Assassin and Troll Whelp by 1 gold each
+  * improved defense of gryphon units on mountains. 
+  * increased movement speed of steadfast dwarvish units.
+  * improved Dwarvish Thunderer's melee attack to 5-3
+  * improved attack of Dwarvish Guardsman to 5-3.
+  * improved attack of Dwarvish Ulfserker to 5-4, and made berserk only active on offense. 
+  * made 'loyal' a trait which is only given to units explicitly by the scenario designer
+  * added the 'dextrous' trait and applied it to Elves
   * fixed several image files being referred to by wrong name
   * removed sound of thrown spear from Drake Clasher spear melee attack
   * added get_hit_sound:s to Elder Mage (Delfador) and Elvish Lady (Parandra)
@@ -21,6 +26,7 @@ CVS HEAD:
  * various bug fixes and code clean ups
  * rewrite of mp lobby code
  * fixed bug that made the ai recruit badly
+ * added debug command to give gold to current side
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
    was no '@', fixing the double appearance of user campaigns in the
    campaign listing
