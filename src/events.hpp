@@ -34,7 +34,7 @@ protected:
 	virtual ~handler();
 
 private:
-	const int unicode_;
+	int unicode_;
 };
 
 //event_context objects control the handler objects that SDL events are sent

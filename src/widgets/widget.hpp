@@ -26,16 +26,14 @@ protected:
 	widget(display& disp, SDL_Rect& rect);
 	virtual ~widget() { restorer_.cancel(); }
 
-	widget& operator=(const widget& o);
-
 	void bg_restore() const;
 	void set_dirty(bool dirty);
 	const bool dirty() const;
 
-	display& disp() const { return disp_; }
+	display& disp() const { return *disp_; }
 
 private:
-	mutable display& disp_;
+	mutable display* disp_;
 	mutable surface_restorer restorer_;
 	SDL_Rect rect_;
 	bool focus_;		// Should user input be ignored?

@@ -14,29 +14,16 @@ widget::widget(const widget &o) :
 }
 
 widget::widget(display& disp) :
-	disp_(disp), rect_(EmptyRect), focus_(true), dirty_(true)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp, SDL_Rect& rect) :
-	disp_(disp), rect_(EmptyRect), focus_(true), dirty_(true)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true)
 {
 	set_location(rect);
 	bg_backup();
-}
-
-widget& widget::operator=(const widget& o)
-{
-// Things seem to wrok without reassinging the disp_
-// but i'm not sure why... 
-//	disp_ = o.disp();
-	rect_ = o.location();
-	focus_ = o.focus();
-	dirty_ = o.dirty();
-	bg_backup();
-
-	return *this;
 }
 
 void widget::set_location(const SDL_Rect& rect)
@@ -107,7 +94,7 @@ const bool widget::dirty() const
 
 void widget::bg_backup()
 {
-	restorer_ = surface_restorer(&disp_.video(), rect_);
+	restorer_ = surface_restorer(&disp().video(), rect_);
 }
 
 void widget::bg_restore() const
