@@ -122,7 +122,7 @@ struct config
 	void clear_children(const std::string& key);
 	config* remove_child(const std::string& key, size_t index);
 
-	static std::vector<std::string> split(const std::string& val, char c=',');
+	static std::vector<std::string> split(const std::string& val, char c=',', bool remove_empty=true);
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 

@@ -770,7 +770,7 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
-std::vector<std::string> config::split(const std::string& val, char c)
+std::vector<std::string> config::split(const std::string& val, char c, bool remove_empty)
 {
 	std::vector<std::string> res;
 
@@ -781,7 +781,7 @@ std::vector<std::string> config::split(const std::string& val, char c)
 		if(*i2 == c) {
 			std::string new_val(i1,i2);
 			strip(new_val);
-			if(!new_val.empty())
+			if(!remove_empty || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
 			while(i2 != val.end() && *i2 == ' ')
@@ -795,7 +795,7 @@ std::vector<std::string> config::split(const std::string& val, char c)
 
 	std::string new_val(i1,i2);
 	strip(new_val);
-	if(!new_val.empty())
+	if(!remove_empty || !new_val.empty())
 		res.push_back(new_val);
 
 	return res;

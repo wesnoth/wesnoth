@@ -28,7 +28,7 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
-		items_.push_back(config::split(*item));
+		items_.push_back(config::split(*item,',',false));
 
 		//make sure there is always at least one item
 		if(items_.back().empty())
