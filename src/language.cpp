@@ -20,7 +20,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-#include <sstream>
+#include <cerrno>
 
 namespace {
 	language_def current_language;
