@@ -748,11 +748,7 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 void get_tower(const gamemap::location& loc, std::vector<team>& teams,
                size_t team_num, const unit_map& units)
 {
-	if(team_num >= teams.size()) {
-		return;
-	}
-
-	if(teams[team_num].owns_tower(loc)) {
+	if(team_num < teams.size() && teams[team_num].owns_tower(loc)) {
 		return;
 	}
 
@@ -762,9 +758,13 @@ void get_tower(const gamemap::location& loc, std::vector<team>& teams,
 	//and we don't have a leader (and thus can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 		const int side = i - teams.begin() + 1;
-		if(has_leader || teams[team_num].is_enemy(side)) {
+		if(team_num >= teams.size() || has_leader || teams[team_num].is_enemy(side)) {
 			i->lose_tower(loc);
 		}
+	}
+
+	if(team_num >= teams.size()) {
+		return;
 	}
 
 	if(has_leader) {
