@@ -55,6 +55,7 @@ namespace preferences {
 	void set_grid(bool ison);
 
 	void show_preferences_dialog(display& disp);
+	void show_video_mode_dialog(display& disp);
 }
 
 #endif

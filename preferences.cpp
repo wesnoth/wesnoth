@@ -275,6 +275,10 @@ void show_preferences_dialog(display& disp)
 	grid_button.set_x(slider_left);
 	grid_button.set_y(sound_pos + 80 + 100);
 
+	gui::button resolution_button(disp,"Video Mode");
+	resolution_button.set_x(slider_left);
+	resolution_button.set_y(sound_pos + 80 + 150);
+
 	bool redraw_all = true;
 
 	for(;;) {
@@ -314,6 +318,7 @@ void show_preferences_dialog(display& disp)
 			turbo_button.draw();
 			grid_button.draw();
 			close_button.draw();
+			resolution_button.draw();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);
@@ -336,6 +341,11 @@ void show_preferences_dialog(display& disp)
 			set_grid(grid_button.checked());
 		}
 
+		if(resolution_button.process(mousex,mousey,left_button)) {
+			show_video_mode_dialog(disp);
+			break;
+		}
+
 		disp.update_display();
 
 		SDL_Delay(10);
@@ -344,6 +354,40 @@ void show_preferences_dialog(display& disp)
 
 	disp.invalidate_all();
 	disp.draw();
+}
+
+void show_video_mode_dialog(display& disp)
+{
+	std::vector<std::pair<int,int> > resolutions;
+	std::vector<std::string> options;
+	
+	CVideo& video = disp.video();
+	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
+	if(reinterpret_cast<int>(modes) == -1 || modes == NULL)
+		return;
+
+	for(int i = 0; modes[i] != NULL; ++i) {
+		if(modes[i]->w >= 1024) {
+			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
+			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
+				continue;
+
+			resolutions.push_back(new_res);
+
+			std::stringstream option;
+			option << modes[i]->w << "x" << modes[i]->h;
+			options.push_back(option.str());
+		}
+	}
+
+	if(resolutions.size() < 2)
+		return;
+
+	const int result = gui::show_dialog(disp,NULL,"","Choose Resolution",
+	                                    gui::MESSAGE,&options);
+	if(result >= 0 && result < resolutions.size()) {
+		set_resolution(resolutions[result]);
+	}
 }
 
 }
