@@ -125,8 +125,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	//send one more time to make sure network is up-to-date.
 	start_command = turn_data.send_data(start_command);
-
-	assert(start_command == recorder.ncommands());
 }
 
 turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
