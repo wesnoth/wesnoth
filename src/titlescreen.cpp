@@ -191,7 +191,11 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
 	const int menu_xincr = 0;
 	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
+#ifdef USE_TINY_GUI
+	const int menu_yincr = 15;
+#else
 	const int menu_yincr = 40;
+#endif
 	const int padding = game_config::title_buttons_padding;
 	
 	std::vector<button> buttons;
