@@ -1553,9 +1553,8 @@ void ai::analyze_potential_recruit_movements()
 
 	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin(); j != unit_movement_scores_.end(); ++j) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(j->first);
-		if(info == gameinfo_.unit_types.end()) {
-		}
-		continue;
+		if (info == gameinfo_.unit_types.end())
+			continue;
 
 		const int best_score = best_scores[info->second.usage()];
 		if(best_score > 0) {
