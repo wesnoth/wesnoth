@@ -771,6 +771,10 @@ redo_turn:
 			std::stringstream report;
 
 			for(std::vector<team>::iterator i=teams.begin(); i!=teams.end(); ++i) {
+				if(i->is_human() == false) {
+					continue;
+				}
+
 				player_info *player=state_of_game.get_player(i->save_id());
 
 				const int remaining_gold = i->gold();
