@@ -91,8 +91,6 @@ void file_chooser::display_chosen_file() {
 }
 
 void file_chooser::draw_contents() {
-	display_current_files();
-	display_chosen_file();
 	font::draw_text(&disp(), current_path_rect_, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 					current_dir_, current_path_rect_.x, current_path_rect_.y,
 					disp().video().getSurface());
@@ -138,7 +136,7 @@ void file_chooser::process_event() {
 		else {
 			update_file_lists();
 			chosen_file_ = current_dir_;
-			set_dirty(true);
+			display_chosen_file();
 		}
 	}
 }
@@ -195,7 +193,7 @@ void file_chooser::entry_chosen(const unsigned entry) {
 			choice_made_ = true;
 		}
 	}
-	set_dirty(true);
+	display_chosen_file();
 }
 
 std::string file_chooser::get_current_file() const {
@@ -216,16 +214,6 @@ bool file_chooser::choice_made() const {
 
 std::string file_chooser::get_choice() const {
 	return get_current_file();
-}
-
-void file_chooser::set_dirty(bool dirty) {
-	widget::set_dirty(dirty);
-	if (dirty) {
-		// These will set themselves to false when they are done
-		// drawing.
-		filename_textbox_.set_dirty(true);
-		delete_button_.set_dirty(true);
-	}
 }
 
 void file_chooser::update_location(SDL_Rect const &rect) {
@@ -313,7 +301,8 @@ void file_chooser::update_file_lists() {
 	files_in_current_dir_.clear();
 	dirs_in_current_dir_.clear();
 	get_files_in_dir(current_dir_, &files_in_current_dir_,
-					 &dirs_in_current_dir_, FILE_NAME_ONLY); 
+	                 &dirs_in_current_dir_, FILE_NAME_ONLY);
+	display_current_files();
 }
 
 void file_chooser::handle_event(const SDL_Event& event) {

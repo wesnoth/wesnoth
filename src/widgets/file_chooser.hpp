@@ -28,10 +28,6 @@ public:
 	/// the one the file is in.
 	file_chooser(display &disp, std::string start_file="");
 
-	void draw_contents();
-
-	void set_dirty(bool dirty=true);
-
 	/// Return true if the user is done making her choice.
 	bool choice_made() const;
 
@@ -41,6 +37,7 @@ protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
+	virtual void draw_contents();
 
 private:
 	/// If file_or_dir is a file, return the directory the file is in,
