@@ -16,6 +16,7 @@
 #include "playlevel.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "util.hpp"
 
 #include <cstdlib>
 #include <deque>
@@ -214,6 +215,30 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		}
 	}
 
+	//moving a 'unit' - i.e. a dummy unit that is just moving for
+	//the visual effect
+	std::vector<config*>& move_unit_fake = cfg->children["move_unit_fake"];
+	for(std::vector<config*>::iterator muf = move_unit_fake.begin();
+	    muf != move_unit_fake.end(); ++muf) {
+		const std::string& type = (*muf)->values["type"];
+		const game_data::unit_type_map::const_iterator itor =
+		                          game_data_ptr->unit_types.find(type);
+		if(itor != game_data_ptr->unit_types.end()) {
+			unit dummy_unit(&itor->second,0);
+			const std::vector<std::string> xvals =
+			                        config::split((*muf)->values["x"]);
+			const std::vector<std::string> yvals =
+			                        config::split((*muf)->values["y"]);
+			std::vector<gamemap::location> path;
+			for(size_t i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
+				path.push_back(gamemap::location(atoi(xvals[i].c_str())-1,
+				                                 atoi(yvals[i].c_str())-1));
+			}
+
+			screen->move_unit(path,dummy_unit);
+		}
+	}
+
 	//setting a variable
 	std::vector<config*>& set_vars = cfg->children["set_variable"];
 	for(std::vector<config*>::iterator var = set_vars.begin();
@@ -318,14 +343,30 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		screen->remove_overlay(loc);
 	}
 
+	//hiding units
+	std::vector<config*>& hide = cfg->children["hide_unit"];
+	for(std::vector<config*>::iterator hd = hide.begin();
+	    hd != hide.end(); ++hd) {
+		const gamemap::location loc(**hd);
+		screen->hide_unit(loc);
+		screen->draw_tile(loc.x,loc.y);
+	}
+
+	if(cfg->children["unhide_unit"].empty() == false) {
+		const gamemap::location loc = screen->hide_unit(gamemap::location());
+		screen->draw_tile(loc.x,loc.y);
+	}
+
 	//adding new items
 	std::vector<config*>& add_overlays = cfg->children["item"];
 	for(std::vector<config*>::iterator ni = add_overlays.begin();
 	    ni != add_overlays.end(); ++ni) {
 		gamemap::location loc(**ni);
 		const std::string& img = (*ni)->values["image"];
-		if(!img.empty())
+		if(!img.empty()) {
 			screen->add_overlay(loc,img);
+			screen->draw_tile(loc.x,loc.y);
+		}
 	}
 
 	//changing the terrain

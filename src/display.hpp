@@ -39,6 +39,7 @@ public:
 	~display();
 
 	void new_turn();
+	gamemap::location hide_unit(const gamemap::location& loc);
 
 	Pixel rgb(int r, int g, int b) const;
 

@@ -135,6 +135,13 @@ void display::new_turn()
 	clear_surfaces(brightenedImages_);
 }
 
+gamemap::location display::hide_unit(const gamemap::location& loc)
+{
+	const gamemap::location res = hiddenUnit_;
+	hiddenUnit_ = loc;
+	return res;
+}
+
 int display::x() const { return screen_.getx(); }
 int display::mapx() const { return x() - 140; }
 int display::y() const { return screen_.gety(); }

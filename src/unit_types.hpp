@@ -192,7 +192,8 @@ struct game_data
 {
 	game_data(config& cfg);
 	movement_type_map movement_types;
-	std::map<std::string,unit_type> unit_types;
+	typedef std::map<std::string,unit_type> unit_type_map;
+	unit_type_map unit_types;
 };
 
 #endif

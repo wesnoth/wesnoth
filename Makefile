@@ -2,7 +2,7 @@
 
 CC=g++
 ifndef CXXFLAGS
-CXXFLAGS=-g -O2 -Wall
+CXXFLAGS=-O2 -Wall
 endif
 SDL_CFLAGS=`sdl-config --cflags` `freetype-config --cflags`
 SDL_LIBS=`sdl-config --libs` `freetype-config --libs` -lSDL_mixer -lSDL_ttf -lSDL_image -lSDL_net
