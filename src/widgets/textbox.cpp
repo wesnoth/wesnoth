@@ -378,10 +378,9 @@ void textbox::handle_event(const SDL_Event& event)
 	const SDLMod modifiers = SDL_GetModState();
 	
 	const int c = key.sym;
-	
 	int old_cursor = cursor_;
 	
-	if(c == SDLK_LEFT && cursor_ > 0)
+	if(c == SDLK_LEFT && cursor_ > 0) 
 		--cursor_;
 
 	if(c == SDLK_RIGHT && cursor_ < text_.size())
@@ -425,16 +424,20 @@ void textbox::handle_event(const SDL_Event& event)
 
 	wchar_t character = key.unicode;
 
-	if(character != 0)
-		std::cerr << "Char: " << character << ", c = " << c << "\n";
+	//movement characters may have a "Unicode" field on some platforms, so ignore it.
+	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
+	   c == SDLK_DELETE || c == SDLK_BACKSPACE)) {
+		if(character != 0)
+			std::cerr << "Char: " << character << ", c = " << c << "\n";
 	
-	if(/*isgraph(character) || character == ' '*/ character >= 32 && character != 127) {
-		changed = true;
-		if(is_selection()) 
-			erase_selection();
+		if(character >= 32 && character != 127) {
+			changed = true;
+			if(is_selection()) 
+				erase_selection();
 
-		text_.insert(text_.begin()+cursor_,character);
-		++cursor_;		
+			text_.insert(text_.begin()+cursor_,character);
+			++cursor_;		
+		}
 	}
 
 	if(is_selection() && (selend_ != cursor_))
