@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-03 09:21+0200\n"
 "PO-Revision-Date: 2004-09-02 22:32+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Last-Translator: tephlon\n"
+"Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,15 +26,15 @@ msgstr "Redigera"
 
 #: data/themes/editor.cfg:233
 msgid "Draw"
-msgstr ""
+msgstr "Rita"
 
 #: data/themes/editor.cfg:242
 msgid "Flood"
-msgstr ""
+msgstr "Fyll"
 
 #: data/themes/editor.cfg:251
 msgid "Start P"
-msgstr ""
+msgstr "Startp."
 
 #: data/themes/editor.cfg:260
 msgid "Paste"
@@ -42,7 +42,7 @@ msgstr "Klistra in"
 
 #: src/editor/editor.cpp:310 src/editor/editor.cpp:387
 msgid "Choose a Map to Load"
-msgstr "Välj en karta att ladda"
+msgstr "Välj en karta att öppna"
 
 #: src/editor/editor.cpp:314
 msgid "The map already exists. Do you want to overwrite it?"
@@ -66,7 +66,7 @@ msgstr "'$filename' finns inte, eller kan inte läsas som en fil."
 
 #: src/editor/editor.cpp:553
 msgid "Load failed: "
-msgstr "Kunde inte ladda:"
+msgstr "Kunde inte öppna filen:"
 
 #: src/editor/editor.cpp:748
 msgid "You must have a hex selected on the board."
@@ -74,7 +74,7 @@ msgstr "Du måste välja en ruta."
 
 #: src/editor/editor.cpp:1000
 msgid "Quit Editor"
-msgstr ""
+msgstr "Avsluta editorn"
 
 #: src/editor/editor.cpp:1005
 msgid "Do you want to save the map before quitting?"
@@ -90,25 +90,23 @@ msgstr "Kunde inte spara kartan: $msg"
 
 #: src/editor/editor.cpp:1099
 msgid "Player"
-msgstr ""
+msgstr "Spelare"
 
 #: src/editor/editor_dialogs.cpp:45
 msgid "Your modifications to the map will be lost.  Continue?"
-msgstr ""
+msgstr "Alla ändringar av kartan kommer att gå förlorade. Vill du fortsätta?"
 
 #: src/editor/editor_dialogs.cpp:72 src/editor/editor_dialogs.cpp:191
 msgid "Create New Map"
 msgstr "Skapa ny karta"
 
 #: src/editor/editor_dialogs.cpp:74 src/editor/editor_dialogs.cpp:385
-#, fuzzy
 msgid "Width:"
-msgstr "Bredd"
+msgstr "Bredd:"
 
 #: src/editor/editor_dialogs.cpp:75 src/editor/editor_dialogs.cpp:386
-#, fuzzy
 msgid "Height:"
-msgstr "Höjd"
+msgstr "Höjd:"
 
 #: src/editor/editor_dialogs.cpp:91
 msgid "Generate New Map"
@@ -185,3 +183,4 @@ msgstr "FG"
 #: src/editor/editor_palettes.cpp:315
 msgid "BG"
 msgstr "BG"
+
