@@ -8,10 +8,10 @@ If you are new to Battle for Wesnoth you might want to read the GettingStarted g
 Controls
 
  Arrow keys:     Scroll
- Left click:     Select unit/move unit
+ Left click:     Select unit, move unit
  Right click:    Main menu, cancel action
  Middle click:   Center on pointer location
- Escape:         Exit game,exit menu
+ Escape:         Exit game, exit menu
  z:              Zoom in
  x:              Zoom out
  c:              Reset zoom to default
@@ -24,12 +24,13 @@ Controls
  ctrl-f:         Toggle fullscreen/windowed mode
  ctrl-r:         Recruit unit
  ctrl-shift-r:   Repeat last recruit
- ctrl-c:         Recall unit
+ alt-r:          Recall unit
  ctrl-a:         Toggle accelerated game mode
  d:              Describe current unit
  ctrl-d:         View defensive ratings of current unit against attacks
  ctrl-t:         View how the current unit behaves in various terrain
  ctrl-s:         Save game
+ ctrl-l:         Load game
 
 	  
 Orbs
@@ -135,7 +136,7 @@ Units are awarded experience for fighting, and after obtaining enough experience
 
 Multiplayer
 
-You can host multiplayer game with your client or connect to wesnoth game server and setup your game there. If you host game with your client other players need to be able to connect your port 15000.
+You can host multiplayer game with your client or connect to wesnoth game server and setup your game there. If you host game with your client other players need to be able to connect your port 15000 (TCP).
 
 Public servers:
 
@@ -152,4 +153,4 @@ Step2: select map and configure game settings (fog of war, shroud, gold per vill
 
 Step3: configure players (teams/alliances, starting gold, faction) and then wait for all players set to 'network player' to join the game, you will see "network player" replaced with their nicknames as they join.
 
-Step4: click [I'm Ready] 
+Step4: click [I'm Ready].
