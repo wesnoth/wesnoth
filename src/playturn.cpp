@@ -1608,7 +1608,7 @@ void turn_info::write_game_snapshot(config& start) const
 	start["snapshot"] = "yes";
 
 	char buf[50];
-	sprintf(buf,"%d",gui_.playing_team());
+	sprintf(buf,"%lu",gui_.playing_team());
 	start["playing_team"] = buf;
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
