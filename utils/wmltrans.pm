@@ -7,6 +7,7 @@ sub readwml {
   my (%trans, $key);
 
   while (<TRANS>) {
+    next if m/^\s*\#/ and !defined $key;
     if (m/(\S+)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
       # single-line
       die "nested key" if defined $key;
