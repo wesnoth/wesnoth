@@ -19,6 +19,7 @@
 #include "hotkeys.hpp"
 #include "image.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "playlevel.hpp"
 #include "show_dialog.hpp"
 #include "language.hpp"
@@ -33,6 +34,9 @@
 
 #include <iostream>
 #include <numeric>
+
+#define ERR_DP lg::err(lg::display)
+#define LOG_DP lg::info(lg::display)
 
 namespace {
 bool is_in_dialog = false;
@@ -129,7 +133,7 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 
 	const surface bg(image::get_image(menu_background,image::UNSCALED));
 	if(bg == NULL) {
-		std::cerr << "could not find dialog background '" << style << "'\n";
+		ERR_DP << "could not find dialog background '" << style << "'\n";
 		return;
 	}
 
@@ -247,7 +251,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
-		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
+		ERR_DP << "Rectangle has illegal co-ordinates: " << x << "," << y
 		          << "," << w << "," << h << "\n";
 		return;
 	}
@@ -268,7 +272,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  double alpha, surface target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
-		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
+		ERR_DP << "Rectangle has illegal co-ordinates: " << x << "," << y
 		          << "," << w << "," << h << "\n";
 		return;
 	}
@@ -368,7 +372,7 @@ int show_dialog(display& disp, surface image,
 	if(disp.update_locked())
 		return -1;
 
-	std::cerr << "showing dialog '" << caption << "' '" << msg << "'\n";
+	LOG_DP << "showing dialog '" << caption << "' '" << msg << "'\n";
 
 	//create the event context, but only activate it if we don't have preview panes.
 	//the presence of preview panes indicates that the caller will create the context,
@@ -480,7 +484,7 @@ int show_dialog(display& disp, surface image,
 			}
 
 		} catch(button::error&) {
-			std::cerr << "error initializing button!\n";
+			ERR_DP << "error initializing button!\n";
 		}
 	}
 
@@ -569,9 +573,9 @@ int show_dialog(display& disp, surface image,
 	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
 	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
 
-	//std::cerr << "above_preview_pane_height: " << above_preview_pane_height << "\n";
-	//std::cerr << "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = " << yframe << "\n";
-	//std::cerr << "frame_height: " << frame_height << "\n";
+	LOG_DP << "above_preview_pane_height: " << above_preview_pane_height << "; "
+		<< "yframe: " << scr->h/2 << " - " << (frame_height + above_preview_pane_height)/2 << " = "
+		<< yframe << "; " << "frame_height: " << frame_height << "\n";
 
 	if(xloc <= -1 || yloc <= -1) {
 		xloc = xframe + left_preview_pane_width;
@@ -904,7 +908,7 @@ int dialog_action_receive_network::do_action()
 	if(res_ != 0)
 		return CONNECTION_COMPLETE;
 	else if(network::current_transfer_stats().first != stats_.first) {
-		std::cerr << "continuing connection...\n";
+		lg::info(lg::network) << "continuing connection...\n";
 		return CONNECTION_CONTINUING;
 	} else
 		return CONTINUE_DIALOG;
