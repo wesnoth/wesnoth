@@ -181,7 +181,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.support += best_support;
 
-			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst);
+			cur_analysis.analyze(map_, units_, 50, *this, dstsrc, srcdst, enemy_dstsrc, enemy_srcdst);
 
 			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
@@ -306,12 +306,9 @@ int ai::choose_weapon(const location& att, const location& def,
 	return current_choice;
 }
 
-void ai::attack_analysis::analyze(const gamemap& map,
-                                  unit_map& units,
-						 	      const gamestatus& status,
-							      const game_data& info, int num_sims, ai& ai_obj,
-								  const ai::move_map& dstsrc, const ai::move_map& srcdst,
-								  const ai::move_map& enemy_dstsrc, const ai::move_map& enemy_srcdst)
+void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_sims, ai& ai_obj,
+                                  const ai::move_map& dstsrc, const ai::move_map& srcdst,
+                                  const ai::move_map& enemy_dstsrc, const ai::move_map& enemy_srcdst)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
 	assert(defend_it != units.end());
