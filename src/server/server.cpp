@@ -141,10 +141,11 @@ int main()
 						}
 
 						lobby_players.remove_player(sock);
-						it->add_player(sock);
 
 						//send them the game data
 						network::send_data(it->level(),sock);
+
+						it->add_player(sock);
 					}
 
 					//see if it's a message, in which case we add the name
@@ -168,6 +169,8 @@ int main()
 						std::cerr << "ERROR: unknown socket " << games.size() << "\n";
 						continue;
 					}
+
+					std::cerr << "data to game: " << data.write() << "\n";
 
 					//if this is data describing the level for a game
 					if(data.child("side") != NULL) {
@@ -214,10 +217,9 @@ int main()
 					}
 
 					if(data.child("start_game")) {
+						std::cerr << "!! start_game: " << data.write() << "\n";
 						g->start_game();
-					}
-
-					if(data["side_secured"].empty() == false) {
+					} else if(data["side_secured"].empty() == false) {
 						continue;
 					} else if(data["failed"].empty() == false) {
 						std::cerr << "ERROR: failure to get side\n";

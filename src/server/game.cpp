@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include <cassert>
+#include <iostream>
 
 int game::id_num = 1;
 

@@ -108,12 +108,14 @@ public:
 		config reply;
 		const network::connection res = network::receive_data(reply);
 		if(res) {
+			std::cerr << "received data while waiting: " << reply.write() << "\n";
 			if(reply.values["failed"] == "yes") {
 				got_side = false;
 				throw network::error("Side chosen is unavailable");
 			} else if(reply.values["side_secured"].empty() == false) {
 				got_side = true;
 			} else if(reply.children["start_game"].empty() == false) {
+				std::cerr << "received start_game message\n";
 				//break out of dialog
 				return START_GAME;
 			} else {
