@@ -30,6 +30,11 @@
 #include <set>
 #include <string>
 
+#define LOG_NG lg::info(lg::engine)
+#define WRN_NG lg::warn(lg::engine)
+#define ERR_NG lg::err(lg::engine)
+#define LOG_DP lg::info(lg::display)
+
 namespace game_events {
 
 bool conditional_passed(const std::map<gamemap::location,unit>* units,
@@ -202,8 +207,8 @@ std::multimap<std::string,event_handler> events_map;
 //by an event.
 bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg)
 {
-	log_scope("handle_event_command");
-	std::cerr << "handling command: '" << cmd << "'\n";
+	log_scope2(engine, "handle_event_command");
+	LOG_NG << "handling command: '" << cmd << "'\n";
 
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
@@ -764,32 +769,33 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			screen->invalidate(loc);
 		} else {
-                  player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
+			player_info* const player = state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
 
-                  if(player != NULL) {
-                    player->available_units.push_back(new_unit);
-                  } else {
-                    std::cerr << "Cannot create unit: location is not on the map, and player " << new_unit.side() << " has no recall list." << std::endl;
-                  }
+			if(player != NULL) {
+				player->available_units.push_back(new_unit);
+			} else {
+				ERR_NG << "Cannot create unit: location is not on the map, and player "
+					<< new_unit.side() << " has no recall list.\n";
+			}
 		}
 	}
 
 	//if we should recall units that match a certain description
 	else if(cmd == "recall") {
-		std::cerr << "recalling unit...\n";
+		LOG_NG << "recalling unit...\n";
 		for(int index = 0; index < int(teams->size()); ++index) {
-			std::cerr << "for side " << index << "...\n";
+			LOG_NG << "for side " << index << "...\n";
 			player_info* const player = state_of_game->get_player((*teams)[index].save_id());
 
 			if(player == NULL) {
-				std::cerr << "player not found!\n";
+				ERR_NG << "player not found!\n";
 				continue;
 			}
 
 			std::vector<unit>& avail = player->available_units;
 
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
-				std::cerr << "checking unit against filter...\n";
+				LOG_NG << "checking unit against filter...\n";
 				if(game_events::unit_matches_filter(*u,cfg)) {
 					gamemap::location loc(cfg);
 					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
@@ -914,14 +920,14 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(speaker == units->end() && cfg["speaker"] != "narrator") {
 			//no matching unit found, so the dialog can't come up
 			//continue onto the next message
-			std::cerr << "cannot show message\n";
+			WRN_NG << "cannot show message\n";
 			return rval;
 		}
 
 		if(speaker != units->end()) {
-			std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
+			LOG_NG << "set speaker to '" << speaker->second.description() << "'\n";
 		} else {
-			std::cerr << "no speaker\n";
+			LOG_NG << "no speaker\n";
 		}
 
 		const std::string& sfx = cfg["sound"];
@@ -941,7 +947,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			caption = cfg["caption"];
 
 		if(speaker != units->end()) {
-			std::cerr << "scrolling to speaker..\n";
+			LOG_DP << "scrolling to speaker..\n";
 			screen->highlight_hex(speaker->first);
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y);
 
@@ -955,9 +961,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 					caption = speaker->second.type().language_name();
 				}
 			}
+			LOG_DP << "done scrolling to speaker...\n";
 		}
-
-		std::cerr << "done scrolling to speaker...\n";
 
 		std::vector<std::string> options;
 		std::vector<config::const_child_itors> option_events;
@@ -978,7 +983,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& lang_message = string_table[id];
 		int option_chosen = -1;
 
-		std::cerr << "showing dialog...\n";
+		LOG_DP << "showing dialog...\n";
 		
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
@@ -988,7 +993,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
 
-			std::cerr << "showed dialog...\n";
+			LOG_DP << "showed dialog...\n";
 
 			if (option_chosen == gui::ESCAPE_DIALOG){
 				rval = false;
@@ -1003,7 +1008,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		else {
 			const config* const action = get_replay_source().get_next_action();
 			if(action == NULL || action->get_children("choose").empty()) {
-				std::cerr << "choice expected but none found\n";
+				ERR_NG << "choice expected but none found\n";
 				throw replay::error();
 			}
 
@@ -1140,16 +1145,17 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				units->erase(loc);
 				units->insert(std::pair<gamemap::location,unit>(loc,u));
 			} else {
-                          player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
+				player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
 
-                          if(player) {
-                            player->available_units.push_back(u);
-                          } else {
-                            std::cerr << "Cannot unstore unit: no recall list for player " << u.side() << " and the map location is invalid." << std::endl;
-                          }
+				if(player) {
+					player->available_units.push_back(u);
+				} else {
+					ERR_NG << "Cannot unstore unit: no recall list for player " << u.side()
+						<< " and the map location is invalid.\n";
+				}
 			}
 		} catch(gamestatus::load_game_failed& e) {
-			std::cerr << "could not de-serialize unit: '" << e.message << "'\n";
+			ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
 		}
 	}
 
@@ -1231,7 +1237,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		} else if(result == "continue_no_save") {
 			throw end_level_exception(LEVEL_CONTINUE_NO_SAVE);
 		} else {
-			std::cerr << "throwing event defeat...\n";
+			LOG_NG << "throwing event defeat...\n";
 			throw end_level_exception(DEFEAT);
 		}
 	}
@@ -1241,7 +1247,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		screen->draw(true);
 	}
 
-	std::cerr << "done handling command...\n";
+	LOG_NG << "done handling command...\n";
 
 	return rval;
 }
@@ -1394,7 +1400,7 @@ void get_variable_internal(const std::string& key, config& cfg,
 			const std::string index_str(index_start+1,index_end);
 			index = size_t(atoi(index_str.c_str()));
 			if(index > MaxLoop) {
-				std::cerr << "ERROR: index greater than 1024: truncated\n";
+				LOG_NG << "get_variable_internal: index greater than 1024, truncated\n";
 				index = MaxLoop;
 			}
 
@@ -1626,7 +1632,7 @@ bool pump()
 		}
 
 		while(i.first != i.second) {
-			std::cerr << "processing event '" << event_name << "'\n";
+			LOG_NG << "processing event '" << event_name << "'\n";
 			event_handler& handler = i.first->second;
 			if(process_event(handler, ev))
 				result = true;
