@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-25 10:47+0100\n"
-"PO-Revision-Date: 2004-10-28 11:44+0300\n"
+"PO-Revision-Date: 2005-01-26 20:29+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1896,12 +1896,10 @@ msgid "High King at Sea"
 msgstr "Высший король на море"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:4
-#, fuzzy
 msgid "Test of the Clan"
-msgstr "Испытание кланов"
+msgstr "Испытание клана"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1916,12 +1914,14 @@ msgid ""
 msgstr ""
 "\n"
 "Условие победы:\n"
-"@Убейте лидера противника\n"
+"@Убеёте 25 соединений, сопровождаемых Лидером Клана (Бонус)\n"
+"@Убейте всех лидеров клана\n"
 "Поражение:\n"
 "#Смерть Конрада\n"
 "#Смерть Делфадора\n"
 "#Смерть Каленза\n"
-"#Смерть Ли'сара"
+"#Смерть Ли'сара\n"
+"#Использованы все ходы"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:151
 msgid "Delfador, don't you think it is time we settled this?"
@@ -2590,7 +2590,6 @@ msgid "Muff Malal's Peninsula"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2602,10 +2601,11 @@ msgid ""
 msgstr ""
 "\n"
 "Победа:\n"
-"@Поражение Муфф Малала\n"
+"@Поражение Муфф Малала (Бонус)\n"
+"@Побег вниз по дороге к Эленсефару\n"
 "Поражение:\n"
 "#Смерть Конрада\n"
-"#Кончились ходы"
+"#Использованы все ходы"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:94
 msgid ""
@@ -2636,9 +2636,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:128
-#, fuzzy
 msgid "To Elensefar"
-msgstr "Осада Эленсефара"
+msgstr "К Эленсефару"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:152
 msgid "We do not have time to tarry here! On to Elensefar!"
@@ -3932,10 +3931,3 @@ msgid ""
 "the protection of the Elves, watching sadly as Asheviere's reign of terror "
 "over the land began..."
 msgstr ""
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Боец,(легче);*&elvish-hero.png,Герой;&elvish-champion."
-#~ "png,Чемпион,(сложнее)"

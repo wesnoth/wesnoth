@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-25 10:47+0100\n"
-"PO-Revision-Date: 2004-12-24 18:34+0500\n"
-"Last-Translator: Azamat Hackimov (Azik) <azazello1984@mail.ru>\n"
+"PO-Revision-Date: 2005-01-26 20:11+0300\n"
+"Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -627,7 +627,6 @@ msgstr ""
 "Вашего хода, перед тем, как Вы приступите к действию."
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -637,7 +636,7 @@ msgstr ""
 "\n"
 "\n"
 "Отдых: Не двигавшееся и не атаковавшее соединение восстанавливает 2 ЗД на "
-"следующем ходе."
+"следующем ходу."
 
 #: data/help.cfg:173
 msgid ""
@@ -658,7 +657,6 @@ msgstr ""
 "(как тролли) имеют умение автоматически восстанавливать 8 ЗД за ход."
 
 #: data/help.cfg:175
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -667,12 +665,12 @@ msgid ""
 "damage."
 msgstr ""
 "\n"
-"Восстанавливающие соединения: Соединения с умением <ref>dst=ability_heals "
-"text=Восстановление</ref> будут восстанавливать всем ближайшим дружественным "
-"соединениям 4 ЗД за каждый ход или сохранять их от отравления Ядом."
+"Исцеляющие соединения: Соединения с умением <ref>dst=ability_heals "
+"text=Исцеление</ref> будут восстанавливать всем ближайшим дружественным "
+"соединениям 4 ЗД за каждый ход, максимум 8 единиц исцеления, либо сохранять "
+"их от отравления Ядом."
 
 #: data/help.cfg:177
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -684,7 +682,8 @@ msgstr ""
 "\n"
 "Лечащие соединения: Соединения с умением <ref>dst=ability_cures "
 "text=Лечение</ref> будут восстанавливать всем ближайшим дружественным "
-"соединениям 8 ЗД за каждый ход или сохранять их от отравления Ядом."
+"соединениям 8 ЗД за каждый ход, максимум 18 единиц лечения, либо сохранять "
+"их от отравления Ядом."
 
 #: data/help.cfg:179
 msgid ""
@@ -1138,22 +1137,20 @@ msgstr "По умолчанию"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:675
-#, fuzzy
 msgid "Random"
-msgstr "Случайная карта"
+msgstr "Случайный"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Верноподданный"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Призванные"
+msgstr "Мятежники"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Северяне"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -1161,14 +1158,12 @@ msgid "Undead"
 msgstr "Мертвецы"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Альянс Кналган"
+msgstr "Альянс Кналган"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Небесный Дракон"
+msgstr "Драконы"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -1187,9 +1182,8 @@ msgid "Orcs"
 msgstr "Орки"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Замок Гномов"
+msgstr "Гномы"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -1204,17 +1198,14 @@ msgid "Great War"
 msgstr "Великая война"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Светлый Маг"
+msgstr "Альянс Света"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Альянс Тьмы"
+msgstr "Альянс Тьмы"
 
 #: data/scenario-test.cfg:38
-#, fuzzy
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
@@ -2633,60 +2624,55 @@ msgstr "Луг"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Саванна"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Деревня"
+msgstr "Пустынная деревня"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Деревня тропического леса"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Оазис"
 
 #: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Снег"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Деревня"
+msgstr "Заснеженная деревня"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Холмы"
 
 #: data/terrain.cfg:288 data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Удалить файл"
+msgstr "Пустынные холмы"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Горы"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Горы"
+msgstr "Пустынные горы"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Лес"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Лес"
+msgstr "Снежный лес"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Тропический лес"
 
 #: data/terrain.cfg:344
 msgid "Cave wall"
@@ -2773,7 +2759,7 @@ msgstr ""
 
 #: data/themes/default.cfg:532
 msgid "short end-turn^End"
-msgstr ""
+msgstr "быстрый конец хода"
 
 #: data/tips.cfg:1
 msgid ""
@@ -3318,7 +3304,6 @@ msgid "steadfast"
 msgstr "стойкий"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
@@ -3326,7 +3311,7 @@ msgid ""
 msgstr ""
 "Телепорт:\n"
 "Данное соединение может мгновенно телепортироваться между двумя "
-"дружественными деревнями."
+"дружественными деревнями, используя один из своих ходов."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:161
@@ -3334,7 +3319,6 @@ msgid "teleport"
 msgstr "телепорт"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -3342,7 +3326,8 @@ msgid ""
 msgstr ""
 "Исподтишка:\n"
 "Эта атака наносит двойной урон, если дружественное соединений находится с "
-"противоположной стороны от цели."
+"противоположной стороны от цели. (Это не работает с дружественными "
+"соединениями.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3420,7 +3405,6 @@ msgstr ""
 "исцелится, либо пока его здоровье не уменьшится до 1 единицы."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3429,8 +3413,8 @@ msgid ""
 msgstr ""
 "Замедление:\n"
 "Данный вид атаки замедляет цель. Замедленные соединения перемещаются в два "
-"раза медленней, чем обычно и получают одну дополнительную единицу атаки в "
-"течение одного хода."
+"раза медленней, чем обычно и получают на одну единицу атаки меньше в обычном "
+"бою, пока не закончится их ход."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3832,7 +3816,6 @@ msgid "poison"
 msgstr "яд"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
 msgstr "Убийца"
 
@@ -4348,9 +4331,8 @@ msgid "battle axe"
 msgstr "боевой топор"
 
 #: data/units/Deathblade.cfg:4
-#, fuzzy
 msgid "Deathblade"
-msgstr "клинок"
+msgstr "Клинок смерти"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -5369,7 +5351,6 @@ msgid "sling"
 msgstr "праща"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
 msgstr "Разбойник"
 
@@ -5421,7 +5402,6 @@ msgid "Ghost"
 msgstr "Призрак"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
@@ -5657,7 +5637,6 @@ msgstr ""
 "созданий."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Алебардист"
 
@@ -6116,17 +6095,14 @@ msgstr ""
 "предоставлять необходимую помощь на различных фронтах."
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Благородный Боец"
+msgstr "Конный Боец"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Водяной Воин"
+msgstr "Конный Воин"
 
 #: data/units/Mounted_Warrior.cfg:17
-#, fuzzy
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -6330,7 +6306,6 @@ msgstr ""
 "недооценивать."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
-#, fuzzy
 msgid "cleaver"
 msgstr "нож мясника"
 
@@ -6451,7 +6426,6 @@ msgid "Novice Orcish Shaman"
 msgstr "Юный Орк Шаман"
 
 #: data/units/Orcish_Shaman.cfg:75
-#, fuzzy
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -6644,7 +6618,6 @@ msgid "Pikeman"
 msgstr "Пикейщик"
 
 #: data/units/Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -6750,9 +6723,8 @@ msgstr ""
 "противника уже атаковали."
 
 #: data/units/Rogue.cfg:63
-#, fuzzy
 msgid "female^Rogue"
-msgstr "Волшебница"
+msgstr "Бестия"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -6785,7 +6757,6 @@ msgid "Saurian Ambusher"
 msgstr "Скрытный Ящер"
 
 #: data/units/Saurian_Ambusher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6804,7 +6775,6 @@ msgid "Saurian Flanker"
 msgstr "Фланговый Ящер"
 
 #: data/units/Saurian_Flanker.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6859,7 +6829,6 @@ msgid "Saurian Soothsayer"
 msgstr "Ящер Предсказатель"
 
 #: data/units/Saurian_Soothsayer.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aide to their friends regardless of terrain or opposition. In addition to "
@@ -6874,7 +6843,6 @@ msgid "Saurian Tribalist"
 msgstr "Ящер Трибалист"
 
 #: data/units/Saurian_Tribalist.cfg:18
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Tribalists are valued as healers because they can provide aide to "
@@ -6884,14 +6852,14 @@ msgstr ""
 "Несмотря на то, что они унаследовали от предков летаргическую "
 "хладнокровность и мягкотелость, Ящеры Трибалисты ценны как целители, потому "
 "что они могут предоставлять помощь своим союзникам, несмотря на местность "
-"или противников. Вдобавок к целительству они владеют знаниями холодной магии."
+"или противников. Вдобавок к целительству, они владеют знаниями холодной "
+"магии."
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
 msgstr "Ящер Воин"
 
 #: data/units/Saurian_Warrior.cfg:19
-#, fuzzy
 msgid ""
 "Saurian Warriors are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7094,7 +7062,6 @@ msgid "Spearman"
 msgstr "Копьеносец"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
@@ -7162,9 +7129,8 @@ msgstr ""
 "соединений, Воры лучше дерутся ночью, чем днём."
 
 #: data/units/Thief.cfg:40
-#, fuzzy
 msgid "female^Thief"
-msgstr "Волшебница"
+msgstr "Вор"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -7523,18 +7489,16 @@ msgid "+Miscellaneous"
 msgstr "+Разное"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Менеджер по локализации"
+msgstr "+Менеджеры по локализации"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
 msgstr "+Баскский перевод"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Венгерский перевод"
+msgstr "+Болгарский перевод"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -7577,9 +7541,8 @@ msgid "+Italian Translation"
 msgstr "+Итальянский перевод"
 
 #: src/about.cpp:232
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Каталонский перевод"
+msgstr "+Латинский перевод"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
@@ -7882,19 +7845,16 @@ msgid "The game could not be saved"
 msgstr "Игра не может быть сохранена"
 
 #: src/game.cpp:167 src/game.cpp:901 src/game.cpp:1291
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Игра не может быть сохранена"
+msgstr "Игра не может быть загружена:"
 
 #: src/game.cpp:170 src/game.cpp:903 src/game.cpp:1293
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Ошибка ввода/вывода при чтении файла с игрой"
+msgstr "Возникла ошибка во время игры:"
 
 #: src/game.cpp:173 src/game.cpp:1305
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Игра не может быть сохранена"
+msgstr "Игра не может быть загружена:"
 
 #: src/game.cpp:194
 msgid "Do you want to save your game?"
@@ -7902,7 +7862,7 @@ msgstr "Вы действительно хотите сохранить игру
 
 #: src/game.cpp:215
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Неизвестный сценарий: '"
 
 #: src/game.cpp:609
 msgid "The Battle for Wesnoth"
@@ -7917,18 +7877,16 @@ msgstr ""
 "данное сохранение?"
 
 #: src/game.cpp:841 src/game.cpp:844
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Файл, который Вы пытались загрузить, повреждён"
+msgstr "Файл, который Вы пытались загрузить, повреждён: '"
 
 #: src/game.cpp:847
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
 #: src/game.cpp:952
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr ", Другие кампании..."
+msgstr "Загрузить другие кампании..."
 
 #: src/game.cpp:953
 msgid "Download more campaigns from a server on Internet."
@@ -7971,18 +7929,16 @@ msgid "Name"
 msgstr "Название"
 
 #: src/game.cpp:1055
-#, fuzzy
 msgid "Author"
-msgstr "колючка"
+msgstr "Автор"
 
 #: src/game.cpp:1056
 msgid "Downloads"
-msgstr ""
+msgstr "Загрузки"
 
 #: src/game.cpp:1057
-#, fuzzy
 msgid "Size"
-msgstr "Сирена"
+msgstr "Размер"
 
 #: src/game.cpp:1076
 msgid "B"
@@ -8114,12 +8070,11 @@ msgstr "Выберите предпочтительный язык"
 
 #: src/game.cpp:1370
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Ошибка при загрузке файлов с настройками игры: '"
 
 #: src/game.cpp:1371
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Игра завершена."
+msgstr "' (Сейчас игра будет завершена)"
 
 #: src/help.cpp:1022
 msgid "Advances to"
@@ -8298,9 +8253,8 @@ msgid "Island"
 msgstr "Остров"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Загрузить игру"
+msgstr "Загрузить игру..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -8375,52 +8329,44 @@ msgid "Create Game"
 msgstr "Создать игру"
 
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Название игры"
+msgstr "Название игры:"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
 msgstr "Игра $login"
 
 #: src/multiplayer.cpp:195
-#, fuzzy
 msgid "Map to play:"
-msgstr "Карта для игры"
+msgstr "Карта для игры:"
 
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Эра"
+msgstr "Эра:"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
-msgstr ""
+msgstr "Вы должны указать имя."
 
 #: src/multiplayer.cpp:363
-#, fuzzy
 msgid "Turns: "
-msgstr "Ходы"
+msgstr "Ходы:"
 
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
-msgstr "Неограничено"
+msgstr "неограниченно"
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Золота в деревнях"
+msgstr "Золота в деревнях:"
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Необходимый опыт"
+msgstr "Необходимый опыт:"
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Игроки"
+msgstr "Игроки:"
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -8615,7 +8561,7 @@ msgstr "Свободные слоты"
 
 #: src/multiplayer_lobby.cpp:202 src/multiplayer_lobby.cpp:424
 msgid "<no games open>"
-msgstr ""
+msgstr "<нет открытых игр>"
 
 #: src/multiplayer_lobby.cpp:206
 msgid "Observe Game"
@@ -9102,103 +9048,3 @@ msgstr "Удалить файл"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Ошибка удаления файла."
-
-#~ msgid "Game Over"
-#~ msgstr "Игра завершена"
-
-#~ msgid "The game is over."
-#~ msgstr "Игра завершена."
-
-#~ msgid ""
-#~ "Nightstalk:\n"
-#~ "The unit becomes invisible during night."
-#~ msgstr ""
-#~ "Невидимка:\n"
-#~ "Соединение незаметно в течение ночи."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Чума:\n"
-#~ "Если это соединение убъет живую цель и она не находится в деревне, "
-#~ "мертвое тело восстанет и станет драться за Вас."
-
-#~ msgid "skirmisher,heals"
-#~ msgstr "застрельщик,целитель"
-
-#~ msgid "skirmisher,cures"
-#~ msgstr "застрельщик,лекарь"
-
-#~ msgid "hexes"
-#~ msgstr "квадратов"
-
-#~ msgid "&random-enemy.png,Random"
-#~ msgstr "&random-enemy.png,Случайные"
-
-#~ msgid "&human-lieutenant.png,Loyalists"
-#~ msgstr "&human-lieutenant.png,Порядочные"
-
-#~ msgid "&elvish-captain.png,Rebels"
-#~ msgstr "&elvish-captain.png,Мятежники"
-
-#~ msgid "&orcish-warrior.png,Northerners"
-#~ msgstr "&orcish-warrior.png,Северяне"
-
-#~ msgid "&undead-necromancer.png,Undead"
-#~ msgstr "&undead-necromancer.png,Мертвецы"
-
-#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
-#~ msgstr "&dwarf-warrior.png,Альянс Кналган"
-
-#~ msgid "&drake-flare.png,Drakes"
-#~ msgstr "&drake-flare.png,Драконы"
-
-#~ msgid "&human-lieutenant.png,Humans"
-#~ msgstr "&human-lieutenant.png,Люди"
-
-#~ msgid "&elvish-captain.png,Elves"
-#~ msgstr "&elvish-captain.png,Эльфы"
-
-#~ msgid "&orcish-warrior.png,Orcs"
-#~ msgstr "&orcish-warrior.png,Орки"
-
-#~ msgid "&dwarf-warrior.png,Dwarves"
-#~ msgstr "&dwarf-warrior.png,Гномы"
-
-#~ msgid "&saurian-soothsayer.png,Saurian"
-#~ msgstr "&saurian-soothsayer.png,Ящеры"
-
-#~ msgid "&human-general.png,Loyalists"
-#~ msgstr "&human-general.png,Порядочные"
-
-#~ msgid "&elvish-marshal.png,Rebels"
-#~ msgstr "&elvish-marshal.png,Мятежники"
-
-#~ msgid "&orcish-warlord.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Жители севера"
-
-#~ msgid "&undead-lich.png,Undead"
-#~ msgstr "&undead-lich.png,Мертвецы"
-
-#~ msgid "&white-mage.png,Alliance of Light"
-#~ msgstr "&white-mage.png,Альянс Света"
-
-#~ msgid ""
-#~ "Terrible and awe-inspiring, Ancient Woses are majestic treefolk not to be "
-#~ "trifled with. Fearsome fighters, they resist many attacks while "
-#~ "delivering devastating blows to their enemies. Resembling trees, they "
-#~ "blend in with the forest until they make their attack."
-#~ msgstr ""
-#~ "Ужасные и вгоняющие в ступор, Древние Лешие являются магическими "
-#~ "древообразными существами, с которыми приходиться считаться. Грозные "
-#~ "бойцы, они сопротивляются большинству видов атак, раздавая опустошающие "
-#~ "удары своим противникам. Похожие на деревья, они сливаются с окружающим "
-#~ "лесом, пока не станут атаковать."
-
-#~ msgid ",Name,Version,Author,Downloads,Size"
-#~ msgstr ",Имя,Версия,Автор,Загрузок,Размер"
-
-#~ msgid "Melee"
-#~ msgstr "Рукопашная"
