@@ -1368,12 +1368,13 @@ bool not_id(char c)
 
 void do_interpolation(std::string& res, size_t npos, const string_map* m)
 {
+	std::cerr << "doing interpolation into '" << res << "': " << npos << "\n";
 	const std::string::iterator i = std::find(res.begin()+npos,res.end(),'$');
 	if(i == res.end() || i+1 == res.end()) {
 		return;
 	}
 
-	npos = i - res.begin() + 1;
+	npos = i - res.begin();
 
 	const std::string::iterator end = std::find_if(i+1,res.end(),not_id);
 
@@ -1383,10 +1384,10 @@ void do_interpolation(std::string& res, size_t npos, const string_map* m)
 	if(m != NULL) {
 		const string_map::const_iterator itor = m->find(key);
 		if(itor != m->end()) {
-			res.insert(npos-1,itor->second);
+			res.insert(npos,itor->second);
 		}
 	} else {
-		res.insert(npos-1,game_events::get_variable_const(key));
+		res.insert(npos,game_events::get_variable_const(key));
 	}
 
 	do_interpolation(res,npos,m);

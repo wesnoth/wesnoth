@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "textbox.hpp"
+#include "../clipboard.hpp"
 #include "../font.hpp"
 #include "../show_dialog.hpp"
 #include "../video.hpp"
@@ -20,6 +21,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <cstring>
 
 namespace gui {
 
@@ -330,7 +332,21 @@ void textbox::handle_event(const SDL_Event& event)
 {
 	bool changed = false;
 	
-	if(location().x == 0 || editable_ == false) {
+	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_c) {
+		std::cerr << "got press of 'c': " << int(event.key.keysym.mod) << " " << (event.key.keysym.mod&KMOD_CTRL) << " "
+			<< size_t(selstart_) << "/" << size_t(selend_) << "/" << text_.size() << " " << (focus() ? "focus" : "no focus") << " " << location().x << "\n";
+	}
+
+	//if someone presses ctrl+c to copy text onto the clipboard
+	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_c && (event.key.keysym.mod&KMOD_CTRL) != 0
+	   && size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size() && selstart_ != selend_) {
+		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
+		const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
+
+		std::string selection(end - beg,'x');
+		std::copy(text_.begin()+beg,text_.begin()+end,selection.begin());
+		std::cerr << "copying text to clipboard: '" << selection << "'\n";
+		copy_to_clipboard(selection);
 		return;
 	}
 
@@ -338,18 +354,6 @@ void textbox::handle_event(const SDL_Event& event)
 	const Uint8 mousebuttons = SDL_GetMouseState(&mousex,&mousey);
 	if(!(mousebuttons & SDL_BUTTON(1))) {
 		grabmouse_ = false;
-	}
-
-	//if we don't have the focus, then see if we gain the focus,
-	//otherwise return
-	if(focus() == false) {
-		if(event.type == SDL_MOUSEMOTION &&
-		   mousex >= location().x && mousey >= location().y &&
-		   mousex < location().x + location().w && mousey < location().y + location().h) {
-			events::focus_handler(this);
-		}
-		   
-		return;
 	}
 
 	if( (grabmouse_ && (event.type == SDL_MOUSEMOTION)) ||  (
@@ -384,8 +388,26 @@ void textbox::handle_event(const SDL_Event& event)
 		} else if (! (mousebuttons & SDL_BUTTON(1))) {
 			grabmouse_ = false;
 		}
+
+		set_dirty();
 	}
-	
+
+	if(editable_ == false) {
+		return;
+	}
+
+	//if we don't have the focus, then see if we gain the focus,
+	//otherwise return
+	if(focus() == false) {
+		if(event.type == SDL_MOUSEMOTION &&
+		   mousex >= location().x && mousey >= location().y &&
+		   mousex < location().x + location().w && mousey < location().y + location().h) {
+			events::focus_handler(this);
+		}
+		   
+		return;
+	}
+
 	if(event.type != SDL_KEYDOWN || focus() != true) {
 		draw();
 		return;

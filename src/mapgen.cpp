@@ -252,6 +252,8 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 			terrain[i->x][i->y] = 'c';
 		}
 
+			std::cerr << "done generating river\n";
+
 		return true;
 	}
 	
@@ -533,16 +535,23 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 	const std::vector<std::string>& options = config::split(string_table[id]);
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
+		std::cerr << "calling name generator...\n";
 		const std::string& name = name_generator.generate_name(unit_race::MALE);
+		std::cerr << "name generator returned '" << name << "'\n";
 		if(base_name != NULL) {
 			*base_name = name;
 		}
+
+		std::cerr << "assigned base name..\n";
 		std::map<std::string,std::string> table;
 		if(additional_symbols == NULL) {
 			additional_symbols = &table;
 		}
 
+		std::cerr << "got additional symbols\n";
+
 		(*additional_symbols)["name"] = name;
+		std::cerr << "interpolation variables into '" << options[choice] << "'\n";
 		return config::interpolate_variables_into_string(options[choice],additional_symbols);
 	}
 
@@ -670,6 +679,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		naming = *names_info;
 	}
 
+	std::cerr << "random map config: '" << cfg.write() << "'\n";
+	std::cerr << "making dummy race for naming: '" << naming.write() << "'\n";
 	//make a dummy race for generating names
 	unit_race name_generator(naming);
 
@@ -720,7 +731,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
+					std::cerr << "generating name for river...\n";
 					const std::string& name = generate_name(name_generator,"river_name",&base_name);
+					std::cerr << "named river '" << name << "'\n";
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
 
@@ -732,8 +745,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 						river_names.insert(std::pair<location,std::string>(loc,base_name));
 					}
+
+					std::cerr << "put down river name...\n";
 				}
 
+				std::cerr << "generating lake...\n";
 				std::set<location> locs;
 				const bool res = generate_lake(terrain,x,y,atoi(cfg["lake_size"].c_str()),locs);
 				if(res && labels != NULL) {

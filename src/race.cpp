@@ -28,6 +28,7 @@ markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t 
 
 std::string markov_generate_name(const markov_prefix_map& prefixes, size_t chain_size, size_t max_len)
 {
+	std::cerr << "generating name with chain size of " << chain_size << " and " << prefixes.size() << " prefixes\n";
 	if(chain_size == 0)
 		return "";
 
@@ -35,8 +36,10 @@ std::string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 
 	while(res.size() < max_len) {
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
-		if(i == prefixes.end() || i->second.empty())
+		if(i == prefixes.end() || i->second.empty()) {
+			std::cerr << "failed to find prefix for '" << prefix << "'\n";
 			return res;
+		}
 	
 		const char c = i->second[get_random()%i->second.size()];
 		if(c == 0) {
@@ -104,6 +107,10 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 
 	next_[MALE] = markov_prefixes(names_[MALE],chain_size_);
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
+
+	if(next_[MALE].size() == 0) {
+		std::cerr << "empty prefix string: has " << names_[MALE].size() << " names: '" << cfg["male_names"] << "'\n";
+	}
 }
 
 const std::string& unit_race::name() const { return name_; }
