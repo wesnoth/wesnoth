@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
 "PO-Revision-Date: 2005-03-14 16:10+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
+"Last-Translator: Ruben Philipp <the15thfeuergnu@yahoo dot de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +18,18 @@ msgstr ""
 "X-Poedit-Country: GERMANY\n"
 
 # -- Anmerkungen --
+# KENNZEICHNUNG: Vorschlag: Inhaltliche Anmerkungen mit 'Anm.' beginnen, dann lassen sie sich leicht durch die Suchfunktion finden. Beispiel:
+# - Statt:
+# Klingt komisch. Umformulieren
+# - besser so: 
+# Anm. Klingt komisch. Umformulieren
+# 
+# Zahlen innerhalb eines Abschnittes ausschreiben oder in Ziffern stellen - VeryUhu
 # Wir sollten vielleicht ein anderes Wort für 'Spezialitäten' verwenden. Vorschlag: Besonderheiten - VeryUhu
+# Was meint Ihr? ...........
 # 'Euer' und 'Euere' wie das 'Ihr' groß schreiben - VeryUhu
 # -- Anmerkungen Ende --
+# 
 # edited by Ivanovic
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
@@ -1400,9 +1409,10 @@ msgstr "Hexagon"
 
 # edited by ivanovic
 # klingt komisch / falsch
+# Korrigiert von VeryUhu
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "2 gegen 2 oder 3 gegen 3 Teamspiel."
+msgstr "Teamspiel: 2 gegen 2 oder 3 gegen 3 Spieler."
 
 # edited by ivanovic
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
@@ -3233,13 +3243,14 @@ msgstr ""
 "sammeln. Jede Einheit, die einen Feind tötet, erhält pro Stufe des Gegners 8 "
 "Erfahrungspunkte."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:14
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
 "Elfische Einheiten sind in den Wäldern beweglicher und kämpfen geschickter. "
-"Zwerge, deren Behausungen in den Hügeln und Bergen Wesnoths liegt, genießen "
+"Zwerge, deren Behausungen in den Hügeln und Bergen Wesnoths liegen, genießen "
 "dort einen Vorteil."
 
 #: data/tips.cfg:15
@@ -3251,22 +3262,25 @@ msgstr ""
 "unter schlechten Bedingungen anzugreifen, solltet Ihr lieber auf bessere "
 "Bedingungen für einen Angriff warten."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:16
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 "Wenn Ihr aus mehreren Richtungen angegriffen werdet, ist es vielleicht eine "
-"gute Idee, entbehrliche Einheiten in andere Richtungen zu schicken, um den "
-"gegnerischen Angriff zu verzögern. "
+"gute Idee, entbehrliche Einheiten in verschiedene Richtungen zu schicken, um "
+"den gegnerischen Angriff zu verzögern. "
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:17
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
-"Zögert nicht eure Einheiten zurückzuziehen und neu zu formieren. Oft liegt "
+"Zögert nicht, Eure Einheiten zurückzuziehen und neu zu formieren. Oft liegt "
 "darin der Schlüssel zum Sieg. "
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:18
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -3275,11 +3289,13 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "In den meisten Kampagnen erhaltet Ihr eine Goldprämie, wenn Ihr ein Szenario "
-"frühzeitig beendet. Die Prämie ist von der Anzahl der Dörfer auf der Karte "
-"abhängig, und davon  wie viele Züge eher ihr das Szenario beendet habt. Ihr "
-"erhaltet aber grundsätzlich mehr Gold, als wenn ihr sämtliche Dörfer auf der "
-"Karte besetztet und bis zum Ablauf des Rundenlimits wartetet."
+"frühzeitig beendet. Die Prämie ist sowohl von der Anzahl der Dörfer auf der "
+"Karte abhängig, als auch davon, um wie viele Züge Ihr das Szenario vor "
+"Ablauf des Rundenlimits beendet habt. Ihr erhaltet durch vorzeitiges Beenden "
+"grundsätzlich mehr Gold als durch das Besetzen sämtlicher Dörfer und "
+"Abwarten bis zur letzten Runde."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:19
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -3287,37 +3303,40 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Euer Heerführer kann von jeder Burg aus Einheiten ausbilden oder einberufen, "
-"nicht nur in der Burg in der Ihr startet. Ihr könnt gegnerische Festungen "
-"einnehmen und von dort aus Einheiten in die Schlacht rufen. Es gibt auch die "
-"Möglichkeit, dass Eure Verbündeten für Euch Platz in ihrer Burg schaffen, "
-"damit Ihr dort Einheiten ausbilden könnt."
+"Euer Heerführer kann in jeder Burg Einheiten ausbilden oder einberufen, "
+"nicht nur in der Startburg. Ihr könnt gegnerische Festungen einnehmen und "
+"von dort aus Einheiten in die Schlacht rufen. Eure Verbündeten können auch "
+"Platz für Euch in ihrer Burg schaffen, damit Ihr dort Einheiten ausbilden "
+"könnt."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 "Skelette sind resistenter gegen Angriffe mit Klingen- und Stichwaffen. Dafür "
-"gehen sie unter den Schlägen von Hieb- oder geweihten Waffen sowie dem "
-"Einfluss von Feuer schnell zu Grunde."
+"gehen sie unter den Schlägen von Hieb- oder geweihten Waffen sowie  durch "
+"Feuer schnell zu Grunde."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
-"Niedrig stufige Truppen, die an der Seite einer Einheit mit "
-"Führungsqualitäten kämpfen, genießen Vorteile im Kampf."
+"Niedrig stufige Truppen genießen Vorteile im Kampf, wenn sie an der Seite "
+"einer Einheit mit Führungsqualitäten kämpfen."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:22
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"Vermeidet es, Eure Einheiten in die Nähe eines unbesetzten Dorfes zu "
-"bewegen. Eine gegnerische Einheit könnte das Dorf besetzten und Euch "
+"Vermeidet es, Eure Einheiten nur in die Nähe, aber nicht auf ein unbesetztes "
+"Dorf zu bewegen. Eine gegnerische Einheit könnte das Dorf besetzten und Euch "
 "angreifen, während sie selbst von den Verteidigungs- und Heilungsboni "
 "profitiert."
 
@@ -3329,24 +3348,26 @@ msgstr ""
 "Wenn Ihr den Mauszeiger über eine Fähigkeit oder Eigenschaft einer Einheit "
 "bewegt, wird Euch die jeweilige Beschreibung angezeigt."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Verwendet Einheiten als Wall, um verletzen Einheiten das Erholen zu "
-"ermöglichen."
+"Bildet mit Einheiten einen Wall, um verletze Einheiten zu schützen und ihnen "
+"das Erholen zu ermöglichen."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Leset die Liste der Tastenkombinationen im Einstellungsmenü."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:26
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Ihr könnt die Bewegung einer Einheit rückgängig machen, indem Ihr die Taste "
-"»U« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
-"hat - beispielsweise neue Dörfer oder gegnerische Einheiten -  bzw. noch "
+"»u« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
+"hat - beispielsweise neue Dörfer oder gegnerische Einheiten -  und sie noch "
 "keine gegnerische Einheit angegriffen hat."
 
 #: data/tips.cfg:27
@@ -3357,23 +3378,25 @@ msgstr ""
 "Ihr könnt feststellen, wie weit sich gegnerische Einheiten in ihrer Runde "
 "bewegen können. Zeigt einfach mit dem Mauszeiger auf sie."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 "Unterstützt Eure angreifenden Einheiten durch Heiler - diese können den "
-"Kampf gewinnen, ohne selbst anzugreifen."
+"Kampf zu Eueren Gunsten wenden, ohne selbst anzugreifen."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:29
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
-"Der >>Verlangsamungs<<-Angriff, veringert die Anzahl gegnerischer BP, und "
-"senkt ausserdem die Anzahl der gegnerischen Angriffe um einen.Daher ist er "
-"sehr wirkungsvoll gegen Einheiten mit wenigen mächtigen Angriffen."
+"Der »Verlangsamungs«-Angriff veringert die Anzahl gegnerischer BP und senkt "
+"ausserdem die Anzahl der gegnerischen Angriffe um 1.Daher ist er gegen "
+"Einheiten mit wenigen, aber mächtigen Angriffen sehr wirkungsvoll."
 
 # Korrigiert von Rhonda
 #: data/tips.cfg:30
@@ -3388,13 +3411,14 @@ msgstr ""
 "Einheiten werden vollständig geheilt, sobald sie eine Stufe aufsteigen. Klug "
 "eingesetzt, kann dies einen Kampf entscheiden."
 
+# Korrigiert von VeryUhu
 #: data/tips.cfg:32
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
 "Einheiten, die über die Fähigkeit des Sturmangriffes verfügen, solltet Ihr "
-"am besten gegen Gegner einsetzen, die ihr mit dem ersten Angriff vernichten "
+"am besten gegen Gegner einsetzen, die Ihr mit dem ersten Angriff vernichten "
 "könnt."
 
 #: data/traits.cfg:4 data/translations/english.cfg:61
@@ -3403,9 +3427,10 @@ msgstr "loyal"
 
 # edited by ivanovic
 # klingt komisch
+# Poliert von VeryUhu
 #: data/traits.cfg:5
 msgid "Zero upkeep"
-msgstr "Null Unterhalt"
+msgstr "Keine Unterhaltskosten"
 
 # edited by ivanovic
 #: data/traits.cfg:15
@@ -3451,6 +3476,7 @@ msgid "Hard"
 msgstr "Schwierig"
 
 # hmm
+# Clawing it - VeryUhu
 #: data/translations/english.cfg:9
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
@@ -3458,8 +3484,8 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Redliche Einheiten genießen Kampfvorteile während es hell ist, bei Anbruch "
-"der Dämmerung aber sinkt ihr Kampfesmut.\n"
+"Redliche Einheiten können bei Tag besser kämpfen als andere. Mit Anbruch der "
+"Dämmerung aber sinkt ihr Kampfesmut.\n"
 "\n"
 "Tag: +25% Schaden\n"
 "Nacht: -25% Schaden"
@@ -3471,6 +3497,7 @@ msgid ""
 msgstr ""
 "Die Kampfkraft neutraler Einheiten ist unabhängig von den Lichtverhältnissen."
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:14
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
@@ -3479,12 +3506,13 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 "Lichtscheue Einheiten kämpfen am liebsten im Schutze der Dunkelheit, da sie "
-"tagsüber durch die Sonne behindert werden.\n"
+"tagsüber durch die Sonne geblendet werden.\n"
 "\n"
 "Tag: -25% Schaden\n"
 "Nacht: +25% Schaden"
 
 # Korrigiert von Ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:21
 msgid ""
 "Ambush:\n"
@@ -3495,13 +3523,12 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Hinterhalt:\n"
-"Diese Einheit kann sich im Wald verstecken und von Gegner unentdeckt "
-"bleiben.\n"
+"Diese Einheit kann sich im Wald vor ihren Gegnern verstecken. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
-"sie im Wald ist. Doch gelten folgende Ausnahmen: Direkt nachdem die Einheit "
-"selbst angegriffen hat, oder es befindet sich eine feindliche Einheiten auf "
-"einem angrenzenden Feld.."
+"sie im Wald ist, außer, wenn sich eine feindliche Einheitauf einem "
+"angrenzenden Feld befindet, oder direkt nachdem die Einheit selbst "
+"angegriffen hat und"
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
@@ -3511,6 +3538,8 @@ msgstr "Hinterhalt"
 
 # Korrigiert von chrber
 # Korrigiert von Ivanovic
+# Korrigiert von VeryUhu
+# Anm. 'Kurierer' klingt komisch.Besser: Arzt? Medicus? (oder statt Heiler'Kurpfuscher':) - VeryUhu
 #: data/translations/english.cfg:31
 msgid ""
 "Cures:\n"
@@ -3525,17 +3554,17 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Kurieren:\n"
-"Diese Einheit verbindet kräuterbasiertes Heilen mit der magischen Heilung. "
-"Dadurch ist es ihr möglich, Einheiten schneller zu heilen, als es auf dem "
-"Schlachtfeld normalerweise möglich wäre.\n"
+"Diese Einheit verbindet Kräuterkunde mit magischer Heilung. Dadurch ist es "
+"ihr möglich, Einheiten schneller zu heilen, als es auf dem Schlachtfeld "
+"normalerweise möglich wäre.\n"
 "\n"
-"Die Einheit kümmert sich um alle benachbarten freundlichen Einheiten zum "
-"Rundenbeginn.\n"
-"Eine versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
-"Ein Kurierer kann alle Einheiten um die er sich kümmert um insgesamt bis zu "
-"18 LP heilen.\n"
-"Ein Kurierer kann eine Einheit vom Gift heilen, auch wenn er diese Einheit "
-"in dieser Runde nicht noch zusätzlich heilen kann."
+"Die Einheit kümmert sich um alle benachbarten freundlichen Einheiten zu "
+"Beginn der Runde.\n"
+"Eine auf diese Art versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
+"Ein Kurierer kann alle Einheiten, um die er sich kümmert, um insgesamt bis "
+"zu 18 LP heilen.\n"
+"Auch heilt er eine Einheit von einer Vergiftung. Allerdings kann er nicht "
+"zusätzlich die Lebenspunkte dieser Einheit zurückbringen."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
@@ -3547,6 +3576,7 @@ msgstr "Kurieren"
 
 # Korrigiert von chrber
 # Korrigiert von Ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:40
 msgid ""
 "Heals:\n"
@@ -3561,13 +3591,13 @@ msgstr ""
 "Heilen:\n"
 "Angrenzende Einheiten werden zu Beginn Eurer Runde geheilt.\n"
 "\n"
-"Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu vier LP pro "
-"Runde zurück.\n"
-"Ein Heiler kann, bei allen Einheiten um die er sich kümmert, bis zu 8 LP pro "
+"Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu 4 LP pro Runde "
+"zurück.\n"
+"Ein Heiler kann bei allen Einheiten, um die er sich kümmert, bis zu 8 LP pro "
 "Runde heilen.\n"
-"Eine vergiftete Einheit, kann nicht von einem Heiler von der Vergiftung "
-"befreit werden. Dies kann nur durch eine Einheit mit der Fähigkeit kurieren "
-"oder die Pflege durch ein Dorf geschehen."
+"Vergiftungen kann ein Heiler aber nicht aufheben.Dies kann nur durch eine "
+"Einheit mit der Fähigkeit 'kurieren' oder durch den Aufenthalt in einem Dorf "
+"geschehen."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
@@ -3576,6 +3606,7 @@ msgstr ""
 msgid "heals"
 msgstr "Heilen"
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:47
 msgid ""
 "Illuminates:\n"
@@ -3586,9 +3617,9 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Lichtaura:\n"
-"Diese Einheit wird von einer Aura des Lichts umgeben, die bewirkt, dass "
-"redliche Einheiten besser, und lichtscheue Einheiten schlechter kämpfen.\n"
-"Jede angrenzende Einheit kämpft während der Nacht, als sei es Dämmerung, "
+"Diese Einheit wird von einer Aura des Lichts umgeben, die redliche Einheiten "
+"anspornt und Lichtscheue verunsichert.\n"
+"Jede angrenzende Einheit kämpft während der Nacht, als sei es Dämmerung, und "
 "während der Dämmerung, als sei es Tag."
 
 #: data/translations/english.cfg:49
@@ -3596,6 +3627,7 @@ msgid "illuminates"
 msgstr "Lichtaura"
 
 # Korrigiert von Ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:54
 msgid ""
 "Leadership:\n"
@@ -3611,8 +3643,8 @@ msgstr ""
 "Diese Einheit führt befreundete Einheiten in die Schlacht und lässt die "
 "Nahestehenden besser kämpfen.\n"
 "\n"
-"Benachbarte Einheiten niedrigerer Stufen richten im Kampf einen höheren "
-"Schaden an. Dabei erhöht sich der Schaden um 25% pro Stufe Unterschied."
+"Benachbarte Einheiten niedrigerer Stufen richten im Kampf mehr Schaden an. "
+"Pro Stufe weniger erhöht sich der Schaden um 25%."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3638,6 +3670,7 @@ msgstr ""
 "Zählen nie mehr als 1 zum Unterhalt."
 
 # edited by ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:66
 msgid ""
 "Nightstalk:\n"
@@ -3651,14 +3684,15 @@ msgstr ""
 "Diese Einheit ist des Nachts für ihre Feinde unsichtbar. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nachts nicht sehen oder angreifen, "
-"Es sei denn diese Einheit hat unmittelbar zuvor selbst angegriffen, oder es "
-"befindet sich eine feindliche Einheiten auf einem angrenzenden Feld."
+"es sei denn, diese Einheit hat unmittelbar zuvor selbst angegriffen, oder es "
+"befindet sich eine feindliche Einheit auf einem angrenzenden Feld."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
 msgstr "Nachtschatten"
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:71
 msgid ""
 "Regenerates:\n"
@@ -3668,7 +3702,7 @@ msgstr ""
 "Regeneration:\n"
 "Die Selbstheilungskräfte sind bei dieser Einheit so stark, dass sie 8 LP pro "
 "Runde zurückgewinnt. Falls die Einheit vergiftet sein sollte, wird die "
-"Wirkung des Giftes gestoppt, und keine LP zurückgewonnen."
+"Wirkung des Giftes gestoppt, und es werden keine LP zurückgewonnen."
 
 #: data/translations/english.cfg:73 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
@@ -3677,6 +3711,7 @@ msgstr ""
 msgid "regenerates"
 msgstr "Regeneration"
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:76
 msgid ""
 "Skirmisher:\n"
@@ -3685,7 +3720,7 @@ msgid ""
 msgstr ""
 "Plänkler:\n"
 "Diese Fertigkeit ermöglicht es einer Einheit, durch feindliche Linien zu "
-"brechen, da sämtliche feindlichen Kontrollzonen ignoriert werden."
+"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:17
 #: data/units/Assassin.cfg:96 data/units/Duelist.cfg:16
@@ -3696,14 +3731,15 @@ msgstr ""
 msgid "skirmisher"
 msgstr "Plänkler"
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
 "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
 "Unerschütterlich:\n"
-"Diese Einheit steht wie ein Fels in der Schlacht und ein jede Einheit, die "
-"sie angreift, vermag es nur, ihr die Hälfte des normalen Schadens zuzufügen."
+"Diese Einheit steht wie ein Fels in der Schlacht. Jeder Angreifer vermag ihr "
+"nur die Hälfte des normalen Schadens zuzufügen."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
@@ -3713,6 +3749,8 @@ msgstr "Unerschütterlich"
 
 # edited by ivanovic
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
+# Korrigiert von VeryUhu
+# Anm. 'Sekunde' im Fantasy? -  VeryUhu
 #: data/translations/english.cfg:86
 msgid ""
 "Teleport:\n"
@@ -3721,7 +3759,7 @@ msgid ""
 msgstr ""
 "Teleportieren:\n"
 "Durch die Magie der Bewegung ist es dieser Einheit möglich, im Bruchteil "
-"einer Sekunde zwischen zwei eigenen Dörfern hin und her zu wechseln."
+"eines Augenblicks von einem in ein anderes eigenes Dorf zu springen. "
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -3729,6 +3767,7 @@ msgid "teleport"
 msgstr "Teleportation"
 
 # edited by ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:93
 msgid ""
 "Backstab:\n"
@@ -3736,12 +3775,13 @@ msgid ""
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Hinterlistiger Angriff:\n"
-"Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners um ihm "
+"Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners, um ihm "
 "bei einem Angriff den doppelten Schaden zuzufügen. Dies gelingt nur, wenn "
-"der Feind von einer eigenen, auf der entgegengesetzen Seite stehenden "
-"Einheit abgelenkt wird. (Dies funktioniert nicht mit alliierten Einheiten.)"
+"der Feind von einer weiteren, auf der entgegengesetzen Seite stehenden "
+"Einheit abgelenkt wird. Alliierte Einheiten zählen hierbei nicht. "
 
 # edited by ivanovic
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:96
 msgid ""
 "Berserk:\n"
@@ -3749,10 +3789,11 @@ msgid ""
 "combatants is slain."
 msgstr ""
 "Berserkertum:\n"
-"Diese Einheit ist es gewohnt bis zum Tod zu kämpfen. Wenn sie in die "
-"offensive geht und einen Gegner angreift, ruht sie erst, wenn sie selbst "
-"oder ihr Kontrahent gefallen ist."
+"Diese Einheit ist es gewohnt, bis zum Tod zu kämpfen. Wenn sie in die "
+"Offensive geht und einen Gegner angreift, ruht sie erst, bis der Tod die "
+"Entscheidung gefällt hat."
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:99
 msgid ""
 "Charge:\n"
@@ -3760,10 +3801,9 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Ansturm:\n"
-"Diese Attacke wird mit solcher Wucht ausgeführt, dass bei einem Treffer "
-"doppelter Schaden verursacht wird. Da der Angreifer dabei seine Deckung "
-"vollkommen vernachlässigt, erleidet er bei einem Gegentreffer ebenfalls "
-"doppelten Schaden."
+"Diese Attacke wird mit solcher Wucht ausgeführt, dass sie doppelten Schaden "
+"verursacht. Da der Angreifer dabei seine Deckung vollkommen vernachlässigt, "
+"ergeht es ihm bei einem Gegentreffer genauso."
 
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
 #: data/translations/english.cfg:102
@@ -3776,14 +3816,15 @@ msgstr ""
 "Durch die Macht der Schwarzen Magie wird bei Berührung des Opfers die Hälfte "
 "des Schadens auf den Berührenden übertragen, der dadurch geheilt wird."
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:105
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Erstschlag:\n"
-"Diese Einheit führt, bei Verwendung dieser Waffe, immer den ersten Angriff "
-"durch, selbst wenn sie sich verteidigt. "
+"Mit dieser Waffe führt die Einheit immer den ersten Angriff durch, selbst, "
+"wenn sie sich verteidigt. "
 
 # Korrigiert von Ivanovic
 #: data/translations/english.cfg:108
@@ -3807,6 +3848,7 @@ msgstr ""
 
 # edited by ivanovic
 # Korrigiert von chrber
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:114
 msgid ""
 "Plague:\n"
@@ -3815,11 +3857,12 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 "Untote Plage:\n"
-"Wenn eine Einheit von einer Einheit mit der Fähigkeit untote Plage "
-"vernichtet wird, wird die getötete Einheit durch eine eigene, identische "
-"Einheit ersetzt. (Dies funktioniert nicht gegen Untote oder Einheiten in "
-"Dörfern.)"
+"Wird ein Gegner durch eine Einheit mit der Fähigkeit 'untote Plage' "
+"vernichtet, so wird er durch eine eigene Einheit ersetzt, die jener mit der "
+"Fähigkeit 'untote Plage' identisch ist. Dies funktioniert nicht gegen Untote "
+"oder Einheiten in Dörfern."
 
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:117
 msgid ""
 "Poison:\n"
@@ -3829,10 +3872,12 @@ msgstr ""
 "Vergiften:\n"
 "Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
 "vergiften. Dadurch veliert das Opfer pro Runde 8 LP, bis es geheilt wird "
-"oder sein LP auf 1 reduziert wurde."
+"oder seine LP auf 1 reduziert wurden."
 
 # edited by ivanovic
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
+# Holla? - VeryUhu
+# Korrigiert von VeryUhu
 #: data/translations/english.cfg:120
 msgid ""
 "Slow:\n"
@@ -3842,9 +3887,9 @@ msgid ""
 msgstr ""
 "Verlangsamen:\n"
 "Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
-"Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP fortbewegen "
-"und ihnen wird pro Waffe eine Attacke abgezogen. Die Verlangsamung hällt für "
-"eine Runde an."
+"Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP fortbewegen. "
+"Außerdem wird ihnen ein Angriff abgezogen. Die Verlangsamung hält eine Runde "
+"an."
 
 # Korrigiert von Ivanovic
 #: data/translations/english.cfg:123
@@ -3912,10 +3957,12 @@ msgstr ""
 "$name|sheim,Sankt-$name,$name|shausen,$name|sberg,$name|shöhe,$name|sklippe,"
 "$name|sklippe"
 
+# Anm. 'Alter' Klingt komisch.- VeryUhu
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Alter Lich"
 
+# Korrigiert von VeryUhu
 #: data/units/Ancient_Lich.cfg:19
 msgid ""
 "The final form that mages of the undead can achieve, Ancient Liches strike "
@@ -3924,12 +3971,13 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
-"Sie haben die höchste Stufe erreicht die es für ein Magier der Toten gibt. "
-"Alte Liche erfüllen die Herzen derer sie erblicken mit Furcht. Nicht nur "
-"ihre Berührung ist tödlich, sie verfügen auch über Zaubersprüche die selbst "
-"die tapfersten Kämpfer auf der Stelle erstarren lassen. Sollte Euer Weg "
-"jemals den eines Alten Liches kreuzen dann flieht so schnell und so weit wie "
-"Ihr nur könnt, denn sie sind schneller als die meisten anderen Untoten."
+"Sie haben die höchste Stufe erreicht, die es für einen Magier der Toten "
+"gibt. Alte Liche erfüllen die Herzen derer, die sie erblicken, mit Furcht. "
+"Nicht nur ist ihre Berührung tödlich, sie verfügen auch über Zaubersprüche, "
+"die selbst die tapfersten Kämpfer auf der Stelle erstarren lassen. Sollte "
+"Euer Weg jemals den eines Alten Liches kreuzen, dann flieht! Flieht so "
+"schnell und so weit wie Ihr nur könnt, denn sie sind schneller als die "
+"meisten Untoten."
 
 #: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:19
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
@@ -3994,6 +4042,7 @@ msgstr "Kälteschock"
 msgid "magical"
 msgstr "magisch"
 
+# Anm. 'Alter' klingt komisch.Waldschrat-Ältester ist nicht viel, aber ein bissschen besser...? - VeryUhu
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
 msgstr "Alter Waldschrat"
@@ -4003,6 +4052,7 @@ msgstr "Alter Waldschrat"
 msgid "ambush,regenerates"
 msgstr "Hinterhalt, Regeneration"
 
+# Poliert von VeryUhu
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
 "Terrible and awe-inspiring, the most ancient of woses grow to a tremendous "
@@ -4015,13 +4065,14 @@ msgid ""
 "which is often the only thing which could incur the wrath of these otherwise "
 "kind and curious beings."
 msgstr ""
-"Schrecklich und furchteinflößend sehen die Ältesten der Waldschrate aus. Sie "
-"sind zu einer ungeheuren Größe gewachsen. Nur selten erscheinen außerhalb "
-"von Legenden, aber wenn so erzählt man sich schleudern sie ihre Feinde wie "
-"Spielzeuge durch die Gegend, und haben so wahnsinnige Kräfte dass sie "
-"riesige Felsbrocken in wenigen Sekunden zu Staub zermalmen können. Die "
-"selben Legenden erzählen davon das sie unermüdlich für den Schutz der Wälder "
-"kämpfen und diejenigen bestrafen, die die Wälder schänden."
+"Schrecklich und furchteinflößend sehen die Ältesten der Waldschrate aus. "
+"Ihre Größe ist überwältigend. Nur selten treten sie selbst in Erscheinung - "
+"zumeist wissen nur die Legenden von ihnen zu berichten: Darüber, dass sie "
+"ihre Feinde wie Spielzeuge durch die Gegend schleudern; dass sie mit ihren "
+"ungeheuren Kräften riesige Felsbrocken zu Staub zermalmen können; dass sie "
+"unermüdlich für den Schutz der Wälder kämpfen. Sie, die sie ansonsten von "
+"freundlichem und neugierigem Wesen sein sollen, bestrafen erbarmungslos "
+"jeden, der die Wälder schändet."
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
@@ -4083,6 +4134,7 @@ msgstr "Zermalmen"
 msgid "impact"
 msgstr "Wucht"
 
+# Anm. Die englischen Mage-Beschreibungen werden derzeit überarbeitet. Ich kann sie einfügen, wenn sie im CVS aktualisiert worden sind. - VeryUhu
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
 msgstr "Erzmagier"
@@ -4147,13 +4199,14 @@ msgstr "Erzmagierin"
 msgid "Assassin"
 msgstr "Assassine"
 
+# Korrigiert von VeryUhu
 #: data/units/Assassin.cfg:18 data/units/Assassin.cfg:97
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround an "
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
-"Assassinen sind Meister der Nacht.Wie Diebe und Schurken verfügen sie über "
+"Assassinen sind Meister der Nacht. Wie Diebe und Schurken verfügen sie über "
 "die Fähigkeit des Hinterhalts und ignorieren feindliche Kontrollzonen. "
 "Außerdem können sie vergiftete Dolche aus großer Entfernung auf ihre Gegner "
 "werfen."
@@ -4266,14 +4319,15 @@ msgstr "Attentäterin"
 msgid "Bandit"
 msgstr "Bandit"
 
+# Poliert von VeryUhu
 #: data/units/Bandit.cfg:16
 msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
-"Banditen sind Meister darin nachts rauben und töten zu gehen. Sie tragen "
-"braune Umhänge und schwarze Kapuzen und sind mit einem schweren Streitkolben "
+"Bei Nacht sind Banditen die Meister von Raub und Mord. Sie tragen braune "
+"Umhänge und schwarze Kapuzen und sind mit einem schweren Totschlägern "
 "ausgerüstet. Wenn sie nicht gerade gegen Eindringlinge kämpfen, bestehlen "
 "sie die Bauern aus der Umgebung."
 
@@ -4295,6 +4349,7 @@ msgstr "Prinzessin"
 msgid "leadership,skirmisher"
 msgstr "Führungsqualitäten,Plänkler"
 
+# Poliert von VeryUhu
 #: data/units/Battle_Princess.cfg:20
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
@@ -4302,11 +4357,11 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
-"Als Adlige hat die Prinzessin den Schwertkampf bei den besten Generälen "
-"gelernt, und wurd in der Kunst der Kriegsführung von den klügsten Köpfen "
-"unterrichtet, was sie zu einem guten Kämpfer und Anführer macht. "
-"Kampferprobt und mit unerschütterlicher Willenskraft gesegnet, unterstützt "
-"sie nun jene, die sie im Kampf umgeben."
+"Als hohe Adlige hat die Prinzessin bei den besten Fechtern die Kunst des "
+"Schwertkampfes erlernt. In der Kunst der Kriegsführung wurde sie von den "
+"klügsten Köpfen unterrichtet. Beides macht sie zu einem guten Kämpfer und "
+"Anführer. Kampferprobt und mit unerschütterlicher Willenskraft gesegnet, "
+"unterstützt sie nun jene, die sie Seite an Seite in die Schlacht begleiten."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -4352,6 +4407,7 @@ msgstr "Schwert"
 msgid "Princess"
 msgstr "Prinzessin"
 
+# Poliert von VeryUhu
 #: data/units/Battle_Princess.cfg:58
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
@@ -4360,12 +4416,12 @@ msgid ""
 "will fight better due to her presence. The Princess is a skilled skirmisher, "
 "and ignores enemy zones of control."
 msgstr ""
-"Als Adlige haben Prinzessinnen das Schwertkämpfen bei den besten Generälen "
-"gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in der Kunst "
-"der Kriegsführung  unterrichtet. Dies macht sie zu einer guten Kämpferin und "
-"Anführerinn. Alle Einheiten, die eine geringere Stufe als die Prinzessin "
-"haben, und auf einem benachbartem Feld stehen, erhalten einen Bonus im "
-"Kampf. Die Prinzessin ignoriert Zonen der feindlichen Kontrolle."
+"Als hohe Adlige hat die Prinzessin bei den besten Fechtern die Kunst des "
+"Schwertkampfes erlernt. In der Kunst der Kriegsführung wurde sie von den "
+"klügsten Köpfen unterrichtet. Beides macht sie zu einem guten Kämpfer und "
+"Anführer. Alle Einheiten, die eine geringere Stufe als die Prinzessin haben "
+"und auf einem benachbartem Feld stehen, erhalten einen Bonus im Kampf. Die "
+"Prinzessin kann außerdem Zonen unter feindlicher Kontrolle ignorieren."
 
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
@@ -4377,6 +4433,8 @@ msgstr "Zepter des Feuers"
 msgid "Blood Bat"
 msgstr "Blutfledermaus"
 
+# Anm. 'Vampirfledermäuse'? - VeryUhu
+# Poliert von VeryUhu
 #: data/units/Blood_Bat.cfg:16
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
@@ -4384,10 +4442,11 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
-"Blutfledermäuse sind schnell und können Blut von ihren Gegnern absaugen und "
-"sich damit selbst heilen, sogar über die Anzahl der Lebenspunkte hinaus, "
-"über die sie am Anfang verfügten. Dabei kommen sie in einen Blutrausch, und "
-"dass das Fell dieser fliegenden Bestien färbt sich vom Blut ihrer Gegner rot."
+"Blutfledermäuse sind nicht nur schnell, sie können auch Blut von ihren "
+"Gegnern saugen und sich damit selbst heilen - sogar über die Anzahl ihrer "
+"anfänglichen Lebenspunkte hinaus. Sie geraten dabei in einen wahren "
+"Blutrausch, während sich das Fell dieser fliegenden Bestien vom Blut ihrer "
+"Gegner rot färbt. Sie sind der Schrecken der schutzlosen Dörfer."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:19 data/units/Goblin_Knight.cfg:19
@@ -4401,6 +4460,7 @@ msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 # edited by ivanovic
+# Korrigiert von VeryUhu
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
 "These, whose masters have found to be more potent creations, have been "
@@ -4409,11 +4469,11 @@ msgid ""
 "Shooters' by their unfortunate enemies, these abominations are a terror to "
 "all who live."
 msgstr ""
-"Diese wandelnden Kochenhaufem wurden von ihren Herren mit einem wahrhaft "
-"makaberen Arsenal an Waffen ausgestattet. Stadt normaler Pfeile tragen sie "
-"Knochen in ihren Köchern. Sie werden deshalb von ihren bemitleidenswerten "
-"Feinden auch als Knochenbogenschützen bezeichnet. Sie stellen wahrhaft eine "
-"Qual dar, für jene die Leben in sich tragen."
+"Diese wandelnden Knochenhaufem wurden von ihren Herren mit einem wahrhaft "
+"makaberen Arsenal an Waffen ausgestattet. Anstelle normaler Pfeile tragen "
+"sie Knochen in ihren Köchern. Sie werden deshalb von ihren "
+"bemitleidenswerten Feinden auch als Knochenbogenschützen bezeichnet. Für die "
+"Lebendigen sind sie ein Alptraum."
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 msgid "stab"
@@ -4503,6 +4563,7 @@ msgstr "Stich"
 msgid "Bowman"
 msgstr "Bogenschütze"
 
+# Poliert von VeryUhu
 #: data/units/Bowman.cfg:17
 msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
@@ -4512,14 +4573,15 @@ msgid ""
 msgstr ""
 "Von Kindesbeinen in der Kunst des Bogenschießens unterwiesen, findet man "
 "diese jungen Bogenschützen am häufigsten unter den Fernkämpfer in den "
-"wesnothischen Armeen. Sie müssen sich keiner so harten Ausbildung "
-"unterziehen, wie Speerträger oder Schwere Infanteristen, da ihre "
-"Kampftechnik Geschicklichkeit anstatt pure Stärke erfordert."
+"wesnothischen Armeen. Ihre Ausbildung ist weniger hart als die von "
+"Speerträgern oder Schweren Infanteristen, da ihre Kampftechnik "
+"Geschicklichkeit anstelle von reiner Kraft erfordert."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
 msgstr "Kürassier"
 
+# Korrigiert von VeryUhu
 #: data/units/Cavalier.cfg:24
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -4528,10 +4590,10 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 "Kürassiere sind ein triumphaler Anblick auf dem Schlachtfeld. Sie sind "
-"Meister darin Schwert und Armbrust vom Rücken ihrer Pferde aus einzusetzen. "
+"Meister darin, Schwert und Armbrust vom Rücken ihrer Pferde aus einzusetzen. "
 "Ihre Gewandtheit im Umgang mit Distanzwaffen erlaubt es ihnen, viele Gegner "
-"niederzumetzeln ohne selbst oft getroffen zu werden. Ihr Mut hat das Blatt "
-"in einigen der größten Schlachten in der Geschichte gewendet."
+"niederzumetzeln, ohne selbst oft getroffen zu werden. Ihr Mut hat das Blatt "
+"in einigen der größten Schlachten der Geschichte gewendet."
 
 #: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:38
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
@@ -4545,6 +4607,7 @@ msgstr "Armbrust"
 msgid "Cavalryman"
 msgstr "Kavallerist"
 
+# Korrigiert von VeryUhu - korrende - do _not_ delete this tag!
 #: data/units/Cavalryman.cfg:25
 msgid ""
 "The best riders in Wesnoth are recruited into the military to become "
@@ -4553,9 +4616,9 @@ msgid ""
 "position."
 msgstr ""
 "Nur die besten Reiter von Wesnoth werden in die Kavallerie aufgenommen. Die "
-"sehr disziplinierten Einheiten stürmen nicht wild und ungestüm über das "
-"Schlachtfeld wie die Reiter, sondern legen mehr Wert darauf ihre Position zu "
-"halten."
+"hochdisziplinierten Einheiten stürmen nicht wild und ungestüm über das "
+"Schlachtfeld wie andere Berittene, sondern legen mehr Wert auf daß Halten "
+"ihrer Stellung. "
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
