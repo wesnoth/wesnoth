@@ -45,16 +45,16 @@ private:
 	static int indent;
 };
 
-#define log0(a) std::cerr << a << "\n";
-#define log1(a,b) std::cerr << a << " info: " << b << "\n";
-#define log2(a,b,c) std::cerr << a << " info: " << b << ", " << c << "\n";
+#define log_data0(a) std::cerr << a << "\n";
+#define log_data1(a,b) std::cerr << a << " info: " << b << "\n";
+#define log_data2(a,b,c) std::cerr << a << " info: " << b << ", " << c << "\n";
 
 #define log_scope(a) scope_logger scope_logging_object__(a);
 
 #else
-#define log0(a)
-#define log1(a,b)
-#define log2(a,b,c)
+#define log_data0(a)
+#define log_data1(a,b)
+#define log_data2(a,b,c)
 
 #define log_scope(a)
 #endif
