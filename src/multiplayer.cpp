@@ -410,12 +410,12 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		}
 	}
 
-	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_->process(mousex,mousey,left_button)) {
+	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_->pressed()) {
 		generator_->user_config(disp_);
 		map_changed = true;
 	}
 
-	if(generator_ != NULL && level_ != NULL && (map_changed || regenerate_map_->process(mousex,mousey,left_button))) {
+	if(generator_ != NULL && level_ != NULL && (map_changed || regenerate_map_->pressed())) {
 		const cursor::setter cursor_setter(cursor::WAIT);
 
 		//generate the random map

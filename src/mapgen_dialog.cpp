@@ -17,9 +17,10 @@ namespace {
 
 default_map_generator::default_map_generator(const config* cfg)
 : width_(40), height_(40), island_size_(0), iterations_(1000), hill_size_(10), max_lakes_(20),
-  nvillages_(25), nplayers_(2), cfg_(cfg)
+  nvillages_(25), nplayers_(2)
 {
-	if(cfg_ != NULL) {
+	if(cfg != NULL) {
+		cfg_ = *cfg;
 
 		const int width = ::atoi((*cfg)["map_width"].c_str());
 		if(width > 0)
@@ -283,25 +284,25 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		std::cerr << "calculated coastal params...\n";
 	}
 
-	std::cerr << "generating map with " << nplayers_ << " players\n";
-
-	if(cfg_ != NULL) {
-		return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,labels,*cfg_);
-	} else {
-		return "";
-	}
+	return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,labels,cfg_);
 }
 
 config default_map_generator::create_scenario(const std::vector<std::string>& args)
 {
+	std::cerr << "creating scenario...\n";
 	config res;
-	const config* const scenario = cfg_->child("scenario");
+
+	const config* const scenario = cfg_.child("scenario");
 	if(scenario != NULL) {
 		res = *scenario;
 	}
 
+	std::cerr << "got scenario data...\n";
+
 	std::map<gamemap::location,std::string> labels;
+	std::cerr << "generating map...\n";
 	res["map_data"] = generate_map(args,&labels);
+	std::cerr << "done generating map..\n";
 
 	for(std::map<gamemap::location,std::string>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
 		config& label = res.add_child("label");

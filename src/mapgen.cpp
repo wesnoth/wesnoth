@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "cavegen.hpp"
+#include "language.hpp"
 #include "mapgen.hpp"
 #include "mapgen_dialog.hpp"
 #include "pathfind.hpp"
@@ -618,6 +619,17 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 	return best_loc;
 }
 
+std::string generate_name(const unit_race& name_generator, const std::string& id)
+{
+	const std::vector<std::string>& options = config::split(string_table[id]);
+	if(options.empty() == false) {
+		const size_t choice = rand()%options.size();
+
+	}
+
+	return "";
+}
+
 }
 
 //function to generate the map.
@@ -651,6 +663,15 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//generate the height of everything.
 	const height_map heights = generate_height_map(width,height,iterations,hill_size,island_size,island_off_center);
 	std::cerr << "done generating height map...\n";
+
+	const config* const names_info = cfg.child("naming");
+	config naming;
+	if(names_info != NULL) {
+		naming = *names_info;
+	}
+
+	//make a dummy race for generating names
+	unit_race name_generator(naming);
 
 	//the configuration file should contain a number of [height] tags:
 	//[height]
