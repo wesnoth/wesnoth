@@ -23,7 +23,7 @@ tmp=`tempfile`
 for LANG in "$@"
 do
     # merge the 2 files
-    msgcat --use-first -F po/$LANG/$DSTDOMAIN.po po/$LANG/$SRCDOMAIN.po >$tmp
+    msgcat -F po/$LANG/$DSTDOMAIN.po po/$LANG/$SRCDOMAIN.po >$tmp
     mv po/$LANG/$DSTDOMAIN.po po/$LANG/$DSTDOMAIN.po.bak
     mv $tmp po/$LANG/$DSTDOMAIN.po
 
@@ -37,5 +37,8 @@ do
 
     touch -d '1970-01-02' po/$LANG/$DSTDOMAIN.po
     make -C po $LANG/$DSTDOMAIN.po
+
+    # make sure the timestamp is fixed or cvs gets confused
+    touch po/$LANG/$DSTDOMAIN.po
 done
 rm $tmp
