@@ -397,7 +397,7 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 		return NULL;
 	}
 
-	SDL_Surface* surf(make_neutral_surface(surface));
+	SDL_Surface* surf = make_neutral_surface(surface);
 	scoped_sdl_surface nmask(make_neutral_surface(mask));
 	
 	if(surf == NULL || nmask == NULL) {

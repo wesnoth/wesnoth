@@ -854,10 +854,11 @@ void preferences_dialog::set_selection(int index)
 void show_preferences_dialog(display& disp)
 {
 	std::vector<std::string> items;
-	items.push_back(string_table["preferences_item_general"]);
-	items.push_back(string_table["preferences_item_display"]);
-	items.push_back(string_table["preferences_item_sound"]);
 
+	items.push_back("&icons/icon-general.png," + string_table["preferences_item_general"]);
+	items.push_back("&icons/icon-display.png," + string_table["preferences_item_display"]);
+	items.push_back("&icons/icon-music.png," + string_table["preferences_item_sound"]);
+	
 	for(;;) {
 		try {
 			const events::event_context dialog_events_context;

@@ -1222,7 +1222,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(u.experience() > 0 && u.type().can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
 		const int level = maximum<int>(u.type().level(),1);
-		const SDL_Color normal_colour = {200,200,0,0}, near_advance_colour = {255,255,255,0};
+		const SDL_Color normal_colour = {173,200,248,0}, near_advance_colour = {255,255,255,0};
 		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
 		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
 
@@ -1573,16 +1573,24 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
 		//draw number in yellow if terrain is light, else draw in black
 		gamemap::TERRAIN terrain = map_.get_terrain(loc);
-		const bool tile_is_light = map_.get_terrain_info(terrain).is_light();
-		SDL_Color text_colour = tile_is_light ? font::DARK_COLOUR : font::YELLOW_COLOUR;
 
 		const SDL_Rect& rect = map_area();
 		std::string str(1,'x');
 		str[0] = '1' + route_.move_left;
-		const SDL_Rect& text_area = font::draw_text(NULL,rect,18,text_colour,str,0,0);
+		const SDL_Rect& text_area = font::text_area(str,18);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;
-		font::draw_text(this,rect,18,text_colour,str,x,y);
+
+		//draw the text with a black outline
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y-1);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y+1);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x,y-1);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y-1);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y+1);
+		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x,y+1);
+		font::draw_text(this,rect,18,font::YELLOW_COLOUR,str,x,y);
 	}
 }
 

@@ -7,8 +7,11 @@
 #include <algorithm>
 #include <cassert>
 #include <queue>
+#include <iostream>
 #include <set>
 #include <vector>
+
+#include <signal.h>
 
 namespace {
 
@@ -128,6 +131,12 @@ manager::manager() : free_(true)
 		free_ = false;
 		return;
 	}
+
+	//on Unix-based systems, set sigpipe to be ignored
+#if !(defined(_WIN32) || defined(__APPLE__))
+	std::cerr << "ignoring SIGPIPE\n";
+	signal(SIGPIPE,SIG_IGN);
+#endif
 
 	if(SDLNet_Init() == -1) {
 		throw error(SDL_GetError());

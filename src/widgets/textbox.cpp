@@ -332,12 +332,7 @@ void textbox::handle_event(const SDL_Event& event)
 {
 	bool changed = false;
 	
-	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_c) {
-		std::cerr << "got press of 'c': " << int(event.key.keysym.mod) << " " << (event.key.keysym.mod&KMOD_CTRL) << " "
-			<< size_t(selstart_) << "/" << size_t(selend_) << "/" << text_.size() << " " << (focus() ? "focus" : "no focus") << " " << location().x << "\n";
-	}
-
-	//if someone presses ctrl+c to copy text onto the clipboard
+	//if the user presses ctrl+c to copy text onto the clipboard
 	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_c && (event.key.keysym.mod&KMOD_CTRL) != 0
 	   && size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size() && selstart_ != selend_) {
 		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
@@ -345,8 +340,29 @@ void textbox::handle_event(const SDL_Event& event)
 
 		std::string selection(end - beg,'x');
 		std::copy(text_.begin()+beg,text_.begin()+end,selection.begin());
-		std::cerr << "copying text to clipboard: '" << selection << "'\n";
 		copy_to_clipboard(selection);
+		return;
+	}
+
+	//if the user presses ctrl+v to paste text into the textbox
+	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_v && (event.key.keysym.mod&KMOD_CTRL) != 0 && editable() && focus()) {
+		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
+		const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
+		if(beg < text_.size() && end <= text_.size() && beg != end) {
+			text_.erase(text_.begin()+beg,text_.begin()+end);
+			selstart_ = selend_ = cursor_ = int(beg);
+		}
+
+		const std::string& str = copy_from_clipboard();
+		wide_string tmp;
+		tmp.resize(str.size());
+		std::copy(str.begin(),str.end(),tmp.begin());
+		text_.insert(text_.begin()+minimum(size_t(cursor_),text_.size()),tmp.begin(),tmp.end());
+		cursor_ += str.size();
+
+		update_text_cache(true);
+		set_dirty();
+
 		return;
 	}
 

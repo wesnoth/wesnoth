@@ -124,6 +124,10 @@ SOURCE=.\src\cavegen.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\clipboard.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\combo.cpp
 # End Source File
 # Begin Source File
@@ -177,6 +181,10 @@ SOURCE=.\src\gamestatus.cpp
 # Begin Source File
 
 SOURCE=.\src\halo.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\help.cpp
 # End Source File
 # Begin Source File
 
@@ -388,6 +396,10 @@ SOURCE=.\src\cavegen.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\clipboard.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\widgets\combo.hpp
 # End Source File
 # Begin Source File
@@ -437,6 +449,10 @@ SOURCE=.\src\gamestatus.hpp
 # Begin Source File
 
 SOURCE=.\src\halo.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\help.hpp
 # End Source File
 # Begin Source File
 
