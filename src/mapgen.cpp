@@ -1052,8 +1052,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::cerr << "placed castles\n";
 	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
-
-
 	if(nvillages > 0) {
 		const config* const naming = cfg.child("village_naming");
 		config naming_cfg;
@@ -1070,16 +1068,20 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		//alternate between incrementing the x and y value. When they are high enough
 		//to equal or exceed the tiles_per_village, then we have them to the value
 		//we want them at.
-		size_t* village_ptr = &village_x;
 		while(village_x*village_y < tiles_per_village) {
-			(*village_ptr)++;
-			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
+			if(village_x < village_y) {
+				++village_x;
+			} else {
+				++village_y;
+			}
 		}
 
 		std::set<std::string> used_names;
 	
 		for(size_t vx = 0; vx < width; vx += village_x) {
+			std::cerr << "village at " << vx << "\n";
 			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
+				
 				const size_t add_x = rand()%3;
 				const size_t add_y = rand()%3;
 				const size_t x = (vx + add_x) - 1;

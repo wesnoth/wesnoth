@@ -516,8 +516,9 @@ void ai::find_threats()
 		const protected_item& item = *k;
 
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(current_team().is_enemy(u->second.side()) && distance_between(u->first,item.loc) < item.radius) {
-				add_target(target(u->first,item.value,target::THREAT));
+			const int distance = distance_between(u->first,item.loc);
+			if(current_team().is_enemy(u->second.side()) && distance < item.radius) {
+				add_target(target(u->first,item.value*double(item.radius-distance)/double(item.radius),target::THREAT));
 			}
 		}
 	}
@@ -574,6 +575,8 @@ void ai::do_move()
 		}
 	}
 
+	move_leader_to_goals(enemy_dstsrc);
+
 	AI_DIAGNOSTIC("get villages phase");
 
 	std::cerr << "villages...\n";
@@ -622,6 +625,7 @@ void ai::do_move()
 
 	//recruitment phase and leader movement phase
 	if(leader != units_.end()) {
+
 		if(!passive_leader) {
 			move_leader_to_keep(enemy_dstsrc);
 		}
@@ -699,7 +703,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 		attack_enemy(to,target_loc,weapon);
 
-		//if this is the only unit in the planned attack, and the target
+		//if this is the only unit in the attack, and the target
 		//is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
 			add_target(target(target_loc,3.0,target::BATTLE_AID));
@@ -708,20 +712,6 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		return true;
 
 	} else {
-		log_scope("summoning reinforcements...\n");
-
-		std::set<gamemap::location> already_done;
-
-		for(std::vector<attack_analysis>::iterator it = analysis.begin(); it != analysis.end(); ++it) {
-			assert(it->movements.empty() == false);
-			const gamemap::location& loc = it->movements.front().first;
-			if(already_done.count(loc) > 0)
-				continue;
-
-			add_target(target(loc,3.0,target::BATTLE_AID));
-			already_done.insert(loc);
-		}
-
 		return false;
 	}
 }
@@ -1425,11 +1415,57 @@ void ai::do_recruitment()
 	}
 }
 
+void ai::move_leader_to_goals(const move_map& enemy_dstsrc)
+{
+	const config* const goal = current_team().ai_parameters().child("leader_goal");
+
+	if(goal == NULL) {
+		AI_LOG("No goal found");
+		return;
+	}
+
+	const gamemap::location dst(*goal);
+
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end() || leader->second.incapacitated()) {
+		AI_LOG("leader not found");
+		return;
+	}
+
+	AI_LOG("Doing recruitment before goals");
+	
+	do_recruitment();
+
+	const paths::route route = a_star_search(leader->first,dst,1000.0,shortest_path_calculator(leader->second,current_team(),units_,teams_,map_,state_));
+	if(route.steps.empty()) {
+		AI_LOG("route empty");
+		return;
+	}
+
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+
+	std::map<gamemap::location,paths> possible_moves;
+	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
+
+	gamemap::location loc;
+	for(std::vector<gamemap::location>::const_iterator itor = route.steps.begin(); itor != route.steps.end(); ++itor) {
+		if(leader_paths.routes.count(*itor) == 1) {
+			loc = *itor;
+		}
+	}
+
+	if(loc.valid()) {
+		AI_LOG("Moving leader to goal");
+		move_unit(leader->first,loc,possible_moves);
+	}
+}
+
 void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 {
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.stone())
+	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
+	}
 
 	//find where the leader can move
 	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);

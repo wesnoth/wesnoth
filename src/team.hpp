@@ -15,7 +15,6 @@
 
 #include "config.hpp"
 #include "map.hpp"
-#include "unit.hpp"
 
 #include <cassert>
 #include <set>
@@ -66,7 +65,6 @@ public:
 		int income_per_village;
 		std::set<std::string> can_recruit;
 		std::vector<std::string> recruitment_pattern;
-		double aggression, caution;
 		std::vector<int> enemies;
 		std::string team_name;
 
@@ -76,6 +74,8 @@ public:
 		CONTROLLER controller;
 		std::string ai_algorithm;
 		config ai_params;
+
+		std::map<std::string,config> ai_params_tod;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -100,6 +100,7 @@ public:
 	int gold() const;
 	int income() const;
 	void new_turn();
+	void set_time_of_day(const struct time_of_day& tod);
 	void get_shared_maps();
 	void spend_gold(int amount);
 	void set_income(int amount);
@@ -173,6 +174,8 @@ private:
 	bool auto_shroud_updates_;
 
 	team_info info_;
+
+	config aiparams_;
 };
 
 struct teams_manager {

@@ -459,6 +459,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 					calculate_healing(gui,status,map,units,player_number,teams);
 				}
 
+				team_it->set_time_of_day(status.get_time_of_day());
+
 				gui.set_playing_team(size_t(player_number-1));
 
 				clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);

@@ -213,6 +213,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 	if(defines.size() < 4) {
 		bool is_valid = true;
 		std::stringstream str;
+		str << "-v" << game_config::version;
 		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
 			if(i->second.value != "" || i->second.arguments.empty() == false) {
 				is_valid = false;

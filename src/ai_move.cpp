@@ -523,7 +523,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		access_points(srcdst,best->first,best_target->loc,locs);
 
 		if(locs.empty() == false) {
-			AI_DIAGNOSTIC("supporting unit at " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1));
+			AI_LOG("supporting unit at " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1));
 			location best_loc;
 			int best_defense = 0;
 			double best_vulnerability = 0.0;
@@ -578,14 +578,14 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(dangerous) {
-		AI_DIAGNOSTIC("dangerous path");
+		AI_LOG("dangerous path");
 		std::set<location> group, enemies;
 		const location dst = form_group(best_route.steps,dstsrc,srcdst,group);
 		enemies_along_path(best_route.steps,enemy_dstsrc,enemy_srcdst,enemies);
 
 		const double our_strength = compare_groups(group,enemies,best_route.steps);
 
-		if(our_strength > 1.0 + current_team().caution()) {
+		if(our_strength > 0.5 + current_team().caution()) {
 			AI_DIAGNOSTIC("moving group");
 			const bool res = move_group(dst,best_route.steps,group);
 			AI_DIAGNOSTIC("");
@@ -599,7 +599,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 			}
 		} else {
-			AI_DIAGNOSTIC("massing to attack " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1) + " " + str_cast(our_strength));
+			AI_LOG("massing to attack " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1) + " " + str_cast(our_strength));
 
 			const double value = best_target->value;
 			const location target_loc = best_target->loc;
@@ -644,6 +644,9 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		}
 	}
 
+	AI_LOG("Best route is " + best->second.type().name() + " " + str_cast(best_route.steps.front().x+1) + "," + str_cast(best_route.steps.front().y+1) + " -> "
+		                    + str_cast(best_route.steps.back().x+1) + "," + str_cast(best_route.steps.back().y+1));
+
 	for(std::vector<location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
@@ -673,9 +676,12 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 					} else {
 						targets.erase(best_target);
 					}
+
+					AI_LOG("Moving to " + str_cast(its.first->first.x+1) + "," + str_cast(its.first->first.y+1));
 				
 					return std::pair<location,location>(its.first->second,its.first->first);
 				} else {
+					AI_LOG("dangerous!");
 					is_dangerous = true;
 				}
 			}
@@ -685,7 +691,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(best != units_.end()) {
-		std::cerr  << "Could not make good move, staying still\n";
+		AI_LOG("Could not make good move, staying still");
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
@@ -693,7 +699,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		return std::pair<location,location>(best->first,best->first);
 	}
 
-	std::cerr  << "Could not find anywhere to move!\n";
+	AI_LOG("Could not find anywhere to move!");
 	return std::pair<location,location>();
 }
 

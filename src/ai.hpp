@@ -340,6 +340,7 @@ protected:
 
 	virtual void move_leader_to_keep(const move_map& enemy_dstsrc);
 	virtual void move_leader_after_recruit(const move_map& enemy_dstsrc);
+	virtual void move_leader_to_goals(const move_map& enemy_dstsrc);
 
 	virtual bool recruit_usage(const std::string& usage);
 
