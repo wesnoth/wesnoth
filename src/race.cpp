@@ -9,7 +9,6 @@ void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
 {
 	for(size_t i = 0; i <= str.size(); ++i) {
 		const size_t start = i > length ? i - length : 0;
-		//const wide_string key = str.substr(start, i-start);
 		const wide_string key(str.begin() + start, str.begin() + i);
 		const wchar_t c = i != str.size() ? str[i] : 0;
 		res[key].push_back(c);
@@ -67,7 +66,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 	int prefixLen;
 	while (res.size() > 0) {
 		prefixLen = chain_size < res.size() ? chain_size : res.size();
-		//prefix = res.substr(res.size() - prefixLen, prefixLen);
 		prefix = wide_string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
@@ -81,7 +79,6 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		}
 		// The current ending is invalid, remove the last character
 		// and retry.
-		//res.erase(res.size() - 1);
 		res.pop_back();
 	}
 	// No valid ending at all could be found. This generally should
