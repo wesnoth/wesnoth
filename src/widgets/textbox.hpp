@@ -58,6 +58,7 @@ public:
 	void process();
 
 	void set_location(int x, int y);
+	void set_width(int w);
 
 	void set_focus(bool new_focus);
 };

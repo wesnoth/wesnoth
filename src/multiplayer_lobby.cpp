@@ -19,33 +19,33 @@ RESULT enter(display& disp, config& game_data)
 {
 	CKey key;
 
-	const int border = 5;
-
 	std::vector<std::string> messages;
 
 	gui::textbox message_entry(disp,500);
 
-	for(;;) {
-		std::cerr << "game data: " << game_data.write() << "\n";
-		gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,0,0,0,1.0,
-		                    disp.video().getSurface());
+	SDL_Surface* const background = disp.getImage("misc/lobby.png",
+	                                              display::UNSCALED);
 
+	update_whole_screen();
+
+	for(;;) {
+		if(background != NULL)
+			SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
+
+		std::cerr << "game data: " << game_data.write() << "\n";
+
+		// Display Chats
 		std::stringstream text;
 		for(size_t n = messages.size() > 8 ? messages.size()-8 : 0;
 		    n != messages.size(); ++n) {
 			text << messages[n] << "\n";
 		}
 
-		message_entry.set_location(border,
-		                           disp.y()-border-message_entry.height());
-
-		gui::button send_message(disp,"Send Message");
-		send_message.set_xy(border*2+message_entry.width(),
-		                    disp.y()-border-send_message.height());
-
 		font::draw_text(&disp,disp.screen_area(),12,font::NORMAL_COLOUR,
-		                text.str(),border,400);
+		                text.str(),19,574);
+		update_rect(19,574,832,130);
 
+		// Game List GUI
 		const config* const gamelist = game_data.child("gamelist");
 		assert(gamelist != NULL);
 
@@ -64,16 +64,10 @@ RESULT enter(display& disp, config& game_data)
 		}
 
 		gui::menu games_menu(disp,options);
-		games_menu.set_loc(border,border);
 		gui::button join_game(disp,string_table["join_game"]);
 		gui::button new_game(disp,string_table["create_new_game"]);
 		gui::button quit_game(disp,string_table["quit_button"]);
 		
-		const int buttons_y = border*2 + games_menu.height();
-		join_game.set_xy(border,buttons_y);
-		new_game.set_xy(border*2+join_game.width(),buttons_y);
-		quit_game.set_xy(border*3+join_game.width()+new_game.width(),buttons_y);
-
 		std::vector<std::string> users;
 		for(i = game_data.child_range("user"); i.first != i.second; ++i.first) {
 			std::string name = (**i.first)["name"];
@@ -85,7 +79,19 @@ RESULT enter(display& disp, config& game_data)
 		assert(users.empty() == false);
 
 		gui::menu users_menu(disp,users);
-		users_menu.set_loc(disp.x()-border-users_menu.width(),border);
+
+		// Set GUI locations
+		users_menu.set_loc(869,23);
+		users_menu.set_width(129);
+		update_rect(869,23,129,725);
+		games_menu.set_loc(19,23);
+		games_menu.set_width(832);
+		update_rect(19,23,832,520);
+		join_game.set_xy(19,545);
+		new_game.set_xy(19+join_game.width()+5,545);
+		quit_game.set_xy(19+join_game.width()+5+new_game.width()+5,545);
+		message_entry.set_location(19,725);
+		message_entry.set_width(832);
 
 		update_whole_screen();
 
@@ -134,13 +140,13 @@ RESULT enter(display& disp, config& game_data)
 	
 					return CREATE;
 				}
-
+				update_whole_screen();
 				break;
 			}
 
 			const bool enter = key[KEY_ENTER] && !old_enter;
 			old_enter = key[KEY_ENTER];
-			if((enter || send_message.process(mousex,mousey,left_button)) &&
+			if((enter) &&
 			   message_entry.text().empty() == false) {
 				config msg;
 				config& child = msg.add_child("message");
@@ -172,6 +178,8 @@ RESULT enter(display& disp, config& game_data)
 					messages.push_back(message.str());
 					break;
 				}
+
+				update_whole_screen();
 			}
 
 			events::pump();

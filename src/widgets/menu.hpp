@@ -26,6 +26,7 @@ public:
 	int selection() const;
 
 	void set_loc(int x, int y);
+	void set_width(int w);
 
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	            bool page_up, bool page_down, int select_item=-1);

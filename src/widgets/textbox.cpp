@@ -178,6 +178,12 @@ void textbox::set_location(int x, int y)
 	buffer_.assign(get_surface_portion(disp_.video().getSurface(),portion));
 }
 
+void textbox::set_width(int w)
+{
+	width_ = w;
+	set_location(x_, y_);
+}
+
 void textbox::set_focus(bool new_focus)
 {
 	focus_ = new_focus;

@@ -80,6 +80,12 @@ void menu::set_loc(int x, int y)
 	}
 }
 
+void menu::set_width(int w)
+{
+	width_ = w;
+	set_loc(x_, y_);
+}
+
 void menu::calculate_position()
 {
 	if(click_selects_)
