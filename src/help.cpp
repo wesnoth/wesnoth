@@ -785,7 +785,7 @@ std::vector<topic> generate_unit_topics() {
 					const terrain_type& info = map->get_terrain_info(terrain);
 					if (!info.is_alias()) {
 						std::vector<std::pair<std::string, unsigned> > row;
-						const std::string& name = string_table[map->terrain_name(terrain)];
+						const std::string &name = info.name();
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
 						str << "<ref>text='" << escape(name) << "' dst='"
@@ -853,8 +853,8 @@ std::vector<topic> generate_terrains_topics() {
 									  (char)gamemap::FOGGED), show_info_about.end());
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
-		const std::string& name = string_table[map->terrain_name(*terrain_it)];
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
+		const std::string &name = info.name();
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << info.default_image() << ".png'</img>\n\n";
 		if (info.is_alias()) {
@@ -863,7 +863,7 @@ std::vector<topic> generate_terrains_topics() {
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				 it != aliased_terrains.end(); it++) {
 				const gamemap::TERRAIN t = *it;
-				const std::string alias_name = string_table[map->terrain_name(t)];
+				const std::string alias_name = map->get_terrain_info(t).name();
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 						 << escape(std::string("terrain_") + t) << "'</ref>";
 				if (it + 2 == aliased_terrains.end()) {
@@ -1357,9 +1357,9 @@ void help_text_area::handle_ref_cfg(const config &cfg) {
 	if (find_topic(toplevel_, dst) == NULL && !force) {
 		show_ref = false;
 	}
-	if (dst == "" || text == "") {
+	if (dst == "") {
 		std::string msg = 
-			"Ref markup must have both dst and text attributes. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
+			"Ref markup must have dst attribute. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
 		msg += cfg.write();
 		throw parse_error(msg);
 	}
