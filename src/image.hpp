@@ -51,10 +51,12 @@ namespace image {
 
 	enum TYPE { UNSCALED, SCALED, FOGGED, GREYED, BRIGHTENED };
 
+	enum COLOUR_ADJUSTMENT { ADJUST_COLOUR, NO_ADJUST_COLOUR };
+
 	//function to get the surface corresponding to an image.
 	//note that this surface must be freed by the user by calling
 	//SDL_FreeSurface
-	SDL_Surface* get_image(const std::string& filename,TYPE type=SCALED);
+	SDL_Surface* get_image(const std::string& filename,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
 
 	//function to get a scaled image, but scale it to specific dimensions.
 	//if you later try to get the same image using get_image() the image will

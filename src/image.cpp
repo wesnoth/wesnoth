@@ -173,7 +173,7 @@ void set_zoom(double amount)
 	}
 }
 
-SDL_Surface* get_image(const std::string& filename,TYPE type)
+SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT adjust_colour)
 {
 	SDL_Surface* result = NULL;
 	if(type == GREYED) {
@@ -254,7 +254,9 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 			if(result == NULL)
 				return NULL;
 
-			adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
+			if(adjust_colour == ADJUST_COLOUR) {
+				adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
+			}
 
 			scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
 		}

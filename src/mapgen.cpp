@@ -286,6 +286,147 @@ double road_path_calculator::cost(const location& loc, double so_far) const
 	return windiness*res;
 }
 
+//a function that takes the locations of castles, villages, and the map border,
+//and repositions castles to be better located.
+//This function runs the castles through an attraction/repulsion system, where
+// - castles repel each other (strongly)
+// - villages attract castles (mildly)
+// - map borders repel castles (moderately)
+// the aim is to have castles nicely spread out
+void place_castles(std::vector<gamemap::location>& castles, const std::set<gamemap::location>& village_locs,
+				   int min_x, int min_y, int max_x, int max_y)
+{
+	std::vector<double> xvelocity, yvelocity;
+	std::vector<gamemap::location>::iterator ci;
+	for(ci = castles.begin(); ci != castles.end(); ++ci) {
+		ci->x *= 1000;
+		ci->y *= 1000;
+		xvelocity.push_back(0.0);
+		yvelocity.push_back(0.0);
+		std::cerr << "castle at " << ci->x << "," << ci->y << "\n";
+	}
+
+	std::set<gamemap::location> villages = village_locs;
+	std::set<gamemap::location>::iterator v;
+	for(v = villages.begin(); v != villages.end(); ++v) {
+		v->x *= 1000;
+		v->y *= 1000;
+	}
+
+	const double force_multiplier = 0.1;
+
+	const int niterations = 20;
+	for(int i = 0; i != niterations; ++i) {
+
+		//go through each castle, repelling
+		for(ci = castles.begin(); ci != castles.end(); ++ci) {
+			const size_t index = ci - castles.begin();
+			for(std::vector<gamemap::location>::iterator i = castles.begin(); i != castles.end(); ++i) {
+				if(i == ci)
+					continue;
+
+				if(*i == *ci)
+					i->x += 1;
+
+				const double xdist = double(abs(i->x - ci->x));
+				const double ydist = double(abs(i->y - ci->y));
+				const double dist = sqrt(xdist*xdist + ydist*ydist);
+			
+				const double force_size = 50000;
+				if(dist < force_size) {
+					const double power = force_multiplier * (force_size - dist);
+					const double xpower = power * xdist/(xdist+ydist) * (ci->x < i->x ? -1.0 : 1.0);
+					const double ypower = power * ydist/(xdist+ydist) * (ci->y < i->y ? -1.0 : 1.0);
+					xvelocity[index] += xpower;
+					yvelocity[index] += ypower;
+					std::cerr << "xpower = " << xpower << ", ypower = " << ypower << "\n";
+				}
+			}
+
+			//go through each village, attracting
+			for(v = villages.begin(); v != villages.end(); ++v) {
+				if(v->x < min_x*1000 || v->x > max_x*1000 || v->y < min_y*1000 || v->y > max_y*1000) {
+					continue;
+				}
+
+				const double xdist = double(abs(v->x - ci->x));
+				const double ydist = double(abs(v->y - ci->y));
+				const double dist = sqrt(xdist*xdist + ydist*ydist);
+
+				if(*ci == *v)
+					ci->x += 1;
+			
+				const double force_size = 20000;
+				if(dist < force_size) {
+					const double power = force_multiplier * (force_size - dist);
+					const double xpower = power * xdist/(xdist+ydist) * (ci->x < v->x ? 1.0 : -1.0);
+					const double ypower = power * ydist/(xdist+ydist) * (ci->y < v->y ? 1.0 : -1.0);
+					xvelocity[index] += xpower;
+					yvelocity[index] += ypower;
+				}			
+			}
+
+			//repel from the borders
+			const int border_force = 30000;
+			if(ci->x < min_x*1000 + border_force) {
+				const double power = force_multiplier * (border_force - (ci->x - min_x*1000));
+				xvelocity[index] += power;
+			}
+
+			if(ci->x > max_x*1000 - border_force) {
+				const double power = force_multiplier * (border_force - (max_x*1000 - ci->x));
+				xvelocity[index] -= power;
+			}
+
+			if(ci->y < min_y*1000 + border_force) {
+				const double power = force_multiplier * (border_force - (ci->y - min_y*1000));
+				yvelocity[index] += power;
+			}
+
+			if(ci->y > max_y*1000 - border_force) {
+				const double power = force_multiplier * (border_force - (max_y*1000 - ci->y));
+				yvelocity[index] -= power;
+			}
+
+			const double friction = 0.8;
+			xvelocity[index] *= friction;
+			yvelocity[index] *= friction;
+
+			ci->x += int(xvelocity[index]);
+			ci->y += int(yvelocity[index]);
+
+			if(ci->x > max_x*1000) {
+				xvelocity[index] *= -1.0;
+				ci->x = max_x*1000;
+			}
+
+			if(ci->x < min_x*1000) {
+				xvelocity[index] *= -1.0;
+				ci->x = min_x*1000;
+			}
+
+			if(ci->y > max_y*1000) {
+				yvelocity[index] *= -1.0;
+				ci->y = max_y*1000;
+			}
+
+			if(ci->y < min_y*1000) {
+				yvelocity[index] *= -1.0;
+				ci->y = min_y*1000;
+			}
+
+			std::cerr << "castle at " << ci->x << "," << ci->y << " (" << xvelocity[index] << "," << yvelocity[index] << "\n";
+		}
+	}
+
+	for(ci = castles.begin(); ci != castles.end(); ++ci) {
+		ci->x /= 1000;
+		ci->y /= 1000;
+		ci->x = minimum<int>(maximum<int>(ci->x,min_x),max_x);
+		ci->y = minimum<int>(maximum<int>(ci->y,min_y),max_y);
+	}
+}
+
 }
 
 //function to generate the map.
@@ -557,7 +698,7 @@ std::string default_generate_map(size_t width, size_t height,
 	//in 'valid_terrain'.
 	int ntries = 0;
 	bool placing_bad = true;
-	const size_t max_tries = 50000;
+	const size_t max_tries = 1; //50000;
 	while(placing_bad && ntries++ < max_tries) {
 
 		std::vector<location> castles;
@@ -567,6 +708,8 @@ std::string default_generate_map(size_t width, size_t height,
 
 			castles.push_back(location(x,y));
 		}
+
+		place_castles(castles,villages,width/3,height/3,(width/3)*2 - 1,(height/3)*2 - 1);
 
 		//make sure all castles are placed on valid terrain. Check the castle tile
 		//itself, and all surrounding tiles

@@ -1187,7 +1187,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			return;
 		}
 
-		energy_image.assign(image::get_image(*energy_file));
+		energy_image.assign(image::get_image(*energy_file,image::SCALED,image::NO_ADJUST_COLOUR));
 		if(energy_image.get() == NULL) {
 			std::cerr << "failed to get energy image: '" << *energy_file << "'\n";
 			return;
