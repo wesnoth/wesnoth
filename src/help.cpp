@@ -509,9 +509,6 @@ std::vector<topic> generate_ability_topics() {
 				if (checked_abilities.find(*it) == checked_abilities.end()) {
 					const std::string id = "ability_" + *it;
 					std::string lang_ability = cap(string_table[id]);
-					if (lang_ability == "") {
-						lang_ability = cap(*it);
-					}
 					std::string description = string_table[*it + "_description"];
 					const size_t colon_pos = description.find(':');
 					if (colon_pos != std::string::npos) {
@@ -593,9 +590,6 @@ std::vector<topic> generate_unit_topics() {
 					 ability_it != type.abilities().end(); ability_it++) {
 					const std::string ref_id = std::string("ability_") + *ability_it;
 					std::string lang_ability = string_table[ref_id];
-					if (lang_ability == "") {
-						lang_ability = *ability_it;
-					}
 					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
 					   << "'</ref>";
 					if (ability_it + 1 != type.abilities().end()) {
@@ -799,7 +793,7 @@ std::vector<topic> generate_unit_topics() {
 	}
 	return topics;
 }
-	
+
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
 	const std::string id = type.name();
 	const std::set<std::string> &encountered_units = preferences::encountered_units();
