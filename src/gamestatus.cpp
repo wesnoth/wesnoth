@@ -266,6 +266,7 @@ void load_game(game_data& data, const std::string& name, game_state& state)
 	state = read_game(data,&cfg);
 }
 
+//throws gamestatus::save_game_failed
 void save_game(const game_state& state)
 {
 	log_scope("save_game");
@@ -273,6 +274,10 @@ void save_game(const game_state& state)
 	std::replace(name.begin(),name.end(),' ','_');
 
 	config cfg;
-	write_game(state,cfg);
-	write_file(get_saves_dir() + "/" + name,cfg.write());
+	try {
+		write_game(state,cfg);
+		write_file(get_saves_dir() + "/" + name,cfg.write());
+	} catch(io_exception& e) {
+		throw gamestatus::save_game_failed(e.what());
+	};
 }

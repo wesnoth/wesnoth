@@ -65,6 +65,14 @@ public:
 		std::string message;
 	};
 
+	//an exception object used when saving a game fails.
+	struct save_game_failed {
+		save_game_failed() {}
+		save_game_failed(const std::string& msg) : message(msg) {}
+
+		std::string message;
+	};
+
 	//an exception object used for any general game error.
 	//e.g. data files are corrupt.
 	struct game_error {
@@ -123,6 +131,7 @@ bool save_game_exists(const std::string & name);
 
 //functions to load/save games.
 void load_game(game_data& data, const std::string& name, game_state& state);
+//throws gamestatus::save_game_failed
 void save_game(const game_state& state);
 
 

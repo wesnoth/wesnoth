@@ -90,6 +90,10 @@ void read_file_internal(const std::string& fname, std::string& res)
 
 } //end anon namespace
 
+const char* io_exception::what() const throw() {
+	return message.c_str();
+}
+
 std::string read_file(const std::string& fname)
 {
 	//if we have a path to the data,
@@ -107,11 +111,13 @@ std::string read_file(const std::string& fname)
 	return res;
 }
 
+//throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {
 	std::ofstream file(fname.c_str());
-	if(file.bad()) {
+	if(!file.good()) {
 		std::cerr << "error writing to file: '" << fname << "'\n";
+		throw io_exception("Error writing to file: " + fname);
 	}
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		file << *i;

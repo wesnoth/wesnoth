@@ -47,8 +47,20 @@ struct line_source
 
 bool operator<(const line_source& a, const line_source& b);
 
+//an exception object used when an IO error occurs
+struct io_exception : public std::exception {
+	io_exception() {}
+	io_exception(const std::string& msg) : message(msg) {}
+	virtual ~io_exception() throw() {}
+
+	virtual const char* what() const throw();
+private:
+	std::string message;
+};
+
 //basic disk I/O
 std::string read_file(const std::string& fname);
+//throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);
 
 struct preproc_define {

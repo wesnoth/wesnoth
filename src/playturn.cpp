@@ -889,7 +889,12 @@ void turn_info::end_turn()
 	//auto-save
 	config start_pos;
 	write_game_snapshot(start_pos);
-	recorder.save_game(gameinfo_,string_table["auto_save"],start_pos);
+	try {
+		recorder.save_game(gameinfo_,string_table["auto_save"],start_pos);
+	} catch(gamestatus::save_game_failed& e) {
+		gui::show_dialog(gui_,NULL,"",string_table["auto_save_game_failed"],gui::MESSAGE);
+		//do not bother retrying, since the user can just save the game
+	};
 	recorder.end_turn();
 }
 
@@ -1160,8 +1165,13 @@ void turn_info::save_game(const std::string& message)
 	if(res == 0) {
 		config start;
 		write_game_snapshot(start);
-		recorder.save_game(gameinfo_,label,start);
-		gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
+		try {
+			recorder.save_game(gameinfo_,label,start);
+			gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
+		} catch(gamestatus::save_game_failed& e) {
+			gui::show_dialog(gui_,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+			//do not bother retrying, since the user can just try to save the game again
+		};
 	}
 }
 

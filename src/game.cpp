@@ -102,14 +102,26 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 				std::string label = state.label + " replay";
 
-				const int should_save = dialogs::get_save_name(disp, 
-											string_table["save_replay_message"],
-											string_table["save_game_label"],
-											&label);	
-				if(should_save == 0) {
-					config starting_pos;
-					recorder.save_game(units_data,label,starting_pos);
-				}
+				bool retry;
+
+				do {
+					retry=false;
+
+					const int should_save = dialogs::get_save_name(disp,
+												string_table["save_replay_message"],
+												string_table["save_game_label"],
+												&label);
+					if(should_save == 0) {
+						try {
+							config starting_pos;
+
+							recorder.save_game(units_data,label,starting_pos);
+						} catch(gamestatus::save_game_failed& e) {
+							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+							retry=true;
+						};
+					}
+				} while(retry);
 
 				state.scenario = orig_scenario;
 			}
@@ -144,15 +156,26 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		//if this isn't the last scenario, then save the game
 		if(scenario != NULL) {
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
-			
-			const int should_save = dialogs::get_save_name(disp,
-												string_table["save_game_message"],
-												string_table["save_game_label"],
-												&state.label);
-			
-			if(should_save == 0) {
-				save_game(state);
-			}
+
+			bool retry;
+
+			do {
+				retry=false;
+
+				const int should_save = dialogs::get_save_name(disp,
+													string_table["save_game_message"],
+													string_table["save_game_label"],
+													&state.label);
+
+				if(should_save == 0) {
+					try {
+						save_game(state);
+					} catch(gamestatus::save_game_failed& e) {
+						gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
+						retry=true;
+					};
+				}
+			} while(retry);
 		}
 	}
 
