@@ -25,14 +25,32 @@
 namespace map_editor {
 
 /// A saved action that may be undone.
-struct map_undo_action {
+class map_undo_action
+{
+public:
+	map_undo_action() {
+	}
 	map_undo_action(const gamemap::TERRAIN& old_tr,
-					const gamemap::TERRAIN& new_tr,
-					const gamemap::location& lc)
-		: old_terrain(old_tr), new_terrain(new_tr), location(lc) {}
-	gamemap::TERRAIN old_terrain;
-	gamemap::TERRAIN new_terrain;
-	gamemap::location location;
+			const gamemap::TERRAIN& new_tr,
+			const gamemap::location& lc){
+		add(old_tr, new_tr, lc);
+	}
+ 	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const {
+ 		return old_;
+ 	}
+ 	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const {
+ 		return new_;
+ 	}
+	void add(const gamemap::TERRAIN& old_tr,
+		 const gamemap::TERRAIN& new_tr,
+		 const gamemap::location& lc) {
+		old_[lc] = old_tr;
+		new_[lc] = new_tr;
+	}
+
+private:
+	std::map<gamemap::location,gamemap::TERRAIN> old_;
+	std::map<gamemap::location,gamemap::TERRAIN> new_;
 };
 
 typedef std::deque<map_undo_action> map_undo_list;
@@ -169,6 +187,10 @@ private:
 	/// players. Should be called when the terrain has changed, which
 	/// may have changed the starting positions.
 	void recalculate_starting_pos_labels();
+
+	/// Add an undo action to the undo stack. Resize the stack if it
+	/// gets larger than the maximum size.
+	void add_undo_action(const map_undo_action &action);
 
 	display &gui_;
 	gamemap &map_;
