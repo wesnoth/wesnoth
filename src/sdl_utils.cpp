@@ -31,9 +31,9 @@ int sdl_add_ref(SDL_Surface* surface)
 void draw_unit_ellipse(SDL_Surface* target, short colour, const SDL_Rect& clip, int unitx, int unity,
                        SDL_Surface* behind, bool image_reverse)
 {
-	const int xloc = unitx + (behind->w*2)/10;
+	const int xloc = unitx + (behind->w*15)/100;
 	const int yloc = unity + (behind->h*7)/10;
-	const int width = (behind->w*6)/10;
+	const int width = (behind->w*70)/100;
 	const int height = behind->h/6;
 
 	const double centerx = xloc + double(width)*0.5;
