@@ -4,9 +4,8 @@ CVS HEAD:
    * added theme dialog, launched with ":theme"	
  * campaign modifications
    * tutorial polishing
-   * updated all campaigns to use the new [objectives] tag
    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
-   * updated the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
+   * modified the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
    * updated Heir to the Throne and The Rise of Wesnoth to use the ruined keeps where appropriate
    * dialog improvements in Eastern Invasion
    * new map for Drowned Plains (Eastern Invasion)
@@ -20,15 +19,15 @@ CVS HEAD:
      * sunken ruin
      * swamp-ruin
      * river ford
-   * improved lava terrain
+     * lava
  * unit graphics and sound improvements 
    * updated images for several units: Cave Spider, Haldric, Lady Jessica, Mermaid Priestess, Mermaid Diviner, Merman Hunter, Merman Javelineer, Merman Spearman
    * updated Haldric's portrait in The Rise of Wesnoth
    * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (The Rise of Wesnoth)
-   * added support for animated deaths, and added animations for skeleton and revenant
+   * added support for animated deaths, and added animations for Skeleton and Revenant
    * fixed several image files being referred to by wrong name
    * removed sound of thrown spear from Drake Clasher spear melee attack
-   * added get_hit_sound:s to Elder Mage (Delfador) and Elvish Lady (Parandra)
+   * added get_hit_sounds to Elder Mage (Delfador) and Elvish Lady (Parandra)
  * unit balancing:
    * Soulless: dropped cost to 11, increased  HP to 28
    * Merfolk: defense on water and swamp reduced by 10%. 
@@ -49,7 +48,6 @@ CVS HEAD:
 * language and i18n:
   * language fixes and polishing (English)
   * fixed hero names not being translatable
-  * fixed a giant error in Drake Clasher description
   * made text strings automatically choose an appropriate font
   * fixed untranslatable strings
   * new translations: 
@@ -59,11 +57,12 @@ CVS HEAD:
     * Japanese
   * updated translations: 
     * Basque
+    * British English (100%)
     * Catalan
-    * Dutch
+    * Dutch (100%)
     * Finnish
     * French
-    * German
+    * German (100%)
     * Greek
     * Hungarian
     * Italian
@@ -74,19 +73,23 @@ CVS HEAD:
     * Slovak
     * Slovenian
     * Spanish
+    * Swedish (100%)
  * WML modifications
+   * changed the [movement costs] WML tag into [movement_costs]
    * added generate_description to [unit], to allow automatic generation of user_description
-   * changed plague to allow plague(unit_type) as well as undead_variation 
    * made [capture_village] accept a location range
    * added support for [objectives] event actions, to set objectives.
    * added the ability for sides to have different objectives.
  * multiplayer improvements
-   * rewrite of mp lobby code
+   * rewrote multiplayer lobby code
    * changed Broken_Bridge to use new ruined castles
    * added new multiplayer maps: Icy Waters, Clash
    * changed King_of_the_Hill to use a Dwarvish Castle
    * chat messages are now displayed in the user's colour when prefixed with /me
    * split the map and scenario file for 'An Island'
+   * disabled debug mode for multiplayer games
+ * changed plague to allow plague(unit_type) as well as undead_variation 
+ * rewrote WML parser with stricter grammar and better error handling
  * added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
@@ -94,9 +97,10 @@ CVS HEAD:
  * slight cleanup of the terrain graphics code
  * added a --disable-game configure option to avoid compiling and installing the game
  * share the object files between all the programs to halve the time of a full compilation
- * the "End turn" button is now disabled when it is irrelevant.
+ * disabled "End turn" button when it is irrelevant.
  * added OS X ScrapManager support
- * various bug fixes and code clean ups
+ * code refactoring and dependency cleanups
+ * various bug fixes and code cleanups
 
 Version 0.8.11:
  * new translation:
