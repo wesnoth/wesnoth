@@ -1,14 +1,25 @@
 CVS HEAD:
+ * new and improved graphics: 
+   * canyons
+   * signpost
  * improved sound quality
  * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
+ * scenario balancing for 'The Eastern Invasion' campaign:
+   * Weldyn under attack
+ * increased damage Drake Slave and Drake Worker
  * new units
    * Drake Hatchling
+   * Drake Warmage
+   * Skeletal Dragon
+   * Troll Hero
  * multiplayer improvements:
    * 'Great War' era
    * limit to username lenght
    * banning for multiplayer server games
+ * support for multi-animation attacks
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
  * support for relative {./includes} in WML files
+ * added recruit event
  * fixed enemies being on wrong side in 'The Dark Hordes: A New Chance' scenario
  * fixed image::locator not building on MSVC6
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
@@ -21,9 +32,19 @@ CVS HEAD:
  * fixed markovian name generation not playing well with UTF-8 names
  * fixed map border not getting changed when using [terrain] to change terrain (#9840)
  * fixed extraneous dots path (#9903)
+ * fixed shift due to the way coordinates are now interpreted
+ * fixed objectives, spelling and grammar in 'The Rise of Wesnoth' campaign
+ * fixed 'The Rise of Wesnoth: Temple of Deep' scenario
+ * fixed seeing invisible units when they move
+ * fixed bug with exiting caves in 'The Eastern Invasion: Captured' scenario
+ * fixed bugs in 'The Eastern Invasion: Evacuation' scenario
+ * fixed holy water in 'Heir to the Throne: Valley of Death' scenario
+ * fixed a bug where a unit moving with [move_unit_fake] segfaulted the game
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
+ * limited length of schema items in compressed WML to make a DoS attack harder to perform 
  * dummy config.h file for platforms where ./configure is not used
+ * file hierarchy cleanups
 
 Version 0.8.1:
  * new campaign: The Rise of Wesnoth (17 fully playable scenarios)
