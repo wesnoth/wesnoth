@@ -1,6 +1,6 @@
 SDL_CFLAGS = `sdl-config --cflags` `freetype-config --cflags`
 SDL_LIBS = `sdl-config --libs` -lSDL_ttf -lSDL_mixer -lSDL_image -lSDL_net `freetype-config --libs`
-OBJS= server.o ../config.o ../filesystem.o ../game_config.o ../log.o ../network.o
+OBJS= game.o server.o ../config.o ../filesystem.o ../game_config.o ../log.o ../network.o
 
 server: $(OBJS)
 	gcc -lstdc++ ${SDL_CFLAGS} -o $@ ${OBJS} ${SDL_LIBS}

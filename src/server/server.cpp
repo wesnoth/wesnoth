@@ -3,77 +3,13 @@
 
 #include "SDL.h"
 
+#include "game.hpp"
+
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <vector>
-
-class game
-{
-public:
-	game() : id_(id_num++)
-	{}
-
-	bool is_member(network::connection player) const {
-		return std::find(players_.begin(),players_.end(),player)
-		                                         != players_.end();
-	}
-
-	void add_player(network::connection player) {
-		players_.push_back(player);
-	}
-
-	void remove_player(network::connection player) {
-		std::vector<network::connection>::iterator itor =
-		             std::find(players_.begin(),players_.end(),player);
-		if(itor != players_.end())
-			players_.erase(itor);
-	}
-
-	int id() const { return id_; }
-
-	void send_data(const config& data, network::connection exclude=0) {
-		for(std::vector<network::connection>::const_iterator
-		    i = players_.begin(); i != players_.end(); ++i) {
-			if(*i != exclude) {
-				network::send_data(data,*i);
-			}
-		}
-	}
-
-	bool level_init() const { return level_.child("side") != NULL; }
-
-	config& level() { return level_; }
-
-	bool empty() const { return players_.empty(); }
-
-	void disconnect() {
-		for(std::vector<network::connection>::iterator i = players_.begin();
-		    i != players_.end(); ++i) {
-			network::disconnect(*i);
-		}
-
-		players_.clear();
-	}
-
-private:
-	static int id_num;
-	int id_;
-	std::vector<network::connection> players_;
-	config level_;
-};
-
-int game::id_num = 1;
-
-struct game_id_matches
-{
-	game_id_matches(int id) : id_(id) {}
-	bool operator()(const game& g) const { return g.id() == id_; }
-
-private:
-	int id_;
-};
 
 int main()
 {

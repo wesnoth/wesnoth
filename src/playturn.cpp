@@ -500,7 +500,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		// MOUSE WHEEL BOUNDARY CHECK
 
-		if(gui::scrollamount() && (mousex > 50 && mousex < gui.x()-50) &&
+		if(gui::scrollamount() && (mousex > 50 && mousex < gui.mapx()-50) &&
 		                          (mousey > 50 && mousey < gui.y()-50)) {
 			// Reset scrolling ... it is just a clean-up so wheel turns
 			//don't cache
@@ -508,7 +508,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		} else {
 			if(gui::scrollamount()) {
 				// Now scroll accordingly as we are in hot-spots				
-				if((mousex >= gui.x()-50 && mousey <= 50) ||
+				if((mousex >= gui.mapx()-50 && mousey <= 50) ||
 				   (mousex <= 50 && mousey >= gui.y()-50)) {
 					// firstly filtering the 2 conflicting corners
 					if(gui::scrollamount() > 0) {
@@ -520,7 +520,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					}
 				} else {
 					// Now general case...
-					if(mousex <= 50 || mousex >= gui.x()-50) {
+					if(mousex <= 50 || mousex >= gui.mapx()-50) {
 						// SCROLL HORIZONTALLY... we are in E or W sides
 						gui::scrollamount() < 0 ?
 						       gui.scroll(-preferences::scroll_speed(),0.0)
