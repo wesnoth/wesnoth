@@ -93,9 +93,6 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		xsrc = disp.get_location_x(a);
 		ysrc = disp.get_location_y(a);
-		xdst = disp.get_location_x(b);
-		ydst = disp.get_location_y(b);
-
 		int xloc = xsrc + int(xstep * i);
 		int yloc = ysrc + int(ystep * i);
 
@@ -108,10 +105,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			disp.scroll_to_tile(b.x,b.y,display::WARP);
 			xsrc = disp.get_location_x(a);
 			ysrc = disp.get_location_y(a);
-			xdst = disp.get_location_x(b);
-			ydst = disp.get_location_y(b);
-			xloc = xsrc + int(xstep*i);
-			yloc = ysrc + int(ystep*i);
+			xloc = xsrc + int(xstep * i);
+			yloc = ysrc + int(ystep * i);
 		}
 
 		//invalidate the source tile and all adjacent tiles,
