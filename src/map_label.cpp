@@ -35,7 +35,7 @@ void map_labels::read(const config& cfg)
 		const gamemap::location loc(**i);
 		const std::string& id = (**i)["id"];
 		const std::string& text = (**i)["text"];
-		set_label(loc,translate_string_default(id,text));
+		set_label(loc,text);
 	}
 }
 

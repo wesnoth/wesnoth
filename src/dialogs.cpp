@@ -65,8 +65,8 @@ void advance_unit(const game_data& info,
 		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().name()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit_type& type = sample_units.back().type();
-		std::cerr << "YANN DEBUG" << "advance_" + (**mod)["id"] << (**mod)["description"];
-		lang_options.push_back("&" + type.image() + "," + translate_string_default("advance_" + (**mod)["id"],(**mod)["description"]));
+		// lang_options.push_back("&" + type.image() + "," + translate_string_default("advance_" + (**mod)["id"],(**mod)["description"]));
+		lang_options.push_back("&" + type.image() + "," + (**mod)["description"]);
 	}
 
 	std::cerr << "options: " << options.size() << "\n";

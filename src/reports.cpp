@@ -127,14 +127,14 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	}
 	case UNIT_ALIGNMENT: {
 		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
-		return report(translate_string(align),"",string_table[align + "_description"]);
+		return report(string_table[align],"",string_table[align + "_description"]);
 	}
 	case UNIT_ABILITIES: {
 		report res;
 		std::stringstream tooltip;
 		const std::vector<std::string>& abilities = u->second.type().abilities();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
-			str << translate_string(*i);
+			str << string_table[*i];
 			if(i+1 != abilities.end())
 				str << ",";
 
@@ -200,7 +200,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				   seen_units.count(&u_it->second.type()) == 0) {
 					seen_units.insert(&u_it->second.type());
 					const int resistance = u_it->second.type().movement_type().resistance_against(*at_it) - 100;
-					resistances[resistance].push_back(translate_string(u_it->second.type().name()));
+					resistances[resistance].push_back(string_table[u_it->second.type().name()]);
 				}
 			}
 
@@ -300,7 +300,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			break;
 
 		const gamemap::TERRAIN terrain = map.get_terrain(mouseover);
-		const std::string& name = map.terrain_name(terrain);
+		const std::string& name = string_table[map.terrain_name(terrain)];
 		const std::vector<std::string>& underlying_names = map.underlying_terrain_name(terrain);
 
 		if(map.is_village(mouseover)) {
@@ -317,15 +317,13 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			str << " ";
 		}
 
-		const std::string& translated_name = translate_string(name);
+		str << name;
 
-		str << translated_name;
-
-		if(underlying_names.size() != 1 || translate_string(underlying_names.front()) != translated_name) {
+		if(underlying_names.size() != 1 || string_table[underlying_names.front()] != name) {
 			str << " (";
 			
 			for(std::vector<std::string>::const_iterator i = underlying_names.begin(); i != underlying_names.end(); ++i) {
-				str << translate_string(*i);
+				str << string_table[*i];
 				if(i+1 != underlying_names.end()) {
 					str << ",";
 				}

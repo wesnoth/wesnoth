@@ -1012,7 +1012,7 @@ void unit::add_modification(const std::string& type,
 						description << "; ";
 					}
 					
-					description << translate_string(a->name()) << " " << desc;
+					description << string_table[a->name()] << " " << desc;
 				}
 			}
 		} else if(apply_to == "hitpoints") {

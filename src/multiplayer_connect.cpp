@@ -273,7 +273,7 @@ void mp_connect::lists_init()
 
 	for(std::vector<config*>::const_iterator race = possible_sides.begin();
 	    race != possible_sides.end(); ++race) {
-		player_races_.push_back(translate_string((**race)["name"]));
+		player_races_.push_back((**race)["name"]);
 	}
 
 	//Teams
@@ -501,7 +501,7 @@ void mp_connect::gui_update()
 
 		//Player Race
 		for (size_t m = 0; m != player_races_.size(); ++m) {
-			if (translate_string(side["name"]) == player_races_[m]) {
+			if (side["name"] == player_races_[m]) {
 				combos_race_[n].set_selected(m);
 			}
 		}
