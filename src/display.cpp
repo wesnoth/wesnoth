@@ -169,7 +169,7 @@ SDL_Rect display::screen_area() const
 
 void display::select_hex(gamemap::location hex)
 {
-	if(team_valid() && teams_[currentTeam_].shrouded(hex.x,hex.y)) {
+	if(team_valid() && teams_[currentTeam_].fogged(hex.x,hex.y)) {
 		return;
 	}
 
@@ -882,6 +882,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	image::TYPE image_type = image::SCALED;
 
+	if(fogged(x,y)) {
+		image_type = image::FOGGED;
+	}
+
 	//find if this tile should be greyed
 	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
 					         pathsList_->routes.end()) {
@@ -1155,7 +1159,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		draw_footstep(loc,xpos-xsrc,ypos-ysrc);
 	}
 
-	if(unit_image == NULL || energy_image == NULL || is_shrouded)
+	if(unit_image == NULL || energy_image == NULL || fogged(x,y))
 		return;
 
 	if(loc != hiddenUnit_) {
@@ -1607,7 +1611,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
                                  const gamemap::location& b, int damage,
                                  const attack_type& attack)
 {
-	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y)
+	const bool hide = update_locked() || fogged(a.x,a.y) && fogged(b.x,b.y)
 	                  || preferences::show_combat() == false;
 
 	const unit_map::iterator att = units_.find(a);
@@ -1766,7 +1770,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
 {
-	if(update_locked() || shrouded(loc.x,loc.y)
+	if(update_locked() || fogged(loc.x,loc.y)
 	   || preferences::show_combat() == false)
 		return;
 
@@ -1799,7 +1803,7 @@ bool display::unit_attack(const gamemap::location& a,
                           const gamemap::location& b, int damage,
 						  const attack_type& attack)
 {
-	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y)
+	const bool hide = update_locked() || fogged(a.x,a.y) && fogged(b.x,b.y)
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
@@ -1982,8 +1986,8 @@ void display::move_unit_between(const gamemap::location& a,
 								const unit& u)
 {
 	if(update_locked() || team_valid()
-	                   && teams_[currentTeam_].shrouded(a.x,a.y)
-	                   && teams_[currentTeam_].shrouded(b.x,b.y))
+	                   && teams_[currentTeam_].fogged(a.x,a.y)
+	                   && teams_[currentTeam_].fogged(b.x,b.y))
 		return;
 
 	const bool face_left = u.facing_left();
@@ -2337,6 +2341,14 @@ bool display::shrouded(int x, int y) const
 {
 	if(team_valid())
 		return teams_[currentTeam_].shrouded(x,y);
+	else
+		return false;
+}
+
+bool display::fogged(int x, int y) const
+{
+	if(team_valid())
+		return teams_[currentTeam_].fogged(x,y);
 	else
 		return false;
 }

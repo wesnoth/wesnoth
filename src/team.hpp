@@ -50,7 +50,7 @@ public:
 
 		std::vector<target> targets;
 
-		bool use_shroud;
+		bool use_shroud, use_fog;
 
 		std::string music;
 	};
@@ -88,12 +88,18 @@ public:
 	bool shrouded(size_t x, size_t y) const;
 	void clear_shroud(size_t x, size_t y);
 
+	bool uses_fog() const;
+	bool fogged(size_t x, size_t y) const;
+	void clear_fog(size_t x, size_t y);
+	void refog();
+
 	const std::string& music() const;
 private:
 	int gold_;
 	std::set<gamemap::location> towers_;
 
 	std::vector<std::vector<bool> > shroud_;
+	std::vector<std::vector<bool> > fog_;
 
 	team_info info_;
 };

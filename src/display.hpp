@@ -238,6 +238,8 @@ public:
 	//function which returns true if location (x,y) is covered in shroud.
 	bool shrouded(int x, int y) const;
 
+	bool fogged(int x, int y) const;
+
 private:
 	display(const display&);
 	void operator=(const display&);

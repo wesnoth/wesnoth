@@ -11,7 +11,7 @@
 namespace {
 
 typedef std::map<std::string,SDL_Surface*> image_map;
-image_map images_,scaledImages_,greyedImages_,brightenedImages_;
+image_map images_,scaledImages_,greyedImages_,brightenedImages_,foggedImages_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
@@ -106,6 +106,7 @@ void flush_cache()
 {
 	clear_surfaces(images_);
 	clear_surfaces(scaledImages_);
+	clear_surfaces(foggedImages_);
 	clear_surfaces(greyedImages_);
 	clear_surfaces(brightenedImages_);
 }
@@ -134,6 +135,7 @@ void set_colour_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		clear_surfaces(scaledImages_);
+		clear_surfaces(foggedImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
 	}
@@ -144,6 +146,7 @@ void set_zoom(double amount)
 	if(amount != zoom) {
 		zoom = amount;
 		clear_surfaces(scaledImages_);
+		clear_surfaces(foggedImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
 	}
@@ -156,13 +159,27 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 		return NULL;
 	}
 
-	if(type == GREYED)
+	if(type == GREYED) {
 		return get_tinted(filename,GREY_IMAGE);
-
-	else if(type == BRIGHTENED)
+	} else if(type == BRIGHTENED) {
 		return get_tinted(filename,BRIGHTEN_IMAGE);
+	} else if(type == FOGGED) {
+		const image_map::iterator i = foggedImages_.find(filename);
+		if(i != foggedImages_.end())
+			return i->second;
 
-	std::map<std::string,SDL_Surface*>::iterator i;
+		SDL_Surface* const surf = get_image(filename,SCALED);
+		if(surf == NULL)
+			return NULL;
+
+		SDL_Surface* const image = scale_surface(surf,surf->w,surf->h);
+		adjust_surface_colour(image,-50,-50,-50);
+		foggedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,
+		                                                         image));
+		return image;
+	}
+
+	image_map::iterator i;
 
 	if(type == SCALED) {
 		i = scaledImages_.find(filename);

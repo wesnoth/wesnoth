@@ -42,7 +42,7 @@ namespace image {
 	//scaled images.
 	void set_zoom(double zoom);
 
-	enum TYPE { UNSCALED, SCALED, GREYED, BRIGHTENED };
+	enum TYPE { UNSCALED, SCALED, FOGGED, GREYED, BRIGHTENED };
 
 	//function to get the surface corresponding to an image.
 	SDL_Surface* get_image(const std::string& filename,TYPE type=SCALED);

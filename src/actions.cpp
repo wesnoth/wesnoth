@@ -95,7 +95,7 @@ std::string recruit_unit(const gamemap& map, int side,
 							recruit_location,new_unit));
 
 	if(disp != NULL && !disp->turbo() &&
-	   !disp->shrouded(recruit_location.x,recruit_location.y)) {
+	   !disp->fogged(recruit_location.x,recruit_location.y)) {
 		disp->draw(true,true);
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
@@ -596,7 +596,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		const gamemap::location& loc = h->first;
 
 		const bool show_healing = !disp.turbo() && !recorder.skipping() &&
-		                          !disp.shrouded(loc.x,loc.y);
+		                          !disp.fogged(loc.x,loc.y);
 
 		assert(units.count(loc) == 1);
 
@@ -908,8 +908,9 @@ void clear_shroud_loc(const gamemap& map, team& tm,
 	adj[6] = loc;
 	for(int i = 0; i != 6; ++i) {
 		if(map.on_board(adj[i])) {
-			if(tm.shrouded(adj[i].x,adj[i].y)) {
+			if(tm.fogged(adj[i].x,adj[i].y)) {
 				tm.clear_shroud(adj[i].x,adj[i].y);
+				tm.clear_fog(adj[i].x,adj[i].y);
 				if(cleared != NULL) {
 					cleared->push_back(adj[i]);
 				}
@@ -940,8 +941,10 @@ void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team)
 {
-	if(teams[team].uses_shroud() == false)
+	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
 		return false;
+
+	teams[team].refog();
 
 	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == team+1) {

@@ -119,7 +119,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 	                            ignore_zocs,teleport);
 	paths_wiper wiper(disp);
 
-	if(!disp.shrouded(from.x,from.y))
+	if(!disp.fogged(from.x,from.y))
 		disp.set_paths(&current_paths);
 
 	disp.scroll_to_tiles(from.x,from.y,to.x,to.y);

@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "game_config.hpp"
 #include "replay.hpp"
 #include "team.hpp"
@@ -92,6 +93,7 @@ team::team_info::team_info(const config& cfg)
 	}
 
 	use_shroud = (cfg["shroud"] == "yes");
+	use_fog = (cfg["fog"] == "yes");
 
 	music = cfg["music"];
 }
@@ -238,6 +240,47 @@ void team::clear_shroud(size_t x, size_t y)
 		shroud_[x].resize(y+1);
 
 	shroud_[x][y] = true;
+}
+
+bool team::uses_fog() const
+{
+	return info_.use_fog;
+}
+
+bool team::fogged(size_t x, size_t y) const
+{
+	if(info_.use_fog == false)
+		return shrouded(x,y);
+
+	if(x >= fog_.size())
+		return true;
+
+	if(y >= fog_[x].size())
+		return true;
+
+	return !fog_[x][y];
+}
+
+void team::clear_fog(size_t x, size_t y)
+{
+	if(info_.use_fog == false)
+		return;
+
+	if(x >= fog_.size())
+		fog_.resize(x+1);
+
+	if(y >= fog_[x].size())
+		fog_[x].resize(y+1);
+
+	fog_[x][y] = true;
+}
+
+void team::refog()
+{
+	for(std::vector<std::vector<bool> >::iterator i = fog_.begin();
+	    i != fog_.end(); ++i) {
+		std::fill(i->begin(),i->end(),false);
+	}
 }
 
 const std::string& team::music() const
