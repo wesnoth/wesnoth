@@ -63,14 +63,16 @@ BPath be_path;
 #include "util.hpp"
 
 #ifdef USE_ZIPIOS
+#include <sstream>
 #include <zipios++/collcoll.h>
 #include <zipios++/dircoll.h>
 #include <zipios++/zipfile.h>
 #include <zipios++/simplesmartptr.h>
 #include <zipios++/basicentry.h>
+#include "zipios++/xcoll.hpp"
 
 namespace {
-	zipios::CColl the_collection;
+	xzipios::XCColl the_collection;
 }
 #endif
 
@@ -87,19 +89,12 @@ bool filesystem_init()
 		std::cerr << "system collection has " << dir.size() << " elements\n";
 		the_collection.addCollection(dir);
 # if 1
+		// look for zip files
 		zipios::DirectoryCollection dir2(game_config::path,false);
-		if (!dir2.entries().empty())
-		for (zipios::ConstEntries::iterator i = dir2.entries().begin(); i != dir2.entries().end(); ++i) {
-			// FIXME: why the heck is the 1st entry corrupted !?
-			if (i == dir2.entries().begin()) continue;
-
-			zipios::EntryPointer j = *i;
-			zipios::FileEntry& k = *j;
-			//for (int a=0; a<sizeof(k); a++) std::cerr << std::hex << (unsigned int)(((unsigned char*)&k)[a]) << ".";
-			//	std::cerr << std::dec << "\n";
-			//continue;
-			if (k.isValid()) {
-				const std::string fname = k.getName();
+		zipios::ConstEntries entries = dir2.entries();
+		for (zipios::ConstEntries::iterator i = entries.begin(); i != entries.end(); ++i) {
+			if ((**i).isValid()) {
+				const std::string fname = (**i).getName();
 				const std::string suffix = ".zip";
 				if (0 == fname.compare(fname.size() - suffix.size(), suffix.size(), suffix)) {
 					zipios::ZipFile zip(game_config::path + "/" + fname);
@@ -132,80 +127,89 @@ void get_files_in_dir(const std::string& directory,
                       std::vector<std::string>* dirs,
                       FILE_NAME_MODE mode)
 {
-	//if we have a path to find directories in, then convert relative
-	//pathnames to be rooted on the wesnoth path
-	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
-		const std::string& dir = game_config::path + "/" + directory;
-		if(is_directory(dir)) {
-			get_files_in_dir(dir,files,dirs,mode);
+#ifdef USE_ZIPIOS
+	if (the_collection.hasSubdir(directory)) {
+		the_collection.childrenOf(directory, files, dirs);
+	}
+	else
+#endif
+	{
+		
+		//if we have a path to find directories in, then convert relative
+		//pathnames to be rooted on the wesnoth path
+		if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
+			const std::string& dir = game_config::path + "/" + directory;
+			if(is_directory(dir)) {
+				get_files_in_dir(dir,files,dirs,mode);
+				return;
+			}
+		}
+
+#ifdef _WIN32
+		_finddata_t fileinfo;
+		long dir = _findfirst((directory + "/*.*").c_str(),&fileinfo);
+#else
+
+		DIR* dir = opendir(directory.c_str());
+#endif
+
+		if(DIR_INVALID(dir)) {
 			return;
 		}
-	}
-
-#ifdef _WIN32
-	_finddata_t fileinfo;
-	long dir = _findfirst((directory + "/*.*").c_str(),&fileinfo);
-#else
-
-	DIR* dir = opendir(directory.c_str());
-#endif
-
-	if(DIR_INVALID(dir)) {
-		return;
-	}
 
 #ifdef _WIN32
 
-	int res = dir;
-	do {
-		if(fileinfo.name[0] != '.') {
-			const std::string path = (mode == ENTIRE_FILE_PATH ?
-				directory + "/" : std::string("")) + fileinfo.name;
+		int res = dir;
+		do {
+			if(fileinfo.name[0] != '.') {
+				const std::string path = (mode == ENTIRE_FILE_PATH ?
+							  directory + "/" : std::string("")) + fileinfo.name;
 
-			if(fileinfo.attrib&_A_SUBDIR) {
-				if(dirs != NULL)
-					dirs->push_back(path);
-			} else {
-				if(files != NULL)
-					files->push_back(path);
+				if(fileinfo.attrib&_A_SUBDIR) {
+					if(dirs != NULL)
+						dirs->push_back(path);
+				} else {
+					if(files != NULL)
+						files->push_back(path);
+				}
 			}
-		}
 
-		res = _findnext(dir,&fileinfo);
-	} while(!DIR_INVALID(res));
+			res = _findnext(dir,&fileinfo);
+		} while(!DIR_INVALID(res));
 
-	_findclose(dir);
+		_findclose(dir);
 
 #else
-	struct dirent* entry;
-	while((entry = readdir(dir)) != NULL) {
-		if(entry->d_name[0] == '.')
-			continue;
+		struct dirent* entry;
+		while((entry = readdir(dir)) != NULL) {
+			if(entry->d_name[0] == '.')
+				continue;
 
-		const std::string name((directory + "/") + entry->d_name);
+			const std::string name((directory + "/") + entry->d_name);
 
-		struct stat st;
-		if (::stat(name.c_str(), &st) != -1) {
-			if (S_ISREG(st.st_mode)) {
-				if (files != NULL) {
-					if (mode == ENTIRE_FILE_PATH)
-						files->push_back(name);
-					else
-						files->push_back(entry->d_name);
-				}
-			} else if (S_ISDIR(st.st_mode)) {
-				if (dirs != NULL) {
-					if (mode == ENTIRE_FILE_PATH)
-						dirs->push_back(name);
-					else
-						dirs->push_back(entry->d_name);
+			struct stat st;
+			if (::stat(name.c_str(), &st) != -1) {
+				if (S_ISREG(st.st_mode)) {
+					if (files != NULL) {
+						if (mode == ENTIRE_FILE_PATH)
+							files->push_back(name);
+						else
+							files->push_back(entry->d_name);
+					}
+				} else if (S_ISDIR(st.st_mode)) {
+					if (dirs != NULL) {
+						if (mode == ENTIRE_FILE_PATH)
+							dirs->push_back(name);
+						else
+							dirs->push_back(entry->d_name);
+					}
 				}
 			}
 		}
-	}
 
-	closedir(dir);
+		closedir(dir);
 #endif
+	}
 
 	if(files != NULL)
 		std::sort(files->begin(),files->end());
@@ -423,6 +427,11 @@ void read_file_internal(const std::string& fname, std::string& res)
 
 std::string read_stream(std::istream& s)
 {
+#if 1
+	std::stringstream ss;
+	ss << s.rdbuf();
+	return ss.str();
+#else
 	std::vector<char> v;
 	const int block_size = 65536;
 
@@ -440,6 +449,7 @@ std::string read_stream(std::istream& s)
 	res.resize(v.size());
 	std::copy(v.begin(),v.end(),res.begin());
 	return res;
+#endif
 }
 
 std::string read_stdin()
@@ -451,6 +461,7 @@ std::string read_file(const std::string& fname)
 {
 	//if we have a path to the data,
 	//convert any filepath which is relative
+	//std::cerr << "Reading " << fname << "\n";
 #ifdef USE_ZIPIOS
 	if(!fname.empty() && fname[0] != '/') {
 		zipios::ConstEntryPointer p = the_collection.getEntry(fname);
@@ -545,10 +556,17 @@ bool is_directory_internal(const std::string& fname)
 
 bool is_directory(const std::string& fname)
 {
+#ifdef USE_ZIPIOS
+	if(!fname.empty() && fname[0] != '/') {
+		return the_collection.hasSubdir(fname);
+	}
+
+#else
 	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
 		if(is_directory_internal(game_config::path + "/" + fname))
 			return true;
 	}
+#endif
 
 	return is_directory_internal(fname);
 }

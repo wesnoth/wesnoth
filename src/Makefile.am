@@ -102,6 +102,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
+		  zipios++/xcoll.cpp \
 		  sdl_ttf/SDL_ttf.c \
 		  about.hpp \
 		  actions.hpp \
@@ -184,6 +185,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
 		  widgets/widget.hpp \
+		  zipios++/xcoll.hpp \
 		  sdl_ttf/SDL_ttf.h \
 		  wesconfig.h
 
