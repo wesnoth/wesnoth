@@ -7,6 +7,7 @@
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <ostream>
 #include <string>
 #include <vector>
 
