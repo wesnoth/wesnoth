@@ -239,12 +239,48 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	const int tile_width = hex_width();
+	return pixel_position_to_hex(xpos_ + xclick, ypos_ + yclick);
+}
 
-	const int xtile = (xpos_ + xclick)/tile_width;
-	const int ytile = (ypos_ + yclick - (is_odd(xtile) ? zoom_/2 : 0))/zoom_; //(yclick + is_odd(xtile) ? -yclick/2 : 0)/zoom_;
+gamemap::location display::pixel_position_to_hex(int x, int y)
+{
+	const int tesselation_x_size = hex_size() * 3 / 2;
+	const int tesselation_y_size = hex_size();
+	const int x_base = x / tesselation_x_size * 2;
+	const int x_mod = x % tesselation_x_size;
+	const int y_base = y / tesselation_y_size;
+	const int y_mod = y % tesselation_y_size;
+	
+	int x_modifier;
+	int y_modifier;
+	
+	if (y_mod < tesselation_y_size / 2) {
+		if ((x_mod * 2 + y_mod) < (hex_size() / 2)) {
+			x_modifier = -1;
+			y_modifier = -1;
+		} else if ((x_mod * 2 - y_mod) < (hex_size() * 3 / 2)) {
+			x_modifier = 0;
+			y_modifier = 0;
+		} else {
+			x_modifier = 1;
+			y_modifier = -1;
+		}
+		
+	} else {
+		if ((x_mod * 2 - (y_mod - hex_size() / 2)) < 0) {
+			x_modifier = -1;
+			y_modifier = 0;
+		} else if ((x_mod * 2 + (y_mod - hex_size() / 2)) < hex_size() * 2) {
+			x_modifier = 0;
+			y_modifier = 0;
+		} else {
+			x_modifier = 1;
+			y_modifier = 0;
+		}
+	}
 
-	return gamemap::location(xtile,ytile);
+	return gamemap::location(x_base + x_modifier,
+		y_base + y_modifier);
 }
 
 int display::get_location_x(const gamemap::location& loc) const
