@@ -180,10 +180,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		return -1;
 	}
 
-	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
-	config* random = new config();
-	(*random)["name"]="&random-enemy.png,Random";
-	possible_sides.insert(possible_sides.begin(),random);
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	if(sides.first == sides.second || possible_sides.empty()) {
 		gui::show_dialog(*disp_, NULL, "", 
@@ -233,6 +230,9 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		if(side["music"].empty())
 			side["music"] = (*possible_sides.front())["music"];
 
+		if(side["terrain_liked"].empty())
+			side["terrain_liked"] = (*possible_sides.front())["terrain_liked"];
+
 		if(side["recruitment_pattern"].empty())
 			side["recruitment_pattern"] = possible_sides.front()->values["recruitment_pattern"];
 	}
@@ -271,10 +271,7 @@ void mp_connect::lists_init()
 		return;
 	}
 
-	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
-	config* random = new config();
-	(*random)["name"]="&random-enemy.png,Random";
-	possible_sides.insert(possible_sides.begin(),random);
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	for(std::vector<config*>::const_iterator race = possible_sides.begin();
 	    race != possible_sides.end(); ++race) {
@@ -534,18 +531,15 @@ lobby::RESULT mp_connect::process()
 		return lobby::QUIT;
 	}
 
-	config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
-
-
-	config* random = new config();
-	(*random)["name"]="&random-enemy.png,Random";
-	possible_sides.insert(possible_sides.begin(),random);
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	const config::child_itors sides = level_->child_range("side");
 
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+	bool start_game = false;
 
 	bool level_changed = false;
 
@@ -665,30 +659,24 @@ lobby::RESULT mp_connect::process()
 		const config::child_list& real_sides = era_cfg->get_children("multiplayer_side");
 
 		for(config::child_iterator side = sides.first; side != sides.second; ++side) {
-			if((**side)["name"]=="&random-enemy.png,Random") {
-				int choice = rand()%real_sides.size();
+			int ntry = 0;
+			while((**side)["type"] == "random" && ntry < 1000) {
+				const int choice = rand()%real_sides.size();
+
 				(**side)["name"] = (*real_sides[choice])["name"];
-
 				(**side)["type"] = (*real_sides[choice])["type"];
-
 				(**side)["recruit"] = (*real_sides[choice])["recruit"];
-
 				(**side)["music"] = (*real_sides[choice])["music"];
 
 				(**side)["recruitment_pattern"] = real_sides[choice]->values["recruitment_pattern"];
+				(**side)["terrain_liked"] = (*real_sides[choice])["terrain_liked"];
 				level_changed = true;
+
+				++ntry;
 			}
 		}
-		if(level_changed) {
-			config diff;
-			diff.add_child("scenario_diff",level_->get_diff(old_level_));
-	
-			network::send_data(diff);
-	
-			old_level_ = *level_;
-		}
 
-		return lobby::CREATE;
+		start_game = true;
 	}
 
 	if(level_changed) {
@@ -698,6 +686,10 @@ lobby::RESULT mp_connect::process()
 		network::send_data(diff);
 
 		old_level_ = *level_;
+	}
+
+	if(start_game) {
+		return lobby::CREATE;
 	}
 
 	gui_update();
@@ -866,6 +858,7 @@ void mp_connect::update_network()
 					pos->first->values["type"] = cfg["type"];
 					pos->first->values["recruit"] = cfg["recruit"];
 					pos->first->values["music"] = cfg["music"];
+					pos->first->values["terrain_liked"] = cfg["terrain_liked"];
 					pos->second = sock;
 					network::send_data(*level_);
 
