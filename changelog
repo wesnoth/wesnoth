@@ -1,6 +1,8 @@
 CVS HEAD
  * campaign server (campaignd) and capability to download campaigns from campaign server(s)
  * sorting of campaigns by rank
+ * scenarios balancing on easy and hard for 'The Rise of Wesnoth' campaign
+ * language fixes and polishing (english)
  * updated translations:
    * czech
    * danish
@@ -17,8 +19,9 @@ CVS HEAD
  * fixed several graphic clitches
  * fixed a bug where tiles from terrain_graphics rule did not have the per-rule image when only defined through [map]
  * fixed bug with [not] tags in filters
- * fixed untranslatable units.
- * fixed top statusbar tooltip strings not being translatable
+ * fixed missing semicolon in sound.cpp
+ * fixed tutorial talking of elves having 70% defense on grass
+ * fixed many untranslatable strings in e.g. statistics, statusbar tooltips, units
  * added a way to specify the actual position of multi-hex tiles
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
