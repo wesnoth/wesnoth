@@ -79,6 +79,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
+          widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
 		  widgets/scrollbar.cpp \
@@ -142,6 +143,7 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  widgets/button.hpp \
+          widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
 		  widgets/scrollbar.hpp \
@@ -208,6 +210,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_types.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
+          widgets/file_chooser.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
 			 widgets/scrollbar.cpp \
@@ -267,6 +270,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_types.hpp \
 			 video.hpp \
 			 widgets/button.hpp \
+            widgets/file_chooser.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
 			 widgets/scrollbar.hpp \

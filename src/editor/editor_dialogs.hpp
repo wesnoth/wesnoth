@@ -54,7 +54,6 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h);
 
 FLIP_AXIS flip_dialog(display &disp);
 
-
 }
 
 

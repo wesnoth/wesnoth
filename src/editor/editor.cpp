@@ -213,13 +213,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 
 
 void map_editor::edit_save_as() {
-	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+	const std::string default_dir =
+		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+	std::string input_name = filename_ == "" ? default_dir : filename_;
 	int res = 0;
 	int overwrite = 0;
 	do {
-		res = gui::show_dialog(gui_, NULL, "", "Save As ", gui::OK_CANCEL,
-							   NULL, NULL, "", &input_name);
-					   
+		res = dialogs::show_file_chooser_dialog(gui_, input_name, "Choose a File to Save As");
 		if (res == 0) {
 			if (file_exists(input_name)) {
 				overwrite = gui::show_dialog(gui_, NULL, "Overwrite?",
@@ -291,8 +291,10 @@ void map_editor::edit_new_map() {
 }
 
 void map_editor::edit_load_map() {
-	const std::string fn = load_map_dialog(gui_);
-	if (fn != "") {
+	std::string fn = filename_ == "" ?
+		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
+	int res = dialogs::show_file_chooser_dialog(gui_, fn, "Choose a Map to Load");
+	if (res == 0) {
 		const std::string new_map = load_map(fn);
 		if (new_map != "") {
 			if (!changed_since_save() || confirm_modification_disposal(gui_)) {

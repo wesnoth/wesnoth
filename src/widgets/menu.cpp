@@ -25,7 +25,9 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
           downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
 		  scrollbar_(disp,this),  scrollbar_height_(0),
-		  double_clicked_(false), num_selects_(true)
+		  double_clicked_(false), num_selects_(true),
+		  ignore_next_doubleclick_(false),
+		  last_was_doubleclick_(false)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
@@ -59,6 +61,8 @@ void menu::set_scrollbar_height()
 	if (scrollbar_height_ > height()) {
 		std::cerr << "Strange. For some reason I want my scrollbar" << 
 			      " to be larger than me!\n\n";
+		std::cerr << "pos_percent=" << pos_percent << " height()=" << height()
+				  << std::endl;
 		scrollbar_height_ = height() - buttons_height;
 	}
 					
@@ -161,6 +165,47 @@ void menu::erase_item(size_t index)
 		drawn_ = false;
 	}
 }
+
+void menu::set_items(const std::vector<std::string>& items) {
+	items_.clear();
+	itemRects_.clear();
+	column_widths_.clear();
+	undrawn_items_.clear();
+	height_ = -1; // Force recalculation of the height.
+	width_ = -1; // Force recalculation of the width.
+	max_items_ = -1; // Force recalculation of the max items.
+	// Scrollbar and buttons will be reanabled if they are needed.
+	scrollbar_.enable(false);
+	uparrow_.hide(true);
+	downarrow_.hide(true);
+	first_item_on_screen_ = 0;
+	selected_ = click_selects_ ? -1:0;
+	for (std::vector<std::string>::const_iterator item = items.begin();
+		 item != items.end(); ++item) {
+		items_.push_back(config::quoted_split(*item,',',false));
+
+		//make sure there is always at least one item
+		if(items_.back().empty())
+			items_.back().push_back(" ");
+
+		//if the first character in an item is an asterisk,
+		//it means this item should be selected by default
+		std::string& first_item = items_.back().front();
+		if(first_item.empty() == false && first_item[0] == '*') {
+			selected_ = items_.size()-1;
+			first_item.erase(first_item.begin());
+		}
+	}
+	set_loc(x_, y_); // Force some more updating.
+	calculate_position();
+	drawn_ = false;
+}
+
+void menu::set_max_height(const int new_max_height) {
+	max_height_ = new_max_height;
+}
+	
+
 
 size_t menu::max_items_onscreen() const
 {
@@ -300,7 +345,25 @@ void menu::handle_event(const SDL_Event& event)
 			}
 
 			if(event.type == DOUBLE_CLICK_EVENT) {
-				double_clicked_ = true;
+				if (ignore_next_doubleclick_) {
+					ignore_next_doubleclick_ = false;
+				}
+				else {
+					double_clicked_ = true;
+					last_was_doubleclick_ = true;
+				}
+			}
+			else if (last_was_doubleclick_) {
+				// If we have a double click as the next event, it means
+				// this double click was generated from a click that
+				// already has helped in generating a double click.
+				SDL_Event ev;
+				SDL_PeepEvents(&ev, 1, SDL_PEEKEVENT,
+							   SDL_EVENTMASK(DOUBLE_CLICK_EVENT));
+				if (ev.type == DOUBLE_CLICK_EVENT) {
+					ignore_next_doubleclick_ = true;
+				}
+				last_was_doubleclick_ = false;
 			}
 		}
 	} else if(event.type == SDL_MOUSEMOTION && click_selects_) { 
@@ -408,6 +471,7 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	}
 
 	if(show_result_) {
+		show_result_ = false;
 		return selected_;
 	} else {
 		return -1;
@@ -419,9 +483,11 @@ bool menu::show_scrollbar() const
 	return items_.size() > max_items_onscreen();
 }
 
-bool menu::double_clicked() const
+bool menu::double_clicked()
 {
-	return double_clicked_;
+	bool old = double_clicked_;
+	double_clicked_ = false;
+	return old;
 }
 
 void menu::set_numeric_keypress_selection(bool value)

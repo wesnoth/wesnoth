@@ -36,12 +36,19 @@ public:
 
 	void erase_item(size_t index);
 
+	void set_items(const std::vector<std::string>& items);
+
+	/// Set a new max height for this menu. Note that this does not take
+	/// effect immideately, only after certain operations that clear
+	/// everything, such as set_items().
+	void set_max_height(const int new_max_height);
+
 	size_t nitems() const { return items_.size(); }
 	
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	            bool page_up, bool page_down, int select_item=-1);
 
-	bool double_clicked() const;
+	bool double_clicked();
 
 	void set_numeric_keypress_selection(bool value);
 
@@ -109,6 +116,11 @@ private:
 	///variable which determines whether a numeric keypress should
 	///select an item on the dialog
 	bool num_selects_;
+	// These two variables are used to get the correct double click
+	// behavior so that a click that causes one double click wont be
+	// counted as a first click in the "next" double click.
+	bool ignore_next_doubleclick_;
+	bool last_was_doubleclick_;
 };
 
 }

@@ -49,6 +49,15 @@ std::string load_game_dialog(display& disp, bool* show_replay);
 
 void unit_speak(const config& message_info, display& disp, const unit_map& units);
 
+/// Show a dialog where the user can navigate through files and select a
+/// file. The filename is used as a starting point in the navigation and
+/// contains the chosen file when the function returns.  Return the
+/// index of the button pressed, or -1 if the dialog was canceled
+/// through keypress.
+int show_file_chooser_dialog(display &displ, std::string &filename,
+							 const std::string title="Choose a File",
+							 int xloc=-1, int yloc=-1);
+
 }
 
 #endif

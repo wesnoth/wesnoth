@@ -15,6 +15,7 @@
 #include "../display.hpp"
 #include "../show_dialog.hpp"
 #include "../config.hpp"
+#include "../events.hpp"
 #include "../game_config.hpp"
 #include "../mapgen.hpp"
 #include "../filesystem.hpp"
@@ -528,4 +529,6 @@ FLIP_AXIS flip_dialog(display &disp) {
 }
 
 }
+
+
 
