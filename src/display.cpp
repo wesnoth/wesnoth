@@ -106,6 +106,7 @@ void clear_surfaces(Map& surfaces)
 display::~display()
 {
 	SDL_FreeSurface(minimap_);
+	prune_chat_messages(true);
 }
 
 Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
@@ -556,6 +557,8 @@ void display::draw(bool update,bool force)
 	if(!map_.empty()) {
 		draw_sidebar();
 	}
+
+	prune_chat_messages();
 
 	const int max_skips = 5;
 	const int time_between_draws = 20;
@@ -2579,4 +2582,43 @@ void display::add_observer(const std::string& name)
 void display::remove_observer(const std::string& name)
 {
 	observers_.erase(name);
+}
+
+namespace {
+	const int chat_message_spacing = 20;
+	const int max_chat_messages = 4;
+	const int chat_message_x = 10;
+	const int chat_message_y = 10;
+	const SDL_Color chat_message_colour = {200,200,200,200};
+}
+
+void display::add_chat_message(const std::string& speaker, const std::string& msg)
+{
+	std::stringstream str;
+	str << "<" << speaker << "> " << msg;
+
+	std::cerr << "chat message '" << str.str() << "'\n";
+	const SDL_Rect rect = map_area();
+	const int handle = font::add_floating_label(str.str(),12,chat_message_colour,
+		rect.x+chat_message_x,rect.y+chat_message_y+chat_message_spacing*chat_messages_.size(),0,0,-1,rect,font::LEFT_ALIGN);
+	std::cerr << "Added label..\n";
+	chat_messages_.push_back(chat_message(handle));
+
+	prune_chat_messages();
+	std::cerr << "pruned messages...\n";
+}
+
+void display::prune_chat_messages(bool remove_all)
+{
+	const int message_ttl = remove_all ? 0 : 30000;
+	if(chat_messages_.empty() == false && (chat_messages_.front().created_at+message_ttl < SDL_GetTicks() || chat_messages_.size() > max_chat_messages)) {
+		font::remove_floating_label(chat_messages_.front().handle);
+		chat_messages_.erase(chat_messages_.begin());
+
+		for(std::vector<chat_message>::const_iterator i = chat_messages_.begin(); i != chat_messages_.end(); ++i) {
+			font::move_floating_label(i->handle,0,-chat_message_spacing);
+		}
+
+		prune_chat_messages(remove_all);
+	}
 }

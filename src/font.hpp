@@ -116,6 +116,8 @@ private:
 	bool old_;
 };
 
+enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
+
 /// add a label floating on the screen above everything else.
 /// 'text': the text to display
 /// 'font_size': the size to display the text in
@@ -127,7 +129,7 @@ private:
 ///
 /// @returns a handle to the label which can be used with other label functions
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect);
+					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN);
 
 /// moves the floating label given by 'handle' by (xmove,ymove)
 void move_floating_label(int handle, int xmove, int ymove);

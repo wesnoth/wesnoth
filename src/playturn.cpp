@@ -1684,7 +1684,8 @@ void turn_info::speak()
 		cfg["side"] = buf;
 
 		recorder.speak(cfg);
-		dialogs::unit_speak(cfg,gui_,units_);
+		gui_.add_chat_message(leader->second.description(),message);
+//		dialogs::unit_speak(cfg,gui_,units_);
 	}
 }
 

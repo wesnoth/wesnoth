@@ -290,6 +290,8 @@ public:
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
 
+	void add_chat_message(const std::string& speaker, const std::string& msg);
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -416,6 +418,19 @@ private:
 	std::set<std::string> observers_;
 
 	map_labels map_labels_;
+
+	struct chat_message
+	{
+		chat_message(int h) : handle(h), created_at(SDL_GetTicks())
+		{}
+
+		int handle;
+		int created_at;
+	};
+
+	void prune_chat_messages(bool remove_all=false);
+
+	std::vector<chat_message> chat_messages_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

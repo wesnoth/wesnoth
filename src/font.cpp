@@ -470,10 +470,10 @@ class floating_label
 {
 public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-	      int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
+		int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, font::ALIGN align)
 		  : surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour), xpos_(xpos), ypos_(ypos),
 		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-			alpha_change_(-255/lifetime), visible_(true)
+			alpha_change_(-255/lifetime), visible_(true), align_(align)
 	{}
 
 	void move(int xmove, int ymove);
@@ -488,6 +488,9 @@ public:
 	void show(bool value);
 
 private:
+
+	int xpos(size_t width) const;
+
 	shared_sdl_surface surf_, buf_;
 	std::string text_;
 	int font_size_;
@@ -497,6 +500,7 @@ private:
 	SDL_Rect clip_rect_;
 	int alpha_change_;
 	bool visible_;
+	font::ALIGN align_;
 };
 
 typedef std::map<int,floating_label> label_map;
@@ -509,6 +513,18 @@ void floating_label::move(int xmove, int ymove)
 {
 	xpos_ += xmove;
 	ypos_ += ymove;
+}
+
+int floating_label::xpos(size_t width) const
+{
+	int xpos = xpos_;
+	if(align_ == font::CENTER_ALIGN) {
+		xpos -= surf_->w/2;
+	} else if(align_ == font::RIGHT_ALIGN) {
+		xpos -= surf_->w;
+	}
+
+	return xpos;
 }
 
 void floating_label::draw(SDL_Surface* screen)
@@ -542,7 +558,7 @@ void floating_label::draw(SDL_Surface* screen)
 		return;
 	}
 
-	SDL_Rect rect = {xpos_-surf_->w/2,ypos_,surf_->w,surf_->h};
+	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
@@ -555,7 +571,7 @@ void floating_label::undraw(SDL_Surface* screen)
 		return;
 	}
 
-	SDL_Rect rect = {xpos_-surf_->w/2,ypos_,surf_->w,surf_->h};
+	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 
@@ -580,9 +596,13 @@ void floating_label::show(bool value) { visible_ = value; }
 
 namespace font {
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
+					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align)
 {
-	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,xpos,ypos,xmove,ymove,lifetime,clip_rect)));
+	if(lifetime <= 0) {
+		lifetime = -1;
+	}
+
+	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,xpos,ypos,xmove,ymove,lifetime,clip_rect,align)));
 	return label_id-1;
 }
 
