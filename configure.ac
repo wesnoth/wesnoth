@@ -35,6 +35,23 @@ indicating your platform, the version of configure script and the problem.])
 
 fi
 
+# libpng-config
+
+AC_PATH_PROGS([PNG_CONFIG], [libpng-config libpng12-config], [none])
+
+if test "x$PNG_CONFIG" = "xnone"; then
+    pngfound=no
+    AC_MSG_WARN([*** LIBPNG not found.])
+else
+    pngfound=yes
+    PNG_CFLAGS=`$PNG_CONFIG --cflags`
+    PNG_LIBS=`$PNG_CONFIG --libs`
+fi
+
+AC_SUBST([PNG_CFLAGS])
+AC_SUBST([PNG_LIBS])
+AM_CONDITIONAL([LIBPNG], [test x$pngfound = xyes])
+
 # Check for SDL version. Taken from sdl.m4
 
 AC_ARG_ENABLE([sdltest],
@@ -264,7 +281,7 @@ AC_CHECK_HEADER([SDL_ttf.h],
 		[],
 		[AC_MSG_ERROR([*** SDL_ttf include files not found!
 You should install development package.])])
-		
+
 CPPFLAGS=$OLD_CPPFLAGS
 CXXFLAGS=$OLD_CXXFLAGS
 
