@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-27 16:15+0200\n"
+"POT-Creation-Date: 2004-08-28 13:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -722,11 +722,11 @@ msgid "Great War"
 msgstr ""
 
 #: data/multiplayer.cfg:254
-msgid "&elvish-high-lord.png,Alliance of Light"
+msgid "&white-mage.png,Alliance of Light"
 msgstr ""
 
 #: data/multiplayer.cfg:265
-msgid "&undead-lich.png,Alliance of Darkness"
+msgid "&undead-necromancer.png,Alliance of Darkness"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:3
@@ -1654,11 +1654,11 @@ msgstr ""
 msgid "This might be more difficult than i thought."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:181
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:182
 msgid "I will get you! I... will... get... youu...."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:185
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:186
 msgid "Now lets get out of this bog!"
 msgstr ""
 
@@ -2658,7 +2658,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/A_Choice_Must_Be_Made.cfg:229
 msgid ""
-"That we will, Princess. Even thought you are the daughter of the Queen, our "
+"That we will, Princess. Even though you are the daughter of the Queen, our "
 "enemy, we shall not harm you on this encounter, for you have helped us."
 msgstr ""
 
@@ -11272,8 +11272,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial1.cfg:292
+#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:450
 msgid "No"
 msgstr ""
 
@@ -11329,13 +11329,13 @@ msgstr ""
 msgid "King of the Hill"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:65
+#: data/scenarios/tutorial/tutorial1.cfg:67
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:69
+#: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -11343,126 +11343,113 @@ msgid ""
 "connected to the keep your leader is on."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:80
-msgid ""
-"@Skills covered:\n"
-"Recruiting units\n"
-"Moving units\n"
-"Attacking enemy units\n"
-"Gaining experience\n"
-"Winning scenarios\n"
-"@Objectives:\n"
-"@Victory:\n"
-"Defeat Merle"
-msgstr ""
-
-#: data/scenarios/tutorial/tutorial1.cfg:85
+#: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:98
+#: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:104
+#: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:115
+#: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
-"it, then select his destination. In this case, his destination is the "
-"signpost next to the Elvish Shaman."
+"it, then select his destination. In this case, his destination is the forest "
+"next to the Elvish Shaman, Merle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:141
+#: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
-"Excellent! You have succesfully moved your Elvish Fighter. However, since he "
-"moved next to an enemy unit, he has lost all his movement for this turn; "
+"Excellent! You have successfully moved your Elvish Fighter. However, since "
+"he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:153
+#: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:170
+#: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:188
+#: data/scenarios/tutorial/tutorial1.cfg:180
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:199
+#: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:208
+#: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:219
+#: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
-"Now, you must defeat Merle by reducing him to 0 HP or lower. Just attack "
+"Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:234
-#: data/scenarios/tutorial/tutorial2.cfg:176
+#: data/scenarios/tutorial/tutorial1.cfg:248
+#: data/scenarios/tutorial/tutorial2.cfg:233
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:241
-#: data/scenarios/tutorial/tutorial2.cfg:183
+#: data/scenarios/tutorial/tutorial1.cfg:255
+#: data/scenarios/tutorial/tutorial2.cfg:240
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:251
+#: data/scenarios/tutorial/tutorial1.cfg:265
 msgid "You have successfully completed the first training scenario."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:262
-#: data/scenarios/tutorial/tutorial2.cfg:204
+#: data/scenarios/tutorial/tutorial1.cfg:276
+#: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:449
+#: data/scenarios/tutorial/tutorial1.cfg:278
+#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:449
 msgid "Yes"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:283
+#: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:58
+#: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:62
+#: data/scenarios/tutorial/tutorial2.cfg:64
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -11471,7 +11458,7 @@ msgid ""
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:75
+#: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
 "@Skills covered:\n"
 "Recalling\n"
@@ -11479,6 +11466,8 @@ msgid ""
 "Gold\n"
 "Time of day\n"
 "Terrains\n"
+"Resistance\n"
+"Specialties\n"
 "Objects\n"
 "Playing Wesnoth\n"
 "@Objectives\n"
@@ -11486,39 +11475,59 @@ msgid ""
 "Defeat Delfador"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:80
+#: data/scenarios/tutorial/tutorial2.cfg:86
+msgid "You have successfully recalled your Elvish Fighter."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
-"assigned two traits."
+"assigned traits."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:98
+#: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:112
+#: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:126
-msgid ""
-"In Wesnoth, each hex has a terrain, which gives the hex distinctive "
-"properties."
+#: data/scenarios/tutorial/tutorial2.cfg:143
+msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:148
+#: data/scenarios/tutorial/tutorial2.cfg:157
+msgid ""
+"Each attack has a damage type which affects how much damage different units "
+"take from that attack."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:171
+msgid ""
+"Many units have a specialty which changes the rules of play in some way."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:193
+#: data/scenarios/tutorial/tutorial2.cfg:223
+msgid ""
+"Remember to try to prevent the enemy from capturing villages, and to "
+"recapture the ones that they already have. This will cut off their gold "
+"supply and make them unable to recruit."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:250
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
@@ -11527,6 +11536,30 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:13
+msgid "{END_MESSAGE}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:21
+msgid "{QUESTION}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:25
+msgid "{ANSWER}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:44
+msgid ""
+"@Skills covered:\n"
+"Recruiting units\n"
+"Moving units\n"
+"Attacking enemy units\n"
+"Gaining experience\n"
+"Winning scenarios\n"
+"@Current objective:\n"
+"{OBJECTIVE}"
 msgstr ""
 
 #: data/schedules.cfg:4

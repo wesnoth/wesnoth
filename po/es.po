@@ -1,4 +1,5 @@
 # translation of es.po to 
+# translation of es.po to
 # Spanish translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -9,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-27 16:15+0200\n"
-"PO-Revision-Date: 2004-08-27 16:28+0200\n"
+"POT-Creation-Date: 2004-08-28 13:32+0200\n"
+"PO-Revision-Date: 2004-08-28 13:48+0200\n"
 "Last-Translator: Isaac Clerencia <isaac@sindominio.net>\n"
 "Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -731,11 +732,12 @@ msgstr "La Gran Guerra"
 
 #: data/multiplayer.cfg:254
 #, fuzzy
-msgid "&elvish-high-lord.png,Alliance of Light"
+msgid "&white-mage.png,Alliance of Light"
 msgstr "&elvish-lord.png,Alianza de la Luz"
 
 #: data/multiplayer.cfg:265
-msgid "&undead-lich.png,Alliance of Darkness"
+#, fuzzy
+msgid "&undead-necromancer.png,Alliance of Darkness"
 msgstr "&undead-lich.png,Alianza de la Oscuridad"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:3
@@ -1685,11 +1687,11 @@ msgstr ""
 msgid "This might be more difficult than i thought."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:181
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:182
 msgid "I will get you! I... will... get... youu...."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:185
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:186
 msgid "Now lets get out of this bog!"
 msgstr ""
 
@@ -2733,8 +2735,9 @@ msgid "If the Elves will promise me refuge and safe passage, then I will go."
 msgstr "Si los elfos me prometen refugio y paso seguro, iré."
 
 #: data/scenarios/Heir_To_The_Throne/A_Choice_Must_Be_Made.cfg:229
+#, fuzzy
 msgid ""
-"That we will, Princess. Even thought you are the daughter of the Queen, our "
+"That we will, Princess. Even though you are the daughter of the Queen, our "
 "enemy, we shall not harm you on this encounter, for you have helped us."
 msgstr ""
 "Sí que lo haremos. Aunque seas la hija de la reina, nuestra enemiga, no te "
@@ -12566,8 +12569,8 @@ msgstr "¡Sí!"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial1.cfg:292
+#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:450
 msgid "No"
 msgstr "No"
 
@@ -12626,13 +12629,13 @@ msgstr "La Batalla de la Princesa"
 msgid "King of the Hill"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:65
+#: data/scenarios/tutorial/tutorial1.cfg:67
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:69
+#: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -12640,128 +12643,114 @@ msgid ""
 "connected to the keep your leader is on."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:80
-msgid ""
-"@Skills covered:\n"
-"Recruiting units\n"
-"Moving units\n"
-"Attacking enemy units\n"
-"Gaining experience\n"
-"Winning scenarios\n"
-"@Objectives:\n"
-"@Victory:\n"
-"Defeat Merle"
-msgstr ""
-
-#: data/scenarios/tutorial/tutorial1.cfg:85
+#: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:98
+#: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:104
+#: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:115
+#: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
-"it, then select his destination. In this case, his destination is the "
-"signpost next to the Elvish Shaman."
+"it, then select his destination. In this case, his destination is the forest "
+"next to the Elvish Shaman, Merle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:141
+#: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
-"Excellent! You have succesfully moved your Elvish Fighter. However, since he "
-"moved next to an enemy unit, he has lost all his movement for this turn; "
+"Excellent! You have successfully moved your Elvish Fighter. However, since "
+"he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:153
+#: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:170
+#: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:188
+#: data/scenarios/tutorial/tutorial1.cfg:180
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:199
+#: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:208
+#: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:219
+#: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
-"Now, you must defeat Merle by reducing him to 0 HP or lower. Just attack "
+"Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:234
-#: data/scenarios/tutorial/tutorial2.cfg:176
+#: data/scenarios/tutorial/tutorial1.cfg:248
+#: data/scenarios/tutorial/tutorial2.cfg:233
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:241
-#: data/scenarios/tutorial/tutorial2.cfg:183
+#: data/scenarios/tutorial/tutorial1.cfg:255
+#: data/scenarios/tutorial/tutorial2.cfg:240
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:251
+#: data/scenarios/tutorial/tutorial1.cfg:265
 msgid "You have successfully completed the first training scenario."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:262
-#: data/scenarios/tutorial/tutorial2.cfg:204
+#: data/scenarios/tutorial/tutorial1.cfg:276
+#: data/scenarios/tutorial/tutorial2.cfg:261
 #, fuzzy
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr "¿Quieres guardar la repetición de este escenario?"
 
-#: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:449
-#, fuzzy
+#: data/scenarios/tutorial/tutorial1.cfg:278
+#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:449
 msgid "Yes"
 msgstr "Sí"
 
-#: data/scenarios/tutorial/tutorial1.cfg:283
+#: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:58
+#: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:62
+#: data/scenarios/tutorial/tutorial2.cfg:64
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -12770,7 +12759,7 @@ msgid ""
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:75
+#: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
 "@Skills covered:\n"
 "Recalling\n"
@@ -12778,6 +12767,8 @@ msgid ""
 "Gold\n"
 "Time of day\n"
 "Terrains\n"
+"Resistance\n"
+"Specialties\n"
 "Objects\n"
 "Playing Wesnoth\n"
 "@Objectives\n"
@@ -12785,39 +12776,58 @@ msgid ""
 "Defeat Delfador"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:80
+#: data/scenarios/tutorial/tutorial2.cfg:86
+msgid "You have successfully recalled your Elvish Fighter."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
-"assigned two traits."
+"assigned traits."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:98
+#: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:112
+#: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:126
-msgid ""
-"In Wesnoth, each hex has a terrain, which gives the hex distinctive "
-"properties."
+#: data/scenarios/tutorial/tutorial2.cfg:143
+msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:148
+#: data/scenarios/tutorial/tutorial2.cfg:157
+msgid ""
+"Each attack has a damage type which affects how much damage different units "
+"take from that attack."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:171
+msgid "Many units have a specialty which changes the rules of play in some way."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:193
+#: data/scenarios/tutorial/tutorial2.cfg:223
+msgid ""
+"Remember to try to prevent the enemy from capturing villages, and to "
+"recapture the ones that they already have. This will cut off their gold "
+"supply and make them unable to recruit."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:250
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
@@ -12826,6 +12836,30 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:13
+msgid "{END_MESSAGE}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:21
+msgid "{QUESTION}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:25
+msgid "{ANSWER}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:44
+msgid ""
+"@Skills covered:\n"
+"Recruiting units\n"
+"Moving units\n"
+"Attacking enemy units\n"
+"Gaining experience\n"
+"Winning scenarios\n"
+"@Current objective:\n"
+"{OBJECTIVE}"
 msgstr ""
 
 #: data/schedules.cfg:4
@@ -12921,7 +12955,6 @@ msgstr ""
 "Noche: +25% del Daño"
 
 #: data/translations/english.cfg:24
-#, fuzzy
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of the "
@@ -12932,18 +12965,17 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Cura:\n"
-"Permite a la unidad curar a otras unidades amigas adyacentes al principio de "
+"Sana:\n"
+"Permite a la unidad sanar a otras unidades amigas adyacentes al principio de "
 "turno.\n"
 "\n"
-"Una unidad curada puede recuperar hasta 4 HP por turno.\n"
-"Es posible curar un total de 8 HP por turno, para todas las unidades "
+"Una unidad sanada puede recuperar hasta 4 PV por turno.\n"
+"Es posible sanar un total de 8 PV por turno, para todas las unidades "
 "adyacentes.\n"
 "Una unidad envenenada no puede ser curada con esta habilidad y debe buscar "
 "una aldea o una unidad con habilidad de sanar."
 
 #: data/translations/english.cfg:32
-#, fuzzy
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -12956,20 +12988,19 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Sana:\n"
+"Cura:\n"
 "Esta unidad combina remedios naturales con magia para curar a sus unidades "
 "más rápidamente de lo que es posible normalmente en la batalla.\n"
 "\n"
 "Esta unidad se ocupará de todas las unidades amigas adyacentes que estén "
 "heridas al principio del turno.\n"
-"Una unidad sanada puede recuperar hasta 8 HP por turno.\n"
-"Es posible sanar un total de 18 HP por turno, para todas las unidades "
+"Una unidad sanada puede recuperar hasta 8 PV por turno.\n"
+"Es posible curar un total de 18 PV por turno, para todas las unidades "
 "adyacentes.\n"
-"Es posible sanar a una unidad envenenada, aunque esa unidad no recibirá "
+"Es posible curar a una unidad envenenada, aunque esa unidad no recibirá "
 "curación adicional en ese turno."
 
 #: data/translations/english.cfg:35
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
@@ -12978,7 +13009,6 @@ msgstr ""
 "Esta unidad puede teletransportarse entre dos aldeas amigas instantáneamente."
 
 #: data/translations/english.cfg:40
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -12987,13 +13017,12 @@ msgid ""
 "Adjacent friendly units of lower level will do more damage in battle."
 msgstr ""
 "Liderazgo:\n"
-"Esta unidad puede lidedar a las unidades amigas cercanas, haciendo que "
+"Esta unidad puede liderar a las unidades amigas cercanas, haciendo que "
 "luchen mejor.\n"
 "\n"
 "Las unidades adyacentes de nivel inferior haran más daño en combate."
 
 #: data/translations/english.cfg:45
-#, fuzzy
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -13007,11 +13036,9 @@ msgstr ""
 "enemigos.\n"
 "\n"
 "Las unidades enemigas no pueden ver o atacar esta unidad cuando se encuentra "
-"en un bosque, excepto en los turnos inmediatamente después de que haya "
-"atacado."
+"en un bosque, excepto en los turnos inmediatamente después de que haya atacado o si hay unidades enemigas junto a ella."
 
 #: data/translations/english.cfg:50
-#, fuzzy
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -13028,7 +13055,6 @@ msgstr ""
 "cuando es de noche, y como si fuera de día cuando está anocheciendo."
 
 #: data/translations/english.cfg:53
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
@@ -13039,7 +13065,6 @@ msgstr ""
 "todas las zonas de control enemigo."
 
 #: data/translations/english.cfg:55
-#, fuzzy
 msgid "Never more than 1 upkeep"
 msgstr "Sólo requieren 1 moneda de mantenimiento"
 
@@ -13170,7 +13195,6 @@ msgstr ""
 "opuesto del objetivo."
 
 #: data/translations/english.cfg:102
-#, fuzzy
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -13181,7 +13205,6 @@ msgstr ""
 "contraataques enemigos sean el doble de fuertes."
 
 #: data/translations/english.cfg:105
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -13200,7 +13223,6 @@ msgstr ""
 "Este ataque siempre tiene un 70% de posibilidades de impactar."
 
 #: data/translations/english.cfg:111
-#, fuzzy
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -13210,7 +13232,6 @@ msgstr ""
 "impactar."
 
 #: data/translations/english.cfg:114
-#, fuzzy
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
@@ -13221,15 +13242,14 @@ msgstr ""
 "cuerpo se levantará y luchará para ti."
 
 #: data/translations/english.cfg:117
-#, fuzzy
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
 "Veneno:\n"
-"Este ataque envenena al objetivo. Las unidades envenenadas pierden 8 HP \n"
-"hasta que sean curadas o sólo les quede 1 HP."
+"Este ataque envenena al objetivo. Las unidades envenenadas pierden 8 PV \n"
+"hasta que sean curadas o sólo les quede 1 PV."
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -13243,7 +13263,6 @@ msgstr ""
 "turno."
 
 #: data/translations/english.cfg:123
-#, fuzzy
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -13255,7 +13274,6 @@ msgstr ""
 "mover ni atacar."
 
 #: data/translations/english.cfg:126
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -13574,7 +13592,6 @@ msgstr ""
 "ataques, para saberlo, seleccione «Describir unidad» y luego «Resistencia»."
 
 #: data/translations/english.cfg:218
-#, fuzzy
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected uni "
@@ -13587,7 +13604,6 @@ msgstr ""
 "seleccionada se muestra en la esquina superior derecha de la pantalla."
 
 #: data/translations/english.cfg:219
-#, fuzzy
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -13601,7 +13617,6 @@ msgstr ""
 "'curar'."
 
 #: data/translations/english.cfg:220
-#, fuzzy
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -13613,7 +13628,6 @@ msgstr ""
 "conseguiréis unas tropas altamente competentes y experimentadas."
 
 #: data/translations/english.cfg:221
-#, fuzzy
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
@@ -13625,28 +13639,25 @@ msgstr ""
 "podrá mover más durante ese turno."
 
 #: data/translations/english.cfg:222
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
 "a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
 msgstr ""
 "La virtud de la ubicación:\n"
-"Las posibilidades de dañar una unidad suelen depender de su habilidad para "
+"Las posibilidades de dañar a una unidad suelen depender de su habilidad para "
 "defenderse en el terreno en el que está. Sin embargo, existen excepciones "
 "como los ataques mágicos que siempre tienen un 70% para acertar o los "
 "tiradores que con sus certeros arcos poseen un 60% de posibilidades como "
 "mínimo."
 
 #: data/translations/english.cfg:223
-#, fuzzy
 msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "La virtud de la hospitalidad:\n"
 "Una unidad situada en una aldea recuperará 8 puntos de vida cada turno."
 
 #: data/translations/english.cfg:224
-#, fuzzy
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
@@ -13656,7 +13667,6 @@ msgstr ""
 "recuperando así 2 puntos de vida al principio del siguiente turno."
 
 #: data/translations/english.cfg:225
-#, fuzzy
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -13668,7 +13678,6 @@ msgstr ""
 "ninguna bonificación defensiva ni en aldeas ni en castillos."
 
 #: data/translations/english.cfg:226
-#, fuzzy
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -13680,7 +13689,6 @@ msgstr ""
 "perforan como los arcos o las lanzas."
 
 #: data/translations/english.cfg:227
-#, fuzzy
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -13692,7 +13700,6 @@ msgstr ""
 "nivel del enemigo."
 
 #: data/translations/english.cfg:228
-#, fuzzy
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -13702,7 +13709,6 @@ msgstr ""
 "por contra, destacan en las montañas y colinas."
 
 #: data/translations/english.cfg:229
-#, fuzzy
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -13712,7 +13718,6 @@ msgstr ""
 "preferible esperar a mejores condiciones o refuerzos adicionales."
 
 #: data/translations/english.cfg:230
-#, fuzzy
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -13722,15 +13727,13 @@ msgstr ""
 "prescindibles para retrasar el ataque."
 
 #: data/translations/english.cfg:231
-#, fuzzy
 msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "La gloria también está en las retiradas:\n"
-"No hay que tener miedo a las retiradas, permiten reagruparse que puede ser "
+"No hay que tener miedo a las retiradas, permiten reagruparse, lo que puede ser "
 "vital para la victoria."
 
 #: data/translations/english.cfg:232
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -13743,7 +13746,6 @@ msgstr ""
 "oro de este modo que capturando aldeas y esperando el fin de los turnos."
 
 #: data/translations/english.cfg:233
-#, fuzzy
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -13752,22 +13754,20 @@ msgid ""
 msgstr ""
 "La virtud de la adaptabilidad:\n"
 "Cualquier líder puede reclutar tropas en cualquier castillo, no "
-"necesariamente en el que empiezan. Podéis capturar una castillo enemigo y "
+"necesariamente en el que empiezan. Podéis capturar un castillo enemigo y "
 "reclutar allí, e incluso puede que un aliado se muestre dispuesto a cederos "
 "el castillo para que podáis reclutar desde allí."
 
 #: data/translations/english.cfg:234
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 "Que la luz nunca ceda:\n"
 "Los Esqueletos son resistentes a las armas de filo y que perforan, pero "
-"vulnerables a las de impacto y fuego, y débiles ante las armas sagradas."
+"vulnerables a las de impacto, fuego y sagradas."
 
 #: data/translations/english.cfg:235
-#, fuzzy
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -13777,7 +13777,6 @@ msgstr ""
 "bando adyacentes con niveles inferiores de experiencia luchen mejor."
 
 #: data/translations/english.cfg:236
-#, fuzzy
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -13788,7 +13787,6 @@ msgstr ""
 "podría tomarla y beneficiarse de su defensa y curación mientras os ataca."
 
 #: data/translations/english.cfg:237
-#, fuzzy
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -13798,22 +13796,18 @@ msgstr ""
 "descripción."
 
 #: data/translations/english.cfg:238
-#, fuzzy
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "La virtud de la cautela:\n"
-"Usad líneas de tropas para proteger a las unidades heridas mientras se "
-"recuperan."
+"Usad líneas de tropas para proteger a las unidades heridas mientras se recuperan."
 
 #: data/translations/english.cfg:239
-#, fuzzy
 msgid "Read the hotkeys list in the preferences menu."
 msgstr ""
 "La virtud de la preparación:\n"
 "Leed las listas de teclas de uso frecuente en el menú de preferencias."
 
 #: data/translations/english.cfg:240
-#, fuzzy
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -13823,27 +13817,22 @@ msgstr ""
 "podéis deshacer ese movimiento pulsando 'u'."
 
 #: data/translations/english.cfg:241
-#, fuzzy
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
 "La virtud de la circunspección:\n"
-"Podéis conocer hasta donde pueden moverse las tropas enemigas situando el "
-"puntero encima suyo."
+"Podéis conocer hasta donde pueden moverse las tropas enemigas situando el puntero encima de ellas."
 
 #: data/translations/english.cfg:242
-#, fuzzy
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 "La virtud de la reserva:\n"
-"Usad sanadores para respaldar vuestros ataques; ganarán batallas incluso sin "
-"atacar nada por sí mismos."
+"Usad sanadores para respaldar vuestros ataques; ganarán batallas incluso sin atacar nada por sí mismos."
 
 #: data/translations/english.cfg:243
-#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
@@ -13855,24 +13844,20 @@ msgstr ""
 "contra enemigos con pocos ataques."
 
 #: data/translations/english.cfg:244
-#, fuzzy
 msgid "Holy attacks are very powerful against undead."
 msgstr ""
 "La maldición de la Oscuridad:\n"
 "Los ataques sagrados son muy poderosos contra los No Muertos."
 
 #: data/translations/english.cfg:245
-#, fuzzy
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
 "La virtud de la astucia:\n"
-"Las unidades se curan cuando suben de nivel. Usado astutamente, puede "
-"cambiar el signo de la batalla."
+"Las unidades se curan cuando suben de nivel. Usado astutamente, puede cambiar el signo de la batalla."
 
 #: data/translations/english.cfg:246
-#, fuzzy
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -17191,7 +17176,7 @@ msgstr "nivel"
 #: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:616
 #: src/playturn.cpp:1876 src/unit.cpp:1028
 msgid "HP"
-msgstr "PG"
+msgstr "PV"
 
 #: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
 #: src/display.cpp:914 src/playturn.cpp:1714 src/playturn.cpp:1877
@@ -18461,11 +18446,11 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Esta unidad está envenenada. Perderá 8 PG cada turno hasta que encuentre una "
+"Esta unidad está envenenada. Perderá 8 PV cada turno hasta que encuentre una "
 "cura para el veneno en una aldea o una unidad amiga con la habilidad de "
 "«curar».\n"
 "Las unidades no pueden morir envenenadas. El veneno no afectará por debajo "
-"de 1 PG."
+"de 1 PV."
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
