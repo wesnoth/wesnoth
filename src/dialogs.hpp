@@ -58,8 +58,7 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 /// index of the button pressed, or -1 if the dialog was canceled
 /// through keypress.
 int show_file_chooser_dialog(display &displ, std::string &filename,
-							 const std::string title="Choose a File",
-							 int xloc=-1, int yloc=-1);
+                             std::string const &title, int xloc = -1, int yloc = -1);
 
 class unit_preview_pane : public gui::preview_pane
 {

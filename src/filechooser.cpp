@@ -8,8 +8,7 @@ namespace dialogs
 {
 
 int show_file_chooser_dialog(display &disp, std::string &filename,
-							 const std::string title,
-							 int xloc, int yloc) {
+                             std::string const &title, int xloc, int yloc) {
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 	const events::resize_lock prevent_resizing;
