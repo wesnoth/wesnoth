@@ -1,7 +1,7 @@
 #include "global.hpp"
 
 #include "race.hpp"
-#include "replay.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>

@@ -165,49 +165,15 @@ verification_manager::~verification_manager()
 	unit_map_ref = NULL;
 }
 
+// FIXME: this one now has to be assigned with set_random_generator
+// from play_level or similar.  We should surely hunt direct
+// references to it from this very file and move it out of here.
 replay recorder;
 
-namespace {
-
-replay* random_generator = &recorder;
-
-struct set_random_generator {
-
-	set_random_generator(replay* r) : old_(random_generator)
-	{
-		random_generator = r;
-	}
-
-	~set_random_generator()
-	{
-		random_generator = old_;
-	}
-
-private:
-	replay* old_;
-};
-
-}
-
-int get_random()
-{
-	return random_generator->get_random();
-}
-
-const config* get_random_results()
-{
-	return random_generator->get_random_results();
-}
-
-void set_random_results(const config& cfg)
-{
-	random_generator->set_random_results(cfg);
-}
-
-replay::replay() : pos_(0), current_(NULL), random_(NULL), skip_(0)
+replay::replay() : pos_(0), current_(NULL), skip_(0)
 {}
 
-replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), random_(NULL), skip_(0)
+replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
 {}
 
 config& replay::get_config()
@@ -482,47 +448,6 @@ config* replay::add_command()
 {
 	pos_ = ncommands()+1;
 	return current_ = &cfg_.add_child("command");
-}
-
-int replay::get_random()
-{
-	if(random_ == NULL) {
-		return rand();
-	}
-
-	//random numbers are in a 'list' meaning that each random
-	//number contains another random numbers unless it's at
-	//the end of the list. Generating a new random number means
-	//nesting a new node inside the current node, and making
-	//the current node the new node
-	config* const random = random_->child("random");
-	if(random == NULL) {
-		const int res = rand();
-		random_ = &random_->add_child("random");
-
-		char buf[100];
-		sprintf(buf,"%d",res);
-		(*random_)["value"] = buf;
-
-		return res;
-	} else {
-		const int res = atol((*random)["value"].c_str());
-		random_ = random;
-		return res;
-	}
-}
-
-const config* replay::get_random_results() const
-{
-	wassert(random_ != NULL);
-	return random_->child("results");
-}
-
-void replay::set_random_results(const config& cfg)
-{
-	wassert(random_ != NULL);
-	random_->clear_children("results");
-	random_->add_child("results",cfg);
 }
 
 void replay::start_replay()

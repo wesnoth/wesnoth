@@ -25,6 +25,7 @@
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
+#include "random.hpp"
 #include "replay.hpp"
 #include "video.hpp"
 
@@ -326,6 +327,7 @@ namespace mp {
 void start_server(display& disp, const config& game_config, game_data& data,
 		mp::controller default_controller, bool is_server)
 {
+	const set_random_generator generator_setter(&recorder);
 	mp::chat chat;
 	config gamelist;
 
@@ -335,6 +337,7 @@ void start_server(display& disp, const config& game_config, game_data& data,
 void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host)
 {
+	const set_random_generator generator_setter(&recorder);
 	const network::manager net_manager;
 
 	mp::chat chat;

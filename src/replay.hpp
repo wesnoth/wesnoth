@@ -18,6 +18,7 @@ class display;
 #include "config.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
+#include "random.hpp"
 #include "unit.hpp"
 
 struct verification_manager
@@ -26,12 +27,7 @@ struct verification_manager
 	~verification_manager();
 };
 
-int get_random();
-
-const config* get_random_results();
-void set_random_results(const config& cfg);
-
-class replay
+class replay: public rng
 {
 public:
 	replay();
@@ -75,10 +71,6 @@ public:
 
 	void undo();
 
-	int get_random();
-	const config* get_random_results() const;
-	void set_random_results(const config& cfg);
-
 	void start_replay();
 	config* get_next_action();
 
@@ -110,7 +102,6 @@ private:
 	unsigned int pos_;
 
 	config* current_;
-	config* random_;
 
 	game_state saveInfo_;
 

@@ -19,7 +19,7 @@
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "preferences.hpp"
-#include "replay.hpp"
+#include "random.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"

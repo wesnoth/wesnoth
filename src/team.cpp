@@ -18,7 +18,6 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "network.hpp"
-#include "replay.hpp"
 #include "team.hpp"
 #include "util.hpp"
 #include "wassert.hpp"

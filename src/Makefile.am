@@ -85,6 +85,7 @@ wesnoth_SOURCES = \
 	preferences.cpp \
 	publish_campaign.cpp \
 	race.cpp \
+	random.cpp \
 	replay.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
@@ -173,6 +174,7 @@ wesnoth_SOURCES = \
 	preferences.hpp \
 	publish_campaign.hpp \
 	race.hpp \
+	random.hpp \
 	replay.hpp \
 	reports.hpp \
 	scoped_resource.hpp \
@@ -263,6 +265,7 @@ wesnoth_editor_SOURCES = \
 	playturn.cpp \
 	preferences.cpp \
 	race.cpp \
+	random.cpp \
 	replay.cpp \
 	reports.cpp \
 	sdl_utils.cpp \
@@ -343,6 +346,7 @@ wesnoth_editor_SOURCES = \
 	playturn.hpp \
 	preferences.hpp \
 	race.hpp \
+	random.hpp \
 	replay.hpp \
 	reports.hpp \
 	sdl_utils.hpp \

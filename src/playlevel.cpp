@@ -31,6 +31,7 @@
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
+#include "random.hpp"
 #include "replay.hpp"
 #include "scoped_resource.hpp"
 #include "sound.hpp"
@@ -124,6 +125,8 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		game_state& state_of_game,
 		const std::vector<config*>& story)
 {
+	const set_random_generator generator_setter(&recorder);
+
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 
