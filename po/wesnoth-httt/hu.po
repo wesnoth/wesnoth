@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-28 11:58+0200\n"
-"PO-Revision-Date: 2005-03-27 22:08+0200\n"
+"PO-Revision-Date: 2005-03-28 18:07+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -1294,7 +1294,7 @@ msgstr "Rajtaütés!"
 
 #: data/scenarios/Heir_To_The_Throne/Crossroads.cfg:288
 msgid "Wolf Rider"
-msgstr ""
+msgstr "Farkaslovas"
 
 #: data/scenarios/Heir_To_The_Throne/Crossroads.cfg:299
 #: data/scenarios/Heir_To_The_Throne/Crossroads.cfg:322
@@ -1385,7 +1385,7 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:134
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:153
 msgid "Royal Guard"
-msgstr ""
+msgstr "Udvari testőr"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:208
 msgid ""
@@ -1413,7 +1413,7 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:281
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:234
 msgid "Cuttle Fish"
-msgstr ""
+msgstr "Kalmárhal"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:238
 msgid "Ruarrrrr!!!"
@@ -1485,7 +1485,7 @@ msgstr "Biztos az ottani falvak egyikében rejtőzik."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:375
 msgid "Uncle Somf"
-msgstr ""
+msgstr "Somf nagybácsi"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:379
 msgid "Haw! My niece's friends are mine friends too"
@@ -2272,7 +2272,7 @@ msgstr "Állj! Itt nem jutsz át! Gyorsan, erősítést, védd a hercegnőt!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:278
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Tengerii kígyó"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:301
 msgid "Ruaarrrrrrrr!"
@@ -2510,9 +2510,8 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Valley_of_Statues.cfg:232
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:219
-#, fuzzy
 msgid "Goblin Knight"
-msgstr "Egy lovag"
+msgstr "Koboldlovag"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:271
 msgid "Surprise! Die, you sun-lovers!"
@@ -3650,16 +3649,15 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:194
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:218
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Törp őrmester"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:134
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:158
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:182
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:206
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:230
-#, fuzzy
 msgid "Dwarvish Fighter"
-msgstr "Harcos"
+msgstr "Törp harcos"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:280
 msgid "It's so dark in here I can hardly see!"
@@ -4468,9 +4466,8 @@ msgid "Gamlel"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:216
-#, fuzzy
 msgid "As night began to fall, three dark figures crept out of the forest."
-msgstr "Az éj leple alatt három baljós figura osont ki az erdőből."
+msgstr "Az éj leszálltával három baljós figura osont ki az erdőből."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:220
 msgid "Halt! Who goes there, friend or foe?"
@@ -4511,7 +4508,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:244
 msgid "Yes, but where is your fighting force? How can you help us?"
-msgstr ""
+msgstr "Értem, de hol állomásoznak az erőitek? Hogyan fogtok segíteni?"
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:248
 msgid ""
@@ -4519,6 +4516,9 @@ msgid ""
 "orcs.  Alternatively, we can lay in wait until you give us a signal then "
 "ambush the orcs' rear."
 msgstr ""
+"Lopakodva túlélünk mindent. Segíteni tudunk bejutni a városba és közrezárni "
+"az orkokat. De akár várakozhatunk is, és amikor megadod a jelet "
+"hátbatámadjuk őket."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:252
 msgid "Hmm...I have to consider this..."
@@ -4526,44 +4526,53 @@ msgstr "Hmm... ezt megfontolom ..."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:254
 msgid "Help us infiltrate the city.  We can do the rest."
-msgstr ""
+msgstr "Segíts nekünk belopakodni a városba. A többit majd megoldjuk."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:258
 msgid ""
 "Excellent.  Two hours past midnight meet us on the west bank of the river, "
 "across from Elensefar's docks."
 msgstr ""
+"Kitűnő. Éjfél után két órával találkozzunk a folyó nyugati partján, "
+"Elensefar kikötőjével átellenben."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:274
 msgid "I want you to reinforce us once we break through their line."
-msgstr ""
+msgstr "Azt szeretném, hogy siessetek segíteni amint áttörjük a soraikat."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:278
 msgid ""
 "Very well.  When you raise your red banner over any building in the city "
 "proper, we will see the sign and attack from the city's northern gate."
 msgstr ""
+"Rendben. Amint rendesen kitűzitek a vörös zászlót a város bármelyik "
+"épületére, érteni fogjuk a jelet és támadást indítunk az északi kapunál."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:282
 msgid "Agreed.  But, will you be able to see our flag if it's dark?"
-msgstr ""
+msgstr "Elfogadom. De, hogyan fogjátok meglátni a zászlót, ha sötét lesz?"
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:286
 msgid ""
 "Yes, we will see it.  In fact, we prefer to fight at night.  I pray you do "
 "not lead us into slaughter."
 msgstr ""
+"Valójában, mi jobban is szeretünk éjszaka harcolni. Imádkozom, hogy ne a "
+"mészárszékre vezess minket."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:290
 msgid ""
 "Do not fear, friends.  There will be a slaughter here, but it will be orcish "
 "blood staining the streets."
 msgstr ""
+"Ne féljetek, barátaim. Az igaz, hogy mészárszékké fog változni ez a hely, de "
+"ork vér lesz az, ami be fogja festeni az járdákat."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:330
 msgid ""
 "On the banks of Elensefar's port district, three shadowy figures appeared."
 msgstr ""
+"A parton, Elensefar kikötői negyedében, három árnyszerű alak jelent meg."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:334
 msgid ""
@@ -4571,6 +4580,9 @@ msgid ""
 "The turbulent waters hid a nearly invisible ford, wide enough for two "
 "soldiers to march shoulder-to-shoulder."
 msgstr ""
+"Konrad legnagyobb meglepetésére, nagyon gyorsan átjutottak a folyó "
+"torkolatán. Az örvénylő víz egy szinte észrevehetetlen gázlót rejtett, amin "
+"akár két katona is váll a vállhoz átjuthatott egymás mellet."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:382
 msgid ""
@@ -4578,12 +4590,15 @@ msgid ""
 "to discover this place.  Bring your forces into the city, quickly now, and "
 "you can flank them."
 msgstr ""
+"Csak nagyon kevesen tudják, hogy itt át lehet jutni a folyón. Az orkok még "
+"nem felfedezték fel. Vidd gyorsan a csapataidat a városba, és megkerülheted "
+"őket."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:411
 msgid ""
 "As the banner was raised, sounds of fighting could be heard from across the "
 "city."
-msgstr ""
+msgstr "Ahogy a zászlót feltűzték, csatazaj lett hallható a városon keresztül."
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:452
 msgid "Darglen"
@@ -4592,6 +4607,7 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:464
 msgid "Let's expel these invaders!  Today, the city is ours again!"
 msgstr ""
+"Űzzük ki ezeket a betolakodókat! Mától a város újra a mi kezünkben van!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:476
 msgid "Finally, we have retaken the city! Let us rest here, friends."
@@ -4911,7 +4927,7 @@ msgstr "Meghal Delfador, vagy akár csak kővé válik"
 
 #: data/scenarios/Heir_To_The_Throne/Valley_of_Statues.cfg:121
 msgid "A Yeti"
-msgstr ""
+msgstr "Egy jeti"
 
 #: data/scenarios/Heir_To_The_Throne/Valley_of_Statues.cfg:135
 msgid "Be warned, a great monster lives in the hills ahead."

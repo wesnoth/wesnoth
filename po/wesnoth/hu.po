@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: hu_wesnoth_backup2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-28 12:16+0200\n"
-"PO-Revision-Date: 2005-03-27 17:01+0200\n"
+"PO-Revision-Date: 2005-03-28 16:40+0200\n"
 "Last-Translator: Széll Tamás <tomi@digiflex.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;X-Generator: KBabel 1.3X-Generator: \n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami.ttf"
+msgstr "Bepa-Roman.ttf,Vera.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -1270,18 +1269,16 @@ msgid "Charge"
 msgstr "Roham"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Klasszikus"
+msgstr "Összezördülés"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Egy kétjátékos pálya gyors játékokra, ahol ajánlott falvanként két aranyat "
-"beállítani."
+"Egy kis méretű négyjátékos pálya, ahol ajánlott a falvanként 2 arany "
+"beállítása, és a 1, 3 a 2, 4 játékos ellen játszott 2-2 ellen csapatjáték."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1509,7 +1506,6 @@ msgstr ""
 "művészetét..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1527,7 +1523,6 @@ msgid "Recruit a unit"
 msgstr "Toborozz egy egységet"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Kitűnő! Felvettél a seregedbe egy tünde harcost."
 
@@ -1545,7 +1540,6 @@ msgid "How do I recruit units?"
 msgstr "Hogyan toborozhatok egységeket?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1587,7 +1581,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Hogyan válasszam ki, hogy milyen fajtájú egységet toborozzak?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
@@ -1627,7 +1620,6 @@ msgid "End your turn"
 msgstr "Fejezd be a köröd"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Sikeresen befejezted a köröd."
 
@@ -1680,7 +1672,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Lépj a tünde harcosoddal Merle mellé"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1775,7 +1766,6 @@ msgid "Attack Merle"
 msgstr "Támadd meg Merlét."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Sikeresen megtámadtad Merlét."
 
@@ -1784,7 +1774,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Visszatámadhat Merle a támadásom után?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1858,7 +1847,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Fejezd be a köröd, és várd meg, hogy Merle megtámadjon."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1892,7 +1880,6 @@ msgid "What happens when a unit advances?"
 msgstr "Mi történik, ha egy egység szintet lép?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1922,7 +1909,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Mi történik, ha egy egység egy faluba ér?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1940,14 +1926,13 @@ msgstr ""
 "költségét. Az összes birtokolt falu száma megjelenik a felső menüsoron, egy "
 "ház képénél. A falvak birtoklásának, a gazdasági szempontok mellett, másik "
 "fontos előnyük, hogy harcban is jól használhatóak. A falvak ugyanis 8 pontot "
-"gyógyítanak az bennük lévő egységeken körönként."
+"gyógyítanak a bennük lévő egységeken körönként."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Hogyan tudok gyógyítani, ha egy falu sincs a közelben?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1990,7 +1975,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -2000,7 +1984,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -2009,7 +1992,6 @@ msgstr ""
 "valamennyit a mai leckéből."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "Sikeresen befejezted az első gyakorló pályát!"
 
@@ -2024,7 +2006,6 @@ msgstr ""
 "Honnan tudhatom meg, hogy hogyan kell megcsinálnom pályát? Mindig elmondják?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2059,7 +2040,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr "Szeretnéd a pályán tanultak valamelyikét újra megnézni?"
 
@@ -2074,7 +2054,6 @@ msgid "I'm done reviewing skills!"
 msgstr "Végeztem a tanultak áttekintésével!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
-#, fuzzy
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -2096,7 +2075,6 @@ msgstr ""
 "engem egy szimulált harcban."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2148,7 +2126,6 @@ msgid "Turns run out"
 msgstr "Túlléped a körök számát"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Sikeresen visszahívtad a tünde harcosodat."
 
@@ -2160,7 +2137,6 @@ msgstr "Sikeresen visszahívtad a tünde harcosodat."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "Fegyverbe!"
 
@@ -2186,7 +2162,6 @@ msgid "How should I decide which units to recall?"
 msgstr "Hogy döntsem el, melyik egységet hívom vissza?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -2199,7 +2174,6 @@ msgstr ""
 "küldetésben, például egy erdei pályán érdemes tündéket visszahívni."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2281,7 +2255,6 @@ msgid "How do I get gold?"
 msgstr "Hogyan szerezhetek aranyat?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2290,11 +2263,11 @@ msgid ""
 "you usually need more gold than that, you should flag villages, which give "
 "you 1 gold per turn."
 msgstr ""
-"Minden pályát az előző pályáról maradt aranyad 80%-ával kezdesz. Ha ez "
-"kevesebb, mint 100 arany, akkor 100 arannyal kezdesz. Az aranyaid számáról "
-"az oldal tetején tájékozódhatsz, egy arany képénél. A küldetés kezdetétől "
-"fogva minden körben 2 aranyat kapsz. Ha ennél többet szeretnél, falvakat "
-"kell szerezned, melyek 1 aranyat szolgáltatnak körönként."
+"Minden pályát az előző pályáról maradt aranyad bizonyos részével kezdesz "
+"meg. Ha ez kevesebb, mint 100 arany, akkor 100 arannyal kezdesz. Az aranyaid "
+"számáról az oldal tetején tájékozódhatsz, egy arany képénél. A küldetés "
+"kezdetétől fogva minden körben 2 aranyat kapsz. Ha ennél többet szeretnél, "
+"falvakat kell szerezned, melyek 1 aranyat szolgáltatnak körönként."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:144
 msgid ""
@@ -2350,7 +2323,6 @@ msgstr ""
 "adottságokat adnak a hatszögnek."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2362,14 +2334,14 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
-"Két olyan terep van, amelyet már elmagyaráztam. A falvak és a vár. A legtöbb "
-"terepfajta tulajdonságai sokkal szövevényesebbek ennél, és előnyökkel, "
-"valamint hátrányokkal járnak, attól függően, milyen egység halad át rajtuk. "
-"Az első dolog az, hogy hány lépési-pontba kerül az egységnek, hogy "
-"áthaladjon a hatszögön. A második dolog, hogy mekkora védettséget nyújt az "
-"egységnek, ami rajta áll. Ez egy százalékos érték, ami csökkenti az egység "
-"eltalálásának esélyét. Például sok tündének 70%-os védelme van erdőben, "
-"tehát ott 30% eséllyel találhatóak el."
+"Két olyan terep van, amelyet már elmagyaráztam. Nevezetesen a falvakat és a "
+"várt. A legtöbb terepfajta tulajdonságai sokkal szövevényesebbek ennél, és "
+"előnyökkel, valamint hátrányokkal járnak, attól függően, milyen egység halad "
+"át rajtuk. Az első dolog az, hogy hány lépési-pontba kerül az egységnek, "
+"hogy áthaladjon a hatszögön. A második dolog, hogy mekkora védettséget nyújt "
+"az egységnek, ami rajta áll. Ez egy százalékos érték, ami csökkenti az "
+"egység eltalálásának esélyét. Például sok tündének 70%-os védelme van "
+"erdőben, tehát ott 30% eséllyel találhatóak el."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "What are the different properties that terrains have?"
@@ -2380,7 +2352,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Honnan tudhatom meg a terepek tulajdonságait?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2429,7 +2400,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Hogy csökkenti az ellenállás a támadást?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2558,7 +2528,6 @@ msgid "How long do these objects last?"
 msgstr "Milyen sokáig maradnak meg a tárgyak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:236
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -2793,11 +2762,11 @@ msgstr "lápos rom"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Gázló"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Láva"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -7762,9 +7731,8 @@ msgid "+Catalan Translation"
 msgstr "+Katalán Fordítás"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Finn Fordítás"
+msgstr "+Kínai Fordítás"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -8108,7 +8076,7 @@ msgstr "láthatatlan"
 
 #: src/filechooser.cpp:38
 msgid "Ok"
-msgstr ""
+msgstr "Oké"
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:492
 #: src/multiplayer_create.cpp:52 src/multiplayer_wait.cpp:148
@@ -8378,14 +8346,12 @@ msgid "Battle for Wesnoth"
 msgstr "Harc Wesnoth-ért"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Győzelem"
+msgstr "Győzelem:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Vereség"
+msgstr "Vereség:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -8513,7 +8479,7 @@ msgstr "Rendszer alapértelmezett nyelve"
 
 #: src/leader_list.cpp:124 src/leader_list.cpp:130
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/mapgen_dialog.cpp:78
 msgid "Close Window"
@@ -9208,11 +9174,13 @@ msgstr ""
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Elmentett téma beállításai: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Az új téma a következő megkezdett vagy folytatott játékban fog használatba "
+"lépni."
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
@@ -9334,69 +9302,68 @@ msgstr "Megfigyelők:"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Nem várt karakterek a sor kezdetén"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
-msgstr ""
+msgstr "Hiányzik a befejező tag a $tag tag-hez ($file fájl, $line sora)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Hiányzik a befejező tag a $tag tag-hez ($line sor)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Befejezetlen [element] tag"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "A kiválasztott éra érvénytelen"
+msgstr "Érvénytelen nevű tag"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Befejezetlen [+element] tag"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Érvénytelen nevű lezáró tag"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Befejezetlen lezáró tag"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Nem várt lezáró tag"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Érvénytelen lezáró tag-et találtam a $tag tag-hez ($file fájl, $line sora)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Érvénytelen lezáró tag-et találtam a $tag tag-hez ($line sor)"
 
 #: src/serialization/parser.cpp:211
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Nem várt karakterek a változó neve után (, vagy = kéne)"
 
 #: src/serialization/parser.cpp:214
-#, fuzzy
 msgid "Invalid variable name"
-msgstr "A kiválasztott éra érvénytelen"
+msgstr "Érvénytelen nevű változó"
 
 #: src/serialization/parser.cpp:239 src/serialization/parser.cpp:263
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Befejezetlen meghívott string"
 
 #: src/serialization/parser.cpp:308
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error a fájlban $file ($line sor, $column oszlop)"
 
 #: src/serialization/parser.cpp:309
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error ($line sor, $column oszlop)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9484,171 +9451,3 @@ msgstr "igazságos"
 #: src/unit_types.cpp:926
 msgid "neutral"
 msgstr "semleges"
-
-#, fuzzy
-#~ msgid "Next unit"
-#~ msgstr "Semleges egységek: "
-
-#, fuzzy
-#~ msgid "End Unit Turn"
-#~ msgstr "Kör vége"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Élőholtak"
-
-#, fuzzy
-#~ msgid "Redo"
-#~ msgstr "Vörös"
-
-#, fuzzy
-#~ msgid "Default Zoom"
-#~ msgstr "Alapértelmezés"
-
-#, fuzzy
-#~ msgid "Unit Description"
-#~ msgstr "Óriás skorpió"
-
-#, fuzzy
-#~ msgid "Repeat Recruit"
-#~ msgstr "Toborzás"
-
-#, fuzzy
-#~ msgid "Speak"
-#~ msgstr "Különleges"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Hercegnő"
-
-#, fuzzy
-#~ msgid "Scenario Objectives"
-#~ msgstr "+Történetírók"
-
-#, fuzzy
-#~ msgid "Quit Game"
-#~ msgstr "Kilépés a játékból"
-
-#, fuzzy
-#~ msgid "Set Label"
-#~ msgstr "Címke elhelyezése"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Terep"
-
-#, fuzzy
-#~ msgid "New Map"
-#~ msgstr "Felhasználói térkép"
-
-#, fuzzy
-#~ msgid "Load Map"
-#~ msgstr "Betölt"
-
-#, fuzzy
-#~ msgid "Save Map"
-#~ msgstr "Pálya megosztása"
-
-#, fuzzy
-#~ msgid "Save As"
-#~ msgstr "Elmentve"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "véres csók"
-
-#, fuzzy
-#~ msgid "Fill Selection"
-#~ msgstr "Csontváz"
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Várkastély"
-
-#, fuzzy
-#~ msgid "Resize Map"
-#~ msgstr "Felhasználói térkép"
-
-#, fuzzy
-#~ msgid "Select All"
-#~ msgstr "Válassz egységet:"
-
-#, fuzzy
-#~ msgid "Draw Terrain"
-#~ msgstr "Terep"
-
-#, fuzzy
-#~ msgid "Continue Move"
-#~ msgstr "Csatlakozás a szerverhez"
-
-#, fuzzy
-#~ msgid "View Chat Log"
-#~ msgstr "Csevejnapló"
-
-#, fuzzy
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Biztos törölni akarod ezt az állást?"
-
-#, fuzzy
-#~ msgid "player"
-#~ msgstr "Játékosok:"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Visszajátszás mutatása"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Gyakorlás"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Kör:"
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Nyelv megváltoztatása"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Válassz fegyvert:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Beállítások..."
-
-#, fuzzy
-#~ msgid "Delete File"
-#~ msgstr "Mentés törlése"
-
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Irányítsd az egységedet egy faluba."
-
-#~ msgid ""
-#~ "Congratulations! By defeating me, you complete the second training "
-#~ "scenario."
-#~ msgstr ""
-#~ "Gratulálok! Legyőzésemmel sikeresen befejezted a második gyakorló pályát "
-#~ "is!"
-
-#~ msgid ""
-#~ "The rank of Commander is held by those who lead battle groups into "
-#~ "combat. Possessing leadership skills, they give lower-level units "
-#~ "improved performance in combat. Commanders are best skilled with the "
-#~ "sword, although they also carry a bow to use when necessary. If the "
-#~ "Commander is lost, so is the battle."
-#~ msgstr ""
-#~ "A vezér rangját jelzi, hogy milyen csapatokat vezet a harcban. Vezetői "
-#~ "képességei vannak, amely javítja az alacsonyabb szintű egységek "
-#~ "elszántságát a harcokban. A vezérek legjobban a karddal tudnak bánni, bár "
-#~ "nyilat is használhat, ha a szükség megkívánja. Egy vezér halálával a "
-#~ "harcot is elveszítjük."
-
-#~ msgid ""
-#~ "Congratulations! You have defeated me, and completed the second and final "
-#~ "training scenario. Next, you may want to begin a campaign, or play "
-#~ "multiplayer."
-#~ msgstr ""
-#~ "Gratulálok! Legyőztél engem és ezzel befejezted a második és egyben "
-#~ "utolsó gyakorló küldetést. A következőkben belekezdhetsz egy hadjáratba "
-#~ "vagy kipróbálhatod a többjátékos játékmódot."
