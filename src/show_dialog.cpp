@@ -799,7 +799,8 @@ TITLE_RESULT show_title(display& screen)
 	}
 
 	const size_t padding = 10;
-	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen);
+	std::string style = "mainmenu";
+	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen,&style);
 
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.back().draw();

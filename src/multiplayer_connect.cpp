@@ -490,6 +490,8 @@ void mp_connect::gui_update()
 
 int mp_connect::gui_do()
 {
+	const events::event_context context;
+
 	SDL_Rect rect;
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	const config::child_itors sides = level_->child_range("side");
