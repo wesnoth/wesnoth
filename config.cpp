@@ -22,6 +22,29 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 
+bool operator<(const line_source& a, const line_source& b)
+{
+	return a.linenum < b.linenum;
+}
+
+namespace {
+
+line_source get_line_source(const std::vector<line_source>& line_src, int line)
+{
+	line_source res(line,"",0);
+	std::vector<line_source>::const_iterator it =
+	           std::upper_bound(line_src.begin(),line_src.end(),res);
+	if(it != line_src.begin()) {
+		--it;
+		res.file = it->file;
+		res.fileline = it->fileline + (line - it->linenum);
+	}
+
+	return res;
+}
+
+}
+
 std::string read_file(const std::string& fname)
 {
 	//if we have a path to the data
@@ -63,7 +86,8 @@ namespace {
 
 void internal_preprocess_file(const std::string& fname,
                               std::map<std::string,std::string> defines_map,
-                              int depth, std::vector<char>& res)
+                              int depth, std::vector<char>& res,
+                              std::vector<line_source>* lines_src, int& line)
 {
 	//if it's a directory, we process all files in the directory
 	//that end in .cfg
@@ -75,11 +99,18 @@ void internal_preprocess_file(const std::string& fname,
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
 			if(f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
-				internal_preprocess_file(*f,defines_map,depth,res);
+				internal_preprocess_file(*f,defines_map,depth,res,
+				                         lines_src,line);
 			}
 		}
 
 		return;
+	}
+
+	int srcline = 1;
+
+	if(lines_src != NULL) {
+		lines_src->push_back(line_source(line,fname,srcline));
 	}
 
 	const std::string data = read_file(fname);
@@ -101,25 +132,39 @@ void internal_preprocess_file(const std::string& fname,
 			if(i == data.end())
 				break;
 
-			const std::string fname = newfile.str();
+			const std::string newfilename = newfile.str();
 
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
-			if(defines_map.count(fname) != 0) {
-				const std::string& val = defines_map[fname];
+			if(defines_map.count(newfilename) != 0) {
+				const std::string& val = defines_map[newfilename];
 				res.insert(res.end(),val.begin(),val.end());
+				line += std::count(val.begin(),val.end(),'\n');
 			} else if(depth < 20) {
-				internal_preprocess_file("data/" + newfile.str(),
-				                       defines_map, depth+1,res);
+				internal_preprocess_file("data/" + newfilename,
+				                       defines_map, depth+1,res,
+				                       lines_src,line);
 			} else {
-				const std::string& str = read_file(newfile.str());
+				const std::string& str = read_file(newfilename);
 				res.insert(res.end(),str.begin(),str.end());
+				line += std::count(str.begin(),str.end(),'\n');
+			}
+
+			if(lines_src != NULL) {
+				lines_src->push_back(line_source(line,fname,srcline));
 			}
 		} else if(c == '#' && !in_quotes) {
+			//we are about to skip some things, so keep track of
+			//the start of where we're skipping, so we can count
+			//the number of newlines, so we can track the line number
+			//in the source file
+			const std::string::const_iterator begin = i;
+
 			//if this is the beginning of a pre-processing definition
 			static const std::string hash_define("#define");
 			if(data.end() - i > hash_define.size() &&
 			   std::equal(hash_define.begin(),hash_define.end(),i)) {
+
 				i += hash_define.size();
 				while(i != data.end() && isspace(*i))
 					++i;
@@ -204,8 +249,16 @@ void internal_preprocess_file(const std::string& fname,
 			if(i == data.end())
 				break;
 
+			srcline += std::count(begin,i,'\n');
+			++line;
+
 			res.push_back('\n');
 		} else {
+			if(c == '\n') {
+				++line;
+				++srcline;
+			}
+
 			res.push_back(c);
 		}
 	}
@@ -216,7 +269,8 @@ void internal_preprocess_file(const std::string& fname,
 } //end anonymous namespace
 
 std::string preprocess_file(const std::string& fname,
-                            const std::map<std::string,std::string>* defines)
+                            const std::map<std::string,std::string>* defines,
+                            std::vector<line_source>* line_sources)
 {
 	log_scope("preprocessing file...");
 	static const std::map<std::string,std::string> default_defines;
@@ -224,14 +278,16 @@ std::string preprocess_file(const std::string& fname,
 		defines = &default_defines;
 
 	std::vector<char> res;
-	internal_preprocess_file(fname,*defines,0,res);
+	int linenum = 0;
+	internal_preprocess_file(fname,*defines,0,res,line_sources,linenum);
 	return std::string(res.begin(),res.end());
 }
 
-config::config(const std::string& data)
+config::config(const std::string& data,
+               const std::vector<line_source>* line_sources)
 {
 	log_scope("parsing config...");
-	read(data);
+	read(data,line_sources);
 }
 
 config::config(const config& cfg) : values(cfg.values)
@@ -273,7 +329,8 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
-void config::read(const std::string& data)
+void config::read(const std::string& data,
+                  const std::vector<line_source>* line_sources)
 {
 	clear();
 
@@ -289,8 +346,13 @@ void config::read(const std::string& data)
 
 	bool in_quotes = false;
 
+	int line = 0;
+
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		const char c = *i;
+		if(c == '\n')
+			++line;
+
 		switch(state) {
 			case ELEMENT_NAME:
 				if(c == ']') {
@@ -299,16 +361,37 @@ void config::read(const std::string& data)
 
 						if(value[0] == '/' &&
 						   std::string("/" + element_names.top()) != value) {
-							throw error("Found illegal end tag: '" +
-							             value + "', at end of '" +
-							             element_names.top() + "'");
+							std::stringstream err;
+
+							if(line_sources != NULL) {
+								const line_source src =
+								        get_line_source(*line_sources,line);
+
+								err << src.file << " " << src.fileline << ": ";
+							}
+
+							err << "Found illegal end tag: '" << value
+							    << "', at end of '"
+							    << element_names.top() << "'";
+
+							throw error(err.str());
 						}
 
 						elements.pop();
 						element_names.pop();
 
 						if(elements.empty()) {
-							throw error("Unexpected terminating tag\n");
+							std::stringstream err;
+
+							if(line_sources != NULL) {
+								const line_source src =
+								        get_line_source(*line_sources,line);
+
+								err << src.file << " " << src.fileline << ": ";
+							}
+
+							err << "Unexpected terminating tag\n";
+							throw error(err.str());
 							return;
 						}
 

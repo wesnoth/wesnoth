@@ -64,7 +64,13 @@ namespace {
 
 CVideo::CVideo(const char* text) : frameBuffer(NULL), backBuffer(NULL)
 {
-	SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
+	const int res =
+	       SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
+
+	if(res < 0) {
+		std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		throw CVideo::error();
+	}
 
 	for(int i = 0; i != sizeof(text_); ++i) {
 		text_[i] = text[i];

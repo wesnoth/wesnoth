@@ -17,23 +17,39 @@
 #include <string>
 #include <vector>
 
+struct line_source
+{
+	line_source(int ln,const std::string& fname, int line) :
+	              linenum(ln), file(fname), fileline(line)
+	{}
+
+	int linenum;
+	std::string file;
+	int fileline;
+};
+
+bool operator<(const line_source& a, const line_source& b);
+
 std::string read_file(const std::string& fname);
 void write_file(const std::string& fname, const std::string& data);
 std::string preprocess_file(const std::string& fname,
-                            const std::map<std::string,std::string>* defines=0);
+                            const std::map<std::string,std::string>* defines=0,
+                            std::vector<line_source>* src=0);
 
 typedef std::map<std::string,std::string> string_map;
 
 struct config
 {
 	config() {}
-	config(const std::string& data); //throws config::error
+	config(const std::string& data,
+	       const std::vector<line_source>* lines=0); //throws config::error
 	config(const config& cfg);
 	~config();
 
 	config& operator=(const config& cfg);
 
-	void read(const std::string& data); //throws config::error
+	void read(const std::string& data,
+	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
 
 	std::map<std::string,std::string> values;

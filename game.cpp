@@ -139,7 +139,17 @@ int play_game(int argc, char** argv)
 
 	std::map<std::string,std::string> defines_map;
 	defines_map["NORMAL"] = "";
-	config game_config(preprocess_file("data/game.cfg", &defines_map));
+	std::vector<line_source> line_src;
+
+	const std::string& game_cfg = preprocess_file("data/game.cfg",&defines_map,
+	                                              &line_src);
+
+	config game_config(game_cfg,&line_src);
+
+	for(std::vector<line_source>::const_iterator ls = line_src.begin();
+	    ls != line_src.end(); ++ls) {
+		std::cerr << ls->linenum << ": " << ls->file << " " << ls->fileline << "\n";
+	}
 
 	const std::vector<config*>& units = game_config.children["units"];
 	if(units.empty()) {
@@ -177,6 +187,7 @@ int play_game(int argc, char** argv)
 
 	const std::pair<int,int>& resolution = preferences::resolution();
 
+	std::cerr << "checking mode possible...\n";
 	const int bpp = video.modePossible(resolution.first,resolution.second,
 	                                   16,video_flags);
 
@@ -385,7 +396,7 @@ int main(int argc, char** argv)
 	try {
 		return play_game(argc,argv);
 	} catch(CVideo::error&) {
-		std::cerr << "Could not initialize video\n";
+		std::cerr << "Could not initialize video. Exiting.\n";
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {
