@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH_EDITOR 6 "December 28, 2004" "Wesnoth_editor" "Battle for Wesnoth map editor"
+.TH WESNOTH_EDITOR 6 "January 22nd, 2004" "Wesnoth_editor" "Battle for Wesnoth map editor"
 
 .SH NAME
 battle for wesnoth map editor
@@ -29,6 +29,10 @@ map editor
 .SH OPTIONS
 
 .TP
+.BR --datadir
+selects the data directory to use.
+
+.TP
 .BR -f , \ --fullscreen
 runs the game in full screen mode.
 
@@ -41,20 +45,16 @@ tells you about what the command line options do.
 prints the name of the game data directory and exits.
 
 .TP
-.BR -w , \ --windowed
-runs the game in windowed mode.
+.BR -r , \ --resolution
+sets screen resolution. Example: -r 800x600
 
 .TP
 .BR -v , \ --version
-print version number and exit.
+prints version number and exit.
 
 .TP
-.BR --resolution
-set the resolution of the window.
-
-.TP
-.BR --datadir
-select the data directory to use.
+.BR -w , \ --windowed
+runs the game in windowed mode.
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.

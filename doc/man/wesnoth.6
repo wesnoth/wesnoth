@@ -39,8 +39,12 @@ abilities, weapons and spells.
 .SH OPTIONS
 
 .TP
+.BR --bpp
+sets BitsPerPixel value. Example: --bpp 32
+
+.TP
 .BR -d , \ --debug
-show some extra debugging information in-game.
+shows some extra debugging information in-game.
 
 .TP
 .BR -f , \ --fullscreen
@@ -51,8 +55,20 @@ runs the game in full screen mode.
 tells you about what the command line options do.
 
 .TP
+.BR --multiplayer
+runs multiplayer game.
+
+.TP
+.BR --nosound
+runs game without sounds and music.
+
+.TP
 .BR --path
 prints the name of the game data directory and exits.
+
+.TP
+.BR -r, --resolution
+sets screen resolution. Example: -r 800x600
 
 .TP
 .BR -t , \ --test
@@ -64,7 +80,7 @@ runs the game in windowed mode.
 
 .TP
 .BR -v , \ --version
-print version number and exit.
+shows version number and exit.
 
 .TP
 .BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
@@ -73,6 +89,36 @@ sets the severity level of the debug domains. "all" can be used to match any deb
 .TP
 .BR --nocache
 disables chaching of game data.
+
+.SH Options for --multiplayer
+
+.TP
+.BR --algorithm=value
+???
+
+.TP
+.BR --controller=value
+???
+
+.TP
+.BR --era=which
+Use this option to play in the selected era.
+
+.TP
+.BR --nogui
+Runs the game without the GUI.
+
+.TP
+.BR --parm=name:value
+Sets additional parameters.
+
+.TP
+.BR --scenario=name
+Use this option to play the selected szenario or map.
+
+.TP
+.BR --side=value
+???
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
