@@ -312,6 +312,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 					sound::play_music(team_it->music());
 				}
 
+//goto this label if the type of a team (human/ai/networked) has changed mid-turn
+redo_turn:
+
 				if(!replaying && team_it->is_human()) {
 					std::cerr << "is human...\n";
 
@@ -366,8 +369,46 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 						for(;;) {
 							network::connection res = network::receive_data(cfg);
-							if(res && cfg.child("leave_game")) {
+							if(res && cfg.child("leave_game") != NULL) {
 								throw network::error("");
+							}
+
+							//if a side has dropped out of the game.
+							if(res && cfg["side_drop"] != "") {
+								const size_t side = atoi(cfg["side_drop"].c_str())-1;
+								if(side >= teams.size()) {
+									std::cerr << "unknown side " << side << " is dropping game\n";
+									throw network::error("");
+								}
+
+								int action = 0;
+
+								//see if the side still has a leader alive. If they have
+								//no leader, we assume they just want to be replaced by
+								//the AI.
+								const unit_map::const_iterator leader = find_leader(units,side+1);
+								if(leader != units.end()) {
+									std::vector<std::string> options;
+									options.push_back(string_table["replace_ai_message"]);
+									options.push_back(string_table["replace_local_message"]);
+									options.push_back(string_table["abort_game_message"]);
+
+									const std::string msg = leader->second.description() + " " + string_table["player_leave_message"];
+									action = gui::show_dialog(gui,NULL,"",msg,gui::OK_ONLY,&options);
+								}
+
+								//make the player an AI, and redo this turn, in case
+								//it was the current player's team who has just changed into
+								//an AI.
+								if(action == 0) {
+									teams[side].make_ai();
+									goto redo_turn;
+								} else if(action == 1) {
+									teams[side].make_human();
+									goto redo_turn;
+								} else {
+									throw network::error("");
+								}
 							}
 
 							if(res && cfg.child("turn") != NULL) {

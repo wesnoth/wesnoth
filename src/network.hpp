@@ -82,12 +82,11 @@ std::pair<int,int> current_transfer_stats();
 
 struct error
 {
-	error(const std::string& msg, connection sock=0)
-	                                 : message(msg), socket(sock) {}
+	error(const std::string& msg, connection sock=0);
 	std::string message;
 	connection socket;
 
-	void disconnect() { if(socket) { network::disconnect(socket); } }
+	void disconnect();
 };
 
 }

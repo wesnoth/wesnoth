@@ -627,110 +627,112 @@ void mp_connect::update_network()
 				std::cerr << "Received connection\n";
 				network::send_data(*level_,sock);
 			}
+		}
+	}
 
-			config cfg;
-			const config::child_list& sides = level_->get_children("side");
+	config cfg;
+	const config::child_list& sides = level_->get_children("side");
 
-			try {
-				sock = network::receive_data(cfg);
-			} catch(network::error& e) {
-				std::cerr << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
-				sock = 0;
+	network::connection sock;
 
-				//if the problem isn't related to any specific connection,
-				//it's a general error and we should just re-throw the error
-				//likewise if we are not a server, we cannot afford any connection
-				//to go down, so also re-throw the error
-				if(!e.socket || !network::is_server()) {
-					e.disconnect();
-					throw network::error(e.message);
-				}
+	try {
+		sock = network::receive_data(cfg);
+	} catch(network::error& e) {
+		std::cerr << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
+		sock = 0;
 
-				bool changes = false;
+		//if the problem isn't related to any specific connection,
+		//it's a general error and we should just re-throw the error
+		//likewise if we are not a server, we cannot afford any connection
+		//to go down, so also re-throw the error
+		if(!e.socket || !network::is_server()) {
+			e.disconnect();
+			throw network::error(e.message);
+		}
 
-				//a socket has disconnected. Remove its positions.
-				for(std::map<config*,network::connection>::iterator i = positions_.begin();
-				    i != positions_.end(); ++i) {
-					if(i->second == e.socket) {
-						changes = true;
-						i->second = 0;
-						i->first->values.erase("taken");
+		bool changes = false;
 
-						// Add to combo list
-						std::stringstream str;
-						str << i->first->values["description"];
-						//remove_player(str.str());
-						i->first->values["description"]="";
-					}
-				}
+		//a socket has disconnected. Remove its positions.
+		for(std::map<config*,network::connection>::iterator i = positions_.begin();
+		    i != positions_.end(); ++i) {
+			if(i->second == e.socket) {
+				changes = true;
+				i->second = 0;
+				i->first->values.erase("taken");
 
-				//now disconnect the socket
-				e.disconnect();
+				// Add to combo list
+				std::stringstream str;
+				str << i->first->values["description"];
+				//remove_player(str.str());
+				i->first->values["description"]="";
+			}
+		}
 
-				//if there have been changes to the positions taken,
-				//then notify other players
-				if(changes) {
+		//now disconnect the socket
+		e.disconnect();
+
+		//if there have been changes to the positions taken,
+		//then notify other players
+		if(changes) {
+			network::send_data(*level_);
+		}
+	}
+
+	//No network errors
+	if(sock) {
+		const int side_drop = atoi(cfg["side_drop"].c_str())-1;
+		if(side_drop >= 0 && side_drop < int(sides.size())) {
+			std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_drop]);
+			if(pos != positions_.end()) {
+				pos->second = 0;
+				pos->first->values.erase("taken");
+				pos->first->values["description"] = "";
+				network::send_data(*level_);
+			}
+		}
+
+		const int side_taken = atoi(cfg["side"].c_str())-1;
+		if(side_taken >= 0 && side_taken < int(sides.size())) {
+			std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_taken]);
+			if(pos != positions_.end()) {
+				if(!pos->second) {
+					std::cerr << "client has taken a valid position\n";
+
+					//broadcast to everyone the new game status
+					pos->first->values["taken"] = "yes";
+					pos->first->values["description"] = cfg["description"];
+					pos->first->values["name"] = cfg["name"];
+					pos->first->values["type"] = cfg["type"];
+					pos->first->values["recruit"] = cfg["recruit"];
+					pos->first->values["music"] = cfg["music"];
+					positions_[sides[side_taken]] = sock;
 					network::send_data(*level_);
-				}
-			}
 
-			//No network errors
-			if(sock) {
-				const int side_drop = atoi(cfg["side_drop"].c_str())-1;
-				if(side_drop >= 0 && side_drop < int(sides.size())) {
-					std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_drop]);
-					if(pos != positions_.end()) {
-						pos->second = 0;
-						pos->first->values.erase("taken");
-						pos->first->values["description"] = "";
-						network::send_data(*level_);
-					}
-				}
+					std::cerr << "sent player data\n";
 
-				const int side_taken = atoi(cfg["side"].c_str())-1;
-				if(side_taken >= 0 && side_taken < int(sides.size())) {
-					std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_taken]);
-					if(pos != positions_.end()) {
-						if(!pos->second) {
-							std::cerr << "client has taken a valid position\n";
+					//send a reply telling the client they have secured
+					//the side they asked for
+					std::stringstream side;
+					side << (side_taken+1);
+					config reply;
+					reply.values["side_secured"] = side.str();
+					std::cerr << "going to send data...\n";
+					network::send_data(reply,sock);
 
-							//broadcast to everyone the new game status
-							pos->first->values["taken"] = "yes";
-							pos->first->values["description"] = cfg["description"];
-							pos->first->values["name"] = cfg["name"];
-							pos->first->values["type"] = cfg["type"];
-							pos->first->values["recruit"] = cfg["recruit"];
-							pos->first->values["music"] = cfg["music"];
-							positions_[sides[side_taken]] = sock;
-							network::send_data(*level_);
-
-							std::cerr << "sent player data\n";
-
-							//send a reply telling the client they have secured
-							//the side they asked for
-							std::stringstream side;
-							side << (side_taken+1);
-							config reply;
-							reply.values["side_secured"] = side.str();
-							std::cerr << "going to send data...\n";
-							network::send_data(reply,sock);
-
-							// Add to combo list
-							std::stringstream str;
-							str << cfg["description"];
-							add_player(str.str());
-						} else {
-							config response;
-							response.values["failed"] = "yes";
-							network::send_data(response,sock);
-						}
-					} else {
-						std::cerr << "tried to take illegal side: " << side_taken << "\n";
-					}
+					// Add to combo list
+					std::stringstream str;
+					str << cfg["description"];
+					add_player(str.str());
 				} else {
-					std::cerr << "tried to take unknown side: " << side_taken << "\n";
+					config response;
+					response.values["failed"] = "yes";
+					network::send_data(response,sock);
 				}
+			} else {
+				std::cerr << "tried to take illegal side: " << side_taken << "\n";
 			}
+		} else {
+			std::cerr << "tried to take unknown side: " << side_taken << "\n";
 		}
 	}
 }

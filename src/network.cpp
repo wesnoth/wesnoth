@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cassert>
 #include <queue>
+#include <set>
 #include <vector>
 
 namespace {
@@ -28,10 +29,24 @@ partial_map::const_iterator current_connection = received_data.end();
 TCPsocket server_socket;
 
 std::queue<network::connection> disconnection_queue;
+std::set<network::connection> bad_sockets;
 
 }
 
 namespace network {
+
+error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
+{
+	bad_sockets.insert(socket);
+}
+
+void error::disconnect()
+{
+	bad_sockets.erase(socket);
+	if(socket) {
+		network::disconnect(socket);
+	}
+}
 
 manager::manager() : free_(true)
 {
@@ -178,6 +193,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 		throw error("",sock);
 	}
 
+	if(bad_sockets.count(connection_num) || bad_sockets.count(0))
+		return 0;
+
 	if(sockets.empty()) {
 		return 0;
 	}
@@ -196,11 +214,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				char num_buf[4];
 				size_t len = SDLNet_TCP_Recv(*i,num_buf,4);
 
-				if(len == 0) {
+				if(len != 4) {
 					throw error("Remote host disconnected",*i);
-				} else if(len != 4) {
-					std::cerr << "received bad packet length: " << len << "/4\n";
-					throw error(std::string("network error receiving length data: ") + SDLNet_GetError(),*i);
 				}
 
 				len = SDLNet_Read32(num_buf);
@@ -256,6 +271,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 void send_data(const config& cfg, connection connection_num)
 {
+	if(bad_sockets.count(connection_num) || bad_sockets.count(0))
+		return;
+
 	log_scope("sending data");
 	if(!connection_num) {
 		std::cerr << "sockets: " << sockets.size() << "\n";
@@ -285,7 +303,7 @@ void send_data(const config& cfg, connection connection_num)
 	                                value.size()+1);
 
 	if(res < int(value.size()+1)) {
-		std::cerr << "sending data failed: " << res << "/" << value.size() << ": " << SDL_GetError() << "\n";
+		std::cerr << "sending data failed: " << res << "/" << value.size() << "\n";
 		throw error("Could not send data over socket",connection_num);
 	}
 }

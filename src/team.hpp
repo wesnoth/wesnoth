@@ -90,6 +90,10 @@ public:
 	bool is_network() const;
 	bool is_ai() const;
 
+	void make_human();
+	void make_network();
+	void make_ai();
+
 	double leader_value() const;
 	double village_value() const;
 

@@ -376,6 +376,21 @@ bool team::is_network() const
 	return info_.controller == team_info::NETWORK;
 }
 
+void team::make_human()
+{
+	info_.controller = team_info::HUMAN;
+}
+
+void team::make_ai()
+{
+	info_.controller = team_info::AI;
+}
+
+void team::make_network()
+{
+	info_.controller = team_info::NETWORK;
+}
+
 double team::leader_value() const
 {
 	return info_.leader_value;

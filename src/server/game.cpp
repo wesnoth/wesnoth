@@ -16,7 +16,7 @@ bool game::is_member(network::connection player) const
 bool game::is_needed(network::connection player) const
 {
 	assert(!players_.empty());
-	return player == players_.front() || started_ && sides_.count(player);
+	return player == players_.front();
 }
 
 void game::start_game()
@@ -63,8 +63,7 @@ void game::remove_player(network::connection player)
 	if(itor != players_.end())
 		players_.erase(itor);
 
-	std::map<network::connection,std::string>::iterator side
-	                                                 = sides_.find(player);
+	std::map<network::connection,std::string>::iterator side = sides_.find(player);
 	if(side != sides_.end()) {
 		//send the host a notification of removal of this side
 		if(players_.empty() == false) {

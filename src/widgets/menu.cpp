@@ -331,8 +331,9 @@ void menu::draw_item(int item)
 	if(buffer_.get() != NULL) {
 		const int ypos = items_start()+(item-first_item_on_screen_)*rect.h;
 		SDL_Rect srcrect = {0,ypos,rect.w,rect.h};
+		SDL_Rect dstrect = rect;
 		SDL_BlitSurface(buffer_,&srcrect,
-		                display_->video().getSurface(),&rect);
+		                display_->video().getSurface(),&dstrect);
 	}
 
 	gui::draw_solid_tinted_rectangle(x_,rect.y,width(),rect.h,
@@ -340,7 +341,7 @@ void menu::draw_item(int item)
 	                                 item == selected_ ? 0.6 : 0.2,
 	                                 display_->video().getSurface());
 
-	SDL_Rect area = {0,0,display_->x(),display_->y()};
+	SDL_Rect area = display_->screen_area();
 
 	const std::vector<int>& widths = column_widths();
 
@@ -419,6 +420,8 @@ SDL_Rect menu::get_item_rect(int item) const
 	//been initialized
 	if(x_ > 0 && y_ > 0)
 		itemRects_.insert(std::pair<int,SDL_Rect>(item,res));
+
+	std::cerr << "item " << item << " is " << res.w << "," << res.h << "\n";
 
 	return res;
 }

@@ -39,9 +39,11 @@
 network_game_manager::~network_game_manager()
 {
 	if(network::nconnections() > 0) {
+		std::cerr << "sending leave_game\n";
 		config cfg;
 		cfg.add_child("leave_game");
 		network::send_data(cfg);
+		std::cerr << "sent leave_game\n";
 	}
 }
 
