@@ -438,7 +438,9 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
 	update_user_combos();
-	wassert(sides_.size() > 0);
+	if(sides_.empty()) {
+		throw config::error(_("The scenario is invalid because it has no sides."));
+	}
 
 	int side_choice = 0;
 	for(side_list::const_iterator s = sides_.begin(); s != sides_.end(); ++s) {
