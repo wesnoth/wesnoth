@@ -342,8 +342,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	//Shroud
 	gui::button shroud_game(disp,string_table["shroud"],gui::button::TYPE_CHECK);
 	shroud_game.set_check(false);
-	shroud_game.set_xy(rect.x+6,rect.y+60);
+	shroud_game.set_xy(rect.x+6,rect.y+30+fog_game.height()+2);
 	shroud_game.draw();
+
+	//Observers
+	gui::button observers_game(disp,string_table["observers"],gui::button::TYPE_CHECK);
+	observers_game.set_check(true);
+	observers_game.set_xy(rect.x+6,rect.y+30+(2*fog_game.height())+4);
+	observers_game.draw();
 
 	//Buttons
 	gui::button cancel_game(disp,string_table["cancel_button"]);
@@ -487,7 +493,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						       width, height, disp);
 
 				//Buttons
-				gui::button launch2_game(disp,string_table["launch"]);
+				gui::button launch2_game(disp,string_table["im_ready"],gui::button::TYPE_CHECK);
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
 
 				//Title and labels
@@ -500,7 +506,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
 				                string_table["player_type"],((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
-
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
 						string_table["race"],0,0);
@@ -542,7 +547,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					const int team_num = sd - sides.begin();
 
 					std::stringstream str;
-					str << string_table["team"] << " " << team_num;
+					str << string_table["team"] << " " << team_num+1;
 					player_team.push_back(str.str());
 				}
 
@@ -588,11 +593,11 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_color.back().set_selected(side_num);
 
 					//Player Gold
-					rect.x = (disp.x()-width)/2+492;
+					rect.x = (disp.x()-width)/2+490;
 					rect.y = (disp.y()-height)/2+55+(30*side_num);
-					rect.w = launch2_game.width();
+					rect.w = launch2_game.width()-5;
 					rect.h = launch2_game.height();
-					slider_gold.push_back(gui::slider(disp,rect,0.1));
+					slider_gold.push_back(gui::slider(disp,rect,0.0));
 				}
 
 				update_whole_screen();
@@ -756,6 +761,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		fog_game.process(mousex,mousey,left_button);
 		shroud_game.process(mousex,mousey,left_button);
+		observers_game.process(mousex,mousey,left_button);
 		name_entry.process();
 
 		//Game turns are 20 to 99
