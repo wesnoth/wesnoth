@@ -371,6 +371,43 @@ std::string copy_from_clipboard()
 
 #endif
 
+#ifdef __BEOS__
+#include <Clipboard.h>
+
+#define CLIPBOARD_FUNCS_DEFINED
+
+void copy_to_clipboard(const std::string& text)
+{
+	BMessage *clip;
+	if (be_clipboard->Lock())
+	{
+		be_clipboard->Clear();
+		if ((clip = be_clipboard->Data()))
+		{
+			clip->AddData("text/plain", B_MIME_TYPE, text.c_str(), text.size()+1);
+			be_clipboard->Commit();
+		}
+		be_clipboard->Unlock();
+	}
+}
+
+std::string copy_from_clipboard()
+{
+	const char* data;
+	ssize_t size;
+	BMessage *clip = NULL;
+	if (be_clipboard->Lock())
+	{
+		clip = be_clipboard->Data();
+		be_clipboard->Unlock();
+	}
+	if (clip != NULL && clip->FindData("text/plain", B_MIME_TYPE, (const void**)&data, &size) == B_OK)
+		return (const char*)data;
+	else
+		return "";
+}
+#endif
+
 #ifndef CLIPBOARD_FUNCS_DEFINED
 
 void copy_to_clipboard(const std::string& text)
