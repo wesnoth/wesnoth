@@ -80,7 +80,7 @@ void show_about(display& disp)
 	text.push_back("-developer");
 	text.push_back("Arndt Muehlenfeld (Arndt)");
 	text.push_back("-translator");
-	text.push_back("Crossbow/Miyo)");
+	text.push_back("Crossbow/Miyo");
 	text.push_back("-wesnoth general purpose administrator");
 	text.push_back("Cyril Bouthors (CyrilB)");
 	text.push_back("-packager");
