@@ -5,3 +5,4 @@ autoheader
 automake --add-missing --copy
 autoconf
 echo "*" > autom4te.cache/.cvsignore
+echo "*" > config/.cvsignore
