@@ -1412,7 +1412,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 
 		//we clear one past the edge of the board, so that the half-hexes
 		//at the edge can also be cleared of fog/shroud
-		if(map.on_board(adj[i]) || map.on_board(adj[0])) {
+		if(map.on_board(adj[i]) || map.on_board(loc)) {
 			const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
 								tm.clear_fog(adj[i].x,adj[i].y);
 
