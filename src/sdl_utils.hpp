@@ -41,8 +41,8 @@ int sdl_add_ref(SDL_Surface* surface);
 
 typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 
-void draw_ellipse(SDL_Surface* surf, short colour, const SDL_Rect& clip, int xloc, int yloc, int width, int height,
-				  SDL_Surface* behind);
+void draw_unit_ellipse(SDL_Surface* surf, short colour, const SDL_Rect& clip, int unitx, int unity,
+                       SDL_Surface* behind, bool image_reverse);
 
 SDL_Surface* clone_surface(SDL_Surface* surface);
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h);

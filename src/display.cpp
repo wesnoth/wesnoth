@@ -1190,8 +1190,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	const Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
 
-	const bool show_unit_colour = preferences::show_side_colours() && !fogged(x,y) && it != units_.end();
-
 	int j;
 	for(j = ypos; j != yend; ++j) {
 
@@ -1316,6 +1314,15 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
 		          highlight_ratio,blend_with,submerge);
+
+		//the circle around the base of the unit
+		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
+			const SDL_Color& col = font::get_side_colour(it->second.side());
+			const short colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
+			SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
+
+			draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left);
+		}
 	}
 
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
@@ -1377,14 +1384,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 					++startenergy;
 			}
 		}
-	}
-
-	if(show_unit_colour && unit_image != NULL) {
-		const SDL_Color& col = font::get_side_colour(it->second.side());
-		const short colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
-		SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
-
-		draw_ellipse(dst,colour,clip,xpos-xsrc+zoom_/4,ypos-ysrc + zoom_*0.66,zoom_*0.6,zoom_/8,unit_image);
 	}
 }
 

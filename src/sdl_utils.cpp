@@ -28,18 +28,23 @@ int sdl_add_ref(SDL_Surface* surface)
 		return 0;
 }
 
-void draw_ellipse(SDL_Surface* surf, short colour, const SDL_Rect& clip, int xloc, int yloc, int width, int height,
-				  SDL_Surface* behind)
+void draw_unit_ellipse(SDL_Surface* target, short colour, const SDL_Rect& clip, int unitx, int unity,
+                       SDL_Surface* behind, bool image_reverse)
 {
+	const int xloc = unitx + (behind->w*2)/10;
+	const int yloc = unity + (behind->h*7)/10;
+	const int width = (behind->w*6)/10;
+	const int height = behind->h/6;
+
 	const double centerx = xloc + double(width)*0.5;
 	const double centery = yloc + double(height)*0.5;
 	const double r = double(width)*0.5;
 
 	const double yratio = double(height)/double(width);
 
-	surface_lock lock(surf);
+	surface_lock lock(behind);
 	const short* const pixels = lock.pixels();
-	const int pad = is_odd(surf->w) ? 1 : 0;
+	const int pad = is_odd(behind->w) ? 1 : 0;
 
 	int last_y = 0;
 	for(int xit = xloc; xit != xloc+width; ++xit) {
@@ -51,22 +56,24 @@ void draw_ellipse(SDL_Surface* surf, short colour, const SDL_Rect& clip, int xlo
 		const int direction = y > last_y ? 1 : -1;
 		for(int i = last_y; i != y+direction; i += direction) {
 			int yit = yloc+height/2-y;
-			const int xpos = xit - xloc;
-			int ypos = yit - yloc;
-			if(xit >= clip.x && yit >= clip.x && xit < clip.x + clip.w && yit < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < surf->w && ypos < surf->h &&
-			   pixels[ypos*(surf->w+pad) + xpos] == 0) {
+			int xpos = xit - unitx;
+			if(image_reverse)
+				xpos = behind->w - xpos - 1;
+
+			int ypos = yit - unity;
+			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit < clip.y + clip.h &&
+				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos < behind->h &&
+			    pixels[ypos*(behind->w+pad) + xpos] == 0) {
 				SDL_Rect rect = {xit,yit,1,1};
-				SDL_FillRect(surf,&rect,colour);
+				SDL_FillRect(target,&rect,colour);
 			}
 
 			yit = yloc+height/2+y;
-			ypos = yit - yloc;
-			if(xit >= clip.x && yit >= clip.x && xit < clip.x + clip.w && yit < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < surf->w && ypos < surf->h) {
-//			   pixels[ypos*(surf->w+pad) + xpos] == 0) {
+			ypos = yit - unity;
+			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit < clip.y + clip.h &&
+				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos < behind->h) {
 				SDL_Rect rect = {xit,yit,1,1};
-				SDL_FillRect(surf,&rect,colour);
+				SDL_FillRect(target,&rect,colour);
 			}
 		}
 
