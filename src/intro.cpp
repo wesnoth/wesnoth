@@ -98,11 +98,8 @@ void show_intro(display& screen, config& data)
 		skip_button.draw();
 		screen.video().flip();
 
-		const std::string& delay = (*i)->values["delay"];
-		const int ndelay = atoi(delay.c_str());
-
 		bool last = true;
-		for(int d = 0; d < ndelay*10; d += 50) {
+		for(;;) {
 			SDL_Delay(10);
 
 			int mousex, mousey;
