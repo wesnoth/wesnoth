@@ -434,7 +434,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 				std::cerr << "received packet length: " << len << "\n";
 
-				if(len > 10000000) {
+				if((len < 1) || (len > 10000000)) {
 					std::cerr << "bad length in network packet. Throwing error\n";
 					throw error("network error: bad length data",*i);
 				}
