@@ -74,4 +74,26 @@ sub stripfromwml {
   close TRANS;
 }
 
+sub raw2postring {
+  my $str = shift;
+
+  $str =~ s/^(.*)$/"$1\\n"/mg;
+  $str =~ s/\\n\"$/\"\n/g;
+
+  return $str;
+}
+
+sub po2rawstring {
+  my $str = shift;
+  my @lines = split (/\n/, $str);
+
+  $str = "";
+  foreach my $line (@lines) {
+    $line =~ m/"(.*)"/;
+    $str .= $1;
+  }
+
+  return $str;
+}
+
 1;

@@ -145,6 +145,8 @@ our %lang = readwml ($wmltransfile);
 
 ## process pofile, filling holes when we can
 
+our $migrated = 0;
+
 open (POFILE, $pofile) or die "cannot open $pofile";
 
 my ($curid, $curmsg);
@@ -176,6 +178,17 @@ if (defined $curid and defined $curmsg) {
   processentry ($curid, $curmsg);
 }
 
+## keep a list of previously translated entries not migrated
+my $n = keys %lang;
+if ($n == 0) {
+  print STDERR "\nFINAL WORD: ALL $migrated TRANSLATIONS MIGRATED !\n";
+} else {
+  my $total = $migrated+$n;
+  print STDERR "\nFINAL WARNING: the following $n/$total translations were NOT migrated:\n";
+  foreach my $key (keys %lang) {
+    print STDERR $key, ' = "', $lang{$key}, "\"\n";
+  }
+}
 
 ## Below is utility functions only - end of processing
 
@@ -193,6 +206,8 @@ sub processentry {
       if (defined $trans) {
 	$output = raw2postring($trans);
 	$touched = 1;
+	delete $lang{$id};
+	$migrated++;
       } else {
 	# print STDERR "WARNING: no translation found for $id - setting to empty\n";
 	$output = raw2postring("");
@@ -211,26 +226,4 @@ sub processentry {
   print "msgstr $output";
 
   $curid = undef; $curmsg = undef;
-}
-
-sub raw2postring {
-  my $str = shift;
-
-  $str =~ s/^(.*)$/"$1\\n"/mg;
-  $str =~ s/\\n\"$/\"\n/g;
-
-  return $str;
-}
-
-sub po2rawstring {
-  my $str = shift;
-  my @lines = split (/\n/, $str);
-
-  $str = "";
-  foreach my $line (@lines) {
-    $line =~ m/"(.*)"/;
-    $str .= $1;
-  }
-
-  return $str;
 }
