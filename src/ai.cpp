@@ -259,6 +259,11 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 
 	const int num = std::distance(recruits.begin(),i);
 
+	//we have to add the recruit command now, because when the unit is created it has
+	//to have the recruit command in the recorder to be able to put random numbers into
+	//to generate unit traits. However we're not sure the transaction is going through yet,
+	//so use a replay_undo object to cancel it if we don't get to the point where the transaction
+	//is confirmed
 	recorder.add_recruit(num,loc);
 	replay_undo replay_guard(recorder);
 
