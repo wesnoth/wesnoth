@@ -15,7 +15,7 @@
 
 #include "actions.hpp"
 #include "display.hpp"
-#include "menu.hpp"
+#include "show_dialog.hpp"
 
 namespace dialogs
 {

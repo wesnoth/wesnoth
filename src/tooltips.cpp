@@ -1,5 +1,5 @@
 #include "font.hpp"
-#include "menu.hpp"
+#include "show_dialog.hpp"
 #include "tooltips.hpp"
 #include "sdl_utils.hpp"
 

@@ -14,7 +14,7 @@
 #include "intro.hpp"
 #include "key.hpp"
 #include "language.hpp"
-#include "menu.hpp"
+#include "show_dialog.hpp"
 #include "widgets/button.hpp"
 
 #include <cstdlib>

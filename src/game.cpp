@@ -25,13 +25,13 @@
 #include "gamestatus.hpp"
 #include "key.hpp"
 #include "language.hpp"
-#include "menu.hpp"
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "show_dialog.hpp"
 #include "sound.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
@@ -153,8 +153,14 @@ int play_game(int argc, char** argv)
 
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
+		if(val.empty()) {
+			continue;
+		}
+
 		if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
+		} else if(val == "--fullscreen" || val == "-f") {
+			preferences::set_fullscreen(true);
 		} else if(val == "--test" || val == "-t") {
 			test_mode = true;
 		} else if(val == "--debug" || val == "-d") {
@@ -162,9 +168,14 @@ int play_game(int argc, char** argv)
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 		              << " [options] [data-directory]\n";
+			return 0;
 		} else if(val == "--version" || val == "-v") {
 			std::cout << "Battle for Wesnoth " << game_config::version
 			          << "\n";
+			return 0;
+		} else if(val[0] == '-') {
+			std::cerr << "unknown option: " << val << "\n";
+			return 0;
 		} else {
 			if(!is_directory(val)) {
 				std::cerr << "Could not find directory '" << val << "'\n";

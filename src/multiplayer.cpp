@@ -13,11 +13,11 @@
 
 #include "language.hpp"
 #include "log.hpp"
-#include "menu.hpp"
 #include "multiplayer.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "replay.hpp"
+#include "show_dialog.hpp"
 
 #include <iostream>
 #include <sstream>

@@ -13,9 +13,9 @@
 #include "config.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
-#include "menu.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
+#include "show_dialog.hpp"
 #include "video.hpp"
 
 #include <algorithm>

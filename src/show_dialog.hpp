@@ -10,8 +10,9 @@
 
    See the COPYING file for more details.
 */
-#ifndef MENU_HPP_INCLUDED
-#define MENU_HPP_INCLUDED
+
+#ifndef SHOW_DIALOG_HPP_INCLUDED
+#define SHOW_DIALOG_HPP_INCLUDED
 
 #include "display.hpp"
 #include "SDL.h"

@@ -11,10 +11,10 @@
    See the COPYING file for more details.
 */
 #include "game_events.hpp"
-#include "menu.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
 #include "replay.hpp"
+#include "show_dialog.hpp"
 #include "sound.hpp"
 #include "util.hpp"
 

@@ -17,11 +17,11 @@
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "menu.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
+#include "show_dialog.hpp"
 
 #include <iostream>
 
