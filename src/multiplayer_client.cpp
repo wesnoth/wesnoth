@@ -251,7 +251,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			}
     
 			for(;;) {
-				data_res = network::receive_data(sides,0,5000);
+				data_res = network::receive_data(sides,0,10000);
 				check_response(data_res,data);
     
 				//if we have got valid side data

@@ -111,6 +111,8 @@ public:
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 
+	const std::string& modification_description(const std::string& type) const;
+
 private:
 	const unit_type* type_;
 
@@ -146,6 +148,8 @@ private:
 	config modifications_;
 
 	std::string traitsDescription_;
+
+	string_map modificationDescriptions_;
 
 	bool guardian_;
 

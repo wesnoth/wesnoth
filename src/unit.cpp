@@ -685,8 +685,12 @@ void unit::add_modification(const std::string& type,
 	if(no_add == false && (span.empty() || span == "forever"))
 		modifications_.add_child(type,mod);
 
+	std::vector<std::string> effects_description;
+
 	for(config::const_child_itors i = mod.child_range("effect");
 	    i.first != i.second; ++i.first) {
+
+		std::stringstream description;
 
 		const std::string& apply_to = (**i.first)["apply_to"];
 
@@ -701,19 +705,20 @@ void unit::add_modification(const std::string& type,
 			const std::string& increase_hp = (**i.first)["increase"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
-			const std::string& mult_total = (**i.first)["multiply_total"];
 
 			//if the hitpoints are allowed to end up greater than max hitpoints
 			const std::string& violate_max = (**i.first)["violate_maximum"];
 
 			if(increase_total.empty() == false) {
-				const int increase = atoi(increase_total.c_str());
-				maxHitpoints_ += increase;
-			}
+				description << (increase_total[0] != '-' ? "+" : "") << increase_total << translate_string("hp");
 
-			if(mult_total.empty() == false) {
-				const double factor = atoi(mult_total.c_str());
-				maxHitpoints_ = int(double(maxHitpoints_)*factor);
+				//a percentage on the end means increase by that many percent
+				if(increase_total[increase_total.size()-1] == '%') {
+					const std::string inc(increase_total.begin(),increase_total.end()-1);
+					maxHitpoints_ += (maxHitpoints_*atoi(inc.c_str()))/100;
+				} else {
+					maxHitpoints_ += atoi(increase_total.c_str());
+				}
 			}
 
 			if(maxHitpoints_ < 1)
@@ -735,17 +740,20 @@ void unit::add_modification(const std::string& type,
 				hitpoints_ = 1;
 		} else if(apply_to == "movement") {
 			const std::string& increase = (**i.first)["increase"];
-			const std::string& mult = (**i.first)["multiply"];
 			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
-				maxMovement_ += atoi(increase.c_str());
+				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("moves");
+
+				if(increase[increase.size()-1] == '%') {
+					const std::string inc(increase.begin(),increase.end()-1);
+					maxMovement_ += (maxMovement_*atoi(inc.c_str()))/100;
+				} else {
+					maxMovement_ += atoi(increase.c_str());
+				}
+
 				if(maxMovement_ < 1)
 					maxMovement_ = 1;
-			}
-
-			if(mult.empty() == false) {
-				maxMovement_ = int(double(maxMovement_)*atof(mult.c_str()));
 			}
 
 			if(set_to.empty() == false) {
@@ -756,29 +764,57 @@ void unit::add_modification(const std::string& type,
 				moves_ = maxMovement_;
 		} else if(apply_to == "max_experience") {
 			const std::string& increase = (**i.first)["increase"];
-			const std::string& multiply = (**i.first)["multiply"];
-			if(increase.empty() == false) {
-				maxExperience_ += atoi(increase.c_str());
-			}
 
-			if(multiply.empty() == false) {
-				maxExperience_ = int(double(maxExperience_)*
-				                     atof(multiply.c_str()));
+			if(increase.empty() == false) {
+				description << (increase[0] != '-' ? "+" : "") << increase << translate_string("xp");
+				if(increase[increase.size()-1] == '%') {
+					const std::string inc(increase.begin(),increase.end()-1);
+					maxExperience_ += (maxExperience_*atoi(inc.c_str()))/100;
+				} else {
+					maxExperience_ += atoi(increase.c_str());
+				}
 			}
 
 			if(maxExperience_ < 1) {
 				maxExperience_ = 1;
 			}
 		} else if(apply_to == "loyal") {
+			description << string_table["loyal_description"];
 			if(upkeep_ > UPKEEP_LOYAL)
 				upkeep_ = UPKEEP_LOYAL;
 		}
+
+		const std::string desc = description.str();
+		if(!desc.empty())
+			effects_description.push_back(desc);
 	}
+
+	std::stringstream description;
+	description << translate_string_default(mod["id"],mod["name"]) << ": ";
+	if(mod["id"].empty() == false) {
+		description << translate_string_default(mod["id"] + "_description",mod["description"]) << " ";
+	}
+
+	if(effects_description.empty() == false) {
+		description << "(";
+		for(std::vector<std::string>::const_iterator i = effects_description.begin(); i != effects_description.end(); ++i) {
+			description << *i;
+			if(i+1 != effects_description.end())
+				description << "; ";
+		}
+		description << ")";
+	}
+
+	description << "\n";
+
+	modificationDescriptions_[type] += description.str();
 }
 
 void unit::apply_modifications()
 {
 	log_scope("apply mods");
+	modificationDescriptions_.clear();
+
 	for(int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
@@ -786,6 +822,17 @@ void unit::apply_modifications()
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
 		}
+	}
+}
+
+const std::string& unit::modification_description(const std::string& type) const
+{
+	const string_map::const_iterator i = modificationDescriptions_.find(type);
+	if(i == modificationDescriptions_.end()) {
+		static const std::string empty_string;
+		return empty_string;
+	} else {
+		return i->second;
 	}
 }
 

@@ -1358,6 +1358,7 @@ void turn_info::unit_list()
 	std::vector<std::string> items;
 	items.push_back(heading);
 
+	std::vector<gamemap::location> locations_list;
 	std::vector<unit> units_list;
 	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if(i->second.side() != team_num_)
@@ -1383,14 +1384,21 @@ void turn_info::unit_list()
 		items.push_back(row.str());
 
 		//extra unit for the first row to make up the heading
-		if(units_list.empty())
+		if(units_list.empty()) {
+			locations_list.push_back(i->first);
 			units_list.push_back(i->second);
+		}
 
+		locations_list.push_back(i->first);
 		units_list.push_back(i->second);
 	}
 
-	gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
-	                 gui::OK_ONLY,&items,&units_list);
+	const int selected = gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
+	                                      gui::OK_ONLY,&items,&units_list);
+	if(selected > 0 && selected < int(locations_list.size())) {
+		const gamemap::location& loc = locations_list[selected];
+		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
+	}
 }
 
 unit_map::iterator turn_info::current_unit()

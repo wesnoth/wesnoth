@@ -31,7 +31,8 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 {
 	unit_map::const_iterator u = units.end();
 	
-	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) {
+	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)
+	   || type == POSITION) {
 		u = units.find(mouseover);
 		if(u == units.end()) {
 			u = units.find(loc);
@@ -54,8 +55,11 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
-	case UNIT_TRAITS:
-		return report(u->second.traits_description());
+	case UNIT_TRAITS: {
+		report res(u->second.traits_description());
+		res.tooltip = u->second.modification_description("trait");
+		return res;
+	}
 	case UNIT_STATUS: {
 		std::string status = "healthy", prefix = "";
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]))) {
@@ -214,7 +218,6 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 		str << (mouseover.x+1) << ", " << (mouseover.y+1);
 
-		u = units.find(mouseover);
 		if(u == units.end() || current_team.shrouded(mouseover.x,mouseover.y))
 			break;
 
