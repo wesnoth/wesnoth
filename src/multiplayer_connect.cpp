@@ -78,8 +78,6 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 
 		log_scope("loading save");
 
-		std::cerr << "a\n";
-
 		load_game(*data_, game, *state_);
 
 		if(state_->campaign_type != "multiplayer") {
@@ -123,9 +121,9 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		level_ptr->clear_children("replay");
 		level_ptr->add_child("replay") = state_->replay_data;
 
-		std::cerr << "b\n";
 	} else {
 		//Load a new map
+		save_ = false;
 		level_ptr = levels[map];
 
 		//set the number of turns here
@@ -157,13 +155,22 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	}
 
 	config::child_iterator sd;
+	bool first = true;
 	for(sd = sides.first; sd != sides.second; ++sd) {
-		if(!save_)
+		if(save_ == false)
 		{
 			std::stringstream svillage_gold;
 			svillage_gold << village_gold;
 			(**sd)["village_gold"] = svillage_gold.str();
 			(**sd)["gold"] = "100";
+			if (first == true) {
+				(**sd)["controller"] = "human";
+				(**sd)["description"] = preferences::login();
+				first = false;
+			} else {
+				(**sd)["controller"] = "network";
+				(**sd)["description"] = "";
+			}
 		}
 
 		if((**sd)["fog"].empty())
@@ -187,9 +194,6 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		if((**sd)["recruitment_pattern"].empty())
 			(**sd)["recruitment_pattern"] =
 		        possible_sides.front()->values["recruitment_pattern"];
-
-		if((**sd)["description"].empty())
-			(**sd)["controller"] = "network";
 	}
 
 	lists_init();
@@ -366,6 +370,27 @@ void mp_connect::gui_update()
 		}
 
 		//Player Team
+		if (side["team_name"] == "Team1") {
+			combos_team_[n].set_selected(0);
+		} else if (side["team_name"] == "Team2") {
+			combos_team_[n].set_selected(1);
+		} else if (side["team_name"] == "Team3") {
+			combos_team_[n].set_selected(2);
+		} else if (side["team_name"] == "Team4") {
+			combos_team_[n].set_selected(3);
+		} else if (side["team_name"] == "Team5") {
+			combos_team_[n].set_selected(4);
+		} else if (side["team_name"] == "Team6") {
+			combos_team_[n].set_selected(5);
+		} else if (side["team_name"] == "Team7") {
+			combos_team_[n].set_selected(6);
+		} else if (side["team_name"] == "Team8") {
+			combos_team_[n].set_selected(7);
+		} else if (side["team_name"] == "Team9") {
+			combos_team_[n].set_selected(8);
+		} else if (side["team_name"] == "Team10") {
+			combos_team_[n].set_selected(9);
+		}
 
 		//Player Color
 
@@ -445,19 +470,9 @@ int mp_connect::gui_do()
 			//Player team
 			if(!save_) {
 				if(combos_team_[n].process(mousex, mousey, left_button)) {
-					const size_t nsides = sides.second - sides.first;
-					for(size_t t = 0; t != nsides; ++t) {
-						std::stringstream myenemy;
-						for(size_t m = 0; m != nsides; ++m) {
-							if(combos_team_[m].selected() != combos_team_[t].selected()) {
-								myenemy << (*sides.first[m])["side"];
-								if(m != nsides-1)
-									myenemy << ",";
-							}
-						}
-						myenemy << "\n";
-						(*sides.first[t])["enemy"] = myenemy.str();
-					}
+					std::stringstream str;
+					str << "Team" << n;
+					side["team_name"] = str.str();
 				}
 			} else {
 				combos_team_[n].draw();
