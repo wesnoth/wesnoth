@@ -337,33 +337,44 @@ std::string output_map(const terrain_map& terrain)
 struct road_path_calculator
 {
 	road_path_calculator(const terrain_map& terrain, const config& cfg)
-		        : map_(terrain), cfg_(cfg),
+		        : calls(0), map_(terrain), cfg_(cfg),
 
 				  //find out how windy roads should be.
 				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
 	double cost(const location& loc, double so_far) const;
+
+	void terrain_changed(const location& loc) { loc_cache_.erase(loc); }
+	mutable int calls;
 private:
 	const terrain_map& map_;
 	const config& cfg_;
 	int windiness_;
+	mutable std::map<location,double> loc_cache_;
 	mutable std::map<char,double> cache_;
 };
 
 double road_path_calculator::cost(const location& loc, double so_far) const
 {
+	++calls;
 	if(loc.x < 0 || loc.y < 0 || loc.x >= map_.size() || loc.y >= map_.front().size())
 		return 100000.0;
+
+	const std::map<location,double>::const_iterator val = loc_cache_.find(loc);
+	if(val != loc_cache_.end()) {
+		return val->second;
+	}
 
 	//we multiply the cost by a random amount depending upon how 'windy' the road should
 	//be. If windiness is 1, that will mean that the cost is always genuine, and so
 	//the road always takes the shortest path. If windiness is greater than 1, we sometimes
 	//over-report costs for some segments, to make the road wind a little.
-	const double windiness = (double(rand()%windiness_) + 1.0);
+	const double windiness = windiness_ > 0 ? (double(rand()%windiness_) + 1.0) : 1.0;
 
 	const char c = map_[loc.x][loc.y];
 	const std::map<char,double>::const_iterator itor = cache_.find(c);
-	if(itor != cache_.end())
+	if(itor != cache_.end()) {
 		return itor->second*windiness;
+	}
 
 	static std::string terrain(1,'x');
 	terrain[0] = c;
@@ -375,8 +386,20 @@ double road_path_calculator::cost(const location& loc, double so_far) const
 	}
 
 	cache_.insert(std::pair<char,double>(c,res));
+	loc_cache_.insert(std::pair<location,double>(loc,windiness*res));
 	return windiness*res;
 }
+
+struct road_path_calculator_wrapper
+{
+	explicit road_path_calculator_wrapper(const road_path_calculator& calc) : calc_(&calc)
+	{}
+
+	double cost(const location& loc, double so_far) const { return calc_->cost(loc,so_far); }
+
+private:
+	const road_path_calculator* calc_;
+};
 
 struct is_valid_terrain
 {
@@ -518,6 +541,82 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 	return "";
 }
 
+//the configuration file should contain a number of [height] tags:
+//[height]
+//height=n
+//terrain=x
+//[/height]
+//these should be in descending order of n. They are checked sequentially, and if
+//height is greater than n for that tile, then the tile is set to terrain type x.
+class terrain_height_mapper
+{
+public:
+	explicit terrain_height_mapper(const config& cfg);
+
+	bool convert_terrain(int height) const;
+	gamemap::TERRAIN convert_to() const;
+
+private:
+	int terrain_height;
+	gamemap::TERRAIN to;
+};
+
+terrain_height_mapper::terrain_height_mapper(const config& cfg) : terrain_height(lexical_cast_default<int>(cfg["height"],0)), to('g')
+{
+	const std::string& terrain = cfg["terrain"];
+	if(terrain != "") {
+		to = terrain[0];
+	}
+}
+
+bool terrain_height_mapper::convert_terrain(int height) const
+{
+	return height >= terrain_height;
+}
+
+gamemap::TERRAIN terrain_height_mapper::convert_to() const
+{
+	return to;
+}
+
+class terrain_converter
+{
+public:
+	explicit terrain_converter(const config& cfg);
+
+	bool convert_terrain(gamemap::TERRAIN terrain, int height, int temperature) const;
+	gamemap::TERRAIN convert_to() const;
+
+private:
+	int min_temp, max_temp, min_height, max_height;
+	std::string from;
+	gamemap::TERRAIN to;
+};
+
+terrain_converter::terrain_converter(const config& cfg) : min_temp(-1), max_temp(-1), min_height(-1), max_height(-1), from(cfg["from"]), to(0)
+{
+	min_temp = lexical_cast_default<int>(cfg["min_temperature"],-100000);
+	max_temp = lexical_cast_default<int>(cfg["max_temperature"],100000);
+	min_height = lexical_cast_default<int>(cfg["min_height"],-100000);
+	max_height = lexical_cast_default<int>(cfg["max_height"],100000);
+
+	const std::string& to_str = cfg["to"];
+	if(to_str != "") {
+		to = to_str[0];
+	}
+}
+
+bool terrain_converter::convert_terrain(gamemap::TERRAIN terrain, int height, int temperature) const
+{
+	return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height &&
+	       temperature >= min_temp && temperature <= max_temp && to != 0;
+}
+
+gamemap::TERRAIN terrain_converter::convert_to() const
+{
+	return to;
+}
+
 }
 
 //function to generate the map.
@@ -526,10 +625,14 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						         size_t max_lakes, size_t nvillages, size_t nplayers, bool roads_between_castles,
 								 std::map<gamemap::location,std::string>* labels, const config& cfg)
 {
+	log_scope("map generation");
+
 	//odd widths are nasty, so make them even
 	if(is_odd(width)) {
 		++width;
 	}
+
+	int ticks = SDL_GetTicks();
 
 	//find out what the 'flatland' on this map is. i.e. grassland.
 	std::string flatland = cfg["default_flatland"];
@@ -551,6 +654,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//generate the height of everything.
 	const height_map heights = generate_height_map(width,height,iterations,hill_size,island_size,island_off_center);
 	std::cerr << "done generating height map...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	const config* const names_info = cfg.child("naming");
 	config naming;
@@ -561,29 +665,29 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//make a dummy race for generating names
 	unit_race name_generator(naming);
 
-	//the configuration file should contain a number of [height] tags:
-	//[height]
-	//height=n
-	//terrain=x
-	//[/height]
-	//these should be in descending order of n. They are checked sequentially, and if
-	//height is greater than n for that tile, then the tile is set to terrain type x.
+	std::vector<terrain_height_mapper> height_conversion;
+
+	const config::child_list& height_cfg = cfg.get_children("height");
+	for(config::child_list::const_iterator h = height_cfg.begin(); h != height_cfg.end(); ++h) {
+		height_conversion.push_back(terrain_height_mapper(**h));
+	}
+
 	terrain_map terrain(width,std::vector<char>(height,grassland));
 	size_t x, y;
 	for(x = 0; x != heights.size(); ++x) {
 		for(y = 0; y != heights[x].size(); ++y) {
-			const int val = heights[x][y];
-			const config::child_list& items = cfg.get_children("height");
-			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-				const int height = atoi((**i)["height"].c_str());
-				if(val >= height) {
-					const std::string& c = (**i)["terrain"];
-					terrain[x][y] = c.empty() ? 'g' : c[0];
+			for(std::vector<terrain_height_mapper>::const_iterator i = height_conversion.begin();
+			    i != height_conversion.end(); ++i) {
+				if(i->convert_terrain(heights[x][y])) {
+					terrain[x][y] = i->convert_to();
 					break;
 				}
 			}
 		}
 	}
+
+	std::cerr << "placed land forms\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	//now that we have our basic set of flatland/hills/mountains/water, we can place lakes
 	//and rivers on the map. All rivers are sourced at a lake. Lakes must be in high land -
@@ -641,6 +745,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	}
 
 	std::cerr << "done generating rivers...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
 
 	//convert grassland terrain to other types of flat terrain.
 	//we generate a 'temperature map' which uses the height generation algorithm to
@@ -651,63 +757,38 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 														   atoi(cfg["temperature_size"].c_str()),0,0);
 
 	std::cerr << "generated temperature map...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
+	std::vector<terrain_converter> converters;
+	const config::child_list& converter_items = cfg.get_children("convert");
+	for(config::child_list::const_iterator cv = converter_items.begin(); cv != converter_items.end(); ++cv) {
+		converters.push_back(terrain_converter(**cv));
+	}
+
+	std::cerr << "created terrain converters\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
 
 	//iterate over every flatland tile, and determine what type of flatland it is,
-	//based on our [flatland] tags.
+	//based on our [convert] tags.
 	for(x = 0; x != width; ++x) {
 		for(y = 0; y != height; ++y) {
 
 			const int temperature = temperature_map[x][y];
 			const int height = heights[x][y];
 
-			//iterate over our list of [convert] tags. Each tag specifies a source
-			//terrain type, and ranges
-			//for temperature and height, and if that range is met, then the terrain
-			//becomes the type specified. For instance, a tag to put snow in 
-			//high areas with low temperature would look like:
-			//[convert]
-			//from=g
-			//to=S
-			//max_temp=200
-			//min_height=600
-			//[/convert]
-			const config::child_list& items = cfg.get_children("convert");
-			for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-				
-				const std::string& from = (**i)["from"];
-				if(std::count(from.begin(),from.end(),terrain[x][y]) == 0) {
-					continue;
+			for(std::vector<terrain_converter>::const_iterator i = converters.begin(); i != converters.end(); ++i) {
+				if(i->convert_terrain(terrain[x][y],heights[x][y],temperature_map[x][y])) {
+					terrain[x][y] = i->convert_to();
+					break;
 				}
-
-				const std::string& min_temp = (**i)["min_temperature"];
-				const std::string& max_temp = (**i)["max_temperature"];
-				const std::string& min_height = (**i)["min_height"];
-				const std::string& max_height = (**i)["max_height"];
-
-				if(min_temp.empty() == false && atoi(min_temp.c_str()) > temperature)
-					continue;
-
-				if(max_temp.empty() == false && atoi(max_temp.c_str()) < temperature)
-					continue;
-
-				if(min_height.empty() == false && atoi(min_height.c_str()) > height)
-					continue;
-
-				if(max_height.empty() == false && atoi(max_height.c_str()) < height)
-					continue;
-				
-				//we are in the right range, so set the terrain and go
-				//on to the next tile.
-				const std::string& set_to = (**i)["to"];
-				if(set_to.empty() == false)
-					terrain[x][y] = set_to[0];
-
-				break;
 			}
 		}
 	}
 
 	std::cerr << "placing villages...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
 	//place villages in a 'grid', to make placing fair, but with villages
 	//displaced from their position according to terrain and randomness, to
 	//add some variety.
@@ -769,6 +850,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	}
 
 	std::cerr << "placing roads...\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	//place roads. We select two tiles at random locations on the borders of the map,
 	//and try to build roads between them.
@@ -777,7 +859,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		nroads += castles.size()*castles.size();
 	}
 
+	road_path_calculator calc(terrain,cfg);
+	const road_path_calculator_wrapper calc_wrapper(calc);
 	for(size_t road = 0; road != nroads; ++road) {
+		log_scope("creating road");
 
 		//we want the locations to be on the portion of the map we're actually going
 		//to use, since roads on other parts of the map won't have any influence,
@@ -801,19 +886,17 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			dst = castles[dst_castle];
 		}
 
-
 		//if the road isn't very interesting (on the same border), don't draw it
 		else if(src.x == dst.x || src.y == dst.y) {
 			continue;
 		}
 
-		const road_path_calculator calc(terrain,cfg);
 		if(calc.cost(src,0.0) >= 1000.0 || calc.cost(dst,0.0) >= 1000.0) {
 			continue;
 		}
 
 		//search a path out for the road
-		const paths::route rt = a_star_search(src,dst,1000.0,calc);
+		const paths::route rt = a_star_search(src,dst,10000.0,calc_wrapper);
 
 		const std::string& name = generate_name(name_generator,"road_name");
 		const int name_frequency = 20;
@@ -828,6 +911,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 			if(x < 0 || y < 0 || x >= width || y >= height)
 				continue;
+
+			calc.terrain_changed(*step);
 
 			//find the configuration which tells us what to convert this tile to
 			//to make it into a road.
@@ -901,6 +986,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 			}
 		}
+
+		std::cerr << "looked at " << calc.calls << " locations\n";
 	}
 
 
@@ -923,6 +1010,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		terrain[x+1][y-1] = 'C';
 		terrain[x+1][y+1] = 'C';
 	}
+
+	std::cerr << "placed castles\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
+
 
 	if(nvillages > 0) {
 		const config* const naming = cfg.child("village_naming");
@@ -974,6 +1066,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			}
 		}
 	}
+
+	std::cerr << "placed villages\n";
+	std::cerr << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
+
 
 	return output_map(terrain);
 }

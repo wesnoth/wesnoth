@@ -122,9 +122,9 @@ struct node {
 	}
 
 	node(const gamemap::location& pos, const gamemap::location& dst,
-	     double cost, node* parent,
+		double cost, const gamemap::location& parent,
 	     const std::set<gamemap::location>* teleports)
-	    : parent(parent), loc(pos), g(cost), h(heuristic(pos,dst))
+	    : loc(pos), parent(parent), g(cost), h(heuristic(pos,dst))
 	{
 
 		//if there are teleport locations, correct the heuristic to
@@ -152,8 +152,7 @@ struct node {
 		f = g + h;
 	}
 
-	node* parent;
-	gamemap::location loc;
+	gamemap::location loc, parent;
 	double g, h, f;
 };
 
@@ -164,53 +163,62 @@ paths::route a_star_search(const gamemap::location& src,
                            const gamemap::location& dst, double stop_at, T obj,
                            const std::set<gamemap::location>* teleports=NULL)
 {
-	std::cerr  << "a* search: " << src.x << ", " << src.y << " - " << dst.x << ", " << dst.y << "\n";
+	std::cerr  << "a* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
 	using namespace detail;
 	typedef gamemap::location location;
-	std::list<node> open_list, closed_list;
-	std::map<location,double> lowest_f;
 
-	open_list.push_back(node(src,dst,0.0,NULL,teleports));
-	lowest_f.insert(std::pair<location,double>(src,0.0));
+	typedef std::map<location,node> list_map;
+	typedef std::pair<location,node> list_type;
 
+	std::multimap<double,location> open_list_ordered;
+	list_map open_list, closed_list;
+
+	open_list.insert(list_type(src,node(src,dst,0.0,location(),teleports)));
+	open_list_ordered.insert(std::pair<double,location>(0.0,src));
+
+	std::vector<location> locs;
 	while(!open_list.empty()) {
 
-		//find the lowest estimated cost node on the open list
-		std::list<node>::iterator lowest = open_list.end(), i;
-		for(i = open_list.begin(); i != open_list.end(); ++i) {
-			if(lowest == open_list.end() || i->f < lowest->f) {
-				lowest = i;
-			}
-		}
+		assert(open_list.size() == open_list_ordered.size());
 
-		if(lowest->f > stop_at) {
-			break;
-		}
+		const list_map::iterator lowest_in_open = open_list.find(open_list_ordered.begin()->second);
+		assert(lowest != open_list.end());
 
 		//move the lowest element from the open list to the closed list
-		closed_list.splice(closed_list.begin(),open_list,lowest);
+		closed_list.erase(lowest_in_open->first);
+		const list_map::iterator lowest = closed_list.insert(*lowest_in_open).first;
+
+		open_list.erase(lowest_in_open);
+		open_list_ordered.erase(open_list_ordered.begin());
 
 		//find nodes we can go to from this node
-		static std::vector<location> locs;
 		locs.resize(6);
-		get_adjacent_tiles(lowest->loc,&locs[0]);
-		if(teleports != NULL && teleports->count(lowest->loc) != 0) {
-			std::copy(teleports->begin(),teleports->end(),
-			          std::back_inserter(locs));
+		get_adjacent_tiles(lowest->second.loc,&locs[0]);
+		if(teleports != NULL && teleports->count(lowest->second.loc) != 0) {
+			std::copy(teleports->begin(),teleports->end(),std::back_inserter(locs));
 		}
 
 		for(size_t j = 0; j != locs.size(); ++j) {
 
 			//if we have found a solution
 			if(locs[j] == dst) {
+				std::cerr << "found solution; calculating it...\n";
 				paths::route rt;
-				for(node* n = &*lowest; n != NULL; n = n->parent) {
-					rt.steps.push_back(n->loc);
-				}
 
+				for(location loc = lowest->second.loc; loc.valid(); ) {
+					rt.steps.push_back(loc);
+					list_map::const_iterator itor = open_list.find(loc);
+					if(itor == open_list.end()) {
+						itor = closed_list.find(loc);
+						assert(itor != closed_list.end());
+					}
+
+					loc = itor->second.parent;
+				}
+				
 				std::reverse(rt.steps.begin(),rt.steps.end());
 				rt.steps.push_back(dst);
-				rt.move_left = int(lowest->g + obj.cost(dst,lowest->g));
+				rt.move_left = int(lowest->second.g + obj.cost(dst,lowest->second.g));
 
 				assert(rt.steps.front() == src);
 
@@ -219,21 +227,19 @@ paths::route a_star_search(const gamemap::location& src,
 				return rt;
 			}
 
-			const node nd(locs[j],dst,lowest->g+obj.cost(locs[j],lowest->g),
-			              &*lowest,teleports);
-
-			const std::map<location,double>::iterator current = lowest_f.find(nd.loc);
-			if(current != lowest_f.end()) {
-				if(current->second <= nd.f) {
-					continue;
-				} else {
-					current->second = nd.f;
-				}
-			} else {
-				lowest_f.insert(std::pair<location,double>(nd.loc,nd.f));
+			if(open_list.count(locs[j]) > 0 || closed_list.count(locs[j]) > 0) {
+				continue;
 			}
 
-			open_list.push_back(nd);
+			const node nd(locs[j],dst,lowest->second.g+obj.cost(locs[j],lowest->second.g),
+			              lowest->second.loc,teleports);
+
+			if(nd.f < stop_at) {
+				open_list.insert(list_type(nd.loc,nd));
+				open_list_ordered.insert(std::pair<double,location>(nd.f,nd.loc));
+			} else {
+				closed_list.insert(list_type(nd.loc,nd));
+			}
 		}
 	}
 
