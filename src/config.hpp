@@ -66,6 +66,8 @@ struct preproc_define {
 		: value(val), arguments(args) {}
 	std::string value;
 	std::vector<std::string> arguments;
+	bool operator==(preproc_define const &p) const
+	{ return value == p.value && arguments == p.arguments; }
 };
 
 typedef std::map<std::string,preproc_define> preproc_map;
