@@ -25,24 +25,25 @@ AM_GNU_GETTEXT
 #######################################################################
 
 AC_ARG_ENABLE([debug],
-	      [  --enable-debug        Enable debug in wesnoth],
+	      [  --enable-debug          enable debug in wesnoth],
 	      [if test "x${enableval}" = "xyes" ; then
                    CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
 	       fi])
 
 AC_ARG_ENABLE([static],
-              [  --enable-static       Enable static building of wesnoth],
+              [  --enable-static         enable static building of wesnoth],
 	      [static=$enableval],
 	      [static=no])
 
 AC_ARG_ENABLE([lite],
-	      [  --enable-lite         Enable lite version of wesnoth (without music)],
+	      [  --enable-lite           enable lite version of wesnoth (without music)],
 	      [lite=$enableval],
 	      [lite=no])
 
 DATADIR=$PACKAGE
-AC_ARG_ENABLE([datadir-name],
-	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
+AC_ARG_ENABLE([datadir-name],,[AC_MSG_ERROR([Please use --with-datadir-name instead of obsolete --enable-datadir-name])])
+AC_ARG_WITH([datadir-name],
+	      [  --with-datadir-name[[=dir]]    change name of data directory. [[wesnoth]]], 
 	      [case "${enableval}" in
 	       yes)
 			DATADIR="wesnoth-data"
@@ -55,34 +56,36 @@ AC_ARG_ENABLE([datadir-name],
 		esac])
 
 AC_SUBST([DATADIR])
-		
+
 AC_ARG_ENABLE([server],
-	      [  --enable-server       Enable compilation of server],
+	      [  --enable-server         enable compilation of server],
 	      [server=$enableval],
 	      [server=no])
 
 AC_ARG_ENABLE([editor],
-	      [  --enable-editor       Enable compilation of map editor],
+	      [  --enable-editor         enable compilation of map editor],
 	      [editor=$enableval],
 	      [editor=no])
 
 AC_ARG_ENABLE([tools],
-	      [  --enable-tools        Enable compilation of tools for translators and artists],
+	      [  --enable-tools          enable compilation of tools for translators and artists],
 	      [tools=$enableval],
 	      [tools=no])
 
-AC_ARG_ENABLE([kde],
-	      [  --enable-kde          Enable installation of icon and KDE menu entry],
+AC_ARG_ENABLE([kde],,[AC_MSG_ERROR([Please use --with-kde instead of obsolete --enable-kde])])
+AC_ARG_WITH([kde],
+	      [  --with-kde              enable installation of icon and KDE menu entry],
 	      [kde=$enableval],
 	      [kde=no])
 
-AC_ARG_ENABLE([gnome],
-	      [  --enable-gnome        Enable installation of icon and GNOME menu entry],
+AC_ARG_ENABLE([gnome],,[AC_MSG_ERROR([Please use --with-gnome instead of obsolete --enable-gnome])])
+AC_ARG_WITH([gnome],
+	      [  --with-gnome            enable installation of icon and GNOME menu entry],
 	      [gnome=$enableval],
 	      [gnome=no])
 
 AC_ARG_ENABLE([wzip],
-	      [  --enable-wzip         Enable compilation of wesnoth_zip program],
+	      [  --enable-wzip           enable compilation of wesnoth_zip program],
 	      [wzip=$enableval],
 	      [wzip=no])
 
@@ -154,7 +157,7 @@ AM_CONDITIONAL([LIBPNG], [test x$pngfound = xyes])
 # Check for SDL version. Taken from sdl.m4
 
 AC_ARG_ENABLE([sdltest],
-	      [  --disable-sdltest       Do not try to compile and run a test SDL program],
+	      [  --disable-sdltest       do not try to compile and run a test SDL program],
 	      ,
 	      enable_sdltest=yes)
 

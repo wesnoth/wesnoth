@@ -872,17 +872,15 @@ Optional Features:
   --disable-dependency-tracking  speeds up one-time build
   --enable-dependency-tracking   do not reject slow dependency extractors
   --disable-rpath         do not hardcode runtime library paths
-  --enable-debug        Enable debug in wesnoth
-  --enable-static       Enable static building of wesnoth
-  --enable-lite         Enable lite version of wesnoth (without music)
-  --datadir-name[=dir] Change name of data directory. Default with this option: wesnoth-data
-  --enable-server       Enable compilation of server
-  --enable-editor       Enable compilation of map editor
-  --enable-tools        Enable compilation of tools for translators and artists
-  --enable-kde          Enable installation of icon and KDE menu entry
-  --enable-gnome        Enable installation of icon and GNOME menu entry
-  --enable-wzip         Enable compilation of wesnoth_zip program
-  --disable-sdltest       Do not try to compile and run a test SDL program
+  --enable-debug          enable debug in wesnoth
+  --enable-static         enable static building of wesnoth
+  --enable-lite           enable lite version of wesnoth (without music)
+
+  --enable-server         enable compilation of server
+  --enable-editor         enable compilation of map editor
+  --enable-tools          enable compilation of tools for translators and artists
+  --enable-wzip           enable compilation of wesnoth_zip program
+  --disable-sdltest       do not try to compile and run a test SDL program
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -893,6 +891,9 @@ Optional Packages:
   --with-included-gettext use the GNU gettext library included here
   --with-libintl-prefix[=DIR]  search for libintl in DIR/include and DIR/lib
   --without-libintl-prefix     don't search for libintl in includedir and libdir
+  --with-datadir-name[=dir]    change name of data directory. [wesnoth]
+  --with-kde              enable installation of icon and KDE menu entry
+  --with-gnome            enable installation of icon and GNOME menu entry
   --with-x                use the X Window System
 
 Some influential environment variables:
@@ -9869,6 +9870,14 @@ DATADIR=$PACKAGE
 # Check whether --enable-datadir-name or --disable-datadir-name was given.
 if test "${enable_datadir_name+set}" = set; then
   enableval="$enable_datadir_name"
+  { { echo "$as_me:$LINENO: error: Please use --with-datadir-name instead of obsolete --enable-datadir-name" >&5
+echo "$as_me: error: Please use --with-datadir-name instead of obsolete --enable-datadir-name" >&2;}
+   { (exit 1); exit 1; }; }
+fi;
+
+# Check whether --with-datadir-name or --without-datadir-name was given.
+if test "${with_datadir_name+set}" = set; then
+  withval="$with_datadir_name"
   case "${enableval}" in
 	       yes)
 			DATADIR="wesnoth-data"
@@ -9910,6 +9919,14 @@ fi;
 # Check whether --enable-kde or --disable-kde was given.
 if test "${enable_kde+set}" = set; then
   enableval="$enable_kde"
+  { { echo "$as_me:$LINENO: error: Please use --with-kde instead of obsolete --enable-kde" >&5
+echo "$as_me: error: Please use --with-kde instead of obsolete --enable-kde" >&2;}
+   { (exit 1); exit 1; }; }
+fi;
+
+# Check whether --with-kde or --without-kde was given.
+if test "${with_kde+set}" = set; then
+  withval="$with_kde"
   kde=$enableval
 else
   kde=no
@@ -9918,6 +9935,14 @@ fi;
 # Check whether --enable-gnome or --disable-gnome was given.
 if test "${enable_gnome+set}" = set; then
   enableval="$enable_gnome"
+  { { echo "$as_me:$LINENO: error: Please use --with-gnome instead of obsolete --enable-gnome" >&5
+echo "$as_me: error: Please use --with-gnome instead of obsolete --enable-gnome" >&2;}
+   { (exit 1); exit 1; }; }
+fi;
+
+# Check whether --with-gnome or --without-gnome was given.
+if test "${with_gnome+set}" = set; then
+  withval="$with_gnome"
   gnome=$enableval
 else
   gnome=no
