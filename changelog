@@ -1,7 +1,8 @@
 CVS HEAD:
  * graphics improvements: 
    * bridge, ice, castle floor, grassland
-   * attack animations
+   * unit images and attack animations
+ * in-game help updates and enhancements
  * scenario balancing for 'The Eastern Invasion' campaign
    * Weldyn under Attack
  * increased 'drakefoot' and 'drakefly' defense on grassland, sand and forest
@@ -30,6 +31,7 @@ CVS HEAD:
    * danish
    * dutch
    * french
+   * greek
    * hungarian
    * italian
    * norwegian
@@ -37,6 +39,7 @@ CVS HEAD:
    * russian
    * spanish
    * swedish
+ * allowed translating female unit names differently than male ones for languages needing it
  * multiplayer improvements
    * winter, desert and marsh random map generators
  * added naming for coastal villages
@@ -54,6 +57,8 @@ CVS HEAD:
  * fixed AI not being aware that units in villages can not be plagued
  * fixed some missing unit descriptions
  * fixed lots of untranslatable strings
+ * fixed female units lacking gender attribute
+ * fixed wmlxgettext bugs
  * switched networking code to new logging system
  * image and data-file cleanups
  * code cleanups
