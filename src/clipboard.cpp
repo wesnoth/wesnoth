@@ -1,7 +1,7 @@
 #include "global.hpp"
 
 #include "clipboard.hpp"
-
+#include "serialization/string_utils.hpp"
 #if defined(_X11) && !defined(__APPLE__)
 
 #define CLIPBOARD_FUNCS_DEFINED
