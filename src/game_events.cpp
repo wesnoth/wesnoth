@@ -832,7 +832,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			}
 		}
 	
-		if(speaker == units->end()) {
+		if(speaker == units->end() && cfg["speaker"] != "narrator") {
 			//no matching unit found, so the dialog can't come up
 			//continue onto the next message
 			std::cerr << "cannot show message\n";
