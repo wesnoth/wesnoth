@@ -1,3 +1,42 @@
+CVS HEAD:
+ * information about encountered terrain added in the help system
+ * new and improved graphics:
+   * snow tiles and transitions
+   * cave walls and floors
+   * dwarves castles
+   * swamp transitions
+   * ice
+   * deep and shallow water
+   * snowy hills
+   * bridges
+ * scenario balancing for 'The Dark Hordes' campaign:
+   * Underground Pool
+ * scenario balancing for 'The Eastern Invasion' campaign:
+   * Captured
+   * Evacuation
+   * Peasant Revolt
+   * Weldyn Under Attack
+ * hammer attack given to 'Dwarvish Fighter' and 'Dwarvish Steelclad'
+ * increased 'Dwarvish Steelclad' required experience to level
+ * language fixes and polishing (english)
+ * fixed Windows compile errors
+ * fixed Mac OS X compile error
+ * fixed syntax error appearing in the help about units under some translations
+ * fixed help about units/abilities/weapon specials not being sorted correctly
+ * fixed number of turns in 'The Dark Hordes: A New Chance'
+ * fixed editor where nothing was displayed until terrains were rebuilt
+ * fixed Elvish Shaman missile image
+ * fixed AI sometimes not respecting 'turns' parameter properly
+ * fixed bad recruitment in 'The Dark Hordes: A New Chance'
+ * fixed Kalenz appearing in 'The Dark Hordes: Underground Pool'
+ * fixed call to non-existing macro in 'Heir to the Throne: Valley of Death'
+ * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
+ * fixed a little bug where a space could disappear near EOL in the help system
+ * new file hierarchy for portraits
+ * minor speed optimizations
+ * help system shows everything when wesnoth is running in debug mode
+ * removed the unit description dialog in favor of in-game help
+
 Version 0.8.2:
  * new and improved graphics: 
    * canyons
