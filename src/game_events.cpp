@@ -460,7 +460,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& type = cfg["type"];
 		const std::string& side = cfg["side"];
 		size_t side_num = atoi(side.c_str())-1;
-		if(side_num < 0 || side_num >= teams->size()) side_num = 0;
+		if (side_num >= teams->size()) side_num = 0;
 
 		const unit_race::GENDER gender = cfg["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE;
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
