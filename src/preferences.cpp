@@ -595,6 +595,7 @@ bool show_video_mode_dialog(display& disp)
 	std::vector<std::string> options;
 
 	CVideo& video = disp.video();
+	video.setBitsPerPixel(video.getBpp());
 	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
 
 	//the SDL documentation says that a return value of -1 if no dimension

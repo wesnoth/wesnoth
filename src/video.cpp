@@ -128,7 +128,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : frameBuffer(NULL)
+CVideo::CVideo() : frameBuffer(NULL), bpp(0)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
@@ -139,7 +139,7 @@ CVideo::CVideo() : frameBuffer(NULL)
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
-		 : frameBuffer(NULL)
+		 : frameBuffer(NULL), bpp(0)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -245,3 +245,18 @@ SDL_Surface* CVideo::getSurface( void )
 }
 
 bool CVideo::isFullScreen() const { return fullScreen; }
+
+void CVideo::setBitsPerPixel( int bpp )
+{
+	frameBuffer->format->BitsPerPixel = bpp;
+}
+
+void CVideo::setBpp( int bpp )
+{
+	this->bpp = bpp;
+}
+
+int CVideo::getBpp( void )
+{
+	return bpp;
+}
