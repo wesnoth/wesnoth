@@ -353,6 +353,7 @@ double display::zoom(int amount)
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
 		zoom_ = orig_zoom;
+		image::set_zoom(zoom_);
 		return double(zoom_)/double(DefaultZoom);
 	}
 
