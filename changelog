@@ -1,14 +1,24 @@
 CVS HEAD:
  * added 'continue move' action, hotkey is 't'
  * added 'search' action which goes through labels and unit names, hotkey is '/'
+ * new experience gauge, meld with hit point gauge
+ * resized ellipses
+ * made game more responsive when AI or another player is playing.
  * translation updates:
    * french
+ * AI improvements
+   * added recruitment_ignore_bad_movement option
+   * added recruitment_ignore_bad_combat option
  * editor improvements:
    * added revert from disk functionality
+   * selection of terrain is kep through undo and redo operations
    * fixed name of the currently selected terrain not being displayed
  * fixed 'show enemy moves' and 'best possible enemy moves' showing in context menu when no enemies visible
  * fixed resizing window in the title screen not working properly
  * fixed basic hotkeys not working in title screen
+ * fixed terrain type and position problems with 800x600 resolution
+ * fixed game creator not getting ally messages
+ * fixed font redrawing for the font used in the slovak and polish translations
 
 Version 0.7.6:
  * added and improved unit images, leadership and healing images
