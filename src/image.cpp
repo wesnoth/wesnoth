@@ -111,6 +111,21 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
+void get_colour_adjustment(int *r, int *g, int *b)
+{
+	if(r != NULL) {
+		*r = red_adjust;
+	}
+
+	if(g != NULL) {
+		*g = green_adjust;
+	}
+
+	if(b != NULL) {
+		*b = blue_adjust;
+	}
+}
+
 void set_zoom(double amount)
 {
 	if(amount != zoom) {

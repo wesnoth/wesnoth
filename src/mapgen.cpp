@@ -456,6 +456,11 @@ std::string default_generate_map(size_t width, size_t height,
 						         size_t max_lakes, size_t nvillages, size_t nplayers,
 						         const config& cfg)
 {
+	//odd widths are nasty, so make them even
+	if(is_odd(width)) {
+		++width;
+	}
+
 	//find out what the 'flatland' on this map is. i.e. grassland.
 	std::string flatland = cfg["default_flatland"];
 	if(flatland == "") {
@@ -689,15 +694,26 @@ std::string default_generate_map(size_t width, size_t height,
 	//[village] tag is found for the terrain type (e.g. deep water) no village
 	//will be placed.
 	std::set<location> villages;
-	for(size_t village = 0; village != nvillages; ++village) {
+
+	size_t village = 0, village_tries = 0;
+	while(village != nvillages && village_tries != nvillages*3) {
+		++village_tries;
+
 		const int x = rand()%width/3+width/3;
 		const int y = rand()%height/3+height/3;
 		const std::string str(1,terrain[x][y]);
 		const config* const child = cfg.find_child("village","terrain",str);
 		if(child != NULL) {
+			if((*child)["chance"] != "" && (rand()%100) >= atoi((*child)["chance"].c_str())) {
+				continue;
+			}
+
 			const std::string& convert_to = (*child)["convert_to"];
-			if(convert_to.empty() == false)
+			if(convert_to.empty() == false) {
 				terrain[x][y] = convert_to[0];
+				villages.insert(gamemap::location(x,y));
+				++village;
+			}
 		}
 	}
 

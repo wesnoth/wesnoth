@@ -402,6 +402,8 @@ private:
 	void create_buttons();
 	std::vector<gui::button> buttons_;
 
+	bool firstTurn_;
+
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;
 };

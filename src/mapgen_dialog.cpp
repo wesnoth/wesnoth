@@ -241,7 +241,7 @@ std::string default_map_generator::name() const { return "default"; }
 std::string default_map_generator::create_map(const std::vector<std::string>& args)
 {
 	if(cfg_ != NULL)
-		return default_generate_map(width_,height_,iterations_,hill_size_,max_lakes_,nvillages_*width_*height_/1000,nplayers_,*cfg_);
+		return default_generate_map(width_,height_,iterations_,hill_size_,max_lakes_,(nvillages_*width_*height_)/1000,nplayers_,*cfg_);
 	else
 		return "";
 }

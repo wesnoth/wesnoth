@@ -60,7 +60,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg,screen_area())
+					   theme_(theme_cfg,screen_area()), firstTurn_(true)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -115,6 +115,31 @@ Uint32 display::rgb(Uint8 red, Uint8 green, Uint8 blue)
 
 void display::new_turn()
 {
+	int r,g,b;
+	image::get_colour_adjustment(&r,&g,&b);
+
+	const time_of_day& tod = status_.get_time_of_day();
+	const int red = tod.red - r;
+	const int green = tod.green - g;
+	const int blue = tod.blue - b;
+
+	const int niterations = firstTurn_ || (!red && !green && !blue) ? 0 : 10;
+	firstTurn_ = false;
+
+	const int frame_time = 30;
+	const int starting_ticks = SDL_GetTicks();
+	for(int i = 0; i != niterations; ++i) {
+		image::set_colour_adjustment(r+(i*red)/niterations,g+(i*green)/niterations,b+(i*blue)/niterations);
+		invalidate_all();
+		draw();
+
+		const int cur_ticks = SDL_GetTicks();
+		const int wanted_ticks = starting_ticks + i*frame_time;
+		if(cur_ticks < wanted_ticks) {
+			SDL_Delay(wanted_ticks - cur_ticks);
+		}
+	}
+
 	adjust_colours(0,0,0);
 }
 
@@ -383,7 +408,9 @@ void display::bounds_check_position()
 		zoom_ = max_zoom;
 	}
 
-	const double xend = zoom_*map_.x()*0.75 + zoom_*0.25;
+	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+
+	const double xend = tile_width*map_.x();
 	const double yend = zoom_*map_.y() + zoom_/2.0;
 
 	if(xpos_ + static_cast<double>(map_area().w) > xend)
@@ -1289,14 +1316,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		image_type = image::BRIGHTENED;
 	}
 
-	const scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
+	scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
 
 	if(surface == NULL) {
 		std::cerr << "Could not get terrain surface\n";
 		return;
 	}
-
-	std::vector<SDL_Surface*> overlaps;
 
 	update_rect(xpos,ypos,surface->w,surface->h);
 
@@ -1319,14 +1344,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 			overlays.first != overlays.second; ++overlays.first) {
 
-			//even though the scoped surface will fall out-of-scope and call
-			//SDL_FreeSurface() on the underlying surface, the surface will remain
-			//valid so long as the image cache isn't invalidated, which should not
-			//happen inside this function
-			const scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
-
-			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-			SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
+			scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
+			
+			if(overlay_surface != NULL) {
+				SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+				SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
+			}
 		}
 	}
 

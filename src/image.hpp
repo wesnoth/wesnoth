@@ -41,6 +41,9 @@ namespace image {
 	//for representing day/night. Invalidates all scaled images.
 	void set_colour_adjustment(int r, int g, int b);
 
+	//function to get back the current colour adjustment values
+	void get_colour_adjustment(int *r, int *g, int *b);
+
 	//sets the pixel format used by the images. Is called every time the
 	//video mode changes. Invalidates all images.
 	void set_pixel_format(SDL_PixelFormat* format);
