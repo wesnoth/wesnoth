@@ -12,30 +12,7 @@
 */
 
 #include "global.hpp"
-
 #include "key.hpp"
-
-#define KEY_TEST 0
-
-#if (KEY_TEST == 1)
-
-#include "video.hpp"
-
-int main( void )
-{
-	SDL_Init(SDL_INIT_VIDEO);
-	CVideo video( 640, 480, 16, 0 );
-	CKey key;
-	printf( "press enter (escape exits)...\n" );
-	for(;;) {
-		if( key[KEY_RETURN] != 0 )
-			printf( "key(ENTER) pressed\n" );
-		if( key[SDLK_ESCAPE] != 0 )
-			return 1;
-	}
-}
-
-#endif
 
 CKey::CKey() : is_enabled(true)
 {
