@@ -37,6 +37,8 @@ CVS HEAD:
  * when displaying text strings, select the correct font to display glyphs
    which are not displayable with the current font.
  * slight cleanup of the terrain graphics code
+ * added a --disable-game configure option to avoid compiling and installing the game
+ * share the object files between all the programs to halve the time of a full compilation
 
 Version 0.8.11:
  * new translation:
