@@ -1417,13 +1417,10 @@ void turn_info::write_game_snapshot(config& start) const
 	write_game(state_of_game_,start);
 	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
 
-	//copy over important scenario stats
-	start["id"] = (*level_)["id"];
-	start["name"] = (*level_)["name"];
-	start["objectives"] = (*level_)["objectives"];
-	start["next_scenario"] = (*level_)["next_scenario"];
-	start["music"] = (*level_)["music"];
-	start["experience_modifier"] = (*level_)["experience_modifier"];
+	//copy over all scenario stats
+	for(string_map::const_iterator s = level_->values.begin(); s != level_->values.end(); ++s) {
+		start[s->first] = s->second;
+	}
 
 	//write out the current state of the map
 	start["map_data"] = map_.write();
