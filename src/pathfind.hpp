@@ -39,9 +39,6 @@ void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamema
 void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& locs, size_t radius,
 	std::set<gamemap::location>& res);
 
-//function which tells if two locations are adjacent.
-bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
-
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 
 //function which will find a location on the board that is as near to loc as
