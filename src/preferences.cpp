@@ -740,7 +740,7 @@ bool show_video_mode_dialog(display& disp)
 	}
 }
 
-void show_hotkeys_dialog (display & disp)
+void show_hotkeys_dialog (display & disp, config *save_config)
 {
 	log_scope ("show_hotkeys_dialog");
 
@@ -868,7 +868,12 @@ void show_hotkeys_dialog (display & disp)
 		}
 		if (save_button.process (mousex, mousey, left_button))
 		{
-			hotkey::save_hotkeys(prefs);
+			if (save_config == NULL) {
+				hotkey::save_hotkeys(prefs);
+			}
+			else {
+				hotkey::save_hotkeys(*save_config);
+			}
 			redraw_all = true;
 		}
 

@@ -18,6 +18,7 @@
 #include "../display.hpp"
 #include "../events.hpp"
 #include "../hotkeys.hpp"
+#include "../preferences.hpp"
 
 #include <map>
 #include <queue>
@@ -82,6 +83,7 @@ class map_editor : public events::handler,
 				   public hotkey::command_executor {
 public:
 	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
+	virtual ~map_editor();
 	
 	/// Enter the main loop. The loop runs until set_abort() is called
 	/// to set an abort mode which makes the loop exit.
@@ -298,6 +300,8 @@ private:
 	// mouse_moved_ will be true if the mouse have moved between two
 	// cycles.
 	bool mouse_moved_;
+	const preferences::display_manager prefs_disp_manager_;
+	config prefs_;
 	
 };
 

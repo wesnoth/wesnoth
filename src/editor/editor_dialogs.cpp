@@ -254,7 +254,7 @@ std::string load_map_dialog(display &disp) {
 	return filename;
 }
 
-void preferences_dialog(display &disp) {
+void preferences_dialog(display &disp, config &prefs) {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager dialog_mgr;
@@ -317,8 +317,9 @@ void preferences_dialog(display &disp) {
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_location(slider_left,scroll_pos + 80 + 50);
 
-	//gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	//hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,scroll_pos + 80 + 100);
+	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
+	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,
+								scroll_pos + 80 + 50);
 
 	bool redraw_all = true;
 
@@ -347,7 +348,7 @@ void preferences_dialog(display &disp) {
 			close_button.set_dirty();
 			resolution_button.set_dirty();
 			grid_button.set_dirty();
-			//hotkeys_button.set_dirty();
+			hotkeys_button.set_dirty();
 			scroll_slider.set_dirty();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
@@ -372,10 +373,10 @@ void preferences_dialog(display &disp) {
 			break;
 		}
 
-		//if(hotkeys_button.process(mousex,mousey,left_button)) {
-		//	show_hotkeys_dialog (disp);
-		//	break;
-		//}
+		if(hotkeys_button.process(mousex,mousey,left_button)) {
+			preferences::show_hotkeys_dialog(disp, &prefs);
+			break;
+		}
 
 		events::pump();
 		events::raise_process_event();

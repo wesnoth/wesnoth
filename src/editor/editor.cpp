@@ -48,6 +48,9 @@ namespace {
 	const unsigned int undo_limit = 100;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
+	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
+		+ "/preferences";
+	
 
 	void terrain_changed(gamemap &map, const gamemap::location &hex) {
 		// If we painted something else than a keep on a starting position,
@@ -77,7 +80,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
 	  map_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
-	  l_button_func_(NONE) {
+	  l_button_func_(NONE), prefs_disp_manager_(&gui_) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
@@ -85,16 +88,35 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	brush_.adjust_size();
 
 	// Clear the current hotkeys. Alot of hotkeys are already set
-	// through other configuration files (e.g. english.cfg) and we need
-	// to clear these or they will overlap.
+	// through other configuration files (e.g. english.cfg and
+	// preferences) and we need to clear these or they will overlap.
 	hotkey::get_hotkeys().clear();
 	hotkey::add_hotkeys(theme_, true);
+	try {
+		prefs_.read(read_file(prefs_filename));
+	}
+	catch (config::error e) {
+		std::cerr << "Error when reading " << prefs_filename << ": "
+				  << e.message << std::endl;
+	}
+	hotkey::add_hotkeys(prefs_, true);
+
 	recalculate_starting_pos_labels();
 
 	gui_.begin_game();
 	gui_.invalidate_all();
 	gui_.draw();
 	events::raise_draw_event();
+}
+
+map_editor::~map_editor() {
+	try {
+		write_file(prefs_filename, prefs_.write());
+	}
+	catch (io_exception e) {
+		std::cerr << "Error when writing to " << prefs_filename << ": "
+				  << e.what() << std::endl;
+	}
 }
 
 void map_editor::handle_event(const SDL_Event &event) {
@@ -467,7 +489,7 @@ void map_editor::redo() {
 }
 
 void map_editor::preferences() {
-	preferences_dialog(gui_);
+	preferences_dialog(gui_, prefs_);
 	// Sizes and stuff may have changed, we need to redraw and
 	// recalculate everything if that is the case.
 	adjust_sizes(gui_, size_specs_);
@@ -858,7 +880,6 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 
 void map_editor::main_loop() {
 	unsigned int last_brush_size = brush_.selected_brush_size();
-	const preferences::display_manager prefs_disp_manager(&gui_);
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
 		const int scroll_speed = preferences::scroll_speed();

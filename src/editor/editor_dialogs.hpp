@@ -42,7 +42,7 @@ std::string load_map_dialog(display &disp);
 
 /// Show a dialog where the user may set the preferences used in the
 /// editor.
-void preferences_dialog(display &disp);
+void preferences_dialog(display &disp, config &prefs);
 
 
 

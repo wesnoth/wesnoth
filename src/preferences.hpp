@@ -101,7 +101,9 @@ namespace preferences {
 
 	void show_preferences_dialog(display& disp);
 	bool show_video_mode_dialog(display& disp);
-	void show_hotkeys_dialog (display & disp);
+	// If prefs is non-null, save the hotkeys in that config instead of
+	// the default.
+	void show_hotkeys_dialog (display & disp, config *prefs=NULL);
 
 	// Ask for end turn confirmation
 	bool yellow_confirm();
