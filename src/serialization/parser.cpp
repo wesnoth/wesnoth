@@ -203,16 +203,28 @@ void parser::parse_variable()
 {
 	config& cfg = *elements.top().cfg;
 	std::vector<std::string> variables;
-	variables.push_back(tok_.current_token().value);
-	tok_.next_token();
+	variables.push_back("");
 
 	while (tok_.current_token().type != '=') {
-		if (tok_.current_token().type != ',')
+		switch(tok_.current_token().type) {
+		case token::STRING:
+			if(!variables.back().empty())
+				variables.back() += ' ';
+			variables.back() += tok_.current_token().value;
+			break;
+		case ',':
+			if(variables.back().empty()) {
+				// FIXME: this error message is not really
+				// appropriate, although a proper one should
+				// wait after string freeze.
+				error(_("Unexpected characters after variable name (expected , or =)"));
+				variables.push_back("");
+			}
+			break;
+		default:
 			error(_("Unexpected characters after variable name (expected , or =)"));
-		tok_.next_token();
-		if (tok_.current_token().type != token::STRING)
-			error(_("Invalid variable name"));
-		variables.push_back(tok_.current_token().value);
+			break;
+		}
 		tok_.next_token();
 	}
 

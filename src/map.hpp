@@ -15,7 +15,6 @@
 #define MAP_H_INCLUDED
 
 class config;
-class vconfig;
 
 #include "terrain.hpp"
 

@@ -84,7 +84,7 @@ const token& tokenizer::next_token()
 			token_.value += current_;
 		};
 		break;	
-	case '[': case ']': case '/': case '\n': case '=': case ',': case '+': case '_':
+	case '[': case ']': case '/': case '\n': case '=': case ',': case '+': 
 		token_.type = token::token_type(current_);
 		token_.value = current_;
 		break;
@@ -100,6 +100,8 @@ const token& tokenizer::next_token()
 			token_.type = token::MISC;
 			token_.value += current_;
 		}
+		if(token_.value == "_")
+			token_.type = token::token_type('_');
 	}
 
 	if(current_ != EOF)
