@@ -1059,7 +1059,7 @@ const std::string& config::operator[](const std::string& key) const
 	const std::string& str = get_attribute(key);
 	//see if the value is a variable
 	if(str != "" && str[0] == '$') {
-		return game_events::get_variable(std::string(str.begin()+1,str.end()));
+		return game_events::get_variable_const(std::string(str.begin()+1,str.end()));
 	} else {
 		return str;
 	}

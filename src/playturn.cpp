@@ -1036,6 +1036,7 @@ void turn_info::cycle_units()
 		gui_.select_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
+		show_attack_options(it);
 	} else {
 		next_unit_ = gamemap::location();
 	}

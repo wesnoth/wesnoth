@@ -1295,6 +1295,11 @@ std::string& get_variable(const std::string& key)
 	return empty_string;
 }
 
+const std::string& get_variable_const(const std::string& key)
+{
+	return get_variable(key);
+}
+
 config& get_variable_cfg(const std::string& key)
 {
 	if(state_of_game != NULL) {
