@@ -156,6 +156,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 log.cpp \
 			 map.cpp \
 			 mapgen.cpp \
+			 mapgen_dialog.cpp \
 			 mouse.cpp \
 			 network.cpp \
 			 pathfind.cpp \
@@ -164,11 +165,13 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 preferences.cpp \
 			 race.cpp \
 			 replay.cpp \
+			 reports.cpp \
 			 sdl_utils.cpp \
 			 show_dialog.cpp \
 			 sound.cpp \
 			 team.cpp \
 			 terrain.cpp \
+			 theme.cpp \
 			 tooltips.cpp \
 			 unit.cpp \
 			 unit_types.cpp \
@@ -199,6 +202,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 log.hpp \
 			 map.hpp \
 			 mapgen.hpp \
+			 mapgen_dialog.hpp \
 			 mouse.hpp \
 			 network.hpp \
 			 pathfind.hpp \
@@ -207,11 +211,13 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 preferences.hpp \
 			 race.hpp \
 			 replay.hpp \
+			 reports.hpp \
 			 sdl_utils.hpp \
 			 show_dialog.hpp \
 			 sound.hpp \
 			 team.hpp \
 			 terrain.hpp \
+			 theme.hpp \
 			 tooltips.hpp \
 			 unit.hpp \
 			 unit_types.hpp \
