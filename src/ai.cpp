@@ -380,7 +380,24 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 	}
 
 	if(units_.count(to) == 0 || from == to) {
-		return ai_interface::move_unit(from,to,*possible_moves_ptr);
+		const location res = ai_interface::move_unit(from,to,*possible_moves_ptr);
+		if(res != to) {
+			//we've been ambushed; find the ambushing unit and attack them
+			adjacent_tiles_array locs;
+			get_adjacent_tiles(res,locs.data());
+			for(adjacent_tiles_array::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+				const unit_map::const_iterator itor = units_.find(*i);
+				if(itor != units_.end() && current_team().is_enemy(itor->second.side()) &&
+				   !itor->second.incapacitated()) {
+					battle_stats stats;
+					const int weapon = choose_weapon(res,itor->first,stats,0);
+					attack_enemy(res,itor->first,weapon);
+					break;
+				}
+			}
+		}
+
+		return res;
 	} else {
 		return from;
 	}
