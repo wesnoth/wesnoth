@@ -6,6 +6,8 @@
 
 # BUGS:
 # - should give special treatment to multiline strings
+# - should maybe keep the list of stripped strings from english.cfg
+# - should maybe report about those @ids items not stripped from english.cfg
 
 use strict;
 our %trans;
