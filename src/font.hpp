@@ -51,6 +51,8 @@ enum MARKUP { USE_MARKUP, NO_MARKUP };
 // - any line beginning in - will be displayed with size decreased by 2
 // - any line beginning with 0x0n will be displayed in the colour of side n
 //
+//the above special characters can be quoted using a C-style backslash.
+//
 //a bounding rectangle of the text is returned. If gui is NULL, then the
 //text will not be drawn, and a bounding rectangle only will be returned.
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,

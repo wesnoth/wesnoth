@@ -106,7 +106,7 @@ struct config
 
 	const child_list& get_children(const std::string& key) const;
 	const child_map& all_children() const;
-	
+
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;
 	config& add_child(const std::string& key);
@@ -123,6 +123,10 @@ struct config
 	config* remove_child(const std::string& key, size_t index);
 
 	static std::vector<std::string> split(const std::string& val, char c=',', bool remove_empty=true);
+	static std::vector<std::string> quoted_split(const std::string& val, char c=',',
+												 bool remove_empty=true, char quote='\\');
+	static std::string& escape(std::string& str);
+	static std::string& unescape(std::string& str);
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 

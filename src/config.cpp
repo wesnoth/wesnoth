@@ -800,6 +800,46 @@ std::vector<std::string> config::split(const std::string& val, char c, bool remo
 
 	return res;
 }
+//identical to split(), except it does not split when it otherwise
+//would if the previous character was identical to the parameter 'quote'.
+//i.e. it does not split quoted commas.
+//this method was added to make it possible to quote user input,
+//particularly so commas in user input will not cause visual problems in menus.
+//why not change split()? that would change the methods post condition.
+std::vector<std::string> config::quoted_split(const std::string& val, char c, bool remove_empty, char quote)
+{
+	std::vector<std::string> res;
+
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2 = val.begin();
+
+	while(i2 != val.end()) {
+		if(*i2 == quote) {
+			// ignore quoted character
+			++i2;
+			if(i2 != val.end()) ++i2;
+		} else if(*i2 == c) {
+			std::string new_val(i1,i2);
+			strip(new_val);
+			if(!remove_empty || !new_val.empty())
+				res.push_back(new_val);
+			++i2;
+			while(i2 != val.end() && *i2 == ' ')
+				++i2;
+
+			i1 = i2;
+		} else {
+			++i2;
+		}
+	}
+
+	std::string new_val(i1,i2);
+	strip(new_val);
+	if(!remove_empty || !new_val.empty())
+		res.push_back(new_val);
+
+	return res;
+}
 
 namespace {
 //make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
@@ -807,6 +847,38 @@ namespace {
 bool notspace(char c) { return !portable_isspace(c); }
 }
 
+//prepend all special characters with a backslash
+//special characters are:
+//#@{}+-,\*
+std::string& config::escape(std::string& str)
+{
+	if(!str.empty()) {
+		std::string::size_type pos = 0;
+
+		do {
+			pos=str.find_first_of("#@{}+-,\\*",pos);
+			if(pos != std::string::npos) {
+				str.insert(pos,1,'\\');
+				pos += 2;
+			}
+		} while(pos < str.size() && pos != std::string::npos);
+	}
+	return str;
+}
+// remove all escape characters (backslash)
+std::string& config::unescape(std::string& str)
+{
+	std::string::size_type pos = 0;
+
+	do {
+		pos = str.find('\\',pos);
+		if(pos != std::string::npos) {
+			str.erase(pos,1);
+			pos++;
+		}
+	} while(pos < str.size() && pos != std::string::npos);
+	return str;
+}
 std::string& config::strip(std::string& str)
 {
 	//if all the string contains is whitespace, then the whitespace may

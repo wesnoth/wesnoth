@@ -143,7 +143,8 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 			time_buf[0] = 0;
 
 		std::stringstream str;
-		str << name << "," << time_buf;
+		// escape all special characters in filenames
+		str << config::escape(name) << "," << time_buf;
 		items.push_back(str.str());
 	}
 
