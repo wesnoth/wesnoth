@@ -898,7 +898,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return true;
 
 	case hotkey::HOTKEY_SPEAK:
-		return network::nconnections() > 0 && !is_observer();
+		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
 		return !browse_ && !redo_stack_.empty();
@@ -922,8 +922,10 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_TERRAIN_TABLE:
 	case hotkey::HOTKEY_ATTACK_RESISTANCE:
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
-	case hotkey::HOTKEY_RENAME_UNIT:
 		return current_unit() != units_.end();
+
+	case hotkey::HOTKEY_RENAME_UNIT:
+		return current_unit() != units_.end() && current_unit()->second.side() == gui_.viewing_team()+1;
 
 	case hotkey::HOTKEY_LABEL_TERRAIN:
 		return map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y);
@@ -1763,10 +1765,6 @@ void turn_info::recall()
 
 void turn_info::speak()
 {
-	const unit_map::const_iterator leader = find_leader(units_,gui_.viewing_team()+1);
-	if(leader == units_.end())
-		return;
-
 	//see if this team has any networked friends. If so, then the player can choose to send
 	//to allies only.
 	bool has_friends = false;
@@ -1786,13 +1784,17 @@ void turn_info::speak()
 	std::string message;
 	const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
 		                             string_table["message"] + ":", &message,NULL,&checks);
-	if(res == 0) {
+	if(res == 0 && message != "") {
 		config cfg;
-		cfg["description"] = leader->second.description();
+		cfg["description"] = preferences::login();
 		cfg["message"] = message;
-		char buf[50];
-		sprintf(buf,"%d",leader->second.side());
-		cfg["side"] = buf;
+
+		const unit_map::const_iterator leader = find_leader(units_,gui_.viewing_team()+1);
+		if(leader != units_.end() && !is_observer()) {
+			char buf[50];
+			sprintf(buf,"%d",leader->second.side());
+			cfg["side"] = buf;
+		}
 
 		bool private_message = false;
 

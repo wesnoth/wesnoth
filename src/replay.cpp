@@ -573,6 +573,24 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			return false;
 		}
 
+		else if((child = cfg->child("speak")) != NULL) {
+			const std::string& team_name = (*child)["team_name"];
+			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
+				if(preferences::message_bell()) {
+					sound::play_sound("bell.wav");
+				}
+
+				const int side = lexical_cast_default<int>((*child)["side"].c_str());
+				disp.add_chat_message((*child)["description"],side,(*child)["message"],
+				                      team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
+			}
+		} else if((child = cfg->child("label")) != NULL) {
+			const gamemap::location loc(*child);
+			const std::string& text = (*child)["text"];
+
+			disp.labels().set_label(loc,text);
+		} 
+
 		//if there is an end turn directive
 		else if(cfg->child("end_turn") != NULL) {
 			replayer.next_skip();
@@ -788,22 +806,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			if(advancing_units.empty()) {
 				check_victory(units,teams);
 			}
-		} else if((child = cfg->child("speak")) != NULL) {
-			const std::string& team_name = (*child)["team_name"];
-			if(team_name == "" || teams[disp.viewing_team()].team_name() == team_name) {
-				if(preferences::message_bell()) {
-					sound::play_sound("bell.wav");
-				}
-
-				const int side = lexical_cast_default<int>((*child)["side"].c_str());
-				disp.add_chat_message((*child)["description"],side,(*child)["message"],
-				                      team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
-			}
-		} else if((child = cfg->child("label")) != NULL) {
-			const gamemap::location loc(*child);
-			const std::string& text = (*child)["text"];
-
-			disp.labels().set_label(loc,text);
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();

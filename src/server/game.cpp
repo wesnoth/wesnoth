@@ -19,6 +19,56 @@ bool game::is_needed(network::connection player) const
 	return player == players_.front();
 }
 
+bool game::is_observer(network::connection player) const
+{
+	if(is_member(player) == false) {
+		return false;
+	}
+
+	return is_needed(player) == false && sides_.count(player) == 0;
+}
+
+bool game::observers_can_label() const
+{
+	return true;
+}
+
+bool game::observers_can_chat() const
+{
+	return true;
+}
+
+bool game::filter_commands(network::connection player, config& cfg)
+{
+	if(is_observer(player)) {
+		std::vector<int> marked;
+		int index = 0;
+
+		const config::child_list& children = cfg.get_children("command");
+		for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
+
+			if(observers_can_label() && (*i)->child("label") != NULL) {
+				;
+			} else if(observers_can_chat() && (*i)->child("speak") != NULL) {
+				;
+			} else {
+				std::cerr << "removing observer's illegal command: '" << (*i)->write() << "'\n";
+				marked.push_back(index - marked.size());
+			}
+
+			++index;
+		}
+
+		for(std::vector<int>::const_iterator j = marked.begin(); j != marked.end(); ++j) {
+			cfg.remove_child("command",*j);
+		}
+
+		return cfg.all_children().empty() == false;
+	}
+
+	return true;
+}
+
 void game::start_game()
 {
 	started_ = true;

@@ -237,13 +237,14 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 			side["recruitment_pattern"] = possible_sides.front()->values["recruitment_pattern"];
 	}
 
-	if ((*level_)["objectives"] == "")
-	{
+	if((*level_)["objectives"] == "") {
 		(*level_)["objectives"] = string_table["mp_objectives"];
 	}
 
-	(*level_)["experience_modifier"] = lexical_cast<std::string>(xpmodifier);
-	(*level_)["era"] = era;
+	if(save_ == false) {
+		(*level_)["experience_modifier"] = lexical_cast<std::string>(xpmodifier);
+		(*level_)["era"] = era;
+	}
 
 	lists_init();
 

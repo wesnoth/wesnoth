@@ -375,8 +375,10 @@ void server::run()
 						continue;
 					}
 
-					const config* const turn = data.child("turn");
+					config* const turn = data.child("turn");
 					if(turn != NULL) {
+						g->filter_commands(sock,*turn);
+
 						//notify the game of the commands, and if it changes
 						//the description, then sync the new description
 						//to players in the lobby
@@ -388,32 +390,41 @@ void server::run()
 						//any private 'speak' commands must be repackaged seperate
 						//to other commands, and re-sent, since they should only go
 						//to some clients.
-						const config::child_list& speaks = turn->get_children("speak");
-						if(speaks.empty() == false) {
-							int npublic = 0, nprivate = 0;
-							std::string team_name;
-							for(config::child_list::const_iterator i = speaks.begin();
-							    i != speaks.end(); ++i) {
-								if((**i)["team_name"] == "") {
-									++npublic;
-								} else {
-									++nprivate;
-									team_name = (**i)["team_name"];
-								}
-							}
-
-							//if all there are are messages and they're all private, then
-							//just forward them on to the client that should receive them.
-							if(nprivate > 0 && npublic == 0 && turn->all_children().size() == 1) {
-								g->send_data_team(data,team_name,sock);
+						const config::child_itors speaks = turn->child_range("command");
+						int npublic = 0, nprivate = 0, nother = 0;
+						std::string team_name;
+						for(config::child_iterator i = speaks.first; i != speaks.second; ++i) {
+							config* const speak = (*i)->child("speak");
+							if(speak == NULL) {
+								++nother;
 								continue;
 							}
 
-							//at the moment, if private messages are mixed in with other
-							//data, then let them go through. It's exceedingly unlikely that
-							//this will happen anyway, and if it does, the client should
-							//respect not displaying the message.
+							//force the description to be correct to prevent
+							//spoofing of messages
+							const player_map::const_iterator pl = players_.find(sock);
+							assert(pl != players_.end());
+							(*speak)["description"] = pl->second.name();
+
+							if((*speak)["team_name"] == "") {
+								++npublic;
+							} else {
+								++nprivate;
+								team_name = (*speak)["team_name"];
+							}
 						}
+
+						//if all there are are messages and they're all private, then
+						//just forward them on to the client that should receive them.
+						if(nprivate > 0 && npublic == 0 && nother == 0) {
+							g->send_data_team(data,team_name,sock);
+							continue;
+						}
+
+						//at the moment, if private messages are mixed in with other
+						//data, then let them go through. It's exceedingly unlikely that
+						//this will happen anyway, and if it does, the client should
+						//respect not displaying the message.
 					}
 
 					//forward data to all players who are in the game,

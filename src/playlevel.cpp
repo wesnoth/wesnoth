@@ -320,6 +320,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	int turn = 1, player_number = 0;
 
 	try {
+		gui.adjust_colours(0,0,0);
 		game_events::fire("prestart");
 
 		if(first_human_team != -1) {

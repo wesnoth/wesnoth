@@ -20,6 +20,15 @@ public:
 
 	bool is_member(network::connection player) const;
 	bool is_needed(network::connection player) const;
+	bool is_observer(network::connection player) const;
+
+	bool observers_can_label() const;
+	bool observers_can_chat() const;
+
+	//function which filters commands sent by a player to remove commands
+	//that they don't have permission to execute.
+	//Returns true iff there are still some commands left
+	bool filter_commands(network::connection player, config& cfg);
 
 	void start_game();
 
