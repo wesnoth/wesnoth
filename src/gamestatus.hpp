@@ -24,7 +24,7 @@
 //an object which defines the current time of day
 struct time_of_day
 {
-	explicit time_of_day(config& cfg);
+	explicit time_of_day(const config& cfg);
 
 	//the % bonus lawful units receive. chaotic units will
 	//receive -lawful_bonus.

@@ -18,6 +18,7 @@
 #pragma warning(disable:4786)
 #endif
 
+#include <cassert>
 #include <map>
 #include <string>
 #include <vector>
@@ -92,12 +93,6 @@ struct config
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
 
-	//a list of all children of this node.
-	child_map children;
-
-	//all the attributes of this node.
-	string_map values;
-
 	typedef std::vector<config*>::iterator child_iterator;
 	typedef std::vector<config*>::const_iterator const_child_iterator;
 
@@ -113,6 +108,7 @@ struct config
 	config* child(const std::string& key);
 	const config* child(const std::string& key) const;
 	config& add_child(const std::string& key);
+	config& add_child(const std::string& key, const config& val);
 	std::string& operator[](const std::string& key);
 	const std::string& operator[](const std::string& key) const;
 
@@ -120,6 +116,13 @@ struct config
 	                   const std::string& value);
 	const config* find_child(const std::string& key, const std::string& name,
 	                         const std::string& value) const;
+
+	void clear_children(const std::string& key) { children.erase(key); }
+	void remove_child(const std::string& key, size_t index) {
+		child_list& v = children[key];
+		assert(index < v.size());
+		v.erase(v.begin()+index);
+	}
 
 	static std::vector<std::string> split(const std::string& val, char c=',');
 	static std::string& strip(std::string& str);
@@ -131,6 +134,12 @@ struct config
 		error(const std::string& msg) : message(msg) {}
 		std::string message;
 	};
+
+	//all the attributes of this node.
+	string_map values;
+
+	//a list of all children of this node.
+	child_map children;
 };
 
 struct config_has_value {

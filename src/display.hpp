@@ -278,11 +278,15 @@ private:
 	void bounds_check_position();
 
 	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, image::TYPE type);
+
+	//this surface must be freed by the caller
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
 	                        int x, int y, const std::string& dir="");
 
+	//this surface must be freed by the caller
 	SDL_Surface* getFlag(gamemap::TERRAIN, int x, int y);
 
+	//this surface must be freed by the caller
 	SDL_Surface* getMinimap(int w, int h);
 
 	void clearImageCache();

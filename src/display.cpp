@@ -424,12 +424,10 @@ void display::draw(bool update,bool force)
 {
 	if(!sideBarBgDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* image_top = image::get_image(RightSideTop,image::UNSCALED);
+		const scoped_sdl_surface image_top(image::get_image(RightSideTop,image::UNSCALED));
 
-
-		SDL_Surface* image = image_top != NULL ?
-		 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h)
-		    : NULL;
+		const scoped_sdl_surface image(image_top != NULL ?
+		 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h) : NULL);
 		if(image_top != NULL && image != NULL && image_top->h < screen->h) {
 
 			SDL_Rect dstrect;
@@ -545,7 +543,7 @@ void display::draw_game_status(int x, int y)
 
 	const time_of_day& tod = timeofday_at(status_,units_,mouseoverHex_);
 
-	SDL_Surface* const tod_surface = image::get_image(tod.image,image::UNSCALED);
+	const scoped_sdl_surface tod_surface(image::get_image(tod.image,image::UNSCALED));
 
 	if(tod_surface != NULL) {
 		//hardcoded values as to where the time of day image appears
@@ -555,7 +553,7 @@ void display::draw_game_status(int x, int y)
 
 	if(gameStatusRect_.w > 0) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* const background = image::get_image(RightSideTop,image::UNSCALED);
+		const scoped_sdl_surface background(image::get_image(RightSideTop,image::UNSCALED));
 
 		if(background == NULL)
 			return;
@@ -655,8 +653,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
-	SDL_Surface* const background = image::get_image(RightSideTop,image::UNSCALED);
-	SDL_Surface* const background_bot = image::get_image(RightSideBot,image::UNSCALED);
+	const scoped_sdl_surface background(image::get_image(RightSideTop,image::UNSCALED));
+	const scoped_sdl_surface background_bot(image::get_image(RightSideBot,image::UNSCALED));
 
 	if(background == NULL || background_bot == NULL)
 		return;
@@ -749,7 +747,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	y += description_rect.h;
 
-	SDL_Surface* const profile = image::get_image(u.type().image(),image::UNSCALED);
+	const scoped_sdl_surface profile(image::get_image(u.type().image(),image::UNSCALED));
 
 	if(profile == NULL)
 		return;
@@ -771,7 +769,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 void display::draw_minimap(int x, int y, int w, int h)
 {
-	SDL_Surface* const surface = getMinimap(w,h);
+	const scoped_sdl_surface surface(getMinimap(w,h));
 	if(surface == NULL)
 		return;
 
@@ -814,7 +812,7 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 	std::vector<gamemap::TERRAIN> terrains = map_.get_terrain_precedence();
 	for(std::vector<gamemap::TERRAIN>::const_iterator i = terrains.begin();
 	    i != terrains.end(); ++i) {
-		SDL_Surface* const image = getTerrain(*i,image::SCALED,-1,-1);
+		const scoped_sdl_surface image(getTerrain(*i,image::SCALED,-1,-1));
 		if(image == NULL) {
 			std::cerr << "image for terrain '" << *i << "' not found\n";
 			return;
@@ -865,7 +863,7 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 	return terrains[index];
 }
 
-void display::draw_tile(int x, int y, SDL_Surface* unit_image,
+void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
                         double highlight_ratio, Pixel blend_with)
 
 {
@@ -922,7 +920,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		image_type = image::BRIGHTENED;
 	}
 
-	SDL_Surface* surface = getTerrain(terrain,image_type,x,y);
+	const scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
 
 	if(surface == NULL) {
 		std::cerr << "Could not get terrain surface\n";
@@ -931,8 +929,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	std::vector<SDL_Surface*> overlaps;
 
+	scoped_sdl_surface flag(NULL);
+
 	if(!is_shrouded) {
-		SDL_Surface* const flag = getFlag(terrain,x,y);
+		flag.assign(getFlag(terrain,x,y));
 		if(flag != NULL)
 			overlaps.push_back(flag);
 
@@ -946,8 +946,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		for(std::pair<Itor,Itor> overlays =
 		    overlays_.equal_range(gamemap::location(x,y));
 			overlays.first != overlays.second; ++overlays.first) {
-			SDL_Surface* const overlay_surface =
-			          image::get_image(overlays.first->second);
+
+			//event though the scoped surface will fall out-of-scope and call
+			//SDL_FreeSurface on the underlying surface, the surface will remain
+			//valid so long as the image cache isn't invalidated, which should not
+			//happen inside this function
+			const scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
 
 			if(overlay_surface != NULL) {
 				overlaps.push_back(overlay_surface);
@@ -977,8 +981,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	update_rect(xpos,ypos,xend-xpos,yend-ypos);
 
-	SDL_Surface* energy_image = NULL;
-
 	double unit_energy = 0.0;
 
 	const short energy_loss_colour = 0;
@@ -988,11 +990,18 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	double energy_size = 1.0;
 	bool face_left = true;
 
+	if(unit_image_override != NULL)
+		sdl_add_ref(unit_image_override);
+
+	scoped_sdl_surface unit_image(unit_image_override);
+	scoped_sdl_surface energy_image(NULL);
+
 	//see if there is a unit on this tile
 	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
 	if(it != units_.end()) {
 		if(unit_image == NULL)
-			unit_image = image::get_image(it->second.image());
+			unit_image.assign(image::get_image(it->second.image()));
+
 		const int unit_move = it->second.movement_left();
 		const int unit_total_move = it->second.total_movement();
 
@@ -1015,7 +1024,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			}
 		}
 
-		energy_image = image::get_image(energy_file);
+		energy_image.assign(image::get_image(energy_file));
 		unit_energy = double(it->second.hitpoints()) /
 		              double(it->second.max_hitpoints());
 
@@ -1186,7 +1195,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	}
 
 	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
-		SDL_Surface* const cross = image::get_image("cross.png");
+		const scoped_sdl_surface cross(image::get_image("cross.png"));
 		if(cross != NULL)
 			draw_unit(xpos-xsrc,ypos-ysrc,cross,face_left,false,
 			          debugHighlights_[loc],0);
@@ -1330,7 +1339,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		}
 	}
 
-	SDL_Surface* const image = image::get_image(*image_str);
+	const scoped_sdl_surface image(image::get_image(*image_str));
 	if(image == NULL) {
 		std::cerr << "Could not find image: " << *image_str << "\n";
 		return;
@@ -1424,8 +1433,8 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 				std::ostringstream stream;
 				for(int n = 0; tiles[i] == *terrain && n!=6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);
-					SDL_Surface* const new_surface = getTerrain(
-					                    *terrain,image_type,x,y,stream.str());
+					const scoped_sdl_surface new_surface(getTerrain(
+					                    *terrain,image_type,x,y,stream.str()));
 
 					if(new_surface == NULL) {
 						//if we don't have any surface at all,
@@ -1466,6 +1475,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 		const time_of_day& tod = status_.get_time_of_day();
 		const std::string tod_image = image + "-" + tod.id + ".png";
 		SDL_Surface* const im = image::get_image(tod_image,image_type);
+
 		if(im != NULL) {
 			return im;
 		}
@@ -1554,6 +1564,7 @@ SDL_Surface* display::getMinimap(int w, int h)
 	if(minimap_ == NULL)
 		minimap_ = image::getMinimap(w,h,map_,team_valid() ? &teams_[currentTeam_] : NULL);
 
+	sdl_add_ref(minimap_);
 	return minimap_;
 }
 
@@ -1750,7 +1761,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 					missile_image = &default_diag_missile;
 			}
 
-			SDL_Surface* const img = image::get_image(*missile_image);
+			const scoped_sdl_surface img(image::get_image(*missile_image));
 			if(img != NULL) {
 				double pos = double(missile_impact - i)/double(missile_impact);
 				if(pos < 0.0)
@@ -1964,8 +1975,7 @@ bool display::unit_attack(const gamemap::location& a,
 		if(unit_image == NULL)
 			unit_image = &attacker.image();
 
-		SDL_Surface* const image = (unit_image == NULL) ?
-		                           NULL : image::get_image(*unit_image);
+		const scoped_sdl_surface image((unit_image == NULL) ? NULL : image::get_image(*unit_image));
 
 		const double pos = double(i)/double(i < 0 ? begin_at : end_at);
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
@@ -2023,9 +2033,7 @@ void display::move_unit_between(const gamemap::location& a,
 	for(double i = 0.0; i < nsteps; i += 1.0) {
 		events::pump();
 
-		//checking keys may have invalidated all images (if they have
-		//zoomed in or out), so reget the image here
-		SDL_Surface* const image = image::get_image(u.type().image());
+		const scoped_sdl_surface image(image::get_image(u.type().image()));
 		if(image == NULL) {
 			std::cerr << "failed to get image " << u.type().image() << "\n";
 			return;
@@ -2222,7 +2230,7 @@ const std::pair<int,int>& display::calculate_energy_bar()
 	int first_row = -1;
 	int last_row = -1;
 
-	SDL_Surface* const image = image::get_image("unmoved-energy.png");
+	const scoped_sdl_surface image(image::get_image("unmoved-energy.png"));
 
 	surface_lock image_lock(image);
 	const short* const begin = image_lock.pixels();

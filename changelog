@@ -1,3 +1,11 @@
+Version 0.6.1:
+ * fixed bug causing crash on scenario completion
+ * fixed 'Storm Trident' mislocation on 'Bay of Pearls'
+ * fixed resetting player starting gold, gold per village, player race, and player type when loading multiplayer game
+ * change to the way images are handled to fix resizing (and other potential) bugs
+ * enabled changing datadir name with ./configure
+ * code cleanups
+
 Version 0.6:
  * radical storyline changes, this breaks saves from older versions
  * fog of war

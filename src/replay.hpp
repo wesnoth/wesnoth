@@ -77,7 +77,7 @@ private:
 
 	void add_value(const std::string& type, int value);
 
-	std::vector<config*>& commands();
+	const config::child_list& commands();
 	config* add_command();
 	config cfg_;
 	unsigned int pos_;

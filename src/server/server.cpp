@@ -18,9 +18,7 @@
 config construct_error(const std::string& msg)
 {
 	config cfg;
-	config* const err = new config();
-	(*err)["message"] = msg;
-	cfg.children["error"].push_back(err);
+	cfg.add_child("error")["message"] = msg;
 	return cfg;
 }
 
@@ -30,12 +28,11 @@ void run_server()
 	const network::server_manager server;
 
 	config login_response;
-	login_response.children["mustlogin"].push_back(new config());
+	login_response.add_child("mustlogin");
 	login_response["version"] = game_config::version;
 
 	config initial_response;
-	initial_response.children["gamelist"].push_back(new config());
-	config& gamelist = *initial_response.children["gamelist"].back();
+	config& gamelist = initial_response.add_child("gamelist");
 
 	typedef std::map<network::connection,player> player_map;
 	player_map players;
@@ -93,11 +90,9 @@ void run_server()
 						continue;
 					}
 					
-					config* const player_cfg = new config();
+					config* const player_cfg = &initial_response.add_child("user");
 					const player new_player(username,*player_cfg);
-					players.insert(std::pair<network::connection,player>(
-					                            sock,new_player));
-					initial_response.children["user"].push_back(player_cfg);
+					players.insert(std::pair<network::connection,player>(sock,new_player));
 
 					//remove player from the not-logged-in list and place
 					//the player in the lobby
@@ -185,11 +180,10 @@ void run_server()
 						if(!is_init) {
 							
 							//update our config object which describes the
-							//open games
-							gamelist.children["game"].push_back(
-							                           new config(g->level()));
-							g->set_description(
-							          gamelist.children["game"].back());
+							//open games, and notifies the game of where its description
+							//is located at
+							config& desc = gamelist.add_child("game",g->level());
+							g->set_description(&desc);
 
 							//send all players in the lobby the list of games
 							lobby_players.send_data(initial_response);
@@ -235,16 +229,14 @@ void run_server()
 							g->send_data(cfg);
 
 							//delete the game's description
-							config* const gamelist =
-							            initial_response.child("gamelist");
+							config* const gamelist = initial_response.child("gamelist");
 							assert(gamelist != NULL);
-							std::vector<config*>& vg =
-							                gamelist->children["game"];
-							std::vector<config*>::iterator desc =
-							    std::find(vg.begin(),vg.end(),g->description());
-							if(desc != vg.end()) {
+							const config::child_itors vg = gamelist->child_range("game");
+
+							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
+							if(desc != vg.second) {
 								delete *desc;
-								vg.erase(desc);
+								gamelist->remove_child("game",desc - vg.first);
 							}
 
 							//put the players back in the lobby and send
@@ -282,10 +274,11 @@ void run_server()
 				const std::map<network::connection,player>::iterator pl_it =
 				               players.find(e.socket);
 				if(pl_it != players.end()) {
-					std::vector<config*>& users =
-					                   initial_response.children["user"];
-					users.erase(std::find(users.begin(),users.end(),
-					                      pl_it->second.config_address()));
+					const config::child_list& users = initial_response.get_children("user");
+					const size_t index = std::find(users.begin(),users.end(),pl_it->second.config_address()) - users.begin();
+					if(index < users.size())
+						initial_response.remove_child("user",index);
+
 					players.erase(pl_it);
 				}
 				
@@ -299,12 +292,12 @@ void run_server()
 						config* const gamelist =
 						            initial_response.child("gamelist");
 						assert(gamelist != NULL);
-						std::vector<config*>& vg = gamelist->children["game"];
-						std::vector<config*>::iterator g =
-						    std::find(vg.begin(),vg.end(),i->description());
-						if(g != vg.end()) {
+						const config::child_itors vg = gamelist->child_range("game");
+						const config::child_list::iterator g = std::find(vg.first,vg.second,i->description());
+						if(g != vg.second) {
+							const size_t index = g - vg.first;
 							delete *g;
-							vg.erase(g);
+							gamelist->remove_child("game",index);
 						}
 						
 						i->disconnect();

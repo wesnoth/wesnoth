@@ -59,7 +59,7 @@ slider& slider::operator=(const slider& o)
 
 int slider::height(display& disp)
 {
-	SDL_Surface* const image = image::get_image(slider_image,image::UNSCALED);
+	const scoped_sdl_surface image(image::get_image(slider_image,image::UNSCALED));
 	if(image != NULL)
 		return image->h;
 	else
@@ -70,7 +70,7 @@ void slider::draw()
 {
 	drawn_ = true;
 
-	SDL_Surface* const image = image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED);
+	const scoped_sdl_surface image(image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED));
 	if(image == NULL || buffer_ == NULL)
 		return;
 
@@ -96,7 +96,7 @@ void slider::draw()
 
 double slider::process(int mousex, int mousey, bool button)
 {
-	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img == NULL)
 		return 0.0;
 
@@ -148,7 +148,7 @@ double slider::process(int mousex, int mousey, bool button)
 SDL_Rect slider::slider_area() const
 {
 	static const SDL_Rect default_value = {0,0,0,0};
-	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img == NULL)
 		return default_value;
 
@@ -164,7 +164,7 @@ SDL_Rect slider::slider_area() const
 
 void slider::background_changed()
 {
-	SDL_Surface* const img = image::get_image(slider_image,image::UNSCALED);
+	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img != NULL) {
 		area_.h = img->h;
 		buffer_.assign(get_surface_portion(disp_->video().getSurface(),area_));

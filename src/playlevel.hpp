@@ -47,6 +47,6 @@ struct end_level_exception {
 LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
-						std::vector<config*>& story);
+						const std::vector<config*>& story);
 
 #endif

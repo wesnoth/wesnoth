@@ -171,9 +171,7 @@ int turn_info::send_data(int first_command)
 	if(network::nconnections() > 0 && (undo_stack_.empty() || end_turn_) &&
 	   first_command < recorder.ncommands()) {
 		config cfg;
-		cfg.children["turn"].push_back(
-		        new config(recorder.get_data_range(first_command,
-		                                          recorder.ncommands())));
+		cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));
 		network::send_data(cfg);
 		return recorder.ncommands();
 	} else {
@@ -932,8 +930,7 @@ void turn_info::terrain_table()
 	}
 
 	const std::vector<unit> units_list(items.size(),un->second);
-	SDL_Surface* const unit_image =
-      image::get_image(un->second.type().image_profile(),image::UNSCALED);
+	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(),image::UNSCALED));
 	gui::show_dialog(gui_,unit_image,un->second.type().language_name(),
 					 string_table["terrain_info"],
 					 gui::MESSAGE,&items,&units_list);
@@ -972,8 +969,7 @@ void turn_info::attack_resistance()
 	}
 
 	const std::vector<unit> units_list(items.size(), un->second);
-	SDL_Surface* const unit_image =
-      image::get_image(un->second.type().image_profile(),image::UNSCALED);
+	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(),image::UNSCALED));
 	gui::show_dialog(gui_,unit_image,
 	                 un->second.type().language_name(),
 					 string_table["unit_resistance_table"],
@@ -995,8 +991,7 @@ void turn_info::unit_description()
 	options.push_back(string_table["attack_resistance"]);
 	options.push_back(string_table["close_window"]);
 
-	SDL_Surface* const unit_image = image::get_image(
-	           un->second.type().image_profile(), image::UNSCALED);
+	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(), image::UNSCALED));
 
 	const int res = gui::show_dialog(gui_,unit_image,
                                      un->second.type().language_name(),

@@ -251,11 +251,10 @@ void drawbar(display& disp)
 	const std::string RightSideBot = "misc/rightside-bottom.png";
 	const std::string RightSideTop = "misc/rightside-editor.png";
 	SDL_Surface* const screen = disp.video().getSurface();
-	SDL_Surface* image_top = image::get_image(RightSideTop,image::UNSCALED);
+	const scoped_sdl_surface image_top(image::get_image(RightSideTop,image::UNSCALED));
 
-	SDL_Surface* image = image_top != NULL ?
-	 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h)
-	    : NULL;
+	const scoped_sdl_surface image(image_top != NULL ?
+	 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h) : NULL);
 	if(image_top != NULL && image != NULL && image_top->h < screen->h) {
 		SDL_Rect dstrect;
 		dstrect.x = disp.mapx();
@@ -309,7 +308,7 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 
 	for(int counter = starting; counter < ending; counter++){
 		const gamemap::TERRAIN terrain = terrains[counter];
-		SDL_Surface* const image = image::get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png");
+		const scoped_sdl_surface image(image::get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png"));
 
 		if(image == NULL) {
 			std::cerr << "image for terrain '" << counter << "' not found\n";

@@ -1,0 +1,198 @@
+ Kontroller
+
+
+
+    * Piltaster: Panorer
+
+    * Venstreklikk: Velg enhet/flytt enhet
+
+    * Høyreklikk: Hovedmeny, avbryt handling
+
+    * Escape: Avslutt spill
+
+    * z: Zoom inn
+
+    * x: Zoom ut
+
+    * c: Standard zoom-nivå
+
+    * u: Angre siste trekk (bare deterministiske flytt kan omgjøres)
+
+    * r: Gjenta trekk
+
+    * n: Gå gjennom alle enheter som kan flytte
+
+    * l: Gå til lederenhet
+
+    * space: Avslutt runden for denne enheten, og gå videre til neste enhet som kan flytte
+
+    * ctrl-f: Bytt mellom fullskjerm- og vindumodus
+
+    * ctrl-r: Rekrutter enhet
+
+    * ctrl-c: Tilbakekall enhet
+
+    * ctrl-a: Skru på/av akselerert spillmodus
+
+    * d: Beskriv valgte enhet
+
+    * ctrl-d: Studer den valgte enhets motstand mot angrep
+
+    * ctrl-t: Studer hvordan den valgte enhet takler forskjellige typer terreng
+
+    * ctrl-s: Lagre spill
+
+
+
+
+
+
+
+Lyskuler
+
+
+
+Hvordan kan jeg se om en enhet er venn eller fiende? På toppen av energiindikatoren som finnes ved siden av hver enhet er det en lyskule. Denne lyskulen forteller:
+
+
+
+    * grønn hvis du kontrollerer enheten og den ikke har flyttet denne runden
+
+    * gul hvis du kontrollerer enheten og den har flyttet denne runden, men fremdeles kan flytte videre
+
+    * rød hvis du kontrollerer denne enheten og den har brukt alle sine flytt denne runden
+
+    * blå hvis enheten tilhører en alliert, men ikke er kontrollert av deg
+
+    * svart hvis enheten er fiendtlig
+
+
+
+
+
+
+
+Spillbeskrivelse
+
+
+
+Spillet skjer gjennom en serie kamper, eller scenario. Hvert scenario setter dine tropper opp mot en motstander. Hver side begynner med en leder i hver sin festning.
+
+
+
+Gull
+
+
+
+Hver side blir gitt et beløp gull i begynnelsen, og mottar så 2 gullstykker per runde, pluss 2 gullstykker for hver landsby som kontrolleres. Hver side må betale 1 gullstykke i underhold hver runde per enhet på slagmarken.
+
+
+
+Rekruttering og tilbakekalling
+
+
+
+Enheter kan rekrutteres for et gitt beløp, så lenge lederen er i sin festning, og det er minst en ledig plass i borgen der lederen befinner seg. Høyreklikk og velg Rekrutter for å rekruttere nye tropper.
+
+
+
+Når du er ferdig med et scenario, vil alle enheter som har overlevd være tilgjengelige i neste scenario. Høyreklikk og velg Tilbakekall for å re-rekruttere enheter fra tidligere scenario. Tilbakekalling koster 20 gullstykker.
+
+
+
+Du kan først velge en ledig plass i borgen og så rekruttere. Slik kan du velge på hvilken plass den nyrekrutterte enheten skal dukke opp. Dette virker både for rekruttering og tilbakekalling.
+
+
+
+Enhetsspesialiteter
+
+
+
+Enhetsspesialiteter er beskrevet under Beskrivelse i hovedmenyen.
+
+
+
+Flytting
+
+
+
+Når en enhet blir valgt (ved venstreklikk), lyser alle plassene den kan bevege seg opp, mens stedene den ikke kan bevege seg til er grå. Du kan så klikke på den neste plassen du vil flytte enheten til. Hvis du flytter til en landsby som enten er nøytral eller kontrollert av en motstander, vil du ta kontroll over den. Hvis du velger å gå et sted du ikke kan nå denne runden, vil enheten gå over i 'gå-til' modus og fortsette mot sin destinasjon hver runde. Du kan angre gå-til flytt i begynnelsen av din runde. Gå-til modus kan avsluttes ved å velge enheten og så velge en ny destinasjon.
+
+
+
+Kamp
+
+
+
+Hvis du flytter ved siden av en motstander, kan du angripe. Klikk på enheten din som er ved siden av en motstander, og klikk så på motstanderen du ønsker å angripe. Hver enhet har ett eller flere våpen de kan angripe med. Noen våpen, for eksempel sverd, er nærkampvåpen, mens andre, for eksempel buer, er avstandsvåpen.
+
+
+
+Hvis du velger nærkamp, vil fienden kunne slå tilbake med sitt nærkampvåpen. Hvis du angriper med et avstandsvåpen, vil fienden eventuelt kunne slå tilbake med sitt avstandsvåpen, hvis han har et i sitt arsenal.
+
+
+
+Forskjellige typer angrep gjør forskjellig grad av skade, og et visst antall utfall kan gjøres med hvert våpen. For eksempel gjør en Alvisk Kriger 5 poeng skade med sitt sverd hver gang han treffer, og han kan gjøre 4 utfall med sverdet i et angrep. Dette blir betegnet med 5-4.
+
+
+
+Hver enhet har en viss sjanse for å bli truffet, basert på hvilken type terreng de er i. Enheter i landsbyer og i borger har lavere sjanse for å bli truffet. Alver i skog har liten sjanse for å bli truffet.
+
+
+
+Holdning
+
+
+
+Hver enhet har en holdning: lovlydig, nøytral eller kaotisk. Holdningen har betydning for hvordan de presterer til forskjellige tider av dagen. Den følgende tabellen illustrerer dagens forskjellige tider:
+
+
+
+
+
+
+
+ | runde |      tid      |
+
+ -------------------------
+
+ |   1   |  morgengry    |
+
+ |   2   |  formiddag    |
+
+ |   3   |  ettermiddag  |
+
+ |   4   |  skumring     |
+
+ |   5   |  kveld        |
+
+ |   6   |  natt         |
+
+
+
+
+
+
+
+Lovlydige enheter gjør 25% mer skade om dagen, og 25% mindre om natten. Kaotiske enheter gjør 25% mer skade om natten, og 25% mindre om dagen. Nøytrale enheter blir ikke påvirket av dag/natt syklusen.
+
+
+
+Helbredelse
+
+
+
+Skadde enheter i landsbyer vil heles 8 livspoeng hver runde. Skadde enheter ved siden av enheter med 'helbrede' eller 'kurere' egenskaper vil også bli helbredet. Enheter ved siden av enheter som har 'helbrede' som egenskap vil heles maksimum 4 livspoeng per runde, og 8 livspoeng per runde for enheter som har 'kurere' som egenskap. Jo flere enheter det er rundt en helbredende enhet, jo mindre vil hver bli helbredet.
+
+
+
+Erfaring
+
+
+
+Enheter får erfaring gjennom kamp, og ved å oppnå nok erfaring vil de avansere et nivå, og dermed bli mektigere.
+
+
+
+/* $Id$ */
+

@@ -24,8 +24,7 @@ RESULT enter(display& disp, config& game_data)
 
 	gui::textbox message_entry(disp,500);
 
-	SDL_Surface* const background = image::get_image("misc/lobby.png",
-	                                                  image::UNSCALED);
+	const scoped_sdl_surface background(image::get_image("misc/lobby.png",image::UNSCALED));
 
 	update_whole_screen();
 

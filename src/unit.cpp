@@ -99,6 +99,9 @@ unit::unit(const unit_type* t, const unit& u) :
 {
 	//apply modifications etc, refresh the unit
 	new_level();
+
+	//generate traits for the unit if it doesn't already have some
+	generate_traits();
 }
 
 void unit::generate_traits()
@@ -393,13 +396,11 @@ bool unit::has_flag(const std::string& flag) const
 
 void unit::read(game_data& data, const config& cfg)
 {
-	std::map<std::string,unit_type>::iterator i = data.unit_types.find(
-					                                     cfg["type"]);
+	std::map<std::string,unit_type>::iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
 		type_ = &i->second;
 	else
-		throw gamestatus::load_game_failed("Unit not found: '"
-		                                   + cfg["type"] + "'");
+		throw gamestatus::load_game_failed("Unit not found: '" + cfg["type"] + "'" + " : " + cfg.write() + "'\n");
 
 	assert(type_ != NULL);
 
@@ -501,7 +502,7 @@ void unit::write(config& cfg) const
 		status_flags[*st] = "on";
 	}
 
-	cfg.children["status"].push_back(new config(status_flags));
+	cfg.add_child("status",status_flags);
 
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;
@@ -511,7 +512,7 @@ void unit::write(config& cfg) const
 	if(can_recruit())
 		cfg["canrecruit"] = "1";
 
-	cfg.children["modifications"].push_back(new config(modifications_));
+	cfg.add_child("modifications",modifications_);
 
 	cfg["facing"] = facingLeft_ ? "normal" : "reverse";
 
@@ -670,7 +671,7 @@ void unit::add_modification(const std::string& type,
 	const std::string& span = mod["duration"];
 
 	if(no_add == false && (span.empty() || span == "forever"))
-		modifications_.children[type].push_back(new config(mod));
+		modifications_.add_child(type,mod);
 
 	for(config::const_child_itors i = mod.child_range("effect");
 	    i.first != i.second; ++i.first) {
@@ -768,9 +769,8 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 	for(int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
-		const std::vector<config*>& mods = modifications_.children[mod];
-		for(std::vector<config*>::const_iterator j = mods.begin();
-		    j != mods.end(); ++j) {
+		const config::child_list& mods = modifications_.get_children(mod);
+		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
 		}

@@ -51,7 +51,7 @@ SDL_Surface* get_tinted(const std::string& filename, TINT tint)
 	if(itor != images.end())
 		return itor->second;
 
-	SDL_Surface* const base = image::get_image(filename,image::SCALED);
+	scoped_sdl_surface base(image::get_image(filename,image::SCALED));
 	if(base == NULL)
 		return NULL;
 
@@ -135,7 +135,7 @@ manager::~manager()
 void set_wm_icon()
 {
 	//this code seems to only display the top part of the icon in Windows XP
-	SDL_Surface* const icon = get_image("icon.png",UNSCALED);
+	scoped_sdl_surface icon(get_image("icon.png",UNSCALED));
 	if(icon != NULL) {
 		std::cerr << "setting icon...\n";
 		::SDL_WM_SetIcon(icon,NULL);
@@ -174,84 +174,92 @@ void set_zoom(double amount)
 
 SDL_Surface* get_image(const std::string& filename,TYPE type)
 {
+	SDL_Surface* result = NULL;
 	if(type == GREYED) {
-		return get_tinted(filename,GREY_IMAGE);
+		result = get_tinted(filename,GREY_IMAGE);
 	} else if(type == BRIGHTENED) {
-		return get_tinted(filename,BRIGHTEN_IMAGE);
+		result = get_tinted(filename,BRIGHTEN_IMAGE);
 	} else if(type == FOGGED) {
 		const image_map::iterator i = foggedImages_.find(filename);
-		if(i != foggedImages_.end())
-			return i->second;
+		if(i != foggedImages_.end()) {
+			result = i->second;
+			sdl_add_ref(result);
+			return result;
+		}
 
-		SDL_Surface* const surf = get_image(filename,SCALED);
+		const scoped_sdl_surface surf(get_image(filename,SCALED));
 		if(surf == NULL)
 			return NULL;
 
-		SDL_Surface* const image = scale_surface(surf,surf->w,surf->h);
-		adjust_surface_colour(image,-50,-50,-50);
-		foggedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,
-		                                                         image));
-		return image;
-	}
+		result = scale_surface(surf,surf->w,surf->h);
+		adjust_surface_colour(result,-50,-50,-50);
+		foggedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+	} else {
 
-	image_map::iterator i;
+		image_map::iterator i;
 
-	if(type == SCALED) {
-		i = scaledImages_.find(filename);
-		if(i != scaledImages_.end())
-			return i->second;
-	}
-
-	i = images_.find(filename);
-
-	if(i == images_.end()) {
-		const std::string images_path = "images/";
-		const std::string images_filename = images_path + filename;
-		SDL_Surface* surf = NULL;
-
-		if(game_config::path.empty() == false) {
-			const std::string& fullpath = game_config::path + "/" +
-			                              images_filename;
-			surf = IMG_Load(fullpath.c_str());
+		if(type == SCALED) {
+			i = scaledImages_.find(filename);
+			if(i != scaledImages_.end()) {
+				result = i->second;
+				sdl_add_ref(result);
+				return result;
+			}
 		}
 
-		if(surf == NULL)
-			surf = IMG_Load(images_filename.c_str());
+		i = images_.find(filename);
 
-		if(surf == NULL) {
-			images_.insert(std::pair<std::string,SDL_Surface*>(filename,NULL));
+		if(i == images_.end()) {
+			const std::string images_path = "images/";
+			const std::string images_filename = images_path + filename;
+			SDL_Surface* surf = NULL;
+
+			if(game_config::path.empty() == false) {
+				const std::string& fullpath = game_config::path + "/" +
+				                              images_filename;
+				surf = IMG_Load(fullpath.c_str());
+			}
+
+			if(surf == NULL) {
+				surf = IMG_Load(images_filename.c_str());
+			}
+
+			if(surf == NULL) {
+				images_.insert(std::pair<std::string,SDL_Surface*>(filename,NULL));
+				return NULL;
+			}
+
+			if(pixel_format != NULL) {
+				SDL_Surface* const conv = SDL_ConvertSurface(surf,
+								                     pixel_format,SDL_SWSURFACE);
+				SDL_FreeSurface(surf);
+				surf = conv;
+			}
+
+			i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf)).first;
+		}
+
+		if(i->second == NULL)
 			return NULL;
-		}
 
-		if(pixel_format != NULL) {
-			SDL_Surface* const conv = SDL_ConvertSurface(surf,
-							                     pixel_format,SDL_SWSURFACE);
-			SDL_FreeSurface(surf);
-			surf = conv;
-		}
+		if(type == UNSCALED) {
+			result = i->second;
+		} else {
 
-		i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf))
-				               .first;
+			const int z = static_cast<int>(zoom);
+			result = scale_surface(i->second,z,z);
+
+			if(result == NULL)
+				return NULL;
+
+			adjust_surface_colour(result,red_adjust,green_adjust,blue_adjust);
+
+			scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+		}
 	}
 
-	if(i->second == NULL)
-		return NULL;
-
-	if(type == UNSCALED) {
-		return i->second;
-	}
-
-	const int z = static_cast<int>(zoom);
-	SDL_Surface* const new_surface = scale_surface(i->second,z,z);
-
-	if(new_surface == NULL)
-		return NULL;
-
-	adjust_surface_colour(new_surface,red_adjust,green_adjust,blue_adjust);
-
-	scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,
-								                             new_surface));
-	return new_surface;
+	sdl_add_ref(result);
+	return result;
 }
 
 SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
@@ -260,8 +268,15 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	if(surf != NULL && (size_t(surf->w) != x || size_t(surf->h) != y)) {
 		SDL_Surface* const new_image = scale_surface(surf,x,y);
 		images_.erase(filename);
+
+		//free surf twice: once because calling get_image adds a reference.
+		//again because we also want to remove the cache reference, since
+		//we're removing it from the cache
 		SDL_FreeSurface(surf);
+		SDL_FreeSurface(surf);
+
 		images_[filename] = new_image;
+		sdl_add_ref(new_image);
 		return new_image;
 	}
 
@@ -296,8 +311,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 					cache_map::iterator i = cache.find(terrain);
 
 					if(i == cache.end()) {
-						SDL_Surface* const tile =
-						   get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png");
+						scoped_sdl_surface tile(get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png"));
 
 						if(tile == NULL) {
 							std::cerr << "Could not get image for terrrain '"

@@ -1,13 +1,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.57)
-AC_INIT(wesnoth, 0.5, davidnwhite@optusnet.com.au, Battle for Wesnoth)
+AC_INIT(wesnoth, 0.7, davidnwhite@optusnet.com.au, Battle for Wesnoth)
 
-AC_REVISION($Version: 0.5$)
+AC_REVISION($Version: 0.7$)
 PACKAGE=wesnoth
 MAJOR_VERSION="0"
 MINOR_VERSION="6"
-MICRO_VERSION=""
+MICRO_VERSION="1RC1"
 
 if test "x$MICRO_VERSION" = "x"; then
         VERSION=$MAJOR_VERSION.$MINOR_VERSION
@@ -40,14 +40,37 @@ fi
 SDL_LIBS=`$SDL_CONFIG --libs`
 OLD_LIBS=$LIBS
 LIBS="$LIBS $SDL_LIBS"
-AC_CHECK_LIB([SDL], [SDL_Init])
-AC_CHECK_LIB([SDL_image], [IMG_Load], SDL_IMAGE_LIBS=-lSDL_image)
-AC_CHECK_LIB([SDL_mixer], [Mix_OpenAudio], SDL_MIXER_LIBS=-lSDL_mixer)
-AC_CHECK_LIB([SDL_net], [SDLNet_Init], SDL_NET_LIBS=-lSDL_net)
-AC_CHECK_LIB([SDL_ttf], [TTF_OpenFont], SDL_TTF_LIBS=-lSDL_ttf)
+
+# There's no need for this, $SDL_CONFIG comes with libsdl and
+# it doesn't find it in FreeBSD
+# AC_CHECK_LIB([SDL], [SDL_Init])
+
+AC_CHECK_LIB([SDL_image],
+	     [IMG_Load],
+	     [SDL_IMAGE_LIBS=-lSDL_image],
+	     [AC_MSG_ERROR([*** SDL_image lib not found! Get SDL_image from
+			   http://www.libsdl.org/projects/SDL_image/index.html])])
+	     
+AC_CHECK_LIB([SDL_mixer],
+	     [Mix_OpenAudio],
+	     [SDL_MIXER_LIBS=-lSDL_mixer],
+	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
+			   http://www.libsdl.org/projects/SDL_mixer/index.html])])
+	     
+AC_CHECK_LIB([SDL_net],
+	     [SDLNet_Init],
+	     [SDL_NET_LIBS=-lSDL_net],
+	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
+			   http://www.libsdl.org/projects/SDL_net/index.html])])
+
+AC_CHECK_LIB([SDL_ttf],
+	     [TTF_OpenFont],
+	     [SDL_TTF_LIBS=-lSDL_ttf],
+	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
+			   http://www.libsdl.org/projects/SDL_ttf/index.html])])
+
 LIBS=$OLD_LIBS
 
-echo "$SDL_LIBS"
 AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
@@ -65,12 +88,38 @@ SDL_CFLAGS=`$SDL_CONFIG --cflags`
 CPPFLAGS="$CFLAGS $SDL_CFLAGS"
 CXXFLAGS="$CFLAGS $SDL_CFLAGS"
 
-AC_CHECK_HEADERS([stdlib.h unistd.h SDL_image.h SDL_mixer.h SDL_net.h SDL_ttf.h])
-	
+
+AC_CHECK_HEADER([SDL.h],
+		[],
+		[AC_MSG_ERROR([*** SDL include files not found!
+		 You should install SDL development package.])])
+
+AC_CHECK_HEADER([SDL_image.h],
+		[],
+		[AC_MSG_ERROR([*** SDL_image include files not found!
+		 You should install development package.])])
+		
+AC_CHECK_HEADER([SDL_mixer.h],
+		[],
+		[AC_MSG_ERROR([*** SDL_mixer include files not found!
+		 You should install development package.])])
+		
+AC_CHECK_HEADER([SDL_net.h],
+		[],
+		[AC_MSG_ERROR([*** SDL_net include files not found!
+		 You should install development package.])])
+		
+AC_CHECK_HEADER([SDL_ttf.h],
+		[],
+		[AC_MSG_ERROR([*** SDL_ttf include files not found!
+		 You should install development package.])])
+		
 CPPFLAGS=$OLD_CPPFLAGS
 CXXFLAGS=$OLD_CXXFLAGS
 
 AC_SUBST([SDL_CFLAGS])
+
+AC_CHECK_HEADERS([stdlib.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL
@@ -87,13 +136,25 @@ AC_FUNC_STRFTIME
 AC_CHECK_FUNCS([floor socket strtoul])
 
 AC_ARG_ENABLE(debug,
-	      [  --debug               Enable debug in wesnoth],
-	      CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3")
-
-AC_ARG_ENABLE(debug,
 	      [  --enable-debug        Enable debug in wesnoth],
 	      CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3")
 
+AC_ARG_ENABLE(datadir-name,
+	      [  --datadir-name[[=dir]]    Change name of data directory. Default with this option: wesnoth-data], 
+	      [case "${enableval}" in
+	       yes)
+			DATADIR="wesnoth-data"
+			;;
+		no)
+			DATADIR=$PACKAGE
+			;;
+		*)
+			DATADIR="${enableval}"
+			;;
+		esac])
+
+AC_SUBST(DATADIR)
+		
 # Default behaviour
 server=no 
 editor=no

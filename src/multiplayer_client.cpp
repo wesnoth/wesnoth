@@ -59,10 +59,9 @@ GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
 			                   gui::OK_CANCEL,NULL,NULL,"Name:",&name);
 			if(res == 0) {
 				config response;
-				config create_game;
+				config& create_game = response.add_child("create_game");;
 				create_game["name"] = name;
-				response.children["create_game"].push_back(
-				                                    new config(create_game));
+
 				network::send_data(response);
 
 				return CREATE_GAME;
@@ -75,9 +74,10 @@ GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
 			assert(i.second - i.first > int(index));
 			const std::string& id = (**(i.first+index))["id"];
 			
-			config response, join;
+			config response;
+			config& join = response.add_child("join");
 			join["id"] = id;
-			response.children["join"].push_back(new config(join));
+			
 			network::send_data(response);
 
 			return JOIN_GAME;
@@ -271,18 +271,16 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		std::vector<bool> changes_allowed;
 		choices.push_back(string_table["observer"]);
     
-		std::vector<config*>& sides_list = sides.children["side"];
-		for(std::vector<config*>::iterator s = sides_list.begin();
-		    s != sides_list.end(); ++s) {
-			if((*s)->values["controller"] == "network" &&
-			   (*s)->values["taken"] != "yes") {
+		const config::child_list& sides_list = sides.get_children("side");
+		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
+			if((**s)["controller"] == "network" &&
+			   (**s)["taken"] != "yes") {
 				choice_map[choices.size()] = 1 + s - sides_list.begin();
-				choices.push_back((*s)->values["name"] + " - " +
-				                  (*s)->values["type"]);
+				choices.push_back((**s)["name"] + " - " + (**s)["type"]);
 			}
 
-			race_names.push_back((*s)->values["name"]);
-			changes_allowed.push_back((*s)->values["allow_changes"] != "no");
+			race_names.push_back((**s)["name"]);
+			changes_allowed.push_back((**s)["allow_changes"] != "no");
 		}
     
 		const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
@@ -306,8 +304,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			response["side"] = stream.str();
 			response["description"] = preferences::login();
 
-			const std::vector<config*>& possible_sides =
-			                            cfg.children["multiplayer_side"];
+			const config::child_list& possible_sides = cfg.get_children("multiplayer_side");
 			if(possible_sides.empty()) {
 				std::cerr << "no multiplayer sides found\n";
 				return;
@@ -316,7 +313,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			size_t choice = 0;
 
 			std::vector<std::string> choices;
-			for(std::vector<config*>::const_iterator side =
+			for(config::child_list::const_iterator side =
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
 				choices.push_back((**side)["name"]);
 
@@ -361,14 +358,12 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		//we want to make the network/human players look right from our
 		//perspective
 		{
-			std::vector<config*>& sides_list = sides.children["side"];
-			for(std::vector<config*>::iterator side = sides_list.begin();
-			    side != sides_list.end(); ++side) {
-				string_map& values = (*side)->values;
+			const config::child_list& sides_list = sides.get_children("side");
+			for(config::child_list::const_iterator side = sides_list.begin(); side != sides_list.end(); ++side) {
 				if(team_num-1 == side - sides_list.begin())
-					values["controller"] = preferences::client_type();
+					(**side)["controller"] = preferences::client_type();
 				else
-					values["controller"] = "network";
+					(**side)["controller"] = "network";
 			}
 		}
     
@@ -394,7 +389,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				}
 			}
     
-			sides.children["replay"].clear();
+			sides.clear_children("replay");
 		}
     
 		std::cerr << "starting game\n";

@@ -38,7 +38,7 @@ void show_about(display& disp)
 	                                 0,0,0,1.0,disp.video().getSurface());
 	update_whole_screen();
 
-	SDL_Surface* const map_image = image::get_image("misc/map.png",image::UNSCALED);
+	const scoped_sdl_surface map_image(image::get_image("misc/map.png",image::UNSCALED));
 	SDL_Rect map_rect;
 	map_rect.x = disp.x()/2 - map_image->w/2;
 	map_rect.y = disp.y()/2 - map_image->h/2;

@@ -58,7 +58,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	config* scenario = game_config.find_child(type,"id",state.scenario);
 	while(scenario != NULL) {
 
-		std::vector<config*>& story = scenario->children["story"];
+		const config::child_list& story = scenario->get_children("story");
 		const std::string current_scenario = state.scenario;
 
 		try {
@@ -205,7 +205,7 @@ int play_game(int argc, char** argv)
 	//clear game_cfg so it doesn't take up memory
 	std::string().swap(game_cfg);
 
-	const std::vector<config*>& units = game_config.children["units"];
+	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
 		std::cerr << "Could not find units configuration\n";
 		std::cerr << game_config.write();
@@ -472,7 +472,7 @@ int play_game(int argc, char** argv)
 		//make a new game config item based on the difficulty level
 		config game_config(preprocess_file("data/game.cfg", &defines_map));
 
-		const std::vector<config*>& units = game_config.children["units"];
+		const config::child_list& units = game_config.get_children("units");
 		if(units.empty()) {
 			std::cerr << "Could not find units configuration\n";
 			std::cerr << game_config.write();

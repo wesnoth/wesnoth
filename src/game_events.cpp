@@ -31,13 +31,13 @@ namespace game_events {
 
 bool conditional_passed(game_state& state_of_game,
                         const std::map<gamemap::location,unit>* units,
-                        config& cond)
+                        const config& cond)
 {
 	//if the if statement requires we have a certain unit, then
 	//check for that.
-	std::vector<config*>& have_unit = cond.children["have_unit"];
+	const config::child_list& have_unit = cond.get_children("have_unit");
 
-	for(std::vector<config*>::iterator u = have_unit.begin();
+	for(config::child_list::const_iterator u = have_unit.begin();
 	    u != have_unit.end(); ++u) {
 
 		if(units == NULL)
@@ -57,19 +57,23 @@ bool conditional_passed(game_state& state_of_game,
 
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
-	std::vector<config*>& variables = cond.children["variable"];
-	for(std::vector<config*>::iterator var = variables.begin();
+	const config::child_list& variables = cond.get_children("variable");
+	for(config::child_list::const_iterator var = variables.begin();
 	    var != variables.end(); ++var) {
-		string_map& values = (*var)->values;
+		const string_map& values = (*var)->values;
 		string_map& vars = state_of_game.variables;
-		const std::string& name = values["name"];
+
+		string_map::const_iterator itor = values.find("name");
+		if(itor == values.end())
+			return false;
+
+		const std::string& name = itor->second;
 
 		//if we don't have a record of the variable, then the statement
 		//is not true, unless it's a not equals statement, in which it's
 		//automatically true
 		if(vars.find(name) == vars.end()) {
-			if(values.find("not_equals") == values.end() &&
-			   values.find("numerical_not_equals") == values.end()) {
+			if(values.count("not_equals") == 0 && values.count("numerical_not_equals") == 0) {
 				return false;
 			}
 
@@ -78,8 +82,6 @@ bool conditional_passed(game_state& state_of_game,
 
 		const std::string& value = vars[name];
 		const double num_value = atof(value.c_str());
-
-		string_map::iterator itor;
 
 		itor = values.find("equals");
 		if(itor != values.end() && itor->second != value) {
@@ -167,12 +169,12 @@ public:
 	void disable() { disabled_ = true; }
 	bool disabled() const { return disabled_; }
 
-	std::vector<config*>& first_arg_filters() {
-		return cfg_->children["filter"];
+	const config::child_list& first_arg_filters() {
+		return cfg_->get_children("filter");
 	}
 
-	std::vector<config*>& second_arg_filters() {
-		return cfg_->children["filter_second"];
+	const config::child_list& second_arg_filters() {
+		return cfg_->get_children("filter_second");
 	}
 
 	void handle_event(const queued_event& event_info, const config* cfg=NULL);
@@ -225,7 +227,7 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 	if(cfg == NULL)
 		cfg = cfg_;
 
-	std::vector<config*>::const_iterator i;
+	config::child_list::const_iterator i;
 
 	//sub commands that need to be handled in a guaranteed ordering
 	const config::child_list& commands = cfg->get_children("command");
@@ -439,8 +441,8 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 
 		//if the if statement passed, then execute all 'then' statements,
 		//otherwise execute 'else' statements
-		const std::vector<config*>& commands = (*i)->get_children(type);
-		for(std::vector<config*>::const_iterator cmd = commands.begin();
+		const config::child_list& commands = (*i)->get_children(type);
+		for(config::child_list::const_iterator cmd = commands.begin();
 		    cmd != commands.end(); ++cmd) {
 			handle_event(event_info,*cmd);
 		}
@@ -617,10 +619,10 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 				text = values["cannot_use_message"];
 		}
 
+		scoped_sdl_surface surface(NULL);
 
-		SDL_Surface* surface = NULL;
 		if(image.empty() == false) {
-			surface = image::get_image(image,image::UNSCALED);
+			surface.assign(image::get_image(image,image::UNSCALED));
 		}
 
 		gui::show_dialog(*screen,surface,caption,text);
@@ -685,21 +687,21 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 		}
 
 		std::vector<std::string> options;
-		std::vector<std::vector<config*>*> option_events;
+		std::vector<config::const_child_itors> option_events;
 
 		std::cerr << "building menu items...\n";
 
-		const std::vector<config*>& menu_items = (*i)->get_children("option");
-		for(std::vector<config*>::const_iterator mi = menu_items.begin();
+		const config::child_list& menu_items = (*i)->get_children("option");
+		for(config::child_list::const_iterator mi = menu_items.begin();
 		    mi != menu_items.end(); ++mi) {
 			const std::string& msg = translate_string_default((**mi)["id"],(**mi)["message"]);
 			options.push_back(msg);
-			option_events.push_back(&(*mi)->children["command"]);
+			option_events.push_back((*mi)->child_range("command"));
 		}
 
-		SDL_Surface* surface = NULL;
+		scoped_sdl_surface surface(NULL);
 		if(image.empty() == false) {
-			surface = image::get_image(image,image::UNSCALED);
+			surface.assign(image::get_image(image,image::UNSCALED));
 		}
 
 		const std::string& lang_message = string_table[id];
@@ -709,8 +711,8 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 		           options.empty() ? NULL : &options);
 
 		if(screen->update_locked() && options.empty() == false) {
-			config* const cfg = recorder.get_next_action();
-			if(cfg == NULL || cfg->children["choose"].empty()) {
+			const config* const cfg = recorder.get_next_action();
+			if(cfg == NULL || cfg->get_children("choose").empty()) {
 				std::cerr << "choice expected but none found\n";
 				throw replay::error();
 			}
@@ -719,7 +721,7 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 				option_chosen = 0;
 			}
 
-			const std::string& val = cfg->children["choose"].front()->values["value"];
+			const std::string& val = (*(cfg->get_children("choose").front()))["value"];
 			option_chosen = atol(val.c_str());
 
 		} else if(options.empty() == false) {
@@ -728,10 +730,10 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 
 		if(options.empty() == false) {
 			assert(size_t(option_chosen) < menu_items.size());
-			const std::vector<config*>& events = *option_events[option_chosen];
-			for(std::vector<config*>::const_iterator ev = events.begin();
-			    ev != events.end(); ++ev) {
-				handle_event(event_info,*ev);
+			
+			for(config::const_child_itors events = option_events[option_chosen];
+			    events.first != events.second; ++events.first) {
+				handle_event(event_info,*events.first);
 			}
 		}
 	}
@@ -856,8 +858,8 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	std::map<gamemap::location,unit>::iterator unit1 = units->find(ev.loc1);
 	std::map<gamemap::location,unit>::iterator unit2 = units->find(ev.loc2);
 
-	std::vector<config*>& first_filters = handler.first_arg_filters();
-	for(std::vector<config*>::iterator ffi = first_filters.begin();
+	const config::child_list& first_filters = handler.first_arg_filters();
+	for(config::child_list::const_iterator ffi = first_filters.begin();
 	    ffi != first_filters.end(); ++ffi) {
 		if(!filter_loc(ev.loc1,**ffi))
 			return false;
@@ -867,8 +869,8 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		}
 	}
 
-	std::vector<config*>& second_filters = handler.second_arg_filters();
-	for(std::vector<config*>::iterator sfi = second_filters.begin();
+	const config::child_list& second_filters = handler.second_arg_filters();
+	for(config::child_list::const_iterator sfi = second_filters.begin();
 	    sfi != second_filters.end(); ++sfi) {
 		if(!filter_loc(ev.loc2,**sfi))
 			return false;
@@ -896,8 +898,8 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, game_data& game_data_)
 {
-	std::vector<config*>& events_list = cfg.children["event"];
-	for(std::vector<config*>::iterator i = events_list.begin();
+	const config::child_list& events_list = cfg.get_children("event");
+	for(config::child_list::const_iterator i = events_list.begin();
 	    i != events_list.end(); ++i) {
 		event_handler new_handler(*i);
 		events_map.insert(std::pair<std::string,event_handler>(

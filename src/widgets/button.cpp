@@ -31,27 +31,26 @@ button::button(display& disp, const std::string& label, button::TYPE type,
                           x_(0), y_(0), button_(true),
                           state_(UNINIT), type_(type)
 {
-	SDL_Surface* button_image =
-	       image::get_image("buttons/button.png",image::UNSCALED);
-	SDL_Surface* pressed_image =
-	       image::get_image("buttons/button-pressed.png", image::UNSCALED);
-	SDL_Surface* active_image =
-	       image::get_image("buttons/button-active.png", image::UNSCALED);
+	scoped_sdl_surface button_image(image::get_image("buttons/button.png",image::UNSCALED));
+	scoped_sdl_surface pressed_image(image::get_image("buttons/button-pressed.png", image::UNSCALED));
+	scoped_sdl_surface active_image(image::get_image("buttons/button-active.png", image::UNSCALED));
 
 	if(!button_image_name.empty()) {
-		button_image = image::get_image("buttons/" + button_image_name +
-		                             "-button.png", image::UNSCALED);
-		pressed_image = image::get_image("buttons/" + button_image_name +
-		                              "-button-pressed.png",image::UNSCALED);
-		active_image = image::get_image("buttons/" + button_image_name +
-		                              "-button-active.png",image::UNSCALED);
+		button_image.assign(image::get_image("buttons/" + button_image_name +
+		                             "-button.png", image::UNSCALED));
+		pressed_image.assign(image::get_image("buttons/" + button_image_name +
+		                              "-button-pressed.png",image::UNSCALED));
+		active_image.assign(image::get_image("buttons/" + button_image_name +
+		                              "-button-active.png",image::UNSCALED));
 	}
 
-	if(pressed_image == NULL)
-		pressed_image = button_image;
+	if(pressed_image == NULL) {
+		pressed_image.assign(image::get_image("buttons/button.png",image::UNSCALED));
+	}
 
-	if(active_image == NULL)
-		active_image = button_image;
+	if(active_image == NULL) {
+		active_image.assign(image::get_image("buttons/button.png",image::UNSCALED));
+	}
 
 	if(button_image == NULL)
 		throw error();

@@ -46,10 +46,9 @@ std::vector<std::string> get_languages(config& cfg)
 {
 	std::vector<std::string> res;
 
-	const std::vector<config*>& lang = cfg.children["language"];
-	for(std::vector<config*>::const_iterator i = lang.begin();
-	    i != lang.end(); ++i) {
-		res.push_back((*i)->values["language"]);
+	const config::child_list& lang = cfg.get_children("language");
+	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
+		res.push_back((**i)["language"]);
 	}
 
 	return res;
@@ -58,10 +57,9 @@ std::vector<std::string> get_languages(config& cfg)
 namespace {
 bool internal_set_language(const std::string& locale, config& cfg)
 {
-	const std::vector<config*>& lang = cfg.children["language"];
-	for(std::vector<config*>::const_iterator i = lang.begin();
-	    i != lang.end(); ++i) {
-		if((*i)->values["id"] == locale || (*i)->values["language"] == locale) {
+	const config::child_list& lang = cfg.get_children("language");
+	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
+		if((**i)["id"] == locale || (**i)["language"] == locale) {
 
 			const std::string& enc = (**i)["encoding"];
 			if(enc == "UTF-8") {
@@ -74,8 +72,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 				charset_used = CHARSET_LATIN1;
 			}
 
-			for(std::map<std::string,std::string>::const_iterator j =
-			    (*i)->values.begin(); j != (*i)->values.end(); ++j) {
+			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				string_table[j->first] = j->second;
 			}
 

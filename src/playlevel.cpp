@@ -30,7 +30,7 @@
 LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
-						std::vector<config*>& story)
+						const std::vector<config*>& story)
 {
 	const int num_turns = atoi(level->values["turns"].c_str());
 	gamestatus status(*level,num_turns);
@@ -49,13 +49,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	int first_human_team = -1;
 
-	std::vector<config*>& unit_cfg = level->children["side"];
-	for(std::vector<config*>::iterator ui = unit_cfg.begin();
-				ui != unit_cfg.end(); ++ui) {
+	const config::child_list& unit_cfg = level->get_children("side");
+	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
 		unit new_unit(gameinfo, **ui);
 		if(ui == unit_cfg.begin()) {
-			for(std::vector<unit>::iterator it =
-							state_of_game.available_units.begin();
+			for(std::vector<unit>::iterator it = state_of_game.available_units.begin();
 			    it != state_of_game.available_units.end(); ++it) {
 				if(it->can_recruit()) {
 					new_unit = *it;
@@ -103,12 +101,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		}
 
 		//if there are additional starting units on this side
-		std::vector<config*>& starting_units = (*ui)->children["unit"];
-		for(std::vector<config*>::iterator su = starting_units.begin();
+		const config::child_list& starting_units = (*ui)->get_children("unit");
+		for(config::child_list::const_iterator su = starting_units.begin();
 		    su != starting_units.end(); ++su) {
 			unit new_unit(gameinfo,**su);
-			const std::string& x = (*su)->values["x"];
-			const std::string& y = (*su)->values["y"];
+			const std::string& x = (**su)["x"];
+			const std::string& y = (**su)["y"];
 
 			const gamemap::location loc(**su);
 			if(x.size() == 0 || y.size() == 0 || !map.on_board(loc)) {
@@ -129,7 +127,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	const tooltips::manager tooltips_manager(gui);
 
 	if(recorder.skipping() == false) {
-		for(std::vector<config*>::iterator story_i = story.begin();
+		for(std::vector<config*>::const_iterator story_i = story.begin();
 		    story_i != story.end(); ++story_i) {
 			show_intro(gui,**story_i);
 		}
@@ -146,11 +144,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	                                    state_of_game,gameinfo);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
-	std::vector<config*>& overlays = level->children["item"];
-	for(std::vector<config*>::iterator overlay = overlays.begin();
-	    overlay != overlays.end(); ++overlay) {
-		gui.add_overlay(gamemap::location(**overlay),
-		                (*overlay)->values["image"]);
+	const config::child_list& overlays = level->get_children("item");
+	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
+		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"]);
 	}
 
 	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
@@ -269,9 +265,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 					if(network::nconnections() > 0) {
 						config cfg;
-						cfg.children["turn"].push_back(
-							  new config(recorder.get_data_range(start_command,
-							                        recorder.ncommands())));
+						cfg.add_child("turn",recorder.get_data_range(start_command,recorder.ncommands()));
 						network::send_data(cfg);
 					}
 
@@ -294,13 +288,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						                    map,teams,player_number,units,true);
 
 						for(;;) {
-							network::connection res =
-							           network::receive_data(cfg);
+							network::connection res = network::receive_data(cfg);
 							if(res && cfg.child("leave_game")) {
 								throw network::error("");
 							}
 
-							if(res && cfg.children["turn"].empty() == false) {
+							if(res && cfg.child("turn") != NULL) {
 								break;
 							}
 
@@ -308,8 +301,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 							gui.draw();
 						}
 
-						std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
-						replay replay_obj(*cfg.children["turn"].front());
+						replay replay_obj(*cfg.child("turn"));
 						replay_obj.start_replay();
 
 						try {
@@ -328,7 +320,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 							return QUIT;
 						}
 
-						recorder.add_config(*cfg.children["turn"].front());
+						recorder.add_config(*cfg.child("turn"));
 
 						gui.invalidate_all();
 						gui.draw();

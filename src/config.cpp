@@ -31,11 +31,16 @@ bool operator<(const line_source& a, const line_source& b)
 
 namespace {
 
+bool isnewline(char c)
+{
+	return c == '\r' || c == '\n';
+}
+
 //make sure that we can use Mac, DOS, or Unix style text files on any system
 //and they will work, by making sure the definition of whitespace is consistent
 bool portable_isspace(char c)
 {
-	return c == '\r' || c == '\n' || isspace(c);
+	return isnewline(c) || isspace(c);
 }
 
 
@@ -197,7 +202,7 @@ void internal_preprocess_data(const std::string& data,
 
 				i = std::find_if(i,data.end(),isgraph);
 
-				const std::string::const_iterator end = std::find(i,data.end(),'\n');
+				const std::string::const_iterator end = std::find_if(i,data.end(),isnewline);
 
 				if(end == data.end())
 					break;
@@ -251,7 +256,7 @@ void internal_preprocess_data(const std::string& data,
 						++i;
 					}
 
-					i = std::find(i,data.end(),'\n');
+					i = std::find_if(i,data.end(),isnewline);
 					if(i == data.end())
 						break;
 				} else {
@@ -268,13 +273,12 @@ void internal_preprocess_data(const std::string& data,
 					++i;
 				}
 
-				i = std::find(i,data.end(),'\n');
+				i = std::find_if(i,data.end(),isnewline);
 				if(i == data.end())
 					break;
 			}
 
-			for(; i != data.end() && *i != '\n'; ++i) {
-			}
+			i = std::find_if(i,data.end(),isnewline);
 
 			if(i == data.end())
 				break;
@@ -605,6 +609,13 @@ config& config::add_child(const std::string& key)
 	return *v.back();
 }
 
+config& config::add_child(const std::string& key, const config& val)
+{
+	std::vector<config*>& v = children[key];
+	v.push_back(new config(val));
+	return *v.back();
+}
+
 std::string& config::operator[](const std::string& key)
 {
 	return values[key];
@@ -666,6 +677,7 @@ std::vector<std::string> config::split(const std::string& val, char c)
 	while(i2 != val.end()) {
 		if(*i2 == c) {
 			std::string new_val(i1,i2);
+			strip(new_val);
 			if(!new_val.empty())
 				res.push_back(new_val);
 			++i2;
@@ -679,6 +691,7 @@ std::vector<std::string> config::split(const std::string& val, char c)
 	}
 
 	std::string new_val(i1,i2);
+	strip(new_val);
 	if(!new_val.empty())
 		res.push_back(new_val);
 

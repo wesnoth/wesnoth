@@ -119,38 +119,38 @@ void replay::add_recruit(int value, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
 
-	config* const val = new config();
+	config val;
 
 	char buf[100];
 	sprintf(buf,"%d",value);
-	val->values["value"] = buf;
+	val["value"] = buf;
 
 	sprintf(buf,"%d",loc.x+1);
-	val->values["x"] = buf;
+	val["x"] = buf;
 
 	sprintf(buf,"%d",loc.y+1);
-	val->values["y"] = buf;
+	val["y"] = buf;
 
-	cmd->children["recruit"].push_back(val);
+	cmd->add_child("recruit",val);
 }
 
 void replay::add_recall(int value, const gamemap::location& loc)
 {
 	config* const cmd = add_command();
 
-	config* const val = new config();
+	config val;
 
 	char buf[100];
 	sprintf(buf,"%d",value);
-	val->values["value"] = buf;
+	val["value"] = buf;
 
 	sprintf(buf,"%d",loc.x+1);
-	val->values["x"] = buf;
+	val["x"] = buf;
 
 	sprintf(buf,"%d",loc.y+1);
-	val->values["y"] = buf;
+	val["y"] = buf;
 
-	cmd->children["recall"].push_back(val);
+	cmd->add_child("recall",val);
 }
 
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
@@ -165,30 +165,29 @@ void replay::add_attack(const gamemap::location& a, const gamemap::location& b,
 	add_pos("attack",a,b);
 	char buf[100];
 	sprintf(buf,"%d",weapon);
-	current_->children["attack"][0]->values["weapon"] = buf;
+	current_->child("attack")->values["weapon"] = buf;
 }
 
 void replay::add_pos(const std::string& type,
                      const gamemap::location& a, const gamemap::location& b)
 {
 	config* const cmd = add_command();
-	config* const move = new config();
-	config* const src = new config();
-	config* const dst = new config();
+
+	config move, src, dst;
 
 	char buf[100];
 	sprintf(buf,"%d",a.x+1);
-	src->values["x"] = buf;
+	src["x"] = buf;
 	sprintf(buf,"%d",a.y+1);
-	src->values["y"] = buf;
+	src["y"] = buf;
 	sprintf(buf,"%d",b.x+1);
-	dst->values["x"] = buf;
+	dst["x"] = buf;
 	sprintf(buf,"%d",b.y+1);
-	dst->values["y"] = buf;
+	dst["y"] = buf;
 
-	move->children["source"].push_back(src);
-	move->children["destination"].push_back(dst);
-	cmd->children[type].push_back(move);
+	move.add_child("source",src);
+	move.add_child("destination",dst);
+	cmd->add_child(type,move);
 
 	current_ = cmd;
 }
@@ -197,13 +196,13 @@ void replay::add_value(const std::string& type, int value)
 {
 	config* const cmd = add_command();
 
-	config* const val = new config();
+	config val;
 
 	char buf[100];
 	sprintf(buf,"%d",value);
-	val->values["value"] = buf;
+	val["value"] = buf;
 
-	cmd->children[type].push_back(val);
+	cmd->add_child(type,val);
 }
 
 void replay::choose_option(int index)
@@ -214,8 +213,7 @@ void replay::choose_option(int index)
 void replay::end_turn()
 {
 	config* const cmd = add_command();
-
-	cmd->children["end_turn"].push_back(new config());
+	cmd->add_child("end_turn");
 }
 
 config replay::get_data_range(int cmd_start, int cmd_end)
@@ -224,9 +222,9 @@ config replay::get_data_range(int cmd_start, int cmd_end)
 
 	config res;
 
-	std::vector<config*>& cmd = commands();
+	const config::child_list& cmd = commands();
 	while(cmd_start < cmd_end) {
-		res.children["command"].push_back(new config(*cmd[cmd_start]));
+		res.add_child("command",*cmd[cmd_start]);
 		++cmd_start;
 	}
 
@@ -235,16 +233,16 @@ config replay::get_data_range(int cmd_start, int cmd_end)
 
 void replay::undo()
 {
-	std::vector<config*>& cmd = commands();
-	if(!cmd.empty()) {
-		delete cmd.back();
-		cmd.pop_back();
+	const config::child_itors& cmd = cfg_.child_range("command");
+	if(cmd.first != cmd.second) {
+		delete *(cmd.second-1);
+		cfg_.remove_child("command",cmd.second - cmd.first - 1);
 	}
 }
 
-std::vector<config*>& replay::commands()
+const config::child_list& replay::commands()
 {
-	return cfg_.children["command"];
+	return cfg_.get_children("command");
 }
 
 int replay::ncommands()
@@ -261,10 +259,7 @@ void replay::mark_current()
 
 config* replay::add_command()
 {
-	config* const cmd = new config();
-	commands().push_back(cmd);
-	current_ = cmd;
-	return cmd;
+	return current_ = &cfg_.add_child("command");
 }
 
 int replay::get_random()
@@ -279,20 +274,19 @@ int replay::get_random()
 	//the end of the list. Generating a new random number means
 	//nesting a new node inside the current node, and making
 	//the current node the new node
-	std::vector<config*>& random = current_->children["random"];
-	if(random.empty()) {
+	config* const random = current_->child("random");
+	if(random == NULL) {
 		const int res = rand();
+		current_ = &current_->add_child("random");
+
 		char buf[100];
 		sprintf(buf,"%d",res);
-
-		current_ = new config();
-		current_->values["value"] = buf;
-		random.push_back(current_);
+		(*current_)["value"] = buf;
 
 		return res;
 	} else {
-		const int res = atol(random.front()->values["value"].c_str());
-		current_ = random.front();
+		const int res = atol((*random)["value"].c_str());
+		current_ = random;
 		return res;
 	}
 }
@@ -306,8 +300,8 @@ const config* replay::get_random_results() const
 void replay::set_random_results(const config& cfg)
 {
 	assert(current_ != NULL);
-	current_->children["results"].clear();
-	current_->children["results"].push_back(new config(cfg));
+	current_->clear_children("results");
+	current_->add_child("results",cfg);
 }
 
 void replay::start_replay()
@@ -344,7 +338,7 @@ void replay::add_config(const config& cfg)
 {
 	for(config::const_child_itors i = cfg.child_range("command");
 	    i.first != i.second; ++i.first) {
-		commands().push_back(new config(**i.first));
+		cfg_.add_child("command",**i.first);
 	}
 }
 
@@ -460,11 +454,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			config* const move = it->second.front();
 
-			assert(!move->children["destination"].empty());
-			assert(!move->children["source"].empty());
+			assert(move->child("destination") != NULL);
+			assert(move->child("source") != NULL);
 
-			const gamemap::location src(*(move->children["source"][0]));
-			const gamemap::location dst(*(move->children["destination"][0]));
+			const gamemap::location src(*(move->child("source")));
+			const gamemap::location dst(*(move->child("destination")));
 
 			const std::map<gamemap::location,unit>::iterator u=units.find(src);
 			if(u == units.end()) {
@@ -537,11 +531,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			config* const move = it->second.front();
 
-			assert(!move->children["destination"].empty());
-			assert(!move->children["source"].empty());
+			assert(move->child("destination") != NULL);
+			assert(move->child("source") != NULL);
 
-			const gamemap::location src(*(move->children["source"][0]));
-			const gamemap::location dst(*(move->children["destination"][0]));
+			const gamemap::location src(*(move->child("source")));
+			const gamemap::location dst(*(move->child("destination")));
 
 			const std::string& weapon = move->values["weapon"];
 			const int weapon_num = atoi(weapon.c_str());

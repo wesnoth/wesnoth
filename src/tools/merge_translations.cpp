@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	std::vector<config*> translations = cfg.children["language"];
+	config::child_list translations = cfg.get_children("language");
 	if(translations.empty()) {
 		std::cerr << "no translation data found in '" << argv[1] << "'\n";
 		return 0;
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	translations = cfg.children["language"];
+	translations = cfg.get_children("language");
 	if(translations.empty()) {
 		std::cerr << "no translation data found in '" << argv[2] << "'\n";
 		return 0;

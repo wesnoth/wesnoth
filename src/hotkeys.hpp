@@ -34,7 +34,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_NULL };
 
 struct hotkey_item {
-	explicit hotkey_item(config& cfg);
+	explicit hotkey_item(const config& cfg);
 
 	HOTKEY_COMMAND action;
 	int keycode;

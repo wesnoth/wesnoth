@@ -18,6 +18,14 @@
 #include "util.hpp"
 #include "video.hpp"
 
+int sdl_add_ref(SDL_Surface* surface)
+{
+	if(surface != NULL)
+		return surface->refcount++;
+	else
+		return 0;
+}
+
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 {
 	if(surface == NULL)

@@ -111,7 +111,7 @@ gamemap::location gamemap::location::get_direction(
 
 gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 {
-	std::vector<config*>& terrains = cfg.children["terrain"];
+	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
 
 	size_t x = 0, y = 0;

@@ -77,15 +77,14 @@ std::string command_to_string(const HOTKEY_COMMAND &command)
 }
 
 
-hotkey_item::hotkey_item(config& cfg) : lastres(false)
+hotkey_item::hotkey_item(const config& cfg) : lastres(false)
 {
-	std::map<std::string,std::string>& m = cfg.values;
-	action = string_to_command(m["command"]);
+	action = string_to_command(cfg["command"]);
 
-	keycode = m["key"].empty() ? 0 : m["key"][0];
-	alt = (m["alt"] == "yes");
-	ctrl = (m["ctrl"] == "yes");
-	shift = (m["shift"] == "yes");
+	keycode = cfg["key"].empty() ? 0 : cfg["key"][0];
+	alt = (cfg["alt"] == "yes");
+	ctrl = (cfg["ctrl"] == "yes");
+	shift = (cfg["shift"] == "yes");
 }
 
 bool operator==(const hotkey_item& a, const hotkey_item& b)
@@ -129,16 +128,18 @@ bool hotkey_pressed::operator()(const hotkey::hotkey_item& hk) const
 
 namespace {
 
-void add_hotkey(config& cfg,bool overwrite)
+void add_hotkey(const config& cfg,bool overwrite)
 {
 	const hotkey::hotkey_item new_hotkey(cfg);
-	std::vector<hotkey::hotkey_item>::iterator i;
-	for(i=hotkeys.begin();i!=hotkeys.end();i++)
+
+	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin();
+	    i != hotkeys.end(); ++i) {
 		if(i->action == new_hotkey.action) {
-			if (overwrite)
-				*i=new_hotkey;	
+			if(overwrite)
+				*i = new_hotkey;	
 			return;
-		};	
+		}
+	}
 	hotkeys.push_back(new_hotkey);
 }
 
@@ -167,40 +168,27 @@ void basic_handler::handle_event(const SDL_Event& event)
 
 void add_hotkeys(config& cfg,bool overwrite)
 {
-	std::vector<config*>& children = cfg.children["hotkey"];
-	for(std::vector<config*>::iterator i = children.begin();
-	    i != children.end(); ++i) {
+	const config::child_list& children = cfg.get_children("hotkey");
+	for(config::child_list::const_iterator i = children.begin(); i != children.end(); ++i) {
 		add_hotkey(**i,overwrite);
 	}
 }
 
 void save_hotkeys(config& cfg)
 {
-	std::vector<config*> children = cfg.children["hotkey"];	
-	for(std::vector<hotkey_item>::iterator i = hotkeys.begin();
-			i != hotkeys.end();i++)
-	{
+	const config::child_list children = cfg.get_children("hotkey");
+	for(std::vector<hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
 		std::string action_name = command_to_string(i->action);
-		std::vector<config*>::iterator i2;
-		for(i2= children.begin();
-				i2!=children.end();i2++)
-		{
-			if((**i2)["command"]==action_name)
-			{
-				(*i2)->clear();
-				break;
-			};
-			
-		}
-		config * i3;
-		if (i2==children.end())
-			i3 = &cfg.add_child("hotkey");
-		else i3 = *i2;
-		(*i3)["command"]=action_name;
-		(*i3)["key"]=i->keycode;
-		if (i->alt) (*i3)["alt"]="yes";
-		if (i->ctrl) (*i3)["ctrl"]="yes";
-		if (i->shift) (*i3)["shift"]="yes";
+
+		config* item = cfg.find_child("hotkey","command",action_name);
+		if(item == NULL)
+			item = &cfg.add_child("command");
+
+		(*item)["command"] = action_name;
+		(*item)["key"] = i->keycode;
+		(*item)["alt"] = (i->alt) ? "yes" : "no";
+		(*item)["ctrl"] = (i->ctrl) ? "yes" : "no";
+		(*item)["shift"] = (i->shift) ? "yes" : "no";
 	}
 };
 

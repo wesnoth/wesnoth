@@ -31,7 +31,7 @@
 //
 //each part of the sequence will be displayed in turn, with the
 //user able to go to the next part, or skip it entirely.
-void show_intro(display& screen, config& data);
+void show_intro(display& screen, const config& data);
 
 //function to show the map before each scenario.
 //data is in a format that looks like,

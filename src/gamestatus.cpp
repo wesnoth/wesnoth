@@ -21,7 +21,7 @@
 #include <iterator>
 #include <sstream>
 
-time_of_day::time_of_day(config& cfg)
+time_of_day::time_of_day(const config& cfg)
                  : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
                    image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
                    red(atoi(cfg["red"].c_str())),
@@ -36,14 +36,14 @@ time_of_day::time_of_day(config& cfg)
 gamestatus::gamestatus(config& time_cfg, int num_turns) :
                  turn_(1),numTurns_(num_turns)
 {
-	std::vector<config*>& times = time_cfg.children["time"];
-	std::vector<config*>::iterator t;
+	const config::child_list& times = time_cfg.get_children("time");
+	config::child_list::const_iterator t;
 	for(t = times.begin(); t != times.end(); ++t) {
 		times_.push_back(time_of_day(**t));
 	}
 
-	std::vector<config*>& times_illum = time_cfg.children["illuminated_time"];
-	std::vector<config*>& illum = times_illum.empty() ? times : times_illum;
+	const config::child_list& times_illum = time_cfg.get_children("illuminated_time");
+	const config::child_list& illum = times_illum.empty() ? times : times_illum;
 
 	for(t = illum.begin(); t != illum.end(); ++t) {
 		illuminatedTimes_.push_back(time_of_day(**t));
@@ -96,26 +96,24 @@ game_state read_game(game_data& data, config* cfg)
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
 
-	std::vector<config*>& units = cfg->children["unit"];
-	for(std::vector<config*>::iterator i = units.begin();
-	    i != units.end(); ++i) {
-		log_scope("loading unit");
+	const config::child_list& units = cfg->get_children("unit");
+	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
 		res.available_units.push_back(unit(data,**i));
 	}
 
-	std::vector<config*>& vars = cfg->children["variables"];
-	if(vars.empty() == false) {
-		res.variables = vars[0]->values;
+	const config* const vars = cfg->child("variables");
+	if(vars != NULL) {
+		res.variables = vars->values;
 	}
 
-	std::vector<config*>& replays = cfg->children["replay"];
-	if(replays.empty() == false) {
-		res.replay_data = *replays[0];
+	const config* const replay = cfg->child("replay");
+	if(replay != NULL) {
+		res.replay_data = *replay;
 	}
 
-	std::vector<config*>& starts = cfg->children["start"];
-	if(starts.empty() == false) {
-		res.starting_pos = *starts[0];
+	const config* starting_pos = cfg->child("start");
+	if(starting_pos != NULL) {
+		res.starting_pos = *starting_pos;
 	}
 
 	res.can_recruit.clear();
@@ -144,22 +142,20 @@ void write_game(const game_state& game, config& cfg)
 
 	cfg["difficulty"] = game.difficulty;
 
-	config* vars = new config();
-	vars->values = game.variables;
-	cfg.children["variables"].push_back(vars);
+	cfg.add_child("variables").values = game.variables;
 
 	for(std::vector<unit>::const_iterator i = game.available_units.begin();
 	    i != game.available_units.end(); ++i) {
-		config* const new_cfg = new config;
-		i->write(*new_cfg);
-		cfg.children["unit"].push_back(new_cfg);
+		config new_cfg;
+		i->write(new_cfg);
+		cfg.add_child("unit",new_cfg);
 	}
 
 	if(game.replay_data.children.empty() == false) {
-		cfg.children["replay"].push_back(new config(game.replay_data));
+		cfg.add_child("replay",game.replay_data);
 	}
 
-	cfg.children["start"].push_back(new config(game.starting_pos));
+	cfg.add_child("start",game.starting_pos);
 
 	std::stringstream can_recruit;
 	std::copy(game.can_recruit.begin(),game.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));

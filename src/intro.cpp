@@ -25,7 +25,7 @@
 #include <sstream>
 #include <vector>
 
-void show_intro(display& screen, config& data)
+void show_intro(display& screen, const config& data)
 {
 	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
@@ -40,15 +40,16 @@ void show_intro(display& screen, config& data)
 	skip_button.set_x(700);
 	skip_button.set_y(550);
 
-	std::vector<config*>& parts = data.children["part"];
+	const config::child_list& parts = data.get_children("part");
 
-	for(std::vector<config*>::iterator i = parts.begin(); i != parts.end();++i){
+	for(config::child_list::const_iterator i = parts.begin(); i != parts.end(); ++i){
 		gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
 		                                 0,0,0,1.0,screen.video().getSurface());
-		const std::string& image_name = (*i)->values["image"];
-		SDL_Surface* image = NULL;
+		const std::string& image_name = (**i)["image"];
+		
+		scoped_sdl_surface image(NULL);
 		if(image_name.empty() == false) {
-			image = image::get_image(image_name,image::UNSCALED);
+			image.assign(image::get_image(image_name,image::UNSCALED));
 		}
 
 		int textx = 200;
@@ -77,10 +78,9 @@ void show_intro(display& screen, config& data)
 		update_whole_screen();
 		screen.video().flip();
 
-		const std::string& id = (*i)->values["id"];
+		const std::string& id = (**i)["id"];
 		const std::string& lang_story = string_table[id];
-		const std::string& story = lang_story.empty() ? (*i)->values["story"] :
-		                                                lang_story;
+		const std::string& story = lang_story.empty() ? (**i)["story"] : lang_story;
 
 		const int max_length = 60;
 		int cur_length = 0;
@@ -171,22 +171,20 @@ void show_map_scene(display& screen, config& data)
                                      screen.video().getSurface());
 
 
-	std::vector<config*>& sequence = data.children["bigmap"];
-	if(sequence.empty()) {
+	const config* const cfg_item = data.child("bigmap");
+	if(cfg_item == NULL) {
 		return;
 	}
 
-	config& cfg = *sequence[0];
+	const config& cfg = *cfg_item;
 
-	std::vector<config*>& dots = cfg.children["dot"];
+	const config::child_list& dots = cfg.get_children("dot");
 
-	const std::string& image_file = cfg.values["image"];
+	const std::string& image_file = cfg["image"];
 
-	SDL_Surface* const image = image::get_image(image_file,image::UNSCALED);
-	SDL_Surface* const dot_image =
-	             image::get_image("misc/dot.png",image::UNSCALED);
-	SDL_Surface* const cross_image =
-	             image::get_image("misc/cross.png",image::UNSCALED);
+	const scoped_sdl_surface image(image::get_image(image_file,image::UNSCALED));
+	const scoped_sdl_surface dot_image(image::get_image("misc/dot.png",image::UNSCALED));
+	const scoped_sdl_surface cross_image(image::get_image("misc/cross.png",image::UNSCALED));
 	if(image == NULL || dot_image == NULL || cross_image == NULL) {
 		return;
 	}
@@ -209,17 +207,16 @@ void show_map_scene(display& screen, config& data)
 
 	CKey key;
 
-
-	for(std::vector<config*>::iterator d = dots.begin(); d != dots.end(); ++d){
-		const std::string& xloc = (*d)->values["x"];
-		const std::string& yloc = (*d)->values["y"];
+	for(std::vector<config*>::const_iterator d = dots.begin(); d != dots.end(); ++d){
+		const std::string& xloc = (**d)["x"];
+		const std::string& yloc = (**d)["y"];
 		const int x = atoi(xloc.c_str());
 		const int y = atoi(yloc.c_str());
 		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
 			continue;
 
 		SDL_Surface* img = dot_image;
-		if((*d)->values["type"] == "cross") {
+		if((**d)["type"] == "cross") {
 			img = cross_image;
 		}
 

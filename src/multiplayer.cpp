@@ -68,10 +68,9 @@ private:
 connection_acceptor::connection_acceptor(config& players)
                    : players_(players)
 {
-	std::vector<config*>& sides = players.children["side"];
-	for(std::vector<config*>::const_iterator i = sides.begin();
-	    i != sides.end(); ++i) {
-		if((*i)->values["controller"] == "network") {
+	const config::child_list& sides = players.get_children("side");
+	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
+		if((**i)["controller"] == "network") {
 			positions_[*i] = 0;
 		}
 	}
@@ -90,7 +89,7 @@ int connection_acceptor::do_action()
 
 	config cfg;
 
-	std::vector<config*>& sides = players_.children["side"];
+	const config::child_list& sides = players_.get_children("side");
 
 	try {
 		sock = network::receive_data(cfg);
@@ -240,7 +239,7 @@ bool accept_network_connections(display& disp, config& players)
 	}
 
 	config start_game;
-	start_game.children["start_game"].push_back(new config());
+	start_game.add_child("start_game");
 	network::send_data(start_game);
 
 	return true;
@@ -294,9 +293,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	                string_table["map_to_play"] + ":",(disp.x()-width)/2+(int)(width*0.4),
 			(disp.y()-height)/2+83);
 	std::vector<std::string> options;
-	std::vector<config*>& levels = cfg.children["multiplayer"];
+	const config::child_list& levels = cfg.get_children("multiplayer");
 	std::map<int,std::string> res_to_id;
-	for(std::vector<config*>::iterator i = levels.begin(); i!=levels.end();++i){
+	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
 		const std::string& id = (**i)["id"];
 		res_to_id[i - levels.begin()] = id;
 
@@ -380,12 +379,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				// Send Initial information
 				config response;
-				config create_game;
+				config& create_game = response.add_child("create_game");
 				create_game["name"] = name_entry.text();
-				response.children["create_game"].push_back(
-					new config(create_game));
 				network::send_data(response);
-
 
 				// Setup the game
 				int res = maps_menu.selection();
@@ -397,7 +393,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				//if we're loading a saved game
 				config loaded_level;
+				bool loading = false;
 				if(size_t(res) == options.size()-1) {
+					loading = true;
 					const std::string game = dialogs::load_game_dialog(disp,&show_replay);
 					if(game == "")
 						break;
@@ -434,7 +432,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 					//add the replay data under the level data so clients can
 					//receive it
-					level_ptr->children["replay"].clear();
+					level_ptr->clear_children("replay");
 					level_ptr->add_child("replay") = state.replay_data;
 
 				} else { //creating a new game
@@ -453,19 +451,23 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				state.scenario = res_to_id[res];
 
-				std::vector<config*>& sides = level.children["side"];
-				std::vector<config*>& possible_sides = cfg.children["multiplayer_side"];
-				if(sides.empty() || possible_sides.empty()) {
+				const config::child_itors sides = level.child_range("side");
+
+				const config::child_list& possible_sides = cfg.get_children("multiplayer_side");
+				if(sides.first == sides.second || possible_sides.empty()) {
 					std::cerr << "no multiplayer sides found\n";
 					return -1;
 				}
 
-				std::vector<config*>::iterator sd;
-				for(sd = sides.begin(); sd != sides.end(); ++sd) {
+				config::child_iterator sd;
+				for(sd = sides.first; sd != sides.second; ++sd) {
 
-					std::stringstream village_gold;
-					village_gold << cur_villagegold;
-					(**sd)["village_gold"] = village_gold.str();
+					if(!loading)
+					{
+						std::stringstream village_gold;
+						village_gold << cur_villagegold;
+						(**sd)["village_gold"] = village_gold.str();
+					}
 
 					if((**sd)["fog"].empty())
 						(**sd)["fog"] = fog_game.checked() ? "yes" : "no";
@@ -474,16 +476,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						(**sd)["shroud"] = shroud_game.checked() ? "yes" : "no";
 
 					if((**sd)["name"].empty())
-						(**sd)["name"] = possible_sides.front()->values["name"];
+						(**sd)["name"] = (*possible_sides.front())["name"];
 
 					if((**sd)["type"].empty())
-						(**sd)["type"] = possible_sides.front()->values["type"];
+						(**sd)["type"] = (*possible_sides.front())["type"];
 
 					if((**sd)["recruit"].empty())
-						(**sd)["recruit"]=possible_sides.front()->values["recruit"];
+						(**sd)["recruit"] = (*possible_sides.front())["recruit"];
 
 					if((**sd)["music"].empty())
-						(**sd)["music"] = possible_sides.front()->values["music"];
+						(**sd)["music"] = (*possible_sides.front())["music"];
 
 					if((**sd)["recruitment_pattern"].empty())
 						(**sd)["recruitment_pattern"] =
@@ -556,8 +558,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				std::vector<std::string> player_team;
 				
-				for(sd = sides.begin(); sd != sides.end(); ++sd) {
-					const int team_num = sd - sides.begin();
+				for(sd = sides.first; sd != sides.second; ++sd) {
+					const int team_num = sd - sides.first;
 
 					std::stringstream str;
 					str << string_table["team"] << " " << team_num+1;
@@ -580,9 +582,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::vector<gui::combo> combo_color;
 				std::vector<gui::slider> slider_gold;
 
-				int n = 0;
-				for(sd = sides.begin(); sd != sides.end(); ++sd) {
-					const int side_num = sd - sides.begin();
+				for(sd = sides.first; sd != sides.second; ++sd) {
+					const int side_num = sd - sides.first;
 
 					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
 					                (*sd)->values["side"],(disp.x()-width)/2+10,
@@ -591,15 +592,24 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_type.back().set_xy((disp.x()-width)/2+30,
 							(disp.y()-height)/2+55+(30*side_num));
 
-					if(side_num>0) {
-						sides[n]->values["controller"] = "network";
-						sides[n]->values["description"] = "";
-						combo_type.back().set_selected(1);
-					}else{
-						sides[n]->values["controller"] = "human";
-						sides[n]->values["description"] = preferences::login();
+					if(loading) {
+						if((**sd)["controller"] == "network") {
+							combo_type.back().set_selected(1);
+						}else if((**sd)["controller"] == "human") {
+							combo_type.back().set_selected(0);
+						}else if((**sd)["controller"] == "ai") {
+							combo_type.back().set_selected(2);
+						}
+					} else {
+						if(side_num > 0) {
+							(**sd)["controller"] = "network";
+							(**sd)["description"] = "";
+							combo_type.back().set_selected(1);
+						} else {
+							(**sd)["controller"] = "human";
+							(**sd)["description"] = preferences::login();
+						}
 					}
-					sides[n]->values["gold"] = "100";
 
 					combo_race.push_back(gui::combo(disp,player_race));
 					combo_race.back().set_xy((disp.x()-width)/2+145,
@@ -621,8 +631,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_team.push_back(gui::combo(disp,player_team));
 					combo_team.back().set_xy((disp.x()-width)/2+260,
 							(disp.y()-height)/2+55+(30*side_num));
-
 					combo_team.back().set_selected(side_num);
+
 					combo_color.push_back(gui::combo(disp,player_color));
 					combo_color.back().set_xy((disp.x()-width)/2+375,
 							(disp.y()-height)/2+55+(30*side_num));
@@ -634,16 +644,18 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					rect.w = launch2_game.width()-5;
 					rect.h = launch2_game.height();
 					int intgold;
-					std::stringstream streamgold;
-					streamgold << sides[n]->values["gold"];
-					streamgold >> intgold;
-					slider_gold.push_back(gui::slider(disp,rect,0.0+(intgold-20)/979));
+					if(loading) {
+						intgold = atoi ((**sd)["gold"].c_str());
+					} else {
+						intgold = 100;
+						(**sd)["gold"] = "100";
+					}
+					slider_gold.push_back(gui::slider(disp,rect,0.0+((intgold-20.0)/979.0)));
 					rect.w = 30;
 					rect.x = (disp.x()-width)/2+603;
 					village_bg=get_surface_portion(disp.video().getSurface(), rect);
 					font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-						                sides[n]->values["gold"],rect.x,rect.y);
-					n++;
+						                (**sd)["gold"],rect.x,rect.y);
 				}
 
 				update_whole_screen();
@@ -657,16 +669,18 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						//	 change the combo_type of another network
 						//	 player that has already joined the game.
 
+						config& side = **(sides.first+n);
+
 						if(combo_type[n].process(mousex,mousey,left_button)) {
 							if(combo_type[n].selected() == 0) {
-								sides[n]->values["controller"] = "human";
-								sides[n]->values["description"] = preferences::login();
+								side["controller"] = "human";
+								side["description"] = preferences::login();
 							}else if(combo_type[n].selected() == 1){
-								sides[n]->values["controller"] = "network";
-								sides[n]->values["description"] = "";
+								side["controller"] = "network";
+								side["description"] = "";
 							}else if(combo_type[n].selected() == 2){
-								sides[n]->values["controller"] = "ai";
-								sides[n]->values["description"] = string_table["ai_controlled"];
+								side["controller"] = "ai";
+								side["description"] = string_table["ai_controlled"];
 							}
 						}
 								
@@ -675,21 +689,24 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							const string_map& values = possible_sides[combo_race[n].selected()]->values;
 
 							for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
-								(*sides[n])[i->first] = i->second;
+								side[i->first] = i->second;
 							}
 						}
 
 						if(combo_team[n].process(mousex,mousey,left_button))
 						{
-							for(size_t l = 0; l != sides.size(); ++l) {
+							const size_t nsides = sides.second - sides.first;
+							for(size_t t = 0; t != nsides; ++t) {
 								std::stringstream myenemy;
-								for(size_t m = 0; m != sides.size(); ++m) {
-									if(combo_team[m].selected() != combo_team[l].selected()) {
-										myenemy << sides[m]->values["side"] << ",";
+								for(size_t m = 0; m != nsides; ++m) {
+									if(combo_team[m].selected() != combo_team[t].selected()) {
+										myenemy << (*sides.first[m])["side"];
+										if(m != nsides-1)
+											myenemy << ",";
 									}
 								}
-								myenemy << "\b";
-								sides[l]->values["enemy"] = myenemy.str();
+								myenemy << "\n";
+								(*sides.first[t])["enemy"] = myenemy.str();
 							}
 						}
 
@@ -702,14 +719,14 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							cur_playergold = new_playergold;
 							std::stringstream playergold;
 							playergold << cur_playergold;
-							sides[n]->values["gold"] = playergold.str();
+							(*sides.first[n])["gold"] = playergold.str();
 							rect.x = (disp.x()-width)/2+603;
 							rect.y = (disp.y()-height)/2+55+(30*n);
 							rect.w = 30;
 							rect.h = launch2_game.height();
 							SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
 							font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-							                sides[n]->values["gold"],rect.x,rect.y);
+							                (*sides.first[n])["gold"],rect.x,rect.y);
 							update_rect(rect);
 						}
 					}
@@ -739,7 +756,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 						//any replay data isn't meant to hang around under the level,
 						//it was just there to tell clients about the replay data
-						level.children["replay"].clear();
+						level.clear_children("replay");
 
 						std::vector<config*> story;
 						play_level(units_data,cfg,&level,disp.video(),state,story);
@@ -824,7 +841,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				gamemap map(cfg,map_data);
 
-				SDL_Surface* const mini = image::getMinimap(175,175,map);
+				const scoped_sdl_surface mini(image::getMinimap(175,175,map));
 
 				if(mini != NULL) {
 					rect.x = ((disp.x()-width)/2+10)+20;
