@@ -1762,7 +1762,6 @@ void turn_info::recall()
 	}
 }
 
-
 void turn_info::speak()
 {
 	//see if this team has any networked friends. If so, then the player can choose to send
@@ -1789,11 +1788,9 @@ void turn_info::speak()
 		cfg["description"] = preferences::login();
 		cfg["message"] = message;
 
-		const unit_map::const_iterator leader = find_leader(units_,gui_.viewing_team()+1);
-		if(leader != units_.end() && !is_observer()) {
-			char buf[50];
-			sprintf(buf,"%d",leader->second.side());
-			cfg["side"] = buf;
+		const int side = is_observer() ? 0 : gui_.viewing_team()+1;
+		if(!is_observer()) {
+			cfg["side"] = lexical_cast<std::string>(side);
 		}
 
 		bool private_message = false;
@@ -1807,7 +1804,7 @@ void turn_info::speak()
 		}
 
 		recorder.speak(cfg);
-		gui_.add_chat_message(leader->second.description(),leader->second.side(),message,
+		gui_.add_chat_message(cfg["description"],side,message,
 			                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
 	}
 }
