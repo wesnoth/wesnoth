@@ -24,6 +24,11 @@
 
 #include <signal.h>
 
+#ifndef WIN32
+#include <sys/types.h>
+#include <unistd.h>
+#endif
+
 namespace {
 
 config construct_error(const std::string& msg)
@@ -902,6 +907,20 @@ int main(int argc, char** argv)
 			}
 
 			fifo_path = argv[arg];
+		} else if(val == "--daemon" || val == "-d") {
+#ifdef WIN32
+			std::cerr << "Running as a daemon is not supported on this platform\n";
+			return -1;
+#else
+			const pid_t pid = fork();
+			if(pid < 0) {
+				std::cerr << "Could not fork and run as a daemon\n";
+				return -1;
+			} else {
+				std::cout << "Started wesnothd as a daemon with process id " << pid << "\n";
+				return 0;
+			}
+#endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
