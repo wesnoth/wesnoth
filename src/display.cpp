@@ -74,7 +74,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	invalidateAll_(true), invalidateUnit_(true),
 	invalidateGameStatus_(true), panelsDrawn_(false),
 	currentTeam_(0), activeTeam_(0), hideEnergy_(false),
-	deadAmount_(ftofxp(0.0)), advancingAmount_(0.0), updatesLocked_(0),
+	deadAmount_(ftofxp(0.0)), advancingAmount_(0.0),
 	turbo_(false), grid_(false), sidebarScaling_(1.0),
 	theme_(theme_cfg,screen_area()), builder_(cfg, level, map),
 	first_turn_(true), in_game_(false), map_labels_(*this,map),
@@ -82,7 +82,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	fps_handle_(0)
 {
 	if(non_interactive())
-		updatesLocked_++;
+		screen_.lock_updates(true);
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
@@ -419,7 +419,7 @@ void display::default_zoom()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	if(update_locked() || (check_fogged && fogged(x,y)))
+	if(screen_.update_locked() || (check_fogged && fogged(x,y)))
 		return;
 
 	const gamemap::location loc(x,y);
@@ -517,7 +517,7 @@ void display::bounds_check_position()
 
 void display::redraw_everything()
 {
-	if(update_locked() || teams_.empty())
+	if(screen_.update_locked() || teams_.empty())
 		return;
 
 	bounds_check_position();
@@ -686,7 +686,7 @@ void display::draw(bool update,bool force)
 
 void display::update_display()
 {
-	if(updatesLocked_ > 0)
+	if(screen_.update_locked())
 		return;
 
 	if(preferences::show_fps()) {
@@ -1118,7 +1118,7 @@ void display::draw_halo_on_tile(int x, int y)
 void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		fixed_t highlight_ratio, Uint32 blend_with)
 {
-	if(updatesLocked_)
+	if(screen_.update_locked())
 		return;
 
 	const gamemap::location loc(x,y);
@@ -1383,7 +1383,7 @@ void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACEN
 
 void display::draw_tile(int x, int y, surface unit_image, fixed_t alpha, Uint32 blend_to)
 {
-	if(updatesLocked_)
+	if(screen_.update_locked())
 		return;
 
 	draw_halo_on_tile(x,y);
@@ -2041,19 +2041,6 @@ void display::set_advancing_unit(const gamemap::location& loc, double amount)
 	draw_tile(loc.x,loc.y);
 }
 
-void display::lock_updates(bool value)
-{
-	if(value == true)
-		++updatesLocked_;
-	else
-		--updatesLocked_;
-}
-
-bool display::update_locked() const
-{
-	return updatesLocked_ > 0;
-}
-
 bool display::turbo() const
 {
 	bool res = turbo_;
@@ -2162,7 +2149,7 @@ void display::create_buttons()
 
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
-		gui::button b(*this,i->title(),gui::button::TYPE_PRESS,i->image());
+		gui::button b(screen_,i->title(),gui::button::TYPE_PRESS,i->image());
 		const SDL_Rect& loc = i->location(screen_area());
 		b.set_location(loc.x,loc.y);
 

@@ -265,13 +265,9 @@ public:
 	//by amount.
 	void set_advancing_unit(const gamemap::location& loc, double amount);
 
-	//function to stop the screen being redrawn. Anything that happens while
-	//the update is locked will be hidden from the user's view.
-	//note that this function is re-entrant, meaning that if lock_updates(true)
-	//is called twice, lock_updates(false) must be called twice to unlock
-	//updates.
-	void lock_updates(bool value);
-	bool update_locked() const;
+	//compat methods to be dropped after full migration
+	void lock_updates(bool value) {screen_.lock_updates(value); };
+	bool update_locked() const {return screen_.update_locked(); };
 
 	//functions to set/get whether 'turbo' mode is on. When turbo mode is on,
 	//everything moves much faster.
@@ -451,8 +447,6 @@ private:
 	gamemap::location advancingUnit_;
 	double advancingAmount_;
 
-	int updatesLocked_;
-
 	bool turbo_, grid_;
 	double sidebarScaling_;
 
@@ -501,31 +495,6 @@ private:
 
 	//the handle for the label which displays fps
 	int fps_handle_;
-};
-
-//an object which will lock the display for the duration of its lifetime.
-struct update_locker
-{
-	update_locker(display& d, bool lock=true) : disp(d), unlock(lock) {
-		if(lock) {
-			disp.lock_updates(true);
-		}
-	}
-
-	~update_locker() {
-		unlock_update();
-	}
-
-	void unlock_update() {
-		if(unlock) {
-			disp.lock_updates(false);
-			unlock = false;
-		}
-	}
-
-private:
-	display& disp;
-	bool unlock;
 };
 
 bool angle_is_northern(size_t n);

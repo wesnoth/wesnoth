@@ -480,7 +480,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				const hotkey::basic_handler key_events_handler(&gui);
 
 				LOG_NG << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui,recorder.skipping());
+				update_locker lock_display(gui.video(),recorder.skipping());
 				events::raise_draw_event();
 				if(!loading_game) {
 					game_events::fire("start");
@@ -706,7 +706,7 @@ redo_turn:
 
 			{
 				LOG_NG << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
-				update_locker lock_display(gui,recorder.skipping());
+				update_locker lock_display(gui.video(),recorder.skipping());
 				const std::string turn_num = event_stream.str();
 				game_events::set_variable("turn_number",turn_num);
 				game_events::fire("turn " + turn_num);

@@ -85,6 +85,14 @@ class CVideo {
 	void clear_help_string(int handle);
 	void clear_all_help_strings();
 
+	//function to stop the screen being redrawn. Anything that happens while
+	//the update is locked will be hidden from the user's view.
+	//note that this function is re-entrant, meaning that if lock_updates(true)
+	//is called twice, lock_updates(false) must be called twice to unlock
+	//updates.
+	void lock_updates(bool value);
+	bool update_locked() const;
+
 private:
 
 	bool mode_changed_;
@@ -96,6 +104,33 @@ private:
 
 	//variables for help strings
 	int help_string_;
+
+	int updatesLocked_;
+};
+
+//an object which will lock the display for the duration of its lifetime.
+struct update_locker
+{
+	update_locker(CVideo& v, bool lock=true) : video(v), unlock(lock) {
+		if(lock) {
+			video.lock_updates(true);
+		}
+	}
+
+	~update_locker() {
+		unlock_update();
+	}
+
+	void unlock_update() {
+		if(unlock) {
+			video.lock_updates(false);
+			unlock = false;
+		}
+	}
+
+private:
+	CVideo& video;
+	bool unlock;
 };
 
 #endif

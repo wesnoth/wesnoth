@@ -624,7 +624,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	const set_random_generator generator_setter(&replayer);
 
-	update_locker lock_update(disp,replayer.skipping());
+	update_locker lock_update(disp.video(),replayer.skipping());
 
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;

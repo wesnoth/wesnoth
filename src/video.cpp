@@ -202,7 +202,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0)
+CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
@@ -213,7 +213,7 @@ CVideo::CVideo() : bpp(0), fake_screen(false), help_string_(0)
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
-		 : bpp(0), fake_screen(false), help_string_(0)
+		 : bpp(0), fake_screen(false), help_string_(0), updatesLocked_(0)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -350,6 +350,19 @@ void CVideo::flip()
 	events::raise_volatile_undraw_event();
 	font::undraw_floating_labels(frameBuffer);
 	halo::unrender();
+}
+
+void CVideo::lock_updates(bool value)
+{
+	if(value == true)
+		++updatesLocked_;
+	else
+		--updatesLocked_;
+}
+
+bool CVideo::update_locked() const
+{
+	return updatesLocked_ > 0;
 }
 
 void CVideo::lock()
