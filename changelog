@@ -7,6 +7,7 @@ CVS HEAD
    * forests
    * attack icons
    * unit images and frames
+   * teleportation animations
  * tutorial update
  * scenario balancing for 'Heir to the Throne' campaign
    * Return to Wesnoth
@@ -14,6 +15,9 @@ CVS HEAD
    * pretty much all scenarios
  * scenario balancing for 'The Eastern Invasion' campaign
    * An Unexpected Appearance
+ * unit description updates
+ * drakefoot movetype
+ * remade Drakes and removed obsolete ones
  * new units:
    * Drake Flare
    * Drake Gladiator
@@ -29,21 +33,6 @@ CVS HEAD
    * Saurian Tribalist
    * Sky Drake
    * Troll Rocklobber
- * unit balancing:
-   * Drake Burner: advances also to Drake Flare
-   * Drake Clasher: reduced experience needed to advance, advances also to Drake Gladiator
-   * Fire Drake: advances now to Inferno Drake
-   * Drake Flameheart: increased movement, gave leadership, replaced claw attack with sword attack, reduced ranged attack damage
-   * Drake Slasher: increased hitpoints, reduced experience needed to advance, reduced cost, increased sword attack damage and reduced number of strikes, increased spear attack damage, reduced number of spear attack strikes and made it first strike
- * removed legacy units
-   * Drake Fighter
-   * Drake Guard
-   * Drake Hatchling
-   * Drake Mage
-   * Drake Slave
-   * Drake Warmage
-   * Drake Warrior
-   * Drake Worker
  * language fixes and polishing (english)
  * updated translations:
    * basque
@@ -68,6 +57,7 @@ CVS HEAD
    * gave Saurian to Drakes
  * added new AI parameter: attack_depth
  * made units only die if they have 0 or less hitpoints after the event has been fired
+ * tweaked Drake recruitment patterns (AI)
  * fixed 'make clean' not cleaning everything 
  * fixed 'make uninstall' not working because of syntax error
  * fixed 'system default language' selection
@@ -87,10 +77,14 @@ CVS HEAD
  * fixed defeat conditions on 'The Eastern Invasion: Escape Tunnel' scenario
  * fixed incorrectly using 'Heavy Infantry' instead of 'Heavy Infantryman' in some of The Eastern Invasion scenarios
  * fixed knight appearances bug on 'The Eastern Invasion: Mal-Ravalans Capital' scenario
+ * fixed double '{BIGMAP_BLACKWATER_PORT}' in 'Heir to the Throne: Blackwater Port' scenario
+ * fixed gold and load game problem
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
+ * support for teleportation animations
+ * preparations for removing obsolete units.
  * code cleanups
 
 Version 0.8.4:
