@@ -186,6 +186,14 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	return best_loc;
 }
 
+static int compute_damage(int base_damage, int bonus, int divisor)
+{
+	// we want to round (base_damage * bonus / divisor) to the closest integer
+	// but up or down towards base_damage
+	int rounding = divisor / 2 - (bonus < divisor ? 0 : 1);
+	return maximum<int>(1, (base_damage * bonus + rounding) / divisor);
+}
+
 battle_stats evaluate_battle_stats(const gamemap& map,
                                    const gamemap::location& attacker,
                                    const gamemap::location& defender,
@@ -310,32 +318,20 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			res.chance_to_hit_attacker = 70;
 		}
 
-		int percent = 0;
+		int bonus = 100;
+		int divisor = 100;
 
 		const int base_damage = defend.damage();
 		const int resistance_modifier = a->second.damage_against(defend);
 		
-		//res.damage_attacker_takes = (base_damage * (100+modifier))/100;
-
 		if (strings) {
 			std::stringstream str_base;
 			str_base << _("base damage") << COLUMN_SEPARATOR << base_damage;
 			strings->defend_calculations.push_back(str_base.str());
 		}
 
-		const int resist = resistance_modifier - 100;
-		percent += resist;
-
-		if (strings && resist != 0) {
-			std::stringstream str_resist;
-			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs"))
-			           << ' ' << gettext(defend.type().c_str()) << EMPTY_COLUMN
-			           << (resist > 0 ? "+" : "") << resist << '%';
-			strings->defend_calculations.push_back(str_resist.str());
-		}
-
 		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
-		percent += tod_modifier;
+		bonus += tod_modifier;
 
 		if (strings && tod_modifier != 0) {
 			std::stringstream str_mod;
@@ -346,7 +342,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 		int leader_bonus = 0;
 		if (under_leadership(units, defender, &leader_bonus).valid()) {
-			percent += leader_bonus;
+			bonus += leader_bonus;
 
 			if (strings) {
 				std::stringstream str;
@@ -356,7 +352,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 
 		if (charge) {
-			percent = (100+percent)*2 - 100;
+			bonus *= 2;
 
 			if (strings) {
 				std::stringstream str;
@@ -365,20 +361,26 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 			}
 		}
 
-		//we want to round the absolute value of the difference down
-		//at 0.5 and below
-		bool const is_negative = percent < 0;
-		int difference = is_negative ? -percent : percent;
-		difference = (difference * base_damage + 49) / 100;
-		if (is_negative) difference = -difference;
+		if (strings && resistance_modifier != 100) {
+			const int resist = resistance_modifier - 100;
+			std::stringstream str_resist;
+			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs"))
+			           << ' ' << gettext(defend.type().c_str()) << EMPTY_COLUMN
+			           << (resist > 0 ? "+" : "") << resist << '%';
+			strings->defend_calculations.push_back(str_resist.str());
+		}
 
-		res.damage_attacker_takes = maximum<int>(1,base_damage + difference);
+		bonus *= resistance_modifier;
+		divisor *= 100;
+		const int final_damage = compute_damage(base_damage, bonus, divisor);
+		res.damage_attacker_takes = final_damage;
 
 		if (strings) {
+			const int difference = final_damage - base_damage;
 			std::stringstream str;
 			str << _("total damage") << COLUMN_SEPARATOR << res.damage_attacker_takes
-			    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
-			    << "% (" << (difference >= 0 ? "+" : "") << difference << ')';
+			    << COLUMN_SEPARATOR << (difference >= 0 ? "+" : "")
+			    << difference;
 			strings->defend_calculations.push_back(str.str());
 		}
 
@@ -416,7 +418,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if(res.chance_to_hit_defender < 60 && res.attacker_special == marksman_string)
 		res.chance_to_hit_defender = 60;
 
-	int percent = 0;
+	int bonus = 100;
+	int divisor = 100;
 
 	const int base_damage = attack.damage();
 	const int resistance_modifier = d->second.damage_against(attack);
@@ -427,20 +430,9 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		strings->attack_calculations.push_back(str_base.str());
 	}
 
-	const int resist = resistance_modifier - 100;
-	percent += resist;
-
-	if (strings && resist != 0) {
-		std::stringstream str_resist;
-		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
-		           << ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
-		           << (resist > 0 ? "+" : "") << resist << '%';
-		strings->attack_calculations.push_back(str_resist.str());
-	}
-
 	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
 
-	percent += tod_modifier;
+	bonus += tod_modifier;
 
 	if (strings && tod_modifier != 0) {
 		std::stringstream str_mod;
@@ -451,7 +443,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 
 	int leader_bonus = 0;
 	if (under_leadership(units,attacker,&leader_bonus).valid()) {
-		percent += leader_bonus;
+		bonus += leader_bonus;
 		
 		if (strings) {
 			std::stringstream str;
@@ -461,8 +453,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 
 	if (charge) {
-		percent = (100+percent)*2 - 100;
-
+		bonus *= 2;
 		if (strings) {
 			std::stringstream str;
 			str << _("charge") << EMPTY_COLUMN << _("Doubled");
@@ -471,7 +462,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 
 	if (backstab) {
-		percent = (100+percent)*2 - 100;
+		bonus *= 2;
 		if (strings) {
 			std::stringstream str;
 			str << _("backstab") << EMPTY_COLUMN << _("Doubled");
@@ -480,7 +471,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	}
 
 	if (steadfast) {
-		percent = (100+percent)/2 - 100;
+		divisor *= 2;
 		if (strings) {
 			std::stringstream str;
 			str << _("steadfast") << EMPTY_COLUMN << _("Halved");
@@ -488,19 +479,26 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 		}
 	}
 
-	//we want to round the absolute value of the difference down
-	//at 0.5 and below
-	bool const is_negative = percent < 0;
-	int difference = is_negative ? -percent : percent;
-	difference = (difference * base_damage + 49) / 100;
-	if (is_negative) difference = -difference;
+	if (strings && resistance_modifier != 100) {
+		const int resist = resistance_modifier - 100;
+		std::stringstream str_resist;
+		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
+		           << ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
+		           << (resist > 0 ? "+" : "") << resist << '%';
+		strings->attack_calculations.push_back(str_resist.str());
+	}
 
-	res.damage_defender_takes = maximum<int>(1,base_damage + difference);
+	bonus *= resistance_modifier;
+	divisor *= 100;
+	const int final_damage = compute_damage(base_damage, bonus, divisor);
+	res.damage_defender_takes = final_damage;
+
 	if (strings) {
+		const int difference = final_damage - base_damage;
 		std::stringstream str;
 		str << _("total damage") << COLUMN_SEPARATOR << res.damage_defender_takes
-		    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
-		    << "% (" << (difference >= 0 ? "+" : "") << difference << ')';
+		    << COLUMN_SEPARATOR << (difference >= 0 ? "+" : "")
+		    << difference;
 		strings->attack_calculations.push_back(str.str());
 	}
 
