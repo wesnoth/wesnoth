@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+#include "game.hpp"
 #include "pathfind.hpp"
 
 #include <cmath>
@@ -76,19 +77,19 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 	res->y = a.y-1;
 	++res;
 	res->x = a.x+1;
-	res->y = a.y + ((a.x%2) == 0 ? -1:0);
+	res->y = a.y - is_even(a.x);
 	++res;
 	res->x = a.x+1;
-	res->y = a.y + ((a.x%2) == 0 ? 0:1);
+	res->y = a.y + is_odd(a.x);
 	++res;
 	res->x = a.x;
 	res->y = a.y+1;
 	++res;
 	res->x = a.x-1;
-	res->y = a.y + ((a.x%2) == 0 ? 0:1);
+	res->y = a.y + is_odd(a.x);
 	++res;
 	res->x = a.x-1;
-	res->y = a.y + ((a.x%2) == 0 ? -1:0);
+	res->y = a.y - is_even(a.x);
 }
 
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)

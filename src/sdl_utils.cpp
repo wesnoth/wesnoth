@@ -13,6 +13,7 @@
 
 #include <iostream>
 
+#include "game.hpp"
 #include "sdl_utils.hpp"
 
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
@@ -33,8 +34,8 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	const double yratio = static_cast<double>(surface->h)/
 			              static_cast<double>(h);
 
-	const int srcxpad = (surface->w%2) == 1 ? 1:0;
-	const int dstxpad = (dest->w%2) == 1 ? 1:0;
+	const int srcxpad = is_odd(surface->w);
+	const int dstxpad = is_odd(dest->w);
 
 	double ysrc = 0.0;
 	for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {

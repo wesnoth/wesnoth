@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+#include "game.hpp"
 #include "map.hpp"
 
 #include <algorithm>
@@ -96,11 +97,11 @@ gamemap::location gamemap::location::get_direction(
 {
 	switch(dir) {
 		case NORTH:      return gamemap::location(x,y-1);
-		case NORTH_EAST: return gamemap::location(x+1,y-((x%2) == 0 ? 1:0));
-		case SOUTH_EAST: return gamemap::location(x+1,y+((x%2) == 0 ? 0:1));
+		case NORTH_EAST: return gamemap::location(x+1,y-is_even(x));
+		case SOUTH_EAST: return gamemap::location(x+1,y+is_odd(x));
 		case SOUTH:      return gamemap::location(x,y+1);
-		case SOUTH_WEST: return gamemap::location(x-1,y+((x%2) == 0 ? 0:1));
-		case NORTH_WEST: return gamemap::location(x-1,y+((x%2) == 0 ? 1:0));
+		case SOUTH_WEST: return gamemap::location(x-1,y+is_odd(x));
+		case NORTH_WEST: return gamemap::location(x-1,y+is_even(x));
 		default:
 			assert(false);
 			return gamemap::location();

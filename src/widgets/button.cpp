@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "button.hpp"
+#include "../game.hpp"
 #include "../font.hpp"
 #include "../util.hpp"
 
@@ -160,10 +161,8 @@ bool button::hit(int x, int y) const
 	   y > y_ && y < y_ + image_->h) {
 		x -= x_;
 		y -= y_;
-		int row_width = image_->w;
-		if((row_width%2) == 1)
-			++row_width;
-
+		int row_width = image_->w + is_odd(image_->w);
+	
 		if(*(reinterpret_cast<short*>(image_->pixels)+y*row_width+x) != 0)
 			return true;
 	}

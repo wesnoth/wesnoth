@@ -13,6 +13,7 @@
 #include "actions.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "game.hpp"
 #include "game_config.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
@@ -149,7 +150,7 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 	const double xtile = xpos_/(zoom_*0.75) +
 			               static_cast<double>(xclick)/(zoom_*0.75) - 0.25;
 	const double ytile = ypos_/zoom_ + static_cast<double>(yclick)/zoom_
-	                      + (((static_cast<int>(xtile)%2) == 1) ? -0.5:0.0);
+	                      + (is_odd(xtile) ? -0.5:0.0);
 
 	return gamemap::location(static_cast<int>(xtile),static_cast<int>(ytile));
 }
@@ -1038,7 +1039,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		highlight_ratio = deadAmount_;
 	}
 
-	const int xpad = (surface->w%2) == 1 ? 1:0;
+	const int xpad = is_odd(surface->w);
 
 	SDL_Surface* const dst = screen_.getSurface();
 
@@ -1106,7 +1107,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		for(std::vector<SDL_Surface*>::const_iterator ov = overlaps.begin();
 		    ov != overlaps.end(); ++ov) {
 			const int srcy = minimum<int>(yloc,(*ov)->h-1);
-			const int w = (*ov)->w + (((*ov)->w%2) == 1 ? 1 : 0);
+			const int w = (*ov)->w + is_odd((*ov)->w);
 			short* beg = reinterpret_cast<short*>((*ov)->pixels) +
 			             srcy*w + (xoffset > xsrc ? xoffset:xsrc);
 			short* end = beg + len;
@@ -1189,7 +1190,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		short* startenergy = NULL;
 
-		const int energy_w = energy_image->w + ((energy_image->w%2) == 1 ? 1:0);
+		const int energy_w = energy_image->w + is_odd(energy_image->w);
 		if(yloc + skip < energy_image->h) {
 			startenergy = reinterpret_cast<short*>(energy_image->pixels) +
 			 (yloc+skip)*energy_w + (xoffset > xsrc ? xoffset:xsrc);
@@ -1368,7 +1369,7 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 	//lines are padded to always fit on 4-byte boundaries, so see if there
 	//is padding at the beginning of every line
-	const int padding = (surface->w%2) == 1 ? 1:0;
+	const int padding = is_odd(surface->w);
 	const int surface_width = surface->w + padding;
 
 	const short* src = reinterpret_cast<short*>(surface->pixels) +
@@ -1541,7 +1542,7 @@ SDL_Surface* display::getMinimap(int w, int h)
 		if(minimap_ == NULL)
 			return NULL;
 
-		const int xpad = (minimap_->w%2) == 1 ? 1:0;
+		const int xpad = is_odd(minimap_->w);
 
 		short* data = reinterpret_cast<short*>(minimap_->pixels);
 		for(int y = 0; y != map_.y(); ++y) {
@@ -1629,7 +1630,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(a,update_tiles);
 
-	const bool vflip = b.y > a.y || b.y == a.y && (a.x%2) == 0;
+	const bool vflip = b.y > a.y || b.y == a.y && is_even(a.x);
 	const bool hflip = b.x < a.x;
 	const attack_type::FRAME_DIRECTION dir =
 	         (a.x == b.x) ? attack_type::VERTICAL:attack_type::DIAGONAL;
@@ -1996,7 +1997,7 @@ void display::draw_unit(int x, int y, const SDL_Surface* image,
 	if(x > w || y > h)
 		return;
 
-	const int image_w = image->w + ((image->w%2) == 1 ? 1 : 0);
+	const int image_w = image->w + is_odd(image->w);
 
 	SDL_Surface* const screen = screen_.getSurface();
 

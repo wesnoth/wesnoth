@@ -12,6 +12,7 @@
 */
 #include "actions.hpp"
 #include "display.hpp"
+#include "game.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "key.hpp"
@@ -631,7 +632,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			u.heal(1);
 
 			if(show_healing) {
-				if((h->second%2) == 1)
+				if(is_odd(h->second))
 					disp.draw_tile(loc.x,loc.y,NULL,0.5,heal_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
@@ -647,7 +648,7 @@ void calculate_healing(display& disp, const gamemap& map,
 			u.gets_hit(1);
 
 			if(show_healing) {
-				if((h->second%2) == 1)
+				if(is_odd(h->second))
 					disp.draw_tile(loc.x,loc.y,NULL,0.5,damage_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
