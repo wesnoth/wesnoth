@@ -11,9 +11,7 @@
    See the COPYING file for more details.
 */
 #include "actions.hpp"
-#include "ai.hpp"
-#include "ai_attack.hpp"
-#include "ai_move.hpp"
+#include "ai_interface.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "log.hpp"

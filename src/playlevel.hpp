@@ -14,7 +14,7 @@
 #define PLAY_LEVEL_HPP_INCLUDED
 
 #include "actions.hpp"
-#include "ai.hpp"
+#include "ai_interface.hpp"
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"

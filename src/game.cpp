@@ -20,7 +20,7 @@
 
 #include "about.hpp"
 #include "actions.hpp"
-#include "ai.hpp"
+#include "ai_interface.hpp"
 #include "config.hpp"
 #include "cursor.hpp"
 #include "dialogs.hpp"
