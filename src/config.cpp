@@ -146,9 +146,11 @@ void internal_preprocess_file(const std::string& fname,
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
 			if(defines_map.count(symbol) != 0) {
-				const preproc_define& val = defines_map[newfilename];
+				const preproc_define& val = defines_map[symbol];
 				if(val.arguments.size() != items.size()-1) {
-					std::cerr << "error: preprocessor symbol '" << symbol << "' has incorrect number of arguments\n";
+					std::cerr << "error: preprocessor symbol '" << symbol << "' has "
+					          << (items.size()-1) << " arguments, "
+							  << val.arguments.size() << " expected\n";
 				}
 
 				std::string str = val.value;
