@@ -176,7 +176,7 @@ bool show_intro_part(display& screen, const config& part,
 
 		if(pass == false) {
 			for(int i = 0; i != 50; ++i) {
-				if(key[SDLK_ESCAPE]) {
+				if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
 					std::cerr << "escape pressed..\n";
 					return false;
 				}
@@ -184,6 +184,8 @@ bool show_intro_part(display& screen, const config& part,
 				SDL_Delay(delay/50);
 
 				events::pump();
+				events::raise_process_event();
+				events::raise_draw_event();
 
 				int a, b;
 				const int mouse_flags = SDL_GetMouseState(&a,&b);
@@ -197,7 +199,7 @@ bool show_intro_part(display& screen, const config& part,
 			}
 		}
 
-		if(key[SDLK_ESCAPE]) {
+		if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
 			std::cerr << "escape pressed..\n";
 			pass = true;
 			continue;
@@ -271,18 +273,17 @@ bool show_intro_part(display& screen, const config& part,
 
 		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
 
-		if(keydown && !last_key ||
-				next_button.process(mousex,mousey,left_button)) {
-			if(skip == true)
+		if(keydown && !last_key || next_button.pressed()) {
+			if(skip == true || j == story_chars.end()) {
 				break;
-			else
+			} else {
 				skip = true;
+			}
 		}
 
 		last_key = keydown;
 
-		if(key[SDLK_ESCAPE] ||
-				skip_button.process(mousex,mousey,left_button))
+		if(key[SDLK_ESCAPE] || skip_button.process(mousex,mousey,left_button))
 			return false;
 
 		events::pump();

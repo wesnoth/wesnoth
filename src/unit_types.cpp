@@ -500,7 +500,19 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
                 : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
 {
-	gender_ = cfg["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE;
+	const std::vector<std::string> genders = config::split(cfg["gender"]);
+	for(std::vector<std::string>::const_iterator i = genders.begin();
+	    i != genders.end(); ++i) {
+		if(*i == "male") {
+			genders_.push_back(unit_race::MALE);
+		} else if(*i == "female") {
+			genders_.push_back(unit_race::FEMALE);
+		}
+	}
+
+	if(genders_.empty()) {
+		genders_.push_back(unit_race::MALE);
+	}
 
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
@@ -861,7 +873,10 @@ const std::vector<config*>& unit_type::possible_traits() const
 	return possibleTraits_;
 }
 
-unit_race::GENDER unit_type::gender() const { return gender_; }
+const std::vector<unit_race::GENDER>& unit_type::genders() const
+{
+	return genders_;
+}
 
 const std::string& unit_type::race() const
 {

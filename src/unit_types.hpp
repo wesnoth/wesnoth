@@ -223,7 +223,7 @@ public:
 
 	const std::vector<config*>& possible_traits() const;
 
-	unit_race::GENDER gender() const;
+	const std::vector<unit_race::GENDER>& genders() const;
 
 	const std::string& race() const;
 
@@ -252,7 +252,7 @@ private:
 
 	const std::vector<config*>& possibleTraits_;
 
-	unit_race::GENDER gender_;
+	std::vector<unit_race::GENDER> genders_;
 
 	struct defensive_animation
 	{

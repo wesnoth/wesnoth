@@ -1100,7 +1100,12 @@ config* config::child(const std::string& key)
 
 const config* config::child(const std::string& key) const
 {
-	return const_cast<config*>(this)->child(key);
+	const child_map::const_iterator i = children.find(key);
+	if(i != children.end() && i->second.empty() == false) {
+		return i->second.front();
+	} else {
+		return NULL;
+	}
 }
 
 config& config::add_child(const std::string& key)

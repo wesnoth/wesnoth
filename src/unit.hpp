@@ -53,6 +53,7 @@ public:
 	bool get_experience(int xp);
 	bool advances() const;
 	int side() const;
+	unit_race::GENDER gender() const;
 	void set_side(int new_side);
 	double alpha() const;
 	void make_recruiter();
@@ -164,6 +165,8 @@ private:
 	int maxExperience_, backupMaxExperience_;
 
 	int side_;
+
+	unit_race::GENDER gender_;
 
 	//is set to the number of moves left, ATTACKED if attacked, 
 	// MOVED if moved and then pressed "end turn"

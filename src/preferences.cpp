@@ -85,15 +85,25 @@ display_manager::~display_manager()
 	disp = NULL;
 }
 
+namespace {
+	bool is_fullscreen = false;
+}
+
 bool fullscreen()
 {
-	const string_map::const_iterator fullscreen =
+	static bool first_time = true;
+	if(first_time) {
+		const string_map::const_iterator fullscreen =
 	                                   prefs.values.find("fullscreen");
-	return fullscreen == prefs.values.end() || fullscreen->second == "true";
+		is_fullscreen = fullscreen == prefs.values.end() || fullscreen->second == "true";
+	}
+
+	return is_fullscreen;
 }
 
 void set_fullscreen(bool ison)
 {
+	is_fullscreen = ison;
 	prefs["fullscreen"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
@@ -344,9 +354,9 @@ namespace {
 
 int scroll_speed()
 {
-	static const int default_value = 100;
+	static const int default_value = 50;
 	int value = 0;
-	string_map::const_iterator i = prefs.values.find("scroll");
+	const string_map::const_iterator i = prefs.values.find("scroll");
 	if(i != prefs.values.end() && i->second.empty() == false) {
 		value = atoi(i->second.c_str());
 	}

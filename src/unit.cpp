@@ -64,7 +64,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit) :
                backupMaxHitpoints_(t->hitpoints()), experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
-               side_(side), moves_(0), user_end_turn_(false), facingLeft_(side != 1),
+               side_(side), gender_(unit_race::MALE), moves_(0),
+               user_end_turn_(false), facingLeft_(side != 1),
 			   maxMovement_(t->movement()),
 			   backupMaxMovement_(t->movement()),
 			   recruit_(false), attacks_(t->attacks()),
@@ -73,6 +74,11 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit) :
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
+
+	const std::vector<unit_race::GENDER>& genders = t->genders();
+	if(genders.empty() == false) {
+		gender_ = use_traits ? genders[get_random()%genders.size()] : genders.front();
+	}
 
 	if(use_traits) {
 		//units that don't have traits generated are just generic
@@ -92,7 +98,8 @@ unit::unit(const unit_type* t, const unit& u) :
 			   experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
-               side_(u.side()), moves_(u.moves_), user_end_turn_(false), facingLeft_(u.facingLeft_),
+               side_(u.side()), gender_(u.gender_), moves_(u.moves_),
+               user_end_turn_(false), facingLeft_(u.facingLeft_),
 			   maxMovement_(t->movement()),
 			   backupMaxMovement_(t->movement()),
 			   underlying_description_(u.underlying_description_),
@@ -199,6 +206,11 @@ void unit::rename(const std::string& new_description)
 int unit::side() const
 {
 	return side_;
+}
+
+unit_race::GENDER unit::gender() const
+{
+	return gender_;
 }
 
 void unit::set_side(int new_side)
@@ -484,7 +496,7 @@ bool unit::matches_filter(const config& cfg) const
 
 	if(gender.empty() == false) {
 		const unit_race::GENDER gender_type = gender == "female" ? unit_race::FEMALE : unit_race::MALE;
-		if(gender_type != this->type().gender()) {
+		if(gender_type != this->gender()) {
 			return false;
 		}
 	}
@@ -584,8 +596,23 @@ void unit::read(const game_data& data, const config& cfg)
 	backupMaxExperience_ = type_->experience_needed();
 
 	side_ = atoi(cfg["side"].c_str());
-	if(side_ <= 0)
+	if(side_ <= 0) {
 		side_ = 1;
+	}
+
+	const std::string& gender = cfg["gender"];
+	if(gender == "male") {
+		gender_ = unit_race::MALE;
+	} else if(gender == "female") {
+		gender_ = unit_race::FEMALE;
+	} else {
+		const std::vector<unit_race::GENDER>& genders = type_->genders();
+		if(genders.empty() == false) {
+			gender_ = genders.front();
+		} else {
+			gender_ = unit_race::MALE;
+		}
+	}
 
 	validate_side(side_);
 
@@ -690,6 +717,8 @@ void unit::write(config& cfg) const
 	sd << side_;
 	cfg["side"] = sd.str();
 
+	cfg["gender"] = gender_ == unit_race::MALE ? "male" : "female";
+
 	cfg["role"] = role_;
 
 	config status_flags;
@@ -751,8 +780,9 @@ int unit::longest_range() const
 {
 	int res = 0;
 	for(std::vector<attack_type>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
-		if(i->hexes() >= res)
+		if(i->hexes() >= res) {
 			res = i->hexes();
+		}
 	}
 
 	return res;

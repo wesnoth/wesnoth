@@ -162,7 +162,7 @@ void turn_info::turn_slice()
 
 	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
-	const int scroll_threshold = 5;
+	const int scroll_threshold = preferences::fullscreen() ? 5 : 0;
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0,-preferences::scroll_speed());
@@ -1673,7 +1673,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 
 		if(message != "") {
 			string_map symbols;
-			symbols["noun"] = string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"];
+			symbols["noun"] = string_table[u.gender() == unit_race::MALE ? "noun_male" : "noun_female"];
 			message = config::interpolate_variables_into_string(message,&symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
