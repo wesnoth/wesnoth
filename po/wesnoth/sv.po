@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
-"PO-Revision-Date: 2004-12-14 13:46+0100\n"
+"PO-Revision-Date: 2004-12-21 13:10+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -1137,9 +1137,8 @@ msgstr "Standard"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:664
-#, fuzzy
 msgid "Random"
-msgstr "Slumpkarta"
+msgstr "Slumpval"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
@@ -4265,7 +4264,7 @@ msgstr "stridsyxa"
 
 #: data/units/Deathblade.cfg:4
 msgid "Deathblade"
-msgstr ""
+msgstr "Svärdsande"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -4273,6 +4272,9 @@ msgid ""
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
 "about killing as many other as possible with their swirling blades."
 msgstr ""
+"Svärdsandar avskyr de levande och söker förgöra allt som de själva en gång "
+"högaktade. De är dödligt skickliga krigare, och de ser som sitt kall att "
+"döda så många som möjligt med sina virvlande svärd."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -6742,10 +6744,9 @@ msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Ödlefolkets bakhållstrupp"
 
 #: data/units/Saurian_Ambusher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6753,17 +6754,17 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
-"Ödlefolkets krigare är mycket skickliga med spjut. Trots sitt kallblodiga "
-"arv och deras relativa bräcklighet är de högt värderade som spejare, då de "
-"lätt förflyttar sig i oländig terräng och förbi motståndare. Ödlefolkets "
-"krigare har styrkan att dra full nytta av detta faktum."
+"Ödlefolkets bakhållstrupper är mycket skickliga med spjut. Trots sitt "
+"kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
+"spejare, då de lätt förflyttar sig i oländig terräng och förbi motståndare. "
+"Ödlefolkets bakhållstrupper har styrkan att dra full nytta av detta faktum. "
+"De bästa av bakhållstrupperna blir flanktrupper i ödlefolkets armé."
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Ödlefolkets flanktrupp"
 
 #: data/units/Saurian_Flanker.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6771,10 +6772,10 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
-"Ödlefolkets krigare är mycket skickliga med spjut. Trots sitt kallblodiga "
-"arv och deras relativa bräcklighet är de högt värderade som spejare, då de "
-"lätt förflyttar sig i oländig terräng och förbi motståndare. Ödlefolkets "
-"krigare har styrkan att dra full nytta av detta faktum."
+"Ödlefolkets flanktrupper är mycket skickliga med spjut. Trots sitt "
+"kallblodiga arv och deras relativa bräcklighet är de högt värderade som "
+"spejare, då de lätt förflyttar sig i oländig terräng och förbi motståndare. "
+"Ödlefolkets flanktrupper har styrkan att dra full nytta av detta faktum."
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
@@ -6806,7 +6807,6 @@ msgid "Saurian Skirmisher"
 msgstr "Ödlefolkets stigfinnare"
 
 #: data/units/Saurian_Skirmisher.cfg:17
-#, fuzzy
 msgid ""
 "Saurians Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6815,8 +6815,8 @@ msgid ""
 msgstr ""
 "Ödlefolkets stigfinnare är skickliga med spjutet. Trots sitt kallblodiga arv "
 "och deras bräcklighet är de aktade som spejare då de kan förflytta sig i "
-"oländig terräng och ta sig runt fiender. De bästa stigfinnarna blir XXXXXX "
-"bland ödlefolket."
+"oländig terräng och ta sig runt fiender. De bästa stigfinnarna blir får gå "
+"med bland bakhållstrupperna bland ödlefolket."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -7484,7 +7484,6 @@ msgid "+Miscellaneous"
 msgstr "+Diverse"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
 msgstr "+Översättningsamordnare"
 
@@ -7834,19 +7833,16 @@ msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
 #: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Spelet kunde inte sparas"
+msgstr "Spelet kunde inte öppnas: "
 
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "I/O-fel vid läsning från fil"
+msgstr "Fel under spel: "
 
 #: src/game.cpp:172 src/game.cpp:1292
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Spelet kunde inte sparas"
+msgstr "Kartan kunde inte öppnas: "
 
 #: src/game.cpp:193
 msgid "Do you want to save your game?"
@@ -7854,7 +7850,7 @@ msgstr "Vill du spara ditt spel?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Okänt scenario: "
 
 #: src/game.cpp:603
 msgid "The Battle for Wesnoth"
@@ -7869,9 +7865,8 @@ msgstr ""
 "spelet ändå?"
 
 #: src/game.cpp:828 src/game.cpp:831
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Filen du försöker öppna är felaktig"
+msgstr "Filen du försöker öppna är felaktig: '"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
@@ -8064,12 +8059,11 @@ msgstr "Välj språk"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Fel vid öppnande av konfigurationsfiler: '"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Spelet är slut."
+msgstr "' (Spelet kommer nu att avslutas)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -8338,7 +8332,7 @@ msgstr "Era"
 
 #: src/multiplayer.cpp:343
 msgid "You must enter a name."
-msgstr ""
+msgstr "Du måste ange ett namn."
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -8550,7 +8544,7 @@ msgstr "Lediga platser"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<inga spel pågår>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
