@@ -7,7 +7,7 @@ syntaxerror() {
 }
 
 cutoutf="cutout.png"
-maskf="mask.png"
+#maskf="mask.png"
 output="castle"
 basename="castle"
 template="castle-walls.tmpl"
@@ -19,11 +19,11 @@ while [ $# -ne 0 ]; do
         cutoutf="$1"
         shift
         ;;
-	-m* )
-        shift
-	maskf="$1"
-	shift
-	;;
+#	-m* )
+#        shift
+#	maskf="$1"
+#	shift
+#	;;
 	-o* )
 	shift
 	output="$1"
@@ -56,14 +56,14 @@ fi
 # File location definitions
 
 tmpdir=`mktemp -d /tmp/mk-castle.XXXXXXX`
-mask="$tmpdir/mask.pgm"
+#mask="$tmpdir/mask.pgm"
 cutout="$tmpdir/cutout.pbm"
 castle="$tmpdir/castle.ppm"
 alpha="$tmpdir/alpha.pgm"
 
 # Creates pnm files from the original png files
 
-pngtopnm "$maskf" | ppmtopgm | pnminvert > "$mask"
+#pngtopnm "$maskf" | ppmtopgm | pnminvert > "$mask"
 pngtopnm "$cutoutf" > "$cutout"
 pngtopnm "$file" > "$castle"
 pngtopnm -alpha "$file" > "$alpha"
