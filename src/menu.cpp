@@ -707,6 +707,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 	bool first_time = true;
 
 	for(;;) {
+		pump_events();
+
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
@@ -814,8 +816,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 				}
 			}
 		}
-
-		pump_events();
 	}
 
 	return -1;

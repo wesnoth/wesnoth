@@ -12,6 +12,7 @@
 */
 #include <algorithm>
 #include <cassert>
+#include <cctype>
 #include <fstream>
 #include <iostream>
 #include <stack>
@@ -444,7 +445,7 @@ void config::read(const std::string& data,
 				} else if(c == '\n' && !in_quotes) {
 					state = IN_ELEMENT;
 					elements.top()->values.insert(
-							std::pair<std::string,std::string>(var,value));
+					   std::pair<std::string,std::string>(var,strip(value)));
 					var = "";
 					value = "";
 				} else {
@@ -510,6 +511,14 @@ std::vector<std::string> config::split(const std::string& val)
 		res.push_back(new_val);
 
 	return res;
+}
+
+std::string& config::strip(std::string& str)
+{
+	str.erase(str.begin(),std::find_if(str.begin(),str.end(),isgraph));
+	str.erase(std::find_if(str.rbegin(),str.rend(),isgraph).base(),str.end());
+
+	return str;
 }
 
 bool config::has_value(const std::string& values, const std::string& val)

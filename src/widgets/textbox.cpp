@@ -29,7 +29,7 @@ textbox::textbox(display& disp, int width, const std::string& text)
              lastDelete_(false), lastBackspace_(false)
 {
 	std::fill(previousKeyState_,
-	          previousKeyState_+CHAR_LENGTH,false);
+	          previousKeyState_+CHAR_LENGTH,true);
 	static const SDL_Rect area = {0,0,1024,768};
 	height_ = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,
 	                          "ABCD",0,0).h;

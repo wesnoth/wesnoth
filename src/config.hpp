@@ -56,6 +56,7 @@ struct config
 	std::map<std::string,std::vector<config*> > children;
 
 	static std::vector<std::string> split(const std::string& val);
+	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 
 	void clear();
