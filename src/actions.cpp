@@ -927,7 +927,90 @@ int combat_modifier(const gamestatus& status,
 	return bonus;
 }
 
-size_t move_unit(display* disp, const gamemap& map,
+namespace {
+
+void clear_shroud_loc(const gamemap& map, team& tm,
+                      const gamemap::location& loc,
+                      std::vector<gamemap::location>* cleared)
+{
+	static gamemap::location adj[7];
+	get_adjacent_tiles(loc,adj);
+	adj[6] = loc;
+	for(int i = 0; i != 7; ++i) {
+		if(map.on_board(adj[i])) {
+			if(tm.fogged(adj[i].x,adj[i].y)) {
+				tm.clear_shroud(adj[i].x,adj[i].y);
+				tm.clear_fog(adj[i].x,adj[i].y);
+
+				if(cleared != NULL) {
+					cleared->push_back(adj[i]);
+				}
+			}
+		}
+	}
+}
+
+//if known_units is not NULL, then the function will return true iff
+//a new unit has been seen
+bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
+                       const unit_map& units, const gamemap::location& loc,
+                       std::vector<team>& teams, int team,
+					   const std::set<gamemap::location>* known_units)
+{
+	std::vector<gamemap::location> cleared_locations;
+
+	paths p(map,gamedata,units,loc,teams,true,false);
+	for(paths::routes_map::const_iterator i = p.routes.begin();
+	    i != p.routes.end(); ++i) {
+		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
+	}
+
+	//clear the location the unit is at
+	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
+
+	for(std::vector<gamemap::location>::const_iterator it =
+	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
+		if(units.count(*it)) {
+			if(known_units == NULL) {
+				static const std::string sighted("sighted");
+				game_events::fire(sighted,*it,loc);
+			} else if(known_units->count(*it) == 0) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+}
+
+bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
+                  const unit_map& units, std::vector<team>& teams, int team)
+{
+	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
+		return false;
+
+	teams[team].refog();
+
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == team+1) {
+
+			//we're not really going to mutate the unit, just temporarily
+			//set its moves to maximum, but then switch them back
+			unit& mutable_unit = const_cast<unit&>(i->second);
+			const unit_movement_resetter move_resetter(mutable_unit);
+
+			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL);
+		}
+	}
+
+	disp.recalculate_minimap();
+
+	return true;
+}
+
+size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& route,
                  replay* move_recorder, undo_list* undo_stack)
@@ -945,13 +1028,24 @@ size_t move_unit(display* disp, const gamemap& map,
 
 	unit u = ui->second;
 
-	const int team_num = u.side()-1;
+	const size_t team_num = u.side()-1;
 
 	const bool skirmisher = u.type().is_skirmisher();
 
-	//start off by seeing how far along the given path we can move
+	//if we use shroud/fog of war, count out the units we can currently see
+	std::set<gamemap::location> seen_units;
+	if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
+			if(teams[team_num].fogged(u->first.x,u->first.y) == false) {
+				seen_units.insert(u->first);
+			}
+		}
+	}
+
+	//see how far along the given path we can move
 	const int starting_moves = u.movement_left();
 	int moves_left = starting_moves;
+	bool seen_unit = false;
 	std::vector<gamemap::location>::const_iterator step;
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const gamemap::TERRAIN terrain = map[step->x][step->y];
@@ -959,7 +1053,7 @@ size_t move_unit(display* disp, const gamemap& map,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
 		const int mv = u.movement_cost(map,terrain);
-		if(mv > moves_left || enemy_unit != units.end() &&
+		if(seen_unit || mv > moves_left || enemy_unit != units.end() &&
 		   teams[team_num].is_enemy(enemy_unit->second.side())) {
 			break;
 		} else {
@@ -968,6 +1062,22 @@ size_t move_unit(display* disp, const gamemap& map,
 
 		if(!skirmisher && enemy_zoc(map,units,*step,teams[team_num],u.side())) {
 			moves_left = 0;
+		}
+
+		//if we use fog or shroud, see if we have sighted an enemy unit, in
+		//which case we should stop immediately.
+		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
+			if(units.count(*step) == 0) {
+				units.insert(std::pair<gamemap::location,unit>(*step,ui->second));
+				const bool res = clear_shroud_unit(map,gamedata,units,*step,teams,
+				                                   ui->second.side()-1,&seen_units);
+				units.erase(*step);
+
+				//we've seen a new unit. Stop on the next iteration
+				if(res) {
+					seen_unit = true;
+				}
+			}
 		}
 	}
 
@@ -981,8 +1091,9 @@ size_t move_unit(display* disp, const gamemap& map,
 
 	assert(steps.size() <= route.size());
 
-	//if we can't get all the way there and have to set a go-to
-	if(steps.size() != route.size()) {
+	//if we can't get all the way there and have to set a go-to,
+	//unless we stop early because of sighting a unit
+	if(steps.size() != route.size() && !seen_unit) {
 		ui->second.set_goto(route.back());
 		u.set_goto(route.back());
 	}
@@ -1034,75 +1145,6 @@ size_t move_unit(display* disp, const gamemap& map,
 	assert(steps.size() <= route.size());
 
 	return steps.size();
-}
-
-void clear_shroud_loc(const gamemap& map, team& tm,
-                      const gamemap::location& loc,
-                      std::vector<gamemap::location>* cleared)
-{
-	static gamemap::location adj[7];
-	get_adjacent_tiles(loc,adj);
-	adj[6] = loc;
-	for(int i = 0; i != 6; ++i) {
-		if(map.on_board(adj[i])) {
-			if(tm.fogged(adj[i].x,adj[i].y)) {
-				tm.clear_shroud(adj[i].x,adj[i].y);
-				tm.clear_fog(adj[i].x,adj[i].y);
-				if(cleared != NULL) {
-					cleared->push_back(adj[i]);
-				}
-			}
-		}
-	}
-}
-
-void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
-                       const unit_map& units, const gamemap::location& loc,
-                       std::vector<team>& teams, int team)
-{
-	std::vector<gamemap::location> cleared_locations;
-
-	paths p(map,gamedata,units,loc,teams,true,false);
-	for(paths::routes_map::const_iterator i = p.routes.begin();
-	    i != p.routes.end(); ++i) {
-		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
-	}
-
-	//clear the location the unit is at
-	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
-
-	for(std::vector<gamemap::location>::const_iterator it =
-	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
-		if(units.count(*it)) {
-			static const std::string sighted("sighted");
-			game_events::fire(sighted,*it,loc);
-		}
-	}
-}
-
-bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
-                  const unit_map& units, std::vector<team>& teams, int team)
-{
-	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
-		return false;
-
-	teams[team].refog();
-
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.side() == team+1) {
-
-			//we're not really going to mutate the unit, just temporarily
-			//set its moves to maximum, but then switch them back
-			unit& mutable_unit = const_cast<unit&>(i->second);
-			const unit_movement_resetter move_resetter(mutable_unit);
-
-			clear_shroud_unit(map,gamedata,units,i->first,teams,team);
-		}
-	}
-
-	disp.recalculate_minimap();
-
-	return true;
 }
 
 bool unit_can_move(const gamemap::location& loc, const unit_map& units,

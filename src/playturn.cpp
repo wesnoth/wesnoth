@@ -104,7 +104,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		route.move_left = route_turns_to_complete(ui->second,map,route);
 		gui.set_route(&route);
-		move_unit(&gui,map,units,teams,route.steps,
+		move_unit(&gui,gameinfo,map,units,teams,route.steps,
 		          &recorder,&turn_data.undos());
 		gui.invalidate_game_status();
 	}
@@ -512,7 +512,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     current_route_.steps.front() == selected_hex_) {
 
 
-		const size_t moves = move_unit(&gui_,map_,units_,teams_,
+		const size_t moves = move_unit(&gui_,gameinfo_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);
 
 		gui_.invalidate_game_status();
