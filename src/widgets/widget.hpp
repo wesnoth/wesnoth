@@ -31,6 +31,16 @@ public:
 
 	void bg_backup();
 
+	//Function to set the widget to draw in 'volatile' mode.
+	//When in 'volatile' mode, instead of using the normal
+	//save-background-redraw-when-dirty procedure, redrawing is done
+	//every frame, and then after every frame the area under the widget
+	//is restored to the state it was in before the frame. This is useful
+	//for drawing widgets with alpha components in volatile settings where
+	//the background may change at any time.
+	//(e.g. for putting widgets on top of the game map)
+	void set_volatile(bool val=true);
+
 	void set_dirty(bool dirty=true);
 	const bool dirty() const;
 
@@ -47,6 +57,9 @@ protected:
 	virtual void handle_event(const SDL_Event& event);
 
 private:
+	void volatile_draw();
+	void volatile_undraw();
+
 	mutable display* disp_;
 	mutable surface_restorer restorer_;
 	SDL_Rect rect_;
@@ -54,6 +67,8 @@ private:
 	bool dirty_;		// Does the widget need drawn?
 
 	bool hidden_;
+
+	bool volatile_;
 };
 
 }

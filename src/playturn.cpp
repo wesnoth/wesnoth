@@ -55,7 +55,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
 			   std::vector<team>& teams, int team_num,
-			   std::map<gamemap::location,unit>& units)
+			   std::map<gamemap::location,unit>& units, turn_info::floating_textbox& textbox)
 {
 	log_scope("player turn");
 
@@ -78,7 +78,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	turn_info turn_data(gameinfo,state_of_game,status,terrain_config,level,
-	                    key,gui,map,teams,team_num,units,false);
+	                    key,gui,map,teams,team_num,units,false,textbox);
 
 	int start_command = recorder.ncommands();
 
@@ -128,7 +128,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
                      gamestatus& status, const config& terrain_config, config* level,
                      CKey& key, display& gui, gamemap& map,
                      std::vector<team>& teams, int team_num,
-                     unit_map& units, bool browse)
+                     unit_map& units, bool browse, floating_textbox& textbox)
   : paths_wiper(gui),
     gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     terrain_config_(terrain_config), level_(level),
@@ -136,7 +136,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     units_(units), browse_(browse),
     left_button_(false), right_button_(false), middle_button_(false),
 	 minimap_scrolling_(false),
-    enemy_paths_(false), path_turns_(0), end_turn_(false)
+    enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox)
 {
 	enemies_visible_ = enemies_visible();
 }
@@ -164,11 +164,13 @@ void turn_info::turn_slice()
 	if(key_[SDLK_DOWN] || mousey > gui_.y()-scroll_threshold)
 		gui_.scroll(0,preferences::scroll_speed());
 
-	if(key_[SDLK_LEFT] || mousex < scroll_threshold)
-		gui_.scroll(-preferences::scroll_speed(),0);
-
-	if(key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
-		gui_.scroll(preferences::scroll_speed(),0);
+	if(textbox_.active() == false) {
+		if(key_[SDLK_LEFT] || mousex < scroll_threshold)
+			gui_.scroll(-preferences::scroll_speed(),0);
+	
+		if(key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
+			gui_.scroll(preferences::scroll_speed(),0);
+	}
 }
 
 bool turn_info::turn_over() const { return end_turn_; }
@@ -213,7 +215,15 @@ void turn_info::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
-		hotkey::key_event(gui_,event.key,this);
+		//detect key press events, unless there is a textbox present on-screen
+		//in which case the key press events should go only to it.
+		if(textbox_.active() == false) {
+			hotkey::key_event(gui_,event.key,this);
+		} else if(event.key.keysym.sym == SDLK_ESCAPE) {
+			close_textbox();
+		} else if(event.key.keysym.sym == SDLK_RETURN) {
+			enter_textbox();
+		}
 
 		//intentionally fall-through
 	case SDL_KEYUP:
@@ -1780,51 +1790,52 @@ void turn_info::recall()
 	}
 }
 
-void turn_info::speak()
+bool turn_info::has_friends() const
 {
-	//see if this team has any networked friends. If so, then the player can choose to send
-	//to allies only.
-	bool has_friends = false;
 	for(size_t n = 0; n != teams_.size(); ++n) {
 		if(n != gui_.viewing_team() && teams_[gui_.viewing_team()].team_name() == teams_[n].team_name() &&
 		   teams_[n].is_network()) {
-			has_friends = true;
+			return true;
 		}
 	}
 
-	std::vector<gui::check_item> checks;
+	return false;
+}
 
-	if(has_friends) {
-		checks.push_back(gui::check_item(string_table["speak_allies_only"],preferences::message_private()));
+void turn_info::speak()
+{
+	
+	create_textbox(floating_textbox::TEXTBOX_MESSAGE,string_table["message"] + ":", has_friends() ? string_table["speak_allies_only"] : "", preferences::message_private());
+}
+
+void turn_info::do_speak(const std::string& message, bool allies_only)
+{
+	if(message == "") {
+		return;
 	}
 
-	std::string message;
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["speak"],gui::OK_CANCEL,NULL,NULL,
-		                             string_table["message"] + ":", &message,NULL,&checks);
-	if(res == 0 && message != "") {
-		config cfg;
-		cfg["description"] = preferences::login();
-		cfg["message"] = message;
+	config cfg;
+	cfg["description"] = preferences::login();
+	cfg["message"] = message;
 
-		const int side = is_observer() ? 0 : gui_.viewing_team()+1;
-		if(!is_observer()) {
-			cfg["side"] = lexical_cast<std::string>(side);
-		}
-
-		bool private_message = false;
-
-		if(has_friends) {
-			private_message = checks.front().checked;
-			preferences::set_message_private(private_message);
-			if(private_message) {
-				cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
-			}
-		}
-
-		recorder.speak(cfg);
-		gui_.add_chat_message(cfg["description"],side,message,
-			                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
+	const int side = is_observer() ? 0 : gui_.viewing_team()+1;
+	if(!is_observer()) {
+		cfg["side"] = lexical_cast<std::string>(side);
 	}
+
+	bool private_message = false;
+
+	if(has_friends()) {
+		private_message = allies_only;
+		preferences::set_message_private(private_message);
+		if(private_message) {
+			cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
+		}
+	}
+
+	recorder.speak(cfg);
+	gui_.add_chat_message(cfg["description"],side,message,
+		                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
 }
 
 void turn_info::create_unit()
@@ -2000,19 +2011,20 @@ void turn_info::show_statistics()
 	}
 }
 
-void turn_info::search() {
-	std::stringstream prompt;
-	prompt << string_table["search_prompt"];
-	if(last_search_.empty() == false) {
-		prompt << " [" << last_search_ << "]";
+void turn_info::search()
+{
+	create_textbox(floating_textbox::TEXTBOX_SEARCH,string_table["search_prompt"] + ":");
+}
+
+void turn_info::do_search(const std::string& new_search)
+{
+	if(new_search == "") {
+		return;
 	}
-	prompt << ": ";
-	std::string new_search;
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["search_title"],gui::OK_CANCEL,
-	                                 NULL,NULL,prompt.str(),&new_search);
+
 	if(new_search.empty() == false)
 		last_search_ = new_search;
-	if(res == 0 && last_search_.empty() == false) {
+	if(last_search_.empty() == false) {
 		//Search labels
 		const map_labels::label_map& labels = gui_.labels().labels();
 		for(map_labels::label_map::const_iterator i = labels.begin(); i != labels.end(); ++i) {
@@ -2265,4 +2277,77 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
+}
+
+void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label, bool checked)
+{
+	close_textbox();
+
+	textbox_.mode = mode;
+
+	if(check_label != "") {
+		textbox_.check.assign(new gui::button(gui_,check_label,gui::button::TYPE_CHECK));
+		textbox_.check->set_check(checked);
+	}
+
+	const SDL_Rect& area = gui_.map_area();
+
+	const int border_size = 10;
+
+	const int ypos = area.y+area.h-30 - (textbox_.check.get() != NULL ? textbox_.check->height() + border_size : 0);
+	textbox_.label = font::add_floating_label(label,14,font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1,
+	                                          area,font::LEFT_ALIGN);
+	if(textbox_.label == 0) {
+		return;
+	}
+
+	const SDL_Rect& label_area = font::get_floating_label_rect(textbox_.label);
+	const int textbox_width = area.w - label_area.w - border_size*3;
+
+	if(textbox_width <= 0) {
+		font::remove_floating_label(textbox_.label);
+		return;
+	}
+
+	textbox_.box.assign(new gui::textbox(gui_,textbox_width));
+	textbox_.box->set_volatile(true);
+	textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
+
+	if(textbox_.check.get() != NULL) {
+		textbox_.check->set_volatile(true);
+		textbox_.check->set_location(textbox_.box->location().x,textbox_.box->location().y + textbox_.box->location().h + border_size);
+	}
+}
+
+void turn_info::close_textbox()
+{
+	if(textbox_.active() == false) {
+		return;
+	}
+
+	textbox_.box.assign(NULL);
+	textbox_.check.assign(NULL);
+	font::remove_floating_label(textbox_.label);
+	textbox_.mode = floating_textbox::TEXTBOX_NONE;
+	gui_.invalidate_all();
+}
+
+void turn_info::enter_textbox()
+{
+	if(textbox_.active() == false) {
+		return;
+	}
+
+	switch(textbox_.mode) {
+	case floating_textbox::TEXTBOX_SEARCH:
+		do_search(textbox_.box->text());
+		break;
+	case floating_textbox::TEXTBOX_MESSAGE:
+		do_speak(textbox_.box->text(),textbox_.check.get() != NULL ? textbox_.check->checked() : false);
+		break;
+	default:
+		std::cerr << "unknown textbox mode\n";
+	}
+
+	close_textbox();
 }

@@ -24,6 +24,7 @@
 #include "gamestatus.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
+#include "scoped_resource.hpp"
 #include "pathfind.hpp"
 #include "show_dialog.hpp"
 #include "statistics.hpp"
@@ -31,6 +32,9 @@
 #include "unit_types.hpp"
 #include "unit.hpp"
 #include "video.hpp"
+
+#include "widgets/button.hpp"
+#include "widgets/textbox.hpp"
 
 #include <deque>
 #include <map>
@@ -57,11 +61,29 @@ class turn_info : public hotkey::command_executor, public events::handler,
                   private paths_wiper
 {
 public:
+	//this keeps track of any textbox that might be used to do searching
+	//and send messages
+	struct floating_textbox
+	{
+		util::scoped_ptr<gui::textbox> box;
+		util::scoped_ptr<gui::button> check;
+	
+		enum MODE { TEXTBOX_NONE, TEXTBOX_SEARCH, TEXTBOX_MESSAGE };
+		MODE mode;
+
+		int label;
+
+		floating_textbox() : box(NULL), check(NULL), mode(TEXTBOX_NONE), label(0)
+		{}
+
+		bool active() const { return box.get() != NULL; }
+	};
+	
 	turn_info(game_data& gameinfo, game_state& state_of_game,
 	          gamestatus& status, const config& terrain_config, config* level,
 	          CKey& key, display& gui, gamemap& map,
 	          std::vector<team>& teams, int team_num,
-	          unit_map& units, bool browse_only);
+	          unit_map& units, bool browse_only, floating_textbox& textbox);
 
 	void turn_slice();
 
@@ -126,6 +148,11 @@ private:
 	virtual void continue_move();
 	virtual void search();
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+
+	void do_search(const std::string& str);
+
+	void do_speak(const std::string& str, bool allies_only);
+	bool has_friends() const;
 	
 	void do_recruit(const std::string& name);
 
@@ -181,12 +208,19 @@ private:
 
 	std::string last_recruit_;
 	std::string last_search_;
+
+	floating_textbox& textbox_;
+
+	void create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label="", bool checked=false);
+	void close_textbox();
+	void enter_textbox();
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, const config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
-			   std::vector<team>& teams, int team_num, unit_map& units);                
+			   std::vector<team>& teams, int team_num, unit_map& units,
+			   turn_info::floating_textbox& textbox);
 
 #endif

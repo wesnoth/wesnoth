@@ -319,6 +319,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	int turn = 1, player_number = 0;
 
+	turn_info::floating_textbox textbox_info;
+
 	try {
 		gui.adjust_colours(0,0,0);
 		game_events::fire("prestart");
@@ -450,7 +452,7 @@ redo_turn:
 
 					play_turn(gameinfo,state_of_game,status,game_config,
 					          level, video, key, gui, events_manager, map,
-							  teams, player_number, units);
+							  teams, player_number, units, textbox_info);
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
@@ -469,7 +471,7 @@ redo_turn:
 
 					turn_info turn_data(gameinfo,state_of_game,status,
 						                    game_config,level,key,gui,
-						                    map,teams,player_number,units,true);
+						                    map,teams,player_number,units,true,textbox_info);
 
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
@@ -491,7 +493,7 @@ redo_turn:
 
 					turn_info turn_data(gameinfo,state_of_game,status,
 					                    game_config,level,key,gui,
-					                    map,teams,player_number,units,true);
+					                    map,teams,player_number,units,true,textbox_info);
 
 					for(;;) {
 
@@ -653,7 +655,7 @@ redo_turn:
 
 		turn_info turn_data(gameinfo,state_of_game,status,
 					        game_config,level,key,gui,
-					        map,teams,player_number,units,true);
+					        map,teams,player_number,units,true,textbox_info);
 
 		turn_data.save_game(string_table["save_game_error"]);
 		throw network::error();

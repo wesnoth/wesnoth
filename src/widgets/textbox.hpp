@@ -43,10 +43,7 @@ public:
 
 	void set_wrap(bool val);
 
-protected:
-	using widget::bg_restore;
-	using widget::set_dirty;
-	using widget::dirty;
+	void draw();
 
 private:
 	void scroll(int pos);
@@ -84,7 +81,6 @@ private:
 
 	void handle_event(const SDL_Event& event);
 
-	void draw();
 	void draw_cursor(int pos, display &disp) const;
 	void update_text_cache(bool reset = false);
 	bool is_selection();

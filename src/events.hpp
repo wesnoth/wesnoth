@@ -30,6 +30,9 @@ public:
 	virtual void process() {}
 	virtual void draw() {}
 
+	virtual void volatile_draw() {}
+	virtual void volatile_undraw() {}
+
 	virtual bool requires_event_focus() const { return false; }
 
 protected:
@@ -65,6 +68,8 @@ void pump();
 
 void raise_process_event();
 void raise_draw_event();
+void raise_volatile_draw_event();
+void raise_volatile_undraw_event();
 }
 
 #endif

@@ -8,18 +8,18 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o) :
-	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false)
+	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false), volatile_(false)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false)
 {
 }
 
 widget::widget(display& disp, SDL_Rect& rect) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false)
 {
 	set_location(rect);
 	bg_backup();
@@ -33,7 +33,7 @@ void widget::set_location(const SDL_Rect& rect)
 
 	bg_restore();
 	rect_ = rect;
-	dirty_ = true;
+	set_dirty(true);
 	bg_backup();
 }
 
@@ -46,7 +46,7 @@ void widget::set_location(int x, int y)
 	bg_restore();
 	SDL_Rect rect = {x,y,location().w,location().h};
 	rect_ = rect;
-	dirty_ = true;
+	set_dirty(true);
 	bg_backup();
 }
 
@@ -59,7 +59,7 @@ void widget::set_width(int w)
 	bg_restore();
 	SDL_Rect rect = {location().x,location().y,w,location().h};
 	rect_ = rect;
-	dirty_ = true;
+	set_dirty(true);
 	bg_backup();
 }
 
@@ -72,7 +72,7 @@ void widget::set_height(int h)
 	bg_restore();
 	SDL_Rect rect = {location().x,location().y,location().w,h};
 	rect_ = rect;
-	dirty_ = true;
+	set_dirty(true);
 	bg_backup();
 }
 
@@ -98,7 +98,7 @@ void widget::set_focus(bool focus)
 	}
 
 	focus_ = focus;
-	dirty_ = true;
+	set_dirty(true);
 }
 
 bool widget::focus() const
@@ -126,6 +126,10 @@ bool widget::hidden() const
 
 void widget::set_dirty(bool dirty)
 {
+	if(dirty == true && volatile_) {
+		return;
+	}
+
 	dirty_ = dirty;
 }
 
@@ -148,6 +152,34 @@ void widget::handle_event(const SDL_Event& event)
 {
 	if(!focus_)
 		return;
+}
+
+void widget::set_volatile(bool val)
+{
+	volatile_ = val;
+	if(volatile_) {
+		dirty_ = false;
+	}
+}
+
+void widget::volatile_draw()
+{
+	if(!volatile_) {
+		return;
+	}
+
+	dirty_ = true;
+	bg_backup();
+	draw();
+}
+
+void widget::volatile_undraw()
+{
+	if(!volatile_) {
+		return;
+	}
+
+	bg_restore();
 }
 
 }

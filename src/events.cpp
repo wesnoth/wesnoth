@@ -306,4 +306,32 @@ void raise_draw_event()
 	}
 }
 
+void raise_volatile_draw_event()
+{
+	if(event_contexts.empty() == false) {
+
+		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+
+		//events may cause more event handlers to be added and/or removed,
+		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->volatile_draw();
+		}
+	}
+}
+
+void raise_volatile_undraw_event()
+{
+	if(event_contexts.empty() == false) {
+
+		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+
+		//events may cause more event handlers to be added and/or removed,
+		//so we must use indexes instead of iterators here.
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->volatile_undraw();
+		}
+	}
+}
+
 }
