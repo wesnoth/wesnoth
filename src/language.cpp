@@ -132,11 +132,9 @@ bool internal_set_language(const language_def& locale, config& cfg)
 
 			setlocale (LC_MESSAGES, locale.localename.c_str());
 
-#ifdef USE_OLD_TRANS
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				strings_[j->first] = j->second;
 			}
-#endif
 
 			hotkey::add_hotkeys(**i,false);
 
@@ -159,13 +157,16 @@ bool set_language(const language_def& locale)
 	std::transform(locale.localename.begin(),locale.localename.end(),locale_lc.begin(),tolower);
 
 	config cfg;
+#ifdef USE_OLD_TRANS
 	if(locale_lc == "english") {
+#endif
 		try {
 			cfg.read(preprocess_file("data/translations/english.cfg"));
 		} catch(config::error& e) {
 			std::cerr << "Could not read english.cfg\n";
 			throw e;
 		}
+#ifdef USE_OLD_TRANS
 	} else if (locale.localename != "") {
 		try {
 			cfg.read(preprocess_file("data/translations/"));
@@ -177,6 +178,7 @@ bool set_language(const language_def& locale)
 			return set_language(known_languages[0]);
 		}
 	}
+#endif
 
 	return internal_set_language(locale,cfg);
 }
@@ -376,4 +378,15 @@ wide_string string_to_wstring(const std::string &src)
 	return utf8_to_wstring(src);
 }
 
-
+const char* sgettext (const char *msgid)
+{
+	const char *msgval = gettext (msgid);
+	if (msgval == msgid) {
+		msgval = strrchr (msgid, '|');
+		if (msgval == NULL)
+			msgval = msgid;
+		else
+			msgval++;
+	}
+	return msgval;
+}

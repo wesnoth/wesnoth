@@ -19,7 +19,7 @@
 #include <sstream>
 #include <vector>
 
-#include <libintl.h>
+#include <language.hpp>
 
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -733,7 +733,7 @@ void config::read(const std::string& data,
 							}
 
 							if(translatable) {
-								value = gettext(value.c_str());
+								value = sgettext(value.c_str());
 							}
 
 							if(n < vars.size()) {
