@@ -1,3 +1,71 @@
+Version 0.5:
+ * network multiplayer
+ * wesnoth server
+ * more sound effects and musics
+ * more and improved unit graphics and animations
+ * portraits when major characters are talking
+ * more story graphics
+ * many compile errors squashed
+ * updates to Danish, French and Spanish translations
+ * updates and fixes to editor
+ * snow and desert terrains, improved graphics for grassland
+ * scenario difficulty adjustment/balacing
+ * new scenarios:
+   * The Blackwater Port
+	* Plunging Into the Darkess
+ * new units:
+   * Elvish Shyde
+	* Dark Adept (Necromancer wannabe)
+ * Gryphon claws attack is now blade
+ * reduced movement for Dwarvish Berserker, Dwarvish Lord, Orcish Assassin, Orcish Slayer and Orcish Crossbow
+ * elven units are now neutral
+ * changed 'night vision' to ambush ("invisibility" at forest) for Elvish Ranger and Elvish Avenger
+ * changed Elvish Outrider weapon to sword (no more charging)
+ * human units are now lawful
+ * renamed Assasin to Assassin
+ * changed Orchish Archer and Orcish Crossbow melee attack to blade
+ * elusivefoot now take more damage when hit
+ * fixed teleporting to work properly
+ * many small unit adjustements to balance units
+ * lightbringer ability renamed to illuminates
+ * flying units are now harder to hit
+ * allow keystroke repeat when holding down in text entry fields
+ * added toggling of grid with control-g
+ * fixed cycling to goto units
+ * made it so when unit is selected, pressing a number n on the keyboard will show how far that unit can move in n turns
+ * added mousewheel support 
+ * added center-on-middle click 
+ * fixed bug with replays and moving onto villages
+ * added shroud
+ * removed timeout in intro sequence 
+ * button transparency problems fixed 
+ * fixed energy bar display problem 
+ * fixed position on minimap when clicking 
+ * make fights go faster when accelerated 
+ * improved AI
+ * added tooltips for text that cannot fit 
+ * added turn dialog and turn bell options 
+ * added in 'status table' 
+ * added better dialog for when unit is recruited 
+ * added new dialogs and right-side panel 
+ * path highlighting (footsteps)
+ * menu borders updated 
+ * added in showing of how many turns a goto command will take. Mousing over terrain with unit selected will show defense % of the terrain and movement cost for that unit.
+ * made preferences accessible from the title screen 
+ * added configurable scrolling speed 
+ * added in colour cycling for day/night 
+ * removed deprecated display::get_minimap_location() function
+ * fixed choose_weapon assertion failure 
+ * got rid of use of spaces in saved game names 
+ * refactored menu class into its own source file 
+ * updated scenarios to use the 'next_scenario' system 
+ * fixed problem with round() 
+ * Getting rid of scenario numbering, preparing for less linearity
+ * added PREFERENCES_DIR preprocessor symbol which specifies name of preferences directory 
+ * fixed some crashes when loading preferences. 
+ * added configurable day/night scheduler 
+ * removed unit status dialog from unit description as it's redundant 
+
 Version 0.4.8:
  * lots of bugs fixed
  * translations updated and some new translations
