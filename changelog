@@ -1,9 +1,12 @@
 CVS HEAD:
+ * added new help strings
+ * tip of the day
  * load game
  * gamma correction
  * skip AI moves option
  * show haloing effects option
  * more halo effects
+ * decreased size of saved games
  * improved and added new graphics: units, attacks animations, healing animations, attack icons, encampment, castle
  * language fixes and polishing (english)
  * scenario balancing for 'Heir to the Throne' campaign:
@@ -32,7 +35,7 @@ CVS HEAD:
  * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * Yeti's race changed to monster
  * Renamed 'Cavalry' to 'Cavalryman'
- * Renamed 'Golbin Direwolver' to 'Direwolf Rider'
+ * Renamed 'Goblin Direwolver' to 'Direwolf Rider'
  * unit balancing:
    * Ancient Wose: increased cost
    * Ancient Lich: reduced hitpoints, reduced ranged damage
@@ -68,6 +71,7 @@ CVS HEAD:
    * Wose: increased cost
  * translation updates:
    * dutch
+   * french
  * multiplayer improvements:
    * balanced 'King of the Hill' map
    * improved village naming
@@ -103,6 +107,7 @@ CVS HEAD:
  * fixed a bug where alpha disappeared from multi-hex .png files on loading sub-tiles.
  * fixed terrain not updating correctly when dynamicly changed via the WML [terrain] event (#9237)
  * fixed the "random probability" in "terrain-graphics" rules not being random enough
+ * fixed builder code failing when asked for hexed outside the map (#9168)
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * added support for different colour depths
@@ -110,9 +115,9 @@ CVS HEAD:
  * improved terrain transition code
  * updated terrain-graphics.cfg file to use modules in sub-directory to reduce bloat in the main file
  * terrain builder code optimizations
- * added XCF source files and some tools for castle building, there can be found in tools/
- * relocated weapon icons to their own hierarchy: images/attacks/
- * relocated projectiles/missiles to their own hierarchy: images/projectiles/
+ * added XCF source files and some tools for castle building, these can be found in tools/
+ * moved weapon icons to their own hierarchy: images/attacks/
+ * moved projectiles/missiles to their own hierarchy: images/projectiles/
  * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
  * conversed all scenarios to new AI syntax
  * added a trigger to the test map, when activated Orc leader can recruit
