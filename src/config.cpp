@@ -757,6 +757,7 @@ void config::read(const std::string& data,
 							current_textdomain = value;
 							bindtextdomain(current_textdomain.c_str(),
 								       get_intl_dir().c_str());
+							bind_textdomain_codeset (current_textdomain.c_str(), "UTF-8");
 							std::cerr << "textdomain = " << value << " in "
 								  << element_names.top() << "\n";
 						}
