@@ -31,6 +31,12 @@ namespace statistics
 	};
 
 	int sum_str_int_map(const stats::str_int_map& m);
+
+	struct disabler
+	{
+		disabler();
+		~disabler();
+	};
 	
 	struct scenario_context
 	{

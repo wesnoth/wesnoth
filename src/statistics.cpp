@@ -8,6 +8,8 @@ bool mid_scenario = false;
 
 typedef statistics::stats stats;
 
+int stats_disabled = 0;
+
 struct scenario_stats
 {
 	explicit scenario_stats(const std::string& name) : scenario_name(name)
@@ -220,6 +222,9 @@ void stats::read(const config& cfg)
 	damage_taken = atoi(cfg["damage_taken"].c_str());
 }
 
+disabler::disabler() { stats_disabled++; }
+disabler::~disabler() { stats_disabled--; }
+
 scenario_context::scenario_context(const std::string& name)
 {
 	if(!mid_scenario || master_stats.empty()) {
@@ -242,6 +247,9 @@ attack_context::attack_context(const unit& a, const unit& d, const battle_stats&
 
 attack_context::~attack_context()
 {
+	if(stats_disabled > 0)
+		return;
+
 	attacker_stats().attacks[bat_stats.chance_to_hit_defender][attacker_res]++;
 	defender_stats().defends[bat_stats.chance_to_hit_attacker][defender_res]++;
 }
@@ -258,6 +266,9 @@ stats& attack_context::defender_stats()
 
 void attack_context::attack_result(attack_context::ATTACK_RESULT res)
 {
+	if(stats_disabled > 0)
+		return;
+
 	attacker_res.resize(attacker_res.size()+1);
 	attacker_res[attacker_res.size()-1] = (res == MISSES ? '0' : '1');
 
@@ -272,6 +283,9 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res)
 
 void attack_context::defend_result(attack_context::ATTACK_RESULT res)
 {
+	if(stats_disabled > 0)
+		return;
+
 	defender_res.resize(defender_res.size()+1);
 	defender_res[defender_res.size()-1] = (res == MISSES ? '0' : '1');
 
@@ -286,6 +300,9 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res)
 
 void recruit_unit(const unit& u)
 {
+	if(stats_disabled > 0)
+		return;
+
 	stats& s = get_stats(u.side());
 	s.recruits[u.type().name()]++;
 	s.recruit_cost += u.type().cost();
@@ -293,6 +310,9 @@ void recruit_unit(const unit& u)
 
 void recall_unit(const unit& u)
 {
+	if(stats_disabled > 0)
+		return;
+
 	stats& s = get_stats(u.side());
 	s.recalls[u.type().name()]++;
 	s.recall_cost += u.type().cost();
@@ -300,6 +320,9 @@ void recall_unit(const unit& u)
 
 void advance_unit(const unit& u)
 {
+	if(stats_disabled > 0)
+		return;
+
 	stats& s = get_stats(u.side());
 	s.advanced_to[u.type().name()]++;
 }
