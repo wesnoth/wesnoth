@@ -110,14 +110,20 @@ bool is_format_char(char c);
 /// Determine the width of a line of text given a certain font size.
 /// The font type used is the default wesnoth font type.
 ///
-int line_width(const std::string line, int font_size, int style=TTF_STYLE_NORMAL);
+int line_width(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
+
+///
+/// Determine the size of a line of text given a certain font size. Similar to
+/// line_width, but for both coordinates.
+///
+SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
 
 ///
 /// If the text exceedes the specified max width, wrap it one a word basis.
 /// If the is not possible, e.g. the word is too big to fit, wrap it on a
 /// char basis.
 ///
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width);
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height=-1);
 
 ///
 /// If the text excedes the specified max width, end it with an ellipsis (...)

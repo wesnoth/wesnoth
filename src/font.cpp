@@ -104,17 +104,19 @@ std::vector<text_chunk> split_text(std::string const & utf8_text) {
 
 	try {
 		utils::utf8_iterator ch(utf8_text);
-		if(*ch < font_map.size() && font_map[*ch] >= 0) {
-			current_chunk.subset = font_map[*ch];
+		if(size_t(*ch) < font_map.size() && font_map[size_t(*ch)] >= 0) {
+			current_chunk.subset = font_map[size_t(*ch)];
 		}
 		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch) {
-			if(*ch < font_map.size() && font_map[*ch] >= 0 && font_map[*ch] != current_chunk.subset) {
+			if(size_t(*ch) < font_map.size() && 
+					font_map[size_t(*ch)] >= 0 && 
+					font_map[size_t(*ch)] != current_chunk.subset) {
 				//null-terminate ucs2_text so we can pass it to SDL_ttf later
 				current_chunk.ucs2_text.push_back(0);
 				chunks.push_back(current_chunk);
 				current_chunk.text = "";
 				current_chunk.ucs2_text.clear();
-				current_chunk.subset = font_map[*ch];
+				current_chunk.subset = font_map[size_t(*ch)];
 			}
 			current_chunk.ucs2_text.push_back((Uint16)*ch);
 			current_chunk.text.append(ch.substr().first, ch.substr().second);
@@ -187,7 +189,7 @@ TTF_Font* get_font(font_id id)
 	if(it != font_table.end())
 		return it->second;
 
-	if(id.subset < 0 || id.subset >= font_names.size())
+	if(id.subset < 0 || size_t(id.subset) >= font_names.size())
 		return NULL;
 
 	TTF_Font* font = open_font(font_names[id.subset], id.size);
@@ -830,7 +832,7 @@ std::string remove_first_space(const std::string& text)
   return text;
 }
 
-int line_width(const std::string line, int font_size, int style)
+int line_width(const std::string& line, int font_size, int style)
 {
 	const SDL_Color col = { 0, 0, 0, 0 };
 	text_surface s(line, font_size, col, style);
@@ -838,75 +840,97 @@ int line_width(const std::string line, int font_size, int style)
 	return s.width();
 }
 
-
-std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width)
+SDL_Rect line_size(const std::string& line, int font_size, int style)
 {
-	//std::cerr << "Wrapping word " << unwrapped_text << "\n";
-	
-	std::string wrapped_text; // the final result
+	SDL_Rect res;
 
-	size_t word_start_pos = 0;
-	std::string cur_word; // including start-whitespace
-	std::string cur_line; // the whole line so far
+	const SDL_Color col = { 0, 0, 0, 0 };
+	text_surface s(line, font_size, col, style);
 
-	for(size_t c = 0; c < unwrapped_text.length(); c++) {
+	res.w = s.width();
+	res.h = s.height();
 
-		// Find the next word
-		bool forced_line_break = false;
-		if (c == unwrapped_text.length() - 1) {
-			cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
-			word_start_pos = c + 1;
-		} else if (unwrapped_text[c] == '\n') {
-			cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
-			word_start_pos = c + 1;
-			forced_line_break = true;
-		} else if (unwrapped_text[c] == ' ') {
-			cur_word = unwrapped_text.substr(word_start_pos, c - word_start_pos);
-			word_start_pos = c;
-		} else {
-			continue;
+	return res;
+}
+
+namespace {
+
+void cut_word(std::string& line, std::string& word, int size, int max_width)
+{
+	std::string tmp = line;
+	utils::utf8_iterator tc(word);
+
+	for(;tc != utils::utf8_iterator::end(word); ++tc) {
+		tmp.append(tc.substr().first, tc.substr().second);
+		SDL_Rect tsize = line_size(tmp, size);
+		if(tsize.w > max_width) {
+			const std::string& w = word;
+			line += std::string(w.begin(), tc.substr().first);
+			word = std::string(tc.substr().first, w.end());
+			break;
 		}
+	}
+}
 
-		// Test if the line should be wrapped or not
-		if (line_width(cur_line + cur_word, font_size) > max_width) {
+}
 
-			if (line_width(cur_word, font_size) > (max_width /*/ 2*/)) {
-				// The last word is too big to fit in a nice way, split it on a char basis
-				utils::utf8_iterator i(cur_word);
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height)
+{
+	utils::utf8_iterator ch(unwrapped_text);
+	std::string current_word;
+	std::string current_line;
+	size_t current_height = 0;
+	bool line_break = false;
+	std::string wrapped_text;
 	
-				for (; i != utils::utf8_iterator::end(cur_word); ++i) {
-					std::string tmp = cur_line;
-					tmp.append(i.substr().first, i.substr().second);
-
-					if (line_width(tmp, font_size) > max_width) {
-						wrapped_text += cur_line + '\n';
-						cur_line = "";
-					}
-					cur_line.append(i.substr().first, i.substr().second);
-				}
-
+	while(1) {
+		// If there is no current word, get one
+		if(current_word.empty() && ch == utils::utf8_iterator::end(unwrapped_text)) {
+			break;
+		} else if(current_word.empty()) {
+			if(*ch == ' ' || *ch == '\n') {
+				current_word = *ch;
+				++ch;
 			} else {
-				// Split the line on a word basis
-				wrapped_text += cur_line + '\n';
-				cur_line = remove_first_space(cur_word);
+				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
+						*ch != ' ' && *ch != '\n'; ++ch) {
 
+					current_word.append(ch.substr().first, ch.substr().second);
+				}
 			}
+		}
+
+		if(current_word == "\n") {
+			line_break = true;
+			current_word = "";
 		} else {
-			cur_line += cur_word;
+			SDL_Rect size = line_size(current_line + current_word, font_size);
+
+			if(size.w >= max_width) {
+				SDL_Rect wsize = line_size(current_word, font_size);
+				if(wsize.w >= max_width) {
+					cut_word(current_line, current_word, font_size, max_width);
+				}
+				if(current_word == " ")
+					current_word = "";
+				line_break = true;
+			} else {
+				current_line += current_word;
+				current_word = "";
+			}
 		}
 
-		if (forced_line_break) {
-			wrapped_text += cur_line;
-			cur_line = "";
-			forced_line_break = false;
+		if(line_break || current_word.empty() && ch == utils::utf8_iterator::end(unwrapped_text)) {
+			SDL_Rect size = line_size(current_line, font_size);
+			if(max_height > 0 && current_height + size.h >= size_t(max_height))
+				return wrapped_text;
+
+			wrapped_text += "\n" + current_line;
+			current_line = "";
+			current_height += size.h;
+			line_break = false;
 		}
 	}
-
-	// Don't forget to add the text left in cur_line
-	if (cur_line != "") {
-		wrapped_text += cur_line + '\n';
-	}
-
 	return wrapped_text;
 }
 

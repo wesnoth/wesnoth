@@ -376,14 +376,17 @@ int show_dialog(display& disp, surface image,
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 
-#ifdef USE_TINY_GUI
-	const int max_line_length = 30;
-#else
-	const int max_line_length = 54;
-#endif
+	const int left_padding = 10;
+	const int right_padding = 10;
+	const int image_h_padding = image != NULL ? 10 : 0;
+	const int top_padding = 10;
+	const int bottom_padding = 10;
 
-	std::string message = msg;
-	font::text_to_lines(message,max_line_length);
+	const std::string message = font::word_wrap_text(msg, message_font_size,
+			screen.getx() / 2,
+			screen.gety() / 2);
+
+	std::cerr << "Message is " << message << "\n";
 
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {
@@ -499,20 +502,15 @@ int show_dialog(display& disp, surface image,
 		}
 	}
 
-	const int left_padding = 10;
-	const int right_padding = 10;
-	const int image_h_padding = image != NULL ? 10 : 0;
-	const int top_padding = 10;
-	const int bottom_padding = 10;
 	const int menu_hpadding = text_size.h > 0 && menu_.height() > 0 ? 10 : 0;
 	const int padding_width = left_padding + right_padding + image_h_padding;
 	const int padding_height = top_padding + bottom_padding + menu_hpadding;
-	const int caption_width = caption_size.w;
+	const size_t caption_width = caption_size.w;
 	const int image_width = image != NULL ? image->w : 0;
 	const int image_height = image != NULL ? image->h : 0;
 	const int total_text_height = text_size.h + caption_size.h;
 
-	int text_width = text_size.w;
+	size_t text_width = text_size.w;
 	if(caption_width > text_width)
 		text_width = caption_width;
 	if(menu_.width() > text_width)
