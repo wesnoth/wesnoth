@@ -73,6 +73,17 @@ void ai::do_attack_analysis(
 		const unit_map::const_iterator unit_itor = units_.find(current_unit);
 		assert(unit_itor != units_.end());
 
+		//see if the unit has the backstab ability -- units with backstab
+		//will want to try to have a friendly unit opposite the position they move to
+		bool backstab = false;
+		const std::vector<attack_type>& attacks = unit_itor->second.attacks();
+		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
+			if(a->backstab()) {
+				backstab = true;
+				break;
+			}
+		}
+
 		double best_vulnerability = 0.0, best_support = 0.0;
 		int best_rating = 0;
 		int cur_position = -1;
@@ -99,8 +110,24 @@ void ai::do_attack_analysis(
 				continue;
 			}
 
+			//check to see whether this move would be a backstab
+			int backstab_bonus = 1;
+
+			if(backstab && tiles[(j+3)%6] != current_unit) {
+				const unit_map::const_iterator itor = units_.find(tiles[(j+3)%6]);
+
+				//note that we *could* also check if a unit plans to move there before we're
+				//at this stage, but we don't because, since the attack calculations don't
+				//actually take backstab into account (too complicated), this could actually
+				//make our analysis look *worse* instead of better.
+				//so we only check for 'concrete' backstab opportunities.
+				if(itor != units_.end() && itor->second.side() == unit_itor->second.side()) {
+					backstab_bonus = 2;
+				}
+			}
+
 			//see if this position is the best rated we've seen so far
-			const int rating = rate_terrain(unit_itor->second,tiles[j]);
+			const int rating = rate_terrain(unit_itor->second,tiles[j]) * backstab_bonus;
 			if(cur_position >= 0 && rating < best_rating) {
 				continue;
 			}

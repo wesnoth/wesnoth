@@ -40,6 +40,8 @@ public:
 	double attack_weight() const;
 	double defense_weight() const;
 
+	bool backstab() const;
+
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
 
@@ -73,6 +75,10 @@ private:
 	int num_attacks_;
 	double attack_weight_;
 	double defense_weight_;
+
+	//caches whether the unit can backstab. This is important
+	//because the AI queries it alot.
+	bool backstab_;
 
 	struct frame {
 		frame(int i1, int i2, const std::string& img, int offset)

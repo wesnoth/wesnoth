@@ -33,6 +33,7 @@ attack_type::attack_type(const config& cfg)
 	name_ = cfg["name"];
 	type_ = cfg["type"];
 	special_ = cfg["special"];
+	backstab_ = special_ == "backstab";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "misc/" + name_ + ".png";
@@ -137,6 +138,11 @@ double attack_type::attack_weight() const
 double attack_type::defense_weight() const
 {
 	return defense_weight_;
+}
+
+bool attack_type::backstab() const
+{
+	return backstab_;
 }
 
 int attack_type::get_first_frame(attack_type::FRAME_TYPE type) const

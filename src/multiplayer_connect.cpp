@@ -239,7 +239,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	if ((*level_)["objectives"] == "")
 	{
-		(*level_)["objectives"] = "Victory:\n@Defeat enemy leader(s)\n";
+		(*level_)["objectives"] = string_table["mp_objectives"];
 	}
 
 	(*level_)["experience_modifier"] = lexical_cast<std::string>(xpmodifier);

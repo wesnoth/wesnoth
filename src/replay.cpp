@@ -623,6 +623,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
+			if(u_type->second.cost() > current_team.gold()) {
+				std::cerr << "unit '" << u_type->second.name() << "' is too expensive to recruit: "
+				          << u_type->second.cost() << "/" << current_team.gold() << "\n";
+				throw replay::error();
+			}
+
 			statistics::recruit_unit(new_unit);
 
 			current_team.spend_gold(u_type->second.cost());

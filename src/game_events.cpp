@@ -732,8 +732,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const int size = lexical_cast_default<int>(cfg["size"],12);
 		const int lifetime = lexical_cast_default<int>(cfg["duration"],20);
 		const int red = lexical_cast_default<int>(cfg["red"],0);
-		const int green = lexical_cast_default<int>(cfg["red"],0);
-		const int blue = lexical_cast_default<int>(cfg["red"],0);
+		const int green = lexical_cast_default<int>(cfg["green"],0);
+		const int blue = lexical_cast_default<int>(cfg["blue"],0);
 
 		SDL_Color colour = {red,green,blue,255};
 

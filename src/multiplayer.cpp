@@ -72,7 +72,7 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 	int cur_xpmod = 100;
 
 	// Dialog width and height
-	int width = 640;
+	int width = 740;
 	int height = 440;
 	const int left = (disp.x()-width)/2;
 	const int top = (disp.y()-height)/2;
