@@ -287,6 +287,11 @@ AC_ARG_ENABLE([static],
 	      [static=$enableval],
 	      [static=no])
 
+AC_ARG_ENABLE([lite],
+	      [  --enable-lite         Enable lite version of wesnoth (without music)],
+	      [lite=$enableval],
+	      [lite=no])
+
 DATADIR=$PACKAGE
 AC_ARG_ENABLE([datadir-name],
 	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
@@ -346,10 +351,16 @@ DATA_FILES=`find data -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type 
 DATA_FILES=`echo $DATA_FILES`
 FONT_FILES=`find fonts  -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
 FONT_FILES=`echo $FONT_FILES`
-IMAGE_FILES=`find images -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
+if test "x$lite" = "xyes"; then
+    PACKAGE=$PACKAGE-lite
+    IMAGE_FILES=`find images -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -type d -o -print`
+    MUSIC_FILES=""
+else
+    IMAGE_FILES=`find images -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
+    MUSIC_FILES=`find music -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
+    MUSIC_FILES=`echo $MUSIC_FILES`
+fi
 IMAGE_FILES=`echo $IMAGE_FILES`
-MUSIC_FILES=`find music -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
-MUSIC_FILES=`echo $MUSIC_FILES`
 SOUND_FILES=`find sounds -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
 SOUND_FILES=`echo $SOUND_FILES`
 UTIL_FILES=`find utils -name CVS -prune -o -name ".cvs*" -o -name ".#*" -o -type d -o -print`
