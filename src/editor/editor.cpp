@@ -21,6 +21,7 @@
 #include "../font.hpp"
 #include "../game_config.hpp"
 #include "../gamestatus.hpp"
+#include "../image.hpp"
 #include "../key.hpp"
 #include "../language.hpp"
 #include "../widgets/menu.hpp"
@@ -35,6 +36,11 @@
 #include <iostream>
 #include <map>
 #include <string>
+
+void drawbar(display& disp);
+bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map);
+int tileselected(int x, int y, display& disp);
+
 
 int main(int argc, char** argv)
 {
@@ -73,9 +79,7 @@ int main(int argc, char** argv)
 
 	std::map<gamemap::location,unit> units;
 	display gui(units,video,map,status,teams);
-//	gui.draw_terrain_palette(gui.mapx()+10,150,0);
 
-	bool first_time = true;
 
 	const font::manager font_manager;
 
@@ -91,8 +95,19 @@ int main(int argc, char** argv)
 	}
 
 	gui::menu terrain_menu(gui,terrain_names);
-	terrain_menu.set_width((gui.x() - gui.mapx()) - 5);
+	gui::button tup(gui, "", gui::button::TYPE_PRESS,"uparrow");
+	gui::button tdown(gui, "", gui::button::TYPE_PRESS,"downarrow");
+	tup.set_xy(gui.mapx() + 10, 165);
+	tdown.set_xy((gui.x() - tdown.width()) - 10, 165);
+
+	terrain_menu.set_width((gui.x() - gui.mapx()));
 	terrain_menu.set_loc(gui.mapx()+2,200);
+
+	gamemap::TERRAIN selected_terrain = terrains[1];
+	int tstart = 0;
+
+	//Draw the nice background bar
+	drawbar(gui);
 
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
@@ -130,7 +145,6 @@ int main(int argc, char** argv)
 
 			const gamemap::location hex = gui.hex_clicked_on(mousex,mousey);
 			if(map.on_board(hex)) {
-				const gamemap::TERRAIN selected_terrain = terrains[terrain_menu.selection()];
 				const gamemap::TERRAIN terrain = map[hex.x][hex.y];
 				if(selected_terrain != terrain) {
 					map.set_terrain(hex,selected_terrain);
@@ -143,21 +157,29 @@ int main(int argc, char** argv)
 						gui.draw_tile(locs[i].x,locs[i].y);
 					}
 				}
+			}else{
+				int tselect = tileselected(mousex,mousey,gui);
+				if(tselect >= 0)
+					selected_terrain = terrains[tstart+tselect];
 			}
 		}
 
+
 		gui.draw(false);
+		if(drawterrainpalette(gui, tstart, selected_terrain, map)==false)
+			tstart--;
 
-		terrain_menu.process(mousex,mousey,new_left_button,false,false,false,false);
-
-		gui.update_display();
-
-		if(first_time) {
-//			std::cerr << "drawing terrain pallette...\n";
-//			gui.draw_terrain_palette(gui.mapx()+10,150,0);
-			first_time = false;
+		if(tup.process(mousex,mousey,new_left_button)) {
+			tstart++;
 		}
 
+		if(tdown.process(mousex,mousey,new_left_button)) {
+			tstart--;
+			if(tstart<0)
+				tstart=0;
+		}
+		
+		gui.update_display();
 		SDL_Delay(20);
 		events::pump();
 	}
@@ -171,3 +193,108 @@ int main(int argc, char** argv)
 
 	return 0;
 }
+
+void drawbar(display& disp)
+{
+	const std::string RightSideBot = "misc/rightside-bottom.png";
+	const std::string RightSideTop = "misc/rightside-editor.png";
+	SDL_Surface* const screen = disp.video().getSurface();
+	SDL_Surface* image_top = image::get_image(RightSideTop,image::UNSCALED);
+
+	SDL_Surface* image = image_top != NULL ?
+	 image::get_image_dim(RightSideBot,image_top->w,screen->h-image_top->h)
+	    : NULL;
+	if(image_top != NULL && image != NULL && image_top->h < screen->h) {
+		SDL_Rect dstrect;
+		dstrect.x = disp.mapx();
+		dstrect.y = 0;
+		dstrect.w = image_top->w;
+		dstrect.h = image_top->h;
+
+		if(dstrect.x + dstrect.w <= disp.x() &&
+		   dstrect.y + dstrect.h <= disp.y()) {
+			SDL_BlitSurface(image_top,NULL,screen,&dstrect);
+				dstrect.y = image_top->h;
+			dstrect.h = image->h;
+			if(dstrect.y + dstrect.h <= disp.y()) {
+				SDL_BlitSurface(image,NULL,screen,&dstrect);
+			}
+		} else {
+			std::cout << (dstrect.x+dstrect.w) << " > " << disp.x() << " or " << (dstrect.y + dstrect.h) << " > " << disp.y() << "\n";
+		}
+	}
+
+	update_rect(disp.mapx(),0,disp.x()-disp.mapx(),disp.y());
+}
+
+bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map)
+{
+	int x = disp.mapx() + 35;
+	int y = 200;
+
+	int starting = start;
+	int ending = starting+4;
+
+	bool status = true;
+
+	SDL_Rect invalid_rect;
+	invalid_rect.x = x;
+	invalid_rect.y = y;
+	invalid_rect.w = 0;
+
+	SDL_Surface* const screen = disp.video().getSurface();
+
+	std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
+	if(ending>terrains.size()){
+		ending = terrains.size();
+		starting = ending - 4;
+		status = false;
+	}
+
+	for(int counter = starting; counter < ending; counter++){
+		const gamemap::TERRAIN terrain = terrains[counter];
+		SDL_Surface* const image = image::get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png");
+
+		if(image == NULL) {
+			std::cerr << "image for terrain '" << counter << "' not found\n";
+			return status;
+		}
+
+		SDL_Rect dstrect;
+		dstrect.x = x;
+		dstrect.y = y;
+		dstrect.w = image->w;
+		dstrect.h = image->h;
+
+		SDL_BlitSurface(image,NULL,screen,&dstrect);
+		gui::draw_rectangle(x,y,image->w-1,image->h-1,
+		                    terrain == selected?0xF000:0,screen);
+
+		y += dstrect.h+2;
+
+		if(image->w > invalid_rect.w)
+			invalid_rect.w = image->w;
+
+	}
+
+	invalid_rect.h = y - invalid_rect.y;
+	update_rect(invalid_rect);
+	return status;
+}
+
+int tileselected(int x, int y, display& disp)
+{
+	int status = -1;
+
+	for(int i = 0; i<4; i++)
+	{
+		int px = disp.mapx() + 35;
+		int py = 200 + (i * 77);
+		int pxx = disp.mapx() + 35 + 75;
+		int pyy = 200 + ((1 + i) * 77);
+		if(x>px && x<pxx && y>py && y<pyy)
+			status = i;
+	}
+	return status;
+}
+
