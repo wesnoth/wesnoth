@@ -117,10 +117,14 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	height_slider.set_max(map_max_height);
 	height_slider.set_value(map_height);
 
- 	const config* const cfg =
-		game_config.find_child("multiplayer","id","ranmap")->child("generator");
- 	util::scoped_ptr<map_generator> generator(NULL);
- 	generator.assign(create_map_generator("", cfg));
+ 	static util::scoped_ptr<map_generator> random_map_generator(NULL);
+	if (random_map_generator == NULL) {
+		// Initialize the map generator if this is the first call,
+		// otherwise keep the settings and such.
+		const config* const cfg =
+			game_config.find_child("multiplayer","id","ranmap")->child("generator");
+		random_map_generator.assign(create_map_generator("", cfg));
+	}
 
 	for(bool draw = true;; draw = false) {
 		if(cancel_button.pressed()) {
@@ -147,8 +151,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		}
 		if(random_map_setting_button.pressed()) {
 			draw = true;
-			if (generator.get()->allow_user_config()) {
-				generator.get()->user_config(disp);
+			if (random_map_generator.get()->allow_user_config()) {
+				random_map_generator.get()->user_config(disp);
 			}
 		}
 
@@ -158,7 +162,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 				 && confirm_modification_disposal(disp))
 				|| !confirmation_needed) {
 				
-				const std::string map = generator.get()->create_map(std::vector<std::string>());
+				const std::string map =
+					random_map_generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
 					gui::show_dialog(disp, NULL, "Creation Failed",
 									 "Map creation failed.", gui::OK_ONLY);
