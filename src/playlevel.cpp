@@ -99,11 +99,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
-	const statistics::scenario_context statistics_context(translate_string_default((*level)["id"],(*level)["name"]));
-
-	const int num_turns = atoi(level->values["turns"].c_str());
-	gamestatus status(*level,num_turns);
-
 	std::string map_data = (*level)["map_data"];
 	if(map_data == "" && (*level)["map"] != "") {
 		map_data = read_file("data/maps/" + (*level)["map"]);
@@ -112,7 +107,21 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	//if the map should be randomly generated
 	if(map_data == "" && (*level)["map_generation"] != "") {
 		map_data = random_generate_map((*level)["map_generation"],level->child("generator"));
+
+		//since we've had to generate the map, make sure that when we save the game,
+		//it will not ask for the map to be generated again on reload
+		static config new_level;
+		new_level = *level;
+		new_level.values["map_data"] = map_data;
+		level = &new_level;
+
+		state_of_game.starting_pos = new_level;
 	}
+
+	const statistics::scenario_context statistics_context(translate_string_default((*level)["id"],(*level)["name"]));
+
+	const int num_turns = atoi(level->values["turns"].c_str());
+	gamestatus status(*level,num_turns);
 
 	gamemap map(game_config,map_data);
 

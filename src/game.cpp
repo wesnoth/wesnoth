@@ -66,13 +66,22 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	//see if we load the scenario from the scenario data -- if there is
 	//no snapshot data available from a save, or if the user has selected
 	//to view the replay from scratch
-	if(state.starting_pos.child("side") == NULL || !recorder.at_end()) {
-		scenario = game_config.find_child(type,"id",state.scenario);
+	if(state.snapshot.child("side") == NULL || !recorder.at_end()) {
+		//if the starting state is specified, then use that,
+		//otherwise get the scenario data and start from there.
+		if(state.starting_pos.empty() == false) {
+			std::cerr << "loading starting position: '" << state.starting_pos.write() << "'\n";
+			starting_pos = state.starting_pos;
+			scenario = &starting_pos;
+		} else {
+			scenario = game_config.find_child(type,"id",state.scenario);
+		}
 	} else {
+		std::cerr << "loading snapshot...\n";
 		//load from a save-snapshot.
-		starting_pos = state.starting_pos;
+		starting_pos = state.snapshot;
 		scenario = &starting_pos;
-		state = read_game(units_data,&state.starting_pos);
+		state = read_game(units_data,&state.snapshot);
 	}
 
 	while(scenario != NULL) {
@@ -94,7 +103,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				                 video,state,story);
 			}
 
-			state.starting_pos = config();
+			state.snapshot = config();
 
 			//ask to save a replay of the game
 			if(res == VICTORY || res == DEFEAT) {
@@ -114,9 +123,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 												&label);
 					if(should_save == 0) {
 						try {
-							config starting_pos;
+							config snapshot, starting_pos;
 
-							recorder.save_game(units_data,label,starting_pos);
+							recorder.save_game(units_data,label,snapshot,starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
 							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
 							retry=true;
@@ -476,7 +485,7 @@ int play_game(int argc, char** argv)
 
 			state.campaign_type = "multiplayer";
 			state.scenario = "";
-			state.starting_pos = config();
+			state.snapshot = config();
 
 			config level = *lvl;
 			std::vector<config*> story;
@@ -585,11 +594,11 @@ int play_game(int argc, char** argv)
 
 			recorder = replay(state.replay_data);
 
-			std::cerr << "has starting position: " << (state.starting_pos.child("side") ? "yes" : "no") << "\n";
+			std::cerr << "has snapshot: " << (state.snapshot.child("side") ? "yes" : "no") << "\n";
 
 			//only play replay data if the user has selected to view the replay,
 			//or if there is no starting position data to use.
-			if(!show_replay && state.starting_pos.child("side") != NULL) {
+			if(!show_replay && state.snapshot.child("side") != NULL) {
 				std::cerr << "setting replay to end...\n";
 				recorder.set_to_end();
 				if(!recorder.at_end())
@@ -609,7 +618,7 @@ int play_game(int argc, char** argv)
 
 			if(state.campaign_type == "multiplayer") {
 				//make all network players local
-				for(config::child_itors sides = state.starting_pos.child_range("side");
+				for(config::child_itors sides = state.snapshot.child_range("side");
 				    sides.first != sides.second; ++sides.first) {
 					if((**sides.first)["controller"] == "network")
 						(**sides.first)["controller"] = "human";
@@ -618,9 +627,15 @@ int play_game(int argc, char** argv)
 				recorder.set_save_info(state);
 				std::vector<config*> story;
 
+				config starting_pos;
+				if(recorder.at_end()) {
+					starting_pos = state.snapshot;
+				} else {
+					starting_pos = state.starting_pos;
+				}
+
 				try {
-					play_level(units_data,game_config,&state.starting_pos,
-					           video,state,story);
+					play_level(units_data,game_config,&starting_pos,video,state,story);
 					recorder.clear();
 				} catch(gamestatus::load_game_failed& e) {
 					std::cerr << "error loading the game: " << e.message

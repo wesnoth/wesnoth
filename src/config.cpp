@@ -392,6 +392,10 @@ config::~config()
 
 config& config::operator=(const config& cfg)
 {
+	if(this == &cfg) {
+		return *this;
+	}
+
 	clear();
 
 	values = cfg.values;

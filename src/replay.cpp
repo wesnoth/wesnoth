@@ -106,11 +106,12 @@ bool replay::skipping() const
 	return at_end() == false && skip_ != 0;
 }
 
-void replay::save_game(game_data& data, const std::string& label, const config& start_pos,
-					   bool include_replay)
+void replay::save_game(game_data& data, const std::string& label, const config& snapshot,
+					   const config& starting_pos, bool include_replay)
 {
 	log_scope("replay::save_game");
-	saveInfo_.starting_pos = start_pos;
+	saveInfo_.snapshot = snapshot;
+	saveInfo_.starting_pos = starting_pos;
 
 	if(include_replay)
 		saveInfo_.replay_data = cfg_;
@@ -122,7 +123,7 @@ void replay::save_game(game_data& data, const std::string& label, const config& 
 	::save_game(saveInfo_);
 
 	saveInfo_.replay_data = config();
-	saveInfo_.starting_pos = config();
+	saveInfo_.snapshot = config();
 }
 
 void replay::add_recruit(int value, const gamemap::location& loc)

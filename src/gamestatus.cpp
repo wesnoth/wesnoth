@@ -156,9 +156,20 @@ game_state read_game(game_data& data, const config* cfg)
 		res.replay_data = *replay;
 	}
 
-	const config* starting_pos = cfg->child("start");
-	if(starting_pos != NULL) {
-		res.starting_pos = *starting_pos;
+	const config* snapshot = cfg->child("snapshot");
+
+	//older save files used to use 'start', so still support that for now
+	if(snapshot == NULL) {
+		snapshot = cfg->child("start");
+	}
+
+	if(snapshot != NULL) {
+		res.snapshot = *snapshot;
+	}
+
+	const config* replay_start = cfg->child("replay_start");
+	if(replay_start != NULL) {
+		res.starting_pos = *replay_start;
 	}
 
 	res.can_recruit.clear();
@@ -206,7 +217,8 @@ void write_game(const game_state& game, config& cfg)
 		cfg.add_child("replay",game.replay_data);
 	}
 
-	cfg.add_child("start",game.starting_pos);
+	cfg.add_child("snapshot",game.snapshot);
+	cfg.add_child("replay_start",game.starting_pos);
 
 	std::stringstream can_recruit;
 	std::copy(game.can_recruit.begin(),game.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));

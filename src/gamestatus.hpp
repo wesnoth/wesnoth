@@ -108,10 +108,17 @@ struct game_state
 	//take the game up to the position it was saved at.
 	config replay_data;
 
+	//for multiplayer games, the position the game started in may be different to
+	//the scenario, so we save the starting state of the game here.
+	config starting_pos;
+
 	//information about the starting conditions of the scenario. Used in
 	//multiplayer games, when the starting position isn't just literally
 	//read from a file, since there is game setup information.
-	config starting_pos;
+
+	//the snapshot of the game's current contents. i.e. unless the player selects
+	//to view a replay, the game's settings are read in from this object
+	config snapshot;
 };
 
 struct save_info {

@@ -113,7 +113,7 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 			}
 		}
 
-		loaded_level_ = state_->starting_pos;
+		loaded_level_ = state_->snapshot;
 		level_ptr = &loaded_level_;
 
 		//make all sides untaken
@@ -610,8 +610,6 @@ int mp_connect::gui_do()
 			config cfg;
 			cfg.add_child("start_game");
 			network::send_data(cfg);
-
-			state_->starting_pos = *level_;
 	
 			recorder.set_save_info(*state_);
 
@@ -623,6 +621,12 @@ int mp_connect::gui_do()
 					std::cerr << "skipping...\n";
 					recorder.set_skip(-1);
 				}
+			}
+
+			state_->snapshot = *level_;
+
+			if(save_ == false) {
+				state_->starting_pos = *level_;
 			}
 
 			//any replay data isn't meant to hang around under the level,
