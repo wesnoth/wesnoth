@@ -1367,6 +1367,8 @@ void turn_info::do_recruit(const std::string& name)
 		undo_stack_.clear();
 		redo_stack_.clear();
 
+		clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+
 		gui_.recalculate_minimap();
 		gui_.invalidate_game_status();
 		gui_.invalidate_all();

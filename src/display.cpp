@@ -1148,7 +1148,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		//the circle around the base of the unit
 		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 			const SDL_Color& col = font::get_side_colour(it->second.side());
-			const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
+			const Uint16 colour = SDL_MapRGBA(dst->format,col.r,col.g,col.b,Uint8(highlight_ratio*255));
 			SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
 			draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
@@ -1168,6 +1168,9 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	const int show_energy_after = energy_bar_loc.y + lost_energy;
 
 	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
+	if(energy_uses_alpha) {
+		energy_image.assign(adjust_surface_alpha(energy_image,highlight_ratio));
+	}
 
 	SDL_Rect first_energy = {0,0,energy_image->w,energy_bar_loc.y};
 	SDL_Rect second_energy = {0,energy_bar_loc.y+skip_energy_rows,energy_image->w,0};
@@ -1183,7 +1186,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	//the bottom half of the circle around the base of the unit
 	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 		const SDL_Color& col = font::get_side_colour(it->second.side());
-		const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
+		const Uint16 colour = SDL_MapRGBA(dst->format,col.r,col.g,col.b,Uint8(highlight_ratio*255));
 		SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
 		draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
@@ -2084,6 +2087,8 @@ void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
 
 		update_display();
 	}
+
+	draw(true,true);
 }
 
 void display::move_unit_between(const gamemap::location& a,
