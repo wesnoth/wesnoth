@@ -367,7 +367,7 @@ void show_video_mode_dialog(display& disp)
 		return;
 
 	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= 1024) {
+		if(modes[i]->w >= 1024 && modes[i]->h >= 768) {
 			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
 			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
 				continue;

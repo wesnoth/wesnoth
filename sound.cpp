@@ -38,12 +38,11 @@ manager::manager()
 	       Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,1024);
 	if(res >= 0) {
 		mix_ok = true;
+		Mix_AllocateChannels(8);
 	} else {
 		mix_ok = false;
 		std::cerr << "Could not initialize audio: " << SDL_GetError() << "\n";
 	}
-
-	Mix_AllocateChannels(8);
 }
 
 manager::~manager()
@@ -158,6 +157,9 @@ void play_sound(const std::string& file)
 
 void set_music_volume(double vol)
 {
+	if(!mix_ok)
+		return;
+
 	if(vol < 0.05) {
 		Mix_HaltMusic();
 		music_off = true;
@@ -179,6 +181,9 @@ void set_music_volume(double vol)
 
 void set_sound_volume(double vol)
 {
+	if(!mix_ok)
+		return;
+
 	if(vol < 0.05) {
 		sound_off = true;
 		return;
