@@ -370,12 +370,8 @@ config::config(const std::string& data,
 
 config::config(const config& cfg) : values(cfg.values)
 {
-	for(std::map<std::string,std::vector<config*> >::const_iterator i =
-	    cfg.children.begin(); i != cfg.children.end(); ++i) {
-		for(std::vector<config*>::const_iterator j = i->second.begin();
-		    j != i->second.end(); ++j) {
-			add_child(i->first,**j);
-		}
+	for(all_children_iterator j = cfg.ordered_begin(); j != cfg.ordered_end(); ++j) {
+		add_child(*(*j).first,*(*j).second);
 	}
 }
 
@@ -390,12 +386,8 @@ config& config::operator=(const config& cfg)
 
 	values = cfg.values;
 
-	for(std::map<std::string,std::vector<config*> >::const_iterator i =
-	    cfg.children.begin(); i != cfg.children.end(); ++i) {
-		for(std::vector<config*>::const_iterator j = i->second.begin();
-		    j != i->second.end(); ++j) {
-			add_child(i->first,**j);
-		}
+	for(all_children_iterator j = cfg.ordered_begin(); j != cfg.ordered_end(); ++j) {
+		add_child(*(*j).first,*(*j).second);
 	}
 
 	return *this;
@@ -560,14 +552,13 @@ size_t config::write_size() const
 		}
 	}
 
-	for(std::map<std::string,std::vector<config*> >::const_iterator j =
-					children.begin(); j != children.end(); ++j) {
-		const std::vector<config*>& v = j->second;
-		for(std::vector<config*>::const_iterator it = v.begin();
-						it != v.end(); ++it) {
-			res += ElementPrefix.size() + j->first.size() + ElementPostfix.size() +
-			       (*it)->write_size() + EndElementPrefix.size() + j->first.size() + EndElementPostfix.size();
-		}
+	for(all_children_iterator j = ordered_begin(); j != ordered_end(); ++j) {
+		const std::pair<const std::string*,const config*>& item = *j;
+		const std::string& name = *item.first;
+		const config& cfg = *item.second;
+		res += ElementPrefix.size() + name.size() + ElementPostfix.size() +
+		       cfg.write_size() + EndElementPrefix.size() + name.size() + EndElementPostfix.size();
+		
 	}
 
 	res += ConfigPostfix.size();
@@ -587,19 +578,18 @@ std::string::iterator config::write_internal(std::string::iterator out) const
 		}
 	}
 
-	for(std::map<std::string,std::vector<config*> >::const_iterator j =
-					children.begin(); j != children.end(); ++j) {
-		const std::vector<config*>& v = j->second;
-		for(std::vector<config*>::const_iterator it = v.begin();
-		    it != v.end(); ++it) {
-			out = std::copy(ElementPrefix.begin(),ElementPrefix.end(),out);
-			out = std::copy(j->first.begin(),j->first.end(),out);
-			out = std::copy(ElementPostfix.begin(),ElementPostfix.end(),out);
-			out = (*it)->write_internal(out);
-			out = std::copy(EndElementPrefix.begin(),EndElementPrefix.end(),out);
-			out = std::copy(j->first.begin(),j->first.end(),out);
-			out = std::copy(EndElementPostfix.begin(),EndElementPostfix.end(),out);
-		}
+	for(all_children_iterator j = ordered_begin(); j != ordered_end(); ++j) {
+		const std::pair<const std::string*,const config*>& item = *j;
+		const std::string& name = *item.first;
+		const config& cfg = *item.second;
+
+		out = std::copy(ElementPrefix.begin(),ElementPrefix.end(),out);
+		out = std::copy(name.begin(),name.end(),out);
+		out = std::copy(ElementPostfix.begin(),ElementPostfix.end(),out);
+		out = cfg.write_internal(out);
+		out = std::copy(EndElementPrefix.begin(),EndElementPrefix.end(),out);
+		out = std::copy(name.begin(),name.end(),out);
+		out = std::copy(EndElementPostfix.begin(),EndElementPostfix.end(),out);
 	}
 
 	out = std::copy(ConfigPostfix.begin(),ConfigPostfix.end(),out);

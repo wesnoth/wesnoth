@@ -525,11 +525,15 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
+		std::cerr << "spawning unit...\n";
 		unit new_unit(*game_data_ptr,cfg);
 		gamemap::location loc(cfg);
 
+		std::cerr << "location: " << loc.x << "," << loc.y << "\n";
+
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
+			std::cerr << "found vacant tile: " << loc.x << "," << loc.y << "\n";
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			screen->invalidate(loc);
 		} else {
