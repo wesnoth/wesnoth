@@ -36,6 +36,10 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 
 	if(name == "sample_ai")
 		return new sample_ai(info);
+	else if(name == "idle_ai")
+		return new idle_ai(info);
+	else if(name != "")
+		std::cerr << "ERROR: AI not found: '" << name << "'\n";
 
 	return new ai(info);
 }

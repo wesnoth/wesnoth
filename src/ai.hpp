@@ -135,6 +135,13 @@ private:
 ///this function is used to create a new AI object with the specified algorithm name
 ai_interface* create_ai(const std::string& algorithm_name, ai_interface::info& info);
 
+///a trivial ai that sits around doing absolutely nothing
+class idle_ai : public ai_interface {
+public:
+	idle_ai(info& i) : ai_interface(i) {}
+	void play_turn() {}
+};
+
 class sample_ai : public ai_interface {
 public:
 	sample_ai(info& i) : ai_interface(i) {}
@@ -397,8 +404,8 @@ protected:
 	//lower scores being better, and the lowest possible rating being '10'.
 	virtual void analyze_potential_recruit_movements();
 
-	virtual std::map<std::string,int> unit_movement_scores_;
-	virtual std::set<std::string> not_recommended_units_;
+	std::map<std::string,int> unit_movement_scores_;
+	std::set<std::string> not_recommended_units_;
 
 	//function which will analyze all the units that this side can recruit and rate
 	//their fighting suitability against enemy units. Ratings will be placed in
