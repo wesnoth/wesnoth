@@ -21,13 +21,17 @@
 
 struct move_cost_calculator
 {
+	enum MODE { NO_AVOID_ENEMIES, AVOID_ENEMIES };
+
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const game_data& data,
 					 	 const unit_map& units,
 	                     const gamemap::location& loc,
-						 const std::multimap<gamemap::location,gamemap::location>& dstsrc)
+						 const ai::move_map& dstsrc,
+						 const ai::move_map& enemy_dstsrc)
 	  : unit_(u), map_(map), data_(data), units_(units),
-	    move_type_(u.type().movement_type()), loc_(loc), dstsrc_(dstsrc)
+	    move_type_(u.type().movement_type()), loc_(loc), dstsrc_(dstsrc), enemy_dstsrc_(enemy_dstsrc),
+		avoid_enemies_(u.type().usage() == "scout")
 	{}
 
 	double cost(const gamemap::location& loc, double so_far) const
@@ -52,24 +56,8 @@ struct move_cost_calculator
 		const double modifier = 1.0;//move_type_.defense_modifier(map_,terrain);
 		const double move_cost = move_type_.movement_cost(map_,terrain);
 
-		double enemies = 0;
-	/*	//is this stuff responsible for making it take a long time?
-		location adj[7];
-		adj[0] = loc;
-		get_adjacent_tiles(loc,adj+1);
-		for(int i = 0; i != 7; ++i) {
-			const std::map<location,unit>::const_iterator en=units_.find(adj[i]);
-			//at the moment, don't allow any units to be in the path
-			if(i == 0 && en != units_.end()) {
-				return 1000.0;
-			}
-
-			if(en != units_.end() && en->second.side() == enemy_) {
-				enemies += 1.0;
-			}
-		}
-*/
-		double res = modifier*move_cost + enemies*2.0;
+		const int enemies = 1 + (avoid_enemies_ ? enemy_dstsrc_.count(loc) : 0);
+		double res = modifier*move_cost*double(enemies);
 
 		//if there is a unit (even a friendly one) on this tile, we increase the cost to
 		//try discourage going through units, to thwart the 'single file effect'
@@ -87,8 +75,8 @@ private:
 	const unit_map& units_;
 	const unit_movement_type& move_type_;
 	const gamemap::location loc_;
-	const ai::move_map dstsrc_;
-
+	const ai::move_map dstsrc_, enemy_dstsrc_;
+	const bool avoid_enemies_;
 };
 
 std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
@@ -123,7 +111,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 			const double value = threat/double(threats.size());
 			for(std::set<gamemap::location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
-				targets.push_back(target(*i,value));
+				targets.push_back(target(*i,value,target::THREAT));
 			}
 		}
 	}
@@ -141,7 +129,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 			}
 
 			if(get_village) {
-				targets.push_back(target(*t,current_team().village_value()));
+				targets.push_back(target(*t,current_team().village_value(),target::VILLAGE));
 			}
 		}
 	}
@@ -155,7 +143,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		//is an enemy leader
 		if(u->second.can_recruit() && current_team().is_enemy(u->second.side())) {
 			assert(map_.on_board(u->first));
-			targets.push_back(target(u->first,current_team().leader_value()));
+			targets.push_back(target(u->first,current_team().leader_value(),target::LEADER));
 		}
 
 		//explicit targets for this team
@@ -163,7 +151,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		    j != team_targets.end(); ++j) {
 			if(u->second.matches_filter(j->criteria)) {
 				std::cerr << "found explicit target..." << j->value << "\n";
-				targets.push_back(target(u->first,j->value));
+				targets.push_back(target(u->first,j->value,target::EXPLICIT));
 			}
 		}
 	}
@@ -195,7 +183,192 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	return targets;
 }
 
-std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+gamemap::location ai::form_group(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& res)
+{
+	if(route.empty()) {
+		return location();
+	}
+
+	std::vector<location>::const_iterator i;
+	for(i = route.begin(); i != route.end(); ++i) {
+		if(units_.count(*i) > 0) {
+			continue;
+		}
+
+		size_t n = 0, nunits = res.size();
+
+		const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*i);
+		for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
+			if(res.count(j->second) != 0) {
+				++n;
+			} else {
+				const unit_map::const_iterator un = units_.find(j->second);
+				if(un == units_.end() || un->second.can_recruit() || un->second.movement_left() < un->second.total_movement()) {
+					continue;
+				}
+
+				res.insert(j->second);
+			}
+		}
+
+		//if not all our units can reach this position.
+		if(n < nunits) {
+			break;
+		}
+	}
+
+	if(i != route.begin()) {
+		--i;
+	}
+
+	return *i;
+}
+
+void ai::enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& res)
+{
+	for(std::vector<location>::const_iterator i = route.begin(); i != route.end(); ++i) {
+		gamemap::location adj[6];
+		get_adjacent_tiles(*i,adj);
+		for(size_t n = 0; n != 6; ++n) {
+			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj[n]);
+			for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
+				res.insert(j->second);
+			}
+		}
+	}
+}
+
+bool ai::move_group(const location& dst, const std::vector<location>& route, const std::set<location>& units)
+{
+	const std::vector<location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
+	if(itor == route.end()) {
+		return false;
+	}
+
+	AI_DIAGNOSTIC("group has " + str_cast(units.size()) + " members");
+
+	location next;
+
+	size_t direction = 0;
+
+	//find the direction the group is moving in
+	if(itor+1 != route.end()) {
+		next = *(itor+1);
+	} else if(itor != route.begin()) {
+		next = *(itor-1);
+	}
+
+	if(next.valid()) {
+		location adj[6];
+		get_adjacent_tiles(dst,adj);
+
+		direction = std::find(adj,adj+6,next) - adj;
+	}
+
+	std::deque<location> preferred_moves;
+	preferred_moves.push_back(dst);
+
+	std::map<location,paths> possible_moves;
+	move_map srcdst, dstsrc;
+	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+
+	bool res = false;
+
+	for(std::set<location>::const_iterator i = units.begin(); i != units.end(); ++i) {
+		const unit_map::const_iterator un = units_.find(*i);
+		if(un == units_.end()) {
+			continue;
+		}
+
+		location best_loc;
+		int best_defense = -1;
+		for(std::deque<location>::const_iterator j = preferred_moves.begin(); j != preferred_moves.end(); ++j) {
+			if(units_.count(*j)) {
+				continue;
+			}
+
+			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(*j);
+			move_map::const_iterator m;
+			for(m = itors.first; m != itors.second; ++m) {
+				if(m->second == *i) {
+					break;
+				}
+			}
+
+			if(m == itors.second) {
+				continue;
+			}
+
+			const int defense = un->second.defense_modifier(map_,map_.get_terrain(*j));
+			if(best_loc.valid() == false || defense < best_defense) {
+				best_loc = *j;
+				best_defense = defense;
+			}
+		}
+
+		if(best_loc.valid()) {
+			res = true;
+			move_unit(*i,best_loc,possible_moves);
+			preferred_moves.erase(std::find(preferred_moves.begin(),preferred_moves.end(),best_loc));
+
+			//find locations that are 'perpendicular' to the direction of movement for further units to move to.
+			location adj[6];
+			get_adjacent_tiles(best_loc,adj);
+			for(size_t n = 0; n != 6; ++n) {
+				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
+				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
+					preferred_moves.push_front(adj[n]);
+					AI_LOG("added moves: " + str_cast(adj[n].x+1) + "," + str_cast(adj[n].y+1));
+				}
+			}
+		} else {
+			AI_DIAGNOSTIC("Could not move group member to any of " + str_cast(preferred_moves.size()) + " locations");
+		}
+	}
+
+	return res;
+}
+
+double ai::rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const
+{
+	double strength = 0.0;
+	for(std::set<location>::const_iterator i = group.begin(); i != group.end(); ++i) {
+		const unit_map::const_iterator u = units_.find(*i);
+		if(u == units_.end()) {
+			continue;
+		}
+
+		const unit& un = u->second;
+
+		int defense = 0;
+		for(std::vector<location>::const_iterator j = battlefield.begin(); j != battlefield.end(); ++j) {
+			defense += un.defense_modifier(map_,map_.get_terrain(*j));
+		}
+
+		defense /= battlefield.size();
+
+		int best_attack = 0;
+		const std::vector<attack_type>& attacks = un.attacks();
+		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
+			const int strength = a->num_attacks()*a->damage();
+			best_attack = maximum<int>(strength,best_attack);
+		}
+
+		const int rating = (defense*best_attack*un.hitpoints())/(100*un.max_hitpoints());
+		strength += double(rating);
+	}
+
+	return strength;
+}
+
+double ai::compare_groups(const std::set<location>& our_group, const std::set<location>& their_group, const std::vector<location>& battlefield) const
+{
+	const double a = rate_group(our_group,battlefield);
+	const double b = maximum<double>(rate_group(their_group,battlefield),0.01);
+	return a/b;
+}
+
+std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	log_scope("choosing move");
 
@@ -231,7 +404,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		return std::pair<location,location>(u->first,u->first);
 	}
 
-	const move_cost_calculator cost_calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
+	const move_cost_calculator cost_calc(u->second,map_,gameinfo_,units_,u->first,dstsrc,enemy_dstsrc);
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
@@ -240,7 +413,19 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		assert(map_.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
 		                       minimum(tg->value/best_rating,500.0),cost_calc);
-		const double rating = tg->value/cur_route.move_left;
+
+		double rating = tg->value/cur_route.move_left;
+
+		//scouts do not like encountering enemies on their paths
+		if(u->second.type().usage() == "scout") {
+			std::set<location> enemies_guarding;
+			enemies_along_path(cur_route.steps,enemy_dstsrc,enemy_srcdst,enemies_guarding);
+
+			if(enemies_guarding.size() > 1) {
+				rating /= enemies_guarding.size();
+			}
+		}
+
 		std::cerr << tg->value << "/" << cur_route.move_left << " = " << rating << "\n";
 		if(best_target == targets.end() || rating > best_rating) {
 			best_rating = rating;
@@ -270,10 +455,21 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	
 			user_interact();
 	
-			const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
+			const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc,enemy_dstsrc);
 			const paths::route cur_route = a_star_search(u->first,best_target->loc,
 				               minimum(best_target->value/best_rating,100.0),calc);
-			const double rating = best_target->value/cur_route.move_left;
+			double rating = best_target->value/cur_route.move_left;
+
+			//scouts do not like encountering enemies on their paths
+			if(u->second.type().usage() == "scout") {
+				std::set<location> enemies_guarding;
+				enemies_along_path(cur_route.steps,enemy_dstsrc,enemy_srcdst,enemies_guarding);
+
+				if(enemies_guarding.size() > 1) {
+					rating /= enemies_guarding.size();
+				}
+			}
+
 			if(best == units_.end() || rating > best_rating) {
 				best_rating = rating;
 				best = u;
@@ -295,11 +491,93 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
 
+	bool dangerous = false;
+
+	//we stop and consider whether the route to this
+	//target is dangerous, and whether we need to group some units to move in unison toward the target
+	//if any point along the path is too dangerous for our single unit, then we hold back
+	for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end(); ++i) {
+		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
+		const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
+		if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
+		   unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
+			dangerous = true;
+			break;
+		}
+	}
+
+	if(dangerous) {
+		AI_DIAGNOSTIC("dangerous path");
+		std::set<location> group, enemies;
+		const location dst = form_group(best_route.steps,dstsrc,srcdst,group);
+		enemies_along_path(best_route.steps,enemy_dstsrc,enemy_srcdst,enemies);
+
+		const double our_strength = compare_groups(group,enemies,best_route.steps);
+
+		if(our_strength > 1.0 + current_team().caution()) {
+			AI_DIAGNOSTIC("moving group");
+			const bool res = move_group(dst,best_route.steps,group);
+			AI_DIAGNOSTIC("");
+			if(res) {
+				return std::pair<location,location>(location(1,1),location());
+			} else {
+				AI_LOG("group didn't move " + str_cast(group.size()));
+
+				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
+				return std::pair<location,location>(*group.begin(),*group.begin());
+
+			}
+		} else {
+			AI_DIAGNOSTIC("massing to attack " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1) + " " + str_cast(our_strength));
+
+			const double value = best_target->value;
+			const location target_loc = best_target->loc;
+			const location loc = best->first;
+			const unit& un = best->second;
+
+			targets.erase(best_target);
+
+			//find the best location to mass units at for an attack on the enemies
+			location best_loc;
+			double best_threat = 0.0;
+			int best_distance = 0;
+
+			const double max_acceptable_threat = un.hitpoints()/4;
+
+			std::set<location> mass_locations;
+
+			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = srcdst.equal_range(loc);
+			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
+				const int distance = distance_between(target_loc,i->second);
+				const int defense = un.defense_modifier(map_,map_.get_terrain(i->second));
+				const double threat = (power_projection(i->second,enemy_srcdst,enemy_dstsrc)*defense)/100;
+
+				if(best_loc.valid() == false || threat < maximum<double>(best_threat,max_acceptable_threat) && distance < best_distance) {
+					best_loc = i->second;
+					best_threat = threat;
+					best_distance = distance;
+				}
+
+				if(threat < max_acceptable_threat) {
+					mass_locations.insert(i->second);
+				}
+			}
+
+			for(std::set<location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
+				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
+					targets.push_back(target(*j,value*4.0,target::MASS));
+				}
+			}
+			
+			return std::pair<location,location>(loc,best_loc);
+		}
+	}
+
 	for(std::vector<location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
 		if(game_config::debug) {
-			display::debug_highlight(*ri,0.2);
+			//display::debug_highlight(*ri,0.2);
 		}
 
 		//this is set to 'true' if we are hesitant to proceed because of enemy units,
@@ -313,11 +591,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				if(!should_retreat(its.first->first,best,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
 					const double value = best_target->value - best->second.type().cost()/20.0;
 
-					if(value > 0.0) {
+					if(value > 0.0 && best_target->type != target::MASS) {
 						//there are enemies ahead. Rally troops around us to
 						//try to take the target
 						if(is_dangerous) {
-							targets.push_back(target(its.first->first,value*2.0));
+							targets.push_back(target(its.first->first,value*2.0,target::BATTLE_AID));
 						}
 
 						best_target->value = value;

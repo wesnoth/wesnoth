@@ -22,6 +22,9 @@
 
 #include <map>
 
+#define AI_DIAGNOSTIC(MSG) if(game_config::debug) { diagnostic(MSG); std::cerr << "AI_DIAGNOSTIC: " << MSG << "\n"; }
+#define AI_LOG(MSG) if(game_config::debug) { log_message(MSG); std::cerr << "AI_LOG: " << MSG << "\n";}
+
 class ai_interface {
 public:
 
@@ -88,6 +91,12 @@ public:
 
 	///function to update network players as to what the AI has done so far this turn
 	void sync_network();
+
+	///function to show a diagnostic message on the screen
+	void diagnostic(const std::string& msg);
+
+	///function to display a debug message as a chat message is displayed
+	void log_message(const std::string& msg);
 
 protected:
 	///this function should be called to attack an enemy.
@@ -299,10 +308,14 @@ public:
 	                          battle_stats& cur_stats, gamemap::TERRAIN terrain);
 
 	struct target {
-		target(const location& pos, double val) : loc(pos), value(val)
+		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS };
+
+		target(const location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
 		{}
 		location loc;
 		double value;
+
+		TYPE type;
 	};
 
 	struct defensive_position {
@@ -360,7 +373,7 @@ protected:
 					 class ai& ai_obj, const move_map& dstsrc, const move_map& srcdst,
 					 const move_map& enemy_dstsrc, const move_map& enemy_srcdst);
 
-		double rating(double aggression) const;
+		double rating(double aggression, class ai& ai_obj) const;
 
 		gamemap::location target;
 		std::vector<std::pair<gamemap::location,gamemap::location> > movements;
@@ -412,6 +425,7 @@ protected:
 	virtual void do_attack_analysis(
 	                 const location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
+					 const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
 	                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
 					 const location* tiles, bool* used_locations,
 	                 std::vector<location>& units,
@@ -420,6 +434,13 @@ protected:
 	                );
 
 
+	//function which finds how much 'power' a side can attack a certain location with. This is basically
+	//the maximum hp of damage that can be inflicted upon a unit on loc by full-health units, multiplied by
+	//the defense these units will have. (if 'use_terrain' is false, then it will be multiplied by 0.5)
+	//
+	//Example: 'loc' can be reached by two units, one of whom has a 10-3 attack and has 48/48 hp, and
+	//can defend at 40% on the adjacent grassland. The other has a 8-2 attack, and has 30/40 hp, and
+	//can defend at 60% on the adjacent mountain. The rating will be 10*3*1.0*0.4 + 8*2*0.75*0.6 = 19.2
 	virtual double power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain=true) const;
 
 	virtual std::vector<attack_analysis> analyze_targets(
@@ -431,7 +452,21 @@ protected:
 
 	virtual std::vector<target> find_targets(unit_map::const_iterator leader, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
-	virtual std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
+	//function to form a group of units suitable for moving along the route, 'route'.
+	//returns the location which the group may reach this turn.
+	//stores the locations of the units in the group in 'units'
+	virtual location form_group(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& units);
+
+	//function to return the group of enemies that threaten a certain path
+	virtual void enemies_along_path(const std::vector<location>& route, const move_map& dstsrc, const move_map& srcdst, std::set<location>& units);
+
+	virtual bool move_group(const location& dst, const std::vector<location>& route, const std::set<location>& units);
+
+	virtual double rate_group(const std::set<location>& group, const std::vector<location>& battlefield) const;
+
+	virtual double compare_groups(const std::set<location>& our_group, const std::set<location>& enemy_groups, const std::vector<location>& battlefield) const;
+
+	virtual std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
 	//function which rates the value of moving onto certain terrain for a unit
 	virtual int rate_terrain(const unit& u, const location& loc);

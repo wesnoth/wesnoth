@@ -25,6 +25,7 @@
 #include "show_dialog.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
+#include "util.hpp"
 
 #include <iostream>
 
@@ -141,6 +142,20 @@ void ai_interface::user_interact()
 	info_.disp.draw();
 
 	last_interact_ = SDL_GetTicks();
+}
+
+void ai_interface::diagnostic(const std::string& msg)
+{
+	if(game_config::debug) {
+		info_.disp.set_diagnostic(msg);
+	}
+}
+
+void ai_interface::log_message(const std::string& msg)
+{
+	if(game_config::debug) {
+		info_.disp.add_chat_message("ai",info_.team_num,msg,display::MESSAGE_PUBLIC);
+	}
 }
 
 team& ai_interface::current_team()
@@ -455,6 +470,8 @@ void ai::do_move()
 {
 	log_scope("doing ai move");
 
+	game_config::debug = true;
+
 	invalidate_defensive_position_cache();
 
 	user_interact();
@@ -480,6 +497,8 @@ void ai::do_move()
 
 	std::vector<attack_analysis> analysis;
 
+	AI_DIAGNOSTIC("combat phase");
+
 	if(consider_combat_) {
 		std::cerr << "combat...\n";
 		consider_combat_ = do_combat(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
@@ -489,6 +508,8 @@ void ai::do_move()
 		}
 	}
 
+	AI_DIAGNOSTIC("get villages phase");
+
 	std::cerr << "villages...\n";
 	const bool got_village = get_villages(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
 	if(got_village) {
@@ -496,12 +517,16 @@ void ai::do_move()
 		return;
 	}
 
+	AI_DIAGNOSTIC("healing phase");
+
 	std::cerr << "healing...\n";
 	const bool healed_unit = get_healing(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 	if(healed_unit) {
 		do_move();
 		return;
 	}
+
+	AI_DIAGNOSTIC("retreat phase");
 
 	std::cerr << "retreating...\n";
 	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
@@ -514,6 +539,8 @@ void ai::do_move()
 		remove_unit_from_moves(leader->first,srcdst,dstsrc);
 	}
 
+	AI_DIAGNOSTIC("move/targetting phase");
+
 	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
 	if(met_invisible_unit) {
 		std::cerr << "met_invisible_unit\n";
@@ -522,6 +549,8 @@ void ai::do_move()
 	}
 
 	std::cerr << "done move to targets\n";
+
+	AI_DIAGNOSTIC("leader/recruitment phase");
 
 	//recruitment phase and leader movement phase
 	if(leader != units_.end()) {
@@ -532,6 +561,8 @@ void ai::do_move()
 			move_leader_after_recruit(enemy_dstsrc);
 		}
 	}
+
+	AI_DIAGNOSTIC("");
 
 	recorder.end_turn();
 }
@@ -565,7 +596,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		if(skip_num > 0 && ((it - analysis.begin())%skip_num) && it->movements.size() > 1)
 			continue;
 
-		const double rating = it->rating(current_team().aggression());
+		const double rating = it->rating(current_team().aggression(),*this);
 		std::cerr  << "attack option rated at " << rating << " (" << current_team().aggression() << ")\n";
 		if(rating > choice_rating) {
 			choice_it = it;
@@ -599,7 +630,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		//if this is the only unit in the planned attack, and the target
 		//is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
-			additional_targets_.push_back(target(target_loc,3.0));
+			additional_targets_.push_back(target(target_loc,3.0,target::BATTLE_AID));
 		}
 
 		return true;
@@ -615,7 +646,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			if(already_done.count(loc) > 0)
 				continue;
 
-			additional_targets_.push_back(target(loc,3.0));
+			additional_targets_.push_back(target(loc,3.0,target::BATTLE_AID));
 			already_done.insert(loc);
 		}
 
@@ -712,6 +743,8 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		start_pos = nearest_keep(leader->first);
 	}
 
+	std::map<location,double> vulnerability;
+
 	//we want to build up a list of possible moves we can make that will capture villages.
 	//limit the moves to 'max_village_moves' to make sure things don't get out of hand.
 	const size_t max_village_moves = 50;
@@ -747,6 +780,25 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		//then don't get this village with them
 		if(want_village && leader != units_.end() && current_team().gold() > 20 && leader->first == j->second &&
 		   leader->first != start_pos && multistep_move_possible(j->second,j->first,start_pos,possible_moves) == false) {
+			continue;
+		}
+
+		double threat = 0.0;
+		const std::map<location,double>::const_iterator vuln = vulnerability.find(j->first);
+		if(vuln != vulnerability.end()) {
+			threat = vuln->second;
+		} else {
+			threat = power_projection(j->first,enemy_srcdst,enemy_dstsrc);
+			vulnerability.insert(std::pair<location,double>(j->first,threat));
+		}
+
+		const unit_map::const_iterator u = units_.find(j->second);
+		if(u == units_.end()) {
+			continue;
+		}
+
+		const unit& un = u->second;
+		if(un.hitpoints() < (threat*2*un.defense_modifier(map_,map_.get_terrain(j->first)))/100) {
 			continue;
 		}
 
@@ -950,13 +1002,17 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		}
 
 		std::cerr << "choosing move...\n";
-		std::pair<location,location> move = choose_move(targets,dstsrc,enemy_srcdst,enemy_dstsrc);
+		std::pair<location,location> move = choose_move(targets,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 			assert(map_.on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false) {
 			break;
+		}
+
+		if(move.second.valid() == false) {
+			return true;
 		}
 
 		std::cerr << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
@@ -1223,9 +1279,6 @@ void ai::do_recruitment()
 	analyze_potential_recruit_movements();
 	analyze_potential_recruit_combat();
 
-	//currently just spend all the gold we can!
-	const int min_gold = 0;
-
 	size_t neutral_villages = 0;
 
 	//we recruit the initial allocation of scouts based on how many neutral villages
@@ -1239,12 +1292,10 @@ void ai::do_recruitment()
 			bool closest = true;
 			for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
 				const int index = i - teams_.begin() + 1;
-				if(team_num_ != index) {
-					const gamemap::location& loc = nearest_keep(leader->first);
-					if(distance_between(loc,*v) < distance) {
-						closest = false;
-						break;
-					}
+				const gamemap::location& loc = map_.starting_position(index);
+				if(loc != start_pos && distance_between(loc,*v) < distance) {
+					closest = false;
+					break;
 				}
 			}
 
@@ -1262,7 +1313,18 @@ void ai::do_recruitment()
 	//get scouts depending on how many neutral villages there are
 	int scouts_wanted = villages_per_scout > 0 ? neutral_villages/villages_per_scout : 0;
 
+	std::cerr << "scouts_wanted: " << neutral_villages << "/" << villages_per_scout << " = " << scouts_wanted << "\n";
+
 	std::map<std::string,int> unit_types;
+
+	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+		if(u->second.side() == team_num_) {
+			++unit_types[u->second.type().usage()];
+		}
+	}
+
+	std::cerr << "we have " << unit_types["scout"] << " scouts already and we want " << scouts_wanted << " in total\n";
+
 	while(unit_types["scout"] < scouts_wanted) {
 		if(recruit_usage("scout") == false)
 			break;
@@ -1342,39 +1404,39 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
 
-	//see if the leader can capture a village safely
-	//if the keep is accessible by an enemy unit, we don't want to leave it
-	if(is_accessible(leader->first,enemy_dstsrc)) {
-		return;
-	}
+	if(current_team().gold() < 20 && is_accessible(leader->first,enemy_dstsrc) == false) {
+		//see if we want to ward any enemy units off from getting our villages
+		for(move_map::const_iterator i = enemy_dstsrc.begin(); i != enemy_dstsrc.end(); ++i) {
 
-	//search through villages finding one to capture
-	const std::vector<gamemap::location>& villages = map_.villages();
-	for(std::vector<gamemap::location>::const_iterator v = villages.begin();
-	    v != villages.end(); ++v) {
-		const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
-		if(itor == leader_paths.routes.end() || units_.count(*v) != 0) {
-			continue;
-		}
+			//if this is a village of ours, that an enemy can capture on their turn, and
+			//which we might be able to reach in two turns.
+			if(map_.is_village(i->first) && current_team().owns_village(i->first) &&
+				distance_between(i->first,leader->first) <= leader->second.total_movement()*2) {
+				
+				int current_distance = distance_between(i->first,leader->first);
+				location current_loc;
 
-		const int owner = village_owner(*v,teams_);
-		if(owner == -1 || current_team().is_enemy(owner+1) || leader->second.hitpoints() < leader->second.max_hitpoints()) {
+				for(paths::routes_map::const_iterator j = leader_paths.routes.begin(); j != leader_paths.routes.end(); ++j) {
+					const int distance = distance_between(i->first,j->first);
+					if(distance < current_distance && is_accessible(j->first,enemy_dstsrc) == false) {
+						current_distance = distance;
+						current_loc = j->first;
+					}
+				}
 
-			//check that no enemies can reach the village
-			gamemap::location adj[6];
-			get_adjacent_tiles(*v,adj);
-			size_t n;
-			for(n = 0; n != 6; ++n) {
-				if(enemy_dstsrc.count(adj[n]))
-					break;
+				//if this location is in range of the village, then we consider it
+				if(current_loc.valid()) {
+					AI_LOG("considering movement to " + str_cast(current_loc.x+1) + "," + str_cast(current_loc.y+1));
+					unit_map temp_units;
+					temp_units.insert(std::pair<location,unit>(current_loc,leader->second));
+					const paths p(map_,state_,gameinfo_,temp_units,current_loc,teams_,false,false);
+
+					if(p.routes.count(i->first)) {
+						move_unit(leader->first,current_loc,possible_moves);
+						return;
+					}
+				}
 			}
-
-			if(n != 6)
-				continue;
-
-			move_unit(leader->first,*v,possible_moves);
-
-			return;
 		}
 	}
 

@@ -138,25 +138,36 @@ std::vector<hotkey::hotkey_item> hotkeys;
 }
 
 struct hotkey_pressed {
-	hotkey_pressed(const SDL_KeyboardEvent& event);
+	//this distinguishes between two modes of operation. If mods are disallowed,
+	//then any match must be exact. I.e. "shift+a" does not match "a". If they are allowed,
+	//then shift+a will match "a"
+	enum ALLOW_MOD_KEYS { DISALLOW_MODS, ALLOW_MODS };
+	hotkey_pressed(const SDL_KeyboardEvent& event, ALLOW_MOD_KEYS allow_mods=DISALLOW_MODS);
 
 	bool operator()(const hotkey::hotkey_item& hk) const;
 
 private:
 	int keycode_;
 	bool shift_, ctrl_, alt_, command_;
+	bool mods_;
 };
 
-hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event)
+hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event, ALLOW_MOD_KEYS mods)
        : keycode_(event.keysym.sym), shift_(event.keysym.mod&KMOD_SHIFT),
          ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT),
-		 command_(event.keysym.mod&KMOD_LMETA)
+		 command_(event.keysym.mod&KMOD_LMETA), mods_(mods == ALLOW_MODS)
 {}
 
 bool hotkey_pressed::operator()(const hotkey::hotkey_item& hk) const
 {
-	return hk.keycode == keycode_ && shift_ == hk.shift &&
-	       ctrl_ == hk.ctrl && alt_ == hk.alt && command_ == hk.command;
+	if(mods_) {
+		return hk.keycode == keycode_ && (shift_ == hk.shift || shift_ == true)
+		                              && (ctrl_ == hk.ctrl || ctrl_ == true)
+									  && (alt_ == hk.alt || alt_ == true);
+	} else {
+		return hk.keycode == keycode_ && shift_ == hk.shift &&
+		       ctrl_ == hk.ctrl && alt_ == hk.alt && command_ == hk.command;
+	}
 }
 
 namespace {
@@ -255,10 +266,16 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 		}
 	}
 
-	const std::vector<hotkey_item>::iterator i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
+	std::vector<hotkey_item>::iterator i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
 
-	if(i == hotkeys.end())
+	if(i == hotkeys.end()) {
+		//no matching hotkey was found, but try an in-exact match.
+		i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event,hotkey_pressed::ALLOW_MODS));
+	}
+
+	if(i == hotkeys.end()) {
 		return;
+	}
 
 	execute_command(disp,i->action,executor);
 }

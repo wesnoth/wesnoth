@@ -66,7 +66,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area()), builder_(built_terrains, map),
 					   first_turn_(true), in_game_(false), map_labels_(*this,map),
-					   tod_hex_mask1(NULL), tod_hex_mask2(NULL)
+					   tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -2191,6 +2191,18 @@ void display::prune_chat_messages(bool remove_all)
 		}
 
 		prune_chat_messages(remove_all);
+	}
+}
+
+void display::set_diagnostic(const std::string& msg)
+{
+	if(diagnostic_label_ != 0) {
+		font::remove_floating_label(diagnostic_label_);
+		diagnostic_label_ = 0;
+	}
+
+	if(msg != "") {
+		diagnostic_label_ = font::add_floating_label(msg,16,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
 	}
 }
 

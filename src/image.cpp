@@ -171,7 +171,6 @@ void set_wm_icon()
 #if !(defined(__APPLE__))
 	scoped_sdl_surface icon(get_image(game_config::game_icon,UNSCALED));
 	if(icon != NULL) {
-		std::cerr << "setting icon...\n";
 		::SDL_WM_SetIcon(icon,NULL);
 	}
 #endif

@@ -78,8 +78,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	const config::child_list& levels = cfg_->get_children("multiplayer");
 
-	if(map == levels.size() )
-	{
+	if(map == levels.size()) {
 		//Load a saved game
 		save_ = true;
 		bool show_replay = false;

@@ -291,6 +291,8 @@ public:
 	map_labels& labels() { return map_labels_; }
 	const map_labels& labels() const { return map_labels_; }
 
+	void set_diagnostic(const std::string& msg);
+
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
 	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
 
@@ -311,7 +313,7 @@ public:
 	//rebuild the dynamic terrain at the given location.
     void rebuild_terrain(const gamemap::location &location);
 	
-	//Add a location to highlight. Note that this has nothign to do with
+	//Add a location to highlight. Note that this has nothing to do with
 	//selecting hexes, it is pure highlighting.
 	void add_highlighted_loc(const gamemap::location &hex);
 
@@ -455,6 +457,8 @@ private:
 	static std::map<gamemap::location,double> debugHighlights_;
 
 	std::set<gamemap::location> highlighted_locations_;
+
+	int diagnostic_label_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

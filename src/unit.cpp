@@ -101,7 +101,8 @@ unit::unit(const unit_type* t, const unit& u) :
 			   attacks_(t->attacks()), backupAttacks_(t->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
-               guardian_(false), upkeep_(u.upkeep_)
+               guardian_(false), upkeep_(u.upkeep_),
+			   overlays_(u.overlays_), variables_(u.variables_)
 {
 	validate_side(side_);
 

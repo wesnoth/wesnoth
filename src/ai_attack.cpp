@@ -30,6 +30,7 @@ const int max_positions = 10000;
 void ai::do_attack_analysis(
 	                 const location& loc,
 	                 const move_map& srcdst, const move_map& dstsrc,
+					 const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
 	                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
 					 const location* tiles, bool* used_locations,
 	                 std::vector<location>& units,
@@ -56,8 +57,8 @@ void ai::do_attack_analysis(
 		return;
 	}
 
-	const double cur_rating = cur_analysis.movements.empty() ? 0 :
-	                          cur_analysis.rating(0.0);
+	const double cur_rating = cur_analysis.movements.empty() ? -1.0 :
+	                          cur_analysis.rating(0.0,*this);
 
 	double rating_to_beat = cur_rating;
 
@@ -145,7 +146,7 @@ void ai::do_attack_analysis(
 			//calculate how much support we have on this hex from allies. Support does not
 			//take into account terrain, because we don't want to move into a hex that is
 			//surrounded by good defensive terrain
-			const double support = power_projection(tiles[j],srcdst,dstsrc,false);
+			const double support = power_projection(tiles[j],fullmove_srcdst,fullmove_dstsrc,false);
 
 			//if this is a position with equal defense to another position, but more vulnerability
 			//then we don't want to use it
@@ -170,11 +171,11 @@ void ai::do_attack_analysis(
 
 			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst);
 
-			if(cur_analysis.rating(0.0) > rating_to_beat) {
+			if(cur_analysis.rating(0.0,*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
-				do_attack_analysis(loc,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+				do_attack_analysis(loc,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,
 				                   tiles,used_locations,
 				                   units,result,cur_analysis);
 				used_locations[cur_position] = false;
@@ -502,7 +503,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 	}
 }
 
-double ai::attack_analysis::rating(double aggression) const
+double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 {
 	if(leader_threat) {
 		aggression = 1.0;
@@ -522,16 +523,24 @@ double ai::attack_analysis::rating(double aggression) const
 		//of their optimal terrain into sub-optimal terrain.
 		//calculate the 'exposure' of our units to risk
 
-		const double exposure = resources_used*(terrain_quality - alternative_terrain_quality);
-		std::cerr << "attack option has base value " << value << " with exposure " << exposure << "\n";
+		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
+		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/maximum<double>(0.01,support);
+		std::cerr << "attack option has base value " << value << " with exposure " << exposure << ": " << vulnerability << "/" << support << " = " << (vulnerability/support) << "\n";
+		if(uses_leader) {
+			ai_obj.log_message("attack option has value " + str_cast(value) + " with exposure " + str_cast(exposure) + ": " + str_cast(vulnerability) + "/" + str_cast(support));
+		}
 
 		value -= exposure;
 	}
 	
 	//prefer to attack already damaged targets
-	value += ((target_starting_damage/3 + avg_damage_inflicted)*
-					                     (target_value/resources_used) -
-	   (1.0-aggression)*avg_damage_taken*(resources_used/target_value))/10.0;
+	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
+
+	//sanity check: if we're putting ourselves at major risk, and have no chance to kill
+	//then don't do it
+	if(vulnerability > 50.0 && vulnerability > support*5.0 && chance_to_kill < 0.02) {
+		return -1.0;
+	}
 
 	if(!leader_threat && vulnerability*terrain_quality > 0.0) {
 		value *= support/(vulnerability*terrain_quality);
@@ -543,7 +552,9 @@ double ai::attack_analysis::rating(double aggression) const
 		value *= 5.0;
 	}
 
-	std::cerr << "value: " << value << " vulnerability: " << vulnerability << " quality: " << terrain_quality << " alternative quality: " << alternative_terrain_quality << "\n";
+	std::cerr << "attack on " << (target.x+1) << "," << (target.y+1) << ": attackers: " << movements.size() << " value: " << value
+	          << " chance to kill: " << chance_to_kill << " damage inflicted: " << avg_damage_inflicted << " damage taken: " << avg_damage_taken
+		      << " vulnerability: " << vulnerability << " support: " << support << " quality: " << terrain_quality << " alternative quality: " << alternative_terrain_quality << "\n";
 
 	return value;
 }
@@ -569,6 +580,10 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	bool used_locations[6];
 	std::fill(used_locations,used_locations+6,false);
 
+	std::map<location,paths> dummy_moves;
+	move_map fullmove_srcdst, fullmove_dstsrc;
+	calculate_possible_moves(dummy_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
 		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
@@ -585,7 +600,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 			const int ticks = SDL_GetTicks();
 
-			do_attack_analysis(j->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+			do_attack_analysis(j->first,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,
 			            adjacent,used_locations,unit_locs,res,analysis);
 
 			const int time_taken = SDL_GetTicks() - ticks;
@@ -606,6 +621,8 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 
 	static gamemap::location locs[6];
 	get_adjacent_tiles(loc,locs);
+
+	const int lawful_bonus = state_.get_time_of_day().lawful_bonus;
 
 	double res = 0.0;
 
@@ -640,19 +657,27 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 				}
 
 				const unit& un = u->second;
+
+				int tod_modifier = 0;
+				if(un.type().alignment() == unit_type::LAWFUL) {
+					tod_modifier = lawful_bonus;
+				} else if(un.type().alignment() == unit_type::CHAOTIC) {
+					tod_modifier = -lawful_bonus;
+				}
 	
 				const double hp = double(un.hitpoints())/
 				                  double(un.max_hitpoints());
 				int most_damage = 0;
 				for(std::vector<attack_type>::const_iterator att =
 				    un.attacks().begin(); att != un.attacks().end(); ++att) {
-					const int damage = att->damage()*att->num_attacks();
-					if(damage > most_damage)
+					const int damage = (att->damage()*att->num_attacks()*(100+tod_modifier))/100;
+					if(damage > most_damage) {
 						most_damage = damage;
+					}
 				}
 
 				const bool village = map_.is_village(terrain);
-				const double village_bonus = (use_terrain && village) ? 2.0 : 1.0;
+				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
 
 				const double defense = use_terrain ? double(100 - un.defense_modifier(map_,terrain))/100.0 : 0.5;
 				const double rating = village_bonus*hp*defense*double(most_damage);

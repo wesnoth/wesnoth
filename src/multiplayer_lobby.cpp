@@ -264,8 +264,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			                   key[SDLK_UP],key[SDLK_DOWN],
 			                   key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
 			 
-			const bool observe = observe_game.pressed();
-			if(games_available && (observe || join_game.pressed() || games_menu.double_clicked())) {
+			const bool double_click = games_menu.double_clicked();
+			const bool observe = observe_game.pressed() || !games_available && double_click;
+			if(games_available && (observe || join_game.pressed() || double_click)) {
 				const size_t index = size_t(games_menu.selection());
 				const config::const_child_itors i = gamelist->child_range("game");
 				assert(index < size_t(i.second - i.first));

@@ -1549,6 +1549,11 @@ void turn_info::write_game_snapshot(config& start) const
 	game_events::write_events(start);
 
 	write_game(state_of_game_,start);
+
+	//clear any unnecessary children that we don't want in a snapshot
+	start.clear_children("snapshot");
+	start.clear_children("replay_start");
+
 	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
 
 	//write out the current state of the map
@@ -1850,9 +1855,12 @@ void turn_info::recall()
 
 bool turn_info::has_friends() const
 {
+	if(is_observer()) {
+		return false;
+	}
+
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(n != gui_.viewing_team() && teams_[gui_.viewing_team()].team_name() == teams_[n].team_name() &&
-		   teams_[n].is_network()) {
+		if(n != gui_.viewing_team() && teams_[gui_.viewing_team()].team_name() == teams_[n].team_name() && teams_[n].is_network()) {
 			return true;
 		}
 	}

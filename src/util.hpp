@@ -15,6 +15,7 @@
 
 #include <cmath>
 #include <map>
+#include <sstream>
 
 //instead of playing with VC++'s crazy definitions of min and max,
 //just define our own
@@ -71,6 +72,12 @@ To lexical_cast_default(From a, To def=To())
 	} else {
 		return res;
 	}
+}
+
+template<typename From>
+std::string str_cast(From a)
+{
+	return lexical_cast<std::string,From>(a);
 }
 
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
