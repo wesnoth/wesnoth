@@ -250,14 +250,13 @@ void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builde
 
 void terrain_builder::add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item)
 {
-	if(!cfg[item].empty())
-		list.push_back(cfg[item]);
-
-	const config::child_list& items = cfg.get_children(item);
-
-	for(config::child_list::const_iterator itor = items.begin(); itor != items.end(); ++itor) {
-		if(!(**itor)["name"].empty())
-			list.push_back((**itor)["name"]);
+	if(!cfg[item].empty()) {
+		std::vector<std::string> item_string = config::split(cfg[item]);
+		
+		for(std::vector<std::string>::const_iterator itor = item_string.begin();
+				itor != item_string.end(); ++itor) {
+			list.push_back(*itor);
+		}
 	}
 }
 
