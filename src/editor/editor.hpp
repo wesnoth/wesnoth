@@ -9,7 +9,6 @@
 
   See the COPYING file for more details.
 */
-
 #ifndef EDITOR_H_INCLUDED
 #define EDITOR_H_INCLUDED
 
@@ -54,9 +53,57 @@ struct size_specs {
 /// questions or saving.
 enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
 
+/// A palette where the terrain to be drawn can be selected.
+class terrain_palette {
+public:
+	terrain_palette(display &gui, const size_specs &sizes,
+					const gamemap &map);
+
+	/// Scroll the terrain palette up one step if possible.
+	void scroll_up();
+
+	/// Scroll the terrain palette down one step if possible.
+	void scroll_down();
+
+	/// Return the currently selected terrain.
+	gamemap::TERRAIN selected_terrain() const;
+	
+	/// Select a terrain.
+	void select_terrain(gamemap::TERRAIN);
+
+	/// To be called when a mouse click occurs. Check if the coordinates
+	/// is a terrain that may be chosen, select the terrain if that is
+	/// the case.
+	void left_mouse_click(const int mousex, const int mousey);
+
+	// Draw the palette. If force is true everything will be redrawn
+	// even though it is not invalidated.
+	void draw(bool force=false);
+
+	/// Return the number of terrains in the palette.
+	size_t num_terrains() const;
+
+
+private:
+	/// Return the number of the tile that is at coordinates (x, y) in the
+	/// panel.
+	int tile_selected(const int x, const int y) const;
+					  
+	const size_specs &size_specs_;
+	scoped_sdl_surface surf_;
+	display &gui_;
+	unsigned int tstart_;
+	std::vector<gamemap::TERRAIN> terrains_;
+	gamemap::TERRAIN selected_terrain_;
+	const gamemap &map_;
+	// Set invalid_ to true if an operation that requires that the
+	// palette is redrawn takes place.
+	bool invalid_;
+};
+
 /// A map editor. Receives SDL events and can execute hotkey commands.
 class map_editor : public events::handler,
-		   public hotkey::command_executor {
+				   public hotkey::command_executor {
 public:
 	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
 	
@@ -70,11 +117,6 @@ public:
 	/// Set the abort flag, which indicates if the editor should exit in
 	/// some way after the current iteration of the main loop.
 	void set_abort(const ABORT_MODE abort=ABORT_NORMALLY);
-
-	/// Scroll the terrain palette down one step if possible.
-	void scroll_palette_down();
-	/// Scroll the terrain palette up one step if possible.
-	void scroll_palette_up();
 
 	/// Save the current map. If filename is an empty string, use the
 	/// filename that is set with set_file_to_save_as(). A message box
@@ -169,16 +211,15 @@ private:
 	/// dispose the modification.
 	bool confirm_modification_disposal(display& disp, const std::string message);
 
+	void draw_terrain_name(display &disp, const gamemap::TERRAIN);
+
 	display &gui_;
 	gamemap &map_;
-	std::vector<gamemap::TERRAIN> terrains_;
 	gui::button tup_, tdown_;
-	gamemap::TERRAIN selected_terrain_;
 	map_undo_list undo_stack_;
 	map_undo_list redo_stack_;
 	std::string filename_;
 	ABORT_MODE abort_;
-	unsigned int tstart_;
 	// Keep track of the number of operations performed since the last
 	// save. If this is zero when the editor is exited there is no need
 	// to ask the user to save.
@@ -192,7 +233,11 @@ private:
 	// When minimap_dirty_ is true a redraw of the minimap will be
 	// scheduled.
 	bool minimap_dirty_;
+	terrain_palette palette_;
 };
+
+
+
 
 /// Display a dialog with map filenames and return the chosen
 /// one. Create a temporary display to use.
@@ -201,10 +246,6 @@ void drawbar(display& disp);
 bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected,
 			gamemap map, size_specs specs);
 
-/// Return the number of the tile that is at coordinates (x, y) in the
-/// panel.
-int tile_selected(const unsigned int x, const unsigned int y,
-		  const display& disp, const size_specs specs);
 
 bool is_invalid_terrain(char c);
 
