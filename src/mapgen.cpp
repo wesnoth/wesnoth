@@ -544,11 +544,8 @@ std::string generate_map(size_t width, size_t height,
 	//in 'valid_terrain'.
 	int ntries = 0;
 	bool placing_bad = true;
-	while(placing_bad) {
-		if(++ntries > 5000) {
-			std::cerr << "could not sanely place castles. Aborting.\n";
-			return "";
-		}
+	const size_t max_tries = 50000;
+	while(placing_bad && ntries++ < max_tries) {
 
 		std::vector<location> castles;
 		for(size_t player = 0; player != nplayers; ++player) {
@@ -582,7 +579,7 @@ std::string generate_map(size_t width, size_t height,
 			}
 		}
 
-		if(placing_bad)
+		if(placing_bad && ntries < max_tries)
 			continue;
 
 		//make sure all castles are a minimum distance away from each other
@@ -596,7 +593,7 @@ std::string generate_map(size_t width, size_t height,
 			}
 		}
 
-		if(placing_bad)
+		if(placing_bad && ntries < max_tries)
 			continue;
 
 		//plonk down the castles.

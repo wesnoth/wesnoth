@@ -14,7 +14,13 @@ SDLNet_SocketSet socket_set = 0;
 typedef std::vector<network::connection> sockets_list;
 sockets_list sockets;
 
-std::map<network::connection,std::string> received_data;
+struct partial_buffer {
+	partial_buffer() : upto(0) {}
+	std::vector<char> buf;
+	size_t upto;
+};
+
+std::map<network::connection,partial_buffer> received_data;
 
 TCPsocket server_socket;
 
@@ -181,64 +187,49 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(SDLNet_SocketReady(*i)) {
-			char num_buf[4];
-			size_t len = SDLNet_TCP_Recv(*i,num_buf,4);
+			std::map<connection,partial_buffer>::iterator part_received = received_data.find(*i);
+			if(part_received == received_data.end()) {
+				char num_buf[4];
+				size_t len = SDLNet_TCP_Recv(*i,num_buf,4);
 
-			if(len != 4) {
-				throw error(std::string("network error receiving length data: ") + SDLNet_GetError(),*i);
+				if(len != 4) {
+					std::cerr << "received bad packet length: " << len << "/4\n";
+					throw error(std::string("network error receiving length data: ") + SDLNet_GetError(),*i);
+				}
+
+				len = SDLNet_Read32(num_buf);
+
+				std::cerr << "received packet length: " << len << "\n";
+
+				if(len > 10000000) {
+					throw error(std::string("network error: bad length data"),*i);
+				}
+
+				part_received = received_data.insert(std::pair<connection,partial_buffer>(*i,partial_buffer())).first;
+				part_received->second.buf.resize(len);
 			}
 
-			len = SDLNet_Read32(num_buf);
+			partial_buffer& buf = part_received->second;
 
-			std::cerr << "received packet length: " << len << "\n";
-
-			if(len > 10000000) {
-				throw error(std::string("network error: bad length data"),*i);
-			}
-
-			std::vector<char> v(len);
-			const size_t nbytes = SDLNet_TCP_Recv(*i,&v[0],len);
-			if(nbytes != len) {
+			const size_t expected = buf.buf.size() - buf.upto;
+			const size_t nbytes = SDLNet_TCP_Recv(*i,&buf.buf[buf.upto],expected);
+			if(nbytes > expected) {
+				std::cerr << "received " << nbytes << "/" << expected << "\n";
 				throw error(std::string("network error: received wrong number of bytes: ") + SDLNet_GetError(),*i);
 			}
 
-			std::string buffer(v.begin(),v.end());
-/*
-			for(;;) {
-				char c;
-				const int len = SDLNet_TCP_Recv(*i,&c,1);
+			buf.upto += nbytes;
+			std::cerr << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
 
-				if(len == 0) {
-					break;
-				} else if(len < 0) {
-					throw error(std::string("error receiving data: ") + SDLNet_GetError(),*i);
+			if(buf.upto == buf.buf.size()) {
+				const std::string buffer(buf.buf.begin(),buf.buf.end());
+				received_data.erase(part_received); //invalidates buf. don't use again
+				if(buffer == "") {
+					throw error("remote host closed connection",*i);
 				}
 
-				buffer.resize(buffer.size()+1);
-				buffer[buffer.size()-1] = c;
-
-				if(c == 0) {
-					break;
-				}
-			}
-*/
-			if(buffer == "") {
-				throw error("remote host closed connection",*i);
-			}
-
-			if(buffer[buffer.size()-1] != 0) {
-				received_data[*i] += buffer;
-				const int ticks_taken = SDL_GetTicks() - starting_ticks;
-				if(ticks_taken < timeout) {
-					return receive_data(cfg,connection_num,timeout-ticks_taken);
-				} else {
-					return 0;
-				}
-			} else {
-				const std::map<connection,std::string>::iterator it = received_data.find(*i);
-				if(it != received_data.end()) {
-					buffer = it->second + buffer;
-					received_data.erase(it);
+				if(buffer[buffer.size()-1] != 0) {
+					throw network::error("sanity check on incoming data failed",*i);
 				}
 
 				cfg.read(buffer);
