@@ -397,7 +397,8 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return report();
 		}
 	}
-		
+	default:
+		break;
 	}
 	return report(str.str());
 }
