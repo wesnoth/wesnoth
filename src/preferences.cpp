@@ -313,6 +313,14 @@ bool show_ai_moves()
 	return prefs["show_ai_moves"] != "no";
 }
 
+std::string client_type()
+{
+	if(prefs["client_type"] == "ai")
+		return "ai";
+	else
+		return "human";
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

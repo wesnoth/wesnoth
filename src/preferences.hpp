@@ -74,6 +74,8 @@ namespace preferences {
 
 	bool show_ai_moves();
 
+	std::string client_type();
+
 	void show_preferences_dialog(display& disp);
 	void show_video_mode_dialog(display& disp);
 }

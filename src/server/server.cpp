@@ -341,5 +341,6 @@ int main()
 		run_server();
 	} catch(network::error& e) {
 		std::cerr << "error starting server: " << e.message << "\n";
+		return -1;
 	}
 }
