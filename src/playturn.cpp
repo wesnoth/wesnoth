@@ -1109,7 +1109,7 @@ void turn_info::end_unit_turn()
 	   un->second.movement_left() >= 0) {
 		std::vector<gamemap::location> steps;
 		steps.push_back(selected_hex_);
-		undo_stack_.push_back(undo_action(steps,un->second.movement_left(),-1));
+		undo_stack_.push_back(undo_action(un->second,steps,un->second.movement_left(),-1));
 		redo_stack_.clear();
 		un->second.end_unit_turn();
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
@@ -1722,7 +1722,7 @@ void turn_info::recall()
 				current_team.spend_gold(game_config::recall_cost);
 				recorder.add_recall(res,loc);
 
-				undo_stack_.push_back(undo_action(loc,res));
+				undo_stack_.push_back(undo_action(un,loc,res));
 				redo_stack_.clear();
 				
 				recall_list.erase(recall_list.begin()+res);

@@ -1558,7 +1558,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
 			undo_stack->clear();
 		} else {
-			undo_stack->push_back(undo_action(steps,starting_moves,orig_village_owner));
+			undo_stack->push_back(undo_action(u,steps,starting_moves,orig_village_owner));
 		}
 	}
 
@@ -1692,12 +1692,10 @@ void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& sta
 	*/
 	for(undo_list::const_iterator un = undos.begin(); un != undos.end(); ++un) {
 		if(un->is_recall()) continue;
-		unit_map::const_iterator ui = units.find(un->route.back());
 		unit_map um;
-		assert(ui != units.end());
 		std::vector<gamemap::location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
-			um.insert(std::pair<gamemap::location,unit>(*step,ui->second));
+			um.insert(std::pair<gamemap::location,unit>(*step,un->affected_unit));
 			clear_shroud_unit(map,status,gamedata,um,*step,teams,team,NULL,NULL);
 			um.erase(*step);
 		}

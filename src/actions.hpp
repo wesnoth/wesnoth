@@ -161,14 +161,16 @@ int combat_modifier(const gamestatus& status,
 
 //structure which records information to be able to undo a movement
 struct undo_action {
-	undo_action(const std::vector<gamemap::location>& rt,int sm,int orig=-1)
-	       : route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1) {}
-	undo_action(const gamemap::location& loc, int pos) : recall_loc(loc), recall_pos(pos) {}
+	undo_action(unit u,const std::vector<gamemap::location>& rt,int sm,int orig=-1)
+		: affected_unit(u), route(rt), starting_moves(sm), original_village_owner(orig), recall_pos(-1) {}
+	undo_action(unit u,const gamemap::location& loc, int pos)
+		: affected_unit(u), recall_loc(loc), recall_pos(pos) {}
 	std::vector<gamemap::location> route;
 	int starting_moves;
 	int original_village_owner;
 	gamemap::location recall_loc;
 	int recall_pos;
+	unit affected_unit;
 	bool is_recall() const { return recall_pos >= 0; }
 };
 
