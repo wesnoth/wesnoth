@@ -111,8 +111,9 @@ void set_fullscreen(bool ison)
 
 std::pair<int,int> resolution()
 {
-	const string_map::const_iterator x = prefs.values.find("xresolution");
-	const string_map::const_iterator y = prefs.values.find("yresolution");
+	const std::string prefix = fullscreen() ? "fullscreen_" : "windowed_";
+	const string_map::const_iterator x = prefs.values.find(prefix + "xres");
+	const string_map::const_iterator y = prefs.values.find(prefix + "yres");
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
 		std::pair<int,int> res (maximum(atoi(x->second.c_str()),800),
@@ -152,11 +153,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 	}
 
 	if(write_resolution) {
-		char buf[50];
-		sprintf(buf,"%d",res.first);
-		prefs["xresolution"] = buf;
-		sprintf(buf,"%d",res.second);
-		prefs["yresolution"] = buf;
+		const std::string prefix = fullscreen() ? "fullscreen_" : "windowed_";
+		prefs[prefix + "xres"] = lexical_cast<std::string>(res.first);
+		prefs[prefix + "yres"] = lexical_cast<std::string>(res.second);
 	}
 }
 
