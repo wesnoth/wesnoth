@@ -1,10 +1,8 @@
 CVS HEAD:
- * Added support for animated deaths, and added animations for skeleton and revenant
- * Balancing of water units: swimmer units (merfolk) have defense on water and swamp reduced by 10%. Merman Hunter cost: 13 -> 15. Melee attack: 5-2 -> 4-2. Naga have defense on shallow water reduced by 10%. Deep sea creatures have defense on water reduced by 10%. Naga Fighter cost: 13 -> 14.
  * Added UNIT and PLACE_IMAGE macros to utils.cfg
  * terrain improvements
   * fixed swamp transition (NW, SE) graphics
-  * added new terrains, 'N' ruined castle, 'Q' sunken ruin, and 'q' swamp-ruin
+  * added new terrains, 'N' ruined castle, 'Q' sunken ruin, 'q' swamp-ruin, and 'k' river ford
   * added new graphics for keep-keep transitions
  * language and i18n
   * new translations: Estonian, Japanese
@@ -13,12 +11,18 @@ CVS HEAD:
   * fixed untranslatable strings
   * language fixes and polishing (English)
  * campaign modifications
+  * tutorial polishing
   * updated HttT, TDH, TRoW, SotBE, and the Tutorial to use the new [objectives] tag
   * updated HttT and TRoW to use the ruined keeps where appropriate
   * dialog improvements in EI
   * new map for Drowned Plains (EI)
-  * Changed the Wesfolk Leader's guards to poachers in "The Fall" (TRoW)
+  * changed the Wesfolk Leader's guards to poachers in "The Fall" (TRoW)
  * unit modifications
+  * added support for animated deaths, and added animations for skeleton and revenant
+  * balancing of water units: swimmer units (merfolk) have defense on water and swamp reduced by 
+    10%. Merman Hunter cost: 13 -> 15. Melee attack: 5-2 -> 4-2. Naga have defense on shallow water 
+    reduced by 10%. Deep sea creatures have defense on water reduced by 10%. Naga Fighter cost: 
+    13 -> 14.
   * increased cost of Orcish Assassin and Troll Whelp by 1 gold each
   * improved defense of gryphon units on mountains. 
   * increased movement speed of steadfast dwarvish units.
