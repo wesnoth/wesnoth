@@ -13,11 +13,16 @@ CVS HEAD:
    * catalan
    * french
    * italian
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Desert of Death
  * made scrollbars faster by avoiding unnecessary redraws
  * added HOME and END keys support in textboxes
  * implemented mid-scenario changing of some side detail(s)
  * attack and defence weighting improvements
  * improved macros handling arguments with space
+ * added attack_weight and defense_weight in [attack] tags so that
+   units can choose a different weapon upon attack or defense
+ * [have_unit] can now use a location filter
  * fixed AI attacking from silly places
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
  * fixed statistics showing incorrectly on all but scenario 1
