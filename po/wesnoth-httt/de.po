@@ -1,13 +1,15 @@
 # German translation of Wesnoth
 # Copyright (c) 2004 Wesnoth Development Team
+# Previous Translators:
+# 	Christoph Berg <Christoph.Berg@kpm-sport.de>
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth VERSION\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-05 00:48+0100\n"
-"PO-Revision-Date: 2004-10-23 19:03+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2004-12-20 13:11+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,29 +23,30 @@ msgstr "Der Thronerbe"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:10
 msgid "Fighter"
-msgstr ""
+msgstr "Kämpfer"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:10
 msgid "(easiest)"
-msgstr ""
+msgstr "(leicht)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:11
 msgid "Hero"
-msgstr ""
+msgstr "Held"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:12
 msgid "(hardest)"
-msgstr ""
+msgstr "(schwierig)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:12
 msgid "Champion"
-msgstr ""
+msgstr "Meister"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:13
 msgid ""
 "Fight to gain back the throne of Wesnoth, of which you are the legitimate "
 "heir."
 msgstr ""
+"Erobert den Thron von Wesnoth zurück, dessen rechtmäßiger Erbe ihr seid."
 
 #: data/scenarios/Heir_To_The_Throne/A_Choice_Must_Be_Made.cfg:5
 msgid "A Choice Must Be Made"
@@ -256,19 +259,31 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Schlacht um Wesnoth"
 
+# besser für great und men?
+# City of men --> Stadt der Menschen
+# men wird im englischen gerne als kurzform für Menschheit genutzt
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:12
 msgid ""
 "Here we overlook the city of Weldyn. The great city. The ancient city. The "
 "city of evil. The city of good. The city of men."
 msgstr ""
+"Hier überschauen wir die gesamte Stadt Weldyn. Die große Stadt. Die alte "
+"Stadt. Die Stadt des Guten und des Bösen. Die Stadt der Menschen."
 
+# Wie geht ein Zeilenumbruch?
+# Antwort: /n, genau wie in den Missionsbeschreibungen
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:16
 msgid ""
 "I have not looked upon this city for seventeen years. Seventeen years ago, "
 "when I should have been at the height of my power. But my strength failed "
 "me. I failed, and I cannot atone for it."
 msgstr ""
+"Ich habe diese Stadt siebzehn Jahre lang nicht mehr gesehen. Vor siebzehn "
+"Jahren, als ich am Höhepunkt meiner Kräfte hätte sein sollen... Aber meine "
+"Stärke täuschte mich. Ich scheiterte und ich kann es nicht wieder gut machen."
 
+# irgendwas wird sich doch für Reiter finden lassen
+# Wie wäre es mit Diener?
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:20
 msgid ""
 "The battle had been long and hard. We had been defeated. Eldred was slain, "
@@ -277,6 +292,11 @@ msgid ""
 "haste to Weldyn, before the guards of Asheviere could get there, to carry "
 "out their evil orders."
 msgstr ""
+"Die Schlacht war lang und hart. Wir wurden besiegt. Eldred wurde ermordet. "
+"Ich wusste, Ashevieres Zorn würde groß sein und dass viele Unschuldige "
+"sterben müssten. Ich musste die Prinzen retten und damit die Monarchie. Ich "
+"eilte nach Weldyn bevor Ashevieres Reiter dort sein konnten um ihre "
+"grauenvollen Befehle auszuführen."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:24
 msgid ""
@@ -285,6 +305,10 @@ msgid ""
 "The heirs were slain. Only Asheviere and her daughter had any claim to the "
 "throne."
 msgstr ""
+"Aber ich scheiterte. Ich war zu spät. Ich kam in die Gemächer des jüngsten "
+"Prinzen, Prinz Konrad, gerade als einer der Reiter ihn ermordete. Alles war "
+"verloren. Die Thronerben waren tot. Nur Asheviere und ihre Tochter hatten "
+"nun ein Anrecht auf den Thron."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:28
 msgid ""
@@ -293,7 +317,12 @@ msgid ""
 "little prince's broken body, and away I rode. Far away, to the land of the "
 "Elves."
 msgstr ""
+"Natürlich seid ihr überrascht, aber es ist die Wahrheit. Eilig tötete ich "
+"die Mörder, die diese üble Tat verübt hatten. Dann nahm ich den leblosen "
+"Körper des Prinzen und ritt davon. Weit weg in das Land der Elfen."
 
+# wirklich ehrlich? Glaube was anderes wäre besser
+# hab es ein wenig angepasst, klingt nun etwas besser :-D
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:32
 msgid ""
 "By strange and mysterious fortune, the Elf Lady Parandra had come across a "
@@ -302,6 +331,11 @@ msgid ""
 "fortune smiled upon this man-child. Perhaps that is why this most truthful "
 "of peoples agreed to my plan."
 msgstr ""
+"Durch seltsames und unglaubliches Glück fand die Elfendame Parandra ein "
+"menschliches Kind. Sie wusste nichts über ihn, außer dass die Orks ihn "
+"gefressen hätten, wenn sie ihn nicht gerettet hätte. Die Elfen wussten, dass "
+"dieses Kind etwas besonderes an sich hatte. Vielleicht ist das der Grund, "
+"warum die ehrwürdigen Elfen meinem Plan zugestimmt haben."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:36
 msgid ""
@@ -311,6 +345,12 @@ msgid ""
 "out their evil deed, instead of after. No-one would ever have to know. And "
 "no-one did know for certain, until now."
 msgstr ""
+"Nachdem wir den kleinen Prinz begraben hatten, beschlossen wir niemals "
+"wieder von ihm zu sprechen. Stattdessen würden wir dieses Weisenkind Konrad "
+"nennen und er würde erzogen werden König zu sein. Ich würde sagen, dass ich "
+"die Mörder ermordet hätte, bevor sie ihre teuflische Tat vollziehen konnten, "
+"anstatt danach. Niemand hätte davon wissen müssen und sicher wusste davon "
+"auch niemand, zumindest bis jetzt..."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:40
 msgid ""
@@ -320,12 +360,19 @@ msgid ""
 "line of kings, stretching all the way back to the seafarers of old from the "
 "west."
 msgstr ""
+"Ich dachte, wir könnten euch eines Tages zum König machen, aber ich sehe, "
+"dass das Schicksal einen anderen Weg gewählt hat. Nämlich, dass, trotz allem "
+"Bösen in Asheviere, Li'sar für den Thron bestimmt ist. Sie ist die "
+"rechtmäßige Königin. Sie stammt aus einer langen Linie von Königen, die "
+"zurückreicht bis in die Zeiten der alten Seefahrer aus dem Westen. "
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:44
 msgid ""
 "Now, let us not tarry here any longer! The dawn breaks! The time has come "
 "for the heir to the throne to claim it!"
 msgstr ""
+"Nun lasst uns hier nicht länger verweilen. Der Morgen graut! Es ist die Zeit "
+"für den rechtmäßigen Thronerben gekommen, ihn nun auch zu besteigen."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:66
 msgid ""
@@ -348,53 +395,67 @@ msgstr ""
 "#Li'sar fällt in der Schlacht\n"
 "#Kalenz fällt in der Schlacht"
 
+# wankelmütig geht besser
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:143
 msgid ""
 "So, these rebels come at last to face me, while most of my army is off "
 "fighting the fickle clans."
 msgstr ""
+"Diese Rebellen sind nun gekommen mich zu bekämpfen, während die größten "
+"Teile meiner Armee gegen diese wankelmütigen Clans kämpfen."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:147
 msgid ""
 "Surrender, mother. The land's blood is spent. I have come to take my "
 "rightful place."
 msgstr ""
+"Gib auf Mutter. Das Land hat genug Blut vergossen. Ich bin gekommen um "
+"meinen rechtmäßigen Platz einzunehmen."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:151
 msgid ""
 "Ahh. My own daughter, a turncoat. So it is true. Such treason my reign must "
 "endure! But endure it will."
 msgstr ""
+"Argh! Meine eigene Tochter ist eine Überläuferin. Also ist es wahr. So ein "
+"Verrat! Meine Herrschaft muss andauern. Und sie wird andauern."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:155
 msgid ""
 "How long must the people endure your rule? Give the throne to your daughter. "
 "She is the rightful heir. We even hold the scepter to prove it!"
 msgstr ""
+"Wie lange sollen die Menschen deine Schreckensherrschaft noch ertragen? Gebt "
+"den Thron an eure Tochter weiter. Sie ist die rechtmäßige Erbin. Wir haben "
+"sogar das Zepter des Feuers um es zu beweisen!"
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:159
 msgid ""
 "Delfador! My old tormentor! Treason! Men! Seize them! Kill them! Kill them "
 "all!"
 msgstr ""
+"Delfador! Mein alter Erzfeind! Verrat! Männer, ergreift sie. Tötet sie. "
+"Tötet sie alle!"
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:170
 msgid "Treason! The evil ones have slain me!"
-msgstr ""
+msgstr "Verrat! Die Bösen haben mich besiegt!"
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:174
 msgid "And so passes Asheviere, the dark queen of Wesnoth."
-msgstr ""
+msgstr "Und so ist Asheviere, die dunkle Königin von Wesnoth, Geschichte."
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:178
 msgid "We have won at last! Li'sar! You will be queen!"
-msgstr ""
+msgstr "Wir haben gewonnen! Li'sar! Du wirst Königin sein!"
 
 #: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:182
 msgid ""
 "Yes, but I won't ever forget what you have done for me, Konrad, Delfador, "
 "and Kalenz."
 msgstr ""
+"Ja, aber ich werde nie vergessen, was ihr für mich getan habt, Konrad, "
+"Delfador und Kalenz."
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:4
 msgid "The Bay of Pearls"
@@ -413,11 +474,11 @@ msgstr ""
 "\n"
 "Sieg:\n"
 "@Besiegt beide gegnerischen Anführer\n"
-"@Besiegt einen gegnerischen Anführer und überlebt, bis ihr das Rundenlimit "
-"überschreitet\n"
+"@Besiegt einen gegnerischen Anführer und überlebt, bis alle Züge vorbei "
+"sind.\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:99
 msgid ""
@@ -438,7 +499,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:109
 msgid "Very well. Be careful!"
-msgstr "Sehr gut. Sei vorsichtig!"
+msgstr "Sehr gut. Seid vorsichtig!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:138
 msgid "But boss, why are we only using bats and nagas?"
@@ -494,9 +555,9 @@ msgid ""
 "Thank you for rescuing us! Now we can help you fight the evil Orcs!\n"
 "The main cage where they keep most of the mermen is in the south-east!"
 msgstr ""
-"Danke, dass ihr uns gerettet habt. Jetzt können wir euch helfen die bösen "
+"Danke, dass ihr uns gerettet habt. Jetzt können wir euch helfen, die bösen "
 "Orks zu bekämpfen!\n"
-"Der Hauptkäfig, in dem sie die meisten von uns gefangen halten ist im Nord-"
+"Der Hauptkäfig, in dem sie die meisten von uns gefangen halten ist im Süd-"
 "Osten!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:482
@@ -730,9 +791,10 @@ msgid ""
 "they can ship supplies and weapons."
 msgstr ""
 "Es sollte möglich sein im Hafen von Blackwater an Board eines Schiffes zu "
-"gehen, aber es scheint, als ob die Orks hier auch schon sind. Rebellen, die "
-"Asheviere hassen, und dem Gedenken an den König treu sind, halten den Hafen "
-"verzweifelt, weil es ein Versorgungspunkt für Waffen und Nahrung ist."
+"gehen. Es sieht aber so aus, als ob die Orks auch dorthin unterwegs seien. "
+"Rebellen, die Asheviere hassen und dem Gedenken an den König treu sind, "
+"halten den Hafen verzweifelt, weil es der einzige Versorgungspunkt für "
+"Waffen und Nahrung ist."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:108
 msgid "Delfador, some Orcs are following us! We must make haste!"
@@ -745,8 +807,8 @@ msgid ""
 "in such sad times."
 msgstr ""
 "Delfador, mein alter Freund! Wir haben von eurem Kommen gehört und von dem "
-"Agriff auf die Elfen. Es ist schön dich wiederzusehen, auch wenn die "
-"Umstände sehr schlecht sind."
+"Angriff auf die Elfen. Es ist schön, Euch wiederzusehen, auch wenn wenn es "
+"mich in besseres Zeiten mehr freuen würde."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:118
 msgid ""
@@ -755,17 +817,17 @@ msgid ""
 "has slain fifty men and a hundred orcs."
 msgstr ""
 "Konrad, das ist Kaylan, einer der mächtigsten Ritter und einer der wenigen, "
-"die gewillt sind sich der dunklen Krone gegenüber zu stellen. Gerüchte "
-"sagen, dass seine Lanze 50 Männer und 100 Orks bezwungen hat."
+"die gewillt sind, sich der dunklen Krone entgegen zu stellen. Gerüchte "
+"besagen, dass seine Lanze 50 Männer und 100 Orks bezwungen hat."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:123
 msgid ""
 "It seems the orcs have come here too, to try to wrest this port from our "
 "hands. Our defenses are still weak, but reinforcements will arrive soon!"
 msgstr ""
-"Es scheint, als ob die Orks auch hierher gekommen sind um uns diesen Hafen "
+"Es scheint, als ob die Orks auch hierher gekommen sind, um uns diesen Hafen "
 "aus den Händen zu reißen. Unsere Verteidigung ist immernoch schwach, aber "
-"Verstärkung ist auf dem Weg und wird bald ankommen."
+"Verstärkung wird bald kommen!"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:129
 msgid "We will help you fight them off until the reinforcements arrive."
@@ -781,9 +843,9 @@ msgid ""
 "to take you to safety."
 msgstr ""
 "Hoffentlich können wir die Gefahr abwenden. Aber ihr, Konrad, dürft euch "
-"nicht zu lange hier aufhalten. Euer Überleben ist für unsere Sache "
-"wichtiger, als dieser Hafen. In zwei Tagen wird ein Schiff eintreffen, das "
-"euch in Sicherheit bringen wird."
+"nicht zu lange hier aufhalten. Euer Überleben ist für unsere Sache wichtiger "
+"als dieser Hafen. In zwei Tagen wird ein Schiff eintreffen, das euch in "
+"Sicherheit bringen wird."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:139
 msgid "And the ship will take us to Anduin?"
@@ -794,8 +856,8 @@ msgid ""
 "Yes, we will sail to the Isle of Anduin, my home Konrad, and the home of "
 "many mages."
 msgstr ""
-"Ja, wir werden nach Anduin, in meine Heimat, segeln. Es ist die Heimat "
-"vieler Magier."
+"Ja, wir werden nach Anduin segeln, Konrad, in meine Heimat und die Heimat "
+"vieler anderer Magier."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:149
 msgid ""
@@ -804,8 +866,8 @@ msgid ""
 "horsemen."
 msgstr ""
 "Ich werde euch einen Reiter schicken, der eure Truppen verstärken soll. Ich "
-"biete euch meine Unterstützung an, und die meiner Männer - ab jetzt könnt "
-"ihr auch Reiter ausbilden."
+"biete euch meine Unterstützung an und die meiner Männer - ab jetzt könnt ihr "
+"auch Reiter ausbilden."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:154
 msgid ""
@@ -836,8 +898,8 @@ msgid ""
 "Recruit troops wisely, Konrad, and remember that you can recall experienced "
 "units from past battles to help you fight again."
 msgstr ""
-"Konrad, rekrutiere die Einheiten sorgfältig und bedenke, dass du Einheiten "
-"aus vergangenen Schlachten einberufen kannst, um euch wieder zu helfen."
+"Konrad, rekrutiert die Einheiten sorgfältig und bedenkt, dass Ihr Einheiten "
+"aus vergangenen Schlachten einberufen könnt, um Euch wieder zu helfen."
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:182
 msgid ""
@@ -949,7 +1011,7 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Crossroads.cfg:212
 #: data/scenarios/Heir_To_The_Throne/Crossroads.cfg:260
 msgid "Ambushed!"
-msgstr ""
+msgstr "Hinterhalt!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
@@ -1459,7 +1521,7 @@ msgid ""
 "watched and guarded by many men."
 msgstr ""
 "Der Elfenrat hat gesprochen. Aber welchen Weg sollen wir auf unserer Reise "
-"nehmen? Die Furt von Abez wird nicht passierbar sein, weil sie sicherlich "
+"nehmen? Der Fluss von Abez wird nicht passierbar sein, weil sie sicherlich "
 "viele Männer bewachen werden."
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:298
@@ -1521,7 +1583,7 @@ msgstr ""
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:190
 msgid ""
@@ -1529,9 +1591,9 @@ msgid ""
 "whom she despised. Orcish mercenaries were hired and dispatched to bring "
 "about their ruin."
 msgstr ""
-"Vierzehn Jahre nach Beginn von Ashevieres Herrschaft, wandte sich ihr Zorn "
-"gegen die Elfen, die sie schon immer gehasst hatte. Sie ließ orkische "
-"Söldner anheuern, um die Elfen für immer auszulöschen."
+"Nach vierzehn Jahren unter Asheviere wandte sich ihr Zorn gegen die Elfen, "
+"die sie schon immer gehasst hatte. Sie ließ orkische Söldner anheuern, um "
+"die Elfen für immer auszulöschen."
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:195
 msgid ""
@@ -1591,7 +1653,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:239
 msgid "Ha ha! We will rip the filthy Elves to pieces!"
-msgstr "Ha ha! Wir werden diese dreckigen Elfen in Stücke reissen!"
+msgstr "Ha ha! Wir werden diese dreckigen Elfen in Stücke reißen!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:245
 msgid "Let them come. We will fight them with all we have!"
@@ -1601,7 +1663,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:250
 msgid "Be careful, Konrad! Guard him well, Delfador!"
-msgstr "Seid vorsichtig, Konrad! Schützt ihn so gur ihr könnt, Delfador!"
+msgstr "Seid vorsichtig, Konrad! Schützt ihn gut, Delfador!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:255
 msgid "And so it has begun!"
@@ -1629,14 +1691,14 @@ msgid ""
 "The Elves will fight. They may even prevail. But I fear things do not bode "
 "well for them. Let us not speak of it now. Onward!"
 msgstr ""
-"Sie werden kämpfen. Vielleicht werden sie sogar siegen. Aber es steht nicht "
-"gut um sie. Aber wir dürfen nicht zurückblicken. Wir müssen weiter!"
+"Sie werden kämpfen. Vielleicht werden sie sogar siegen. Aber es sieht nicht "
+"gut aus. Jedoch dürfen wir nicht zurückblicken. Wir müssen weiter!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:295
 msgid "Good luck, Konrad! Don't worry about us, we will fight as best we can!"
 msgstr ""
-"Viel Glück, Konrad. Mach dir keine Sorgen um uns. Wir werden kämpfen, so gut "
-"wir können!"
+"Viel Glück, Konrad. Macht euch keine Sorgen um uns. Wir werden so gut "
+"kämpfen wie wir können!"
 
 #: data/scenarios/Heir_To_The_Throne/Elves_Besieged.cfg:311
 msgid "I...I don't think I can make it anymore"
@@ -1705,7 +1767,7 @@ msgstr "Auch wenn es schmerzt, wir haben keine Zeit zu verlieren."
 
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:4
 msgid "Epilogue"
-msgstr ""
+msgstr "Nachwort"
 
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:11
 msgid ""
@@ -1713,40 +1775,57 @@ msgid ""
 "crowned Queen of Wesnoth, and the holder of the Scepter of Fire, which she "
 "would pass to all her successors."
 msgstr ""
+"Und so war die Herrschaft der Dunklen Königin beendet und Li'sar, Tochter "
+"von Haldric wurde zur Königin von Wesnoth gekrönt, das Zepter des Feuers "
+"tragend, welches sie bei allen ihren Erfolgen begleiten sollte."
 
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:15
 msgid "Her reign was long, and she undid the evil deeds of her mother."
 msgstr ""
+"Ihre Herrschaft war lang und sie machte alle grauenvollen Taten ihrer Mutter "
+"wieder rückgängig."
 
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:19
 msgid ""
 "Konrad became a noble in Li'sar's court. He married Li'sar, and together "
 "they had two sons and a daughter."
 msgstr ""
+"Konrad wurde ein Edelmann an Li'sars Hof. Er heiratete Li'sar und sie hatten "
+"drei Kinder, zwei Söhne und eine Tochter."
 
+# Anfang grottenschlecht.
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:23
 msgid ""
 "The bones of the young prince Konrad were retrieved from the Elves, and "
 "buried in the Royal Crypt in Weldyn, which Konrad visited to pay homage "
 "every week."
 msgstr ""
+"Die Knochen des jungen Prinzen Konrad wurden von den Elfen wieder "
+"ausgegraben und in der königlichen Krypta der letzten Ehre zugeführt. Konrad "
+"besuchte sie jede Woche um ihn zu huldigen."
 
+# höchster Rat? das geht besser!
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:27
 msgid ""
 "Delfador became Li'sar's High Council, advising her in the most important "
 "matters of state. He lived until a ripe old age, and was given a Royal "
 "Funeral, after which he was buried in the Royal Crypt in Weldyn."
 msgstr ""
+"Delfador wurde Li'sars höchster Rat, der sie in den wichtigsten "
+"Staatsangelegenheiten beratete. Er erreichte ein reifes Alter und bekam ein "
+"königliches Begräbnis in der königlichen Krypta von Weldyn."
 
 #: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:31
 msgid ""
 "Kalenz returned to his home in the North, and never returned to the land of "
 "men."
 msgstr ""
+"Kalenz kehrte in seine Heimat im Norden zurück und betrat das Land der "
+"Menschen nie wieder."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:4
 msgid "The Ford of Abez"
-msgstr "Die Furt von Abez"
+msgstr "Der Fluss von Abez"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:27
 msgid ""
@@ -1760,7 +1839,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sieg:\n"
-"@Bewegt Konrd zur nördlichen Seite des Flusses.\n"
+"@Bewegt Konrad zur nördlichen Seite des Flusses.\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
@@ -1829,11 +1908,11 @@ msgid ""
 "lands, but they are now filled only with chaos. This is where your father "
 "and uncle were betrayed, almost nineteen years ago now, Konrad."
 msgstr ""
-"Dies ist die Furt von Abez. Wenn wir diese Furt durchquert haben verlassen "
-"wir Wesnoth und kommen in die Nordländer. Die Zwerge beherrschen diese "
-"Länder, aber hier herrscht nur noch Chaos. Dies ist der Ort, wo der Verrat "
-"an deinem Vater und deinem Onkel geschehen ist. Es ist jetzt neunzehn Jahre "
-"her, Konrad."
+"Dies ist der Fluss von Abez. Wenn wir diesen Fluss durchquert haben "
+"verlassen wir Wesnoth und kommen in die Nordländer. Die Zwerge beherrschen "
+"diese Länder, aber hier herrscht nur noch Chaos. Dies ist der Ort, wo der "
+"Verrat an deinem Vater und deinem Onkel geschehen ist. Es ist jetzt neunzehn "
+"Jahre her, Konrad."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:273
 msgid "Really? So what happened, Delfador?"
@@ -1965,6 +2044,9 @@ msgid ""
 "There they are! So it is true, they foiled the undead. Now they are trying "
 "to leave Wesnoth. We can't let them cross the river. After them, men!"
 msgstr ""
+"Da sind sie! Also ist es wahr, sie vernichteten die Untoten. Nun versuchen "
+"sie Wesnoth zu verlassen. Wir dürfen sie nicht passieren lassen. Ihnen nach, "
+"Männer!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:363
 msgid "Not her again! Quickly! We must hurry!"
@@ -2217,17 +2299,16 @@ msgstr "Danke Prinzessin. Los Männer. Lasst uns das Zepter finden!"
 msgid "I can't believe it should end like this!"
 msgstr "Ich kann nicht glauben, dass es so enden soll!"
 
+# klingt doof
 #: data/scenarios/Heir_To_The_Throne/High_King_at_Sea.cfg:4
 msgid "High King at Sea"
-msgstr ""
+msgstr "Hoher König der See"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:4
-#, fuzzy
 msgid "Test of the Clan"
-msgstr "Test der Clans"
+msgstr "Test des Clans"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2242,17 +2323,18 @@ msgid ""
 msgstr ""
 "\n"
 "Sieg:\n"
-"@Besiegt den Clanführer Bayar\n"
+"@Besiegt 25 Einheiten und zumindest einen Klanführer (Bonus)\n"
+"@Besiegt alle Clanführer\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
 "#Kalenz fällt in der Schlacht\n"
 "#Li'sar fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:151
 msgid "Delfador, don't you think it is time we settled this?"
-msgstr ""
+msgstr "Delfador, denkt Ihr, es ist an der Zeit, dass wir dies erledigt haben?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:155
 msgid ""
@@ -2260,10 +2342,14 @@ msgid ""
 "this secret to my grave, but it isn't to be. You Elves live too long, and "
 "though I have tried hard to understand, your wisdom is foreign to me."
 msgstr ""
+"Ja, die Zeit ist gekommen. Es ist Zeit, um die Wahrheit zu verkünden. Ich "
+"hatte gehofft, dieses Geheimnis mit ins Grab zu nehmen, aber das sollte wohl "
+"nicht sein. Ihr Elfen lebt einfach zu lange, und obwohl ich versucht habe, "
+"es zu verstehen, ist mir eure Weisheit fremd."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:159
 msgid "Secret? What secret Delfador? What are you talking about?"
-msgstr ""
+msgstr "Geheimnis? Was für ein Geheimnis, Delfador? Wovon sprecht Ihr?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:163
 msgid ""
@@ -2271,6 +2357,9 @@ msgid ""
 "the top of mount Elnar. To look at Weldyn. To make plans for the battle, and "
 "to talk."
 msgstr ""
+"Wir sollten nicht jetzt darüber sprechen. Konrad und Lisar, kommt mit mir "
+"auf den Gipfel des Berges Elnar. Von dort aus werden wir auf Weldyn "
+"herabblicken, Pläne für den Kampf schmieden und reden."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:194
 msgid ""
@@ -2278,28 +2367,36 @@ msgid ""
 "worthy even to claim the throne. The clans will help you. We will fight with "
 "you against the Queen."
 msgstr ""
+"Halt! Ich kann es nicht glauben! Ihr habt uns besiegt! Ihr seid es wert, "
+"wert, den Thron zu beanspruchen. Die Clans werden euch helfen. Wir werden "
+"mit euch gegen die Königin kämpfen."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:198
 msgid "So you admit defeat! You will serve me in fighting the evil queen?"
 msgstr ""
+"Ihr gesteht also die Niederlage! Ihr wollt mit mir in die Schlacht gegen die "
+"böse Königin ziehen?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:203
 msgid "We will serve you, my lord. You will make a worthy king."
-msgstr ""
+msgstr "Wir werden euch dienen, mein Lord. Ihr werdet ein würdiger König sein."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:208
 msgid "I think you are mistaken! You will help me be queen!"
-msgstr ""
+msgstr "Ich denke du irrst. Du wirst mir helfen Königin zu sein!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:213
 msgid "Who then is your leader? Who do we serve?"
-msgstr ""
+msgstr "Wer ist nun euer Führer? Wem werden wir dienen?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:218
 msgid ""
 "You will serve us. You will protect our flanks while we make way straight "
 "for the queen. With you on either flank, we can surely overcome her."
 msgstr ""
+"Ihr werdet uns dienen. Ihr werdet unsere Flanken decken, während wir direkt "
+"zur Königin gehen. Mit euch an unseren Flanken können wir sicher bis zu ihr "
+"vordringen."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:225
 msgid ""
@@ -2308,18 +2405,29 @@ msgid ""
 "our flanks. This is unfortunate as it complicates our march to confront the "
 "queen."
 msgstr ""
+"Trotz derer Aggresivität haben wir die Schlacht heute gewonnen. Wenn wir die "
+"Clanführer besiegen haben wir niemanden mehr, der unsere Flanken beschützen "
+"kann. Das ist unglücklich und macht unseren Marsch nach Weldyn nur noch "
+"komplizierter."
 
+# Um 10 Ecken geschrieben
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:229
 msgid ""
 "It is unfortunate. They would have been of great assistance in helping "
 "ensure a new King is given a chance to ascend the throne of Wesnoth."
 msgstr ""
+"Das ist wahr. Sie wären eine große Hilfe um zu sichern, dass einem neuen "
+"König die Chance gegeben würde, den Thron von Wesnoth zu besteigen."
 
+# Erster Satz komisch
+# Hab den Sinn ein wenig passender gemacht...
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:233
 msgid ""
 "I think you are mistaken! You mean they would have helped a new Queen claim "
 "the throne of Wesnoth!"
 msgstr ""
+"Ich denke, du siehst es falsch! Du meinst, sie würden einer neuen Königin "
+"helfen den Thron von Wesnoth zu besteigen?!?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:271
 msgid "Greetings, men of the plains."
@@ -2329,16 +2437,22 @@ msgstr "Seid gegrüßt."
 msgid ""
 "What do these intruders want? We did not invite them here, that is certain."
 msgstr ""
+"Was wollen diese Eindringlinge hier? Wir haben sie nicht eingeladen, soviel "
+"ist sicher."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:279
 msgid ""
 "We come in peace! We wish for you to aid us in our struggle against "
 "Asheviere, the evil Queen Mother."
 msgstr ""
+"Wir kommen in Frieden! Wir möchten euch um eure Hilfe bitten der teuflischen "
+"Königin Asheviere entgegenzutreten."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:283
 msgid "We will not join you. You who are led by these youths and this old man."
 msgstr ""
+"Wir werden uns euch nicht anschließen. Wer seid ihr, geführt von diesen "
+"jungen Menschen und einem alten Mann."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:287
 msgid ""
@@ -2346,65 +2460,82 @@ msgid ""
 "Queen, we will strip you of your power, once the throne is rightfully "
 "reclaimed."
 msgstr ""
+"Seid ihr für oder gegen uns? Wenn ihr euch uns nicht anschließt um die "
+"Königin zu stürzen, werden wir euch alle Macht entziehen, wenn der Thron "
+"rechtmäßig bestiegen wurde."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:291
 msgid ""
 "Hah! You think you can seize the throne? Defeat us in battle and we will "
 "join you, or leave now and never return!"
 msgstr ""
+"Ha! Ihr denkt, ihr könnt den Thron erobern? Besiegt uns in einer Schlacht "
+"und wir werden uns euch anschließen, oder ihr verlasst uns jetzt und kehrt "
+"nie zurück."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:295
 msgid "Very well. We will fight you."
 msgstr "Okay, wir werden euch bekämpfen."
 
+# Hunde klingt doof!
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:299
 msgid "Fools! We will run you down like dogs!"
-msgstr ""
+msgstr "Dummköpfe! Wir werden euch überrennen wie Hunde."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:303
 msgid "There is no turning back for you now. This is a fight to the death!"
-msgstr ""
+msgstr "Es gibt kein zurück. Dies ist ein Kampf bis zum Tod."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:326
 msgid ""
 "I cannot believe this! You have defeated me! But the Clan shall fight on!"
 msgstr ""
+"Ich kann es nicht glauben. Ihr habt mich besiegt, aber die Clans werden "
+"weiterkämpfen!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:330
 msgid "Their leader has fallen but still they fight!"
-msgstr ""
+msgstr "Ihr Anführer ist tot, aber sie kämpfen trotzdem noch!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:361
 msgid "You can defeat me, but more will take my place!"
-msgstr ""
+msgstr "Ihr könnt mich besiegen, aber andere werden meinen Platz einnehmen!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:373
 msgid "See, you cannot defeat me. There are too many in my clan."
 msgstr ""
+"Seht ihr? Ihr könnt mich nicht besiegen. Es sind zu viele in meinem Clan."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:398
 msgid "Argh! This is how I die? Well, it was for the glory of the Clan."
 msgstr ""
+"Argh! Und so soll ich nun sterben? Nun ja, es war für die Ehre des Clans."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:410
 msgid "The clan rises. The more of us you kill, the stronger we get!"
 msgstr ""
+"Der Clan wächst. Je mehr ihr von uns besiegt, desto stärker werden wir!"
 
+# 10 Ecken
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:435
 msgid ""
 "Although I die, it is for the Clan. You shall be defeated, and I will be "
 "right in saying you are no match for the Clan's might."
 msgstr ""
+"Auch wenn ich sterbe ist es für den Clan. Ihr sollt besiegt werden, und ich "
+"sage, dass ihr die Macht in diesem Clan nicht verdient habt."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:447
 msgid ""
 "Well said, brother. The warriors of the Clan hear you, and are come to fight "
 "with us!"
 msgstr ""
+"Gut gesagt, Bruder. Die Krieger des Clans hören dich und sind gekommen mit "
+"uns zu kämpfen!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:464
 msgid "|$units_slain| Clan Members Defeated"
-msgstr ""
+msgstr "Die Mitglieder des Clans sind besiegt."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:484
 msgid ""
@@ -2412,6 +2543,9 @@ msgid ""
 "help in guarding our flanks would be invaluable. Let's take this fight to "
 "their leaders!"
 msgstr ""
+"Wir schlagen sie nieder! Lasst uns sehen, ob die Clans genug hatten. Ihre "
+"Hilfe wäre unschätzbar, wenn sie unsere Flanken bewachten. Also lasst uns "
+"diesen Kampf zu ihren Anführern tragen!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -2437,7 +2571,7 @@ msgstr ""
 "#Delfador fällt in der Schlacht\n"
 "#Kalenz fällt in der Schlacht\n"
 "#Li'sar fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt, bevor Ihr den Wald erreicht"
+"#Rundenlimit überschritten, bevor Ihr den Wald erreicht"
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:133
 msgid ""
@@ -2646,7 +2780,7 @@ msgstr ""
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:88
 msgid ""
@@ -2696,16 +2830,16 @@ msgid ""
 "other mages here. Perhaps we can work together to recapture the island!"
 msgstr ""
 "Meine Herren, Ich habe mich in der Stadt vor den Orks versteckt, wie viele "
-"andere Magier hier. Vielleicht können wir zusammenarbeiten um die Insel "
+"andere Magier hier. Vielleicht können wir uns verbünden, um die Insel "
 "zurückzuerobern!"
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:213
 msgid "Certainly, let us join together to fight the evil ones"
-msgstr "Sicherlich, lass uns zusammenarbeiten um das Böse zu bekämpfen."
+msgstr "Sicherlich, lasst uns das Böse gemeinsam bekämpfen."
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:218
 msgid "You can now recruit mages"
-msgstr "Ihr könnt jetzt auch Magier ausbilden"
+msgstr "Ihr könnt jetzt auch Magier ausbilden."
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:239
 msgid "Delfador, my old master! You have saved the island from the Orcs!"
@@ -2714,8 +2848,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:245
 msgid "My apprentice! How did the island fall to such as these?"
-msgstr ""
-"Mein Lehrling! Wie konnte es dazu kommen, dass es hier so weit kommen konnte?"
+msgstr "Mein Lehrling! Was ist hier geschehen?"
 
 #: data/scenarios/Heir_To_The_Throne/Isle_of_Anduin.cfg:251
 msgid ""
@@ -2724,9 +2857,9 @@ msgid ""
 "holding me until a ship could arrive to take me to Weldyn where I am to "
 "stand trial for treason for training mages!"
 msgstr ""
-"Habt ihr davon nichts gehört, Delfador? Asheviere versucht die ganze "
-"Westküste zu kontrollieren. Sie hat viele Orks engagiert und sie hierher "
-"geschickt. Sie haben mich aufgehalten, bis ein Schiff ankommen konnte um "
+"Habt ihr davon nichts gehört, Delfador? Asheviere versucht, die ganze "
+"Westküste zu kontrollieren. Sie hat viele Orks angeheuert und sie hierher "
+"geschickt. Sie haben mich aufgehalten, bis ein Schiff ankommen konnte, um "
 "mich nach Weldyn zu bringen, wo mir der Prozeß gemacht werden sollte, weil "
 "ich Magier ausgebildet habe!"
 
@@ -2783,7 +2916,7 @@ msgstr ""
 "\n"
 "Sieg:\n"
 "@Besiegt beide gegnerischen Anführer\n"
-"@Überlebt, bis alle Züge verbraucht sind\n"
+"@Überlebt, bis alle Züge vorbei sind\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht"
 
@@ -2944,7 +3077,7 @@ msgstr ""
 "\n"
 "Sieg:\n"
 "@Bewegt Konrad zum Ende der Straße in den Nordwesten\n"
-"@Besiegt alle gegnerischen Anführer\n"
+"@Besiegt alle Feinde\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
@@ -3068,11 +3201,11 @@ msgid ""
 "#Turns run out"
 msgstr ""
 "\n"
-"Victory:\n"
+"Sieg:\n"
 "@Besiegt Muff Malal\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:78
 msgid ""
@@ -3132,7 +3265,7 @@ msgstr ""
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
 "#Kalenz fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:102
 msgid ""
@@ -3245,7 +3378,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sieg:\n"
-"@Finde die Zwerge\n"
+"@Findet die Zwerge\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
@@ -3485,15 +3618,16 @@ msgstr ""
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
 "#Kalenz fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/Princess_of_Wesnoth.cfg:45
 msgid "Elmar's Crossing"
-msgstr ""
+msgstr "Die Überquerung von Elmar"
 
+# Was ist Elbridge?
 #: data/scenarios/Heir_To_The_Throne/Princess_of_Wesnoth.cfg:51
 msgid "Elbridge"
-msgstr ""
+msgstr "Elbrige"
 
 #: data/scenarios/Heir_To_The_Throne/Princess_of_Wesnoth.cfg:118
 msgid ""
@@ -3631,21 +3765,27 @@ msgid ""
 "Look! It is the traitor Li'sar, with the old mage and the filthy Elven lord. "
 "Quickly, capture them! The Queen wishes to make them her prisoners."
 msgstr ""
+"Schaut! Es ist die Verräterin Li'sar mit dem alten Magier und dem dreckigen "
+"Elfenlord. Schnell, verhaftet sie! Die Königin möchte sie als Gefangene "
+"haben."
 
 #: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:102
 msgid ""
 "What? Me, a traitor? It is the Queen who is a traitor, for not obeying the "
 "wishes of King Garard II. We have the Scepter of Fire, so let us in!"
 msgstr ""
+"Was? Ich ein Verräter? Die Königin ist eine Verräterin, weil sie nicht die "
+"Wünsche von König Garard II. beachtet hat. Wir haben das Zepter des Feuers, "
+"also lasst uns rein!"
 
 #: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:106
 msgid "You leave us no choice but to kill you."
-msgstr ""
+msgstr "Ihr lasst uns keine Wahl als euch zu töten."
 
 #: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:118
 msgid ""
 "These intruders are stronger than we expected. Call in the reinforcements!"
-msgstr ""
+msgstr "Diese Eindringlinge sind stärker als wir dachten. Ruft Verstärkungen!"
 
 #: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:143
 msgid "The Queen has sent us to aid you in capturing these rebels."
@@ -3662,6 +3802,8 @@ msgid ""
 "We must make haste! Far greater challenges lay before us, by tarring here "
 "were diminish our resources."
 msgstr ""
+"Wir müssen weiter. Weit größere Herausforderungen warten auf uns. Wenn wir "
+"hier verharren verringern wir nur unsere Kräfte."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:4
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:13
@@ -3706,12 +3848,16 @@ msgid ""
 "Wesnoth, the Sceptre has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
+"Dieses alte Zepter wurde von den Zwergen hergestellt. Ein Symbol des Königs "
+"von Wesnoth. Das Zepter hat die Macht Feuerbälle auf die Gegner seines "
+"Trägers zu schießen!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:284
 msgid ""
 "This is the Sceptre of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
+"Das ist das Zepter des Feuers. Nur ein wahrer Erbe des Throns kann es tragen."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:308
 msgid "Here it is at last, I have the Sceptre!"
@@ -3817,7 +3963,7 @@ msgid ""
 msgstr ""
 "\n"
 "Sieg:\n"
-"@Besigt alle gegnerischen Anführer\n"
+"@Besiegt alle gegnerischen Anführer\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
 "#Delfador fällt in der Schlacht\n"
@@ -4001,7 +4147,7 @@ msgstr ""
 "@Besiegt beide gegnerischen Anführer\n"
 "Niederlage:\n"
 "#Konrad fällt in der Schlacht\n"
-"#Ihr überschreitet das Rundenlimt"
+"#Rundenlimit überschritten"
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:113
 msgid ""
@@ -4407,7 +4553,7 @@ msgid ""
 "#Death of Kalenz"
 msgstr ""
 "Sieg:\n"
-"@Besiegt alle Gegner\n"
+"@Besiegt alle Feinde\n"
 "Niederlage:\n"
 "#Konrad  fällt in der Schlacht oder er wird versteinert\n"
 "#Delfador fällt in der Schlacht oder er wird versteinert\n"
@@ -4584,7 +4730,7 @@ msgid ""
 "led his forces to meet them. Splitting his army in two, he led one half "
 "while his son, the crown prince Eldred, led the other."
 msgstr ""
-"Als das nordländische Heer ihr Lager nahe der Furt von Abez in Galcadar "
+"Als das nordländische Heer ihr Lager nahe dem Fluss von Abez in Galcadar "
 "aufschlug, befahl der König seinen Kriegern den Angriff. Er spaltete seine "
 "Armee in zwei Teile, von denen er selbst die eine Hälfte befehligte und "
 "seinem Sohn, Kronprinz Eldred, die andere zur Führung überließ."
@@ -4598,9 +4744,9 @@ msgid ""
 msgstr ""
 "Eldred war zwar ein mutiger Krieger, fähig seine Soldaten anzuführen, doch "
 "war er schon lange darauf aus, die Macht seines Vaters an sich zu reißen, so "
-"dass er in der Hitze der Schlacht seine Chance für gekommen sah. Er befahl "
-"seinen Kriegern, den König anzugreifen. Als der Tag zur Neige ging, lagen "
-"König Garad, dessen Bruder und seine übrigen Söhne tot auf dem Schlachtfeld."
+"dass er in der Hitze der Schlacht seine Chance sah. Er befahl seinen "
+"Kriegern, den König anzugreifen. Als der Tag zur Neige ging, lagen König "
+"Garard, dessen Bruder und seine übrigen Söhne tot auf dem Schlachtfeld."
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:20
 msgid ""
@@ -4608,9 +4754,9 @@ msgid ""
 "battle from a nearby hill. The rule of her son would surely satisfy her lust "
 "for power far better than her husband's had."
 msgstr ""
-"Von einem nahegelegenen Hügel aus, beobachtete Asheviere, Garads Gemahlin, "
-"befriedigt den Tod ihres Mannes. Mit ihrem Sohn als Herrscher, hatte sie "
-"viel bessere Möglichkeiten, ihre Macht auszuweiten."
+"Von einem nahegelegenen Hügel aus beobachtete Asheviere, Garards Gemahlin, "
+"befriedigt den Tod ihres Mannes. Mit ihrem Sohn als Herrscher konnte sie "
+"ihre Machtgier deutlich besser ausleben."
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:25
 msgid ""
@@ -4627,7 +4773,7 @@ msgid ""
 "haste, reached Weldyn first. He mustered a force of loyalists to fight "
 "Eldred and avenge the king's death."
 msgstr ""
-"Was Eldred nicht wusste war, dass Delfador, Garards Erzmagier, die Schlacht "
+"Was Eldred nicht wusste, war, dass Delfador, Garards Erzmagier, die Schlacht "
 "überlebt hatte und eilig nach Weldyn ritt. Er erreichte sein Ziel vor "
 "Eldred, so dass er des alten Königs treue Vasallen um sich scharen konnte, "
 "um den Tod des Königs zu rächen."
@@ -4639,9 +4785,8 @@ msgid ""
 "head should be severed from his shoulders.'"
 msgstr ""
 "Eldred erklärte Delfador und seine Mannen zu Verrätern und befahl den "
-"Angriff. Seine Mutter hatte ihm vorher noch eingeschärft, dass er unter "
-"keinen Umständen den alten Magier wieder entkommen lassen sollte.\n"
-" »Ich will den Kopf des Magiers!« hatte sie zu ihm gesagt."
+"Angriff. Seine Mutter hatte ihm vorher noch eingeschärft:\n"
+"«Ich will den Kopf des Magiers von seinen Schultern getrennt sehen!»"
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:40
 msgid ""
@@ -4651,19 +4796,17 @@ msgstr ""
 "Kurz vor Weldyn prallten die beiden Heere aufeinander. Bald standen sich "
 "Delfador und Eldred gegenüber. »So lasst es uns hier zu Ende bringen, "
 "Verräter« sagte Delfador und hob den Stab. »Mit Vergnügen« antwortete der "
-"junge Krieger. Das Klirren der Waffen hallte über das Schlachtfeld und die "
-"Soldaten beobachten gebannt dieses ungleiche Duell."
+"junge Krieger. Das Klirren der Waffen hallte über das gesamte Schlachtfeld."
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:45
 msgid ""
 "In the end Delfador's men were defeated and routed, but Asheviere found her "
 "son's lifeless body, fixed to the ground by the great mage's staff."
 msgstr ""
-"Schließlich wurden Delfadors zahlenmässig unterlegene Mannen besiegt und in "
-"alle Winde verstreut. Zufrieden über den Ausgang der Schlacht, schritt "
-"Asheviere über das Schlachtfeld, um sich davon zu überzeugen, dass Delfador "
-"wirklich tot war. Doch stattdessen, fand sie den leblosen Körper ihres "
-"Sohnes, aufgespießt auf den Stab des Magiers."
+"Schließlich wurden Delfadors Männer besiegt und in alle Winde verstreut. "
+"Zufrieden schritt Asheviere über das Schlachtfeld, um sich von Delfadors Tod "
+"zu überzeugen. Doch stattdessen fand sie den leblosen Körper ihres Sohnes, "
+"aufgespießt auf den Stab des Magiers."
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:50
 msgid ""
@@ -4683,8 +4826,8 @@ msgid ""
 "saving him from death."
 msgstr ""
 "Als die Kunde von Ashevieres Befehl Delfador erreichte, schlich er sich in "
-"den Palast und entführte heimlich den jüngsten von Garards Neffen. So konnte "
-"Konrad vor dem Tod bewahrt werden."
+"den Palast und entführte heimlich Konrad, den jüngsten von Garards Neffen, "
+"um ihn vor dem Tod zu bewahren."
 
 #: data/scenarios/Heir_To_The_Throne/intro.cfg:60
 msgid ""
@@ -4695,10 +4838,3 @@ msgstr ""
 "Delfador floh in die Wälder des Westens und zog Konrad unter dem Schutz der "
 "Elfen groß. Traurig musste er mit ansehen, wie Asheviere ihre "
 "Schreckensherrschaft über Wesnoth begann..."
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Kämpfer,(leicht);*&elvish-hero.png,Held;&elvish-"
-#~ "champion.png,Champion,(schwierig)"
