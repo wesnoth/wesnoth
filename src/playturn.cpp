@@ -14,6 +14,7 @@
 #include "actions.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
@@ -31,6 +32,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			   std::vector<team>& teams, int team_num,
 			   std::map<gamemap::location,unit>& units)
 {
+	log_scope("player turn");
+
 	gui.set_team(team_num-1);
 	gui.invalidate_all();
 	gui.draw();
@@ -72,6 +75,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		if(ui->second.side() != team_num ||
 		   map.on_board(ui->second.get_goto()) == false)
 			continue;
+
+		log_scope("doing goto...");
 		
 		unit u = ui->second;
 		const shortest_path_calculator calc(u,current_team,units,map);
@@ -93,6 +98,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			redo_stack.clear();
 		}
 	}
+
+	std::cerr << "done gotos\n";
 
 	for(;;) {
 		int mousex, mousey;
