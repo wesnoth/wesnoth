@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-17 14:42+0200\n"
+"POT-Creation-Date: 2004-10-21 21:58+0200\n"
 "PO-Revision-Date: 2004-10-19 20:55+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/game.cfg:321 data/translations/english.cfg:70
+#: data/game.cfg:321 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "loyal"
 
@@ -50,11 +50,11 @@ msgstr "Déroulement du jeu"
 msgid "Traits"
 msgstr "Traits"
 
-#: data/help.cfg:28 src/playturn.cpp:1532
+#: data/help.cfg:28 src/playturn.cpp:1533
 msgid "Units"
 msgstr "Unités"
 
-#: data/help.cfg:34 src/help.cpp:600
+#: data/help.cfg:34 src/help.cpp:591
 msgid "Abilities"
 msgstr "Capacités"
 
@@ -199,7 +199,7 @@ msgstr ""
 "l'entretien. Voir <ref>dst=income_and_upkeep text='Revenu et Entretien'</"
 "ref> pour plus d'information."
 
-#: data/help.cfg:84 src/help.cpp:771 src/help.cpp:772
+#: data/help.cfg:84 src/help.cpp:747 src/help.cpp:748
 msgid "Movement"
 msgstr "Mouvement"
 
@@ -623,7 +623,7 @@ msgstr ""
 "connaissez maintenant tout ce qu'il vous faut savoir pour jouer le scénario "
 "L'héritier du trône. Amusez-vous bien et bonne chance !"
 
-#: data/help.cfg:194 src/titlescreen.cpp:172
+#: data/help.cfg:194 src/titlescreen.cpp:178
 msgid "About"
 msgstr "À propos"
 
@@ -939,7 +939,7 @@ msgid "Default"
 msgstr "Par défaut"
 
 #: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:196
-#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:658
+#: data/multiplayer.cfg:278 src/multiplayer_client.cpp:663
 msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Aléatoire"
 
@@ -1056,6 +1056,24 @@ msgstr "La forêt de la peur"
 msgid "Random map"
 msgstr "Carte aléatoire"
 
+#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
+#: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:16
+#, fuzzy
+msgid "Random map (Desert)"
+msgstr "Carte aléatoire"
+
+#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
+#: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:16
+#, fuzzy
+msgid "Random map (Marsh)"
+msgstr "Carte aléatoire"
+
+#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
+#: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:16
+#, fuzzy
+msgid "Random map (Winter)"
+msgstr "Carte aléatoire"
+
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
 msgstr "Wesbowl"
@@ -1102,7 +1120,7 @@ msgstr "Oui !"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:453
+#: src/show_dialog.cpp:472
 msgid "No"
 msgstr "Non"
 
@@ -1723,7 +1741,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:452
+#: src/show_dialog.cpp:471
 msgid "Yes"
 msgstr "Oui"
 
@@ -2326,6 +2344,115 @@ msgstr "Deuxième Quart"
 msgid "Underground"
 msgstr "Sous terre"
 
+#: data/terrain.cfg:7 src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:130
+msgid "Shroud"
+msgstr "Voile"
+
+#: data/terrain.cfg:14
+msgid "Fog"
+msgstr ""
+
+#: data/terrain.cfg:21
+msgid "Deep Water"
+msgstr "Eau profonde"
+
+#: data/terrain.cfg:30
+msgid "Shallow Water"
+msgstr "Eau peu profonde"
+
+#: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:139
+#: data/terrain.cfg:148 data/terrain.cfg:166 data/terrain.cfg:229
+#: src/reports.cpp:309
+msgid "Village"
+msgstr "Village"
+
+#: data/terrain.cfg:51
+#, fuzzy
+msgid "Swamp Water"
+msgstr "Eau peu profonde"
+
+#: data/terrain.cfg:70
+msgid "Ice"
+msgstr "Glace"
+
+#: data/terrain.cfg:81 data/terrain.cfg:89 data/terrain.cfg:97
+msgid "Bridge"
+msgstr "Pont"
+
+#: data/terrain.cfg:105
+msgid "Sand"
+msgstr "Sable"
+
+#: data/terrain.cfg:114
+msgid "Road"
+msgstr "Route"
+
+#: data/terrain.cfg:122
+msgid "Dirt"
+msgstr "Terrain boueux"
+
+#: data/terrain.cfg:132
+msgid "Grassland"
+msgstr "Prairie"
+
+#: data/terrain.cfg:158
+#, fuzzy
+msgid "Snow"
+msgstr "Ombre"
+
+#: data/terrain.cfg:177
+msgid "Hills"
+msgstr "Collines"
+
+#: data/terrain.cfg:184
+#, fuzzy
+msgid "Snow hills"
+msgstr "Les plaines enneigées"
+
+#: data/terrain.cfg:192
+msgid "Mountains"
+msgstr "Montagnes"
+
+#: data/terrain.cfg:199
+msgid "Forest"
+msgstr "Forêt"
+
+#: data/terrain.cfg:206
+#, fuzzy
+msgid "Snow forest"
+msgstr "La forêt silencieuse"
+
+#: data/terrain.cfg:214
+#, fuzzy
+msgid "Cave wall"
+msgstr "Mur de caverne"
+
+#: data/terrain.cfg:222
+msgid "Cave"
+msgstr "Caverne"
+
+#: data/terrain.cfg:239 data/terrain.cfg:299
+msgid "Castle"
+msgstr "Château"
+
+#: data/terrain.cfg:248
+msgid "Encampment"
+msgstr "Campement"
+
+#: data/terrain.cfg:258
+#, fuzzy
+msgid "Dwarven castle"
+msgstr "La terre désolée des nains"
+
+#: data/terrain.cfg:268
+msgid "Keep"
+msgstr "Donjon"
+
+#: data/terrain.cfg:288
+#, fuzzy
+msgid "Canyon"
+msgstr "aucune"
+
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
 msgstr "Menu"
@@ -2339,14 +2466,14 @@ msgid "End Turn"
 msgstr "Fin du tour"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:670
-#: src/display.cpp:941 src/help.cpp:621 src/playturn.cpp:1956
+#: src/display.cpp:941 src/help.cpp:612 src/playturn.cpp:1957
 #: src/unit.cpp:1034
 msgid "HP"
 msgstr "PV"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:674
 #: src/dialogs.cpp:682 src/display.cpp:945 src/display.cpp:953
-#: src/playturn.cpp:1795 src/playturn.cpp:1957 src/unit.cpp:1093
+#: src/playturn.cpp:1796 src/playturn.cpp:1958 src/unit.cpp:1093
 msgid "XP"
 msgstr "XP"
 
@@ -2422,32 +2549,30 @@ msgstr ""
 "Jour: -25% de dégâts infligés\n"
 "Nuit: +25% de dégâts infligés"
 
-#: data/translations/english.cfg:23
+#: data/translations/english.cfg:21
 msgid ""
-"Heals:\n"
-"Allows the unit to heal adjacent friendly units at the beginning of the "
-"turn.\n"
+"Ambush:\n"
+"This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
-"A unit cared for by a healer may heal up to 4 HP per turn.\n"
-"A healer may heal a total of 8 HP per turn, for all units it cares for.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"Enemy units cannot see or attack this unit when it is in forest, except for "
+"any turn immediately after this unit has attacked, or if there are enemy "
+"units next to this unit."
 msgstr ""
-"Guérison :\n"
-"Permet à cette unité de guérir les unités adjacentes en début de tour.\n"
+"Embuscade :\n"
+"Cette unité peut se cacher dans les forêts et rester invisible à ses "
+"ennemis.\n"
 "\n"
-"Une unité ainsi soignée pourra retrouver jusqu'à 4 points de vie par tour.\n"
-"Un soigneur pourra traiter jusqu'à 8 points de vie par tour, pour l'ensemble "
-"des unités soignées.\n"
-"Une unité empoisonnée ne pourra pas être traitée par ce soigneur et devra se "
-"rendre à un village ou chercher une unité avec la capacité de traitement."
+"Les unités ennemies ne peuvent voir ni attaquer cette unité tant qu'elle se "
+"trouve en forêt, sauf pour le tours suivant une attaque de cette unité ou "
+"s'il y a des unités ennemies adjacentes à cette unité."
 
-#: data/translations/english.cfg:25 data/units/Elvish_Shaman.cfg:11
-#: data/units/Paladin.cfg:20
-msgid "heals"
-msgstr "guérison"
+#: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
+#: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
+#: data/units/Elvish_Ranger.cfg:94
+msgid "ambush"
+msgstr "embuscade"
 
-#: data/translations/english.cfg:33
+#: data/translations/english.cfg:31
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -2474,78 +2599,38 @@ msgstr ""
 "recevra pas de points de vie supplémentaires le tour où l'effet du poison "
 "aura été annulé."
 
-#: data/translations/english.cfg:35 data/units/Elvish_Druid.cfg:19
-#: data/units/Elvish_Shyde.cfg:19 data/units/White_Mage.cfg:12
-#: data/units/White_Mage.cfg:71
+#: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
+#: data/units/Elvish_Shyde.cfg:19 data/units/Mermaid_Priestess.cfg:7
+#: data/units/White_Mage.cfg:12 data/units/White_Mage.cfg:71
 msgid "cures"
 msgstr "traitement"
 
-#: data/translations/english.cfg:38
+#: data/translations/english.cfg:40
 msgid ""
-"Teleport:\n"
-"This unit may teleport between any two friendly villages instantly."
+"Heals:\n"
+"Allows the unit to heal adjacent friendly units at the beginning of the "
+"turn.\n"
+"\n"
+"A unit cared for by a healer may heal up to 4 HP per turn.\n"
+"A healer may heal a total of 8 HP per turn, for all units it cares for.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
 msgstr ""
-"Téléportation :\n"
-"Cette unité peut se téléporter instantanément entre deux villages alliés."
-
-#: data/translations/english.cfg:40 data/units/Silver_Mage.cfg:21
-#: data/units/Silver_Mage.cfg:160
-msgid "teleport"
-msgstr "téléportation"
-
-#: data/translations/english.cfg:45
-msgid ""
-"Leadership:\n"
-"This unit can lead friendly units that are next to it, making them fight "
-"better.\n"
+"Guérison :\n"
+"Permet à cette unité de guérir les unités adjacentes en début de tour.\n"
 "\n"
-"Adjacent friendly units of lower level will do more damage in battle."
-msgstr ""
-"Commandement :\n"
-"Cette unité peut commander d'autres unités alliées qui sont à ses côtés, les "
-"rendant meilleures en combat.\n"
-"\n"
-"Les unités alliées de niveau inférieur feront plus de dégâts en combat."
+"Une unité ainsi soignée pourra retrouver jusqu'à 4 points de vie par tour.\n"
+"Un soigneur pourra traiter jusqu'à 8 points de vie par tour, pour l'ensemble "
+"des unités soignées.\n"
+"Une unité empoisonnée ne pourra pas être traitée par ce soigneur et devra se "
+"rendre à un village ou chercher une unité avec la capacité de traitement."
 
-#: data/translations/english.cfg:47 data/units/Commander.cfg:11
-#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:14
-#: data/units/Drake_Flameheart.cfg:16 data/units/Drake_Flare.cfg:11
-#: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
-#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:16
-#: data/units/Grand_Marshal.cfg:16 data/units/Lieutenant.cfg:16
-#: data/units/Lord.cfg:10 data/units/Lord.cfg:73
-#: data/units/Noble_Commander.cfg:10 data/units/Noble_Lord.cfg:10
-#: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
-#: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:17
-#: data/units/Princess.cfg:55 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:17 src/actions.cpp:353 src/actions.cpp:471
-msgid "leadership"
-msgstr "commandement"
+#: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
+#: data/units/Paladin.cfg:20
+msgid "heals"
+msgstr "guérison"
 
-#: data/translations/english.cfg:52
-msgid ""
-"Ambush:\n"
-"This unit can hide in forest, and remain undetected by its enemies.\n"
-"\n"
-"Enemy units cannot see or attack this unit when it is in forest, except for "
-"any turn immediately after this unit has attacked, or if there are enemy "
-"units next to this unit."
-msgstr ""
-"Embuscade :\n"
-"Cette unité peut se cacher dans les forêts et rester invisible à ses "
-"ennemis.\n"
-"\n"
-"Les unités ennemies ne peuvent voir ni attaquer cette unité tant qu'elle se "
-"trouve en forêt, sauf pour le tours suivant une attaque de cette unité ou "
-"s'il y a des unités ennemies adjacentes à cette unité."
-
-#: data/translations/english.cfg:54 data/units/Elvish_Avenger.cfg:18
-#: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
-#: data/units/Elvish_Ranger.cfg:94
-msgid "ambush"
-msgstr "embuscade"
-
-#: data/translations/english.cfg:59
+#: data/translations/english.cfg:47
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -2561,12 +2646,73 @@ msgstr ""
 "Toutes les unités adjacentes à cette unité combattront la nuit comme si "
 "c'était le crépuscule et comme s'il faisait jour au moment du crépuscule."
 
-#: data/translations/english.cfg:61
+#: data/translations/english.cfg:49
 #, fuzzy
 msgid "illuminates"
 msgstr "illumination,traitement"
 
+#: data/translations/english.cfg:54
+msgid ""
+"Leadership:\n"
+"This unit can lead friendly units that are next to it, making them fight "
+"better.\n"
+"\n"
+"Adjacent friendly units of lower level will do more damage in battle."
+msgstr ""
+"Commandement :\n"
+"Cette unité peut commander d'autres unités alliées qui sont à ses côtés, les "
+"rendant meilleures en combat.\n"
+"\n"
+"Les unités alliées de niveau inférieur feront plus de dégâts en combat."
+
+#: data/translations/english.cfg:56 data/units/Commander.cfg:11
+#: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:14
+#: data/units/Drake_Flameheart.cfg:16 data/units/Drake_Flare.cfg:11
+#: data/units/Elvish_Captain.cfg:11 data/units/Elvish_Marshal.cfg:12
+#: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:16
+#: data/units/Grand_Marshal.cfg:16 data/units/Lieutenant.cfg:16
+#: data/units/Lord.cfg:10 data/units/Lord.cfg:73
+#: data/units/Noble_Commander.cfg:10 data/units/Noble_Lord.cfg:10
+#: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
+#: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
+#: data/units/Princess.cfg:56 data/units/Sergeant.cfg:17
+#: data/units/Warrior_King.cfg:17 src/actions.cpp:355 src/actions.cpp:474
+msgid "leadership"
+msgstr "commandement"
+
+#: data/translations/english.cfg:59
+#, fuzzy
+msgid ""
+"Loyal:\n"
+"Never more than 1 upkeep."
+msgstr "Jamais plus de 1 d'entretien"
+
 #: data/translations/english.cfg:64
+msgid ""
+"Nightstalk:\n"
+"The unit becomes invisible during night."
+msgstr ""
+
+#: data/translations/english.cfg:66 data/units/Nightgaunt.cfg:18
+#: data/units/Shadow.cfg:16
+msgid "nightstalk"
+msgstr "chasseur nocturne"
+
+#: data/translations/english.cfg:69
+msgid ""
+"Regenerates:\n"
+"The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
+"the poison instead of healing."
+msgstr ""
+
+#: data/translations/english.cfg:71 data/units/Great_Troll.cfg:7
+#: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
+#: data/units/Troll_Hero.cfg:7 data/units/Troll_Rocklobber.cfg:7
+#: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
+msgid "regenerates"
+msgstr "régénération"
+
+#: data/translations/english.cfg:74
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
@@ -2577,118 +2723,130 @@ msgstr ""
 "ennemies et ignore les zones de contrôle ennemies."
 
 # FIXME: Skirmisher = tirailleur??
-#: data/translations/english.cfg:66 data/units/Assassin.cfg:16
+#: data/translations/english.cfg:76 data/units/Assassin.cfg:16
 #: data/units/Duelist.cfg:16 data/units/Fencer.cfg:16
 #: data/units/Outlaw_Princess.cfg:17 data/units/Rogue.cfg:16
 #: data/units/Saurian.cfg:19 data/units/Saurian_Warrior.cfg:19
 msgid "skirmisher"
 msgstr "tirailleur"
 
-#: data/translations/english.cfg:68
-msgid "Never more than 1 upkeep"
-msgstr "Jamais plus de 1 d'entretien"
-
-#: data/translations/english.cfg:72
-msgid "This unit takes half normal damage when it did not initiate the attack."
+#: data/translations/english.cfg:79
+#, fuzzy
+msgid ""
+"Steadfast:\n"
+"This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
 "Cette unité subit la moitié des dégâts normaux quand elle ne commence pas le "
 "combat."
 
-#: data/translations/english.cfg:74 data/units/Dwarvish_Guardsman.cfg:15
+#: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: src/actions.cpp:499
+#: data/units/Merman_Hoplite.cfg:13 src/actions.cpp:502
 msgid "steadfast"
 msgstr "innamovible"
 
-#: data/translations/english.cfg:76
+#: data/translations/english.cfg:84
+msgid ""
+"Teleport:\n"
+"This unit may teleport between any two friendly villages instantly."
+msgstr ""
+"Téléportation :\n"
+"Cette unité peut se téléporter instantanément entre deux villages alliés."
+
+#: data/translations/english.cfg:86 data/units/Silver_Mage.cfg:21
+#: data/units/Silver_Mage.cfg:160
+msgid "teleport"
+msgstr "téléportation"
+
+#: data/translations/english.cfg:88
 msgid "minimum damage"
 msgstr "dégâts minimum"
 
-#: data/translations/english.cfg:78
+#: data/translations/english.cfg:90
 msgid "Game"
 msgstr "Jeu"
 
-#: data/translations/english.cfg:80
+#: data/translations/english.cfg:92
 msgid "Scenario"
 msgstr "Scénario"
 
-#: data/translations/english.cfg:82
+#: data/translations/english.cfg:94
 msgid "Configure Sides:"
 msgstr "Configurer les équipes :"
 
-#: data/translations/english.cfg:83
+#: data/translations/english.cfg:95
 msgid "Choose Team Settings:"
 msgstr "Choisir les paramètres de l'équipe :"
 
-#: data/translations/english.cfg:84
+#: data/translations/english.cfg:96
 msgid "Could not connect to the remote host"
 msgstr "Impossible de se connecter au serveur distant"
 
-#: data/translations/english.cfg:85
+#: data/translations/english.cfg:97
 msgid "Waiting for players to connect"
 msgstr "En attente de connexion d'autres joueurs"
 
-#: data/translations/english.cfg:86
+#: data/translations/english.cfg:98
 msgid "Filled"
 msgstr "Occupé"
 
-#: data/translations/english.cfg:87
+#: data/translations/english.cfg:99
 msgid "Available"
 msgstr "Libre"
 
-#: data/translations/english.cfg:88
+#: data/translations/english.cfg:100
 msgid "&misc/observer.png,Observer"
 msgstr "&misc/observer.png,Observateur"
 
-#: data/translations/english.cfg:90
+#: data/translations/english.cfg:102
 msgid "Describe Unit"
 msgstr "Décrire l'unité"
 
-#: data/translations/english.cfg:92
+#: data/translations/english.cfg:104
 msgid "Full Screen or Windowed?"
 msgstr "Plein écran ou fenêtré ?"
 
-#: data/translations/english.cfg:93
+#: data/translations/english.cfg:105
 msgid "Display:"
 msgstr "Affichage :"
 
-#: data/translations/english.cfg:94
+#: data/translations/english.cfg:106
 msgid "Windowed"
 msgstr "Fenêtré"
 
-#: data/translations/english.cfg:96
+#: data/translations/english.cfg:108
 msgid "Speed:"
 msgstr "Vitesse :"
 
-#: data/translations/english.cfg:97
+#: data/translations/english.cfg:109
 msgid "Normal"
 msgstr "Normal"
 
-#: data/translations/english.cfg:99
+#: data/translations/english.cfg:111
 msgid "Sound Settings..."
 msgstr "Paramètres de son..."
 
-#: data/translations/english.cfg:100
+#: data/translations/english.cfg:112
 msgid "Options"
 msgstr "Options"
 
-#: data/translations/english.cfg:102
+#: data/translations/english.cfg:114
 msgid "Choose Scenario"
 msgstr "Choisissez un scénario"
 
-#: data/translations/english.cfg:104
+#: data/translations/english.cfg:116
 msgid "This terrain acts as $terrains for movement and defense purposes"
 msgstr "Ce terrain se comporte comme $terrains pour le mouvement et la défense"
 
-#: data/translations/english.cfg:105
+#: data/translations/english.cfg:117
 msgid "The terrain with the best modifier is chosen automatically"
 msgstr "Le terrain avec le meilleur modificateur est choisi automatiquement."
 
-#: data/translations/english.cfg:106
+#: data/translations/english.cfg:118
 msgid "This terrain gives healing"
 msgstr "Ce terrain soigne."
 
-#: data/translations/english.cfg:107
+#: data/translations/english.cfg:119
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain"
@@ -2696,7 +2854,7 @@ msgstr ""
 "Ce terrain se comporte comme un donjon, c-à-d que vous pouvez recruter des "
 "unités quand un chef est dessus."
 
-#: data/translations/english.cfg:108
+#: data/translations/english.cfg:120
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain"
@@ -2704,19 +2862,19 @@ msgstr ""
 "Ce terrain se comporte comme un chateau, c-à-d que vous pouvez recruter des "
 "unités sur cette case."
 
-#: data/translations/english.cfg:109 src/help.cpp:874
+#: data/translations/english.cfg:121 src/help.cpp:852
 msgid "or"
 msgstr "ou"
 
-#: data/translations/english.cfg:110
+#: data/translations/english.cfg:122
 msgid "Unit resistance table"
 msgstr "Table de résistance des unités"
 
-#: data/translations/english.cfg:112
+#: data/translations/english.cfg:124
 msgid "See Also..."
 msgstr "Voir aussi..."
 
-#: data/translations/english.cfg:117
+#: data/translations/english.cfg:129
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -2726,13 +2884,17 @@ msgstr ""
 "Cette attaque occasionne le double de dommages si une unité alliée se trouve "
 "sur la case opposée à la cible."
 
-#: data/translations/english.cfg:119 data/units/Assassin.cfg:25
-#: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:25
-#: data/units/Shadow.cfg:25 data/units/Thief.cfg:24 src/actions.cpp:490
-msgid "backstab"
-msgstr "assassinat"
+#: data/translations/english.cfg:132
+msgid ""
+"Berserk:\n"
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain."
+msgstr ""
+"Furie :\n"
+"Qu'elle soit utilisée de manière offensive ou défensive, cette attaque force "
+"l'engagement jusqu'à ce qu'un des deux combattants ne meure."
 
-#: data/translations/english.cfg:122
+#: data/translations/english.cfg:135
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
@@ -2742,14 +2904,7 @@ msgstr ""
 "Cette attaque inflige le double de dégâts à la cible. Cependant cette unité "
 "recevra également le double de dégâts lors de la contre-attaque."
 
-#: data/translations/english.cfg:124 data/units/Chocobone.cfg:23
-#: data/units/Grand_Knight.cfg:38 data/units/Horseman.cfg:22
-#: data/units/Knight.cfg:38 data/units/Lancer.cfg:22 data/units/Paladin.cfg:43
-#: src/actions.cpp:363 src/actions.cpp:481
-msgid "charge"
-msgstr "charge"
-
-#: data/translations/english.cfg:127
+#: data/translations/english.cfg:138
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -2759,18 +2914,15 @@ msgstr ""
 "Cette unité draine la vie des unités vivantes, se régénérant ainsi de la "
 "moitié des dégâts causés."
 
-#: data/translations/english.cfg:129 data/units/Ancient_Lich.cfg:24
-#: data/units/Blood_Bat.cfg:24 data/units/Dark_Spirit.cfg:24
-#: data/units/Demilich.cfg:23 data/units/Lich.cfg:24
-#: data/units/Orcish_Shaman.cfg:30 data/units/Orcish_Shaman.cfg:73
-#: data/units/Orcish_Shaman.cfg:116 data/units/Skeletal_Dragon.cfg:31
-#: data/units/Spectre.cfg:24 data/units/Vampire_Bat.cfg:24
-#: data/units/Vampire_Lady.cfg:25 data/units/Vampire_Lady.cfg:38
-#: data/units/Wraith.cfg:24
-msgid "drain"
-msgstr "drainage"
+#: data/translations/english.cfg:141
+msgid ""
+"First Strike:\n"
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Initiative:\n"
+"Cette unité attaque toujours en premier, même lorsqu'elle se défend."
 
-#: data/translations/english.cfg:132
+#: data/translations/english.cfg:144
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
@@ -2778,32 +2930,7 @@ msgstr ""
 "Enchantée :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible."
 
-#: data/translations/english.cfg:134 data/units/Ancient_Lich.cfg:34
-#: data/units/Arch_Mage.cfg:42 data/units/Arch_Mage.cfg:121
-#: data/units/Battle_Princess.cfg:79 data/units/Commander.cfg:123
-#: data/units/Dark_Adept.cfg:24 data/units/Dark_Queen.cfg:29
-#: data/units/Deathmaster.cfg:37 data/units/Demilich.cfg:33
-#: data/units/Dwarvish_Runemaster.cfg:43 data/units/Elder_Mage.cfg:41
-#: data/units/Elvish_Druid.cfg:64 data/units/Elvish_Enchantress.cfg:121
-#: data/units/Elvish_High_Lord.cfg:38 data/units/Elvish_Lord.cfg:38
-#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:72
-#: data/units/Elvish_Sorceress.cfg:121 data/units/Elvish_Sylph.cfg:26
-#: data/units/Elvish_Sylph.cfg:84 data/units/Fighter.cfg:86
-#: data/units/Fireball.cfg:21 data/units/Great_Mage.cfg:42
-#: data/units/Great_Mage.cfg:118 data/units/Initiate.cfg:21
-#: data/units/Lich.cfg:34 data/units/Lord.cfg:105 data/units/Mage.cfg:39
-#: data/units/Mage.cfg:106 data/units/Mage_of_Light.cfg:48
-#: data/units/Mage_of_Light.cfg:108 data/units/Necromancer.cfg:37
-#: data/units/Princess.cfg:79 data/units/Red_Mage.cfg:42
-#: data/units/Red_Mage.cfg:111 data/units/Saurian_Icecaster.cfg:42
-#: data/units/Saurian_Soothsayer.cfg:41 data/units/Saurian_Tribalist.cfg:41
-#: data/units/Sea_Hag.cfg:31 data/units/Silver_Mage.cfg:96
-#: data/units/Silver_Mage.cfg:183 data/units/White_Mage.cfg:47
-#: data/units/White_Mage.cfg:106
-msgid "magical"
-msgstr "enchantée"
-
-#: data/translations/english.cfg:137
+#: data/translations/english.cfg:147
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -2812,13 +2939,7 @@ msgstr ""
 "Quand utilisée offensivement, cette attaque a toujours au moins 60% de "
 "chance d'atteindre sa cible."
 
-#: data/translations/english.cfg:139 data/units/Elvish_Marksman.cfg:39
-#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Sharpshooter.cfg:40
-#: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
-msgid "marksman"
-msgstr "tir d'élite"
-
-#: data/translations/english.cfg:142
+#: data/translations/english.cfg:150
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
@@ -2828,12 +2949,7 @@ msgstr ""
 "Si cette unité tue une unité vivante et que celle-ci n'était pas dans un "
 "village, le corps de la cible ressuscitera et se joindra à vos troupes."
 
-#: data/translations/english.cfg:144 data/units/Soulless.cfg:24
-#: data/units/Walking_Corpse.cfg:24
-msgid "plague"
-msgstr "peste"
-
-#: data/translations/english.cfg:147
+#: data/translations/english.cfg:153
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
@@ -2844,16 +2960,7 @@ msgstr ""
 "de vie à chaque tour jusqu'à ce qu'elles soient guéries, ou n'aient plus "
 "qu'un seul point de vie."
 
-#: data/translations/english.cfg:149 data/units/Assassin.cfg:50
-#: data/units/Cave_Spider.cfg:24 data/units/Cuttle_Fish.cfg:36
-#: data/units/Direwolf_Rider.cfg:35 data/units/Ghoul.cfg:24
-#: data/units/Giant_Scorpion.cfg:22 data/units/Goblin_Direwolver.cfg:38
-#: data/units/Necrophage.cfg:24 data/units/Orcish_Assassin.cfg:41
-#: data/units/Orcish_Slayer.cfg:46
-msgid "poison"
-msgstr "empoisonnement"
-
-#: data/translations/english.cfg:152
+#: data/translations/english.cfg:156
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -2863,15 +2970,7 @@ msgstr ""
 "Cette attaque ralentit la cible. Les unités ralenties voient leur vitesse de "
 "déplacement réduite de moitié et disposent d'une attaque de moins en combat."
 
-#: data/translations/english.cfg:154 data/units/Cave_Spider.cfg:38
-#: data/units/Elvish_Druid.cfg:44 data/units/Elvish_Enchantress.cfg:67
-#: data/units/Elvish_Shaman.cfg:45 data/units/Elvish_Shyde.cfg:52
-#: data/units/Elvish_Sorceress.cfg:67 data/units/Elvish_Sylph.cfg:53
-#: data/units/Goblin_Pillager.cfg:37
-msgid "slow"
-msgstr "ralentissement"
-
-#: data/translations/english.cfg:157
+#: data/translations/english.cfg:159
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
@@ -2881,211 +2980,104 @@ msgstr ""
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
 "peuvent plus ni se déplacer, ni attaquer."
 
-#: data/translations/english.cfg:159 data/units/Cockatrice.cfg:26
-#: src/actions.cpp:728 src/actions.cpp:876 src/reports.cpp:122
-msgid "stone"
-msgstr "pierre"
-
 #: data/translations/english.cfg:162
-msgid ""
-"Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain."
-msgstr ""
-"Furie :\n"
-"Qu'elle soit utilisée de manière offensive ou défensive, cette attaque force "
-"l'engagement jusqu'à ce qu'un des deux combattants ne meure."
-
-#: data/translations/english.cfg:164 data/units/Dwarvish_Berserker.cfg:29
-#: data/units/Dwarvish_Ulfserker.cfg:29
-msgid "berserk"
-msgstr "furie"
-
-#: data/translations/english.cfg:167
-msgid ""
-"First Strike:\n"
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Initiative:\n"
-"Cette unité attaque toujours en premier, même lorsqu'elle se défend."
-
-#: data/translations/english.cfg:169 data/units/Drake_Slasher.cfg:42
-msgid "first strike"
-msgstr "initiative"
-
-#: data/translations/english.cfg:172
 msgid "Elves"
 msgstr "Elfes"
 
-#: data/translations/english.cfg:173
-msgid "Orcs"
-msgstr "Orcs"
-
-#: data/translations/english.cfg:174
+#: data/translations/english.cfg:163
 msgid "Humans"
 msgstr "Humains"
 
-#: data/translations/english.cfg:175
+#: data/translations/english.cfg:164
+msgid "Orcs"
+msgstr "Orcs"
+
+#: data/translations/english.cfg:165
 msgid "Undead"
 msgstr "Morts-vivants"
-
-#: data/translations/english.cfg:179
-msgid "Deep Water"
-msgstr "Eau profonde"
-
-#: data/translations/english.cfg:180
-msgid "Shallow Water"
-msgstr "Eau peu profonde"
-
-#: data/translations/english.cfg:181
-msgid "Sand"
-msgstr "Sable"
-
-#: data/translations/english.cfg:182 data/translations/english.cfg:184
-#: data/translations/english.cfg:185 data/translations/english.cfg:186
-#: data/translations/english.cfg:187 data/translations/english.cfg:188
-#: src/reports.cpp:310
-msgid "Village"
-msgstr "Village"
-
-#: data/translations/english.cfg:183
-msgid "Swamp"
-msgstr "Marais"
-
-#: data/translations/english.cfg:189
-msgid "Tundra"
-msgstr "Toundra"
-
-#: data/translations/english.cfg:190
-msgid "Ice"
-msgstr "Glace"
-
-#: data/translations/english.cfg:191
-msgid "Road"
-msgstr "Route"
-
-#: data/translations/english.cfg:192
-msgid "Dirt"
-msgstr "Terrain boueux"
-
-#: data/translations/english.cfg:193
-msgid "Grassland"
-msgstr "Prairie"
-
-#: data/translations/english.cfg:194
-msgid "Hills"
-msgstr "Collines"
-
-#: data/translations/english.cfg:195
-msgid "Mountains"
-msgstr "Montagnes"
-
-#: data/translations/english.cfg:196
-msgid "Forest"
-msgstr "Forêt"
-
-#: data/translations/english.cfg:197 data/translations/english.cfg:198
-#: data/translations/english.cfg:199
-msgid "Bridge"
-msgstr "Pont"
-
-#: data/translations/english.cfg:200
-msgid "Castle"
-msgstr "Château"
-
-#: data/translations/english.cfg:201
-msgid "Keep"
-msgstr "Donjon"
-
-#: data/translations/english.cfg:202
-msgid "Cave"
-msgstr "Caverne"
-
-#: data/translations/english.cfg:203
-msgid "Cave Wall"
-msgstr "Mur de caverne"
-
-#: data/translations/english.cfg:204
-msgid "Encampment"
-msgstr "Campement"
 
 # XXX Une note pour les traducteurs :
 # Ne pas chercher à traduire l'anglais exactement pour les noms de villages.
 # À la place, générer des noms de lieu qui sonnent français, sans aucune
 # limite. Plus il y a d'alternatives, mieux c'est. Éventuellement en répétant
 # des entrées pour contrôler la fréquence.
-#: data/translations/english.cfg:207
+#: data/translations/english.cfg:168
 msgid "$name's Bridge,$name's Crossing"
 msgstr "Pont de $name,Croisée de $name"
 
-#: data/translations/english.cfg:208
+#: data/translations/english.cfg:169
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr "Route $name,Passe de $name,Chemin de $name,Sente de $name"
 
-#: data/translations/english.cfg:209
+#: data/translations/english.cfg:170
 msgid "$name River,River $name"
 msgstr "$name|-la-rivière,Rivière $name"
 
-#: data/translations/english.cfg:210
+#: data/translations/english.cfg:171
 msgid "$name Forest,$name's Forest"
 msgstr "Forêt $name,Bois de $name,$name|-la-forêt,$name|-sous-bois"
 
-#: data/translations/english.cfg:211
+#: data/translations/english.cfg:172
 msgid "$name Lake"
 msgstr "Lac $name,Étang $name,La mare $name"
 
-#: data/translations/english.cfg:212
+#: data/translations/english.cfg:173
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr "Saint-$name,Ker $name,$name le bas,$name le haut"
 
-#: data/translations/english.cfg:213
+#: data/translations/english.cfg:174
+#, fuzzy
+msgid "$name|harbor,$name|port"
+msgstr "Forêt $name,Bois de $name,$name|-la-forêt,$name|-sous-bois"
+
+#: data/translations/english.cfg:175
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 "Ker $name,Bord $name,La-croix-saint-$name,Font$river,Rive-de-$river,La-croix-"
 "sur-$river,$name|-le-port,Val-de-$river"
 
-#: data/translations/english.cfg:214
+#: data/translations/english.cfg:176
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr "Pont-de-$river,Bac-sur-$river,Ker$name,Saint-$name|-du-pont"
 
-#: data/translations/english.cfg:215
+#: data/translations/english.cfg:177
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 "Ker$name,$name le bas,$name le haut,$name| champs,Saint-$name|-des-champs,"
 "Plou$name,Loc$name"
 
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:178
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 "Ker$name,$name le bas,$name le haut,Saint-$name|-du-bois,Forêt de $name,"
 "Saint-|$name|-les-chênes"
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:179
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 "Ker$name,Saint-$name,$name le haut,$name|-du-mont,$name|-la-côte,Les hauts "
 "de $name,Les dessus de $name"
 
-#: data/translations/english.cfg:218
+#: data/translations/english.cfg:180
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 "Saint-$name|-du-mont,$name le haut,Le-mont-saint-$name,Haute$name,L'aiguille "
 "du $name,Le pic du $name"
 
-#: data/translations/english.cfg:220
+#: data/translations/english.cfg:182
 msgid "Next tip"
 msgstr "Astuce suivante"
 
-#: data/translations/english.cfg:221
+#: data/translations/english.cfg:183
 msgid "Tip of the Day"
 msgstr "Astuce du jour"
 
-#: data/translations/english.cfg:222
+#: data/translations/english.cfg:184
 msgid "Do not show tips"
 msgstr "Ne pas afficher les astuces"
 
-#: data/translations/english.cfg:223
+#: data/translations/english.cfg:185
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
@@ -3093,7 +3085,7 @@ msgstr ""
 "Les unités justes se battent mieux le jour et les unités chaotiques mieux la "
 "nuit. Les unités neutres ne sont pas affectées par la période du jour."
 
-#: data/translations/english.cfg:224
+#: data/translations/english.cfg:186
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
@@ -3101,7 +3093,7 @@ msgstr ""
 "Dans une campagne, vous pouvez utiliser des vétérans de vos précédents "
 "scénarios en utilisant l'option « rappeler »."
 
-#: data/translations/english.cfg:225
+#: data/translations/english.cfg:187
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -3115,7 +3107,7 @@ msgstr ""
 "'Résistance' pour voir la résistance d'une unité face aux différents types "
 "d'attaque."
 
-#: data/translations/english.cfg:226
+#: data/translations/english.cfg:188
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected unit "
@@ -3127,7 +3119,7 @@ msgstr ""
 "unité sélectionnée sur le terrain sélectionné est affiché en haut à droite "
 "de l'écran."
 
-#: data/translations/english.cfg:227
+#: data/translations/english.cfg:189
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -3140,7 +3132,7 @@ msgstr ""
 "plaçant dans un village ou à côté d'une unité ayant la compétence "
 "«traitement»."
 
-#: data/translations/english.cfg:228
+#: data/translations/english.cfg:190
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
@@ -3150,7 +3142,7 @@ msgstr ""
 "«Rappeler» dans le menu de jeu. En rappelant toujours les mêmes unités vous "
 "pouvez former une armée expérimentée et puissante."
 
-#: data/translations/english.cfg:229
+#: data/translations/english.cfg:191
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
@@ -3160,7 +3152,7 @@ msgstr ""
 "sont adjacents. Si une unité se déplace dans la zone de contrôle ennemie "
 "elle ne peut faire aucun autre mouvement pour ce tour."
 
-#: data/translations/english.cfg:230
+#: data/translations/english.cfg:192
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
@@ -3171,14 +3163,14 @@ msgstr ""
 "attaques enchantées ont toujours 70% de chances de toucher, et les tireurs "
 "d'élite ont au minimum 60% de chances de toucher."
 
-#: data/translations/english.cfg:231
+#: data/translations/english.cfg:193
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 "Les unités stationnées dans un village regagnent 8 points de vie au début de "
 "leur tour."
 
-#: data/translations/english.cfg:232
+#: data/translations/english.cfg:194
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
@@ -3186,7 +3178,7 @@ msgstr ""
 "Les unités qui n'attaquent ni ne se déplacent durant leur tour se reposent "
 "et regagneront 2 points de vie au début de leur prochain tour."
 
-#: data/translations/english.cfg:233
+#: data/translations/english.cfg:195
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
@@ -3196,7 +3188,7 @@ msgstr ""
 "châteaux que sur la plupart des autres terrains, mais les unités montées ne "
 "gagnent aucun avantage défensif à se trouver dans un village ou un château."
 
-#: data/translations/english.cfg:234
+#: data/translations/english.cfg:196
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
@@ -3206,7 +3198,7 @@ msgstr ""
 "tranchantes ou contondantes, mais sont vulnérables aux attaques d'armes "
 "perçantes comme les arcs ou les lances."
 
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:197
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
@@ -3216,7 +3208,7 @@ msgstr ""
 "de l'expérience. Les unités qui tuent un ennemi gagnent 8 points "
 "d'expérience pour chaque niveau de l'unité tuée."
 
-#: data/translations/english.cfg:236
+#: data/translations/english.cfg:198
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
@@ -3224,7 +3216,7 @@ msgstr ""
 "Les elfes se déplacent et combattent très bien dans les forêts. Les nains se "
 "déplacent et combattent très bien dans les collines et les montagnes."
 
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:199
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
@@ -3233,7 +3225,7 @@ msgstr ""
 "conditions ou avec peu de troupes, attendez que la situation s'améliore et "
 "alors seulement attaquez."
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:200
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -3242,14 +3234,14 @@ msgstr ""
 "d'envoyer quelques unités sacrifiables dans certaines des directions pour "
 "ralentir l'ennemi."
 
-#: data/translations/english.cfg:239
+#: data/translations/english.cfg:201
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 "N'ayez pas peur de battre en retraite pour vous regrouper, c'est souvent la "
 "clé de la victoire."
 
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:202
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -3262,7 +3254,7 @@ msgstr ""
 "capturant tous les villages et en attendant jusqu'à ce que tous les tours se "
 "soient écoulés."
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:203
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -3275,7 +3267,7 @@ msgstr ""
 "de vos alliés peuvent aussi vous faire de la place dans leur donjon afin que "
 "vous puissiez recruter de là."
 
-#: data/translations/english.cfg:242
+#: data/translations/english.cfg:204
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
@@ -3283,7 +3275,7 @@ msgstr ""
 "Les squelettes sont résistants aux attaques perçantes et tranchantes mais "
 "vulnérables aux attaques contondantes, au feu et aux attaques sacrées."
 
-#: data/translations/english.cfg:243
+#: data/translations/english.cfg:205
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
@@ -3291,7 +3283,7 @@ msgstr ""
 "Les unités avec la capacité de commandement aident les unités adjacentes de "
 "leur camp et de niveau inférieur au leur à mieux se battre."
 
-#: data/translations/english.cfg:244
+#: data/translations/english.cfg:206
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
@@ -3301,7 +3293,7 @@ msgstr ""
 "unité ennemie pourrait se déplacer dans ce village et vous attaquer, en "
 "profitant de la défense et des capacités de guérison du village."
 
-#: data/translations/english.cfg:245
+#: data/translations/english.cfg:207
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
@@ -3309,17 +3301,17 @@ msgstr ""
 "Déplacez le curseur de la souris sur une capacité ou un trait de caractère "
 "affiche une description de celui-ci."
 
-#: data/translations/english.cfg:246
+#: data/translations/english.cfg:208
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Utilisez des lignes d'unités pour protéger les unités blessées et leur "
 "laisser le temps de récupérer."
 
-#: data/translations/english.cfg:247
+#: data/translations/english.cfg:209
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Lisez la liste des raccourcis claviers dans le menu des préférences."
 
-#: data/translations/english.cfg:248
+#: data/translations/english.cfg:210
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -3328,7 +3320,7 @@ msgstr ""
 "découvrez aucune information supplémentaire, vous pouvez annuler votre "
 "mouvement en pressant la touche «u»."
 
-#: data/translations/english.cfg:249
+#: data/translations/english.cfg:211
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -3336,7 +3328,7 @@ msgstr ""
 "Vous pouvez voir jusqu'où une unité ennemie peut se déplacer en plaçant le "
 "curseur de la souris sur celle-ci."
 
-#: data/translations/english.cfg:250
+#: data/translations/english.cfg:212
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -3344,7 +3336,7 @@ msgstr ""
 "Utilisez des guérisseurs pour soutenir vos attaques, ils gagneront la "
 "bataille sans avoir à frapper par eux-mêmes."
 
-#: data/translations/english.cfg:251
+#: data/translations/english.cfg:213
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
@@ -3355,11 +3347,11 @@ msgstr ""
 "efficace contre les unités qui ont des attaques très puissantes mais en "
 "petit nombre."
 
-#: data/translations/english.cfg:252
+#: data/translations/english.cfg:214
 msgid "Holy attacks are very powerful against undead."
 msgstr "Les attaques sacrées sont très puissantes contre les morts-vivants."
 
-#: data/translations/english.cfg:253
+#: data/translations/english.cfg:215
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -3367,7 +3359,7 @@ msgstr ""
 "Une unité récupère la totalité de ses points de vie lorsqu'elle avance d'un "
 "niveau. Utilisé à bon escient cela peut changer le cours d'une bataille."
 
-#: data/translations/english.cfg:254
+#: data/translations/english.cfg:216
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -3401,7 +3393,7 @@ msgstr "toucher"
 
 #: data/units/Ancient_Lich.cfg:20 data/units/Ancient_Lich.cfg:33
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
-#: data/units/Dark_Queen.cfg:27 data/units/Dark_Queen.cfg:28
+#: data/units/Dark_Queen.cfg:28 data/units/Dark_Queen.cfg:29
 #: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:36
 #: data/units/Demilich.cfg:19 data/units/Demilich.cfg:32
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
@@ -3414,11 +3406,48 @@ msgstr "toucher"
 msgid "cold"
 msgstr "froid"
 
+#: data/units/Ancient_Lich.cfg:24 data/units/Blood_Bat.cfg:24
+#: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:23
+#: data/units/Lich.cfg:24 data/units/Orcish_Shaman.cfg:30
+#: data/units/Orcish_Shaman.cfg:73 data/units/Orcish_Shaman.cfg:116
+#: data/units/Skeletal_Dragon.cfg:31 data/units/Spectre.cfg:24
+#: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
+#: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:24
+msgid "drain"
+msgstr "drainage"
+
 #: data/units/Ancient_Lich.cfg:32 data/units/Deathmaster.cfg:35
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
 msgstr "magie"
+
+#: data/units/Ancient_Lich.cfg:34 data/units/Arch_Mage.cfg:42
+#: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:80
+#: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
+#: data/units/Dark_Queen.cfg:30 data/units/Deathmaster.cfg:37
+#: data/units/Demilich.cfg:33 data/units/Dwarvish_Runemaster.cfg:43
+#: data/units/Elder_Mage.cfg:41 data/units/Elvish_Druid.cfg:64
+#: data/units/Elvish_Enchantress.cfg:121 data/units/Elvish_High_Lord.cfg:38
+#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
+#: data/units/Elvish_Shyde.cfg:72 data/units/Elvish_Sorceress.cfg:121
+#: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:84
+#: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
+#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
+#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:105
+#: data/units/Mage.cfg:39 data/units/Mage.cfg:106
+#: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
+#: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:35
+#: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:35
+#: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:37
+#: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
+#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:111
+#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
+#: data/units/Saurian_Tribalist.cfg:41 data/units/Sea_Hag.cfg:31
+#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:183
+#: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
+msgid "magical"
+msgstr "enchantée"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -3445,7 +3474,7 @@ msgstr "écrasement"
 #: data/units/Ancient_Wose.cfg:19 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
 #: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:29
-#: data/units/Cuttle_Fish.cfg:20 data/units/Dark_Queen.cfg:21
+#: data/units/Cuttle_Fish.cfg:20 data/units/Dark_Queen.cfg:22
 #: data/units/Deathmaster.cfg:20 data/units/Drake_Gladiator.cfg:58
 #: data/units/Drake_Glider.cfg:23 data/units/Drake_Sky.cfg:27
 #: data/units/Dwarvish_Dragonguard.cfg:21 data/units/Dwarvish_Fighter.cfg:37
@@ -3453,19 +3482,24 @@ msgstr "écrasement"
 #: data/units/Dwarvish_Steelclad.cfg:43 data/units/Elder_Mage.cfg:23
 #: data/units/Elder_Wose.cfg:20 data/units/Elvish_Druid.cfg:24
 #: data/units/Elvish_Druid.cfg:43 data/units/Elvish_Enchantress.cfg:26
-#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:18
+#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:20
 #: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
 #: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
 #: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
 #: data/units/Elvish_Sylph.cfg:25 data/units/Elvish_Sylph.cfg:52
 #: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
-#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:18 data/units/Gate.cfg:24
+#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:19 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantry.cfg:22
 #: data/units/Heavy_Infantryman.cfg:20 data/units/Iron_Mauler.cfg:20
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
+#: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:24
+#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:24
+#: data/units/Mermaid_Initiate.cfg:33 data/units/Mermaid_Priestess.cfg:25
+#: data/units/Mermaid_Siren.cfg:24 data/units/Mermaid_Siren.cfg:35
+#: data/units/Merman_Entangler.cfg:27 data/units/Merman_Netcaster.cfg:27
 #: data/units/Mudcrawler.cfg:22 data/units/Necromancer.cfg:20
 #: data/units/Noble_Youth.cfg:22 data/units/Outlaw.cfg:21
 #: data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:94 data/units/Outlaw.cfg:112
@@ -3485,7 +3519,7 @@ msgstr "écrasement"
 msgid "impact"
 msgstr "contondant"
 
-#: data/units/Arch_Mage.cfg:3 data/units/Arch_Mage.cfg:82
+#: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
 msgstr "Archimage"
 
@@ -3502,6 +3536,8 @@ msgstr ""
 #: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Enchantress.cfg:25
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
 #: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:99
+#: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:23
+#: data/units/Mermaid_Initiate.cfg:23 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Saurian_Icecaster.cfg:22
 #: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
 #: data/units/Silver_Mage.cfg:77 data/units/Silver_Mage.cfg:164
@@ -3517,7 +3553,7 @@ msgid "fireball"
 msgstr "boule de feu"
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
-#: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:121
+#: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
 #: data/units/Drake_Fire.cfg:44 data/units/Drake_Flameheart.cfg:49
 #: data/units/Drake_Flare.cfg:44 data/units/Drake_Glider.cfg:47
@@ -3529,11 +3565,16 @@ msgstr "boule de feu"
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:20
 #: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:116
 #: data/units/Lord.cfg:103 data/units/Mage.cfg:37 data/units/Mage.cfg:104
-#: data/units/Princess.cfg:77 data/units/Red_Mage.cfg:40
+#: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:40
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:94
 #: data/units/Silver_Mage.cfg:181
 msgid "fire"
 msgstr "brûlure"
+
+#: data/units/Arch_Mage.cfg:82
+#, fuzzy
+msgid "female^Arch Mage"
+msgstr "Archimage"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3563,7 +3604,7 @@ msgid "dagger"
 msgstr "dague"
 
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:48
-#: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
+#: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
 #: data/units/Blood_Bat.cfg:20 data/units/Bowman.cfg:21
 #: data/units/Cavalier.cfg:28 data/units/Cavalry.cfg:32
 #: data/units/Cavalryman.cfg:29 data/units/Cave_Spider.cfg:20
@@ -3601,21 +3642,22 @@ msgstr "dague"
 #: data/units/Knight.cfg:21 data/units/Lieutenant.cfg:22
 #: data/units/Longbowman.cfg:22 data/units/Lord.cfg:23 data/units/Lord.cfg:86
 #: data/units/Mage.cfg:21 data/units/Mage.cfg:88
-#: data/units/Master_Bowman.cfg:21 data/units/Necrophage.cfg:20
-#: data/units/Nightgaunt.cfg:21 data/units/Noble_Commander.cfg:24
-#: data/units/Noble_Fighter.cfg:21 data/units/Noble_Lord.cfg:23
-#: data/units/Ogre.cfg:19 data/units/Orcish_Archer.cfg:21
-#: data/units/Orcish_Assassin.cfg:20 data/units/Orcish_Assassin.cfg:37
-#: data/units/Orcish_Crossbow.cfg:23 data/units/Orcish_Crossbowman.cfg:20
-#: data/units/Orcish_Grunt.cfg:20 data/units/Orcish_Leader.cfg:22
-#: data/units/Orcish_Ruler.cfg:22 data/units/Orcish_Shaman.cfg:19
-#: data/units/Orcish_Shaman.cfg:62 data/units/Orcish_Shaman.cfg:105
-#: data/units/Orcish_Slayer.cfg:20 data/units/Orcish_Slayer.cfg:42
-#: data/units/Orcish_Sovereign.cfg:22 data/units/Orcish_Warlord.cfg:19
-#: data/units/Orcish_Warrior.cfg:20 data/units/Poacher.cfg:25
-#: data/units/Princess.cfg:23 data/units/Princess.cfg:61
-#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:93
-#: data/units/Revenant.cfg:24 data/units/Rogue.cfg:21 data/units/Rogue.cfg:39
+#: data/units/Master_Bowman.cfg:21 data/units/Merman_Triton.cfg:34
+#: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
+#: data/units/Noble_Commander.cfg:24 data/units/Noble_Fighter.cfg:21
+#: data/units/Noble_Lord.cfg:23 data/units/Ogre.cfg:20
+#: data/units/Orcish_Archer.cfg:21 data/units/Orcish_Assassin.cfg:20
+#: data/units/Orcish_Assassin.cfg:37 data/units/Orcish_Crossbow.cfg:23
+#: data/units/Orcish_Crossbowman.cfg:20 data/units/Orcish_Grunt.cfg:20
+#: data/units/Orcish_Leader.cfg:22 data/units/Orcish_Ruler.cfg:22
+#: data/units/Orcish_Shaman.cfg:19 data/units/Orcish_Shaman.cfg:62
+#: data/units/Orcish_Shaman.cfg:105 data/units/Orcish_Slayer.cfg:20
+#: data/units/Orcish_Slayer.cfg:42 data/units/Orcish_Sovereign.cfg:22
+#: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:20
+#: data/units/Poacher.cfg:25 data/units/Princess.cfg:24
+#: data/units/Princess.cfg:62 data/units/Red_Mage.cfg:24
+#: data/units/Red_Mage.cfg:93 data/units/Revenant.cfg:24
+#: data/units/Rogue.cfg:21 data/units/Rogue.cfg:39
 #: data/units/Royal_Guard.cfg:20 data/units/Scout.cfg:22
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:22
 #: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:29
@@ -3623,15 +3665,29 @@ msgstr "dague"
 #: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:20
 #: data/units/Swordsman.cfg:20 data/units/Thief.cfg:20
 #: data/units/Trapper.cfg:25 data/units/Vampire_Bat.cfg:20
-#: data/units/Vampire_Lady.cfg:20 data/units/White_Mage.cfg:29
+#: data/units/Vampire_Lady.cfg:21 data/units/White_Mage.cfg:29
 #: data/units/White_Mage.cfg:88 data/units/Wolf_Rider.cfg:21
 #: data/units/Wraith.cfg:20 data/units/Young_Ogre.cfg:19
 msgid "blade"
 msgstr "tranchant"
 
+#: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
+#: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
+#: src/actions.cpp:493
+msgid "backstab"
+msgstr "assassinat"
+
 #: data/units/Assassin.cfg:47 data/units/Rogue.cfg:38
 msgid "knife"
 msgstr "couteau"
+
+#: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
+#: data/units/Cuttle_Fish.cfg:36 data/units/Direwolf_Rider.cfg:35
+#: data/units/Ghoul.cfg:24 data/units/Giant_Scorpion.cfg:22
+#: data/units/Goblin_Direwolver.cfg:38 data/units/Necrophage.cfg:24
+#: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
+msgid "poison"
+msgstr "empoisonnement"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -3655,16 +3711,16 @@ msgstr ""
 msgid "mace"
 msgstr "massue"
 
-#: data/units/Battle_Princess.cfg:3 data/units/Battle_Princess.cfg:41
-#: data/units/Princess.cfg:3 data/units/Princess.cfg:41
-msgid "Princess"
+#: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
+#, fuzzy
+msgid "female^Princess"
 msgstr "Princesse"
 
-#: data/units/Battle_Princess.cfg:17 data/units/Battle_Princess.cfg:55
+#: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
 msgstr "commandement,escarmouche"
 
-#: data/units/Battle_Princess.cfg:19
+#: data/units/Battle_Princess.cfg:20
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3677,7 +3733,7 @@ msgstr ""
 "personne. Rompue à la bataille et d'esprit fort, elle peut aider dans l'art "
 "du combat ceux qui se battent autour d'elle."
 
-#: data/units/Battle_Princess.cfg:22 data/units/Battle_Princess.cfg:60
+#: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
 #: data/units/Cavalry.cfg:31 data/units/Cavalryman.cfg:28
 #: data/units/Commander.cfg:23 data/units/Commander.cfg:98
@@ -3701,18 +3757,22 @@ msgstr ""
 #: data/units/Longbowman.cfg:21 data/units/Lord.cfg:22 data/units/Lord.cfg:85
 #: data/units/Master_Bowman.cfg:20 data/units/Noble_Commander.cfg:23
 #: data/units/Noble_Fighter.cfg:20 data/units/Noble_Lord.cfg:22
-#: data/units/Ogre.cfg:18 data/units/Orcish_Grunt.cfg:19
+#: data/units/Ogre.cfg:19 data/units/Orcish_Grunt.cfg:19
 #: data/units/Orcish_Leader.cfg:21 data/units/Orcish_Ruler.cfg:21
 #: data/units/Orcish_Sovereign.cfg:21 data/units/Orcish_Warlord.cfg:18
 #: data/units/Orcish_Warrior.cfg:19 data/units/Paladin.cfg:24
-#: data/units/Princess.cfg:22 data/units/Princess.cfg:60
+#: data/units/Princess.cfg:23 data/units/Princess.cfg:61
 #: data/units/Royal_Guard.cfg:19 data/units/Scout.cfg:21
 #: data/units/Sea_Orc.cfg:19 data/units/Sergeant.cfg:21
 #: data/units/Swordsman.cfg:19
 msgid "sword"
 msgstr "épée"
 
-#: data/units/Battle_Princess.cfg:57
+#: data/units/Battle_Princess.cfg:42 data/units/Princess.cfg:42
+msgid "Princess"
+msgstr "Princesse"
+
+#: data/units/Battle_Princess.cfg:58
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3728,9 +3788,9 @@ msgstr ""
 "particulièrement habile pour harceler l'ennemi, elle ignore donc les zones "
 "de contrôle de l'ennemi."
 
-#: data/units/Battle_Princess.cfg:76 data/units/Commander.cfg:120
+#: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
-#: data/units/Princess.cfg:76
+#: data/units/Princess.cfg:77
 msgid "scepter of fire"
 msgstr "sceptre de feu"
 
@@ -3825,7 +3885,13 @@ msgstr "arc"
 #: data/units/Knight.cfg:37 data/units/Lancer.cfg:21
 #: data/units/Lieutenant.cfg:39 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:33
-#: data/units/Merman.cfg:20 data/units/Merman_Lord.cfg:22
+#: data/units/Merman.cfg:20 data/units/Merman_Entangler.cfg:19
+#: data/units/Merman_Fighter.cfg:22 data/units/Merman_Hoplite.cfg:23
+#: data/units/Merman_Hunter.cfg:19 data/units/Merman_Hunter.cfg:27
+#: data/units/Merman_Javelineer.cfg:19 data/units/Merman_Javelineer.cfg:27
+#: data/units/Merman_Lord.cfg:22 data/units/Merman_Netcaster.cfg:19
+#: data/units/Merman_Spearman.cfg:19 data/units/Merman_Spearman.cfg:27
+#: data/units/Merman_Triton.cfg:22 data/units/Merman_Warrior.cfg:22
 #: data/units/Naga.cfg:21 data/units/Noble_Commander.cfg:42
 #: data/units/Noble_Lord.cfg:41 data/units/Orcish_Archer.cfg:37
 #: data/units/Orcish_Crossbow.cfg:41 data/units/Orcish_Crossbowman.cfg:39
@@ -3834,7 +3900,7 @@ msgstr "arc"
 #: data/units/Orcish_Shaman.cfg:112 data/units/Orcish_Sovereign.cfg:43
 #: data/units/Orcish_Warlord.cfg:30 data/units/Paladin.cfg:42
 #: data/units/Peasant.cfg:21 data/units/Peasant.cfg:34
-#: data/units/Pikeman.cfg:20 data/units/Pirate_Galleon.cfg:16
+#: data/units/Pikeman.cfg:20 data/units/Pirate_Galleon.cfg:17
 #: data/units/Poacher.cfg:42 data/units/Saurian.cfg:23
 #: data/units/Saurian.cfg:40 data/units/Saurian_Warrior.cfg:23
 #: data/units/Saurian_Warrior.cfg:40 data/units/Sea_Hag.cfg:21
@@ -3842,7 +3908,7 @@ msgstr "arc"
 #: data/units/Skeleton_Archer.cfg:41 data/units/Soul_Shooter.cfg:38
 #: data/units/Spearman.cfg:20 data/units/Spearman.cfg:33
 #: data/units/Transport_Galleon.cfg:17 data/units/Trapper.cfg:42
-#: data/units/Triton.cfg:20 data/units/Vampire_Lady.cfg:34
+#: data/units/Triton.cfg:20 data/units/Vampire_Lady.cfg:35
 #: data/units/Wall_Guard.cfg:36 data/units/Watch_Tower.cfg:18
 msgid "pierce"
 msgstr "perforant"
@@ -3918,6 +3984,14 @@ msgstr ""
 msgid "web"
 msgstr "toile"
 
+#: data/units/Cave_Spider.cfg:38 data/units/Elvish_Druid.cfg:44
+#: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
+#: data/units/Elvish_Shyde.cfg:52 data/units/Elvish_Sorceress.cfg:67
+#: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:37
+#: data/units/Merman_Entangler.cfg:29 data/units/Merman_Netcaster.cfg:29
+msgid "slow"
+msgstr "ralentissement"
+
 # Éventuellement je propose chocob'os comme traduction de chocobone
 # Revenir à chocobone si cela ne fait pas l'unanimité (Jean)
 #: data/units/Chocobone.cfg:3
@@ -3941,12 +4015,23 @@ msgstr ""
 #: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
 #: data/units/Goblin_Impaler.cfg:20 data/units/Goblin_Impaler.cfg:38
 #: data/units/Goblin_Spearman.cfg:20 data/units/Goblin_Spearman.cfg:32
-#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:21
+#: data/units/Horseman.cfg:20 data/units/Merman_Entangler.cfg:18
+#: data/units/Merman_Hunter.cfg:18 data/units/Merman_Hunter.cfg:26
+#: data/units/Merman_Javelineer.cfg:18 data/units/Merman_Javelineer.cfg:26
+#: data/units/Merman_Netcaster.cfg:18 data/units/Merman_Spearman.cfg:18
+#: data/units/Merman_Spearman.cfg:26 data/units/Saurian.cfg:21
 #: data/units/Saurian.cfg:38 data/units/Saurian_Warrior.cfg:21
 #: data/units/Saurian_Warrior.cfg:38 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 msgid "spear"
 msgstr "lance"
+
+#: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
+#: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:365
+#: src/actions.cpp:484
+msgid "charge"
+msgstr "charge"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -3968,6 +4053,11 @@ msgstr ""
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
 msgstr "regard"
+
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:730 src/actions.cpp:877
+#: src/reports.cpp:122
+msgid "stone"
+msgstr "pierre"
 
 #: data/units/Commander.cfg:3 data/units/Commander.cfg:78
 msgid "Commander"
@@ -4047,10 +4137,11 @@ msgid "chill wave"
 msgstr "onde froide"
 
 #: data/units/Dark_Queen.cfg:3
-msgid "Dark Queen"
+#, fuzzy
+msgid "female^Dark Queen"
 msgstr "Reine sombre"
 
-#: data/units/Dark_Queen.cfg:15
+#: data/units/Dark_Queen.cfg:16
 msgid ""
 "The evil queen mother Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
@@ -4061,7 +4152,7 @@ msgstr ""
 "adversaire en combat bien que sa véritable puissance réside dans les troupes "
 "qu'elle commande."
 
-#: data/units/Dark_Queen.cfg:20
+#: data/units/Dark_Queen.cfg:21
 msgid "scepter"
 msgstr "sceptre"
 
@@ -4199,7 +4290,13 @@ msgid ""
 "would be well advised to keep their distance. The most skilled Burners will "
 "often go on to become Fire Drakes who seek to master their internal fire, or "
 "Drake Flares who aspire to be leaders of their kind."
-msgstr "Non seulement les drakes ardents manient leurs griffes de façon mortelle mais ils sont également capables de souffler le feu légendaire de leurs lointains ancêtres. Leurs adversaires seront bien avisés de garder leurs distances. Les plus doués deviennent souvent des drakes incendiaires, cherchant encore plus de maîtrise de leur feu intérieur, ou des drakes flamboyants, aspirant à mener les leurs."
+msgstr ""
+"Non seulement les drakes ardents manient leurs griffes de façon mortelle "
+"mais ils sont également capables de souffler le feu légendaire de leurs "
+"lointains ancêtres. Leurs adversaires seront bien avisés de garder leurs "
+"distances. Les plus doués deviennent souvent des drakes incendiaires, "
+"cherchant encore plus de maîtrise de leur feu intérieur, ou des drakes "
+"flamboyants, aspirant à mener les leurs."
 
 #: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
 #: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:47
@@ -4342,6 +4439,12 @@ msgid ""
 "weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 
+#: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:25
+#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
+#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
+msgid "firststrike"
+msgstr "initiative"
+
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
 msgstr "Guerrier drake"
@@ -4361,7 +4464,11 @@ msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
-msgstr "Les duellistes sont des maîtres dans l'art du maniement de l'épée. Leur habileté à manier la rapière leur permettent d'attaquer et de parer d'une seule main, tandis que de l'autre ils repoussent leurs assaillants à l'arbalète."
+msgstr ""
+"Les duellistes sont des maîtres dans l'art du maniement de l'épée. Leur "
+"habileté à manier la rapière leur permettent d'attaquer et de parer d'une "
+"seule main, tandis que de l'autre ils repoussent leurs assaillants à "
+"l'arbalète."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -4387,6 +4494,10 @@ msgstr ""
 #: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
 msgstr "frénésie berserk"
+
+#: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
+msgid "berserk"
+msgstr "furie"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
@@ -4577,6 +4688,13 @@ msgstr "bâton du dragon"
 msgid "Dwarvish Ulfserker"
 msgstr "Nain ulfserker"
 
+#: data/units/Dwarvish_Ulfserker.cfg:16
+msgid ""
+"Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
+"ferocious of these in battle: they attack without stopping fighting until "
+"either their enemy or they are dead, no matter how many wounds they receive."
+msgstr ""
+
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
 msgstr "Mage vénérable"
@@ -4609,7 +4727,7 @@ msgid ""
 "can quickly heal themselves in the face of tremendous injuries."
 msgstr ""
 
-#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:82
+#: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
 msgstr "Archer elfe"
 
@@ -4624,7 +4742,12 @@ msgstr ""
 "rapidement et avec précision, l'Archer elfe compose une grande partie de "
 "l'armée elfe."
 
-#: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
+#: data/units/Elvish_Archer.cfg:82
+#, fuzzy
+msgid "female^Elvish Archer"
+msgstr "Archer elfe"
+
+#: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
 msgstr "Vengeur elfe"
 
@@ -4639,6 +4762,11 @@ msgstr ""
 "de combat. Le vengeur est considéré comme le meilleur homme des bois de "
 "Wesnoth. Dans les forêts il peut tendre des embuscades à ses ennemis, "
 "restant invisible jusqu'à ce qu'il attaque."
+
+#: data/units/Elvish_Avenger.cfg:76
+#, fuzzy
+msgid "female^Elvish Avenger"
+msgstr "Vengeur elfe"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4671,7 +4799,8 @@ msgstr ""
 "ennemis aussi bien de près que de loin."
 
 #: data/units/Elvish_Druid.cfg:3
-msgid "Elvish Druid"
+#, fuzzy
+msgid "female^Elvish Druid"
 msgstr "Druide elfe"
 
 #: data/units/Elvish_Druid.cfg:20
@@ -4694,7 +4823,8 @@ msgid "thorns"
 msgstr "épines"
 
 #: data/units/Elvish_Enchantress.cfg:3
-msgid "Elvish Enchantress"
+#, fuzzy
+msgid "female^Elvish Enchantress"
 msgstr "Enchanteresse elfe"
 
 #: data/units/Elvish_Enchantress.cfg:21
@@ -4758,10 +4888,18 @@ msgstr ""
 "combat rapproché, qu'à distance avec leurs boules de feu dévastatrices."
 
 #: data/units/Elvish_Lady.cfg:4
-msgid "Elvish Lady"
+#, fuzzy
+msgid "female^Elvish Lady"
 msgstr "Dame elfe"
 
 #: data/units/Elvish_Lady.cfg:17
+msgid ""
+"Elvish lady Parandra is one of the most respected elves ever. Her ability to "
+"see through the fogs of destiny has gained her a wisely used authority among "
+"her people, guiding them in times of uncertainty."
+msgstr ""
+
+#: data/units/Elvish_Lady.cfg:19
 #, fuzzy
 msgid "shove"
 msgstr "bousculade"
@@ -4778,7 +4916,7 @@ msgstr ""
 "Les seigneurs elfes sont redoutables en combat, aussi bien à l'épée en "
 "combat rapproché, qu'à distance avec leurs boules de feu dévastatrices."
 
-#: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
+#: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
 msgstr "Tireur d'élite elfe"
 
@@ -4800,6 +4938,17 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:117
 msgid "longbow"
 msgstr "arc long"
+
+#: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:116
+#: data/units/Elvish_Sharpshooter.cfg:40
+#: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
+msgid "marksman"
+msgstr "tir d'élite"
+
+#: data/units/Elvish_Marksman.cfg:80
+#, fuzzy
+msgid "female^Elvish Marksman"
+msgstr "Tireur d'élite elfe"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -4832,7 +4981,7 @@ msgstr ""
 "exposés. Aussi habiles à l'arc qu'à l'épée, ils frappent fort avant de "
 "disparaître à nouveau dans les bois pour éviter toute riposte."
 
-#: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
+#: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
 msgstr "Rôdeur elfe"
 
@@ -4848,6 +4997,11 @@ msgstr ""
 "rôdeurs, les meilleurs parmi les hommes des bois, ne peuvent être vus par "
 "les ennemis tant qu'ils sont en forêt, sauf s'ils viennent juste d'attaquer, "
 "ou si des ennemis leur sont adjacents."
+
+#: data/units/Elvish_Ranger.cfg:79
+#, fuzzy
+msgid "female^Elvish Ranger"
+msgstr "Rôdeur elfe"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4876,7 +5030,8 @@ msgstr ""
 "combat."
 
 #: data/units/Elvish_Shaman.cfg:3
-msgid "Elvish Shaman"
+#, fuzzy
+msgid "female^Elvish Shaman"
 msgstr "Prêtresse elfe"
 
 #: data/units/Elvish_Shaman.cfg:20
@@ -4890,7 +5045,7 @@ msgstr ""
 "le nombre de fois qu'ils peuvent attaquer de un. Les prêtresses possèdent "
 "également des capacités curatives basiques."
 
-#: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
+#: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
 msgstr "Archer d'élite elfe"
 
@@ -4906,8 +5061,14 @@ msgstr ""
 "toucher, même en tirant très rapidement. Les Archers d'élite elfes sont "
 "excellents pour éliminer des ennemis retranchés."
 
+#: data/units/Elvish_Sharpshooter.cfg:82
+#, fuzzy
+msgid "female^Elvish Sharpshooter"
+msgstr "Archer d'élite elfe"
+
 #: data/units/Elvish_Shyde.cfg:3
-msgid "Elvish Shyde"
+#, fuzzy
+msgid "female^Elvish Shyde"
 msgstr "Shyde elfe"
 
 #: data/units/Elvish_Shyde.cfg:20
@@ -4926,7 +5087,8 @@ msgid "faerie touch"
 msgstr "doigt de fée"
 
 #: data/units/Elvish_Sorceress.cfg:3
-msgid "Elvish Sorceress"
+#, fuzzy
+msgid "female^Elvish Sorceress"
 msgstr "Sorcière elfe"
 
 #: data/units/Elvish_Sorceress.cfg:21
@@ -4938,7 +5100,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
-msgid "Elvish Sylph"
+#, fuzzy
+msgid "female^Elvish Sylph"
 msgstr "Sylphe elfe"
 
 #: data/units/Elvish_Sylph.cfg:20
@@ -5048,7 +5211,15 @@ msgstr "fronde"
 msgid "Galleon"
 msgstr "Galion"
 
-#: data/units/Galleon.cfg:17
+#: data/units/Galleon.cfg:16
+msgid ""
+"Even people happily living in their home eventually need some kind of "
+"transport through the seas, even if they only go fishing or to trade goods. "
+"The galleon is perfect for this purpose: it's fast and resilient, but not "
+"prepared to fight, and is able to adapt to many different tasks."
+msgstr ""
+
+#: data/units/Galleon.cfg:18
 msgid "dummy"
 msgstr "arme factice"
 
@@ -5159,12 +5330,6 @@ msgid ""
 "numbers. These are the larger and more able kinsmen of the Goblin Spearman."
 msgstr ""
 
-#: data/units/Goblin_Impaler.cfg:25 data/units/Halbardier.cfg:23
-#: data/units/Halbardier.cfg:41 data/units/Pikeman.cfg:24
-#: data/units/Spearman.cfg:24
-msgid "firststrike"
-msgstr "initiative"
-
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
 msgstr "Chevalier gobelin"
@@ -5195,7 +5360,8 @@ msgstr ""
 msgid "torch"
 msgstr "torche"
 
-#: data/units/Goblin_Pillager.cfg:35
+#: data/units/Goblin_Pillager.cfg:35 data/units/Merman_Entangler.cfg:26
+#: data/units/Merman_Netcaster.cfg:26
 msgid "net"
 msgstr "filet"
 
@@ -5242,7 +5408,7 @@ msgid ""
 "serving beneath them."
 msgstr ""
 
-#: data/units/Great_Mage.cfg:3 data/units/Great_Mage.cfg:79
+#: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
 msgstr "Grand mage"
 
@@ -5254,16 +5420,14 @@ msgstr ""
 "Les grands mages sont de redoutables et terrifiants adversaires, surpassant "
 "même les archimages en puissance."
 
+#: data/units/Great_Mage.cfg:79
+#, fuzzy
+msgid "female^Great Mage"
+msgstr "Grand mage"
+
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
 msgstr "Troll intrépide"
-
-#: data/units/Great_Troll.cfg:7 data/units/Tentacle.cfg:7
-#: data/units/Troll.cfg:7 data/units/Troll_Hero.cfg:7
-#: data/units/Troll_Rocklobber.cfg:7 data/units/Troll_Warrior.cfg:6
-#: data/units/Troll_Whelp.cfg:7
-msgid "regenerates"
-msgstr "régénération"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -5486,7 +5650,7 @@ msgstr ""
 "Tout comme les commandants, les seigneurs possèdent des capacités de "
 "commandement et améliorent les capacités de combat de toutes les unités "
 
-#: data/units/Mage.cfg:3 data/units/Mage.cfg:70
+#: data/units/Mage.cfg:3
 msgid "Mage"
 msgstr "Mage"
 
@@ -5507,11 +5671,16 @@ msgstr ""
 msgid "missile"
 msgstr "projectile magique"
 
-#: data/units/Mage_of_Light.cfg:3 data/units/Mage_of_Light.cfg:66
+#: data/units/Mage.cfg:70
+msgid "female^Mage"
+msgstr ""
+
+#: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
 msgstr "Mage de lumière"
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
+#: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
 msgstr "illumination,traitement"
 
@@ -5535,15 +5704,22 @@ msgstr ""
 "aussi les unités alliés adjacentes."
 
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
+#: data/units/Mermaid_Diviner.cfg:34 data/units/Mermaid_Priestess.cfg:32
 #: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
 msgid "lightbeam"
 msgstr "rayon de lumière"
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
+#: data/units/Mermaid_Diviner.cfg:35 data/units/Mermaid_Priestess.cfg:33
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
 #: data/units/White_Mage.cfg:104
 msgid "holy"
 msgstr "sacré"
+
+#: data/units/Mage_of_Light.cfg:66
+#, fuzzy
+msgid "female^Mage of Light"
+msgstr "Mage de lumière"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5558,11 +5734,28 @@ msgstr ""
 "Les maîtres archers ont atteint le niveau le plus élevé de leur art. Leur "
 "dextérité avec cette arme mortelle n'est surpassée que par les elfes."
 
-#: data/units/Merman.cfg:3
-msgid "Merman"
-msgstr "Ondin"
+#: data/units/Mermaid_Diviner.cfg:3
+msgid "female^Mermaid Diviner"
+msgstr ""
 
-#: data/units/Merman.cfg:16
+#: data/units/Mermaid_Diviner.cfg:23
+msgid ""
+"The most devout and pious amongst the mermaids gain the striking power of "
+"illumination, which prevents their surroundings from ever seeing true "
+"night.  Their power is a stalwart counter to the forces of darkness."
+msgstr ""
+
+#: data/units/Mermaid_Enchantress.cfg:3
+#, fuzzy
+msgid "female^Mermaid Enchantress"
+msgstr "Enchanteresse elfe"
+
+#: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
+#: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
+#: data/units/Merman_Fighter.cfg:18 data/units/Merman_Hoplite.cfg:19
+#: data/units/Merman_Hunter.cfg:15 data/units/Merman_Javelineer.cfg:15
+#: data/units/Merman_Netcaster.cfg:15 data/units/Merman_Spearman.cfg:15
+#: data/units/Merman_Triton.cfg:18 data/units/Merman_Warrior.cfg:18
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
@@ -5570,10 +5763,97 @@ msgstr ""
 "Habiles créatures des mers, les ondins sont forts et rapides dans tout "
 "milieu aquatique mais se meuvent difficilement sur la terre ferme."
 
-#: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:21
-#: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
+#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:31
+#: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
+msgid "water spray"
+msgstr "jet d'eau"
+
+#: data/units/Mermaid_Initiate.cfg:3
+msgid "female^Mermaid Initiate"
+msgstr ""
+
+#: data/units/Mermaid_Initiate.cfg:20
+msgid ""
+"Young Mermaids are often initiated in the water magics of their people.  "
+"Despite their frailty, this makes them formidable opponents, as they can "
+"call upon the very water about them to smite their enemies."
+msgstr ""
+
+#: data/units/Mermaid_Priestess.cfg:3
+msgid "female^Mermaid Priestess"
+msgstr ""
+
+#: data/units/Mermaid_Priestess.cfg:21
+msgid ""
+"The more learned among the mermaids often take a path of holy study.  This "
+"leaves them quite capable of ministering to the wounds of their comrades, as "
+"well as being a potent defense against the unworldly."
+msgstr ""
+
+#: data/units/Mermaid_Siren.cfg:3
+msgid "female^Siren"
+msgstr ""
+
+#: data/units/Mermaid_Siren.cfg:23
+#, fuzzy
+msgid "naia touch"
+msgstr "doigt de fée"
+
+#: data/units/Merman.cfg:3
+msgid "Merman"
+msgstr "Ondin"
+
+#: data/units/Merman.cfg:19 data/units/Merman_Fighter.cfg:21
+#: data/units/Merman_Hoplite.cfg:22 data/units/Merman_Lord.cfg:21
+#: data/units/Merman_Triton.cfg:21 data/units/Merman_Triton.cfg:33
+#: data/units/Merman_Warrior.cfg:21 data/units/Naga.cfg:20
+#: data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
 msgid "trident"
 msgstr "trident"
+
+#: data/units/Merman_Entangler.cfg:3
+#, fuzzy
+msgid "Merman Entangler"
+msgstr "enchevêtrement"
+
+#: data/units/Merman_Fighter.cfg:3
+#, fuzzy
+msgid "Merman Fighter"
+msgstr "Combattant drake"
+
+#: data/units/Merman_Hoplite.cfg:3
+#, fuzzy
+msgid "Merman Hoplite"
+msgstr "Ondin"
+
+#: data/units/Merman_Hunter.cfg:3
+#, fuzzy
+msgid "Merman Hunter"
+msgstr "Ondin"
+
+#: data/units/Merman_Javelineer.cfg:3
+msgid "Merman Javelineer"
+msgstr ""
+
+#: data/units/Merman_Netcaster.cfg:3
+#, fuzzy
+msgid "Merman Netcaster"
+msgstr "Guerrier saurien"
+
+#: data/units/Merman_Spearman.cfg:3
+#, fuzzy
+msgid "Merman Spearman"
+msgstr "Lancier"
+
+#: data/units/Merman_Triton.cfg:3
+#, fuzzy
+msgid "Merman Triton"
+msgstr "+Traduction allemande"
+
+#: data/units/Merman_Warrior.cfg:3
+#, fuzzy
+msgid "Merman Warrior"
+msgstr "Guerrier saurien"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -5588,8 +5868,8 @@ msgstr ""
 "et d'eau. Ils attaquent en projetant de l'eau bouillante sur leurs ennemis."
 
 #: data/units/Naga.cfg:3
-msgid "Naga"
-msgstr "Naga"
+msgid "female^Naga"
+msgstr ""
 
 #: data/units/Naga.cfg:17
 msgid ""
@@ -5641,10 +5921,6 @@ msgstr ""
 "derrière des masques pour cacher leurs âmes noires. Ces créatures ignobles "
 "peuvent se cacher la nuit, ne laissant aucune trace de leur présence."
 
-#: data/units/Nightgaunt.cfg:18 data/units/Shadow.cfg:16
-msgid "nightstalk"
-msgstr "chasseur nocturne"
-
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
 msgstr "Noble commandant"
@@ -5687,7 +5963,7 @@ msgstr "Épée d'entraînement"
 msgid "Ogre"
 msgstr "Ogre"
 
-#: data/units/Ogre.cfg:15
+#: data/units/Ogre.cfg:16
 msgid ""
 "Ogres are stupid giant humanoids that usually live alone in the wilderness. "
 "While they can be easily outrun or outsmarted, their strength is not to be "
@@ -5813,7 +6089,7 @@ msgstr ""
 "bons jeteurs de sorts et peuvent maudire leurs ennemis et drainer leur vie."
 
 #: data/units/Orcish_Shaman.cfg:25 data/units/Orcish_Shaman.cfg:68
-#: data/units/Orcish_Shaman.cfg:111 data/units/Vampire_Lady.cfg:33
+#: data/units/Orcish_Shaman.cfg:111 data/units/Vampire_Lady.cfg:34
 msgid "curse"
 msgstr "malédiction"
 
@@ -5923,13 +6199,18 @@ msgstr ""
 "respectés parmi les orcs et très craints par leurs ennemis. Leur seule "
 "faiblesse est leur incapacité à manier l'arc."
 
-#: data/units/Outlaw.cfg:3 data/units/Outlaw.cfg:75
+#: data/units/Outlaw.cfg:3
 msgid "Outlaw"
 msgstr "Hors-la-loi"
 
 #: data/units/Outlaw.cfg:17
 msgid "Outlaws fight better at night."
 msgstr "Les hors-la-loi détroussent mieux le touriste la nuit tombée."
+
+#: data/units/Outlaw.cfg:75
+#, fuzzy
+msgid "female^Outlaw"
+msgstr "Hors-la-loi"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
@@ -5938,7 +6219,8 @@ msgstr ""
 "le font avec charme."
 
 #: data/units/Outlaw_Princess.cfg:4
-msgid "Outlaw Princess"
+#, fuzzy
+msgid "female^Outlaw Princess"
 msgstr "Princesse des bandits"
 
 #: data/units/Outlaw_Princess.cfg:19
@@ -5954,7 +6236,8 @@ msgstr ""
 "fonder son propre royaume avec les pillards qu'elle rencontre sur les routes."
 
 #: data/units/Outlaw_Queen.cfg:3
-msgid "Outlaw Queen"
+#, fuzzy
+msgid "female^Outlaw Queen"
 msgstr "Reine des bandits"
 
 #: data/units/Outlaw_Queen.cfg:17
@@ -6035,7 +6318,14 @@ msgstr "pique"
 msgid "Pirate Galleon"
 msgstr "Galion pirate"
 
-#: data/units/Pirate_Galleon.cfg:15 data/units/Transport_Galleon.cfg:16
+#: data/units/Pirate_Galleon.cfg:14
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheeps. Ships full "
+"of goods shouldn't be lonely, far away from any land, better to help them to "
+"avoid it being sunk from overloading..."
+msgstr ""
+
+#: data/units/Pirate_Galleon.cfg:16 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
 msgid "ballista"
 msgstr "baliste"
@@ -6052,7 +6342,7 @@ msgstr ""
 "Les braconniers s'appuient sur leur expérience de la chasse de nuit dans les "
 "forêts et les marécages."
 
-#: data/units/Princess.cfg:19 data/units/Princess.cfg:57
+#: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -6067,7 +6357,7 @@ msgstr ""
 "princesse est également agile puisque elle a la dextérité et des talents de "
 "voleur."
 
-#: data/units/Red_Mage.cfg:3 data/units/Red_Mage.cfg:72
+#: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
 msgstr "Mage rouge"
 
@@ -6081,6 +6371,11 @@ msgstr ""
 "toucher l'ennemi étant ainsi très élevées. Aussi efficace de jour comme de "
 "nuit et rapide marcheur, le mage rouge est précieux dans presque toutes les "
 "situations."
+
+#: data/units/Red_Mage.cfg:72
+#, fuzzy
+msgid "female^Red Mage"
+msgstr "Mage rouge"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6202,13 +6497,14 @@ msgstr "Guerrier saurien"
 msgid ""
 "Saurian Warriors are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as the can navigate through rough terrain and around "
+"valued as scouts as they can navigate through rough terrain and around "
 "opponents. Saurian Warriors posses the strength to take full advantage of "
 "this fact."
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:3
-msgid "Sea Hag"
+#, fuzzy
+msgid "female^Sea Hag"
 msgstr "Harpie des mers"
 
 #: data/units/Sea_Hag.cfg:17
@@ -6218,10 +6514,6 @@ msgid ""
 msgstr ""
 "Les Harpies des mers sont de vieilles nagas expérimentées qui ont appris à "
 "contrôler les puissances magiques de l'eau."
-
-#: data/units/Sea_Hag.cfg:27
-msgid "water spray"
-msgstr "jet d'eau"
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -6234,7 +6526,12 @@ msgid ""
 "environments. With their curved swords they are competent fighters, although "
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
-msgstr "Bien que souvent considérés comme inférieur à leur équivalent terrestre, les orcs marins représentent une avancée pour tous les gobelinoïdes de par leur adaptation au milieu aquatique. Grâce à leur épée courbée, ce sont des guerriers habiles, mais leur manque d'arme à distance et leur faible défense sur la terre ferme sont des faiblesses stratégiques."
+msgstr ""
+"Bien que souvent considérés comme inférieur à leur équivalent terrestre, les "
+"orcs marins représentent une avancée pour tous les gobelinoïdes de par leur "
+"adaptation au milieu aquatique. Grâce à leur épée courbée, ce sont des "
+"guerriers habiles, mais leur manque d'arme à distance et leur faible défense "
+"sur la terre ferme sont des faiblesses stratégiques."
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
@@ -6290,7 +6587,7 @@ msgstr ""
 "déplacent lentement, ils sont extrêmement puissants et craints à travers "
 "Wesnoth et même au delà, dans les contrées éloignées."
 
-#: data/units/Silver_Mage.cfg:3 data/units/Silver_Mage.cfg:142
+#: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
 msgstr "Mage argent"
 
@@ -6305,9 +6602,23 @@ msgstr ""
 "vers un autre village allié. Ils sont également très résistants à la plupart "
 "des attaques enchantées."
 
+#: data/units/Silver_Mage.cfg:142
+#, fuzzy
+msgid "female^Silver Mage"
+msgstr "Mage argent"
+
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
 msgstr "Dragon squelettique"
+
+#: data/units/Skeletal_Dragon.cfg:17
+msgid ""
+"Long ago one of the mightiest living creatures, the feared Dragon has become "
+"only bones and dark sinew. Long after its death, it was raised through the "
+"dark powers of necromancy, which it now serves. The Skeletal Dragon may look "
+"like nothing more than a pile of bones, but few people who thought that way "
+"lived long enough to change their minds."
+msgstr ""
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -6378,6 +6689,10 @@ msgid ""
 msgstr ""
 "Ces cadavres ensorcelés sont devenus puissants de par leur longue expérience "
 "du combat contre les vivants."
+
+#: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
+msgid "plague"
+msgstr "peste"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -6587,10 +6902,11 @@ msgstr ""
 "créature de se ressourcer."
 
 #: data/units/Vampire_Lady.cfg:3
-msgid "Vampire Lady"
+#, fuzzy
+msgid "female^Vampire Lady"
 msgstr "Dame vampire"
 
-#: data/units/Vampire_Lady.cfg:16
+#: data/units/Vampire_Lady.cfg:17
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
@@ -6598,7 +6914,7 @@ msgstr ""
 "Glaciale et belle, elle maintient son éternelle apparence de jeunesse en "
 "buvant le sang des vivants."
 
-#: data/units/Vampire_Lady.cfg:19
+#: data/units/Vampire_Lady.cfg:20
 msgid "blood kiss"
 msgstr "baiser de la mort"
 
@@ -6670,7 +6986,7 @@ msgstr ""
 "Les tours de garde sont de bons emplacement pour voir venir l'ennemi et lui "
 "lancer ensuite divers projectiles à l'aide de balistes."
 
-#: data/units/White_Mage.cfg:3 data/units/White_Mage.cfg:65
+#: data/units/White_Mage.cfg:3
 msgid "White Mage"
 msgstr "Mage Blanc"
 
@@ -6686,6 +7002,11 @@ msgstr ""
 "régénéreront comme si elles étaient dans un village. Le Mage Blanc est fort "
 "en combat contre les morts-vivants, qui subissent de lourds dommages avec le "
 "rayon de lumière."
+
+#: data/units/White_Mage.cfg:65
+#, fuzzy
+msgid "female^White Mage"
+msgstr "Mage Blanc"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -6900,7 +7221,7 @@ msgstr "+Contributeurs"
 msgid "+ Bots"
 msgstr "+ Bots"
 
-#: src/about.cpp:276 src/help.cpp:2372 src/show_dialog.cpp:472
+#: src/about.cpp:276 src/help.cpp:2350 src/show_dialog.cpp:491
 msgid "Close"
 msgstr "Fermer"
 
@@ -6921,73 +7242,73 @@ msgstr "Il n'y a pas de place vacante dans le château pour recruter une unité.
 msgid "none"
 msgstr "aucune"
 
-#: src/actions.cpp:321 src/actions.cpp:438
+#: src/actions.cpp:323 src/actions.cpp:441
 msgid "base damage"
 msgstr "dégâts de base"
 
-#: src/actions.cpp:331
+#: src/actions.cpp:333
 msgid "attacker resistance vs"
 msgstr "résistance de l'attaquant contre"
 
-#: src/actions.cpp:331
+#: src/actions.cpp:333
 msgid "attacker vulnerability vs"
 msgstr "vulnerabilité de l'attaquant contre"
 
-#: src/actions.cpp:363 src/actions.cpp:481 src/actions.cpp:490
+#: src/actions.cpp:365 src/actions.cpp:484 src/actions.cpp:493
 msgid "Doubled"
 msgstr "dégats doublés"
 
-#: src/actions.cpp:391 src/actions.cpp:526
+#: src/actions.cpp:393 src/actions.cpp:529
 msgid "total damage"
 msgstr "dégâts totaux"
 
-#: src/actions.cpp:448
+#: src/actions.cpp:451
 msgid "defender resistance vs"
 msgstr "résistance du défenseur contre"
 
-#: src/actions.cpp:448
+#: src/actions.cpp:451
 msgid "defender vulnerability vs"
 msgstr "vulnérabilité du défenseur contre"
 
-#: src/actions.cpp:499
+#: src/actions.cpp:502
 msgid "Halved"
 msgstr "dégats réduits de moitié"
 
-#: src/actions.cpp:714 src/actions.cpp:861 src/display.cpp:917
+#: src/actions.cpp:716 src/actions.cpp:862 src/display.cpp:917
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr "empoisonné"
 
-#: src/actions.cpp:719 src/actions.cpp:866 src/display.cpp:913
+#: src/actions.cpp:721 src/actions.cpp:867 src/display.cpp:913
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr "ralentie"
 
-#: src/actions.cpp:1738
+#: src/actions.cpp:1739
 msgid "Ambushed!"
 msgstr "Embuscade !"
 
-#: src/actions.cpp:1766
+#: src/actions.cpp:1767
 msgid "Friendly unit sighted"
 msgstr "Unité alliée en vue"
 
-#: src/actions.cpp:1768
+#: src/actions.cpp:1769
 msgid "Enemy unit sighted!"
 msgstr "Unité ennemie en vue !"
 
-#: src/actions.cpp:1773
+#: src/actions.cpp:1774
 msgid "$friends Friendly units sighted"
 msgstr "$friends unité(s) alliée(s) en vue"
 
-#: src/actions.cpp:1775
+#: src/actions.cpp:1776
 msgid "$enemies Enemy units sighted!"
 msgstr "$enemies unité(s) ennemie(s) en vue !"
 
-#: src/actions.cpp:1779
+#: src/actions.cpp:1780
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Unités en vue ! ($friends alliée(s), $enemies ennemie(s))"
 
-#: src/actions.cpp:1800
+#: src/actions.cpp:1801
 msgid "(press $hotkey to continue)"
 msgstr "(appuyez sur $hotkey pour continuer)"
 
@@ -7051,7 +7372,7 @@ msgstr "Didacticiel"
 msgid "replay"
 msgstr "film"
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:142 src/playturn.cpp:1384
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:142 src/playturn.cpp:1385
 msgid "Turn"
 msgstr "Tour"
 
@@ -7120,23 +7441,23 @@ msgstr "Choisissez le jeu à charger"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/dialogs.cpp:649 src/display.cpp:923 src/help.cpp:567
-#: src/playturn.cpp:1793
+#: src/dialogs.cpp:649 src/display.cpp:923 src/help.cpp:564
+#: src/playturn.cpp:1794
 msgid "level"
 msgstr "niveau"
 
-#: src/dialogs.cpp:687 src/display.cpp:957 src/help.cpp:622
-#: src/playturn.cpp:1958 src/unit.cpp:1070
+#: src/dialogs.cpp:687 src/display.cpp:957 src/help.cpp:613
+#: src/playturn.cpp:1959 src/unit.cpp:1070
 msgid "Moves"
 msgstr "Déplacements"
 
-#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:698
-#: src/playturn.cpp:597 src/reports.cpp:230
+#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:681
+#: src/playturn.cpp:598 src/reports.cpp:230
 msgid "melee"
 msgstr "corps-à-corps"
 
-#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:698
-#: src/playturn.cpp:597 src/reports.cpp:231
+#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:681
+#: src/playturn.cpp:598 src/reports.cpp:231
 msgid "ranged"
 msgstr "distant"
 
@@ -7156,11 +7477,11 @@ msgstr "Vera.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Voulez-vous sauvegarder un replay de ce scénario ?"
 
-#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1393
+#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1394
 msgid "Name:"
 msgstr "Nom :"
 
-#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1410
+#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1411
 msgid "The game could not be saved"
 msgstr "Le jeu ne peut pas être sauvegardé"
 
@@ -7229,8 +7550,8 @@ msgstr "Impossible de se connecter au serveur."
 #: src/game.cpp:999 src/game.cpp:1014 src/game.cpp:1020 src/game.cpp:1053
 #: src/game.cpp:1082 src/game.cpp:1096 src/game.cpp:1098 src/game.cpp:1100
 #: src/game.cpp:1112 src/game.cpp:1115 src/game.cpp:1150 src/game.cpp:1152
-#: src/game.cpp:1174 src/game.cpp:1176 src/playturn.cpp:1396
-#: src/playturn.cpp:1410
+#: src/game.cpp:1174 src/game.cpp:1176 src/playturn.cpp:1397
+#: src/playturn.cpp:1411
 msgid "Error"
 msgstr "Erreur"
 
@@ -7294,7 +7615,7 @@ msgstr ""
 "l'installation de cette campagne."
 
 #: src/game.cpp:1112 src/game.cpp:1150 src/game.cpp:1174
-#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:314
+#: src/multiplayer_client.cpp:45 src/multiplayer_client.cpp:319
 msgid "Connection timed out"
 msgstr "Tentative de connexion expirée"
 
@@ -7350,7 +7671,7 @@ msgstr ""
 msgid "Play a game against AI opponents"
 msgstr "Jouer contre l'ordinateur"
 
-#: src/game.cpp:1197 src/multiplayer_client.cpp:298
+#: src/game.cpp:1197 src/multiplayer_client.cpp:303
 msgid "Login"
 msgstr "Connexion"
 
@@ -7370,79 +7691,79 @@ msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
 
-#: src/help.cpp:574
+#: src/help.cpp:571
 msgid "Advances to"
 msgstr "Avance en"
 
-#: src/help.cpp:623
+#: src/help.cpp:614
 msgid "Alignment"
 msgstr "Alignement"
 
-#: src/help.cpp:627
+#: src/help.cpp:618
 msgid "Required XP"
 msgstr "Expérience requise"
 
-#: src/help.cpp:637 src/reports.cpp:233
+#: src/help.cpp:628 src/reports.cpp:233
 msgid "attacks"
 msgstr "attaques"
 
-#: src/help.cpp:645 src/help.cpp:646 src/playturn.cpp:1955
+#: src/help.cpp:636 src/help.cpp:637 src/playturn.cpp:1956
 msgid "Name"
 msgstr "Nom"
 
-#: src/help.cpp:649 src/help.cpp:650 src/playturn.cpp:1954
+#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1955
 msgid "Type"
 msgstr "Type"
 
-#: src/help.cpp:653 src/help.cpp:654 src/unit_types.cpp:302
+#: src/help.cpp:644 src/help.cpp:645 src/unit_types.cpp:302
 msgid "Dmg"
 msgstr "Dmg"
 
-#: src/help.cpp:657 src/help.cpp:658
+#: src/help.cpp:648 src/help.cpp:649
 msgid "Strikes"
 msgstr "Attaques"
 
-#: src/help.cpp:661 src/help.cpp:662
+#: src/help.cpp:652 src/help.cpp:653
 msgid "Range"
 msgstr "Portée"
 
-#: src/help.cpp:665 src/help.cpp:666
+#: src/help.cpp:656 src/help.cpp:657
 msgid "Special"
 msgstr "Spécial"
 
-#: src/help.cpp:723
+#: src/help.cpp:702
 msgid "Resistances"
 msgstr "Résistances"
 
-#: src/help.cpp:727 src/help.cpp:728
+#: src/help.cpp:706 src/help.cpp:707
 msgid "Attack Type"
 msgstr "Type d'attaque"
 
-#: src/help.cpp:731 src/help.cpp:732
+#: src/help.cpp:710 src/help.cpp:711
 msgid "Resistance"
 msgstr "Résistance"
 
-#: src/help.cpp:763
+#: src/help.cpp:739
 msgid "Terrain Modifiers"
 msgstr "Modificateurs de Terrain"
 
-#: src/help.cpp:767 src/help.cpp:768
+#: src/help.cpp:743 src/help.cpp:744
 msgid "Terrain"
 msgstr "Terrain"
 
-#: src/help.cpp:775 src/help.cpp:776
+#: src/help.cpp:751 src/help.cpp:752
 msgid "Defense"
 msgstr "Défense"
 
-#: src/help.cpp:1876
+#: src/help.cpp:1854
 msgid "< Back"
 msgstr "< Précédent"
 
-#: src/help.cpp:1877
+#: src/help.cpp:1855
 msgid "Forward >"
 msgstr "Suivant >"
 
-#: src/help.cpp:2375
+#: src/help.cpp:2353
 msgid "The Battle for Wesnoth Help"
 msgstr "Aide pour La bataille de Wesnoth"
 
@@ -7454,7 +7775,7 @@ msgstr "Unité suivante"
 msgid "End Unit Turn"
 msgstr "Finir le tour de l'unité"
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1531
+#: src/hotkeys.cpp:122 src/playturn.cpp:1532
 msgid "Leader"
 msgstr "Chef"
 
@@ -7490,11 +7811,11 @@ msgstr "Accéléré"
 msgid "Unit Description"
 msgstr "Description de l'unité"
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1351
+#: src/hotkeys.cpp:131 src/playturn.cpp:1352
 msgid "Rename Unit"
 msgstr "Renommer l'unité"
 
-#: src/hotkeys.cpp:134 src/playturn.cpp:1641
+#: src/hotkeys.cpp:134 src/playturn.cpp:1642
 msgid "Recruit"
 msgstr "Recruter"
 
@@ -7502,7 +7823,7 @@ msgstr "Recruter"
 msgid "Repeat Recruit"
 msgstr "Recruter encore"
 
-#: src/hotkeys.cpp:136 src/playturn.cpp:1820
+#: src/hotkeys.cpp:136 src/playturn.cpp:1821
 msgid "Recall"
 msgstr "Rappeler"
 
@@ -7538,11 +7859,11 @@ msgstr "Préférences"
 msgid "Scenario Objectives"
 msgstr "Objectifs du scénario"
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:2007
+#: src/hotkeys.cpp:146 src/playturn.cpp:2008
 msgid "Unit List"
 msgstr "Liste des unités"
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2096
+#: src/hotkeys.cpp:147 src/playturn.cpp:2097
 msgid "Statistics"
 msgstr "Statistiques"
 
@@ -7650,7 +7971,7 @@ msgstr "Parler aux alliés"
 msgid "Speak to All"
 msgstr "Parler à tous"
 
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:609
+#: src/hotkeys.cpp:174 src/show_dialog.cpp:628
 msgid "Help"
 msgstr "Aide"
 
@@ -7710,7 +8031,7 @@ msgstr "Itérations"
 msgid "Bump Size"
 msgstr "Taille des collines"
 
-#: src/mapgen_dialog.cpp:85 src/playturn.cpp:1532
+#: src/mapgen_dialog.cpp:85 src/playturn.cpp:1533
 msgid "Villages"
 msgstr "Villages"
 
@@ -7760,15 +8081,11 @@ msgstr ""
 "Les ennemis ne peuvent être vus à moins qu'ils ne soient à porté de vos "
 "unités"
 
-#: src/multiplayer.cpp:111 src/multiplayer_lobby.cpp:130
-msgid "Shroud"
-msgstr "Voile"
-
 #: src/multiplayer.cpp:113
 msgid "The map is unknown until your units explore it"
 msgstr "La carte est inconnue jusqu'a ce que vos unités l'explorent"
 
-#: src/multiplayer.cpp:115 src/reports.cpp:376
+#: src/multiplayer.cpp:115 src/reports.cpp:375
 msgid "Observers"
 msgstr "Observateurs"
 
@@ -7776,13 +8093,13 @@ msgstr "Observateurs"
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permettre aux personnes qui ne jouent pas d'observer la partie"
 
-#: src/multiplayer.cpp:119 src/multiplayer_client.cpp:145
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:460
-#: src/show_dialog.cpp:466
+#: src/multiplayer.cpp:119 src/multiplayer_client.cpp:148
+#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:479
+#: src/show_dialog.cpp:485
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/multiplayer.cpp:120 src/show_dialog.cpp:446 src/show_dialog.cpp:459
+#: src/multiplayer.cpp:120 src/show_dialog.cpp:465 src/show_dialog.cpp:478
 msgid "Ok"
 msgstr "Ok"
 
@@ -7858,69 +8175,69 @@ msgstr ""
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src/multiplayer_client.cpp:59
+#: src/multiplayer_client.cpp:62
 msgid "Receiving game list..."
 msgstr "Réception de la liste des jeux..."
 
-#: src/multiplayer_client.cpp:121 src/multiplayer_connect.cpp:386
-#: src/multiplayer_connect.cpp:388 src/playlevel.cpp:780 src/playturn.cpp:1531
-#: src/playturn.cpp:1536 src/playturn.cpp:1623
+#: src/multiplayer_client.cpp:124 src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:388 src/playlevel.cpp:780 src/playturn.cpp:1532
+#: src/playturn.cpp:1537 src/playturn.cpp:1624
 msgid "Gold"
 msgstr "Or"
 
-#: src/multiplayer_client.cpp:139
+#: src/multiplayer_client.cpp:142
 msgid "Waiting for game to start..."
 msgstr "En attente de démarrage du jeu..."
 
-#: src/multiplayer_client.cpp:248
+#: src/multiplayer_client.cpp:253
 msgid "Connect to Host"
 msgstr "Connection au serveur"
 
-#: src/multiplayer_client.cpp:250
+#: src/multiplayer_client.cpp:255
 msgid "Choose host to connect to"
 msgstr "Choisissez un serveur sur lequel vous connecter"
 
-#: src/multiplayer_client.cpp:268
+#: src/multiplayer_client.cpp:273
 msgid "Connecting to remote host..."
 msgstr "Connexion au serveur distant..."
 
-#: src/multiplayer_client.cpp:297
+#: src/multiplayer_client.cpp:302
 msgid "You must log in to this server"
 msgstr "Vous devez vous connecter à ce serveur"
 
-#: src/multiplayer_client.cpp:377
+#: src/multiplayer_client.cpp:382
 msgid "Getting game data..."
 msgstr "Réception des données du jeu..."
 
-#: src/multiplayer_client.cpp:429
+#: src/multiplayer_client.cpp:434
 msgid "There are no available sides in this game."
 msgstr "Il n'y a aucun camp de disponible."
 
-#: src/multiplayer_client.cpp:477
+#: src/multiplayer_client.cpp:482
 msgid "Choose your side:"
 msgstr "Choisissez votre camp :"
 
-#: src/multiplayer_client.cpp:508
+#: src/multiplayer_client.cpp:513
 msgid "The game has been cancelled"
 msgstr "Le jeu a été annulé"
 
-#: src/multiplayer_client.cpp:512
+#: src/multiplayer_client.cpp:517
 msgid "The side you have chosen is no longer available"
 msgstr "Le camp que vous avez choisi n'est plus disponible"
 
-#: src/multiplayer_client.cpp:548
+#: src/multiplayer_client.cpp:553
 msgid "Show replay of game up to save point?"
 msgstr "Montrer les actions déjà effectuées jusqu'au point de sauvegarde ?"
 
-#: src/multiplayer_client.cpp:683 src/multiplayer_client.cpp:686
+#: src/multiplayer_client.cpp:688 src/multiplayer_client.cpp:691
 msgid "?"
 msgstr ""
 
-#: src/multiplayer_client.cpp:777
+#: src/multiplayer_client.cpp:782
 msgid "Leader: "
 msgstr "Meneur : "
 
-#: src/multiplayer_client.cpp:779
+#: src/multiplayer_client.cpp:784
 msgid "Recruits: "
 msgstr "Recrutements : "
 
@@ -7952,8 +8269,8 @@ msgstr "Joueur réseau"
 msgid "Local Player"
 msgstr "Humain"
 
-#: src/multiplayer_connect.cpp:265 src/multiplayer_connect.cpp:498
-#: src/multiplayer_connect.cpp:621 src/multiplayer_connect.cpp:727
+#: src/multiplayer_connect.cpp:265 src/multiplayer_connect.cpp:496
+#: src/multiplayer_connect.cpp:610 src/multiplayer_connect.cpp:716
 msgid "Computer Player"
 msgstr "Ordinateur"
 
@@ -8018,7 +8335,7 @@ msgstr "Faction"
 msgid "Color"
 msgstr "Couleur"
 
-#: src/multiplayer_connect.cpp:570 src/multiplayer_connect.cpp:574
+#: src/multiplayer_connect.cpp:559 src/multiplayer_connect.cpp:563
 msgid "Waiting for network players to join"
 msgstr "En attente d'autres joueurs"
 
@@ -8103,58 +8420,58 @@ msgstr ""
 msgid "It is now your turn"
 msgstr "À vous de jouer"
 
-#: src/playturn.cpp:486
+#: src/playturn.cpp:487
 msgid "Attacker"
 msgstr "Attaquant"
 
-#: src/playturn.cpp:488
+#: src/playturn.cpp:489
 msgid "Defender"
 msgstr "Défenseur"
 
-#: src/playturn.cpp:512 src/playturn.cpp:631
+#: src/playturn.cpp:513 src/playturn.cpp:632
 msgid "Damage Calculations"
 msgstr "Calcul des dégâts"
 
-#: src/playturn.cpp:597
+#: src/playturn.cpp:598
 msgid "Melee"
 msgstr "Corps-à-corps"
 
-#: src/playturn.cpp:610 src/reports.cpp:210
+#: src/playturn.cpp:611 src/reports.cpp:208
 msgid "vs"
 msgstr "contre"
 
-#: src/playturn.cpp:643
+#: src/playturn.cpp:644
 msgid "Attack Enemy"
 msgstr "Attaquer l'ennemi"
 
-#: src/playturn.cpp:644
+#: src/playturn.cpp:645
 msgid "Choose weapon"
 msgstr "Choisissez une arme"
 
-#: src/playturn.cpp:1125
+#: src/playturn.cpp:1126
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Vous n'avez pas encore commencé votre tour. Voulez-vous vraiment finir votre "
 "tour ?"
 
-#: src/playturn.cpp:1134 src/playturn.cpp:1139
+#: src/playturn.cpp:1135 src/playturn.cpp:1140
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Certaines unités peuvent encore se déplacer. Voulez-vous vraiment finir "
 "votre tour ?"
 
-#: src/playturn.cpp:1155
+#: src/playturn.cpp:1156
 msgid "Auto-Save"
 msgstr "Sauvegarde automatique"
 
-#: src/playturn.cpp:1157
+#: src/playturn.cpp:1158
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Impossible de sauver le jeu automatiquement. Vous devez le faire "
 "manuellement."
 
-#: src/playturn.cpp:1396
+#: src/playturn.cpp:1397
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8163,35 +8480,35 @@ msgstr ""
 "barres obliques ni de barres obliques inverses. Veuillez choisir un autre "
 "nom."
 
-#: src/playturn.cpp:1407
+#: src/playturn.cpp:1408
 msgid "Saved"
 msgstr "Sauvé"
 
-#: src/playturn.cpp:1407
+#: src/playturn.cpp:1408
 msgid "The game has been saved"
 msgstr "Le jeu a été sauvegardé"
 
-#: src/playturn.cpp:1533
+#: src/playturn.cpp:1534
 msgid "Income"
 msgstr "Revenu"
 
-#: src/playturn.cpp:1533
+#: src/playturn.cpp:1534
 msgid "Upkeep"
 msgstr "Entretien"
 
-#: src/playturn.cpp:1629
+#: src/playturn.cpp:1630
 msgid "You have no units available to recruit."
 msgstr "Vous n'avez pas d'unité disponible pour recruter."
 
-#: src/playturn.cpp:1642 src/playturn.cpp:1821
+#: src/playturn.cpp:1643 src/playturn.cpp:1822
 msgid "Select unit"
 msgstr "Sélectionner l'unité"
 
-#: src/playturn.cpp:1671
+#: src/playturn.cpp:1672
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Vous n'avez pas assez d'or pour recruter cette unité"
 
-#: src/playturn.cpp:1729
+#: src/playturn.cpp:1730
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8199,7 +8516,7 @@ msgstr ""
 "Mon seigneur, cette unité a de l'expérience, et un niveau avancé ! Voulez-"
 "vous vraiment renvoyer $noun ?"
 
-#: src/playturn.cpp:1731
+#: src/playturn.cpp:1732
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8207,19 +8524,19 @@ msgstr ""
 "Mon seigneur, cette unité est proche de gagner un niveau ! Voulez-vous "
 "vraiment renvoyer $noun ?"
 
-#: src/playturn.cpp:1736
+#: src/playturn.cpp:1737
 msgid "her"
 msgstr "elle"
 
-#: src/playturn.cpp:1736
+#: src/playturn.cpp:1737
 msgid "him"
 msgstr "lui"
 
-#: src/playturn.cpp:1777
+#: src/playturn.cpp:1778
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler"
 
-#: src/playturn.cpp:1779
+#: src/playturn.cpp:1780
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8227,88 +8544,88 @@ msgstr ""
 "Il n'y a pas de troupe disponible à rappeler\n"
 "(Vous devez avoir des survivants vétérans d'un précédent scénario)"
 
-#: src/playturn.cpp:1785
+#: src/playturn.cpp:1786
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
 
-#: src/playturn.cpp:1808
+#: src/playturn.cpp:1809
 msgid "Dismiss Unit"
 msgstr "Renvoyer l'unité"
 
-#: src/playturn.cpp:1865
+#: src/playturn.cpp:1866
 msgid "Message"
 msgstr "Message"
 
-#: src/playturn.cpp:1865
+#: src/playturn.cpp:1866
 msgid "Send to allies only"
 msgstr "Parler aux alliés uniquement"
 
-#: src/playturn.cpp:1959
+#: src/playturn.cpp:1960
 msgid "Location"
 msgstr "Localisation"
 
-#: src/playturn.cpp:2041 src/playturn.cpp:2103
+#: src/playturn.cpp:2042 src/playturn.cpp:2104
 msgid "Recruits"
 msgstr "Recrutements"
 
-#: src/playturn.cpp:2047 src/playturn.cpp:2107
+#: src/playturn.cpp:2048 src/playturn.cpp:2108
 msgid "Recalls"
 msgstr "Vétérans rappelés"
 
-#: src/playturn.cpp:2053 src/playturn.cpp:2111
+#: src/playturn.cpp:2054 src/playturn.cpp:2112
 msgid "Advancements"
 msgstr "Avancements"
 
-#: src/playturn.cpp:2059 src/playturn.cpp:2115
+#: src/playturn.cpp:2060 src/playturn.cpp:2116
 msgid "Losses"
 msgstr "Pertes"
 
-#: src/playturn.cpp:2065 src/playturn.cpp:2119
+#: src/playturn.cpp:2066 src/playturn.cpp:2120
 msgid "Kills"
 msgstr "Ennemis tués"
 
-#: src/playturn.cpp:2071
+#: src/playturn.cpp:2072
 msgid "Damage Inflicted"
 msgstr "Dégâts infligés"
 
-#: src/playturn.cpp:2077
+#: src/playturn.cpp:2078
 msgid "Damage Taken"
 msgstr "Dégâts subis"
 
-#: src/playturn.cpp:2083
+#: src/playturn.cpp:2084
 msgid "Damage Inflicted (EV)"
 msgstr "Dégâts infligés (attendus)"
 
-#: src/playturn.cpp:2090
+#: src/playturn.cpp:2091
 msgid "Damage Taken (EV)"
 msgstr "Dégâts subis (attendus)"
 
-#: src/playturn.cpp:2133
+#: src/playturn.cpp:2134
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/playturn.cpp:2143
+#: src/playturn.cpp:2144
 msgid "prompt^Command:"
 msgstr "Commande :"
 
-#: src/playturn.cpp:2154
+#: src/playturn.cpp:2155
 msgid "Chat Log"
 msgstr "Historique des discussions"
 
-#: src/playturn.cpp:2219
+#: src/playturn.cpp:2220
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Impossible de trouver une étiquette ou une unité contenant : « $search »."
 
-#: src/playturn.cpp:2296
+#: src/playturn.cpp:2297
 msgid "Place Label"
 msgstr "Placez l'étiquette"
 
-#: src/playturn.cpp:2297
+#: src/playturn.cpp:2298
 msgid "Label"
 msgstr "Étiquette"
 
-#: src/playturn.cpp:2421
+#: src/playturn.cpp:2422
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8316,23 +8633,23 @@ msgstr ""
 "Le jeu est désynchronisé et doit se terminer. Voulez-vous sauvegarder les "
 "messages d'erreur dans un fichier ?"
 
-#: src/playturn.cpp:2473
+#: src/playturn.cpp:2474
 msgid "Replace with AI"
 msgstr "Remplacer par l'ordinateur"
 
-#: src/playturn.cpp:2474
+#: src/playturn.cpp:2475
 msgid "Replace with local player"
 msgstr "Remplacer par un joueur local"
 
-#: src/playturn.cpp:2475
+#: src/playturn.cpp:2476
 msgid "Abort game"
 msgstr "Annuler le jeu"
 
-#: src/playturn.cpp:2478
+#: src/playturn.cpp:2479
 msgid "Replace with "
 msgstr "Remplacer par "
 
-#: src/playturn.cpp:2482
+#: src/playturn.cpp:2483
 msgid "has left the game. What do you want to do?"
 msgstr "a quitté le jeu. Que voulez-vous faire ?"
 
@@ -8396,63 +8713,63 @@ msgstr "Unités neutres"
 msgid "Chaotic units"
 msgstr "Unités chaotiques"
 
-#: src/reports.cpp:312
+#: src/reports.cpp:311
 msgid "Owned village"
 msgstr "Village possédé"
 
-#: src/reports.cpp:314
+#: src/reports.cpp:313
 msgid "Enemy village"
 msgstr "Village ennemi"
 
-#: src/reports.cpp:316
+#: src/reports.cpp:315
 msgid "Allied village"
 msgstr "Village allié"
 
-#: src/show_dialog.cpp:934
+#: src/show_dialog.cpp:953
 msgid "KB"
 msgstr "ko"
 
-#: src/titlescreen.cpp:149
+#: src/titlescreen.cpp:155
 msgid "Version"
 msgstr "Version"
 
-#: src/titlescreen.cpp:166
+#: src/titlescreen.cpp:172
 msgid "TitleScreen button^Tutorial"
 msgstr "Didacticiel"
 
-#: src/titlescreen.cpp:167
+#: src/titlescreen.cpp:173
 msgid "TitleScreen button^Campaign"
 msgstr "Campagne"
 
-#: src/titlescreen.cpp:168
+#: src/titlescreen.cpp:174
 msgid "TitleScreen button^Multiplayer"
 msgstr "Multi-joueurs"
 
-#: src/titlescreen.cpp:169
+#: src/titlescreen.cpp:175
 msgid "TitleScreen button^Load"
 msgstr "Charger"
 
-#: src/titlescreen.cpp:170
+#: src/titlescreen.cpp:176
 msgid "TitleScreen button^Language"
 msgstr "Langue"
 
-#: src/titlescreen.cpp:171
+#: src/titlescreen.cpp:177
 msgid "TitleScreen button^Preferences"
 msgstr "Preferences"
 
-#: src/titlescreen.cpp:173
+#: src/titlescreen.cpp:179
 msgid "TitleScreen button^Quit"
 msgstr "Quitter"
 
-#: src/titlescreen.cpp:174
+#: src/titlescreen.cpp:180
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Commencer un didacticiel pour vous familiariser avec le jeu"
 
-#: src/titlescreen.cpp:175
+#: src/titlescreen.cpp:181
 msgid "Start a new single player campaign"
 msgstr "Commencer une nouvelle campagne (jeu solo)"
 
-#: src/titlescreen.cpp:176
+#: src/titlescreen.cpp:182
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -8460,31 +8777,31 @@ msgstr ""
 "Jouer en multi-joueurs (hotseat, réseau local ou Internet) ou un simple "
 "scénario contre l'ordinateur"
 
-#: src/titlescreen.cpp:177
+#: src/titlescreen.cpp:183
 msgid "Load a single player saved game"
 msgstr "Charger une partie sauvegardée (jeu solo)"
 
-#: src/titlescreen.cpp:178
+#: src/titlescreen.cpp:184
 msgid "Change the language"
 msgstr "Changer la langue"
 
-#: src/titlescreen.cpp:179
+#: src/titlescreen.cpp:185
 msgid "Configure the game's settings"
 msgstr "Configurer les paramètres du jeu"
 
-#: src/titlescreen.cpp:180
+#: src/titlescreen.cpp:186
 msgid "View the credits"
 msgstr "Afficher les crédits"
 
-#: src/titlescreen.cpp:181
+#: src/titlescreen.cpp:187
 msgid "Quit the game"
 msgstr "Quitter le jeu"
 
-#: src/titlescreen.cpp:205
+#: src/titlescreen.cpp:211
 msgid "More"
 msgstr "Plus"
 
-#: src/titlescreen.cpp:212
+#: src/titlescreen.cpp:218
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Le livre de Wesnoth"
 
@@ -8492,15 +8809,15 @@ msgstr "-- Le livre de Wesnoth"
 msgid "strikes"
 msgstr "attaques"
 
-#: src/unit_types.cpp:891
+#: src/unit_types.cpp:889
 msgid "chaotic"
 msgstr "chaotique"
 
-#: src/unit_types.cpp:891
+#: src/unit_types.cpp:889
 msgid "lawful"
 msgstr "loyal"
 
-#: src/unit_types.cpp:891
+#: src/unit_types.cpp:889
 msgid "neutral"
 msgstr "neutre"
 
@@ -8511,6 +8828,18 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+#~ msgid "first strike"
+#~ msgstr "initiative"
+
+#~ msgid "Swamp"
+#~ msgstr "Marais"
+
+#~ msgid "Tundra"
+#~ msgstr "Toundra"
+
+#~ msgid "Naga"
+#~ msgstr "Naga"
 
 #~ msgid "Host Multiplayer Game"
 #~ msgstr "Démarrer un serveur de jeu multi-joueurs"
@@ -12780,9 +13109,6 @@ msgstr "La suppression du fichier a échoué."
 #~ msgid "I think I know what I'm doing. Come, let us go!"
 #~ msgstr "Je pense que je sais ce que je fais. En avant !"
 
-#~ msgid "Snow Plains"
-#~ msgstr "Les plaines enneigées"
-
 #~ msgid ""
 #~ "\n"
 #~ "Victory:\n"
@@ -13671,9 +13997,6 @@ msgstr "La suppression du fichier a échoué."
 #~ "#Mort de Kapou'e\n"
 #~ "#Mort de Grüü\n"
 #~ "#Mort d'un chaman"
-
-#~ msgid "Silent Forest"
-#~ msgstr "La forêt silencieuse"
 
 #~ msgid ""
 #~ "\n"
