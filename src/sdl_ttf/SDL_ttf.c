@@ -845,6 +845,8 @@ int TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h)
 	int miny, maxy;
 	c_glyph *glyph;
 	FT_Error error;
+	FT_Long use_kerning;
+	FT_UInt prev_index = 0;
 
 	/* Initialize everything to 0 */
 	if ( ! TTF_initialized ) {
@@ -855,6 +857,9 @@ int TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h)
 	minx = maxx = 0;
 	miny = maxy = 0;
 	swapped = TTF_byteswapped;
+
+	/* check kerning */
+	use_kerning = FT_HAS_KERNING( font->face );
 
 	/* Load each character and sum it's bounding box */
 	x= 0;
@@ -884,6 +889,14 @@ int TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h)
 		}
 		glyph = font->current;
 
+		/* handle kerning */
+		if ( use_kerning && prev_index && glyph->index ) {
+			FT_Vector delta; 
+			FT_Get_Kerning( font->face, prev_index, glyph->index, ft_kerning_default, &delta ); 
+			x += delta.x >> 6;
+		}
+
+#if 0
 		if ( (ch == text) && (glyph->minx < 0) ) {
 		/* Fixes the texture wrapping bug when the first letter
 		 * has a negative minx value or horibearing value.  The entire
@@ -901,6 +914,7 @@ int TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h)
 			z -= glyph->minx;
 			
 		}
+#endif
 		
 		z = x + glyph->minx;
 		if ( minx > z ) {
@@ -925,6 +939,7 @@ int TTF_SizeUNICODE(TTF_Font *font, const Uint16 *text, int *w, int *h)
 		if ( glyph->maxy > maxy ) {
 			maxy = glyph->maxy;
 		}
+		prev_index = glyph->index;
 	}
 
 	/* Fill the bounds rectangle */
@@ -1508,6 +1523,7 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 	const Uint16 *ch;
 	Uint8 *src;
 	Uint32 *dst;
+	Uint32 *dst_check;
 	int swapped;
 	int row, col;
 	c_glyph *glyph;
@@ -1528,6 +1544,10 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 		return(NULL);
 	}
 
+	/* Adding bound checking to avoid all kinds of memory corruption errors
+	   that may occur. */
+	dst_check = (Uint32*)textbuf->pixels + textbuf->pitch/4 * textbuf->h;
+
 	/* check kerning */
 	use_kerning = FT_HAS_KERNING( font->face );
 	
@@ -1535,6 +1555,7 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 	xstart = 0;
 	swapped = TTF_byteswapped;
 	pixel = (fg.r<<16)|(fg.g<<8)|fg.b;
+
 	for ( ch=text; *ch; ++ch ) {
 		Uint16 c = *ch;
 		if ( c == UNICODE_BOM_NATIVE ) {
@@ -1560,7 +1581,12 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 			return NULL;
 		}
 		glyph = font->current;
+		/* Ensure the width of the pixmap is correct. On some cases,
+		 * freetype may report a larger pixmap than possible.*/
 		width = glyph->pixmap.width;
+		if (width > glyph->maxx - glyph->minx) {
+			width = glyph->maxx - glyph->minx;
+		}
 		/* do kerning, if possible AC-Patch */
 		if ( use_kerning && prev_index && glyph->index ) {
 			FT_Vector delta; 
@@ -1585,11 +1611,12 @@ SDL_Surface *TTF_RenderUNICODE_Blended(TTF_Font *font,
 			dst = (Uint32*) textbuf->pixels +
 				(row+glyph->yoffset) * textbuf->pitch/4 +
 				xstart + glyph->minx;
+
 			/* Added code to adjust src pointer for pixmaps to
 			 * account for pitch.
 			 * */
 			src = (Uint8*) (glyph->pixmap.buffer + glyph->pixmap.pitch * row);
-			for ( col = width; col>0; --col) {
+			for ( col = width; col>0 && dst < dst_check; --col) {
 				alpha = *src++;
 				*dst++ |= pixel | (alpha << 24);
 			}

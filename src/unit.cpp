@@ -53,6 +53,7 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 //constructor for reading a unit
 unit::unit(const game_data& data, const config& cfg) : state_(STATE_NORMAL),
                                            moves_(0), user_end_turn_(false), facingLeft_(true),
+					   resting_(false),
                                            recruit_(false),
                                            guardian_(false), upkeep_(UPKEEP_FREE)
 {
