@@ -27,6 +27,7 @@ CVS HEAD:
  * fixed character's name overlapping their profile when they speak
  * fixed teleporting units not clearing shroud/fow when they teleport
  * fixed Orcish Ruler movetype not being orcishfoot
+ * fixed non-interactive mode not working with eras
  * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
  * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
@@ -38,6 +39,9 @@ CVS HEAD:
  * added definitions of new pure virtual methods in hotkey.hpp
  * added wstring_to_string and string_to_wstring routines in language.cpp, which convert strings according to the current charset()
  * converted hex calculations to fixed point instead of floating point
+ * changed hex size to 72x72, converted images
+ * added -fno-omit-frame-pointer to autotools to prevent possible crashes due gcc bug
+ * added -fno-omit-frame-pointer to slacknoth script
  * added KDevelop 3.x project file for Wesnoth
 
 Version 0.7.5
