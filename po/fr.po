@@ -4,11 +4,12 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 #
+#: src/multiplayer.cpp:181
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-06-25 00:00+0200\n"
+"POT-Creation-Date: 2004-06-28 16:20+0200\n"
 "PO-Revision-Date: 2004-06-24 14:04+0200\n"
 "Last-Translator: Yann Dirson <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -16,44 +17,1227 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/game.cpp:1087
-msgid "Could not initialize video. Exiting.\n"
-msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
+#: src/about.cpp:229 src/help.cpp:2025
+msgid "Close"
+msgstr ""
 
-#: src/game.cpp:1089
-msgid "Could not initialize fonts. Exiting.\n"
-msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
+#: src/actions.cpp:93
+msgid "You don't have a leader to recruit with."
+msgstr ""
 
-#: src/titlescreen.cpp:152 src/dialogs.cpp:351
-msgid "Tutorial"
-msgstr "Tutoriel"
+#: src/actions.cpp:97
+msgid "You must have your leader on a keep to recruit or recall units."
+msgstr ""
 
-#: src/titlescreen.cpp:153
+#: src/actions.cpp:114
+msgid "There are no vacant castle tiles in which to recruit a unit."
+msgstr ""
+
+#: src/actions.cpp:199
+msgid "none"
+msgstr ""
+
+#: src/actions.cpp:314 src/actions.cpp:431
+msgid "base damage"
+msgstr ""
+
+#: src/actions.cpp:345 src/actions.cpp:463
+msgid "charge"
+msgstr ""
+
+#: src/actions.cpp:356 src/actions.cpp:483
+msgid "leadership"
+msgstr ""
+
+#: src/actions.cpp:384 src/actions.cpp:510
+msgid "total damage"
+msgstr ""
+
+#: src/actions.cpp:472
+msgid "backstab"
+msgstr ""
+
+#: src/actions.cpp:681 src/actions.cpp:817 src/display.cpp:817
+#: src/reports.cpp:115
+msgid "poisoned"
+msgstr ""
+
+#: src/actions.cpp:686 src/actions.cpp:822 src/display.cpp:813
+#: src/reports.cpp:110
+msgid "slowed"
+msgstr ""
+
+#: src/actions.cpp:702 src/actions.cpp:839 src/reports.cpp:122
+msgid "stone"
+msgstr ""
+
+#: src/actions.cpp:1683
+msgid "Ambushed!"
+msgstr ""
+
+#: src/actions.cpp:1745
+msgid "(press $hotkey to continue)"
+msgstr ""
+
+#: src/dialogs.cpp:85
+msgid "Advance Unit"
+msgstr ""
+
+#: src/dialogs.cpp:86
+msgid "What should our victorious unit become?"
+msgstr ""
+
+#: src/dialogs.cpp:155
+msgid "No objectives available"
+msgstr ""
+
+#: src/dialogs.cpp:178
+msgid "Save already exists. Do you want to overwrite it ?"
+msgstr ""
+
+#: src/dialogs.cpp:207 src/dialogs.cpp:445
+msgid "Don't ask me again!"
+msgstr ""
+
+#: src/dialogs.cpp:209
+msgid "Do you really want to delete this game?"
+msgstr ""
+
+#: src/dialogs.cpp:350
+msgid "%a %b %d %H:%M %Y"
+msgstr ""
+
+#: src/dialogs.cpp:362
+msgid "#(Invalid)"
+msgstr ""
+
+#: src/dialogs.cpp:368 src/game.cpp:889 src/titlescreen.cpp:153
 msgid "Campaign"
 msgstr ""
 
-#: src/titlescreen.cpp:154
+#: src/dialogs.cpp:370 src/game.cpp:936 src/titlescreen.cpp:154
 msgid "Multiplayer"
+msgstr ""
+
+#: src/dialogs.cpp:372 src/titlescreen.cpp:152
+msgid "Tutorial"
+msgstr "Tutoriel"
+
+#: src/dialogs.cpp:380
+msgid "replay"
+msgstr ""
+
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:138 src/playturn.cpp:1398
+msgid "Turn"
+msgstr ""
+
+#: src/dialogs.cpp:384
+msgid "Scenario Start"
+msgstr ""
+
+#: src/dialogs.cpp:387 src/game.cpp:912
+msgid "Difficulty"
+msgstr ""
+
+#: src/dialogs.cpp:401
+msgid "No Saved Games"
+msgstr ""
+
+#: src/dialogs.cpp:402
+msgid ""
+"There are no saved games to load.\n"
+"(Games are saved automatically when you complete a scenario)"
+msgstr ""
+
+#: src/dialogs.cpp:421
+msgid "Delete Save"
+msgstr ""
+
+#: src/dialogs.cpp:511
+msgid "Show replay"
+msgstr ""
+
+#: src/dialogs.cpp:514 src/multiplayer.cpp:88
+msgid "Load Game"
+msgstr ""
+
+#: src/dialogs.cpp:515
+msgid "Choose the game to load"
+msgstr ""
+
+#: src/dialogs.cpp:569 src/multiplayer.cpp:127
+msgid "Ok"
+msgstr ""
+
+#: src/dialogs.cpp:570 src/multiplayer.cpp:126 src/multiplayer_client.cpp:117
+#: src/multiplayer_connect.cpp:49
+msgid "Cancel"
+msgstr ""
+
+#: src/dialogs.cpp:619 src/dialogs.cpp:628
+msgid "Profile"
+msgstr ""
+
+#: src/dialogs.cpp:715 src/display.cpp:823 src/help.cpp:476
+#: src/playturn.cpp:1723
+msgid "level"
+msgstr ""
+
+#: src/dialogs.cpp:736 src/display.cpp:841 src/help.cpp:522
+#: src/playturn.cpp:1887 src/unit.cpp:986
+msgid "HP"
+msgstr ""
+
+#: src/dialogs.cpp:740 src/dialogs.cpp:748 src/display.cpp:845
+#: src/display.cpp:853 src/playturn.cpp:1725 src/playturn.cpp:1888
+#: src/unit.cpp:1045
+msgid "XP"
+msgstr ""
+
+#: src/dialogs.cpp:753 src/dialogs.cpp:866 src/display.cpp:857
+#: src/help.cpp:523 src/playturn.cpp:1889 src/unit.cpp:1022
+msgid "Moves"
+msgstr ""
+
+#: src/dialogs.cpp:770 src/display.cpp:874 src/help.cpp:564
+#: src/reports.cpp:229
+msgid "melee"
+msgstr ""
+
+#: src/dialogs.cpp:771 src/display.cpp:875 src/help.cpp:564
+#: src/reports.cpp:230
+msgid "ranged"
+msgstr ""
+
+#: src/dialogs.cpp:813
+msgid "See Also..."
+msgstr ""
+
+#: src/dialogs.cpp:817 src/dialogs.cpp:906
+msgid "Terrain Modifiers"
+msgstr ""
+
+#: src/dialogs.cpp:818 src/dialogs.cpp:835
+msgid "Resistance"
+msgstr ""
+
+#: src/dialogs.cpp:819 src/mapgen_dialog.cpp:69 src/preferences.cpp:961
+msgid "Close Window"
+msgstr ""
+
+#: src/dialogs.cpp:835
+msgid "Attack Type"
+msgstr ""
+
+#: src/dialogs.cpp:858
+msgid "Unit resistance table"
+msgstr ""
+
+#: src/dialogs.cpp:865
+msgid "Terrain"
+msgstr ""
+
+#: src/dialogs.cpp:867
+msgid "Defense"
+msgstr ""
+
+#: src/display.cpp:804
+msgid "healthy"
+msgstr ""
+
+#: src/display.cpp:809 src/reports.cpp:105
+msgid "invisible"
+msgstr ""
+
+#: src/game.cpp:133
+msgid "Do you want to save a replay of this scenario?"
+msgstr ""
+
+#: src/game.cpp:134 src/game.cpp:196 src/playturn.cpp:1402
+msgid "Name:"
+msgstr ""
+
+#: src/game.cpp:142 src/game.cpp:203 src/playturn.cpp:1411
+msgid "The game could not be saved"
+msgstr ""
+
+#: src/game.cpp:195
+msgid "Do you want to save your game?"
+msgstr ""
+
+#: src/game.cpp:541
+msgid "The Battle for Wesnoth"
+msgstr ""
+
+#: src/game.cpp:761 src/multiplayer_connect.cpp:104
+msgid ""
+"This save is from a different version of the game. Do you want to try to "
+"load it?"
+msgstr ""
+
+#: src/game.cpp:772 src/game.cpp:777 src/game.cpp:782 src/playlevel.cpp:487
+#: src/playlevel.cpp:700
+msgid "The file you have tried to load is corrupt"
+msgstr ""
+
+#: src/game.cpp:882
+msgid "There are no campaigns available"
+msgstr ""
+
+#: src/game.cpp:890
+msgid "Choose the campaign you want to play:"
+msgstr ""
+
+#: src/game.cpp:913
+msgid "Select difficulty level:"
+msgstr ""
+
+#: src/game.cpp:931
+msgid "Join Official Server"
+msgstr ""
+
+#: src/game.cpp:931
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#: src/game.cpp:932 src/multiplayer_lobby.cpp:156
+msgid "Join Game"
+msgstr ""
+
+#: src/game.cpp:932
+msgid "Join a server or hosted game"
+msgstr ""
+
+#: src/game.cpp:933
+msgid "Host Multiplayer Game"
+msgstr ""
+
+#: src/game.cpp:933
+msgid "Host a game without using a server"
+msgstr ""
+
+#: src/game.cpp:936 src/multiplayer_client.cpp:267
+msgid "Login"
+msgstr ""
+
+#: src/game.cpp:1016 src/titlescreen.cpp:156
+msgid "Language"
+msgstr ""
+
+#: src/game.cpp:1017
+msgid "Choose your preferred language"
+msgstr ""
+
+#: src/game.cpp:1064
+msgid "The End"
+msgstr ""
+
+#: src/game.cpp:1065
+msgid "You have reached the end of the currently playable levels"
+msgstr ""
+
+#: src/game.cpp:1092
+msgid "Could not initialize video. Exiting.\n"
+msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
+
+#: src/game.cpp:1094
+msgid "Could not initialize fonts. Exiting.\n"
+msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
+
+#: src/help.cpp:483
+msgid "Advances to"
+msgstr ""
+
+#: src/help.cpp:502
+msgid "Abilities"
+msgstr ""
+
+#: src/help.cpp:524
+msgid "alignment"
+msgstr ""
+
+#: src/help.cpp:528
+msgid "Required XP"
+msgstr ""
+
+#: src/help.cpp:538 src/reports.cpp:232
+msgid "attacks"
+msgstr ""
+
+#: src/help.cpp:539 src/playturn.cpp:1886
+msgid "Name"
+msgstr ""
+
+#: src/help.cpp:540 src/playturn.cpp:1885
+msgid "Type"
+msgstr ""
+
+#: src/help.cpp:541 src/unit_types.cpp:295
+msgid "Dmg"
+msgstr ""
+
+#: src/help.cpp:542 src/unit_types.cpp:307
+msgid "strikes"
+msgstr ""
+
+#: src/help.cpp:543
+msgid "Range"
+msgstr ""
+
+#: src/help.cpp:544
+msgid "Special"
+msgstr ""
+
+#: src/help.cpp:584
+msgid "Resistances"
+msgstr ""
+
+#: src/help.cpp:1555
+msgid "< Back"
+msgstr ""
+
+#: src/help.cpp:1556
+msgid "Forward >"
+msgstr ""
+
+#: src/help.cpp:2028
+msgid "The Battle for Wesnoth Help"
+msgstr ""
+
+#: src/hotkeys.cpp:294 src/hotkeys.cpp:486
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/intro.cpp:90
+msgid "Next"
+msgstr ""
+
+#: src/intro.cpp:91
+msgid "Skip"
+msgstr ""
+
+#: src/language.cpp:31
+msgid "System default language"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:72
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:484
+msgid "Players"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:78
+msgid "Width"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:79
+msgid "Height"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:80
+msgid "Iterations"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:81
+msgid "Bump Size"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1470
+msgid "Villages"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:83
+msgid "Landform"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:183
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:246
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/multiplayer.cpp:100
+msgid "The maximum turns the game will go for"
+msgstr ""
+
+#: src/multiplayer.cpp:106
+msgid "The amount of income each village yields per turn"
+msgstr ""
+
+#: src/multiplayer.cpp:112
+msgid "The amount of experience a unit needs to advance"
+msgstr ""
+
+#: src/multiplayer.cpp:114
+msgid "Fog Of War"
+msgstr ""
+
+#: src/multiplayer.cpp:116
+msgid "Enemy units cannot be seen unless they are in range of your units"
+msgstr ""
+
+#: src/multiplayer.cpp:118 src/multiplayer_lobby.cpp:126
+msgid "Shroud"
+msgstr ""
+
+#: src/multiplayer.cpp:120
+msgid "The map is unknown until your units explore it"
+msgstr ""
+
+#: src/multiplayer.cpp:122 src/reports.cpp:376
+msgid "Observers"
+msgstr ""
+
+#: src/multiplayer.cpp:124
+msgid "Allow users who are not playing to watch the game"
+msgstr ""
+
+#: src/multiplayer.cpp:129
+msgid "Regenerate"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+msgid "Settings..."
+msgstr ""
+
+#: src/multiplayer.cpp:135
+msgid "Share View"
+msgstr ""
+
+#: src/multiplayer.cpp:136
+msgid "Share Maps"
+msgstr ""
+
+#: src/multiplayer.cpp:137
+msgid "Share None"
+msgstr ""
+
+#: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:177
+msgid "No multiplayer sides."
+msgstr ""
+
+#: src/multiplayer.cpp:176 src/multiplayer_lobby.cpp:157
+msgid "Create Game"
+msgstr ""
+
+#: src/multiplayer.cpp:180
+msgid "Name of game"
+msgstr ""
+
+#: src/multiplayer.cpp:181
+msgid "'s game"
+msgstr ""
+
+#: src/multiplayer.cpp:192
+msgid "Map to play"
+msgstr ""
+
+#: src/multiplayer.cpp:289
+msgid "Era"
+msgstr ""
+
+#: src/multiplayer.cpp:351
+msgid "Unlimited"
+msgstr ""
+
+#: src/multiplayer.cpp:355
+msgid "Turns"
+msgstr ""
+
+#: src/multiplayer.cpp:363
+msgid "Village Gold"
+msgstr ""
+
+#: src/multiplayer.cpp:375
+msgid "Experience Requirements"
+msgstr ""
+
+#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:283
+msgid "Connection timed out"
+msgstr ""
+
+#: src/multiplayer_client.cpp:59
+msgid "Receiving game list..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:686 src/playturn.cpp:1469
+#: src/playturn.cpp:1474 src/playturn.cpp:1561
+msgid "Gold"
+msgstr ""
+
+#: src/multiplayer_client.cpp:111
+msgid "Waiting for game to start..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:219
+msgid "Choose host to connect to"
+msgstr ""
+
+#: src/multiplayer_client.cpp:237
+msgid "Connecting to remote host..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:266
+msgid "You must log in to this server"
+msgstr ""
+
+#: src/multiplayer_client.cpp:346
+msgid "Getting game data..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:388
+msgid "There are no available sides in this game."
+msgstr ""
+
+#: src/multiplayer_client.cpp:430
+msgid "Choose your side:"
+msgstr ""
+
+#: src/multiplayer_client.cpp:455
+msgid "The game has been cancelled"
+msgstr ""
+
+#: src/multiplayer_client.cpp:459
+msgid "The side you have chosen is no longer available"
+msgstr ""
+
+#: src/multiplayer_client.cpp:495
+msgid "Show replay of game up to save point?"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:48
+msgid "I'm Ready"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:50
+msgid " Computer vs Computer "
+msgstr ""
+
+#: src/multiplayer_connect.cpp:97
+msgid "This is not a multiplayer save"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:237
+msgid ""
+"Victory\n"
+"@Defeat enemy leader(s)"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:257
+msgid "Network Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:258
+msgid "Local Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
+#: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
+msgid "Computer Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:260
+msgid "Empty"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:375
+msgid "Team"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:295
+msgid "Red"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:297
+msgid "Blue"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:299
+msgid "Green"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:301
+msgid "Yellow"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:303
+msgid "Purple"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:305
+msgid "Orange"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:307
+msgid "Grey"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:309
+msgid "White"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:311
+msgid "Brown"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:361
+msgid "Game Lobby"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
+msgid "Player/Type"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
+msgid "Race"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
+msgid "Color"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
+msgid "Waiting for network players to join"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:155
+msgid "Observe Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:158 src/titlescreen.cpp:159
+msgid "Quit"
+msgstr ""
+
+#: src/playlevel.cpp:626
+msgid "Game Over"
+msgstr ""
+
+#: src/playlevel.cpp:627
+msgid "The game is over."
+msgstr ""
+
+#: src/playlevel.cpp:640
+msgid "Defeat"
+msgstr ""
+
+#: src/playlevel.cpp:641
+msgid "You have been defeated!"
+msgstr ""
+
+#: src/playlevel.cpp:673
+msgid "Victory"
+msgstr ""
+
+#: src/playlevel.cpp:674
+msgid "You have emerged victorious!"
+msgstr ""
+
+#: src/playlevel.cpp:676
+msgid "Remaining gold"
+msgstr ""
+
+#: src/playlevel.cpp:679
+msgid "Early finish bonus"
+msgstr ""
+
+#: src/playlevel.cpp:681
+msgid "per turn"
+msgstr ""
+
+#: src/playlevel.cpp:682
+msgid "Turns finished early"
+msgstr ""
+
+#: src/playlevel.cpp:684
+msgid "Bonus"
+msgstr ""
+
+#: src/playlevel.cpp:690
+#, c-format
+msgid "80% of gold is retained for the next scenario"
+msgstr ""
+
+#: src/playlevel.cpp:691
+msgid "Retained Gold"
+msgstr ""
+
+#: src/playlevel.cpp:715
+msgid ""
+"A network disconnection has occured, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+
+#: src/playturn.cpp:79
+msgid "It is now your turn"
+msgstr ""
+
+#: src/playturn.cpp:498
+msgid "Attacker"
+msgstr ""
+
+#: src/playturn.cpp:500
+msgid "Defender"
+msgstr ""
+
+#: src/playturn.cpp:524 src/playturn.cpp:649
+msgid "Damage Calculations"
+msgstr ""
+
+#: src/playturn.cpp:628 src/reports.cpp:209
+msgid "vs"
+msgstr ""
+
+#: src/playturn.cpp:661
+msgid "Attack Enemy"
+msgstr ""
+
+#: src/playturn.cpp:662
+msgid "Choose weapon"
+msgstr ""
+
+#: src/playturn.cpp:1143
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1152 src/playturn.cpp:1157
+msgid "Some units have movement left. Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1173
+msgid "Auto-Save"
+msgstr ""
+
+#: src/playturn.cpp:1175
+msgid "Could not auto save the game. Please save the game manually."
+msgstr ""
+
+#: src/playturn.cpp:1374
+msgid "Rename Unit"
+msgstr ""
+
+#: src/playturn.cpp:1409
+msgid "The game has been saved"
+msgstr ""
+
+#: src/playturn.cpp:1469
+msgid "Leader"
+msgstr ""
+
+#: src/playturn.cpp:1470
+msgid "Units"
+msgstr ""
+
+#: src/playturn.cpp:1471
+msgid "Upkeep"
+msgstr ""
+
+#: src/playturn.cpp:1471
+msgid "Income"
+msgstr ""
+
+#: src/playturn.cpp:1567
+msgid "You have no units available to recruit."
+msgstr ""
+
+#: src/playturn.cpp:1580
+msgid "Recruit unit"
+msgstr ""
+
+#: src/playturn.cpp:1609
+msgid "You don't have enough gold to recruit that unit"
+msgstr ""
+
+#: src/playturn.cpp:1667
+msgid ""
+"My lord, this unit is an experienced one, having advanced levels! Do you "
+"really want to dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1669
+msgid ""
+"My lord, this unit is close to advancing a level! Do you really want to "
+"dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1707
+msgid "You are seperated from your soldiers and may not recall them"
+msgstr ""
+
+#: src/playturn.cpp:1709
+msgid ""
+"There are no troops available to recall\n"
+"(You must have veteran survivors from a previous scenario)"
+msgstr ""
+
+#: src/playturn.cpp:1713
+msgid "You must have at least"
+msgstr ""
+
+#: src/playturn.cpp:1715
+msgid "gold pieces to recall a unit"
+msgstr ""
+
+#: src/playturn.cpp:1738
+msgid "Dismiss Unit"
+msgstr ""
+
+#: src/playturn.cpp:1751
+msgid "Select unit"
+msgstr ""
+
+#: src/playturn.cpp:1795
+msgid "Message"
+msgstr ""
+
+#: src/playturn.cpp:1795
+msgid "Send to allies only"
+msgstr ""
+
+#: src/playturn.cpp:1890
+msgid "Location"
+msgstr ""
+
+#: src/playturn.cpp:1938
+msgid "Unit List"
+msgstr ""
+
+#: src/playturn.cpp:1972 src/playturn.cpp:2006
+msgid "Recruits"
+msgstr ""
+
+#: src/playturn.cpp:1978 src/playturn.cpp:2010
+msgid "Recalls"
+msgstr ""
+
+#: src/playturn.cpp:1984 src/playturn.cpp:2014
+msgid "Advancements"
+msgstr ""
+
+#: src/playturn.cpp:1990 src/playturn.cpp:2018
+msgid "Losses"
+msgstr ""
+
+#: src/playturn.cpp:1996 src/playturn.cpp:2022
+msgid "Kills"
+msgstr ""
+
+#: src/playturn.cpp:2000
+msgid "Statistics"
+msgstr ""
+
+#: src/playturn.cpp:2037
+msgid "Search"
+msgstr ""
+
+#: src/playturn.cpp:2053
+msgid "Chat Log"
+msgstr ""
+
+#: src/playturn.cpp:2118
+msgid "Couldn't find label or unit containing the string '$search'."
+msgstr ""
+
+#: src/playturn.cpp:2130
+msgid "Place Label"
+msgstr ""
+
+#: src/playturn.cpp:2131
+msgid "Label"
+msgstr ""
+
+#: src/playturn.cpp:2294
+msgid ""
+"The games are out of sync and will have to exit. Do you want to save an "
+"error log of your game?"
+msgstr ""
+
+#: src/playturn.cpp:2325
+msgid "Replace with AI"
+msgstr ""
+
+#: src/playturn.cpp:2326
+msgid "Replace with local player"
+msgstr ""
+
+#: src/playturn.cpp:2327
+msgid "Abort game"
+msgstr ""
+
+#: src/playturn.cpp:2329
+msgid "has left the game. What do you want to do?"
+msgstr ""
+
+#: src/preferences.cpp:110 src/preferences.cpp:156
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+
+#: src/preferences.cpp:328
+msgid "player"
+msgstr ""
+
+#: src/preferences.cpp:587
+msgid "Full Screen"
+msgstr ""
+
+#: src/preferences.cpp:588
+msgid "Accelerated Speed"
+msgstr ""
+
+#: src/preferences.cpp:589
+msgid "Skip AI Moves"
+msgstr ""
+
+#: src/preferences.cpp:590
+msgid "Show Grid"
+msgstr ""
+
+#: src/preferences.cpp:591
+msgid "Show Floating Labels"
+msgstr ""
+
+#: src/preferences.cpp:592
+#, fuzzy
+msgid "Turn Dialog"
+msgstr "Tutoriel"
+
+#: src/preferences.cpp:593
+msgid "Turn Bell"
+msgstr ""
+
+#: src/preferences.cpp:594
+msgid "Show Team Colors"
+msgstr ""
+
+#: src/preferences.cpp:595
+msgid "Show Color Cursors"
+msgstr ""
+
+#: src/preferences.cpp:596
+msgid "Show Haloing Effects"
+msgstr ""
+
+#: src/preferences.cpp:597
+msgid "Video Mode"
+msgstr ""
+
+#: src/preferences.cpp:598
+msgid "Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:599
+msgid "Adjust Gamma"
+msgstr ""
+
+#: src/preferences.cpp:600
+msgid "Music Volume:"
+msgstr ""
+
+#: src/preferences.cpp:600
+msgid "SFX Volume:"
+msgstr ""
+
+#: src/preferences.cpp:601
+msgid "Scroll Speed:"
+msgstr ""
+
+#: src/preferences.cpp:601
+msgid "Gamma:"
+msgstr ""
+
+#: src/preferences.cpp:613
+msgid "Change the sound effects volume"
+msgstr ""
+
+#: src/preferences.cpp:618
+msgid "Change the music volume"
+msgstr ""
+
+#: src/preferences.cpp:623
+msgid "Change the speed of scrolling around the map"
+msgstr ""
+
+#: src/preferences.cpp:626 src/preferences.cpp:631
+msgid "Change the brightness of the display"
+msgstr ""
+
+#: src/preferences.cpp:634
+msgid "Choose whether the game should run full screen or in a window"
+msgstr ""
+
+#: src/preferences.cpp:637
+msgid "Make units move and fight faster"
+msgstr ""
+
+#: src/preferences.cpp:640
+msgid "Do not animate AI units moving"
+msgstr ""
+
+#: src/preferences.cpp:643
+msgid "Overlay a grid onto the map"
+msgstr ""
+
+#: src/preferences.cpp:646
+msgid "Show text above a unit when it is hit to display damage inflicted"
+msgstr ""
+
+#: src/preferences.cpp:648
+msgid "Change the resolution the game runs at"
+msgstr ""
+
+#: src/preferences.cpp:651
+msgid "Display a dialog at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:654
+msgid "Play a bell sound at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:657
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+
+#: src/preferences.cpp:660
+msgid "Use colored mouse cursors (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:663
+msgid "Use graphical special effects (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:665
+msgid "View and configure keyboard shortcuts"
+msgstr ""
+
+#: src/preferences.cpp:858
+msgid "General"
+msgstr ""
+
+#: src/preferences.cpp:859
+msgid "Display"
+msgstr ""
+
+#: src/preferences.cpp:860
+msgid "Sound"
+msgstr ""
+
+#: src/preferences.cpp:870 src/titlescreen.cpp:157
+msgid "Preferences"
+msgstr ""
+
+#: src/preferences.cpp:914 src/preferences.cpp:933
+msgid "There are no alternative video modes available"
+msgstr ""
+
+#: src/preferences.cpp:938
+msgid "Choose Resolution"
+msgstr ""
+
+#: src/preferences.cpp:966
+msgid "Hotkey Settings"
+msgstr ""
+
+#: src/preferences.cpp:970 src/preferences.cpp:1028
+msgid "Press desired HotKey"
+msgstr ""
+
+#: src/preferences.cpp:989
+msgid "Change Hotkey"
+msgstr ""
+
+#: src/preferences.cpp:992
+msgid "Save Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:1061
+msgid "This HotKey is already in use."
+msgstr ""
+
+#: src/reports.cpp:105
+msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
+msgstr ""
+
+#: src/reports.cpp:110
+msgid ""
+"This unit has been slowed. It moves at half normal speed and receives one "
+"less attack than normal in combat."
+msgstr ""
+
+#: src/reports.cpp:115
+msgid ""
+"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
+"to the poison in a village or from a friendly unit with the 'cures' "
+"ability.\n"
+"\n"
+"Units cannot be killed by poison alone. The poison will not reduce it below "
+"1 HP."
+msgstr ""
+
+#: src/reports.cpp:122
+msgid "This unit has been turned to stone. It may not move or attack."
+msgstr ""
+
+#: src/reports.cpp:231
+msgid "damage"
+msgstr ""
+
+#: src/reports.cpp:236
+msgid "hexes"
+msgstr ""
+
+#: src/reports.cpp:253
+msgid "Lawful units"
+msgstr ""
+
+#: src/reports.cpp:255
+msgid "Neutral units"
+msgstr ""
+
+#: src/reports.cpp:256
+msgid "Chaotic units"
+msgstr ""
+
+#: src/reports.cpp:310
+msgid "Owned"
+msgstr ""
+
+#: src/reports.cpp:312
+msgid "Enemy"
+msgstr ""
+
+#: src/reports.cpp:314
+msgid "Allied"
+msgstr ""
+
+#: src/show_dialog.cpp:608
+msgid "Help"
+msgstr ""
+
+#: src/show_dialog.cpp:938
+msgid "KB"
+msgstr ""
+
+#: src/titlescreen.cpp:137
+msgid "Version"
 msgstr ""
 
 #: src/titlescreen.cpp:155
 msgid "Load"
 msgstr ""
 
-#: src/titlescreen.cpp:156
-msgid "Language"
-msgstr ""
-
-#: src/titlescreen.cpp:157
-msgid "Preferences"
-msgstr ""
-
 #: src/titlescreen.cpp:158
 msgid "About"
-msgstr ""
-
-#: src/titlescreen.cpp:159
-msgid "Quit"
 msgstr ""
 
 #: src/titlescreen.cpp:160
@@ -90,6 +1274,10 @@ msgstr ""
 msgid "Quit the game"
 msgstr ""
 
-#: src/language.cpp:31
-msgid "System default language"
+#: src/titlescreen.cpp:191
+msgid "More"
+msgstr ""
+
+#: src/titlescreen.cpp:197
+msgid "-- The Tome of Wesnoth"
 msgstr ""
