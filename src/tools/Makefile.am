@@ -2,7 +2,7 @@
 bin_PROGRAMS = make_translation merge_translations 
 
 if LIBPNG
-# !! exploder and cutter do not compile
+# XXX exploder and cutter do not compile
 # bin_PROGRAMS += exploder cutter
 endif
 
@@ -54,7 +54,7 @@ merge_translations_SOURCES = merge_translations.cpp \
 
 if LIBPNG
 
-# !! dummy_video.cpp is missing
+# XXX dummy_video.cpp is missing
 
 # exploder_SOURCES = exploder.cpp \
 #		   exploder_utils.cpp \

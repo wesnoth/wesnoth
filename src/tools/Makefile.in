@@ -162,7 +162,7 @@ target_alias = @target_alias@
 bin_PROGRAMS = make_translation merge_translations 
 
 
-# !! exploder and cutter do not compile
+# XXX exploder and cutter do not compile
 # bin_PROGRAMS += exploder cutter
 
 #############################################################################
@@ -613,7 +613,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 #    Castle building helpers                                                #
 #############################################################################
 
-# !! dummy_video.cpp is missing
+# XXX dummy_video.cpp is missing
 
 # exploder_SOURCES = exploder.cpp \
 #		   exploder_utils.cpp \
