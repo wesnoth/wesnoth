@@ -312,7 +312,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 					if(side_choice == sides_list.end() || (**s)["description"] == preferences::login()) {
 						side_choice = s;
 						nchoice = n;
-						allow_changes = (**s)["changes_allowed"] != "no";
+						allow_changes = (**s)["allow_changes"] != "no";
 						default_race = (**s)["name"];
 					}
 				}
