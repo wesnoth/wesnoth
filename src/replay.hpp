@@ -61,6 +61,8 @@ public:
 
 	int ncommands();
 
+	void mark_current();
+
 	struct error {};
 
 private:

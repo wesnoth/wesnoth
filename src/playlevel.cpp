@@ -233,8 +233,22 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
 						replay replay_obj(*cfg.children["turn"].front());
 						replay_obj.start_replay();
-						turn_end = do_replay(gui,map,gameinfo,units,teams,
-						      player_number,status,state_of_game,&replay_obj);
+
+						try {
+							turn_end = do_replay(gui,map,gameinfo,units,teams,
+							   player_number,status,state_of_game,&replay_obj);
+						} catch(replay::error&) {
+							std::string output = "errorlog";
+							const int res = gui::show_dialog(gui,NULL,"",
+							               string_table["network_sync_error"],
+							               gui::YES_NO,NULL,NULL,"",&output);
+							if(res == 0 && output.empty() == false) {
+								recorder.mark_current();
+								recorder.save_game(gameinfo,output);
+							}
+
+							return QUIT;
+						}
 
 						recorder.add_config(*cfg.children["turn"].front());
 
