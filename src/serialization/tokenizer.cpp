@@ -14,6 +14,7 @@
 #include "tokenizer.hpp"
 #include "string_utils.hpp"
 #include "filesystem.hpp"
+#include "gettext.hpp"
 
 #include <iostream>
 #include <sstream>

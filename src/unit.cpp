@@ -55,13 +55,14 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 }
 
 //constructor for reading a unit
-unit::unit(const game_data& data, const config& cfg) : state_(STATE_NORMAL),
-                                           moves_(0), user_end_turn_(false), facingLeft_(true),
-					   resting_(false),
-                                           recruit_(false),
-                                           guardian_(false), upkeep_(UPKEEP_FREE)
+unit::unit(const game_data& data, const config& cfg, bool generate_description) : 
+	state_(STATE_NORMAL),
+	moves_(0), user_end_turn_(false), facingLeft_(true),
+	resting_(false),
+	recruit_(false),
+	guardian_(false), upkeep_(UPKEEP_FREE)
 {
-	read(data,cfg);
+	read(data,cfg, generate_description);
 }
 
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
@@ -106,28 +107,28 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 
 //constructor for advancing a unit from a lower level
 unit::unit(const unit_type* t, const unit& u) :
-               gender_(u.gender_), variation_(u.variation_),
-               type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
-               state_(STATE_NORMAL),
-			   hitpoints_(type_->hitpoints()),
-			   maxHitpoints_(type_->hitpoints()),
-			   backupMaxHitpoints_(type_->hitpoints()),
-			   experience_(0),
-			   maxExperience_(type_->experience_needed()),
-			   backupMaxExperience_(type_->experience_needed()),
-               side_(u.side()), moves_(u.moves_),
-               user_end_turn_(false), facingLeft_(u.facingLeft_),
-			   maxMovement_(type_->movement()),
-			   backupMaxMovement_(type_->movement()),
-			   underlying_description_(u.underlying_description_),
-			   description_(u.description_), recruit_(u.recruit_),
-			   role_(u.role_), statusFlags_(u.statusFlags_),
-			   overlays_(u.overlays_), variables_(u.variables_),
-			   attacks_(type_->attacks()), backupAttacks_(type_->attacks()),
-			   modifications_(u.modifications_),
-			   traitsDescription_(u.traitsDescription_),
-			   guardian_(false), upkeep_(u.upkeep_),
-			   unrenamable_(u.unrenamable_)
+	gender_(u.gender_), variation_(u.variation_),
+	type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
+	state_(STATE_NORMAL),
+	hitpoints_(type_->hitpoints()),
+	maxHitpoints_(type_->hitpoints()),
+	backupMaxHitpoints_(type_->hitpoints()),
+	experience_(0),
+	maxExperience_(type_->experience_needed()),
+	backupMaxExperience_(type_->experience_needed()),
+	side_(u.side()), moves_(u.moves_),
+	user_end_turn_(false), facingLeft_(u.facingLeft_),
+	maxMovement_(type_->movement()),
+	backupMaxMovement_(type_->movement()),
+	underlying_description_(u.underlying_description_),
+	description_(u.description_), recruit_(u.recruit_),
+	role_(u.role_), statusFlags_(u.statusFlags_),
+	overlays_(u.overlays_), variables_(u.variables_),
+	attacks_(type_->attacks()), backupAttacks_(type_->attacks()),
+	modifications_(u.modifications_),
+	traitsDescription_(u.traitsDescription_),
+	guardian_(false), upkeep_(u.upkeep_),
+	unrenamable_(u.unrenamable_)
 {
 	validate_side(side_);
 
@@ -595,7 +596,7 @@ const std::vector<std::string>& unit::overlays() const
 	return overlays_;
 }
 
-void unit::read(const game_data& data, const config& cfg)
+void unit::read(const game_data& data, const config& cfg, bool generate_description)
 {
 	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
@@ -634,6 +635,9 @@ void unit::read(const game_data& data, const config& cfg)
 	validate_side(side_);
 
 	description_ = cfg["user_description"];
+	if(description_.empty() && generate_description)
+		description_ = type_->generate_description();
+
 	underlying_description_ = cfg["description"];
 	if(description_.empty()) {
 		description_ = underlying_description_;
