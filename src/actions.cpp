@@ -1333,7 +1333,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 			}
 		}
 
-		if (side < teams.size() && (teams[side].is_human() || teams[side].is_persistent())) {
+		if (teams[side].is_human() || teams[side].is_persistent()) {
 			found_player = true;
 		}
 	}
@@ -1360,19 +1360,6 @@ void check_victory(std::map<gamemap::location,unit>& units,
 		LOG_NG << "throwing end level exception...\n";
 		throw end_level_exception(found_player ? VICTORY : DEFEAT);
 	}
-
-	//remove any units which are leaderless
-	//this code currently removed, to try not removing leaderless enemies
-	/*
-	std::map<gamemap::location,unit>::iterator j = units.begin();
-	while(j != units.end()) {
-		if(std::find(seen_leaders.begin(),seen_leaders.end(),j->second.side()) == seen_leaders.end()) {
-			units.erase(j);
-			j = units.begin();
-		} else {
-			++j;
-		}
-	}*/
 }
 
 const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc)
