@@ -14,6 +14,7 @@
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "language.hpp"
+#include "log.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -79,23 +80,29 @@ bool gamestatus::next_turn()
 
 game_state read_game(game_data& data, config* cfg)
 {
+	log_scope("read_game");
+	std::cerr << (int)cfg << "\n";
 	game_state res;
 	res.label = cfg->values["label"];
 	res.version = cfg->values["version"];
 	res.gold = atoi(cfg->values["gold"].c_str());
 	res.scenario = atoi(cfg->values["scenario"].c_str());
+	std::cerr << "a\n";
 
 	res.difficulty = cfg->values["difficulty"];
 	if(res.difficulty.empty())
 		res.difficulty = "NORMAL";
 
+	std::cerr << "b\n";
 	res.campaign_type = cfg->values["campaign_type"];
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
 
+	std::cerr << "c\n";
 	std::vector<config*>& units = cfg->children["unit"];
 	for(std::vector<config*>::iterator i = units.begin();
 	    i != units.end(); ++i) {
+		log_scope("loading unit");
 		res.available_units.push_back(unit(data,**i));
 	}
 
@@ -104,6 +111,7 @@ game_state read_game(game_data& data, config* cfg)
 		res.variables = vars[0]->values;
 	}
 
+	std::cerr << "d\n";
 	std::vector<config*>& replays = cfg->children["replay"];
 	if(replays.empty() == false) {
 		res.replay_data = *replays[0];
@@ -162,6 +170,7 @@ std::vector<std::string> get_saves_list()
 
 void load_game(game_data& data, const std::string& name, game_state& state)
 {
+	log_scope("load_game");
 	std::string modified_name = name;
 	std::replace(modified_name.begin(),modified_name.end(),' ','_');
 

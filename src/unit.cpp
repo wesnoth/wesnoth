@@ -12,6 +12,7 @@
 */
 #include "game_config.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 #include "replay.hpp"
 #include "unit.hpp"
 
@@ -365,6 +366,8 @@ void unit::read(game_data& data, const config& cfg)
 		throw gamestatus::load_game_failed("Unit not found: '"
 		                                   + cfg["type"] + "'");
 
+	assert(type_ != NULL);
+
 	attacks_ = type_->attacks();
 	backupAttacks_ = attacks_;
 	maxHitpoints_ = type_->hitpoints();
@@ -373,6 +376,8 @@ void unit::read(game_data& data, const config& cfg)
 	backupMaxMovement_ = type_->movement();
 	maxExperience_ = type_->experience_needed();
 	backupMaxExperience_ = type_->experience_needed();
+
+	std::cerr << "a\n";
 
 	const std::string& hitpoints = cfg["hitpoints"];
 	if(hitpoints.size() == 0)
@@ -386,6 +391,7 @@ void unit::read(game_data& data, const config& cfg)
 	else
 		experience_ = atoi(experience.c_str());
 
+	std::cerr << "b\n";
 
 	side_ = atoi(cfg["side"].c_str());
 	description_ = cfg["description"];
@@ -396,6 +402,7 @@ void unit::read(game_data& data, const config& cfg)
 		recruit_ = true;
 	}
 
+	std::cerr << "c\n";
 	const config* const modifications = cfg.child("modifications");
 	if(modifications != NULL) {
 		modifications_ = *modifications;
@@ -408,6 +415,7 @@ void unit::read(game_data& data, const config& cfg)
 	else
 		facingLeft_ = true;
 
+	std::cerr << "d\n";
 	const std::string& ai_special = cfg["ai_special"];
 	if(ai_special == "guardian") {
 		guardian_ = true;
@@ -560,6 +568,8 @@ void unit::add_modification(const std::string& type,
 
 		const std::string& apply_to = (**i.first)["apply_to"];
 
+		std::cerr << apply_to << "\n";
+
 		if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first));
 		} else if(apply_to == "attack") {
@@ -604,9 +614,9 @@ void unit::add_modification(const std::string& type,
 			if(hitpoints_ < 1)
 				hitpoints_ = 1;
 		} else if(apply_to == "movement") {
-			const std::string& increase = (**i.second)["increase"];
-			const std::string& mult = (**i.second)["multiply"];
-			const std::string& set_to = (**i.second)["set"];
+			const std::string& increase = (**i.first)["increase"];
+			const std::string& mult = (**i.first)["multiply"];
+			const std::string& set_to = (**i.first)["set"];
 
 			if(increase.empty() == false) {
 				maxMovement_ += atoi(increase.c_str());
@@ -625,8 +635,8 @@ void unit::add_modification(const std::string& type,
 			if(moves_ > maxMovement_)
 				moves_ = maxMovement_;
 		} else if(apply_to == "max_experience") {
-			const std::string& increase = (**i.second)["increase"];
-			const std::string& multiply = (**i.second)["multiply"];
+			const std::string& increase = (**i.first)["increase"];
+			const std::string& multiply = (**i.first)["multiply"];
 			if(increase.empty() == false) {
 				maxExperience_ += atoi(increase.c_str());
 			}
@@ -647,11 +657,13 @@ void unit::add_modification(const std::string& type,
 
 void unit::apply_modifications()
 {
+	log_scope("apply mods");
 	for(int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const std::vector<config*>& mods = modifications_.children[mod];
 		for(std::vector<config*>::const_iterator j = mods.begin();
 		    j != mods.end(); ++j) {
+			log_scope("add mod");
 			add_modification(ModificationTypes[i],**j,true);
 		}
 	}

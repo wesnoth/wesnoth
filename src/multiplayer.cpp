@@ -227,7 +227,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	sock = network::connect(host);
 	config sides;
 
-	network::connection data_res = network::receive_data(sides,0,3000);
+	network::connection data_res = network::receive_data(sides,0,10000);
 
 	if(!data_res) {
 		throw network::error(string_table["connection_timeout"]);

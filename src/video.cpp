@@ -215,7 +215,7 @@ void pump_events()
 				const SDL_ResizeEvent* const resize
 				              = reinterpret_cast<SDL_ResizeEvent*>(&event);
 
-				if(resize->w < 1024 || resize->h < 768) {
+				if(resize->w < 800 || resize->h < 600) {
 					resize_dimensions.first = 0;
 					resize_dimensions.second = 0;
 				} else {
