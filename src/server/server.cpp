@@ -79,7 +79,8 @@ void server::dump_stats()
 	last_stats_ = time(NULL);
 	stats["end_interval"] = str_cast(last_stats_);
 
-	std::cout << parent.write() << "\n";
+	//write and flush the output stream
+	std::cout << parent.write() << std::endl;
 }
 
 void server::run()
