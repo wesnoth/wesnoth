@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 16:40+0100\n"
-"PO-Revision-Date: 2004-10-31 02:28+0100\n"
+"PO-Revision-Date: 2005-01-17 21:54+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -21,23 +21,23 @@ msgstr "Dedič trónu"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:10
 msgid "Fighter"
-msgstr ""
+msgstr "Vojak"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:10
 msgid "(easiest)"
-msgstr ""
+msgstr "(ľahká)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:11
 msgid "Hero"
-msgstr ""
+msgstr "Hrdina"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:12
 msgid "(hardest)"
-msgstr ""
+msgstr "(ťažká)"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:12
 msgid "Champion"
-msgstr ""
+msgstr "Šampión"
 
 #: data/campaigns/Heir_To_The_Throne.cfg:13
 msgid ""
@@ -602,8 +602,8 @@ msgid ""
 "cage where they keep most of the mermen is in the north-west!"
 msgstr ""
 "Ďakujeme, že ste nás zachránili! Teraz vám pomôžeme bojovať proti zlým "
-"orkom!\n"
-"Hlavná klietka, v ktorej držia väčšinu morských ľudí, je na juhovýchode!"
+"orkom! Hlavná klietka, v ktorej držia väčšinu morských ľudí, je na "
+"juhovýchode!"
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:404
 msgid "Death to the orcs! Come, let us all fight them, men!"
@@ -949,6 +949,9 @@ msgid ""
 "the plains under the midday sun they can fell the toughest foes with sharp "
 "spears and under heavy hoofs!"
 msgstr ""
+"Elfovia sú možno pánmi lesa, ale jazdci sú rovnako mocní. Na rovine za "
+"jasného svetla môžu rozniesť aj najťažších nepriateľov na hrotoch kopijí a "
+"pod kopytami!"
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:180
 msgid ""
@@ -2390,12 +2393,10 @@ msgid "I can't believe it should end like this!"
 msgstr "Neverím, že to má takto skončiť!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:4
-#, fuzzy
 msgid "Test of the Clan"
-msgstr "Test klanov"
+msgstr "Test klanu"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2410,7 +2411,8 @@ msgid ""
 msgstr ""
 "\n"
 "Vyhráš, ak:\n"
-"@Porazíš veliteľa klanu, Bayara\n"
+"@Porazíš 25 jednotiek a potom veliteľa klanu (Bonus)\n"
+"@Porazíš všetkých veliteľov klanov\n"
 "Prehráš, ak:\n"
 "#Zomrie Konrád\n"
 "#Zomrie Delfador\n"
@@ -2505,19 +2507,23 @@ msgid ""
 "our flanks. This is unfortunate as it complicates our march to confront the "
 "queen."
 msgstr ""
+"Napriek ich chvastaniu sme dnes na bojisku zvíťazili. Keďže sme však "
+"porazili veliteľov klanu, nebude mať kto chrániť naše boky. To je "
+"nepríjemné, lebo nám to komplikuje cestu proti kráľovnej."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:239
 msgid ""
 "It is unfortunate. They would have been of great assistance in helping "
 "ensure a new King is given a chance to ascend the throne of Wesnoth."
 msgstr ""
+"Je to smola. Mohli by nám byť užitoční pri snahe podporiť nástup nového "
+"kráľa na trón Wesnothu."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:243
-#, fuzzy
 msgid ""
 "I think you are mistaken! You mean they would have helped a new Queen claim "
 "the throne of Wesnoth!"
-msgstr "To si nejako pletieš! Zo mňa bude kráľovná!"
+msgstr "To si nejako pletieš! Pomohli by novej kráľovnej získať trón Wesnothu!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:281
 msgid "Greetings, men of the plains."
@@ -2550,7 +2556,6 @@ msgstr ""
 "raz po práve získame trón, prídete o všetku moc."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:301
-#, fuzzy
 msgid ""
 "Hah! You think you can seize the throne? Defeat us in battle and we will "
 "join you, or leave now and never return!"
@@ -2573,11 +2578,11 @@ msgstr "Už sa nemôžete otočiť. Toto je boj na život a na smrť!"
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:336
 msgid ""
 "I cannot believe this! You have defeated me! But the Clan shall fight on!"
-msgstr ""
+msgstr "Tomu neverím! Porazili ste ma! Ale klan bude bojovať ďalej!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:340
 msgid "Their leader has fallen but still they fight!"
-msgstr ""
+msgstr "Ich veliteľ padol, ale oni stále bojujú!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:371
 msgid "You can defeat me, but more will take my place!"
@@ -2613,7 +2618,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:474
 msgid "|$units_slain| Clan Members Defeated"
-msgstr ""
+msgstr "|$units_slain| porazených členov klanu"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:494
 msgid ""
@@ -2621,6 +2626,8 @@ msgid ""
 "help in guarding our flanks would be invaluable. Let's take this fight to "
 "their leaders!"
 msgstr ""
+"Drvíme ich sily! Uvidíme, či už klan má dosť. Ich pomoc po našom boku by "
+"bola neoceniteľná. Poďme priamo na veliteľov!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -3213,16 +3220,15 @@ msgid "His...creatures? We must keep to the road, men!"
 msgstr "Jeho... príšery? Držme sa cesty, muži!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:126
-#, fuzzy
 msgid ""
 "He would be a mighty foe, Konrad. It is said when the dwarves built this "
 "road, they disturbed the resting place of the ancient mage, and ever since, "
 "he and his brother have traveled the mountain, wreaking havoc on the dwarven "
 "villages."
 msgstr ""
-"Vraví sa, že je to mocný nepriateľ, Konrád. Vraví sa, že keď trpaslíci "
-"stavali túto cestu, vyrušili pritom z odpočinku pradávneho mága, a odvtedy "
-"sa on a jeho brat túlajú po horách a zosielajú pohromy na trpaslíčie dediny."
+"To by bol mocný nepriateľ, Konrád. Vraví sa, že keď trpaslíci stavali túto "
+"cestu, vyrušili pritom z odpočinku pradávneho mága, a odvtedy sa on a jeho "
+"brat túlajú po horách a zosielajú pohromy na trpaslíčie dediny."
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:130
 msgid "Let us then go carefully...but quickly, men!"
@@ -3299,7 +3305,6 @@ msgid "Muff Malal's Peninsula"
 msgstr "Muff Malalov poloostrov"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -3311,8 +3316,8 @@ msgid ""
 msgstr ""
 "\n"
 "Vyhráš, ak:\n"
-"@Porazíš Muff Malala\n"
-"Prehráš, ak:\n"
+"@Porazíš Muffa Malala (Bonus)\n"
+"@Ujdeš po ceste nadol k ElensefaruPrehráš, ak:\n"
 "#Zomrie Konrád\n"
 "#Vyprší čas"
 
@@ -3330,17 +3335,20 @@ msgstr ""
 "nepriateľskí nemŕtvi."
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:101
-#, fuzzy
 msgid "My lord! On yonder peninsula there seems to be some movement!"
-msgstr "Môj pane! V hentých ruinách akoby sa niečo hýbalo!"
+msgstr "Môj pane! Na hentom poloostrove akoby sa niečo hýbalo!"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:105
+#, fuzzy
 msgid ""
 "It looks like there are the undead there! If we can defeat the undead I'm "
 "sure the locals would be grateful. But I do not know if we have the strength "
 "or time to persevere against such a foe. Either way it looks like there will "
 "be a fight, prepare for battle men!"
 msgstr ""
+"Vyzerá to, akoby tam boli nemŕtvi! Ak môžeme poraziť nemŕtvych, mohli by sme "
+"mať za sebou cenných spojencov. Ale neviem, či máme sily alebo čas bojovať "
+"proti takýmto súperom. Tak či onak, blíži sa boj. Muži, pripravte sa!"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:109
 msgid "To arms!"
@@ -3353,18 +3361,17 @@ msgid ""
 msgstr "Á, blíži sa k nám skupina elfov. Čoskoro nám budú slúžiť elfie zombie!"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:131
-#, fuzzy
 msgid "To Elensefar"
-msgstr "Obliehanie Elensefaru"
+msgstr "Do Elensefaru"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:155
 msgid "We do not have time to tarry here! On to Elensefar!"
-msgstr ""
+msgstr "Nemôžeme tu ďalej otáľať! Do Elensefaru!"
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:166
 msgid ""
 "Shirk not your duty! I will decide when it is time to leave for Elensefar."
-msgstr ""
+msgstr "Žiadne ulievanie! Ja rozhodnem, kedy je čas ísť do Elensefaru."
 
 #: data/scenarios/Heir_To_The_Throne/Muff_Malal_Peninsula.cfg:179
 #, fuzzy
@@ -3373,8 +3380,9 @@ msgid ""
 "save Elensefar, but at least we have freed these good people. We must move "
 "onward with haste!"
 msgstr ""
-"Zvíťazili sme! Len dúfajme, že toto zdržanie neohrozí naše poslanie "
-"zachrániť Elensefar. Musíme sa ponáhľať vpred!"
+"Zvíťazili sme! Dúfajme, že toto zdržanie neohrozí naše poslanie zachrániť "
+"Elensefar, ale aspoň sme získali niekoľko nových spojencov. Musíme sa "
+"ponáhľať vpred!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:4
 msgid "Northern Winter"
@@ -3990,10 +3998,13 @@ msgid "We have changed the plan. Now we are killing them."
 msgstr "Zmena plánu. Teraz sa ich snažíme zabiť."
 
 #: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:163
+#, fuzzy
 msgid ""
 "We must make haste! Far greater challenges lay before us, by tarrying here "
 "we're diminishing our resources."
 msgstr ""
+"Musíme sa ponáhľať! Čakajú na nás ešte väčšie nebezpečenstvá, otáľaním len "
+"míňame zásoby."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:4
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:13
@@ -4591,8 +4602,9 @@ msgstr ""
 "Áno, Konrád. Verím, že jedného dňa budeš kráľom. A teraz sa ponáhľajme!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Siege_of_Elensefar.cfg:375
+#, fuzzy
 msgid "So you endeavor to fight me in my home. Foolish."
-msgstr ""
+msgstr "Takže ste sa vybrali bojovať proti mne v mojom dome. Aké hlúpe."
 
 #: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:4
 msgid "The Valley of Death - The Princess's Revenge"
@@ -5089,13 +5101,3 @@ msgstr ""
 
 #~ msgid "High King at Sea"
 #~ msgstr "Kráľ morí"
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Vojak,(ľahká);*&elvish-hero.png,Hrdina;&elvish-"
-#~ "champion.png,Šampión,(ťažká)"
-
-#~ msgid "It looks like there are the undead there! Prepare for battle men!"
-#~ msgstr "Vyzerá to, akoby tam boli nemŕtvi! Pripravte sa na boj, muži!"

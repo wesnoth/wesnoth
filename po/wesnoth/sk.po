@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-01-07 23:01+0100\n"
+"PO-Revision-Date: 2005-03-02 22:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,6 @@ msgstr ""
 "pridajú do tejto záložky, keď na ne natrafíte."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -92,12 +91,12 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
 "\n"
-"Bitka o Wesnoth ja ťahová fantasy stratégia, čo je medzi modernými "
+"\n"
+"Bitka o Wesnoth je ťahová fantasy stratégia, čo je medzi modernými "
 "stragegickými hrami trochu nezvyčajné. Zatiaľ čo sa ostatné hry snažia o "
 "zložitosť v pravidlách i hraní, Bitka o Wesnoth sa snaží o jednoduchosť v "
-"pravidlách i hraní. Neznamená to však, že je hra jednoduchá - na týchto "
+"pravidlách i hraní. Neznamená to však, že hra je jednoduchá - na týchto "
 "jednoduchých pravidlách možno postaviť rozmanité stratégie, takže je ľahké "
 "hru pochopiť, ale náročné zvládnuť."
 
@@ -115,6 +114,12 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Táto stránka zhŕňa všetko, čo potrebuje vedieť na hranie hry Bitka o "
+"Wesnoth. Obsahuje návod na hru a základné herné mechanizmy. Ďalšie rady ako "
+"zvíťaziť, môžete hľadať v kapitolách <ref>dst=basic_strategy text='Základná "
+"stratégia'</ref> a <ref>dst=multiplayer_strategy text='Stratégia pri "
+"zápase'</ref>. Pamätajte, že toto je iba zhrnutie - výnimky a zvláštne "
+"situácie nájdete v priložených linkách."
 
 #: data/help.cfg:70
 msgid ""
@@ -127,6 +132,14 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Na začiatok je najlepšie ťuknúť na tlačidlo <italic>text='Výcvik'</italic> v "
+"hlavnom menu. Spustí sa tým interaktívny výcvik, ktorý vás naučí základy "
+"Wesnothu. Potom sa odporúča najprv hrať kampaň Dedič trónu - ťuknite na "
+"tlačidlo <italic>text='Výprava'</italic> a potom <italic>text='Dedič trónu'</"
+"italic>. Hra Bitka o Wesnoth dokáže byť pomerne náročná, takže si radšej "
+"vyberte <italic>text='ľahkú'</italic> zložitosť."
 
 #: data/help.cfg:73
 msgid ""
@@ -134,6 +147,9 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Počas hry si pamätajte, že ak prejdete myšou ponad mnohé z položiek v pravom "
+"menu, vyskočí krátky popis položky. To je zvlášť užitočné, keď sa po "
+"prvýkrát stretnete s novou vlastnosťou."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -150,6 +166,14 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Na začiatku hry, a často aj počas nej, budete potrebovať naverbovať jednotky "
+"do armády. Verbovať môžete, ak je váš veliteľ (Konrád, vo výprave Dedič "
+"trónu) na políčku \"pevnosť\" v hrade. Vtedy môžete verbovať pomocou voľby "
+"\"Verbuj\" v menu, alebo ťuknutím pravým tlačidlom na políčko a výberom "
+"možnosti <italic>text='Verbuj'</italic>. Objaví sa verbovacie menu so "
+"zoznamom jednotiek, ktoré môžete verbovať, a s ich cenou. Ťuknutím na "
+"jednotku sa naľavo zobrazia jej štatistiky, po stlačení tlačidla \"Verbuj\" "
+"sa naverbuje."
 
 #: data/help.cfg:81
 msgid ""
@@ -160,6 +184,13 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Ak ťuknete pravým tlačidlom myši na políčko v hrade a vyberiete možnosť "
+"\"verbuj\", nová jednotka sa objaví na tomto políčku. Inak sa objaví na "
+"voľnom políčku vedľa pevnosti. Môžete verbovať iba toľko nových jednotiek, "
+"koľko máte práve voľných políčok v hrade, a nemôžete pritom minúť viac "
+"zlata, ako práve máte."
 
 #: data/help.cfg:83
 msgid ""
@@ -168,6 +199,10 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Naverbované jednotky majú dve náhodné <ref>dst=traits text='vlastnosti'</"
+"ref>, ktoré ovplyvňujú ich štatistiky."
 
 #: data/help.cfg:85
 msgid ""
@@ -178,6 +213,12 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"V ďalších scénach si môžete privolávať tých, čo prežili v predchádzajúcej "
+"bitke. Privolávanie funguje ako verbovanie, s tým rozdielom, že privolanie "
+"jednotky stojí 20 zlatých a zobrazí sa zoznam jednotiek, ktoré prežili z "
+"predchádzajúcej hry."
 
 #: data/help.cfg:87
 msgid ""
@@ -187,6 +228,11 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Pamätajte si, že za jednotky sa neplatí len pri verbovaní a privolávaní, ale "
+"aj ich údržba stojí peniaze. Ďalšie informácie nájdete v kapitole "
+"<ref>dst=income_and_upkeep text='Príjmy a výdavky'</ref>."
 
 #: data/help.cfg:92 src/help.cpp:1196 src/help.cpp:1197
 msgid "Movement"
@@ -201,6 +247,13 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Pohyb v hre Bitka o Wesnoth je jednoduchý: Jednoducho ťuknite na jednotku, "
+"ktorú chcete pohnúť, potom ťuknite na políčko, na ktoré ju chcete posunúť. "
+"Keď je jednotka označená, všetky políčka, na ktoré môže ísť v tomto ťahu, sa "
+"zvýraznia; a tie, na ktoré ísť nemôže, vyblednú. Ak pohnete myšou na bledé "
+"políčko, ukáže sa počet ťahov, koľko by trval pohyb na toto políčko; po "
+"ťuknutí na políčko sa k nemu jednotka pohne najkratšou možnou cestou, v "
+"tomto ťahu i v nasledujúcich."
 
 #: data/help.cfg:95
 msgid ""
@@ -216,6 +269,16 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Každá jednotka má určitý počet pohybových bodov, ktoré sa míňajú pri pohybe "
+"na nové políčko, podľa <ref>dst=terrain text='terénu'</ref> tohoto cieľového "
+"políčka. Napríklad vstup na lúku skoro vždy stojí 1 pohybový bod. Presný "
+"počet pohybových bodov na vstup na políčko závisí od typu jednotky - pohyb v "
+"lese stojí elfov 1 pohybový bod, väčšinu ľudských a orčích jednotiek 2 body, "
+"a jazdcov 3 body. Ak chcete zistiť, koľko presne pohybových bodov stojí "
+"jednotku vstup na daný typ terénu, ťuknite na ňu pravým tlačidlom , vyberte "
+"si \"Popis jednotky\" a pozrite sa na <italic>text='Vplyv terénu'</italic>."
 
 #: data/help.cfg:97
 msgid ""
@@ -228,6 +291,14 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Ďalšia vec, na ktorú treba pri pohybe pamätať, je <ref>dst=zones_of_control "
+"text='oblasť kontroly'</ref>. Každá jednotka kontroluje okolité políčka, a "
+"ak na ne vstúpi nepriateľská jednotka, jej pohyb tým skončil. Dôležitou "
+"súčasťou hrania Wesnothu je naučiť sa využívať oblasti kontroly vo svoj "
+"prospech. Iba <ref>dst=ability_skirmish text='priebojné'</ref> jednotky môžu "
+"ignorovať oblasti kontroly."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -242,6 +313,12 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"V Bitke o Wesnoth sú dva druhy súboja, na blízko a na diaľku, ale oba sa "
+"týkajú jednotiek na susediacich políčkach. Súboj na blízko sa zvyčajne týka "
+"zbraní ako sú meče, sekery, či pazúry; súboj na diaľku sa zase týka zbraní "
+"ako sú luky, oštepy a ohnivé strely. Súboj je pomerne priamočiary; útočník a "
+"obranca na seba striedavo útočia, kým každý z nich nevyčerpá pridelený počet "
+"útokov."
 
 #: data/help.cfg:105
 msgid ""
@@ -249,6 +326,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Poradie a počet útokov'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -260,6 +340,13 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"Prvý útok má útočník, potom obranca. Takto sa striedajú, kým obe jednotky "
+"neminú všetky svoje útoky. Rôzne jednotky majú rôzny počet útokov. Napríklad "
+"elf vojak s útokom mečom 5-4 môže seknúť 4-krát a každým zo seknutí spôsobiť "
+"zranenie 5, ale ork pešiak s útokom 9-2 môže sekať len 2-krát (ale so "
+"zranením 9)."
 
 #: data/help.cfg:109
 msgid ""
@@ -267,6 +354,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Šanca na zásah'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -280,6 +370,15 @@ msgid ""
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Okrem dvoch výnimiek je šanca na zásah danej jednotky určená výlučne jej "
+"obranyschopnosťou na <ref>dst=terrain text='teréne'</ref>, na ktorom práve "
+"stojí. Tá sa dá zistiť ťuknutím na jednotku pravým tlačidlom, voľbou \"Popis "
+"jednotky\", v časti <italic>text='Vplyv terénu'</italic>. Napríklad elfovia "
+"majú v lese obranu 70%, čo znamená, že jednotka, ktorá na nich útočí, má "
+"šancu zasiahnuť ich iba 30%. Podobne, elfova šanca zasiahnuť útočníka počas "
+"protiúderu záleží na teréne, v ktorom je útočík."
 
 #: data/help.cfg:112
 msgid ""
@@ -290,6 +389,11 @@ msgid ""
 "terrain, and, when used offensively, Marksmen always have at least a 60% "
 "chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"Toto pravidlo má dve výnimky: <ref>dst=magical_attacks text='magický útok'</"
+"ref> a útok <ref>dst=ability_marksman text='ostrostrelca'</ref>. Magickú "
+"útok má vždy šancu na zásah 70%, bez ohľadu na terén, a ostrostrelec má "
+"počas svojho útoku vždy šancu na záhas aspoň 60%, bez ohľadu na terén."
 
 #: data/help.cfg:114
 msgid ""
@@ -297,6 +401,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Zranenie</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -309,6 +416,13 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Každý úder, ktorý zasiahne, spôsobuje základné zranenie podľa typu útoku. "
+"Napríklad elf vojak s útokom mečom 5-4 spôsobuje základné zranenie 5. To "
+"zvyčajne ešte ovplyvňujú dve veci: <ref>dst=damage_types_and_resistance "
+"text='odolnosť'</ref> a <ref>dst=time_of_day text='denná doba'</ref>, ktoré "
+"vysvetlíme nižšie."
 
 #: data/help.cfg:118
 msgid ""
@@ -319,6 +433,12 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Niektoré jednotky majú zvláštne schopnosti, ktoré ovplyvňujú zranenie "
+"spôsobené v súboji. Najznámejšou z nich je <ref>dst=ability_charge "
+"text='výpad'</ref>, ktorý pri útoku jednotky s touto schopnosťou "
+"zdvojnásobuje zranenie spôsobené aj útočníkovi aj obrancovi."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -332,6 +452,10 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"Vo Wesnothe sa s fyzickými útokmi zvyčajne spájajú tri druhy zranenia: "
+"sečné, bodné a tupé. S magickými útokmi sa spájajú ďalšie tri druhy "
+"zranenia: ohnivé, mrazivé a sväté. Rozličné jednotky môžu byť voči niektorým "
+"druhom zranenia odolné, čo zmení výslednú veľkosť zranenia."
 
 #: data/help.cfg:126
 msgid ""
@@ -343,6 +467,13 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Odolnosť funguje veľmi jednoducho: Ak má jednotka voči nejakému druhu "
+"zranenia odolnosť 40%, pri zásahu spôsobujúcom tento druh zranenia utrpí o "
+"40% menšie zranenie. Jednotka môže byť voči určitému druhu zranenia zvlášť "
+"zraniteľná; ak má jednotka voči nejakému druhu zranenia odolnosť -100%, "
+"utrpí pri zásahu spôsobujúcom tento druh zranenia o 100% väčšie zranenie."
 
 #: data/help.cfg:128
 msgid ""
@@ -352,6 +483,11 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Napríklad kostlivci sú vysoko odolní voči sečným a bodným zraneniam, ale sú "
+"zraniteľní tupými a ohnivými zraneniami, a mimoriadne zraniteľní svätými "
+"zraneniami."
 
 #: data/help.cfg:133
 msgid "Time of Day"
@@ -370,6 +506,11 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Počas hrania Wesnothu sa zvyčajne pravidelne strieda deň a noc. Momentálnu "
+"dennú dobu vidíme pod minimapou vpravo hore.\n"
+"\n"
+"Zvyčajný cyklus dňa a noci vyzerá takto:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -399,6 +540,9 @@ msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Ráno a popoludnie sa počítajú ako deň, prvá a druhá hliadka sa počítajú ako "
+"noc."
 
 #: data/help.cfg:151
 msgid ""
@@ -410,12 +554,20 @@ msgid ""
 "Chaotic units get +25% damage at night, and -25% in daytime.\n"
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"\n"
+"\n"
+"Denná doba ovplyvňuje zranenie spôsobené jednotlivými jednotkami takto:\n"
+"\n"
+"Jednotky poriadku spôsobujú cez deň +25% zranenia, a v noci -25% zranenia.\n"
+"Jednotky chaosu spôsobujú v noci +25% zranenia, a cez deň -25% zranenia.\n"
+"Neutrálne jednotky denná doba neovplyvňuje."
 
 #: data/help.cfg:154
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Pamätajte, že niektoré scény sa odohrávajú v podzemí, kde je večná noc!"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
@@ -428,6 +580,10 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Ak obe jednotky prežijú súboj, každá získa toľko bodov skúsenosti, akú "
+"úroveň mal ich protivník. Ak jedna jednotka v súboji zabije druhú, získa tým "
+"omnoho viac skúseností - 4 za jednotku na úrovni 0, 8 za úroveň 1, 16 za "
+"úroveň 2, 24 za úroveň 3, a tak ďalej."
 
 #: data/help.cfg:162
 msgid ""
@@ -438,6 +594,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Jednotky potrebujú isté množstvo skúseností, aby boli povýšené (pre "
+"inteligentné jednotky je toto množstvo o 20% nižšie). Keď toto množstvo "
+"dosiahnu, okamžite sú povýšené na vyššiu úroveň, pričom sa aj naplno "
+"doliečia. V niektorých prípadoch dostanete na výber viac možností povýšenia."
 
 #: data/help.cfg:164
 msgid ""
@@ -446,6 +608,11 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
+"\n"
+"\n"
+"Pamätajte, že väčšina jednotiek má síce tri možné úrovne, ale niektoré nie, "
+"a niektoré (ako napríklad <ref>dst=unit_mage text='mágovia'</ref>) môžu mať "
+"aj štyri."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -457,6 +624,9 @@ msgid ""
 "ways for your units to heal, all of which take place at the beginning of "
 "your turn, before you take action."
 msgstr ""
+"Vaše jednotky v súbojoch nevyhnutne utrpia zranenie. Wesnoth umožňuje liečiť "
+"jednotky niekoľkými spôsobmi. Všetky sa vykonávajú na začiatku vášho kola, "
+"predtým ako začnete ťahať."
 
 #: data/help.cfg:172
 msgid ""
@@ -465,12 +635,18 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Oddych: Jednotka, ktorá sa nehýbala, neútočila, ani nikto naútočil na ňu, sa "
+"v ďalšom ťahu uzdraví o 2 body."
 
 #: data/help.cfg:173
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Dedina: Jednotka, ktorá je na začiatku ťahu v dedine, sa uzdraví o 8 bodov."
 
 #: data/help.cfg:174
 msgid ""
@@ -478,6 +654,9 @@ msgid ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst=ability_regeneration text='Regenerácia'</ref>: Niektoré jednotky "
+"(napríklad trollovia) sa v každom kole automaticky uzdravia o 8 bodov."
 
 #: data/help.cfg:175
 msgid ""
@@ -487,6 +666,11 @@ msgid ""
 "turn, to a total maximum of 8 points healed, or prevent Poison from dealing "
 "damage."
 msgstr ""
+"\n"
+"Uzdravujúce jednotky: Jednotky so schopnosťou <ref>dst=ability_heals "
+"text='uzdravovať'</ref> uzdravia v každom ťahu všetky spojenecké jednotky na "
+"vedľajších políčkach o 4 body (ale celkový súčet uzdravených bodov nemôže "
+"prekročiť 8) alebo zabránia tomu, aby im otrava spôsobila zranenie."
 
 #: data/help.cfg:177
 msgid ""
@@ -496,6 +680,12 @@ msgid ""
 "will heal all friendly units immediately beside them for 8HP each turn, to a "
 "total maximum of 18 points healed, or cure a unit of Poison."
 msgstr ""
+"\n"
+"\n"
+"Liečiace jednotky: Jednotky so schopnosťou <ref>dst=ability_cures "
+"text='liečiť'</ref> uzdravia v každom ťahu všetky spojenecké jednotky na "
+"vedľajších políčkach o 8 bodov (ale celkový počet uzdravených bodov nemôže "
+"prekročiť 18) alebo vyliečia otrávenú jednotku."
 
 #: data/help.cfg:179
 msgid ""
@@ -505,6 +695,12 @@ msgid ""
 "villages, regeneration, and healing/curing cannot combine with each other. "
 "Also, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Pamätajte, že účinok oddychu možno kombinovať s ostatnými formami "
+"uzdravovania, ale dediny, regenerácia a uzdravovanie/liečenie sa navzájom "
+"kombinovať nemôžu. Ďalej; medzi jednotlivými scénami sa jednotky naplno "
+"uzdravia."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -517,6 +713,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"Vo Wesnothe nestačí jednoducho naverbovať jednotky a bojovať. Musíte si "
+"rovnako dobre strážiť aj zlato, najmä počas príbehu, kde sa ušetrené zlato "
+"prenáša z jednej scény do druhej. Máme tu dve zložky: príjmy a výdavky."
 
 #: data/help.cfg:187
 msgid ""
@@ -527,6 +726,11 @@ msgid ""
 "Unfortunately, your Upkeep costs are subtracted from this income, as "
 "detailed below."
 msgstr ""
+"\n"
+"\n"
+"Príjmy sú jednoduché. Za každú dedinu, ktorú ovládate, dostanete každé kolo "
+"jednu zlatku. Ak máte teda 10 dedín, dostali by ste 10 zlatiek. Lenže od "
+"tohoto príjmu treba ešte odpočítať výdavky, ako si podrobne popíšeme nižšie."
 
 #: data/help.cfg:189
 msgid ""
@@ -539,6 +743,14 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold a turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"Výdavky sú tiež pomerne jednoduché. Každá jednotka si vyžaduje žold vo výške "
+"svojej úrovne. Jednotky s takým <italic>text='množstvom úrovní'</italic>, "
+"koľko máte dedín, sú zadarmo. Za každý úroveň jednotky, presahujúcu počet "
+"vašich dedín, musíte zaplatiť jednu zlatku za kolo. Napríklad ak máte "
+"dvanásť jednotiek na prvej úrovni a desať dedín, musíte zaplatiť ako výdavky "
+"2 zlatky za kolo."
 
 #: data/help.cfg:191
 msgid ""
@@ -547,6 +759,10 @@ msgid ""
 "These costs are subtracted from your Income, so in the case of twelve levels "
 "of units and ten villages, your resultant Income would be 8 gold a turn."
 msgstr ""
+"\n"
+"\n"
+"Tieto výdavky sa odrátavajú od príjmov, takže v prípade jednotiek s "
+"dvanástimi úrovňami a desiatich dedín, bude výsledný zisk za kolo 8 zlatiek."
 
 #: data/help.cfg:192
 msgid ""
@@ -557,6 +773,12 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
+"\n"
+"Na výdavky sa vzťahujú dve výnimky. Po prvé, verné jednotky si vždy budú "
+"pýtať taký žold ako jednotky na prvej úrovni, bez ohľadu na ich skuťočnú "
+"úroveň. Po druhé, jednotky, ktoré máte na začiatku scény (napríklad Konrád "
+"alebo Delfador), a jednotky, ktoré sa k vám počas scény pridajú (napríklad "
+"jazdec v druhej scéne príbehu \"Dedič trónu\"), si nikdy nebudú pýtať žold."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -587,6 +809,11 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"Väčšina jednotiek má dve vlastnosti. Vlastnosti sú charakteristiky "
+"konkrétnej jednotky, ktoré ovplyvňujú jej hodnoty. Jednotke sa prideľujú "
+"náhodne pri naverbovaní.\n"
+"\n"
+"Momentálne sú dostupné nasledujúce vlastnosti:"
 
 #: data/help.cfg:219
 msgid ""
@@ -603,6 +830,19 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text='Inteligentný'</header>\n"
+"\n"
+"Inteligentné jednotky potrebujú o 20% menej skúsenosti ako obyčajné, aby sa "
+"povýšili.\n"
+"\n"
+"Inteligentné jednotky sú veľmi užitočné na začiatku príbehu, pretože ich "
+"možno rýchlo povýšiť na veľmi potrebné jednotky na vyšších úrovniach. Neskôr "
+"počas príbehu už nie sú také užitočné, a ak máte dostatok jednotiek na "
+"vyšších úrovniach, asi budete privolávať jednotky s užitočnejšími, "
+"\"perspektívnejšími'' vlastnosťami."
 
 #: data/help.cfg:226
 msgid ""
@@ -618,6 +858,16 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text='Verný'</header>\n"
+"\n"
+"Verná jednotka si vždy pýta žold jednu zlatku, bez ohľadu na svoju úroveň.\n"
+"\n"
+"U jednotiek na prvej úrovni sa vernosť nijako neprejavuje, takže je na "
+"začiatku kampane zbytočná. Ak však takáto jednotka začne získavať úrovne, "
+"môže vám počas príbehu ušetriť významné množstvo zlata."
 
 #: data/help.cfg:233
 msgid ""
@@ -634,6 +884,19 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text='Rýchly'</header>\n"
+"\n"
+"Rýchla jednotka má 1 bod pohybu navyše, ale o 10% bodov zdravia menej ako "
+"obyčajná.\n"
+"\n"
+"Rýchlosť je najviditeľnejšia vlastnosť, najmä u pomalých jednotiek ako sú "
+"trollovia či ťažká pechota. Rýchle jednotky môžu byť výrazne pohyblivejšie v "
+"náročných terénoch; vezmite to do úvahy pri rozmiestňovaní síl. Pamätajte si "
+"aj, že rýchle jednotky nevydržia rovnako veľa ako obyčajné, a preto nie sú "
+"také dobré na obranu pozícií."
 
 #: data/help.cfg:240
 msgid ""
@@ -649,6 +912,17 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text='Odolný'</header>\n"
+"\n"
+"Odolné jednotky majú o 7 bodov zdravia viac ako obyčajné.\n"
+"\n"
+"Odolné jednotky môžu byť užitočné vo všetkých fázach príbehu, a je to "
+"vlastnosť, ktorá sa hodí každej jednotke, ale u niektorých si ju budete "
+"všímať viac ako u iných. Odolné jednotky sú vhodné najmä na udržiavanie "
+"pozícií proti súperom."
 
 #: data/help.cfg:247
 msgid ""
@@ -665,6 +939,18 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text='Silný'</header>\n"
+"\n"
+"Silné jednotky spôsobujú o 1 väčšie zranenie pri úderoch v súboji na blízko, "
+"a majú o 2 body zdravia viac.\n"
+"\n"
+"Sila je užitočná pre každú jednotku bojujúcu na blízko, najviac však pre tie "
+"jednotky, ktoré dávajú veľa úderov, ako napríklad elf vojak. Silné jednotky "
+"môžu byť veľmi užitočné vo chvíľach, keď malé zranenie navyše môže rozhodúť "
+"o tom, či bude úder smrteľný."
 
 #: data/items.cfg:264
 msgid ""
@@ -852,22 +1138,20 @@ msgstr "Štandardná"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305
-#, fuzzy
 msgid "Random"
-msgstr "Náhodná mapa"
+msgstr "Náhodná"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Lojalisti"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Privolaných"
+msgstr "Rebeli"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Severania"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -875,14 +1159,12 @@ msgid "Undead"
 msgstr "Nemŕtvi"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Aliancia Knalgy"
+msgstr "Aliancia Knalgy"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Lietajúci jašter"
+msgstr "Jašteri"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -901,9 +1183,8 @@ msgid "Orcs"
 msgstr "Orkovia"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Trpasličí hrad"
+msgstr "Trpaslíci"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -918,17 +1199,14 @@ msgid "Great War"
 msgstr "Veľká vojna"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Mág svetla"
+msgstr "Aliancia svetla"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Aliancia temnoty"
+msgstr "Aliancia temnoty"
 
 #: data/scenario-test.cfg:38
-#, fuzzy
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
@@ -977,14 +1255,14 @@ msgid "Castle Hopping Isle"
 msgstr "Ostrov blízkych hradov"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
 "2, 4 for 2v2."
 msgstr ""
 "Veľa blízkych a strategicky umiestnených hradov. Malá mapa na rýchlu hru. "
-"Odporúča sa nastaviť 2 zlatky za dedinu."
+"Odporúča sa nastaviť 2 zlatky za dedinu, a pri hre dvaja na dvoch, hráčov 1 "
+"a 3 proti 2 a 4."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
@@ -1179,9 +1457,8 @@ msgstr "Kráľ kopca"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Šľachtic"
+msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
@@ -1364,7 +1641,7 @@ msgstr "Posuň svojho elfa vojaka vedľa Merla"
 #: data/scenarios/tutorial/Basic_Training.cfg:144
 #, fuzzy
 msgid "Merle"
-msgstr "Na blízko"
+msgstr "Ďalej"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -2011,13 +2288,13 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
-"Dva terény sme si už popísali: dediny a hrad. Ostatné terény mierne "
-"ovplyvňujú výhody a nevýhody rozličných jednotiek, ktoré na ne prídu. Prvou "
-"vlastnosťou terénu je počet pohybových bodov, ktoré minie jednotka, kým naň "
-"príde. Druhou vlastnosťou je obrana, ktorú terén jednotke na ňom poskytuje. "
-"Od toho závisí percentuálna šanca, že bude jednotka na tomto teréne zranená. "
-"Napríklad elfovia majú v lese obranu 70%, čo znamená, že ich zasiahne iba "
-"30% útokov."
+"Vlastnosti dvoch terénov sme si už opísali; išlo o dediny a hrad. Ostatné "
+"terény majú menej výrazné vlastnosti; mierne ovplyvňujú výhody a nevýhody "
+"rozličných jednotiek, ktoré na ne prídu. Prvou vlastnosťou terénu je počet "
+"pohybových bodov, ktoré minie jednotka, kým príde na dané pole. Druhou "
+"vlastnosťou je obrana, ktorú terén jednotke na ňom poskytuje. Od nej závisí "
+"percentuálna šanca, že bude jednotka na tomto teréne zranená. Napríklad "
+"elfovia majú v lese obranu 70%, čo znamená, že ich zasiahne iba 30% útokov."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
 msgid "What are the different properties that terrains have?"
@@ -2370,7 +2647,7 @@ msgstr "Kopce"
 #: data/terrain.cfg:288
 #, fuzzy
 msgid "Snow Hills"
-msgstr "Dedina"
+msgstr "Kopce"
 
 #: data/terrain.cfg:297
 #, fuzzy
@@ -2481,7 +2758,7 @@ msgstr ""
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Koniec"
 
 #: data/tips.cfg:1
 msgid ""
@@ -2556,7 +2833,6 @@ msgstr ""
 "pohne do oblasti pod kontrolou súpera, nemôže sa v tom kole ďalej pohybovať."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2906,7 +3182,6 @@ msgid "illuminates"
 msgstr "osvetľuje"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -2918,10 +3193,12 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Velenie:\n"
-"Táto jednotka dokáže viesť jednotky vedľa seba, takže bojujú lepšie.\n"
+"Táto jednotka dokáže viesť jednotky okolo seba, takže bojujú lepšie.\n"
 "\n"
 "Jednotky nižšej úrovne na vedľajších políčkach spôsobia v boji väčšie "
-"zranenie."
+"zranenie. Ak sa jednotka nižšej úrovne nachádza vedľa spojeneckej jednotky s "
+"velením, spôsobí pri útoku zranenie vyššie o 25% za každý rozdiel v úrovni "
+"týchto jednotiek."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -2947,7 +3224,6 @@ msgstr ""
 "Nevyžaduje žold vyšší ako 1."
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2956,17 +3232,17 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Prepad:\n"
-"Jednotka sa dokáže ukryť v lese, kde ju nepriateľ neuvidí.\n"
+"Nočné zakrádanie:\n"
+"Jednotka je počas noci neviditeľná.\n"
 "\n"
-"Nepriateľské jednotky nemôžu vidieť ani napadnúť túto jednotku v lese, iba v "
-"ťahu bezprostredne nasledujúcom po jej útoku, alebo ak sú na vedľajšom "
+"Nepriateľské jednotky nemôžu vidieť ani napadnúť túto jednotku počas noci, "
+"iba v ťahu bezprostredne nasledujúcom po jej útoku, alebo ak sú na vedľajšom "
 "políčku."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr "zakrádanie sa"
+msgstr "nočné zakrádanie"
 
 #: data/translations/english.cfg:71
 msgid ""
@@ -3019,15 +3295,14 @@ msgid "steadfast"
 msgstr "neoblomný"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Teleport:\n"
-"Táto jednotka sa dokáže v okamihu premiestniť z jednej spriatelenej dediny "
-"do druhej."
+"Táto jednotka sa dokáže počas jedného kroku premiestniť z jednej "
+"spriatelenej dediny do druhej."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -3035,15 +3310,14 @@ msgid "teleport"
 msgstr "teleport"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Zákerný:\n"
-"Zákerný útok dá dvojnásobné zranenie, ak sa na opačnej strane od nepriateľa "
-"nachádza spojenec."
+"Zákerný útok dá dvojnásobné zranenie, ak sa na opačnej strane od obete "
+"nachádza jednotka rovnakej strany. (Jednotka priateľského hráča nestačí.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3106,6 +3380,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Choroba:\n"
+"Ak jednotku zabije útok spôsobujúci chorobu, stane sa z tejto jednotky "
+"rovnaká jednotka ako tá, čo ju zabila, a bude bojovať za rovnakú stranu. "
+"(Toto neplatí na nemŕtvych a na jednotky v dedine.)"
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -3118,7 +3396,6 @@ msgstr ""
 "nie je vyliečená alebo nezoslabne na 1 život."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3127,7 +3404,8 @@ msgid ""
 msgstr ""
 "Spomaľujúci:\n"
 "Tento útok spomalí obeť. Spomalená jednotka sa jedno kolo pohybuje "
-"polovičnou rýchlosťou a má pri boji o jeden útok menej."
+"polovičnou rýchlosťou a má pri boji o jeden útok menej, až do konca svojho "
+"ťahu."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3574,7 +3852,6 @@ msgid "leadership,skirmisher"
 msgstr "velenie,priebojný"
 
 #: data/units/Battle_Princess.cfg:20
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3685,9 +3962,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "palica"
+msgstr "bodni"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
@@ -4046,9 +4322,8 @@ msgid "battle axe"
 msgstr "bojová sekera"
 
 #: data/units/Deathblade.cfg:4
-#, fuzzy
 msgid "Deathblade"
-msgstr "sečný"
+msgstr "Kostlivý šermiar"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -4056,6 +4331,9 @@ msgid ""
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
 "about killing as many other as possible with their swirling blades."
 msgstr ""
+"Kostliví šermiari nenávidia všetko živé a snažia sa zničiť všetko, čo kedysi "
+"milovali. Sú to smrtiaci bojovníci, ignorujú všetko nebezpečenstvo a snažia "
+"sa iba svištiacimi čepeľami zabiť toľkých, koľkých len budú môcť."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -5235,7 +5513,6 @@ msgid "Goblin Impaler"
 msgstr "Goblin napichovač"
 
 #: data/units/Goblin_Impaler.cfg:17
-#, fuzzy
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
@@ -5244,8 +5521,9 @@ msgid ""
 "them to deal the first strike in melee."
 msgstr ""
 "Goblini vyrovnávajú svoju všeobecnú hlúposť, krehkosť a nedostatok "
-"zložitejších zbraní pokusmi premôcť nepriateľov svojím počtom. Toto sú tí "
-"väčší a šikovnejší spomedzi kopijníkov."
+"zložitejších zbraní pokusmi premôcť nepriateľov svojím počtom. Tí, ktorým sa "
+"nejako podarilo prežiť túto bojovú skúsenosť, si nabudúce berú omnoho dlhšie "
+"kopije, aby mohli v boji zasadiť úder ako prví."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -5285,7 +5563,6 @@ msgid "Goblin Spearman"
 msgstr "Goblin kopijník"
 
 #: data/units/Goblin_Spearman.cfg:17
-#, fuzzy
 msgid ""
 "Goblins tend to try and make up for their general idiocy, frailty, and lack "
 "of sophisticated weaponry by attempting to overwhelm their foes by sheer "
@@ -5403,12 +5680,10 @@ msgstr ""
 "dokážu jazdiť na týchto zvieratách, dobývajú oblohu."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Halapartník"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5417,9 +5692,11 @@ msgid ""
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
 msgstr ""
-"Najlepší spomedzi vojakov sa stávajú halapartníkmi. Ich zbraň je síce "
+"Najlepší spomedzi vojakov sa stávajú halapartníkmi. Ich zbraň je síce trochu "
 "pomalšia ako meč, ale dokáže uštedriť smrtiaci úder. Vďaka dĺžke zbrane majú "
-"aj pri obrane výhodu prvého útoku."
+"halapartníci aj pri obrane výhodu prvého útoku. Halapartníci si ľahko "
+"poradia s jednotkami, ktoré si dokážu udržať ďaleko od tela, ale ak sa "
+"priblížia, môže to byť zložitejšie."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
@@ -5502,9 +5779,8 @@ msgstr ""
 "ovládnuť celý kontinent."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Morský kopijník"
+msgstr "Oštepár"
 
 #: data/units/Javelineer.cfg:16
 #, fuzzy
@@ -5864,14 +6140,12 @@ msgstr ""
 "pohybujú po bojisku a môžu poskytnúť potrebnú pomoc na viacerých frontoch."
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Šľachtic bojovník"
+msgstr "Vojak jazdy"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Morský bojovník"
+msgstr "Bojovník jazdy"
 
 #: data/units/Mounted_Warrior.cfg:17
 #, fuzzy
@@ -5897,9 +6171,8 @@ msgstr ""
 "spŕškami horúcej vody."
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Vojak"
+msgstr "Hadí vojak"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:52
 msgid ""
@@ -5909,15 +6182,19 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss.  They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Hadovité tvory, nagovia, sú jedni z mála rás schopných rýchlo sa pohybovať "
+"vo vode, čo im otvára priestory nedostupné suchozemcom. Nie sú to však "
+"morské tvory v pravom zmysle slova, pretože nevedia dýchať pod vodou a tak "
+"sa zdržujú v zátokách. Sú malé a trochu telesne krehké, ale zvyčajne "
+"vrtkejšie ako súperi."
 
 #: data/units/Naga-Fighter.cfg:38
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Morský vojak"
+msgstr "Hadia vojačka"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Hadí majster"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5930,7 +6207,7 @@ msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:42
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Hadia majsterka"
 
 #: data/units/Naga-Myrmidon.cfg:60
 msgid ""
@@ -5942,9 +6219,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Saur bojovník"
+msgstr "Hadí bojovník"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:60
 msgid ""
@@ -5957,9 +6233,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:42
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Saur bojovník"
+msgstr "Hadia bojovníčka"
 
 #: data/units/Naga.cfg:6
 msgid "female^Naga"
@@ -6065,9 +6340,8 @@ msgstr ""
 "silu neradno podceňovať."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
-#, fuzzy
 msgid "cleaver"
-msgstr "sekáčik na mäso"
+msgstr "sekáčik"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
@@ -6511,9 +6785,8 @@ msgstr ""
 "náročný terén a pomedzi súperov. Najlepší sauri sa stanú saurími vojakmi."
 
 #: data/units/Saurian_Ambusher.cfg:4
-#, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Saur ľadový mág"
+msgstr "Saur zákerák"
 
 #: data/units/Saurian_Ambusher.cfg:17
 #, fuzzy
@@ -6530,9 +6803,8 @@ msgstr ""
 "dokážu tieto svoje výhody naplno využiť."
 
 #: data/units/Saurian_Flanker.cfg:4
-#, fuzzy
 msgid "Saurian Flanker"
-msgstr "Saur ľadový mág"
+msgstr "Saur prepadávač"
 
 #: data/units/Saurian_Flanker.cfg:18
 #, fuzzy
@@ -6569,9 +6841,8 @@ msgid "frost blast"
 msgstr "závan mrazu"
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Saur liečiteľ"
+msgstr "Saur prieskumník"
 
 #: data/units/Saurian_Skirmisher.cfg:17
 #, fuzzy
@@ -6821,7 +7092,6 @@ msgid "Spearman"
 msgstr "Oštepník"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
@@ -7238,18 +7508,16 @@ msgid "+Miscellaneous"
 msgstr "+Rôzne"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Manažér prekladu"
+msgstr "+Manažéri prekladu"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
 msgstr "+Baskický preklad"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Maďarský preklad"
+msgstr "+Bulharský preklad"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -7270,12 +7538,12 @@ msgstr "+Nizozemský preklad"
 #: src/about.cpp:182
 #, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Poľský preklad"
+msgstr "+Dánsky preklad"
 
 #: src/about.cpp:186
 #, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Maďarský preklad"
+msgstr "+Taliansky preklad"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -7319,9 +7587,8 @@ msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalský preklad (Brazília)"
 
 #: src/about.cpp:268
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Maďarský preklad"
+msgstr "+Ruský preklad"
 
 #: src/about.cpp:274
 msgid "+Slovak Translation"
@@ -7340,9 +7607,8 @@ msgid "+Contributors"
 msgstr "+Prispievatelia"
 
 #: src/about.cpp:297
-#, fuzzy
 msgid "+Bots"
-msgstr "+ Roboti"
+msgstr "+Roboti"
 
 #: src/about.cpp:333 src/help.cpp:2571
 msgid "Close"
@@ -7618,19 +7884,16 @@ msgid "The game could not be saved"
 msgstr "Nepodarilo sa uložiť hru"
 
 #: src/game.cpp:168 src/game.cpp:908 src/game.cpp:1322
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Nepodarilo sa uložiť hru"
+msgstr "Nepodarilo sa načítať hru: "
 
 #: src/game.cpp:171 src/game.cpp:910 src/game.cpp:1324
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Chyba pri čítaní súboru hry"
+msgstr "Chyba pri hraní hry: "
 
 #: src/game.cpp:174 src/game.cpp:1336
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Nepodarilo sa uložiť hru"
+msgstr "Nepodarilo sa načítať mapu hry: "
 
 #: src/game.cpp:195
 msgid "Do you want to save your game?"
@@ -7638,7 +7901,7 @@ msgstr "Chceš uložiť hru?"
 
 #: src/game.cpp:216
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Neznáma scéna: '"
 
 #: src/game.cpp:612
 msgid "The Battle for Wesnoth"
@@ -7651,18 +7914,16 @@ msgid ""
 msgstr "Toto je uložená hra z inej verzie programu. Mám sa ju pokúsiť načítať?"
 
 #: src/game.cpp:848 src/game.cpp:851
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Súbor, ktorý si chcel načítať, je poškodený"
+msgstr "Súbor, ktorý ste chceli načítať, je poškodený: '"
 
 #: src/game.cpp:854
 msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
 #: src/game.cpp:959
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Ďalšie výpravy..."
+msgstr "Ďalšie výpravy..."
 
 #: src/game.cpp:960
 msgid "Download more campaigns from a server on Internet."
@@ -7725,18 +7986,16 @@ msgid "Version"
 msgstr "Verzia"
 
 #: src/game.cpp:1098
-#, fuzzy
 msgid "Author"
-msgstr "tŕne"
+msgstr "Autor"
 
 #: src/game.cpp:1099
 msgid "Downloads"
-msgstr ""
+msgstr "Stiahnutí"
 
 #: src/game.cpp:1100
-#, fuzzy
 msgid "Size"
-msgstr "Siréna"
+msgstr "Veľkosť"
 
 #: src/game.cpp:1129
 msgid "Publish campaign: "
@@ -7860,12 +8119,11 @@ msgstr "Vyber si vhodný jazyk"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Chyba pri načítavaní konfiguračných súborov hry: '"
 
 #: src/game.cpp:1403
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Hra skončila."
+msgstr "' (Hra teraz skončí)"
 
 #: src/game.cpp:1470
 #, fuzzy
@@ -8009,7 +8267,7 @@ msgstr "Generátor mapy"
 #: src/mapgen_dialog.cpp:82
 #, fuzzy
 msgid "Players:"
-msgstr "Hráči"
+msgstr "Hráči:"
 
 #: src/mapgen_dialog.cpp:83
 #, fuzzy
@@ -8226,19 +8484,16 @@ msgid "Waiting for players to join..."
 msgstr "Čakám, kým sa pripoja sieťoví hráči"
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
-msgstr "Názov hry"
+msgstr "Názov hry:"
 
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
-msgstr "Éra"
+msgstr "Éra:"
 
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
-msgstr "Hrá sa na mape"
+msgstr "Hrá sa na mape:"
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
@@ -8314,22 +8569,20 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
-msgstr ""
+msgstr "Musíte zadať meno."
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "Turns: "
-msgstr "Kolá"
+msgstr "Kolá:"
 
 #: src/multiplayer_create.cpp:197
 #, fuzzy
 msgid "Unlimited Turns"
-msgstr "Neobmedzené"
+msgstr "neobmedzené"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Zlato za dedinu"
+msgstr "Zlato za dedinu:"
 
 #: src/multiplayer_create.cpp:210
 #, fuzzy
@@ -8337,9 +8590,8 @@ msgid "Experience Modifier: "
 msgstr "Vplyv terénu"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Players: "
-msgstr "Hráči"
+msgstr "Hráči:"
 
 #: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -8397,7 +8649,6 @@ msgid "Choose your side:"
 msgstr "Vyber si stranu:"
 
 #: src/multiplayer_wait.cpp:397 src/playturn.cpp:1764
-#, fuzzy
 msgid "unit^Gold"
 msgstr "Zlato"
 
@@ -8923,27 +9174,20 @@ msgstr "poriadok"
 msgid "neutral"
 msgstr "neutrál"
 
+#~ msgid "Move your fighter onto a village"
+#~ msgstr "Pohni svojho vojaka do dediny"
+
 #~ msgid "Players"
 #~ msgstr "Hráči"
 
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Tím"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Kolo"
-
-#, fuzzy
 #~ msgid "Load Game..."
-#~ msgstr "Načítaj hru"
+#~ msgstr "Načítaj hru..."
 
 #~ msgid "Ok"
 #~ msgstr "OK"
 
-#, fuzzy
 #~ msgid "Experience Requirements: "
-#~ msgstr "Potrebné skúsenosti"
+#~ msgstr "Potrebné skúsenosti:"
 
 #~ msgid ""
 #~ "The game was unable to bind to the port needed to host games over the "
@@ -8973,715 +9217,11 @@ msgstr "neutrál"
 #~ msgid "1"
 #~ msgstr "1"
 
+#~ msgid "<no games open>"
+#~ msgstr "<nie sú otvorené hry>"
+
 #~ msgid "Help"
 #~ msgstr "Návod"
 
-#~ msgid "Delete File"
-#~ msgstr "Vymaž súbor"
-
 #~ msgid "Deletion of the file failed."
 #~ msgstr "Nepodarilo sa vymazať súbor."
-
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Pohni svojho vojaka do dediny"
-
-#~ msgid ""
-#~ "This page outlines all you need to know to play Battle for Wesnoth. It "
-#~ "covers how to play and the basic mechanics behind the game. For more "
-#~ "information on conquering the game, you may wish to consult "
-#~ "<ref>dst=basic_strategy text='Basic Strategy'</ref> and "
-#~ "<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
-#~ "mind that this is just an outline - for special exceptions and "
-#~ "situations, please follow the links included.\n"
-#~ "\n"
-#~ "To begin with, it's best to click the <italic>text=Tutorial</italic> "
-#~ "button at the main menu. This will take you to the interactive tutorial, "
-#~ "which will teach you the basics of Wesnoth. After this, it is recommended "
-#~ "that you play the Heir to the Throne campaign first - click "
-#~ "<italic>text=Campaign</italic> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As Battle for Wesnoth can be quite challenging, you may wish to "
-#~ "start on <italic>text=Easy</italic>.\n"
-#~ "\n"
-#~ "<img>src=help/tooltip.png align=right float=yes</img>While playing, keep "
-#~ "in mind that if you mouse-over many items on the menu bar to the right, a "
-#~ "brief description will pop up explaining that item. This is especially "
-#~ "useful when you encounter new abilities for the first time."
-#~ msgstr ""
-#~ "Táto stránka ti ukáže úvodné veci, ktoré potrebuješ vedieť, aby si mohol "
-#~ "hrať Bitku o Wesnoth. Zahŕňa návod, ako hrať, a základný mechanizmus v "
-#~ "pozadí hry. Ďalšie informácie o úspešnom hraní môžeš nájsť v "
-#~ "<ref>dst=basic_strategy text='Základnej stratégii'</ref> a "
-#~ "<ref>dst=multiplayer_strategy text='Stratégii súboja'</ref>. Pamätaj, že "
-#~ "toto je iba úvod - zvláštne výnimky a situácie nájdeš pod uvedenými "
-#~ "linkami.\n"
-#~ "\n"
-#~ "Na začiatok je najlepšie stlačiť tlačidlo <italic>text=Výcvik</italic> v "
-#~ "hlavnom menu. To ťa dostane do interaktívneho výcviku, kde sa naučíš "
-#~ "základné veci o Wesnothe. Potom sa odporúča hrať najprv výpravu Dedič "
-#~ "trónu - stlač  <italic>text=Výprava</italic> a <italic>text='Dedič "
-#~ "trónu'</italic>. Keďže Bitka o Wesnoth dokáže byť pomerne náročná, asi "
-#~ "budeš chcieť hrať na <italic>text=ľahkej</italic> zložitosti.\n"
-#~ "\n"
-#~ "<img>src=help/tooltip.png align=right float=yes</img>Kým hráš, pamätaj, "
-#~ "že ak ukážeš myšou na mnohé položky v pravom menu, zobrazí sa ich stručné "
-#~ "vysvetlenie. To sa zvlášť hodí vo chvíli, keď sa stretneš s novou "
-#~ "schopnosťou."
-
-#~ msgid ""
-#~ "<img>src=help/recruit.png align=left float=yes</img>At the start of any "
-#~ "battle, and at times during it, you will need to recruit units into your "
-#~ "army. To recruit, you must have your leader (Konrad in the Heir to the "
-#~ "Throne campaign) on the Keep square of a Castle. Then you may recruit by "
-#~ "either choosing Recruit from the menu or right-clicking on a hex and "
-#~ "selecting <italic>text=Recruit</italic>. This brings up the recruit menu, "
-#~ "which lists units available for recruitment, along with their gold cost. "
-#~ "Click on a unit to see its statistics to the left, then press the recruit "
-#~ "button to recruit it.\n"
-#~ "\n"
-#~ "If you right-clicked on a castle hex and selected recruit, the new unit "
-#~ "will appear in that square. Otherwise, it will appear in a free square "
-#~ "near the keep. You may only recruit as many units as you have free hexes "
-#~ "in your castle, and you cannot spend more gold than you actually have on "
-#~ "recruiting.\n"
-#~ "\n"
-#~ "Recruited units come with two random <ref>dst=traits text=Traits</ref> "
-#~ "which modify their statistics.\n"
-#~ "\n"
-#~ "In later scenarios, you may also Recall survivors from earlier battles. "
-#~ "Recalling functions identically to Recruiting, save that recalling costs "
-#~ "a standard 20 gold and presents you with a list of all surviving units "
-#~ "from previous scenarios.\n"
-#~ "\n"
-#~ "Keep in mind that units not only cost gold to Recruit or Recall, they "
-#~ "also require money to support. See <ref>dst=income_and_upkeep "
-#~ "text='Income and Upkeep'</ref> for more information."
-#~ msgstr ""
-#~ "<img>src=help/recruit.png align=left float=yes</img>Na začiatku každého "
-#~ "boja, a často aj počas neho, budeš potrebovať naverbovať do svojej armády "
-#~ "jednotky. Verbovať môžeš len keď je tvoj veliteľ (vo výprave Dedič trónu "
-#~ "je to Konrád) na políčku Pevnosť v hrade. Vtedy môžeš verbovať buď tak, "
-#~ "že si vyberieš Verbovať z menu, alebo ťukneš pravým tlačidlom na pole a "
-#~ "vyberieš <italic>text=Verbuj</italic>. Vyvoláš tak verbovacie menu, ktoré "
-#~ "zobrazuje zverbovateľné jednotky a ich cenu v zlatkách. Ťukni na "
-#~ "jednotku, aby si si vľavo zobrazil jej parametre, potom stlač tlačidlo "
-#~ "Verbuj a naverbuješ ju.\n"
-#~ "\n"
-#~ "Ak si ťukol pravým tlačidlom na pole v hrade a vybral Verbuj, nová "
-#~ "jednotka sa objaví na tom poli. Ak si vyberal inak, objaví sa na "
-#~ "niektorom voľnom poli pri pevnosti. Môžeš naverbovať iba toľko jednotiek, "
-#~ "koľko máš voľných polí v hrade, a môžeš minúť len toľko zlata, koľko "
-#~ "práve máš.\n"
-#~ "\n"
-#~ "Naverbované jednotky majú dve náhodné <ref>dst=traits text=Vlastnosti</"
-#~ "ref>, ktoré menia ich parametre.\n"
-#~ "\n"
-#~ "V neskorších miestnostiach si môžeš Privolať jednotky, ktoré prežili z "
-#~ "predchádzajúcich bojov. Privolávanie jednotiek funguje rovnako ako "
-#~ "verbovanie, len cena je vždy 20 zlatých a ukazuje sa zoznam jednotiek, "
-#~ "ktoré prežili v minulých miestnostiach.\n"
-#~ "\n"
-#~ "Pamätaj, že jednotky stoja zlatky nielen pri verbovaní a privolávaní, ale "
-#~ "vyžadujú aj žold. Prečítaj si <ref>dst=income_and_upkeep text='Príjmy a "
-#~ "výdavky'</ref> pre ďalšie informácie."
-
-#~ msgid ""
-#~ "Movement in Battle for Wesnoth is simple: Simply click on the unit you "
-#~ "wish to move, then click on the hex you wish to move it to. When "
-#~ "selected, all the hexes a unit can move to this turn will be highlighted, "
-#~ "and all those it can't made dull. Mousing over a dull square will show "
-#~ "the number of turns required to reach it, and clicking will cause the "
-#~ "unit to move towards it by the fastest route over this and subsequent "
-#~ "turns.\n"
-#~ "\n"
-#~ "Each unit has a certain number of movement points which are expended when "
-#~ "moving into a new hex, depending on the <ref>dst=terrain text=Terrain</"
-#~ "ref> of that particular hex. For instance, grassland nearly always costs "
-#~ "1 movement point to enter. Exactly how many movement points are spent "
-#~ "entering a hex depends on the unit type - in forest, elvish units only "
-#~ "spend 1 movement point, most human and orc units spend 2, while horsemen "
-#~ "spend 3. You can learn how many movement points a unit requires to enter "
-#~ "a certain terrain type by right-clicking on it, selecting Unit "
-#~ "Description, and then look at <italic>text='Terrain Modifiers'</italic>.\n"
-#~ "\n"
-#~ "Another thing to keep in mind while moving is <ref>dst=zones_of_control "
-#~ "text='Zones of Control'</ref>. Each unit generates a zone of control in "
-#~ "the hexes immediately surrounding it, and any enemy unit entering those "
-#~ "hexes immediately ends its movement. Learning how to use zones of control "
-#~ "to your advantage is an important part of Wesnoth, as only "
-#~ "<ref>dst=ability_skirmish text='Skirmishers'</ref> can ignore zones of "
-#~ "control."
-#~ msgstr ""
-#~ "Pohyb v Bitke o Wesnoth je jednoduchý: Ťukni na jednotku, ktorú chceš "
-#~ "pohnúť, potom ťukni na pole, na ktoré ju chceš pohnúť. Keď je jednotka "
-#~ "označená, zvýraznia sa všetky polia, na ktoré môže ísť v tomto kole, a "
-#~ "tie ostatné vyblednú. Ak ukážeš myšou na bledé pole, uvidíš počet kôl, za "
-#~ "ktoré by tam došla; kliknutie spôsobí, že sa jednotka poberie na toto "
-#~ "pole najkratšou cestou v tomto i v nasledujúcich kolách.\n"
-#~ "\n"
-#~ "Každá jednotka má určitý počet pohybových bodov, ktoré sa spotrebovávajú "
-#~ "pri pohybe na nové pole, v závislosti od <ref>dst=terrain text='terénu'</"
-#~ "ref> daného poľa. Napríklad prísť na lúku stojí skoro vždy 1 bod. Koľko "
-#~ "bodov bude stáť vstúpenie na pole, závisí od typu jednotky -- v lese minú "
-#~ "elfie jednotky len 1 bod, väčšina ľudských a orčích jednotiek 2, jazdci "
-#~ "3. Ak chceš vedieť, koľko bodov stojí jednotku príchod na pole daného "
-#~ "typu terénu, klikni na ňu pravým tlačidlom, vyber \"Popis jednotky\" a "
-#~ "ťukni na <italic>text='Vplyv terénu'</italic>.\n"
-#~ "\n"
-#~ "Čo sa týka pohybu, pamätaj na <ref>dst=zones_of_control text='oblasti "
-#~ "kontroly'</ref>. Každá jednotka kontroluje susediace polia, a keď na ne "
-#~ "vstúpi nepriateľská jednotka, jej pohyb tým automaticky skončil. Naučiť "
-#~ "sa využívať oblasti kontroly v tvoj prospech, je dôležitá časť Wesnothu, "
-#~ "pretože ich dokážu ignorovať iba <ref>dst=ability_skirmish "
-#~ "text='priebojné'</ref> jednotky."
-
-#~ msgid ""
-#~ "There are two types of combat in Battle for Wesnoth, short- and long-"
-#~ "ranged, but both of them take place between units in adjacent hexes. "
-#~ "Short-range combat usually involves weapons such as swords, axes or "
-#~ "fangs, while long-range combat usually involves weapons such as bows, "
-#~ "spears and fireballs. Combat is relatively straightforward; the attacker "
-#~ "and defender alternate attacks until each has used their allotted number "
-#~ "of attacks.\n"
-#~ "\n"
-#~ "<header>text='Order and number of attacks'</header>\n"
-#~ "\n"
-#~ "The attacker gets the first attack, then the defender. This continues to "
-#~ "alternate until each unit has used up all of its attacks. The number of "
-#~ "attacks a unit gets varies; for instance, an Elvish fighter with a 5-4 "
-#~ "sword attack may make 4 swings each dealing 5 damage, while an Orcish "
-#~ "Grunt with 9-2 only gets 2 swings (but at 9 damage).\n"
-#~ "\n"
-#~ "<header>text='Chance to hit'</header>\n"
-#~ "\n"
-#~ "With two exceptions, the chance to hit a unit is based solely on its "
-#~ "defense rating in the <ref>dst=terrain text=Terrain</ref> it is currently "
-#~ "standing in. This may be found by right-clicking a unit, selecting Unit "
-#~ "Description, and then look at <italic>text='Terrain Modifiers'</italic>. "
-#~ "For instance, elves have a defense rating of 70% in forest, meaning a "
-#~ "unit attacking them has only a 30% chance of hitting them. Conversely, "
-#~ "the elf's chance of hitting the attacker in return depends on what "
-#~ "terrain the attacker is in.\n"
-#~ "There are two exceptions to this rule: <ref>dst=magical_attacks "
-#~ "text='Magical attacks'</ref> and <ref>dst=ability_marksman text=Marksmen</"
-#~ "ref>. Magical attacks always have a 70% chance to hit, regardless of "
-#~ "terrain, and, when used offensively, Marksmen always have at least a 60% "
-#~ "chance to hit, regardless of terrain.\n"
-#~ "\n"
-#~ "<header>text=Damage</header>\n"
-#~ "\n"
-#~ "Each blow which hits causes a base amount of damage depending on the "
-#~ "attack type. For instance, an Elvish Fighter with a 5-4 sword attack "
-#~ "causes a base of 5 damage. This is usually modified by two things: "
-#~ "<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
-#~ "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are "
-#~ "explained below.\n"
-#~ "\n"
-#~ "A few units have special abilities which affect damage dealt in combat. "
-#~ "The most common of these is <ref>dst=ability_charge text=Charge</ref>, "
-#~ "which doubles the damage dealt by both attacker and defender when the "
-#~ "unit with Charge attacks."
-#~ msgstr ""
-#~ "V Bitke o Wesnoth sú dva druhy boja, zblízka a na diaľku, ale oba sa "
-#~ "týkajú jednotiek na susedných šesťuholníkoch. Boj zblízka sa zvyčajne "
-#~ "týka zbraní ako meče, sekery či pazúry; boj na diaľku sa zvyčajne týka "
-#~ "zbraní ako luky, oštepy a ohnivé gule. Boj je pomerne jednoduchý; útočník "
-#~ "a obranca sa striedajú v útokoch, dokým všetci neminú svoj počet útokov.\n"
-#~ "\n"
-#~ "<header>text='Počet a poradie útokov'</header>\n"
-#~ "\n"
-#~ "Najprv útočí útočník, potom obranca. Takto sa striedajú, kým každá "
-#~ "jednotka nevyčerpá svoj počet útokov. Počet útokov je rôzny pre rôzne "
-#~ "jednotky; napríklad elf bojovník s útokom mečom 5-4 môže urobiť 4 útoky, "
-#~ "z ktorých každý dáva zranenie 5, zatiaľ čo ork chrocht s útokom 9-2 má 2 "
-#~ "údery (ale so zranením 9).\n"
-#~ "\n"
-#~ "<header>text='Pravdepodobnosť zásahu'</header>\n"
-#~ "\n"
-#~ "Až na dve výnimky závisí pravdepodobnosť zásahu jednotky iba na jej "
-#~ "obrannej schopnosti v <ref>dst=terrain text='teréne'</ref>, na ktorom "
-#~ "práve stojí. To sa dá zistiť, ak ťuknete pravým tlačidlom na jednotku, "
-#~ "vyberiete Popis jednotky, a potom ťuknete <italic>text='Modifikátory "
-#~ "terénu'</italic>. Napríklad elfovia majú v lese obranu 70%, čo znamená, "
-#~ "že jednotka, ktorá na nich útočí, má iba 30% šancu zasiahnuť ich. Naopak, "
-#~ "elfova šanca zasiahnuť na oplátku útočníka závisí od terénu, na ktorom "
-#~ "stojí útočník.\n"
-#~ "Toto pravidlo má dve výnimky: <ref>dst=magical_attacks text='magické "
-#~ "útoky'</ref> a <ref>dst=ability_marksman text=ostrostrelec</ref>. Magické "
-#~ "útoky majú vždy pravdepodobnosť zásahu 70%, bez ohľadu na terén, a "
-#~ "ostrostrelec má vždy pravdepodobnosť aspoň 60%, bez ohľadu na terén.\n"
-#~ "\n"
-#~ "<header>text=Zranenie</header>\n"
-#~ "\n"
-#~ "Každý úder, ktorý zasiahne, spôsobí základné zranenie podľa druhu útoku. "
-#~ "Napríklad elf vojak s útokom mečom 5-4 spôsobuje základné zranenie 5. "
-#~ "Toto sa ešte môže zmeniť podľa dvoch vecí: "
-#~ "<ref>dst=damage_type_and_resistance text=odolnosti</ref> a "
-#~ "<ref>dst=time_of_day text='dennej doby'</ref>, ktoré sú vysvetlené "
-#~ "nižšie.\n"
-#~ "\n"
-#~ "Niektoré jednotky majú zvláštne schopnosti, ktoré ovplyvňujú spôsobené "
-#~ "zranenie v súboji. Najznámejší je <ref>dst=ability_charge text='výpad'</"
-#~ "ref>, ktorý zdvojnásobuje zranenie aj u útočníka aj u obrancu, ak "
-#~ "jednotka použije takýto útok."
-
-#~ msgid ""
-#~ "In Wesnoth, there are three types of damage usually associated with "
-#~ "physical attacks: Blade, Pierce and Impact damage. Additionally, there "
-#~ "are three further types of damage usually associated with magical "
-#~ "attacks: Fire, Cold and Holy attacks. Different units may have "
-#~ "resistances which alter the damage which they take from certain damage "
-#~ "types.\n"
-#~ "\n"
-#~ "Resistances work very simply: If a unit has 40% resistance against a "
-#~ "damage type, then they will suffer 40% less damage when hit with that "
-#~ "damage type. It is also possible for a unit to have weakness; if a unit "
-#~ "has -100% resistance against a damage type, it will suffer 100% more "
-#~ "damage when hit by that type. \n"
-#~ "\n"
-#~ "For example, Skeletons are highly resistant to Blade and Pierce damage, "
-#~ "but are vulnerable to Impact and Fire damage, and extremely vulnerable to "
-#~ "Holy damage."
-#~ msgstr ""
-#~ "Vo Wesnothe fyzické útoky zvyčajne spôsobujú tri druhy zranenia: sečné, "
-#~ "bodné a tupé. Okrem toho magické útoky zvyčajne spôsobujú ďalšie tri "
-#~ "druhy zranenia: ohnivé, mrazivé a sväté. Rôzne jednotky môžu mať rôznu "
-#~ "odolnosť, ktorá ovplyvní veľkosť zranenia z určitých druhov útokov.\n"
-#~ "\n"
-#~ "Odolnosť funguje veľmi jednoducho: Ak má jednotka odolnosť 40% voči "
-#~ "určitému druhu zranenia, bude dostávať o 40% menšie zranenie, ak je "
-#~ "zranená príslušným druhom útoku. Možné je aj to, že jednotka je zvlášť "
-#~ "zraniteľná; ak má jednotka odolnosť -100% voči určitému druhu zranenia, "
-#~ "bude dostávať o 100% väčšie zranenie, ak je zranená príslušným druhom "
-#~ "útoku. \n"
-#~ "\n"
-#~ "Napríklad kostlivci sú vysoko odolní vočí sečným a bodným zraneniam, ale "
-#~ "sú ľahko zraniteľní tupým a ohnivým útokom a extrémne zraniteľní svätým "
-#~ "útokom."
-
-#~ msgid ""
-#~ "Wesnoth games usually take place with a regular cycle between day and "
-#~ "night. The current time of day can be observed under the minimap in the "
-#~ "upper right. \n"
-#~ "\n"
-#~ "The usual day/night cycle runs:\n"
-#~ "\n"
-#~ "Dawn <jump>to=160</jump><img>src=misc/schedule-dawn.png align=here</img>\n"
-#~ "Morning <jump>to=160</jump><img>src=misc/schedule-morning.png align=here</"
-#~ "img>\n"
-#~ "Afternoon <jump>to=160</jump><img>src=misc/schedule-afternoon.png "
-#~ "align=here</img>\n"
-#~ "Dusk <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</"
-#~ "img> \n"
-#~ "First Watch <jump>to=160</jump><img>src=misc/schedule-firstwatch.png "
-#~ "align=here</img>\n"
-#~ "Second Watch <jump>to=160</jump><img>src=misc/schedule-secondwatch.png "
-#~ "align=here</img>\n"
-#~ "\n"
-#~ "Morning and Afternoon count as day, First and Second Watch count as "
-#~ "night.\n"
-#~ "\n"
-#~ "The time of day affects the damage of certain units as follows -\n"
-#~ "\n"
-#~ "Lawful units get +25% damage in daytime, and -25% damage at night.\n"
-#~ "Chaotic units get +25% damage at night, and -25% in daytime.\n"
-#~ "Neutral units are unaffected by the time of day.\n"
-#~ "\n"
-#~ "<img>src=misc/schedule-underground.png align=right float=yes</img>Keep in "
-#~ "mind that some scenarios take place underground, where it is perpetually "
-#~ "night!"
-#~ msgstr ""
-#~ "Pri hre vo Wesnothe sa zvyčajne pravidelne strieda deň a noc. Momentálnu "
-#~ "dennú dobu je vidno pod mapkou v pravom hornom rohu obrazovky. \n"
-#~ "\n"
-#~ "Zvyčajný cyklus dňa a noci je:\n"
-#~ "\n"
-#~ "Svitanie <jump>to=160</jump><img>src=misc/schedule-dawn.png align=here</"
-#~ "img>\n"
-#~ "Ráno <jump>to=160</jump><img>src=misc/schedule-morning.png align=here</"
-#~ "img>\n"
-#~ "Popoludnie <jump>to=160</jump><img>src=misc/schedule-afternoon.png "
-#~ "align=here</img>\n"
-#~ "Súmrak <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</"
-#~ "img> \n"
-#~ "Prvá hliadka <jump>to=160</jump><img>src=misc/schedule-firstwatch.png "
-#~ "align=here</img>\n"
-#~ "Druhá hliadka <jump>to=160</jump><img>src=misc/schedule-secondwatch.png "
-#~ "align=here</img>\n"
-#~ "\n"
-#~ "Ráno a popoludnie tvoria deň, prvá a druhá hliadka tvoria noc.\n"
-#~ "\n"
-#~ "Denná doba ovplyvňuje zranenie spôsobené jednotkami takto -\n"
-#~ "\n"
-#~ "Jednotky poriadku dávajú +25% zranenia cez deň a -25% zranenia v noci.\n"
-#~ "Chaotické jednotky dávajú +25% zranenia v noci a -25% cez deň.\n"
-#~ "Neutrálne jednotky denná doba neovplyvňuje.\n"
-#~ "\n"
-#~ "<img>src=misc/schedule-underground.png align=right float=yes</"
-#~ "img>Pamätaj, že niektoré scény sa odohrávajú v podzemí, kde je stále noc!"
-
-#~ msgid ""
-#~ "If both units survive a combat, they gain a number of experience points "
-#~ "equal to the level of the unit they're fighting. If a unit kills another "
-#~ "in combat, however, it gains much more experience - 4 for a level 0 unit, "
-#~ "8 for level 1, 16 for level 2, 24 for level 3, and so forth.\n"
-#~ "\n"
-#~ "Units have a certain amount of experience required to advance (this is "
-#~ "20% less for units with the Intelligent trait). Once they achieve this "
-#~ "amount, they immediately advance to the next level, healing fully in the "
-#~ "process. In some cases, you will be given a choice of advancement "
-#~ "options.\n"
-#~ "\n"
-#~ "Keep in mind that while most units have three levels, not all do, and "
-#~ "that occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may "
-#~ "have four."
-#~ msgstr ""
-#~ "Ak obe jednotky prežijú súboj, získajú body skúsenosti rovné úrovni "
-#~ "súperovej jednotky. Ak jedna jednotka v súboji zabije druhú, získa viac "
-#~ "skúseností -- 4 za jednotku na úrovni 0, 8 za úroveň 1, 16 za úroveň 2, "
-#~ "24 za úroveň 3, a tak ďalej.\n"
-#~ "\n"
-#~ "Každá jednotka musí získať na povýšenie určitý počet skúseností (pre "
-#~ "inteligentné jednotky je to o 20% menej). Keď dosiahne toto množstvo, je "
-#~ "okamžite povýšená na vyššiu úroveň, pričom sa naplno vylieči. V "
-#~ "niektorých prípadoch dostaneš na výber rôzne možnosti povýšenia.\n"
-#~ "\n"
-#~ "Pamätaj, že hoci väčšina jednotiek môže mať tri úrovne, niektoré nemôžu, "
-#~ "a niektoré výnimočné (napríklad <ref>dst=unit_mage text='mágovia'</ref>) "
-#~ "môžu mať aj štyri."
-
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. Wesnoth offers several "
-#~ "ways for your units to heal, all of which take place at the beginning of "
-#~ "your turn, before you take action.\n"
-#~ "\n"
-#~ "Resting: A unit which neither moves nor attacks will heal 2HP in its next "
-#~ "turn.\n"
-#~ "Villages: A unit which starts a turn in a village will heal 8HP.\n"
-#~ "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units "
-#~ "(such as trolls) will automatically heal 8HP every turn.\n"
-#~ "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
-#~ "ability will heal all friendly units immediately beside them for 4HP each "
-#~ "turn, or prevent Poison from dealing damage.\n"
-#~ "\n"
-#~ "Curing units: Units with the <ref>dst=ability_cures text=Cures</ref> "
-#~ "ability will heal all friendly units immediately beside them for 8HP each "
-#~ "turn, or cure a unit of Poison.\n"
-#~ "\n"
-#~ "Keep in mind that while Resting can be combined with other forms of "
-#~ "healing, villages, regeneration, and healing/curing cannot combine with "
-#~ "each other. Also, units heal fully between scenarios."
-#~ msgstr ""
-#~ "Tvoje jednotky budú v súboji určite zranené. Wesnoth ponúka niekoľko "
-#~ "možností ako uzdraviť jednotku. Všetky sa vyhodnocujú na začiatku kola, "
-#~ "predtým ako začneš ťahať.\n"
-#~ "\n"
-#~ "Odpočinok: Jednotka, ktorá sa ani nehýbala ani neútočila, sa v "
-#~ "nasledujúcom kole uzdraví za 2 životy.\n"
-#~ "Dediny: Jednotka, ktorá na začiatku kola stojí v dedine, sa uzdraví za 8 "
-#~ "životov.\n"
-#~ "<ref>dst=ability_regeneration text='Regenerácia'</ref>: Niektoré jednotky "
-#~ "(napríklad trollovia) sa automaticky uzdravia za 8 životov každé kolo.\n"
-#~ "Uzdravenie: Jednotky, ktoré majú schopnosť <ref>dst=ability_heals "
-#~ "text='uzdravovať'</ref>, uzdravia v každom kole všetky spojenecké "
-#~ "jednotky na vedľajších políčkach za 4 životy, alebo zabránia zraneniu "
-#~ "spôsobenému otravou.\n"
-#~ "\n"
-#~ "Liečenie: Jednotky, ktoré majú schopnosť <ref>dst=ability_cures "
-#~ "text='liečiť'</ref>, uzdravia v každom kole všetky spojenecké jednotky na "
-#~ "vedľajších políčkach za 8 životov, alebo ich vyliečia z otravy.\n"
-#~ "\n"
-#~ "Pamätaj, že odpočívanie sa dá spojiť s ostatnými formami liečenia; ale "
-#~ "dediny, regenerácia a uzdravovanie/liečenie sa už navzájom spojiť nedajú. "
-#~ "Ďalej, medzi jednotlivými scénami sa jednotky vyliečia naplno."
-
-#~ msgid ""
-#~ "In Wesnoth, it is not enough simply to recruit units and fight. You must "
-#~ "watch your gold as well, especially in campaigns, where you can carry "
-#~ "extra gold over from one scenario to the next. There are two aspects to "
-#~ "this; Income and Upkeep.\n"
-#~ "\n"
-#~ "Income is simple. For every village you control, you gain one gold a "
-#~ "turn. Thus, if you have ten villages, you would normally gain ten gold. "
-#~ "Unfortunately, your Upkeep costs are subtracted from this income, as "
-#~ "detailed below.\n"
-#~ "\n"
-#~ "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#~ "equal to its level. You can support as many levels <italic>text=worth</"
-#~ "italic> of units as you have villages for free. However, for each level "
-#~ "of unit beyond the number of villages you have, you must pay one gold per "
-#~ "turn. For example, if you have twelve level one units and ten villages, "
-#~ "you would have to pay two gold a turn in upkeep.\n"
-#~ "\n"
-#~ "These costs are subtracted from your Income, so in the case of twelve "
-#~ "levels of units and ten villages, your resultant Income would be 8 gold a "
-#~ "turn.\n"
-#~ "There are two main exceptions to Upkeep. Firstly, units with the Loyal "
-#~ "trait will only ever count as level one for upkeep purposes, regardless "
-#~ "of their actual level. Secondly, units you begin the scenario with (such "
-#~ "as Konrad or Delfador), or units who join you during a scenario (such as "
-#~ "the Horseman in the second level of Heir to the Throne) will never charge "
-#~ "any upkeep."
-#~ msgstr ""
-#~ "Vo Wesnothe nestačí iba verbovať jednotky a bojovať. Musíš si dávať pozor "
-#~ "na zlato, zvlášť vo výpravách, kde sa zvyšné zlato prenáša z jednej scény "
-#~ "do ďalšej. Sú tu dve dôležité veličiny: príjmy a výdavky.\n"
-#~ "\n"
-#~ "Príjmy sú jednoduché. Za každú dedinu, ktorú máš pod kontrolou, dostaneš "
-#~ "každé kolo jednu zlatku. Takže ak máš desať dedín, normálne by si dostal "
-#~ "desať zlatých. Žiaľ, z tejto sumy sa ešte odrátajú výdavky, ktoré "
-#~ "vysvetlím nižšie.\n"
-#~ "\n"
-#~ "Výdavky sú tiež pomerne jednoduché. Každá jednotka si vyžaduje žold vo "
-#~ "výške svojej úrovne. Zadarmo dokážeš vyplatiť jednotky s "
-#~ "<italic>text='toľkými úrovňami'</italic>, koľko máš dedín. Za každú "
-#~ "úroveň jednotky prevyšujúcu počet tvojich dedín musíš zaplatiť jednu "
-#~ "zlatku za kolo. Napríklad ak máš dvanásť jednotiek na prvej úrovni a "
-#~ "desať dedín, musíš každé kolo zaplatiť dve zlatky na žold.\n"
-#~ "\n"
-#~ "Tieto výdavky sa odrátavajú z tvojich príjmov, takže v prípade jednotiek "
-#~ "s dvanástimi úrovňami spolu a desiatich dedín by tvoj výsledný príjem "
-#~ "tvoril 8 zlatých za kolo.\n"
-#~ "Ohľadom žoldu sú dve dôležité výnimky. Po prvé, verné jednotky budú bez "
-#~ "ohľadu na úroveň požadovať taký žold, ako keby mali úroveň 1. Po druhé, "
-#~ "jednotky, ktoré máš na začiatku scény (napríklad Konrád a Delfador), "
-#~ "alebo jednotky, ktoré sa k tebe počas scény pripoja (napríkad jazdec v "
-#~ "druhej scéne výpravy \"Dedič trónu\") nebudú pýtať žold nikdy."
-
-#~ msgid ""
-#~ "Most units have two traits. Traits are attributes of the unit that modify "
-#~ "its attributes slightly. They are assigned to a unit randomly when the "
-#~ "unit is recruited.\n"
-#~ "\n"
-#~ "The currently available traits are the following.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Intelligent</header>\n"
-#~ "\n"
-#~ "Intelligent units require 20% less experience than usual to advance.\n"
-#~ "\n"
-#~ "Intelligent units are very useful at the beginning of a campaign, as they "
-#~ "can be quickly advanced into much needed higher level units. Later in the "
-#~ "campaign, they are not quite so useful, and if you have plenty of high "
-#~ "level units you may find yourself recalling units with more useful ''long-"
-#~ "term'' traits.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Loyal</header>\n"
-#~ "\n"
-#~ "Loyal units only ever require an upkeep of one, no matter what level they "
-#~ "are.\n"
-#~ "\n"
-#~ "Loyal has no effect on a level one unit, which makes it useless in the "
-#~ "early campaign. Once a unit begins to level up, however, it can save you "
-#~ "considerable gold over the course of the campaign.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Quick</header>\n"
-#~ "\n"
-#~ "Quick units have 1 extra movement point, but 10% less HP than usual.\n"
-#~ "\n"
-#~ "Quick is the most noticeable trait, particularly in slower units such as "
-#~ "trolls or heavy infantry. Units with the Quick trait can often have "
-#~ "greatly increased mobility in rough terrain, so consider that when "
-#~ "deploying your forces. Also, remember that Quick units aren't quite as "
-#~ "tough as usual, and so aren't so good for holding positions.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Resilient</header>\n"
-#~ "\n"
-#~ "Resilient units have 7 more HP than usual.\n"
-#~ "\n"
-#~ "Resilient units can be useful at all stages in the campaign, and is a "
-#~ "useful trait for all units, though you'll find yourself noticing it more "
-#~ "in some units than others. Resilient units are especially useful for "
-#~ "holding ground against opponents.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Strong</header>\n"
-#~ "\n"
-#~ "Strong units do 1 more damage per swing in melee combat, and have 2 more "
-#~ "HP.\n"
-#~ "\n"
-#~ "Useful for any close-combat unit, Strong is most effective for units who "
-#~ "have a high number of swings, such as the Elvish Fighter. Strong units "
-#~ "can be very useful when a tiny bit of extra damage is all that is needed "
-#~ "to turn a damaging stroke into a killing blow."
-#~ msgstr ""
-#~ "Väčšina jednotiek má dve vlastnosti. Vlastnosti mierne upravujú hodnoty "
-#~ "jednotky. Prideľujú sa náhodne v okamihu naverbovania.\n"
-#~ "\n"
-#~ "Momentálne existujú tieto vlastnosti.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Inteligentný'</header>\n"
-#~ "\n"
-#~ "Inteligentná jednotka potrebuje o 20% menej skúseností ako obyčajná, aby "
-#~ "bola povýšená.\n"
-#~ "\n"
-#~ "Inteligentné jednotky sú veľmi užitočné na začiatku výpravy, pretože ich "
-#~ "možno rýchlo povýšiť a získať tak jednotky na vyšších úrovniach. Neskôr "
-#~ "počas výpravy už nie sú také užitočné, a ak máš zásobu jednotiek na "
-#~ "vysokej úrovni, asi dáš prednosť privolávaniu jednotiek s \"dlhodobo "
-#~ "výhodnejšími\" vlastnosťami.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Verný'</header>\n"
-#~ "\n"
-#~ "Verná jednotka vždy požaduje žold jednu zlatku bez ohľadu na svoju "
-#~ "úroveň.\n"
-#~ "\n"
-#~ "Jednotku na prvej úrovni vernosť nijako neovplyvňuje, takže je na "
-#~ "začiatku kampane zbytočná. Keď však začne jednotka postupovať na vyššie "
-#~ "úrovne, môže ti ušetriť významné množstvo zlata počas výpravy.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Rýchly'</header>\n"
-#~ "\n"
-#~ "Rýchla jednotka má 1 bod pohybu navyše, ale o 10% životov menej ako "
-#~ "obyčajná.\n"
-#~ "\n"
-#~ "Rýchlosť je najnápadnejšia vlastnosť, zvlášť u pomalých jednotiek ako "
-#~ "trollovia či ťažká pechota. Rýchle jednotky sú často omnoho pohyblivejšie "
-#~ "v náročnom teréne, čo sa oplatí pri úvodnom rozostavovaní armády. "
-#~ "Pamätaj, že rýchle jednotky nie sú také odolné ako obyčajné, takže sa "
-#~ "nehodia na obranu pozícií.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Odolný'</header>\n"
-#~ "\n"
-#~ "Odolné jednotky majú o 7 životov viac ako obyčajné.\n"
-#~ "\n"
-#~ "Odolné jednotky sú užitočné vo všetkých fázach výpravy a táto vlastnosť "
-#~ "je výhodná pre všetky jednotky, hoci pri niektorých si ju všimneš viac "
-#~ "ako pri iných. Odolné jednotky sú zvlášť užitočné na držanie pozícií "
-#~ "proti nepriateľom.\n"
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Silný'</header>\n"
-#~ "\n"
-#~ "Silné jednotky spôsobujú o 1 väčšie zranenie pri každom útoku na blízko, "
-#~ "a majú o 2 životy viac.\n"
-#~ "\n"
-#~ "Silné jednotky sa oplatia pre všetky druhy jednotiek bojujúce nablízko, "
-#~ "ale najviac pre tie, ktoré majú veľa útokov, ako napríklad elf vojak. "
-#~ "Silné jednotky sú veľmi užitočné vo chvíli, keď je malé zranenie navyše "
-#~ "rozhodne o smrti súpera."
-
-#~ msgid "&random-enemy.png,Random"
-#~ msgstr "&random-enemy.png,Náhodný"
-
-#~ msgid "&human-lieutenant.png,Loyalists"
-#~ msgstr "&human-lieutenant.png,Lojalisti"
-
-#~ msgid "&elvish-captain.png,Rebels"
-#~ msgstr "&elvish-captain.png,Rebeli"
-
-#~ msgid "&orcish-warrior.png,Northerners"
-#~ msgstr "&orcish-warrior.png,Severania"
-
-#~ msgid "&undead-necromancer.png,Undead"
-#~ msgstr "&undead-necromancer.png,Nemŕtvi"
-
-#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
-#~ msgstr "&dwarf-warrior.png,Aliancia Knalgy"
-
-#~ msgid "&drake-flare.png,Drakes"
-#~ msgstr "&drake-flare.png,Jašteri"
-
-#~ msgid "&human-lieutenant.png,Humans"
-#~ msgstr "&human-lieutenant.png,Ľudia"
-
-#~ msgid "&elvish-captain.png,Elves"
-#~ msgstr "&elvish-captain.png,Elfovia"
-
-#~ msgid "&orcish-warrior.png,Orcs"
-#~ msgstr "&orcish-warrior.png,Orkovia"
-
-#~ msgid "&dwarf-warrior.png,Dwarves"
-#~ msgstr "&dwarf-warrior.png,Trpaslíci"
-
-#~ msgid "&saurian-soothsayer.png,Saurian"
-#~ msgstr "&saurian-soothsayer.png,Saur"
-
-#~ msgid "&human-general.png,Loyalists"
-#~ msgstr "&human-general.png,Lojalisti"
-
-#~ msgid "&elvish-marshal.png,Rebels"
-#~ msgstr "&elvish-marshal.png,Rebeli"
-
-#~ msgid "&orcish-warlord.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Severania"
-
-#~ msgid "&undead-lich.png,Undead"
-#~ msgstr "&undead-lich.png,Nemŕtvi"
-
-#~ msgid "&white-mage.png,Alliance of Light"
-#~ msgstr "&white-mage.png,Aliancia svetla"
-
-#~ msgid ""
-#~ "Nightstalk:\n"
-#~ "The unit becomes invisible during night."
-#~ msgstr ""
-#~ "Nočný krok:\n"
-#~ "Jednotka je počas noci neviditeľná."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Choroba:\n"
-#~ "Ak táto jednotka zabije živú jednotku mimo dediny, telo zabitej jednotky "
-#~ "vstane a bude bojovať na strane svojho premožiteľa."
-
-#~ msgid ""
-#~ "Terrible and awe-inspiring, Ancient Woses are majestic treefolk not to be "
-#~ "trifled with. Fearsome fighters, they resist many attacks while "
-#~ "delivering devastating blows to their enemies. Resembling trees, they "
-#~ "blend in with the forest until they make their attack."
-#~ msgstr ""
-#~ "Prastarí lesní muži budia strach a hrôzu, a nikto sa si s týmto vznešeným "
-#~ "stromovým ľudom bezdôvodne nezačína. Títo obávaní bojovníci odolávajú "
-#~ "mnohým ranám a rozdávajú pritom nepriateľom smrtiace údery. Podobajú sa "
-#~ "na stromy, s ktorými v lese splývajú až dokiaľ nezaútočia."
-
-#~ msgid ""
-#~ "These elite undead archers strike terror in the hearts of their foes by "
-#~ "using the bones of the slain as weapons."
-#~ msgstr ""
-#~ "Elitní nemŕtvi lukostrelci sejú hrôzu medzi svojimi súpermi, pretože ako "
-#~ "strely používajú kosti svojich obetí."
-
-#~ msgid ""
-#~ "Only the most experienced and heroic Dragoons can achieve to ride the "
-#~ "battlefield as Cavaliers. Armed with magical artifacts, keen swords and "
-#~ "fine armours, they are one of the best mounted troops in all know world."
-#~ msgstr ""
-#~ "Iba najskúsenejší a najhrdinskejší z dragúnov sa stanú jazdeckými "
-#~ "majstrami bojového poľa. Ozbrojení magickými artefaktmi, ostrými mečmi a "
-#~ "vypracovnými brneniami sú jednými z najlepších jazdcov na svete."
-
-#~ msgid "pistol"
-#~ msgstr "pištoľ"
-
-#~ msgid "skirmisher,heals"
-#~ msgstr "priebojný, uzdravuje"
-
-#~ msgid "skirmisher,cures"
-#~ msgstr "priebojný, lieči"
-
-#~ msgid ""
-#~ "Wrapped in dark cloaks, the soul shooters roam the lands searching "
-#~ "targets for its bone arrows."
-#~ msgstr ""
-#~ "Kostliví majstri strelci sa zahalení v temných plášťoch túlajú po "
-#~ "krajinách a hľadajú terče pre svoje kostené šípy."
-
-#~ msgid "bone"
-#~ msgstr "kosť"
-
-#~ msgid ",Name,Version,Author,Downloads,Size"
-#~ msgstr ",Názov,Verzia,Autor,Stiahnutá,Veľkosť"
-
-#~ msgid "hexes"
-#~ msgstr "polí"
