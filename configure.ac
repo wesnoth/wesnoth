@@ -35,6 +35,103 @@ indicating your platform, the version of configure script and the problem.])
 
 fi
 
+# Check for SDL version. Taken from sdl.m4
+
+AC_ARG_ENABLE([sdltest],
+	      [  --disable-sdltest       Do not try to compile and run a test SDL program],
+	      ,
+	      enable_sdltest=yes)
+
+min_sdl_version=1.2.7
+AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
+    
+SDL_CFLAGS=`$SDL_CONFIG --cflags`
+SDL_LIBS=`$SDL_CONFIG --libs`
+
+sdl_major_version=`$SDL_CONFIG --version | \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+sdl_minor_version=`$SDL_CONFIG --version | \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+sdl_micro_version=`$SDL_CONFIG --version | \
+    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+
+if test "x$enable_sdltest" = "xyes" ; then
+    ac_save_CFLAGS="$CFLAGS"
+    ac_save_LIBS="$LIBS"
+    CFLAGS="$CFLAGS $SDL_CFLAGS"
+    LIBS="$LIBS $SDL_LIBS"
+
+    # Now check if the installed SDL is sufficiently new. (Also sanity
+    # checks the results of sdl-config to some extent
+      
+    rm -f conf.sdltest
+    AC_RUN_IFELSE([AC_LANG_SOURCE([
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "SDL.h"
+
+char*
+my_strdup (char *str)
+{
+  char *new_str;
+  
+  if (str)
+    {
+      new_str = (char *)malloc ((strlen (str) + 1) * sizeof(char));
+      strcpy (new_str, str);
+    }
+  else
+    new_str = NULL;
+  
+  return new_str;
+}
+
+int main (int argc, char *argv[])
+{
+  int major, minor, micro;
+  char *tmp_version;
+
+  /* This hangs on some systems (?)
+  system ("touch conf.sdltest");
+  */
+  { FILE *fp = fopen("conf.sdltest", "a"); if ( fp ) fclose(fp); }
+
+  /* HP/UX 9 (%@#!) writes to sscanf strings */
+  tmp_version = my_strdup("$min_sdl_version");
+  if (sscanf(tmp_version, "%d.%d.%d", &major, &minor, &micro) != 3) {
+     printf("%s, bad version string\n", "$min_sdl_version");
+     exit(1);
+   }
+
+   if (($sdl_major_version > major) ||
+      (($sdl_major_version == major) && ($sdl_minor_version > minor)) ||
+      (($sdl_major_version == major) && ($sdl_minor_version == minor) && ($sdl_micro_version >= micro)))
+    {
+      return 0;
+    }
+  else
+    {
+      printf("\n*** 'sdl-config --version' returned %d.%d.%d, but the minimum version\n", $sdl_major_version, $sdl_minor_version, $sdl_micro_version);
+      printf("*** of SDL required is %d.%d.%d. If sdl-config is correct, then it is\n", major, minor, micro);
+      printf("*** best to upgrade to the required version.\n");
+      printf("*** If sdl-config was wrong, set the environment variable SDL_CONFIG\n");
+      printf("*** to point to the correct copy of sdl-config, and remove the file\n");
+      printf("*** config.cache before re-running configure\n");
+      return 1;
+    }
+}
+    ])],
+    [AC_MSG_RESULT(yes)],
+    [AC_MSG_RESULT(no)]
+    [AC_MSG_ERROR([*** Please upgrade your SDL version])],
+    [AC_MSG_RESULT[not tested in cross-compiling]])
+
+
+    CFLAGS="$ac_save_CFLAGS"
+    LIBS="$ac_save_LIBS"
+fi
+
 
 # GNOME_CONFIG
 
