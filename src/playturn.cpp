@@ -895,7 +895,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		unit_map::const_iterator it = units.find(next_unit);
 		if(it != units.end()) {
 			for(++it; it != units.end(); ++it) {
-				if(unit_can_move(it->first,units,map,teams)) {
+				if(it->second.side() == team_num &&
+				   unit_can_move(it->first,units,map,teams)) {
 					break;
 				}
 			}
@@ -903,7 +904,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 
 		if(it == units.end()) {
 			for(it = units.begin(); it != units.end(); ++it) {
-				if(unit_can_move(it->first,units,map,teams)) {
+				if(it->second.side() == team_num &&
+				   unit_can_move(it->first,units,map,teams)) {
 					break;
 				}
 			}
