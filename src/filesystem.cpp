@@ -468,7 +468,9 @@ std::string read_file(const std::string& fname)
 		if (p != 0) {
 			std::istream* s = the_collection.getInputStream(p);
 			if (s != NULL) {
-				return read_stream(*s);
+				std::string contents = read_stream(*s);
+				delete s;
+				return contents;
 			}
 		}
 	}
