@@ -1145,7 +1145,6 @@ void turn_info::end_turn()
 	config snapshot;
 	write_game_snapshot(snapshot);
 	try {
-		config starting_pos;
 		recorder.save_game(_("Auto-Save"), snapshot, state_of_game_.starting_pos);
 	} catch(gamestatus::save_game_failed&) {
 		gui::show_dialog(gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
