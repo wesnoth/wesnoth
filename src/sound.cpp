@@ -132,41 +132,33 @@ void play_sound(const std::string& file)
 	if(!mix_ok || sound_off)
 		return;
 
-	std::map<std::string,Mix_Chunk*>::const_iterator itor = sound_cache.find(file);
-	if(itor == sound_cache.end()) {
+	// the insertion will fail if there is already an element in the cache
+	std::pair< std::map< std::string, Mix_Chunk * >::iterator, bool >
+		it = sound_cache.insert(std::make_pair(file, (Mix_Chunk *)0));
+	Mix_Chunk *&cache = it.first->second;
+	if (it.second) {
+		std::string const &filename = get_binary_file_location("sounds", file);
+		if (!filename.empty()) {
 #ifdef USE_ZIPIOS
-		std::string s = read_file("sounds/" + file);
-		if (s.empty()) {
-			return;
-		}
-
-		SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
-		Mix_Chunk* const sfx = Mix_LoadWAV_RW(ops,0);
-		if(sfx == NULL) {
-			std::cerr << "Could not load sound file '" << file << "': "
-			          << SDL_GetError() << "\n";
-			return;
-		}
+			std::string const &s = read_file(filename);
+			if (!s.empty()) {
+				SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+				cache = Mix_LoadWAV_RW(ops,0);
+			}
 #else
-		const std::string& filename = get_binary_file_location("sounds",file);
-
-		if(filename.empty()) {
-			return;
+			cache = Mix_LoadWAV(filename.c_str());
+#endif
 		}
 
-		Mix_Chunk* const sfx = Mix_LoadWAV(filename.c_str());
-		if(sfx == NULL) {
+		if (cache == NULL) {
 			std::cerr << "Could not load sound file '" << filename << "': "
 			          << SDL_GetError() << "\n";
 			return;
 		}
-#endif
-
-		itor = sound_cache.insert(std::pair<std::string,Mix_Chunk*>(file,sfx)).first;
 	}
 
 	//play on the first available channel
-	const int res = Mix_PlayChannel(-1,itor->second,0);
+	const int res = Mix_PlayChannel(-1, cache, 0);
 	if(res < 0) {
 		std::cerr << "error playing sound effect: " << SDL_GetError() << "\n";
 	}
