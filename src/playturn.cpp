@@ -1742,6 +1742,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		}
 
 		units_.erase(units_.begin() + index);
+		recorder.add_disband(index);
 		return gui::dialog_button_action::DELETE_ITEM;
 	} else {
 		return gui::dialog_button_action::NO_EFFECT;

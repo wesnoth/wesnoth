@@ -284,6 +284,19 @@ void replay::add_recall(int value, const gamemap::location& loc)
 	cmd->add_child("recall",val);
 }
 
+void replay::add_disband(int value)
+{
+	config* const cmd = add_command();
+
+	config val;
+
+	char buf[100];
+	sprintf(buf,"%d",value);
+	val["value"] = buf;
+
+	cmd->add_child("disband",val);
+}
+
 void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 {
 	add_pos("move",a,b);
@@ -714,15 +727,15 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		else if((child = cfg->child("recall")) != NULL) {
-			player_info *player=state_of_game.get_player(teams[team_num].save_id());
-			if(!player) {
+			player_info* player = state_of_game.get_player(current_team.save_id());
+			if(player == NULL) {
 				std::cerr << "illegal recall\n";
 				throw replay::error();
 			}
 
 			std::sort(player->available_units.begin(),player->available_units.end(),compare_unit_values());
 
-			const std::string recall_num = (*child)["value"];
+			const std::string& recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
 			gamemap::location loc(*child);
@@ -737,6 +750,25 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 			fix_shroud = true;
+		}
+
+		else if((child = cfg->child("disband")) != NULL) {
+			player_info* const player = state_of_game.get_player(current_team.save_id());
+			if(player == NULL) {
+				std::cerr << "illegal disband\n";
+				throw replay::error();
+			}
+
+			std::sort(player->available_units.begin(),player->available_units.end(),compare_unit_values());
+			const std::string& unit_num = (*child)["value"];
+			const int val = atoi(unit_num.c_str());
+
+			if(val >= 0 && val < int(player->available_units.size())) {
+				player->available_units.erase(player->available_units.begin()+val);
+			} else {
+				std::cerr << "illegal disband\n";
+				throw replay::error();
+			}
 		}
 
 		else if((child = cfg->child("move")) != NULL) {
