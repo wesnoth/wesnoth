@@ -78,6 +78,7 @@ namespace preferences {
 	bool show_combat();
 
 	bool show_ai_moves();
+	void set_show_ai_moves(bool value);
 
 	void set_show_side_colours(bool value);
 	bool show_side_colours();

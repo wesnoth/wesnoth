@@ -301,6 +301,20 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		const std::string& name = map.terrain_name(terrain);
 		const std::vector<std::string>& underlying_names = map.underlying_terrain_name(terrain);
 
+		if(map.is_village(mouseover)) {
+			const int owner = village_owner(mouseover,teams)+1;
+			if(owner == 0) {
+			} else if(owner == current_side) {
+				str << translate_string("owned");
+			} else if(current_team.is_enemy(owner)) {
+				str << translate_string("enemy");
+			} else {
+				str << translate_string("ally");
+			}
+
+			str << " ";
+		}
+
 		const std::string& translated_name = translate_string(name);
 
 		str << translated_name;

@@ -695,8 +695,9 @@ int play_game(int argc, char** argv)
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 		gui::TITLE_RESULT res = loaded_game.empty() ? gui::TITLE_CONTINUE : gui::LOAD_GAME;
 
+		int ntip = -1;
 		while(res == gui::TITLE_CONTINUE) {
-			res = gui::show_title(disp);
+			res = gui::show_title(disp,&ntip);
 		}
 
 		std::cerr << "title screen returned result\n";
@@ -711,6 +712,10 @@ int play_game(int argc, char** argv)
 			const std::string game = loaded_game.empty() ? dialogs::load_game_dialog(disp,&show_replay) : loaded_game;
 
 			loaded_game = "";
+
+			if(game == "") {
+				continue;
+			}
 
 			try {
 				load_game(units_data,game,state);

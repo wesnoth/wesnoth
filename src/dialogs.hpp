@@ -57,10 +57,6 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 int show_file_chooser_dialog(display &displ, std::string &filename,
 							 const std::string title="Choose a File",
 							 int xloc=-1, int yloc=-1);
-
-/// Show a dialog showing a randomly selected 'tip of the day'
-void tip_of_day(display& disp, int tip=-1);
-
 }
 
 #endif

@@ -12,6 +12,7 @@
 */
 
 #include "game_config.hpp"
+#include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "network.hpp"
 #include "replay.hpp"
@@ -286,6 +287,7 @@ void team::write(config& cfg) const
 void team::get_village(const gamemap::location& loc)
 {
 	villages_.insert(loc);
+	game_events::fire("capture",loc);
 }
 
 void team::lose_village(const gamemap::location& loc)

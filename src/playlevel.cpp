@@ -30,6 +30,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
+#include "unit_display.hpp"
 #include "util.hpp"
 
 #include <iostream>
@@ -503,8 +504,6 @@ redo_turn:
 						if(level->values["objectives"].empty() == false) {
 							dialogs::show_objectives(gui,*level);
 						}
-
-						dialogs::tip_of_day(gui);
 					}
 
 					play_turn(gameinfo,state_of_game,status,game_config,
@@ -521,8 +520,6 @@ redo_turn:
 					gui.recalculate_minimap();
 
 					const cursor::setter cursor_setter(cursor::WAIT);
-
-					update_locker lock(gui,!preferences::show_ai_moves());
 
 					turn_info turn_data(gameinfo,state_of_game,status,
 						                game_config,level,key,gui,

@@ -22,6 +22,7 @@
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "statistics.hpp"
@@ -117,7 +118,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	unit new_unit(&u->second,info_.team_num,true);
 
 	//see if we can actually recruit (i.e. have enough room etc)
-	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,&info_.disp).empty()) {
+	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,preferences::show_ai_moves() ? &info_.disp : NULL).empty()) {
 		statistics::recruit_unit(new_unit);
 		current_team().spend_gold(u->second.cost());
 
@@ -214,15 +215,19 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		return to;
 	}
 
+	const bool show_move = preferences::show_ai_moves();
+
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
-	paths current_paths = paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
+	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
 	paths_wiper wiper(info_.disp);
 
-	if(!info_.disp.fogged(from.x,from.y))
-		info_.disp.set_paths(&current_paths);
+	if(show_move) {
+		if(!info_.disp.fogged(from.x,from.y))
+			info_.disp.set_paths(&current_paths);
 
-	info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
+		info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
+	}
 
 	unit current_unit = u_it->second;
 	info_.units.erase(u_it);
@@ -268,7 +273,10 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 			}
 
 			steps.push_back(to); //add the destination to the steps
-			unit_display::move_unit(info_.disp,info_.map,steps,current_unit);
+
+			if(show_move) {
+				unit_display::move_unit(info_.disp,info_.map,steps,current_unit);
+			}
 		}
 	}
 
@@ -278,8 +286,10 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		get_village(to,info_.teams,info_.team_num-1,info_.units);
 	}
 
-	info_.disp.draw_tile(to.x,to.y);
-	info_.disp.draw();
+	if(show_move) {
+		info_.disp.draw_tile(to.x,to.y);
+		info_.disp.draw();
+	}
 
 	game_events::fire("moveto",to);
 

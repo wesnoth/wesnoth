@@ -863,7 +863,7 @@ void attack(display& gui, const gamemap& map,
 	gui.invalidate_unit();
 }
 
-int village_owner(const gamemap::location& loc, std::vector<team>& teams)
+int village_owner(const gamemap::location& loc, const std::vector<team>& teams)
 {
 	for(size_t i = 0; i != teams.size(); ++i) {
 		if(teams[i].owns_village(loc))
@@ -1648,8 +1648,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		orig_village_owner = village_owner(steps.back(),teams);
 
 		if(orig_village_owner != team_num) {
-			get_village(steps.back(),teams,team_num,units);
 			ui->second.set_movement(0);
+			get_village(steps.back(),teams,team_num,units);
 		}
 	}
 

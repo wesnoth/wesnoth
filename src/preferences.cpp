@@ -358,14 +358,13 @@ bool show_combat()
 }
 
 bool show_ai_moves()
+{	
+	return prefs["show_ai_moves"] != "no";
+}
+
+void set_show_ai_moves(bool value)
 {
-	//there is currently a bug with not showing ai moves where
-	//any dialogs that pop up during the ai's turn will not be shown,
-	//due to the display being locked. Thus for the moment, we always
-	//show ai moves.
-	return true;
-	
-	//return prefs["show_ai_moves"] != "no";
+	prefs["show_ai_moves"] = value ? "yes" : "no";
 }
 
 void set_show_side_colours(bool value)
@@ -550,28 +549,29 @@ void show_preferences_dialog(display& disp)
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(scroll_speed());
 
-	gui::button fullscreen_button(disp,string_table["full_screen"],
-	                              gui::button::TYPE_CHECK);
+	gui::button fullscreen_button(disp,string_table["full_screen"],gui::button::TYPE_CHECK);
 
 	fullscreen_button.set_check(fullscreen());
 
 	fullscreen_button.set_location(slider_left,sound_pos + 80);
 
-	gui::button turbo_button(disp,string_table["speed_turbo"],
-	                         gui::button::TYPE_CHECK);
+	gui::button turbo_button(disp,string_table["speed_turbo"],gui::button::TYPE_CHECK);
 	turbo_button.set_check(turbo());
 
 	turbo_button.set_location(slider_left,sound_pos + 80 + 50);
 
-	gui::button grid_button(disp,string_table["grid_button"],
-	                        gui::button::TYPE_CHECK);
+	gui::button show_ai_moves_button(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK);
+	show_ai_moves_button.set_check(!show_ai_moves());
+	show_ai_moves_button.set_location(slider_left,sound_pos + 80 + 100);
+
+	gui::button grid_button(disp,string_table["grid_button"],gui::button::TYPE_CHECK);
 	grid_button.set_check(grid());
 
-	grid_button.set_location(slider_left,sound_pos + 80 + 100);
+	grid_button.set_location(slider_left,sound_pos + 80 + 150);
 
 	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
-	floating_labels_button.set_location(slider_left,sound_pos + 80 + 150);
+	floating_labels_button.set_location(slider_left,sound_pos + 80 + 200);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_location(slider_left,sound_pos + 80 + 250);
@@ -624,6 +624,7 @@ void show_preferences_dialog(display& disp)
 			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
 			fullscreen_button.set_dirty();
 			turbo_button.set_dirty();
+			show_ai_moves_button.set_dirty();
 			grid_button.set_dirty();
 			floating_labels_button.set_dirty();
 			close_button.set_dirty();
@@ -654,6 +655,10 @@ void show_preferences_dialog(display& disp)
 
 		if(turbo_button.process(mousex,mousey,left_button)) {
 			set_turbo(turbo_button.checked());
+		}
+
+		if(show_ai_moves_button.process(mousex,mousey,left_button)) {
+			set_show_ai_moves(!show_ai_moves_button.checked());
 		}
 
 		if(grid_button.process(mousex,mousey,left_button)) {

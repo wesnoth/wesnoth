@@ -71,7 +71,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 	faded_in = true;
 }
 
-const std::string& get_tip_of_day()
+const std::string& get_tip_of_day(int* ntip)
 {
 	static const std::string empty_string;
 	if(preferences::show_tip_of_day() == false) {
@@ -87,7 +87,19 @@ const std::string& get_tip_of_day()
 		return empty_string;
 	}
 
+	if(ntip != NULL && *ntip > 0) {
+		if(*ntip > ntips) {
+			*ntip -= ntips;
+		}
+
+		return string_table["tip_of_day" + str_cast(*ntip)];
+	}
+
 	const int tip = (rand()%ntips) + 1;
+	if(ntip != NULL) {
+		*ntip = tip;
+	}
+
 	return string_table["tip_of_day" + str_cast(tip)];
 }
 
@@ -95,7 +107,7 @@ const std::string& get_tip_of_day()
 
 namespace gui {
 
-TITLE_RESULT show_title(display& screen)
+TITLE_RESULT show_title(display& screen, int* ntip)
 {
 	cursor::set(cursor::NORMAL);
 
@@ -154,28 +166,34 @@ TITLE_RESULT show_title(display& screen)
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
+	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 	std::string style = "mainmenu";
-	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen,&style);
+	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
 
-	std::string tip_of_day = get_tip_of_day();
+	gui::button next_tip_button(screen,string_table["next_tip"]);
+
+	std::string tip_of_day = get_tip_of_day(ntip);
 	if(tip_of_day.empty() == false) {
 		tip_of_day = font::word_wrap_text(tip_of_day,14,(game_config::title_tip_width*screen.x())/1024);
 
 		const std::string& tome = font::word_wrap_text(string_table["tome"],14,(game_config::title_tip_width*screen.x())/1024);
 
+		const int pad = game_config::title_tip_padding;
+
 		SDL_Rect area = font::text_area(tip_of_day,14);
 		SDL_Rect tome_area = font::text_area(tome,14,TTF_STYLE_ITALIC);
-		area.w = maximum<size_t>(area.w,tome_area.w);
-		area.h += tome_area.h;
+		area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
+		area.h += tome_area.h + next_tip_button.location().h + 3*pad;
 
 		area.x = game_config::title_tip_x;
-		area.y = (game_config::title_tip_y*screen.y())/768;
+		area.y = main_dialog_area.y + main_dialog_area.h - area.h;
 
-		const int pad = game_config::title_tip_padding;
-		draw_dialog_frame(area.x-pad,area.y-pad,area.w+pad*2,area.h+pad*2,screen,&style);
+		next_tip_button.set_location(area.x+area.w-next_tip_button.location().w - pad,area.y+area.h - pad - next_tip_button.location().h);
 
-		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tip_of_day,area.x,area.y);
-		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w,area.y+area.h-tome_area.h,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
+		draw_dialog_frame(area.x,area.y,area.w,area.h,screen,&style);
+
+		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
+		font::draw_text(&screen,area,14,font::NORMAL_COLOUR,tome,area.x+area.w-tome_area.w-pad,next_tip_button.location().y-tome_area.h-pad,NULL,false,font::NO_MARKUP,TTF_STYLE_ITALIC);
 	}
 
 	events::raise_draw_event();
@@ -196,9 +214,17 @@ TITLE_RESULT show_title(display& screen)
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
 		for(size_t b = 0; b != buttons.size(); ++b) {
-			if(buttons[b].process(mousex,mousey,left_button)) {
+			if(buttons[b].pressed()) {
 				return TITLE_RESULT(b);
 			}
+		}
+
+		if(next_tip_button.pressed()) {
+			if(ntip != NULL) {
+				*ntip = *ntip + 1;
+			}
+
+			return TITLE_CONTINUE;
 		}
 
 		events::raise_process_event();

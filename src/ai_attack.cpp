@@ -520,7 +520,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		aggression = -4.0;
 	}
 
-	double value = chance_to_kill*target_value - avg_losses;
+	double value = chance_to_kill*target_value - avg_losses*(1.0-aggression);
 
 	if(terrain_quality > alternative_terrain_quality) {
 		//this situation looks like it might be a bad move: we are moving our attackers out

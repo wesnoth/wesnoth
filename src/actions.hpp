@@ -98,7 +98,7 @@ void attack(display& gui, const gamemap& map,
 
 //given the location of a village, will return the 0-based index of the team
 //that currently owns it, and -1 if it is unowned.
-int village_owner(const gamemap::location& loc, std::vector<team>& teams);
+int village_owner(const gamemap::location& loc, const std::vector<team>& teams);
 
 //makes it so the village at the given location is owned by the given
 //0-based team number
