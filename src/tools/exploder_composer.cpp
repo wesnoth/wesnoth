@@ -69,11 +69,13 @@ shared_sdl_surface composer::compose(const std::string &src, const std::string &
 			}
 		}
 		if(verbose_) {
-			std::cerr << "Inserting image " << name << " on position (" << dest_ps.x <<
-				", " << dest_ps.y << ")\n";
+			std::cerr << "Inserting image " << name
+				<< " on position (" << dest_ps.pos.x
+				<< ", " << dest_ps.pos.y << ")\n";
 		}
-		masked_overwrite_surface(dest_surface, src_ps.image, src_ps.mask.image,
-				dest_ps.x, dest_ps.y); 
+		masked_overwrite_surface(dest_surface, src_ps.image,
+				src_ps.mask.image,
+				dest_ps.pos.x, dest_ps.pos.y); 
 	}
 
 	return dest_surface;

@@ -13,7 +13,32 @@
 
 #include "exploder_utils.hpp"
 #include "../game_config.hpp"
+#include "../config.hpp"
 #include <png.h>
+
+exploder_point::exploder_point(const std::string &s)
+{
+	std::vector<std::string> items = config::split(s);
+	if(items.size() != 2) {
+		x = y = 0;
+	} else {
+		x = atoi(items[0].c_str());
+		y = atoi(items[1].c_str());
+	}
+}
+
+exploder_rect::exploder_rect(const std::string &s)
+{
+	std::vector<std::string> items = config::split(s);
+	if(items.size() != 4) {
+		x = y = w = h = 0;
+	} else {
+		x = atoi(items[0].c_str());
+		y = atoi(items[1].c_str());
+		w = atoi(items[2].c_str());
+		h = atoi(items[3].c_str());
+	}
+}
 
 std::string get_mask_dir()
 {

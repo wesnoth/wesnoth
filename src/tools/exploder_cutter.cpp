@@ -55,17 +55,8 @@ void cutter::load_masks(const config& conf)
 		if(image.empty())
 			throw exploder_failure("Missing image for mask " + name);
 
-		int shiftx = 0;
-		int shifty = 0;
-
-		if(!((**itor)["shift"]).empty()) {
-			std::vector<std::string> shift = config::split((**itor)["shift"]);
-			if(shift.size() != 2) 
-				throw exploder_failure("Invalid shift " + (**itor)["shift"]);
-
-			shiftx = atoi(shift[0].c_str());
-			shifty = atoi(shift[1].c_str());
-		}
+		const exploder_point shift((**itor)["shift"]);
+		const exploder_rect cut((**itor)["cut"]);
 
 		if(masks_.find(name) != masks_.end() && masks_[name].filename != image) {
 			throw exploder_failure("Mask " + name + 
@@ -77,14 +68,15 @@ void cutter::load_masks(const config& conf)
 		if(masks_.find(name) == masks_.end()) {
 			mask& cur_mask = masks_[name];
 
+			cur_mask.name = name;
+			cur_mask.shift = shift;
+			cur_mask.cut = cut;
 			cur_mask.filename = image;
 			scoped_sdl_surface tmp(IMG_Load(image.c_str()));
 			if(tmp == NULL)
 				throw exploder_failure("Unable to load mask image " + image);
 
 			cur_mask.image = shared_sdl_surface(make_neutral_surface(tmp));
-			cur_mask.shiftx = shiftx;
-			cur_mask.shifty = shifty;
 		}
 
 		if(masks_[name].image == NULL)
@@ -113,17 +105,12 @@ std::string cutter::find_configuration(const std::string &file)
 	//finds the file prefix. 
 	const std::string fname = file_name(file);
 	const std::string::size_type dotpos = fname.rfind('.');
-	int underscorepos = fname.find('_');
 
-	//sets "underscore pos" to -1 if there is no underscore.
-	if(underscorepos == std::string::npos || underscorepos == file.size()) 
-		underscorepos = -1;
-	
 	std::string basename;
-	if(dotpos == std::string::npos || dotpos < underscorepos) {
-		basename = file.substr(underscorepos + 1);
+	if(dotpos == std::string::npos) {
+		basename = fname;
 	} else {
-		basename = file.substr(underscorepos + 1, dotpos - underscorepos - 1);
+		basename = fname.substr(0, dotpos);
 	}
 
 	return get_exploder_dir() + "/" + basename + ".cfg";
@@ -148,7 +135,7 @@ void cutter::add_sub_image(const shared_sdl_surface &surf, surface_map &map, con
 	int x = atoi(pos[0].c_str());
 	int y = atoi(pos[1].c_str());
 
-	const SDL_Rect cut = {x + mask.shiftx, y + mask.shifty, mask.image->w, mask.image->h};
+	const SDL_Rect cut = {x - mask.shift.x, y - mask.shift.y, mask.image->w, mask.image->h};
 
 	typedef std::pair<std::string, positioned_surface> sme;
 
@@ -158,8 +145,8 @@ void cutter::add_sub_image(const shared_sdl_surface &surf, surface_map &map, con
 		throw exploder_failure("Unable to cut surface!");
 	ps.name = name;
 	ps.mask = mask;
-	ps.x = x + mask.shiftx;
-	ps.y = y + mask.shifty;
+	ps.pos.x = x - mask.shift.x;
+	ps.pos.y = y - mask.shift.y;
 	map.insert(sme(name, ps));
 
 	if(verbose_) {

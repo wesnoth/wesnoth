@@ -21,6 +21,23 @@ AC_CONFIG_HEADER([config.h])
 
 AC_PROG_CXX
 AC_PROG_CC
+have_libx11='no'
+if test "$with_x" != 'no'; then
+
+dnl Locate X include files and libraries
+   AC_PATH_XTRA
+   NEW_LIBS="$X_LIBS -lX11"
+
+   AC_CHECK_LIB(X11, XOpenDisplay, have_libx11='yes',have_libx11='no',$X_LIBS)
+   if test "$have_libx11" != 'no'; then
+     AC_DEFINE(HAVE_LIBX11,,Define if you have X11 libraries)
+     X_LIBS="$NEW_LIBS"
+     CPPFLAGS="$X_CFLAGS $CPPFLAGS"
+     LIBS="$X_LIBS $LIBS"
+   fi
+fi
+
+AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 
 # SDL_CONFIG
 

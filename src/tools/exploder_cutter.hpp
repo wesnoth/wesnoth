@@ -29,16 +29,16 @@ public:
 		std::string name;
 		shared_sdl_surface image;
 		std::string filename;
-		int shiftx;
-		int shifty;
+
+		exploder_point shift;
+		exploder_rect cut;
 	};
 	typedef std::map<std::string, mask> mask_map;
 	struct positioned_surface {
 		positioned_surface() : image(NULL) {};
 
 		std::string name;
-		int x;
-		int y;
+		exploder_point pos;
 		shared_sdl_surface image;
 
 		cutter::mask mask;

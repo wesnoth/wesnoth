@@ -19,11 +19,32 @@
 
 struct exploder_failure
 {
-public:
 	exploder_failure(const std::string& message) :
 	       message(message) {}
 
 	std::string message;
+};
+
+struct exploder_point
+{
+	exploder_point() : x(0), y(0) {};
+	exploder_point(int x, int y) : x(x), y(y) {};
+	exploder_point(const std::string &s);
+
+	int x;
+	int y;
+};
+
+struct exploder_rect
+{
+	exploder_rect() : x(0), y(0), w(0), h(0) {};
+	exploder_rect(int x,int y, int w, int h) : x(x), y(y), w(w), h(h) {};
+	exploder_rect(const std::string &s);
+
+	int x;
+	int y;
+	int w;
+	int h;
 };
 
 std::string get_mask_dir();
