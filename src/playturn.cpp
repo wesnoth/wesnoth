@@ -1272,7 +1272,7 @@ void turn_info::recruit()
 
 		std::stringstream description;
 
-		description << font::IMAGE << type.image() << "," << prefix << font::LARGE_TEXT << type.language_name() << "\n"
+		description << font::IMAGE << type.image() << "," << font::LARGE_TEXT << prefix << type.language_name() << "\n"
 		            << prefix << type.cost() << " " << string_table["gold"];
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));

@@ -260,11 +260,9 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 				} else if(*i1 == BAD_TEXT) {
 					col = BAD_COLOUR;
 					++i1;
-					continue;
 				} else if(*i1 == GOOD_TEXT) {
 					col = GOOD_COLOUR;
 					++i1;
-					continue;
 				} else if(*i1 == NORMAL_TEXT) {
 					col = NORMAL_COLOUR;
 					++i1;
@@ -283,7 +281,6 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 					continue;
 				} else if(*i1 == NULL_MARKUP) {
 					++i1;
-					continue;
 				} else if(*i1 >= 1 && *i1 <= 9) {
 					col = get_side_colour(*i1);
 					++i1;
