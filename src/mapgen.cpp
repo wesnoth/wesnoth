@@ -11,6 +11,7 @@
 
 #include "cavegen.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "mapgen.hpp"
 #include "mapgen_dialog.hpp"
 #include "pathfind.hpp"
@@ -399,195 +400,69 @@ bool is_valid_terrain::operator()(int x, int y) const
 	return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
 }
 
-bool expand_island(std::set<gamemap::location>& res, const is_valid_terrain& valid_terrain)
+int rank_castle_location(int x, int y, const is_valid_terrain& valid_terrain, int min_x, int max_x, int min_y, int max_y,
+						 size_t min_distance, const std::vector<gamemap::location>& other_castles, int highest_ranking)
 {
-	std::set<gamemap::location> new_locs;
-	for(std::set<gamemap::location>::const_iterator i = res.begin(); i != res.end(); ++i) {
-		gamemap::location adj[6];
-		get_adjacent_tiles(*i,adj);
-		for(size_t n = 0; n != 6; ++n) {
-			new_locs.insert(adj[n]);
+	const gamemap::location loc(x,y);
+
+	size_t avg_distance = 0, lowest_distance = 1000;
+
+	for(std::vector<gamemap::location>::const_iterator c = other_castles.begin(); c != other_castles.end(); ++c) {
+		const size_t distance = distance_between(loc,*c);
+		if(distance < 6) {
+			return 0;
 		}
-	}
 
-	bool result = false;
-	for(std::set<gamemap::location>::const_iterator j = new_locs.begin(); j != new_locs.end(); ++j) {
-		if(valid_terrain(j->x,j->y)) {
-			result = true;
-		} else {
-			res.insert(*j);
+		if(distance < lowest_distance) {
+			lowest_distance = distance;
 		}
-	}
 
-	return result;
-}
-
-//a function that takes the location of a castle, and builds an 'island' around that castle
-//if it is not on valid terrain. It will return a set of all locations on which valid terrain
-//must be inserted
-std::set<gamemap::location> build_island_for_castle(const is_valid_terrain& valid_terrain,
-                             const gamemap::location& loc, int iterations=20)
-{
-	std::set<gamemap::location> res;
-	if(valid_terrain(loc.x,loc.y)) {
-		return res;
-	}
-
-	res.insert(loc);
-	while(iterations > 0) {
-		const bool should_return = expand_island(res,valid_terrain);
-		if(should_return) {
+		if(distance < min_distance) {
+			avg_distance = 0;
 			break;
 		}
 
-		--iterations;
+		avg_distance += distance;
 	}
 
-	return res;
-}
-
-//a function that takes the locations of castles, villages, and the map border,
-//and repositions castles to be better located.
-//This function runs the castles through an attraction/repulsion system, where
-// - castles repel each other (strongly)
-// - villages attract castles (mildly)
-// - map borders repel castles (moderately)
-// the aim is to have castles nicely spread out
-void place_castles(std::vector<gamemap::location>& castles, const std::set<gamemap::location>& village_locs,
-				   int min_x, int min_y, int max_x, int max_y, const is_valid_terrain& valid_terrain)
-{
-	std::vector<double> xvelocity, yvelocity;
-	std::vector<gamemap::location>::iterator ci;
-	for(ci = castles.begin(); ci != castles.end(); ++ci) {
-		ci->x *= 1000;
-		ci->y *= 1000;
-		xvelocity.push_back(0.0);
-		yvelocity.push_back(0.0);
+	if(other_castles.empty() == false) {
+		avg_distance /= other_castles.size();
 	}
 
-	std::vector<gamemap::location> villages;
-	for(std::set<gamemap::location>::const_iterator v = village_locs.begin(); v != village_locs.end(); ++v) {
-		villages.push_back(gamemap::location(v->x*1000,v->y*1000));
-	}
-
-	const double force_multiplier = 0.00001;
-
-	const int niterations = 30;
-	for(int i = 0; i != niterations; ++i) {
-
-		//go through each castle, repelling
-		for(ci = castles.begin(); ci != castles.end(); ++ci) {
-			const size_t index = ci - castles.begin();
-			for(std::vector<gamemap::location>::iterator i = castles.begin(); i != castles.end(); ++i) {
-				if(i == ci)
-					continue;
-
-				if(*i == *ci)
-					i->x += 1;
-
-				const double xdist = double(abs(i->x - ci->x));
-				const double ydist = double(abs(i->y - ci->y));
-				const double dist = sqrt(xdist*xdist + ydist*ydist);
-			
-				const double force_size = 50000;
-				if(dist < force_size) {
-					const double power = force_multiplier * (force_size - dist) * (force_size - dist);
-					const double xpower = power * xdist/(xdist+ydist) * (ci->x < i->x ? -1.0 : 1.0);
-					const double ypower = power * ydist/(xdist+ydist) * (ci->y < i->y ? -1.0 : 1.0);
-					xvelocity[index] += xpower;
-					yvelocity[index] += ypower;
-				}
-			}
-
-			//go through each village, attracting
-			for(std::vector<gamemap::location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-				if(v->x < min_x*1000 || v->x > max_x*1000 || v->y < min_y*1000 || v->y > max_y*1000) {
-					continue;
-				}
-
-				const double xdist = double(abs(v->x - ci->x));
-				const double ydist = double(abs(v->y - ci->y));
-				const double dist = sqrt(xdist*xdist + ydist*ydist);
-
-				if(*ci == *v)
-					ci->x += 1;
-			
-				const double force_size = 0; //10000;
-				if(dist < force_size) {
-					const double power = force_multiplier * (force_size - dist) * (force_size - dist);
-					const double xpower = power * xdist/(xdist+ydist) * (ci->x < v->x ? 1.0 : -1.0);
-					const double ypower = power * ydist/(xdist+ydist) * (ci->y < v->y ? 1.0 : -1.0);
-					xvelocity[index] += xpower;
-					yvelocity[index] += ypower;
-				}			
-			}
-
-			//repel from the borders
-			const int border_force = 20000;
-			if(ci->x < min_x*1000 + border_force) {
-				const double force = (border_force - (ci->x - min_x*1000));
-				const double power = force_multiplier * force * force;
-				xvelocity[index] += power;
-			}
-
-			if(ci->x > max_x*1000 - border_force) {
-				const double force = (border_force - (max_x*1000 - ci->x));
-				const double power = force_multiplier * force * force;
-				xvelocity[index] -= power;
-			}
-
-			if(ci->y < min_y*1000 + border_force) {
-				const double force = (border_force - (ci->y - min_y*1000));
-				const double power = force_multiplier * force * force;
-				yvelocity[index] += power;
-			}
-
-			if(ci->y > max_y*1000 - border_force) {
-				const double force = (border_force - (max_y*1000 - ci->y));
-				const double power = force_multiplier * force * force;
-				yvelocity[index] -= power;
-			}
-
-			const double friction = 0.8;
-			xvelocity[index] *= friction;
-			yvelocity[index] *= friction;
-
-			ci->x += int(xvelocity[index]);
-			ci->y += int(yvelocity[index]);
-
-			if(valid_terrain(ci->x/1000,ci->y/1000) == false) {
-				ci->x -= int(xvelocity[index]);
-				ci->y -= int(xvelocity[index]);
-			}
-
-			if(ci->x > max_x*1000) {
-				xvelocity[index] *= -1.0;
-				ci->x = max_x*1000;
-			}
-
-			if(ci->x < min_x*1000) {
-				xvelocity[index] *= -1.0;
-				ci->x = min_x*1000;
-			}
-
-			if(ci->y > max_y*1000) {
-				yvelocity[index] *= -1.0;
-				ci->y = max_y*1000;
-			}
-
-			if(ci->y < min_y*1000) {
-				yvelocity[index] *= -1.0;
-				ci->y = min_y*1000;
+	for(int i = x-1; i <= x+1; ++i) {
+		for(int j = y-1; j <= y+1; ++j) {
+			if(!valid_terrain(i,j)) {
+				return 0;
 			}
 		}
 	}
 
-	for(ci = castles.begin(); ci != castles.end(); ++ci) {
-		ci->x /= 1000;
-		ci->y /= 1000;
-		ci->x = minimum<int>(maximum<int>(ci->x,min_x),max_x);
-		ci->y = minimum<int>(maximum<int>(ci->y,min_y),max_y);
+	const int x_from_border = minimum<int>(x - min_x,max_x - x);
+	const int y_from_border = minimum<int>(y = min_y,max_y - y);
+
+	const int border_ranking = min_distance - minimum<int>(x_from_border,y_from_border) +
+	                           min_distance - x_from_border - y_from_border;
+
+	int current_ranking = border_ranking*2 + avg_distance*10 + lowest_distance*10;
+	static const int num_nearby_locations = 11*11;
+
+	const int max_possible_ranking = current_ranking + num_nearby_locations;
+
+	if(max_possible_ranking < highest_ranking) {
+		return current_ranking;
 	}
+
+	int surrounding_ranking = 0;
+	
+	for(int xpos = x-5; xpos <= x+5; ++xpos) {
+		for(int ypos = y-5; ypos <= y+5; ++ypos) {
+			if(valid_terrain(xpos,ypos)) {
+				++surrounding_ranking;
+			}
+		}
+	}
+
+	return surrounding_ranking + current_ranking;
 }
 
 gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> >& map,
@@ -858,108 +733,39 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//'min_distance' hexes from each other, and the castles appear on a terrain listed
 	//in 'valid_terrain'.
 	std::vector<location> castles;
-	int ntries = 0;
-	bool placing_bad = true;
-	const size_t max_tries = 4;
-	while(placing_bad && ntries++ < max_tries) {
+	std::set<location> failed_locs;
 
-		castles.clear();
+	for(size_t player = 0; player != nplayers; ++player) {
+		std::cerr << "placing castle for " << player << "\n";
+		log_scope("placing castle");
+		const int min_x = width/3 + 2;
+		const int min_y = height/3 + 2;
+		const int max_x = (width/3)*2 - 3;
+		const int max_y = (height/3)*2 - 3;
+		const size_t min_distance = atoi((*castle_config)["min_distance"].c_str());
 
-		int min_x = width/3 + 2;
-		int min_y = height/3 + 2;
-		int max_x = (width/3)*2 - 3;
-		int max_y = (height/3)*2 - 3;
-
-		if(island_off_center == 0 && island_size > 0) {
-			const int center_x = (min_x + max_x)/2;
-			const int center_y = (min_y + max_y)/2;
-			const int island_left = center_x - island_size;
-			const int island_right = center_x + island_size;
-			const int island_top = center_y - island_size;
-			const int island_bot = center_y + island_size;
-
-			min_x = maximum<int>(min_x,island_left);
-			max_x = minimum<int>(max_x,island_right);
-			min_y = maximum<int>(min_y,island_top);
-			max_y = minimum<int>(max_y,island_bot);
-		}
-
-		for(size_t player = 0; player != nplayers; ++player) {
-			int x = 0, y = 0;
-			const int max_tries = 10;
-			for(int i = 0; i != max_tries; ++i) {
-				x = min_x + (rand()%(max_x - min_x));
-				y = min_y + (rand()%(max_y - min_y));
-
-				if(terrain_tester(x,y)) {
-					break;
-				}
-			}
-
-			castles.push_back(location(x,y));
-		}
-
-		place_castles(castles,villages,min_x,min_y,max_x,max_y,terrain_tester);
-
-		//make sure all castles are placed on valid terrain. Check the castle tile
-		//itself, and all surrounding tiles
-		placing_bad = false;
-		std::vector<location>::const_iterator c;
-		for(c = castles.begin(); c != castles.end() && placing_bad == false; ++c) {
-			placing_bad = terrain_tester(c->x,c->y) == false;
-		}
-
-		if(placing_bad && ntries < max_tries) {
-			continue;
-		}
-
-		//make sure all castles are a minimum distance away from each other
-		const int min_distance = atoi((*castle_config)["min_distance"].c_str());
-		for(std::vector<location>::const_iterator c1 = castles.begin(); c1 != castles.end(); ++c1) {
-			for(std::vector<location>::const_iterator c2 = c1+1; c2 != castles.end(); ++c2) {
-				if(distance_between(*c1,*c2) < min_distance) {
-					placing_bad = true;
-					break;
-				}
-			}
-		}
-
-		if(placing_bad && ntries < max_tries)
-			continue;
-
-		
-		//make sure castles are on valid terrain
-		for(c = castles.begin(); c != castles.end(); ++c) {
-			const std::set<gamemap::location>& locs = build_island_for_castle(terrain_tester,*c);
-
-			//there should be a high chance of castles placed on invalid terrain getting
-			//villages near them, since they are likely on bad terrain, and should get
-			//some compensation
-			const config* const village_info = cfg.find_child("village","terrain",flatland);
-			int village_chance = 0;
-			std::string village;
-			if(village_info != NULL) {
-				village_chance = atoi((*village_info)["chance"].c_str())/10;
-				village = (*village_info)["convert_to"];
-			}
-
-			for(std::set<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-				const int x = i->x;
-				const int y = i->y;
-
-				if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
+		location best_loc;
+		int best_ranking = -1;
+		for(int x = min_x; x != max_x; ++x) {
+			for(int y = min_y; y != max_y; ++y) {
+				const location loc(x,y);
+				if(failed_locs.count(loc)) {
 					continue;
 				}
 
-				terrain[x][y] = flatland[0];
+				const int ranking = rank_castle_location(x,y,terrain_tester,min_x,max_x,min_y,max_y,min_distance,castles,best_ranking);
+				if(ranking <= 0) {
+					failed_locs.insert(loc);
+				}
 
-				if((rand()%100) < village_chance && village != "") {
-					terrain[x][y] = village[0];
+				if(ranking > best_ranking) {
+					best_ranking = ranking;
+					best_loc = loc;
 				}
 			}
 		}
 
-		std::cerr << "placing " << castles.size() << " castles\n";
+		castles.push_back(best_loc);
 	}
 
 	std::cerr << "placing roads...\n";
@@ -1099,7 +905,11 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 
 	//now that road drawing is done, we can plonk down the castles.
-	for(std::vector<location>::const_iterator c = castles.begin(); c != castles.end() && placing_bad == false; ++c) {
+	for(std::vector<location>::const_iterator c = castles.begin(); c != castles.end(); ++c) {
+		if(c->valid() == false) {
+			continue;
+		}
+
 		const int x = c->x;
 		const int y = c->y;
 		const int player = c - castles.begin();
