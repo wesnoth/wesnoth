@@ -3,13 +3,18 @@ CVS HEAD:
    * canyons
    * signpost
  * improved sound quality
- * new commands: clear, w, wq, q, debug, n
- * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
+ * improved in-game help
+ * new "vi" commands: clear, w, wq, q, debug, n
+ * new tutorial
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Black Flag
+   * Silent Forest
  * storyline fixes to 'The Eastern Invasion' campaign
  * scenario balancing for 'The Eastern Invasion' campaign:
-   * Weldyn under attack
+   * Weldyn Under Attack
    * The Crossing
    * Mal-Ravanals Capital
+   * The Arena
  * scenario balancing for 'The Rise of Wesnoth' campaign:
    * Temple of the Deep
    * Lizard Beach
@@ -33,6 +38,7 @@ CVS HEAD:
  * new units
    * Drake Hatchling
    * Drake Warmage
+   * Great Troll
    * Skeletal Dragon
    * Troll Hero
    * Orcish Leader
@@ -41,7 +47,6 @@ CVS HEAD:
    * 'Great War' era
    * limit to username lenght
    * banning for multiplayer server games
- * Scenario balancing for most of 'Son of the Black Eye' scenarios
  * language fixes and polishing (english)
  * support for multi-animation attacks
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
@@ -68,6 +73,8 @@ CVS HEAD:
  * fixed problems with cache invalidation
  * fixed file descriptor leak
  * fixed 'gender' not working with move_unit_fake
+ * fixed grüü losing experience when joining
+ * fixed units moving through water not being submerged while moving
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * limited length of schema items in compressed WML to make a DoS attack harder to perform 
