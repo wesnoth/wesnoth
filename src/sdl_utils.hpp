@@ -45,7 +45,7 @@ struct free_sdl_surface {
 struct surface
 {
 private:
-	int sdl_add_ref(SDL_Surface* surf);
+	inline int sdl_add_ref(SDL_Surface* surf);
 	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 public:
 	surface() : surface_(NULL) 
@@ -83,6 +83,15 @@ public:
 private:
 	scoped_sdl_surface surface_;
 };
+
+int surface::sdl_add_ref(SDL_Surface* surf)
+{
+	if(surf != NULL) {
+		return surf->refcount++;
+	} else {
+		return 0;
+	}
+}
 
 bool operator<(const surface& a, const surface& b);
 

@@ -72,7 +72,7 @@ public:
 	bool animation_finished() const;
 	int get_animation_time() const;
 	int get_frame_time() const;
-	const T& get_current_frame() const;
+	inline const T& get_current_frame() const;
 	const T& get_base_frame() const;
 	
 private:
@@ -324,10 +324,10 @@ const T& animated<T,T_void_value>::get_current_frame() const
 {
 	if(no_current_frame_ == true)
 		return void_value_;
-	if(!frames_[current_frame_].has_value)
+	const frame& cur = frames_[current_frame_];
+	if(!cur.has_value)
 		return void_value_;
-
-	return frames_[current_frame_].value;
+	return cur.value;
 }
 
 template<typename T,  typename T_void_value>

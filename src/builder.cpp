@@ -179,15 +179,19 @@ bool terrain_builder::update_animation(const gamemap::location &loc)
 	return changed;
 }
 
+// TODO: rename this function 
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
 	if (tile_map_.on_map(loc)) {
 		tile& btile = tile_map_[loc];
-		btile.clear();
+		// btile.images.clear();
+		btile.images_foreground.clear();
+		btile.images_background.clear();
 		const std::string filename =
 			map_.get_terrain_info(map_.get_terrain(loc)).default_image();
-		animated<image::locator> img_loc(filename);
-		btile.images_foreground.push_back(img_loc);
+		animated<image::locator> img_loc("terrain/" + filename + ".png");
+		img_loc.start_animation(0, animated<image::locator>::INFINITE_CYCLES);
+		btile.images_background.push_back(img_loc);
 	}
 }
 

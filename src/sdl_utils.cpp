@@ -66,14 +66,6 @@ void free_sdl_surface::operator()(SDL_Surface* surf) const
 {
 }
 
-int surface::sdl_add_ref(SDL_Surface* surf)
-{
-	if(surf != NULL) {
-		return surf->refcount++;
-	} else {
-		return 0;
-	}
-}
 
 surface make_neutral_surface(surface surf)
 {
