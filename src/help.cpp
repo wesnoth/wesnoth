@@ -974,7 +974,7 @@ std::vector<topic> generate_ability_topics() {
 	// Look through all the unit types, check if a unit of this type
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
-	// not enountered yet.
+	// not encountered yet.
 	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
 	    i != game_info->unit_types.end(); i++) {
 		const unit_type &type = (*i).second;
@@ -1730,6 +1730,12 @@ void help_text_area::handle_ref_cfg(const config &cfg) {
 	bool show_ref = true;
 	if (find_topic(toplevel_, dst) == NULL && !force) {
 		show_ref = false;
+		if (game_config::debug) {
+			std::string msg = "Reference to non-existent topic '" + dst +
+				"'. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
+			msg += write(cfg);
+			throw parse_error(msg);
+		}
 	}
 	if (dst == "") {
 		std::string msg = 
