@@ -1371,6 +1371,13 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		weight_sum += weight;
 	}
 
+	// catch division by zero here if the attacking unit
+	// has zero attacks and/or zero damage
+	// if it has no attack at all the ai shouldn't prefer
+	// that unit anyway
+	if (weight_sum == 0) {
+		return 0;
+	}
 	return sum/weight_sum;
 }
 
