@@ -918,10 +918,11 @@ void display::draw_minimap(int x, int y, int w, int h)
 	SDL_BlitSurface(surface,NULL,video().getSurface(),&loc);
 
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(fogged(u->first.x,u->first.y) || u->second.invisible(
-					map_.underlying_terrain(map_[u->first.x][u->first.y]), 
-					status_.get_time_of_day().lawful_bonus,u->first,
-					units_,teams_))
+		if(fogged(u->first.x,u->first.y) || 
+				(teams_[currentTeam_].is_enemy(u->second.side()) &&
+				u->second.invisible(map_.underlying_terrain(map_[u->first.x][u->first.y]), 
+				status_.get_time_of_day().lawful_bonus,u->first,
+				units_,teams_)))
 			continue;
 
 		const int side = u->second.side();
