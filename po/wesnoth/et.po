@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-02-27 15:46+0300\n"
+"PO-Revision-Date: 2005-03-04 17:27+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -264,6 +264,13 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"Ründaja lööb esimesena, siis kaitsja. See jätkub kordamööda, kuni mõlemad "
+"üksused on ära kasutanud kõik oma rünnakud. Rünnakute arv varieerub: näiteks "
+"haldjasõdalane 5-4 mõõgarünnakuga võib teha 4 lööki, neist igaüks tekitab 5 "
+"punkti kahju, samas kui mäekollide reamees 9-2 rünnakuga saab ainult 2 korda "
+"lüüa (aga tekitab löögiga 9 punkti kahju)."
 
 #: data/help.cfg:109
 msgid ""
@@ -329,7 +336,7 @@ msgstr ""
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Kahju tüübid ja vastupidavus"
 
 #: data/help.cfg:124
 msgid ""
@@ -3204,7 +3211,7 @@ msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 msgid "stab"
-msgstr ""
+msgstr "pussitama"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
@@ -3539,7 +3546,7 @@ msgstr ""
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
-msgstr ""
+msgstr "Surmaisand"
 
 #: data/units/Deathmaster.cfg:16
 msgid ""
@@ -3921,8 +3928,9 @@ msgstr ""
 "rünnakute surve all."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
+#, fuzzy
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Hullunud kääbus"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -3932,8 +3940,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Dwarvish_Steelclad.cfg:3
+#, fuzzy
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Hullunud kääbus"
 
 #: data/units/Dwarvish_Steelclad.cfg:24
 msgid ""
@@ -3975,7 +3984,7 @@ msgstr "draakonikepp"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Märatsev kääbus"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
@@ -4281,8 +4290,9 @@ msgid "female^Elvish Sharpshooter"
 msgstr "Haldjate täpsuskütt"
 
 #: data/units/Elvish_Shyde.cfg:3
+#, fuzzy
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Tasuja Haldjas"
 
 #: data/units/Elvish_Shyde.cfg:20
 msgid ""
@@ -4377,13 +4387,15 @@ msgstr "Tulepall. Seda ei kasutata mitte millekski muuks kui 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Kannupoiss"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
 "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
 "places and people to rob."
 msgstr ""
+"Kasimata kanupoisid otsivad bandiidijõukude jaoks röövimiseks sobivaid kohti "
+"välja."
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
 #: data/units/Troll.cfg:20 data/units/Troll_Hero.cfg:20
@@ -4399,7 +4411,7 @@ msgstr "ling"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
-msgstr ""
+msgstr "Kannupoiss"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -4718,7 +4730,7 @@ msgstr "morgernstern"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "Hobusemees"
 
 #: data/units/Horseman.cfg:17
 msgid ""
@@ -4775,7 +4787,7 @@ msgstr ""
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "Piigimees"
 
 #: data/units/Lancer.cfg:17
 msgid ""
@@ -4784,6 +4796,10 @@ msgid ""
 "offensive use. While their charges inflict large amounts of damage, they "
 "also expose the Lancers to great risk."
 msgstr ""
+"Piigimehed on julgeimad ja kardetuimad ratsamehed terves Wesnothis. Nad "
+"kannavad vähe turvist ja ratsutavad tänu sellele kiirelt, ideaalsed "
+"ründetegevuseks. Kuigi nende rünnakud tekitavad tohutut kahju, on piigimehed "
+"seejuures suures ohus."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
@@ -4800,7 +4816,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Leitnant"
 
 #: data/units/Lieutenant.cfg:21
 msgid ""
@@ -4811,13 +4827,15 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Pikkvibumehed"
 
 #: data/units/Longbowman.cfg:18
 msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
+"Pikkvibumehed kannavad kaasas erilisi vibusid, mida nad on pikkade "
+"lahinguaastatega käsitsema õppinud. Nende lasud läbistavad isegi turvise."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:78
 msgid "Lord"
@@ -5221,7 +5239,7 @@ msgstr "treeningmõõk"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
-msgstr ""
+msgstr "Sookoll"
 
 #: data/units/Ogre.cfg:16
 msgid ""
@@ -5280,7 +5298,7 @@ msgstr "lühike mõõk"
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr "Mäekollide röhkija"
+msgstr "Mäekollide reamees"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -5288,6 +5306,9 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
+"Mäekollide reamehed moodustavad mäekollide sõjaväe tuumiku. Kuigi "
+"aeglasemad, kui inimeste või haldjate sõjamehed, löövad reamehed võimsamalt "
+"ja peavad enne langemist kauem vastu."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
@@ -5875,7 +5896,7 @@ msgstr ""
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
-msgstr ""
+msgstr "Mõõgamees"
 
 #: data/units/Swordsman.cfg:20
 msgid ""
@@ -6463,14 +6484,12 @@ msgid "Scenario Start"
 msgstr "Stsenaariumi algus"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Raskusaste"
+msgstr "Raskusaste:"
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Versioon"
+msgstr "Versioon:"
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -6533,20 +6552,17 @@ msgid "level"
 msgstr "tase"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "HP"
+msgstr "HP:"
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "XP"
+msgstr "XP:"
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Käigud"
+msgstr "Käigud:"
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -6715,7 +6731,7 @@ msgstr "Tõmban kampaaniat..."
 
 #: src/game.cpp:1174
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Ei saa failisüsteemi skaneerida"
 
 #: src/game.cpp:1185
 msgid "Campaign Installed"
@@ -6822,24 +6838,20 @@ msgid "Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Edutatakse"
+msgstr "Edutatakse:"
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Võimed"
+msgstr "Võimed:"
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Meelelaad"
+msgstr "Meelelaad:"
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "Nõutud XP"
+msgstr "Nõutud XP:"
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -6960,7 +6972,7 @@ msgstr "Kaardigeneraator"
 #: src/mapgen_dialog.cpp:82
 #, fuzzy
 msgid "Players:"
-msgstr "Mängijad"
+msgstr "Mängijad:"
 
 #: src/mapgen_dialog.cpp:83
 #, fuzzy
@@ -7266,28 +7278,24 @@ msgid "You must enter a name."
 msgstr "Sa pead sisestama nime."
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "Turns: "
-msgstr "Käike"
+msgstr "Käike:"
 
 #: src/multiplayer_create.cpp:197
 msgid "Unlimited Turns"
 msgstr "Piiramatud käigud"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Külade kuld"
+msgstr "Külade kuld:"
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Kogemuspunktide modifikaator"
+msgstr "Kogemuspunktide modifikaator:"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Players: "
-msgstr "Mängijad"
+msgstr "Mängijad:"
 
 #: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -7366,33 +7374,28 @@ msgid "You have been defeated!"
 msgstr "Sind on alistatud!"
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Alles jäänud kuld"
+msgstr "Alles jäänud kuld:"
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Kiire lõpetamise preemia"
+msgstr "Kiire lõpetamise preemia:"
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "käigu kohta"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Järgi jäänud käikude arv"
+msgstr "Järgi jäänud käikude arv:"
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Preemia"
+msgstr "Preemia:"
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Kuld"
+msgstr "Kuld:"
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -7400,9 +7403,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% kullast kandub üle järgmisesse stsenaariumi."
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "säilitatud kuld"
+msgstr "Säilitatud kuld:"
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -7572,9 +7574,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Sul peab üksuse tagasi kutsumiseks olema vähemalt $gold kullatükki."
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "tase"
+msgstr "tase:"
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -7703,9 +7704,8 @@ msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "See üksus on nähtamatu. Vastase üksused teda ei näe ja rünnata ei saa."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "nähtamatu"
+msgstr "nähtamatu:"
 
 #: src/reports.cpp:111
 msgid ""
@@ -7716,9 +7716,8 @@ msgstr ""
 "korra vähem, kui tavaliselt."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "aeglustatud"
+msgstr "aeglustatud:"
 
 #: src/reports.cpp:116
 msgid ""
@@ -7734,37 +7733,32 @@ msgstr ""
 "Ainult mürgist üksuste tapmiseks ei piisa. Mürk vähendab elusid 1 HP-ni."
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "mürgitatud"
+msgstr "mürgitatud:"
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "See üksus on kivistatud. Ta ei või liikuda ega rünnata."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "kivi"
+msgstr "kivi:"
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "kahju"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Kuulekad üksused"
+msgstr "Kuulekad üksused:"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Neutraalsed üksused"
+msgstr "Neutraalsed üksused:"
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Korratud üksused"
+msgstr "Korratud üksused:"
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -7871,6 +7865,3 @@ msgstr "neutraalne"
 
 #~ msgid "Players"
 #~ msgstr "Mängijad"
-
-#~ msgid "Team "
-#~ msgstr "Meeskond"
