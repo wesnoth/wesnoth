@@ -83,6 +83,9 @@ namespace {
 	const size_t Minimap_y = 11;
 	const size_t Minimap_w = 119;
 	const size_t Minimap_h = 146;
+
+	const std::string RightSideTop = "misc/rightside.png";
+	const std::string RightSideBot = "misc/rightside-bottom.png";
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -389,20 +392,20 @@ void display::draw(bool update,bool force)
 {
 	if(!sideBarBgDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* image_top = getImage("misc/rightside.png",UNSCALED);
-		SDL_Surface* image = getImage("misc/rightside-bottom.png",UNSCALED);
+		SDL_Surface* image_top = getImage(RightSideTop,UNSCALED);
+		SDL_Surface* image = getImage(RightSideBot,UNSCALED);
 		if(image_top != NULL && image != NULL && image_top->h < screen->h) {
 
 			if(image_top->h+image->h != screen->h) {
 				SDL_FreeSurface(image);
-				images_.erase("misc/rightside-bottom.png");
+				images_.erase(RightSideBot);
 
-				image = getImage("misc/rightside-bottom.png",UNSCALED);
+				image = getImage(RightSideBot,UNSCALED);
 
 				SDL_Surface* const new_image
 				   = scale_surface(image,image_top->w,screen->h-image_top->h);
 				if(new_image != NULL) {
-					images_["misc/rightside-bottom.png"] = new_image;
+					images_[RightSideBot] = new_image;
 					SDL_FreeSurface(image);
 					image = new_image;
 					sidebarScaling_ = static_cast<double>(screen->h)/768.0;
@@ -533,7 +536,7 @@ void display::draw_game_status(int x, int y)
 
 	if(gameStatusRect_.w > 0) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* const background=getImage("misc/rightside.png",UNSCALED);
+		SDL_Surface* const background=getImage(RightSideTop,UNSCALED);
 
 		if(background == NULL)
 			return;
@@ -615,9 +618,8 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
-	SDL_Surface* const background = getImage("misc/rightside.png",UNSCALED);
-	SDL_Surface* const background_bot =
-	                         getImage("misc/rightside-bottom.png",UNSCALED);
+	SDL_Surface* const background = getImage(RightSideTop,UNSCALED);
+	SDL_Surface* const background_bot = getImage(RightSideBot,UNSCALED);
 
 	if(background == NULL || background_bot == NULL)
 		return;
