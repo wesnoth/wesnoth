@@ -316,7 +316,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				chat_invalidated = true;
 			}
 
-			if(dlg == NULL && (last_escape == false && key[SDLK_ESCAPE] || quit_game.process(mousex,mousey,left_button))){
+			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.process(mousex,mousey,left_button)){
 				return QUIT;
 			}
 
