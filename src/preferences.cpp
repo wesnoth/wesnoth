@@ -47,6 +47,8 @@ bool message_private_on = true;
 
 bool haloes = true;
 
+bool unit_genders = true;
+
 std::set<std::string> encountered_units_set;
 std::set<std::string> encountered_terrains_set;
 
@@ -62,6 +64,7 @@ manager::manager()
 
 	set_colour_cursors(prefs["colour_cursors"] == "yes");
 	set_show_haloes(prefs["show_haloes"] != "no");
+	set_show_unit_genders(prefs["unit_genders"] != "no");
 
 	std::vector<std::string> v;
 	v = config::split(prefs["encountered_units"]);
@@ -558,6 +561,17 @@ void set_show_haloes(bool value)
 {
 	haloes = value;
 	prefs["show_haloes"] = value ? "yes" : "no";
+}
+
+bool show_unit_genders()
+{
+	return unit_genders;
+}
+
+void set_show_unit_genders(bool value)
+{
+	prefs["unit_genders"] = value ? "yes" : "no";
+	unit_genders = value;
 }
 
 std::set<std::string> &encountered_units() {
