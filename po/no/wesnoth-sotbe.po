@@ -1,17 +1,8 @@
-# #-#-#-#-#  wesnoth-sotbe.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#
-# #-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#
 # Norwegian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
 #
-# #-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#
-# Norwegian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
-#
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
@@ -23,17 +14,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-sotbe.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-sotbe.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:7
 msgid "Black Flag"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:28
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -43,6 +30,13 @@ msgid ""
 "#Death of Grüü\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn fiendens leder\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Tiden renner ut"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:121
 msgid "Transport Galleon"
@@ -107,8 +101,9 @@ msgid "Pillage!  Let's plunder these orcs!"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:272
+#, fuzzy
 msgid "Aaaargh!  I die!"
-msgstr ""
+msgstr "Fillern også."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Black_Flag.cfg:277
 msgid "Finally you paid for all of what you did to my Orc brothers!"
@@ -151,6 +146,7 @@ msgid "Clash of Armies"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:30
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -161,6 +157,14 @@ msgid ""
 "#Death of Grüü\n"
 "#Death of Inarix"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn fiendens leder\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør\n"
+"#Li'sar dør"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:197
 msgid "So here we are, they are preparing to assault."
@@ -216,8 +220,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:263
+#, fuzzy
 msgid "Great."
-msgstr ""
+msgstr "Den store krigen"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Clash_Of_Armies.cfg:269
 msgid "Then, the battle for Prestim began."
@@ -262,10 +267,12 @@ msgid "No!  The walls of prestim are destroyed, we are done!"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:8
+#, fuzzy
 msgid "The Desert of Death"
-msgstr ""
+msgstr "Dødens Dal"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:29
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -275,6 +282,13 @@ msgid ""
 "#Death of Grüü\n"
 "#Death of a Shaman"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn begge fiendens ledere\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Desert_Of_Death.cfg:116
 msgid ""
@@ -321,6 +335,7 @@ msgid "End Of Peace"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:28
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -329,6 +344,12 @@ msgid ""
 "#Death of Kapou'e\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn begge fiendens ledere\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Tiden renner ut"
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:98
 msgid ""
@@ -342,8 +363,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:108
+#, fuzzy
 msgid "The battle begun."
-msgstr ""
+msgstr "Kampen om Wesnoth"
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:120
 msgid "Argh!  I die!  But other humans will go and slay you, filthy orcs!"
@@ -360,8 +382,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:139
+#, fuzzy
 msgid "What should be do, chief?"
-msgstr ""
+msgstr "Hva mener du?"
 
 #: data/scenarios/Son_Of_The_Black_Eye/End_Of_Peace.cfg:144
 msgid ""
@@ -456,6 +479,7 @@ msgid "Shan Taum The Smug"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:29
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -465,6 +489,13 @@ msgid ""
 "#Death of Grüü\n"
 "#Death of a shaman"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overlev i to dager\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:94
 msgid "At last, here are the mourned hills!  I hope everything will be OK."
@@ -524,8 +555,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:164
+#, fuzzy
 msgid "Well, ermmm..."
-msgstr ""
+msgstr "Vel, vi...vi..."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Shan_Taum_The_Smug.cfg:169
 msgid ""
@@ -582,10 +614,12 @@ msgid "Nooo!  Don't kill me, I surrender to you little earthworm."
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:8
+#, fuzzy
 msgid "Silent Forest"
-msgstr ""
+msgstr "Skog"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:29
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -595,6 +629,13 @@ msgid ""
 "#Death of Grüü\n"
 "#Death of a Shaman"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn fiendens ledere\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Silent_Forest.cfg:110
 msgid ""
@@ -653,10 +694,12 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:6
+#, fuzzy
 msgid "The Siege Of Barag Gór"
-msgstr ""
+msgstr "Beleiringen av Elensefar"
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:29
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -668,6 +711,14 @@ msgid ""
 "#Death of a Shaman\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn fiendens ledere\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør\n"
+"#Tiden renner ut"
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:136
 msgid "Here is Barag Gor."
@@ -709,8 +760,9 @@ msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:230
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:283
+#, fuzzy
 msgid "They are retreating at last!"
-msgstr ""
+msgstr "De ødelegger hjemmet vårt!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:235
 msgid ""
@@ -771,8 +823,9 @@ msgid "We've made it!  Our journey is still long.  Hurry up, my people!"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:406
+#, fuzzy
 msgid "They are destroying our castle!  To my rescue my merry Elves!"
-msgstr ""
+msgstr "De ødelegger hjemmet vårt!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/The_Siege_Of_Barag_Gor.cfg:419
 msgid ""
@@ -784,6 +837,7 @@ msgid "To the harbour of Tirigaz"
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:43
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -794,6 +848,13 @@ msgid ""
 "#Death of Grüü\n"
 "#Death of a Shaman"
 msgstr ""
+"\n"
+"Seier:\n"
+"@Overvinn fiendens ledere\n"
+"Nederlag:\n"
+"#Konrad dør\n"
+"#Delfador dør\n"
+"#Kalenz dør"
 
 #: data/scenarios/Son_Of_The_Black_Eye/To_The_Harbour_Of_Tirigaz.cfg:153
 msgid "Ahhh, I'm so tired.  It was a good idea to halt in such a quiet place."
@@ -859,14 +920,11 @@ msgid ""
 "#Death of Kapou'e\n"
 "#Turns run out"
 msgstr ""
-"#-#-#-#-#  wesnoth-sotbe.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "\n"
 "Seier:\n"
-"@Flytt Konrad til skiltet i nordvest\n"
+"@Rydd området for monstre\n"
 "Nederlag:\n"
-"#Konrad dør\n"
-"#Delfador dør\n"
+"#Gwiti Ha'atel dør\n"
 "#Tiden renner ut"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:104
@@ -940,8 +998,9 @@ msgid "Our troll friends are over.  Without them there is no hope."
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:260
+#, fuzzy
 msgid "Argh!  I die!"
-msgstr ""
+msgstr "Fillern også."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:287
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:315
