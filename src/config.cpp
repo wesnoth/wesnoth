@@ -418,7 +418,7 @@ void config::read(const std::string& data,
 	std::string var;
 	std::string value;
 
-	bool in_quotes = false, has_quotes = false;
+	bool in_quotes = false, has_quotes = false, in_comment = false;
 
 	int line = 0;
 
@@ -427,8 +427,18 @@ void config::read(const std::string& data,
 		if(c == '\r') //ignore any DOS-style newlines
 			continue;
 
-		if(c == '\n')
+		if(c == '\n') {
+			in_comment = false;
 			++line;
+		}
+
+		if(*i == '#' && !in_quotes) {
+			in_comment = true;
+		}
+
+		if(in_comment) {
+			continue;
+		}
 
 		switch(state) {
 			case ELEMENT_NAME:
@@ -441,10 +451,11 @@ void config::read(const std::string& data,
 							std::stringstream err;
 
 							if(line_sources != NULL) {
-								const line_source src =
-								        get_line_source(*line_sources,line);
+								const line_source src = get_line_source(*line_sources,line);
 
 								err << src.file << " " << src.fileline << ": ";
+							} else {
+								err << "line " << line << ": ";
 							}
 
 							err << "Found illegal end tag: '" << value
@@ -477,7 +488,7 @@ void config::read(const std::string& data,
 
 						break;
 					}
-					;
+
 					elements.push(&elements.top()->add_child(value));
 					element_names.push(value);
 					state = IN_ELEMENT;

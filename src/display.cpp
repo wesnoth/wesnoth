@@ -457,8 +457,6 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {
-	image::verify_minimap("begin display::draw");
-	log_scope("display::draw");
 	if(!panelsDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
 
@@ -477,7 +475,6 @@ void display::draw(bool update,bool force)
 		}
 
 		//invalidate the reports so they are redrawn
-		std::cerr << "invalidating reports...\n";
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
@@ -500,18 +497,14 @@ void display::draw(bool update,bool force)
 	}
 
 	if(redrawMinimap_) {
-		std::cerr << "drawing minimap...\n";
 		redrawMinimap_ = false;
 		const SDL_Rect area = minimap_area();
 		draw_minimap(area.x,area.y,area.w,area.h);
-		std::cerr << "done drawing minimap...\n";
 	}
 
 
 	if(!map_.empty()) {
-		std::cerr << "sidebar...\n";
 		draw_sidebar();
-		std::cerr << "done sidebar...\n";
 	}
 
 	const int max_skips = 5;
@@ -523,9 +516,7 @@ void display::draw(bool update,bool force)
 	//TODO: review whether this is the correct thing to do
 	SDL_Delay(maximum<int>(10,wait_time));
 
-	std::cerr << "up...\n";
 	if(update) {
-		std::cerr << "up+\n";
 		lastDraw_ = SDL_GetTicks();
 
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force)
@@ -534,9 +525,6 @@ void display::draw(bool update,bool force)
 			drawSkips_++;
 
 	}
-
-	std::cerr << "ret\n";
-	image::verify_minimap("end display::draw");
 }
 
 void display::update_display()

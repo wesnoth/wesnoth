@@ -198,4 +198,14 @@ private:
 	SDL_Rect rect;
 };
 
+//SDL 1.2.x has a bug where after a blit, a surface stores the surface it was last
+//blitted to. This is a problem, because if the surface is freed, and then a new
+//one created in the same memory location, it will think its blitter knows how to
+//blit to that surface when it doesn't.
+//
+//This function will invalidate the cache, to keep the problem from occurring.
+void invalidate_sdl_surface_cache(SDL_Surface* surf);
+
+void sdl_safe_blit(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* dst, SDL_Rect* dstrect);
+
 #endif

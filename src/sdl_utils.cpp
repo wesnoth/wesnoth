@@ -47,6 +47,7 @@ SDL_Surface* make_neutral_surface(SDL_Surface* surf)
 	}
 
 	SDL_Surface* const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
+	invalidate_sdl_surface_cache(surf);
 	if(result != NULL) {
 		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 	}
@@ -115,6 +116,7 @@ SDL_Surface* clone_surface(SDL_Surface* surface)
 		return NULL;
 
 	SDL_Surface* const result = SDL_DisplayFormatAlpha(surface);
+	invalidate_sdl_surface_cache(surface);
 	if(result == surface) {
 		std::cerr << "resulting surface is the same as the source!!!\n";
 	}
@@ -472,7 +474,7 @@ SDL_Surface* flop_surface(SDL_Surface* surface)
 	for(size_t y = 0; y != surface->h; ++y) {
 		SDL_Rect srcrect = {0,y,surface->w,1};
 		SDL_Rect dstrect = {0,surface->h-y-1,surface->w,1};
-		SDL_BlitSurface(surface,&srcrect,dest,&dstrect);
+		sdl_safe_blit(surface,&srcrect,dest,&dstrect);
 	}
 
 	return dest;
@@ -505,7 +507,7 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 
 	SDL_Rect dstarea = {0,0,0,0};
 
-	SDL_BlitSurface(src,&area,dst,&dstarea);
+	sdl_safe_blit(src,&area,dst,&dstarea);
 
 	return dst;
 }
@@ -627,7 +629,7 @@ surface_restorer::~surface_restorer()
 void surface_restorer::restore()
 {
 	if(surface_ != NULL) {
-		::SDL_BlitSurface(surface_,NULL,target_->getSurface(),&rect_);
+		sdl_safe_blit(surface_,NULL,target_->getSurface(),&rect_);
 		update_rect(rect_);
 	}
 }
@@ -643,4 +645,23 @@ void surface_restorer::update()
 void surface_restorer::cancel()
 {
 	surface_.assign(NULL);
+}
+
+//dummy definition of this SDL-private data structure, so that we can clear
+//the surface's cache
+struct SDL_BlitMap {
+	SDL_Surface* dst;
+};
+
+void invalidate_sdl_surface_cache(SDL_Surface* surf)
+{
+	if(surf->map->dst != SDL_GetVideoSurface()) {
+		surf->map->dst = NULL;
+	}
+}
+
+void sdl_safe_blit(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* dst, SDL_Rect* dstrect)
+{
+	SDL_BlitSurface(src,srcrect,dst,dstrect);
+	invalidate_sdl_surface_cache(src);
 }
