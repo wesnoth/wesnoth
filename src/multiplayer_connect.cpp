@@ -187,7 +187,7 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		}
 		if (found == false) {
 			gui::show_dialog(*disp_, NULL, "", 
-					 string_table["error_no_part_of_game"],
+					 string_table["error_not_part_of_game"],
 					 gui::OK_ONLY);
 			status_ = -1;
 			return status_;
