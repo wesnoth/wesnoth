@@ -57,8 +57,8 @@ command_disabler::~command_disabler()
 }
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
-               gamestatus& status, const config& terrain_config, config* level,
-               CKey& key, display& gui, gamemap& map,
+               gamestatus& status, const config& terrain_config,
+               config* level, CKey& key, display& gui, gamemap& map,
                std::vector<team>& teams, int team_num,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
@@ -320,7 +320,7 @@ void turn_info::mouse_motion(int x, int y)
 		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
-			} else if(current_team.is_enemy(mouseover_unit->second.side())) {
+			} else if(current_team.is_enemy(mouseover_unit->second.side()) && !mouseover_unit->second.stone()) {
 				cursor::set(cursor::ATTACK);
 			} else {
 				cursor::set(cursor::NORMAL);
@@ -346,7 +346,7 @@ void turn_info::mouse_motion(int x, int y)
 			unit_map::const_iterator un = find_unit(selected_hex_);
 			const unit_map::const_iterator dest_un = find_unit(dest);
 
-			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && dest_un == units_.end()) {
+			if((new_hex != last_hex_ || attack_from.valid()) && un != units_.end() && dest_un == units_.end() && !un->second.stone()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
@@ -800,7 +800,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 	paths orig_paths = current_paths_;
 
 	//see if we're trying to do a move-and-attack
-	if(!browse_ && u != units_.end() && enemy != units_.end()) {
+	if(!browse_ && u != units_.end() && enemy != units_.end() && !current_route_.steps.empty()) {
 		const gamemap::location preferred = hex.get_direction(nearest_hex);
 		const gamemap::location& attack_from = current_unit_attacks_from(hex,&preferred);
 		if(attack_from.valid()) {
@@ -808,7 +808,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				u = find_unit(attack_from);
 				enemy = find_unit(hex);
 				if(u != units_.end() && u->second.side() == team_num_ &&
-				   enemy != units_.end() && current_team().is_enemy(enemy->second.side())) {
+				   enemy != units_.end() && current_team().is_enemy(enemy->second.side()) && !enemy->second.stone()) {
 					if(attack_enemy(u,enemy) == false) {
 						undo();
 						selected_hex_ = src;
@@ -2093,6 +2093,7 @@ void turn_info::unit_list()
 	                            _("Name") + COLUMN_SEPARATOR +
 	                            _("HP") + COLUMN_SEPARATOR +
 	                            _("XP") + COLUMN_SEPARATOR +
+	                            _("Traits") + COLUMN_SEPARATOR +
 	                            _("Moves") + COLUMN_SEPARATOR +
 	                            _("Location");
 
@@ -2117,6 +2118,7 @@ void turn_info::unit_list()
 			row << i->second.max_experience();
 
 		row << COLUMN_SEPARATOR
+		    << i->second.traits_description() << COLUMN_SEPARATOR
 		    << i->second.movement_left() << "/"
 		    << i->second.total_movement() << COLUMN_SEPARATOR
 		    << (i->first.x + 1) << "-" << (i->first.y + 1);
