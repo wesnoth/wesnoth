@@ -310,9 +310,9 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 }
 
 void terrain_palette::update_report() {
-	const std::string msg = translate_string("edit_foreground_short") + ": "
+	const std::string msg = std::string(_("FG")) + ": "
 		+ get_terrain_string(selected_fg_terrain()) + "\n"
-		+ translate_string("edit_background_short") +
+		+ std::string(_("BG")) +
 		": " + get_terrain_string(selected_bg_terrain());
 	reports::set_report_content(reports::SELECTED_TERRAIN, msg);
 }

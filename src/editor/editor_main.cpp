@@ -14,6 +14,7 @@
 #include "editor.hpp"
 #include "../config.hpp"
 #include "../game_config.hpp"
+#include "../gettext.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../image.hpp"
@@ -32,6 +33,13 @@
 
 int main(int argc, char** argv)
 {
+	setlocale (LC_ALL, "");
+
+	const std::string& intl_dir = get_intl_dir();
+	bindtextdomain ("wesnoth-editor", intl_dir.c_str());
+	textdomain ("wesnoth-editor");
+	bind_textdomain_codeset ("wesnoth-editor", "UTF-8");
+
 	game_config::editor = true;
 
 	int arg;
