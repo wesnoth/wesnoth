@@ -388,7 +388,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//find the first eligible unit
 	for(u = units_.begin(); u != units_.end(); ++u) {
-		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0)) {
+		if(!(u->second.side() != team_num_ || u->second.can_recruit() || u->second.movement_left() <= 0 || u->second.incapacitated())) {
 			break;
 		}
 	}
@@ -454,7 +454,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
-			   u->second.movement_left() <= 0 || u->second.is_guardian()) {
+			   u->second.movement_left() <= 0 || u->second.is_guardian() || u->second.incapacitated()) {
 				continue;
 			}
 	
