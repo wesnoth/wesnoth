@@ -470,10 +470,7 @@ std::vector<topic> generate_weapon_special_topics() {
 				const std::string special = (*it).special();
 				if (special != "") {
 					if (checked_specials.find(special) == checked_specials.end()) {
-						std::string lang_special = string_table["weapon_special_" + special];
-						if (lang_special == "") {
-							lang_special = special;
-						}
+						std::string lang_special = gettext(special.c_str());
 						lang_special = cap(lang_special);
 						std::string description
 							= string_table["weapon_special_" + special + "_description"];
