@@ -99,7 +99,7 @@ const config* generate_game_options(const config& terrain_data, const config& ga
 		}
 
 		options.push_back(str.str());
-		game_vacant_slots.push_back(slots != "" && slots != "0");
+		game_vacant_slots.push_back(turn.empty() && slots != "" && slots != "0");
 		game_observers.push_back((**i.first)["observer"] != "no");
 	}
 
@@ -315,7 +315,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			
 			const bool games_available = game_vacant_slots.empty() == false;
 			const bool double_click = games_menu.double_clicked();
-			const bool observe = observe_game.pressed() || !games_available && double_click;
+			const bool observe = observe_game.pressed() || games_available && double_click && join_game.hidden();
 			if(games_available && (observe || join_game.pressed() || double_click)) {
 				const size_t index = size_t(games_menu.selection());
 				const config::const_child_itors i = gamelist->child_range("game");
