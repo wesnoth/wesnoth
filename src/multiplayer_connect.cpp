@@ -37,8 +37,7 @@ namespace {
 
 namespace mp {
 
-connect::side::side(connect& parent, const config& cfg, int index, int default_gold,
-		bool enabled) :
+connect::side::side(connect& parent, const config& cfg, int index) :
 	parent_(&parent),
 
 	cfg_(cfg),
@@ -59,17 +58,17 @@ connect::side::side(connect& parent, const config& cfg, int index, int default_g
 
 	llm_(parent.era_sides_, &parent.game_data_, &combo_leader_),
 
-	enabled_(enabled),
+	enabled_(!parent_->params_.saved_game),
 	changed_(false)
 {
 	SDL_Rect r;
-	r.w = 64;
+	r.w = 120;
 	r.h = 16;
 
 	slider_gold_.set_min(20);
 	slider_gold_.set_max(1000);
 	slider_gold_.set_increment(25);
-	slider_gold_.set_value(lexical_cast_default<int>(cfg_["gold"], default_gold));
+	slider_gold_.set_value(lexical_cast_default<int>(cfg_["gold"], 100));
 	slider_gold_.set_location(r);
 
 	combo_faction_.enable(enabled_);
@@ -83,7 +82,7 @@ connect::side::side(connect& parent, const config& cfg, int index, int default_g
 	faction_ = lexical_cast_default<int>(cfg_["team"], 0);
 	team_ = lexical_cast_default<int>(cfg_["team"], index_);
 	colour_ = lexical_cast_default<int>(cfg_["colour"], index_);
-	gold_ = lexical_cast_default<int>(cfg_["gold"], default_gold);
+	gold_ = lexical_cast_default<int>(cfg_["gold"], 100);
 
 	// "Faction name" hack
 	if (!enabled_) {
@@ -277,10 +276,17 @@ config connect::side::get_config() const
 		} else {
 			res["type"] = leader_;
 		}
-		res["team"] = lexical_cast<std::string>(team_);
+		// res["team"] = lexical_cast<std::string>(team_);
 		res["team_name"] = lexical_cast<std::string>(team_ + 1);
 		res["colour"] = lexical_cast<std::string>(colour_);
 		res["gold"] = lexical_cast<std::string>(gold_);
+
+		res["fog"] = parent_->params_.fog_game ? "yes" : "no";
+		res["shroud"] = parent_->params_.shroud_game ? "yes" : "no";
+		res["share_maps"] = parent_->params_.share_maps ? "yes" : "no";
+		res["share_view"] =  parent_->params_.share_view ? "yes" : "no";
+		res["village_gold"] = lexical_cast<std::string>(parent_->params_.village_gold);
+		res["experience_modifier"] = lexical_cast<std::string>(parent_->params_.xp_modifier);
 
 		res["allow_changes"] = "yes";
 	} else {
@@ -411,6 +417,8 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	mp::ui(disp, game_config, c, gamelist),
 
 	game_data_(data),
+	level_(),
+	params_(params),
 
 	waiting_label_(disp, _("")),
 	message_full_(false),
@@ -433,8 +441,8 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	create_game["name"] = params.name;
 	network::send_data(response);
 
-	load_game(params);
-	lists_init(!params.saved_game);
+	load_game();
+	lists_init();
 
 	// Adds the current user as default user.
 	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
@@ -755,7 +763,7 @@ void connect::layout_children(const SDL_Rect& rect)
 	scroll_pane_.set_location(scroll_pane_rect);
 }
 
-void connect::lists_init(bool changes_allowed)
+void connect::lists_init()
 {
 	//Options
 	player_types_.push_back(_("Network Player"));
@@ -817,7 +825,7 @@ void connect::lists_init(bool changes_allowed)
 	sides_.reserve(sides.second - sides.first);
 	int index = 0;
 	for(sd = sides.first; sd != sides.second; ++sd, ++index) {
-		sides_.push_back(side(*this, **sd, index, 100, changes_allowed));
+		sides_.push_back(side(*this, **sd, index));
 	}
 	// This function must be called after the sides_ vector is fully populated.
 	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
@@ -829,9 +837,9 @@ void connect::lists_init(bool changes_allowed)
 }
 
 // Called by the constructor to initialize the game from a create::parameters structure.
-void connect::load_game(const create::parameters& params)
+void connect::load_game()
 {
-	if(params.saved_game) {
+	if(params_.saved_game) {
 		bool show_replay = false;
 		const std::string game = dialogs::load_game_dialog(disp(), game_config(), game_data_, &show_replay);
 		if(game.empty()) {
@@ -880,13 +888,13 @@ void connect::load_game(const create::parameters& params)
 		// Gets the era from the era of the savegame
 		era_ = level_["era"];
 		if(era_.empty())
-			era_ = params.era;
+			era_ = params_.era;
 
 	} else {
-		level_ = params.scenario_data;
-		level_["turns"] = lexical_cast_default<std::string>(params.num_turns, "20");
+		level_ = params_.scenario_data;
+		level_["turns"] = lexical_cast_default<std::string>(params_.num_turns, "20");
 
-		era_ = params.era;
+		era_ = params_.era;
 		level_["era"] = era_;
 	}
 	
@@ -902,10 +910,13 @@ void connect::load_game(const create::parameters& params)
 
 	state_.label = level_["name"];
 	state_.players.clear();
-	state_.scenario = params.name;
+	state_.scenario = params_.name;
 	state_.campaign_type = "multiplayer";
 
-	level_["observers"] = params.allow_observers ? "yes" : "no";
+	if(!params_.saved_game) 
+		level_["experience_modifier"] = lexical_cast<std::string>(params_.xp_modifier);
+
+	level_["observers"] = params_.allow_observers ? "yes" : "no";
 
 	if(level_["objectives"].empty()) {
 		level_["objectives"] = _("Victory\n\

@@ -61,6 +61,7 @@ public:
 	};
 
 	create(display& dist, const config& game_config, chat& c, config& gamelist);
+	~create();
 
 	parameters& get_parameters();
 

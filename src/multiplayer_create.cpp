@@ -66,31 +66,32 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 
 	//create the scenarios menu
 	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(0);
+	if (preferences::map() < map_options_.size())
+		maps_menu_.move_selection(preferences::map());
 	maps_menu_.set_numeric_keypress_selection(false);
 
 	turns_slider_.set_min(20);
 	turns_slider_.set_max(100);
-	turns_slider_.set_value(50);
+	turns_slider_.set_value(preferences::turns());
 	turns_slider_.set_help_string(_("The maximum turns the game will go for"));
 
 	village_gold_slider_.set_min(1);
 	village_gold_slider_.set_max(5);
-	village_gold_slider_.set_value(1);
+	village_gold_slider_.set_value(preferences::village_gold());
 	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
 	xp_modifier_slider_.set_min(25);
 	xp_modifier_slider_.set_max(200);
-	xp_modifier_slider_.set_value(100);
+	xp_modifier_slider_.set_value(preferences::xp_modifier());
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	fog_game_.set_check(false);
+	fog_game_.set_check(preferences::fog());
 	fog_game_.set_help_string(_("Enemy units cannot be seen unless they are in range of your units"));
 
-	shroud_game_.set_check(false);
+	shroud_game_.set_check(preferences::shroud());
 	shroud_game_.set_help_string(_("The map is unknown until your units explore it"));
 
-	observers_game_.set_check(true);
+	observers_game_.set_check(preferences::allow_observers());
 	observers_game_.set_help_string(_("Allow users who are not playing to watch the game"));
 
 	// The possible vision settings
@@ -113,13 +114,30 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 		throw config::error(_("No eras found"));
 	}
 	era_combo_.set_items(eras);
-	era_combo_.set_selected(0);
+
+	if (preferences::era() < eras.size())
+		era_combo_.set_selected(preferences::era());
 
 	string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	name_entry_.set_text(vgettext("$login's game", i18n_symbols));
 
 	gamelist_updated();
+}
+
+create::~create()
+{
+	get_parameters();
+
+	//Save values for next game
+	preferences::set_allow_observers(parameters_.allow_observers);
+	preferences::set_fog(parameters_.fog_game);
+	preferences::set_shroud(parameters_.shroud_game);
+	preferences::set_turns(parameters_.num_turns);
+	preferences::set_village_gold(parameters_.village_gold);
+	preferences::set_xp_modifier(parameters_.xp_modifier);
+	preferences::set_era(era_combo_.selected()); // FIXME: may be broken if new eras are added
+	preferences::set_map(map_selection_);
 }
 
 create::parameters& create::get_parameters() 
@@ -315,8 +333,8 @@ void create::hide_children(bool hide)
 	observers_game_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
-	regenerate_map_.hide(hide);
-	generator_settings_.hide(hide);
+	regenerate_map_.hide(hide || generator_ == NULL);
+	generator_settings_.hide(hide || generator_ == NULL);
 
 	era_combo_.hide(hide);
 	vision_combo_.hide(hide);
@@ -379,8 +397,9 @@ void create::layout_children(const SDL_Rect& rect)
 	maps_menu_.set_max_height(ca.x + ca.h - ypos);
 	maps_menu_.set_location(xpos, ypos);
 	// Menu dimensions are only updated when items are set. So do this now.
+	int mapsel_save = maps_menu_.selection();
 	maps_menu_.set_items(map_options_);
-	maps_menu_.move_selection(map_selection_);
+	maps_menu_.move_selection(mapsel_save);
 
 	// Third column: big buch of options
 	ypos = ypos_columntop + border_size;
