@@ -117,10 +117,10 @@ void show_about(display& disp)
  	text.push_back("+ ");
 
  	text.push_back("+Packagers");
- 	text.push_back("-   Cyril Bouthors (CyrilB)");
- 	text.push_back("-   Marcus Phillips (Sithrandel)");
- 	text.push_back("-   Darryl Dixon");
  	text.push_back("-   ahwayakchih");
+ 	text.push_back("-   Cyril Bouthors (CyrilB)");
+ 	text.push_back("-   Darryl Dixon");
+ 	text.push_back("-   Marcus Phillips (Sithrandel)");
  	text.push_back("-   Mark Michelsen (skovbaer)");
  	text.push_back("+ ");
 
@@ -174,10 +174,10 @@ void show_about(display& disp)
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
- 	text.push_back("-   RokStar");
  	text.push_back("-   crys0000");
- 	text.push_back("-   isazi");
  	text.push_back("-   Federico Tomassetti");
+ 	text.push_back("-   isazi");
+ 	text.push_back("-   RokStar");
  	text.push_back("+ ");
  
  	text.push_back("+Norwegian Translation");
