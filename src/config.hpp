@@ -24,18 +24,6 @@
 #include <string>
 #include <vector>
 
-// gettext-related declarations
-#include <clocale>
-#define _(String) gettext(String)
-#define gettext_noop(String) String
-#define N_(String) gettext_noop (String)
-
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#else
-# warning "This platform will need to define parameters like LOCALEDIR"
-#endif
-
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
 //is defined in Wiki, under BuildingScenariosWML
