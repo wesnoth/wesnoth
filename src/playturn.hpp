@@ -13,17 +13,13 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
+class display;
+class gamestatus;
 class replay_network_sender;
 
 #include "actions.hpp"
-#include "ai_interface.hpp"
 #include "config.hpp"
-#include "dialogs.hpp"
-#include "display.hpp"
 #include "events.hpp"
-#include "game_config.hpp"
-#include "game_events.hpp"
-#include "gamestatus.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
 #include "scoped_resource.hpp"
@@ -33,7 +29,6 @@ class replay_network_sender;
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit.hpp"
-#include "video.hpp"
 
 #include "widgets/button.hpp"
 #include "widgets/textbox.hpp"

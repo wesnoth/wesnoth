@@ -13,10 +13,13 @@
 
 #include "global.hpp"
 
+#include "ai_interface.hpp"
 #include "cursor.hpp"
+#include "dialogs.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
+#include "game_events.hpp"
 #include "halo.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"

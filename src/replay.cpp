@@ -17,6 +17,7 @@
 #include "ai_interface.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
+#include "game_events.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"

@@ -14,7 +14,9 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "dialogs.hpp"
 #include "events.hpp"
+#include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"

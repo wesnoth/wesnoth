@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "ai.hpp"
 #include "game_events.hpp"
 #include "image.hpp"
 #include "language.hpp"

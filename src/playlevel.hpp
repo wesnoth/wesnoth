@@ -13,26 +13,14 @@
 #ifndef PLAY_LEVEL_HPP_INCLUDED
 #define PLAY_LEVEL_HPP_INCLUDED
 
-#include "actions.hpp"
-#include "ai_interface.hpp"
-#include "config.hpp"
-#include "dialogs.hpp"
-#include "display.hpp"
+class config;
+class CVideo;
+
 #include "game_config.hpp"
 #include "gamestatus.hpp"
-#include "key.hpp"
-#include "pathfind.hpp"
-#include "show_dialog.hpp"
-#include "team.hpp"
 #include "unit_types.hpp"
-#include "unit.hpp"
-#include "video.hpp"
 
-#include <cmath>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <string>
+#include <vector>
 
 enum LEVEL_RESULT { VICTORY, DEFEAT, QUIT, LEVEL_CONTINUE, LEVEL_CONTINUE_NO_SAVE };
 
