@@ -387,6 +387,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int total_image_width = caption_width > image_width ?
 	                              caption_width : image_width;
 	const int image_height = image != NULL ? image->h : 0;
+	const int total_image_height = image_height + caption_size.h;
 
 	int text_width = text_size.w;
 	if(menu_.width() > text_width)
@@ -400,8 +401,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(text_widget_width+left_padding+right_padding > total_width)
 		total_width = text_widget_width+left_padding+right_padding;
 
-	const int total_height = (image_height+8 > text_size.h ?
-	                          image_height+8 : text_size.h) +
+	const int total_height = (total_image_height > text_size.h ?
+	                          total_image_height : text_size.h) +
 	                         padding_height + button_heights + menu_.height() +
 							 text_widget_height + check_button_height;
 
@@ -470,7 +471,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		font::draw_text(&disp, clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
 						xloc+left_padding+center_font,
-		                yloc+top_padding+image->h-6, NULL);
+		                yloc+top_padding+image->h, NULL);
 	}
 
 	const int unitw = 200;
