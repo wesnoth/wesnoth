@@ -258,11 +258,12 @@ void map_editor::edit_save_as() {
 	int res = 0;
 	int overwrite = 0;
 	do {
-		res = dialogs::show_file_chooser_dialog(gui_, input_name, "Choose a File to Save As");
+		res = dialogs::show_file_chooser_dialog(gui_, input_name,
+												translate_string("edit_choose_file_save_as"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				overwrite = gui::show_dialog(gui_, NULL, "Overwrite?",
-											 "Map already exists. Do you want to overwrite it?",
+				overwrite = gui::show_dialog(gui_, NULL,
+											 "", translate_string("edit_save_as_confirm_overwrite"),
 											 gui::YES_NO);
 			}
 			else
@@ -283,8 +284,8 @@ void map_editor::edit_set_start_pos() {
 		str << "Player " << i;
 		players.push_back(str.str());
 	}
-	const int res = gui::show_dialog(gui_, NULL, "Which Player?",
-									 "Which player should start here?",
+	const int res = gui::show_dialog(gui_, NULL, translate_string("edit_which_player_title"),
+									 translate_string("edit_which_player"),
 									 gui::OK_CANCEL, &players);
 	if (res >= 0) {
 		set_starting_position(res, selected_hex_);
@@ -326,7 +327,8 @@ void map_editor::edit_new_map() {
 void map_editor::edit_load_map() {
 	std::string fn = filename_ == "" ?
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
-	int res = dialogs::show_file_chooser_dialog(gui_, fn, "Choose a Map to Load");
+	int res = dialogs::show_file_chooser_dialog(gui_, fn,
+												translate_string("edit_choose_map_to_load"));
 	if (res == 0) {
 		std::string new_map;
 		try {
@@ -343,7 +345,7 @@ void map_editor::edit_load_map() {
 			}
 		}
 		else {
-			gui::show_dialog(gui_, NULL, "", "The file does not contain a valid map.", gui::OK_ONLY);
+			gui::show_dialog(gui_, NULL, "", translate_string("edit_not_valid_map"), gui::OK_ONLY);
 		}
 	}
 }
@@ -418,7 +420,7 @@ void map_editor::edit_revert() {
 		throw new_map_exception(new_map, filename_);
 	}
 	else {
-		gui::show_dialog(gui_, NULL, "", "The file does not contain a valid map.", gui::OK_ONLY);
+		gui::show_dialog(gui_, NULL, "", translate_string("edit_not_valid_map"), gui::OK_ONLY);
 	}
 }
 
@@ -466,11 +468,13 @@ void map_editor::edit_select_all() {
 
 std::string map_editor::load_map(const std::string filename) {
 	bool load_successful = true;
-	std::string msg = "'";
+	std::string msg;
 	std::string new_map;
+	string_map symbols;
+	symbols["filename"] = filename;
 	if (!file_exists(filename) || is_directory(filename)) {
 		load_successful = false;
-		msg += filename + "' does not exist or can't be read as a file.";
+		msg = translate_string("edit_file_not_exists_or_cant_be_read");
 	}
 	else {
 		try {
@@ -482,7 +486,10 @@ std::string map_editor::load_map(const std::string filename) {
 		}
 	}
 	if (!load_successful) {
-		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
+		const std::string failed_msg = translate_string("edit_load_failed");
+		const std::string show_msg = failed_msg +
+			config::interpolate_variables_into_string(msg, &symbols);
+		gui::show_dialog(gui_, NULL, "", show_msg, gui::OK_ONLY);
 		throw load_map_exception();
 	}
 	else {
@@ -667,7 +674,7 @@ void map_editor::set_starting_position(const int player, const gamemap::location
 	}
 	else {
 		gui::show_dialog(gui_, NULL, "",
-						 "You must have a hex selected on the board.", gui::OK_ONLY);
+						 translate_string("edit_must_have_hex_selected"), gui::OK_ONLY);
 	}
 }
 
@@ -905,13 +912,13 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 }
 
 bool map_editor::confirm_exit_and_save() {
-	if (gui::show_dialog(gui_, NULL, "Exit?",
-						 "Do you want to exit the map editor?", gui::YES_NO) != 0) {
+	if (gui::show_dialog(gui_, NULL, "",
+						 translate_string("quit_message"), gui::YES_NO) != 0) {
 		return false;
 	}
 	if (changed_since_save() &&
-		gui::show_dialog(gui_, NULL, "Save?",
-						 "Do you want to save the map before exiting?", gui::YES_NO) == 0) {
+		gui::show_dialog(gui_, NULL, "",
+						 translate_string("edit_save_before_quit"), gui::YES_NO) == 0) {
 		if (!save_map("", false)) {
 			return false;
 		}
@@ -931,13 +938,16 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		write_file(filename, map_.write());
 		num_operations_since_save_ = 0;
 		if (display_confirmation) {
-			gui::show_dialog(gui_, NULL, "", "Map saved.", gui::OK_ONLY);
+			gui::show_dialog(gui_, NULL, "", translate_string("edit_save_confirmed"),
+							 gui::OK_ONLY);
 		}
 	}
 	catch (io_exception e) {
-		std::string msg = "Could not save the map: "; 
-		msg += e.what();
-		gui::show_dialog(gui_, NULL, "", msg, gui::OK_ONLY);
+		const std::string msg = translate_string("edit_save_failed");
+		string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string show_msg = config::interpolate_variables_into_string(msg, &symbols);
+		gui::show_dialog(gui_, NULL, "", show_msg, gui::OK_ONLY);
 		return false;
 	}
 	return true;
@@ -1003,7 +1013,7 @@ void map_editor::recalculate_starting_pos_labels() {
 		gamemap::location loc = map_.starting_position(i);
 		if (loc.valid()) {
 			std::stringstream ss;
-			ss << "Player " << i;
+			ss << translate_string("edit_player") << i;
 			gui_.labels().set_label(loc, ss.str());
 			starting_positions_.push_back(loc);
 		}

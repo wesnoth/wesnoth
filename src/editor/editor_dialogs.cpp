@@ -16,6 +16,7 @@
 #include "../show_dialog.hpp"
 #include "../config.hpp"
 #include "../events.hpp"
+#include "../language.hpp"
 #include "../game_config.hpp"
 #include "../mapgen.hpp"
 #include "../filesystem.hpp"
@@ -41,7 +42,7 @@ namespace map_editor {
 
 bool confirm_modification_disposal(display& disp) {
 	const int res = gui::show_dialog(disp, NULL, "",
-									 "Your modifications to the map will be lost. Continue?",
+									 translate_string("edit_modifications_lost_confirm"),
 									 gui::OK_CANCEL);
 	return res == 0;
 }
@@ -68,7 +69,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-					      "Create New Map",0,0);
+					      translate_string("edit_create_new_map_title"),0,0);
 
 	const std::string& width_label = string_table["map_width"] + ":";
 	const std::string& height_label = string_table["map_height"] + ":";
@@ -87,10 +88,10 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button new_map_button(disp,"Generate New Map With Selected Terrain");
-	gui::button random_map_button(disp,"Generate Random Map");
-	gui::button random_map_setting_button(disp,"Random Generator Setting");
-	gui::button cancel_button(disp,"Cancel");
+	gui::button new_map_button(disp, translate_string("edit_generate_new_map"));
+	gui::button random_map_button(disp, translate_string("edit_generate_random_map"));
+	gui::button random_map_setting_button(disp, translate_string("edit_random_generator_settings"));
+	gui::button cancel_button(disp, translate_string("cancel_button"));
 
 	new_map_button.set_location(xpos + horz_margin,height_rect.y + height_rect.h + vertical_margin);
 	random_map_button.set_location(xpos + horz_margin,ypos + height - random_map_button.height()-14*2-vertical_margin);
@@ -166,8 +167,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 				const std::string map =
 					random_map_generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
-					gui::show_dialog(disp, NULL, "Creation Failed",
-									 "Map creation failed.", gui::OK_ONLY);
+					gui::show_dialog(disp, NULL, "",
+									 translate_string("edit_map_creation_failed"), gui::OK_ONLY);
 				}
 				return map;
 			}
@@ -181,7 +182,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-										 "Create New Map",xpos+(width-title_rect.w)/2,ypos+10);
+										 translate_string("edit_create_new_map_title"),
+										 xpos+(width-title_rect.w)/2,ypos+10);
 
 			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
 							width_label,width_rect.x,width_rect.y);
@@ -221,47 +223,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 }
 
 
-std::string load_map_dialog(display &disp) {
-	const std::string system_path = game_config::path + "/data/maps/";
-	std::vector<std::string> files;
-	get_files_in_dir(system_path,&files);
-	files.push_back("Enter Path...");
-	files.push_back("Local Map...");
-  
-	std::string filename;
-	const int res = gui::show_dialog(disp, NULL, "",
-					 "Choose map to edit:", gui::OK_CANCEL, &files);
-	if(res == int(files.size()-1)) {
-		std::vector<std::string> user_files;
-		const std::string user_path = get_user_data_dir() + "/editor/maps/";
-		get_files_in_dir(user_path,&user_files);
-		const int res = gui::show_dialog(disp, NULL, "",
-						 "Choose map to edit:", gui::OK_CANCEL, &user_files);
-		if (res < 0 || user_files.empty()) {
-			return "";
-		}
-		filename = user_path + user_files[res];
-	}
-	else if (res == int(files.size() - 2)) {
-		filename = get_user_data_dir() + "/editor/maps/";
-		const int res = gui::show_dialog(disp, NULL, "",
-										 "Enter map to edit:", gui::OK_CANCEL,
-										 NULL, NULL, "", &filename);
-		if (res != 0) {
-			return "";
-		}
-	}
-	else if(res < 0 || files.empty()) {
-		return "";
-	}
-	else {
-		filename = system_path + files[res];
-	}
-	return filename;
-}
-
 void preferences_dialog(display &disp, config &prefs) {
-	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager dialog_mgr;
 	
@@ -412,7 +374,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-					      "Resize Map",0,0);
+					      translate_string("edit_resize_map_title"),0,0);
 
 	const std::string& width_label = string_table["map_width"] + ":";
 	const std::string& height_label = string_table["map_height"] + ":";
@@ -431,8 +393,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button cancel_button(disp,"Cancel");
-	gui::button ok_button(disp,"Ok");
+	gui::button cancel_button(disp, translate_string("cancel_button"));
+	gui::button ok_button(disp, translate_string("ok_button"));
 
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
@@ -470,7 +432,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-										 "Resize Map",xpos+(width-title_rect.w)/2,ypos+10);
+										 translate_string("edit_resize_map_title"),
+										 xpos+(width-title_rect.w)/2,ypos+10);
 
 			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
 							width_label,width_rect.x,width_rect.y);
@@ -512,11 +475,12 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 
 FLIP_AXIS flip_dialog(display &disp) {
 	std::vector<std::string> items;
-	items.push_back("X-Axis");
-	items.push_back("Y-Axis");
+	items.push_back(translate_string("edit_x_axis"));
+	items.push_back(translate_string("edit_y_axis"));
+	const std::string msg = translate_string("edit_flip_around");
 	const int res =
 		gui::show_dialog(disp, NULL, "",
-						 "Flip around\n(this may change the\ndimensions of the map):",
+						 font::word_wrap_text(msg, 12, 180),
 						 gui::OK_CANCEL, &items);
 	switch (res) {
 	case 0:

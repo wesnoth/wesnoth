@@ -36,12 +36,6 @@ bool confirm_modification_disposal(display &disp);
 std::string new_map_dialog(display &disp, gamemap::TERRAIN fill_terrain,
 						   bool confirmation_needed, const config &gconfig);
 
-
-/// Show a dialog where the user may chose a map to load. Return the
-/// filename of the chosen file. An empty string is returned if no file
-/// is chosen.
-std::string load_map_dialog(display &disp);
-
 /// Show a dialog where the user may set the preferences used in the
 /// editor.
 void preferences_dialog(display &disp, config &prefs);
