@@ -495,6 +495,9 @@ private:
 
 	//variables for help strings
 	int help_string_;
+
+	//animated flags for each team
+	std::vector<animated<image::locator> > flags_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

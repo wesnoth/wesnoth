@@ -47,6 +47,7 @@ namespace game_config
 	std::string partmoved_energy_image = "partmoved-energy.png";
 	std::string enemy_energy_image = "enemy-energy.png";
 	std::string ally_energy_image = "ally-energy.png";
+	std::string flag_image = "terrain/flag-team%d.png";
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
@@ -114,6 +115,7 @@ namespace game_config
 		partmoved_energy_image = v["partmoved_energy_image"];
 		enemy_energy_image = v["enemy_energy_image"];
 		ally_energy_image = v["ally_energy_image"];
+		flag_image = v["flag_image"];
 
 		cross_image = v["cross_image"];
 		dot_image = v["dot_image"];

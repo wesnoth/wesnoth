@@ -81,6 +81,21 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	unitDescriptionRect_.w = 0;
 	unitProfileRect_.w = 0;
 
+	//inits the flag list
+	flags_.reserve(teams_.size());
+	for(size_t i = 0; i != teams_.size(); ++i) {
+		std::string flag = game_config::flag_image;
+		std::string::size_type pos;
+		while((pos = flag.find("%d")) != std::string::npos) {
+			std::ostringstream s;
+			s << int(i+1);
+			flag.replace(pos, 2, s.str());
+		}
+		std::cerr << "Adding flag from " << flag << "\n";
+		flags_.push_back(animated<image::locator>(flag));
+		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
+	}
+
 	//clear the screen contents
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
@@ -1720,9 +1735,12 @@ surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
 		if(teams_[i].owns_village(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
+#if 0
 			char buf[50];
 			sprintf(buf,"terrain/flag-team%d.png",team::get_side_colour_index(int(i+1)));
 			return image::get_image(buf);
+#endif
+			return image::get_image(flags_[i].get_current_frame());
 		}
 	}
 
@@ -1916,14 +1934,21 @@ void display::invalidate_unit()
 
 void display::invalidate_animations()
 {
+	bool animate_flags = false;
 	gamemap::location topleft;
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
 
+	for(int i = 0; i < flags_.size(); ++i) {
+		flags_[i].update_current_frame();
+		if(flags_[i].frame_changed()) 
+			animate_flags = true;
+	}
+
 	for(int x = topleft.x; x <= bottomright.x; ++x) {
 		for(int y = topleft.y; y <= bottomright.y; ++y) {
 			gamemap::location loc(x,y);
-			if(builder_.update_animation(loc))
+			if(builder_.update_animation(loc) || (map_.is_village(loc) && animate_flags))
 				invalidated_.insert(loc);
 		}
 	}
