@@ -104,16 +104,14 @@ std::vector<language_def> get_languages()
 	return res;
 }
 
-// This solely exist to work around problems in the BeOS port.
-// I don't put an #ifdef yet to see first whether it fixes other
-// problems, like the MacOS-X ones.
 char* wesnoth_setlocale(int category, const char *locale)
 {
+#ifdef __BEOS__
 	if(setenv ("LANG", locale, 1) == -1)
 		std::cerr << "setenv LANG failed: " << strerror(errno);
 	if(setenv ("LC_ALL", locale, 1) == -1)
 		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
-
+#endif
 #ifdef __APPLE__
 	if(setenv ("LANGUAGE", locale, 1) == -1)
 		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
