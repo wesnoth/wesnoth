@@ -440,6 +440,11 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
 	if(info_.units.count(u) && info_.units.count(target)) {
+		if(info_.units.find(target)->second.stone()) {
+			std::cerr << "ERROR: attempt to attack unit that is turned to stone\n";
+			return;
+		}
+
 		recorder.add_attack(u,target,weapon);
 		game_events::fire("attack",u,target);
 

@@ -131,7 +131,7 @@ private:
 };
 
 struct teams_manager {
-	teams_manager(const std::vector<team>& teams);
+	teams_manager(std::vector<team>& teams);
 	~teams_manager();
 };
 

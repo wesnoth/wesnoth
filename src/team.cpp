@@ -21,10 +21,10 @@
 #include <sstream>
 
 namespace {
-	const std::vector<team>* teams = NULL;
+	std::vector<team>* teams = NULL;
 }
 
-teams_manager::teams_manager(const std::vector<team>& teams_list)
+teams_manager::teams_manager(std::vector<team>& teams_list)
 {
 	teams = &teams_list;
 }
@@ -272,7 +272,31 @@ void team::write(config& cfg) const
 
 void team::get_tower(const gamemap::location& loc)
 {
-	towers_.insert(loc);
+	if(teams == NULL || owns_tower(loc)) {
+		return;
+	}
+
+	std::cerr << "checking if village at " << (loc.x+1) << "," << (loc.y+1) << " is friendly\n";
+
+	//find out who owns the village at the moment
+	std::vector<team>::iterator i;
+	for(i = teams->begin(); i != teams->end(); ++i) {
+		if(i->owns_tower(loc)) {
+			break;
+		}
+	}
+
+	assert(&*i != this);
+
+	//only get neutral or enemy villages
+	const int side = i - teams->begin() + 1;
+	if(i == teams->end() || is_enemy(side)) {
+		if(i != teams->end()) {
+			i->lose_tower(loc);
+		}
+
+		towers_.insert(loc);
+	}
 }
 
 void team::lose_tower(const gamemap::location& loc)

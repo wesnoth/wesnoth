@@ -742,16 +742,18 @@ int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
 void get_tower(const gamemap::location& loc, std::vector<team>& teams,
                size_t team_num, const unit_map& units)
 {
-	for(size_t i = 0; i != teams.size(); ++i) {
-		if(i != team_num && teams[i].owns_tower(loc)) {
-			teams[i].lose_tower(loc);
-		}
+	if(team_num >= teams.size()) {
+		return;
 	}
 
-	//if the side doesn't have a leader, captured villages become neutral
+	//get the village, and strip it off any enemies
+	teams[team_num].get_tower(loc);
+
+	//if the side doesn't have a leader, it should become neutral
 	const bool has_leader = find_leader(units,int(team_num+1)) != units.end();
-	if(has_leader && team_num < teams.size())
-		teams[team_num].get_tower(loc);
+	if(has_leader == false) {
+		teams[team_num].lose_tower(loc);
+	}
 }
 
 std::map<gamemap::location,unit>::iterator
