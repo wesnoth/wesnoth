@@ -114,15 +114,9 @@ static void compress_emit_word(std::ostream &out, std::string const &word, compr
 static std::string compress_read_literal_word(std::istream &in)
 {
 	std::stringstream stream;
-	for(;;) {
-		unsigned char c;
-		c = in.get();
-		if (in.fail())
-			throw config::error("Unexpected end of data in compressed config read\n");
-		if (c == 0)
-			break;
-		stream.put(c);
-	}
+	in.get(*stream.rdbuf(), 0);
+	if (in.get() || in.fail())
+		throw config::error("Unexpected end of data in compressed config read\n");
 	return stream.str();
 }
 
