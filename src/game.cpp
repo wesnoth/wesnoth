@@ -474,6 +474,10 @@ int play_game(int argc, char** argv)
 	preproc_map defines_map;
 	defines_map["NORMAL"] = preproc_define();
 	defines_map["MEDIUM"] = preproc_define();
+	if(multiplayer_mode) {
+		defines_map["MULTIPLAYER"] = preproc_define();
+	}
+
 	std::vector<line_source> line_src;
 
 	config game_config;
@@ -842,6 +846,8 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::TUTORIAL) {
 			state.campaign_type = "tutorial";
 			state.scenario = "tutorial";
+			defines_map["TUTORIAL"] = preproc_define();
+
 		} else if(res == gui::NEW_CAMPAIGN) {
 			state.campaign_type = "scenario";
 
@@ -903,12 +909,6 @@ int play_game(int argc, char** argv)
 				state.difficulty = difficulties[res];
 				defines_map.clear();
 				defines_map[difficulties[res]] = preproc_define();
-
-				//lots of people seem to get 'NORMAL' and 'MEDIUM' mixed up,
-				//so we make it that if it's NORMAL, MEDIUM is also accepted
-				if(difficulties[res] == "NORMAL") {
-					defines_map["MEDIUM"] = preproc_define();
-				}
 			}
 
 			state.campaign_define = campaign["define"];
@@ -931,6 +931,11 @@ int play_game(int argc, char** argv)
 			}
 			
 			try {
+				defines_map[state.campaign_define] = preproc_define();
+				std::vector<line_source> line_src;
+				config game_config;
+				read_game_cfg(defines_map,line_src,game_config,use_caching);
+				
 				if(res == 2) {
 					std::vector<std::string> chat;
 					config game_data;
@@ -1013,6 +1018,11 @@ int play_game(int argc, char** argv)
 		if(state.campaign_define.empty() == false) {
 			defines_map[state.campaign_define] = preproc_define();
 		}
+
+		if(defines_map.count("NORMAL")) {
+			defines_map["MEDIUM"] = preproc_define();
+		}
+
 
 		//make a new game config item based on the difficulty level
 		std::vector<line_source> line_src;
