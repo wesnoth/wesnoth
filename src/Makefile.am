@@ -100,6 +100,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
+		  sdl_ttf/SDL_ttf.c \
 		  about.hpp \
 		  actions.hpp \
 		  ai.hpp \
@@ -322,20 +323,26 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) \
-	-I../intl -I$(top_srcdir)/intl
+	-I sdl_ttf -I../intl -I$(top_srcdir)/intl
+
+AM_CFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) \
+	-I sdl_ttf -I../intl -I$(top_srcdir)/intl
 
 if X11
     CXXFLAGS += -D_X11 @X_CFLAGS@
+    CFLAGS += -D_X11 @X_CFLAGS@
 endif
 if GCC
     CXXFLAGS += -fno-omit-frame-pointer
+    CFLAGS += -fno-omit-frame-pointer
 endif
 
 CXXLD = $(LDPREFIX) $(CXX)
 
 
 LIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
-	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBINTL)
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(FREETYPE_LIBS) $(LIBINTL)
 
 if STATIC
 LDFLAGS += -all-static

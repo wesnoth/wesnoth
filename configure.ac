@@ -424,14 +424,14 @@ fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
 http://www.libsdl.org/projects/SDL_net/index.html])])
 
-AC_CHECK_LIB([SDL_ttf],
-	     [TTF_OpenFont],
-	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_ttf.la
-then SDL_TTF_LIBS=/usr/lib/libSDL_ttf.la
-else SDL_TTF_LIBS=-lSDL_ttf
-fi],
-	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
-http://www.libsdl.org/projects/SDL_ttf/index.html])])
+#AC_CHECK_LIB([SDL_ttf],
+#	     [TTF_OpenFont],
+#	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_ttf.la
+#then SDL_TTF_LIBS=/usr/lib/libSDL_ttf.la
+#else SDL_TTF_LIBS=-lSDL_ttf
+#fi],
+#	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
+#http://www.libsdl.org/projects/SDL_ttf/index.html])])
 
 LIBS=$OLD_LIBS
 
@@ -439,7 +439,47 @@ AC_SUBST([SDL_LIBS])
 AC_SUBST([SDL_IMAGE_LIBS])
 AC_SUBST([SDL_MIXER_LIBS])
 AC_SUBST([SDL_NET_LIBS])
-AC_SUBST([SDL_TTF_LIBS])
+#AC_SUBST([SDL_TTF_LIBS])
+
+# Cheching for the freetype library. This was directly copied from the config script
+# of SDL_ttf, and I do not really understand how this works.
+
+dnl Check for the FreeType 2 library
+dnl
+dnl Get the cflags and libraries from the freetype-config script
+dnl
+
+AC_ARG_WITH(freetype-prefix,[  --with-freetype-prefix=PFX   Prefix where FREETYPE is 
+installed (optional)],
+            freetype_prefix="$withval", freetype_prefix="")
+AC_ARG_WITH(freetype-exec-prefix,[  --with-freetype-exec-prefix=PFX Exec prefix 
+where FREETYPE is installed (optional)],
+            freetype_exec_prefix="$withval", freetype_exec_prefix="")
+
+if test x$freetype_exec_prefix != x ; then
+     freetype_args="$freetype_args --exec-prefix=$freetype_exec_prefix"
+     if test x${FREETYPE_CONFIG+set} != xset ; then
+        FREETYPE_CONFIG=$freetype_exec_prefix/bin/freetype-config
+     fi
+fi
+if test x$freetype_prefix != x ; then
+     freetype_args="$freetype_args --prefix=$freetype_prefix"
+     if test x${FREETYPE_CONFIG+set} != xset ; then
+        FREETYPE_CONFIG=$freetype_prefix/bin/freetype-config
+     fi
+fi
+AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
+no_freetype=""
+if test "$FREETYPE_CONFIG" = "no" ; then
+    AC_MSG_ERROR([
+*** Unable to find FreeType2 library (http://www.freetype.org/)
+])
+else
+    CFLAGS="$CFLAGS `$FREETYPE_CONFIG $freetypeconf_args --cflags`"
+    FREETYPE_LIBS=`$FREETYPE_CONFIG $freetypeconf_args --libs`
+fi
+
+AC_SUBST([FREETYPE_LIBS])
 
 
 #######################################################################

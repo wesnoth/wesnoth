@@ -55,17 +55,17 @@ language_def known_languages[] = {
 
 std::string languagedef_name (const language_def& def)
 {
-  return def.language;
+	return def.language;
 }
 
 bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
 {
-  return (def1.language < def2.language);
+	return (def1.language < def2.language);
 }
 
 bool language_def::operator== (const language_def& a)
 {
-  return ((language == a.language) /* && (localename == a.localename) */ );
+	return ((language == a.language) /* && (localename == a.localename) */ );
 }
 
 symbol_table string_table;
@@ -219,7 +219,7 @@ namespace
 {
 std::string wstring_to_utf8(const wide_string &src)
 {
-    wchar_t ch;
+	wchar_t ch;
 	wide_string::const_iterator i;
 	int j;
 	Uint32 bitmask;

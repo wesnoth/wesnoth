@@ -273,6 +273,16 @@ surface const &text_surface::get_surface() const
 
 	// Validate the UTF-8 string: workaround a SDL_TTF bug that makes it
 	// crash when used with an invalid UTF-8 string
+	wide_string ws = string_to_wstring(str_);
+
+	for(wide_string::const_iterator itor = ws.begin(); itor != ws.end(); ++itor) {
+		int minx, miny, maxx, maxy, advance;	
+
+		if(TTF_GlyphMetrics(font_, *itor, &minx, &maxx, &miny, &maxy, &advance) != 0 ) {
+			std::cerr << "glyph with strange size: " << *itor << "(" << char(*itor) << ") " << minx << ", " << maxx  << ", " << miny << ", " << maxy << ", " << advance << "\n";
+		}
+	}
+
 	std::string fixed_str = wstring_to_string(string_to_wstring(str_));
 
 	font_style_setter const style_setter(font_, style_);
