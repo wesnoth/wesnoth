@@ -16,6 +16,7 @@
 #include "config.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "language.hpp"
 #include "tooltips.hpp"
 
 #include <cstdio>
@@ -131,6 +132,24 @@ const SDL_Color& get_side_colour(int side)
 	}
 }
 
+namespace {
+SDL_Surface* render_text(TTF_Font* font,const std::string& str,
+						 const SDL_Color& colour)
+{
+	switch(charset())
+	{
+	case CHARSET_UTF8:
+		return TTF_RenderUTF8_Blended(font,str.c_str(),colour);
+	case CHARSET_LATIN1:
+		return TTF_RenderText_Blended(font,str.c_str(),colour);
+	default:
+		std::cerr << "Unrecognized charset\n";
+		return NULL;
+	}
+}
+
+}
+
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
                         const SDL_Color& colour, const std::string& text,
                         int x, int y, SDL_Surface* bg, bool use_tooltips)
@@ -143,7 +162,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		return res;
 	}
 
-	scoped_sdl_surface surface(TTF_RenderText_Blended(font,text.c_str(),colour));
+	scoped_sdl_surface surface(render_text(font,text.c_str(),colour));
 	if(surface == NULL) {
 		std::cerr << "Could not render ttf: '" << text << "'\n";
 		SDL_Rect res;

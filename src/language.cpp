@@ -20,6 +20,12 @@
 #include <cstring>
 #include <iostream>
 
+namespace {
+	CHARSET charset_used = CHARSET_LATIN1;
+}
+
+CHARSET charset() { return charset_used; }
+
 std::map<std::string,std::string> string_table;
 
 std::vector<std::string> get_languages(config& cfg)
@@ -42,6 +48,17 @@ bool internal_set_language(const std::string& locale, config& cfg)
 	for(std::vector<config*>::const_iterator i = lang.begin();
 	    i != lang.end(); ++i) {
 		if((*i)->values["id"] == locale || (*i)->values["language"] == locale) {
+
+			const std::string& enc = (**i)["encoding"];
+			if(enc == "UTF-8") {
+				charset_used = CHARSET_UTF8;
+			} else if(enc == "LATIN1" || enc == "") {
+				charset_used = CHARSET_LATIN1;
+			} else {
+				std::cerr << "Unrecognized character set: '" << enc
+				          << "' (defaulting to LATIN1)\n";
+				charset_used = CHARSET_LATIN1;
+			}
 
 			for(std::map<std::string,std::string>::const_iterator j =
 			    (*i)->values.begin(); j != (*i)->values.end(); ++j) {
@@ -89,3 +106,4 @@ std::string get_locale()
 	std::cerr << "locale could not be determined; defaulting to locale 'en'\n";
 	return "en";
 }
+

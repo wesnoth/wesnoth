@@ -26,4 +26,7 @@ bool set_language(const std::string& locale, config& cfg);
 
 std::string get_locale();
 
+enum CHARSET { CHARSET_LATIN1, CHARSET_UTF8 };
+CHARSET charset();
+
 #endif
