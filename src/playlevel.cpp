@@ -693,6 +693,7 @@ redo_turn:
 					   << (remaining_gold+finishing_bonus);
 			}
 
+			// xgettext:no-c-format
 			report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
 				   << _("Retained Gold") << ": "
 				   << state_of_game.gold;
