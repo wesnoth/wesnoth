@@ -483,7 +483,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location src(*source);
 			const gamemap::location dst(*destination);
 
-			const std::map<gamemap::location,unit>::iterator u = units.find(src);
+			std::map<gamemap::location,unit>::iterator u = units.find(src);
 			if(u == units.end()) {
 				std::cerr << "unfound location for source of movement: "
 				          << (src.x+1) << "," << (src.y+1) << "-"
@@ -526,11 +526,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.move_unit(rt->second.steps,current_unit);
 
 			current_unit.set_movement(rt->second.move_left);
-			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
+			u = units.insert(std::pair<gamemap::location,unit>(dst,current_unit)).first;
 			if(map.underlying_terrain(map[dst.x][dst.y]) == gamemap::TOWER) {
 				const int orig_owner = tower_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
-					current_unit.set_movement(0);
+					u->second.set_movement(0);
 					get_tower(dst,teams,team_num-1,units);
 				}
 			}

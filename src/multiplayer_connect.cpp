@@ -383,8 +383,7 @@ void mp_connect::gui_update()
 		//Player Color
 
 		//Player Gold
-		std::string str;
-		str = side["gold"];
+		std::string str = side["gold"];
 		sliders_gold_[n].set_value((atoi(str.c_str()) - 20 + 0.0) / 979.0);
 		rect.x = (disp_->x() - width_) / 2 + 603;
 		rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);

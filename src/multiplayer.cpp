@@ -545,6 +545,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			//generate the random map
 			(*level_ptr)["map_data"] = generator->create_map(std::vector<std::string>());
 			map_changed = true;
+
+			//set the scenario to have placing of sides based on the terrain they prefer
+			(*level_ptr)["modify_placing"] = "true";
 		}
 
 		if(map_changed) {

@@ -55,7 +55,7 @@ public:
 
 		std::vector<target> targets;
 
-		bool use_shroud, use_fog;
+		bool use_shroud, use_fog, share_maps;
 
 		std::string music;
 	};
@@ -73,6 +73,7 @@ public:
 	int gold() const;
 	int income() const;
 	void new_turn();
+	void get_shared_maps();
 	void spend_gold(int amount);
 
 	const std::set<std::string>& recruits() const;
@@ -108,8 +109,8 @@ private:
 	int gold_;
 	std::set<gamemap::location> towers_;
 
-	std::vector<std::vector<bool> > shroud_;
-	std::vector<std::vector<bool> > fog_;
+	typedef std::vector<std::vector<bool> > shroud_map;
+	shroud_map shroud_, fog_;
 
 	team_info info_;
 };

@@ -1088,7 +1088,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 
 	assert(!route.empty());
 
-	const unit_map::iterator ui = units.find(route.front());
+	unit_map::iterator ui = units.find(route.front());
 
 	assert(ui != units.end());
 
@@ -1179,7 +1179,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 
 	u.set_movement(moves_left);
 
-	units.insert(std::pair<gamemap::location,unit>(steps.back(),u));
+	ui = units.insert(std::pair<gamemap::location,unit>(steps.back(),u)).first;
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());
@@ -1191,7 +1191,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 
 		if(orig_tower_owner != team_num) {
 			get_tower(steps.back(),teams,team_num,units);
-			u.set_movement(0);
+			ui->second.set_movement(0);
 		}
 	}
 

@@ -29,6 +29,27 @@
 #include <iostream>
 #include <iterator>
 
+namespace {
+	int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)
+	{
+		int positions = 0, liked = 0;
+		const std::string& terrain_liked = side["terrain_liked"];
+		for(int i = pos.x-10; i != pos.x+10; ++i) {
+			for(int j = pos.y-10; j != pos.y+10; ++j) {
+				const gamemap::location pos(i,j);
+				if(map.on_board(pos)) {
+					++positions;
+					if(std::count(terrain_liked.begin(),terrain_liked.end(),map.underlying_terrain(map[i][j]))) {
+						++liked;
+					}
+				}
+			}
+		}
+
+		return (100*liked)/positions;
+	}
+}
+
 LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
@@ -55,6 +76,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	std::vector<team> teams;
 
 	int first_human_team = -1;
+
+	const bool modify_placing = (*level)["modify_placing"] == "true";
+	std::set<int> taken_places;
 
 	const config::child_list& unit_cfg = level->get_children("side");
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
@@ -90,7 +114,27 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				}
 			}
 
-			const gamemap::location& start_pos = map.starting_position(new_unit.side());
+			int start = new_unit.side();
+			if(modify_placing) {
+				int best = -1, current = -1;
+				for(int i = 1; i <= unit_cfg.size(); ++i) {
+					if(taken_places.count(i))
+						continue;
+
+					const int res = placing_score(**ui,map,map.starting_position(i));
+					if(current == -1 || res > best) {
+						current = res;
+						best = i;
+					}
+				}
+
+				start = best;
+				taken_places.insert(start);
+			}
+
+			assert(start != -1);
+
+			const gamemap::location& start_pos = map.starting_position(start);
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");
@@ -367,11 +411,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 					std::cerr << "finished networked...\n";
 				}
 
-				for(unit_map::iterator uit = units.begin();
-				    uit != units.end(); ++uit) {
+				for(unit_map::iterator uit = units.begin(); uit != units.end(); ++uit) {
 					if(uit->second.side() == player_number)
 						uit->second.end_turn();
 				}
+
+				team_it->get_shared_maps();
 
 				game_events::pump();
 

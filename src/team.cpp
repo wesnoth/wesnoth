@@ -125,6 +125,7 @@ team::team_info::team_info(const config& cfg)
 
 	use_shroud = (cfg["shroud"] == "yes");
 	use_fog = (cfg["fog"] == "yes");
+	share_maps = (cfg["share_maps"] != "no");
 
 	music = cfg["music"];
 }
@@ -194,6 +195,7 @@ void team::team_info::write(config& cfg) const
 
 	cfg["shroud"] = use_shroud ? "yes" : "no";
 	cfg["fog"] = use_fog ? "yes" : "no";
+	cfg["share_maps"] = share_maps ? "yes" : "no";
 
 	if(music.empty() == false)
 		cfg["music"] = music;
@@ -287,6 +289,26 @@ int team::income() const
 void team::new_turn()
 {
 	gold_ += income();
+}
+
+void team::get_shared_maps()
+{
+	if(teams == NULL || info_.team_name == "" || info_.share_maps == false)
+		return;
+
+	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
+		if(t->info_.team_name != info_.team_name)
+			continue;
+
+		const shroud_map& v = t->shroud_;
+		for(size_t x = 0; x != v.size(); ++x) {
+			for(size_t y = 0; y != v[x].size(); ++y) {
+				if(v[x][y]) {
+					clear_shroud(x,y);
+				}
+			}
+		}
+	}
 }
 
 void team::spend_gold(int amount)
