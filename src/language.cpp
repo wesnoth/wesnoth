@@ -117,26 +117,6 @@ char* wesnoth_setlocale(int category, const char *locale)
 	return setlocale (category, locale);
 }
 
-namespace {
-bool internal_set_language(const language_def& locale, config& cfg)
-{
-	const config::child_list& lang = cfg.get_children("language");
-	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
-		if((**i)["id"] == locale.localename || (**i)["language"] == locale.language) {
-
-			current_language.language = (**i)["language"];
-			current_language.localename = (**i)["id"];
-
-			wesnoth_setlocale (LC_MESSAGES, locale.localename.c_str());
-
-			return true;
-		}
-	}
-
-	return false;
-}
-}
-
 bool set_language(const language_def& locale)
 {
 	strings_.clear();
