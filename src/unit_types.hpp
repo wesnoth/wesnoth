@@ -159,6 +159,13 @@ public:
 	std::vector<std::string> advances_to() const;
 	const std::string& usage() const;
 
+	struct experience_accelerator {
+		experience_accelerator(int modifier);
+		~experience_accelerator();
+	private:
+		int old_value_;
+	};
+
 	int level() const;
 	int movement() const;
 	int cost() const;

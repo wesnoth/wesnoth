@@ -27,6 +27,7 @@
 #include "replay.hpp"
 #include "scoped_resource.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/combo.hpp"
@@ -50,8 +51,6 @@ network_game_manager::~network_game_manager()
 	}
 }
 
-// TODO: This function is way to big. It should be split into 2 functions,
-//       one for each dialog.
 int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
                       game_state& state, bool server)
 {
@@ -67,35 +66,40 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 	//later allow configuration of amount of gold
 	state.gold = 100;
 
-	// Dialog width and height
-	int width=640;
-	int height=340;
-
 	int cur_selection = -1;
 	int cur_villagegold = 1;
-	int new_villagegold = 1;
 	int cur_turns = 50;
-	int new_turns = 50;
-	int cur_playergold = 100;
-	int new_playergold = 100;
+	int cur_xpmod = 100;
 
-	gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
-			       width, height, disp);
+	// Dialog width and height
+	int width = 640;
+	int height = 440;
+	const int left = (disp.x()-width)/2;
+	const int top = (disp.y()-height)/2;
+	const int border_size = 5;
+	const int right = left + width;
+	const int bottom = top + height;
 
-	//Title
-	font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-	                string_table["create_new_game"],-1,(disp.y()-height)/2+5);
+	gui::draw_dialog_frame(left,top,width,height,disp);
+	int xpos = left + border_size;
+	int ypos = gui::draw_dialog_title(left,top,disp,string_table["create_new_game"]) + border_size;
 
 	//Name Entry
-	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["name_of_game"] + ":",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
+	ypos += font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                        string_table["name_of_game"] + ":",xpos,ypos).h + border_size;
 	gui::textbox name_entry(disp,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]);
-	name_entry.set_position((disp.x()-width)/2+10,(disp.y()-height)/2+55);
+	name_entry.set_position(xpos,ypos);
 
-	//Maps
-	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["map_to_play"] + ":",(disp.x()-width)/2+(int)(width*0.4),
-			(disp.y()-height)/2+83);
+	ypos += name_entry.location().h + border_size;
+
+	const int minimap_width = 200;
+
+	//the map selection menu goes near the middle of the dialog, to the right of
+	//the minimap
+	const int map_label_height = font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                                             string_table["map_to_play"] + ":",xpos + minimap_width + border_size,ypos).h;
+
+	//build the list of scenarios to play
 	std::vector<std::string> options;
 	const config::child_list& levels = cfg.get_children("multiplayer");
 	std::map<int,std::string> res_to_id;
@@ -110,78 +114,118 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 			options.push_back((**i)["name"]);
 	}
 
+	//add the 'load game' option
 	options.push_back(string_table["load_game"] + "...");
-	gui::menu maps_menu(disp,options);
-	maps_menu.set_loc((disp.x()-width)/2+(int)(width*0.4),(disp.y()-height)/2+100);
 
-	//Game Turns
-	rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
-	rect.y = (disp.y()-height)/2+83;
-	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+	//create the scenarios menu
+	gui::menu maps_menu(disp,options);
+	maps_menu.set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
+
+	//the sliders and other options on the right side of the dialog
+	rect.x = xpos + minimap_width + maps_menu.width() + border_size*2;
+	rect.y = ypos;
+	rect.w = maximum<int>(0,right - border_size - rect.x);
 	rect.h = 12;
-	SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
-	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["turns"] + ": 50",rect.x,rect.y);
-	rect.y = (disp.y()-height)/2+100;
-	rect.h = name_entry.location().w;
+
+	SDL_Rect turns_rect = rect;
+
+	const scoped_sdl_surface village_bg(get_surface_portion(disp.video().getSurface(), rect));
+
+	rect.y += turns_rect.h + border_size*2;
 
 	gui::slider turns_slider(disp,rect);
 	turns_slider.set_min(20);
 	turns_slider.set_max(100);
-	turns_slider.set_value(50);
+	turns_slider.set_value(cur_turns);
 
 	//Village Gold
-	rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
-	rect.y = (disp.y()-height)/2+130;
-	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
-	rect.h = 12;
-	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                string_table["village_gold"] + ": 1",rect.x,rect.y);
-	rect.y = (disp.y()-height)/2+147;
-	rect.h = name_entry.location().w;
+	rect.y += rect.h + border_size*2;
+
+	SDL_Rect village_rect = rect;
+
+	rect.y += village_rect.h + border_size*2;
+
 	gui::slider villagegold_slider(disp,rect);
 	villagegold_slider.set_min(1);
 	villagegold_slider.set_max(10);
-	villagegold_slider.set_value(1);
+	villagegold_slider.set_value(cur_villagegold);
+
+	//Experience Modifier
+	rect.y += rect.h + border_size*2;
+
+	SDL_Rect xp_rect = rect;
+
+	rect.y += xp_rect.h + border_size*2;
+
+	gui::slider xp_modifier_slider(disp,rect);
+	xp_modifier_slider.set_min(25);
+	xp_modifier_slider.set_max(200);
+	xp_modifier_slider.set_value(cur_xpmod);
 
 	//FOG of war
+	rect.y += rect.h + border_size*2;
+
 	gui::button fog_game(disp,string_table["fog_of_war"],gui::button::TYPE_CHECK);
 	fog_game.set_check(false);
-	fog_game.set_xy(rect.x+6,rect.y+30);
+	fog_game.set_xy(rect.x,rect.y);
 	fog_game.draw();
+
+	rect.y += fog_game.location().h + border_size;
 
 	//Shroud
 	gui::button shroud_game(disp,string_table["shroud"],gui::button::TYPE_CHECK);
 	shroud_game.set_check(false);
-	shroud_game.set_xy(rect.x+6,rect.y+30+fog_game.height()+2);
+	shroud_game.set_xy(rect.x,rect.y);
 	shroud_game.draw();
+
+	rect.y += shroud_game.location().h + border_size;
 
 	//Observers
 	gui::button observers_game(disp,string_table["observers"],gui::button::TYPE_CHECK);
 	observers_game.set_check(true);
-	observers_game.set_xy(rect.x+6,rect.y+30+(2*fog_game.height())+4);
+	observers_game.set_xy(rect.x,rect.y);
 	observers_game.draw();
+
+	rect.y += observers_game.location().h + border_size;
 
 	//Buttons
 	gui::button cancel_game(disp,string_table["cancel_button"]);
 	gui::button launch_game(disp,string_table["ok_button"]);
-	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,(disp.y()-height)/2+height-29);
-	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,(disp.y()-height)/2+height-29);
+	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,bottom-29);
+	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,bottom-29);
 
 	gui::button regenerate_map(disp,string_table["regenerate_map"]);
-	regenerate_map.set_xy(rect.x+6,rect.y+30+(3*fog_game.height())+6);
+	regenerate_map.set_xy(rect.x,rect.y);
 	regenerate_map.backup_background();
 
+	rect.y += regenerate_map.location().h + border_size;
+
 	gui::button generator_settings(disp,string_table["generator_settings"]);
-	generator_settings.set_xy(rect.x+6,rect.y+30+(4*fog_game.height())+8);
+	generator_settings.set_xy(rect.x,rect.y);
 	generator_settings.backup_background();
 
 	//player amount number background
-	rect.x = ((disp.x()-width)/2+10)+35;
-	rect.y = (disp.y()-height)/2+235;
-	rect.w = 145;
-	rect.h = 25;
-	surface_restorer playernum_bg(&disp.video(),rect);
+	SDL_Rect player_num_rect = {xpos+minimap_width/2 - 30,ypos+minimap_width,100,25};
+	surface_restorer playernum_bg(&disp.video(),player_num_rect);
+
+	//the possible eras to play
+	const config::child_list& era_list = cfg.get_children("era");
+	std::vector<std::string> eras;
+	for(config::child_list::const_iterator er = era_list.begin(); er != era_list.end(); ++er) {
+		eras.push_back(translate_string_default((**er)["id"],(**er)["name"]));
+	}
+
+	if(eras.empty()) {
+		gui::show_dialog(disp,NULL,"",string_table["error_no_mp_sides"],gui::OK_ONLY);
+		std::cerr << "ERROR: no eras found\n";
+		return -1;
+	}
+
+	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
+	era_rect = font::draw_text(&disp,era_rect,12,font::GOOD_COLOUR,translate_string("Era") + ":",
+	                           era_rect.x,era_rect.y);
+	gui::combo era_combo(disp,eras);
+	era_combo.set_xy(era_rect.x+era_rect.w+border_size,era_rect.y);
 
 	update_whole_screen();
 
@@ -198,6 +242,8 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 		name_entry.process();
 		turns_slider.process();
 		villagegold_slider.process();
+		xp_modifier_slider.process();
+		era_combo.process(mousex,mousey,left_button);
 
 		maps_menu.process(mousex,mousey,left_button,
 		                  key[SDLK_UP],key[SDLK_DOWN],
@@ -208,10 +254,12 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 
 		if(launch_game.process(mousex,mousey,left_button)) {
 			if(name_entry.text().empty() == false) {
+
 				//Connector
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
-				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked(), observers_game.checked());
+				const int res = connector.load_map((*era_list[era_combo.selected()])["id"],
+				                                   maps_menu.selection(), cur_turns, cur_villagegold, cur_xpmod, fog_game.checked(), shroud_game.checked(), observers_game.checked());
 				if(res == -1)
 					return -1;
 
@@ -221,17 +269,8 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 				connector.gui_do();
 				return -1;
 			} else {
-				rect.x=(disp.x()-width)/2;
-				rect.y=(disp.y()-height)/2;
-				rect.w=width;
-				rect.h=height;
-				SDL_Surface* dialog_bg=get_surface_portion(disp.video().getSurface(), rect);
 				gui::show_dialog(disp,NULL,"",
 				                 "You must enter a name.",gui::OK_ONLY);
-
-				SDL_BlitSurface(dialog_bg, NULL, disp.video().getSurface(), &rect);
-				SDL_FreeSurface(dialog_bg);
-				update_whole_screen();
 			}
 		}
 
@@ -247,30 +286,31 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 
 		//Turns per game
 		cur_turns = turns_slider.value();
-		rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
-		rect.y = (disp.y()-height)/2+83;
-		rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
-		rect.h = 12;
-		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &turns_rect);
 		sprintf(buf,"Turns: %d", cur_turns);
 		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-		                buf,rect.x,rect.y);
-		update_rect(rect);
+		                buf,turns_rect.x,turns_rect.y);
+		update_rect(turns_rect);
 
 		//work out if we have to generate a new map
 		bool map_changed = false;
 
 		//Villages can produce between 1 and 10 gold a turn
 		cur_villagegold = villagegold_slider.value();
-		rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
-		rect.y = (disp.y()-height)/2+130;
-		rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
-		rect.h = 12;
-		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &village_rect);
 		sprintf(buf,": %d", cur_villagegold);
 		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-		                string_table["village_gold"] + buf,rect.x,rect.y);
-		update_rect(rect);
+		                string_table["village_gold"] + buf,village_rect.x,village_rect.y);
+		update_rect(village_rect);
+
+
+		//experience modifier
+		cur_xpmod = xp_modifier_slider.value();
+		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &xp_rect);
+		sprintf(buf,": %d%%", cur_xpmod);
+		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+		                string_table["xp_modifier"] + buf,xp_rect.x,xp_rect.y);
+		update_rect(xp_rect);
 		
 		if(maps_menu.selection() != cur_selection) {
 			map_changed = true;
@@ -301,13 +341,9 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 					update_rect(rect);
 				}
 
-				rect.x = ((disp.x()-width)/2+10)+35;
-				rect.y = (disp.y()-height)/2+235;
-				rect.w = 145;
-				rect.h = 25;
 				playernum_bg.restore();
 				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-					                " Load Map ",rect.x+45,rect.y);
+					                " Load Map ",player_num_rect.x,player_num_rect.y);
 				update_rect(rect);
 			}
 		}
@@ -361,31 +397,31 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 				level_ptr->remove_child("side",level_ptr->get_children("side").size()-1);
 			}
 
-			const scoped_sdl_surface mini(image::getMinimap(145,145,map,0));
+			const scoped_sdl_surface mini(image::getMinimap(minimap_width,minimap_width,map,0));
 
 			if(mini != NULL) {
-				rect.x = ((disp.x()-width)/2+10)+35;
-				rect.y = (disp.y()-height)/2+80;
-				rect.w = 145;
-				rect.h = 145;
+				SDL_Rect rect = {xpos,ypos,minimap_width,minimap_width};
 				SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
 				update_rect(rect);
+			
+				//Display the number of players
+				SDL_Rect players_rect = {xpos+minimap_width/2,ypos+minimap_width,145,25};
+
+				rect.x = ((disp.x()-width)/2+10)+35;
+				rect.y = (disp.y()-height)/2+235;
+				rect.w = 145;
+				rect.h = 25;
+				
+				playernum_bg.restore();
+				config& level = *level_ptr;
+				const int nsides = level.get_children("side").size();
+
+				std::stringstream players;
+				players << string_table["num_players"] << ": " << nsides;
+				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+				                players.str(),player_num_rect.x,player_num_rect.y);
+				update_rect(rect);
 			}
-
-			//Display the number of players
-			rect.x = ((disp.x()-width)/2+10)+35;
-			rect.y = (disp.y()-height)/2+235;
-			rect.w = 145;
-			rect.h = 25;
-			playernum_bg.restore();
-			config& level = *level_ptr;
-			const int nsides = level.get_children("side").size();
-
-			std::stringstream players;
-			players << "Players: " << nsides;
-			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-				                players.str(),rect.x+45,rect.y);
-			update_rect(rect);
 		}
 
 		events::pump();

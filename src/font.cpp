@@ -561,9 +561,7 @@ SDL_Surface* floating_label::create_surface()
 			}
 
 			const SDL_PixelFormat* const format = surfaces.front()->format;
-			surf_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,
-				                              format->BitsPerPixel,format->Rmask,format->Gmask,
-											  format->Bmask,format->Amask));
+			surf_.assign(create_compatible_surface(surfaces.front(),width,height));
 
 			size_t ypos = 0;
 			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
@@ -581,8 +579,7 @@ SDL_Surface* floating_label::create_surface()
 		//if the surface has to be created onto some kind of background, then do that here
 		if(bgalpha_ != 0) {
 			std::cerr << "creating bg...\n";
-			shared_sdl_surface tmp(SDL_CreateRGBSurface(SDL_SWSURFACE,surf_->w+border_*2,surf_->h+border_*2,surf_->format->BitsPerPixel,
-		                            surf_->format->Rmask,surf_->format->Gmask,surf_->format->Bmask,surf_->format->Amask));
+			shared_sdl_surface tmp(create_compatible_surface(surf_,surf_->w+border_*2,surf_->h+border_*2));
 			if(tmp == NULL) {
 				return NULL;
 			}
@@ -616,8 +613,7 @@ void floating_label::draw(SDL_Surface* screen)
 	}
 
 	if(buf_ == NULL) {
-		buf_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,surf_->w,surf_->h,surf_->format->BitsPerPixel,
-		                            surf_->format->Rmask,surf_->format->Gmask,surf_->format->Bmask,surf_->format->Amask));
+		buf_.assign(create_compatible_surface(surf_));
 		if(buf_ == NULL) {
 			return;
 		}

@@ -34,8 +34,8 @@ public:
 		   game_state& state, bool join = false);
 	~mp_connect();
 
-	int load_map(int map, int num_turns, int village_gold,
-		     bool fog_game, bool shroud_game, bool allow_observers);
+	int load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
+	             bool fog_game, bool shroud_game, bool allow_observers);
 	int gui_do();
 
 private:
@@ -49,6 +49,8 @@ private:
 	void is_full();
 
 	display *disp_;
+
+	std::string era_;
 
 	const config *cfg_;
 	game_data *data_;

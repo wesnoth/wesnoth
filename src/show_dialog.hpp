@@ -50,6 +50,10 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
 								 double alpha, SDL_Surface* target);
 
+//given the location of a dialog, will draw its title.
+//Returns the y co-ordinate of the top of the dialog box after the title
+int draw_dialog_title(int x, int y, display& disp, const std::string& text);
+
 class dialog_action
 {
 public:

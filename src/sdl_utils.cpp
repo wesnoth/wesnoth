@@ -472,6 +472,21 @@ SDL_Surface* flop_surface(SDL_Surface* surface)
 	return clone_surface(surf);
 }
 
+SDL_Surface* create_compatible_surface(SDL_Surface* surf, int width, int height)
+{
+	if(surf == NULL)
+		return NULL;
+
+	if(width == -1)
+		width = surf->w;
+
+	if(height == -1)
+		height = surf->h;
+
+	return SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,surf->format->BitsPerPixel,
+		                        surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
+}
+
 void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
@@ -481,8 +496,7 @@ void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* ta
 		return;
 	}
 
-	scoped_sdl_surface tmp(SDL_CreateRGBSurface(0,rect.w,rect.h,target->format->BitsPerPixel,
-	                                            target->format->Rmask,target->format->Gmask,target->format->Bmask,0));
+	scoped_sdl_surface tmp(create_compatible_surface(target,rect.w,rect.h));
 	if(tmp == NULL) {
 		return;
 	}
@@ -508,11 +522,7 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 		area.h = src->h - area.y;
 	}
 
-	const SDL_PixelFormat* const fmt = src->format;
-	SDL_Surface* const dst = SDL_CreateRGBSurface(0,area.w,area.h,
-	                                              fmt->BitsPerPixel,fmt->Rmask,
-	                                              fmt->Gmask,fmt->Bmask,
-	                                              fmt->Amask);
+	SDL_Surface* const dst = create_compatible_surface(src,area.w,area.h);
 	if(dst == NULL) {
 		std::cerr << "Could not create a new surface in get_surface_portion()\n";
 		return NULL;

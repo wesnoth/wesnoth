@@ -155,6 +155,13 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 	}
 }
 
+int draw_dialog_title(int x, int y, display& disp, const std::string& text)
+{
+	const SDL_Rect rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+	                                      text,x+5,y+5);
+	return rect.y + rect.h;
+}
+
 void draw_rectangle(int x, int y, int w, int h, Uint16 colour,SDL_Surface* target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {

@@ -144,6 +144,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	const verification_manager verify_manager(units);
 
+	const int xp_modifier = atoi((*level)["experience_modifier"].c_str());
+	const unit_type::experience_accelerator xp_mod(xp_modifier > 0 ? xp_modifier : 100);
+
 	std::vector<team> teams;
 
 	int first_human_team = -1;

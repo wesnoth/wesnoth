@@ -324,14 +324,22 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			const std::string& default_race = race_names[team_num-1];
 			const bool allow_changes = changes_allowed[team_num-1];
 
-
 			config response;
 			std::stringstream stream;
 			stream << team_num;
 			response["side"] = stream.str();
 			response["description"] = preferences::login();
 
-			const config::child_list& possible_sides = cfg.get_children("multiplayer_side");
+			const std::string& era = sides["era"];
+
+			const config* const era_cfg = cfg.find_child("era","id",era);
+
+			if(era_cfg == NULL) {
+				std::cerr << "era '" << era << "' not found\n";
+				return;
+			}
+
+			const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 			if(possible_sides.empty()) {
 				std::cerr << "no multiplayer sides found\n";
 				return;
@@ -342,7 +350,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			std::vector<std::string> choices;
 			for(config::child_list::const_iterator side =
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
-				choices.push_back((**side)["name"]);
+				choices.push_back(translate_string_default((**side)["id"],(**side)["name"]));
 
 				if(choices.back() == default_race)
 					choice = side - possible_sides.begin();

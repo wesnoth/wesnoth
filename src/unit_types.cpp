@@ -593,9 +593,23 @@ int unit_type::cost() const
 	return atoi(cfg_["cost"].c_str());
 }
 
+namespace {
+	int experience_modifier = 100;
+}
+
+unit_type::experience_accelerator::experience_accelerator(int modifier) : old_value_(experience_modifier)
+{
+	experience_modifier = (experience_modifier*modifier)/100;
+}
+
+unit_type::experience_accelerator::~experience_accelerator()
+{
+	experience_modifier = old_value_;
+}
+
 int unit_type::experience_needed() const
 {
-	return atoi(cfg_["experience"].c_str());
+	return (atoi(cfg_["experience"].c_str())*experience_modifier)/100;
 }
 
 std::vector<std::string> unit_type::advances_to() const

@@ -55,6 +55,8 @@ SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour);
 SDL_Surface* flip_surface(SDL_Surface* surface);
 SDL_Surface* flop_surface(SDL_Surface* surface);
 
+SDL_Surface* create_compatible_surface(SDL_Surface* surf, int width=-1, int height=-1);
+
 void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* target);
 
 SDL_Rect get_non_transperant_portion(SDL_Surface* surf);

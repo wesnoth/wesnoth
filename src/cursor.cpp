@@ -176,8 +176,7 @@ void draw(SDL_Surface* screen)
 	}
 
 	if(cursor_buf == NULL) {
-		cursor_buf = SDL_CreateRGBSurface(SDL_SWSURFACE,surf->w,surf->h,surf->format->BitsPerPixel,
-		                                  surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
+		cursor_buf = create_compatible_surface(surf);
 		if(cursor_buf == NULL) {
 			std::cerr << "Could not allocate surface for mouse cursor\n";
 			return;

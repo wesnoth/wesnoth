@@ -25,6 +25,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/combo.hpp"
@@ -66,12 +67,14 @@ mp_connect::~mp_connect()
 	}
 }
 
-int mp_connect::load_map(int map, int num_turns, int village_gold,
+int mp_connect::load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
                          bool fog_game, bool shroud_game, bool allow_observers)
 {
 	log_scope("load_map");
 	// Setup the game
 	config* level_ptr;
+
+	era_ = era;
 
 	const config::child_list& levels = cfg_->get_children("multiplayer");
 
@@ -169,7 +172,16 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	level_->values["observer"] = allow_observers ? "yes" : "no";
 
 	const config::child_itors sides = level_->child_range("side");
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+
+	const config* const era_cfg = cfg_->find_child("era","id",era_);
+
+	if(era_cfg == NULL) {
+		std::cerr << "ERROR: era '" << era_ << "' not found\n";
+		status_ = -1;
+		return status_;
+	}
+
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	if(sides.first == sides.second || possible_sides.empty()) {
 		gui::show_dialog(*disp_, NULL, "", 
@@ -228,6 +240,9 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		(*level_)["objectives"] = "Victory:\n@Defeat enemy leader(s)\n";
 	}
 
+	(*level_)["experience_modifier"] = lexical_cast<std::string>(xpmodifier);
+	(*level_)["era"] = era;
+
 	lists_init();
 	gui_init();
 	status_ = 0;
@@ -249,7 +264,13 @@ void mp_connect::lists_init()
 
 	//Races
 	const config::child_itors sides = level_->child_range("side");
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+
+	const config* const era_cfg = cfg_->find_child("era","id",era_);
+	if(era_cfg == NULL) {
+		return;
+	}
+
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 	for(std::vector<config*>::const_iterator race = possible_sides.begin();
 	    race != possible_sides.end(); ++race) {
 		player_races_.push_back(translate_string((**race)["name"]));
@@ -349,7 +370,14 @@ void mp_connect::gui_init()
 
 	//Per player settings
 	const config::child_itors sides = level_->child_range("side");
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+
+	const config* const era_cfg = cfg_->find_child("era","id",era_);
+	if(era_cfg == NULL) {
+		return;
+	}
+
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+
 	config::child_iterator sd;
 	SDL_Rect rect;
 
@@ -408,7 +436,13 @@ void mp_connect::gui_update()
 	//Settings may change based on other networked
 	//players.
 
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+	const config* const era_cfg = cfg_->find_child("era","id",era_);
+	if(era_cfg == NULL) {
+		return;
+	}
+
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+
 	const config::child_itors sides = level_->child_range("side");
 	SDL_Rect rect;
 
@@ -480,7 +514,14 @@ int mp_connect::gui_do()
 	const events::event_context context;
 
 	SDL_Rect rect;
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
+
+	const config* const era_cfg = cfg_->find_child("era","id",era_);
+	if(era_cfg == NULL) {
+		return -1;
+	}
+
+	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+
 	const config::child_itors sides = level_->child_range("side");
 	int new_playergold = -1;
 	int cur_playergold = -1;
@@ -672,7 +713,6 @@ int mp_connect::gui_do()
 void mp_connect::update_positions()
 {
 	const config::child_itors sides = level_->child_range("side");
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		if((**sd)["taken"] != "yes") {
@@ -807,7 +847,6 @@ void mp_connect::is_full()
 	//see if all positions are now filled
 	full_ = true;
 	const config::child_itors sides = level_->child_range("side");
-	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		if((**sd)["controller"] == "network" &&
