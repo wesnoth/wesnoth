@@ -40,7 +40,7 @@ namespace {
 	int commands_disabled = 0;
 }
 
-command_disabler::command_disabler(display* disp) : hotkey::basic_handler(disp)
+command_disabler::command_disabler(display* disp)
 {
 	++commands_disabled;
 }

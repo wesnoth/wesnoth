@@ -65,7 +65,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area()), builder_(built_terrains, map),
-					   firstTurn_(true), map_labels_(*this,map),
+					   first_turn_(true), in_game_(false), map_labels_(*this,map),
 					   tod_hex_mask1(NULL), tod_hex_mask2(NULL)
 {
 	if(non_interactive())
@@ -102,7 +102,7 @@ void display::new_turn()
 {
 	const time_of_day& tod = status_.get_time_of_day();
 
-	if(!turbo() && !firstTurn_) {
+	if(!turbo() && !first_turn_) {
 		image::set_image_mask("");
 
 		const time_of_day& old_tod = status_.get_previous_time_of_day();
@@ -141,7 +141,7 @@ void display::new_turn()
 		tod_hex_mask2.assign(NULL);
 	}
 
-	firstTurn_ = false;
+	first_turn_ = false;
 
 	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
 	image::set_image_mask(tod.image_mask);
@@ -2069,6 +2069,12 @@ const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pre
 	}
 
 	return NULL;
+}
+
+void display::begin_game()
+{
+	in_game_ = true;
+	create_buttons();
 }
 
 void display::create_buttons()

@@ -239,9 +239,9 @@ std::string get_hotkey_name(hotkey_item i)
 
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
-	if(event.keysym.sym == SDLK_ESCAPE) {
-		const int res = gui::show_dialog(disp,NULL,"",
-		                   string_table["quit_message"],gui::YES_NO);
+	if(event.keysym.sym == SDLK_ESCAPE && disp.in_game()) {
+		std::cerr << "escape pressed..showing quit\n";
+		const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
 		if(res == 0) {
 			throw end_level_exception(QUIT);
 		} else {
@@ -400,10 +400,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 				executor->search();
 			break;
 		case HOTKEY_QUIT_GAME: {
-			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
-			if(res == 0) {
-				throw end_level_exception(QUIT);
+			if(disp.in_game()) {
+				std::cerr << "is in game -- showing quit message\n";
+				const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
+				if(res == 0) {
+					throw end_level_exception(QUIT);
+				}
 			}
+
 			break;
 		}
 

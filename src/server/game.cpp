@@ -69,13 +69,28 @@ bool game::filter_commands(network::connection player, config& cfg)
 	return true;
 }
 
+namespace {
+std::string describe_turns(int turn, const std::string& num_turns)
+{
+	char buf[50];
+	sprintf(buf,"%d/",int(turn));
+
+	if(num_turns == "-1") {
+		return buf + std::string("-");
+	} else {
+		return buf + num_turns;
+	}
+}
+
+}
+
 void game::start_game()
 {
 	started_ = true;
 
 	describe_slots();
 	if(description()) {
-		description()->values["turn"] = "1";
+		description()->values["turn"] = describe_turns(1,level()["turns"]);
 	}
 
 	allow_observers_ = level_["observer"] != "no";
@@ -175,9 +190,7 @@ bool game::end_turn()
 		return false;
 	}
 
-	char buf[50];
-	sprintf(buf,"%d",int(turn));
-	desc->values["turn"] = buf;
+	desc->values["turn"] = describe_turns(int(turn),level()["turns"]);
 
 	return true;
 }
@@ -298,7 +311,7 @@ bool game::player_on_team(const std::string& team, network::connection player) c
 		}
 	}
 
-	//other hosts than the game host
+	//hosts other than the game host
 	const std::map<network::connection,std::string>::const_iterator side = sides_.find(player);
 	if(side != sides_.end()) {
 		const config* const side_cfg = level_.find_child("side","side",side->second);

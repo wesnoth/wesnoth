@@ -1123,22 +1123,24 @@ void calculate_healing(display& disp, const gamemap& map,
 			}
 
 			h->second = 0;
-		} else if(h->second < 0) {
-			if(show_healing) {
-				sound::play_sound("groan.wav");
-				disp.float_label(h->first,lexical_cast<std::string>(h->second*-1),255,0,0);
+		} else {
+			if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
+				h->second = u.max_hitpoints()-u.hitpoints();
+				if(h->second <= 0)
+					continue;
 			}
-		} else if(h->second > 0) {
-			if(show_healing) {
-				sound::play_sound("heal.wav");
-				disp.float_label(h->first,lexical_cast<std::string>(h->second),0,255,0);
+			
+			if(h->second < 0) {
+				if(show_healing) {
+					sound::play_sound("groan.wav");
+					disp.float_label(h->first,lexical_cast<std::string>(h->second*-1),255,0,0);
+				}
+			} else if(h->second > 0) {
+				if(show_healing) {
+					sound::play_sound("heal.wav");
+					disp.float_label(h->first,lexical_cast<std::string>(h->second),0,255,0);
+				}
 			}
-		}
-
-		if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
-			h->second = u.max_hitpoints()-u.hitpoints();
-			if(h->second <= 0)
-				continue;
 		}
 
 		while(h->second > 0) {

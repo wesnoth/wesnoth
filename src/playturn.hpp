@@ -51,7 +51,7 @@ private:
 	display& gui_;
 };
 
-struct command_disabler : private hotkey::basic_handler
+struct command_disabler
 {
 	command_disabler(display* disp);
 	~command_disabler();

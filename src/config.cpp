@@ -69,43 +69,35 @@ struct close_FILE
 void read_file_internal(const std::string& fname, std::string& res)
 {
 	const int size = file_size(fname);
-	if(size == -1) {
+	if(size < 0) {
 		return;
 	}
 
-	res.resize(size);
+	std::vector<char> v;
+	v.reserve(size);
 
 	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"rb"));
 	if(file == NULL) {
 		return;
 	}
 
-	const int block_size = 4096;
-	char buf[block_size];
+	const int block_size = 65536;
 
-	std::string::iterator i = res.begin();
+	while(v.size() < size) {
+		const size_t expected = minimum<size_t>(block_size,size - v.size());
 
-	for(;;) {
-		const size_t nbytes = fread(buf,1,block_size,file);
-
-		//make sure the string is big enough
-		const int size_diff = (res.end() - i) - nbytes;
-		if(size_diff < 0) {
-			res.resize(res.size() - size_diff);
-			i = res.end() - nbytes;
-		}
-		
-		std::copy(buf,buf+nbytes,i);
-		i += nbytes;
-
-		if(nbytes < block_size) {
-			if(i != res.end()) {
-				res.erase(i,res.end());
+		if(expected > 0) {
+			v.resize(v.size() + expected);
+			const size_t nbytes = fread(&v[v.size() - expected],1,expected,file);
+			if(nbytes < expected) {
+				v.resize(v.size() - (expected - nbytes));
+				break;
 			}
-
-			return;
 		}
 	}
+
+	res.resize(v.size());
+	std::copy(v.begin(),v.end(),res.begin());
 }
 
 } //end anon namespace
@@ -134,13 +126,21 @@ std::string read_file(const std::string& fname)
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {
-	std::ofstream file(fname.c_str());
-	if(!file.good()) {
-		std::cerr << "error writing to file: '" << fname << "'\n";
-		throw io_exception("Error writing to file: " + fname);
+	const util::scoped_resource<FILE*,close_FILE> file(fopen(fname.c_str(),"wb"));
+	if(file.get() == NULL) {
+		throw io_exception("Could not open file for writing: '" + fname + "'");
 	}
-	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
-		file << *i;
+
+	const size_t block_size = 4096;
+	char buf[block_size];
+
+	for(size_t i = 0; i < data.size(); i += block_size) {
+		const size_t bytes = minimum<size_t>(block_size,data.size() - i);
+		std::copy(data.begin() + i, data.begin() + i + bytes,buf);
+		const size_t res = fwrite(buf,1,bytes,file.get());
+		if(res != bytes) {
+			throw io_exception("Error writing to file: '" + fname + "'");
+		}
 	}
 }
 
@@ -787,15 +787,22 @@ std::string config::write() const
 // it is mapped to the first available character. Any attribute found is always followed
 // by a nul-delimited string which is the value for the attribute.
 //
+// once the number of words in the schema exceeds 'compress_extended_word', the schema
+// will begin using two-byte word codes. Any word code which has a character above
+// 'compress_extended_word' is assumed to be part of a two-byte word code, and the second
+// byte will be read as part of that word code
+//
 // the schema objects are designed to be persisted. That is, in a network game, both peers
 // can store their schema objects, and so rather than sending schema data each time, the peers
 // use and build their schemas as the game progresses, adding a new word to the schema anytime
 // it is required.
 namespace {
-	const unsigned char compress_open_element = 0, compress_close_element = 1,
-	                    compress_schema_item = 2, compress_literal_word = 3,
-						compress_first_word = 4, compress_last_word = 255;
-	const size_t compress_max_words = compress_last_word - compress_first_word + 1;
+	const unsigned int compress_open_element = 0, compress_close_element = 1,
+	                   compress_schema_item = 2, compress_literal_word = 3,
+	                   compress_first_word = 4, compress_extended_word = 250,
+					   compress_end_words = 256;
+	const size_t compress_max_basewords = compress_extended_word - compress_first_word;
+	const size_t compress_max_words = compress_max_basewords + (compress_end_words - compress_extended_word)*compress_end_words;
 
 	void compress_output_literal_word(const std::string& word, std::vector<char>& output)
 	{
@@ -806,12 +813,13 @@ namespace {
 
 	compression_schema::word_char_map::const_iterator add_word_to_schema(const std::string& word, compression_schema& schema)
 	{
-		const unsigned char c = compress_first_word + schema.word_to_char.size();
-			
-		std::cerr << "inserting in schema: " << int(c) << " -> '" << word << "'\n";
+		unsigned int c = compress_first_word + schema.word_to_char.size();
+		if(c >= compress_extended_word) {
+			c = ((compress_extended_word - 1 + c/compress_extended_word) << 8) + (c%compress_extended_word);
+		}
 
-		schema.char_to_word.insert(std::pair<unsigned char,std::string>(c,word));
-		return schema.word_to_char.insert(std::pair<std::string,unsigned char>(word,c)).first;
+		schema.char_to_word.insert(std::pair<unsigned int,std::string>(c,word));
+		return schema.word_to_char.insert(std::pair<std::string,unsigned int>(word,c)).first;
 	}
 
 	compression_schema::word_char_map::const_iterator get_word_in_schema(const std::string& word, compression_schema& schema, std::vector<char>& output)
@@ -831,7 +839,6 @@ namespace {
 			return add_word_to_schema(word,schema);
 		} else {
 			//it's not there, and there's no room to add it
-			std::cerr << "no room for word '" << word << "' in schema\n";
 			return schema.word_to_char.end();
 		}
 	}
@@ -842,7 +849,12 @@ namespace {
 		const compression_schema::word_char_map::const_iterator w = get_word_in_schema(word,schema,res);
 		if(w != schema.word_to_char.end()) {
 			//the word is in the schema, all we have to do is output the compression code for it.
-			res.push_back(w->second);
+			if(w->second >= compress_extended_word) {
+				res.push_back(w->second >> 8);
+				res.push_back(w->second & 8);
+			} else {
+				res.push_back(w->second);
+			}
 		} else {
 			//the word is not in the schema. Output it as a literal word
 			res.push_back(char(compress_literal_word));
@@ -922,9 +934,18 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 			if(*i1 == compress_literal_word) {
 				i1 = compress_read_literal_word(i1+1,i2,word);				
 			} else {
-				const compression_schema::char_word_map::const_iterator itor = schema.char_to_word.find(*i1);
+				const unsigned char c = *i1;
+				unsigned int code = c;
+				if(code >= compress_extended_word) {
+					++i1;
+					const unsigned char c = *i1;
+					code <<= 8;
+					code += c;
+				}
+
+				const compression_schema::char_word_map::const_iterator itor = schema.char_to_word.find(code);
 				if(itor == schema.char_to_word.end()) {
-					std::cerr << "illegal char: " << int(*i1) << "\n";
+					std::cerr << "illegal word code: " << code << "\n";
 					throw error("Illegal character in compression input\n");
 				}
 

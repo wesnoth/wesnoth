@@ -319,7 +319,9 @@ public:
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 
-	void create_buttons();
+	void begin_game();
+
+	bool in_game() const { return in_game_; }
 
 private:
 	display(const display&);
@@ -422,9 +424,10 @@ private:
 	theme theme_;
 	terrain_builder builder_;
 	
+	void create_buttons();
 	std::vector<gui::button> buttons_;
 
-	bool firstTurn_;
+	bool first_turn_, in_game_;
 
 	std::set<std::string> observers_;
 

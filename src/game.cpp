@@ -203,8 +203,70 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 	return VICTORY;
 }
 
+namespace {
+
+//this function reads the game configuration, searching for valid cached copies first
+void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache)
+{
+	log_scope("read_game_cfg");
+
+	if(defines.size() < 4 && use_cache) {
+		bool is_valid = true;
+		std::stringstream str;
+		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
+			if(i->second.value != "" || i->second.arguments.empty() == false) {
+				is_valid = false;
+				break;
+			}
+
+			str << "-" << i->first;
+		}
+
+		if(is_valid) {
+			const std::string& cache = get_cache_dir();
+			if(cache != "") {
+				const std::string fname = cache + "/game.cfg-cache" + str.str();
+				if(file_exists(fname) && file_create_time(fname) > data_tree_modified_time()) {
+					std::cerr << "found valid cache at '" << fname << "' using it\n";
+					log_scope("read cache");
+					compression_schema schema;
+
+					try {
+						cfg.read_compressed(read_file(fname),schema);
+						return;
+					} catch(config::error&) {
+						std::cerr << "cache is corrupt. Loading from files\n";
+					} catch(io_exception&) {
+						std::cerr << "error reading cache. Loading from files\n";
+					}
+				}
+
+				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
+				
+				//read the file and then write to the cache
+				cfg.read(preprocess_file("data/game.cfg",&defines,&line_src));
+				try {
+					compression_schema schema;
+					write_file(fname,cfg.write_compressed(schema));
+				} catch(io_exception& e) {
+					std::cerr << "could not write to cache '" << fname << "'\n";
+				}
+
+				return;
+			}
+		}
+	}
+
+	std::cerr << "caching cannot be done. Reading file\n";
+	cfg.read(preprocess_file("data/game.cfg",&defines,&line_src));
+}
+
+}
+
 int play_game(int argc, char** argv)
 {
+	const int start_ticks = SDL_GetTicks();
+
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -222,7 +284,8 @@ int play_game(int argc, char** argv)
  			<< "  --path            Prints the name of the game data directory and exits\n"
  			<< "  -t, --test        Runs the game in a small example scenario\n"
  			<< "  -w, --windowed    Runs the game in windowed mode\n"
- 			<< "  -v, --version     Prints the game's version number and exits\n";
+ 			<< "  -v, --version     Prints the game's version number and exits\n"
+			<< "  --nocache         Disables caching of game data\n";
  			return 0;
  		} else if(val == "--version" || val == "-v") {
  			std::cout << "Battle for Wesnoth " << game_config::version
@@ -249,8 +312,11 @@ int play_game(int argc, char** argv)
 	const events::event_context main_event_context;
 
 	std::cerr << "initialized managers\n";
+	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	bool test_mode = false, multiplayer_mode = false, no_gui = false;
+
+	bool use_caching = true;
 
 	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
@@ -258,7 +324,9 @@ int play_game(int argc, char** argv)
 			continue;
 		}
 
-		if(val == "--resolution" || val == "-r") {
+		if(val == "--nocache") {
+			use_caching = false;
+		} else if(val == "--resolution" || val == "-r") {
 			if(arg+1 != argc) {
 				++arg;
 				const std::string val(argv[arg]);
@@ -299,6 +367,7 @@ int play_game(int argc, char** argv)
 	}
 
 	std::cerr << "parsed arguments\n";
+	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	if(no_gui && !multiplayer_mode) {
 		std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
@@ -381,18 +450,21 @@ int play_game(int argc, char** argv)
 	const cursor::manager cursor_manager;
 
 	std::cerr << "initialized gui\n";
+	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	//load in the game's configuration files
 	preproc_map defines_map;
 	defines_map["NORMAL"] = preproc_define();
+	defines_map["MEDIUM"] = preproc_define();
 	std::vector<line_source> line_src;
 
 	config game_config;
 
 	try {
 		log_scope("loading config");
-		const std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,&line_src);
-		game_config.read(game_cfg,&line_src);
+		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
+		read_game_cfg(defines_map,line_src,game_config,use_caching);
+		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 	} catch(config::error& e) {
 		display::unit_map u_map;
 		config dummy_cfg("");
@@ -407,6 +479,7 @@ int play_game(int argc, char** argv)
 	game_config::load_config(game_config.child("game_config"));
 
 	std::cerr << "parsed config files\n";
+	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
@@ -429,6 +502,7 @@ int play_game(int argc, char** argv)
 	}
 
 	std::cerr << "set language\n";
+	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 	if(!no_gui) {
 		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
@@ -440,6 +514,7 @@ int play_game(int argc, char** argv)
 		sound::play_music(game_config::title_music);
 
 		std::cerr << "started music\n";
+		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 		game_state state;
 
@@ -449,6 +524,7 @@ int play_game(int argc, char** argv)
 		             std::vector<team>(),dummy_cfg,dummy_cfg);
 
 		std::cerr << "initialized display object\n";
+		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
 		if(test_mode) {
 			state.campaign_type = "test";
@@ -599,6 +675,7 @@ int play_game(int argc, char** argv)
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
+		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 		gui::TITLE_RESULT res = gui::CONTINUE;
 		
 		while(res == gui::CONTINUE) {
@@ -608,6 +685,7 @@ int play_game(int argc, char** argv)
 		std::cerr << "title screen returned result\n";
 
 		if(res == gui::QUIT_GAME) {
+			std::cerr << "quiting game...\n";
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 
@@ -857,7 +935,9 @@ int play_game(int argc, char** argv)
 		}
 
 		//make a new game config item based on the difficulty level
-		config game_config(preprocess_file("data/game.cfg", &defines_map));
+		std::vector<line_source> line_src;
+		config game_config;
+		read_game_cfg(defines_map,line_src,game_config,use_caching);
 
 		const config::child_list& units = game_config.get_children("units");
 		if(units.empty()) {
@@ -868,8 +948,7 @@ int play_game(int argc, char** argv)
 
 		game_data units_data(*units[0]);
 
-		const LEVEL_RESULT result = play_game(disp,state,game_config,
-		                                      units_data,video);
+		const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
 		if(result == VICTORY) {
 			gui::show_dialog(disp,NULL,
 			  string_table["end_game_heading"],
@@ -884,7 +963,10 @@ int play_game(int argc, char** argv)
 int main(int argc, char** argv)
 {
 	try {
-		return play_game(argc,argv);
+		std::cerr << "started game: " << SDL_GetTicks() << "\n";
+		const int res = play_game(argc,argv);
+		std::cerr << "exiting with code " << res << "\n";
+		return res;
 	} catch(CVideo::error&) {
 		std::cerr << "Could not initialize video. Exiting.\n";
 	} catch(font::manager::error&) {
@@ -895,6 +977,8 @@ int main(int argc, char** argv)
 		std::cerr << "Could not create button: Image could not be found\n";
 	} catch(CVideo::quit&) {
 		//just means the game should quit
+	} catch(end_level_exception&) {
+		std::cerr << "caught end_level_exception (quitting)\n";
 	} catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
 	}

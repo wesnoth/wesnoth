@@ -153,6 +153,12 @@ std::string get_saves_dir()
 	return get_dir(dir_path);
 }
 
+std::string get_cache_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/cache";
+	return get_dir(dir_path);
+}
+
 std::string get_dir(const std::string& dir_path)
 {
 #ifdef _WIN32
@@ -269,6 +275,35 @@ time_t file_create_time(const std::string& fname)
 		return 0;
 
 	return buf.st_mtime;
+}
+
+time_t file_tree_modified_time(const std::string& path, time_t tm)
+{
+	std::vector<std::string> files, dirs;
+	get_files_in_dir(path,&files,&dirs,ENTIRE_FILE_PATH);
+
+	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
+		const time_t t = file_create_time(*i);
+		if(t > tm) {
+			tm = t;
+		}
+	}
+
+	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
+		tm = file_tree_modified_time(*j,tm);
+	}
+
+	return tm;
+}
+
+time_t data_tree_modified_time()
+{
+	static time_t cached_val = 0;
+	if(cached_val == 0) {
+		cached_val = file_tree_modified_time("data/");
+	}
+
+	return cached_val;
 }
 
 int file_size(const std::string& fname)

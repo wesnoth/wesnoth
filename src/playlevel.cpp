@@ -112,7 +112,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
-	std::cerr << "starting level '" << string_table["defeat_message"] << "'\n";
 	//if the entire scenario should be randomly generated
 	if((*level)["scenario_generation"] != "") {
 		std::cerr << "randomly generating scenario...\n";
@@ -322,7 +321,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	turn_info::floating_textbox textbox_info;
 
 	try {
-		gui.create_buttons();
+		gui.begin_game();
 		gui.adjust_colours(0,0,0);
 		game_events::fire("prestart");
 

@@ -86,10 +86,10 @@ typedef std::map<std::string,std::string> string_map;
 //this object holds the schema by which config objects can be compressed and decompressed.
 struct compression_schema
 {
-	typedef std::map<unsigned char,std::string> char_word_map;
+	typedef std::map<unsigned int,std::string> char_word_map;
 	char_word_map char_to_word;
 
-	typedef std::map<std::string,unsigned char> word_char_map;
+	typedef std::map<std::string,unsigned int> word_char_map;
 	word_char_map word_to_char;
 };
 
