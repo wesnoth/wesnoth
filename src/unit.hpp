@@ -80,6 +80,8 @@ public:
 	bool poisoned() const;
 	bool stone() const;
 
+	bool incapacitated() const;
+
 	bool matches_filter(const config& cfg) const;
 
 	void set_flag(const std::string& flag);

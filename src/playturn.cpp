@@ -2032,6 +2032,7 @@ void turn_info::do_search(const std::string& new_search)
 			std::string label = gui_.labels().get_label(i->second);
 			if(std::search(label.begin(), label.end(), last_search_.begin(), last_search_.end()) != label.end()) {
 				gui_.scroll_to_tile(i->first.x,i->first.y,display::WARP);
+				gui_.highlight_hex(i->first);
 				return;
 			}
 		}
@@ -2041,6 +2042,7 @@ void turn_info::do_search(const std::string& new_search)
 			std::string name = u->second.description();
 			if(std::search(name.begin(), name.end(), last_search_.begin(), last_search_.end()) != name.end()) {
 				gui_.scroll_to_tile(u->first.x,u->first.y,display::WARP);
+				gui_.highlight_hex(u->first);
 				return;
 			}
 		}

@@ -149,7 +149,8 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && it->second.side() == side &&
-			it->second.type().is_leader() && it->second.type().level() > level) {
+			it->second.type().is_leader() && it->second.type().level() > level &&
+			it->second.incapacitated() == false) {
 			return adjacent[i];
 		}
 	}
@@ -899,19 +900,28 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 			   const unit_map& units)
 {
 	const unit_map::const_iterator healer_it = units.find(loc);
-	if(healer_it == units.end() || healer_it->second.type().heals() == false)
+	if(healer_it == units.end() || healer_it->second.type().heals() == false) {
 		return false;
+	}
 
 	const unit& healer = healer_it->second;
-	if(healer.side() == side)
-		return true;
 
-	if(size_t(side-1) >= teams.size() || size_t(healer.side()-1) >= teams.size())
+	if(healer.incapacitated()) {
 		return false;
+	}
+
+	if(healer.side() == side) {
+		return true;
+	}
+
+	if(size_t(side-1) >= teams.size() || size_t(healer.side()-1) >= teams.size()) {
+		return false;
+	}
 
 	//if the healer is an enemy, it won't heal
-	if(teams[healer.side()-1].is_enemy(side))
+	if(teams[healer.side()-1].is_enemy(side)) {
 		return false;
+	}
 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -1280,9 +1290,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}*/
 }
 
-const time_of_day& timeofday_at(const gamestatus& status,
-                                const std::map<gamemap::location,unit>& units,
-                                const gamemap::location& loc)
+const time_of_day& timeofday_at(const gamestatus& status,const unit_map& units,const gamemap::location& loc)
 {
 	bool lighten = false;
 
@@ -1292,10 +1300,9 @@ const time_of_day& timeofday_at(const gamestatus& status,
 		get_adjacent_tiles(loc,locs+1);
 
 		for(int i = 0; i != 7; ++i) {
-			const std::map<gamemap::location,unit>::const_iterator itor =
-			                                              units.find(locs[i]);
+			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			   itor->second.type().illuminates()) {
+			   itor->second.type().illuminates() && itor->second.incapacitated() == false) {
 				lighten = true;
 			}
 		}

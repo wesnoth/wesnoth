@@ -406,6 +406,11 @@ bool unit::stone() const
 	return has_flag(stone_str);
 }
 
+bool unit::incapacitated() const
+{
+	return stone();
+}
+
 bool unit::matches_filter(const config& cfg) const
 {
 	const std::string& description = cfg["description"];

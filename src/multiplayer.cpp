@@ -98,7 +98,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 
 	village_gold_slider_.assign(new gui::slider(disp_,rect));
 	village_gold_slider_->set_min(1);
-	village_gold_slider_->set_max(10);
+	village_gold_slider_->set_max(5);
 	village_gold_slider_->set_value(1);
 
 	xp_modifier_slider_.assign(new gui::slider(disp_,rect));
