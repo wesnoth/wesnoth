@@ -21,22 +21,21 @@ foreach my $file (@ARGV) {
     # skip comments
     next LINE if m/^\s*\#/ and !defined $str;
 
-    if (m/\S+\s*=\s*((?:_\s*)?)\"([^\"]*)\"\s*(?:\#.*)?$/) {
+    if (m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)$/) {
       # single-line quoted string
       die "nested string in $file" if defined $str;
 
       push @{$messages{raw2postring($2)}}, "$file:$."
 	if ($1 ne ''); # ie. translatable
 
-    } elsif (m/\S+\s*=\s*((?:_\s*)?)\s*\"([^\"]*)/) {
+    } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
       # start of multi-line
-      die "nested string in $file" if defined $str;
 
       $translatable = ($1 ne '');
       $str = $2;
       $line = $.;
 
-    } elsif (m/(.*)\"\s*(?:\#.*)?$/) {
+    } elsif (m/(.*?)\"(.*)$/) {
       # end of multi-line
       die "end of string without a start in $file" if !defined $str;
 
@@ -83,7 +82,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"
 "POT-Creation-Date: 2004-08-08 15:00+0200\\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
+"PO-Revision-Date: 2004-09-05 18:10+0200\\n"
 "Last-Translator: FULL NAME <EMAIL\@ADDRESS>\\n"
 "Language-Team: LANGUAGE <LL\@li.org>\\n"
 "MIME-Version: 1.0\\n"
