@@ -23,6 +23,8 @@
 
 void show_intro(display& screen, config& data)
 {
+	update_locker lock(screen);
+
 	CKey key;
 
 	gui::button next_button(screen,string_table["next_button"] + ">>>");
@@ -107,6 +109,8 @@ void show_intro(display& screen, config& data)
 
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
+			pump_events();
+
 			if(key[KEY_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))
 				return;
@@ -130,6 +134,8 @@ void show_map_scene(display& screen, config& data)
 	//clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
                                      screen.video().getSurface());
+
+	update_locker lock(screen);
 
 	std::vector<config*>& sequence = data.children["bigmap"];
 	if(sequence.empty()) {
@@ -220,6 +226,7 @@ void show_map_scene(display& screen, config& data)
 		}
 
 		screen.video().update(0,0,screen.x(),screen.y());
+		pump_events();
 	}
 
 	if(!key[KEY_ESCAPE]) {
@@ -249,7 +256,7 @@ void show_map_scene(display& screen, config& data)
 		last_state = new_state;
 
 		SDL_Delay(20);
-		SDL_PumpEvents();
+		pump_events();
 	}
 
 	//clear the screen

@@ -328,6 +328,9 @@ void display::bounds_check_position()
 
 void display::redraw_everything()
 {
+	if(update_locked())
+		return;
+
 	lastTimeOfDay_ = gamestatus::NUM_TIMES;
 	sideBarBgDrawn_ = false;
 	minimapDecorationsDrawn_ = false;
@@ -343,6 +346,11 @@ void display::draw(bool update,bool force)
 		if(image != NULL) {
 
 			if(image->h != screen->h) {
+				SDL_FreeSurface(image);
+				images_.erase("misc/rightside.png");
+
+				image = getImage("misc/rightside.png",UNSCALED);
+
 				SDL_Surface* const new_image
 				                   = scale_surface(image,image->w,screen->h);
 				if(new_image != NULL) {

@@ -26,9 +26,12 @@ team::team_info::team_info(config& cfg)
 {
 	gold = cfg.values["gold"];
 	name = cfg.values["name"];
-	aggression = atof(cfg.values["aggression"].c_str());
-	if(aggression == 0.0)
+
+	const std::string& aggression_val = cfg.values["aggression"];
+	if(aggression_val.empty())
 		aggression = 0.5;
+	else
+		aggression = atof(aggression_val.c_str());
 
 	const std::string& enemies_list = cfg.values["enemy"];
 	if(!enemies_list.empty()) {

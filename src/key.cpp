@@ -42,7 +42,6 @@ CKey::CKey() : is_enabled(true)
 
 int CKey::operator[]( int code )
 {
-	SDL_PumpEvents();
 	return (code == KEY_ESCAPE || is_enabled) && int(key_list[code]);
 }
 

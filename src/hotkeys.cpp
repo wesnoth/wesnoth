@@ -16,6 +16,7 @@
 #include "menu.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
+#include "video.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -144,6 +145,8 @@ void add_hotkeys(config& cfg)
 HOTKEY_COMMAND check_keys(display& disp)
 {
 	const double zoom_amount = 5.0;
+
+	::pump_events();
 
 	CKey key;
 	if(key[KEY_ESCAPE]) {

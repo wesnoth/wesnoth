@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "preferences.hpp"
 #include "video.hpp"
 
 #define TEST_VIDEO_ON 0
@@ -60,6 +61,14 @@ int main( int argc, char** argv )
 
 namespace {
 	bool fullScreen = false;
+
+	unsigned int get_flags(unsigned int flags)
+	{
+		if((flags&SDL_FULLSCREEN) == 0)
+			flags |= SDL_RESIZABLE;
+
+		return flags;
+	}
 }
 
 CVideo::CVideo(const char* text) : frameBuffer(NULL), backBuffer(NULL)
@@ -100,11 +109,12 @@ CVideo::~CVideo()
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 {
-	return SDL_VideoModeOK( x, y, bits_per_pixel, flags );
+	return SDL_VideoModeOK( x, y, bits_per_pixel, get_flags(flags) );
 }
 
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
+	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
 
 	if( res == 0 )
@@ -260,12 +270,12 @@ void CVideo::update( int x, int y, int w, int h )
 	if( y+h > frameBuffer->h )
 		h = frameBuffer->h - y;
 
-	SRectangle rect = {x,y,w,h};
+	SDL_Rect rect = {x,y,w,h};
 	SDL_BlitSurface( backBuffer, &rect, frameBuffer, &rect );
 	SDL_UpdateRect( frameBuffer, x, y, w, h );
 }
 
-void CVideo::update( SRectangle* rect )
+void CVideo::update( SDL_Rect* rect )
 {
 	SDL_BlitSurface( backBuffer, rect, frameBuffer, rect );
 	SDL_UpdateRect( frameBuffer, rect->x, rect->y, rect->w, rect->h );
@@ -326,3 +336,22 @@ int CVideo::drawText(int x, int y, int pixel, int bg, const char* text, int sz)
 }
 
 bool CVideo::isFullScreen() const { return fullScreen; }
+
+void pump_events()
+{
+	SDL_PumpEvents();
+
+	SDL_Event event;
+	while(SDL_PollEvent(&event)) {
+		switch(event.type) {
+			case SDL_VIDEORESIZE: {
+				const SDL_ResizeEvent* const resize
+				              = reinterpret_cast<SDL_ResizeEvent*>(&event);
+				size_t newx = resize->w > 1024 ? resize->w : 1024;
+				size_t newy = resize->h > 768 ? resize->h : 768;
+
+				preferences::set_resolution(std::pair<int,int>(newx,newy));
+			}
+		}
+	}
+}

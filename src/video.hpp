@@ -20,8 +20,6 @@
 #define VIDEO_MEMORY SDL_HWSURFACE
 #define SYSTEM_MEMORY SDL_SWSURFACE
 
-typedef SDL_Rect SRectangle;
-
 class CVideo {
      public:
 	CVideo(const char* text);
@@ -49,7 +47,7 @@ class CVideo {
 	void setPixel( int x, int y, int pixel );
 	int convertColour(int r, int g, int b);
 	void update( int x, int y, int w, int h );
-	void update( SRectangle* area );
+	void update( SDL_Rect* area );
 
 	SDL_Surface* getSurface( void );
 
@@ -67,5 +65,7 @@ class CVideo {
 	SDL_Surface* backBuffer;
 	char text_[256*8];
 };
+
+void pump_events();
 
 #endif

@@ -797,7 +797,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			}
 		}
 
-		SDL_PumpEvents();
+		pump_events();
 	}
 
 	return -1;
@@ -887,24 +887,12 @@ TITLE_RESULT show_title(display& screen)
 		if(key[KEY_ESCAPE])
 			return QUIT_GAME;
 
-		SDL_PumpEvents();
+		pump_events();
 
 		SDL_Delay(20);
 	}
 
 	return QUIT_GAME;
-}
-
-void check_quit(display& gui)
-{
-	CKey key;
-	if(key[KEY_ESCAPE]) {
-		const int res = gui::show_dialog(gui,NULL,"",
-		                        string_table["quit_message"],gui::YES_NO);
-		if(res == 0) {
-			throw end_level_exception(QUIT);
-		}
-	}
 }
 
 } //end namespace gui

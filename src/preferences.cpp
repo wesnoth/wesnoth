@@ -93,21 +93,31 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find("yresolution");
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		return std::pair<int,int>(maximum(atoi(x->second.c_str()),1024),
-		                          maximum(atoi(y->second.c_str()),768));
+		std::pair<int,int> res (maximum(atoi(x->second.c_str()),1024),
+		                        maximum(atoi(y->second.c_str()),768));
+		res.first &= ~1;
+		res.second &= ~1;
+		return res;
 	} else {
 		return std::pair<int,int>(1024,768);
 	}
 }
 
-void set_resolution(const std::pair<int,int>& res)
+void set_resolution(const std::pair<int,int>& resolution)
 {
 	if(disp != NULL) {
+		std::pair<int,int> res = resolution;
+
+		//dimensions must be even
+		res.first &= ~1;
+		res.second &= ~1;
+
 		CVideo& video = disp->video();
 		const int flags = video.isFullScreen() ? FULL_SCREEN : 0;
 		if(video.modePossible(res.first,res.second,16,flags)) {
 
 			video.setMode(res.first,res.second,16,flags);
+
 			disp->redraw_everything();
 
 			char buf[50];
@@ -347,7 +357,7 @@ void show_preferences_dialog(display& disp)
 		disp.update_display();
 
 		SDL_Delay(10);
-		SDL_PumpEvents();
+		pump_events();
 	}
 
 	disp.invalidate_all();

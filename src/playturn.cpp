@@ -866,5 +866,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		gui.draw();
 
 		game_events::pump();
+
+		pump_events();
 	}
 }
