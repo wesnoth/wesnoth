@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-05 00:48+0100\n"
-"PO-Revision-Date: 2004-12-04 18:56+0100\n"
+"PO-Revision-Date: 2004-12-09 17:52+0100\n"
 "Last-Translator: DarkAmex <americo_iacovizzi@libero.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -2256,12 +2256,10 @@ msgid "High King at Sea"
 msgstr "Grande Re del Mare"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:4
-#, fuzzy
 msgid "Test of the Clan"
-msgstr "La prova dei Clan"
+msgstr "La prova del Clan"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2276,8 +2274,9 @@ msgid ""
 msgstr ""
 "\n"
 "Vittoria:\n"
-"@Sconfiggi il comandante dei Clan, Bayar\n"
-"Sconfitta:\n"
+"@Sconfiggi 25 Unità ed almeno un Capo del Clan (Bonus):\n"
+"@Sconfiggi tutti i Capi del Clan\n"
+"Defeat:\n"
 "#Morte di Konrad\n"
 "#Morte di Delfador\n"
 "#Morte di Kalenz\n"
@@ -2355,19 +2354,26 @@ msgid ""
 "our flanks. This is unfortunate as it complicates our march to confront the "
 "queen."
 msgstr ""
+"Malgrado la loro arroganza abbiamo prevalso sul campo di battaglia in questo "
+"giorno. Tuttavia sconfiggendo i capi del Clan non avremo più nessuno a "
+"coprirci i fianchi. Ciò ci è sfavorevole in quanto complica la nostra marcia "
+"contro la regina."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:229
 msgid ""
 "It is unfortunate. They would have been of great assistance in helping "
 "ensure a new King is given a chance to ascend the throne of Wesnoth."
 msgstr ""
+"E' una sfortuna. Sarebbero stati di grande aiuto nel garantire che ad un "
+"nuovo Re fosse data la possibilità di pretendere al trono di Wesnoth."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:233
-#, fuzzy
 msgid ""
 "I think you are mistaken! You mean they would have helped a new Queen claim "
 "the throne of Wesnoth!"
-msgstr "Vi state sbagliando! Aiuterete me a divenire Regina!"
+msgstr ""
+"Vi state sbagliando! Intendete dire che loro avrebbero aiutato una nuova "
+"Regina a giungere al trono di Wesnoth?"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:271
 msgid "Greetings, men of the plains."
@@ -2403,13 +2409,12 @@ msgstr ""
 "legalmente reclamato."
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:291
-#, fuzzy
 msgid ""
 "Hah! You think you can seize the throne? Defeat us in battle and we will "
 "join you, or leave now and never return!"
 msgstr ""
-"Hah! Pensate di poter ereditare il trono? Sconfiggeteci in battaglia e ci "
-"uniremo a voi, o andatevene via adesso per non tornare mai più!"
+"Hah! Pensate di poter reclamare il trono? Sconfiggeteci in battaglia e ci "
+"uniremo a voi altrimenti andatevene via adesso e non tornate mai più!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:295
 msgid "Very well. We will fight you."
@@ -2428,10 +2433,12 @@ msgstr ""
 msgid ""
 "I cannot believe this! You have defeated me! But the Clan shall fight on!"
 msgstr ""
+"Non posso credere a ciò! Tu mi hai sconfitto! Ma il Clan continuerà a "
+"combattere!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:330
 msgid "Their leader has fallen but still they fight!"
-msgstr ""
+msgstr "il loro leader è caduto ma loro continuano a combattere!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:361
 msgid "You can defeat me, but more will take my place!"
@@ -2468,7 +2475,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:464
 msgid "|$units_slain| Clan Members Defeated"
-msgstr ""
+msgstr "|$units_slain| I Membri del Clan son sconfitti"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:484
 msgid ""
@@ -2476,6 +2483,9 @@ msgid ""
 "help in guarding our flanks would be invaluable. Let's take this fight to "
 "their leaders!"
 msgstr ""
+"Stiamo sbaragliando le loro forze! Vediamo se il clan ne ha avute "
+"abbastanza. Il loro aiuto nel proteggerici i fianchi sarebbe inestimabile. "
+"Proviamo a portare questa battaglia verso i loro capi!"
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -3699,6 +3709,8 @@ msgid ""
 "We must make haste! Far greater challenges lay before us, by tarring here "
 "were diminish our resources."
 msgstr ""
+"Dobbiamo fare in fretta! In lontananza si intravedono sfide più grandi. Se "
+"ci fermeremo qui le nostre risorse termineranno molto presto."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:4
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:13
