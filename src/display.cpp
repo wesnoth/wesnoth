@@ -1401,6 +1401,12 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
+	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
+
+	if(!shrouded(x,y)) {
+		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+	}
+
 	if(fogged(x,y) && shrouded(x,y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
@@ -1408,11 +1414,9 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
 		}
 	}
-
-	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
-
+	
 	if(!shrouded(x,y)) {
-		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOREGROUND);
+		draw_terrain_on_tile(x,y,image_type,ADJACENT_FOGSHROUD);
 	}
 
 	//draw the time-of-day mask on top of the hex
@@ -1640,6 +1644,25 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 	std::vector<surface> res;
 	gamemap::location loc(x,y);
 
+	if(terrain_type == ADJACENT_FOGSHROUD) {
+		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
+
+		if(!fog_shroud.empty()) {
+			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
+				image::locator image(*it);
+				// image.filename = "terrain/" + *it;
+
+				const surface surface(get_terrain(image,image_type,x,y));
+				if(surface != NULL) {
+					res.push_back(surface);
+				}
+			}
+
+		}
+
+		return res;
+	}
+
 	const time_of_day& tod = status_.get_time_of_day();
 	// const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
 
@@ -1661,23 +1684,6 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 			}
 		}
 	} 
-
-	if(terrain_type == ADJACENT_FOREGROUND) {
-		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(gamemap::location(x,y));
-
-		if(!fog_shroud.empty()) {
-			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
-				image::locator image(*it);
-				// image.filename = "terrain/" + *it;
-
-				const surface surface(get_terrain(image,image_type,x,y));
-				if(surface != NULL) {
-					res.push_back(surface);
-				}
-			}
-
-		}
-	}
 
 	return res;
 }
