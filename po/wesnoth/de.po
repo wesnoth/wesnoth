@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-20 17:03+0100\n"
-"PO-Revision-Date: 2005-03-14 16:10+0100\n"
-"Last-Translator: Ruben Philipp <the15thfeuergnu@yahoo dot de>\n"
+"PO-Revision-Date: 2005-03-05 18:01+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,19 +17,6 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-# -- Anmerkungen --
-# KENNZEICHNUNG: Vorschlag: Inhaltliche Anmerkungen mit 'Anm.' beginnen, dann lassen sie sich leicht durch die Suchfunktion finden. Beispiel:
-# - Statt:
-# Klingt komisch. Umformulieren
-# - besser so: 
-# Anm. Klingt komisch. Umformulieren
-# 
-# Zahlen innerhalb eines Abschnittes ausschreiben oder in Ziffern stellen - VeryUhu
-# Wir sollten vielleicht ein anderes Wort für 'Spezialitäten' verwenden. Vorschlag: Besonderheiten - VeryUhu
-# Was meint Ihr? ...........
-# 'Euer' und 'Euere' wie das 'Ihr' groß schreiben - VeryUhu
-# -- Anmerkungen Ende --
-# 
 # edited by Ivanovic
 #: data/fonts.cfg:4
 #, fuzzy
@@ -160,7 +147,6 @@ msgid "Recruiting and Recalling"
 msgstr "Ausbildung und Einberufung"
 
 # Poliert von VeryUhu
-# Button --> Knopf
 #: data/help.cfg:79
 msgid ""
 "At the start of any battle, and at times during it, you will need to recruit "
@@ -181,7 +167,7 @@ msgstr ""
 "ausgebildet werden können, aufgelistet sind. Neben den Einheiten ist "
 "angegeben, wieviel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
 "erscheinen ihre Eigenschaften auf der linken Seite. Ihr könnt dann den "
-"»Ausbilden«-Knopf drücken, um die Einheit auszubilden."
+"»Ausbilden«-Button drücken, um die Einheit auszubilden."
 
 # Korrigiert von chrber (& mir) 
 # Korrigiert von VeryUhu
@@ -1408,30 +1394,23 @@ msgstr "Sturmangriff"
 msgid "Forest of Fear"
 msgstr "Forst der Furcht"
 
-# edited by ivanovic
 #: data/scenarios/multiplayer/Hexcake.cfg:3
 msgid "Hexcake"
-msgstr "Hexagon"
+msgstr ""
 
-# edited by ivanovic
-# klingt komisch / falsch
-# Korrigiert von VeryUhu
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr "Teamspiel: 2 gegen 2 oder 3 gegen 3 Spieler."
+msgstr ""
 
-# edited by ivanovic
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
+#, fuzzy
 msgid "Icy Waters"
-msgstr "Eisiges Wasser"
+msgstr "Weihwasser"
 
-# edited by ivanovic
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
 msgid ""
 "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
-"Kämpft im und um das eisige Wasser nahe eines bedeutenden Hafens im Norden "
-"von Wesnoth."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1704,7 +1683,6 @@ msgstr ""
 # Korrigiert von chrber
 # Muss auf jeden Fall besser geschrieben werden
 # OK - poliert von VeryUhu
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
@@ -1716,13 +1694,13 @@ msgid ""
 "leaders."
 msgstr ""
 "Ein Anführer ist in der Lage, Einheiten auszubilden. Befindet er sich in "
-"einem Bergfried, so vermag er sie in den umliegenden Burgfeldern "
+"einem Bergfried, so vermag er Einheiten in den umliegenden Burgfeldern "
 "auszubilden. Jede Seite verfügt üblicherweise über einen solchen "
 "Befehlshaber. Normalerweise ist Euer Anführer auch die erste Einheit auf "
 "Euerer Seite. Sie erscheint auf einem Burgfeld. Ihr könnt Euren Anführer "
 "schnell auswählen, in dem Ihr »l« drückt. Stirbt Euer Anführer, so habt Ihr "
-"das Spiel verloren. Umgekehrt könnt Ihr die meisten Szenarien gewinnen, in "
-"dem Ihr alle gegnerischen Anführer besiegt."
+"das Spiel verloren. Die meisten Szenarien könnt Ihr gewinnen, in dem Ihr "
+"alle gegnerischen Anführer besiegt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid "What's a leader?"
@@ -1759,7 +1737,6 @@ msgstr ""
 "davon erzähle ich Euch später mehr. Eine frisch ausgebildete Einheit kann "
 "sich bis zum Ende des Zuges nicht bewegen oder angreifen."
 
-# Button --> Knopf
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
@@ -1768,7 +1745,7 @@ msgid ""
 msgstr ""
 "Da sich Einheiten in dem Zug, in dem sie ausgebildet wurden, nicht bewegen "
 "oder angreifen können, müsst Ihr euren Zug jetzt beenden. Dazu klickt "
-"einfach auf den »Zug beenden«-Knopf ganz unten rechts."
+"einfach auf den »Zug beenden«-Button ganz unten rechts."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
 msgid "End your turn"
@@ -1782,7 +1759,6 @@ msgstr "Ihr habt euren Zug erfolgreich beendet."
 msgid "How do I end my turn?"
 msgstr "Wie beende ich meinen Zug?"
 
-# Button --> Knopf
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid ""
 "One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
@@ -1790,7 +1766,7 @@ msgid ""
 "hand corner."
 msgstr ""
 "Es gibt drei Möglichkeiten: Ihr könnt »Alt-E« drücken, oder nach einem "
-"Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Knopf ganz "
+"Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Button ganz "
 "rechts unten drücken."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
@@ -2027,7 +2003,7 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Beendet Euren Zug und wartet auf den Angriff Merles."
 
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
+# Korrigiert von VeryUhu -korrende-
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
@@ -2043,7 +2019,6 @@ msgid "What's experience?"
 msgstr "Was ist Erfahrung?"
 
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid ""
 "When a unit fights another unit, it gains experience, denoted 'XP', from the "
@@ -2053,16 +2028,15 @@ msgid ""
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
 "Wenn eine Einheit gegen eine andere kämpft, erhält sie Erfahrungspunkte "
-"(Abgek. EP). Die Menge an EP korrespondiert mit der Stufe des Gegners, "
-"welche für gewöhnlich die Stärke repräsentiert. Wenn der Gegner getötet "
-"wird, erhält die Einheit das 8-fache der Stufe des Gegners in EP."
+"(Abk. EP). Die Menge an EP entspricht der Stufe des Gegners, welche für "
+"gewöhnlich die Stärke repräsentiert. Wenn der Gegner getötet wird, erhält "
+"die Einheit 8x Stufe des Gegners in EP."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid "What happens when a unit advances?"
 msgstr "Was passiert, wenn eine Einheit eine Stufe aufsteigt?"
 
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
@@ -2072,12 +2046,12 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
-"Steigt eine Einheit auf, entwickelt sie sich zu einem neuen Einheitentyp. "
-"Der neue Typ hängt vom alten ab. Manchmal stehen auch mehrere "
-"Entwicklungsmöglichkeiten zur Wahl. Aufgestiegene Einheiten sind für "
-"gewöhnlich stärker und gewinnen eine Stufe. Weiterhin wird eine Einheit bei "
-"einem Aufstieg geheilt und alle negativen Effekten werden beseitigt. Das "
-"wird »Aufstiegsheilung« genannt."
+"Steigt eine Einheit auf, wird sie zu einem anderen Einheitentyp. Der neue "
+"Typ hängt vom alten Typ ab, allerdings gibt es manchmal mehrere "
+"Möglichkeiten, zu was die Einheit aufsteigen kann. Aufgestiegene Einheiten "
+"sind für gewöhnlich stärker und haben eine um 1 höhere Stufe als vorher. "
+"Weiterhin wird eine Einheit bei einem Aufstieg geheilt und alle negativen "
+"Effekten werden beseitigt. Das wird »Aufstiegsheilung« genannt."
 
 # Korrigiert von chrber
 #: data/scenarios/tutorial/Basic_Training.cfg:179
@@ -2095,7 +2069,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Was passiert, wenn eine Einheit auf ein Dorf zieht?"
 
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:196
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
@@ -2107,17 +2080,16 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
-"Wenn sich eine Einheit auf ein fremdes oder neutrales Dorf bewegt, wird "
-"dieses Dorf ab sofort von der Partei kontrolliert, zu der diese Einheit "
-"gehört. Dies wird durch eine Flagge in der entsprechenden Farbe "
-"verdeutlicht. Diese Aktion verbraucht alle verbleibenden Bewegungspunkte der "
-"Einheit. Jedes kontrollierte Dorf bringt Vorteile: Zum einen die Einnahmen "
-"von einem Goldstück pro Zug, zum anderen verringern sich die "
-"Unterhaltskosten um eins. Die Gesamtzahl der kontrollierten Dörfer wird auf "
-"der Statusleiste durch das Bild eines Hauses angezeigt. Zusätzlich zu den "
-"wirtschaftlichen Vorteilen eines Dorfes können sie auch im Kampf genutzt "
-"werden: Eine Einheit, die auf einem Dorf steht, wird am Anfang des nächsten "
-"Zuges um 8 LP geheilt."
+"Wenn sich eine Einheit auf ein Dorf bewegt, wechselt die Kontrolle des "
+"Dorfes zur Partei der Einheit. Dies wird durch eine Flagge in der "
+"entsprechenden Farbe verdeutlicht. Diese Aktion verbraucht alle "
+"verbleibenden Bewegungspunkte der Einheit. Jedes kontrollierte Dorf bringt "
+"Vorteile: Einmal die Einnahmen von einem Goldstück pro Zug und andererseits "
+"das Verringern der Unterhaltskosten um eins. Die Gesamtzahl der "
+"kontrollierten Dörfer wird auch auf der Statusleiste durch das Bild eines "
+"Hauses angezeigt. Zusätzlich zu den wirtschaftlichen Vorteilen eines Dorfes "
+"können sie auch im Kampf genutzt werden: Eine Einheit, die auf einem Dorf "
+"steht, wird am Anfang des nächsten Zuges 8 LP heilen."
 
 # Korrigiert von chrber
 #: data/scenarios/tutorial/Basic_Training.cfg:197
@@ -2127,8 +2099,6 @@ msgstr ""
 "sind?"
 
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
-# Anmerkung: Vereinheitlichen der Ziffernschrift? ("zwei LP" oder "2 LP")
 #: data/scenarios/tutorial/Basic_Training.cfg:197
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
@@ -2139,12 +2109,13 @@ msgid ""
 "scenario all of your units are fully healed."
 msgstr ""
 "Man kann Einheiten auch ohne Dörfer heilen. Wenn sich eine Einheit einen Zug "
-"lang nicht bewegt, nicht angreift und nicht angegriffen wird, heilt sie zwei "
-"LP. Weiterhin gibt es bestimmte heilkundige Einheiten. Sie heilen die "
-"Einheiten auf den direkt angrenzenden Feldern. Die Elfenschamanin ist eine "
-"solche heilkundige Einheit. Alle Einheiten neben einer Elfenschamanin werden "
-"um 4 LP pro Zug geheilt. Und schließlich werden all Eure Einheiten "
-"vollständig geheilt, wenn Ihr ein Szenario beendet."
+"lang nicht bewegt und auch nicht angreift, heilt sie zwei LP. Wenn sie "
+"allerdings in dieser Zeit angegriffen wird, kann sie nicht heilen. Weiterhin "
+"gibt es bestimmte Einheiten, die um die Kenntnis der Heilung wissen. Sie "
+"heilen die Einheiten auf den direkt angrenzenden Feldern. Die Elfenschamanin "
+"ist eine solche Einheit. Alle Einheiten neben einer Elfenschamanin werden um "
+"4 LP pro Zug geheilt. Und schließlich werden all Eure Einheiten vollständig "
+"geheilt, wenn Ihr ein Szenario beendet."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:203
 msgid ""
@@ -2158,7 +2129,6 @@ msgstr ""
 msgid "Defeat Merle"
 msgstr "Besiege Merle"
 
-# Korrigiert von VeryUhu ("B_e_rgfried")
 #: data/scenarios/tutorial/Basic_Training.cfg:220
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
@@ -2166,12 +2136,11 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
-"Ups! Ihr habt Euren Anführer vom Bergfried weg bewegt. Erinnert euch, wenn "
-"Euer Anführer nicht im Bergfried ist, könnt Ihr nicht ausbilden. Wenn euer "
+"Ups! Ihr habt Euren Anführer vom Burgfried weg bewegt. Erinnert euch, wenn "
+"Euer Anführer nicht im Burgfried ist, könnt Ihr nicht ausbilden. Wenn euer "
 "Anführer stirbt, verliert Ihr das Spiel. Um das Tutorial fortzusetzen, werde "
-"ich Euch zum Bergfried zurück teleportieren."
+"ich Euch zum Burgfried zurück teleportieren."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:236
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:224
 msgid ""
@@ -2179,9 +2148,8 @@ msgid ""
 "have gained wisdom from my teachings anyway."
 msgstr ""
 "Ihr habt leider verloren, weil euer Anführer besiegt wurde. Hoffentlich habt "
-"Ihrtrotzdem Nutzen aus meinen Lehren gezogen."
+"trotzdem einen gewissen Nutzen aus meinen Lehren gezogen."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:243
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:231
 msgid ""
@@ -2189,7 +2157,7 @@ msgid ""
 "gained wisdom from my teachings anyway."
 msgstr ""
 "Ihr habt leider verloren, weil die Zeit abgelaufen ist. Hoffentlich habt Ihr "
-"trotzdem Nutzen aus meinen Lehren gezogen."
+"trotzdem aus meinen Lehren einen gewissen Nutzen gezogen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "You have successfully completed the first training scenario."
@@ -2200,15 +2168,12 @@ msgstr "Ihr habt euer erstes Übungszenario erfolgreich abgeschlossen."
 msgid "Hooray!"
 msgstr "Hurra!"
 
-# Verbessert von Rhonda
-# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:257
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
-"Wie weiß ich, wie ich ein Szenario abschließen kann? Werdet Ihr mir das "
-"immer mitteilen?"
+"Wie weiß ich\\, was ich tun muss\\, um ein Szenario zu gewinnen? Werdet Ihr "
+"mir das immer sagen?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:257
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
@@ -2219,19 +2184,17 @@ msgid ""
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
 "Manchmal ist aus dem Einführungsdialog nicht ganz ersichtlich, wie man ein "
-"bestimmtes Szenario gewinnen kann. In einem solchen Fall solltet Ihr Euch "
-"die Missionsziele anschauen, die im Anschluss an den Einführungsdialog "
-"erscheinen. Ihr könnt Sie erneut anzeigen lassen, indem ihr »Missionsziele« "
-"aus dem Hauptmenü wählt. Die Missionsziele sind eine Liste von Bedingungen, "
-"die erfüllt oder verhindert werden müssen, um das Szenario erfolgreich zu "
+"bestimmtes Szenario gewinnen kann. In einem solchen Fall solltet Ihr euch "
+"die Missionsziele anschauen, die nach dem Einführungsdialog erscheinen. Ihr "
+"könnt Sie erneut anzeigen lassen, indem ihr »Missionsziele« aus dem "
+"Hauptmenü wählt. Die Missionsziele sind eine Liste von Bedingungen, die "
+"erfüllt oder verhindert werden müssen, um das Szenario erfolgreich zu "
 "beenden."
 
-# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:258
 msgid "What happens when I win a scenario?"
-msgstr "Was geschieht, wenn ich ein Szenario gewinne?"
+msgstr "Was geschieht\\, wenn ich ein Szenario gewinne?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:258
 msgid ""
 "When you win a scenario, all of your units survive and are revived to full "
@@ -2240,20 +2203,17 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
-"Wenn Ihr ein Szenario gewinnt, werden automatisch all Eure Einheiten "
-"vollständig geheilt. Für die theoretisch verbleibenden Züge müsst Ihr keinen "
-"Unterhalt mehr zahlen. Wenn eure Armee nach eurem Sieg in dem Gebiet "
-"verbleibt, schließen sich euch automatisch alle Dörfer an. Wie sonst auch, "
-"verliert Ihr zwischen den Szenarien allerdings 20% Eures Goldes."
+"Wenn Ihr ein Szenario gewinnt, überleben automatisch all Eure verbleibenden "
+"Einheiten und werden vollständig geheilt. Für die theoretisch verbleibenden "
+"Züge müsst Ihr keinen Unterhalt mehr zahlen. Wenn eure Armee nach eurem Sieg "
+"in dem Gebiet verbleibt, schließen sich euch automatisch alle Dörfer an. Wie "
+"sonst auch, verliert Ihr zwischen den Szenarien 20% Eures Goldes."
 
-# Verbessert von Rhonda
-# \\ gelöscht
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
-"Möchtet Ihr die Kenntnisse betrachten, die in diesem Szenario vermittelt "
-"werden?"
+"Möchtest Ihr die Kennisse, die in diesem Level vermittelt werden, anschauen?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -2265,7 +2225,6 @@ msgstr "Ja"
 msgid "I'm done reviewing skills!"
 msgstr "Ich habe mir die Fähigkeiten alle angesehen."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Basic_Training.cfg:285
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
@@ -2274,9 +2233,8 @@ msgid ""
 msgstr ""
 "Ihr habt zwar das erste Szenario beendet, aber euer Training ist noch nicht "
 "vorbei. Wir gehen nun zum nächsten Szenario, wo Ihr mit mir in einem "
-"Übungskampf bestehen müsst."
+"Übungskampf kämpfen müsst."
 
-# Alternativbegriff für "Spezialitäten" universell festlegen? (Besonderheiten?) - VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
 msgstr "Charakteristiken und Spezialitäten"
@@ -2289,7 +2247,6 @@ msgstr ""
 "Nun müsst Ihr eine schwierigere Prüfung bestehen. Ihr müsst mich in einem "
 "Testkampf besiegen."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:45
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
@@ -2298,12 +2255,12 @@ msgid ""
 "Recall, select your fighter, then select 'OK'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
-"Die meisten Szenarien könnt Ihr gewinnen, in dem Ihr alle gegnerischen "
-"Anführer besiegt. Jetzt müsst Ihr mich besiegen! Euer Kämpfer aus dem "
-"vorigen Szenario kann Euch dabei helfen. Um ihn einzuberufen, müsst Ihr auf "
-"ein Burgfeld rechts-klicken, »Einberufen« auswählen, den Kämpfer auswählen "
-"und dann »OK« drücken. Ihr solltet auch Elfenkrieger und Elfen-Schützen "
-"ausbilden."
+"Die meisten Szenarios könnt Ihr gewinnen, in dem Ihr alle gegnerischen "
+"Anführer besiegt. Um dieses Szenario zu gewinnen, müsst Ihr mich besiegen. "
+"Euer Kämpfer aus dem vorigen Szenario kann Euch dabei helfen. Um ihn "
+"einzuberufen, müsst Ihr auf ein Burgfeld rechts-klicken, »Einberufen« "
+"auswählen, den Kämpfer auswählen und dann »OK« drücken. Ihr solltet auch "
+"Elfenkrieger und Elfen-Schützen ausbilden."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 msgid ""
@@ -2350,7 +2307,6 @@ msgstr "Ihr habt euren Elfenkrieger erfolgreich einberufen."
 msgid "En garde!"
 msgstr "En garde!"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:81
 msgid ""
 "First, you must pay 20 pieces of gold for each unit you recall, regardless "
@@ -2358,22 +2314,19 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
-"Ihr müsst 20 Goldstücke pro einberufener Einheit bezahlen, ganz gleich "
-"welcher Art. Ansonsten verhalten sich einberufene Einheiten ähnlich wie "
-"ausgebildete Einheiten, außer dass anstelle einer neue Einheiteine erfahrene "
-"aus einem vorigen Szenario erscheint."
+"Ihr müsst 20 Goldstücke pro einberufener Einheit bezahlen, gleich welchen "
+"Typs. Ansonsten verhalten sich einberufene Einheiten ähnlich wie "
+"ausgebildete Einheiten, außer das eben keine neue Einheit, sondern eine von "
+"einem vorigen Szenario erscheint."
 
-# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:81
 msgid "What happens when I recall a unit?"
-msgstr "Was geschieht, wenn ich eine Einheit einberufe?"
+msgstr "Was geschieht\\, wenn ich eine Einheit einberufe?"
 
-# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
 msgid "How should I decide which units to recall?"
-msgstr "Wie soll ich entscheiden, welche Einheiten ich einberufe?"
+msgstr "Wie soll ich entscheiden\\, welche Einheiten ich einberufe?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
 msgid ""
 "You should usually recall units that have already advanced to the next "
@@ -2383,25 +2336,24 @@ msgid ""
 msgstr ""
 "Normalerweise solltet Ihr Einheiten einberufen, die schon die nächste Stufe "
 "erreicht haben. Vielleicht wollt Ihr auch Einheiten einberufen, denen nur "
-"noch wenige Erfahrungspunkte bis zur nächsten Stufe fehlen, damit diese bald "
-"aufsteigen werden. Vor allem aber solltet Ihr Einheiten einberufen, die in "
-"dem Szenario, das Ihr spielt, hilfreich sind. Bei großen Waldflächen sind z."
-"B. Elfen sehr nützlich. Manche Einheiten kosten in der Ausbildung mehr als "
-"20 Gold. Wenn Ihr diese Einheiten braucht, ist es normalerweise sinnvoller, "
-"sie soweit möglich einzuberufen, anstatt sie neu auszubilden."
+"noch wenige Erfahrungspunkte bis zur nächsten Stufe fehlen, und so bald "
+"aufsteigen werden. Ihr solltet vor allem Einheiten einberufen, die in dem "
+"Szenario, das Ihr spielt, hilfreich sind. Bei großen Waldflächen sind z.B. "
+"Elfen sehr nützlich. Manche Einheiten kosten in der Ausbildung mehr als 20 "
+"Gold. Wenn ihr diese Einheiten braucht, ist es normalerweise sinnvoller, "
+"sie, wenn möglich, einzuberufen anstatt neu auszubilden."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
 msgstr ""
-"Vielleicht ist Euch aufgefallen, dass die Werte Eurer Einheiten etwas von "
-"jenen abweichen, die Ihr vor der Ausbildung angezeigt bekommen habt. Das "
-"kommt daher, dass ihnen bestimmte Charakteristika zugewiesen wurden."
+"Vielleicht ist Euch aufgefallen, dass die Eigenschaften Eurer Einheiten "
+"etwas von denen abweichen, die Ihr vor der Ausbildung angezeigt bekommen "
+"habt. Das kommt daher, dass ihnen bestimmte Charakteristiken zugewiesen "
+"wurden."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:95
 msgid ""
 "The function of traits is add variety by making units of the same type "
@@ -2410,19 +2362,17 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
-"Charakteristika haben die Aufgabe, das Spiel etwas variantenreicher zu "
-"gestalten, da Einheiten des gleichen Typs untereinander leichte Unterschiede "
-"aufweisen. Jeder Einheit werden bei ihrer Ausbildung zufällig zwei "
-"Charakteristika zugeordnet. Diese werden in der Statustabelle der Einheit "
-"angezeigt. Die Auswirkungen einer Charakteristik kann eingesehen werden, in "
-"dem man den Cursor über sie bewegt."
+"Charakteristiken haben die Aufgabe, das Spiel etwas variantenreicher zu "
+"gestalten, in dem Einheiten des gleichen Typs trotzdem untereinander leichte "
+"Unterschiede haben. Jeder Einheit werden bei ihrer Ausbildung zufällig zwei "
+"Charakteristiken zugeordnet. Die Charakteristiken einer Einheit werden in "
+"der Statustabelle angezeigt, und die Auswirkungen einer Charakteristik kann "
+"eingesehen werden, in dem man den Cursor über sie bewegt."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:95
 msgid "What do traits do?"
-msgstr "Was bewirken Charakteristika?"
+msgstr "Was bewirken Charakteristiken?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:96
 msgid ""
 "There are five distinct traits, which have effects ranging from increasing a "
@@ -2431,31 +2381,28 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
-"Es gibt fünf verschiedene Charakteristika, deren Effekte von der Erhöhung "
-"der Lebenspunkte einer Einheit bis zum Verringern der zum Aufstieg "
+"Es gibt fünf verschiedene Charakteristiken, deren Effekte von der  Erhöhung "
+"der Lebenspunkte einer Einheit, bis zu dem Verringern der zum Aufstieg "
 "benötigten EP reichen. Jede Charakteristik verbessert die Eigenschaften "
-"einer Einheit. Es gibt keine »schlechten Charakteristika«. Die meisten "
-"Einheiten haben die gleichen Chancen für jede Charakteristik."
+"einer Einheit, es gibt keine »schlechten Charakteristiken«. Die meisten "
+"Einheiten haben die gleiche Chance für jede Charakteristik."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:96
 msgid "What kind of traits can my units get?"
-msgstr "Welche verschiedenen Charakteristika kann meine Einheit besitzen?"
+msgstr "Welche verschiedenen Charakteristiken kann meine Einheit haben?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
-"Wenn Ihr Einheiten ausbildet oder einberuft, dann kostet das Gold. Ihr könnt "
-"nur Ausbilden oder Einberufen, wenn Ihr genug Gold dafür habt."
+"Wenn Ihr Einheiten ausbildet oder einberuft kostet das Gold. Ihr könnt nur "
+"Ausbilden bzw. Einberufen, wenn Ihr genug Gold dafür habt."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
 msgid "How much gold do my units cost?"
 msgstr "Wieviel Gold kosten meine Einheiten?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
 msgid ""
 "You need to pay each unit you recruit or recall gold when you recruit it. "
@@ -2468,19 +2415,18 @@ msgid ""
 "red arrow."
 msgstr ""
 "Ihr müsst für jede Einheit, die Ihr ausbildet oder einberuft, Gold zahlen. "
-"Die Ausbildungskosten werden unter dem Namen der Einheit angezeigt. Die "
+"Die Ausbildungskosten werden unter dem Namen der Einheit angezeigt, die "
 "Einberufungskosten betragen immer 20 Goldstücke. Eine Einheit kostet "
-"außerdem einen gewissen Unterhalt pro Zug. Die Unterhaltskosten entsprechen "
-"der Stufe der Einheit. Einheiten, die Ihr nicht ausgebildet oder einberufen "
-"habt, wie z.B. euer Anführer, kosten keinen Unterhalt. Die Gesamt-"
-"Unterhaltskosten werden in der Statusleiste angezeigt, markiert durch einen "
-"roten Pfeil."
+"außerdem einen gewissen Unterhalt pro Zug, den sie unter Eurer Kontrolle "
+"ist. Die Unterhaltskosten entsprechen der Stufe der Einheit. Einheiten, die "
+"Ihr nicht ausgebildet oder einberufen habt, wie z.B. euren Anführer, kosten "
+"keinen Unterhalt. Die Gesamt-Unterhaltskosten werden in der Statusleiste "
+"angezeigt, markiert durch einen roten Pfeil."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
 msgid "How do I get gold?"
 msgstr "Wie komme ich zu Gold?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
@@ -2492,23 +2438,20 @@ msgid ""
 msgstr ""
 "Jedes Szenario beginnt Ihr mit einem gewissen Prozentsatz des Goldes, mit "
 "dem Ihr das vorige Szenario abgeschlossen habt. Ihr beginnt mit mindestens "
-"100 Gold. Wieviel Gold Ihr besitzt, wird neben dem Gold-Icon in der "
+"100 Gold. Wieviel Gold Ihr besitzt wird neben dem Gold-Icon in der "
 "Statusleiste angezeigt. Am Anfang eines Szenarios bekommt Ihr zwei "
-"Goldstücke pro Zug. Da Ihr gewöhnlich mehr Gold benötigt, solltet ihr Dörfer "
-"unter eure Kontrolle bringen. Jedes Dorf bringt euch ein weiteres Goldstück "
-"pro Zug."
+"Goldstücke pro Zug. Da ihr gewöhnlich mehr Gold benötigt, solltet ihr Dörfer "
+"unter eure Kontrolle bringen. Jedes Dorf bringt euch ein Goldstück pro Zug."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
-"Der Abend bricht in Wesnoth an. Die Tageszeit beeinflusst die Höhe des "
+"Die Sonne geht unter in Wesnoth. Die Tageszeit beeinflusst die Größe des "
 "Schadens, den Einheiten unterschiedlicher Gesinnung sich gegenseitig zufügen "
 "können."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
@@ -2517,23 +2460,21 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
-"Es gibt drei Gesinnungen: Redlich, Neutral und Lichtscheu. Der Tag besteht "
-"aus drei Tageszeiten: Tag, Dämmerung und Nacht. Am Tag verursachen redliche "
-"Einheiten, beispielsweise Menschen, 25% mehr Schaden, und lichtscheue "
-"Einheiten, wie Untote, 25% weniger. Nachts gilt das Gegenteil. In der "
+"Es gibt drei Gesinnungen: Rechtschaffen, Neutral und Chaotisch. Es gibt "
+"außerdem drei Tageszeiten: Tag, Dämmerung und Nacht. Am Tag verursachen "
+"rechtschaffene Einheiten, z.B. Menschen, 25% mehr Schaden, und chaotische "
+"Einheiten wie Untote 25% weniger. Nachts gilt das Gegenteil. In der "
 "Dämmerung verursachen alle Einheiten normalen Schaden. Neutrale Einheiten "
-"werden von Tageszeiten gar nicht beeinflusst."
+"verursachen immer normalen Schaden."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
 msgid "What are the different alignments and times of day?"
 msgstr "Was sind die verschiedenen Gesinnungen und Tageszeiten?"
 
-# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
 msgid "How do I know what time of day it is?"
-msgstr "Wie erkenne ich, welche Tageszeit wir gerade haben?"
+msgstr "Wie erkenne ich\\, welche Tageszeit wir gerade haben?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
@@ -2543,11 +2484,11 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
-"Die Tageszeiten durchlaufen normalerweise den Zyklus Morgendämmerung "
-"(Dämmerung), Vormittag (Tag) - Nachmittag (Tag) - Abenddämmerung (Dämmerung) "
-"- Erste Wache (Nacht) - Zweite Wache (Nacht). Symbolisiert wird dies durch "
+"Die Tageszeiten haben normalerweise den Verlauf Morgendämmerung (Dämmerung), "
+"Vormittag (Tag), Nachmittag (Tag), Abenddämmerung (Dämmerung), Erste Wache "
+"(Nacht), Zweite Wache (Nacht), und wieder von vorne. Das wird dargestellt "
 "durch Sonne und Mond, die im Osten aufgehen und im Westen untergehen. Manche "
-"Szenarios haben allerdings einen eigenen Zyklus. Im Untergrund ist es zum "
+"Szenarios haben allerdings eine andere Reihenfolge. Im Untergrund ist es zum "
 "Beispiel immer Nacht. Die aktuelle Tageszeit wird in der Statustabelle "
 "angezeigt."
 
@@ -2557,7 +2498,6 @@ msgstr ""
 "Jedes Hexfeld hat einen bestimmten Geländetyp, der dem Hexfeld verschiedene "
 "Eigenschaften verleiht."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
 msgid ""
 "Two terrains have properties which have already been described; namely "
@@ -2570,26 +2510,25 @@ msgid ""
 "For example; many elves have 70% defense in woods, and are therefore hit 30% "
 "of the time."
 msgstr ""
-"Die Eigenschaften zweier Geländearten wurden schon beschrieben, nämlich "
-"»Dorf« und »Burg«. Es gibt außerdem allgemeine Eigenschaften, die jedes "
-"Gelände besitzt. Das ist einmal die Anzahl an Bewegungspunkten, die eine "
-"Einheit verbraucht, wenn sie sich auf ein Feld eines Geländetyps bewegt, und "
-"zum anderen der Verteidigungswert einer Einheit, wenn sie auf einem Feld "
-"eines Geländetyps steht. Der Verteidigungswert ist ein Prozentsatz, der die "
+"Einige Eigenschaften zweier Geländearten wurden schon beschrieben, nämlich "
+"»Dorf« und »Burg«. Es gibt jedoch allgemeine Eigenschaften, die jedes "
+"Gelände hat. Das ist einmal die Anzahl an Bewegungspunkten, die eine Einheit "
+"verbraucht, wenn sie sich auf ein ein Feld eines Geländetyps bewegt, und zum "
+"Zweiten der Verteidigungswert einer Einheit, wenn sie auf einem Feld eines "
+"Geländetyps steht. Der Verteidigungswert ist ein Prozentsatz, der die "
 "Trefferwahrscheinlichkeit für angreifende Einheiten festlegt. Viele Elfen "
 "haben zum Beispiel in Wäldern einen Verteidigungswert von 70%, und somit "
-"treffen Angreifer nur in 30% aller Fälle."
+"treffen Angreifer in 30% aller Fälle."
 
-# \\ gelöscht
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
 msgid "What are the different properties that terrains have?"
-msgstr "Was sind die verschiedenen Eigenschaften, die ein Gelände haben kann?"
+msgstr ""
+"Was sind die verschiedenen Eigenschaften\\, die ein Gelände haben kann?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:139
 msgid "How do I find out the properties of a specific terrain?"
 msgstr "Wie kann ich die Eigenschaften eines bestimmten Geländes herausfinden?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:139
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
@@ -2601,13 +2540,13 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 "Um die Eigenschaften eines Geländes für eine bestimmte Einheit "
-"herauszufinden, klickt Ihr mit der rechten Maustaste auf die Einheit, wählt "
+"herauszufinden, klickt mit der rechten Maustaste auf die Einheit, wählt "
 "»Einheitenbeschreibung« und seht Euch dann den Abschnitt »Gelände-"
 "Modifikatoren« an. Wenn Ihr wissen wollt, welches Gelände ein bestimmtes "
 "Feld besitzt, bewegt den Cursor dorthin und schaut in die obere linke "
-"Bildschirmecke. Dort steht (in dieser Reihenfolge): Die Art des Geländes, "
-"die Koordinaten des Feldes, der Verteidigungswert der ausgewählten Einheit "
-"und die Anzahl der Bewegungspunkte, die es kostet, um dorthin zu gelangen."
+"Bildschirmecke. Dort steht (in dieser Reihenfolge) die Art des Geländes, die "
+"Koordinaten des Feldes, der Verteidigungswert der ausgewählten Einheit und "
+"die Anzahl der Bewegungspunkte, die es kostet, um dorthin zu gelangen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid ""
@@ -2618,7 +2557,6 @@ msgstr ""
 "Schadens, den verschiedene Einheiten erleiden."
 
 # hmm...
-# Clawing it! :) - Poliert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:152
 msgid ""
 "Each unit has a certain resistance against each attack type. This resistance "
@@ -2629,21 +2567,19 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
-"Die Resistenz einer Einheit gegen eine Schadensart wird in Form einer "
-"Prozentzahl angezeigt. Dieser Prozentsatz wird vom Schaden der betreffenden "
-"Waffe abgezogen. Wenn zum Beispiel ein Elfen-Aufklärer von einem Elfen-"
-"Bogenschützen angegriffen wird, ist der Schaden um 20% höher als gewöhnlich, "
-"da Elfen-Aufklärer gegen Stich eine um 20% verringerteResistenz ('-20%') "
-"haben. Der Resistenzbonus bzw. -malus addiert sich zu anderen Boni oder "
-"Mali, wie sie durch Tageszeiten zustande kommen. Zwei Mali von jeweils -50% "
-"ergeben also einen Gesamtmalus von -100%."
+"Jede Einheit hat eine bestimmte Resistenz gegen jede Schadensart. Diese "
+"Resistenz ist eine Prozentzahl, die von dem Schaden, die eine gegnerische "
+"Waffe des jeweiligen Typs angerichtet wird, abgezogen wird. Wenn zum "
+"Beispiel ein Elfen-Aufklärer von einem Elfen-Bogenschützen angegriffen wird, "
+"ist der Schaden um 20% höher als normal, da Elfen-Aufklärer eine -20%-"
+"Resistenz gegen Stich haben. Der Resistenzbonus/Malus addiert sich zu "
+"anderen Boni/Mali (z.B. Tageszeiten). Zwei -50%-Mali ergeben also einen "
+"malus von -100%."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:152
 msgid "How does resistance affect attack damage?"
 msgstr "Wie beeinflussen Resistenzen den Angriffsschaden?"
 
-# Korrigiert von VeryUhu
-# Müßte 'Einheitenbeschreibung' nicht 'Profil' heißen? - VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
@@ -2655,44 +2591,38 @@ msgid ""
 msgstr ""
 "Es gibt sechs verschiedene Schadensarten: Klinge, Stich, Wucht, Feuer, Kälte "
 "und Heilig. Einheiten mit schwerer Rüstung haben eine hohe Resistenz gegen "
-"physische Angriffe (Klinge, Stich, Wucht), aber dafür eine geringere "
-"Resistenz gegen magischen Schaden (Feuer und Kälte). Alle lebenden Einheiten "
-"sind  resistent gegen heiligen Schaden, Untote dagegen aber extrem anfällig. "
-"Um die Resistenzen einer Einheit einzusehen, klickt Ihr mit der rechten "
-"Maustaste auf die Einheit, wählt die Einheitenbeschreibung aus, und seht "
-"Euch den Bereich »Resistenztabelle« an."
+"physische Arten (Klinge, Stich, Wucht), aber dafür eine geringere Resistenz "
+"gegen magischen Schaden (Feuer und Kälte). Alle lebenden Einheiten sind  "
+"resistent gegen heiligen Schaden, Untote sind hingegen extrem anfällig gegen "
+"heilige Angriffe. Um die Resistenzen einer Einheit einzusehen, klickt mit "
+"Ihr der rechten Maustaste auf die Einheit, wählt die Einheitsbeschreibung "
+"aus, und seht Euch den Bereich »Resistenztabelle« an."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
 msgid "What are the different damage types?"
 msgstr "Was sind die verschiedenen Schadensarten?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
-"Viele Einheiten haben Besonderheiten, die die Spielregeln in einer "
+"Viele Einheiten haben eine Besonderheit, die die Spielregeln in einer "
 "bestimmten Weise verändert."
 
-# Korrigiert von VeryUhu
-# 'Spezialitäten' habe ich ab hier zu 'Besonderheiten' geändert (ist ja nix zu essen ...) - VeryUhu
-# Wenn jemandem ein passenderer Begriff einfällt ...
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid ""
 "Each specialty does something different; that's the whole point of a "
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
-"Jede Besonderheit hat eine andere Auswirkung, das ist schließlich ihr Zweck. "
-"Bewegt euren Cursor auf den Namen einer Besonderheit, um eine Beschreibung "
-"zu bekommen."
+"Jede Spezialität hat eine andere Auswirkung, deshalb heißen sie ja so. "
+"Bewegt euren Cursor auf den Namen einer Spezialität, um eine Beschreibung zu "
+"bekommen."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What do specialties do?"
-msgstr "Was bewirken Besonderheiten?"
+msgstr "Was machen Spezialitäten?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid ""
 "The specialties a unit gets are determined by the unit type; for example all "
@@ -2700,18 +2630,15 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
-"Die Besonderheiten einer Einheit hängen von ihrem Typ ab. Beispielsweise "
-"haben alle Generäle Führungsqualitäten. Es gibt zwei Arten von "
-"Besonderheiten: Fertigkeiten und Waffenbesonderheiten. Fertigkeiten "
-"beeinflussen Einheiten, wohingegen Waffenbesonderheiten nur die Attacken "
-"einer Einheit beeinflussen."
+"Die Fertigkeiten einer Einheit hängen ab von ihrem Typ. Beispielsweise haben "
+"alle Generäle Führungsqualitäten. Es gibt zwei Arten von Spezialitäten: "
+"Fertigkeiten und Waffenspezialitäten. Fertigkeiten beeinflussen Einheiten, "
+"wohingegen Waffenspezialitäten nur Attacken einer Einheit beeinflussen."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid "Which units get specialties?"
-msgstr "Welche Einheiten bekommen Besonderheiten?"
+msgstr "Welche Einheiten bekommen Spezialitäten?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:168
 msgid ""
 "There are many different specialties, and learning about them is one of the "
@@ -2720,24 +2647,21 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
-"Es gibt viele Besonderheiten. Sie alle kennen zu lernen, ist das Salz in der "
-"Suppe. Die verbreitesten Besonderheiten sind »magisch« und "
-"»Führungsqualitäten«. Magische Attacken haben eine 70%tige "
-"Trefferwahrscheinlichkeit, unabhängig von dem Gelände, auf dem der "
+"Es gibt viele Spezialitäten, sie alle kennen zu lernen gehört zu "
+"deninteressanten Seiten Wesnoths. Die verbreitesten Spezialitäten sind "
+"»magisch« und »Führungsqualitäten«. Magische Attacken haben eine 70%tige "
+"Trefferwahrscheinlichkeit, unabhängig von dem Gelände auf dem der "
 "Verteidiger steht. Einheiten, die neben einer höherstufigen Einheit mit "
 "Führungsqualitäten stehen, verursachen mehr Schaden."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:168
 msgid "What kinds of specialties can my units get?"
-msgstr "Welche Arten von Besonderheiten gibt es?"
+msgstr "Welche Arten von Spezialitäten gibt es?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:169
 msgid "How do I use specialties?"
-msgstr "Wie benutze ich Besonderheiten?"
+msgstr "Wie benutze ich Spezialitäten?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:169
 msgid ""
 "To use a specialty, you just have to move and/or attack with your units in a "
@@ -2745,22 +2669,21 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
-"Um eine Besonderheit zu benutzen, müsst Ihr lediglich Eure Einheiten so "
-"bewegen oder angreifen lassen, dass die Besonderheit aktiviert wird. Um "
+"Um eine Spezialität zu benutzen, müsst Ihr lediglich eure Einheiten so "
+"bewegen oder angreifen lassen, dass die Spezialität aktiviert wird. Um "
 "»Führungsqualitäten« zu benutzen, müsst Ihr mit einer Einheit angreifen, die "
-"neben einer Einheit mit dieser Besonderheit steht."
+"neben einer Einheit mit dieser Spezialität steht."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:186
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
-"Manche Objekte verändern die Eigenschaften der Einheit, die sie aufhebt, "
-"indem sie auf das Objekt zieht. Eine Eurer Einheiten hat einen Trank "
-"gefunden, der ihren Angriffsschaden erhöht. Schaut euch die Statusseite an, "
-"um ihre neuen Kampfeigenschaften zu sehen."
+"Manche Objekte verändern die Eigenschaften einer Einheit, wenn sie von ihr "
+"gefunden werden. Eine eurer Einheiten hat einen Trank gefunden, der ihren "
+"Angriffsschaden erhöht. Schaut euch die Statusseite an, um ihre neuen "
+"Kampfeigenschaften, zu sehen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:193
 msgid "This potion increases the damage of all the drinker's attacks by four."
@@ -2786,17 +2709,15 @@ msgstr "Welche Objekte werde ich finden?"
 msgid "How long do these objects last?"
 msgstr "Wie lange wirken diese Objekte?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
 "Die meisten Objekte haben einen permanenten Effekt auf die Einheit, die sie "
-"findet. Manche dagegen, wie zum Beispiel geweihtes Wasser, wirken nur bis "
+"findet. Manche Objekte, wie zum Beispiel geweihtes Wasser, wirken nur bis "
 "zum Ende eines Szenarios."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:214
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
@@ -2804,42 +2725,38 @@ msgid ""
 "supply and make them unable to recruit."
 msgstr ""
 "Vergesst nicht, den Gegner davon abzuhalten, Dörfer einzunehmen. Diejenigen, "
-"die er schon in Besitz genommen hat, solltet Ihr zurückerobern. So beraubt "
-"Ihr ihm seiner Goldeinnahmen und somit seiner Ausbildungsmöglichkeiten."
+"die er schon hat, solltet Ihr zurückerobern. So beraubt Ihr ihm seiner "
+"Goldeinnahmen und somit seiner Ausbildungsmöglichkeiten."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
 msgstr ""
-"Herzlichen Glückwunsch! Ihr habt mich besiegt und damit das zweite und "
-"letzte Trainingszenario bestanden. Nun seid Ihr bereit für Wesnoth - zieht "
-"hinaus in die Welt und beginnt eine Kampangne oder ein Spiel im Mehrspieler-"
-"Modus!"
+"Glückwunsch! Ihr habt mich besiegt und damit das zweite und letzte "
+"Trainingszenario überstanden. Ihr könnt jetzt entweder eine Kampangne oder "
+"ein Spiel im Mehrspieler-Modus anfangen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:245
 msgid "How do I play a campaign?"
 msgstr "Wie spiele ich eine Kampagne?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:245
 msgid ""
 "To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
-"Um eine Kampagne zu beginnen, startet Ihr Wesnoth, klickt auf »Kampagne« und "
-"wählt die Kampagne aus, die Ihr spielen wollt. Anschließend legt Ihr den "
-"Schwierigkeitsgrad fest: Leicht, mittel oder schwierig. Wesnoth-Einsteiger "
-"sollten mit der Kampagne »Der Thronerbe« beginnen."
+"Um eine Kampagne zu beginnen, startet Wesnoth, wählt »Kampagne«, dann die "
+"Kampagne, die Ihr spielen wollt, und anschließend den Schwierigkeitsgrad "
+"(leicht, mittel, schwierig). Wesnoth-Einsteiger sollten mit der Kampagne "
+"»Der Thronerbe« beginnen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:246
 msgid "How do I play multiplayer?"
 msgstr "Wie kann ich ein Mehrspieler-Spiel spielen?"
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:246
 msgid ""
 "To play Wesnoth against other people, select 'Multiplayer'. Then select "
@@ -2847,16 +2764,14 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
-"Um Wesnoth gegen andere Spieler zu spielen, wählt Ihr »Mehrspieler«. Wählt "
-"nun »Offiziellem Server beitreten«, um Euch mit dem offiziellen Wesnoth-"
-"Server zu verbinden. Hier könnt Ihr an einem Spiel teilnehmen, indem Ihr das "
-"gewünschte Spiel auswählt und dann auf die Schaltfläche »Spiel beitreten« "
-"drückt."
+"Um Wesnoth gegen andere Spieler zu spielen, wählt »Mehrspieler«. Wählt nun "
+"»Offiziellen Server beitreten«, um Euch mit dem offiziellen Wesnoth Server "
+"zu verbinden. Hier könnt ihr einem Spiel betreten, indem Ihr das gewünschte "
+"Spiel auswählt und dann auf die Schaltfläche »Spiel beitreten« drückt."
 
-# Korrigiert von VeryUhu
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr "Das habe ich verstanden. Aber ..."
+msgstr "Das habe ich verstanden. Aber..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -3027,20 +2942,18 @@ msgstr "Bergfried"
 msgid "Canyon"
 msgstr "Schlucht"
 
-# edited by ivanovic
 #: data/terrain.cfg:438
+#, fuzzy
 msgid "ruin"
-msgstr "Ruine"
+msgstr "Lebensentzug"
 
-# edited by ivanovic
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr "versunkene Ruine"
+msgstr ""
 
-# edited by ivanovic
 #: data/terrain.cfg:458
 msgid "swamp ruin"
-msgstr "Sumpfruine"
+msgstr ""
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -3107,16 +3020,14 @@ msgstr ""
 "Schutze der Nacht Angriffsvorteile genießen. Neutrale Einheiten sind vom Tag-"
 "Nacht-Wechsel nicht betroffen."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:2
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"In einer Kampagne könnt Ihr erfahrene Einheiten aus dem vorhergehenden "
-"Szenario wieder einsetzen, indem Ihr die Option »Einberufen« verwendet."
+"In einer Kampagne könnt Ihr erfahrene Einheiten aus dem vorherigen Szenario "
+"wieder einsetzen, indem Ihr die Option »Einberufen« verwendet."
 
-# Heilig anstelle von Geweiht, OK? Sonst verwirrend - Korrigiert von VeryUhu
 #: data/tips.cfg:3
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
@@ -3126,13 +3037,12 @@ msgid ""
 "types."
 msgstr ""
 "Es gibt sechs Schadensarten in Wesnoth: Stich, Klinge, Wucht, Feuer, Kälte "
-"und Heilig. Jede Einheit hat Stärken und Schwächen gegen unterschiedliche "
-"Arten von Angriffen. Klickt mit der rechten Maustaste auf eine Einheit und "
-"wählt die Option »Einheitenbeschreibung« aus. Die Tabelle »Resistenz« gibt "
-"Euch darüber Auskunft, wie hoch der Widerstand gegen eine bestimmte "
-"Schadensart ist."
+"und Heilig/Geweiht. Jede Einheit hat Stärken und Schwächen gegen "
+"unterschiedliche Arten von Angriffen. Klickt mit der rechten Maustaste auf "
+"eine Einheit und wählt die Option »Einheitenbeschreibung« aus. Die Tabelle "
+"»Resistenz« gibt Euch darüber Auskunft, wie hoch der jeweilige Widerstand "
+"gegen eine bestimmte Schadensart ist."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:4
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
@@ -3140,12 +3050,11 @@ msgid ""
 "in the currently selected terrain is displayed in the top-right corner of "
 "the screen."
 msgstr ""
-"Das Gelände, in dem sich Eure Einheiten aufhalten, entscheidet über die "
-"Wahrscheinlichkeit, bei einem Angriff getroffen zu werden. Der "
+"Das Gelände, in dem sich Eure Einheiten aufhhalten, entscheidet über die "
+"Wahrscheinlichkeit, dass Euch Feinde sie bei einem Angriff treffen. Der "
 "Verteidigungswert der gewählten Einheit wird in der rechten oberen Ecke "
 "angezeigt."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:5
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
@@ -3154,11 +3063,10 @@ msgid ""
 "the 'cure' ability."
 msgstr ""
 "Vergiftete Einheiten verlieren pro Runde 8 Lebenspunkte. Das Gift ist jedoch "
-"nicht in der Lage, Eure Einheit zu töten. Mindestens 1 Lebenspunkt bleibt "
+"nicht in der Lage Eure Einheit zu töten. Es bleibt mindestens 1 Lebenspunkt "
 "übrig. Vergiftete Einheiten können kuriert  werden, wenn Ihr sie in ein Dorf "
 "führt oder sie neben einer Einheit mit der Fähigkeit »Kurieren« platziert."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:6
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
@@ -3166,11 +3074,10 @@ msgid ""
 "and experienced army."
 msgstr ""
 "Ihr könnt Einheiten aus früheren Szenarien verwenden, wenn Ihr sie "
-"einberuft. Wenn Ihr dies über mehrere Szenarien tut, bilden diese Einheiten "
+"einberuft. Wenn Ihr dies über mehrer Szenarien tut, bilden diese Einheiten "
 "eine immer mächtiger und erfahrener werdende Armee."
 
 # edited by Ivanovic
-# Korrigiert von VeryUhu
 #: data/tips.cfg:7
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
@@ -3178,13 +3085,12 @@ msgid ""
 "turn. Level 0 units are too frail to control a zone; and skirmisher units "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Einheiten kontrollieren alle Felder, die an ihr eigenes angrenzen. Wenn sich "
+"Einheiten kontrollieren alle Felder, die an ihr Eigenes angrenzen. Wenn sich "
 "eine Eurer Einheiten in die Nähe einer gegnerischen Einheit begibt, kann sie "
-"sich in dieser Runde nicht weiter bewegen. Level 0-Einheiten sind zu "
-"schwach, um einen Bereich zu kontrollieren. Lediglich Plänkler habe die "
-"nötige Ausbildung, um kontrollierte Bereiche zu durchgehen."
+"sich in dieser Runde nicht weiter bewegen. Level 0 Einheiten sind zu schwach "
+"um einen Bereich zu kontrollieren. Lediglich Plänkler habe die nötige "
+"Ausbildung um derartige Bereiche zu durchgehen."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:8
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
@@ -3193,30 +3099,27 @@ msgid ""
 "at least 60% chance to hit when attacking."
 msgstr ""
 "Die Wahrscheinlichkeit, dass ein Angriff eine Einheit trifft, hängt "
-"normalerweise davon ab, wie gut sich diese Einheit in der aktuellen "
-"Geländeart verteidigen kann Magische Angriffe haben grundsätzlich eine "
-"Trefferwahrscheinlichkeit von 70%. Scharfschützen verfügen über eine "
-"Trefferwahrscheinlichkeit von mindestens 60%."
+"normalerweise davon ab, wie gut sich diese Einheit im Gelände, in dem sie "
+"sich gerade aufhält, verteidigen kann. Magische Angriffe haben "
+"grundsätzliche eine Trefferwahrscheinlichkeit von 70%. Scharfschützen "
+"verfügen über eine Trefferwahrscheinlichkeit von mindestens 60%."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:9
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
-"Einheiten, die in einem Dorf stationiert sind, heilen zu Beginn der nächsten "
-"Runde um 8 Lebenspunkte. "
+"Einheiten, die in einem Dorf stationiert sind, heilen um 8 Lebenspunkt zu "
+"Beginn der nächsten Runde. "
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:10
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
 "Verwundete Einheiten, die sich während einer Runde weder bewegen noch "
-"angreifen, können sich etwas ausruhen. Deshalb erhalten sie zu Beginn der "
+"angreifen, können sich etwas ausruhen. Deshalb erhalten sie bei Beginn der "
 "nächsten Runde 2 Lebenspunkte zurück."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:11
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
@@ -3224,10 +3127,9 @@ msgid ""
 "villages and castles."
 msgstr ""
 "Die meisten Fußtruppen verteidigen sich besser in Dörfern und Burgen als im "
-"übrigen Gelände, während die meisten berittenen Einheiten dort keinen "
-"Vorteil genießen."
+"übrigen Gelände, während die meisten berittenen Einheiten keinen Vorteil bei "
+"der Verteidigung in Dörfern oder Burgen genießen."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:12
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
@@ -3235,10 +3137,9 @@ msgid ""
 "and spears."
 msgstr ""
 "Berittene Einheiten sind generell resistenter gegen Angriffe mit Schwertern "
-"und Wuchtwaffen, dafür aber verwundbarer gegen Angriffe mit Stichwaffen, wie "
-"Speere und Bögen."
+"und Wuchtwaffen, dafür aber verwundbarer gegen Angriffen mit Stichwaffen, "
+"wie Speeren und Bögen."
 
-# Korrigiert von VeryUhu - korrende - do _not_ delete this tag!
 #: data/tips.cfg:13
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
@@ -3246,17 +3147,16 @@ msgid ""
 "the unit they kill."
 msgstr ""
 "Das Töten von gegnerischen Einheiten ist der beste Weg, um Erfahrung zu "
-"sammeln. Jede Einheit, die einen Feind tötet, erhält pro Stufe des Gegners 8 "
-"Erfahrungspunkte."
+"gewinnen. Jede Einheit, die einen Feind tötet, erhält pro Stufe des Gegners "
+"8 Erfahrungspunkte."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:14
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
 "Elfische Einheiten sind in den Wäldern beweglicher und kämpfen geschickter. "
-"Zwerge, deren Behausungen in den Hügeln und Bergen Wesnoths liegen, genießen "
+"Zwerge, deren Behausungen in den Hügeln und Bergen Wesnoths liegt, genießen "
 "dort einen Vorteil."
 
 #: data/tips.cfg:15
@@ -3268,25 +3168,22 @@ msgstr ""
 "unter schlechten Bedingungen anzugreifen, solltet Ihr lieber auf bessere "
 "Bedingungen für einen Angriff warten."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:16
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 "Wenn Ihr aus mehreren Richtungen angegriffen werdet, ist es vielleicht eine "
-"gute Idee, entbehrliche Einheiten in verschiedene Richtungen zu schicken, um "
-"den gegnerischen Angriff zu verzögern. "
+"gute Idee, entbehrliche Einheiten in andere Richtungen zu schicken, um den "
+"gegnerischen Angriff zu verzögern. "
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:17
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
-"Zögert nicht, Eure Einheiten zurückzuziehen und neu zu formieren. Oft liegt "
+"Zögert nicht eure Einheiten zurückzuziehen und neu zu formieren. Oft liegt "
 "darin der Schlüssel zum Sieg. "
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:18
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
@@ -3295,13 +3192,11 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "In den meisten Kampagnen erhaltet Ihr eine Goldprämie, wenn Ihr ein Szenario "
-"frühzeitig beendet. Die Prämie ist sowohl von der Anzahl der Dörfer auf der "
-"Karte abhängig, als auch davon, um wie viele Züge Ihr das Szenario vor "
-"Ablauf des Rundenlimits beendet habt. Ihr erhaltet durch vorzeitiges Beenden "
-"grundsätzlich mehr Gold als durch das Besetzen sämtlicher Dörfer und "
-"Abwarten bis zur letzten Runde."
+"frühzeitig beendet. Die Prämie ist von der Anzahl der Dörfer auf der Karte "
+"abhängig, und davon  wie viele Züge eher ihr das Szenario beendet habt. Ihr "
+"erhaltet aber grundsätzlich mehr Gold, als wenn ihr sämtliche Dörfer auf der "
+"Karte besetztet und bis zum Ablauf des Rundenlimits wartetet."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:19
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
@@ -3309,40 +3204,37 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Euer Heerführer kann in jeder Burg Einheiten ausbilden oder einberufen, "
-"nicht nur in der Startburg. Ihr könnt gegnerische Festungen einnehmen und "
-"von dort aus Einheiten in die Schlacht rufen. Eure Verbündeten können auch "
-"Platz für Euch in ihrer Burg schaffen, damit Ihr dort Einheiten ausbilden "
-"könnt."
+"Euer Heerführer kann von jeder Burg aus Einheiten ausbilden oder einberufen, "
+"nicht nur in der Burg in der Ihr startet. Ihr könnt gegnerische Festungen "
+"einnehmen und von dort aus Einheiten in die Schlacht rufen. Es gibt auch die "
+"Möglichkeit, dass Eure Verbündeten für Euch Platz in ihrer Burg schaffen, "
+"damit Ihr dort Einheiten ausbilden könnt."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 "Skelette sind resistenter gegen Angriffe mit Klingen- und Stichwaffen. Dafür "
-"gehen sie unter den Schlägen von Hieb- oder geweihten Waffen sowie  durch "
-"Feuer schnell zu Grunde."
+"gehen sie unter den Schlägen von Hieb- oder geweihten Waffen sowie dem "
+"Einfluss von Feuer schnell zu Grunde."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
-"Niedrig stufige Truppen genießen Vorteile im Kampf, wenn sie an der Seite "
-"einer Einheit mit Führungsqualitäten kämpfen."
+"Niedrig stufige Truppen, die an der Seite einer Einheit mit "
+"Führungsqualitäten kämpfen, genießen Vorteile im Kampf."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:22
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"Vermeidet es, Eure Einheiten nur in die Nähe, aber nicht auf ein unbesetztes "
-"Dorf zu bewegen. Eine gegnerische Einheit könnte das Dorf besetzten und Euch "
+"Vermeidet es, Eure Einheiten in die Nähe eines unbesetzten Dorfes zu "
+"bewegen. Eine gegnerische Einheit könnte das Dorf besetzten und Euch "
 "angreifen, während sie selbst von den Verteidigungs- und Heilungsboni "
 "profitiert."
 
@@ -3354,26 +3246,24 @@ msgstr ""
 "Wenn Ihr den Mauszeiger über eine Fähigkeit oder Eigenschaft einer Einheit "
 "bewegt, wird Euch die jeweilige Beschreibung angezeigt."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Bildet mit Einheiten einen Wall, um verletze Einheiten zu schützen und ihnen "
-"das Erholen zu ermöglichen."
+"Verwendet Einheiten als Wall, um verletzen Einheiten das Erholen zu "
+"ermöglichen."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "Leset die Liste der Tastenkombinationen im Einstellungsmenü."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:26
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Ihr könnt die Bewegung einer Einheit rückgängig machen, indem Ihr die Taste "
-"»u« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
-"hat - beispielsweise neue Dörfer oder gegnerische Einheiten -  und sie noch "
+"»U« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
+"hat - beispielsweise neue Dörfer oder gegnerische Einheiten -  bzw. noch "
 "keine gegnerische Einheit angegriffen hat."
 
 #: data/tips.cfg:27
@@ -3384,30 +3274,27 @@ msgstr ""
 "Ihr könnt feststellen, wie weit sich gegnerische Einheiten in ihrer Runde "
 "bewegen können. Zeigt einfach mit dem Mauszeiger auf sie."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 "Unterstützt Eure angreifenden Einheiten durch Heiler - diese können den "
-"Kampf zu Eueren Gunsten wenden, ohne selbst anzugreifen."
+"Kampf gewinnen, ohne selbst anzugreifen."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:29
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
-"Der »Verlangsamungs«-Angriff veringert die Anzahl gegnerischer BP und senkt "
-"ausserdem die Anzahl der gegnerischen Angriffe um 1.Daher ist er gegen "
-"Einheiten mit wenigen, aber mächtigen Angriffen sehr wirkungsvoll."
+"Der >>Verlangsamungs<<-Angriff, veringert die Anzahl gegnerischer BP, und "
+"senkt ausserdem die Anzahl der gegnerischen Angriffe um einen.Daher ist er "
+"sehr wirkungsvoll gegen Einheiten mit wenigen mächtigen Angriffen."
 
-# Korrigiert von Rhonda
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
-msgstr "Untote sind sehr anfällig gegen geweihte Waffen und heilige Magie."
+msgstr "Untote sind sehr anfällig gegen geweihte Waffe und heilige Magie."
 
 #: data/tips.cfg:31
 msgid ""
@@ -3417,45 +3304,40 @@ msgstr ""
 "Einheiten werden vollständig geheilt, sobald sie eine Stufe aufsteigen. Klug "
 "eingesetzt, kann dies einen Kampf entscheiden."
 
-# Korrigiert von VeryUhu
 #: data/tips.cfg:32
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
 "Einheiten, die über die Fähigkeit des Sturmangriffes verfügen, solltet Ihr "
-"am besten gegen Gegner einsetzen, die Ihr mit dem ersten Angriff vernichten "
+"am besten gegen Gegner einsetzen, die ihr mit dem ersten Angriff vernichten "
 "könnt."
 
 #: data/traits.cfg:4 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "loyal"
 
-# edited by ivanovic
-# klingt komisch
-# Poliert von VeryUhu
 #: data/traits.cfg:5
+#, fuzzy
 msgid "Zero upkeep"
-msgstr "Keine Unterhaltskosten"
+msgstr "Ausgaben"
 
-# edited by ivanovic
 #: data/traits.cfg:15
+#, fuzzy
 msgid "undead"
-msgstr "untot"
+msgstr "Untote"
 
-# edited by ivanovic
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr "Immun gegen Gift"
+msgstr ""
 
 #: data/traits.cfg:23
 msgid "strong"
 msgstr "kräftig"
 
-# edited by ivanovic
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr "geschickt"
+msgstr ""
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -3482,7 +3364,6 @@ msgid "Hard"
 msgstr "Schwierig"
 
 # hmm
-# Clawing it - VeryUhu
 #: data/translations/english.cfg:9
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
@@ -3490,8 +3371,8 @@ msgid ""
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
-"Redliche Einheiten können bei Tag besser kämpfen als andere. Mit Anbruch der "
-"Dämmerung aber sinkt ihr Kampfesmut.\n"
+"Redliche Einheiten genießen Kampfvorteile während es hell ist, bei Anbruch "
+"der Dämmerung aber sinkt ihr Kampfesmut.\n"
 "\n"
 "Tag: +25% Schaden\n"
 "Nacht: -25% Schaden"
@@ -3503,7 +3384,6 @@ msgid ""
 msgstr ""
 "Die Kampfkraft neutraler Einheiten ist unabhängig von den Lichtverhältnissen."
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:14
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
@@ -3512,13 +3392,11 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 "Lichtscheue Einheiten kämpfen am liebsten im Schutze der Dunkelheit, da sie "
-"tagsüber durch die Sonne geblendet werden.\n"
+"tagsüber durch die Sonne behindert werden.\n"
 "\n"
 "Tag: -25% Schaden\n"
 "Nacht: +25% Schaden"
 
-# Korrigiert von Ivanovic
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:21
 msgid ""
 "Ambush:\n"
@@ -3529,12 +3407,13 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Hinterhalt:\n"
-"Diese Einheit kann sich im Wald vor ihren Gegnern verstecken. \n"
+"Diese Einheit kann sich im Wald verstecken und von Gegner unentdeckt "
+"bleiben.\n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
-"sie im Wald ist, außer, wenn sich eine feindliche Einheitauf einem "
-"angrenzenden Feld befindet, oder direkt nachdem die Einheit selbst "
-"angegriffen hat und"
+"sie im Wald ist. Doch gelten folgende Ausnahmen: Direkt nachdem die Einheit "
+"selbst angegriffen hat, oder sich eine feindliche Einheiten auf einem "
+"angrenzenden Feld befindet."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
@@ -3543,9 +3422,6 @@ msgid "ambush"
 msgstr "Hinterhalt"
 
 # Korrigiert von chrber
-# Korrigiert von Ivanovic
-# Korrigiert von VeryUhu
-# Anm. 'Kurierer' klingt komisch.Besser: Arzt? Medicus? (oder statt Heiler'Kurpfuscher':) - VeryUhu
 #: data/translations/english.cfg:31
 msgid ""
 "Cures:\n"
@@ -3560,17 +3436,17 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 "Kurieren:\n"
-"Diese Einheit verbindet Kräuterkunde mit magischer Heilung. Dadurch ist es "
-"ihr möglich, Einheiten schneller zu heilen, als es auf dem Schlachtfeld "
-"normalerweise möglich wäre.\n"
+"Diese Einheit verbindet kräuterbasiertes Heilen mit der magischen Heilung. "
+"Dadurch ist es ihr möglich Einheiten schneller zu heilen, als es auf dem "
+"Schlachtfeld normalerweise möglich wäre.\n"
 "\n"
-"Die Einheit kümmert sich um alle benachbarten freundlichen Einheiten zu "
-"Beginn der Runde.\n"
-"Eine auf diese Art versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
-"Ein Kurierer kann alle Einheiten, um die er sich kümmert, um insgesamt bis "
-"zu 18 LP heilen.\n"
-"Auch heilt er eine Einheit von einer Vergiftung. Allerdings kann er nicht "
-"zusätzlich die Lebenspunkte dieser Einheit zurückbringen."
+"Die Einheit kömmert sich um alle benachbarten freundlichen Einheiten zum "
+"Rundenbeginn.\n"
+"Eine versorgte Einheit regeneriert bis zu 8 LP pro Runde.\n"
+"Ein Kurierer kann alle Einheiten um die er sich kümmert um insgesamt bis zu "
+"18 LP heilen.\n"
+"Ein Kurierer kann eine Einheit vom Gift heilen, auch wenn er diese Einheit "
+"in dieser Runde nicht noch zusätzlich heilen kann."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
@@ -3581,8 +3457,6 @@ msgid "cures"
 msgstr "Kurieren"
 
 # Korrigiert von chrber
-# Korrigiert von Ivanovic
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:40
 msgid ""
 "Heals:\n"
@@ -3597,13 +3471,13 @@ msgstr ""
 "Heilen:\n"
 "Angrenzende Einheiten werden zu Beginn Eurer Runde geheilt.\n"
 "\n"
-"Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu 4 LP pro Runde "
-"zurück.\n"
-"Ein Heiler kann bei allen Einheiten, um die er sich kümmert, bis zu 8 LP pro "
-"Runde heilen.\n"
-"Vergiftungen kann ein Heiler aber nicht aufheben.Dies kann nur durch eine "
-"Einheit mit der Fähigkeit 'kurieren' oder durch den Aufenthalt in einem Dorf "
-"geschehen."
+"Eine Einheit, um die sich ein Heiler kümmert, erhält bis zu vier LP pro "
+"Runde zurück.\n"
+"Ein Heiler kann, bei allen Einheiten um die er sich kümmert, bis zu 8 LP pro "
+"Rundeheilen.\n"
+"Eine vergiftete Einheit, kann nicht von einem Heiler von der vergiftung "
+"befreit werden. Dies kann nur durch eine Einheit mit der Fähigkeit kurieren "
+"oder die Pflege durch ein Dorf geschehen."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
@@ -3612,7 +3486,6 @@ msgstr ""
 msgid "heals"
 msgstr "Heilen"
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:47
 msgid ""
 "Illuminates:\n"
@@ -3623,17 +3496,16 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "Lichtaura:\n"
-"Diese Einheit wird von einer Aura des Lichts umgeben, die redliche Einheiten "
-"anspornt und Lichtscheue verunsichert.\n"
-"Jede angrenzende Einheit kämpft während der Nacht, als sei es Dämmerung, und "
+"Diese Einheit wird von einer Aura des Lichts umgeben, die bewirkt, dass "
+"redliche Einheiten besser, und lichtscheue Einheiten schlechter kämpfen.\n"
+"Jede angrenzende Einheit kämpft während der Nacht, als sei es Dämmerung, "
 "während der Dämmerung, als sei es Tag."
 
 #: data/translations/english.cfg:49
 msgid "illuminates"
 msgstr "Lichtaura"
 
-# Korrigiert von Ivanovic
-# Korrigiert von VeryUhu
+# edited by ivanovic
 #: data/translations/english.cfg:54
 msgid ""
 "Leadership:\n"
@@ -3649,8 +3521,8 @@ msgstr ""
 "Diese Einheit führt befreundete Einheiten in die Schlacht und lässt die "
 "Nahestehenden besser kämpfen.\n"
 "\n"
-"Benachbarte Einheiten niedrigerer Stufen richten im Kampf mehr Schaden an. "
-"Pro Stufe weniger erhöht sich der Schaden um 25%."
+"Benachbarte Einheiten niedrigerer Stufen richten im Kampf einen höheren "
+"Schaden an. Dabei erhöht sich der Schaden um 25% pro Stufe unterschied."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3676,7 +3548,6 @@ msgstr ""
 "Zählen nie mehr als 1 zum Unterhalt."
 
 # edited by ivanovic
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:66
 msgid ""
 "Nightstalk:\n"
@@ -3690,15 +3561,14 @@ msgstr ""
 "Diese Einheit ist des Nachts für ihre Feinde unsichtbar. \n"
 "\n"
 "Feindliche Einheiten können diese Einheit nachts nicht sehen oder angreifen, "
-"es sei denn, diese Einheit hat unmittelbar zuvor selbst angegriffen, oder es "
-"befindet sich eine feindliche Einheit auf einem angrenzenden Feld."
+"Es sei denn diese Einheit hat unmittelbar zuvor selbst angegriffen, oder "
+"sich eine feindliche Einheiten auf einem angrenzenden Feld befindet."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
 msgstr "Nachtschatten"
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:71
 msgid ""
 "Regenerates:\n"
@@ -3708,7 +3578,7 @@ msgstr ""
 "Regeneration:\n"
 "Die Selbstheilungskräfte sind bei dieser Einheit so stark, dass sie 8 LP pro "
 "Runde zurückgewinnt. Falls die Einheit vergiftet sein sollte, wird die "
-"Wirkung des Giftes gestoppt, und es werden keine LP zurückgewonnen."
+"Wirkung des Giftes gestoppt, und keine LP zurückgewonnen."
 
 #: data/translations/english.cfg:73 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
@@ -3717,7 +3587,6 @@ msgstr ""
 msgid "regenerates"
 msgstr "Regeneration"
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:76
 msgid ""
 "Skirmisher:\n"
@@ -3726,7 +3595,7 @@ msgid ""
 msgstr ""
 "Plänkler:\n"
 "Diese Fertigkeit ermöglicht es einer Einheit, durch feindliche Linien zu "
-"brechen, da sie sämtliche feindlichen Kontrollzonen ignorieren kann."
+"brechen, da sämtliche feindlichen Kontrollzonen ignoriert werden."
 
 #: data/translations/english.cfg:78 data/units/Assassin.cfg:17
 #: data/units/Assassin.cfg:96 data/units/Duelist.cfg:16
@@ -3737,15 +3606,14 @@ msgstr ""
 msgid "skirmisher"
 msgstr "Plänkler"
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:81
 msgid ""
 "Steadfast:\n"
 "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
 "Unerschütterlich:\n"
-"Diese Einheit steht wie ein Fels in der Schlacht. Jeder Angreifer vermag ihr "
-"nur die Hälfte des normalen Schadens zuzufügen."
+"Diese Einheit steht wie ein Fels in der Schlacht und ein jede Einheit, die "
+"sie angreift, vermag es nur, ihr die Hälfte des normalen Schadens zuzufügen."
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
@@ -3755,8 +3623,6 @@ msgstr "Unerschütterlich"
 
 # edited by ivanovic
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
-# Korrigiert von VeryUhu
-# Anm. 'Sekunde' im Fantasy? -  VeryUhu
 #: data/translations/english.cfg:86
 msgid ""
 "Teleport:\n"
@@ -3765,7 +3631,7 @@ msgid ""
 msgstr ""
 "Teleportieren:\n"
 "Durch die Magie der Bewegung ist es dieser Einheit möglich, im Bruchteil "
-"eines Augenblicks von einem in ein anderes eigenes Dorf zu springen. "
+"einer Sekunde zwischen zwei eigenen Dörfern hin und her zu wechseln."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -3773,7 +3639,6 @@ msgid "teleport"
 msgstr "Teleportation"
 
 # edited by ivanovic
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:93
 msgid ""
 "Backstab:\n"
@@ -3781,25 +3646,23 @@ msgid ""
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Hinterlistiger Angriff:\n"
-"Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners, um ihm "
+"Hinterlistig schleicht sich diese Einheit in den Rücken des Gegners um ihm "
 "bei einem Angriff den doppelten Schaden zuzufügen. Dies gelingt nur, wenn "
-"der Feind von einer weiteren, auf der entgegengesetzen Seite stehenden "
-"Einheit abgelenkt wird. Alliierte Einheiten zählen hierbei nicht. "
+"der Feind von einer eigenen, auf der entgegengesetzen Seite stehenden "
+"Einheit abgelenkt wird. (Dies funktioniert nicht mit alliierten Einheiten.)"
 
-# edited by ivanovic
-# Korrigiert von VeryUhu
+# Korrigiert von chrber
 #: data/translations/english.cfg:96
+#, fuzzy
 msgid ""
 "Berserk:\n"
 "When used offensively, this attack presses the engagement until one of the "
 "combatants is slain."
 msgstr ""
 "Berserkertum:\n"
-"Diese Einheit ist es gewohnt, bis zum Tod zu kämpfen. Wenn sie in die "
-"Offensive geht und einen Gegner angreift, ruht sie erst, bis der Tod die "
-"Entscheidung gefällt hat."
+"Diese Einheit ist es gewohnt bis zum Tod zu kämpfen und ruht erst, wenn sie "
+"selbst oder ihr Kontrahent gefallen ist."
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:99
 msgid ""
 "Charge:\n"
@@ -3807,9 +3670,10 @@ msgid ""
 "take double damage from the target's counterattack."
 msgstr ""
 "Ansturm:\n"
-"Diese Attacke wird mit solcher Wucht ausgeführt, dass sie doppelten Schaden "
-"verursacht. Da der Angreifer dabei seine Deckung vollkommen vernachlässigt, "
-"ergeht es ihm bei einem Gegentreffer genauso."
+"Diese Attacke wird mit solcher Wucht ausgeführt, dass bei einem Treffer "
+"doppelter Schaden verursacht wird. Da der Angreifer dabei seine Deckung "
+"vollkommen vernachlässigt, erleidet er bei einem Gegentreffer ebenfalls "
+"doppelten Schaden."
 
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
 #: data/translations/english.cfg:102
@@ -3822,25 +3686,23 @@ msgstr ""
 "Durch die Macht der Schwarzen Magie wird bei Berührung des Opfers die Hälfte "
 "des Schadens auf den Berührenden übertragen, der dadurch geheilt wird."
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:105
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Erstschlag:\n"
-"Mit dieser Waffe führt die Einheit immer den ersten Angriff durch, selbst, "
-"wenn sie sich verteidigt. "
+"Diese Einheit führt, bei Verwendung dieser Waffe, immer den ersten Angriff "
+"durch, selbst wenn sie sich verteidigt. "
 
-# Korrigiert von Ivanovic
 #: data/translations/english.cfg:108
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 "Magisch:\n"
-"Angriffe, die magischer Natur sind, haben grundsätzlich eine "
-"Trefferwahrscheinlichkeit von 70%."
+"Angriffe, die magischer Natur sind, haben grundsätzlich eine 70% "
+"Trefferwahrscheinlichkeit."
 
 # Korrigiert von chrber
 #: data/translations/english.cfg:111
@@ -3854,7 +3716,6 @@ msgstr ""
 
 # edited by ivanovic
 # Korrigiert von chrber
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:114
 msgid ""
 "Plague:\n"
@@ -3863,12 +3724,11 @@ msgid ""
 "doesn't work on Undead or units in villages.)"
 msgstr ""
 "Untote Plage:\n"
-"Wird ein Gegner durch eine Einheit mit der Fähigkeit 'untote Plage' "
-"vernichtet, so wird er durch eine eigene Einheit ersetzt, die jener mit der "
-"Fähigkeit 'untote Plage' identisch ist. Dies funktioniert nicht gegen Untote "
-"oder Einheiten in Dörfern."
+"Wenn eine Einheit von einer Einheit mit der Fähigkeit untote Plage "
+"vernichtet wird, wird die getötete Einheit durch eine eigene, identische "
+"Einheit ersetzt. (Dies funktioniert nicht gegen Untote oder Einheiten in "
+"Dörfern.)"
 
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:117
 msgid ""
 "Poison:\n"
@@ -3878,12 +3738,10 @@ msgstr ""
 "Vergiften:\n"
 "Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
 "vergiften. Dadurch veliert das Opfer pro Runde 8 LP, bis es geheilt wird "
-"oder seine LP auf 1 reduziert wurden."
+"oder sein LP auf 1 reduziert wurde."
 
 # edited by ivanovic
 # Schattenstephans "Korrektur" rückgängig gemacht von chrber
-# Holla? - VeryUhu
-# Korrigiert von VeryUhu
 #: data/translations/english.cfg:120
 msgid ""
 "Slow:\n"
@@ -3893,11 +3751,10 @@ msgid ""
 msgstr ""
 "Verlangsamen:\n"
 "Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
-"Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP fortbewegen. "
-"Außerdem wird ihnen ein Angriff abgezogen. Die Verlangsamung hält eine Runde "
-"an."
+"Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP fortbewegen "
+"und ihnen wird pro Waffe eine Attacke abgezogen. Die Verlangsamung hällt für "
+"eine Runde an."
 
-# Korrigiert von Ivanovic
 #: data/translations/english.cfg:123
 msgid ""
 "Stone:\n"
@@ -3905,7 +3762,7 @@ msgid ""
 "may not move or attack."
 msgstr ""
 "Versteinern:\n"
-"Dieser Angriff verwandelt das Ziel zu Stein. Eine versteinerte Einheit kann "
+"Dieser Angriff verwandelt das Ziel zu Stein. Ein versteinerte Einheit kann "
 "sich weder bewegen noch einen Angriff ausführen."
 
 #: data/translations/english.cfg:132
@@ -3963,12 +3820,10 @@ msgstr ""
 "$name|sheim,Sankt-$name,$name|shausen,$name|sberg,$name|shöhe,$name|sklippe,"
 "$name|sklippe"
 
-# Anm. 'Alter' Klingt komisch.- VeryUhu
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
 msgstr "Alter Lich"
 
-# Korrigiert von VeryUhu
 #: data/units/Ancient_Lich.cfg:19
 msgid ""
 "The final form that mages of the undead can achieve, Ancient Liches strike "
@@ -3977,13 +3832,12 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
-"Sie haben die höchste Stufe erreicht, die es für einen Magier der Toten "
-"gibt. Alte Liche erfüllen die Herzen derer, die sie erblicken, mit Furcht. "
-"Nicht nur ist ihre Berührung tödlich, sie verfügen auch über Zaubersprüche, "
-"die selbst die tapfersten Kämpfer auf der Stelle erstarren lassen. Sollte "
-"Euer Weg jemals den eines Alten Liches kreuzen, dann flieht! Flieht so "
-"schnell und so weit wie Ihr nur könnt, denn sie sind schneller als die "
-"meisten Untoten."
+"Sie haben die höchste Stufe erreicht die es für ein Magier der Toten gibt. "
+"Alte Liche erfüllen die Herzen derer sie erblicken mit Furcht. Nicht nur "
+"ihre Berührung ist tödlich, sie verfügen auch über Zaubersprüche die selbst "
+"die tapfersten Kämpfer auf der Stelle erstarren lassen. Sollte Euer Weg "
+"jemals den eines Alten Liches kreuzen dann flieht so schnell und so weit wie "
+"Ihr nur könnt, denn sie sind schneller als die meisten anderen Untoten."
 
 #: data/units/Ancient_Lich.cfg:22 data/units/Demilich.cfg:19
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
@@ -4049,7 +3903,6 @@ msgstr "Kälteschock"
 msgid "magical"
 msgstr "magisch"
 
-# Anm. 'Alter' klingt komisch.Waldschrat-Ältester ist nicht viel, aber ein bissschen besser...? - VeryUhu
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
 msgstr "Alter Waldschrat"
@@ -4059,7 +3912,6 @@ msgstr "Alter Waldschrat"
 msgid "ambush,regenerates"
 msgstr "Hinterhalt, Regeneration"
 
-# Poliert von VeryUhu
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
 "Terrible and awe-inspiring, the most ancient of woses grow to a tremendous "
@@ -4072,14 +3924,13 @@ msgid ""
 "which is often the only thing which could incur the wrath of these otherwise "
 "kind and curious beings."
 msgstr ""
-"Schrecklich und furchteinflößend sehen die Ältesten der Waldschrate aus. "
-"Ihre Größe ist überwältigend. Nur selten treten sie selbst in Erscheinung - "
-"zumeist wissen nur die Legenden von ihnen zu berichten: Darüber, dass sie "
-"ihre Feinde wie Spielzeuge durch die Gegend schleudern; dass sie mit ihren "
-"ungeheuren Kräften riesige Felsbrocken zu Staub zermalmen können; dass sie "
-"unermüdlich für den Schutz der Wälder kämpfen. Sie, die sie ansonsten von "
-"freundlichem und neugierigem Wesen sein sollen, bestrafen erbarmungslos "
-"jeden, der die Wälder schändet."
+"Schrecklich und furchteinflößend sehen die Ältesten der Waldschrate aus. Sie "
+"sind zu einer ungeheuren Größe gewachsen. Nur selten erscheinen außerhalb "
+"von Legenden, aber wenn so erzählt man sich schleudern sie ihre Feinde wie "
+"Spielzeuge durch die Gegend, und haben so wahnsinnige Kräfte dass sie "
+"riesige Felsbrocken in wenigen Sekunden zu Staub zermalmen können. Die "
+"selben Legenden erzählen davon das sie unermüdlich für den Schutz der Wälder "
+"kämpfen und diejenigen bestrafen, die die Wälder schänden."
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
@@ -4141,7 +3992,6 @@ msgstr "Zermalmen"
 msgid "impact"
 msgstr "Wucht"
 
-# Anm. Die englischen Mage-Beschreibungen werden derzeit überarbeitet. Ich kann sie einfügen, wenn sie im CVS aktualisiert worden sind. - VeryUhu
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
 msgstr "Erzmagier"
@@ -4206,14 +4056,13 @@ msgstr "Erzmagierin"
 msgid "Assassin"
 msgstr "Assassine"
 
-# Korrigiert von VeryUhu
 #: data/units/Assassin.cfg:18 data/units/Assassin.cfg:97
 msgid ""
 "Assassins are masters of the night. Like Rogues, they can surround an "
 "opponent and backstab him, doing double damage. They can also throw poison-"
 "tipped knives at their enemies from long range."
 msgstr ""
-"Assassinen sind Meister der Nacht. Wie Diebe und Schurken verfügen sie über "
+"Assassinen sind Meister der Nacht.Wie Diebe und Schurken verfügen sie über "
 "die Fähigkeit des Hinterhalts und ignorieren feindliche Kontrollzonen. "
 "Außerdem können sie vergiftete Dolche aus großer Entfernung auf ihre Gegner "
 "werfen."
@@ -4326,15 +4175,14 @@ msgstr "Attentäterin"
 msgid "Bandit"
 msgstr "Bandit"
 
-# Poliert von VeryUhu
 #: data/units/Bandit.cfg:16
 msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
-"Bei Nacht sind Banditen die Meister von Raub und Mord. Sie tragen braune "
-"Umhänge und schwarze Kapuzen und sind mit einem schweren Totschlägern "
+"Banditen sind Meister darin nachts rauben und töten zu gehen. Sie tragen "
+"braune Umhänge und schwarze Kapuzen und sind mit einem schweren Streitkolben "
 "ausgerüstet. Wenn sie nicht gerade gegen Eindringlinge kämpfen, bestehlen "
 "sie die Bauern aus der Umgebung."
 
@@ -4356,7 +4204,6 @@ msgstr "Prinzessin"
 msgid "leadership,skirmisher"
 msgstr "Führungsqualitäten,Plänkler"
 
-# Poliert von VeryUhu
 #: data/units/Battle_Princess.cfg:20
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
@@ -4364,11 +4211,11 @@ msgid ""
 "great combatant and leader. Now battle-hardened and strong of will, she can "
 "now aid those around her in the art of combat."
 msgstr ""
-"Als hohe Adlige hat die Prinzessin bei den besten Fechtern die Kunst des "
-"Schwertkampfes erlernt. In der Kunst der Kriegsführung wurde sie von den "
-"klügsten Köpfen unterrichtet. Beides macht sie zu einem guten Kämpfer und "
-"Anführer. Kampferprobt und mit unerschütterlicher Willenskraft gesegnet, "
-"unterstützt sie nun jene, die sie Seite an Seite in die Schlacht begleiten."
+"Als Adlige hat die Prinzessin den Schwertkampf bei den besten Generälen "
+"gelernt, und wurd in der Kunst der Kriegsführung von den klügsten Köpfen "
+"unterrichtet, was sie zu einem guten Kämpfer und Anführer macht. "
+"Kampferprobt und mit unerschütterlicher Willenskraft gesegnet, unterstützt "
+"sie nun jene, die sie im Kampf umgeben."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -4414,7 +4261,6 @@ msgstr "Schwert"
 msgid "Princess"
 msgstr "Prinzessin"
 
-# Poliert von VeryUhu
 #: data/units/Battle_Princess.cfg:58
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
@@ -4423,12 +4269,12 @@ msgid ""
 "will fight better due to her presence. The Princess is a skilled skirmisher, "
 "and ignores enemy zones of control."
 msgstr ""
-"Als hohe Adlige hat die Prinzessin bei den besten Fechtern die Kunst des "
-"Schwertkampfes erlernt. In der Kunst der Kriegsführung wurde sie von den "
-"klügsten Köpfen unterrichtet. Beides macht sie zu einem guten Kämpfer und "
-"Anführer. Alle Einheiten, die eine geringere Stufe als die Prinzessin haben "
-"und auf einem benachbartem Feld stehen, erhalten einen Bonus im Kampf. Die "
-"Prinzessin kann außerdem Zonen unter feindlicher Kontrolle ignorieren."
+"Als Adlige haben Prinzessinnen das Schwertkämpfen bei den besten Generälen "
+"gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in der Kunst "
+"der Kriegsführung  unterrichtet. Dies macht sie zu einer guten Kämpferin und "
+"Anführerinn. Alle Einheiten, die eine geringere Stufe als die Prinzessin "
+"haben, und auf einem benachbartem Feld stehen, erhalten einen Bonus im "
+"Kampf. Die Prinzessin ignoriert Zonen der feindlichen Kontrolle."
 
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
@@ -4440,8 +4286,6 @@ msgstr "Zepter des Feuers"
 msgid "Blood Bat"
 msgstr "Blutfledermaus"
 
-# Anm. 'Vampirfledermäuse'? - VeryUhu
-# Poliert von VeryUhu
 #: data/units/Blood_Bat.cfg:16
 msgid ""
 "Blood Bats are fast and can drain the blood of those they attack, thereby "
@@ -4449,11 +4293,10 @@ msgid ""
 "began the battle. Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
-"Blutfledermäuse sind nicht nur schnell, sie können auch Blut von ihren "
-"Gegnern saugen und sich damit selbst heilen - sogar über die Anzahl ihrer "
-"anfänglichen Lebenspunkte hinaus. Sie geraten dabei in einen wahren "
-"Blutrausch, während sich das Fell dieser fliegenden Bestien vom Blut ihrer "
-"Gegner rot färbt. Sie sind der Schrecken der schutzlosen Dörfer."
+"Blutfledermäuse sind schnell und können Blut von ihren Gegnern absaugen und "
+"sich damit selbst heilen, sogar über die Anzahl der Lebenspunkte hinaus, "
+"über die sie am Anfang verfügten. Dabei kommen sie in einen Blutrausch, und "
+"dass das Fell dieser fliegenden Bestien färbt sich vom Blut ihrer Gegner rot."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:19 data/units/Goblin_Knight.cfg:19
@@ -4467,7 +4310,6 @@ msgid "Bone Shooter"
 msgstr "Knochenbogenschütze"
 
 # edited by ivanovic
-# Korrigiert von VeryUhu
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
 "These, whose masters have found to be more potent creations, have been "
@@ -4476,11 +4318,11 @@ msgid ""
 "Shooters' by their unfortunate enemies, these abominations are a terror to "
 "all who live."
 msgstr ""
-"Diese wandelnden Knochenhaufem wurden von ihren Herren mit einem wahrhaft "
-"makaberen Arsenal an Waffen ausgestattet. Anstelle normaler Pfeile tragen "
-"sie Knochen in ihren Köchern. Sie werden deshalb von ihren "
-"bemitleidenswerten Feinden auch als Knochenbogenschützen bezeichnet. Für die "
-"Lebendigen sind sie ein Alptraum."
+"Diese wandelnden Kochenhaufem wurden von ihren Herren mit einem wahrhaft "
+"makaberen Arsenal an Waffen ausgestattet. Stadt normaler Pfeile tragen sie "
+"Knochen in ihren Köchern. Sie werden deshalb von ihren bemitleidenswerten "
+"Feinden auch als Knochenbogenschützen bezeichnet. Sie stellen wahrhaft eine "
+"Qual dar, für jene die Leben in sich tragen."
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 msgid "stab"
@@ -4570,7 +4412,6 @@ msgstr "Stich"
 msgid "Bowman"
 msgstr "Bogenschütze"
 
-# Poliert von VeryUhu
 #: data/units/Bowman.cfg:17
 msgid ""
 "Immersed from childhood in the ways of archery, the young Bowmen are the "
@@ -4580,15 +4421,14 @@ msgid ""
 msgstr ""
 "Von Kindesbeinen in der Kunst des Bogenschießens unterwiesen, findet man "
 "diese jungen Bogenschützen am häufigsten unter den Fernkämpfer in den "
-"wesnothischen Armeen. Ihre Ausbildung ist weniger hart als die von "
-"Speerträgern oder Schweren Infanteristen, da ihre Kampftechnik "
-"Geschicklichkeit anstelle von reiner Kraft erfordert."
+"wesnothischen Armeen. Sie müssen sich keiner so harten Ausbildung "
+"unterziehen, wie Speerträger oder Schwere Infanteristen, da ihre "
+"Kampftechnik Geschicklichkeit anstatt pure Stärke erfordert."
 
 #: data/units/Cavalier.cfg:3
 msgid "Cavalier"
 msgstr "Kürassier"
 
-# Korrigiert von VeryUhu
 #: data/units/Cavalier.cfg:24
 msgid ""
 "A triumphant sight on the battlefield, cavaliers are masters at the use of "
@@ -4597,10 +4437,10 @@ msgid ""
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
 "Kürassiere sind ein triumphaler Anblick auf dem Schlachtfeld. Sie sind "
-"Meister darin, Schwert und Armbrust vom Rücken ihrer Pferde aus einzusetzen. "
+"Meister darin Schwert und Armbrust vom Rücken ihrer Pferde aus einzusetzen. "
 "Ihre Gewandtheit im Umgang mit Distanzwaffen erlaubt es ihnen, viele Gegner "
-"niederzumetzeln, ohne selbst oft getroffen zu werden. Ihr Mut hat das Blatt "
-"in einigen der größten Schlachten der Geschichte gewendet."
+"niederzumetzeln ohne selbst oft getroffen zu werden. Ihr Mut hat das Blatt "
+"in einigen der größten Schlachten in der Geschichte gewendet."
 
 #: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:38
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
@@ -4614,7 +4454,6 @@ msgstr "Armbrust"
 msgid "Cavalryman"
 msgstr "Kavallerist"
 
-# Korrigiert von VeryUhu - korrende - do _not_ delete this tag!
 #: data/units/Cavalryman.cfg:25
 msgid ""
 "The best riders in Wesnoth are recruited into the military to become "
@@ -4623,9 +4462,9 @@ msgid ""
 "position."
 msgstr ""
 "Nur die besten Reiter von Wesnoth werden in die Kavallerie aufgenommen. Die "
-"hochdisziplinierten Einheiten stürmen nicht wild und ungestüm über das "
-"Schlachtfeld wie andere Berittene, sondern legen mehr Wert auf daß Halten "
-"ihrer Stellung. "
+"sehr disziplinierten Einheiten stürmen nicht wild und ungestüm über das "
+"Schlachtfeld wie die Reiter, sondern legen mehr Wert darauf ihre Position zu "
+"halten."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -5005,6 +4844,7 @@ msgstr "Drake Schmetterer"
 
 # edited by ivanovic
 #: data/units/Drake_Clasher.cfg:18
+#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
@@ -5993,7 +5833,7 @@ msgid ""
 "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
 "places and people to rob."
 msgstr ""
-"Straßenräuber mit zerzausten Haaren werden häufig von Gangsterbanden "
+"Straßenräuber mit zerzausten Haare werden häufig von Gangsterbanden "
 "verwendet um die Gegend nach Opfern für Raubüberfälle auszukundschaften."
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
@@ -8329,15 +8169,13 @@ msgstr "+Baskische Übersetzung"
 msgid "+Bulgarian Translation"
 msgstr "+Bulgarische Übersetzung"
 
-# Korrigiert von Rhonda
 #: src/about.cpp:156
 msgid "+Catalan Translation"
-msgstr "+Katalanische Übersetzung"
+msgstr "+Catalanische Übersetzung"
 
-# Korrigiert von Rhonda
 #: src/about.cpp:164
 msgid "+Czech Translation"
-msgstr "+Tschechische Übersetzung"
+msgstr "+Czechische Übersetzung"
 
 #: src/about.cpp:173
 msgid "+Danish Translation"
@@ -8393,10 +8231,9 @@ msgstr "+Norwegische Übersetzung"
 msgid "+Polish Translation"
 msgstr "+Polnische Übersetzung"
 
-# Verbessert von Rhonda
 #: src/about.cpp:261
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+(Brasilianisch-) Portugiesische Übersetzung"
+msgstr "+Portugiesische (Brasilianische) Übersetzung"
 
 #: src/about.cpp:270
 msgid "+Russian Translation"
@@ -8406,10 +8243,10 @@ msgstr "+Russische Übersetzung"
 msgid "+Slovak Translation"
 msgstr "+Slovakische Übersetzung"
 
-# edited by ivanovic
 #: src/about.cpp:280
+#, fuzzy
 msgid "+Slovenian Translation"
-msgstr "+Slowenische Übersetzung"
+msgstr "+Slovakische Übersetzung"
 
 #: src/about.cpp:284
 msgid "+Spanish Translation"
@@ -8684,10 +8521,9 @@ msgstr "unsichtbar"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-# Korrigiert von Rhonda
 #: src/game.cpp:142
 msgid "Do you want to save a replay of this scenario?"
-msgstr "Möchtet Ihr den Spielverlauf dieses Szenarios speichern?"
+msgstr "Möchtet Ihr den Spielverlauf dieses Szearios speichern?"
 
 #: src/game.cpp:143 src/game.cpp:201 src/playturn.cpp:1538
 msgid "Name:"
@@ -9193,8 +9029,8 @@ msgstr "Spieler/Typ"
 msgid "Faction"
 msgstr "Fraktion"
 
-# edited by ivanovic
 #: src/multiplayer_connect.cpp:489
+#, fuzzy
 msgid "Color"
 msgstr "Farbe"
 
@@ -9410,10 +9246,9 @@ msgstr "Verfügbarer Platz"
 msgid "Vacant Slots"
 msgstr "Verfügbare Plätze"
 
-# edited by ivanovic
 #: src/multiplayer_lobby.cpp:126
 msgid "<no games open>"
-msgstr "<keine offenen Partien>"
+msgstr ""
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
