@@ -1,21 +1,9 @@
 CVS HEAD:
- * Update HttT and TRoW to use the ruined keeps where appropriate
  * Added UNIT and PLACE_IMAGE macros to utils.cfg
-<<<<<<< changelog
-<<<<<<< changelog
- * added new multiplayer map: Icy Waters
- * balancing changes: increased cost of Orcish Assassin and Troll Whelp by 1 gold each
- * balancing changes: improved defense of gryphon units on mountains. Increased movement speed of steadfast dwarvish units. Improved attack of Dwarvish Guardsman to 5-3. Made berserk only active on offense. 
- * made 'loyal' a trait which is only given to units explicitly by the scenario designer
- * added the 'dextrous' trait and applied it to Elves
-=======
-=======
- * added OS X ScrapManager support
->>>>>>> 1.525
- * fixed swamp transition (NW, SE) graphics
- * added new terrains, 'N' ruined castle, 'Q' sunken ruin, and 'q' swamp-ruin
- * added new graphics for keep-keep transitions
->>>>>>> 1.521
+ * terrain improvements
+  * fixed swamp transition (NW, SE) graphics
+  * added new terrains, 'N' ruined castle, 'Q' sunken ruin, and 'q' swamp-ruin
+  * added new graphics for keep-keep transitions
  * language and i18n
   * new translations: Estonian, Japanese
   * updated translations: Catalan, Dutch, French, German, Greek, Hungarian,
@@ -23,15 +11,18 @@ CVS HEAD:
   * fixed untranslatable strings
   * language fixes and polishing (English)
  * campaign modifications
+  * updated TDH and SotBE to use the new [objectives] tag
+  * updated HttT and TRoW to use the ruined keeps where appropriate
   * dialog improvements in EI
   * new map for Drowned Plains (EI)
  * unit modifications
   * increased cost of Orcish Assassin and Troll Whelp by 1 gold each
   * improved defense of gryphon units on mountains. 
   * increased movement speed of steadfast dwarvish units.
-  * improved Dwarvish Thunderer's melee attack to 5-3
+  * improved Dwarvish Thunderer's melee attack to 6-2, and gave him 3 more HP
   * improved attack of Dwarvish Guardsman to 5-3.
-  * improved attack of Dwarvish Ulfserker to 5-4, and made berserk only active on offense. 
+  * gave Dwarvish Fighter 2 more HP
+  * made berserk only active on offense. 
   * made 'loyal' a trait which is only given to units explicitly by the scenario designer
   * added the 'dextrous' trait and applied it to Elves
   * fixed several image files being referred to by wrong name
@@ -42,10 +33,13 @@ CVS HEAD:
   * Fixed a giant error in Drake Clasher description
  * WML modifications
   * made [capture_village] accept a location range
- * various bug fixes and code clean ups
+  * Added support for [objectives] event actions, to set objectives. This,
+  along with prestart events, is now the preferred way of setting objectives,
+  although the old way is still supported.
  * multiplayer improvements
   * rewrite of mp lobby code
   * changed Broken_Bridge to use new ruined castles
+  * added new multiplayer map: Icy Waters
   * changed King_of_the_Hill to use a Dwarvish Castle
   * messages are now displayed in the user's colour when prefixed with /me
  * fixed bug that made the ai recruit badly
@@ -60,9 +54,8 @@ CVS HEAD:
  * share the object files between all the programs to halve the time of a full compilation
  * the "End turn" button is now disabled when it is irrelevant.
  * Added the ability for sides to have different objectives.
- * Added support for [objectives] event actions, to set objectives. This,
- along with prestart events, is now the preferred way of setting objectives,
- although the old way is still supported.
+ * added OS X ScrapManager support
+ * various bug fixes and code clean ups
 
 Version 0.8.11:
  * new translation:
