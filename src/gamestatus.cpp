@@ -15,6 +15,7 @@
 #include "gamestatus.hpp"
 #include "language.hpp"
 
+#include <algorithm>
 #include <cstdio>
 #include <sstream>
 
@@ -154,18 +155,30 @@ std::vector<std::string> get_saves_list()
 {
 	std::vector<std::string> res;
 	get_files_in_dir(get_saves_dir(),&res);
+	for(std::vector<std::string>::iterator i = res.begin(); i != res.end(); ++i)
+		std::replace(i->begin(),i->end(),'_',' ');
 	return res;
 }
 
 void load_game(game_data& data, const std::string& name, game_state& state)
 {
-	config cfg(read_file(get_saves_dir() + "/" + name));
+	std::string modified_name = name;
+	std::replace(modified_name.begin(),modified_name.end(),' ','_');
+
+	//try reading the file both with and without underscores
+	std::string file_data = read_file(get_saves_dir() + "/" + modified_name);
+	if(file_data.empty()) {
+		file_data = read_file(get_saves_dir() + "/" + name);
+	}
+
+	config cfg(file_data);
 	state = read_game(data,&cfg);
 }
 
 void save_game(const game_state& state)
 {
-	const std::string& name = state.label;
+	std::string name = state.label;
+	std::replace(name.begin(),name.end(),' ','_');
 
 	config cfg;
 	write_game(state,cfg);
