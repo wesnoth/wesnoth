@@ -22,7 +22,7 @@ namespace game_config
 	int healer_heals_per_turn = 8;
 	int cure_amount = 8;
 	int curer_heals_per_turn = 18;
-	int rest_heal_amount= 1;
+	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
 	const std::string version = "0.6.99.5-CVS";
