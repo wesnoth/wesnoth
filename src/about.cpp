@@ -145,6 +145,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
+		"-   Julen Landa (genars)",
 		"+ ",
 
 		"_" N_("+Bulgarian Translation"),
@@ -155,6 +156,7 @@ std::vector<std::string> get_text() {
 		"-   Carles Company (brrr)",
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
+		"-   Mark Recasens",
 		"-   Pau Rul·lan Ferragut",
 		"+ ",
 
@@ -225,6 +227,10 @@ std::vector<std::string> get_text() {
 		"-   Federico Tomassetti",
 		"-   isazi",
 		"-   RokStar",
+		"+ ",
+		
+		"_" N_("+Latin Translation"),
+		"-   Mark Polo (mpolo)",
 		"+ ",
 
 		"_" N_("+Norwegian Translation"),
