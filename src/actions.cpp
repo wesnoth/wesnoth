@@ -169,16 +169,11 @@ battle_stats evaluate_battle_stats(
 	                 attacker_terrain_override : map[attacker.x][attacker.y];
 	const gamemap::TERRAIN defender_terrain = map[defender.x][defender.y];
 
-	res.chance_to_hit_attacker =
-			a->second.defense_modifier(map,attacker_terrain);
+	res.chance_to_hit_attacker = a->second.defense_modifier(map,attacker_terrain);
+	res.chance_to_hit_defender = d->second.defense_modifier(map,defender_terrain);
 
-	res.chance_to_hit_defender =
-			d->second.defense_modifier(map,defender_terrain);
-
-	const std::vector<attack_type>& attacker_attacks =
-			a->second.attacks();
-	const std::vector<attack_type>& defender_attacks =
-			d->second.attacks();
+	const std::vector<attack_type>& attacker_attacks = a->second.attacks();
+	const std::vector<attack_type>& defender_attacks = d->second.attacks();
 
 	assert(attack_with >= 0 && attack_with < int(attacker_attacks.size()));
 	const attack_type& attack = attacker_attacks[attack_with];
@@ -221,6 +216,11 @@ battle_stats evaluate_battle_stats(
 		//don't show backstabbing unless it's actually happening
 		if(res.attack_special == "backstab" && !backstab)
 			res.attack_special = "";
+
+		//the leader is immune to being turned to stone
+		if(d->second.can_recruit() && res.attack_special == "stone") {
+			res.attack_special = "";
+		}
 
 		res.range = (attack.range() == attack_type::SHORT_RANGE ?
 		             "Melee" : "Ranged");
@@ -269,6 +269,10 @@ battle_stats evaluate_battle_stats(
 		if(include_strings) {
 			res.defend_special = defender_attacks[defend].special();
 			res.defend_icon = defender_attacks[defend].icon();
+
+			//leaders are immune to being turned to stone
+			if(a->second.can_recruit() && res.defend_special == "stone")
+				res.defend_special = "";
 		}
 
 		//if the defender drains, and the attacker is a living creature, then
@@ -462,6 +466,15 @@ void attack(display& gui, const gamemap& map,
 				if(stats.amount_attacker_drains > 0) {
 					a->second.gets_hit(-stats.amount_attacker_drains);
 				}
+
+				//if the defender is turned to stone, the fight stops immediately
+				static const std::string stone_string("stone");
+				if(stats.attack_special == stone_string) {
+					d->second.set_flag("stone");
+					stats.ndefends = 0;
+					stats.nattacks = 0;
+					game_events::fire("stone",d->first,a->first);
+				}
 			}
 
 			--stats.nattacks;
@@ -575,6 +588,15 @@ void attack(display& gui, const gamemap& map,
 
 				if(stats.amount_defender_drains > 0) {
 					d->second.gets_hit(-stats.amount_defender_drains);
+				}
+
+				//if the attacker is turned to stone, the fight stops immediately
+				static const std::string stone_string("stone");
+				if(stats.defend_special == stone_string) {
+					a->second.set_flag("stone");
+					stats.ndefends = 0;
+					stats.nattacks = 0;
+					game_events::fire("stone",a->first,d->first);
 				}
 			}
 

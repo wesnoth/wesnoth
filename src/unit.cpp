@@ -233,6 +233,9 @@ void unit::new_turn()
 		set_flag("ambush");
 	if(type().has_ability("nightstalk"))
 		set_flag("nightstalk");
+
+	if(stone())
+		set_attacked();
 }
 
 void unit::end_turn()
@@ -352,6 +355,12 @@ bool unit::poisoned() const
 {
 	static const std::string poisoned_str("poisoned");
 	return has_flag(poisoned_str);
+}
+
+bool unit::stone() const
+{
+	static const std::string stone_str("stone");
+	return has_flag(stone_str);
 }
 
 bool unit::matches_filter(const config& cfg) const

@@ -71,6 +71,7 @@ public:
 			const gamemap::location loc,
 			const unit_map& units,const std::vector<team>& teams) const;
 	bool poisoned() const;
+	bool stone() const;
 
 	bool matches_filter(const config& cfg) const;
 

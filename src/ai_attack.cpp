@@ -421,8 +421,8 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 
-		//attack anyone who is on the enemy side, and who is not invisible
-		if(current_team().is_enemy(j->second.side()) &&
+		//attack anyone who is on the enemy side, and who is not invisible or turned to stone
+		if(current_team().is_enemy(j->second.side()) && j->second.stone() == false &&
 		   j->second.invisible(map_.underlying_terrain(map_[j->first.x][j->first.y]), 
 				state_.get_time_of_day().lawful_bonus,j->first,
 				units_,teams_) == false) {

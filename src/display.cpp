@@ -822,12 +822,9 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 	    at_it != attacks.end(); ++at_it) {
 
-		const std::string& lang_weapon
-		         = string_table["weapon_name_" + at_it->name()];
-		const std::string& lang_type
-		         = string_table["weapon_type_" + at_it->type()];
-		const std::string& lang_special
-		         = string_table["weapon_special_" + at_it->special()];
+		const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
+		const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
+		const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
 		details << "\n"
 				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
@@ -1043,8 +1040,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 		overlaps.insert(overlaps.end(),adj.begin(),adj.end());
 
-		typedef std::multimap<gamemap::location,std::string>::const_iterator
-		        Itor;
+		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
 
 		for(std::pair<Itor,Itor> overlays =
 		    overlays_.equal_range(gamemap::location(x,y));
@@ -1106,7 +1102,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
 	if(it != units_.end()) {
 		if(unit_image == NULL)
-			unit_image.assign(image::get_image(it->second.image()));
+			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
 
 		const int unit_move = it->second.movement_left();
 		const int unit_total_move = it->second.total_movement();
@@ -1482,7 +1478,8 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		SDL_Color text_colour = tile_is_light ? font::DARK_COLOUR : font::YELLOW_COLOUR;
 
 		const SDL_Rect& rect = map_area();
-		const std::string str(1,'1' + route_.move_left);
+		std::string str(1,'x');
+		str[0] = '1' + route_.move_left;
 		const SDL_Rect& text_area = font::draw_text(NULL,rect,18,text_colour,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
 		const int y = yloc + int(zoom_/2.0) - text_area.h/2;

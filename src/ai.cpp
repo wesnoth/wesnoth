@@ -165,6 +165,10 @@ void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcds
 			continue;
 		}
 
+		if(!enemy && un_it->second.can_recruit()) {
+			continue;
+		}
+
 		//insert the trivial moves of staying on the same location
 		if(un_it->second.movement_left() == un_it->second.total_movement()) {
 			std::pair<location,location> trivial_mv(un_it->first,un_it->first);
@@ -203,8 +207,6 @@ void ai::do_move()
 	moves_map possible_moves, enemy_possible_moves;
 
 	move_map srcdst, dstsrc, enemy_srcdst, enemy_dstsrc;
-
-	std::vector<gamemap::location> leader_locations;
 
 	calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
 	calculate_possible_moves(enemy_possible_moves,enemy_srcdst,enemy_dstsrc,true);
@@ -417,18 +419,9 @@ void ai::do_move()
 			already_done.insert(loc);
 		}
 	}
-
-	//mark the leader as having moved and attacked by now
-	for(std::vector<location>::const_iterator lead = leader_locations.begin();
-	    lead != leader_locations.end(); ++lead) {
-		//remove leader from further consideration
-		srcdst.erase(*lead);
-		dstsrc.erase(*lead);
-	}
-
+	
 	//try to acquire towers
-	for(std::multimap<location,location>::const_iterator i = dstsrc.begin();
-	    i != dstsrc.end(); ++i) {
+	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 		if(map_.underlying_terrain(map_[i->first.x][i->first.y]) != gamemap::TOWER)
 			continue;
 
