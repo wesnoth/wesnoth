@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-24 21:21+0100\n"
-"PO-Revision-Date: 2004-11-15 22:27+0100\n"
+"PO-Revision-Date: 2004-11-25 00:15+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -1093,15 +1093,11 @@ msgid "Castle Hopping Isle"
 msgstr "L'île aux sauts de forteresse"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
 "2, 4 for 2v2."
-msgstr ""
-"Beaucoup de châteaux proches, et stratégiquement placés. Une petite carte "
-"pour un jeu rapide. Il est recommandé de configurer 2 pièces d'or par "
-"village."
+msgstr "Beaucoup de châteaux proches, et stratégiquement placés. Une petite carte pour un jeu rapide. Il est recommandé de configurer 2 pièces d'or par village, et d'opposer les joueurs 1 et 3 contre les 2 et 4 lors des jeux à 2 contre 2."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
@@ -2701,17 +2697,12 @@ msgstr ""
 "elle ne peut faire aucun autre mouvement pour ce tour."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
 "chance to hit both when attacking and defending, and marksman attacks have "
 "at least 60% chance to hit when attacking."
-msgstr ""
-"La probabilité de toucher une unité dépend normalement de la capacité de "
-"l'unité ciblée à se défendre sur le terrain où elle se trouve. Cependant les "
-"attaques enchantées ont toujours 70% de chances de toucher, et les tireurs "
-"d'élite ont au minimum 60% de chances de toucher."
+msgstr "La probabilité de toucher une unité dépend normalement de la capacité de l'unité ciblée à se défendre sur le terrain où elle se trouve. Cependant les attaques enchantées ont 70% de chances de toucher aussi bien en attaquant qu'en se défendant, et les tireurs d'élite ont au minimum 60% de chances de toucher en attaquant."
 
 #: data/tips.cfg:9
 msgid ""
@@ -3389,6 +3380,7 @@ msgstr ""
 msgid "touch"
 msgstr "toucher"
 
+# garder masculin !
 #: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
 #: data/units/Dark_Queen.cfg:28 data/units/Dark_Queen.cfg:29
@@ -3474,6 +3466,7 @@ msgstr ""
 msgid "crush"
 msgstr "écrasement"
 
+# garder masculin !
 #: data/units/Ancient_Wose.cfg:19 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
 #: data/units/Cave_Spider.cfg:29 data/units/Cuttle_Fish.cfg:20
@@ -3556,6 +3549,7 @@ msgstr "bâton"
 msgid "fireball"
 msgstr "boule de feu"
 
+# garder masculin !
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
@@ -3573,7 +3567,7 @@ msgstr "boule de feu"
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:94
 #: data/units/Silver_Mage.cfg:181
 msgid "fire"
-msgstr "brûlure"
+msgstr "feu"
 
 #: data/units/Arch_Mage.cfg:82
 msgid "female^Arch Mage"
@@ -3606,6 +3600,7 @@ msgstr ""
 msgid "dagger"
 msgstr "dague"
 
+# garder masculin !
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:48
 #: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
 #: data/units/Blood_Bat.cfg:20 data/units/Bowman.cfg:21
@@ -3683,7 +3678,7 @@ msgstr "tranchant"
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:497
 msgid "backstab"
-msgstr "assassinat"
+msgstr "coup dans le dos"
 
 #: data/units/Assassin.cfg:47 data/units/Rogue.cfg:38
 msgid "knife"
@@ -3836,7 +3831,7 @@ msgstr "crocs"
 
 #: data/units/Bone_Shooter.cfg:3
 msgid "Bone Shooter"
-msgstr "Archer squelette"
+msgstr "Lanceurs d'os"
 
 #: data/units/Bone_Shooter.cfg:15
 msgid ""
@@ -3845,13 +3840,14 @@ msgid ""
 "made not of wood, but of the bones of their victims.  Dubbed simply 'Bone-"
 "Shooters' by their unfortunate enemies, these abominations are a terror to "
 "all who live."
-msgstr ""
+msgstr "Ceux-ci, que leurs maîtres ont trouvés plus puissants, ont été équipés d'un arsenal réellement vil.  Leurs carquois sont remplis de flèches faites non pas de bois, mais des os de leurs victimes.  Surnommés « Lanceurs d'os » par leurs infortunés ennemis, ces abominations font la terreur de tous les êtres vivants."
 
+# FIXME: uniquement utilisé pour "poignarder avec une flèche", mais pas satisfaisant
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "assassinat"
+msgstr "flèche"
 
+# garder masculin !
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
 #: data/units/Chocobone.cfg:21 data/units/Commander.cfg:46
@@ -4288,7 +4284,7 @@ msgid ""
 "and skilled in the use of their swords, these soldiers can drive forward and "
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
-msgstr ""
+msgstr "Les plus talenteux des hussards des armées de Wesnoth sont entraînés au maniement de l'arbalette, et équipés de destriers encore plus puissants.  Dottés d'une bonne armure, et habiles au sabre, ces soldats peuvent enfoncer les rangs ennemis et tenir le terrain conquis. Leur mobilité et leur résistance leur donne un grande valeur sur le champ de bataille."
 
 #: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
@@ -4518,9 +4514,8 @@ msgstr ""
 "ancêtres."
 
 #: data/units/Draug.cfg:3
-#, fuzzy
 msgid "Draug"
-msgstr "Dragon"
+msgstr ""
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -5845,6 +5840,7 @@ msgstr ""
 msgid "lightbeam"
 msgstr "rayon de lumière"
 
+# garder masculin !
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
 #: data/units/Mermaid_Diviner.cfg:35 data/units/Mermaid_Priestess.cfg:33
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
@@ -7483,9 +7479,8 @@ msgid "+Portuguese (Brazil) Translation"
 msgstr "+Traduction portugaise (brésilienne)"
 
 #: src/about.cpp:230
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Traduction hongroise"
+msgstr "+Traduction russe"
 
 #: src/about.cpp:236
 msgid "+Slovak Translation"
@@ -7513,7 +7508,7 @@ msgstr "Fermer"
 
 #: src/actions.cpp:98
 msgid "You don't have a leader to recruit with."
-msgstr "Vous n'avez pas de chef vous permettant de recruter des unités."
+msgstr "Vous n'avez pas de chef pour vous permettre de recruter des unités."
 
 #: src/actions.cpp:102
 msgid "You must have your leader on a keep to recruit or recall units."
@@ -7532,6 +7527,8 @@ msgstr "aucune"
 msgid "base damage"
 msgstr "dégâts de base"
 
+# types:  blade cold fire holy impact pierce
+# trados: tranchant froid feu sacré contondant perforant
 #: src/actions.cpp:335
 msgid "attacker resistance vs"
 msgstr "attaquant résistant au"
@@ -7907,7 +7904,7 @@ msgstr "Erreur de communication réseau;"
 
 #: src/game.cpp:1134
 msgid "Remote host disconnected."
-msgstr "Serveur distant deconnecté."
+msgstr "Serveur distant déconnecté."
 
 #: src/game.cpp:1136
 msgid ""
