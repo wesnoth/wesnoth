@@ -1,1 +1,1 @@
-SUBDIRS = wesnoth wesnoth-editor wesnoth-ei wesnoth-httt wesnoth-lib wesnoth-sotbe wesnoth-tdh wesnoth-trow
+SUBDIRS = wesnoth wesnoth-editor wesnoth-lib wesnoth-httt wesnoth-tdh wesnoth-sotbe wesnoth-ei wesnoth-trow
