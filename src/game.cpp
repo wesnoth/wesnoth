@@ -730,6 +730,13 @@ bool game_controller::play_multiplayer_mode()
    		const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
    		                                                era_cfg->find_child("multiplayer_side","type",type->second);
 
+		if((*side)["random_faction"] == "yes") {
+			const config::child_list& eras = era_cfg->get_children("multiplayer_side");
+			for(int i = 0; i != 100 && (*side)["random_faction"] == "yes"; ++i) {
+				side = eras[rand()%eras.size()];
+			}
+		}
+
    		if(side == NULL || (*side)["random_faction"] == "yes" || (*side)["type"] == "random") {
    			std::string side_name = (type == side_types.end() ? "default" : type->second);
    			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
