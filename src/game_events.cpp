@@ -671,10 +671,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			const std::string& terrain_type = cfg["letter"];
 			if(terrain_type.size() > 0) {
 				game_map->set_terrain(*loc,terrain_type[0]);
-				screen->recalculate_minimap();
-				screen->invalidate_all();
 			}
 		}
+		screen->recalculate_minimap();
+		screen->invalidate_all();
+		screen->rebuild_all();
 	}
 
 	//if we should spawn a new unit on the map somewhere
