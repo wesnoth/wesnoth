@@ -437,7 +437,6 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			disp.update_display();
 
 			log_scope("load");
-			std::cerr << "loading game: '" << games[*s].name << "'\n";
 			game_state state;
 
 			config& summary = save_summary(games[*s].name);
@@ -456,8 +455,6 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 				summary["corrupt"] = "yes";
 				std::cerr << "save '" << games[*s].name << "' could not be loaded (load_game_failed exception)\n";
 			}
-			
-			std::cerr << "loaded...\n";
 		}
 
 		write_save_index();

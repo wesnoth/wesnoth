@@ -264,6 +264,10 @@ SOURCE=.\src\preferences.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\widgets\progressbar.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\race.cpp
 # End Source File
 # Begin Source File
@@ -365,6 +369,10 @@ SOURCE=.\src\ai_attack.hpp
 # Begin Source File
 
 SOURCE=.\src\ai_move.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\array.hpp
 # End Source File
 # Begin Source File
 
@@ -513,6 +521,10 @@ SOURCE=.\src\playturn.hpp
 # Begin Source File
 
 SOURCE=.\src\preferences.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\widgets\progressbar.hpp
 # End Source File
 # Begin Source File
 
