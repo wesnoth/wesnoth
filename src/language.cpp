@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <sstream>
 
 namespace {
 	language_def current_language;
@@ -103,6 +104,19 @@ std::vector<language_def> get_languages()
 	return res;
 }
 
+// This solely exist to work around problems in the BeOS port.
+// I don't put an #ifdef yet to see first whether it fixes other
+// problems, like the MacOS-X ones.
+char* wesnoth_setlocale(int category, const char *locale)
+{
+	if (setenv ("LANG", locale, 1) == -1)
+		std::cerr << "setenv LANG failed: " << strerror(errno);
+	if (setenv ("LC_ALL", locale, 1) == -1)
+		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
+
+	return setlocale (category, locale);
+}
+
 namespace {
 bool internal_set_language(const language_def& locale, config& cfg)
 {
@@ -113,7 +127,7 @@ bool internal_set_language(const language_def& locale, config& cfg)
 			current_language.language = (**i)["language"];
 			current_language.localename = (**i)["id"];
 
-			setlocale (LC_MESSAGES, locale.localename.c_str());
+			wesnoth_setlocale (LC_MESSAGES, locale.localename.c_str());
 
 			return true;
 		}
@@ -134,7 +148,7 @@ bool set_language(const language_def& locale)
 	config cfg;
 
 	current_language = locale;
-	setlocale (LC_MESSAGES, locale.localename.c_str());
+	wesnoth_setlocale (LC_MESSAGES, locale.localename.c_str());
 	font::set_font();
 
 	// fill string_table (should be moved somwhere else some day)
@@ -167,7 +181,7 @@ const language_def& get_locale()
 
 	const std::string& prefs_locale = preferences::locale();
 	if(prefs_locale.empty() == false) {
-		char* setlocaleres = setlocale (LC_MESSAGES, prefs_locale.c_str());
+		char* setlocaleres = wesnoth_setlocale (LC_MESSAGES, prefs_locale.c_str());
 		if(setlocaleres == NULL)
 			std::cerr << "call to setlocale() failed for " << prefs_locale.c_str() << "\n";
 		for(int i = 0; known_languages[i].language[0] != '\0'; i++) {
