@@ -229,8 +229,7 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 			}
 
 			if(pixel_format != NULL) {
-				SDL_Surface* const conv = SDL_ConvertSurface(surf,
-								                     pixel_format,SDL_SWSURFACE);
+				SDL_Surface* const conv = SDL_ConvertSurface(surf,pixel_format,SDL_SWSURFACE);
 				SDL_FreeSurface(surf);
 				surf = conv;
 			}

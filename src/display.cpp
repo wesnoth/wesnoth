@@ -1730,7 +1730,13 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 	if(srcw <= 0 || srch <= 0 || srcx >= surface->w || srcy >= surface->h)
 		return;
+/*  //look at why SDL_BlitSurface doesn't always handle transperancy for us.
+	SDL_Rect src_rect = {srcx, srcy, srcw, srch};
+	SDL_Rect dst_rect = {x, y, srcw, srch};
 
+	SDL_BlitSurface(surface,&src_rect,target,&dst_rect);
+	return;
+*/
 	if(x < 0)
 		x = 0;
 
