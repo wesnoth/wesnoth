@@ -414,12 +414,55 @@ std::string copy_from_clipboard()
 #define CLIPBOARD_FUNCS_DEFINED
 
 #include <Carbon/Carbon.h>
+void copy_ucs2_to_clipboard(const ucs2_string& text) {
+	ucs2_string str;
+	str.reserve(text.size() + 1);
+	for(int i = 0; i < text.size(); ++i) {
+		if(text[i] == '\n')
+			str.push_back('\r');
+		else
+			str.push_back(text[i]);
+	}
+	str.push_back(0);
+	OSStatus err = noErr;
+	ScrapRef scrap = kScrapRefNone;
+	err = ClearCurrentScrap();
+	if(err != noErr)
+		return;
+	err = GetCurrentScrap(&scrap);
+	if(err != noErr)
+		return;
+	PutScrapFlavor(scrap, kScrapFlavorTypeUnicode, kScrapFlavorMaskNone, str.size(), &str.front());
+}
+
+ucs2_string copy_ucs2_from_clipboard() {
+	ucs2_string str;
+	OSStatus err = noErr;
+	ScrapRef scrap = kScrapRefNone;
+	err = GetCurrentScrap(&scrap);
+	if(err != noErr)
+		return str;
+	Size scrapsize;
+	err = GetScrapFlavorSize(scrap, kScrapFlavorTypeUnicode, &scrapsize);
+	if(err != noErr)
+		return str;
+	str.reserve(scrapsize);
+	str.resize(scrapsize);
+	err = GetScrapFlavorData(scrap, kScrapFlavorTypeUnicode, &scrapsize, const_cast<Uint16*>(&str.front()));
+	if(err != noErr)
+		return str.clear();
+	for(int i = 0; i < str.size(); ++i) {
+		if(str[i] == '\r')
+			str[i] = '\n';
+	}
+	return str;
+}
 
 void copy_to_clipboard(const std::string& text)
 {
 	std::string new_str;
 	new_str.reserve(text.size());
-	for (int i = 0; i < text.size(); i++)
+	for (int i = 0; i < text.size(); ++i)
 	{
 		if (text[i] == '\n')
 		{
@@ -451,7 +494,7 @@ std::string copy_from_clipboard()
 	str.resize(scrapsize);
 	err = GetScrapFlavorData(curscrap, kScrapFlavorTypeText, &scrapsize, const_cast<char*>(str.data()));
 	if (err != noErr) return "";
-	for (int i = 0; i < str.size(); i++)
+	for (int i = 0; i < str.size(); ++i)
 	{
 		if (str[i] == '\r') str[i] = '\n';
 	}
