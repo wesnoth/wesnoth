@@ -243,6 +243,9 @@ void unit::new_turn()
 void unit::end_turn()
 {
 	remove_flag("slowed");
+	if(moves_ != total_movement()){
+		resting_ = false;
+	}
 }
 
 void unit::new_level()
@@ -272,7 +275,7 @@ void unit::set_resting(bool resting)
 	resting_ = resting;	
 }
 
-bool is_resting() const
+bool unit::is_resting() const
 {
 	return resting_;
 }

@@ -344,6 +344,7 @@ void attack(display& gui, const gamemap& map,
 	int defenderxp = a->second.type().level();
 
 	a->second.set_attacked();
+	d->second.set_resting(false);
 
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string forest_invisible("ambush");
@@ -722,21 +723,28 @@ void calculate_healing(display& disp, const gamemap& map,
 	std::map<gamemap::location,int> healed_units, max_healing;
 
 	std::map<gamemap::location,unit>::iterator i;
+	int amount_healed;
 	for(i = units.begin(); i != units.end(); ++i) {
+		amount_healed = 0;
 
 		//the unit heals if it's on this side, and it's on a tower or
 		//it has regeneration, and it is wounded
-		if(i->second.side() == side &&
-		   (map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
+		if(i->second.side() == side) {
+			if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
 		    i->second.type().regenerates()) &&
 		    i->second.hitpoints() < i->second.max_hitpoints()) {
-			healed_units.insert(std::pair<gamemap::location,int>(
-			                            i->first, game_config::cure_amount));
-
+				amount_healed = game_config::cure_amount;
+			} else if(i->second.is_resting()){
+				amount_healed = game_config::rest_heal_amount;
+			}
+			i->second.set_resting(true);
+			if(amount_healed != 0)
+				healed_units.insert(std::pair<gamemap::location,int>(
+			                            i->first, amount_healed));
 		}
 
 		//otherwise find the maximum healing for the unit
-		else {
+		if(amount_healed == 0) {
 			int max_heal = 0;
 			gamemap::location adjacent[6];
 			get_adjacent_tiles(i->first,adjacent);
