@@ -2158,7 +2158,7 @@ void turn_info::show_enemy_moves(bool ignore_units)
 	
 	// Compute enemy movement positions
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y)) {
+		if(current_team().is_enemy(u->second.side()) && !gui_.fogged(u->first.x,u->first.y) && !u->second.stone()) {
 			const bool is_skirmisher = u->second.type().is_skirmisher();
 			const bool teleports = u->second.type().teleports();
 			unit_map units;
