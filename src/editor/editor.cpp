@@ -121,9 +121,10 @@ int main(int argc, char** argv)
 	gamestatus status(cfg,0);
 	std::vector<team> teams;
 
+	const config* const theme_cfg = cfg.find_child("theme","name",preferences::theme());
 	config dummy_theme;
 	std::map<gamemap::location,unit> units;
-	display gui(units,video,map,status,teams,dummy_theme);
+	display gui(units,video,map,status,teams,theme_cfg ? *theme_cfg : dummy_theme);
 
 	std::vector<std::string> terrain_names;
 	const std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
@@ -136,14 +137,10 @@ int main(int argc, char** argv)
 		terrain_names.push_back(map.terrain_name(*t));
 	}
 
-	gui::menu terrain_menu(gui,terrain_names);
-	gui::button tup(gui, "", gui::button::TYPE_PRESS,"uparrow");
-	gui::button tdown(gui, "", gui::button::TYPE_PRESS,"downarrow");
+	gui::button tup(gui, "", gui::button::TYPE_PRESS,"uparrow-button");
+	gui::button tdown(gui, "", gui::button::TYPE_PRESS,"downarrow-button");
 	tup.set_xy(gui.mapx() + 10, 165);
 	tdown.set_xy((gui.x() - tdown.width()) - 10, 165);
-
-	terrain_menu.set_width((gui.x() - gui.mapx()));
-	terrain_menu.set_loc(gui.mapx()+2,200);
 
 	gamemap::TERRAIN selected_terrain = terrains[1];
 	int tstart = 0;

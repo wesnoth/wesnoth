@@ -92,8 +92,6 @@ void read_file_internal(const std::string& fname, std::string& res)
 
 std::string read_file(const std::string& fname)
 {
-	log_scope("reading file");
-
 	//if we have a path to the data,
 	//convert any filepath which is relative
 	if(!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
@@ -111,7 +109,6 @@ std::string read_file(const std::string& fname)
 
 void write_file(const std::string& fname, const std::string& data)
 {
-	log_scope("write_file");
 	std::ofstream file(fname.c_str());
 	if(file.bad()) {
 		std::cerr << "error writing to file: '" << fname << "'\n";

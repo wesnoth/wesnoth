@@ -421,8 +421,6 @@ SDL_Rect menu::get_item_rect(int item) const
 	if(x_ > 0 && y_ > 0)
 		itemRects_.insert(std::pair<int,SDL_Rect>(item,res));
 
-	std::cerr << "item " << item << " is " << res.w << "," << res.h << "\n";
-
 	return res;
 }
 
