@@ -742,7 +742,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	SDL_Surface* const fb = screen.video().getSurface();
 
-	if(xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
+	if(fb == NULL || xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
 		return;
 	}
 
@@ -751,6 +751,8 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	CKey key;
 	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+
+	std::cerr << "fading logo in....\n";
 
 	for(int x = 0; x != logo->w; ++x) {
 		SDL_Rect srcrect = {x,0,1,logo->h};
@@ -775,6 +777,8 @@ void fade_logo(display& screen, int xpos, int ypos)
 		}
 	}
 
+	std::cerr << "logo faded in\n";
+
 	faded_in = true;
 }
 
@@ -790,9 +794,13 @@ TITLE_RESULT show_title(display& screen)
 	} else {
 		screen.blit_surface(0,0,title_surface);
 		update_rect(screen.screen_area());
+
+		std::cerr << "displayed title image\n";
 	}
 
 	fade_logo(screen,(game_config::title_logo_x*screen.x())/1024,(game_config::title_logo_y*screen.y())/768);
+
+	std::cerr << "faded logo\n";
 
 	const std::string& version_str = string_table["version"] + " " +
 	                                 game_config::version;
@@ -805,6 +813,8 @@ TITLE_RESULT show_title(display& screen)
 		font::draw_text(&screen,screen.screen_area(),
 		                  10,font::NORMAL_COLOUR,version_str,0,versiony);
 	}
+
+	std::cerr << "drew version number\n";
 
 	//members of this array must correspond to the enumeration TITLE_RESULT
 	static const std::string button_labels[] = { "tutorial_button", "campaign_button", "multiplayer_button",
@@ -835,11 +845,15 @@ TITLE_RESULT show_title(display& screen)
 
 	screen.video().flip();
 
+	std::cerr << "drew buttons dialog\n";
+
 	CKey key;
 
 	bool last_escape = key[SDLK_ESCAPE];
 
 	update_whole_screen();
+
+	std::cerr << "entering interactive loop...\n";
 
 	for(;;) {
 		int mousex, mousey;

@@ -199,7 +199,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 
 namespace victory_conditions { 
 	void set_victory_when_enemies_defeated(bool on);
-	const bool victory_when_enemies_defeated();
+	bool victory_when_enemies_defeated();
 }
 
 #endif

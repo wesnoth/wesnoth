@@ -192,6 +192,8 @@ int play_game(int argc, char** argv)
 {
 	srand(time(NULL));
 
+	std::cerr << "starting play_game\n";
+
 	CVideo video;
 	const font::manager font_manager;
 
@@ -199,6 +201,8 @@ int play_game(int argc, char** argv)
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
 	const events::event_context main_event_context;
+
+	std::cerr << "initialized managers\n";
 
 	bool test_mode = false, multiplayer_mode = false, no_gui = false;
 
@@ -247,6 +251,8 @@ int play_game(int argc, char** argv)
 			game_config::path = val;
 		}
 	}
+
+	std::cerr << "parsed arguments\n";
 
 	if(no_gui && !multiplayer_mode) {
 		std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
@@ -325,6 +331,8 @@ int play_game(int argc, char** argv)
 		video.make_fake();
 	}
 
+	std::cerr << "initialized gui\n";
+
 	//load in the game's configuration files
 	preproc_map defines_map;
 	defines_map["NORMAL"] = preproc_define();
@@ -351,6 +359,8 @@ int play_game(int argc, char** argv)
 
 	game_config::load_config(game_config.child("game_config"));
 
+	std::cerr << "parsed config files\n";
+
 	const config::child_list& units = game_config.get_children("units");
 	if(units.empty()) {
 		std::cerr << "ERROR: Could not find game configuration files\n";
@@ -371,6 +381,8 @@ int play_game(int argc, char** argv)
 		}
 	}
 
+	std::cerr << "set language\n";
+
 	if(!no_gui) {
 		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 	}
@@ -380,12 +392,16 @@ int play_game(int argc, char** argv)
 
 		sound::play_music(game_config::title_music);
 
+		std::cerr << "started music\n";
+
 		game_state state;
 
 		display::unit_map u_map;
 		config dummy_cfg("");
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
 		             std::vector<team>(),dummy_cfg);
+
+		std::cerr << "initialized display object\n";
 
 		if(test_mode) {
 			state.campaign_type = "test";
@@ -526,7 +542,11 @@ int play_game(int argc, char** argv)
 
 		recorder.clear();
 
+		std::cerr << "showing title screen...\n";
 		gui::TITLE_RESULT res = gui::show_title(disp);
+
+		std::cerr << "title screen returned result\n";
+
 		if(res == gui::QUIT_GAME) {
 			return 0;
 		} else if(res == gui::LOAD_GAME) {

@@ -54,14 +54,14 @@ private:
 // since it is called from a variety of places.
 namespace victory_conditions
 { 
-	bool when_enemies_defeated;
+	bool when_enemies_defeated = true;
 
 	void set_victory_when_enemies_defeated(bool on) 
 	{
 		when_enemies_defeated = on;
 	}
 
-	const bool victory_when_enemies_defeated() 
+	bool victory_when_enemies_defeated() 
 	{
 		return when_enemies_defeated;
 	}

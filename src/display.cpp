@@ -123,7 +123,7 @@ void display::new_turn()
 	const int green = tod.green - g;
 	const int blue = tod.blue - b;
 
-	const int niterations = firstTurn_ || (!red && !green && !blue) ? 0 : 10;
+	const int niterations = turbo() || firstTurn_ || (!red && !green && !blue) ? 0 : 10;
 	firstTurn_ = false;
 
 	const int frame_time = 30;
