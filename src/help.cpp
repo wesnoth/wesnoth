@@ -846,9 +846,9 @@ std::vector<topic> generate_terrains_topics() {
 		}
 	}
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-									  gamemap::VOID_TERRAIN), show_info_about.end());
+									  (char)gamemap::VOID_TERRAIN), show_info_about.end());
 	show_info_about.erase(std::remove(show_info_about.begin(), show_info_about.end(),
-									  gamemap::FOGGED), show_info_about.end());
+									  (char)gamemap::FOGGED), show_info_about.end());
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const std::string& name = string_table[map->terrain_name(*terrain_it)];

@@ -83,7 +83,7 @@ private:
 		{};
 
 		frame(int milliseconds, const T& value) :
-			milliseconds(milliseconds), value(value), has_value(true)
+			milliseconds(milliseconds), has_value(true), value(value)
 		{};
 
 		// Represents the timestamp of the frame start
@@ -122,22 +122,24 @@ const T animated<T,T_void_value>::void_value_ = T_void_value()();
 
 template<typename T, typename T_void_value>
 animated<T,T_void_value>::animated() : 
-	no_current_frame_(true), started_(false),
 	starting_frame_time_(INT_MAX),
 	ending_frame_time_(INT_MIN),
-	start_ticks_(0),
-	real_start_ticks_(0),
+	started_(false),
+	no_current_frame_(true),
 	does_not_change_(false),
+	real_start_ticks_(0),
+	start_ticks_(0),
 	acceleration_(1)
 {}
 
 template<typename T,  typename T_void_value>
 animated<T,T_void_value>::animated(const std::string &cfg, const string_initializer& init): 
-	no_current_frame_(true), started_(false),
 	starting_frame_time_(INT_MAX),
-	start_ticks_(0),
-	real_start_ticks_(0),
+	started_(false),
+	no_current_frame_(true),
 	does_not_change_(false),
+	real_start_ticks_(0),
+	start_ticks_(0),
 	acceleration_(1)
 {
 	std::vector<std::string> items = config::split(cfg);

@@ -1533,9 +1533,6 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	draw_unit(xloc,yloc,image,vflip,0.5);
 
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
-		//draw number in yellow if terrain is light, else draw in black
-		gamemap::TERRAIN terrain = map_.get_terrain(loc);
-
 		const SDL_Rect& rect = map_area();
 		std::string str(1,'x');
 		str[0] = '1' + route_.move_left;
@@ -1582,7 +1579,6 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	std::vector<std::string> res;
   
 	gamemap::location adjacent[6];   
-	bool transition_done[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
 	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
@@ -1951,7 +1947,7 @@ void display::invalidate_animations()
 	gamemap::location bottomright;
 	get_visible_hex_bounds(topleft, bottomright);
 
-	for(int i = 0; i < flags_.size(); ++i) {
+	for(size_t i = 0; i < flags_.size(); ++i) {
 		flags_[i].update_current_frame();
 		if(flags_[i].frame_changed()) 
 			animate_flags = true;

@@ -112,11 +112,11 @@ unit::unit(const unit_type* t, const unit& u) :
 			   underlying_description_(u.underlying_description_),
 			   description_(u.description_), recruit_(u.recruit_),
 			   role_(u.role_), statusFlags_(u.statusFlags_),
+			   overlays_(u.overlays_), variables_(u.variables_),
 			   attacks_(type_->attacks()), backupAttacks_(type_->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
-               guardian_(false), upkeep_(u.upkeep_),
-			   overlays_(u.overlays_), variables_(u.variables_)
+			   guardian_(false), upkeep_(u.upkeep_)
 {
 	validate_side(side_);
 
@@ -1143,7 +1143,7 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 	modificationDescriptions_.clear();
 
-	for(int i = 0; i != NumModificationTypes; ++i) {
+	for(size_t i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
 		for(config::child_list::const_iterator j = mods.begin(); j != mods.end(); ++j) {
@@ -1158,7 +1158,7 @@ void unit::remove_temporary_modifications()
 	for(int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod = ModificationTypes[i];
 		const config::child_list& mods = modifications_.get_children(mod);
-		for(int j = 0; j != mods.size(); ++j) {
+		for(size_t j = 0; j != mods.size(); ++j) {
 			if((*mods[j])["duration"] != "forever" && (*mods[j])["duration"] != "") {
 				modifications_.remove_child(mod,j);
 				--j;

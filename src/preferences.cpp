@@ -959,7 +959,6 @@ bool show_video_mode_dialog(display& disp)
 
 	std::vector<std::pair<int,int> > resolutions;
 
-	bool added_current = false;
 	for(int i = 0; modes[i] != NULL; ++i) {
 		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
 			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));

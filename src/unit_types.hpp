@@ -28,7 +28,6 @@ class unit_animation
 public:
 	struct frame {
 		frame() {}
-		explicit frame(const std::string& str) {}
 		explicit frame(const config& cfg);
 
 		// int start, end;

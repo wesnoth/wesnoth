@@ -45,9 +45,9 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    player_types_(), player_races_(), player_teams_(),
 	    player_colors_(), combos_type_(), combos_race_(),
 	    combos_team_(), combos_color_(), sliders_gold_(),
+	    ai_(gui::button(disp, _(" Computer vs Computer "))),
 	    launch_(gui::button(disp, _("I'm Ready"))),
 	    cancel_(gui::button(disp, _("Cancel"))),
-	    ai_(gui::button(disp, _(" Computer vs Computer "))),
 		message_full_(true)
 {
 	// Send Initial information
@@ -333,13 +333,8 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 	const int left = rect.x;
 	const int right = rect.x + rect.w;
-	const int center_x = rect.x + rect.w/2;
 	const int top = rect.y;
 	const int bottom = rect.y + rect.h;
-	const int center_y = rect.y + rect.h/2;
-
-	const int width = rect.w;
-	const int height = rect.h;
 
 	// Wait to players, Configure players
 	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
@@ -390,8 +385,6 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	if(era_cfg == NULL) {
 		return;
 	}
-
-	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	combos_type_.clear();
 	combos_race_.clear();
@@ -459,8 +452,6 @@ void mp_connect::gui_update()
 	if(era_cfg == NULL) {
 		return;
 	}
-
-	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 	const config::child_itors sides = level_->child_range("side");
 	SDL_Rect rect;
@@ -914,10 +905,6 @@ void mp_connect::update_network()
 				}
 
 				std::cerr << "client has taken a valid position\n";
-
-				//does the client already own the side, and is just updating
-				//it, or is it taking a vacant slot?
-				const bool update_only = pos->second == sock;
 
 				//broadcast to everyone the new game status
 				pos->first->values["controller"] = "network";

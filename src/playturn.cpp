@@ -67,8 +67,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	gui.draw();
 	gui.update_display();
 
-	team& current_team = teams[team_num-1];
-
 	const paths_wiper wiper(gui);
 
 	if(preferences::turn_bell()) {
@@ -139,8 +137,8 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(mode != PLAY_TURN), allow_network_commands_(mode == BROWSE_NETWORKED),
     left_button_(false), right_button_(false), middle_button_(false),
-	 minimap_scrolling_(false), start_ncmd_(-1),
-    enemy_paths_(false), path_turns_(0), end_turn_(false), textbox_(textbox), replay_sender_(replay_sender)
+	 minimap_scrolling_(false), enemy_paths_(false),
+    path_turns_(0), end_turn_(false), start_ncmd_(-1), textbox_(textbox), replay_sender_(replay_sender)
 {
 	enemies_visible_ = enemies_visible();
 }
@@ -607,10 +605,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const battle_stats& st = stats.back();
 
 			const std::string& attack_name = st.attack_name;
-			const std::string& attack_type = st.attack_type;
 			const std::string& attack_special = st.attack_special;
 			const std::string& defend_name = st.defend_name;
-			const std::string& defend_type = st.defend_type;
 			const std::string& defend_special = st.defend_special;
 
 			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
@@ -759,7 +755,6 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				gui_.select_hex(dst);
 			}
 			
-			const int range = u->second.longest_range();
 			current_route_.steps.clear();
 			show_attack_options(u);
 			
@@ -2147,18 +2142,19 @@ void turn_info::do_command(const std::string& str)
 	} else if(cmd == "n" && game_config::debug) {
 		throw end_level_exception(VICTORY);
 	} else if(game_config::debug && cmd == "unit") {
-		std::cerr << "processing unit: '" << data << "'\n";
 		const unit_map::iterator i = current_unit();
 		if(i != units_.end()) {
 			const std::string::const_iterator j = std::find(data.begin(),data.end(),'=');
 			if(j != data.end()) {
 				const std::string name(data.begin(),j);
 				const std::string value(j+1,data.end());
-				std::cerr << "setting '" << name << "' = '" << value << "\n";
 				config cfg;
 				i->second.write(cfg);
 				cfg[name] = value;
 				i->second = unit(gameinfo_,cfg);
+
+				gui_.invalidate(i->first);
+				gui_.invalidate_unit();
 			}
 		}
 	}

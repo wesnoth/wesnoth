@@ -126,7 +126,6 @@ void default_map_generator::user_config(display& disp)
 
 	const int min_width = 20;
 	const int max_width = 200;
-	const int min_height = 20;
 	const int max_height = 200;
 	const int extra_size_per_player = 2;
 	

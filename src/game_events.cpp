@@ -542,7 +542,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			int choice = get_random() % num_choices;
 			tmp = 0;	
-			for (int i = 0; i < ranges.size(); i++) {
+			for(size_t i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;
 				if (tmp > choice) {
 					if (ranges[i].first == 0 && ranges[i].second == 0) {
@@ -806,7 +806,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//displaying a message on-screen
 	else if(cmd == "print") {
 		const std::string& text = cfg["text"];
-		const std::string& id = cfg["id"];
 		const int size = lexical_cast_default<int>(cfg["size"],12);
 		const int lifetime = lexical_cast_default<int>(cfg["duration"],20);
 		const int red = lexical_cast_default<int>(cfg["red"],0);

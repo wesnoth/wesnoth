@@ -155,7 +155,6 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 void show_objectives(display& disp, config& level_info)
 {
 	static const std::string no_objectives(_("No objectives available"));
-	const std::string& id = level_info["id"];
 	const std::string& name = level_info["name"];
 	const std::string& lang_objectives = level_info["objectives"];
 
@@ -281,8 +280,6 @@ void save_preview_pane::draw()
 
 	set_dirty(false);
 
-	static int n = 0;
-
 	const config& summary = *(*summaries_)[index_];
 
 	surface const screen = disp().video().getSurface();
@@ -358,12 +355,12 @@ void save_preview_pane::draw()
 	std::string name = (*info_)[index_].name;
 	str << font::BOLD_TEXT << config::escape(name) << "\n" << time_buf;
 
+	const std::string& campaign_type = summary["campaign_type"];
 	if(summary["corrupt"] == "yes") {
 		str << "\n" << _("#(Invalid)");
-	} else if(summary["campaign_type"] != "") {
+	} else if (!campaign_type.empty()) {
 		str << "\n";
 			
-		const std::string& campaign_type = summary["campaign_type"];
 		if(campaign_type == "scenario") {
 			str << _("Campaign");
 		} else if(campaign_type == "multiplayer") {
@@ -378,7 +375,7 @@ void save_preview_pane::draw()
 			
 		if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
 			str << _("replay");
-		} else if(summary["turn"] != "") {
+		} else if (!summary["turn"].empty()) {
 			str << _("Turn") << " " << summary["turn"];
 		} else {
 			str << _("Scenario Start");
@@ -759,14 +756,10 @@ void unit_preview_pane::draw()
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 
-			const std::string& lang_weapon = at_it->name();
-			const std::string& lang_type = at_it->type();
-			const std::string& lang_special = at_it->special();
 			details << "\n"
-					<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
-					<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
-					<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
-					<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
+				<< at_it->name() << " (" << at_it->type() << ")\n"
+				<< at_it->special() << "\n"
+				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
 			        << (at_it->range() == attack_type::SHORT_RANGE ?
 			            _("melee") :
 						_("ranged"));
@@ -778,7 +771,6 @@ void unit_preview_pane::draw()
 	}
 	
 	const std::string text = details.str();
-	const SDL_Rect& text_area = font::text_area(text,12);
 	
 	const std::vector<std::string> lines = config::split(text,'\n');
 

@@ -318,7 +318,7 @@ shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
                                                    const gamemap& map,
 																	const gamestatus& status)
       : unit_(u), team_(t), units_(units), teams_(teams), 
-			status_(status), map_(map)
+	map_(map), status_(status)
 {
 }
 

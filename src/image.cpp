@@ -100,12 +100,12 @@ void locator::init_index()
 }
 
 locator::locator() : 
-	val_(), index_(-1)
+	index_(-1)
 {
 }
 
 locator::locator(const locator &a):
-	val_(a.val_), index_(a.index_)
+	index_(a.index_), val_(a.val_)
 {
 }
 

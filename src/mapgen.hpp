@@ -12,6 +12,7 @@ config random_generate_scenario(const std::string& parms, const config* cfg);
 class map_generator
 {
 public:
+	virtual ~map_generator() {}
 
 	//returns true iff the map generator has an interactive screen
 	//which allows the user to modify how the generator behaves

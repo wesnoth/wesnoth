@@ -189,7 +189,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 {
 	int border_size = 10;
 	SDL_Rect title_area = {0,0,0,0};
-	if(title != "") {
+	if (!title.empty()) {
 		title_area = draw_dialog_title(0,0,NULL,title);
 		title_area.w += border_size;
 		title_area.h += border_size;
@@ -225,7 +225,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 
 	draw_dialog_frame(xpos,ypos,width,height,disp,style,restorer);
 
-	if(title != "") {
+	if (!title.empty()) {
 		draw_dialog_title(x + border_size, y - title_area.h, &disp, title);
 	}
 
@@ -416,12 +416,10 @@ int show_dialog(display& disp, surface image,
 
 	menu menu_(disp,menu_items,type == MESSAGE);
 
-	const int border_size = 6;
-
 	const int max_line_length = 54;
 
 	std::string message = msg;
-	const size_t longest_line = text_to_lines(message,max_line_length);
+	text_to_lines(message,max_line_length);
 
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {
@@ -430,7 +428,7 @@ int show_dialog(display& disp, surface image,
 	}
 
 	SDL_Rect caption_size = { 0, 0, 0, 0 };
-	if(caption != "" && image != NULL) {
+	if (!caption.empty() && image != NULL) {
 		caption_size = font::draw_text(NULL, clipRect, caption_font_size,
 		                               font::NORMAL_COLOUR,caption,0,0,NULL);
 	}
@@ -566,7 +564,6 @@ int show_dialog(display& disp, surface image,
 							 text_widget_height + check_button_height;
 
 
-	const int border_padding = 10;
 	int frame_width = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
 	int frame_height = maximum<int>(total_height,int(preview_pane_height));
 	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
@@ -680,9 +677,6 @@ int show_dialog(display& disp, surface image,
 						xloc+left_padding+center_font,
 		                yloc+top_padding+image->h, NULL);
 	}
-
-	const int unitw = 200;
-	const int unith = disp.y()/2;
 
 	font::draw_text(&disp, clipRect, message_font_size,
 	                font::NORMAL_COLOUR, message,

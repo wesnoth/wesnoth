@@ -527,7 +527,7 @@ unit_type::unit_type(const unit_type& o)
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
-                : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
+                : cfg_(cfg), alpha_(1.0), movementType_(cfg), possibleTraits_(traits)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -1010,7 +1010,5 @@ game_data::game_data(const config& cfg)
 	    j.first != j.second; ++j.first) {
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
-		std::cerr << "Inserting unit " << u_type.id() << " (" << u_type.name() << ")"
-			  << "\n";
 	}
 }

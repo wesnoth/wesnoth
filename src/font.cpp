@@ -519,7 +519,7 @@ namespace font {
 		std::string cur_word; // including start-whitespace
 		std::string cur_line; // the whole line so far
   
-		for(int c = 0; c < unwrapped_text.length(); c++) {
+		for(size_t c = 0; c < unwrapped_text.length(); c++) {
 
 			// Find the next word
 			bool forced_line_break = false;
@@ -715,7 +715,6 @@ surface floating_label::create_surface()
 				height += (*i)->h;
 			}
 
-			const SDL_PixelFormat* const format = surfaces.front()->format;
 			surf_.assign(create_compatible_surface(surfaces.front(),width,height));
 
 			size_t ypos = 0;

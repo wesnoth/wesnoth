@@ -58,9 +58,9 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
                               const config& cfg, game_state& state, bool server)
         : disp_(disp), units_data_(units_data), cfg_(cfg), state_(state), server_(server), level_(NULL), map_selection_(-1),
 		  maps_menu_(NULL), turns_slider_(NULL), village_gold_slider_(NULL), xp_modifier_slider_(NULL),
-		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL), vision_combo_(NULL),
+		  fog_game_(NULL), shroud_game_(NULL), observers_game_(NULL),
           cancel_game_(NULL), launch_game_(NULL), regenerate_map_(NULL), generator_settings_(NULL),
-		  era_combo_(NULL), name_entry_(NULL), generator_(NULL)
+		  era_combo_(NULL), vision_combo_(NULL), name_entry_(NULL), generator_(NULL)
 {
 	std::cerr << "setup dialog ctor\n";
 

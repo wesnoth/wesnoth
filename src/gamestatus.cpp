@@ -194,8 +194,6 @@ bool gamestatus::next_turn()
 
 game_state read_game(const game_data& data, const config* cfg)
 {
-	std::cerr << "reading scenario: '" << cfg->write() << "'\n";
-
 	log_scope("read_game");
 	game_state res;
 	res.label = (*cfg)["label"];

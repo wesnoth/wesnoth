@@ -289,8 +289,6 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	int flash_num = 0;
 
-	int ticks = SDL_GetTicks();
-
 	bool shown_label = false;
 
 	util::scoped_resource<int,halo::remover> missile_halo_effect(0), unit_halo_effect(0);
@@ -402,8 +400,6 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		}
 
 		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
-			const int missile_frame_time = animation_time + first_missile;
-
 			const unit_animation::frame& missile_frame = attack_anim.get_current_frame(unit_animation::MISSILE_FRAME);
 			std::cerr << "Missile: animation time :" << animation_time << ", image " << missile_frame.image << ", halo: " << missile_frame.halo << "\n";
 

@@ -27,8 +27,8 @@ namespace {
 class locator_string_initializer : public animated<image::locator>::string_initializer
 {
 public:
-	locator_string_initializer() : loc_(), no_loc_(true) {}
-	locator_string_initializer(const gamemap::location& loc): loc_(loc), no_loc_(false) {}
+	locator_string_initializer() : no_loc_(true) {}
+	locator_string_initializer(const gamemap::location& loc): no_loc_(false), loc_(loc)  {}
 	image::locator operator()(const std::string &s) const;
 
 private:
@@ -299,7 +299,7 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 
 void terrain_builder::replace_token(std::string &s, const std::string &token, const std::string &replacement)
 {
-	int pos;
+	size_t pos;
 	
 	if(token.empty()) {
 		std::cerr << "Error: empty token in replace_token\n";
@@ -548,7 +548,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 	} else {
 		const std::vector<std::string>& rot = config::split(rotations, ',');
 			
-		for(int angle = 0; angle < rot.size(); angle++) {
+		for(size_t angle = 0; angle < rot.size(); angle++) {
 			building_rule rule = rotate_rule(tpl, angle, rot);
 			add_rule(rules, rule);
 		}
@@ -673,8 +673,6 @@ void terrain_builder::parse_config(const config &cfg)
 
 bool terrain_builder::terrain_matches(gamemap::TERRAIN letter, const std::string &terrains)
 {
-
-	bool res = false;
 	bool negative = false;
 	std::string::const_iterator itor;
 
@@ -711,8 +709,6 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 
 			if(!tile_map_.on_map(tloc))
 				return false;
-
-			const tile& btile = tile_map_[tloc];
 
 			if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types))
 				return false;

@@ -828,10 +828,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//based on our [convert] tags.
 	for(x = 0; x != width; ++x) {
 		for(y = 0; y != height; ++y) {
-
-			const int temperature = temperature_map[x][y];
-			const int height = heights[x][y];
-
 			for(std::vector<terrain_converter>::const_iterator i = converters.begin(); i != converters.end(); ++i) {
 				if(i->convert_terrain(terrain[x][y],heights[x][y],temperature_map[x][y])) {
 					terrain[x][y] = i->convert_to();

@@ -49,9 +49,10 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 }
 
 ai::ai(ai_interface::info& info)
-	   : ai_interface(info), disp_(info.disp), map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
-	     teams_(info.teams), team_num_(info.team_num), state_(info.state),
-		 consider_combat_(true), threats_found_(false)
+	   : ai_interface(info), threats_found_(false), disp_(info.disp),
+	     map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
+	     teams_(info.teams), team_num_(info.team_num),
+	     state_(info.state), consider_combat_(true)
 {}
 
 bool ai::recruit_usage(const std::string& usage)

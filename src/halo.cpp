@@ -50,7 +50,8 @@ bool hide_halo = false;
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
-: reverse_(orientation == REVERSE), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect), images_(img)
+: images_(img), reverse_(orientation == REVERSE), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
+  origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
 	assert(disp != NULL);
 	// std::cerr << "Constructing halo sequence from image " << img << "\n";

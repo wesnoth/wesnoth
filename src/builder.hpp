@@ -122,7 +122,7 @@ private:
 	class tilemap
 	{
 	public:
-		tilemap(int x, int y) : x_(x), y_(y), map_((x+2)*(y+2)) {}
+		tilemap(int x, int y) : map_((x+2)*(y+2)), x_(x), y_(y) {}
 
 		tile &operator[](const gamemap::location &loc);
 		const tile &operator[] (const gamemap::location &loc) const;

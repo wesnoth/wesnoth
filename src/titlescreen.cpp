@@ -229,7 +229,6 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
 		for(size_t b = 0; b != buttons.size(); ++b) {
 			if(buttons[b].pressed()) {
