@@ -158,8 +158,8 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find('y' + postfix);
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (maximum(atoi(x->second.c_str()),800),
-		                        maximum(atoi(y->second.c_str()),600));
+		std::pair<int,int> res (maximum(atoi(x->second.c_str()),min_allowed_width),
+		                        maximum(atoi(y->second.c_str()),min_allowed_height));
 
 		//make sure resolutions are always divisible by 4
 		//res.first &= ~3;
@@ -991,7 +991,7 @@ bool show_video_mode_dialog(display& disp)
 	std::vector<std::pair<int,int> > resolutions;
 
 	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
+		if(modes[i]->w >= min_allowed_width && modes[i]->h >= min_allowed_height) {
 			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
 		}
 	}

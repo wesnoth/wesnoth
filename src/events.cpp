@@ -237,7 +237,7 @@ void pump()
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
 
-				if(resize->w < 800 || resize->h < 600) {
+				if(resize->w < min_allowed_width || resize->h < min_allowed_height) {
 					resize_dimensions.first = 0;
 					resize_dimensions.second = 0;
 				} else {

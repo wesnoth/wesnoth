@@ -20,6 +20,15 @@
 #include <utility>
 #include <set>
 
+// only there temporary
+#ifdef USE_TINY_GUI
+const int min_allowed_width = 320;
+const int min_allowed_height = 240;
+#else
+const int min_allowed_width = 800;
+const int min_allowed_height = 600;
+#endif
+
 namespace preferences {
 
 	struct manager
