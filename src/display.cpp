@@ -959,56 +959,6 @@ void display::draw_minimap(int x, int y, int w, int h)
 	update_rect(minimap_location);
 }
 
-#if 0
-void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
-{
-	const int max_h = 35;
-
-	SDL_Rect invalid_rect;
-	invalid_rect.x = x;
-	invalid_rect.y = y;
-	invalid_rect.w = 0;
-
-	SDL_Surface* const screen = screen_.getSurface();
-
-	std::vector<gamemap::TERRAIN> terrains = map_.get_terrain_precedence();
-	for(std::vector<gamemap::TERRAIN>::const_iterator i = terrains.begin();
-	    i != terrains.end(); ++i) {
-		const scoped_sdl_surface image(get_terrain(*i,image::SCALED,-1,-1));
-		if(image == NULL) {
-			std::cerr << "image for terrain '" << *i << "' not found\n";
-			return;
-		}
-
-		if(x + image->w >= this->x() || y + image->h >= this->y()) {
-			std::cerr << "terrain palette can't fit: " << x + image->w << " > " << this->x() << " or " << y+image->h << " > " << this->y() << "\n";
-			return;
-		}
-
-		SDL_Rect dstrect;
-		dstrect.x = x;
-		dstrect.y = y;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
-
-		if(dstrect.h > max_h)
-			dstrect.h = max_h;
-
-		SDL_BlitSurface(image,NULL,screen,&dstrect);
-		gui::draw_rectangle(x,y,image->w-1,max_h-1,
-		                    *i == selected?0xF000:0,screen);
-
-		y += max_h+2;
-
-		if(image->w > invalid_rect.w)
-			invalid_rect.w = image->w;
-	}
-
-	invalid_rect.h = y - invalid_rect.y;
-	update_rect(invalid_rect);
-}
-#endif
-
 gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 {
 	const int height = 37;
@@ -1278,41 +1228,6 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	}
 }
 
-#if 0
-void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
-{
-	const gamemap::location loc(x,y);
-	int xpos = int(get_location_x(loc));
-	int ypos = int(get_location_y(loc));
-
-	SDL_Rect clip_rect = map_area();
-
-	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
-		return;
-	}
-
-	SDL_Surface* const dst = screen_.getSurface();
-
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-	
-	const std::vector<shared_sdl_surface>& adj = getAdjacentTerrain(x,y,image_type,type);
-
-	std::vector<shared_sdl_surface>::const_iterator i;
-	for(i = adj.begin(); i != adj.end(); ++i) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(*i,NULL,dst,&dstrect);
-	}
-
-	const std::vector<shared_sdl_surface>& built = getBuiltTerrain(x,y,image_type,type);
-
-	for(i = built.begin(); i != built.end(); ++i) {
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(*i,NULL,dst,&dstrect);
-	}
-}
-#endif
-
 void display::draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
 {
 
@@ -1395,22 +1310,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 	else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
 		image_type = image::SEMI_BRIGHTENED;
 	}
-
-#if 0
-	scoped_sdl_surface surface(get_terrain(terrain,image_type,x,y));
-
-	if(surface == NULL) {
-		std::cerr << "Could not get terrain surface\n";
-		return;
-	}
-
-	update_rect(xpos,ypos,surface->w,surface->h);
-
-	//note that dstrect can be changed by SDL_BlitSurface and so a new instance should be
-	//initialized to pass to each call to SDL_BlitSurface
-	SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-	SDL_BlitSurface(surface,NULL,dst,&dstrect);
-#endif
 
 	if(!is_shrouded) {
 		draw_terrain_on_tile(x,y,image_type,ADJACENT_BACKGROUND);
@@ -1614,93 +1513,6 @@ const std::string& get_angle_direction(size_t n)
 	const static std::string dirs[6] = {"-ne","-e","-se","-sw","-w","-nw"};
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
-#if 0
-std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
-{
-	std::vector<shared_sdl_surface> res;
-	gamemap::location loc(x,y);
-
-	const gamemap::TERRAIN current_terrain = map_.get_terrain(loc);
-
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	int tiles[6];
-	for(int i = 0; i != 6; ++i) {
-		if(terrain_type == ADJACENT_FOREGROUND && shrouded(adjacent[i].x,adjacent[i].y))
-			tiles[i] = gamemap::VOID_TERRAIN;
-		else if(terrain_type == ADJACENT_FOREGROUND && !fogged(x,y) && fogged(adjacent[i].x,adjacent[i].y))
-			tiles[i] = gamemap::FOGGED;
-		else
-			tiles[i] = map_.get_terrain(adjacent[i]);
-	}
-
-	static std::vector<gamemap::TERRAIN> fog_shroud;
-	if(fog_shroud.empty()) {
-		fog_shroud.push_back(gamemap::VOID_TERRAIN);
-		fog_shroud.push_back(gamemap::FOGGED);
-	}
-
-	const std::vector<gamemap::TERRAIN>& precedence = (terrain_type == ADJACENT_BACKGROUND) ?
-	                                             map_.get_terrain_precedence() : fog_shroud;
-	std::vector<gamemap::TERRAIN>::const_iterator terrain =
-	       std::find(precedence.begin(),precedence.end(),current_terrain);
-
-	if(terrain == precedence.end()) {
-		terrain = precedence.begin();
-	} else {
-		++terrain;
-		while(terrain != precedence.end() &&
-		      map_.get_terrain_info(*terrain).equal_precedence()) {
-			++terrain;
-		}
-	}
-
-	for(; terrain != precedence.end(); ++terrain){
-		//find somewhere that doesn't have overlap to use as a starting point
-		int start;
-		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != *terrain)
-				break;
-		}
-
-		if(start == 6) {
-			start = 0;
-		}
-
-		//find all the directions overlap occurs from
-		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
-			if(tiles[i] == *terrain) {
-				shared_sdl_surface surface(NULL);
-				std::ostringstream stream;
-				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
-
-					stream << get_direction(i);
-					const shared_sdl_surface new_surface(get_terrain(
-					                    *terrain,image_type,x,y,stream.str()));
-
-					if(new_surface == NULL) {
-						//if we don't have any surface at all,
-						//then move onto the next overlapped area
-						if(surface == NULL)
-							i = (i+1)%6;
-						break;
-					}
-
-					surface = new_surface;
-				}
-
-				if(surface != NULL)
-					res.push_back(surface);
-			} else {
-				i = (i+1)%6;
-			}
-		}
-	}
-
-	return res;
-}
-#endif
-
 
 std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::location& loc)
 {
@@ -1855,26 +1667,7 @@ SDL_Surface* display::get_terrain(const image::locator& image, image::TYPE image
 	
 	return im;	
 }
-#if 0
-SDL_Surface* display::get_terrain(gamemap::TERRAIN terrain, image::TYPE image_type,
-                                 int x, int y, const std::string& direction)
-{
-	std::string image = "terrain/" + (direction.empty() ?
-	                           map_.get_terrain_info(terrain).image(x,y) :
-	                           map_.get_terrain_info(terrain).adjacent_image());
 
-	image += direction;
-
-	SDL_Surface* im = get_terrain(image, image_type, x, y, direction.empty());
-	
-	if(im == NULL && direction.empty()) {
-		im = image::get_image("terrain/" +
-		        map_.get_terrain_info(terrain).default_image() + ".png");
-	}
-
-	return im;
-}
-#endif
 SDL_Surface* display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 {
 	const bool village = map_.is_village(terrain);
