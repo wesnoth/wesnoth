@@ -580,161 +580,162 @@ void show_video_mode_dialog(display& disp)
 	}
 }
 
-	void show_hotkeys_dialog (display & disp)
-	{
-		log_scope ("show_preferences_dialog");
+void show_hotkeys_dialog (display & disp)
+{
+	log_scope ("show_hotkeys_dialog");
 
-		const int centerx = disp.x()/2;
-		const int centery = disp.y()/2;
-		const int xpos = centerx  - 300;
-		const int ypos = centery  - 250;
-		const int width = 600;
-		const int height = 500;
-		
-		gui::draw_dialog_frame (xpos, ypos, width,
-							height, disp);
-		
-		SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
-		SDL_Rect title_rect = font::draw_text (NULL, clip_rect, 16,
-						       font::NORMAL_COLOUR,
-						       string_table["hotkeys_dialog"], 0, 0);
-		SDL_Rect text_size = font::draw_text(NULL, clip_rect, 16,
-				           font::NORMAL_COLOUR,string_table["set_hotkey"],
-							0, 0);
+	const int centerx = disp.x()/2;
+	const int centery = disp.y()/2;
+	const int xpos = centerx  - 300;
+	const int ypos = centery  - 250;
+	const int width = 600;
+	const int height = 500;
 	
-		std::vector < std::string > menu_items;
+	gui::draw_dialog_frame(xpos, ypos, width, height, disp);
+	
+	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
+	SDL_Rect title_rect = font::draw_text (NULL, clip_rect, 16,
+					       font::NORMAL_COLOUR,
+					       string_table["hotkeys_dialog"], 0, 0);
+	SDL_Rect text_size = font::draw_text(NULL, clip_rect, 16,
+			           font::NORMAL_COLOUR,string_table["set_hotkey"],
+						0, 0);
 
-		std::vector < hotkey::hotkey_item > hotkeys =
-			hotkey::get_hotkeys ();
-		for (std::vector < hotkey::hotkey_item >::iterator i =
-		     hotkeys.begin (); i != hotkeys.end (); i++)
-		{
-			std::stringstream str,name;
-			name << "action_"<< hotkey::command_to_string(i->action);
-			str << string_table[name.str()];
-			str << ",  :  ,";
-			str << hotkey::get_hotkey_name(*i); 
-			menu_items.push_back (str.str ());
-		}
+	std::vector < std::string > menu_items;
 
-		gui::menu menu_ (disp, menu_items, 0);;
-		menu_.set_loc (xpos + 20, ypos + 30);
-		menu_.set_width(400);	
-		
-		gui::button close_button (disp, string_table["close_window"]);
-		close_button.set_x (xpos + width  -
-				    close_button.width () -30 );
-		close_button.set_y (ypos + height - close_button.height () -
-				    70);
-
-		gui::button change_button (disp, string_table["change_hotkey_button"]);
-		change_button.set_x (xpos + width -
-				    change_button.width () -30);
-		change_button.set_y (ypos + 80);
-
-		gui::button save_button (disp, string_table["save_hotkeys_button"]);
-		save_button.set_x (xpos + width -
-				    save_button.width () -30);
-		save_button.set_y (ypos + 130);
-
-		bool redraw_all = true;
-
-		for (;;)
-		{
-
-			int mousex, mousey;
-			const int mouse_flags =
-				SDL_GetMouseState (&mousex, &mousey);
-			const bool left_button =
-				mouse_flags & SDL_BUTTON_LMASK;
-
-			if (redraw_all)
-			{
-				gui::draw_dialog_frame (xpos, ypos, width,
-							height, disp);
-				menu_.redraw();
-				close_button.draw ();
-				change_button.draw();
-				save_button.draw();
-				
-				font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
-				 string_table["hotkeys_dialog"],
-				 xpos + (width - title_rect.w) / 2,ypos + 10);
-				
-				redraw_all = false;
-			};
-
-			if (close_button.process (mousex, mousey, left_button))
-			{
-				break;
-			}
-			if (change_button.process (mousex, mousey, left_button))
-			{	// Lets change this hotkey......
-				SDL_Rect dlgr = {centerx-text_size.w/2-30,
-									centery-text_size.h/2 - 16,
-										text_size.w+60,
-										text_size.h+32};
-				surface_restorer restorer(disp.video().getSurface(),dlgr);										
-			 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
-										centery-text_size.h/2 - 6,
-										text_size.w+40,
-										text_size.h+12,disp);
-				font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
-					 string_table["set_hotkey"],centerx-text_size.w/2-10,
-					 centery-text_size.h/2-3);
-				disp.update_display();
-				SDL_Event event;
-				int key=0; //just to avoid warning
-				int mod=0;
-				bool used = false;
-				while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
-				do {
-					if (event.type==SDL_KEYDOWN)
-					{
-					 	key=event.key.keysym.sym;
-					 	mod=event.key.keysym.mod;
-					};			
-					SDL_PollEvent(&event);
-				} while (event.type!=SDL_KEYUP);
-				restorer.restore();
-				disp.update_display();
-				for (std::vector < hotkey::hotkey_item >::iterator i =
-		     		hotkeys.begin (); i != hotkeys.end (); i++)
-				{ 
-					if ((i->keycode==key) 
-						&& (i->alt==((mod&KMOD_ALT)!=0))
-						&& (i->ctrl==((mod&KMOD_CTRL)!=0))
-						&& (i->shift==((mod&KMOD_SHIFT)!=0)))
-					used = true;
-				}
-				if (used)
-					gui::show_dialog(disp,NULL,"",string_table["hotkey_already_used"],gui::MESSAGE);
-				else {
-					hotkeys[menu_.selection()].alt = 
-									((mod&KMOD_ALT)!=0);
-					hotkeys[menu_.selection()].ctrl = 
-									((mod&KMOD_CTRL)!=0);
-					hotkeys[menu_.selection()].shift = ((mod&KMOD_SHIFT)!=0);
-					hotkeys[menu_.selection()].keycode = key;
-					hotkey::change_hotkey(hotkeys[menu_.selection()]);
-					menu_.change_item(menu_.selection(),2,
-								hotkey::get_hotkey_name(hotkeys[menu_.selection()]));
-				};
-				redraw_all = true;
-			}
-			if (save_button.process (mousex, mousey, left_button))
-			{
-				hotkey::save_hotkeys(prefs);
-				redraw_all = true;
-			}
-			disp.update_display ();
-
-			menu_.process (mousex, mousey, left_button, false,
-				       false, false, false);
-			
-			SDL_Delay (10);
-			events::pump ();
-		}
-
+	std::vector < hotkey::hotkey_item > hotkeys =
+		hotkey::get_hotkeys ();
+	for (std::vector < hotkey::hotkey_item >::iterator i =
+	     hotkeys.begin (); i != hotkeys.end (); i++)
+	{
+		std::stringstream str,name;
+		name << "action_"<< hotkey::command_to_string(i->action);
+		str << string_table[name.str()];
+		str << ",  :  ,";
+		str << hotkey::get_hotkey_name(*i); 
+		menu_items.push_back (str.str ());
 	}
+
+	gui::menu menu_ (disp, menu_items, 0);;
+	menu_.set_loc (xpos + 20, ypos + 30);
+	menu_.set_width(400);	
+	
+	gui::button close_button (disp, string_table["close_window"]);
+	close_button.set_x (xpos + width  -
+			    close_button.width () -30 );
+	close_button.set_y (ypos + height - close_button.height () -
+			    70);
+
+	gui::button change_button (disp, string_table["change_hotkey_button"]);
+	change_button.set_x (xpos + width -
+			    change_button.width () -30);
+	change_button.set_y (ypos + 80);
+
+	gui::button save_button (disp, string_table["save_hotkeys_button"]);
+	save_button.set_x (xpos + width -
+			    save_button.width () -30);
+	save_button.set_y (ypos + 130);
+
+	bool redraw_all = true;
+
+	for (;;)
+	{
+
+		int mousex, mousey;
+		const int mouse_flags =
+			SDL_GetMouseState (&mousex, &mousey);
+		const bool left_button =
+			mouse_flags & SDL_BUTTON_LMASK;
+
+		if (redraw_all)
+		{
+			gui::draw_dialog_frame (xpos, ypos, width,
+						height, disp);
+			menu_.redraw();
+			close_button.draw ();
+			change_button.draw();
+			save_button.draw();
+			
+			font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
+			 string_table["hotkeys_dialog"],
+			 xpos + (width - title_rect.w) / 2,ypos + 10);
+			
+			redraw_all = false;
+		};
+
+		if (close_button.process (mousex, mousey, left_button))
+		{
+			break;
+		}
+		if (change_button.process (mousex, mousey, left_button))
+		{	// Lets change this hotkey......
+			SDL_Rect dlgr = {centerx-text_size.w/2-30,
+								centery-text_size.h/2 - 16,
+									text_size.w+60,
+									text_size.h+32};
+			surface_restorer restorer(disp.video().getSurface(),dlgr);										
+		 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
+									centery-text_size.h/2 - 6,
+									text_size.w+40,
+									text_size.h+12,disp);
+			font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
+				 string_table["set_hotkey"],centerx-text_size.w/2-10,
+				 centery-text_size.h/2-3);
+			disp.update_display();
+			SDL_Event event;
+			event.type = 0;
+			int key=0; //just to avoid warning
+			int mod=0;
+			bool used = false;
+			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
+			do {
+				if (event.type==SDL_KEYDOWN)
+				{
+				 	key=event.key.keysym.sym;
+				 	mod=event.key.keysym.mod;
+				};			
+				SDL_PollEvent(&event);
+			} while (event.type!=SDL_KEYUP);
+			restorer.restore();
+			disp.update_display();
+			for (std::vector < hotkey::hotkey_item >::iterator i =
+	     		hotkeys.begin (); i != hotkeys.end (); i++)
+			{ 
+				if ((i->keycode==key) 
+					&& (i->alt==((mod&KMOD_ALT)!=0))
+					&& (i->ctrl==((mod&KMOD_CTRL)!=0))
+					&& (i->shift==((mod&KMOD_SHIFT)!=0)))
+				used = true;
+			}
+			if (used)
+				gui::show_dialog(disp,NULL,"",string_table["hotkey_already_used"],gui::MESSAGE);
+			else {
+				hotkeys[menu_.selection()].alt = 
+								((mod&KMOD_ALT)!=0);
+				hotkeys[menu_.selection()].ctrl = 
+								((mod&KMOD_CTRL)!=0);
+				hotkeys[menu_.selection()].shift = ((mod&KMOD_SHIFT)!=0);
+				hotkeys[menu_.selection()].keycode = key;
+				hotkey::change_hotkey(hotkeys[menu_.selection()]);
+				menu_.change_item(menu_.selection(),2,
+							hotkey::get_hotkey_name(hotkeys[menu_.selection()]));
+			};
+			redraw_all = true;
+		}
+		if (save_button.process (mousex, mousey, left_button))
+		{
+			hotkey::save_hotkeys(prefs);
+			redraw_all = true;
+		}
+		disp.update_display ();
+
+		menu_.process (mousex, mousey, left_button, false,
+			       false, false, false);
+		
+		SDL_Delay (10);
+		events::pump ();
+	}
+
+}
+
 }

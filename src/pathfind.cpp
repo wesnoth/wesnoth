@@ -314,7 +314,7 @@ double shortest_path_calculator::cost(const gamemap::location& loc,
 
 		for(size_t i = 0; i != 6; ++i) {
 			const unit_map::const_iterator u = units_.find(adj[i]);
-			if(u != units_.end() && team_.is_enemy(u->second.side())) {
+			if(u != units_.end() && team_.is_enemy(u->second.side()) && !team_.fogged(adj[i].x,adj[i].y)) {
 				return 100000.0;
 			}
 		}
