@@ -125,6 +125,9 @@ public:
 		bool enabled_;
 		bool changed_;
 	};
+
+	friend class side;
+
 	typedef std::vector<side> side_list;
 
 

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "multiplayer_connect.hpp"
 #include "font.hpp"
 #include "preferences.hpp"
@@ -548,7 +549,7 @@ void connect::start_game()
 
 void connect::hide_children(bool hide)
 {
-	mp::ui::hide_children(hide);
+	ui::hide_children(hide);
 
 	waiting_label_.hide(hide);
 	// Hiding the scrollpane automatically hides its contents
@@ -571,7 +572,7 @@ void connect::gamelist_updated()
 
 void connect::process_network_data(const config& data, const network::connection sock)
 {
-	mp::ui::process_network_data(data, sock);
+	ui::process_network_data(data, sock);
 
 	if (!data["side_drop"].empty()) {
 		const int side_drop = lexical_cast_default<int>(data["side_drop"], 0) - 1;
@@ -709,7 +710,7 @@ void connect::process_network_connection(const network::connection sock)
 
 void connect::layout_children(const SDL_Rect& rect)
 {
-	mp::ui::layout_children(rect);
+	ui::layout_children(rect);
 
 	SDL_Rect ca = client_area();
 
@@ -749,7 +750,6 @@ void connect::layout_children(const SDL_Rect& rect)
 	scroll_pane_rect.h = launch_.location().y - scroll_pane_rect.y - gui::ButtonVPadding;
 
 	scroll_pane_.set_location(scroll_pane_rect);
-	config::child_iterator sd;
 }
 
 void connect::lists_init(bool changes_allowed)
@@ -817,11 +817,11 @@ void connect::lists_init(bool changes_allowed)
 		sides_.push_back(side(*this, **sd, index, 100, changes_allowed));
 	}
 	// This function must be called after the sides_ vector is fully populated.
-	for(side_list::iterator sd = sides_.begin(); sd != sides_.end(); ++sd) {
-		const int side_num = sd - sides_.begin();
+	for(side_list::iterator s = sides_.begin(); s != sides_.end(); ++s) {
+		const int side_num = s - sides_.begin();
 		const int spos = 60 * side_num;
 
-		sd->add_widgets_to_scrollpane(scroll_pane_, spos);
+		s->add_widgets_to_scrollpane(scroll_pane_, spos);
 	}
 }
 

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "multiplayer_lobby.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
@@ -33,7 +34,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 
 void lobby::hide_children(bool hide)
 {
-	mp::ui::hide_children(hide);
+	ui::hide_children(hide);
 
 	games_menu_.hide(hide);
 	observe_game_.hide(hide);
@@ -44,7 +45,7 @@ void lobby::hide_children(bool hide)
 
 void lobby::layout_children(const SDL_Rect& rect)
 {
-	mp::ui::layout_children(rect);
+	ui::layout_children(rect);
 
 	join_game_.set_location(xscale(12),yscale(7));
 	observe_game_.set_location(join_game_.location().x + join_game_.location().w + 5,yscale(7));
