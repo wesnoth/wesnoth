@@ -173,7 +173,7 @@ TITLE_RESULT show_title(display& screen)
 		//if the resolution has changed due to the user resizing the screen,
 		//or from changing between windowed and fullscreen
 		if(disp_change_detector.changed()) {
-			return CONTINUE;
+			return TITLE_CONTINUE;
 		}
 
 		SDL_Delay(20);

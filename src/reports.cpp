@@ -171,6 +171,12 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		report res;
 		std::stringstream tooltip;
 		
+		const size_t team_index = u->second.side()-1;
+		if(team_index >= teams.size()) {
+			std::cerr << "illegal team index in reporting: " << team_index << "\n";
+			return res;
+		}
+
 		const std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
@@ -187,7 +193,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			std::set<const unit_type*> seen_units;
 			std::map<int,std::vector<std::string> > resistances;
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
-				if(current_team.is_enemy(u_it->second.side()) && !current_team.fogged(u_it->first.x,u_it->first.y) &&
+				if(teams[team_index].is_enemy(u_it->second.side()) && !current_team.fogged(u_it->first.x,u_it->first.y) &&
 				   seen_units.count(&u_it->second.type()) == 0) {
 					seen_units.insert(&u_it->second.type());
 					const int resistance = u_it->second.type().movement_type().resistance_against(*at_it) - 100;

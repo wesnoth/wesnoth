@@ -85,6 +85,8 @@ bool ai::recruit_usage(const std::string& usage)
 		return recruit(options[option]);
 	}
 
+	std::cerr << "no available units to recruit that come under the price\n";
+
 	return false;
 }
 

@@ -54,7 +54,8 @@ public:
 	const std::string* get_frame(int milliseconds, int* xoffset=NULL,
 	                             FRAME_TYPE type=UNIT_FRAME,
 								 FRAME_DIRECTION direction=VERTICAL,
-								 const std::string** halo=NULL) const;
+								 const std::string** halo=NULL,
+								 int* halo_x=NULL, int* halo_y=NULL) const;
 
 	struct sfx {
 		int time;
@@ -82,14 +83,14 @@ private:
 	bool backstab_;
 
 	struct frame {
-		frame(int i1, int i2, const std::string& img, const std::string& halo, int offset)
-		      : start(i1), end(i2), xoffset(offset), image(img), halo(halo)
+		frame(int i1, int i2, const std::string& img, const std::string& halo, int offset, int halo_x, int halo_y)
+		      : start(i1), end(i2), xoffset(offset), image(img), halo(halo), halo_x(halo_x), halo_y(halo_y)
 		{}
 
 		frame(int i1, int i2, const std::string& img, const std::string& diag,
-		      const std::string& halo, int offset)
+		      const std::string& halo, int offset, int halo_x, int halo_y)
 		      : start(i1), end(i2), xoffset(offset),
-		        image(img), image_diagonal(diag), halo(halo)
+		        image(img), image_diagonal(diag), halo(halo), halo_x(halo_x), halo_y(halo_y)
 		{}
 
 		int start, end;
@@ -97,6 +98,7 @@ private:
 		std::string image;
 		std::string image_diagonal;
 		std::string halo;
+		int halo_x, halo_y;
 	};
 
 	std::vector<frame> frames_[2];

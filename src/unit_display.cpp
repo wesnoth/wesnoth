@@ -279,7 +279,19 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			played_hit_sound = true;
 		}
 
-		const std::string* unit_image = attack.get_frame(i);
+		util::scoped_resource<int,halo::remover> unit_halo_effect(0);
+		const std::string* unit_halo = NULL;
+		int halo_x = 0, halo_y = 0;
+		const std::string* unit_image = attack.get_frame(i,NULL,attack_type::UNIT_FRAME,attack_type::VERTICAL,&unit_halo,&halo_x,&halo_y);
+
+		if(unit_halo != NULL) {
+			if(att->second.facing_left() == false) {
+				halo_x *= -1;
+			}
+
+			unit_halo_effect.assign(halo::add(disp.get_location_x(a)+disp.hex_width()/2 + halo_x*disp.zoom(),disp.get_location_y(a)+disp.hex_size()/2 + halo_y*disp.zoom(),*unit_halo));
+		}
+
 
 		if(unit_image == NULL) {
 			unit_image = &att->second.type().image_fighting(attack_type::LONG_RANGE);
@@ -331,8 +343,16 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			const int missile_frame = i + first_missile;
 
 			const std::string* halo_image = NULL;
+			int halo_x = 0, halo_y = 0;
 			const std::string* missile_image = attack.get_frame(missile_frame,NULL,
-			                                                    attack_type::MISSILE_FRAME,dir,&halo_image);
+			                                                    attack_type::MISSILE_FRAME,dir,&halo_image,&halo_x,&halo_y);
+
+			if(att->second.facing_left() == false) {
+				halo_x *= -1;
+			}
+
+			halo_x *= disp.zoom();
+			halo_y *= disp.zoom();
 
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
@@ -354,8 +374,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 				pos = 0.0;
 			}
 
-			const int xpos = int(xsrc*pos + xdst*(1.0-pos));
-			const int ypos = int(ysrc*pos + ydst*(1.0-pos));
+			const int xpos = int((xsrc+halo_x)*pos + xdst*(1.0-pos));
+			const int ypos = int((ysrc+halo_y)*pos + ydst*(1.0-pos));
 
 			if(img != NULL) {
 				disp.draw_unit(xpos,ypos,img,vflip);

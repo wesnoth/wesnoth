@@ -1590,6 +1590,10 @@ void turn_info::status_table()
 	//shown to demonstrate lack of information about the other sides
 	bool fog = false;
 	for(size_t n = 0; n != teams_.size(); ++n) {
+		if(teams_[n].is_empty()) {
+			continue;
+		}
+
 		const bool known = viewing_team.knows_about_team(n);
 		const bool enemy = viewing_team.is_enemy(n+1);
 		if(!known) {

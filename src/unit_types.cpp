@@ -57,7 +57,9 @@ attack_type::attack_type(const config& cfg)
 		const int xoff = atoi((**range.first)["xoffset"].c_str());
 		const std::string& img = (**range.first)["image"];
 		const std::string& halo = (**range.first)["halo"];
-		frames_[UNIT_FRAME].push_back(frame(beg,end,img,halo,xoff));
+		const int halo_x = atoi((**range.first)["halo_x"].c_str());
+		const int halo_y = atoi((**range.first)["halo_y"].c_str());
+		frames_[UNIT_FRAME].push_back(frame(beg,end,img,halo,xoff,halo_x,halo_y));
 	}
 
 	range = cfg.child_range("missile_frame");
@@ -69,10 +71,13 @@ attack_type::attack_type(const config& cfg)
 		const std::string& img = (**range.first)["image"];
 		const std::string& img_diag = (**range.first)["image_diagonal"];
 		const std::string& halo = (**range.first)["halo"];
+		const int halo_x = atoi((**range.first)["halo_x"].c_str());
+		const int halo_y = atoi((**range.first)["halo_y"].c_str());
+
 		if(img_diag.empty())
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,halo,xoff));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,halo,xoff,halo_x,halo_y));
 		else
-			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,halo,xoff));
+			frames_[MISSILE_FRAME].push_back(frame(beg,end,img,img_diag,halo,xoff,halo_x,halo_y));
 
 	}
 
@@ -165,7 +170,8 @@ int attack_type::get_last_frame(attack_type::FRAME_TYPE type) const
 
 const std::string* attack_type::get_frame(int milliseconds, int* xoff,
                                        attack_type::FRAME_TYPE type,
-									   attack_type::FRAME_DIRECTION dir, const std::string** halo) const
+									   attack_type::FRAME_DIRECTION dir,
+									   const std::string** halo, int* halo_x, int* halo_y) const
 {
 	for(std::vector<frame>::const_iterator i = frames_[type].begin();
 	    i != frames_[type].end(); ++i) {
@@ -182,6 +188,14 @@ const std::string* attack_type::get_frame(int milliseconds, int* xoff,
 					*halo = NULL;
 				} else {
 					*halo = &i->halo;
+				}
+
+				if(halo_x != NULL) {
+					*halo_x = i->halo_x;
+				}
+
+				if(halo_y != NULL) {
+					*halo_y = i->halo_y;
 				}
 			}
 

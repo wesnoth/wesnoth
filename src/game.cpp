@@ -689,9 +689,9 @@ int play_game(int argc, char** argv)
 
 		std::cerr << "showing title screen...\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-		gui::TITLE_RESULT res = gui::CONTINUE;
+		gui::TITLE_RESULT res = gui::TITLE_CONTINUE;
 		
-		while(res == gui::CONTINUE) {
+		while(res == gui::TITLE_CONTINUE) {
 			res = gui::show_title(disp);
 		}
 

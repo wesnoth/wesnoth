@@ -1111,7 +1111,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			const bool bonus = cfg["bonus"] == "yes";
 			throw end_level_exception(VICTORY,bonus);
 		} else if(result == "continue") {
-			throw end_level_exception(CONTINUE);
+			throw end_level_exception(LEVEL_CONTINUE);
 		} else {
 			std::cerr << "throwing event defeat...\n";
 			throw end_level_exception(DEFEAT);
