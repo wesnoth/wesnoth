@@ -150,6 +150,9 @@ public:
 	const gamemap::location& get_interrupted_move() const;
 	void set_interrupted_move(const gamemap::location& interrupted_move);
 private:
+	unit_race::GENDER generate_gender(const unit_type& type, bool use_genders);
+	unit_race::GENDER gender_;
+
 	const unit_type* type_;
 
 	enum STATE { STATE_NORMAL, STATE_ATTACKING,
@@ -165,8 +168,6 @@ private:
 	int maxExperience_, backupMaxExperience_;
 
 	int side_;
-
-	unit_race::GENDER gender_;
 
 	//is set to the number of moves left, ATTACKED if attacked, 
 	// MOVED if moved and then pressed "end turn"

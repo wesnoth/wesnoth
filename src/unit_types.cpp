@@ -496,10 +496,36 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 	parent_ = parent;
 }
 
+unit_type::unit_type(const unit_type& o)
+    : cfg_(o.cfg_), race_(o.race_), alpha_(o.alpha_), abilities_(o.abilities_),
+      max_heals_(o.max_heals_), heals_(o.heals_), regenerates_(o.regenerates_),
+      leadership_(o.leadership_), illuminates_(o.illuminates_),
+      skirmish_(o.skirmish_), teleport_(o.teleport_),
+      nightvision_(o.nightvision_), can_advance_(o.can_advance_),
+      movementType_(o.movementType_), possibleTraits_(o.possibleTraits_),
+      genders_(o.genders_), defensive_animations_(o.defensive_animations_)
+{
+	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
+	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
+}
+
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
                 : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
 {
+	gender_types_[0] = NULL;
+	gender_types_[1] = NULL;
+
+	const config* const male_cfg = cfg.child("male");
+	if(male_cfg != NULL) {
+		gender_types_[unit_race::MALE] = new unit_type(*male_cfg,mv_types,races,traits);
+	}
+
+	const config* const female_cfg = cfg.child("female");
+	if(female_cfg != NULL) {
+		gender_types_[unit_race::FEMALE] = new unit_type(*female_cfg,mv_types,races,traits);
+	}
+
 	const std::vector<std::string> genders = config::split(cfg["gender"]);
 	for(std::vector<std::string>::const_iterator i = genders.begin();
 	    i != genders.end(); ++i) {
@@ -566,6 +592,22 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	for(config::child_list::const_iterator d = defends.begin(); d != defends.end(); ++d) {
 		defensive_animations_.push_back(defensive_animation(**d));
 	}
+}
+
+unit_type::~unit_type()
+{
+	delete gender_types_[unit_race::MALE];
+	delete gender_types_[unit_race::FEMALE];
+}
+
+const unit_type* unit_type::get_gender_unit_type(unit_race::GENDER gender) const
+{
+	const size_t i = gender;
+	if(i < sizeof(gender_types_)/sizeof(*gender_types_) && gender_types_[i] != NULL) {
+		return gender_types_[i];
+	}
+
+	return this;
 }
 
 int unit_type::num_traits() const { return race_->num_traits(); }
