@@ -1089,6 +1089,7 @@ int main(int argc, char** argv)
 	setlocale (LC_ALL, "");
 	bindtextdomain (PACKAGE, LOCALEDIR);
 	textdomain (PACKAGE);
+	bind_textdomain_codeset (PACKAGE, "UTF-8");
 
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
