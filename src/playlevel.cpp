@@ -732,6 +732,12 @@ redo_turn:
 			} catch(end_level_exception&) {
 			}
 
+			if(state_of_game.scenario == (*level)["id"]) {
+				state_of_game.scenario = (*level)["next_scenario"];
+			}
+
+			const bool has_next_scenario = state_of_game.scenario != "null" && state_of_game.scenario != "";
+
 			//add all the units that survived the scenario
 			for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
 				player_info *player=state_of_game.get_player(teams[un->second.side()-1].save_id());
@@ -744,7 +750,7 @@ redo_turn:
 			}
 
 			//'continue' is like a victory, except it doesn't announce victory,
-			//and the player returns 100% of gold.
+			//and the player retains 100% of gold.
 			if(end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
 				for(std::vector<team>::iterator i=teams.begin(); i!=teams.end(); ++i) {
 					player_info *player=state_of_game.get_player(i->save_id());
@@ -801,7 +807,7 @@ redo_turn:
 			gui::show_dialog(gui,NULL,_("Victory"),
 			                 _("You have emerged victorious!"),gui::OK_ONLY);
 
-			if(state_of_game.players.size()>0) {
+			if(state_of_game.players.size()>0 && has_next_scenario) {
 				gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
 			}
 			return VICTORY;
