@@ -671,9 +671,7 @@ void display::draw(bool update,bool force)
 	SDL_Delay(maximum<int>(10,wait_time));
 
 	if(update) {
-		const int thisDraw = SDL_GetTicks();
-		const int latency = thisDraw - lastDraw_;
-		lastDraw_ = thisDraw;
+		lastDraw_ = SDL_GetTicks();
 
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
 			if(changed) {
