@@ -42,28 +42,23 @@ enum MARKUP { USE_MARKUP, NO_MARKUP };
 //standard markups
 extern const char LARGE_TEXT, SMALL_TEXT, GOOD_TEXT, BAD_TEXT, NORMAL_TEXT, BLACK_TEXT, BOLD_TEXT, IMAGE, NULL_MARKUP;
 
-// font sizes, probably to make theme parameters
-#ifndef USE_TINY_GUI
-const int SIZE_NORMAL = 14,
-  SIZE_TINY = 10,
-  SIZE_SMALL = 12,
-
-  SIZE_15 = 15,
-  SIZE_PLUS = 16,
-  SIZE_LARGE = 18,
-  SIZE_XLARGE = 24
-  ;  
+// font sizes, to be made theme parameters
+#ifdef USE_TINY_GUI
+// this is not meant for normal play, just for checking other dimensions get adapted accordingly
+const int SIZE_NORMAL = 8;
 #else
-const int SIZE_NORMAL = 10,
-  SIZE_TINY = 6,
-  SIZE_SMALL = 8,
-
-  SIZE_15 = 11,
-  SIZE_PLUS = 12,
-  SIZE_LARGE = 14,
-  SIZE_XLARGE = 20
-  ;  
+const int SIZE_NORMAL = 14;
 #endif
+// automatic computation of other font sizes, to be made a default for theme-provided values
+const int
+  SIZE_TINY	= SIZE_NORMAL * 10 / 14,
+  SIZE_SMALL	= SIZE_NORMAL * 12 / 14,
+
+  SIZE_15	= SIZE_NORMAL * 15 / 14,
+  SIZE_PLUS	= SIZE_NORMAL * 16 / 14,
+  SIZE_LARGE	= SIZE_NORMAL * 18 / 14,
+  SIZE_XLARGE	= SIZE_NORMAL * 24 / 14
+  ;  
 //function to draw text on the screen. The text will be clipped to area.
 //If the text runs outside of area horizontally, an ellipsis will be displayed
 //at the end of it. If use_tooltips is true, then text with an ellipsis will
