@@ -630,11 +630,9 @@ double shortest_path_calculator::cost(const gamemap::location& loc, const double
 	const int starting_movement = unit_.movement_left();
 	int remaining_movement = starting_movement - current_cost;
 	if (remaining_movement < 0) {
-		int total = unit_.total_movement();
+		const int total = unit_.total_movement();
 		if (total != 0) {
 			remaining_movement = total - (-remaining_movement) % total;
-		} else {
-			remaining_movement = -remaining_movement;
 		}
 	}
 
