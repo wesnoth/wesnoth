@@ -30,6 +30,10 @@
 #include <stack>
 #include <string>
 
+#define LOG_FT lg::info(lg::display)
+#define WRN_FT lg::warn(lg::display)
+#define ERR_FT lg::err(lg::display)
+
 namespace {
 
 std::map<int,TTF_Font*> font_table;
@@ -41,37 +45,38 @@ TTF_Font* open_font(const std::string& fname, int size)
 {
 	std::string name;
 
+	LOG_FT << "Opening font '" << fname << "' ...\n";
 	if(game_config::path.empty() == false) {
 		name = game_config::path + "/fonts/" + fname;
-		std::cerr << "Opening font file: " << name << " ...\n";
+		LOG_FT << "Trying file '" << name << "' ...\n";
 
 		if(read_file(name).empty()) {
 			name = "fonts/" + fname;
-			std::cerr << "Failed, now trying: " << name << " ...\n";
+			WRN_FT << "Failed opening '" << name << "'; now trying '" << name << "' ...\n";
 			if(read_file(name).empty()) {
-				std::cerr << "Failed :(\n";
+				ERR_FT << "Failed opening font: " << fname << "\n";
 				return NULL;
 			}
 		}
 	} else {
 		name = "fonts/" + fname;
-		std::cerr << "Opening font file: " << name << " ...\n";
+		LOG_FT << "Trying file '" << name << "' ...\n";
 
 		if(read_file(name).empty()) {
-			std::cerr << "Failed :(\n";
+			ERR_FT << "Failed opening font '" << fname << "'\n";
 			return NULL;
 		}
 	}
 
-	std::cerr << "opening font '" << name << "' " << size << "\n";
+	LOG_FT << "Opening font file '" << name << "', font size is " << size << "\n";
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {
-		std::cerr << "Could not open font file: " << name << '\n';
+		ERR_FT << "Failed opening font file '" << name << "'\n";
 		return NULL;
 	}
 
-	std::cerr << "opened font okay\n";
+	LOG_FT << "Opened font okay\n";
 
 	return font;
 }
@@ -89,7 +94,7 @@ TTF_Font* get_font(int size)
 
 	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
 
-	std::cerr << "Inserting font...\n";
+	LOG_FT << "Inserting font...\n";
 	font_table.insert(std::pair<int,TTF_Font*>(size,font));
 	return font;
 }
@@ -145,10 +150,10 @@ manager::manager()
 {
 	const int res = TTF_Init();
 	if(res == -1) {
-		std::cerr << "Could not initialize true type fonts\n";
+		ERR_FT << "Could not initialize true type fonts\n";
 		throw error();
 	} else {
-		std::cerr << "Initialized true type fonts\n";
+		LOG_FT << "Initialized true type fonts\n";
 	}
 }
 
@@ -300,8 +305,7 @@ text_surface &text_cache::find(text_surface const &t)
 		cache_.push_front(t);
 	}
 	if (++lookup_ % 1000 == 0) {
-		std::cerr << "Text cache: " << lookup_ << " lookups, "
-		  "hit percentage: " << (hit_ / 10) << "%" << std::endl;
+		LOG_FT << "Text cache: " << lookup_ << " lookups, " << (hit_ / 10) << "% hits\n";
 		hit_ = 0;
 	}
 	return cache_.front();
@@ -414,7 +418,7 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 {
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
-		std::cerr << "Could not get font\n";
+		ERR_FT << "Could not get font for size " << size << "\n";
 		return NULL;
 	}
 
@@ -429,7 +433,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
-		std::cerr << "Could not get font\n";
+		ERR_FT << "Could not get font for size " << size << "\n";
 		SDL_Rect res = {0,0,0,0};
 		return res;
 	}
@@ -594,7 +598,7 @@ namespace font {
     
 		TTF_Font* const font = get_font(font_size);
 		if(font == NULL) {
-			std::cerr << "Could not get font\n";
+			ERR_FT << "Could not get font for size " << font_size << "\n";
 			return 0;
 		}
 		int w = 0;
