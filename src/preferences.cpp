@@ -213,6 +213,38 @@ void set_grid(bool ison)
 	}
 }
 
+namespace {
+	double scroll = 0.2;
+}
+
+double scroll_speed()
+{
+	return get_scroll_speed()*100.0 + 10.0;
+}
+
+double get_scroll_speed()
+{
+	static bool first_time = true;
+	if(first_time) {
+		first_time = false;
+		const string_map::const_iterator itor = prefs.values.find("scroll");
+		if(itor != prefs.values.end()) {
+			scroll = maximum<double>(1.0,minimum<double>(0.0,
+			                             atof(itor->second.c_str())));
+		}
+	}
+
+	return scroll;
+}
+
+void set_scroll_speed(double new_speed)
+{
+	std::stringstream formatter;
+	formatter << new_speed;
+	prefs.values["scroll"] = formatter.str();
+	scroll = new_speed;
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const resize_lock prevent_resizing;
@@ -236,6 +268,7 @@ void show_preferences_dialog(display& disp)
 
 	const std::string& music_label = string_table["music_volume"];
 	const std::string& sound_label = string_table["sound_volume"];
+	const std::string& scroll_label = string_table["scroll_speed"];
 
 	SDL_Rect music_rect = {0,0,0,0};
 	music_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
@@ -245,16 +278,25 @@ void show_preferences_dialog(display& disp)
 	sound_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
 	                             sound_label,0,0);
 
+	SDL_Rect scroll_rect = {0,0,0,0};
+	scroll_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
+	                              scroll_label,0,0);
+
+
 	const int text_right = xpos + maximum(music_rect.w,sound_rect.w) + 5;
 
 	const int music_pos = ypos + title_rect.h + 20;
 	const int sound_pos = music_pos + 50;
+	const int scroll_pos = sound_pos + 50;
 
 	music_rect.x = text_right - music_rect.w;
 	music_rect.y = music_pos;
 
 	sound_rect.x = text_right - sound_rect.w;
 	sound_rect.y = sound_pos;
+
+	scroll_rect.x = text_right - scroll_rect.w;
+	scroll_rect.y = scroll_pos;
 
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - 5;
@@ -266,6 +308,9 @@ void show_preferences_dialog(display& disp)
 
 	slider_rect.y = music_pos;
 	gui::slider music_slider(disp,slider_rect,music_volume());
+
+	slider_rect.y = scroll_pos;
+	gui::slider scroll_slider(disp,slider_rect,get_scroll_speed());
 
 	gui::button fullscreen_button(disp,string_table["full_screen"],
 	                              gui::button::TYPE_CHECK);
@@ -307,6 +352,8 @@ void show_preferences_dialog(display& disp)
 
 		const double new_music=music_slider.process(mousex,mousey,left_button);
 		const double new_sound=sound_slider.process(mousex,mousey,left_button);
+		const double new_scroll =
+		         scroll_slider.process(mousex,mousey,left_button);
 
 		if(new_sound >= 0.0) {
 			set_sound_volume(new_sound);
@@ -314,6 +361,10 @@ void show_preferences_dialog(display& disp)
 
 		if(new_music >= 0.0) {
 			set_music_volume(new_music);
+		}
+
+		if(new_scroll >= 0.0) {
+			set_scroll_speed(new_scroll);
 		}
 
 		if(fullscreen_button.process(mousex,mousey,left_button)) {
@@ -325,8 +376,10 @@ void show_preferences_dialog(display& disp)
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 			sound_slider.background_changed();
 			music_slider.background_changed();
+			scroll_slider.background_changed();
 			sound_slider.draw();
 			music_slider.draw();
+			scroll_slider.draw();
 			fullscreen_button.draw();
 			turbo_button.draw();
 			grid_button.draw();
@@ -338,6 +391,9 @@ void show_preferences_dialog(display& disp)
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,sound_label,
 	    	                sound_rect.x,sound_rect.y);
+
+			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
+	    	                scroll_rect.x,scroll_rect.y);
 
 			font::draw_text(&disp,clip_rect,18,font::NORMAL_COLOUR,
 			                string_table["preferences"],

@@ -41,8 +41,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	team& current_team = teams[team_num-1];
 
-	const double scroll_speed = 30.0;
-
 	const std::string menu_items[] = {"scenario_objectives","recruit",
 	                                  "recall","unit_list","save_game",
 									  "preferences","end_turn"};
@@ -483,16 +481,16 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		right_button = new_right_button;
 
 		if(key[KEY_UP] || mousey == 0)
-			gui.scroll(0.0,-scroll_speed);
+			gui.scroll(0.0,-preferences::scroll_speed());
 
 		if(key[KEY_DOWN] || mousey == gui.y()-1)
-			gui.scroll(0.0,scroll_speed);
+			gui.scroll(0.0,preferences::scroll_speed());
 
 		if(key[KEY_LEFT] || mousex == 0)
-			gui.scroll(-scroll_speed,0.0);
+			gui.scroll(-preferences::scroll_speed(),0.0);
 
 		if(key[KEY_RIGHT] || mousex == gui.x()-1)
-			gui.scroll(scroll_speed,0.0);
+			gui.scroll(preferences::scroll_speed(),0.0);
 
 		if(command == HOTKEY_NULL)
 			command = check_keys(gui);

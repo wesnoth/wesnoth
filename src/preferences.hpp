@@ -54,6 +54,10 @@ namespace preferences {
 	bool grid();
 	void set_grid(bool ison);
 
+	double scroll_speed();
+	double get_scroll_speed();
+	void set_scroll_speed(double scroll);
+
 	void show_preferences_dialog(display& disp);
 	void show_video_mode_dialog(display& disp);
 }

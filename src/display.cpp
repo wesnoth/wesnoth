@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "actions.hpp"
 #include "display.hpp"
 #include "font.hpp"
@@ -19,6 +20,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "menu.hpp"
+#include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "tooltips.hpp"
@@ -282,7 +284,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 	const double ypos = static_cast<double>(y)*zoom_ - ypos_ +
 					                    ((x % 2) == 1 ? zoom_/2.0 : 0.0);
 
-	const double speed = 50.0;
+	const double speed = preferences::scroll_speed()*2.0;
 
 	const double desiredxpos = this->mapx()/2.0 - zoom_/2.0;
 	const double desiredypos = this->   y()/2.0 - zoom_/2.0;
