@@ -302,6 +302,8 @@ private:
 	SDL_Rect unitDescriptionRect_;
 	SDL_Rect unitProfileRect_;
 
+	void draw_image_for_report(scoped_sdl_surface& img, 
+			scoped_sdl_surface& surf, SDL_Rect& rect);
 	void draw_report(reports::TYPE report_num);
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
 	scoped_sdl_surface reportSurfaces_[reports::NUM_REPORTS];

@@ -75,23 +75,61 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		return res;
 	}
 	case UNIT_STATUS: {
-		std::string unit_status = "healthy", prefix = "";
+		std::stringstream unit_status;
+		std::stringstream tooltip;
+		
+		const int cols = 3;
+
+		int num = 0;
+
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
-			unit_status = "invisible";
-			prefix = font::GOOD_TEXT;
-		} else if(u->second.has_flag("slowed")) {
-			unit_status = "slowed";
-			prefix = font::BAD_TEXT;
-		} else if(u->second.has_flag("poisoned")) {
-			unit_status = "poisoned";
-			prefix = font::BAD_TEXT;
-		} else if(u->second.has_flag("stone")) {
-			unit_status = "stone";
-			prefix = font::BAD_TEXT;
+			if(num != 0){
+				if((num % cols) == 0) unit_status << ";";
+				else unit_status << ",";
+				tooltip << std::endl;
+			}
+			num++;
+			unit_status << "misc/invisible.png";
+			tooltip << string_table["invisible"] << "; " << 
+				string_table["invisible_description"] << std::endl;
+		}
+		if(u->second.has_flag("slowed")) {
+			if(num != 0){
+				if((num % cols) == 0) unit_status << ";";
+				else unit_status << ",";
+				tooltip << std::endl;
+			}
+			num++;
+			unit_status << "misc/slowed.png";
+			tooltip << string_table["slowed"] << "; " << 
+				string_table["slowed_description"] << std::endl;
+		}
+		if(u->second.has_flag("poisoned")) {
+			if(num != 0){
+				if((num % cols) == 0) unit_status << ";";
+				else unit_status << ",";
+				tooltip << std::endl;
+			}
+			num++;
+			unit_status << "misc/poisoned.png";
+			tooltip << string_table["poisoned"] << "; " << 
+				string_table["poisoned_description"] << std::endl;
+		}
+		if(u->second.has_flag("stone")) {
+			if(num != 0){
+				if((num % cols) == 0) unit_status << ";";
+				else unit_status << ",";
+				tooltip << std::endl;
+			}
+			num++;
+			unit_status << "misc/stone.png";
+			tooltip << string_table["stone"] << "; " << 
+				string_table["stone_description"] << std::endl;
 		}
 
-		report res(prefix + string_table[unit_status]);
-		res.tooltip = string_table[unit_status + "_description"];
+		std::cerr << "Status report: " << unit_status.str() << std::endl;
+		report res("",unit_status.str());
+		res.tooltip = tooltip.str();
 		return res;
 	}
 	case UNIT_ALIGNMENT: {

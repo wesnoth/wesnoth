@@ -613,6 +613,43 @@ void display::draw_game_status(int x, int y)
 	}	
 }
 
+void display::draw_image_for_report(scoped_sdl_surface& img, scoped_sdl_surface& surf, SDL_Rect& rect)
+{
+	SDL_Rect visible_area = get_non_transperant_portion(img);
+	if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
+		if(visible_area.w == 0 || visible_area.h == 0) {
+			return;
+		}
+
+		//since we're blitting a transperant image, we need to back up
+		//the surface for later restoration
+		surf.assign(get_surface_portion(screen_.getSurface(),rect));
+
+		SDL_Rect target = rect;
+		if(visible_area.w > rect.w || visible_area.h > rect.h) {
+			img.assign(get_surface_portion(img,visible_area));
+			img.assign(scale_surface(img,rect.w,rect.h));
+			visible_area.x = 0;
+			visible_area.y = 0;
+			visible_area.w = img->w;
+			visible_area.h = img->h;
+		} else {
+			target.x = rect.x + (rect.w - visible_area.w)/2;
+			target.y = rect.y + (rect.h - visible_area.h)/2;
+			target.w = visible_area.w;
+			target.h = visible_area.h;
+		}
+
+		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+	} else {
+		if(img->w != rect.w || img->h != rect.h) {
+			img.assign(scale_surface(img,rect.w,rect.h));
+		}
+
+		SDL_BlitSurface(img,NULL,screen_.getSurface(),&rect);
+	}
+}
+
 void display::draw_report(reports::TYPE report_num)
 {
 	if(!team_valid())
@@ -688,44 +725,62 @@ void display::draw_report(reports::TYPE report_num)
 
 		if(report.image.empty() == false) {
 
-			scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
-			if(img == NULL) {
-				std::cerr << "could not find image for report: '" << report.image << "'\n";
-				return;
-			}
-
-			SDL_Rect visible_area = get_non_transperant_portion(img);
-			if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
-				if(visible_area.w == 0 || visible_area.h == 0) {
+			//check if it's a talbe of images or a standalone image
+			if((report.image.find_first_of(",") == -1) &&
+					(report.image.find_first_of(";") == -1)) {
+				scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
+				if(img == NULL) {
+					std::cerr << "could not find image for report: '" << report.image << "'\n";
 					return;
 				}
-
-				//since we're blitting a transperant image, we need to back up
-				//the surface for later restoration
-				surf.assign(get_surface_portion(screen_.getSurface(),rect));
-
-				SDL_Rect target = rect;
-				if(visible_area.w > rect.w || visible_area.h > rect.h) {
-					img.assign(get_surface_portion(img,visible_area));
-					img.assign(scale_surface(img,rect.w,rect.h));
-					visible_area.x = 0;
-					visible_area.y = 0;
-					visible_area.w = img->w;
-					visible_area.h = img->h;
-				} else {
-					target.x = rect.x + (rect.w - visible_area.w)/2;
-					target.y = rect.y + (rect.h - visible_area.h)/2;
-					target.w = visible_area.w;
-					target.h = visible_area.h;
-				}
-
-				SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+				draw_image_for_report(img,surf,rect);
 			} else {
-				if(img->w != rect.w || img->h != rect.h) {
-					img.assign(scale_surface(img,rect.w,rect.h));
-				}
+				SDL_Rect composed_rect;
+				SDL_Surface *composed_img = SDL_CreateRGBSurface(SDL_SWSURFACE,
+						rect.w, rect.h, screen_.getSurface()->format->BitsPerPixel,
+						screen_.getSurface()->format->Rmask,
+						screen_.getSurface()->format->Gmask,
+						screen_.getSurface()->format->Bmask,
+						screen_.getSurface()->format->Amask);
 
-				SDL_BlitSurface(img,NULL,screen_.getSurface(),&rect);
+				int x_off;
+				int y_off = 0;
+
+				std::vector<std::string> rows = config::split(report.image,';');
+
+				for(std::vector<std::string>::iterator row = rows.begin(); row != rows.end(); ++row) {
+					int last_image_height = 0;
+
+					std::cerr << "Row: " << *row << std::endl;
+
+					x_off = 0;
+					std::vector<std::string> cols = config::split(*row);
+
+					for(std::vector<std::string>::iterator col = cols.begin(); col != cols.end(); ++col) {
+						std::cerr << "Col: " << *col << std::endl;
+						if(!col->empty()){
+							scoped_sdl_surface composing_img(image::get_image(*col,image::UNSCALED));
+							if(composing_img == NULL) {
+								std::cerr << "could not find image for report: '" << *col << "'\n";
+								return;
+							}
+							composed_rect.w = composing_img->w;
+							composed_rect.h = composing_img->h;
+							composed_rect.x = x_off;
+							composed_rect.y = y_off;
+
+							SDL_BlitSurface(composing_img,NULL,composed_img,&composed_rect);
+
+							x_off += composing_img->w;
+
+							last_image_height = composing_img->h;
+							std::cout << "\tImage: " << *col << std::endl;
+						}
+					}
+					y_off += last_image_height;
+				}
+				scoped_sdl_surface img(composed_img);
+				draw_image_for_report(img,surf,rect);
 			}
 		}
 	} else {
