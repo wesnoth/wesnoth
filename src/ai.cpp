@@ -510,7 +510,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 {
 	//try to acquire towers
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-		if(map_.is_village(i->first)) {
+		if(map_.is_village(i->first) == false) {
 			continue;
 		}
 
@@ -573,7 +573,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
-				if(map_.is_village(dst) && units_.find(dst) == units_.end()) {
+				if(map_.gives_healing(dst) && units_.find(dst) == units_.end()) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc);
 					std::cerr << "found village with vulnerability: " << vuln << "\n";
