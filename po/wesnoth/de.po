@@ -2,13 +2,13 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-12 16:16+0100\n"
-"PO-Revision-Date: 2004-12-12 13:45+0100\n"
+"PO-Revision-Date: 2004-12-12 17:15+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -283,7 +283,7 @@ msgstr ""
 "und Orks brauchen zwei, und Reiter sogar drei. Ihr könnt Euch die "
 "Bewegungskosten für eine Einheit anzeigen lassen, wenn Ihr auf diese "
 "rechtsklickt, danach »Einheitenbeschreibung« auswählt und Euch dann den "
-"Abschnitt <italic>text='Gelände Einschränkungen'</italic> anseht."
+"Abschnitt <italic>text='Geländemodifikatoren'</italic> anseht."
 
 #: data/help.cfg:97
 msgid ""
@@ -574,9 +574,9 @@ msgstr ""
 "Die Tageszeit beeinflusst den Schaden, der von bestimmten Einheiten "
 "ausgerichtet wird wie folgt:\n"
 "\n"
-"Rechtschaffene Einheiten teilen tagsüber 25% mehr Schaden aus, und Nachts "
+"Rechtschaffene Einheiten teilen tagsüber 25% mehr Schaden aus, und nachts "
 "dafür 25% weniger.\n"
-"Chaotische Einheiten teilen tagsüber 25% weniger Schaden aus, und Nachts "
+"Chaotische Einheiten teilen tagsüber 25% weniger Schaden aus, und nachts "
 "dafür 25% mehr.\n"
 "Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst."
 
@@ -701,7 +701,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Einheiten mit der <ref>dst=ability_cures text='Kurieren '</ref>-Fertigkeit "
+"Einheiten mit der Fertigkeit <ref>dst=ability_cures text='Kurieren'</ref> "
 "heilen 8 Lebenspunkte bei benachbarten Einheiten oder heilen eine Einheit "
 "von ihrer Vergiftung."
 
@@ -796,7 +796,7 @@ msgid ""
 msgstr ""
 "\n"
 "Es gibt zwei Ausnahmen für die Berechnung der Unterhaltskosten. Erstens "
-"zählen loyale Einheiten (mit der Charakteristik 'loyal') immer nur als Stufe-"
+"zählen loyale Einheiten (mit der Charakteristik »loyal«) immer nur als Stufe-"
 "1-Einheiten, gleich welche Stufe Sie tatsächlich haben. Zweitens kosten alle "
 "Einheiten, mit denen Sie ein Szenario beginnen (z.B. Konrad oder Delfador) "
 "und Einheiten, die sich Ihnen wärend eines Szenarios anschließen (wie z.B. "
@@ -1166,22 +1166,20 @@ msgstr "Standard"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:664
-#, fuzzy
 msgid "Random"
 msgstr "Zufallskarte"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Loyalisten"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Einberufungen"
+msgstr "Rebellen"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Nordmannen"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:127
@@ -1189,14 +1187,12 @@ msgid "Undead"
 msgstr "Untote"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Knalgan Allianz"
+msgstr "Knalgan Allianz"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Himmelsdrake"
+msgstr "Draken"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -1215,9 +1211,8 @@ msgid "Orcs"
 msgstr "Orks"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Zwergische Burg"
+msgstr "Zwerge"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -1232,14 +1227,12 @@ msgid "Great War"
 msgstr "Der grosse Krieg"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Magier des Lichtes"
+msgstr "Allianz des Lichtes"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Allianz der Finsternis"
+msgstr "Allianz der Finsternis"
 
 #: data/scenario-test.cfg:38
 msgid ""
@@ -1574,7 +1567,7 @@ msgstr ""
 "Einheiten und jede Partei kontrolliert einen. Normalerweise ist Euer "
 "Anführer auch die erste Einheit, die Eure Partei kontrolliert, und beginnt "
 "auf einem Burgfeld. Ihr könnt Euren Anführer schnell auswählen, in dem Ihr "
-"'l' drückt. Wenn Euer Anführer stirbt, habt Ihr das Spiel verloren. Die "
+"»l« drückt. Wenn Euer Anführer stirbt, habt Ihr das Spiel verloren. Die "
 "meisten Szenarien könnt Ihr gewinnen, in dem Ihr alle gegnerischen Anführer "
 "besiegt."
 
@@ -1640,7 +1633,7 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
-"Es gibt drei Möglichkeiten: Ihr könnt 'Alt-E' drücken, oder nach einem "
+"Es gibt drei Möglichkeiten: Ihr könnt »Alt-E« drücken, oder nach einem "
 "Rechtsklick »Zug beenden« auswählen, oder den »Zug beenden«-Button ganz "
 "rechts unten drücken."
 
@@ -1687,7 +1680,7 @@ msgid ""
 msgstr ""
 "Ausgezeichnet! Ihr habt euren Elfenkrieger erfolgreich gezogen. Da er "
 "allerdings neben eine gegnerische Einheit gezogen ist, hat er alle "
-"Bewegungspunkte für den Rest des Zuges verloren. Das wird 'Kontrollzone' "
+"Bewegungspunkte für den Rest des Zuges verloren. Das wird »Kontrollzone« "
 "genannt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
@@ -1957,7 +1950,7 @@ msgid ""
 msgstr ""
 "Man kann Einheiten auch ohne Dörfer heilen. Wenn sich eine Einheit einen Zug "
 "lang nicht bewegt und auch nicht angreift, heilt sie zwei LP. Wenn sie "
-"allerdings in dieser Zeit attackiert wird, kann sie nicht heilen. Weiterhin "
+"allerdings in dieser Zeit angegriffen wird, kann sie nicht heilen. Weiterhin "
 "gibt es bestimmte Einheiten, die Heilfähigkeiten haben. Sie heilen die "
 "Einheiten auf den direkt angrenzenden Feldern. Der Elfen-Schamane ist eine "
 "solche Einheit. Alle Einheiten neben einem Elfen-Schamanen werden um 4 LP "
@@ -2805,7 +2798,7 @@ msgid ""
 "the 'recall' option."
 msgstr ""
 "In einer Kampagne könnt Ihr erfahrene Einheiten aus dem vorherigen Szenario "
-"wieder einsetzen, indem Ihr die Option 'Einberufen ' verwendet."
+"wieder einsetzen, indem Ihr die Option »Einberufen« verwendet."
 
 #: data/tips.cfg:3
 msgid ""
@@ -2818,8 +2811,8 @@ msgstr ""
 "Es gibt sechs Schadensarten in Wesnoth: Stich, Klinge, Wucht, Feuer, Kälte "
 "und Heilig/Geweiht. Jede Einheit hat Stärken und Schwächen gegen "
 "unterschiedliche Arten von Angriffen. Klickt mit der rechten Maustaste auf "
-"eine Einheit und wählt die Option 'Einheitenbeschreibung'. Die Tabelle "
-"'Resistenz' gibt Euch darüber Auskunft, wie hoch der jeweilige Widerstand "
+"eine Einheit und wählt die Option »Einheitenbeschreibung«. Die Tabelle "
+"»Resistenz« gibt Euch darüber Auskunft, wie hoch der jeweilige Widerstand "
 "gegen eine bestimmte Schadensart ist."
 
 #: data/tips.cfg:4
@@ -2844,7 +2837,7 @@ msgstr ""
 "Vergiftete Einheiten verlieren pro Runde 8 Lebenspunkte. Das Gift ist jedoch "
 "nicht in der Lage Eure Einheit zu töten. Es bleibt mindestens 1 Lebenspunkt "
 "übrig. Vergiftete Einheiten können kuriert  werden, wenn Ihr sie in ein Dorf "
-"führt oder sie neben einer Einheit mit der Fähigkeit 'Kurieren' platziert."
+"führt oder sie neben einer Einheit mit der Fähigkeit »Kurieren« platziert."
 
 #: data/tips.cfg:6
 msgid ""
@@ -2941,7 +2934,7 @@ msgid ""
 "troops, wait for better conditions and then attack."
 msgstr ""
 "Geduld ist häufig der Schlüssel zum Sieg. Anstatt mit wenigen Einheiten oder "
-"unter schlechten Bedingungen zu attackieren, solltet Ihr lieber auf bessere "
+"unter schlechten Bedingungen anzugreifen, solltet Ihr lieber auf bessere "
 "Bedingungen für einen Angriff warten."
 
 #: data/tips.cfg:16
@@ -3013,7 +3006,7 @@ msgid ""
 msgstr ""
 "Vermeidet es, Eure Einheiten in die Nähe eines unbesetzten Dorfes zu "
 "bewegen. Eine gegnerische Einheit könnte das Dorf besetzten und Euch "
-"attackieren, während sie selbst von den Verteidigungs- und Heilungsboni "
+"angreifen, während sie selbst von den Verteidigungs- und Heilungsboni "
 "profitiert."
 
 #: data/tips.cfg:23
@@ -3027,14 +3020,12 @@ msgstr ""
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
-"Ihr solltet versuchen, einen Ring um Eure verwundeten Einheiten zu ziehen, "
-"um es dem Gegner schwerer zu machen, diese anzugreifen."
+"Verwendet einige Einheiten als Wall, um verletzen Einheiten das Erholen zu "
+"ermöglichen."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
-msgstr ""
-"Lest Euch die Liste der Tastenkombinationen durch, um schnelleren Zugriff "
-"auf die Funktionen des Spiels zu bekommen."
+msgstr "Lest die Liste der Tastenkombinationen im Einstellungsmenü."
 
 #: data/tips.cfg:26
 msgid ""
@@ -3042,7 +3033,7 @@ msgid ""
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Ihr könnt die Bewegung einer Einheit rückgängig machen, indem Ihr die Taste "
-"'U' drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
+"»U« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
 "hat - beispielsweise neue Dörfer oder gegnerische Einheiten -  bzw. noch "
 "keine gegnerische Einheit angegriffen hat."
 
@@ -3060,7 +3051,7 @@ msgid ""
 "needing to attack anything themselves."
 msgstr ""
 "Unterstützt Eure angreifenden Einheiten durch Heiler - diese können den "
-"Kampf gewinnen, ohne ein einziges mal anzugreifen."
+"Kampf gewinnen, ohne selbst anzugreifen."
 
 #: data/tips.cfg:29
 msgid ""
@@ -3068,7 +3059,7 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
-"Angriffe, die über die Eigenschaft 'Verlangsamen' verfügen, sind sehr "
+"Angriffe, die über die Eigenschaft »Verlangsamen« verfügen, sind sehr "
 "wirkungsvoll gegen starke Einheiten, da ihre Bewegungsrate gesenkt wird und "
 "zudem ihre Angriffszahl um die Hälfte reduziert wird."
 
@@ -3292,7 +3283,7 @@ msgstr ""
 "Schattenfusion:\n"
 "Dämonische Kräfte lassen diese Einheit mit der Nacht verschmelzen, so dass "
 "sie nur noch ein Schatten in der Dunkelheit ist. Dadurch können die Feinde "
-"sie des Nachts nicht entdecken."
+"sie nachts nicht entdecken."
 
 #: data/translations/english.cfg:66 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -3911,10 +3902,9 @@ msgid ""
 "now aid those around her in the art of combat."
 msgstr ""
 "Als Adlige hat die Prinzessin den Schwertkampf bei den besten Generälen "
-"gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
-"verschiedenen Kampftaktiken unterrichtet. Dies macht sie zu guten Kämpfern "
-"und Anführern. Kampfgestärkt und mit starker Willenskraft ausgestattet, "
-"führt sie nun ihre Untergebenen in die Schlacht."
+"gelernt und Kampftaktiken von den klügsten Köpfen gelehrt bekommen, was sie "
+"zu einem guten Kämpfer und Anführer macht. Kampfgestärkt und mit starker "
+"Willenskraft ausgestattet unterstützt sie nun jene, die sie im Kampf umgeben."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -4412,7 +4402,7 @@ msgid ""
 "are gradually claiming his mortal shell too, and with time, he will be a "
 "true undead and a terror to all that lives."
 msgstr ""
-"Gwiti's Wanderungen auf dem dunklen Pfad gaben ihm Kräfte über die "
+"Gwitis Wanderungen auf dem dunklen Pfad gaben ihm Kräfte über die "
 "normalerweise kein Sterblicher verfügt. Aber das hatte auch einen "
 "furchtbaren Preis: Die untoten, denen er seine Seele gab beanspruchen nun "
 "auch seine sterbliche Hülle für sich. Es ist nur eine Frage der Zeit, bis er "
@@ -4445,7 +4435,7 @@ msgid ""
 "giant wolves with poisoned claws. These Goblins are fearsome and merciless "
 "enemies."
 msgstr ""
-"Neben den Bergwölfen leben in den Bergen noch die so genannten "
+"Neben den Bergwölfen leben in den Bergen noch die sogenannten "
 "Schreckenswölfe. Diese Wölfe zählen zu den gefährlichsten Raubtieren von "
 "Wesnoth, da sie zu ihrer ungezähmten Wildheit noch über giftige Klauen "
 "verfügen. Man muss wohl nicht nur geschickt sondern auch verrückt genug "
@@ -5694,12 +5684,10 @@ msgstr ""
 "Himmel."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Hellebardier"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5709,8 +5697,8 @@ msgid ""
 "very close combat."
 msgstr ""
 "Die besten Soldaten werden ausgewählt um Hellebardiere zu werden. Mit Ihrer "
-"Waffe können sie zwar nicht so schnell wie mit einem Schwert zuschlagen aber "
-"dafür richtet die Hellebarde großen Schaden an. Aufgrund der großen "
+"Waffe können sie zwar nicht so schnell wie mit einem Schwert zuschlagen, "
+"aber dafür richtet die Hellebarde großen Schaden an. Aufgrund der großen "
 "Reichweite der Waffe haben sie immer den ersten Schlag in einem Kampf, sogar "
 "wenn sie sich Verteidigen."
 
@@ -5727,9 +5715,9 @@ msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
-"Die Schwere Infanterie trägt schwere Eisenrüstungen und ist deshalb sehr "
-"widerstandsfähig gegen alle physischen Angriffe. Durch die Rüstung können "
-"sie sich allerdings nur langsam fortbewegen."
+"Die Schwere Infanterie trägt schwere Eisenrüstungen und ist deshalb gegen "
+"alle physischen Angriffe sehr widerstandsfähig. Durch die Rüstung können sie "
+"sich allerdings nur langsam fortbewegen."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -5796,12 +5784,10 @@ msgstr ""
 "beherrschen."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Wassermann Speerwerfer"
+msgstr ""
 
 #: data/units/Javelineer.cfg:16
-#, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
 "recruits.  Dangerous in melee, they have also developed their skill at "
@@ -5809,10 +5795,6 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"Speerträger sind das Kernstück der menschlichen Armeen. Die meist sehr "
-"jungen Soldaten bekommen eine Grundausbildung und stehen danach in den "
-"vordersten Reihen auf dem Schlachtfeld um einen Großteil der Kampfhandlungen "
-"zu übernehmen."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -6159,14 +6141,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Edler Kämpfer"
+msgstr ""
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Wassermann Krieger"
+msgstr ""
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -6318,7 +6298,7 @@ msgid ""
 msgstr ""
 "Sie jagen durch die Nacht und verbergen dabei ihre hässlichen Gesichter "
 "hinter Masken, um ihre Seelen des puren Bösen zu verstecken. Diese "
-"verächtlichen Kreaturen sind in der Lage sich Nachts zu verstecken ohne "
+"verächtlichen Kreaturen sind in der Lage sich nachts zu verstecken, ohne "
 "irgendwelche Spuren zu hinterlassen."
 
 #: data/units/Noble_Commander.cfg:3
@@ -6370,7 +6350,7 @@ msgid ""
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Oger sind dumme Riesen die normalerweise alleine in der Wildnis leben. "
+"Oger sind dumme Riesen, die normalerweise alleine in der Wildnis leben. "
 "Obwohl man sie sehr leicht austricksen kann sollte man ihre Stärke nicht "
 "unterschätzen."
 
@@ -6572,7 +6552,7 @@ msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr "Orkherrführer"
+msgstr "Orkheerführer"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -6584,7 +6564,7 @@ msgid ""
 msgstr ""
 "Diesem Ork wurde vom Grossen Rat die Ehre und die Aufgabe übertragen, die "
 "Grosse Horde anzuführen. Alle übrigen Orkhäuptlinge und damit ihre Stämme "
-"beugen sich den Befehlen des Herrführers und folgen ihm in die Schlacht. "
+"beugen sich den Befehlen des Heerführers und folgen ihm in die Schlacht. "
 "Wenn sich blutrot über dem Schlachtfeld das Banner der Schwarzaugen erhebt, "
 "geraten die orkischen Krieger schnell in einen euphorischen Kampfrausch und "
 "wehe denen, die sich diesen Orks gegenübersehen. Bisher hat nur Karun "
@@ -6601,12 +6581,12 @@ msgid ""
 "Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
 "the orcish fighting groups."
 msgstr ""
-"Auf der dritten und letzten Stufe der Kriegerkaste, erhält ein Ork den Titel "
-"eines Kriegsherrn. Kriegsherrn führen orkische Kampfgruppen in die Schlacht "
-"und jeder nicht lebensmüde Krieger ist gut beraten, diesem Ork aus dem Weg "
-"zu gehen. Durch ihre Zwillingsschwerter klaffen schnell große Lücken in den "
-"Reihen der Verteidiger und wer nun meint, man könne dem Kriegsherrn mit "
-"Pfeilen beikommen, der irrt. Tatsächlich haben diese Orks nach langen "
+"Auf der dritten und letzten Stufe der Kriegerkaste erhält ein Ork den Titel "
+"eines Kriegsherren. Kriegsherren führen orkische Kampfgruppen in die "
+"Schlacht und jeder nicht lebensmüde Krieger ist gut beraten, diesem Ork aus "
+"dem Weg zu gehen. Durch ihre Zwillingsschwerter klaffen schnell große Lücken "
+"in den Reihen der Verteidiger und wer nun meint, man könne dem Kriegsherren "
+"mit Pfeilen beikommen, der irrt. Tatsächlich haben diese Orks nach langen "
 "Übungen die Kunst des Bogenschießens erlernt."
 
 #: data/units/Orcish_Warrior.cfg:3
@@ -6620,7 +6600,7 @@ msgid ""
 "weakness is their inability to wield the bow."
 msgstr ""
 "Sobald ein Ork die Kunst des beidhändigen Kampfes erlernt hat, steigt er in "
-"der Kriegerkaste auf und erhält den Titel eines Kriegers. Die orkischen "
+"die Kriegerkaste auf und erhält den Titel eines Kriegers. Die orkischen "
 "Krieger sind ob ihrer Kampftechnik hoch geachtet bei ihrem Volk und "
 "gefürchtet bei ihren Feinden. In einem Kampf Mann gegen Mann geht fast immer "
 "der Orkkriger siegreich hervor, doch nützen ihm seine beiden Schwerter wenig "
@@ -6656,10 +6636,10 @@ msgid ""
 "plunder she finds on the road."
 msgstr ""
 "Von nobler Geburt, hat die geächtete Prinzessin bei den größten Generälen "
-"den Schwertkampf gelernt, aber sie ist das Produkt eines gescheiterten "
-"Adels, und hat sich für das Leben als Gesetzlose entschieden. Sie träumt "
-"davon mit der Beute die sie unterwegs macht eines Tages ihr eigenes "
-"Königreich zu gründen."
+"den Schwertkampf gelernt, aber sie ist das Produkt eines gescheiterten Adels "
+"und hat sich für das Leben als Gesetzlose entschieden. Sie träumt davon, mit "
+"der Beute, die sie unterwegs macht, eines Tages ihr eigenes Königreich zu "
+"gründen."
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
@@ -6681,9 +6661,9 @@ msgstr ""
 "Von nobler Geburt, hat die geächtete Königin bei den besten Generälen den "
 "Schwertkampf und Kampftaktiken bei den klügsten Köpfen des Landes gelernt. "
 "Dadurch kann sie ausgezeichnet kämpfen und ihre Truppen in der Schlacht "
-"anführen. Dennoch ist sie das Produkt eines gescheiterten Adels, und hat "
-"sich für das Leben als Gesetzlose entschieden. Sie träumt davon mit der "
-"Beute die sie unterwegs macht eines Tages ihr eigenes Königreich zu gründen."
+"anführen. Dennoch ist sie das Produkt eines gescheiterten Adels und hat sich "
+"für das Leben als Gesetzlose entschieden. Sie träumt davon, mit der Beute, "
+"die sie unterwegs macht, eines Tages ihr eigenes Königreich zu gründen."
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
@@ -6723,7 +6703,6 @@ msgid "Pikeman"
 msgstr "Pikenträger"
 
 #: data/units/Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -6731,10 +6710,10 @@ msgid ""
 "cavalry, though they find some difficulty in fighting in extremely close "
 "quarters."
 msgstr ""
-"Pikenträger sind gut ausgebildete Soldaten die ihre Speere gegen lange Piken "
-"eingetauscht haben. Sie sind besonders tödlich für Kavallerieeinheiten. "
-"Außerdem haben sie immer den ersten Schlag in einem Kampf, selbst wenn sie "
-"sich verteidigen."
+"Pikenträger sind gut ausgebildete Soldaten, die ihre Speere gegen lange "
+"Piken eingetauscht haben. Sie sind besonders tödlich für "
+"Kavallerieeinheiten, auch wenn sie im direkten Nahkampf manchmal Probleme "
+"haben."
 
 #: data/units/Pikeman.cfg:22
 msgid "pike"
@@ -6742,7 +6721,7 @@ msgstr "Pike"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr "Piraten-Galleone"
+msgstr "Piratengalleone"
 
 #: data/units/Pirate_Galleon.cfg:14
 msgid ""
@@ -6765,8 +6744,8 @@ msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
-"Wilddiebe verlassen sich auf ihre Jagderfahrung und kämpfen am besten Nachts "
-"und in Wäldern und Sümpfen."
+"Wilddiebe verlassen sich auf ihre Jagderfahrung und kämpfen am besten nachts "
+"in Wäldern und Sümpfen."
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
 msgid ""
@@ -6778,10 +6757,10 @@ msgid ""
 msgstr ""
 "Als Adlige haben Prinzessinnen das Schwertkämpfen bei den besten Generälen "
 "gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
-"verschiedenen Kampftaktiken unterrichtet. Dies macht sie zu guten Kämpfern "
-"und Anführern. Alle Einheiten, die eine geringere Stufe als die Prinzessin "
-"haben und auf einem benachbartem Feld stehen erhalten einen Bonus im Kampf. "
-"Die Prinzessin ignoriert Zonen der feindlichen Kontrolle."
+"verschiedenen Kampftaktiken unterrichtet, welche sie zu guten Kämpfern und "
+"Anführern machten. Alle Einheiten, die eine geringere Stufe als die "
+"Prinzessin haben und auf einem benachbartem Feld stehen, erhalten einen "
+"Bonus im Kampf. Die Prinzessin ignoriert Zonen der feindlichen Kontrolle."
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
@@ -6814,7 +6793,7 @@ msgid ""
 msgstr ""
 "Wiedergänger sind untote Kreaturen die aus wiederauferstandenen, einst "
 "mächtigen Kämpfern entstanden sind. Die Seele und der Wille der Kämpfer ist "
-"zwar verloren aber der Wiedergänger verfügt über die Kampffertigkeiten der "
+"zwar verloren, aber der Wiedergänger verfügt über die Kampffertigkeiten der "
 "Verstorbenen."
 
 #: data/units/Rogue.cfg:3
@@ -6830,8 +6809,8 @@ msgid ""
 msgstr ""
 "Schurken sind sehr agil und können sich direkt hinter einen Gegner bewegen, "
 "da sie die Zonen der feindlichen Kontrolle ignorieren. Sie sind Meisterdiebe "
-"und verfügen über die Fertigkeit des Hinterhalts, was dazu führt das sie "
-"doppelten Schaden anrichten wenn sich ein Verbündeter auf der "
+"und verfügen über die Fertigkeit des Hinterhalts, was dazu führt, daß sie "
+"doppelten Schaden anrichten, wenn sich ein Verbündeter auf der "
 "gegenüberliegenden Seite ihres Gegners befindet."
 
 #: data/units/Royal_Guard.cfg:3
@@ -6844,7 +6823,7 @@ msgid ""
 "of the army. They are deployed only in critical situations and, so far, have "
 "always succeeded in their assigned tasks."
 msgstr ""
-"Mitglieder der königlichen Leibgarde werden aus den Stärksten und Tapfersten "
+"Mitglieder der königlichen Leibgarde werden aus den stärksten und tapfersten "
 "Kämpfern der Armee ausgewählt. Sie kommen meist nur in kritischen Missionen "
 "zum Einsatz und schließen diese fast ausschließlich siegreich ab."
 
@@ -6901,7 +6880,7 @@ msgstr "Plänkler,Heilen"
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
 msgid "frost blast"
-msgstr ""
+msgstr "Kältestoß"
 
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
@@ -6964,8 +6943,8 @@ msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
-"Seefurien sind ältere und erfahrenere Seeteufel, die gelernt haben mit Magie "
-"das Wasser zu beherrschen und es gegen ihre Feinde einzusetzen."
+"Seefurien sind ältere und erfahrenere Seeteufel, die gelernt haben, mit "
+"Magie das Wasser zu beherrschen und es gegen ihre Feinde einzusetzen."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -6979,12 +6958,12 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
-"Die seltsame Veränderung dieser Orks kann nicht genau begründet werden. "
-"Manche vermuten, dass es das Werk eines Schamanen war, andere dass ein "
+"Die seltsame Veränderung dieser Orks kann nicht genau erklärt werden. Manche "
+"vermuten, dass es das Werk eines Schamanen war, andere jedoch, dass ein "
 "seltsamer Trank bei der Verwandlung eine Rolle gespielt hat. "
-"Augenzeugenberichten zu Folge, weisen diese Orks Merkmale einer Amphibie "
-"auf, so dass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
-"greifen ihre Feide mit Krummschwerten an, sind aber nicht in der Lage eine "
+"Augenzeugenberichten zu Folge weisen diese Orks Merkmale einer Amphibie auf, "
+"so dass sie auf dem Land so wie im Wasser gleichsam beweglich sind. Sie "
+"greifen ihre Feide mit Krummschwerten an, sind aber nicht in der Lage, eine "
 "Fernkampfwaffe zu benutzen."
 
 #: data/units/Sea_Serpent.cfg:3
@@ -6995,12 +6974,12 @@ msgstr "Seeschlange"
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
-"Seeschlagen sind riesige Monster, die in der Lage sind Boote aus eigener "
+"Seeschlagen sind riesige Monster, die in der Lage sind, Boote aus eigener "
 "Kraft kentern zu lassen."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr "Unteroffizier"
+msgstr "Feldwebel"
 
 #: data/units/Sergeant.cfg:18
 msgid ""
@@ -7008,7 +6987,7 @@ msgid ""
 "stronger than other fighters, but he has hopes of advancing to greatness. As "
 "the leader of his unit, he must survive for the battle to be won."
 msgstr ""
-"Der Unteroffizier ist ein Offizier in den Reihen der königlichen Armee. Er "
+"Der Feldwebel ist ein Unteroffizier in den Reihen der königlichen Armee. Er "
 "ist nicht stärker als die anderen Einheiten, aber aus ihm kann sich mit "
 "genügend Erfahrung ein guter Anführer entwickeln. Als Truppenführer sollte "
 "er überleben um eine Schlacht zu gewinnen."
@@ -7023,9 +7002,9 @@ msgid ""
 "These incorporeal fiends are able to hide at night, leaving no trace of "
 "their presence."
 msgstr ""
-"Seelen, geschwärzt vom Bösen wandern als Schatten durch die Nacht und "
+"Seelen, geschwärzt vom Bösen, wandern als Schatten durch die Nacht und "
 "greifen ihre ahnungslosen Feinde an. Diese körperlosen Scheusale sind in der "
-"Lage sich Nachts zu verstecken ohne irgendwelche Spuren zu hinterlassen."
+"Lage, sich nachts zu verstecken, ohne irgendwelche Spuren zu hinterlassen."
 
 #: data/units/Shock_Trooper.cfg:3
 msgid "Shock Trooper"
@@ -7052,8 +7031,8 @@ msgid ""
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
 "Silberne Magier sind die schnellsten aller Magier. Sie können sich zwischen "
-"allen befreundeten Dörfern hin und her Teleportieren, außerdem sind sie sehr "
-"Widerstandsfähig gegen die meisten magischen Angriffe."
+"allen befreundeten Dörfern hin- und herteleportieren, außerdem sind sie "
+"gegen die meisten magischen Angriffe sehr widerstandsfähig."
 
 #: data/units/Silver_Mage.cfg:142
 msgid "female^Silver Mage"
@@ -7093,7 +7072,7 @@ msgstr ""
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
-msgstr "Skelett Bogenschütze"
+msgstr "Skelettbogenschütze"
 
 #: data/units/Skeleton_Archer.cfg:14
 msgid ""
@@ -7101,7 +7080,7 @@ msgid ""
 "to battle. Like all undead, they are especially vulnerable to flames and "
 "holy attacks, but resistant to edged weapons."
 msgstr ""
-"Skelett Bogenschützen sind die Körper von gefallenen Bogenschützen die auf "
+"Skelettbogenschützen sind die Körper von gefallenen Bogenschützen, die auf "
 "das Schlachtfeld zurückgerufen wurden. Wie alle Untoten sind sie leicht "
 "durch Flammen und heilige Angriffe verwundbar, aber widerstandsfähig gegen "
 "Klingenwaffen."
@@ -7112,7 +7091,7 @@ msgstr "Schlafender Greif"
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr "Pssst! Der Greif schläft! Besser, ihr weckt ihn nicht auf!"
+msgstr "Pssst! Der Greif schläft! Besser, Ihr weckt ihn nicht auf!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -7148,7 +7127,6 @@ msgid "Spearman"
 msgstr "Speerträger"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
@@ -7156,9 +7134,10 @@ msgid ""
 "defending."
 msgstr ""
 "Speerträger sind das Kernstück der menschlichen Armeen. Die meist sehr "
-"jungen Soldaten bekommen eine Grundausbildung und stehen danach in den "
-"vordersten Reihen auf dem Schlachtfeld um einen Großteil der Kampfhandlungen "
-"zu übernehmen."
+"jungen Soldaten bekommen eine Grundausbildung und werden anschließend in die "
+"vordersten Reihen gestellt, um einen Großteil der Kampfhandlungen zu "
+"übernehmen. Durch die Länge der Speere dürfen sie den ersten Schlag "
+"ausführen - auch wenn sie sich verteidigen."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -7172,10 +7151,10 @@ msgid ""
 "of the weak."
 msgstr ""
 "Schreckgespenster sind die mächtigsten Geister im Heer der Untoten. Sie "
-"können ihre Kräfte dazu benutzen ein Gespensterschwert herbeizurufen das "
-"ihren Gegnern Leben absaugt und ihre eigenen Lebenspunkte auffüllt. Außerdem "
-"können sie einen schrecklichen Schrei ausstoßen der ihren Feinden das Mark "
-"in den Knochen gefrieren lässt."
+"können ihre Kräfte dazu benutzen, ein Gespensterschwert herbeizurufen, das "
+"ihren Gegnern Leben aussaugt und ihre eigenen Lebenspunkte auffüllt. "
+"Außerdem können sie einen schrecklichen Schrei ausstoßen, der ihren Feinden "
+"das Mark in den Knochen gefrieren lässt."
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
@@ -7186,22 +7165,21 @@ msgid ""
 "Swordsmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
-"Schwertkämpfer sind das Kernstück der menschlichen Armeen. Die meist sehr "
-"jungen Soldaten bekommen eine Grundausbildung und stehen danach in den "
-"vordersten Reihen auf dem Schlachtfeld um einen Großteil der Kampfhandlungen "
-"zu übernehmen."
+"Schwertkämpfer sind das Kernstück der menschlichen Armeen. Diese jungen "
+"Soldaten bekommen eine Grundausbildung und stehen danach in den vordersten "
+"Reihen, um einen Großteil der Kampfhandlungen zu übernehmen."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr "Tentakel aus der Tiefe"
+msgstr "Tentakel der Tiefe"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
 "below the waves."
 msgstr ""
-"Tentakel aus der Tiefe sind Auswüchse von viel größeren Monstern, die untere "
-"der Wasseroberfläche lauern."
+"Tentakel der Tiefe sind Auswüchse von viel größeren Monstern, die unter der "
+"Wasseroberfläche lauern."
 
 #: data/units/Thief.cfg:3
 msgid "Thief"
@@ -7214,11 +7192,11 @@ msgid ""
 "opposite side of an enemy they are attacking. Being of chaotic disposition, "
 "Thieves fight better at night than day."
 msgstr ""
-"Diebe sind flink und verschlagen, deswegen sind sie nur schwer zu treffen. "
-"Ausgebildet in der Fertigkeit Hinterhalt können sie doppelten Schaden "
-"anrichten, wenn sich ein Verbündeter auf der gegenüberliegenden Seite von "
-"ihrem Gegner befindet. Da sie lichtscheu sind kämpfen sie besser in der "
-"Nacht als am Tag."
+"Diebe sind flink und verschlagen, weshalb sind sie nur schwer zu treffen "
+"sind. Ausgebildet in der Fertigkeit »Hinterhalt« können sie doppelten "
+"Schaden anrichten, wenn sich ein Verbündeter auf der gegenüberliegenden "
+"Seite von ihrem Gegner befindet. Da sie lichtscheu sind kämpfen sie besser "
+"in der Nacht als am Tag."
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -7226,17 +7204,19 @@ msgstr "Strolch"
 
 #: data/units/Thug.cfg:16
 msgid "Thugs are bandits who use large clubs to beat their victims."
-msgstr "Strolche sind Gauner die ihre Gegner mit großen Knüppeln attackieren."
+msgstr "Strolche sind Gauner, die ihre Gegner mit großen Knüppeln schlagen."
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr "Transport-Galleone"
+msgstr "Transportgalleone"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can deposit the troops to attack."
 msgstr ""
+"Transportgalleonen sind schwerbewaffnete Schiffe, die Truppen "
+"transportieren. Bei der Landung laden sie die Kämpfer direkt zur Attacke aus."
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
@@ -7247,7 +7227,7 @@ msgid ""
 "Trappers usually work supplying food for bandits and outlaws. Their hunting "
 "experience makes them most valuable at night and in forests and swamps."
 msgstr ""
-"Fallensteller sind Hauptsächlich damit beschäftigt Banditen und Gesetzlose "
+"Fallensteller sind hauptsächlich damit beschäftigt, Banditen und Gesetzlose "
 "mit Nahrung zu versorgen. Ihre Jagderfahrung lässt sie am besten bei Nacht "
 "und in Wäldern und Sümpfen kämpfen."
 
@@ -7273,7 +7253,7 @@ msgstr ""
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
-msgstr ""
+msgstr "Trollheld"
 
 #: data/units/Troll_Hero.cfg:16
 msgid ""
@@ -7281,10 +7261,13 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+"Trollhelden sind starke und brutale menschliche Monster mit der "
+"erstaunlichen Fähigkeit, sich zu regenerieren, wodurch sie sich selbst im "
+"Kampf von ihren Wunden erholen."
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr "Troll Felsenschleuderer"
+msgstr "Troll-Felsenschleuderer"
 
 #: data/units/Troll_Rocklobber.cfg:17
 msgid ""
@@ -7292,15 +7275,10 @@ msgid ""
 "recovering from their wounds during battle. These trolls have armed "
 "themselves with large rocks they hurl at their opponents."
 msgstr ""
-"Einige Trolle, die über eine besondere Geschicklichkeit verfügen, werden zu "
-"sogennanten Felsenschleuderern ausgebildet. Diese Trolle warten solange in "
-"ihren Verstecken, bis Handelszüge oder -karawanen eine Schlucht durchqueren "
-"müssen. Dann lassen sie grosse Felsbrocken auf ihre Opfer niederprasseln. "
-"Meist brauchen die Orks ihre Beute nach solch einem Bombardement nur noch "
-"einzusammeln. Aufgrund der, auf dem Schlachtfeld kaum vorhandenen "
-"Felsbrocken, benutzen sie kleinere Steine, die sie in einem Beutel bei sich "
-"tragen. Diese verschiessen sie mit einer primitiven Schleuder auf ihre "
-"Gegner."
+"Trolle sind starke und brutale menschliche Monster mit der erstaunlichen "
+"Fähigkeit, sich zu regenerieren, wodurch sie sich während des Kampfes von "
+"Wunden erholen. Diese Trolle haben sich mit großen Felsen ausgerüstet, die "
+"sie nach ihren Gegnern schleudern."
 
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
@@ -7334,7 +7312,7 @@ msgstr ""
 "Viele tapfere Krieger mussten ihr Leben lassen, weil sie einen tödlich "
 "verwundeten Troll auf dem Schlachtfeld liegen ließen, um nach kurzer Zeit "
 "erneut von dem Monstrum angefallen zu wurden. Bevor sie ausgewachsen sind, "
-"spricht man von so genanten Trollwelpen. In dieser Zeit sind Trolle noch "
+"spricht man von sogenannten Trollwelpen. In dieser Zeit sind Trolle noch "
 "nicht besonders gefährlich, aber ihre Rasse ist bekannt für ihr schnelles "
 "Wachstum."
 
@@ -7348,10 +7326,9 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Vampir Fledermäuse sind untote fliegende Kreaturen, die ihre Gegner mit "
-"Bissen attackieren. Ihre Zähne richten zwar nicht sehr viel Schaden an, aber "
-"sie saugen Lebenspunkte ab und füllen so den Lebenspunktevorrat der "
-"Fledermaus."
+"Vampirfledermäuse sind untote fliegende Kreaturen, die ihre Gegner beißend "
+"angreifen. Ihre Zähne richten zwar nicht sehr viel Schaden an, aber sie "
+"saugen Lebenspunkte ab und füllen so den Lebenspunktevorrat der Fledermaus."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "female^Vampire Lady"
@@ -7362,8 +7339,8 @@ msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
-"Wunderschön aber kalt, erhält sie ihr jugendliches Angesicht dadurch das sie "
-"das Blut der Lebenden trinkt."
+"Wunderschön aber kalt, erhält sie ihr jugendliches Angesicht dadurch, daß "
+"sie das Blut der Lebenden trinkt."
 
 #: data/units/Vampire_Lady.cfg:20
 msgid "blood kiss"
@@ -7379,9 +7356,10 @@ msgid ""
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
-"andelnde Leichen sind Körper von Toten die von dunklen Magiern wiederbelebt "
-"wurden. Obwohl sie schlecht im Kampf sind verfügen sie über die Fähigkeit "
-"diejenigen die sie töten dazu zu verfluchen im Heer der Untoten zu kämpfen."
+"Wandelnde Leichen sind Körper von Toten, die von dunklen Magiern "
+"wiederbelebt wurden. Obwohl schlecht im Kampf, verfügen sie über die "
+"Fähigkeit, diejenigen, die sie töten, dazu zu verfluchen, im Heer der "
+"Untoten zu kämpfen."
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
@@ -7400,10 +7378,10 @@ msgid ""
 "roofs of castles."
 msgstr ""
 "Die Beschützer der Hauptstadt Weldyn, die Turmwachen, patrouillieren auf den "
-"Stadtmauern und schiessen mit ihren Armbrüsten auf nahende Gegner bevor "
-"diese zu einem Rückschlag ausholen können. Weil sie sich auf den hohen "
-"Stadtmauern befinden können sie sich nur auf diesen Mauern und den Dächern "
-"von Festungen bewegen."
+"Stadtmauern und schießen mit ihren Armbrüsten auf nahende Gegner bevor diese "
+"zu einem Rückschlag ausholen können. Weil sie sich auf den hohen Stadtmauern "
+"befinden, können sie sich nur auf diesen Mauern und den Dächern von "
+"Festungen bewegen."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -7416,8 +7394,8 @@ msgid ""
 "units, thereby increasing their fighting efficiency."
 msgstr ""
 "Als Herrscher über die Königreiche der Menschen sind Könige verantwortlich "
-"ihre Gebiete zu beherrschen und zu beschützen. Könige können die Angriffe "
-"von Stufe 1 und 2 Einheiten koordinieren und erhöhen deren Effizienz im "
+"ihre Gebiete zu regieren und zu beschützen. Könige können die Angriffe von "
+"Einheiten der Stufe 1 und 2 koordinieren und erhöhen deren Effizienz im "
 "Kampf."
 
 #: data/units/Watch_Tower.cfg:3
@@ -7429,8 +7407,8 @@ msgid ""
 "Watch Towers are good places from which to spot enemies and then shoot "
 "miscellaneous items at them with ballistas."
 msgstr ""
-"Beobachtungstürme werden genutzt um herannahende Feinde ausfindig zu machen, "
-"um danach verschiedene Geschosse mit Ballistas auf sie zu feuern."
+"Beobachtungstürme werden genutzt, um herannahende Feinde ausfindig zu machen "
+"und danach verschiedene Geschosse mit Ballisten auf sie zu feuern."
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
@@ -7444,10 +7422,10 @@ msgid ""
 "high damage from their light beam"
 msgstr ""
 "Weiße Magier sind schlecht im Kampf Mann gegen Mann, aber Experten in der "
-"Heilkunst. Einheiten die sich auf einem benachbartem Feld befinden bekommen "
-"genauso viele Trefferpunkte zurück als wenn sie sich in einem Dorf aufhalten "
-"würden. In Kämpfen gegen Untote sind Weiße Magier mit ihrem Heiligen Licht "
-"mächtige Kämpfer die hohen Schaden anrichten."
+"Heilkunst. Einheiten, die sich auf einem benachbartem Feld befinden, "
+"bekommen genauso viele Trefferpunkte zurück als wenn sie sich in einem Dorf "
+"aufhalten würden. In Kämpfen gegen Untote sind weiße Magier mit ihrem "
+"Heiligen Licht mächtige Kämpfer, die hohen Schaden anrichten."
 
 #: data/units/White_Mage.cfg:65
 msgid "female^White Mage"
@@ -7466,7 +7444,7 @@ msgid ""
 msgstr ""
 "Kleiner und schwächer als Orks und somit ungeeignet für den Kampf Mann gegen "
 "Mann, haben Kobolde gelernt, die großen Bergwölfe als Reittiere abzurichten. "
-"Wegen ihres feigen Wesens, besetzen sie gerne ungeschützte Dörfer und "
+"Aufgrund ihres feigen Wesens besetzen sie gerne ungeschützte Dörfer und "
 "terrorisieren die Bevölkerung. Die Orks erkannten schnell, dass ihnen die "
 "Fähigkeiten der Kobolde Nutzen brachten und begannen damit, die Bergwölfe "
 "einzufangen und zu züchten. Seither dienen Kobolde als schnelle "
@@ -7488,10 +7466,10 @@ msgid ""
 msgstr ""
 "Waldschrate sind mystische Kreaturen mit einer langen Vergangenheit. Sie "
 "wachsen im Wald und sind von normalen Bäumen nicht zu unterscheiden. Da sie "
-"sehr langsam und ungelenkig sind können sie Angriffen nicht besonders gut "
+"sehr langsam und ungelenkig sind, können sie Angriffen nicht besonders gut "
 "ausweichen. Ihre harte Rinde ist allerdings sehr resistent gegen Kälte, "
-"Schlagangriffe und Pfeile. Aber Klingen haben keine Mühe sich durch die "
-"Rinde zu schneiden, ausserdem sind Waldschrate sehr leicht entflammbar. "
+"Schlagangriffe und Pfeile. Jedoch haben Klingen keinerlei Mühe, sich durch "
+"die Rinde zu schneiden, außerdem sind Waldschrate sehr leicht entflammbar. "
 "Indem sie Nährstoffe aus dem Boden und die Energie der Sonne aufnehmen "
 "können sie im Kampf verlorene Gliedmaßen schnell wieder nachwachsen lassen."
 
@@ -7507,10 +7485,10 @@ msgid ""
 "heart of the weak."
 msgstr ""
 "Gespenster gehören zu den mächtigsten Geistern im Heer der Untoten. Sie "
-"können ihre Kräfte dazu benutzen ein Gespensterschwert herbeizurufen das "
-"ihren Gegnern Leben absaugt und ihre eigenen Lebenspunkte auffüllt. Außerdem "
-"können sie einen schrecklichen Schrei ausstoßen der ihren Feinden das Mark "
-"in den Knochen gefrieren lässt."
+"können ihre Kräfte dazu benutzen, um ein Gespensterschwert herbeizurufen, "
+"daß ihren Gegnern Leben absaugt und ihre eigenen Lebenspunkte auffüllt. "
+"Außerdem können sie einen schrecklichen Schrei ausstoßen, der ihren Feinden "
+"das Mark in den Knochen gefrieren lässt."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
@@ -7535,10 +7513,10 @@ msgid ""
 "manage weapons skillfully, so they are given a large blade, in the hope that "
 "they will be smart enough to swing it at their enemies, not their throat."
 msgstr ""
-"Solange sie jung sind werden Oger in einer Armee ausgebildet. Sie können "
+"Solange sie jung sind, werden Oger in einer Armee ausgebildet. Sie können "
 "nicht besonders gut mit Waffen umgehen, deswegen werden sie mit einem "
-"riesigem Fleischerbeil ausgestattet, in der Hoffnung das sie intelligent "
-"genug sind damit ihre Gegner zu treffen und nicht ihre eigene Kehle."
+"riesigem Fleischerbeil ausgestattet in der Hoffnung, daß sie intelligent "
+"genug sind, damit ihre Gegner zu treffen und nicht ihre eigene Kehle."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -7655,7 +7633,7 @@ msgstr "+Polnische Übersetzung"
 
 #: src/about.cpp:222
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Portugisische (Brasilianische) Übersetzung"
+msgstr "+Portugiesische (Brasilianische) Übersetzung"
 
 #: src/about.cpp:230
 msgid "+Russian Translation"
@@ -7688,7 +7666,7 @@ msgstr "Schließen"
 #: src/actions.cpp:99
 msgid "You don't have a leader to recruit with."
 msgstr ""
-"Euer Herrführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
+"Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
 
 #: src/actions.cpp:103
 msgid "You must have your leader on a keep to recruit or recall units."
@@ -7697,7 +7675,7 @@ msgstr ""
 
 #: src/actions.cpp:120
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Es gibt keine freien Burgfelder zum rekrutieren von Einheiten."
+msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
 
 #: src/actions.cpp:206
 msgid "none"
@@ -7837,7 +7815,7 @@ msgstr "Einführung"
 
 #: src/dialogs.cpp:374
 msgid "replay"
-msgstr "wiederholg anzeigen"
+msgstr "Wiederholung anzeigen"
 
 #: src/dialogs.cpp:376 src/multiplayer_lobby.cpp:145 src/playturn.cpp:1466
 msgid "Turn"
@@ -7882,7 +7860,7 @@ msgid ""
 "some time."
 msgstr ""
 "Das Verzeichnis mit euren gespeicherten Dateien enthält Spielstände von "
-"einer älteren Version des Spieles. Wollt ihr sie auf die neueste Version "
+"einer älteren Version des Spieles. Wollt Ihr sie auf die neueste Version "
 "aktualisieren? Dies kann einige Zeit in Anspruch nehmen."
 
 #: src/dialogs.cpp:439
@@ -7891,9 +7869,9 @@ msgid ""
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
-"Das Verzeichnis mit euren gespeicherten Dateien enthält Spielstände die "
-"anscheinend nicht von dieser Version des Spieles angelegt wurden. Wollt ihr "
-"sie in euer Spiel einbinden?"
+"Das Verzeichnis mit Euren gespeicherten Dateien enthält Spielstände, die "
+"anscheinend nicht von dieser Version des Spieles angelegt wurden. Wollt Ihr "
+"sie in Euer Spiel einbinden?"
 
 #: src/dialogs.cpp:509
 msgid "Show replay"
@@ -7927,7 +7905,7 @@ msgstr "gesund"
 
 #: src/display.cpp:888 src/reports.cpp:106
 msgid "invisible"
-msgstr "Unsichtbar"
+msgstr "unsichtbar"
 
 #: src/font.cpp:173
 msgid "Vera.ttf"
@@ -7949,6 +7927,7 @@ msgstr "Der Spielstand konnte nicht gespeichert werden"
 msgid "Do you want to save your game?"
 msgstr "Möchtet Ihr Euren Spielstand abspeichern?"
 
+# Vielleicht "Der Kampf um Wesnoth"
 #: src/game.cpp:608
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
@@ -7964,16 +7943,15 @@ msgstr ""
 #: src/game.cpp:835 src/game.cpp:840 src/playlevel.cpp:560
 #: src/playlevel.cpp:811
 msgid "The file you have tried to load is corrupt"
-msgstr "Die Datei die ihr laden wolltet ist beschädigt."
+msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
 
 #: src/game.cpp:844
 msgid "File I/O Error while reading the game"
-msgstr "Dateifehler beim einlesen des Spieles."
+msgstr "Dateifehler beim Einlesen des Spieles."
 
 #: src/game.cpp:953
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Weitere Kampagnen..."
+msgstr "Weitere Kampagnen..."
 
 #: src/game.cpp:954
 msgid "Download more campaigns from a server on Internet."
@@ -8001,7 +7979,7 @@ msgstr "Server: "
 
 #: src/game.cpp:1027
 msgid "Could not connect to host."
-msgstr "Zum Gastgeber konnte keine Verbindung aufgebaut werden."
+msgstr "Es konnte keine Verbindung zum Gastgeber aufgebaut werden."
 
 #: src/game.cpp:1027 src/game.cpp:1042 src/game.cpp:1048 src/game.cpp:1108
 #: src/game.cpp:1137 src/game.cpp:1152 src/game.cpp:1154 src/game.cpp:1156
@@ -8024,18 +8002,16 @@ msgid "Name"
 msgstr "Name"
 
 #: src/game.cpp:1056
-#, fuzzy
 msgid "Author"
-msgstr "Dornen"
+msgstr "Autor"
 
 #: src/game.cpp:1057
 msgid "Downloads"
-msgstr ""
+msgstr "Heruntergeladen"
 
 #: src/game.cpp:1058
-#, fuzzy
 msgid "Size"
-msgstr "Sirene"
+msgstr "Größe"
 
 #: src/game.cpp:1077
 msgid "B"
@@ -8093,8 +8069,8 @@ msgstr "Der Gastgeber hat die Verbindung unterbrochen."
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
-"Es gab ein Problem beim erstellen der Dateien, die nötig sind, um diese "
-"Kampagne zu installieren."
+"Es gab ein Problem beim Erstellen der für die Installation der Kampagne "
+"nötigen Dateien."
 
 #: src/game.cpp:1168 src/game.cpp:1206 src/game.cpp:1230
 #: src/multiplayer_client.cpp:47 src/multiplayer_client.cpp:319
@@ -8119,7 +8095,7 @@ msgstr "Offiziellem Server beitreten"
 
 #: src/game.cpp:1247
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Dem offiziellen Wesnoth Server beitreten"
+msgstr "Beim offiziellen Wesnoth-Server anmelden"
 
 #: src/game.cpp:1248 src/multiplayer_lobby.cpp:164
 msgid "Join Game"
@@ -8139,7 +8115,7 @@ msgstr "Eine Mehrspielerpartie ohne Zuhilfenahme eines Servers eröffnen"
 
 #: src/game.cpp:1250
 msgid "Hotseat Game"
-msgstr "Hotseat"
+msgstr "Heißer Stuhl"
 
 #: src/game.cpp:1250
 msgid "Play a multiplayer game sharing the same machine"
@@ -8171,7 +8147,7 @@ msgstr "Nächste Stufe:"
 
 #: src/help.cpp:1061
 msgid "Alignment"
-msgstr "Tag-/Nacht-Einfluss"
+msgstr "Gesinnung"
 
 #: src/help.cpp:1065
 msgid "Required XP"
@@ -8215,7 +8191,7 @@ msgstr "Resistenz"
 
 #: src/help.cpp:1185
 msgid "Terrain Modifiers"
-msgstr "Gelände Einschränkungen"
+msgstr "Geländemodifikatoren"
 
 #: src/help.cpp:1189 src/help.cpp:1190
 msgid "Terrain"
@@ -8244,8 +8220,8 @@ msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
-"Dieses Gelände verhält sich wie das Gelände Bergfried. Wenn sich ein "
-"Herrführer auf einem Feld mit diesem Geländetyp befindet, können in "
+"Dieses Gelände verhält sich wie das Gelände »Bergfried«. Wenn sich ein "
+"Heerführer auf einem Feld mit diesem Geländetyp befindet, können auf "
 "benachbarten Burgfeldern Einheiten ausgebildet werden."
 
 #: src/help.cpp:1311
@@ -8253,8 +8229,8 @@ msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
-"Dieses Gelände verhält sich wie das Gelände Burg. Auf einem Feld mit diesem "
-"Geländetyp können somit Einheiten ausgebildet werden."
+"Dieses Gelände verhält sich wie das Gelände »Burg«. Auf einem Feld mit "
+"diesem Geländetyp können Einheiten ausgebildet werden."
 
 #: src/help.cpp:1313
 msgid "This terrain gives healing."
@@ -8366,12 +8342,11 @@ msgstr "Nebel des Krieges"
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "Feindliche Einheiten werden erst sichtbar, wenn sie in Reichweite der "
-"Eigenen sind"
+"eigenen sind"
 
 #: src/multiplayer.cpp:114
 msgid "The map is unknown until your units explore it"
-msgstr ""
-"Die Karte ist verdeckt, bis sie von befreundeten Einheiten erkundet wurde"
+msgstr "Die Karte ist verdeckt, bis sie von eigenen Einheiten erkundet wurde"
 
 #: src/multiplayer.cpp:116 src/reports.cpp:376
 msgid "Observers"
@@ -8379,7 +8354,7 @@ msgstr "Beobachter"
 
 #: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
-msgstr "Erlaubt es das Spiel als Unbeteiligter zu betrachten"
+msgstr "Erlaubt es, das Spiel als Unbeteiligter zu betrachten"
 
 #: src/multiplayer.cpp:120 src/multiplayer_client.cpp:151
 #: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:487
@@ -8411,6 +8386,7 @@ msgstr "Karten teilen"
 msgid "Share None"
 msgstr "Nichts teilen"
 
+# Die Übersetzung ist falsch
 #: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:181
 msgid "No multiplayer sides."
 msgstr "Keine Mehrspieler-Seiten"
@@ -8449,16 +8425,16 @@ msgstr "Steuereinnahmen pro Dorf"
 
 #: src/multiplayer.cpp:383
 msgid "Experience Requirements"
-msgstr "Erfahrungsmodifikator"
+msgstr "Vorausgesetzte Erfahrungen"
 
 #: src/multiplayer.cpp:515
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
-"Das Spiel war nicht fähig, sich an den Port zu binden, der nötig ist eine "
-"Partie über Netzwerk zur verfügung zu stellen. Netzwerk-Spieler werden nicht "
-"in der Lage sein sich zu diesem Spiel zu verbinden."
+"Das Spiel war nicht fähig, den für geleitete Netzwerkspiele nötigen Port zu "
+"benutzen. Andere Spieler im Netzwerk werden nicht in der Lage sein, sich zu "
+"diesem Spiel zu verbinden."
 
 #: src/multiplayer.cpp:515
 msgid "Warning"
@@ -8482,7 +8458,7 @@ msgstr "Mit Gastgeber verbinden"
 
 #: src/multiplayer_client.cpp:255
 msgid "Choose host to connect to"
-msgstr "Wählt den Gastgeber, zu dem Ihr verbinden wollt"
+msgstr "Wählt den Gastgeber, zu dem Ihr euch verbinden wollt"
 
 #: src/multiplayer_client.cpp:273
 msgid "Connecting to remote host..."
@@ -8490,7 +8466,7 @@ msgstr "Verbinde zum Server/Gastgeber..."
 
 #: src/multiplayer_client.cpp:302
 msgid "You must log in to this server"
-msgstr "Ih müsst Euch an diesem Server anmelden"
+msgstr "Ihr müsst Euch an diesem Server anmelden"
 
 #: src/multiplayer_client.cpp:382
 msgid "Getting game data..."
@@ -8511,8 +8487,7 @@ msgstr "Das Spiel wurde vom Spielleiter abgebrochen."
 #: src/multiplayer_client.cpp:517
 msgid "The side you have chosen is no longer available"
 msgstr ""
-"Die Partei, für die ihr euch entschieden habt, ist nicht mehr länger "
-"verfügbar."
+"Die Partei, für die Ihr euch entschieden habt, ist nicht mehr verfügbar."
 
 #: src/multiplayer_client.cpp:553
 msgid "Show replay of game up to save point?"
@@ -8524,7 +8499,7 @@ msgstr "?"
 
 #: src/multiplayer_client.cpp:776
 msgid "Leader: "
-msgstr "Herrführer:"
+msgstr "Heerführer:"
 
 #: src/multiplayer_client.cpp:778
 msgid "Recruits: "
@@ -8548,7 +8523,7 @@ msgid ""
 "@Defeat enemy leader(s)"
 msgstr ""
 "Sieg:\n"
-"@Besiegt alle gegnerischen Herrführer"
+"@Besiegt alle gegnerischen Heerführer"
 
 #: src/multiplayer_connect.cpp:266
 msgid "Network Player"
@@ -8602,7 +8577,7 @@ msgstr "Grau"
 
 #: src/multiplayer_connect.cpp:321
 msgid "White"
-msgstr "Weis"
+msgstr "Weiß"
 
 #: src/multiplayer_connect.cpp:323
 msgid "Brown"
@@ -8696,7 +8671,7 @@ msgstr "80% des Goldes bleiben für das nächste Szenario erhalten"
 
 #: src/playlevel.cpp:797
 msgid "Retained Gold"
-msgstr "Behaltenes Gold"
+msgstr "Übernommenes Gold"
 
 #: src/playlevel.cpp:801
 msgid "Victory"
@@ -8787,7 +8762,7 @@ msgstr "Der Spielstand wurde gespeichert"
 
 #: src/playturn.cpp:1613
 msgid "Leader"
-msgstr "Herrführer"
+msgstr "Heerführer"
 
 #: src/playturn.cpp:1617
 msgid "Upkeep"
@@ -8999,7 +8974,7 @@ msgid ""
 msgstr ""
 "Diese Einheit ist vergiftet. Sie wird jede Runde 8 LP verlieren, bis sie "
 "entweder Heilung in einem Dorf sucht oder von einer verbündeten Einheit mit "
-"der »Kurieren« Fertigkeit versorgt wird.\n"
+"der »kurieren« Fertigkeit versorgt wird.\n"
 "\n"
 "Durch Gift allein können Einheiten allerdings nicht sterben. Eine Vergiftung "
 "wird die LP einer Einheit nicht unter 1 reduzieren."
@@ -9092,7 +9067,7 @@ msgstr ""
 
 #: src/titlescreen.cpp:193
 msgid "Load a single player saved game"
-msgstr "Einzelspieler Spielstand laden"
+msgstr "Gespeichertes Einzelspielerspiel laden"
 
 #: src/titlescreen.cpp:194
 msgid "Change the language"
@@ -9194,7 +9169,7 @@ msgstr "Das Löschen der Datei ist fehlgeschlagen."
 #~ msgstr "&white-mage.png,Allianz des Lichts"
 
 #~ msgid ",Name,Version,Author,Downloads,Size"
-#~ msgstr ",Name,Version,Autor,Heruntergeladen, Größe"
+#~ msgstr ",Name,Version,Autor,Heruntergeladen,Größe"
 
 #~ msgid "Melee"
 #~ msgstr "Nahkampf"
