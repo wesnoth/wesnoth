@@ -17,11 +17,16 @@ Version 0.6.2:
  * updated translations:
    * dutch
  * internationalization: string fixes
- * fixed client-hosted multiplayer bug where more than two player games were not possible
- * fixed problem with saving at the end of the scenario pointing to the previous scenario
+ * improved speed of reading cfg-files
+ * borders of game field show dummy terrain instead of black areas
+ * units in water tiles are displayed partially submerged
+ * added support for height adjustment of units
  * autotools: checks for png support in sdl_image and ogg support in sdl_mixer
  * autotools: application icon and menu entries in KDE and GNOME
- * improved speed of reading cfg-files
+ * implemented new widget system with sample: textbox
+ * fixed client-hosted multiplayer bug where more than two player games were not possible
+ * fixed problem with saving at the end of the scenario pointing to the previous scenario
+ * fixed start game in windowed mode -> tutorial -> ctrl-f to change to fullscreen -> quit to main menu -> preferences -> click button to change to full screen -> close preferences dialog -> crash
  * code refactoring
 
 Version 0.6.1:
