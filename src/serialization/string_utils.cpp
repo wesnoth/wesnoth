@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include <cctype>
 #include <sstream>
 
@@ -23,32 +25,100 @@ std::string const &get_variable_const(std::string const &varname);
 
 namespace {
 
-bool not_id(char c)
+bool two_dots(char a, char b) { return a == '.' && b == '.'; }
+
+void do_interpolation(std::string &res, const utils::string_map* m)
 {
-	return !isdigit(c) && !isalpha(c) && c != '.' && c != '_';
-}
+	//this needs to be able to store negative numbers to check for the while's condition
+	//(which is only false when the previous '$' was at index 0)
+	int rfind_dollars_sign_from = res.size();
+	while(rfind_dollars_sign_from >= 0) {
+		//Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
+		//For example, "I am $creatures[$i].user_description!"
+		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
+		
+		//If there are no '$' left then we're done.
+		if(var_begin_loc == std::string::npos) {
+			break;
+		}
+		
+		//For the next iteration of the loop, search for more '$'
+		//(not from the same place because sometimes the '$' is not replaced)
+		rfind_dollars_sign_from = int(var_begin_loc) - 1;
+		
+		
+		const std::string::iterator var_begin = res.begin() + var_begin_loc;
+		
+		//The '$' is not part of the variable name.
+		const std::string::iterator var_name_begin = var_begin + 1;
+		
+		//Find the maximum extent of the variable name (it may be shortened later).
+		std::string::iterator var_end = var_name_begin;
+		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
+			const char c = *var_end;
+			if(c == '[') {
+				++bracket_nesting_level;
+			}
+			else if(c == ']') {
+				if(--bracket_nesting_level < 0) {
+					break;
+				}
+			}
+			else if(!isdigit(c) && !isalpha(c) && c != '.' && c != '_') {
+				break;
+			}
+		}
+		
+		//Two dots in a row cannot be part of a valid variable name.
+		//That matters for random=, e.g. $x..$y
+		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
+		
+		//If the last character is '.', then it can't be a sub-variable.
+		//It's probably meant to be a period instead. Don't include it.
+		//Would need to do it repetitively if there are multiple '.'s at the end, 
+		//but don't actually need to do so because the previous check for adjacent '.'s would catch that.
+		//For example, "My score is $score." or "My score is $score..."
+		if(*(var_end-1) == '.'
+		//However, "$array[$i]" by itself does not name a variable,
+		//so if "$array[$i]." is encountered, then best to include the '.',
+		//so that it more closely follows the syntax of a variable (if only to get rid of all of it).
+		//(If it's the script writer's error, they'll have to fix it in either case.)
+		//For example in "$array[$i].$field_name", if field_name does not exist as a variable,
+		//then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
+		&& *(var_end-2) != ']') {
+			--var_end;
+		}
+		
+		if(*var_end == '|') {
+			//It's been used to end this variable name; now it has no more effect.
+			//This can allow use of things like "$$composite_var_name|.x"
+			//(Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
+			//If there should still be a '|' there afterwards to affect other variable names (unlikely),
+			//just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
+			res.erase(var_end);
+		}
+		
+		const std::string var_name(var_name_begin, var_end);
+		
+		//The variable is replaced with its value.
+		//Replace = remove original, and then insert new value, if any.
+		res.erase(var_begin, var_end);
 
-void do_interpolation(std::string &res, size_t npos, utils::string_map const *m)
-{
-	const std::string::iterator i = std::find(res.begin() + npos, res.end(), '$');
-	if (i == res.end() || i + 1 == res.end())
-		return;
-
-	npos = i - res.begin();
-
-	const std::string::iterator end = std::find_if(i + 1, res.end(), not_id);
-
-	const std::string key(i + 1, end);
-	res.erase(i, end);
-
-	if (m != NULL) {
-		const utils::string_map::const_iterator itor = m->find(key);
-		if (itor != m->end())
-			res.insert(npos,itor->second);
-	} else
-		res.insert(npos, game_events::get_variable_const(key));
-
-	do_interpolation(res,npos,m);
+		if(m != NULL) {
+			const utils::string_map::const_iterator itor = m->find(var_name);
+			if (itor != m->end()) {
+				res.insert(var_begin_loc,itor->second);
+			}
+		}
+		else {
+			res.insert(var_begin_loc, game_events::get_variable_const(var_name));
+		}
+	}
+	
+	//Remove any remaining '|', which are used to separate variable names,
+	//so that the WML writer doesn't need to worry about whether they're really necessary.
+	//It is also occasionally useful to intentionally put them elsewhere.
+	res.erase(std::remove(res.begin(), res.end(), '|'), res.end());
 }
 
 }
@@ -126,13 +196,10 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
-std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols)
+std::string interpolate_variables_into_string(const std::string &str, const string_map *symbols)
 {
 	std::string res = str;
-	do_interpolation(res, 0, symbols);
-
-	//remove any pipes in the string, as they are used simply to seperate variables
-	res.erase(std::remove(res.begin(), res.end(), '|'), res.end());
+	do_interpolation(res, symbols);
 
 	return res;
 }
