@@ -172,9 +172,11 @@ int main()
 					//if this is data describing the level for a game
 					if(data.child("side") != NULL) {
 
+						const bool is_init = g->level_init();
+
 						//if this game is having its level-data initialized
 						//for the first time, and is ready for players to join
-						if(!g->level_init()) {
+						if(!is_init) {
 							
 							//update our config object which describes the
 							//open games
@@ -190,6 +192,7 @@ int main()
 						//record the new level data, and send to all players
 						//who are in the game
 						g->level() = data;
+
 						g->send_data(data,sock);
 						continue;
 					}
@@ -197,7 +200,7 @@ int main()
 					const string_map::const_iterator side =
 					                           data.values.find("side");
 					if(side != data.values.end()) {
-						const bool res = g->take_side(sock,side->second);
+						const bool res = g->take_side(sock,data);
 						config response;
 						if(res) {
 							std::cerr << "played joined side\n";

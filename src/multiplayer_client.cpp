@@ -179,7 +179,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		response.add_child("login")["username"] = login;
 		network::send_data(response);
 
-		data_res = network::receive_data(data,0,10000);
+		data_res = network::receive_data(data,0,5000);
 		check_response(data_res,data);
 	}
 
@@ -204,7 +204,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		}
 
 		for(;;) {
-			data_res = network::receive_data(sides,0,10000);
+			data_res = network::receive_data(sides,0,5000);
 			check_response(data_res,data);
 
 			//if we have got valid side data
@@ -215,7 +215,6 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 	} else {
 		sides = data;
 	}
-
 
 	std::map<int,int> choice_map;
 	std::vector<std::string> choices;
@@ -246,7 +245,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		config response;
 		std::stringstream stream;
 		stream << team_num;
-		response.values["side"] = stream.str();
+		response["side"] = stream.str();
+		response["description"] = preferences::login();
 		network::send_data(response);
 	}
 

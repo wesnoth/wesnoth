@@ -17,6 +17,7 @@
 #include "multiplayer_client.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 
@@ -111,7 +112,7 @@ int connection_acceptor::do_action()
 	}
 
 	if(sock) {
-		const int side_drop = atoi(cfg.values["side_drop"].c_str())-1;
+		const int side_drop = atoi(cfg["side_drop"].c_str())-1;
 		if(side_drop >= 0 && side_drop < int(sides.size())) {
 			positions_map::iterator pos = positions_.find(sides[side_drop]);
 			if(pos != positions_.end()) {
@@ -121,7 +122,7 @@ int connection_acceptor::do_action()
 			}
 		}
 
-		const int side_taken = atoi(cfg.values["side"].c_str())-1;
+		const int side_taken = atoi(cfg["side"].c_str())-1;
 		if(side_taken >= 0 && side_taken < int(sides.size())) {
 			positions_map::iterator pos = positions_.find(sides[side_taken]);
 			if(pos != positions_.end()) {
@@ -130,6 +131,7 @@ int connection_acceptor::do_action()
 
 					//broadcast to everyone the new game status
 					pos->first->values["taken"] = "yes";
+					pos->first->values["description"] = cfg["description"];
 					positions_[sides[side_taken]] = sock;
 					network::send_data(players_);
 
@@ -199,7 +201,7 @@ std::vector<std::string> connection_acceptor::get_positions_status() const
 	for(positions_map::const_iterator i = positions_.begin();
 	    i != positions_.end(); ++i) {
 		result.push_back(i->first->values["name"] + "," +
-		                 (i->second ? ("@" + string_table["position_taken"]) :
+		                 (i->second ? ("@" + i->first->values["description"]) :
 		                              string_table["position_vacant"]));
 	}
 
@@ -332,6 +334,9 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 		if((*sd)->values["recruitment_pattern"].empty())
 			(*sd)->values["recruitment_pattern"] =
 			        possible_sides.front()->values["recruitment_pattern"];
+
+		if((*sd)->values["description"].empty())
+			(*sd)->values["description"] = preferences::login();
 	}
 
 	res = 0;
@@ -388,6 +393,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::string controller = "network";
 				if(result < int(choices.size())/3) {
 					controller = "human";
+					sides[res]->values["description"] = preferences::login();
 				} else if(result < int(choices.size()/3)*2) {
 					controller = "ai";
 					result -= choices.size()/3;

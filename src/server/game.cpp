@@ -23,9 +23,11 @@ void game::start_game()
 	started_ = true;
 }
 
-bool game::take_side(network::connection player, const std::string& side)
+bool game::take_side(network::connection player, const config& cfg)
 {
 	assert(is_member(player));
+
+	const std::string& side = cfg["side"];
 	
 	//if the player is already on a side or the side is already taken
 	if(sides_.count(player) || sides_taken_.count(side))
@@ -36,8 +38,6 @@ bool game::take_side(network::connection player, const std::string& side)
 
 	//send host notification of taking this side
 	if(players_.empty() == false) {
-		config cfg;
-		cfg["side"] = side;
 		network::send_data(cfg,players_.front());
 	}
 

@@ -19,7 +19,7 @@ public:
 
 	void start_game();
 
-	bool take_side(network::connection player, const std::string& side);
+	bool take_side(network::connection player, const config& cfg);
 	
 
 	void add_player(network::connection player);
