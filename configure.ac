@@ -400,8 +400,8 @@ AC_SUBST([LDPREFIX])
 
 #
 
-if test -n "$LDPREFIX" -a -r /usr/lib/libSDL.la
-then SDL_LIBS=/usr/lib/libSDL.la
+if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL.la
+then SDL_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL.la
 else SDL_LIBS=`$SDL_CONFIG --libs`
 fi
 OLD_LIBS=$LIBS
@@ -411,11 +411,12 @@ LIBS="$LIBS $SDL_LIBS"
 # it doesn't find it in FreeBSD
 # AC_CHECK_LIB([SDL], [SDL_Init])
 
+# FIXME disable all these checks in case of a cross-compile
 ac_link="$LDPREFIX $ac_link"
 AC_CHECK_LIB([SDL_image],
 	     [IMG_Load],
-	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_image.la
-then SDL_IMAGE_LIBS=/usr/lib/libSDL_image.la
+	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_image.la
+then SDL_IMAGE_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_image.la
 else SDL_IMAGE_LIBS=-lSDL_image
 fi],
 	     [AC_MSG_ERROR([*** SDL_image lib not found! Get SDL_image from
@@ -423,8 +424,8 @@ http://www.libsdl.org/projects/SDL_image/index.html])])
 
 AC_CHECK_LIB([SDL_mixer],
 	     [Mix_OpenAudio],
-	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_mixer.la
-then SDL_MIXER_LIBS=/usr/lib/libSDL_mixer.la
+	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_mixer.la
+then SDL_MIXER_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_mixer.la
 else SDL_MIXER_LIBS=-lSDL_mixer
 fi],
 	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
@@ -432,8 +433,8 @@ http://www.libsdl.org/projects/SDL_mixer/index.html])])
 	     
 AC_CHECK_LIB([SDL_net],
 	     [SDLNet_Init],
-	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_net.la
-then SDL_NET_LIBS=/usr/lib/libSDL_net.la
+	     [if test -n "$LDPREFIX" -a -r `$SDL_CONFIG --prefix`/lib/libSDL_net.la
+then SDL_NET_LIBS=`$SDL_CONFIG --prefix`/lib/libSDL_net.la
 else SDL_NET_LIBS=-lSDL_net
 fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
