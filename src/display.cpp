@@ -451,6 +451,7 @@ namespace {
 
 void draw_panel(SDL_Surface* target, const theme::panel& panel)
 {
+	log_scope("draw panel");
 	scoped_sdl_surface surf(image::get_image(panel.image(),image::UNSCALED));
 
 	const SDL_Rect screen = { 0, 0, target->w, target->h };
@@ -467,6 +468,8 @@ void draw_panel(SDL_Surface* target, const theme::panel& panel)
 
 void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 {
+	log_scope("draw label");
+
 	const std::string& text = label.text();
 	const std::string& icon = label.icon();
 	SDL_Rect& loc = label.location(disp.screen_area());
@@ -706,6 +709,7 @@ void display::draw_game_status(int x, int y)
 
 void display::draw_report(reports::TYPE report_num)
 {
+	log_scope("draw_report");
 	if(!team_valid())
 		return;
 
