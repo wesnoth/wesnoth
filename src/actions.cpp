@@ -1501,7 +1501,10 @@ bool clear_shroud_unit(const gamemap& map,
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
 
-		if(units.count(*it)) {
+		const unit_map::const_iterator sighted = units.find(*it);
+		if(sighted != units.end() &&
+		  (sighted->second.invisible(map.underlying_terrain(map[it->x][it->y]),status.get_time_of_day().lawful_bonus,*it,units,teams) == false
+		  || teams[team].is_enemy(sighted->second.side()) == false)) {
 			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
 				game_events::fire(sighted,*it,loc);
