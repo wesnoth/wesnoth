@@ -1,60 +1,60 @@
 Kontroller:
 
-   Piltangenterna: Scrollar slagfältet
-   Vänsterklick:   Väljer trupp el. flyttar trupp
-   Mittenklick:    Centrerar skärmen till pekarpositionen
-   Escape:         Avslutar el. stänger menyn
+   Piltangenterna: Scrollar slagfÃ¤ltet
+   VÃ¤nsterklick:   VÃ¤ljer trupp el. flyttar trupp
+   Mittenklick:    Centrerar skÃ¤rmen till pekarpositionen
+   Escape:         Avslutar el. stÃ¤nger menyn
    z:              Zoomar in
    x:              Zoomar ut
-   c:              Sätter zoomningen till det förvalda värdet
-   u:              Ångra sista förflyttningen (om den inte påverkat spelet)
-   r:              Gör om ångrad förflyttning
+   c:              SÃ¤tter zoomningen till det fÃ¶rvalda vÃ¤rdet
+   u:              Ã…ngra sista fÃ¶rflyttningen (om den inte pÃ¥verkat spelet)
+   r:              GÃ¶r om Ã¥ngrad fÃ¶rflyttning
    n:              Skiftar mellan trupperna som kan flytta
-   1-7:            Visar hur långt en trupp kan flytta på respektiva turer
-   mellanslag:     Avslutar vald trupps tur och går vidare till nästa trupp
-   l:              Centrerar på ledaren
-   ctrl-f:         Växlar mellan fullskärm och fönster
+   1-7:            Visar hur lÃ¥ngt en trupp kan flytta pÃ¥ respektiva turer
+   mellanslag:     Avslutar vald trupps tur och gÃ¥r vidare till nÃ¤sta trupp
+   l:              Centrerar pÃ¥ ledaren
+   ctrl-f:         VÃ¤xlar mellan fullskÃ¤rm och fÃ¶nster
    ctrl-r:         Tar fram rekrytera-menyn
    ctrl-shift-r:   Upprepar senaste rekryteringen
-   ctrl-c:         Kallar tillbaka trupper från tidigare uppdrag
-   ctrl-a:         Växlar mellan accelererad och normal spelhastighet
-   d:              Visar beskrivningen för vald trupp
-   ctrl-d:         Visar försvarsstyrkan mot attacker för vald trupp
-   ctrl-t:         Visar hur vald trupp beter sig i olika miljöer
+   ctrl-c:         Kallar tillbaka trupper frÃ¥n tidigare uppdrag
+   ctrl-a:         VÃ¤xlar mellan accelererad och normal spelhastighet
+   d:              Visar beskrivningen fÃ¶r vald trupp
+   ctrl-d:         Visar fÃ¶rsvarsstyrkan mot attacker fÃ¶r vald trupp
+   ctrl-t:         Visar hur vald trupp beter sig i olika miljÃ¶er
    ctrl-s          Sparar spelet
 
 
-Sfärer
+SfÃ¤rer
 
-Ovanför energimätaren som visas brevid alla dina trupper är en sfär. Den sfären är:
+OvanfÃ¶r energimÃ¤taren som visas brevid alla dina trupper Ã¤r en sfÃ¤r. Den sfÃ¤ren Ã¤r:
 
-    * grön om du kontrollerar truppen och den inte har flyttats denna runda
+    * grÃ¶n om du kontrollerar truppen och den inte har flyttats denna runda
     * gul om du kontrollerar truppen, du har flyttat den denna runda och truppen kan flytta mer
-    * röd om du kontrollerar truppen men redan använt all dess förflyttning denna rundan
-    * blå om truppen är en allierad och du inte kan flytta den
+    * rÃ¶d om du kontrollerar truppen men redan anvÃ¤nt all dess fÃ¶rflyttning denna rundan
+    * blÃ¥ om truppen Ã¤r en allierad och du inte kan flytta den
 
-Fiendetrupper har ingen sfär ovanför sina energimätare. (I äldre versioner < 0.5.2 fanns där en svart sfär)
+Fiendetrupper har ingen sfÃ¤r ovanfÃ¶r sina energimÃ¤tare. (I Ã¤ldre versioner < 0.5.2 fanns dÃ¤r en svart sfÃ¤r)
 
 
 Beskrivning
 
-Spelet är en serie av slag, ofta kallade scenarier. Varje scenario ställer dina trupper mot motståndartrupper. Varje sida börjar med en ledare i deras befästning.
+Spelet Ã¤r en serie av slag, ofta kallade scenarier. Varje scenario stÃ¤ller dina trupper mot motstÃ¥ndartrupper. Varje sida bÃ¶rjar med en ledare i deras befÃ¤stning.
 
 
 Guld
 
-Varje sida får lite guld att börja med, och får 2 guldstycken varje runda, plus ett guldstycke för varje by sidan kontrollerar.
-Alla trupper kräver uppehälle, uppehället är oftast det samma som truppens nivå (men se lojal under karaktärsdrag nedan). trupper som inte är återkallade eller rekryterade - d.v.s. ledare eller de som gått med frivilligt - kräver inget uppehälle. Uppehället betalas endast om det totala uppehället för trupperna på en sida är större än antalet byar den sidan kontrollerar. Uppehället som betalas är differansen mellan antalet byar och uppehällskostnaden. Så, formeln för att avgöra inkomsten är,
-2 + byar - maximum( 0, uppehälle - byar )
-då uppehället är lika med summan av nivåerna på alla trupper som blivit återkallade eller rekryterade.
+Varje sida fÃ¥r lite guld att bÃ¶rja med, och fÃ¥r 2 guldstycken varje runda, plus ett guldstycke fÃ¶r varje by sidan kontrollerar.
+Alla trupper krÃ¤ver uppehÃ¤lle, uppehÃ¤llet Ã¤r oftast det samma som truppens nivÃ¥ (men se lojal under karaktÃ¤rsdrag nedan). trupper som inte Ã¤r Ã¥terkallade eller rekryterade - d.v.s. ledare eller de som gÃ¥tt med frivilligt - krÃ¤ver inget uppehÃ¤lle. UppehÃ¤llet betalas endast om det totala uppehÃ¤llet fÃ¶r trupperna pÃ¥ en sida Ã¤r stÃ¶rre Ã¤n antalet byar den sidan kontrollerar. UppehÃ¤llet som betalas Ã¤r differansen mellan antalet byar och uppehÃ¤llskostnaden. SÃ¥, formeln fÃ¶r att avgÃ¶ra inkomsten Ã¤r,
+2 + byar - maximum( 0, uppehÃ¤lle - byar )
+dÃ¥ uppehÃ¤llet Ã¤r lika med summan av nivÃ¥erna pÃ¥ alla trupper som blivit Ã¥terkallade eller rekryterade.
 
 
-Rekrytering och återkallning
+Rekrytering och Ã¥terkallning
 
-trupper kan rekryteras för guld så länge ledaren är i en befästning, och det finns åtmindstone en ledig hexagon i borgen ledaren står i. Högerklicka och välj "Rekrytera" för att rekrytera nya trupper.
-Efter det att du klarat ett scenario kommer alla överlevande trupper vara tillgängliga i nästa scenario. Högerklicka och välj "Återkalla" för att omrekrytera trupper från tidigare scenarier. Återkallandet av en trupp kostar 20 guldstycken.
-Om du markerar en hexagon innan du väljer "Rekrytera" så kommer den ny-rekryterade truppen komma upp på den hexagonen, detta fungerar även får återkallning.
-Du kan inte flytta en trupp som du rekryterat eller återkallat samma runda.
+trupper kan rekryteras fÃ¶r guld sÃ¥ lÃ¤nge ledaren Ã¤r i en befÃ¤stning, och det finns Ã¥tmindstone en ledig hexagon i borgen ledaren stÃ¥r i. HÃ¶gerklicka och vÃ¤lj "Rekrytera" fÃ¶r att rekrytera nya trupper.
+Efter det att du klarat ett scenario kommer alla Ã¶verlevande trupper vara tillgÃ¤ngliga i nÃ¤sta scenario. HÃ¶gerklicka och vÃ¤lj "Ã…terkalla" fÃ¶r att omrekrytera trupper frÃ¥n tidigare scenarier. Ã…terkallandet av en trupp kostar 20 guldstycken.
+Om du markerar en hexagon innan du vÃ¤ljer "Rekrytera" sÃ¥ kommer den ny-rekryterade truppen komma upp pÃ¥ den hexagonen, detta fungerar Ã¤ven fÃ¥r Ã¥terkallning.
+Du kan inte flytta en trupp som du rekryterat eller Ã¥terkallat samma runda.
 
 
 Trupp-specialiteter
@@ -62,36 +62,36 @@ Trupp-specialiteter
 Trupp-specialiteter finns beskrivna under "Truppbeskrivning" i menyn i spelet.
 
 
-Karaktärsdrag
+KaraktÃ¤rsdrag
 
-Trupperna har karaktärsdrag som ger olika sorters bonusar. Karaktärsdragen delas ut slumpmässigt när trupperna skapas, varje trupp får två karaktärsdrag. De olika karaktärsdragen är följande:
+Trupperna har karaktÃ¤rsdrag som ger olika sorters bonusar. KaraktÃ¤rsdragen delas ut slumpmÃ¤ssigt nÃ¤r trupperna skapas, varje trupp fÃ¥r tvÃ¥ karaktÃ¤rsdrag. De olika karaktÃ¤rsdragen Ã¤r fÃ¶ljande:
 
-   Lojal:       Truppen kräver aldrig ett uppehälle på mer än ett guldstycke.
-   Stark:       Truppen gör mer skada i närstrid och har lite bättre hälsa.
-   Snabb:       Truppen förflyttar sig längre varje runda men har lite sämre hälsa.
-   Stryktålig:  Truppen har bättre hälsa.
-   Intelligent: Det krävs färre erfartruppspoäng för att truppen ska komma till nästa nivå.
+   Lojal:       Truppen krÃ¤ver aldrig ett uppehÃ¤lle pÃ¥ mer Ã¤n ett guldstycke.
+   Stark:       Truppen gÃ¶r mer skada i nÃ¤rstrid och har lite bÃ¤ttre hÃ¤lsa.
+   Snabb:       Truppen fÃ¶rflyttar sig lÃ¤ngre varje runda men har lite sÃ¤mre hÃ¤lsa.
+   StryktÃ¥lig:  Truppen har bÃ¤ttre hÃ¤lsa.
+   Intelligent: Det krÃ¤vs fÃ¤rre erfartruppspoÃ¤ng fÃ¶r att truppen ska komma till nÃ¤sta nivÃ¥.
 
 
-Förflyttning
+FÃ¶rflyttning
 
-Om du klickar på en trupp kommer de hexagoner truppen kan flytta till vara ljusare än de andra som blir skuggade. Klicka på den hexagon du vill flytta truppen till. Om du flyttar in i en by som inte ägs av dig tar du över den. Klickar du på en hexagon truppen inte hinner nå samma runda kommer truppen försöka gå dit automatiskt de följande rundorna tills den når sitt mål eller stöter på något oförutsett. Du kan lätt avbryta den automatiska flyttningen genom att klicka på truppen och beordra den något annat.
-Du får inte gå på hexagonerna som omger en fiende (deras kontrollzon) utan att stanna.
+Om du klickar pÃ¥ en trupp kommer de hexagoner truppen kan flytta till vara ljusare Ã¤n de andra som blir skuggade. Klicka pÃ¥ den hexagon du vill flytta truppen till. Om du flyttar in i en by som inte Ã¤gs av dig tar du Ã¶ver den. Klickar du pÃ¥ en hexagon truppen inte hinner nÃ¥ samma runda kommer truppen fÃ¶rsÃ¶ka gÃ¥ dit automatiskt de fÃ¶ljande rundorna tills den nÃ¥r sitt mÃ¥l eller stÃ¶ter pÃ¥ nÃ¥got ofÃ¶rutsett. Du kan lÃ¤tt avbryta den automatiska flyttningen genom att klicka pÃ¥ truppen och beordra den nÃ¥got annat.
+Du fÃ¥r inte gÃ¥ pÃ¥ hexagonerna som omger en fiende (deras kontrollzon) utan att stanna.
 
 
 Strid
 
-Om du flyttar intill en fiendetrupp kan du attackera den. Klicka på din trupp som står intill en fiendetrupp och klicka på fiendetruppen du vill attackera. Alla trupper har ett eller flera vapen de kan attackera med. Vissa vapen, som svärd, är närstridsvapen, och några vapen, som pilbågar, är distansvapen.
-Om du attackerar med ett närstridsvapen så kommer fienden kunna slå tillbaka mot dig med sitt närstridsvapen. Om du attackerar med ett distansvapen kommer fienden kunna attackera tillbaka med sitt distansvapen, om han/hon har något.
-Olika attacker gör olika mycket skada och gör olika många attacker. T.ex gör en Alvisk Krigare 5 skadepoäng med sitt svärd varje gång det träffar, och krigaren kan slå fyra gånger varje gång han används för att attackera en fiende. Detta skrivs 5-4.
-Alla truppers risk att bli träffade avgörs av terrängen de står på. Trupper i borgar och byar löper mindre risk att bli träffade. Alver löper mindre risk att bli träffade i skogen.
+Om du flyttar intill en fiendetrupp kan du attackera den. Klicka pÃ¥ din trupp som stÃ¥r intill en fiendetrupp och klicka pÃ¥ fiendetruppen du vill attackera. Alla trupper har ett eller flera vapen de kan attackera med. Vissa vapen, som svÃ¤rd, Ã¤r nÃ¤rstridsvapen, och nÃ¥gra vapen, som pilbÃ¥gar, Ã¤r distansvapen.
+Om du attackerar med ett nÃ¤rstridsvapen sÃ¥ kommer fienden kunna slÃ¥ tillbaka mot dig med sitt nÃ¤rstridsvapen. Om du attackerar med ett distansvapen kommer fienden kunna attackera tillbaka med sitt distansvapen, om han/hon har nÃ¥got.
+Olika attacker gÃ¶r olika mycket skada och gÃ¶r olika mÃ¥nga attacker. T.ex gÃ¶r en Alvisk Krigare 5 skadepoÃ¤ng med sitt svÃ¤rd varje gÃ¥ng det trÃ¤ffar, och krigaren kan slÃ¥ fyra gÃ¥nger varje gÃ¥ng han anvÃ¤nds fÃ¶r att attackera en fiende. Detta skrivs 5-4.
+Alla truppers risk att bli trÃ¤ffade avgÃ¶rs av terrÃ¤ngen de stÃ¥r pÃ¥. Trupper i borgar och byar lÃ¶per mindre risk att bli trÃ¤ffade. Alver lÃ¶per mindre risk att bli trÃ¤ffade i skogen.
 
 
-Tillhörelse
+TillhÃ¶relse
 
-Alla trupper har en tillhörelse: laglydig, neutral eller kaotisk. Deras tillhörelse påverkar hur de presterar under olika delar av dagen. Följande tabell illustrerar hur de olika tiderna på dagen skiljer sig:
+Alla trupper har en tillhÃ¶relse: laglydig, neutral eller kaotisk. Deras tillhÃ¶relse pÃ¥verkar hur de presterar under olika delar av dagen. FÃ¶ljande tabell illustrerar hur de olika tiderna pÃ¥ dagen skiljer sig:
 
- | runda | tid på dagen |
+ | runda | tid pÃ¥ dagen |
  ------------------------
  |   1   |   gryning    |
  |   2   |   dag        |
@@ -101,28 +101,28 @@ Alla trupper har en tillhörelse: laglydig, neutral eller kaotisk. Deras tillhöre
  |   6   |   natt       |
  ------------------------
 
-Laglydiga gör 25% mer skada på dagen och 25% mindre skada på natten. Kaotiska trupper gör 25% mer skada på natten och 25% mindre skada på dagen. Neutrala trupper påverkas inte av om det är dag eller natt.
+Laglydiga gÃ¶r 25% mer skada pÃ¥ dagen och 25% mindre skada pÃ¥ natten. Kaotiska trupper gÃ¶r 25% mer skada pÃ¥ natten och 25% mindre skada pÃ¥ dagen. Neutrala trupper pÃ¥verkas inte av om det Ã¤r dag eller natt.
 
 
 Helning
 
-Skadade trupper som står i byar kommer att återfå åtta hälsopoäng varje runda. Skadade trupper som står intill en vänligt sinnad trupp med förmågorna "helar" eller "vårdar" kommer ockås att helas. Trupper intill en eller flera trupper med förmågan "helar" kan återfå max fyra hälsopoäng per runda, och max åtta hälsopoäng per runda om truppen står intill en eller flera trupper med förmågan "vårda". Men ju fler trupper som står intill en trupp som kan hela desto mindre helas varje trupp.
-"Helar" hindrar gift från att göra skada medan "vårdar" avgiftar truppen. Truppen återfår inga hälsopoäng samma runda som den blir avgiftad på.
+Skadade trupper som stÃ¥r i byar kommer att Ã¥terfÃ¥ Ã¥tta hÃ¤lsopoÃ¤ng varje runda. Skadade trupper som stÃ¥r intill en vÃ¤nligt sinnad trupp med fÃ¶rmÃ¥gorna "helar" eller "vÃ¥rdar" kommer ockÃ¥s att helas. Trupper intill en eller flera trupper med fÃ¶rmÃ¥gan "helar" kan Ã¥terfÃ¥ max fyra hÃ¤lsopoÃ¤ng per runda, och max Ã¥tta hÃ¤lsopoÃ¤ng per runda om truppen stÃ¥r intill en eller flera trupper med fÃ¶rmÃ¥gan "vÃ¥rda". Men ju fler trupper som stÃ¥r intill en trupp som kan hela desto mindre helas varje trupp.
+"Helar" hindrar gift frÃ¥n att gÃ¶ra skada medan "vÃ¥rdar" avgiftar truppen. Truppen Ã¥terfÃ¥r inga hÃ¤lsopoÃ¤ng samma runda som den blir avgiftad pÃ¥.
 
 
 Erfarenhet
 
-Trupper får erfarenhet av att strida, och efter att ha fått tillräckligt med erfarenhet kommer truppen avancera till en högre nivå och bli mäktigare.
+Trupper fÃ¥r erfarenhet av att strida, och efter att ha fÃ¥tt tillrÃ¤ckligt med erfarenhet kommer truppen avancera till en hÃ¶gre nivÃ¥ och bli mÃ¤ktigare.
 
 
 Flerspelare
 
-Det finns ett antal sätt att spela Battle for Wesnoth med flera spelare. Det enklaste sättet är ett "heta stolen"-spel. Flera spelare vid en dator, varje spelare tar plats framför datorn när det är dennes tur. För att starta ett "heta stolen"-spel, välj Flerspelare från huvudmenyn och sedan "Värd för flerspelarspel". Efter att du valt karta, ändra namnen i "Spelare/Typ"-kollumnen till att bli mänskliga spelare eller datormotståndare (d.v.s. inga nätverksspelare), starta sen dit spel.
-Du kan också spela Battle for Wesnoth i nätverk. Gör likadant som för ett "heta stolen"-spel förutom att du ställer in spelartypen till nätverksspelare. De andra spelarna kan nu koppla upp sig mot ditt spel genom att välja "Flerspelare" från huvudmenyn och sen "Anslut till spel", de som ska ansluta sig måste veta värden datornamn eller ip-nummer.
-Så fort alla spelare har anslutit startar spelet. Spelaren som är värd måste kunna ta emot anslutningar på port 15000. De andra spelarna måste kunna ansluta till port 15000 på en annan dator. Du kan endast spela nätverksspel mot spelare som har exakt samma version av spelet som du.
-Du kan också spela Battle for Wesnoth över någon av Wesnoths publika servrar.
-server.wesnoth.org: för officiella släpp av Battle for Wesnoth.
-devsrv.wesnoth.org: för CVS-versioner av Battle for Wesnoth
-För att ansluta till en server, välj "Flerspelare" i huvudmenyn och sedan "Anslut till spel", skriv sedan in serverns namn. Du måste använda exakt samma version av Battle for Wesnoth som servern kör, annars blir du inte insläppt på servern.
-När du väl är uppkopplad mot servern hamnar du i "Lobbyn". I "Lobbyn" kan du se de andra spelarna på servern och spelen som väntar på spelare. En spelare skapar ett spel på servern och övriga spelare på servern kan ansluta till spelet.
-Du kan anluta till ett spel som "Observerare" och kommer då kunna titta på ett spel utan att själv vara med i det.
+Det finns ett antal sÃ¤tt att spela Battle for Wesnoth med flera spelare. Det enklaste sÃ¤ttet Ã¤r ett "heta stolen"-spel. Flera spelare vid en dator, varje spelare tar plats framfÃ¶r datorn nÃ¤r det Ã¤r dennes tur. FÃ¶r att starta ett "heta stolen"-spel, vÃ¤lj Flerspelare frÃ¥n huvudmenyn och sedan "VÃ¤rd fÃ¶r flerspelarspel". Efter att du valt karta, Ã¤ndra namnen i "Spelare/Typ"-kollumnen till att bli mÃ¤nskliga spelare eller datormotstÃ¥ndare (d.v.s. inga nÃ¤tverksspelare), starta sen dit spel.
+Du kan ocksÃ¥ spela Battle for Wesnoth i nÃ¤tverk. GÃ¶r likadant som fÃ¶r ett "heta stolen"-spel fÃ¶rutom att du stÃ¤ller in spelartypen till nÃ¤tverksspelare. De andra spelarna kan nu koppla upp sig mot ditt spel genom att vÃ¤lja "Flerspelare" frÃ¥n huvudmenyn och sen "Anslut till spel", de som ska ansluta sig mÃ¥ste veta vÃ¤rden datornamn eller ip-nummer.
+SÃ¥ fort alla spelare har anslutit startar spelet. Spelaren som Ã¤r vÃ¤rd mÃ¥ste kunna ta emot anslutningar pÃ¥ port 15000. De andra spelarna mÃ¥ste kunna ansluta till port 15000 pÃ¥ en annan dator. Du kan endast spela nÃ¤tverksspel mot spelare som har exakt samma version av spelet som du.
+Du kan ocksÃ¥ spela Battle for Wesnoth Ã¶ver nÃ¥gon av Wesnoths publika servrar.
+server.wesnoth.org: fÃ¶r officiella slÃ¤pp av Battle for Wesnoth.
+devsrv.wesnoth.org: fÃ¶r CVS-versioner av Battle for Wesnoth
+FÃ¶r att ansluta till en server, vÃ¤lj "Flerspelare" i huvudmenyn och sedan "Anslut till spel", skriv sedan in serverns namn. Du mÃ¥ste anvÃ¤nda exakt samma version av Battle for Wesnoth som servern kÃ¶r, annars blir du inte inslÃ¤ppt pÃ¥ servern.
+NÃ¤r du vÃ¤l Ã¤r uppkopplad mot servern hamnar du i "Lobbyn". I "Lobbyn" kan du se de andra spelarna pÃ¥ servern och spelen som vÃ¤ntar pÃ¥ spelare. En spelare skapar ett spel pÃ¥ servern och Ã¶vriga spelare pÃ¥ servern kan ansluta till spelet.
+Du kan anluta till ett spel som "Observerare" och kommer dÃ¥ kunna titta pÃ¥ ett spel utan att sjÃ¤lv vara med i det.

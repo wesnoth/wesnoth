@@ -1,134 +1,134 @@
 
-Contrôles
+ContrÃ´les
 ---------
 
-    * flêches de direction: Défilement
-    * Clic gauche: Sélectionner une unité/Déplacer une unité
+    * flÃªches de direction: DÃ©filement
+    * Clic gauche: SÃ©lectionner une unitÃ©/DÃ©placer une unitÃ©
     * Clic droit: Menu principal/Annuler une action
     * Echap: Quitter le jeu
     * z: Zoom avant
-    * x: Zoom arrière
-    * c: Niveau de zoom par défaut
-    * u: Annuler les derniers mouvements (seuls les mouvements déterministes peuvent être annulés)
+    * x: Zoom arriÃ¨re
+    * c: Niveau de zoom par dÃ©faut
+    * u: Annuler les derniers mouvements (seuls les mouvements dÃ©terministes peuvent Ãªtre annulÃ©s)
     * r: Refaire les mouvements
-    * n: Sélectionner la prochaine unité qui peut encore se déplacer
-    * Espace : Finir le tour d'une unité et sauter à la prochaine unité qui peut encore se déplacer
-    * l: Sélectionner l'unité de votre chef
-    * ctrl-f: Switcher entre une vue en plein écran ou en mode fenêtré
-    * ctrl-r: Recruter une unité
-    * ctrl-c: Rappeler une unité
-    * ctrl-a: Activer/désactiver le mode turbo
-    * d: Décrire l'unité courante
-    * ctrl-d: Voir le taux de défense de l'unité courante par rapport aux attaques
-    * ctrl-t: Voir les capacités de déplacement de l'unité courante en fonction des types de terrain
+    * n: SÃ©lectionner la prochaine unitÃ© qui peut encore se dÃ©placer
+    * Espace : Finir le tour d'une unitÃ© et sauter Ã  la prochaine unitÃ© qui peut encore se dÃ©placer
+    * l: SÃ©lectionner l'unitÃ© de votre chef
+    * ctrl-f: Switcher entre une vue en plein Ã©cran ou en mode fenÃªtrÃ©
+    * ctrl-r: Recruter une unitÃ©
+    * ctrl-c: Rappeler une unitÃ©
+    * ctrl-a: Activer/dÃ©sactiver le mode turbo
+    * d: DÃ©crire l'unitÃ© courante
+    * ctrl-d: Voir le taux de dÃ©fense de l'unitÃ© courante par rapport aux attaques
+    * ctrl-t: Voir les capacitÃ©s de dÃ©placement de l'unitÃ© courante en fonction des types de terrain
     * ctrl-s: Sauvegarder le jeu
 
 Orbs
 ----
 
-Au sommet de la barre d'énergie des unités se trouve une orbe. Cette orbe est:
+Au sommet de la barre d'Ã©nergie des unitÃ©s se trouve une orbe. Cette orbe est:
 
-    * verte si vous controlez cette unité et qu'elle n'a pas encore bougé ce tour ci
-    * jaune si vous controlez cette unité et qu'elle a déja bougé ce tour ci mais qu'il lui reste encore des déplacements possibles
-    * rouge si vous controlez cette unité mais qu'elle ne peut plus se déplacer ce tour ci
-    * bleue s'il s'agit d'une unité alliée mais que vous ne controlez pas
+    * verte si vous controlez cette unitÃ© et qu'elle n'a pas encore bougÃ© ce tour ci
+    * jaune si vous controlez cette unitÃ© et qu'elle a dÃ©ja bougÃ© ce tour ci mais qu'il lui reste encore des dÃ©placements possibles
+    * rouge si vous controlez cette unitÃ© mais qu'elle ne peut plus se dÃ©placer ce tour ci
+    * bleue s'il s'agit d'une unitÃ© alliÃ©e mais que vous ne controlez pas
 
-Les unités ennemies n'ont pas d'orbe sur leur barre d'énergie.
-(Dans les version < 0.5.2 il y avait une orbe noire sur la barre d'énergie des unités ennemies)
+Les unitÃ©s ennemies n'ont pas d'orbe sur leur barre d'Ã©nergie.
+(Dans les version < 0.5.2 il y avait une orbe noire sur la barre d'Ã©nergie des unitÃ©s ennemies)
 
 Description
 -----------
 
-Le jeu donne lieu à une succession de batailles, ou scénarios. 
-Chaque scénario mettra en jeu vos unités contre des troupes adverses. Chaque camp commençant avec un chef.
+Le jeu donne lieu Ã  une succession de batailles, ou scÃ©narios. 
+Chaque scÃ©nario mettra en jeu vos unitÃ©s contre des troupes adverses. Chaque camp commenÃ§ant avec un chef.
 
 Or
 --
 
-Chaque camp débutera avec une certain somme d'argent (d'or en réalité ;-) ), et recevra 2 pieces d'or par tour, 
-plus 2 pieces d'or supplémentaires pour chaque village contrôlé. 
-Chaque camp devra également payer 1 piece d'or par tour pour chaque unité controlée.
+Chaque camp dÃ©butera avec une certain somme d'argent (d'or en rÃ©alitÃ© ;-) ), et recevra 2 pieces d'or par tour, 
+plus 2 pieces d'or supplÃ©mentaires pour chaque village contrÃ´lÃ©. 
+Chaque camp devra Ã©galement payer 1 piece d'or par tour pour chaque unitÃ© controlÃ©e.
 
 Recrutement et Rappel
 ---------------------
 
-Les unités peuvent être recrutée pour un certain prix, tant que votre chef se trouve sur sa case de départ, 
-et qu'il reste au moins une case adjacente à votre chef de libre. 
-Faites un click-droit et sélectionnez "Recruter" pour recruter de nouvelles unités.
+Les unitÃ©s peuvent Ãªtre recrutÃ©e pour un certain prix, tant que votre chef se trouve sur sa case de dÃ©part, 
+et qu'il reste au moins une case adjacente Ã  votre chef de libre. 
+Faites un click-droit et sÃ©lectionnez "Recruter" pour recruter de nouvelles unitÃ©s.
 
-Après avoir terminé un scénario, toutes les unités survivantes seront disponibles pour votre prochain scénario. 
-Faites un click-droit et sélectionnez "Rappeler" pour recruter une unité de vos précédents scénarios. 
-Le rappel d'unité coûte 20 pieces d'or.
+AprÃ¨s avoir terminÃ© un scÃ©nario, toutes les unitÃ©s survivantes seront disponibles pour votre prochain scÃ©nario. 
+Faites un click-droit et sÃ©lectionnez "Rappeler" pour recruter une unitÃ© de vos prÃ©cÃ©dents scÃ©narios. 
+Le rappel d'unitÃ© coÃ»te 20 pieces d'or.
 
-Pour le recrutement ainsi que le rappel, vous pouvez sélectionner la case sur laquelle vous désirez recruter une unité, 
-et ainsi choisir sur quelle case cette unité apparaitra. Cependant, vous ne pouvez pas déplacer une unité recrutée
-ou rappelée durant le même tour.
+Pour le recrutement ainsi que le rappel, vous pouvez sÃ©lectionner la case sur laquelle vous dÃ©sirez recruter une unitÃ©, 
+et ainsi choisir sur quelle case cette unitÃ© apparaitra. Cependant, vous ne pouvez pas dÃ©placer une unitÃ© recrutÃ©e
+ou rappelÃ©e durant le mÃªme tour.
 
-Spécialités des unités
+SpÃ©cialitÃ©s des unitÃ©s
 ----------------------
 
-Les spécialités des unités sont décrites sous la rubrique "Décrire l'unité" dans le menu principal.
+Les spÃ©cialitÃ©s des unitÃ©s sont dÃ©crites sous la rubrique "DÃ©crire l'unitÃ©" dans le menu principal.
 
-Déplacement
+DÃ©placement
 -----------
 
-Quand une unité est sélectionnée, toutes les cases sur lesquelles elle peut se déplacer s'éclairciront,
-alors que celles oû elle ne peut pas se déplacer s'obscurciront. 
-Vous pouvez dès lors cliquer sur la case où vous souhaitez déplacer votre unité. 
-Se déplacer dans un village neutre ou possédé par l'ennemi vous fera prendre le contrôle de celui ci. 
-Si vous choisissez une destination qui se trouve en dehors de votre zone de déplacement, 
-votre unité se déplacera du maximum possible durant ce tour et continuera au tour suivant automatiquement. 
-Vous pouvez facilement annuler ces déplacements automatiques au début de votre tour en tapant la touche "u", 
-ainsi qu'en sélectionnant l'unité en cause et en lui réaffectant une nouvelle destination.
+Quand une unitÃ© est sÃ©lectionnÃ©e, toutes les cases sur lesquelles elle peut se dÃ©placer s'Ã©clairciront,
+alors que celles oÃ» elle ne peut pas se dÃ©placer s'obscurciront. 
+Vous pouvez dÃ¨s lors cliquer sur la case oÃ¹ vous souhaitez dÃ©placer votre unitÃ©. 
+Se dÃ©placer dans un village neutre ou possÃ©dÃ© par l'ennemi vous fera prendre le contrÃ´le de celui ci. 
+Si vous choisissez une destination qui se trouve en dehors de votre zone de dÃ©placement, 
+votre unitÃ© se dÃ©placera du maximum possible durant ce tour et continuera au tour suivant automatiquement. 
+Vous pouvez facilement annuler ces dÃ©placements automatiques au dÃ©but de votre tour en tapant la touche "u", 
+ainsi qu'en sÃ©lectionnant l'unitÃ© en cause et en lui rÃ©affectant une nouvelle destination.
 
-Vous ne pouvez pas vous déplacer par les six cases autour d'un ennemi (leur zone de contrôle) sans être obligé de vous arrêter.
+Vous ne pouvez pas vous dÃ©placer par les six cases autour d'un ennemi (leur zone de contrÃ´le) sans Ãªtre obligÃ© de vous arrÃªter.
 
 Combat
 ------
 
-Si vous déplacez une unité à coté d'une unité ennemie, vous pourrez l'attaquer en cliquant dessus.
-Chaque unité possède une ou plusieurs armes avec lesquelles attaquer. Certaines armes comme les épées sont des armes de corps à corps, alors que d'autres comme les arcs sont des armes de combat à distance.
+Si vous dÃ©placez une unitÃ© Ã  cotÃ© d'une unitÃ© ennemie, vous pourrez l'attaquer en cliquant dessus.
+Chaque unitÃ© possÃ¨de une ou plusieurs armes avec lesquelles attaquer. Certaines armes comme les Ã©pÃ©es sont des armes de corps Ã  corps, alors que d'autres comme les arcs sont des armes de combat Ã  distance.
 
-Si vous attaquez avec une arme de corps à corps, l'ennemi sera en mesure de riposter avec une arme de corps à corps. 
-Si vous attaquez avec une arme à distance, L'ennemi pourra risposter avec une arme à distance s'il en possède une.
+Si vous attaquez avec une arme de corps Ã  corps, l'ennemi sera en mesure de riposter avec une arme de corps Ã  corps. 
+Si vous attaquez avec une arme Ã  distance, L'ennemi pourra risposter avec une arme Ã  distance s'il en possÃ¨de une.
 
-Différents types d'attaques génèrent différentes quantités de dommage, et un certain nombre d'attaques est disponible avec chaque arme. 
-Par example, un guerrier Elfe fait 5 points de dégats avec son épée à chaque fois qu'il touche un adversaire, 
-et il peut attaquer 4 fois sa cible durant le tour. Ce qui est noté 5-4 dans la description de l'unité.
+DiffÃ©rents types d'attaques gÃ©nÃ¨rent diffÃ©rentes quantitÃ©s de dommage, et un certain nombre d'attaques est disponible avec chaque arme. 
+Par example, un guerrier Elfe fait 5 points de dÃ©gats avec son Ã©pÃ©e Ã  chaque fois qu'il touche un adversaire, 
+et il peut attaquer 4 fois sa cible durant le tour. Ce qui est notÃ© 5-4 dans la description de l'unitÃ©.
 
-Chaque unité a un risque plus ou moins grand de se faire toucher suivant le type de terrain sur lequel elle se trouve. 
-Les unités dans les chateaux ou les villages ont moins de risques de se faire toucher. 
-De même, les Elfes en forêt ont moins de risques de se faire toucher qu'en plaine.
+Chaque unitÃ© a un risque plus ou moins grand de se faire toucher suivant le type de terrain sur lequel elle se trouve. 
+Les unitÃ©s dans les chateaux ou les villages ont moins de risques de se faire toucher. 
+De mÃªme, les Elfes en forÃªt ont moins de risques de se faire toucher qu'en plaine.
 
-Caractère
+CaractÃ¨re
 ---------
 
-Chaque unité possède sont propre caractère: juste, neutre, ou chaotique. 
-Leur caractère affecte leur performance durant la période du jour. 
-Le tableau suivant illustre les différentes périodes du jour:
+Chaque unitÃ© possÃ¨de sont propre caractÃ¨re: juste, neutre, ou chaotique. 
+Leur caractÃ¨re affecte leur performance durant la pÃ©riode du jour. 
+Le tableau suivant illustre les diffÃ©rentes pÃ©riodes du jour:
 
  | Tour	|  phase du jour |
  -------------------------
  |  1   |     aurore     |
  |  2   |      jour      |
  |  3   |      jour      |
- |  4   |   crépuscule   |
+ |  4   |   crÃ©puscule   |
  |  5   |      nuit      |
  |  6   |      nuit      |
 
-Les unités qui sont "justes" génèrent 25% de dégats supplémentaire le jour, et 25% de dégats en moins la nuit. 
-Les unités qui sont "chaotiques" génèrent 25% de dégats supplémentaire la nuit, et 25% de dégats en moins le jour. 
-Les unités "neutres" ne sont affectées ni par le jour ni par la nuit.
+Les unitÃ©s qui sont "justes" gÃ©nÃ¨rent 25% de dÃ©gats supplÃ©mentaire le jour, et 25% de dÃ©gats en moins la nuit. 
+Les unitÃ©s qui sont "chaotiques" gÃ©nÃ¨rent 25% de dÃ©gats supplÃ©mentaire la nuit, et 25% de dÃ©gats en moins le jour. 
+Les unitÃ©s "neutres" ne sont affectÃ©es ni par le jour ni par la nuit.
 
 Soins
 -----
 
-Les unités bléssées se trouvant dans un village récupereront 8 points de vie par tour. 
-Les unités bléssées se trouvant sur une case adjacente à une unité possèdant la capacité 'guérison' ou 'traitement' récupereront également. 
-Les unités se trouvant sur une case adjacente à une unité possèdant la capacité 'guérison' récupereront  un maximum de 4 points de vie par tour, 
-et 8 points de vie par tour pour celle qui ont la capacité 'traitement'. Cependant, plus il y aura d'unités à soigner moins elles recevront de point de vie chacune.
+Les unitÃ©s blÃ©ssÃ©es se trouvant dans un village rÃ©cupereront 8 points de vie par tour. 
+Les unitÃ©s blÃ©ssÃ©es se trouvant sur une case adjacente Ã  une unitÃ© possÃ¨dant la capacitÃ© 'guÃ©rison' ou 'traitement' rÃ©cupereront Ã©galement. 
+Les unitÃ©s se trouvant sur une case adjacente Ã  une unitÃ© possÃ¨dant la capacitÃ© 'guÃ©rison' rÃ©cupereront  un maximum de 4 points de vie par tour, 
+et 8 points de vie par tour pour celle qui ont la capacitÃ© 'traitement'. Cependant, plus il y aura d'unitÃ©s Ã  soigner moins elles recevront de point de vie chacune.
 
-Expérience
+ExpÃ©rience
 ----------
 
-Les unités acquièrent de l'expérience lors des combats, et arrivées à un certain seuil, elles accèderont à un autre niveau en devenant plus puissantes.
+Les unitÃ©s acquiÃ¨rent de l'expÃ©rience lors des combats, et arrivÃ©es Ã  un certain seuil, elles accÃ¨deront Ã  un autre niveau en devenant plus puissantes.

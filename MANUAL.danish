@@ -1,72 +1,72 @@
 Kampen om Wesnoth Manual
 
-Hvis du er nybegynder i Kampen om Wesnoth, er det en god idé at læse GettingStarted-guiden først.
+Hvis du er nybegynder i Kampen om Wesnoth, er det en god idÃ© at lÃ¦se GettingStarted-guiden fÃ¸rst.
 
 
 Kontroller
 
- Piletaster:     Panorér
- Venstreklik:    Vælg enhed/flyt enhed
- Højreklik:      Hovedmenu, annullér handling
- Midterklik:     Centrér på markørens position
+ Piletaster:     PanorÃ©r
+ Venstreklik:    VÃ¦lg enhed/flyt enhed
+ HÃ¸jreklik:      Hovedmenu, annullÃ©r handling
+ Midterklik:     CentrÃ©r pÃ¥ markÃ¸rens position
  Escape:         Afslut spil, afslut menu
  z:              Zoom ind
  x:              Zoom ud
  c:              Genindstil til normalt zoom-niveau
- u:              Fortryd sidste træk (kun egenvalgte træk kan fortrydes)
- r:              Gentag træk
- n:              Skift mellem enheder der stadig har træk tilovers
+ u:              Fortryd sidste trÃ¦k (kun egenvalgte trÃ¦k kan fortrydes)
+ r:              Gentag trÃ¦k
+ n:              Skift mellem enheder der stadig har trÃ¦k tilovers
  1-7:            Vis hvor langt den valgte enhed kan flyttes i det tastede antal runder
- space:          Afslut enhedens træk og skift til næste enhed der har træk tilovers
+ space:          Afslut enhedens trÃ¦k og skift til nÃ¦ste enhed der har trÃ¦k tilovers
  l:              Flyt fokus til leder-enheden
- ctrl-f:         Skift mellem fuldskærm/vindue-modus
- ctrl-r:         Rekruttér enhed
- ctrl-shift-r:   Gentag sidste rekruttéring
+ ctrl-f:         Skift mellem fuldskÃ¦rm/vindue-modus
+ ctrl-r:         RekruttÃ©r enhed
+ ctrl-shift-r:   Gentag sidste rekruttÃ©ring
  ctrl-c:         Genindkald enhed
- ctrl-a:         Vælg acceleréret spil-modus
- d:              Beskriv nuværende enhed
- ctrl-d:         Vis nuværende enheds forsvarsevne imod angreb
- ctrl-t:         Vis hvordan den nuværende enhed klarer sig i forskelligt terræn
+ ctrl-a:         VÃ¦lg accelerÃ©ret spil-modus
+ d:              Beskriv nuvÃ¦rende enhed
+ ctrl-d:         Vis nuvÃ¦rende enheds forsvarsevne imod angreb
+ ctrl-t:         Vis hvordan den nuvÃ¦rende enhed klarer sig i forskelligt terrÃ¦n
  ctrl-s:         Gem spil
 
 
 Lyskugler
 
-Ovenpå energibaren vist ved siden af hver af dine enheder er der en lyskugle. Denne lyskugle er:
+OvenpÃ¥ energibaren vist ved siden af hver af dine enheder er der en lyskugle. Denne lyskugle er:
 
- * grøn, hvis enheden er under din kontrol, og den ikke har flyttet sig i nuværende runde
- * gul, hvis enheden er under din kontrol, og den har flyttet sig i denne runde men stadig har træk tilovers
- * rød, hvis enheden er under din kontrol men allerede har opbrugt alle sine træk i denne runde
- * blå, hvis enheden er en allieret, som du dog ikke kan flytte
+ * grÃ¸n, hvis enheden er under din kontrol, og den ikke har flyttet sig i nuvÃ¦rende runde
+ * gul, hvis enheden er under din kontrol, og den har flyttet sig i denne runde men stadig har trÃ¦k tilovers
+ * rÃ¸d, hvis enheden er under din kontrol men allerede har opbrugt alle sine trÃ¦k i denne runde
+ * blÃ¥, hvis enheden er en allieret, som du dog ikke kan flytte
 
-Fjendtlige enheder har ingen lyskugle ovenpå deres energibar. (I ældre versioner < 0.5.2 var der en sort kugle ovenpå de fjendtlige enheders energibar)
+Fjendtlige enheder har ingen lyskugle ovenpÃ¥ deres energibar. (I Ã¦ldre versioner < 0.5.2 var der en sort kugle ovenpÃ¥ de fjendtlige enheders energibar)
 
 
 Beskrivelse
 
-Spillet folder sig ud i en serie af kampe - scenarier. Hvert scenarie sætter dine tropper op imod en modstanders tropper. Hver side starter med én leder i sin borg.
+Spillet folder sig ud i en serie af kampe - scenarier. Hvert scenarie sÃ¦tter dine tropper op imod en modstanders tropper. Hver side starter med Ã©n leder i sin borg.
 
 
 Guld
 
-Hver side bliver tildelt en vis mængde guld til at starte med og modtager 2 guldstykker per runde plus 1 ekstra guldstykke for hver landsby, som denne side har under sin kontrol.
+Hver side bliver tildelt en vis mÃ¦ngde guld til at starte med og modtager 2 guldstykker per runde plus 1 ekstra guldstykke for hver landsby, som denne side har under sin kontrol.
 
-Hver enhed har desuden en vedligeholdelses-omkostning. Vedligeholdelses-omkostningen er generelt lig med en enheds erfaringsniveau (men se på 'Loyal'-egenskaben nedenunder). Enheder, der ikke er blevet genindkaldt eller rekruttéret - f.eks. nogle, der leder hæren eller slutter sig til denne side frivilligt, har ikke nogle vedligeholdelses-omkostninger forbundet med sig. Vedligeholdelse bliver kun betalt, hvis en sides enheders totale vedligeholdelse er større end antallet af landsbyer under denne sides kontrol. Den betalte vedligeholdelse svarer til forskellen mellem antallet af landsbyer og vedligeholdelses-omkostningerne. Altså er ligningen til at fastslå indkomsten per runde således:
+Hver enhed har desuden en vedligeholdelses-omkostning. Vedligeholdelses-omkostningen er generelt lig med en enheds erfaringsniveau (men se pÃ¥ 'Loyal'-egenskaben nedenunder). Enheder, der ikke er blevet genindkaldt eller rekruttÃ©ret - f.eks. nogle, der leder hÃ¦ren eller slutter sig til denne side frivilligt, har ikke nogle vedligeholdelses-omkostninger forbundet med sig. Vedligeholdelse bliver kun betalt, hvis en sides enheders totale vedligeholdelse er stÃ¸rre end antallet af landsbyer under denne sides kontrol. Den betalte vedligeholdelse svarer til forskellen mellem antallet af landsbyer og vedligeholdelses-omkostningerne. AltsÃ¥ er ligningen til at fastslÃ¥ indkomsten per runde sÃ¥ledes:
 
  2 + landsbyer - maximum(0, vedligeholdelse - landsbyer)
 
-hvor vedligeholdelse svarer til summen af alle genindkaldte og rekruttérede enheders erfaringsniveauer.
+hvor vedligeholdelse svarer til summen af alle genindkaldte og rekruttÃ©rede enheders erfaringsniveauer.
 
 
-Rekruttéring og genindkaldelse
+RekruttÃ©ring og genindkaldelse
 
-Enheder kan rekruttéres med guld, så længe lederen befinder sig på en borg, og der er mindst ét ledigt slots-felt i det slot, som lederen befinder sig i. Højreklik og vælg Rekruttér for at rekruttére nye enheder.
+Enheder kan rekruttÃ©res med guld, sÃ¥ lÃ¦nge lederen befinder sig pÃ¥ en borg, og der er mindst Ã©t ledigt slots-felt i det slot, som lederen befinder sig i. HÃ¸jreklik og vÃ¦lg RekruttÃ©r for at rekruttÃ©re nye enheder.
 
-Når du har gennemført et scenarie, vil alle overlevende være til rådighed til dig i næste scenarie. Højreklik og vælg Genindkald for at genrekruttére enheder fra et forudgående scenarie. Genindkaldelse koster 20 stykker guld.
+NÃ¥r du har gennemfÃ¸rt et scenarie, vil alle overlevende vÃ¦re til rÃ¥dighed til dig i nÃ¦ste scenarie. HÃ¸jreklik og vÃ¦lg Genindkald for at genrekruttÃ©re enheder fra et forudgÃ¥ende scenarie. Genindkaldelse koster 20 stykker guld.
 
-Du kan desuden sætte markøren på et ledigt slots-felt og derefter rekruttére, derved kan du selv vælge, hvor den rekruttérede enhed skal placeres. Dette kan både bruges ved rekruttéring og genindkaldelse.
+Du kan desuden sÃ¦tte markÃ¸ren pÃ¥ et ledigt slots-felt og derefter rekruttÃ©re, derved kan du selv vÃ¦lge, hvor den rekruttÃ©rede enhed skal placeres. Dette kan bÃ¥de bruges ved rekruttÃ©ring og genindkaldelse.
 
-Du kan ikke flytte en enhed i den samme runde, som du har rekruttéret eller genindkaldt denne enhed.
+Du kan ikke flytte en enhed i den samme runde, som du har rekruttÃ©ret eller genindkaldt denne enhed.
 
 
 Enhedsspecialiteter
@@ -76,38 +76,38 @@ Enhedsspecialiteter er beskrevet under Enhedsbeskrivelse inde i spillet.
 
 Egenskaber
 
-Enheder har sine bestemte egenskaber, som reflekterer aspekterne af deres karakter. Egenskaber er tildelt tilfældigt til enheder, når de bliver rekruttéret. Hver enhed tildeles to specielle egenskaber. De mulige egenskaber er som følger:
+Enheder har sine bestemte egenskaber, som reflekterer aspekterne af deres karakter. Egenskaber er tildelt tilfÃ¦ldigt til enheder, nÃ¥r de bliver rekruttÃ©ret. Hver enhed tildeles to specielle egenskaber. De mulige egenskaber er som fÃ¸lger:
 
- Loyal:           Enheden har aldrig en vedligeholdelses-omkostning på mere end 1.
- Stærk:           Enheden gør ekstra skade i nærkamp og har lidt ekstra liv.
- Hurtig:          Enheden har ét ekstra bevægelses-point men en anelse mindre liv.
+ Loyal:           Enheden har aldrig en vedligeholdelses-omkostning pÃ¥ mere end 1.
+ StÃ¦rk:           Enheden gÃ¸r ekstra skade i nÃ¦rkamp og har lidt ekstra liv.
+ Hurtig:          Enheden har Ã©t ekstra bevÃ¦gelses-point men en anelse mindre liv.
  Modstandsdygtig: Enheden har mere liv.
- Intelligent:     Enheden kræver mindre erfaringspoint for at stige til et nyt erfaringsniveau.
+ Intelligent:     Enheden krÃ¦ver mindre erfaringspoint for at stige til et nyt erfaringsniveau.
 
 
 Flytning
 
-Når der klikkes på en enhed, bliver alle de steder, som denne kan flyttes til i den nuværende runde, oplyst, mens de steder, hvor denne ikke kan flytte hen, bliver gråtonet. Derefter kan du klikke på det felt, du vil have enheden flyttet til. Du vil overtage en neutral eller fjendtlig landsby, hvis du flytter enheden hen på denne. Hvis du vælger en destination, der er ude af enhedens rækkevidde i denne runde, vil enheden gå i 'gå-til-modus' og fortsætte med at flytte mod destinationen gennem den/de næste runde(r). Det er nemt at fortryde gå-til-flytninger i starten af din runde, gå-til kan brydes ved at vælge enheden og vælge en ny destination.
+NÃ¥r der klikkes pÃ¥ en enhed, bliver alle de steder, som denne kan flyttes til i den nuvÃ¦rende runde, oplyst, mens de steder, hvor denne ikke kan flytte hen, bliver grÃ¥tonet. Derefter kan du klikke pÃ¥ det felt, du vil have enheden flyttet til. Du vil overtage en neutral eller fjendtlig landsby, hvis du flytter enheden hen pÃ¥ denne. Hvis du vÃ¦lger en destination, der er ude af enhedens rÃ¦kkevidde i denne runde, vil enheden gÃ¥ i 'gÃ¥-til-modus' og fortsÃ¦tte med at flytte mod destinationen gennem den/de nÃ¦ste runde(r). Det er nemt at fortryde gÃ¥-til-flytninger i starten af din runde, gÃ¥-til kan brydes ved at vÃ¦lge enheden og vÃ¦lge en ny destination.
 
-Det er ikke tilladt at flytte igennem en fjendtlig enheds sidestående felter (deres Kontrolzone) uden at stoppe.
+Det er ikke tilladt at flytte igennem en fjendtlig enheds sidestÃ¥ende felter (deres Kontrolzone) uden at stoppe.
 
 
 Kamp
 
-Hvis du flytter hen ved siden af en fjendtlig enhed, kan du angribe denne. Klik på din enhed, der er ved siden af en fjendtlig enhed, og klik på den fjende som du vil angribe. Hver enhed har ét eller flere våben, som de kan angribe med. Nogle våben, såsom sværd, er nærkampsvåben, og nogle våben, såsom buer, er distancevåben.
+Hvis du flytter hen ved siden af en fjendtlig enhed, kan du angribe denne. Klik pÃ¥ din enhed, der er ved siden af en fjendtlig enhed, og klik pÃ¥ den fjende som du vil angribe. Hver enhed har Ã©t eller flere vÃ¥ben, som de kan angribe med. Nogle vÃ¥ben, sÃ¥som svÃ¦rd, er nÃ¦rkampsvÃ¥ben, og nogle vÃ¥ben, sÃ¥som buer, er distancevÃ¥ben.
 
-Hvis du angriber med et nærkampsvåben, vil den angrebne fjende være i stand til at slå tilbage på dig med sit nærkampsvåben. Hvis du angriber med et distancevåben, vil fjenden kunne angribe tilbage med sit distancevåben, hvis det har et sådant.
+Hvis du angriber med et nÃ¦rkampsvÃ¥ben, vil den angrebne fjende vÃ¦re i stand til at slÃ¥ tilbage pÃ¥ dig med sit nÃ¦rkampsvÃ¥ben. Hvis du angriber med et distancevÃ¥ben, vil fjenden kunne angribe tilbage med sit distancevÃ¥ben, hvis det har et sÃ¥dant.
 
-Forskellige typer angreb gør forskellig mængde skade, og et bestemt antal slag kan gives med hvert våben. For eksempel gør en Elvisk Kriger 5 skadepoints med sit sværd, hver gang det rammer, og han kan slå 4 slag med dette af gangen. Dette skrives generelt som 5-4.
+Forskellige typer angreb gÃ¸r forskellig mÃ¦ngde skade, og et bestemt antal slag kan gives med hvert vÃ¥ben. For eksempel gÃ¸r en Elvisk Kriger 5 skadepoints med sit svÃ¦rd, hver gang det rammer, og han kan slÃ¥ 4 slag med dette af gangen. Dette skrives generelt som 5-4.
 
-Hver enhed har en risiko for at blive ramt baseret på det terræn, de befinder sig i. Enheder i slotte og landsbyer har en generelt lavere risiko for at blive ramt. Elvere i skovområde har en lavere risiko for at blive ramt.
+Hver enhed har en risiko for at blive ramt baseret pÃ¥ det terrÃ¦n, de befinder sig i. Enheder i slotte og landsbyer har en generelt lavere risiko for at blive ramt. Elvere i skovomrÃ¥de har en lavere risiko for at blive ramt.
 
 
 Holdning
 
-Hver enhed har en holdning: lovlydig, neutral eller kaotisk. Deres holdning påvirker deres evne til at klare sig på forskellige tidspunkter på dagen. Den følgende tabel illustrérer de forskellige tidspunkter på dagen:
+Hver enhed har en holdning: lovlydig, neutral eller kaotisk. Deres holdning pÃ¥virker deres evne til at klare sig pÃ¥ forskellige tidspunkter pÃ¥ dagen. Den fÃ¸lgende tabel illustrÃ©rer de forskellige tidspunkter pÃ¥ dagen:
 
- | runde |  døgnfase  |
+ | runde |  dÃ¸gnfase  |
  ---------------------
  |   1   |   morgen   |
  |   2   |    dag     |
@@ -116,24 +116,24 @@ Hver enhed har en holdning: lovlydig, neutral eller kaotisk. Deres holdning påvi
  |   5   |    nat     |
  |   6   |    nat     |
 
-Enheder, der er lovlydige, giver 25% mere skade midt på dagen og 25% mindre skade om natten. Enheder, der er kaotiske, giver 25% mere skade om natten og 25% mindre skade om dagen. Neutrale enheder er upåvirkede af dag/nat-cyklussen i forbindelse med kamp. Læg også mærke til at i spillet er de to "dag"- og "nat"-faser opdelt i Morgen, Eftermiddag og Tidlig Nat, Sen Nat.
+Enheder, der er lovlydige, giver 25% mere skade midt pÃ¥ dagen og 25% mindre skade om natten. Enheder, der er kaotiske, giver 25% mere skade om natten og 25% mindre skade om dagen. Neutrale enheder er upÃ¥virkede af dag/nat-cyklussen i forbindelse med kamp. LÃ¦g ogsÃ¥ mÃ¦rke til at i spillet er de to "dag"- og "nat"-faser opdelt i Morgen, Eftermiddag og Tidlig Nat, Sen Nat.
 
 
 Healing
 
-Beskadigede enheder i landsbyer vil genskabe 8 livspoints for hver runde. Skadede enheder sideliggende til enheder med healing- eller kurérings-evnen vil også heles. Enheder ved siden af en/flere enhed(er) med healing-evnen vil heles med max 4 livspoints per runde og 8 livspoints per runde for enhed(er) med kurérings-evnen. Dog er det sådan, at jo flere enheder der står omkring en healende enhed, jo mindre vil hver enhed blive healet. Den maksimale heling for en enhed er 8 livspoints, og derfor vil en trold, der befinder sig i en landsby, kun genskabe 8 livspoints og ikke 16. En enhed, der befinder sig i en landsby, vil heller ikke kunne modtage ekstra healing fra sidestående healere.
+Beskadigede enheder i landsbyer vil genskabe 8 livspoints for hver runde. Skadede enheder sideliggende til enheder med healing- eller kurÃ©rings-evnen vil ogsÃ¥ heles. Enheder ved siden af en/flere enhed(er) med healing-evnen vil heles med max 4 livspoints per runde og 8 livspoints per runde for enhed(er) med kurÃ©rings-evnen. Dog er det sÃ¥dan, at jo flere enheder der stÃ¥r omkring en healende enhed, jo mindre vil hver enhed blive healet. Den maksimale heling for en enhed er 8 livspoints, og derfor vil en trold, der befinder sig i en landsby, kun genskabe 8 livspoints og ikke 16. En enhed, der befinder sig i en landsby, vil heller ikke kunne modtage ekstra healing fra sidestÃ¥ende healere.
 
-Healing forhindrer gift i at gøre skade, mens kuréring helt fjerner forgiftningen. Når en forgiftning er kuréret, vil enheden ikke genskabe livspoint i den aktuelle runde.
+Healing forhindrer gift i at gÃ¸re skade, mens kurÃ©ring helt fjerner forgiftningen. NÃ¥r en forgiftning er kurÃ©ret, vil enheden ikke genskabe livspoint i den aktuelle runde.
 
 
 Erfaring
 
-Enheder belønnes i kamp med erfaring, og når de har samlet nok erfaringspoint sammen, vil de blive forfremmet til næste erfaringsniveau og blive stærkere.
+Enheder belÃ¸nnes i kamp med erfaring, og nÃ¥r de har samlet nok erfaringspoint sammen, vil de blive forfremmet til nÃ¦ste erfaringsniveau og blive stÃ¦rkere.
 
 
 Multiplayer
 
-Du kan beværte et multiplayer-spil med din egen klient eller slutte dig til Wesnoth spilserveren og opsætte dit spil dér. Hvis du beværter et spil med din klient, skal andre spillere kunne tilsluttes til port 15000 på din computer.
+Du kan bevÃ¦rte et multiplayer-spil med din egen klient eller slutte dig til Wesnoth spilserveren og opsÃ¦tte dit spil dÃ©r. Hvis du bevÃ¦rter et spil med din klient, skal andre spillere kunne tilsluttes til port 15000 pÃ¥ din computer.
 
 Offentlige servere:
 
@@ -142,12 +142,12 @@ Offentlige servere:
  devsrv.wesnoth.org:14999  til CVS-versioner af spillet
 
 
-Opsætning af et multiplayer-spil
+OpsÃ¦tning af et multiplayer-spil
 
-Trin 1: vælg 'multiplayer' fra hovedmenuen, vælg at beværte et spil med din klient eller at slutte dig til en server og opret spillet
+Trin 1: vÃ¦lg 'multiplayer' fra hovedmenuen, vÃ¦lg at bevÃ¦rte et spil med din klient eller at slutte dig til en server og opret spillet
 
-Trin 2: vælg et scenarie og konfigurér spil-indstillinger (krigståge, skyggeslør, guld per landsby)
+Trin 2: vÃ¦lg et scenarie og konfigurÃ©r spil-indstillinger (krigstÃ¥ge, skyggeslÃ¸r, guld per landsby)
 
-Trin 3: konfigurér spillere (hold/alliancer, startguld, civilisation) og vent så på, at alle spillere sat på 'netværksspiller' slutter sig til spillet, du vil kunne se "netværksspiller" udskiftet med deres nicks, så snart de tilslutter sig.
+Trin 3: konfigurÃ©r spillere (hold/alliancer, startguld, civilisation) og vent sÃ¥ pÃ¥, at alle spillere sat pÃ¥ 'netvÃ¦rksspiller' slutter sig til spillet, du vil kunne se "netvÃ¦rksspiller" udskiftet med deres nicks, sÃ¥ snart de tilslutter sig.
 
 Trin 4: klik [Jeg er klar] 

@@ -1,26 +1,26 @@
 Manual de La Batalla por Wesnoth
 
-Si eres nuevo en La Batalla por Wesnoth, puede que te interese leer la guÌa de Comienzo R·pido antes de nada.
+Si eres nuevo en La Batalla por Wesnoth, puede que te interese leer la gu√≠a de Comienzo R√°pido antes de nada.
 
 Controles
 
  Cursores:			Desplazamiento de la pantalla
- BotÛn izquierdo del ratÛn: 	Seleccionar o mover unidad
- BotÛn derecho del ratÛn: 	Menu principal, cancelar acciÛn
- BotÛn medio del ratÛn:		Centrar en la localizaciÛn del puntero
- Escape: 			Salir del juego o del men˙
+ Bot√≥n izquierdo del rat√≥n: 	Seleccionar o mover unidad
+ Bot√≥n derecho del rat√≥n: 	Menu principal, cancelar acci√≥n
+ Bot√≥n medio del rat√≥n:		Centrar en la localizaci√≥n del puntero
+ Escape: 			Salir del juego o del men√∫
  z: 				Aumentar zoom
  x: 				Disminuir zoom
  c: 				Nivel de zoom predeterminado
- u: 				Deshacer el ˙ltimo movimiento (sÛlo se pueden deshacer los movimientos deterministas)
+ u: 				Deshacer el √∫ltimo movimiento (s√≥lo se pueden deshacer los movimientos deterministas)
  r: 				Rehacer movimiento
- n: 				Alternar entre las unidades que a˙n tienen movimiento disponible.
- 1-7:				Muestra la distancia a la que la unidad seleccionada puede mover en ese n˙mero de turnos
- espacio:			Acaba el turno de la unidad y activa la siguiente unidad que a˙n tenga movimiento disponible.
- l: 				Moverse hasta la unidad lÌder
+ n: 				Alternar entre las unidades que a√∫n tienen movimiento disponible.
+ 1-7:				Muestra la distancia a la que la unidad seleccionada puede mover en ese n√∫mero de turnos
+ espacio:			Acaba el turno de la unidad y activa la siguiente unidad que a√∫n tenga movimiento disponible.
+ l: 				Moverse hasta la unidad l√≠der
  ctrl-f: 			Conmutar entre modo pantalla completa/ventana
  ctrl-r: 			Reclutar unidad
- ctrl-shift-r:			Repetir el ˙ltimo reclutamiento
+ ctrl-shift-r:			Repetir el √∫ltimo reclutamiento
  ctrl-c: 			Llamar unidad
  ctrl-a: 			Conmutar modo de juego acelerado
  d: 				Describir la unidad selecionada
@@ -32,102 +32,102 @@ Controles
 
 Orbes
 
-Hay un orbe en la parte superior de la barra de energÌa que se muestra junto a cada una de tus unidades. Este orbe es:
+Hay un orbe en la parte superior de la barra de energ√≠a que se muestra junto a cada una de tus unidades. Este orbe es:
 
     * verde si controlas esta unidad y no ha movido en este turno.
-    * amarillo si controlas esta unidad y aunque ya ha movido en este turno, podrÌa a˙n mover m·s lejos.
+    * amarillo si controlas esta unidad y aunque ya ha movido en este turno, podr√≠a a√∫n mover m√°s lejos.
     * rojo si controlas esta unidad, pero ya ha usado todo su movimiento en este turno.
     * azul si la unidad es un aliado, pero no la controlas directamente.
 
-Las unidades enemigas no tienen orbe en la parte superior de la barra de energÌa. (En las versiones anteriores a 0.5.2 habÌa un orbe negro sobre la barra de energÌa de las unidades enemigas)
+Las unidades enemigas no tienen orbe en la parte superior de la barra de energ√≠a. (En las versiones anteriores a 0.5.2 hab√≠a un orbe negro sobre la barra de energ√≠a de las unidades enemigas)
 
-DescripciÛn
+Descripci√≥n
 
-El juego se desarrolla en una serie de batallas o escenarios. Cada escenario enfrenta tus tropas contra las tropas de un enemigo. Cada bando comienza con un lÌder en su fortaleza.
+El juego se desarrolla en una serie de batallas o escenarios. Cada escenario enfrenta tus tropas contra las tropas de un enemigo. Cada bando comienza con un l√≠der en su fortaleza.
 
 Oro
 
-Cada bando recibe una cierta cantidad de oro al comienzo y 2 piezas de oro por turno, m·s 1 pieza de oro por cada aldea que ese bando controle. 
+Cada bando recibe una cierta cantidad de oro al comienzo y 2 piezas de oro por turno, m√°s 1 pieza de oro por cada aldea que ese bando controle. 
 
-Cada unidad tiene tambiÈn un coste de mantenimiento. El coste de mantenimiento es generalmente igual al nivel de esa unidad (ver rasgo 'Leal' m·s abajo). Las unidades que no se llaman ni se reclutan, es decir que lideran un bando o se unen voluntariamente, no tienen coste de mantenimiento asociado con ellas. El mantenimiento solamente se paga si el mantenimiento total de las unidades de un bando es mayor que el n˙mero de aldeas que ese bando controla. El mantenimiento pagado es la diferencia entre el n˙mero de aldeas y el coste de mantenimiento. Por tanto, la fÛrmula para determinar los ingresos por turno es,
+Cada unidad tiene tambi√©n un coste de mantenimiento. El coste de mantenimiento es generalmente igual al nivel de esa unidad (ver rasgo 'Leal' m√°s abajo). Las unidades que no se llaman ni se reclutan, es decir que lideran un bando o se unen voluntariamente, no tienen coste de mantenimiento asociado con ellas. El mantenimiento solamente se paga si el mantenimiento total de las unidades de un bando es mayor que el n√∫mero de aldeas que ese bando controla. El mantenimiento pagado es la diferencia entre el n√∫mero de aldeas y el coste de mantenimiento. Por tanto, la f√≥rmula para determinar los ingresos por turno es,
 
- 2 + aldeas - m·ximo(0, mantenimiento - aldeas)
+ 2 + aldeas - m√°ximo(0, mantenimiento - aldeas)
 
 donde mantenimiento es igual a la suma de los niveles de todas las unidades que han sido llamadas o reclutadas.
 
 Reclutando y Llamando
 
-Se pueden reclutar m·s unidades con oro, siempre y cuando el lÌder estÈ en una fortaleza y haya al menos un hex·gono libre en la fortaleza donde estÈ el lÌder. Pulsa el botÛn derecho del ratÛn y selecciona Reclutar para reclutar nuevas tropas.
+Se pueden reclutar m√°s unidades con oro, siempre y cuando el l√≠der est√© en una fortaleza y haya al menos un hex√°gono libre en la fortaleza donde est√© el l√≠der. Pulsa el bot√≥n derecho del rat√≥n y selecciona Reclutar para reclutar nuevas tropas.
 
-Despues de completar un escenario, todas las tropas supervivientes estar·n disponibles para el siguiente escenario. Pulsa el botÛn derecho del ratÛn y selecciona Llamar para reclutar de nuevo unidades de escenarios previos. Llamar tropas cuesta 20 piezas de oro.
+Despues de completar un escenario, todas las tropas supervivientes estar√°n disponibles para el siguiente escenario. Pulsa el bot√≥n derecho del rat√≥n y selecciona Llamar para reclutar de nuevo unidades de escenarios previos. Llamar tropas cuesta 20 piezas de oro.
 
-Puedes seleccionar primero un lugar libre en la fortaleza y entonces reclutar. De esta forma puedes elegir el lugar en el que aparecer· la unidad reclutada. Esto funciona para reclutar y para llamar.
+Puedes seleccionar primero un lugar libre en la fortaleza y entonces reclutar. De esta forma puedes elegir el lugar en el que aparecer√° la unidad reclutada. Esto funciona para reclutar y para llamar.
 
 No se puede mover una unidad en el mismo turno en el que se recluta o se llama.
 
 Especialidades de las unidades
 
-Las especialidades de las unidades se describen en DescripciÛn de la Unidad dentro del juego.
+Las especialidades de las unidades se describen en Descripci√≥n de la Unidad dentro del juego.
 
 Rasgos
 
-Las unidades tienen rasgos que reflejan aspectos de su car·cter. Los rasgos se asignan aleatoriamente a las unidades cuando se crean. Cada unidad recibe dos rasgos. Los rasgos posibles son los siguientes:
+Las unidades tienen rasgos que reflejan aspectos de su car√°cter. Los rasgos se asignan aleatoriamente a las unidades cuando se crean. Cada unidad recibe dos rasgos. Los rasgos posibles son los siguientes:
 
  Leal:			La unidad nunca tiene un coste de mantenimiento superior a 1.
- Fuerte:		La unidad hace daÒo extra en combate cerrado, y tiene algunos puntos de vida m·s.
- R·pido:		La unidad tiene un punto de movimiento extra, pero algunos puntos de vida menos.
- Resistente:		La unidad tiene m·s puntos de vida.
+ Fuerte:		La unidad hace da√±o extra en combate cerrado, y tiene algunos puntos de vida m√°s.
+ R√°pido:		La unidad tiene un punto de movimiento extra, pero algunos puntos de vida menos.
+ Resistente:		La unidad tiene m√°s puntos de vida.
  Inteligente:   	La unidad requiere menos experiencia para avanzar un nivel.
 
 Moviendo
 
-Cuando se selecciona una unidad, todos los lugares a los que puede mover en el turno actual aparecen iluminados en el mapa, mientras que todos los lugares a los que no puede mover se oscurecen. Entonces puedes seleccionar con el ratÛn el hex·gono al que quieres mover esa unidad. Si mueves a una aldea que es neutral o que pertenece a un enemigo, tomar·s posesiÛn de ella. Si seleccionas un destino que est· fuera del rango de movimiento para este turno, la unidad entrar· en 'modo goto' y continuar· moviendo hacia ese destino autom·ticamente en los siguientes turnos. Puedes deshacer f·cilmente los movimientos autom·ticos al comienzo de tu turno, y se pueden cancelar seleccionando esa unidad y eligiendo un nuevo destino.
+Cuando se selecciona una unidad, todos los lugares a los que puede mover en el turno actual aparecen iluminados en el mapa, mientras que todos los lugares a los que no puede mover se oscurecen. Entonces puedes seleccionar con el rat√≥n el hex√°gono al que quieres mover esa unidad. Si mueves a una aldea que es neutral o que pertenece a un enemigo, tomar√°s posesi√≥n de ella. Si seleccionas un destino que est√° fuera del rango de movimiento para este turno, la unidad entrar√° en 'modo goto' y continuar√° moviendo hacia ese destino autom√°ticamente en los siguientes turnos. Puedes deshacer f√°cilmente los movimientos autom√°ticos al comienzo de tu turno, y se pueden cancelar seleccionando esa unidad y eligiendo un nuevo destino.
 
-No puedes moverte a travÈs de los hex·gonos adyacentes a los enemigos (su zona de control) si tener que pararte.
+No puedes moverte a trav√©s de los hex√°gonos adyacentes a los enemigos (su zona de control) si tener que pararte.
 
 Luchando
 
-Si mueves a una posiciÛn junto a una unidad enemiga, puedes atacarles. Selecciona tu unidad que est· junto al enemigo y selecciona el enemigo al que quieres atacar. Cada unidad tiene una o m·s armas con las que puede atacar. Algunas armas, como las espadas, son armas de melee, y algunas armas como arcos, son armas de tiro.
+Si mueves a una posici√≥n junto a una unidad enemiga, puedes atacarles. Selecciona tu unidad que est√° junto al enemigo y selecciona el enemigo al que quieres atacar. Cada unidad tiene una o m√°s armas con las que puede atacar. Algunas armas, como las espadas, son armas de melee, y algunas armas como arcos, son armas de tiro.
 
-Si atacas con una arma de melee, el enemigo ser· capaz de contraatacar con su arma de melee. Si atacas con un arma de tiro, el enemigo ser· capaz de atacar de vuelta con su arma de tiro, si es que tiene una.
+Si atacas con una arma de melee, el enemigo ser√° capaz de contraatacar con su arma de melee. Si atacas con un arma de tiro, el enemigo ser√° capaz de atacar de vuelta con su arma de tiro, si es que tiene una.
 
-Diferentes tipos de ataques hacen diferentes cantidades de daÒo, y se pueden hacer un n˙mero determinado de ataques con cada arma. Por ejemplo, un guerrero elfo hace 5 puntos de daÒo con su espada cada vez que acierta, y puede blandirla cuatro veces en un ataque. Esto generalmente se escribe de la forma 5-4.
+Diferentes tipos de ataques hacen diferentes cantidades de da√±o, y se pueden hacer un n√∫mero determinado de ataques con cada arma. Por ejemplo, un guerrero elfo hace 5 puntos de da√±o con su espada cada vez que acierta, y puede blandirla cuatro veces en un ataque. Esto generalmente se escribe de la forma 5-4.
 
-Cada unidad tiene una cierta probabilidad de ser alcanzado basada en el terreno en el que est·. Las unidades en castillos y aldeas tienen una menor probabilidad de ser alcanzado. Los elfos en el bosque tienen tambiÈn menor probabilidad de ser alcanzados.
+Cada unidad tiene una cierta probabilidad de ser alcanzado basada en el terreno en el que est√°. Las unidades en castillos y aldeas tienen una menor probabilidad de ser alcanzado. Los elfos en el bosque tienen tambi√©n menor probabilidad de ser alcanzados.
 
 Alineamiento
 
-Cada unidad tiene un alineamiento: legal, neutral o caÛtico. Su alineamiento afecta como rinden en las distintas horas del dÌa. La siguiente tabla ilustra las diferentes horas del dÌa:
+Cada unidad tiene un alineamiento: legal, neutral o ca√≥tico. Su alineamiento afecta como rinden en las distintas horas del d√≠a. La siguiente tabla ilustra las diferentes horas del d√≠a:
 
 
- | turno | fase de dÌa |
+ | turno | fase de d√≠a |
  -----------------------
  |   1   |   amanecer  |
- |   2   |     dÌa     |
- |   3   |     dÌa     |
+ |   2   |     d√≠a     |
+ |   3   |     d√≠a     |
  |   4   |    ocaso    |
  |   5   |    noche    |
  |   6   |    noche    |
 
 
 
-Las unidades que son legales causan un 25% m·s de daÒo de dÌa, y un 25% menos de noche. Las unidades que son caÛticas causan un 25% m·s de daÒo de noche, y 25% menos de dÌa. Las unidades neutrales no se ven afectadas por los ciclos del dÌa y la noche. Ten en cuenta que dentro del juego las dos fases de dÌa y de noche se diferencian como MaÒana, Tarde y Primera guardia, Segunda guardia.
+Las unidades que son legales causan un 25% m√°s de da√±o de d√≠a, y un 25% menos de noche. Las unidades que son ca√≥ticas causan un 25% m√°s de da√±o de noche, y 25% menos de d√≠a. Las unidades neutrales no se ven afectadas por los ciclos del d√≠a y la noche. Ten en cuenta que dentro del juego las dos fases de d√≠a y de noche se diferencian como Ma√±ana, Tarde y Primera guardia, Segunda guardia.
 
-CuraciÛn
+Curaci√≥n
 
-Las unidades heridas que est·n en aldeas recobran 8 puntos de vida cada turno. Las unidades heridas que est·n adyacentes a unidades con las habilidades 'cura' y 'sana' tambiÈn sanar·n.  Las unidades junto a una que tenga la habilidad 'cura' recuperar·n un m·ximo de 4 puntos de vida cada turno, y si la unidad tiene la habilidad 'sana', recuperar·n 8 puntos de vida por turno. Sin embargo, cuantas m·s unidades haya alrededor de la unidad que puede curar, menos puntos de vida recuperar· cada una. La curaciÛn m·xima por unidad es 8 puntos de vida, y por tanto un Troll que estÈ en una aldea solamente recobrar· 8 puntos de vida, no 16. Una unidad que estÈ en una aldea tampoco recibir· curaciÛn extra de sanadores que estÈn junto a Èl.
+Las unidades heridas que est√°n en aldeas recobran 8 puntos de vida cada turno. Las unidades heridas que est√°n adyacentes a unidades con las habilidades 'cura' y 'sana' tambi√©n sanar√°n.  Las unidades junto a una que tenga la habilidad 'cura' recuperar√°n un m√°ximo de 4 puntos de vida cada turno, y si la unidad tiene la habilidad 'sana', recuperar√°n 8 puntos de vida por turno. Sin embargo, cuantas m√°s unidades haya alrededor de la unidad que puede curar, menos puntos de vida recuperar√° cada una. La curaci√≥n m√°xima por unidad es 8 puntos de vida, y por tanto un Troll que est√© en una aldea solamente recobrar√° 8 puntos de vida, no 16. Una unidad que est√© en una aldea tampoco recibir√° curaci√≥n extra de sanadores que est√©n junto a √©l.
 
-'Cura' impide que el envenenamiento cause daÒo mientras que 'sana' elimina el envenenamiento. Cuando se cura el envenenamiento, la unidad no recibe puntos de vida en ese turno.
+'Cura' impide que el envenenamiento cause da√±o mientras que 'sana' elimina el envenenamiento. Cuando se cura el envenenamiento, la unidad no recibe puntos de vida en ese turno.
 
 Experiencia
 
-Las unidades son recompensadas con experiencia por luchar, y tras conseguir suficiente experiencia, avanzan un nivel y se volver·n m·s poderosas.
+Las unidades son recompensadas con experiencia por luchar, y tras conseguir suficiente experiencia, avanzan un nivel y se volver√°n m√°s poderosas.
 
 Multijugador
 
-Puedes servir una partida multijugador con tu cliente o conectarte a un servidor wesnoth y configurar tu partida en Èl. Si sirves la partida con tu cliente, el resto de jugadores necesitar· ser capaz de conectarse al puerto 15000 de tu m·quina.
+Puedes servir una partida multijugador con tu cliente o conectarte a un servidor wesnoth y configurar tu partida en √©l. Si sirves la partida con tu cliente, el resto de jugadores necesitar√° ser capaz de conectarse al puerto 15000 de tu m√°quina.
 
-Servidores p˙blicos:
+Servidores p√∫blicos:
 
  server.wesnoth.org		para versiones estables del juego
  devsrv.wesnoth.org		para versiones de prueba del juego
@@ -137,8 +137,8 @@ Configurando una partida multijugador
 
 Paso 1: Seleciona Multijugador en la pantalla principal. Selecciona servir una partida con tu cliente o conectarse a un servidor y crear la partida.
 
-Paso 2: Selecciona el Mapa y configura las opciones de juego (niebla de guerra, ocultaciÛn, oro por aldea)
+Paso 2: Selecciona el Mapa y configura las opciones de juego (niebla de guerra, ocultaci√≥n, oro por aldea)
 
-Paso 3: Configura los jugadores (equipos/alianzas, oro de comienzo, facciÛn) y esperar a todos los jugadores dispuestos como 'jugador en red' a que se unan a la partida. Podr·s ver el nombre 'jugador en red' reemplazado con el nombre del jugador cuando Èstos se unan.
+Paso 3: Configura los jugadores (equipos/alianzas, oro de comienzo, facci√≥n) y esperar a todos los jugadores dispuestos como 'jugador en red' a que se unan a la partida. Podr√°s ver el nombre 'jugador en red' reemplazado con el nombre del jugador cuando √©stos se unan.
 
 Paso 4: Selecciona [Estoy Listo]

@@ -1,161 +1,161 @@
 /* $Id$ */
 
-Manuál hry Bitva o Wesnoth
+ManuÃ¡l hry Bitva o Wesnoth
 
-Pokud jste novımi hráèi Bitvy o Wesnoth, tak byste si mìli nejprve pøeèíst pøíruèku GettingStarted.
+Pokud jste novÃ½mi hrÃ¡Ã¨i Bitvy o Wesnoth, tak byste si mÃ¬li nejprve pÃ¸eÃ¨Ã­st pÃ¸Ã­ruÃ¨ku GettingStarted.
 
 
-Ovládání
+OvlÃ¡dÃ¡nÃ­
 
- My¹
+ MyÂ¹
 
-  Levé tlaèítko:     Vıbìr a pohyb jednotky
-  Pravé tlaèítko:    Zobrazí hlavní menu nebo zru¹í akci
-  Støední tlaèítko:  Vystøedit podle ukazatele
+  LevÃ© tlaÃ¨Ã­tko:     VÃ½bÃ¬r a pohyb jednotky
+  PravÃ© tlaÃ¨Ã­tko:    ZobrazÃ­ hlavnÃ­ menu nebo zruÂ¹Ã­ akci
+  StÃ¸ednÃ­ tlaÃ¨Ã­tko:  VystÃ¸edit podle ukazatele
 
- Klávesnice
+ KlÃ¡vesnice
 
-  ©ipky:          Rolování
-  Escape:         Ukonèí hru nebo menu
-  z:              Pøiblí¾it
-  x:              Oddálit
-  c:              Nastavit pøiblí¾ení na standardní
-  u:              Vrátí poslední tah (vrátit lze jen rozhodnutelnı tah)
-  r:              Zahraje znovu vrácenı tah
-  n:              Pøepínání mezi jednotkami, které je¹tì mù¾ou táhnout
-  1-7:            Uká¾e, jak daleko mù¾e vybraná jednotka táhnout v daném poètu kol.
-  space:          Ukonèí jednotce tah a pøepne se na dal¹í jednotku, která mù¾e je¹tì táhnout
-  l:              Skoè v mapì na místo, kde je velitel
-  ctrl-f:         Pøepínání mezi celoobrazovkovım a okenním re¾imem
+  Â©ipky:          RolovÃ¡nÃ­
+  Escape:         UkonÃ¨Ã­ hru nebo menu
+  z:              PÃ¸iblÃ­Â¾it
+  x:              OddÃ¡lit
+  c:              Nastavit pÃ¸iblÃ­Â¾enÃ­ na standardnÃ­
+  u:              VrÃ¡tÃ­ poslednÃ­ tah (vrÃ¡tit lze jen rozhodnutelnÃ½ tah)
+  r:              Zahraje znovu vrÃ¡cenÃ½ tah
+  n:              PÃ¸epÃ­nÃ¡nÃ­ mezi jednotkami, kterÃ© jeÂ¹tÃ¬ mÃ¹Â¾ou tÃ¡hnout
+  1-7:            UkÃ¡Â¾e, jak daleko mÃ¹Â¾e vybranÃ¡ jednotka tÃ¡hnout v danÃ©m poÃ¨tu kol.
+  space:          UkonÃ¨Ã­ jednotce tah a pÃ¸epne se na dalÂ¹Ã­ jednotku, kterÃ¡ mÃ¹Â¾e jeÂ¹tÃ¬ tÃ¡hnout
+  l:              SkoÃ¨ v mapÃ¬ na mÃ­sto, kde je velitel
+  ctrl-f:         PÃ¸epÃ­nÃ¡nÃ­ mezi celoobrazovkovÃ½m a okennÃ­m reÂ¾imem
   ctrl-r:         Verbovat jednotku
-  ctrl-shift-r:   Opakovat poslední verbování
-  ctrl-c:         Pøivolat jednotku
-  ctrl-a:         Pøepínaè rychlého herního re¾imu
-  d:              Popis vybrané jednotky
-  ctrl-d:         Hodnocení, jak se vybraná jednotka doká¾e bránit proti útoku
-  ctrl-t:         Zobrazí, jak se vybraná jednotka chová v rùznıch terénech
-  ctrl-s:         Ulo¾it hru
+  ctrl-shift-r:   Opakovat poslednÃ­ verbovÃ¡nÃ­
+  ctrl-c:         PÃ¸ivolat jednotku
+  ctrl-a:         PÃ¸epÃ­naÃ¨ rychlÃ©ho hernÃ­ho reÂ¾imu
+  d:              Popis vybranÃ© jednotky
+  ctrl-d:         HodnocenÃ­, jak se vybranÃ¡ jednotka dokÃ¡Â¾e brÃ¡nit proti Ãºtoku
+  ctrl-t:         ZobrazÃ­, jak se vybranÃ¡ jednotka chovÃ¡ v rÃ¹znÃ½ch terÃ©nech
+  ctrl-s:         UloÂ¾it hru
 
 	  
-Kulièky
+KuliÃ¨ky
 
-Nad ukazatelem ¾ivota, kterı se zobrazuje vedle ka¾dé jednotky, je kulièka.
-Kulièka je:
+Nad ukazatelem Â¾ivota, kterÃ½ se zobrazuje vedle kaÂ¾dÃ© jednotky, je kuliÃ¨ka.
+KuliÃ¨ka je:
 
- * zelená, pokud je jednotka pod na¹í kontrolou a tohle kolo je¹tì netáhla
- * ¾lutá, pokud je jednotka pod na¹í kontrolou a tohle kolo u¾ táhla, ale stále je¹tì táhnout mù¾e
- * èervená, pokud je jednotka pod na¹í kontrolou, ale ji¾ vyu¾ila toto kolo v¹echny své tahy
- * modrá, pokud se jedná o spojeneckou jednotku, ale my ji nemù¾eme ovládat
+ * zelenÃ¡, pokud je jednotka pod naÂ¹Ã­ kontrolou a tohle kolo jeÂ¹tÃ¬ netÃ¡hla
+ * Â¾lutÃ¡, pokud je jednotka pod naÂ¹Ã­ kontrolou a tohle kolo uÂ¾ tÃ¡hla, ale stÃ¡le jeÂ¹tÃ¬ tÃ¡hnout mÃ¹Â¾e
+ * Ã¨ervenÃ¡, pokud je jednotka pod naÂ¹Ã­ kontrolou, ale jiÂ¾ vyuÂ¾ila toto kolo vÂ¹echny svÃ© tahy
+ * modrÃ¡, pokud se jednÃ¡ o spojeneckou jednotku, ale my ji nemÃ¹Â¾eme ovlÃ¡dat
 
-Nepøátelské jednotky nemají ¾ádnou kulièku nad svımi ukazateli ¾ivota. (Ve verzích < 0.5.2 mìli èernou)
+NepÃ¸Ã¡telskÃ© jednotky nemajÃ­ Â¾Ã¡dnou kuliÃ¨ku nad svÃ½mi ukazateli Â¾ivota. (Ve verzÃ­ch < 0.5.2 mÃ¬li Ã¨ernou)
 
 
 Popis
 
-Hra se skládá ze série bitev nebo scénáøù. Ka¾dı scénáø postaví na¹e vojsko proti soupeøovì vojsku. Ka¾dá strana zaèíná s velitelem ve svém tvrzi.
+Hra se sklÃ¡dÃ¡ ze sÃ©rie bitev nebo scÃ©nÃ¡Ã¸Ã¹. KaÂ¾dÃ½ scÃ©nÃ¡Ã¸ postavÃ­ naÂ¹e vojsko proti soupeÃ¸ovÃ¬ vojsku. KaÂ¾dÃ¡ strana zaÃ¨Ã­nÃ¡ s velitelem ve svÃ©m tvrzi.
 
 
-Zla»áky
+ZlaÂ»Ã¡ky
 
-Ka¾dá strana dostane do zaèátku urèité mno¾ství zla»ákù a ka¾dé kolo obdr¾í 2 zla»áky plus 1 zla»ák za ka¾dou vesnici, kterou má pod kontrolou.
+KaÂ¾dÃ¡ strana dostane do zaÃ¨Ã¡tku urÃ¨itÃ© mnoÂ¾stvÃ­ zlaÂ»Ã¡kÃ¹ a kaÂ¾dÃ© kolo obdrÂ¾Ã­ 2 zlaÂ»Ã¡ky plus 1 zlaÂ»Ã¡k za kaÂ¾dou vesnici, kterou mÃ¡ pod kontrolou.
 
-Ka¾dá jednotka má své náklady. Náklady obvykle odpovídají úrovni jednotky. (kouknìte se v¹ak ní¾e na vlastnost 'Vìrnost'). Jednotky, které nejsou pøivolány ani naverbovány -- napø. takové, které vedou stranu nebo se dobrovolnì pøipojí -- nemají ¾ádné náklady. Náklady se platí jen v pøípadì, ¾e celkové náklady jednotek v jedné stranì jsou vìt¹í ne¾ poèet vesnic, které má strana pod kontrolou. Èástka, která se bude platit je rozdílem mezi poètem vesnic a náklady. Tedy formule pro urèení pøíjmu na kolo je:
+KaÂ¾dÃ¡ jednotka mÃ¡ svÃ© nÃ¡klady. NÃ¡klady obvykle odpovÃ­dajÃ­ Ãºrovni jednotky. (kouknÃ¬te se vÂ¹ak nÃ­Â¾e na vlastnost 'VÃ¬rnost'). Jednotky, kterÃ© nejsou pÃ¸ivolÃ¡ny ani naverbovÃ¡ny -- napÃ¸. takovÃ©, kterÃ© vedou stranu nebo se dobrovolnÃ¬ pÃ¸ipojÃ­ -- nemajÃ­ Â¾Ã¡dnÃ© nÃ¡klady. NÃ¡klady se platÃ­ jen v pÃ¸Ã­padÃ¬, Â¾e celkovÃ© nÃ¡klady jednotek v jednÃ© stranÃ¬ jsou vÃ¬tÂ¹Ã­ neÂ¾ poÃ¨et vesnic, kterÃ© mÃ¡ strana pod kontrolou. ÃˆÃ¡stka, kterÃ¡ se bude platit je rozdÃ­lem mezi poÃ¨tem vesnic a nÃ¡klady. Tedy formule pro urÃ¨enÃ­ pÃ¸Ã­jmu na kolo je:
 
- 2 + poèet_vesnic - maximum(0, náklady - poèet_vesnic)
+ 2 + poÃ¨et_vesnic - maximum(0, nÃ¡klady - poÃ¨et_vesnic)
 
-kde náklady odpovídají souètu úrovní v¹ech jednotek, které jsme pøivolali nebo naverbovali.
-
-
-Verbování a pøivolávání
-
-Pokud je velitel v tvrzi a v tom samém hradu je volnı alespoò jeden hexagon, mù¾eme jednotky verbovat za zla»áky kliknutím pravého tlaèítka my¹i a vybrat polo¾ku Verbovat.
-
-Po dokonèení scénáøe nám budou v¹echny pøe¾iv¹í jednotky dostupné v dal¹ím scénáøi. Pøivolání jednotky provedeme kliknutím pravého tlaèítka my¹i a vybráním Pøivolat. Pøivolání stojí 20 zla»ákù.
-
-Mù¾eme nejprve vysvítit volné políèko v hradu a pak naverbovat. Tímto zpùsobem si vybereme políèko, kde se má verbovaná jednotka objevit. Funguje to jak pro verbování, tak pro pøivolávání.
-
-Nemù¾eme táhnout s jednotkou ve stejném kole, kdy byla naverbována nebo pøivolána.
+kde nÃ¡klady odpovÃ­dajÃ­ souÃ¨tu ÃºrovnÃ­ vÂ¹ech jednotek, kterÃ© jsme pÃ¸ivolali nebo naverbovali.
 
 
-Zvlá¹tnosti jednotek
+VerbovÃ¡nÃ­ a pÃ¸ivolÃ¡vÃ¡nÃ­
 
-Zvlá¹tnosti jednotek jsou popsány ve høe pod polo¾kou Popis jednotky.
+Pokud je velitel v tvrzi a v tom samÃ©m hradu je volnÃ½ alespoÃ² jeden hexagon, mÃ¹Â¾eme jednotky verbovat za zlaÂ»Ã¡ky kliknutÃ­m pravÃ©ho tlaÃ¨Ã­tka myÂ¹i a vybrat poloÂ¾ku Verbovat.
+
+Po dokonÃ¨enÃ­ scÃ©nÃ¡Ã¸e nÃ¡m budou vÂ¹echny pÃ¸eÂ¾ivÂ¹Ã­ jednotky dostupnÃ© v dalÂ¹Ã­m scÃ©nÃ¡Ã¸i. PÃ¸ivolÃ¡nÃ­ jednotky provedeme kliknutÃ­m pravÃ©ho tlaÃ¨Ã­tka myÂ¹i a vybrÃ¡nÃ­m PÃ¸ivolat. PÃ¸ivolÃ¡nÃ­ stojÃ­ 20 zlaÂ»Ã¡kÃ¹.
+
+MÃ¹Â¾eme nejprve vysvÃ­tit volnÃ© polÃ­Ã¨ko v hradu a pak naverbovat. TÃ­mto zpÃ¹sobem si vybereme polÃ­Ã¨ko, kde se mÃ¡ verbovanÃ¡ jednotka objevit. Funguje to jak pro verbovÃ¡nÃ­, tak pro pÃ¸ivolÃ¡vÃ¡nÃ­.
+
+NemÃ¹Â¾eme tÃ¡hnout s jednotkou ve stejnÃ©m kole, kdy byla naverbovÃ¡na nebo pÃ¸ivolÃ¡na.
+
+
+ZvlÃ¡Â¹tnosti jednotek
+
+ZvlÃ¡Â¹tnosti jednotek jsou popsÃ¡ny ve hÃ¸e pod poloÂ¾kou Popis jednotky.
 
 
 Vlastnosti
 
-Jednotky mají vlastnosti, které odrá¾í stránky jejich povahy. Vlastnosti jsou jednotkám pøiøazovány náhodnì, kdy¾ jsou vytváøeny. Ka¾dá jednotka dostane dvì vlastnosti. Seznam mo¾nıch vlastností:
+Jednotky majÃ­ vlastnosti, kterÃ© odrÃ¡Â¾Ã­ strÃ¡nky jejich povahy. Vlastnosti jsou jednotkÃ¡m pÃ¸iÃ¸azovÃ¡ny nÃ¡hodnÃ¬, kdyÂ¾ jsou vytvÃ¡Ã¸eny. KaÂ¾dÃ¡ jednotka dostane dvÃ¬ vlastnosti. Seznam moÂ¾nÃ½ch vlastnostÃ­:
 
- Vìrnost:       Náklady na jednotku nikdy nepøesáhnou 1.
- Síla:          Jednotka zpùsobí vìt¹í ¹kodu pøi boji zblízka a má o nìco více ¾ivotù.
- Rychlost:      Jednotka dojde o políèko dál, ale má o nìco ménì ¾ivotù.
- Odolnost:      Jednotka má víc ¾ivotù.
- Chytrost:      Jednotce staèí ménì zku¹eností pro dosa¾ení dal¹í úrovnì.
+ VÃ¬rnost:       NÃ¡klady na jednotku nikdy nepÃ¸esÃ¡hnou 1.
+ SÃ­la:          Jednotka zpÃ¹sobÃ­ vÃ¬tÂ¹Ã­ Â¹kodu pÃ¸i boji zblÃ­zka a mÃ¡ o nÃ¬co vÃ­ce Â¾ivotÃ¹.
+ Rychlost:      Jednotka dojde o polÃ­Ã¨ko dÃ¡l, ale mÃ¡ o nÃ¬co mÃ©nÃ¬ Â¾ivotÃ¹.
+ Odolnost:      Jednotka mÃ¡ vÃ­c Â¾ivotÃ¹.
+ Chytrost:      Jednotce staÃ¨Ã­ mÃ©nÃ¬ zkuÂ¹enostÃ­ pro dosaÂ¾enÃ­ dalÂ¹Ã­ ÃºrovnÃ¬.
 
 
 Pohyb
 
-Kdy¾ klikneme na jednotku, vysvítí se v¹echna políèka, kam lze v tomto kole táhnout, zatímco políèka, na která nelze táhnout z¹ednou. Staèí pak kliknout na hexagon, kam chceme táhnout. Tah na vesnici, která je neutrální nebo vlastnìna nepøítelem, znamená, ¾e nad ní pøevezmeme kontrolu. Pokud vybereme cíl, kterı je za hranicí dosahu v jednom kole, tak jednotka vstoupí do 'goto-módu' a pokraèuje v cestì i v dal¹ích tazích. Na zaèátku kola mù¾eme 'goto' tahy snadno odvolávat. 'goto-mód' zru¹íme vybráním jednotky a urèením nového cíle.
+KdyÂ¾ klikneme na jednotku, vysvÃ­tÃ­ se vÂ¹echna polÃ­Ã¨ka, kam lze v tomto kole tÃ¡hnout, zatÃ­mco polÃ­Ã¨ka, na kterÃ¡ nelze tÃ¡hnout zÂ¹ednou. StaÃ¨Ã­ pak kliknout na hexagon, kam chceme tÃ¡hnout. Tah na vesnici, kterÃ¡ je neutrÃ¡lnÃ­ nebo vlastnÃ¬na nepÃ¸Ã­telem, znamenÃ¡, Â¾e nad nÃ­ pÃ¸evezmeme kontrolu. Pokud vybereme cÃ­l, kterÃ½ je za hranicÃ­ dosahu v jednom kole, tak jednotka vstoupÃ­ do 'goto-mÃ³du' a pokraÃ¨uje v cestÃ¬ i v dalÂ¹Ã­ch tazÃ­ch. Na zaÃ¨Ã¡tku kola mÃ¹Â¾eme 'goto' tahy snadno odvolÃ¡vat. 'goto-mÃ³d' zruÂ¹Ã­me vybrÃ¡nÃ­m jednotky a urÃ¨enÃ­m novÃ©ho cÃ­le.
 
-Nemù¾eme táhnout pøes hexagony pøilehlé k nepøátelské jednotce (její oblast kontroly) bez zastavení.
+NemÃ¹Â¾eme tÃ¡hnout pÃ¸es hexagony pÃ¸ilehlÃ© k nepÃ¸Ã¡telskÃ© jednotce (jejÃ­ oblast kontroly) bez zastavenÃ­.
 
 
 Souboj
 
-Kdy¾ pøesuneme jednotku vedle nepøátelské jednotky, tak mù¾eme útoèit. Klikneme na vlastní jednotku, která sousedí s nepøátelskou, a pak na nepøátelskou sousední jednotku, kterou chceme napadnout. Ka¾dá jednotka má jednu nebo více zbraní, se kterımi mù¾e útoèit. Nìkteré zbranì (jako je meè) jsou na blízko a nìkteré (jako je luk) na dálku.
+KdyÂ¾ pÃ¸esuneme jednotku vedle nepÃ¸Ã¡telskÃ© jednotky, tak mÃ¹Â¾eme ÃºtoÃ¨it. Klikneme na vlastnÃ­ jednotku, kterÃ¡ sousedÃ­ s nepÃ¸Ã¡telskou, a pak na nepÃ¸Ã¡telskou sousednÃ­ jednotku, kterou chceme napadnout. KaÂ¾dÃ¡ jednotka mÃ¡ jednu nebo vÃ­ce zbranÃ­, se kterÃ½mi mÃ¹Â¾e ÃºtoÃ¨it. NÃ¬kterÃ© zbranÃ¬ (jako je meÃ¨) jsou na blÃ­zko a nÃ¬kterÃ© (jako je luk) na dÃ¡lku.
 
-Jestli¾e útoèíme se zbraní na blízko, tak nepøítel bude moci vrátit útok se svojí zbraní na blízko. Pokud útoèíme se zbraní na dálku, tak nepøítel bude moci vrátit útok svojí zbraní na dálku, jestli nìjakou má.
+JestliÂ¾e ÃºtoÃ¨Ã­me se zbranÃ­ na blÃ­zko, tak nepÃ¸Ã­tel bude moci vrÃ¡tit Ãºtok se svojÃ­ zbranÃ­ na blÃ­zko. Pokud ÃºtoÃ¨Ã­me se zbranÃ­ na dÃ¡lku, tak nepÃ¸Ã­tel bude moci vrÃ¡tit Ãºtok svojÃ­ zbranÃ­ na dÃ¡lku, jestli nÃ¬jakou mÃ¡.
 
-Rùzné druhy útokù pùsobí rùznì velké ¹kody a ka¾dá zbraò má rùznı poèet úderù. Napøíklad Elfí voják udìlá ka¾dım zásahem ¹kodu za 5 bodù a mù¾e udeøit ètyøikrát. Obecnì to zapisujeme jako 5-4.
+RÃ¹znÃ© druhy ÃºtokÃ¹ pÃ¹sobÃ­ rÃ¹znÃ¬ velkÃ© Â¹kody a kaÂ¾dÃ¡ zbraÃ² mÃ¡ rÃ¹znÃ½ poÃ¨et ÃºderÃ¹. NapÃ¸Ã­klad ElfÃ­ vojÃ¡k udÃ¬lÃ¡ kaÂ¾dÃ½m zÃ¡sahem Â¹kodu za 5 bodÃ¹ a mÃ¹Â¾e udeÃ¸it Ã¨tyÃ¸ikrÃ¡t. ObecnÃ¬ to zapisujeme jako 5-4.
 
-Ka¾dá jednotka má urèitou pravdìpodobnost, ¾e bude zasa¾ena, která závisí na terénu. Jednotky v hradech a vesnicích mají men¹í ¹anci bıt zasa¾eny. Elfové mají v lese malou ¹anci, ¾e budou zasa¾eni.
+KaÂ¾dÃ¡ jednotka mÃ¡ urÃ¨itou pravdÃ¬podobnost, Â¾e bude zasaÂ¾ena, kterÃ¡ zÃ¡visÃ­ na terÃ©nu. Jednotky v hradech a vesnicÃ­ch majÃ­ menÂ¹Ã­ Â¹anci bÃ½t zasaÂ¾eny. ElfovÃ© majÃ­ v lese malou Â¹anci, Â¾e budou zasaÂ¾eni.
 
 
-Zaøazení
+ZaÃ¸azenÃ­
 
-Ka¾dá jednotka patøí do nìkteré ze skupin denní, neutrální a noèní. Zaøazení ovlivòuje vıkon jednotky v rùznıch èástech dne. Následující tabulka ilustruje jednotlivé èásti dne:
+KaÂ¾dÃ¡ jednotka patÃ¸Ã­ do nÃ¬kterÃ© ze skupin dennÃ­, neutrÃ¡lnÃ­ a noÃ¨nÃ­. ZaÃ¸azenÃ­ ovlivÃ²uje vÃ½kon jednotky v rÃ¹znÃ½ch Ã¨Ã¡stech dne. NÃ¡sledujÃ­cÃ­ tabulka ilustruje jednotlivÃ© Ã¨Ã¡sti dne:
 
- | kolo |  èást dne  |
+ | kolo |  Ã¨Ã¡st dne  |
  ---------------------
- |  1   |   úsvit    |
+ |  1   |   Ãºsvit    |
  |  2   |   den      |
  |  3   |   den      |
  |  4   |   soumrak  |
  |  5   |   noc      |
  |  6   |   noc      |
 
-Jednotky, které jsou denní, zvládnou pøes den zpùsobit o 25% vìt¹í zranìní a o 25% men¹í v noci. Noèní jednotky pùsobí o 25% vìt¹í ¹kodu v noci a pøes den o 25% men¹í. Neutrální jednotky nejsou bìhem boje nijak ovlivnìny støídáním dne a noci. Poznamenejme, ¾e ve høe jsou dvì fáze "dne" a "noci" rozli¹ovány jako Ráno, Odpoledne a První hlídka, Druhá hlídka.
+Jednotky, kterÃ© jsou dennÃ­, zvlÃ¡dnou pÃ¸es den zpÃ¹sobit o 25% vÃ¬tÂ¹Ã­ zranÃ¬nÃ­ a o 25% menÂ¹Ã­ v noci. NoÃ¨nÃ­ jednotky pÃ¹sobÃ­ o 25% vÃ¬tÂ¹Ã­ Â¹kodu v noci a pÃ¸es den o 25% menÂ¹Ã­. NeutrÃ¡lnÃ­ jednotky nejsou bÃ¬hem boje nijak ovlivnÃ¬ny stÃ¸Ã­dÃ¡nÃ­m dne a noci. Poznamenejme, Â¾e ve hÃ¸e jsou dvÃ¬ fÃ¡ze "dne" a "noci" rozliÂ¹ovÃ¡ny jako RÃ¡no, Odpoledne a PrvnÃ­ hlÃ­dka, DruhÃ¡ hlÃ­dka.
 
 
-Léèení
+LÃ©Ã¨enÃ­
 
-Zranìnım jednotkám ve vesnicích se ka¾dé kolo obnoví 8 ¾ivotù. Zranìné jednotky, které máme vedle jednotek se schopností 'léèení' nebo 'uzdravení', budou také léèeny. Jednotka poblí¾ jednotky se schopností 'léèení' bude vyléèena maximálnì o 4 body za kolo a o 8 ¾ivotù za kolo, pokud to bude jednotka se schopností 'uzdravení'. Av¹ak èím víc budeme mít jednotek kolem jednotky, co umí léèit, tím ménì bude ka¾dá vyléèena. Jednotka se mù¾e vyléèit za jedno kolo maximálnì o 8 ¾ivotù, a proto se trol ve vesnici vyléèí jen o 8 ¾ivotù, a ne o 16. Ani jednotka, která je ve vesnici, se nám nebude léèit víc jak 8 bodù za tah, i kdy¾ budou vedle stát léèitelé.
+ZranÃ¬nÃ½m jednotkÃ¡m ve vesnicÃ­ch se kaÂ¾dÃ© kolo obnovÃ­ 8 Â¾ivotÃ¹. ZranÃ¬nÃ© jednotky, kterÃ© mÃ¡me vedle jednotek se schopnostÃ­ 'lÃ©Ã¨enÃ­' nebo 'uzdravenÃ­', budou takÃ© lÃ©Ã¨eny. Jednotka poblÃ­Â¾ jednotky se schopnostÃ­ 'lÃ©Ã¨enÃ­' bude vylÃ©Ã¨ena maximÃ¡lnÃ¬ o 4 body za kolo a o 8 Â¾ivotÃ¹ za kolo, pokud to bude jednotka se schopnostÃ­ 'uzdravenÃ­'. AvÂ¹ak Ã¨Ã­m vÃ­c budeme mÃ­t jednotek kolem jednotky, co umÃ­ lÃ©Ã¨it, tÃ­m mÃ©nÃ¬ bude kaÂ¾dÃ¡ vylÃ©Ã¨ena. Jednotka se mÃ¹Â¾e vylÃ©Ã¨it za jedno kolo maximÃ¡lnÃ¬ o 8 Â¾ivotÃ¹, a proto se trol ve vesnici vylÃ©Ã¨Ã­ jen o 8 Â¾ivotÃ¹, a ne o 16. Ani jednotka, kterÃ¡ je ve vesnici, se nÃ¡m nebude lÃ©Ã¨it vÃ­c jak 8 bodÃ¹ za tah, i kdyÂ¾ budou vedle stÃ¡t lÃ©Ã¨itelÃ©.
 
-'Léèení' brání otravì zpùsobovat zranìní zatímco 'uzdravení' otravu vyléèí. Kdy¾ se léèí otrava, jednotce nepøibıvají ¾ivoty.
-
-
-Zku¹enost
-
-Jednotky jsou oceòovány zku¹eností z boje. Po dosa¾ení urèitého mno¾ství zku¹eností budou povı¹eny na vy¹¹í úroveò a stanou se u¾iteènìjsími.
+'LÃ©Ã¨enÃ­' brÃ¡nÃ­ otravÃ¬ zpÃ¹sobovat zranÃ¬nÃ­ zatÃ­mco 'uzdravenÃ­' otravu vylÃ©Ã¨Ã­. KdyÂ¾ se lÃ©Ã¨Ã­ otrava, jednotce nepÃ¸ibÃ½vajÃ­ Â¾ivoty.
 
 
-Hra pro více hráèù
+ZkuÂ¹enost
 
-Hostovat hru pro více hráèù mù¾eme pomocí klienta nebo se pøipojit k hernímu serveru s Wesnothem a vytvoøit vlastní hru. Pokud hostujeme hru s klientem, tak se ostatní hráèi musí bıt schopni pøipojit k na¹emu poèítaèi na port 15000.
+Jednotky jsou oceÃ²ovÃ¡ny zkuÂ¹enostÃ­ z boje. Po dosaÂ¾enÃ­ urÃ¨itÃ©ho mnoÂ¾stvÃ­ zkuÂ¹enostÃ­ budou povÃ½Â¹eny na vyÂ¹Â¹Ã­ ÃºroveÃ² a stanou se uÂ¾iteÃ¨nÃ¬jsÃ­mi.
 
-Veøejné servery:
 
- server.wesnoth.org        pro stabilní verze hry
- devsrv.wesnoth.org        pro testovací verze hry
+Hra pro vÃ­ce hrÃ¡Ã¨Ã¹
+
+Hostovat hru pro vÃ­ce hrÃ¡Ã¨Ã¹ mÃ¹Â¾eme pomocÃ­ klienta nebo se pÃ¸ipojit k hernÃ­mu serveru s Wesnothem a vytvoÃ¸it vlastnÃ­ hru. Pokud hostujeme hru s klientem, tak se ostatnÃ­ hrÃ¡Ã¨i musÃ­ bÃ½t schopni pÃ¸ipojit k naÂ¹emu poÃ¨Ã­taÃ¨i na port 15000.
+
+VeÃ¸ejnÃ© servery:
+
+ server.wesnoth.org        pro stabilnÃ­ verze hry
+ devsrv.wesnoth.org        pro testovacÃ­ verze hry
  devsrv.wesnoth.org:14999  pro CVS verze hry
 
 
-Vytvoøení hry pro více hráèù
+VytvoÃ¸enÃ­ hry pro vÃ­ce hrÃ¡Ã¨Ã¹
 
-Krok 1: vybereme Více hráèù z hlavní obrazovky, vybereme Hostitelskou hru pro více hráèù nebo pøipojit k serveru
+Krok 1: vybereme VÃ­ce hrÃ¡Ã¨Ã¹ z hlavnÃ­ obrazovky, vybereme Hostitelskou hru pro vÃ­ce hrÃ¡Ã¨Ã¹ nebo pÃ¸ipojit k serveru
 
-Krok 2: vybereme mapu a provedeme herní nastavení (mlha války, ochrana tmy, zla»ákù z vesnice)
+Krok 2: vybereme mapu a provedeme hernÃ­ nastavenÃ­ (mlha vÃ¡lky, ochrana tmy, zlaÂ»Ã¡kÃ¹ z vesnice)
 
-Krok 3: nastavíme hráèe (tımy a aliance, mno¾ství zla»ákù na zaèátku, frakce), a pak poèkáme a¾ se v¹ichni hráèi, kteøí mají nastaveno 'hráè po síti' pøipojí ke høe, uvidíte místo 'hráè po síti' jeho pøezdívku.
+Krok 3: nastavÃ­me hrÃ¡Ã¨e (tÃ½my a aliance, mnoÂ¾stvÃ­ zlaÂ»Ã¡kÃ¹ na zaÃ¨Ã¡tku, frakce), a pak poÃ¨kÃ¡me aÂ¾ se vÂ¹ichni hrÃ¡Ã¨i, kteÃ¸Ã­ majÃ­ nastaveno 'hrÃ¡Ã¨ po sÃ­ti' pÃ¸ipojÃ­ ke hÃ¸e, uvidÃ­te mÃ­sto 'hrÃ¡Ã¨ po sÃ­ti' jeho pÃ¸ezdÃ­vku.
 
-Krok 4: klikneme na [Jsem pøipraven]
+Krok 4: klikneme na [Jsem pÃ¸ipraven]
