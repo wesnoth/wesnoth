@@ -31,6 +31,7 @@ namespace {
 			first_time = false;
 			scoped_sdl_surface surf(SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,32,0xFF0000,0xFF00,0xFF,0xFF000000));
 			format = *surf->format;
+			format.palette = NULL;
 		}
 
 		return format;
@@ -46,7 +47,10 @@ SDL_Surface* make_neutral_surface(SDL_Surface* surf)
 	}
 
 	SDL_Surface* const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
-	SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+	if(result != NULL) {
+		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
+	}
+
 	return result;
 }
 
@@ -111,7 +115,14 @@ SDL_Surface* clone_surface(SDL_Surface* surface)
 		return NULL;
 
 	SDL_Surface* const result = SDL_DisplayFormatAlpha(surface);
-	SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
+	if(result == surface) {
+		std::cerr << "resulting surface is the same as the source!!!\n";
+	}
+
+	if(result != NULL) {
+		SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
+	}
+
 	return result;
 }
 
@@ -246,6 +257,11 @@ SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 	scoped_sdl_surface surf(make_neutral_surface(surface));
 	std::cerr << "~+\n";
 
+	if(surf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
+
 	{
 		surface_lock lock(surf);
 		Uint32* beg = lock.pixels();
@@ -274,6 +290,10 @@ SDL_Surface* greyscale_image(SDL_Surface* surface)
 		return NULL;
 
 	scoped_sdl_surface surf(make_neutral_surface(surface));
+	if(surf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return NULL;
+	}
 
 	{
 		surface_lock lock(surf);
@@ -510,13 +530,18 @@ private:
 
 SDL_Rect get_non_transperant_portion(SDL_Surface* surface)
 {
+	SDL_Rect res = {0,0,0,0};
 	const scoped_sdl_surface surf(make_neutral_surface(surface));
+	if(surf == NULL) {
+		std::cerr << "failed to make neutral surface\n";
+		return res;
+	}
+
 	const not_alpha calc(*(surf->format));
 
 	surface_lock lock(surf);
 	const Uint32* const pixels = lock.pixels();
 
-	SDL_Rect res = {0,0,0,0};
 	size_t n;
 	for(n = 0; n != surf->h; ++n) {
 		const Uint32* const start_row = pixels + n*surf->w;

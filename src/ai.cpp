@@ -322,9 +322,9 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	std::cout << "analysis took " << time_taken << " ticks\n";
 
 	if(choice_rating > 0.0) {
-		const location& from   = choice_it->movements[0].first;
-		const location& to     = choice_it->movements[0].second;
-		const location& target_loc = choice_it->target;
+		location from   = choice_it->movements[0].first;
+		location to     = choice_it->movements[0].second;
+		location target_loc = choice_it->target;
 		const int weapon = choice_it->weapons[0];
 
 		const unit_map::const_iterator tgt = units_.find(target_loc);

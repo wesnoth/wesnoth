@@ -227,6 +227,8 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 		int lawful_bonus,
 		const team* tm, const unit_map* units, const std::vector<team>* teams)
 {
+	verify_minimap("start getMinimap");
+
 	SDL_Surface* minimap = NULL;
 	if(minimap == NULL) {
 		std::cerr << "x\n";
@@ -243,8 +245,8 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 			return NULL;
 
 		typedef mini_terrain_cache_map cache_map;
-		//cache_map& cache = mini_terrain_cache;
-		static cache_map cache;
+		cache_map& cache = mini_terrain_cache;
+		//static cache_map cache;
 
 		std::cerr << "outputting map: " << map.x() << "," << map.y() << "\n";
 		for(int y = 0; y != map.y(); ++y) {
@@ -283,6 +285,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 						}
 
 						i = cache.insert(cache_map::value_type(terrain,surf)).first;
+						verify_minimap("after insert");
 					} else {
 						std::cerr << "e\n";
 						surf = i->second;
@@ -291,6 +294,11 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 					if(fogged) {
 						std::cerr << "f\n";
 						scoped_surface.assign(adjust_surface_colour(surf,-50,-50,-50));
+						if(scoped_surface == NULL) {
+							std::cerr << "ERROR: failed to adjust surface colour\n";
+							continue;
+						}
+
 						surf = scoped_surface;
 					}
 
@@ -308,6 +316,8 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 		}
 	}
 
+	verify_minimap("a end getMinimap");
+
 	std::cerr << "k\n";
 
 	if(minimap->w != w || minimap->h != h) {
@@ -321,8 +331,21 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 	}
 	std::cerr << "xxx\n";
 
+	verify_minimap("end getMinimap");
+
 	return minimap;
 }
 
+void verify_minimap(const std::string& tag)
+{
+	std::cerr << "BEGIN verify minimap: '" << tag << "'\n";
+	typedef mini_terrain_cache_map cache_map;
+	cache_map& cache = mini_terrain_cache;
+	for(cache_map::iterator i = cache.begin(); i != cache.end(); ++i) {
+		SDL_Surface* const surf = adjust_surface_colour(i->second,-50,-50,-50);
+		SDL_FreeSurface(surf);
+	}
+	std::cerr << "END verify minimap: '" << tag << "'\n";
+}
 
 }

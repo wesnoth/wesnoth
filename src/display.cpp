@@ -57,7 +57,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
 					   invalidateGameStatus_(true), panelsDrawn_(false),
-					   currentTeam_(0), activeTeam_(0), hideEnergy_(false), updatesLocked_(0),
+					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
+					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area())
 {
@@ -456,6 +457,7 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {
+	image::verify_minimap("begin display::draw");
 	log_scope("display::draw");
 	if(!panelsDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
@@ -534,6 +536,7 @@ void display::draw(bool update,bool force)
 	}
 
 	std::cerr << "ret\n";
+	image::verify_minimap("end display::draw");
 }
 
 void display::update_display()
