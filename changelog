@@ -1,5 +1,5 @@
 CVS HEAD:
- * Added UNIT and PLACE_IMAGE macros to utils.cfg
+ * Added UNIT, UNDEAD_UNIT, and PLACE_IMAGE macros to utils.cfg
  * terrain improvements
   * fixed swamp transition (NW, SE) graphics
   * added new terrains, 'N' ruined castle, 'Q' sunken ruin, 'q' swamp-ruin, and 'k' river ford
@@ -13,6 +13,10 @@ CVS HEAD:
  * campaign modifications
   * tutorial polishing
   * updated HttT, TDH, TRoW, SotBE, and the Tutorial to use the new [objectives] tag
+  * updated 'The Siege of Elensefar', 'Mountian Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (HttT & TRoW).
+  * updated the behaviour of the thieves in 'The Siege of Elensefar'
+  * updated Haldric's portrait in TRoW
+  * added graphics for generic Lich-Lords and the Archmages in 'The Sewer of Southbay' (TRoW)
   * updated HttT and TRoW to use the ruined keeps where appropriate
   * dialog improvements in EI
   * new map for Drowned Plains (EI)
@@ -49,6 +53,8 @@ CVS HEAD:
   * added new multiplayer map: Icy Waters
   * changed King_of_the_Hill to use a Dwarvish Castle
   * messages are now displayed in the user's colour when prefixed with /me
+  * added the map 'Clash'
+  * split the map and scenario file for 'An Island'
  * fixed bug that made the ai recruit badly
  * added debug command to give gold to current side
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
