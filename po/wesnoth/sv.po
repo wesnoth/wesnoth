@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.10-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2005-02-09 13:23+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -1385,7 +1385,6 @@ msgstr "Ja!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Nej"
 
@@ -2008,7 +2007,6 @@ msgstr "Vill du se över de färdigheter du lärde dig på den här nivån?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ja"
 
@@ -7671,7 +7669,7 @@ msgstr "+Bidrag"
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Stäng"
 
@@ -7996,7 +7994,7 @@ msgstr "Välj svårighetsgrad:"
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -8385,12 +8383,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Tillåt användare som inte spelar att beskåda spelet"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Ok"
 
@@ -8778,7 +8775,7 @@ msgstr "Kunde inte automatspara spelet. Var vänlig och spara spelet manuellt."
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Fel"
 
@@ -9047,10 +9044,6 @@ msgstr "Fientlig by"
 msgid "Allied village"
 msgstr "Allierad by"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Hjälp"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Träningsspel"
@@ -9138,6 +9131,9 @@ msgstr "lagenlig"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid "Help"
+#~ msgstr "Hjälp"
 
 #~ msgid "Delete File"
 #~ msgstr "Radera fil"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2005-02-11 22:35+0100\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
@@ -1075,7 +1075,6 @@ msgstr "Ita!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Non"
 
@@ -1548,7 +1547,6 @@ msgstr "Visne ullas peritias revidere quae in hac missione didiscisti?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ita"
 
@@ -7018,7 +7016,7 @@ msgstr "+Qui confert"
 msgid "+Bots"
 msgstr "+Automata"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Claudere"
 
@@ -7339,7 +7337,7 @@ msgstr "Gradum difficultatis elige:"
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -7723,12 +7721,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Utentes qui non ludent permittere lusum adspectare"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Abrogare"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Bene"
 
@@ -8112,7 +8109,7 @@ msgstr "Non poteram lusum automatice servare. Amabo, serva eum manu."
 msgid "Rename Unit"
 msgstr "Unitatem Renominare"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Mendum"
 
@@ -8375,10 +8372,6 @@ msgstr "Pagus inimicus"
 msgid "Allied village"
 msgstr "Pagus socius"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Auxilium"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Schola"
@@ -8466,6 +8459,9 @@ msgstr "lucis"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "crepusculi"
+
+#~ msgid "Help"
+#~ msgstr "Auxilium"
 
 #~ msgid "Delete File"
 #~ msgstr "Pligam Delere"

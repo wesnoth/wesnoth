@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2005-01-29 19:34+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team:  <wesnoth-ca@ettin.org>\n"
@@ -1393,7 +1393,6 @@ msgstr "Si!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "No"
 
@@ -2008,7 +2007,6 @@ msgstr "Voleu revisar alguna de les questions que heu après en aquest nivell?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Si"
 
@@ -7530,7 +7528,7 @@ msgstr "+Col·laboradors"
 msgid "+Bots"
 msgstr "+Robots"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Tanca"
 
@@ -7853,7 +7851,7 @@ msgstr "Seleccioneu el nivell de dificultat:"
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "kB"
 
@@ -8237,12 +8235,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Permet que altres usuaris observin la partida"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "D'acord"
 
@@ -8631,7 +8628,7 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Renomena unitat"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Error"
 
@@ -8896,10 +8893,6 @@ msgstr "Llogaret enemic"
 msgid "Allied village"
 msgstr "Llogaret aliat"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Ajuda"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Tutoria"
@@ -8985,6 +8978,9 @@ msgstr "legal"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid "Help"
+#~ msgstr "Ajuda"
 
 #~ msgid "Delete File"
 #~ msgstr "Suprimeix fitxer"

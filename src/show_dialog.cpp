@@ -13,6 +13,8 @@
 
 #include "global.hpp"
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "config.hpp"
 #include "cursor.hpp"
 #include "events.hpp"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
 "Last-Translator: Pasi Kallinen <paxed@alt.org>\n"
 "Language-Team: none\n"
@@ -1055,7 +1055,6 @@ msgstr "Kyllä!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Ei"
 
@@ -1556,7 +1555,6 @@ msgstr "Haluatko tallentaa uusinnan tästä skenaariosta?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -6323,7 +6321,7 @@ msgstr ""
 msgid "+Bots"
 msgstr "Bonus"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Sulje"
 
@@ -6651,7 +6649,7 @@ msgstr "Valitse vaikeustaso:"
 msgid "B"
 msgstr "KB"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -7053,12 +7051,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Salli muiden käyttäjien tarkkailla pelin kulkua"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Hyväksy"
 
@@ -7457,7 +7454,7 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Nimeä yksikkö"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Virhe"
 
@@ -7721,10 +7718,6 @@ msgstr "Viholliskylä"
 msgid "Allied village"
 msgstr "Ystävällinen kylä"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Apua"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Harjoittelu"
@@ -7812,6 +7805,9 @@ msgstr "lainkuuliainen"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "neutraali"
+
+#~ msgid "Help"
+#~ msgstr "Apua"
 
 #~ msgid "Delete File"
 #~ msgstr "Tuhoa tiedosto"

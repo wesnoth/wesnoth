@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2004-10-19 20:28-0000\n"
 "Last-Translator: Pieter Vermeylen <pitoe@iname.com>\n"
 "Language-Team: none\n"
@@ -1077,7 +1077,6 @@ msgstr "Ja!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Nee"
 
@@ -1576,7 +1575,6 @@ msgstr "Wil je een vaardigheid die je op dit niveau hebt geleerd nakijken?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ja"
 
@@ -6891,7 +6889,7 @@ msgstr "+Bijdragers"
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Sluit"
 
@@ -7217,7 +7215,7 @@ msgstr "Kies de moeilijkheidsgraad:"
 msgid "B"
 msgstr "KB"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -7615,12 +7613,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Sta spelers die het spel niet spelen toe om het spel te bekijken."
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Ok"
 
@@ -8016,7 +8013,7 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Hernoem Eenheid"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Error"
 
@@ -8278,10 +8275,6 @@ msgstr "Vijandig Dorp"
 msgid "Allied village"
 msgstr "Geallieerd Dorp"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Help"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Oefenen"
@@ -8368,6 +8361,9 @@ msgstr "rechtvaardig"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "neutraal"
+
+#~ msgid "Help"
+#~ msgstr "Help"
 
 #~ msgid "Delete File"
 #~ msgstr "Verwijder Bestand"

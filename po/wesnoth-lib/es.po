@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.6-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-11-09 01:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
@@ -236,7 +236,7 @@ msgstr "Hablar con aliados"
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Ayuda"
 
@@ -451,3 +451,31 @@ msgstr "Guardar accesos rápidos"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Esa combinación ya se está usando."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Error"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Aceptar"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Sí"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "No"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "KB"

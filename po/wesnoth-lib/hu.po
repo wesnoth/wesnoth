@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-12-23 20:01+0100\n"
 "Last-Translator: Automatically generated <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -238,7 +238,7 @@ msgstr "Szólás a szövetségesekhez"
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Segítség"
 
@@ -454,3 +454,31 @@ msgstr "Gyorsbillentyűk mentése"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van"
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Hiba"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Oké"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr ""
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Ne!"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Mégse"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Bezár"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "KB"

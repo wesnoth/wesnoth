@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2005-01-26 20:11+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -1382,7 +1382,6 @@ msgstr "Да!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Нет"
 
@@ -2020,7 +2019,6 @@ msgstr "Вы хотите посмотреть уроки, которые был
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Да"
 
@@ -7617,7 +7615,7 @@ msgstr "+Помощники"
 msgid "+Bots"
 msgstr "+Боты"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Закрыть"
 
@@ -7941,7 +7939,7 @@ msgstr "Выберите уровень сложности:"
 msgid "B"
 msgstr "Байт"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "КБайт"
 
@@ -8328,12 +8326,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Разрешить наблюдать за игрой"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Ok"
 
@@ -8721,7 +8718,7 @@ msgstr "Авто-сохранение игры невозможно. Сохра�
 msgid "Rename Unit"
 msgstr "Переименовать соединение"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Ошибка"
 
@@ -8991,10 +8988,6 @@ msgstr "Деревня врага"
 msgid "Allied village"
 msgstr "Союзническая деревня"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Помощь"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Обучение"
@@ -9082,6 +9075,9 @@ msgstr "порядочный"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "нейтральный"
+
+#~ msgid "Help"
+#~ msgstr "Помощь"
 
 #~ msgid "Delete File"
 #~ msgstr "Удалить файл"

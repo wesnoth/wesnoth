@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2005-01-22 17:58+0100\n"
 "Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
 "Language-Team: none\n"
@@ -237,7 +237,7 @@ msgstr "Mów do sprzymierzeńca"
 msgid "Speak to All"
 msgstr "Mów do wszystkich"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Pomoc"
 
@@ -453,3 +453,31 @@ msgstr "Zapisz skróty klawiszowe."
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Ten skrót już jest używany."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Błąd"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Ok"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Tak"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Nie"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Zamknij"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "KB"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-11-15 22:21+0100\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -239,7 +239,7 @@ msgstr "Mluv ke spojencům"
 msgid "Speak to All"
 msgstr "Mluv ke všem"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Nápověda"
 
@@ -453,3 +453,31 @@ msgstr "Ulož klávesové zkratky"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Tato zkratka je již použita pro jinou akci."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Chyba"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "OK"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Ano"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Ne"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Zavřít"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "kB"

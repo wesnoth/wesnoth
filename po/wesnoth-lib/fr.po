@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -237,7 +237,7 @@ msgstr "Parler aux alliés"
 msgid "Speak to All"
 msgstr "Parler à tous"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Aide"
 
@@ -449,3 +449,31 @@ msgstr "Sauver les touches de raccourci"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Cette touche est déjà utilisée."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Erreur"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Ok"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Oui"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Non"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Fermer"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "Ko"

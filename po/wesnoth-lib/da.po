@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-11-15 22:21+0100\n"
 "Last-Translator: Mathias Bundgaard Svensson <freaken@freaken.dk>\n"
 "Language-Team:  <da@li.org>\n"
@@ -239,7 +239,7 @@ msgstr "Til til Allieret"
 msgid "Speak to All"
 msgstr "Tal til Alle"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Hjælp"
 
@@ -452,3 +452,31 @@ msgstr "Gem Genvejstaster"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Denne Genvejstast er allerede i brug."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Fejl"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Ok"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Ja"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Nej"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Annuller"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Luk"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "kB"

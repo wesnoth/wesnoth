@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2004-12-08 16:20+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team:  <ca@li.org>\n"
@@ -239,7 +239,7 @@ msgstr "Parla als aliats"
 msgid "Speak to All"
 msgstr "Parla a tothom"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Ajuda"
 
@@ -450,3 +450,31 @@ msgstr "Desa dreceres de teclat"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Aquesta tecla ja està en ús."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Error"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "D'acord"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Si"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "No"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Tanca"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "kB"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.10+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2005-02-09 09:38+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: none\n"
@@ -233,7 +233,7 @@ msgstr "Speak to Ally"
 msgid "Speak to All"
 msgstr "Speak to All"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Help"
 
@@ -446,3 +446,31 @@ msgstr "Save Hotkeys"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "This Hotkey is already in use."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Error"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "OK"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Yes"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "No"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Close"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "KB"

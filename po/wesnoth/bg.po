@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2004-12-20 19:16+0200\n"
 "Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
@@ -1091,7 +1091,6 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr ""
 
@@ -1564,7 +1563,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr ""
 
@@ -6440,7 +6438,7 @@ msgstr ""
 msgid "+Bots"
 msgstr ""
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr ""
 
@@ -6753,7 +6751,7 @@ msgstr ""
 msgid "B"
 msgstr ""
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr ""
 
@@ -7137,12 +7135,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Позволи на хората, които не играят, да наблюдават играта. "
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Отказ"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Приеми"
 
@@ -7538,7 +7535,7 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Преименувай еденица"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr ""
 
@@ -7805,10 +7802,6 @@ msgstr "Противниково селище"
 msgid "Allied village"
 msgstr "Селище на съюзник"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Помощ"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Ръководство"
@@ -7894,6 +7887,9 @@ msgstr "праведен/праведна"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "неутрален/неутрална"
+
+#~ msgid "Help"
+#~ msgstr "Помощ"
 
 #~ msgid "Delete File"
 #~ msgstr "Изтрий файла"

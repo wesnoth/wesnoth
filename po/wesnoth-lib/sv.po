@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.10-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2005-01-30 15:44+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -237,7 +237,7 @@ msgstr "Tala med allierad"
 msgid "Speak to All"
 msgstr "Tala med alla"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Hjälp"
 
@@ -452,3 +452,31 @@ msgstr "Spara snabbtangenter"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Den tangenten används redan till något annat."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Fel"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Ok"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Ja"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Nej"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Stäng"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "KB"

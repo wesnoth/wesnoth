@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2004-09-10 15:28+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1059,7 +1059,6 @@ msgstr "Ja!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Nei"
 
@@ -1566,7 +1565,6 @@ msgstr "Vil du lagre hendelsene som skjedde i dette scenariet?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ja"
 
@@ -6785,7 +6783,7 @@ msgstr "+Medvirkende"
 msgid "+Bots"
 msgstr "+ 'Bots'"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Lukk"
 
@@ -7111,7 +7109,7 @@ msgstr "Velg vanskelighetsgrad:"
 msgid "B"
 msgstr "KB"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -7512,12 +7510,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Tillat brukere som ikke spiller å følge med på spillet"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "OK"
 
@@ -7916,7 +7913,7 @@ msgstr "Kunne ikke lagre spillet automatisk. Du bør lagre spillet manuelt."
 msgid "Rename Unit"
 msgstr "Gi enheten nytt navn"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Feil"
 
@@ -8188,10 +8185,6 @@ msgstr "Landsby"
 msgid "Allied village"
 msgstr "Gnomisk Plyndrer"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Hjelp"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Opplæring"
@@ -8279,6 +8272,9 @@ msgstr "lovlydig"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "Nøytral"
+
+#~ msgid "Help"
+#~ msgstr "Hjelp"
 
 #~ msgid "Delete File"
 #~ msgstr "Slett fil"

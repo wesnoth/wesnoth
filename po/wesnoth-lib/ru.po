@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:57+0100\n"
+"POT-Creation-Date: 2005-02-12 16:20+0100\n"
 "PO-Revision-Date: 2005-01-26 20:30+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
@@ -242,7 +242,7 @@ msgstr "Сказать союзникам"
 msgid "Speak to All"
 msgstr "Сказать всем"
 
-#: src/hotkeys.cpp:101
+#: src/hotkeys.cpp:101 src/show_dialog.cpp:649
 msgid "Help"
 msgstr "Помощь"
 
@@ -455,3 +455,31 @@ msgstr "Сохранить"
 #: src/preferences.cpp:1194
 msgid "This HotKey is already in use."
 msgstr "Данная клавиша уже используется."
+
+#: src/show_dialog.cpp:390
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/show_dialog.cpp:486 src/show_dialog.cpp:499
+msgid "Ok"
+msgstr "Ok"
+
+#: src/show_dialog.cpp:492
+msgid "Yes"
+msgstr "Да"
+
+#: src/show_dialog.cpp:493
+msgid "No"
+msgstr "Нет"
+
+#: src/show_dialog.cpp:500 src/show_dialog.cpp:506
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/show_dialog.cpp:512
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/show_dialog.cpp:962
+msgid "KB"
+msgstr "КБайт"

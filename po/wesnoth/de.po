@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:35+0100\n"
+"POT-Creation-Date: 2005-02-12 16:25+0100\n"
 "PO-Revision-Date: 2005-02-09 00:09+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
@@ -1465,7 +1465,6 @@ msgstr "Ja"
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/Basic_Training.cfg:276
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:268
-#: src/show_dialog.cpp:491
 msgid "No"
 msgstr "Nein"
 
@@ -2122,7 +2121,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#: src/show_dialog.cpp:490
 msgid "Yes"
 msgstr "Ja"
 
@@ -8082,7 +8080,7 @@ msgstr "+Mitarbeiter"
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:327 src/help.cpp:2569 src/show_dialog.cpp:510
+#: src/about.cpp:327 src/help.cpp:2569
 msgid "Close"
 msgstr "Schließen"
 
@@ -8408,7 +8406,7 @@ msgstr "Schwierigkeitsgrad auswählen:"
 msgid "B"
 msgstr "B"
 
-#: src/game.cpp:1027 src/show_dialog.cpp:960
+#: src/game.cpp:1027
 msgid "KB"
 msgstr "KB"
 
@@ -8801,12 +8799,11 @@ msgid "Allow users who are not playing to watch the game"
 msgstr "Erlaubt es, das Spiel als Unbeteiligter zu betrachten"
 
 #: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
-#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:498
-#: src/show_dialog.cpp:504
+#: src/multiplayer_connect.cpp:56
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:484 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:127
 msgid "Ok"
 msgstr "Okay"
 
@@ -9210,7 +9207,7 @@ msgstr ""
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542
 msgid "Error"
 msgstr "Fehler"
 
@@ -9483,10 +9480,6 @@ msgstr "Gegnerisches Dorf"
 msgid "Allied village"
 msgstr "Verbündetes Dorf"
 
-#: src/show_dialog.cpp:647
-msgid "Help"
-msgstr "Hilfe"
-
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
 msgstr "Einführung"
@@ -9574,6 +9567,9 @@ msgstr "redlich"
 #: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "neutral"
+
+#~ msgid "Help"
+#~ msgstr "Hilfe"
 
 #~ msgid "Delete File"
 #~ msgstr "Datei löschen"
