@@ -1,3 +1,4 @@
+#include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "display.hpp"
@@ -83,7 +84,7 @@ SDL_Surface* load_image_file(image::locator i_locator)
 {
 	SDL_Surface* surf = NULL;
 
-	const std::string images_path = "images/";
+	static const std::string images_path = "images/";
 	const std::string images_filename = images_path + i_locator.filename;
 
 	if(game_config::path.empty() == false) {
@@ -94,6 +95,11 @@ SDL_Surface* load_image_file(image::locator i_locator)
 	
 	if(surf == NULL) {
 		surf = IMG_Load(images_filename.c_str());
+	}
+
+	if(surf == NULL) {
+		const std::string user_image = get_user_data_dir() + "/" + images_filename;
+		surf = IMG_Load(user_image.c_str());
 	}
 
 	return surf;
