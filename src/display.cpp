@@ -1743,7 +1743,7 @@ void display::blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect
 	SDL_Rect dst = {x,y,0,0};
 	
 	if(clip_rect != NULL) {
-		const clip_rect_setter(target,*clip_rect);
+		const clip_rect_setter clip_setter(target,*clip_rect);
 		SDL_BlitSurface(surface,srcrect,target,&dst);
 	} else {
 		SDL_BlitSurface(surface,srcrect,target,&dst);
