@@ -37,6 +37,9 @@ uninstall-local:
 	  echo " rm -f '$(DESTDIR)$(pkgdatadir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+dist-hook:
+	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
+	( $(finddata) ) | tar cf - -T - | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
 	@UTIL_FILES@
