@@ -197,7 +197,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 				(**sd)["description"] = preferences::login();
 				first = false;
 			} else {
-				(**sd)["controller"] = "network";
+				(**sd)["controller"] = "ai";
 				(**sd)["description"] = "";
 			}
 		}
