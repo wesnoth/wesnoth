@@ -17,7 +17,7 @@ namespace {
 
 default_map_generator::default_map_generator(const config* cfg)
 : width_(40), height_(40), island_size_(0), iterations_(1000), hill_size_(10), max_lakes_(20),
-  nvillages_(25), nplayers_(2)
+  nvillages_(25), nplayers_(2), link_castles_(true)
 {
 	if(cfg != NULL) {
 		cfg_ = *cfg;
@@ -177,6 +177,13 @@ void default_map_generator::user_config(display& disp)
 	landform_slider.set_max(max_landform);
 	landform_slider.set_value(island_size_);
 
+	SDL_Rect link_rect = slider_rect;
+	link_rect.y = link_rect.y + link_rect.h + vertical_margin;
+
+	gui::button link_castles(disp,string_table["link_castles"],gui::button::TYPE_CHECK);
+	link_castles.set_check(link_castles_);
+	link_castles.set_location(link_rect);
+
 	for(bool draw = true;; draw = false) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -204,6 +211,7 @@ void default_map_generator::user_config(display& disp)
 		hillsize_slider.set_dirty();
 		villages_slider.set_dirty();
 		landform_slider.set_dirty();
+		link_castles.set_dirty();
 
 		width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 		height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
@@ -250,6 +258,8 @@ void default_map_generator::user_config(display& disp)
 		SDL_Delay(10);
 		events::pump();
 	}
+
+	link_castles_ = link_castles.checked();
 }
 
 std::string default_map_generator::name() const { return "default"; }
@@ -284,7 +294,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 		std::cerr << "calculated coastal params...\n";
 	}
 
-	return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,labels,cfg_);
+	return default_generate_map(width_,height_,island_size,island_off_center,iterations,hill_size_,max_lakes,(nvillages_*width_*height_)/1000,nplayers_,link_castles_,labels,cfg_);
 }
 
 config default_map_generator::create_scenario(const std::vector<std::string>& args)
@@ -305,9 +315,11 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	std::cerr << "done generating map..\n";
 
 	for(std::map<gamemap::location,std::string>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
-		config& label = res.add_child("label");
-		label["text"] = i->second;
-		i->first.write(label);
+		if(i->first.x >= 0 && i->first.y >= 0 && i->first.x < width_ && i->first.y < height_) {
+			config& label = res.add_child("label");
+			label["text"] = i->second;
+			i->first.write(label);
+		}
 	}
 
 	return res;

@@ -76,7 +76,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 	era_ = era;
 
-	if(scenario_data.empty()) {
+	if(scenario_data.child("side") == NULL) {
 		//Load a saved game
 		save_ = true;
 		bool show_replay = false;

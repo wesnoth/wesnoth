@@ -37,7 +37,8 @@ map_generator* create_map_generator(const std::string& name, const config* cfg);
 
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
-								 size_t max_lakes, size_t nvillages, size_t nplayers, std::map<gamemap::location,std::string>* labels,
+								 size_t max_lakes, size_t nvillages, size_t nplayers,
+								 bool roads_between_castles, std::map<gamemap::location,std::string>* labels,
 						         const config& cfg);
 
 #endif

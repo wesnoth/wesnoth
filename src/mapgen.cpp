@@ -62,6 +62,8 @@ namespace {
 typedef std::vector<std::vector<int> > height_map;
 typedef std::vector<std::vector<char> > terrain_map;
 
+typedef gamemap::location location;
+
 //basically we generate alot of hills, each hill being centered at a certain point, with a certain radius - being a half sphere.
 //Hills are combined additively to form a bumpy surface
 //The size of each hill varies randomly from 1-hill_size.
@@ -191,29 +193,32 @@ height_map generate_height_map(size_t width, size_t height,
 //'lake_fall_off' % chance to make another water tile in each of the directions n,s,e,w.
 //In each of the directions it does make another water tile, it will have 'lake_fall_off'/2 %
 //chance to make another water tile in each of the directions. This will continue recursively.
-void generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off)
+bool generate_lake(terrain_map& terrain, int x, int y, int lake_fall_off, std::set<location>& locs_touched)
 {
 	if(x < 0 || y < 0 || size_t(x) >= terrain.size() || size_t(y) >= terrain.front().size()) {
-		return;
+		return false;
 	}
 
 	terrain[x][y] = 'c';
+	locs_touched.insert(location(x,y));
 
 	if((rand()%100) < lake_fall_off) {
-		generate_lake(terrain,x+1,y,lake_fall_off/2);
+		generate_lake(terrain,x+1,y,lake_fall_off/2,locs_touched);
 	}
 
 	if((rand()%100) < lake_fall_off) {
-		generate_lake(terrain,x-1,y,lake_fall_off/2);
+		generate_lake(terrain,x-1,y,lake_fall_off/2,locs_touched);
 	}
 
 	if((rand()%100) < lake_fall_off) {
-		generate_lake(terrain,x,y+1,lake_fall_off/2);
+		generate_lake(terrain,x,y+1,lake_fall_off/2,locs_touched);
 	}
 
 	if((rand()%100) < lake_fall_off) {
-		generate_lake(terrain,x,y-1,lake_fall_off/2);
+		generate_lake(terrain,x,y-1,lake_fall_off/2,locs_touched);
 	}
+
+	return true;
 }
 
 typedef gamemap::location location;
@@ -274,11 +279,16 @@ bool generate_river_internal(const height_map& heights, terrain_map& terrain, in
 	return false;
 }
 
-void generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
+std::vector<location> generate_river(const height_map& heights, terrain_map& terrain, int x, int y, int river_uphill)
 {
 	std::vector<location> river;
 	std::set<location> seen_locations;
-	generate_river_internal(heights,terrain,x,y,river,seen_locations,river_uphill);
+	const bool res = generate_river_internal(heights,terrain,x,y,river,seen_locations,river_uphill);
+	if(!res) {
+		river.clear();
+	}
+
+	return river;
 }
 
 //function to return a random tile at one of the borders of a map that is
@@ -360,7 +370,7 @@ double road_path_calculator::cost(const location& loc, double so_far) const
 	const config* const child = cfg_.find_child("road_cost","terrain",terrain);
 	double res = 100000.0;
 	if(child != NULL) {
-		res = double(atoi((*child)["cost"].c_str()));
+		res = double(atof((*child)["cost"].c_str()));
 	}
 
 	cache_.insert(std::pair<char,double>(c,res));
@@ -624,7 +634,10 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 	const std::vector<std::string>& options = config::split(string_table[id]);
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
-
+		const std::string& name = name_generator.generate_name(unit_race::MALE);
+		std::map<std::string,std::string> table;
+		table["name"] = name;
+		return config::interpolate_variables_into_string(options[choice],&table);
 	}
 
 	return "";
@@ -635,7 +648,7 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 //function to generate the map.
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
-						         size_t max_lakes, size_t nvillages, size_t nplayers,
+						         size_t max_lakes, size_t nvillages, size_t nplayers, bool roads_between_castles,
 								 std::map<gamemap::location,std::string>* labels, const config& cfg)
 {
 	//odd widths are nasty, so make them even
@@ -706,14 +719,47 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//we attempt to place 'max_lakes' lakes. Each lake will be placed at a random location,
 	//if that random location meets the minimum terrain requirements for a lake.
 	//We will also attempt to source a river from each lake.
+	std::set<location> lake_locs;
+
 	const int nlakes = max_lakes > 0 ? (rand()%max_lakes) : 0;
 	for(size_t lake = 0; lake != nlakes; ++lake) {
 		for(int tries = 0; tries != 100; ++tries) {
 			const int x = rand()%width;
 			const int y = rand()%height;
 			if(heights[x][y] > atoi(cfg["min_lake_height"].c_str())) {
-				generate_river(heights,terrain,x,y,atoi(cfg["river_frequency"].c_str()));
-				generate_lake(terrain,x,y,atoi(cfg["lake_size"].c_str()));
+				const std::vector<location> river = generate_river(heights,terrain,x,y,atoi(cfg["river_frequency"].c_str()));
+				
+				if(river.empty() == false && labels != NULL) {
+					const std::string& name = generate_name(name_generator,"river_name");
+					size_t name_frequency = 20;
+					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
+						if(((r - river.begin())%name_frequency) == name_frequency/2) {
+							labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(r->x-width/3,r->y-height/3),name));
+						}
+					}
+				}
+
+				std::set<location> locs;
+				const bool res = generate_lake(terrain,x,y,atoi(cfg["lake_size"].c_str()),locs);
+				if(res && labels != NULL) {
+					bool touches_other_lake = false;
+
+					//only generate a name if the lake hasn't touched any other lakes, so that we
+					//don't end up with one big lake with multiple names
+					for(std::set<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+						if(lake_locs.count(*i) != 0) {
+							touches_other_lake = true;
+						}
+
+						lake_locs.insert(*i);
+					}
+
+					if(!touches_other_lake) {
+						const std::string& name = generate_name(name_generator,"lake_name");
+						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+					}
+				}
+
 				break;
 			}
 		}
@@ -786,104 +832,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 	}
 
-	std::cerr << "placing roads...\n";
-
-	//place roads. We select two tiles at random locations on the borders of the map,
-	//and try to build roads between them.
-	const size_t nroads = atoi(cfg["roads"].c_str());
-	for(size_t road = 0; road != nroads; ++road) {
-
-		//we want the locations to be on the portion of the map we're actually going
-		//to use, since roads on other parts of the map won't have any influence,
-		//and doing it like this will be quicker.
-		location src = random_point_at_side(width/3 + 2,height/3 + 2);
-		location dst = random_point_at_side(width/3 + 2,height/3 + 2);
-		src.x += width/3 - 1;
-		src.y += height/3 - 1;
-		dst.x += width/3 - 1;
-		dst.y += height/3 - 1;
-
-		//if the road isn't very interesting (on the same border), don't draw it
-		if(src.x == dst.x || src.y == dst.y) {
-			continue;
-		}
-
-		const road_path_calculator calc(terrain,cfg);
-		if(calc.cost(src,0.0) >= 1000.0 || calc.cost(dst,0.0) >= 1000.0) {
-			continue;
-		}
-
-		//search a path out for the road
-		const paths::route rt = a_star_search(src,dst,1000.0,calc);
-
-		//draw the road. If the search failed, rt.steps will simply be empty
-		for(std::vector<location>::const_iterator step = rt.steps.begin(); step != rt.steps.end(); ++step) {
-			const int x = step->x;
-			const int y = step->y;
-
-			if(x < 0 || y < 0 || x >= width || y >= height)
-				continue;
-
-			//find the configuration which tells us what to convert this tile to
-			//to make it into a road.
-			const std::string str(1,terrain[x][y]);
-			const config* const child = cfg.find_child("road_cost","terrain",str);
-			if(child != NULL) {
-				//convert to bridge means that we want to convert depending
-				//upon the direction the road is going.
-				//typically it will be in a format like,
-				//convert_to_bridge=|,/,\
-				// '|' will be used if the road is going north-south
-				// '/' will be used if the road is going south west-north east
-				// '\' will be used if the road is going south east-north west
-				//the terrain will be left unchanged otherwise (if there is no clear
-				//direction)
-				const std::string& convert_to_bridge = (*child)["convert_to_bridge"];
-				if(convert_to_bridge.empty() == false) {
-					if(step == rt.steps.begin() || step+1 == rt.steps.end())
-						continue;
-
-					const location& last = *(step-1);
-					const location& next = *(step+1);
-
-					location adj[6];
-					get_adjacent_tiles(*step,adj);
-
-					size_t direction = 0;
-
-					//if we are going north-south
-					if(last == adj[0] && next == adj[3] || last == adj[3] && next == adj[0]) {
-						direction = 0;
-					}
-					
-					//if we are going south west-north east
-					else if(last == adj[1] && next == adj[4] || last == adj[4] && next == adj[1]) {
-						direction = 1;
-					}
-					
-					//if we are going south east-north west
-					else if(last == adj[2] && next == adj[5] || last == adj[5] && next == adj[2]) {
-						direction = 2;
-					} else {
-						continue;
-					}
-
-					const std::vector<std::string> items = config::split(convert_to_bridge);
-					if(direction < items.size() && items[direction].empty() == false) {
-						terrain[x][y] = items[direction][0];
-					}
-
-					continue;
-				}
-
-				//just a plain terrain substitution for a road
-				const std::string& convert_to = (*child)["convert_to"];
-				if(convert_to.empty() == false)
-					terrain[x][y] = convert_to[0];
-			}
-		}
-	}
-
 	std::cerr << "placing villages...\n";
 	//place villages in a 'grid', to make placing fair, but with villages
 	//displaced from their position according to terrain and randomness, to
@@ -909,10 +857,13 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//we try again. Definition of 'well-placed' is if no two castles are closer than
 	//'min_distance' hexes from each other, and the castles appear on a terrain listed
 	//in 'valid_terrain'.
+	std::vector<location> castles;
 	int ntries = 0;
 	bool placing_bad = true;
 	const size_t max_tries = 4;
 	while(placing_bad && ntries++ < max_tries) {
+
+		castles.clear();
 
 		int min_x = width/3 + 2;
 		int min_y = height/3 + 2;
@@ -933,7 +884,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			max_y = minimum<int>(max_y,island_bot);
 		}
 
-		std::vector<location> castles;
 		for(size_t player = 0; player != nplayers; ++player) {
 			int x = 0, y = 0;
 			const int max_tries = 10;
@@ -1010,22 +960,158 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 
 		std::cerr << "placing " << castles.size() << " castles\n";
+	}
 
-		//plonk down the castles.
-		for(c = castles.begin(); c != castles.end(); ++c) {
-			const int x = c->x;
-			const int y = c->y;
-			const int player = c - castles.begin();
-			terrain[x][y] = '1' + player;
-			terrain[x-1][y] = 'C';
-			terrain[x+1][y] = 'C';
-			terrain[x][y-1] = 'C';
-			terrain[x][y+1] = 'C';
-			terrain[x-1][y-1] = 'C';
-			terrain[x-1][y+1] = 'C';
-			terrain[x+1][y-1] = 'C';
-			terrain[x+1][y+1] = 'C';
+	std::cerr << "placing roads...\n";
+
+	//place roads. We select two tiles at random locations on the borders of the map,
+	//and try to build roads between them.
+	size_t nroads = atoi(cfg["roads"].c_str());
+	if(roads_between_castles) {
+		nroads += castles.size()*castles.size();
+	}
+
+	for(size_t road = 0; road != nroads; ++road) {
+
+		//we want the locations to be on the portion of the map we're actually going
+		//to use, since roads on other parts of the map won't have any influence,
+		//and doing it like this will be quicker.
+		location src = random_point_at_side(width/3 + 2,height/3 + 2);
+		location dst = random_point_at_side(width/3 + 2,height/3 + 2);
+
+		src.x += width/3 - 1;
+		src.y += height/3 - 1;
+		dst.x += width/3 - 1;
+		dst.y += height/3 - 1;
+
+		if(roads_between_castles && road < castles.size()*castles.size()) {
+			const size_t src_castle = road/castles.size();
+			const size_t dst_castle = road%castles.size();
+			if(src_castle == dst_castle) {
+				continue;
+			}
+
+			src = castles[src_castle];
+			dst = castles[dst_castle];
 		}
+
+
+		//if the road isn't very interesting (on the same border), don't draw it
+		else if(src.x == dst.x || src.y == dst.y) {
+			continue;
+		}
+
+		const road_path_calculator calc(terrain,cfg);
+		if(calc.cost(src,0.0) >= 1000.0 || calc.cost(dst,0.0) >= 1000.0) {
+			continue;
+		}
+
+		//search a path out for the road
+		const paths::route rt = a_star_search(src,dst,1000.0,calc);
+
+		const std::string& name = generate_name(name_generator,"road_name");
+		const int name_frequency = 20;
+		int name_count = 0;
+
+		bool on_bridge = false;
+
+		//draw the road. If the search failed, rt.steps will simply be empty
+		for(std::vector<location>::const_iterator step = rt.steps.begin(); step != rt.steps.end(); ++step) {
+			const int x = step->x;
+			const int y = step->y;
+
+			if(x < 0 || y < 0 || x >= width || y >= height)
+				continue;
+
+			//find the configuration which tells us what to convert this tile to
+			//to make it into a road.
+			const std::string str(1,terrain[x][y]);
+			const config* const child = cfg.find_child("road_cost","terrain",str);
+			if(child != NULL) {
+				//convert to bridge means that we want to convert depending
+				//upon the direction the road is going.
+				//typically it will be in a format like,
+				//convert_to_bridge=|,/,\
+				// '|' will be used if the road is going north-south
+				// '/' will be used if the road is going south west-north east
+				// '\' will be used if the road is going south east-north west
+				//the terrain will be left unchanged otherwise (if there is no clear
+				//direction)
+				const std::string& convert_to_bridge = (*child)["convert_to_bridge"];
+				if(convert_to_bridge.empty() == false) {
+					if(step == rt.steps.begin() || step+1 == rt.steps.end())
+						continue;
+
+					const location& last = *(step-1);
+					const location& next = *(step+1);
+
+					location adj[6];
+					get_adjacent_tiles(*step,adj);
+
+					int direction = -1;
+
+					//if we are going north-south
+					if(last == adj[0] && next == adj[3] || last == adj[3] && next == adj[0]) {
+						direction = 0;
+					}
+					
+					//if we are going south west-north east
+					else if(last == adj[1] && next == adj[4] || last == adj[4] && next == adj[1]) {
+						direction = 1;
+					}
+					
+					//if we are going south east-north west
+					else if(last == adj[2] && next == adj[5] || last == adj[5] && next == adj[2]) {
+						direction = 2;
+					}
+
+					if(on_bridge == false) {
+						on_bridge = true;
+						const std::string& name = generate_name(name_generator,"bridge_name");
+						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+					}
+
+					if(direction != -1) {
+						const std::vector<std::string> items = config::split(convert_to_bridge);
+						if(size_t(direction) < items.size() && items[direction].empty() == false) {
+							terrain[x][y] = items[direction][0];
+						}
+
+						continue;
+					}
+				} else {
+					on_bridge = false;
+				}
+
+				//just a plain terrain substitution for a road
+				const std::string& convert_to = (*child)["convert_to"];
+				if(convert_to.empty() == false) {
+					if(labels != NULL && terrain[x][y] != convert_to[0] && name_count++ == name_frequency && on_bridge == false) {
+						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+						name_count = 0;
+					}
+
+					terrain[x][y] = convert_to[0];
+				}
+			}
+		}
+	}
+
+
+	//now that road drawing is done, we can plonk down the castles.
+	for(std::vector<location>::const_iterator c = castles.begin(); c != castles.end() && placing_bad == false; ++c) {
+		const int x = c->x;
+		const int y = c->y;
+		const int player = c - castles.begin();
+		terrain[x][y] = '1' + player;
+		terrain[x-1][y] = 'C';
+		terrain[x+1][y] = 'C';
+		terrain[x][y-1] = 'C';
+		terrain[x][y+1] = 'C';
+		terrain[x-1][y-1] = 'C';
+		terrain[x-1][y+1] = 'C';
+		terrain[x+1][y-1] = 'C';
+		terrain[x+1][y+1] = 'C';
 	}
 
 	if(nvillages > 0) {

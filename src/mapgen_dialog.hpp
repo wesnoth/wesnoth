@@ -21,6 +21,7 @@ private:
 	std::string generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels=NULL);
 
 	size_t width_, height_, island_size_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;
+	bool link_castles_;
 	config cfg_;
 };
 
