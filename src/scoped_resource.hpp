@@ -29,7 +29,7 @@ namespace util
 * Usage example, for working with files:
 *
 * @code
-* struct close_file { void operator(int fd) const {close(fd);} };
+* struct close_file { void operator()(int fd) const {close(fd);} };
 * ...
 * {
 *    const scoped_resource<int,close_file> file(open("file.txt",O_RDONLY));
@@ -49,7 +49,6 @@ template<typename T,typename ReleasePolicy>
 class scoped_resource
 {
 	T resource;
-	ReleasePolicy release;
 
 	//prohibited operations
 	scoped_resource(const scoped_resource&);
@@ -62,10 +61,9 @@ public:
   * Constructor
 	*
 	* @ param res This is the resource to be managed
-	* @ param rel This is the functor to release the object
   */
-	scoped_resource(resource_type res=resource_type(),release_type rel=release_type())
-			: resource(res), release(rel) {}
+	scoped_resource(resource_type res = resource_type())
+			: resource(res) {}
 
   /**
   * The destructor is the main point in this class. It takes care of proper
@@ -73,7 +71,7 @@ public:
 	*/
 	~scoped_resource()
 	{
-		release(resource);
+		release_type()(resource);
 	}
 
   /**
@@ -100,7 +98,7 @@ public:
 	resource_type operator->() const { return resource; }
 
 	void assign(const resource_type& o) {
-		release(resource);
+		release_type()(resource);
 		resource = o;
 	}
 };
