@@ -66,9 +66,6 @@ void server::run()
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
 
-				std::cerr << "from " << (int)sock << " received: "
-				          << data.write() << "\n-----\n";
-
 				//if someone who is not yet logged in is sending
 				//login details
 				if(not_logged_in_.is_member(sock)) {
@@ -247,8 +244,7 @@ void server::run()
 
 							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
 							if(desc != vg.second) {
-								gamelist->remove_child("game",desc - vg.first);
-								delete *desc;
+								delete gamelist->remove_child("game",desc - vg.first);
 							}
 
 							//put the players back in the lobby and send

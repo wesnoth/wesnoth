@@ -692,7 +692,7 @@ void config::clear_children(const std::string& key)
 	children.erase(key);
 }
 
-void config::remove_child(const std::string& key, size_t index)
+config* config::remove_child(const std::string& key, size_t index)
 {
 	//remove from the ordering
 	const child_pos pos(children.find(key),index);
@@ -709,7 +709,9 @@ void config::remove_child(const std::string& key, size_t index)
 	//remove from the child map
 	child_list& v = children[key];
 	assert(index < v.size());
+	config* const res = v[index];
 	v.erase(v.begin()+index);
+	return res;
 }
 
 std::string& config::operator[](const std::string& key)
