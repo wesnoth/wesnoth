@@ -389,7 +389,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	}
 
 	const preferences::display_manager prefs_disp_manager(&gui);
-	const tooltips::manager tooltips_manager(gui);
+	const tooltips::manager tooltips_manager(gui.video());
 
 	LOG_NG << "b... " << (SDL_GetTicks() - ticks) << "\n";
 

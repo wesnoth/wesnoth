@@ -1,10 +1,10 @@
 #include "global.hpp"
 
-#include "display.hpp"
 #include "font.hpp"
+#include "sdl_utils.hpp"
 #include "show_dialog.hpp"
 #include "tooltips.hpp"
-#include "sdl_utils.hpp"
+#include "video.hpp"
 
 #include <vector>
 
@@ -21,7 +21,7 @@ bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 	return xoverlap && yoverlap;
 }
 
-display* display_ = NULL;
+CVideo* video_ = NULL;
 
 struct tooltip
 {
@@ -59,14 +59,14 @@ void clear_tooltip()
 
 void show_tooltip(const tooltip& tip)
 {
-	if(display_ == NULL) {
+	if(video_ == NULL) {
 		return;
 	}
 
 	clear_tooltip();
 
 	const SDL_Color bgcolour = {0,0,0,128};
-	SDL_Rect area = display_->screen_area();
+	SDL_Rect area = screen_area();
 	tooltip_handle = font::add_floating_label(tip.message,font_size,font::NORMAL_COLOUR,
 	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,10);
 
@@ -93,16 +93,16 @@ void show_tooltip(const tooltip& tip)
 
 namespace tooltips {
 
-manager::manager(display& disp)
+manager::manager(CVideo& video)
 {
 	clear_tooltips();
-	display_ = &disp;
+	video_ = &video;
 }
 
 manager::~manager()
 {
 	clear_tooltips();
-	display_ = NULL;
+	video_ = NULL;
 }
 
 void clear_tooltips()

@@ -1,6 +1,7 @@
 #ifndef TOOLTIPS_HPP_INCLUDED
 #define TOOLTIPS_HPP_INCLUDED
 
+class CVideo;
 class display;
 
 #include "SDL.h"
@@ -9,7 +10,7 @@ namespace tooltips {
 
 struct manager
 {
-	manager(display& disp);
+	manager(CVideo& disp);
 	~manager();
 };
 

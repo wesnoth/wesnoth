@@ -32,7 +32,7 @@ namespace mp {
 create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	ui(disp, cfg, c, gamelist),
 
-	tooltip_manager_(disp),
+	tooltip_manager_(disp.video()),
 	map_selection_(-1),
 
 	maps_menu_(disp, std::vector<std::string>()),
