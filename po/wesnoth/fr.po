@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-14 23:50+0100\n"
-"PO-Revision-Date: 2004-11-09 21:42+0100\n"
+"PO-Revision-Date: 2004-11-15 22:27+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -1055,7 +1055,7 @@ msgid ""
 "of dominating the centre island. North-West: Forest dominated area, North-"
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
-msgstr ""
+msgstr "Une carte pour 4 joueurs, convenant à un jeu individuel ou par équipes, la victoire reposant sur le contrôle de l'île centrale.  Au nord-ouest une zone à dominante forestière, au nord-est des plaines partiellement enneigées, au sud-ouest des plaines partiellement désertiques, et au sud-est une zone à dominante montagneuse."
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -1069,9 +1069,8 @@ msgstr ""
 "d'or par village."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
-#, fuzzy
 msgid "The Broken Bridge"
-msgstr "Les hordes sombres"
+msgstr "Le pont brisé"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -2141,7 +2140,6 @@ msgstr ""
 "Chaque case a un terrain, lequel donne à la case des propriétés distinctes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2152,14 +2150,7 @@ msgid ""
 "a percentage which determines the unit's chance to be hit on that terrain. "
 "For example; elves have 70% defense in woods, and are therefore hit 30% of "
 "the time."
-msgstr ""
-"Les propriétés du village et du château ont déjà été présentées. Mais la "
-"majorité des terrains ont des propriétés plus subtiles qui consistent en des "
-"bonus ou malus selon les unités. La première propriété d'un terrain est son "
-"coût en point de mouvement pour y pénétrer. La seconde est la défense que "
-"procure le terrain à l'unité. C'est un pourcentage qui représente la "
-"probabilité de ne pas être touché. Par exemple, les elfes ont 70% de défense "
-"en forêt et ne sont donc touchés que 30% du temps."
+msgstr "Les propriétés du village et du château ont déjà été présentées. Mais la majorité des terrains ont des propriétés plus subtiles qui consistent en des bonus ou malus selon les unités. La première propriété d'un terrain est son coût en point de mouvement pour y pénétrer. La seconde est la défense que procure le terrain à l'unité. C'est un pourcentage qui détermine la probabilité d'être touché en étant sur ce terrain. Par exemple, les elfes ont 70% de défense en forêt et ne sont donc touchés que 30% du temps."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
@@ -6051,9 +6042,8 @@ msgstr ""
 "et d'eau. Ils attaquent en projetant de l'eau bouillante sur leurs ennemis."
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Guerrier"
+msgstr "Combattant naga"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -6065,13 +6055,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Combattant ondin"
+msgstr "Combattante naga"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Myrmidon naga"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -6083,8 +6072,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:38
+#, fuzzy
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Myrmidon naga"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -6096,9 +6086,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Guerrier saurien"
+msgstr "Guerrier naga"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -6111,9 +6100,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Guerrier saurien"
+msgstr "Guerrière naga"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -7489,9 +7477,8 @@ msgid "+Contributors"
 msgstr "+Contributeurs"
 
 #: src/about.cpp:256
-#, fuzzy
 msgid "+Bots"
-msgstr "+ Bots"
+msgstr "+Bots"
 
 #: src/about.cpp:292 src/help.cpp:2564 src/show_dialog.cpp:496
 msgid "Close"
@@ -7840,9 +7827,8 @@ msgid "Error communicating with the server."
 msgstr "Erreur de communication avec le serveur."
 
 #: src/game.cpp:1046
-#, fuzzy
 msgid ",Name,Version,Author,Downloads,Size"
-msgstr ",Nom,Version,Auteur,Téléchargements"
+msgstr ",Nom,Version,Auteur,Téléchargements,Taille"
 
 #: src/game.cpp:1065
 msgid "B"
@@ -8943,10 +8929,6 @@ msgstr "Supprimer le fichier"
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
 
-#, fuzzy
-#~ msgid "Strength Potion"
-#~ msgstr "Potion de glace"
-
 #~ msgid ""
 #~ "Only the most experienced and heroic Dragoons can achieve to ride the "
 #~ "battlefield as Cavaliers. Armed with magical artifacts, keen swords and "
@@ -9341,16 +9323,6 @@ msgstr "La suppression du fichier a échoué."
 #~ msgstr ""
 #~ "&noble-fighter.png,Guerrier,(facile);*&noble-commander.png,Commandant;"
 #~ "&noble-lord.png,Seigneur,(difficile)"
-
-# à quoi correspondent ces trois chaînes ?
-#~ msgid "{END_MESSAGE}"
-#~ msgstr "{END_MESSAGE}"
-
-#~ msgid "{QUESTION}"
-#~ msgstr "{QUESTION}"
-
-#~ msgid "{ANSWER}"
-#~ msgstr "{ANSWER}"
 
 #~ msgid "Approaching Weldyn"
 #~ msgstr "L'approche de Weldyn"
