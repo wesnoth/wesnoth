@@ -67,7 +67,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	if(u == units.end())
 		return string_table["no_leader_to_recruit"];
 
-	if(map.is_starting_position(u->first) == -1) {
+	if(map.get_terrain(u->first) != gamemap::KEEP) {
 		std::cerr << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
 		return string_table["leader_not_on_start"];
 	}
