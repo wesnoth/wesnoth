@@ -978,6 +978,11 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		}
 	}
 
+	if(command == HOTKEY_TOGGLE_GRID) {
+		preferences::set_grid(!preferences::grid());
+		gui.invalidate_all();
+	}
+
 	//undo
 	if(!browse && command == HOTKEY_UNDO && !undo_stack.empty()) {
 		const int starting_moves = undo_stack.back().starting_moves;
