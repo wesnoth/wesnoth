@@ -45,8 +45,8 @@ private:
 
 	void handle_event(const SDL_Event& event);
 
-	void draw(display &disp);
-	void draw_cursor(int pos, display &disp);
+	void draw() const;
+	void draw_cursor(int pos, display &disp) const;
 };
 
 }

@@ -7,12 +7,12 @@ namespace {
 
 namespace gui {
 
-widget::widget(display& disp) : disp_(disp), rect_(EmptyRect)
+widget::widget(display& disp) : disp_(disp), rect_(EmptyRect), focus_(true)
 {
 	bg_backup();
 }
 
-widget::widget(display& disp, const SDL_Rect& rect) : disp_(disp), rect_(rect)
+widget::widget(display& disp, const SDL_Rect& rect) : disp_(disp), rect_(rect), focus_(true)
 {
 	bg_backup();
 }
@@ -22,7 +22,7 @@ void widget::set_location(const SDL_Rect& rect)
 	bg_restore();
 	rect_ = rect;
 	bg_backup();
-	draw(disp_);
+	draw();
 }
 
 void widget::set_position(int x, int y)
@@ -31,7 +31,7 @@ void widget::set_position(int x, int y)
 	SDL_Rect rect = {x,y,location().w,location().h};
 	rect_ = rect;
 	bg_backup();
-	draw(disp_);
+	draw();
 }
 
 void widget::set_width(int w)
@@ -40,7 +40,7 @@ void widget::set_width(int w)
 	SDL_Rect rect = {location().x,location().y,w,location().h};
 	rect_ = rect;
 	bg_backup();
-	draw(disp_);
+	draw();
 }
 
 void widget::set_height(int h)
@@ -49,7 +49,7 @@ void widget::set_height(int h)
 	SDL_Rect rect = {location().x,location().y,location().w,h};
 	rect_ = rect;
 	bg_backup();
-	draw(disp_);
+	draw();
 }
 
 const SDL_Rect& widget::location() const
@@ -72,14 +72,14 @@ void widget::bg_backup()
 	restorer_ = surface_restorer(&disp_.video(), rect_);
 }
 
-void widget::bg_restore()
+void widget::bg_restore() const
 {
 	restorer_.restore();
 }
 
-void widget::update()
+void widget::update() const
 {
-	draw(disp_);
+	draw();
 }
 
 void widget::handle_event(const SDL_Event& event)
@@ -87,7 +87,7 @@ void widget::handle_event(const SDL_Event& event)
 	if (!focus_)
 		return;
 
-	draw(disp_);
+	draw();
 }
 
 }

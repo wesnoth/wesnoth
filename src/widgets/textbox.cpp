@@ -51,7 +51,7 @@ void textbox::clear()
 	firstOnScreen_ = 0;
 }
 
-void textbox::draw_cursor(int pos, display &disp)
+void textbox::draw_cursor(int pos, display &disp) const
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
 
@@ -62,7 +62,7 @@ void textbox::draw_cursor(int pos, display &disp)
 	}
 }
 
-void textbox::draw(display &disp)
+void textbox::draw() const
 {
 	if(location().x == 0)
 		return;
@@ -70,14 +70,14 @@ void textbox::draw(display &disp)
 	bg_restore();
 
 	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
-	                          focus() ? 0.2 : 0.4, disp.video().getSurface());
+	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
 
 	if(cursor_ == 0)
-		draw_cursor(0, disp);
+		draw_cursor(0, disp());
 
 	int pos = 1;
 	std::string str(1,'x');
-	const SDL_Rect clip = disp.screen_area();
+	const SDL_Rect clip = disp().screen_area();
 
 	//draw the text
 	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
@@ -93,13 +93,13 @@ void textbox::draw(display &disp)
 			break;
 		}
 
-		font::draw_text(&disp,clip,font_size,font::NORMAL_COLOUR,str,
+		font::draw_text(&disp(),clip,font_size,font::NORMAL_COLOUR,str,
 		                location().x + pos, location().y, NULL, false, font::NO_MARKUP);
 
 		pos += area.w;
 
 		if(cursor_ == i+1)
-			draw_cursor(pos-1, disp);
+			draw_cursor(pos-1, disp());
 	}
 
 	update_rect(location());

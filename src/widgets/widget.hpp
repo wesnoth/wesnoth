@@ -23,18 +23,21 @@ public:
 protected:
 	widget(display& disp);
 	widget(display& disp, const SDL_Rect& rect);
+	virtual ~widget() {}
 
-	void bg_restore();
-	void update();
+	void bg_restore() const;
+	void update() const;
+
+	display& disp() const { return disp_; }
 
 private:
-	display& disp_;
-	surface_restorer restorer_;
+	mutable display& disp_;
+	mutable surface_restorer restorer_;
 	SDL_Rect rect_;
 	bool focus_;
 
 	void bg_backup();
-	virtual void draw(display &disp) = 0;
+	
 	virtual void handle_event(const SDL_Event& event);
 };
 
