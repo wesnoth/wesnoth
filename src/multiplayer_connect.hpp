@@ -43,7 +43,7 @@ private:
 	void gui_init();
 	void gui_update();
 	void add_player(std::string name);
-	void update_posions();
+	void update_positions();
 	void update_network();
 	void is_full();
 

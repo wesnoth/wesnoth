@@ -591,7 +591,7 @@ int mp_connect::gui_do()
 		}
 
 		gui_update();
-		update_posions();
+		update_positions();
 		update_network();
 		is_full();
 
@@ -603,7 +603,7 @@ int mp_connect::gui_do()
 	return status_;
 }
 
-void mp_connect::update_posions()
+void mp_connect::update_positions()
 {
 	const config::child_itors sides = level_->child_range("side");
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
