@@ -13,6 +13,7 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
+#include "array.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
 #include "unit.hpp"
@@ -31,6 +32,9 @@
 //function which, given a location, will place all adjacent locations in
 //res. res must point to an array of 6 location objects.
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
+
+//a convenient type for storing a list of tiles adjacent to a certain tile
+typedef util::array<gamemap::location,6> adjacent_tiles_array;
 
 //function which, given a location, will find all tiles within 'radius' of that tile
 void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
