@@ -253,6 +253,8 @@ connection accept_connection()
 		return 0;
 	}
 
+	std::cerr << "pending socket activity...\n";
+
 	for(std::vector<TCPsocket>::iterator i = pending_sockets.begin(); i != pending_sockets.end(); ++i) {
 		if(!SDLNet_SocketReady(*i)) {
 			continue;
@@ -266,8 +268,11 @@ connection accept_connection()
 		SDLNet_TCP_DelSocket(pending_socket_set,sock);
 		pending_sockets.erase(i);
 
-		const size_t len = SDLNet_TCP_Recv(sock,buf,4);
+		std::cerr << "receiving data from pending socket...\n";
+
+		const int len = SDLNet_TCP_Recv(sock,buf,4);
 		if(len != 4) {
+			std::cerr << "pending socket disconnected\n";
 			SDLNet_TCP_Close(sock);
 			return 0;
 		}
@@ -375,7 +380,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			//if it is, then the first 4 bytes must be the remote handle.
 			if(is_pending_remote_handle(*i)) {
 				char buf[4];
-				size_t len = SDLNet_TCP_Recv(sock,buf,4);
+				int len = SDLNet_TCP_Recv(sock,buf,4);
 				if(len != 4) {
 					throw error("Remote host disconnected",*i);
 				}
@@ -390,7 +395,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			std::map<connection,partial_buffer>::iterator part_received = received_data.find(*i);
 			if(part_received == received_data.end()) {
 				char num_buf[4];
-				size_t len = SDLNet_TCP_Recv(sock,num_buf,4);
+				int len = SDLNet_TCP_Recv(sock,num_buf,4);
 
 				if(len != 4) {
 					throw error("Remote host disconnected",*i);
@@ -409,7 +414,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				part_received->second.buf.resize(len);
 
 				//make sure that this connection still has data
-				const int res = SDLNet_CheckSockets(socket_set,timeout);
+				const int res = SDLNet_CheckSockets(socket_set,0);
 				if(res <= 0 || !SDLNet_SocketReady(sock)) {
 					std::cerr << "packet has no data after length. Throwing error\n";
 					throw error("network error: received wrong number of bytes: 0",*i);
@@ -420,10 +425,10 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			partial_buffer& buf = part_received->second;
 
 			const size_t expected = buf.buf.size() - buf.upto;
-			const size_t nbytes = SDLNet_TCP_Recv(sock,&buf.buf[buf.upto],expected);
-			if(nbytes > expected) {
-				std::cerr << "received " << nbytes << "/" << expected << "\n";
-				throw error(std::string("network error: received wrong number of bytes: ") + SDLNet_GetError(),*i);
+			const int nbytes = SDLNet_TCP_Recv(sock,&buf.buf[buf.upto],expected);
+			if(nbytes <= 0) {
+				std::cerr << "SDLNet_TCP_Recv returned " << nbytes << " error in socket\n";
+				throw error("remote host disconnected",*i);
 			}
 
 			buf.upto += nbytes;
@@ -440,7 +445,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 				if(buffer[buffer.size()-1] != 0) {
 					std::cerr << "buf not nul-delimited. Network error\n";
-					throw network::error("sanity check on incoming data failed",*i);
+					throw error("sanity check on incoming data failed",*i);
 				}
 
 				const schema_map::iterator schema = schemas.find(*i);
@@ -520,7 +525,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 		                                const_cast<char*>(value.c_str()),
 		                                value.size()+1);
 
-		if(res < int(value.size()+1)) {
+		if(res != int(value.size()+1)) {
 			std::cerr << "sending data failed: " << res << "/" << value.size() << "\n";
 			throw error("Could not send data over socket",connection_num);
 		}
