@@ -224,7 +224,7 @@ void stats::read(const config& cfg)
 	}
 
 	if(cfg.child("defends")) {
-		attacks = read_battle_result_map(*cfg.child("attacks"));
+		defends = read_battle_result_map(*cfg.child("defends"));
 	}
 
 	recruit_cost = atoi(cfg["recruit_cost"].c_str());
