@@ -2,6 +2,7 @@ CVS HEAD:
  * more halo effects
  * improved and added new unit images, attack images, healing images 
  * language fixes and polishing (english)
+ * 'first strike' ability given to Spearman, Halbardier and Pikeman
  * new units
    * Cavalier
    * Drakonian Slave
@@ -12,15 +13,21 @@ CVS HEAD:
    * balanced 'King of the Hill' map
    * improved village naming
  * editor improvements:
+   * two terrains may now be selected in the palette, one is used for filling when moving selections and cutting/pasting and will be used when drawing with the right button
+   * context menu was removed, instead the function of the left button is chosen in the right panel and operations that do not need a location to work is chosen from an additional menu
    * added a new level of brightened images
+   * support for translations
    * fixed proper checks for validity not being done when loading or reverting a map
    * fixed mouse wheel and middle-click not working as within the game when used on map area
    * fixed BeOS crash in map editor
    * fixed the problem where the same sequence of random maps was generated
+   * fixed a problem where the hotkeys from the game would appear in the editor
  * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * fixed multiline text box not wrapping lines at word boundaries
  * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text.
  * relocated weapon icons to their own hierarchy: images/attacks/
+ * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
+ * added a trigger to the test map, when activated Orc leader can recruit.
 
 Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar
