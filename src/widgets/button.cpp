@@ -79,6 +79,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 		pressedImage_.assign(scale_surface(pressed_image,w_,h_));
 		activeImage_.assign(scale_surface(active_image,w_,h_));
 		pressedActiveImage_.assign(scale_surface(pressed_active_image,w_,h_));
+
 	} else {
 		w_ = horizontal_padding + textRect_.w + button_image->w;
 		image_.assign(scale_surface(button_image,button_image->w,button_image->h));

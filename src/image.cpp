@@ -62,6 +62,7 @@ SDL_Surface* get_tinted(const std::string& filename, TINT tint)
 										 base->format->Gmask,
 										 base->format->Bmask,
 										 base->format->Amask);
+	SDL_SetColorKey(surface,SDL_SRCCOLORKEY,SDL_MapRGB(surface->format,0,0,0));
 
 	images.insert(std::pair<std::string,SDL_Surface*>(filename,surface));
 
@@ -233,6 +234,8 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 				SDL_FreeSurface(surf);
 				surf = conv;
 			}
+
+			SDL_SetColorKey(surf,SDL_SRCCOLORKEY,SDL_MapRGB(surf->format,0,0,0));
 
 			i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf)).first;
 		}

@@ -1287,8 +1287,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		highlight_ratio = deadAmount_;
 	}
 
-	const int xpad = is_odd(surface->w);
-
 	SDL_Surface* const dst = screen_.getSurface();
 
 	Pixel grid_colour = SDL_MapRGB(dst->format,0,0,0);
@@ -1342,70 +1340,52 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		const int srcy = minimum<int>(yloc,surface->h-1);
 		assert(srcy >= 0);
 
-		surface_lock srclock(surface);
-		const int diff = maximum<int>(0,srcy*(surface->w+xpad) + maximum<int>(xoffset,xsrc));
-		short* startsrc = srclock.pixels() + diff;
-		len = minimum<int>(len,(surface->w+xpad)*surface->h - diff);
+		const int diff = maximum<int>(0,srcy*surface->w + maximum<int>(xoffset,xsrc));
+		len = minimum<int>(len,surface->w*surface->h - diff);
 		if(len <= 0) {
 			continue;
 		}
 
-		short* endsrc = startsrc + len;
+		SDL_Rect srcrect = { maximum<int>(xoffset,xsrc), srcy, len, 1 };
+		SDL_Rect dstrect = { xdst, j, 0, 0 };
 
-		if(!(startsrc >= srclock.pixels() &&
-		       endsrc <= srclock.pixels() + (surface->w+xpad)*surface->h)) {
-			std::cerr << "CRITICAL ERROR: overwrite at " << __FILE__ << ","
-			          << __LINE__ << "\n"
-			          << "len: " << len << "\n"
-			          << "width: " << surface->w << "\n"
-			          << "x: " << x << "\n"
-			          << "y: " << y << "\n";
-		}
-
-		surface_lock dstlock(dst);
-		short* startdst = dstlock.pixels() + j*dst->w + xdst;
-		std::copy(startsrc,endsrc,startdst);
+		SDL_BlitSurface(surface,&srcrect,dst,&dstrect);
 
 		int extra = 0;
+
+		SDL_Rect end_srcrect = { srcrect.x + srcrect.w - 1, srcrect.y, 1, 1 };
 
 		//if the line didn't make it to the next hex, then fill in with the
 		//last pixel up to the next hex
 		if(ne_ypos > 0 && xdst + len < minoffset && len > 0) {
 			extra = minimum(minoffset-(xdst + len),map_area().x+map_area().w-(xdst+len));
-			std::fill(startdst+len,startdst+len+extra,startsrc[len-1]);
+			SDL_Rect rect = { dstrect.x + len, dstrect.y, 1, 1 };
+			for(int n = 0; n != extra; ++n, ++rect.x) {
+				SDL_BlitSurface(surface,&end_srcrect,dst,&rect);
+			}
 		}
 
 		//copy any overlapping tiles on
 		for(std::vector<SDL_Surface*>::const_iterator ov = overlaps.begin();
 		    ov != overlaps.end(); ++ov) {
-			const int srcy = minimum<int>(yloc,(*ov)->h-1);
-			const int w = (*ov)->w + is_odd((*ov)->w);
+			SDL_BlitSurface(*ov,&srcrect,dst,&dstrect);
 
-			surface_lock overlap_lock(*ov);
-			short* beg = overlap_lock.pixels() +
-			             srcy*w + (xoffset > xsrc ? xoffset:xsrc);
-			short* end = beg + len;
-			short* dst = startdst;
-
-			while(beg != end) {
-				if(*beg != 0) {
-					*dst = *beg;
-				}
-
-				++dst;
-				++beg;
+			for(int i = 0; i != extra; ++i) {
+				SDL_Rect rect = { dstrect.x + len + i, dstrect.y, 1, 1 };
+				SDL_BlitSurface(*ov,&end_srcrect,dst,&rect);
 			}
 
-			//fill in any extra pixels on the end
-			if(extra > 0 && len > 0 && beg[-1] != 0)
-				std::fill(dst,dst+extra,beg[-1]);
-		}
-
-		if((grid_ || show_unit_colour) && startsrc < endsrc) {
-			*startdst = grid_colour;
-			*(startdst+len-1) = grid_colour;
-			if(j == ypos || j == yend-1) {
-				std::fill(startdst,startdst+len,grid_colour);
+			if((grid_ || show_unit_colour) && dstrect.w >= 1) {
+				SDL_Rect rect = dstrect;
+				if(j == ypos || j == yend-1) {
+					SDL_FillRect(dst,&rect,grid_colour);
+				} else {
+					rect.w = 1;
+					rect.h = 1;
+					SDL_FillRect(dst,&rect,grid_colour);
+					rect.x += rect.w-1;
+					SDL_FillRect(dst,&rect,grid_colour);
+				}
 			}
 		}
 	}

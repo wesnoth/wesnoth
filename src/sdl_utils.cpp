@@ -32,41 +32,35 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	if(surface == NULL)
 		return NULL;
 
-	SDL_Surface* const dest = SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,
+	SDL_Surface* dest = SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,
 					                     surface->format->BitsPerPixel,
 										 surface->format->Rmask,
 										 surface->format->Gmask,
 										 surface->format->Bmask,
 										 surface->format->Amask);
+
 	if(dest == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";
 		return NULL;
 	}
+
+	SDL_SetColorKey(dest,SDL_SRCCOLORKEY,SDL_MapRGB(dest->format,0,0,0));
 
 	const double xratio = static_cast<double>(surface->w)/
 			              static_cast<double>(w);
 	const double yratio = static_cast<double>(surface->h)/
 			              static_cast<double>(h);
 
-	const int srcxpad = is_odd(surface->w) ? 1:0;
-	const int dstxpad = is_odd(dest->w) ? 1:0;
-
-	surface_lock dstlock(dest);
-	surface_lock srclock(surface);
-
 	double ysrc = 0.0;
 	for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
 		double xsrc = 0.0;
 		for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-			int xsrcint = static_cast<int>(xsrc);
+			const int xsrcint = static_cast<int>(xsrc);
 			const int ysrcint = static_cast<int>(ysrc);
 
-			xsrcint += srcxpad*ysrcint;
-
-			const int dstpad = dstxpad*ydst;
-
-			dstlock.pixels()[ydst*w + xdst + dstpad] =
-			             srclock.pixels()[ysrcint*surface->w + xsrcint];
+			SDL_Rect srcrect = { xsrcint, ysrcint, 1, 1 };
+			SDL_Rect dstrect = { xdst, ydst, 1, 1 };
+			SDL_BlitSurface(surface,&srcrect,dest,&dstrect);
 		}
 	}
 
