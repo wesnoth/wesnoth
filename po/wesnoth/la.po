@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-30 15:30+0200\n"
+"PO-Revision-Date: 2005-04-01 16:03+0200\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -970,17 +969,16 @@ msgid "Charge"
 msgstr "Incurrere"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Classice"
+msgstr "Concursus"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
 msgstr ""
-"Charta duellis pro lusione celerrima. Impostatio suasa: II auri pro pago."
+"Charta parva pro II contra II.   Partes debent esse lusores I et III contra "
+"II et IV.  Impostatio commendata: II aurum pro pago."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1561,9 +1559,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "Visne ullas peritias revidere quae in hac missione didiscisti?"
+msgstr "Visne ullas peritias revidere quae in hac missione didicisti?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:336
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
@@ -1573,7 +1570,7 @@ msgstr "Ita"
 #: data/scenarios/tutorial/Basic_Training.cfg:338
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "Finivi peritias revidere!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
 msgid ""
@@ -1621,12 +1618,12 @@ msgstr "Delfadorem Vincere"
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Mors Conradi"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/utils.cfg:59
 msgid "Turns run out"
-msgstr ""
+msgstr "Tempus exit"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "You have successfully recalled your Elvish Fighter."
@@ -1640,7 +1637,6 @@ msgstr ""
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "Cave tui!"
 
@@ -1981,7 +1977,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:55
 msgid "Death of Delfador"
-msgstr ""
+msgstr "Mors Delfadoris"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2128,19 +2124,19 @@ msgstr "ruina"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr ""
+msgstr "ruina demersa"
 
 #: data/terrain.cfg:459
 msgid "swamp ruin"
-msgstr ""
+msgstr "ruina paludinis"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Vadum Fluminis"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Saxa liquefacta"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -2494,7 +2490,7 @@ msgstr "inmortuus"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr ""
+msgstr "Immunis veneno"
 
 #: data/traits.cfg:23
 msgid "strong"
@@ -2502,7 +2498,7 @@ msgstr "fortis"
 
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr ""
+msgstr "sollers"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -3770,7 +3766,7 @@ msgstr "sceptrum"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Magus Tenebrosus"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -3779,6 +3775,10 @@ msgid ""
 "made them stronger, but not nearly as powerful as they would have been as "
 "Liches. Because they retain their humanity, they do not fear holy magic. "
 msgstr ""
+"Magi Tenebrosi non acceperunt plene potestatem immortuorum, se facens ipsos "
+"immortuos. Pro eo studia eorum artium tenebrosarum eos firmaverunt sed non "
+"tam potentes sunt quam Ossa Magi. Quia humanitatem retinent, non vereuntur "
+"magicam sanctam."
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4091,6 +4091,9 @@ msgid ""
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Draculi Caeli reges veri sunt caeli. Utentes impetu eorum et halito ignis ut "
+"tela, hi draculi pernicies sunt multis. Celeriter in praedam labi possunt, "
+"et fere longe absunt priusquam aliquis eos sistere potest."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4909,7 +4912,7 @@ msgstr "Porta"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "Porta non aperietur ab ullis qui non socii sunt ei."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -7063,9 +7066,8 @@ msgid "+Catalan Translation"
 msgstr "+Reditio cataluniensis"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Reditio finnica"
+msgstr "+Reditio serica"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -7572,7 +7574,7 @@ msgstr "Stipendium trahitur..."
 
 #: src/game.cpp:1190
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Non potest systema pligarum rursus scannere"
 
 #: src/game.cpp:1201
 msgid "Campaign Installed"
@@ -7678,14 +7680,12 @@ msgid "Battle for Wesnoth"
 msgstr "Proelium pro Occidiseptentrione"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Victoria"
+msgstr "Victoria:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Clades"
+msgstr "Clades:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -8250,7 +8250,7 @@ msgstr "Aurum: "
 #: src/playlevel.cpp:856
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "LXXX pro centum auri retinentur pro scaenario insequenti"
+msgstr "LXXX pro cento auri retinentur pro scaenario insequenti"
 
 #: src/playlevel.cpp:857
 msgid "Retained Gold: "
@@ -8506,11 +8506,11 @@ msgstr "Titulus aut unitas qui litteras '$search' continet non invenitur."
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Impostatio Adumbrationis Servata: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "Adumbratio nova valet ab luso proximo novo aut restituto."
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
@@ -8629,68 +8629,69 @@ msgstr "Spectatores: "
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Litterae inexpectatae in initio versi"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
-msgstr ""
+msgstr "Elementum finale abest pro elemento $tag (pliga $file, versus $line)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Elementum finale pro elemento $tag (versus $line)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Elementum [element] non terminatum"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "Saeculum invalidum electum"
+msgstr "Nomen elementi invalidum"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Elementum [+element] non terminatum"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Nomen elementi finalis invalidum"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Elementum finale non terminatum"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Elementum finale non exspectatum"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
 msgstr ""
+"Elementum finale invalidum inventum pro elemento $tag (pliga $file, versus "
+"$line)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Elementum finale invalidum inventum pro elemento $tag (versus $line)"
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
 msgid "Empty variable name"
-msgstr ""
+msgstr "Nomen variabilis vacuum"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Litterae inexspectatae post nomen variabilis (, aut = exspectatum)"
 
 #: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Series litterarum in signis commemorationis non terminata"
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error in pliga $file (versus $line, columna $column)"
 
 #: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error (versus $line, columna $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
