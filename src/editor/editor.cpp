@@ -1049,7 +1049,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 		i != items.end(); ++i) {
 		std::stringstream str;
 		// Try to translate it to nicer format.
-		str << translate_string("action_" + *i);
+		str << hotkey::command_to_description(hotkey::string_to_command(*i));
 		// See if this menu item has an associated hotkey.
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(*i);
 		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
@@ -1130,9 +1130,8 @@ void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex)
 void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
 	if (func != l_button_func_) {
 		l_button_func_ = func;
-		const std::string string_to_translate = std::string("action_") + get_action_name(func);
 		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-					    translate_string(string_to_translate));
+					    hotkey::command_to_description(hotkey::string_to_command(get_action_name(func))));
 		gui_.invalidate_game_status();
 		l_button_palette_dirty_ = true;
 	}
