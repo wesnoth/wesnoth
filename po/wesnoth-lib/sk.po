@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-20 17:08+0100\n"
+"POT-Creation-Date: 2005-03-28 11:58+0200\n"
 "PO-Revision-Date: 2004-12-15 20:11+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -112,7 +112,7 @@ msgstr "Vytvor jednotku (debug!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Zmeň stranu jednotky (debug!)"
 
-#: src/hotkeys.cpp:69 src/preferences.cpp:1047
+#: src/hotkeys.cpp:69 src/preferences.cpp:1049
 msgid "Preferences"
 msgstr "Nastavenia"
 
@@ -240,7 +240,7 @@ msgstr "Povedz spojencom"
 msgid "Speak to All"
 msgstr "Povedz všetkým"
 
-#: src/hotkeys.cpp:103 src/show_dialog.cpp:650
+#: src/hotkeys.cpp:103 src/show_dialog.cpp:571
 msgid "Help"
 msgstr "Pomoc"
 
@@ -260,7 +260,7 @@ msgstr "Chceš naozaj vypnúť?"
 msgid "Quit"
 msgstr "Vypni"
 
-#: src/preferences.cpp:156 src/preferences.cpp:207
+#: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -270,131 +270,131 @@ msgstr ""
 "na pixel, aby mohla hra bežať v okne. Obrazovka musí podporovať režim "
 "1024x768x16, aby mohla hra bežať na celej obrazovke."
 
-#: src/preferences.cpp:379
+#: src/preferences.cpp:381
 msgid "player"
 msgstr "hráč"
 
-#: src/preferences.cpp:815
+#: src/preferences.cpp:817
 msgid "Full Screen"
 msgstr "Celá obrazovka"
 
-#: src/preferences.cpp:816
+#: src/preferences.cpp:818
 msgid "Accelerated Speed"
 msgstr "Zrýchlený pohyb"
 
-#: src/preferences.cpp:817
+#: src/preferences.cpp:819
 msgid "Skip AI Moves"
 msgstr "Neukazuj ťahy počítača"
 
-#: src/preferences.cpp:818
+#: src/preferences.cpp:820
 msgid "Show Grid"
 msgstr "Ukáž mriežku"
 
-#: src/preferences.cpp:819
+#: src/preferences.cpp:821
 msgid "Show Floating Labels"
 msgstr "Ukáž pomocné nápisy"
 
-#: src/preferences.cpp:820
+#: src/preferences.cpp:822
 msgid "Turn Dialog"
 msgstr "Dialóg na začiatku kola"
 
-#: src/preferences.cpp:821
+#: src/preferences.cpp:823
 msgid "Turn Bell"
 msgstr "Zvuk na začiatku kola"
 
-#: src/preferences.cpp:822
+#: src/preferences.cpp:824
 msgid "Show Team Colors"
 msgstr "Tímové farby"
 
-#: src/preferences.cpp:823
+#: src/preferences.cpp:825
 msgid "Show Color Cursors"
 msgstr "Farebný kurzor"
 
-#: src/preferences.cpp:824
+#: src/preferences.cpp:826
 msgid "Show Haloing Effects"
 msgstr "Žiarivé efekty"
 
-#: src/preferences.cpp:825
+#: src/preferences.cpp:827
 msgid "Video Mode"
 msgstr "Režim obrazovky"
 
-#: src/preferences.cpp:826
+#: src/preferences.cpp:828
 msgid "Hotkeys"
 msgstr "Klávesy"
 
-#: src/preferences.cpp:827
+#: src/preferences.cpp:829
 msgid "Adjust Gamma"
 msgstr "Nastav gamma"
 
-#: src/preferences.cpp:828
+#: src/preferences.cpp:830
 msgid "Reverse Time Graphics"
 msgstr ""
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "Music Volume:"
 msgstr "Hlasitosť hudby:"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "SFX Volume:"
 msgstr "Hlasitosť efektov:"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Scroll Speed:"
 msgstr "Rýchlosť rolovania:"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:845
 msgid "Change the sound effects volume"
 msgstr "Nastav hlasitosť zvukových efektov"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:850
 msgid "Change the music volume"
 msgstr "Nastav hlasitosť hudby"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:855
 msgid "Change the speed of scrolling around the map"
 msgstr "Nastav rýchlosť rolovania mapy"
 
-#: src/preferences.cpp:856 src/preferences.cpp:861
+#: src/preferences.cpp:858 src/preferences.cpp:863
 msgid "Change the brightness of the display"
 msgstr "Nastav jas monitora"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:866
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Nastav, či má hra prebiehať na celej obrazovke alebo v okne"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:869
 msgid "Make units move and fight faster"
 msgstr "Nech sa jednotky pohybujú a bojujú rýchlejšie"
 
-#: src/preferences.cpp:870
+#: src/preferences.cpp:872
 msgid "Do not animate AI units moving"
 msgstr "Nekresli pohyb jednotiek počítača"
 
-#: src/preferences.cpp:873
+#: src/preferences.cpp:875
 msgid "Overlay a grid onto the map"
 msgstr "Zobrazuj na mape šesťuholníkovú mriežku"
 
-#: src/preferences.cpp:876
+#: src/preferences.cpp:878
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Keď je jednotka zranená, zobraz nad ňou veľkosť zranenia"
 
-#: src/preferences.cpp:878
+#: src/preferences.cpp:880
 msgid "Change the resolution the game runs at"
 msgstr "Zmeň rozlíšenie, v ktorom beží hra"
 
-#: src/preferences.cpp:881
+#: src/preferences.cpp:883
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Na začiatku tvojho kola sa zobrazí dialóg"
 
-#: src/preferences.cpp:884
+#: src/preferences.cpp:886
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Na začiatku tvojho kola zaznie zvukový signál"
 
-#: src/preferences.cpp:887
+#: src/preferences.cpp:889
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -402,90 +402,90 @@ msgstr ""
 "Zobrazuj farebný kruh okolo každej jednotky, aby bolo vidno, ku ktorej "
 "strane patrí"
 
-#: src/preferences.cpp:890
+#: src/preferences.cpp:892
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:895
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Používaj farebný kurzor myši (môže byť pomalší)"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:898
 msgid "Use graphical special effects (may be slower)"
 msgstr "Používaj špeciálne grafické efekty (môžu byť pomalšie)"
 
-#: src/preferences.cpp:898
+#: src/preferences.cpp:900
 msgid "View and configure keyboard shortcuts"
 msgstr "Zobraz a nastav klávesové skratky"
 
-#: src/preferences.cpp:1035
+#: src/preferences.cpp:1037
 msgid "Prefs section^General"
 msgstr "Všeobecné"
 
-#: src/preferences.cpp:1036
+#: src/preferences.cpp:1038
 msgid "Prefs section^Display"
 msgstr "Obrazovka"
 
-#: src/preferences.cpp:1037
+#: src/preferences.cpp:1039
 msgid "Prefs section^Sound"
 msgstr "Zvuk"
 
-#: src/preferences.cpp:1093
+#: src/preferences.cpp:1095
 msgid "There are no alternative video modes available"
 msgstr "Alternatívne režimy obrazovky nie sú k dispozícii"
 
-#: src/preferences.cpp:1122
+#: src/preferences.cpp:1124
 msgid "Choose Resolution"
 msgstr "Vyber si rozlíšenie"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1147
 msgid "Close Window"
 msgstr "Zavri okno"
 
-#: src/preferences.cpp:1150
+#: src/preferences.cpp:1152
 msgid "Hotkey Settings"
 msgstr "Nastavenie kláves"
 
-#: src/preferences.cpp:1154 src/preferences.cpp:1198
+#: src/preferences.cpp:1156 src/preferences.cpp:1200
 msgid "Press desired HotKey"
 msgstr "Stlač klávesu, ktorú chceš nastaviť"
 
-#: src/preferences.cpp:1175
+#: src/preferences.cpp:1177
 msgid "Change Hotkey"
 msgstr "Zmeň klávesu"
 
-#: src/preferences.cpp:1178
+#: src/preferences.cpp:1180
 msgid "Save Hotkeys"
 msgstr "Ulož klávesy"
 
-#: src/preferences.cpp:1224
+#: src/preferences.cpp:1226
 msgid "This HotKey is already in use."
 msgstr "Táto klávesa sa už používa."
 
-#: src/show_dialog.cpp:391
+#: src/show_dialog.cpp:312
 msgid "Error"
 msgstr "Chyba"
 
-#: src/show_dialog.cpp:487 src/show_dialog.cpp:500
+#: src/show_dialog.cpp:408 src/show_dialog.cpp:421
 msgid "Ok"
 msgstr "OK"
 
-#: src/show_dialog.cpp:493
+#: src/show_dialog.cpp:414
 msgid "Yes"
 msgstr "Áno"
 
-#: src/show_dialog.cpp:494
+#: src/show_dialog.cpp:415
 msgid "No"
 msgstr "Nie"
 
-#: src/show_dialog.cpp:501 src/show_dialog.cpp:507
+#: src/show_dialog.cpp:422 src/show_dialog.cpp:428
 msgid "Cancel"
 msgstr "Storno"
 
-#: src/show_dialog.cpp:513
+#: src/show_dialog.cpp:434
 msgid "Close"
 msgstr "Zavri"
 
-#: src/show_dialog.cpp:963
+#: src/show_dialog.cpp:884
 msgid "KB"
 msgstr "KB"

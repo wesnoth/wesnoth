@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-20 17:08+0100\n"
+"POT-Creation-Date: 2005-03-28 11:58+0200\n"
 "PO-Revision-Date: 2005-03-23 09:33+0100\n"
 "Last-Translator: Automatically generated <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
@@ -114,7 +114,7 @@ msgstr "Egység létrehozása (hibajavítás!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Egység átállítása (hibajavítás!)"
 
-#: src/hotkeys.cpp:69 src/preferences.cpp:1047
+#: src/hotkeys.cpp:69 src/preferences.cpp:1049
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -242,7 +242,7 @@ msgstr "Szólás a szövetségesekhez"
 msgid "Speak to All"
 msgstr "Szólás mindenkihez"
 
-#: src/hotkeys.cpp:103 src/show_dialog.cpp:650
+#: src/hotkeys.cpp:103 src/show_dialog.cpp:571
 msgid "Help"
 msgstr "Segítség"
 
@@ -262,7 +262,7 @@ msgstr "Biztos ki akarsz lépni?"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/preferences.cpp:156 src/preferences.cpp:207
+#: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -273,133 +273,133 @@ msgstr ""
 "Emellett a képernyődnek támogatnia kell az 1024x768-as felbontást ahhoz, "
 "hogy a játék teljes képernyőn fusson."
 
-#: src/preferences.cpp:379
+#: src/preferences.cpp:381
 msgid "player"
 msgstr "játékos"
 
-#: src/preferences.cpp:815
+#: src/preferences.cpp:817
 msgid "Full Screen"
 msgstr "Teljes képernyő"
 
-#: src/preferences.cpp:816
+#: src/preferences.cpp:818
 msgid "Accelerated Speed"
 msgstr "Megnövelt sebesség"
 
-#: src/preferences.cpp:817
+#: src/preferences.cpp:819
 msgid "Skip AI Moves"
 msgstr "AI lépések átugrása"
 
-#: src/preferences.cpp:818
+#: src/preferences.cpp:820
 msgid "Show Grid"
 msgstr "Rács megjelenítése"
 
-#: src/preferences.cpp:819
+#: src/preferences.cpp:821
 msgid "Show Floating Labels"
 msgstr "Szálló címkék megjelenítése"
 
-#: src/preferences.cpp:820
+#: src/preferences.cpp:822
 msgid "Turn Dialog"
 msgstr "Párbeszédablak be"
 
-#: src/preferences.cpp:821
+#: src/preferences.cpp:823
 msgid "Turn Bell"
 msgstr "Csengő be"
 
-#: src/preferences.cpp:822
+#: src/preferences.cpp:824
 msgid "Show Team Colors"
 msgstr "Csapatszínek megjelenítése"
 
-#: src/preferences.cpp:823
+#: src/preferences.cpp:825
 msgid "Show Color Cursors"
 msgstr "Színes kurzor megjelenítése"
 
-#: src/preferences.cpp:824
+#: src/preferences.cpp:826
 msgid "Show Haloing Effects"
 msgstr "Haloing effektusok mutatása"
 
-#: src/preferences.cpp:825
+#: src/preferences.cpp:827
 msgid "Video Mode"
 msgstr "Videó mód"
 
-#: src/preferences.cpp:826
+#: src/preferences.cpp:828
 msgid "Hotkeys"
 msgstr "Gyorsbillentyűk"
 
-#: src/preferences.cpp:827
+#: src/preferences.cpp:829
 msgid "Adjust Gamma"
 msgstr "Gamma kezelés"
 
-#: src/preferences.cpp:828
+#: src/preferences.cpp:830
 msgid "Reverse Time Graphics"
 msgstr "Napszakmegjelenítés megfordítása"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "Music Volume:"
 msgstr "Zene hangereje"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "SFX Volume:"
 msgstr "Hanghatások ereje"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Gamma:"
 msgstr "Gamma:"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Scroll Speed:"
 msgstr "Görgetés sebessége:"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:845
 msgid "Change the sound effects volume"
 msgstr "A hanghatások erejének megváltoztatása"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:850
 msgid "Change the music volume"
 msgstr "A zene hangerejének megváltoztatása"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:855
 msgid "Change the speed of scrolling around the map"
 msgstr "A térképen való görgetés sebességének megváltoztatása"
 
-#: src/preferences.cpp:856 src/preferences.cpp:861
+#: src/preferences.cpp:858 src/preferences.cpp:863
 msgid "Change the brightness of the display"
 msgstr "A képernyő fényesség megváltoztatása"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:866
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "A játék teljes képernyőben vagy ablakban fusson-e"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:869
 msgid "Make units move and fight faster"
 msgstr "Az egységek gyorsabban mozognak és harcolnak"
 
-#: src/preferences.cpp:870
+#: src/preferences.cpp:872
 msgid "Do not animate AI units moving"
 msgstr "Ne animálja a számítógép lépéseit"
 
-#: src/preferences.cpp:873
+#: src/preferences.cpp:875
 msgid "Overlay a grid onto the map"
 msgstr "Fektessen egy rácsot a térképre"
 
-#: src/preferences.cpp:876
+#: src/preferences.cpp:878
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Szöveg megjelenítése az egység fölött, amikor megsebesül, hog\"kiírja a "
 "veszteséget"
 
-#: src/preferences.cpp:878
+#: src/preferences.cpp:880
 msgid "Change the resolution the game runs at"
 msgstr "A játék felbontásának megváltoztatása"
 
-#: src/preferences.cpp:881
+#: src/preferences.cpp:883
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
 
-#: src/preferences.cpp:884
+#: src/preferences.cpp:886
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Egy hangjelzést ad le a köröd kezdetekor"
 
-#: src/preferences.cpp:887
+#: src/preferences.cpp:889
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -407,90 +407,90 @@ msgstr ""
 "Egy színes kört rajzol minden egység körül amely azt jelzi melyik csapatban "
 "van az adott egység"
 
-#: src/preferences.cpp:890
+#: src/preferences.cpp:892
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Add meg, hogy a nap balról jobbra, vagy jobbról balra mozogjon"
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:895
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Színes egérkurzor használata (lassíthat)"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:898
 msgid "Use graphical special effects (may be slower)"
 msgstr "Speciális megjelenítési hatások használata (lassíthat)"
 
-#: src/preferences.cpp:898
+#: src/preferences.cpp:900
 msgid "View and configure keyboard shortcuts"
 msgstr "A gyorsbillentyűk megtekintése és beállítása"
 
-#: src/preferences.cpp:1035
+#: src/preferences.cpp:1037
 msgid "Prefs section^General"
 msgstr "Általános"
 
-#: src/preferences.cpp:1036
+#: src/preferences.cpp:1038
 msgid "Prefs section^Display"
 msgstr "Képernyő"
 
-#: src/preferences.cpp:1037
+#: src/preferences.cpp:1039
 msgid "Prefs section^Sound"
 msgstr "Hang"
 
-#: src/preferences.cpp:1093
+#: src/preferences.cpp:1095
 msgid "There are no alternative video modes available"
 msgstr "Nincsennek más megjelenítési módók"
 
-#: src/preferences.cpp:1122
+#: src/preferences.cpp:1124
 msgid "Choose Resolution"
 msgstr "Felbontás kiválasztása"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1147
 msgid "Close Window"
 msgstr "Ablak bezárása"
 
-#: src/preferences.cpp:1150
+#: src/preferences.cpp:1152
 msgid "Hotkey Settings"
 msgstr "Gyorsbillentyűk beállításai"
 
-#: src/preferences.cpp:1154 src/preferences.cpp:1198
+#: src/preferences.cpp:1156 src/preferences.cpp:1200
 msgid "Press desired HotKey"
 msgstr "Nyomd meg a kívánt gyorsbillentyűt"
 
-#: src/preferences.cpp:1175
+#: src/preferences.cpp:1177
 msgid "Change Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/preferences.cpp:1178
+#: src/preferences.cpp:1180
 msgid "Save Hotkeys"
 msgstr "Gyorsbillentyűk mentése"
 
-#: src/preferences.cpp:1224
+#: src/preferences.cpp:1226
 msgid "This HotKey is already in use."
 msgstr "Ez a gyorsbillentyű már használatban van"
 
-#: src/show_dialog.cpp:391
+#: src/show_dialog.cpp:312
 msgid "Error"
 msgstr "Hiba"
 
-#: src/show_dialog.cpp:487 src/show_dialog.cpp:500
+#: src/show_dialog.cpp:408 src/show_dialog.cpp:421
 msgid "Ok"
 msgstr "Oké"
 
-#: src/show_dialog.cpp:493
+#: src/show_dialog.cpp:414
 msgid "Yes"
 msgstr "Igen"
 
-#: src/show_dialog.cpp:494
+#: src/show_dialog.cpp:415
 msgid "No"
 msgstr "Ne!"
 
-#: src/show_dialog.cpp:501 src/show_dialog.cpp:507
+#: src/show_dialog.cpp:422 src/show_dialog.cpp:428
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/show_dialog.cpp:513
+#: src/show_dialog.cpp:434
 msgid "Close"
 msgstr "Bezár"
 
-#: src/show_dialog.cpp:963
+#: src/show_dialog.cpp:884
 msgid "KB"
 msgstr "KB"

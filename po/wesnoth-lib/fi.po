@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-20 17:08+0100\n"
+"POT-Creation-Date: 2005-03-28 11:58+0200\n"
 "PO-Revision-Date: 2004-11-15 22:20+0100\n"
 "Last-Translator: Pasi Kallinen <paxed@alt.org>\n"
 "Language-Team: none\n"
@@ -112,7 +112,7 @@ msgstr "Luo yksikkö (Debug!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Muuta yksikön puolta (Debug!)"
 
-#: src/hotkeys.cpp:69 src/preferences.cpp:1047
+#: src/hotkeys.cpp:69 src/preferences.cpp:1049
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -241,7 +241,7 @@ msgstr "Puhu ystävälle"
 msgid "Speak to All"
 msgstr "Puhu kaikille"
 
-#: src/hotkeys.cpp:103 src/show_dialog.cpp:650
+#: src/hotkeys.cpp:103 src/show_dialog.cpp:571
 msgid "Help"
 msgstr "Apua"
 
@@ -261,7 +261,7 @@ msgstr "Haluatko todellakin lopettaa?"
 msgid "Quit"
 msgstr "Poistu"
 
-#: src/preferences.cpp:156 src/preferences.cpp:207
+#: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -271,221 +271,221 @@ msgstr ""
 "16 bittiä per pikseli jotta peliä voidaan ajaa ikkunoituna. Näyttösi täytyy "
 "tukea 1024x768x16 -moodia, jotta peli voidaan ajaa koko ruudun kokoisena."
 
-#: src/preferences.cpp:379
+#: src/preferences.cpp:381
 msgid "player"
 msgstr "pelaaja"
 
-#: src/preferences.cpp:815
+#: src/preferences.cpp:817
 msgid "Full Screen"
 msgstr "Ruudun kokoinen"
 
-#: src/preferences.cpp:816
+#: src/preferences.cpp:818
 msgid "Accelerated Speed"
 msgstr "Kiihdytetty nopeus"
 
-#: src/preferences.cpp:817
+#: src/preferences.cpp:819
 msgid "Skip AI Moves"
 msgstr "Ohita tietokoneen liikkeet"
 
-#: src/preferences.cpp:818
+#: src/preferences.cpp:820
 msgid "Show Grid"
 msgstr "Ruudukko"
 
-#: src/preferences.cpp:819
+#: src/preferences.cpp:821
 msgid "Show Floating Labels"
 msgstr "Kelluvat lipukkeet"
 
-#: src/preferences.cpp:820
+#: src/preferences.cpp:822
 msgid "Turn Dialog"
 msgstr "Vuoron dialogi"
 
-#: src/preferences.cpp:821
+#: src/preferences.cpp:823
 msgid "Turn Bell"
 msgstr "Vuoron Äänimerkki"
 
-#: src/preferences.cpp:822
+#: src/preferences.cpp:824
 msgid "Show Team Colors"
 msgstr "Joukkueen värit"
 
-#: src/preferences.cpp:823
+#: src/preferences.cpp:825
 msgid "Show Color Cursors"
 msgstr "Värilliset kursorit"
 
-#: src/preferences.cpp:824
+#: src/preferences.cpp:826
 msgid "Show Haloing Effects"
 msgstr "Näytä valokehä-efektit"
 
-#: src/preferences.cpp:825
+#: src/preferences.cpp:827
 msgid "Video Mode"
 msgstr "Näyttötarkkuus"
 
-#: src/preferences.cpp:826
+#: src/preferences.cpp:828
 msgid "Hotkeys"
 msgstr "Pikanäppäimet"
 
-#: src/preferences.cpp:827
+#: src/preferences.cpp:829
 msgid "Adjust Gamma"
 msgstr "Muuta kirkkautta"
 
-#: src/preferences.cpp:828
+#: src/preferences.cpp:830
 msgid "Reverse Time Graphics"
 msgstr ""
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "Music Volume:"
 msgstr "Musiikki:"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "SFX Volume:"
 msgstr "Efektit:"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Gamma:"
 msgstr "Kirkkaus:"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Scroll Speed:"
 msgstr "Vieritysnopeus:"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:845
 msgid "Change the sound effects volume"
 msgstr "Muuta ääniefektien voimakkuutta"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:850
 msgid "Change the music volume"
 msgstr "Muuta musiikin voimakkuutta"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:855
 msgid "Change the speed of scrolling around the map"
 msgstr "Muuta kartan vieritysnopeutta"
 
-#: src/preferences.cpp:856 src/preferences.cpp:861
+#: src/preferences.cpp:858 src/preferences.cpp:863
 msgid "Change the brightness of the display"
 msgstr "Vaihda näytön kirkkausasetuksia"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:866
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Valitse onko peli koko ruudun kokoinen vai ikkunoitu"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:869
 msgid "Make units move and fight faster"
 msgstr "Yksiköt liikkuvat ja taistelevat nopeammin"
 
-#: src/preferences.cpp:870
+#: src/preferences.cpp:872
 msgid "Do not animate AI units moving"
 msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
 
-#: src/preferences.cpp:873
+#: src/preferences.cpp:875
 msgid "Overlay a grid onto the map"
 msgstr "Näytä ruudukko"
 
-#: src/preferences.cpp:876
+#: src/preferences.cpp:878
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "Näytä yksikön yläpuolella sen saama vahinko"
 
-#: src/preferences.cpp:878
+#: src/preferences.cpp:880
 msgid "Change the resolution the game runs at"
 msgstr "Vaihda näyttötarkkuutta"
 
-#: src/preferences.cpp:881
+#: src/preferences.cpp:883
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Näytä dialogi-ikkuna vuorosi alussa"
 
-#: src/preferences.cpp:884
+#: src/preferences.cpp:886
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Anna äänimerkki vuorosi alussa"
 
-#: src/preferences.cpp:887
+#: src/preferences.cpp:889
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Näytä yksikön alla värillinen kehä, joka osoittaa joukkueen johon se kuuluu"
 
-#: src/preferences.cpp:890
+#: src/preferences.cpp:892
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:895
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:898
 msgid "Use graphical special effects (may be slower)"
 msgstr "Käytä graafisia erikoistehosteita (mahdollisesti hitaampi)"
 
-#: src/preferences.cpp:898
+#: src/preferences.cpp:900
 msgid "View and configure keyboard shortcuts"
 msgstr "Katso ja muokkaa pikanäppäimiä"
 
-#: src/preferences.cpp:1035
+#: src/preferences.cpp:1037
 msgid "Prefs section^General"
 msgstr "Yleiset"
 
-#: src/preferences.cpp:1036
+#: src/preferences.cpp:1038
 msgid "Prefs section^Display"
 msgstr "Näyttö"
 
-#: src/preferences.cpp:1037
+#: src/preferences.cpp:1039
 msgid "Prefs section^Sound"
 msgstr "Äänet"
 
-#: src/preferences.cpp:1093
+#: src/preferences.cpp:1095
 msgid "There are no alternative video modes available"
 msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä"
 
-#: src/preferences.cpp:1122
+#: src/preferences.cpp:1124
 msgid "Choose Resolution"
 msgstr "Valitse näyttötarkkuus"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1147
 msgid "Close Window"
 msgstr "Sulje ikkuna"
 
-#: src/preferences.cpp:1150
+#: src/preferences.cpp:1152
 msgid "Hotkey Settings"
 msgstr "Pikanäppäinten asetukset"
 
-#: src/preferences.cpp:1154 src/preferences.cpp:1198
+#: src/preferences.cpp:1156 src/preferences.cpp:1200
 msgid "Press desired HotKey"
 msgstr "Paina valitsemaasi näppäintä"
 
-#: src/preferences.cpp:1175
+#: src/preferences.cpp:1177
 msgid "Change Hotkey"
 msgstr "Muuta"
 
-#: src/preferences.cpp:1178
+#: src/preferences.cpp:1180
 msgid "Save Hotkeys"
 msgstr "Tallenna"
 
-#: src/preferences.cpp:1224
+#: src/preferences.cpp:1226
 msgid "This HotKey is already in use."
 msgstr "Tämä pikanäppäin on jo käytössä."
 
-#: src/show_dialog.cpp:391
+#: src/show_dialog.cpp:312
 msgid "Error"
 msgstr "Virhe"
 
-#: src/show_dialog.cpp:487 src/show_dialog.cpp:500
+#: src/show_dialog.cpp:408 src/show_dialog.cpp:421
 msgid "Ok"
 msgstr "Hyväksy"
 
-#: src/show_dialog.cpp:493
+#: src/show_dialog.cpp:414
 msgid "Yes"
 msgstr "Kyllä"
 
-#: src/show_dialog.cpp:494
+#: src/show_dialog.cpp:415
 msgid "No"
 msgstr "Ei"
 
-#: src/show_dialog.cpp:501 src/show_dialog.cpp:507
+#: src/show_dialog.cpp:422 src/show_dialog.cpp:428
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/show_dialog.cpp:513
+#: src/show_dialog.cpp:434
 msgid "Close"
 msgstr "Sulje"
 
-#: src/show_dialog.cpp:963
+#: src/show_dialog.cpp:884
 msgid "KB"
 msgstr "KB"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-20 17:08+0100\n"
+"POT-Creation-Date: 2005-03-28 11:58+0200\n"
 "PO-Revision-Date: 2005-03-17 15:06+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -114,7 +114,7 @@ msgstr "ユニット作成(デバグ用)"
 msgid "Change Unit Side (Debug!)"
 msgstr "ユニット陣営変更(デバグ用)"
 
-#: src/hotkeys.cpp:69 src/preferences.cpp:1047
+#: src/hotkeys.cpp:69 src/preferences.cpp:1049
 msgid "Preferences"
 msgstr "設定"
 
@@ -242,7 +242,7 @@ msgstr "同盟軍に話す"
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:103 src/show_dialog.cpp:650
+#: src/hotkeys.cpp:103 src/show_dialog.cpp:571
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -262,7 +262,7 @@ msgstr "本当に終了しますか？"
 msgid "Quit"
 msgstr "終了"
 
-#: src/preferences.cpp:156 src/preferences.cpp:207
+#: src/preferences.cpp:158 src/preferences.cpp:209
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
@@ -273,220 +273,220 @@ msgstr ""
 "せん。フルスクリーンで実行するには1024x768x16の画面をサポートしなければなりま"
 "せん。"
 
-#: src/preferences.cpp:379
+#: src/preferences.cpp:381
 msgid "player"
 msgstr "プレイヤー"
 
-#: src/preferences.cpp:815
+#: src/preferences.cpp:817
 msgid "Full Screen"
 msgstr "フルスクリーン"
 
-#: src/preferences.cpp:816
+#: src/preferences.cpp:818
 msgid "Accelerated Speed"
 msgstr "高速化"
 
-#: src/preferences.cpp:817
+#: src/preferences.cpp:819
 msgid "Skip AI Moves"
 msgstr "AI移動スキップ"
 
-#: src/preferences.cpp:818
+#: src/preferences.cpp:820
 msgid "Show Grid"
 msgstr "グリッド表示"
 
-#: src/preferences.cpp:819
+#: src/preferences.cpp:821
 msgid "Show Floating Labels"
 msgstr "ラベル表示"
 
-#: src/preferences.cpp:820
+#: src/preferences.cpp:822
 msgid "Turn Dialog"
 msgstr "ターンダイアログ"
 
-#: src/preferences.cpp:821
+#: src/preferences.cpp:823
 msgid "Turn Bell"
 msgstr "ターンベル"
 
-#: src/preferences.cpp:822
+#: src/preferences.cpp:824
 msgid "Show Team Colors"
 msgstr "チームカラー"
 
-#: src/preferences.cpp:823
+#: src/preferences.cpp:825
 msgid "Show Color Cursors"
 msgstr "カラーカーソル"
 
-#: src/preferences.cpp:824
+#: src/preferences.cpp:826
 msgid "Show Haloing Effects"
 msgstr "特殊効果表示"
 
-#: src/preferences.cpp:825
+#: src/preferences.cpp:827
 msgid "Video Mode"
 msgstr "画面モード"
 
-#: src/preferences.cpp:826
+#: src/preferences.cpp:828
 msgid "Hotkeys"
 msgstr "ホットキー"
 
-#: src/preferences.cpp:827
+#: src/preferences.cpp:829
 msgid "Adjust Gamma"
 msgstr "ガンマ補正"
 
-#: src/preferences.cpp:828
+#: src/preferences.cpp:830
 msgid "Reverse Time Graphics"
 msgstr "時間グラフィックを反転"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "Music Volume:"
 msgstr "音楽ボリューム"
 
-#: src/preferences.cpp:829
+#: src/preferences.cpp:831
 msgid "SFX Volume:"
 msgstr "効果音ボリューム"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Gamma:"
 msgstr "ガンマ値"
 
-#: src/preferences.cpp:830
+#: src/preferences.cpp:832
 msgid "Scroll Speed:"
 msgstr "スクロール速度:"
 
-#: src/preferences.cpp:843
+#: src/preferences.cpp:845
 msgid "Change the sound effects volume"
 msgstr "効果音の音の大きさを変更します"
 
-#: src/preferences.cpp:848
+#: src/preferences.cpp:850
 msgid "Change the music volume"
 msgstr "音楽の音の大きさを変更します"
 
-#: src/preferences.cpp:853
+#: src/preferences.cpp:855
 msgid "Change the speed of scrolling around the map"
 msgstr "画面端のスクロールの速度を変更します"
 
-#: src/preferences.cpp:856 src/preferences.cpp:861
+#: src/preferences.cpp:858 src/preferences.cpp:863
 msgid "Change the brightness of the display"
 msgstr "画面の明るさを変更します"
 
-#: src/preferences.cpp:864
+#: src/preferences.cpp:866
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "フルスクリーンモードかウィンドウモードかを選択します"
 
-#: src/preferences.cpp:867
+#: src/preferences.cpp:869
 msgid "Make units move and fight faster"
 msgstr "ユニットの移動と戦闘を高速に行います"
 
-#: src/preferences.cpp:870
+#: src/preferences.cpp:872
 msgid "Do not animate AI units moving"
 msgstr "AI移動時にアニメーションを行わないようにします"
 
-#: src/preferences.cpp:873
+#: src/preferences.cpp:875
 msgid "Overlay a grid onto the map"
 msgstr "マップのグリッドを表示します"
 
-#: src/preferences.cpp:876
+#: src/preferences.cpp:878
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr "ユニットの上に受けたダメージを表示します"
 
-#: src/preferences.cpp:878
+#: src/preferences.cpp:880
 msgid "Change the resolution the game runs at"
 msgstr "解像度を変更します"
 
-#: src/preferences.cpp:881
+#: src/preferences.cpp:883
 msgid "Display a dialog at the beginning of your turn"
 msgstr "プレイヤーのターン開始時にダイアログを表示します"
 
-#: src/preferences.cpp:884
+#: src/preferences.cpp:886
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "プレイヤーのターン開始時にベルを鳴らします"
 
-#: src/preferences.cpp:887
+#: src/preferences.cpp:889
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "ユニットがどの陣営に属しているかを色付きの円で表示します"
 
-#: src/preferences.cpp:890
+#: src/preferences.cpp:892
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "太陽の移動が、左から右なのか、右から左かを選択します。"
 
-#: src/preferences.cpp:893
+#: src/preferences.cpp:895
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "色付きのマウスカーソルを使用します(遅くなります)"
 
-#: src/preferences.cpp:896
+#: src/preferences.cpp:898
 msgid "Use graphical special effects (may be slower)"
 msgstr "画像の特殊効果を使用します(遅くなります)"
 
-#: src/preferences.cpp:898
+#: src/preferences.cpp:900
 msgid "View and configure keyboard shortcuts"
 msgstr "キーボードショートカットの一覧表示と設定変更を行います"
 
-#: src/preferences.cpp:1035
+#: src/preferences.cpp:1037
 msgid "Prefs section^General"
 msgstr "一般"
 
-#: src/preferences.cpp:1036
+#: src/preferences.cpp:1038
 msgid "Prefs section^Display"
 msgstr "表示"
 
-#: src/preferences.cpp:1037
+#: src/preferences.cpp:1039
 msgid "Prefs section^Sound"
 msgstr "音楽"
 
-#: src/preferences.cpp:1093
+#: src/preferences.cpp:1095
 msgid "There are no alternative video modes available"
 msgstr "変更可能な画面モードはありません"
 
-#: src/preferences.cpp:1122
+#: src/preferences.cpp:1124
 msgid "Choose Resolution"
 msgstr "解像度を選択して下さい"
 
-#: src/preferences.cpp:1145
+#: src/preferences.cpp:1147
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/preferences.cpp:1150
+#: src/preferences.cpp:1152
 msgid "Hotkey Settings"
 msgstr "ホットキーの設定"
 
-#: src/preferences.cpp:1154 src/preferences.cpp:1198
+#: src/preferences.cpp:1156 src/preferences.cpp:1200
 msgid "Press desired HotKey"
 msgstr "ホットキーに設定したいキーを押して下さい"
 
-#: src/preferences.cpp:1175
+#: src/preferences.cpp:1177
 msgid "Change Hotkey"
 msgstr "ホットキーの変更"
 
-#: src/preferences.cpp:1178
+#: src/preferences.cpp:1180
 msgid "Save Hotkeys"
 msgstr "ホットキーを保存"
 
-#: src/preferences.cpp:1224
+#: src/preferences.cpp:1226
 msgid "This HotKey is already in use."
 msgstr "このホットキーは既に使用されています。"
 
-#: src/show_dialog.cpp:391
+#: src/show_dialog.cpp:312
 msgid "Error"
 msgstr "エラー"
 
-#: src/show_dialog.cpp:487 src/show_dialog.cpp:500
+#: src/show_dialog.cpp:408 src/show_dialog.cpp:421
 msgid "Ok"
 msgstr "OK"
 
-#: src/show_dialog.cpp:493
+#: src/show_dialog.cpp:414
 msgid "Yes"
 msgstr "はい"
 
-#: src/show_dialog.cpp:494
+#: src/show_dialog.cpp:415
 msgid "No"
 msgstr "いいえ"
 
-#: src/show_dialog.cpp:501 src/show_dialog.cpp:507
+#: src/show_dialog.cpp:422 src/show_dialog.cpp:428
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/show_dialog.cpp:513
+#: src/show_dialog.cpp:434
 msgid "Close"
 msgstr "閉じる"
 
-#: src/show_dialog.cpp:963
+#: src/show_dialog.cpp:884
 msgid "KB"
 msgstr "KB"
