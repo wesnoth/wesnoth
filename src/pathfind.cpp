@@ -30,11 +30,11 @@ typedef std::vector<a_star_node*> vector_a_star_node;
 typedef std::set<gamemap::location>	set_location;	
 
 bool compare_strict_sup_a_star_node(const a_star_node* node1, const a_star_node* node2) {
-	return (node1->g + (1.3 * node1->h) > node2->g + (1.3 * node2->h));		
+	return node1->g + node1->h > node2->g + node2->h;		
 }
 
 bool compare_sup_equal_a_star_node(const a_star_node* node1, const a_star_node* node2) {
-	return (node1->g + (1.3 * node1->h) >= node2->g + (1.3 * node2->h));		
+	return node1->g + node1->h >= node2->g + node2->h;		
 }
 
 void a_star_init(gamemap::location const &src, gamemap::location const &dst,
