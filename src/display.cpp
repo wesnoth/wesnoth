@@ -1892,6 +1892,39 @@ bool display::unit_attack(const gamemap::location& a,
 {
 	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y);
 
+	if(!hide) {
+		const double side_threshhold = 80.0;
+
+		double xloc = get_location_x(a);
+		double yloc = get_location_y(a);
+
+		//we try to scroll the map if the unit is at the edge.
+		//keep track of the old position, and if the map moves at all,
+		//then recenter it on the unit
+		double oldxpos = xpos_;
+		double oldypos = ypos_;
+		if(xloc < side_threshhold) {
+			scroll(xloc - side_threshhold,0.0);
+		}
+
+		if(yloc < side_threshhold) {
+			scroll(0.0,yloc - side_threshhold);
+		}
+
+		if(xloc + zoom_ > this->mapx() - side_threshhold) {
+			scroll(((xloc + zoom_) -
+			        (this->mapx() - side_threshhold)),0.0);
+		}
+
+		if(yloc + zoom_ > this->y() - side_threshhold) {
+			scroll(0.0,((yloc + zoom_) - (this->y() - side_threshhold)));
+		}
+
+		if(oldxpos != xpos_ || oldypos != ypos_) {
+			scroll_to_tile(a.x,a.y,WARP);
+		}
+	}
+
 	log_scope("unit_attack");
 	invalidate_all();
 	draw(true,true);

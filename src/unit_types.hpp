@@ -160,7 +160,7 @@ public:
 	int heals() const;
 	bool regenerates() const;
 	bool is_leader() const;
-	bool is_lightbringer() const;
+	bool illuminates() const;
 	bool is_skirmisher() const;
 	bool teleports() const;
 	bool nightvision() const;
@@ -178,7 +178,7 @@ private:
 	int heals_;
 	bool regenerates_;
 	bool leadership_;
-	bool lightbringer_;
+	bool illuminates_;
 	bool skirmish_;
 	bool teleport_;
 	bool nightvision_;
