@@ -222,9 +222,10 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
-	          widgets/file_chooser.cpp \
+	      widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
+		  widgets/progressbar.cpp \
 		  widgets/scrollbar.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
@@ -287,9 +288,10 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  widgets/button.hpp \
-	          widgets/file_chooser.hpp \
+	      widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
+		  widgets/progressbar.hpp \
 		  widgets/scrollbar.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
@@ -460,8 +462,8 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_display.$(OBJEXT) \
 	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
 	file_chooser.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
-	scrollbar.$(OBJEXT) slider.$(OBJEXT) textbox.$(OBJEXT) \
-	widget.$(OBJEXT)
+	progressbar.$(OBJEXT) scrollbar.$(OBJEXT) slider.$(OBJEXT) \
+	textbox.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
 wesnoth_DEPENDENCIES =
@@ -525,7 +527,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_lobby.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/pathfind.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/playlevel.Po ./$(DEPDIR)/playturn.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/preferences.Po ./$(DEPDIR)/race.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/preferences.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/progressbar.Po ./$(DEPDIR)/race.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/reports.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/scrollbar.Po ./$(DEPDIR)/sdl_utils.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/show_dialog.Po ./$(DEPDIR)/slider.Po \
@@ -652,6 +655,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/playlevel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/playturn.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preferences.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/progressbar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/race.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/replay.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/reports.Po@am__quote@
@@ -782,6 +786,28 @@ menu.obj: widgets/menu.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/menu.Po' tmpdepfile='$(DEPDIR)/menu.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o menu.obj `if test -f 'widgets/menu.cpp'; then $(CYGPATH_W) 'widgets/menu.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/menu.cpp'; fi`
+
+progressbar.o: widgets/progressbar.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT progressbar.o -MD -MP -MF "$(DEPDIR)/progressbar.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o progressbar.o `test -f 'widgets/progressbar.cpp' || echo '$(srcdir)/'`widgets/progressbar.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/progressbar.Tpo" "$(DEPDIR)/progressbar.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/progressbar.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/progressbar.cpp' object='progressbar.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/progressbar.Po' tmpdepfile='$(DEPDIR)/progressbar.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o progressbar.o `test -f 'widgets/progressbar.cpp' || echo '$(srcdir)/'`widgets/progressbar.cpp
+
+progressbar.obj: widgets/progressbar.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT progressbar.obj -MD -MP -MF "$(DEPDIR)/progressbar.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o progressbar.obj `if test -f 'widgets/progressbar.cpp'; then $(CYGPATH_W) 'widgets/progressbar.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/progressbar.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/progressbar.Tpo" "$(DEPDIR)/progressbar.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/progressbar.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/progressbar.cpp' object='progressbar.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/progressbar.Po' tmpdepfile='$(DEPDIR)/progressbar.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o progressbar.obj `if test -f 'widgets/progressbar.cpp'; then $(CYGPATH_W) 'widgets/progressbar.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/progressbar.cpp'; fi`
 
 scrollbar.o: widgets/scrollbar.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT scrollbar.o -MD -MP -MF "$(DEPDIR)/scrollbar.Tpo" \

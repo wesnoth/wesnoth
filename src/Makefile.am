@@ -80,9 +80,10 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
-	          widgets/file_chooser.cpp \
+	      widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
+		  widgets/progressbar.cpp \
 		  widgets/scrollbar.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
@@ -145,9 +146,10 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  widgets/button.hpp \
-	          widgets/file_chooser.hpp \
+	      widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
+		  widgets/progressbar.hpp \
 		  widgets/scrollbar.hpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
