@@ -182,7 +182,7 @@ void save_hotkeys(config& cfg)
 
 		config* item = cfg.find_child("hotkey","command",action_name);
 		if(item == NULL)
-			item = &cfg.add_child("command");
+			item = &cfg.add_child("hotkey");
 
 		(*item)["command"] = action_name;
 		(*item)["key"] = i->keycode;

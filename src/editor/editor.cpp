@@ -77,8 +77,9 @@ int main(int argc, char** argv)
 		display::unit_map u_map;
 		config dummy_cfg("");
 
+		config dummy_theme;
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>());
+		             std::vector<team>(), dummy_theme);
 
 		std::vector<std::string> files;
 		get_files_in_dir(path,&files);
@@ -120,8 +121,9 @@ int main(int argc, char** argv)
 	gamestatus status(cfg,0);
 	std::vector<team> teams;
 
+	config dummy_theme;
 	std::map<gamemap::location,unit> units;
-	display gui(units,video,map,status,teams);
+	display gui(units,video,map,status,teams,dummy_theme);
 
 	std::vector<std::string> terrain_names;
 	const std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();

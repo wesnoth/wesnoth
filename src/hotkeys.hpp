@@ -53,8 +53,6 @@ struct hotkey_item {
 //[/hotkey]
 //where 'cmd' is a command name, and 'k' is a key. see hotkeys.cpp for the
 //valid command names.
-void add_hotkeys(config& cfg);
-
 void add_hotkeys(config& cfg, bool overwrite);
 
 void change_hotkey(hotkey_item& item);
