@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "December 28, 2004" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "January 27th, 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 battle for wesnoth \- fantasy turn-based strategy game
@@ -44,19 +44,31 @@ sets BitsPerPixel value. Example: --bpp 32
 
 .TP
 .BR -d , \ --debug
-shows some extra debugging information in-game.
+shows some extra debugging informations and options in-game.
 
 .TP
 .BR -f , \ --fullscreen
 runs the game in full screen mode.
 
 .TP
+.BR --fps
+displays the number of frames per second the game is currently running with in a corner of the screen.
+
+.TP
 .BR -h , \ --help
-tells you about what the command line options do.
+tells you what the command line options do.
+
+.TP
+.BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
+sets the severity level of the debug domains. "all" can be used to match any debug domain.
 
 .TP
 .BR --multiplayer
-runs multiplayer game.
+runs multiplayer game. There are more extra options that can be used together with --multiplayer. They are explained below. (not yet implemented correctly)
+
+.TP
+.BR --nocache
+disables caching of game data.
 
 .TP
 .BR --nosound
@@ -67,7 +79,7 @@ runs game without sounds and music.
 prints the name of the game data directory and exits.
 
 .TP
-.BR -r, --resolution
+.BR -r , \ --resolution
 sets screen resolution. Example: -r 800x600
 
 .TP
@@ -75,50 +87,45 @@ sets screen resolution. Example: -r 800x600
 runs the game in a small test scenario.
 
 .TP
+.BR -v , \ --version
+shows version number and exits.
+
+.TP
 .BR -w , \ --windowed
 runs the game in windowed mode.
 
-.TP
-.BR -v , \ --version
-shows version number and exit.
-
-.TP
-.BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
-sets the severity level of the debug domains. "all" can be used to match any debug domain.
-
-.TP
-.BR --nocache
-disables chaching of game data.
-
-.SH Options for --multiplayer
+.SH Options for --multiplayer (not yet implemented correctly)
 
 .TP
 .BR --algorithm=value
-???
+not yet implemented correctly
 
 .TP
 .BR --controller=value
-???
+not yet implemented correctly
 
 .TP
 .BR --era=which
-Use this option to play in the selected era.
+Use this option to play in the selected era. (not yet implemented correctly)
+
 
 .TP
 .BR --nogui
-Runs the game without the GUI.
+Runs the game without the GUI. (not yet implemented correctly)
+
 
 .TP
 .BR --parm=name:value
-Sets additional parameters.
+Sets additional parameters. (not yet implemented correctly)
+
 
 .TP
 .BR --scenario=name
-Use this option to play the selected szenario or map.
+Use this option to play the selected szenario or map. (not yet implemented correctly)
 
 .TP
 .BR --side=value
-???
+not yet implemented correctly
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
