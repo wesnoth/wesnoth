@@ -72,6 +72,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	turn_info turn_data;
 
+	int start_command = recorder.ncommands();
+
 	//execute gotos - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
 
@@ -113,8 +115,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	std::cerr << "done gotos\n";
-
-	int start_command = recorder.ncommands();
 
 	for(;;) {
 		bool res = false;
