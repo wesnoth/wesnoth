@@ -651,7 +651,6 @@ msgstr ""
 "début de votre tour, avant que vous n'agissiez."
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -660,8 +659,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Repos : Une unité qui ne bouge ni n'attaque se soignera de 2 PV à son "
-"prochain tour."
+"Repos : Une unité qui ne bouge pas, n'attaque pas, et ne se fait pas "
+"attaquer, se soignera de 2 PV à son prochain tour."
 
 #: data/help.cfg:173
 msgid ""
@@ -683,7 +682,6 @@ msgstr ""
 "(telles les trolls) guériront automatiquement de 8 PV à chaque tour."
 
 #: data/help.cfg:175
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -693,11 +691,11 @@ msgid ""
 msgstr ""
 "\n"
 "Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals "
-"text=soins</ref> soigneront tous les unités amicales adjacentes de 4 PV à "
-"chaque tour ou empêcheront le poison d'infliger des dégâts."
+"text=Soin</ref> soigneront chaque tour toutes les unités amicales adjacentes "
+"de 4 PV chacune, dans la limite de 8 PV en tout, ou empêcheront le poison "
+"d'infliger des dégâts."
 
 #: data/help.cfg:177
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -708,8 +706,9 @@ msgstr ""
 "\n"
 "\n"
 "Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures "
-"text=Guérison</ref> soigneront tous les unités amicales adjacentes de 8 PV à "
-"chaque tour ou purgeront une unité du Poison."
+"text=Guérison</ref> soigneront chaque tour toutes les unités amicales "
+"adjacentes de 8 PV chacune, dans la limite de 18 PV en tout, ou guériront de "
+"l'empoisonnement."
 
 #: data/help.cfg:179
 msgid ""
@@ -2699,60 +2698,55 @@ msgstr "Prairie"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Savanne"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Village"
+msgstr "Village du désert"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Village des forêts tropicales"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Oasis"
 
 #: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Neige"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Village"
+msgstr "Village enneigé"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Collines"
 
 #: data/terrain.cfg:288 data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Supprimer le fichier"
+msgstr "Dunes"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Montagnes"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montagnes"
+msgstr "Montagnes désertiques"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Forêt"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Forêt"
+msgstr "Forêt enneigée"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Forêt tropicale"
 
 #: data/terrain.cfg:344
 msgid "Cave wall"
@@ -2835,11 +2829,11 @@ msgstr "mouvement"
 
 #: data/themes/default.cfg:499
 msgid "Act."
-msgstr ""
+msgstr "Act."
 
 #: data/themes/default.cfg:532
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Fin"
 
 #: data/tips.cfg:1
 msgid ""
@@ -3191,8 +3185,8 @@ msgstr ""
 "ennemis.\n"
 "\n"
 "Les unités ennemies ne peuvent voir ni attaquer cette unité tant qu'elle se "
-"trouve en forêt, sauf pour le tours suivant une attaque de cette unité ou "
-"s'il y a des unités ennemies adjacentes à cette unité."
+"trouve en forêt, sauf lors du tour suivant une attaque de cette unité ou "
+"s'il y a des unités ennemies à proximité de cette unité."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
@@ -3281,7 +3275,6 @@ msgid "illuminates"
 msgstr "illumination"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -3293,10 +3286,13 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "Commandement :\n"
-"Cette unité peut commander d'autres unités alliées qui sont à ses côtés, les "
-"rendant meilleures en combat.\n"
+"Cette unité peut commander les unités alliées présentes à ses côtés, les "
+"rendant meilleures au combat.\n"
 "\n"
-"Les unités alliées de niveau inférieur feront plus de dégâts en combat."
+"Les unités alliées de niveau inférieur feront plus de dégâts en combat. "
+"Quand une unité d'un niveau inférieur et dans la même armée qu'un commandant "
+"proche participe à un combat, ses attaques font 25% de dégâts "
+"supplémentaires pour chaque niveau d'écart."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3322,7 +3318,6 @@ msgstr ""
 "Jamais plus de 1 d'entretien"
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3332,12 +3327,11 @@ msgid ""
 "to this unit."
 msgstr ""
 "Embuscade :\n"
-"Cette unité peut se cacher dans les forêts et rester invisible à ses "
-"ennemis.\n"
+"Cette unité devient invisible la nuit.\n"
 "\n"
-"Les unités ennemies ne peuvent voir ni attaquer cette unité tant qu'elle se "
-"trouve en forêt, sauf pour le tours suivant une attaque de cette unité ou "
-"s'il y a des unités ennemies adjacentes à cette unité."
+"Les unités ennemies ne peuvent voir ni attaquer cette unité la nuit, sauf "
+"lors du tour suivant une attaque de cette unité ou s'il y a des unités "
+"ennemies à proximité de cette unité."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -3397,14 +3391,14 @@ msgid "steadfast"
 msgstr "innamovible"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Téléportation :\n"
-"Cette unité peut se téléporter instantanément entre deux villages alliés."
+"Cette unité peut se téléporter instantanément entre deux villages alliés "
+"pour un point de mouvement."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:161
@@ -3412,7 +3406,6 @@ msgid "teleport"
 msgstr "téléportation"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -3420,7 +3413,8 @@ msgid ""
 msgstr ""
 "Assassinat :\n"
 "Cette attaque occasionne le double de dommages si une unité alliée se trouve "
-"sur la case opposée à la cible."
+"de l'autre côté de la cible (cela ne marche qu'entre les unités d'une même "
+"armée)."
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3484,6 +3478,11 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Peste :\n"
+"Quand une unité est tuée par une telle attaque, elle est remplacée par une "
+"unité identique et dans la même armée que celle ayant porté l'attaque (cela "
+"ne marche pas contre les morts-vivants ou les unités stationnées dans les "
+"villages)."
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -3497,7 +3496,6 @@ msgstr ""
 "qu'un seul point de vie."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3506,7 +3504,8 @@ msgid ""
 msgstr ""
 "Ralentissement :\n"
 "Cette attaque ralentit la cible. Les unités ralenties voient leur vitesse de "
-"déplacement réduite de moitié et disposent d'une attaque de moins en combat."
+"déplacement réduite de moitié et disposent d'une attaque de moins en combat, "
+"et cela jusqu'à la fin du tour de leur propriétaire."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3930,7 +3929,6 @@ msgid "poison"
 msgstr "empoisonnement"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
 msgstr "Assassin"
 
@@ -5561,9 +5559,8 @@ msgid "sling"
 msgstr "fronde"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
-msgstr "Vagabond hirsute"
+msgstr "Vagabonde hirsute"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -5614,18 +5611,16 @@ msgid "Ghost"
 msgstr "Fantôme"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
 "freedom of movement and protection from physical attacks, ghosts cannot "
 "easily cross running water."
 msgstr ""
-"Les fantômes sont les âmes de guerriers morts des siècles auparavant, ne "
-"laissant aucun corps derrière eux. Nullement limités par une enveloppe "
-"charnelle, ces morts-vivants peuvent voler rapidement vers leurs victimes."
-"Même si leur matière ectoplasmique peut traverser les objets physiques, elle "
-"ne peut le faire trop vite, ni trop profondément."
+"Les fantômes sont les âmes de guerriers morts dans la douleur des siècles "
+"auparavant et n'ayant laissé aucun cadavre. Même si l'absence d'enveloppe "
+"charnelle leur offre protection contre les attaques physiques et une grande "
+"liberté de mouvement, les fantômes peinent à traverser les eaux vives."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -6993,9 +6988,8 @@ msgstr ""
 "l'ennemi attaqué."
 
 #: data/units/Rogue.cfg:63
-#, fuzzy
 msgid "female^Rogue"
-msgstr "Mage"
+msgstr "Bandit"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -7421,9 +7415,8 @@ msgstr ""
 "Étant d'humeur chaotique, les voleurs se battent mieux la nuit que le jour."
 
 #: data/units/Thief.cfg:40
-#, fuzzy
 msgid "female^Thief"
-msgstr "Mage"
+msgstr "Voleuse"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -7850,9 +7843,8 @@ msgid "+Italian Translation"
 msgstr "+Traduction italienne"
 
 #: src/about.cpp:232
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Traduction catalane"
+msgstr "+Traduction latine"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
@@ -8575,9 +8567,8 @@ msgid "Island"
 msgstr "Île"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Charger un jeu"
+msgstr "Charger une partie..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -8649,55 +8640,47 @@ msgstr "Aucun camp multijoueur."
 
 #: src/multiplayer.cpp:177 src/multiplayer_lobby.cpp:208
 msgid "Create Game"
-msgstr "Créer un jeu"
+msgstr "Créer une partie"
 
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Nom du jeu"
+msgstr "Nom du jeu :"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
 msgstr "Jeu de $login"
 
 #: src/multiplayer.cpp:195
-#, fuzzy
 msgid "Map to play:"
-msgstr "Carte à jouer"
+msgstr "Carte à jouer :"
 
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Ère"
+msgstr "Ère :"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
 msgstr "Vous devez entrer un nom."
 
 #: src/multiplayer.cpp:363
-#, fuzzy
 msgid "Turns: "
-msgstr "Tours"
+msgstr "Tours : "
 
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
-msgstr "Illimité"
+msgstr "illimité"
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Or du village"
+msgstr "Or par village : "
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Expérience requise"
+msgstr "Expérience requise : "
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Joueurs"
+msgstr "Joueurs : "
 
 #: src/multiplayer.cpp:532
 msgid ""
