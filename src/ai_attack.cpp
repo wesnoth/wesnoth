@@ -376,8 +376,10 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			terrain_quality += (double(stat.chance_to_hit_attacker)/100.0)*cost * (on_village ? 0.5 : 1.0);
 			resources_used += cost;
 
+			bool defender_strikes_first = stat.defender_strikes_first;
+
 			while(attacks || defends) {
-				if(attacks) {
+				if(attacks && !defender_strikes_first) {
 					const int roll = rand()%100;
 					if(roll < stat.chance_to_hit_defender) {
 						defhp -= stat.damage_defender_takes;
@@ -393,6 +395,8 @@ void ai::attack_analysis::analyze(const gamemap& map,
 
 					--attacks;
 				}
+
+				defender_strikes_first = false;
 
 				if(defends) {
 					const int roll = rand()%100;

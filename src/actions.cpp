@@ -209,6 +209,7 @@ battle_stats evaluate_battle_stats(
 
 	static const std::string to_the_death_string("berserk");
 	res.to_the_death = attack.special() == to_the_death_string;
+	res.defender_strikes_first = false;
 
 	static const std::string backstab_string("backstab");
 	if(attack.special() == backstab_string) {
@@ -385,6 +386,9 @@ battle_stats evaluate_battle_stats(
 		}
 
 		res.defender_plague = (defender_attacks[defend].special() == plague_string);
+
+		static const std::string first_strike = "firststrike";
+		res.defender_strikes_first = defender_attacks[defend].special() == first_strike && attack.special() != first_strike;
 	}
 
 	if(attack.special() == magical_string)
@@ -549,7 +553,7 @@ void attack(display& gui, const gamemap& map,
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		std::cerr << "start of attack loop...\n";
 
-		if(stats.nattacks > 0) {
+		if(stats.nattacks > 0 && stats.defender_strikes_first == false) {
 			const int ran_num = get_random();
 			bool hits = (ran_num%100) < stats.chance_to_hit_defender;
 
@@ -685,6 +689,9 @@ void attack(display& gui, const gamemap& map,
 
 			--stats.nattacks;
 		}
+
+		//if the defender got to strike first, they use it up here.
+		stats.defender_strikes_first = false;
 
 		if(stats.ndefends > 0) {
 			std::cerr << "doing defender attack...\n";
@@ -1230,6 +1237,10 @@ void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
                   gamemap::location loc, const std::string& advance_to)
 {
+	if(units.count(loc) == 0) {
+		return;
+	}
+
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
 
 	statistics::advance_unit(new_unit);

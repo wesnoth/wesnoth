@@ -189,8 +189,6 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 
 		disp.update_display();
 	}
-
-	disp.draw(true,true);
 }
 
 namespace {
@@ -411,6 +409,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			else if(missile_halo_effect != 0) {
 				halo::set_location(missile_halo_effect,halo_xpos,halo_ypos);
 			}
+		} else {
+			//the missile halo should disappear now, since the missile has stopped being shown
+			missile_halo_effect.assign(0);
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
@@ -450,6 +451,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	if(dead) {
 		unit_die(disp,def->first,def->second);
 	}
+
+	disp.update_display();
 
 	return dead;
 }
@@ -718,6 +721,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second);
 	}
+
+	disp.update_display();
 
 	return dead;
 }

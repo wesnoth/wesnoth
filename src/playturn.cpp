@@ -326,12 +326,13 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			unit_map::const_iterator un = find_visible_unit(units_,
-					selected_hex_,
-					map_,
-					status_.get_time_of_day().lawful_bonus,teams_,current_team);
+			unit_map::const_iterator un = find_visible_unit(units_,selected_hex_,map_,
+			                                                status_.get_time_of_day().lawful_bonus,teams_,current_team);
 
-			if(un != units_.end()) {
+			const unit_map::const_iterator dest_un = find_visible_unit(units_,new_hex,map_,
+			                                              status_.get_time_of_day().lawful_bonus,teams_,current_team);
+
+			if(un != units_.end() && dest_un != units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    units_,teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
