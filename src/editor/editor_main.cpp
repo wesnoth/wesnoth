@@ -200,7 +200,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
 	}
 
-	set_language("English");
+	//set_language("English");
 
 	if(mapdata.empty()) {
 		for(int i = 0; i != 20; ++i) {
