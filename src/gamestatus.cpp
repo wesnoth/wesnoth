@@ -469,8 +469,7 @@ config& save_index()
 			save_index_cfg.read(read_file(get_save_index_file()));
 		} catch(io_exception& e) {
 			std::cerr << "error reading save index: '" << e.what() << "'\n";
-		} catch(config::error& e) {
-			e;
+		} catch(config::error&) {
 			std::cerr << "error parsing save index config file\n";
 			save_index_cfg.clear();
 		}
