@@ -31,7 +31,7 @@ struct manager {
 };
 
 //function which sets the name of the font to use
-void set_font(const std::string& name);
+void set_font();
 
 //various standard colours
 extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,

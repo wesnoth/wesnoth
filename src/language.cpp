@@ -135,6 +135,7 @@ bool set_language(const language_def& locale)
 
 	current_language = locale;
 	setlocale (LC_MESSAGES, locale.localename.c_str());
+	font::set_font();
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
@@ -154,9 +155,6 @@ bool set_language(const language_def& locale)
 		strings_[j->first] = j->second;
 	}
 	// end of string_table fill
-
-	// ENGLISH-CFG
-	font::set_font(string_table["font"]);
 
 	return true;
 }

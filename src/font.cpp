@@ -155,13 +155,10 @@ manager::~manager()
 	TTF_Quit();
 }
 
-void set_font(const std::string& name)
+void set_font()
 {
 	clear_fonts();
-	font_name = name;
-	if(font_name == "") {
-		font_name = "Vera.ttf";
-	}
+	font_name = _("Vera.ttf");
 }
 
 const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
