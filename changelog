@@ -1,16 +1,16 @@
 CVS HEAD:
  * user interface improvements:
-    * added alternative theme: DFool
-    * added theme dialog, launched with ":theme"	
+   * added alternative theme: DFool
+   * added theme dialog, launched with ":theme"	
  * campaign modifications
-    * tutorial polishing
-    * updated all campaigns to use the new [objectives] tag
-    * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
-    * updated the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
-    * updated Heir to the Throne and The Rise of Wesnoth to use the ruined keeps where appropriate
-    * dialog improvements in Eastern Invasion
-    * new map for Drowned Plains (Eastern Invasion)
-    * changed the Wesfolk Leader's guards to poachers in 'The Fall' (The Rise of Wesnoth)
+   * tutorial polishing
+   * updated all campaigns to use the new [objectives] tag
+   * updated 'The Siege of Elensefar', 'Mountain Pass', 'The Swamp of Esten', and 'A Final Spring' to use the new ford terrain (Heir to the Throne & The Rise of Wesnoth).
+   * updated the behaviour of the thieves in 'The Siege of Elensefar' (Heir to the Throne)
+   * updated Heir to the Throne and The Rise of Wesnoth to use the ruined keeps where appropriate
+   * dialog improvements in Eastern Invasion
+   * new map for Drowned Plains (Eastern Invasion)
+   * changed the Wesfolk Leader's guards to poachers in 'The Fall' (The Rise of Wesnoth)
  * terrain improvements
    * improved transitions:
      * swamp
@@ -47,34 +47,34 @@ CVS HEAD:
    * Elves: added the race specific 'dextrous' trait (increases damage on ranged attacks)
    * made 'loyal' a trait which is only given to units explicitly by the scenario designer
 * language and i18n:
-   * language fixes and polishing (English)
-   * fixed hero names not being translatable
-   * fixed a giant error in Drake Clasher description
-   * made text strings automatically choose an appropriate font
-   * fixed untranslatable strings
-   * new translations: 
-     * Afrikaans
-     * Chinese
-     * Estonian
-     * Japanese
-   * updated translations: 
-     * Basque
-     * Catalan
-     * Dutch
-     * Finnish
-     * French
-     * German
-     * Greek
-     * Hungarian
-     * Italian
-     * Latin,
-     * Norwegian
-     * Portuguese (Brazilian)
-     * Russian
-     * Slovak
-     * Slovenian
-     * Spanish
-* WML modifications
+  * language fixes and polishing (English)
+  * fixed hero names not being translatable
+  * fixed a giant error in Drake Clasher description
+  * made text strings automatically choose an appropriate font
+  * fixed untranslatable strings
+  * new translations: 
+    * Afrikaans
+    * Chinese
+    * Estonian
+    * Japanese
+  * updated translations: 
+    * Basque
+    * Catalan
+    * Dutch
+    * Finnish
+    * French
+    * German
+    * Greek
+    * Hungarian
+    * Italian
+    * Latin,
+    * Norwegian
+    * Portuguese (Brazilian)
+    * Russian
+    * Slovak
+    * Slovenian
+    * Spanish
+ * WML modifications
    * added generate_description to [unit], to allow automatic generation of user_description
    * changed plague to allow plague(unit_type) as well as undead_variation 
    * made [capture_village] accept a location range
@@ -208,15 +208,15 @@ Version 0.8.9:
  * new female units for:
    * Footpad, Thief, Rogue and Assassin
  * added new tiles:
-    * desert
-    * desert hills
-    * desert mountain
-    * desert villages (adobe and tent)
-    * desert road
-    * desert oasis
-    * savanna
-    * tropical forest
-    * tropical forest village
+   * desert
+   * desert hills
+   * desert mountain
+   * desert villages (adobe and tent)
+   * desert road
+   * desert oasis
+   * savanna
+   * tropical forest
+   * tropical forest village
  * added icon for petrified units
  * fixed missing diagonal projectiles on many units
  * removed old unused images:
@@ -261,10 +261,10 @@ Version 0.8.9:
    * The Crossroads- New map, weaker more diffuse ambushes, and less gold for the Orcs 
    * The Princess of Wesnoth- Minor map changes, and made the scenario harder
    * Set result=continue in 'Plunging into the Darkness'
- * Scenario revisions in The Rise of Wesnoth:
+ * scenario revisions in The Rise of Wesnoth:
    * fixed {CROSS} in 'Temple of the Deep'
    * fixed sign glitch
-   * Reduce the difficulty of TRoW on 'Hard' particularly, and reduce the difficulty slightly on 'Easy' & 'Normal'
+   * reduced the difficulty of TRoW on 'Hard' particularly, and reduce the difficulty slightly on 'Easy' & 'Normal'
    * A New Land - Sync with the map from Bay of Pearls
    * Cursed Isle- Sync with the map from Isle of the Damned, make the temples match locations
    * Made 'Peoples in Decline' and 'Rough Landing' look tropical
