@@ -909,7 +909,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return current_unit() != units_.end();
 
 	case hotkey::HOTKEY_LABEL_TERRAIN:
-		return map_.on_board(last_hex_);
+		return map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y);
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
