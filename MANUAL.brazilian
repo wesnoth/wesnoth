@@ -1,0 +1,151 @@
+/* $Id$ */
+
+A Batalha para Wesnoth - Manual
+
+Se é a primeira vez que você vai jogar "A Batalha para Wesnoth", você pode tirar proveito em ler primeiro o guia "GettingStarted"
+
+Controle
+
+   Setas:                     Scroll
+   Clique botão esquerdo:     Selecione ou move unidade
+   Clique botão direito:      Menu principal/Cancelar ação
+   Clique botão centro:       Centrar para a localisação da seta
+   Esc:            Sair do Jogo/Sair do Menu
+   z:              Zoom in
+   x:              Zoom out
+   c:              Voltar para zoom padrão
+   u:              Desfazer ultimo movimento
+   r:              Refazer movimento
+   n:              Proxima unidade com ação possivel
+   1-7:            Mostra até onde uma unidade pode mover nesse numero de turnos
+   espaço:         Fim do turno da unidade e seleciona proxima unidade com ações
+   l:              Selecione unidade líder
+   ctrl-f:         Muda de Modo Janela para Tela Plena
+   ctrl-r:         Recrutar unidades
+   ctrl-shift-r:   Repetir ultimo recrutamento
+   ctrl-c:         Trazer de volta unidade
+   ctrl-a:         Muda Jogo Acelerado/Normal
+   d:              Descreve unidade atual
+   ctrl-d:         Mostra valor defensivo da unidade atual
+   ctrl-t:         Mostra como a unidade atual se comporta em varios terrenos
+   ctrl-s:         Salvar jogo
+
+
+Orbes
+
+Em cima da barra de energia de cada de suas unidades tem uma orbe. Essa orbe está:
+
+    * verde, se você controla a unidade e ela ainda não andou ese turno.
+    * amarelo, se você voce controla a unidade e ela andou esse turno, mas poderia ainda fazer alguma coisa.
+    * vermelho, se você controla a unidade mas ela não pode mais agir esse turno
+    * azul, se é uma unidade aliada, mas voce não a controla.
+
+Unidades inimigas não tem orbe em cima da barra de energia. (Em versões antigas < 0.5.2 tinha uma orbe preta nas unidades inimigas)
+
+
+Descrição
+
+O jogo se desenrola ao longo de batalhas ou roteiros. Em cada roteiro as suas tropas lutam contra as tropas do adversario. Cada lado começa com o seu Líder no seu reduto.
+
+
+Ouro
+
+Cada lado recebe uma certa quantia de ouro para começar, e ganha duas moedas de ouro a mais por turno, mais 1 moeda extra para cada vilarejo controlado.
+
+Cada unidade tem um custo de manutenção. Esse custo é geralmente egual ao nível da unidade (mas ver a caracteristica 'Leal' em baixo). Unidades que nem são recrutadas, nem chamadas de volta - i.e. que lideram o lado, ou se juntam voluntariamente - não custam nada. A manutenção só se paga se o custo total é superior ao numero de vilarejos controlados. A manutenção paga é igual a diferença entre o numero de vilarejos e o custo de manutenção. Assim, a formula para determinar o lucro por turno é:
+
+2 + vilarejos - máximo(0,manutenção - vilarejos)
+
+Onde a manutenção é igual a soma dos níveis de todas as unidades que foram recrutadas ou chamadas de volta.
+
+Recrutar e chamar de volta
+
+Pode se recrutar unidades por um certo preço, desde que o Líder esta num reduto e que tem ao menos um lugar vazio no castelo que tem esse reduto. Clique com o botão direito e selecione "Recrutar" para recrutar tropas frescas.
+
+Depois de completar um roteiro, todas as unidades sobreviventes ficam disponíveis para os proximos roteiros. Clique com o botão direito e selecione "Chamar de volta" para re-recrutar unidades sobreviventes de roteiros anteriores. Chamar uma unidade de volta custa 20 moedas de ouro.
+
+Você pode escolher primeiro o lugar do castelo e recrutar depois, assim a unidade vai aparecer neste lugar, isso funciona tanto para "Recrutar" quanto para "Chamar de Volta".
+
+Você não pode mover uma unidade no turno durante o qual ela foi recrutada ou chamada de volta.
+
+
+Especialidades das Unidades.
+
+As especialidades das unidades estão descritas durante o jogo em "Descrição da Unidade".
+
+
+Traços
+
+As unidades tem traços que refletem o carater delas. Traços são atribuidos aleatoriamente aos unidades quando elas são criadas. Cada unidade recebe dois traços. Os traços possiveis são:
+
+   Leal:          A unidade nunca tem um custo de manutenção maior que 1.
+   Forte:         A unidade faz danos extra em combate, e têm alguns pontos de vida adicionais.
+   Rapido:        A unidade têm um ponto de movimento adicional, mas alguns pontos de vida a menos.
+   Resistente:    A unidade têm pontos de vida adicionais.
+   Inteligente:   A unidade precisa de menos pontos de experiença para ganhar um nível.
+
+
+Movimento
+
+Quando se clica numa unidade, são iluminados todos os lugares que a unidade pode atingir no turno atual, enquanto todos os outros lugares viram cinzentos. Você pode então clicar no lugar para mover a unidade até lá. Mover até um vilarejo neutro ou controlado por um adversário permite tomar controle desse. Se você seleciona uma destinação que fica além do alcance desse turno a unidade vai entrar no modo "vá a" e vai continuar a mover em direção da destinação no(s) seguinte(s) turno(s). Você pode facilmente desfazer os movimentos no inicio de seu turno, escolhendo a unidade e atribuindo uma outra destinação.
+
+Você não pode atravesar os seis lugares em volta de uma unidade inimiga (a Zona de Controle dessa) sem parar.
+
+
+Combate
+
+Quando você move até o lado de uma unidade inimiga, você pode ataca-la. Clique na unidade sua que fica do lado de uma unidade inimiga e depois clique na unidade inimiga que voce quer atacar. Cada unidade têm uma ou mais armas que ela pode usar para o combate. Algumas armas, como espadas, são armas de luta e outras, como arcos, são armas de tiro.
+
+Quando você ataca com uma arma de luta, o inimigo atacado vai poder responder com a arma de luta dele. Quando você ataca com uma arma de tiro, o inimigo vai responder com a sua arma de tiro, se ele têm.
+
+Os diferentes tipos de ataque fazem quantias diferentes de danos, e um certo número de golpes diferentes podem ser dados com cada arma. Por exemplo, um guerreiro elfo faz 5 pontos de dano com a espada dele cada vez que ele acerta, e ele pode golpear 4 vezes por combate. Isto é escrito 5-4.
+
+Cada unidade tem uma probabilidade de ser acertada que depende do terreno onde ela está. Unidades em castelos ou vilarejos têm uma probabilidade menor de ser acertadas. Elfos na floresta tem uma probabilidade baixa de ser acertados.
+
+
+Alinhamento
+
+Cada unidade tem um alinhamento: legal, neutro ou caotico. O alinhamento determina como eles atuam nos varios momentos do dia. A  tabela seguinte ilustra os varios momentos do dia:
+
+ | turno |  fase do dia    |
+ ---------------------------
+ |  1    |    amanhecer    |
+ |  2    |    dia          |
+ |  3    |    dia          |
+ |  4    |    anoitecer    |
+ |  5    |    noite        |
+ |  6    |    noite        |
+
+Unidades legais causam 25% de danos a mais durante o dia, e 25% a menos durante a noite. Unidades caoticas causam 25% de danos a mais durante a noite, e 25 % a menos durante o dia. Unidades neutras não são afetadas pelo ciclo dia/noite.
+
+
+Cura   
+
+Unidades feridas em vilarejos recuperam 8 pontos de vida por turno. Unidades feridas vizinhas de unidades que tem a capacidade de "curar" ou "cicatrizar" recuperam também pontos de vida. Unidades vizinhas de unidades com a capacidade de "cicatrizar" recuperam um maximo de 4 pontos de vida por turno, aquelas vizinhas de unidades com a capacidade "curar" recuperam um máximo  de 8 pontos de vida por turno. Mas, quanto mais unidades feridas se acham em volta de um curandeiro, menos rapido elas vão ser curadas.
+
+"Cicatrizar" prevene os danos do envenenamento enquanto "curar" remove o envenamento. Uma unidade não recupera pontos de vida durante o turno em quem o envenenamento é curado.
+
+Experiência
+
+As unidades ganham experência lutando e depois de ganhar experencia suficiente, eles vão aumentar de nível e se tornar mais poderosas.
+
+Multijogador
+
+Você pode hospedar um jogo multi-jogadores com o seu cliente ou se conectar a um servidor de Wesnoth e montar o seu jogo lá. Se voce hospedar um jogo no seu cliente, os outros jogadores vão precisar poder se conectar a sua porta 15000.
+
+Servidores públicos:
+
+ server.wesnoth.org        para a versão "estavel" do jogo 
+ devsrv.wesnoth.org        para a versão "de teste" do jogo 
+ devsrv.wesnoth.org:14999  para a versão "CVS" do jogo
+
+
+Montando jogos multi-jogadores
+
+Etapa 1: Selecione "Multijogadores" na janela principal, selecione entre hospedar jogo ou conectar a servidor e crie o seu jogo.
+
+Etapa 2: Selecione um mapa e configure as opções do jogo (neblina de guerra, oculto, ouro por vilarejo)
+
+Etapa 3: Configure os jogadores (times/alianças, ouro inicial, facções) e depois espere até todos os jogadores definidos como "jogador em rede") se juntarem ao jogo, você vai ver os nomes deles aparecer em lugar de "jogador em rede" quando eles se conectam.
+
+Etapa 4: clique [Pronto] 
