@@ -618,10 +618,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	unit_animation attack_anim = attack.animation();
 	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 
-	while(!attack_anim.animation_finished()) {
+	int animation_time = attack_anim.get_animation_time();
+	while(animation_time < end_at) {
 		events::pump();
 
-		int animation_time = attack_anim.get_animation_time();
 		def->second.set_defending(true,hits,animation_time,attack_type::SHORT_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
@@ -740,6 +740,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		ticks = SDL_GetTicks();
 
 		attack_anim.update_current_frames();
+		animation_time = attack_anim.get_animation_time();
 		disp.update_display();
 	}
 

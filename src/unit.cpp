@@ -824,7 +824,7 @@ const std::string& unit::image() const
 			const unit_animation::frame& anim_frame = attackType_->animation().get_current_frame();
 			const std::string* const img = &anim_frame.image;
 
-			if(img == NULL)
+			if(img->empty())
 				return type_->image_fighting(attackType_->range());
 			else
 				return *img;
