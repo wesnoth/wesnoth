@@ -7,6 +7,7 @@
 # Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Azamat Hackimov (Izek) - azazello1984@mail.ru
+# Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
 #
 #
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-02-26 15:49+0300\n"
+"PO-Revision-Date: 2005-02-28 17:52+0300\n"
 "Last-Translator: Alexandr Menovchicov <orders@kypi.ru>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -1465,13 +1466,12 @@ msgstr "Король Холма"
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
 msgid "Konrad"
-msgstr ""
+msgstr "Конрад"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Защитник"
+msgstr "Делфадор"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1650,9 +1650,8 @@ msgstr "Переместите Вашего Эльфа бойца к Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Ещё"
+msgstr "Мирли"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -5056,15 +5055,14 @@ msgid "Elvish Hero"
 msgstr "Эльф Герой"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
 "Эльфы Герои, имея максимально улучшенные навыки боя, акцентируются на личных "
-"умениях на поле битвы. Эльфы Герои предпочитают драться в рукопашной битве, "
-"хотя они также могут использовать и лук."
+"умениях на поле битвы. Эльфы Герои предпочитают драться в ближнем бою с "
+"мечом, хотя они также могут использовать и лук."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -7560,9 +7558,8 @@ msgid "+English (GB) Translation"
 msgstr "+Британский английский перевод"
 
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Итальянский перевод"
+msgstr "+Эстонский перевод"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -7795,14 +7792,12 @@ msgid "Scenario Start"
 msgstr "Начать сценарий"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Сложность"
+msgstr "Сложность:"
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Версия"
+msgstr "Версия:"
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -7863,20 +7858,17 @@ msgid "level"
 msgstr "уровень"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "ЗД"
+msgstr "ЗД:"
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "ОП"
+msgstr "ОП:"
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Ходы"
+msgstr "Ходы:"
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -8127,18 +8119,16 @@ msgid "Play a game against AI opponents"
 msgstr "Игра против компьютера"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Логин"
+msgstr "Логин:"
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Язык"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Выберите предпочтительный язык"
+msgstr "Выберите предпочтительный язык:"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -8149,29 +8139,24 @@ msgid "' (The game will now exit)"
 msgstr "' (Сейчас игра будет завершена)"
 
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Улучшение"
+msgstr "Улучшение:"
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Способности"
+msgstr "Способности:"
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Тип"
+msgstr "Тип:"
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "Необходимый ОП"
+msgstr "Необходимый ОП:"
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -8290,39 +8275,32 @@ msgid "Map Generator"
 msgstr "Генератор карты"
 
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
 msgstr "Игроки:"
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Ширина"
+msgstr "Ширина:"
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Высота"
+msgstr "Высота:"
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Повторения"
+msgstr "Повторения:"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Размер холмов"
+msgstr "Размер холмов:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
-msgstr "Деревни"
+msgstr "Деревни:"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Landform:"
-msgstr "Форма земли"
+msgstr "Форма земли:"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -8349,9 +8327,8 @@ msgid "Connect to Host"
 msgstr "Подключиться к серверу"
 
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Выберите сервер для подключения"
+msgstr "Выберите сервер для подключения:"
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -8362,22 +8339,20 @@ msgid "You must log in to this server"
 msgstr "Вы должны подключиться к данному серверу"
 
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Свободный слот"
+msgstr "(Свободный слот)"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Анонимный локальный игрок"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
-msgstr "Компьютер"
+msgstr "Компьютерный игрок"
 
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Пустой слот)"
 
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
@@ -8400,7 +8375,6 @@ msgid "Faction"
 msgstr "Команда"
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Цвет"
 
@@ -8409,7 +8383,6 @@ msgid "Gold"
 msgstr "Золото"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr "Компьютер с Компьютером"
 
@@ -8447,9 +8420,8 @@ msgid "Empty"
 msgstr "Пусто"
 
 #: src/multiplayer_connect.cpp:786
-#, fuzzy
 msgid "Era not available: "
-msgstr "Нет цели"
+msgstr "Эра не доступна:"
 
 #: src/multiplayer_connect.cpp:821
 msgid "Red"
@@ -8493,7 +8465,7 @@ msgstr "Это не сетевое сохранение."
 
 #: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Не найдена эра $era"
 
 #: src/multiplayer_connect.cpp:939
 msgid ""
@@ -8504,22 +8476,18 @@ msgstr ""
 "@Убейте лидера(ов) противника"
 
 #: src/multiplayer_connect.cpp:975
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Ждём подключения сетевых игроков"
+msgstr "Ждём подключения игроков..."
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
 msgstr "Название игры:"
 
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
 msgstr "Эра:"
 
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
 msgstr "Карта для игры:"
 
@@ -8533,7 +8501,7 @@ msgstr "Наблюдатели"
 
 #: src/multiplayer_create.cpp:47
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:48
 msgid "Regenerate"
@@ -8587,7 +8555,7 @@ msgstr "Нет сетевых игроков."
 
 #: src/multiplayer_create.cpp:116
 msgid "No eras found"
-msgstr ""
+msgstr "Эры не найдены"
 
 #: src/multiplayer_create.cpp:125
 msgid "$login's game"
@@ -8595,7 +8563,7 @@ msgstr "Игра $login"
 
 #: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Выбрана неверная эра"
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
@@ -8606,19 +8574,16 @@ msgid "Turns: "
 msgstr "Ходы:"
 
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "неограниченно"
+msgstr "Неограниченные ходы"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
 msgstr "Золота в деревнях:"
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Тип местности"
+msgstr "Модификатор опыта:"
 
 #: src/multiplayer_create.cpp:313
 msgid "Players: "
@@ -8661,19 +8626,16 @@ msgid "Getting game data..."
 msgstr "Получаем данные игры..."
 
 #: src/multiplayer_wait.cpp:177
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Нет доступных сторон в этой игре."
+msgstr "Нет доступных сторон в этой игре"
 
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "Era not available"
-msgstr "Нет цели"
+msgstr "Эра не доступна"
 
 #: src/multiplayer_wait.cpp:207
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Нет сетевых игроков."
+msgstr "Игроки отсутствуют"
 
 #: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
@@ -8689,12 +8651,11 @@ msgstr "Файл, который Вы пытались загрузить, по�
 
 #: src/playlevel.cpp:724
 msgid "Game Over"
-msgstr ""
+msgstr "Игра завершена"
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Игра успешно сохранена"
+msgstr "Игра окончена."
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -8705,33 +8666,28 @@ msgid "You have been defeated!"
 msgstr "Вы проиграли!"
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Остаток золота"
+msgstr "Остаток золота:"
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Бонус за быстрый финиш"
+msgstr "Бонус за быстрый финиш:"
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "за ход"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Количество шагов"
+msgstr "Количество шагов:"
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Бонус"
+msgstr "Бонус:"
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Золото"
+msgstr "Золото:"
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -8739,9 +8695,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% золота сохраняется в следующем сценарии"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Сохранённое золото"
+msgstr "Сохранённое золото:"
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -8787,9 +8742,8 @@ msgid "Attack Enemy"
 msgstr "Атаковать противника"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Выберите оружие"
+msgstr "Выберите оружие:"
 
 #: src/playturn.cpp:1250
 msgid ""
@@ -8860,9 +8814,8 @@ msgid "Recruit"
 msgstr "Завербовать"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Выберите соединение"
+msgstr "Выберите соединение:"
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -8910,9 +8863,8 @@ msgstr ""
 "У Вас должно быть по крайней мере $cost единиц золота для вербовки соединения"
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "уровень"
+msgstr "уровень:"
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -8923,9 +8875,8 @@ msgid "Recall"
 msgstr "Призвать"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Сообщение"
+msgstr "Сообщение:"
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -9004,9 +8955,8 @@ msgid "Place Label"
 msgstr "Поставить метку"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Метка"
+msgstr "Метка:"
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -9043,9 +8993,8 @@ msgstr ""
 "атаковано соединениями противника."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "невидимый"
+msgstr "невидимый:"
 
 #: src/reports.cpp:111
 msgid ""
@@ -9057,9 +9006,8 @@ msgstr ""
 "боем."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "замедлен"
+msgstr "замедлен:"
 
 #: src/reports.cpp:116
 msgid ""
@@ -9078,9 +9026,8 @@ msgstr ""
 "здоровье (ЗД) ниже 1 единицы.  "
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "отравлен"
+msgstr "отравлен:"
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9089,28 +9036,24 @@ msgstr ""
 "атаковать."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "камень"
+msgstr "камень:"
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "ущерб"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Порядочные соединения"
+msgstr "Порядочные соединения:"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Нейтральные соединения"
+msgstr "Нейтральные соединения:"
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Хаотичные соединения"
+msgstr "Хаотичные соединения:"
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -9125,9 +9068,8 @@ msgid "Allied village"
 msgstr "Союзническая деревня"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Наблюдатели"
+msgstr "Наблюдатели:"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
@@ -9216,54 +9158,3 @@ msgstr "порядочный"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "нейтральный"
-
-#~ msgid "Players"
-#~ msgstr "Игроки"
-
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Команда"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Шаг"
-
-#~ msgid "Load Game..."
-#~ msgstr "Загрузить игру..."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Experience Requirements: "
-#~ msgstr "Необходимый опыт:"
-
-#~ msgid ""
-#~ "The game was unable to bind to the port needed to host games over the "
-#~ "network. Network players will be unable to connect to this game"
-#~ msgstr ""
-#~ "Игра не может открыть порт, необходимый для создания сервера для игры. "
-#~ "Сетевые игроки не смогут подключиться к этой игре."
-
-#~ msgid "Warning"
-#~ msgstr "Внимание"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Получаем список игр..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Игра была отменена"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "Сторона, которую Вы выбрали, более не доступна."
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Показать повтор игры до точки сохранения?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "<no games open>"
-#~ msgstr "<нет открытых игр>"
