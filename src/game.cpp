@@ -471,7 +471,7 @@ bool game_controller::init_video()
 		return true;
 	}
 
-    image::set_wm_icon();
+	image::set_wm_icon();
 
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
@@ -614,6 +614,9 @@ bool game_controller::init_language()
 	if(!no_gui_) {
 		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
 	}
+
+	hotkey::load_descriptions();
+
 	return true;
 }
 
@@ -1294,13 +1297,9 @@ bool game_controller::change_language()
 	if(size_t(res) < langs.size()) {
 		set_language(known_languages[res]);
 		preferences::set_locale(known_languages[res].localename);
-
-		//force a reload of configuration information
-		const bool old_cache = use_caching_;
-		use_caching_ = false;
-		init_config();
-		use_caching_ = old_cache;
 	}
+
+	hotkey::load_descriptions();
 
 	return false;
 }

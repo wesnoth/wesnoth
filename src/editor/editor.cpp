@@ -114,6 +114,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		palette_.select_bg_terrain(old_bg_terrain_);
 		brush_.select_brush_size(old_brush_size_);
 	}
+	hotkey::load_descriptions();
 	recalculate_starting_pos_labels();
 	gui_.invalidate_game_status();
 	gui_.begin_game();

@@ -62,6 +62,7 @@ public:
 
 	void load_from_config(const config& cfg);
 
+	void set_description(const std::string& description);
 	void set_key(int keycode, bool alt, bool ctrl, bool shift, bool cmd);
 
 	int get_keycode() const { return keycode_; };
@@ -93,6 +94,8 @@ public:
 	manager();
 	~manager();
 };
+
+void load_descriptions();
 
 void load_hotkeys(const config& cfg);
 void save_hotkeys(config& cfg);

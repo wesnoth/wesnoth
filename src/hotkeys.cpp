@@ -22,16 +22,90 @@
 #include "show_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"
-
+#include "wesconfig.h"
 #include "SDL.h"
 
 #include <algorithm>
 #include <cstdlib>
 #include <map>
 
+#define ERR_G lg::err(lg::general)
+
 namespace {
-	std::vector<hotkey::hotkey_item> hotkeys_;
-	hotkey::hotkey_item null_hotkey_;
+
+const struct {
+	hotkey::HOTKEY_COMMAND id;
+	const char* command;
+	const char* description;
+	bool hidden;
+} hotkey_list_[] = {
+	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next unit"), false },
+	{ hotkey::HOTKEY_END_UNIT_TURN, "endunitturn", N_("End Unit Turn"), false },
+	{ hotkey::HOTKEY_LEADER, "leader", N_("Leader"), false },
+	{ hotkey::HOTKEY_UNDO, "undo", N_("Undo"), false },
+	{ hotkey::HOTKEY_REDO, "redo", N_("Redo"), false },
+	{ hotkey::HOTKEY_ZOOM_IN, "zoomin", N_("Zoom In"), false },
+	{ hotkey::HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false },
+	{ hotkey::HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false },
+	{ hotkey::HOTKEY_FULLSCREEN, "fullscreen", N_("Fullscreen"), false },
+	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false },
+	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false },
+	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false },
+	{ hotkey::HOTKEY_SAVE_GAME, "save", N_("Save Game"), false },
+	{ hotkey::HOTKEY_LOAD_GAME, "load", N_("Load Game"), false },
+	{ hotkey::HOTKEY_RECRUIT, "recruit", N_("Recruit"), false },
+	{ hotkey::HOTKEY_REPEAT_RECRUIT, "repeatrecruit", N_("Repeat Recruit"), false },
+	{ hotkey::HOTKEY_RECALL, "recall", N_("Recall"), false },
+	{ hotkey::HOTKEY_ENDTURN, "endturn", N_("End Turn"), false },
+	{ hotkey::HOTKEY_TOGGLE_GRID, "togglegrid", N_("Toggle Grid"), false },
+	{ hotkey::HOTKEY_STATUS_TABLE, "statustable", N_("Status Table"), false },
+	{ hotkey::HOTKEY_MUTE, "mute", N_("Mute"), false },
+	{ hotkey::HOTKEY_SPEAK, "speak", N_("Speak"), false },
+	{ hotkey::HOTKEY_CREATE_UNIT, "createunit", N_("Create Unit (Debug!)"), false },
+	{ hotkey::HOTKEY_CHANGE_UNIT_SIDE, "changeside", N_("Change Unit Side (Debug!)"), false },
+	{ hotkey::HOTKEY_PREFERENCES, "preferences", N_("Preferences"), false },
+	{ hotkey::HOTKEY_OBJECTIVES, "objectives", N_("Scenario Objectives"), false },
+	{ hotkey::HOTKEY_UNIT_LIST, "unitlist", N_("Unit List"), false },
+	{ hotkey::HOTKEY_STATISTICS, "statistics", N_("Statistics"), false },
+	{ hotkey::HOTKEY_QUIT_GAME, "quit", N_("Quit Game"), false },
+	{ hotkey::HOTKEY_LABEL_TERRAIN, "labelterrain", N_("Set Label"), false },
+	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false },
+	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false },
+
+	{ hotkey::HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", N_("Set Terrain"),true },
+	{ hotkey::HOTKEY_EDIT_QUIT, "editquit", N_("Quit Editor"),true },
+	{ hotkey::HOTKEY_EDIT_NEW_MAP, "editnewmap", N_("New Map"),true },
+	{ hotkey::HOTKEY_EDIT_LOAD_MAP, "editloadmap", N_("Load Map"),true },
+	{ hotkey::HOTKEY_EDIT_SAVE_MAP, "editsavemap", N_("Save Map"),true },
+	{ hotkey::HOTKEY_EDIT_SAVE_AS, "editsaveas", N_("Save As"),true },
+	{ hotkey::HOTKEY_EDIT_SET_START_POS, "editsetstartpos", N_("Set Player Start Position"),true },
+	{ hotkey::HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", N_("Flood Fill"),true },
+	{ hotkey::HOTKEY_EDIT_FILL_SELECTION, "editfillselection", N_("Fill Selection"),true },
+	{ hotkey::HOTKEY_EDIT_CUT, "editcut", N_("Cut"),true },
+	{ hotkey::HOTKEY_EDIT_COPY, "editcopy", N_("Copy"),true },
+	{ hotkey::HOTKEY_EDIT_PASTE, "editpaste", N_("Paste"),true },
+	{ hotkey::HOTKEY_EDIT_REVERT, "editrevert", N_("Revert from Disk"),true },
+	{ hotkey::HOTKEY_EDIT_RESIZE, "editresize", N_("Resize Map"),true },
+	{ hotkey::HOTKEY_EDIT_FLIP, "editflip", N_("Flip Map"),true },
+	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true },
+	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"),true },
+
+	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false },
+	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false },
+	{ hotkey::HOTKEY_CONTINUE_MOVE, "continue", N_("Continue Move"), false },
+	{ hotkey::HOTKEY_SEARCH, "search", N_("Find Label or Unit"), false },
+	{ hotkey::HOTKEY_SPEAK_ALLY, "speaktoally", N_("Speak to Ally"), false },
+	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false },
+	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false },
+	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false },
+	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false },
+
+	{ hotkey::HOTKEY_NULL, NULL, NULL, true }
+};
+
+std::vector<hotkey::hotkey_item> hotkeys_;
+hotkey::hotkey_item null_hotkey_;
+
 }
 
 namespace hotkey {
@@ -81,6 +155,11 @@ std::string hotkey_item::get_name() const
 	}
 }
 
+void hotkey_item::set_description(const std::string& description)
+{
+	description_ = description;
+}
+
 void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
 	keycode_ = keycode;
@@ -92,71 +171,26 @@ void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd
 
 manager::manager() 
 {
-	hotkeys_.push_back(hotkey_item(HOTKEY_CYCLE_UNITS, "cycle", _("Next unit")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_END_UNIT_TURN, "endunitturn", _("End Unit Turn")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_LEADER, "leader", _("Leader")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_UNDO, "undo", _("Undo")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_REDO, "redo", _("Redo")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_IN, "zoomin", _("Zoom In")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_OUT, "zoomout", _("Zoom Out")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_ZOOM_DEFAULT, "zoomdefault", _("Default Zoom")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_FULLSCREEN, "fullscreen", _("Fullscreen")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_ACCELERATED, "accelerated", _("Accelerated")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_UNIT_DESCRIPTION, "describeunit", _("Unit Description")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_RENAME_UNIT, "renameunit", _("Rename Unit")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SAVE_GAME, "save", _("Save Game")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_LOAD_GAME, "load", _("Load Game")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_RECRUIT, "recruit", _("Recruit")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_REPEAT_RECRUIT, "repeatrecruit", _("Repeat Recruit")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_RECALL, "recall", _("Recall")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_ENDTURN, "endturn", _("End Turn")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_TOGGLE_GRID, "togglegrid", _("Toggle Grid")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_STATUS_TABLE, "statustable", _("Status Table")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_MUTE, "mute", _("Mute")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK, "speak", _("Speak")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_CREATE_UNIT, "createunit", _("Create Unit (Debug!)")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_CHANGE_UNIT_SIDE, "changeside", _("Change Unit Side (Debug!)")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_PREFERENCES, "preferences", _("Preferences")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_OBJECTIVES, "objectives", _("Scenario Objectives")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_UNIT_LIST, "unitlist", _("Unit List")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_STATISTICS, "statistics", _("Statistics")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_QUIT_GAME, "quit", _("Quit Game")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_LABEL_TERRAIN, "labelterrain", _("Set Label")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", _("Show Enemy Moves")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", _("Best Possible Enemy Moves")));
-
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SET_TERRAIN, "editsetterrain", _("Set Terrain"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_QUIT, "editquit", _("Quit Editor"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_NEW_MAP, "editnewmap", _("New Map"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_LOAD_MAP, "editloadmap", _("Load Map"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SAVE_MAP, "editsavemap", _("Save Map"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SAVE_AS, "editsaveas", _("Save As"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SET_START_POS, "editsetstartpos", _("Set Player Start Position"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FLOOD_FILL, "editfloodfill", _("Flood Fill"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FILL_SELECTION, "editfillselection", _("Fill Selection"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_CUT, "editcut", _("Cut"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_COPY, "editcopy", _("Copy"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_PASTE, "editpaste", _("Paste"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_REVERT, "editrevert", _("Revert from Disk"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_RESIZE, "editresize", _("Resize Map"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_FLIP, "editflip", _("Flip Map"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_SELECT_ALL, "editselectall", _("Select All"),true));
-	hotkeys_.push_back(hotkey_item(HOTKEY_EDIT_DRAW, "editdraw", _("Draw Terrain"),true));
-
-	hotkeys_.push_back(hotkey_item(HOTKEY_DELAY_SHROUD, "delayshroud", _("Delay Shroud Updates")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_UPDATE_SHROUD, "updateshroud", _("Update Shroud Now")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_CONTINUE_MOVE, "continue", _("Continue Move")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SEARCH, "search", _("Find Label or Unit")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK_ALLY, "speaktoally", _("Speak to Ally")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_SPEAK_ALL, "speaktoall", _("Speak to All")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_HELP, "help", _("Help")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_CHAT_LOG, "chatlog", _("View Chat Log")));
-	hotkeys_.push_back(hotkey_item(HOTKEY_USER_CMD, "command", _("Enter user command")));
+	for (int i = 0; hotkey_list_[i].command; ++i) {
+		hotkeys_.push_back(hotkey_item(hotkey_list_[i].id, hotkey_list_[i].command, 
+				"", hotkey_list_[i].hidden));
+	}
 }
+
 
 manager::~manager()
 {
+	hotkeys_.clear();
+}
 
+void load_descriptions()
+{
+	for (int i = 0; hotkey_list_[i].command; ++i) {
+		if (i >= hotkeys_.size()) {
+			ERR_G << "Hotkey list too short: " << hotkeys_.size() << "\n";
+		}
+		hotkeys_[i].set_description(dsgettext(PACKAGE "-lib", hotkey_list_[i].description));
+	}
 }
 
 void load_hotkeys(const config& cfg)
