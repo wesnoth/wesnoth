@@ -1,17 +1,35 @@
 CVS HEAD:
  * changed vision range based on potential move
+ * changed charge, backstab and steadfast abilities use true doubling and halving rather than additive percentage calculations
  * new and improved graphics:
    * snow forest tiles
    * unit images
+   * tower
  * new scenarios for 'Heir to the Throne' campaign:
    * Battle for Wesnoth (final scenario)
  * scenario balancing for 'Heir to the Throne' campaign:
    * Crossroads
    * Test of the Clans
+ * plot changes in 'The Eastern Invasion' campaign
+ * scenario balancing for 'The Eastern Invasion' campaign:
+   * The Duel
+   * Approaching Weldyn
+   * Lake Vrug
+ * spirit movetype, with high resistances against "physical" attacks
+ * unit balancing: 
+   * treefolk (Woses): reduced pierce, impact and cold resistance
+   * Wose: reduced melee damage
+   * Ghost: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Wraith: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement
  * new units
    * Dark Queen
+ * added font.cpp, to be able to "translate" Vera.cpp
  * language fixes and polishing (english)
  * updated translations:
+   * czech
    * finnish
    * french
    * spanish
@@ -29,6 +47,13 @@ CVS HEAD:
  * fixed cycling units with 'n' showing invisible enemy units while it is their turn
  * fixed units not disappearing properly when they die
  * fixed recall working incorrectly
+ * fixed missing Vera.ttf msgid from pot-file
+ * fixed the problem with parse errors occuring in the units descriptions
+ * fixed empty terrain names occuring in the help system
+ * fixed Delfador appearing in 'The Dark Hordes: Inside The Tower'
+ * fixed about/credits not being translatable
+ * fixed Kvoar's 'r' with caron to simple 'r' to be correctly displayed with Vera font
+ * fixed 'Orcish Ruler' appearing in 'The Rise of Wesnoth' campaign
  * fix to the help system parse errors occuring, made the error message more descriptive to help with further debugging
  * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
