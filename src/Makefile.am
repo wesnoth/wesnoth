@@ -171,6 +171,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_main.cpp \
 			 editor/editor_dialogs.cpp \
 			 editor/editor_undo.cpp \
+			 about.cpp \
 			 actions.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
@@ -235,6 +236,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_palettes.hpp \
 			 editor/editor_dialogs.hpp \
 			 editor/editor_undo.hpp \
+			 about.hpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \

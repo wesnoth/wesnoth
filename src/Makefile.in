@@ -314,6 +314,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_main.cpp \
 			 editor/editor_dialogs.cpp \
 			 editor/editor_undo.cpp \
+			 about.cpp \
 			 actions.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
@@ -378,6 +379,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_palettes.hpp \
 			 editor/editor_dialogs.hpp \
 			 editor/editor_undo.hpp \
+			 about.hpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \
@@ -483,12 +485,12 @@ wesnoth_LDFLAGS =
 am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	map_manip.$(OBJEXT) editor_palettes.$(OBJEXT) \
 	editor_main.$(OBJEXT) editor_dialogs.$(OBJEXT) \
-	editor_undo.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
-	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) builder.$(OBJEXT) \
-	cavegen.$(OBJEXT) clipboard.$(OBJEXT) config.$(OBJEXT) \
-	cursor.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
-	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
-	game_config.$(OBJEXT) game_events.$(OBJEXT) \
+	editor_undo.$(OBJEXT) about.$(OBJEXT) actions.$(OBJEXT) \
+	ai.$(OBJEXT) ai_attack.$(OBJEXT) ai_move.$(OBJEXT) \
+	builder.$(OBJEXT) cavegen.$(OBJEXT) clipboard.$(OBJEXT) \
+	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
+	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
+	font.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
 	gamestatus.$(OBJEXT) halo.$(OBJEXT) help.$(OBJEXT) \
 	hotkeys.$(OBJEXT) image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
 	language.$(OBJEXT) log.$(OBJEXT) map_label.$(OBJEXT) \
