@@ -2475,11 +2475,13 @@ std::string to_lower(const std::string &s) {
 }
 
 std::string cap(const std::string &s) {
-	std::string res = s;
 	if (s.size() > 0) {
-		res[0] = toupper(res[0]);
+		utils::utf8_iterator itor(s);
+		std::string res = utils::wchar_to_string(towupper(*itor));
+		res.append(itor.substr().second, s.end());
+		return res;
 	}
-	return res;
+	return s;
 }
 	
 std::string escape(const std::string &s) {
