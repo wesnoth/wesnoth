@@ -56,12 +56,13 @@ AC_ARG_WITH([datadir-name],
 		esac])
 AC_SUBST([DATADIR])
 
-LOCALEDIR="$datadir/locale"
+#LOCALEDIR="$datadir/locale"
+LOCALEDIR=po
 AC_ARG_WITH([localedir],
-	      [  --with-localedir=dir    install locale data under dir [[$datadir/locale]]],
+	      [  --with-localedir=dir    install locale data under dir [[po]]],
 	      [case "${withval}" in
 	       yes)
-			LOCALEDIR="$datadir/locale"
+			LOCALEDIR="po"
 			;;
 		no)
 			;;
@@ -70,6 +71,14 @@ AC_ARG_WITH([localedir],
 			;;
 		esac])
 AC_SUBST([LOCALEDIR])
+
+set -x
+case "`eval echo \"$LOCALEDIR\"`" in
+/*) FULLLOCALEDIR="$LOCALEDIR" ;;
+*)  FULLLOCALEDIR='${datadir}/${DATADIR}/${LOCALEDIR}' ;;
+esac
+set +x
+AC_SUBST([FULLLOCALEDIR])
 
 AC_ARG_ENABLE([server],
 	      [  --enable-server         enable compilation of server],

@@ -169,6 +169,7 @@ EDITOR_TRUE = @EDITOR_TRUE@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FONT_FILES = @FONT_FILES@
+FULLLOCALEDIR = @FULLLOCALEDIR@
 GCC_FALSE = @GCC_FALSE@
 GCC_TRUE = @GCC_TRUE@
 GENCAT = @GENCAT@
@@ -307,13 +308,12 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-localedir = $(datadir)/locale
 
 #############################################################################
 #    Translation Tools                                                      #
 #############################################################################
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ \
-	      -DLOCALEDIR=\"$(localedir)\"
+	      -DLOCALEDIR=\"$(LOCALEDIR)\"
 
 AM_LDFLAGS = @SDL_LIBS@
 

@@ -306,7 +306,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/widget.hpp \
 			 wesconfig.h
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(LOCALEDIR)\" \
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DFULLLOCALEDIR=\"$(FULLLOCALEDIR)\" \
 	-I../intl -I$(top_srcdir)/intl
 
 if X11

@@ -222,6 +222,7 @@ EDITOR_TRUE = @EDITOR_TRUE@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FONT_FILES = @FONT_FILES@
+FULLLOCALEDIR = @FULLLOCALEDIR@
 GCC_FALSE = @GCC_FALSE@
 GCC_TRUE = @GCC_TRUE@
 GENCAT = @GENCAT@
@@ -649,7 +650,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/widget.hpp \
 			 wesconfig.h
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\" \
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DFULLLOCALEDIR=\"$(FULLLOCALEDIR)\" \
 	-I../intl -I$(top_srcdir)/intl
 
 CXXLD = $(LDPREFIX) $(CXX)

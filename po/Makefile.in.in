@@ -24,7 +24,9 @@ VPATH = @srcdir@
 prefix = @prefix@
 exec_prefix = @exec_prefix@
 datadir = @datadir@
-localedir = @LOCALEDIR@
+DATADIR = @DATADIR@
+LOCALEDIR = @LOCALEDIR@
+localedir = @FULLLOCALEDIR@
 gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = @INSTALL@

@@ -183,12 +183,17 @@ std::string get_cache_dir()
 
 std::string get_intl_dir()
 {
-#ifdef _WIN32
-	std::string res = get_cwd() + "/po";
-	return res;
-#else
-	return LOCALEDIR;
+	std::string res;
+#ifdef FULLLOCALEDIR
+	if (strcmp(LOCALEDIR,FULLLOCALEDIR) != 0)
 #endif
+		res = game_config::path + "/" LOCALEDIR;
+#ifdef FULLLOCALEDIR
+	else
+		res = LOCALEDIR;
+#endif
+
+	return res;
 }
 
 std::string get_dir(const std::string& dir_path)
