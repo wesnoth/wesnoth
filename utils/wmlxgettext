@@ -16,6 +16,8 @@ GetOptions ('directory=s' => \$toplevel);
 our $module = dirname ($0) . "/wmltrans.pm";
 eval "require \"$module\";";
 
+## extract strings with their refs into %messages
+
 our ($str,$translatable,$line,%messages);
 chdir $toplevel;
 foreach my $file (@ARGV) {
@@ -89,18 +91,37 @@ foreach my $file (@ARGV) {
   close FILE;
 }
 
+
+## index strings by their location in the source so we can sort them
+
+our @revmessages;
+foreach my $key (keys %messages) {
+  foreach my $line (@{$messages{$key}}) {
+    my ($file, $lineno) = split /:/, $line;
+    push @revmessages, [ $file, $lineno, $key ];
+  }
+}
+
+# sort them
+@revmessages = sort { $a->[0] cmp $b->[0] or $a->[1] <=> $b->[1] } @revmessages;
+
+
 ## output
 
 my $date = strftime "%F %R%z", localtime();
 
 print <<EOH
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"
 "POT-Creation-Date: $date\\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
+EOH
+;
+# we must break this string to avoid triggering a bug in some po-mode
+# installations, at save-time for this file
+print "\"PO-Revision-Date: YEAR-MO-DA ", "HO:MI+ZONE\\n\"\n";
+print <<EOH
 "Last-Translator: FULL NAME <EMAIL\@ADDRESS>\\n"
 "Language-Team: LANGUAGE <LL\@li.org>\\n"
 "MIME-Version: 1.0\\n"
@@ -109,11 +130,17 @@ msgstr ""
 EOH
 ;
 
-foreach my $key (keys %messages) {
-  print "#:";
-  foreach my $line (@{$messages{$key}}) {
-    print " $line";
+foreach my $occurence (@revmessages) {
+  my $key = $occurence->[2];
+  if (defined $messages{$key}) {
+    print "#:";
+    foreach my $line (@{$messages{$key}}) {
+      print " $line";
+    }
+    print "\nmsgid $key",
+      "msgstr \"\"\n\n";
+
+    # be sure we don't output the same message twice
+    delete $messages{$key};
   }
-  print "\nmsgid $key",
-    "msgstr \"\"\n\n";
 }
