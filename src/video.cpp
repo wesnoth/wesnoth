@@ -25,9 +25,12 @@
 #include "font.hpp"
 #include "halo.hpp"
 #include "image.hpp"
+#include "log.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
+
+#define LOG_DP lg::info(lg::display)
 
 #define TEST_VIDEO_ON 0
 
@@ -202,7 +205,7 @@ CVideo::CVideo() : bpp(0), fake_screen(false)
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
-		std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		LOG_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
 	}
 }
@@ -212,22 +215,22 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
-		std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
+		LOG_DP << "Could not initialize SDL: " << SDL_GetError() << "\n";
 		throw CVideo::error();
 	}
 
 	const int mode_res = setMode( x, y, bits_per_pixel, flags );
 	if (mode_res == 0) {
-		std::cerr << "Could not set Video Mode\n";
+		LOG_DP << "Could not set Video Mode\n";
 		throw CVideo::error();
 	}
 }
 
 CVideo::~CVideo()
 {
-	std::cerr << "calling SDL_Quit()\n";
+	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
-	std::cerr << "called SDL_Quit()\n";
+	LOG_DP << "called SDL_Quit()\n";
 }
 
 void CVideo::make_fake()
