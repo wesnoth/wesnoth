@@ -8,8 +8,9 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o) :
-	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), needs_restore_(o.needs_restore_), hidden_(false), volatile_(o.volatile_),
-	help_string_(o.help_string_), help_text_(o.help_text_)
+	events::handler(), disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_),
+	needs_restore_(o.needs_restore_), hidden_(false), volatile_(o.volatile_),
+	help_text_(o.help_text_), help_string_(o.help_string_)
 {
 	bg_backup();
 }

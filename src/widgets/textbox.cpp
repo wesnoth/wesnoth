@@ -28,9 +28,9 @@ namespace gui {
 const int font_size = 16;
 
 textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size)
-           : widget(d), text_(string_to_wstring(text)), text_pos_(0),
+	   : widget(d), max_size_(max_size), text_(string_to_wstring(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
-	     grabmouse_(false), editable_(editable), max_size_(max_size),
+	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
 	     scrollbar_(d,this),
 	     uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),

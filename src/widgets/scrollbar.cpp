@@ -37,10 +37,11 @@ namespace {
 namespace gui {
 
 scrollbar::scrollbar(display& d, scrollable* callback)
-	: mid_scaled_(NULL), groove_scaled_(NULL),
-      widget(d), callback_(callback), highlight_(false), clicked_(false), dragging_(false),
-	  grip_position_(0), grip_height_(0), enabled_(false), width_(0),
-	  minimum_grip_height_(0), groove_click_code_(0)
+	: widget(d), mid_scaled_(NULL), groove_scaled_(NULL),
+	  callback_(callback), minimum_grip_height_(0), width_(0),
+	  highlight_(false), clicked_(false), dragging_(false),
+	  grip_position_(0), grip_height_(0), enabled_(false),
+	  groove_click_code_(0)
 {
 	static const surface img(image::get_image(scrollbar_mid, 
 										image::UNSCALED));
