@@ -195,6 +195,7 @@ wesnoth_SOURCES = \
 	variable.hpp \
 	video.hpp \
 	wassert.hpp \
+	serialization/binary_or_text.hpp \
 	serialization/binary_wml.hpp \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
@@ -362,6 +363,7 @@ wesnoth_editor_SOURCES = \
 	unit_display.hpp \
 	unit_types.hpp \
 	video.hpp \
+	serialization/binary_or_text.hpp \
 	serialization/binary_wml.hpp \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \

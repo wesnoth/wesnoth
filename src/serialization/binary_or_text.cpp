@@ -13,8 +13,11 @@
 */
 
 #include "config.hpp"
+#include "filesystem.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
+
+#include <sstream>
 
 bool detect_format_and_read(config &cfg, std::istream &in)
 {
@@ -26,4 +29,16 @@ bool detect_format_and_read(config &cfg, std::istream &in)
 
 	read(cfg, in);
 	return false;
+}
+
+void write_possibly_compressed(std::string const &filename, config &cfg, bool compress)
+{
+
+	std::string savefile;
+	if (compress) {
+		std::ostringstream stream;
+		write_compressed(stream, cfg);
+		savefile = stream.str();
+	} else savefile = write(cfg);
+	write_file(filename, savefile);
 }

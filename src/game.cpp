@@ -54,6 +54,7 @@
 #include "video.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -1545,14 +1546,7 @@ int play_game(int argc, char** argv)
 					return 0;
 				}
 
-				std::string res;
-				if (compress) {
-					std::ostringstream savefile;
-					write_compressed(savefile, cfg);
-					res = savefile.str();
-				} else res = write(cfg);
-				write_file(output, res);
-
+				write_possibly_compressed(output, cfg, compress);
 			} catch(config::error& e) {
 				std::cerr << input << " is not a valid Wesnoth file: " << e.message << "\n";
 			} catch(io_exception& e) {

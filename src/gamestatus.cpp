@@ -22,6 +22,7 @@
 #include "preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
@@ -454,14 +455,7 @@ void save_game(const game_state& state)
 		write_game(state,cfg);
 
 		const std::string fname = get_saves_dir() + "/" + name;
-
-		std::string savefile;
-		if (preferences::compress_saves()) {
-			std::ostringstream stream;
-			write_compressed(stream, cfg);
-			savefile = stream.str();
-		} else savefile = write(cfg);
-		write_file(fname, savefile);
+		write_possibly_compressed(fname, cfg, preferences::compress_saves());
 
 		config& summary = save_summary(state.label);
 		extract_summary_data_from_save(state,summary);
