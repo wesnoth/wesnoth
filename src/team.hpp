@@ -50,7 +50,7 @@ public:
 	team(config& cfg, int gold=100);
 	void get_tower(const gamemap::location&);
 	void lose_tower(const gamemap::location&);
-	int towers() const;
+	const std::set<gamemap::location>& towers() const;
 	bool owns_tower(const gamemap::location&) const;
 
 	int gold() const;

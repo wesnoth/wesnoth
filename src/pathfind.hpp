@@ -32,6 +32,9 @@ gamemap::location find_vacant_tile(const gamemap& map,
                                    const gamemap::location& loc,
                                    gamemap::TERRAIN terrain=0);
 
+bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
+               const gamemap::location& loc,const team& current_team,int side);
+
 struct paths
 {
 	paths() {}
@@ -48,6 +51,19 @@ struct paths
 	};
 
 	std::map<gamemap::location,route> routes;
+};
+
+struct shortest_path_calculator
+{
+	shortest_path_calculator(const unit& u, const team& t,
+	                         const unit_map& units, const gamemap& map);
+	double cost(const gamemap::location& loc, double so_far) const;
+
+private:
+	const unit& unit_;
+	const team& team_;
+	const unit_map& units_;
+	const gamemap& map_;
 };
 
 namespace detail {
@@ -69,7 +85,8 @@ struct node {
 
 template<typename T>
 paths::route a_star_search(const gamemap::location& src,
-                           const gamemap::location& dst, double stop_at, T obj)
+                           const gamemap::location& dst, double stop_at, T obj,
+                           const std::set<gamemap::location>* teleports=NULL)
 {
 	std::cout << "a* search: " << src.x << ", " << src.y << " - " << dst.x << ", " << dst.y << "\n";
 	using namespace detail;
@@ -92,15 +109,19 @@ paths::route a_star_search(const gamemap::location& src,
 			break;
 		}
 
-		//std::cerr << "processing " << (lowest->loc.x+1) << "," << (lowest->loc.y+1) << " with cost = " << lowest->g << " (known) + " << lowest->h << " (estimated) = " << lowest->f << "\n";
-
 		//move the lowest element from the open list to the closed list
 		closed_list.splice(closed_list.begin(),open_list,lowest);
 
 		//find nodes we can go to from this node
-		location locs[6];
-		get_adjacent_tiles(lowest->loc,locs);
-		for(int j = 0; j != 6; ++j) {
+		static std::vector<location> locs;
+		locs.resize(6);
+		get_adjacent_tiles(lowest->loc,&locs[0]);
+		if(teleports != NULL && teleports->count(lowest->loc) != 0) {
+			std::copy(teleports->begin(),teleports->end(),
+			          std::back_inserter(locs));
+		}
+
+		for(size_t j = 0; j != locs.size(); ++j) {
 
 			//if we have found a solution
 			if(locs[j] == dst) {
@@ -118,7 +139,8 @@ paths::route a_star_search(const gamemap::location& src,
 				return rt;
 			}
 
-			const node nd(locs[j],dst,lowest->g+obj.cost(locs[j]),&*lowest);
+			const node nd(locs[j],dst,lowest->g+obj.cost(locs[j],lowest->g),
+			              &*lowest);
 
 			for(i = open_list.begin(); i != open_list.end(); ++i) {
 				if(i->loc == nd.loc && i->f <= nd.f) {

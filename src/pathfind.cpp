@@ -105,8 +105,6 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 	   xdiff == 1 && ydiff == 1 && (a.y > b.y ? (a.x%2) == 1 : (b.x%2) == 1);
 }
 
-namespace {
-
 bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
                const gamemap::location& loc, const team& current_team, int side)
 {
@@ -125,6 +123,8 @@ bool enemy_zoc(const gamemap& map,const std::map<gamemap::location,unit>& units,
 
 	return false;
 }
+
+namespace {
 
 void find_routes(const gamemap& map, const game_data& gamedata,
 				 const std::map<gamemap::location,unit>& units,
@@ -147,8 +147,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 		//teleport to
 		for(std::vector<gamemap::location>::const_iterator t = towers.begin();
 		    t != towers.end(); ++t) {
-			if(!teams[u.side()-1].owns_tower(*t) ||
-			   units.find(*t) != units.end())
+			if(!teams[u.side()-1].owns_tower(*t))
 				continue;
 
 			locs.push_back(*t);
@@ -238,3 +237,48 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 	}
 }
 
+shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
+                                                   const unit_map& units,
+                                                   const gamemap& map)
+      : unit_(u), team_(t), units_(units), map_(map)
+{
+}
+
+double shortest_path_calculator::cost(const gamemap::location& loc,
+                                      double so_far) const
+{
+	if(!map_.on_board(loc))
+		return 100000.0;
+
+	if(unit_.type().is_skirmisher() == false) {
+		gamemap::location adj[6];
+		get_adjacent_tiles(loc,adj);
+
+		for(size_t i = 0; i != 6; ++i) {
+			const unit_map::const_iterator u = units_.find(adj[i]);
+			if(u != units_.end() && team_.is_enemy(u->second.side())) {
+				return 100000.0;
+			}
+		}
+	}
+
+	const double base_cost(
+	     unit_.type().movement_type().movement_cost(map_,map_[loc.x][loc.y]));
+
+	//supposing we had 2 movement left, and wanted to move onto a hex which
+	//takes 3 movement, it's going to cost us 5 movement in total, since we
+	//sacrifice this turn's movement. Take that into account here.
+	assert(so_far == double(int(so_far)));
+
+	const int current_cost(static_cast<int>(so_far));
+
+	const int starting_movement = unit_.movement_left();
+	const int remaining_movement = current_cost <= starting_movement ?
+	             starting_movement - current_cost :
+	             (current_cost-starting_movement)%unit_.total_movement();
+
+	const double additional_cost = int(base_cost) > remaining_movement ?
+	                               double(remaining_movement) : double(0);
+
+	return base_cost + additional_cost;
+}

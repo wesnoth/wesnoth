@@ -508,7 +508,7 @@ void display::draw_game_status(int x, int y)
 			<< status_.number_of_turns() << "\n" << string_table["gold"] << ": "
 			<< teams_[currentTeam_].gold() << "\n"
 			<< string_table["villages"] << ": "
-			<< teams_[currentTeam_].towers() << "\n"
+			<< teams_[currentTeam_].towers().size() << "\n"
 			<< string_table["units"] << ": " << nunits << "\n"
 			<< string_table["income"] << ": " << income << "\n";
 
@@ -908,9 +908,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
 					         pathsList_->routes.end()) {
 		image_type = GREYED;
-	} else if(gamemap::location(x,y) == mouseoverHex_ ||
-	          gamemap::location(x,y) == selectedHex_ &&
-			  units_.count(gamemap::location(x,y)) == 1) {
+	}
+
+	if(loc == mouseoverHex_ || loc == selectedHex_ &&
+	   units_.count(gamemap::location(x,y)) == 1 ||
+	   std::find(route_.steps.begin(),route_.steps.end(),loc) !=
+		         route_.steps.end()) {
 		image_type = BRIGHTENED;
 	}
 
@@ -1576,6 +1579,26 @@ void display::set_paths(const paths* paths_list)
 {
 	pathsList_ = paths_list;
 	invalidate_all();
+}
+
+void display::invalidate_route()
+{
+	for(std::vector<gamemap::location>::const_iterator i = route_.steps.begin();
+	    i != route_.steps.end(); ++i) {
+		invalidate(*i);
+	}
+}
+
+void display::set_route(const paths::route* route)
+{
+	invalidate_route();
+
+	if(route != NULL)
+		route_ = *route;
+	else
+		route_.steps.clear();
+
+	invalidate_route();
 }
 
 void display::move_unit(const std::vector<gamemap::location>& path, unit& u)

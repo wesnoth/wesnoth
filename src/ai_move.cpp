@@ -31,7 +31,7 @@ struct move_cost_calculator
 	    move_type_(u.type().movement_type()), loc_(loc), dstsrc_(dstsrc)
 	{}
 
-	double cost(const location& loc) const
+	double cost(const location& loc, double so_far) const
 	{
 		if(!map_.on_board(loc))
 			return 1000.0;

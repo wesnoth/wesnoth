@@ -16,9 +16,11 @@
 #include "display.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
+#include "replay.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 
+#include <deque>
 #include <map>
 #include <string>
 
@@ -94,5 +96,20 @@ double combat_modifier(const gamestatus& status,
                        const std::map<gamemap::location,unit>& units,
 					   const gamemap::location& loc,
 					   unit_type::ALIGNMENT alignment);
+
+struct undo_action {
+	undo_action(const std::vector<gamemap::location>& rt,int sm,int orig=-1)
+	       : route(rt), starting_moves(sm), original_village_owner(orig) {}
+	std::vector<gamemap::location> route;
+	int starting_moves;
+	int original_village_owner;
+};
+
+typedef std::deque<undo_action> undo_list;
+
+size_t move_unit(display* disp, const gamemap& map,
+                 unit_map& units, std::vector<team>& teams,
+                 const std::vector<gamemap::location>& steps,
+                 replay* move_recorder, undo_list* undos);
 
 #endif

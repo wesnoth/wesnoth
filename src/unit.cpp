@@ -533,6 +533,16 @@ bool unit::is_guardian() const
 	return guardian_;
 }
 
+const gamemap::location& unit::get_goto() const
+{
+	return goto_;
+}
+
+void unit::set_goto(const gamemap::location& new_goto)
+{
+	goto_ = new_goto;
+}
+
 void unit::add_modification(const std::string& type, config& mod, bool no_add)
 {
 	const std::string& span = mod.values["duration"];

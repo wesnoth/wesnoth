@@ -10,6 +10,8 @@
 
    See the COPYING file for more details.
 */
+
+#include "actions.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
@@ -18,18 +20,9 @@
 #include "replay.hpp"
 
 #include <cmath>
-#include <deque>
 #include <iostream>
 #include <sstream>
 #include <string>
-
-struct undo_action {
-	undo_action(const std::vector<gamemap::location>& rt,int sm,int orig=-1)
-	       : route(rt), starting_moves(sm), original_village_owner(orig) {}
-	std::vector<gamemap::location> route;
-	int starting_moves;
-	int original_village_owner;
-};
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, config& terrain_config, config* level,
@@ -46,7 +39,6 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	team& current_team = teams[team_num-1];
 
 	const double scroll_speed = 30.0;
-	//UNUSED: const double zoom_amount = 5.0;
 
 	const std::string menu_items[] = {"scenario_objectives","recruit",
 	                                  "recall","unit_list","save_game",
@@ -58,20 +50,49 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		menu.push_back(string_table[*menu_items_ptr]);
 	}
 
-	typedef std::map<gamemap::location,unit> units_map;
-
 	gamemap::location next_unit;
 
 	bool left_button = false, right_button = false;
 
 	const paths_wiper wiper(gui);
 	paths current_paths;
+	paths::route current_route;
 	bool enemy_paths = false;
 
 	gamemap::location last_hex;
 	gamemap::location selected_hex;
 
-	std::deque<undo_action> undo_stack, redo_stack;
+	undo_list undo_stack, redo_stack;
+
+	//execute gotos
+	for(unit_map::iterator ui = units.begin(); ui != units.end(); ++ui) {
+		if(ui->second.get_goto() == ui->first)
+			ui->second.set_goto(gamemap::location());
+
+		if(ui->second.side() != team_num ||
+		   map.on_board(ui->second.get_goto()) == false)
+			continue;
+		
+		unit u = ui->second;
+		const shortest_path_calculator calc(u,current_team,units,map);
+		const bool can_teleport = u.type().teleports() &&
+		          map[ui->first.x][ui->first.y] == gamemap::TOWER;
+
+		const std::set<gamemap::location>* const teleports =
+		     can_teleport ? &current_team.towers() : NULL;
+
+		paths::route route = a_star_search(ui->first,ui->second.get_goto(),
+		                                   10000.0,calc,teleports);
+		gui.set_route(&route);
+		const size_t moves =
+		    move_unit(&gui,map,units,teams,route.steps,&recorder,&undo_stack);
+		if(moves > 0) {
+			redo_stack.clear();
+			if(moves == route.steps.size()) {
+				u.set_goto(gamemap::location());
+			}
+		}
+	}
 
 	for(;;) {
 		int mousex, mousey;
@@ -90,6 +111,30 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				current_paths = paths();
 				enemy_paths = false;
 			}
+
+			if(new_hex == selected_hex) {
+				current_route.steps.clear();
+				gui.set_route(NULL);
+			} else if(!enemy_paths && new_hex != last_hex &&
+			   !current_paths.routes.empty() && map.on_board(selected_hex) &&
+			   map.on_board(new_hex)) {
+				
+				const unit_map::const_iterator un = units.find(selected_hex);
+				if(un != units.end()) {
+					const shortest_path_calculator calc(un->second,current_team,
+					                                    units,map);
+					const bool can_teleport = un->second.type().teleports() &&
+					   map[selected_hex.x][selected_hex.y] == gamemap::TOWER;
+
+					const std::set<gamemap::location>* const teleports =
+					     can_teleport ? &current_team.towers() : NULL;
+
+					current_route = a_star_search(selected_hex,new_hex,
+					                              10000.0,calc,teleports);
+
+					gui.set_route(&current_route);
+				}
+			}
 		}
 
 		HOTKEY_COMMAND command = HOTKEY_NULL;
@@ -100,7 +145,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				gui.scroll_to_tile(loc.x,loc.y,display::WARP);
 			}
 		} else if(new_hex != last_hex && current_paths.routes.empty()) {
-			const units_map::iterator u = units.find(new_hex);
+			const unit_map::iterator u = units.find(new_hex);
 			if(u != units.end() && u->second.side() != team_num) {
 				const bool ignore_zocs = u->second.type().is_skirmisher();
 				const bool teleport = u->second.type().teleports();
@@ -114,26 +159,23 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		last_hex = new_hex;
 
 		if(!left_button && new_left_button) {
-			const gamemap::location& hex = gui.hex_clicked_on(mousex,mousey);
+			gamemap::location hex = gui.hex_clicked_on(mousex,mousey);
 
-			units_map::iterator u = units.find(selected_hex);
+			unit_map::iterator u = units.find(selected_hex);
 
 			//if we can move to that tile
-			const std::map<gamemap::location,paths::route>::const_iterator
+			std::map<gamemap::location,paths::route>::const_iterator
 					route = enemy_paths ? current_paths.routes.end() :
 			                              current_paths.routes.find(hex);
-			units_map::iterator enemy = units.find(hex);
+			unit_map::iterator enemy = units.find(hex);
 
 			//see if we're trying to attack an enemy
 			if(route != current_paths.routes.end() && enemy != units.end() &&
 			   hex != selected_hex &&
 			   enemy->second.side() != u->second.side()) {
 
-				//UNUSED: const unit_type& type = u->second.type();
-				//UNUSED: const unit_type& enemy_type = enemy->second.type();
 				const std::vector<attack_type>& attacks = u->second.attacks();
 				std::vector<std::string> items;
-				//UNUSED: const std::vector<attack_type>& defends = enemy->second.attacks();
 
 				std::vector<unit> units_list;
 
@@ -194,6 +236,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				                           gui::OK_CANCEL,&items,&units_list);
 
 				if(size_t(res) < attacks.size()) {
+					u->second.set_goto(gamemap::location());
 					undo_stack.clear();
 					redo_stack.clear();
 
@@ -223,6 +266,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					dialogs::advance_unit(gameinfo,units,hex,gui);
 
 					selected_hex = gamemap::location();
+					current_route.steps.clear();
+					gui.set_route(NULL);
 
 					gui.invalidate_unit();
 					gui.draw(); //clear the screen
@@ -238,79 +283,44 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 			}
 
-			//otherwise we're just trying to move to a hex
+			//otherwise we're trying to move to a hex
 			else if(selected_hex.valid() && selected_hex != hex &&
-				     enemy == units.end() &&
-			         route != current_paths.routes.end()) {
-				std::vector<gamemap::location> steps = route->second.steps;
-				steps.push_back(hex);
-
-				//if an event mutates the game environment, then this
-				//move must be marked un-redoable
-				bool event_mutated = false;
-
-				int orig_tower_owner = -1;
-				int starting_moves = 0;
-				int unit_side = 0;
-				if(u != units.end()) {
-					unit un = u->second;
-					starting_moves = un.movement_left();
-					unit_side = un.side();
-					units.erase(u);
-					gui.move_unit(steps,un);
-					recorder.add_movement(selected_hex,hex);
-					un.set_movement(route->second.move_left);
-
-					//see if the unit has gotten a tower
-					if(map[hex.x][hex.y] == gamemap::TOWER) {
-						orig_tower_owner = tower_owner(hex,teams);
-						get_tower(hex,teams,team_num-1);
-						un.set_movement(0); //end of turn if you get a tower
-					}
-
-					units.insert(std::pair<gamemap::location,unit>(hex,un));
-					gui.invalidate_unit();
-
-					//fire the move to event. If the event mutates
-					//the game state, then the user cannot undo the move
-					event_mutated = game_events::fire("moveto",hex);
-				} else {
-					assert(false);
-					continue;
-				}
+				     enemy == units.end() && !current_route.steps.empty()) {
+				const size_t moves =
+				        move_unit(&gui,map,units,teams,current_route.steps,
+				                  &recorder,&undo_stack);
+				redo_stack.clear();
 
 				selected_hex = gamemap::location();
+				gui.set_route(NULL);
 				gui.select_hex(gamemap::location());
 				gui.set_paths(NULL);
 				current_paths = paths();
 
+				assert(moves <= current_route.steps.size());
+				const gamemap::location& dst = current_route.steps[moves-1];
+
+				current_route.steps.clear();
+
 				//if there is an enemy in a surrounding hex, then
 				//highlight attack options
 				gamemap::location adj[6];
-				get_adjacent_tiles(steps.back(),adj);
+				get_adjacent_tiles(dst,adj);
 
 				int n;
 				for(n = 0; n != 6; ++n) {
-					const units_map::const_iterator u_it = units.find(adj[n]);
-					if(u_it != units.end() && u_it->second.side() != unit_side
+					const unit_map::const_iterator u_it = units.find(adj[n]);
+					if(u_it != units.end() && u_it->second.side() != team_num
 					   && current_team.is_enemy(u_it->second.side())){
 						current_paths.routes[adj[n]] = paths::route();
 					}
 				}
 
 				if(current_paths.routes.empty() == false) {
-					current_paths.routes[steps.back()] = paths::route();
-					selected_hex = steps.back();
-					gui.select_hex(steps.back());
+					current_paths.routes[dst] = paths::route();
+					selected_hex = dst;
+					gui.select_hex(dst);
 					gui.set_paths(&current_paths);
-				}
-
-				undo_stack.push_back(undo_action(steps,starting_moves,
-				                                 orig_tower_owner));
-				redo_stack.clear();
-
-				if(event_mutated) {
-					undo_stack.clear();
 				}
 
 			} else {
@@ -319,14 +329,30 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 				selected_hex = hex;
 				gui.select_hex(hex);
+				current_route.steps.clear();
+				gui.set_route(NULL);
 
-				const units_map::iterator it = units.find(hex);
+				const unit_map::iterator it = units.find(hex);
 				if(it != units.end() && it->second.side() == team_num) {
 					const bool ignore_zocs = it->second.type().is_skirmisher();
 					const bool teleport = it->second.type().teleports();
 					current_paths = paths(map,gameinfo,units,hex,teams,
 					                      ignore_zocs,teleport);
 					gui.set_paths(&current_paths);
+
+					unit u = it->second;
+					const gamemap::location go_to = u.get_goto();
+					if(map.on_board(go_to)) {
+						const shortest_path_calculator calc(u,current_team,
+						                                    units,map);
+
+						const std::set<gamemap::location>* const teleports =
+						        teleport ? &current_team.towers() : NULL;
+
+						paths::route route = a_star_search(it->first,go_to,
+						                               10000.0,calc,teleports);
+						gui.set_route(&route);
+					}
 				}
 			}
 		}
@@ -339,8 +365,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				gui.select_hex(gamemap::location());
 				gui.set_paths(NULL);
 				current_paths = paths();
+				current_route.steps.clear();
+				gui.set_route(NULL);
 			} else {
-				const units_map::const_iterator un = units.find(
+				const unit_map::const_iterator un = units.find(
 				                            gui.hex_clicked_on(mousex,mousey));
 				if(un != units.end()) {
 					menu.push_back(string_table["describe_unit"]);
@@ -544,7 +572,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					items.push_back(heading);
 
 					std::vector<unit> units_list;
-					for(units_map::const_iterator i = units.begin();
+					for(unit_map::const_iterator i = units.begin();
 					    i != units.end(); ++i) {
 						if(i->second.side() != team_num)
 							continue;
@@ -608,7 +636,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		if(command == HOTKEY_NULL)
 			command = check_keys(gui);
 
-		units_map::const_iterator un = units.find(new_hex);
+		unit_map::const_iterator un = units.find(new_hex);
 		if(un == units.end())
 			un = units.find(selected_hex);
 
@@ -694,7 +722,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		}
 
 		if(command == HOTKEY_END_UNIT_TURN) {
-			const units_map::iterator un = units.find(selected_hex);
+			const unit_map::iterator un = units.find(selected_hex);
 			if(un != units.end() && un->second.side() == team_num &&
 			   un->second.movement_left() > 0) {
 				std::vector<gamemap::location> steps;
@@ -715,21 +743,22 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		//look for the next unit that is unmoved on our side
 		if(command == HOTKEY_CYCLE_UNITS) {
-			units_map::const_iterator it = units.find(next_unit);
+			unit_map::const_iterator it = units.find(next_unit);
 			if(it != units.end()) {
 				for(++it; it != units.end(); ++it) {
 					if(it->second.side() == team_num &&
-					   it->second.movement_left() > 0) {
+					   it->second.movement_left() > 0 &&
+					   it->second.get_goto().valid() == false) {
 						break;
 					}
 				}
 			}
 
 			if(it == units.end()) {
-				for(it = units.begin(); it != units.end();
-				    ++it) {
+				for(it = units.begin(); it != units.end(); ++it) {
 					if(it->second.side() == team_num &&
-					   it->second.movement_left() > 0) {
+					   it->second.movement_left() > 0 &&
+					   it->second.get_goto().valid() == false) {
 						break;
 					}
 				}
@@ -751,12 +780,14 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				next_unit = it->first;
 				selected_hex = next_unit;
 				gui.select_hex(selected_hex);
+				current_route.steps.clear();
+				gui.set_route(NULL);
 			} else
 				next_unit = gamemap::location();
 		}
 
 		if(command == HOTKEY_LEADER) {
-			for(units_map::const_iterator i = units.begin(); i != units.end();
+			for(unit_map::const_iterator i = units.begin(); i != units.end();
 			    ++i) {
 				if(i->second.side() == team_num && i->second.can_recruit()) {
 					gui.scroll_to_tile(i->first.x,i->first.y,display::WARP);
@@ -770,7 +801,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			const int starting_moves = undo_stack.back().starting_moves;
 			std::vector<gamemap::location> route = undo_stack.back().route;
 			std::reverse(route.begin(),route.end());
-			const units_map::iterator u = units.find(route.front());
+			const unit_map::iterator u = units.find(route.front());
 			if(u == units.end()) {
 				assert(false);
 				continue;
@@ -784,6 +815,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			undo_stack.back().starting_moves = u->second.movement_left();
 
 			unit un = u->second;
+			un.set_goto(gamemap::location());
 			units.erase(u);
 			gui.move_unit(route,un);
 			un.set_movement(starting_moves);
@@ -803,7 +835,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		if(command == HOTKEY_REDO && !redo_stack.empty()) {
 			const int starting_moves = redo_stack.back().starting_moves;
 			std::vector<gamemap::location> route = redo_stack.back().route;
-			const units_map::iterator u = units.find(route.front());
+			const unit_map::iterator u = units.find(route.front());
 			if(u == units.end()) {
 				assert(false);
 				continue;
@@ -812,6 +844,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			redo_stack.back().starting_moves = u->second.movement_left();
 
 			unit un = u->second;
+			un.set_goto(gamemap::location());
 			units.erase(u);
 			gui.move_unit(route,un);
 			un.set_movement(starting_moves);

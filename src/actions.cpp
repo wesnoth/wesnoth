@@ -33,7 +33,7 @@ struct castle_cost_calculator
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	double cost(const gamemap::location& loc) const
+	double cost(const gamemap::location& loc, double cost_so_far) const
 	{
 		if(!map_.on_board(loc) || map_[loc.x][loc.y] != gamemap::CASTLE)
 			return 10000;
@@ -769,4 +769,102 @@ double combat_modifier(const gamestatus& status,
 	}
 
 	return 1.0;
+}
+
+size_t move_unit(display* disp, const gamemap& map,
+                 unit_map& units, std::vector<team>& teams,
+                 const std::vector<gamemap::location>& route,
+                 replay* move_recorder, undo_list* undo_stack)
+{
+	assert(!route.empty());
+
+	const unit_map::iterator ui = units.find(route.front());
+
+	assert(ui != units.end());
+
+	ui->second.set_goto(gamemap::location());
+
+	unit u = ui->second;
+
+	const int team_num = u.side()-1;
+
+	const bool skirmisher = u.type().is_skirmisher();
+
+	//start off by seeing how far along the given path we can move
+	const int starting_moves = u.movement_left();
+	int moves_left = starting_moves;
+	std::vector<gamemap::location>::const_iterator step;
+	for(step = route.begin()+1; step != route.end(); ++step) {
+		const gamemap::TERRAIN terrain = map[step->x][step->y];
+			
+		const int mv = u.type().movement_type().movement_cost(map,terrain);
+		if(mv > moves_left) {
+			break;
+		} else {
+			moves_left -= mv;
+		}
+
+		if(!skirmisher && enemy_zoc(map,units,*step,teams[team_num],u.side())) {
+			moves_left = 0;
+		}
+	}
+
+	//make sure we don't tread on another unit
+	std::vector<gamemap::location>::const_iterator begin = route.begin();
+
+	std::vector<gamemap::location> steps(begin,step);
+	while(!steps.empty() && units.count(steps.back()) != 0) {
+		steps.pop_back();
+	}
+
+	//if we can't get all the way there and have to set a go-to
+	if(steps.size() != route.size()) {
+		ui->second.set_goto(route.back());
+		u.set_goto(route.back());
+	}
+
+	if(steps.size() < 2) {
+		return 0;
+	}
+
+	units.erase(ui);
+	if(disp != NULL)
+		disp->move_unit(steps,u);
+
+	if(move_recorder != NULL)
+		move_recorder->add_movement(steps.front(),steps.back());
+
+	u.set_movement(moves_left);
+
+	int orig_tower_owner = -1;
+	if(map[steps.back().x][steps.back().y] == gamemap::TOWER) {
+		orig_tower_owner = tower_owner(steps.back(),teams);
+
+		if(orig_tower_owner != team_num) {
+			get_tower(steps.back(),teams,team_num);
+			u.set_movement(0);
+		}
+	}
+
+	units.insert(std::pair<gamemap::location,unit>(steps.back(),u));
+	if(disp != NULL)
+		disp->invalidate_unit();
+
+	const bool event_mutated = game_events::fire("moveto",steps.back());
+
+	if(undo_stack != NULL) {
+		if(event_mutated) {
+			undo_stack->clear();
+		} else {
+			undo_stack->push_back(undo_action(steps,starting_moves,
+			                                  orig_tower_owner));
+		}
+	}
+
+	if(disp != NULL) {
+		disp->set_route(NULL);
+		disp->draw();
+	}
+
+	return steps.size();
 }

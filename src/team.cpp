@@ -97,9 +97,9 @@ void team::lose_tower(const gamemap::location& loc)
 	towers_.erase(towers_.find(loc));
 }
 
-int team::towers() const
+const std::set<gamemap::location>& team::towers() const
 {
-	return towers_.size();
+	return towers_;
 }
 
 bool team::owns_tower(const gamemap::location& loc) const

@@ -62,7 +62,11 @@ public:
 	gamemap::location hex_clicked_on(int x, int y);
 	gamemap::location minimap_location_on(int x, int y);
 
+	//paths_list must remain valid until it is set again
 	void set_paths(const paths* paths_list);
+
+	//route does not have to remain valid after being set
+	void set_route(const paths::route* route);
 
 	double get_location_x(const gamemap::location& loc) const;
 	double get_location_y(const gamemap::location& loc) const;
@@ -175,6 +179,7 @@ private:
 	bool minimapDecorationsDrawn_;
 
 	const paths* pathsList_;
+	paths::route route_;
 
 	const gamestatus& status_;
 
@@ -184,6 +189,7 @@ private:
 	int drawSkips_;
 
 	void invalidate(const gamemap::location& loc);
+	void invalidate_route();
 
 	std::set<gamemap::location> invalidated_;
 	bool invalidateAll_;

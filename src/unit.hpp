@@ -91,9 +91,11 @@ public:
 	int value() const;
 	bool is_guardian() const;
 
+	const gamemap::location& get_goto() const;
+	void set_goto(const gamemap::location& new_goto);
+
 	void add_modification(const std::string& type, config& modification,
 	                      bool no_add=false);
-
 
 private:
 	const unit_type* type_;
@@ -132,6 +134,8 @@ private:
 
 	bool guardian_;
 
+	gamemap::location goto_;
+
 	void apply_modifications();
 };
 
@@ -139,5 +143,7 @@ struct compare_unit_values
 {
 	bool operator()(const unit& a, const unit& b) const;
 };
+
+typedef std::map<gamemap::location,unit> unit_map;
 
 #endif
