@@ -434,7 +434,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			minimap_restorer_.restore();
 			const SDL_Rect& player_num_rect = playernum_restorer_.area();
 			font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
-				                " Load Map ",player_num_rect.x,player_num_rect.y);
+				                _("Players") + std::string(": ?"),player_num_rect.x,player_num_rect.y);
 		}
 	}
 
@@ -455,7 +455,8 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		(*level_)["modify_placing"] = "true";
 	}
 
-	if(map_changed && (scenario_data_.child("side") != NULL)) {
+	//if the map has changed and "Load Map" is not selected
+	if(map_changed && level_ != NULL) {
 		generator_settings_->hide(generator_ == NULL);
 		regenerate_map_->hide(generator_ == NULL);
 
