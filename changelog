@@ -2,15 +2,26 @@ CVS HEAD:
  * show possible enemy moves view (context menu -> show possible enemy moves)
  * added and improved unit images
  * new unit side ellipses
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Dwarven Doors
+   * Muff Malal's
+ * Dwarvish Berserker attack made stronger
+ * multiplayer enhancements:
+   * improved multiplayer chat system
  * language fixes and polishing (english)
- * randomization of temples in Muff Malal's peninsula
+ * updated translations:
+   * french
  * fixed attack miscalculation for offensive units which ignored time of day
  * fixed typo in Toward Mountains of Haag
  * fixed many 'end of line' warnings
  * fixed active player not receiveing labels and messages immidiately while it was his/her turn
  * fixed networking problems which caused out-of-syncs
+ * made mountains 'dark terrain'
+ * made on-map labels disappear on end of level
  * reports handle multiple images & strings per report each with their own tooltips
  * added diagnostics to help tracking out-of-sync errors
+ * added network diagnostics
+ * autotools clean up
  * renamed wesnoth.png to wesnoth-icon.png
 
 Version 0.7.1:
