@@ -87,6 +87,8 @@ RESULT enter(display& disp, config& game_data)
 		gui::menu users_menu(disp,users);
 		users_menu.set_loc(disp.x()-border-users_menu.width(),border);
 
+		update_whole_screen();
+
 		bool old_enter = true;
 
 		for(;;) {
@@ -173,6 +175,7 @@ RESULT enter(display& disp, config& game_data)
 			}
 
 			events::pump();
+			disp.video().flip();
 			SDL_Delay(20);
 		}
 	}
