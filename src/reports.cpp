@@ -128,18 +128,18 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 	case UNIT_ALIGNMENT: {
 		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
 		const std::string& align_id = unit_type::alignment_id(u->second.type().alignment());
-		return report(align,"",sgettext(string_table[align_id + "_description"].c_str()));
+		return report(align, "", string_table[align_id + "_description"]);
 	}
 	case UNIT_ABILITIES: {
 		report res;
 		std::stringstream tooltip;
 		const std::vector<std::string>& abilities = u->second.type().abilities();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
-			str << sgettext(i->c_str());
+			str << gettext(i->c_str());
 			if(i+1 != abilities.end())
 				str << ",";
 
-			tooltip << sgettext(string_table[*i + "_description"].c_str());
+			tooltip << string_table[*i + "_description"];
 			res.add_text(str,tooltip);
 		}
 

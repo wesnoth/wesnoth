@@ -1013,7 +1013,7 @@ void unit::add_modification(const std::string& type,
 						description << "; ";
 					}
 					
-					description << string_table[a->name()] << " " << desc;
+					description << gettext(a->name().c_str()) << " " << desc;
 				}
 			}
 		} else if(apply_to == "hitpoints") {
