@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-21 21:58+0200\n"
-"PO-Revision-Date: 2004-10-17 17:12+0200\n"
+"PO-Revision-Date: 2004-10-22 00:20+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: data/game.cfg:321 data/translations/english.cfg:61
 msgid "loyal"
@@ -1023,21 +1023,18 @@ msgstr "Slumpkarta"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:16
-#, fuzzy
 msgid "Random map (Desert)"
-msgstr "Slumpkarta"
+msgstr "Slumpkarta (öken)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:16
-#, fuzzy
 msgid "Random map (Marsh)"
-msgstr "Slumpkarta"
+msgstr "Slumpkarta (sumpmark)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:16
-#, fuzzy
 msgid "Random map (Winter)"
-msgstr "Slumpkarta"
+msgstr "Slumpkarta (vinter)"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -2280,7 +2277,7 @@ msgstr "Slöja"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Dimma"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
@@ -2297,9 +2294,8 @@ msgid "Village"
 msgstr "By"
 
 #: data/terrain.cfg:51
-#, fuzzy
 msgid "Swamp Water"
-msgstr "Grunt vatten"
+msgstr "Träsk"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2326,9 +2322,8 @@ msgid "Grassland"
 msgstr "Slätt"
 
 #: data/terrain.cfg:158
-#, fuzzy
 msgid "Snow"
-msgstr "Skugga"
+msgstr "Snö"
 
 #: data/terrain.cfg:177
 msgid "Hills"
@@ -2336,7 +2331,7 @@ msgstr "Kullar"
 
 #: data/terrain.cfg:184
 msgid "Snow hills"
-msgstr ""
+msgstr "Snötäckta kullar"
 
 #: data/terrain.cfg:192
 msgid "Mountains"
@@ -2348,10 +2343,9 @@ msgstr "Skog"
 
 #: data/terrain.cfg:206
 msgid "Snow forest"
-msgstr ""
+msgstr "Snötäckt skog"
 
 #: data/terrain.cfg:214
-#, fuzzy
 msgid "Cave wall"
 msgstr "Grottvägg"
 
@@ -2368,18 +2362,16 @@ msgid "Encampment"
 msgstr "Läger"
 
 #: data/terrain.cfg:258
-#, fuzzy
 msgid "Dwarven castle"
-msgstr "Dvärgarnas ödemark"
+msgstr "Dvärgarnas borg"
 
 #: data/terrain.cfg:268
 msgid "Keep"
 msgstr "Kärntorn"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Canyon"
-msgstr "inget"
+msgstr "kanjon"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
@@ -2489,8 +2481,8 @@ msgstr ""
 "fiender.\n"
 "\n"
 "Fiendetrupper kan inte se eller attackera den här truppen i skogen, förutom "
-"underdragen precis efter den har attackerat, eller om det finns "
-"fiendetrupper alldeles bredvid."
+"precis efter att den har attackerat, eller om det finns fiendetrupper "
+"alldeles bredvid."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
@@ -2604,17 +2596,20 @@ msgid "leadership"
 msgstr "ledarskap"
 
 #: data/translations/english.cfg:59
-#, fuzzy
 msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
-msgstr "Aldrig mer än 1 i underhåll"
+msgstr ""
+"Lojal:\n"
+"Aldrig mer än 1 i underhåll."
 
 #: data/translations/english.cfg:64
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night."
 msgstr ""
+"Skuggsteg:\n"
+"Truppen är osynlig nattetid."
 
 #: data/translations/english.cfg:66 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -2627,6 +2622,9 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Regenererar:\n"
+"Truppen läker sig själv med 8 HP per drag. Om den blir förgiftad kommer den "
+"botar den sig från förgiftningen först."
 
 #: data/translations/english.cfg:71 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
@@ -2653,11 +2651,12 @@ msgid "skirmisher"
 msgstr "stigfinnare"
 
 #: data/translations/english.cfg:79
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit takes half normal damage when it did not initiate the attack."
-msgstr "Den här truppen tar halva nominella skadan om den inte anföll först."
+msgstr ""
+"Ståndaktig:\n"
+"Den här truppen tar halva nominella skadan om den inte anfaller själv först."
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
@@ -2804,8 +2803,8 @@ msgid ""
 "of the target."
 msgstr ""
 "Rygghugg:\n"
-"Denna typ av attack orsakar dubbel skada om en vänligt sinnad trupp befinner "
-"sig på motsatt sida av målet."
+"Denna typ av attack orsakar dubbel skada om en allierad sinnad trupp "
+"befinner sig på motsatt sida av målet."
 
 #: data/translations/english.cfg:132
 msgid ""
@@ -2869,7 +2868,7 @@ msgid ""
 msgstr ""
 "Pest:\n"
 "Om denna typ av attack dödar ett levande mål som inte befinner sig i en by, "
-"kommer den döda truppens lik att reanimeras och slåss på anfallarens sida."
+"kommer den döda truppens lik att återuppväckas och slåss på anfallarens sida."
 
 #: data/translations/english.cfg:153
 msgid ""
@@ -2942,9 +2941,8 @@ msgid "$name|bury,$name|ham,$name|ton"
 msgstr "$name|hult,$name|torp,$name|by"
 
 #: data/translations/english.cfg:174
-#, fuzzy
 msgid "$name|harbor,$name|port"
-msgstr "$name|skogen,$name|s skog"
+msgstr "$name|hamn,$name|hamn"
 
 #: data/translations/english.cfg:175
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -3472,7 +3470,6 @@ msgid "fire"
 msgstr "eld"
 
 #: data/units/Arch_Mage.cfg:82
-#, fuzzy
 msgid "female^Arch Mage"
 msgstr "Ärkemagiker"
 
@@ -3614,7 +3611,6 @@ msgid "mace"
 msgstr "spikklubba"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
-#, fuzzy
 msgid "female^Princess"
 msgstr "Prinsessa"
 
@@ -4023,7 +4019,6 @@ msgid "chill wave"
 msgstr "köldvåg"
 
 #: data/units/Dark_Queen.cfg:3
-#, fuzzy
 msgid "female^Dark Queen"
 msgstr "Svartdrottning"
 
@@ -4605,6 +4600,9 @@ msgid ""
 "ferocious of these in battle: they attack without stopping fighting until "
 "either their enemy or they are dead, no matter how many wounds they receive."
 msgstr ""
+"Dvärgar är en uråldrig ras av mäktiga krigare. Ulvhedinerna är de mest "
+"vildsinta av dessa i strid: de anfaller utan uppehåll tills antingen de "
+"själva eller fienden är död, oavsett hur mycket skador de får själva."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -4659,7 +4657,6 @@ msgstr ""
 "stor del av alvernas militär."
 
 #: data/units/Elvish_Archer.cfg:82
-#, fuzzy
 msgid "female^Elvish Archer"
 msgstr "Alvbågskytt"
 
@@ -4679,7 +4676,6 @@ msgstr ""
 "sina fiender i skogen, då de inte kan upptäckas förrän efter de anfallit."
 
 #: data/units/Elvish_Avenger.cfg:76
-#, fuzzy
 msgid "female^Elvish Avenger"
 msgstr "Alvjägare"
 
@@ -4713,7 +4709,6 @@ msgstr ""
 "på distans."
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "female^Elvish Druid"
 msgstr "Alvdruid"
 
@@ -4736,7 +4731,6 @@ msgid "thorns"
 msgstr "törnen"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Elvish Enchantress"
 msgstr "Huldra"
 
@@ -4800,7 +4794,6 @@ msgstr ""
 "förödande eldklot."
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "female^Elvish Lady"
 msgstr "Alvfurstinna"
 
@@ -4810,6 +4803,9 @@ msgid ""
 "see through the fogs of destiny has gained her a wisely used authority among "
 "her people, guiding them in times of uncertainty."
 msgstr ""
+"Alvfurstinnan Parandra är en av de mest respekterade alverna någonsin. "
+"Hennes förmåga att genomskåda ödets dimmor har givit henne en vist använd "
+"auktoritet bland hennes folk, som leder dem i tider av osäkerhet."
 
 #: data/units/Elvish_Lady.cfg:19
 msgid "shove"
@@ -4856,7 +4852,6 @@ msgid "marksman"
 msgstr "prickskytt"
 
 #: data/units/Elvish_Marksman.cfg:80
-#, fuzzy
 msgid "female^Elvish Marksman"
 msgstr "Alvprickskytt"
 
@@ -4906,7 +4901,6 @@ msgstr ""
 "attack, eller då fienden står alldeles inpå dem."
 
 #: data/units/Elvish_Ranger.cfg:79
-#, fuzzy
 msgid "female^Elvish Ranger"
 msgstr "Skogsvaktaralv"
 
@@ -4935,7 +4929,6 @@ msgstr ""
 "skicklighet på hästryggen är utan motstycke, men de saknar styrka i strid."
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "female^Elvish Shaman"
 msgstr "Alvschaman"
 
@@ -4965,12 +4958,10 @@ msgstr ""
 "snabbt. Skarpskyttarna är utmärkta till att rensa ut svåråtkomliga fiender."
 
 #: data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "female^Elvish Sharpshooter"
 msgstr "Alvernas skarpskytt"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "female^Elvish Shyde"
 msgstr "Älva"
 
@@ -4989,7 +4980,6 @@ msgid "faerie touch"
 msgstr "älvaberöring"
 
 #: data/units/Elvish_Sorceress.cfg:3
-#, fuzzy
 msgid "female^Elvish Sorceress"
 msgstr "Alvernas besvärjerska"
 
@@ -5006,7 +4996,6 @@ msgstr ""
 "andevärlden som slår ner på deras fiender."
 
 #: data/units/Elvish_Sylph.cfg:3
-#, fuzzy
 msgid "female^Elvish Sylph"
 msgstr "Sylfid"
 
@@ -5123,6 +5112,10 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
+"Även folk som lever tryggt i sina hem behöver ibland transportera sig över "
+"havet, även om det bara handlar om att fiska eller utbyta handel. Galjonen "
+"är perfekt för detta ändamål: den är snabb och stark och är mycket "
+"användbar, även om den ej är stridsklar."
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
@@ -5333,7 +5326,6 @@ msgstr ""
 "till och med ärkemagikern."
 
 #: data/units/Great_Mage.cfg:79
-#, fuzzy
 msgid "female^Great Mage"
 msgstr "Stormagiker"
 
@@ -5581,7 +5573,7 @@ msgstr "projektil"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "Magiker"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5623,7 +5615,6 @@ msgid "holy"
 msgstr "helig"
 
 #: data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "female^Mage of Light"
 msgstr "Ljusets magiker"
 
@@ -5643,7 +5634,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Sjöfolkets överprästinna"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5651,11 +5642,13 @@ msgid ""
 "illumination, which prevents their surroundings from ever seeing true "
 "night.  Their power is a stalwart counter to the forces of darkness."
 msgstr ""
+"De mest hängivna bland sjöfolkets prästinnor besitter belysningens makt, "
+"vilket förhindrar deras omgivning från att nånsin uppleva riktigt mörker. "
+"Deras kraft utgör ett ståndaktigt värn mot mörkrets makter."
 
 #: data/units/Mermaid_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr "Huldra"
+msgstr "Sjöfolkets besvärjerska"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5677,7 +5670,7 @@ msgstr "vattenstråle"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Sjöfolkets novis"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5685,10 +5678,13 @@ msgid ""
 "Despite their frailty, this makes them formidable opponents, as they can "
 "call upon the very water about them to smite their enemies."
 msgstr ""
+"Sjöfolkets unga kvinnor invigs ofta i sitt folks vattenmagi. Trots deras "
+"bräcklighet gör detta dem till formidabla motståndare, då de kan åkalla "
+"själva vattnet runtom dem för att slå ner på deras fiender."
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Sjöfolkets prästinna"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -5696,15 +5692,17 @@ msgid ""
 "leaves them quite capable of ministering to the wounds of their comrades, as "
 "well as being a potent defense against the unworldly."
 msgstr ""
+"De mer lärda bland sjöfolkets kvinnor studerar ofta de heliga vägarna. Detta "
+"ger dem både förmågan att bota deras sårade kamrater och ett effektivt "
+"försvar mot de krafter som inte är av denna världen."
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "female^Siren"
-msgstr ""
+msgstr "Siren"
 
 #: data/units/Mermaid_Siren.cfg:23
-#, fuzzy
 msgid "naia touch"
-msgstr "älvaberöring"
+msgstr "najadberöring"
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
@@ -5719,48 +5717,40 @@ msgid "trident"
 msgstr "treudd"
 
 #: data/units/Merman_Entangler.cfg:3
-#, fuzzy
 msgid "Merman Entangler"
-msgstr "snärja"
+msgstr "Sjöfolkets snärjare"
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Drakkämpe"
+msgstr "Sjöfolkskämpe"
 
 #: data/units/Merman_Hoplite.cfg:3
-#, fuzzy
 msgid "Merman Hoplite"
-msgstr "Sjöfolk"
+msgstr "Hoplit"
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Sjöfolk"
+msgstr "Sjöfolkets jägare"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Sjöfolkets spjutkastare"
 
 #: data/units/Merman_Netcaster.cfg:3
-#, fuzzy
 msgid "Merman Netcaster"
-msgstr "Ödlefolkets ismanare"
+msgstr "Sjöfolkets nätkastare"
 
 #: data/units/Merman_Spearman.cfg:3
-#, fuzzy
 msgid "Merman Spearman"
-msgstr "Spjutbärare"
+msgstr "Sjöfolkets spjutbärare"
 
 #: data/units/Merman_Triton.cfg:3
-#, fuzzy
 msgid "Merman Triton"
-msgstr "+Tysk översättning"
+msgstr "Sjöfolkets triton"
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Ödlekrigare"
+msgstr "Sjöfolkskrigare"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -5776,14 +5766,14 @@ msgstr ""
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
 msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
-"Naga är precis som sjöfolket bosatta i havet. Även om de är mindre och "
+"Nagafolket är precis som sjöfolket bosatta i havet. Även om de är mindre och "
 "smidigare än sina motsvarigheter, så delar de samma avsmak för torra land."
 
 #: data/units/Necromancer.cfg:3
@@ -6106,7 +6096,6 @@ msgid "Outlaws fight better at night."
 msgstr "Fredlösa slåss bättre nattetid."
 
 #: data/units/Outlaw.cfg:75
-#, fuzzy
 msgid "female^Outlaw"
 msgstr "Fredlös"
 
@@ -6116,7 +6105,6 @@ msgstr ""
 "Fredlösa slåss bättre nattetid. De kvinnliga fredlösa ser bra ut under tiden."
 
 #: data/units/Outlaw_Princess.cfg:4
-#, fuzzy
 msgid "female^Outlaw Princess"
 msgstr "Fredlös prinsessa"
 
@@ -6133,7 +6121,6 @@ msgstr ""
 "drottningdöme med vad hon plundrar på vägarna."
 
 #: data/units/Outlaw_Queen.cfg:3
-#, fuzzy
 msgid "female^Outlaw Queen"
 msgstr "Fredlös drottning"
 
@@ -6218,6 +6205,9 @@ msgid ""
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
+"Piratgaljoner är för transportskepp vad vargar är för får. Skepp fulla med "
+"varor bör inte färdas ensamma långt från land; det är bättre att hjälpa dem "
+"så att de inte sjunker av all last..."
 
 #: data/units/Pirate_Galleon.cfg:16 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
@@ -6265,7 +6255,6 @@ msgstr ""
 "de värdefulla i nästan alla lägen."
 
 #: data/units/Red_Mage.cfg:72
-#, fuzzy
 msgid "female^Red Mage"
 msgstr "Röd magiker"
 
@@ -6393,7 +6382,6 @@ msgid "Saurian Warrior"
 msgstr "Ödlekrigare"
 
 #: data/units/Saurian_Warrior.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Warriors are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6407,7 +6395,6 @@ msgstr ""
 "krigare har styrkan att dra full nytta av detta faktum."
 
 #: data/units/Sea_Hag.cfg:3
-#, fuzzy
 msgid "female^Sea Hag"
 msgstr "Sjöhagga"
 
@@ -6500,11 +6487,10 @@ msgid ""
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
 "Silvermagikerna är de mest snabbfotade och gäckande av alla magiker. De kan "
-"teleportera sig från en vänligt sinnad by till en annan. De är också mycket "
+"teleportera sig från en allierad by till en annan. De är också mycket "
 "motståndskraftiga mot alla sorters magiska attacker."
 
 #: data/units/Silver_Mage.cfg:142
-#, fuzzy
 msgid "female^Silver Mage"
 msgstr "Silvermagiker"
 
@@ -6520,6 +6506,11 @@ msgid ""
 "like nothing more than a pile of bones, but few people who thought that way "
 "lived long enough to change their minds."
 msgstr ""
+"En gång i tiden de mäktigaste av de levande varelserna har den fruktade "
+"draken blivit blott ben och senor. Lång tid efter dess död blev den uppväckt "
+"från de döda genom nekromantins mörka krafter, som den nu tjänar under. "
+"Skelettdraken ser kanske ut som en benhög, men få är de som har levt länge "
+"nog för att komma bättre tankar."
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -6793,7 +6784,6 @@ msgstr ""
 "ur sina offer och utvinner styrka ur detta."
 
 #: data/units/Vampire_Lady.cfg:3
-#, fuzzy
 msgid "female^Vampire Lady"
 msgstr "Vampyrdrottning"
 
@@ -6887,7 +6877,6 @@ msgstr ""
 "ljusbåge."
 
 #: data/units/White_Mage.cfg:65
-#, fuzzy
 msgid "female^White Mage"
 msgstr "Vit magiker"
 
@@ -7177,7 +7166,7 @@ msgstr "Bakhåll!"
 
 #: src/actions.cpp:1767
 msgid "Friendly unit sighted"
-msgstr "Vänligt sinnad trupp inom synhåll"
+msgstr "Allierad trupp inom synhåll"
 
 #: src/actions.cpp:1769
 msgid "Enemy unit sighted!"
@@ -7185,7 +7174,7 @@ msgstr "Fiendetrupp inom synhåll!"
 
 #: src/actions.cpp:1774
 msgid "$friends Friendly units sighted"
-msgstr "$friends vänligt sinnade trupper inom synhåll"
+msgstr "$friends allierade trupper inom synhåll"
 
 #: src/actions.cpp:1776
 msgid "$enemies Enemy units sighted!"
@@ -7194,8 +7183,7 @@ msgstr "$enemies fiendetrupper inom synhåll!"
 #: src/actions.cpp:1780
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
-"Trupper inom synhåll! ($friends vänligt sinnade trupper, $enemies "
-"fiendetrupper)"
+"Trupper inom synhåll! ($friends allierade trupper, $enemies fiendetrupper)"
 
 #: src/actions.cpp:1801
 msgid "(press $hotkey to continue)"
@@ -8703,15 +8691,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid "first strike"
-#~ msgstr "första slaget"
-
-#~ msgid "Swamp"
-#~ msgstr "Träsk"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "Naga"
-#~ msgstr "Naga"
