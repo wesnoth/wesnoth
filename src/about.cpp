@@ -162,6 +162,7 @@ std::vector<std::string> get_text() {
 		"-   Cédric Duval",
 		"-   Guillaume Duwelz-Rebert",
 		"-   Guillaume Melquiond (silene)",
+		"-   Jean-Luc Richard (Le Gnome)",
 		"-   DaringTremayne",
 		"-   Philippe Plantier (Ayin)",
 		"-   Tout",
