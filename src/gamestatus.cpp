@@ -103,7 +103,7 @@ gamestatus::gamestatus(config& time_cfg, int num_turns) :
 void gamestatus::write(config& cfg) const
 {
 	char buf[50];
-	sprintf(buf,"%d",turn_);
+	sprintf(buf,"%lu",turn_);
 	cfg["turn_at"] = buf;
 
 	sprintf(buf,"%d",numTurns_);
