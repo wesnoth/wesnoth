@@ -1237,11 +1237,19 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	if(u.experience() > 0 && u.can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
 		const int level = maximum<int>(u.type().level(),1);
-		const SDL_Color normal_colour = {02,153,255,0}, near_advance_colour = {255,255,255,0};
+		const SDL_Color normal_colour = {2,153,255,0}, near_advance_colour = {255,255,255,0};
 		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
 		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
 
 		draw_bar("misc/bar-energy-enemy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
+	}
+
+	if (u.can_recruit()) {
+		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
+		if(!crown.null()) {
+			SDL_Rect r = {0, 0, crown->w, crown->h};
+			blit_surface(xpos,ypos,crown,&r);
+		}
 	}
 
 	const std::vector<std::string>& overlays = it->second.overlays();
