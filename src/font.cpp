@@ -64,51 +64,75 @@ std::vector<std::string> font_names;
 
 struct text_chunk
 {
-	text_chunk(subset_id subset, const wide_string& text) : subset(subset), text(text) {};
+	text_chunk(subset_id subset, const std::string& text) : subset(subset), text(text) {};
 
 	subset_id subset;
-	wide_string text;
+	std::string text;
 };
 
 std::vector<subset_id> font_map;
 
-//Splits the text into chunks of text using the same font.
-std::vector<text_chunk> split_text(wide_string text)
-{
-	wide_string current_chunk;
-	std::vector<text_chunk> res;
+//Splits the UTF-8 text into chunks of UTF-8 text using the same font.
+//Converts UTF-8 bytes into one wchar_t at a time and gets the subset
+//id for it. The correspondending UTF-8 bytes then are appended to a 
+//chunk.
+std::vector<text_chunk> split_text(const std::string& utf8_text) {
 	bool first = true;
 	int current_font = 0;
+	std::string current_chunk;
+	std::vector<text_chunk> chunks;
+	
+	try {
+		size_t i = 0;
+		while(i < utf8_text.size()) {
+			wchar_t ch = (unsigned char)utf8_text[i];
+			const int num_bytes = byte_size_from_utf8_first(ch);
 
-	for(wide_string::const_iterator itor = text.begin(); itor != text.end(); ++itor) {
-
-		if(first) {
-			if(*itor < font_map.size() && font_map[*itor] >= 0) {
-				current_font = font_map[*itor];
-			} else {
-				current_font = 0;
+			if(i + num_bytes > utf8_text.size()) {
+				throw invalid_utf8_exception();
 			}
-			first = false;
-		}
 
-		// If the current character is outside the text map, we do not
-		// know how to do about it. So, just push it into the current
-		// chunk.
-		if(*itor >= font_map.size() || font_map[*itor] < 0) {
-			current_chunk.push_back(*itor);
-		} else if(font_map[*itor] == current_font) {
-			current_chunk.push_back(*itor);
-		} else {
-			res.push_back(text_chunk(current_font, current_chunk));
-			current_chunk.clear();
-			current_chunk.push_back(*itor);
-			current_font = font_map[*itor];
+			if(num_bytes != 1) {
+				ch &= 0xFF >> (num_bytes + 1);
+			}
+
+			for(size_t j = i + 1; j != i + num_bytes; ++j) {
+				const unsigned char ch2 = utf8_text[j];
+				if((ch2 & 0xC0) != 0x80) {
+					throw invalid_utf8_exception();
+				}
+				ch = (ch << 6) | (ch2 & 0x3F);
+			}
+			
+			if(first) {
+				if(ch < font_map.size() && font_map[ch] >= 0) {
+					current_font = font_map[ch];
+				} else {
+					current_font = 0;
+				}
+				first = false;
+			}
+			
+			if(ch >= font_map.size() || font_map[ch] < 0) {
+				current_chunk.append(utf8_text, i, num_bytes);
+			} else if(font_map[ch] == current_font) {
+				current_chunk.append(utf8_text, i, num_bytes);
+			} else {
+				chunks.push_back(text_chunk(current_font, current_chunk));
+				current_chunk.clear();
+				current_chunk.append(utf8_text, i, num_bytes);
+				current_font = font_map[ch];
+			}
+			i += num_bytes;
+		}
+		if (!current_chunk.empty()) {
+			chunks.push_back(text_chunk(current_font, current_chunk));
 		}
 	}
-	if (!current_chunk.empty()) {
-		res.push_back(text_chunk(current_font, current_chunk));
+	catch(invalid_utf8_exception e) {
+		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
 	}
-	return res;
+	return chunks;
 }
 
 TTF_Font* open_font(const std::string& fname, int size)
@@ -312,11 +336,15 @@ public:
 	text_surface(std::string const &str, int size, SDL_Color color, int style);
 	text_surface(int size, SDL_Color color, int style);
 	void set_text(std::string const &str);
-	bool operator==(text_surface const &t) const { return hash_ == t.hash_ && equal(t); }
-	bool operator!=(text_surface const &t) const { return hash_ != t.hash_ || !equal(t); }
+
+	void measure() const;
 	size_t width() const;
 	size_t height() const;
 	std::vector<surface> const & get_surfaces() const;
+
+	bool equals(text_surface const &t) const;
+	bool operator==(text_surface const &t) const { return hash_ == t.hash_ && equals(t); }
+	bool operator!=(text_surface const &t) const { return hash_ != t.hash_ || !equals(t); }
 private:
 	int hash_;
 	int font_size_;
@@ -327,8 +355,6 @@ private:
 	mutable std::vector<surface> surfs_;
 	mutable bool initialized_;
 	void hash();
-	void measure() const;
-	bool equal(text_surface const &t) const;
 };
 
 text_surface::text_surface(std::string const &str, int size, SDL_Color color, int style)
@@ -345,6 +371,7 @@ text_surface::text_surface(int size, SDL_Color color, int style)
 void text_surface::set_text(std::string const &str)
 {
 	str_ = str;
+	initialized_ = false;
 	hash();
 }
 
@@ -356,10 +383,10 @@ void text_surface::hash()
 	hash_ = h;
 }
 
-bool text_surface::equal(text_surface const &t) const
+bool text_surface::equals(text_surface const &t) const
 {
 	return font_size_ == t.font_size_
-		&& color_.r == t.color_.r && color_.g == t.color_.g && color_.b == t.color_.b
+		&& color_ == t.color_
 		&& style_ == t.style_
 		&& str_ == t.str_;
 }
@@ -369,8 +396,7 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 	
-	wide_string ws = string_to_wstring(str_);
-	std::vector<text_chunk> substrings = split_text(ws);
+	std::vector<text_chunk> substrings = split_text(str_);
 
 	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
 			itor != substrings.end(); ++itor) {
@@ -380,19 +406,10 @@ void text_surface::measure() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		//Convert the wide_string into something usable by sdl_ttf.
-		//This is pretty ugly.
-		util::scoped_array<Uint16> text(new Uint16[itor->text.size() + 1]);
-		wide_string::const_iterator c = itor->text.begin();
-		int i;
-		for(i = 0; c != itor->text.end(); ++c, ++i)
-			text[i] = *c;
-		text[i] = 0;
-
 		int w;
 		int h;
 
-		TTF_SizeUNICODE(ttfont, text, &w, &h);
+		TTF_SizeUTF8(ttfont, itor->text.c_str(), &w, &h);
 		w_ += w;
 		h_ = maximum<int>(h_, h);
 	}
@@ -424,8 +441,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	wide_string ws = string_to_wstring(str_);
-	std::vector<text_chunk> substrings = split_text(ws);
+	std::vector<text_chunk> substrings = split_text(str_);
 
 	for(std::vector<text_chunk>::const_iterator itor = substrings.begin(); 
 			itor != substrings.end(); ++itor) {
@@ -434,16 +450,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 
-		//Convert the wide_string into something usable by sdl_ttf.
-		//This is pretty ugly.
-		util::scoped_array<Uint16> text(new Uint16[itor->text.size() + 1]);
-		wide_string::const_iterator c = itor->text.begin();
-		int i;
-		for(i = 0; c != itor->text.end(); ++c, ++i)
-			text[i] = *c;
-		text[i] = 0;
-
-		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, text, color_));
+		surface s = surface(TTF_RenderUTF8_Blended(ttfont, itor->text.c_str(), color_));
 		if(!s.null())
 			surfs_.push_back(s);
 	}

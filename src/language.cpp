@@ -209,9 +209,6 @@ const language_def& get_locale()
 	return known_languages[0];
 }
 
-class invalid_utf8_exception : public std::exception {
-};
-
 namespace 
 {
 std::string wstring_to_utf8(const wide_string &src)
@@ -265,28 +262,6 @@ std::string wstring_to_utf8(const wide_string &src)
 	}
 }
 
-int byte_size_from_utf8_first(unsigned char ch)
-{
-	int count;
-
-	if ((ch & 0x80) == 0)
-		count = 1;
-	else if ((ch & 0xE0) == 0xC0)
-		count = 2;
-	else if ((ch & 0xF0) == 0xE0)
-		count = 3;
-	else if ((ch & 0xF8) == 0xF0)
-		count = 4;
-	else if ((ch & 0xFC) == 0xF8)
-		count = 5;
-	else if ((ch & 0xFE) == 0xFC)
-		count = 6;
-	else
-		throw invalid_utf8_exception(); /* stop on invalid characters */
-
-	return count;
-}
-	
 wide_string utf8_to_wstring(const std::string &src)
 {
 	wide_string ret;	
@@ -325,6 +300,28 @@ wide_string utf8_to_wstring(const std::string &src)
 	return ret;
 }
 
+}
+
+int byte_size_from_utf8_first(unsigned char ch)
+{
+	int count;
+
+	if ((ch & 0x80) == 0)
+		count = 1;
+	else if ((ch & 0xE0) == 0xC0)
+		count = 2;
+	else if ((ch & 0xF0) == 0xE0)
+		count = 3;
+	else if ((ch & 0xF8) == 0xF0)
+		count = 4;
+	else if ((ch & 0xFC) == 0xF8)
+		count = 5;
+	else if ((ch & 0xFE) == 0xFC)
+		count = 6;
+	else
+		throw invalid_utf8_exception(); /* stop on invalid characters */
+
+	return count;
 }
 
 std::vector<std::string> split_utf8_string(const std::string &src)
