@@ -43,6 +43,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	const preferences::display_manager disp_manager(&disp);
 	const hotkey::basic_handler key_handler(&disp);
 	const video_change_detector disp_change_detector(disp.video());
+	const tooltips::manager tooltips_manager(disp);
 
 	CKey key;
 
@@ -266,6 +267,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+			tooltips::process(mousex,mousey,left_button);
 
 			if(dlg != NULL) {
 				const RESULT res = dlg->process();

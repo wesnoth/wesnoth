@@ -379,6 +379,9 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	if(map_changed) {
 		generator_.assign(NULL);
 
+		SDL_Rect minimap_rect = minimap_restorer_.area();
+		tooltips::clear_tooltips(minimap_rect);
+
 		const size_t select = size_t(maps_menu_->selection());
 
 		if(select < user_maps_.size()) {
@@ -406,6 +409,10 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 				//if the map should be randomly generated
 				if(scenario_data_["map_generation"] != "") {
 					generator_.assign(create_map_generator(scenario_data_["map_generation"],scenario_data_.child("generator")));
+				}
+
+				if(scenario_data_["description"].empty() == false) {
+					tooltips::add_tooltip(minimap_rect,scenario_data_["description"]);
 				}
 			}
 		} else {
