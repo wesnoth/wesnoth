@@ -88,10 +88,16 @@ RESULT enter(display& disp, config& game_data)
 			std::string name = (**i.first)["name"];
 			if(name.size() > 30)
 				name.resize(30);
+
 			users.push_back(name);
 		}
 
-		assert(users.empty() == false);
+		std::cerr << "have " << users.size() << " users\n";
+
+		if(users.empty()) {
+			std::cerr << "ERROR: empty user list received\n";
+			users.push_back("error");
+		}
 
 		gui::menu users_menu(disp,users);
 

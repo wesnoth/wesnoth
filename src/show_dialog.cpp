@@ -688,6 +688,7 @@ namespace gui {
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num)
 {
+	cfg.clear();
 	for(;;) {
 		const std::pair<int,int> stats = network::current_transfer_stats();
 		std::stringstream str;

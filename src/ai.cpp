@@ -295,7 +295,11 @@ void ai::do_move()
 		return;
 	}
 
-	move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	const bool met_invisible_unit = move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	if(met_invisible_unit) {
+		do_move();
+		return;
+	}
 
 	//recruitment phase and leader movement phase
 	if(leader != units_.end()) {
@@ -596,7 +600,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 	return false;
 }
 
-void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	std::cerr << "finding targets...\n";
 	std::vector<target> targets;
@@ -606,7 +610,7 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 			targets.insert(targets.end(),additional_targets_.begin(),
 			                             additional_targets_.end());
 			if(targets.empty()) {
-				return;
+				return false;
 			}
 		}
 
@@ -645,8 +649,14 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
+		//we didn't arrive at our intended destination. We return true, meaning that
+		//the AI algorithm should be recalculated from the start.
+		if(arrived_at != move.second) {
+			return true;
+		}
+
 		//if we're going to attack someone
-		if(weapon != -1 && arrived_at == move.second) {
+		if(weapon != -1) {
 
 			const location& attacker = move.second;
 				
@@ -675,6 +685,8 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		std::pair<Itor,Itor> del = dstsrc.equal_range(arrived_at);
 		dstsrc.erase(del.first,del.second);
 	}
+
+	return false;
 }
 
 void ai::do_recruitment()

@@ -178,8 +178,6 @@ void server::run()
 						continue;
 					}
 
-					std::cerr << "data to game: " << data.write() << "\n";
-
 					//if this is data describing the level for a game
 					if(data.child("side") != NULL) {
 
@@ -254,6 +252,8 @@ void server::run()
 							games_.erase(g);
 						}
 
+						std::cerr << "sending quitting player game list: " << initial_response_.get_children("user").size() << "\n";
+						std::cerr << initial_response_.write() << "\n";
 						//send the player who has quit the new game list
 						network::send_data(initial_response_,sock);
 
