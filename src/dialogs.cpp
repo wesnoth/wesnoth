@@ -247,8 +247,7 @@ public:
 	                  const std::vector<save_info>& info, const std::vector<config*>& summaries)
 		: gui::preview_pane(disp), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
 	{
-		set_width(200);
-		set_height(400);
+		set_measurements(200, 400);
 	}
 
 	void draw_contents();
@@ -279,8 +278,9 @@ void save_preview_pane::draw_contents()
 
 	surface const screen = disp().video().getSurface();
 
-	const SDL_Rect area = { location().x+save_preview_border, location().y+save_preview_border,
-	                        location().w-save_preview_border*2, location().h-save_preview_border*2 };
+	SDL_Rect const &loc = location();
+	const SDL_Rect area = { loc.x + save_preview_border, loc.y + save_preview_border,
+	                        loc.w - save_preview_border * 2, loc.h - save_preview_border * 2 };
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
@@ -539,10 +539,6 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 
 
 namespace {
-	static const SDL_Rect unit_preview_size = {-font::relative_size(200),-font::relative_size(370),
-						   font::relative_size(200),font::relative_size(370)};
-	static const SDL_Rect weaponless_unit_preview_size = {-font::relative_size(190),-font::relative_size(140),
-							      font::relative_size(190),font::relative_size(140)};
 	static const int unit_preview_border = 10;
 }
 
@@ -551,7 +547,9 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
-	set_location(weapons_ ? unit_preview_size : weaponless_unit_preview_size);
+	unsigned w = font::relative_size(weapons_ ? 200 : 190);
+	unsigned h = font::relative_size(weapons_ ? 370 : 140);
+	set_measurements(w, h);
 	unit_store_.push_back(u);
 }
 
@@ -560,7 +558,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const st
 										  map_(map), units_(&units), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
-	set_location(unit_preview_size);
+	set_measurements(font::relative_size(200), font::relative_size(370));
 }
 
 bool unit_preview_pane::show_above() const
@@ -597,8 +595,9 @@ void unit_preview_pane::draw_contents()
 
 	surface const screen = disp().video().getSurface();
 
-	const SDL_Rect area = { location().x+unit_preview_border, location().y+unit_preview_border,
-	                        location().w-unit_preview_border*2, location().h-unit_preview_border*2 };
+	SDL_Rect const &loc = location();
+	const SDL_Rect area = { loc.x + unit_preview_border, loc.y + unit_preview_border,
+	                        loc.w - unit_preview_border * 2, loc.h - unit_preview_border * 2 };
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
@@ -738,8 +737,7 @@ namespace {
 
 campaign_preview_pane::campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(disp),descriptions_(desc),index_(0)
 {
-	set_width(350);
-	set_height(400);
+	set_measurements(350, 400);
 }
 
 bool campaign_preview_pane::show_above() const { return false; }
