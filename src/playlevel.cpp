@@ -267,6 +267,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					       << finishing_bonus_per_turn
 						   << " " << string_table["per_turn"] << "\n"
 					       << string_table["turns_finished_early"] << ": "
+					       << turns_left << "\n"
 					       << string_table["bonus"] << ": "
 						   << finishing_bonus << "\n"
 					       << string_table["gold"] << ": "
