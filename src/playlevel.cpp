@@ -210,7 +210,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 	const teams_manager team_manager(teams);
 
-	const config* const theme_cfg = game_config.find_child("theme","name",preferences::theme());
+	const config* theme_cfg = NULL;
+	if((*level)["theme"] != "") {
+		theme_cfg = game_config.find_child("theme","name",(*level)["theme"]);
+	}
+
+	if(theme_cfg == NULL) {
+		theme_cfg = game_config.find_child("theme","name",preferences::theme());
+	}
+
 	const config dummy_cfg;
 	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg);
 
@@ -526,6 +534,9 @@ redo_turn:
 				                 string_table["defeat_message"],
 				                 gui::OK_ONLY);
 				return DEFEAT;
+			} else if(end_level.result == CONTINUE) {
+				//basically like a victory but without all the celebrations
+				return VICTORY;
 			} else if(end_level.result == VICTORY) {
 				try {
 					game_events::fire("victory");

@@ -758,6 +758,8 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		if(result.empty() || result == "victory") {
 			const bool bonus = cfg["bonus"] == "yes";
 			throw end_level_exception(VICTORY,bonus);
+		} else if(result == "continue") {
+			throw end_level_exception(CONTINUE);
 		} else {
 			throw end_level_exception(DEFEAT);
 		}

@@ -249,7 +249,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 	}
 
-	const unit_map::iterator leader = find_leader(units,team_num);
+	unit_map::iterator leader = find_leader(units,team_num);
 
 	//no moves left, recruitment phase and leader movement phase
 	//take stock of our current set of units
@@ -270,10 +270,12 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		if(leader->first != start_pos) {
 			leader_moved = true;
 			const paths::routes_map::const_iterator itor = leader_paths.routes.find(start_pos);
-			if(itor != leader_paths.routes.end()) {
+			if(itor != leader_paths.routes.end() && units.count(start_pos) == 0) {
 				move_unit(gameinfo,disp,map,units,leader->first,start_pos,
 		                  possible_moves,teams,team_num);
-				
+
+				leader = find_leader(units,team_num);
+				assert(leader != units.end());
 			}
 		}
 
@@ -336,7 +338,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			for(std::vector<gamemap::location>::const_iterator v = villages.begin();
 			    v != villages.end(); ++v) {
 				const paths::routes_map::const_iterator itor = leader_paths.routes.find(*v);
-				if(itor == leader_paths.routes.end()) {
+				if(itor == leader_paths.routes.end() || units.count(*v) != 0) {
 					continue;
 				}
 
