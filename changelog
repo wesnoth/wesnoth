@@ -1,7 +1,7 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (22 scenarios)
  * improved user interface theme
- * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units
+ * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -40,6 +40,9 @@ CVS HEAD:
  * return can now be used to navigate through help topics and sections
  * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
  * implemented feature to tell observers when a new player has arrived in the lobby
+ * prohibited observers from setting labels
+ * limited maximum lenght of observer messages
+ * made it so variables can be used to set the number of turns in a game
  * language fixes and polishing (english)
  * updated translations:
    * catalan
@@ -70,6 +73,11 @@ CVS HEAD:
  * fixed a bug where, in some windowing environments, the colour cursor may not reappear when the user re-enters a Wesnoth window
  * fixed some duplicate units: Cavalry, Cavalryman, Scout
  * fixed 'layers' not working as intended in built terrains
+ * fixed some terrain glitches
+ * fixed graphic glitches, added a default base-terrain
+ * fixed macro errors
+ * fixed reverted castle tiles not being expanded to the border
+ * fixed edges of the map not getting cleared of shroud and fog of war
  * small fixes to unit display in help browser
  * deleted duplicate battleworld.cg
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
@@ -85,13 +93,15 @@ CVS HEAD:
  * removed an obsolete feature in terrain graphics engine that was never used
  * removing commented-out obsolete code in display.cpp
  * optimizing halo movement when unit moves
- * adding animated.hpp, and the animated<T> template.
+ * added animated.hpp, and the animated<T> template.
  * added proper support for animated time-of-day alternative images
  * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
  * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
  * inlining some stuff for performance reasons
  * optimizing invalide_all redraws
- * adding support for animated terrain images
+ * added support for animated terrain images
+ * added support for animated flags on villages
+ * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers.
  * ran pngcrush on images
  * concentrate all version and server changes for release-time on top of configure.ac
 
