@@ -9,7 +9,7 @@ Version 0.8.5:
    * attack icons
    * unit images and animation frames
    * teleportation animations
- * tutorial update
+ * tutorial updates
  * scenario balancing for 'Heir to the Throne' campaign
    * Return to Wesnoth
  * scenario balancing for 'The Rise of Wesnoth' campaign
@@ -57,6 +57,9 @@ Version 0.8.5:
    * slovak
    * spanish
    * swedish
+ * AI improvements
+   * less inclined to attack after moving
+   * more inclined to make risk-free attacks
  * multiplayer improvements
    * added increments to sliders
    * allowed choosing your leader
@@ -104,11 +107,13 @@ Version 0.8.5:
  * added a way to specify the actual position of multi-hex tiles
  * added option to preferences file, 'unit_genders', which determines whether units with different genders should be used
  * added internationalization parameter for Mac OS X
+ * automatic computation of font sizes relatively to SIZE_NORMAL; make TINY mode really tiny to better help with UI downsizing work
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
  * enabled gamestart speedup by not unnecessarily loading campaigns
  * support for teleportation animations
- * preparations for removing obsolete units.
+ * preparations for removing obsolete units
+ * translation cleanups and improvements
  * code cleanups
 
 Version 0.8.4:
