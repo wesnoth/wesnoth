@@ -384,7 +384,7 @@ void save_preview_pane::draw()
 		str << "\n" << _("Difficulty") << ": " << string_table[summary["difficulty"]];
 	}
 
-	font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
+	font::draw_text(&disp(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
 }
 
 } //end anon namespace
@@ -637,8 +637,8 @@ void unit_preview_pane::draw()
 		std::stringstream desc;
 		desc << font::NORMAL_TEXT << u.description();
 		const std::string description = desc.str();
-		description_rect = font::text_area(description,14);
-		description_rect = font::draw_text(&disp(),area,14,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
+		description_rect = font::text_area(description,font::SIZE_NORMAL);
+		description_rect = font::draw_text(&disp(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
 	}
 
 	std::stringstream details;
@@ -716,11 +716,11 @@ void unit_preview_pane::draw()
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
 		int xpos = cur_area.x;
 		if(right_align && !weapons_) {
-			const SDL_Rect& line_area = font::text_area(*line,12);
+			const SDL_Rect& line_area = font::text_area(*line,font::SIZE_SMALL);
 			xpos = cur_area.x + cur_area.w - line_area.w;
 		}
 
-		cur_area = font::draw_text(&disp(),location(),12,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
+		cur_area = font::draw_text(&disp(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
 		cur_area.y += cur_area.h;
 	}
 }
@@ -787,12 +787,12 @@ void campaign_preview_pane::draw()
 	gui::draw_dialog_frame(area.x,area.y,area.w,area.h,disp(),style);
 
 	/* description text */
-	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,12,area.w-2*campaign_preview_border);
+	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);
 	const std::vector<std::string> lines = config::split(desc_text,'\n');
 	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y,0,0 };
 
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
-		txt_area = font::draw_text(&disp(),location(),12,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
+		txt_area = font::draw_text(&disp(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
 		txt_area.y += txt_area.h;
 	}
 

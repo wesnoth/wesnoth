@@ -1539,20 +1539,20 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		const SDL_Rect& rect = map_area();
 		std::string str(1,'x');
 		str[0] = '1' + route_.move_left;
-		const SDL_Rect& text_area = font::text_area(str,18);
+		const SDL_Rect& text_area = font::text_area(str,font::SIZE_LARGE);
 		const int x = xloc + zoom_/2 - text_area.w/2;
 		const int y = yloc + zoom_/2 - text_area.h/2;
 
 		//draw the text with a black outline
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y-1);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x-1,y+1);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x,y-1);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y-1);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x+1,y+1);
-		font::draw_text(this,rect,18,font::DARK_COLOUR,str,x,y+1);
-		font::draw_text(this,rect,18,font::YELLOW_COLOUR,str,x,y);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y-1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x-1,y+1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y-1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y-1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x+1,y+1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::DARK_COLOUR,str,x,y+1);
+		font::draw_text(this,rect,font::SIZE_LARGE,font::YELLOW_COLOUR,str,x,y);
 	}
 }
 
@@ -1824,7 +1824,7 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 	}
 
 	const SDL_Color colour = {red,green,blue,255};
-	font::add_floating_label(text,24,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
+	font::add_floating_label(text,font::SIZE_XLARGE,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
 	                         0,-2,60,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
 }
 
@@ -2139,7 +2139,7 @@ int display::set_help_string(const std::string& str)
 	font::remove_floating_label(help_string_);
 
 	const SDL_Color colour = {0x0,0x00,0x00,0x77};
-	help_string_ = font::add_floating_label(str,18,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
+	help_string_ = font::add_floating_label(str,font::SIZE_LARGE,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
 	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
 	font::move_floating_label(help_string_,0.0,-double(rect.h));
 	return help_string_;
@@ -2221,11 +2221,11 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	}
 
 	const SDL_Rect rect = map_area();
-	const int speaker_handle = font::add_floating_label(str.str(),12,speaker_colour,
+	const int speaker_handle = font::add_floating_label(str.str(),font::SIZE_SMALL,speaker_colour,
 	                                                   rect.x+chat_message_x,rect.y+ypos,
 													   0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
-	const int message_handle = font::add_floating_label(message_str.str(),12,chat_message_colour,
+	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,chat_message_colour,
 		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
 		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
@@ -2266,7 +2266,7 @@ void display::set_diagnostic(const std::string& msg)
 	}
 
 	if(msg != "") {
-		diagnostic_label_ = font::add_floating_label(msg,16,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
+		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_area());
 	}
 }
 

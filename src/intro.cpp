@@ -132,8 +132,8 @@ bool show_intro_part(display& screen, const config& part,
 	if(show_title) {
 		const SDL_Rect area = {0,0,screen.x(),screen.y()};
 		const SDL_Rect scenario_size =
-		      font::draw_text(NULL,area,24,font::NORMAL_COLOUR,scenario,0,0);
-				update_rect(font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
+		      font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
+				update_rect(font::draw_text(&screen,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
 				dstrect.x,dstrect.y - scenario_size.h - 4));
 	}
 
@@ -238,7 +238,7 @@ bool show_intro_part(display& screen, const config& part,
 					word += *k;
 				}
 				const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),
-						16,font::NORMAL_COLOUR,
+						font::SIZE_PLUS,font::NORMAL_COLOUR,
 						word,xpos,ypos,NULL,
 						false,font::NO_MARKUP);
 
@@ -252,7 +252,7 @@ bool show_intro_part(display& screen, const config& part,
 
 			// output the character
 			const SDL_Rect rect = font::draw_text(&screen,
-					screen.screen_area(),16,
+					screen.screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,*j,xpos,ypos,
 					NULL,false,font::NO_MARKUP);
 
@@ -310,7 +310,7 @@ void the_end(display& screen)
 	screen.video().flip();
 
 	const std::string text = _("The End");
-	const size_t font_size = 24;
+	const size_t font_size = font::SIZE_XLARGE;
 	
 	area = font::text_area(text,font_size);
 	area.x = screen.screen_area().w/2 - area.w/2;

@@ -173,7 +173,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	int ypos = top + gui::draw_dialog_title(left,top,&disp_,_("Create Game")).h + border_size;
 
 	//Name Entry
-	ypos += font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+	ypos += font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                        _("Name of game") + std::string(":"),xpos,ypos).h + border_size;
 	string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -188,7 +188,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	//the map selection menu goes near the middle of the dialog, to the right of
 	//the minimap
-	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+	const int map_label_height = font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                                             _("Map to play") + std::string(":"),xpos + minimap_width + border_size,ypos).h;
 
 	maps_menu_->set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
@@ -201,7 +201,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	rect.y = ypos;
 	rect.w = maximum<int>(0,right - border_size - rect.x);
 	//a font sized "12" isn't necessarily 12 pixel high.
-	rect.h = font::get_max_height(12);
+	rect.h = font::get_max_height(font::SIZE_SMALL);
 
 	turns_restorer_ = surface_restorer(&disp_.video(),rect);
 
@@ -286,7 +286,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	playernum_restorer_ = surface_restorer(&disp_.video(),player_num_rect);
 
 	SDL_Rect era_rect = {xpos,player_num_rect.y+player_num_rect.h + border_size,50,20};
-	era_rect = font::draw_text(&disp_,era_rect,12,font::GOOD_COLOUR,_("Era") + std::string(":"),
+	era_rect = font::draw_text(&disp_,era_rect,font::SIZE_SMALL,font::GOOD_COLOUR,_("Era") + std::string(":"),
 	                           era_rect.x,era_rect.y);
 	
 	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
@@ -351,7 +351,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		turns_str = _("Unlimited");
 	}
 
-	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                _("Turns") + std::string(": ") + turns_str,
 					turns_restorer_.area().x,turns_restorer_.area().y);
 
@@ -359,7 +359,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	const int village_gold = village_gold_slider_->value();
 	village_gold_restorer_.restore();
 	sprintf(buf,": %d", village_gold);
-	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                _("Village Gold") + std::string(buf),
 					village_gold_restorer_.area().x,village_gold_restorer_.area().y);
 
@@ -371,7 +371,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	sprintf(buf,": %d%%", xpmod);
 
 	const SDL_Rect& xp_rect = xp_restorer_.area();
-	font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+	font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 	                _("Experience Requirements") + std::string(buf),xp_rect.x,xp_rect.y);
 
 	bool map_changed = map_selection_ != maps_menu_->selection();
@@ -416,7 +416,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			playernum_restorer_.restore();
 			minimap_restorer_.restore();
 			const SDL_Rect& player_num_rect = playernum_restorer_.area();
-			font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+			font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 				                " Load Map ",player_num_rect.x,player_num_rect.y);
 		}
 	}
@@ -482,7 +482,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 			std::stringstream players;
 			players << _("Players") << ": " << nsides;
-			font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
+			font::draw_text(&disp_,disp_.screen_area(),font::SIZE_SMALL,font::GOOD_COLOUR,
 			                players.str(),players_rect.x,players_rect.y);
 		}
 	}
