@@ -162,8 +162,8 @@ std::pair<int,int> resolution()
 		                        maximum(atoi(y->second.c_str()),600));
 
 		//make sure resolutions are always divisible by 4
-		res.first &= ~3;
-		res.second &= ~3;
+		//res.first &= ~3;
+		//res.second &= ~3;
 		return res;
 	} else {
 		return std::pair<int,int>(1024,768);
