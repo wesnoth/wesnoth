@@ -647,7 +647,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			}
 		}
 
-		for(int n = 0; n != check_buttons.size(); ++n) {
+		for(unsigned int n = 0; n != check_buttons.size(); ++n) {
 			check_buttons[n].process(mousex,mousey,left_button);
 			check_buttons[n].draw();
 			(*options)[n].checked = check_buttons[n].checked();

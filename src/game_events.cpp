@@ -200,7 +200,7 @@ std::vector<gamemap::location> multiple_locs(const config& cfg)
 	const std::vector<std::string> xvals = config::split(cfg["x"]);
 	const std::vector<std::string> yvals = config::split(cfg["y"]);
 
-	for(int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
+	for(unsigned int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
 		const std::pair<int,int> xrange = parse_range(xvals[i]);
 		const std::pair<int,int> yrange = parse_range(yvals[i]);
 		std::cerr << "range: " << xrange.first << "-" << xrange.second << "\n";
