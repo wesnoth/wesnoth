@@ -20,6 +20,8 @@ public:
 	void write(config& res) const;
 	void read(const config& cfg);
 
+	static int get_max_chars();
+
 	const std::string& get_label(const gamemap::location& loc) const;
 	void set_label(const gamemap::location& loc, const std::string& text);
 	void clear();

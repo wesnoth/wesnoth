@@ -78,7 +78,7 @@ bool combo::process(int x, int y, bool button)
 	if(button_.process(x,y,button)) {
 		const SDL_Rect rect = button_.location();
 		set_selected(gui::show_dialog(*display_,NULL,"","",
-				                      gui::MESSAGE,&items_,NULL,"",NULL,NULL,NULL,
+				                      gui::MESSAGE,&items_,NULL,"",NULL,-1,NULL,NULL,
 									  rect.x,rect.y+rect.h));
 		
 		button_.draw();

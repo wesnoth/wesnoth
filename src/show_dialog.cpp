@@ -384,6 +384,7 @@ int show_dialog(display& disp, surface image,
 				const std::vector<preview_pane*>* preview_panes,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
+				int text_widget_max_chars,
 				dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
 				const std::string* dialog_style, std::vector<dialog_button>* action_buttons,
 				const std::string& help_topic)
@@ -420,7 +421,7 @@ int show_dialog(display& disp, surface image,
 	static const std::string default_text_string = "";
 	const unsigned int text_box_width = 350;
 	textbox text_widget(disp,text_box_width,
-	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox);
+	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox, text_widget_max_chars);
 
 	int text_widget_width = 0;
 	int text_widget_height = 0;
@@ -954,7 +955,7 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 		}
 
 		dialog_action_receive_network receiver(connection_num,cfg,stats);
-		const int res = show_dialog(disp,NULL,"",str.str(),CANCEL_ONLY,NULL,NULL,"",NULL,&receiver);
+		const int res = show_dialog(disp,NULL,"",str.str(),CANCEL_ONLY,NULL,NULL,"",NULL,-1,&receiver);
 		if(res != int(dialog_action_receive_network::CONNECTION_CONTINUING)) {
 			return receiver.result();
 		}

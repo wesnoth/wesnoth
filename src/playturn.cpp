@@ -642,9 +642,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			preview_panes.push_back(&defender_preview);
 
 			res = gui::show_dialog(gui_,NULL,_("Attack Enemy"),
-			                           _("Choose weapon")+std::string(":\n"),
-			                           gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
-									   NULL,&buttons);
+					_("Choose weapon")+std::string(":\n"),
+					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
+					NULL,&buttons);
 		}
 
 		cursor::set(cursor::NORMAL);
@@ -1040,7 +1040,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",
-	                                 gui::MESSAGE,&menu,NULL,"",NULL,NULL,NULL,xloc,yloc,&style);
+			gui::MESSAGE,&menu,NULL,"",NULL,-1,NULL,NULL,xloc,yloc,&style);
 	if(res < 0 || res >= items.size())
 		return;
 
@@ -1640,9 +1640,9 @@ void turn_info::recruit()
 		preview_panes.push_back(&unit_preview);
 
 		recruit_res = gui::show_dialog(gui_,NULL,_("Recruit"),
-		                                 _("Select unit") + std::string(":\n"),
-		                                 gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
-										 NULL,NULL,"recruit_and_recall");
+				_("Select unit") + std::string(":\n"),
+				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
+				NULL,NULL,"recruit_and_recall");
 	}
 
 	if(recruit_res != -1) {
@@ -1819,10 +1819,10 @@ void turn_info::recall()
 			preview_panes.push_back(&unit_preview);
 
 			res = gui::show_dialog(gui_,NULL,_("Recall"),
-			                       _("Select unit") + std::string(":\n"),
-			                       gui::OK_CANCEL,&options,
-			                       &preview_panes,"",NULL,
-			                       NULL,NULL,-1,-1,NULL,&buttons);
+					_("Select unit") + std::string(":\n"),
+					gui::OK_CANCEL,&options,
+					&preview_panes,"",NULL,-1,
+					NULL,NULL,-1,-1,NULL,&buttons);
 		}
 
 		if(res >= 0) {
@@ -2295,7 +2295,8 @@ void turn_info::label_terrain()
 
 	std::string label = gui_.labels().get_label(last_hex_);
 	const int res = gui::show_dialog(gui_,NULL,_("Place Label"),"",gui::OK_CANCEL,
-	                                 NULL,NULL,_("Label") + std::string(":"),&label);
+	                                 NULL,NULL,_("Label") + std::string(":"),&label,
+					 map_labels::get_max_chars());
 	if(res == 0) {
 		gui_.labels().set_label(last_hex_,label);
 		recorder.add_label(label,last_hex_);
