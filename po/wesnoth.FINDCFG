@@ -1,2 +1,3 @@
-find data -name themes -prune -o -name '*.cfg' -print
+find data -name themes -prune -o -name scenarios -prune -o -name '*.cfg' -print
+find data/scenarios/multiplayer data/scenarios/tutorial
 echo data/themes/default.cfg
