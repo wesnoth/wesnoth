@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-02 21:17+0100\n"
+"POT-Creation-Date: 2005-02-07 12:10+0100\n"
 "PO-Revision-Date: 2004-12-20 19:16+0200\n"
 "Last-Translator: Anton (Atilla) Tsigularov <theatilla@gmail.com>\n"
 "Language-Team: none\n"
@@ -1781,8 +1781,8 @@ msgid ""
 "of move points it takes each unit to move through the hex. The second "
 "property is the defense that the terrain gives units standing on it. This is "
 "a percentage which determines the unit's chance to be hit on that terrain. "
-"For example; elves have 70% defense in woods, and are therefore hit 30% of "
-"the time."
+"For example; many elves have 70% defense in woods, and are therefore hit 30% "
+"of the time."
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
@@ -6498,31 +6498,31 @@ msgstr ""
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:1721
+#: src/actions.cpp:1708
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1749
+#: src/actions.cpp:1736
 msgid "Friendly unit sighted"
 msgstr ""
 
-#: src/actions.cpp:1751
+#: src/actions.cpp:1738
 msgid "Enemy unit sighted!"
 msgstr ""
 
-#: src/actions.cpp:1756
+#: src/actions.cpp:1743
 msgid "$friends Friendly units sighted"
 msgstr ""
 
-#: src/actions.cpp:1758
+#: src/actions.cpp:1745
 msgid "$enemies Enemy units sighted!"
 msgstr ""
 
-#: src/actions.cpp:1762
+#: src/actions.cpp:1749
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
-#: src/actions.cpp:1777
+#: src/actions.cpp:1764
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -6570,7 +6570,7 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:1281
+#: src/dialogs.cpp:365 src/game.cpp:1285
 msgid "Multiplayer"
 msgstr ""
 
@@ -6666,7 +6666,7 @@ msgstr ""
 
 #: src/font.cpp:186
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Bepa-Roman.ttf"
 
 #: src/game.cpp:136
 msgid "Do you want to save a replay of this scenario?"
@@ -6680,16 +6680,16 @@ msgstr ""
 msgid "The game could not be saved"
 msgstr ""
 
-#: src/game.cpp:167 src/game.cpp:907 src/game.cpp:1316
+#: src/game.cpp:167 src/game.cpp:907 src/game.cpp:1320
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Играта бе запазена"
 
-#: src/game.cpp:170 src/game.cpp:909 src/game.cpp:1318
+#: src/game.cpp:170 src/game.cpp:909 src/game.cpp:1322
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:173 src/game.cpp:1330
+#: src/game.cpp:173 src/game.cpp:1334
 msgid "The game map could not be loaded: "
 msgstr ""
 
@@ -6787,125 +6787,125 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: src/game.cpp:1124
+#: src/game.cpp:1128
 msgid "Publish campaign: "
 msgstr ""
 
-#: src/game.cpp:1128
+#: src/game.cpp:1132
 msgid "Delete campaign: "
 msgstr ""
 
-#: src/game.cpp:1132
+#: src/game.cpp:1136
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:1136
+#: src/game.cpp:1140
 msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:1136
+#: src/game.cpp:1140
 msgid "Get Campaign"
 msgstr ""
 
-#: src/game.cpp:1155
+#: src/game.cpp:1159
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1174
+#: src/game.cpp:1178
 msgid "Campaign Installed"
 msgstr ""
 
-#: src/game.cpp:1174
+#: src/game.cpp:1178
 msgid "The campaign has been installed."
 msgstr ""
 
-#: src/game.cpp:1176
+#: src/game.cpp:1180
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1178
+#: src/game.cpp:1182
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1180
+#: src/game.cpp:1184
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1192 src/game.cpp:1231 src/game.cpp:1256
+#: src/game.cpp:1196 src/game.cpp:1235 src/game.cpp:1260
 #: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1195 src/game.cpp:1233 src/game.cpp:1258
+#: src/game.cpp:1199 src/game.cpp:1237 src/game.cpp:1262
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1199
+#: src/game.cpp:1203
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1236 src/game.cpp:1261
+#: src/game.cpp:1240 src/game.cpp:1265
 msgid "Response"
 msgstr ""
 
-#: src/game.cpp:1274
+#: src/game.cpp:1278
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:1274
+#: src/game.cpp:1278
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1275 src/multiplayer_lobby.cpp:207
+#: src/game.cpp:1279 src/multiplayer_lobby.cpp:207
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:1275
+#: src/game.cpp:1279
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:1276
+#: src/game.cpp:1280
 msgid "Host Networked Game"
 msgstr ""
 
-#: src/game.cpp:1276
+#: src/game.cpp:1280
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1281
 msgid "Hotseat Game"
 msgstr ""
 
-#: src/game.cpp:1277
+#: src/game.cpp:1281
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1278
+#: src/game.cpp:1282
 msgid "Human vs AI"
 msgstr ""
 
-#: src/game.cpp:1278
+#: src/game.cpp:1282
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1281 src/multiplayer_client.cpp:311
+#: src/game.cpp:1285 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1356
+#: src/game.cpp:1360
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1357
+#: src/game.cpp:1361
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1395
+#: src/game.cpp:1399
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1396
+#: src/game.cpp:1400
 #, fuzzy
 msgid "' (The game will now exit)"
 msgstr "Играта приключи. "
@@ -6930,7 +6930,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: src/help.cpp:1092 src/help.cpp:1093 src/unit_types.cpp:302
+#: src/help.cpp:1092 src/help.cpp:1093 src/unit_types.cpp:319
 msgid "Dmg"
 msgstr ""
 
@@ -7378,7 +7378,7 @@ msgid "Color"
 msgstr "Цвят"
 
 #: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
-#: src/playlevel.cpp:810 src/playturn.cpp:1665 src/playturn.cpp:1672
+#: src/playlevel.cpp:819 src/playturn.cpp:1665 src/playturn.cpp:1672
 msgid "Gold"
 msgstr "Злато"
 
@@ -7410,60 +7410,60 @@ msgstr "Наблюдавай игра"
 msgid "Quit"
 msgstr "Изход"
 
-#: src/playlevel.cpp:569 src/playlevel.cpp:829
+#: src/playlevel.cpp:569 src/playlevel.cpp:840
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/playlevel.cpp:733
+#: src/playlevel.cpp:725 src/playlevel.cpp:739
 msgid "Defeat"
 msgstr "Загуба"
 
-#: src/playlevel.cpp:734
+#: src/playlevel.cpp:725 src/playlevel.cpp:830
+msgid "Victory"
+msgstr "Победа"
+
+#: src/playlevel.cpp:740
 msgid "You have been defeated!"
 msgstr "Вие бяхте победени!"
 
-#: src/playlevel.cpp:800
+#: src/playlevel.cpp:809
 msgid "Remaining gold"
 msgstr "Оставащо злато"
 
-#: src/playlevel.cpp:803
+#: src/playlevel.cpp:812
 msgid "Early finish bonus"
 msgstr "Бонус за ранно завършване"
 
-#: src/playlevel.cpp:805
+#: src/playlevel.cpp:814
 msgid "per turn"
 msgstr "за ход"
 
-#: src/playlevel.cpp:806
+#: src/playlevel.cpp:815
 msgid "Turns finished early"
 msgstr "Ходове, оставащи до края"
 
-#: src/playlevel.cpp:808
+#: src/playlevel.cpp:817
 msgid "Bonus"
 msgstr "Бонус"
 
-#: src/playlevel.cpp:815
+#: src/playlevel.cpp:824
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% от златото се запазва за следващата карта"
 
-#: src/playlevel.cpp:815
+#: src/playlevel.cpp:825
 msgid "Retained Gold"
 msgstr "Запазено злато"
 
-#: src/playlevel.cpp:819
-msgid "Victory"
-msgstr "Победа"
-
-#: src/playlevel.cpp:820
+#: src/playlevel.cpp:831
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
-#: src/playlevel.cpp:823
+#: src/playlevel.cpp:834
 msgid "Scenario Report"
 msgstr ""
 
-#: src/playlevel.cpp:844
+#: src/playlevel.cpp:855
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7797,31 +7797,31 @@ msgstr "Помощ"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
-msgstr "TitleScreen button^Ръководство"
+msgstr "Ръководство"
 
 #: src/titlescreen.cpp:183
 msgid "TitleScreen button^Campaign"
-msgstr "TitleScreen button^Кампании"
+msgstr "Кампании"
 
 #: src/titlescreen.cpp:184
 msgid "TitleScreen button^Multiplayer"
-msgstr "TitleScreen button^Мултиплейър"
+msgstr "Мултиплейър"
 
 #: src/titlescreen.cpp:185
 msgid "TitleScreen button^Load"
-msgstr "TitleScreen button^Зареди игра"
+msgstr "Зареди игра"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Language"
-msgstr "TitleScreen button^Език"
+msgstr "Език"
 
 #: src/titlescreen.cpp:187
 msgid "TitleScreen button^Preferences"
-msgstr "TitleScreen button^Настройки"
+msgstr "Настройки"
 
 #: src/titlescreen.cpp:189
 msgid "TitleScreen button^Quit"
-msgstr "TitleScreen button^Изход"
+msgstr "Изход"
 
 #: src/titlescreen.cpp:190
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -7865,19 +7865,19 @@ msgstr "Още"
 msgid "-- The Tome of Wesnoth"
 msgstr "Книгата на Уестнот"
 
-#: src/unit_types.cpp:314
+#: src/unit_types.cpp:331
 msgid "strikes"
 msgstr "Удари"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:906
 msgid "chaotic"
 msgstr "хаотичен/хаотична"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:906
 msgid "lawful"
 msgstr "праведен/праведна"
 
-#: src/unit_types.cpp:889
+#: src/unit_types.cpp:906
 msgid "neutral"
 msgstr "неутрален/неутрална"
 
