@@ -1,5 +1,3 @@
-# translation of smart-sl.po to 
-# translation of delme.po to
 # #-#-#-#-#  wesnoth.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Slovenian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
@@ -54,7 +52,7 @@ msgstr "Igra"
 
 #: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2104
 msgid "Traits"
-msgstr "Lastnosti"
+msgstr "Značilnosti"
 
 #: data/help.cfg:28 src/playturn.cpp:1669
 msgid "Units"
@@ -70,7 +68,7 @@ msgstr "Posebnosti orožij"
 
 #: data/help.cfg:47
 msgid "Terrains"
-msgstr "Tereni"
+msgstr "Vrste terena"
 
 #: data/help.cfg:54
 msgid ""
@@ -90,10 +88,18 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
+"\n"
+"\n"
+"Battle for Wesnoth je fantazijska potezna strategija, ki je rahlo drugačna "
+"od drugih modernih strategij. Medtem ko si druge igre prizadevajo za "
+"zapletenost pravil in igranja, si Battle for Wesnoth prizadeva za njuno "
+"preprostost. To pa igre ne naredi preproste - njena preprosta pravila "
+"omogočajo cel kup strategij, kar jo naredi lahko priučljivo, a težko za "
+"zaobvladati."
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Osnove igranja"
 
 #: data/help.cfg:68
 msgid ""
@@ -105,6 +111,12 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Ta stran vsebuje splošen pregled vsega, kar potrebujete za igranje Battle "
+"for Wesnoth. Pokriva razlago igre in njene osnovne mehanizme. Za več "
+"podatkov kako jo zaobvladati, pa si pomagajte z <ref>dst=basic_strategy "
+"text='Osnovno strategijo'</ref> in <ref>dst=multiplayer_strategy "
+"text='Večigralsko strategijo'</ref>. Ne pozabite, da je to samo izvleček - "
+"za izjeme in posebne situacije, prosimo sledite predlaganim povezavam."
 
 #: data/help.cfg:70
 msgid ""
@@ -117,6 +129,15 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Za začetek je najbolje, da v glavnem meniju kliknete na gumb "
+"<italic>text=Vodič</italic>. Ta vas bo popeljal do interaktivnega vodiča, ki "
+"vas bo naučil osnov Wesnotha. Potem vam predlagamo, da začnete z igranjem "
+"kampanje Prestolonaslednik - kliknite na <italic>text=Kampanje</italic> in "
+"potem še na <italic>text='Prestolonaslednik'</italic>. Ker zna biti Battle "
+"for Wesnoth kar zahteven, bo najbolje, da začnete na <italic>text=Lahki</"
+"italic> težavnostni stopnji."
 
 #: data/help.cfg:73
 msgid ""
@@ -124,10 +145,14 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Zapomnite si, da med igranjem lahko izveste več o postavkah v desnem "
+"menijskem stolpcu, če čeznje zapeljete z miško. Pokazal se bo oblaček s "
+"kratko razlago. To je še posebej koristno, ko se prvič srečate z novimi "
+"sposobnostmi in značilnostmi."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Novačenje in priklic enot"
 
 #: data/help.cfg:79
 msgid ""
@@ -140,6 +165,13 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Na začetku in med vsakim bojem, boste morali novačiti enote v svojo vojsko. "
+"Za začetek mora biti vodja (Konrad v kampanji Prestolonaslednik) v trdnjavi. "
+"Potem lahko novačite, tako da izberete Novači iz menija ali pa z desnim "
+"klikom na željeno ploščo in izbiro <italic>text=Novači</italic>. Prikazal se "
+"bo zaslon s seznamom enot na voljo za novačenje, skupaj z njihovo ceno v "
+"zlatu. S klikom na enoto se bodo na levi prikazale njene statistike, s "
+"pritiskom na gumb Novači pa jo boste ..."
 
 #: data/help.cfg:81
 msgid ""
@@ -150,6 +182,13 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Če ste enoto novačili preko pojavnega menija, se bo ta pojavila na tisti "
+"plošči, kjer ste desno-kliknili. Drugače se bo pojavila v poljubnem prosti "
+"plošči zraven trdnjave. Novačite lahko samo toliko enot, kolikor je prostih "
+"plošč v gradu (okoli trdnjave) in porabite lahko samo toliko zlata, kolikor "
+"ga imate."
 
 #: data/help.cfg:83
 msgid ""
@@ -158,6 +197,10 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Nove enote imajo dve naključni <ref>dst=traits text=Značilnosti</ref>, ki "
+"spremenijo njihove statistike."
 
 #: data/help.cfg:85
 msgid ""
@@ -168,6 +211,11 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"V kasnejših scenarijih boste lahko tudi priklicali preživele iz prejšnjih "
+"bitk. Priklicovanje deluje tako kot novačenje, samo da vedno stane 20 kosov "
+"zlata in da se seznam napolni s preživelimi enotami iz prejšnjih scenarijev."
 
 #: data/help.cfg:87
 msgid ""
@@ -177,6 +225,11 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Ne pozabite da enote ne stanejo le toliko zlata kolikor ga je potrebno za "
+"njihovo novačenje ali priklic, ampak potrebujejo tudi plače. Za več podatkov "
+"si poglejte <ref>dst=income_and_upkeep text='Prihodki in Plače'</ref>."
 
 #: data/help.cfg:92 src/help.cpp:1196 src/help.cpp:1197
 msgid "Movement"
@@ -191,6 +244,12 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Premikanje v Battle for Wesnoth je preprosto: samo kliknite na enoto, ki jo "
+"želite premakniti in potem še na ploščo kamor hočete da gre. Ko je enota "
+"izbrana, bodo vse plošče, kamor lahko gre, osvetljene, vsi ostale pa motne. "
+"Če miško premaknete na motno ploščo, se bo prikazalo število potrebnih "
+"potez, da jo enota doseže. Ob kliku se bo enota začela premikati proti njej "
+"po najhitrejši poti."
 
 #: data/help.cfg:95
 msgid ""
@@ -206,6 +265,16 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Vsaka enota ima določeno število gibalnih točk, ki se porabljajo ob "
+"premikanju v novo ploščo, odvisno od vrste <ref>dst=terrain text=Terena</"
+"ref> tiste plošče. Na primer, za prehod v stepo je skoraj vedno potrebna "
+"samo ena gibalna točka. Točno število porabljenih točk za določen prehod je "
+"odvisno od tipa enote - v gozdu Vilini porabijo samo eno točko, večina ljudi "
+"in orkov dve, konjeniki celo tri. To točno porabo lahko izveste, če desno-"
+"kliknete na enoto, izberete Opis Enote in si potem pogledate "
+"<italic>text='Terenske Prikrojevalce'</italic>."
 
 #: data/help.cfg:97
 msgid ""
@@ -218,6 +287,14 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Še ena zadeva, ki je ne smemo pozabiti so <ref>dst=zones_of_control "
+"text='Območja Nadzora'</ref>. Vsaka enota ustvarja območje nadzora v vseh "
+"šest okoliških ploščah in vsak sovražnik, ki v njega vstopi, takoj konča "
+"svoje premikanje. Priučitev, kako območja nadzora uporabiti v svoj prid, je "
+"pomemben del Wesnotha, ker jih lahko kršijo samo <ref>dst=ability_skirmish "
+"text='Izogibalci'</ref>."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -232,6 +309,12 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"V Battle for Wesnoth sta dve vrsti bojev, na blizu in na daljavo, ampak obe "
+"potekata med enotami, ki so v sosednjih ploščah. V boj na blizu so ponavadi "
+"vpletena orožja kot so meč, sekira ali čekani, medtem ko so v boju na "
+"daljavo ponavadi vpleteni lok, kopje in ognjena krogla. Boj je relativno "
+"enostaven; napadalec in branitelj si izmenjujeta napade, dokler oba ne "
+"porabita njunega dodeljenega števila napadov."
 
 #: data/help.cfg:105
 msgid ""
@@ -239,6 +322,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Vrstni red in števlo napadov'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -250,6 +336,13 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"Napadalec izvede prvi napad, sledi mu branitelj. To se ponavlja, dokler oba "
+"ne porabita svojega števila napadov. Število napadov je različno od enote do "
+"enote. Na primer, Vilinski Bojevnik s 5-4 mečem, lahko štirikrat zamahne "
+"(vsak zamah naredi 5 škode), medtem ko Orkovski Grobijan z 9-2 dobi samo 2 "
+"zamaha (vsak po 9 škode)."
 
 #: data/help.cfg:109
 msgid ""
@@ -257,6 +350,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Verjetnost zadetka'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -270,6 +366,15 @@ msgid ""
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Z dvema izjemama je verjetnost da zadenete enoto odvisna samo od njene "
+"obrambne statistike na <ref>dst=terrain text=Terenu</ref> kjer trenutno je. "
+"To lahko najdete, tako da desno-kliknete na enoto, izberete Opis Enote in "
+"potem pogledate <italic>text='Terenske Prikrojevalce'</italic>. Na primer, "
+"vilini imajo 60% obrambo v gozdu, kar pomeni, da ima enota, ki jih napada, "
+"le 40% možnosti, da jih zadane. Obratno, vilinčeva možnost da zadane "
+"napadalca nazaj, je odvisna na katerem terenu stoji napadalec."
 
 #: data/help.cfg:112
 msgid ""
@@ -280,6 +385,12 @@ msgid ""
 "terrain, and, when used offensively, Marksmen always have at least a 60% "
 "chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"Obstajata dve izjemi temu pravilu: <ref>dst=magical_attacks text='Čarobni "
+"napadi'</ref> in <ref>dst=ability_marksman text=Ostrostrelci</ref>. Čarobni "
+"napadi imajo vedno 70% možnost  da zadanejo, neglede na teren. Podobno imajo "
+"ostrostrelci, kadar napadajo, vedno vsaj 60% možnost da zadanejo, neglede na "
+"teren."
 
 #: data/help.cfg:114
 msgid ""
@@ -287,6 +398,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Škoda</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -299,6 +413,13 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Vsak zadetek povzroči nekaj škode, glede na tip napada. Na primer, Vilinski "
+"Bojevnik, s 5-4 ostrim napadom, povzroči 5 škode kot osnovo. Na dejansko "
+"škodo ponavadi vplivata dva dejavnika: <ref>dst=damage_types_and_resistance "
+"text=Odpornost</ref> in <ref>dst=time_of_day text='Čas dneva'</ref>, ki sta "
+"oba razložena v nadaljevanju."
 
 #: data/help.cfg:118
 msgid ""
@@ -309,10 +430,15 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Nekatere enote imajo posebne sposobnosti, ki vplivajo na povzročeno škodo. "
+"Najbolj pogosta je <ref>dst=ability_charge text=Naskok</ref>, ki podvoji "
+"povzročeno škodo napadalca in branilca, kadar napadalec naskakuje."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Vrste škode in odpornosti"
 
 #: data/help.cfg:124
 msgid ""
@@ -322,6 +448,11 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"V igri Wesnoth so trije tipi škode, ki so ponavadi povezani s fizičnimi "
+"napadi: oster, koničast in top. Potem so še trije tipi škode, ki pa so "
+"ponavadi povezani s čarobnimi napadi: ognjen, mrzel in svet. Različne enote "
+"imajo lahko odpornosti, ki spremenijo končno količino škode, ki jo prejmejo "
+"od določenega tipa škode."
 
 #: data/help.cfg:126
 msgid ""
@@ -333,6 +464,12 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Odpornost deluje povsem preprosto: če ima enota 40% odpornosti na določen "
+"tip škode, je bo utrpela 40% manj, če bo zadeta s tistim tipom. Enote imajo "
+"lahko tudi slabosti; če ima enota -100% odpornost na določen tip škode, je "
+"bo utrpela 100% več, če bo zadeta s tistim tipom."
 
 #: data/help.cfg:128
 msgid ""
@@ -342,14 +479,18 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Za primer, Okostnjaki so zelo odporni na ostro in koničasto škodo, a so "
+"ranljivi za topo in ognjeno ter izjemno ranljivi za sveto škodo."
 
 #: data/help.cfg:133
 msgid "Time of Day"
-msgstr ""
+msgstr "Čas dneva"
 
 #: data/help.cfg:138 data/schedules.cfg:5
 msgid "Dawn"
-msgstr ""
+msgstr "Zora"
 
 #: data/help.cfg:138
 msgid ""
@@ -360,6 +501,11 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Igre ponavadi potekajo v rednih krogih dneva in noči. Trenutni čas dneva "
+"lahko odčitate pod mini-karto, na zgornji desni.\n"
+"\n"
+"Običajen dnevno-nočni krog:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -378,17 +524,19 @@ msgstr "Mrak"
 
 #: data/help.cfg:142 data/schedules.cfg:79
 msgid "First Watch"
-msgstr ""
+msgstr "Prva Straža"
 
 #: data/help.cfg:143 data/schedules.cfg:101
 msgid "Second Watch"
-msgstr ""
+msgstr "Druga Straža"
 
 #: data/help.cfg:145
 msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Jutro in popoldne štejeta kot dan, Prva in Druga Straža pa kot noč."
 
 #: data/help.cfg:151
 msgid ""
@@ -400,16 +548,25 @@ msgid ""
 "Chaotic units get +25% damage at night, and -25% in daytime.\n"
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"\n"
+"\n"
+"Čas dneva vpliva na določene enote, kot sledi:\n"
+"\n"
+"Zakonite enote dobijo podnevi bonus +25% k zadani škodi in -25% ponoči.\n"
+"Kaotične enote dobijo ponoči bonus +25% k zadani škodi in -25% podnevi.\n"
+"Nevtralne enote delujejo neodvisno od časa dneva."
 
 #: data/help.cfg:154
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Ne pozabite, de se nekateri scenariji odvijajo v podzemlju, kjer je večna "
+"tema!"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Izkušnje in napredovanja"
 
 #: data/help.cfg:160
 msgid ""
@@ -418,6 +575,10 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Če obe enoti preživita boj, potem obe dobita nekaj izkustvenih točk, toliko "
+"kolikšna je izkustvena stopnja drugega borca. Če pa enota ubije drugo enoto, "
+"dobi dosti več izkušenj - 4 za enoto na stopnji 0, 8 za enoto na stopnji 1, "
+"16 za enoto na stopnji 2, 24 za enoto na stopnji 3 ..."
 
 #: data/help.cfg:162
 msgid ""
@@ -428,6 +589,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Enote potrebujejo določeno število izkušenjskih točk, da lahko napredujejo "
+"(20% manj za enote z značilnostjo pameten). Ko jih pridobijoo, takoj "
+"napredujejo na naslednjo stopnjo in se hkrati še docela pozdravijo. V "
+"nekaterih primerih boste imeli možnost izbire v kaj naj enota napreduje."
 
 #: data/help.cfg:164
 msgid ""
@@ -436,10 +603,14 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
+"\n"
+"\n"
+"Ne pozabite, da ima večina enot tri izkušenjske stopnje, a ne vse - nekatere "
+"jih imajo več (npr. <ref>dst=unit_mage text=Čarovniki</ref>), redke pa manj."
 
 #: data/help.cfg:169
 msgid "Healing"
-msgstr ""
+msgstr "Zdravljenje"
 
 #: data/help.cfg:170
 msgid ""
@@ -447,6 +618,9 @@ msgid ""
 "ways for your units to heal, all of which take place at the beginning of "
 "your turn, before you take action."
 msgstr ""
+"V boju bodo vaše enote slej ko prej utrpele poškodbe. Wesnoth omogoča več "
+"načinov zdravljenja vaših enot, od katerih se vsi zgodijo na začetku vaše "
+"poteze, preden karkoli ukrenete."
 
 #: data/help.cfg:172
 msgid ""
@@ -455,12 +629,18 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Počivanje: Enota, ki se niti ne premakne niti ne napade, se bo v naslednji "
+"potezi pozdravila za 2HP."
 
 #: data/help.cfg:173
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Vasi: Enota, ki začne svojo potezo v vasi, se bo pozdravila za 8HP."
 
 #: data/help.cfg:174
 msgid ""
@@ -468,6 +648,9 @@ msgid ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst=ability_regeneration text=Regeneracija</ref>: Določene enote (na "
+"primer troli) se bodo vsako potezo samodejno pozdravile za 8HP."
 
 #: data/help.cfg:175
 msgid ""
@@ -477,6 +660,11 @@ msgid ""
 "turn, to a total maximum of 8 points healed, or prevent Poison from dealing "
 "damage."
 msgstr ""
+"\n"
+"Ranocelniki: Enota s sposobnostjo <ref>dst=ability_heals text=Celi rane</"
+"ref>  bo vsako potezo pozdravila vse prijateljske enote v svoji neposredni "
+"bližini (6 plošč) za 4HP (skupaj največ 8HP), ali preprečila, da jim škodi "
+"strup."
 
 #: data/help.cfg:177
 msgid ""
@@ -486,6 +674,11 @@ msgid ""
 "will heal all friendly units immediately beside them for 8HP each turn, to a "
 "total maximum of 18 points healed, or cure a unit of Poison."
 msgstr ""
+"\n"
+"\n"
+"Zdravniki: Enota s sposobnostjo <ref>dst=ability_cures text=Zdravi</ref>  bo "
+"vsako potezo pozdravila vse prijateljske enote v svoji neposredni bližini (6 "
+"plošč) za 8HP (skupaj največ 18HP), ali pa jih ozdravila strupa."
 
 #: data/help.cfg:179
 msgid ""
@@ -495,10 +688,15 @@ msgid ""
 "villages, regeneration, and healing/curing cannot combine with each other. "
 "Also, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Ne pozabite, da medtem ko se počivanje sicer lahko kombinira z ostalimi "
+"oblikami zdravljenja, se vplivi vasi, regeneracije in celjenja ran ne "
+"seštevajo. Poleg tega se vse enote med scenariji popolnoma pozdravijo."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Prihodki in plače"
 
 #: data/help.cfg:185
 msgid ""
@@ -507,6 +705,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"V Wesnothu ni dovolj da samo zberete enote in se spopadete. Paziti morate "
+"tudi na količino zlata, še posebej v kampanjah, kjer se zlato prenaša med "
+"scenariji. Glede tega sta pomembni dve stvari; prihodki in plače."
 
 #: data/help.cfg:187
 msgid ""
@@ -517,6 +718,12 @@ msgid ""
 "Unfortunately, your Upkeep costs are subtracted from this income, as "
 "detailed below."
 msgstr ""
+"\n"
+"\n"
+"S prihodki je preprosto. Za vsako vas pod vašim nadzorom boste dobili en kos "
+"zlata na potezo. Torej, če imate deset vasi, bi ponavadi dobili deset kosov "
+"zlata. Na žalost so od teh prihodkov odštete plače, kar je opisano v "
+"nadaljevanju."
 
 #: data/help.cfg:189
 msgid ""
@@ -529,6 +736,14 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold a turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"S plačami je tudi precej preprosto. Vsaka enota potrebuje toliko plače, na "
+"kolikšni izkustveni stopnji je. Zastonj lahko podpirate toliko "
+"<italic>text=stopenj</italic> enot, kolikor vasi imate. Toda, za vsako "
+"stopnjo čez to mejo, morate plačati en kos zlata na potezo. Na primer, če "
+"imate dvanajst prvo-stopenjskih enot in deset vasi, boste morali plačati dva "
+"kosa zlata, za plače, na potezo."
 
 #: data/help.cfg:191
 msgid ""
@@ -537,6 +752,10 @@ msgid ""
 "These costs are subtracted from your Income, so in the case of twelve levels "
 "of units and ten villages, your resultant Income would be 8 gold a turn."
 msgstr ""
+"\n"
+"\n"
+"Ti stroški so odbiti od vaših prihodkov, tako da bi končni prihodki bili v "
+"prejšnjem primeru 8 kosov zlata na potezo (10-[12-10])."
 
 #: data/help.cfg:192
 msgid ""
@@ -547,10 +766,16 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
+"\n"
+"Obstajata dve večji izjemi pri plačah. Enote z značilnostjo zvest ne bodo "
+"nikoli zahtevale plače. Podobno, enote s katerimi začnete scenarij (kot "
+"recimo Konrad ali Delfador) in enote ki se vam pridružijo med njim (kot "
+"recimo Konjenik v drugem scenariju Prestolonaslednika) skoraj nikoli ne bodo "
+"zahtevale plače."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
-msgstr ""
+msgstr "Zaključek"
 
 #: data/help.cfg:198
 msgid ""
@@ -560,6 +785,11 @@ msgid ""
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
 msgstr ""
+"S tem zaključujemo Osnove igranja. Predlagamo vam da si preberete še o "
+"Osnovni strategiji ali pa da se seznanite z <ref>dst=traits "
+"text=Značilnostmi</ref> in <ref>dst=abilities text=Sposobnostmi</ref>. "
+"Vedite pa, da že dovolj veste za igranje kampanje Prestolonaslednik. "
+"Zabavajte se, in vso srečo!"
 
 #: data/help.cfg:203 src/titlescreen.cpp:188
 msgid "About"
@@ -573,6 +803,10 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"Večina enot ima dve značilnosti, ki rahlo spremenita njihove lastnosti. "
+"Pridobijo jih naključno, ob nastanku.\n"
+"\n"
+"Trenutno so na voljo sledeče značilnosti:"
 
 #: data/help.cfg:219
 msgid ""
@@ -589,6 +823,17 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Pameten</header>\n"
+"\n"
+"Pametne enote potrebujejo 20% manj izkušenj za napredovanje na naslednji "
+"izkustveni nivo.\n"
+"\n"
+"Pametne enote so zelo koristne na začetku kampanje, saj hitro napredujejo v "
+"boljše višjenivojske enote. Kasneje pa ne več, saj jih večina enot dohiti in "
+"dobi prednost s svojimi \"trajnimi\" značilnostmi."
 
 #: data/help.cfg:226
 msgid ""
@@ -604,6 +849,15 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Zvest</header>\n"
+"\n"
+"Zveste enote ne potrebujejo plače.\n"
+"\n"
+"Značilnost zvest nima veliko učinka na začetku kampanje. Kasneje, ko enota "
+"napreduje, pa vam lahko prihrani precej denarja."
 
 #: data/help.cfg:233
 msgid ""
@@ -620,6 +874,19 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Hiter</header>\n"
+"\n"
+"Hitre enote imajo na voljo 1 dodatno premikalno točko, ampak imajo zato 10% "
+"manj HP.\n"
+"\n"
+"Značilnost hiter je med bolj opaznimi, še posebno med počasnimi enotami, kot "
+"so troli in težka pehota. Hitre enote pridejo do izraza tudi na bolj "
+"razgibanem terenu - mislite na to, ko boste priklicovali enote. Seveda pa ne "
+"smemo pozabiti, da te enote niso tako vzdržljive kot ostale in zato niso "
+"tako dobre za držanje položajev."
 
 #: data/help.cfg:240
 msgid ""
@@ -635,6 +902,15 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Odporen</header>\n"
+"\n"
+"Odporne enote imajo 7 HP več kot ponavadi.\n"
+"\n"
+"Uporabne so v vseh delih kampanij in značilnost odporen je dobra za vse "
+"enote. Te so zelo primerne za držanje položajev."
 
 #: data/help.cfg:247
 msgid ""
@@ -651,6 +927,15 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Močan</header>\n"
+"Močne enote naredijo v boju na blizu 1 točko škode več in imajo 2 HP več.\n"
+"\n"
+"Ta značilnost je dobra za vse bojevnike na blizu, še posebej za tiste, ki "
+"imajo veliko število napadov, kot npr. Vilinski Bojevnik. Izkažejo se za "
+"zelo koristne, ko ta majhen bonus k škodi spremeni navadni udarec v smrtnega."
 
 #: data/items.cfg:264
 msgid ""
@@ -1114,15 +1399,13 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Cesta"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Branitelj"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1258,9 +1541,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Več"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -2007,7 +2289,6 @@ msgid "Snow"
 msgstr "Sneg"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
 msgstr "Zasnežena vas"
 
@@ -2068,7 +2349,6 @@ msgid "Keep"
 msgstr "Trdnjava"
 
 #: data/terrain.cfg:418
-#, fuzzy
 msgid "Canyon"
 msgstr "Kanjon"
 
@@ -4602,9 +4882,8 @@ msgstr ""
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:46
 #: data/units/Mounted_Commander.cfg:46 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
-#, fuzzy
 msgid "morning star"
-msgstr "Jutro"
+msgstr "verižni buzdovan"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -4843,9 +5122,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "ognjen"
+msgstr "Sirena"
 
 #: data/units/Mermaid_Siren.cfg:25
 msgid "naiad touch"
@@ -5120,9 +5398,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
-#, fuzzy
 msgid "cleaver"
-msgstr "stopnja"
+msgstr "mačeta"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
@@ -6059,9 +6336,8 @@ msgid "+Scenario Designers"
 msgstr ""
 
 #: src/about.cpp:118
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Večigralnost"
+msgstr "+Karte za večigralnost"
 
 #: src/about.cpp:123
 msgid "+Packagers"
@@ -6168,9 +6444,8 @@ msgid "+Contributors"
 msgstr ""
 
 #: src/about.cpp:297
-#, fuzzy
 msgid "+Bots"
-msgstr "Bonus"
+msgstr "+Roboti"
 
 #: src/about.cpp:333 src/help.cpp:2571
 msgid "Close"
@@ -6335,14 +6610,12 @@ msgid "Scenario Start"
 msgstr ""
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Težavnost"
+msgstr "Težavnost: "
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Različica"
+msgstr "Različica: "
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -6397,20 +6670,17 @@ msgid "level"
 msgstr "stopnja"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "HP"
+msgstr "HP: "
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "XP"
+msgstr "XP: "
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Premiki"
+msgstr "Premiki: "
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -6437,9 +6707,8 @@ msgid "The game could not be saved"
 msgstr ""
 
 #: src/game.cpp:168 src/game.cpp:908 src/game.cpp:1322
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Igra je bila shranjena"
+msgstr "Igre ni bilo možno naložiti: "
 
 #: src/game.cpp:171 src/game.cpp:910 src/game.cpp:1324
 msgid "Error while playing the game: "
@@ -6496,9 +6765,8 @@ msgid "Select difficulty level:"
 msgstr ""
 
 #: src/game.cpp:1025
-#, fuzzy
 msgid "B"
-msgstr "KB"
+msgstr "B"
 
 #: src/game.cpp:1028
 msgid "KB"
@@ -6549,9 +6817,8 @@ msgid "Downloads"
 msgstr ""
 
 #: src/game.cpp:1100
-#, fuzzy
 msgid "Size"
-msgstr "ognjen"
+msgstr "Velikost"
 
 #: src/game.cpp:1129
 msgid "Publish campaign: "
@@ -6660,18 +6927,16 @@ msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Prijava"
+msgstr "Prijava: "
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Jezik"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Izberite vam priljubljen jezik"
+msgstr "Izberite jezik"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -6682,29 +6947,24 @@ msgid "' (The game will now exit)"
 msgstr ""
 
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
-msgstr "Pomoč za The Battle for Wesnoth "
+msgstr "Battle for Wesnoth"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Napreduje v"
+msgstr "Napreduje v: "
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Sposobnosti"
+msgstr "Sposobnosti: "
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Poravnava"
+msgstr "Poravnava: "
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "Potrebni XP"
+msgstr "Potrebni XP: "
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -6819,33 +7079,28 @@ msgid "Map Generator"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
-msgstr "Igralci"
+msgstr "Igralci: "
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Širina"
+msgstr "Širina: "
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Višina"
+msgstr "Višina: "
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Ponovitve"
+msgstr "Ponovitve:"
 
 #: src/mapgen_dialog.cpp:86
 msgid "Bump Size:"
 msgstr ""
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
-msgstr "Vas"
+msgstr "Vasi:"
 
 #: src/mapgen_dialog.cpp:88
 msgid "Landform:"
@@ -6897,7 +7152,6 @@ msgid "Anonymous local player"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
 msgstr "Računalniški igralec"
 
@@ -6926,7 +7180,6 @@ msgid "Faction"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Barva"
 
@@ -6935,9 +7188,8 @@ msgid "Gold"
 msgstr "Zlato"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
-msgstr "Računalniški igralec"
+msgstr "Računalnik proti računalniku"
 
 #: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
@@ -7031,9 +7283,8 @@ msgid "Waiting for players to join..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
-msgstr "Ime igre"
+msgstr "Ime igre:"
 
 #: src/multiplayer_create.cpp:41
 msgid "Era:"
@@ -7120,29 +7371,24 @@ msgid "You must enter a name."
 msgstr ""
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "Turns: "
-msgstr "Poteza"
+msgstr "Potez: "
 
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
 msgstr "Neomejeno"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Vas"
+msgstr "Zlato v vasi: "
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Terenski prikrojevalci"
+msgstr "Izkustveni prikrojevalec: "
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Players: "
-msgstr "Igralci"
+msgstr "Igralci: "
 
 #: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -7210,9 +7456,8 @@ msgid "Game Over"
 msgstr ""
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Igra je bila shranjena"
+msgstr "Igra je končana"
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -7223,9 +7468,8 @@ msgid "You have been defeated!"
 msgstr ""
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Preostalo zlato"
+msgstr "Preostalo zlato: "
 
 #: src/playlevel.cpp:811
 msgid "Early finish bonus: "
@@ -7240,24 +7484,21 @@ msgid "Turns finished early: "
 msgstr ""
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Zlato"
+msgstr "Zlato: "
 
 #: src/playlevel.cpp:823
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% zlata se bo ohranilo za naslednji scenarij"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Ohranjeno zlato"
+msgstr "Ohranjeno zlato: "
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -7268,9 +7509,8 @@ msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
 #: src/playlevel.cpp:833
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Scenarij"
+msgstr "Scenarijsko poročilo"
 
 #: src/playlevel.cpp:854
 msgid ""
@@ -7303,9 +7543,8 @@ msgid "Attack Enemy"
 msgstr "Napadi"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Izberite orožje"
+msgstr "Izberite orožje:"
 
 #: src/playturn.cpp:1250
 msgid ""
@@ -7371,9 +7610,8 @@ msgid "Recruit"
 msgstr "Novači"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Izberite enoto"
+msgstr "Izberite enoto:"
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -7420,9 +7658,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Za priklic enote potrebujete vsaj $cost zlata"
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "stopnja"
+msgstr "stopnja: "
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -7433,9 +7670,8 @@ msgid "Recall"
 msgstr "Prikliči"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Sporočilo"
+msgstr "Sporočilo:"
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -7514,9 +7750,8 @@ msgid "Place Label"
 msgstr "Postavi oznako"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Oznaka"
+msgstr "Oznaka:"
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -7551,9 +7786,8 @@ msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "neviden"
+msgstr "nevidne: "
 
 #: src/reports.cpp:111
 msgid ""
@@ -7564,9 +7798,8 @@ msgstr ""
 "manj."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "upočasni"
+msgstr "upočasnjene:"
 
 #: src/reports.cpp:116
 msgid ""
@@ -7592,28 +7825,24 @@ msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "kamen"
+msgstr "kamen: "
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "škoda"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Zakonite enote"
+msgstr "Zakonite enote: "
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Nevtralne enote"
+msgstr "Nevtralne enote: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Kaotične enote"
+msgstr "Kaotične enote: "
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -7628,9 +7857,8 @@ msgid "Allied village"
 msgstr "Zavezniška vas"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Strežnik: "
+msgstr "Opazovalci:"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
@@ -7723,17 +7951,8 @@ msgstr "nevtralen"
 #~ msgid "Players"
 #~ msgstr "Igralci"
 
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Skupina"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Poteza"
-
-#, fuzzy
 #~ msgid "Load Game..."
-#~ msgstr "Naloži igro"
+#~ msgstr "Naloži igro..."
 
 #~ msgid "Ok"
 #~ msgstr "V redu"
