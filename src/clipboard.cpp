@@ -335,25 +335,75 @@ std::string copy_from_clipboard()
 void handle_system_event(const SDL_Event& )
 {}
 
-void copy_to_clipboard(const std::string& text)
+void copy_ucs2_to_clipboard(const ucs2_string& text)
 {
-	if(text.empty()) {
+	if(text.empty())
 		return;
-	}
-	
-
-	if(!OpenClipboard(0)) {
+	if(!OpenClipboard(NULL))
 		return;
-	}
-
 	EmptyClipboard();
 
-	const HGLOBAL clip_buffer = GlobalAlloc(GMEM_DDESHARE,text.size()+1);
-	char* const buffer = reinterpret_cast<char*>(GlobalLock(clip_buffer));
-	strcpy(buffer,text.c_str());
+	// convert newlines
+	ucs2_string str;
+	str.reserve(text.size() + 1);
+	ucs2_string::const_iterator first = text.begin();
+	ucs2_string::const_iterator last = text.begin();
+	do {
+		if(*last != '\n') {
+			++last;
+			continue;
+		}
+		str.insert(str.end(), first, last);
+		str.push_back('\r');
+		str.push_back('\n');
+		first = ++last;
+	} while(last != text.end());
+	str.push_back('\0');
+	
+	HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, str.size() * sizeof(Uint16));
+	if(hglb == NULL) {
+		CloseClipboard();
+		return;
+	}
+	Uint16* const buffer = reinterpret_cast<Uint16* const>(GlobalLock(hglb));
+	memcpy(buffer, (Uint16 const *)&str.front(), str.size() * sizeof(Uint16));
+	GlobalUnlock(hglb);
+	SetClipboardData(CF_UNICODETEXT, hglb);
+	CloseClipboard();
+}
 
-	GlobalUnlock(clip_buffer);
-	SetClipboardData(CF_TEXT,clip_buffer);
+void copy_to_clipboard(const std::string& text)
+{
+	if(text.empty())
+		return;
+	if(!OpenClipboard(NULL))
+		return;
+	EmptyClipboard();
+
+	// convert newlines
+	std::string str;
+	str.reserve(text.size());
+	std::string::const_iterator first = text.begin();
+	std::string::const_iterator last = text.begin();
+	do {
+		if(*last != '\n') {
+			++last;
+			continue;
+		}
+		str.append(first, last);
+		str.append("\r\n");
+		first = ++last;
+	} while(last != text.end());
+	
+	const HGLOBAL hglb = GlobalAlloc(GMEM_MOVEABLE, (str.size() + 1) * sizeof(TCHAR));
+	if(hglb == NULL) {
+		CloseClipboard();
+		return;
+	}
+	char* const buffer = reinterpret_cast<char* const>(GlobalLock(hglb));
+	strcpy(buffer, str.c_str());
+	GlobalUnlock(hglb);
+	SetClipboardData(CF_TEXT, hglb);
 	CloseClipboard();
 }
 
