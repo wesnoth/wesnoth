@@ -326,6 +326,9 @@ public:
 
 	bool leader_can_reach_keep() const;
 
+	//function which will return true iff there has been another attack this turn 'close' to this one
+	bool attack_close(const location& loc) const;
+
 protected:
 
 	mutable std::map<location,defensive_position> defensive_position_cache_;
@@ -366,6 +369,11 @@ protected:
 	//our own version of 'move_unit'. It is like the version in ai_interface, however if it is the leader
 	//moving, it will first attempt recruitment.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
+
+	//our own version of 'attack_enemy'. We record all attacks to support group attacking
+	void attack_enemy(const location& attacking_unit, const location& target, int weapon);
+
+	std::set<location> attacks_;
 
 	//sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn
 	bool multistep_move_possible(location from, location to, location via, std::map<location,paths>& possible_moves);

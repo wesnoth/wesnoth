@@ -376,6 +376,23 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 	}
 }
 
+bool ai::attack_close(const gamemap::location& loc) const
+{
+	for(std::set<location>::const_iterator i = attacks_.begin(); i != attacks_.end(); ++i) {
+		if(distance_between(*i,loc) < 4) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+void ai::attack_enemy(const location& attacking_unit, const location& target, int weapon)
+{
+	attacks_.insert(attacking_unit);
+	ai_interface::attack_enemy(attacking_unit,target,weapon);
+}
+
 void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement, const std::set<gamemap::location>* remove_destinations)
 {
 	for(std::map<gamemap::location,unit>::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {

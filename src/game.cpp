@@ -383,7 +383,7 @@ int play_game(int argc, char** argv)
 		std::pair<int,int> resolution = preferences::resolution();
 
 		std::cerr << "checking mode possible...\n";
-		const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
 	
 		std::cerr << bpp << "\n";
 	
@@ -397,7 +397,7 @@ int play_game(int argc, char** argv)
 	 		resolution.first = 1024;
 	 		resolution.second = 768;
 	
-	 		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	 		bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
 	
 			if(bpp == 0) {
 				 //Attempt 1024x768.
@@ -429,17 +429,12 @@ int play_game(int argc, char** argv)
 			}
 		}
 	
-		if(bpp != 16) {
-			std::cerr << "Video mode must be emulated; the game may run slowly. "
-			          << "For best results, run the program on a 16 bpp display\n";
-		}
-	
-		std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
-		const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
+		std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
+		const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
 		video.setBpp(bpp);
-		if(res != 16) {
+		if(res == 0) {
 			std::cerr << "required video mode, " << resolution.first << "x"
-			          << resolution.second << "x16 is not supported\n";
+			          << resolution.second << "x" << bpp << " is not supported\n";
 			return 0;
 		}
 

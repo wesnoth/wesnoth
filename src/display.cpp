@@ -933,7 +933,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 
 		const int side = u->second.side();
 		const SDL_Color& col = font::get_side_colour(side);
-		const Uint16 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
+		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_Rect rect = {x + (u->first.x*w)/map_.x(),
 		                 y + (u->first.y*h)/map_.y(),
 						 w/map_.x(), h/map_.y() };
@@ -949,7 +949,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling);
 	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling);
 
-	const Uint16 boxcolour = Uint16(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
+	const Uint32 boxcolour = SDL_MapRGB(surface->format,0xFF,0xFF,0xFF);
 	SDL_Surface* const screen = screen_.getSurface();
 
 	gui::draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
@@ -1271,7 +1271,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 
 	if(unfilled < height && alpha >= 0.3) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
-		const Uint16 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
+		const Uint32 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 		SDL_FillRect(video().getSurface(),&filled_area,colour);
 	}
 }

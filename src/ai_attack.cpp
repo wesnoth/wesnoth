@@ -546,9 +546,9 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 	//prefer to attack already damaged targets
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
-	//sanity check: if we're putting ourselves at major risk, and have no chance to kill
-	//then don't do it
-	if(vulnerability > 50.0 && vulnerability > support*5.0 && chance_to_kill < 0.02) {
+	//sanity check: if we're putting ourselves at major risk, and have no chance to kill, and we're not
+	//aiding our allies who are also attacking, then don't do it
+	if(vulnerability > 50.0 && vulnerability > support*2.0 && chance_to_kill < 0.02 && aggression < 0.75 && !ai_obj.attack_close(target)) {
 		return -1.0;
 	}
 

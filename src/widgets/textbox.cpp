@@ -111,7 +111,7 @@ void textbox::draw()
 			src.w = src.x + w > loc.x + loc.w ? loc.x + loc.w - src.x : w;
 			src.h = loc.h;
 
-			Uint16 colour = Uint16(SDL_MapRGB(disp().video().getSurface()->format, 160, 0, 0));
+			Uint32 colour = SDL_MapRGB(disp().video().getSurface()->format, 160, 0, 0);
 			fill_rect_alpha(src,colour,140,disp().video().getSurface());
 		}
 	}

@@ -1148,7 +1148,7 @@ void map_editor::update_l_button_palette() {
 			const int draw_w = minimum<int>(r.w + 2, gui_.screen_area().w);
 			const int draw_h = minimum<int>(r.h + 2, gui_.screen_area().h);
 			const SDL_Rect draw_rect = {draw_x, draw_y, draw_w, draw_h};
-			Uint16 color;
+			Uint32 color;
 			if ((*it).items().back() == get_action_name(l_button_func_)) {
 				color = 0xF000;
 			}

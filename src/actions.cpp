@@ -1173,7 +1173,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		}
 
 		while(h->second > 0) {
-			const Uint16 heal_colour = disp.rgb(0,0,200);
+			const Uint32 heal_colour = disp.rgb(0,0,200);
 			u.heal(1);
 
 			if(show_healing) {
@@ -1191,7 +1191,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 		}
 
 		while(h->second < 0) {
-			const Uint16 damage_colour = disp.rgb(200,0,0);
+			const Uint32 damage_colour = disp.rgb(200,0,0);
 			u.gets_hit(1);
 
 			if(show_healing) {

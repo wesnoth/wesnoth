@@ -228,7 +228,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 	}
 }
 
-void draw_rectangle(int x, int y, int w, int h, Uint16 colour,SDL_Surface* target)
+void draw_rectangle(int x, int y, int w, int h, Uint32 colour,SDL_Surface* target)
 {
 	if(x < 0 || y < 0 || x+w >= target->w || y+h >= target->h) {
 		std::cerr << "Rectangle has illegal co-ordinates: " << x << "," << y
