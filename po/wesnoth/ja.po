@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 09:57+0100\n"
-"PO-Revision-Date: 2005-03-19 16:30+0900\n"
+"PO-Revision-Date: 2005-03-23 13:35+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,8 @@ msgstr ""
 "X-Generator: KBabel 1.9\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "sazanami.ttf,Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -87,7 +86,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "遊び方の基礎"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -96,11 +94,8 @@ msgid ""
 msgstr ""
 "このページでは、あなたが Battle for Wesnoth をプレイするために知っておく必要"
 "のある全ての概要を説明します。 これには、遊び方とゲームの裏にある基本的なメカ"
-"ニズムまで含んでいます。 ゲームを征服する上でのより多くの情報については "
-"<ref>dst=basic_strategy text='基本的な戦略'</ref> と "
-"<ref>dst=multiplayer_strategy text='マルチプレイヤーの戦略'</ref> を参考にす"
-"るとよいでしょう。 これはただの概要であることを心にとどめておいて下さい。 特"
-"殊な例外や状況については、そこから辿れるリンクに従って下さい。"
+"ニズムまで含んでいます。 これはただの概要であることを心にとどめておいて下さ"
+"い。 特殊な例外や状況については、そこから辿れるリンクに従って下さい。"
 
 #: data/help.cfg:70
 msgid ""
@@ -117,11 +112,11 @@ msgstr ""
 "\n"
 "始めるにあたり、メインメニューの<italic>text=チュートリアル</italic>のボタン"
 "をクリックするとよいでしょう。 これは、あなたをWesnothの基本を教える対話的な"
-"チュートリアルに連れ出します。 これが終わったら、Heir to the Throneキャンペー"
-"ンを最初にプレイすることをお勧めします。 <italic>text=キャンペーン</italic>、"
-"そして<italic>text='Heir to the Throne'</italic>.をクリックして下さい。 "
-"Battle for Wesnothはとても難しいため、<italic>text=簡単</italic>なレベルから"
-"始めたいと思うかもしれません。"
+"チュートリアルに連れ出します。 これが終わったら、「王位を継ぐ者」キャンペーン"
+"を最初にプレイすることをお勧めします。 <italic>text=キャンペーン</italic>、そ"
+"して<italic>text=「王位を継ぐ者」</italic>をクリックして下さい。 Battle for "
+"Wesnothはとても難しいため、<italic>text=簡単</italic>なレベルから始めたいと思"
+"うかもしれません。"
 
 #: data/help.cfg:73
 msgid ""
@@ -153,7 +148,7 @@ msgstr ""
 "必要があります。 そして、 メニューから「雇う」を選択するか、 ヘクスを右クリッ"
 "クして「雇う」を選択することで雇うことができます。 ここで、 雇うのが可能なユ"
 "ニット一覧を含むメニューが表示されます。 ユニットに下には必要なゴールドが表示"
-"されます。 ユニットをクリックすると、 その能力が左に表示されます。 それか"
+"されます。 ユニットをクリックすると、 その特性値が左に表示されます。 それか"
 "ら、 「雇う」ボタンでそれを雇って下さい。"
 
 #: data/help.cfg:81
@@ -181,8 +176,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"雇用されたユニットは、 その能力を変化させる ２つのランダムな<ref>dst=traits "
-"text=特性</ref>を持ちます。"
+"雇用されたユニットは、 その特性値を変化させる ２つのランダムな"
+"<ref>dst=traits text=特性</ref>を持ちます。"
 
 #: data/help.cfg:85
 msgid ""
@@ -234,7 +229,6 @@ msgstr ""
 "いルートでそこへ向かおうとします。"
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -250,17 +244,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"各ユニットは特定の移動力を持ち、 ヘクスに入るときにそれを消費します。 消費量"
-"はそのヘクスの<ref>dst=terrain text=地形</ref>に依存します。 例えば、 草原は"
-"ほとんど常に必要な移動力は１です。 正確にどれだけの移動力がヘクスに入るときに"
-"消費されるのかは、ユニットの種類に依存します。 森ではエルフユニットの移動力の"
-"消費は１ですが、 ほとんどの人間とオークは２を消費し、 乗馬ユニットでは３とな"
-"ります。 ユニットが地形ごとでどれだけの移動力が必要かを知るには、 ユニットを"
-"クリックして「ユニットの解説」を選択して <italic>text=地形修正</italic>を見て"
-"ください。"
+"各ユニットは一定の移動力を持ち、 新しいヘクスに 入るときに、 そのヘクスの 地"
+"形に依存して 消費されます。 例えば、 草原はほとんど常に必要な移動力は１で"
+"す。 正確にどれだけの移動力がヘクスに入るときに消費されるのかは、ユニットの種"
+"類に依存します。 森ではエルフユニットの移動力の消費は１ですが、 ほとんどの人"
+"間とオークは２を消費し、 乗馬ユニットでは３となります。 ユニットが地形ごとで"
+"どれだけの移動力が必要かを知るには、 ユニットをクリックして「ユニットの解説」"
+"を選択して <italic>text=地形修正</italic>を見てください。"
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -273,11 +265,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"もうひとつ気をつけてもらいたいことは、 移動には <ref>dst=zones_of_control "
-"text=支配ゾーン</ref>があるということです。 各ユニットはその周囲に支配ゾーン"
-"を生成しており、 これらのヘクスに侵入してきた敵対ユニットは直ちに移動を終了し"
-"ます。 支配ゾーンの活用方法を学ぶことはWesnothの重要な一部分であり、 "
-"<ref>dst=ability_skirmish text=散兵</ref>のみが 支配ゾーンを無視できます。"
+"移動中に気をつけなければならない もう一点は、 「支配ゾーン]です。 各ユニット"
+"は隣接する周囲に 支配ゾーンを生成しており、 これらのヘクスに侵入してきた敵対"
+"ユニットは直ちに移動を終了します。 支配ゾーンの活用方法を学ぶことはWesnothの"
+"重要な一部分であり、 <ref>dst=ability_skirmish text=散兵</ref>のみが 支配ゾー"
+"ンを無視できます。"
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -336,7 +328,6 @@ msgstr ""
 "<header>text=命中率</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -350,15 +341,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"2つの例外がありますが、 あるユニットへの命中率はそのユニットが立っている"
-"<ref>dst=terrain text=地形</ref>の防御率に基づきます。 これは、ユニットを右ク"
-"リックし、 「ユニットの解説」を選択して、 <italic>text=地形効果</italic>を見"
-"ることでわかります。 例えば、 エルフは森において70%の防御率があります。 つま"
-"り、彼らに命中させる確率は30%しかありません。 反対に、 エルフが攻撃側に反撃す"
-"るときの命中率は、 攻撃ユニットのいる地形に依存します。"
+"2つの例外がありますが、 あるユニットへの命中率はそのユニットが立っている地形"
+"の防御率に基づきます。 これは、ユニットを右クリックし、 「ユニットの解説」を"
+"選択して、 <italic>text=地形効果</italic>を見ることでわかります。 例えば、 エ"
+"ルフは森において70%の防御率があります。 つまり、彼らに命中させる確率は30%しか"
+"ありません。 反対に、 エルフが攻撃側に反撃するときの命中率は、 攻撃ユニットの"
+"いる地形に依存します。"
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -368,10 +358,10 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"このルールには2つの例外があります。 <ref>dst=magical_attacks text=魔法攻撃 </"
-"ref>と <ref>dst=ability_marksman text=射撃</ref>です。 魔法攻撃は常に地形に関"
-"係なく命中率は70%になります。 そして、 射撃は攻撃時に限り、 地形に関わらす命"
-"中率は常に最低60%あります。"
+"このルールには2つの例外があります。 <ref>dst=weaponspecial_magical text=魔法"
+"攻撃 </ref>と <ref>dst=weaponspecial_marksman text=射撃</ref>です。 魔法攻撃"
+"は常に地形に関係なく命中率は70%になります。 そして、 射撃は攻撃時に限り、 地"
+"形に関わらす命中率は常に最低60%あります。"
 
 #: data/help.cfg:114
 msgid ""
@@ -403,7 +393,6 @@ msgstr ""
 "説明しています。"
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -415,9 +404,9 @@ msgstr ""
 "\n"
 "\n"
 "いくつかのユニットは、戦闘時のダメージに影響を与える特殊能力を持ちます。 その"
-"ような特殊能力で最も一般的なものは<ref>dst=ability_charge text=突撃</ref>で"
-"す。 この能力を使用したときは、 攻撃側と防御側の両方のダメージ量が２倍となり"
-"ます。"
+"ような特殊能力で最も一般的なものは <ref>dst=weaponspecial_charge text=突撃</"
+"ref>です。 この能力を使用したときは、 攻撃側と防御側の両方のダメージ量が２倍"
+"となります。"
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -578,7 +567,6 @@ msgstr ""
 "クラスチェンジ先の選択を行います。"
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -588,8 +576,8 @@ msgstr ""
 "\n"
 "\n"
 "ほとんどのユニットは3レベルまでありますが、全てではなく、いくつかの "
-"(<ref>dst=unit_mage text=魔術師</ref>のような) ユニットは4レベルまであること"
-"を 覚えておいて下さい。 "
+"(<ref>dst=unit_Mage text=魔術師</ref>のような) ユニットは4レベルまで あること"
+"を 覚えておいて下さい。"
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -626,14 +614,13 @@ msgstr ""
 "村: ターン開始時に村にいるユニットはHPが8回復します。"
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=再生</ref>: (トロルのような)ある種類のユ"
+"<ref>dst=ability_regenerates text=再生</ref>: (トロルのような)ある種類のユ"
 "ニットは 自動的に毎ターンHPが8回復します。"
 
 #: data/help.cfg:175
@@ -786,9 +773,9 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
-"ほとんどのユニットは２つの特性を持っています。 特性はユニットの能力であり、 "
-"その能力を少しだけ変化させます。 これらはユニットを雇うときにランダムに割り当"
-"てられます。\n"
+"ほとんどのユニットは２つの特性を持っています。 特性はユニットの能力値であ"
+"り、 その能力を少しだけ変化させます。 これらはユニットを雇うときにランダムに"
+"割り当てられます。\n"
 "\n"
 "現在可能な特性は次の通りです。"
 
@@ -867,7 +854,7 @@ msgstr ""
 "敏捷なユニットは移動力が１つ上がり、HPが通常より10%下がる。\n"
 "\n"
 "敏捷は、トロールや 重い歩兵のような 動きの遅いユニットで 特に、 最も注目に値"
-"する 能力です。「敏捷」能力をもつ ユニットは しばしば 荒い地形において 素晴ら"
+"する 特性です。「敏捷」特性をもつ ユニットは しばしば 荒い地形において 素晴ら"
 "しく増加した 機動力があるため、 あなたの軍隊を配備する時に考慮しましょう。 ま"
 "た、「敏捷」なユニットは 通常よりも頑丈ではないため、 薬を十分もっておくこと"
 "を 忘れないようにしましょう。 "
@@ -1217,7 +1204,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "島越えの城"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
 msgid ""
@@ -1225,10 +1212,12 @@ msgid ""
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
 "2, 4 for 2v2."
 msgstr ""
+"近接して戦略的に 配置された多くの城。 短時間プレイ向けの 小マップ。 村当たり "
+"2ゴールドの設定で、 2対2なら プレイヤー1,3 対 プレイヤー2,4 を お勧めします。"
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
-msgstr ""
+msgstr "突撃戦"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1381,18 +1370,20 @@ msgid ""
 "Teams of 2 fight for control of the central bridge choke-point. Good for "
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
+"2つのチームが 中央の橋の 難所の 支配を 巡って 争う。 中時間のゲームに向いてい"
+"る。 プレイヤー1と3、2と4がそれぞれ同盟となる。"
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
-msgstr ""
+msgstr "バトルワールド"
 
 #: data/scenarios/multiplayer/castles.cfg:7
 msgid "Siege Castles"
-msgstr ""
+msgstr "城壁包囲"
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "Across The River"
-msgstr ""
+msgstr "渡河戦"
 
 #: data/scenarios/multiplayer/scenarios.cfg:5
 msgid ""
@@ -1400,10 +1391,14 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"このマップは、 双方にとって うまくバランスが 取れているため、 2勢力での 試し"
+"合いに便利です。\n"
+" AI同士を戦わせて、 相手に どれだけ対抗できるかを 見るのに 使ってもよいでしょ"
+"う。"
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
-msgstr ""
+msgstr "Anduin島"
 
 #: data/scenarios/multiplayer/scenarios.cfg:137
 msgid "The Three Rivers"
@@ -1430,9 +1425,8 @@ msgid "King of the Hill"
 msgstr "丘の王"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+バスク語翻訳"
+msgstr "「基本訓練」"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid ""
@@ -1450,10 +1444,10 @@ msgid ""
 "select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
-"戦いに入る前には、必ずユニットを雇う必要があるぞ。 ユニットを雇うには、 ユ"
-"ニットを配置したい城のタイルを右クリック、 そして「雇う」を選択し、「OK」を押"
-"す。 リーダーが主塔に存在する城タイル上でのみ、ユニットを雇うことができるの"
-"だ。"
+"戦いに入る前には、 必ずユニットを雇う必要があるのだ。 ユニットを雇うには、 ユ"
+"ニットを配置したい 城のタイルを右クリック、 そして「雇う」を選択し、 「OK」を"
+"押す。 リーダーが主塔に存在する 城タイル上でのみ、 ユニットを雇うことができ"
+"る。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:70
 msgid "Recruit a unit"
@@ -1486,11 +1480,11 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
-"ユニットを雇うには、 ユニットを雇いたい場所の城タイル上で 右クリックして、 そ"
-"して「雇う」を選択する (またはカーソルをあわせてからCtrl-Rを押す)。 次に雇い"
-"たいユニットのタイプを選択して、 「OK」をクリックする。 より早く行うには、"
-"「Ctrl-Shift-R」を使用することもできる。 このときは最後に雇ったのと同じタイプ"
-"が雇われる。"
+"ユニットを雇うには、ユニットを雇いたい位置の城タイル上で右クリックして、そし"
+"て「雇う」を選択する(またはカーソルをあわせてからCtrl-Rを押す)。次に雇いたい"
+"ユニットのタイプを選択して、「OK」をクリックする。より早く行うには、「Ctrl-"
+"Shift-R」を使用することもできる。このときは最後に雇ったのと同じタイプが雇われ"
+"る。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:81
 msgid ""
@@ -1525,8 +1519,8 @@ msgid ""
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
-"彼らの能力と費用を慎重に見極めなければならない。 能力はユニット選択ウィンドウ"
-"の左に表示されている。 費用はユニット名に下に表示されている。 お前はこの"
+"彼らのスキルと費用を慎重に見極めなければならない。 能力はユニット選択ウィンド"
+"ウの左に表示されている。 費用はユニット名に下に表示されている。 お前はこの"
 "チュートリアルを通じて、 より詳細を学ぶことになるだろう。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:83
@@ -1559,7 +1553,7 @@ msgstr "ターン終了"
 #: data/scenarios/tutorial/Basic_Training.cfg:100
 #, fuzzy
 msgid "You successfully ended your turn."
-msgstr "お前は自分のターンを無事終えた。"
+msgstr "お前は自分のターンを無事に終えた。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:104
 msgid "How do I end my turn?"
@@ -1588,11 +1582,11 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
-"ターンを終えると、 もうひとつの陣営のターンとなり、 その陣営がターンを終える"
-"まで、 移動を行う。 すべての陣営がターンを終えると、 次のターンが開始され"
-"る。 このとき、 すべてのユニットの移動力が回復することなどの、 いろいろな事が"
-"起こる。 現在のターン数は、 ステータスバー上の旗の画像の隣に表示されていて、 "
-"この数がターンの最大数になったら、 お前の負けとなる。"
+"ターンを終えると、 もうひとつの陣営のターンとなり、 そちらの陣営だけが、ター"
+"ンを終えるまで 移動する権利をもつ。 すべての陣営がターンを終えると、 次のター"
+"ンが開始される。 このとき、 すべてのユニットの移動力が回復するなどの、 いろい"
+"ろな事が起こる。 現在のターン数は、 ステータスバー上の 旗の画像の隣に 表示さ"
+"れていて、 この数がターンの最大数になったら、 お前の負けとなる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:111
 msgid ""
@@ -1601,12 +1595,12 @@ msgid ""
 "next to the Elvish Shaman, Merle."
 msgstr ""
 "次にすべきことは、 エルフ戦士を動かすことだ。 ユニットを移動させるには、 ユ"
-"ニットを選択して、 次に目的地を選択する。 今回の場合には、 目的地はエルフ"
-"シャーマンMerleの隣の森となる。"
+"ニットを選択して、 次に目的地を選択する。 今回の場合には、 目的地はエルフ呪術"
+"師のMerle の隣の森となる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:113
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "お前のエルフ戦士を Merieの隣に 移動させるのだ。"
+msgstr "お前のエルフ戦士を Merleの隣に 移動させるのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
 #, fuzzy
@@ -1615,8 +1609,9 @@ msgid ""
 "moved next to an enemy unit, he lost all his movement for this turn; this is "
 "called the 'zone of control'."
 msgstr ""
-"よろしい！ エルフ戦士を移動させたな。 だが、このユニットは敵の隣に来たので、 "
-"このターンでの移動は終了となる。 これは「支配ゾーン」と呼ばれるのだ。"
+"よろしい！ お前は エルフ戦士を 正しく移動させた。 だが、このユニットは敵の隣"
+"に来たので、 このターンでの移動は終了となる。 これは「支配ゾーン」と 呼ばれて"
+"おる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:139
 msgid "How far can my Elvish Fighter move?"
@@ -1676,12 +1671,12 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
-"お前が操作するユニットは、 ユニット横の垂直な体力バー上に、 緑か黄か赤の球の"
-"エナジー表示が現れる。 ユニットの移動力が一杯なら緑、 少し移動すると黄、 移動"
-"力がなくなれば赤となる。 敵ユニットにはエナジー表示が出ない。 わしのようなユ"
-"ニットは同盟ユニットで、 これらは操作できない。 同盟ユニットは青のエナジー表"
-"示がされる。 また、設定で「チーム色表示」 オプションをオンにしていると、 ユ"
-"ニット操作者の色のついた球が、 ユニット下に表示される。"
+"お前が操作するユニットは、 ユニット横の垂直な体力バー上に、 緑か黄か赤の円形"
+"のエネルギー表示が現れる。 ユニットの移動力が一杯なら緑、 少し移動すると黄、 "
+"移動力がなくなれば赤となる。 敵ユニットにはエネルギー表示が出ない。 わしのよ"
+"うな、お前が操作することはできない 同盟ユニットは 青のエネルギー表示になる。 "
+"また、設定で 「チーム色表示」 オプションをオンにしていると、 ユニットの操作者"
+"の色が、 ユニットの足下に円盤状で表示される。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:147
 msgid ""
@@ -1700,7 +1695,7 @@ msgstr "Merleを攻撃"
 #: data/scenarios/tutorial/Basic_Training.cfg:163
 #, fuzzy
 msgid "You successfully attacked Merle."
-msgstr "お前はMerleを攻撃した。"
+msgstr "お前は正しくMerleを攻撃した。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:167
 msgid "Can Merle retaliate from my attack?"
@@ -1722,15 +1717,16 @@ msgid ""
 "shoot across multiple hexes; this is one of the distinctive features of "
 "Wesnoth."
 msgstr ""
-"ユニットが攻撃さると必ず、 自分の武器の一つで応酬する。 これはすなわち 攻撃側"
-"からの各一撃の後で、 防御側も一撃仕返すということだ。 これは片方の攻撃回数が"
-"つきるまで続き、 この場合その相手のユニットは 同様に攻撃回数がなくなるまで攻"
+"ユニットは、攻撃された時に必ず、 自分の武器の一つで応酬する。 すなわち 攻撃側"
+"からの各一撃の後で、 防御側も一撃仕返すということだ。 これは片方の攻撃回数が "
+"つきるまで続き、 この場合その相手のユニットは 同様に攻撃回数がなくなるまで 攻"
 "撃を繰り返す。 しかしながら、 どのユニットも攻撃されたのと 同じ攻撃範囲の武器"
-"を使ってのみ 応酬できる。 つまり、遠距離攻撃は遠距離攻撃でのみ反撃され、 混戦"
-"は混戦でのみ反撃される。 ほとんどのユニットは 遠距離攻撃よりも 強力な混戦攻撃"
-"を持つ。 いくつかの遠距離攻撃をもたない混戦ユニットは、 全く応酬ができない。 "
-"しかしながら、 遠距離ユニットは複数ヘクスを越えて発射できず、 これは Wesnoth"
-"の特徴の一つである。"
+"を使ってのみ 応酬できる。 つまり、 遠隔攻撃は 遠隔攻撃でのみ反撃され、 接近攻"
+"撃は接近攻撃でのみ反撃される。 ほとんどのユニットは 遠隔攻撃よりも 強力な接近"
+"攻撃を持つ。 強い遠距離攻撃をもつユニットは、 接近に向いているユニットに対す"
+"る 反撃において有利である。 いくつかの 遠距離攻撃をもたない混戦ユニットは、 "
+"全く応酬ができない。 しかしながら、 遠距離ユニットは 複数ヘクスを越えて 発射"
+"できず、 これは Wesnothの特徴の一つである。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1745,10 +1741,10 @@ msgid ""
 msgstr ""
 "すべての攻撃は１回の命中ごとに決められた量のダメージがあり、 １回の戦闘で決め"
 "られた回数だけ攻撃を行う。 これらの値は、 攻撃のダメージと回数と呼ばれる。 こ"
-"れらはユニット状態表の攻撃名に下や、 攻撃オプションメニューでの攻撃名に隣に表"
-"示されている。 与えることができる最大のダメージ量をすぐに知るには、 ダメージ"
-"を攻撃回数で掛ける。 例えば、 わしの稲妻は１回で14ダメージで、 ４回攻撃できる"
-"ため、 １回の戦闘のダメージを最大56まで与えることができる。"
+"れらは、 ユニット状態表の攻撃名の下と、 攻撃オプションメニューの 名前の隣"
+"に、 順に表示されている。 与えることができる最大のダメージ量をすぐに知るに"
+"は、 ダメージを攻撃回数で掛ける。 例えば、 わしの稲妻は１回で14ダメージで、 "
+"４回攻撃できるため、 １回の戦闘のダメージを最大56まで与えることができる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "How can you tell how powerful a unit's attacks are?"
@@ -1760,6 +1756,9 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"ユニットには 攻撃をブロックする能力がある。 ユニットの攻撃が命中できる確率"
+"は、 防御しようとする 攻撃に対する 防御側の 能力に基づいており、 攻撃オプショ"
+"ンメニューのダメージと 弓攻撃の 命中回数の後に 一覧表示されている。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "Will my fighter hit every time when he attacks?"
@@ -1767,7 +1766,7 @@ msgstr "戦士の攻撃が命中する回数はどれくらいか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "End your turn, and wait for Merle to attack you."
-msgstr "自分のターンを終えて、 Merleが攻撃するのを待つのだ。"
+msgstr "自分のターンを終えて、 Merleが攻撃してくるのを待つのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:181
 #, fuzzy
@@ -1776,9 +1775,9 @@ msgid ""
 "gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
-"お前の戦士は Merleの攻撃に耐え抜いた。 戦闘で生き残ると、 そのユニットは経験"
-"値を得る。 ユニットが十分な経験値を得たときは、 そのユニットはレベルアップし"
-"て、 より強力になるのだ。"
+"お前の戦士は Merleの攻撃に耐え抜いた。 戦闘で生き残ると 必ず そのユニットは戦"
+"いから経験値を得る。 ユニットが十分な経験値を 得ると、 そのユニットはレベル"
+"アップして、 より強力になる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:185
 msgid "What's experience?"
@@ -1801,6 +1800,7 @@ msgid "What happens when a unit advances?"
 msgstr "レベルアップすると何が起こるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:186
+#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1809,6 +1809,12 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps cast on it "
 "are removed. This is known as 'advance-heal'."
 msgstr ""
+"ユニットが レベルアップすると、 異なるユニットタイプへ 変形する。 このユニッ"
+"トタイプは ユニットが 元々何であったかに 依存するが、しばしば 何に進むかにつ"
+"いて 二つ以上の 選択肢がある場合がある。 レベルアップしたユニットは、 通常は"
+"より強力で 元より1レベル高い。 またユニットが レベルアップすると、 完全に回復"
+"して 身にかかっていた障害は 全て取り除かれる。 これは「成長による回復」とし"
+"て 知られている。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "Move your fighter onto a village."
@@ -1828,6 +1834,7 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "村へ移動させると何が起こるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:209
+#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1838,12 +1845,19 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"ユニットが村の上に移動すると、その村を自分の味方につけたことになる。 これは移"
+"動が残っている 全ての ユニットに 作用する。 村を 味方につけることは、 その"
+"チームに ターン毎に与えられる 金貨を増やしたり、 味方ユニットの 総維持費を 下"
+"げたりするなど、 いくつかの恩恵をもたらす。 お前が 支配する村の総数は、 ス"
+"テータスバーの上の家の絵の後にも 表示される。 経済的な村の 恩恵に加えて、 村"
+"は 戦闘にも利用できる。 村は 各ターン HPを8回復してくれる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "村が近くにないときには、 どのようにして回復させるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:210
+#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1852,6 +1866,12 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
 msgstr ""
+"村がなくても回復する方法がある。 もしユニットが1ターンの間 移動や攻撃をしなけ"
+"れば、 休息からHPを2回復する。 しかしながら、 もし敵に攻撃されれば、 休息で "
+"回復することはできない。 また、周りにいる ユニットを 回復させるユニットが い"
+"くつかある。 エルフの呪い師は そのようなユニットの 一つであり、 エルフの呪い"
+"師の 隣のユニットは 毎ターン HPを4回復させてもらえる。 最後に、 シナリオに勝"
+"利すると、 お前の全ての ユニットは 完全に回復する。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
 msgid ""
@@ -1863,7 +1883,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:218
 msgid "Defeat Merle"
-msgstr "Merleを倒した"
+msgstr "Merleを倒す"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:233
 msgid ""
@@ -1872,7 +1892,7 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
-"おっと！ お前はリーダーを、 主塔から移動させてしまった。 覚えておくがよい。 "
+"おっと！ お前は リーダーを 主塔から移動させてしまった。 覚えておくがよい。 "
 "リーダーが主塔にいなければ、 ユニットを雇うことはできぬ。 また、リーダーが死"
 "亡すれば、 お前は負けだ。 チュートリアルを続行するため、 わしはお前を主塔に瞬"
 "間移動させるぞ。"
@@ -1885,7 +1905,7 @@ msgid ""
 "gained wisdom from my teachings anyway."
 msgstr ""
 "残念なことに、 リーダーが倒されてしまったため お前の負けとなった。 とにか"
-"く、 わしが教えたことから 知恵を得てくれたことを 期待しておるぞ。"
+"く、 わしの教えから 知恵を得られたことを 期待しておるぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:256
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:240
@@ -1894,8 +1914,8 @@ msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you gained "
 "wisdom from my teachings anyway."
 msgstr ""
-"残念なことに、 時間切れのため お前の負けとなった。 とにかく、 わしが教えたこ"
-"とから 知恵を得てくれたことを 期待しておるぞ。"
+"残念なことに、 時間切れのため お前の負けとなった。 とにかく、 わしの教えから "
+"知恵を得られたことを 期待しておるぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #, fuzzy
@@ -1913,6 +1933,7 @@ msgstr ""
 "どうやって、 シナリオの達成方法を知るのか？ あなたが常に教えてくれるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:270
+#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -1922,6 +1943,11 @@ msgid ""
 "any of the conditions are met, the level is over. Hopefully, it was a "
 "victory condition that was met."
 msgstr ""
+"ダイアログを 読んでいるだけでは 勝利する方法が はっきりわからないことが とき"
+"どきある。 この場合は、 ダイアログを開いた後に 表示される シナリオの目標を 見"
+"る必要がある。 またメニュー上の「目標」を クリックすることで 見ることもでき"
+"る。 シナリオの目的は 勝利条件と 敗北条件の一覧であり、 条件のどれかが 満たさ"
+"れると、 そのシナリオは 終了となる。 願わくば、勝利条件を 満たしたいものだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:271
 msgid "What happens when I win a scenario?"
@@ -1935,12 +1961,16 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"お前がシナリオに勝利すると、 お前の全てのユニットは 生き残り、 完全に復調"
+"し、 残りのターン分を 彼等に支払う必要もない。 また、もしお前の軍隊がお前の勝"
+"利した後に そのエリアにとどまれば、 全ての村は 勝利後 直ちにお前に 降伏す"
+"る。 しかしながら 次のシナリオの間に、 手持ちのゴールドは 20%減らされる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:277
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
 #, fuzzy
 msgid "Do you want to review any of the skills learned on this level?"
-msgstr "このシナリオで学んだことを、 もう一度見直したいか？"
+msgstr "このシナリオで学んだ技術を、 もう一度見直したいか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:279
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
@@ -1950,7 +1980,7 @@ msgstr "はい"
 #: data/scenarios/tutorial/Basic_Training.cfg:281
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:258
 msgid "I'm done reviewing skills!"
-msgstr "能力の確認終了！"
+msgstr "技術の見直しは完了です！"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:298
 #, fuzzy
@@ -1964,7 +1994,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "「特性と特殊能力」"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:39
 msgid ""
@@ -1973,6 +2003,7 @@ msgid ""
 msgstr "ここでは、 もう少し難しい訓練を行う。 模擬戦でわしを倒さねばならぬ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
+#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -1980,8 +2011,14 @@ msgid ""
 "Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
+"ほとんどのシナリオは、 ただ全ての敵の リーダーを 倒すことで 勝利することが で"
+"きる。 以前のシナリオからの お前の戦士は この戦闘で 助けてくれるだろう。 彼を"
+"召還するには、 城タイルの上で 右クリックして、 「召還」を選択し、お前の戦士を"
+"選んで 「OK」を押すのだ。 また、 エルフ戦士と エルフの射手を 雇うべきであろ"
+"う。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:60
+#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -1993,26 +2030,37 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
+"＠習得技術の範囲：\n"
+"召還\n"
+"特性\n"
+"ゴールド\n"
+"一日の時間\n"
+"地形\n"
+"耐性\n"
+"特殊能力\n"
+"物体\n"
+"@目標\n"
+"@勝利条件\n"
+"Delfadorを倒す"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Merleを倒した"
+msgstr "Delfadorを倒す"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 #: data/scenarios/tutorial/utils.cfg:49
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Konradの死"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:70
 #: data/scenarios/tutorial/utils.cfg:57
 msgid "Turns run out"
-msgstr ""
+msgstr "ターンがなくなりました。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:83
 #, fuzzy
 msgid "You successfully recalled your Elvish Fighter."
-msgstr "エルフ戦士を召還した。"
+msgstr "お前は エルフ戦士を 正しく召還することができた。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:85
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:99
@@ -2022,8 +2070,9 @@ msgstr "エルフ戦士を召還した。"
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:159
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:173
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:206
+#, fuzzy
 msgid "En guarde!"
-msgstr ""
+msgstr "構えよ！"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 msgid ""
@@ -2032,6 +2081,10 @@ msgid ""
 "recruited units, except that instead of a new unit appearing, a unit from a "
 "previous scenario will appear."
 msgstr ""
+"まず第一に、お前は召還するユニット毎に、 タイプに関係なく、 20ゴールドずつ払"
+"わなければならない。 その他は、 新しいユニットが 現れるかわりに 以前のシナリ"
+"オからの ユニットが現れることを 除いて、 召還されたユニットは 基本的には 雇わ"
+"れたユニットと 同じようなものである。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 msgid "What happens when I recall a unit?"
@@ -2042,19 +2095,27 @@ msgid "How should I decide which units to recall?"
 msgstr "どのユニットを召還すべきか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
+#, fuzzy
 msgid ""
 "You should usually recall units that are already advanced to the next level. "
 "However, you may also want to recall units that have high experience, and "
 "are thus likely to advance. You should recall units that will be useful for "
 "the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"通常は、 すでに次の レベルに成長している ユニットを 召還するべきである。 しか"
+"しながら、 高い経験値があって もうすぐレベルアップしそうなユニットも 召還した"
+"がるであろう。 お前のいる シナリオに有用なユニットを 召還するべきで、 例え"
+"ば、 森のシナリオでは エルフを召還するなどだ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
+#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because of their "
 "assigned traits."
 msgstr ""
+"ユニットが、 雇う前に 示された特性値と、 少し違った 値をもっていることに 気づ"
+"くかもしれない。 これは 彼等が特性を 割り当てられたからである。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 msgid ""
@@ -2064,6 +2125,10 @@ msgid ""
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
 msgstr ""
+"特性の機能は、同じ種類のユニットを 互いに異なるものにして、 多様性を もたせる"
+"ことである。 これは各ユニットの特性を、 雇われるときに ランダムに 割り当てる"
+"ことで 実現される。 ユニットのもつ特性は ステータス表の上に 表示され、 特定の"
+"特性の機能は その特性の上に カーソルをのせると 知ることができる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 msgid "What do traits do?"
@@ -2077,6 +2142,11 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
+"ヒットポイントを 増加させるものから、 レベルアップに 必要な 経験値を 減らすも"
+"のまで、 幅広い効果のある 5つの異なる特性がある。 しかしながら、 全ての特性"
+"は ユニットのパワーを 良くすることを 意図しており、 「否定的」な 特性は 存在"
+"しない。 ほとんどのユニットは 雇われた時に、 2つの異なる特性を 得る機会が 平"
+"等にある。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid "What kind of traits can my units get?"
@@ -2087,12 +2157,12 @@ msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
-"ユニットを雇うにはゴールドが必要です。 もしゴールドが足りなければ雇うことはで"
-"きません。"
+"ユニットを 召還する際には、 ゴールドを失う。 もしゴールドが 足りなければ 雇っ"
+"たり 召還したり することはできない。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid "How much gold do my units cost?"
-msgstr "ユニットの費用はどれくらいか？"
+msgstr "ユニットにはいくらの費用がかかるか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid ""
@@ -2105,12 +2175,20 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"ユニットを雇う際には、 雇ったり召還する 各ユニット毎に ゴールドを支払う 必要"
+"がある。 ユニットを雇う費用は ユニット名の下に表示されている。 ユニットを召還"
+"する費用は 常に20ゴールドである。 またユニットは、 お前の支配下にいる 各ター"
+"ン毎に金がかかる。 「維持費」と呼ばれる この値段は、 ユニットのレベルと等し"
+"い。 しかしながら、リーダーのような 雇ったり召還していない ユニットには 金は"
+"全くかからない。 ユニットの総維持費用は、 一番上のステータスバー上の、 金貨の"
+"絵と 赤矢印に続いて 表示されている。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid "How do I get gold?"
 msgstr "どのようにゴールドを得るのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
+#, fuzzy
 msgid ""
 "You begin each level with a percentage of gold from the previous level. If "
 "this is less than 100 gold, you begin with 100 gold instead. The amount of "
@@ -2119,12 +2197,19 @@ msgid ""
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
 msgstr ""
+"各シナリオは、 直前のシナリオからの 何パーセントかの ゴールドを 持って 開始す"
+"る。もし100ゴールド未満なら、 100ゴールドを持って 始まる。 手持ちの金額は、 "
+"ステータスバー上の 金貨の絵の後に 表示される。 シナリオの開始後は、 各ターン "
+"2ゴールドを 受け取る。 普通は それよりもっと多くの金が 必要になるので、 ター"
+"ン毎に 1ゴールド与えてくれる 村を 味方につけるべきであろう。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
+"Wesnothで太陽が沈もうとしている。 一日の時間は、 異なる属性のユニットが 互い"
+"に対して どれだけの ダメージを 与えるかに 影響する。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid ""
@@ -2134,10 +2219,15 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"3つの属性として、 秩序、 中立、 混沌がある。 また、 一日には、 日中、 夕刻、 "
+"夜の3つの時間帯があり、 日中は 人間のような 秩序属性の ユニットは 25%多くのダ"
+"メージを 与えるが、 アンデッドのような 混沌のユニットは 25%少ないダメージにな"
+"る。 夜間には逆となる。 夕刻は、 全てのユニットが 通常のダメージを与える。 エ"
+"ルフのような中立のユニットは 昼夜の影響を受けない。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid "What are the different alignments and times of day?"
-msgstr "属性と時間による違いは何か？"
+msgstr "どのような属性と時間があるのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid "How do I know what time of day it is?"
@@ -2152,12 +2242,20 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
+"一日の時間帯は通常は一つの順番で進行する。 未明から、夜明け、朝、夕刻、夕刻、"
+"たそがれ、夜の一刻、真夜中、そしてまた繰り返しである。 これは東から昇って 西"
+"に沈む、 太陽と月で表される。 しかしながら、 はいつまでも 夜のままである 地下"
+"のように、 いくつかのシナリオでは異なる 流れになる。 現在の時間帯は ステータ"
+"ス表を 見ると わかる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
+"それぞれのヘクスには 地形があり、 それによって 異なった性質が ヘクスに 与えら"
+"れる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
+#, fuzzy
 msgid ""
 "Two terrains have properties which I described earlier: namely villages and "
 "castle. However the properties of most terrains are more subtle, and have to "
@@ -2168,16 +2266,24 @@ msgid ""
 "determines the unit's chance to be hit on that terrain. For example; elves "
 "have 70% defense on grass, and are therefore hit 30% of the time."
 msgstr ""
+"２つの地形が、以前に述べられた性質を持っている、すなわち村と城である。 しか"
+"し、ほとんどの地形の性質はより微妙であり、 その上に移動するとユニットによって"
+"異なる利益や不利益をもたらす。 地形の最初の性質は、 ヘクス間の移動の際に各ユ"
+"ニットが必要な移動ポイントの数である。 ２つ目の性質は、 その地形の上にいるユ"
+"ニットに与える防御である。 これはその地形の上で攻撃を受ける確率を決定する "
+"パーセンテージとなる。 例えば、 多くのエルフは 木の中で70%の防御を持ち、 ゆえ"
+"に30%の確率で命中される。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
 msgid "What are the different properties that terrains have?"
-msgstr "地形による性質のどのような違いがあるのか？"
+msgstr "地形がもつ性質にはどのような違いがあるのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid "How do I find out the properties of a specific terrain?"
-msgstr "地形の性質を知る方法は？"
+msgstr "特定の地形の性質を知る方法は？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
+#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then select Terrain "
@@ -2187,12 +2293,19 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"特定のユニットに注目してある地形の性質を知るには、 ユニットを右クリックし"
+"て、 「ユニットの解説」を選択し、 「地形修正」を見る。 あるヘクス上にどの地形"
+"があるかは、 カーソルをそのヘクス上に当てて、 画面の右上の隅を見る。 ここ"
+"に、 地形の名前、 ヘクスの座標、 選択されたユニットの防御率、 そのヘクス上を"
+"選択ユニットが移動するのに かかる移動ポイント数が順番に表示される。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:157
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"それぞれの攻撃には、 その攻撃から どれだけの ダメージを 受けるかに 影響す"
+"る、 ダメージタイプがある。 "
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid ""
@@ -2204,12 +2317,19 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"各ユニットは それぞれの攻撃の種類に対して 一定の抵抗力を持っている。 この抵抗"
+"力は敵のその種の武器のダメージから 引かれるパーセンテージとなる。 例えばエル"
+"フの斥候がエルフの射手に攻撃されると、 エルフの斥候は 貫通に対して -20%の耐性"
+"をもつため、 射手は通常より20%多いダメージを与える。 このボーナス／ペナル"
+"ティーは 一日の時間のような 他のボーナス／ペナルティーに加えて 計算されるた"
+"め、 2つの -50%ペナルティーが足されて -100%にもなりうる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid "How does resistance affect attack damage?"
 msgstr "抵抗力はダメージに対してどのような効果があるのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
+#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2218,6 +2338,12 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
+"剣、貫通、打撃、 火炎、冷気、神聖の ６種類のダメージがある。 頑丈に装備された"
+"ユニットは 物理的なもの、 すなわち剣、貫通、打撃 に対して高い耐性をもつが、 "
+"火炎や冷気のような 魔法的なものには 低い耐性になる。 すべての生きているユニッ"
+"トは 神聖なものに耐性があるが、 一方で、アンデッドは それに非常に弱い。 特定"
+"のユニットの耐性を見るには、 ユニットの上で右クリックして、 「ユニットの説"
+"明」を選択し、 「耐性」を見る。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid "What are the different damage types?"
@@ -2227,6 +2353,8 @@ msgstr "ダメージ型の違いは何か？"
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
+"多くのユニットは、 なんらかの形で プレイのルールを 変化させる 特技を持ってい"
+"る。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid ""
@@ -2234,6 +2362,9 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"それぞれの特殊能力は異なる作用があり、 それが特殊能力の大きなポイントであ"
+"る。 あるユニットの特殊能力の 説明を見るには、 カーソルを 特殊能力の名前の上"
+"に当てる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid "What do specialties do?"
@@ -2246,10 +2377,14 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"ユニットが得られる特殊能力は ユニットの種類によって決まる。 例えば全ての将軍"
+"は リーダーシップの特殊能力を 持っている。 特殊能力には2種類、 能力と攻撃の特"
+"殊能力がある。 能力はユニット自身に適用され、 攻撃特殊能力は ユニットの攻撃の"
+"一つにのみ 適用される。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:176
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "どのユニットが 特技を得るのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid ""
@@ -2259,14 +2394,19 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"たくさんの異なる特殊能力があり、 それらについて学ぶことは、 Wesnothをプレイす"
+"る上での 興味深い部分の一つとなる。 2つの最も一般的な特殊能力は 「魔法」と "
+"「リーダーシップ」と呼ばれる。 魔法の攻撃は 敵のいる地形に関係なく 70%の命中"
+"率をもつ。 ユニットは、 リーダーシップをもった 高レベルなユニットの 隣にいる"
+"間、 より多くのダメージを与える。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "ユニットはどんな種類の特殊能力を持つことができるのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "どうやって特殊能力を使うのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid ""
@@ -2275,6 +2415,10 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"特殊能力を 使用するには、 特技を 発動する方法で ユニットを使って ただ移動や攻"
+"撃をする 必要がある。 例えば リーダーシップを 使用するためには、 リーダーシッ"
+"プを持ったユニットを 他のユニットの隣に 動かして、 その他のユニットで 攻撃し"
+"なければならない。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid ""
@@ -2282,6 +2426,9 @@ msgid ""
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
+"物の中には、 それを誘発させた ユニットの 特性値を 変えるものがある。 お前のユ"
+"ニットは、 自分の攻撃でのダメージを 増加させる薬を 発見した。 新しい戦闘の特"
+"性値を見るには、 ステータス表を見るのだ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:202
 msgid "This potion increases the damage of all the drinker's attacks by four."
@@ -2294,9 +2441,9 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
-"この取得物はシナリオ製作者に置かれたもので、 キャンペーンによって異なりま"
-"す。 「王位を継ぐ者」ではほとんどのものは、 ユニットに新たな武器を与えるもの"
-"です。 しかし、 これらは普通、 キャンペーン中に多くは出現しません。"
+"お前が発見した物体はシナリオ製作者に置かれたもので、 キャンペーンによって異な"
+"る。 「王位を継ぐ者」ではほとんどのものは、 ユニットに新たな武器を与えるもの"
+"である。 しかし、 これらは普通、 キャンペーン中にそれほど多くは出現しない。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:208
 msgid "What kind of objects am I likely to encounter?"
@@ -2312,8 +2459,9 @@ msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
-"ほとんどのもののは、 それを取得したユニットに効力を永久に与えます。 しかし、 "
-"聖水などのいくつかのものの効力は、 シナリオ終了時までです。"
+"ほとんどの物体は、 それを取得したユニットに 効力を永久に与える。 しかしなが"
+"ら、 聖水などの いくつかのものについては、 そのシナリオの終わりまでしか 続か"
+"ない。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:223
 msgid ""
@@ -2321,8 +2469,8 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
-"敵が村を占領しないようにするのと、 奪られた村を再占領することを忘れないで下さ"
-"い。これによって、 敵陣営は収入が減り、 ユニットが雇えなくなります。"
+"敵が村を 占領しないように することと、 奪られた村を 再占領することを 覚えてお"
+"くのだ。 これによって、 敵陣営は収入が減り、 ユニットが雇えなくなる。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
 #, fuzzy
@@ -2332,11 +2480,11 @@ msgstr "最初の訓練シナリオの目標を達成したぞ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:285
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
+msgstr "次は、キャンペーンかマルチプレイヤーを 始めるとよいだろう。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "どのように キャンペーンを プレイすればよいのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid ""
@@ -2344,10 +2492,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"キャンペーンを始めるには、 Wesnothを実行して、 「キャンペーン」を選択し、 ど"
+"のキャンペーンを プレイするか選び、 そして 「容易」 「通常」 「困難」のどれか"
+"を 選択する。 「王位を継ぐ者」が Wesnothの初心者には お勧めである。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "どうやってマルチプレイヤーでプレイするのか？"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid ""
@@ -2356,12 +2507,17 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
+"他の人達と Wesnothをプレイするためには、 「マルチプレイヤー」を選択する。 そ"
+"れから「公式サーバに参加」を選ぶ。 これで公式の Wesnothサーバに 接続すること"
+"ができ、 そこでは ゲームを選んで 参加することが できるので、 「ゲームに参加」"
+"を押す。"
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
 msgstr "それは理解した。しかし…"
 
 #: data/scenarios/tutorial/utils.cfg:42
+#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recruiting units\n"
@@ -2370,14 +2526,22 @@ msgid ""
 "Gaining experience\n"
 "Winning scenarios"
 msgstr ""
+"@習得技術の範囲：\n"
+"ユニットを雇う\n"
+"ユニットの移動\n"
+"敵ユニットを攻撃\n"
+"経験を得る\n"
+"シナリオに勝利する\n"
+"@現在の目標：\n"
+"{OBJECTIVE}"
 
 #: data/scenarios/tutorial/utils.cfg:43
 msgid "Current objective:"
-msgstr ""
+msgstr "現在の目標："
 
 #: data/scenarios/tutorial/utils.cfg:53
 msgid "Death of Delfador"
-msgstr ""
+msgstr "Delfadorの死"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2524,11 +2688,11 @@ msgstr "廃墟"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr ""
+msgstr "水中の廃墟"
 
 #: data/terrain.cfg:458
 msgid "swamp ruin"
-msgstr ""
+msgstr "沼の廃墟"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -2612,7 +2776,7 @@ msgid ""
 msgstr ""
 "戦闘には６種類ある：突き刺し、刃物、突進、炎、冷気、そして神聖な攻撃である。"
 "それぞれのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上"
-"で右クリックして、「ユニットの説明」を選択し、「耐性」をクリックすると、ユ"
+"で右クリックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユ"
 "ニットがそれぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ること"
 "ができる。"
 
@@ -4530,7 +4694,7 @@ msgstr ""
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
-msgstr "エルフアーチャー"
+msgstr "エルフの射手"
 
 #: data/units/Elvish_Archer.cfg:19 data/units/Elvish_Archer.cfg:98
 msgid ""
@@ -4632,8 +4796,8 @@ msgid ""
 "bow. The Elves are deft of foot, and fight best in the forest."
 msgstr ""
 "エルフ戦士はWesnothにおけるエルフ軍隊の大部分を占めています。 彼らは剣の弓の"
-"能力を持つため、他の軍事力と区別されます。 エルフは俊敏な脚を持っており、 森"
-"で戦うのに適しています。"
+"スキルを持つため、他の軍事力と区別されます。 エルフは俊敏な脚を持っており、 "
+"森で戦うのに適しています。"
 
 #: data/units/Elvish_Hero.cfg:3
 msgid "Elvish Hero"
@@ -4648,7 +4812,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr "エルフ・ハイロード"
+msgstr "エルフの高級貴族"
 
 #: data/units/Elvish_High_Lord.cfg:18
 msgid ""
@@ -4772,7 +4936,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr "female^エルフシャーマン"
+msgstr "エルフの呪術師"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -6630,7 +6794,7 @@ msgstr "主要開発者"
 
 #: src/about.cpp:48
 msgid "-   Main Developer"
-msgstr "-   メイン開発者"
+msgstr "-   メイン開発"
 
 #: src/about.cpp:51
 msgid "-   Artwork and graphics designer"
@@ -6642,7 +6806,7 @@ msgstr "+開発者"
 
 #: src/about.cpp:72
 msgid "+General Purpose Administrators"
-msgstr "+一般管理者"
+msgstr "+全般管理者"
 
 #: src/about.cpp:77
 msgid "+Artwork and graphics designers"
@@ -6662,7 +6826,7 @@ msgstr "+マルチプレイヤーマップ"
 
 #: src/about.cpp:124
 msgid "+Packagers"
-msgstr "+パッケージ担当"
+msgstr "+パッケージ"
 
 #: src/about.cpp:135
 msgid "+Miscellaneous"
@@ -6880,7 +7044,7 @@ msgstr ""
 
 #: src/dialogs.cpp:168
 msgid "No objectives available"
-msgstr "目的がありません"
+msgstr "目標がありません"
 
 #: src/dialogs.cpp:182
 msgid "Save Game"
@@ -7853,7 +8017,7 @@ msgstr "勝利"
 
 #: src/playlevel.cpp:836
 msgid "You have emerged victorious!"
-msgstr "あなたの勝利が確定しました！"
+msgstr "あなたの勝利が明らかになりました！"
 
 #: src/playlevel.cpp:839
 msgid "Scenario Report"
