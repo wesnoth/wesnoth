@@ -410,7 +410,7 @@ void show_preferences_dialog(display& disp)
 	                              scroll_label,0,0);
 
 
-	const int text_right = xpos + maximum(music_rect.w,sound_rect.w) + 5;
+	const int text_right = xpos + maximum(scroll_rect.w,maximum(music_rect.w,sound_rect.w)) + 5;
 
 	const int music_pos = ypos + title_rect.h + 20;
 	const int sound_pos = music_pos + 50;
