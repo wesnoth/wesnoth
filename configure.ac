@@ -66,6 +66,29 @@ fi
 AC_SUBST([KDE_DESKTOP])
 AC_SUBST([KDE_ICON])
 
+
+#######################################################################
+# Checks for types.                                                   #
+#######################################################################
+
+AC_MSG_CHECKING([if char is signed])
+
+#AC_COMPILE_IFELSE(
+#[AC_LANG_SOURCE([
+#int main(int argc, char **argv)
+#{
+#[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
+#        test_array [0] = 0;
+#	return 0;
+#}
+#	]],#)],
+AC_COMPILE_IFELSE(
+	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)] 
+	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
+chars. Try with another compiler (specify it using CXX environment variable.)])])
+
 #######################################################################
 # Checks for libraries.                                               #
 #######################################################################
