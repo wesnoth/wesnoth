@@ -1901,7 +1901,7 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 void display::float_label(const gamemap::location& loc, const std::string& text,
 						  int red, int green, int blue)
 {
-	if(preferences::show_floating_labels() == false) {
+	if(preferences::show_floating_labels() == false || fogged(loc.x,loc.y)) {
 		return;
 	}
 
