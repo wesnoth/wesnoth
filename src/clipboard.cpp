@@ -382,4 +382,8 @@ std::string copy_from_clipboard()
 	return "";
 }
 
+void handle_system_event(const SDL_Event& event)
+{
+}
+
 #endif
