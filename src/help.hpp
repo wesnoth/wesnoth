@@ -417,6 +417,7 @@ enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESC
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
 std::vector<topic> generate_ability_topics();
 std::vector<topic> generate_weapon_special_topics();
+std::vector<topic> generate_terrains_topics();
 
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
