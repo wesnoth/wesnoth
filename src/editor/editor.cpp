@@ -300,6 +300,16 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 	locs[0] = hex;
 	get_adjacent_tiles(hex,locs+1);
 	for(int i = 0; i != 7; ++i) {
+		if (!map_.on_board(locs[i])) {
+			// One adjacent square is not on the board, clear it from
+			// the border cache so it will be redrawn correctly.
+			gamemap::TERRAIN terrain_before = map_.get_terrain(locs[i]);
+			map_.remove_from_border_cache(locs[i]);
+			gamemap::TERRAIN terrain_after = map_.get_terrain(locs[i]);
+			if (terrain_before != terrain_after) {
+				invalidate_adjacent(locs[i]);
+			}
+		}
 		gui_.invalidate(locs[i]);
 	}
 	minimap_dirty_ = true;
