@@ -90,7 +90,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 			std::string::size_type pos;
 			while((pos = flag.find("%d")) != std::string::npos) {
 				std::ostringstream s;
-				s << int(i+1);
+				s << teams_[i].map_colour_to();
 				flag.replace(pos, 2, s.str());
 			}
 		} else {
@@ -1194,12 +1194,14 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*zoom());
 	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
+	double blend_ratio = 0.25;
+
 	if(loc == advancingUnit_ && it != units_.end()) {
 		//the unit is advancing - set the advancing colour to white if it's a
 		//non-chaotic unit, otherwise black
 		blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
 		                                        rgb(16,16,16) : rgb(255,255,255);
-		highlight_ratio = advancingAmount_;
+		blend_ratio = 1 - advancingAmount_;
 	} else if(it->second.poisoned() /* && highlight_ratio == 1.0 */) {
 		//the unit is poisoned - draw with a green hue
 		blend_with = rgb(0,255,0);
@@ -1220,7 +1222,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,false,
-		          highlight_ratio,blend_with,submerge,ellipse_back,ellipse_front);
+		          highlight_ratio,blend_with,blend_ratio,submerge,ellipse_back,ellipse_front);
 	}
 
 	const double bar_alpha = highlight_ratio < 1.0 && blend_with == 0 ? highlight_ratio : 1.0;
@@ -1826,7 +1828,7 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 }
 
 void display::draw_unit(int x, int y, surface image,
-		bool upside_down, double alpha, Uint32 blendto, double submerged,
+		bool upside_down, double alpha, Uint32 blendto, double blend_ratio, double submerged,
 		surface ellipse_back, surface ellipse_front)
 {
 	//calculate the y position of the ellipse. It should be the same as the y position of the image, unless
@@ -1842,8 +1844,8 @@ void display::draw_unit(int x, int y, surface image,
 		surf.assign(flop_surface(surf));
 	}
 
-	if(blendto != 0) {
-		surf = blend_surface(surf, 0.25, blendto);
+	if(blend_ratio != 0) {
+		surf = blend_surface(surf, blend_ratio, blendto);
 	}
 	if(alpha > 1.0) {
 		surf = brighten_image(surf,alpha);

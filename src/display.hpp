@@ -323,7 +323,9 @@ public:
 	//submerged: the amount of the unit out of 1.0 that is submerged
 	//           (presumably under water) and thus shouldn't be drawn
 	void draw_unit(int x, int y, surface image,
-			bool upside_down=false,double alpha=1.0, Uint32 blendto=0, double submerged=0.0,
+			bool upside_down=false,double alpha=1.0, 
+			Uint32 blendto=0, double blend_ratio=0,
+			double submerged=0.0,
 			surface ellipse_back=surface(NULL),
 			surface ellipse_front=surface(NULL));
 
