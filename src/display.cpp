@@ -1369,9 +1369,7 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
-			std::cerr << "Flag cargada OK" << std::endl;
 		}
-		else{ std::cerr << "Flag es NULL" << std::endl; }
 
 		typedef overlay_map::const_iterator Itor;
 
