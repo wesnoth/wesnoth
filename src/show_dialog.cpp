@@ -439,7 +439,11 @@ int show_dialog(display& disp, surface image,
 
 	menu menu_(disp,menu_items,type == MESSAGE);
 
+#ifdef USE_TINY_GUI
+	const int max_line_length = 30;
+#else
 	const int max_line_length = 54;
+#endif
 
 	std::string message = msg;
 	text_to_lines(message,max_line_length);
