@@ -11,6 +11,7 @@
 */
 
 #include "SDL.h"
+#include "SDL_keysym.h"
 
 #include "../actions.hpp"
 #include "../ai.hpp"
@@ -22,7 +23,7 @@
 #include "../gamestatus.hpp"
 #include "../key.hpp"
 #include "../language.hpp"
-#include "../menu.hpp"
+#include "../widgets/menu.hpp"
 #include "../pathfind.hpp"
 #include "../playlevel.hpp"
 #include "../team.hpp"
@@ -46,7 +47,7 @@ int main(int argc, char** argv)
 	}
 
 	preproc_map defines_map;
-	defines_map["MEDIUM"] = preproc_symbol;
+	defines_map["MEDIUM"] = preproc_define();
 	config cfg(preprocess_file("data/game.cfg",&defines_map));
 
 	set_language("English", cfg);
@@ -102,13 +103,13 @@ int main(int argc, char** argv)
 		if(key[SDLK_RIGHT] || mousex == gui.x()-1)
 			gui.scroll(scroll_speed,0.0);
 
-		if(key[SDLK_Z])
+		if(key[SDLK_z])
 			gui.zoom(zoom_amount);
 
-		if(key[SDLK_X])
+		if(key[SDLK_x])
 			gui.zoom(-zoom_amount);
 
-		if(key[SDLK_D])
+		if(key[SDLK_d])
 			gui.default_zoom();
 
 		gui.highlight_hex(gui.hex_clicked_on(mousex,mousey));
@@ -146,7 +147,7 @@ int main(int argc, char** argv)
 		}
 
 		SDL_Delay(20);
-		pump_events();
+		events::pump();
 	}
 
 	system("pwd");
