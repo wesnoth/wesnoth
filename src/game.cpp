@@ -182,18 +182,19 @@ int play_game(int argc, char** argv)
 	}
 
 	bool test_mode = false;
-	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val == "-windowed") {
-			video_flags = 0;
+			preferences::set_fullscreen(false);
 		} else if(val == "-test") {
 			test_mode = true;
 		} else if(val == "-debug") {
 			game_config::debug = true;
 		}
 	}
+
+	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
 	const std::pair<int,int>& resolution = preferences::resolution();
 
