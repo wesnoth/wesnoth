@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-04 22:39+0200\n"
-"PO-Revision-Date: 2004-10-03 23:43+0200\n"
+"PO-Revision-Date: 2004-10-04 23:52+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -193,7 +193,6 @@ msgid "Movement"
 msgstr "Mouvement"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -236,7 +235,7 @@ msgstr ""
 "consomme 2, alors que les cavaliers en dépensent 3. Vous pouvez apprendre "
 "combien de points une unité nécessite pour entrer dans un type de terrain "
 "donné en effectuant un clic-droit sur celle-ci, en choisissant Description "
-"de l'unité, puis enfin en cliquant sur <italic>text='Modificateurs de "
+"de l'unité, puis en regardant la rubrique <italic>text='Modificateurs de "
 "Terrain'</italic>.\n"
 "\n"
 "Une autre chose à ne pas oublier lors des déplacements est la notion de "
@@ -252,7 +251,6 @@ msgid "Combat"
 msgstr "Combat"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -320,7 +318,7 @@ msgstr ""
 "Avec deux exceptions, la probabilité de toucher une unité est uniquement "
 "fondée sur son taux de défense dans le <ref>dst=terrain text=Terrain</ref> "
 "sur lequel elle se tient. Cela peut être trouvé par un clic-droit sur une "
-"unité, en choissant Description de l'unité puis en cliquant sur "
+"unité, en choissant Description de l'unité puis en regardant la rubrique "
 "<italic>text='Modificateurs de terrain'</italic>. Par exemple, les elfes ont "
 "une défense de 70% en forêt, ce qui signifie qu'une unité les attaquant n'a "
 "que 30% de chance de les atteindre. Par opposition, la probabilité de l'elfe "
@@ -614,9 +612,8 @@ msgstr ""
 "L'héritier du trône. Amusez-vous bien et bonne chance !"
 
 #: data/help.cfg:197
-#, fuzzy
 msgid "About"
-msgstr "Jeune homme"
+msgstr "À propos"
 
 #: data/help.cfg:242
 msgid ""
@@ -2022,7 +2019,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Comment trouver les propriétés d'un terrain particulier ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2034,11 +2030,12 @@ msgid ""
 msgstr ""
 "Pour trouver les propriétés d'un terrain concernant une unité particulière, "
 "faites un clic-droit sur l'unité, choisissez Description de l'unité, puis "
-"Modificateurs de terrain. Pour trouver quel est le terrain d'un hexagone "
-"particulier, placez votre curseur dessus et regardez dans le coin supérieur "
-"droit de l'écran. Là apparaissent, dans l'ordre, le nom du terrain, les "
-"coordonnées de l'hexagone, la défense de l'unité selectionnée, le nombre de "
-"points de mouvements nécessaires à cette unité pour y pénétrer."
+"regardez la rubrique Modificateurs de terrain. Pour trouver quel est le "
+"terrain d'un hexagone particulier, placez votre curseur dessus et regardez "
+"dans le coin supérieur droit de l'écran. Là apparaissent, dans l'ordre, le "
+"nom du terrain, les coordonnées de l'hexagone, la défense de l'unité "
+"selectionnée, le nombre de points de mouvements nécessaires à cette unité "
+"pour y pénétrer."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
 msgid ""
@@ -2072,7 +2069,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Comment la résistance affecte-t-elle les dommages ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2088,7 +2084,7 @@ msgstr ""
 "unités vivantes ont une résistance face au sacré alors que les morts-vivants "
 "sont extrêmement faibles face à lui. Pour trouver la résistance d'une unité "
 "particulière, faites un clic-droit sur l'unité, sélectionnez Description de "
-"l'unité, puis Résistance."
+"l'unité, puis regardez la rubrique Résistance."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
@@ -2252,7 +2248,6 @@ msgid "How do I play multiplayer?"
 msgstr "Comment jouer en mode multijoueurs ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
-#, fuzzy
 msgid ""
 "To play Wesnoth against other people, select 'Multiplayer'. Then select "
 "'Join Official Server'. This will connect you to the official Wesnoth "
@@ -2261,8 +2256,8 @@ msgid ""
 msgstr ""
 "Pour jouer à Wesnoth contre d'autres personnes, choisir 'Multijoueur'. Puis "
 "'Rejoindre le serveur officiel'. Cela vous connectera au serveur officiel de "
-"Wesnoth, à partir duquel vous pourrez choisir une partie, puis cliquer sur "
-"'Rejoindre une partie'."
+"Wesnoth, à partir duquel vous pourrez choisir une partie et y participer en "
+"sélectionnant 'Rejoindre une partie'."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -6810,9 +6805,8 @@ msgid "+Internationalization Manager"
 msgstr "+Coordinateur des traductions"
 
 #: src/about.cpp:129
-#, fuzzy
 msgid "+Basque Translation"
-msgstr "+Traduction danoise"
+msgstr "+Traduction basque"
 
 #: src/about.cpp:133
 msgid "+Catalan Translation"
@@ -6859,9 +6853,8 @@ msgid "+Polish Translation"
 msgstr "+Traduction polonaise"
 
 #: src/about.cpp:207
-#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Traduction portugaise"
+msgstr "+Traduction portugaise (brésilienne)"
 
 #: src/about.cpp:215
 msgid "+Slovak Translation"
@@ -7174,7 +7167,7 @@ msgstr " ,Récupérer d'autres campagnes..."
 
 #: src/game.cpp:922
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Télécharger des campagnes supplémentaires sur internet."
 
 # retour à la ligne nécessaire
 #: src/game.cpp:932
@@ -7223,17 +7216,15 @@ msgstr "Erreur de communication avec le serveur."
 
 #: src/game.cpp:1021
 msgid ",Name,Version,Author,Downloads"
-msgstr ""
+msgstr ",Nom,Version,Auteur,Téléchargements"
 
 #: src/game.cpp:1041
-#, fuzzy
 msgid "Publish campaign: "
-msgstr "Capitaine elfe"
+msgstr "Diffuser la campagne : "
 
 #: src/game.cpp:1045
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Charger la campagne"
+msgstr "Effacer la campagne : "
 
 #: src/game.cpp:1049
 msgid "There are no campaigns available for download from this server."
@@ -7256,9 +7247,8 @@ msgid "Campaign Installed"
 msgstr "Campagne installée"
 
 #: src/game.cpp:1090
-#, fuzzy
 msgid "The campaign has been installed."
-msgstr "Le jeu a été sauvegardé"
+msgstr "La campagne a été installée"
 
 #: src/game.cpp:1092
 msgid "Network communication error."
@@ -7282,17 +7272,15 @@ msgstr "Tentative de connexion expirée"
 
 #: src/game.cpp:1111 src/game.cpp:1148 src/game.cpp:1172
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "Le serveur a renvoyé une erreur : \""
 
 #: src/game.cpp:1114
-#, fuzzy
 msgid "Terms"
-msgstr "Équipe"
+msgstr "Conditions"
 
 #: src/game.cpp:1150 src/game.cpp:1174
-#, fuzzy
 msgid "Response"
-msgstr "pierre"
+msgstr "Réponse"
 
 #: src/game.cpp:1186
 msgid "Join Official Server"
@@ -7885,14 +7873,12 @@ msgid "?"
 msgstr ""
 
 #: src/multiplayer_client.cpp:780
-#, fuzzy
 msgid "Leader: "
-msgstr "Chef"
+msgstr "Meneur : "
 
 #: src/multiplayer_client.cpp:782
-#, fuzzy
 msgid "Recruits: "
-msgstr "Recrutements"
+msgstr "Recrutements : "
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -8190,7 +8176,6 @@ msgid "him"
 msgstr "lui"
 
 #: src/playturn.cpp:1776
-#, fuzzy
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler"
 
