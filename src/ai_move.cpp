@@ -40,12 +40,14 @@ struct move_cost_calculator
 		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator Itor;
 		std::pair<Itor,Itor> range = dstsrc_.equal_range(loc);
 		while(range.first != range.second) {
-			if(range.first->second == loc_)
+			if(range.first->second == loc_) {
 				return 0.01;
+			}
+
 			++range.first;
 		}
 
-		const gamemap::TERRAIN terrain = map_.underlying_terrain(map_[loc.x][loc.y]);
+		const gamemap::TERRAIN terrain = map_[loc.x][loc.y];
 
 		const double modifier = 1.0;//move_type_.defense_modifier(map_,terrain);
 		const double move_cost = move_type_.movement_cost(map_,terrain);

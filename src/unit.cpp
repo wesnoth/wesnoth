@@ -356,14 +356,14 @@ void unit::heal_all()
 	hitpoints_ = max_hitpoints();
 }
 
-bool unit::invisible(gamemap::TERRAIN terrain, int lawful_bonus, 
+bool unit::invisible(const std::string& terrain, int lawful_bonus, 
 		const gamemap::location loc, 
 		const unit_map& units,const std::vector<team>& teams) const
 {
 	bool is_inv = false;
 
 	static const std::string forest_invisible("ambush");
-	if((terrain == gamemap::FOREST) && has_flag(forest_invisible)) {
+	if(std::count(terrain.begin(),terrain.end(),gamemap::FOREST) && has_flag(forest_invisible)) {
 		is_inv = true;
 	}
 	static const std::string night_invisible("nightstalk");
@@ -671,8 +671,10 @@ int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
 //don't allow level 0 units to take villages - removed until AI
 //is smart enough to deal with this.
-//	if(type_->level() == 0 && terrain == gamemap::TOWER)
+//	if(type_->level() == 0 && map.is_village(terrain))
 //		return 100;
+
+
 
 	const int res = type_->movement_type().movement_cost(map,terrain);
 

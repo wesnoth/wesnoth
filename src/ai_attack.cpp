@@ -289,7 +289,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
 
-			const bool on_village = map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER;
+			const bool on_village = map.is_village(movements[i].second);
 
 			//up to double the value of a unit based on experience
 			cost += (double(att->second.experience())/
@@ -379,7 +379,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			defhp = defend_it->second.hitpoints();
 		} else if(defhp == 0) {
 			chance_to_kill += 1.0;
-		} else if(map.underlying_terrain(map[defend_it->first.x][defend_it->first.y]) == gamemap::TOWER) {
+		} else if(map.is_village(defend_it->first)) {
 			defhp += game_config::heal_amount;
 			if(defhp > target_hp)
 				defhp = target_hp;
@@ -525,7 +525,7 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 						most_damage = damage;
 				}
 
-				const bool village = map_.underlying_terrain(terrain) == gamemap::TOWER;
+				const bool village = map_.is_village(terrain);
 				const double village_bonus = (use_terrain && village) ? 2.0 : 1.0;
 
 				const double defense = use_terrain ? double(100 - un.defense_modifier(map_,terrain))/100.0 : 0.5;

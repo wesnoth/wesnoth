@@ -28,8 +28,12 @@ public:
 	const std::string& default_image() const;
 	const std::string& adjacent_image() const;
 	const std::string& name() const;
+
+	//the character representing this terrain
 	char letter() const;
-	char type() const;
+
+	//the underlying type of the terrain
+	const std::string& type() const;
 
 	pixel_data get_rgb() const;
 
@@ -42,16 +46,21 @@ public:
 	//whether the terrain's overlay precedence is equal (rather than higher
 	//than) the preceeding terrain
 	bool equal_precedence() const;
+
+	bool gives_healing() const;
+	bool is_village() const;
+	bool is_castle() const;
+	bool is_keep() const;
 private:
 	std::vector<std::string> images_;
 	std::string adjacent_image_;
 	std::string name_;
 
 	//the 'letter' is the letter that represents this
-	//terrain type. The 'type' is the letter of the
-	//terrain type which this is equivalent to, which
-	//may be the same as 'letter'
-	char type_, letter_;
+	//terrain type. The 'type' is a list of the 'underlying types'
+	//of the terrain. This may simply be the same as the letter.
+	char letter_;
+	std::string type_;
 
 	pixel_data colour_;
 
@@ -61,6 +70,8 @@ private:
 
 	bool equal_precedence_;
 	bool is_light_;
+
+	bool heals_, village_, castle_, keep_;
 };
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

@@ -269,16 +269,24 @@ int unit_movement_type::movement_cost(const gamemap& map,
 	int res = -1;
 
 	if(movement_costs != NULL) {
-		const std::string& name = map.underlying_terrain_name(terrain);
-		const std::string& val = (*movement_costs)[name];
+		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
+		for(std::vector<std::string>::const_iterator i = names.begin(); i != names.end(); ++i) {
+			const std::string& val = (*movement_costs)[*i];
 
-		if(val != "") {
-			res = atoi(val.c_str());
+			if(val != "") {
+				const int value = atoi(val.c_str());
+				if(res == -1 || value < res) {
+					res = value;
+				}
+			}
 		}
 	}
 
-	if(res == -1 && parent_ != NULL) {
-		res = parent_->movement_cost(map,terrain);
+	if(parent_ != NULL) {
+		const int value = parent_->movement_cost(map,terrain);
+		if(res == -1 || value < res) {
+			res = value;
+		}
 	}
 
 	if(res <= 0)
@@ -303,16 +311,24 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	const config* const defense = cfg_.child("defense");
 
 	if(defense != NULL) {
-		const std::string& name = map.underlying_terrain_name(terrain);
-		const std::string& val = (*defense)[name];
+		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
+		for(std::vector<std::string>::const_iterator i = names.begin(); i != names.end(); ++i) {
+			const std::string& val = (*defense)[*i];
 
-		if(val != "") {
-			res = atoi(val.c_str());
+			if(val != "") {
+				const int value = atoi(val.c_str());
+				if(res == -1 || value < res) {
+					res = value;
+				}
+			}
 		}
 	}
 
-	if(res == -1 && parent_ != NULL) {
-		res = parent_->defense_modifier(map,terrain);
+	if(parent_ != NULL) {
+		const int value = parent_->defense_modifier(map,terrain);
+		if(res == -1 || value < res) {
+			res = value;
+		}
 	}
 
 	if(res < 0)

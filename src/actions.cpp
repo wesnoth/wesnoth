@@ -39,7 +39,7 @@ struct castle_cost_calculator
 
 	double cost(const gamemap::location& loc, double cost_so_far) const
 	{
-		if(!map_.on_board(loc) || map_[loc.x][loc.y] != gamemap::CASTLE)
+		if(!map_.is_castle(loc))
 			return 10000;
 
 		return 1;
@@ -86,7 +86,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	if(u == units.end())
 		return string_table["no_leader_to_recruit"];
 
-	if(map.get_terrain(u->first) != gamemap::KEEP) {
+	if(map.is_keep(u->first)) {
 		std::cerr << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
 		return string_table["leader_not_on_start"];
 	}
@@ -95,13 +95,13 @@ std::string recruit_unit(const gamemap& map, int side,
 		const paths::route& rt = a_star_search(u->first,recruit_location,
 		                                   100.0,castle_cost_calculator(map));
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
-		   map[recruit_location.x][recruit_location.y] != gamemap::CASTLE)
+		   !map.is_castle(recruit_location))
 			recruit_location = gamemap::location();
 	}
 
 	if(!map.on_board(recruit_location)) {
 		recruit_location = find_vacant_tile(map,units,u->first,
-		                                    need_castle ? gamemap::CASTLE : 0);
+		                                    need_castle ? VACANT_CASTLE : VACANT_ANY);
 	}
 
 	if(!map.on_board(recruit_location)) {
@@ -625,7 +625,7 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make clones of themselves on the target hex
 				//units on villages that die cannot be plagued
-				if(stats.attacker_plague && map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER) {
+				if(stats.attacker_plague && !map.is_village(loc)) {
 					a = units.find(attacker_loc);
 					if(a != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(loc,a->second));
@@ -757,7 +757,7 @@ void attack(display& gui, const gamemap& map,
 
 				//plague units make clones of themselves on the target hex.
 				//units on villages that die cannot be plagued
-				if(stats.defender_plague && map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER) {
+				if(stats.defender_plague && !map.is_village(loc)) {
 					d = units.find(defender_loc);
 					if(d != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(
@@ -953,8 +953,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		//it has regeneration, and it is wounded
 		if(i->second.side() == side) {
 			if(i->second.hitpoints() < i->second.max_hitpoints()){
-				if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
-				 i->second.type().regenerates())) {
+				if(map.gives_healing(i->first) || i->second.type().regenerates()) {
 					amount_healed = game_config::cure_amount;
 				}
 			}
@@ -1474,7 +1473,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
 		//which case we should stop immediately.
 		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
-			if(units.count(*step) == 0 && map.underlying_terrain(map.get_terrain(*step)) != gamemap::TOWER) {
+			if(units.count(*step) == 0 && !map.is_village(*step)) {
 				units.insert(std::pair<gamemap::location,unit>(*step,ui->second));
 				
 				bool res;
@@ -1547,7 +1546,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	}
 
 	int orig_tower_owner = -1;
-	if(map.underlying_terrain(map[steps.back().x][steps.back().y]) == gamemap::TOWER) {
+	if(map.is_village(steps.back())) {
 		orig_tower_owner = tower_owner(steps.back(),teams);
 
 		if(orig_tower_owner != team_num) {

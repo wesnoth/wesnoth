@@ -40,8 +40,8 @@ public:
 	//is simply an alias, the underlying terrain name is the name of the
 	//terrain that it's aliased to
 	const std::string& terrain_name(TERRAIN terrain) const;
-	const std::string& underlying_terrain_name(TERRAIN terrain) const;
-	TERRAIN underlying_terrain(TERRAIN terrain) const;
+	std::vector<std::string> underlying_terrain_name(TERRAIN terrain) const;
+	const std::string& underlying_terrain(TERRAIN terrain) const;
 
 	//exception thrown if the map file is not in the correct format.
 	struct incorrect_format_exception {
@@ -73,6 +73,16 @@ public:
 
 		static location null_location;
 	};
+
+	bool is_village(TERRAIN terrain) const;
+	bool gives_healing(TERRAIN terrain) const;
+	bool is_castle(TERRAIN terrain) const;
+	bool is_keep(TERRAIN terrain) const;
+
+	bool is_village(const location& loc) const;
+	bool gives_healing(const location& loc) const;
+	bool is_castle(const location& loc) const;
+	bool is_keep(const location& loc) const;
 
 	//loads a map, with the given terrain configuration.
 	//data should be a series of lines, with each character representing

@@ -1711,7 +1711,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 
 SDL_Surface* display::getFlag(gamemap::TERRAIN terrain, int x, int y)
 {
-	const bool village = (map_.underlying_terrain(terrain) == gamemap::TOWER);
+	const bool village = map_.is_village(terrain);
 	if(!village)
 		return NULL;
 

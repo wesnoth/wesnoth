@@ -74,7 +74,7 @@ public:
 	void heal(int amount);
 	void heal_all();
 
-	bool invisible(gamemap::TERRAIN terrain, int lawful_bonus, 
+	bool invisible(const std::string& terrain, int lawful_bonus, 
 			const gamemap::location loc,
 			const unit_map& units,const std::vector<team>& teams) const;
 	bool poisoned() const;

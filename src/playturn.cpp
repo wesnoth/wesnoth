@@ -835,9 +835,7 @@ bool turn_info::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by turn_info::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
-		if(!map_.on_board(last_hex_)) return false;
-		char terrain = map_.underlying_terrain(map_[last_hex_.x][last_hex_.y]);
-		return terrain == gamemap::CASTLE || terrain == gamemap::KEEP;
+		return map_.is_castle(last_hex_);
 	}
 	default:
 		return true;
@@ -1129,7 +1127,7 @@ void turn_info::undo()
 			return;
 		}
 	
-		if(map_.underlying_terrain(map_[route.front().x][route.front().y]) == gamemap::TOWER) {
+		if(map_.is_village(route.front())) {
 			get_tower(route.front(),teams_,action.original_village_owner,units_);
 		}
 	
@@ -1212,7 +1210,7 @@ void turn_info::redo()
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	
-		if(map_.underlying_terrain(map_[route.back().x][route.back().y]) == gamemap::TOWER) {
+		if(map_.is_village(route.back())) {
 			get_tower(route.back(),teams_,un.side()-1,units_);
 		}
 	

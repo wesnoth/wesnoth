@@ -225,8 +225,9 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 	current_unit.set_movement(0);
 	info_.units.insert(std::pair<location,unit>(to,current_unit));
-	if(info_.map.underlying_terrain(info_.map[to.x][to.y]) == gamemap::TOWER)
+	if(info_.map.is_village(to)) {
 		get_tower(to,info_.teams,info_.team_num-1,info_.units);
+	}
 
 	info_.disp.draw_tile(to.x,to.y);
 	info_.disp.draw();
@@ -292,7 +293,7 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			bool friend_owns = false;
 
 			//don't take friendly villages
-			if(!enemy && info_.map.underlying_terrain(info_.map[dst.x][dst.y]) == gamemap::TOWER) {
+			if(!enemy && info_.map.is_village(dst)) {
 				for(size_t n = 0; n != info_.teams.size(); ++n) {
 					if(info_.teams[n].owns_tower(dst)) {
 						if(n+1 != info_.team_num && current_team().is_enemy(n+1) == false) {
@@ -509,8 +510,9 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 {
 	//try to acquire towers
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
-		if(map_.underlying_terrain(map_[i->first.x][i->first.y]) != gamemap::TOWER)
+		if(map_.is_village(i->first)) {
 			continue;
+		}
 
 		bool want_tower = true, owned = false;
 		for(size_t j = 0; j != teams_.size(); ++j) {
@@ -571,8 +573,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
-				if(map_.underlying_terrain(map_[dst.x][dst.y]) == gamemap::TOWER &&
-				   units_.find(dst) == units_.end()) {
+				if(map_.is_village(dst) && units_.find(dst) == units_.end()) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc);
 					std::cerr << "found village with vulnerability: " << vuln << "\n";
@@ -665,7 +666,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 					}
 
 					//give a bonus for getting to a village.
-					const int modified_defense = defense - (map_.underlying_terrain(map_.get_terrain(hex)) == gamemap::TOWER ? 10 : 0);
+					const int modified_defense = defense - (map_.is_village(hex) ? 10 : 0);
 
 					if(modified_defense < best_defensive_rating) {
 						best_defensive_rating = modified_defense;

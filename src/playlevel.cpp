@@ -42,7 +42,7 @@ namespace {
 				const gamemap::location pos(i,j);
 				if(map.on_board(pos)) {
 					++positions;
-					if(std::count(terrain_liked.begin(),terrain_liked.end(),map.underlying_terrain(map[i][j]))) {
+					if(std::count(terrain_liked.begin(),terrain_liked.end(),map[i][j])) {
 						++liked;
 					}
 				}

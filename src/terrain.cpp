@@ -17,8 +17,9 @@
 #include <cstdlib>
 #include <iostream>
 
-terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' '),
-                               height_adjust_(0), submerge_(0.0), equal_precedence_(false)
+terrain_type::terrain_type() : images_(1,"void"), type_(" "), letter_(' '),
+                               height_adjust_(0), submerge_(0.0), equal_precedence_(false),
+							   heals_(false), village_(false), castle_(false), keep_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg)
@@ -30,14 +31,20 @@ terrain_type::terrain_type(const config& cfg)
 
 	name_ = cfg["name"];
 	const std::string& letter = cfg["char"];
-	assert(!letter.empty());
-	letter_ = letter[0];
+	
+	if(letter == "") {
+		letter_ = 0;
+	} else {
+		letter_ = letter[0];
+	}
 
 	const std::string& alias = cfg["aliasof"];
-	if(alias.empty())
-		type_ = letter_;
-	else
-		type_ = alias[0];
+	if(alias.empty()) {
+		type_.resize(1);
+		type_[0] = letter_;
+	} else {
+		type_ = alias;
+	}
 
 	colour_.read(cfg);
 
@@ -46,6 +53,11 @@ terrain_type::terrain_type(const config& cfg)
 
 	equal_precedence_ = cfg["no_overlay"] == "true";
 	is_light_ = cfg["light"] == "true";
+
+	heals_ = cfg["heals"] == "true";
+	village_ = cfg["gives_income"] == "true";
+	castle_ = cfg["recruit_onto"] == "true";
+	keep_ = cfg["recruit_from"] == "true";
 }
 
 const std::string& terrain_type::image(int x, int y) const
@@ -76,7 +88,7 @@ char terrain_type::letter() const
 	return letter_;
 }
 
-char terrain_type::type() const
+const std::string& terrain_type::type() const
 {
 	return type_;
 }
@@ -93,7 +105,7 @@ bool terrain_type::is_light() const
 
 bool terrain_type::is_alias() const
 {
-	return type_ != letter_;
+	return type_.size() != 1 || type_[0] != letter_;
 }
 
 int terrain_type::unit_height_adjust() const
@@ -109,6 +121,26 @@ double terrain_type::unit_submerge() const
 bool terrain_type::equal_precedence() const
 {
 	return equal_precedence_;
+}
+
+bool terrain_type::gives_healing() const
+{
+	return heals_;
+}
+
+bool terrain_type::is_village() const
+{
+	return village_;
+}
+
+bool terrain_type::is_castle() const
+{
+	return castle_;
+}
+
+bool terrain_type::is_keep() const
+{
+	return keep_;
 }
 
 void create_terrain_maps(const std::vector<config*>& cfgs,

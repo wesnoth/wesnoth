@@ -39,6 +39,8 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 //number of hexes that have to be traversed to get from one hex to the other)
 size_t distance_between(const gamemap::location& a, const gamemap::location& b);
 
+enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
+
 //function which will find a location on the board that is as near to loc as
 //possible, but which is unoccupied by any units. If terrain is not 0, then
 //the location found must be of the given terrain type, and must have a path
@@ -48,7 +50,7 @@ size_t distance_between(const gamemap::location& a, const gamemap::location& b);
 gamemap::location find_vacant_tile(const gamemap& map,
                                    const std::map<gamemap::location,unit>& un,
                                    const gamemap::location& loc,
-                                   gamemap::TERRAIN terrain=0);
+                                   VACANT_TILE_TYPE vacancy=VACANT_ANY);
 
 //function which determines if a given location is an enemy zone of control
 bool enemy_zoc(const gamemap& map,const gamestatus& status, 

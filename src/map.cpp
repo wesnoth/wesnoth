@@ -35,34 +35,78 @@ const std::string& gamemap::terrain_name(gamemap::TERRAIN terrain) const
 		return i->second.name();
 }
 
-const std::string& gamemap::underlying_terrain_name(gamemap::TERRAIN terrain) const
+std::vector<std::string> gamemap::underlying_terrain_name(gamemap::TERRAIN terrain) const
 {
-	static const std::string default_val;
 	const std::map<TERRAIN,terrain_type>::const_iterator i =
 	                                       letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
-		return default_val;
+		return std::vector<std::string>();
 	} else {
 		if(i->second.is_alias()) {
-			//we could call underlying_terrain_name, but that could allow
-			//infinite recursion with bad data files, so we call terrain_name
-			//to be safe
-			return terrain_name(i->second.type());
+			std::vector<std::string> res;
+
+			const std::string& type = i->second.type();
+			for(std::string::const_iterator j = type.begin(); j != type.end(); ++j) {
+				res.push_back(terrain_name(*j));
+			}
+			return res;
 		} else {
-			return i->second.name();
+			return std::vector<std::string>(1,i->second.name());
 		}
 	}
 }
 
-gamemap::TERRAIN gamemap::underlying_terrain(TERRAIN terrain) const
+const std::string& gamemap::underlying_terrain(TERRAIN terrain) const
 {
-	const std::map<TERRAIN,terrain_type>::const_iterator i =
-	                                       letterToTerrain_.find(terrain);
+	const std::map<TERRAIN,terrain_type>::const_iterator i = letterToTerrain_.find(terrain);
 	if(i == letterToTerrain_.end()) {
-		return terrain;
+		static std::string res;
+		res.resize(1);
+		res[0] = terrain;
+		return res;
 	} else {
 		return i->second.type();
 	}
+}
+
+bool gamemap::is_village(gamemap::TERRAIN terrain) const
+{
+	return get_terrain_info(terrain).is_village();
+}
+
+bool gamemap::gives_healing(gamemap::TERRAIN terrain) const
+{
+	return get_terrain_info(terrain).gives_healing();
+}
+
+bool gamemap::is_castle(gamemap::TERRAIN terrain) const
+{
+	return get_terrain_info(terrain).is_castle();
+}
+
+bool gamemap::is_keep(gamemap::TERRAIN terrain) const
+{
+	return get_terrain_info(terrain).is_keep();
+}
+
+bool gamemap::is_village(const gamemap::location& loc) const
+{
+	return on_board(loc) && is_village(get_terrain(loc));
+}
+
+bool gamemap::gives_healing(const gamemap::location& loc) const
+{
+	return is_village(loc);
+}
+
+bool gamemap::is_castle(const gamemap::location& loc) const
+{
+	return on_board(loc) && is_castle(get_terrain(loc));
+}
+
+bool gamemap::is_keep(const gamemap::location& loc) const
+{
+	return on_board(loc) && is_keep(get_terrain(loc));
 }
 
 gamemap::location::location(const config& cfg) : x(-1), y(-1)
@@ -144,7 +188,7 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 				}
 			}
 
-			if(underlying_terrain(c) == TOWER) {
+			if(is_village(c)) {
 				towers_.push_back(location(int(x),int(y)));
 			}
 
@@ -230,7 +274,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 	TERRAIN used_terrain = 0;
 	int terrain_count = 0;
 	for(int i = 0; i != nitems; ++i) {
-		if(items[i] != used_terrain && underlying_terrain(items[i]) != TOWER) {
+		if(items[i] != used_terrain && !is_village(items[i])) {
 			const int c = std::count(items+i+1,items+nitems,items[i]) + 1;
 			if(c > terrain_count) {
 				used_terrain = items[i];
@@ -297,11 +341,7 @@ const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_precedence() const
 
 bool gamemap::is_built(const location &loc) const
 {
-	gamemap::TERRAIN terrain = get_terrain(loc);
-	if((terrain == gamemap::CASTLE) || (terrain == gamemap::KEEP))
-		return true;
-	else
-		return false;
+	return is_castle(loc);
 }
 
 void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)

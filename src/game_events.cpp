@@ -283,7 +283,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(u != units->end()) {
 			const gamemap::location dst(cfg);
 			if(game_map->on_board(dst)) {
-				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst,(*game_map)[dst.x][dst.y]);
+				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
 					//note that inserting into a map does NOT invalidate iterators
 					//into the map, so this sequence is fine.

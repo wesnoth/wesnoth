@@ -22,7 +22,7 @@ namespace {
 gamemap::location find_vacant(const gamemap& map,
                               const std::map<gamemap::location,unit>& units,
 							  const gamemap::location& loc, int depth,
-                              gamemap::TERRAIN terrain,
+                              VACANT_TILE_TYPE vacancy,
                               std::set<gamemap::location>& touched)
 {
 	if(touched.count(loc))
@@ -31,8 +31,8 @@ gamemap::location find_vacant(const gamemap& map,
 	touched.insert(loc);
 
 	if(map.on_board(loc) && units.find(loc) == units.end() &&
-	   map.underlying_terrain(map[loc.x][loc.y]) != gamemap::TOWER &&
-	   (terrain == 0 || terrain == map[loc.x][loc.y])) {
+	   map.is_village(loc) == false &&
+	   (vacancy == VACANT_ANY || map.is_castle(loc))) {
 		return loc;
 	} else if(depth == 0) {
 		return gamemap::location();
@@ -40,12 +40,11 @@ gamemap::location find_vacant(const gamemap& map,
 		gamemap::location adj[6];
 		get_adjacent_tiles(loc,adj);
 		for(int i = 0; i != 6; ++i) {
-			if(!map.on_board(adj[i]) ||
-			   terrain != 0 && terrain != map[adj[i].x][adj[i].y])
+			if(!map.on_board(adj[i]) || vacancy == VACANT_CASTLE && !map.is_castle(adj[i]))
 				continue;
 
 			const gamemap::location res =
-			       find_vacant(map,units,adj[i],depth-1,terrain,touched);
+			       find_vacant(map,units,adj[i],depth-1,vacancy,touched);
 
 			if(map.on_board(res))
 				return res;
@@ -60,11 +59,11 @@ gamemap::location find_vacant(const gamemap& map,
 gamemap::location find_vacant_tile(const gamemap& map,
                                 const std::map<gamemap::location,unit>& units,
                                 const gamemap::location& loc,
-                                gamemap::TERRAIN terrain)
+                                VACANT_TILE_TYPE vacancy)
 {
 	for(int i = 1; i != 50; ++i) {
 		std::set<gamemap::location> touch;
-		const gamemap::location res = find_vacant(map,units,loc,i,terrain,touch);
+		const gamemap::location res = find_vacant(map,units,loc,i,vacancy,touch);
 		if(map.on_board(res))
 			return res;
 	}
@@ -159,7 +158,7 @@ void find_routes(const gamemap& map, const gamestatus& status,
 
 	//check for teleporting units -- we must be on a vacant (or occupied by this unit)
 	//tower, that is controlled by our team to be able to teleport.
-	if(allow_teleport && map.underlying_terrain(map[loc.x][loc.y]) == gamemap::TOWER &&
+	if(allow_teleport && map.is_village(loc) &&
 	   current_team.owns_tower(loc) && (starting_pos || units.count(loc) == 0)) {
 		const std::vector<gamemap::location>& towers = map.towers();
 
