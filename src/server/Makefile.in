@@ -148,6 +148,7 @@ bin_PROGRAMS = wesnothd
 #    Wesnothd Server                                                        #
 #############################################################################
 wesnothd_SOURCES = game.cpp \
+		   game_events.cpp \
 		   player.cpp \
 		   server.cpp \
 		   ../config.cpp \
@@ -156,6 +157,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
 		   game.hpp \
+		   game_events.hpp \
 		   player.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
@@ -174,9 +176,10 @@ CONFIG_CLEAN_FILES =
 bin_PROGRAMS = wesnothd$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
-am_wesnothd_OBJECTS = game.$(OBJEXT) player.$(OBJEXT) server.$(OBJEXT) \
-	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
-	log.$(OBJEXT) network.$(OBJEXT)
+am_wesnothd_OBJECTS = game.$(OBJEXT) game_events.$(OBJEXT) \
+	player.$(OBJEXT) server.$(OBJEXT) config.$(OBJEXT) \
+	filesystem.$(OBJEXT) game_config.$(OBJEXT) log.$(OBJEXT) \
+	network.$(OBJEXT)
 wesnothd_OBJECTS = $(am_wesnothd_OBJECTS)
 wesnothd_LDADD = $(LDADD)
 wesnothd_DEPENDENCIES =
@@ -187,8 +190,9 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/config.Po ./$(DEPDIR)/filesystem.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/log.Po ./$(DEPDIR)/network.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/player.Po ./$(DEPDIR)/server.Po
+@AMDEP_TRUE@	./$(DEPDIR)/game_events.Po ./$(DEPDIR)/log.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/player.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/server.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -249,6 +253,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filesystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_config.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/network.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/player.Po@am__quote@
