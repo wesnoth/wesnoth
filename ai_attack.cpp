@@ -26,7 +26,7 @@
 namespace {
 
 const int max_positions = 10000;
-		
+
 using namespace ai;
 
 void do_analysis(
@@ -51,10 +51,10 @@ void do_analysis(
 			best_results[i] = 0.0;
 		}
 	}
-	
+
 //	if(result.size() > max_positions && !cur_analysis.movements.empty())
 //		return;
-	
+
 	const double cur_rating = cur_analysis.movements.empty() ? 0 :
 	                          cur_analysis.rating(0.0);
 
@@ -69,11 +69,11 @@ void do_analysis(
 	for(int i = 0; i != units.size(); ++i) {
 		const location current_unit = units[i];
 		units.erase(units.begin() + i);
-		
+
 		for(int j = 0; j != 6; ++j) {
 			if(used_locations[j])
 				continue;
-			
+
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> its = dstsrc.equal_range(tiles[j]);
 			while(its.first != its.second) {
@@ -91,7 +91,7 @@ void do_analysis(
 			cur_analysis.analyze(map,units_map,status,data,50);
 
 			if(cur_analysis.rating(0.0) > rating_to_beat) {
-			
+
 				result.push_back(cur_analysis);
 				used_locations[j] = true;
 				do_analysis(map,loc,srcdst,dstsrc,tiles,used_locations,
@@ -157,7 +157,7 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 
 	if(cache_itor != weapon_choice_cache.end()) {
 		assert(*cache_itor == battle);
-			
+
 		++cache_hits;
 		cur_stats = cache_itor->stats;
 
@@ -175,7 +175,7 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 	if((cache_misses%100) == 0) {
 		std::cerr << "cache_stats: " << cache_hits << ":" << cache_misses << " " << weapon_choice_cache.size() << "\n";
 	}
-	
+
 	int current_choice = -1;
 	double current_rating = 0.0;
 	const std::vector<attack_type>& attacks = itor->second.attacks();
@@ -243,8 +243,8 @@ void attack_analysis::analyze(const gamemap& map,
 		const int weapon = choose_weapon(map,units,status,info,
 		                                 m->first,target, bat_stats,
 		                                 map[m->second.x][m->second.y]);
-	
-		assert(weapon != -1);	
+
+		assert(weapon != -1);
 		weapons.push_back(weapon);
 
 		stats.push_back(bat_stats);
@@ -254,7 +254,7 @@ void attack_analysis::analyze(const gamemap& map,
 	for(int j = 0; j != num_sims; ++j) {
 
 		int defenderxp = 0;
-	
+
 		int defhp = target_hp;
 		for(int i = 0; i != movements.size() && defhp; ++i) {
 			const battle_stats& stat = stats[i];
@@ -303,7 +303,7 @@ void attack_analysis::analyze(const gamemap& map,
 						if(atthp > hitpoints[i])
 							atthp = hitpoints[i];
 					}
-	
+
 					--attacks;
 				}
 
@@ -329,7 +329,7 @@ void attack_analysis::analyze(const gamemap& map,
 					--defends;
 				}
 			}
-		
+
 			if(defhp <= 0) {
 				break;
 			} else if(atthp == 0) {
@@ -342,7 +342,7 @@ void attack_analysis::analyze(const gamemap& map,
 			}
 
 			defenderxp += (atthp == 0 ? 10:1)*att->second.type().level();
-			
+
 			avg_damage_taken += hitpoints[i] - atthp;
 		}
 
@@ -358,7 +358,7 @@ void attack_analysis::analyze(const gamemap& map,
 			if(defhp > target_hp)
 				defhp = target_hp;
 		}
-		
+
 		avg_damage_inflicted += target_hp - defhp;
 	}
 
@@ -422,7 +422,7 @@ std::vector<attack_analysis> analyze_targets(
 			analysis.target = j->first;
 
 			const int ticks = SDL_GetTicks();
-			
+
 			do_analysis(map,j->first,srcdst,dstsrc,adjacent,used_locations,
 			            unit_locs,units,res,data,status,analysis);
 

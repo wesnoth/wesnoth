@@ -53,14 +53,14 @@ class scoped_resource
 {
 	T resource;
 	ReleasePolicy release;
-	
+
 	//prohibited operations
 	scoped_resource(const scoped_resource&);
 	scoped_resource& operator=(const scoped_resource&);
 public:
 	typedef T resource_type;
 	typedef ReleasePolicy release_type;
-	
+
   /**
   * Constructor
 	*

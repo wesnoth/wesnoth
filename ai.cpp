@@ -34,12 +34,12 @@ bool recruit(const gamemap& map, const gamemap::location& leader,
 {
 	log_scope("recruiting troops");
 	std::cerr << "recruiting " << usage << "\n";
-	
+
 	std::vector<std::map<std::string,unit_type>::const_iterator> options;
 
 	//record the number of the recruit for replay recording
 	std::vector<int> option_numbers;
-	
+
 	//find an available unit that can be recruited, matches the desired
 	//usage type, and comes in under budget
 	const std::set<std::string>& recruits = tm.recruits();
@@ -62,7 +62,7 @@ bool recruit(const gamemap& map, const gamemap::location& leader,
 		const unit_type& u = options[option]->second;
 		tm.spend_gold(u.cost());
 		unit new_unit(&u,team_num,true);
-		
+
 		std::cerr << "recruiting a " << u.name() << " for " << u.cost() << " have " << tm.gold() << " left\n";
 		const gamemap::location loc;
 		return recruit_unit(map,team_num,units,new_unit,loc,&disp).empty();
@@ -106,12 +106,12 @@ void move_unit(const game_data& gameinfo, display& disp,
 	disp.set_paths(&current_paths);
 
 	disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
-	
+
 	unit current_unit = u_it->second;
 	units.erase(u_it);
-	
+
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
-	
+
 	if(p_it != possible_moves.end()) {
 		paths& p = p_it->second;
 		std::map<location,paths::route>::iterator rt = p.routes.begin();
@@ -127,7 +127,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 			disp.move_unit(steps,current_unit);
 		}
 	}
-	
+
 	current_unit.set_movement(0);
 	units.insert(std::pair<location,unit>(to,current_unit));
 	if(map[to.x][to.y] == gamemap::TOWER)
@@ -138,7 +138,7 @@ void move_unit(const game_data& gameinfo, display& disp,
 
 	game_events::fire("moveto",to);
 }
-		
+
 void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
              std::map<gamemap::location,unit>& units,
              std::vector<team>& teams, int team_num, const gamestatus& state,
@@ -151,9 +151,9 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	log_scope("doing ai move");
 
 	team& current_team = teams[team_num-1];
-	
+
 	typedef paths::route route;
-	
+
 	std::multimap<location,location> srcdst;
 	std::multimap<location,location> dstsrc;
 
@@ -161,7 +161,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	typedef std::map<location,paths> moves_map;
 	moves_map possible_moves;
-	for(std::map<gamemap::location,unit>::const_iterator un_it = units.begin();	
+	for(std::map<gamemap::location,unit>::const_iterator un_it = units.begin();
 	    un_it != units.end(); ++un_it) {
 
 		if(un_it->second.side() != team_num) {
@@ -187,8 +187,8 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		                un_it->first,paths(map,gameinfo,units,
 		                un_it->first,teams,ignore_zocs,teleports)));
 	}
-	
-	
+
+
 	for(moves_map::iterator m = possible_moves.begin();
 	    m != possible_moves.end(); ++m) {
 		for(std::map<location,route>::iterator rtit =
@@ -203,7 +203,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 		}
 	}
-	
+
 	//no moves left, recruitment phase
 	//take stock of our current set of units
 	if(srcdst.empty()) {
@@ -220,7 +220,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 				leader = i->first;
 				continue;
 			}
-			
+
 			unit_types[i->second.type().usage()]++;
 			++num_units;
 		}
@@ -231,7 +231,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		const int min_gold = 10 + (cash_flow < 0 ? -cash_flow*10 : 0);
 
 		//count the number of scouts we have currently
-		
+
 		const int towers = map.towers().size();
 		int taken_towers = 0;
 		for(int j = 0; j != teams.size(); ++j) {
@@ -239,7 +239,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		const int neutral_towers = towers - taken_towers;
-		
+
 		//we want at least one scout for every eight neutral towers
 		int scouts_wanted = neutral_towers/8;
 		if(scouts_wanted < 1)
@@ -259,13 +259,13 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			assert(false);
 			return;
 		}
-		
+
 		//buy fighters as long as we have room and can afford it
 		while(recruit(map,leader,options[rand()%options.size()].c_str(),
 		              gameinfo,team_num,current_team,min_gold,units,disp)) {
-		
+
 		}
-		
+
 		recorder.end_turn();
 		return;
 	}
@@ -273,7 +273,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	int ticks = SDL_GetTicks();
 	//look for targets of opportunity that we are hoping to kill this turn
 	std::vector<attack_analysis> analysis;
-	
+
 	if(consider_combat)
 		analysis = analyze_targets(map,srcdst,dstsrc,units,
 		                           current_team,team_num,state,gameinfo);
@@ -282,7 +282,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	std::cout << "took " << time_taken << " ticks for " << analysis.size() << " positions. Analyzing...\n";
 
 	ticks = SDL_GetTicks();
-	
+
 	const int max_sims = 30000;
 	int num_sims = analysis.empty() ? 0 : max_sims/analysis.size();
 	if(num_sims < 8)
@@ -323,7 +323,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		const std::map<gamemap::location,unit>::const_iterator tgt =
 		                                              units.find(target_loc);
 
-		const bool defender_human = (tgt != units.end()) ? 
+		const bool defender_human = (tgt != units.end()) ?
 		             teams[tgt->second.side()-1].is_human() : false;
 
 		move_unit(gameinfo,disp,map,units,from,to,
@@ -351,7 +351,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		dialogs::advance_unit(gameinfo,units,to,disp,true);
 		dialogs::advance_unit(gameinfo,units,target_loc,disp,!defender_human);
-		
+
 		do_move(disp,map,gameinfo,units,teams,team_num,state,consider_combat,
 		        additional_targets);
 		return;
@@ -382,13 +382,13 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			leader->second.set_movement(0);
 			leader->second.set_attacked();
 		}
-	
+
 		//remove leader from further consideration
 		srcdst.erase(*lead);
 		dstsrc.erase(*lead);
 	}
 
-	//try to acquire towers	
+	//try to acquire towers
 	for(std::multimap<location,location>::const_iterator i = dstsrc.begin();
 	    i != dstsrc.end(); ++i) {
 		if(map[i->first.x][i->first.y] != gamemap::TOWER)
@@ -401,7 +401,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 				break;
 			}
 		}
-		
+
 		if(want_tower) {
 			const std::map<location,unit>::iterator un = units.find(i->second);
 			if(un == units.end()) {
@@ -459,7 +459,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		return;
 	}
 
-	std::cout << "finding targets...\n";	
+	std::cout << "finding targets...\n";
 	std::vector<target> targets = find_targets(map,units,teams,team_num);
 	targets.insert(targets.end(),additional_targets->begin(),
 	                             additional_targets->end());
@@ -477,7 +477,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	    	ittg != targets.end(); ++ittg) {
 			assert(map.on_board(ittg->loc));
 		}
-	
+
 
 		if(move.first.valid() == false)
 			break;
@@ -495,7 +495,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		std::pair<Itor,Itor> del = dstsrc.equal_range(move.second);
 		dstsrc.erase(del.first,del.second);
 	}
-	
+
 	do_move(disp,map,gameinfo,units,teams,team_num,state,
 	        consider_combat,additional_targets);
 	return;

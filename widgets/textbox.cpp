@@ -53,12 +53,12 @@ void textbox::draw_cursor(int pos) const
 {
 	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
 	static const short cursor_colour = 0xFFFF;
-	
+
 	if(show_cursor) {
 		short* dst = reinterpret_cast<short*>(
 		               disp_.video().getSurface()->pixels) + y_*disp_.x() +
 					   x_ + pos;
-			
+
 		for(int i = 0; i != height(); ++i, dst += disp_.x()) {
 			*dst = cursor_colour;
 		}
@@ -81,7 +81,7 @@ void textbox::draw() const
 	int pos = 1;
 	std::string str(1,'x');
 	static const SDL_Rect clip = {0,0,1024,768};
-	
+
 	//draw the text
 	for(int i = firstOnScreen_; i < text_.size(); ++i) {
 		str[0] = text_[i];
@@ -95,7 +95,7 @@ void textbox::draw() const
 
 		font::draw_text(&disp_,clip,font_size,font::NORMAL_COLOUR,str,
 		                x_ + pos, y_);
-		
+
 		pos += area.w;
 
 		if(cursor_ == i+1)
@@ -143,7 +143,7 @@ void textbox::process()
 		if(islower(character) && (key_[KEY_LSHIFT] || key_[KEY_RSHIFT])) {
 			character = toupper(character);
 		}
-		
+
 		const bool val = key_[c];
 		if(val && !previousKeyState_[c-INPUT_CHAR_START]) {
 			text_.insert(text_.begin()+cursor_,character);
@@ -152,7 +152,7 @@ void textbox::process()
 
 		previousKeyState_[c-INPUT_CHAR_START] = val;
 	}
-	
+
 	draw();
 }
 

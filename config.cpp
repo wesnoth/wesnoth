@@ -91,7 +91,7 @@ void internal_preprocess_file(const std::string& fname,
 		if(c == '"') {
 			in_quotes = !in_quotes;
 		}
-		
+
 		if(c == '{') {
 			std::stringstream newfile;
 			for(++i; i != data.end() && *i != '}'; ++i) {
@@ -102,7 +102,7 @@ void internal_preprocess_file(const std::string& fname,
 				break;
 
 			const std::string fname = newfile.str();
-			
+
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
 			if(defines_map.count(fname) != 0) {
@@ -151,7 +151,7 @@ void internal_preprocess_file(const std::string& fname,
 			static const std::string hash_ifdef("#ifdef");
 			static const std::string hash_else("#else");
 			static const std::string hash_endif("#endif");
-				
+
 			if(data.end() - i > hash_ifdef.size() &&
 			   std::equal(hash_ifdef.begin(),hash_ifdef.end(),i)) {
 				i += hash_ifdef.size();
@@ -197,7 +197,7 @@ void internal_preprocess_file(const std::string& fname,
 				if(i == data.end())
 					break;
 			}
-			
+
 			for(; i != data.end() && *i != '\n'; ++i) {
 			}
 
@@ -281,14 +281,14 @@ void config::read(const std::string& data)
 	std::stack<config*> elements;
 	elements.push(this);
 	element_names.push("");
-	
+
 	enum { ELEMENT_NAME, IN_ELEMENT, VARIABLE_NAME, VALUE }
 	state = IN_ELEMENT;
 	std::string var;
 	std::string value;
 
 	bool in_quotes = false;
-	
+
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		const char c = *i;
 		switch(state) {
@@ -311,13 +311,13 @@ void config::read(const std::string& data)
 							throw error("Unexpected terminating tag\n");
 							return;
 						}
-						
+
 
 						state = IN_ELEMENT;
-						
+
 						break;
 					}
-					
+
 					config* const new_config = new config();
 					elements.top()->children[value].push_back(new_config);
 					elements.push(new_config);

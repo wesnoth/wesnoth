@@ -25,12 +25,12 @@ class button
 {
 public:
 	struct error {};
-	
+
 	enum TYPE { TYPE_PRESS, TYPE_CHECK };
 
 	button(display& disp, const std::string& label, TYPE type=TYPE_PRESS,
 	       const std::string& button_image="");
-	
+
 	button(const button& b);
 	button& operator=(const button& b);
 
@@ -60,7 +60,7 @@ private:
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED };
 	STATE state_;
-	
+
 	TYPE type_;
 
 	bool hit(int x, int y) const;

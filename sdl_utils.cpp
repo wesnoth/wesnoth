@@ -27,7 +27,7 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 			              static_cast<double>(w);
 	const double yratio = static_cast<double>(surface->h)/
 			              static_cast<double>(h);
-	
+
 	const int srcxpad = (surface->w%2) == 1 ? 1:0;
 	const int dstxpad = (dest->w%2) == 1 ? 1:0;
 

@@ -103,7 +103,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
 		return res;
 	}
-	
+
 	SDL_Surface* const surface = TTF_RenderText_Blended(font,text.c_str(),col);
 	if(surface == NULL) {
 		std::cerr << "Could not render ttf: '" << text << "'\n";
@@ -117,7 +117,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	dest.y = y;
 	dest.w = surface->w;
 	dest.h = surface->h;
-	
+
 	if(dest.x + dest.w > area.x + area.w) {
 		dest.w = area.x + area.w - dest.x;
 	}
@@ -173,7 +173,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 				sz -= 2;
 				++i1;
 			}
-			
+
 			if(i1 != i2) {
 				const std::string new_string(i1,i2);
 				const SDL_Rect rect =

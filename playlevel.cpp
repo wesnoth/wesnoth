@@ -28,7 +28,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 {
 	const int num_turns = atoi(level->values["turns"].c_str());
 	gamestatus status(num_turns);
-	
+
 	gamemap map(terrain_config,read_file("data/maps/" + level->values["map"]));
 
 	CKey key;
@@ -36,7 +36,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	units_map units;
 
 	std::vector<team> teams;
-	
+
 	std::vector<config*>& unit_cfg = level->children["side"];
 	for(std::vector<config*>::iterator ui = unit_cfg.begin();
 				ui != unit_cfg.end(); ++ui) {
@@ -52,7 +52,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 			}
 		}
-		
+
 		std::string gold = (*ui)->values["gold"];
 		if(gold.empty())
 			gold = "100";
@@ -81,7 +81,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			}
 		}
 	}
-	
+
 	display gui(units,video,map,status,teams);
 	const preferences::display_manager prefs_disp_manager(&gui);
 
@@ -93,7 +93,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 		show_map_scene(gui,*level);
 	}
-	
+
 	const std::string& music = level->values["music"];
 	if(!music.empty()) {
 		sound::play_music(music);
@@ -109,23 +109,23 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		gui.add_overlay(gamemap::location(**overlay),
 		                (*overlay)->values["image"]);
 	}
-	
+
 	const double scroll_speed = 30.0;
 	const double zoom_amount = 5.0;
-	
+
 	for(units_map::iterator i = units.begin(); i != units.end(); ++i) {
 		i->second.new_turn();
 	}
-	
+
 	bool left_button = false, right_button = false;
-	
+
 	gamemap::location selected_hex;
 
 	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,
 	                   display::WARP);
 
 	bool replaying = (recorder.empty() == false);
-	
+
 	std::cout << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false) {
 		try {
@@ -140,13 +140,13 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			for(std::vector<team>::iterator team_it = teams.begin();
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
-				
+
 				calculate_healing(gui,map,units,player_number);
 
 				//scroll the map to the leader
 				const units_map::iterator leader =
 				                   find_leader(units,player_number);
-				
+
 				if(leader != units.end() && !recorder.skipping()) {
 					gui.scroll_to_tile(leader->first.x,leader->first.y);
 				}
@@ -167,7 +167,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				} else if(!replaying) {
 					ai::do_move(gui,map,gameinfo,units,teams,
 					            player_number,status);
-				
+
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
 					gui.invalidate_all();
@@ -204,7 +204,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire(event_stream.str());
 			}
-					
+
 			std::map<int,int> expenditure;
 			for(units_map::iterator i = units.begin();
 			    i != units.end(); ++i) {
@@ -238,7 +238,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					game_events::fire("victory");
 				} catch(end_level_exception&) {
 				}
-				
+
 				//add all the units that survived the scenario
 				for(std::map<gamemap::location,unit>::iterator un =
 				    units.begin(); un != units.end(); ++un) {
@@ -248,7 +248,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						                push_back(un->second);
 					}
 				}
-						
+
 				const int remaining_gold = teams[0].gold();
 				const int finishing_bonus_per_turn =
 				      map.towers().size()*game_config::tower_income;
@@ -256,7 +256,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				const int finishing_bonus = end_level.gold_bonus ?
 				              (finishing_bonus_per_turn * turns_left) : 0;
 				state_of_game.gold = (remaining_gold+finishing_bonus)/2;
-						
+
 				gui::show_dialog(gui,NULL,string_table["victory_heading"],
 				                 string_table["victory_message"],gui::OK_ONLY);
 				std::stringstream report;
@@ -272,7 +272,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					       << string_table["gold"] << ": "
 						   << (remaining_gold+finishing_bonus);
 				}
-			
+
 				report << "\n" << string_table["fifty_percent"] << "\n"
 					   << string_table["retained_gold"] << ": "
 					   << state_of_game.gold;
@@ -286,7 +286,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			        "or from a different version of the game",gui::OK_ONLY);
 			return DEFEAT;
 		}
-	
+
 	} //end for(;;)
 
 	return QUIT;

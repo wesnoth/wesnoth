@@ -46,7 +46,7 @@ struct pixel_data
 	pixel_data(config& cfg) {
 		read(cfg);
 	}
-	
+
 	int format(SDL_PixelFormat* fmt) const {
 		return SDL_MapRGB(fmt,r,g,b);
 	}
@@ -56,7 +56,7 @@ struct pixel_data
 		g = ((pixel&fmt->Gmask) >> fmt->Gshift);
 		b = ((pixel&fmt->Bmask) >> fmt->Bshift);
 	}
-	
+
 	void read(config& cfg) {
 		const std::string& red = cfg.values["red"];
 		const std::string& green = cfg.values["green"];
@@ -77,7 +77,7 @@ struct pixel_data
 		else
 			b = atoi(blue.c_str());
 	}
-	
+
 	int r, g, b;
 };
 

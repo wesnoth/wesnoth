@@ -133,7 +133,7 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 			if(c == TOWER) {
 				towers_.push_back(location(x,y));
 			}
-			
+
 			tiles_.back().push_back(c);
 
 			++y;

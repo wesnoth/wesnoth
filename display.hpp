@@ -32,7 +32,7 @@ class display
 public:
 	typedef std::map<gamemap::location,unit> unit_map;
 	typedef short Pixel;
-		
+
 	display(unit_map& units, CVideo& video,
 	        const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t);
@@ -48,7 +48,7 @@ public:
 	void scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type=SCROLL);
 	void scroll_to_tiles(int x1, int y1, int x2, int y2,
 	                     SCROLL_TYPE scroll_type=SCROLL);
-	
+
 	void redraw_everything();
 	void draw(bool update=true,bool force=false);
 
@@ -73,13 +73,13 @@ public:
 	               double alpha=1.0, short blend_to=0);
 
 	CVideo& video() { return screen_; }
-	
+
 	enum IMAGE_TYPE { UNSCALED, SCALED, GREYED, BRIGHTENED };
 	SDL_Surface* getImage(const std::string& filename,IMAGE_TYPE type=SCALED);
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, SDL_Surface* surface);
-	
+
 	void invalidate_all();
 	void invalidate_game_status();
 	void invalidate_unit();
@@ -112,11 +112,11 @@ public:
 
 	static void debug_highlight(const gamemap::location& loc, double amount);
 	static void clear_debug_highlights();
-	
+
 private:
 	display(const display&);
 	void operator=(const display&);
-	
+
 	void move_unit_between(const gamemap::location& a,
 					       const gamemap::location& b,
 						   const unit& u);
@@ -130,7 +130,7 @@ private:
 	bool unit_attack_ranged(const gamemap::location& a,
 	                        const gamemap::location& b,
 	                        int damage, const attack_type& attack);
-	
+
 	void draw_sidebar();
 	SDL_Rect get_minimap_location(int x, int y, int w, int h);
 	void draw_minimap(int x, int y, int w, int h);
@@ -153,7 +153,7 @@ private:
 	SDL_Surface* getMinimap(int w, int h);
 
 	void clearImageCache();
-	
+
 	CVideo& screen_;
 	mutable CKey keys_;
 	double xpos_, ypos_, zoom_;
@@ -166,12 +166,12 @@ private:
 
 	std::map<std::string,SDL_Surface*> images_, scaledImages_,
 	                                   greyedImages_, brightenedImages_;
-	
+
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
 	const std::pair<int,int>& calculate_energy_bar();
 	std::pair<int,int> energy_bar_count_;
-	
+
 	SDL_Surface* minimap_;
 	bool minimapDecorationsDrawn_;
 

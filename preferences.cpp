@@ -210,7 +210,7 @@ void show_preferences_dialog(display& disp)
 
 	disp.invalidate_all();
 	disp.draw();
-	
+
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
 	                                      string_table["preferences"],0,0);
@@ -226,16 +226,16 @@ void show_preferences_dialog(display& disp)
 	SDL_Rect music_rect = {0,0,0,0};
 	music_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
 	                             music_label,0,0);
-	
+
 	SDL_Rect sound_rect = {0,0,0,0};
 	sound_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
 	                             sound_label,0,0);
-	
+
 	const int text_right = xpos + maximum(music_rect.w,sound_rect.w) + 5;
 
 	const int music_pos = ypos + title_rect.h + 20;
 	const int sound_pos = music_pos + 50;
-	
+
 	music_rect.x = text_right - music_rect.w;
 	music_rect.y = music_pos;
 
@@ -360,7 +360,7 @@ void show_video_mode_dialog(display& disp)
 {
 	std::vector<std::pair<int,int> > resolutions;
 	std::vector<std::string> options;
-	
+
 	CVideo& video = disp.video();
 	SDL_Rect** modes = SDL_ListModes(video.getSurface()->format,FULL_SCREEN);
 	if(reinterpret_cast<int>(modes) == -1 || modes == NULL)

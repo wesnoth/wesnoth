@@ -43,10 +43,10 @@ void show_intro(display& screen, config& data)
 		if(image_name.empty() == false) {
 			image = screen.getImage(image_name,display::UNSCALED);
 		}
-	
+
 		int textx = 200;
-		int texty = 400;	
-		
+		int texty = 400;
+
 		if(image != NULL) {
 			SDL_Rect dstrect;
 			dstrect.x = screen.x()/2 - image->w/2;
@@ -73,7 +73,7 @@ void show_intro(display& screen, config& data)
 		const int max_length = 60;
 		std::stringstream stream;
 		int cur_length = 0;
-	
+
 		for(std::string::const_iterator j = story.begin(); j!=story.end();++j){
 			char c = *j;
 			if(c == ' ' && cur_length >= max_length)
@@ -108,7 +108,7 @@ void show_intro(display& screen, config& data)
 			const bool right_button = mouse_flags&SDL_BUTTON_RMASK;
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-			
+
 			if(key[KEY_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))
 				return;
@@ -143,7 +143,7 @@ void show_map_scene(display& screen, config& data)
 	std::vector<config*>& dots = cfg.children["dot"];
 
 	const std::string& image_file = cfg.values["image"];
-	
+
 	SDL_Surface* const image = screen.getImage(image_file,display::UNSCALED);
 	SDL_Surface* const dot_image =
 	             screen.getImage("misc/dot.png",display::UNSCALED);
@@ -170,7 +170,7 @@ void show_map_scene(display& screen, config& data)
 
 	CKey key;
 
-	
+
 	for(std::vector<config*>::iterator d = dots.begin(); d != dots.end(); ++d){
 		const std::string& xloc = (*d)->values["x"];
 		const std::string& yloc = (*d)->values["y"];
@@ -183,7 +183,7 @@ void show_map_scene(display& screen, config& data)
 		if((*d)->values["type"] == "cross") {
 			img = cross_image;
 		}
-		
+
 		int xdot = x - img->w/2;
 		int ydot = y - img->h/2;
 
@@ -198,7 +198,7 @@ void show_map_scene(display& screen, config& data)
 		dot_rect.y = ydot;
 		dot_rect.w = img->w;
 		dot_rect.h = img->h;
-		
+
 		SDL_BlitSurface(img,NULL,image,&dot_rect);
 
 		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
@@ -207,7 +207,7 @@ void show_map_scene(display& screen, config& data)
 			if(key[KEY_ESCAPE]) {
 				break;
 			}
-			
+
 			SDL_Delay(50);
 
 			int a, b;
@@ -220,7 +220,7 @@ void show_map_scene(display& screen, config& data)
 		if(key[KEY_ESCAPE]) {
 			break;
 		}
-		
+
 		screen.video().update(0,0,screen.x(),screen.y());
 	}
 
@@ -236,7 +236,7 @@ void show_map_scene(display& screen, config& data)
 
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 	screen.video().update(0,0,screen.x(),screen.y());
-	
+
 	bool last_state = true;
 	for(;;) {
 		int a, b;

@@ -18,7 +18,7 @@
 class CKey {
      public:
 	CKey();
-	
+
 	int operator[](int);
 	void SetEnabled(bool enable);
      private:

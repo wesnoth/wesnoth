@@ -16,7 +16,7 @@
 #include <string>
 
 namespace sound {
-	
+
 struct manager {
 	manager();
 	~manager();
@@ -27,7 +27,7 @@ void play_sound(const std::string& file);
 
 void set_music_volume(double vol);
 void set_sound_volume(double vol);
-		
+
 }
 
 #endif

@@ -87,7 +87,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	gameStatusRect_.w = 0;
 	unitDescriptionRect_.w = 0;
 	unitProfileRect_.w = 0;
-	
+
 
 	//clear the screen contents
 	SDL_Surface* const disp = screen_.getSurface();
@@ -146,7 +146,7 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 {
 	if(xclick > mapx())
 		return gamemap::location();
-		
+
 	const double xtile = xpos_/(zoom_*0.75) +
 			               static_cast<double>(xclick)/(zoom_*0.75) - 0.25;
 	const double ytile = ypos_/zoom_ + static_cast<double>(yclick)/zoom_
@@ -247,7 +247,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 	const double divisor = static_cast<double>(num_moves);
 
 	double xdiff = 0.0, ydiff = 0.0;
-	
+
 	for(int i = 0; i != num_moves; ++i) {
 		check_keys(*this);
 		xdiff += xmove/divisor;
@@ -257,7 +257,7 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 		if((i%4) != 0 && i != num_moves-1 && turbo()) {
 			continue;
 		}
-		
+
 		scroll(xdiff,ydiff);
 		draw();
 
@@ -278,7 +278,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const double xpos2 = static_cast<double>(x2)*zoom_*0.75 - xpos_;
 	const double ypos2 = static_cast<double>(y2)*zoom_ - ypos_ +
 					                    ((x2 % 2) == 1 ? zoom_/2.0 : 0.0);
-	
+
 	const double diffx = fabs(xpos1 - xpos2);
 	const double diffy = fabs(ypos1 - ypos2);
 
@@ -297,7 +297,7 @@ void display::bounds_check_position()
 	const double max_zoom = 200.0;
 
 	zoom_ = floor(zoom_);
-	
+
 	if(zoom_ < min_zoom)
 		zoom_ = min_zoom;
 
@@ -312,7 +312,7 @@ void display::bounds_check_position()
 
 	if(ypos_ + static_cast<double>(y()) > yend)
 		ypos_ -= ypos_ + static_cast<double>(y()) - yend;
-	
+
 	if(xpos_ < 0.0)
 		xpos_ = 0.0;
 
@@ -379,10 +379,10 @@ void display::draw(bool update,bool force)
 	if(wait_time > 0) {
 		SDL_Delay(wait_time);
 	}
-	
+
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
-		
+
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force)
 			update_display();
 		else
@@ -395,9 +395,9 @@ void display::update_display()
 {
 	if(updatesLocked_ > 0)
 		return;
-	
+
 	for(std::vector<SDL_Rect>::const_iterator i = updateRects_.begin();
-	    i != updateRects_.end(); ++i) {		
+	    i != updateRects_.end(); ++i) {
 		screen_.update(i->x,i->y,i->w,i->h);
 	}
 
@@ -406,7 +406,7 @@ void display::update_display()
 
 void display::draw_sidebar()
 {
-	
+
 	if(invalidateUnit_) {
 		//we display the unit the mouse is over if it is over a unit
 		//otherwise we display the unit that is selected
@@ -439,12 +439,12 @@ void display::draw_game_status(int x, int y)
 
 	const int bgcolour = 0;
 	const int colour = 0xffffff;
-	
+
 	gamestatus::TIME timeofday = status_.timeofday();
 	if(mouseoverHex_.valid()) {
 		timeofday = timeofday_at(status_,units_,mouseoverHex_);
 	}
-	
+
 	if(lastTimeOfDay_ != (int)timeofday) {
 		lastTimeOfDay_ = (int)timeofday;
 
@@ -486,7 +486,7 @@ void display::draw_game_status(int x, int y)
 	}
 
 	const int income = teams_[currentTeam_].income() - nunits;
-	
+
 	std::stringstream details;
 	details << string_table["turn"] << ": " << status_.turn() << "/"
 			<< status_.number_of_turns() << "\n" << string_table["gold"] << ": "
@@ -512,7 +512,7 @@ void display::draw_game_status(int x, int y)
 		const std::string& name1 = lang_name.empty() ? name : lang_name;
 		const std::string& name2 = underlying_lang_name.empty() ?
 		                              underlying_name : underlying_lang_name;
-		
+
 		if(name1 != name2)
 			details << name1 << " (" << name2 << ")\n";
 		else
@@ -566,7 +566,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		SDL_BlitSurface(background,&srcrect,screen,&profile_rect);
 		update_rect(profile_rect);
 	}
-	
+
 	std::string status = string_table["healthy"];
 	if(map_.on_board(loc) &&
 	   u.invisible(map_.underlying_terrain(map_[loc.x][loc.y]))) {
@@ -590,7 +590,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< "\n-(" << string_table["level"] << ""
 			<< u.type().level() << ")\n"
 			<< status << "\n"
-			<< unit_type::alignment_description(u.type().alignment()) 
+			<< unit_type::alignment_description(u.type().alignment())
 			<< "\n"
 			<< u.traits_description() << "\n"
 			<< (lang_ability.empty() ? u.type().ability() : lang_ability)<<"\n"
@@ -601,11 +601,11 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< string_table["moves"] << ": " << u.movement_left() << "/"
 			<< u.total_movement()
 			<< "\n";
-	
+
 	const std::vector<attack_type>& attacks = u.attacks();
 	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 	    at_it != attacks.end(); ++at_it) {
-		
+
 		const std::string& lang_weapon
 		         = string_table["weapon_name_" + at_it->name()];
 		const std::string& lang_type
@@ -613,7 +613,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		const std::string& lang_special
 		         = string_table["weapon_special_" + at_it->special()];
 		details << "\n"
-				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " (" 
+				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
 				<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
 				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
@@ -634,7 +634,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 
 	if(profile == NULL)
 		return;
-	
+
 	blit_surface(x,y,profile);
 
 	profile_rect.x = x;
@@ -700,7 +700,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 			const int yloc = y - north->h;
 
 			blit_surface(xloc, yloc, north);
-			
+
 			if(south != NULL) {
 				blit_surface(xloc, y+h, south);
 			}
@@ -736,7 +736,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 
 	const int xbox = static_cast<int>(scaling*xpos_/(zoom_*0.75));
 	const int ybox = static_cast<int>(scaling*ypos_/zoom_);
-	
+
 	const int wbox = static_cast<int>(scaling*mapx()/(zoom_*0.75) - scaling);
 	const int hbox = static_cast<int>(scaling*this->y()/zoom_ - scaling);
 
@@ -770,7 +770,7 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 	invalid_rect.x = x;
 	invalid_rect.y = y;
 	invalid_rect.w = 0;
-	
+
 	SDL_Surface* const screen = screen_.getSurface();
 
 	std::vector<gamemap::TERRAIN> terrains = map_.get_terrain_precedence();
@@ -835,7 +835,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 	if(xpos > mapx() || ypos > this->y())
 		return;
-	
+
 	int xend = xpos + static_cast<int>(zoom_);
 	int yend = int(get_location_y(gamemap::location(x,y+1)));
 
@@ -887,7 +887,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		terrain = map_[x][y];
 
 	IMAGE_TYPE image_type = SCALED;
-	
+
 	//find if this tile should be greyed
 	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
 					         pathsList_->routes.end()) {
@@ -897,7 +897,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			  units_.count(gamemap::location(x,y)) == 1) {
 		image_type = BRIGHTENED;
 	}
-	
+
 	int r = 0, g = 0, b = 0;
 
 	SDL_Surface* surface = getTerrain(terrain,image_type,x,y);
@@ -917,7 +917,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			overlaps.push_back(overlay_surface);
 		}
 	}
-	
+
 	int ysrc = 0, xsrc = 0;
 	if(ypos < 0) {
 		ysrc -= ypos;
@@ -941,7 +941,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	SDL_Surface* energy_image = NULL;
 
 	double unit_energy = 0.0;
-	
+
 	const short energy_loss_colour = 0;
 	short energy_colour = 0;
 
@@ -974,7 +974,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 				energy_file = "moved-energy.png";
 			}
 		}
-		
+
 		energy_image = getImage(energy_file);
 		unit_energy = double(it->second.hitpoints()) /
 		              double(it->second.max_hitpoints());
@@ -1014,7 +1014,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		face_left = it->second.facing_left();
 	}
-	
+
 	const std::pair<int,int>& energy_bar_loc = calculate_energy_bar();
 	double total_energy = double(energy_bar_loc.second - energy_bar_loc.first);
 
@@ -1062,7 +1062,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		const int neoffset = ne_xpos+ne_xoffset;
 		const int seoffset = se_xpos+se_xoffset;
 		const int minoffset = minimum<int>(neoffset,seoffset);
-		
+
 		//FIXME: make it work with ne_ypos being <= 0
 		if(ne_ypos > 0 && xdst + len >= neoffset) {
 			len = neoffset - xdst;
@@ -1073,7 +1073,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			if(len < 0)
 				len = 0;
 		}
-		
+
 		const int srcy = minimum<int>(yloc,surface->h-1);
 		short* startsrc = reinterpret_cast<short*>(surface->pixels) +
 			           srcy*(surface->w+xpad) + (xoffset > xsrc ? xoffset:xsrc);
@@ -1150,7 +1150,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			                                        0x0001 : 0xFFFF;
 			highlight_ratio = advancingAmount_;
 		}
-		
+
 		draw_unit(xpos-xsrc,ypos-ysrc,unit_image,face_left,false,
 		          highlight_ratio,blend_with);
 	}
@@ -1160,7 +1160,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	for(j = ypos; j != yend; ++j) {
 		const int yloc = ysrc+j-ypos;
 		const int xoffset = abs(yloc - static_cast<int>(zoom_/2.0))/2;
-	
+
 		int xdst = xpos;
 		if(xoffset > xsrc) {
 			xdst += xoffset - xsrc;
@@ -1173,16 +1173,16 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		short* startdst =
 			reinterpret_cast<short*>(dst->pixels) + j*dst->w + xdst;
-		
+
 		const Pixel replace_energy =
 		             Pixel(SDL_MapRGB(energy_image->format,0xFF,0xFF,0xFF));
 		const short new_energy = yloc >= show_energy_after ?
 		                             energy_colour : energy_loss_colour;
-		
+
 		const int skip = yloc >= energy_bar_loc.first ? skip_energy_rows:0;
 
 		short* startenergy = NULL;
-		
+
 		const int energy_w = energy_image->w + ((energy_image->w%2) == 1 ? 1:0);
 		if(yloc + skip < energy_image->h) {
 			startenergy = reinterpret_cast<short*>(energy_image->pixels) +
@@ -1206,7 +1206,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 					}
 				}
 
-				++startdst;	
+				++startdst;
 
 				if(startenergy != NULL)
 					++startenergy;
@@ -1240,7 +1240,7 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 	gamemap::location loc(x,y);
 
 	const gamemap::TERRAIN current_terrain = map_.on_board(loc) ? map_[x][y]:0;
-	
+
 	std::vector<bool> done(true,6);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -1250,7 +1250,7 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 				   (int)map_[adjacent[i].x][adjacent[i].y] :
 				   (int)gamemap::VOID_TERRAIN;
 	}
-	
+
 	const std::vector<gamemap::TERRAIN>& precedence =
 	                                 map_.get_terrain_precedence();
 	std::vector<gamemap::TERRAIN>::const_iterator terrain =
@@ -1260,7 +1260,7 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 		terrain = precedence.begin();
 	else
 		++terrain;
-	
+
 	for(; terrain != precedence.end(); ++terrain){
 		//find somewhere that doesn't have overlap to use as a starting point
 		int start;
@@ -1353,24 +1353,24 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 
 	SDL_LockSurface(surface);
 	SDL_LockSurface(target);
-	
+
 	if(x < 0)
 		x = 0;
 
 	if(y < 0)
 		y = 0;
-	
+
 	//lines are padded to always fit on 4-byte boundaries, so see if there
 	//is padding at the beginning of every line
 	const int padding = (surface->w%2) == 1 ? 1:0;
 	const int surface_width = surface->w + padding;
-	
+
 	const short* src = reinterpret_cast<short*>(surface->pixels) +
 	                   srcy*surface_width + srcx;
 	short* dst = reinterpret_cast<short*>(target->pixels) + y*target->w + x;
 
 	static const short transperant = 0;
-	
+
 	for(int i = 0; i != srch; ++i) {
 		const short* s = src + i*surface_width + padding;
 		const short* const end = s + srcw;
@@ -1379,7 +1379,7 @@ void display::blit_surface(int x, int y, SDL_Surface* surface)
 			if(*s != transperant) {
 				*d = *s;
 			}
-			
+
 			++s;
 			++d;
 		}
@@ -1395,9 +1395,9 @@ SDL_Surface* display::getImage(const std::string& filename,
 		return getImageTinted(filename,GREY_IMAGE);
 	else if(type == BRIGHTENED)
 		return getImageTinted(filename,BRIGHTEN_IMAGE);
-		
+
 	std::map<std::string,SDL_Surface*>::iterator i;
-	
+
 	if(type == SCALED) {
 		i = scaledImages_.find(filename);
 		if(i != scaledImages_.end())
@@ -1446,7 +1446,7 @@ SDL_Surface* display::getImage(const std::string& filename,
 
 	if(new_surface == NULL)
 		return NULL;
-	
+
 	scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,
 								                             new_surface));
 	return new_surface;
@@ -1456,27 +1456,27 @@ SDL_Surface* display::getImageTinted(const std::string& filename, TINT tint)
 {
 	std::map<std::string,SDL_Surface*>& image_map =
 	       tint == GREY_IMAGE ? greyedImages_ : brightenedImages_;
-	
+
 	const std::map<std::string,SDL_Surface*>::iterator itor =
 			image_map.find(filename);
 
 	if(itor != image_map.end())
 		return itor->second;
-		
+
 	SDL_Surface* const base = getImage(filename,SCALED);
 	if(base == NULL)
 		return NULL;
 
-	SDL_Surface* const surface = 
+	SDL_Surface* const surface =
 		           SDL_CreateRGBSurface(SDL_SWSURFACE,base->w,base->h,
 					                     base->format->BitsPerPixel,
 										 base->format->Rmask,
 										 base->format->Gmask,
 										 base->format->Bmask,
 										 base->format->Amask);
-	
+
 	image_map.insert(std::pair<std::string,SDL_Surface*>(filename,surface));
-	
+
 	short* begin = reinterpret_cast<short*>(base->pixels);
 	const short* const end = begin + base->h*(base->w + (base->w%2));
 	short* dest = reinterpret_cast<short*>(surface->pixels);
@@ -1484,17 +1484,17 @@ SDL_Surface* display::getImageTinted(const std::string& filename, TINT tint)
 	const int rmax = 0xFF;
 	const int gmax = 0xFF;
 	const int bmax = 0xFF;
-	
+
 	while(begin != end) {
 		Uint8 red, green, blue;
 		SDL_GetRGB(*begin,base->format,&red,&green,&blue);
 		int r = int(red), g = int(green), b = int(blue);
-		
+
 		if(tint == GREY_IMAGE) {
 			const double greyscale = (double(r)/(double)rmax +
 					                  double(g)/(double)gmax +
 							          double(b)/(double)bmax)/3.0;
-	
+
 			r = int(rmax*greyscale);
 			g = int(gmax*greyscale);
 			b = int(bmax*greyscale);
@@ -1540,7 +1540,7 @@ SDL_Surface* display::getMinimap(int w, int h)
 		short* data = reinterpret_cast<short*>(minimap_->pixels);
 		for(int y = 0; y != map_.y(); ++y) {
 			for(int x = 0; x != map_.x(); ++x) {
-				
+
 				*data = map_.get_terrain_info(map_[x][y]).get_rgb().
 				                                     format(surface->format);
 				++data;
@@ -1617,7 +1617,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	const int begin_at = attack.get_first_frame();
 	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
 					       maximum(attack.get_last_frame(),real_last_missile));
-	
+
 	const double xsrc = get_location_x(a);
 	const double ysrc = get_location_y(a);
 	const double xdst = get_location_x(b);
@@ -1625,7 +1625,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 	gamemap::location update_tiles[6];
 	get_adjacent_tiles(a,update_tiles);
-	
+
 	const bool vflip = b.y > a.y || b.y == a.y && (a.x%2) == 0;
 	const bool hflip = b.x < a.x;
 	const attack_type::FRAME_DIRECTION dir =
@@ -1692,7 +1692,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 			const std::string* missile_image
 			  = attack.get_frame(missile_frame,attack_type::MISSILE_FRAME,dir);
-			
+
 			static const std::string default_missile("missile-n.png");
 			static const std::string default_diag_missile("missile-ne.png");
 			if(missile_image == NULL) {
@@ -1713,13 +1713,13 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 				draw_unit(xpos,ypos,img,!hflip,vflip);
 			}
 		}
-		
+
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
 		if(wait_time > 0 && !turbo() && !update_locked())
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
-		
+
 		update_display();
 	}
 
@@ -1827,7 +1827,7 @@ bool display::unit_attack(const gamemap::location& a,
 		for(int j = 0; j != 6; ++j) {
 			draw_tile(update_tiles[j].x,update_tiles[j].y);
 		}
-		
+
 		int defender_colour = 0;
 		double defender_alpha = 1.0;
 
@@ -1848,7 +1848,7 @@ bool display::unit_attack(const gamemap::location& a,
 		}
 
 		draw_tile(b.x,b.y,NULL,defender_alpha,defender_colour);
-		
+
 		const std::string* unit_image = attack.get_frame(i);
 		if(unit_image == NULL)
 			unit_image = &attacker.image();
@@ -1868,7 +1868,7 @@ bool display::unit_attack(const gamemap::location& a,
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
-		
+
 		update_display();
 	}
 
@@ -1968,7 +1968,7 @@ void display::move_unit_between(const gamemap::location& a,
 		if(wait_time > 0 && !turbo()) {
 			SDL_Delay(wait_time);
 		}
-		
+
 		ticks = SDL_GetTicks();
 
 		if(wait_time >= 0 || skips == 4 || (i+1.0) >= nsteps) {
@@ -1992,11 +1992,11 @@ void display::draw_unit(int x, int y, const SDL_Surface* image,
 	const int h = this->y()-1;
 	if(x > w || y > h)
 		return;
-	
+
 	const int image_w = image->w + ((image->w%2) == 1 ? 1 : 0);
-	
+
 	SDL_Surface* const screen = screen_.getSurface();
-	
+
 	const Pixel* src = reinterpret_cast<const short*>(image->pixels);
 
 	const int endy = (y + image->h) < h ? (y + image->h) : h;
@@ -2005,7 +2005,7 @@ void display::draw_unit(int x, int y, const SDL_Surface* image,
 		return;
 
 	const int len = endx - x;
-	
+
 	if(y < 0) {
 		//this is adding to src, since y is negative
 		src -= image_w*y;
@@ -2082,7 +2082,7 @@ const std::pair<int,int>& display::calculate_energy_bar()
 
 	int first_row = -1;
 	int last_row = -1;
-	
+
 	const SDL_Surface* const image = getImage("unmoved-energy.png");
 	const short* const begin = reinterpret_cast<short*>(image->pixels);
 
@@ -2179,7 +2179,7 @@ struct inside_rect {
 
 	inside_rect(const SDL_Rect& a) : a(a)
 	{}
-	
+
 	bool operator()(const SDL_Rect& b) const
 	{
 		if(a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h)
@@ -2196,7 +2196,7 @@ struct outside_rect {
 
 	outside_rect(const SDL_Rect& b) : b(b)
 	{}
-	
+
 	bool operator()(const SDL_Rect& a) const
 	{
 		if(a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h)
@@ -2215,7 +2215,7 @@ void display::update_rect(const SDL_Rect& rect)
 	if(std::find_if(updateRects_.begin(),updateRects_.end(),outside_rect(rect))
 	   != updateRects_.end())
 		return;
-	
+
 	updateRects_.push_back(rect);
 }
 
@@ -2272,4 +2272,4 @@ void display::debug_highlight(const gamemap::location& loc, double amount)
 void display::clear_debug_highlights()
 {
 	debugHighlights_.clear();
-}	
+}

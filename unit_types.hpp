@@ -26,7 +26,7 @@ class attack_type
 {
 public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
-	
+
 	attack_type(config& cfg);
 	const std::string& name() const;
 	const std::string& type() const;
@@ -129,7 +129,7 @@ public:
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const;
-	
+
 	int experience_needed() const;
 	std::vector<std::string> advances_to() const;
 	const std::string& usage() const;

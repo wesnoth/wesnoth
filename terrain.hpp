@@ -28,7 +28,7 @@ public:
 	const std::string& name() const;
 	char letter() const;
 	char type() const;
-	
+
 	pixel_data get_rgb() const;
 
 	bool is_alias() const;

@@ -82,7 +82,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			return QUIT;
 		} catch(gamestatus::game_error& e) {
 			std::cerr << "An error occurred while playing the game: "
-			          << e.message << "\n";	
+			          << e.message << "\n";
 			return QUIT;
 		} catch(gamemap::incorrect_format_exception& e) {
 			std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
@@ -112,7 +112,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		if(i+1 < scenarios.size()) {
 			state.label = scenarios[i+1]->values["name"];
 			state.scenario = i+1;
-			
+
 			const int should_save = gui::show_dialog(disp,NULL,"",
 			                    string_table["save_game_message"],
 			                    gui::YES_NO,NULL,NULL,
@@ -140,7 +140,7 @@ int play_game(int argc, char** argv)
 	std::map<std::string,std::string> defines_map;
 	defines_map["NORMAL"] = "";
 	config game_config(preprocess_file("data/game.cfg", &defines_map));
-	
+
 	const std::vector<config*>& units = game_config.children["units"];
 	if(units.empty()) {
 		std::cerr << "Could not find units configuration\n";
@@ -160,10 +160,10 @@ int play_game(int argc, char** argv)
 			std::cerr << "Language data not found\n";
 		}
 	}
-	
+
 	bool test_mode = false;
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-	
+
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val == "-windowed") {
@@ -176,7 +176,7 @@ int play_game(int argc, char** argv)
 	}
 
 	const std::pair<int,int>& resolution = preferences::resolution();
-	
+
 	const int bpp = video.modePossible(resolution.first,resolution.second,
 	                                   16,video_flags);
 
@@ -228,13 +228,13 @@ int play_game(int argc, char** argv)
 			play_game(disp,state,game_config,units_data,video);
 			return 0;
 		}
-		
+
 		gui::TITLE_RESULT res = gui::show_title(disp);
 		if(res == gui::QUIT_GAME) {
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 			srand(SDL_GetTicks());
-		   
+
 			const std::vector<std::string>& games = get_saves_list();
 
 			if(games.empty()) {
@@ -354,7 +354,7 @@ int play_game(int argc, char** argv)
 			}
 			continue;
 		}
-		
+
 		//make a new game config item based on the difficulty level
 		config game_config(preprocess_file("data/game.cfg", &defines_map));
 

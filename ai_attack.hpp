@@ -23,24 +23,24 @@
 #include <vector>
 
 namespace ai {
-		
+
 struct attack_analysis
 {
 	void analyze(const gamemap& map, std::map<location,unit>& units,
 	             const gamestatus& status, const game_data& info, int sims);
 
 	double rating(double aggression) const;
-	
+
 	gamemap::location target;
 	std::vector<std::pair<gamemap::location,gamemap::location> > movements;
 	std::vector<int> weapons;
-	
+
 	//the value of the unit being targeted
 	double target_value;
 
 	//the value on average, of units lost in the combat
 	double avg_losses;
-	
+
 	//estimated % chance to kill the unit
 	double chance_to_kill;
 

@@ -22,7 +22,7 @@ namespace gui {
 #define INPUT_CHAR_START (' ')
 #define INPUT_CHAR_END ('~' + 1)
 #define CHAR_LENGTH (INPUT_CHAR_END - INPUT_CHAR_START)
-		
+
 class textbox
 {
 	display& disp_;
@@ -39,7 +39,7 @@ class textbox
 	bool lastLArrow_, lastRArrow_, lastDelete_, lastBackspace_;
 
 	void draw_cursor(int pos) const;
-		
+
 public:
 	textbox(display& disp, int width, const std::string& text="");
 

@@ -46,7 +46,7 @@ struct paths
 		std::vector<gamemap::location> steps;
 		int move_left;
 	};
-	
+
 	std::map<gamemap::location,route> routes;
 };
 
@@ -59,7 +59,7 @@ struct node {
 	{
 		f = g + h;
 	}
-	 
+
 	node* parent;
 	gamemap::location loc;
 	double g, h, f;
@@ -77,7 +77,7 @@ paths::route a_star_search(const gamemap::location& src,
 	std::list<node> open_list, closed_list;
 
 	open_list.push_back(node(src,dst,0.0,NULL));
-	
+
 	while(!open_list.empty()) {
 
 		//find the lowest estimated cost node on the open list
@@ -96,7 +96,7 @@ paths::route a_star_search(const gamemap::location& src,
 
 		//move the lowest element from the open list to the closed list
 		closed_list.splice(closed_list.begin(),open_list,lowest);
-		
+
 		//find nodes we can go to from this node
 		location locs[6];
 		get_adjacent_tiles(lowest->loc,locs);

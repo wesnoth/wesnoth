@@ -37,7 +37,7 @@ bool conditional_passed(game_state& state_of_game,
 
 		if(units == NULL)
 			return false;
-		
+
 		std::map<gamemap::location,unit>::const_iterator itor;
 		for(itor = units->begin(); itor != units->end(); ++itor) {
 			if(itor->second.matches_filter(**u)) {
@@ -67,7 +67,7 @@ bool conditional_passed(game_state& state_of_game,
 			   values.find("numerical_not_equals") == values.end()) {
 				return false;
 			}
-			
+
 			continue;
 		}
 
@@ -154,7 +154,7 @@ public:
 	{}
 
 	const std::string& name() const { return name_; }
-	
+
 	bool first_time_only() const { return first_time_only_; }
 
 	void disable() { disabled_ = true; }
@@ -169,7 +169,7 @@ public:
 	}
 
 	void handle_event(const queued_event& event_info, config* cfg=NULL);
-	
+
 private:
 	std::string name_;
 	bool first_time_only_;
@@ -178,7 +178,7 @@ private:
 };
 
 std::multimap<std::string,event_handler> events_map;
-   
+
 void event_handler::handle_event(const queued_event& event_info, config* cfg)
 {
 	if(cfg == NULL)
@@ -236,7 +236,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 			handle_event(event_info,*cmd);
 		}
 	}
-	
+
 	//if we are assigning a role to a unit from the available units list
 	std::vector<config*>& assign_role = cfg->children["role"];
 	for(std::vector<config*>::iterator rl = assign_role.begin();
@@ -262,7 +262,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 
 			if(itor != units->end())
 				break;
-			
+
 			std::vector<unit>::iterator ui;
 			//iterate over the units, and try to find one that matches
 			for(ui = state_of_game->available_units.begin();
@@ -283,7 +283,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		if(ti != types.end())
 			break;
 	}
-		
+
 	std::vector<config*>& remove_overlays = cfg->children["removeitem"];
 	for(std::vector<config*>::iterator rm = remove_overlays.begin();
 	    rm != remove_overlays.end(); ++rm) {
@@ -291,7 +291,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		if(!loc.valid()) {
 			loc = event_info.loc1;
 		}
-			
+
 		screen->remove_overlay(loc);
 	}
 
@@ -304,7 +304,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		if(!img.empty())
 			screen->add_overlay(loc,img);
 	}
-	
+
 	//changing the terrain
 	std::vector<config*>& terrain_changes = cfg->children["terrain"];
 	for(std::vector<config*>::iterator tc = terrain_changes.begin();
@@ -317,14 +317,14 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 			screen->invalidate_all();
 		}
 	}
-		
+
 	//if we should spawn a new unit on the map somewhere
 	std::vector<config*>& new_units = cfg->children["unit"];
 	for(std::vector<config*>::iterator ui = new_units.begin();
 	    ui != new_units.end(); ++ui) {
 		unit new_unit(*game_data_ptr,**ui);
 		gamemap::location loc(**ui);
-		
+
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
@@ -348,7 +348,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 			}
 		}
 	}
-	
+
 	std::vector<config*>& objects = cfg->children["object"];
 	for(std::vector<config*>::iterator obj = objects.begin();
 	    obj != objects.end(); ++obj) {
@@ -366,17 +366,17 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		const std::string& caption_lang = string_table[id + "_name"];
 		if(caption_lang.empty() == false)
 			caption = caption_lang;
-		
+
 		const std::map<gamemap::location,unit>::iterator u =
 		                           units->find(event_info.loc1);
 
 		if(u == units->end())
 			continue;
-		
+
 		std::string text;
-		
+
 		std::vector<config*>& filters = (*obj)->children["filter"];
-		
+
 		if(filters.empty() || u->second.matches_filter(*filters[0])) {
 			const std::string& lang = string_table[id];
 			if(!lang.empty())
@@ -410,7 +410,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		//this will redraw the unit, with its new stats
 		screen->draw();
 	}
-	
+
 	std::vector<config*>& messages = cfg->children["message"];
 	for(std::vector<config*>::iterator msg = messages.begin();
 	    msg != messages.end(); ++msg) {
@@ -438,13 +438,13 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 
 		std::string image = (*msg)->values["image"];
 		std::string caption;
-	   	
+
 		const std::string& lang_caption = string_table[id + "_caption"];
 		if(!lang_caption.empty())
 			caption = lang_caption;
 		else
 			caption = (*msg)->values["caption"];
-		
+
 		if(speaker != units->end()) {
 			screen->highlight_hex(speaker->first);
 			screen->scroll_to_tile(speaker->first.x,speaker->first.y);
@@ -513,7 +513,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 	std::vector<config*>& dead_units = cfg->children["kill"];
 	for(std::vector<config*>::iterator du = dead_units.begin();
 	    du != dead_units.end(); ++du) {
-		
+
 		for(std::map<gamemap::location,unit>::iterator i = units->begin();
 		    i != units->end(); ++i) {
 			while(i->second.matches_filter(**du) && i != units->end()) {
@@ -521,7 +521,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 				i = units->begin();
 			}
 		}
-		
+
 		std::vector<unit>& avail_units = state_of_game->available_units;
 		for(std::vector<unit>::iterator j = avail_units.begin();
 		    j != avail_units.end(); ++j) {
@@ -539,7 +539,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		events_map.insert(std::pair<std::string,event_handler>(
 		                             new_handler.name(),new_handler));
 	}
-	
+
 	std::vector<config*>& end_level = cfg->children["endlevel"];
 	if(end_level.empty() == false) {
 		config* const end_info = end_level[0];
@@ -624,7 +624,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 {
 	if(handler.disabled())
 		return false;
-	
+
 	std::map<gamemap::location,unit>::iterator unit1 = units->find(ev.loc1);
 	std::map<gamemap::location,unit>::iterator unit2 = units->find(ev.loc2);
 
@@ -674,7 +674,7 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
 		events_map.insert(std::pair<std::string,event_handler>(
 		                                   new_handler.name(), new_handler));
 	}
-	
+
 	screen = &gui_;
 	game_map = &map_;
 	units = &units_;

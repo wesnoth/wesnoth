@@ -31,7 +31,7 @@ void draw_rectangle(int x, int y, int w, int h, short colour, SDL_Surface* tg);
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
 								 double alpha, SDL_Surface* target);
-		
+
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL };
 
 //if a menu is given, then returns -1 if the dialog was cancelled, and the

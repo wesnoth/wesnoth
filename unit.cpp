@@ -204,7 +204,7 @@ void unit::new_level()
 
 	//reapply all permanent modifications
 	apply_modifications();
-	
+
 	heal_all();
 	statusFlags_.clear();
 }
@@ -293,7 +293,7 @@ bool unit::matches_filter(config& cfg) const
 	}
 
 	const std::string& this_type = this->type().name();
-	
+
 	//the type could be a comma-seperated list of types
 	if(type.empty() == false && type != this_type) {
 
@@ -304,11 +304,11 @@ bool unit::matches_filter(config& cfg) const
 		   std::search(type.begin(),type.end(),this_type.begin(),this_type.end()) !=
 		                                                    type.end()) {
 			const std::vector<std::string>& vals = config::split(type);
-			
+
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
 				return false;
 			}
-		} else {	
+		} else {
 			return false;
 		}
 	}
@@ -335,7 +335,7 @@ bool unit::matches_filter(config& cfg) const
 
 	if(role.empty() == false && role_ != role)
 		return false;
-	
+
 	return true;
 }
 
@@ -482,7 +482,7 @@ const std::string& unit::image() const
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
 				return type_->image();
-			
+
 			const std::string* const img =
 			          attackType_->get_frame(attackingMilliseconds_);
 
@@ -535,18 +535,18 @@ bool unit::is_guardian() const
 void unit::add_modification(const std::string& type, config& mod, bool no_add)
 {
 	const std::string& span = mod.values["duration"];
-	
+
 	if(no_add == false && (span.empty() || span == "forever"))
 		modifications_.children[type].push_back(new config(mod));
 
 	const std::vector<config*>& effects = mod.children["effect"];
 	for(std::vector<config*>::const_iterator i = effects.begin();
 	    i != effects.end(); ++i) {
-			
+
 		const std::string& apply_to = (*i)->values["apply_to"];
 
 		if(apply_to == "new_attack") {
-			attacks_.push_back(attack_type(**i));	
+			attacks_.push_back(attack_type(**i));
 		} else if(apply_to == "attack") {
 			for(std::vector<attack_type>::iterator a = attacks_.begin();
 			    a != attacks_.end(); ++a) {
@@ -573,7 +573,7 @@ void unit::add_modification(const std::string& type, config& mod, bool no_add)
 
 			if(maxHitpoints_ < 1)
 				maxHitpoints_ = 1;
-			
+
 			if(heal_full.empty() == false && heal_full != "no") {
 				heal_all();
 			}

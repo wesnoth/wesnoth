@@ -46,7 +46,7 @@ public:
 
 		std::vector<target> targets;
 	};
-		
+
 	team(config& cfg, int gold=100);
 	void get_tower(const gamemap::location&);
 	void lose_tower(const gamemap::location&);

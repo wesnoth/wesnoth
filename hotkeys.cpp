@@ -52,7 +52,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 struct hotkey {
 	explicit hotkey(config& cfg);
 
-	HOTKEY_COMMAND action; 
+	HOTKEY_COMMAND action;
 	int keycode;
 	bool alt, ctrl, shift;
 	mutable bool lastres;
@@ -62,7 +62,7 @@ hotkey::hotkey(config& cfg) : lastres(false)
 {
 	std::map<std::string,std::string>& m = cfg.values;
 	action = string_to_command(m["command"]);
-	
+
 	keycode = m["key"].empty() ? 0 : m["key"][0];
 	alt = (m["alt"] == "yes");
 	ctrl = (m["ctrl"] == "yes");

@@ -42,7 +42,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	gui.invalidate_all();
 	gui.draw();
 	gui.update_display();
-	
+
 	team& current_team = teams[team_num-1];
 
 	const double scroll_speed = 30.0;
@@ -57,9 +57,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		++menu_items_ptr) {
 		menu.push_back(string_table[*menu_items_ptr]);
 	}
-		
+
 	typedef std::map<gamemap::location,unit> units_map;
-	
+
 	gamemap::location next_unit;
 
 	bool left_button = false, right_button = false;
@@ -78,9 +78,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool new_left_button = mouse_flags & SDL_BUTTON_LMASK;
 		const bool new_right_button = mouse_flags & SDL_BUTTON_RMASK;
-		
+
 		gamemap::location new_hex = gui.hex_clicked_on(mousex,mousey);
-		
+
 		//highlight the hex that is currently moused over
 		if(new_hex != last_hex) {
 			gui.highlight_hex(new_hex);
@@ -112,7 +112,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		}
 
 		last_hex = new_hex;
-			
+
 		if(!left_button && new_left_button) {
 			const gamemap::location& hex = gui.hex_clicked_on(mousex,mousey);
 
@@ -128,7 +128,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			if(route != current_paths.routes.end() && enemy != units.end() &&
 			   hex != selected_hex &&
 			   enemy->second.side() != u->second.side()) {
-					
+
 				const unit_type& type = u->second.type();
 				const unit_type& enemy_type = enemy->second.type();
 				const std::vector<attack_type>& attacks = u->second.attacks();
@@ -150,7 +150,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					const std::string& lang_range =
 					            string_table[stats.range == "Melee" ?
 					                            "short_range" : "long_range"];
-					
+
 					const std::string& lang_defend_name =
 					            string_table["weapon_name_"+stats.defend_name];
 					const std::string& lang_defend_type =
@@ -164,7 +164,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					                    stats.defend_name : lang_defend_name;
 					const std::string& defend_type = lang_defend_type.empty() ?
 					                    stats.defend_type : lang_defend_type;
-					
+
 					const std::string& range = lang_range.empty() ?
 					                    stats.range : lang_range;
 
@@ -179,7 +179,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					    << ") " << stats.damage_attacker_takes << "-"
 						<< stats.ndefends << " "
 						<< int(ceil(100.0*stats.chance_to_hit_attacker)) << "%";
-					
+
 					items.push_back(att.str());
 					units_list.push_back(enemy->second);
 				}
@@ -224,7 +224,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					dialogs::advance_unit(gameinfo,units,hex,gui);
 
 					selected_hex = gamemap::location();
-					
+
 					gui.invalidate_unit();
 					gui.draw(); //clear the screen
 
@@ -238,7 +238,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					}
 				}
 			}
-			
+
 			//otherwise we're just trying to move to a hex
 			else if(selected_hex.valid() && selected_hex != hex &&
 				     enemy == units.end() &&
@@ -317,7 +317,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			} else {
 				gui.set_paths(NULL);
 				current_paths = paths();
-			
+
 				selected_hex = hex;
 				gui.select_hex(hex);
 
@@ -331,7 +331,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 			}
 		}
-		
+
 		left_button = new_left_button;
 
 		if(!right_button && new_right_button) {
@@ -346,11 +346,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				if(un != units.end()) {
 					menu.push_back(string_table["describe_unit"]);
 				}
-				
+
 				const int res = gui::show_dialog(gui,NULL,"",
 				                                 string_table["options"]+":\n",
 				                                 gui::MESSAGE,&menu);
-				
+
 				const std::string result = res != -1 ? menu[res] : "";
 
 				if(un != units.end()) {
@@ -374,7 +374,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					SDL_Surface* const unit_image =
 					       gui.getImage(un->second.type().image_profile(),
 					                    display::UNSCALED);
-					
+
 					const int res = gui::show_dialog(gui,unit_image,
 					       un->second.type().language_name(),
 						   description,gui::MESSAGE,&options,&units_list);
@@ -389,11 +389,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 						command = HOTKEY_ATTACK_RESISTANCE;
 					}
 				}
-				
+
 				else if(result == string_table["preferences"]) {
 					preferences::show_preferences_dialog(gui);
 				}
-				
+
 				else if(result == string_table["end_turn"]) {
 					recorder.end_turn();
 					return;
@@ -405,7 +405,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					const std::string& id = level->values["id"];
 					const std::string& lang_objectives =
 					                        string_table[id + "_objectives"];
-					
+
 					const std::string& objectives = lang_objectives.empty() ?
 					        level->values["objectives"] : lang_objectives;
 					gui::show_dialog(
@@ -420,7 +420,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					std::sort(state_of_game.available_units.begin(),
 					          state_of_game.available_units.end(),
 							  compare_unit_values());
-					
+
 					gui.draw(); //clear the old menu
 					if(state_of_game.available_units.empty()) {
 						gui::show_dialog(gui,NULL,"",string_table["no_recall"]);
@@ -450,7 +450,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 						           gui::OK_CANCEL,&options,
 								   &state_of_game.available_units);
 						if(res >= 0) {
-								
+
 							const std::string err = recruit_unit(map,team_num,
 							  units,state_of_game.available_units[res],
 							  last_hex,&gui);
@@ -475,7 +475,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				else if(result == string_table["recruit"]) {
 
 					std::vector<unit> sample_units;
-						
+
 					gui.draw(); //clear the old menu
 					std::vector<std::string> item_keys;
 					std::vector<std::string> items;
@@ -491,7 +491,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 							assert(false);
 							continue;
 						}
-						
+
 						const unit_type& type = u_type->second;
 						std::stringstream description;
 
@@ -510,14 +510,14 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 						const std::map<std::string,unit_type>::const_iterator
 								u_type = gameinfo.unit_types.find(name);
 						assert(u_type != gameinfo.unit_types.end());
-						
+
 						if(u_type->second.cost() > current_team.gold()) {
 							gui::show_dialog(gui,NULL,"",
 							     string_table["not_enough_gold_to_recruit"],
 								 gui::OK_ONLY);
 						} else {
 							recorder.add_recruit(recruit_res,last_hex);
-								
+
 							//create a unit with traits
 							unit new_unit(&(u_type->second),team_num,true);
 							const std::string& msg =
@@ -539,7 +539,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					                            string_table["hp"] + "," +
 					                            string_table["xp"] + "," +
 					                            string_table["moves"] + "," +
-					                            string_table["location"]; 
+					                            string_table["location"];
 
 					std::vector<std::string> items;
 					items.push_back(heading);
@@ -549,7 +549,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					    i != units.end(); ++i) {
 						if(i->second.side() != team_num)
 							continue;
-							
+
 						std::stringstream row;
 						row << i->second.name() << "," << i->second.hitpoints()
 						    << "/" << i->second.max_hitpoints() << ","
@@ -572,7 +572,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					                 gui::OK_ONLY,&items,&units_list);
 				} else if(result == string_table["save_game"]) {
 					std::stringstream stream;
-					stream << string_table["scenario"] 
+					stream << string_table["scenario"]
 					       << " " << (state_of_game.scenario+1)
 					       << " " << string_table["turn"]
 					       << " " << status.turn();
@@ -593,7 +593,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		}
 
 		right_button = new_right_button;
-		
+
 		if(key[KEY_UP] || mousey == 0)
 			gui.scroll(0.0,-scroll_speed);
 
@@ -655,7 +655,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			items.push_back(string_table["terrain"] + "," +
 			                string_table["movement"] + "," +
 							string_table["defense"]);
-			
+
 			const unit_type& type = un->second.type();
 			const unit_movement_type& move_type =
 			                        type.movement_type();
@@ -668,9 +668,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					const std::string& name = map.terrain_name(*t);
 					const std::string& lang_name = string_table[name];
 					const int moves = move_type.movement_cost(map,*t);
-					
+
 					const double defense = move_type.defense_modifier(map,*t);
-					
+
 					const int def = int(100.0-ceil(100.0*defense));
 
 					std::stringstream str;
@@ -679,7 +679,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 						str << moves;
 					else
 						str << "--";
-					
+
 					str << "," << def << "%";
 
 					items.push_back(str.str());
@@ -705,7 +705,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				redo_stack.clear();
 				un->second.set_movement(0);
 				gui.draw_tile(selected_hex.x,selected_hex.y);
-				
+
 				gui.set_paths(NULL);
 				current_paths = paths();
 				recorder.add_movement(selected_hex,selected_hex);
@@ -830,7 +830,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			undo_stack.push_back(redo_stack.back());
 			redo_stack.pop_back();
 		}
-		
+
 		gui.draw();
 
 		game_events::pump();

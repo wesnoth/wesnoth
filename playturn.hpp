@@ -38,7 +38,7 @@ struct paths_wiper
 	{}
 
 	~paths_wiper() { gui_.set_paths(NULL); }
-	
+
 private:
 	display& gui_;
 };

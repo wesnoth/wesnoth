@@ -31,19 +31,19 @@ int main( int argc, char** argv )
 	}
 	SDL_Init(SDL_INIT_VIDEO);
 	CVideo video;
-	
+
 	printf( "args: %s, %s, %s\n", argv[1], argv[2], argv[3] );
-	
+
 	printf( "(%d,%d,%d)\n", strtoul(argv[1],0,10), strtoul(argv[2],0,10),
 	                        strtoul(argv[3],0,10) );
-	
+
 	if( video.setMode( strtoul(argv[1],0,10), strtoul(argv[2],0,10),
 	                        strtoul(argv[3],0,10), FULL_SCREEN ) ) {
 		printf( "video mode possible\n" );
 	} else  printf( "video mode NOT possible\n" );
 	printf( "%d, %d, %d\n", video.getx(), video.gety(),
 	                        video.getBitsPerPixel() );
-	
+
 	for( int s = 0; s < 50; s++ ) {
 		video.lock();
 		for( int i = 0; i < video.getx(); i++ )
@@ -78,7 +78,7 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags, const char* text )
 	if(res < 0) {
 		throw error();
 	}
-	
+
 	setMode( x, y, bits_per_pixel, flags );
 
 	for(int i = 0; i != sizeof(text_); ++i) {
@@ -100,7 +100,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
-	
+
 	if( res == 0 )
 		return 0;
 
@@ -206,10 +206,10 @@ void CVideo::setPixel( int x, int y, int p )
 	static char* p3 = ((char*)&pixel)+2;
 	static short* sp = ((short*)&pixel);
 	pixel = p;
-	
+
 	if( x < 0 || x >= backBuffer->w || y < 0 || y >= backBuffer->h )
 		return;
-	
+
 	switch( backBuffer->format->BytesPerPixel ) {
 		case 1:
 			*((char*)backBuffer->pixels+y*backBuffer->w+x) = *p1;
@@ -237,23 +237,23 @@ void CVideo::update( int x, int y, int w, int h )
 {
 	if( w == 0 || h == 0 )
 		return;
-	
+
 	if( x < 0 ) {
 		w += x;
 		x = 0;
 	}
-	
+
 	if( y < 0 ) {
 		h += y;
 		y = 0;
 	}
-	
+
 	if( x+w > frameBuffer->w )
 		w = frameBuffer->w - x;
-	
+
 	if( y+h > frameBuffer->h )
 		h = frameBuffer->h - y;
-	
+
 	SRectangle rect = {x,y,w,h};
 	SDL_BlitSurface( backBuffer, &rect, frameBuffer, &rect );
 	SDL_UpdateRect( frameBuffer, x, y, w, h );
@@ -302,12 +302,12 @@ int CVideo::drawText(int x, int y, int pixel, int bg, const char* text, int sz)
 		if(*text == '@') {
 			colour = good_colour;
 		} else if(*text == '#') {
-			colour = bad_colour;	
+			colour = bad_colour;
 		} else if(*text == '\n') {
 			colour = pixel;
 			y += 8*sz;
 			x = startx;
-		} else {	
+		} else {
 			drawChar(x,y,colour,bg == pixel ? colour : bg,*text,sz);
 			x += 8*sz;
 		}

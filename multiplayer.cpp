@@ -44,7 +44,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 	state.label = level.values["name"];
 
 	state.scenario = res;
-	
+
 	std::vector<config*>& sides = level.children["side"];
 	std::vector<config*>& possible_sides = cfg.children["multiplayer_side"];
 	if(sides.empty() || possible_sides.empty()) {
@@ -74,13 +74,13 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 		}
 
 		sides_list.push_back(string_table["start_game"]);
-		
+
 		res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
 		                       gui::MESSAGE,&sides_list);
 
 		if(res >= 0 && res < sides.size()) {
 			std::vector<std::string> choices;
-			
+
 			for(int n = 0; n != 2; ++n) {
 				for(std::vector<config*>::iterator i = possible_sides.begin();
 				    i != possible_sides.end(); ++i) {
@@ -111,7 +111,7 @@ void play_multiplayer(display& disp, game_data& units_data, config& cfg,
 			}
 		}
 	}
-	
+
 	state.starting_pos = level;
 
 	recorder.set_save_info(state);

@@ -128,7 +128,7 @@ SDL_Rect slider::slider_area() const
 	const int hpadding = image_->w/2;
 	if(hpadding*2 >= area_.w)
 		return default_value;
-	
+
 	const int position = int(value_*double(area_.w - hpadding*2));
 	const int xpos = area_.x + position;
 	SDL_Rect res = {xpos,area_.y,image_->w,image_->h};

@@ -39,18 +39,18 @@ void advance_unit(const game_data& info,
 	}
 
 	int res = 0;
-	
+
 	if(options.empty()) {
 		return;
 	} else if(random_choice) {
 		res = rand()%options.size();
 	} else if(options.size() > 1) {
-	
+
 		res = gui::show_dialog(gui,NULL,string_table["advance_unit_heading"],
 		                       string_table["advance_unit_message"],
 		                       gui::OK_ONLY, &options, &sample_units);
 	}
-	
+
 	//when the unit advances, it fades to white, and then switches to the
 	//new unit, then fades back to the normal colour
 	double intensity;
@@ -60,13 +60,13 @@ void advance_unit(const game_data& info,
 		gui.update_display();
 		SDL_Delay(30);
 	}
-	
+
 	recorder.choose_option(res);
 
 	::advance_unit(info,units,loc,options[res]);
 
 	gui.invalidate_unit();
-	
+
 	for(intensity = 0.0; intensity <= 1.0; intensity += 0.05) {
 		gui.set_advancing_unit(loc,intensity);
 		gui.draw(false);
@@ -75,7 +75,7 @@ void advance_unit(const game_data& info,
 	}
 
 	gui.set_advancing_unit(gamemap::location(),0.0);
-	
+
 	gui.invalidate_all();
 	gui.draw();
 }

@@ -48,7 +48,7 @@ gamemap::location find_vacant(const gamemap& map,
 			if(map.on_board(res))
 				return res;
 		}
-		
+
 		return gamemap::location();
 	}
 }
@@ -96,7 +96,7 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 	//two tiles are adjacent if y is different by 1, and x by 0, or if
 	//x is different by 1 and y by 0, or if x and y are each different by 1,
 	//and the x value of the hex with the greater y value is odd
-	
+
 	const int xdiff = abs(a.x - b.x);
 	const int ydiff = abs(a.y - b.y);
 	return ydiff == 1 && a.x == b.x || xdiff == 1 && a.y == b.y ||
@@ -148,11 +148,11 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 			if(!teams[u.side()-1].owns_tower(*t) ||
 			   units.find(*t) != units.end())
 				continue;
-			
+
 			locs.push_back(*t);
 		}
 	}
-	
+
 	//iterate over all adjacent tiles
 	for(int i = 0; i != locs.size(); ++i) {
 		const gamemap::location& currentloc = locs[i];
@@ -230,7 +230,7 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 				route new_route;
 				new_route.move_left = -1;
 				routes.insert(std::pair<gamemap::location,route>(
-										          adjacent[j],new_route));	
+										          adjacent[j],new_route));
 			}
 		}
 	}

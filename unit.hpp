@@ -63,7 +63,7 @@ public:
 	void set_flag(const std::string& flag);
 	void remove_flag(const std::string& flag);
 	bool has_flag(const std::string& flag) const;
-	
+
 	void read(game_data& data, config& cfg);
 
 	void write(config& cfg) const;
@@ -85,7 +85,7 @@ public:
 
 	bool facing_left() const;
 	void set_facing_left(bool newval);
-	
+
 	const std::string& traits_description() const;
 
 	int value() const;
@@ -104,7 +104,7 @@ private:
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
-		
+
 	int hitpoints_;
 	int maxHitpoints_, backupMaxHitpoints_;
 	int experience_;

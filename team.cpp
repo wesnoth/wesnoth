@@ -147,7 +147,7 @@ bool team::is_enemy(int n) const
 	//if enemies aren't listed, then everyone is an enemy
 	if(info_.enemies.empty())
 		return true;
-	
+
 	return std::find(info_.enemies.begin(),info_.enemies.end(),n) !=
 	                                       info_.enemies.end();
 }

@@ -32,7 +32,7 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 	SDL_Surface* const scr = disp.video().getSurface();
 
 	const display::Pixel border_colour = SDL_MapRGB(scr->format,200,0,0);
-	
+
 	draw_solid_tinted_rectangle(x-border_size,y-border_size,
 	                            w+border_size,h+border_size,0,0,0,0.6,scr);
 	draw_solid_tinted_rectangle(x,y,w+border_size,h+border_size,0,0,0,0.6,scr);
@@ -100,7 +100,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 
 			++beg;
 		}
-		
+
 		p += target->w;
 		--h;
 	}
@@ -112,7 +112,7 @@ namespace {
 const int max_menu_items = 18;
 const int menu_font_size = 16;
 const int menu_cell_padding = 10;
-		
+
 class menu
 {
 	display* display_;
@@ -143,7 +143,7 @@ class menu
 					const SDL_Rect res =
 						font::draw_text(NULL,area,menu_font_size,
 						          font::NORMAL_COLOUR,items_[row][col],x_,y_);
-					
+
 					if(col == column_widths_.size()) {
 						column_widths_.push_back(res.w + menu_cell_padding);
 					} else if(res.w > column_widths_[col] - menu_cell_padding) {
@@ -155,12 +155,12 @@ class menu
 
 		return column_widths_;
 	}
-	
+
 	void draw_item(int item) {
 		SDL_Rect rect = get_item_rect(item);
 		if(rect.w == 0)
 			return;
-		
+
 		short* const dstptr = reinterpret_cast<short*>(
 						        display_->video().getSurface()->pixels) +
 		                             rect.y*display_->x() + x_;
@@ -181,7 +181,7 @@ class menu
 		SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 		const std::vector<int>& widths = column_widths();
-		
+
 		int xpos = rect.x;
 		for(int i = 0; i != items_[item].size(); ++i) {
 			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,
@@ -192,7 +192,7 @@ class menu
 
 	void draw() {
 		drawn_ = true;
-		
+
 		for(int i = 0; i != items_.size(); ++i)
 			draw_item(i);
 
@@ -219,7 +219,7 @@ class menu
 		if(item < first_item_on_screen_ ||
 		   item >= first_item_on_screen_ + max_menu_items) {
 			return empty_rect;
-		}	
+		}
 
 		const std::map<int,SDL_Rect>::const_iterator i = itemRects_.find(item);
 		if(i != itemRects_.end())
@@ -230,7 +230,7 @@ class menu
 			const SDL_Rect& prev = get_item_rect(item-1);
 			y = prev.y + prev.h;
 		}
-		
+
 		static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 		SDL_Rect res = font::draw_text(NULL,area,menu_font_size,
@@ -245,7 +245,7 @@ class menu
 
 		return res;
 	}
-	
+
 	int items_start() const
 	{
 		if(items_.size() > max_menu_items)
@@ -253,7 +253,7 @@ class menu
 		else
 			return 0;
 	}
-	
+
 	int items_end() const
 	{
 		if(items_.size() > max_menu_items)
@@ -266,7 +266,7 @@ class menu
 	{
 		return items_end() - items_start();
 	}
-	
+
 public:
 	menu(display& disp, const std::vector<std::string>& items,
 	     bool click_selects=false)
@@ -302,7 +302,7 @@ public:
 
 		return height_;
 	}
-	
+
 	int width() const {
 		if(width_ == -1) {
 			const std::vector<int>& widths = column_widths();
@@ -342,7 +342,7 @@ public:
 
 				draw();
 			}
-			
+
 			const bool down = downarrow_.process(x,y,button);
 			if(down && first_item_on_screen_ + max_menu_items < items_.size()) {
 				itemRects_.clear();
@@ -350,7 +350,7 @@ public:
 				draw();
 			}
 		}
-		
+
 		if(up_arrow && !click_selects_ && selected_ > 0) {
 			--selected_;
 			if(selected_ < first_item_on_screen_) {
@@ -399,7 +399,7 @@ public:
 		const int starting_selected = selected_;
 
 		const int hit_item = hit(x,y);
-		
+
 		if(click_selects_) {
 			selected_ = hit_item;
 			if(button && !previous_button_)
@@ -411,7 +411,7 @@ public:
 				return -1;
 			}
 		}
-		
+
 		if(button && hit_item != -1){
 			selected_ = hit_item;
 		}
@@ -472,7 +472,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	}
 
 	menu menu_(disp,menu_items,type == MESSAGE);
-	
+
 	const int border_size = 6;
 	const short text_colour = 0xFFFF;
 	const short border_colour = 0xF000;
@@ -564,7 +564,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(button_heights > 0) {
 		button_heights += button_height_padding;
 	}
-	
+
 	if(cur_line > longest_line)
 		longest_line = cur_line;
 
@@ -637,7 +637,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(menu_.height() > 0)
 		menu_.set_loc(xloc+total_image_width+left_padding+image_h_padding,
 		              yloc+top_padding+text_size.h);
-	
+
 	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
 
 	if(image != NULL) {
@@ -650,7 +650,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		if(caption_size.w < image->w) {
 			center_font = image->w/2 - caption_size.w/2;
 		}
-		
+
 		font::draw_text(&disp, clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
 						xloc+left_padding+center_font,
@@ -681,15 +681,15 @@ int show_dialog(display& disp, SDL_Surface* image,
 		                font::NORMAL_COLOUR, text_widget_label,
 						xloc + left_padding,text_widget_y);
 	}
-	
+
 	screen.update(0,0,scr->w,scr->h);
-	
+
 	CKey key;
 
 	bool left_button = true, right_button = true, key_down = true,
 	     up_arrow = false, down_arrow = false,
 	     page_up = false, page_down = false;
-	
+
 	disp.invalidate_all();
 
 	int cur_selection = -1;
@@ -699,7 +699,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	unit_profile_rect.w = 0;
 
 	bool first_time = true;
-	
+
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -752,7 +752,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 		first_time = false;
-		
+
 		if(menu_.height() > 0) {
 			const int res = menu_.process(mousex,mousey,new_left_button,
 			                              !up_arrow && new_up_arrow,
@@ -788,7 +788,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			if(button_it->process(mousex,mousey,left_button)) {
 				if(text_widget_text != NULL && use_textbox)
 					*text_widget_text = text_widget.text();
-					
+
 				//if the menu is not used, then return the index of the
 				//button pressed, otherwise return the index of the menu
 				//item selected if the last button is not pressed, and
@@ -806,7 +806,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 		SDL_PumpEvents();
 	}
-	
+
 	return -1;
 }
 
@@ -822,7 +822,7 @@ TITLE_RESULT show_title(display& screen)
 
 	const int x = screen.x()/2 - title_surface->w/2;
 	const int y = 100;
-	
+
 	screen.blit_surface(x,y,title_surface);
 
 	button tutorial_button(screen,string_table["tutorial_button"]);
@@ -856,9 +856,9 @@ TITLE_RESULT show_title(display& screen)
 	quit_button.draw();
 	language_button.draw();
 	screen.video().update(0,0,screen.x(),screen.y());
-	
+
 	CKey key;
-	
+
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -874,7 +874,7 @@ TITLE_RESULT show_title(display& screen)
 
 		if(load_button.process(mousex,mousey,left_button))
 			return LOAD_GAME;
-		
+
 		if(multi_button.process(mousex,mousey,left_button))
 			return MULTIPLAYER;
 
@@ -886,7 +886,7 @@ TITLE_RESULT show_title(display& screen)
 
 		if(language_button.process(mousex,mousey,left_button))
 			return CHANGE_LANGUAGE;
-		
+
 		SDL_PumpEvents();
 
 		SDL_Delay(20);

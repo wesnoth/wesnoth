@@ -45,13 +45,13 @@ struct move_cost_calculator
 				return 0.01;
 			++range.first;
 		}
-		
+
 		const gamemap::TERRAIN terrain =
 		                    map_.underlying_terrain(map_[loc.x][loc.y]);
 
 		const double modifier = 1.0;//move_type_.defense_modifier(map_,terrain);
 		const double move_cost = move_type_.movement_cost(map_,terrain);
-		
+
 		double enemies = 0;
 	/*	//is this stuff responsible for making it take a long time?
 		location adj[7];
@@ -63,7 +63,7 @@ struct move_cost_calculator
 			if(i == 0 && en != units_.end()) {
 				return 1000.0;
 			}
-			
+
 			if(en != units_.end() && en->second.side() == enemy_) {
 				enemies += 1.0;
 			}
@@ -82,7 +82,7 @@ private:
 	const unit_movement_type& move_type_;
 	const gamemap::location loc_;
 	const std::multimap<location,location> dstsrc_;
-	
+
 };
 
 std::vector<target> find_targets(
@@ -149,7 +149,7 @@ std::vector<target> find_targets(
 			if(i->loc == j->loc) {
 				continue;
 			}
-			
+
 			const double distance = abs(j->loc.x - i->loc.x) +
 			                        abs(j->loc.y - i->loc.y);
 			new_values.back() += j->value/(distance*distance);
@@ -180,14 +180,14 @@ std::pair<location,location> choose_move(
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 		assert(map.on_board(ittg->loc));
 	}
-	
+
 	paths::route best_route;
 	std::map<location,unit>::iterator best = units.end();
 	double best_rating = 0.1;
 	std::vector<target>::iterator best_target = targets.end();
 
 	std::map<location,unit>::iterator u;
-	
+
 	//find the first eligible unit
 	for(u = units.begin(); u != units.end(); ++u) {
 		if(!(u->second.side() != current_team || u->second.can_recruit() ||
@@ -231,7 +231,7 @@ std::pair<location,location> choose_move(
 		std::cout << "no eligible targets found\n";
 		return std::pair<location,location>();
 	}
-	
+
 	//now see if any other unit can put a better bid forward
 	for(++u; u != units.end(); ++u) {
 		if(u->second.side() != current_team || u->second.can_recruit() ||
@@ -275,7 +275,7 @@ std::pair<location,location> choose_move(
 				return std::pair<location,location>(its.first->second,
 				                                    its.first->first);
 			}
-			
+
 			++its.first;
 		}
 	}
@@ -284,7 +284,7 @@ std::pair<location,location> choose_move(
 		std::cout << "Could not make good move, staying still\n";
 		return std::pair<location,location>(best->first,best->first);
 	}
-	
+
 	std::cout << "Could not find anywhere to move!\n";
 	return std::pair<location,location>();
 }

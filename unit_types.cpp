@@ -67,7 +67,7 @@ attack_type::attack_type(config& cfg)
 		sound.on_miss = (*i)->values["sound_miss"];
 		if(sound.on_miss.empty())
 			sound.on_miss = sound.on_hit;
-		
+
 		if(sound.on_miss == "null")
 			sound.on_miss = "";
 
@@ -237,7 +237,7 @@ int unit_movement_type::movement_cost(const gamemap& map,
 	if(i != moveCosts_.end()) {
 		return i->second;
 	}
-	
+
 	const std::vector<config*>& v = cfg_.children["movement costs"];
 	if(v.empty())
 		return 1;
@@ -268,7 +268,7 @@ double unit_movement_type::defense_modifier(const gamemap& map,
 	if(i != defenseMods_.end()) {
 		return i->second;
 	}
-	
+
 	const std::vector<config*>& v = cfg_.children["defense"];
 	if(v.empty())
 		return 1;
@@ -414,7 +414,7 @@ const std::string& unit_type::unit_description() const
 	const std::string& lang_desc = string_table[id() + "_description"];
 	if(lang_desc.empty() == false)
 		return lang_desc;
-	
+
 	const std::string& desc = cfg_.values["unit_description"];
 	if(desc.empty())
 		return default_val;

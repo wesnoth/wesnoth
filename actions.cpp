@@ -108,10 +108,10 @@ bool under_leadership(const std::map<gamemap::location,unit>& units,
 	     units.find(loc);
 	if(un == units.end())
 		return false;
-	
+
 	const int side = un->second.side();
 	const int level = un->second.type().level();
-	
+
 	for(int i = 0; i != 6; ++i) {
 		const std::map<gamemap::location,unit>::const_iterator it =
 		     units.find(adjacent[i]);
@@ -218,7 +218,7 @@ battle_stats evaluate_battle_stats(
 	res.defend_with = defend != int(defender_attacks.size()) ? defend : -1;
 
 	const bool counterattack = defend != int(defender_attacks.size());
-	
+
 	static const std::string drain_string("drain");
 	static const std::string magical_string("magical");
 
@@ -231,7 +231,7 @@ battle_stats evaluate_battle_stats(
 		res.damage_attacker_takes = int(double(
 		 a->second.damage_against(defender_attacks[defend]))
 		 * combat_modifier(state,units,d->first,d->second.type().alignment()));
-		
+
 		if(charge)
 			res.damage_attacker_takes *= 2;
 
@@ -268,12 +268,12 @@ battle_stats evaluate_battle_stats(
 	//offensive marksman attacks always have at least 60% chance to hit
 	if(res.chance_to_hit_defender < 0.6 && attack.special() == marksman_string)
 		res.chance_to_hit_defender = 0.6;
-	
+
 	res.damage_defender_takes = int(
 			double(d->second.damage_against(attack))
 		 * combat_modifier(state,units,a->first,a->second.type().alignment()))
 			 * (charge ? 2 : 1) * (backstab ? 2 : 1);
-	
+
 	if(under_leadership(units,attacker))
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
 
@@ -315,7 +315,7 @@ void attack(display& gui, const gamemap& map,
 	//if the attacker was invisible, she isn't anymore!
 	static const std::string forest_invisible("ambush");
 	a->second.remove_flag(forest_invisible);
-	
+
 	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
 	                                           attack_with,units,state,info);
 
@@ -472,7 +472,7 @@ std::map<gamemap::location,unit>::iterator
 {
 	for(std::map<gamemap::location,unit>::iterator i = units.begin();
 	    i != units.end(); ++i) {
-		if(i->second.side() == side && i->second.can_recruit()) 
+		if(i->second.side() == side && i->second.can_recruit())
 			return i;
 	}
 
@@ -494,7 +494,7 @@ void calculate_healing(display& disp, const gamemap& map,
 		    i->second.type().regenerates())) {
 			healed_units.insert(std::pair<gamemap::location,int>(
 			                            i->first, game_config::cure_amount));
-			
+
 		}
 
 		//otherwise find the maximum healing for the unit
@@ -552,7 +552,7 @@ void calculate_healing(display& disp, const gamemap& map,
 					continue;
 
 				assert(units.find(adjacent[j]) != units.end());
-				
+
 				healed_units[adjacent[j]]
 				        = minimum(max_healing[adjacent[j]],
 				                  healed_units[adjacent[j]]+healing_per_unit);
@@ -651,7 +651,7 @@ void calculate_healing(display& disp, const gamemap& map,
 					disp.draw_tile(loc.x,loc.y,NULL,0.5,damage_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
-				
+
 				SDL_Delay(DelayAmount);
 				disp.update_display();
 			}

@@ -138,7 +138,7 @@ void replay::add_pos(const std::string& type,
 	config* const move = new config();
 	config* const src = new config();
 	config* const dst = new config();
-	
+
 	char buf[100];
 	sprintf(buf,"%d",a.x+1);
 	src->values["x"] = buf;
@@ -219,7 +219,7 @@ int replay::get_random()
 		const int res = rand();
 		char buf[100];
 		sprintf(buf,"%d",res);
-		
+
 		current_ = new config();
 		current_->values["value"] = buf;
 		random.push_back(current_);
@@ -266,12 +266,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			   game_state& state_of_game)
 {
 	update_locker lock_update(disp,recorder.skipping());
-			
+
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;
-	
+
 	team& current_team = teams[team_num-1];
-		
+
 	for(;;) {
 		config* const cfg = recorder.get_next_action();
 
@@ -298,18 +298,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::cerr << "illegal advancement type\n";
 				throw replay::error();
 			}
-			
+
 			advance_unit(gameinfo,units,advancing_units.front(),options[val]);
-			
+
 			advancing_units.pop_front();
 		}
-		
+
 		//if there is nothing more in the records
 		else if(cfg == NULL) {
 			recorder.set_skip(0);
 			return false;
 		}
-		
+
 		//if there is an end turn directive
 		else if(cfg->children.find("end_turn") != cfg->children.end()) {
 			recorder.next_skip();
@@ -359,7 +359,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			assert(!it->second.empty());
 
 			config* const move = it->second.front();
-			
+
 			assert(!move->children["destination"].empty());
 			assert(!move->children["source"].empty());
 
@@ -373,10 +373,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 						  << dst.x << "," << dst.y << "\n";
 				throw replay::error();
 			}
-			
+
 			const bool ignore_zocs = u->second.type().is_skirmisher();
 			const bool teleport = u->second.type().teleports();
-	
+
 			paths paths_list(map,gameinfo,units,src,teams,ignore_zocs,teleport);
 			paths_wiper wiper(disp);
 
@@ -400,7 +400,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			if(!recorder.skipping())
 				disp.move_unit(rt->second.steps,current_unit);
-			
+
 			current_unit.set_movement(rt->second.move_left);
 			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
 			if(map[dst.x][dst.y] == gamemap::TOWER) {
@@ -420,7 +420,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			assert(!it->second.empty());
 
 			config* const move = it->second.front();
-			
+
 			assert(!move->children["destination"].empty());
 			assert(!move->children["source"].empty());
 
@@ -440,7 +440,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::cerr << "illegal weapon type in attack\n";
 				throw replay::error();
 			}
-			
+
 			std::map<gamemap::location,unit>::const_iterator tgt =
 			                                               units.find(dst);
 
@@ -448,12 +448,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				std::cerr << "unfound defender for attack\n";
 				throw replay::error();
 			}
-			
+
 			game_events::fire("attack",src,dst);
 
 			u = units.find(src);
 			tgt = units.find(dst);
-			
+
 			if(u != units.end() && tgt != units.end()) {
 				attack(disp,map,src,dst,weapon_num,units,state,gameinfo,false);
 				const int res = check_victory(units);
@@ -462,7 +462,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				else if(res > 1)
 					throw end_level_exception(DEFEAT);
 			}
-			
+
 			u = units.find(src);
 			tgt = units.find(dst);
 

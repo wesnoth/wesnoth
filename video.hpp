@@ -27,10 +27,10 @@ class CVideo {
 	CVideo(const char* text);
 	CVideo( int x, int y, int bits_per_pixel, int flags, const char* text );
 	~CVideo();
-	
+
 	int modePossible( int x, int y, int bits_per_pixel, int flags );
 	int setMode( int x, int y, int bits_per_pixel, int flags );
-	
+
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;
@@ -39,7 +39,7 @@ class CVideo {
 	int getRedMask();
 	int getGreenMask();
 	int getBlueMask();
-	
+
 	//functions to access the screen
 	void* getAddress();
 	void lock();
@@ -50,7 +50,7 @@ class CVideo {
 	int convertColour(int r, int g, int b);
 	void update( int x, int y, int w, int h );
 	void update( SRectangle* area );
-	
+
 	SDL_Surface* getSurface( void );
 
 	int drawText(int x, int y, int pixel, int bg, const char* text,int size=1);
@@ -58,7 +58,7 @@ class CVideo {
 	bool isFullScreen() const;
 
 	struct error {};
-	
+
      private:
 
 	void drawChar(int x, int y, int pixel, int bg, char c, int size=1);

@@ -92,7 +92,7 @@ void process_config(const std::string& element_name, const config& cfg,
 
 		std::string name = name_it->second;
 		name.erase(std::remove(name.begin(),name.end(),' '),name.end());
-		
+
 		out.insert(std::pair<string,string>(name,name_it->second));
 
 		const map<string,string>::const_iterator description_it =

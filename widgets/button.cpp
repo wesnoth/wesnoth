@@ -19,7 +19,7 @@ namespace gui {
 const int font_size = 14;
 const int horizontal_padding = 10;
 const int vertical_padding = 10;
-	
+
 button::button(display& disp, const std::string& label, button::TYPE type,
                const std::string& button_image_name) :
                           label_(label), display_(&disp),
@@ -42,7 +42,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 		active_image = disp.getImage("buttons/" + button_image_name +
 		                              "-button-active.png",display::UNSCALED);
 	}
-	
+
 	if(pressed_image == NULL)
 		pressed_image = button_image;
 
@@ -87,7 +87,7 @@ button& button::operator=(const button& b)
 
 	if(pressedImage_ != NULL)
 		SDL_FreeSurface(pressedImage_);
-	
+
 	label_ = b.label_;
 	display_ = b.display_;
 	image_ = scale_surface(b.image_,b.image_->w,b.image_->h);
@@ -101,7 +101,7 @@ button& button::operator=(const button& b)
 	button_ = b.button_;
 	state_ = b.state_;
 	type_ = b.type_;
-	
+
 	return *this;
 }
 
@@ -147,7 +147,7 @@ void button::draw()
 	display_->blit_surface(x_,y_,image);
 	font::draw_text(display_,clipArea,font_size,
 					font::NORMAL_COLOUR,label_,textx,texty);
-	
+
 	display_->video().update(x_,y_,width(),height());
 }
 
@@ -191,11 +191,11 @@ bool button::process(int mousex, int mousey, bool button)
 		mouse_state = UP;
 
 	button_ = button;
-		
+
 	const STATE start_state = state_;
 
 	if(type_ == TYPE_PRESS) {
-		
+
 		switch(state_) {
 		case UNINIT:
 			state_ = NORMAL;

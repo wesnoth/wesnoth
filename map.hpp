@@ -23,7 +23,7 @@
 class gamemap
 {
 public:
-		
+
 	typedef char TERRAIN;
 
 	enum { VOID_TERRAIN = ' ', CASTLE = 'C', TOWER = 't', FOREST = 'f' };
@@ -35,7 +35,7 @@ public:
 	const std::string& terrain_name(TERRAIN terrain) const;
 	const std::string& underlying_terrain_name(TERRAIN terrain) const;
 	TERRAIN underlying_terrain(TERRAIN terrain) const;
-				   
+
 	struct incorrect_format_exception {
 		incorrect_format_exception(const char* msg) : msg_(msg) {}
 		const char* const msg_;
@@ -61,17 +61,17 @@ public:
 
 		static location null_location;
 	};
-				   
+
 	gamemap(config& cfg,
 	        const std::string& data); //throw(incorrect_format_exception)
-	
+
 	std::string write() const;
 
 	int x() const;
 	int y() const;
-	
+
 	const std::vector<TERRAIN>& operator[](int index) const;
-	
+
 	const location& starting_position(int n) const;
 	int num_starting_positions() const;
 	bool is_starting_position(const location& loc) const;
@@ -92,7 +92,7 @@ private:
 	std::vector<TERRAIN> terrainPrecedence_;
 	std::map<TERRAIN,terrain_type> letterToTerrain_;
 	std::map<std::string,terrain_type> terrain_;
-	
+
 	std::vector<std::vector<TERRAIN> > tiles_;
 	std::vector<location> towers_;
 	location startingPositions_[10];
