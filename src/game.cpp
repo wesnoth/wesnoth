@@ -62,6 +62,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <string>
 
@@ -303,6 +304,11 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 
 	std::cerr << "caching cannot be done. Reading file\n";
 	cfg.read(preprocess_file("data/game.cfg",&defines,&line_src),&line_src);
+}
+
+bool less_campaigns_rank(const config* a, const config* b) {
+	return lexical_cast_default<int>((*a)["rank"],1000) <
+	       lexical_cast_default<int>((*b)["rank"],1000);
 }
 
 }
@@ -895,11 +901,12 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::NEW_CAMPAIGN) {
 			state.campaign_type = "scenario";
 
-			const config::const_child_itors campaigns = game_config.child_range("campaign");
+			config::child_list campaigns = game_config.get_children("campaign");
+			std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
 			std::vector<std::string> campaign_names;
 
-			for(config::const_child_iterator i = campaigns.first; i != campaigns.second; ++i) {
+			for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
 				std::stringstream str;
 				const std::string& icon = (**i)["icon"];
 				if(icon == "") {
@@ -929,7 +936,7 @@ int play_game(int argc, char** argv)
 					continue;
 			}
 
-			const config& campaign = **(campaigns.first+res);
+			const config& campaign = *campaigns[res];
 
 			state.scenario = campaign["first_scenario"];
 
