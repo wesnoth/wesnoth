@@ -28,10 +28,36 @@ std::map<int,TTF_Font*> font_table;
 //the font file doesn't exist, so make sure it exists first.
 TTF_Font* open_font(const std::string& fname, int size)
 {
-	if(read_file(fname).empty())
-		return NULL;
+	std::string name;
 
-	return TTF_OpenFont(fname.c_str(),size);
+#ifdef WESNOTH_PATH
+	name = std::string(WESNOTH_PATH) + "/fonts/" + fname;
+	std::cerr << "Opening font file: " << name << " ...\n";
+
+	if(read_file(name).empty()) {
+		name = "fonts/" + fname;
+		std::cerr << "Failed, now trying: " << name << " ...\n";
+		if(read_file(name).empty()) {
+			std::cerr << "Failed :(\n";
+			return NULL;
+		}
+	}
+#else
+	name = "fonts/" + fname;
+	std::cerr << "Opening font file: " << name << " ...\n";
+
+	if(read_file(name).empty()) {
+		std::cerr << "Failed :(\n";
+		return NULL;
+	}
+#endif
+
+	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
+	if(font == NULL) {
+		std::cerr << "Could not open font file: " << name << '\n';
+	}
+
+	return font;
 }
 
 TTF_Font* get_font(int size)
@@ -40,25 +66,13 @@ TTF_Font* get_font(int size)
 	if(it != font_table.end())
 		return it->second;
 
-	TTF_Font* font = NULL;
-	std::cerr << "opening font file...\n";
+	TTF_Font* font = open_font("Vera.ttf",size);
 
-#ifdef WESNOTH_PATH
-	font = open_font(std::string(WESNOTH_PATH) + "/fonts/Vera.ttf",size);
-#endif
-
-	if(font == NULL) {
-		font = open_font("fonts/Vera.ttf",size);
-	}
-
-	if(font == NULL) {
-		std::cerr << "Could not open font file\n";
-		return font;
-	}
+	if(font == NULL) return NULL;
 
 	TTF_SetFontStyle(font,TTF_STYLE_NORMAL);
 
-	std::cerr << "inserting font...\n";
+	std::cerr << "Inserting font...\n";
 	font_table.insert(std::pair<int,TTF_Font*>(size,font));
 	return font;
 }
