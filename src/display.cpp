@@ -1371,12 +1371,12 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
 		}
 
-		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
+		typedef overlay_map::const_iterator Itor;
 
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 			overlays.first != overlays.second; ++overlays.first) {
 
-			surface overlay_surface(image::get_image(overlays.first->second,image_type));
+			surface overlay_surface(image::get_image(overlays.first->second.image,image_type));
 			
 			//note that dstrect can be changed by SDL_BlitSurface and so a
 			//new instance should be initialized to pass to each call to
@@ -1400,7 +1400,7 @@ void display::draw_tile(int x, int y, surface unit_image, double alpha, Uint32 b
 		SDL_BlitSurface(surface,NULL,dst,&dstrect);
 	}
 
-	if(fogged(x,y)) {
+	if(fogged(x,y) && shrouded(x,y) == false) {
 		const surface fog_surface(image::get_image("terrain/fog.png"));
 		if(fog_surface != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
@@ -1975,30 +1975,30 @@ void display::invalidate_game_status()
 
 void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
-	overlays_.insert(std::pair<gamemap::location,std::string>(loc,img));
-	halo_overlays_.insert(std::pair<gamemap::location,int>(loc,halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo)));
+	const int halo_handle = halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo);
+	const overlay item(img,halo,halo_handle);
+	overlays_.insert(overlay_map::value_type(loc,item));
 }
 
 void display::remove_overlay(const gamemap::location& loc)
 {
-	overlays_.erase(loc);
-	typedef std::multimap<gamemap::location,int>::const_iterator Itor;
-	std::pair<Itor,Itor> itors = halo_overlays_.equal_range(loc);
+	typedef overlay_map::const_iterator Itor;
+	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
 	while(itors.first != itors.second) {
-		halo::remove(itors.first->second);
+		halo::remove(itors.first->second.halo_handle);
 		++itors.first;
 	}
 
-	halo_overlays_.erase(loc);
+	overlays_.erase(loc);
 }
 
 void display::write_overlays(config& cfg) const
 {
-	for(std::multimap<gamemap::location,std::string>::const_iterator i = overlays_.begin();
-	    i != overlays_.end(); ++i) {
+	for(overlay_map::const_iterator i = overlays_.begin(); i != overlays_.end(); ++i) {
 		config& item = cfg.add_child("item");
 		i->first.write(item);
-		item["image"] = i->second;
+		item["image"] = i->second.image;
+		item["halo"] = i->second.halo;
 	}
 }
 

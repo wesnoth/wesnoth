@@ -428,8 +428,18 @@ private:
 	bool invalidateUnit_;
 	bool invalidateGameStatus_;
 
-	std::multimap<gamemap::location,std::string> overlays_;
-	std::multimap<gamemap::location,int> halo_overlays_;
+	struct overlay {
+		overlay(const std::string& img, const std::string& halo,
+		        int halo_handle) : image(image), halo(halo),
+		                           halo_handle(halo_handle) {}
+		std::string image;
+		std::string halo;
+		int halo_handle;
+	};
+
+	typedef std::multimap<gamemap::location,overlay> overlay_map;
+
+	overlay_map overlays_;
 
 	bool panelsDrawn_;
 
