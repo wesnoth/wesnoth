@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-12-03 19:05+0100\n"
+"POT-Creation-Date: 2004-12-05 00:48+0100\n"
 "PO-Revision-Date: 2004-09-10 15:28+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2106,14 +2106,14 @@ msgid "End Turn"
 msgstr "Avslutt runde"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
-#: data/themes/default.cfg:809 src/dialogs.cpp:660 src/display.cpp:950
+#: data/themes/default.cfg:809 src/dialogs.cpp:660 src/display.cpp:920
 #: src/help.cpp:1059 src/playturn.cpp:2057 src/unit.cpp:1042
 msgid "HP"
 msgstr "LP"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 #: data/themes/default.cfg:816 src/dialogs.cpp:664 src/dialogs.cpp:672
-#: src/display.cpp:954 src/display.cpp:962 src/playturn.cpp:1897
+#: src/display.cpp:924 src/display.cpp:932 src/playturn.cpp:1897
 #: src/playturn.cpp:2058 src/unit.cpp:1101
 msgid "XP"
 msgstr "EP"
@@ -2812,10 +2812,10 @@ msgstr "berøring"
 #: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
 #: data/units/Dark_Queen.cfg:29 data/units/Dark_Queen.cfg:30
-#: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:36
+#: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:41
 #: data/units/Demilich.cfg:19 data/units/Demilich.cfg:32
-#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
-#: data/units/Elvish_Sylph.cfg:83 data/units/Ghost.cfg:20
+#: data/units/Elvish_Enchantress.cfg:118 data/units/Elvish_Sorceress.cfg:118
+#: data/units/Elvish_Sylph.cfg:84 data/units/Ghost.cfg:20
 #: data/units/Ghost.cfg:32 data/units/Initiate.cfg:20 data/units/Lich.cfg:20
 #: data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
 #: data/units/Saurian_Icecaster.cfg:41 data/units/Saurian_Soothsayer.cfg:40
@@ -2834,7 +2834,7 @@ msgstr "frost"
 msgid "drain"
 msgstr "tapper livskraft"
 
-#: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:35
+#: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
@@ -2843,13 +2843,13 @@ msgstr "magi"
 #: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:42
 #: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:80
 #: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
-#: data/units/Dark_Queen.cfg:31 data/units/Deathmaster.cfg:37
+#: data/units/Dark_Queen.cfg:31 data/units/Deathmaster.cfg:42
 #: data/units/Demilich.cfg:33 data/units/Dwarvish_Runemaster.cfg:43
 #: data/units/Elder_Mage.cfg:41 data/units/Elvish_Druid.cfg:65
-#: data/units/Elvish_Enchantress.cfg:121 data/units/Elvish_High_Lord.cfg:38
+#: data/units/Elvish_Enchantress.cfg:122 data/units/Elvish_High_Lord.cfg:38
 #: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
-#: data/units/Elvish_Shyde.cfg:73 data/units/Elvish_Sorceress.cfg:121
-#: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:84
+#: data/units/Elvish_Shyde.cfg:73 data/units/Elvish_Sorceress.cfg:122
+#: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:85
 #: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
 #: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
 #: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:105
@@ -3109,7 +3109,7 @@ msgid "knife"
 msgstr "kniv"
 
 #: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
-#: data/units/Cuttle_Fish.cfg:36 data/units/Direwolf_Rider.cfg:35
+#: data/units/Cuttle_Fish.cfg:37 data/units/Direwolf_Rider.cfg:35
 #: data/units/Ghoul.cfg:24 data/units/Giant_Scorpion.cfg:22
 #: data/units/Necrophage.cfg:24 data/units/Orcish_Assassin.cfg:41
 #: data/units/Orcish_Slayer.cfg:46
@@ -4217,8 +4217,8 @@ msgstr ""
 msgid "entangle"
 msgstr "innfiltre"
 
-#: data/units/Elvish_Enchantress.cfg:116 data/units/Elvish_Sorceress.cfg:116
-#: data/units/Elvish_Sylph.cfg:82
+#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
+#: data/units/Elvish_Sylph.cfg:83
 msgid "fey gale"
 msgstr ""
 
@@ -6714,12 +6714,12 @@ msgstr "forsvarers svakhet mot"
 msgid "Halved"
 msgstr "Halvert"
 
-#: src/actions.cpp:727 src/actions.cpp:873 src/display.cpp:926
+#: src/actions.cpp:727 src/actions.cpp:873 src/display.cpp:896
 #: src/reports.cpp:116
 msgid "poisoned"
 msgstr "forgiftet"
 
-#: src/actions.cpp:732 src/actions.cpp:878 src/display.cpp:922
+#: src/actions.cpp:732 src/actions.cpp:878 src/display.cpp:892
 #: src/reports.cpp:111
 msgid "slowed"
 msgstr "saktnet"
@@ -6792,11 +6792,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Ugydig)"
 
-#: src/dialogs.cpp:362 src/game.cpp:943
+#: src/dialogs.cpp:362 src/game.cpp:963
 msgid "Campaign"
 msgstr "Kampanje"
 
-#: src/dialogs.cpp:364 src/game.cpp:1223
+#: src/dialogs.cpp:364 src/game.cpp:1243
 msgid "Multiplayer"
 msgstr "Flerspiller"
 
@@ -6816,7 +6816,7 @@ msgstr "Runde"
 msgid "Scenario Start"
 msgstr "Scenariestart"
 
-#: src/dialogs.cpp:381 src/game.cpp:973
+#: src/dialogs.cpp:381 src/game.cpp:993
 msgid "Difficulty"
 msgstr "Vanskelighet"
 
@@ -6878,31 +6878,31 @@ msgstr "Velg spill for innlasting"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/dialogs.cpp:639 src/display.cpp:932 src/help.cpp:1014
+#: src/dialogs.cpp:639 src/display.cpp:902 src/help.cpp:1014
 #: src/playturn.cpp:1896
 msgid "level"
 msgstr "nivå"
 
-#: src/dialogs.cpp:677 src/display.cpp:966 src/help.cpp:1060
+#: src/dialogs.cpp:677 src/display.cpp:936 src/help.cpp:1060
 #: src/playturn.cpp:2059 src/unit.cpp:1078
 msgid "Moves"
 msgstr "Flytt"
 
-#: src/dialogs.cpp:692 src/display.cpp:983 src/help.cpp:1129
+#: src/dialogs.cpp:692 src/display.cpp:953 src/help.cpp:1129
 #: src/playturn.cpp:575 src/reports.cpp:231
 msgid "melee"
 msgstr "nærkamp"
 
-#: src/dialogs.cpp:692 src/display.cpp:984 src/help.cpp:1129
+#: src/dialogs.cpp:692 src/display.cpp:954 src/help.cpp:1129
 #: src/playturn.cpp:575 src/reports.cpp:232
 msgid "ranged"
 msgstr "avstand"
 
-#: src/display.cpp:913
+#: src/display.cpp:883
 msgid "healthy"
 msgstr "frisk"
 
-#: src/display.cpp:918 src/reports.cpp:106
+#: src/display.cpp:888 src/reports.cpp:106
 msgid "invisible"
 msgstr "usynlig"
 
@@ -6926,11 +6926,11 @@ msgstr "Spillet kunne ikke lagres"
 msgid "Do you want to save your game?"
 msgstr "Vil du lagre dette spillet?"
 
-#: src/game.cpp:607
+#: src/game.cpp:608
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game.cpp:803 src/multiplayer_connect.cpp:103
+#: src/game.cpp:825 src/multiplayer_connect.cpp:103
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6938,206 +6938,206 @@ msgstr ""
 "Dette lagrede spillet er fra en annen versjon. Vil du prøve å laste det inn "
 "likevel?"
 
-#: src/game.cpp:815 src/game.cpp:820 src/playlevel.cpp:560
-#: src/playlevel.cpp:812
+#: src/game.cpp:835 src/game.cpp:840 src/playlevel.cpp:560
+#: src/playlevel.cpp:811
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/game.cpp:824
+#: src/game.cpp:844
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:933
+#: src/game.cpp:953
 msgid " ,Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:934
+#: src/game.cpp:954
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
-#: src/game.cpp:944
+#: src/game.cpp:964
 msgid "Choose the campaign you want to play:"
 msgstr "Velg hvilken kampanje du vil spille:"
 
-#: src/game.cpp:974
+#: src/game.cpp:994
 msgid "Select difficulty level:"
 msgstr "Velg vanskelighetsgrad:"
 
-#: src/game.cpp:993
+#: src/game.cpp:1013
 #, fuzzy
 msgid "Connect to Server"
 msgstr "Fortsett forflytning"
 
-#: src/game.cpp:994
+#: src/game.cpp:1014
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:995
+#: src/game.cpp:1015
 msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:1007
+#: src/game.cpp:1027
 #, fuzzy
 msgid "Could not connect to host."
 msgstr "Kunne ikke opprette forbindelse til ekstern vert"
 
-#: src/game.cpp:1007 src/game.cpp:1022 src/game.cpp:1028 src/game.cpp:1078
-#: src/game.cpp:1107 src/game.cpp:1121 src/game.cpp:1123 src/game.cpp:1125
-#: src/game.cpp:1137 src/game.cpp:1140 src/game.cpp:1175 src/game.cpp:1177
-#: src/game.cpp:1199 src/game.cpp:1201 src/playturn.cpp:1491
+#: src/game.cpp:1027 src/game.cpp:1042 src/game.cpp:1048 src/game.cpp:1098
+#: src/game.cpp:1127 src/game.cpp:1141 src/game.cpp:1143 src/game.cpp:1145
+#: src/game.cpp:1157 src/game.cpp:1160 src/game.cpp:1195 src/game.cpp:1197
+#: src/game.cpp:1219 src/game.cpp:1221 src/playturn.cpp:1491
 #: src/playturn.cpp:1505
 msgid "Error"
 msgstr "Feil"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1035
 msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:1028
+#: src/game.cpp:1048
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:1033
+#: src/game.cpp:1053
 msgid ",Name,Version,Author,Downloads,Size"
 msgstr ""
 
-#: src/game.cpp:1052
+#: src/game.cpp:1072
 #, fuzzy
 msgid "B"
 msgstr "KB"
 
-#: src/game.cpp:1055 src/show_dialog.cpp:949
+#: src/game.cpp:1075 src/show_dialog.cpp:949
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:1058
+#: src/game.cpp:1078
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:1070
+#: src/game.cpp:1090
 #, fuzzy
 msgid "Publish campaign: "
 msgstr "Alvisk Kaptein"
 
-#: src/game.cpp:1074
+#: src/game.cpp:1094
 #, fuzzy
 msgid "Delete campaign: "
 msgstr "Kampanje"
 
-#: src/game.cpp:1078
+#: src/game.cpp:1098
 #, fuzzy
 msgid "There are no campaigns available for download from this server."
 msgstr "Det er ingen kampanjer tilgjengelig"
 
-#: src/game.cpp:1082
+#: src/game.cpp:1102
 #, fuzzy
 msgid "Choose the campaign to download."
 msgstr "Velg spill for innlasting"
 
-#: src/game.cpp:1082
+#: src/game.cpp:1102
 #, fuzzy
 msgid "Get Campaign"
 msgstr "Kampanje"
 
-#: src/game.cpp:1101
+#: src/game.cpp:1121
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1119
+#: src/game.cpp:1139
 #, fuzzy
 msgid "Campaign Installed"
 msgstr "Kampanje"
 
-#: src/game.cpp:1119
+#: src/game.cpp:1139
 #, fuzzy
 msgid "The campaign has been installed."
 msgstr "Spillet har nå blitt lagret"
 
-#: src/game.cpp:1121
+#: src/game.cpp:1141
 msgid "Network communication error."
-msgstr ""
-
-#: src/game.cpp:1123
-#, fuzzy
-msgid "Remote host disconnected."
-msgstr "Velg vert å koble til"
-
-#: src/game.cpp:1125
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
-msgstr ""
-
-#: src/game.cpp:1137 src/game.cpp:1175 src/game.cpp:1199
-#: src/multiplayer_client.cpp:47 src/multiplayer_client.cpp:318
-msgid "Connection timed out"
-msgstr "Forbindelse utgått på tid"
-
-#: src/game.cpp:1140 src/game.cpp:1177 src/game.cpp:1201
-msgid "The server responded with an error: \""
 msgstr ""
 
 #: src/game.cpp:1143
 #, fuzzy
+msgid "Remote host disconnected."
+msgstr "Velg vert å koble til"
+
+#: src/game.cpp:1145
+msgid ""
+"There was a problem creating the files necessary to install this campaign."
+msgstr ""
+
+#: src/game.cpp:1157 src/game.cpp:1195 src/game.cpp:1219
+#: src/multiplayer_client.cpp:47 src/multiplayer_client.cpp:318
+msgid "Connection timed out"
+msgstr "Forbindelse utgått på tid"
+
+#: src/game.cpp:1160 src/game.cpp:1197 src/game.cpp:1221
+msgid "The server responded with an error: \""
+msgstr ""
+
+#: src/game.cpp:1163
+#, fuzzy
 msgid "Terms"
 msgstr "Lag"
 
-#: src/game.cpp:1179 src/game.cpp:1203
+#: src/game.cpp:1199 src/game.cpp:1223
 #, fuzzy
 msgid "Response"
 msgstr "stein"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1236
 msgid "Join Official Server"
 msgstr "Koble til offisiell vert"
 
-#: src/game.cpp:1216
+#: src/game.cpp:1236
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Koble til den offisielle Wesnoth-flerspillerverten"
 
-#: src/game.cpp:1217 src/multiplayer_lobby.cpp:163
+#: src/game.cpp:1237 src/multiplayer_lobby.cpp:163
 msgid "Join Game"
 msgstr "Bli med i spill"
 
-#: src/game.cpp:1217
+#: src/game.cpp:1237
 msgid "Join a server or hosted game"
 msgstr "Koble opp til en vertsmaskin eller annet spill"
 
-#: src/game.cpp:1218
+#: src/game.cpp:1238
 #, fuzzy
 msgid "Host Networked Game"
 msgstr "Nettverksspiller"
 
-#: src/game.cpp:1218
+#: src/game.cpp:1238
 msgid "Host a game without using a server"
 msgstr "Vær vert for et spill uten server"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1239
 #, fuzzy
 msgid "Hotseat Game"
 msgstr "Opprett Spill"
 
-#: src/game.cpp:1219
+#: src/game.cpp:1239
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1220
+#: src/game.cpp:1240
 #, fuzzy
 msgid "Human vs AI"
 msgstr "Mennesker"
 
-#: src/game.cpp:1220
+#: src/game.cpp:1240
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1223 src/multiplayer_client.cpp:302
+#: src/game.cpp:1243 src/multiplayer_client.cpp:302
 msgid "Login"
 msgstr "Logg inn"
 
-#: src/game.cpp:1302
+#: src/game.cpp:1322
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1303
+#: src/game.cpp:1323
 msgid "Choose your preferred language"
 msgstr "Velg språket du foretrekker"
 
@@ -7676,7 +7676,7 @@ msgstr "Seier"
 msgid "You have emerged victorious!"
 msgstr "Du har vunnet!"
 
-#: src/playlevel.cpp:827
+#: src/playlevel.cpp:826
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"

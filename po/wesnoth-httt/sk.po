@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-11-25 11:44+0100\n"
+"POT-Creation-Date: 2004-12-05 00:48+0100\n"
 "PO-Revision-Date: 2004-10-31 02:28+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -2187,14 +2187,17 @@ msgid "High King at Sea"
 msgstr "Kráľ morí"
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:4
-msgid "Test of the Clans"
+#, fuzzy
+msgid "Test of the Clan"
 msgstr "Test klanov"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:26
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:28
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
-"@Defeat the Clan Leader, Bayar\n"
+"@Defeat 25 Units and at Least One Clan Leader (Bonus)\n"
+"@Defeat All Clan Leaders\n"
 "Defeat:\n"
 "#Death of Konrad\n"
 "#Death of Delfador\n"
@@ -2212,94 +2215,11 @@ msgstr ""
 "#Zomrie Li'sar\n"
 "#Vyprší čas"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:118
-msgid "Greetings, men of the plains."
-msgstr "Vitajte, muži z plání."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:122
-msgid ""
-"What do these intruders want? We did not invite them here, that is certain."
-msgstr "Čo chcú títo votrelci? Nepozývali sme ich, to je isté."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:126
-msgid ""
-"We come in peace! We wish for you to aid us in our struggle against "
-"Asheviere, the evil Queen Mother."
-msgstr ""
-"Prichádzame v mieri! Chceli by sme, aby ste nám pomohli v boji proti "
-"Aševiere, zlej kráľovnej matke."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:130
-msgid "We will not join you. You who are led by these youths and this old man."
-msgstr "Nepridáme sa k vám. Veď vás vedú títo mladí a tento starec."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:134
-msgid ""
-"You are for us or against us. If you do not join us to overthrow the evil "
-"Queen, we will strip you of your power, once the throne is rightfully "
-"reclaimed."
-msgstr ""
-"Buď ste s nami alebo proti nám. Ak nám nepomôžete poraziť zlú kráľovnú, až "
-"raz po práve získame trón, prídete o všetku moc."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:138
-msgid ""
-"Hah! You think you can sieze the throne? Defeat us in battle and we will "
-"join you, or leave now and never return!"
-msgstr ""
-"Hah! Vy si trúfate získať trón? Porazte nás v boji a my sa k vám pridáme, "
-"alebo choďte preč a už sa nevracajte!"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:142
-msgid "Very well. We will fight you."
-msgstr "Dobre. Porazíme vás teda."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:146
-msgid "Fools! We will run you down like dogs!"
-msgstr "Blázni! Rozprášime vás ako psov!"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:150
-msgid "There is no turning back for you now. This is a fight to the death!"
-msgstr "Už sa nemôžete otočiť. Toto je boj na život a na smrť!"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:162
-msgid ""
-"Stop! I cannot believe this! You have defeated us! Indeed, you are worthy, "
-"worthy even to claim the throne. The clans will help you. We will fight with "
-"you against the Queen."
-msgstr ""
-"Stop! Nemôžem tomu uveriť! Porazili ste nás! Veru, ste schopní, azda aj "
-"schopní získať trón. Klany vám pomôžu. Budeme s vami bojovať proti kráľovnej."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:166
-msgid "So you admit defeat! You will serve me in fighting the evil queen?"
-msgstr "Takže priznávaš porážku! Poslúžite mi v boji proti zlej kráľovnej?"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:170
-msgid "We will serve you, my lord. You will make a worthy king."
-msgstr "Poslúžime vám, pane. Bude z vás mocný kráľ."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:174
-msgid "I think you are mistaken! You will help me be queen!"
-msgstr "To si nejako pletieš! Zo mňa bude kráľovná!"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:178
-msgid "Who then is your leader? Who do we serve?"
-msgstr "Kto teda je vaším veliteľom? Komu máme slúžiť?"
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:182
-msgid ""
-"You will serve us. You will protect our flanks while we make way straight "
-"for the queen. With you on either flank, we can surely overcome her."
-msgstr ""
-"Bude slúžiť nám. Budete nás chrániť z bokov, kým my pôjdeme priamo proti "
-"kráľovnej. Keď budete po našom boku, iste ju porazíme."
-
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:186
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:151
 msgid "Delfador, don't you think it is time we settled this?"
 msgstr "Delfador, nemyslíš, že je pravý čas, aby sme toto vyriešili?"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:190
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:155
 msgid ""
 "Yes, it is time. It is time for the truth to be told. I had hoped to take "
 "this secret to my grave, but it isn't to be. You Elves live too long, and "
@@ -2309,11 +2229,11 @@ msgstr ""
 "odnesiem do hrobu, ale nestane sa tak. Vy elfovia žijete dlho, a hoci som sa "
 "veľmi snažil porozumieť, vaša múdrosť je mi nedostupná."
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:194
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:159
 msgid "Secret? What secret Delfador? What are you talking about?"
 msgstr "Tajomstvo? Aké tajomstvo, Delfador? O čom hovoríš?"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:198
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:163
 msgid ""
 "We should not speak of it now. Instead come with me, Konrad and Li'sar, to "
 "the top of mount Elnar. To look at Weldyn. To make plans for the battle, and "
@@ -2322,23 +2242,137 @@ msgstr ""
 "Nebudem o tom hovoriť teraz. Poďte však so mnou, Konrád a Li'sar, na vrchol "
 "hory Elnar. Pozrieť sa na Weldyn. Naplánovať boj, a porozprávať sa."
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:214
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:194
+msgid ""
+"Stop! I cannot believe this! You have defeated us! Indeed, you are worthy, "
+"worthy even to claim the throne. The clans will help you. We will fight with "
+"you against the Queen."
+msgstr ""
+"Stop! Nemôžem tomu uveriť! Porazili ste nás! Veru, ste schopní, azda aj "
+"schopní získať trón. Klany vám pomôžu. Budeme s vami bojovať proti kráľovnej."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:198
+msgid "So you admit defeat! You will serve me in fighting the evil queen?"
+msgstr "Takže priznávaš porážku! Poslúžite mi v boji proti zlej kráľovnej?"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:203
+msgid "We will serve you, my lord. You will make a worthy king."
+msgstr "Poslúžime vám, pane. Bude z vás mocný kráľ."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:208
+msgid "I think you are mistaken! You will help me be queen!"
+msgstr "To si nejako pletieš! Zo mňa bude kráľovná!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:213
+msgid "Who then is your leader? Who do we serve?"
+msgstr "Kto teda je vaším veliteľom? Komu máme slúžiť?"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:218
+msgid ""
+"You will serve us. You will protect our flanks while we make way straight "
+"for the queen. With you on either flank, we can surely overcome her."
+msgstr ""
+"Bude slúžiť nám. Budete nás chrániť z bokov, kým my pôjdeme priamo proti "
+"kráľovnej. Keď budete po našom boku, iste ju porazíme."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:225
+msgid ""
+"Despite their bluster we have prevailed on the field of battle this day. "
+"However by defeating the leaders of the Clan we shall have nobody to guard "
+"our flanks. This is unfortunate as it complicates our march to confront the "
+"queen."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:229
+msgid ""
+"It is unfortunate. They would have been of great assistance in helping "
+"ensure a new King is given a chance to ascend the throne of Wesnoth."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:233
+#, fuzzy
+msgid ""
+"I think you are mistaken! You mean they would have helped a new Queen claim "
+"the throne of Wesnoth!"
+msgstr "To si nejako pletieš! Zo mňa bude kráľovná!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:271
+msgid "Greetings, men of the plains."
+msgstr "Vitajte, muži z plání."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:275
+msgid ""
+"What do these intruders want? We did not invite them here, that is certain."
+msgstr "Čo chcú títo votrelci? Nepozývali sme ich, to je isté."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:279
+msgid ""
+"We come in peace! We wish for you to aid us in our struggle against "
+"Asheviere, the evil Queen Mother."
+msgstr ""
+"Prichádzame v mieri! Chceli by sme, aby ste nám pomohli v boji proti "
+"Aševiere, zlej kráľovnej matke."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:283
+msgid "We will not join you. You who are led by these youths and this old man."
+msgstr "Nepridáme sa k vám. Veď vás vedú títo mladí a tento starec."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:287
+msgid ""
+"You are for us or against us. If you do not join us to overthrow the evil "
+"Queen, we will strip you of your power, once the throne is rightfully "
+"reclaimed."
+msgstr ""
+"Buď ste s nami alebo proti nám. Ak nám nepomôžete poraziť zlú kráľovnú, až "
+"raz po práve získame trón, prídete o všetku moc."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:291
+#, fuzzy
+msgid ""
+"Hah! You think you can seize the throne? Defeat us in battle and we will "
+"join you, or leave now and never return!"
+msgstr ""
+"Hah! Vy si trúfate získať trón? Porazte nás v boji a my sa k vám pridáme, "
+"alebo choďte preč a už sa nevracajte!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:295
+msgid "Very well. We will fight you."
+msgstr "Dobre. Porazíme vás teda."
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:299
+msgid "Fools! We will run you down like dogs!"
+msgstr "Blázni! Rozprášime vás ako psov!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:303
+msgid "There is no turning back for you now. This is a fight to the death!"
+msgstr "Už sa nemôžete otočiť. Toto je boj na život a na smrť!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:326
+msgid ""
+"I cannot believe this! You have defeated me! But the Clan shall fight on!"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:330
+msgid "Their leader has fallen but still they fight!"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:361
 msgid "You can defeat me, but more will take my place!"
 msgstr "Môžeš ma poraziť, ale na moje miesto prídu ďalší!"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:223
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:373
 msgid "See, you cannot defeat me. There are too many in my clan."
 msgstr "Vidíš, mňa neporazíš. Náš klan je príliš veľký."
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:235
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:398
 msgid "Argh! This is how I die? Well, it was for the glory of the Clan."
 msgstr "Ach! Takto zomriem? Nuž, bolo to pre slávu klanu."
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:243
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:410
 msgid "The clan rises. The more of us you kill, the stronger we get!"
 msgstr "Klan rastie. Čím viac náš zabiješ, tým silnejší sa staneme!"
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:255
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:435
 msgid ""
 "Although I die, it is for the Clan. You shall be defeated, and I will be "
 "right in saying you are no match for the Clan's might."
@@ -2346,13 +2380,24 @@ msgstr ""
 "Hoci zomieram, je to za klan. Porazíme vás a potvrdí sa moja pravda, že sa "
 "nemôžete vyrovnať moci klanu."
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:264
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:447
 msgid ""
 "Well said, brother. The warriors of the Clan hear you, and are come to fight "
 "with us!"
 msgstr ""
 "Dobre hovoríš, brat. Bojovníci klanu ťa počujú a prichádzajú bojovať proti "
 "nám!"
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:464
+msgid "|$units_slain| Clan Members Defeated"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:484
+msgid ""
+"We are routing their forces! Let's see if the Clan has had enough. Their "
+"help in guarding our flanks would be invaluable. Let's take this fight to "
+"their leaders!"
+msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:4
 msgid "Home of the North Elves"
@@ -3469,7 +3514,7 @@ msgstr ""
 msgid "Return to Wesnoth"
 msgstr "Návrat do Wesnothu"
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:25
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:26
 msgid ""
 "\n"
 "Victory:\n"
@@ -3489,11 +3534,11 @@ msgstr ""
 "#Zomrie Delfador\n"
 "#Zomrie Kalenz"
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:93
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:94
 msgid "Halt! Who goes there?"
 msgstr "Stáť! Kto je tam?"
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:97
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:98
 msgid ""
 "Look! It is the traitor Li'sar, with the old mage and the filthy Elven lord. "
 "Quickly, capture them! The Queen wishes to make them her prisoners."
@@ -3501,7 +3546,7 @@ msgstr ""
 "Aha! To je zradkyňa Li'sar, spolu so starým mágom a špinavým elfom. Rýchlo, "
 "chyťte ich! Kráľovná ich chce mať vo väzení."
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:101
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:102
 msgid ""
 "What? Me, a traitor? It is the Queen who is a traitor, for not obeying the "
 "wishes of King Garard II. We have the Scepter of Fire, so let us in!"
@@ -3509,22 +3554,28 @@ msgstr ""
 "Čo? Ja, zradkyňa? Kráľovná nás zradila, neposlúchla vôľu kráľa Gararda II. "
 "My máme Ohnivé želo, pustite nás dnu!"
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:105
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:106
 msgid "You leave us no choice but to kill you."
 msgstr "Nedávaš nám inú možnosť, musíme ťa zabiť."
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:117
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:118
 msgid ""
 "These intruders are stronger than we expected. Call in the reinforcements!"
 msgstr "Títo votrelci sú silnejší než sme čakali. Privolajte posily!"
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:141
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:143
 msgid "The Queen has sent us to aid you in capturing these rebels."
 msgstr "Kráľovná nás poslala na pomoc, aby ste pochytali týchto rebelov."
 
-#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:145
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:147
 msgid "We have changed the plan. Now we are killing them."
 msgstr "Zmena plánu. Teraz sa ich snažíme zabiť."
+
+#: data/scenarios/Heir_To_The_Throne/Return_to_Wesnoth.cfg:155
+msgid ""
+"We must make haste! Far greater challenges lay before us, by tarring here "
+"were diminish our resources."
+msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:4
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:13
