@@ -233,8 +233,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		observe_game.set_location(join_game.location().x + join_game.location().w + 5,yscale(disp,4));
 		new_game.set_location(observe_game.location().x + observe_game.location().w + 5,yscale(disp,4));
 		quit_game.set_location(new_game.location().x + new_game.location().w + 5,yscale(disp,4));
-		message_entry.set_location(xscale(disp,12),yscale(disp,730));
-		message_entry.set_width(xscale(disp,832));
+		message_entry.set_location(xscale(disp,14),yscale(disp,732));
+		message_entry.set_width(xscale(disp,830));
 
 		update_whole_screen();
 
