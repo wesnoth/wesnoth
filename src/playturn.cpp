@@ -1771,9 +1771,9 @@ void turn_info::recall()
 (You must have veteran survivors from a previous scenario)"));
 	} else if(current_team.gold() < game_config::recall_cost) {
 		std::stringstream msg;
-		msg << _("You must have at least")
-		    << " " << game_config::recall_cost << " "
-			<< _("gold pieces to recall a unit");
+		string_map i18n_symbols;
+		i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
+		msg << vgettext("You must have at least $cost gold pieces to recall a unit", i18n_symbols);
 		gui::show_dialog(gui_,NULL,"",msg.str());
 	} else {
 		std::vector<std::string> options;
