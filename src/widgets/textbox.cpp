@@ -72,36 +72,30 @@ void textbox::draw()
 	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
 	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
 
-	if (cursor_ == 0)
-		draw_cursor(0, disp());
-
 	int pos = 1;
-	std::string str(1,'x');
-	const SDL_Rect clip = disp().screen_area();
 
+	const SDL_Rect clip = disp().screen_area();	
+	
 	//draw the text
-	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
-		str[0] = text_[i];
-		const SDL_Rect area =
-		    font::draw_text(NULL,clip,font_size,font::NORMAL_COLOUR,str,0,0,
-		                    NULL,false,font::NO_MARKUP);
-
-		//if we can't fit the next character on screen
-		if(pos + area.w > location().w) {
-			if(cursor_ > i)
-				++firstOnScreen_;
+	//the "firstOnScreen to cursor_" string should always fit in th rect. If this is not
+	//the case, increase firstOnScreen until this is.
+	while(true) {
+		if (firstOnScreen_ == cursor_)
 			break;
-		}
-
-		font::draw_text(&disp(),clip,font_size,font::NORMAL_COLOUR,str,
-		                location().x + pos, location().y, NULL, false, font::NO_MARKUP);
-
-		pos += area.w;
-
-		if(cursor_ == i+1) {
-			draw_cursor(pos-1, disp());
-		}
+		
+		const std::string visible_string = text_.substr(firstOnScreen_, cursor_ - firstOnScreen_);
+		const SDL_Rect area = font::draw_text(NULL,clip,font_size,font::NORMAL_COLOUR,visible_string,0,0,
+					NULL,false,font::NO_MARKUP);
+		pos = area.w;
+		if(area.w <= location().w)
+			break;
+		++firstOnScreen_;
 	}
+
+	font::draw_text(&disp(),clip,font_size,font::NORMAL_COLOUR,text_.substr(firstOnScreen_),
+			location().x + 1, location().y, NULL, false, font::NO_MARKUP);
+
+	draw_cursor(pos-1, disp());
 
 	set_dirty(false);
 	update_rect(location());
@@ -114,7 +108,7 @@ void textbox::process()
 	show_cursor_ = (SDL_GetTicks()%1000) > 500;
 	if (old_cursor != show_cursor_)
 		set_dirty(true);
-
+	
 	draw();
 }
 
@@ -162,6 +156,14 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
+	if(c == SDLK_END) {
+		cursor_ = text_.size();
+	}
+	
+	if(c == SDLK_HOME) {
+		cursor_ = firstOnScreen_ = 0;
+	}
+	
 	const char character = static_cast<char>(key.unicode);
 
 	if(isgraph(character) || character == ' ') {
@@ -170,6 +172,7 @@ void textbox::handle_event(const SDL_Event& event)
 	}
 
 	set_dirty(true);
+	draw();
 }
 
 }
