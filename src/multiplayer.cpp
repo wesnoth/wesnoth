@@ -84,7 +84,7 @@ server_type open_connection(display& disp, const std::string& host)
 		h = preferences::network_host();
 		const int res = gui::show_dialog(disp, NULL, _("Connect to Host"), "",
 				gui::OK_CANCEL, NULL, NULL,
-				_("Choose host to connect to") + std::string(": "), &h);
+				_("Choose host to connect to: "), &h);
 
 		if(res != 0 || h.empty()) {
 			return ABORT_SERVER;
@@ -134,7 +134,7 @@ server_type open_connection(display& disp, const std::string& host)
 			if(!first_time) {	
 				const int res = gui::show_dialog(disp, NULL, "",
 						_("You must log in to this server"), gui::OK_CANCEL,
-						NULL, NULL, _("Login") + std::string(": "), &login);
+						NULL, NULL, _("Login: "), &login);
 				if(res != 0 || login.empty()) {
 					return ABORT_SERVER;
 				}

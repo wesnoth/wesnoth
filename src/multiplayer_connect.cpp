@@ -783,7 +783,7 @@ void connect::lists_init()
 
 	const config* const era_cfg = game_config().find_child("era","id",era_);
 	if(era_cfg == NULL) {
-		throw config::error(_("Era not available") + std::string(": ") + era_);
+		throw config::error(_("Era not available: ") + era_);
 	}
 
 	era_sides_ = era_cfg->get_children("multiplayer_side");

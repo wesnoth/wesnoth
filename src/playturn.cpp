@@ -648,7 +648,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		preview_panes.push_back(&defender_preview);
 
 		res = gui::show_dialog(gui_,NULL,_("Attack Enemy"),
-				_("Choose weapon")+std::string(":\n"),
+				_("Choose weapon:")+std::string("\n"),
 				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
 				NULL,&buttons);
 	}
@@ -1780,7 +1780,7 @@ void turn_info::recruit()
 		preview_panes.push_back(&unit_preview);
 
 		recruit_res = gui::show_dialog(gui_,NULL,_("Recruit"),
-				_("Select unit") + std::string(":\n"),
+				_("Select unit:") + std::string("\n"),
 				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
 				NULL,NULL,"recruit_and_recall");
 	}
@@ -1964,7 +1964,7 @@ void turn_info::recall()
 			preview_panes.push_back(&unit_preview);
 
 			res = gui::show_dialog(gui_,NULL,_("Recall"),
-					_("Select unit") + std::string(":\n"),
+					_("Select unit:") + std::string("\n"),
 					gui::OK_CANCEL,&options,
 					&preview_panes,"",NULL,-1,
 					NULL,NULL,-1,-1,NULL,&buttons);

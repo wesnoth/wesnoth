@@ -1289,7 +1289,7 @@ bool game_controller::play_multiplayer()
 	host_or_join.push_back(pre + "ai.png" + sep1 + _("Human vs AI") + sep2 + _("Play a game against AI opponents"));
 
 	std::string login = preferences::login();
-	const int res = gui::show_dialog(disp(),NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
+	const int res = gui::show_dialog(disp(),NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login: "),&login);
 
 	if(res >= 0) {
 		preferences::set_login(login);

@@ -369,7 +369,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 			return report();
 		}
 
-		str << _("Observers") << ":\n";
+		str << _("Observers:") << "\n";
 
 		for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
 			str << *i << "\n";
