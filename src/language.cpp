@@ -90,6 +90,7 @@ const std::string& translate_string(const std::string& str)
 
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
+#ifdef USE_OLD_TRANS
 	const string_map::const_iterator i = strings_.find(str);
 	if(i != strings_.end() && i->second != "") {
 		return i->second;
@@ -103,6 +104,9 @@ const std::string& translate_string_default(const std::string& str, const std::s
 
 		return default_val;
 	}
+#else
+	return str;
+#endif
 }
 
 std::vector<language_def> get_languages()
@@ -128,9 +132,11 @@ bool internal_set_language(const language_def& locale, config& cfg)
 
 			setlocale (LC_MESSAGES, locale.localename.c_str());
 
+#ifdef USE_OLD_TRANS
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				strings_[j->first] = j->second;
 			}
+#endif
 
 			hotkey::add_hotkeys(**i,false);
 
