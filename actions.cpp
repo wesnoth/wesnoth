@@ -1,0 +1,768 @@
+/*
+   Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
+   Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+#include "actions.hpp"
+#include "display.hpp"
+#include "game_config.hpp"
+#include "game_events.hpp"
+#include "key.hpp"
+#include "language.hpp"
+#include "map.hpp"
+#include "pathfind.hpp"
+#include "replay.hpp"
+#include "sound.hpp"
+#include "util.hpp"
+
+#include <cmath>
+#include <set>
+#include <string>
+#include <sstream>
+
+struct castle_cost_calculator
+{
+	castle_cost_calculator(const gamemap& map) : map_(map)
+	{}
+
+	double cost(const gamemap::location& loc) const
+	{
+		if(!map_.on_board(loc) || map_[loc.x][loc.y] != gamemap::CASTLE)
+			return 10000;
+
+		return 1;
+	}
+
+private:
+	const gamemap& map_;
+};
+
+std::string recruit_unit(const gamemap& map, int side,
+       std::map<gamemap::location,unit>& units, unit& new_unit,
+       gamemap::location recruit_location, display* disp)
+{
+	typedef std::map<gamemap::location,unit> units_map;
+
+	//find the unit that can recruit
+	units_map::const_iterator u;
+
+	for(u = units.begin(); u != units.end(); ++u) {
+		if(u->second.can_recruit() && u->second.side() == side) {
+			break;
+		}
+	}
+
+	if(u == units.end())
+		return string_table["no_leader_to_recruit"];
+
+	if(!map.is_starting_position(u->first))
+		return string_table["leader_not_on_start"];
+
+	if(map.on_board(recruit_location)) {
+		const paths::route& rt = a_star_search(u->first,recruit_location,
+		                                   100.0,castle_cost_calculator(map));
+		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
+		   map[recruit_location.x][recruit_location.y] != gamemap::CASTLE)
+			recruit_location = gamemap::location();
+	}
+
+	if(!map.on_board(recruit_location)) {
+		recruit_location = find_vacant_tile(map,units,u->first,gamemap::CASTLE);
+	}
+
+	if(!map.on_board(recruit_location)) {
+		return string_table["no_recruit_location"];
+	}
+
+	new_unit.set_movement(0);
+	new_unit.set_attacked();
+	units.insert(std::pair<gamemap::location,unit>(
+							recruit_location,new_unit));
+
+	if(disp != NULL && !disp->turbo()) {
+		disp->draw(true,true);
+
+		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
+			disp->draw_tile(recruit_location.x,recruit_location.y,NULL,alpha);
+			disp->update_display();
+			SDL_Delay(20);
+		}
+	}
+
+	return std::string();
+}
+
+bool under_leadership(const std::map<gamemap::location,unit>& units,
+                      const gamemap::location& loc)
+{
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc,adjacent);
+	const std::map<gamemap::location,unit>::const_iterator un =
+	     units.find(loc);
+	if(un == units.end())
+		return false;
+	
+	const int side = un->second.side();
+	const int level = un->second.type().level();
+	
+	for(int i = 0; i != 6; ++i) {
+		const std::map<gamemap::location,unit>::const_iterator it =
+		     units.find(adjacent[i]);
+		if(it != units.end() && it->second.side() == side &&
+		   it->second.type().is_leader() && it->second.type().level() > level)
+			return true;
+	}
+
+	return false;
+}
+
+battle_stats evaluate_battle_stats(
+                   const gamemap& map,
+                   const gamemap::location& attacker,
+                   const gamemap::location& defender,
+				   int attack_with,
+				   std::map<gamemap::location,unit>& units,
+				   const gamestatus& state,
+				   const game_data& info,
+				   gamemap::TERRAIN attacker_terrain_override,
+				   bool include_strings)
+{
+	battle_stats res;
+
+	res.attack_with = attack_with;
+
+	if(include_strings)
+		res.defend_name = "none";
+
+	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
+	const std::map<gamemap::location,unit>::iterator d = units.find(defender);
+
+	assert(a != units.end());
+	assert(d != units.end());
+
+	const gamemap::TERRAIN attacker_terrain = attacker_terrain_override ?
+	                 attacker_terrain_override : map[attacker.x][attacker.y];
+	const gamemap::TERRAIN defender_terrain = map[defender.x][defender.y];
+
+	res.chance_to_hit_attacker =
+			a->second.defense_modifier(map,attacker_terrain);
+
+	res.chance_to_hit_defender =
+			d->second.defense_modifier(map,defender_terrain);
+
+	const std::vector<attack_type>& attacker_attacks =
+			a->second.attacks();
+	const std::vector<attack_type>& defender_attacks =
+			d->second.attacks();
+
+	assert(attack_with >= 0 && attack_with < int(attacker_attacks.size()));
+	const attack_type& attack = attacker_attacks[attack_with];
+
+	static const std::string charge_string("charge");
+	const bool charge = (attack.special() == charge_string);
+
+	bool backstab = false;
+
+	static const std::string backstab_string("backstab");
+	if(attack.special() == backstab_string) {
+		gamemap::location adj[6];
+		get_adjacent_tiles(defender,adj);
+		int i;
+		for(i = 0; i != 6; ++i) {
+			if(adj[i] == attacker)
+				break;
+		}
+
+		if(i != 6) {
+			const std::map<gamemap::location,unit>::const_iterator u =
+			                    units.find(adj[(i+3)%6]);
+			if(u != units.end() && u->second.side() == a->second.side()) {
+				backstab = true;
+			}
+		}
+	}
+
+	static const std::string plague_string("plague");
+	res.attacker_plague = (attack.special() == plague_string);
+	res.defender_plague = false;
+
+	res.attack_name    = attack.name();
+	res.attack_type    = attack.type();
+
+	if(include_strings) {
+		res.attack_special = attack.special();
+
+		//don't show backstabbing unless it's actually happening
+		if(res.attack_special == "backstab" && !backstab)
+			res.attack_special = "";
+
+		res.range = (attack.range() == attack_type::SHORT_RANGE ?
+		             "Melee" : "Ranged");
+	}
+
+	res.nattacks = attack.num_attacks();
+	int defend;
+	res.ndefends = 0;
+	for(defend = 0; defend != int(defender_attacks.size()); ++defend) {
+		if(defender_attacks[defend].range() == attack.range())
+			break;
+	}
+
+	res.defend_with = defend != int(defender_attacks.size()) ? defend : -1;
+
+	const bool counterattack = defend != int(defender_attacks.size());
+	
+	static const std::string drain_string("drain");
+	static const std::string magical_string("magical");
+
+	res.damage_attacker_takes = 0;
+	if(counterattack) {
+		//magical attacks always have a 70% chance to hit
+		if(defender_attacks[defend].special() == magical_string)
+			res.chance_to_hit_attacker = 0.7;
+
+		res.damage_attacker_takes = int(double(
+		 a->second.damage_against(defender_attacks[defend]))
+		 * combat_modifier(state,units,d->first,d->second.type().alignment()));
+		
+		if(charge)
+			res.damage_attacker_takes *= 2;
+
+		if(under_leadership(units,defender))
+			res.damage_attacker_takes += res.damage_attacker_takes/8 + 1;
+
+		if(res.damage_attacker_takes < 1)
+			res.damage_attacker_takes = 1;
+
+		res.ndefends = defender_attacks[defend].num_attacks();
+
+		res.defend_name    = defender_attacks[defend].name();
+		res.defend_type    = defender_attacks[defend].type();
+
+		if(include_strings) {
+			res.defend_special = defender_attacks[defend].special();
+		}
+
+		if(defender_attacks[defend].special() == drain_string) {
+			res.amount_defender_drains = res.damage_attacker_takes/2;
+		} else {
+			res.amount_defender_drains = 0;
+		}
+
+		res.defender_plague =
+		        (defender_attacks[defend].special() == plague_string);
+	}
+
+	if(attack.special() == magical_string)
+		res.chance_to_hit_defender = 0.7;
+
+	static const std::string marksman_string("marksman");
+
+	//offensive marksman attacks always have at least 60% chance to hit
+	if(res.chance_to_hit_defender < 0.6 && attack.special() == marksman_string)
+		res.chance_to_hit_defender = 0.6;
+	
+	res.damage_defender_takes = int(
+			double(d->second.damage_against(attack))
+		 * combat_modifier(state,units,a->first,a->second.type().alignment()))
+			 * (charge ? 2 : 1) * (backstab ? 2 : 1);
+	
+	if(under_leadership(units,attacker))
+		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
+
+	if(attack.special() == drain_string) {
+		res.amount_attacker_drains = res.damage_defender_takes/2;
+	} else {
+		res.amount_attacker_drains = 0;
+	}
+
+	static const std::string slowed_string("slowed");
+	if(a->second.has_flag(slowed_string) && res.nattacks > 1)
+		--res.nattacks;
+
+	if(d->second.has_flag(slowed_string) && res.ndefends > 1)
+		--res.ndefends;
+
+	return res;
+}
+
+void attack(display& gui, const gamemap& map,
+            const gamemap::location& attacker,
+            const gamemap::location& defender,
+			int attack_with,
+			std::map<gamemap::location,unit>& units,
+			const gamestatus& state,
+			const game_data& info, bool player_is_attacker)
+{
+	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
+	std::map<gamemap::location,unit>::iterator d = units.find(defender);
+
+	assert(a != units.end());
+	assert(d != units.end());
+
+	int attackerxp = d->second.type().level();
+	int defenderxp = a->second.type().level();
+
+	a->second.set_attacked();
+
+	//if the attacker was invisible, she isn't anymore!
+	static const std::string forest_invisible("ambush");
+	a->second.remove_flag(forest_invisible);
+	
+	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
+	                                           attack_with,units,state,info);
+
+	while(stats.nattacks > 0 || stats.ndefends > 0) {
+		if(stats.nattacks > 0) {
+			const double roll = double(recorder.get_random()%1000)/1000.0;
+			const bool hits = roll < stats.chance_to_hit_defender;
+			const bool dies = gui.unit_attack(attacker,defender,
+			            hits ? stats.damage_defender_takes : 0,
+						a->second.attacks()[attack_with]);
+			if(dies) {
+				attackerxp = 10*d->second.type().level();
+				if(d->second.type().level() == 0)
+					attackerxp = 5;
+
+				defenderxp = 0;
+
+				gamemap::location loc = d->first;
+				gamemap::location attacker_loc = a->first;
+				game_events::fire("die",loc,a->first);
+
+				//the handling of the event may have removed the object
+				//so we have to find it again
+				units.erase(loc);
+
+				//plague units make clones of themselves on the target hex
+				//units on villages that die cannot be plagued
+				if(stats.attacker_plague && map[loc.x][loc.y]!=gamemap::TOWER) {
+					a = units.find(attacker_loc);
+					if(a != units.end()) {
+						units.insert(std::pair<gamemap::location,unit>(
+						                                 loc,a->second));
+						gui.draw_tile(loc.x,loc.y);
+						gui.update_display();
+					}
+				}
+
+				break;
+			} else if(hits) {
+				static const std::string poison_string("poison");
+				if(stats.attack_special == poison_string &&
+				   d->second.has_flag("poisoned") == false) {
+					d->second.set_flag("poisoned");
+				}
+
+				static const std::string slow_string("slow");
+				if(stats.attack_special == slow_string &&
+				   d->second.has_flag("slowed") == false) {
+					d->second.set_flag("slowed");
+					if(stats.ndefends > 1)
+						--stats.ndefends;
+				}
+
+				if(stats.amount_attacker_drains > 0) {
+					a->second.gets_hit(-stats.amount_attacker_drains);
+				}
+			}
+
+			--stats.nattacks;
+		}
+
+		if(stats.ndefends > 0) {
+			const double roll = double(recorder.get_random()%1000)/1000.0;
+			const bool hits = roll < stats.chance_to_hit_attacker;
+			const bool dies = gui.unit_attack(defender,attacker,
+			               hits ? stats.damage_attacker_takes : 0,
+						   d->second.attacks()[stats.defend_with]);
+
+			if(dies) {
+				defenderxp = 10*a->second.type().level();
+				if(a->second.type().level() == 0)
+					defenderxp = 5;
+
+				attackerxp = 0;
+
+				gamemap::location loc = a->first;
+				gamemap::location defender_loc = d->first;
+				game_events::fire("die",loc,d->first);
+
+				//the handling of the event may have removed the object
+				//so we have to find it again
+				units.erase(loc);
+
+				//plague units make clones of themselves on the target hex.
+				//units on villages that die cannot be plagued
+				if(stats.defender_plague && map[loc.x][loc.y]!=gamemap::TOWER) {
+					d = units.find(defender_loc);
+					if(d != units.end()) {
+						units.insert(std::pair<gamemap::location,unit>(
+						                                 loc,d->second));
+						gui.draw_tile(loc.x,loc.y);
+						gui.update_display();
+					}
+				}
+				break;
+			} else if(hits) {
+				if(stats.defend_special == "poison" &&
+				   a->second.has_flag("poisoned") == false) {
+					a->second.set_flag("poisoned");
+				}
+
+				static const std::string slow_string("slow");
+				if(stats.defend_special == slow_string &&
+				   a->second.has_flag("slowed") == false) {
+					a->second.set_flag("slowed");
+					if(stats.nattacks > 1)
+						--stats.nattacks;
+				}
+
+				if(stats.amount_defender_drains > 0) {
+					d->second.gets_hit(-stats.amount_defender_drains);
+				}
+			}
+
+			--stats.ndefends;
+		}
+	}
+
+	if(attackerxp) {
+		a->second.get_experience(attackerxp);
+	}
+
+	if(defenderxp) {
+		d->second.get_experience(defenderxp);
+	}
+}
+
+int tower_owner(const gamemap::location& loc, std::vector<team>& teams)
+{
+	for(int i = 0; i != teams.size(); ++i) {
+		if(teams[i].owns_tower(loc))
+			return i;
+	}
+
+	return -1;
+}
+
+
+void get_tower(const gamemap::location& loc, std::vector<team>& teams,
+               int team_num)
+{
+	for(int i = 0; i != teams.size(); ++i) {
+		if(i != team_num && teams[i].owns_tower(loc)) {
+			teams[i].lose_tower(loc);
+		}
+	}
+
+	if(team_num >= 0 && team_num < teams.size())
+		teams[team_num].get_tower(loc);
+}
+
+std::map<gamemap::location,unit>::iterator
+   find_leader(std::map<gamemap::location,unit>& units, int side)
+{
+	for(std::map<gamemap::location,unit>::iterator i = units.begin();
+	    i != units.end(); ++i) {
+		if(i->second.side() == side && i->second.can_recruit()) 
+			return i;
+	}
+
+	return units.end();
+}
+
+void calculate_healing(display& disp, const gamemap& map,
+                       std::map<gamemap::location,unit>& units, int side)
+{
+	std::map<gamemap::location,int> healed_units;
+
+	std::map<gamemap::location,unit>::iterator i;
+	for(i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() != side)
+			continue;
+
+		bool heals = false;
+		if(map[i->first.x][i->first.y] == gamemap::TOWER) {
+			heals = true;
+		}
+
+		if(i->second.type().regenerates()) {
+			heals = true;
+		}
+
+		gamemap::location adjacent[6];
+		get_adjacent_tiles(i->first,adjacent);
+		for(int j = 0; j != 6; ++j) {
+			const std::map<gamemap::location,unit>::const_iterator adj_unit =
+			                                           units.find(adjacent[j]);
+			if(adj_unit != units.end() && adj_unit->second.type().heals() &&
+			   adj_unit->second.side() == side) {
+				heals = true;
+			}
+		}
+
+		if(heals) {
+			healed_units.insert(std::pair<gamemap::location,int>(
+			                            i->first, game_config::heal_amount));
+		}
+	}
+
+	//now see about units that can heal other units
+	for(i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() != side)
+			continue;
+
+		if(i->second.type().heals()) {
+			gamemap::location adjacent[6];
+			get_adjacent_tiles(i->first,adjacent);
+
+			int nhealed = 0;
+			int j;
+			for(j = 0; j != 6; ++j) {
+				const std::map<gamemap::location,unit>::const_iterator adj =
+				                                   units.find(adjacent[j]);
+				if(adj != units.end() &&
+				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
+				   adj->second.side() == i->second.side() &&
+				   healed_units.count(adj->first) == 0) {
+					++nhealed;
+				}
+			}
+
+			if(nhealed == 0)
+				continue;
+
+			const int healing_per_unit = game_config::healer_heals_per_turn/
+			                             nhealed;
+
+			for(j = 0; j != 6; ++j) {
+				const std::map<gamemap::location,unit>::const_iterator adj =
+				                                   units.find(adjacent[j]);
+				if(adj != units.end() &&
+				   adj->second.hitpoints() < adj->second.max_hitpoints() &&
+				   adj->second.side() == i->second.side() &&
+				   healed_units.count(adj->first) == 0) {
+					healed_units.insert(std::pair<gamemap::location,int>(
+					                               i->first,healing_per_unit));
+				}
+			}
+		}
+	}
+
+	//poisoned units will take the same amount of damage per turn, as
+	//healing heals until they are reduced to 1 hitpoint. If they are
+	//healed on a turn, they recover 0 hitpoints that turn, but they
+	//are no longer poisoned
+	for(i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() != side)
+			continue;
+
+		if(i->second.has_flag("poisoned")) {
+			const int damage = minimum<int>(game_config::heal_amount,
+			                                i->second.hitpoints()-1);
+
+			if(damage > 0) {
+				healed_units.insert(std::pair<gamemap::location,int>(
+				                               i->first,-damage));
+			}
+		}
+	}
+
+	for(std::map<gamemap::location,int>::iterator h = healed_units.begin();
+	    h != healed_units.end(); ++h) {
+
+		const gamemap::location& loc = h->first;
+
+		const bool show_healing = !disp.turbo() && !recorder.skipping();
+
+		assert(units.count(loc) == 1);
+
+		unit& u = units.find(loc)->second;
+
+		if(h->second > 0 && h->second > u.max_hitpoints()-u.hitpoints()) {
+			h->second = u.max_hitpoints()-u.hitpoints();
+			if(h->second <= 0)
+				continue;
+		}
+
+		if(show_healing) {
+			disp.scroll_to_tile(loc.x,loc.y,display::WARP);
+			disp.select_hex(loc);
+			disp.update_display();
+		}
+
+		const int DelayAmount = 50;
+
+		if(u.has_flag("poisoned")) {
+
+			u.remove_flag("poisoned");
+			h->second = 0;
+
+			if(show_healing) {
+				sound::play_sound("heal.wav");
+				SDL_Delay(DelayAmount);
+				disp.invalidate_unit();
+				disp.update_display();
+			}
+		} else if(h->second < 0) {
+			if(show_healing)
+				sound::play_sound("groan.wav");
+		} else if(h->second > 0) {
+			if(show_healing)
+				sound::play_sound("heal.wav");
+		}
+
+		while(h->second > 0) {
+			const display::Pixel heal_colour = disp.rgb(0,0,200);
+			u.heal(1);
+
+			if(show_healing) {
+				if((h->second%2) == 1)
+					disp.draw_tile(loc.x,loc.y,NULL,0.5,heal_colour);
+				else
+					disp.draw_tile(loc.x,loc.y);
+				SDL_Delay(DelayAmount);
+				disp.update_display();
+			}
+
+			--h->second;
+		}
+
+		while(h->second < 0) {
+			const display::Pixel damage_colour = disp.rgb(200,0,0);
+			u.gets_hit(1);
+
+			if(show_healing) {
+				if((h->second%2) == 1)
+					disp.draw_tile(loc.x,loc.y,NULL,0.5,damage_colour);
+				else
+					disp.draw_tile(loc.x,loc.y);
+				
+				SDL_Delay(DelayAmount);
+				disp.update_display();
+			}
+
+			++h->second;
+		}
+
+		if(show_healing) {
+			disp.draw_tile(loc.x,loc.y);
+			disp.update_display();
+		}
+	}
+}
+
+unit get_advanced_unit(const game_data& info,
+                  std::map<gamemap::location,unit>& units,
+                  const gamemap::location& loc, const std::string& advance_to)
+{
+	const std::map<std::string,unit_type>::const_iterator new_type =
+	     info.unit_types.find(advance_to);
+	std::map<gamemap::location,unit>::iterator un = units.find(loc);
+	if(new_type != info.unit_types.end() && un != units.end()) {
+		const int side = un->second.side();
+
+		unit new_unit(&(new_type->second),un->second);
+
+		return new_unit;
+	} else {
+		throw gamestatus::game_error("Could not find the unit being advanced"
+		                             " to: " + advance_to);
+	}
+}
+
+void advance_unit(const game_data& info,
+                  std::map<gamemap::location,unit>& units,
+                  const gamemap::location& loc, const std::string& advance_to)
+{
+	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
+	units.erase(loc);
+	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
+}
+
+int check_victory(std::map<gamemap::location,unit>& units)
+{
+	std::set<int> seen_leaders;
+	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
+	    i != units.end(); ++i) {
+		if(i->second.can_recruit())
+			seen_leaders.insert(i->second.side());
+	}
+
+	//if only one leader remains standing, his team has won
+	if(seen_leaders.size() == 1)
+		return *seen_leaders.begin();
+
+	//if the player (team 1) isn't here, the player has lost
+	if(seen_leaders.count(1) == 0)
+		return 2;
+
+	//remove any units which are leaderless
+	for(std::map<gamemap::location,unit>::iterator j = units.begin();
+	    j != units.end(); ++j) {
+		if(seen_leaders.count(j->second.side()) == 0) {
+			units.erase(j);
+			j = units.begin();
+		}
+	}
+
+	return -1;
+}
+
+gamestatus::TIME timeofday_at(const gamestatus& status,
+                              const std::map<gamemap::location,unit>& units,
+                              const gamemap::location& loc)
+{
+	gamemap::location locs[7];
+	locs[0] = loc;
+	get_adjacent_tiles(loc,locs+1);
+
+	bool lighten = false;
+	for(int i = 0; i != 7; ++i) {
+		const std::map<gamemap::location,unit>::const_iterator itor =
+		                                              units.find(locs[i]);
+		if(itor != units.end() &&
+		   itor->second.type().is_lightbringer()) {
+			lighten = true;
+		}
+	}
+
+	gamestatus::TIME res = status.timeofday();
+	if(lighten) {
+		if(res == gamestatus::DUSK)
+			res = gamestatus::DAY2;
+		else if(res > gamestatus::DUSK)
+			res = gamestatus::DUSK;
+	}
+
+	return res;
+}
+
+double combat_modifier(const gamestatus& status,
+                       const std::map<gamemap::location,unit>& units,
+					   const gamemap::location& loc,
+					   unit_type::ALIGNMENT alignment)
+{
+	const gamestatus::TIME timeofday = timeofday_at(status,units,loc);
+		if(alignment == unit_type::LAWFUL) {
+		if(timeofday > gamestatus::DAWN && timeofday < gamestatus::DUSK)
+			return 1.25;
+		else if(timeofday > gamestatus::DUSK &&
+		        units.find(loc)->second.type().nightvision() == false)
+			return 0.75;
+	} else if(alignment == unit_type::CHAOTIC) {
+		if(timeofday > gamestatus::DAWN && timeofday < gamestatus::DUSK)
+			return 0.75;
+		else if(timeofday > gamestatus::DUSK)
+			return 1.25;
+	}
+
+	return 1.0;
+}
