@@ -72,6 +72,7 @@ foreach my $wmlfile (@wmlfiles) {
   my ($str, $key, $value,$strtype);
   while (<WML>) {
 #    print STDERR $_;
+    next if m/^\s*\#/ and !defined $key;
     if (m/id\s*=\s*"(.*)"/) {
       $id = $1;
     } elsif (m/id\s*=\s*(.*)/) {
@@ -190,6 +191,11 @@ if ($n == 0) {
   foreach my $key (keys %lang) {
     print STDERR $key, ' = "', $lang{$key}, "\"\n";
   }
+#   $n = keys %english;
+#   print STDERR "\ALSO FINAL WARNING: the following $n english strings were NOT looked up:\n";
+#   foreach my $key (keys %english) {
+#     print STDERR $key, ' = "', $english{$key}, "\"\n";
+#   }
 }
 
 ## Below is utility functions only - end of processing
@@ -208,7 +214,7 @@ sub processentry {
       if (defined $trans) {
 	$output = raw2postring($trans);
 	$touched = 1;
-	delete $lang{$id};
+	delete $lang{$id}; delete $english{$id};
 	$migrated++;
       } else {
 	# print STDERR "WARNING: no translation found for $id - setting to empty\n";
