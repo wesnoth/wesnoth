@@ -1486,6 +1486,7 @@ void turn_info::create_unit()
 	    i != gameinfo_.unit_types.end(); ++i) {
 		options.push_back(i->first);
 		unit_choices.push_back(unit(&i->second,1,false));
+		unit_choices.back().new_turn();
 	}
 
 	const int choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",

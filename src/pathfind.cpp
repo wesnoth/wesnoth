@@ -149,7 +149,7 @@ void find_routes(const gamemap& map, const gamestatus& status,
 				 int move_left,
 				 std::map<gamemap::location,paths::route>& routes,
 				 std::vector<team>& teams,
-				 bool ignore_zocs, bool allow_teleport, int turns_left)
+				 bool ignore_zocs, bool allow_teleport, int turns_left, bool starting_pos)
 {
 	team& current_team = teams[u.side()-1];
 
@@ -157,8 +157,10 @@ void find_routes(const gamemap& map, const gamestatus& status,
 	std::vector<gamemap::location> locs(6);
 	get_adjacent_tiles(loc,&locs[0]);
 
-	//check for teleporting units
-	if(allow_teleport && map.underlying_terrain(map[loc.x][loc.y]) == gamemap::TOWER) {
+	//check for teleporting units -- we must be on a vacant (or occupied by this unit)
+	//tower, that is controlled by our team to be able to teleport.
+	if(allow_teleport && map.underlying_terrain(map[loc.x][loc.y]) == gamemap::TOWER &&
+	   current_team.owns_tower(loc) && (starting_pos || units.count(loc) == 0)) {
 		const std::vector<gamemap::location>& towers = map.towers();
 
 		//if we are on a tower, see all friendly towers that we can
@@ -230,7 +232,7 @@ void find_routes(const gamemap& map, const gamestatus& status,
 			if(new_route.move_left > 0) {
 				find_routes(map,status,gamedata,units,u,currentloc,
 				            zoc_move_left,routes,teams,ignore_zocs,
-							allow_teleport,new_turns_left);
+							allow_teleport,new_turns_left,false);
 			}
 		}
 	}
@@ -254,7 +256,7 @@ paths::paths(const gamemap& map, const gamestatus& status,
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,status,gamedata,units,i->second,loc,
 	            i->second.movement_left(),routes,teams,
-				ignore_zocs,allow_teleport,additional_turns);
+				ignore_zocs,allow_teleport,additional_turns,true);
 }
 
 int route_turns_to_complete(const unit& u, const gamemap& map,
