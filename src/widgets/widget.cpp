@@ -9,8 +9,8 @@ namespace gui {
 
 widget::widget(const widget &o)
 	: events::handler(), disp_(o.disp_), restorer_(o.restorer_), rect_(o.rect_),
-	  clip_rect_(o.clip_rect_), focus_(o.focus_), needs_restore_(o.needs_restore_),
-	  state_(o.state_), volatile_(o.volatile_),
+	  focus_(o.focus_), needs_restore_(o.needs_restore_),
+	  state_(o.state_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), help_string_(o.help_string_)
 {
 }
