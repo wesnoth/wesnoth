@@ -127,8 +127,8 @@ void pump()
 						SDL_UserEvent user_event;
 						user_event.type = DOUBLE_CLICK_EVENT;
 						user_event.code = 0;
-						user_event.data1 = reinterpret_cast<void*>(event.button.x);
-						user_event.data2 = reinterpret_cast<void*>(event.button.y);
+						user_event.data1 = new int(event.button.x);
+						user_event.data2 = new int(event.button.y);
 						::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 					}
 

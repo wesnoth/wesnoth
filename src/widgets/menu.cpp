@@ -225,8 +225,10 @@ void menu::handle_event(const SDL_Event& event)
 			x = event.button.x;
 			y = event.button.y;
 		} else {
-			x = reinterpret_cast<int>(event.user.data1);
-			y = reinterpret_cast<int>(event.user.data2);
+			x = *(reinterpret_cast<int*>(event.user.data1));
+			y = *(reinterpret_cast<int*>(event.user.data2));
+			delete reinterpret_cast<int*>(event.user.data1);
+			delete reinterpret_cast<int*>(event.user.data2);
 		}
 
 		const int item = hit(x,y);
