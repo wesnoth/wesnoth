@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-12 23:55+0200\n"
+"POT-Creation-Date: 2004-08-21 23:49+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/game.cfg:257 data/translations/english.cfg:13
+#: data/game.cfg:257
 msgid "Heir to the Throne"
 msgstr ""
 
@@ -25,7 +25,7 @@ msgid ""
 "champion.png,Champion,(hardest)"
 msgstr ""
 
-#: data/game.cfg:267 data/translations/english.cfg:14
+#: data/game.cfg:267
 msgid "The Dark Hordes"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "resilient"
 msgstr ""
 
-#: data/help.cfg:10 data/help.cfg:46
+#: data/help.cfg:10 data/help.cfg:52
 msgid "Introduction"
 msgstr ""
 
@@ -93,11 +93,15 @@ msgstr ""
 msgid "Gameplay"
 msgstr ""
 
-#: data/help.cfg:22 data/help.cfg:198
+#: data/help.cfg:22 data/help.cfg:203
 msgid "Traits"
 msgstr ""
 
-#: data/help.cfg:49
+#: data/help.cfg:46
+msgid "Terrains"
+msgstr ""
+
+#: data/help.cfg:55
 msgid ""
 "<img>src=misc/logo.png align=middle box=no</img>\n"
 "\n"
@@ -109,11 +113,11 @@ msgid ""
 "challenge to master."
 msgstr ""
 
-#: data/help.cfg:54
+#: data/help.cfg:60
 msgid "Fundamentals of Gameplay"
 msgstr ""
 
-#: data/help.cfg:59
+#: data/help.cfg:65
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. For more "
@@ -136,11 +140,11 @@ msgid ""
 "you encounter new abilities for the first time."
 msgstr ""
 
-#: data/help.cfg:64
+#: data/help.cfg:70
 msgid "Recruiting and Recalling"
 msgstr ""
 
-#: data/help.cfg:74
+#: data/help.cfg:80
 msgid ""
 "<img>src=help/recruit.png align=left float=yes</img>At the start of any "
 "battle, and at times during it, you will need to recruit units into your "
@@ -171,11 +175,11 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:79
+#: data/help.cfg:85 src/help.cpp:763 src/help.cpp:764
 msgid "Movement"
 msgstr ""
 
-#: data/help.cfg:84
+#: data/help.cfg:90
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -202,11 +206,11 @@ msgid ""
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
 
-#: data/help.cfg:89
+#: data/help.cfg:95
 msgid "Combat"
 msgstr ""
 
-#: data/help.cfg:105
+#: data/help.cfg:111
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -253,11 +257,11 @@ msgid ""
 "Charge attacks."
 msgstr ""
 
-#: data/help.cfg:110
+#: data/help.cfg:116
 msgid "Damage Types and Resistance"
 msgstr ""
 
-#: data/help.cfg:115
+#: data/help.cfg:121
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: Blade, Pierce and Impact damage. Additionally, there are three "
@@ -276,11 +280,11 @@ msgid ""
 "damage."
 msgstr ""
 
-#: data/help.cfg:120
+#: data/help.cfg:126
 msgid "Time of Day"
 msgstr ""
 
-#: data/help.cfg:140
+#: data/help.cfg:146
 msgid ""
 "Wesnoth games usually take place with a regular cycle between day and night. "
 "The current time of day can be observed under the minimap in the upper "
@@ -312,11 +316,11 @@ msgid ""
 "night!"
 msgstr ""
 
-#: data/help.cfg:145
+#: data/help.cfg:151
 msgid "Experience and Advancement"
 msgstr ""
 
-#: data/help.cfg:150
+#: data/help.cfg:156
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -332,11 +336,11 @@ msgid ""
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
 
-#: data/help.cfg:155
+#: data/help.cfg:161
 msgid "Healing"
 msgstr ""
 
-#: data/help.cfg:166
+#: data/help.cfg:172
 msgid ""
 "In combat, your units will inevitably take damage. Wesnoth offers several "
 "ways for your units to heal, all of which take place at the beginning of "
@@ -360,11 +364,11 @@ msgid ""
 "Also, units heal fully between scenarios."
 msgstr ""
 
-#: data/help.cfg:171
+#: data/help.cfg:177
 msgid "Income and Upkeep"
 msgstr ""
 
-#: data/help.cfg:180
+#: data/help.cfg:186
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -392,11 +396,11 @@ msgid ""
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
 
-#: data/help.cfg:185
+#: data/help.cfg:191
 msgid "Wrap Up"
 msgstr ""
 
-#: data/help.cfg:186
+#: data/help.cfg:192
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "Basic Strategy, or familiarise yourself with <ref>dst=traits text=Traits</"
@@ -405,7 +409,7 @@ msgid ""
 "fun, and good luck!"
 msgstr ""
 
-#: data/help.cfg:237
+#: data/help.cfg:242
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -523,7 +527,7 @@ msgstr ""
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 
-#: data/items.cfg:412 data/scenarios/Eastern_Invasion/Captured.cfg:797
+#: data/items.cfg:412 data/scenarios/Eastern_Invasion/Captured.cfg:809
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:163
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:392
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:234
@@ -751,197 +755,182 @@ msgstr ""
 msgid "Captured"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:21
+#: data/scenarios/Eastern_Invasion/Captured.cfg:20
 msgid ""
 "\n"
 "Victory:\n"
 "@Escape from the Orcish Prisons\n"
-"@Rescue someone who knows the way out of the mountains\n"
 "Defeat:\n"
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:401
+#: data/scenarios/Eastern_Invasion/Captured.cfg:400
 msgid "Why have you entered my lands?!?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:406
+#: data/scenarios/Eastern_Invasion/Captured.cfg:405
 msgid "We were traveling-"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:411
+#: data/scenarios/Eastern_Invasion/Captured.cfg:410
 msgid "Silence! Did I ask you?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:416
-msgid "Um..yes."
+#: data/scenarios/Eastern_Invasion/Captured.cfg:415
+msgid "Um... yes."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:421
+#: data/scenarios/Eastern_Invasion/Captured.cfg:420
 msgid "Shut up! Thats it! I'm putting you in the high-security cave!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:438
+#: data/scenarios/Eastern_Invasion/Captured.cfg:437
 msgid "Ugh..."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:443
+#: data/scenarios/Eastern_Invasion/Captured.cfg:442
 msgid "Huh? Where am I? I'm tied to the ground!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:448
+#: data/scenarios/Eastern_Invasion/Captured.cfg:447
 msgid ""
 "I must be in some sort of prison... hmm the guard didn't tie me very well. I "
 "can escape from these knots."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:454
+#: data/scenarios/Eastern_Invasion/Captured.cfg:453
 msgid ""
 "That's better! I wonder how many other prisoners have been captured that I "
 "will have to rescue."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:459
+#: data/scenarios/Eastern_Invasion/Captured.cfg:458
 msgid ""
 "Since they are probably tied down like I was, I will have to get into their "
 "cells in order to see them."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:473
+#: data/scenarios/Eastern_Invasion/Captured.cfg:472
 msgid "The high security prisoners are escaping!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:478
+#: data/scenarios/Eastern_Invasion/Captured.cfg:477
 msgid "Kill them."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:504
+#: data/scenarios/Eastern_Invasion/Captured.cfg:503
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:509
+#: data/scenarios/Eastern_Invasion/Captured.cfg:508
 msgid "What the...? Who said that?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:533
+#: data/scenarios/Eastern_Invasion/Captured.cfg:532
 msgid "So you are in this cell! Come on, we have to escape!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:538
+#: data/scenarios/Eastern_Invasion/Captured.cfg:537
 msgid "Very well. I think the rest of the cells are further down this path."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:549
+#: data/scenarios/Eastern_Invasion/Captured.cfg:548
 msgid ""
 "So, they must have captured $R2.user_description in addition to Dacyn, Owaec "
 "and me. Well, $R2.type, follow me. We have to get out of this dungeon."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:560
+#: data/scenarios/Eastern_Invasion/Captured.cfg:559
 msgid ""
 " It is nice to have a $R1.type among us! My guess is $R1.user_description "
 "will be able to shoot these devils without them doing anything about it, "
 "since most orcs are melee."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:571
+#: data/scenarios/Eastern_Invasion/Captured.cfg:570
 msgid "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:576
+#: data/scenarios/Eastern_Invasion/Captured.cfg:575
 msgid ""
 "No, but I think I can be of some help. I think I have found out where the "
 "key to the door is!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:581
+#: data/scenarios/Eastern_Invasion/Captured.cfg:580
 msgid "Really? Where?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:586
+#: data/scenarios/Eastern_Invasion/Captured.cfg:585
 msgid ""
 "The wall of the northern part of my cell, and right outside of it, is "
-"thinner than everywhere else. I think there isa hidden door there. Come, let "
-"us see!"
+"thinner than everywhere else. I think there is a hidden door there. Come, "
+"let us see!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:646
+#: data/scenarios/Eastern_Invasion/Captured.cfg:645
 msgid ""
 "Here is the thin spot. Actually- wait a second- its not a thin spot at all! "
 "Its really a door!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:656
+#: data/scenarios/Eastern_Invasion/Captured.cfg:655
 msgid "Huh! A guard. Lets see how quickly we can kill it."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:677
+#: data/scenarios/Eastern_Invasion/Captured.cfg:676
 msgid "I have found the key! Lets get out of here!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:703
+#: data/scenarios/Eastern_Invasion/Captured.cfg:702
 msgid "This is the right key! Lets open the door, quick!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:738
+#: data/scenarios/Eastern_Invasion/Captured.cfg:737
 msgid ""
 "Help us! The guards are planning to execute us tomorrow! I can help you get "
 "out of the mountains!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:743
+#: data/scenarios/Eastern_Invasion/Captured.cfg:742
 msgid ""
 "Hah! Tomorrow? You make a big mistake if you believe you will live that long."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:748
+#: data/scenarios/Eastern_Invasion/Captured.cfg:747
 msgid ""
 "Right, boss, especially since they're invading, and we need to kill them now "
 "before they escape!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:753
-msgid ""
-"If we do not rescue these prisoners, we will never find our way out of the "
-"mountains even if we escape the caves. Come on, we must help them."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:768
+#: data/scenarios/Eastern_Invasion/Captured.cfg:762
 msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:800
+#: data/scenarios/Eastern_Invasion/Captured.cfg:812
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:395
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:237
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:801
+#: data/scenarios/Eastern_Invasion/Captured.cfg:813
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:167
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:396
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "I am not suited to using this item! Let another take it."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:840
+#: data/scenarios/Eastern_Invasion/Captured.cfg:847
 msgid ""
-"Good! We have escaped these accursed caves! Valand, can you show us the way "
-"out of these mountains?"
+"Good! We have escaped these accursed caves! Lets get out of these mountains "
+"as quickly as possible!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:845
-msgid ""
-"Certainly. And I will come with you and help you on your quest, whatever it "
-"is."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:856
-msgid ""
-"we have escaped from the caves, but we have no idea where we are. The orcs "
-"will come upon us in the night and kill us."
+#: data/scenarios/Eastern_Invasion/Captured.cfg:852
+msgid "I will come with you and help you on your quest, whatever it is."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:3
@@ -1177,7 +1166,9 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:109
-msgid "What? Who are you?"
+msgid ""
+"All is lost! We have to get out of the Northlands as quickly as possible! "
+"Run for your - what the...?!? Who are you?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:114
@@ -1187,7 +1178,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:119
-msgid "Um... why would we want to do that?"
+msgid "Why would we want to do that?!?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:124
@@ -1197,8 +1188,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:129
-msgid ""
-"Gweddry, he's actually right... it might be useful to hire him. How much?"
+msgid "Gweddry, he's actually right... we have to hire him. How much?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:134
@@ -1217,8 +1207,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:149
 msgid ""
-"Unfortunately, anyone we leave on this side of the river will die. We have "
-"to get as many people as possible across before its too late..."
+"All right, now everyone across the bridge! Anyone left on this side when the "
+"bridge is exploded will be left to their own devices!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:174
@@ -1528,7 +1518,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:3
-msgid "Peasant Revolt"
+msgid "The Peasants Revolt"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:24
@@ -3426,7 +3416,7 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:291
 msgid ""
 "So, the Elven Council has spoken. But which path should we take on our "
-"journey? The Ford of Abez will not be passible, for surely it will be "
+"journey? The Ford of Abez will not be passable, for surely it will be "
 "watched and guarded by many men."
 msgstr ""
 
@@ -3435,7 +3425,7 @@ msgid ""
 "There is another way by which you can return to Wesnoth: past the mountains "
 "of the dragons and through the dark valley. To the land of the East, from "
 "there you can return to Wesnoth and surprise the Dark Queen, catching her "
-"off-guard."
+"off guard."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:301
@@ -3746,8 +3736,8 @@ msgstr ""
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:321
 msgid ""
 "I mustered men to fight against the traitor-king, and of course Asheviere "
-"too, for she was behind it all. We were out numbered, perhaps four to one. "
-"In the heat of battle, that boy, fool that he was, came charging at me, "
+"too, for she was behind it all. We were outnumbered, perhaps four to one. In "
+"the heat of battle, that boy, fool that he was, came charging at me, "
 "slashing wildly. I had little choice but to end his life."
 msgstr ""
 
@@ -3913,7 +3903,7 @@ msgid "I am not sure of the way. Let me think for a moment."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:147
-msgid "En guarde!"
+msgid "En garde!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:152
@@ -5445,71 +5435,71 @@ msgid ""
 "#Death of Kalenz"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:171
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:174
 msgid ""
 "My lord! This road does not seem as safe as we had hoped. Look around us at "
 "the hills - there are undead about!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:176
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:179
 msgid "Who are these who approach? Let us kill them all!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:181
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:184
 msgid "To arms, men! The undead hordes approach!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:186
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:189
 msgid ""
 "Let us never surrender to these foul beasts of the pit! We fight until "
 "victory, or until every one of us is slain!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:195
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:198
 msgid "There are just so many! What shall we do?"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:200
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:203
 msgid "Let us hold them off as long as we can!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:247
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:250
 msgid "I have come once again to aid you, friends!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:252
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:255
 msgid "White mages? Come to help us? But what are they doing here?"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:257
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:260
 msgid ""
 "That is Moremirmu! He helped us fight the undead in the Isles of the Damned, "
 "let us hope he can help us once more!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:269
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:272
 msgid ""
 "The sun rises in the east. Surely the undead do not have the power to "
 "continue their onslaught through another day!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:274
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:277
 msgid "Indeed not! I feel we have survived this battle."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:279
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:282
 msgid "Whew! That was a difficult battle, but they are retreating at last!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:303
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:306
 msgid "Yes! We have fought them off!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:318
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:321
 msgid "Thank you for returning to help us, Moremirmu."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:323
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:326
 msgid ""
 "It is both my duty and pleasure, my lord! We were dining with some royal "
 "guards of the princess, taking a rest from our pilgrimage, when they spoke "
@@ -5517,13 +5507,13 @@ msgid ""
 "nothing but help you!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:328
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:331
 msgid ""
 "So, she tricked us into coming this way! Where may we go now? Which way will "
 "be safe for us?"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:333
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:336
 msgid ""
 "You must get out of the clutches of that vile Queen, my lord. If you take a "
 "course bearing north-east, on past the mountain of gryphons, you will be "
@@ -5531,42 +5521,42 @@ msgid ""
 "able to ford the river in winter!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:338
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:341
 msgid ""
 "Thank you for your counsel, good friend! May our paths meet again in happier "
 "times!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:354
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:357
 msgid ""
 "It greatly saddens me that Moremirmu was slain on the field, after he helped "
 "us."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:359
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:362
 msgid "May he rest peacefully!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:364
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:367
 msgid ""
 "He died fighting for you, Prince, just as any of us would be willing to die "
 "for you."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:371
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:374
 msgid ""
 "This place makes me feel uneasy, even with the undead retreating. Where may "
 "we go now?"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:376
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:379
 msgid ""
 "The land of Wesnoth is not safe for us. The Queen's forces reach every "
 "corner. We must make haste to the north lands, across the great river. Let "
 "us go quickly!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:381
+#: data/scenarios/Heir_To_The_Throne/Valley_of_Death.cfg:384
 msgid "Indeed! Let us go from here!"
 msgstr ""
 
@@ -6799,7 +6789,7 @@ msgstr ""
 #: data/scenarios/Son_Of_The_Black_Eye/story.cfg:29
 msgid ""
 "By nightfall his troops reached a mountainous territory, under the authority "
-"of orcish ruler Kapou'e, the son of the Black Eye."
+"of orcish leader Kapou'e, the son of the Black Eye."
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/utils.cfg:192
@@ -7403,62 +7393,61 @@ msgstr ""
 msgid "Underground Pool"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:19
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:18
 msgid ""
 "\n"
 "Victory:\n"
 "@Move Gwiti or Tanar into the water\n"
 "Defeat\n"
 "#Death of Gwiti\n"
-"#Death of Tanar\n"
-"#Death of Kalenz"
+"#Death of Tanar"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:139
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:138
 msgid "The Dwarves are still in these caves!"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:144
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:143
 msgid "Aye! They drove us out, and left a guard here to occupy us."
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:149
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:148
 msgid ""
 "Then we shall slay them. I have never had Dwarves rise to join my ranks. He, "
 "he, he, he..."
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:163
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:162
 msgid ""
 "We have come to a flooded part of the cave. If we forge ahead, the Dwarves "
 "should be delayed quite a bit."
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:196
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:195
 msgid "ARGH! What was that?"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:201
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:200
 msgid ""
 "I do not know. I guess, however, that some magic is at work in these "
 "caverns. Can you tell me anything of them?"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:206
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:205
 msgid ""
 "Nay, Lord. These passages were flooded higher last time I was here. The "
 "Dwarves did not delve here, and we shunned the nameless dread we felt."
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:211
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:210
 msgid "If there is anything to dread here, it is me. Now, onward!"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:235
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:234
 msgid "The Hoard of the Dwarves! Three hundred gold at least!"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:253
+#: data/scenarios/The_Dark_Hordes/Underground_Pool.cfg:252
 msgid "You swore you would protect me!"
 msgstr ""
 
@@ -7921,7 +7910,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:427
 msgid ""
 "We've escaped the pass. Well, at least I know that the orcs can be beaten. "
-"Hmmm, I guess that this is that last I'll see of my home. . . and my Father. "
+"Hmmm, I guess that this is the last I'll see of my home. . . and my Father. "
 "(Sigh)"
 msgstr ""
 
@@ -8127,7 +8116,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:114
-msgid "(Whispering) Some friends."
+msgid "(Whispering) Some friends. I must tell Haldric."
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:3
@@ -8145,110 +8134,110 @@ msgid ""
 "#Turns run out"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:85
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:86
 msgid ""
 "The trouble seems to have finally reached to the heart of the Isle, to the "
 "isolated lands of King Eldaric IV."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:90
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:91
 msgid ""
 "It looks like an Wesfolk rabble have seized the Northern Keep! Prepare for "
 "battle Haldric!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:95
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:96
 msgid "Father, I am of age, may I lead our forces in battle?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:100
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:101
 msgid ""
 "You're showing initiative son! I'm proud of you! You may lead our forces to "
 "battle, but I'll stay near to keep an eye on you."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:105
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:106
 msgid "Onward to victory!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:110
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:111
 msgid ""
 "Look a little prince-ling, and his merry men! We'll teach you a lesson for "
 "what your kind did to us!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:119
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:120
 msgid ""
 "Don't forget about some of the more isolated the villages, we'll need the "
 "gold!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:128
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:129
 msgid "Make haste Son! We must win before the summer crop is in ruin."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:140
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:141
 msgid "I evoke surrender! Don't kill me. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:145
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:146
 msgid "Why have you come to trouble our lands?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:150
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:151
 msgid ""
 "Trouble your lands! Bah! Your fool Prince of Southbay has attacked our "
 "lands. The Lich-Lords had no choice. . . They opened a gate. . . and. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:155
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:156
 msgid "And what?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:160
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:161
 msgid ""
 "They pledged to visit all of the terrors of the hells upon this Isle. They "
 "built a great stone gate to the heart of the homeland of the Orcs in the "
 "distant West! Now even us Wesfolk must flee or be slaves."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:165
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:166
 msgid "Orcs are just creatures of tall tales!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:170
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:171
 msgid ""
 "You've been on this Isle too long. I assure you that orcs exist. By now "
 "there are probably a half dozen gates to the orcish homeland. There is no "
 "hope."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:175
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:176
 msgid ""
 "We must prepare the defences! Haldric, stay at the keep, I must go and "
 "fortify our frontier."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:180
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:181
 msgid "My forces are defeated, under your customs of surrender I will go now."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:185
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:186
 msgid ""
 "You may go. See to it that you trouble us no more, for the custom states "
 "that you may evoke surrender but once. If we meet again, I won't be so "
 "merciful."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:199
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:200
 msgid "We have run out of time. . . The crops shall spoil, we'll starve!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:212
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:213
 msgid "Die Wesfolk Scum!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:224
+#: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:225
 msgid "Feel my wrath you fiend!"
 msgstr ""
 
@@ -8959,7 +8948,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:317
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:268
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:269
 msgid "Hmm... after some thought. . ."
 msgstr ""
 
@@ -9190,77 +9179,77 @@ msgid ""
 "hospitality has barely been enough as it is. Wait a second, I see somebody!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:158
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:160
 msgid "You thought that I ran away, didn't you?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:163
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:165
 msgid "The thought had crossed my mind."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:168
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:170
 msgid "Well, I come bearing news of the road to Southbay!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:173
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:175
 msgid "Really!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:178
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:180
 msgid ""
 "The news is not good. The main host of Orcs is between the forest and "
 "Southbay, we clearly can't go that way. However, the road to Clearwater Port "
 "is free of Orcs. Apparently they're bogged down in the swamp of Esten."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:183
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:185
 msgid ""
 "Well, I certainly don't mind the thought of the Orcs floundering around that "
 "infernal swamp. But, one question remains."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:188
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:190
 msgid "What?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:193
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:195
 msgid "Can I trust you, and your information? I don't even know your name."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:201
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:203
 msgid "You again!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:206
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:208
 msgid "I come bearing news of the road to Southbay!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:211
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:213
 msgid "Humph! Your words mean very little to me."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:216
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:218
 msgid ""
 "It is important, and not good. The main host of Orcs is between the forest "
 "and Southbay, you clearly can't go that way. However, the road to Clearwater "
 "Port is free of Orcs. Apparently they're bogged down in the swamp of Esten."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:221
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:223
 msgid "I propose we join forces, and make a brake for Clearwater Port."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:226
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:228
 msgid ""
 "Well, I certainly don't mind the thought of the Orcs floundering around that "
 "infernal swamp. But, some questions remain."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:231
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:233
 msgid "Lady, why would you let those undead monsters lead your people?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:236
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:238
 #: data/scenarios/The_Rise_of_Wesnoth/The_Oldwood.cfg:386
 msgid ""
 "Haldric, we are an ancient people who lived in a land filled with all manner "
@@ -9269,40 +9258,40 @@ msgid ""
 "forever, and our worst got to serve as mindless slaves."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:241
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:243
 msgid ""
 "Other than losing our war back West, then our refugee war to your people, "
 "and this Orc thing, it wasn't such a bad deal."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:246
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:248
 msgid ""
 "Uh-huh.  Have you considered that the unholy act of turning your best and "
 "brightest into undead is what causes them to fall into darkness?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:251
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:253
 msgid "We should save this pointless debate for later. Anything else?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:256
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:258
 msgid ""
 "Why should I trust you, and your information? I don't even know your name, "
 "and you have this nasty habit of always turning up!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:282
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:284
 msgid "Bah, have it your way!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:305
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:307
 msgid ""
 "I am the Lady Jessica, a Noble, a Princess of the Wesfolk! Betrayed by the "
 "Lich-Lords' dark pact with the Orcs. In no small part because 'your' fool "
 "Prince of Southbay convinced them that their immortal un-lives were over!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:310
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:312
 msgid ""
 "And now, I'm just as much as a refugee as you. Frankly, I don't know if the "
 "Lich-Lords are working with the Orcs, or not. The Orcs might have gotten rid "
@@ -9311,23 +9300,23 @@ msgid ""
 "pot!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:315
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:317
 msgid "Young Prince, it is time to go! We must flee before the winter snow!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:320
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:322
 msgid ""
 "Fair enough, we will head for Clearwater Port. Thank You Elilmaldur-"
 "Rithrandil, I will remember your hospitality!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:325
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:327
 msgid ""
 "Always happy to help a tree-friend. May the Powers of Light guide you on "
 "your way!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:330
+#: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:332
 msgid "Finally, we're getting out of this forest!"
 msgstr ""
 
@@ -9871,13 +9860,13 @@ msgid ""
 "#Turns run out"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:155
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:156
 msgid ""
 "Summer passes into fall, and King Eldaric fortifies his frontiers. It is not "
 "long before the first orcish scouts are spotted. War has come to the valley."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:161
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:162
 msgid ""
 "Haldric, things have not gone well! The Orcs have arrived. We met them at "
 "the north keep but they were just too many. They have flanked us to the East "
@@ -9885,114 +9874,114 @@ msgid ""
 "but they won't be able to last long. . . We must evacuate our home."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:167
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:168
 msgid ""
 "That's awful! And it only gets worse. That Wesfolk rabble has set up shop "
 "again in the South Pass. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:173
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:174
 msgid ""
 "That's the only way out of the valley! This is a disaster! We must defeat "
 "that Wesfolk scum and flee to the South. Our home is lost. . . We must make "
 "haste."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:179
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:180
 msgid "So HUMAN, care to make your final stand?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:185
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:186
 msgid "Die! Die! Die!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:191
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:192
 msgid "This is going to get ugly. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:200
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:201
 msgid "Hurry! Only death awaits in this valley!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:244
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:245
 msgid "Ummm, I evoke surrender. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:250
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:251
 msgid "Nay! Off with your hea- - -"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:256
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:257
 msgid ""
 "But I can help! Really! You could use me and my men's skills on the long "
 "road ahead!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:262
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:263
 msgid "Haldric, what say you on this matter?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:272
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:273
 msgid "I think that your skills may be useful. You may join us."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:278
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:279
 msgid "Let there be peace between us, our survival depends on it."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:304
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:305
 msgid "So what shall I call you?"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:309
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:310
 msgid "The Lady Outlaw will do."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:324
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:326
 msgid "Your word can't be trusted. Prepare to meet your Gods!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:329
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:331
 msgid "Arrogant fools! (Reaches into pocket) POOF!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:335
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:337
 msgid "Argh, she's gone. Next time, more sword, less chat."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:341
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:343
 msgid ""
 "She's clever! Maybe I made the wrong choice. Well, at least she left some of "
 "her gold behind. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:365
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:367
 msgid ""
 "Son, you must lead our people through the South Pass. I will remain behind "
 "to hold off these vile monsters for as long as I can."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:370
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:372
 msgid "But Father!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:375
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:377
 msgid "It's the only way. Go now, and don't look back! Luck be with you!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:398
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:400
 msgid "We're surrounded! The Orcs have taken the southern pass! All is lost!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:411
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:413
 msgid "We're surrounded! I can see their re-enforcements! All is lost!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:425
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:427
 msgid "Our Home! Where shall we go!"
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:430
+#: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:432
 msgid "There can be no looking back! We must go South."
 msgstr ""
 
@@ -10453,6 +10442,157 @@ msgid ""
 "arrives!"
 msgstr ""
 
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:3
+msgid "The Vanguard"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:25
+msgid ""
+"\n"
+"Victory:\n"
+"@Defeat all Enemies\n"
+"Defeat:\n"
+"#Death of Prince Haldric or\n"
+"#Death of Lt. Aethyr or\n"
+"#Turns run out"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:212
+msgid ""
+"Haldric and his companions race across the plains to confront the resurgent "
+"Orcish threat. On the eve of battle Lady Jessica catches up with Haldric on "
+"a fog covered plain."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:217
+msgid "Haldric, the Elves, we can't trust them!"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:223
+msgid "I could have told you that."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:228
+msgid ""
+"Haldric, it's bad. The Elves are having second thoughts. They think we might "
+"be more trouble than we're worth. We have to defeat these Orcs decisively."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:233
+msgid "Well, that sounds reasonable."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:238
+msgid ""
+"More Orcs will follow after these, that Ruby guarantees it. If more Orcs "
+"follow us here the Elves seem content to let us fight it out. Then they said "
+"they'd 'deal with the survivors'."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:243
+msgid ""
+"Jevyan is here. . . His familiar, that bat. He won't let such a lucrative "
+"prize as the Ruby of Fire just slip away. Especially when he sees that he "
+"has the advantage."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:248
+msgid ""
+"I have a plan. Jessica, remember that Troll Hole? Here, take the Ruby of "
+"Fire, hide it in the hole."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:253
+msgid "Haldric! What! Why?"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:258
+msgid "Just do it."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:263
+msgid ""
+"Lt. Aethyr, did these Orcs come on our ships, did they capture the fleet we "
+"sent out?"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:268
+msgid ""
+"No Sir! They must have seized all of remaining boats on the Green Isle. Our "
+"fleet should be returning any day now."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:273
+msgid ""
+"We are a refugee people, we must push back their vanguard, and secure our "
+"beachhead. If they capture our ships all is lost. We will be crushed under a "
+"tide of Orcs."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:287
+msgid "Lady Jessica soon departs. In the distance a voice booms:"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:306
+msgid ""
+"Drop the gold where it is! We've payed our friends enough. There are humans "
+"about, I can smell 'em!"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:316
+msgid "We have run out of time. . . We'll never beat the Orcs to the beach"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:330
+msgid "I've found the Orcs' chest! It's filled with gold."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:363
+msgid "Rhaarg!"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:369
+msgid ""
+"How'd they get that thing here? It must have walked across the bottom of the "
+"ocean."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:391
+msgid ""
+"Never trust the living to do the job of the undead. Prepare to meet the "
+"inevitable!"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:397
+msgid ""
+"The only job of the dead is to remain dead. Prepare to be reunited with the "
+"ground."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:421
+msgid "We must block the human advance!"
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:443
+msgid "Reserves! We can't let them get to their landing site."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:458
+msgid ""
+"We've defeated their vanguard. We have to meet the fleet before Jevyan "
+"destroys them, and captures the ships. I hope Jessica makes it back soon."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:475
+msgid "Oh, to join my family again! Do not mourn my passing."
+msgstr ""
+
+#: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:492
+msgid ""
+"Ahh, it's great to be home! I'm not much for the politics, but it's great to "
+"be home!"
+msgstr ""
+
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:3
 msgid "Troll Hole"
 msgstr ""
@@ -10537,10 +10677,6 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-deaths.cfg:136
 msgid "Let me have peace in Death! Donna I'll be there soo-"
-msgstr ""
-
-#: data/scenarios/The_Rise_of_Wesnoth/trow-deaths.cfg:142
-msgid "I kind of had plans for him."
 msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:5
@@ -10761,7 +10897,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/translations/english.cfg:139 src/show_dialog.cpp:451
+#: data/scenarios/tutorial/tutorial1.cfg:278
+#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:451
 msgid "No"
 msgstr ""
 
@@ -10817,6 +10954,206 @@ msgstr ""
 msgid "King of the Hill"
 msgstr ""
 
+#: data/scenarios/tutorial/tutorial1.cfg:65
+msgid ""
+"I am here to learn how to fight in a battle. As an experienced elder mage, "
+"surely you can explain the art of combat to me."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:69
+msgid ""
+"Before entering any battle, you need to recruit units. To recruit a unit, "
+"right click on the castle tile on which you wish to recruit the unit. Then "
+"select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
+"connected to the keep your leader is on."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:80
+msgid ""
+"@Skills covered:\n"
+"Recruiting units\n"
+"Moving units\n"
+"Attacking enemy units\n"
+"Gaining experience\n"
+"Winning scenarios\n"
+"@Objectives:\n"
+"@Victory:\n"
+"Defeat Merle"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid "Excellent! You have recruited an Elvish Fighter."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:98
+msgid ""
+"Since units cannot move on the turn they are recruited, you must end your "
+"turn. To do this, simply click the 'End Turn' button in the lower-right hand "
+"corner."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid "You have successfully ended your turn."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:115
+msgid ""
+"Your next task is to move your Elvish Fighter. To move a unit, first select "
+"it, then select his destination. In this case, his destination is the "
+"signpost next to the Elvish Shaman."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:141
+msgid ""
+"Excellent! You have succesfully moved your Elvish Fighter. However, since he "
+"moved next to an enemy unit, he has lost all his movement for this turn; "
+"this is called the 'zone of control'."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:153
+msgid ""
+"Now, you need to attack with your fighter. To attack, first select a unit, "
+"then select its target, which must be next to the attacking unit. You will "
+"then see the attack options box, where you must select an attack to use."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:170
+msgid "You have successfully attacked Merle."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:182
+msgid "End your turn, and wait for Merle to attack you."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:188
+msgid ""
+"Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
+"it gets experience from the combat. Once a unit gains enough experience, it "
+"advances to the next level, and becomes more powerful."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:199
+msgid "Move your fighter onto a village."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid "Villages heal the units on them."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:219
+msgid ""
+"Now, you must defeat Merle by reducing him to 0 HP or lower. Just attack "
+"repeatedly."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:234
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid ""
+"Unfortunately, you lost, because your leader was defeated. Hopefully you "
+"have gained wisdom from my teachings anyway."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:241
+#: data/scenarios/tutorial/tutorial2.cfg:183
+msgid ""
+"Unfortunately, you lost, because you ran out of time. Hopefully you have "
+"gained wisdom from my teachings anyway."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:251
+msgid "You have successfully completed the first training scenario."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:262
+#: data/scenarios/tutorial/tutorial2.cfg:204
+msgid "Do you want to review any of the skills learned on this level?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:264
+#: data/scenarios/tutorial/tutorial2.cfg:206
+msgid "Yes"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:283
+msgid ""
+"Although you have completed your first scenario, your training is not yet "
+"over. We will now proceed to the next scenario, in which you will fight me "
+"in a mock battle."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:58
+msgid ""
+"Now you will be subject to a more difficult test. You must defeat me in mock "
+"battle."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:62
+msgid ""
+"You can win most scenarios simply by defeating all enemy leaders. Win this "
+"scenario by defeating me. Your fighter from the previous scenario can help "
+"you in this battle. To recall him, right-click on a castle tile, select "
+"Recall, select your fighter, then select 'Ok'. You should also recruit "
+"Elvish Fighters and Elvish Archers."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:75
+msgid ""
+"@Skills covered:\n"
+"Recalling\n"
+"Traits\n"
+"Gold\n"
+"Time of day\n"
+"Terrains\n"
+"Objects\n"
+"Playing Wesnoth\n"
+"@Objectives\n"
+"@Victory\n"
+"Defeat Delfador"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:80
+msgid ""
+"You may notice that your units have slightly different statistics than the "
+"statistics shown before you recruited them. This is because they have been "
+"assigned two traits."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:98
+msgid ""
+"When you recruit and recall units, you lose gold. If this would cause you to "
+"have less than 0 gold, you cannot recruit or recall."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:112
+msgid ""
+"The sun is setting over Wesnoth. The time of day affects how much damage "
+"units of different alignments can inflict upon each other."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:126
+msgid ""
+"In Wesnoth, each hex has a terrain, which gives the hex distinctive "
+"properties."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid ""
+"Some objects change the statistics of the unit that triggered them. One of "
+"your units found a potion which will make him do more damage on his attack. "
+"To see his new combat statistics, look at the Status Table."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:193
+msgid ""
+"Congratulations! You have defeated me, and completed the second and final "
+"training scenario. Next, you may want to begin a campaign, or play "
+"multiplayer."
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:11
+msgid "That was explained well! But.."
+msgstr ""
+
 #: data/schedules.cfg:4
 msgid "Dawn"
 msgstr ""
@@ -10846,86 +11183,38 @@ msgid "Underground"
 msgstr ""
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
-#: data/translations/english.cfg:133
 msgid "Menu"
 msgstr ""
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
-#: data/translations/english.cfg:135
 msgid "Actions"
 msgstr ""
 
-#: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/translations/english.cfg:336 src/hotkeys.cpp:141
+#: data/themes/default.cfg:79 data/themes/default.cfg:415 src/hotkeys.cpp:137
 msgid "End Turn"
 msgstr ""
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
-msgid "statuspanel|level"
+msgid "statuspanel^level"
 msgstr ""
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
-msgid "statuspanel|movement"
+msgid "statuspanel^movement"
 msgstr ""
 
-#: data/translations/english.cfg:5 src/game.cpp:573
-msgid "The Battle for Wesnoth"
-msgstr ""
-
-#: data/translations/english.cfg:6 src/titlescreen.cpp:137
-msgid "Version"
-msgstr ""
-
-#: data/translations/english.cfg:8 src/dialogs.cpp:350
-msgid "%a %b %d %H:%M %Y"
-msgstr ""
-
-#: data/translations/english.cfg:10
-msgid "GamePrefix|"
-msgstr ""
-
-#: data/translations/english.cfg:11
-msgid "GamePostfix|'s game"
-msgstr ""
-
-#: data/translations/english.cfg:16 src/game.cpp:914
-msgid "There are no campaigns available"
-msgstr ""
-
-#: data/translations/english.cfg:18 data/translations/english.cfg:172
-#: src/dialogs.cpp:368 src/game.cpp:921 src/titlescreen.cpp:153
-msgid "Campaign"
-msgstr ""
-
-#: data/translations/english.cfg:19 src/game.cpp:922
-msgid "Choose the campaign you want to play:"
-msgstr ""
-
-#: data/translations/english.cfg:21 src/dialogs.cpp:387 src/game.cpp:944
-msgid "Difficulty"
-msgstr ""
-
-#: data/translations/english.cfg:22 src/game.cpp:945
-msgid "Select difficulty level:"
-msgstr ""
-
-#: data/translations/english.cfg:23
+#: data/translations/english.cfg:5
 msgid "Easy"
 msgstr ""
 
-#: data/translations/english.cfg:24
+#: data/translations/english.cfg:6
 msgid "Medium"
 msgstr ""
 
-#: data/translations/english.cfg:25
+#: data/translations/english.cfg:7
 msgid "Hard"
 msgstr ""
 
-#: data/translations/english.cfg:27 src/dialogs.cpp:362
-msgid "#(Invalid)"
-msgstr ""
-
-#: data/translations/english.cfg:32
+#: data/translations/english.cfg:12
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
 "\n"
@@ -10933,13 +11222,13 @@ msgid ""
 "Night: -25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:33
+#: data/translations/english.cfg:13
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
 
-#: data/translations/english.cfg:37
+#: data/translations/english.cfg:17
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
@@ -10947,31 +11236,7 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:39 src/reports.cpp:122
-msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-
-#: data/translations/english.cfg:40 src/reports.cpp:105
-msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
-
-#: data/translations/english.cfg:41 src/reports.cpp:110
-msgid ""
-"This unit has been slowed. It moves at half normal speed and receives one "
-"less attack than normal in combat."
-msgstr ""
-
-#: data/translations/english.cfg:44 src/reports.cpp:115
-msgid ""
-"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
-"to the poison in a village or from a friendly unit with the 'cures' "
-"ability.\n"
-"\n"
-"Units cannot be killed by poison alone. The poison will not reduce it below "
-"1 HP."
-msgstr ""
-
-#: data/translations/english.cfg:51
+#: data/translations/english.cfg:24
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of the "
@@ -10983,7 +11248,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
-#: data/translations/english.cfg:59
+#: data/translations/english.cfg:32
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -10997,13 +11262,13 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/translations/english.cfg:62
+#: data/translations/english.cfg:35
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
 msgstr ""
 
-#: data/translations/english.cfg:67
+#: data/translations/english.cfg:40
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -11012,7 +11277,7 @@ msgid ""
 "Adjacent friendly units of lower level will do more damage in battle."
 msgstr ""
 
-#: data/translations/english.cfg:72
+#: data/translations/english.cfg:45
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -11022,7 +11287,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 
-#: data/translations/english.cfg:77
+#: data/translations/english.cfg:50
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -11032,1741 +11297,488 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
-#: data/translations/english.cfg:80
+#: data/translations/english.cfg:53
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
 
-#: data/translations/english.cfg:82
+#: data/translations/english.cfg:55
 msgid "Never more than 1 upkeep"
 msgstr ""
 
-#: data/translations/english.cfg:84 src/actions.cpp:93
-msgid "You don't have a leader to recruit with."
-msgstr ""
-
-#: data/translations/english.cfg:85 src/actions.cpp:97
-msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-
-#: data/translations/english.cfg:86 src/actions.cpp:114
-msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
-
-#: data/translations/english.cfg:87 src/playturn.cpp:1575
-msgid "You have no units available to recruit."
-msgstr ""
-
-#: data/translations/english.cfg:89 src/playturn.cpp:79
-msgid "It is now your turn"
-msgstr ""
-
-#: data/translations/english.cfg:91 src/hotkeys.cpp:124 src/playturn.cpp:1477
-msgid "Leader"
-msgstr ""
-
-#: data/translations/english.cfg:93 src/playturn.cpp:1746
-msgid "Dismiss Unit"
-msgstr ""
-
-#: data/translations/english.cfg:94 src/dialogs.cpp:421
-msgid "Delete Save"
-msgstr ""
-
-#: data/translations/english.cfg:95
+#: data/translations/english.cfg:57
 msgid "Delete File"
 msgstr ""
 
-#: data/translations/english.cfg:96
+#: data/translations/english.cfg:58
 msgid "Deletion of the file failed."
 msgstr ""
 
-#: data/translations/english.cfg:98 src/dialogs.cpp:209
-msgid "Do you really want to delete this game?"
-msgstr ""
-
-#: data/translations/english.cfg:99 src/dialogs.cpp:207 src/dialogs.cpp:446
-msgid "Don't ask me again!"
-msgstr ""
-
-#: data/translations/english.cfg:100 src/playturn.cpp:1675
-msgid ""
-"My lord, this unit is an experienced one, having advanced levels! Do you "
-"really want to dismiss $noun?"
-msgstr ""
-
-#: data/translations/english.cfg:101 src/playturn.cpp:1677
-msgid ""
-"My lord, this unit is close to advancing a level! Do you really want to "
-"dismiss $noun?"
-msgstr ""
-
-#: data/translations/english.cfg:102
-msgid "him"
-msgstr ""
-
-#: data/translations/english.cfg:103
-msgid "her"
-msgstr ""
-
-#: data/translations/english.cfg:106 src/actions.cpp:317 src/actions.cpp:434
-msgid "base damage"
-msgstr ""
-
-#: data/translations/english.cfg:107 src/actions.cpp:387 src/actions.cpp:513
-msgid "total damage"
-msgstr ""
-
-#: data/translations/english.cfg:108
+#: data/translations/english.cfg:60
 msgid "minimum damage"
 msgstr ""
 
-#: data/translations/english.cfg:109 src/playturn.cpp:525 src/playturn.cpp:650
-msgid "Damage Calculations"
-msgstr ""
-
-#: data/translations/english.cfg:110 src/playturn.cpp:499
-msgid "Attacker"
-msgstr ""
-
-#: data/translations/english.cfg:111 src/playturn.cpp:501
-msgid "Defender"
-msgstr ""
-
-#: data/translations/english.cfg:112 src/actions.cpp:327
-msgid "attacker resistance vs"
-msgstr ""
-
-#: data/translations/english.cfg:113 src/actions.cpp:444
-msgid "defender resistance vs"
-msgstr ""
-
-#: data/translations/english.cfg:114 src/actions.cpp:327
-msgid "attacker vulnerability vs"
-msgstr ""
-
-#: data/translations/english.cfg:115 src/actions.cpp:444
-msgid "defender vulnerability vs"
-msgstr ""
-
-#: data/translations/english.cfg:116 src/playturn.cpp:1980
-#: src/playturn.cpp:2014
-msgid "Recruits"
-msgstr ""
-
-#: data/translations/english.cfg:117 src/playturn.cpp:1986
-#: src/playturn.cpp:2018
-msgid "Recalls"
-msgstr ""
-
-#: data/translations/english.cfg:118 src/playturn.cpp:1992
-#: src/playturn.cpp:2022
-msgid "Advancements"
-msgstr ""
-
-#: data/translations/english.cfg:119 src/playturn.cpp:1998
-#: src/playturn.cpp:2026
-msgid "Losses"
-msgstr ""
-
-#: data/translations/english.cfg:120 src/playturn.cpp:2004
-#: src/playturn.cpp:2030
-msgid "Kills"
-msgstr ""
-
-#: data/translations/english.cfg:123 src/playturn.cpp:2171
-msgid "Place Label"
-msgstr ""
-
-#: data/translations/english.cfg:124 src/playturn.cpp:2172
-msgid "Label"
-msgstr ""
-
-#: data/translations/english.cfg:127 src/hotkeys.cpp:175
-msgid "Find Label or Unit"
-msgstr ""
-
-#: data/translations/english.cfg:128 src/playturn.cpp:2045
-msgid "Search"
-msgstr ""
-
-#: data/translations/english.cfg:129 src/playturn.cpp:2131
-msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
-
-#: data/translations/english.cfg:130
-msgid "Command"
-msgstr ""
-
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:62
 msgid "Game"
 msgstr ""
 
-#: data/translations/english.cfg:136 src/dialogs.cpp:570
-#: src/multiplayer.cpp:127 src/show_dialog.cpp:444 src/show_dialog.cpp:457
-msgid "Ok"
-msgstr ""
-
-#: data/translations/english.cfg:137 data/translations/english.cfg:428
-#: src/dialogs.cpp:571 src/multiplayer.cpp:126 src/multiplayer_client.cpp:117
-#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
-#: src/show_dialog.cpp:464
-msgid "Cancel"
-msgstr ""
-
-#: data/translations/english.cfg:138
-msgid "Yes"
-msgstr ""
-
-#: data/translations/english.cfg:140 src/titlescreen.cpp:158
-msgid "About"
-msgstr ""
-
-#: data/translations/english.cfg:141 src/about.cpp:240 src/help.cpp:2058
-#: src/show_dialog.cpp:470
-msgid "Close"
-msgstr ""
-
-#: data/translations/english.cfg:143 src/intro.cpp:91
-msgid "Next"
-msgstr ""
-
-#: data/translations/english.cfg:144 src/intro.cpp:92
-msgid "Skip"
-msgstr ""
-
-#: data/translations/english.cfg:146 src/preferences.cpp:603
-msgid "Turn Dialog"
-msgstr ""
-
-#: data/translations/english.cfg:147 src/preferences.cpp:604
-msgid "Turn Bell"
-msgstr ""
-
-#: data/translations/english.cfg:148 src/preferences.cpp:605
-msgid "Show Team Colors"
-msgstr ""
-
-#: data/translations/english.cfg:149 src/preferences.cpp:606
-msgid "Show Color Cursors"
-msgstr ""
-
-#: data/translations/english.cfg:150 src/preferences.cpp:607
-msgid "Show Haloing Effects"
-msgstr ""
-
-#: data/translations/english.cfg:152
-msgid "Alignment"
-msgstr ""
-
-#: data/translations/english.cfg:153
-msgid "Lawful"
-msgstr ""
-
-#: data/translations/english.cfg:154 data/translations/english.cfg:644
-msgid "Neutral"
-msgstr ""
-
-#: data/translations/english.cfg:155
-msgid "Chaotic"
-msgstr ""
-
-#: data/translations/english.cfg:157 src/reports.cpp:253
-msgid "Lawful units"
-msgstr ""
-
-#: data/translations/english.cfg:158 src/reports.cpp:255
-msgid "Neutral units"
-msgstr ""
-
-#: data/translations/english.cfg:159 src/reports.cpp:256
-msgid "Chaotic units"
-msgstr ""
-
-#: data/translations/english.cfg:161 src/playturn.cpp:1176
-msgid "Auto-Save"
-msgstr ""
-
-#: data/translations/english.cfg:162 src/game.cpp:134
-msgid "Do you want to save a replay of this scenario?"
-msgstr ""
-
-#: data/translations/english.cfg:163 src/game.cpp:196
-msgid "Do you want to save your game?"
-msgstr ""
-
-#: data/translations/english.cfg:164 src/game.cpp:135 src/game.cpp:197
-#: src/playturn.cpp:1408
-msgid "Name:"
-msgstr ""
-
-#: data/translations/english.cfg:165 src/playturn.cpp:1416
-msgid "The game has been saved"
-msgstr ""
-
-#: data/translations/english.cfg:166 src/dialogs.cpp:178
-msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
-
-#: data/translations/english.cfg:167 src/game.cpp:143 src/game.cpp:204
-#: src/playturn.cpp:1419
-msgid "The game could not be saved"
-msgstr ""
-
-#: data/translations/english.cfg:168 src/playturn.cpp:1178
-msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
-
-#: data/translations/english.cfg:169
+#: data/translations/english.cfg:64
 msgid "Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:170 data/translations/english.cfg:305
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:138 src/playturn.cpp:1401
-msgid "Turn"
-msgstr ""
-
-#: data/translations/english.cfg:171 src/dialogs.cpp:372
-#: src/titlescreen.cpp:152
-msgid "Tutorial"
-msgstr ""
-
-#: data/translations/english.cfg:173 src/titlescreen.cpp:155
-msgid "Load"
-msgstr ""
-
-#: data/translations/english.cfg:174 src/dialogs.cpp:370 src/game.cpp:968
-#: src/titlescreen.cpp:154
-msgid "Multiplayer"
-msgstr ""
-
-#: data/translations/english.cfg:175 src/multiplayer_lobby.cpp:158
-#: src/titlescreen.cpp:159
-msgid "Quit"
-msgstr ""
-
-#: data/translations/english.cfg:176 src/hotkeys.cpp:152
-msgid "Quit Game"
-msgstr ""
-
-#: data/translations/english.cfg:177 src/game.cpp:1048 src/titlescreen.cpp:156
-msgid "Language"
-msgstr ""
-
-#: data/translations/english.cfg:178 src/dialogs.cpp:384
-msgid "Scenario Start"
-msgstr ""
-
-#: data/translations/english.cfg:180 src/game.cpp:1049
-msgid "Choose your preferred language"
-msgstr ""
-
-#: data/translations/english.cfg:182 src/titlescreen.cpp:160
-msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
-
-#: data/translations/english.cfg:183 src/titlescreen.cpp:161
-msgid "Start a new single player campaign"
-msgstr ""
-
-#: data/translations/english.cfg:184 src/titlescreen.cpp:163
-msgid "Load a single player saved game"
-msgstr ""
-
-#: data/translations/english.cfg:185 src/titlescreen.cpp:162
-msgid ""
-"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
-"the AI"
-msgstr ""
-
-#: data/translations/english.cfg:186 src/titlescreen.cpp:167
-msgid "Quit the game"
-msgstr ""
-
-#: data/translations/english.cfg:187 src/titlescreen.cpp:164
-msgid "Change the language"
-msgstr ""
-
-#: data/translations/english.cfg:188 src/titlescreen.cpp:166
-msgid "View the credits"
-msgstr ""
-
-#: data/translations/english.cfg:189 src/titlescreen.cpp:165
-msgid "Configure the game's settings"
-msgstr ""
-
-#: data/translations/english.cfg:191 src/preferences.cpp:629
-msgid "Change the music volume"
-msgstr ""
-
-#: data/translations/english.cfg:192 src/preferences.cpp:624
-msgid "Change the sound effects volume"
-msgstr ""
-
-#: data/translations/english.cfg:193 src/preferences.cpp:634
-msgid "Change the speed of scrolling around the map"
-msgstr ""
-
-#: data/translations/english.cfg:194 src/preferences.cpp:637
-#: src/preferences.cpp:642
-msgid "Change the brightness of the display"
-msgstr ""
-
-#: data/translations/english.cfg:196 src/preferences.cpp:645
-msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
-
-#: data/translations/english.cfg:197 src/preferences.cpp:648
-msgid "Make units move and fight faster"
-msgstr ""
-
-#: data/translations/english.cfg:198 src/preferences.cpp:651
-msgid "Do not animate AI units moving"
-msgstr ""
-
-#: data/translations/english.cfg:199 src/preferences.cpp:654
-msgid "Overlay a grid onto the map"
-msgstr ""
-
-#: data/translations/english.cfg:200 src/preferences.cpp:657
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-
-#: data/translations/english.cfg:201 src/preferences.cpp:662
-msgid "Display a dialog at the beginning of your turn"
-msgstr ""
-
-#: data/translations/english.cfg:202 src/preferences.cpp:665
-msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
-
-#: data/translations/english.cfg:203 src/preferences.cpp:668
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-
-#: data/translations/english.cfg:204 src/preferences.cpp:671
-msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
-
-#: data/translations/english.cfg:205 src/preferences.cpp:674
-msgid "Use graphical special effects (may be slower)"
-msgstr ""
-
-#: data/translations/english.cfg:206 src/preferences.cpp:659
-msgid "Change the resolution the game runs at"
-msgstr ""
-
-#: data/translations/english.cfg:207 src/preferences.cpp:676
-msgid "View and configure keyboard shortcuts"
-msgstr ""
-
-#: data/translations/english.cfg:209 src/multiplayer.cpp:100
-msgid "The maximum turns the game will go for"
-msgstr ""
-
-#: data/translations/english.cfg:210 src/multiplayer.cpp:106
-msgid "The amount of income each village yields per turn"
-msgstr ""
-
-#: data/translations/english.cfg:211 src/multiplayer.cpp:112
-msgid "The amount of experience a unit needs to advance"
-msgstr ""
-
-#: data/translations/english.cfg:212 src/multiplayer.cpp:116
-msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
-
-#: data/translations/english.cfg:213 src/multiplayer.cpp:120
-msgid "The map is unknown until your units explore it"
-msgstr ""
-
-#: data/translations/english.cfg:214 src/multiplayer.cpp:124
-msgid "Allow users who are not playing to watch the game"
-msgstr ""
-
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:66
 msgid "Configure Sides:"
 msgstr ""
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:67
 msgid "Choose Team Settings:"
 msgstr ""
 
-#: data/translations/english.cfg:218 src/multiplayer_client.cpp:439
-msgid "Choose your side:"
-msgstr ""
-
-#: data/translations/english.cfg:219 src/multiplayer_client.cpp:397
-msgid "There are no available sides in this game."
-msgstr ""
-
-#: data/translations/english.cfg:220
-msgid "Start Game!"
-msgstr ""
-
-#: data/translations/english.cfg:221 src/multiplayer_client.cpp:464
-msgid "The game has been cancelled"
-msgstr ""
-
-#: data/translations/english.cfg:222 src/multiplayer_client.cpp:468
-msgid "The side you have chosen is no longer available"
-msgstr ""
-
-#: data/translations/english.cfg:223 src/multiplayer_client.cpp:111
-msgid "Waiting for game to start..."
-msgstr ""
-
-#: data/translations/english.cfg:224 src/multiplayer_connect.cpp:538
-#: src/multiplayer_connect.cpp:542
-msgid "Waiting for network players to join"
-msgstr ""
-
-#: data/translations/english.cfg:225 src/multiplayer_client.cpp:346
-msgid "Getting game data..."
-msgstr ""
-
-#: data/translations/english.cfg:226 src/multiplayer_client.cpp:59
-msgid "Receiving game list..."
-msgstr ""
-
-#: data/translations/english.cfg:227 src/multiplayer_client.cpp:237
-msgid "Connecting to remote host..."
-msgstr ""
-
-#: data/translations/english.cfg:228 src/show_dialog.cpp:941
-msgid "KB"
-msgstr ""
-
-#: data/translations/english.cfg:230 src/multiplayer_connect.cpp:258
-msgid "Local Player"
-msgstr ""
-
-#: data/translations/english.cfg:231 src/multiplayer_connect.cpp:259
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:589
-#: src/multiplayer_connect.cpp:683
-msgid "Computer Player"
-msgstr ""
-
-#: data/translations/english.cfg:232 src/multiplayer_connect.cpp:257
-msgid "Network Player"
-msgstr ""
-
-#: data/translations/english.cfg:233 src/multiplayer_connect.cpp:260
-msgid "Empty"
-msgstr ""
-
-#: data/translations/english.cfg:234 src/multiplayer_client.cpp:219
-msgid "Choose host to connect to"
-msgstr ""
-
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:68
 msgid "Could not connect to the remote host"
 msgstr ""
 
-#: data/translations/english.cfg:236 src/multiplayer_client.cpp:42
-#: src/multiplayer_client.cpp:283
-msgid "Connection timed out"
-msgstr ""
-
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:69
 msgid "Waiting for players to connect"
 msgstr ""
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:70
 msgid "Filled"
 msgstr ""
 
-#: data/translations/english.cfg:239 data/translations/english.cfg:288
-msgid "multiplayer save"
-msgstr ""
-
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:71
 msgid "Available"
 msgstr ""
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:72
 msgid "&misc/observer.png,Observer"
 msgstr ""
 
-#: data/translations/english.cfg:242 src/preferences.cpp:339
-msgid "player"
-msgstr ""
-
-#: data/translations/english.cfg:243 src/multiplayer_lobby.cpp:140
-msgid "Vacant Slot"
-msgstr ""
-
-#: data/translations/english.cfg:244 src/multiplayer_lobby.cpp:140
-msgid "Vacant Slots"
-msgstr ""
-
-#: data/translations/english.cfg:246 src/game.cpp:965
-msgid "Host Multiplayer Game"
-msgstr ""
-
-#: data/translations/english.cfg:247 src/game.cpp:963
-msgid "Join Official Server"
-msgstr ""
-
-#: data/translations/english.cfg:248 src/game.cpp:964
-#: src/multiplayer_lobby.cpp:156
-msgid "Join Game"
-msgstr ""
-
-#: data/translations/english.cfg:249 src/multiplayer_lobby.cpp:155
-msgid "Observe Game"
-msgstr ""
-
-#: data/translations/english.cfg:250 data/translations/english.cfg:278
-#: src/dialogs.cpp:515 src/hotkeys.cpp:137 src/multiplayer.cpp:88
-msgid "Load Game"
-msgstr ""
-
-#: data/translations/english.cfg:251 src/multiplayer.cpp:176
-#: src/multiplayer_lobby.cpp:157
-msgid "Create Game"
-msgstr ""
-
-#: data/translations/english.cfg:252 src/multiplayer.cpp:180
-msgid "Name of game"
-msgstr ""
-
-#: data/translations/english.cfg:253 src/multiplayer.cpp:192
-msgid "Map to play"
-msgstr ""
-
-#: data/translations/english.cfg:254 src/multiplayer.cpp:363
-msgid "Village Gold"
-msgstr ""
-
-#: data/translations/english.cfg:255 src/multiplayer.cpp:375
-msgid "Experience Requirements"
-msgstr ""
-
-#: data/translations/english.cfg:256 src/multiplayer.cpp:355
-msgid "Turns"
-msgstr ""
-
-#: data/translations/english.cfg:257 src/multiplayer.cpp:351
-msgid "Unlimited"
-msgstr ""
-
-#: data/translations/english.cfg:259 src/game.cpp:963
-msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
-
-#: data/translations/english.cfg:260 src/game.cpp:964
-msgid "Join a server or hosted game"
-msgstr ""
-
-#: data/translations/english.cfg:261 src/game.cpp:965
-msgid "Host a game without using a server"
-msgstr ""
-
-#: data/translations/english.cfg:263 src/game.cpp:968
-#: src/multiplayer_client.cpp:267
-msgid "Login"
-msgstr ""
-
-#: data/translations/english.cfg:264 src/multiplayer_client.cpp:266
-msgid "You must log in to this server"
-msgstr ""
-
-#: data/translations/english.cfg:266 src/hotkeys.cpp:362 src/hotkeys.cpp:554
-msgid "Do you really want to quit?"
-msgstr ""
-
-#: data/translations/english.cfg:267 src/playturn.cpp:1155
-#: src/playturn.cpp:1160
-msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
-
-#: data/translations/english.cfg:268 src/playturn.cpp:1146
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
-msgstr ""
-
-#: data/translations/english.cfg:270 src/dialogs.cpp:85
-msgid "Advance Unit"
-msgstr ""
-
-#: data/translations/english.cfg:271 src/dialogs.cpp:86
-msgid "What should our victorious unit become?"
-msgstr ""
-
-#: data/translations/english.cfg:272 src/game.cpp:793
-#: src/multiplayer_connect.cpp:104
-msgid ""
-"This save is from a different version of the game. Do you want to try to "
-"load it?"
-msgstr ""
-
-#: data/translations/english.cfg:273 src/game.cpp:804 src/game.cpp:809
-#: src/game.cpp:814 src/playlevel.cpp:493 src/playlevel.cpp:707
-msgid "The file you have tried to load is corrupt"
-msgstr ""
-
-#: data/translations/english.cfg:274 src/multiplayer_connect.cpp:97
-msgid "This is not a multiplayer save"
-msgstr ""
-
-#: data/translations/english.cfg:275 src/dialogs.cpp:401
-msgid "No Saved Games"
-msgstr ""
-
-#: data/translations/english.cfg:277 src/dialogs.cpp:402
-msgid ""
-"There are no saved games to load.\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-
-#: data/translations/english.cfg:279 src/dialogs.cpp:516
-msgid "Choose the game to load"
-msgstr ""
-
-#: data/translations/english.cfg:280 src/multiplayer_client.cpp:504
-msgid "Show replay of game up to save point?"
-msgstr ""
-
-#: data/translations/english.cfg:281 src/dialogs.cpp:512
-msgid "Show replay"
-msgstr ""
-
-#: data/translations/english.cfg:282 src/playturn.cpp:2370
-msgid "has left the game. What do you want to do?"
-msgstr ""
-
-#: data/translations/english.cfg:283 src/playturn.cpp:2366
-msgid "Replace with AI"
-msgstr ""
-
-#: data/translations/english.cfg:284 src/playturn.cpp:2367
-msgid "Replace with local player"
-msgstr ""
-
-#: data/translations/english.cfg:285 src/playturn.cpp:2368
-msgid "Abort game"
-msgstr ""
-
-#: data/translations/english.cfg:286 src/playlevel.cpp:722
-msgid ""
-"A network disconnection has occured, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-
-#: data/translations/english.cfg:287 src/playturn.cpp:2335
-msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
-msgstr ""
-
-#: data/translations/english.cfg:289 src/game.cpp:1096
-msgid "The End"
-msgstr ""
-
-#: data/translations/english.cfg:290 src/game.cpp:1097
-msgid "You have reached the end of the currently playable levels"
-msgstr ""
-
-#: data/translations/english.cfg:291 src/playlevel.cpp:646
-msgid "Defeat"
-msgstr ""
-
-#: data/translations/english.cfg:292 src/playlevel.cpp:647
-msgid "You have been defeated!"
-msgstr ""
-
-#: data/translations/english.cfg:293 src/playlevel.cpp:679
-msgid "Victory"
-msgstr ""
-
-#: data/translations/english.cfg:294 src/playlevel.cpp:680
-msgid "You have emerged victorious!"
-msgstr ""
-
-#: data/translations/english.cfg:295 src/playlevel.cpp:632
-msgid "Game Over"
-msgstr ""
-
-#: data/translations/english.cfg:296 src/playlevel.cpp:633
-msgid "The game is over."
-msgstr ""
-
-#: data/translations/english.cfg:297 src/playlevel.cpp:682
-msgid "Remaining gold"
-msgstr ""
-
-#: data/translations/english.cfg:298 src/playlevel.cpp:685
-msgid "Early finish bonus"
-msgstr ""
-
-#: data/translations/english.cfg:299 src/playlevel.cpp:687
-msgid "per turn"
-msgstr ""
-
-#: data/translations/english.cfg:300 src/playlevel.cpp:688
-msgid "Turns finished early"
-msgstr ""
-
-#: data/translations/english.cfg:301 src/playlevel.cpp:698
-msgid "Retained Gold"
-msgstr ""
-
-#: data/translations/english.cfg:302 src/playlevel.cpp:697
-#, no-c-format
-msgid "80% of gold is retained for the next scenario"
-msgstr ""
-
-#: data/translations/english.cfg:303 src/playlevel.cpp:690
-msgid "Bonus"
-msgstr ""
-
-#: data/translations/english.cfg:304 src/multiplayer_client.cpp:93
-#: src/multiplayer_connect.cpp:382 src/multiplayer_connect.cpp:384
-#: src/playlevel.cpp:692 src/playturn.cpp:1477 src/playturn.cpp:1482
-#: src/playturn.cpp:1569
-msgid "Gold"
-msgstr ""
-
-#: data/translations/english.cfg:306 data/translations/english.cfg:352
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1478
-msgid "Villages"
-msgstr ""
-
-#: data/translations/english.cfg:307 src/playturn.cpp:1478
-msgid "Units"
-msgstr ""
-
-#: data/translations/english.cfg:308 src/playturn.cpp:1479
-msgid "Upkeep"
-msgstr ""
-
-#: data/translations/english.cfg:309 src/playturn.cpp:1479
-msgid "Income"
-msgstr ""
-
-#: data/translations/english.cfg:311 src/help.cpp:547 src/playturn.cpp:1894
-msgid "Name"
-msgstr ""
-
-#: data/translations/english.cfg:312 src/help.cpp:548 src/playturn.cpp:1893
-msgid "Type"
-msgstr ""
-
-#: data/translations/english.cfg:313 src/dialogs.cpp:737 src/display.cpp:901
-#: src/help.cpp:530 src/playturn.cpp:1895 src/unit.cpp:1028
-msgid "HP"
-msgstr ""
-
-#: data/translations/english.cfg:314 src/dialogs.cpp:741 src/dialogs.cpp:749
-#: src/display.cpp:905 src/display.cpp:913 src/playturn.cpp:1733
-#: src/playturn.cpp:1896 src/unit.cpp:1087
-msgid "XP"
-msgstr ""
-
-#: data/translations/english.cfg:315 data/translations/english.cfg:431
-#: src/dialogs.cpp:754 src/dialogs.cpp:867 src/display.cpp:917
-#: src/help.cpp:531 src/playturn.cpp:1897 src/unit.cpp:1064
-msgid "Moves"
-msgstr ""
-
-#: data/translations/english.cfg:316 src/playturn.cpp:1898
-msgid "Location"
-msgstr ""
-
-#: data/translations/english.cfg:317 src/dialogs.cpp:716 src/display.cpp:883
-#: src/help.cpp:477 src/playturn.cpp:1731
-msgid "level"
-msgstr ""
-
-#: data/translations/english.cfg:318 src/help.cpp:536
-msgid "Required XP"
-msgstr ""
-
-#: data/translations/english.cfg:319 src/help.cpp:549 src/unit_types.cpp:301
-msgid "Dmg"
-msgstr ""
-
-#: data/translations/english.cfg:320 src/help.cpp:550 src/unit_types.cpp:313
-msgid "strikes"
-msgstr ""
-
-#: data/translations/english.cfg:321 src/help.cpp:484
-msgid "Advances to"
-msgstr ""
-
-#: data/translations/english.cfg:322 src/help.cpp:510
-msgid "Abilities"
-msgstr ""
-
-#: data/translations/english.cfg:324 src/playturn.cpp:1803
-msgid "Message"
-msgstr ""
-
-#: data/translations/english.cfg:325
+#: data/translations/english.cfg:74
 msgid "Describe Unit"
 msgstr ""
 
-#: data/translations/english.cfg:326 src/hotkeys.cpp:135 src/playturn.cpp:1377
-msgid "Rename Unit"
-msgstr ""
-
-#: data/translations/english.cfg:327 src/hotkeys.cpp:149
-msgid "Scenario Objectives"
-msgstr ""
-
-#: data/translations/english.cfg:329 src/multiplayer_connect.cpp:237
-msgid ""
-"Victory\n"
-"@Defeat enemy leader(s)"
-msgstr ""
-
-#: data/translations/english.cfg:330 src/hotkeys.cpp:138
-msgid "Recruit"
-msgstr ""
-
-#: data/translations/english.cfg:331 src/hotkeys.cpp:140
-msgid "Recall"
-msgstr ""
-
-#: data/translations/english.cfg:332 src/playturn.cpp:1715
-msgid "You are seperated from your soldiers and may not recall them"
-msgstr ""
-
-#: data/translations/english.cfg:333 src/hotkeys.cpp:150 src/playturn.cpp:1946
-msgid "Unit List"
-msgstr ""
-
-#: data/translations/english.cfg:334 src/hotkeys.cpp:143
-msgid "Status Table"
-msgstr ""
-
-#: data/translations/english.cfg:335 src/hotkeys.cpp:136
-msgid "Save Game"
-msgstr ""
-
-#: data/translations/english.cfg:338
+#: data/translations/english.cfg:76
 msgid "Full Screen or Windowed?"
 msgstr ""
 
-#: data/translations/english.cfg:339 src/preferences.cpp:958
-msgid "Choose Resolution"
-msgstr ""
-
-#: data/translations/english.cfg:340 src/preferences.cpp:608
-msgid "Video Mode"
-msgstr ""
-
-#: data/translations/english.cfg:341 src/preferences.cpp:927
-msgid "There are no alternative video modes available"
-msgstr ""
-
-#: data/translations/english.cfg:342 src/preferences.cpp:121
-#: src/preferences.cpp:167
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-
-#: data/translations/english.cfg:343
+#: data/translations/english.cfg:77
 msgid "Display:"
 msgstr ""
 
-#: data/translations/english.cfg:344 src/preferences.cpp:598
-msgid "Full Screen"
-msgstr ""
-
-#: data/translations/english.cfg:345
+#: data/translations/english.cfg:78
 msgid "Windowed"
 msgstr ""
 
-#: data/translations/english.cfg:347 src/mapgen_dialog.cpp:72
-msgid "Map Generator"
-msgstr ""
-
-#: data/translations/english.cfg:348 src/multiplayer.cpp:129
-msgid "Regenerate"
-msgstr ""
-
-#: data/translations/english.cfg:349 src/multiplayer.cpp:131
-msgid "Settings..."
-msgstr ""
-
-#: data/translations/english.cfg:350 src/mapgen_dialog.cpp:80
-msgid "Iterations"
-msgstr ""
-
-#: data/translations/english.cfg:351 src/mapgen_dialog.cpp:81
-msgid "Bump Size"
-msgstr ""
-
-#: data/translations/english.cfg:353 src/mapgen_dialog.cpp:246
-msgid "/1000 tiles"
-msgstr ""
-
-#: data/translations/english.cfg:354 src/mapgen_dialog.cpp:83
-msgid "Landform"
-msgstr ""
-
-#: data/translations/english.cfg:355 src/mapgen_dialog.cpp:251
-msgid "Inland"
-msgstr ""
-
-#: data/translations/english.cfg:356 src/mapgen_dialog.cpp:251
-msgid "Coastal"
-msgstr ""
-
-#: data/translations/english.cfg:357 src/mapgen_dialog.cpp:251
-msgid "Island"
-msgstr ""
-
-#: data/translations/english.cfg:358 src/mapgen_dialog.cpp:183
-msgid "Roads Between Castles"
-msgstr ""
-
-#: data/translations/english.cfg:360 src/mapgen_dialog.cpp:77
-#: src/multiplayer.cpp:484
-msgid "Players"
-msgstr ""
-
-#: data/translations/english.cfg:361 src/mapgen_dialog.cpp:78
-msgid "Width"
-msgstr ""
-
-#: data/translations/english.cfg:362 src/mapgen_dialog.cpp:79
-msgid "Height"
-msgstr ""
-
-#: data/translations/english.cfg:364 src/preferences.cpp:609
-msgid "Hotkeys"
-msgstr ""
-
-#: data/translations/english.cfg:365 src/preferences.cpp:1012
-msgid "Save Hotkeys"
-msgstr ""
-
-#: data/translations/english.cfg:366 src/preferences.cpp:1009
-msgid "Change Hotkey"
-msgstr ""
-
-#: data/translations/english.cfg:367 src/preferences.cpp:986
-msgid "Hotkey Settings"
-msgstr ""
-
-#: data/translations/english.cfg:368 src/preferences.cpp:990
-#: src/preferences.cpp:1048
-msgid "Press desired HotKey"
-msgstr ""
-
-#: data/translations/english.cfg:369 src/preferences.cpp:1081
-msgid "This HotKey is already in use."
-msgstr ""
-
-#: data/translations/english.cfg:371 src/dialogs.cpp:620 src/dialogs.cpp:629
-msgid "Profile"
-msgstr ""
-
-#: data/translations/english.cfg:373 src/playturn.cpp:1803
-msgid "Send to allies only"
-msgstr ""
-
-#: data/translations/english.cfg:374 src/playturn.cpp:2066
-msgid "Chat Log"
-msgstr ""
-
-#: data/translations/english.cfg:376
+#: data/translations/english.cfg:80
 msgid "Speed:"
 msgstr ""
 
-#: data/translations/english.cfg:377
+#: data/translations/english.cfg:81
 msgid "Normal"
 msgstr ""
 
-#: data/translations/english.cfg:378 src/preferences.cpp:599
-msgid "Accelerated Speed"
-msgstr ""
-
-#: data/translations/english.cfg:379 src/preferences.cpp:600
-msgid "Skip AI Moves"
-msgstr ""
-
-#: data/translations/english.cfg:381 src/preferences.cpp:601
-msgid "Show Grid"
-msgstr ""
-
-#: data/translations/english.cfg:382 src/preferences.cpp:602
-msgid "Show Floating Labels"
-msgstr ""
-
-#: data/translations/english.cfg:384
+#: data/translations/english.cfg:83
 msgid "Sound Settings..."
 msgstr ""
 
-#: data/translations/english.cfg:385 src/preferences.cpp:611
-msgid "SFX Volume:"
-msgstr ""
-
-#: data/translations/english.cfg:386 src/preferences.cpp:611
-msgid "Music Volume:"
-msgstr ""
-
-#: data/translations/english.cfg:387 src/preferences.cpp:612
-msgid "Scroll Speed:"
-msgstr ""
-
-#: data/translations/english.cfg:388 src/preferences.cpp:612
-msgid "Gamma:"
-msgstr ""
-
-#: data/translations/english.cfg:389 src/preferences.cpp:610
-msgid "Adjust Gamma"
-msgstr ""
-
-#: data/translations/english.cfg:391 src/playturn.cpp:663
-msgid "Choose weapon"
-msgstr ""
-
-#: data/translations/english.cfg:392
+#: data/translations/english.cfg:84
 msgid "Options"
 msgstr ""
 
-#: data/translations/english.cfg:393 src/hotkeys.cpp:148
-#: src/preferences.cpp:881 src/titlescreen.cpp:157
-msgid "Preferences"
-msgstr ""
-
-#: data/translations/english.cfg:394 data/units/General.cfg:3
-#: src/preferences.cpp:869
-msgid "General"
-msgstr ""
-
-#: data/translations/english.cfg:395 src/preferences.cpp:870
-msgid "Display"
-msgstr ""
-
-#: data/translations/english.cfg:396 src/preferences.cpp:871
-msgid "Sound"
-msgstr ""
-
-#: data/translations/english.cfg:398 src/actions.cpp:202
-msgid "none"
-msgstr ""
-
-#: data/translations/english.cfg:400
+#: data/translations/english.cfg:86
 msgid "Choose Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:402 src/dialogs.cpp:155
-msgid "No objectives available"
+#: data/translations/english.cfg:88
+msgid "This terrain acts as $terrains for movement and defense purposes"
 msgstr ""
 
-#: data/translations/english.cfg:405 src/playturn.cpp:1717
+#: data/translations/english.cfg:89
+msgid "The terrain with the best modifier is chosen automatically"
+msgstr ""
+
+#: data/translations/english.cfg:90
+msgid "This terrain gives healing"
+msgstr ""
+
+#: data/translations/english.cfg:91
 msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
+"This terrain acts as keep, i.e., you can recruit units when a leader is in a "
+"location with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:407 src/playturn.cpp:1721
-msgid "You must have at least"
+#: data/translations/english.cfg:92
+msgid ""
+"This terrain acts as castle, i.e., you can recruit units onto a location "
+"with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:408 src/playturn.cpp:1723
-msgid "gold pieces to recall a unit"
+#: data/translations/english.cfg:93 src/help.cpp:866
+msgid "or"
 msgstr ""
 
-#: data/translations/english.cfg:410 src/playturn.cpp:1759
-msgid "Select unit"
-msgstr ""
-
-#: data/translations/english.cfg:411 src/playturn.cpp:1588
-msgid "Recruit unit"
-msgstr ""
-
-#: data/translations/english.cfg:413 src/playturn.cpp:1617
-msgid "You don't have enough gold to recruit that unit"
-msgstr ""
-
-#: data/translations/english.cfg:415 src/display.cpp:864
-msgid "healthy"
-msgstr ""
-
-#: data/translations/english.cfg:416 src/display.cpp:869 src/reports.cpp:105
-msgid "invisible"
-msgstr ""
-
-#: data/translations/english.cfg:417 src/actions.cpp:689 src/actions.cpp:825
-#: src/display.cpp:873 src/reports.cpp:110
-msgid "slowed"
-msgstr ""
-
-#: data/translations/english.cfg:418 src/actions.cpp:684 src/actions.cpp:820
-#: src/display.cpp:877 src/reports.cpp:115
-msgid "poisoned"
-msgstr ""
-
-#: data/translations/english.cfg:419 data/units/Cockatrice.cfg:26
-#: src/actions.cpp:705 src/actions.cpp:842 src/reports.cpp:122
-msgid "stone"
-msgstr ""
-
-#: data/translations/english.cfg:421 src/help.cpp:552
-msgid "Special"
-msgstr ""
-
-#: data/translations/english.cfg:422 src/help.cpp:551
-msgid "Range"
-msgstr ""
-
-#: data/translations/english.cfg:423 src/dialogs.cpp:771 src/display.cpp:934
-#: src/help.cpp:572 src/playturn.cpp:616 src/reports.cpp:229
-msgid "melee"
-msgstr ""
-
-#: data/translations/english.cfg:424 src/dialogs.cpp:772 src/display.cpp:935
-#: src/help.cpp:572 src/playturn.cpp:616 src/reports.cpp:230
-msgid "ranged"
-msgstr ""
-
-#: data/translations/english.cfg:426 src/playturn.cpp:629 src/reports.cpp:209
-msgid "vs"
-msgstr ""
-
-#: data/translations/english.cfg:430 src/dialogs.cpp:818 src/dialogs.cpp:907
-msgid "Terrain Modifiers"
-msgstr ""
-
-#: data/translations/english.cfg:432 src/dialogs.cpp:868
-msgid "Defense"
-msgstr ""
-
-#: data/translations/english.cfg:434 src/help.cpp:592
-msgid "Resistances"
-msgstr ""
-
-#: data/translations/english.cfg:435 src/dialogs.cpp:819 src/dialogs.cpp:836
-msgid "Resistance"
-msgstr ""
-
-#: data/translations/english.cfg:436 src/dialogs.cpp:859
+#: data/translations/english.cfg:94
 msgid "Unit resistance table"
 msgstr ""
 
-#: data/translations/english.cfg:437 src/dialogs.cpp:820
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:981
-msgid "Close Window"
-msgstr ""
-
-#: data/translations/english.cfg:439 src/dialogs.cpp:814
+#: data/translations/english.cfg:96
 msgid "See Also..."
 msgstr ""
 
-#: data/translations/english.cfg:441 src/dialogs.cpp:836
-msgid "Attack Type"
-msgstr ""
-
-#: data/translations/english.cfg:443 src/playturn.cpp:662
-msgid "Attack Enemy"
-msgstr ""
-
-#: data/translations/english.cfg:445 src/help.cpp:546 src/reports.cpp:232
-msgid "attacks"
-msgstr ""
-
-#: data/translations/english.cfg:446 src/reports.cpp:231
-msgid "damage"
-msgstr ""
-
-#: data/translations/english.cfg:447 src/reports.cpp:236
-msgid "hexes"
-msgstr ""
-
-#: data/translations/english.cfg:450 src/actions.cpp:1689
-msgid "Ambushed!"
-msgstr ""
-
-#: data/translations/english.cfg:451 src/actions.cpp:1719
-msgid "Enemy unit sighted!"
-msgstr ""
-
-#: data/translations/english.cfg:452 src/actions.cpp:1717
-msgid "Friendly unit sighted"
-msgstr ""
-
-#: data/translations/english.cfg:453 src/actions.cpp:1726
-msgid "$enemies Enemy units sighted!"
-msgstr ""
-
-#: data/translations/english.cfg:454 src/actions.cpp:1724
-msgid "$friends Friendly units sighted"
-msgstr ""
-
-#: data/translations/english.cfg:455 src/actions.cpp:1730
-msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
-
-#: data/translations/english.cfg:456 src/actions.cpp:1751
-msgid "(press $hotkey to continue)"
-msgstr ""
-
-#: data/translations/english.cfg:460
+#: data/translations/english.cfg:100
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target."
 msgstr ""
 
-#: data/translations/english.cfg:463
+#: data/translations/english.cfg:103
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/translations/english.cfg:466
+#: data/translations/english.cfg:106
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
 
-#: data/translations/english.cfg:469
+#: data/translations/english.cfg:109
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:472
+#: data/translations/english.cfg:112
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:475
+#: data/translations/english.cfg:115
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
 
-#: data/translations/english.cfg:478
+#: data/translations/english.cfg:118
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
 
-#: data/translations/english.cfg:481
+#: data/translations/english.cfg:121
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
 
-#: data/translations/english.cfg:484
+#: data/translations/english.cfg:124
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/translations/english.cfg:487
+#: data/translations/english.cfg:127
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 
-#: data/translations/english.cfg:490
+#: data/translations/english.cfg:130
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/translations/english.cfg:492 data/units/Halbardier.cfg:31
+#: data/translations/english.cfg:132
 msgid "first strike"
 msgstr ""
 
-#: data/translations/english.cfg:495 src/multiplayer_connect.cpp:361
-msgid "Game Lobby"
-msgstr ""
-
-#: data/translations/english.cfg:496 src/multiplayer.cpp:118
-#: src/multiplayer_lobby.cpp:126
-msgid "Shroud"
-msgstr ""
-
-#: data/translations/english.cfg:497 src/multiplayer.cpp:114
-msgid "Fog Of War"
-msgstr ""
-
-#: data/translations/english.cfg:498 src/multiplayer.cpp:122
-#: src/reports.cpp:376
-msgid "Observers"
-msgstr ""
-
-#: data/translations/english.cfg:499 src/multiplayer_connect.cpp:48
-msgid "I'm Ready"
-msgstr ""
-
-#: data/translations/english.cfg:500 src/multiplayer_connect.cpp:364
-#: src/multiplayer_connect.cpp:366
-msgid "Player/Type"
-msgstr ""
-
-#: data/translations/english.cfg:501 src/multiplayer_connect.cpp:50
-msgid " Computer vs Computer "
-msgstr ""
-
-#: data/translations/english.cfg:502 src/multiplayer_connect.cpp:367
-#: src/multiplayer_connect.cpp:370
-msgid "Race"
-msgstr ""
-
-#: data/translations/english.cfg:503 src/multiplayer_connect.cpp:288
-#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:375
-msgid "Team"
-msgstr ""
-
-#: data/translations/english.cfg:504 src/multiplayer_connect.cpp:377
-#: src/multiplayer_connect.cpp:380
-msgid "Color"
-msgstr ""
-
-#: data/translations/english.cfg:505 src/multiplayer.cpp:148
-#: src/multiplayer_connect.cpp:177
-msgid "No multiplayer sides."
-msgstr ""
-
-#: data/translations/english.cfg:506 src/multiplayer.cpp:135
-msgid "Share View"
-msgstr ""
-
-#: data/translations/english.cfg:507 src/multiplayer.cpp:136
-msgid "Share Maps"
-msgstr ""
-
-#: data/translations/english.cfg:508 src/multiplayer.cpp:137
-msgid "Share None"
-msgstr ""
-
-#: data/translations/english.cfg:511
+#: data/translations/english.cfg:135
 msgid "Elves"
 msgstr ""
 
-#: data/translations/english.cfg:512
+#: data/translations/english.cfg:136
 msgid "Orcs"
 msgstr ""
 
-#: data/translations/english.cfg:513
+#: data/translations/english.cfg:137
 msgid "Humans"
 msgstr ""
 
-#: data/translations/english.cfg:514
+#: data/translations/english.cfg:138
 msgid "Undead"
 msgstr ""
 
-#: data/translations/english.cfg:517 src/multiplayer_connect.cpp:295
-msgid "Red"
-msgstr ""
-
-#: data/translations/english.cfg:518 src/multiplayer_connect.cpp:297
-msgid "Blue"
-msgstr ""
-
-#: data/translations/english.cfg:519 src/multiplayer_connect.cpp:299
-msgid "Green"
-msgstr ""
-
-#: data/translations/english.cfg:520 src/multiplayer_connect.cpp:301
-msgid "Yellow"
-msgstr ""
-
-#: data/translations/english.cfg:521 src/multiplayer_connect.cpp:303
-msgid "Purple"
-msgstr ""
-
-#: data/translations/english.cfg:522 src/multiplayer_connect.cpp:305
-msgid "Orange"
-msgstr ""
-
-#: data/translations/english.cfg:523 src/multiplayer_connect.cpp:307
-msgid "Grey"
-msgstr ""
-
-#: data/translations/english.cfg:524 src/multiplayer_connect.cpp:309
-msgid "White"
-msgstr ""
-
-#: data/translations/english.cfg:525 src/multiplayer_connect.cpp:311
-msgid "Brown"
-msgstr ""
-
-#: data/translations/english.cfg:528 src/dialogs.cpp:866
-msgid "Terrain"
-msgstr ""
-
-#: data/translations/english.cfg:529
+#: data/translations/english.cfg:142
 msgid "Deep Water"
 msgstr ""
 
-#: data/translations/english.cfg:530
+#: data/translations/english.cfg:143
 msgid "Shallow Water"
 msgstr ""
 
-#: data/translations/english.cfg:531
+#: data/translations/english.cfg:144
 msgid "Sand"
 msgstr ""
 
-#: data/translations/english.cfg:532 data/translations/english.cfg:534
-#: data/translations/english.cfg:535 data/translations/english.cfg:536
-#: data/translations/english.cfg:537 data/translations/english.cfg:538
+#: data/translations/english.cfg:145 data/translations/english.cfg:147
+#: data/translations/english.cfg:148 data/translations/english.cfg:149
+#: data/translations/english.cfg:150 data/translations/english.cfg:151
 msgid "Village"
 msgstr ""
 
-#: data/translations/english.cfg:533
+#: data/translations/english.cfg:146
 msgid "Swamp"
 msgstr ""
 
-#: data/translations/english.cfg:539
+#: data/translations/english.cfg:152
 msgid "Tundra"
 msgstr ""
 
-#: data/translations/english.cfg:540
+#: data/translations/english.cfg:153
 msgid "Ice"
 msgstr ""
 
-#: data/translations/english.cfg:541
+#: data/translations/english.cfg:154
 msgid "Road"
 msgstr ""
 
-#: data/translations/english.cfg:542
+#: data/translations/english.cfg:155
 msgid "Dirt"
 msgstr ""
 
-#: data/translations/english.cfg:543
+#: data/translations/english.cfg:156
 msgid "Grassland"
 msgstr ""
 
-#: data/translations/english.cfg:544
+#: data/translations/english.cfg:157
 msgid "Hills"
 msgstr ""
 
-#: data/translations/english.cfg:545
+#: data/translations/english.cfg:158
 msgid "Mountains"
 msgstr ""
 
-#: data/translations/english.cfg:546
+#: data/translations/english.cfg:159
 msgid "Forest"
 msgstr ""
 
-#: data/translations/english.cfg:547 data/translations/english.cfg:548
-#: data/translations/english.cfg:549
+#: data/translations/english.cfg:160 data/translations/english.cfg:161
+#: data/translations/english.cfg:162
 msgid "Bridge"
 msgstr ""
 
-#: data/translations/english.cfg:550
+#: data/translations/english.cfg:163
 msgid "Castle"
 msgstr ""
 
-#: data/translations/english.cfg:551
+#: data/translations/english.cfg:164
 msgid "Keep"
 msgstr ""
 
-#: data/translations/english.cfg:552
+#: data/translations/english.cfg:165
 msgid "Cave"
 msgstr ""
 
-#: data/translations/english.cfg:553
+#: data/translations/english.cfg:166
 msgid "Cave Wall"
 msgstr ""
 
-#: data/translations/english.cfg:556
+#: data/translations/english.cfg:169
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
 
-#: data/translations/english.cfg:557
+#: data/translations/english.cfg:170
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
-#: data/translations/english.cfg:558
+#: data/translations/english.cfg:171
 msgid "$name River,River $name"
 msgstr ""
 
-#: data/translations/english.cfg:559
+#: data/translations/english.cfg:172
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
-#: data/translations/english.cfg:560
+#: data/translations/english.cfg:173
 msgid "$name Lake"
 msgstr ""
 
-#: data/translations/english.cfg:561
+#: data/translations/english.cfg:174
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
-#: data/translations/english.cfg:562
+#: data/translations/english.cfg:175
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:563
+#: data/translations/english.cfg:176
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:564
+#: data/translations/english.cfg:177
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:565
+#: data/translations/english.cfg:178
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:566
+#: data/translations/english.cfg:179
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:567
+#: data/translations/english.cfg:180
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:570 data/units/Princess.cfg:3
-msgid "Princess"
-msgstr ""
-
-#: data/translations/english.cfg:574
+#: data/translations/english.cfg:184
 msgid "Choose a File to Save As"
 msgstr ""
 
-#: data/translations/english.cfg:575
+#: data/translations/english.cfg:185
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: data/translations/english.cfg:576
+#: data/translations/english.cfg:186
 msgid "Which Player?"
 msgstr ""
 
-#: data/translations/english.cfg:577
+#: data/translations/english.cfg:187
 msgid "Which player should start here?"
 msgstr ""
 
-#: data/translations/english.cfg:578
+#: data/translations/english.cfg:188
 msgid "Choose a Map to Load"
 msgstr ""
 
-#: data/translations/english.cfg:579
+#: data/translations/english.cfg:189
 msgid "The file does not contain a valid map."
 msgstr ""
 
-#: data/translations/english.cfg:580
+#: data/translations/english.cfg:190
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 
-#: data/translations/english.cfg:581
+#: data/translations/english.cfg:191
 msgid "Load failed: "
 msgstr ""
 
-#: data/translations/english.cfg:582
+#: data/translations/english.cfg:192
 msgid "You must have a hex selected on the board."
 msgstr ""
 
-#: data/translations/english.cfg:583
+#: data/translations/english.cfg:193
 msgid "Do you want to save the map before quitting?"
 msgstr ""
 
-#: data/translations/english.cfg:584
+#: data/translations/english.cfg:194
 msgid "Map saved."
 msgstr ""
 
-#: data/translations/english.cfg:585
+#: data/translations/english.cfg:195
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: data/translations/english.cfg:586
+#: data/translations/english.cfg:196
 msgid "Player "
 msgstr ""
 
-#: data/translations/english.cfg:587
+#: data/translations/english.cfg:197
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr ""
 
-#: data/translations/english.cfg:588 data/translations/english.cfg:589
+#: data/translations/english.cfg:198
 msgid "Create New Map"
 msgstr ""
 
-#: data/translations/english.cfg:590
+#: data/translations/english.cfg:199
+msgid "Generate New Map"
+msgstr ""
+
+#: data/translations/english.cfg:200
 msgid "Generate Random Map"
 msgstr ""
 
-#: data/translations/english.cfg:591
+#: data/translations/english.cfg:201
 msgid "Random Generator Settings"
 msgstr ""
 
-#: data/translations/english.cfg:592
+#: data/translations/english.cfg:202
 msgid "Map creation failed."
 msgstr ""
 
-#: data/translations/english.cfg:593 src/hotkeys.cpp:168
+#: data/translations/english.cfg:203 src/hotkeys.cpp:164
 msgid "Resize Map"
 msgstr ""
 
-#: data/translations/english.cfg:594
+#: data/translations/english.cfg:204
 msgid "X-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:595
+#: data/translations/english.cfg:205
 msgid "Y-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:596
+#: data/translations/english.cfg:206
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr ""
 
-#: data/translations/english.cfg:597
+#: data/translations/english.cfg:207
 msgid "Edit"
 msgstr ""
 
-#: data/translations/english.cfg:598
+#: data/translations/english.cfg:208
 msgid "File"
 msgstr ""
 
-#: data/translations/english.cfg:599
+#: data/translations/english.cfg:209
 msgid "FG"
 msgstr ""
 
-#: data/translations/english.cfg:600
+#: data/translations/english.cfg:210
 msgid "BG"
 msgstr ""
 
-#: data/translations/english.cfg:602
+#: data/translations/english.cfg:212
 msgid "Next tip"
 msgstr ""
 
-#: data/translations/english.cfg:603
+#: data/translations/english.cfg:213
 msgid "Tip of the Day"
 msgstr ""
 
-#: data/translations/english.cfg:604
+#: data/translations/english.cfg:214
 msgid "Do not show tips"
 msgstr ""
 
-#: data/translations/english.cfg:605
+#: data/translations/english.cfg:215
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
 
-#: data/translations/english.cfg:606
+#: data/translations/english.cfg:216
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
 
-#: data/translations/english.cfg:607
+#: data/translations/english.cfg:217
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -12775,7 +11787,7 @@ msgid ""
 "types."
 msgstr ""
 
-#: data/translations/english.cfg:608
+#: data/translations/english.cfg:218
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected uni "
@@ -12783,7 +11795,7 @@ msgid ""
 "the screen."
 msgstr ""
 
-#: data/translations/english.cfg:609
+#: data/translations/english.cfg:219
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -12791,83 +11803,83 @@ msgid ""
 "the 'cure' ability."
 msgstr ""
 
-#: data/translations/english.cfg:610
+#: data/translations/english.cfg:220
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
 
-#: data/translations/english.cfg:611
+#: data/translations/english.cfg:221
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
 "turn."
 msgstr ""
 
-#: data/translations/english.cfg:612
+#: data/translations/english.cfg:222
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
 "a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:613
+#: data/translations/english.cfg:223
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
-#: data/translations/english.cfg:614
+#: data/translations/english.cfg:224
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
 
-#: data/translations/english.cfg:615
+#: data/translations/english.cfg:225
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
 
-#: data/translations/english.cfg:616
+#: data/translations/english.cfg:226
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 
-#: data/translations/english.cfg:617
+#: data/translations/english.cfg:227
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
 
-#: data/translations/english.cfg:618
+#: data/translations/english.cfg:228
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
 
-#: data/translations/english.cfg:619
+#: data/translations/english.cfg:229
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 
-#: data/translations/english.cfg:620
+#: data/translations/english.cfg:230
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 
-#: data/translations/english.cfg:621
+#: data/translations/english.cfg:231
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
-#: data/translations/english.cfg:622
+#: data/translations/english.cfg:232
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -12875,7 +11887,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 
-#: data/translations/english.cfg:623
+#: data/translations/english.cfg:233
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -12883,657 +11895,78 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 
-#: data/translations/english.cfg:624
+#: data/translations/english.cfg:234
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 
-#: data/translations/english.cfg:625
+#: data/translations/english.cfg:235
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
 
-#: data/translations/english.cfg:626
+#: data/translations/english.cfg:236
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
 
-#: data/translations/english.cfg:627
+#: data/translations/english.cfg:237
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
 
-#: data/translations/english.cfg:628
+#: data/translations/english.cfg:238
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 
-#: data/translations/english.cfg:629
+#: data/translations/english.cfg:239
 msgid "Read the hotkeys list in the preferences menu."
 msgstr ""
 
-#: data/translations/english.cfg:630
+#: data/translations/english.cfg:240
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
 
-#: data/translations/english.cfg:631
+#: data/translations/english.cfg:241
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
 
-#: data/translations/english.cfg:632
+#: data/translations/english.cfg:242
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 
-#: data/translations/english.cfg:633
+#: data/translations/english.cfg:243
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
 
-#: data/translations/english.cfg:634
+#: data/translations/english.cfg:244
 msgid "Holy attacks are very powerful against undead."
 msgstr ""
 
-#: data/translations/english.cfg:635
+#: data/translations/english.cfg:245
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
 
-#: data/translations/english.cfg:636
+#: data/translations/english.cfg:246
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr ""
-
-#: data/translations/english.cfg:638 src/titlescreen.cpp:197
-msgid "-- The Tome of Wesnoth"
-msgstr ""
-
-#: data/translations/english.cfg:639 src/titlescreen.cpp:191
-msgid "More"
-msgstr ""
-
-#: data/translations/english.cfg:641 src/reports.cpp:312
-msgid "Enemy"
-msgstr ""
-
-#: data/translations/english.cfg:642 src/reports.cpp:314
-msgid "Allied"
-msgstr ""
-
-#: data/translations/english.cfg:643 src/reports.cpp:310
-msgid "Owned"
-msgstr ""
-
-#: data/translations/english.cfg:646 src/help.cpp:2061
-msgid "The Battle for Wesnoth Help"
-msgstr ""
-
-#: data/translations/english.cfg:647 src/help.cpp:1583
-msgid "< Back"
-msgstr ""
-
-#: data/translations/english.cfg:648 src/help.cpp:1584
-msgid "Forward >"
-msgstr ""
-
-#: data/translations/english.cfg:649 src/dialogs.cpp:436
-msgid "Import Saved Games"
-msgstr ""
-
-#: data/translations/english.cfg:650 src/dialogs.cpp:437
-msgid ""
-"Your saves directory contains some files from an old version of Battle for "
-"Wesnoth. Would you like to update these to the latest version? This may take "
-"some time."
-msgstr ""
-
-#: data/translations/english.cfg:651 src/dialogs.cpp:442
-msgid ""
-"Your saves directory contains some files that don't appear to have been "
-"generated by this version of Battle for Wesnoth. Would you like to register "
-"these files with the game?"
-msgstr ""
-
-#: data/tutorial.cfg:4
-msgid "Under Elves' Protection"
-msgstr ""
-
-#: data/tutorial.cfg:27
-msgid ""
-"Tasks:\n"
-"@1. Control two villages near the river.\n"
-"@2. Return to the castle and recruit units.\n"
-"@3. Defeat enemies, control western villages.\n"
-"@4. Defeat dark adepts.\n"
-"@5. Defeat walking corpses.\n"
-"@6. Defeat bandit leader.\n"
-"Defeat:\n"
-"#Death of Konrad\n"
-"#Death of Delfador\n"
-"#Death of any of the elvish leaders\n"
-"#Turns run out"
-msgstr ""
-
-#: data/tutorial.cfg:123
-msgid ""
-"After they found refuge in the Elvish lands, the elder mage Delfador tried "
-"to teach the young Konrad all the skills and knowledge he would need to be a "
-"leader among his people."
-msgstr ""
-
-#: data/tutorial.cfg:128
-msgid ""
-"Meanwhile in the nearby woods, a group of dark preachers made an unholy pact "
-"with some desperate bandits."
-msgstr ""
-
-#: data/tutorial.cfg:177
-msgid ""
-"It has been a great time here, Konrad. With our friends, the Elves, we have "
-"enjoyed many years in peace.\n"
-"\n"
-"But you are no longer a child, Konrad. Every lord must learn the ways of "
-"battle, and gain the ability to lead his army against enemies of any race. "
-"Soon it will be time to replace your wooden training sword with one of iron, "
-"and to claim your inheritance. But there are things that you must learn "
-"before that."
-msgstr ""
-
-#: data/tutorial.cfg:183
-msgid "What must I learn, Delfador?"
-msgstr ""
-
-#: data/tutorial.cfg:191
-msgid ""
-"Before entering any battle, you need to hire soldiers. Gold is necessary for "
-"that. There are villages throughout the land. Those of which you gain "
-"control (marked with a red flag) will give you an extra gold coin every turn "
-"and thus pay the cost of one of your units. To gain control of a village, "
-"simply move any of your units there.\n"
-"@EXERCISE\n"
-"Go to the nearest villages, so that with the earned gold we can continue our "
-"lesson."
-msgstr ""
-
-#: data/tutorial.cfg:197
-msgid "To move a unit first select it..."
-msgstr ""
-
-#: data/tutorial.cfg:204
-msgid ""
-".. then select its destination.\n"
-"If the destination is far away a unit may need more than one turn to reach "
-"it. The number shows how many turns it will take the unit to get there."
-msgstr ""
-
-#: data/tutorial.cfg:210
-msgid ""
-"After you are done with all the movements you need, click on the 'End Turn' "
-"button."
-msgstr ""
-
-#: data/tutorial.cfg:224
-msgid ""
-"This was only practice, Konrad, but remember that if it had been a real "
-"battle, you would now be dead."
-msgstr ""
-
-#: data/tutorial.cfg:236
-msgid ""
-"Konrad, I did my best to stop them, but you were obliged to protect me as "
-"well. That is the end of training for today."
-msgstr ""
-
-#: data/tutorial.cfg:251
-msgid "Indeed, Lofar, you were right. Humans can't lead armies."
-msgstr ""
-
-#: data/tutorial.cfg:266
-msgid "Konrad! You should have helped me!"
-msgstr ""
-
-#: data/tutorial.cfg:281
-msgid ""
-"Huh, human the leader! Wasn't telling you, Galdrad, it is waste of time?"
-msgstr ""
-
-#: data/tutorial.cfg:293
-msgid "Alright, Konrad. You were excellent today."
-msgstr ""
-
-#: data/tutorial.cfg:298
-msgid ""
-"This young commander deserves the crown of Wesnoth. Let him be our hope for "
-"peace with Wesnoth, Lofar."
-msgstr ""
-
-#: data/tutorial.cfg:303
-msgid ""
-"Congratulations, Human. Your performance today was impressive, I must admit."
-msgstr ""
-
-#: data/tutorial.cfg:308
-msgid ""
-"A mission of a great importance is before us. Asheviere must not remain "
-"queen any longer!"
-msgstr ""
-
-#: data/tutorial.cfg:323
-msgid ""
-"You did all the exercies, but four days was not enough for you to defeat "
-"bandits. I'm afraid you won't have so much time in real battle."
-msgstr ""
-
-#: data/tutorial.cfg:328
-msgid ""
-"Do not be so cautious, Konrad. Go yourself to the fight, if there is no risk "
-"to your life."
-msgstr ""
-
-#: data/tutorial.cfg:335
-msgid ""
-"You look miserable, Konrad. Four days have passed and you have not completed "
-"the exercises. In a real battle you must act quickly, before your enemies "
-"summon reinforcements. We will have to try again another time."
-msgstr ""
-
-#: data/tutorial.cfg:362
-msgid "Hmmm...this is Delfador's...I wonder what it is used for..."
-msgstr ""
-
-#: data/tutorial.cfg:363
-msgid "A human's magical staff -- I'd better not touch it!"
-msgstr ""
-
-#: data/tutorial.cfg:414
-msgid ""
-"This is my old staff. Although not very useful at close range, its magic may "
-"still prove deadly to your enemies. Its powers are waning, so it will not "
-"last long. Do not be afraid to use this weapon now - I will make sure you do "
-"not hurt yourself."
-msgstr ""
-
-#: data/tutorial.cfg:420
-msgid ""
-"Magic items could help you in your quest, but you should be aware that some "
-"items can only be picked up by certain units."
-msgstr ""
-
-#: data/tutorial.cfg:477
-msgid "Surprise! You have walked into our trap, foolish boy!"
-msgstr ""
-
-#: data/tutorial.cfg:482
-msgid "Konrad!"
-msgstr ""
-
-#: data/tutorial.cfg:487
-msgid "Delfador! Help me!"
-msgstr ""
-
-#: data/tutorial.cfg:492
-msgid ""
-"Stay calm, Konrad. I am coming to save you. Meanwhile try to defend "
-"yourself. When you are in a village they have little chance to hurt you. "
-"Look -- one of them stays in the water. Try to hit him!"
-msgstr ""
-
-#: data/tutorial.cfg:499
-msgid ""
-"Fighting is the best way to improve your skills. When you get enough "
-"experience (XP) you advance to become a better fighter.\n"
-"\n"
-"When you attack an enemy unit, you may choose which weapon you want to fight "
-"with. For every weapon, there are three important numbers shown: the damage "
-"it causes, the number of attempts you make with it, and the probability of "
-"hitting the enemy. The opponent's values are likewise displayed."
-msgstr ""
-
-#: data/tutorial.cfg:505
-msgid "To attack with a unit, first select it..."
-msgstr ""
-
-#: data/tutorial.cfg:512
-msgid ""
-"...then click to select a target.\n"
-"Once you do this you have to choose the weapon."
-msgstr ""
-
-#: data/tutorial.cfg:527
-msgid "Well done! This is Garard's nephew!"
-msgstr ""
-
-#: data/tutorial.cfg:541
-msgid "Excellent, young human!"
-msgstr ""
-
-#: data/tutorial.cfg:571
-msgid ""
-"If you are finished with the villages, go back to the castle to recruit your "
-"soldiers. Remember that in a real battle, you will probably start with some "
-"money to recruit soldiers at the beginning."
-msgstr ""
-
-#: data/tutorial.cfg:578
-msgid ""
-"To recruit units you must place your main leader in the keep tile of the "
-"castle.\n"
-"If you move away from it you will be unable to recruit or recall units."
-msgstr ""
-
-#: data/tutorial.cfg:596
-msgid "Look behind you!"
-msgstr ""
-
-#: data/tutorial.cfg:617
-msgid "There is one still hiding there!"
-msgstr ""
-
-#: data/tutorial.cfg:647
-msgid "Now you are ready to recruit units (right click and select Recruit)."
-msgstr ""
-
-#: data/tutorial.cfg:652
-msgid "So how should I choose what kind of soldiers to hire, Delfador?"
-msgstr ""
-
-#: data/tutorial.cfg:657
-msgid ""
-"You have to carefully review their skills. Early on, you want fast units to "
-"sieze as many villages as possible. After that, fighters should probably "
-"make up the bulk of your army. Remember: all Elvish units fight very well in "
-"the forest; horsemen are excellent on open ground; and mages are good for "
-"support and can be used much like archers. If you can get your mages more "
-"experienced, they can be especially powerful."
-msgstr ""
-
-#: data/tutorial.cfg:674
-msgid "Go to the two villages near the river."
-msgstr ""
-
-#: data/tutorial.cfg:717
-msgid "Now you have control over the majority of villages here. Well done!"
-msgstr ""
-
-#: data/tutorial.cfg:736
-msgid "So far, so good, but we need more of them."
-msgstr ""
-
-#: data/tutorial.cfg:764
-msgid "Excellent, human commander!"
-msgstr ""
-
-#: data/tutorial.cfg:779
-msgid ""
-"Well, fighter is an excellent choice for every battle, but I would use "
-"archers here instead. They are better shooters than fighters."
-msgstr ""
-
-#: data/tutorial.cfg:794
-msgid ""
-"Scouts are known for their horse riding. Here I would rather use archers, "
-"who can defeat the enemy before he is close enough to respond."
-msgstr ""
-
-#: data/tutorial.cfg:820
-msgid "This task is complete!"
-msgstr ""
-
-#: data/tutorial.cfg:834
-msgid ""
-"Archers are too weak to defeat poachers with swords. Attempting to attack "
-"one at a long range may be the last act of this archer's life!"
-msgstr ""
-
-#: data/tutorial.cfg:868
-msgid "Well done!"
-msgstr ""
-
-#: data/tutorial.cfg:873
-msgid ""
-"Now the last excercise. To continue, recruit some mages, so they can show "
-"you their skills."
-msgstr ""
-
-#: data/tutorial.cfg:923
-msgid "Good work, Konrad!"
-msgstr ""
-
-#: data/tutorial.cfg:928
-msgid "You are now a real commander, Konrad."
-msgstr ""
-
-#: data/tutorial.cfg:933
-msgid "Thank you, Delfador. It wasn't as difficult as I had thought!"
-msgstr ""
-
-#: data/tutorial.cfg:940
-msgid ""
-"Now a real test of your commanding skills: in the castle north-east of ours, "
-"a bandit leader is preparing to take Elven land. Help Galdrad defeat this "
-"evil leader.\n"
-"There are also Elvish friends of ours who want to help you (use menu button "
-"and Unit List to find them).\n"
-"You are now allowed to recruit all units. Good luck!"
-msgstr ""
-
-#: data/tutorial.cfg:1055
-msgid ""
-"You have recruited Scouts. Elvish Scouts aren't very good in combat although "
-"they can sieze large territories in a short time. They are excellent at "
-"capturing villages.\n"
-"@EXERCISE\n"
-"Take over the western villages to get more gold."
-msgstr ""
-
-#: data/tutorial.cfg:1078
-msgid ""
-"You have recruited Archers. Elvish Archers are weak in hand-to-hand combat, "
-"but are excellent shooters. Send your archers against enemies who don't have "
-"long range weapons and avoid leaving the forests and villages.\n"
-"Archers advance to Marksman or Rangers, who are deadly with their long bows "
-"and swords.\n"
-"@EXERCISE\n"
-"We have prepared a practice target for you -- Gerlog, the thief, due south "
-"of your castle."
-msgstr ""
-
-#: data/tutorial.cfg:1108
-msgid ""
-"You have recruited Fighters. They are well prepared for combat in both close "
-"and long range. As all the Elves, they defend themselves well in forests and "
-"villages.\n"
-"A Fighter's career ends at Marshal or Champion, both well prepared to fight "
-"against all types of enemies. Marshals can also lead soldiers in battle.\n"
-"@EXERCISE\n"
-"To test Fighters, send them against Kharhbrah, the Poacher on the brigde."
-msgstr ""
-
-#: data/tutorial.cfg:1144
-msgid ""
-"Horses are very fast on roads and grass. Therefore Horsemen have an "
-"advantage on that terrain."
-msgstr ""
-
-#: data/tutorial.cfg:1149
-msgid ""
-"Clearly, humans are less talented than the Elves. I'm doubful about "
-"usefulness of horsemen on the battlefield."
-msgstr ""
-
-#: data/tutorial.cfg:1156
-msgid ""
-"Horsemen advance to Paladins, great warriors who can also heal their "
-"companions in battle.\n"
-"@EXERCISE\n"
-"There is practice target on the clearing, south-east of your castle. Go "
-"there and wipe the area out of our enemies."
-msgstr ""
-
-#: data/tutorial.cfg:1212
-msgid ""
-"Humans are famous for their deep knowledge about the world. Mages are the "
-"elite of human researchers -- they are able to summon forces of nature and "
-"use them against any fool who would oppose them. Because of magic, their "
-"flaming missiles almost always hit the target.\n"
-"Mages are physically weak. As they gain in experience, they specialize "
-"either in white magic as Mages of Light, or in other kinds of forces to "
-"become Great Mages.\n"
-"@EXERCISE\n"
-"On the other side of the road, Undead have spread. Make sure they don't move "
-"another step further!"
-msgstr ""
-
-#: data/tutorial.cfg:1280
-msgid ""
-"All right. In the next lesson, you will learn how to command horsemen. Now "
-"recruit some of them."
-msgstr ""
-
-#: data/tutorial.cfg:1369
-msgid ""
-"Chaotic creatures are stronger at night. Lawful ones are stronger at day. "
-"Neutral creatures' strength is not changed by daytime."
-msgstr ""
-
-#: data/tutorial.cfg:1391
-msgid "Hurry up! You should have been here back a long time ago!"
-msgstr ""
-
-#: data/tutorial.cfg:1410
-msgid ""
-"What are you doing, Konrad?! One day has passed and you have not completed a "
-"single task!"
-msgstr ""
-
-#: data/tutorial.cfg:1423
-msgid "You should have completed the second practice. Make haste!"
-msgstr ""
-
-#: data/tutorial.cfg:1440
-msgid "Konrad, get on with it! They are not so many."
-msgstr ""
-
-#: data/tutorial.cfg:1453
-msgid "All right, but you're wasting too much time."
-msgstr ""
-
-#: data/tutorial.cfg:1470
-msgid "Konrad! This is your last warning -- put an end to them now!"
-msgstr ""
-
-#: data/tutorial.cfg:1483
-msgid "This is a simple task! Why are you performing so slowly!"
-msgstr ""
-
-#: data/tutorial.cfg:1500
-msgid "Well, hurry up!"
-msgstr ""
-
-#: data/tutorial.cfg:1513
-msgid "So far, so good, but hurry up! I have one more task to do for you."
-msgstr ""
-
-#: data/tutorial.cfg:1530
-msgid "You have too little time now, I must say."
-msgstr ""
-
-#: data/tutorial.cfg:1543
-msgid "Only eight turns left, Konrad."
-msgstr ""
-
-#: data/tutorial.cfg:1571
-msgid "You should complete your training before attacking the bandit leader."
-msgstr ""
-
-#: data/tutorial2.cfg:3
-msgid "The Raiders Camp"
-msgstr ""
-
-#: data/tutorial2.cfg:20
-msgid ""
-"Victory:\n"
-"@Defeat Minueth\n"
-"Defeat:\n"
-"#Death of Konrad\n"
-"#Turns run out"
-msgstr ""
-
-#: data/tutorial2.cfg:82
-msgid ""
-"Now, we have arrived at their camp. I am going to teach you about recall."
-msgstr ""
-
-#: data/tutorial2.cfg:88
-msgid "Recall?"
-msgstr ""
-
-#: data/tutorial2.cfg:94
-msgid ""
-"Soldiers that have fought for you in past battles - and survived - may be "
-"called again to serve you."
-msgstr ""
-
-#: data/tutorial2.cfg:100
-msgid "Ahhh, I see. So I can have more experienced soldiers at my side."
-msgstr ""
-
-#: data/tutorial2.cfg:106
-msgid "Yes, that is the point."
-msgstr ""
-
-#: data/tutorial2.cfg:115
-msgid ""
-"I noticed that the bandits have the aid of some dark initiates and their "
-"undead minions."
-msgstr ""
-
-#: data/tutorial2.cfg:120
-msgid "Yes, I could see them. Those unholy creatures look nasty!"
-msgstr ""
-
-#: data/tutorial2.cfg:126
-msgid ""
-"And they are dangerous too. Their claws can poison your troops. Perhaps you "
-"should recruit some Shamans to your side."
-msgstr ""
-
-#: data/tutorial2.cfg:133
-msgid "Units with healing power heal units near around them."
-msgstr ""
-
-#: data/tutorial2.cfg:142
-msgid ""
-"Poisoned units lose hitpoints every turn until they are cured. \n"
-"The heal skill can only hold off the poison's effects for one turn.\n"
-"You must use a village or a unit with the cure skill to eliminate the poison."
-msgstr ""
-
-#: data/tutorial2.cfg:159
-msgid ""
-"A nice try, Konrad, but it seems your skills still have much to be improved."
-msgstr ""
-
-#: data/tutorial2.cfg:171
-msgid "They caught me. You should have been more cautious."
-msgstr ""
-
-#: data/tutorial2.cfg:183
-msgid ""
-"You have bested all your enemies, Konrad. Congratulations on your skill."
 msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
@@ -13582,20 +12015,20 @@ msgid "magic"
 msgstr ""
 
 #: data/units/Ancient_Lich.cfg:34 data/units/Arch_Mage.cfg:42
-#: data/units/Arch_Mage.cfg:120 data/units/Dark_Adept.cfg:24
+#: data/units/Arch_Mage.cfg:121 data/units/Dark_Adept.cfg:24
 #: data/units/Deathmaster.cfg:37 data/units/Demilich.cfg:33
 #: data/units/Drake_Mage.cfg:68 data/units/Drake_Warmage.cfg:78
 #: data/units/Dwarvish_Runemaster.cfg:43 data/units/Elder_Mage.cfg:41
 #: data/units/Elvish_Druid.cfg:63 data/units/Elvish_Lord.cfg:38
 #: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:72
 #: data/units/Fireball.cfg:21 data/units/Great_Mage.cfg:42
-#: data/units/Great_Mage.cfg:117 data/units/Initiate.cfg:21
-#: data/units/Lich.cfg:34 data/units/Mage.cfg:39 data/units/Mage.cfg:105
-#: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:104
+#: data/units/Great_Mage.cfg:118 data/units/Initiate.cfg:21
+#: data/units/Lich.cfg:34 data/units/Mage.cfg:39 data/units/Mage.cfg:106
+#: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
 #: data/units/Necromancer.cfg:37 data/units/Red_Mage.cfg:42
-#: data/units/Red_Mage.cfg:110 data/units/Sea_Hag.cfg:31
-#: data/units/Silver_Mage.cfg:44 data/units/Silver_Mage.cfg:130
-#: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:102
+#: data/units/Red_Mage.cfg:111 data/units/Sea_Hag.cfg:31
+#: data/units/Silver_Mage.cfg:44 data/units/Silver_Mage.cfg:131
+#: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
 msgid "magical"
 msgstr ""
 
@@ -13614,36 +12047,36 @@ msgid "crush"
 msgstr ""
 
 #: data/units/Ancient_Wose.cfg:18 data/units/Arch_Mage.cfg:24
-#: data/units/Arch_Mage.cfg:102 data/units/Bandit.cfg:20
-#: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:28
+#: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
+#: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:29
 #: data/units/Cuttle_Fish.cfg:20 data/units/Deathmaster.cfg:20
 #: data/units/Drake_Beak.cfg:38 data/units/Drake_Mage.cfg:20
 #: data/units/Drake_Petit.cfg:38 data/units/Drake_Slasher.cfg:76
 #: data/units/Drake_Warmage.cfg:20 data/units/Drake_Worker.cfg:20
-#: data/units/Dwarvish_Dragonguard.cfg:29
-#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Elder_Mage.cfg:23
-#: data/units/Elder_Wose.cfg:19 data/units/Elvish_Druid.cfg:23
-#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shaman.cfg:25
-#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:25
-#: data/units/Elvish_Shyde.cfg:51 data/units/Fire_Dragon.cfg:41
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
-#: data/units/Galleon.cfg:17 data/units/Gate.cfg:24
+#: data/units/Dwarvish_Dragonguard.cfg:29 data/units/Dwarvish_Fighter.cfg:44
+#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Dwarvish_Steelclad.cfg:45
+#: data/units/Elder_Mage.cfg:23 data/units/Elder_Wose.cfg:19
+#: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Druid.cfg:42
+#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
+#: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
+#: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
+#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:17 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
-#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:99
-#: data/units/Heavy_Infantry.cfg:21 data/units/Heavy_Infantryman.cfg:20
-#: data/units/Iron_Mauler.cfg:20 data/units/Mage_of_Light.cfg:27
-#: data/units/Mage_of_Light.cfg:86 data/units/Mudcrawler.cfg:22
-#: data/units/Necromancer.cfg:20 data/units/Noble_Youth.cfg:22
-#: data/units/Outlaw.cfg:20 data/units/Outlaw.cfg:38
-#: data/units/Outlaw_Female.cfg:23 data/units/Outlaw_Female.cfg:41
-#: data/units/Outlaw_Princess.cfg:25 data/units/Outlaw_Princess.cfg:43
+#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
+#: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantry.cfg:21
+#: data/units/Heavy_Infantryman.cfg:20 data/units/Iron_Mauler.cfg:20
+#: data/units/Mage_of_Light.cfg:27 data/units/Mage_of_Light.cfg:87
+#: data/units/Mudcrawler.cfg:22 data/units/Necromancer.cfg:20
+#: data/units/Noble_Youth.cfg:22 data/units/Outlaw.cfg:21
+#: data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:94 data/units/Outlaw.cfg:112
+#: data/units/Outlaw_Princess.cfg:24 data/units/Outlaw_Princess.cfg:42
 #: data/units/Outlaw_Queen.cfg:25 data/units/Outlaw_Queen.cfg:43
 #: data/units/Sea_Hag.cfg:29 data/units/Shock_Trooper.cfg:20
-#: data/units/Silver_Mage.cfg:26 data/units/Silver_Mage.cfg:112
+#: data/units/Silver_Mage.cfg:26 data/units/Silver_Mage.cfg:113
 #: data/units/Skeleton_Archer.cfg:24 data/units/Soul_Shooter.cfg:25
 #: data/units/Soulless.cfg:20 data/units/Tentacle.cfg:22
-#: data/units/Thug.cfg:20 data/units/Troll.cfg:21
+#: data/units/Thug.cfg:20 data/units/Troll.cfg:21 data/units/Troll_Hero.cfg:21
 #: data/units/Troll_Warrior.cfg:20 data/units/Troll_Whelp.cfg:21
 #: data/units/Walking_Corpse.cfg:20 data/units/Warrior_King.cfg:23
 #: data/units/Wose.cfg:20 data/units/Yeti.cfg:34 data/units/Youth.cfg:22
@@ -13660,25 +12093,25 @@ msgid ""
 "enemies."
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:101
+#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
 #: data/units/Deathmaster.cfg:19 data/units/Drake_Mage.cfg:19
 #: data/units/Drake_Warmage.cfg:19 data/units/Elder_Mage.cfg:22
 #: data/units/Elvish_Druid.cfg:22 data/units/Elvish_Shaman.cfg:24
-#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:98
+#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:99
 #: data/units/Necromancer.cfg:19 data/units/Silver_Mage.cfg:25
-#: data/units/Silver_Mage.cfg:111
+#: data/units/Silver_Mage.cfg:112
 msgid "staff"
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:117
+#: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
 #: data/units/Elvish_Lord.cfg:36 data/units/Great_Mage.cfg:39
-#: data/units/Great_Mage.cfg:114 data/units/Red_Mage.cfg:39
-#: data/units/Red_Mage.cfg:107 data/units/Silver_Mage.cfg:41
-#: data/units/Silver_Mage.cfg:127
+#: data/units/Great_Mage.cfg:115 data/units/Red_Mage.cfg:39
+#: data/units/Red_Mage.cfg:108 data/units/Silver_Mage.cfg:41
+#: data/units/Silver_Mage.cfg:128
 msgid "fireball"
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:118
+#: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Drake_Burner.cfg:44 data/units/Drake_Fighter.cfg:44
 #: data/units/Drake_Fire.cfg:43 data/units/Drake_Flameheart.cfg:22
 #: data/units/Drake_Flameheart.cfg:60 data/units/Drake_Guard.cfg:46
@@ -13687,10 +12120,10 @@ msgstr ""
 #: data/units/Elder_Mage.cfg:39 data/units/Elvish_Lord.cfg:37
 #: data/units/Fire_Dragon.cfg:59 data/units/Fireball.cfg:18
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:20
-#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:115
-#: data/units/Mage.cfg:37 data/units/Mage.cfg:103 data/units/Red_Mage.cfg:40
-#: data/units/Red_Mage.cfg:108 data/units/Silver_Mage.cfg:42
-#: data/units/Silver_Mage.cfg:128
+#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:116
+#: data/units/Mage.cfg:37 data/units/Mage.cfg:104 data/units/Red_Mage.cfg:40
+#: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:42
+#: data/units/Silver_Mage.cfg:129
 msgid "fire"
 msgstr ""
 
@@ -13699,7 +12132,8 @@ msgid "Assassin"
 msgstr ""
 
 #: data/units/Assassin.cfg:16 data/units/Duelist.cfg:16
-#: data/units/Fencer.cfg:16 data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
+#: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:17
+#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
 #: data/units/Saurian_Warrior.cfg:16
 msgid "skirmisher"
 msgstr ""
@@ -13713,13 +12147,13 @@ msgstr ""
 
 #: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:28
 #: data/units/Dwarvish_Thunderguard.cfg:28 data/units/Mage.cfg:20
-#: data/units/Mage.cfg:86 data/units/Orcish_Archer.cfg:20
+#: data/units/Mage.cfg:87 data/units/Orcish_Archer.cfg:20
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Shaman.cfg:18
 #: data/units/Orcish_Shaman.cfg:61 data/units/Orcish_Shaman.cfg:104
 #: data/units/Orcish_Slayer.cfg:19 data/units/Poacher.cfg:24
-#: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:91
+#: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:92
 #: data/units/Rogue.cfg:20 data/units/Thief.cfg:19 data/units/Trapper.cfg:24
-#: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:83
+#: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:84
 msgid "dagger"
 msgstr ""
 
@@ -13727,7 +12161,7 @@ msgstr ""
 #: data/units/Battle_Princess.cfg:23 data/units/Blood_Bat.cfg:20
 #: data/units/Bowman.cfg:21 data/units/Cavalier.cfg:28
 #: data/units/Cavalry.cfg:31 data/units/Cavalryman.cfg:29
-#: data/units/Cave_Spider.cfg:19 data/units/Commander.cfg:24
+#: data/units/Cave_Spider.cfg:20 data/units/Commander.cfg:24
 #: data/units/Dark_Spirit.cfg:20 data/units/Death_Knight.cfg:20
 #: data/units/Direwolf_Rider.cfg:19 data/units/Direwolf_Rider.cfg:31
 #: data/units/Dragoon.cfg:28 data/units/Drake_Burner.cfg:21
@@ -13755,19 +12189,20 @@ msgstr ""
 #: data/units/Gryphon_Rider.cfg:20 data/units/Halbardier.cfg:27
 #: data/units/Knight.cfg:21 data/units/Lieutenant.cfg:22
 #: data/units/Longbowman.cfg:22 data/units/Lord.cfg:23 data/units/Mage.cfg:21
-#: data/units/Mage.cfg:87 data/units/Master_Bowman.cfg:21
+#: data/units/Mage.cfg:88 data/units/Master_Bowman.cfg:21
 #: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
 #: data/units/Noble_Commander.cfg:24 data/units/Noble_Fighter.cfg:21
 #: data/units/Noble_Lord.cfg:23 data/units/Ogre.cfg:19
 #: data/units/Orcish_Archer.cfg:21 data/units/Orcish_Assassin.cfg:20
 #: data/units/Orcish_Assassin.cfg:37 data/units/Orcish_Crossbow.cfg:22
 #: data/units/Orcish_Crossbowman.cfg:20 data/units/Orcish_Grunt.cfg:20
-#: data/units/Orcish_Ruler.cfg:21 data/units/Orcish_Shaman.cfg:19
-#: data/units/Orcish_Shaman.cfg:62 data/units/Orcish_Shaman.cfg:105
-#: data/units/Orcish_Slayer.cfg:20 data/units/Orcish_Slayer.cfg:42
+#: data/units/Orcish_Leader.cfg:22 data/units/Orcish_Ruler.cfg:22
+#: data/units/Orcish_Shaman.cfg:19 data/units/Orcish_Shaman.cfg:62
+#: data/units/Orcish_Shaman.cfg:105 data/units/Orcish_Slayer.cfg:20
+#: data/units/Orcish_Slayer.cfg:42 data/units/Orcish_Sovereign.cfg:22
 #: data/units/Orcish_Warlord.cfg:19 data/units/Orcish_Warrior.cfg:20
 #: data/units/Poacher.cfg:25 data/units/Princess.cfg:23
-#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:92
+#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:93
 #: data/units/Revenant.cfg:24 data/units/Rogue.cfg:21 data/units/Rogue.cfg:39
 #: data/units/Royal_Guard.cfg:20 data/units/Scout.cfg:20
 #: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:20
@@ -13777,7 +12212,7 @@ msgstr ""
 #: data/units/Swordsman.cfg:20 data/units/Thief.cfg:20
 #: data/units/Trapper.cfg:25 data/units/Vampire_Bat.cfg:20
 #: data/units/Vampire_Lady.cfg:20 data/units/White_Mage.cfg:26
-#: data/units/White_Mage.cfg:84 data/units/Wolf_Rider.cfg:21
+#: data/units/White_Mage.cfg:85 data/units/Wolf_Rider.cfg:21
 #: data/units/Wraith.cfg:20 data/units/Young_Ogre.cfg:19
 msgid "blade"
 msgstr ""
@@ -13791,7 +12226,7 @@ msgstr ""
 msgid "knife"
 msgstr ""
 
-#: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:23
+#: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
 #: data/units/Cuttle_Fish.cfg:36 data/units/Direwolf_Rider.cfg:35
 #: data/units/Ghoul.cfg:24 data/units/Giant_Scorpion.cfg:22
 #: data/units/Goblin_Direwolver.cfg:37 data/units/Necrophage.cfg:24
@@ -13809,18 +12244,18 @@ msgid ""
 msgstr ""
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Slasher.cfg:75
-#: data/units/Drake_Worker.cfg:19 data/units/Heavy_Infantry.cfg:20
-#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
-#: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:85
-#: data/units/Outlaw.cfg:19 data/units/Outlaw_Female.cfg:22
-#: data/units/Outlaw_Princess.cfg:24 data/units/Outlaw_Queen.cfg:24
-#: data/units/Shock_Trooper.cfg:19 data/units/Troll_Warrior.cfg:19
-#: data/units/Warrior_King.cfg:22
+#: data/units/Drake_Worker.cfg:19 data/units/Great_Troll.cfg:20
+#: data/units/Heavy_Infantry.cfg:20 data/units/Heavy_Infantryman.cfg:19
+#: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:26
+#: data/units/Mage_of_Light.cfg:86 data/units/Outlaw.cfg:20
+#: data/units/Outlaw.cfg:93 data/units/Outlaw_Princess.cfg:23
+#: data/units/Outlaw_Queen.cfg:24 data/units/Shock_Trooper.cfg:19
+#: data/units/Troll_Warrior.cfg:19 data/units/Warrior_King.cfg:22
 msgid "mace"
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:3
-msgid "Battle Princess"
+#: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
+msgid "Princess"
 msgstr ""
 
 #: data/units/Battle_Princess.cfg:17
@@ -13855,7 +12290,8 @@ msgstr ""
 #: data/units/Master_Bowman.cfg:20 data/units/Noble_Commander.cfg:23
 #: data/units/Noble_Fighter.cfg:20 data/units/Noble_Lord.cfg:22
 #: data/units/Ogre.cfg:18 data/units/Orcish_Grunt.cfg:19
-#: data/units/Orcish_Ruler.cfg:20 data/units/Orcish_Warlord.cfg:18
+#: data/units/Orcish_Leader.cfg:21 data/units/Orcish_Ruler.cfg:21
+#: data/units/Orcish_Sovereign.cfg:21 data/units/Orcish_Warlord.cfg:18
 #: data/units/Orcish_Warrior.cfg:19 data/units/Paladin.cfg:24
 #: data/units/Princess.cfg:22 data/units/Royal_Guard.cfg:19
 #: data/units/Scout.cfg:19 data/units/Sea_Orc.cfg:19
@@ -13875,7 +12311,7 @@ msgid ""
 "beasts is tainted red with the blood of their victims."
 msgstr ""
 
-#: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:18
+#: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:20
 #: data/units/Goblin_Knight.cfg:18 data/units/Sea_Serpent.cfg:18
 #: data/units/Vampire_Bat.cfg:19 data/units/Wolf_Rider.cfg:20
@@ -13909,7 +12345,8 @@ msgstr ""
 #: data/units/Longbowman.cfg:38 data/units/Lord.cfg:39
 #: data/units/Master_Bowman.cfg:32 data/units/Noble_Commander.cfg:41
 #: data/units/Noble_Lord.cfg:40 data/units/Orcish_Archer.cfg:36
-#: data/units/Orcish_Ruler.cfg:31 data/units/Orcish_Warlord.cfg:29
+#: data/units/Orcish_Leader.cfg:37 data/units/Orcish_Ruler.cfg:38
+#: data/units/Orcish_Sovereign.cfg:42 data/units/Orcish_Warlord.cfg:29
 #: data/units/Poacher.cfg:41 data/units/Skeleton_Archer.cfg:40
 #: data/units/Soul_Shooter.cfg:37 data/units/Trapper.cfg:41
 msgid "bow"
@@ -13939,9 +12376,10 @@ msgstr ""
 #: data/units/Merman_Lord.cfg:21 data/units/Naga.cfg:21
 #: data/units/Noble_Commander.cfg:42 data/units/Noble_Lord.cfg:41
 #: data/units/Orcish_Archer.cfg:37 data/units/Orcish_Crossbow.cfg:40
-#: data/units/Orcish_Crossbowman.cfg:39 data/units/Orcish_Ruler.cfg:32
-#: data/units/Orcish_Shaman.cfg:26 data/units/Orcish_Shaman.cfg:69
-#: data/units/Orcish_Shaman.cfg:112 data/units/Orcish_Warlord.cfg:30
+#: data/units/Orcish_Crossbowman.cfg:39 data/units/Orcish_Leader.cfg:38
+#: data/units/Orcish_Ruler.cfg:39 data/units/Orcish_Shaman.cfg:26
+#: data/units/Orcish_Shaman.cfg:69 data/units/Orcish_Shaman.cfg:112
+#: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
 #: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:20
 #: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
@@ -13983,17 +12421,6 @@ msgstr ""
 msgid "pistol"
 msgstr ""
 
-#: data/units/Cavalry.cfg:5
-msgid "Cavalry"
-msgstr ""
-
-#: data/units/Cavalry.cfg:27
-msgid ""
-"The best riders in Wesnoth are recruited into the military to become members "
-"of the cavalry. This strictly disciplined force is especially suited to "
-"capturing and holding villages."
-msgstr ""
-
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
 msgstr ""
@@ -14009,18 +12436,18 @@ msgstr ""
 msgid "Giant Spider"
 msgstr ""
 
-#: data/units/Cave_Spider.cfg:15
+#: data/units/Cave_Spider.cfg:16
 msgid ""
 "Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
 "They can bite at close range, thereby poisoning their enemies, and also can "
 "attack with a web at long range, slowing their foes down."
 msgstr ""
 
-#: data/units/Cave_Spider.cfg:27
+#: data/units/Cave_Spider.cfg:28
 msgid "web"
 msgstr ""
 
-#: data/units/Cave_Spider.cfg:37 data/units/Elvish_Druid.cfg:43
+#: data/units/Cave_Spider.cfg:38 data/units/Elvish_Druid.cfg:43
 #: data/units/Elvish_Shaman.cfg:45 data/units/Elvish_Shyde.cfg:52
 #: data/units/Goblin_Pillager.cfg:37
 msgid "slow"
@@ -14068,6 +12495,11 @@ msgstr ""
 msgid "gaze"
 msgstr ""
 
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:705 src/actions.cpp:842
+#: src/reports.cpp:122
+msgid "stone"
+msgstr ""
+
 #: data/units/Commander.cfg:3
 msgid "Commander"
 msgstr ""
@@ -14077,7 +12509,8 @@ msgstr ""
 #: data/units/Fire_Dragon.cfg:7 data/units/General.cfg:16
 #: data/units/Lieutenant.cfg:16 data/units/Lord.cfg:10
 #: data/units/Noble_Commander.cfg:10 data/units/Noble_Lord.cfg:10
-#: data/units/Orcish_Ruler.cfg:8 data/units/Princess.cfg:17
+#: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
+#: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:17
 #: data/units/Warrior_King.cfg:17 src/actions.cpp:359 src/actions.cpp:486
 msgid "leadership"
 msgstr ""
@@ -14214,7 +12647,7 @@ msgid "claws"
 msgstr ""
 
 #: data/units/Dragoon.cfg:3
-msgid "Dragoon "
+msgid "Dragoon"
 msgstr ""
 
 #: data/units/Dragoon.cfg:24
@@ -14381,15 +12814,19 @@ msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:16
 msgid ""
-"Dwarvish Fighters wield mighty battle axes, which make them feared opponents "
-"in close range combat. They are excellent in mountainous terrain or "
-"underground. Though not swift, their power and endurance more than "
-"compensate."
+"Dwarvish Fighters wield mighty battle axes and hammers, which make them "
+"feared opponents in close range combat. They are excellent in mountainous "
+"terrain or underground. Though not swift, their power and endurance more "
+"than compensate."
 msgstr ""
 
 #: data/units/Dwarvish_Fighter.cfg:26 data/units/Revenant.cfg:23
 #: data/units/Skeleton.cfg:24
 msgid "axe"
+msgstr ""
+
+#: data/units/Dwarvish_Fighter.cfg:43 data/units/Dwarvish_Steelclad.cfg:44
+msgid "hammer"
 msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:3
@@ -14508,7 +12945,6 @@ msgid "Elvish Avenger"
 msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:17 data/units/Elvish_Ranger.cfg:16
-#: data/units/Outlaw_Princess.cfg:17
 msgid "ambush"
 msgstr ""
 
@@ -14547,7 +12983,7 @@ msgid "Elvish Druid"
 msgstr ""
 
 #: data/units/Elvish_Druid.cfg:18 data/units/Elvish_Shyde.cfg:19
-#: data/units/White_Mage.cfg:9 data/units/White_Mage.cfg:67
+#: data/units/White_Mage.cfg:9 data/units/White_Mage.cfg:68
 msgid "cures"
 msgstr ""
 
@@ -14736,7 +13172,7 @@ msgstr ""
 msgid "Fighter"
 msgstr ""
 
-#: data/units/Fighter.cfg:17 data/units/Noble_Fighter.cfg:17
+#: data/units/Fighter.cfg:17
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to attack "
 "from enemies. However they have the potential to become great warriors one "
@@ -14784,11 +13220,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
+#: data/units/Troll_Hero.cfg:20
 msgid "club"
 msgstr ""
 
-#: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:37
-#: data/units/Outlaw_Female.cfg:40 data/units/Outlaw_Princess.cfg:42
+#: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:38
+#: data/units/Outlaw.cfg:111 data/units/Outlaw_Princess.cfg:41
 #: data/units/Outlaw_Queen.cfg:42
 msgid "sling"
 msgstr ""
@@ -14807,6 +13244,10 @@ msgstr ""
 
 #: data/units/Gate.cfg:21
 msgid "bump"
+msgstr ""
+
+#: data/units/General.cfg:3 src/preferences.cpp:898
+msgid "General"
 msgstr ""
 
 #: data/units/General.cfg:18
@@ -14874,17 +13315,6 @@ msgstr ""
 msgid "pincers"
 msgstr ""
 
-#: data/units/Goblin_Direwolver.cfg:5
-msgid "Goblin Direwolver"
-msgstr ""
-
-#: data/units/Goblin_Direwolver.cfg:17
-msgid ""
-"Goblin Direwolvers ride the fastest mounts to be found in Wesnoth, dreadful "
-"giant wolves with poisoned claws. Goblin Direwolvers are fearsome and "
-"merciless enemies."
-msgstr ""
-
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
 msgstr ""
@@ -14938,6 +13368,23 @@ msgid ""
 "in power."
 msgstr ""
 
+#: data/units/Great_Troll.cfg:3
+msgid "Great Troll"
+msgstr ""
+
+#: data/units/Great_Troll.cfg:7 data/units/Tentacle.cfg:7
+#: data/units/Troll.cfg:7 data/units/Troll_Hero.cfg:7
+#: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
+msgid "regenerates"
+msgstr ""
+
+#: data/units/Great_Troll.cfg:16
+msgid ""
+"Great Trolls are strong and brutal humanoid monsters with the amazing "
+"ability to regenerate themselves, so that they recover from wounds on their "
+"own, even during battle."
+msgstr ""
+
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
 msgstr ""
@@ -14987,23 +13434,19 @@ msgstr ""
 msgid "halberd"
 msgstr ""
 
-#: data/units/Halbardier.cfg:23 data/units/Pikeman.cfg:24
-#: data/units/Spearman.cfg:24
+#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:31
+#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
 msgid "firststrike"
-msgstr ""
-
-#: data/units/Heavy_Infantry.cfg:5
-msgid "Heavy Infantry"
-msgstr ""
-
-#: data/units/Heavy_Infantry.cfg:16 data/units/Heavy_Infantryman.cfg:15
-msgid ""
-"Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
-"lack of speed is their only disadvantage."
 msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
+msgstr ""
+
+#: data/units/Heavy_Infantryman.cfg:15
+msgid ""
+"Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
+"lack of speed is their only disadvantage."
 msgstr ""
 
 #: data/units/Horseman.cfg:3
@@ -15046,7 +13489,7 @@ msgstr ""
 
 #: data/units/Knight.cfg:17
 msgid ""
-"Knights are skilled in use of both lance and sword. With the lance, they "
+"Knights are skilled in the use of both lance and sword. With the lance, they "
 "charge at enemies, inflicting and receiving double damage."
 msgstr ""
 
@@ -15120,7 +13563,7 @@ msgid ""
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
 
-#: data/units/Mage.cfg:36 data/units/Mage.cfg:102
+#: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
 msgstr ""
 
@@ -15128,7 +13571,7 @@ msgstr ""
 msgid "Mage of Light"
 msgstr ""
 
-#: data/units/Mage_of_Light.cfg:10 data/units/Mage_of_Light.cfg:69
+#: data/units/Mage_of_Light.cfg:10 data/units/Mage_of_Light.cfg:70
 msgid "illuminates,cures"
 msgstr ""
 
@@ -15143,14 +13586,14 @@ msgid ""
 "units."
 msgstr ""
 
-#: data/units/Mage_of_Light.cfg:42 data/units/Mage_of_Light.cfg:101
-#: data/units/White_Mage.cfg:41 data/units/White_Mage.cfg:99
+#: data/units/Mage_of_Light.cfg:42 data/units/Mage_of_Light.cfg:102
+#: data/units/White_Mage.cfg:41 data/units/White_Mage.cfg:100
 msgid "lightbeam"
 msgstr ""
 
-#: data/units/Mage_of_Light.cfg:43 data/units/Mage_of_Light.cfg:102
+#: data/units/Mage_of_Light.cfg:43 data/units/Mage_of_Light.cfg:103
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:42
-#: data/units/White_Mage.cfg:100
+#: data/units/White_Mage.cfg:101
 msgid "holy"
 msgstr ""
 
@@ -15178,17 +13621,6 @@ msgstr ""
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
 msgid "trident"
-msgstr ""
-
-#: data/units/Merman_Lord.cfg:5
-msgid "Merman Lord"
-msgstr ""
-
-#: data/units/Merman_Lord.cfg:17
-msgid ""
-"Merman Lords are masters of the sea. Skilled in use of the trident, Merman "
-"Lords easily defeat any enemy foolish enough to wander into their preferred "
-"environment."
 msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
@@ -15255,6 +13687,13 @@ msgstr ""
 msgid "Noble Fighter"
 msgstr ""
 
+#: data/units/Noble_Fighter.cfg:17
+msgid ""
+"Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
+"attacks from enemies. However they have the potential to become great "
+"Commanders one day."
+msgstr ""
+
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
 msgstr ""
@@ -15312,24 +13751,20 @@ msgstr ""
 msgid "darts"
 msgstr ""
 
-#: data/units/Orcish_Crossbow.cfg:5
-msgid "Orcish Crossbow"
-msgstr ""
-
-#: data/units/Orcish_Crossbow.cfg:17 data/units/Orcish_Crossbowman.cfg:16
-msgid ""
-"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
-"power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle theselves a "
-"little better than the Elves in close combat."
-msgstr ""
-
 #: data/units/Orcish_Crossbow.cfg:21 data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
 msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
+msgstr ""
+
+#: data/units/Orcish_Crossbowman.cfg:16
+msgid ""
+"Orcish Crossbowmen try to compensate for their lack of skill with the raw "
+"power of their weapon. While they are not as effective as the Elvish "
+"Marksmen in long-range combat, they are sturdier and can handle theselves a "
+"little better than the Elves in close combat."
 msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:3
@@ -15343,17 +13778,21 @@ msgid ""
 "more hits before falling."
 msgstr ""
 
-#: data/units/Orcish_Ruler.cfg:3
-msgid "Orcish Ruler"
+#: data/units/Orcish_Leader.cfg:3
+msgid "Orcish Leader"
 msgstr ""
 
-#: data/units/Orcish_Ruler.cfg:17
+#: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
 "Orcish Rulers are the chiefs of their tribe. They make the important "
 "decisions and lead their people into battle.  They carry a bow out of "
 "necessity, but are much more skilled with the sword; all in all, they are "
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
+msgstr ""
+
+#: data/units/Orcish_Ruler.cfg:3
+msgid "Orcish Ruler"
 msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:3
@@ -15415,6 +13854,19 @@ msgid ""
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
 
+#: data/units/Orcish_Sovereign.cfg:3
+msgid "Orcish Sovereign"
+msgstr ""
+
+#: data/units/Orcish_Sovereign.cfg:18
+msgid ""
+"Orcish Sovereign are the chiefs of their tribe. They make the important "
+"decisions and lead their people into battle.  They carry a bow out of "
+"necessity, but are much more skilled with the sword; all in all, they are "
+"powerful fighters.  Their natural leadership skills make them very precious "
+"in the battle: if the Ruler is lost, so is the battle."
+msgstr ""
+
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
 msgstr ""
@@ -15441,25 +13893,15 @@ msgstr ""
 msgid "Outlaw"
 msgstr ""
 
-#: data/units/Outlaw.cfg:16
+#: data/units/Outlaw.cfg:17
 msgid "Outlaws fight better at night."
-msgstr ""
-
-#: data/units/Outlaw_Female.cfg:5
-msgid "Female Outlaw"
-msgstr ""
-
-#: data/units/Outlaw_Female.cfg:19
-msgid ""
-"Outlaws fight better at night. Female Outlaws look good while doing it "
-"(fighting at night)."
 msgstr ""
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "Outlaw Princess"
 msgstr ""
 
-#: data/units/Outlaw_Princess.cfg:20
+#: data/units/Outlaw_Princess.cfg:19
 msgid ""
 "A noble by birth, the Outlaw Princess has learnt swordplay with the greatest "
 "generals, but she is the product of a failed aristocracy who has opted for "
@@ -15472,7 +13914,7 @@ msgid "Outlaw Queen"
 msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:17
-msgid "ambush,leadership"
+msgid "skirmisher,leadership"
 msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:20
@@ -15674,7 +14116,7 @@ msgstr ""
 msgid "Silver Mage"
 msgstr ""
 
-#: data/units/Silver_Mage.cfg:21 data/units/Silver_Mage.cfg:107
+#: data/units/Silver_Mage.cfg:21 data/units/Silver_Mage.cfg:108
 msgid "teleport"
 msgstr ""
 
@@ -15789,11 +14231,6 @@ msgstr ""
 msgid "Tentacle of the Deep"
 msgstr ""
 
-#: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
-#: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
-msgid "regenerates"
-msgstr ""
-
 #: data/units/Tentacle.cfg:17
 msgid ""
 "Tentacles of the Deep are the appendages of some larger monster that lurks "
@@ -15852,6 +14289,17 @@ msgid ""
 "during battle."
 msgstr ""
 
+#: data/units/Troll_Hero.cfg:3
+msgid "Troll Hero"
+msgstr ""
+
+#: data/units/Troll_Hero.cfg:16
+msgid ""
+"Trolls hero are strong and brutal humanoid monsters with the amazing ability "
+"to regenerate themselves, so that they recover from wounds on their own, "
+"even during battle."
+msgstr ""
+
 #: data/units/Troll_Warrior.cfg:3
 msgid "Troll Warrior"
 msgstr ""
@@ -15890,7 +14338,7 @@ msgstr ""
 
 #: data/units/Vampire_Lady.cfg:16
 msgid ""
-"Cold and beautifull, she mantains its ethernal youthfull apareance drinking "
+"Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
 
@@ -16022,8 +14470,331 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
+#: src/about.cpp:240 src/help.cpp:2361 src/show_dialog.cpp:470
+msgid "Close"
+msgstr ""
+
+#: src/actions.cpp:93
+msgid "You don't have a leader to recruit with."
+msgstr ""
+
+#: src/actions.cpp:97
+msgid "You must have your leader on a keep to recruit or recall units."
+msgstr ""
+
+#: src/actions.cpp:114
+msgid "There are no vacant castle tiles in which to recruit a unit."
+msgstr ""
+
+#: src/actions.cpp:202
+msgid "none"
+msgstr ""
+
+#: src/actions.cpp:317 src/actions.cpp:434
+msgid "base damage"
+msgstr ""
+
+#: src/actions.cpp:327
+msgid "attacker resistance vs"
+msgstr ""
+
+#: src/actions.cpp:327
+msgid "attacker vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:387 src/actions.cpp:513
+msgid "total damage"
+msgstr ""
+
+#: src/actions.cpp:444
+msgid "defender resistance vs"
+msgstr ""
+
+#: src/actions.cpp:444
+msgid "defender vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:684 src/actions.cpp:820 src/display.cpp:878
+#: src/reports.cpp:115
+msgid "poisoned"
+msgstr ""
+
+#: src/actions.cpp:689 src/actions.cpp:825 src/display.cpp:874
+#: src/reports.cpp:110
+msgid "slowed"
+msgstr ""
+
+#: src/actions.cpp:1691
+msgid "Ambushed!"
+msgstr ""
+
+#: src/actions.cpp:1719
+msgid "Friendly unit sighted"
+msgstr ""
+
+#: src/actions.cpp:1721
+msgid "Enemy unit sighted!"
+msgstr ""
+
+#: src/actions.cpp:1726
+msgid "$friends Friendly units sighted"
+msgstr ""
+
+#: src/actions.cpp:1728
+msgid "$enemies Enemy units sighted!"
+msgstr ""
+
+#: src/actions.cpp:1732
+msgid "Units sighted! ($friends friendly, $enemies enemy)"
+msgstr ""
+
+#: src/actions.cpp:1753
+msgid "(press $hotkey to continue)"
+msgstr ""
+
+#: src/dialogs.cpp:87
+msgid "Advance Unit"
+msgstr ""
+
+#: src/dialogs.cpp:88
+msgid "What should our victorious unit become?"
+msgstr ""
+
+#: src/dialogs.cpp:157
+msgid "No objectives available"
+msgstr ""
+
+#: src/dialogs.cpp:178
+msgid "Save already exists. Do you want to overwrite it ?"
+msgstr ""
+
+#: src/dialogs.cpp:207 src/dialogs.cpp:446
+msgid "Don't ask me again!"
+msgstr ""
+
+#: src/dialogs.cpp:209
+msgid "Do you really want to delete this game?"
+msgstr ""
+
+#: src/dialogs.cpp:350
+msgid "%a %b %d %H:%M %Y"
+msgstr ""
+
+#: src/dialogs.cpp:362
+msgid "#(Invalid)"
+msgstr ""
+
+#: src/dialogs.cpp:368 src/game.cpp:921
+msgid "Campaign"
+msgstr ""
+
+#: src/dialogs.cpp:370 src/game.cpp:968
+msgid "Multiplayer"
+msgstr ""
+
+#: src/dialogs.cpp:372
+msgid "Tutorial"
+msgstr ""
+
 #: src/dialogs.cpp:380
 msgid "replay"
+msgstr ""
+
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1381
+msgid "Turn"
+msgstr ""
+
+#: src/dialogs.cpp:384
+msgid "Scenario Start"
+msgstr ""
+
+#: src/dialogs.cpp:387 src/game.cpp:944
+msgid "Difficulty"
+msgstr ""
+
+#: src/dialogs.cpp:401
+msgid "No Saved Games"
+msgstr ""
+
+#: src/dialogs.cpp:402
+msgid ""
+"There are no saved games to load.\n"
+"(Games are saved automatically when you complete a scenario)"
+msgstr ""
+
+#: src/dialogs.cpp:421
+msgid "Delete Save"
+msgstr ""
+
+#: src/dialogs.cpp:436
+msgid "Import Saved Games"
+msgstr ""
+
+#: src/dialogs.cpp:437
+msgid ""
+"Your saves directory contains some files from an old version of Battle for "
+"Wesnoth. Would you like to update these to the latest version? This may take "
+"some time."
+msgstr ""
+
+#: src/dialogs.cpp:442
+msgid ""
+"Your saves directory contains some files that don't appear to have been "
+"generated by this version of Battle for Wesnoth. Would you like to register "
+"these files with the game?"
+msgstr ""
+
+#: src/dialogs.cpp:512
+msgid "Show replay"
+msgstr ""
+
+#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+msgid "Load Game"
+msgstr ""
+
+#: src/dialogs.cpp:516
+msgid "Choose the game to load"
+msgstr ""
+
+#: src/dialogs.cpp:570 src/multiplayer.cpp:121 src/show_dialog.cpp:444
+#: src/show_dialog.cpp:457
+msgid "Ok"
+msgstr ""
+
+#: src/dialogs.cpp:571 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
+#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
+#: src/show_dialog.cpp:464
+msgid "Cancel"
+msgstr ""
+
+#: src/dialogs.cpp:620 src/dialogs.cpp:629
+msgid "Profile"
+msgstr ""
+
+#: src/dialogs.cpp:716 src/display.cpp:884 src/help.cpp:561
+#: src/playturn.cpp:1711
+msgid "level"
+msgstr ""
+
+#: src/dialogs.cpp:737 src/display.cpp:902 src/help.cpp:615
+#: src/playturn.cpp:1875 src/unit.cpp:1028
+msgid "HP"
+msgstr ""
+
+#: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:906
+#: src/display.cpp:914 src/playturn.cpp:1713 src/playturn.cpp:1876
+#: src/unit.cpp:1087
+msgid "XP"
+msgstr ""
+
+#: src/dialogs.cpp:754 src/display.cpp:918 src/help.cpp:616
+#: src/playturn.cpp:1877 src/unit.cpp:1064
+msgid "Moves"
+msgstr ""
+
+#: src/dialogs.cpp:771 src/display.cpp:935 src/help.cpp:691
+#: src/playturn.cpp:616 src/reports.cpp:229
+msgid "melee"
+msgstr ""
+
+#: src/dialogs.cpp:772 src/display.cpp:936 src/help.cpp:691
+#: src/playturn.cpp:616 src/reports.cpp:230
+msgid "ranged"
+msgstr ""
+
+#: src/display.cpp:865
+msgid "healthy"
+msgstr ""
+
+#: src/display.cpp:870 src/reports.cpp:105
+msgid "invisible"
+msgstr ""
+
+#: src/game.cpp:134
+msgid "Do you want to save a replay of this scenario?"
+msgstr ""
+
+#: src/game.cpp:135 src/game.cpp:197 src/playturn.cpp:1388
+msgid "Name:"
+msgstr ""
+
+#: src/game.cpp:143 src/game.cpp:204 src/playturn.cpp:1399
+msgid "The game could not be saved"
+msgstr ""
+
+#: src/game.cpp:196
+msgid "Do you want to save your game?"
+msgstr ""
+
+#: src/game.cpp:573
+msgid "The Battle for Wesnoth"
+msgstr ""
+
+#: src/game.cpp:793 src/multiplayer_connect.cpp:104
+msgid ""
+"This save is from a different version of the game. Do you want to try to "
+"load it?"
+msgstr ""
+
+#: src/game.cpp:804 src/game.cpp:809 src/game.cpp:814 src/playlevel.cpp:533
+#: src/playlevel.cpp:747
+msgid "The file you have tried to load is corrupt"
+msgstr ""
+
+#: src/game.cpp:914
+msgid "There are no campaigns available"
+msgstr ""
+
+#: src/game.cpp:922
+msgid "Choose the campaign you want to play:"
+msgstr ""
+
+#: src/game.cpp:945
+msgid "Select difficulty level:"
+msgstr ""
+
+#: src/game.cpp:963
+msgid "Join Official Server"
+msgstr ""
+
+#: src/game.cpp:963
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#: src/game.cpp:964 src/multiplayer_lobby.cpp:157
+msgid "Join Game"
+msgstr ""
+
+#: src/game.cpp:964
+msgid "Join a server or hosted game"
+msgstr ""
+
+#: src/game.cpp:965
+msgid "Host Multiplayer Game"
+msgstr ""
+
+#: src/game.cpp:965
+msgid "Host a game without using a server"
+msgstr ""
+
+#: src/game.cpp:968 src/multiplayer_client.cpp:267
+msgid "Login"
+msgstr ""
+
+#: src/game.cpp:1048
+msgid "Language"
+msgstr ""
+
+#: src/game.cpp:1049
+msgid "Choose your preferred language"
+msgstr ""
+
+#: src/game.cpp:1096
+msgid "The End"
+msgstr ""
+
+#: src/game.cpp:1097
+msgid "You have reached the end of the currently playable levels"
 msgstr ""
 
 #: src/game.cpp:1125
@@ -16034,218 +14805,1235 @@ msgstr ""
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
-#: src/help.cpp:532
-msgid "alignment"
+#: src/help.cpp:568
+msgid "Advances to"
 msgstr ""
 
-#: src/hotkeys.cpp:122
+#: src/help.cpp:594
+msgid "Abilities"
+msgstr ""
+
+#: src/help.cpp:617
+msgid "Alignment"
+msgstr ""
+
+#: src/help.cpp:622
+msgid "Required XP"
+msgstr ""
+
+#: src/help.cpp:632 src/reports.cpp:232
+msgid "attacks"
+msgstr ""
+
+#: src/help.cpp:638 src/help.cpp:639 src/playturn.cpp:1874
+msgid "Name"
+msgstr ""
+
+#: src/help.cpp:642 src/help.cpp:643 src/playturn.cpp:1873
+msgid "Type"
+msgstr ""
+
+#: src/help.cpp:646 src/help.cpp:647 src/unit_types.cpp:301
+msgid "Dmg"
+msgstr ""
+
+#: src/help.cpp:650 src/help.cpp:651
+msgid "Strikes"
+msgstr ""
+
+#: src/help.cpp:654 src/help.cpp:655
+msgid "Range"
+msgstr ""
+
+#: src/help.cpp:658 src/help.cpp:659
+msgid "Special"
+msgstr ""
+
+#: src/help.cpp:715
+msgid "Resistances"
+msgstr ""
+
+#: src/help.cpp:719 src/help.cpp:720
+msgid "Attack Type"
+msgstr ""
+
+#: src/help.cpp:723 src/help.cpp:724
+msgid "Resistance"
+msgstr ""
+
+#: src/help.cpp:755
+msgid "Terrain Modifiers"
+msgstr ""
+
+#: src/help.cpp:759 src/help.cpp:760
+msgid "Terrain"
+msgstr ""
+
+#: src/help.cpp:767 src/help.cpp:768
+msgid "Defense"
+msgstr ""
+
+#: src/help.cpp:1865
+msgid "< Back"
+msgstr ""
+
+#: src/help.cpp:1866
+msgid "Forward >"
+msgstr ""
+
+#: src/help.cpp:2364
+msgid "The Battle for Wesnoth Help"
+msgstr ""
+
+#: src/hotkeys.cpp:120
 msgid "Next unit"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:121
 msgid "End Unit Turn"
 msgstr ""
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:122 src/playturn.cpp:1457
+msgid "Leader"
+msgstr ""
+
+#: src/hotkeys.cpp:123
 msgid "Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:124
 msgid "Redo"
 msgstr ""
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:125
 msgid "Zoom In"
 msgstr ""
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:126
 msgid "Zoom Out"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:127
 msgid "Default Zoom"
 msgstr ""
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:128
 msgid "Fullscreen"
 msgstr ""
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:129
 msgid "Accelerated"
 msgstr ""
 
-#: src/hotkeys.cpp:132
-msgid "Attack Resistance"
-msgstr ""
-
-#: src/hotkeys.cpp:133
-msgid "Terrain Table"
-msgstr ""
-
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:130
 msgid "Unit Description"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:131 src/playturn.cpp:1357
+msgid "Rename Unit"
+msgstr ""
+
+#: src/hotkeys.cpp:132
+msgid "Save Game"
+msgstr ""
+
+#: src/hotkeys.cpp:134
+msgid "Recruit"
+msgstr ""
+
+#: src/hotkeys.cpp:135
 msgid "Repeat Recruit"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:136
+msgid "Recall"
+msgstr ""
+
+#: src/hotkeys.cpp:138
 msgid "Toggle Grid"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:139
+msgid "Status Table"
+msgstr ""
+
+#: src/hotkeys.cpp:140
 msgid "Mute"
 msgstr ""
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:141
 msgid "Speak"
 msgstr ""
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:142
 msgid "Create Unit (Debug!)"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:143
 msgid "Change Unit Side (Debug!)"
 msgstr ""
 
-#: src/hotkeys.cpp:151 src/playturn.cpp:2008
+#: src/hotkeys.cpp:144 src/preferences.cpp:910
+msgid "Preferences"
+msgstr ""
+
+#: src/hotkeys.cpp:145
+msgid "Scenario Objectives"
+msgstr ""
+
+#: src/hotkeys.cpp:146 src/playturn.cpp:1926
+msgid "Unit List"
+msgstr ""
+
+#: src/hotkeys.cpp:147 src/playturn.cpp:1988
 msgid "Statistics"
 msgstr ""
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:148
+msgid "Quit Game"
+msgstr ""
+
+#: src/hotkeys.cpp:149
 msgid "Set Label"
 msgstr ""
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:150
 msgid "Show Enemy Moves"
 msgstr ""
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:151
 msgid "Best Possible Enemy Moves"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:152
 msgid "Quit Editor"
 msgstr ""
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:153
 msgid "New Map"
 msgstr ""
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:154
 msgid "Load Map"
 msgstr ""
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:155
 msgid "Save Map"
 msgstr ""
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:156
 msgid "Save As"
 msgstr ""
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:157
 msgid "Set Player Start Position"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:158
 msgid "Flood Fill"
 msgstr ""
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:159
 msgid "Fill Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:160
 msgid "Cut"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:161
 msgid "Copy"
 msgstr ""
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:162
 msgid "Paste"
 msgstr ""
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:163
 msgid "Revert from Disk"
 msgstr ""
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:165
 msgid "Flip Map"
 msgstr ""
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:166
 msgid "Select All"
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:167
 msgid "Draw Terrain"
 msgstr ""
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:168
 msgid "Delay Shroud Updates"
 msgstr ""
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:169
 msgid "Update Shroud Now"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:170
 msgid "Continue Move"
 msgstr ""
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:171
+msgid "Find Label or Unit"
+msgstr ""
+
+#: src/hotkeys.cpp:172
 msgid "Speak to Ally"
 msgstr ""
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:173
 msgid "Speak to All"
 msgstr ""
 
-#: src/hotkeys.cpp:178 src/show_dialog.cpp:608
+#: src/hotkeys.cpp:174 src/show_dialog.cpp:608
 msgid "Help"
 msgstr ""
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:175
 msgid "View Chat Log"
+msgstr ""
+
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/intro.cpp:87
+msgid "Next"
+msgstr ""
+
+#: src/intro.cpp:88
+msgid "Skip"
 msgstr ""
 
 #: src/language.cpp:30
 msgid "System default language"
 msgstr ""
 
-#: src/multiplayer.cpp:181
-msgid "'s game"
+#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1010
+msgid "Close Window"
 msgstr ""
 
-#: src/multiplayer.cpp:289
+#: src/mapgen_dialog.cpp:72
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:478
+msgid "Players"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:78
+msgid "Width"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:79
+msgid "Height"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:80
+msgid "Iterations"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:81
+msgid "Bump Size"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1458
+msgid "Villages"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:83
+msgid "Landform"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:183
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:246
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Island"
+msgstr ""
+
+#: src/multiplayer.cpp:94
+msgid "The maximum turns the game will go for"
+msgstr ""
+
+#: src/multiplayer.cpp:100
+msgid "The amount of income each village yields per turn"
+msgstr ""
+
+#: src/multiplayer.cpp:106
+msgid "The amount of experience a unit needs to advance"
+msgstr ""
+
+#: src/multiplayer.cpp:108
+msgid "Fog Of War"
+msgstr ""
+
+#: src/multiplayer.cpp:110
+msgid "Enemy units cannot be seen unless they are in range of your units"
+msgstr ""
+
+#: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
+msgid "Shroud"
+msgstr ""
+
+#: src/multiplayer.cpp:114
+msgid "The map is unknown until your units explore it"
+msgstr ""
+
+#: src/multiplayer.cpp:116 src/reports.cpp:376
+msgid "Observers"
+msgstr ""
+
+#: src/multiplayer.cpp:118
+msgid "Allow users who are not playing to watch the game"
+msgstr ""
+
+#: src/multiplayer.cpp:123
+msgid "Regenerate"
+msgstr ""
+
+#: src/multiplayer.cpp:125
+msgid "Settings..."
+msgstr ""
+
+#: src/multiplayer.cpp:129
+msgid "Share View"
+msgstr ""
+
+#: src/multiplayer.cpp:130
+msgid "Share Maps"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+msgid "Share None"
+msgstr ""
+
+#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
+msgid "No multiplayer sides."
+msgstr ""
+
+#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
+msgid "Create Game"
+msgstr ""
+
+#: src/multiplayer.cpp:174
+msgid "Name of game"
+msgstr ""
+
+#: src/multiplayer.cpp:175
+msgid "game name prefix^"
+msgstr ""
+
+#: src/multiplayer.cpp:175
+msgid "game name suffix^'s game"
+msgstr ""
+
+#: src/multiplayer.cpp:186
+msgid "Map to play"
+msgstr ""
+
+#: src/multiplayer.cpp:283
 msgid "Era"
 msgstr ""
 
-#: src/multiplayer_lobby.cpp:140
+#: src/multiplayer.cpp:345
+msgid "Unlimited"
+msgstr ""
+
+#: src/multiplayer.cpp:349
+msgid "Turns"
+msgstr ""
+
+#: src/multiplayer.cpp:357
+msgid "Village Gold"
+msgstr ""
+
+#: src/multiplayer.cpp:369
+msgid "Experience Requirements"
+msgstr ""
+
+#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:283
+msgid "Connection timed out"
+msgstr ""
+
+#: src/multiplayer_client.cpp:59
+msgid "Receiving game list..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:732 src/playturn.cpp:1457
+#: src/playturn.cpp:1462 src/playturn.cpp:1549
+msgid "Gold"
+msgstr ""
+
+#: src/multiplayer_client.cpp:111
+msgid "Waiting for game to start..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:219
+msgid "Choose host to connect to"
+msgstr ""
+
+#: src/multiplayer_client.cpp:237
+msgid "Connecting to remote host..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:266
+msgid "You must log in to this server"
+msgstr ""
+
+#: src/multiplayer_client.cpp:346
+msgid "Getting game data..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:397
+msgid "There are no available sides in this game."
+msgstr ""
+
+#: src/multiplayer_client.cpp:439
+msgid "Choose your side:"
+msgstr ""
+
+#: src/multiplayer_client.cpp:464
+msgid "The game has been cancelled"
+msgstr ""
+
+#: src/multiplayer_client.cpp:468
+msgid "The side you have chosen is no longer available"
+msgstr ""
+
+#: src/multiplayer_client.cpp:504
+msgid "Show replay of game up to save point?"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:48
+msgid "I'm Ready"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:50
+msgid " Computer vs Computer "
+msgstr ""
+
+#: src/multiplayer_connect.cpp:97
+msgid "This is not a multiplayer save"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:237
+msgid ""
+"Victory\n"
+"@Defeat enemy leader(s)"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:257
+msgid "Network Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:258
+msgid "Local Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
+#: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
+msgid "Computer Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:260
+msgid "Empty"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:375
+msgid "Team"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:295
+msgid "Red"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:297
+msgid "Blue"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:299
+msgid "Green"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:301
+msgid "Yellow"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:303
+msgid "Purple"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:305
+msgid "Orange"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:307
+msgid "Grey"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:309
+msgid "White"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:311
+msgid "Brown"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:361
+msgid "Game Lobby"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
+msgid "Player/Type"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
+msgid "Race"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
+msgid "Color"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
+msgid "Waiting for network players to join"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:141
 msgid "1"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:141
+msgid "Vacant Slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:141
+msgid "Vacant Slots"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:156
+msgid "Observe Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:159
+msgid "Quit"
+msgstr ""
+
+#: src/playlevel.cpp:672
+msgid "Game Over"
+msgstr ""
+
+#: src/playlevel.cpp:673
+msgid "The game is over."
+msgstr ""
+
+#: src/playlevel.cpp:686
+msgid "Defeat"
+msgstr ""
+
+#: src/playlevel.cpp:687
+msgid "You have been defeated!"
+msgstr ""
+
+#: src/playlevel.cpp:719
+msgid "Victory"
+msgstr ""
+
+#: src/playlevel.cpp:720
+msgid "You have emerged victorious!"
+msgstr ""
+
+#: src/playlevel.cpp:722
+msgid "Remaining gold"
+msgstr ""
+
+#: src/playlevel.cpp:725
+msgid "Early finish bonus"
+msgstr ""
+
+#: src/playlevel.cpp:727
+msgid "per turn"
+msgstr ""
+
+#: src/playlevel.cpp:728
+msgid "Turns finished early"
+msgstr ""
+
+#: src/playlevel.cpp:730
+msgid "Bonus"
+msgstr ""
+
+#: src/playlevel.cpp:737
+#, no-c-format
+msgid "80% of gold is retained for the next scenario"
+msgstr ""
+
+#: src/playlevel.cpp:738
+msgid "Retained Gold"
+msgstr ""
+
+#: src/playlevel.cpp:762
+msgid ""
+"A network disconnection has occured, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+
+#: src/playturn.cpp:79
+msgid "It is now your turn"
+msgstr ""
+
+#: src/playturn.cpp:499
+msgid "Attacker"
+msgstr ""
+
+#: src/playturn.cpp:501
+msgid "Defender"
+msgstr ""
+
+#: src/playturn.cpp:525 src/playturn.cpp:650
+msgid "Damage Calculations"
 msgstr ""
 
 #: src/playturn.cpp:616
 msgid "Melee"
 msgstr ""
 
+#: src/playturn.cpp:629 src/reports.cpp:209
+msgid "vs"
+msgstr ""
+
+#: src/playturn.cpp:662
+msgid "Attack Enemy"
+msgstr ""
+
+#: src/playturn.cpp:663
+msgid "Choose weapon"
+msgstr ""
+
+#: src/playturn.cpp:1144
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1153 src/playturn.cpp:1158
+msgid "Some units have movement left. Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1174
+msgid "Auto-Save"
+msgstr ""
+
+#: src/playturn.cpp:1176
+msgid "Could not auto save the game. Please save the game manually."
+msgstr ""
+
+#: src/playturn.cpp:1396
+msgid "The game has been saved"
+msgstr ""
+
+#: src/playturn.cpp:1458
+msgid "Units"
+msgstr ""
+
+#: src/playturn.cpp:1459
+msgid "Income"
+msgstr ""
+
+#: src/playturn.cpp:1459
+msgid "Upkeep"
+msgstr ""
+
+#: src/playturn.cpp:1555
+msgid "You have no units available to recruit."
+msgstr ""
+
+#: src/playturn.cpp:1568
+msgid "Recruit unit"
+msgstr ""
+
+#: src/playturn.cpp:1597
+msgid "You don't have enough gold to recruit that unit"
+msgstr ""
+
+#: src/playturn.cpp:1655
+msgid ""
+"My lord, this unit is an experienced one, having advanced levels! Do you "
+"really want to dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1657
+msgid ""
+"My lord, this unit is close to advancing a level! Do you really want to "
+"dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1662
+msgid "her"
+msgstr ""
+
+#: src/playturn.cpp:1662
+msgid "him"
+msgstr ""
+
+#: src/playturn.cpp:1695
+msgid "You are seperated from your soldiers and may not recall them"
+msgstr ""
+
+#: src/playturn.cpp:1697
+msgid ""
+"There are no troops available to recall\n"
+"(You must have veteran survivors from a previous scenario)"
+msgstr ""
+
+#: src/playturn.cpp:1701
+msgid "You must have at least"
+msgstr ""
+
+#: src/playturn.cpp:1703
+msgid "gold pieces to recall a unit"
+msgstr ""
+
+#: src/playturn.cpp:1726
+msgid "Dismiss Unit"
+msgstr ""
+
+#: src/playturn.cpp:1739
+msgid "Select unit"
+msgstr ""
+
+#: src/playturn.cpp:1783
+msgid "Message"
+msgstr ""
+
+#: src/playturn.cpp:1783
+msgid "Send to allies only"
+msgstr ""
+
+#: src/playturn.cpp:1878
+msgid "Location"
+msgstr ""
+
+#: src/playturn.cpp:1960 src/playturn.cpp:1994
+msgid "Recruits"
+msgstr ""
+
+#: src/playturn.cpp:1966 src/playturn.cpp:1998
+msgid "Recalls"
+msgstr ""
+
+#: src/playturn.cpp:1972 src/playturn.cpp:2002
+msgid "Advancements"
+msgstr ""
+
+#: src/playturn.cpp:1978 src/playturn.cpp:2006
+msgid "Losses"
+msgstr ""
+
+#: src/playturn.cpp:1984 src/playturn.cpp:2010
+msgid "Kills"
+msgstr ""
+
+#: src/playturn.cpp:2025
+msgid "Search"
+msgstr ""
+
+#: src/playturn.cpp:2035
+msgid "prompt^Command:"
+msgstr ""
+
+#: src/playturn.cpp:2046
+msgid "Chat Log"
+msgstr ""
+
+#: src/playturn.cpp:2111
+msgid "Couldn't find label or unit containing the string '$search'."
+msgstr ""
+
+#: src/playturn.cpp:2151
+msgid "Place Label"
+msgstr ""
+
+#: src/playturn.cpp:2152
+msgid "Label"
+msgstr ""
+
+#: src/playturn.cpp:2315
+msgid ""
+"The games are out of sync and will have to exit. Do you want to save an "
+"error log of your game?"
+msgstr ""
+
+#: src/playturn.cpp:2346
+msgid "Replace with AI"
+msgstr ""
+
+#: src/playturn.cpp:2347
+msgid "Replace with local player"
+msgstr ""
+
+#: src/playturn.cpp:2348
+msgid "Abort game"
+msgstr ""
+
+#: src/playturn.cpp:2350
+msgid "has left the game. What do you want to do?"
+msgstr ""
+
+#: src/preferences.cpp:142 src/preferences.cpp:188
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+
+#: src/preferences.cpp:360
+msgid "player"
+msgstr ""
+
+#: src/preferences.cpp:627
+msgid "Full Screen"
+msgstr ""
+
+#: src/preferences.cpp:628
+msgid "Accelerated Speed"
+msgstr ""
+
+#: src/preferences.cpp:629
+msgid "Skip AI Moves"
+msgstr ""
+
+#: src/preferences.cpp:630
+msgid "Show Grid"
+msgstr ""
+
+#: src/preferences.cpp:631
+msgid "Show Floating Labels"
+msgstr ""
+
+#: src/preferences.cpp:632
+msgid "Turn Dialog"
+msgstr ""
+
+#: src/preferences.cpp:633
+msgid "Turn Bell"
+msgstr ""
+
+#: src/preferences.cpp:634
+msgid "Show Team Colors"
+msgstr ""
+
+#: src/preferences.cpp:635
+msgid "Show Color Cursors"
+msgstr ""
+
+#: src/preferences.cpp:636
+msgid "Show Haloing Effects"
+msgstr ""
+
+#: src/preferences.cpp:637
+msgid "Video Mode"
+msgstr ""
+
+#: src/preferences.cpp:638
+msgid "Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:639
+msgid "Adjust Gamma"
+msgstr ""
+
+#: src/preferences.cpp:640
+msgid "Music Volume:"
+msgstr ""
+
+#: src/preferences.cpp:640
+msgid "SFX Volume:"
+msgstr ""
+
+#: src/preferences.cpp:641
+msgid "Gamma:"
+msgstr ""
+
+#: src/preferences.cpp:641
+msgid "Scroll Speed:"
+msgstr ""
+
+#: src/preferences.cpp:653
+msgid "Change the sound effects volume"
+msgstr ""
+
+#: src/preferences.cpp:658
+msgid "Change the music volume"
+msgstr ""
+
+#: src/preferences.cpp:663
+msgid "Change the speed of scrolling around the map"
+msgstr ""
+
+#: src/preferences.cpp:666 src/preferences.cpp:671
+msgid "Change the brightness of the display"
+msgstr ""
+
+#: src/preferences.cpp:674
+msgid "Choose whether the game should run full screen or in a window"
+msgstr ""
+
+#: src/preferences.cpp:677
+msgid "Make units move and fight faster"
+msgstr ""
+
+#: src/preferences.cpp:680
+msgid "Do not animate AI units moving"
+msgstr ""
+
+#: src/preferences.cpp:683
+msgid "Overlay a grid onto the map"
+msgstr ""
+
+#: src/preferences.cpp:686
+msgid "Show text above a unit when it is hit to display damage inflicted"
+msgstr ""
+
+#: src/preferences.cpp:688
+msgid "Change the resolution the game runs at"
+msgstr ""
+
+#: src/preferences.cpp:691
+msgid "Display a dialog at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:694
+msgid "Play a bell sound at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:697
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+
+#: src/preferences.cpp:700
+msgid "Use colored mouse cursors (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:703
+msgid "Use graphical special effects (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:705
+msgid "View and configure keyboard shortcuts"
+msgstr ""
+
+#: src/preferences.cpp:899
+msgid "Display"
+msgstr ""
+
+#: src/preferences.cpp:900
+msgid "Sound"
+msgstr ""
+
+#: src/preferences.cpp:956
+msgid "There are no alternative video modes available"
+msgstr ""
+
+#: src/preferences.cpp:987
+msgid "Choose Resolution"
+msgstr ""
+
+#: src/preferences.cpp:1015
+msgid "Hotkey Settings"
+msgstr ""
+
+#: src/preferences.cpp:1019 src/preferences.cpp:1077
+msgid "Press desired HotKey"
+msgstr ""
+
+#: src/preferences.cpp:1038
+msgid "Change Hotkey"
+msgstr ""
+
+#: src/preferences.cpp:1041
+msgid "Save Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:1110
+msgid "This HotKey is already in use."
+msgstr ""
+
+#: src/reports.cpp:105
+msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
+msgstr ""
+
+#: src/reports.cpp:110
+msgid ""
+"This unit has been slowed. It moves at half normal speed and receives one "
+"less attack than normal in combat."
+msgstr ""
+
+#: src/reports.cpp:115
+msgid ""
+"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
+"to the poison in a village or from a friendly unit with the 'cures' "
+"ability.\n"
+"\n"
+"Units cannot be killed by poison alone. The poison will not reduce it below "
+"1 HP."
+msgstr ""
+
+#: src/reports.cpp:122
+msgid "This unit has been turned to stone. It may not move or attack."
+msgstr ""
+
+#: src/reports.cpp:231
+msgid "damage"
+msgstr ""
+
+#: src/reports.cpp:236
+msgid "hexes"
+msgstr ""
+
+#: src/reports.cpp:253
+msgid "Lawful units"
+msgstr ""
+
+#: src/reports.cpp:255
+msgid "Neutral units"
+msgstr ""
+
+#: src/reports.cpp:256
+msgid "Chaotic units"
+msgstr ""
+
+#: src/reports.cpp:310
+msgid "Owned"
+msgstr ""
+
+#: src/reports.cpp:312
+msgid "Enemy"
+msgstr ""
+
+#: src/reports.cpp:314
+msgid "Allied"
+msgstr ""
+
 #: src/show_dialog.cpp:450
 msgid "yes"
 msgstr ""
 
-#: src/unit_types.cpp:860
-msgid "chaotic"
+#: src/show_dialog.cpp:941
+msgid "KB"
 msgstr ""
 
-#: src/unit_types.cpp:860
-msgid "lawful"
+#: src/titlescreen.cpp:137
+msgid "Version"
 msgstr ""
 
-#: src/unit_types.cpp:860
-msgid "neutral"
+#: src/titlescreen.cpp:152
+msgid "TitleScreen button^Tutorial"
+msgstr ""
+
+#: src/titlescreen.cpp:153
+msgid "TitleScreen button^Campaign"
+msgstr ""
+
+#: src/titlescreen.cpp:154
+msgid "TitleScreen button^Multiplayer"
+msgstr ""
+
+#: src/titlescreen.cpp:155
+msgid "TitleScreen button^Load"
+msgstr ""
+
+#: src/titlescreen.cpp:156
+msgid "TitleScreen button^Language"
+msgstr ""
+
+#: src/titlescreen.cpp:157
+msgid "TitleScreen button^Preferences"
+msgstr ""
+
+#: src/titlescreen.cpp:158
+msgid "TitleScreen button^About"
+msgstr ""
+
+#: src/titlescreen.cpp:159
+msgid "TitleScreen button^Quit"
+msgstr ""
+
+#: src/titlescreen.cpp:160
+msgid "Start a tutorial to familiarize yourself with the game"
+msgstr ""
+
+#: src/titlescreen.cpp:161
+msgid "Start a new single player campaign"
+msgstr ""
+
+#: src/titlescreen.cpp:162
+msgid ""
+"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
+"the AI"
+msgstr ""
+
+#: src/titlescreen.cpp:163
+msgid "Load a single player saved game"
+msgstr ""
+
+#: src/titlescreen.cpp:164
+msgid "Change the language"
+msgstr ""
+
+#: src/titlescreen.cpp:165
+msgid "Configure the game's settings"
+msgstr ""
+
+#: src/titlescreen.cpp:166
+msgid "View the credits"
+msgstr ""
+
+#: src/titlescreen.cpp:167
+msgid "Quit the game"
+msgstr ""
+
+#: src/titlescreen.cpp:191
+msgid "More"
+msgstr ""
+
+#: src/titlescreen.cpp:197
+msgid "-- The Tome of Wesnoth"
+msgstr ""
+
+#: src/unit_types.cpp:313
+msgid "strikes"
+msgstr ""
+
+#: src/unit_types.cpp:856
+msgid "Chaotic"
+msgstr ""
+
+#: src/unit_types.cpp:856
+msgid "Lawful"
+msgstr ""
+
+#: src/unit_types.cpp:856
+msgid "Neutral"
 msgstr ""

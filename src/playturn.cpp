@@ -2032,7 +2032,7 @@ void turn_info::search()
 
 void turn_info::user_command()
 {
-  create_textbox(floating_textbox::TEXTBOX_COMMAND,_("prompt|Command:"));
+  create_textbox(floating_textbox::TEXTBOX_COMMAND,_("prompt^Command:"));
 }
 
 void turn_info::show_help()
