@@ -34,7 +34,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
                       HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
                       HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
-                      HOTKEY_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
+                      HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
                       HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE,
                       HOTKEY_NULL };
 
@@ -58,6 +58,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
 		m.insert(val("save",HOTKEY_SAVE_GAME));
 		m.insert(val("recruit",HOTKEY_RECRUIT));
+		m.insert(val("repeatrecruit",HOTKEY_REPEAT_RECRUIT));
 		m.insert(val("recall",HOTKEY_RECALL));
 		m.insert(val("endturn",HOTKEY_ENDTURN));
 		m.insert(val("togglegrid",HOTKEY_TOGGLE_GRID));
@@ -255,6 +256,10 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 		case HOTKEY_RECRUIT:
 			if(executor)
 				executor->recruit();
+			break;
+		case HOTKEY_REPEAT_RECRUIT:
+			if(executor)
+				executor->repeat_recruit();
 			break;
 		default:
 			break;

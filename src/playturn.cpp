@@ -1043,33 +1043,57 @@ void turn_info::recruit()
 	                                 string_table["recruit_unit"] + ":\n",
 	                                 gui::OK_CANCEL,&items,&sample_units);
 	if(recruit_res != -1) {
-		const std::string& name = item_keys[recruit_res];
-		const std::map<std::string,unit_type>::const_iterator
-				u_type = gameinfo_.unit_types.find(name);
-		assert(u_type != gameinfo_.unit_types.end());
-
-		if(u_type->second.cost() > current_team.gold()) {
-			gui::show_dialog(gui_,NULL,"",
-			     string_table["not_enough_gold_to_recruit"],gui::OK_ONLY);
-		} else {
-			//create a unit with traits
-			recorder.add_recruit(recruit_res,last_hex_);
-			unit new_unit(&(u_type->second),team_num_,true);
-			const std::string& msg =
-			   recruit_unit(map_,team_num_,units_,new_unit,last_hex_,&gui_);
-			if(msg.empty()) {
-				current_team.spend_gold(u_type->second.cost());
-			} else {
-				recorder.undo();
-				gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
-			}
-
-			undo_stack_.clear();
-			redo_stack_.clear();
-
-			gui_.invalidate_game_status();
-		}
+		do_recruit(item_keys[recruit_res]);
 	}
+}
+
+void turn_info::do_recruit(const std::string& name)
+{
+	team& current_team = teams_[team_num_-1];
+
+	int recruit_num = 0;
+	const std::set<std::string>& recruits = current_team.recruits();
+	for(std::set<std::string>::const_iterator r = recruits.begin(); r != recruits.end(); ++r) {
+		if(name == *r)
+			break;
+
+		++recruit_num;
+	}
+
+	const std::map<std::string,unit_type>::const_iterator
+			u_type = gameinfo_.unit_types.find(name);
+	assert(u_type != gameinfo_.unit_types.end());
+
+	if(u_type->second.cost() > current_team.gold()) {
+		gui::show_dialog(gui_,NULL,"",
+		     string_table["not_enough_gold_to_recruit"],gui::OK_ONLY);
+	} else {
+		last_recruit_ = name;
+
+		//create a unit with traits
+		recorder.add_recruit(recruit_num,last_hex_);
+		unit new_unit(&(u_type->second),team_num_,true);
+		const std::string& msg =
+		   recruit_unit(map_,team_num_,units_,new_unit,last_hex_,&gui_);
+		if(msg.empty()) {
+			current_team.spend_gold(u_type->second.cost());
+		} else {
+			recorder.undo();
+			gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
+		}
+
+		undo_stack_.clear();
+		redo_stack_.clear();
+
+		gui_.invalidate_game_status();
+		gui_.invalidate_all();
+	}
+}
+
+void turn_info::repeat_recruit()
+{
+	if(last_recruit_.empty() == false)
+		do_recruit(last_recruit_);
 }
 
 void turn_info::recall()

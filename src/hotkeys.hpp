@@ -55,6 +55,7 @@ public:
 	virtual void status_table() = 0;
 	virtual void recall() = 0;
 	virtual void recruit() = 0;
+	virtual void repeat_recruit() = 0;
 };
 
 //function to be called every time a key event is intercepted. Will

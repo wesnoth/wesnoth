@@ -84,7 +84,10 @@ private:
 	void toggle_grid();
 	void status_table();
 	void recruit();
+	void repeat_recruit();
 	void recall();
+
+	void do_recruit(const std::string& name);
 
 	void handle_event(const SDL_Event& event);
 	void mouse_motion(const SDL_MouseMotionEvent& event);
@@ -120,6 +123,8 @@ private:
 	int path_turns_;
 
 	bool end_turn_;
+
+	std::string last_recruit_;
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
