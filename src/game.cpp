@@ -522,10 +522,10 @@ int play_game(int argc, char** argv)
 
 	const bool lang_res = set_language(get_locale());
 	if(!lang_res) {
-		std::cerr << "No translation for locale '" << get_locale()
+		std::cerr << "No translation for locale '" << get_locale().language
 		          << "', default to locale 'en'\n";
 
-		const bool lang_res = set_language("en");
+		const bool lang_res = set_language(known_languages[1]);
 		if(!lang_res) {
 			std::cerr << "Language data not found\n";
 		}
@@ -994,9 +994,15 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::CHANGE_LANGUAGE) {
 
-			std::vector<std::string> langs = get_languages();
+			std::vector<language_def> langdefs = get_languages();
 
-			std::sort(langs.begin(),langs.end());
+			//std::sort(langs.begin(),langs.end());
+			//std::sort(langdefs.begin(),langdefs.end(),languagedef_lessthan_p);
+
+			// prepare a copy with just the labels for the list to be displayed
+			std::vector<std::string> langs;
+			langs.reserve(langdefs.size());
+			std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
 
 			const std::vector<std::string>::iterator current = std::find(langs.begin(),langs.end(),get_language());
 			if(current != langs.end())
@@ -1006,7 +1012,7 @@ int play_game(int argc, char** argv)
 			                         string_table["choose_language"] + ":",
 			                         gui::OK_CANCEL,&langs);
 			if(size_t(res) < langs.size()) {
-				set_language(langs[res]);
+				set_language(known_languages[res]);
 				preferences::set_locale(langs[res]);
 			}
 			continue;
