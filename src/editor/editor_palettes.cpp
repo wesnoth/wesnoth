@@ -21,6 +21,7 @@
 #include "../reports.hpp"
 #include "../gettext.hpp"
 #include "../util.hpp"
+#include "../video.hpp"
 #include "../wassert.hpp"
 
 

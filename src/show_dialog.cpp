@@ -30,6 +30,7 @@
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
+#include "video.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"

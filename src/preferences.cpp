@@ -26,6 +26,7 @@
 #include "show_dialog.hpp"
 #include "sound.hpp"
 #include "util.hpp"
+#include "video.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"

@@ -13,8 +13,10 @@
 #ifndef REPLAY_H_INCLUDED
 #define REPLAY_H_INCLUDED
 
+class display;
+
 #include "config.hpp"
-#include "display.hpp"
+#include "gamestatus.hpp"
 #include "map.hpp"
 #include "unit.hpp"
 

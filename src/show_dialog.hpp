@@ -14,15 +14,14 @@
 #ifndef SHOW_DIALOG_HPP_INCLUDED
 #define SHOW_DIALOG_HPP_INCLUDED
 
-#include "config.hpp"
+class config;
+class display;
+
 #include "cursor.hpp"
-#include "display.hpp"
 #include "font.hpp"
 #include "halo.hpp"
 #include "network.hpp"
 #include "tooltips.hpp"
-#include "unit.hpp"
-#include "video.hpp"
 
 #include "widgets/button.hpp"
 

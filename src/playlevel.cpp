@@ -39,6 +39,7 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "variable.hpp"
+#include "video.hpp"
 
 #include <iostream>
 #include <iterator>

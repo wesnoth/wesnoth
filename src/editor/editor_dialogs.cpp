@@ -28,6 +28,7 @@
 #include "../language.hpp"
 #include "../map.hpp"
 #include "../preferences.hpp"
+#include "../video.hpp"
 
 #include "editor_dialogs.hpp"
 

@@ -21,6 +21,7 @@
 #include "display.hpp"
 #include "show_dialog.hpp"
 #include "sdl_utils.hpp"
+#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include <sstream>

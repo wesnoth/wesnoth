@@ -11,13 +11,14 @@
    See the COPYING file for more details.
 */
 
+#include "gettext.hpp"
 #include "global.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "preferences.hpp"
-#include "gettext.hpp"
+#include "video.hpp"
 
 namespace {
 const SDL_Rect null_rect = {0, 0, 0, 0};

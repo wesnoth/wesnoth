@@ -8,6 +8,7 @@
 #include "mapgen.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
+#include "video.hpp"
 
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"

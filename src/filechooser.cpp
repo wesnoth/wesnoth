@@ -1,10 +1,11 @@
 #include "global.hpp"
 
-#include "show_dialog.hpp"
-#include "widgets/file_chooser.hpp"
 #include "gettext.hpp"
-#include <vector>
+#include "show_dialog.hpp"
+#include "video.hpp"
+#include "widgets/file_chooser.hpp"
 
+#include <vector>
 #include <string>
 
 namespace dialogs
