@@ -1,3 +1,86 @@
+Version CVS:
+ * fog of war
+ * new scenarios:
+   * Northern Winter
+	* The Lost General
+ * scenario balacing:
+   * Bay of Pearl
+	* Isle of Anduin
+	* Dwarven Doors
+	* Mountain Pass
+ * new Makefile (debugging is now enabled by default)
+ * added Makefile.nodebug 
+ * updated docs - INSTALL, MANUAL
+ * man-pages for wesnoth and wesnothd (contributed by Debian package maintainer) - doc/man/
+ * added a script for easy Slackware package creation - utils/slacknoth
+ * added random map generator (requires Perl) - utils/random_map.pl
+ * added in repeatable recruit using ctrl+shift+r
+ * confirm overwriting of save games
+ * new multiplayer game creation dialog
+ * configurable 'gold per village' for multiplayer
+ * income calculations are now done at the beginning of each player's turn
+ * made it so units that can no longer advance have experience needed displayed as '-'
+ * allow use of escape to exit out of ok/cancel and yes/no dialogs with negative results
+ * new units:
+   * Heavy Infantry
+	* Shock Trooper
+	* Sea Hag
+	* Goblin Pillager
+	* Death Knight
+ * reduced movement for Elvish Lord
+ * reduced cost of Mage
+ * changed Mage attack to fire based
+ * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
+ * more and improved unit graphics and animations
+ * changed team 6 flag to purple
+ * new translations:
+   * german
+ * updated translations:
+   * danish
+	* french
+ * translated manuals:
+   * french
+	* italian
+ * changed "AI" in the english config to "Computer Player"
+ * fixed problem with stripping of non-latin characters at end of string in config files
+ * allow internationalization of traits
+ * added in support for some special effects: flashing and scrolling/tremors
+ * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
+ * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
+ * fixed max experience for Orcish Warlord.
+ * footsteps disappear as you walk over them
+ * text is drawn on screen progressively instead of all at once during introductory sequence
+ * fixed problems with map updating on map scene
+ * fixed bug with 'slow' attacks sometimes causing saved games to be corrupt
+ * fixed bug with crashing when switch to full screen from preferences menu
+ * updated MapEditor so it compiles again
+ * fixed problem with items on status table displaying on top of each other
+ * fixed problem with server crashing on startup
+ * converted combat calculations to use fixed-point math
+ * fixed crash with more than 6 sides
+ * fixed compile error with older versions of SDL
+ * made time of day images update properly
+ * fixed assertion failures
+ * fixed problem where slamming screen against right side and holding down right cursor key would cause hexes to shift around
+ * made mouse wheel and middle-click work again
+ * resolved conflicts in game.cfg
+ * made it so flags are overlayed on top of villages properly
+ * made image cache flush occur when switching video modes, in an effort to solve colour distortion problem on MacOSX
+ * fixed seg fault bug
+ * fixed energy bar images
+ * changed energy movement orbs
+ * fixed problem with loading saved games with duplicate roles
+ * fixed bug in AI path finding
+ * fixed problem with undos/redos causing assertion failure
+ * fixed bug with drawing tiles
+ * after a goto command is given, the unit is deselected
+ * fixed minor multiplayer bug
+ * fixed tool tips to work again
+ * fix hitpoint bar problem on MacOSX
+ * added diagnostic to attack calculations
+ * client_type=ai in preferences-file make player join networked multiplayer games as AI player
+ * added some comments to code
+
 Version 0.5.1:
  * more and improved unit graphics and animations
  * added show_ai_moves and show_combat options for preferences file
