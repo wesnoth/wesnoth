@@ -108,17 +108,31 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 	}
 
 	const SDL_Rect& screen_bounds = disp.screen_area();
-	if(x < 0)
+	if(x < 0) {
+		w += x;
 		x = 0;
+	}
 
-	if(y < 0)
+	if(y < 0) {
+		h += y;
 		y = 0;
+	}
 
-	if(x + w > screen_bounds.w)
+	if(x > screen_bounds.w) {
+		return;
+	}
+
+	if(y > screen_bounds.h) {
+		return;
+	}
+
+	if(x + w > screen_bounds.w) {
 		w = screen_bounds.w - x;
+	}
 
-	if(y + h > screen_bounds.h)
+	if(y + h > screen_bounds.h) {
 		h = screen_bounds.h - y;
+	}
 
 	for(int i = 0; i < w; i += bg->w) {
 		for(int j = 0; j < h; j += bg->h) {
