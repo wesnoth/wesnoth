@@ -244,6 +244,12 @@ std::vector<std::string> get_text() {
 		"-   RokStar",
 		"+ ",
 		
+		"_" N_("+Japanese Translation"),
+		"-   Naoki Iimura",
+		"-   Nobuhito Okada",
+		"-   Yuji Matsumoto",
+		"+ ",
+
 		"_" N_("+Latin Translation"),
 		"-   Mark Polo (mpolo)",
 		"+ ",
