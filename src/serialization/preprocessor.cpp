@@ -15,9 +15,7 @@
 #include "global.hpp"
 
 #include <algorithm>
-#include <fstream>
 #include <iostream>
-#include <stack>
 #include <sstream>
 #include <vector>
 
@@ -92,12 +90,22 @@ void internal_preprocess_file(const std::string& fname,
                               int depth, std::vector<char>& res,
                               std::vector<line_source>* lines_src, int& line);
 
-void internal_preprocess_data(const std::string& data,
+void internal_preprocess_data(std::istream &data_in,
                               preproc_map& defines_map,
                               int depth, std::vector<char>& res,
                               std::vector<line_source>* lines_src, int& line,
 			      const std::string& fname, int srcline)
 {
+	
+	std::string data_str;
+	{
+		//temporary, only here to accomodate the old preprocessor
+		std::stringstream tmp_in;
+		tmp_in << data_in.rdbuf();
+		data_str = tmp_in.str();
+	}
+	std::string const &data = data_str;
+
 	bool in_quotes = false;
 
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
@@ -165,7 +173,8 @@ void internal_preprocess_data(const std::string& data,
 					}
 				}
 
-				internal_preprocess_data(str,defines_map,depth,res,NULL,line,fname,srcline);
+				std::istringstream stream(str);
+				internal_preprocess_data(stream, defines_map, depth, res, NULL, line, fname, srcline);
 			} else if(depth < 20) {
 				std::string prefix;
 				std::string nfname;
@@ -373,7 +382,9 @@ void internal_preprocess_file(const std::string& fname,
 		lines_src->push_back(line_source(line,fname,1));
 	}
 
-	internal_preprocess_data(read_file(fname),defines_map,depth,res,lines_src,line,fname,1);
+	std::istream *s = stream_file(fname);
+	internal_preprocess_data(*s, defines_map, depth, res, lines_src, line, fname, 1);
+	delete s;
 }
 
 } //end anonymous namespace

@@ -489,6 +489,30 @@ std::string read_file(const std::string& fname)
 	}
 }
 
+std::istream *stream_file(std::string const &fname)
+{
+	LOG_G << "Streaming " << fname << "\n";
+#ifdef USE_ZIPIOS
+	if (!fname.empty() && fname[0] != '/') {
+		zipios::ConstEntryPointer p = the_collection->getEntry(fname);
+		if (p != 0)
+			if (std::istream *s = the_collection->getInputStream(p))
+				return s;
+	}
+#else
+	if (!fname.empty() && fname[0] != '/' && !game_config::path.empty()) {
+		std::ifstream *s = new ifstream((game_config::path + "/" + fname).c_str());
+		if (s->is_open())
+			return s;
+		delete s;
+	}
+#endif
+
+	// FIXME: why do we rely on this even with relative paths ?
+	// still useful with zipios, for things like cache and prefs
+	return new std::ifstream(fname.c_str());
+}
+
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data)
 {

@@ -58,6 +58,7 @@ void make_directory(const std::string& dirname);
 //basic disk I/O
 bool filesystem_init();
 std::string read_file(const std::string& fname);
+std::istream *stream_file(std::string const &fname);
 //throws io_exception if an error occurs
 void write_file(const std::string& fname, const std::string& data);
 std::string read_stdin();
