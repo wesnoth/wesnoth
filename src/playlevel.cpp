@@ -548,6 +548,7 @@ redo_turn:
 				//add all the units that survived the scenario
 				for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
 					if(un->second.side() == 1) {
+						un->second.new_turn();
 						un->second.new_level();
 						state_of_game.available_units.push_back(un->second);
 					}
