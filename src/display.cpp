@@ -503,7 +503,7 @@ namespace {
 
 void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
-	log_scope("draw panel");
+	//log_scope("draw panel");
 	surface surf(image::get_image(panel.image(),image::UNSCALED));
 
 	const SDL_Rect screen = disp.screen_area();
@@ -524,7 +524,7 @@ void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::butto
 
 void draw_label(display& disp, surface target, const theme::label& label)
 {
-	log_scope("draw label");
+	//log_scope("draw label");
 
 	const std::string& text = label.text();
 	const std::string& icon = label.icon();
