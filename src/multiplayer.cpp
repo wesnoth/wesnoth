@@ -85,7 +85,7 @@ int connection_acceptor::do_action()
 
 		//a socket has disconnected. Remove its positions.
 		for(positions_map::iterator i = positions_.begin();
-		    i != positions_.end(); ) {
+		    i != positions_.end(); ++i) {
 			if(i->second == e.socket) {
 				changes = true;
 				i->second = 0;

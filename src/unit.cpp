@@ -377,8 +377,6 @@ void unit::read(game_data& data, const config& cfg)
 	maxExperience_ = type_->experience_needed();
 	backupMaxExperience_ = type_->experience_needed();
 
-	std::cerr << "a\n";
-
 	const std::string& hitpoints = cfg["hitpoints"];
 	if(hitpoints.size() == 0)
 		hitpoints_ = type().hitpoints();
@@ -391,8 +389,6 @@ void unit::read(game_data& data, const config& cfg)
 	else
 		experience_ = atoi(experience.c_str());
 
-	std::cerr << "b\n";
-
 	side_ = atoi(cfg["side"].c_str());
 	description_ = cfg["description"];
 	traitsDescription_ = cfg["traits_description"];
@@ -402,7 +398,6 @@ void unit::read(game_data& data, const config& cfg)
 		recruit_ = true;
 	}
 
-	std::cerr << "c\n";
 	const config* const modifications = cfg.child("modifications");
 	if(modifications != NULL) {
 		modifications_ = *modifications;
@@ -415,7 +410,6 @@ void unit::read(game_data& data, const config& cfg)
 	else
 		facingLeft_ = true;
 
-	std::cerr << "d\n";
 	const std::string& ai_special = cfg["ai_special"];
 	if(ai_special == "guardian") {
 		guardian_ = true;
@@ -567,8 +561,6 @@ void unit::add_modification(const std::string& type,
 	    i.first != i.second; ++i.first) {
 
 		const std::string& apply_to = (**i.first)["apply_to"];
-
-		std::cerr << apply_to << "\n";
 
 		if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first));
