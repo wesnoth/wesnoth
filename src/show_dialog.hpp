@@ -22,6 +22,8 @@
 #include "unit.hpp"
 #include "video.hpp"
 
+#include "widgets/button.hpp"
+
 #include "SDL.h"
 
 #include <string>
@@ -29,6 +31,9 @@
 
 namespace gui
 {
+
+extern const int ButtonHPadding;
+extern const int ButtonVPadding;
 
 bool in_dialog();
 
@@ -40,7 +45,7 @@ private:
 	bool reset_to;
 };
 
-void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style=NULL);
+void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& dialog_style);
 
@@ -51,8 +56,21 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 								 double alpha, SDL_Surface* target);
 
 //given the location of a dialog, will draw its title.
-//Returns the y co-ordinate of the top of the dialog box after the title
-int draw_dialog_title(int x, int y, display& disp, const std::string& text);
+//Returns the area the title takes up
+SDL_Rect draw_dialog_title(int x, int y, display* disp, const std::string& text);
+
+//function to draw a dialog on the screen. x,y,w,h give the dimensions of the client area
+//of the dialog. 'title' is the title of the dialog. The title will be displayed at the
+//top of the dialog above the client area. 'dialog_style' if present gives the style of
+//the dialog to use.
+//'buttons' contains pointers to standard dialog buttons such as 'ok' and 'cancel' that
+//will appear on the dialog. If present, they will be located at the bottom of the dialog,
+//below the client area.
+//if 'restorer' is present, it will be set to a restorer that will reset the screen area
+//to its original state after the dialog is drawn.
+void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
+                 const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
+                 surface_restorer* restorer=NULL);
 
 class dialog_action
 {

@@ -126,8 +126,8 @@ public:
 		font::draw_text(&disp_,rect,14,font::NORMAL_COLOUR,text,rect.x,rect.y);
 
 		cancel_button_.assign(new gui::button(disp_,string_table["cancel"]));
-		cancel_button_->set_xy(area.x+area.w/2 - cancel_button_->width()/2,
-		                       area.y+area.h - cancel_button_->height() - 10);
+		cancel_button_->set_xy(area.x+area.w - cancel_button_->width() - gui::ButtonHPadding,
+			                   area.y+area.h - cancel_button_->height() - gui::ButtonVPadding);
 		cancel_button_->draw();
 	}
 

@@ -457,25 +457,19 @@ void show_preferences_dialog(display& disp)
 	log_scope("show_preferences_dialog");
 
 	const int width = 600;
-	const int height = 440;
+	const int height = 400;
 	const int xpos = disp.x()/2 - width/2;
 	const int ypos = disp.y()/2 - height/2;
 
-	//make sure that the frame buffer is restored to its original state
-	//when the dialog closes. Not const, because we might want to cancel
-	//it in the case of video mode changes
-	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
-	surface_restorer restorer(&disp.video(),dialog_rect);
-
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
-	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
-	                                      string_table["preferences"],0,0);
 
 	gui::button close_button(disp,string_table["close_window"]);
 
-	close_button.set_x(xpos + width/2 - close_button.width()/2);
-	close_button.set_y(ypos + height - close_button.height()-14);
+	std::vector<gui::button*> buttons;
+	buttons.push_back(&close_button);
+
+	surface_restorer restorer;
+	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
 
 	const std::string& music_label = string_table["music_volume"];
 	const std::string& sound_label = string_table["sound_volume"];
@@ -496,7 +490,7 @@ void show_preferences_dialog(display& disp)
 
 	const int text_right = xpos + maximum(scroll_rect.w,maximum(music_rect.w,sound_rect.w)) + 5;
 
-	const int music_pos = ypos + title_rect.h + 20;
+	const int music_pos = ypos + 20;
 	const int sound_pos = music_pos + 50;
 	const int scroll_pos = sound_pos + 50;
 
@@ -613,7 +607,8 @@ void show_preferences_dialog(display& disp)
 		}
 
 		if(redraw_all) {
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			restorer.cancel();
+			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
 			fullscreen_button.draw();
 			turbo_button.draw();
 			grid_button.draw();
@@ -634,10 +629,6 @@ void show_preferences_dialog(display& disp)
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
 	    	                scroll_rect.x,scroll_rect.y);
-
-			font::draw_text(&disp,clip_rect,18,font::NORMAL_COLOUR,
-			                string_table["preferences"],
-			                xpos+(width-title_rect.w)/2,ypos+10);
 
 			update_rect(disp.screen_area());
 
@@ -770,23 +761,23 @@ void show_hotkeys_dialog (display & disp)
 	const int ypos = centery  - 250;
 	const int width = 600;
 	const int height = 500;
-	
-	gui::draw_dialog_frame(xpos, ypos, width, height, disp);
+
+	gui::button close_button (disp, string_table["close_window"]);
+	std::vector<gui::button*> buttons;
+	buttons.push_back(&close_button);
+
+	surface_restorer restorer;	
+	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["hotkeys_dialog"],NULL,&buttons,&restorer);
 	
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
-	SDL_Rect title_rect = font::draw_text (NULL, clip_rect, 16,
-					       font::NORMAL_COLOUR,
-					       string_table["hotkeys_dialog"], 0, 0);
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, 16,
 			           font::NORMAL_COLOUR,string_table["set_hotkey"],
 						0, 0);
 
-	std::vector < std::string > menu_items;
+	std::vector<std::string> menu_items;
 
-	std::vector < hotkey::hotkey_item > hotkeys =
-		hotkey::get_hotkeys ();
-	for (std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i)
-	{
+	std::vector<hotkey::hotkey_item> hotkeys = hotkey::get_hotkeys();
+	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
 		std::stringstream str,name;
 		name << "action_"<< hotkey::command_to_string(i->action);
 		str << string_table[name.str()];
@@ -795,14 +786,10 @@ void show_hotkeys_dialog (display & disp)
 		menu_items.push_back (str.str ());
 	}
 
-	gui::menu menu_ (disp, menu_items);
+	gui::menu menu_ (disp, menu_items, false, height);
 	menu_.set_width(400);	
-	menu_.set_loc (xpos + 20, ypos + 30);
+	menu_.set_loc (xpos + 20, ypos);
 	
-	gui::button close_button (disp, string_table["close_window"]);
-	close_button.set_x (xpos + width  - close_button.width () - 30);
-	close_button.set_y (ypos + height - close_button.height () - 70);
-
 	gui::button change_button (disp, string_table["change_hotkey_button"]);
 	change_button.set_x (xpos + width -
 			    change_button.width () -30);
@@ -815,37 +802,27 @@ void show_hotkeys_dialog (display & disp)
 
 	bool redraw_all = true;
 
-	for (;;)
-	{
+	for(;;) {
 
 		int mousex, mousey;
-		const int mouse_flags =
-			SDL_GetMouseState (&mousex, &mousey);
-		const bool left_button =
-			mouse_flags & SDL_BUTTON_LMASK;
+		const int mouse_flags = SDL_GetMouseState (&mousex, &mousey);
+		const bool left_button = mouse_flags & SDL_BUTTON_LMASK;
 
-		if (redraw_all)
-		{
-			gui::draw_dialog_frame (xpos, ypos, width,
-						height, disp);
+		if(redraw_all) {
 			menu_.redraw();
 			close_button.draw ();
 			change_button.draw();
 			save_button.draw();
-			
-			font::draw_text (&disp, clip_rect, 18,font::NORMAL_COLOUR,
-			 string_table["hotkeys_dialog"],
-			 xpos + (width - title_rect.w) / 2,ypos + 10);
-			
+						
 			redraw_all = false;
 		};
 
-		if (close_button.process (mousex, mousey, left_button))
-		{
+		if(close_button.process (mousex, mousey, left_button)) {
 			break;
 		}
-		if (change_button.process (mousex, mousey, left_button))
-		{	// Lets change this hotkey......
+
+		if(change_button.process (mousex, mousey, left_button)) {
+			// Lets change this hotkey......
 			SDL_Rect dlgr = {centerx-text_size.w/2-30,
 								centery-text_size.h/2 - 16,
 									text_size.w+60,

@@ -82,7 +82,7 @@ int menu::width() const
 	if(width_ == -1) {
 		const std::vector<int>& widths = column_widths();
 		width_ = std::accumulate(widths.begin(),widths.end(),0);
-		if (show_scrollbar()) {
+		if(show_scrollbar()) {
 				 width_ += scrollbar_.get_max_width();
 		}
 	}
@@ -103,9 +103,9 @@ void menu::set_loc(int x, int y)
 	SDL_Surface* const screen = display_->video().getSurface();
 	buffer_.assign(get_surface_portion(screen, portion));
 
-	const std::vector<int>& widths = column_widths();
-	int menu_width = std::accumulate(widths.begin(), widths.end(), 0);
 	if(show_scrollbar()) {
+		const int menu_width = width() - scrollbar_.get_max_width();
+
 		scrollbar_.enable(true);
 		int scr_width = scrollbar_.get_width();
 		

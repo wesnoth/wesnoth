@@ -331,12 +331,13 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
 
 	//Buttons
-	launch_.set_xy(center_x-launch_.width()/2-100,bottom-30);
-	cancel_.set_xy(center_x-launch_.width()/2+100,bottom-30);
+	cancel_.set_xy(right - cancel_.width() - gui::ButtonHPadding,bottom-cancel_.height()-gui::ButtonVPadding);
+	launch_.set_xy(right - cancel_.width() - launch_.width() - gui::ButtonHPadding*2,bottom-launch_.height()-gui::ButtonVPadding);
+	
 	ai_.set_xy(left+30,bottom-60);
 
 	//Title and labels
-	gui::draw_dialog_title(left,top,*disp_,string_table["game_lobby"]);
+	gui::draw_dialog_title(left,top,disp_,string_table["game_lobby"]);
 
 	SDL_Rect labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,
 			                          string_table["player_type"],0,0);

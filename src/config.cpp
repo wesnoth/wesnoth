@@ -25,6 +25,7 @@
 #include "game_events.hpp"
 #include "log.hpp"
 #include "scoped_resource.hpp"
+#include "util.hpp"
 
 bool operator<(const line_source& a, const line_source& b)
 {
@@ -618,8 +619,44 @@ void config::read(const std::string& data,
 					in_quotes = !in_quotes;
 					has_quotes = true;
 				} else if(c == '\n' && !in_quotes) {
+
+					//see if this is a CVS list=CVS list style assignment (e.g. x,y=5,8)
+					std::vector<std::string> vars, values;
+					if(std::count(var.begin(),var.end(),',') > 1) {
+						vars = config::split(var);
+						values = config::split(value);
+					} else {
+						vars.push_back(var);
+						values.push_back(value);
+					}
+
+					//iterate over the names and values, assigning each to its corresponding
+					//element. If there are more names than values, than remaining names get
+					//assigned to the last value. If there are more values than names, then
+					//all the last values get concatenated onto the last name
+					if(vars.empty() == false) {
+						for(size_t n = 0; n != maximum<size_t>(vars.size(),values.size()); ++n) {
+							const std::string& varname = n < vars.size() ? vars[n] : vars.back();
+							std::string value = "";
+							if(n < values.size()) {
+								value = values[n];
+							} else if(values.empty() == false) {
+								value = values.back();
+							}
+
+							if(has_quotes == false) {
+								strip(value);
+							}
+
+							if(n < vars.size()) {
+								elements.top()->values[vars[n]] = value;
+							} else {
+								elements.top()->values[vars.back()] += "," + value;
+							}
+						}
+					}
+
 					state = IN_ELEMENT;
-					elements.top()->values[var] = has_quotes ? value : strip(value);
 					var = "";
 					value = "";
 					has_quotes = false;

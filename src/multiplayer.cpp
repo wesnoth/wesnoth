@@ -158,7 +158,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	//gui::draw_dialog_background(left,top,width,height,disp_,"menu");
 	int xpos = left + border_size;
-	int ypos = gui::draw_dialog_title(left,top,disp_,string_table["create_new_game"]) + border_size;
+	int ypos = top + gui::draw_dialog_title(left,top,&disp_,string_table["create_new_game"]).h + border_size;
 
 	std::cerr << "b\n";
 
@@ -247,8 +247,11 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	std::cerr << "h\n";
 
 	//Buttons
-	launch_game_->set_xy(left + (width/2)-launch_game_->width()*2-19,bottom-29);
-	cancel_game_->set_xy(left + (width/2)+cancel_game_->width()+19,bottom-29);
+	cancel_game_->set_xy(right - cancel_game_->width() - gui::ButtonHPadding,
+	                     bottom - cancel_game_->height() - gui::ButtonVPadding);
+	launch_game_->set_xy(right - cancel_game_->width() - launch_game_->width() - gui::ButtonHPadding*2,
+	                     bottom - launch_game_->height() - gui::ButtonVPadding);
+	
 
 	regenerate_map_->set_xy(rect.x,rect.y);
 	regenerate_map_->backup_background();
