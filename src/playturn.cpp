@@ -31,6 +31,13 @@
 #include <sstream>
 #include <string>
 
+namespace {
+	int commands_disabled = 0;
+}
+
+command_disabler::command_disabler() { ++commands_disabled; }
+command_disabler::~command_disabler() { --commands_disabled; }
+
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
@@ -225,6 +232,9 @@ void turn_info::handle_event(const SDL_Event& event)
 
 void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 {
+	if(commands_disabled)
+		return;
+
 	const team& current_team = teams_[team_num_-1];
 	const gamemap::location new_hex = gui_.hex_clicked_on(event.x,event.y);
 
@@ -288,6 +298,9 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
+	if(commands_disabled)
+		return;
+
 	const team& current_team = teams_[team_num_-1];
 	
 	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
@@ -450,6 +463,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     units_.count(selected_hex_) && !enemy_paths_ &&
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
+
+
 
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);

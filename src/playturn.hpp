@@ -45,6 +45,12 @@ private:
 	display& gui_;
 };
 
+struct command_disabler
+{
+	command_disabler();
+	~command_disabler();
+};
+
 class turn_info : public hotkey::command_executor, public events::handler,
                   private paths_wiper
 {

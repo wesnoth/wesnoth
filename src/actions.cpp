@@ -21,6 +21,7 @@
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
+#include "playturn.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
 #include "util.hpp"
@@ -309,6 +310,10 @@ void attack(display& gui, const gamemap& map,
 			const gamestatus& state,
 			const game_data& info, bool player_is_attacker)
 {
+
+	//stop the user from issuing any commands while the units are fighting
+	const command_disabler disable_commands;
+
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
 
@@ -791,6 +796,9 @@ size_t move_unit(display* disp, const gamemap& map,
                  const std::vector<gamemap::location>& route,
                  replay* move_recorder, undo_list* undo_stack)
 {
+	//stop the user from issuing any commands while the unit is moving
+	const command_disabler disable_commands;
+
 	assert(!route.empty());
 
 	const unit_map::iterator ui = units.find(route.front());
