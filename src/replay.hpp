@@ -42,6 +42,8 @@ public:
 	void choose_option(int index);
 	void end_turn();
 
+	config get_last_turn(int num_turns=1);
+
 	void undo();
 
 	int get_random();
@@ -80,6 +82,6 @@ extern replay recorder;
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                std::map<gamemap::location,unit>& units,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
-			   game_state& state_of_game);
+			   game_state& state_of_game, replay* obj=NULL);
 
 #endif

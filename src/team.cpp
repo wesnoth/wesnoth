@@ -43,9 +43,11 @@ team::team_info::team_info(config& cfg)
 	}
 
 	if(cfg.values["controller"] == "human")
-		human = true;
+		controller = HUMAN;
+	else if(cfg.values["controller"] == "network")
+		controller = NETWORK;
 	else
-		human = false;
+		controller = AI;
 
 	const std::string& scouts_val = cfg.values["villages_per_scout"];
 	if(scouts_val.empty()) {
@@ -171,7 +173,17 @@ double team::aggression() const
 
 bool team::is_human() const
 {
-	return info_.human;
+	return info_.controller == team_info::HUMAN;
+}
+
+bool team::is_ai() const
+{
+	return info_.controller == team_info::AI;
+}
+
+bool team::is_network() const
+{
+	return info_.controller == team_info::NETWORK;
 }
 
 double team::leader_value() const

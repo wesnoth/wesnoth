@@ -40,7 +40,9 @@ public:
 		std::vector<std::string> recruitment_pattern;
 		double aggression;
 		std::vector<int> enemies;
-		bool human;
+
+		enum CONTROLLER { HUMAN, AI, NETWORK };
+		CONTROLLER controller;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -69,6 +71,8 @@ public:
 	double aggression() const;
 
 	bool is_human() const;
+	bool is_network() const;
+	bool is_ai() const;
 
 	double leader_value() const;
 	double village_value() const;

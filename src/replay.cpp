@@ -181,6 +181,32 @@ void replay::end_turn()
 	cmd->children["end_turn"].push_back(new config());
 }
 
+config replay::get_last_turn(int num_turns)
+{
+	log_scope("get_last_turn\n");
+	//back up from the end, finding the position we're looking for
+	std::vector<config*>& cmd = commands();
+	std::vector<config*>::reverse_iterator i;
+	for(i = cmd.rbegin(); i != cmd.rend() && num_turns > 0; ++i) {
+		if((*i)->children["end_turn"].size() > 0) {
+			--num_turns;
+		}
+	}
+
+	//if we reached an end turn, we have to move one step forward so
+	//that we don't include the end turn
+	const int adjust = num_turns == 0 ? 1 : 0;
+
+	config res;
+
+	for(std::vector<config*>::const_iterator fi = i.base()+adjust;
+	    fi != cmd.end(); ++fi) {
+		res.children["command"].push_back(new config(**fi));
+	}
+	
+	return res;
+}
+
 void replay::undo()
 {
 	std::vector<config*>& cmd = commands();
@@ -263,8 +289,10 @@ bool replay::empty()
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                std::map<gamemap::location,unit>& units,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
-			   game_state& state_of_game)
+			   game_state& state_of_game, replay* obj)
 {
+	replay& recorder = obj != NULL ? *obj : recorder;
+
 	update_locker lock_update(disp,recorder.skipping());
 
 	//a list of units that have promoted from the last attack

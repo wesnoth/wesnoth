@@ -26,6 +26,7 @@
 #include "language.hpp"
 #include "menu.hpp"
 #include "multiplayer.hpp"
+#include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
@@ -364,8 +365,19 @@ int play_game(int argc, char** argv)
 			state.campaign_type = "multiplayer";
 			state.scenario = 0;
 
+			std::vector<std::string> host_or_join;
+			host_or_join.push_back(string_table["host_game"]);
+			host_or_join.push_back(string_table["join_game"]);
+
+			const int res = gui::show_dialog(disp,NULL,"","",gui::MESSAGE,
+			                                 &host_or_join);
+			
 			try {
-				play_multiplayer(disp,units_data,game_config,state);
+				if(res == 0) {
+					play_multiplayer(disp,units_data,game_config,state);
+				} else if(res == 1) {
+					play_multiplayer_client(disp,units_data,game_config,state);
+				}
 			} catch(gamestatus::load_game_failed& e) {
 				std::cerr << "error loading the game: " << e.message
 				          << "\n";
@@ -374,6 +386,8 @@ int play_game(int argc, char** argv)
 				std::cerr << "error while playing the game: "
 				          << e.message << "\n";
 				return 0;
+			} catch(network::error& e) {
+				gui::show_dialog(disp,NULL,"",e.message,gui::OK_ONLY);
 			}
 
 			continue;

@@ -19,6 +19,9 @@
 #include "unit_types.hpp"
 #include "video.hpp"
 
+void play_multiplayer_client(display& disp, game_data& units_data,
+                             config& cfg, game_state& state);
+
 void play_multiplayer(display& disp, game_data& units_data,
                       config& cfg, game_state& state);
 

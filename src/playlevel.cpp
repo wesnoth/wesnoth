@@ -13,6 +13,7 @@
 #include "game_events.hpp"
 #include "intro.hpp"
 #include "language.hpp"
+#include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
@@ -162,22 +163,64 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						dialogs::show_objectives(gui,*level);
 					}
 
-					play_turn(gameinfo,state_of_game,status,terrain_config,
-					          level, video, key, gui, events_manager, map,
-							  teams, player_number, units);
+					try {
+						play_turn(gameinfo,state_of_game,status,terrain_config,
+						          level, video, key, gui, events_manager, map,
+								  teams, player_number, units);
+					} catch(end_level_exception& e) {
+						if(network::nconnections() > 0) {
+							config cfg;
+							cfg.children["turn"].push_back(
+							           new config(recorder.get_last_turn(1)));
+							network::send_data(cfg);
+						}
+
+						throw e;
+					}
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
 
-				} else if(!replaying) {
+					if(network::nconnections() > 0) {
+							config cfg;
+							cfg.children["turn"].push_back(
+							           new config(recorder.get_last_turn(2)));
+							network::send_data(cfg);
+					}
+
+				} else if(!replaying && team_it->is_ai()) {
 					ai::do_move(gui,map,gameinfo,units,teams,
 					            player_number,status);
+
+					if(network::nconnections() > 0) {
+							config cfg;
+							cfg.children["turn"].push_back(
+							           new config(recorder.get_last_turn(2)));
+							network::send_data(cfg);
+					}
 
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
 					gui.invalidate_all();
 					gui.draw();
-					SDL_Delay(1000);
+					SDL_Delay(500);
+				} else if(!replaying && team_it->is_network()) {
+					config cfg;
+					for(;;) {
+						network::connection res=network::receive_data(cfg,0,50);
+						if(res && cfg.children["turn"].empty() == false) {
+							break;
+						}
+
+						pump_events();
+					}
+
+					std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
+					replay replay_obj(*cfg.children["turn"].front());
+					replay_obj.start_replay();
+					do_replay(gui,map,gameinfo,units,teams,
+					          player_number,status,state_of_game,&replay_obj);
+					
 				}
 
 				for(unit_map::iterator uit = units.begin();
