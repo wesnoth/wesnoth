@@ -256,15 +256,16 @@ std::string gamemap::write() const
 	for(int j = 0; j != y(); ++j) {
 		for(int i = 0; i != x(); ++i) {
 			int n;
-			for(n = 0; n != 10; ++n) {
+			for(n = 0; n != STARTING_POSITIONS; ++n) {
 				if(startingPositions_[n] == location(i,j))
 					break;
 			}
 
-			if(n < 10)
+			if(n < STARTING_POSITIONS) {
 				str << n;
-			else
+			} else {
 				str << tiles_[i][j];
+			}
 		}
 
 		str << "\n";
@@ -391,7 +392,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 
 const gamemap::location& gamemap::starting_position(int n) const
 {
-	if(n < sizeof(startingPositions_)/sizeof(*startingPositions_)) {
+	if(size_t(n) < sizeof(startingPositions_)/sizeof(*startingPositions_)) {
 		return startingPositions_[n];
 	} else {
 		static const gamemap::location null_loc;
@@ -464,6 +465,13 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 		villages_.push_back(loc);
 	}
 
+	//If the terrain is set under a starting position, do also erase the
+	//starting position.
+	for(int i = 0; i < STARTING_POSITIONS; ++i) {
+		if(loc == startingPositions_[i])
+			startingPositions_[i] = location();
+	}
+
 	tiles_[loc.x][loc.y] = ter;
 
 	location adj[6];
@@ -506,8 +514,8 @@ const std::map<gamemap::TERRAIN,size_t>& gamemap::get_weighted_terrain_frequenci
 	const size_t weight_at_edge = 100;
 	const size_t additional_weight_at_center = 200;
 
-	for(size_t i = 0; i != x(); ++i) {
-		for(size_t j = 0; j != y(); ++j) {
+	for(size_t i = 0; i != size_t(x()); ++i) {
+		for(size_t j = 0; j != size_t(y()); ++j) {
 			const size_t distance = distance_between(location(i,j),center);
 			terrainFrequencyCache_[(*this)[i][j]] += weight_at_edge + (furthest_distance-distance)*additional_weight_at_center;
 		}

@@ -290,7 +290,7 @@ void wait::start_game()
 
 	state_.campaign_type = "multiplayer";
 	state_.label = level_["name"];
-	state_.scenario = level_["scenario"];
+	state_.scenario = level_["id"];
 	state_.starting_pos = level_;
 	state_.snapshot = level_;
 	state_.players.clear();

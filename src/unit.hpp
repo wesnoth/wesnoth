@@ -52,9 +52,7 @@ public:
 	int experience() const;
 	int max_experience() const;
 	bool get_experience(int xp);
-	//the name of this unit is fixed by scenario, it is impossible to
-	//change it.
-	bool unrenamable() const;
+	bool unrenamable() const; /** < Set to true for some scenario-specific units which should not be renamed */
 	bool advances() const;
 	int side() const;
 	unit_race::GENDER gender() const;

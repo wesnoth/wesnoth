@@ -178,7 +178,9 @@ private:
 
 	std::vector<std::vector<TERRAIN> > tiles_;
 	std::vector<location> villages_;
-	location startingPositions_[10];
+
+	enum { STARTING_POSITIONS = 10 };
+	location startingPositions_[STARTING_POSITIONS];
 
 	mutable std::map<location,TERRAIN> borderCache_;
 	mutable std::map<TERRAIN,size_t> terrainFrequencyCache_;
