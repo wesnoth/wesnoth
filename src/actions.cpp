@@ -1592,6 +1592,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 				should_clear_stack |= clear_shroud_unit(map,status,gamedata,units,*step,teams,
 				                                        ui->second.side()-1,&known_units,&seen_units);
+
+				if(should_clear_stack) {
+					disp->invalidate_all();
+				}
 			}
 		}
 
