@@ -13,6 +13,7 @@
 #include "game_config.hpp"
 #include "gamestatus.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
 
@@ -370,7 +371,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 	if(movement_costs != NULL) {
 		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
 		if(names.size() != 1) {
-			std::cerr << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+			lg::err(lg::config) << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
 
@@ -430,7 +431,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 	if(defense != NULL) {
 		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
 		if(names.size() != 1) {
-			std::cerr << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+			lg::err(lg::config) << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
 			return 100;
 		}
 
@@ -875,8 +876,7 @@ unit_type::ALIGNMENT unit_type::alignment() const
 	else if(align == "neutral")
 		return NEUTRAL;
 	else {
-		std::cerr << "Invalid alignment found for " << name()
-		          << ": '" << align << "'\n";
+		lg::err(lg::config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
 		return NEUTRAL;
 	}
 }

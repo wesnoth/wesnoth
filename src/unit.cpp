@@ -26,6 +26,12 @@
 #include <iostream>
 #include <sstream>
 
+namespace lg {
+log_domain engine("engine");
+}
+
+#define LOG_UT lg::info(lg::engine)
+
 namespace {
 	const std::string ModificationTypes[] = { "object", "trait", "advance" };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
@@ -1015,7 +1021,7 @@ void unit::add_modification(const std::string& type,
 				}
 			}
 		} else if(apply_to == "hitpoints") {
-			std::cerr << "applying hitpoint mod...." << hitpoints_ << "/" << maxHitpoints_ << "\n";
+			LOG_UT << "applying hitpoint mod...." << hitpoints_ << "/" << maxHitpoints_ << "\n";
 			const std::string& increase_hp = (**i.first)["increase"];
 			const std::string& heal_full = (**i.first)["heal_full"];
 			const std::string& increase_total = (**i.first)["increase_total"];
@@ -1047,9 +1053,9 @@ void unit::add_modification(const std::string& type,
 				hitpoints_ += increase;
 			}
 
-			std::cerr << "modded to " << hitpoints_ << "/" << maxHitpoints_ << "\n";
+			LOG_UT << "modded to " << hitpoints_ << "/" << maxHitpoints_ << "\n";
 			if(hitpoints_ > maxHitpoints_ && violate_max.empty()) {
-				std::cerr << "resetting hp to max\n";
+				LOG_UT << "resetting hp to max\n";
 				hitpoints_ = maxHitpoints_;
 			}
 
