@@ -92,7 +92,7 @@ void check_error()
 	if(sock) {
 		for(connection_map::const_iterator i = connections.begin(); i != connections.end(); ++i) {
 			if(i->second.sock == sock) {
-				throw network::error("Error sending data",i->first);
+				throw network::error("Socket error",i->first);
 			}
 		}
 	}
@@ -116,10 +116,6 @@ struct partial_buffer {
 	std::vector<char> buf;
 	size_t upto;
 };
-
-typedef std::map<network::connection,partial_buffer> partial_map;
-partial_map received_data;
-partial_map::const_iterator current_connection = received_data.end();
 
 TCPsocket server_socket;
 
@@ -386,8 +382,6 @@ void disconnect(connection s)
 
 	schemas.erase(s);
 	bad_sockets.erase(s);
-	received_data.erase(s);
-	current_connection = received_data.end();
 
 	std::deque<network::connection>::iterator dqi = std::find(disconnection_queue.begin(),disconnection_queue.end(),s);
 	if(dqi != disconnection_queue.end()) {
@@ -418,6 +412,27 @@ void queue_disconnect(network::connection sock)
 
 connection receive_data(config& cfg, connection connection_num, int timeout)
 {
+	int cur_ticks = SDL_GetTicks();
+	while(timeout >= 0) {
+		const connection res = receive_data(cfg,connection_num);
+		if(res != 0) {
+			return res;
+		}
+
+		if(timeout > 0) {
+			SDL_Delay(1);
+		}
+
+		const int ticks = SDL_GetTicks();
+		timeout -= maximum<int>(1,(ticks - cur_ticks));
+		cur_ticks = ticks;
+	}
+
+	return 0;
+}
+
+connection receive_data(config& cfg, connection connection_num)
+{
 	if(!socket_set) {
 		return 0;
 	}
@@ -438,14 +453,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 		return 0;
 	}
 
-	const int starting_ticks = SDL_GetTicks();
+	const int res = SDLNet_CheckSockets(socket_set,0);
 
-	const int res = SDLNet_CheckSockets(socket_set,timeout);
-	if(res <= 0) {
-		return 0;
-	}
-
-	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
+	for(sockets_list::const_iterator i = sockets.begin(); res != 0 && i != sockets.end(); ++i) {
 		connection_details& details = get_connection_details(*i);
 		const TCPsocket sock = details.sock;
 		if(SDLNet_SocketReady(sock)) {
@@ -462,88 +472,41 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				const int remote_handle = SDLNet_Read32(buf);
 				set_remote_handle(*i,remote_handle);
 
-				break;
+				continue;
 			}
 
-
-			std::map<connection,partial_buffer>::iterator part_received = received_data.find(*i);
-			if(part_received == received_data.end()) {
-				char num_buf[4];
-				int len = SDLNet_TCP_Recv(sock,num_buf,4);
-
-				if(len != 4) {
-					throw error("Remote host disconnected",*i);
-				}
-
-				details.received += len;
-
-				len = SDLNet_Read32(num_buf);
-
-				LOG_NW << "received packet length: " << len << "\n";
-
-				if((len < 1) || (len > 10000000)) {
-					WRN_NW << "bad length in network packet. Throwing error\n";
-					throw error("network error: bad length data",*i);
-				}
-
-				part_received = received_data.insert(std::pair<connection,partial_buffer>(*i,partial_buffer())).first;
-				part_received->second.buf.resize(len);
-
-				//make sure that this connection still has data
-				const int res = SDLNet_CheckSockets(socket_set,0);
-				if(res <= 0 || !SDLNet_SocketReady(sock)) {
-					WRN_NW << "packet has no data after length. Throwing error\n";
-					throw error("network error: received wrong number of bytes: 0",*i);
-				}
-			}
-
-			current_connection = part_received;
-			partial_buffer& buf = part_received->second;
-
-			const size_t expected = buf.buf.size() - buf.upto;
-			const int nbytes = SDLNet_TCP_Recv(sock,&buf.buf[buf.upto],expected);
-			if(nbytes <= 0) {
-				WRN_NW << "SDLNet_TCP_Recv returned " << nbytes << " error in socket\n";
-				throw error("remote host disconnected",*i);
-			}
-
-			details.received += nbytes;
-
-			buf.upto += nbytes;
-			LOG_NW << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
-
-			if(buf.upto == buf.buf.size()) {
-				current_connection = received_data.end();
-				const std::string buffer(buf.buf.begin(),buf.buf.end());
-				received_data.erase(part_received); //invalidates buf. don't use again
-				if(buffer == "") {
-					WRN_NW << "buffer from remote host is empty\n";
-					throw error("remote host closed connection",*i);
-				}
-
-				if(buffer[buffer.size()-1] != 0) {
-					WRN_NW << "buf not nul-delimited. Network error\n";
-					throw error("sanity check on incoming data failed",*i);
-				}
-
-				const schema_map::iterator schema = schemas.find(*i);
-				wassert(schema != schemas.end());
-
-				cfg.read_compressed(buffer,schema->second.incoming);
-
-//				std::cerr << "--- RECEIVED DATA from " << ((int)*i) << ": '"
-//				          << cfg.write() << "'\n--- END RECEIVED DATA\n";
-
-				
-				return *i;
-			}
+			network_worker_pool::receive_data(sock);
+			SDLNet_TCP_DelSocket(socket_set,sock);
 		}
 	}
 
-	const int time_taken = SDL_GetTicks() - starting_ticks;
-	const int time_left = maximum<int>(0,timeout - time_taken);
+	std::vector<char> buf;
+	TCPsocket sock = connection_num == 0 ? 0 : get_socket(connection_num);
+	sock = network_worker_pool::get_received_data(sock,buf);
+	if(sock == NULL) {
+		return 0;
+	}
 
-	return receive_data(cfg,connection_num,time_left);
+	SDLNet_TCP_AddSocket(socket_set,sock);
+
+	connection result = 0;
+	for(connection_map::const_iterator j = connections.begin(); j != connections.end(); ++j) {
+		if(j->second.sock == sock) {
+			result = j->first;
+			break;
+		}
+	}
+
+	if(result == 0) {
+		return result;
+	}
+
+	const schema_map::iterator schema = schemas.find(result);
+	wassert(schema != schemas.end());
+
+	cfg.read_compressed(std::string(buf.begin(),buf.end()),schema->second.incoming);
+
+	return result;
 }
 
 namespace {
@@ -646,10 +609,7 @@ std::string ip_address(connection connection_num)
 
 std::pair<int,int> current_transfer_stats()
 {
-	if(current_connection == received_data.end())
-		return std::pair<int,int>(-1,-1);
-	else
-		return std::pair<int,int>(current_connection->second.upto,current_connection->second.buf.size());
+	return std::pair<int,int>(-1,-1);
 }
 
 } //end namespace network

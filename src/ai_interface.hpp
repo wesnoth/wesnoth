@@ -100,6 +100,10 @@ protected:
 	///'possible_moves': the map of possible moves, as obtained from 'calculate_possible_moves'
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
+	///this function is identical to 'move_unit', except that the unit's movement isn't set to 0
+	///after the move is complete.
+	location move_unit_partial(location from, location t, std::map<location,paths>& possible_moves);
+
 	///this function is used to calculate the moves units may possibly make.
 	///'possible_moves': a map which will be filled with the paths each unit can take to
 	///get to every possible destination. You probably don't want to use this object at all,

@@ -353,6 +353,17 @@ void ai_interface::sync_network()
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
+	const location loc = move_unit_partial(from,to,possible_moves);
+	const unit_map::iterator u = info_.units.find(loc);
+	if(u != info_.units.end()) {
+		u->second.set_movement(0);
+	}
+
+	return loc;
+}
+
+gamemap::location ai_interface::move_unit_partial(location from, location to, std::map<location,paths>& possible_moves)
+{
 	LOG_AI << "ai_interface::move_unit " << (from.x + 1) << "," << (from.y + 1)
 		<< " -> " << (to.x + 1) << "," << (to.y + 1) << "\n";
 	//stop the user from issuing any commands while the unit is moving
@@ -373,7 +384,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 	if(from == to) {
 		LOG_AI << "moving unit at " << (from.x+1) << "," << (from.y+1) << " on spot. resetting moves\n";
-		u_it->second.set_movement(0);
 		return to;
 	}
 
@@ -398,6 +408,8 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		}
 
 		if(rt != p.routes.end()) {
+			current_unit.set_movement(rt->second.move_left);
+
 			std::vector<location> steps = rt->second.steps;
 
 			if(steps.empty() == false) {
@@ -421,6 +433,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 					}
 
 					if(n != 6) {
+						current_unit.set_movement(0); //enter enemy ZoC, no movement left
 						break;
 					}
 				}
@@ -446,7 +459,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 		info_.units.erase(u_it);
 	}
 
-	current_unit.set_movement(0);
 	info_.units.insert(std::pair<location,unit>(to,current_unit));
 	if(info_.map.is_village(to)) {
 		get_village(to,info_.teams,info_.team_num-1,info_.units);
@@ -1553,8 +1565,9 @@ void ai::analyze_potential_recruit_movements()
 
 	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin(); j != unit_movement_scores_.end(); ++j) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(j->first);
-		if (info == gameinfo_.unit_types.end())
+		if(info == gameinfo_.unit_types.end()) {
 			continue;
+		}
 
 		const int best_score = best_scores[info->second.usage()];
 		if(best_score > 0) {

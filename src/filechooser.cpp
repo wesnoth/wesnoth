@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "show_dialog.hpp"
 #include "widgets/file_chooser.hpp"
 #include <vector>

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "show_dialog.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"

@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
 #include "multiplayer_ui.hpp"
 #include "network.hpp"
 #include "preferences.hpp"

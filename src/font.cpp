@@ -752,120 +752,115 @@ std::string remove_first_space(const std::string& text)
   return text;
 }
 
+int line_width(const std::string line, int font_size, int style)
+{
+	const SDL_Color col = { 0, 0, 0, 0 };
+	text_surface s(line, font_size, col, style);
 
+	return s.width();
 }
 
-namespace font {
 
-	int line_width(const std::string line, int font_size, int style)
-	{
-		const SDL_Color col = { 0, 0, 0, 0 };
-		text_surface s(line, font_size, col, style);
-    
-		return s.width();
-	}
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width)
+{
+	//std::cerr << "Wrapping word " << unwrapped_text << "\n";
+	
+	std::string wrapped_text; // the final result
 
-  
-	std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width)
-	{
-		//std::cerr << "Wrapping word " << unwrapped_text << "\n";
-		
-		std::string wrapped_text; // the final result
-  
-		size_t word_start_pos = 0;
-		std::string cur_word; // including start-whitespace
-		std::string cur_line; // the whole line so far
-  
-		for(size_t c = 0; c < unwrapped_text.length(); c++) {
+	size_t word_start_pos = 0;
+	std::string cur_word; // including start-whitespace
+	std::string cur_line; // the whole line so far
 
-			// Find the next word
-			bool forced_line_break = false;
-			if (c == unwrapped_text.length() - 1) {
-				cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
-				word_start_pos = c + 1;
-			} else if (unwrapped_text[c] == '\n') {
-				cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
-				word_start_pos = c + 1;
-				forced_line_break = true;
-			} else if (unwrapped_text[c] == ' ') {
-				cur_word = unwrapped_text.substr(word_start_pos, c - word_start_pos);
-				word_start_pos = c;
-			} else {
-				continue;
-			}
+	for(size_t c = 0; c < unwrapped_text.length(); c++) {
 
-			// Test if the line should be wrapped or not
-			if (line_width(cur_line + cur_word, font_size) > max_width) {
+		// Find the next word
+		bool forced_line_break = false;
+		if (c == unwrapped_text.length() - 1) {
+			cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
+			word_start_pos = c + 1;
+		} else if (unwrapped_text[c] == '\n') {
+			cur_word = unwrapped_text.substr(word_start_pos, c + 1 - word_start_pos);
+			word_start_pos = c + 1;
+			forced_line_break = true;
+		} else if (unwrapped_text[c] == ' ') {
+			cur_word = unwrapped_text.substr(word_start_pos, c - word_start_pos);
+			word_start_pos = c;
+		} else {
+			continue;
+		}
 
-				if (line_width(cur_word, font_size) > (max_width /*/ 2*/)) {
-					// The last word is too big to fit in a nice way, split it on a char basis
-					std::vector<std::string> split_word = split_utf8_string(cur_word);
-		
-					for (std::vector<std::string>::iterator i = split_word.begin(); i != split_word.end(); ++i) {
-						if (line_width(cur_line + *i, font_size) > max_width) {
-							wrapped_text += cur_line + '\n';
-							cur_line = *i;
-						} else {
-							cur_line += *i;
-						}
-					
+		// Test if the line should be wrapped or not
+		if (line_width(cur_line + cur_word, font_size) > max_width) {
+
+			if (line_width(cur_word, font_size) > (max_width /*/ 2*/)) {
+				// The last word is too big to fit in a nice way, split it on a char basis
+				std::vector<std::string> split_word = split_utf8_string(cur_word);
+	
+				for (std::vector<std::string>::iterator i = split_word.begin(); i != split_word.end(); ++i) {
+					if (line_width(cur_line + *i, font_size) > max_width) {
+						wrapped_text += cur_line + '\n';
+						cur_line = *i;
+					} else {
+						cur_line += *i;
 					}
-	
-				} else {
-					// Split the line on a word basis
-					wrapped_text += cur_line + '\n';
-					cur_line = remove_first_space(cur_word);
-	
+				
 				}
+
 			} else {
-				cur_line += cur_word;
-			}
+				// Split the line on a word basis
+				wrapped_text += cur_line + '\n';
+				cur_line = remove_first_space(cur_word);
 
-			if (forced_line_break) {
-				wrapped_text += cur_line;
-				cur_line = "";
-				forced_line_break = false;
 			}
-		}
-    
-		// Don't forget to add the text left in cur_line
-		if (cur_line != "") {
-			wrapped_text += cur_line + '\n';
+		} else {
+			cur_line += cur_word;
 		}
 
-		return wrapped_text;
+		if (forced_line_break) {
+			wrapped_text += cur_line;
+			cur_line = "";
+			forced_line_break = false;
+		}
 	}
 
-	std::string make_text_ellipsis(const std::string &text, int font_size, int max_width)
-	{
-		static const std::string ellipsis = "...";
-		
-		if(line_width(text, font_size) <= max_width)
-			return text;
-		if(line_width(ellipsis, font_size) > max_width)
-			return "";
-		
-		std::vector<std::string> characters = split_utf8_string(text);
-		std::string current_substring = "";
-
-		for(std::vector<std::string>::const_iterator itor = characters.begin(); itor != characters.end(); ++itor) {
-			if (line_width(current_substring + *itor + ellipsis, font_size ) > max_width) {
-				return current_substring + ellipsis;
-			}
-			
-			current_substring += *itor;
-		}
-
-		return text; // Should not happen
+	// Don't forget to add the text left in cur_line
+	if (cur_line != "") {
+		wrapped_text += cur_line + '\n';
 	}
+
+	return wrapped_text;
+}
+
+std::string make_text_ellipsis(const std::string &text, int font_size, int max_width)
+{
+	static const std::string ellipsis = "...";
 	
-	SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
-			     const SDL_Color& colour, const std::string& text,
-			     int x, int y, int max_width)
-	{
-		std::string wrapped_text = word_wrap_text(text, font_size, max_width);
-		return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, false);
+	if(line_width(text, font_size) <= max_width)
+		return text;
+	if(line_width(ellipsis, font_size) > max_width)
+		return "";
+	
+	std::vector<std::string> characters = split_utf8_string(text);
+	std::string current_substring = "";
+
+	for(std::vector<std::string>::const_iterator itor = characters.begin(); itor != characters.end(); ++itor) {
+		if (line_width(current_substring + *itor + ellipsis, font_size ) > max_width) {
+			return current_substring + ellipsis;
+		}
+		
+		current_substring += *itor;
 	}
+
+	return text; // Should not happen
+}
+
+SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
+		     const SDL_Color& colour, const std::string& text,
+		     int x, int y, int max_width)
+{
+	std::string wrapped_text = word_wrap_text(text, font_size, max_width);
+	return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, false);
+}
 
 }
 
@@ -1233,6 +1228,8 @@ namespace {
 				fontlist.back().present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
 			}
 		}
+
+		return true;
 	}
 }
 

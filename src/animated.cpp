@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 //#include <string>
 //#include <vector>
 #include "SDL.h"
