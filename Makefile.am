@@ -15,3 +15,21 @@ uninstall-hook:
 	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
+
+BINARY_STAGING=/tmp/$(PACKAGE)-$(VERSION)-staging
+BINARY_DIST=/tmp/$(PACKAGE)-binary-$(VERSION).tar.gz
+DATA_DIST=/tmp/$(PACKAGE)-data-$(VERSION).tar.gz
+
+binary-dist:
+	@rm -rf $(BINARY_STAGING) $(BINARY_DIST)
+	@make install-exec DESTDIR=$(BINARY_STAGING)
+	@cd $(BINARY_STAGING) ; tar cf - * | gzip -c >$(BINARY_DIST)
+	@rm -rf $(BINARY_STAGING)
+	@echo "Precompiled binary tarball is in $(BINARY_DIST)"
+    
+data-dist:
+	@rm -rf $(BINARY_STAGING) $(DATA_DIST)
+	@make install-data DESTDIR=$(BINARY_STAGING)
+	@cd $(BINARY_STAGING) ; tar cf - * | gzip -c >$(DATA_DIST)
+	@rm -rf $(BINARY_STAGING)
+	@echo "Precompiled data tarball is in $(DATA_DIST)"
