@@ -732,6 +732,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 	SDL_SetAlpha(logo,SDL_SRCALPHA,255);
 	screen.blit_surface(xpos,ypos,logo);
 	update_rect(xpos,ypos,logo->w,logo->h);
+	screen.video().flip();
 }
 
 TITLE_RESULT show_title(display& screen)

@@ -97,12 +97,12 @@ bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 {
 	//two tiles are adjacent if y is different by 1, and x by 0, or if
 	//x is different by 1 and y by 0, or if x and y are each different by 1,
-	//and the x value of the hex with the greater y value is odd
+	//and the x value of the hex with the greater y value is even
 
 	const int xdiff = abs(a.x - b.x);
 	const int ydiff = abs(a.y - b.y);
 	return ydiff == 1 && a.x == b.x || xdiff == 1 && a.y == b.y ||
-	       xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_odd(a.x) : is_odd(b.x));
+	       xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x));
 }
 
 size_t distance_between(const gamemap::location& a, const gamemap::location& b)
