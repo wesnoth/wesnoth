@@ -106,7 +106,7 @@ namespace {
 	{
 		config res;
 		char buf[50];
-		sprintf(buf,"%d",units.size());
+		sprintf(buf,"%lu",units.size());
 		res["num_units"] = buf;
 
 		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
