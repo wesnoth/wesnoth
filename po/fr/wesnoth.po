@@ -8,7 +8,7 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
+"Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-16 14:31+0200\n"
 "PO-Revision-Date: 2004-09-16 22:50+0200\n"
@@ -309,9 +309,9 @@ msgstr ""
 "L'attaquant a l'initiative, puis le défenseur. Cela se poursuit en "
 "alternance jusqu'à ce que chaque unité ait usé de toutes ses attaques. Le "
 "nombre d'attaques d'une unité varie; par exemple, un guerrier elfe avec une "
-"attaque à l'épée 5-4 peut asséner 4 coups infligeant chacun 5 dommages, "
-"alors qu'un Grognard orc avec 9-2 ne dispose que de 2 coups (mais à 9 points "
-"de dégâts).\n"
+"attaque à l'épée 5-4 peut asséner 4 coups infligeant chacun 5 points de "
+"dégâts, alors qu'un Grognard orc avec 9-2 ne dispose que de 2 coups (mais à "
+"9 points de dégâts).\n"
 "\n"
 "<header>text='Probabilité de toucher'</header>\n"
 "\n"
@@ -331,23 +331,23 @@ msgstr ""
 "toujours au moins 60% de probabilité de toucher, sans tenir compte du "
 "terrain.\n"
 "\n"
-"<header>text=Dommages</header>\n"
+"<header>text=Dégâts</header>\n"
 "\n"
-"Chaque coup qui porte cause une quantité initiale de dommages fonction du "
+"Chaque coup qui porte inflige une quantité initiale de dégâts fonction du "
 "type d'attaque. Par exemple, un guerrier elfe avec une attaque à l'épée 5-4 "
-"cause une base de 5 dommages. C'est habituellement modifié par deux "
+"cause 5 points de dégâts comme base. C'est habituellement modifié par deux "
 "facteurs : <ref>dst=damage_type_and_resistance text='la résistance'</ref> et "
 "<ref>dst=time_of_day text='la période de la journée'</ref>, lesquels sont "
 "expliqués ci-dessous.\n"
 "\n"
 "Quelques unités possèdent des capacités spéciales qui affectent la quantité "
-"de dommages infligés au combat. La plus fréquente d'entre elles est la "
-"<ref>dst=ability_charge text=charge</ref>, qui double les dommages infligés, "
+"de dégâts infligés en combat. La plus fréquente d'entre elles est la "
+"<ref>dst=ability_charge text=charge</ref>, qui double les dégâts infligés, "
 "et par l'attaquant, et par le défenseur lorsque l'unité avec charge attaque."
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
-msgstr "Types de dommage et résistance"
+msgstr "Types de dégâts et résistance"
 
 #: data/help.cfg:121
 msgid ""
@@ -367,23 +367,22 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
-"Dans Wesnoth, il y a trois types de dommages habituellement associés avec "
-"des attaques physiques : tranchant, perforant et contondant. Par ailleurs, "
-"il y a trois autres types de dommages communément associés avec des attaques "
+"Dans Wesnoth, il y a trois types de dégâts habituellement associés avec des "
+"attaques physiques : tranchant, perforant et contondant. Par ailleurs, il y "
+"a trois autres types de dégâts communément associés avec des attaques "
 "magiques : feu, froid et sacré. Des unités différentes peuvent avoir des "
-"résistances qui modifient la quantité de dommages subis face à certains "
-"types de dommages.\n"
+"résistances qui modifient la quantité de dégâts subis face à certains types "
+"d'attaques.\n"
 "\n"
 "Les résistances fonctionnent très simplement. Si une unité a 40% de "
-"résistance contre un type de dommage, alors elle subit 40% de dommages en "
-"moins sur un coup de ce type de dommage.Il est également possible pour une "
-"unité d'avoir une faiblesse; si une unité a -100% de résistance contre un "
-"type de dommage, elle subira 100% de dommages en plus sur une touche de ce "
-"type.\n"
+"résistance contre un type de dégâts, alors elle subit 40% de dommages en "
+"moins sur un coup de ce type. Il est également possible pour une unité "
+"d'avoir une faiblesse ; si une unité a -100% de résistance contre un type de "
+"dégâts, elle subira 100% de dommages en plus sur une touche de ce type.\n"
 "\n"
-"Par exemple, les Squelettes sont hautement résistants aux dommages "
-"tranchants et perforants, mais sont vulnérables aux dommages contondants et "
-"de feu, et extrèmement vulnérables aux dommages sacrés."
+"Par exemple, les Squelettes sont hautement résistants aux attaques "
+"tranchantes et perforantes, mais sont vulnérables aux attaques contondantes "
+"et de feu, et extrêmement vulnérables aux attaques sacrées."
 
 #: data/help.cfg:126
 msgid "Time of Day"
@@ -441,11 +440,11 @@ msgstr ""
 "Le matin et l'après-midi comptent comme la journée, les première et seconde "
 "veilles comme la nuit.\n"
 "\n"
-"L'heure courante affecte la quantité de dommages de certaines unités de la "
-"manière suivante -\n"
+"L'heure courante affecte la quantité de dégâts infligés par certaines unités "
+"de la manière suivante -\n"
 "\n"
-"Les unités loyales infligent +25% de dommages le jour et -25% la nuit.\n"
-"Les unités chaotiques infligent +25% de dommages la nuit et -25% le jour.\n"
+"Les unités loyales infligent +25% de dégâts le jour et -25% la nuit.\n"
+"Les unités chaotiques infligent +25% de dégâts la nuit et -25% le jour.\n"
 "Les unités neutres ne sont pas affectées par l'heure courante.\n"
 "\n"
 "<img>src=misc/schedule-underground.png align=right float=yes</img>Gardez à "
@@ -525,7 +524,7 @@ msgstr ""
 "(telles les trolls) guériront automatiquement de 8 PV à chaque tour.\n"
 "Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals "
 "text=soins</ref> soigneront tous les unités amicales adjacentes de 4 PV à "
-"chaque tour ou empêcheront le poison d'infliger des dommages.\n"
+"chaque tour ou empêcheront le poison d'infliger des dégâts.\n"
 "Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures "
 "text=Guérison</ref> soigneront tous les unités amicales adjacentes de 8 PV à "
 "chaque tour ou purgeront une unité du Poison.\n"
@@ -729,13 +728,13 @@ msgstr ""
 "\n"
 "<header>text=Forte</header>\n"
 "\n"
-"Les unités fortes infligent 1 point de dommage supplémentaire par coup en "
+"Les unités fortes infligent 1 point de dégât supplémentaire par coup en "
 "mêlée et ont 2 PV en plus.\n"
 "\n"
 "Utiles pour n'importe quelle unité de combat rapproché, la force est la plus "
 "efficaces pour les unités qui ont un nombre élevé de coups, tels les "
 "guerriers elfes. Les unités fortes sont très utiles lorsqu'un tout petit peu "
-"de dommages en plus est juste ce qu'il faut pour transformer un coup "
+"de dégâts infligés en plus est juste ce qu'il faut pour transformer un coup "
 "blessant en un coup mortel."
 
 #: data/items.cfg:264
@@ -1641,9 +1640,13 @@ msgstr ""
 "sont similaires aux les unités enrôlées, sauf qu'au lieu d'une nouvelle "
 "unité, c'est une unité d'un scénario précédent qui apparaît."
 
+#: data/scenarios/tutorial/tutorial2.cfg:90
+msgid "What happens when I recall a unit?"
+msgstr "Que se passe-t-il quand je rappelle une unité ?"
+
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid "How should I decide which units to recall?"
-msgstr "Comment choisir quelles unités à rappeler ?"
+msgstr "Comment choisir quelles unités rappeler ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid ""
@@ -1652,11 +1655,11 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
-"Vous devriez généralement rappeler les unités qui ont déjà atteint le "
-"niveau suivant. Cependant, vous pourriez vouloir rappeler les unités avec "
-"une fort expérience et qui seront donc susceptibles de progresser. Vous "
-"devriez rappeler des unités qui seront utiles pour le scénario en cours; "
-"par exemple dans un scénario forestier, rappelez des elfes."
+"Vous devriez généralement rappeler les unités qui ont déjà atteint le niveau "
+"suivant. Cependant, vous pourriez vouloir rappeler les unités avec une fort "
+"expérience et qui seront donc susceptibles de progresser. Vous devriez "
+"rappeler des unités qui seront utiles pour le scénario en cours; par exemple "
+"dans un scénario forestier, rappelez des elfes."
 
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
@@ -1699,8 +1702,8 @@ msgstr ""
 "de l'augmentation du nombre de points de vie à la diminution du nombre de "
 "points d'expérience nécessaire pour progresser. Cependant toutes les "
 "caractéristiques sont conçues pour améliorer la puissance d'une unité; il "
-"n'y a pas de caractéristiques 'négatives'. La plupart des unités ont la "
-"même probabilité de recevoir deux caractéristiques distinctes lors de leur "
+"n'y a pas de caractéristiques 'négatives'. La plupart des unités ont la même "
+"probabilité de recevoir deux caractéristiques distinctes lors de leur "
 "recrutement."
 
 #: data/scenarios/tutorial/tutorial2.cfg:105
@@ -1731,14 +1734,14 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
-"Vous devez payer de l'or pour chaque unité que vous recrutez ou rappelez. "
-"Le coût pour enrôler une unité est affiché sous son nom. Le coût pour "
-"rappeler une unité est toujours de 20 pièces d'or. Une unité coûte aussi de "
-"l'or pour chaque tour sous votre contrôle. Ce coût, dénommé 'entretien', "
-"est égal au niveau de l'unité. Cependant, les unités que vous n'avez ni "
-"recrutées ni rappelées, comme votre chef, ne vous coûtent aucun or. Le "
-"coût total de l'entretien est affiché dans la barre de statut en haut "
-"juste après une image d'or et une flèche rouge."
+"Vous devez payer de l'or pour chaque unité que vous recrutez ou rappelez. Le "
+"coût pour enrôler une unité est affiché sous son nom. Le coût pour rappeler "
+"une unité est toujours de 20 pièces d'or. Une unité coûte aussi de l'or pour "
+"chaque tour sous votre contrôle. Ce coût, dénommé 'entretien', est égal au "
+"niveau de l'unité. Cependant, les unités que vous n'avez ni recrutées ni "
+"rappelées, comme votre chef, ne vous coûtent aucun or. Le coût total de "
+"l'entretien est affiché dans la barre de statut en haut juste après une "
+"image d'or et une flèche rouge."
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid "How do I get gold?"
@@ -1778,13 +1781,13 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
-"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 périodes "
-"dans la journée : le jour, le crépuscule et la nuit. Durant la journée, les "
-"unités d'alignement loyal, comme les humains, font 25% de dégâts en plus, "
-"alors que les unités chaotiques, tels les morts-vivants, font 25% en moins. "
-"De nuit, c'est l'inverse. Au crépuscule, toutes les unités font leurs "
-"dégâts normaux. Les unités neutres, tels les elfes, ne sont pas affectés par "
-"le jour et la nuit."
+"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 "
+"périodes dans la journée : le jour, le crépuscule et la nuit. Durant la "
+"journée, les unités d'alignement loyal, comme les humains, font 25% de "
+"dégâts en plus, alors que les unités chaotiques, tels les morts-vivants, "
+"font 25% en moins. De nuit, c'est l'inverse. Au crépuscule, toutes les "
+"unités font leurs dégâts normaux. Les unités neutres, tels les elfes, ne "
+"sont pas affectés par le jour et la nuit."
 
 #: data/scenarios/tutorial/tutorial2.cfg:133
 msgid "What are the different alignments and times of day?"
@@ -1805,8 +1808,8 @@ msgid ""
 msgstr ""
 "Les périodes de la journée se déroulent en ordre : aube -> identique au "
 "crépuscule, matin -> jour, après-midi -> jour, crépuscule, premier quart -> "
-"nuit, second quart -> nuit, puis on reprend au début. C'est représenté par le "
-"soleil et la lune qui se lève à l'est et se couche à l'ouest. Cependant, "
+"nuit, second quart -> nuit, puis on reprend au début. C'est représenté par "
+"le soleil et la lune qui se lève à l'est et se couche à l'ouest. Cependant, "
 "certains scénarios ont un ordre différent, tels les souterrains où il fait "
 "perpétuellement nuit. Vous pouvez trouver la période actuelle en regardant "
 "la table de statut."
@@ -1825,16 +1828,16 @@ msgid ""
 "of move points it takes each unit to move through the hex. The second "
 "property is the defense that the terrain gives units standing on it. This is "
 "a percentage which determines the unit's chance to be hit on that terrain. "
-"For example; elves have 70% defense on grass, and are therefore hit 30% of "
+"For example; elves have 70% defense in forest, and are therefore hit 30% of "
 "the time."
 msgstr ""
-"Deux terrains ont des propriétés qui ont déjà été présentées; le village et "
+"Deux terrains ont des propriétés qui ont déjà été présentées ; le village et "
 "le château. Cependant les propriétés de la plupart des terrains sont plus "
 "subtiles et consistent en des avantages ou désavantages pour des unités "
 "différentes. La première propriété d'un terrain est le nombre de points de "
-"mouvement pour chaque unité qui y pénètre. La seconde est la défense que le "
+"mouvement dépensés par une unité pour y pénètrer. La seconde est la défense que le "
 "terrain procure à l'unité qui y est présente. C'est un pourcentage qui "
-"détermine la probabilité pour l'unité d'être touché. Par exemple les elfes "
+"détermine la probabilité pour l'unité d'être touchée. Par exemple les elfes "
 "ont 70% de défense en forêt et ne sont ainsi touchés que 30% du temps."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
@@ -1868,8 +1871,8 @@ msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
-"Chaque attaque possède un type de dommage qui affecte la quantité de dégâts "
-"que peuvent s'infliger les unités entre elles."
+"Chaque attaque possède un type qui affecte la quantité de dégâts que peuvent "
+"s'infliger les unités entre elles."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
 msgid ""
@@ -1882,13 +1885,13 @@ msgid ""
 "100%."
 msgstr ""
 "Chaque unité présente une résistance face à chaque type d'attaque. Cette "
-"résistance est un pourcentage qui est soustrait des dommages infligés par "
-"les adversaires avec des armes de ce type. Par exemple, si un éclaireur "
-"elfe est attaqué par un archer elfe, l'archer fera 20% de dommages en plus "
-"que la normale, puisque que l'éclaireur elfe à -20% de résistance face aux "
-"armes perforantes. Ce bonus/malus est calculé en addition des autres bonus/"
-"malus comme celui de la période de la journée, ainsi deux malus de -50% "
-"feront un total de -100%."
+"résistance est un pourcentage qui est soustrait des dégâts infligés par les "
+"adversaires avec des armes de ce type. Par exemple, si un éclaireur elfe est "
+"attaqué par un archer elfe, l'archer fera 20% de dégâts en plus que la "
+"normale, puisque que l'éclaireur elfe à -20% de résistance face aux armes "
+"perforantes. Ce bonus/malus est calculé en addition des autres bonus/malus "
+"comme celui de la période de la journée, ainsi deux malus de -50% feront un "
+"total de -100%."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
 msgid "How does resistance affect attack damage?"
@@ -1903,18 +1906,18 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
-"Il y a 6 types de dommages différents : tranchant, perforant, contondant, "
-"feu, froid et sacré. Des unités fortement blindées ont une résistance élevée "
-"face aux types de dommages physiques : tranchant, perforant et contondant, "
-"mais une faible résistance face aux types de dommages magiques : feu et "
-"froid. Toutes les unités vivantes ont une résistance face au sacré alors "
-"que les morts-vivants sont extrêmement faibles face à lui. Pour trouver la "
-"résistance d'une unité particulière, faites un clic-droit sur l'unité, "
-"sélectionnez Description de l'unité, puis Résistance."
+"Il y a 6 types de dégâts différents : tranchant, perforant, contondant, feu, "
+"froid et sacré. Des unités fortement blindées ont une résistance élevée face "
+"aux attaques physiques : tranchante, perforante et contondante, mais une "
+"faible résistance face aux attaques magiques : feu et froid. Toutes les "
+"unités vivantes ont une résistance face au sacré alors que les morts-vivants "
+"sont extrêmement faibles face à lui. Pour trouver la résistance d'une unité "
+"particulière, faites un clic-droit sur l'unité, sélectionnez Description de "
+"l'unité, puis Résistance."
 
 #: data/scenarios/tutorial/tutorial2.cfg:162
 msgid "What are the different damage types?"
-msgstr "Quels sont les différents types de dommages ?"
+msgstr "Quels sont les différents types de dégâts ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:171
 msgid ""
@@ -1963,11 +1966,10 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 "Il y a de nombreuses spécialités différentes, et apprendre à les connaître "
-"fait partie des points intéressant de Wesnoth. Les deux spécialités les "
-"plus fréquentes sont 'magique' et 'commandement'. Les attaques magiques "
-"ont 70% de chances de toucher l'ennemi quel que soit le terrain. Les unités "
-"à côté d'une unité de plus haut niveau avec 'commandement' font plus de "
-"dommages." 
+"fait partie des points intéressant de Wesnoth. Les deux spécialités les plus "
+"fréquentes sont 'magique' et 'commandement'. Les attaques magiques ont 70% "
+"de chances de toucher l'ennemi quel que soit le terrain. Les unités à côté "
+"d'une unité de plus haut niveau avec 'commandement' font plus de dégâts."
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
 msgid "What kinds of specialties can my units get?"
@@ -2002,8 +2004,9 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:202
 msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr "Cette potion augmente les dommages de toutes les attaques du buveur "
-"de quatre."
+msgstr ""
+"Cette potion augmente les dégâts infligés par toutes les attaques du buveur "
+"de quatre points."
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid ""
@@ -2208,8 +2211,8 @@ msgid ""
 msgstr ""
 "Les unités justes se battent mieux le jour et moins bien la nuit.\n"
 "\n"
-"Jour: +25% de dommage\n"
-"Nuit: -25% de dommage"
+"Jour: +25% de dégâts infligés\n"
+"Nuit: -25% de dégâts infligés"
 
 #: data/translations/english.cfg:10
 msgid ""
@@ -2228,8 +2231,8 @@ msgid ""
 msgstr ""
 "Les unités chaotiques se battent mieux la nuit et moins bien le jour.\n"
 "\n"
-"Jour: -25% de dommage\n"
-"Nuit: +25% de dommage"
+"Jour: -25% de dégâts infligés\n"
+"Nuit: +25% de dégâts infligés"
 
 #: data/translations/english.cfg:21
 msgid ""
@@ -2497,7 +2500,7 @@ msgid ""
 msgstr ""
 "Drainage :\n"
 "Cette unité draine la vie des unités vivantes, se régénérant ainsi de la "
-"moitié des dommages causés."
+"moitié des dégâts causés."
 
 #: data/translations/english.cfg:105
 msgid ""
@@ -4001,8 +4004,8 @@ msgstr ""
 "Les nains sont une ancienne race de puissants combattants. Leurs berserkers "
 "ont abandonné toute défense mais sont capables d'infliger des dégâts massifs "
 "à leurs ennemis. Une fois qu'une bataille est débutée, les berserkers nains "
-"attaquent férocement, continuant le combat jusqu'à la mort, la leur ou celle de "
-"l'ennemi."
+"attaquent férocement, continuant le combat jusqu'à la mort, la leur ou celle "
+"de l'ennemi."
 
 #: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
@@ -6279,56 +6282,52 @@ msgid "+Internationalization Manager"
 msgstr "+Coordinateur des traductions"
 
 #: src/about.cpp:129
-msgid "+Brazilian Translation"
-msgstr "+Traduction brésilienne"
-
-#: src/about.cpp:134
 msgid "+Catalan Translation"
 msgstr "+Traduction catalane"
 
-#: src/about.cpp:139
+#: src/about.cpp:134
 msgid "+Czech Translation"
 msgstr "+Traduction tchèque"
 
-#: src/about.cpp:148
+#: src/about.cpp:143
 msgid "+Danish Translation"
 msgstr "+Traduction danoise"
 
-#: src/about.cpp:152
+#: src/about.cpp:148
 msgid "+Dutch Translation"
 msgstr "+Traduction holandaise"
 
-#: src/about.cpp:156
+#: src/about.cpp:153
 msgid "+Finnish Translation"
 msgstr "+Traduction finlandaise"
 
-#: src/about.cpp:160
+#: src/about.cpp:157
 msgid "+French Translation"
 msgstr "+Traduction française"
 
-#: src/about.cpp:172
+#: src/about.cpp:169
 msgid "+German Translation"
 msgstr "+Traduction allemande"
 
-#: src/about.cpp:181
+#: src/about.cpp:178
 msgid "+Hungarian Translation"
 msgstr "+Traduction hongroise"
 
-#: src/about.cpp:186
+#: src/about.cpp:183
 msgid "+Italian Translation"
 msgstr "+Traduction italienne"
 
-#: src/about.cpp:193
+#: src/about.cpp:190
 msgid "+Norwegian Translation"
 msgstr "+Traduction norvégienne"
 
-#: src/about.cpp:199
+#: src/about.cpp:196
 msgid "+Polish Translation"
 msgstr "+Traduction polonaise"
 
-#: src/about.cpp:205
-msgid "+Portuguese Translation"
-msgstr "+Traduction portugaise"
+#: src/about.cpp:202
+msgid "+Portuguese (Brazil) Translation"
+msgstr "+Traduction portugaise (brésilienne)"
 
 #: src/about.cpp:210
 msgid "+Slovak Translation"
@@ -6373,7 +6372,7 @@ msgstr "aucune"
 
 #: src/actions.cpp:318 src/actions.cpp:435
 msgid "base damage"
-msgstr "dommage de base"
+msgstr "dégâts de base"
 
 #: src/actions.cpp:328
 msgid "attacker resistance vs"
@@ -6389,7 +6388,7 @@ msgstr "dégats doublés"
 
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
-msgstr "dommages totaux"
+msgstr "dégâts totaux"
 
 #: src/actions.cpp:445
 msgid "defender resistance vs"
@@ -6656,7 +6655,9 @@ msgstr "Connection au serveur"
 
 #: src/game.cpp:1001
 msgid "You will now connect to a campaign server to download campaigns."
-msgstr "Vous allez maintenant être connecté à un serveur pour télécharger des campagnes."
+msgstr ""
+"Vous allez maintenant être connecté à un serveur pour télécharger des "
+"campagnes."
 
 #: src/game.cpp:1002
 msgid "Server: "
@@ -6704,7 +6705,9 @@ msgstr "Campagne installée"
 msgid ""
 "The campaign has been installed. You will have to restart Wesnoth before you "
 "can play it."
-msgstr "La campagne a été installée. Vous devrez redémarrer Wesnoth avant de pouvoir y jouer."
+msgstr ""
+"La campagne a été installée. Vous devrez redémarrer Wesnoth avant de pouvoir "
+"y jouer."
 
 #: src/game.cpp:1075
 msgid "Network communication error."
@@ -6717,7 +6720,9 @@ msgstr "Serveur distant deconnecté."
 #: src/game.cpp:1081
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
-msgstr "Il s'est produit un problème pendant la création des fichiers nécessaires à l'installation de cette campagne."
+msgstr ""
+"Il s'est produit un problème pendant la création des fichiers nécessaires à "
+"l'installation de cette campagne."
 
 #: src/game.cpp:1102
 msgid "Select difficulty level:"
@@ -7510,7 +7515,7 @@ msgstr "Défenseur"
 
 #: src/playturn.cpp:514 src/playturn.cpp:633
 msgid "Damage Calculations"
-msgstr "Calcul des Dommages"
+msgstr "Calcul des dégâts"
 
 #: src/playturn.cpp:599
 msgid "Melee"
@@ -7617,8 +7622,8 @@ msgid "him"
 msgstr "lui"
 
 #: src/playturn.cpp:1768
-msgid "You are seperated from your soldiers and may not recall them"
-msgstr "Vous êtes séparés de vos soldats et nous pouvez les rappeler"
+msgid "You are separated from your soldiers and may not recall them"
+msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler"
 
 #: src/playturn.cpp:1770
 msgid ""
@@ -7674,19 +7679,19 @@ msgstr "Ennemis tués"
 
 #: src/playturn.cpp:2062
 msgid "Damage Inflicted"
-msgstr "Dommages Infligés"
+msgstr "Dégâts infligés"
 
 #: src/playturn.cpp:2068
 msgid "Damage Taken"
-msgstr "Dommages subis"
+msgstr "Dégâts subis"
 
 #: src/playturn.cpp:2074
 msgid "Damage Inflicted (EV)"
-msgstr "Dommage infligés (Estim)"
+msgstr "Dégâts infligés (attendus)"
 
 #: src/playturn.cpp:2081
 msgid "Damage Taken (EV)"
-msgstr "Dommages subis (Estim)"
+msgstr "Dégâts subis (attendus)"
 
 #: src/playturn.cpp:2123
 msgid "Search"
@@ -7783,7 +7788,7 @@ msgstr "description"
 
 #: src/reports.cpp:232
 msgid "damage"
-msgstr "dommage"
+msgstr "dégâts"
 
 #: src/reports.cpp:237
 msgid "hexes"
