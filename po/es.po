@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.3-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-24 23:24+0200\n"
+"POT-Creation-Date: 2004-08-26 10:13+0200\n"
 "PO-Revision-Date: 2004-08-19 15:00+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: none\n"
@@ -798,57 +798,55 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:38
 msgid "The Cells"
-msgstr ""
+msgstr "Las celdas"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:42
 msgid "Guard Room"
-msgstr ""
+msgstr "Sala de guardias"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:46
-#, fuzzy
 msgid "Prison"
-msgstr "Veneno"
+msgstr "Prisión"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:50
 msgid "Torture Chamber"
-msgstr ""
+msgstr "Cámara de torturas"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:54
 msgid "Storage Room"
-msgstr ""
+msgstr "Almacén"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:58
 msgid "The City"
-msgstr ""
+msgstr "La ciudad"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:62
-#, fuzzy
 msgid "Exit"
-msgstr "Editar"
+msgstr "Salir"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:400
 msgid "Why have you entered my lands?!?"
-msgstr ""
+msgstr "¿¡Por qué habéis entrado en mis tierras!?"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:405
 msgid "We were traveling-"
-msgstr ""
+msgstr "Íbamos viajand-"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:410
 msgid "Silence! Did I ask you?"
-msgstr ""
+msgstr "¡Silencio! ¿Alguien te ha preguntado?"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:415
 msgid "Um... yes."
-msgstr ""
+msgstr "Um... sí."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:420
 msgid "Shut up! Thats it! I'm putting you in the high-security cave!"
-msgstr ""
+msgstr "¡Cállate! ¡Ya está! ¡Te pondré en la caverna más segura que tengo!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:437
 msgid "Ugh..."
-msgstr ""
+msgstr "Ugh..."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:442
 msgid "Huh? Where am I? I'm tied to the ground!"
@@ -878,7 +876,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:477
 msgid "Kill them."
-msgstr ""
+msgstr "Matadlos."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:503
 msgid "The guards are distracted! Now is the time to escape!"
@@ -1577,54 +1575,6 @@ msgid ""
 "them."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:3
-msgid "The Peasants Revolt"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:24
-msgid ""
-"\n"
-"Victory:\n"
-"@Defeat enemy leader\n"
-"Defeat:\n"
-"#Death of Gweddry\n"
-"#Death of Dacyn\n"
-"#Death of Owaec\n"
-"#Death of Sudoc"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:76
-msgid "Good! Finally some non-undead people are here!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:81
-msgid "Uh... hello, Sudoc... why aren't you at your southern outpost?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:86
-msgid ""
-"It was captured and we were forced to come here. This is the only place left "
-"in Wesnoth where you can find non-undead, except for Weldyn. And Weldyn is "
-"besieged right now."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:91
-msgid "What do the undead want you here for?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:96
-msgid ""
-"We are slaves! The undead work us, mining and making weapons, and then, when "
-"they need to, kill us to add to their army! But I am leading a rebellion... "
-"unfortunately, its hard for our rapiers to do anything against these undead. "
-"We need outside help."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:101
-msgid ""
-"I guess we'll have to help him. Maybe his fencers will prove useful later on."
-msgstr ""
-
 #: data/scenarios/Eastern_Invasion/Reject.cfg:3
 msgid "Weldyn Besieged"
 msgstr ""
@@ -1665,6 +1615,60 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:166
 msgid "They killed Konrad... now, even if save Weldyn, Wesnoth has fallen."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:3
+#, fuzzy
+msgid "The Drowned Plains"
+msgstr "Llanos Nevados"
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:24
+#, fuzzy
+msgid ""
+"\n"
+"Victory:\n"
+"@Defeat Khrakrahs the Skeletal Dragon\n"
+"Defeat:\n"
+"#Death of Gweddry\n"
+"#Death of Dacyn\n"
+"#Death of Owaec\n"
+"#Turns run out"
+msgstr ""
+"\n"
+"Victoria:\n"
+"@Derrotar al líder enemigo\n"
+"Derrota:\n"
+"#Muerte de Konrad\n"
+"#Muerte de Delfador\n"
+"#Muerte de Kalenz\n"
+"#Fin de los turnos"
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:64
+msgid "What the... swamps? These were fertile plains when I was here last!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:68
+msgid ""
+"The lich-lord must have flooded the valley. The undead like the swamp. It is "
+"death, decay, everything that they are themselves."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:72
+msgid "I suppose we will have to wade across it... ugh."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:76
+msgid "Die... die... my master is calling you... Die!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:88
+#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
+#, fuzzy
+msgid "What is that?"
+msgstr "¿Qué es eso?"
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:92
+msgid "I leave you to your doom."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:3
@@ -4136,11 +4140,6 @@ msgstr "¡Alto! ¡No pasáreis! ¡Rápido, refuerzos para proteger a la Princesa
 #, fuzzy
 msgid "Ruaarrrrrrrr!"
 msgstr "¡Ruaarrrrrrrr!"
-
-#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
-#, fuzzy
-msgid "What is that?"
-msgstr "¿Qué es eso?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:205
 #, fuzzy
@@ -8764,6 +8763,7 @@ msgid ""
 msgstr "Muero de forma terrible... y no sé por qué."
 
 #: data/scenarios/The_Dark_Hordes/Crelanus_Book.cfg:171
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:155
 #, fuzzy
 msgid "What? I can't die! Noooo!"
 msgstr "¡Maldito Nigromante! ¡¿Qué hace aquí?!"
@@ -9024,7 +9024,11 @@ msgstr "¡Maldito nigromante!"
 msgid "The Skull of Agarash"
 msgstr "La Calavera de Agarash"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:24
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:10
+msgid "Still fleeing from Wesnoth, Gwiti entered the lands of the Orcs."
+msgstr ""
+
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:52
 msgid ""
 "\n"
 "Victory:\n"
@@ -9040,7 +9044,7 @@ msgstr ""
 "#Muerte de Gwiti Ha'atel\n"
 "#Fin de los turnos"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:73
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:101
 msgid ""
 "After Gwiti destroyed his brother, he planned to march on Wesnoth to gain "
 "his revenge. But a Dark Spirit came to counsel him..."
@@ -9048,17 +9052,17 @@ msgstr ""
 "Tras destruir a su hermano, Gwiti planeó un ataque sobre Wesnoth para "
 "conseguir su venganza. Pero un Espíritu Oscuro vino a aconsejarle..."
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:93
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:121
 msgid "Gwitiii...Gwiti!"
 msgstr "¡Gwitiii...Gwiti!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:98
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:126
 msgid "A Dark Spirit? Surely this is a token of my mastery of the undead!"
 msgstr ""
 "¿Un Espíritu Oscuro? ¡Esto no es más que una demostración de mis poderes "
 "nigrománticos!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:103
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:131
 msgid ""
 "Gwiti, do not yet march in pursuit of your revenge. First, you shall go "
 "south, against the orcs, and there find the Skull of Agarash."
@@ -9066,29 +9070,27 @@ msgstr ""
 "Gwiti, no marches aún en pos de tu venganza. Ve antes hacia el sur, contra "
 "los Orcos, y allí podrás encontrar la Calavera de Aragash."
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:108
-msgid "What is the Skull of Agarash? Tell me more."
-msgstr "¿Qué es la Calavera de Agarash? Cuéntame más."
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:136
+#, fuzzy
+msgid "Speak on."
+msgstr "Hablar"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:113
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:141
+#, fuzzy
 msgid ""
 "Do you see the three orc clans of this land? Their banners are topped with "
-"skulls, as is their custom. But one of these is the Skull of Agarash - which "
-"once was mine. Take it and your power will grow greater by far."
+"skulls, as is their custom. But one of these is the Skull of Agarash - Take "
+"it and your power will grow greater by far."
 msgstr ""
 "¿Ves los tres clanes Orcos? Sus estandartes tienen una calavera encima, "
 "según la costumbre Orca. Pero una de ellas es la calavera de Aragash, que  "
 "una vez fue mía. ¡Tómala y tu poder se centuplicará!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:127
-msgid "What? I can't die! I've done so already! Noooo!"
-msgstr "¿Qué? ¡No puede ser que vuelva a morir! ¡Ya lo he hecho! ¡Nooooo!"
-
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:145
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:173
 msgid "Oh, no! The undead hordes have taken my banner!"
 msgstr "¡Oh, no! ¡Los No Muertos han tomado mi estandarte!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:150
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:178
 msgid ""
 "It is not your banner, and it never was! That skull has marked it as mine "
 "since long ago."
@@ -9096,30 +9098,26 @@ msgstr ""
 "¡Éste nunca ha sido tu estandarte y nunca lo será! ¡Esa calavera lleva mi "
 "nombre desde hace mucho tiempo!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:155
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:183
 #, fuzzy
 msgid ""
 "Argh! This is only half of the skull, and near enough to powerless! Begone, "
 "Spirit!"
 msgstr "¡Argh! ¡Esto sólo es la mitad de la calavera!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:177
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:205
 msgid "Let us trample his banner into the ground! *smash*"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:196
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:220
 msgid "That skull is powerless!"
 msgstr "¡Esta calavera no tiene ningún poder!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:208
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:232
 msgid "That is not the skull of Agarash!"
 msgstr "¡Esta no es la calavera de Agarash!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:221
-msgid "I am dying, and my army is defeated! This is the end..."
-msgstr "¡Me muero, y mi ejército está perdido! Es el fin..."
-
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:239
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:244
 msgid "It's been a long time since I fought anything myself!"
 msgstr "¡Hace ya mucho tiempo desde mi última batalla!"
 
@@ -12984,7 +12982,7 @@ msgstr "¡Sí!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:451
+#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:450
 msgid "No"
 msgstr "No"
 
@@ -13160,7 +13158,7 @@ msgid "Do you want to review any of the skills learned on this level?"
 msgstr "¿Quieres guardar la repetición de este escenario?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:449
 #, fuzzy
 msgid "Yes"
 msgstr "Sí"
@@ -17521,7 +17519,7 @@ msgstr ""
 "Hoy casi un niño, busca convertirse en Señor por su devoción a la Corona, "
 "para unirse a la elite de luchadores humanos."
 
-#: src/about.cpp:240 src/help.cpp:2363 src/show_dialog.cpp:470
+#: src/about.cpp:240 src/help.cpp:2363 src/show_dialog.cpp:469
 #, fuzzy
 msgid "Close"
 msgstr "Cerrar"
@@ -17634,70 +17632,70 @@ msgstr "¿En qué debe convertirse la unidad victoriosa?"
 msgid "No objectives available"
 msgstr "Objetivos no disponibles"
 
-#: src/dialogs.cpp:178
+#: src/dialogs.cpp:177
 #, fuzzy
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "La partida ya existe. ¿Quieres sobreescribirla?"
 
-#: src/dialogs.cpp:207 src/dialogs.cpp:446
+#: src/dialogs.cpp:206 src/dialogs.cpp:443
 #, fuzzy
 msgid "Don't ask me again!"
 msgstr "¡No me lo vuelvas a preguntar!"
 
-#: src/dialogs.cpp:209
+#: src/dialogs.cpp:208
 #, fuzzy
 msgid "Do you really want to delete this game?"
 msgstr "¿Estás seguro de que quieres borrarlo?"
 
-#: src/dialogs.cpp:350
+#: src/dialogs.cpp:347
 #, fuzzy
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:362
+#: src/dialogs.cpp:360
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:368 src/game.cpp:921
+#: src/dialogs.cpp:365 src/game.cpp:921
 #, fuzzy
 msgid "Campaign"
 msgstr "Campaña"
 
-#: src/dialogs.cpp:370 src/game.cpp:968
+#: src/dialogs.cpp:367 src/game.cpp:968
 #, fuzzy
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#: src/dialogs.cpp:372
+#: src/dialogs.cpp:369
 #, fuzzy
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:380
+#: src/dialogs.cpp:377
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1381
+#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
 #, fuzzy
 msgid "Turn"
 msgstr "Turno"
 
-#: src/dialogs.cpp:384
+#: src/dialogs.cpp:381
 #, fuzzy
 msgid "Scenario Start"
 msgstr "Inicio del escenario"
 
-#: src/dialogs.cpp:387 src/game.cpp:944
+#: src/dialogs.cpp:384 src/game.cpp:944
 #, fuzzy
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: src/dialogs.cpp:401
+#: src/dialogs.cpp:398
 #, fuzzy
 msgid "No Saved Games"
 msgstr "No hay ningún juego guardado."
 
-#: src/dialogs.cpp:402
+#: src/dialogs.cpp:399
 #, fuzzy
 msgid ""
 "There are no saved games to load.\n"
@@ -17706,16 +17704,16 @@ msgstr ""
 "No hay juegos guardados para cargar.\n"
 "(Se guardan automáticamente cuando completas un escenario)"
 
-#: src/dialogs.cpp:421
+#: src/dialogs.cpp:418
 #, fuzzy
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:436
+#: src/dialogs.cpp:433
 msgid "Import Saved Games"
 msgstr "Importar partidas grabadas"
 
-#: src/dialogs.cpp:437
+#: src/dialogs.cpp:434
 #, fuzzy
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
@@ -17726,7 +17724,7 @@ msgstr ""
 "anteriores a esta versión ¿Desea actualizarlos? Esto puede que necesite algo "
 "de tiempo."
 
-#: src/dialogs.cpp:442
+#: src/dialogs.cpp:439
 #, fuzzy
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
@@ -17737,71 +17735,71 @@ msgstr ""
 "no hayan sido generados por esta versión del juego ¿Desea registrar estos "
 "archivos dentro del juego?"
 
-#: src/dialogs.cpp:512
+#: src/dialogs.cpp:509
 #, fuzzy
 msgid "Show replay"
 msgstr "Muestra repetición"
 
-#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:82
 msgid "Load Game"
 msgstr "Cargar juego"
 
-#: src/dialogs.cpp:516
+#: src/dialogs.cpp:513
 #, fuzzy
 msgid "Choose the game to load"
 msgstr "Escoge juego a cargar"
 
-#: src/dialogs.cpp:570 src/multiplayer.cpp:121 src/show_dialog.cpp:444
-#: src/show_dialog.cpp:457
+#: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:443
+#: src/show_dialog.cpp:456
 #, fuzzy
 msgid "Ok"
 msgstr "Aceptar"
 
-#: src/dialogs.cpp:571 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
-#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
-#: src/show_dialog.cpp:464
+#: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
+#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:457
+#: src/show_dialog.cpp:463
 #, fuzzy
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/dialogs.cpp:620 src/dialogs.cpp:629
+#: src/dialogs.cpp:617 src/dialogs.cpp:626
 #, fuzzy
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:716 src/display.cpp:884 src/help.cpp:561
-#: src/playturn.cpp:1711
+#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:561
+#: src/playturn.cpp:1712
 #, fuzzy
 msgid "level"
 msgstr "nivel"
 
-#: src/dialogs.cpp:737 src/display.cpp:902 src/help.cpp:615
-#: src/playturn.cpp:1875 src/unit.cpp:1028
+#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:615
+#: src/playturn.cpp:1876 src/unit.cpp:1028
 #, fuzzy
 msgid "HP"
 msgstr "HP"
 
-#: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1713 src/playturn.cpp:1876
+#: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
+#: src/display.cpp:914 src/playturn.cpp:1714 src/playturn.cpp:1877
 #: src/unit.cpp:1087
 #, fuzzy
 msgid "XP"
 msgstr "XP"
 
-#: src/dialogs.cpp:754 src/display.cpp:918 src/help.cpp:616
-#: src/playturn.cpp:1877 src/unit.cpp:1064
+#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:616
+#: src/playturn.cpp:1878 src/unit.cpp:1064
 #, fuzzy
 msgid "Moves"
 msgstr "Movimientos"
 
-#: src/dialogs.cpp:771 src/display.cpp:935 src/help.cpp:693
-#: src/playturn.cpp:616 src/reports.cpp:229
+#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:693
+#: src/playturn.cpp:618 src/reports.cpp:229
 #, fuzzy
 msgid "melee"
 msgstr "melé"
 
-#: src/dialogs.cpp:772 src/display.cpp:936 src/help.cpp:693
-#: src/playturn.cpp:616 src/reports.cpp:230
+#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:693
+#: src/playturn.cpp:618 src/reports.cpp:230
 #, fuzzy
 msgid "ranged"
 msgstr "distancia"
@@ -17821,12 +17819,12 @@ msgstr "invisible"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "¿Quieres guardar la repetición de este escenario?"
 
-#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1388
+#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1389
 #, fuzzy
 msgid "Name:"
 msgstr "Nombre:"
 
-#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1399
+#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1400
 #, fuzzy
 msgid "The game could not be saved"
 msgstr "La partida no ha podido ser guardada"
@@ -17953,12 +17951,12 @@ msgstr "XP requerida"
 msgid "attacks"
 msgstr "ataques"
 
-#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1874
+#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1875
 #, fuzzy
 msgid "Name"
 msgstr "Nombre"
 
-#: src/help.cpp:644 src/help.cpp:645 src/playturn.cpp:1873
+#: src/help.cpp:644 src/help.cpp:645 src/playturn.cpp:1874
 #, fuzzy
 msgid "Type"
 msgstr "Tipo"
@@ -18032,7 +18030,7 @@ msgstr "Siguiente unidad"
 msgid "End Unit Turn"
 msgstr "Finalizar turno de unidad"
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1457
+#: src/hotkeys.cpp:122 src/playturn.cpp:1458
 #, fuzzy
 msgid "Leader"
 msgstr "Líder"
@@ -18069,7 +18067,7 @@ msgstr "Acelerado"
 msgid "Unit Description"
 msgstr "Descripción de unidad"
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1357
+#: src/hotkeys.cpp:131 src/playturn.cpp:1358
 #, fuzzy
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
@@ -18118,7 +18116,7 @@ msgstr "Crear unidad (¡depuración!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Cambiar bando de la unidad (¡depuración!)"
 
-#: src/hotkeys.cpp:144 src/preferences.cpp:910
+#: src/hotkeys.cpp:144 src/preferences.cpp:920
 #, fuzzy
 msgid "Preferences"
 msgstr "Preferencias"
@@ -18128,12 +18126,12 @@ msgstr "Preferencias"
 msgid "Scenario Objectives"
 msgstr "Objetivos escenario"
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1926
+#: src/hotkeys.cpp:146 src/playturn.cpp:1927
 #, fuzzy
 msgid "Unit List"
 msgstr "Lista unidades"
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:1988
+#: src/hotkeys.cpp:147 src/playturn.cpp:2015
 msgid "Statistics"
 msgstr "Estadísticas"
 
@@ -18239,7 +18237,7 @@ msgstr "Hablar con aliados"
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:608
+#: src/hotkeys.cpp:174 src/show_dialog.cpp:606
 msgid "Help"
 msgstr "Ayuda"
 
@@ -18266,7 +18264,7 @@ msgstr "Saltar"
 msgid "System default language"
 msgstr "Idioma predeterminado del sistema"
 
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1010
+#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
 #, fuzzy
 msgid "Close Window"
 msgstr "Cerrar ventana"
@@ -18301,7 +18299,7 @@ msgstr "Iteraciones"
 msgid "Bump Size"
 msgstr "Elevación"
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1458
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1459
 #, fuzzy
 msgid "Villages"
 msgstr "Aldeas"
@@ -18311,27 +18309,27 @@ msgstr "Aldeas"
 msgid "Landform"
 msgstr "Perfil de"
 
-#: src/mapgen_dialog.cpp:183
+#: src/mapgen_dialog.cpp:182
 #, fuzzy
 msgid "Roads Between Castles"
 msgstr "Carreteras entre los castillos"
 
-#: src/mapgen_dialog.cpp:246
+#: src/mapgen_dialog.cpp:245
 #, fuzzy
 msgid "/1000 tiles"
 msgstr "/1000 casillas"
 
-#: src/mapgen_dialog.cpp:251
+#: src/mapgen_dialog.cpp:250
 #, fuzzy
 msgid "Coastal"
 msgstr "Costa"
 
-#: src/mapgen_dialog.cpp:251
+#: src/mapgen_dialog.cpp:250
 #, fuzzy
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:251
+#: src/mapgen_dialog.cpp:250
 #, fuzzy
 msgid "Island"
 msgstr "Isla"
@@ -18461,9 +18459,9 @@ msgstr "Conexión terminada"
 msgid "Receiving game list..."
 msgstr "Recibiendo lista de partidas..."
 
-#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
-#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:732 src/playturn.cpp:1457
-#: src/playturn.cpp:1462 src/playturn.cpp:1549
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:379 src/playlevel.cpp:732 src/playturn.cpp:1458
+#: src/playturn.cpp:1463 src/playturn.cpp:1550
 #, fuzzy
 msgid "Gold"
 msgstr "Oro"
@@ -18514,13 +18512,13 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:48
 #, fuzzy
-msgid "I'm Ready"
-msgstr "Estoy listo"
-
-#: src/multiplayer_connect.cpp:50
-#, fuzzy
 msgid " Computer vs Computer "
 msgstr " Ordenador vs Ordenador "
+
+#: src/multiplayer_connect.cpp:49
+#, fuzzy
+msgid "I'm Ready"
+msgstr "Estoy listo"
 
 #: src/multiplayer_connect.cpp:97
 #, fuzzy
@@ -18544,8 +18542,8 @@ msgstr "Jugador de red"
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
-#: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:466
+#: src/multiplayer_connect.cpp:580 src/multiplayer_connect.cpp:674
 msgid "Computer Player"
 msgstr "IA (computadora)"
 
@@ -18553,8 +18551,8 @@ msgstr "IA (computadora)"
 msgid "Empty"
 msgstr "Vacío"
 
-#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
-#: src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:370
 #, fuzzy
 msgid "Team"
 msgstr "Equipo"
@@ -18604,27 +18602,27 @@ msgstr "Blanco"
 msgid "Brown"
 msgstr "Marrón"
 
-#: src/multiplayer_connect.cpp:361
+#: src/multiplayer_connect.cpp:356
 #, fuzzy
 msgid "Game Lobby"
 msgstr "Sala de Juego"
 
-#: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
+#: src/multiplayer_connect.cpp:359 src/multiplayer_connect.cpp:361
 #, fuzzy
 msgid "Player/Type"
 msgstr "Jugador/Tipo"
 
-#: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
+#: src/multiplayer_connect.cpp:362 src/multiplayer_connect.cpp:365
 #, fuzzy
 msgid "Race"
 msgstr "Raza"
 
-#: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
+#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:375
 #, fuzzy
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
+#: src/multiplayer_connect.cpp:529 src/multiplayer_connect.cpp:533
 msgid "Waiting for network players to join"
 msgstr "Esperando a que se unan jugadores..."
 
@@ -18723,105 +18721,105 @@ msgstr ""
 "Ha ocurrido una desconexión en la red y el juego no puede continuar. "
 "¿Quieres guardar la partida?"
 
-#: src/playturn.cpp:79
+#: src/playturn.cpp:78
 #, fuzzy
 msgid "It is now your turn"
 msgstr "Es tu turno"
 
-#: src/playturn.cpp:499
+#: src/playturn.cpp:503
 #, fuzzy
 msgid "Attacker"
 msgstr "Atacante"
 
-#: src/playturn.cpp:501
+#: src/playturn.cpp:505
 #, fuzzy
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:525 src/playturn.cpp:650
+#: src/playturn.cpp:529 src/playturn.cpp:652
 #, fuzzy
 msgid "Damage Calculations"
 msgstr "Cálculos del daño"
 
-#: src/playturn.cpp:616
+#: src/playturn.cpp:618
 msgid "Melee"
 msgstr "Meleé"
 
-#: src/playturn.cpp:629 src/reports.cpp:209
+#: src/playturn.cpp:631 src/reports.cpp:209
 #, fuzzy
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:662
+#: src/playturn.cpp:664
 #, fuzzy
 msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
-#: src/playturn.cpp:663
+#: src/playturn.cpp:665
 #, fuzzy
 msgid "Choose weapon"
 msgstr "Escoger arma"
 
-#: src/playturn.cpp:1144
+#: src/playturn.cpp:1145
 #, fuzzy
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "Aún no ha empezado el turno ¿Está seguro de que quiere terminarlo?"
 
-#: src/playturn.cpp:1153 src/playturn.cpp:1158
+#: src/playturn.cpp:1154 src/playturn.cpp:1159
 #, fuzzy
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algunas unidades todavía tienen movimientos. ¿Quieres finalizar tu turno?"
 
-#: src/playturn.cpp:1174
+#: src/playturn.cpp:1175
 #, fuzzy
 msgid "Auto-Save"
 msgstr "Auto-Guardado"
 
-#: src/playturn.cpp:1176
+#: src/playturn.cpp:1177
 #, fuzzy
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "El juego no se ha podido guardar automáticamente. Por favor, guarda "
 "manualmente."
 
-#: src/playturn.cpp:1396
+#: src/playturn.cpp:1397
 #, fuzzy
 msgid "The game has been saved"
 msgstr "El juego ha sido guardado"
 
-#: src/playturn.cpp:1458
+#: src/playturn.cpp:1459
 #, fuzzy
 msgid "Units"
 msgstr "Unidades"
 
-#: src/playturn.cpp:1459
+#: src/playturn.cpp:1460
 #, fuzzy
 msgid "Income"
 msgstr "Ingresos"
 
-#: src/playturn.cpp:1459
+#: src/playturn.cpp:1460
 #, fuzzy
 msgid "Upkeep"
 msgstr "Mantenimiento"
 
-#: src/playturn.cpp:1555
+#: src/playturn.cpp:1556
 #, fuzzy
 msgid "You have no units available to recruit."
 msgstr "No tienes unidades disponibles para reclutar."
 
-#: src/playturn.cpp:1568
+#: src/playturn.cpp:1569
 #, fuzzy
 msgid "Recruit unit"
 msgstr "Reclutar unidad"
 
-#: src/playturn.cpp:1597
+#: src/playturn.cpp:1598
 #, fuzzy
 msgid "You don't have enough gold to recruit that unit"
 msgstr "No tienes suficiente oro para reclutar a esta unidad."
 
-#: src/playturn.cpp:1655
+#: src/playturn.cpp:1656
 #, fuzzy
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
@@ -18830,7 +18828,7 @@ msgstr ""
 "¡Mi señor, esta unidad es veterana y tiene \n"
 "experiencia! ¿Realmente quieres licenciar al $noun?"
 
-#: src/playturn.cpp:1657
+#: src/playturn.cpp:1658
 #, fuzzy
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
@@ -18839,22 +18837,22 @@ msgstr ""
 "¡Mi señor, está unidad está a punto de subir de nivel! ¿Realmente quieres "
 "licenciar a $noun?"
 
-#: src/playturn.cpp:1662
+#: src/playturn.cpp:1663
 #, fuzzy
 msgid "her"
 msgstr "ella"
 
-#: src/playturn.cpp:1662
+#: src/playturn.cpp:1663
 #, fuzzy
 msgid "him"
 msgstr "él"
 
-#: src/playturn.cpp:1695
+#: src/playturn.cpp:1696
 #, fuzzy
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr "Estás separado de tus soldados y no puedes reincorporarlos."
 
-#: src/playturn.cpp:1697
+#: src/playturn.cpp:1698
 #, fuzzy
 msgid ""
 "There are no troops available to recall\n"
@@ -18863,95 +18861,111 @@ msgstr ""
 "No hay tropas disponibles para reincorporar. \n"
 "(Debes tener veteranos supervivientes de escenarios previos)"
 
-#: src/playturn.cpp:1701
+#: src/playturn.cpp:1702
 #, fuzzy
 msgid "You must have at least"
 msgstr "Debes tener al menos"
 
-#: src/playturn.cpp:1703
+#: src/playturn.cpp:1704
 #, fuzzy
 msgid "gold pieces to recall a unit"
 msgstr "monedas de oro para reincorporar a una unidad."
 
-#: src/playturn.cpp:1726
+#: src/playturn.cpp:1727
 #, fuzzy
 msgid "Dismiss Unit"
 msgstr "Licenciar unidad"
 
-#: src/playturn.cpp:1739
+#: src/playturn.cpp:1740
 #, fuzzy
 msgid "Select unit"
 msgstr "Seleccionar unidad"
 
-#: src/playturn.cpp:1783
+#: src/playturn.cpp:1784
 #, fuzzy
 msgid "Message"
 msgstr "Mensaje"
 
-#: src/playturn.cpp:1783
+#: src/playturn.cpp:1784
 #, fuzzy
 msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
-#: src/playturn.cpp:1878
+#: src/playturn.cpp:1879
 #, fuzzy
 msgid "Location"
 msgstr "Lugar"
 
-#: src/playturn.cpp:1960 src/playturn.cpp:1994
+#: src/playturn.cpp:1961 src/playturn.cpp:2021
 #, fuzzy
 msgid "Recruits"
 msgstr "Reclutas"
 
-#: src/playturn.cpp:1966 src/playturn.cpp:1998
+#: src/playturn.cpp:1967 src/playturn.cpp:2025
 #, fuzzy
 msgid "Recalls"
 msgstr "Veteranos"
 
-#: src/playturn.cpp:1972 src/playturn.cpp:2002
+#: src/playturn.cpp:1973 src/playturn.cpp:2029
 #, fuzzy
 msgid "Advancements"
 msgstr "Avances"
 
-#: src/playturn.cpp:1978 src/playturn.cpp:2006
+#: src/playturn.cpp:1979 src/playturn.cpp:2033
 #, fuzzy
 msgid "Losses"
 msgstr "Pérdidas"
 
-#: src/playturn.cpp:1984 src/playturn.cpp:2010
+#: src/playturn.cpp:1985 src/playturn.cpp:2037
 #, fuzzy
 msgid "Kills"
 msgstr "Muertos"
 
-#: src/playturn.cpp:2025
+#: src/playturn.cpp:1991
+msgid "Damage Inflicted"
+msgstr ""
+
+#: src/playturn.cpp:1997
+msgid "Damage Taken"
+msgstr ""
+
+#: src/playturn.cpp:2003
+msgid "Damage Inflicted (EV)"
+msgstr ""
+
+#: src/playturn.cpp:2010
+msgid "Damage Taken (EV)"
+msgstr ""
+
+#: src/playturn.cpp:2052
 #, fuzzy
 msgid "Search"
 msgstr "Buscar"
 
-#: src/playturn.cpp:2035
+#: src/playturn.cpp:2062
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/playturn.cpp:2046
+#: src/playturn.cpp:2073
 #, fuzzy
 msgid "Chat Log"
 msgstr "Registro de conversaciones"
 
-#: src/playturn.cpp:2111
+#: src/playturn.cpp:2138
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2184
+#: src/playturn.cpp:2212
 #, fuzzy
 msgid "Place Label"
 msgstr "Poner etiqueta"
 
-#: src/playturn.cpp:2185
+#: src/playturn.cpp:2213
 #, fuzzy
 msgid "Label"
 msgstr "Etiqueta"
 
-#: src/playturn.cpp:2348
+#: src/playturn.cpp:2376
 #, fuzzy
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
@@ -18960,27 +18974,27 @@ msgstr ""
 "El juego no está sincronizado y tendras que salir. ¿Quieres guardar un log "
 "de tu partida?"
 
-#: src/playturn.cpp:2400
+#: src/playturn.cpp:2428
 #, fuzzy
 msgid "Replace with AI"
 msgstr "Reemplazar con IA"
 
-#: src/playturn.cpp:2401
+#: src/playturn.cpp:2429
 #, fuzzy
 msgid "Replace with local player"
 msgstr "Reemplazar con jugador local"
 
-#: src/playturn.cpp:2402
+#: src/playturn.cpp:2430
 #, fuzzy
 msgid "Abort game"
 msgstr "Abortar juego"
 
-#: src/playturn.cpp:2405
+#: src/playturn.cpp:2433
 #, fuzzy
 msgid "Replace with "
 msgstr "Reemplazar con IA"
 
-#: src/playturn.cpp:2409
+#: src/playturn.cpp:2437
 #, fuzzy
 msgid "has left the game. What do you want to do?"
 msgstr " ha dejado el juego. ¿Qué quieres hacer?"
@@ -19000,154 +19014,154 @@ msgstr ""
 msgid "player"
 msgstr "jugador"
 
-#: src/preferences.cpp:627
+#: src/preferences.cpp:637
 #, fuzzy
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/preferences.cpp:628
+#: src/preferences.cpp:638
 #, fuzzy
 msgid "Accelerated Speed"
 msgstr "Velocidad Acelerada"
 
-#: src/preferences.cpp:629
+#: src/preferences.cpp:639
 #, fuzzy
 msgid "Skip AI Moves"
 msgstr "Omitir los movimientos de la IA"
 
-#: src/preferences.cpp:630
+#: src/preferences.cpp:640
 #, fuzzy
 msgid "Show Grid"
 msgstr "Mostrar rejilla"
 
-#: src/preferences.cpp:631
+#: src/preferences.cpp:641
 #, fuzzy
 msgid "Show Floating Labels"
 msgstr "Mostrar "
 
-#: src/preferences.cpp:632
+#: src/preferences.cpp:642
 #, fuzzy
 msgid "Turn Dialog"
 msgstr "Diálogos"
 
-#: src/preferences.cpp:633
+#: src/preferences.cpp:643
 #, fuzzy
 msgid "Turn Bell"
 msgstr "Campana"
 
-#: src/preferences.cpp:634
+#: src/preferences.cpp:644
 #, fuzzy
 msgid "Show Team Colors"
 msgstr "Muestra colores equipo"
 
-#: src/preferences.cpp:635
+#: src/preferences.cpp:645
 #, fuzzy
 msgid "Show Color Cursors"
 msgstr "Mostrar cursores coloreados"
 
-#: src/preferences.cpp:636
+#: src/preferences.cpp:646
 #, fuzzy
 msgid "Show Haloing Effects"
 msgstr "Mostrar halos"
 
-#: src/preferences.cpp:637
+#: src/preferences.cpp:647
 #, fuzzy
 msgid "Video Mode"
 msgstr "Modo de vídeo"
 
-#: src/preferences.cpp:638
+#: src/preferences.cpp:648
 #, fuzzy
 msgid "Hotkeys"
 msgstr "Teclado"
 
-#: src/preferences.cpp:639
+#: src/preferences.cpp:649
 #, fuzzy
 msgid "Adjust Gamma"
 msgstr "Ajustar el brillo "
 
-#: src/preferences.cpp:640
+#: src/preferences.cpp:650
 #, fuzzy
 msgid "Music Volume:"
 msgstr "Volumen música:"
 
-#: src/preferences.cpp:640
+#: src/preferences.cpp:650
 #, fuzzy
 msgid "SFX Volume:"
 msgstr "Volumen efectos:"
 
-#: src/preferences.cpp:641
+#: src/preferences.cpp:651
 #, fuzzy
 msgid "Gamma:"
 msgstr "Brillo:"
 
-#: src/preferences.cpp:641
+#: src/preferences.cpp:651
 #, fuzzy
 msgid "Scroll Speed:"
 msgstr "Velocidad scroll:"
 
-#: src/preferences.cpp:653
+#: src/preferences.cpp:663
 #, fuzzy
 msgid "Change the sound effects volume"
 msgstr "Cambia el volumen de los sonidos"
 
-#: src/preferences.cpp:658
+#: src/preferences.cpp:668
 #, fuzzy
 msgid "Change the music volume"
 msgstr "Cambia el volumen de la música"
 
-#: src/preferences.cpp:663
+#: src/preferences.cpp:673
 #, fuzzy
 msgid "Change the speed of scrolling around the map"
 msgstr "Cambia la velocidad de desplazamiento del mapa"
 
-#: src/preferences.cpp:666 src/preferences.cpp:671
+#: src/preferences.cpp:676 src/preferences.cpp:681
 #, fuzzy
 msgid "Change the brightness of the display"
 msgstr "Cambia el brillo"
 
-#: src/preferences.cpp:674
+#: src/preferences.cpp:684
 #, fuzzy
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
 
-#: src/preferences.cpp:677
+#: src/preferences.cpp:687
 #, fuzzy
 msgid "Make units move and fight faster"
 msgstr "Las unidades se mueven y luchan más deprisa"
 
-#: src/preferences.cpp:680
+#: src/preferences.cpp:690
 #, fuzzy
 msgid "Do not animate AI units moving"
 msgstr "No anima el movimiento de las unidades controladas por la IA"
 
-#: src/preferences.cpp:683
+#: src/preferences.cpp:693
 #, fuzzy
 msgid "Overlay a grid onto the map"
 msgstr "Dibuja una rejilla por encima del mapa"
 
-#: src/preferences.cpp:686
+#: src/preferences.cpp:696
 #, fuzzy
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Muestra un texto encima de la unidad cuando sufre daño para indicar cuanto "
 "ha recibido"
 
-#: src/preferences.cpp:688
+#: src/preferences.cpp:698
 #, fuzzy
 msgid "Change the resolution the game runs at"
 msgstr "Cambia la resolución enChange the resolution the game runs at"
 
-#: src/preferences.cpp:691
+#: src/preferences.cpp:701
 #, fuzzy
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Anuncia con un diálogo el inicio del turno"
 
-#: src/preferences.cpp:694
+#: src/preferences.cpp:704
 #, fuzzy
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Hace sonar una campana al inicio del turno"
 
-#: src/preferences.cpp:697
+#: src/preferences.cpp:707
 #, fuzzy
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
@@ -19156,64 +19170,64 @@ msgstr ""
 "Distingue a las unidades de cada bando dibujando un círculo de un "
 "determinado color a su base"
 
-#: src/preferences.cpp:700
+#: src/preferences.cpp:710
 #, fuzzy
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Usa punteros coloreados (podría ser más lento)"
 
-#: src/preferences.cpp:703
+#: src/preferences.cpp:713
 #, fuzzy
 msgid "Use graphical special effects (may be slower)"
 msgstr "Usa efectos especiales (podría ser más lento)"
 
-#: src/preferences.cpp:705
+#: src/preferences.cpp:715
 #, fuzzy
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura los accesos rápidos de teclado"
 
-#: src/preferences.cpp:898
+#: src/preferences.cpp:908
 msgid "Prefs section^General"
 msgstr ""
 
-#: src/preferences.cpp:899
+#: src/preferences.cpp:909
 msgid "Prefs section^Display"
 msgstr ""
 
-#: src/preferences.cpp:900
+#: src/preferences.cpp:910
 msgid "Prefs section^Sound"
 msgstr ""
 
-#: src/preferences.cpp:956
+#: src/preferences.cpp:966
 #, fuzzy
 msgid "There are no alternative video modes available"
 msgstr "No tienes modos de vídeo alternativos disponibles."
 
-#: src/preferences.cpp:987
+#: src/preferences.cpp:996
 #, fuzzy
 msgid "Choose Resolution"
 msgstr "Selecciona Resolución"
 
-#: src/preferences.cpp:1015
+#: src/preferences.cpp:1024
 #, fuzzy
 msgid "Hotkey Settings"
 msgstr "Configuración Teclado"
 
-#: src/preferences.cpp:1019 src/preferences.cpp:1077
+#: src/preferences.cpp:1028 src/preferences.cpp:1086
 #, fuzzy
 msgid "Press desired HotKey"
 msgstr "Presiona la tecla deseada"
 
-#: src/preferences.cpp:1038
+#: src/preferences.cpp:1047
 #, fuzzy
 msgid "Change Hotkey"
 msgstr "Cambiar Tecla"
 
-#: src/preferences.cpp:1041
+#: src/preferences.cpp:1050
 #, fuzzy
 msgid "Save Hotkeys"
 msgstr "Guardar teclas"
 
-#: src/preferences.cpp:1110
+#: src/preferences.cpp:1119
 #, fuzzy
 msgid "This HotKey is already in use."
 msgstr "La tecla ya está siendo usada. No se han hecho cambios."
@@ -19292,7 +19306,7 @@ msgstr "Enemigo"
 msgid "Allied"
 msgstr "Aliado"
 
-#: src/show_dialog.cpp:941
+#: src/show_dialog.cpp:931
 msgid "KB"
 msgstr "KB"
 
@@ -19415,6 +19429,15 @@ msgstr "Borrar archivo"
 #, fuzzy
 msgid "Deletion of the file failed."
 msgstr "Ha habido algún fallo en el proceso de borrado."
+
+#~ msgid "What is the Skull of Agarash? Tell me more."
+#~ msgstr "¿Qué es la Calavera de Agarash? Cuéntame más."
+
+#~ msgid "What? I can't die! I've done so already! Noooo!"
+#~ msgstr "¿Qué? ¡No puede ser que vuelva a morir! ¡Ya lo he hecho! ¡Nooooo!"
+
+#~ msgid "I am dying, and my army is defeated! This is the end..."
+#~ msgstr "¡Me muero, y mi ejército está perdido! Es el fin..."
 
 #, fuzzy
 #~ msgid ""
