@@ -194,7 +194,7 @@ public:
 
 	int experience_needed() const;
 	std::vector<std::string> advances_to() const;
-	const config::child_list& modification_advancements() const { return cfg_.get_children("advancement"); }
+	const config::child_list& modification_advancements() const;
 	const std::string& usage() const;
 
 	struct experience_accelerator {

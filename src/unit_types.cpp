@@ -893,6 +893,12 @@ std::vector<std::string> unit_type::advances_to() const
 		return utils::split(val);
 }
 
+const config::child_list& unit_type::modification_advancements() const
+{
+	return cfg_.get_children("advancement");
+}
+
+
 const std::string& unit_type::usage() const
 {
 	return cfg_["usage"];
