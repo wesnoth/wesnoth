@@ -35,11 +35,10 @@ struct compression_schema
 //you can re-use the same schema on the sending end, and the receiver can store the schema,
 //meaning that the entire schema won't have to be transmitted each time.
 
-std::string write_compressed(config const &cfg, compression_schema &schema);
+void write_compressed(std::ostream &out, config const &cfg, compression_schema &schema);
 void read_compressed(config &cfg, std::istream &in, compression_schema &schema); //throws config::error
 
-
-std::string write_compressed(config const &cfg);
+void write_compressed(std::ostream &out, config const &cfg);
 void read_compressed(config &cfg, std::istream &in);
 
 #endif

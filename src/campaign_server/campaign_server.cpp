@@ -127,10 +127,10 @@ void campaign_server::run()
 
 						const config* const data = upload->child("data");
 						if(data != NULL) {
-							compression_schema schema;
-							const std::string& filedata = write_compressed(*data, schema);
-							write_file((*campaign)["filename"],filedata);
-							(*campaign)["size"] = lexical_cast<std::string>(filedata.size());
+							std::ostringstream filedata;
+							write_compressed(filedata, *data);
+							write_file((*campaign)["filename"], filedata.str());
+							(*campaign)["size"] = lexical_cast<std::string>(filedata.str().size());
 						}
 
 						write_file(file_, write(cfg_));

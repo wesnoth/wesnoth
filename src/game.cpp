@@ -287,7 +287,9 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
 				read(cfg, *stream, &line_src);
 				try {
-					write_file(fname, write_compressed(cfg));
+					std::ostringstream cache;
+					write_compressed(cache, cfg);
+					write_file(fname, cache.str());
 
 					config checksum_cfg;
 					data_tree_checksum().write(checksum_cfg);
@@ -1543,8 +1545,13 @@ int play_game(int argc, char** argv)
 					return 0;
 				}
 
-				const std::string res(compress ? write_compressed(cfg) : write(cfg));
-				write_file(output,res);
+				std::string res;
+				if (compress) {
+					std::ostringstream savefile;
+					write_compressed(savefile, cfg);
+					res = savefile.str();
+				} else res = write(cfg);
+				write_file(output, res);
 
 			} catch(config::error& e) {
 				std::cerr << input << " is not a valid Wesnoth file: " << e.message << "\n";

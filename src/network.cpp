@@ -570,7 +570,9 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	const schema_map::iterator schema = schemas.find(connection_num);
 	wassert(schema != schemas.end());
 
-	const std::string& value = write_compressed(cfg,schema->second.outgoing);
+	std::ostringstream compressor;
+	write_compressed(compressor, cfg, schema->second.outgoing);
+	std::string const &value = compressor.str();
 
 //	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
 //	          << cfg.write() << "'\n--- END SEND DATA\n";

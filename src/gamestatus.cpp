@@ -455,7 +455,13 @@ void save_game(const game_state& state)
 
 		const std::string fname = get_saves_dir() + "/" + name;
 
-		write_file(fname, preferences::compress_saves() ? write_compressed(cfg) : write(cfg));
+		std::string savefile;
+		if (preferences::compress_saves()) {
+			std::ostringstream stream;
+			write_compressed(stream, cfg);
+			savefile = stream.str();
+		} else savefile = write(cfg);
+		write_file(fname, savefile);
 
 		config& summary = save_summary(state.label);
 		extract_summary_data_from_save(state,summary);
@@ -520,7 +526,9 @@ void write_save_index()
 {
 	log_scope("write_save_index()");
 	try {
-		write_file(get_save_index_file(), write_compressed(save_index()));
+		std::ostringstream index;
+		write_compressed(index, save_index());
+		write_file(get_save_index_file(), index.str());
 	} catch(io_exception& e) {
 		std::cerr << "error writing to save index file: '" << e.what() << "'\n";
 	}

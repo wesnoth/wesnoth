@@ -24,16 +24,6 @@
 
 #define ERR_CF lg::err(lg::config)
 
-std::string write_compressed(config const &cfg) {
-	compression_schema schema;
-	return write_compressed(cfg, schema);
-}
-
-void read_compressed(config &cfg, std::istream &in) {
-	compression_schema schema;
-	read_compressed(cfg, in, schema);
-}
-
 //data compression. Compression is designed for network traffic.
 //assumptions compression is based on:
 // - most space is taken up by element names and attribute names
@@ -65,11 +55,9 @@ static const size_t compress_max_words = compress_end_words - compress_first_wor
 static const size_t max_schema_item_length = 20;
 static const int max_recursion_levels = 100;
 
-static void compress_output_literal_word(std::string const &word, std::vector< char > &output)
+static void compress_output_literal_word(std::ostream &out, std::string const &word)
 {
-	output.resize(output.size() + word.size());
-	std::copy(word.begin(), word.end(), output.end() - word.size());
-	output.push_back(char(0));
+	out.write(word.c_str(), word.length() + 1);
 }
 
 static compression_schema::word_char_map::const_iterator
@@ -85,7 +73,7 @@ add_word_to_schema(std::string const &word, compression_schema &schema)
 }
 
 static compression_schema::word_char_map::const_iterator
-get_word_in_schema(std::string const &word, compression_schema &schema, std::vector< char > &output)
+get_word_in_schema(std::string const &word, compression_schema &schema, std::ostream &out)
 {
 	if (word.size() > max_schema_item_length)
 		return schema.word_to_char.end();
@@ -99,8 +87,8 @@ get_word_in_schema(std::string const &word, compression_schema &schema, std::vec
 		//we can add the word to the schema
 
 		//we insert the code to add a schema item, followed by the zero-delimited word
-		output.push_back(char(compress_schema_item));
-		compress_output_literal_word(word, output);
+		out.put(compress_schema_item);
+		compress_output_literal_word(out, word);
 
 		return add_word_to_schema(word, schema);
 	} else {
@@ -109,17 +97,17 @@ get_word_in_schema(std::string const &word, compression_schema &schema, std::vec
 	}
 }
 
-static void compress_emit_word(std::string const &word, compression_schema &schema, std::vector< char > &res)
+static void compress_emit_word(std::ostream &out, std::string const &word, compression_schema &schema)
 {
 	//get the word in the schema
-	const compression_schema::word_char_map::const_iterator w = get_word_in_schema(word, schema, res);
+	const compression_schema::word_char_map::const_iterator w = get_word_in_schema(word, schema, out);
 	if (w != schema.word_to_char.end()) {
 		//the word is in the schema, all we have to do is output the compression code for it.
-		res.push_back(w->second);
+		out.put(w->second);
 	} else {
 		//the word is not in the schema. Output it as a literal word
-		res.push_back(char(compress_literal_word));
-		compress_output_literal_word(word, res);
+		out.put(compress_literal_word);
+		compress_output_literal_word(out, word);
 	}
 }
 
@@ -133,12 +121,12 @@ static std::string compress_read_literal_word(std::istream &in)
 			throw config::error("Unexpected end of data in compressed config read\n");
 		if (c == 0)
 			break;
-		stream << c;
+		stream.put(c);
 	}
 	return stream.str();
 }
 
-static void write_compressed_internal(config const &cfg, compression_schema &schema, std::vector< char > &res, int level)
+static void write_compressed_internal(std::ostream &out, config const &cfg, compression_schema &schema, int level)
 {
 	if (level > max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config write\n");
@@ -146,10 +134,10 @@ static void write_compressed_internal(config const &cfg, compression_schema &sch
 	for (string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
 		if (i->second.empty() == false) {
 			//output the name, using compression
-			compress_emit_word(i->first, schema, res);
+			compress_emit_word(out, i->first, schema);
 
 			//output the value, with no compression
-			compress_output_literal_word(i->second, res);
+			compress_output_literal_word(out, i->second);
 		}
 	}
 
@@ -158,21 +146,16 @@ static void write_compressed_internal(config const &cfg, compression_schema &sch
 		std::string const &name = *item.first;
 		config const &cfg2 = *item.second;
 
-		res.push_back(compress_open_element);
-		compress_emit_word(name, schema, res);
-		write_compressed_internal(cfg2, schema, res, level + 1);
-		res.push_back(compress_close_element);
+		out.put(compress_open_element);
+		compress_emit_word(out, name, schema);
+		write_compressed_internal(out, cfg2, schema, level + 1);
+		out.put(compress_close_element);
 	}
 }
 
-std::string write_compressed(config const &cfg, compression_schema &schema)
+void write_compressed(std::ostream &out, config const &cfg, compression_schema &schema)
 {
-	std::vector< char > res;
-	write_compressed_internal(cfg, schema, res, 0);
-	std::string s;
-	s.resize(res.size());
-	std::copy(res.begin(), res.end(), s.begin());
-	return s;
+	write_compressed_internal(out, cfg, schema, 0);
 }
 
 static void read_compressed_internal(config &cfg, std::istream &in, compression_schema &schema, int level)
@@ -231,4 +214,14 @@ void read_compressed(config &cfg, std::istream &in, compression_schema &schema)
 {
 	cfg.clear();
 	read_compressed_internal(cfg, in, schema, 0);
+}
+
+void write_compressed(std::ostream &out, config const &cfg) {
+	compression_schema schema;
+	write_compressed(out, cfg, schema);
+}
+
+void read_compressed(config &cfg, std::istream &in) {
+	compression_schema schema;
+	read_compressed(cfg, in, schema);
 }
