@@ -7,23 +7,27 @@ sub readwml {
   my (%trans, $key);
 
   while (<TRANS>) {
-    if (m/(\S+)\s*=\s*\"(.*)\"\s*$/) {
+    if (m/(\S+)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
+      # single-line
       die "nested key" if defined $key;
 
       $trans{$1} = $2;
 
-    } elsif (m/(\S+)\s*=\s*\"(.*)/) {
+    } elsif (m/(\S+)\s*=(?:_\s*)?\s*\"(.*)/) {
+      # start of multi-line
       die "nested key" if defined $key;
 
       $key = $1;
       $trans{$key} = $2 . "\n";
 
     } elsif (m/(.*)\"\s*$/) {
+      # end of multi-line
       die "end of string without a key" unless defined $key;
 
       $trans{$key} .= $1;
       $key = undef;
     } elsif (defined $key) {
+      # part of multi-line
       $trans{$key} .= $_;
     }
 
