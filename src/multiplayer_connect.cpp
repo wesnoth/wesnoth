@@ -218,6 +218,9 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		if(side["share_view"].empty())
 			side["share_view"] = share_view ? "yes" : "no";
 
+		if(side["id"].empty())
+			side["id"] = (*possible_sides.front())["id"];
+
 		if(side["name"].empty())
 			side["name"] = (*possible_sides.front())["name"];
 
@@ -282,6 +285,7 @@ void mp_connect::lists_init()
 
 	for(std::vector<config*>::const_iterator race = possible_sides.begin(); race != possible_sides.end(); ++race) {
 		player_races_.push_back((**race)["name"]);
+		possible_faction_ids_.push_back((**race)["id"]);
 	}
 
 	//Teams
@@ -515,6 +519,7 @@ void mp_connect::clear_area()
 	combos_color_.clear();
 	sliders_gold_.clear();
 	labels_gold_.clear();
+	possible_faction_ids_.clear();
 
 	ai_.hide();
 	launch_.hide();
@@ -572,7 +577,7 @@ void mp_connect::gui_update()
 
 		//Player Faction
 		for (size_t m = 0; m != player_races_.size(); ++m) {
-			if (side["name"] == player_races_[m]) {
+			if (side["id"] == possible_faction_ids_[m]) {
 				if (combos_race_[n].selected() != m) {
 					combos_race_[n].set_selected(m);
 
@@ -751,6 +756,7 @@ lobby::RESULT mp_connect::process()
 			while((**side)["random_faction"] == "yes" && ntry < 1000) {
 				const int choice = rand()%real_sides.size();
 
+				(**side)["id"] = (*real_sides[choice])["id"];
 				(**side)["name"] = (*real_sides[choice])["name"];
 				(**side)["random_faction"] = (*real_sides[choice])["random_faction"];
 
@@ -985,6 +991,10 @@ void mp_connect::update_network()
 
 				if(cfg["description"].empty() == false) {
 					pos->first->values["description"] = cfg["description"];
+				}
+
+				if(cfg["id"].empty() == false) {
+					pos->first->values["id"] = cfg["id"];
 				}
 
 				if(cfg["name"].empty() == false) {

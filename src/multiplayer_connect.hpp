@@ -91,6 +91,7 @@ private:
 
 	//std::vector<std::vector<std::string> > player_leaders_;
 	std::vector<leader_list_manager> player_leaders_;
+	std::vector<std::string> possible_faction_ids_;
 
 	std::vector<std::string> team_names_;
 	std::vector<int> team_indices_;

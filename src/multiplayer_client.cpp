@@ -72,11 +72,13 @@ void receive_gamelist(display& disp, config& data)
 class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(display& disp, config& cfg, const game_data& data, int team_num,
-			const std::string& team_name, const std::string& team_leader)
+	wait_for_start(display& disp, const config& game_config, config& cfg,
+			const game_data& data, int team_num, const std::string& team_name,
+			const std::string& team_leader)
 		: status(START_GAME), got_side(false), team(team_num),
-		  name(team_name), leader(team_leader), disp_(disp), sides_(cfg),
-		  units_data_(data), cancel_button_(NULL), menu_(NULL)
+		  name(team_name), leader(team_leader), disp_(disp),
+		  game_config_(game_config), sides_(cfg), units_data_(data),
+		  cancel_button_(NULL), menu_(NULL)
 	{
 		SDL_Rect empty_rect = {0,0,0,0};
 		area_ = empty_rect;
@@ -89,13 +91,14 @@ public:
 		}
 
 		std::vector<std::string> details;
+		const config* const era_cfg = game_config_.find_child("era","id",sides_["era"]);
 
 		const config::child_list& sides = sides_.get_children("side");
 		for(config::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 			const config& sd = **s;
 
 			std::string description = sd["description"];
-			std::string side_name = sd["name"];
+			std::string side_name = (*(era_cfg->find_child("multiplayer_side", "id", sd["id"])))["name"];
 			std::string leader_type = sd["type"];
 
 			if(first && (s - sides.begin() == size_t(team-1))) {
@@ -224,7 +227,7 @@ private:
 	display& disp_;
 	config& sides_;
 	const game_data& units_data_;
-
+	const config& game_config_;
 	util::scoped_ptr<gui::button> cancel_button_;
 	util::scoped_ptr<gui::menu> menu_;
 	std::deque<config> data_;
@@ -489,6 +492,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			wassert(choice < possible_sides.size());
 
 			const config& chosen_side = *possible_sides[choice];
+			response["id"] = chosen_side["id"];
 			team_name = response["name"] = chosen_side["name"];
 			if(leader.empty()) {
 				team_leader = response["type"] = chosen_side["type"];
@@ -502,7 +506,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			network::send_data(response);
 		}
     
-		wait_for_start waiter(disp,sides,units_data,team_num,team_name,team_leader);
+		wait_for_start waiter(disp,cfg,sides,units_data,team_num,team_name,team_leader);
 		std::vector<std::string> messages;
 		config game_data;
 		lobby::RESULT dialog_res = lobby::CONTINUE;
