@@ -81,6 +81,9 @@ namespace preferences {
 
 	std::string client_type();
 
+	void set_theme(const std::string& theme);
+	const std::string& theme();
+
 	void show_preferences_dialog(display& disp);
 	bool show_video_mode_dialog(display& disp);
 	void show_hotkeys_dialog (display & disp);

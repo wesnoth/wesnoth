@@ -15,6 +15,7 @@
 
 #include "SDL.h"
 
+#include <string>
 #include <vector>
 
 class display;

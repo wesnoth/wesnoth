@@ -256,26 +256,28 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//teleport a unit from one location to another
 	else if(cmd == "teleport") {
+		
+		unit_map::iterator u = units->find(event_info.loc1);
+
 		//search for a valid unit filter, and if we have one, look for the matching unit
 		const config* const filter = cfg.child("filter");
-		if(filter != NULL) {
-			unit_map::iterator u;
+		if(filter != NULL) {	
 			for(u = units->begin(); u != units->end(); ++u){
-				if(u->second.matches_filter(*filter))
+				if(game_events::unit_matches_filter(u,*filter))
 					break;
 			}
+		}
 
-			//we have found a unit that matches the filter
-			if(u != units->end()) {
-				const gamemap::location dst(cfg);
-				if(game_map->on_board(dst)) {
-					const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst,(*game_map)[dst.x][dst.y]);
-					if(game_map->on_board(vacant_dst)) {
-						//note that inserting into a map does NOT invalidate iterators
-						//into the map, so this sequence is fine.
-						units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
-						units->erase(u);
-					}
+		//we have found a unit that matches the filter
+		if(u != units->end()) {
+			const gamemap::location dst(cfg);
+			if(game_map->on_board(dst)) {
+				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst,(*game_map)[dst.x][dst.y]);
+				if(game_map->on_board(vacant_dst)) {
+					//note that inserting into a map does NOT invalidate iterators
+					//into the map, so this sequence is fine.
+					units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
+					units->erase(u);
 				}
 			}
 		}
@@ -355,7 +357,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "scroll_to_unit") {
 		unit_map::const_iterator u;
 		for(u = units->begin(); u != units->end(); ++u){
-			if(u->second.matches_filter(cfg))
+			if(game_events::unit_matches_filter(u,cfg))
 				break;
 		}
 
@@ -451,7 +453,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 			std::map<gamemap::location,unit>::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {
-				if(itor->second.matches_filter(item)) {
+				if(game_events::unit_matches_filter(itor,item)) {
 					itor->second.assign_role(cfg["role"]);
 					break;
 				}
@@ -612,9 +614,8 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		} else if(cfg["speaker"] == "second_unit") {
 			speaker = units->find(event_info.loc2);
 		} else if(cfg["speaker"] != "narrator") {
-			for(speaker = units->begin(); speaker != units->end();
-			    ++speaker){
-				if(speaker->second.matches_filter(cfg))
+			for(speaker = units->begin(); speaker != units->end(); ++speaker){
+				if(game_events::unit_matches_filter(speaker,cfg))
 					break;
 			}
 
@@ -713,7 +714,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 		for(std::map<gamemap::location,unit>::iterator un = units->begin();
 		    un != units->end(); ++un) {
-			while(un != units->end() && un->second.matches_filter(cfg)) {
+			while(un != units->end() && game_events::unit_matches_filter(un,cfg)) {
 				units->erase(un);
 				un = units->begin();
 			}
@@ -821,10 +822,10 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
 	return true;
 }
 
-bool filter_loc(const gamemap::location& loc, config& cfg)
+bool filter_loc(const gamemap::location& loc, const config& cfg)
 {
-	const std::string& xloc = cfg.values["x"];
-	const std::string& yloc = cfg.values["y"];
+	const std::string& xloc = cfg["x"];
+	const std::string& yloc = cfg["y"];
 
 	return filter_loc_impl(loc,xloc,yloc);
 }
@@ -840,23 +841,16 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	const config::child_list& first_filters = handler.first_arg_filters();
 	for(config::child_list::const_iterator ffi = first_filters.begin();
 	    ffi != first_filters.end(); ++ffi) {
-		if(!filter_loc(ev.loc1,**ffi))
-			return false;
 
-		if(unit1 != units->end() && !unit1->second.matches_filter(**ffi)) {
+			if(!game_events::unit_matches_filter(unit1,**ffi))
 			return false;
-		}
 	}
 
 	const config::child_list& second_filters = handler.second_arg_filters();
 	for(config::child_list::const_iterator sfi = second_filters.begin();
 	    sfi != second_filters.end(); ++sfi) {
-		if(!filter_loc(ev.loc2,**sfi))
+		if(!game_events::unit_matches_filter(unit2,**sfi))
 			return false;
-
-		if(unit2 != units->end() && !unit2->second.matches_filter(**sfi)) {
-			return false;
-		}
 	}
 
 	//the event hasn't been filtered out, so execute the handler
@@ -871,6 +865,11 @@ bool process_event(event_handler& handler, const queued_event& ev)
 } //end anonymous namespace
 
 namespace game_events {
+
+bool unit_matches_filter(unit_map::const_iterator itor, const config& filter)
+{
+	return filter_loc(itor->first,filter) && itor->second.matches_filter(filter);
+}
 
 const std::string& get_variable(const std::string& key)
 {

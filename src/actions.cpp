@@ -1013,8 +1013,7 @@ size_t move_unit(display* disp, const gamemap& map,
 		if(event_mutated) {
 			undo_stack->clear();
 		} else {
-			undo_stack->push_back(undo_action(steps,starting_moves,
-			                                  orig_tower_owner));
+			undo_stack->push_back(undo_action(steps,starting_moves,orig_tower_owner));
 		}
 	}
 

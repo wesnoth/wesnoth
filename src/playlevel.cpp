@@ -132,7 +132,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		}
 	}
 
-	const config* const theme_cfg = game_config.child("theme");
+	const config* const theme_cfg = game_config.find_child("theme","name",preferences::theme());
 	const config dummy_cfg;
 	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg);
 

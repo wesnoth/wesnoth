@@ -347,6 +347,20 @@ std::string client_type()
 		return "human";
 }
 
+const std::string& theme()
+{
+	std::string& res = prefs["theme"];
+	if(res.empty())
+		res = "Default";
+
+	return res;
+}
+
+void set_theme(const std::string& theme)
+{
+	prefs["theme"] = theme;
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

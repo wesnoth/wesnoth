@@ -531,23 +531,27 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		assert(moves <= current_route_.steps.size());
 		const gamemap::location& dst = current_route_.steps[moves-1];
 		const unit_map::const_iterator u = units_.find(dst);
-		assert(u != units_.end());
 
-		const int range = u->second.longest_range();
+		//u may be equal to units_.end() in the case of e.g. a [teleport]
+		if(u != units_.end()) {
+			assert(u != units_.end());
 
-		current_route_.steps.clear();
+			const int range = u->second.longest_range();
 
-		show_attack_options(u);
+			current_route_.steps.clear();
 
-		if(current_paths_.routes.empty() == false) {
-			current_paths_.routes[dst] = paths::route();
-			selected_hex_ = dst;
-			gui_.select_hex(dst);
-			gui_.set_paths(&current_paths_);
-		}
+			show_attack_options(u);
 
-		if(clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1)) {
-			undo_stack_.clear();
+			if(current_paths_.routes.empty() == false) {
+				current_paths_.routes[dst] = paths::route();
+				selected_hex_ = dst;
+				gui_.select_hex(dst);
+				gui_.set_paths(&current_paths_);
+			}
+
+			if(clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1)) {
+				undo_stack_.clear();
+			}
 		}
 	} else {
 		gui_.set_paths(NULL);
