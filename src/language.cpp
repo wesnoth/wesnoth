@@ -115,8 +115,6 @@ bool internal_set_language(const language_def& locale, config& cfg)
 
 			setlocale (LC_MESSAGES, locale.localename.c_str());
 
-			font::set_font((**i)["font"]);
-
 			return true;
 		}
 	}
@@ -154,6 +152,9 @@ bool set_language(const language_def& locale)
 		strings_[j->first] = j->second;
 	}
 	// end of string_table fill
+
+	// ENGLISH-CFG
+	font::set_font(string_table["font"]);
 
 	return true;
 }
