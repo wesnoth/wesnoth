@@ -83,19 +83,11 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				state.scenario = current_scenario;
 
 				std::string label = state.label + " replay";
-				int should_save;
-				int overwrite=0;
-				
-				do {
-					should_save = gui::show_dialog(disp,NULL,"",
-				                string_table["save_replay_message"],
-				                gui::YES_NO,NULL,NULL,
-								string_table["save_game_label"],&label);
-					if (should_save == 0 && save_game_exists(state.label))
-		  				overwrite = gui::show_dialog(disp,NULL,"",
-							string_table["save_confirm_overwrite"],gui::YES_NO);
-					else overwrite = 0;
-					} while ((should_save==0)&&(overwrite!=0));
+
+				const int should_save = dialogs::get_save_name(disp, 
+											string_table["save_replay_message"],
+											string_table["save_game_label"],
+											&label);	
 				if(should_save == 0) {
 					recorder.save_game(units_data,label);
 				}
@@ -131,18 +123,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		if(scenario != NULL) {
 			state.label = (*scenario)["name"];
 			
-			int should_save;
-			int overwrite=0;
-			do {
-				should_save = gui::show_dialog(disp,NULL,"",
-			                    string_table["save_game_message"],
-			                    gui::YES_NO,NULL,NULL,
-								string_table["save_game_label"],&state.label);
-				if (should_save == 0 && save_game_exists(state.label))
-		  				overwrite = gui::show_dialog(disp,NULL,"",
-							string_table["save_confirm_overwrite"],gui::YES_NO);
-				else overwrite = 0;
-			} while ((should_save==0)&&(overwrite!=0));
+			const int should_save = dialogs::get_save_name(disp,
+												string_table["save_game_message"],
+												string_table["save_game_label"],
+												&state.label);
 			
 			if(should_save == 0) {
 				save_game(state);

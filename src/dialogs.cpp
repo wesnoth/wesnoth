@@ -97,4 +97,22 @@ void show_objectives(display& disp, config& level_info)
 
 }
 
+int get_save_name(display & disp,const std::string& caption, const std::string& message,
+					std::string * name)
+{
+    int overwrite=0;
+    int res=0;
+    do {
+        res = gui::show_dialog(disp,NULL,"",caption,gui::OK_CANCEL,
+					NULL,NULL,message,name);
+            if (res == 0 && save_game_exists(*name))
+                overwrite = gui::show_dialog(disp,NULL,"",
+                    string_table["save_confirm_overwrite"],gui::YES_NO);
+        else overwrite = 0;
+    } while ((res==0)&&(overwrite!=0));
+	return res;
+}
+
+
+
 } //end namespace dialogs

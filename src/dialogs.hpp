@@ -25,6 +25,12 @@ void advance_unit(const game_data& info,
 				  display& gui, bool random_choice=false);
 
 void show_objectives(display& disp, config& level_info);
+
+// Ask user if I should really save the game and what name I should use
+// returns 0 iff user wants to save the game
+int get_save_name(display & disp, const std::string& caption, 
+				const std::string& message, std::string * name);
+
 }
 
 #endif
