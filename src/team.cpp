@@ -216,7 +216,7 @@ void team::team_info::write(config& cfg) const
 	cfg["shroud"] = use_shroud ? "yes" : "no";
 	cfg["fog"] = use_fog ? "yes" : "no";
 	cfg["share_maps"] = share_maps ? "yes" : "no";
-	cfg["share_vision"] = share_maps ? "yes" : "no";
+	cfg["share_vision"] = share_vision ? "yes" : "no";
 
 	if(music.empty() == false)
 		cfg["music"] = music;
@@ -461,13 +461,13 @@ bool team::shrouded(size_t x, size_t y) const
 {
 	bool res = side_shrouded(x,y);
 	
-	if(teams == NULL || info_.team_name == "" || info_.share_maps == false || res == false)
+	if(!res || teams == NULL || info_.team_name == "" || !info_.share_maps)
 		return res;
 
 	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
 		if(t->info_.team_name != info_.team_name)
 			continue;
-		if(t->side_shrouded(x,y) == false)
+		if(t->uses_shroud() && !t->side_shrouded(x,y))
 			return false;
 	}
 	return true;
@@ -477,14 +477,14 @@ bool team::fogged(size_t x, size_t y) const
 {
 	bool res = side_fogged(x,y);
 	
-	if(!teams || info_.team_name.empty() || !info_.share_maps || !info_.share_vision || !res ) {
+	if(!res || !teams || info_.team_name.empty() || !info_.share_maps || !info_.share_vision) {
 		return res;
 	}
 
 	for(std::vector<team>::const_iterator t = teams->begin(); t != teams->end(); ++t) {
 		if(t->info_.team_name != info_.team_name)
 			continue;
-		if(t->side_fogged(x,y) == false)
+		if(t->uses_fog() && !t->side_fogged(x,y))
 			return false;
 	}
 	return true;
