@@ -74,7 +74,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 				string_table[j->first] = j->second;
 			}
 
-			hotkey::add_hotkeys(**i);
+			hotkey::add_hotkeys(**i,false);
 			return true;
 		}
 	}
@@ -115,4 +115,3 @@ std::string get_locale()
 	std::cerr << "locale could not be determined; defaulting to locale 'en'\n";
 	return "en";
 }
-
