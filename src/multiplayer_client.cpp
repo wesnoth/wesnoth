@@ -112,18 +112,19 @@ public:
 				// Dumps the "image" part of the faction name, if any,
 				// to replace it by a picture of the actual leader
 				if(side_name[0] == font::IMAGE) {
-					int p = side_name.find_first_of(",");
+					int p = side_name.find_first_of(COLUMN_SEPARATOR);
 					if(p != std::string::npos && p < side_name.size()) {
-						side_name = "&" + leader_image + "," + side_name.substr(p+1);
+						side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.substr(p+1);
 					}
 				}
 			}
 
 			std::stringstream str;
-			str << description << "," << side_name << ",";
+			str << description << COLUMN_SEPARATOR << side_name << COLUMN_SEPARATOR;
 			if(!leader_name.empty())
 				str << "(" << leader_name << ")";
-			str << "," << sd["gold"] << " " << sgettext("unit^Gold") << "," << sd["team_name"];
+			str << COLUMN_SEPARATOR << sd["gold"] << ' ' << sgettext("unit^Gold")
+			    << COLUMN_SEPARATOR << sd["team_name"];
 			details.push_back(str.str());
 		}
 
@@ -651,7 +652,7 @@ void leader_list_manager::update_leader_list(int side_index)
 			const std::string name =  utypes.find(*itor)->second.language_name();
 			const std::string image = utypes.find(*itor)->second.image();
 
-			leader_strings.push_back("&" + image + "," + name);
+			leader_strings.push_back(IMAGE_PREFIX + image + COLUMN_SEPARATOR + name);
 		} else {
 			leader_strings.push_back("?");
 		}
@@ -659,7 +660,8 @@ void leader_list_manager::update_leader_list(int side_index)
 
 	leaders_.push_back("random");
 	// FIXME: Maybe this should not code into the code.
-	leader_strings.push_back(_("&random-enemy.png,Random"));
+	leader_strings.push_back(IMAGE_PREFIX + std::string("random-enemy.png") +
+	                         COLUMN_SEPARATOR + _("Random"));
 
 	if(combo_ != NULL) {
 		combo_->set_items(leader_strings);
@@ -735,7 +737,7 @@ void leader_preview_pane::draw_contents()
 		std::ostringstream recruit_string;
 
 		if(faction[0] == font::IMAGE) {
-			int p = faction.find_first_of(",");
+			int p = faction.find_first_of(COLUMN_SEPARATOR);
 			if(p != std::string::npos && p < faction.size())
 				faction = faction.substr(p+1);
 		}

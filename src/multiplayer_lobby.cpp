@@ -12,11 +12,11 @@
 #include "network.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
-#include "sound.hpp"
 #include "statistics.hpp"
-#include "widgets/textbox.hpp"
+#include "sound.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
+#include "widgets/textbox.hpp"
 
 #include "SDL.h"
 
@@ -106,7 +106,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	
 				//if this is the item that should be selected, make it selected by default
 				if(game_selection-- == 0) {
-					str << "*";
+					str << DEFAULT_ITEM;
 				}
 	
 				std::string map_data = (**i.first)["map_data"];
@@ -125,12 +125,12 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	
 						image::register_image(buf,mini);
 	
-						str << "&" << buf << ",";
+						str << IMAGE_PREFIX << buf << COLUMN_SEPARATOR;
 					} catch(gamemap::incorrect_format_exception& e) {
 						std::cerr << "illegal map: " << e.msg_ << "\n";
 					}
 				} else {
-					str << "(" << _("Shroud") << "),";
+					str << '(' << _("Shroud") << ')' << COLUMN_SEPARATOR;
 				}
 	
 				std::string name = (**i.first)["name"];
@@ -141,10 +141,11 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	
 				const std::string& turn = (**i.first)["turn"];
 				const std::string& slots = (**i.first)["slots"];
-				if(turn != "") {
-					str << "," << _("Turn") << " " << turn;
-				} else if(slots != "") {
-					str << "," << slots << " " << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
+				if (!turn.empty()) {
+					str << COLUMN_SEPARATOR << _("Turn") << ' ' << turn;
+				} else if(!slots.empty()) {
+					str << COLUMN_SEPARATOR << slots << ' '
+					    << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
 				}
 	
 				options.push_back(str.str());
@@ -196,7 +197,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 			//if this user should be selected
 			if(user_selection-- == 0) {
-				name.insert(name.begin(),'*');
+				name.insert(name.begin(), DEFAULT_ITEM);
 			}
 
 			users.push_back(name);
