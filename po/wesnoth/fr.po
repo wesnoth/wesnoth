@@ -18220,7 +18220,7 @@ msgstr "vulnerabilité de l'attaquant contre"
 
 #: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
 msgid "Doubled"
-msgstr ""
+msgstr "dégats doublés"
 
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
@@ -18237,7 +18237,7 @@ msgstr "vulnérabilité du défenseur contre"
 #: src/actions.cpp:496
 #, fuzzy
 msgid "Halved"
-msgstr "hallebarde"
+msgstr "dégats réduits de moitié"
 
 #: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
 #: src/reports.cpp:115
@@ -18295,7 +18295,7 @@ msgstr "Sauver"
 
 #: src/dialogs.cpp:176
 msgid "Overwrite?"
-msgstr ""
+msgstr "Écraser ?"
 
 #: src/dialogs.cpp:177
 msgid "Save already exists. Do you want to overwrite it ?"
@@ -19016,6 +19016,8 @@ msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
+"Le programme n'a pas pu s'associer au port requis pour héberger un jeu en "
+"réseau. Les joueurs en réseau ne pourront pas se connecter à la partie"
 
 #: src/multiplayer.cpp:497
 msgid "Warning"
@@ -19311,13 +19313,15 @@ msgstr ""
 
 #: src/playturn.cpp:1412 src/playturn.cpp:1426
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: src/playturn.cpp:1412
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Les noms des sauvegardes de peuvent past contenir de double-points, de barres obliques ni "
+"de barres obliques inverses. Veuillez choisir un autre nom."
 
 #: src/playturn.cpp:1423
 msgid "Saved"
@@ -19445,11 +19449,11 @@ msgstr "Dommages subis"
 
 #: src/playturn.cpp:2029
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Dommage infligés (Estim)"
 
 #: src/playturn.cpp:2036
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Dommages subis (Estim)"
 
 #: src/playturn.cpp:2078
 msgid "Search"
