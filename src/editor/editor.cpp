@@ -95,6 +95,10 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
+	gui_.invalidate_game_status();
+	gui_.begin_game();
+	gui_.invalidate_all();
+	gui_.draw();
 	palette_.adjust_size();
 	brush_.adjust_size();
 	if (first_time_created_) {

@@ -36,7 +36,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	: gui::widget(gui), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
 	  top_button_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  bot_button_(gui, "", gui::button::TYPE_PRESS, "downarrow-button") {
-
 	terrains_ = map_.get_terrain_precedence();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
 					terrains_.end());
@@ -73,16 +72,27 @@ void terrain_palette::adjust_size() {
 	bot_button_.set_location(button_x_, bot_button_y_);
 	top_button_.set_dirty();
 	bot_button_.set_dirty();
+	bg_backup();
 	set_dirty();
+}
+
+void terrain_palette::set_dirty(bool dirty) {
+	widget::set_dirty(dirty);
+	if (dirty) {
+		top_button_.set_dirty();
+		bot_button_.set_dirty();
+	}
 }
 
 void terrain_palette::scroll_down() {
 	if(tstart_ + nterrains_ + 2 <= num_terrains()) {
 		tstart_ += 2;
+		bg_restore();
 		set_dirty();
 	}
 	else if (tstart_ + nterrains_ + 1 <= num_terrains()) {
 		tstart_ += 1;
+		bg_restore();
 		set_dirty();
 	}
 }
@@ -94,6 +104,7 @@ void terrain_palette::scroll_up() {
 		decrement = 1;
 	}
 	if(tstart_ >= decrement) {
+		bg_restore();
 		set_dirty();
 		tstart_ -= decrement;
 	}
@@ -101,6 +112,7 @@ void terrain_palette::scroll_up() {
 
 void terrain_palette::scroll_top() {
 	tstart_ = 0;
+	bg_restore();
 	set_dirty();
 }
 
@@ -304,6 +316,14 @@ void terrain_palette::update_report() {
 		": " + get_terrain_string(selected_bg_terrain());
 	reports::set_report_content(reports::SELECTED_TERRAIN, msg);
 }
+
+// void terrain_palette::bg_backup() {
+// 	restorer_ = surface_restorer(&gui_.video(), get_rect());
+// }
+
+// void terrain_palette::bg_restore() {
+// 	restorer_.restore();
+// }
 
 brush_bar::brush_bar(display &gui, const size_specs &sizes)
 	: gui::widget(gui), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),

@@ -58,6 +58,7 @@ public:
 	void draw(bool force=false);
 	virtual void draw();
 	virtual void handle_event(const SDL_Event& event);
+	void set_dirty(bool dirty=true);
 	
 
 	/// Return the number of terrains in the palette.
@@ -66,6 +67,9 @@ public:
 	/// Update the size of this widget. Use if the size_specs have
 	/// changed.
 	void terrain_palette::adjust_size();
+
+	//void bg_backup();
+	//void bg_restore();
 
 private:
 	void draw_old(bool);
@@ -95,6 +99,7 @@ private:
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;
 	size_t nterrains_, terrain_start_;
+	//surface_restorer restorer_;
 };
 
 /// A bar where the brush is drawin
