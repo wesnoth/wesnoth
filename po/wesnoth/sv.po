@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-05 23:03+0200\n"
-"PO-Revision-Date: 2004-10-06 17:59+0200\n"
+"PO-Revision-Date: 2004-10-14 20:47+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -239,6 +239,7 @@ msgid "Combat"
 msgstr "Strid"
 
 #: data/help.cfg:111
+#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -303,24 +304,24 @@ msgstr ""
 "<header>text='Chans för träff'</header>\n"
 "\n"
 "Chansen att en trupp träffar en annan beror i stort sett bara på vilken "
-"<ref>dst=terrain text='Terräng'</ref> försvararen står på. Chansen att "
-"träffa kan man se genom att högerklicka på en trupp, välja Truppbeskrivning, "
-"och sedan <italic>text=Terrängavdrag</italic>. Till exempel har en alv en "
+"<ref>dst=terrain text=Terräng</ref> försvararen står på. Chansen att träffa "
+"kan man se genom att högerklicka på en trupp, välja Truppbeskrivning, och "
+"sedan <italic>text=Terrängavdrag</italic>. Till exempel har en alv en "
 "försvarsnivå på 70% i skog, vilket innebär att en attackerande trupp bara "
 "har 30% chans att träffa. Precis på samma sätt avgörs träffmöjligheten för "
 "alven av terrängen som den andra truppen står på. \n"
-"\n"
-"Det finns två undantag på den här regeln: vid <ref>dst=magical_attacks "
+"Det finns två undantag till den här regeln: vid <ref>dst=magical_attacks "
 "text='Magiska attacker'</ref> och då <ref>dst=ability_marksman "
 "text='Prickskyttar'</ref> anfaller. Magiska attacker har alltid 70% chans "
-"för träff, och prickskyttar 60%.\n"
+"för träff, oavsett terräng, och prickskyttar 60% när de anfaller, oavsett "
+"terräng.\n"
 "\n"
 "<header>text=Skada</header>\n"
 "\n"
 "Varje träff ger en grundskada som beror på typen av attack. Till exempel ger "
 "en alvkrigare med ett 5-4-svärd en grundskada på 5 hälsopoäng (HP). Detta "
 "kan ändras beroende på två saker: försvararens "
-"<ref>dst=damage_type_and_resistance text='Motståndskraft'</ref> samt vilken "
+"<ref>dst=damage_type_and_resistance text=Motståndskraft</ref> samt vilken "
 "<ref>dst=time_of_day text='Tid på dygnet'</ref> det är. Båda dessa förklaras "
 "nedan.\n"
 "\n"
@@ -557,10 +558,11 @@ msgstr ""
 "\n"
 "Underhåll är också ganska enkelt. Varje trupp kräver ett underhåll som är "
 "likamed truppens erfarenhetsnivå. Det är gratis att underhålla trupper så "
-"länge deras sammanlagda erfarenhetsnivå är mindre än eller likamed antalet "
-"byar. Om den sammanlagda erfarenhetsnivån är högre, måste mellanskillnaden "
-"betalas ur din egen kassakista. Om du till exempel har tolv trupper på nivå "
-"ett och tio byar så måste du betala två guldstycken per drag i underhåll.\n"
+"länge deras <italic>text='sammanlagda erfarenhetsnivå'</italic> är mindre än "
+"eller likamed antalet byar. Om den sammanlagda erfarenhetsnivån är högre, "
+"måste mellanskillnaden betalas ur din egen kassakista. Om du till exempel "
+"har tolv trupper på nivå ett och tio byar så måste du betala två guldstycken "
+"per drag i underhåll.\n"
 "\n"
 "De kostnader som underhållet utgör dras från din inkomst, vilket innebär att "
 "i exemplet med tolv trupper och tio byar kommer din inkomst att bli åtta "
@@ -591,9 +593,10 @@ msgstr ""
 
 #: data/help.cfg:197
 msgid "About"
-msgstr "Yngling"
+msgstr "Om"
 
 #: data/help.cfg:242
+#, fuzzy
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -4090,6 +4093,7 @@ msgid "Drake Flameheart"
 msgstr "Eldhjärta"
 
 #: data/units/Drake_Flameheart.cfg:20
+#, fuzzy
 msgid ""
 "There is an old saying that, 'The generals in Drake armies have fire in "
 "their veins instead of blood'. Nobody would doubt the truth in that saying "
@@ -4097,7 +4101,7 @@ msgid ""
 "butween their crackling flames and their wicked swords, few who meet them "
 "survive to confirm this saying."
 msgstr ""
-"Ett gammalt talesätt säger att 'generalerna i drakfolkets arméer har eld i "
+"Ett gammalt talesätt säger att 'Generalerna i drakfolkets arméer har eld i "
 "sina ådror istället för blod'. Ingen som mött dessa resliga varelsers "
 "förödelse betvivlar sanningen i detta. Dock är det få som överlevt deras "
 "eldar och onda svärd för att bekräfta talesättet."
@@ -4216,6 +4220,7 @@ msgid "Duelist"
 msgstr "Duellant"
 
 #: data/units/Duelist.cfg:17
+#, fuzzy
 msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
@@ -4363,6 +4368,7 @@ msgid "Dwarvish Sentinel"
 msgstr "Dvärgarnas vaktpost"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
+#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yeild "
 "under even the strongest of enemy attacks."
@@ -5995,15 +6001,16 @@ msgid "Saurian Icecaster"
 msgstr "Ödlefolkets ismanare"
 
 #: data/units/Saurian_Icecaster.cfg:17
+#, fuzzy
 msgid ""
 "Saurian Icecasters have cast aside their role as healers to refine their "
 "skills with the dark arts. While frail, they posses deep knowledge of cold "
 "magic and retain their abilities as healers."
 msgstr ""
-"Ödlefolkets ismanare har avstått sina ledarpositioner för att kunna hänge "
-"sig åt att förfina sin skicklighet i de mörka konsterna. Trots sin "
-"bräcklighet besitter de kunskaper om frostmagi och har kvar sina förmågor "
-"som helare."
+"Ödlefolkets ismanare har avstått vidare träning i läkandets konst för att "
+"kunna hänge sig åt att förfina sin skicklighet i de mörka konsterna. Trots "
+"sin bräcklighet besitter de kunskaper om frostmagi och har kvar sin "
+"grundläggande förmåga som helare."
 
 #: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
 msgid "skirmisher,heals"
@@ -7169,8 +7176,9 @@ msgid "Join a server or hosted game"
 msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
 #: src/game.cpp:1188
+#, fuzzy
 msgid "Host Multiplayer Game"
-msgstr "Var spelvärd för gruppspel"
+msgstr "Gruppspel"
 
 #: src/game.cpp:1188
 msgid "Host a game without using a server"
@@ -8266,8 +8274,9 @@ msgid "TitleScreen button^Preferences"
 msgstr "Inställningar"
 
 #: src/titlescreen.cpp:168
+#, fuzzy
 msgid "TitleScreen button^About"
-msgstr "Om"
+msgstr "Avsluta"
 
 #: src/titlescreen.cpp:169
 msgid "TitleScreen button^Quit"
@@ -8340,3 +8349,46 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid "Weapon Specials"
+#~ msgstr "Vapenspecialiteter"
+
+#~ msgid "illuminates"
+#~ msgstr "lyser upp"
+
+#~ msgid "Grand Marshal"
+#~ msgstr "Stormarskalk"
+
+#~ msgid ""
+#~ "The rank of Grand Marshal is one of the most esteemed in the armies of "
+#~ "humanity, and those who bear its title have surpassed many trials by "
+#~ "fire, proving their considerable mettle at both personal combat and "
+#~ "tactical facility.  Their presence on the battlefield is of great aid to "
+#~ "those serving beneath them."
+#~ msgstr ""
+#~ "Stormarskalken är en av de högst aktade i människornas arméer, och de som "
+#~ "bär denna titel har genomgått många prövningar i strid, och bevisat sin "
+#~ "personliga styrka både i strid man-mot-man och i taktiska bedömningar. "
+#~ "Deras närvaro på slagfältet är till stor hjälp för de som tjänar under "
+#~ "dem."
+
+#~ msgid "+Greek Translation"
+#~ msgstr "+Grekisk översättning"
+
+#~ msgid "Host Networked Game"
+#~ msgstr "Var värd för nätverksspel"
+
+#~ msgid "Hotseat Game"
+#~ msgstr "Heta stolen-spel"
+
+#~ msgid "Play a multiplayer game sharing the same machine"
+#~ msgstr "Spela ett gruppspel med en och samma dator"
+
+#~ msgid "Human vs AI"
+#~ msgstr "Människa mot dator"
+
+#~ msgid "Play a game against AI opponents"
+#~ msgstr "Spela mot datorn"
+
+#~ msgid "Connect to Host"
+#~ msgstr "Anslut till server"
