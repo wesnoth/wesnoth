@@ -390,7 +390,7 @@ void save_game(const game_state& state)
 		write_game(state,cfg);
 
 		const std::string fname = get_saves_dir() + "/" + name;
-/*
+
 		write_file(fname,cfg.write());
 
 
@@ -400,7 +400,7 @@ void save_game(const game_state& state)
 		summary["mod_time"] = str_cast(mod_time);
 
 		write_save_index();
-*/
+
 	} catch(io_exception& e) {
 		throw gamestatus::save_game_failed(e.what());
 	}
