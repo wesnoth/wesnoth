@@ -44,6 +44,7 @@ public:
 	};
 
 	ai_interface(info& arg) : info_(arg) {}
+	virtual ~ai_interface() {}
 
 	virtual void play_turn() = 0;
 

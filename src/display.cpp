@@ -1264,8 +1264,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 
 	std::vector<SDL_Surface*> overlaps;
 
-	scoped_sdl_surface flag(NULL);
-
 	update_rect(xpos,ypos,surface->w,surface->h);
 
 	//note that dstrect can be changed by SDL_BlitSurface and so a new instance should be
@@ -1274,7 +1272,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 	SDL_BlitSurface(surface,NULL,dst,&dstrect);
 
 	if(!is_shrouded) {
-		flag.assign(getFlag(terrain,x,y));
+		scoped_sdl_surface flag(getFlag(terrain,x,y));
 		if(flag != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
@@ -1555,7 +1553,7 @@ SDL_Surface* display::getFlag(gamemap::TERRAIN terrain, int x, int y)
 	const gamemap::location loc(x,y);
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		if(teams_[i].owns_tower(loc) && (!fogged(x,y) || i == currentTeam_)) {
+		if(teams_[i].owns_tower(loc) && (!fogged(x,y) || !shrouded(x,y) && !teams_[currentTeam_].is_enemy(i+1))) {
 			char buf[50];
 			sprintf(buf,"terrain/flag-team%d.png",i+1);
 			return image::get_image(buf);
@@ -1790,7 +1788,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			draw_tile(a.x,a.y,image);
 		}
 
-		Uint16 defensive_colour = 0;
+		Uint32 defensive_colour = 0;
 		double defensive_alpha = 1.0;
 
 		if(damage > 0 && i >= missile_impact) {
@@ -1861,37 +1859,6 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	}
 
 	return dead;
-}
-
-void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
-{
-	if(update_locked() || fogged(loc.x,loc.y)
-	   || preferences::show_combat() == false)
-		return;
-
-	const unit_map::const_iterator u = units_.find(loc);
-	assert(u != units_.end());
-
-	const std::string& die_sound = u->second.type().die_sound();
-	if(die_sound != "" && die_sound != "null") {
-		sound::play_sound(die_sound);
-	}
-
-	const int frame_time = 30;
-	int ticks = SDL_GetTicks();
-
-	for(double alpha = 1.0; alpha > 0.0; alpha -= 0.05) {
-		draw_tile(loc.x,loc.y,image,alpha);
-
-		const int wait_time = ticks + frame_time - SDL_GetTicks();
-
-		if(wait_time > 0 && !turbo())
-			SDL_Delay(wait_time);
-
-		ticks = SDL_GetTicks();
-
-		update_display();
-	}
 }
 
 bool display::unit_attack(const gamemap::location& a,
@@ -2026,7 +1993,7 @@ bool display::unit_attack(const gamemap::location& a,
 			draw_tile(update_tiles[j].x,update_tiles[j].y);
 		}
 
-		int defender_colour = 0;
+		Uint32 defender_colour = 0;
 		double defender_alpha = 1.0;
 
 		if(damage > 0 && i >= 0) {
@@ -2086,6 +2053,37 @@ bool display::unit_attack(const gamemap::location& a,
 	}
 
 	return dead;
+}
+
+void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
+{
+	if(update_locked() || fogged(loc.x,loc.y)
+	   || preferences::show_combat() == false)
+		return;
+
+	const unit_map::const_iterator u = units_.find(loc);
+	assert(u != units_.end());
+
+	const std::string& die_sound = u->second.type().die_sound();
+	if(die_sound != "" && die_sound != "null") {
+		sound::play_sound(die_sound);
+	}
+
+	const int frame_time = 30;
+	int ticks = SDL_GetTicks();
+
+	for(double alpha = 1.0; alpha > 0.0; alpha -= 0.05) {
+		draw_tile(loc.x,loc.y,image,alpha);
+
+		const int wait_time = ticks + frame_time - SDL_GetTicks();
+
+		if(wait_time > 0 && !turbo())
+			SDL_Delay(wait_time);
+
+		ticks = SDL_GetTicks();
+
+		update_display();
+	}
 }
 
 void display::move_unit_between(const gamemap::location& a,

@@ -464,20 +464,27 @@ SDL_Surface* flop_surface(SDL_Surface* surface)
 		return NULL;
 	}
 
-	SDL_Surface* dest = clone_surface(surface);
+	scoped_sdl_surface surf(make_neutral_surface(surface));
 
-	if(dest == NULL) {
-		std::cerr << "could not make cloned surface...\n";
+	if(surf == NULL) {
+		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
 
-	for(size_t y = 0; y != surface->h; ++y) {
-		SDL_Rect srcrect = {0,y,surface->w,1};
-		SDL_Rect dstrect = {0,surface->h-y-1,surface->w,1};
-		sdl_safe_blit(surface,&srcrect,dest,&dstrect);
+	{
+		surface_lock lock(surf);
+		Uint32* const pixels = lock.pixels();
+
+		for(size_t x = 0; x != surf->w; ++x) {
+			for(size_t y = 0; y != surf->h/2; ++y) {
+				const size_t index1 = y*surf->w + x;
+				const size_t index2 = (surf->h-y-1)*surf->w + x;
+				std::swap(pixels[index1],pixels[index2]);
+			}
+		}		
 	}
 
-	return dest;
+	return clone_surface(surf);
 }
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
