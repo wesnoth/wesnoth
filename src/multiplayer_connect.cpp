@@ -233,6 +233,9 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		if(side["music"].empty())
 			side["music"] = (*possible_sides.front())["music"];
 
+		if(side["random_faction"].empty())
+			side["random_faction"] = (*possible_sides.front())["random_faction"];
+
 		if(side["terrain_liked"].empty())
 			side["terrain_liked"] = (*possible_sides.front())["terrain_liked"];
 
@@ -645,6 +648,7 @@ lobby::RESULT mp_connect::process()
 		old_select = combos_race_[n].selected();
 		if(combos_race_[n].process(mousex, mousey, left_button)) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
+			side["random_faction"] = "";
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 				std::cerr << "value: " << i->first << " , " << i->second<< std::endl;
 				side[i->first] = i->second;
@@ -726,13 +730,16 @@ lobby::RESULT mp_connect::process()
 
 		for(config::child_iterator side = sides.first; side != sides.second; ++side) {
 			int ntry = 0;
+			//std::cerr << "Checking random faction for " << (**side)["name"] << ". Random faction is " << (**side)["random_faction"] << "\n";
 			while((**side)["random_faction"] == "yes" && ntry < 1000) {
 				const int choice = rand()%real_sides.size();
 
 				(**side)["name"] = (*real_sides[choice])["name"];
+				(**side)["random_faction"] = (*real_sides[choice])["random_faction"];
 
 				(**side)["type"] = "random";
 
+				(**side)["leader"] = (*real_sides[choice])["leader"];
 				(**side)["recruit"] = (*real_sides[choice])["recruit"];
 				(**side)["music"] = (*real_sides[choice])["music"];
 
@@ -744,6 +751,7 @@ lobby::RESULT mp_connect::process()
 			}
 
 			if ((**side)["type"] == "random" || (**side)["type"].empty()) {
+				//std::cerr << "Choosing a random type for " << (**side)["name"] << "\n";
 				// Choose a random leader type.  
 				std::vector<std::string> types = 
 					config::split((**side)["leader"]);
@@ -751,8 +759,10 @@ lobby::RESULT mp_connect::process()
 					const int lchoice = rand() % types.size();
 					(**side)["type"] = types[lchoice];
 				} else {
-
+					lg::err(lg::config) << "Unable to find a type for side " << (**side)["name"] << "!\n";
 				}
+				//std::cerr << "Leader chosen: " << (**side)["type"] << "\n";
+				level_changed = true;
 			}
 		}
 
@@ -986,6 +996,10 @@ void mp_connect::update_network()
 
 				if(cfg["music"].empty() == false) {
 					pos->first->values["music"] = cfg["music"];
+				}
+
+				if(cfg["random_faction"].empty() == false) {
+					pos->first->values["random_faction"] = cfg["random_faction"];
 				}
 
 				if(cfg["terrain_liked"].empty() == false) {
