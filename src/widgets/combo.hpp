@@ -26,9 +26,7 @@ public:
 	combo(display& disp, const std::vector<std::string>& items);
 	void draw();
 
-	void set_x(int val);
-	void set_y(int val);
-	void set_xy(int valx, int valy);
+	void set_location(int valx, int valy);
 	void set_selected(int val);
 	void set_items(const std::vector<std::string>& items);
 

@@ -2,9 +2,12 @@
 #define WIDGET_HPP_INCLUDED
 
 #include "../events.hpp"
-#include "../display.hpp"
+
+#include "../sdl_utils.hpp"
 
 #include "SDL.h"
+
+class display;
 
 namespace gui {
 
@@ -13,12 +16,20 @@ class widget : public events::handler
 public:
 	const SDL_Rect& location() const;
 	void set_location(const SDL_Rect& rect);
-	void set_position(int x, int y);
+	void set_location(int x, int y);
 	void set_width(int w);
 	void set_height(int h);
 
+	size_t width() const;
+	size_t height() const;
+
 	virtual bool focus() const;
 	void set_focus(bool focus);
+
+	void hide(bool value=true);
+	bool hidden() const;
+
+	void bg_backup();
 
 protected:
 	widget(const widget &o);
@@ -32,6 +43,8 @@ protected:
 
 	display& disp() const { return *disp_; }
 
+	virtual void handle_event(const SDL_Event& event);
+
 private:
 	mutable display* disp_;
 	mutable surface_restorer restorer_;
@@ -39,9 +52,7 @@ private:
 	bool focus_;		// Should user input be ignored?
 	bool dirty_;		// Does the widget need drawn?
 
-	void bg_backup();
-	
-	virtual void handle_event(const SDL_Event& event);
+	bool hidden_;
 };
 
 }

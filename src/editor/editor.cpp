@@ -83,8 +83,8 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_, palette_.num_terrains());
 
-	tup_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.top_button_y);
-	tdown_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.bot_button_y);
+	tup_.set_location(gui.mapx() + size_specs_.button_x, size_specs_.top_button_y);
+	tdown_.set_location(gui.mapx() + size_specs_.button_x, size_specs_.bot_button_y);
 
 	// Clear the current hotkeys. Alot of hotkeys are already set
 	// through other configuration files (e.g. english.cfg) and we need

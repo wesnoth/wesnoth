@@ -8,19 +8,19 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o) :
-	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_)
+	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp, SDL_Rect& rect) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false)
 {
 	set_location(rect);
 	bg_backup();
@@ -35,7 +35,7 @@ void widget::set_location(const SDL_Rect& rect)
 	draw();
 }
 
-void widget::set_position(int x, int y)
+void widget::set_location(int x, int y)
 {
 	bg_restore();
 	SDL_Rect rect = {x,y,location().w,location().h};
@@ -65,6 +65,16 @@ void widget::set_height(int h)
 	draw();
 }
 
+size_t widget::width() const
+{
+	return rect_.w;
+}
+
+size_t widget::height() const
+{
+	return rect_.h;
+}
+
 const SDL_Rect& widget::location() const
 {
 	return rect_;
@@ -84,6 +94,24 @@ void widget::set_focus(bool focus)
 bool widget::focus() const
 {
 	return events::has_focus(this) && focus_;
+}
+
+void widget::hide(bool value)
+{
+	if(value != hidden_) {
+		if(value) {
+			restorer_.restore();
+		} else {
+			set_dirty(true);
+		}
+
+		hidden_ = value;
+	}
+}
+
+bool widget::hidden() const
+{
+	return hidden_;
 }
 
 void widget::set_dirty(bool dirty)

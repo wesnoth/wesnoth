@@ -222,7 +222,7 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 
 	if(buttons != NULL) {
 		for(std::vector<button*>::const_iterator b = buttons->begin(); b != buttons->end(); ++b) {
-			(**b).set_xy(buttons_area.x,buttons_area.y);
+			(**b).set_location(buttons_area.x,buttons_area.y);
 			buttons_area.x += (**b).width() + ButtonHPadding;
 		}
 	}
@@ -417,7 +417,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		for(std::vector<check_item>::const_iterator i = options->begin(); i != options->end(); ++i) {
 			button check_button(disp,i->label,button::TYPE_CHECK);
 			check_button_height += check_button.height() + button_height_padding;
-			check_button_width = maximum(check_button.width(),check_button_width);
+			check_button_width = maximum<int>(check_button.width(),check_button_width);
 
 			check_buttons.push_back(check_button);
 		}
@@ -427,7 +427,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		for(std::vector<dialog_button>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
 			button new_button(disp,i->label);
 			check_button_height += new_button.height() + button_height_padding;
-			check_button_width = maximum(new_button.width(),check_button_width);
+			check_button_width = maximum<int>(new_button.width(),check_button_width);
 
 			check_buttons.push_back(new_button);
 		}
@@ -536,7 +536,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	if(use_textbox) {
 		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
-		text_widget.set_position(xloc + left_padding +
+		text_widget.set_location(xloc + left_padding +
 		                         text_widget_width - text_widget.location().w,
 		                         text_widget_y_unpadded);
 		events::raise_draw_event();
@@ -550,8 +550,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(check_buttons.empty() == false) {
 		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
-			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
-			check_buttons[i].set_y(options_y);
+			check_buttons[i].set_location(xloc + total_width - padding_width - check_buttons[i].width(),options_y);
 
 			options_y += check_buttons[i].height() + button_height_padding;
 

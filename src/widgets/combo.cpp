@@ -48,9 +48,9 @@ void combo::set_items(const std::vector<std::string>& items)
 	items_ = items;
 }
 
-void combo::set_xy(int x, int y)
+void combo::set_location(int x, int y)
 {
-	button_.set_xy(x,y);
+	button_.set_location(x,y);
 }
 
 void combo::set_selected(int val)

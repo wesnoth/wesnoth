@@ -2065,7 +2065,7 @@ void display::create_buttons()
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
 		gui::button b(*this,i->title(),gui::button::TYPE_PRESS,i->image());
 		const SDL_Rect& loc = i->location(screen_area());
-		b.set_xy(loc.x,loc.y);
+		b.set_location(loc.x,loc.y);
 		buttons_.push_back(b);
 	}
 }

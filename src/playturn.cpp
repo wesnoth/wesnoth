@@ -147,15 +147,16 @@ void turn_info::turn_slice()
 
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
-
-	const int scroll_threshold = 5;
-
-	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,mouse_flags&SDL_BUTTON_LMASK);
+	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,true);
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
+		return;
 	}
+
+	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
+
+	const int scroll_threshold = 5;
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0,-preferences::scroll_speed());
@@ -206,8 +207,9 @@ int turn_info::send_data(int first_command)
 
 void turn_info::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog() || commands_disabled)
+	if(gui::in_dialog()) {
 		return;
+	}
 
 	switch(event.type) {
 	case SDL_KEYDOWN:
@@ -271,10 +273,6 @@ void turn_info::handle_event(const SDL_Event& event)
 
 void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 {
-	if(commands_disabled) {
-		return;
-	}
-
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
@@ -390,9 +388,6 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
-	if(commands_disabled)
-		return;
-
 	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_RELEASED) {
@@ -516,6 +511,10 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 
 void turn_info::left_click(const SDL_MouseButtonEvent& event)
 {
+	if(commands_disabled) {
+		return;
+	}
+
 	const team& current_team = teams_[team_num_-1];
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
@@ -887,7 +886,6 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 	case hotkey::HOTKEY_FULLSCREEN:
 	case hotkey::HOTKEY_ACCELERATED:
-	case hotkey::HOTKEY_SAVE_GAME:
 	case hotkey::HOTKEY_TOGGLE_GRID:
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
@@ -899,6 +897,9 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_SEARCH:
 		return true;
 
+	case hotkey::HOTKEY_SAVE_GAME:
+		return !commands_disabled;
+
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
 	case hotkey::HOTKEY_BEST_ENEMY_MOVES:
 		return enemies_visible_;
@@ -907,12 +908,14 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
-		return !browse_ && !redo_stack_.empty();
+		return !browse_ && !redo_stack_.empty() && !commands_disabled;
 	case hotkey::HOTKEY_UNDO:
-		return !browse_ && !undo_stack_.empty();
+		return !browse_ && !undo_stack_.empty() && !commands_disabled;
 
 	case hotkey::HOTKEY_CONTINUE_MOVE: {
-		if(browse_) return false;
+		if(browse_ || commands_disabled)
+			return false;
+
 		if(current_unit() != units_.end() && current_unit()->second.move_interrupted())
 			return true;
 		const unit_map::const_iterator i = units_.find(selected_hex_);
@@ -923,7 +926,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
 	case hotkey::HOTKEY_UPDATE_SHROUD:
-		return !browse_ && current_team().auto_shroud_updates() == false;
+		return !browse_ && !commands_disabled && current_team().auto_shroud_updates() == false;
 
 	//commands we can only do if we are actually playing, not just viewing
 	case hotkey::HOTKEY_END_UNIT_TURN:
@@ -931,7 +934,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL:
 	case hotkey::HOTKEY_ENDTURN:
-		return !browse_;
+		return !browse_ && !commands_disabled;
 
 	//commands we can only do if there is an active unit
 	case hotkey::HOTKEY_TERRAIN_TABLE:
@@ -940,14 +943,14 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return current_unit() != units_.end();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
-		return current_unit() != units_.end() && current_unit()->second.side() == gui_.viewing_team()+1;
+		return !commands_disabled && current_unit() != units_.end() && current_unit()->second.side() == gui_.viewing_team()+1;
 
 	case hotkey::HOTKEY_LABEL_TERRAIN:
-		return map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y);
+		return !commands_disabled && map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y);
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
-		return game_config::debug && map_.on_board(last_hex_);
+		return !commands_disabled && game_config::debug && map_.on_board(last_hex_);
 
 	default:
 		return false;

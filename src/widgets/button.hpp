@@ -15,6 +15,8 @@
 
 #include "SDL.h"
 
+#include "widget.hpp"
+
 #include "../sdl_utils.hpp"
 
 #include <string>
@@ -25,7 +27,7 @@ class display;
 
 namespace gui {
 
-class button
+class button : public widget
 {
 public:
 	struct error {};
@@ -35,39 +37,31 @@ public:
 	button(display& disp, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="");
 
+	virtual ~button() {}
+
 	void set_check(bool check);
 	bool checked() const;
 
 	void draw();
 
-	void set_x(int val);
-        int get_x() {return x_;}
-	void set_y(int val);
-	void set_xy(int valx, int valy);
 	void set_label(const std::string& val);
 
-	SDL_Rect location() const {
-		const SDL_Rect pos = {x_,y_,w_,h_};
-		return pos;
-	}
-
-	int width() const;
-	int height() const;
-
 	bool process(int mousex, int mousey, bool button);
-
-	void backup_background();
-	void hide();
 
 	void enable(bool new_val);
 	bool enabled() const;
 
+protected:
+	virtual void handle_event(const SDL_Event& event);
+	virtual void mouse_motion(const SDL_MouseMotionEvent& event);
+	virtual void mouse_down(const SDL_MouseButtonEvent& event);
+	virtual void mouse_up(const SDL_MouseButtonEvent& event);
+
 private:
-	surface_restorer restorer_;
+
 	std::string label_;
 	display* display_;
 	shared_sdl_surface image_, pressedImage_, activeImage_, pressedActiveImage_;
-	int x_, y_, w_, h_;
 	SDL_Rect textRect_;
 
 	bool button_;
@@ -78,6 +72,8 @@ private:
 	TYPE type_;
 
 	bool enabled_;
+
+	bool pressed_;
 
 	bool hit(int x, int y) const;
 }; //end class button

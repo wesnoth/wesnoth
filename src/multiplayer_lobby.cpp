@@ -205,10 +205,10 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 
 		update_rect(xscale(disp,19),yscale(disp,23),xscale(disp,832),yscale(disp,520));
-		join_game.set_xy(xscale(disp,19),yscale(disp,545));
-		new_game.set_xy(xscale(disp,19)+join_game.width()+5,yscale(disp,545));
-		quit_game.set_xy(xscale(disp,19)+join_game.width()+5+new_game.width()+5,yscale(disp,545));
-		message_entry.set_position(xscale(disp,19),yscale(disp,725));
+		join_game.set_location(xscale(disp,19),yscale(disp,545));
+		new_game.set_location(xscale(disp,19)+join_game.width()+5,yscale(disp,545));
+		quit_game.set_location(xscale(disp,19)+join_game.width()+5+new_game.width()+5,yscale(disp,545));
+		message_entry.set_location(xscale(disp,19),yscale(disp,725));
 		message_entry.set_width(xscale(disp,832));
 
 		update_whole_screen();

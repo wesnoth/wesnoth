@@ -91,9 +91,10 @@ team::team_info::team_info(const config& cfg)
 
 	ai_algorithm = cfg["ai_algorithm"];
 
-	const config* const ai_parameters = cfg.child("ai");
-	if(ai_parameters != NULL) {
-		ai_params = *ai_parameters;
+
+	const config::child_list& ai_parameters = cfg.get_children("ai");
+	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {
+		ai_params.append(**aiparam);
 	}
 
 	const std::string& scouts_val = cfg["villages_per_scout"];

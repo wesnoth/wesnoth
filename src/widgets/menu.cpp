@@ -115,10 +115,8 @@ void menu::set_loc(int x, int y)
 		scrollbar_.set_location(scroll_rect);
 		set_scrollbar_height();
 
-		uparrow_.set_x(x_ + menu_width);
-		uparrow_.set_y(y_);
-		downarrow_.set_x(x_+ menu_width);
-		downarrow_.set_y(scrollbar_.location().y + scrollbar_.location().h);
+		uparrow_.set_location(x_ + menu_width,y_);
+		downarrow_.set_location(x_+ menu_width,scrollbar_.location().y + scrollbar_.location().h);
 
 	}
 }
@@ -520,19 +518,8 @@ void menu::draw()
 
 	// update enabled/disabled status for up/down buttons
 	if(show_scrollbar()) {
-		if(first_item_on_screen_ == 0) {
-			uparrow_.enable(false);
-			uparrow_.hide();
-		} else {
-			uparrow_.enable(true);
-		}
-
-		if(first_item_on_screen_ >= items_.size() - max_items_onscreen()) {
-			downarrow_.enable(false);
-			downarrow_.hide();
-		} else {
-			downarrow_.enable(true);
-		}
+		uparrow_.hide(first_item_on_screen_ == 0);
+		downarrow_.hide(first_item_on_screen_ >= items_.size() - max_items_onscreen());
 	}
 
 	for(size_t i = 0; i != items_.size(); ++i)

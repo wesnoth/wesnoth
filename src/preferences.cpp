@@ -531,60 +531,50 @@ void show_preferences_dialog(display& disp)
 
 	fullscreen_button.set_check(fullscreen());
 
-	fullscreen_button.set_x(slider_left);
-	fullscreen_button.set_y(sound_pos + 80);
+	fullscreen_button.set_location(slider_left,sound_pos + 80);
 
 	gui::button turbo_button(disp,string_table["speed_turbo"],
 	                         gui::button::TYPE_CHECK);
 	turbo_button.set_check(turbo());
 
-	turbo_button.set_x(slider_left);
-	turbo_button.set_y(sound_pos + 80 + 50);
+	turbo_button.set_location(slider_left,sound_pos + 80 + 50);
 
 	gui::button grid_button(disp,string_table["grid_button"],
 	                        gui::button::TYPE_CHECK);
 	grid_button.set_check(grid());
 
-	grid_button.set_x(slider_left);
-	grid_button.set_y(sound_pos + 80 + 100);
+	grid_button.set_location(slider_left,sound_pos + 80 + 100);
 
 	gui::button floating_labels_button(disp,string_table["floating_labels_button"],
 	                                   gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
-	floating_labels_button.set_x(slider_left);
-	floating_labels_button.set_y(sound_pos + 80 + 150);
+	floating_labels_button.set_location(slider_left,sound_pos + 80 + 150);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
-	resolution_button.set_x(slider_left);
-	resolution_button.set_y(sound_pos + 80 + 200);
+	resolution_button.set_location(slider_left,sound_pos + 80 + 200);
 
 	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],
 	                               gui::button::TYPE_CHECK);
 	turn_dialog_button.set_check(turn_dialog());
-	turn_dialog_button.set_x(slider_left+fullscreen_button.width()+100);
-	turn_dialog_button.set_y(sound_pos + 80);
+	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80);
 
 	gui::button turn_bell_button(disp,string_table["turn_bell_button"],
 	                             gui::button::TYPE_CHECK);
 	turn_bell_button.set_check(turn_bell());
-	turn_bell_button.set_x(slider_left+fullscreen_button.width()+100);
-	turn_bell_button.set_y(sound_pos + 80 + 50);
+	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,sound_pos + 80 + 50);
 
 	gui::button side_colours_button(disp,string_table["show_side_colours"],
 	                                gui::button::TYPE_CHECK);
 	side_colours_button.set_check(show_side_colours());
-	side_colours_button.set_x(slider_left + fullscreen_button.width() + 100);
-	side_colours_button.set_y(sound_pos + 80 + 100);
+	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 100);
 
 	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],
 	                                gui::button::TYPE_CHECK);
 	colour_cursors_button.set_check(use_colour_cursors());
-	colour_cursors_button.set_x(slider_left + fullscreen_button.width() + 100);
-	colour_cursors_button.set_y(sound_pos + 80 + 150);
+	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 150);
 
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_x(slider_left + fullscreen_button.width() + 100);
-	hotkeys_button.set_y(sound_pos + 80 + 200);
+	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,sound_pos + 80 + 200);
 
 	bool redraw_all = true;
 
@@ -791,14 +781,10 @@ void show_hotkeys_dialog (display & disp)
 	menu_.set_loc (xpos + 20, ypos);
 	
 	gui::button change_button (disp, string_table["change_hotkey_button"]);
-	change_button.set_x (xpos + width -
-			    change_button.width () -30);
-	change_button.set_y (ypos + 80);
+	change_button.set_location(xpos + width - change_button.width () -30,ypos + 80);
 
 	gui::button save_button (disp, string_table["save_hotkeys_button"]);
-	save_button.set_x (xpos + width -
-			    save_button.width () -30);
-	save_button.set_y (ypos + 130);
+	save_button.set_location(xpos + width - save_button.width () - 30,ypos + 130);
 
 	bool redraw_all = true;
 

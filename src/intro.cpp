@@ -89,10 +89,8 @@ bool show_intro_part(display& screen, const config& part,
 	gui::button next_button(screen,string_table["next_button"] + ">>>");
 	gui::button skip_button(screen,string_table["skip_button"]);
 
-	next_button.set_x(screen.x()-200);
-	next_button.set_y(screen.y()-150);
-	skip_button.set_x(screen.x()-200);
-	skip_button.set_y(screen.y()-100);
+	next_button.set_location(screen.x()-200,screen.y()-150);
+	skip_button.set_location(screen.x()-200,screen.y()-100);
 
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
 			0,0,0,1.0,screen.video().getSurface());
@@ -122,10 +120,8 @@ bool show_intro_part(display& screen, const config& part,
 		textx = dstrect.x;
 		texty = dstrect.y + dstrect.h + 10;
 
-		next_button.set_x(dstrect.x+dstrect.w-40);
-		next_button.set_y(dstrect.y+dstrect.h+20);
-		skip_button.set_x(dstrect.x+dstrect.w-40);
-		skip_button.set_y(dstrect.y+dstrect.h+70);
+		next_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+20);
+		skip_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+70);
 	}
 
 	next_button.draw();
@@ -145,7 +141,7 @@ bool show_intro_part(display& screen, const config& part,
 	int xpos = textx, ypos = texty;
 	
 	//the maximum position that text can reach before wrapping
-	const int max_xpos = next_button.get_x() - 10;
+	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
 	std::string buf;
 	for(;;) {

@@ -81,16 +81,13 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	gui::button random_map_setting_button(disp,"Random Generator Setting");
 	gui::button cancel_button(disp,"Cancel");
 
-	new_map_button.set_x(xpos + horz_margin);
-	new_map_button.set_y(height_rect.y + height_rect.h + vertical_margin);
-	random_map_button.set_x(xpos + horz_margin);
-	random_map_button.set_y(ypos + height - random_map_button.height()-14*2-vertical_margin);
-	random_map_setting_button.set_x(random_map_button.get_x() + random_map_button.width()
-									+ horz_margin);
-	random_map_setting_button.set_y(ypos + height - random_map_setting_button.height() 
-									- 14*2 - vertical_margin);
-	cancel_button.set_x(xpos + width - cancel_button.width() - horz_margin);
-	cancel_button.set_y(ypos + height - cancel_button.height()-14);
+	new_map_button.set_location(xpos + horz_margin,height_rect.y + height_rect.h + vertical_margin);
+	random_map_button.set_location(xpos + horz_margin,ypos + height - random_map_button.height()-14*2-vertical_margin);
+	random_map_setting_button.set_location(random_map_button.location().x + random_map_button.width() + horz_margin,
+	                                       ypos + height - random_map_setting_button.height() 
+									       - 14*2 - vertical_margin);
+	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
+	                           ypos + height - cancel_button.height()-14);
 
 	const int right_space = 100;
 

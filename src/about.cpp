@@ -47,7 +47,7 @@ void show_about(display& disp)
 	map_rect.h = map_image->h;
 
 	gui::button close(disp,string_table["close_button"]);
-	close.set_xy((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
+	close.set_location((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
 
 
 	std::vector<std::string> text;

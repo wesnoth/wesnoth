@@ -12,6 +12,7 @@
 */
 
 #include "scrollbar.hpp"
+#include "../display.hpp"
 #include "../image.hpp"
 #include "../video.hpp"
 

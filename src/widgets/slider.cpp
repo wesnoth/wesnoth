@@ -12,6 +12,7 @@
 */
 
 #include "slider.hpp"
+#include "../display.hpp"
 #include "../image.hpp"
 #include "../video.hpp"
 

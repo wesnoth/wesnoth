@@ -817,7 +817,7 @@ int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
 
 void ai::analyze_potential_recruit_combat()
 {
-	if(unit_combat_scores_.empty() == false) {
+	if(unit_combat_scores_.empty() == false || current_team().ai_parameters()["recruitment_ignore_bad_combat"] == "yes") {
 		return;
 	}
 
@@ -890,7 +890,7 @@ private:
 
 void ai::analyze_potential_recruit_movements()
 {
-	if(unit_movement_scores_.empty() == false) {
+	if(unit_movement_scores_.empty() == false || current_team().ai_parameters()["recruitment_ignore_bad_movement"] == "yes") {
 		return;
 	}
 

@@ -73,8 +73,8 @@ void default_map_generator::user_config(display& disp)
 
 	gui::button close_button(disp,string_table["close_window"]);
 
-	close_button.set_x(xpos + width/2 - close_button.width()/2);
-	close_button.set_y(ypos + height - close_button.height()-14);
+	close_button.set_location(xpos + width/2 - close_button.width()/2,
+	                          ypos + height - close_button.height()-14);
 
 	const std::string& players_label = string_table["num_players"] + ":";
 	const std::string& width_label = string_table["map_width"] + ":";

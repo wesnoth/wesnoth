@@ -128,7 +128,7 @@ TITLE_RESULT show_title(display& screen)
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.push_back(button(screen,string_table[button_labels[b]]));
-		buttons.back().set_xy(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
+		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
@@ -160,12 +160,12 @@ TITLE_RESULT show_title(display& screen)
 			}
 		}
 
+		screen.video().flip();
+
 		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;
 
 		last_escape = key[SDLK_ESCAPE];
-
-		screen.video().flip();
 
 		events::pump();
 

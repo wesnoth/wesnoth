@@ -333,10 +333,10 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
 
 	//Buttons
-	cancel_.set_xy(right - cancel_.width() - gui::ButtonHPadding,bottom-cancel_.height()-gui::ButtonVPadding);
-	launch_.set_xy(right - cancel_.width() - launch_.width() - gui::ButtonHPadding*2,bottom-launch_.height()-gui::ButtonVPadding);
+	cancel_.set_location(right - cancel_.width() - gui::ButtonHPadding,bottom-cancel_.height()-gui::ButtonVPadding);
+	launch_.set_location(right - cancel_.width() - launch_.width() - gui::ButtonHPadding*2,bottom-launch_.height()-gui::ButtonVPadding);
 	
-	ai_.set_xy(left+30,bottom-60);
+	ai_.set_location(left+30,bottom-60);
 
 	//Title and labels
 	gui::draw_dialog_title(left,top,disp_,string_table["game_lobby"]);
@@ -385,20 +385,20 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 		//Player type
 		combos_type_.push_back(gui::combo(*disp_, player_types_));
-		combos_type_.back().set_xy(left+30,top+55+(30*side_num));
+		combos_type_.back().set_location(left+30,top+55+(30*side_num));
 
 		//Player race
 		combos_race_.push_back(gui::combo(*disp_, player_races_));
-		combos_race_.back().set_xy(left+145,top+55+(30*side_num));
+		combos_race_.back().set_location(left+145,top+55+(30*side_num));
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_xy(left+260,top+55+(30*side_num));
+		combos_team_.back().set_location(left+260,top+55+(30*side_num));
 		combos_team_.back().set_selected(side_num);
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
-		combos_color_.back().set_xy(left+375,top+55+(30*side_num));
+		combos_color_.back().set_location(left+375,top+55+(30*side_num));
 		combos_color_.back().set_selected(side_num);
 
 		SDL_Rect r;
