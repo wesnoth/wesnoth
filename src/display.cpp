@@ -1223,7 +1223,28 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(skip_energy_rows + lost_energy < energy_bar_loc.h) {
 		SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
 		          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
+
+		const int xp_percent = (it->second.experience()*100)/it->second.max_experience();
+		const int xp_loss = ((100 - xp_percent)*(energy_bar_loc.h - skip_energy_rows))/100;
+
+		const bool show_xp = xp_percent > 0 && xp_percent < 100 && it->second.type().advances_to().empty() == false;
+
+		SDL_Rect filled_xp_area = { filled_energy_area.x, ypos + energy_bar_loc.y + xp_loss,
+		                            filled_energy_area.w, energy_bar_loc.h - skip_energy_rows - xp_loss };
+
+		if(filled_energy_area.y < filled_xp_area.y && show_xp) {
+			filled_energy_area.h = filled_xp_area.y - filled_energy_area.y;
+		} else {
+			filled_xp_area.h = filled_energy_area.y - filled_xp_area.y;
+		}
+
 		SDL_FillRect(dst,&filled_energy_area,energy_colour);
+
+		if(show_xp) {
+			const bool nearly_advanced = it->second.max_experience() - it->second.experience() <= game_config::kill_experience*it->second.type().level();
+			const Uint16 xp_colour = ::SDL_MapRGB(screen_.getSurface()->format,nearly_advanced ? 255 : 0,0,255);
+			SDL_FillRect(dst,&filled_xp_area,xp_colour);
+		}
 	}
 }
 
@@ -1820,7 +1841,10 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 }
 
 struct is_energy_colour {
-	bool operator()(Uint32 colour) const { return (colour&0xFF000000) < 0x99000000 && (colour&0x00FF0000) > 0x00990000; }
+	bool operator()(Uint32 colour) const { return (colour&0xFF000000) < 0x50000000 &&
+	                                              (colour&0x00FF0000) > 0x00990000 &&
+												  (colour&0x0000FF00) > 0x00009900 &&
+												  (colour&0x000000FF) > 0x00000099; }
 };
 
 const SDL_Rect& display::calculate_energy_bar()
