@@ -114,7 +114,11 @@ char* wesnoth_setlocale(int category, const char *locale)
 	if (setenv ("LC_ALL", locale, 1) == -1)
 		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 
-	return setlocale (category, locale);
+	char* res = setlocale (category, locale);
+	if (res == NULL)
+		std::cerr << "WARNING: setlocale() failed for "
+			  << locale << ".\n";
+	return res;
 }
 
 bool set_language(const language_def& locale)
