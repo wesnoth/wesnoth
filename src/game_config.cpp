@@ -13,7 +13,7 @@
 #include "game_config.hpp"
 #ifdef HAVE_CONFIG_H
 # include "config.h"
-#else
+#endif
 
 #include <cstdlib>
 

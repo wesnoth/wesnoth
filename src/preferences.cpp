@@ -27,7 +27,7 @@
 #include "widgets/menu.hpp"
 #ifdef HAVE_CONFIG_H
 # include "config.h"
-#else
+#endif
 
 #include <cstdlib>
 #include <iostream>
