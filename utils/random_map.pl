@@ -1,4 +1,5 @@
-# Random map generator for wesnoth
+#!/usr/bin/perl 
+## Random map generator for wesnoth
 #
 # Copyright 2003 J.R. Blain
 # Released under the gnu gpl v2 or later.
@@ -12,12 +13,29 @@
 # Reorganize settings variables to make more sense, remove
 # unused crap.
 # Add river/road support.
-#
-# Turn castles/towns on/off.
 # ansi-ize the map
-# Getopts for options.
 #
 # Changelog:
+#
+#    Nov 18 2003 (Cowboy)
+#    - Cleaned up a little after Miyo :)
+#    	- switched some if ($foo => $bar) to if ($foo >= $bar)
+#    		so it doesn't think it's a hash assignment
+#    		and throw a stupid warning.
+#
+#    - Updated to clean up some routines, 
+#    - remove an endless loop (not sure if it was mine or miyos)
+#    - added "snow"
+#    - updated _scan_ring to handle invalid ranges better. (faster)    
+#
+#    Nov 18 2003 (Miyo)
+#     - added '#!/usr/bin/perl -w'
+#     - implemented Getops::Long
+#     - usage|help
+# 		- enable/disable towns
+# 		- selectable base terrain type
+# 		- configurable terrain leveling
+#
 # 	Nov 17 2003 
 # 		- Better comments
 # 		- Updated proximity scanning routines
@@ -30,18 +48,22 @@
 # 		
 # 	Nov 16 2003 
 # 		- initial release
-# 	
-# 
 
 use strict;
 use warnings;
 use List::Util qw( shuffle );
 use POSIX qw( ceil );
+use Getopt::Long;
 
 use vars qw( $PARAMS $MAP $NUMBERS $DIRMAP $SQUARES );
 
 $NUMBERS = {
 	terrain => {
+		grassland => {
+			percent => 0,
+			type => 'g',
+			mod => 'round',
+		},
 		forests => {
 			percent => 25,
 			type => 'f',
@@ -67,6 +89,11 @@ $NUMBERS = {
 			type => 'h',
 			mod => 'round',
 		},
+		snow => {
+			percent => 5,
+			type => 'S',
+			mod => 'round',
+		},
 	},			
 	towns => {
 		squares_per_town => 6 * 6,  # 1 town in this many squares.
@@ -74,17 +101,45 @@ $NUMBERS = {
 		type => 't',
 	},
 	players => {
-		count => 8,
+		count => 4,
 		preferred_distance => 30,
 		decrement_unit => 1,
 	},
 };
 $PARAMS = {
-	width => 64,
-	height => 64,
-	players => 0,
-	base_type => 'g' # fill any remaining map spots with this type.
+	map_size => '64x64',
+	base_type => 'g', # fill any remaining map spots with this type.
+	towns => 1,
+	castles => 1,
+	usage => 0,
+	verbose => 0,
+	leveling => 2,
 };
+
+
+GetOptions ( 
+	'size=s' => \$PARAMS->{map_size},
+	'grassland=i' => \$NUMBERS->{terrain}{grassland}{percent},
+	'forest=i' => \$NUMBERS->{terrain}{forests}{percent},
+	'mountains=i' => \$NUMBERS->{terrain}{mountains}{percent},
+	'desert=i' => \$NUMBERS->{terrain}{deserts}{percent},
+	'shallow=i' => \$NUMBERS->{terrain}{shallows}{percent},
+	'snow=i' => \$NUMBERS->{terrain}{snow}{percent},
+	'hills=i' => \$NUMBERS->{terrain}{hills}{percent},
+	'players=i' => \$NUMBERS->{players}{count},
+	'playerdist=i' => \$NUMBERS->{players}{preferred_distance},
+	'towns!' => \$PARAMS->{towns},
+	'towndist=i' => \$NUMBERS->{towns}{min_town_distance},
+	'townspt=i' => \$NUMBERS->{towns}{squares_per_town},
+	'baseterrain=s' => \$PARAMS->{base_type},
+	'leveling=i' => \$PARAMS->{leveling},
+	'help|usage' => \$PARAMS->{usage},
+	'verbose' => \$PARAMS->{verbose},
+	) || usage();
+
+
+
+( $PARAMS->{height}, $PARAMS->{width} ) = split /x/,$PARAMS->{map_size};
 
 # not used yet, thoughts for the future.
 $SQUARES = {
@@ -154,17 +209,60 @@ $DIRMAP = {
 # 5
 $MAP = [];
 
+usage() if $PARAMS->{usage} == 1;
+
 generate_base_map();
 add_terrain();
 fill_map();
-level_terrain();
-level_terrain();
-add_towns();
-add_castles();
+
+
+if ( $PARAMS->{leveling} >= 1 ) {
+	my $t = 1;
+	while ($t <= $PARAMS->{leveling}) {
+		warn "Leveling...\n" if $PARAMS->{verbose};
+		level_terrain();
+		++$t;
+	}
+}
+
+
+add_towns() if $PARAMS->{towns};
+
+add_castles() if $NUMBERS->{players}->{count} >= 1;
+
 print_map();
 
 
+sub usage {
 
+abort_with_error("
+usage: random_map.pl [ OPTIONS ]
+
+ -help|usage         give this help
+ -verbose            print more information
+
+ -size NUMxNUM       set map size, height x width (default=64x64)
+ -leveling NUM       set number of terrain levelings to occur (default=2)
+ -players NUM        set number of player (default=8)
+ -playerdist NUM     set preferred distance between players (default=30)
+ -notowns            disable towns
+ -towndist           set minimun distance between towns (default=2)
+ 
+ -baseterrain CHAR   set base terrain type (default=g)
+ -grassland NUM      set grassland % (default=0)
+ -forest NUM         set forest % (default=10)
+ -mountains NUM      set mountain % (default=10)
+ -desert NUM         set desert % (default=10)
+ -shallow NUM        set shallow water % (default=10)
+ -hills NUM          set hills % (default=10)
+ -snow NUM           set snow % (default=5)
+ \n");
+}
+
+
+sub abort_with_error {
+	die @_;	
+}
 sub add_terrain {
 	foreach my $key (keys %{ $NUMBERS->{terrain} }) {
 		if ($NUMBERS->{terrain}->{$key}->{mod} eq 'round') {
@@ -184,11 +282,13 @@ sub add_terrain {
 
 
 sub add_towns {
+	warn "add_towns\n" if $PARAMS->{verbose};
 	my $towns = ceil(($PARAMS->{height} * $PARAMS->{width}) / $NUMBERS->{towns}->{squares_per_town});
 	my $x = 1;
 	while ($x <= $towns) {
 		my $y = 1;
 		# 200 tries to place a town.
+		warn "trying to place town\n" if $PARAMS->{verbose};
 		while ($y <= 200) {
 			my $plx = int(rand($PARAMS->{height}));
 			my $ply = int(rand($PARAMS->{width}));
@@ -201,14 +301,20 @@ sub add_towns {
 				)
 			) {
 				$MAP->[$plx]->[$ply] = $NUMBERS->{towns}->{type};
+				warn "placed town at $plx $ply\n" if $PARAMS->{verbose};
 				$y = 200; # will exit us from the loop here.
+			}
+			else {
+				warn "town not ok: $y\n" if $PARAMS->{verbose};
 			}
 			++$y;
 		}
+		warn "next town\n" if $PARAMS->{verbose};
 		++$x;
 	}
 }
 sub add_castles {
+	warn "add_castles\n" if $PARAMS->{verbose};
 	my $castle_count = $NUMBERS->{players}->{count};
 	my $x = 1;
 	while ($x <= $castle_count) {
@@ -247,6 +353,7 @@ sub add_castles {
 	}
 }
 
+
 sub _get_min_max_sizes {
 	my ($terrain) = shift;
 	my $total_squares = $PARAMS->{width} * $PARAMS->{height};
@@ -258,7 +365,7 @@ sub _get_min_max_sizes {
 
 sub _town_ok_to_place {
 	my ($x,$y,$type,$search_dist) = @_;
-
+	warn "checking town\n" if $PARAMS->{verbose};
 	# searches circular until it finds a matching terrain type.
 	# returns undef if it can't find one.  Note, this routine
 	# is a bit of a hog.
@@ -267,6 +374,7 @@ sub _town_ok_to_place {
 	if ($MAP->[$x]->[$y] eq $type) {
 		return undef;
 	}
+	warn "$x $y $search_dist $type\n" if $PARAMS->{verbose};
 	if (_scan_ring($x,$y,$search_dist,$type)) {
 		return undef;
 	}
@@ -324,15 +432,20 @@ sub _scan_ring {
 	
 	my $cx = $sx;
 	while ($cx <= $ex) {
-		my $cy = $sy;
-		while ($cy <= $ey) {
-			if ($MAP->[$cx]->[$cy] && $type eq 'castle' && _is_castle($MAP->[$cx]->[$cy])) {
-				return 1;
+		warn "Looping through $cx\n" if $PARAMS->{verbose};
+		if ($cx >= 0 && $cx < $PARAMS->{height}) {
+			my $cy = $sy;
+			while ($cy <= $ey) {
+				if ($cy >= 0 && $cy < $PARAMS->{width}) {
+					if ($MAP->[$cx]->[$cy] && $type eq 'castle' && _is_castle($MAP->[$cx]->[$cy])) {
+						return 1;
+					}
+					if ($MAP->[$cx]->[$cy] && $type eq $MAP->[$cx]->[$cy]) {
+						return 1;
+					}
+				}
+				++$cy;
 			}
-			if ($MAP->[$cx]->[$cy] && $type eq $MAP->[$cx]->[$cy]) {
-				return 1;
-			}
-			++$cy;
 		}
 		$cx++;
 	}
