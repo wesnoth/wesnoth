@@ -381,21 +381,6 @@ void ai::attack_analysis::analyze(const gamemap& map,
 					if(roll < stat.chance_to_hit_defender) {
 						defhp -= stat.damage_defender_takes;
 						if(defhp <= 0) {
-
-							//the reward for advancing a unit is to
-							//get a 'negative' loss of that unit
-							const int xp = defend_it->second.type().level()*10;
-							if(xp >= att->second.max_experience() -
-							         att->second.experience()) {
-								avg_losses -= att->second.type().cost();
-							}
-
-							//the reward for killing with a unit that
-							//plagues is to get a 'negative' loss of that unit
-							if(stat.attacker_plague) {
-								avg_losses -= att->second.type().cost();
-							}
-
 							defhp = 0;
 							break;
 						}
@@ -431,7 +416,31 @@ void ai::attack_analysis::analyze(const gamemap& map,
 				}
 			}
 
+			const int xp = defend_it->second.type().level() * (defhp <= 0 ? game_config::kill_experience : 1);
+
+			const int xp_for_advance = att->second.max_experience() - att->second.experience();
+
+			//the reward for advancing a unit is to get a 'negative' loss of that unit
+			if(xp >= xp_for_advance) {
+				avg_losses -= att->second.type().cost();
+
+				//ignore any damage done to this unit
+				atthp = hitpoints[i];
+			} else {
+				//the reward for getting a unit closer to advancement is to get
+				//the proportion of remaining experience needed, and multiply
+				//it by a quarter of the unit cost. This will cause the AI
+				//to heavily favor getting xp for close-to-advance units.
+				avg_losses -= (att->second.type().cost()*xp)/(xp_for_advance*4);
+			}
+
 			if(defhp <= 0) {
+				//the reward for killing with a unit that
+				//plagues is to get a 'negative' loss of that unit
+				if(stat.attacker_plague) {
+					avg_losses -= att->second.type().cost();
+				}
+
 				break;
 			} else if(atthp == 0) {
 				avg_losses += cost;

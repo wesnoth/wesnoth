@@ -1819,8 +1819,11 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool upside_down, double alpha, Uint32 blendto, double submerged,
 						SDL_Surface* ellipse_back, SDL_Surface* ellipse_front)
 {
+	//calculate the y position of the ellipse. It should be the same as the y position of the image, unless
+	//the image is partially submerged, in which case the ellipse should appear to float 'on top of' the water
+	const int ellipse_ypos = y - (ellipse_back != NULL && submerged > 0.0 ? int(double(ellipse_back->h)*submerged) : 0)/2;
 	if(ellipse_back != NULL) {
-		draw_unit(x,y,ellipse_back,false,blendto == 0 ? alpha : 1.0,0,submerged);
+		draw_unit(x,ellipse_ypos,ellipse_back,false,blendto == 0 ? alpha : 1.0,0,0.0);
 	}
 
 	sdl_add_ref(image);
@@ -1860,7 +1863,7 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 	}
 
 	if(ellipse_front != NULL) {
-		draw_unit(x,y,ellipse_front,false,blendto == 0 ? alpha : 1.0,0,submerged);
+		draw_unit(x,ellipse_ypos,ellipse_front,false,blendto == 0 ? alpha : 1.0,0,0.0);
 	}
 }
 

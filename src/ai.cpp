@@ -756,8 +756,24 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 	                                                                                   taken_villages,moved_units,village_moves,village_moves.begin());
 	std::cerr << "get_villages() done: " << (SDL_GetTicks() - ticks) << "\n";
 
+	//move all the units to get villages, however move the leader last, so that the castle will be cleared
+	//if it wants to stop to recruit along the way.
+	std::pair<location,location> leader_move;
+
 	for(std::vector<std::pair<location,location> >::const_iterator i = moves.begin(); i != moves.end(); ++i) {
-		move_unit(i->second,i->first,possible_moves);
+		if(leader != units_.end() && leader->first == i->second) {
+			leader_move = *i;
+		} else {
+			if(units_.count(i->first) == 0) {
+				move_unit(i->second,i->first,possible_moves);
+			}
+		}
+	}
+
+	if(leader_move.second.valid()) {
+		if(units_.count(leader_move.first) == 0) {
+			move_unit(leader_move.second,leader_move.first,possible_moves);
+		}
 	}
 
 	return moves.empty() == false;
