@@ -2,14 +2,14 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-05 00:48+0100\n"
-"PO-Revision-Date: 2004-12-04 17:31+0100\n"
-"Last-Translator: Andre Schmidt <andre1969@gmx.de>\n"
+"PO-Revision-Date: 2004-12-12 13:45+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1154,7 +1154,7 @@ msgstr ""
 
 #: data/items.cfg:812
 msgid "Zap~"
-msgstr ""
+msgstr "~Zap"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -3172,7 +3172,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 "Hinterhalt:\n"
-"Diese Einheit aknn sich im Wald verstecken und von Gegner unentdeckt "
+"Diese Einheit kann sich im Wald verstecken und von Gegner unentdeckt "
 "bleiben.\n"
 "\n"
 "Feindliche Einheiten können diese Einheit nicht sehen oder angreifen, wenn "
@@ -3524,56 +3524,58 @@ msgstr "Untote"
 
 #: data/translations/english.cfg:130
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "$name|s Brücke,$name|s Überquerung"
 
 #: data/translations/english.cfg:131
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "$name|s Pfad,$name|s Pass,Pfad von $name"
 
 #: data/translations/english.cfg:132
 msgid "$name River,River $name"
-msgstr ""
+msgstr "$name Fluss,Fluss $name"
 
 #: data/translations/english.cfg:133
 msgid "$name Forest,$name's Forest"
-msgstr ""
+msgstr "$name Wald,$name|s Wald"
 
 #: data/translations/english.cfg:134
 msgid "$name Lake"
-msgstr ""
+msgstr "$name See"
 
 #: data/translations/english.cfg:135
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "Sankt-$name,$name|sheim,$name|shausen"
 
 #: data/translations/english.cfg:136
 msgid "$name|harbor,$name|port"
-msgstr ""
+msgstr "$name|sbaden,$name|haven"
 
 #: data/translations/english.cfg:137
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|sheim,$name|sfurt,$name|skreuz,$river|sfurt,$river|skreuz"
 
 #: data/translations/english.cfg:138
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|brücke,$river|brücke,$river|brücke,$name|sheim,$name|sbrücke"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|sheim,$name|shausen,$name|sfeld"
 
 #: data/translations/english.cfg:140
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|sheim,$name|shausen,$name|swald,$name|s Forst"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|sheim,Sankt-$name,$name|shausen,$name|shügel,$name|srücken"
 
 #: data/translations/english.cfg:142
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|sheim,Sankt-$name,$name|shausen,$name|sberg,$name|shöhe,$name|sklippe,"
+"$name|sklippe"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -3916,6 +3918,10 @@ msgid ""
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
+"Banditen sind Meister darin nachts rauben und töten zu gehen. Sie tragen "
+"braune Umhänge und schwarze Kapuzen und sind mit einem schweren Streitkolben "
+"ausgerüstet. Wenn sie nicht gerade gegen Eindringlinge kämpfen bestehlen sie "
+"die Bauern aus der Umgebung."
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantryman.cfg:19
@@ -4425,6 +4431,10 @@ msgid ""
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
 "about killing as many other as possible with their swirling blades."
 msgstr ""
+"Unheilsbringer hassen alle Lebenden und versuchen alles zu zerstören, was "
+"sie einst liebten. Sie sind todbringende Krieger und ihre einzige Sorge ist "
+"soviele Gegner wie möglich mit ihren wirbelnden Klingen zu vernichten, ganz "
+"gleich in welche Gefahr sie sich selbst dabei bringen."
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -4668,7 +4678,7 @@ msgstr ""
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
-msgstr ""
+msgstr "Knochenschlächter"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -4679,6 +4689,13 @@ msgid ""
 "bought only by strength of arms.  The memory of their enemy, and the purpose "
 "of their struggle have long faded into oblivion."
 msgstr ""
+"Sie erheben sich aus den Überresten derer, die einst legendäre Krieger waren "
+"und lassen all jenen die sich ihnen in den Weg stellen das Blut in den Adern "
+"gefrieren. Sie werden nicht von Bosheit angetrieben, wohl aber von ihrem "
+"Traum endlich in Frieden zu ruhen. Sie ziehen durch die größten Schlachten "
+"ihrer Zeit und kämpfen verzweifelt um Erlösung, für einen Frieden der nur "
+"mit Waffengewalt zu erreichen ist. Die Erinnerung an ihre Gegner und der "
+"Grund ihres Kampfes sind schon lange in die Vergessenheit entschwunden."
 
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:23 data/units/Skeleton.cfg:24
@@ -4779,6 +4796,11 @@ msgid ""
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
 "alot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
+"Die widerstandsfähigsten Zwerge treten dem Zwergenheer als Gardisten bei. "
+"Obwohl sie langsam sind und keinen starken Angriff haben, bewachen sie die "
+"Flanken des Heeres indem sie durch ihre Widerstandskraft sehr vielen "
+"Angriffen stand halten können. Ausserdem schleudern sie ihre schweren Speere "
+"in die Reihen der Gegner."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -4832,10 +4854,12 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Die Schildwachen mit ihren Turmschildern und ihrer Tapferkeit halten selbst "
+"denn stärksten gegnerischen Angriffen stand."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Zwergen Wache"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -4843,6 +4867,10 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"Mitglieder der Zwergen Wache haben jahrelange Kampferfahrung. Sie haben sich "
+"bessere Schilder und stärke Rüstungen von den Überresten ihrer gefallenen "
+"Gegner besorgt. Obwohl sie langsam sind, sind sie gefürchtet für ihre "
+"Widerstandskraft und ihre Stärke."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -4906,6 +4934,9 @@ msgid ""
 "ferocious of these in battle: they attack without stopping fighting until "
 "either their enemy or they are dead, no matter how many wounds they receive."
 msgstr ""
+"Zwerge sind eine alte Rasse von mächtigen Kriegern und Ulfserker sind die "
+"grausamsten unter ihnen. Sie kämpfen solange bis sie oder ihr Widersacher "
+"tot sind, egal wieviele Wunden sie dabei einstecken."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -5607,7 +5638,7 @@ msgstr "Lanze"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Feldmarschall"
 
 #: data/units/Grand_Marshal.cfg:18
 msgid ""
@@ -5617,6 +5648,12 @@ msgid ""
 "facility.  Their presence on the battlefield is of great aid to those "
 "serving beneath them."
 msgstr ""
+"Einer der am meisten geachtetsten Ränge in der Armee der Menschen ist der "
+"eines Feldmarschalls. Diejenigen die diesen Titel tragen dürfen haben viele "
+"Feuerproben bestanden, sie haben sowohl beträchtlichen Mut im Kampf Mann "
+"gegen Mann bewiesen als auch ihr exzellentes taktisches Geschick. Ihre "
+"Präsenz auf dem Schlachtfeld ist eine große Hilfe für alle die, die unter "
+"ihrem Kommando kämpfen."
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
@@ -5960,7 +5997,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Meerjungfrau Wahrsagerin"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5968,10 +6005,14 @@ msgid ""
 "illumination, which prevents their surroundings from ever seeing true "
 "night.  Their power is a stalwart counter to the forces of darkness."
 msgstr ""
+"Nur die Andächtigsten und Frommsten unter den Meerjungfrauen erlangen die "
+"Erleuchtung, die ihre Begleiter davor bewahrt jemals von Dunkelheit umgeben "
+"zu sein. Ihre Macht ist eine unerschütterliche Waffe gegen die Armeen der "
+"Dunkelheit."
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Meerjungfrau Mystikerin"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5992,7 +6033,7 @@ msgstr "Peitschende Gischt"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Meerjungfrau"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -6000,10 +6041,14 @@ msgid ""
 "Despite their frailty, this makes them formidable opponents, as they can "
 "call upon the very water about them to smite their enemies."
 msgstr ""
+"Junge Meerjungfrauen werden sehr früh schon in die Wasserzauber ihres Volkes "
+"eingeweiht, ungeachtet ihres zarten Körpers macht sie dies zu "
+"furchteregenden Gegnern. Sie können riesige Wassermassen auf ihre Feinde "
+"niederprasseln lassen um sie davon zu spülen."
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Meerjungfrau Priesterin"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -6011,6 +6056,9 @@ msgid ""
 "leaves them quite capable of ministering to the wounds of their comrades, as "
 "well as being a potent defense against the unworldly."
 msgstr ""
+"Die erfahreren Meerjungfrauen begeben sich oft auf den Pfad des heiligen "
+"Studiums. Dabei lernen sie die Wunden ihrer Kampfgefährten zu heilen und "
+"werden zu einer starken Verteidigung gegen Untote."
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "Siren"
@@ -6033,7 +6081,7 @@ msgstr "Dreizack"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
-msgstr ""
+msgstr "Wassermann Netzmeister"
 
 #: data/units/Merman_Fighter.cfg:3
 msgid "Merman Fighter"
@@ -6057,7 +6105,7 @@ msgstr "Wassermann Jäger"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Wassermann Speerwerfer"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -6069,7 +6117,7 @@ msgstr "Wassermann Speerträger"
 
 #: data/units/Merman_Triton.cfg:3
 msgid "Merman Triton"
-msgstr ""
+msgstr "Wassermann Herr der Tiefe"
 
 #: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
 msgid ""
@@ -6090,6 +6138,9 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies.  Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
+"Wassermann Krieger bilden den Kern im Heer der Wassermänner. Ausgerüstet mit "
+"einem mächtigen Dreizack bringen sie Verderben über jene, die es wagen ihre "
+"Gewässer zu betreten."
 
 #: data/units/Mounted_Captain.cfg:3
 msgid "Mounted Captain"
@@ -6129,7 +6180,7 @@ msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
 msgid "Naga Fighter"
-msgstr ""
+msgstr "Naga Kämpfer"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -6139,14 +6190,21 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss.  They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Die Schlangenartigen Nagas sind eine der wenigen Rassen die über eine "
+"unglaubliche Moblität im Wasser verfügen. Das erlaubt es ihnen in ihrer "
+"eigenen Welt, fernab von den Landbewohnern zu leben. Trotzdem sind sie keine "
+"wahren Meereswesen und ihre Unfähigkeit unter Wasser zu atmen lässt sie mit "
+"bangen Blick in Richtung  Meeresgrund schauen. Sie sind klein und etwas "
+"gebrechlich in ihrer Form, aber oft viel flinker und geschickter als ihre "
+"Feinde."
 
 #: data/units/Naga-Fighter.cfg:34
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "Nagini Kämpferin"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Naga Scherge"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -6156,10 +6214,14 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Die geübtesten der Naga Schwertmeister werden in die Kaste der Schergen "
+"eingeführt. Sie schlagen blitzschnell zu wie Schlangen, denen sie sehr "
+"ähneln, um sich dann graziös zurückzuziehen. An Land sind sie gefährliche "
+"Gegner, aber ihre Fähigkeit zu schwimmen gibt ihnen eine tödliche Mobilität."
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Nagini Scherge"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -6172,7 +6234,7 @@ msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
-msgstr ""
+msgstr "Naga Krieger"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -6183,10 +6245,17 @@ msgid ""
 "dodge from blows.  This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Viele der jungen Naga Krieger fiebern dem Tag entgegen, an dem sie sich ihr "
+"zweites Schwert verdienen. Ihre Art mit den Zwillingsschwertern zu kämpfen "
+"ist gänzlich verschieden von der der Orks und der der anderen Rassen. Sie "
+"sind dabei zu lernen, ihre Schlangenform dazu zu nutzen sich feindlichen "
+"Angriffen durch drehen und winden zu entziehen. Das gibt ihnen die "
+"Möglichkeit auch an Land gut zu kämpfen, jedoch schadet das fehlen von "
+"Wasser ihrer Beweglichkeit."
 
 #: data/units/Naga-Warrior.cfg:38
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "Nagini Kriegerin"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -7307,7 +7376,7 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Turmwache"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
@@ -7321,6 +7390,11 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
+"Die Beschützer der Hauptstadt Weldyn, die Turmwachen, patrouillieren auf den "
+"Stadtmauern und schiessen mit ihren Armbrüsten auf nahende Gegner bevor "
+"diese zu einem Rückschlag ausholen können. Weil sie sich auf den hohen "
+"Stadtmauern befinden können sie sich nur auf diesen Mauern und den Dächern "
+"von Festungen bewegen."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -7403,6 +7477,14 @@ msgid ""
 "drawing nutrients from the ground and energy from the sun, Woses can regrow "
 "missing limbs after a fight."
 msgstr ""
+"Waldschrate sind mystische Kreaturen mit einer langen Vergangenheit. Sie "
+"wachsen im Wald und sind von normalen Bäumen nicht zu unterscheiden. Da sie "
+"sehr langsam und ungelenkig sind können sie Angriffen nicht besonders gut "
+"ausweichen. Ihre harte Rinde ist allerdings sehr resistent gegen Kälte, "
+"Schlagangriffe und Pfeile. Aber Klingen haben keine Mühe sich durch die "
+"Rinde zu schneiden, ausserdem sind Waldschrate sehr leicht entflammbar. "
+"Indem sie Nährstoffe aus dem Boden und die Energie der Sonne aufnehmen "
+"können sie im Kampf verlorene Gliedmaßen schnell wieder nachwachsen lassen."
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
@@ -7606,7 +7688,7 @@ msgstr ""
 
 #: src/actions.cpp:119
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "Es gibt keine freien Burgfelder zum rekrutieren von Einheiten."
 
 #: src/actions.cpp:206
 msgid "none"
@@ -7656,7 +7738,7 @@ msgstr "verlangsamt"
 
 #: src/actions.cpp:1750
 msgid "Ambushed!"
-msgstr ""
+msgstr "Hinterhalt!"
 
 #: src/actions.cpp:1778
 msgid "Friendly unit sighted"
@@ -7720,7 +7802,7 @@ msgstr "%a %d %b %H:%M %Y"
 
 #: src/dialogs.cpp:357
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Ungültig)"
 
 #: src/dialogs.cpp:362 src/game.cpp:963
 msgid "Campaign"
@@ -7933,7 +8015,7 @@ msgstr ",Name,Version,Autor,Heruntergeladen, Größe"
 
 #: src/game.cpp:1072
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: src/game.cpp:1075 src/show_dialog.cpp:949
 msgid "KB"
@@ -7941,7 +8023,7 @@ msgstr "KB"
 
 #: src/game.cpp:1078
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:1090
 msgid "Publish campaign: "
@@ -8001,7 +8083,7 @@ msgstr "Der Server gab folgenden Fehler zurück: \""
 
 #: src/game.cpp:1163
 msgid "Terms"
-msgstr ""
+msgstr "Bedingungen"
 
 #: src/game.cpp:1199 src/game.cpp:1223
 msgid "Response"
