@@ -266,13 +266,20 @@ void mp_connect::lists_init()
 	player_colors_.push_back(string_table["purple"]);
 }
 
-void mp_connect::add_player(std::string name)
+void mp_connect::add_player(const std::string& name)
 {
 	player_types_.push_back(name);
 
 	for(size_t n = 0; n != combos_type_.size(); ++n) {
 		combos_type_[n].set_items(player_types_);
 	}
+}
+
+void mp_connect::remove_player(const std::string& name)
+{
+	const std::vector<std::string>::iterator itor = std::find(player_types_.begin(),player_types_.end(),name);
+	if(itor != player_types_.end())
+		player_types_.erase(itor);
 }
 
 void mp_connect::gui_init()
@@ -458,7 +465,8 @@ int mp_connect::gui_do()
 
 			//Player type
 			//Don't let user change this if a player is sitting
-			if(combos_type_[n].selected() < 4) {
+			combos_type_[n].enable(combos_type_[n].selected() < 4);
+
 			int old_select = combos_type_[n].selected();
 			if(combos_type_[n].process(mousex, mousey, left_button)) {
 				if(combos_type_[n].selected() == 0) {
@@ -491,42 +499,30 @@ int mp_connect::gui_do()
 				}
 				network::send_data(*level_);
 			}
-			}
 
 			//Player race
-			if(!save_) {
-				if(combos_race_[n].process(mousex, mousey, left_button)) {
-					const string_map& values = 
-						possible_sides[combos_race_[n].selected()]->values;
-					for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
-						side[i->first] = i->second;
-					}
-					network::send_data(*level_);
+			combos_race_[n].enable(!save_);
+			combos_team_[n].enable(!save_);
+			combos_color_[n].enable(!save_);
+			
+			if(combos_race_[n].process(mousex, mousey, left_button)) {
+				const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
+				for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
+					side[i->first] = i->second;
 				}
-			} else {
-				combos_race_[n].draw();
+				network::send_data(*level_);
 			}
 
 			//Player team
-			if(!save_) {
-				if(combos_team_[n].process(mousex, mousey, left_button)) {
-					std::stringstream str;
-					str << (combos_team_[n].selected()+1);
-					side["team_name"] = str.str();
-					network::send_data(*level_);
-				}
-			} else {
-				combos_team_[n].draw();
+			if(combos_team_[n].process(mousex, mousey, left_button)) {
+				std::stringstream str;
+				str << (combos_team_[n].selected()+1);
+				side["team_name"] = str.str();
+				network::send_data(*level_);
 			}
 
-			//Player color
-			if(!save_) {
-				if(combos_color_[n].process(mousex, mousey, left_button)) {
-
-					network::send_data(*level_);
-				}
-			} else {
-				combos_color_[n].draw();
+			if(combos_color_[n].process(mousex, mousey, left_button)) {
+				network::send_data(*level_);
 			}
 
 			if(!save_){
@@ -561,7 +557,8 @@ int mp_connect::gui_do()
 			return status_;
 		}
 
-		if(full_ == true) {
+		launch_.enable(full_);
+
 		if(launch_.process(mousex,mousey,left_button)) {
 			//Tell everyone to start
 			config cfg;
@@ -592,9 +589,6 @@ int mp_connect::gui_do()
 			status_ = 0;
 			return status_;
 		}
-		} else {
-			launch_.draw();
-		}
 
 		gui_update();
 		update_positions();
@@ -615,8 +609,7 @@ void mp_connect::update_positions()
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
-		if((**sd)["controller"] == "network" &&
-		   (**sd)["description"] == "") {
+		if((**sd)["taken"] != "yes") {
 			positions_[*sd] = 0;
 		}
 	}
@@ -666,11 +659,8 @@ void mp_connect::update_network()
 				i->second = 0;
 				i->first->values.erase("taken");
 
-				// Add to combo list
-				std::stringstream str;
-				str << i->first->values["description"];
-				//remove_player(str.str());
-				i->first->values["description"]="";
+				remove_player(i->first->values["description"]);
+				i->first->values["description"] = "";
 			}
 		}
 
@@ -701,17 +691,22 @@ void mp_connect::update_network()
 		if(side_taken >= 0 && side_taken < int(sides.size())) {
 			std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_taken]);
 			if(pos != positions_.end()) {
-				if(!pos->second) {
+				if(!pos->second || pos->second == sock) {
 					std::cerr << "client has taken a valid position\n";
 
+					//does the client already own the side, and is just updating
+					//it, or is it taking a vacant slot?
+					const bool update_only = pos->second == sock;
+
 					//broadcast to everyone the new game status
+					pos->first->values["controller"] = "network";
 					pos->first->values["taken"] = "yes";
 					pos->first->values["description"] = cfg["description"];
 					pos->first->values["name"] = cfg["name"];
 					pos->first->values["type"] = cfg["type"];
 					pos->first->values["recruit"] = cfg["recruit"];
 					pos->first->values["music"] = cfg["music"];
-					positions_[sides[side_taken]] = sock;
+					pos->second = sock;
 					network::send_data(*level_);
 
 					std::cerr << "sent player data\n";
@@ -726,9 +721,7 @@ void mp_connect::update_network()
 					network::send_data(reply,sock);
 
 					// Add to combo list
-					std::stringstream str;
-					str << cfg["description"];
-					add_player(str.str());
+					add_player(cfg["description"]);
 				} else {
 					config response;
 					response.values["failed"] = "yes";

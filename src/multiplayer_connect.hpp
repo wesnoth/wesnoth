@@ -42,7 +42,8 @@ private:
 	void lists_init();
 	void gui_init();
 	void gui_update();
-	void add_player(std::string name);
+	void add_player(const std::string& name);
+	void remove_player(const std::string& name);
 	void update_positions();
 	void update_network();
 	void is_full();

@@ -1087,13 +1087,15 @@ void turn_info::status_table()
 
 	items.push_back(heading.str());
 
+	const team& viewing_team = teams_[gui_.viewing_team()];
+
 	//if the player is under shroud or fog, they don't get to see
-	//details about the other sides, only their own side, and a ??? is
+	//details about the other sides, only their own side, allied sides and a ??? is
 	//shown to demonstrate lack of information about the other sides
-	const bool fog = teams_[gui_.viewing_team()].uses_fog() || teams_[gui_.viewing_team()].uses_shroud();
+	const bool fog = viewing_team.uses_fog() || viewing_team.uses_shroud();
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(fog && gui_.viewing_team() != n)
+		if(fog && viewing_team.is_enemy(n+1))
 			continue;
 
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);

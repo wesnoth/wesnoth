@@ -41,6 +41,7 @@ int sdl_add_ref(SDL_Surface* surface);
 
 typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
 
+SDL_Surface* clone_surface(SDL_Surface* surface);
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h);
 
 void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);

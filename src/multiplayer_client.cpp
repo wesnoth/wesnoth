@@ -126,6 +126,7 @@ public:
 				got_side = false;
 				throw network::error("Side chosen is unavailable");
 			} else if(reply["side_secured"].empty() == false) {
+				std::cerr << "received side secured message\n";
 				got_side = true;
 			} else if(reply.child("start_game")) {
 				std::cerr << "received start_game message\n";

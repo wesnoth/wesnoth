@@ -27,6 +27,14 @@ int sdl_add_ref(SDL_Surface* surface)
 		return 0;
 }
 
+SDL_Surface* clone_surface(SDL_Surface* surface)
+{
+	if(surface == NULL)
+		return NULL;
+
+	return scale_surface(surface,surface->w,surface->h);
+}
+
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 {
 	if(surface == NULL)

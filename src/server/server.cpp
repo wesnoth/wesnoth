@@ -210,8 +210,7 @@ void server::run()
 						continue;
 					}
 
-					const string_map::const_iterator side =
-					                           data.values.find("side");
+					const string_map::const_iterator side = data.values.find("side");
 					if(side != data.values.end()) {
 						const bool res = g->take_side(sock,data);
 						config response;

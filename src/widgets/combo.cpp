@@ -82,4 +82,8 @@ bool combo::process(int x, int y, bool button)
 	return false;
 }
 
+void combo::enable(bool new_val) { button_.enable(new_val); }
+
+bool combo::enabled() const { return button_.enabled(); }
+
 }

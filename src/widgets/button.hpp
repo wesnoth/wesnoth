@@ -53,6 +53,9 @@ public:
 	void backup_background();
 	void hide();
 
+	void enable(bool new_val);
+	bool enabled() const;
+
 private:
 	surface_restorer restorer_;
 	std::string label_;
@@ -67,6 +70,8 @@ private:
 	STATE state_;
 
 	TYPE type_;
+
+	bool enabled_;
 
 	bool hit(int x, int y) const;
 }; //end class button

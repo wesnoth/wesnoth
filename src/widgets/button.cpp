@@ -31,7 +31,7 @@ button::button(display& disp, const std::string& label, button::TYPE type,
                           label_(label), display_(&disp),
 						  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
                           x_(0), y_(0), button_(true),
-                          state_(UNINIT), type_(type)
+                          state_(UNINIT), type_(type), enabled_(true)
 {
 	set_label(label);
 
@@ -113,6 +113,19 @@ void button::hide()
 	restorer_.restore();
 }
 
+void button::enable(bool new_val)
+{
+	if(enabled_ != new_val) {
+		enabled_ = new_val;
+		draw();
+	}
+}
+
+bool button::enabled() const
+{
+	return enabled_;
+}
+
 void button::draw()
 {
 	if(type_ == TYPE_CHECK) {
@@ -145,6 +158,13 @@ void button::draw()
 		textx = x_ + image->w/2 - textRect_.w/2 + offset;
 	} else {
 		textx = x_ + image_w + horizontal_padding/2;
+	}
+
+	scoped_sdl_surface greyed_image(NULL);
+	if(!enabled_) {
+		greyed_image.assign(clone_surface(image));
+		adjust_surface_colour(greyed_image,-50,-50,-50);
+		image = greyed_image;
 	}
 
 	display_->blit_surface(x_,y_,image);
@@ -212,6 +232,15 @@ int button::height() const
 
 bool button::process(int mousex, int mousey, bool button)
 {
+	if(!enabled_) {
+		if(state_ == UNINIT) {
+			state_ = NORMAL;
+			draw();
+		}
+
+		return false;
+	}
+
 	enum MOUSE_STATE { UNCHANGED, UP, DOWN };
 	MOUSE_STATE mouse_state = UNCHANGED;
 	if(button && !button_)

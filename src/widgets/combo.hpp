@@ -38,6 +38,9 @@ public:
 
 	bool process(int mousex, int mousey, bool button);
 
+	void enable(bool new_val);
+	bool enabled() const;
+
 private:
 	std::vector<std::string> items_;
 	int selected_;
