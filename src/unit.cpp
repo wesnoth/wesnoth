@@ -440,7 +440,19 @@ bool unit::matches_filter(const config& cfg) const
 		return false;
 
 	if(side.empty() == false && this->side() != atoi(side.c_str()))
-		return false;
+	  {
+		if(std::find(side.begin(),side.end(),',') != side.end()) {
+			const std::vector<std::string>& vals = config::split(side);
+
+			std::ostringstream s;
+			s << (this->side());
+			if(std::find(vals.begin(),vals.end(),s.str()) == vals.end()) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	  }
 
 	if(weapon.empty() == false) {
 		bool has_weapon = false;
