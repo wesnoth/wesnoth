@@ -294,6 +294,9 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		recorder = replay(state.replay_data);
 
+		//add the replay data under the level data so clients can
+		//receive it
+		level_ptr->children["replay"].clear();
 		level_ptr->add_child("replay") = state.replay_data;
 
 	} else {
@@ -428,6 +431,10 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 			recorder.set_skip(-1);
 		}
 	}
+
+	//any replay data isn't meant to hang around under the level,
+	//it was just there to tell clients about the replay data
+	level.children["replay"].clear();
 
 	std::vector<config*> story;
 	play_level(units_data,cfg,&level,disp.video(),state,story);

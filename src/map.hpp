@@ -81,6 +81,11 @@ public:
 		return loc.valid() && loc.x < x() && loc.y < y();
 	}
 
+	bool empty() const
+	{
+		return x() == 0 || y() == 0;
+	}
+
 	const std::vector<location>& towers() const { return towers_; }
 
 	const terrain_type& get_terrain_info(TERRAIN terrain) const;

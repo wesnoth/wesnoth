@@ -440,13 +440,13 @@ void display::draw(bool update,bool force)
 		sideBarBgDrawn_ = true;
 	}
 
-	if(invalidateAll_) {
+	if(invalidateAll_ && !map_.empty()) {
 		for(int x = -1; x <= map_.x(); ++x)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
 		draw_minimap(mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h);
-	} else {
+	} else if(!map_.empty()) {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
 			draw_tile(it->x,it->y);
@@ -455,7 +455,9 @@ void display::draw(bool update,bool force)
 		invalidated_.clear();
 	}
 
-	draw_sidebar();
+	if(!map_.empty()) {
+		draw_sidebar();
+	}
 
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);

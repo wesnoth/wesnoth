@@ -290,6 +290,8 @@ config* replay::get_next_action()
 	if(pos_ >= commands().size())
 		return NULL;
 
+	std::cerr << "up to replay action " << pos_ << "/" << commands().size() << "\n";
+
 	current_ = commands()[pos_];
 	++pos_;
 	return current_;

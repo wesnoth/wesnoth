@@ -276,10 +276,14 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		}
 	}
 
+	//any replay data is only temporary and should be removed from
+	//the level data in case we want to save the game later
 	config* const replay_data = sides.child("replay");
+	config replay_data_store;
 	if(replay_data != NULL) {
+		replay_data_store = *replay_data;
 		std::cerr << "setting replay\n";
-		recorder = replay(*replay_data);
+		recorder = replay(replay_data_store);
 		if(!recorder.empty()) {
 			const int res = gui::show_dialog(disp,NULL,
 	               "", string_table["replay_game_message"],
@@ -293,6 +297,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				recorder.set_skip(-1);
 			}
 		}
+
+		sides.children["replay"].clear();
 	}
 
 	std::cerr << "starting game\n";

@@ -459,6 +459,13 @@ void config::read(const std::string& data,
 				break;
 		}
 	}
+
+	assert(!element_names.empty());
+	element_names.pop();
+	if(!element_names.empty()) {
+		throw error("Configuration not terminated: no closing tag to '" +
+		            element_names.top() + "'");
+	}
 }
 
 std::string config::write() const

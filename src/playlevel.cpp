@@ -123,6 +123,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	bool replaying = (recorder.empty() == false);
 
+	int turn = 1;
 	std::cout << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false) {
 		try {
@@ -137,6 +138,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 			gui.new_turn();
 			gui.invalidate_game_status();
+
+			std::cerr << "turn: " << turn++ << "\n";
 
 			for(std::vector<team>::iterator team_it = teams.begin();
 			    team_it != teams.end(); ++team_it) {
@@ -155,11 +158,14 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 
 				if(replaying) {
+					std::cerr << "doing replay " << player_number << "\n";
 					replaying = do_replay(gui,map,gameinfo,units,teams,
 					                      player_number,status,state_of_game);
+					std::cerr << "result of replay: " << (replaying?"true":"false") << "\n";
 				}
 
 				if(!replaying && team_it->is_human()) {
+					std::cerr << "is human...\n";
 
 					if(first_time && team_it == teams.begin() &&
 					   level->values["objectives"].empty() == false) {
@@ -215,28 +221,38 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					gui.draw();
 					SDL_Delay(500);
 				} else if(!replaying && team_it->is_network()) {
-					config cfg;
-	
-					turn_info turn_data;
+					std::cerr << "is networked...\n";
 
-					for(;;) {
-						network::connection res = network::receive_data(cfg);
-						if(res && cfg.children["turn"].empty() == false) {
-							break;
+					bool turn_end = false;
+
+					while(!turn_end) {
+
+						config cfg;
+	
+						turn_info turn_data;
+
+						for(;;) {
+							network::connection res =
+							           network::receive_data(cfg);
+							if(res && cfg.children["turn"].empty() == false) {
+								break;
+							}
+
+							turn_slice(gameinfo,state_of_game,status,
+							         terrain_config,level,video,key,gui,map,
+							         teams,player_number,units,turn_data,true);
 						}
 
-						turn_slice(gameinfo,state_of_game,status,terrain_config,
-						          level,video,key,gui,map,teams,player_number,
-						          units,turn_data,true);
+						std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
+						replay replay_obj(*cfg.children["turn"].front());
+						replay_obj.start_replay();
+						turn_end = do_replay(gui,map,gameinfo,units,teams,
+						      player_number,status,state_of_game,&replay_obj);
+
+						recorder.add_config(*cfg.children["turn"].front());
 					}
 
-					std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";
-					replay replay_obj(*cfg.children["turn"].front());
-					replay_obj.start_replay();
-					do_replay(gui,map,gameinfo,units,teams,
-					          player_number,status,state_of_game,&replay_obj);
-
-					recorder.add_config(*cfg.children["turn"].front());
+					std::cerr << "finished networked...\n";
 				}
 
 				for(unit_map::iterator uit = units.begin();
