@@ -670,6 +670,11 @@ void show_video_mode_dialog(display& disp)
 			}
 			if (change_button.process (mousex, mousey, left_button))
 			{	// Lets change this hotkey......
+				SDL_Rect dlgr = {centerx-text_size.w/2-30,
+									centery-text_size.h/2 - 16,
+										text_size.w+60,
+										text_size.h+32};
+				surface_restorer restorer(disp.video().getSurface(),dlgr);										
 			 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
 										centery-text_size.h/2 - 6,
 										text_size.w+40,
@@ -691,6 +696,8 @@ void show_video_mode_dialog(display& disp)
 					};			
 					SDL_PollEvent(&event);
 				} while (event.type!=SDL_KEYUP);
+				restorer.restore();
+				disp.update_display();
 				for (std::vector < hotkey::hotkey_item >::iterator i =
 		     		hotkeys.begin (); i != hotkeys.end (); i++)
 				{ 
