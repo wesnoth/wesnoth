@@ -1,3 +1,25 @@
+CVS HEAD:
+ * new scenarios for 'Heir to the Throne' campaign:
+   * Battle for Wesnoth (final scenario)
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Crossroads
+   * Test of the Clans
+ * updated translations:
+   * french
+   * spanish
+ * new units
+   * Dark Queen
+ * made hosting games work elegantly when wesnothd is running on the same machine
+ * fixed typo causing 'Troll Whelp' being recruitable in 'The Dark Hordes: A New Chance' scenario
+ * fixed alignment and abilities not being shown in panel
+ * fixed hitpoints and experience being not translatable in default theme
+ * fixed escape not working in game lobby
+ * fixed the tools in src/tools not building
+ * added error dialog when a campaign has corrupt WML
+ * added better error messages for machines that cannot bind to local ports 
+ * optimized village placement
+ * squashed many compile warnings
+
 Version 0.8.3:
  * information about encountered terrain added in the help system
  * removed the unit description dialog in favor of in-game help
