@@ -1606,7 +1606,7 @@ config config::get_diff(const config& c) const
 				else {
 					config& new_change = res.add_child("change_child");
 					char buf[50];
-					sprintf(buf,"%d",bi);
+					sprintf(buf,"%lu",bi);
 					new_change.values["index"] = buf;
 					new_change.add_child(*itor,a[ai]->get_diff(*b[bi]));
 
