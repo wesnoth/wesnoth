@@ -205,6 +205,8 @@ void unit::new_level()
 	maxMovement_ = backupMaxMovement_;
 	maxExperience_ = backupMaxExperience_;
 
+	role_ = "";
+
 	//reapply all permanent modifications
 	apply_modifications();
 

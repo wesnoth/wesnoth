@@ -409,9 +409,8 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 			if(u->matches_filter(**ir)) {
 				recruit_unit(*game_map,1,*units,*u,gamemap::location(),
 				             screen,false);
-				u = avail.erase(u);
-				if(u == avail.end())
-					break;
+				avail.erase(u);
+				break;
 			}
 		}
 	}
