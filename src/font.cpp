@@ -681,7 +681,6 @@ int floating_label::xpos(size_t width) const
 SDL_Surface* floating_label::create_surface()
 {
 	if(surf_ == NULL) {
-		std::cerr << "creating surface...\n";
 
 		const std::vector<std::string> lines = config::split(text_,'\n');
 		std::vector<shared_sdl_surface> surfaces;
@@ -728,7 +727,6 @@ SDL_Surface* floating_label::create_surface()
 
 		//if the surface has to be created onto some kind of background, then do that here
 		if(bgalpha_ != 0) {
-			std::cerr << "creating bg...\n";
 			shared_sdl_surface tmp(create_compatible_surface(surf_,surf_->w+border_*2,surf_->h+border_*2));
 			if(tmp == NULL) {
 				return NULL;
@@ -783,9 +781,7 @@ void floating_label::draw(SDL_Surface* screen)
 		SDL_BlitSurface(foreground_,NULL,screen,&rect);
 	}
 
-	std::cerr << "update\n";
 	update_rect(rect);
-	std::cerr << "done\n";
 }
 
 void floating_label::undraw(SDL_Surface* screen)
@@ -794,15 +790,11 @@ void floating_label::undraw(SDL_Surface* screen)
 		return;
 	}
 
-	std::cerr << "undraw....\n";
-
 	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 
 	update_rect(rect);
-
-	std::cerr << "done undraw\n";
 
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
