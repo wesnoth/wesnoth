@@ -401,12 +401,13 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	for(int i = 0; i != num_moves; ++i) {
 		events::pump();
 
+		scroll(xmove/num_moves,ymove/num_moves);
+
 		//accelerate scroll rate if either shift key is held down
 		if((i%4) != 0 && i != num_moves-1 && turbo()) {
 			continue;
 		}
 
-		scroll(xmove/num_moves,ymove/num_moves);
 		draw();
 	}
 
