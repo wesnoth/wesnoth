@@ -723,11 +723,11 @@ void unit_preview_pane::process_event()
 {
 	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(units_->size())) {
 
-		show_unit_description(disp(),*map_,(*units_)[index_]);
+		show_unit_description(disp(), (*units_)[index_]);
 	}
 }
 
-void show_unit_description(display& disp, const gamemap& map, const unit& u)
+void show_unit_description(display& disp, const unit& u)
 {
 	help::show_help(disp,"unit_" + u.type().id());
 }

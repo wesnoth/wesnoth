@@ -86,7 +86,7 @@ private:
 	bool weapons_;
 };
 
-void show_unit_description(display& disp, const gamemap& map, const unit& u);
+void show_unit_description(display& disp, const unit& u);
 
 
 class campaign_preview_pane : public gui::preview_pane

@@ -1334,7 +1334,7 @@ void turn_info::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
 	if(un != units_.end()) {
-		dialogs::show_unit_description(gui_,map_,un->second);
+		dialogs::show_unit_description(gui_, un->second);
 	}
 }
 
