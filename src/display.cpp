@@ -316,7 +316,9 @@ void display::default_zoom()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 {
-	if(update_locked() || fogged(x,y))
+// allow to scroll to fogged tiles
+//	if(update_locked() || fogged(x,y))
+	if(update_locked())
 		return;
 
 	if(map_.on_board(gamemap::location(x,y)) == false)
