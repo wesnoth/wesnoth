@@ -803,7 +803,7 @@ TITLE_RESULT show_title(display& screen)
 
 		events::pump();
 
-		SDL_Delay(20);
+		SDL_Delay(50);
 	}
 
 	return QUIT_GAME;

@@ -597,7 +597,7 @@ void show_preferences_dialog(display& disp)
 		
 		disp.update_display();
 
-		SDL_Delay(10);
+		SDL_Delay(50);
 		events::pump();
 	}
 }
