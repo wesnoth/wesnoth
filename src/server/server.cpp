@@ -1,4 +1,5 @@
 #include "../config.hpp"
+#include "../game_config.hpp"
 #include "../network.hpp"
 
 #include "SDL.h"
@@ -8,6 +9,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <map>
 #include <sstream>
 #include <vector>
 
@@ -16,10 +18,17 @@ int main()
 	const network::manager net_manager;
 	const network::server_manager server;
 
+	config login_response;
+	login.children["mustlogin"].push_back(new config());
+	login_response["version"] = game_config::version;
+
 	config initial_response;
 	initial_response.children["gamelist"].push_back(new config());
 	config& gamelist = *initial_response.children["gamelist"].back();
 
+	std::map<network::connection,player> players;
+
+	game not_logged_in;
 	game lobby_players;
 	std::vector<game> games;
 
@@ -27,13 +36,18 @@ int main()
 		try {
 			network::connection sock = network::accept_connection();
 			if(sock) {
-				network::send_data(initial_response,sock);
-				lobby_players.add_player(sock);
+				network::send_data(login_response,sock);
+				not_logged_in.add_player(sock);
 			}
 
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
-				if(lobby_players.is_member(sock)) {
+				if(not_logged_in.is_member(sock)) {
+					network::send_data(initial_response,sock);
+					not_logged_in.remove_player(sock);
+					lobby_players.add_player(sock);
+					
+				} else if(lobby_players.is_member(sock)) {
 					const config* const create_game = data.child("create_game");
 					if(create_game != NULL) {
 

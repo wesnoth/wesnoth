@@ -12,6 +12,7 @@
 */
 #include "textbox.hpp"
 #include "../font.hpp"
+#include "../show_dialog.hpp"
 #include "SDL.h"
 
 #include <algorithm>
@@ -24,9 +25,7 @@ const int font_size = 16;
 textbox::textbox(display& disp, int width, const std::string& text)
            : disp_(disp), text_(text), firstOnScreen_(0),
              cursor_(text.size()), height_(-1), width_(width),
-             buffer_(NULL), x_(-1), y_(-1),
-             lastLArrow_(false), lastRArrow_(false),
-             lastDelete_(false), lastBackspace_(false)
+             buffer_(NULL), x_(-1), y_(-1), focus_(true)
 {
 	std::fill(previousKeyState_,
 	          previousKeyState_+CHAR_LENGTH,true);
@@ -75,6 +74,9 @@ void textbox::draw() const
 		SDL_BlitSurface(buffer_,NULL,disp_.video().getSurface(),&rect);
 	}
 
+	gui::draw_solid_tinted_rectangle(x_,y_,width(),height(),0,0,0,
+	                          focus_ ? 0.2 : 0.4, disp_.video().getSurface());
+
 	if(cursor_ == 0)
 		draw_cursor(0);
 
@@ -107,7 +109,7 @@ void textbox::draw() const
 
 void textbox::handle_event(const SDL_Event& event)
 {
-	if(event.type != SDL_KEYDOWN)
+	if(event.type != SDL_KEYDOWN || !focus_)
 		return;
 
 	const SDL_keysym& key
@@ -168,6 +170,11 @@ void textbox::set_location(int x, int y)
 	portion.w = width();
 	portion.h = height();
 	buffer_.assign(get_surface_portion(disp_.video().getSurface(),portion));
+}
+
+void textbox::set_focus(bool new_focus)
+{
+	focus_ = new_focus;
 }
 
 }

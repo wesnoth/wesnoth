@@ -40,7 +40,7 @@ class textbox : public events::handler
 	CKey key_;
 	bool previousKeyState_[CHAR_LENGTH];
 
-	bool lastLArrow_, lastRArrow_, lastDelete_, lastBackspace_;
+	bool focus_;
 
 	void handle_event(const SDL_Event& event);
 
@@ -57,6 +57,8 @@ public:
 	void process();
 
 	void set_location(int x, int y);
+
+	void set_focus(bool new_focus);
 };
 
 }
