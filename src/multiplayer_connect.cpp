@@ -644,9 +644,12 @@ lobby::RESULT mp_connect::process()
 			case 4:
 				combos_type_[n].set_selected(0);
 			case 0:
-			default:
 				side["controller"] = "network";
 				side["description"] = "";
+				break;
+			default:
+				// Do nothing
+				;
 			}
 
 			level_changed = true;
