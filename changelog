@@ -1,4 +1,4 @@
-0.8.11:
+Version 0.8.11:
  * new translation:
   * British English
  * updated translations:
@@ -10,7 +10,7 @@
   * Latin
   * Slovenian
   * Swedish
- * In language-selection dialog, consistently use native name for
+ * in language-selection dialog, consistently use native name for
    all languages, with the (hopefully) official latin transcription
    for those that cannot be displayed in the default font (russian,
    bulgarian, greek)
@@ -30,6 +30,7 @@
  * use fixed-point arithmetics in critical functions, so that wesnoth
    can reasonably run on an FPU-less machine (eg. ipaq PDA)
  * fixed the width of 'HP' and 'XP' in the right side panel
+ * fixed the AI not going through the no-ZoC of lv0 units when it should have
  * obsoleted all instances of the old 'Mermen' & 'Naga' unit lines
  * updated maps for: 'Northern Winter' & 'Mountain Pass' 
 
