@@ -68,6 +68,9 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    int x, int y, SDL_Surface* bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
 
+//function which returns the size of text if it were to be drawn.
+SDL_Rect text_area(const std::string& text, int size);
+
 // Returns a SDL surface containing only the text rendered in a given colour.
 SDL_Surface* get_rendered_text(const std::string& str, int size,      
 			       const SDL_Color& colour);

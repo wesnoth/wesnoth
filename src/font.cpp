@@ -337,6 +337,12 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips);
 }
 
+SDL_Rect text_area(const std::string& text, int size)
+{
+	const SDL_Rect area = {0,0,10000,10000};
+	return draw_text(NULL,area,size,font::NORMAL_COLOUR,text,0,0);
+}
+
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& txt,
                    int x, int y, SDL_Surface* bg, bool use_tooltips,

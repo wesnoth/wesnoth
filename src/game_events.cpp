@@ -1072,6 +1072,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
+	else if(cmd == "redraw") {
+		screen->invalidate_all();
+		screen->draw(true);
+	}
+
 	std::cerr << "done handling command...\n";
 
 	return rval;
