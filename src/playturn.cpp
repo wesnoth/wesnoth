@@ -949,11 +949,11 @@ gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& 
 
 		if(current_paths_.routes.count(adj[n])) {
 			static const size_t NDIRECTIONS = gamemap::location::NDIRECTIONS;
-			int difference = std::abs(int(preferred - n));
+			int difference = abs(int(preferred - n));
 			if(difference > NDIRECTIONS/2) {
 				difference = NDIRECTIONS - difference;
 			}
-			int second_difference = std::abs(int(second_preferred - n));
+			int second_difference = abs(int(second_preferred - n));
 			if(second_difference > NDIRECTIONS/2) {
 				second_difference = NDIRECTIONS - second_difference;
 			}
@@ -2450,6 +2450,8 @@ void turn_info::do_command(const std::string& str)
 		game_config::ignore_replay_errors = (data != "off") ? true : false;
 	} else if(cmd == "n" && game_config::debug) {
 		throw end_level_exception(VICTORY);
+	} else if(cmd == "debug" && network::nconnections() == 0) {
+		game_config::debug = true;
 	} else if(game_config::debug && cmd == "unit") {
 		const unit_map::iterator i = current_unit();
 		if(i != units_.end()) {
