@@ -1,0 +1,38 @@
+#!/bin/sh
+set -e
+
+[ $# = 2 ] || { echo >&2 "$0: wrong number of arguments"; exit 1; }
+
+src=$1
+dst=$2
+
+dirs_=
+dirs_music=music
+dirs_sound=sounds
+dirs_httt='Heir_To_The_Throne*'
+dirs_ei='Eastern_Invasion*'
+dirs_sotbe='Son_Of_The_Black_Eye*'
+dirs_tdh='The_Dark_Hordes*'
+dirs_trow='The_Rise_of_Wesnoth*'
+dirs_devel='tools wmlxgettext'
+dirs_editor='editor*'
+dirs_tutorial='tutorial Tutorial'
+dirs_mp=multiplayer
+dirs_locales=translations
+dirs_junk='scenario-test.cfg convert.pl README man'
+
+for p in music sound httt ei sotbe tdh trow devel editor tutorial mp locales junk
+do
+    rm -rf $dst/wesnoth-$p
+    eval dirs=\${dirs_$p}
+    findexpr=-false
+    for d in $dirs
+    do
+	findexpr="$findexpr -o -name $d"
+    done
+    for d in $(cd $src && find $findexpr)
+    do
+	mkdir -p $dst/wesnoth-$p/$(dirname $d)
+	mv $src/$d $dst/wesnoth-$p/$(dirname $d)
+    done
+done
