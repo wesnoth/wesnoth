@@ -63,8 +63,36 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    int x, int y, SDL_Surface* bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
 
+
+  
 bool is_format_char(char c);
 
+  ///
+  /// Determine the width of a line of text given a certain font size.
+  /// The font type used is the default wesnoth font type.
+  ///
+  int line_width(const std::string line, int font_size);
+  
+  ///
+  /// If the text exceedes the specified max width, wrap it one a word basis.
+  /// If the is not possible, e.g. the word is too big to fit, wrap it on a
+  /// char basis.
+  ///
+  std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width);
+
+  ///
+  /// Draw text on the screen. This method makes sure that the text
+  /// fits within a given maximum width. If a line exceedes this width it
+  /// will be wrapped on a word basis if possible, otherwise on a char
+  /// basis. This method is otherwise similar to the draw_text method,
+  /// but it doesn't support special markup or tooltips.
+  ///
+  /// @return a bounding rectangle of the text.
+  /// 
+  SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
+			     const SDL_Color& colour, const std::string& text,
+			     int x, int y, int max_width, SDL_Surface* bg = NULL);
+  
 }
 
 #endif
