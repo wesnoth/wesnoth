@@ -43,7 +43,7 @@ language_def known_languages[] = {
 	language_def("eu_ES", "Euskera"),
 	language_def("fr_FR", "Français"),
 	language_def("el_GR", "Ελληνικά (Ellinika)"),
-	language_def("hu_HU", "Hungarian"),
+	language_def("hu_HU", "Magyar"),
 	language_def("it_IT", "Italiano"),
 	language_def("la_IT", "Latina"),
 	language_def("nl_NL", "Nederlands"),
