@@ -6,12 +6,12 @@
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth Latin 0.0.1\n"
+"Project-Id-Version: Wesnoth Latin 0.8.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-21 00:15+0100\n"
-"PO-Revision-Date: 2005-01-17 21:27+0100\n"
+"PO-Revision-Date: 2005-01-21 09:01+0100\n"
 "Last-Translator: MPolo <mpolon7@netscape.net>\n"
-"Language-Team: Latin <en@li.org>\n"
+"Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -841,9 +841,8 @@ msgstr ""
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:673
-#, fuzzy
 msgid "Random"
-msgstr "Charta fortituita"
+msgstr "Fortituita"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
@@ -863,18 +862,16 @@ msgid "Undead"
 msgstr "Inmortui"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Societas Knalgensis"
+msgstr "Societas Knalgensis"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Concursor Draculorum"
+msgstr "Draculi"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
-msgstr "Classicus"
+msgstr "Classice"
 
 #: data/multiplayer.cfg:119 data/translations/english.cfg:127
 msgid "Humans"
@@ -889,13 +886,12 @@ msgid "Orcs"
 msgstr "Orci"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Castellum nanorum"
+msgstr "Nani"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
-msgstr ""
+msgstr "Lacerta"
 
 #: data/multiplayer.cfg:211
 msgid "Age of Heroes"
@@ -906,14 +902,12 @@ msgid "Great War"
 msgstr "Bellum Magnum"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Magus Lumenis"
+msgstr "Societas Luminis"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Societas Obscuritatis"
+msgstr "Societas Obscuritatis"
 
 #: data/scenario-test.cfg:38
 msgid ""
@@ -2486,7 +2480,6 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2496,11 +2489,11 @@ msgid ""
 "to this unit."
 msgstr ""
 "Insidiae:\n"
-"Unitas haec se in silvis occultare potest et ab hostibus suis invisa manet.\n"
+"Unitas haec se noctu invisibis fit.\n"
 "\n"
-"Unitates hostium unitatem hanc non videre aut oppugnare postest, si in "
-"silvis est, nisi in loco ordine statim post oppugnationem suam aut si "
-"unitates hostium apud unitatum hanc adsunt."
+"Unitates hostium unitatem hanc noctu non videre aut oppugnare postest, nisi "
+"in tractu statim post oppugnationem suam aut si unitates hostium apud "
+"unitatum hanc adsunt."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
@@ -2562,7 +2555,6 @@ msgid "teleport"
 msgstr "ianuae magicae"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -2570,7 +2562,7 @@ msgid ""
 msgstr ""
 "In tergum percutere:\n"
 "Haec oppugnatio damnum duplice facit, si unitas amica in latere adverso "
-"scopi adest."
+"scopi adest. (Non movetur cum unitatibus sociis.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3039,9 +3031,8 @@ msgid "poison"
 msgstr "venenum"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
-msgstr "Sicarius"
+msgstr "Sicaria"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -3358,7 +3349,7 @@ msgstr "lentifacere"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
-msgstr "Chocossa"
+msgstr "Chocobossa"
 
 #: data/units/Chocobone.cfg:17
 msgid ""
@@ -3366,8 +3357,8 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
-"Chocossae vehuntur ossibus avium magnorum ut struthiocamelorum, qui olim ut "
-"equibus populus vetustus amissus utitur. Celerius se movent quam plurimi "
+"Chocobossae vehuntur ossibus avium magnorum ut struthiocamelorum, qui olim "
+"ut equibus populus vetustus amissus utitur. Celerius se movent quam plurimi "
 "equites."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
@@ -3758,7 +3749,7 @@ msgstr ""
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
-msgstr ""
+msgstr "Gladiator Draculorum"
 
 #: data/units/Drake_Gladiator.cfg:19
 msgid ""
@@ -3768,10 +3759,15 @@ msgid ""
 "thick brass armour and they arm themselves with as many emerald edged "
 "weapons as possible to fend off whatever opponents may await them."
 msgstr ""
+"Habentes vestigia alarum et carentes facultate utendi igne interno magno ut "
+"telo, Gladiatores Draculorum incommodatos esse nonnulli censere possint, sed "
+"hi falliatur. Corium nudum armatura orichalcea gravia Gladiatores protegunt "
+"et tot tela cum aciebus smaragdeis gerunt quam possibilia. Ita adversarios "
+"cunctos qui eos expectant arcent."
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Labens Draculorum"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -3782,14 +3778,19 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"Labentes Draculorum tam pauca arma quam possibilia gerunt, ut celeriter "
+"hostes effugere possunt, cum ex cavernis exeunt. Draculi hi capeces sunt "
+"pugnatores, habentes ignem internum ut multi propinqui. Celeritate graviter "
+"uti possunt Labentes, ad adversarios adfligendos in obsequium. Labentes "
+"optimi in ordine Draculorum Caeli qui altissimi volant accepti possunt."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
-msgstr ""
+msgstr "adfligere"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Infernus Draculorum"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -3799,14 +3800,19 @@ msgid ""
 "Infernos have utterly mastered their internal fire, and rival their "
 "predecessors the Dragons in their ability to use it."
 msgstr ""
+"Deflagrationes volantes Inferni Draculorum armaturam auream permagnam "
+"gerunt, quae quasi impenetrabilis est. Hi draculi quasi immunes sunt igni, "
+"quia accomodati sunt habitantes in conis montium ex quorum verticibus "
+"flammae erumpunt. Inferni Draculorum ignem internum omnino dominantur et "
+"facultas eorum quasi tanta est quam maiores eorum Dracones."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
-msgstr ""
+msgstr "Draculus Caeli"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Caeditor Draculorum"
 
 #: data/units/Drake_Slasher.cfg:18
 msgid ""
@@ -3816,27 +3822,34 @@ msgid ""
 "fabricate weapons with emerald edges, and wear heavy armour. The Slashers' "
 "weapon of choice is the halberd, which they use to great effect."
 msgstr ""
+"Habentes vestigia alarum et carentes facultate utendi igne interno magno ut "
+"telo, hos Draculos incommodatos esse nonnulli censere possint, sed hi "
+"falliatur. In compensatione facti sunt artifices magni, qui tela cum aciebus "
+"smaragdeis et arma gravia gerunt. Caeditores Draculorum bipennem alteris "
+"telis anteponunt et vi magna eo utuntur."
 
 #: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:26
 #: data/units/Halbardier.cfg:26 data/units/Halbardier.cfg:44
 #: data/units/Javelineer.cfg:24 data/units/Pikeman.cfg:27
 #: data/units/Spearman.cfg:25
 msgid "firststrike"
-msgstr ""
+msgstr "ictus primus"
 
 #: data/units/Drake_Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Pugnator Draculorum"
 
 #: data/units/Drake_Warrior.cfg:18
 msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
+"Pugnatores Draculorum gladios perite gerunt et facultates spirandi ignis "
+"maiorum habent."
 
 #: data/units/Draug.cfg:3
 msgid "Draug"
-msgstr ""
+msgstr "Draugrus"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -3847,6 +3860,11 @@ msgid ""
 "bought only by strength of arms.  The memory of their enemy, and the purpose "
 "of their struggle have long faded into oblivion."
 msgstr ""
+"Reliquiae ingentes olim bellatorum fabulosorum, Draugri corda adversariorum "
+"terrent. Non moventur malevolentia sed semper in somno inmortuitatis "
+"devinciuntur, perambulantes proelia memoriae suae et propter liberationem "
+"desperate pugnant, propter pacem quae tantum vi armis fertur. Memoria "
+"hostium et causa pugnae eorum iampridem in oblivione deflorescuntur."
 
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:24 data/units/Skeleton.cfg:24
@@ -3855,7 +3873,7 @@ msgstr "securis"
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
-msgstr ""
+msgstr "Certatior"
 
 #: data/units/Duelist.cfg:17
 msgid ""
@@ -3863,10 +3881,13 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
 msgstr ""
+"Certatiores periti sunt arte gladiatorio. Peritia cum gladio leve eis "
+"permittit oppugnare et eludere una manu, gerentes scorpiones in altero quo "
+"hostes longinquos coniciunt."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
-msgstr ""
+msgstr "gladius levis"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -3893,7 +3914,7 @@ msgstr "saevus"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Custos Draconis Nanorum"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
 msgid ""
@@ -3901,15 +3922,17 @@ msgid ""
 "using fire from what are called dragonstaffs. They are the chief possessors "
 "of arcane Dwarvish technology."
 msgstr ""
+"Custodes urbes magnas nanorum coniciunt igne ex eo quod nominatur virga "
+"draconis. Domini praecipui sunt artium arcanorum Nanorum."
 
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
-msgstr ""
+msgstr "virga draconis"
 
 #: data/units/Dwarvish_Fighter.cfg:3
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "Pugnator Nanorum"
 
 #: data/units/Dwarvish_Fighter.cfg:19
 msgid ""
@@ -3918,15 +3941,18 @@ msgid ""
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
+"Pugnatores Nanorum secures et malleos validos gerunt, qui eos adversarios "
+"metutos in concursu efficiunt. Egregii sunt in montibus aut sub terra. Non "
+"rapidi sunt, sed potentia et patientia valde compensat."
 
 #: data/units/Dwarvish_Fighter.cfg:39 data/units/Dwarvish_Lord.cfg:44
 #: data/units/Dwarvish_Steelclad.cfg:45
 msgid "hammer"
-msgstr ""
+msgstr "malleus"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Custos Nanorum"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -3934,10 +3960,13 @@ msgid ""
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
 "alot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
+"Nani mollissimi nonnumquam in exercitu Nanorum Custodes ingreduntur. Lenti "
+"et oppugnatione forti carentes, custodiunt cornua exercitus, damnum magnum "
+"ferrentes et hastas graves in hostes iactantes."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "Dominus Nanorum"
 
 #: data/units/Dwarvish_Lord.cfg:24
 msgid ""
@@ -3945,14 +3974,17 @@ msgid ""
 "axe is unmatched, and they are able to hit even enemies that are far away. "
 "Their fine armor is made of the strong alloys crafted by their kin."
 msgstr ""
+"Domini Nanorum reges sunt sub montibus. Pertitia cum bipenne singularis est, "
+"atque hostes qui procul absunt pulsare possunt. Arma eorum speciosa facta "
+"sunt ex admixtos fortibus quae propinqui fabricati sunt."
 
 #: data/units/Dwarvish_Lord.cfg:60
 msgid "hatchet"
-msgstr ""
+msgstr "dolabra"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "Dominus Litterarum Nanorum"
 
 #: data/units/Dwarvish_Runemaster.cfg:16
 msgid ""
@@ -3961,28 +3993,34 @@ msgid ""
 "bolts at their enemies by striking the ground with their marvelously crafted "
 "and much beloved hammers, which shimmer with magical energy."
 msgstr ""
+"Domini Litterarum Nanorum pugnatores sunt formidolosi et robusti qui "
+"potentias arcanas litterarum Nanorum infrenaverunt. Fulgores in hostes "
+"mittere possunt cum terram percutunt malleis mire factis et delectis qui "
+"energia magica micant."
 
 #: data/units/Dwarvish_Runemaster.cfg:20
 msgid "runic hammer"
-msgstr ""
+msgstr "malleum litterarum"
 
 #: data/units/Dwarvish_Runemaster.cfg:37
 msgid "Lightning bolt"
-msgstr ""
+msgstr "Fulgor"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Vigil Nanorum"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Vigil, cum scuto ingente et magna virtu, non dedere vult sub etiam "
+"oppugnationibus fortissimis hostium."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Nanus Robustus"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -3990,20 +4028,25 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"Robusti post multos annos in proelio scuta nova et arma fortia ex relictis "
+"ab hostibus fabricati sunt. Etsi lenti sunt, ob mollitiam et fortitudinem "
+"metuti sunt."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "Chalybi Vestitus Nanorum"
 
 #: data/units/Dwarvish_Steelclad.cfg:24
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
+"Pugnatores Chalybi Vestiti Nanorum peritiores loricas hamatas et segmentatas "
+"gerunt, quo recte praeclari sunt."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Tonator Nanorum"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
 msgid ""
@@ -4012,14 +4055,18 @@ msgid ""
 "are slower, cruder and noisier than the elegant and swift elvish bows, but "
 "their impact is unmatched."
 msgstr ""
+"Tonatores Nanorum subsidium necessarium praebent fortibus sed lentis "
+"concursores exercituum Nanorum. Tela eorum arcana lentiora, crudiores et "
+"clamosiores sunt arcibus elegantibus et rapidis dryadalibus, sed incussus "
+"eorum singularis est."
 
 #: data/units/Dwarvish_Thunderer.cfg:40
 msgid "thunderstick"
-msgstr ""
+msgstr "fustis tonitrus"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Custos Tonitrus Nanorum"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
 msgid ""
@@ -4028,14 +4075,17 @@ msgid ""
 "they are no faster than the more common Thunderers, their attack is much "
 "more deadly."
 msgstr ""
+"Illustres Custodes Tonitrus Nanorum tela arcana et metuta gerunt quae fabri "
+"telorum Nanorum periti artium arcanorum fabricantur. Etsi non rapidiores "
+"sunt quam Tonitores plus crebri, incussus eorum funestior est."
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
-msgstr ""
+msgstr "fustis draconis"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Nanus Saevus"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
@@ -4057,6 +4107,8 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
+"Olim magni, Magi Senes potestatem suam post annos fatigosos proelii paulum "
+"minuere viderunt. Metuti etiam in acie ob fulgoribus potentibus eorum manent."
 
 #: data/units/Elder_Mage.cfg:38
 msgid "lightning"
@@ -4064,7 +4116,7 @@ msgstr "fulgor"
 
 #: data/units/Elder_Wose.cfg:3
 msgid "Elder Wose"
-msgstr "Vosium senex"
+msgstr "Vosium Senex"
 
 #: data/units/Elder_Wose.cfg:16
 msgid ""
@@ -4075,6 +4127,12 @@ msgid ""
 "still quite flammable. Drawing energy from nature around them, Elder Woses "
 "can quickly heal themselves in the face of tremendous injuries."
 msgstr ""
+"Vosia Sena magna et alta cresceverunt. Eminentes super plurimos hostes ictos "
+"contundentes intendere possunt dum oppugnationes hostis resistunt. "
+"Spectaculum formidolosum est unum adspicere dum ad te ex silvis incedit. "
+"Lenta etiam sunt et rigida, quasi immunia sagittarum sed plane flammabilia. "
+"Energia ex natura circa ea ducunt, ergo Vosia Sena se rapide curare possunt, "
+"quamquam iniuriae ingentes sunt."
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -4450,7 +4508,7 @@ msgstr "araneum"
 
 #: data/units/Fencer.cfg:3
 msgid "Fencer"
-msgstr ""
+msgstr "Lanista"
 
 #: data/units/Fencer.cfg:17
 msgid ""
@@ -4459,10 +4517,14 @@ msgid ""
 "their other hand, they can also deftly parry all kinds of attacks. Fencers "
 "are skirmishers, and so can move right past enemy units."
 msgstr ""
+"Lanistae docti sunt artibus gladiatoriis. Etsi gladius eorum levis est, eo "
+"peritia exitiosa et celeritate uti possunt. Sicam in manu laeva gerunt ut "
+"omne genus oppugnationum habiliter eludant. Lanistae excursores sunt et ea "
+"re ultra hostes se movere possunt."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
-msgstr ""
+msgstr "Pugnator"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
 msgid ""
@@ -4470,6 +4532,8 @@ msgid ""
 "from enemies. However they have the potential to become great warriors one "
 "day."
 msgstr ""
+"Juvenes et audaces, Pugnatores gladio pugnant et vulnerabiles sunt hostium "
+"oppugnationibus. Sed potentiam habent ut bellatores magni olim fiant."
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
@@ -4483,6 +4547,10 @@ msgid ""
 "its tail. Fire Dragons are cunning and cruel, and often take underlings whom "
 "they help lead to victory."
 msgstr ""
+"Vivax et formidolosus Draco Ardens unus ex familia draconum est qui ignem "
+"spirat. Halito igneo bene in proelio uti potest. Morsum quoque ferocem "
+"possedit, et hostes cauda obterere potest. Dracones Ardentes callidi et "
+"crudeles sunt et saepe ministros habent quos ad victoriam ducunt."
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
@@ -4510,6 +4578,8 @@ msgid ""
 "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
 "places and people to rob."
 msgstr ""
+"Capilli lacerati Grassatoribus utunt greges latronum ut exploratoribus qui "
+"loca et homines inveniunt spoliandos."
 
 #: data/units/Footpad.cfg:20 data/units/Footpad.cfg:86 data/units/Thug.cfg:19
 #: data/units/Troll.cfg:20 data/units/Troll_Hero.cfg:20
@@ -4524,13 +4594,12 @@ msgid "sling"
 msgstr "funda"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
-msgstr "Grassator"
+msgstr "Grassatrix"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
-msgstr ""
+msgstr "Navis Veligera"
 
 #: data/units/Galleon.cfg:16
 msgid ""
@@ -4539,10 +4608,14 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
+"Et hominibus qui domi feliciter vivunt tandem necesse est aliquem vecturam "
+"per maria, etsi tantum piscantur aut merces vendunt. Navis Veligera adaptus "
+"est hoc proposito: celer est et mollis, sed non paratus est ad proelium, et "
+"se ad multa opera adaptare potest."
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
-msgstr ""
+msgstr "vacuus"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
@@ -4554,7 +4627,7 @@ msgstr "offendere"
 
 #: data/units/General.cfg:3
 msgid "General"
-msgstr "Imperator"
+msgstr "Legatus"
 
 #: data/units/General.cfg:25
 msgid ""
@@ -4563,22 +4636,30 @@ msgid ""
 "coordinate the attacks of level 1 and 2 units, thereby increasing their "
 "fighting efficiency."
 msgstr ""
+"Duces magni exercituum hominum Imperatores regiones magnas aut magni momenti "
+"protegere debent in regnis humanis. Imperatores oppugnationes unitatum ex "
+"gradu I vel II ordinare possunt, quare virtus eorum pugnae augetur."
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
 msgstr "Larva"
 
 #: data/units/Ghost.cfg:16
+#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
 "freedom of movement and protection from physical attacks, ghosts cannot "
 "easily cross running water."
 msgstr ""
+"Larvae animae sunt bellatorum qui magno cum dolore abhinc saecula mortuae "
+"sunt sine cadavere relicto. Non a corporibus physicis limitati hi inmortui "
+"celeriter ad victimas volare possunt. Etsi ectoplasma eorum res physicas "
+"transire potest, non transit nimis celeriter neque alte."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
-msgstr ""
+msgstr "Pallidus"
 
 #: data/units/Ghoul.cfg:16
 msgid ""
@@ -4586,10 +4667,13 @@ msgid ""
 "awake after their deaths to find that they are trapped in a tortured "
 "existence as Ghouls."
 msgstr ""
+"Nonnumquam fame enecati et voraces qui cadaveres humanos comesse impelluntur "
+"post mortem vigilant et se inveniunt in existentia cruciata inlaqueatos ut "
+"Pallidos."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Repens Humi Ingente"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4597,21 +4681,24 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
+"Repentia Luti Ingentia exstructiones sunt magicae ex humo et aqua, maiora "
+"Repentibus Luti. Oppugnant aspergentes aquam ferventem in hostes aut pugnis "
+"luti."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
-msgstr ""
+msgstr "aqua fervens"
 
 #: data/units/Giant_Mudcrawler.cfg:34 data/units/Skeleton_Archer.cfg:24
 #: data/units/Soulless.cfg:19 data/units/Troll_Rocklobber.cfg:20
 #: data/units/Troll_Whelp.cfg:20 data/units/Walking_Corpse.cfg:19
 #: data/units/Yeti.cfg:33
 msgid "fist"
-msgstr ""
+msgstr "pugnus"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "Nepa Ingens"
 
 #: data/units/Giant_Scorpion.cfg:16
 msgid ""
@@ -4619,18 +4706,21 @@ msgid ""
 "their prey. They are merciless and always hungry, so it is wise not to "
 "approach too close to these oversized arachnids."
 msgstr ""
+"Nepae Ingentes creaturae sunt funestae quibus se occultare expectantes "
+"praedium placet. Inhumani sunt et semper vorace, ergo sapientius est non "
+"appropinquare nimis prope arthropodibus his ingentibus."
 
 #: data/units/Giant_Scorpion.cfg:19
 msgid "sting"
-msgstr ""
+msgstr "aculeus"
 
 #: data/units/Giant_Scorpion.cfg:37
 msgid "pincers"
-msgstr ""
+msgstr "forceps"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Cobalus Infigens"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -4640,39 +4730,47 @@ msgid ""
 "invariably equip themselves with a much larger spear than before, enabling "
 "them to deal the first strike in melee."
 msgstr ""
+"Cobali inclinant compensare imbecillitatem animi generalem, debilitatem et "
+"carentiam telis urbanibus conantes inimicos numeris meris obruere. Qui "
+"superant nescio quomodo tumultum proelii semper se amant hasta multo maiori "
+"quam prius, se permittens ictum primum in concursu infligere."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
-msgstr ""
+msgstr "Lupes Ordinis Cobalorum"
 
 #: data/units/Goblin_Knight.cfg:16
 msgid ""
 "The Goblin Knights are the elite of the Goblin Wolf Riders. They travel with "
 "great speed, yet can inflict substantial damage in battle."
 msgstr ""
+"Lupites Ordinis Cobalorum flos Lupitum sunt. Magna cum velocitate vehunt, "
+"nihilominus damnum grave in proelio infligere possunt."
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "Expilator Cobalorum"
 
 #: data/units/Goblin_Pillager.cfg:16
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. These Goblin "
 "Pillagers cause havoc among their enemies by attacking with torches and nets."
 msgstr ""
+"Nonnulli Cobali lupos adsuefaciunt ad superarent metum ignis. Hi Expilatores "
+"Cobalorum ruinam inter hostes efficiunt, oppugnantes facibus retibusque."
 
 #: data/units/Goblin_Pillager.cfg:19
 msgid "torch"
-msgstr ""
+msgstr "fax"
 
 #: data/units/Goblin_Pillager.cfg:35 data/units/Merman_Entangler.cfg:26
 #: data/units/Merman_Netcaster.cfg:26
 msgid "net"
-msgstr ""
+msgstr "rete"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "Hastatus Cobalorum"
 
 #: data/units/Goblin_Spearman.cfg:17
 msgid ""
@@ -4682,25 +4780,31 @@ msgid ""
 "are well-equipped for a war of attrition. The best Goblin Spearman can look "
 "forward to becoming Goblin Impalers."
 msgstr ""
+"Cobali inclinant compensare imbecillitatem animi generalem, debilitatem et "
+"carentiam telis urbanibus conantes inimicos numeris meris obruere. Quamquam "
+"carent armibus et telibus honestis, hi hastati exiles bene instruuntur bello "
+"attriti. Hastati optimi Cobolorum fiunt Infigentes Cobolorum."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr ""
+msgstr "Optimatus"
 
 #: data/units/Grand_Knight.cfg:16
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
 "the acme of skill with sword and lance."
 msgstr ""
+"Equites potentissimi ex ullo genere, Optimati fastigium peritiae patraverunt "
+"cum gladio lanceaque."
 
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
 msgid "lance"
-msgstr ""
+msgstr "lancea"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Imperator"
 
 #: data/units/Grand_Marshal.cfg:21
 msgid ""
@@ -4710,24 +4814,30 @@ msgid ""
 "facility.  Their presence on the battlefield is of great aid to those "
 "serving beneath them."
 msgstr ""
+"Gradus Imperatoris inter aestimatissimos in exercitu humanitatis est, et qui "
+"eum fert multas probationes ignis superavit, virtutem nonnullum monstrans in "
+"proelio et facultatem rationis belli. Praesentia eorum in acie adiutorium "
+"magnum est illis qui sub eis militant."
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr ""
+msgstr "Magus Magnus"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:97
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
+"Magi Magni hostes formidolosi et terribiles sunt, superantes et Magos "
+"Principes vi."
 
 #: data/units/Great_Mage.cfg:80
 msgid "female^Great Mage"
-msgstr ""
+msgstr "Striga Magna"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
-msgstr ""
+msgstr "Gigas Magnus"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -4735,10 +4845,13 @@ msgid ""
 "ability to regenerate themselves, so that they recover from wounds on their "
 "own, even during battle."
 msgstr ""
+"Gigantes Magni fortia et atrocia sunt monstra quasi humana. Habent "
+"facultatem miram se regenerandi, ut ab iniuriis per se recuperent, et in "
+"proelio."
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "Gryps"
 
 #: data/units/Gryphon.cfg:16
 msgid ""
@@ -4746,10 +4859,13 @@ msgid ""
 "world. Since they are wary of other intelligent races, Gryphons should not "
 "be disturbed without a good reason."
 msgstr ""
+"Dimidia parte leonis, dimidia parte avis, hae creaturae augustae caelos "
+"mundi dominantur. Providi sunt Grypes ante altera genera sapientia et non "
+"perturbandi sunt sine causa gravi."
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Dominus Grypum"
 
 #: data/units/Gryphon_Master.cfg:18
 msgid ""
@@ -4757,10 +4873,13 @@ msgid ""
 "an extension of themselves. This special relation makes the heart of the "
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
+"Domini Grypum diu grype vehitur, donec grypes extensiones sunt personae "
+"suae. Haec relatio praecipua efficit ut qui in terra manere solent horreant, "
+"quia pares fortes hi ubivis oppugnare possunt."
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "Grypes"
 
 #: data/units/Gryphon_Rider.cfg:16
 msgid ""
@@ -4768,10 +4887,12 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"Pauci cum Grypibus fortibus vinculum facere possunt. Qui id facit possunt "
+"Grypites fieri. Ii mundum caeli inveniunt a tergis horum volantium."
 
 #: data/units/Halbardier.cfg:3
 msgid "Halberdier"
-msgstr ""
+msgstr "Bipennatus"
 
 #: data/units/Halbardier.cfg:18
 msgid ""
@@ -4782,24 +4903,31 @@ msgid ""
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
 msgstr ""
+"Milites optimi electi sunt Bipennati. Telum eorum, etsi lentius quam "
+"gladius, vi funsesto percutere potest et ob longitudinem magnam semper primi "
+"iciunt Bipennati in proelio, etiam defendentes. Facultatem magnum habent "
+"Bipennati cum greges longius retinere possunt quam longum est telum, sed in "
+"concursu difficultatem nonnullam inveniunt."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
-msgstr ""
+msgstr "bipennis"
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Pedes Armatus"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
+"Pedites Armati ferro teguntur, et oppugnationes resistunt. Detrimentum "
+"unicum eorum est carentia velocitate."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "Dominus Equorum"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -4807,16 +4935,19 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"Optimus hominum camporum, hi Domini Equorum patrifamilias sunt et verentur "
+"ab omnibus, amicis et hostibus. Gladius eorum inimicos solitos interficere "
+"potest et aspergillum ceteros contundit."
 
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:46
 #: data/units/Mounted_Commander.cfg:46 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
 msgid "morning star"
-msgstr ""
+msgstr "aspergillum"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "Eques"
 
 #: data/units/Horseman.cfg:17
 msgid ""
@@ -4825,20 +4956,27 @@ msgid ""
 "they do double damage, but also receive double damage when struck. Rebels "
 "against Asheviere's tyranny often use Horsemen against her."
 msgstr ""
+"A puero educati ad equitandum ed codicem honoris strictum sequendum, Equites "
+"et rapidi et fortes oppugnatores sunt. Incurrentes in hostes damnum duplice "
+"infligunt, sed quoque accipiunt damnum duplice si percutuntur. Rebelles "
+"contra regnum Asverae saepe Equites contra eam utuntur."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
-msgstr ""
+msgstr "Initiatus"
 
 #: data/units/Initiate.cfg:16
 msgid ""
 "Dabbling in the Death Magic, this young Ha'atel's lust for power has "
 "weakened him to the point where he is too weak to attack in regular combat."
 msgstr ""
+"Leviter attingens Magicam Mortis, libido pontentiae huius adulescentis de "
+"familia Haatelis eum debilitavit donec nimis debilis est ad oppugnandum in "
+"concursu."
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr ""
+msgstr "Contundor Ferreus"
 
 #: data/units/Iron_Mauler.cfg:15
 msgid ""
@@ -4847,11 +4985,13 @@ msgid ""
 "it not for their slow movement and rarity on the battlefield, these mighty "
 "soldiers would control the continent."
 msgstr ""
+"Eminentes super acie ut ingentes ferrei, Contundores Ferrei noti (et metuti) "
+"sunt ob mollitiam incredibilem et ictos saevos mallei. Si non essent lenti "
+"et rari in acie, hi milites fortes continentem imperarent."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Eques Magnus Armatus"
+msgstr "Pilatus"
 
 #: data/units/Javelineer.cfg:16
 msgid ""
@@ -4861,20 +5001,25 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
+"Pilati periti sunt cum baculis acutis quae ii tirones acciperunt. Periculosi "
+"in concursu, et periti sunt iacentes pila, ergo potentes sunt in ambobus "
+"fundis proelii. Quia hastae longae sunt, percutunt primi, etsi defendunt."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
-msgstr ""
+msgstr "Eques Ordinis"
 
 #: data/units/Knight.cfg:17
 msgid ""
 "Knights are skilled in the use of both lance and sword. With the lance, they "
 "charge at enemies, inflicting and receiving double damage."
 msgstr ""
+"Equites Ordinis periti sunt et cum lancea et cum gladio. Lancea incurrunt in "
+"hostes, infligentes et accipientes damnum duplice."
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "Lanceatus"
 
 #: data/units/Lancer.cfg:17
 msgid ""
@@ -4883,6 +5028,10 @@ msgid ""
 "offensive use. While their charges inflict large amounts of damage, they "
 "also expose the Lancers to great risk."
 msgstr ""
+"Lanceati sunt inter acrissimos et metutos equites in omni "
+"Occidiseptentrione. Non armati sunt, ergo equitant celeriter et optimi sunt "
+"uso offensivo. Etsi incurrentes damnum magnum infligere possunt, ita "
+"exponuntur pericula gravi."
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
@@ -4903,7 +5052,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Centurio"
 
 #: data/units/Lieutenant.cfg:21
 msgid ""
@@ -4911,16 +5060,21 @@ msgid ""
 "soldiers, coordinating their attacks and increasing the fighting ability of "
 "those of lower rank around them."
 msgstr ""
+"Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
+"ducunt. Oppugnationes eorum ordinant et facultatem pugnae eorum qui ex "
+"gradibus inferiores augent."
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Sagittarius Maior"
 
 #: data/units/Longbowman.cfg:18
 msgid ""
 "Longbowmen carry the huge specialized bows that they have learned to handle "
 "after years of combat. Their missiles can pierce even armor."
 msgstr ""
+"Sagittarii Maiores arcus longos gerunt, cuius usus per annos proelii "
+"didiscerunt. Tela eorum etiam arma penetrare possunt."
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:78
 msgid "Lord"
@@ -4933,6 +5087,9 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
+"Duces nobiles militum multorum, Domini praecipue fortes sunt in concursu et "
+"periti sunt et cum arcu. Ut Duces, Domini facultates ductus possident et "
+"facultatem pugnae vicinorum ex gradibus inferiores augent."
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
@@ -4945,10 +5102,14 @@ msgid ""
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
+"Magi sunt et debiles et potentes. Se movent lente et non possunt se bene "
+"defendere, sed telis magicis oppugnant, quae semper probabilitatem elevatam "
+"habent damnum infligendi. Quapropter magi adapti sunt ad hostes in agris "
+"difficilibus oppugnandum."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
-msgstr ""
+msgstr "telum magicum"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
@@ -4956,12 +5117,12 @@ msgstr "Striga"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "Magus Lumenis"
+msgstr "Magus Luminis"
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr ""
+msgstr "illuminat,curat"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -5155,9 +5316,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Pugnator Draculorum"
+msgstr "Pugnator Equester"
 
 #: data/units/Mounted_Warrior.cfg:3
 msgid "Mounted Warrior"
@@ -5650,7 +5810,7 @@ msgstr ""
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
-msgstr ""
+msgstr "Veterator"
 
 #: data/units/Rogue.cfg:18 data/units/Rogue.cfg:78
 msgid ""
@@ -5659,11 +5819,14 @@ msgid ""
 "allows them to do double damage if an ally of theirs is on the opposite side "
 "of an enemy they are attacking."
 msgstr ""
+"Veteratores periti sunt pernicitatis et ultra hostem se movere possunt, "
+"quamquam zonae imperii adsunt. Fures optimi et ipsi facultatem in tergum "
+"percutendi habent, quo damnum duplice facent si unitas amica in latere "
+"contrario hostis oppugnati est."
 
 #: data/units/Rogue.cfg:63
-#, fuzzy
 msgid "female^Rogue"
-msgstr "Striga"
+msgstr "Veteratrix"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -5986,9 +6149,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Thief.cfg:40
-#, fuzzy
 msgid "female^Thief"
-msgstr "Striga"
+msgstr "Fur"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -6168,7 +6330,7 @@ msgstr ""
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr ""
+msgstr "Lupes"
 
 #: data/units/Wolf_Rider.cfg:17
 msgid ""
@@ -6177,6 +6339,11 @@ msgid ""
 "as fast scouts for the goblinoid army. Raised in the orcs' dark caverns, "
 "Wolf Riders can brave even the mountains, unlike most other mounted units."
 msgstr ""
+"Minores debilioresque quam orci, cobali exercere lupos magnos didiscerunt ut "
+"eos vehunt, ita creatur turba formidolosa Lupites, qui ut exploratores "
+"rapidi in exercitu cobalorum et orcorum serviunt. Educati in cavernis "
+"obscuris orcorum,Lupites atque montes adire possunt, dissimiles plurimis "
+"equitibus."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -6289,9 +6456,8 @@ msgid "+Basque Translation"
 msgstr "+Reditio vasca"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Reditio vasca"
+msgstr "+Reditio bulgara"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -6336,7 +6502,7 @@ msgstr ""
 #: src/about.cpp:232
 #, fuzzy
 msgid "+Latin Translation"
-msgstr "+Reditio vasca"
+msgstr "+Reditio bulgara"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
@@ -6711,18 +6877,16 @@ msgid "Name"
 msgstr ""
 
 #: src/game.cpp:1048
-#, fuzzy
 msgid "Author"
-msgstr "spinae"
+msgstr "Scriptor"
 
 #: src/game.cpp:1049
 msgid "Downloads"
 msgstr ""
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Size"
-msgstr "Siren"
+msgstr "Magnitudo"
 
 #: src/game.cpp:1069
 msgid "B"
@@ -7133,14 +7297,12 @@ msgid "unlimited"
 msgstr ""
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Pagus"
+msgstr "Aurum Pagi: "
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Experientia et Honores"
+msgstr "Experientia Necessaria: "
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
 msgid "Players: "
