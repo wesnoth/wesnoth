@@ -8,11 +8,11 @@ AC_PREREQ([2.57])
 
 define([WESNOTH_VERSION],[0.8.11+cvs])
 
-dnl define([WESNOTH_DEFAULT_SERVER],[server.wesnoth.org])
-define([WESNOTH_DEFAULT_SERVER],[devsrv.wesnoth.org])
+dnl define([DEFAULT_SERVER],[server.wesnoth.org])
+define([DEFAULT_SERVER],[devsrv.wesnoth.org])
 
 AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@optusnet.com.au], [wesnoth])
-AC_DEFINE([[WESNOTH_DEFAULT_SERVER]], ["]WESNOTH_DEFAULT_SERVER["], [The default server for this version])
+AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]DEFAULT_SERVER["], [The default server for this version])
 
 dnl
 dnl Generate wesconfig.h from the information above
@@ -26,7 +26,7 @@ AC_CONFIG_COMMANDS([src/wesconfig.h],
 # include "config.h"
 #else
 # define VERSION "]WESNOTH_VERSION["
-# define WESNOTH_DEFAULT_SERVER "]WESNOTH_DEFAULT_SERVER["
+# define WESNOTH_DEFAULT_SERVER "]DEFAULT_SERVER["
 # define PACKAGE "wesnoth"
 # ifndef LOCALEDIR
 #  define LOCALEDIR "translations"
@@ -246,7 +246,7 @@ dnl Locate X include files and libraries
 
    AC_CHECK_LIB(X11, XOpenDisplay, have_libx11='yes',have_libx11='no',$X_LIBS)
    if test "$have_libx11" != 'no'; then
-     AC_DEFINE([[HAVE_LIBX11]],,[Define if you have X11 libraries])
+     AC_DEFINE([HAVE_LIBX11],,[Define if you have X11 libraries])
      X_LIBS="$NEW_LIBS"
      CPPFLAGS="$X_CFLAGS $CPPFLAGS"
      LIBS="$X_LIBS $LIBS"
@@ -568,7 +568,7 @@ int main(int argc, char **argv)
 	])],
 	[AC_MSG_RESULT(yes)
 	LIBZIPIOS="-lzipios -lz"
-	AC_DEFINE([[USE_ZIPIOS]],[1],[Make use of the zipios++ library to read data in zip files])],
+	AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
 	[AC_MSG_RESULT(no)
 	AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
 LIBS="$OLD_LIBS"
