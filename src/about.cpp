@@ -133,6 +133,15 @@ std::vector<std::string> get_text() {
 		"-   Jordà Polo (ettin)",
 		"+ ",
 
+		_("+Czech Translation"),
+		"- David Nečas (Yeti)",
+		"- Mintaka",
+		"- Petr Kopač (Ferda)",
+		"- Petr Kovář (Juans)",
+		"- Sofronius",
+		"- Vít Krčál",
+		"+ ",
+
 		_("+Danish Translation"),
 		"-   Mark Michelsen (skovbaer)",
 		"+ ",
