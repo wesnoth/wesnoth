@@ -1587,6 +1587,10 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Oups ! Vous avez  déplacé votre meneur en dehors du donjon. Rappelez-vous "
+"que lorsque votre meneur n'est pas sur un donjon, vous ne pouvez pas "
+"recruter. Souvenez-vous aussi que si votre meneur décède, vous perdez. Pour "
+"continuer le tutoriel, je vais devoir vous téléporter sur le donjon."
 
 #: data/scenarios/tutorial/tutorial1.cfg:248
 #: data/scenarios/tutorial/tutorial2.cfg:233
@@ -1613,11 +1617,13 @@ msgstr "Vous avez terminé avec succès le premier scénario d'entraînement."
 #: data/scenarios/tutorial/tutorial1.cfg:267
 #: data/scenarios/tutorial/tutorial2.cfg:252
 msgid "Hooray!"
-msgstr ""
+msgstr "Hourra !"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
+"Comment savoir que faire pour terminer un scénario ? Me le direz vous "
+"toujours ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid ""
@@ -1628,10 +1634,17 @@ msgid ""
 "conditions and defeat conditions, and if any of the conditions are met, the "
 "level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Parfois il ne suffit pas de suivre les dialogues pour savoir comment "
+"gagner un scénario. Dans ce cas, regardez les objectifs du scénarios, "
+"qui apparaissent après le dialogue d'ouverture. Ils peuvent être vus à "
+"nouveau en cliquant sur "Objectifs" dans le menu. Les objectifs du "
+"scénario sont une liste de conditions de victoire et de conditions de "
+"défaites, et si l'une ou l'autre est remplie, le niveau est fini. Espérons "
+"que ce soit une condition de victoire qui fut remplie."
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Que se passe-t-il lorsque je gagne un scénario ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid ""
@@ -1641,6 +1654,11 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Lorsque vous gagnez un scénario, toutes vos unités survivent et sont "
+"soignées complètement, et vous n'avez pas besoin de les entretenir pour "
+"les tours restants. Par ailleurs, si votre armée reste sur place après votre "
+"victoire, tous les villages se rendent à vous immédiatement lors de celle-ci. "
+"Cependant 20% de votre or est perdu entre deux scénarios."
 
 #: data/scenarios/tutorial/tutorial1.cfg:276
 #: data/scenarios/tutorial/tutorial2.cfg:261
@@ -1656,7 +1674,7 @@ msgstr "Oui"
 #: data/scenarios/tutorial/tutorial1.cfg:280
 #: data/scenarios/tutorial/tutorial2.cfg:265
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "J'ai fini de revoir les compétences !"
 
 #: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
@@ -2269,11 +2287,12 @@ msgstr "Fin du tour"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
 msgid "hp"
-msgstr ""
+msgstr "pv"
 
+#XXX "px" ?
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 msgid "xp"
-msgstr ""
+msgstr "px"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
 msgid "gold"
@@ -2791,54 +2810,61 @@ msgstr "Mur de caverne"
 msgid "Encampment"
 msgstr "Campement"
 
+#XXX Une note pour les traducteurs :
+#Ne pas chercher à traduire l'anglais exactement pour les noms de villages.
+#À la place, générer des noms de lieu qui sonnent français, sans aucune
+#limite. Plus il y a d'alternatives, mieux c'est. Éventuellement en répétant
+#des entrées pour contrôler la fréquence.
 #: data/translations/english.cfg:166
 msgid "$name's Bridge,$name's Crossing"
-msgstr "Pont $name,croisement $name"
+msgstr "Pont de $name,Croisée de $name"
 
 #: data/translations/english.cfg:167
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "Route $name,Passe de $name,Chemin de $name"
+msgstr "Route $name,Passe de $name,Chemin de $name,Sente de $name"
 
 #: data/translations/english.cfg:168
 msgid "$name River,River $name"
-msgstr "Rivière $name,Rivière $name"
+msgstr "$name|-la-rivière,Rivière $name"
 
 #: data/translations/english.cfg:169
 msgid "$name Forest,$name's Forest"
-msgstr "Forêt $name, Forêt $name"
+msgstr "Forêt $name,Bois de $name,$name|-la-forêt,$name|-sous-bois"
 
 #: data/translations/english.cfg:170
 msgid "$name Lake"
-msgstr "Lac $name"
+msgstr "Lac $name,Étang $name,La mare $name"
 
 #: data/translations/english.cfg:171
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "Saint-$name,Ker $name,$name le bas,$name le haut"
 
 #: data/translations/english.cfg:172
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "Ker $name,Bord $name,La-croix-saint-$name,Font$river,Rive-de-$river,La-croix-sur-$river,$name|-le-port,Val-de-$river"
 
 #: data/translations/english.cfg:173
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "Pont-de-$river,Bac-sur-$river,Ker$name,Saint-$name|-du-pont"
 
 #: data/translations/english.cfg:174
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "Ker$name,$name le bas,$name le haut,$name| champs,Saint-$name|-des-champs,Plou$name,Loc$name"
 
 #: data/translations/english.cfg:175
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "Ker$name,$name le bas,$name le haut,Saint-$name|-du-bois,Forêt de $name,Saint-|$name|-les-chênes"
 
 #: data/translations/english.cfg:176
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "Ker$name,Saint-$name,$name le haut,$name|-du-mont,$name|-la-côte,Les hauts de $name,Les dessus de $name"
 
 #: data/translations/english.cfg:177
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"Saint-$name|-du-mont,$name le haut,Le-mont-saint-$name,Haute$name,"
+"L'aiguille du $name,Le pic du $name"
 
 #: data/translations/english.cfg:179
 msgid "Next tip"
