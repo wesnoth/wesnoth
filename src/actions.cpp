@@ -311,9 +311,6 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (counterattack) {
 		const attack_type& defend = defender_attacks[defend_with];
 		res.defender_special = defend.special();
-		if (res.defender_special == to_the_death_string) {
-			res.to_the_death = true;
-		}
 
 		//magical attacks always have a 70% chance to hit
 		if (res.defender_special == magical_string) {
