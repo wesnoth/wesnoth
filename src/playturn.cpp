@@ -1147,8 +1147,7 @@ void turn_info::end_turn()
 	try {
 		config starting_pos;
 		recorder.save_game(gameinfo_,_("Auto-Save"),snapshot,state_of_game_.starting_pos);
-	} catch(gamestatus::save_game_failed& e) {
-		e;
+	} catch(gamestatus::save_game_failed&) {
 		gui::show_dialog(gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
 	}
@@ -1404,8 +1403,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 			if(dialog_type != gui::NULL_DIALOG) {
 				gui::show_dialog(gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 			}
-		} catch(gamestatus::save_game_failed& e) {
-			e;
+		} catch(gamestatus::save_game_failed&) {
 			gui::show_dialog(gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
 		};
@@ -2417,8 +2415,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			try {
 				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
 				team_num_,status_,state_of_game_,&replay_obj);
-			} catch(replay::error& e) {
-				e;
+			} catch(replay::error&) {
 				//notify remote hosts of out of sync error
 				config cfg;
 				config& info = cfg.add_child("info");
