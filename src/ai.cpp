@@ -546,7 +546,8 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		for(int n = 0; n != 6; ++n) {
 			const unit_map::iterator enemy = units.find(adj[n]);
 			if(enemy != units.end() &&
-			   current_team.is_enemy(enemy->second.side())) {
+			   current_team.is_enemy(enemy->second.side()) &&
+			   !enemy->second.invisible(map[enemy->first.x][enemy->first.y])) {
 				target = adj[n];
 				weapon = choose_weapon(map,units,state,gameinfo,move.first,
 				                       target,bat_stats,

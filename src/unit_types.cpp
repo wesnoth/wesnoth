@@ -518,8 +518,13 @@ unit_type::ALIGNMENT unit_type::alignment() const
 		return LAWFUL;
 	else if(align == "chaotic")
 		return CHAOTIC;
-	else
+	else if(align == "neutral")
 		return NEUTRAL;
+	else {
+		std::cerr << "Invalid alignment found for " << name()
+		          << ": '" << align << "'\n";
+		return NEUTRAL;
+	}
 }
 
 const std::string& unit_type::alignment_description(unit_type::ALIGNMENT align)
