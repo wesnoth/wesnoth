@@ -132,6 +132,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			if(first_time) {
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire("start");
+				gui.draw();
 			}
 
 			gui.invalidate_game_status();
@@ -156,6 +157,14 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 
 				if(!replaying && team_it->is_human()) {
+
+					if(first_time && team_it == teams.begin() &&
+					   level->values["objectives"].empty() == false) {
+						gui::show_dialog(gui,NULL,"",
+						     "+" + level->values["name"] + "\n" +
+						           level->values["objectives"]);
+					}
+
 					play_turn(gameinfo,state_of_game,status,terrain_config,
 					          level, video, key, gui, events_manager, map,
 							  teams, player_number, units);
