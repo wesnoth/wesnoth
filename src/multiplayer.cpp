@@ -209,7 +209,6 @@ void enter_wait_mode(display& disp, const config& game_config, game_data& data, 
 
 	switch (res) {
 	case mp::ui::PLAY:
-		game_config::debug = false;
 		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
 		recorder.clear();
 
@@ -252,7 +251,6 @@ void enter_connect_mode(display& disp, const config& game_config, game_data& dat
 
 	switch (res) {
 	case mp::ui::PLAY:
-		game_config::debug = false;
 		play_level(data, game_config, &level, disp.video(), state, std::vector<config*>());
 		recorder.clear();
 

@@ -17,6 +17,7 @@
 #include "font.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 
 namespace mp {
@@ -31,6 +32,7 @@ lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	games_menu_(disp.video(), std::vector<std::string>()),
 	current_game_(0)
 {
+	game_config::debug = false;
 	gamelist_updated();
 }
 
