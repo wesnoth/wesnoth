@@ -24,6 +24,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "mapgen.hpp"
+#include "map_create.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"

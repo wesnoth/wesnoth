@@ -65,6 +65,7 @@ wesnoth_SOURCES = \
 	leader_list.cpp \
 	log.cpp \
 	map.cpp \
+	map_create.cpp \
 	map_label.cpp \
 	mapgen.cpp \
 	mapgen_dialog.cpp \
@@ -154,6 +155,7 @@ wesnoth_SOURCES = \
 	leader_list.hpp \
 	log.hpp \
 	map.hpp \
+	map_create.hpp \
 	map_label.hpp \
 	mapgen.hpp \
 	mapgen_dialog.hpp \
@@ -249,6 +251,7 @@ wesnoth_editor_SOURCES = \
 	key.cpp \
 	language.cpp \
 	log.cpp \
+	map_create.cpp \
 	map_label.cpp \
 	map.cpp \
 	mapgen.cpp \
@@ -329,6 +332,7 @@ wesnoth_editor_SOURCES = \
 	key.hpp \
 	language.hpp \
 	log.hpp \
+	map_create.hpp \
 	map_label.hpp \
 	map.hpp \
 	mapgen.hpp \

@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 #include "show_dialog.hpp"
+#include "map_create.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
 #include "preferences.hpp"

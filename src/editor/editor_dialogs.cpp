@@ -19,6 +19,7 @@
 #include "../language.hpp"
 #include "../game_config.hpp"
 #include "../mapgen.hpp"
+#include "../map_create.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../events.hpp"

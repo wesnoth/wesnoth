@@ -6,9 +6,6 @@
 
 #include <string>
 
-std::string random_generate_map(const std::string& parms, const config* cfg);
-config random_generate_scenario(const std::string& parms, const config* cfg);
-
 class map_generator
 {
 public:
@@ -33,8 +30,6 @@ public:
 
 	virtual config create_scenario(const std::vector<std::string>& args);
 };
-
-map_generator* create_map_generator(const std::string& name, const config* cfg);
 
 std::string default_generate_map(size_t width, size_t height, size_t island_size, size_t island_off_center,
                                  size_t iterations, size_t hill_size,
