@@ -14,6 +14,8 @@ CVS HEAD:
  * fixed description for 'Wolf Rider'
  * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic), 60 experience needed to advance
  * reduced movement for Arch Mage and Great Mage to 4
+ * new scenarios for 'Heir to the Throne' campaign:
+   * North Elves
  * scenario balancing for 'Heir to the Throne' campaign:
    * A Choice Must Be Made
  * new scenarios for 'The Dark Hordes' campaign:
@@ -36,7 +38,13 @@ CVS HEAD:
    * 'delayed map sharing' between allies
    * when player quits or gets disconnected from multiplayer game, game creator chooses to replace them with ai/local player or abort
    * loaded games should now start properly and with right settings
- * changes to AI to try to solve the 'move in single file' problem
+   * more team flags
+   * minimap shows FoW and units.
+ * AI improvements
+   * leader seeks for healing
+   * leader requests help when attacked
+   * movement changes
+   * chooses attack to use more effectively
  * man-page for wesnoth_editor
  * new translations:
    * swedish
@@ -50,6 +58,7 @@ CVS HEAD:
  * units in water tiles are displayed partially submerged
  * added support for height adjustment of units
  * added snowed hills and forest - H and F
+ * default selection for weapons when attacking
  * all event tags are now handled in the order in which they appear
  * teleport event
  * added several new toys for scenario developers to play with (wesnoth --test to see all thats done)
