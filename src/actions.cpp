@@ -956,6 +956,12 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 	if(!u.can_attack())
 		return false;
 
+	//units with goto commands that have already done their gotos this turn
+	//(i.e. don't have full movement left) should be red
+	if(u.movement_left() < u.total_movement() && u.get_goto().valid()) {
+		return false;
+	}
+
 	gamemap::location locs[6];
 	get_adjacent_tiles(loc,locs);
 	for(int n = 0; n != 6; ++n) {
