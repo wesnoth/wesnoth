@@ -6,7 +6,7 @@ CVS HEAD:
  * scenario balancing for 'Heir to the Throne' campaign:
    * Gryphon Mountain
    * Northern Winter
- * updated undead campaign and added new scenarios:
+ * undead campaign updates and new scenarios:
    * Brother Against Brother
    * The Skull of Agarash
    * Mages and Elves
@@ -20,17 +20,12 @@ CVS HEAD:
    * Dark Spirit
    * Deathmaster
    * Demilich
- * unit changes:
-   * Elvish Archer:
-   * Elvish Marksman
-   * Elvish Sharpshooter
-   * Orcish Archer
-   * Orcish Crossbow
-   * Swordsman
-   * Gryphon
-   * Dark Apprentice
-   * Evil Necromancer
-   * Ancient Lich
+ * Elvish Archer and Swordsman made more powerful
+ * Elvish Marksman, Elvish Sharpshooter and Orcish Archer ranged attack improved
+ * Gryphon, Evil Necromancer and Ancient Lich made weaker
+ * Dark Apprentice now advances to Deathmaster
+ * Evil Necromancer now advances to Demilich
+ * Lich does not advance to Ancient Lich anymore.
  * language fixes and polishing (english)
  * new translations:
    * finnish
@@ -69,7 +64,7 @@ CVS HEAD:
  * added victory_when_enemies_defeated
  * made it easier for different AI algorithms to be added
  * added Doxygen documentation to ai_interface
- * autotools fix: Now make uninstall removes data directories if empty
+ * autotools fix: now 'make uninstall' removes data directories if empty
  * slacknoth script now does a 'make clean' before compiling source and strips binaries
  * refactored widget class
  * removed some debug cerrs
