@@ -26,6 +26,7 @@
 #include "key.hpp"
 #include "language.hpp"
 #include "multiplayer.hpp"
+#include "multiplayer_client.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"

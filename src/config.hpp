@@ -17,6 +17,16 @@
 #include <string>
 #include <vector>
 
+//This module defines the interface to Wesnoth Markup Language (WML).
+//WML is a simple hierarchical text-based file format. The format
+//is defined in Wiki, under BuildingScenariosWML
+//
+//All configuration files are stored in this format, and data is
+//sent across the network in this format. It is thus used extensively
+//throughout the game.
+
+//an object which defines the location an error occurred at when
+//parsing WML files
 struct line_source
 {
 	line_source(int ln,const std::string& fname, int line) :
@@ -30,17 +40,27 @@ struct line_source
 
 bool operator<(const line_source& a, const line_source& b);
 
+//basic disk I/O
 std::string read_file(const std::string& fname);
 void write_file(const std::string& fname, const std::string& data);
+
+//function to use the WML preprocessor on a file, and returns the resulting
+//preprocessed file data. defines is a map of symbols defined. src is used
+//internally and should be set to NULL
 std::string preprocess_file(const std::string& fname,
                             const std::map<std::string,std::string>* defines=0,
                             std::vector<line_source>* src=0);
 
 typedef std::map<std::string,std::string> string_map;
 
+//a config object defines a single node in a WML file, with access to
+//child nodes.
 struct config
 {
+	//create an empty node.
 	config() {}
+
+	//create a node from data
 	config(const std::string& data,
 	       const std::vector<line_source>* lines=0); //throws config::error
 	config(const config& cfg);
@@ -48,13 +68,18 @@ struct config
 
 	config& operator=(const config& cfg);
 
+	//read data in, clobbering existing data.
 	void read(const std::string& data,
 	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
+
+	//a list of all children of this node.
 	child_map children;
+
+	//all the attributes of this node.
 	string_map values;
 
 	typedef std::vector<config*>::iterator child_iterator;
