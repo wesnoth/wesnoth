@@ -277,19 +277,12 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	return to;
 }
 
-gamemap::location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
+bool ai::multistep_move_possible(location from, location to, location via, std::map<location,paths>& possible_moves)
 {
-	std::cerr << "ai::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
-	std::map<location,paths> temp_possible_moves;
-	std::map<location,paths>* possible_moves_ptr = &possible_moves;
-
 	const unit_map::const_iterator i = units_.find(from);
-	if(i != units_.end() && i->second.can_recruit()) {
-		//if the leader isn't on its keep, and we can move to the keep and still make our planned
-		//movement, then try doing that.
-		const gamemap::location& start_pos = map_.starting_position(i->second.side());
-		if(i->first != start_pos && to != start_pos && units_.count(start_pos) == 0) {
-			std::cerr << "when seeing if leader can move from " << (from.x+1) << "," << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << " seeing if can detour to keep at " << (start_pos.x+1) << "," << (start_pos.y+1) << "\n";
+	if(i != units_.end()) {
+		if(from != via && to != via && units_.count(via) == 0) {
+			std::cerr << "when seeing if leader can move from " << (from.x+1) << "," << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << " seeing if can detour to keep at " << (via.x+1) << "," << (via.y+1) << "\n";
 			const std::map<location,paths>::const_iterator moves = possible_moves.find(from);
 			if(moves != possible_moves.end()) {
 
@@ -298,46 +291,63 @@ gamemap::location ai::move_unit(location from, location to, std::map<location,pa
 				bool can_make_it = false;
 				int move_left = 0;
 
-				//see if the leader can make it to the keep, and if it can, how much movement it
-				//will have left when it gets there.
-				const paths::routes_map::const_iterator itor = moves->second.routes.find(start_pos);
+				//see if the unit can make it to 'via', and if it can, how much movement it will have
+				//left when it gets there.
+				const paths::routes_map::const_iterator itor = moves->second.routes.find(via);
 				if(itor != moves->second.routes.end()) {
 					move_left = itor->second.move_left;
 					std::cerr << "can make it to keep with " << move_left << " movement left\n";
 					unit temp_unit(i->second);
 					temp_unit.set_movement(move_left);
-					const temporary_unit_placer unit_placer(units_,start_pos,temp_unit);
-					const paths leader_paths(map_,state_,gameinfo_,units_,start_pos,teams_,false,false);
+					const temporary_unit_placer unit_placer(units_,via,temp_unit);
+					const paths unit_paths(map_,state_,gameinfo_,units_,via,teams_,false,false);
 
-					std::cerr << "found " << leader_paths.routes.size() << " moves for temp leader\n";
+					std::cerr << "found " << unit_paths.routes.size() << " moves for temp leader\n";
 					
 					//see if this leader could make it back to the keep
-					if(leader_paths.routes.count(to) != 0) {
+					if(unit_paths.routes.count(to) != 0) {
 						std::cerr << "can make it back to the keep\n";
-						can_make_it = true;
+						return true;
 					}
-				}
-
-				//if we can make it back to the keep and then to our original destination, do so.
-				if(can_make_it) {
-					from = ai_interface::move_unit(from,start_pos,possible_moves);
-					if(from != start_pos) {
-						return from;
-					}
-
-					const unit_map::iterator itor = units_.find(from);
-					if(itor != units_.end()) {
-						std::cerr << "setting temp moves of unit to " << move_left << "\n";
-						itor->second.set_movement(move_left);
-					}
-
-					move_map srcdst, dstsrc;
-					calculate_possible_moves(temp_possible_moves,srcdst,dstsrc,false);
-					possible_moves_ptr = &temp_possible_moves;
 				}
 			}
 		}
+	}
 
+	return false;
+}
+
+gamemap::location ai::move_unit(location from, location to, std::map<location,paths>& possible_moves)
+{
+	std::cerr << "ai::move_unit " << (from.x+1) << (from.y+1) << " -> " << (to.x+1) << "," << (to.y+1) << "\n";
+	std::map<location,paths> temp_possible_moves;
+	std::map<location,paths>* possible_moves_ptr = &possible_moves;
+
+	const unit_map::const_iterator i = units_.find(from);
+	if(i != units_.end() && i->second.can_recruit()) {
+
+		//if the leader isn't on its keep, and we can move to the keep and still make our planned
+		//movement, then try doing that.
+		const gamemap::location& start_pos = map_.starting_position(i->second.side());
+
+		//if we can make it back to the keep and then to our original destination, do so.
+		if(multistep_move_possible(from,to,start_pos,possible_moves)) {
+			from = ai_interface::move_unit(from,start_pos,possible_moves);
+			if(from != start_pos) {
+				return from;
+			}
+
+			const unit_map::iterator itor = units_.find(from);
+			if(itor != units_.end()) {
+				//just set the movement to one less than the maximum possible, since we know we
+				//can reach the destination, and we're giong to move there immediately
+				itor->second.set_movement(itor->second.total_movement()-1);
+			}
+
+			move_map srcdst, dstsrc;
+			calculate_possible_moves(temp_possible_moves,srcdst,dstsrc,false);
+			possible_moves_ptr = &temp_possible_moves;
+		}
 
 		do_recruitment();
 	}
@@ -695,6 +705,9 @@ std::vector<std::pair<gamemap::location,gamemap::location> > ai::get_village_com
 bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	std::cerr << "deciding which villages we want...\n";
+
+	const location& start_pos = map_.starting_position(team_num_);
+
 	//we want to build up a list of possible moves we can make that will capture villages.
 	//limit the moves to 'max_village_moves' to make sure things don't get out of hand.
 	const size_t max_village_moves = 50;
@@ -716,16 +729,24 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 			}
 		}
 
+		if(want_village == false) {
+			continue;
+		}
+
 		//if it's a neutral village, and we have no leader, then the village is no use to us,
 		//and we don't want it.
 		if(!owned && leader == units_.end()) {
-			want_village = false;
+			continue;
 		}
 
-		if(want_village) {
-			std::cerr << "want village at " << (j->first.x+1) << "," << (j->first.y+1) << "\n";
-			village_moves.push_back(*j);
+		//if we have a decent amount of gold, and the leader can't access the keep this turn if they get this village
+		//then don't get this village with them
+		if(want_village && leader != units_.end() && current_team().gold() > 20 && leader->first == j->second &&
+		   leader->first != start_pos && multistep_move_possible(j->second,j->first,start_pos,possible_moves) == false) {
+			continue;
 		}
+
+		village_moves.push_back(*j);
 	}
 
 	std::set<location> taken_villages, moved_units;
@@ -763,7 +784,7 @@ bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const mo
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
-				if(map_.gives_healing(dst) && units_.find(dst) == units_.end()) {
+				if(map_.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->first)) {
 					const double vuln = power_projection(it.first->first,
 					                    enemy_srcdst,enemy_dstsrc);
 					std::cerr << "found village with vulnerability: " << vuln << "\n";

@@ -182,10 +182,10 @@ class invalid_utf8_exception : public std::exception {
 
 namespace 
 {
-std::string wstring_to_utf8(const std::wstring &src)
+std::string wstring_to_utf8(const wide_string &src)
 {
     wchar_t ch;
-	std::wstring::const_iterator i;
+	wide_string::const_iterator i;
 	int j;
 	Uint32 bitmask;
 	std::string ret;
@@ -232,9 +232,9 @@ std::string wstring_to_utf8(const std::wstring &src)
 	}
 }
 
-std::wstring utf8_to_wstring(const std::string &src)
+wide_string utf8_to_wstring(const std::string &src)
 {
-	std::wstring ret;	
+	wide_string ret;	
     wchar_t ch;
 	std::string::const_iterator i;
 	
@@ -288,14 +288,14 @@ std::wstring utf8_to_wstring(const std::string &src)
 
 }
 
-std::string wstring_to_string(const std::wstring &src)
+std::string wstring_to_string(const wide_string &src)
 {
 	if(charset() == CHARSET_UTF8) {
 		return wstring_to_utf8(src);
 	}
 	
 	std::string ret;
-	for(std::wstring::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
+	for(wide_string::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
 		if(*itor <= 0xff) {
 			push_back(ret,*itor);
 		} else {
@@ -305,13 +305,13 @@ std::string wstring_to_string(const std::wstring &src)
 	return ret;
 }
 
-std::wstring string_to_wstring(const std::string &src)
+wide_string string_to_wstring(const std::string &src)
 {
 	if(charset() == CHARSET_UTF8) {
 		return utf8_to_wstring(src);
 	}
 
-	std::wstring ret;
+	wide_string ret;
 	ret.resize(src.size());
 	std::copy(src.begin(),src.end(),ret.begin());
 

@@ -57,7 +57,7 @@ void textbox::set_text(std::string text)
 
 void textbox::clear()
 {
-	text_ = L"";
+	text_.clear();
 	cursor_ = 0;
 	cursor_pos_ = 0;
 	text_pos_ = 0;
@@ -249,10 +249,10 @@ void textbox::update_text_cache(bool changed)
 		// actually be done by the font-rendering system.
 		std::string visible_string;
 
-		std::wstring wrapped_text;
+		wide_string wrapped_text;
 		
-		for(std::wstring::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
-			std::wstring s;
+		for(wide_string::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
+			wide_string s;
 			push_back(s,*itor);
 			visible_string.append(wstring_to_string(s));
 
@@ -303,7 +303,7 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 	
-	std::wstring::iterator itor = text_.begin() + minimum(selstart_, selend_);
+	wide_string::iterator itor = text_.begin() + minimum(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
 	cursor_ = minimum(selstart_, selend_);
 	selstart_ = selend_ = -1;

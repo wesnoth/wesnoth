@@ -350,6 +350,9 @@ protected:
 	//moving, it will first attempt recruitment.
 	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
+	//sees if it's possible for a unit to move 'from' -> 'via' -> 'to' all in one turn
+	bool multistep_move_possible(location from, location to, location via, std::map<location,paths>& possible_moves);
+
 	struct attack_analysis
 	{
 		void analyze(const gamemap& map, std::map<location,unit>& units,

@@ -16,6 +16,7 @@
 
 #include "../events.hpp"
 #include "../key.hpp"
+#include "../language.hpp"
 #include "../sdl_utils.hpp"
 
 #include "button.hpp"
@@ -48,7 +49,7 @@ public:
 private:
 	void scroll(int pos);
 
-	std::wstring text_;
+	wide_string text_;
 	
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;

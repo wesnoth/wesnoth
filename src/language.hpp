@@ -19,6 +19,9 @@
 #include <string>
 #include <vector>
 
+//the type we use to represent Unicode strings.
+typedef std::vector<wchar_t> wide_string;
+
 //this module controls internationalization.
 
 struct symbol_table
@@ -58,8 +61,8 @@ std::string get_locale();
 
 //functions for converting Unicode wide-char strings to UTF-8 encoded
 //strings, back and forth
-std::string wstring_to_string(const std::wstring &);
-std::wstring string_to_wstring(const std::string &);
+std::string wstring_to_string(const wide_string &);
+wide_string string_to_wstring(const std::string &);
 
 
 //two character sets are supported: LATIN1 and UTF-8. This is
