@@ -2198,11 +2198,11 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if(type == MESSAGE_PUBLIC) {
 		str << "<" << speaker << ">";
 	} else {
-		str << font::NULL_MARKUP << "*" << speaker << "*";
+		str << "*" << speaker << "*";
 	}
 
 	std::stringstream message_str;
-	message_str << font::NULL_MARKUP << msg;
+	message_str << msg;
 
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {

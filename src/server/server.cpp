@@ -6,6 +6,7 @@
 #include "SDL.h"
 
 #include "game.hpp"
+#include "input_stream.hpp"
 #include "player.hpp"
 
 #include <algorithm>
@@ -28,14 +29,20 @@ config construct_error(const std::string& msg)
 	return cfg;
 }
 
-config construct_system_message(const std::string& message)
+config construct_system_message(const std::string& message, const game& g)
 {
 	config turn;
-	config& cmd = turn.add_child("turn");
-	config& cfg = cmd.add_child("command");
-	config& msg = cfg.add_child("speak");
-	msg["description"] = "system";
-	msg["message"] = message;
+	if(g.started()) {
+		config& cmd = turn.add_child("turn");
+		config& cfg = cmd.add_child("command");
+		config& msg = cfg.add_child("speak");
+		msg["description"] = "system";
+		msg["message"] = message;
+	} else {
+		config& msg = turn.add_child("message");
+		msg["sender"] = "system";
+		msg["message"] = message; 
+	}
 
 	return turn;
 }
@@ -51,9 +58,11 @@ void truncate_message(std::string& str)
 class server
 {
 public:
-	explicit server(int port);
+	explicit server(int port, input_stream& input);
 	void run();
 private:
+	void process_command(const std::string& cmd);
+
 	void delete_game(std::vector<game>::iterator i);
 
 	void dump_stats();
@@ -75,9 +84,11 @@ private:
 	std::vector<game> games_;
 
 	time_t last_stats_;
+
+	input_stream& input_;
 };
 
-server::server(int port) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL))
+server::server(int port, input_stream& input) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
@@ -107,6 +118,28 @@ void server::dump_stats()
 	std::cout << parent.write() << std::endl;
 }
 
+void server::process_command(const std::string& cmd)
+{
+	const std::string::const_iterator i = std::find(cmd.begin(),cmd.end(),' ');
+	const std::string command(cmd.begin(),i);
+	if(command == "msg") {
+		if(i == cmd.end()) {
+			std::cerr << "you must type a message\n";
+			return;
+		}
+
+		const std::string msg(i+1,cmd.end());
+		lobby_players_.send_data(construct_system_message(msg,lobby_players_));
+		for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
+			g->send_data(construct_system_message(msg,*g));
+		}
+
+		std::cerr << "message '" << msg << "' relayed to players\n";
+	} else {
+		std::cerr << "command '" << command << "' is not recognized\n";
+	}
+}
+
 void server::run()
 {
 	config& gamelist = initial_response_.add_child("gamelist");
@@ -122,6 +155,11 @@ void server::run()
 				sync_scheduled = false;
 			}
 
+			//process admin commands
+			std::string admin_cmd;
+			if(input_.read_line(admin_cmd)) {
+				process_command(admin_cmd);
+			}
 			
 			//make sure we log stats every 5 minutes
 			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
@@ -193,9 +231,8 @@ void server::run()
 
 					std::cerr << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
 
-					const config msg(construct_system_message(username + " has logged into the lobby"));
 					for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
-						g->send_data_observers(msg);
+						g->send_data_observers(construct_system_message(username + " has logged into the lobby",*g));
 					}
 
 				} else if(lobby_players_.is_member(sock)) {
@@ -577,6 +614,8 @@ int main(int argc, char** argv)
 
 	network::set_default_send_size(4096);
 
+	std::string fifo_path = "/var/run/wesnothd/socket";
+
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
@@ -597,6 +636,14 @@ int main(int argc, char** argv)
 			std::cout << "Battle for Wesnoth server " << game_config::version
 				<< "\n";
 			return 0;
+		} else if(val == "--fifo") {
+			++arg;
+			if(arg == argc) {
+				std::cerr << "option --fifo requires a path argument\n";
+				return 0;
+			}
+
+			fifo_path = argv[arg];
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
 			return 0;
@@ -604,9 +651,11 @@ int main(int argc, char** argv)
 			port = atoi(argv[arg]);
 		}
 	}
-			
+
+	input_stream input(fifo_path);
+	
 	try {
-		server(port).run();
+		server(port,input).run();
 	} catch(network::error& e) {
 		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;

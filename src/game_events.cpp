@@ -538,7 +538,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				}
 			}
 
-			int choice = rand() % num_choices;
+			int choice = get_random() % num_choices;
 			tmp = 0;	
 			for (int i = 0; i < ranges.size(); i++) {
 				tmp += (ranges[i].second - ranges[i].first) + 1;

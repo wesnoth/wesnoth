@@ -402,8 +402,6 @@ std::string replay::build_chat_log(const std::string& team) const
 
 config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 {
-	log_scope("get_data_range\n");
-
 	config res;
 
 	const config::child_list& cmd = commands();
