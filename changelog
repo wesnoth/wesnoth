@@ -1,5 +1,7 @@
 CVS HEAD:
- * improved and added new graphics: unit animations, healing animations
+ * added dir for user created campaigns
+ * help browser
+ * improved and added new graphics: unit animations, healing animations, tent
  * traits removed from treefolk (Woses)
  * treefolk piercing, impact and cold resistance increased
  * Wose renamed to Elder Wose, Sapling Wose renamed to Wose
@@ -8,6 +10,10 @@ CVS HEAD:
    * Drake Beak
    * Drake Worker
    * Dwarvish Ulfserker
+   * Lancer
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Dwarven Doors
+   * Mountain Pass
  * new scenario for 'The Dark Hordes' campaign:
    * Confrontation
  * scenario balancing for 'The Dark Hordes' campaign:
@@ -24,7 +30,9 @@ CVS HEAD:
  * editor improvements:
    * added some command line flags, such as --datadir
  * enabled alternate castle/keep tiles: encampment
- * added gate unit (stripped from The Eastern Invasion/Captured scenario)
+ * gate "unit" (stripped from The Eastern Invasion/Captured scenario)
+ * [binary_path] WML element which allows specification of a path where binary files may appear
+ * made WML {inclusion} non-recursive
  * fixed segfault when filtering units at invalid locations
  * fixed SDL version checking bug in Mac OS X
  * fixed color selection in multiplayer not working
@@ -33,12 +41,16 @@ CVS HEAD:
  * fixed assertion failure/infinite loop in AI logic
  * fixed bug in WML
  * fixed segfault
+ * added CASTLE_AND_SIMPLE_KEEP macro, where the keep is composed of only a unique tile with walls
+ * added BUILDING_ macros to add houses, tents etc. over other terrains
+ * added CASTLE_FLOOR macro
  * relocated 'Heir to the Throne' maps in they own subdir, and gave them an explicit names
  * relocated 'Son of the Black Eye' maps in they own subdir, and gave them an explicit names
  * relocated 'The Dark Hordes' maps in they own subdir, and gave them an explicit names
  * relocated multiplayer maps in they own subdir, and gave them an explicit names
  * relocated tutorial maps in they own subdir, and gave them an explicit names
  * added basic statistics output to wesnothd
+ * changed HttT maps to use encampments
  * removed unused maps
 
 Version 0.7.9:
