@@ -292,16 +292,16 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 	ticks = SDL_GetTicks();
 
-	const int max_sims = 30000;
+	const int max_sims = 50000;
 	int num_sims = analysis.empty() ? 0 : max_sims/analysis.size();
-	if(num_sims < 12)
-		num_sims = 12;
-	if(num_sims > 20)
+	if(num_sims < 20)
 		num_sims = 20;
+	if(num_sims > 40)
+		num_sims = 40;
 
 	std::cout << "simulations: " << num_sims << "\n";
 
-	const int max_positions = 20000;
+	const int max_positions = 30000;
 	const int skip_num = analysis.size()/max_positions;
 
 	std::vector<attack_analysis>::iterator choice_it = analysis.end();
@@ -487,12 +487,20 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 	move_map fullmove_dstsrc;
 	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
 
+	gamemap::location leader_adj[6];
+	if(leader != units_.end()) {
+		get_adjacent_tiles(leader->first,leader_adj);
+	}
+
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
-		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement()) {
+		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement() && unit_map::const_iterator(i) != leader) {
 
 			//this unit still has movement left, and is a candidate to retreat. We see the amount
 			//of power of each side on the situation, and decide whether it should retreat.
 			if(should_retreat(i->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+
+				bool can_reach_leader = false;
+
 				//time to retreat. Look for the place where the power balance is most in our favor.
 				//If we can't find anywhere where we like the power balance, just try to
 				//get to the best defensive hex
@@ -502,6 +510,11 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				double best_rating = 0.0;
 				int best_defensive_rating = 100;
 				while(itors.first != itors.second) {
+
+					if(leader != units_.end() && std::count(leader_adj,leader_adj+6,itors.first->second)) {
+						can_reach_leader = true;
+						break;
+					}
 
 					//we rate the power balance of a hex based on our power projection compared
 					//to theirs, multiplying their power projection by their chance to hit us
@@ -525,6 +538,12 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 					}
 
 					++itors.first;
+				}
+
+				//if the unit is in range of its leader, it should never retreat --
+				//it has to defend the leader instead
+				if(can_reach_leader) {
+					continue;
 				}
 
 				if(!best_pos.valid()) {
