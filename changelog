@@ -16,7 +16,7 @@ CVS HEAD:
    * Return of the Fleet
  * scenario fixes for 'Eastern Invasion' campaign:
    * Weldyn Under Attack
- * changed Dragoon's and Cavalier's pistol to crossbow.
+   * Capture
  * unit balancing: 
    * Gryphon Rider: reduced cost
    * Drake Clasher: reduced cost, increase resistance to pierce
@@ -29,11 +29,16 @@ CVS HEAD:
    * Soul Shooter: melee changed from impact to pierce
    * Bone Shooter: melee changed from impact to pierce
    * minor adjustments to Drakefoot & Drakefly (& the Drakes in general)
+   * LESS_NIMBLE_ELF macro
  * new units:
    * Draug
    * Naga Fighter
    * Naga Warrior
    * Naga Myrmidon
+   * Saurian Flanker
+ * changed Dragoon's and Cavalier's pistol to crossbow.
+ * renamed 'Saurian' to 'Saurian Skirmisher' and 'Saurian Warrior' to 'Saurian Ambusher'
+ * fixed units incorrectly not using the spear icon
  * language fixes and polishing (english)
  * revised MANUAL
    * english
@@ -53,13 +58,13 @@ CVS HEAD:
  * multiplayer improvements
    * Charge map
    * CastleHoppingIsle map updated
- * give Woses, Saurians, & Drakes names
+ * give Woses, Saurians & Drakes names
  * give Saurians & Drakes traits
  * give the Drakes music in Multiplayer
  * make the chests in 'The Rise of Wesnoth' squeak
  * new --enable-tinygui configure flag for adventurous PDA users
- * LESS_NIMBLE_ELF macro
  * fixed translations being searched for in installdir when running in builddir
+ * added support for concatenating strings in wml files, for the benefit of i18n
  * fixed code for handling objects
  * fixed chest placement in 'The Rise of Wesnoth: The Vanguard'
  * fixed many untranslatable strings
@@ -78,6 +83,7 @@ CVS HEAD:
  * rewrote widgets code
  * image and data-file cleanups
  * code cleanups
+ * WML bug fixes
 
 Version 0.8.7:
  * user interface improvements:
