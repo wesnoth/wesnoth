@@ -351,8 +351,8 @@ AC_PATH_PROGS([KDE_CONFIG], [kde-config], [none])
 if test "x$KDE_CONFIG" = "xnone"; then
 	kdefound=no
 else
-	KDE_DESKTOP=`$KDE_CONFIG --expandvars --install apps`/Games/TacticStrategy
-	KDE_ICON=`$KDE_CONFIG --expandvars --install icon`
+	KDE_DESKTOP=`$KDE_CONFIG --install apps`/Games/TacticStrategy
+	KDE_ICON=`$KDE_CONFIG --install icon`
 	kdefound=yes
 fi
 
