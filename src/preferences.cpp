@@ -895,9 +895,9 @@ void show_preferences_dialog(display& disp)
 {
 	std::vector<std::string> items;
 
-	items.push_back(std::string("&icons/icon-general.png,") + _("General"));
-	items.push_back(std::string("&icons/icon-display.png,") + _("Display"));
-	items.push_back(std::string("&icons/icon-music.png,") + _("Sound"));
+	items.push_back(std::string("&icons/icon-general.png,") + sgettext("Prefs section^General"));
+	items.push_back(std::string("&icons/icon-display.png,") + sgettext("Prefs section^Display"));
+	items.push_back(std::string("&icons/icon-music.png,") + sgettext("Prefs section^Sound"));
 	
 	for(;;) {
 		try {
