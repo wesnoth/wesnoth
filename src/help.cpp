@@ -579,7 +579,7 @@ std::vector<topic> generate_unit_topics() {
 					if (lang_unit == "") {
 						lang_unit = *advance_it;
 					}
-					ss << "<ref>dst='" << ref_id << "' text='" << escape(lang_unit)
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
 					   << "'</ref>";
 					if (advance_it + 1 != next_units.end()) {
 						ss << ", ";
@@ -599,7 +599,7 @@ std::vector<topic> generate_unit_topics() {
 					if (lang_ability == "") {
 						lang_ability = *ability_it;
 					}
-					ss << "<ref>dst='" << ref_id << "' text='" << escape(lang_ability)
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
 					   << "'</ref>";
 					if (ability_it + 1 != type.abilities().end()) {
 						ss << ", ";
@@ -702,7 +702,7 @@ std::vector<topic> generate_unit_topics() {
 						if (lang_special == "") {
 							lang_special = attack_it->special();
 						}
-						attack_ss << "<ref>dst='" << ref_id << "' text='"
+						attack_ss << "<ref>dst='" << escape(ref_id) << "' text='"
 								  << escape(lang_special) << "'</ref>";
 						row.push_back(std::make_pair(attack_ss.str(),
 													 font::line_width(lang_special, normal_font_size)));
@@ -787,7 +787,7 @@ std::vector<topic> generate_unit_topics() {
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
 						str << "<ref>text='" << escape(name) << "' dst='"
-							<< std::string("terrain_") + terrain << "'</ref>";
+							<< escape(std::string("terrain_") + terrain) << "'</ref>";
 						row.push_back(std::make_pair(str.str(), 
 													 font::line_width(name,
 																	  normal_font_size)));
@@ -863,7 +863,7 @@ std::vector<topic> generate_terrains_topics() {
 				const gamemap::TERRAIN t = *it;
 				const std::string alias_name = string_table[map->terrain_name(t)];
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-						 << std::string("terrain_") + t << "'</ref>";
+						 << escape(std::string("terrain_") + t) << "'</ref>";
 				if (it + 2 == aliased_terrains.end()) {
 					alias_ss << " " << _("or") << " ";
 				}
@@ -1356,7 +1356,10 @@ void help_text_area::handle_ref_cfg(const config &cfg) {
 		show_ref = false;
 	}
 	if (dst == "" || text == "") {
-		throw parse_error("Ref markup must have both dst and text attributes.");
+		std::string msg = 
+			"Ref markup must have both dst and text attributes. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
+		msg += cfg.write();
+		throw parse_error(msg);
 	}
 	if (show_ref) {
 		add_text_item(text, dst);
