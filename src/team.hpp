@@ -37,6 +37,7 @@ public:
 		team_info(const config& cfg);
 		std::string name;
 		std::string gold;
+		std::string income;
 		std::set<std::string> can_recruit;
 		std::vector<std::string> recruitment_pattern;
 		double aggression;

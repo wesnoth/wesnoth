@@ -12,6 +12,7 @@
 */
 #include "game_config.hpp"
 #include "gamestatus.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "unit.hpp"
@@ -90,7 +91,13 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 		//in the same order.
 		for(std::set<int>::const_iterator itor = chosen_traits.begin();
 		    itor != chosen_traits.end(); ++itor) {
-			traitsDescription_ += (*traits[*itor])["name"];
+			const std::string& trait_name = (*traits[*itor])["name"];
+			const std::string& lang_trait = string_table["trait_"+trait_name];
+			if(lang_trait.empty() == false)
+				traitsDescription_ += lang_trait;
+			else
+				traitsDescription_ += trait_name;
+
 			traitsDescription_ += ",";
 		}
 

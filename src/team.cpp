@@ -26,6 +26,7 @@ team::target::target(const config& cfg)
 team::team_info::team_info(const config& cfg)
 {
 	gold = cfg["gold"];
+	income = cfg["income"];
 	name = cfg["name"];
 
 	const std::string& aggression_val = cfg["aggression"];
@@ -131,7 +132,8 @@ int team::gold() const
 
 int team::income() const
 {
-	return towers_.size()*game_config::tower_income+game_config::base_income;
+	return atoi(info_.income.c_str()) +
+	       towers_.size()*game_config::tower_income+game_config::base_income;
 }
 
 void team::new_turn()
