@@ -675,8 +675,18 @@ lobby::RESULT mp_connect::process()
 				(**side)["music"] = (*real_sides[choice])["music"];
 
 				(**side)["recruitment_pattern"] = real_sides[choice]->values["recruitment_pattern"];
+				level_changed = true;
 			}
 		}
+		if(level_changed) {
+			config diff;
+			diff.add_child("scenario_diff",level_->get_diff(old_level_));
+	
+			network::send_data(diff);
+	
+			old_level_ = *level_;
+		}
+
 		return lobby::CREATE;
 	}
 

@@ -389,7 +389,12 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				return;
 			}
 
-			const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
+			config::child_list possible_sides = era_cfg->get_children("multiplayer_side");
+
+			config* random = new config();
+			(*random)["name"]="&random-enemy.png,Random";
+			possible_sides.insert(possible_sides.begin(),random);
+
 			if(possible_sides.empty()) {
 				std::cerr << "no multiplayer sides found\n";
 				return;
