@@ -594,7 +594,7 @@ namespace {
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite",gui::button::MINIMUM_SPACE),
+                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
@@ -603,7 +603,7 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite",gui::button::MINIMUM_SPACE),
+                                        : gui::preview_pane(disp), details_button_(disp,translate_string("profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
 										  map_(map), units_(&units), index_(0), left_(on_left_side),
 										  weapons_(type == SHOW_ALL)
 {
