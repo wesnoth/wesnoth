@@ -1,13 +1,14 @@
+AUTOMAKE_OPTIONS = subdir-objects
 SUBDIRS = .
-
-if SERVER
-SUBDIRS += server
-endif
 
 bin_PROGRAMS =
 
 if GAME
 bin_PROGRAMS += wesnoth
+endif
+
+if SERVER
+bin_PROGRAMS += wesnothd
 endif
 
 if CAMPAIGNSERVER
@@ -362,6 +363,47 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 zipios++/xcoll.hpp \
 			 sdl_ttf/SDL_ttf.h \
 			 wesconfig.h
+
+#############################################################################
+#    Wesnothd Server                                                        #
+#############################################################################
+
+wesnothd_SOURCES = \
+	server/game.cpp \
+	server/input_stream.cpp \
+	server/metrics.cpp \
+	server/player.cpp \
+	server/server.cpp \
+	server/variable.cpp \
+	config.cpp \
+	filesystem.cpp \
+	game_config.cpp \
+	gettext.cpp \
+	log.cpp \
+	network.cpp \
+	network_worker.cpp \
+	thread.cpp \
+	serialization/preprocessor.cpp \
+	serialization/string_utils.cpp \
+	zipios++/xcoll.cpp \
+	server/game.hpp \
+	game_events.hpp \
+	server/input_stream.hpp \
+	server/metrics.hpp \
+	server/player.hpp \
+	config.hpp \
+	filesystem.hpp \
+	game_config.hpp \
+	gettext.hpp \
+	log.hpp \
+	network.hpp \
+	network_worker.hpp \
+	thread.hpp \
+	serialization/preprocessor.hpp \
+	serialization/string_utils.hpp \
+	zipios++/xcoll.hpp
+
+wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
 
 #############################################################################
 #    Campaign Server                                                        #

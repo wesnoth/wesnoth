@@ -187,6 +187,7 @@ AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_INSTALL
+AM_PROG_CC_C_O
 
 have_libx11='no'
 if test "$with_x" != 'no'; then
@@ -724,7 +725,6 @@ AC_CONFIG_FILES([Makefile
 		 intl/Makefile 
 		 icons/Makefile
 		 src/Makefile
-		 src/server/Makefile
 		 src/zip/Makefile
 		 doc/Makefile
 		 doc/man/Makefile])
