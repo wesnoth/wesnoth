@@ -917,6 +917,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 					unit_display::unit_die(*screen,un->first,un->second);
 				}
 
+				if(cfg["fire_event"] == "yes") {
+					gamemap::location loc = un->first;
+					game_events::fire("die",loc,un->first);
+				}
 				units->erase(un++);
 			} else {
 				++un;
