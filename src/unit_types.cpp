@@ -749,10 +749,6 @@ const std::string& unit_type::unit_description() const
 {
 	static const std::string default_val("No description available");
 
-	const std::string& lang_desc = string_table[id() + "_description"];
-	if(lang_desc.empty() == false)
-		return lang_desc;
-
 	const std::string& desc = cfg_["unit_description"];
 	if(desc.empty())
 		return default_val;
