@@ -538,7 +538,7 @@ wesnoth_zip_SOURCES = \
 wesnoth_zip_LDADD = @SDL_LIBS@ @SDL_NET_LIBS@
 
 AM_CXXFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
-	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
+	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR) -DLOCALSTATEDIR=\"$(localstatedir)\"
 
 AM_CFLAGS = -I $(srcdir)/sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
@@ -571,3 +571,13 @@ endif
 #-lSDL_image -lSDL_mixer -lSDL_net -lSDL_ttf -lstdc++ -lm -lSM -lICE -ljpeg \
 #-lpng -lz -lvorbisfile -lvorbis -logg -lsmpeg -lfreetype
 #endif
+
+if SERVER
+install-exec-hook:
+	mkdir -p -m 0700 $(localstatedir)/wesnothd
+	chown $(serveruid):$(servergid) $(localstatedir)/wesnothd
+
+uninstall-hook:
+	rm -rf $(localstatedir)/wesnothd/
+	
+endif

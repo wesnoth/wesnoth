@@ -131,6 +131,18 @@ AC_ARG_ENABLE([server],
 	      [server=$enableval],
 	      [server=no])
 
+AC_ARG_WITH([server-uid],
+	          AS_HELP_STRING([--with-server-uid]. [user id of the user who runs wesnothd]),
+	      [serveruid=$withval],
+	      [serveruid=0])
+AC_SUBST([serveruid])
+
+AC_ARG_WITH([server-gid],
+	          AS_HELP_STRING([--with-server-gid]. [group id of the user who runs wesnothd]),
+	      [servergid=$withval],
+	      [servergid=0])
+AC_SUBST([servergid])
+
 AC_ARG_ENABLE([campaign_server],
               AS_HELP_STRING([--enable-campaign-server], [enable compilation of campaign server]),
 	      [campaignserver=$enableval],

@@ -870,7 +870,10 @@ int main(int argc, char** argv)
 
 	network::set_default_send_size(4096);
 
-	std::string fifo_path = "/var/run/wesnothd/socket";
+#ifndef LOCALSTATEDIR
+# define LOCALSTATEDIR "/var/run"
+#endif
+	std::string fifo_path = std::string(LOCALSTATEDIR) + "/wesnothd/socket";
 
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
@@ -887,7 +890,6 @@ int main(int argc, char** argv)
 			std::cout << "usage: " << argv[0]
 				<< " [options]\n"
 				<< "  -d  --daemon               Runs wesnothd as a daemon\n"
-				<< "      --fifo file            Sets the path for the FIFO used to communicate with the server\n"
 				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n" 
 				<< "  -p, --port                 Binds the server to the specified port\n"
 				<< "  -v, --version              Returns the server version\n";
@@ -896,14 +898,6 @@ int main(int argc, char** argv)
 			std::cout << "Battle for Wesnoth server " << game_config::version
 				<< "\n";
 			return 0;
-		} else if(val == "--fifo") {
-			++arg;
-			if(arg == argc) {
-				std::cerr << "option --fifo requires a path argument\n";
-				return 0;
-			}
-
-			fifo_path = argv[arg];
 		} else if(val == "--daemon" || val == "-d") {
 #ifdef WIN32
 			std::cerr << "Running as a daemon is not supported on this platform\n";
