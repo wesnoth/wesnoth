@@ -842,7 +842,9 @@ bool game_controller::load_game()
 		}
 	}
 
-	if(state_.campaign_type == "multiplayer") {
+	if(state_.campaign_type == "tutorial") {
+		defines_map_["TUTORIAL"] = preproc_define();
+	} else if(state_.campaign_type == "multiplayer") {
 		//make all network players local
 		for(config::child_itors sides = state_.snapshot.child_range("side");
 		    sides.first != sides.second; ++sides.first) {
