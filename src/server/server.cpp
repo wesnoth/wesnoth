@@ -129,9 +129,9 @@ void server::run()
 						continue;
 					}
 
-					//check the username is valid (all alpha-numeric)
+					//check the username is valid (all alpha-numeric or space)
 					const std::string& username = (*login)["username"];
-					if(std::count_if(username.begin(),username.end(),isalnum)
+					if(std::count_if(username.begin(),username.end(),isalnum) + std::count(username.begin(),username.end(),' ')
 					   != username.size() || username.empty()) {
 						network::send_data(construct_error(
 						                   "This username is not valid"),sock);
