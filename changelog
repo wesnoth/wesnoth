@@ -19,7 +19,10 @@ CVS HEAD:
    * norwegian
    * swedish
    * spanish 
+ * added ctrl+P as hotkey for 'Preferences'
  * campaigns can customize difficulty level icons
+ * mage of light lights up hexes around him
+ * fixed many image transparency glitches (caused by recent alpha channel implementation)
  * fixed teleporting displaying incorrectly where unit can move
  * fixed crash when you press escape when a menu is displayed (#7863)
  * fixed unit descriptions leaking thru fog of war (#7843)
@@ -32,6 +35,9 @@ CVS HEAD:
  * fixed scroll speeds being set to insane values
  * fixed bug where AI could see potential movement of enemy units
  * fixed bug where Blackwater Port was easier than it was meant to be on 'normal' level
+ * fixed crash in maps with fog of war
+ * fixed transparency issues in dwarven doors graphic
+ * fixed issue with escape button skipping past messages where the user must make a choice
  * made it easier for different AI algorithms to be added
  * added Doxygen documentation to ai_interface
  * autotools fix: Now make uninstall removes data directories if empty
