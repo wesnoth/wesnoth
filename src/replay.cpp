@@ -480,4 +480,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			throw replay::error();
 		}
 	}
+
+	return false; /* Never attained, but silent a gcc warning. --Zas */
 }
