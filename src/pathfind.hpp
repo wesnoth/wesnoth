@@ -39,6 +39,10 @@ typedef util::array<gamemap::location,6> adjacent_tiles_array;
 //function which, given a location, will find all tiles within 'radius' of that tile
 void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
 
+//function which, given a set of locations, will find all tiles within 'radius' of those tiles
+void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& locs, size_t radius,
+	std::set<gamemap::location>& res);
+
 //function which tells if two locations are adjacent.
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 

@@ -1108,30 +1108,22 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const size_t radius = minimum<size_t>(MaxLoop,lexical_cast_default<size_t>(cfg["radius"]));
 		std::set<gamemap::location> res;
-		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-			get_tiles_radius(*i,radius,res);
-		}
+		get_tiles_radius(*game_map, locs, radius, res);
 
 		size_t added = 0;
 		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
-			if(game_map->on_board(*j)) {
-				if(terrain.empty() == false) {
-					const gamemap::TERRAIN c = game_map->get_terrain(*j);
-					if(std::find(terrain.begin(),terrain.end(),c) == terrain.end()) {
-						continue;
-					}
-				}
-
-				if(unit_filter != NULL) {
-					const unit_map::const_iterator u = units->find(*j);
-					if(u == units->end() || game_events::unit_matches_filter(u,*unit_filter) == false) {
-						continue;
-					}
-				}
-
-				j->write(state_of_game->variables.add_child(variable));
-				++added;
+			if (terrain.empty() == false) {
+				const gamemap::TERRAIN c = game_map->get_terrain(*j);
+				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
+					continue;
 			}
+			if (unit_filter != NULL) {
+				const unit_map::const_iterator u = units->find(*j);
+				if (u == units->end() || !game_events::unit_matches_filter(u, *unit_filter))
+					continue;
+			}
+			j->write(state_of_game->variables.add_child(variable));
+			++added;
 		}
 	}
 
