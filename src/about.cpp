@@ -86,6 +86,7 @@ std::vector<std::string> get_text() {
 		"-   Joseph Simmons (Turin)",
 		"-   J.W. Bjerk (Eleazar)",
 		"-   J.W.C. McNabb (Darth Fool)",
+		"-   Michael Gil de Muro (grp21)",
 		"-   Neorice",
 		"-   Richard Kettering (Jetryl)",
 		"-   Slainte",
@@ -111,6 +112,7 @@ std::vector<std::string> get_text() {
 
 		_("+Multiplayer Maps"),
 		"-   Peter Groen (pg)",
+		"-   Tom Chance (telex4)",
 		"+ ",
 
 		_("+Packagers"),
@@ -124,7 +126,6 @@ std::vector<std::string> get_text() {
 		_("+Miscellaneous"),
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
-		"-   Tom Chance (telex4)",
 		"+ ",
 
 		_("+Internationalization Manager"),
