@@ -147,6 +147,28 @@ bool gamemap::location::operator<(const gamemap::location& a) const
 	return x < a.x || x == a.x && y < a.y;
 }
 
+gamemap::location gamemap::location::operator+(const gamemap::location& a) const
+{
+	gamemap::location ret = *this;
+	ret += a;
+	return ret;
+}
+
+gamemap::location &gamemap::location::operator+=(const gamemap::location &a) 
+{
+	bool parity = (x & 1) != 0;
+	
+	x += a.x;
+	y += a.y;
+
+	if((a.x > 0) && (a.x % 2) && parity)
+		y++;
+	if((a.x < 0) && (a.x % 2) && !parity)
+		y--;
+
+	return *this;
+}
+
 gamemap::location gamemap::location::get_direction(
                                      gamemap::location::DIRECTION dir) const
 {
@@ -339,6 +361,11 @@ const terrain_type& gamemap::get_terrain_info(TERRAIN terrain) const
 		return default_terrain;
 }
 
+const terrain_type& gamemap::get_terrain_info(const gamemap::location &loc) const
+{
+	return get_terrain_info(get_terrain(loc));
+}
+
 const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_precedence() const
 {
 	return terrainPrecedence_;
@@ -401,6 +428,6 @@ const std::map<gamemap::TERRAIN,size_t>& gamemap::get_weighted_terrain_frequenci
 }
 
 void gamemap::remove_from_border_cache(const location &loc) {
-  borderCache_.erase(loc);
+	borderCache_.erase(loc);
 }
 

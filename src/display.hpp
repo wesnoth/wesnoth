@@ -351,7 +351,7 @@ private:
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
 	                        int x, int y, const std::string& dir="");
 	//this surface must be freed by the caller
-	SDL_Surface* getTerrain(const std::string &image, image::TYPE type,
+	SDL_Surface* getTerrain(const image::locator &image, image::TYPE type,
 	                        int x, int y, bool search_tod);
 
 	//this surface must be freed by the caller

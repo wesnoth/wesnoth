@@ -1155,7 +1155,7 @@ std::string config::join(const std::vector<std::string>& v, char c)
 	return str.str();
 }
 
-std::vector<std::string> config::split(const std::string& val, char c, bool remove_empty)
+std::vector<std::string> config::split(const std::string& val, char c, int flags)
 {
 	std::vector<std::string> res;
 
@@ -1165,12 +1165,15 @@ std::vector<std::string> config::split(const std::string& val, char c, bool remo
 	while(i2 != val.end()) {
 		if(*i2 == c) {
 			std::string new_val(i1,i2);
-			strip(new_val);
-			if(!remove_empty || !new_val.empty())
+			if(flags & STRIP_SPACES)
+				strip(new_val);
+			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
-			while(i2 != val.end() && *i2 == ' ')
-				++i2;
+			if(flags & STRIP_SPACES) {
+				while(i2 != val.end() && *i2 == ' ')
+					++i2;
+			}
 
 			i1 = i2;
 		} else {
@@ -1179,8 +1182,9 @@ std::vector<std::string> config::split(const std::string& val, char c, bool remo
 	}
 
 	std::string new_val(i1,i2);
-	strip(new_val);
-	if(!remove_empty || !new_val.empty())
+	if(flags & STRIP_SPACES)
+		strip(new_val);
+	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 
 	return res;
@@ -1192,7 +1196,7 @@ std::vector<std::string> config::split(const std::string& val, char c, bool remo
 //this method was added to make it possible to quote user input,
 //particularly so commas in user input will not cause visual problems in menus.
 //why not change split()? that would change the methods post condition.
-std::vector<std::string> config::quoted_split(const std::string& val, char c, bool remove_empty, char quote)
+std::vector<std::string> config::quoted_split(const std::string& val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;
 
@@ -1206,12 +1210,15 @@ std::vector<std::string> config::quoted_split(const std::string& val, char c, bo
 			if(i2 != val.end()) ++i2;
 		} else if(*i2 == c) {
 			std::string new_val(i1,i2);
-			strip(new_val);
-			if(!remove_empty || !new_val.empty())
+			if(flags & STRIP_SPACES)
+				strip(new_val);
+			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 				res.push_back(new_val);
 			++i2;
-			while(i2 != val.end() && *i2 == ' ')
-				++i2;
+			if(flags & STRIP_SPACES) {
+				while(i2 != val.end() && *i2 == ' ')
+					++i2;
+			}
 
 			i1 = i2;
 		} else {
@@ -1220,8 +1227,9 @@ std::vector<std::string> config::quoted_split(const std::string& val, char c, bo
 	}
 
 	std::string new_val(i1,i2);
-	strip(new_val);
-	if(!remove_empty || !new_val.empty())
+	if(flags & STRIP_SPACES)
+		strip(new_val);
+	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
 
 	return res;
@@ -1239,11 +1247,9 @@ std::pair<int,int> config::parse_range(const std::string& str)
 	return res;
 }
 
-namespace {
 //make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
 //all consider these differently.
-bool notspace(char c) { return !portable_isspace(c); }
-}
+bool config::notspace(char c) { return !portable_isspace(c); }
 
 //prepend all special characters with a backslash
 //special characters are:

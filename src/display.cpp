@@ -1643,11 +1643,13 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == ADJACENT_FOREGROUND ?
 		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
-	const std::vector<std::string>* const terrains = builder_.get_terrain_at(loc,builder_terrain_type);
+	const std::vector<image::locator>* const terrains = builder_.get_terrain_at(loc,builder_terrain_type);
 
 	if(terrains != NULL) {
-		for(std::vector<std::string>::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
-			const std::string image = "terrain/" + *it;
+		for(std::vector<image::locator>::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
+			image::locator image = *it;
+			image.filename = "terrain/" + it->filename;
+
 			const shared_sdl_surface surface(getTerrain(image,image_type,x,y,true));
 			if(surface != NULL) {
 				res.push_back(surface);
@@ -1658,7 +1660,7 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 	return res;
 }
 
-SDL_Surface* display::getTerrain(const std::string& image, image::TYPE image_type,
+SDL_Surface* display::getTerrain(const image::locator& image, image::TYPE image_type,
                                  int x, int y, bool search_tod)
 {
 	SDL_Surface* im = NULL;
@@ -1667,8 +1669,9 @@ SDL_Surface* display::getTerrain(const std::string& image, image::TYPE image_typ
 	const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
 
 	//see if there is a time-of-day specific version of this image
-	if(search_tod) {	
-		const std::string tod_image = image + "-" + tod.id + ".png";
+	if(search_tod) {
+		image::locator tod_image = image;
+		tod_image.filename = image.filename + "-" + tod.id + ".png";
 		im = image::get_image(tod_image,image_type);
 
 		if(im != NULL) {
@@ -1676,9 +1679,10 @@ SDL_Surface* display::getTerrain(const std::string& image, image::TYPE image_typ
 		}
 	}
 
-	const std::string file = image + ".png";
+	image::locator tmp = image;
+	tmp.filename += ".png";
 
-	im = image::get_image(file,image_type);
+	im = image::get_image(tmp,image_type);
 	if(im == NULL) {
 		return NULL;
 	}

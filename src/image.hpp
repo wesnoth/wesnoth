@@ -22,6 +22,22 @@ class team;
 /// - greyed: images are scaled and in greyscale
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
+	///a generic image locator. Abstracts the location of an image.
+	///used as a key for a std::map
+	struct locator
+	{
+		locator(const char *filename) : filename(filename) { type = FILE; }
+		locator(const std::string& filename) : filename(filename) { type = FILE; }
+		locator(const std::string& filename, const gamemap::location& loc) : filename(filename), loc(loc)
+			{ type = SUB_FILE; }
+
+		bool operator==(const locator &a) const;
+		bool operator<(const locator &a) const;
+
+		enum { FILE, SUB_FILE } type;
+		std::string filename;
+		gamemap::location loc;
+	};
 
 	///the image manager is responsible for setting up images, and destroying
 	///all images when the program exits. It should probably
@@ -64,13 +80,13 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	SDL_Surface* get_image(const std::string& filename,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
+	SDL_Surface* get_image(const locator& i_locator,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
 
 	///function to get a scaled image, but scale it to specific dimensions.
 	///if you later try to get the same image using get_image() the image will
 	///have the dimensions specified here.
 	///Note that this surface must be freed by the user by calling SDL_FreeSurface
-	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
+	SDL_Surface* get_image_dim(const locator& i_locator, size_t x, size_t y);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
@@ -82,7 +98,7 @@ namespace image {
 	///it when the cache is cleared (change of video mode or colour adjustment).
 	///If there is already an image registered with this id, that image will be freed
 	///and replaced with this image.
-	void register_image(const std::string& id, SDL_Surface* surf);
+	void register_image(const locator& i_locator, SDL_Surface* surf);
 
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user

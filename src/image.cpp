@@ -17,7 +17,7 @@ namespace {
 typedef std::map<gamemap::TERRAIN,SDL_Surface*> mini_terrain_cache_map;
 mini_terrain_cache_map mini_terrain_cache;
 
-typedef std::map<std::string,SDL_Surface*> image_map;
+typedef std::map<image::locator,SDL_Surface*> image_map;
 image_map images_,scaledImages_,unmaskedImages_,greyedImages_,brightenedImages_;
 
 std::map<SDL_Surface*,SDL_Surface*> reversedImages_;
@@ -50,20 +50,20 @@ void clear_surfaces(Map& surfaces)
 
 enum TINT { GREY_IMAGE, BRIGHTEN_IMAGE };
 
-SDL_Surface* get_tinted(const std::string& filename, TINT tint)
+SDL_Surface* get_tinted(const image::locator& i_locator, TINT tint)
 {
 	image_map& images = tint == GREY_IMAGE ? greyedImages_ : brightenedImages_;
 
-	const image_map::iterator itor = images.find(filename);
+	const image_map::iterator itor = images.find(i_locator);
 
 	if(itor != images.end()) {
 		return itor->second;
 	}
 
-	scoped_sdl_surface base(image::get_image(filename,image::SCALED));
+	scoped_sdl_surface base(image::get_image(i_locator,image::SCALED));
 	SDL_Surface* const surface = (tint == GREY_IMAGE ? greyscale_image(base) : brighten_image(base,1.5));
 
-	images.insert(std::pair<std::string,SDL_Surface*>(filename,surface));
+	images.insert(std::pair<image::locator,SDL_Surface*>(i_locator,surface));
 
 	return surface;
 }
@@ -79,9 +79,84 @@ void flush_cache()
 	clear_surfaces(reversedImages_);
 }
 
+SDL_Surface* load_image_file(image::locator i_locator)
+{
+	SDL_Surface* surf = NULL;
+
+	const std::string images_path = "images/";
+	const std::string images_filename = images_path + i_locator.filename;
+
+	if(game_config::path.empty() == false) {
+		const std::string& fullpath = game_config::path + "/" +
+			images_filename;
+		surf = IMG_Load(fullpath.c_str());
+	}
+	
+	if(surf == NULL) {
+		surf = IMG_Load(images_filename.c_str());
+	}
+
+	return surf;
+}
+
+SDL_Surface * load_image_sub_file(image::locator i_locator)
+{
+	SDL_Surface *surf = NULL;
+	SDL_Surface *tmp = NULL;
+	
+	scoped_sdl_surface mother_surface(image::get_image(i_locator.filename, image::UNSCALED, image::NO_ADJUST_COLOUR));
+	scoped_sdl_surface mask(image::get_image(game_config::terrain_mask_image, image::UNSCALED, image::NO_ADJUST_COLOUR));
+	
+	if(mother_surface == NULL)
+		return NULL;
+	if(mask == NULL)
+		return NULL;
+	
+	tmp = SDL_CreateRGBSurface(SDL_SWSURFACE, 72, 72, mother_surface->format->BitsPerPixel, mother_surface->format->Rmask,
+				    mother_surface->format->Gmask, mother_surface->format->Bmask,  mother_surface->format->Amask);
+
+	SDL_Rect srcrect = { 54 * i_locator.loc.x, 72 * i_locator.loc.y + 36 * (i_locator.loc.x % 2), 72, 72 };
+	SDL_Rect destrect = { 0, 0, 72, 72 };
+	SDL_BlitSurface(mother_surface, &srcrect, tmp, &destrect);
+
+	surf = mask_surface(tmp, mask);
+
+	SDL_FreeSurface(tmp);
+	
+	return surf;
+}
+
 }
 
 namespace image {
+
+bool locator::operator==(const locator& a) const 
+{
+	if(a.type != type)
+		return false;
+	
+	if(type == FILE)
+		return filename == a.filename;
+	
+	if(type == SUB_FILE)
+		return filename == a.filename && loc == a.loc;
+}
+
+bool locator::operator<(const locator &a) const
+{
+	if(type != a.type)
+		return type < a.type;
+
+	if(type == FILE)
+		return filename < a.filename;
+
+	if(type == SUB_FILE) {
+		if(filename != a.filename)
+			return filename < a.filename;
+
+		return loc < a.loc;
+	}
+}
 
 manager::manager() {}
 
@@ -159,19 +234,19 @@ void set_zoom(int amount)
 	}
 }
 
-SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT adjust_colour)
+SDL_Surface* get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adjust_colour)
 {
 	SDL_Surface* result = NULL;
 	if(type == GREYED) {
-		result = get_tinted(filename,GREY_IMAGE);
+		result = get_tinted(i_locator,GREY_IMAGE);
 	} else if(type == BRIGHTENED) {
-		result = get_tinted(filename,BRIGHTEN_IMAGE);
+		result = get_tinted(i_locator,BRIGHTEN_IMAGE);
 	} else {
 
 		image_map::iterator i;
 
 		if(type == SCALED) {
-			i = scaledImages_.find(filename);
+			i = scaledImages_.find(i_locator);
 			if(i != scaledImages_.end()) {
 				result = i->second;
 				sdl_add_ref(result);
@@ -180,7 +255,7 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 		}
 
 		if(type == UNMASKED) {
-			i = unmaskedImages_.find(filename);
+			i = unmaskedImages_.find(i_locator);
 			if(i != unmaskedImages_.end()) {
 				result = i->second;
 				sdl_add_ref(result);
@@ -188,25 +263,26 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 			}
 		}
 
-		i = images_.find(filename);
+		i = images_.find(i_locator);
 
 		if(i == images_.end()) {
-			const std::string images_path = "images/";
-			const std::string images_filename = images_path + filename;
 			SDL_Surface* surf = NULL;
 
-			if(game_config::path.empty() == false) {
-				const std::string& fullpath = game_config::path + "/" +
-				                              images_filename;
-				surf = IMG_Load(fullpath.c_str());
+			switch(i_locator.type)
+			{
+			case locator::FILE:
+				surf = load_image_file(i_locator);
+				break;
+			case locator::SUB_FILE:
+				surf = load_image_sub_file(i_locator);
+				break;
+			default:
+				surf = NULL;
 			}
+			
 
 			if(surf == NULL) {
-				surf = IMG_Load(images_filename.c_str());
-			}
-
-			if(surf == NULL) {
-				images_.insert(std::pair<std::string,SDL_Surface*>(filename,NULL));
+				images_.insert(std::pair<image::locator,SDL_Surface*>(i_locator,NULL));
 				return NULL;
 			}
 
@@ -216,7 +292,7 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 				surf = conv;
 			}
 
-			i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf)).first;
+			i = images_.insert(std::pair<image::locator,SDL_Surface*>(i_locator,surf)).first;
 		}
 
 		if(i->second == NULL)
@@ -255,9 +331,9 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 			}
 
 			if(type == UNMASKED) {
-				unmaskedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+				unmaskedImages_.insert(std::pair<image::locator,SDL_Surface*>(i_locator,result));
 			} else {
-				scaledImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
+				scaledImages_.insert(std::pair<image::locator,SDL_Surface*>(i_locator,result));
 			}
 		}
 	}
@@ -270,12 +346,12 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 	return result;
 }
 
-SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
+SDL_Surface* get_image_dim(const image::locator& i_locator, size_t x, size_t y)
 {
-	SDL_Surface* const surf = get_image(filename,UNSCALED);
+	SDL_Surface* const surf = get_image(i_locator,UNSCALED);
 	if(surf != NULL && (size_t(surf->w) != x || size_t(surf->h) != y)) {
 		SDL_Surface* const new_image = scale_surface(surf,x,y);
-		images_.erase(filename);
+		images_.erase(i_locator);
 
 		//free surf twice: once because calling get_image adds a reference.
 		//again because we also want to remove the cache reference, since
@@ -283,7 +359,7 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 		SDL_FreeSurface(surf);
 		SDL_FreeSurface(surf);
 
-		images_[filename] = new_image;
+		images_[i_locator] = new_image;
 		sdl_add_ref(new_image);
 		return new_image;
 	}
@@ -313,7 +389,7 @@ SDL_Surface* reverse_image(SDL_Surface* surf)
 	return rev;
 }
 
-void register_image(const std::string& id, SDL_Surface* surf)
+void register_image(const image::locator& id, SDL_Surface* surf)
 {
 	if(surf == NULL) {
 		return;
@@ -325,6 +401,11 @@ void register_image(const std::string& id, SDL_Surface* surf)
 	}
 
 	images_[id] = surf;
+}
+
+void register_image(const std::string &id, SDL_Surface* surf)
+{
+	register_image(locator(id), surf);
 }
 
 SDL_Surface* getMinimap(int w, int h, const gamemap& map, 

@@ -137,8 +137,8 @@ hexcorners_names_even=(ne se w)
 hexcorners_odd="70,35 17,70 17,0"
 hexcorners_names_odd=(e sw nw)
 margin=200 # Adds a margin to files
-width=70
-height=70
+width=72
+height=72
 i=0
 
 for angle in ${angles[*]}; do

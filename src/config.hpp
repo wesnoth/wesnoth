@@ -153,11 +153,16 @@ struct config
 	void clear_children(const std::string& key);
 	config* remove_child(const std::string& key, size_t index);
 
+	// REMOVE_EMPTY : remove empty elements
+	// STRIP_SPACES : strips leading and trailing blank spaces
+	enum { REMOVE_EMPTY = 0x01, STRIP_SPACES = 0x02 };
+	static std::vector<std::string> split(const std::string& val, char c=',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 	static std::string join(const std::vector<std::string>& v, char c=',');
-	static std::vector<std::string> split(const std::string& val, char c=',', bool remove_empty=true);
 	static std::vector<std::string> quoted_split(const std::string& val, char c=',',
-												 bool remove_empty=true, char quote='\\');
+						     int flags = REMOVE_EMPTY | STRIP_SPACES, char quote='\\');
+
 	static std::pair<int,int> parse_range(const std::string& str);
+	static bool notspace(char c);
 	static std::string& escape(std::string& str);
 	static std::string& unescape(std::string& str);
 	static std::string& strip(std::string& str);

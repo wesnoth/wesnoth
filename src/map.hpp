@@ -68,6 +68,9 @@ public:
 		bool operator<(const location& a) const;
 		bool operator==(const location& a) const;
 		bool operator!=(const location& a) const;
+		// Adds an absolute location to a "delta" location
+		location operator+(const location &a) const;
+		location &operator+=(const location &a);
 
 		location get_direction(DIRECTION d) const;
 
@@ -131,6 +134,9 @@ public:
 	//for a given type of terrain
 	const terrain_type& get_terrain_info(TERRAIN terrain) const;
 
+	//shortcut to get_terrain_info(get_terrain(loc))
+	const terrain_type& get_terrain_info(const location &loc) const;
+	
 	//gets the list of which terrain types should display on top of
 	//other terrain types. Has no effect on gameplay, only display.
 	const std::vector<TERRAIN>& get_terrain_precedence() const;

@@ -33,6 +33,8 @@ namespace game_config
 
 	std::string missile_n_image, missile_ne_image;
 
+	std::string terrain_mask_image = "terrain/alphamask.png";
+
 	std::string map_image = "misc/map.png";
 	std::string rightside_image = "misc/rightside.png";
 	std::string rightside_image_bot = "misc/rightside-bottom.png";
@@ -45,7 +47,7 @@ namespace game_config
 
 	std::string dot_image = "misc/dot.png";
 	std::string cross_image = "misc/cross.png";
-
+	
 	std::string foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
 
 	std::string observer_image;
@@ -108,6 +110,8 @@ namespace game_config
 		missile_n_image = v["missile_n_image"];
 		missile_ne_image = v["missile_ne_image"];
 
+		terrain_mask_image = v["terrain_mask_image"];
+		
 		observer_image = v["observer_image"];
 	}
 }

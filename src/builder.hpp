@@ -15,7 +15,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
-
+#include "image.hpp"
 #include "SDL.h"
 
 #include <string>
@@ -32,25 +32,73 @@ public:
 	//returns a vector of string representing the images to load & blit together to get the
 	//built content for this tile.
 	//Returns NULL if there is no built content for this tile.
-	const std::vector<std::string> *terrain_builder::get_terrain_at(const gamemap::location &loc,
-								  ADJACENT_TERRAIN_TYPE terrain_type) const;
+	const std::vector<image::locator> *get_terrain_at(const gamemap::location &loc,
+						       ADJACENT_TERRAIN_TYPE terrain_type) const;
 	// regenerate the generated content at the given location.
-    void rebuild_terrain(const gamemap::location &loc);
+	void rebuild_terrain(const gamemap::location &loc);
 
 private:
-	//pre-calculates the list of generated content for all tiles (will slow the game
-	//too much otherwise)
-	void build_terrains();
-	//returns a vector of strings representing the images for a given tile. Same as 
-	//get_terrain_at, except that the content is actually generated there.
-	std::vector<std::string> build_terrain_at(const gamemap::location &loc, 
-						  ADJACENT_TERRAIN_TYPE terrain_type);
+	struct terrain_constraint
+	{
+		terrain_constraint() : loc() {};
 		
-	const config::child_list cfg_;
-	const gamemap& map_;
+		terrain_constraint(gamemap::location loc) : loc(loc) {};
+		
+		gamemap::location loc;
+		std::string terrain_types;
+		std::vector<std::string> set_flag;
+		std::vector<std::string> no_flag;
+	};
 
-	typedef std::map<gamemap::location, std::vector<std::string> > buildings_map;
-	buildings_map buildings_background, buildings_foreground;
+	struct building_rule
+	{
+		typedef std::map<gamemap::location, terrain_constraint> constraint_set;
+		constraint_set constraints;
+		gamemap::location location_constraints;
+
+		std::string image_foreground;
+		std::string image_background;
+	};
+	
+	struct tile
+	{
+		std::set<std::string> flags;
+		std::vector<image::locator> images_foreground;
+		std::vector<image::locator> images_background;
+	};
+
+	struct tilemap
+	{
+		tilemap(int x, int y) : x_(x), y_(y), map_((x+2)*(y+2)) {}
+
+		tile &operator[](const gamemap::location &loc) { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
+		const tile &operator[] (const gamemap::location &loc) const { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
+		std::vector<tile> map_;
+		int x_;
+		int y_;
+	};
+
+	terrain_constraint rotate(const terrain_constraint &constraint, int angle);
+	void replace_rotation(std::string &s, const std::string &replacement);
+
+	building_rule rotate_rule(const building_rule &rule, int angle, const std::string &angle_name);
+	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
+			     const gamemap::location &loc, std::string type,
+			     std::string set_flag = "", std::string no_flag = "");
+	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
+			     std::map<int, gamemap::location>& anchors);
+	
+	void parse_config(const config &cfg);
+	bool rule_matches(const building_rule &rule, const gamemap::location &loc);
+	void apply_rule(const building_rule &rule, const gamemap::location &loc);
+	void build_terrains(const config& cfg);
+	
+	const gamemap& map_;
+	tilemap tile_map_;
+
+	typedef std::vector<building_rule> building_ruleset;
+	building_ruleset building_rules_;
+
 };
 
 #endif

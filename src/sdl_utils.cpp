@@ -381,6 +381,49 @@ SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount)
 	return clone_surface(surf);
 }
 
+// Applies a mask on a surface
+SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
+{
+	if(surface == NULL) {
+		return NULL;
+	}
+
+	scoped_sdl_surface surf(make_neutral_surface(surface));
+	scoped_sdl_surface nmask(make_neutral_surface(mask));
+	
+	if(surf == NULL || nmask == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{
+		surface_lock lock(surf);
+		surface_lock mlock(nmask);
+		
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + surf->w*surf->h;
+		Uint32* mbeg = mlock.pixels();
+		Uint32* mend = mbeg + nmask->w*nmask->h;
+
+		while(beg != end && mbeg != mend) {
+			Uint8 red, green, blue, alpha;
+			Uint8 mred, mgreen, mblue, malpha;
+
+			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
+			SDL_GetRGBA(*mbeg,nmask->format,&mred,&mgreen,&mblue,&malpha);
+
+			alpha = Uint8(minimum<int>(malpha, alpha));
+
+			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
+
+			++beg;
+			++mbeg;
+		}
+	}
+
+	return clone_surface(surf);
+}
+
 SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 {
 	if(surface == NULL) {

@@ -55,6 +55,7 @@ SDL_Surface* brighten_image(SDL_Surface* surface, double amount);
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& rect);
 SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount);
 SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount);
+SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask);
 SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour);
 SDL_Surface* flip_surface(SDL_Surface* surface);
 SDL_Surface* flop_surface(SDL_Surface* surface);
