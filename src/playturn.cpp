@@ -1576,7 +1576,8 @@ void turn_info::recruit()
 
 		recruit_res = gui::show_dialog(gui_,NULL,"",
 		                                 string_table["recruit_unit"] + ":\n",
-		                                 gui::OK_CANCEL,&items,&preview_panes);
+		                                 gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
+										 NULL,NULL,"recruit_and_recall");
 	}
 
 	if(recruit_res != -1) {

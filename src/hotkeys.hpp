@@ -156,17 +156,20 @@ public:
 //is still meaningful to call with executor=NULL
 void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
 
+void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor);
+
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor);
 
 //object which will ensure that basic keyboard events like escape
 //are handled properly for the duration of its lifetime
 struct basic_handler : public events::handler {
-	basic_handler(display* disp);
+	basic_handler(display* disp, command_executor* exec=NULL);
 
 	void handle_event(const SDL_Event& event);
 
 private:
 	display* disp_;
+	command_executor* exec_;
 };
 
 }

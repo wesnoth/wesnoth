@@ -140,7 +140,8 @@ int show_dialog(display& screen, SDL_Surface* image,
                 dialog_action* action=NULL,
 				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
 				const std::string* dialog_style=NULL,
-				std::vector<dialog_button>* buttons=NULL
+				std::vector<dialog_button>* buttons=NULL,
+				const std::string& help_topic=""
 			 );
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

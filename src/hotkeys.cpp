@@ -18,6 +18,7 @@
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 #include "video.hpp"
 
 #include "SDL.h"
@@ -117,7 +118,17 @@ hotkey_item::hotkey_item(const config& cfg) : lastres(false)
 {
 	action = string_to_command(cfg["command"]);
 
-	keycode = cfg["key"].empty() ? 0 : cfg["key"][0];
+	const std::string& code = cfg["key"];
+	if(code.empty()) {
+		keycode = 0;
+	} else if(code.size() >= 2 && tolower(code[0]) == 'f') {
+		const int num = lexical_cast_default<int>(std::string(code.begin()+1,code.end()),1);
+		keycode = num + SDLK_F1 - 1;
+		std::cerr << "set key to F" << num << " = " << keycode << "\n";
+	} else {
+		keycode = code[0];
+	}
+	
 	alt = (cfg["alt"] == "yes");
 	ctrl = (cfg["ctrl"] == "yes");
 	shift = (cfg["shift"] == "yes");
@@ -205,12 +216,19 @@ void change_hotkey(hotkey_item& item)
 	}
 }
 	
-basic_handler::basic_handler(display* disp) : disp_(disp) {}
+basic_handler::basic_handler(display* disp, command_executor* exec) : disp_(disp), exec_(exec) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
-	if(event.type == SDL_KEYDOWN && !gui::in_dialog() && disp_ != NULL) {
-		key_event(*disp_,event.key,NULL);
+	if(event.type == SDL_KEYDOWN && disp_ != NULL) {
+
+		//if we're in a dialog we only want to handle things that are explicitly handled
+		//by the executor. If we're not in a dialog we can call the regular key event handler
+		if(!gui::in_dialog()) {
+			key_event(*disp_,event.key,exec_);
+		} else if(exec_ != NULL) {
+			key_event_execute(*disp_,event.key,exec_);
+		}
 	}
 }
 
@@ -233,7 +251,15 @@ void save_hotkeys(config& cfg)
 			item = &cfg.add_child("hotkey");
 
 		(*item)["command"] = action_name;
-		(*item)["key"] = i->keycode;
+
+		if(i->keycode >= SDLK_F1 && i->keycode <= SDLK_F12) {
+			std::string str = "FF";
+			str[1] = '1' + i->keycode - SDLK_F1;
+			(*item)["key"] = str;
+		} else {
+			(*item)["key"] = i->keycode;
+		}
+
 		(*item)["alt"] = (i->alt) ? "yes" : "no";
 		(*item)["ctrl"] = (i->ctrl) ? "yes" : "no";
 		(*item)["shift"] = (i->shift) ? "yes" : "no";
@@ -271,6 +297,11 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 		}
 	}
 
+	key_event_execute(disp,event,executor);
+}
+
+void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
+{
 	std::vector<hotkey_item>::iterator i = std::find_if(hotkeys.begin(),hotkeys.end(),hotkey_pressed(event));
 
 	if(i == hotkeys.end()) {

@@ -15,6 +15,8 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "help.hpp"
+#include "hotkeys.hpp"
 #include "image.hpp"
 #include "language.hpp"
 #include "playlevel.hpp"
@@ -312,6 +314,32 @@ size_t text_to_lines(std::string& message, size_t max_length)
 	return longest_line;
 }
 
+namespace {
+
+struct help_handler : public hotkey::command_executor
+{
+	help_handler(display& disp, const std::string& topic) : disp_(disp), topic_(topic)
+	{}
+
+private:
+	void show_help()
+	{
+		if(topic_.empty() == false) {
+			help::show_help(disp_,topic_);
+		}
+	}
+
+	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd) const
+	{
+		return topic_.empty() == false && cmd == hotkey::HOTKEY_HELP;
+	}
+
+	display& disp_;
+	std::string topic_;
+};
+
+}
+
 int show_dialog(display& disp, SDL_Surface* image,
                 const std::string& caption, const std::string& msg,
                 DIALOG_TYPE type,
@@ -320,7 +348,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
                 dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
-				const std::string* dialog_style, std::vector<dialog_button>* action_buttons)
+				const std::string* dialog_style, std::vector<dialog_button>* action_buttons,
+				const std::string& help_topic)
 {
 	if(disp.update_locked())
 		return -1;
@@ -334,6 +363,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;
+
+	help_handler helper(disp,help_topic);
+	hotkey::basic_handler help_dispatcher(&disp,&helper);
 
 	const std::vector<std::string>& menu_items =
 	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
@@ -547,6 +579,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 	for(std::vector<button>::iterator bt = buttons.begin(); bt != buttons.end(); ++bt) {
 		buttons_ptr.push_back(&*bt);
 	}
+
+	button help_button(disp,string_table["action_help"]);
+	if(help_topic.empty() == false) {
+		buttons_ptr.push_back(&help_button);
+	}
+
 
 	frame_width += left_preview_pane_width + right_preview_pane_width;
 	frame_height += above_preview_pane_height;
@@ -786,6 +824,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 					return -1;
 				}
 			}
+		}
+
+		if(help_topic.empty() == false && help_button.pressed()) {
+			help::show_help(disp,help_topic);
 		}
 
 		for(unsigned int n = 0; n != check_buttons.size(); ++n) {
