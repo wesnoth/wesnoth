@@ -162,6 +162,15 @@ std::vector<std::string> get_saves_list()
 	return res;
 }
 
+
+bool save_game_exists(const std::string & name)
+{
+	std::string fname = name;
+	std::replace(fname.begin(),fname.end(),' ','_');
+	
+	return file_exists(get_saves_dir() + "/" + fname);
+}
+
 void load_game(game_data& data, const std::string& name, game_state& state)
 {
 	log_scope("load_game");

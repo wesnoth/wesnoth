@@ -37,4 +37,7 @@ std::string get_user_data_dir();
 //function which returns true iff the given file is a directory
 bool is_directory(const std::string& fname);
 
+//function which returns true iff file with name already exists
+bool file_exists(const std::string& name);
+
 #endif

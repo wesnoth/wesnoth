@@ -101,9 +101,12 @@ struct game_state
 
 //function to get a list of available saves.
 std::vector<std::string> get_saves_list();
+// function returns true iff there is already savegame with that name
+bool save_game_exists(const std::string & name);
 
 //functions to load/save games.
 void load_game(game_data& data, const std::string& name, game_state& state);
 void save_game(const game_state& state);
+
 
 #endif

@@ -41,6 +41,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <fstream>
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
@@ -258,3 +259,13 @@ bool is_directory(const std::string& fname)
 
 	return is_directory_internal(fname);
 }
+
+bool file_exists(const std::string& name)
+{
+	std::ifstream file(name.c_str());
+	if (file.rdstate() != 0)
+	        return false;
+	file.close();
+        return true;
+}
+

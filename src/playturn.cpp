@@ -953,8 +953,17 @@ void turn_info::save_game()
 	       << " " << status_.turn();
 	std::string label = stream.str();
 
-	const int res = gui::show_dialog(gui_,NULL,"","",gui::OK_CANCEL,NULL,NULL,
-	                                 string_table["save_game_label"],&label);
+	int overwrite=0;
+        int res=0;
+         
+        do {
+                res = gui::show_dialog(gui_,NULL,"","",gui::OK_CANCEL,NULL,NULL,
+                                         string_table["save_game_label"],&label);
+                if (res == 0 && save_game_exists(label))
+                        overwrite = gui::show_dialog(gui_,NULL,"",
+                                        string_table["save_confirm_overwrite"],gui::YES_NO);
+                else overwrite = 0;
+        } while ((res==0)&&(overwrite!=0));
 
 	if(res == 0) {
 		recorder.save_game(gameinfo_,label);
