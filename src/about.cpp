@@ -81,6 +81,7 @@ std::vector<std::string> get_text() {
 	text.push_back("-   John-Robert Funck (XJaPaN)");
  	text.push_back("-   Jonatan Alamà (tin)");
  	text.push_back("-   Joseph Simmons (Turin)");
+	text.push_back("-   J.W. Bjerk (Eleazar)");
 	text.push_back("-   J.W.C. McNabb (Darth Fool)");
  	text.push_back("-   Neorice");
 	text.push_back("-   Richard Kettering (Jetryl)");
