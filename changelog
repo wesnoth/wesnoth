@@ -1,10 +1,12 @@
 CVS HEAD:
- * theme update
- * added new sounds and attack icons
+ * theme update, scrollbars
+ * added new sounds, unit images and attack icons
  * invisibility now "wears off" when enemy unit comes adjacent (#6879)
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Gryphon Mountain
  * new units:
    * Footpad
- * language fixes (english)
+ * language fixes and polishing (english)
  * new translations:
    * finnish
    * portuguese-Brazilian
@@ -17,6 +19,7 @@ CVS HEAD:
    * norwegian
    * swedish
    * spanish 
+ * campaigns can customize difficulty level icons
  * fixed teleporting displaying incorrectly where unit can move
  * fixed crash when you press escape when a menu is displayed (#7863)
  * fixed unit descriptions leaking thru fog of war (#7843)
@@ -26,9 +29,15 @@ CVS HEAD:
  * fixed focus not returning Konrad on new turn (#7188)
  * fixed wrapping of text in opening sequence (#7878)
  * fixed bug where on large maps, the cursor wouldn't point at the correct hex toward the eastern side of the map
- * tweaks to the widget class, fixes to the textbox widget
- * removed some debug cerrs
+ * fixed scroll speeds being set to insane values
+ * fixed bug where AI could see potential movement of enemy units
+ * fixed bug where Blackwater Port was easier than it was meant to be on 'normal' level
+ * made it easier for different AI algorithms to be added
+ * added Doxygen documentation to ai_interface
+ * autotools fix: Now make uninstall removes data directories if empty
  * refactored widget class
+ * removed some debug cerrs
+ * added VC++6 project files to CVS
 
 Version 0.6.99.4:
  * added alpha channel
