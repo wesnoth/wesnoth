@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-08-08 15:00+0200\n"
-"PO-Revision-Date: 2004-10-01 18:57+0100\n"
+"PO-Revision-Date: 2004-10-05 16:45+0100\n"
 "Last-Translator: rockstar <lcspra@tin.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -12,26 +12,28 @@ msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:6
 msgid "The Eastern Invasion"
-msgstr ""
+msgstr "L'invasione dell'Est"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
 msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
+"&human-spearman.png,Arpionatore,(facile);*&human-swordman.png,Spadaccino;"
+"&human-royalguard.png,Guardia Reale,(difficile)"
 
 #: data/campaigns/Eastern_Invasion.cfg:11
 msgid ""
 "Lead the loyal armies of Wesnoth in battle against the undead hordes from "
 "the East."
 msgstr ""
+"Conduci il fedele esercito di Wesnoth contro le orde non-morte dell'Est."
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:4
 msgid "Approaching Weldyn"
 msgstr "Avvicnamento a Weldyn"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:25
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -49,7 +51,7 @@ msgstr ""
 "#Morte di Gweddry\n"
 "#Morte di Dacyn\n"
 "#Morte di Owaec\n"
-"#Morte di Sudoc"
+"#Morte di Konrad II"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:125
 msgid ""
@@ -539,7 +541,6 @@ msgid "The Escape Tunnel"
 msgstr "Il Tunnel di Fuga"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -551,7 +552,7 @@ msgid ""
 msgstr ""
 "\n"
 "Vittoria:\n"
-"@Sconfiggi il necromante o il lich\n"
+"@Raggiungi la fine del tunnel\n"
 "Sconfitta:\n"
 "#Morte di Gweddry\n"
 "#Morte di Dacyn\n"
@@ -562,19 +563,17 @@ msgid "Where are we? I can't see where we are going."
 msgstr "Dove siamo? Non riesco a vedere dove stiamo andando."
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:101
-#, fuzzy
 msgid ""
 "I do not know. There are trolls in here, which may try to fight us. Now "
 "hurry, we have to move quickly with those Lichs still behind us."
 msgstr ""
 "Non lo so. Ci sono dei troll qui e di sicuro proveranno ad attaccarci. "
-"Adesso in fretta, dobbiamo muoverci rapidamente dato che il Lich è sempre al "
-"nostro inseguimento."
+"Adesso in fretta, dobbiamo muoverci rapidamente dato che i Lich sono sempre "
+"al nostro inseguimento."
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:122
-#, fuzzy
 msgid "This sign says 'Dead End'."
-msgstr "Il cartello dice \"Vicolo Cieco\""
+msgstr "Il cartello dice 'Vicolo Cieco'"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:135
 msgid "Who goes there?"
@@ -604,9 +603,8 @@ msgstr ""
 "C'è una grande fortuna in questo scrigno! Posso contare duecento pezzi d'oro!"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:281
-#, fuzzy
 msgid "We have found you, human! Prepare to die!"
-msgstr "Vi abbiamo trovati, umani. Preparatevi a morire!"
+msgstr "Vi abbiamo trovati, umani! Preparatevi a morire!"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:286
 msgid ""
@@ -617,11 +615,10 @@ msgstr ""
 "notizia. Ma comunque dobbiamo raggiungere la fine del tunnel!"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:300
-#, fuzzy
 msgid "We have reached the end of the escape tunnel. I see daylight above us!"
 msgstr ""
 "Abbiamo raggiunto la fine del tunnel di fuga. Vedo i raggi del sole sopra di "
-"noi."
+"noi!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:4
 msgid "Evacuation"
@@ -670,7 +667,6 @@ msgid "Why would we want to do that?!?"
 msgstr "Perché dovremmo volere una cosa simile?!?"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
-#, fuzzy
 msgid ""
 "Well, I see those arcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you escape."
@@ -691,7 +687,6 @@ msgid "Very well, but you only get it once the bridge is down."
 msgstr "Molto bene, ma li avrai solo una volta che il ponte sarà caduto."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
-#, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. Thats where my "
 "eq'pment is."
@@ -741,15 +736,14 @@ msgstr ""
 "Sono ancora a nord del ponte. Gweddry! Perché l'hai fatto saltare in aria!?!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
-#, fuzzy
 msgid ""
 "Good, we have escaped from these orcs. Now we have to go south. I think the "
 "undead probably aren't as numerous this far west, so we won't get "
 "immediately killed, anyway."
 msgstr ""
-"Bene, siamo scappati da questi orchi. Adesso dobbiamo andare a sud. Penso "
-"che probabilmente i non-morti non siano così numerosi da queste parti, così "
-"non verrò immediatamente ucciso."
+"Bene, siamo scappati da questi orchi. Adesso dobbiamo andare a sud. "
+"Probabilmente i non-morti non sono così numerosi da queste parti, così non "
+"verrò immediatamente ucciso."
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:320
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
@@ -761,7 +755,6 @@ msgstr ""
 "Non abbiamo fatto saltare in tempo il ponte! Gli orchi ci uccideranno tutti!"
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
-#, fuzzy
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as numerous this far west."
@@ -976,7 +969,6 @@ msgstr ""
 "aiutare a riprendere il controllo del nostro avamposto?"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:160
-#, fuzzy
 msgid ""
 "I am not sure. There are bandits in this country, and it is they who rule "
 "this land, not the king. My men are afraid of them, and refuse to come out "
@@ -987,7 +979,8 @@ msgstr ""
 "Non ne sono certo. Ci sono banditi in questo paese e sono loro a controllare "
 "la zona, non il re. I miei uomini hanno paura di loro e si rifiutano di "
 "uscire a combatterli. Come vedi, anche se ho molti uomini, stanno riunchiusi "
-"nelle loro stanze. I ladri si nascondono nei villaggi."
+"nelle loro stanze. I ladri si nascondono nei villaggi quando usciamo in "
+"ronda, e ci attaccano quando ci separiamo."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:165
 msgid ""
@@ -1053,6 +1046,8 @@ msgid ""
 "You have gotten rid of some of these bandits, but I fear many still remain. "
 "Keep searching."
 msgstr ""
+"Ti sei liberato di questi banditi ma ho paura che molti di loro siano in "
+"zona. Continuiamo a cercare."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:356
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:357
@@ -1063,7 +1058,7 @@ msgstr ""
 msgid ""
 "Good work so far. I suspect we have significantly weakened the bandit's "
 "number."
-msgstr ""
+msgstr "Bel lavoro. Abbiamo di sicuro decimato il numero dei banditi."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:364
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:365
@@ -1076,6 +1071,8 @@ msgid ""
 "I think you have killed most of them. I hope those that are left don't kill "
 "us."
 msgstr ""
+"Penso che tu ne abbia uccisa una gran parte. Spero che quelli rimasti non ci "
+"uccidano."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
 msgid "Training the Ogres"
@@ -2119,7 +2116,6 @@ msgid "Weldyn under Attack"
 msgstr "Weldyn Sotto Attacco"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:39
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -2137,25 +2133,23 @@ msgstr ""
 "#Morte di  Gweddry\n"
 "#Morte di Dacyn\n"
 "#Morte di Owaec\n"
-"#Morte di Sudoc\n"
 "#Morte di Konrad"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:197
-#, fuzzy
 msgid ""
 "We will fight soon, my lord. Look, night approaches- they will soon attack. "
 "I hope we can hold them off."
 msgstr ""
-"Abbiamo bisogno di combattere presto, mio signore. Guardate, la notte si sta "
-"avvicinando - ci attaccheranno presto. Speriamo di riuscire a fermarli."
+"Combatteremo presto, mio signore. Guardate, la notte si sta avvicinando - ci "
+"attaccheranno presto. Speriamo di riuscire a fermarli."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:202
 msgid "Very well. But is this... Mal-Ravanal, that you spoke of, is he here?"
-msgstr ""
+msgstr "Molto bene. Ma è... Mal-Ravanal, quello di cui parlavi, è qui?"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:207
 msgid "I do not think so, but he might be here, hiding."
-msgstr ""
+msgstr "Non credo, ma potrebbe essere qui, magari si sta nascondendo."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:212
 msgid ""
@@ -2167,7 +2161,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:225
 msgid "Look, the undead are tearing down our defences!"
-msgstr ""
+msgstr "Guarda, i non-morti stanno sconfiggendo le nostre difese!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:249
 msgid "I have died, and with me the city shall fall."
@@ -2183,7 +2177,7 @@ msgstr "Vengo a portarvi un messaggio da parte del mio comandante:"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:278
 msgid "Very well, you may read it. (it might tell us something useful)."
-msgstr ""
+msgstr "Molto bene, puoi leggerlo. (potrebbe dirti qualcosa di utile)."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:283
 msgid ""
@@ -2194,27 +2188,36 @@ msgid ""
 "Gweddry, as a commander, are a coward. You claim to have defeated my lord's "
 "captains, but it was really your hordes, not you."
 msgstr ""
+"Dice: Bene, hai sconfitto alcuni dei miei capitani. Bel lavoro. Ma era solo "
+"una piccola parte della mia orda. Per me sarebbe molto semplice ucciderti. "
+"Ma non credo che agendo così venga resa giustizia al mio potere. Intendo il "
+"mio personale potere, non quello della mia legione. E ciò mi conduce al "
+"secondo punto. Tu, Gweddry, come comandante, sei un codardo. Ti vanti di "
+"aver sconfitto i miei capitani, ma sono state le tue orde, non tu."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:288
 msgid "What is the point of this message? All you do is insult us!"
-msgstr ""
+msgstr "Qual è il punto di questo messaggio? E' solo un insieme di insulti!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:293
-#, fuzzy
 msgid ""
 "The point is that Gweddry could not have defeated my lord's minions without "
 "the help of his slaves! I doubt Gweddry could even last two seconds in "
 "actual combat. And my Lord will prove it. He challenges you, Gweddry, to a "
 "contest, a battle."
 msgstr ""
-"SILENZIO! Dice: dubito che Gweddry sarebbe durato più di due secondi in "
-"battaglia. E lo proverò. Ti sfido in duello Gweddry."
+"Il punto è che Gweddry non sarebbe stato in grado di uccidere i miei "
+"capitani senza l'aiuto dei suoi schiavi! Dubito che Gweddry sarebbe durato "
+"più di due secondi in battaglia. E il mio padrone lo proverà. Ti sfida in "
+"duello Gweddry, in battglia."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:298
 msgid ""
 "What are his terms? I won't accept anything obviously weighted towards his "
 "victory!"
 msgstr ""
+"Quale sono le sue condizioni? Non accetterò niente orientato a facilitare la "
+"sua vittoria!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:303
 msgid ""
@@ -2222,18 +2225,19 @@ msgid ""
 "your six best warriors and I will pick my six best. Then we will fight, to "
 "the death, until either you or he is destroyed!"
 msgstr ""
+"Ciò dimostra che sei un codardo. Comunque, queste sono le condizioni: Puoi "
+"portare i tuoi sei miglior guerrieri ed io porterò i miei migliori sei. Poi "
+"combatteremo fino alla morte finché uno dei due non sarà morto!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:308
-#, fuzzy
 msgid ""
 "Gweddry, I don't think you should accept. He will bring more than seven "
 "undead to the battle; he will bring a whole army!"
 msgstr ""
-"Questa è una nozione di duello interessante. Gweddry, non credo che dovresti "
-"accettare. Porterà più di sette non-morti nel 'duello'."
+"Gweddry, credo che non dovresti accettare. Porterà con se più di sette non-"
+"morti; porterà tutto il suo esercito!"
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:313
-#, fuzzy
 msgid ""
 "Well, I think you should accept. This at least guarantees a somewhat fair "
 "fight, and otherwise we will have to face the whole undead army."
@@ -2243,7 +2247,6 @@ msgstr ""
 "non-morti."
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:318
-#, fuzzy
 msgid ""
 "I will simplify your choice. Accept, or face the onslaught of my lord's "
 "hordes, like the coward that you are."
@@ -2321,7 +2324,6 @@ msgstr ""
 "stese un piano per salvare le carovane orientali."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:29
-#, fuzzy
 msgid ""
 "In the days of the king Garard I, three outposts had been built along the "
 "eastern border to stop Orcish raiders from the east from entering Wesnoth. "
@@ -2330,8 +2332,8 @@ msgid ""
 msgstr ""
 "Nei giorni di Re Garard I, tre avamposti vennero costruiti lungo i confini "
 "orientali per fermare gli Orchi che entravano nel regno di Wesnoth da est. "
-"Le terre oltre le montagne marcirono e gli orchi lasciarono le montagne e "
-"stipularono una tregua."
+"Da quel giorno, le terre attorno le montagne marcirono e gli orchi "
+"lasciarono le montagne per insediarsi nelle terre del Nord."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:33
 msgid ""
@@ -2342,16 +2344,14 @@ msgstr ""
 "ufficiali più promettenti a proteggere le carovane."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:37
-#, fuzzy
 msgid ""
 " In the north he sent Owaec, a leader from the clans. In the south, he sent "
 "Sudoc, an accomplished fencer. And in the middle, in the place most likely "
 "to be attacked, he sent Gweddry, who would be accompanied by Dacyn the mage."
 msgstr ""
-"A nord mandò Owaec, che in passato fu capitano della fanteria pesante. A "
-"sud, mandò Sudoc, abile comandante e cavaliere. E al centro, nel posto "
-"maggiormente esposto ad attacchi mandò Gweddry che venne accompagnato dal "
-"mago Dacyn."
+"A nord mandò Owaec, un condottiero dell'esercito. A sud, mandò Sudoc, abile "
+"spadaccino. E al centro, nel posto maggiormente esposto ad attacchi mandò "
+"Gweddry che venne accompagnato dal mago Dacyn."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:41
 msgid ""
@@ -2363,171 +2363,9 @@ msgstr ""
 "Gweddry iniziarono a diventare meno cauti."
 
 #: data/scenarios/Eastern_Invasion/intro.cfg:45
-#, fuzzy
 msgid ""
 "Then, at dawn one day, Gweddry and his men were roused by startled cry of "
 "the night watchmen..."
 msgstr ""
-"Poi, al tramonto esattamente un anno dopo il primo attacco, Gweddry ed i "
-"suoi uomini vennero svegliati dal pianto della sentinella notturna..."
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Reach the end of the tunnel\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry"
-#~ msgstr ""
-#~ "\n"
-#~ "Vittoria:\n"
-#~ "@Raggiungi la fine del tunnel\n"
-#~ "Sconfitta:\n"
-#~ "#Morte di Gweddry"
-
-#~ msgid "{M}"
-#~ msgstr "{M}"
-
-#~ msgid ""
-#~ "I will hold my gate. With my quick and skillful warriors I can resist the "
-#~ "undead, at least for a while."
-#~ msgstr ""
-#~ "Difenderò la mia porta. Con i miei veloci e ben addestrati guerrieri "
-#~ "posso resistere ai non-morti... almeno per un po'."
-
-#~ msgid ""
-#~ "Yes, and my people may be slow, but their blows are the most powerful of "
-#~ "all. I can hold my post."
-#~ msgstr ""
-#~ "Sì, e la mia gente può essere lenta, ma i loro colpi sono i più potenti "
-#~ "in assoluto. Posso difendere la mia posizione."
-
-#~ msgid ""
-#~ "Archers are the most powerful fighters of all, as they shall prove in the "
-#~ "upcoming battle."
-#~ msgstr ""
-#~ "Gli arcieri sono i più potenti combattenti in assoluto come vedrete in "
-#~ "battaglia."
-
-#~ msgid ""
-#~ "Peace, my sons! We are fighting the enemy, there is no need for rivalry "
-#~ "within our camp."
-#~ msgstr ""
-#~ "Pace, miei figli! Stiamo combattendo il nemico, non c'è bisogno di queste "
-#~ "rivalità tra le nostre truppe."
-
-#~ msgid "No! These undead have defeated me!"
-#~ msgstr "No! Questi non-morti mi hanno sconfitto!"
-
-#~ msgid "And now we will revive you to serve us, as an undead Knight!"
-#~ msgstr "E adesso ti faremo risorgere per servirci come Cavaliere non-morto!"
-
-#~ msgid "Time to defeat these pesky humans, in my new body."
-#~ msgstr "E' il momento di uccidere questi deboli umani, nel mio nuovo corpo."
-
-#~ msgid ""
-#~ "No! I have been defeated! I only hope the undead do not raise me to fight "
-#~ "against you!"
-#~ msgstr ""
-#~ "No! Sono stato sconfitto! Spero solo che i non-morti non mi rianimino per "
-#~ "combattere contro di voi!"
-
-#~ msgid "Oh, don't worry, we will. Mwahahahahaha!!!"
-#~ msgstr "Oh, non ti preoccupare, lo faremo! Mwahahahahaha!!!"
-
-#~ msgid "Well, my one-time father, let us see who will last out the night!"
-#~ msgstr "Bene, mio padre di un tempo, vediamo chi sopravviverà stanotte!"
-
-#~ msgid ""
-#~ "Its difficult to defeat these undead. It will be much easier to join them."
-#~ msgstr ""
-#~ "E' difficile sconfiggere questi non-morti. Sarebbe più semplice unirsi a "
-#~ "loro."
-
-#~ msgid "Huh?"
-#~ msgstr "Huh?"
-
-#~ msgid "You idiot, I'm defecting!"
-#~ msgstr "Tu idiota, cambio posizione!"
-
-#~ msgid "You traitor!"
-#~ msgstr "Tu, traditore!"
-
-#~ msgid "Yes! Now my victory is assured!"
-#~ msgstr "Sì! Adesso la mia vittoria è sicura!"
-
-#~ msgid "Come, my warriors, let us defeat this foolish King!"
-#~ msgstr "Venite miei guerrieri, andiamo a sconfiggere quel folle Re!"
-
-#~ msgid "Now I shall be the king of the undead Wesnoth!"
-#~ msgstr "Adesso diventerò il re dei non-morti di Wesnoth!"
-
-#~ msgid ""
-#~ "He says: Well, you have defeated some of my captains. Good job. But that "
-#~ "was only a small fraction of my horde."
-#~ msgstr ""
-#~ "Dice: Bene, avete sconfitto alcuni dei miei capitani. Buon lavoro. Ma "
-#~ "quella era solo una piccola parte della mia orda."
-
-#~ msgid "What is your point?"
-#~ msgstr "Qual è il punto?"
-
-#~ msgid ""
-#~ "He says: Well, it would be very easy for me to defeat you. But I don't "
-#~ "think it would do justice to my power."
-#~ msgstr ""
-#~ "Dice: Beh, sarà molto semplice per me sconfiggervi. Ma non credo che "
-#~ "renderebbe giustizia al mio potere."
-
-#~ msgid ""
-#~ "We don't care about honoring your power. Attack us with all your might, "
-#~ "we don't care!"
-#~ msgstr ""
-#~ "Non ci interessa onorare il tuo potere. Attaccaci con tutte le tue "
-#~ "armate, non ci interessa!"
-
-#~ msgid ""
-#~ "My lord has anticipated your whim. He says: Shut up, fool! I meant my own "
-#~ "power, not the power of my legions. And that brings me to my second "
-#~ "point. You, Gweddry, as a commander, are a coward."
-#~ msgstr ""
-#~ "Il mio padrone vi ha anticipato. Dice: Zitto stupido! Intendo il mio "
-#~ "personale potere, non il potere delle mie legioni. E ciò mi porta al "
-#~ "secondo punto. Tu Gweddry, come comandantye sei un codardo."
-
-#~ msgid "What, me, a coward!?! Why!?!"
-#~ msgstr "Cosa, io, un codardo!?! Perché !?!"
-
-#~ msgid ""
-#~ "Yes, you, a coward. He says: You claim to have defeated my lord's "
-#~ "captains, but it was really your hordes, not you."
-#~ msgstr ""
-#~ "Sì, tu, un cordardo. Dice: Ti vanti di aver ucciso i miei capitani, ma "
-#~ "sono state le tue orde, non tu."
-
-#~ msgid ""
-#~ "Hordes is a name used for undead. We prefer to call ourselves an army."
-#~ msgstr ""
-#~ "Orde è un nome usato dai non-morti. Noi preferiamo chiamarci esercito."
-
-#~ msgid ""
-#~ "Silence, fool! The point is that Gweddry could not have defeated my "
-#~ "lord's minions without the help of his slaves!"
-#~ msgstr ""
-#~ "Zitto stupido! Il punto è che Gweddry non avrebbe mai sconfitto i miei "
-#~ "capitani seniza l'aiuto dei suoi schiavi!"
-
-#~ msgid "I'm not a slave! And YOU'RE the fool!"
-#~ msgstr "Io non sono uno schiavo! E SEI TU lo stupido!"
-
-#~ msgid "I'm not going to fight you in one-on-one combat!"
-#~ msgstr "Non combatterò con te uno contro uno!"
-
-#~ msgid ""
-#~ "That only proves you are a coward. Anyway, who said anything about one-on-"
-#~ "one combat? He said: a duel, seven-on-seven. Pick your six best slaves "
-#~ "and I will pick my six best minions."
-#~ msgstr ""
-#~ "Ciò prova solamente che sei un codardo. Ad ogni modo, chi ha parlato di "
-#~ "combattimento uno contro uno? Dice: un duello, sette contro sette. Prendi "
-#~ "le tue sei migliori bestie schiave ed io prenderò i miei sei migliori "
-#~ "seguaci."
+"Poi, al tramonto, un giorno, Gweddry ed i suoi uomini vennero svegliati dal "
+"pianto disperato della sentinella notturna..."
