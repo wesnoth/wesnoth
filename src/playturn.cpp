@@ -568,7 +568,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				for(unit_map::const_iterator i = units.begin();
 				    i != units.end(); ++i) {
 					if(i->second.side() != team_num)
-						return false;
+						continue;
 
 					std::stringstream row;
 					row << i->second.name() << "," << i->second.hitpoints()

@@ -55,6 +55,9 @@ int main()
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
 
+				std::cerr << "from " << (int)sock << " received: "
+				          << data.write() << "\n-----\n";
+
 				//if someone who is not yet logged in is sending
 				//login details
 				if(not_logged_in.is_member(sock)) {

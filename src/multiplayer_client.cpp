@@ -259,7 +259,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		}
 
 		//ensure we send a close game message to the server when we are done
-		const network_game_manager game_manager = network_game_manager();
+		network_game_manager game_manager;
     
 		std::map<int,int> choice_map;
 		std::vector<std::string> choices;

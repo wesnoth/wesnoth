@@ -67,7 +67,7 @@ namespace {
 	{
 		//SDL under Windows doesn't seem to like hardware surfaces for
 		//some reason.
-#ifndef _WIN32
+#if defined(_WIN32) || defined(__APPLE__)
 		flags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
 #endif
 		if((flags&SDL_FULLSCREEN) == 0)

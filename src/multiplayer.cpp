@@ -246,7 +246,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 	log_scope("play multiplayer");
 
 	//ensure we send a close game message to the server when we are done
-	const network_game_manager game_manager = network_game_manager();
+	network_game_manager game_manager;
 
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];

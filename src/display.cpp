@@ -1324,7 +1324,6 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 
 	const gamemap::TERRAIN current_terrain = map_.on_board(loc) ? map_[x][y]:0;
 
-	std::vector<bool> done(6,true);
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
@@ -1781,7 +1780,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			++sfx_it;
 		}
 
-		if(hits && !played_hit_sound && i >= play_hit_sound_at) {
+		if(!hide && hits && !played_hit_sound && i >= play_hit_sound_at) {
 			sound::play_sound(hit_sound);
 			played_hit_sound = true;
 		}
@@ -2014,7 +2013,7 @@ bool display::unit_attack(const gamemap::location& a,
 			++sfx_it;
 		}
 
-		if(hits && !played_hit_sound && i >= play_hit_sound_at) {
+		if(!hide && hits && !played_hit_sound && i >= play_hit_sound_at) {
 			sound::play_sound(hit_sound);
 			played_hit_sound = true;
 		}
