@@ -70,6 +70,9 @@ public:
 
 private:
 
+	//function which returns true iff 'player' is on 'team'.
+	bool player_on_team(const std::string& team, network::connection player) const;
+
 	//function which should be called every time a player ends their turn
 	//(i.e. [end_turn] received). This will update the 'turn' attribute for
 	//the game's description when appropriate. Will return true if there has

@@ -284,15 +284,37 @@ void game::send_data(const config& data, network::connection exclude)
 	}
 }
 
+bool game::player_on_team(const std::string& team, network::connection player) const
+{
+	//if the player is the game host, then iterate over all the sides and if any of
+	//the sides controlled by the game host are on this team, then the game host
+	//is on this team
+	if(players_.empty() == false && player == players_.front()) {
+		const config::child_list& sides = level_.get_children("side");
+		for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
+			if((**i)["controller"] == "human" && (**i)["team_name"] == team) {
+				return true;
+			}
+		}
+	}
+
+	//other hosts than the game host
+	const std::map<network::connection,std::string>::const_iterator side = sides_.find(player);
+	if(side != sides_.end()) {
+		const config* const side_cfg = level_.find_child("side","side",side->second);
+		if(side_cfg != NULL && (*side_cfg)["team_name"] == team) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void game::send_data_team(const config& data, const std::string& team, network::connection exclude)
 {
-	for(std::vector<network::connection>::const_iterator
-	    i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude && sides_.count(*i) == 1) {
-			const config* const side = level_.find_child("side","side",sides_[*i]);
-			if(side != NULL && (*side)["team_name"] == team) {
-				network::send_data(data,*i);
-			}
+	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+		if(*i != exclude && player_on_team(team,*i)) {
+			network::send_data(data,*i);
 		}
 	}
 }

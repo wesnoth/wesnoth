@@ -278,7 +278,7 @@ int display::hex_width() const
 
 double display::zoom(int amount)
 {
-	if(amount == 0) {
+	if(amount == 0 || !team_valid()) {
 		return double(zoom_)/double(DefaultZoom);
 	}
 
@@ -2079,7 +2079,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	if(type == MESSAGE_PUBLIC) {
 		str << "<" << speaker << ">";
 	} else {
-		str << "*" << speaker << "*";
+		str << font::NULL_MARKUP << "*" << speaker << "*";
 	}
 
 	SDL_Color speaker_colour = {255,255,255,255};

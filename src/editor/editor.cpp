@@ -66,7 +66,7 @@ namespace {
 	double location_distance(const gamemap::location loc1, const gamemap::location loc2) {
 		const double xdiff = loc1.x - loc2.x;
 		const double ydiff = loc1.y - loc2.y;
-		const double dist = std::sqrt(xdiff * xdiff + ydiff * ydiff);
+		const double dist = sqrt(xdiff * xdiff + ydiff * ydiff);
 		return dist;
 	}
 
@@ -631,8 +631,8 @@ void map_editor::perform_selection_move() {
 	gui_.clear_highlighted_locs();
 	std::set<gamemap::location> new_selection;
 	// Transfer the terrain to the new position.
-	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
-		 it != selected_hexes_.end(); it++) {
+	std::set<gamemap::location>::const_iterator it;
+	for(it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 		const gamemap::location hl_loc =
 			get_hex_with_offset(*it, x_diff, y_diff);
 		if (map_.on_board(hl_loc)) {
@@ -644,8 +644,7 @@ void map_editor::perform_selection_move() {
 	}
 
 	// Fill the selection with the selected terrain.
-	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
-		 it != selected_hexes_.end(); it++) {
+	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 		if (map_.on_board(*it) && new_selection.find(*it) == new_selection.end()) {
 			undo_action.add(map_.get_terrain(*it), palette_.selected_terrain(), *it);
 			map_.set_terrain(*it, palette_.selected_terrain());

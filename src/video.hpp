@@ -77,4 +77,17 @@ private:
 	bool fake_screen;
 };
 
+//a structure which will detect if the resolution or fullscreen mode has changed
+struct video_change_detector {
+	video_change_detector(CVideo& video) : video_(video), full_(video.isFullScreen()), x_(video.getx()), y_(video.gety())
+	{}
+
+	bool changed() const { return full_ != video_.isFullScreen() || x_ != video_.getx() || y_ != video_.gety(); }
+
+private:
+	CVideo& video_;
+	bool full_;
+	int x_, y_;
+};
+
 #endif

@@ -41,6 +41,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
+#include "titlescreen.hpp"
 #include "util.hpp"
 #include "unit_types.hpp"
 #include "unit.hpp"
@@ -598,7 +599,11 @@ int play_game(int argc, char** argv)
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
-		gui::TITLE_RESULT res = gui::show_title(disp);
+		gui::TITLE_RESULT res = gui::CONTINUE;
+		
+		while(res == gui::CONTINUE) {
+			res = gui::show_title(disp);
+		}
 
 		std::cerr << "title screen returned result\n";
 

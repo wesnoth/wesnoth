@@ -282,15 +282,12 @@ void mp_connect::lists_init()
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int team_num = sd - sides.first;
-		const std::string& team_name = (**sd)["team_name"];
-		std::stringstream str;
-		str << string_table["team"] << " ";
+		std::string& team_name = (**sd)["team_name"];
+		if(team_name.empty()) {
+			team_name = lexical_cast<std::string>(team_num+1);
+		}
 
-		if(team_name.empty() == false)
-			str << team_name;
-		else
-			str << (team_num+1);
-		player_teams_.push_back(str.str());
+		player_teams_.push_back(string_table["team"] + " " + team_name);
 	}
 
 	//Colors
