@@ -521,6 +521,7 @@ redo_turn:
 				std::cerr << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire(event_stream.str());
+				game_events::fire("new turn");
 			}
 
 		} catch(end_level_exception& end_level) {
