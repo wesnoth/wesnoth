@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <iostream>
 
+#include "mouse.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
 
@@ -221,6 +222,17 @@ void pump_events()
 				} else {
 					resize_dimensions.first = resize->w;
 					resize_dimensions.second = resize->h;
+				}
+
+				break;
+			}
+
+			//mouse wheel support
+			case SDL_MOUSEBUTTONDOWN: {
+				if(event.button.button == 4) {
+					gui::scroll_dec();
+				} else if(event.button.button == 5) {
+					gui::scroll_inc();
 				}
 
 				break;

@@ -15,6 +15,7 @@
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "mouse.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
 #include "preferences.hpp"
@@ -502,6 +503,46 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		if(key[KEY_RIGHT] || mousex == gui.x()-1)
 			gui.scroll(preferences::scroll_speed(),0.0);
+
+		// MOUSE WHEEL BOUNDARY CHECK
+
+		if(gui::scrollamount() && (mousex > 50 && mousex < gui.x()-50) &&
+		                          (mousey > 50 && mousey < gui.y()-50)) {
+			// Reset scrolling ... it is just a clean-up so wheel turns
+			//don't cache
+			gui::scroll_reset() ;
+		} else {
+			if(gui::scrollamount()) {
+				// Now scroll accordingly as we are in hot-spots				
+				if((mousex >= gui.x()-50 && mousey <= 50) ||
+				   (mousex <= 50 && mousey >= gui.y()-50)) {
+					// firstly filtering the 2 conflicting corners
+					if(gui::scrollamount() > 0) {
+						gui.scroll(0.0,preferences::scroll_speed());
+						gui.scroll(-preferences::scroll_speed(),0.0);
+					} else {						
+						gui.scroll(0.0,-preferences::scroll_speed());
+						gui.scroll(preferences::scroll_speed(),0.0);
+					}
+				} else {
+					// Now general case...
+					if(mousex <= 50 || mousex >= gui.x()-50) {
+						// SCROLL HORIZONTALLY... we are in E or W sides
+						gui::scrollamount() < 0 ?
+						       gui.scroll(-preferences::scroll_speed(),0.0)
+						     : gui.scroll(preferences::scroll_speed(),0.0);
+					}
+					if(mousey <= 50 || mousey >= gui.y()-50) {
+						// SCROLL VERTICALLY... we are in E or W sides
+						gui::scrollamount() < 0 ?
+						       gui.scroll(0.0,-preferences::scroll_speed())
+						     : gui.scroll(0.0,preferences::scroll_speed());
+					}
+				}
+				// We must now reduce scrollamount
+				gui::scroll_reduce() ;
+			}
+		}
 
 		if(command == HOTKEY_NULL)
 			command = check_keys(gui);
