@@ -5,10 +5,6 @@ CVS HEAD:
  * scenario balancing for 'Heir to the Throne' campaign:
    * Isle of Anduin
    * Elves Besieged
- * 'first strike' ability given to Spearman, Halbardier and Pikeman
- * 'teleport' ability removed from 'Arch Mage' and 'Great Mage'
- * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
- * Yeti's race changed to monster
  * new units
    * Cavalier
    * Drakonian Burner
@@ -21,11 +17,14 @@ CVS HEAD:
    * Dwarvish Runemaster
    * Silver Mage
    * Vampire Lady
+ * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
+ * Yeti's race changed to monster
  * unit balancing:
    * Ancient Wose: increased cost
    * Ancient Lich: reduced hitpoints, reduced ranged damage
-   * Arch Mage: reduced hitpoints, reduced ranged damage
+   * Arch Mage: reduced hitpoints, reduced ranged damage, removed teleport ability
    * Battle Princess: reduced melee damage
+   * Deathmaster: reduced ranged damage
    * Death Knight: reduced melee damage
    * Demilich: reduced ranged damage
    * Dwarvish Berserker: reduced cost
@@ -36,8 +35,8 @@ CVS HEAD:
    * Elvish Champion: reduced melee damage
    * Elvish Lord: reduced melee damage
    * Goblin Direwolver: increased melee damage, reduced number of melee attacks
-   * Great Mage: reduced melee damage, reduced ranged damage
-   * Halbardier: reduced melee damages
+   * Great Mage: reduced melee damage, reduced ranged damage, removed teleport ability
+   * Halbardier: reduced melee damages, gave 'first strike' ability
    * Heavy Infantry: reduced melee damage
    * Initiate: reduced ranged damage
    * Iron Mauler: reduced melee damage
@@ -45,15 +44,19 @@ CVS HEAD:
    * Mage of Light: reduced ranged damage
    * Master Bowman: reduced ranged damage
    * Orcish Warlord: reduced melee damage
-   * Pikeman: reduced melee damage
+   * Pikeman: reduced melee damage, gave 'first strike' ability
    * Princess: reduced melee damage
    * Royal Guard: reduced melee damage
    * Shock Trooper: reduced melee damage
-   * Spearman: reduced melee damage, reduced ranged damage
+   * Spearman: reduced ranged damage, gave 'first strike' ability
    * Wose: increased cost
  * multiplayer improvements:
    * balanced 'King of the Hill' map
    * improved village naming
+ * language fixes and polishing (english)
+ * AI improvements
+   * added new AI parameters
+   * various AI improvements
  * editor improvements:
    * new brush image, file chooser folder image
    * changed menu names to 'file' and 'edit'
@@ -61,8 +64,7 @@ CVS HEAD:
    * changed the color to magenta when the same terrain is selected as both foreground and background
    * two terrains may now be selected in the palette, one is used for filling when moving selections and cutting/pasting and will be used when drawing with the right button
    * a square is now drawn around the currently selected function for the left mouse button
-   * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
-   * context menu was removed, instead the function of the left button is chosen in the right panel and operations that do not need a location to work is chosen from an additional menu
+   * removed context menu, function of the left button is chosen in the right panel and operations that do not need a location to work are chosen from an additional menu
    * added a new level of brightened images
    * support for translations
    * fixed proper checks for validity not being done when loading or reverting a map
@@ -70,19 +72,21 @@ CVS HEAD:
    * fixed BeOS crash in map editor
    * fixed the problem where the same sequence of random maps was generated
    * fixed a problem where the hotkeys from the game would appear in the editor
- * language fixes and polishing (english)
- * AI improvements
-   * added new AI parameters
-   * various AI improvements
+   * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
+   * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
  * added WML feature to append an element to another using [+element] syntax
  * fixed multiline text box not wrapping lines at word boundaries
- * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text.
+ * fixed loading/saving of multiplayer games that have a double-quote (") in the chat text
  * fixed spaces following non-ASCII characters disappearing in intro (#9163)
+ * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
+ * added support for different colour depths
  * improved terrain transition code
+ * updated terrain-graphics.cfg file to use modules in sub-directory to reduce bloat in the main file
  * relocated weapon icons to their own hierarchy: images/attacks/
  * increased the horizontal padding of button widgets when having a label that is wider than the minimum width
- * added a trigger to the test map, when activated Orc leader can recruit.
+ * conversed all scenarios to new AI syntax
+ * added a trigger to the test map, when activated Orc leader can recruit
 
 Version 0.7.8:
  * changed experience gauge, it is now shown next to hitpoints bar
