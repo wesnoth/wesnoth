@@ -78,7 +78,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editcut",HOTKEY_EDIT_CUT));
 		m.insert(val("editcopy",HOTKEY_EDIT_COPY));
 		m.insert(val("editpaste",HOTKEY_EDIT_PASTE));
-		m.insert(val("toggleshroud",HOTKEY_TOGGLE_SHROUD));
+		m.insert(val("delayshroud",HOTKEY_DELAY_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 	}
 
@@ -380,7 +380,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			if(executor)
 				executor->show_enemy_moves(true);
 			break;
-		case HOTKEY_TOGGLE_SHROUD:
+		case HOTKEY_DELAY_SHROUD:
 			if(executor) executor->toggle_shroud_updates();
 			break;
 		case HOTKEY_UPDATE_SHROUD:
@@ -446,6 +446,14 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		default:
 			break;
+	}
+}
+
+std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command) const {
+	switch(get_action_state(command)) {
+		case ACTION_ON: return game_config::checked_menu_image;
+		case ACTION_OFF: return game_config::unchecked_menu_image;
+		default: return get_action_image(command);
 	}
 }
 

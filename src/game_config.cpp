@@ -49,6 +49,9 @@ namespace game_config
 	std::string foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
 
 	std::string observer_image;
+	
+	std::string unchecked_menu_image = "buttons/checkbox.png";
+	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 
 #ifdef WESNOTH_PATH
 	std::string path = WESNOTH_PATH;

@@ -34,7 +34,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_PREFERENCES,
 					  HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_QUIT_GAME,
                       HOTKEY_LABEL_TERRAIN, HOTKEY_SHOW_ENEMY_MOVES, HOTKEY_BEST_ENEMY_MOVES,
-					  HOTKEY_TOGGLE_SHROUD, HOTKEY_UPDATE_SHROUD,
+					  HOTKEY_DELAY_SHROUD, HOTKEY_UPDATE_SHROUD,
 
 					  //editing specific commands
 					  HOTKEY_EDIT_SET_TERRAIN,
@@ -80,11 +80,14 @@ std::string get_hotkey_name(hotkey_item item);
 std::string command_to_string(const HOTKEY_COMMAND &command);
 HOTKEY_COMMAND string_to_command(const std::string& str);
 
+enum ACTION_STATE { ACTION_STATELESS, ACTION_ON, ACTION_OFF };
+
 //abstract base class for objects that implement the ability
 //to execute hotkey commands.
 class command_executor
 {
 public:
+
 	virtual void cycle_units() {};
 	virtual void end_turn() {};
 	virtual void goto_leader() {};
@@ -126,6 +129,13 @@ public:
 	virtual void edit_copy() {}
 	virtual void edit_paste() {}
 
+	//Gets the action's image (if any). Displayed left of the action text in menus.
+	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND command) const { return ""; }
+	//Does the action control a toggle switch? If so, return the state of the action (on or off)
+	virtual ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const { return ACTION_STATELESS; }
+	//Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
+	std::string get_menu_image(hotkey::HOTKEY_COMMAND command) const;
+	
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };
 

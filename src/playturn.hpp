@@ -88,36 +88,41 @@ public:
 	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog);
 
 private:
+	//convenience functions
+	team& current_team() { return teams_[team_num_-1]; }
+	const team& current_team() const { return teams_[team_num_-1]; }
 
 	void write_game_snapshot(config& cfg) const;
-
-	void cycle_units();
-	void end_turn();
-	void goto_leader();
-	void end_unit_turn();
-	void undo();
-	void redo();
-	void terrain_table();
-	void attack_resistance();
-	void unit_description();
-	void rename_unit();
-	void save_game();
-	void toggle_grid();
-	void status_table();
-	void recruit();
-	void repeat_recruit();
-	void recall();
-	void speak();
-	void create_unit();
-	void preferences();
-	void objectives();
-	void unit_list();
-	void show_statistics();
-	void label_terrain();
-	void show_enemy_moves(bool ignore_units);
-	void toggle_shroud_updates();
-	void update_shroud_now();
-
+	
+	//overridden from command_executor
+	virtual void cycle_units();
+	virtual void end_turn();
+	virtual void goto_leader();
+	virtual void end_unit_turn();
+	virtual void undo();
+	virtual void redo();
+	virtual void terrain_table();
+	virtual void attack_resistance();
+	virtual void unit_description();
+	virtual void rename_unit();
+	virtual void save_game();
+	virtual void toggle_grid();
+	virtual void status_table();
+	virtual void recruit();
+	virtual void repeat_recruit();
+	virtual void recall();
+	virtual void speak();
+	virtual void create_unit();
+	virtual void preferences();
+	virtual void objectives();
+	virtual void unit_list();
+	virtual void show_statistics();
+	virtual void label_terrain();
+	virtual void show_enemy_moves(bool ignore_units);
+	virtual void toggle_shroud_updates();
+	virtual void update_shroud_now();
+	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
+	
 	void do_recruit(const std::string& name);
 
 	void handle_event(const SDL_Event& event);

@@ -185,16 +185,16 @@ void turn_info::turn_slice()
 	}
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
-		gui_.scroll(0.0,-preferences::scroll_speed());
+		gui_.scroll(0,-preferences::scroll_speed());
 
 	if(key_[SDLK_DOWN] || mousey > gui_.y()-scroll_threshold)
-		gui_.scroll(0.0,preferences::scroll_speed());
+		gui_.scroll(0,preferences::scroll_speed());
 
 	if(key_[SDLK_LEFT] || mousex < scroll_threshold)
-		gui_.scroll(-preferences::scroll_speed(),0.0);
+		gui_.scroll(-preferences::scroll_speed(),0);
 
 	if(key_[SDLK_RIGHT] || mousex > gui_.x()-scroll_threshold)
-		gui_.scroll(preferences::scroll_speed(),0.0);
+		gui_.scroll(preferences::scroll_speed(),0);
 }
 
 bool turn_info::turn_over() const { return end_turn_; }
@@ -467,8 +467,8 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 	  }
 	} else if(event.button == SDL_BUTTON_WHEELUP ||
 	          event.button == SDL_BUTTON_WHEELDOWN) {
-		const double speed = preferences::scroll_speed() *
-			(event.button == SDL_BUTTON_WHEELUP ? -1.0:1.0);
+		const int speed = preferences::scroll_speed() *
+			(event.button == SDL_BUTTON_WHEELUP ? -1:1);
 
 		const int centerx = gui_.mapx()/2;
 		const int centery = gui_.y()/2;
@@ -477,9 +477,9 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		const int ydisp = abs(centery - event.y);
 
 		if(xdisp > ydisp)
-			gui_.scroll(speed,0.0);
+			gui_.scroll(speed,0);
 		else
-			gui_.scroll(0.0,speed);
+			gui_.scroll(0,speed);
 	}
 }
 
@@ -844,6 +844,16 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
+hotkey::ACTION_STATE turn_info::get_action_state(hotkey::HOTKEY_COMMAND command) const
+{
+	switch(command) {
+	case hotkey::HOTKEY_DELAY_SHROUD:
+		return current_team().auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+	default:
+		return hotkey::ACTION_STATELESS;
+	}
+}
+
 // Indicates whether the command should be in the context menu or not.
 // Independant of whether or not we can actually execute the command.
 bool turn_info::in_context_menu(hotkey::HOTKEY_COMMAND command) const
@@ -895,10 +905,10 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_UNDO:
 		return !browse_ && !undo_stack_.empty();
 
-	case hotkey::HOTKEY_TOGGLE_SHROUD:
-		return !browse_ && (teams_[team_num_-1].uses_fog() || teams_[team_num_-1].uses_shroud());
+	case hotkey::HOTKEY_DELAY_SHROUD:
+		return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
 	case hotkey::HOTKEY_UPDATE_SHROUD:
-		return !browse_ && !teams_[team_num_-1].auto_shroud_updates();
+		return !browse_ && !current_team().auto_shroud_updates();
 
 	//commands we can only do if we are actually playing, not just viewing
 	case hotkey::HOTKEY_END_UNIT_TURN:
@@ -963,14 +973,21 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 		return;
 	}
 
+	bool has_image = false;
 	std::vector<std::string> menu;
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		std::stringstream str;
-		str << translate_string("action_" + *i);
-
-		//see if this menu item has an associated hotkey
 		const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(*i);
+		std::stringstream str;
+		//see if this menu item has an associated image
+		std::string img(get_menu_image(cmd));
+		if(img.empty() == false) {
+			has_image = true;
+			str << '&' << img << ',';
+		}
 		
+		str << translate_string("action_" + *i);
+		
+		//see if this menu item has an associated hotkey
 		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
 		std::vector<hotkey::hotkey_item>::const_iterator hk;
 		for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
@@ -985,6 +1002,11 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 
 		menu.push_back(str.str());
 	}
+	//If any of the menu items have an image, create an image column
+	if(has_image)
+		for(std::vector<std::string>::iterator i = menu.begin(); i != menu.end(); ++i)
+			if(*(i->begin()) != '&')
+				i->insert(i->begin(),',');
 
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",
