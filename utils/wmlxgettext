@@ -37,11 +37,13 @@ foreach my $file (@ARGV) {
       $_ = $3;
       redo LINE;
 
-    } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)\r?/) {
+    } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
       # start of multi-line
 
       $translatable = ($1 ne '');
-      $str = $2;
+      $_ = $2;
+      if (m/(.*)\r/) { $_ = $1; }
+      $str = $_;
       $line = $.;
 
     } elsif (m/(.*?)\"(.*)$/) {
