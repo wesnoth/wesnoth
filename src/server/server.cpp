@@ -190,6 +190,8 @@ int main()
 						//record the new level data, and send to all players
 						//who are in the game
 						g->level() = data;
+						g->send_data(data,sock);
+						continue;
 					}
 
 					const string_map::const_iterator side =
@@ -198,6 +200,7 @@ int main()
 						const bool res = g->take_side(sock,side->second);
 						config response;
 						if(res) {
+							std::cerr << "played joined side\n";
 							response["side_secured"] = side->second;
 						} else {
 							response["failed"] = "yes";
@@ -209,6 +212,13 @@ int main()
 
 					if(data.child("start_game")) {
 						g->start_game();
+					}
+
+					if(data["side_secured"].empty() == false) {
+						continue;
+					} else if(data["failed"].empty() == false) {
+						std::cerr << "ERROR: failure to get side\n";
+						continue;
 					}
 
 					//forward data to all players who are in the game,
