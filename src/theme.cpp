@@ -424,8 +424,7 @@ const std::string& theme::menu::image() const { return image_; }
 
 const std::vector<std::string>& theme::menu::items() const { return items_; }
 
-theme::theme(const config& cfg, const SDL_Rect& screen) : cfg_(resolve_rects(cfg))
-{
+theme::theme(const config& cfg, const SDL_Rect& screen):cfg_(resolve_rects(cfg)){
 	set_resolution(screen);
 }
 
@@ -553,3 +552,30 @@ const SDL_Rect& theme::mini_map_location(const SDL_Rect& screen) const
 {
 	return mini_map_.location(screen);
 }
+
+std::map<std::string, config> theme::known_themes;
+void theme::set_known_themes(const config* cfg){
+        known_themes.clear();
+        if(cfg == NULL)
+	       return;
+	const config& v = *cfg;
+	const config::child_list& known_themes_cfg = v.get_children("theme");
+	
+	for(config::child_list::const_iterator thm = known_themes_cfg.begin(); thm != known_themes_cfg.end(); ++thm) {
+	       std::string thm_name=(**thm)["name"];
+	       if(thm_name!="null" && thm_name!="editor"){
+	              known_themes[thm_name]=(**thm);
+	       }
+	}
+}
+
+std::vector<std::string> theme::get_known_themes(){
+        std::vector<std::string> names;
+ 
+
+        for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();p_thm++){
+	  names.push_back(p_thm->first);
+	}
+        return(names);
+}
+

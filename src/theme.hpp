@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <map>
 
 class config;
 
@@ -132,8 +133,13 @@ public:
 	const SDL_Rect& main_map_location(const SDL_Rect& screen) const;
 	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const;
 
+        static void set_known_themes(const config* cfg);
+        static std::vector<std::string> get_known_themes();
+
 private:
-	const config& cfg_;
+        static std::map<std::string, config> theme::known_themes;
+        std::string cur_theme;
+        const config& cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 	std::vector<menu> menus_;

@@ -2410,7 +2410,19 @@ void turn_info::do_command(const std::string& str)
 			}
 		} else if (teams_[index].is_ai()) {
 			teams_[index].make_human();
+		}       
+	} else if (cmd == "theme") {
+	        int action = 0;
+		std::vector<std::string> options=theme::get_known_themes();
+		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
+		action = gui::show_dialog(gui_,NULL,"",current_theme,gui::OK_CANCEL,&options);
+		if(action >-1){
+		  preferences::set_theme(options[action]);
+		//it would be preferable for the new theme to take effect 
+		//immediately, however, this will have to do for now.
+		  gui::show_dialog(gui_,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
 		}
+
 	} else if(cmd == "ban") {
 		config cfg;
 		config& ban = cfg.add_child("ban");

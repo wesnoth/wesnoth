@@ -391,6 +391,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 	const config dummy_cfg;
 	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config, *level);
+	theme::set_known_themes(&game_config);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 
