@@ -22,7 +22,18 @@
 #include <string>
 #include <map>
 
-//terrain_builder: returns the lst of images used to build a terrain tile
+/**
+ * The class terrain_builder is constructed from a config object, and a gamemap
+ * object. On construction, it parses the configuration and extracts the list
+ * of [terrain_graphics] rules. Each terrain_graphics rule attachs one or more
+ * images to a specific terrain pattern. 
+ * It then applies the rules loaded from the configuration to the current map,
+ * and calculates the list of images that must be associated to each hex of the
+ * map.
+ *
+ * The get_terrain_at method can then be used to obtain the list of images
+ * necessary to draw the terrain on a given tile.
+ */
 class terrain_builder
 {
 public:
@@ -48,7 +59,11 @@ public:
 	void rebuild_all();
 	
 
-	// typedef std::multimap<int, std::string> rule_imagelist;
+	/**
+	 * Each image may have several variants, which are used depending to
+	 * the current time of day. The rule_image_variant structure represents
+	 * an image variant.
+	 */
 	struct rule_image_variant {
 		rule_image_variant(const std::string &image_string, const std::string &tod) :
 			image_string(image_string), tod(tod) {};
@@ -59,18 +74,50 @@ public:
 		std::string tod;
 	};
 
+	/**
+	 * A map associating a rule_image_variant to a string representing the
+	 * time of day.
+	 */
 	typedef std::map<std::string, rule_image_variant> rule_image_variantlist;
-	struct rule_image {
-		rule_image(int layer, bool global_image=false) : 
-			layer(layer), global_image(global_image) {};
 
-		int layer;
+	/**
+	 * Each terrain_graphics rule is associated a set of images, which are
+	 * applied on the terrain if the rule matches. An image is more than
+	 * graphics: it is graphics (with several possible tod-alternatives,)
+	 * and a position for these graphics.
+	 * The rule_image structure represents one such image.
+	 */
+	struct rule_image {
+		rule_image(int layer, bool global_image=false);
+		rule_image(int x, int y, bool global_image=false);
+
+		// There are 2 kinds of images:
+		// * Flat, horizontal, stacked images, who have a layer
+		// * Vertical images who have an x/y position
+		enum { HORIZONTAL, VERTICAL } position;
+
+		int layer; 		// If the image is horizontal
+		int basex, basey; 	// If the image is vertical
+
+		// The tile width used when using basex and basey. This is not,
+		// necessarily, the tile width in pixels, this is totally
+		// arbitrary. However, it will be set to 72 for convenience.
+		static const int TILEWIDTH;
+		// The position of unit graphics in a tile. Graphics whose y
+		// position is below this value are considered background for
+		// this tile; graphics whose y position is above this value are
+		// considered foreground.
+		static const int UNITPOS;
+
 		bool global_image;
 		rule_image_variantlist variants;
 	};
 
 	typedef std::vector<rule_image> rule_imagelist;
 
+	/**
+	 * Each terrain_graphics rule consists in a set of constraints.
+	 */
 	struct terrain_constraint
 	{
 		terrain_constraint() : loc() {};
@@ -86,15 +133,20 @@ public:
 		rule_imagelist images;
 	};
 
+
 	struct tile
 	{
+		typedef std::multimap<int, const rule_image*> ordered_ri_list;
+
 		tile(); 
+		void add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor) const;
 		void rebuild_cache(const std::string &tod) const;
 		void clear();
 
 		std::set<std::string> flags;
 
-		std::multimap<int, const rule_image*> images;
+		ordered_ri_list horizontal_images;
+		ordered_ri_list vertical_images;
 
 		mutable imagelist images_foreground;	//this is a mutable cache
 		mutable imagelist images_background;	//this is a mutable cache
@@ -154,10 +206,11 @@ private:
 	void add_rotated_rules(building_ruleset& rules, building_rule& tpl, const std::string &rotations);
 	void add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item);
 
-	void add_images_from_config(rule_imagelist &images, const config &cfg, bool global);
+	void add_images_from_config(rule_imagelist &images, const config &cfg, bool global,
+			int dx=0, int dy=0);
 
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
-			     const gamemap::location &loc, const std::string& type);
+			const gamemap::location &loc, const std::string& type);
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
 			const gamemap::location &loc, const config &cfg, const config& global_images);
 	

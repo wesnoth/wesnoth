@@ -47,9 +47,39 @@ image::locator locator_string_initializer::operator()(const std::string &s) cons
 
 }
 
+const int terrain_builder::rule_image::TILEWIDTH = 72;
+const int terrain_builder::rule_image::UNITPOS = 36 + 18;
+
+terrain_builder::rule_image::rule_image(int layer, bool global_image) : 
+	layer(layer), global_image(global_image),
+	position(HORIZONTAL), basex(0), basey(0) 
+{};
+
+terrain_builder::rule_image::rule_image(int x, int y, bool global_image) : 
+	layer(0), global_image(global_image),
+	position(VERTICAL), basex(x), basey(y) 
+{};
+
 terrain_builder::tile::tile() : last_tod("invalid_tod")
 {
        	memset(adjacents, 0, sizeof(adjacents)); 
+}
+
+void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor) const
+{
+	rule_image_variantlist::const_iterator tod_variant =
+		itor->second->variants.find(tod);
+
+	if(tod_variant == itor->second->variants.end())
+		tod_variant = itor->second->variants.find("");
+
+	if(tod_variant != itor->second->variants.end()) {
+		if(itor->first < 0) {
+			images_background.push_back(tod_variant->second.image);
+		} else {
+			images_foreground.push_back(tod_variant->second.image);
+		}
+	}
 }
 
 void terrain_builder::tile::rebuild_cache(const std::string &tod) const 
@@ -57,39 +87,20 @@ void terrain_builder::tile::rebuild_cache(const std::string &tod) const
 	images_background.clear();
 	images_foreground.clear();
 
-	// std::cerr << "rebuilding cache\n";
-	std::multimap<int, const rule_image*>::const_iterator itor;
-
-	util::array<std::string, 2> search_variants;
-	search_variants[0] = tod;
-
-	for(itor = images.begin(); itor != images.end(); ++itor) {
-		// std::cerr << "layer is " << itor->first << "\n";
-		// std::cerr << "image is " << itor->second->variants.find("")->second.image.get_current_frame().get_filename() << "\n";
-
-		for(util::array<std::string, 2>::const_iterator var_name = search_variants.begin();
-				var_name != search_variants.end(); ++var_name) {
-
-			rule_image_variantlist::const_iterator tod_variant =
-				itor->second->variants.find(*var_name);
-
-			if(tod_variant != itor->second->variants.end()) {
-				if(itor->first < 0) {
-					images_background.push_back(tod_variant->second.image);
-				} else {
-					images_foreground.push_back(tod_variant->second.image);
-				}
-
-				break; // break the "variant search" loop
-			}
-		}
+	ordered_ri_list::const_iterator itor;
+	for(itor = horizontal_images.begin(); itor != horizontal_images.end(); ++itor) {
+		add_image_to_cache(tod, itor);
+	}
+	for(itor = vertical_images.begin(); itor != vertical_images.end(); ++itor) {
+		add_image_to_cache(tod, itor);
 	}
 }
 
 void terrain_builder::tile::clear() 
 {
 	flags.clear();
-	images.clear();
+	horizontal_images.clear();
+	vertical_images.clear();
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
@@ -279,6 +290,47 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 		{ {  1, 0, 0,  1 }, {  1,  1, -1, 0 }, { 0,  1, -1, -1 },
 		  { -1, 0, 0, -1 }, { -1, -1,  1, 0 }, { 0, -1,  1,  1 } };
 
+	// The following array of matrices is intended to rotate the (x,y)
+	// coordinates of a point in a wesnoth hex (and wesnoth hexes are not
+	// regular hexes :) ).
+	// The base matrix for a 1-step rotation with the wesnoth tile shape
+	// is:
+	//
+	// r = s^-1 * t * s
+	//
+	// with s = [[ 1   0         ]
+	//           [ 0   -sqrt(3)/2 ]]
+	//
+	// and t =  [[ -1/2       sqrt(3)/2 ]
+	//           [ -sqrt(3)/2  1/2        ]]
+	//
+	// With t being the rotation matrix (pi/3 rotation), and s a matrix
+	// that transforms the coordinates of the wesnoth hex to make them
+	// those of a regular hex.
+	//
+	// (demonstration left as an exercise for the reader)
+	//
+	// So we have 
+	//
+	// r = [[ 1/2  -3/4 ]
+	//      [ 1    1/2  ]]
+	//
+	// And the following array contains I(2), r, r^2, r^3, r^4, r^5 (with
+	// r^3 == -I(2)), which are the successive rotations.
+	static const struct { 
+		double xx;
+		double xy;
+		double yx; 
+		double yy;
+	} xyrotations[6] = {
+		{ 1.,         0.,  0., 1.    },
+		{ 1./2. , -3./4.,  1., 1./2. },
+		{ -1./2., -3./4.,   1, -1./2.},
+		{ -1.   ,     0.,  0., -1.   },
+		{ -1./2.,  3./4., -1., -1./2.},
+		{ 1./2. ,  3./4., -1., 1./2. },
+	};
+
 	assert(angle >= 0);
 
 	angle %= 6;	
@@ -293,6 +345,24 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 		
 	ret.loc.x = rj;
 	ret.loc.y = ri + (rj >= 0 ? rj/2 : (rj-1)/2);
+
+	for (rule_imagelist::iterator itor = ret.images.begin();
+			itor != ret.images.end(); ++itor) {
+
+		if (itor->position == rule_image::HORIZONTAL)
+			continue;
+
+		double vx, vy, rx, ry;
+
+		vx = double(itor->basex) - double(rule_image::TILEWIDTH)/2;
+		vy = double(itor->basey) - double(rule_image::TILEWIDTH)/2;
+
+		rx = xyrotations[angle].xx * vx + xyrotations[angle].xy * vy;
+		ry = xyrotations[angle].yx * vx + xyrotations[angle].yy * vy;
+
+		itor->basex = int(rx + rule_image::TILEWIDTH/2);
+		itor->basey = int(ry + rule_image::TILEWIDTH/2);
+	}
 
 	return ret;
 }
@@ -407,19 +477,35 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
-void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global)
+void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
 	const config::child_list& cimages = cfg.get_children("image");
 
 
 	for(config::child_list::const_iterator img = cimages.begin(); img != cimages.end(); ++img) {
 
-		// Adds the main (default) variant of the image, if present
-		const int layer = atoi((**img)["layer"].c_str());
 		const std::string &name = (**img)["name"];
 
-		images.push_back(rule_image(layer, global));
+		if((**img)["position"].empty() || 
+				(**img)["position"] == "horizontal") { 
 
+			const int layer = atoi((**img)["layer"].c_str());
+			images.push_back(rule_image(layer, global));
+
+		} else if((**img)["position"] == "vertical") {
+
+			std::vector<std::string> base = config::split((**img)["base"]);
+			int basex, basey;
+
+			if(base.size() >= 2) {
+				basex = atoi(base[0].c_str());
+				basey = atoi(base[1].c_str());
+			}
+			images.push_back(rule_image(basex - dx, basey - dy, global));
+			
+		}
+
+		// Adds the main (default) variant of the image, if present
 		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));
 
 		// Adds the other variants of the image
@@ -470,8 +556,12 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	add_constraint_item(constraint.has_flag, cfg, "has_flag");
 	add_constraint_item(constraint.no_flag, cfg, "no_flag");
 
+	int x = loc.x * rule_image::TILEWIDTH / 2;
+	int y = loc.y * rule_image::TILEWIDTH + (loc.x % 2) * 
+		rule_image::TILEWIDTH / 2;
+
 	add_images_from_config(constraint.images, cfg, false);
-	add_images_from_config(constraint.images, global_images, true);
+	add_images_from_config(constraint.images, global_images, true, x, y);
 }
 
 void terrain_builder::parse_mapstring(const std::string &mapstring,
@@ -770,7 +860,13 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
 			//animated<image::locator> th(img->second, locator_string_initializer());
 
-			btile.images.insert(std::pair<int, const rule_image*>(img->layer, &*img));
+			if(img->position == rule_image::HORIZONTAL) {
+				btile.horizontal_images.insert(std::pair<int, const rule_image*>(
+							img->layer, &*img));
+			} else if(img->position == rule_image::VERTICAL) {
+				btile.vertical_images.insert(std::pair<int, const rule_image*>(
+						img->basey - rule_image::UNITPOS, &*img));
+			}
 		}
 
 		// Sets flags
