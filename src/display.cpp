@@ -2172,7 +2172,15 @@ namespace {
 
 void display::add_chat_message(const std::string& speaker, int side, const std::string& message, display::MESSAGE_TYPE type)
 {
-	std::string msg = message;
+	bool action;
+	std::string msg;
+	if(message.find("/me ") == 0) {
+		msg.assign(message,4,message.size());
+		action = true;
+	} else {
+		msg = message;
+		action = false;
+	}
 	gui::text_to_lines(msg,80);
 
 	int ypos = chat_message_x;
@@ -2181,14 +2189,23 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	}
 
 	std::stringstream str;
-	if(type == MESSAGE_PUBLIC) {
-		str << "<" << speaker << ">";
-	} else {
-		str << "*" << speaker << "*";
-	}
-
 	std::stringstream message_str;
 	message_str << msg;
+	if(type == MESSAGE_PUBLIC) {
+		if(action) {
+			str << "<" << speaker;
+			message_str << ">";
+		} else {
+			str << "<" << speaker << ">";
+		}
+	} else {
+		if(action) {
+			str << "*" << speaker;
+			message_str << "*";
+		} else {
+			str << "*" << speaker << "*";
+		}
+	}
 
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {
