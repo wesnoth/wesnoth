@@ -14,7 +14,6 @@
 #include "../global.hpp"
 
 #include "label.hpp"
-#include "../display.hpp"
 #include "../font.hpp"
 #include "../video.hpp"
 
@@ -68,7 +67,7 @@ const SDL_Color& label::get_colour() const
 
 void label::draw_contents()
 {
-	font::draw_text(&disp().video(), screen_area(), size_, colour_, text_, location().x, location().y);
+	font::draw_text(&video(), screen_area(), size_, colour_, text_, location().x, location().y);
 }
 
 void label::update_label_size()

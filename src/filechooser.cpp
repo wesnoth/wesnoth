@@ -1,5 +1,6 @@
 #include "global.hpp"
 
+#include "display.hpp"
 #include "gettext.hpp"
 #include "show_dialog.hpp"
 #include "video.hpp"

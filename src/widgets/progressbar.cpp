@@ -2,7 +2,6 @@
 
 #include "progressbar.hpp"
 
-#include "../display.hpp"
 #include "../font.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
@@ -20,7 +19,7 @@ void progress_bar::set_progress_percent(int progress)
 
 void progress_bar::draw_contents()
 {
-	surface const surf = disp().video().getSurface();
+	surface const surf = video().getSurface();
 	SDL_Rect area = location();
 
 	if(area.w >= 2 && area.h >= 2) {
@@ -37,7 +36,7 @@ void progress_bar::draw_contents()
 		text_area.x = area.x + area.w/2 - text_area.w/2;
 		text_area.y = area.y + area.h/2 - text_area.h/2;
 
-		font::draw_text(&disp().video(),location(),font::SIZE_NORMAL,font::BLACK_COLOUR,text,text_area.x,text_area.y);
+		font::draw_text(&video(),location(),font::SIZE_NORMAL,font::BLACK_COLOUR,text,text_area.x,text_area.y);
 	}
 
 	update_rect(location());

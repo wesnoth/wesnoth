@@ -14,10 +14,11 @@
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
+class display;
+
 #include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
 
-#include "display.hpp"
 #include "scrollarea.hpp"
 
 #include "SDL.h"
@@ -87,7 +88,7 @@ private:
 
 	void handle_event(const SDL_Event& event);
 
-	void draw_cursor(int pos, display &disp) const;
+	void draw_cursor(int pos, CVideo &video) const;
 	void update_text_cache(bool reset = false);
 	surface add_text_line(const wide_string& text);
 	bool is_selection();

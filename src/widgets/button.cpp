@@ -69,8 +69,8 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 
 	textRect_.x = 0;
 	textRect_.y = 0;
-	textRect_.w = disp.x();
-	textRect_.h = disp.y();
+	textRect_.w = video().getx();
+	textRect_.h = video().gety();
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
@@ -172,7 +172,7 @@ void button::draw_contents()
 
 	disp().blit_surface(loc.x, loc.y, image);
 	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
-	font::draw_text(&disp().video(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
+	font::draw_text(&video(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
 
 	update_rect(loc);
 }
@@ -199,7 +199,7 @@ void button::set_label(const std::string& val)
 		}
 	}
 
-	textRect_ = disp().screen_area();
+	textRect_ = screen_area();
 	const std::string etext = font::make_text_ellipsis(label_, font_size, width());
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,etext,0,0);

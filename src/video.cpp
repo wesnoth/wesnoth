@@ -123,9 +123,9 @@ surface get_video_surface()
 	return frameBuffer;
 }
 
-SDL_Rect screen_area()
+const SDL_Rect& screen_area()
 {
-	const SDL_Rect res = {0,0,frameBuffer->w,frameBuffer->h};
+	static const SDL_Rect res = {0,0,frameBuffer->w,frameBuffer->h};
 	return res;
 }
 

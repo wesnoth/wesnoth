@@ -236,7 +236,7 @@ void scrollbar::draw_contents()
 		return;
 	}
 
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 
 	// draw scrollbar "groove"
 	disp().blit_surface(groove.x, groove.y, top_grv);

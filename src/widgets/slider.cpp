@@ -120,7 +120,7 @@ void slider::draw_contents()
 	if (image->w >= loc.w)
 		return;
 
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
 	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 255, 255, 255));

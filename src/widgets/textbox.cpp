@@ -109,11 +109,11 @@ void textbox::clear()
 	update_text_cache(true);
 }
 
-void textbox::draw_cursor(int pos, display &disp) const
+void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
-		surface const frame_buffer = disp.video().getSurface();
+		surface const frame_buffer = video.getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
@@ -122,7 +122,7 @@ void textbox::draw_contents()
 {
 	SDL_Rect const &loc = inner_location();
 
-	surface surf = disp().video().getSurface();
+	surface surf = video().getSurface();
 	gui::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
 	                          focus() ? alpha_focus_ : alpha_, surf);
 	
@@ -133,7 +133,7 @@ void textbox::draw_contents()
 		src.w = minimum<size_t>(loc.w,text_image_->w);
 		src.h = minimum<size_t>(loc.h,text_image_->h);
 		src.x = text_pos_;
-		SDL_Rect dest = disp().screen_area();
+		SDL_Rect dest = screen_area();
 		dest.x = loc.x;
 		dest.y = loc.y;
 
@@ -167,7 +167,7 @@ void textbox::draw_contents()
 		SDL_BlitSurface(text_image_, &src, surf, &dest);
 	}
 
-	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), disp());
+	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
 
 	update_rect(loc);
 }

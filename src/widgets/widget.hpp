@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+class CVideo;
 class display;
 
 namespace gui {
@@ -65,6 +66,7 @@ protected:
 	void bg_cancel();
 
 	display& disp() const { return *disp_; }
+	CVideo& video() const;
 
 	virtual void handle_event(SDL_Event const &event) {}
 

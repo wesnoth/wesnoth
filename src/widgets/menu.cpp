@@ -171,7 +171,7 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
-	const size_t max_height = max_height_ == -1 ? (disp().y()*66)/100 : max_height_;
+	const size_t max_height = max_height_ == -1 ? (video().gety()*66)/100 : max_height_;
 	std::vector<int> heights;
 	size_t n;
 	for(n = 0; n != items_.size(); ++n) {
@@ -397,9 +397,9 @@ void menu::draw_item(int item)
 	gui::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
 	                                 item == selected_ ? 150:0,0,0,
 	                                 item == selected_ ? 0.6 : 0.2,
-	                                 disp().video().getSurface());
+	                                 video().getSurface());
 
-	SDL_Rect const &area = disp().screen_area();
+	SDL_Rect const &area = screen_area();
 	//SDL_Rect area = { 0, 0, rect.w, rect.h };
 	SDL_Rect const &loc = inner_location();
 
@@ -429,7 +429,7 @@ void menu::draw_item(int item)
 					font::make_text_ellipsis(str, menu_font_size, loc.w - (xpos - rect.x)) : str;
 				const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&disp().video(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
+				font::draw_text(&video(),area,menu_font_size,font::NORMAL_COLOUR,to_show,xpos,y);
 				xpos += text_size.w + 5;
 			}
 		}
@@ -516,7 +516,7 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	SDL_Rect res = { loc.x, y, loc.w, get_item_height(item) };
 
-	SDL_Rect const &screen_area = disp().screen_area();
+	SDL_Rect const &screen_area = ::screen_area();
 
 	if(res.x > screen_area.w) {
 		return empty_rect;

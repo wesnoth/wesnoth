@@ -20,6 +20,7 @@ class display;
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../gettext.hpp"
+#include "../key.hpp"
 #include "../show_dialog.hpp"
 #include "../wml_separators.hpp"
 #include "file_chooser.hpp"

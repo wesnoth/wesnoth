@@ -29,6 +29,11 @@ widget::~widget()
 	bg_cancel();
 }
 
+// FIXME: we should move this into the header so that it can be
+// inlined, but that would currently create a
+// widget->display->button->widget include cycle
+CVideo& widget::video() const { return (disp_->video()); }
+
 void widget::bg_cancel()
 {
 	for(std::vector< surface_restorer >::iterator i = restorer_.begin(),
@@ -57,7 +62,7 @@ void widget::update_location(SDL_Rect const &rect)
 
 void widget::bg_register(SDL_Rect const &rect)
 {
-	restorer_.push_back(surface_restorer(&disp_->video(), rect));
+	restorer_.push_back(surface_restorer(&video(), rect));
 }
 
 void widget::set_location(int x, int y)
@@ -163,7 +168,7 @@ void widget::bg_restore() const
 {
 	util::scoped_ptr<clip_rect_setter> clipper(NULL);
 	if (clip_)
-		clipper.assign(new clip_rect_setter(disp().video().getSurface(), clip_rect_));
+		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
 
 	if (needs_restore_) {
 		for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
@@ -181,7 +186,7 @@ void widget::bg_restore(SDL_Rect const &rect) const
 {
 	util::scoped_ptr<clip_rect_setter> clipper(NULL);
 	if (clip_)
-		clipper.assign(new clip_rect_setter(disp().video().getSurface(), clip_rect_));
+		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
 
 	for(std::vector< surface_restorer >::const_iterator i = restorer_.begin(),
 	    i_end = restorer_.end(); i != i_end; ++i)
@@ -204,7 +209,7 @@ void widget::draw()
 
 	util::scoped_ptr<clip_rect_setter> clipper(NULL);
 	if (clip_)
-		clipper.assign(new clip_rect_setter(disp().video().getSurface(), clip_rect_));
+		clipper.assign(new clip_rect_setter(video().getSurface(), clip_rect_));
 
 	draw_contents();
 
