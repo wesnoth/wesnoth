@@ -51,6 +51,9 @@ namespace preferences {
 	double sound_volume();
 	void set_sound_volume(double vol);
 
+	void mute(bool muted);
+	bool is_muted();
+
 	bool grid();
 	void set_grid(bool ison);
 

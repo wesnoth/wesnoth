@@ -35,6 +35,8 @@ config prefs;
 
 display* disp = NULL;
 
+bool muted_ = false;
+
 }
 
 namespace preferences {
@@ -203,6 +205,18 @@ void set_sound_volume(double vol)
 	prefs["sound_volume"] = stream.str();
 
 	sound::set_sound_volume(vol);
+}
+
+void mute(bool muted)
+{
+	sound::set_music_volume(muted ? 0 : music_volume());
+	sound::set_sound_volume(muted ? 0 : sound_volume());
+	muted_ = muted;
+}
+
+bool is_muted()
+{
+	return muted_;
 }
 
 bool grid()

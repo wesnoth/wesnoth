@@ -55,6 +55,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("endturn",HOTKEY_ENDTURN));
 		m.insert(val("togglegrid",HOTKEY_TOGGLE_GRID));
 		m.insert(val("statustable",HOTKEY_STATUS_TABLE));
+		m.insert(val("mute",HOTKEY_MUTE));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -257,6 +258,9 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 		case HOTKEY_ACCELERATED:
 			preferences::set_turbo(!preferences::turbo());
 			break;
+		case HOTKEY_MUTE:
+			preferences::mute(!preferences::is_muted());
+			break;
 		case HOTKEY_CYCLE_UNITS:
 			if(executor)
 				executor->cycle_units();
@@ -316,7 +320,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 		case hotkey::HOTKEY_REPEAT_RECRUIT:
 			if(executor)
 				executor->repeat_recruit();
-			break;	
+			break;
 		default:
 			break;
 	}

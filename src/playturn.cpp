@@ -639,8 +639,14 @@ void turn_info::show_menu()
 			std::stringstream row;
 			row << i->second.name() << "," << i->second.hitpoints()
 			    << "/" << i->second.max_hitpoints() << ","
-				<< i->second.experience() << "/"
-				<< i->second.max_experience() << ","
+				<< i->second.experience() << "/";
+
+			if(i->second.type().advances_to().empty())
+				row << "-";
+			else
+				row << i->second.max_experience();
+
+			row << ","
 				<< i->second.movement_left() << "/"
 				<< i->second.total_movement() << ","
 				<< (i->first.x+1) << "-" << (i->first.y+1);
