@@ -286,11 +286,9 @@ private:
 		const int x_, y_;
 	};
 
-	/// Update the vector with items, creating surfaces for everything
-	/// and putting things where they belong. parsed_items should be a
-	/// vector with parsed strings, such as parse_text returns.
-	void set_items(const std::vector<std::string> &parsed_items,
-				   const std::string &title);
+	/// Update the vector with the items of the shown topic, creating
+	/// surfaces for everything and putting things where they belong.
+	void set_items();
 
 	// Create appropriate items from configs. Items will be added to the
 	// internal vector. These methods check that the necessary
@@ -1615,11 +1613,13 @@ help_text_area::help_text_area(display &disp, const section &toplevel)
 
 void help_text_area::set_inner_location(SDL_Rect const &rect) {
 	bg_register(rect);
+	if (shown_topic_)
+		set_items();
 }
 
 void help_text_area::show_topic(const topic &t) {
 	shown_topic_ = &t;
-	set_items(t.text, t.title);
+	set_items();
 	set_dirty(true);
 }
 
@@ -1644,8 +1644,7 @@ help_text_area::item::item(surface surface, int x, int y, bool _floating,
 	rect.h = box ? surface->h + box_width * 2 : surface->h;
 }
 
-void help_text_area::set_items(const std::vector<std::string> &parsed_items,
-							   const std::string &title) {
+void help_text_area::set_items() {
 	last_row_.clear();
 	items_.clear();
 	curr_loc_.first = 0;
@@ -1663,6 +1662,7 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 		down_one_line();
 	}
 	// Parse and add the text.
+	std::vector<std::string> const &parsed_items = shown_topic_->text;
 	std::vector<std::string>::const_iterator it;
 	for (it = parsed_items.begin(); it != parsed_items.end(); it++) {
 		if (*it != "" && (*it)[0] == '[') {
