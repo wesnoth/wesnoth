@@ -135,7 +135,7 @@ attack_type::attack_type(const config& cfg)
 {
 	const config::child_list& animations = cfg.get_children("animation");
 	for(config::child_list::const_iterator an = animations.begin(); an != animations.end(); ++an) {
-		animation_.push_back(unit_animation(cfg));
+		animation_.push_back(unit_animation(**an));
 	}
 
 	if(animation_.empty()) {
