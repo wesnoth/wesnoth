@@ -319,6 +319,10 @@ SOURCE=.\src\unit.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\unit_display.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\unit_types.cpp
 # End Source File
 # Begin Source File
@@ -564,6 +568,10 @@ SOURCE=.\src\tooltips.hpp
 # Begin Source File
 
 SOURCE=.\src\unit.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\unit_display.hpp
 # End Source File
 # Begin Source File
 
