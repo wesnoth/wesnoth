@@ -255,7 +255,7 @@ case ${host_os} in
 	darwin*)
 		SDL_LIBS="-framework Carbon $SDL_LIBS"
 esac
-case $(host_os) in
+case ${host_os} in
 	mingw32*)
 		SDL_LIBS="-lunicows $SDL_LIBS"
 esac
