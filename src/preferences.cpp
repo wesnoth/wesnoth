@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "cursor.hpp"
+#include "display.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"

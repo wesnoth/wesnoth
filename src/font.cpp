@@ -14,6 +14,7 @@
 #include "wesconfig.h"
 #include "global.hpp"
 
+#include "display.hpp"
 #include "font.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"

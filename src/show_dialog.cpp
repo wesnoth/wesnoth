@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
+#include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "gettext.hpp"

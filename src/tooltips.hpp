@@ -1,7 +1,7 @@
 #ifndef TOOLTIPS_HPP_INCLUDED
 #define TOOLTIPS_HPP_INCLUDED
 
-#include "display.hpp"
+class display;
 
 #include "SDL.h"
 

@@ -17,6 +17,7 @@
 #include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
 
+#include "display.hpp"
 #include "scrollarea.hpp"
 
 #include "SDL.h"

@@ -11,8 +11,10 @@
    See the COPYING file for more details.
 */
 
+#include "display.hpp"
 #include "gettext.hpp"
 #include "global.hpp"
+#include "image.hpp"
 #include "show_dialog.hpp"
 #include "map_create.hpp"
 #include "multiplayer_create.hpp"

@@ -13,12 +13,13 @@
 #ifndef MULTIPLAYER_CONNECT_H_INCLUDED
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
-#include "widgets/scrollpane.hpp"
+#include "config.hpp"
+#include "gamestatus.hpp"
+#include "leader_list.hpp"
 #include "multiplayer_ui.hpp"
 #include "multiplayer_create.hpp"
-#include "config.hpp"
 #include "network.hpp"
-#include "leader_list.hpp"
+#include "widgets/scrollpane.hpp"
 
 #include <string>
 

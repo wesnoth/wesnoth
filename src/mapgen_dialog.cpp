@@ -2,6 +2,7 @@
 
 #include "mapgen_dialog.hpp"
 
+#include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "gettext.hpp"

@@ -1,5 +1,6 @@
 #include "global.hpp"
 
+#include "display.hpp"
 #include "font.hpp"
 #include "show_dialog.hpp"
 #include "tooltips.hpp"

@@ -14,6 +14,7 @@
 
 #include "about.hpp"
 #include "cursor.hpp"
+#include "display.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"

@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "multiplayer_wait.hpp"

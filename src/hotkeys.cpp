@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
+#include "display.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
 #include "gettext.hpp"
