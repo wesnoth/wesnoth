@@ -902,8 +902,10 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	std::vector<int> seen_leaders;
 	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
 	    i != units.end(); ++i) {
-		if(i->second.can_recruit())
+		if(i->second.can_recruit()) {
+			std::cerr << "seen leader for side " << i->second.side() << "\n";
 			seen_leaders.push_back(i->second.side());
+		}
 	}
 
 	//clear villages for teams that have no leader

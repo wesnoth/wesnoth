@@ -112,9 +112,7 @@ void menu::change_item(int pos1, int pos2,std::string str)
 
 size_t menu::max_items_onscreen() const
 {
-	std::cerr << "calculating max items on screen...\n";
 	if(max_items_ != -1) {
-		std::cerr << "cached: " << max_items_ << "\n";
 		return size_t(max_items_);
 	}
 
@@ -133,8 +131,6 @@ size_t menu::max_items_onscreen() const
 
 	if(sum > max_height && n > 1)
 		--n;
-
-	std::cerr << "returning max items: " << n << " (" << sum << ")\n";
 
 	return max_items_ = n;
 }

@@ -126,7 +126,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		place_sides_in_preferred_locations(map,unit_cfg);
 	}
 
+	std::cerr << "initializing teams..." << unit_cfg.size() << "\n";;
+
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
+		std::cerr << "initializing team...\n";
 
 		if(first_human_team == -1 && (**ui)["controller"] == "human") {
 			first_human_team = ui - unit_cfg.begin();
@@ -164,8 +167,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 			const std::string& has_loc = (**ui)["x"];
 			gamemap::location start_pos(**ui);
 
-			if(has_loc.empty())
+			if(has_loc.empty()) {
 				start_pos = map.starting_position(new_unit.side());
+				std::cerr << "initializing side '" << (**ui)["side"] << "' at " << start_pos.x << "," << start_pos.y << "\n";
+			}
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
 				throw gamestatus::load_game_failed("No starting position for side 1");

@@ -226,6 +226,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	for(i = resolutions.begin(); i != resolutions.end(); ++i) {
 		const int width = atoi((**i)["width"].c_str());
 		const int height = atoi((**i)["height"].c_str());
+		std::cerr << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
 		if(screen.w >= width && screen.h >= height) {
 			std::cerr << "loading theme: " << width << "," << height << "\n";
 			current = i;
@@ -240,7 +241,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 	}
 
-	if(current == resolutions.end()) {
+	if(!resolutions.empty() && current == resolutions.end()) {
 		std::cerr << "ERROR: No valid resolution found\n";
 		return false;
 	}
