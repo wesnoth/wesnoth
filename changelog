@@ -8,8 +8,20 @@ CVS HEAD:
    * ice
    * deep and shallow water
    * snowy hills
+   * snowy forest
    * bridges
    * chest
+   * unit animations
+   * lava
+   * nest
+   * road
+   * dirt
+   * portraits
+   * forest
+   * bridges
+ * new scenarios for 'The Rise of Wesnoth' campaign:
+   * The Vanguard
+   * Return of the Fleet
  * scenario balancing for 'The Dark Hordes' campaign:
    * Underground Pool
  * scenario balancing for 'The Eastern Invasion' campaign:
@@ -17,11 +29,19 @@ CVS HEAD:
    * Evacuation
    * Peasant Revolt
    * Weldyn Under Attack
+ * replaced Duelist's pistol with crossbow
  * hammer attack given to 'Dwarvish Fighter' and 'Dwarvish Steelclad'
  * increased 'Dwarvish Steelclad' required experience to level
+ * reduced 'Bone Shooter' required experience to level
+ * increased Soul Shooter ranged damage
  * language fixes and polishing (english)
  * switched to using gettext, following languages have been converted:
+   * catalan
    * french
+   * spanish
+ * multiplayer improvements:
+   * replace AI or local player with observer
+ * added 'steadfast' ability
  * fixed Windows compile errors
  * fixed Mac OS X compile error
  * fixed syntax error appearing in the help about units under some translations
@@ -33,12 +53,30 @@ CVS HEAD:
  * fixed bad recruitment in 'The Dark Hordes: A New Chance'
  * fixed Kalenz appearing in 'The Dark Hordes: Underground Pool'
  * fixed call to non-existing macro in 'Heir to the Throne: Valley of Death'
+ * fixed lacking ids in the female part of units files (#10065)
+ * fixed conflict in terrain-graphics.cfg
+ * fixed multi-hex images loading incorrectly when first loaded under an different zoom level than the standard one
+ * fixed map labels appearing during story
+ * fixed missing #ifdef around config.h inclusion
+ * fixed poisoned units not looking poisoned when selected (#10094)
+ * fixed unit with 'non-living=yes' attacking a unit with a plague attack, and the unit with the plague attack kills it, a new plague unit will be created (#10049)
+ * fixed displaying 'hit t to continue' even when unit has finished movement
+ * fixed shroud being revealed at the beginning of movement while sometimes it was revelead at the end of movement (#10046)
+ * fixed bad ifdefs in 'The Dark Hordes: Inside the Tower' scenario
+ * fixed bugs in menu scrolling
+ * fixed {RANDOM} bug in 'The Rise of Wesnoth' scenarios
+ * fixed floating labels sometimes not displaying on accelerated mode
+ * fixed "drain" not working on final blow (#10038)
  * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
  * fixed a little bug where a space could disappear near EOL in the help system
  * new file hierarchy for portraits
  * minor speed optimizations
  * help system shows everything when wesnoth is running in debug mode
  * removed the unit description dialog in favor of in-game help
+ * added support for 2- and 3-sided transitions on the TERRAIN_ADJACENT_NORTH macro
+ * added possiblity for terrains to be defined as 2-layered, with a base part and an overlay part
+ * changed building static binary to use libtool when available
+ * multiplayer file hierarchy cleanup
 
 Version 0.8.2:
  * new and improved graphics: 
