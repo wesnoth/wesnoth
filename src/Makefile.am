@@ -41,7 +41,6 @@ wesnoth_SOURCES = about.cpp \
 		  dialogs.cpp \
 		  display.cpp \
 		  events.cpp \
-		  filechooser.cpp \
 		  filesystem.cpp \
 		  font.cpp \
 		  game.cpp \
@@ -92,7 +91,6 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
-		  widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
 		  widgets/label.cpp \
 		  widgets/menu.cpp \
@@ -172,7 +170,6 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  widgets/button.hpp \
-		  widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
 		  widgets/label.hpp \
 		  widgets/menu.hpp \
