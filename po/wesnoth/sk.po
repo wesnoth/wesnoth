@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-07 11:44+0100\n"
-"PO-Revision-Date: 2004-10-24 00:51+0100\n"
-"Last-Translator: Viliam Búr <bur@nod.sk>\n"
+"PO-Revision-Date: 2004-11-10 00:25+0100\n"
+"Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -202,7 +202,7 @@ msgstr ""
 
 #: data/help.cfg:91 src/help.cpp:1193 src/help.cpp:1194
 msgid "Movement"
-msgstr "Ťahy"
+msgstr "Pohyb"
 
 #: data/help.cfg:96
 msgid ""
@@ -1416,6 +1416,15 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Tvoj elf vojak začína každé kolo s určitým počtom pohybových bodov; to sa "
+"označuje ako rýchlosť. Keď sa tvoj elf vojak pohybuje po nejakej trase, "
+"každý šesťuholník, na ktorý vstúpi (vrátane posledného), ho stojí pohybové "
+"body. Keď označíš svojho elfa vojaka, vyblednú všetky polia, na ktoré nemôže "
+"vstúpiť v tomto kole. Ak je cieľ tak ďaleko, že ho nestihne dosiahnuť za "
+"jedno kolo, zobrazí sa nad ním číslo, koľko kôl by to trvalo. Ak ťukneš na "
+"takéto vzdialené pole, nastaví sa jednotke trasa, a každé kolo sa "
+"automaticky pohne tak ďaleko k cieľu, ako bude môcť. Ak náhodou nastavíš "
+"jednotke nesprávnu trasu, dvakrát na ňu ťukni a trasa sa zruší."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:123
 msgid ""
@@ -1425,6 +1434,10 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"Každá jednotka kontroluje oblasť susedných šesťuholníkov. Jednotky sa nemôžu "
+"pohybovať cez oblasť kontrolovanú súperom; môžu do nej iba vstúpiť. Keď do "
+"nej vstúpia, stratia zostávajúce pohybové body. Oblasť kontroly môžeš "
+"využiť, aby sa súper nemohol dostať k tvojim slabým a zraneným jednotkám."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:123
 msgid "What's the zone of control?"
@@ -1475,6 +1488,7 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Môže Merle počas môjho útoku útočiť naspäť?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
+#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1489,6 +1503,15 @@ msgid ""
 "to retaliate at all. However ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
+"Keď je jednotka napadnutá, opláca útok vlastnou zbraňou. Po každom "
+"útočníkovom údere nasleduje úder obrancu. Takto to pokračuje, kým sa "
+"niektorej strane nevyčerpá počet úderov; potom pokračuje už len súper, kým "
+"sa aj jeho počet nevyčerpá. Jednotka sa môže brániť iba útokom na rovnakú "
+"vzdialenosť; čiže útok zblízka možno oplatiť iba útokom zblízka, a útok na "
+"diaľku možno oplatiť iba útokom na diaľku. Väčšina jednotiek má útok zblízka "
+"silnejší ako útok na diaľku; jednotky s útokom na diaľku majú teda výhodu, "
+"že narazia na slabší protiútok, niekedy dokonca na žiaden. V hre Wesnoth "
+"však môžu aj strelecké jednotky útočiť iba na vedľajšie políčko."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid ""
@@ -1501,6 +1524,13 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Každý útok môže pri zásahu spôsobiť určité množstvo zranenia, a môže byť "
+"použitý určitý počet-krát za súboj. Tieto čísla sa nazývajú zranenie a počet "
+"úderov útoku. Zobrazujú sa v tomto poradí pod názvom útoku v stavovej "
+"tabuľke jednotky, a vedľa názvu v zozname možností útoku. Ak chceš rýchlo "
+"zistiť maximálne možné zranenie, vynásob zranenie počtom úderov. Napríklad "
+"môj bleskový útok spôsobuje pri zásahu zranenie za 14 životov a má 4 údery, "
+"takže môže v jednom súboji spôsobiť zranenie až 56."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid "How can you tell how powerful a unit's attacks are?"
@@ -1625,6 +1655,10 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Pozor! Odišiel si s veliteľom z pevnosti. Pamätaj, že keď tvoj veliteľ nie "
+"je v pevnosti, nemôžeš verbovať. Takisto pamätaj, že ak tvoj veliteľ padne, "
+"prehral si. Aby si mohol pokračovať vo výcviku, premiestnim ťa teraz späť do "
+"pevnosti."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:222
@@ -1666,6 +1700,11 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Občas nie je zo samotných dialógov jasné, ako sa má vyhrať scéna. Vtedy si "
+"musíš prečítať cieľ scény, ktorý sa zobrazí po úvodných dialógoch. Neskôr sa "
+"dá zobraziť kliknutím na položku \"Cieľ scény\" v menu. Cieľ scény je zoznam "
+"podmienok víťazstva a porážky. Keď sa splnia jedny z týchto podmienok, scéna "
+"skončila. Usiluj sa, aby to boli podmienky víťazstva."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
@@ -1679,6 +1718,10 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Keď vyhráš scénu, tvoje zvyšné jednotky zostanú nažive a získajú plné "
+"zdravie. Navyše im nemusíš platiť žold za ušetrené ťahy. V okamihu víťazstva "
+"získaš aj všetky dediny v oblasti. Medzi jednotlivými scénami však vždy "
+"stratíš 20% zlata."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
@@ -1702,10 +1745,12 @@ msgid ""
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
+"Hoci si dokončil prvú scénu, tvoj výcvik sa ešte nekončí. Budeme pokračovať "
+"ďalšou scénou, v ktorej budeme akože bojovať proti sebe."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "Vlastnosti a schopnosti"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:39
 msgid ""
@@ -1723,6 +1768,11 @@ msgid ""
 "Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
+"Väčšinu scén vyhráš jednoducho tak, že porazíš všetkých nepriateľských "
+"veliteľov. Vyhraj túto scénu tak, že porazíš mňa. V tomto boji ti môže "
+"pomôcť vojak z predchádzajúcej scény. Privoláš si ho tak, že ťukneš pravým "
+"tlačidlom myši na pole v hrade, vyberieš Privolaj, vyberieš svojho vojaka, a "
+"odklepneš 'OK'. Okrm toho môžeš verbovať elfov vojakov a strelcov."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:64
 msgid ""
@@ -1740,6 +1790,19 @@ msgid ""
 "@Victory\n"
 "Defeat Delfador"
 msgstr ""
+"@Nácvik schopností:\n"
+"Privolávanie\n"
+"Vlastnosti\n"
+"Zlato\n"
+"Denná doba\n"
+"Terén\n"
+"Odolnosť\n"
+"Schopnosti\n"
+"Predmety\n"
+"Hranie Wesnothu\n"
+"@Cieľ\n"
+"@Vyhráš, ak:\n"
+"Porazíš Delfadora"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 msgid "You have successfully recalled your Elvish Fighter."
@@ -1782,6 +1845,10 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
+"Zvyčajne sa privolávajú jednotky, ktoré už boli povýšené. Niekedy sa ale "
+"oplatí privolať aj jednotky, ktoré majú veľa skúseností, takže budú čoskoro "
+"povýšené. Privolávaj také jednotky, ktoré sa ti budú v danej scéne hodiť. "
+"Napríklad v lesnej scéne privolaj elfov."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:89
 msgid ""
@@ -1834,6 +1901,8 @@ msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
+"Keď verbuješ a privolávaš jednotky, míňaš zlato. Ak by mal počet zlatiek "
+"klesnúť pod 0, nemôžeš verbovať ani privolávať."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
@@ -1850,6 +1919,13 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Každej jednotke musíš pri naverbovaní alebo privolaní zaplatiť. Cena "
+"verbovania jednotky sa zobrazuje pod názvom jednotky. Cena privolania "
+"jednotky je vždy 20 zlatých. Okrem toho musíš svojim jednotkám platiť každé "
+"kolo žold vo výške úrovne jednotky. Tie jednotky, ktoré si sám nenaverboval "
+"ani neprivolal (napríklad tvoj veliteľ) ťa nestoja nič. Celkové náklady na "
+"jednotky sa zobrazujú na stavovej lište na hornej časti obrazovky, vedľa "
+"obrázku so zlatkou a červenou šípkou."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid "How do I get gold?"
@@ -1864,6 +1940,11 @@ msgid ""
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
 msgstr ""
+"Každú scénu začínaš s časťou zlata z konca predchádzajúcej scény. Ak by to "
+"malo byť menej ako 100 zlatých, začneš namiesto toho so 100 zlatými. "
+"Množstvo zlata, ktoré máš, sa zobrazuje na stavovej lište vedľa obrázku "
+"zlatky. Po začiatku scény dostávaš každé kolo dve zlatky. Keďže zvyčajne "
+"potrebuješ viac zlata, označuj dediny, ktoré ti budú dávať 1 zlatku za ťah."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:118
 msgid ""
@@ -1954,12 +2035,20 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Ak chceš zistiť vlastnosti terénu z pohľadu nejakej jednotky, ťukni pravým "
+"tlačidlom myši na jednotku, vyber \"Popis jednotky\" a pozri na \"Vplyv "
+"terénu\". Ak chceš zistiť, aký terén je na konkrétnom poli, ukáž kurzorom "
+"myši na toto pole a pozri sa do pravého horného rohu obrazovky. Tu sa vedľa "
+"seba zobrazí: názov terénu, súradnice poľa, obrana označenej jednotky, a "
+"počet pohybových bodov, koľko bude stáť označenú jednotku pohyb na toto pole."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
+"Každý útok spôsobuje nejaký typ zranenia a od toho závisí, aké veľké "
+"zranenie utrpia po tomto útoku jednotlivé jednotky."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid ""
@@ -1971,6 +2060,13 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"Každá jednotka má nejaké odolnosti voči jednotlivým druhom útokov. Odolnosť "
+"je percento, o ktoré sa zmenší zranenie zo súperovho útoku daného typu "
+"(alebo zväčší, ak je percento záporné). Napríklad ak elf lukostrelec zaútočí "
+"na elfa prieskumníka, spôsobí mu o 20% väčšie zranenie ako obyčajne, pretože "
+"elf prieskumník má odolnosť proti bodným zraneniam -20%. Tento bonus (alebo "
+"postih) sa sčítava s inými bonusmi (alebo postihmi), ako napríklad za dennú "
+"dobu, takže dva postihy -50% dajú spolu -100%."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
@@ -1985,6 +2081,13 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then look at Resistances."
 msgstr ""
+"Existuje 6 rôznych druhov zranenia: sečné, bodné, tupé, ohnivé, mrazivé a "
+"sväté. Dôkladne obrnené jednotky majú vysokú odolnosť voči fyzickým "
+"zraneniam (sečné, bodné a tupé), ale nízku odolnosť voči magickým zraneniam "
+"(ohnivé a mrazivé). Všetky živé jednotky sú odolné voči svätým zraneniam, "
+"ale nemŕtvi sú nimi extrémne zraniteľní. Ak chceš zistiť, aké odolnosti má "
+"konkrétna jednotka, ťukni na ňu pravým tlačidlom myši, vyber \"Popis jednotky"
+"\" a pozri na \"Odolnosti\"."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
@@ -1994,6 +2097,7 @@ msgstr "Čo sú rozličné typy zranenia?"
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
+"Mnohé jednotky majú zvláštne schopnosti, ktoré nejako upravujú pravidlá hry."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid ""
@@ -2001,6 +2105,9 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"Každá zvláštna schopnosť robí niečo iné (preto sa to nazýva zvláštna "
+"schopnosť). Ak chceš zistiť popis špeciálnej vlastnosti jednotky, ukáž "
+"kurzorom myši na názov tejto vlastnosti."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What do specialties do?"
@@ -2013,6 +2120,10 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"Zvláštne schopnosti jednotky závisia od druhu jednotky; napríklad všetci "
+"generáli majú schopnosť \"velenie\". Sú dva druhy špeciálnych schopností: "
+"schopnosti a zvláštne útoky. Schopnosť sa týka jednotky, špeciálna schopnosť "
+"sa týkajú iba jedného z útokov tejto jednotky."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
@@ -2026,6 +2137,12 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"Existuje veľa zvláštnych schopností a poznávať ich je jedna zo zaujímavých "
+"vecí na hraní Wesnotu. Dve najčastejšie zvláštne schopnosti sa volajú "
+"\"magický\" a \"velenie\". Magický útok zasiahne nepriateľa s "
+"pravdepodobnosťou 70% bez ohľadu na terén. Jednotky, ktoré stoja vedľa "
+"jednotky na vyššej úrovni so schopnosťou \"velenie\", spôsobujú väčšie "
+"zranenia."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
@@ -2042,6 +2159,10 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"Ak chceš použiť zvláštnu schopnosť, musíš sa so svojou jednotkou pohnúť "
+"alebo zaútočiť spôsobom, ktorý vyvoláva túto schopnosť. Napríklad ak chceš "
+"využiť velenie, postav svoju jednotku s velením vedľa inej jednotky na "
+"nižšej úrovni, a potom zaútoč tou druhou jednotkou."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:184
 msgid ""
@@ -2049,10 +2170,13 @@ msgid ""
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
+"Niektoré predmety menia vlastnosti jednotky, ktorá ich zobrala. Jedna z "
+"tvojich jednotiek našla nápoj, ktorý jej útokom zvýši zranenie. Ak si chceš "
+"pozrieť nové bojové vlastnosti jednotky, pozri sa do stavovej tabuľky."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:191
 msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr ""
+msgstr "Tento nápoj zvyšuje zranenie všetkých útokov tejto jednotky o štyri."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid ""
@@ -2061,6 +2185,10 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"Predmety, ktoré nájdeš v jednotlivých scénach rôznych výprav, sa navzájom "
+"líšia. Vo výprave \"Dedič trónu\" sú predmety väčšinou nové zbrane pre "
+"jednotku, ktorá ich zdvihne. Predmety sa však vo výpravách objavujú len "
+"zriedkavo."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "What kind of objects am I likely to encounter?"
@@ -2075,6 +2203,9 @@ msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
+"Väčšina predmetov spôsobuje u jednotky, ktorá ich zdvihla, trvalú zmenu. "
+"Niektoré objekty, ako napríklad svätená voda, však vydržia iba do konca "
+"scény."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:212
 msgid ""
@@ -2082,6 +2213,8 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
+"Pamätaj, že máš nepriateľovi brániť v dobýjaní dedín, a že máš naopak dobyť "
+"jeho dediny. To mu obmedzí prísun zlata a tak nebude môcť verbovať."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:239
 msgid ""
@@ -2137,6 +2270,14 @@ msgid ""
 "@Current objective:\n"
 "{OBJECTIVE}"
 msgstr ""
+"@Nácvik schopností:\n"
+"Verbovanie jednotiek\n"
+"Pohyb jednotiek\n"
+"Útok na nepriateľské jednotky\n"
+"Získavanie skúseností\n"
+"Vyhrávanie scén\n"
+"@Momentálny cieľ:\n"
+"{OBJECTIVE}"
 
 #: data/schedules.cfg:5
 msgid "Dawn"
@@ -3929,7 +4070,6 @@ msgid "Drake Burner"
 msgstr "Jašter opekač"
 
 #: data/units/Drake_Burner.cfg:18
-#, fuzzy
 msgid ""
 "Not only can a Drake Burner wield its claws with deadly skill, but it still "
 "possesses the fire-breathing abilities of its remote ancestors. Enemies "
@@ -3939,7 +4079,9 @@ msgid ""
 msgstr ""
 "Jašteri opekači rozosievajú smrť nielen svojimi pazúrmi, ale majú aj "
 "schopnosť chrliť oheň, zdedenú po dávnych predkoch. Nepriatelia sa im radšej "
-"zdiaľky vyhýbajú. Najskúsenejší opekači neskôr stanú ohnivými jaštermi"
+"zdiaľky vyhýbajú. Najskúsenejší opekači neskôr ovládnu svoj vnútorný oheň a "
+"stanú sa ohnivými jaštermi, alebo sa postavia na čelo svojho druhu a stanú "
+"sa žiarivými jaštermi."
 
 #: data/units/Drake_Burner.cfg:40 data/units/Drake_Fighter.cfg:44
 #: data/units/Drake_Fire.cfg:42 data/units/Drake_Flameheart.cfg:47
@@ -3962,25 +4104,29 @@ msgid ""
 "weapons of choice are the sword and spear, which they use to great effect. "
 "The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
+"Títo jašteri majú zakrpatené krídla a nedokážu využiť svoj vnútorný oheň ako "
+"zbraň. Neradno ich však podceňovať. Sú zručnými remeselníkmi, vedia si "
+"vyrobiť zbrane so smaragdovými čepeľami a ťažké brnenia. Najobľúbenejšie "
+"zbrane úderníkov sú meče a kopije, ktoré zručne používajú. Z najúspešnejších "
+"úderníkov sa stávajú gladiátori alebo sekači."
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
 msgstr "Jašter vojak"
 
 #: data/units/Drake_Fighter.cfg:18
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars with deadly skill, and possess the "
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
-"Jašteri opekači rozosievajú smrť nielen svojimi pazúrmi, ale majú aj "
-"schopnosť chrliť oheň, zdedenú po dávnych predkoch. Nepriatelia sa im radšej "
-"vyhýbajú."
+"Jašteri vojaci nosia zakrivené scimitary, s ktorými zručne zaobchádzajú. Od "
+"predkov zdedili schopnosť vydychovať oheň. Najzručnejší jašterí vojaci "
+"vstupujú do elitných radov jašterov bojovníkov."
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
-msgstr ""
+msgstr "scimitar"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
@@ -3994,10 +4140,14 @@ msgid ""
 "most ferocious Fire Drakes become the flying configurations known as Drake "
 "Infernos."
 msgstr ""
+"Veľkí ohniví jašteri sa obliekajú do strieborných plátových brnení, ktoré "
+"ich chránia pred ťažkými zraneniami. Hoci je ich bojová technika primitívna, "
+"ovládajú svoj vnútorný oheň a treba sa ich báť. Z najzúrivejších ohnivých "
+"jašterov vznikajú lietajúce formácie zvané pekelní jašteri."
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Plamenný jašter"
 
 #: data/units/Drake_Flameheart.cfg:20
 msgid ""
@@ -4009,9 +4159,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
-#, fuzzy
 msgid "Drake Flare"
-msgstr "Jašter otrok"
+msgstr "Žiarivý jašter"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -4020,6 +4169,9 @@ msgid ""
 "broader aspirations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
+"Žiariví jašteri sa stávajú vodcami svojho druhu. Svoj vnútorný oheň "
+"neovládajú natoľko, ako ich rovesníci, majú však väčšie ambície. Sú "
+"ozbrojení mečmi a chcú sa presláviť."
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
@@ -4035,9 +4187,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
-#, fuzzy
 msgid "Drake Glider"
-msgstr "Jašter sekač"
+msgstr "Plachtiaci jašter"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -4048,16 +4199,19 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"Plachtiaci jašteri nosia čo najmenej brnenia, aby mohli po opustení svojch "
+"jaskýň rýchlo uniknúť nepriateľom. Títo jašteri sú šikovní bojovníci, a "
+"podobne ako mnohí z ich druhu, majú vnútorný oheň. Plachtiaci jašteri dokážu "
+"uštvať nepriateľa svojou rýchlosťou. Najlepší plachtiaci jašteri sa môžu "
+"tešiť na prijatie do radov lietajúcich jašterov."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
-#, fuzzy
 msgid "slam"
-msgstr "Ostrov"
+msgstr "úder"
 
 #: data/units/Drake_Inferno.cfg:4
-#, fuzzy
 msgid "Inferno Drake"
-msgstr "Ohnivý jašter"
+msgstr "Pekelný jašter"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -4069,9 +4223,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
-#, fuzzy
 msgid "Sky Drake"
-msgstr "Ohnivý jašter"
+msgstr "Lietajúci jašter"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4102,9 +4255,8 @@ msgid ""
 "Drake Warriors wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
-"Jašteri opekači rozosievajú smrť nielen svojimi pazúrmi, ale majú aj "
-"schopnosť chrliť oheň, zdedenú po dávnych predkoch. Nepriatelia sa im radšej "
-"vyhýbajú."
+"Jašteri vojaci nosia meče, s ktorými zručne zaobchádzajú. Od svojich predkov "
+"zdedili schopnosť vydychovať oheň."
 
 #: data/units/Draug.cfg:3
 #, fuzzy
@@ -4209,7 +4361,7 @@ msgstr "kladivo"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Trpaslík strážca"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -4217,6 +4369,9 @@ msgid ""
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
 "alot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
+"Najodolnejší trpaslíci sa často prihlásia do trpaslíčej armády ako "
+"strážcovia. Hoci sú pomalí a neútočia dobre, strážia krídla armády, odrážajú "
+"útoky a hádžu na nepriateľa kopije."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -4260,19 +4415,21 @@ msgid "Lightning bolt"
 msgstr "Blesk"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
-#, fuzzy
 msgid "Dwarvish Sentinel"
-msgstr "Trpaslík obrnenec"
+msgstr "Trpaslík ochranca"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
+#, fuzzy
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Ochranca s veľkým štítom a ešte väčšou odvahou neustúpi ani najsilnejším "
+"nepriateľským útokom."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Trpaslík obranca"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -4280,6 +4437,9 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"Obranovia si počas rokov boja vytvorili vylepšené štíty a brnenia zo "
+"surovín, ktoré našli v nepriateľských ruinách. Hoci sú pomalí, sú obávaní "
+"pre svoju odolnosť a silu."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
@@ -4317,16 +4477,15 @@ msgid "Dwarvish Thunderguard"
 msgstr "Trpaslík hromový strážca"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
-#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
 "they are no faster than the more common Thunderers, their attack is much "
 "more deadly."
 msgstr ""
-"Obávaní trpaslicí hormoví strážcovia nosia tajné a obávané zbrane ukuté "
+"Obávaní trpasličí hromoví strážcovia nosia tajné a obávané zbrane ukuté "
 "trpasličími majstrami tajných technológií. Hoci nie sú rýchlejší ako "
-"obyčajní hromobijci, ich útok je ničivejší."
+"obyčajní hromobijci, ich útok je omnoho ničivejší."
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
@@ -4391,6 +4550,9 @@ msgid ""
 "range combat. Able to fire many arrows quickly and accurately, these Archers "
 "make up a large portion of the Elvish military."
 msgstr ""
+"Elfovia strelci sú od detstva trénovaní v lukostreľbe, a tak sú zruční v "
+"súboji na diaľku. Títo elfovia dokážu vystreliť mnoho šípov rýchlo a presne. "
+"Tvoria veľkú časť elfej armády."
 
 #: data/units/Elvish_Archer.cfg:82
 #, fuzzy
@@ -4408,6 +4570,10 @@ msgid ""
 "Wesnoth, and can ambush their foes in the forest, because they cannot be "
 "seen in the woods until just after they have attacked."
 msgstr ""
+"Elfi pomstitelia sú extrémne šikovní a extrémne rýchli, zruční vo všetkých "
+"formách súboja. Pomstitelia sú považovaní za najväčších znalcov lesov vo "
+"Wesnothe. V lese dokážu prepadnúť nepriateľov, ktorí ich medzi stromami "
+"neuvidia až do chvíle útoku."
 
 #: data/units/Elvish_Avenger.cfg:76
 #, fuzzy
@@ -4468,7 +4634,7 @@ msgstr "tŕne"
 #: data/units/Elvish_Enchantress.cfg:3
 #, fuzzy
 msgid "female^Elvish Enchantress"
-msgstr "Elf šaman"
+msgstr "Elf zaklínačka"
 
 #: data/units/Elvish_Enchantress.cfg:21
 msgid ""
@@ -4476,6 +4642,9 @@ msgid ""
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
 "magically animate roots with which they bind their enemies in place."
 msgstr ""
+"Elfky zaklínačky sú majstrami útočnej mágie. Na svojich nepriateľov útočia "
+"poryvmi ľadového vetra z astrálnych rovín a magicky rozhýbanými koreňmi, "
+"ktoré ich na mieste znehybnia."
 
 #: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:43
 #: data/units/Elvish_Sorceress.cfg:65
@@ -4565,6 +4734,10 @@ msgid ""
 "great skill with the bow compensates for their lack of skill in melee combat "
 "and lesser speed."
 msgstr ""
+"Elf ostrostrelec je expertom na používanie luku. Jeho zručnosť mu zaručuje "
+"šancu na zásah aspoň 60%, aj keď je nepriateľ ukrytý v náročnom teréne. Táto "
+"veľká zručnosť s lukom vyvažuje jeho nedostatky v boji nablízko i nižšiu "
+"rýchlosť."
 
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:114
 #: data/units/Elvish_Sharpshooter.cfg:38
@@ -4623,6 +4796,10 @@ msgid ""
 "Rangers cannot be seen by enemies while they are in forest, unless they have "
 "just made an attack, or there are enemies adjacent to them."
 msgstr ""
+"Elf hraničiar je rýchly a mocný. Hraničiar je všestranný bojovník, skúsený v "
+"boji zblízka i na diaľku. Hraničiar je najskúsenejší z obyvateľov lesa. "
+"Nepriatelia ho v lese nevidia, dokiaľ naňho náhodou nenarazia, alebo ich "
+"nenapadne."
 
 #: data/units/Elvish_Ranger.cfg:79
 #, fuzzy
@@ -4678,6 +4855,9 @@ msgid ""
 "when firing very quickly. Sharpshooters are excellent at picking off "
 "entrenched enemies."
 msgstr ""
+"Elf ostreľovač je elitou lukostrelcov Wesnothu. Je neuveriteľne presný, pri "
+"útoku trafí s pravdepodobnosťou 60%, aj keď strieľa veľmi rýchlo. "
+"Ostreľovači sú vynikajúci na dorážanie ukrytých nepriateľov."
 
 #: data/units/Elvish_Sharpshooter.cfg:82
 #, fuzzy
@@ -4706,7 +4886,7 @@ msgstr "dotyk víly"
 #: data/units/Elvish_Sorceress.cfg:3
 #, fuzzy
 msgid "female^Elvish Sorceress"
-msgstr "Elf strelec"
+msgstr "Elf čarodejnica"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4715,11 +4895,15 @@ msgid ""
 "entangling attack is notably more effective than before, and they can call "
 "upon bursts of chilling ethereal wind to smite those who oppose them."
 msgstr ""
+"Elfky čarodejnice prešli zo štúdia uzdravujúcej mágie k jej agresívnejším "
+"formám a získali zručnosť v útoku na diaľku. Ich zamotávajúci útok je "
+"výrazne účinnejší a dokážu privolať závany mrazivého astrálneho vetra, ktorý "
+"zmetie tých, čo im odporujú."
 
 #: data/units/Elvish_Sylph.cfg:3
 #, fuzzy
 msgid "female^Elvish Sylph"
-msgstr "Elf víla"
+msgstr "Elf sylf"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -4727,6 +4911,9 @@ msgid ""
 "developed their faerie side, they transform into creatures of both worlds, "
 "wielding powerful magic against their enemies."
 msgstr ""
+"Elfky sylfy sú najkrajšie bytosti vo svete smrteľníkov. Naplno rozvinuli "
+"svoju astrálnu stránku a stali sa bytosťami oboch svetov. Proti nepriateľom "
+"používajú mocnú mágiu."
 
 #: data/units/Elvish_Sylph.cfg:51
 msgid "gossamer"
@@ -4764,7 +4951,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Ohnivý drak"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4774,6 +4961,10 @@ msgid ""
 "its tail. Fire Dragons are cunning and cruel, and often take underlings whom "
 "they help lead to victory."
 msgstr ""
+"Ohnivý drak je dlhovekým a desivým členom dračej rodiny. Vydychuje oheň a "
+"dokáže svoj ohnivý dych dobre uplatniť v súboji. Navyše vie zúrivo hrýzť a "
+"drviť súperov chvostom. Ohniví draci sú zákerní a krutí. Často majú "
+"služobníkov, ktorých vedú k víťazstvu."
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
@@ -4887,7 +5078,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Veľký blatovec"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4895,6 +5086,9 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
+"Veľký blatovec je väčšou odrodou blatovca, magického výtvoru z hliny a vody. "
+"Na svojich nepriateľov útočí spŕškami horúcej vody alebo údermi blatových "
+"pästí."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
@@ -4932,6 +5126,9 @@ msgid ""
 "of sophisticated weaponry by attempting to overwhelm there foes by sheer "
 "numbers. These are the larger and more able kinsmen of the Goblin Spearman."
 msgstr ""
+"Goblini vyrovnávajú svoju všeobecnú hlúposť, krehkosť a nedostatok "
+"zložitejších zbraní pokusmi premôcť nepriateľov svojím počtom. Toto sú tí "
+"väčší a šikovnejší spomedzi kopijníkov."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -4978,6 +5175,10 @@ msgid ""
 "are well-equipped for a war of attrition. The best Goblin Spearman can look "
 "forward to becoming Goblin Impalers."
 msgstr ""
+"Goblini vyrovnávajú svoju všeobecnú hlúposť, krehkosť a nedostatok "
+"zložitejších zbraní pokusmi premôcť nepriateľov svojím počtom. Hoci nemajú "
+"poriadne brnenie ani zbrane, títo vyziabnutí kopijníci sú pripravení na "
+"útok. Najlepší z kopijníkov sa môžu stať napichovačmi."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -5114,7 +5315,7 @@ msgstr ""
 #: data/units/Horse_Lord.cfg:3
 #, fuzzy
 msgid "Horse Lord"
-msgstr "Trpaslík šľachtic"
+msgstr "Šľachtic"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -5354,7 +5555,7 @@ msgstr ""
 #: data/units/Mermaid_Enchantress.cfg:3
 #, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr "Elf šaman"
+msgstr "Elf zaklínačka"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5501,7 +5702,7 @@ msgstr ""
 #: data/units/Mounted_Commander.cfg:3
 #, fuzzy
 msgid "Mounted Commander"
-msgstr "Veliteľ"
+msgstr "Šľachtic veliteľ"
 
 #: data/units/Mounted_Commander.cfg:17
 msgid ""
@@ -5513,13 +5714,15 @@ msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Blatovec"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
+"Blatovce sú magické výtvory z hliny a vody. Na svojich nepriateľov útočia "
+"spŕškami horúcej vody."
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -5575,11 +5778,11 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Šľachtic veliteľ"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Šľachtic bojovník"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -5587,20 +5790,24 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
+"Mladý a odhodlaný bojovník bojuje mečom, ale je zraniteľný nepriateľským "
+"streleckým útokom. Má potenciál stať sa jedného dňa veľkým veliteľom."
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Šľachtic"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Mladý šľachtic"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
 "Today he is a young man, by his devotion to the crown he is seeking to "
 "become a Lord -- to join the elite of humanity."
 msgstr ""
+"Mladý muž oddaný korune a pripravený vstúpiť medzi šľachtu -- elitu ľudského "
+"sveta."
 
 #: data/units/Noble_Youth.cfg:23 data/units/Youth.cfg:20
 msgid "training sword"
@@ -5733,7 +5940,7 @@ msgstr "kliatba"
 
 #: data/units/Orcish_Shaman.cfg:46
 msgid "Novice Orcish Shaman"
-msgstr "Ork mladý šaman"
+msgstr "Mladý ork šaman"
 
 #: data/units/Orcish_Shaman.cfg:58
 msgid ""
@@ -5754,7 +5961,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:89
 msgid "Old Orcish Shaman"
-msgstr "Ork starý šaman"
+msgstr "Starý ork šaman"
 
 #: data/units/Orcish_Shaman.cfg:101
 msgid ""
@@ -5842,8 +6049,9 @@ msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
 msgstr ""
 
 #: data/units/Outlaw_Princess.cfg:4
+#, fuzzy
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Zbojnícka princezná"
 
 #: data/units/Outlaw_Princess.cfg:19
 msgid ""
@@ -5854,8 +6062,9 @@ msgid ""
 msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
+#, fuzzy
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Zbojnícka kráľovná"
 
 #: data/units/Outlaw_Queen.cfg:17
 msgid "skirmisher,leadership"
@@ -6871,7 +7080,7 @@ msgstr "Čím sa má stať naša víťazná jednotka?"
 
 #: src/dialogs.cpp:160
 msgid "No objectives available"
-msgstr "Nie je stanovený žiaden cieľ"
+msgstr "Cieľ nie je stanovený"
 
 #: src/dialogs.cpp:177
 msgid "Save Game"
@@ -7053,7 +7262,7 @@ msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
 #: src/game.cpp:837
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "Chyba pri čítaní súboru hry"
 
 #: src/game.cpp:946
 msgid " ,Get More Campaigns..."
@@ -7061,7 +7270,7 @@ msgstr ""
 
 #: src/game.cpp:947
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Stiahni si ďalšie výpravy z internetového servera."
 
 #: src/game.cpp:957
 msgid "Choose the campaign you want to play:"
@@ -7077,7 +7286,7 @@ msgstr "Pripoj sa na server"
 
 #: src/game.cpp:1007
 msgid "You will now connect to a campaign server to download campaigns."
-msgstr ""
+msgstr "Teraz sa pripojíš na server výprav, aby si si stiahol výpravy."
 
 #: src/game.cpp:1008
 msgid "Server: "
@@ -7097,15 +7306,16 @@ msgstr "Chyba"
 
 #: src/game.cpp:1028
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Čakám na odpoveď servera"
 
 #: src/game.cpp:1041
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
 #: src/game.cpp:1046
+#, fuzzy
 msgid ",Name,Version,Author,Downloads,Size"
-msgstr ""
+msgstr ",Názov,Verzia,Autor,Stiahnutá"
 
 #: src/game.cpp:1065
 #, fuzzy
@@ -7142,7 +7352,7 @@ msgstr "Stiahni výpravu"
 
 #: src/game.cpp:1114
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Sťahujem výpravu..."
 
 #: src/game.cpp:1132
 msgid "Campaign Installed"
@@ -8193,6 +8403,75 @@ msgstr "Vymaž súbor"
 msgid "Deletion of the file failed."
 msgstr "Nepodarilo sa vymazať súbor."
 
+#~ msgid "minimum damage"
+#~ msgstr "minimálne zranenie"
+
+#~ msgid "Game"
+#~ msgstr "Hra"
+
+#~ msgid "Scenario"
+#~ msgstr "Mapa"
+
+#~ msgid "Configure Sides:"
+#~ msgstr "Nastav strany:"
+
+#~ msgid "Choose Team Settings:"
+#~ msgstr "Vyber si tím:"
+
+#~ msgid "Could not connect to the remote host"
+#~ msgstr "Neviem sa pripojiť na server hry"
+
+#~ msgid "Waiting for players to connect"
+#~ msgstr "Čakám, kým sa hráči pripoja"
+
+#~ msgid "Filled"
+#~ msgstr "Obsadené"
+
+#~ msgid "Available"
+#~ msgstr "Voľné"
+
+#~ msgid "&misc/observer.png,Observer"
+#~ msgstr "&misc/observer.png,Divák"
+
+#~ msgid "Describe Unit"
+#~ msgstr "Opíš jednotku"
+
+#~ msgid "Full Screen or Windowed?"
+#~ msgstr "Celá obrazovka alebo okno?"
+
+#~ msgid "Display:"
+#~ msgstr "Displej:"
+
+#~ msgid "Windowed"
+#~ msgstr "Okno"
+
+#~ msgid "Speed:"
+#~ msgstr "Rýchlosť:"
+
+#~ msgid "Normal"
+#~ msgstr "Normálna"
+
+#~ msgid "Sound Settings..."
+#~ msgstr "Nastavenie zvuku..."
+
+#~ msgid "Options"
+#~ msgstr "Možnosti"
+
+#~ msgid "Choose Scenario"
+#~ msgstr "Vyber si scenár"
+
+#~ msgid "Unit resistance table"
+#~ msgstr "Tabuľka odolnosti jednotky"
+
+#~ msgid "See Also..."
+#~ msgstr "Pozri..."
+
+#~ msgid "first strike"
+#~ msgstr "prvý útok"
+
+#~ msgid "Tundra"
+#~ msgstr "Tundra"
+
 #~ msgid "Next tip"
 #~ msgstr "Ďalší tip"
 
@@ -8208,6 +8487,12 @@ msgstr "Nepodarilo sa vymazať súbor."
 #~ msgstr ""
 #~ "Dragúni jazdia na rýchlych koňoch ozbrojení mečmi a magickými artefaktmi. "
 #~ "Je to veľmi všestranná jednotka."
+
+#~ msgid "Naga"
+#~ msgstr "Naga"
+
+#~ msgid "Host Multiplayer Game"
+#~ msgstr "Založ novú hru"
 
 #~ msgid "Could not initialize video. Exiting.\n"
 #~ msgstr "Neviem naštartovať grafiku. Končím.\n"
@@ -8270,7 +8555,7 @@ msgstr "Nepodarilo sa vymazať súbor."
 #~ msgstr "Nastavenia"
 
 #~ msgid "Scenario Objectives"
-#~ msgstr "Cieľ mapy"
+#~ msgstr "Cieľ scény"
 
 #~ msgid "Quit Game"
 #~ msgstr "Ukonči hru"
@@ -8349,81 +8634,6 @@ msgstr "Nepodarilo sa vymazať súbor."
 
 #~ msgid "Do you really want to quit?"
 #~ msgstr "Chceš naozaj skončiť?"
-
-#~ msgid "minimum damage"
-#~ msgstr "minimálne zranenie"
-
-#~ msgid "Game"
-#~ msgstr "Hra"
-
-#~ msgid "Scenario"
-#~ msgstr "Mapa"
-
-#~ msgid "Configure Sides:"
-#~ msgstr "Nastav strany:"
-
-#~ msgid "Choose Team Settings:"
-#~ msgstr "Vyber si tím:"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr "Neviem sa pripojiť na server hry"
-
-#~ msgid "Waiting for players to connect"
-#~ msgstr "Čakám, kým sa hráči pripoja"
-
-#~ msgid "Filled"
-#~ msgstr "Obsadené"
-
-#~ msgid "Available"
-#~ msgstr "Voľné"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "&misc/observer.png,Divák"
-
-#~ msgid "Describe Unit"
-#~ msgstr "Opíš jednotku"
-
-#~ msgid "Full Screen or Windowed?"
-#~ msgstr "Celá obrazovka alebo okno?"
-
-#~ msgid "Display:"
-#~ msgstr "Displej:"
-
-#~ msgid "Windowed"
-#~ msgstr "Okno"
-
-#~ msgid "Speed:"
-#~ msgstr "Rýchlosť:"
-
-#~ msgid "Normal"
-#~ msgstr "Normálna"
-
-#~ msgid "Sound Settings..."
-#~ msgstr "Nastavenie zvuku..."
-
-#~ msgid "Options"
-#~ msgstr "Možnosti"
-
-#~ msgid "Choose Scenario"
-#~ msgstr "Vyber si scenár"
-
-#~ msgid "Unit resistance table"
-#~ msgstr "Tabuľka odolnosti jednotky"
-
-#~ msgid "See Also..."
-#~ msgstr "Pozri..."
-
-#~ msgid "first strike"
-#~ msgstr "prvý útok"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "Naga"
-#~ msgstr "Naga"
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Založ novú hru"
 
 #~ msgid "TitleScreen button^About"
 #~ msgstr "O hre"
