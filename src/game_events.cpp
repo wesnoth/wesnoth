@@ -187,10 +187,10 @@ public:
 		return cfg_->get_children("filter_second");
 	}
 
-	void handle_event(const queued_event& event_info, const config* cfg=NULL);
+	bool handle_event(const queued_event& event_info, const config* cfg=NULL);
 
 private:
-	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg);
+	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg, bool& mutated);
 
 	std::string name_;
 	bool first_time_only_;
@@ -207,7 +207,7 @@ std::multimap<std::string,event_handler> events_map;
 
 //this function handles all the different types of actions that can be triggered
 //by an event.
-bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg)
+bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg, bool& mutated)
 {
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
@@ -218,6 +218,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		handle_event(event_info,&cfg);
 	}
 
+	//allow undo sets the flag saying whether the event has mutated the game to false
+	else if(cmd == "allow_undo") {
+		mutated = false;
+	}
 	//change shroud settings for portions of the map
 	else if(cmd == "remove_shroud" || cmd == "place_shroud") {
 		const bool remove = cmd == "remove_shroud";
@@ -1242,10 +1246,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	return rval;
 }
 
-void event_handler::handle_event(const queued_event& event_info, const config* cfg)
+bool event_handler::handle_event(const queued_event& event_info, const config* cfg)
 {
 	if(cfg == NULL)
 		cfg = cfg_;
+
+	bool mutated = true;
 
 	bool skip_messages = false;
 	for(config::all_children_iterator i = cfg->ordered_begin();
@@ -1260,13 +1266,15 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 			}
 		}
 
-		if (!handle_event_command(event_info,*item.first,*item.second))  {
+		if (!handle_event_command(event_info,*item.first,*item.second,mutated))  {
 			skip_messages = true;
 		}
 		else { 
 			skip_messages = false;
 		}
 	}
+
+	return mutated;
 }
 
 bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
@@ -1362,13 +1370,13 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	}
 
 	//the event hasn't been filtered out, so execute the handler
-	handler.handle_event(ev);
+	const bool res = handler.handle_event(ev);
 
 	if(handler.first_time_only()) {
 		handler.disable();
 	}
 
-	return true;
+	return res;
 }
 
 void get_variable_internal(const std::string& key, config& cfg,
