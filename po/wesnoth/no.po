@@ -3,24 +3,12 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-# , 2005.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: no\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2005-03-15 20:09+0100\n"
+"PO-Revision-Date: 2005-03-16 18:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmål <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -227,7 +215,7 @@ msgstr ""
 "\n"
 "Hugs at enheter ikke bare koster gull å rekruttere eller tilbakekalle, men "
 "det koster også å underholde dem. Les <ref>dst income_and_upkeep "
-"text=«Inntekt og underhold»</ref> for mer informasjon."
+"text=’Inntekt og underhold’</ref> for mer informasjon."
 
 #: data/help.cfg:92 src/help.cpp:1200 src/help.cpp:1201
 msgid "Movement"
@@ -242,6 +230,12 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Flytting av enheter i «Kampen om Wesnoth» er enkelt: Klikk på enheten du vil "
+"flytte, klikk så på ruten du vil flytte til. Når enheten er valgt vil alle "
+"ruter enheten kan flytte til være uthevet, og alle ruter som den ikke kan "
+"flytte til være grå. Flytter du muspekeren over grå ruter vil du se hvor "
+"mange runder det tar å nå den ruten. Klikker du på den vil enheten flytte "
+"seg til den langs den raskeste stien denne og de etterfølgende rundene."
 
 #: data/help.cfg:95
 msgid ""
@@ -257,6 +251,18 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Hver enhet har et visst antall forflytningspoeng som blir brukt for hver "
+"gang enheten flytter til en ny rute. Hvor mange poeng som blir brukt er "
+"avhengig av hvilket <ref>dst=terrain text=’terreng’</ref> ruten har. Det "
+"koster for eksempel nesten alltid ett forflytningspoeng å gå inn på en rute "
+"med gresslette. Akkurat hvor mange poeng det koster å flytte inn i en rute "
+"avhenger av enhetstypen - i skogen vil alvene bruke ett forflytningspoeng, "
+"de fleste mennesker og orker bruker to, mens hestemenn bruker 3. Du kan "
+"finne ut hvor mange poeng en enhet trenger for å flytte inn på et terreng "
+"ved å høyreklikke på den, velge «Enhetsbeskrivelse», og så se på "
+"<ref>text=’Terrengmodifikasjoner’</ref>."
 
 #: data/help.cfg:97
 msgid ""
@@ -269,6 +275,15 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"En annen ting som er viktig å hugse på under forflytning er "
+"<ref>dst=zones_of_control text=’kontrollsonene’</ref>. Hver enhet lager en "
+"kontrollsone rundt seg i rutene som ligger inntil ruten enheten står i, og "
+"alle fiendtlige enheter som flytter inn i en slik rute vil miste alle sine "
+"forflytningspoeng. Å lære hvordan man bruker kontrollsoner til din fordel er "
+"en viktig del av Wesnoth, siden bare <ref>dst=ability_skirmish "
+"text=’stifinnere’</ref> kan ignorere kontrollsoner."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -283,6 +298,13 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Det er to kamptyper i «Kampen om Wesnoth», nærkamp og komp over distanse. "
+"Men begge blir utført mellom enheter som står i ruter ved siden av hver "
+"andre. I nærkamp i benyttes som regel våpen som sverd, økser eller "
+"høggtenner, mens i kamp over distanse brukes som regel våpen som pil og bue, "
+"spyd og ildkuler. Kampen er i seg selv ganske rett frem. Angriper og "
+"forsvarer angriper annen hver gang helt til begge enhetene har brukt opp "
+"sine angrepstall."
 
 #: data/help.cfg:105
 msgid ""
@@ -290,6 +312,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=’Rekkefølge og antall angrep’</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -301,6 +326,12 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"Angriper får angripe først, deretter forsvareren. Dette fortsetter til begge "
+"enhetene har brukt opp alle angrepene sine. Antall angrep en enhet har "
+"varierer. En alv for eksempel med et 5-4 sverd kan slå 4 ganger, hvert slag "
+"kan gi 5 skade. Mens en Orkisk Grunt med 9-2 får 2 slag (men med 9 i skade)."
 
 #: data/help.cfg:109
 msgid ""
@@ -308,6 +339,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=’Sjangs for å treffe’</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -2392,19 +2426,19 @@ msgstr "inntekt"
 
 #: data/themes/default.cfg:358
 msgid "statuspanel^level"
-msgstr "statuspanel^nivå"
+msgstr "nivå"
 
 #: data/themes/default.cfg:389
 msgid "statuspanel^movement"
-msgstr "statuspanel^forflytning"
+msgstr "forflytning"
 
 #: data/themes/default.cfg:513
 msgid "Act."
-msgstr ""
+msgstr "Handl."
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Avslutt"
 
 #: data/tips.cfg:1
 msgid ""
@@ -6957,19 +6991,16 @@ msgid "+Miscellaneous"
 msgstr "+Usortert"
 
 #: src/about.cpp:140
-#, fuzzy
 msgid "+Internationalization Managers"
 msgstr "+Internasjonaliseringsleder"
 
 #: src/about.cpp:147
-#, fuzzy
 msgid "+Basque Translation"
-msgstr "+Dansk oversettelse"
+msgstr "+Baskisk Dansk oversettelse"
 
 #: src/about.cpp:152
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Ungarsk oversettelse"
+msgstr "+Bulgarsk Ungarsk oversettelse"
 
 #: src/about.cpp:156
 msgid "+Catalan Translation"
@@ -6988,14 +7019,12 @@ msgid "+Dutch Translation"
 msgstr "+Nederlandsk oversettelse"
 
 #: src/about.cpp:184
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Polsk oversettelse"
+msgstr "+Engelsk (GB) oversettelse"
 
 #: src/about.cpp:188
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Ungarsk oversettelse"
+msgstr "+Estisk oversettelse"
 
 #: src/about.cpp:192
 msgid "+Finnish Translation"
@@ -7010,9 +7039,8 @@ msgid "+German Translation"
 msgstr "+Tysk oversettelse"
 
 #: src/about.cpp:220
-#, fuzzy
 msgid "+Greek Translation"
-msgstr "+Fransk oversettelse"
+msgstr "+Gresk oversettelse"
 
 #: src/about.cpp:225
 msgid "+Hungarian Translation"
@@ -7023,9 +7051,8 @@ msgid "+Italian Translation"
 msgstr "+Italiensk oversettelse"
 
 #: src/about.cpp:243
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Katalansk oversettelse"
+msgstr "+Latinsk oversettelse"
 
 #: src/about.cpp:247
 msgid "+Norwegian Translation"
@@ -7036,14 +7063,12 @@ msgid "+Polish Translation"
 msgstr "+Polsk oversettelse"
 
 #: src/about.cpp:261
-#, fuzzy
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Portugisisk oversettelse"
+msgstr "+Portugisisk oversettelse (Brasil)"
 
 #: src/about.cpp:270
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Ungarsk oversettelse"
+msgstr "+Russisk oversettelse"
 
 #: src/about.cpp:276
 msgid "+Slovak Translation"
@@ -7067,9 +7092,8 @@ msgid "+Contributors"
 msgstr "+Medvirkende"
 
 #: src/about.cpp:303
-#, fuzzy
 msgid "+Bots"
-msgstr "+ 'Bots'"
+msgstr "+Bots"
 
 #: src/about.cpp:339 src/help.cpp:2576
 msgid "Close"
@@ -7235,14 +7259,12 @@ msgid "Scenario Start"
 msgstr "Scenariestart"
 
 #: src/dialogs.cpp:387
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Vanskelighet"
+msgstr "Vanskelighetsgrad: "
 
 #: src/dialogs.cpp:389
-#, fuzzy
 msgid "Version: "
-msgstr "Versjon"
+msgstr "Versjon: "
 
 #: src/dialogs.cpp:404
 msgid "No Saved Games"
@@ -7303,20 +7325,17 @@ msgid "level"
 msgstr "nivå"
 
 #: src/dialogs.cpp:666 src/display.cpp:977 src/help.cpp:1066
-#, fuzzy
 msgid "HP: "
-msgstr "LP"
+msgstr "LP: "
 
 #: src/dialogs.cpp:670 src/dialogs.cpp:678 src/display.cpp:981
 #: src/display.cpp:989 src/playturn.cpp:1944
-#, fuzzy
 msgid "XP: "
-msgstr "EP"
+msgstr "EP: "
 
 #: src/dialogs.cpp:683 src/display.cpp:993 src/help.cpp:1067
-#, fuzzy
 msgid "Moves: "
-msgstr "Flytt"
+msgstr "Flytt: "
 
 #: src/display.cpp:940
 msgid "healthy"
@@ -7343,18 +7362,16 @@ msgid "The game could not be saved"
 msgstr "Spillet kunne ikke lagres"
 
 #: src/game.cpp:172 src/game.cpp:913 src/game.cpp:1327
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Spillet kunne ikke lagres"
+msgstr "Spillet kunne ikke lastes: "
 
 #: src/game.cpp:175 src/game.cpp:915 src/game.cpp:1329
 msgid "Error while playing the game: "
-msgstr ""
+msgstr "Feil under spilling av spillet: "
 
 #: src/game.cpp:178 src/game.cpp:1341
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Spillet kunne ikke lagres"
+msgstr "Spillkartet kunne ikke lastes: "
 
 #: src/game.cpp:199
 msgid "Do you want to save your game?"
@@ -7362,7 +7379,7 @@ msgstr "Vil du lagre dette spillet?"
 
 #: src/game.cpp:220
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Ukjent scenario: '"
 
 #: src/game.cpp:617
 msgid "The Battle for Wesnoth"
@@ -7377,13 +7394,12 @@ msgstr ""
 "likevel?"
 
 #: src/game.cpp:853 src/game.cpp:856
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Det er noe galt med filen du prøvde å laste"
+msgstr "Det er noe galt med filen du prøver å laste: '"
 
 #: src/game.cpp:859
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "I/U-feil ved lesing frå fil"
 
 #: src/game.cpp:964
 msgid "Get More Campaigns..."
@@ -7391,7 +7407,7 @@ msgstr "Hent flere felttog ..."
 
 #: src/game.cpp:965
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Last ned flere felttog fra en tjener på internett."
 
 #: src/game.cpp:975
 msgid "Choose the campaign you want to play:"
@@ -7406,9 +7422,8 @@ msgid "Select difficulty level:"
 msgstr "Velg vanskelighetsgrad:"
 
 #: src/game.cpp:1030
-#, fuzzy
 msgid "B"
-msgstr "KB"
+msgstr "B"
 
 #: src/game.cpp:1033
 msgid "KB"
@@ -7416,33 +7431,32 @@ msgstr "KB"
 
 #: src/game.cpp:1036
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:1060
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Fortsett forflytning"
+msgstr "Koble til tjener"
 
 #: src/game.cpp:1061
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
+"Du kommer nå til å koble til en felttogstjener for å laste ned felttog."
 
 #: src/game.cpp:1062
 msgid "Server: "
-msgstr ""
+msgstr "Tjener: "
 
 #: src/game.cpp:1074
-#, fuzzy
 msgid "Could not connect to host."
-msgstr "Kunne ikke opprette forbindelse til ekstern vert"
+msgstr "Klarte ikke koble til vert."
 
 #: src/game.cpp:1082
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Venter på svar fra tjeneren"
 
 #: src/game.cpp:1095
 msgid "Error communicating with the server."
-msgstr ""
+msgstr "Feil i kommunikasjon med tjeneren."
 
 #: src/game.cpp:1101 src/help.cpp:1090 src/help.cpp:1091 src/playturn.cpp:2102
 msgid "Name"
@@ -7453,75 +7467,67 @@ msgid "Version"
 msgstr "Versjon"
 
 #: src/game.cpp:1103
-#, fuzzy
 msgid "Author"
-msgstr "torner"
+msgstr "Forfatter"
 
 #: src/game.cpp:1104
 msgid "Downloads"
-msgstr ""
+msgstr "Nedlastinger"
 
 #: src/game.cpp:1105
-#, fuzzy
 msgid "Size"
-msgstr "ild"
+msgstr "Størrelse"
 
 #: src/game.cpp:1134
-#, fuzzy
 msgid "Publish campaign: "
-msgstr "Alvisk Kaptein"
+msgstr "Publiser felttog: "
 
 #: src/game.cpp:1138
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Kampanje"
+msgstr "Fjern felttog: "
 
 #: src/game.cpp:1142
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
-msgstr "Det er ingen kampanjer tilgjengelig"
+msgstr "Det er ingen felttog tilgjengelig for nedlasting på denne tjeneren."
 
 #: src/game.cpp:1146
-#, fuzzy
 msgid "Choose the campaign to download."
-msgstr "Velg spill for innlasting"
+msgstr "Velg felttog som skal lastes ned."
 
 #: src/game.cpp:1146
-#, fuzzy
 msgid "Get Campaign"
-msgstr "Kampanje"
+msgstr "Hent felttog"
 
 #: src/game.cpp:1165
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Laster ned felttog ..."
 
 #: src/game.cpp:1179
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Kan ikke lese om igjen filsystemet"
 
 #: src/game.cpp:1190
-#, fuzzy
 msgid "Campaign Installed"
-msgstr "Kampanje"
+msgstr "Felttog installert"
 
 #: src/game.cpp:1190
-#, fuzzy
 msgid "The campaign has been installed."
-msgstr "Spillet har nå blitt lagret"
+msgstr "Felttoget er installert."
 
 #: src/game.cpp:1192
 msgid "Network communication error."
-msgstr ""
+msgstr "Nettverksfeil."
 
 #: src/game.cpp:1194
-#, fuzzy
 msgid "Remote host disconnected."
-msgstr "Velg vert å koble til"
+msgstr "Tilkobling avbrutt."
 
 #: src/game.cpp:1196
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
+"Det var et problem under oppretting av de filer som trengs for å installere "
+"dette felttoget."
 
 #: src/game.cpp:1208 src/game.cpp:1247 src/game.cpp:1272
 #: src/multiplayer.cpp:157 src/multiplayer_ui.cpp:34
@@ -8392,7 +8398,6 @@ msgid "Damage Taken"
 msgstr "Mottatt skade"
 
 #: src/playturn.cpp:2232
-#, fuzzy
 msgid "Damage Inflicted (EV)"
 msgstr "Utført skade (VV)"
 
