@@ -1,3 +1,27 @@
+CVS HEAD:
+ * added the ability to move units on fog/shroud maps without updating the fog/shroud so moves can be undone, when player commits moves fog/shroud is updated, and moves can no longer be undone
+ * editor improvements:
+   * made minimap not update as often
+   * allowed setting start pos for player 0
+   * load map and new map menu items and hotkeys added
+   * new map and load map added, editor now starts with an empty map
+   * save as functionality added.
+   * fixed tiles on the border of the map updating incorrectly when nearby tiles are drawn
+   * fixed a bug where odd number of terrains where not drawn correctly in the palette.
+   * confirmation dialog refactoring
+   * general get_dir() added.
+   * fixed indentation
+   * code cleanups
+ * fixed Li'sar dying in Hasty Alliance not resulting in a loss
+ * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
+ * fixed support for UTF-8 languages on text-boxes
+ * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
+ * relocated 'Heir to the Throne' scenarios to data/scenarios/Heir_To_The_Throne/
+ * added ability to remove tiles from the border cache
+ * added definitions of new pure virtual methods in hotkey.hpp
+ * added wstring_to_string and string_to_wstring routines in language.cpp, which convert strings according to the current charset()
+ * added KDevelop 3.x project file for Wesnoth
+
 Version 0.7.5
  * many map editor improvements
  * changed 'dark gray' player colour to 'orange'
