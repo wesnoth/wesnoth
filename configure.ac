@@ -255,7 +255,10 @@ case ${host_os} in
 	darwin*)
 		SDL_LIBS="-framework Carbon $SDL_LIBS"
 esac
-
+case $(host_os) in
+	mingw32*)
+		SDL_LIBS="-lunicows $SDL_LIBS"
+esac
 sdl_major_version=`$SDL_CONFIG --version | \
     sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
 sdl_minor_version=`$SDL_CONFIG --version | \
