@@ -1144,9 +1144,8 @@ msgid "Knalgan Alliance"
 msgstr "Zavezništvo Knalge"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Zmaji"
+msgstr ""
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -2782,6 +2781,8 @@ msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
 msgstr ""
+"Zvest:\n"
+"Nikoli ne zahteva plače."
 
 #: data/translations/english.cfg:66
 msgid ""
@@ -2796,7 +2797,7 @@ msgstr ""
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr ""
+msgstr "nočni zalezovalec"
 
 #: data/translations/english.cfg:71
 msgid ""
@@ -2838,7 +2839,7 @@ msgstr ""
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
 #: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:479
 msgid "steadfast"
-msgstr ""
+msgstr "neomajen"
 
 #: data/translations/english.cfg:86
 msgid ""
@@ -2914,15 +2915,15 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat until the end of their "
 "controllers' turn."
 msgstr ""
-"Ta enota je upočasnjena. Premika se pri polovični hitrosti in ima en napad "
-"manj."
+"Upočasni:\n"
+" Ta napad upočasni tarčo. Upočasnjene enote se premikajo se pri polovični "
+"hitrosti in imajo en napad manj. Traja do naslednje poteze."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3025,13 +3026,13 @@ msgstr "mrzel"
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:26
 #: data/units/Vampire_Lady.cfg:39 data/units/Wraith.cfg:29
 msgid "drain"
-msgstr ""
+msgstr "črpa"
 
 #: data/units/Ancient_Lich.cfg:35 data/units/Deathmaster.cfg:40
 #: data/units/Demilich.cfg:32 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
-msgstr ""
+msgstr "čarovnija"
 
 #: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:47
 #: data/units/Arch_Mage.cfg:140 data/units/Battle_Princess.cfg:80
@@ -3067,7 +3068,7 @@ msgstr "Starodavni ent"
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
-msgstr ""
+msgstr "zaseda,regeneracija"
 
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
@@ -3168,14 +3169,14 @@ msgstr ""
 #: data/units/Silver_Mage.cfg:206 data/units/White_Mage.cfg:29
 #: data/units/White_Mage.cfg:100
 msgid "staff"
-msgstr ""
+msgstr "palica"
 
 #: data/units/Arch_Mage.cfg:44 data/units/Arch_Mage.cfg:137
 #: data/units/Elvish_High_Lord.cfg:42 data/units/Elvish_Lord.cfg:36
 #: data/units/Great_Mage.cfg:44 data/units/Great_Mage.cfg:137
 #: data/units/Red_Mage.cfg:44 data/units/Red_Mage.cfg:137
 msgid "fireball"
-msgstr ""
+msgstr "ognjena krogla"
 
 #: data/units/Arch_Mage.cfg:45 data/units/Arch_Mage.cfg:138
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
@@ -3218,7 +3219,7 @@ msgstr ""
 #: data/units/Poacher.cfg:24 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
 #: data/units/Thief.cfg:20 data/units/Thief.cfg:57 data/units/Trapper.cfg:24
 msgid "dagger"
-msgstr ""
+msgstr "bodalo"
 
 #: data/units/Assassin.cfg:22 data/units/Assassin.cfg:53
 #: data/units/Assassin.cfg:101 data/units/Assassin.cfg:132
@@ -3295,12 +3296,12 @@ msgstr "oster"
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:25
 #: data/units/Thief.cfg:62 src/actions.cpp:470
 msgid "backstab"
-msgstr ""
+msgstr "vbod v hrbet"
 
 #: data/units/Assassin.cfg:52 data/units/Assassin.cfg:131
 #: data/units/Rogue.cfg:39 data/units/Rogue.cfg:99
 msgid "knife"
-msgstr ""
+msgstr "nož"
 
 #: data/units/Assassin.cfg:55 data/units/Assassin.cfg:134
 #: data/units/Cave_Spider.cfg:24 data/units/Cuttle_Fish.cfg:60
@@ -3308,7 +3309,7 @@ msgstr ""
 #: data/units/Giant_Scorpion.cfg:22 data/units/Necrophage.cfg:24
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
 msgid "poison"
-msgstr ""
+msgstr "strup"
 
 #: data/units/Assassin.cfg:82
 msgid "female^Assassin"
@@ -3333,7 +3334,7 @@ msgstr ""
 #: data/units/Outlaw_Queen.cfg:27 data/units/Shock_Trooper.cfg:19
 #: data/units/Troll_Warrior.cfg:20 data/units/Warrior_King.cfg:25
 msgid "mace"
-msgstr ""
+msgstr "buzdovan"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
 msgid "female^Princess"
@@ -3341,7 +3342,7 @@ msgstr "Princesa"
 
 #: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "vodenje,izogibalec"
 
 #: data/units/Battle_Princess.cfg:20
 msgid ""
@@ -3408,7 +3409,7 @@ msgstr ""
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:114
 #: data/units/Princess.cfg:77
 msgid "scepter of fire"
-msgstr ""
+msgstr "ognjeno žezlo "
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
@@ -3444,7 +3445,7 @@ msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
 msgid "stab"
-msgstr ""
+msgstr "vbod"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
@@ -3556,11 +3557,11 @@ msgstr ""
 #: data/units/Lieutenant.cfg:41 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:41 data/units/Wall_Guard.cfg:35
 msgid "crossbow"
-msgstr ""
+msgstr "samostrel"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
-msgstr "Konjenik"
+msgstr "Jezdec"
 
 #: data/units/Cavalryman.cfg:25
 msgid ""
@@ -3595,7 +3596,7 @@ msgstr "upočasni"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
-msgstr "Chocobone"
+msgstr "Čokobon"
 
 #: data/units/Chocobone.cfg:17
 msgid ""
@@ -3624,14 +3625,14 @@ msgstr ""
 #: data/units/Saurian_Warrior.cfg:41 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:33
 msgid "spear"
-msgstr ""
+msgstr "kopje"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:361
 #: src/actions.cpp:461
 msgid "charge"
-msgstr ""
+msgstr "naskok"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -3646,7 +3647,7 @@ msgstr ""
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
-msgstr ""
+msgstr "bolščanje"
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:711 src/actions.cpp:857
 msgid "stone"
@@ -3761,7 +3762,7 @@ msgstr ""
 #: data/units/Death_Knight.cfg:21 data/units/Dwarvish_Lord.cfg:27
 #: data/units/Dwarvish_Steelclad.cfg:27
 msgid "battle axe"
-msgstr ""
+msgstr "bojna sekira"
 
 #: data/units/Deathblade.cfg:4
 msgid "Deathblade"
@@ -4022,7 +4023,7 @@ msgstr ""
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:24 data/units/Skeleton.cfg:24
 msgid "axe"
-msgstr ""
+msgstr "sekira"
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -4358,7 +4359,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Vilinski Višji mogočnik"
 
 #: data/units/Elvish_High_Lord.cfg:18
 msgid ""
@@ -4368,7 +4369,7 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "Vilinska dama"
 
 #: data/units/Elvish_Lady.cfg:18
 msgid ""
@@ -4381,11 +4382,11 @@ msgstr ""
 
 #: data/units/Elvish_Lady.cfg:20
 msgid "shove"
-msgstr ""
+msgstr "sunek"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
-msgstr ""
+msgstr "Vilinski mogočnik"
 
 #: data/units/Elvish_Lord.cfg:17
 msgid ""
@@ -4395,7 +4396,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "Vilinski strelec"
 
 #: data/units/Elvish_Marksman.cfg:19 data/units/Elvish_Marksman.cfg:112
 msgid ""
@@ -4409,21 +4410,21 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:39
 #: data/units/Elvish_Sharpshooter.cfg:133
 msgid "longbow"
-msgstr ""
+msgstr "dolgi lok"
 
 #: data/units/Elvish_Marksman.cfg:40 data/units/Elvish_Marksman.cfg:133
 #: data/units/Elvish_Sharpshooter.cfg:41
 #: data/units/Elvish_Sharpshooter.cfg:135 data/units/Fire_Dragon.cfg:61
 msgid "marksman"
-msgstr ""
+msgstr "ostrostrelec"
 
 #: data/units/Elvish_Marksman.cfg:96
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "Vilinska strelka"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "Vilinski maršal"
 
 #: data/units/Elvish_Marshal.cfg:22
 msgid ""
@@ -4435,7 +4436,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "Vilinski predizvidnik"
 
 #: data/units/Elvish_Outrider.cfg:24
 msgid ""
@@ -4446,7 +4447,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "Vilinski logar"
 
 #: data/units/Elvish_Ranger.cfg:20 data/units/Elvish_Ranger.cfg:110
 msgid ""
@@ -4458,11 +4459,11 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:92
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "Vilinska logarka"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
-msgstr ""
+msgstr "Vilinski jezdec"
 
 #: data/units/Elvish_Rider.cfg:28
 msgid ""
@@ -4472,7 +4473,7 @@ msgstr ""
 
 #: data/units/Elvish_Scout.cfg:3
 msgid "Elvish Scout"
-msgstr ""
+msgstr "Vilinski izvidnik"
 
 #: data/units/Elvish_Scout.cfg:29
 msgid ""
@@ -4482,7 +4483,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:3
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "Vilinska šamanka"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -4493,7 +4494,7 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "Vilinski ostrostrelec"
 
 #: data/units/Elvish_Sharpshooter.cfg:19
 #: data/units/Elvish_Sharpshooter.cfg:113
@@ -4506,11 +4507,11 @@ msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:97
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "Vilinska ostrostrelka"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "Vilinska vila"
 
 #: data/units/Elvish_Shyde.cfg:20
 msgid ""
@@ -4521,11 +4522,11 @@ msgstr ""
 
 #: data/units/Elvish_Shyde.cfg:24 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
-msgstr ""
+msgstr "vilin dotik"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "Vilinska čarodejka"
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4537,7 +4538,7 @@ msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "Vilinska vešča"
 
 #: data/units/Elvish_Sylph.cfg:20
 msgid ""
@@ -4552,7 +4553,7 @@ msgstr ""
 
 #: data/units/Fencer.cfg:3
 msgid "Fencer"
-msgstr ""
+msgstr "Sabljač"
 
 #: data/units/Fencer.cfg:17
 msgid ""
@@ -4564,7 +4565,7 @@ msgstr ""
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
-msgstr ""
+msgstr "Bojevnik"
 
 #: data/units/Fighter.cfg:17 data/units/Fighter.cfg:58
 msgid ""
@@ -4575,7 +4576,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Rdeči zmaj"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4588,15 +4589,15 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
-msgstr ""
+msgstr "ugriz"
 
 #: data/units/Fire_Dragon.cfg:39
 msgid "tail"
-msgstr ""
+msgstr "rep"
 
 #: data/units/Fireball.cfg:4
 msgid "Fireball"
-msgstr ""
+msgstr "Ognjena krogla"
 
 #: data/units/Fireball.cfg:16
 msgid ""
@@ -4605,7 +4606,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
-msgstr ""
+msgstr "Tolovaj"
 
 #: data/units/Footpad.cfg:17 data/units/Footpad.cfg:83
 msgid ""
@@ -4623,15 +4624,15 @@ msgstr "kol"
 #: data/units/Outlaw_Princess.cfg:44 data/units/Outlaw_Queen.cfg:45
 #: data/units/Troll_Rocklobber.cfg:38
 msgid "sling"
-msgstr ""
+msgstr "prača"
 
 #: data/units/Footpad.cfg:69
 msgid "female^Footpad"
-msgstr ""
+msgstr "Tolovajka"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
-msgstr ""
+msgstr "Galeja"
 
 #: data/units/Galleon.cfg:16
 msgid ""
@@ -4647,7 +4648,7 @@ msgstr "lažen"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
-msgstr ""
+msgstr "Vrata"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
@@ -4659,7 +4660,7 @@ msgstr ""
 
 #: data/units/General.cfg:3
 msgid "General"
-msgstr "Splošno"
+msgstr "General"
 
 #: data/units/General.cfg:25
 msgid ""
@@ -4671,7 +4672,7 @@ msgstr ""
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
-msgstr ""
+msgstr "Duh"
 
 #: data/units/Ghost.cfg:16
 msgid ""
@@ -4683,7 +4684,7 @@ msgstr ""
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
-msgstr ""
+msgstr "Ghoul"
 
 #: data/units/Ghoul.cfg:16
 msgid ""
@@ -4694,7 +4695,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Ogromni blatoplazec"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4712,11 +4713,11 @@ msgstr "pest"
 
 #: data/units/Giant_Mudcrawler.cfg:42 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
-msgstr ""
+msgstr "vrela voda"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "Ogromni škorpijon"
 
 #: data/units/Giant_Scorpion.cfg:16
 msgid ""
@@ -4727,15 +4728,15 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:19
 msgid "sting"
-msgstr ""
+msgstr "želo"
 
 #: data/units/Giant_Scorpion.cfg:37
 msgid "pincers"
-msgstr ""
+msgstr "klešče"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Goblinski suličar "
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -4748,7 +4749,7 @@ msgstr ""
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
-msgstr ""
+msgstr "Goblinski vitez"
 
 #: data/units/Goblin_Knight.cfg:16
 msgid ""
@@ -4758,7 +4759,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "Goblinski ropar"
 
 #: data/units/Goblin_Pillager.cfg:16
 msgid ""
@@ -4768,7 +4769,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:19
 msgid "torch"
-msgstr ""
+msgstr "bakla"
 
 #: data/units/Goblin_Pillager.cfg:35 data/units/Merman_Entangler.cfg:26
 #: data/units/Merman_Netcaster.cfg:26
@@ -4777,7 +4778,7 @@ msgstr "mreža"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "Goblinski kopjenosec"
 
 #: data/units/Goblin_Spearman.cfg:17
 msgid ""
@@ -4790,7 +4791,7 @@ msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
-msgstr ""
+msgstr "Veliki vitez"
 
 #: data/units/Grand_Knight.cfg:16
 msgid ""
@@ -4818,7 +4819,7 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr ""
+msgstr "Sijajen čarovnik"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:113
 msgid ""
@@ -4828,11 +4829,11 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:96
 msgid "female^Great Mage"
-msgstr ""
+msgstr "Sijajna čarovnica"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
-msgstr ""
+msgstr "Sijajen trol"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -4843,7 +4844,7 @@ msgstr ""
 
 #: data/units/Gryphon.cfg:3
 msgid "Gryphon"
-msgstr ""
+msgstr "Grifon"
 
 #: data/units/Gryphon.cfg:16
 msgid ""
@@ -4854,7 +4855,7 @@ msgstr ""
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Gospodar grifonov"
 
 #: data/units/Gryphon_Master.cfg:18
 msgid ""
@@ -4865,7 +4866,7 @@ msgstr ""
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "Jezdec grifonov"
 
 #: data/units/Gryphon_Rider.cfg:16
 msgid ""
@@ -4876,7 +4877,7 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:3
 msgid "Halberdier"
-msgstr ""
+msgstr "Helebardist"
 
 #: data/units/Halbardier.cfg:18
 msgid ""
@@ -4890,11 +4891,11 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
-msgstr ""
+msgstr "helebarda"
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Težki pešec"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
@@ -4904,7 +4905,7 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
-msgstr ""
+msgstr "Konjeniški mogočnik"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -4921,7 +4922,7 @@ msgstr "verižni buzdovan"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
-msgstr ""
+msgstr "Konjenik"
 
 #: data/units/Horseman.cfg:17
 msgid ""
@@ -4943,7 +4944,7 @@ msgstr ""
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr ""
+msgstr "Železni macolar"
 
 #: data/units/Iron_Mauler.cfg:15
 msgid ""
@@ -4955,7 +4956,7 @@ msgstr ""
 
 #: data/units/Javelineer.cfg:3
 msgid "Javelineer"
-msgstr ""
+msgstr "Kopjanik"
 
 #: data/units/Javelineer.cfg:16
 msgid ""
@@ -4968,7 +4969,7 @@ msgstr ""
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
-msgstr ""
+msgstr "Vitez"
 
 #: data/units/Knight.cfg:17
 msgid ""
@@ -4978,7 +4979,7 @@ msgstr ""
 
 #: data/units/Lancer.cfg:3
 msgid "Lancer"
-msgstr ""
+msgstr "Ulan"
 
 #: data/units/Lancer.cfg:17
 msgid ""
@@ -4990,7 +4991,7 @@ msgstr ""
 
 #: data/units/Lich.cfg:3
 msgid "Lich"
-msgstr ""
+msgstr "Lič"
 
 #: data/units/Lich.cfg:16
 msgid ""
@@ -5003,7 +5004,7 @@ msgstr ""
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
-msgstr ""
+msgstr "Poročnik"
 
 #: data/units/Lieutenant.cfg:21
 msgid ""
@@ -5014,7 +5015,7 @@ msgstr ""
 
 #: data/units/Longbowman.cfg:3
 msgid "Longbowman"
-msgstr ""
+msgstr "Dolgo-loki strelec"
 
 #: data/units/Longbowman.cfg:18
 msgid ""
@@ -5024,7 +5025,7 @@ msgstr ""
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:78
 msgid "Lord"
-msgstr ""
+msgstr "Mogočnik"
 
 #: data/units/Lord.cfg:19 data/units/Lord.cfg:94 data/units/Noble_Lord.cfg:22
 msgid ""
@@ -5036,7 +5037,7 @@ msgstr ""
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
-msgstr ""
+msgstr "Čarovnik"
 
 #: data/units/Mage.cfg:17 data/units/Mage.cfg:94
 msgid ""
@@ -5053,11 +5054,11 @@ msgstr ""
 
 #: data/units/Mage.cfg:80
 msgid "female^Mage"
-msgstr ""
+msgstr "Čarovnica"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr ""
+msgstr "Čarovnik svetlobe"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:8
@@ -5079,22 +5080,22 @@ msgstr ""
 #: data/units/Mermaid_Diviner.cfg:38 data/units/Mermaid_Priestess.cfg:36
 #: data/units/White_Mage.cfg:45 data/units/White_Mage.cfg:116
 msgid "lightbeam"
-msgstr ""
+msgstr "žarek svetlobe"
 
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:39 data/units/Mermaid_Priestess.cfg:37
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:46
 #: data/units/White_Mage.cfg:117
 msgid "holy"
-msgstr ""
+msgstr "svet"
 
 #: data/units/Mage_of_Light.cfg:78
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "Čarovnica svetlobe"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Lokostrelski mojster"
 
 #: data/units/Master_Bowman.cfg:17
 msgid ""
@@ -5165,7 +5166,7 @@ msgstr ""
 
 #: data/units/Merman.cfg:6
 msgid "Merman"
-msgstr ""
+msgstr "Povodni mož"
 
 #: data/units/Merman.cfg:22 data/units/Merman_Fighter.cfg:22
 #: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Triton.cfg:22
@@ -5232,9 +5233,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Captain.cfg:6
-#, fuzzy
 msgid "Mounted Captain"
-msgstr "Gore"
+msgstr "Konjeniški stotnik"
 
 #: data/units/Mounted_Captain.cfg:20 data/units/Mounted_Fighter.cfg:17
 msgid ""
@@ -5246,7 +5246,7 @@ msgstr ""
 
 #: data/units/Mounted_Commander.cfg:6
 msgid "Mounted Commander"
-msgstr ""
+msgstr "Konjeniški komandir"
 
 #: data/units/Mounted_Commander.cfg:20
 msgid ""
@@ -5257,14 +5257,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Gore"
+msgstr "Konjeniški boejvnik"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Gore"
+msgstr "Konjeniški vojščak"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -5276,7 +5274,7 @@ msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Blatoplazec"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
@@ -5357,7 +5355,7 @@ msgstr ""
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
-msgstr ""
+msgstr "Nekromant"
 
 #: data/units/Necromancer.cfg:16
 msgid ""
@@ -5368,7 +5366,7 @@ msgstr ""
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
-msgstr ""
+msgstr "Nekrofag"
 
 #: data/units/Necrophage.cfg:16
 msgid ""
@@ -5378,7 +5376,7 @@ msgstr ""
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Nočna groza"
 
 #: data/units/Nightgaunt.cfg:16
 msgid ""
@@ -5389,11 +5387,11 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Plemiški komandir"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Plemiški bojevnik"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -5404,11 +5402,11 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Plemiški mogočnik"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Plemiški fant"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
@@ -5422,7 +5420,7 @@ msgstr ""
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
-msgstr ""
+msgstr "Oger"
 
 #: data/units/Ogre.cfg:16
 msgid ""
@@ -5437,7 +5435,7 @@ msgstr "mačeta"
 
 #: data/units/Orcish_Archer.cfg:3
 msgid "Orcish Archer"
-msgstr ""
+msgstr "Orkovski lokostrelec"
 
 #: data/units/Orcish_Archer.cfg:16
 msgid ""
@@ -5449,7 +5447,7 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:3
 msgid "Orcish Assassin"
-msgstr ""
+msgstr "Orkovski atentator"
 
 #: data/units/Orcish_Assassin.cfg:16
 msgid ""
@@ -5465,7 +5463,7 @@ msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Orkovski samostrelec"
 
 #: data/units/Orcish_Crossbowman.cfg:16
 msgid ""
@@ -5481,7 +5479,7 @@ msgstr ""
 
 #: data/units/Orcish_Grunt.cfg:3
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "Orkovski pretepač"
 
 #: data/units/Orcish_Grunt.cfg:16
 msgid ""
@@ -5492,7 +5490,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Orkovski voditelj"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -5505,11 +5503,11 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Orkovski vladar"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr ""
+msgstr "Orkovski šaman"
 
 #: data/units/Orcish_Shaman.cfg:16
 msgid ""
@@ -5528,7 +5526,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:62
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "Orkovski šaman novinec"
 
 #: data/units/Orcish_Shaman.cfg:75
 msgid ""
@@ -5543,7 +5541,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Stari orkovski šaman"
 
 #: data/units/Orcish_Shaman.cfg:134
 msgid ""
@@ -5558,7 +5556,7 @@ msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "Orkovski ubijalec"
 
 #: data/units/Orcish_Slayer.cfg:16
 msgid ""
@@ -5568,7 +5566,7 @@ msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Orkovski kralj"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -5581,7 +5579,7 @@ msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "Orkovski vojaški mogočnik"
 
 #: data/units/Orcish_Warlord.cfg:16
 msgid ""
@@ -5592,7 +5590,7 @@ msgstr ""
 
 #: data/units/Orcish_Warrior.cfg:3
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "Orkovski bojevnik"
 
 #: data/units/Orcish_Warrior.cfg:16
 msgid ""
@@ -5603,7 +5601,7 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
-msgstr ""
+msgstr "Izobčenec"
 
 #: data/units/Outlaw.cfg:17
 msgid "Outlaws fight better at night."
@@ -5611,7 +5609,7 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:75
 msgid "female^Outlaw"
-msgstr ""
+msgstr "Izobčenka"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
@@ -5619,7 +5617,7 @@ msgstr ""
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Izobčena princesa"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -5631,11 +5629,11 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Izobčena kraljica"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid "skirmisher,leadership"
-msgstr ""
+msgstr "izogibalec,vodstvo"
 
 #: data/units/Outlaw_Queen.cfg:23
 msgid ""
@@ -5649,7 +5647,7 @@ msgstr ""
 
 #: data/units/Paladin.cfg:3
 msgid "Paladin"
-msgstr ""
+msgstr "Paladin"
 
 #: data/units/Paladin.cfg:21
 msgid ""
@@ -5659,7 +5657,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Kmet"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -5671,11 +5669,11 @@ msgstr ""
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
-msgstr ""
+msgstr "vile"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
-msgstr ""
+msgstr "Suličar"
 
 #: data/units/Pikeman.cfg:19
 msgid ""
@@ -5688,11 +5686,11 @@ msgstr ""
 
 #: data/units/Pikeman.cfg:22
 msgid "pike"
-msgstr ""
+msgstr "sulica"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Gusarska galeja"
 
 #: data/units/Pirate_Galleon.cfg:14
 msgid ""
@@ -5708,7 +5706,7 @@ msgstr ""
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Krivolovec"
 
 #: data/units/Poacher.cfg:16
 msgid ""
@@ -5727,7 +5725,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr ""
+msgstr "Rdeči čarovnik"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:113
 msgid ""
@@ -5738,11 +5736,11 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:96
 msgid "female^Red Mage"
-msgstr ""
+msgstr "Rdeča čarovnica"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
-msgstr ""
+msgstr "Vrnjeni"
 
 #: data/units/Revenant.cfg:16
 msgid ""
@@ -5769,7 +5767,7 @@ msgstr ""
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
-msgstr ""
+msgstr "Kraljevi stražar"
 
 #: data/units/Royal_Guard.cfg:20
 msgid ""
@@ -5788,7 +5786,7 @@ msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Saurijski postavljalec zased"
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -5801,7 +5799,7 @@ msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Saurijski bočni napadalec"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -5814,7 +5812,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr ""
+msgstr "Saurijski metalec ledu"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -5843,7 +5841,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Saurijski vedeževalec"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -5854,7 +5852,7 @@ msgstr ""
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Saurijski vrač"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -5866,7 +5864,7 @@ msgstr ""
 
 #: data/units/Saurian_Warrior.cfg:5
 msgid "Saurian Warrior"
-msgstr ""
+msgstr "Saurijski bojevnik"
 
 #: data/units/Saurian_Warrior.cfg:19
 msgid ""
@@ -5879,7 +5877,7 @@ msgstr ""
 
 #: data/units/Sea_Hag.cfg:6
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Morska čarovnica"
 
 #: data/units/Sea_Hag.cfg:20
 msgid ""
@@ -5889,7 +5887,7 @@ msgstr ""
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "Morski ork"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
@@ -5902,7 +5900,7 @@ msgstr ""
 
 #: data/units/Sea_Serpent.cfg:3
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Morska kača"
 
 #: data/units/Sea_Serpent.cfg:16
 msgid ""
@@ -5911,7 +5909,7 @@ msgstr ""
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr ""
+msgstr "Narednik"
 
 #: data/units/Sergeant.cfg:21
 msgid ""
@@ -5944,7 +5942,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr ""
+msgstr "Srebrni čarovnik"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:151
 msgid ""
@@ -5955,11 +5953,11 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:132
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "Srebrna čarovnica"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Nemrtvi zmaj"
 
 #: data/units/Skeletal_Dragon.cfg:17
 msgid ""
@@ -5976,7 +5974,7 @@ msgstr ""
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
-msgstr ""
+msgstr "Okostnjak"
 
 #: data/units/Skeleton.cfg:16
 msgid ""
@@ -5987,7 +5985,7 @@ msgstr ""
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "Okostnjak lokostrelec"
 
 #: data/units/Skeleton_Archer.cfg:15
 msgid ""
@@ -5998,7 +5996,7 @@ msgstr ""
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Speči grifon"
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
@@ -6006,7 +6004,7 @@ msgstr ""
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr ""
+msgstr "Dušni strelec"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
@@ -6019,7 +6017,7 @@ msgstr ""
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
-msgstr ""
+msgstr "Brezdušnik"
 
 #: data/units/Soulless.cfg:16
 msgid ""
@@ -6033,7 +6031,7 @@ msgstr ""
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Kopjenosec"
 
 #: data/units/Spearman.cfg:16
 msgid ""
@@ -6045,7 +6043,7 @@ msgstr ""
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
-msgstr ""
+msgstr "Fantom"
 
 #: data/units/Spectre.cfg:21
 msgid ""
@@ -6057,7 +6055,7 @@ msgstr ""
 
 #: data/units/Swordsman.cfg:3
 msgid "Swordsman"
-msgstr ""
+msgstr "Mečevalec"
 
 #: data/units/Swordsman.cfg:20
 msgid ""
@@ -6067,7 +6065,7 @@ msgstr ""
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Lovka iz Globine"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
@@ -6077,7 +6075,7 @@ msgstr ""
 
 #: data/units/Thief.cfg:3
 msgid "Thief"
-msgstr ""
+msgstr "Tat"
 
 #: data/units/Thief.cfg:17 data/units/Thief.cfg:54
 msgid ""
@@ -6089,11 +6087,11 @@ msgstr ""
 
 #: data/units/Thief.cfg:40
 msgid "female^Thief"
-msgstr ""
+msgstr "Tatica"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
-msgstr ""
+msgstr "Lopov"
 
 #: data/units/Thug.cfg:16
 msgid "Thugs are bandits who use large clubs to beat their victims."
@@ -6101,7 +6099,7 @@ msgstr ""
 
 #: data/units/Transport_Galleon.cfg:3
 msgid "Transport Galleon"
-msgstr ""
+msgstr "Transportna galeja"
 
 #: data/units/Transport_Galleon.cfg:13
 msgid ""
@@ -6111,7 +6109,7 @@ msgstr ""
 
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
-msgstr ""
+msgstr "Nastavljalec pasti"
 
 #: data/units/Trapper.cfg:16
 msgid ""
@@ -6147,7 +6145,7 @@ msgstr ""
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr "Trol skalomet"
+msgstr "Trol skalometalec"
 
 #: data/units/Troll_Rocklobber.cfg:17
 msgid ""
@@ -6168,7 +6166,7 @@ msgstr ""
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Trol cucek"
 
 #: data/units/Troll_Whelp.cfg:17
 msgid ""
@@ -6219,7 +6217,7 @@ msgstr "Stražar obzidja"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "izogibalec,regeneracija"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -6232,7 +6230,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Bojevniški Kralj"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -6296,7 +6294,7 @@ msgstr ""
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
-msgstr ""
+msgstr "Prikazen"
 
 #: data/units/Wraith.cfg:21
 msgid ""
@@ -6347,7 +6345,7 @@ msgstr "-   Glavni razvijalec"
 
 #: src/about.cpp:50
 msgid "-   Artwork and graphics designer"
-msgstr "-   Grafični oblikovalec"
+msgstr "-   Glavni grafični oblikovalec"
 
 #: src/about.cpp:54
 msgid "+Developers"
@@ -6371,7 +6369,7 @@ msgstr "+Oblikovalci scenarijev"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
-msgstr "+Karte za večigralnost"
+msgstr "+Večigralske karte"
 
 #: src/about.cpp:123
 msgid "+Packagers"
@@ -6479,7 +6477,7 @@ msgstr "+Sodelavci"
 
 #: src/about.cpp:297
 msgid "+Bots"
-msgstr "+Roboti"
+msgstr "+IRC roboti"
 
 #: src/about.cpp:333 src/help.cpp:2571
 msgid "Close"
@@ -7165,9 +7163,8 @@ msgid "Connect to Host"
 msgstr ""
 
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Ni se možno povezati z gostiteljem."
+msgstr "Izberite gostitelja (za povezavo): "
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -7477,9 +7474,8 @@ msgid "Choose your side:"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:397 src/playturn.cpp:1764
-#, fuzzy
 msgid "unit^Gold"
-msgstr "Zlato"
+msgstr "Zlata"
 
 #: src/playlevel.cpp:569 src/playlevel.cpp:839
 msgid "The file you have tried to load is corrupt"
