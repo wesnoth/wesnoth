@@ -1344,7 +1344,7 @@ int play_game(int argc, char** argv)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	res = game.init_config() && game.init_language();
+	res = game.init_language() && game.init_config();
 	if(res == false) {
 		return 0;
 	}
@@ -1418,6 +1418,7 @@ int play_game(int argc, char** argv)
 int main(int argc, char** argv)
 {
 	// setup locale first so that early error messages can get localized
+	// but this does not take GUI language setting into account
 	setlocale (LC_ALL, "");
 
 	const std::string& intl_dir = get_intl_dir();
