@@ -450,8 +450,6 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		r.w = 30;
 		r.x = left+603;
 		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
-		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL, font::GOOD_COLOUR,
-		                "100", r.x, r.y);
 
 		combos_race_.back().enable(!save_);
 		combos_leader_.back().enable(!save_);
@@ -486,6 +484,7 @@ void mp_connect::gui_update()
 	}
 
 	const config::child_itors sides = level_->child_range("side");
+	SDL_Rect rect;
 
 	for(size_t n = 0; n != combos_type_.size(); ++n) {
 		config& side = **(sides.first+n);
@@ -537,6 +536,17 @@ void mp_connect::gui_update()
 		if (!save_) 
 			player_leaders_[n].set_leader(side["type"]);
 
+		//Player Gold
+		rect.x = rect_.x + 603;
+		rect.y = rect_.y + 55 + (60 * n);
+		rect.w = 30;
+		rect.h = launch_.height();
+		gold_bg_[n].restore();
+		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL,
+				font::GOOD_COLOUR,
+		                side["gold"],
+				rect.x, rect.y);
+		update_rect(rect);
 	}
 
 	const bool full = is_full();
