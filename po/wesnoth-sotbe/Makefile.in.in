@@ -113,7 +113,7 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --keyword=N_ \
 	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).cpp.po
-	if test -r FINDCFG ;\
+	if test -r $(srcdir)/FINDCFG ;\
 	then $(top_srcdir)/utils/wmlxgettext --directory=$(top_srcdir) \
 	  `cd $(top_srcdir) && sh $(subdir)/FINDCFG` > $(DOMAIN).wml.po ;\
 	fi
