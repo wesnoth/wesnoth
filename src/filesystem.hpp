@@ -52,12 +52,25 @@ bool file_exists(const std::string& name);
 //function to get the creation time of a file
 time_t file_create_time(const std::string& fname);
 
+struct file_tree_checksum
+{
+	file_tree_checksum();
+	explicit file_tree_checksum(const class config& cfg);
+	void write(class config& cfg) const;
+	size_t nfiles, sum_size;
+	time_t modified;
+};
+
+bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
+bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
+
+
 //function to get the time at which the most recently modified file
 //in a directory tree was modified at
-time_t file_tree_modified_time(const std::string& path, time_t tm=0);
+file_tree_checksum get_file_tree_checksum(const std::string& path);
 
 //function to get the time at which the data/ tree was last modified at
-time_t data_tree_modified_time();
+const file_tree_checksum& data_tree_checksum();
 
 //returns the size of a file, or -1 if the file doesn't exist
 int file_size(const std::string& fname);

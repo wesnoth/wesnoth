@@ -332,33 +332,81 @@ time_t file_create_time(const std::string& fname)
 	return buf.st_mtime;
 }
 
-time_t file_tree_modified_time(const std::string& path, time_t tm)
+file_tree_checksum::file_tree_checksum()
+    : nfiles(0), sum_size(0), modified(0)
+{}
+
+file_tree_checksum::file_tree_checksum(const config& cfg)
+{
+	nfiles = lexical_cast_default<size_t>(cfg["nfiles"]);
+	sum_size = lexical_cast_default<size_t>(cfg["size"]);
+	modified = lexical_cast_default<time_t>(cfg["modified"]);
+}
+
+void file_tree_checksum::write(config& cfg) const
+{
+	cfg["nfiles"] = lexical_cast<std::string>(nfiles);
+	cfg["size"] = lexical_cast<std::string>(sum_size);
+	cfg["modified"] = lexical_cast<std::string>(modified);
+}
+
+bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
+{
+	return lhs.nfiles == rhs.nfiles && lhs.sum_size == rhs.sum_size &&
+	       lhs.modified == rhs.modified;
+}
+
+bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
+{
+	return !operator==(lhs,rhs);
+}
+
+namespace {
+
+void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
 {
 	std::vector<std::string> files, dirs;
 	get_files_in_dir(path,&files,&dirs,ENTIRE_FILE_PATH);
 
 	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		const time_t t = file_create_time(*i);
-		if(t > tm) {
-			tm = t;
+		++res.nfiles;
+
+		struct stat buf;
+		if(::stat(i->c_str(),&buf) != -1) {
+			if(buf.st_mtime > res.modified) {
+				res.modified = buf.st_mtime;
+			}
+
+			res.sum_size += buf.st_size;
 		}
 	}
 
 	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-		tm = file_tree_modified_time(*j,tm);
+		get_file_tree_checksum_internal(*j,res);
 	}
-
-	return tm;
 }
 
-time_t data_tree_modified_time()
+} //end anonymous namespace
+
+file_tree_checksum get_file_tree_checksum(const std::string& path)
 {
-	static time_t cached_val = 0;
-	if(cached_val == 0) {
-		cached_val = maximum<time_t>(file_tree_modified_time("data/"),file_tree_modified_time(get_user_data_dir() + "/data"));
+	file_tree_checksum res;
+	get_file_tree_checksum_internal(path,res);
+	return res;
+}
+
+const file_tree_checksum& data_tree_checksum()
+{
+	static file_tree_checksum checksum;
+	if(checksum.nfiles == 0) {
+		get_file_tree_checksum_internal("data/",checksum);
+		get_file_tree_checksum_internal(get_user_data_dir() + "data/",checksum);
+		std::cerr << "calculated data tree checksum: "
+		          << checksum.nfiles << " files; "
+		          << checksum.sum_size << " bytes\n";
 	}
 
-	return cached_val;
+	return checksum;
 }
 
 int file_size(const std::string& fname)
