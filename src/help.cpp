@@ -191,7 +191,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level) {
 		// Clear if this is the top level, otherwise append items.
 		visible_items_.clear();
 	}
-	std::vector<section>::const_iterator sec_it;
+	section_list::const_iterator sec_it;
 	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); sec_it++) {
 		const std::string vis_string = get_string_to_show(*sec_it, level);
 		visible_items_.push_back(visible_item(&(*sec_it), vis_string));
@@ -199,7 +199,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level) {
 			update_visible_items(*sec_it, level + 1);
 		}
 	}
-	std::vector<topic>::const_iterator topic_it;
+	topic_list::const_iterator topic_it;
 	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); topic_it++) {
 		const std::string vis_string = get_string_to_show(*topic_it, level);
 		visible_items_.push_back(visible_item(&(*topic_it), vis_string));
@@ -263,13 +263,13 @@ void help_menu::set_max_height(const int new_height) {
 }
 
 bool help_menu::select_topic_internal(const topic &t, const section &sec) {
-	std::vector<topic>::const_iterator tit =
+	topic_list::const_iterator tit =
 		std::find(sec.topics.begin(), sec.topics.end(), t);
 	if (tit != sec.topics.end()) {
 			expand(sec);
 			return true;
 	}
-	std::vector<section>::const_iterator sit;
+	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
 		if (select_topic_internal(t, *sit)) {
 			expand(sec);
@@ -708,7 +708,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 
 int help_text_area::get_y_for_floating_img(const int width, const int x, const int desired_y) {
 	int min_y = desired_y;
-	for (std::vector<item>::const_iterator it = items_.begin(); it < items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item &itm(*it);
 		if (itm.floating) {
 			if ((itm.rect.x + itm.surf->w > x && itm.rect.x < x + width)
@@ -722,7 +722,7 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 
 int help_text_area::get_min_x(const int y, const int height) {
 	int min_x = 0;
-	for (std::vector<item>::const_iterator it = items_.begin(); it < items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item &itm(*it);
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y && itm.align == LEFT) {
@@ -735,7 +735,7 @@ int help_text_area::get_min_x(const int y, const int height) {
 
 int help_text_area::get_max_x(const int y, const int height) {
 	int max_x = text_width();
-	for (std::vector<item>::const_iterator it = items_.begin(); it < items_.end(); it++) {
+	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item &itm(*it);
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y) {
@@ -757,7 +757,7 @@ void help_text_area::add_item(const item &itm) {
 		curr_loc_.first += itm.surf->w;
 		curr_row_height_ = maximum<int>(itm.surf->h, curr_row_height_);
 		contents_height_ = maximum<int>(contents_height_, curr_loc_.second + curr_row_height_);
-		last_row_.push_back(items_.size() - 1);
+		last_row_.push_back(&items_.back());
 	}
 	else {
 		if (itm.align == LEFT) {
@@ -794,8 +794,8 @@ void help_text_area::down_one_line() {
 }
 
 void help_text_area::adjust_last_row() {
-	for (std::vector<size_t>::iterator it = last_row_.begin(); it != last_row_.end(); it++) {
-		item &itm = items_.at(*it);
+	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); it++) {
+		item &itm = *(*it);
 		const int gap = curr_row_height_ - itm.surf->h;
 		itm.rect.y += gap / 2;
 	}
@@ -826,7 +826,7 @@ void help_text_area::draw() {
 						|| !scrollbar_.enabled());
 		SDL_Surface* const screen = disp_.video().getSurface();
 		clip_rect_setter clip_rect_set(screen, clip_rect);
-		std::vector<item>::const_iterator it;
+		std::list<item>::const_iterator it;
 		for (it = items_.begin(); it != items_.end(); it++) {
 			SDL_Rect dst = (*it).rect;
 			dst.y -= get_scroll_offset();
@@ -926,7 +926,7 @@ std::string help_text_area::ref_at(const int x, const int y) {
 	const int local_y = y - location().y;
 	if (local_y < (int)height() && local_y > 0) {
 		const int cmp_y = local_y + get_scroll_offset();
-		const std::vector<item>::const_iterator it =
+		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));
 		if (it != items_.end()) {
 			if ((*it).ref_to != "") {
@@ -1051,12 +1051,12 @@ void help_browser::handle_event(const SDL_Event &event) {
 
 
 const topic *find_topic(const section &sec, const std::string &id) {
-	std::vector<topic>::const_iterator tit =
+	topic_list::const_iterator tit =
 		std::find_if(sec.topics.begin(), sec.topics.end(), has_id(id));
 	if (tit != sec.topics.end()) {
 		return &(*tit);
 	}
-	std::vector<section>::const_iterator sit;
+	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
 		const topic *t = find_topic(*sit, id);
 		if (t != NULL) {

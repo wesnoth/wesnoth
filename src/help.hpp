@@ -23,6 +23,7 @@
 
 #include <set>
 #include <map>
+#include <list>
 
 namespace help {
 
@@ -30,6 +31,7 @@ struct help_manager {
 	help_manager(const config *help_config);
 	~help_manager();
 };
+
 
 /// A topic contains a title, an id and some text.
 struct topic {
@@ -45,19 +47,23 @@ struct topic {
 
 /// A section contains topics and sections along with title and ID.
 struct section {
-	section(const std::string _title, const std::string _id, const std::vector<topic> &_topics,
-			const std::vector<section> &_sections)
+	section(const std::string _title, const std::string _id, const std::list<topic> &_topics,
+			const std::list<section> &_sections)
 		: title(_title), id(_id), topics(_topics), sections(_sections) {}
 	section() : title(""), id("") {}
 	/// Two sections are equal if their IDs are equal.
 	bool operator==(const section &) const;
 	/// Comparison on the ID.
 	bool operator<(const section &) const;
+	
 	void clear();
 	std::string title, id;
-	std::vector<topic> topics;
-	std::vector<section> sections;
+	std::list<topic> topics;
+	std::list<section> sections;
 };
+
+typedef std::list<topic> topic_list;
+typedef std::list<section> section_list;
 
 /// To be used as a function object to locate sections and topics
 /// with a specified ID.
@@ -294,8 +300,8 @@ private:
 	/// height.
 	void add_item(const item& itm);
 
-	std::vector<item> items_;
-	std::vector<size_t> last_row_; // Indexes in items_.
+	std::list<item> items_;
+	std::list<item *> last_row_;
 	display &disp_;
 	const section &toplevel_;
 	topic const *shown_topic_;
