@@ -7,6 +7,7 @@ CVS HEAD:
  * in-game help updates and enhancements
  * scenario balancing for 'The Eastern Invasion' campaign
    * Weldyn under Attack
+   * Northern Outpost
  * increased 'drakefoot' and 'drakefly' defense on grassland, sand and forest
  * unit balancing: 
    * Halbardier: increased melee damage
@@ -52,6 +53,7 @@ CVS HEAD:
    * winter, desert and marsh random map generators
    * map descriptions
    * new maps: Broken Bridge
+   * experience requirement now uses 10% increments
  * added naming for coastal villages
  * fixed road layering in terrain-graphics.cfg
  * fixed assumption that "no advance" == 500 XP required in help code
@@ -69,8 +71,11 @@ CVS HEAD:
  * fixed lots of untranslatable strings
  * fixed female units lacking gender attribute
  * fixed wmlxgettext bugs
+ * fixed window not always refreshing on resizing
+ * added specifying the maximum lenght of the text widget in show_dialog
+ * added displaying help strings in smaller font if they don't fit in the screen
  * switched networking code to new logging system
- * more robust 'Out of Sync' detection
+ * improved 'Out of Sync' detection
  * image and data-file cleanups
  * code cleanups
 
