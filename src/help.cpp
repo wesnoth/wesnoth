@@ -593,7 +593,7 @@ namespace {
 	// that create a table. The table spec contains a vector with
 	// vectors with pairs. The pairs are the markup string that should
 	// be in a cell, and the width of that cell.
-	std::string generate_table(const table_spec &tab, const unsigned int spacing=20) {
+  std::string generate_table(const table_spec &tab, const unsigned int spacing=font::relative_size(20)) {
 		table_spec::const_iterator row_it;
 		std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
 		unsigned int num_cols = 0;
@@ -1013,7 +1013,7 @@ public:
 
 		if (&female_type != &male_type)
 			ss << "<img>src='" << female_type.image() << "'</img> ";
-		ss << "<format>font_size=11 text=' " << escape(_("level"))
+		ss << "<format>font_size=" << font::relative_size(11) << " text=' " << escape(_("level"))
 		   << " " << type_.level() << "'</format>\n";
 
 		// Print the units this unit can advance to. Cross reference
@@ -2113,24 +2113,24 @@ help_browser::help_browser(display &disp, const section &toplevel)
 	back_button_.hide(true);
 	forward_button_.hide(true);
 	// Set sizes to some default values.
-	set_measurements(400, 500);
+	set_measurements(font::relative_size(400), font::relative_size(500));
 }
 
 void help_browser::adjust_layout() {
-	const int menu_buttons_padding = 10;
+  const int menu_buttons_padding = font::relative_size(10);
 	const int menu_y = location().y;
 	const int menu_x = location().x;
-	const int menu_w = 250;
+	const int menu_w = font::relative_size(250);
 	const int menu_h = height() - back_button_.height() - menu_buttons_padding;
 	
-	const int menu_text_area_padding = 10;
+	const int menu_text_area_padding = font::relative_size(10);
 	const int text_area_y = location().y;
 	const int text_area_x = menu_x + menu_w + menu_text_area_padding;
 	const int text_area_w = width() - menu_w - menu_text_area_padding;
 	const int text_area_h = height();
 
 	const int button_border_padding = 0;
-	const int button_button_padding = 10;
+	const int button_button_padding = font::relative_size(10);
 	const int back_button_x = location().x + button_border_padding;
 	const int back_button_y = menu_y + menu_h + menu_buttons_padding;
 	const int forward_button_x = back_button_x + back_button_.width() + button_button_padding;
@@ -2549,12 +2549,12 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	CVideo& screen = disp.video();
 	surface const scr = screen.getSurface();
 
-	const int width = minimum<int>(900, scr->w - 20);
-	const int height = minimum<int>(800, scr->h - 150);
-	const int left_padding = 10;
-	const int right_padding = 10;
-	const int top_padding = 10;
-	const int bot_padding = 10;
+	const int width = minimum<int>(font::relative_size(900), scr->w - font::relative_size(20));
+	const int height = minimum<int>(font::relative_size(800), scr->h - font::relative_size(150));
+	const int left_padding = font::relative_size(10);
+	const int right_padding = font::relative_size(10);
+	const int top_padding = font::relative_size(10);
+	const int bot_padding = font::relative_size(10);
 
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
