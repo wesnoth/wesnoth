@@ -18,7 +18,6 @@ bool rectangles_overlap(const SDL_Rect& a, const SDL_Rect& b)
 	return xoverlap && yoverlap;
 }
 
-CVideo* video_ = NULL;
 display* display_ = NULL;
 
 struct tooltip
@@ -57,6 +56,10 @@ void clear_tooltip()
 
 void show_tooltip(const tooltip& tip)
 {
+	if(display_ == NULL) {
+		return;
+	}
+
 	clear_tooltip();
 
 	const SDL_Color bgcolour = {0,0,0,128};
@@ -89,15 +92,14 @@ namespace tooltips {
 
 manager::manager(display& disp)
 {
+	clear_tooltips();
 	display_ = &disp;
-	video_ = &disp.video();
 }
 
 manager::~manager()
 {
 	clear_tooltips();
 	display_ = NULL;
-	video_ = NULL;
 }
 
 void clear_tooltips()
