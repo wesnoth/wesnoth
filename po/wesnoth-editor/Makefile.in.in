@@ -114,7 +114,7 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	  --keyword=_ --keyword=N_ \
 	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).cpp.po
 	if test -r FINDCFG ;\
-	then $(top_srcdir)/utils/wmlxgettext \
+	then $(top_srcdir)/utils/wmlxgettext --directory=$(top_srcdir) \
 	  `cd $(top_srcdir) && sh $(subdir)/FINDCFG` > $(DOMAIN).wml.po ;\
 	fi
 	if test -f $(DOMAIN).wml.po ; then \

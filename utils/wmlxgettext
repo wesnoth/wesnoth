@@ -8,12 +8,16 @@
 use strict;
 use File::Basename;
 use POSIX qw(strftime);
+use Getopt::Long;
+
+our $toplevel = '.';
+GetOptions ('directory=s' => \$toplevel);
 
 our $module = dirname ($0) . "/wmltrans.pm";
 eval "require \"$module\";";
 
 our ($str,$translatable,$line,%messages);
-chdir "../..";
+chdir $toplevel;
 foreach my $file (@ARGV) {
   open (FILE, "<$file") or die "cannot read from $file";
   my $readingattack = 0;
