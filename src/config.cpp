@@ -475,8 +475,7 @@ void config::read(const std::string& data,
 					in_quotes = !in_quotes;
 				} else if(c == '\n' && !in_quotes) {
 					state = IN_ELEMENT;
-					elements.top()->values.insert(
-					   std::pair<std::string,std::string>(var,strip(value)));
+					elements.top()->values[var] = strip(value);
 					var = "";
 					value = "";
 				} else {

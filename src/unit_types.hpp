@@ -88,6 +88,8 @@ private:
 	std::vector<sfx> sfx_;
 };
 
+class unit_movement_type;
+
 //the 'unit movement type' is the basic size of the unit - flying, small land,
 //large land, etc etc.
 class unit_movement_type
@@ -95,7 +97,7 @@ class unit_movement_type
 public:
 	//this class assumes that the passed in reference will remain valid
 	//for at least as long as the class instance
-	unit_movement_type(const config& cfg);
+	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
 
 	const std::string& name() const;
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const;
@@ -104,11 +106,15 @@ public:
 
 	const string_map& damage_table() const;
 
+	void set_parent(const unit_movement_type* parent);
+
 private:
 	const config& cfg_;
 
 	mutable std::map<gamemap::TERRAIN,int> moveCosts_;
 	mutable std::map<gamemap::TERRAIN,int> defenseMods_;
+
+	const unit_movement_type* parent_;
 };
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;
@@ -185,7 +191,7 @@ private:
 	bool teleport_;
 	bool nightvision_;
 
-	const unit_movement_type* movementType_;
+	unit_movement_type movementType_;
 
 	const std::vector<config*>& possibleTraits_;
 };

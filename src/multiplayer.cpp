@@ -635,7 +635,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					rect.h = launch2_game.height();
 					int intgold;
 					std::stringstream streamgold;
-					streamgold << sides[n]->values["gold"].c_str();
+					streamgold << sides[n]->values["gold"];
 					streamgold >> intgold;
 					slider_gold.push_back(gui::slider(disp,rect,0.0+(intgold-20)/979));
 					rect.w = 30;

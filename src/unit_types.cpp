@@ -228,39 +228,46 @@ void attack_type::apply_modification(const config& cfg)
 	}
 }
 
-unit_movement_type::unit_movement_type(const config& cfg) : cfg_(cfg)
+unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent)
+             : cfg_(cfg), parent_(parent)
 {}
 
 const std::string& unit_movement_type::name() const
 {
-	return cfg_["name"];
+	const std::string& res = cfg_["name"];
+	if(res == "" && parent_ != NULL)
+		return parent_->name();
+	else
+		return res;
 }
 
 int unit_movement_type::movement_cost(const gamemap& map,
                                       gamemap::TERRAIN terrain) const
 {
-	const std::map<gamemap::TERRAIN,int>::const_iterator i =
-	                                            moveCosts_.find(terrain);
+	const std::map<gamemap::TERRAIN,int>::const_iterator i = moveCosts_.find(terrain);
 	if(i != moveCosts_.end()) {
 		return i->second;
 	}
 
 	const config* movement_costs = cfg_.child("movement costs");
-	if(movement_costs == NULL) {
-		return 1;
+
+	int res = -1;
+
+	if(movement_costs != NULL) {
+		const std::string& name = map.underlying_terrain_name(terrain);
+		const std::string& val = (*movement_costs)[name];
+
+		if(val != "") {
+			res = atoi(val.c_str());
+		}
 	}
 
-	const std::string& name = map.underlying_terrain_name(terrain);
-	if(terrain == 'b') {
-		std::cout << "underlying terrain: " << name << "\n";
+	if(res == -1 && parent_ != NULL) {
+		res = parent_->movement_cost(map,terrain);
 	}
-	const std::string& val = (*movement_costs)[name];
-	int res = atoi(val.c_str());
 
-	//don't allow 0-movement terrain
-	if(res == 0) {
+	if(res <= 0)
 		res = 100;
-	}
 
 	moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 
@@ -276,29 +283,50 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 		return i->second;
 	}
 
+	int res = -1;
+
 	const config* const defense = cfg_.child("defense");
-	if(defense == NULL) {
-		return 100;
+
+	if(defense != NULL) {
+		const std::string& name = map.underlying_terrain_name(terrain);
+		const std::string& val = (*defense)[name];
+
+		if(val != "") {
+			res = atoi(val.c_str());
+		}
 	}
 
-	const std::string& name = map.underlying_terrain_name(terrain);
-	const std::string& val = (*defense)[name];
+	if(res == -1 && parent_ != NULL) {
+		res = parent_->defense_modifier(map,terrain);
+	}
 
-	const int res = atoi(val.c_str());
+	if(res < 0)
+		res = 100;
+
 	defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
+
 	return res;
 }
 
 int unit_movement_type::damage_against(const attack_type& attack) const
 {
+	int res = -1;
+
 	const config* const resistance = cfg_.child("resistance");
-	if(resistance == NULL) {
-		return 1;
+	if(resistance != NULL) {
+		const std::string& val = (*resistance)[attack.type()];
+		const int resist = atoi(val.c_str());
+		res = (resist*attack.damage())/100;
 	}
 
-	const std::string& val = (*resistance)[attack.type()];
-	const int resist = atoi(val.c_str());
-	return (resist*attack.damage())/100;
+	if(res == -1 && parent_ != NULL) {
+		res = parent_->damage_against(attack);
+	}
+
+	if(res <= 0)
+		res = 1;
+
+	return res;
 }
 
 const string_map& unit_movement_type::damage_table() const
@@ -312,9 +340,14 @@ const string_map& unit_movement_type::damage_table() const
 	}
 }
 
+void unit_movement_type::set_parent(const unit_movement_type* parent)
+{
+	parent_ = parent;
+}
+
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const std::vector<config*>& traits)
-                              : cfg_(cfg), alpha_(1.0), possibleTraits_(traits)
+                : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
 {
 	if(has_ability("heals")) {
 		heals_ = game_config::healer_heals_per_turn;
@@ -340,18 +373,12 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	}
 
 	const std::string& move_type = cfg_["movement_type"];
-	if(move_type.empty()) {
-		throw gamestatus::load_game_failed("Movement type not specified for "
-		                                    "unit '" + name() + "'");
-	}
 
 	const movement_type_map::const_iterator it = mv_types.find(move_type);
-	if(it == mv_types.end()) {
-		throw gamestatus::load_game_failed("Undefined movement type '" +
-		                                   move_type + "'");
-	}
 
-	movementType_ = &(it->second);
+	if(it != mv_types.end()) {
+		movementType_.set_parent(&(it->second));
+	}
 
 	//check if the images necessary for units exist
 #ifdef linux
@@ -484,7 +511,7 @@ std::vector<attack_type> unit_type::attacks() const
 
 const unit_movement_type& unit_type::movement_type() const
 {
-	return *movementType_;
+	return movementType_;
 }
 
 int unit_type::cost() const
