@@ -190,6 +190,7 @@ std::vector<std::string> get_text() {
 		_("+Norwegian Translation"),
 		"-   Hallvard Norheim Bø (Lysander)",
 		"-   Erik J. Mesoy (Circon)",
+		"-   Susanne Mesoy (Rarlgland)",
 		"+ ",
 
 		_("+Polish Translation"),
