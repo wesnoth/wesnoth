@@ -230,13 +230,15 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 				return NULL;
 			}
 
-			if(pixel_format != NULL) {
-				SDL_Surface* const conv = SDL_DisplayFormat(surf);
-				SDL_FreeSurface(surf);
-				surf = conv;
-			}
+			if(adjust_colour != NO_FORMAT_ADJUSTMENT) {
+				if(pixel_format != NULL) {
+					SDL_Surface* const conv = SDL_DisplayFormat(surf);
+					SDL_FreeSurface(surf);
+					surf = conv;
+				}
 
-			SDL_SetColorKey(surf,SDL_SRCCOLORKEY,SDL_MapRGB(surf->format,0,0,0));
+				SDL_SetColorKey(surf,SDL_SRCCOLORKEY,SDL_MapRGB(surf->format,0,0,0));
+			}
 
 			i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf)).first;
 		}

@@ -736,47 +736,48 @@ network::connection network_data_dialog(display& disp, const std::string& msg, c
 
 void fade_logo(display& screen, int xpos, int ypos)
 {
-	const scoped_sdl_surface logo_unscaled(image::get_image(game_config::game_logo,image::UNSCALED));
-	if(logo_unscaled == NULL) {
+	const scoped_sdl_surface logo(image::get_image(game_config::game_logo,image::UNSCALED,image::NO_FORMAT_ADJUSTMENT));
+	if(logo == NULL) {
 		std::cerr << "Could not find game logo\n";
 		return;
 	}
 
-	const scoped_sdl_surface logo(scale_surface(logo_unscaled,(logo_unscaled->w*screen.x())/1024,(logo_unscaled->h*screen.y())/768));
-	if(logo == NULL) {
-		std::cerr << "Could not find game logo\n";
+	SDL_Surface* const fb = screen.video().getSurface();
+
+	if(xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
 		return;
 	}
 
 	//only once, when the game is first started, the logo fades in
 	static bool faded_in = false;
 
-	if(!faded_in) {
-		faded_in = true;
-		CKey key;
+	CKey key;
+	bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
 
-		bool last_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
+	for(int x = 0; x != logo->w; ++x) {
+		SDL_Rect srcrect = {x,0,1,logo->h};
+		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
 
-		for(int i = 0; i < 170; i += 5) {
+		SDL_BlitSurface(logo,&srcrect,fb,&dstrect);
+
+		update_rect(dstrect);
+
+		if(!faded_in && (x%5) == 0) {
 			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
-			if(new_button && !last_button)
-				break;
+			if(new_button && !last_button) {
+				faded_in = true;
+			}
 
 			last_button = new_button;
 
-			SDL_SetAlpha(logo,SDL_SRCALPHA,i);
-			screen.blit_surface(xpos,ypos,logo);
-			update_rect(xpos,ypos,logo->w,logo->h);
-			screen.video().flip();
-			SDL_Delay(20);
+			screen.update_display();
+			
+			SDL_Delay(10);
 			events::pump();
 		}
 	}
 
-	SDL_SetAlpha(logo,SDL_SRCALPHA,255);
-	screen.blit_surface(xpos,ypos,logo);
-	update_rect(xpos,ypos,logo->w,logo->h);
-	screen.video().flip();
+	faded_in = true;
 }
 
 TITLE_RESULT show_title(display& screen)
