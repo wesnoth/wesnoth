@@ -203,7 +203,7 @@ void widget::process_help_string(int mousex, int mousey)
 {
 	if(!hidden() && point_in_rect(mousex,mousey,location())) {
 		if(help_string_ == 0 && help_text_ != "") {
-			std::cerr << "setting help string to '" << help_text_ << "'\n";
+			//std::cerr << "setting help string to '" << help_text_ << "'\n";
 			help_string_ = disp().set_help_string(help_text_);
 		}
 	} else if(help_string_ > 0) {
