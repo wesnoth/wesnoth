@@ -34,6 +34,7 @@ protected:
 	virtual void process_event();
 
 private:
+	void set_selected_internal(int val);
 	std::vector<std::string> items_;
 	int selected_, oldSelected_;
 }; //end class combo

@@ -50,7 +50,7 @@ void combo::set_items(const std::vector<std::string>& items)
 	selected_ = -1;
 }
 
-void combo::set_selected(int val)
+void combo::set_selected_internal(int val)
 {
 	const size_t index = size_t(val);
 	if (val == selected_ || index >= items_.size())
@@ -60,14 +60,19 @@ void combo::set_selected(int val)
 	selected_ = val;
 }
 
+void combo::set_selected(int val)
+{
+	set_selected_internal(val);
+	oldSelected_ = selected_;
+}
+
 void combo::process_event()
 {
 	if (!pressed())
 		return;
 	SDL_Rect const &loc = location();
-	set_selected(gui::show_dialog(disp(), NULL, "", "",
-			gui::MESSAGE, &items_, NULL, "", NULL, -1, NULL, NULL,
-			loc.x, loc.y + loc.h));
+	set_selected_internal(gui::show_dialog(disp(), NULL, "", "", gui::MESSAGE, &items_,
+	                                       NULL, "", NULL, -1, NULL, NULL, loc.x, loc.y + loc.h));
 }
 
 }
