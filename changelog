@@ -1,6 +1,7 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (22 scenarios)
  * improved user interface theme
+ * improved change video mode dialog
  * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
@@ -25,7 +26,9 @@ CVS HEAD:
    * Tribal Warfare
    * The Outpost
  * gave names to Trolls
+ * increased hitpoints for Drake Warrior
  * new units
+   * Drake Flameheart
    * Fire Dragon
    * Giant Mudcrawler
    * Haldric
@@ -40,7 +43,9 @@ CVS HEAD:
  * return can now be used to navigate through help topics and sections
  * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
  * implemented feature to tell observers when a new player has arrived in the lobby
- * prohibited observers from setting labels
+ * disabled observers from setting labels
+ * added server commands, e.g. messaging all players
+ * playername checks, stripping spaces at the end of name
  * limited maximum lenght of observer messages
  * made it so variables can be used to set the number of turns in a game
  * language fixes and polishing (english)
@@ -53,6 +58,7 @@ CVS HEAD:
    * spanish
    * swedish
  * added [then] and [else] tags under [object] tags
+ * added [if] [then] [else] functionality to [bigmap]
  * fixed the bug with multiplying help sections
  * fixed the problem where the forward and back button was shown brifly when opening the help browser
  * fixed --disable-debug not working as expected
@@ -78,6 +84,13 @@ CVS HEAD:
  * fixed macro errors
  * fixed reverted castle tiles not being expanded to the border
  * fixed edges of the map not getting cleared of shroud and fog of war
+ * fixed unit description on sidebar not getting updated when cycling units with 'n' (#8798)
+ * fixed segfault in display.hpp
+ * fixed dismissing unit from recall list not refreshing preview
+ * fixed show_enemy_moves showing moves for petrified units (#9290)
+ * fixed [bigmap] not supporting multiple paths (#9719)
+ * fixed [not] tag not working properly
+ * fixed bug where clicking a menu item could generate multiple events
  * small fixes to unit display in help browser
  * deleted duplicate battleworld.cfg
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
@@ -104,6 +117,7 @@ CVS HEAD:
  * cleaned the terrain-graphics.cfg - terrain graphics rule precedence is now depracated, use terrain layers.
  * ran pngcrush on images
  * concentrate all version and server changes for release-time on top of configure.ac
+ * code cleanups
 
 Version 0.8:
  * added Drake flying animations
