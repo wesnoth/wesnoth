@@ -1855,6 +1855,13 @@ msgid ""
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
 msgstr ""
+"Pour trouver les propriétés d'un terrain concernant une unité particulière, "
+"faites un clic-droit sur l'unité, choisissez Description de l'unité, puis "
+"Modificateurs de terrain. Pour trouver quel est le terrain d'un hexagone "
+"particulier, placez votre curseur dessus et regardez dans le coin supérieur "
+"droit de l'écran. Là apparaissent, dans l'ordre, le nom du terrain, les "
+"coordonnées de l'hexagone, la défense de l'unité selectionnée, le nombre de "
+"points de mouvements nécessaires à cette unité pour y pénétrer."
 
 #: data/scenarios/tutorial/tutorial2.cfg:157
 msgid ""
@@ -1874,10 +1881,18 @@ msgid ""
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
 msgstr ""
+"Chaque unité présente une résistance face à chaque type d'attaque. Cette "
+"résistance est un pourcentage qui est soustrait des dommages infligés par "
+"les adversaires avec des armes de ce type. Par exemple, si un éclaireur "
+"elfe est attaqué par un archer elfe, l'archer fera 20% de dommages en plus "
+"que la normale, puisque que l'éclaireur elfe à -20% de résistance face aux "
+"armes perforantes. Ce bonus/malus est calculé en addition des autres bonus/"
+"malus comme celui de la période de la journée, ainsi deux malus de -50% "
+"feront un total de -100%."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Comment la résistance affecte-t-elle les dommages ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:162
 msgid ""
@@ -1888,10 +1903,18 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
+"Il y a 6 types de dommages différents : tranchant, perforant, contondant, "
+"feu, froid et sacré. Des unités fortement blindées ont une résistance élevée "
+"face aux types de dommages physiques : tranchant, perforant et contondant, "
+"mais une faible résistance face aux types de dommages magiques : feu et "
+"froid. Toutes les unités vivantes ont une résistance face au sacré alors "
+"que les morts-vivants sont extrêmement faibles face à lui. Pour trouver la "
+"résistance d'une unité particulière, faites un clic-droit sur l'unité, "
+"sélectionnez Description de l'unité, puis Résistance."
 
 #: data/scenarios/tutorial/tutorial2.cfg:162
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Quels sont les différents types de dommages ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:171
 msgid ""
@@ -1906,10 +1929,13 @@ msgid ""
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
+"Chaque spécialité produit quelquechose de différent; c'est l'intérêt d'une "
+"spécialité. Pour trouver la description de la spécialité d'une unité, placez "
+"votre curseur sur le nom de la spécialité."
 
 #: data/scenarios/tutorial/tutorial2.cfg:175
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Que font les spécialités ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:176
 msgid ""
@@ -1918,10 +1944,15 @@ msgid ""
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
 msgstr ""
+"Les spécialités d'une unité sont fonctions de son type d'unité; par exemple "
+"tous les généraux ont la spécialité commandement. Il y a deux types de "
+"spécialités : les capacités et les attaques spéciales. Les capacités "
+"s'appliquent aux unités alors que les attaques spéciales ne s'appliquent "
+"qu'à une seule attaque de l'unité."
 
 #: data/scenarios/tutorial/tutorial2.cfg:176
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Quelles unités recoivent des spécialités ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
 msgid ""
@@ -1931,14 +1962,20 @@ msgid ""
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
 msgstr ""
+"Il y a de nombreuses spécialités différentes, et apprendre à les connaître "
+"fait partie des points intéressant de Wesnoth. Les deux spécialités les "
+"plus fréquentes sont 'magique' et 'commandement'. Les attaques magiques "
+"ont 70% de chances de toucher l'ennemi quel que soit le terrain. Les unités "
+"à côté d'une unité de plus haut niveau avec 'commandement' font plus de "
+"dommages." 
 
 #: data/scenarios/tutorial/tutorial2.cfg:177
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Quel type de spécialités peuvent avoir mes unités ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:178
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Comment utiliser les spécialités ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:178
 msgid ""
@@ -1947,6 +1984,10 @@ msgid ""
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
 msgstr ""
+"Pour utiliser une spécialité, vous devez simplement déplacer vos unités ou "
+"les faire attaquer de façon à activer la spécialité. Par exemple, pour "
+"utiliser le commandement, vous devez déplacer une unité avec commandement à "
+"côté d'une autre unité, puis attaquer avec cette autre unité."
 
 #: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
@@ -1960,8 +2001,10 @@ msgstr ""
 "la table des statuts."
 
 #: data/scenarios/tutorial/tutorial2.cfg:202
-msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr ""
+msgid "This potion increases the damage of all the drinker's 
+attacks by four."
+msgstr "Cette potion augmente les dommages de toutes les attaques du buveur "
+"de quatre."
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid ""
@@ -1970,20 +2013,27 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"Les objets que vous rencontrez sont placés par le créateur du scénario, "
+"aussi varient-ils d'une campagne à une autre. Dans l'héritier du trône, la "
+"plupart des objets procurent une nouvelle arme à celui qui le ramasse. "
+"Cependant il n'y a généralement pas tant d'objets dans une campagne."
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Quel type d'objets puis-je renconter ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Combien de temps durent ces objets ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
+"La majorité des objets sont des modifications permanentes sur les unités qui "
+"les reçoivent. Cependant, certains objets, telle l'eau sacrée, ne durent que "
+"jusqu'à la fin du niveau."
 
 #: data/scenarios/tutorial/tutorial2.cfg:223
 msgid ""
@@ -2007,7 +2057,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Comment jouer une campagne ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid ""
@@ -2015,10 +2065,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"Pour jouer une campagne, démarrer Wesnoth, choisir 'Campagne', puis la "
+"campagne à jouer, et enfin choisir la difficulté facile, normal ou "
+"difficile. L'héritier du trône est suggéré pour les débutants."
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Comment jouer en mode multijoueurs ?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid ""
@@ -2028,6 +2081,12 @@ msgid ""
 "wesnoth.org'. This will connect you to the official Wesnoth server, where "
 "you can join a game by selecting it, then selecting 'Join Game'."
 msgstr ""
+"Pour jouer à Wesnoth contre d'autres personnes, choisir 'Multijoueur'. Si "
+"vous avez la dernière version de développement de Wesnoth, choisir "
+"'Rejoindre le serveur officiel'. Cependant, si vous avez la version 1.0, "
+"choisir 'Rejoindre une partie', puis saisir 'server.wesnoth.org'. Cela vous "
+"connectera au serveur officiel de Wesnoth, à partir duquel vous pourrez "
+"choisir une partie, puis cliquer sur 'Rejoindre une partie'."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
