@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-14 16:20+0200\n"
+"POT-Creation-Date: 2004-10-15 23:28+0200\n"
 "PO-Revision-Date: 2004-10-14 20:47+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -190,7 +190,7 @@ msgstr ""
 "det ger också en kostnad i underhåll. Läs <ref>dst=income_and_upkeep "
 "text='Inkomst och underhåll'</ref> för mer information om detta. "
 
-#: data/help.cfg:85 src/help.cpp:772 src/help.cpp:773
+#: data/help.cfg:85 src/help.cpp:771 src/help.cpp:772
 msgid "Movement"
 msgstr "Förflyttning"
 
@@ -1402,6 +1402,7 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Kan Merle slå tillbaka?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
+#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1410,11 +1411,11 @@ msgid ""
 "well. However, any unit can only retaliate by using a weapon of the same "
 "range as the one used to attack. This means that a ranged attack can only be "
 "countered by a ranged attack and a melee attack can only be countered by a "
-"melee attack. Most units have more powerful melee attacks than ranged, so "
-"units with ranged attacks are useful in that retaliation against them is "
-"less powerful; often there is no retaliation. However ranged units cannot "
-"shoot across multiple hexes; this is one of the distinctive features of "
-"Wesnoth."
+"melee attack. Most units have more powerful melee attacks than ranged "
+"attacks. Units with strong ranged attacks are useful in retaliation against "
+"melee oriented units. Some melee units without ranged attacks won't be able "
+"to retaliate at all. However ranged units cannot shoot across multiple "
+"hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
 "När en trupp attackeras kommer den att slå tillbaka med ett av sina egna "
 "vapen. Detta betyder att varje gång den anfallande truppen har gjort ett "
@@ -2627,7 +2628,7 @@ msgstr ""
 "Den här terrängen är som en borg. Rekryterade trupper kan alltså placeras på "
 "den här sortens terräng"
 
-#: data/translations/english.cfg:109 src/help.cpp:875
+#: data/translations/english.cfg:109 src/help.cpp:874
 msgid "or"
 msgstr "eller"
 
@@ -6800,7 +6801,7 @@ msgstr "+Bidrag"
 msgid "+ Bots"
 msgstr "+ Bots"
 
-#: src/about.cpp:276 src/help.cpp:2373 src/show_dialog.cpp:472
+#: src/about.cpp:276 src/help.cpp:2372 src/show_dialog.cpp:472
 msgid "Close"
 msgstr "Stäng"
 
@@ -7028,12 +7029,12 @@ msgstr "nivå"
 msgid "Moves"
 msgstr "Förflyttning"
 
-#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:699
+#: src/dialogs.cpp:700 src/display.cpp:974 src/help.cpp:698
 #: src/playturn.cpp:597 src/reports.cpp:230
 msgid "melee"
 msgstr "närstrid"
 
-#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:699
+#: src/dialogs.cpp:701 src/display.cpp:975 src/help.cpp:698
 #: src/playturn.cpp:597 src/reports.cpp:231
 msgid "ranged"
 msgstr "distans"
@@ -7272,71 +7273,71 @@ msgstr "Kan befordras till"
 msgid "Alignment"
 msgstr "Livsåskådning"
 
-#: src/help.cpp:628
+#: src/help.cpp:627
 msgid "Required XP"
 msgstr "EP för nästa nivå"
 
-#: src/help.cpp:638 src/reports.cpp:233
+#: src/help.cpp:637 src/reports.cpp:233
 msgid "attacks"
 msgstr "attacker"
 
-#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1955
+#: src/help.cpp:645 src/help.cpp:646 src/playturn.cpp:1955
 msgid "Name"
 msgstr "Namn"
 
-#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1954
+#: src/help.cpp:649 src/help.cpp:650 src/playturn.cpp:1954
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:654 src/help.cpp:655 src/unit_types.cpp:302
+#: src/help.cpp:653 src/help.cpp:654 src/unit_types.cpp:302
 msgid "Dmg"
 msgstr "Skada"
 
-#: src/help.cpp:658 src/help.cpp:659
+#: src/help.cpp:657 src/help.cpp:658
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help.cpp:662 src/help.cpp:663
+#: src/help.cpp:661 src/help.cpp:662
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help.cpp:666 src/help.cpp:667
+#: src/help.cpp:665 src/help.cpp:666
 msgid "Special"
 msgstr "Specialitet"
 
-#: src/help.cpp:724
+#: src/help.cpp:723
 msgid "Resistances"
 msgstr "Motståndskraft mot olika attacker"
 
-#: src/help.cpp:728 src/help.cpp:729
+#: src/help.cpp:727 src/help.cpp:728
 msgid "Attack Type"
 msgstr "Attacktyp"
 
-#: src/help.cpp:732 src/help.cpp:733
+#: src/help.cpp:731 src/help.cpp:732
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help.cpp:764
+#: src/help.cpp:763
 msgid "Terrain Modifiers"
 msgstr "Terrängavdrag"
 
-#: src/help.cpp:768 src/help.cpp:769
+#: src/help.cpp:767 src/help.cpp:768
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help.cpp:776 src/help.cpp:777
+#: src/help.cpp:775 src/help.cpp:776
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help.cpp:1877
+#: src/help.cpp:1876
 msgid "< Back"
 msgstr "< Bakåt"
 
-#: src/help.cpp:1878
+#: src/help.cpp:1877
 msgid "Forward >"
 msgstr "Framåt >"
 
-#: src/help.cpp:2376
+#: src/help.cpp:2375
 msgid "The Battle for Wesnoth Help"
 msgstr "Hjälp om Kampen om Wesnoth"
 
