@@ -177,6 +177,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/label.hpp \
 		  widgets/menu.hpp \
 		  widgets/progressbar.hpp \
+		  widgets/scrollarea.hpp \
 		  widgets/scrollbar.hpp \
 		  widgets/scrollpane.hpp \
 		  widgets/slider.hpp \
@@ -249,6 +250,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
 			 widgets/file_chooser.cpp \
+			 widgets/label.cpp \
 			 widgets/menu.cpp \
 			 widgets/progressbar.cpp \
 			 widgets/textbox.cpp \
@@ -321,9 +323,11 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 video.hpp \
 			 widgets/button.hpp \
 			 widgets/file_chooser.hpp \
+			 widgets/label.hpp \
 			 widgets/menu.hpp \
 			 widgets/progressbar.hpp \
 			 widgets/textbox.hpp \
+			 widgets/scrollarea.h \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp \

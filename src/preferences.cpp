@@ -25,14 +25,15 @@
 #include "sound.hpp"
 #include "util.hpp"
 #include "widgets/button.hpp"
-#include "widgets/slider.hpp"
+#include "widgets/label.hpp"
 #include "widgets/menu.hpp"
+#include "widgets/slider.hpp"
 #include "wesconfig.h"
 
 #include <cstdlib>
 #include <iostream>
-#include <sstream>
 #include <iterator>
+#include <sstream>
 
 namespace {
 
@@ -632,7 +633,6 @@ public:
 
 private:
 
-	void draw_contents();
 	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
@@ -641,10 +641,10 @@ private:
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
-				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
-				show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_;
-	std::string music_label_, sound_label_, scroll_label_, gamma_label_;
-	size_t slider_label_width_;
+	            turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
+	            show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_;
+	gui::label music_label_, sound_label_, scroll_label_, gamma_label_;
+	unsigned slider_label_width_;
 
 	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB };
 	TAB tab_;
@@ -654,29 +654,29 @@ preferences_dialog::preferences_dialog(display& disp)
 	: gui::preview_pane(disp),
 	  music_slider_(disp), sound_slider_(disp),
 	  scroll_slider_(disp), gamma_slider_(disp),
-fullscreen_button_(disp,_("Full Screen"),gui::button::TYPE_CHECK),
-turbo_button_(disp,_("Accelerated Speed"),gui::button::TYPE_CHECK),
-show_ai_moves_button_(disp,_("Skip AI Moves"),gui::button::TYPE_CHECK),
-show_grid_button_(disp,_("Show Grid"),gui::button::TYPE_CHECK),
-show_floating_labels_button_(disp,_("Show Floating Labels"),gui::button::TYPE_CHECK),
-turn_dialog_button_(disp,_("Turn Dialog"),gui::button::TYPE_CHECK),
-turn_bell_button_(disp,_("Turn Bell"),gui::button::TYPE_CHECK),
-show_team_colours_button_(disp,_("Show Team Colors"),gui::button::TYPE_CHECK),
-show_colour_cursors_button_(disp,_("Show Color Cursors"),gui::button::TYPE_CHECK),
-show_haloing_button_(disp,_("Show Haloing Effects"),gui::button::TYPE_CHECK),
-video_mode_button_(disp,_("Video Mode")),
-hotkeys_button_(disp,_("Hotkeys")),
-gamma_button_(disp,_("Adjust Gamma"),gui::button::TYPE_CHECK),
-music_label_(_("Music Volume:")), sound_label_(_("SFX Volume:")),
-scroll_label_(_("Scroll Speed:")), gamma_label_(_("Gamma:")),
-slider_label_width_(0), tab_(GENERAL_TAB)
+	  fullscreen_button_(disp, _("Full Screen"), gui::button::TYPE_CHECK),
+	  turbo_button_(disp, _("Accelerated Speed"), gui::button::TYPE_CHECK),
+	  show_ai_moves_button_(disp, _("Skip AI Moves"), gui::button::TYPE_CHECK),
+	  show_grid_button_(disp, _("Show Grid"), gui::button::TYPE_CHECK),
+	  show_floating_labels_button_(disp, _("Show Floating Labels"), gui::button::TYPE_CHECK),
+	  turn_dialog_button_(disp, _("Turn Dialog"), gui::button::TYPE_CHECK),
+	  turn_bell_button_(disp, _("Turn Bell"), gui::button::TYPE_CHECK),
+	  show_team_colours_button_(disp, _("Show Team Colors"), gui::button::TYPE_CHECK),
+	  show_colour_cursors_button_(disp, _("Show Color Cursors"), gui::button::TYPE_CHECK),
+	  show_haloing_button_(disp, _("Show Haloing Effects"), gui::button::TYPE_CHECK),
+	  video_mode_button_(disp, _("Video Mode")),
+	  hotkeys_button_(disp, _("Hotkeys")),
+	  gamma_button_(disp, _("Adjust Gamma"), gui::button::TYPE_CHECK),
+	  music_label_(disp, _("Music Volume:")), sound_label_(disp, _("SFX Volume:")),
+	  scroll_label_(disp, _("Scroll Speed:")), gamma_label_(disp, _("Gamma:")),
+	  slider_label_width_(0), tab_(GENERAL_TAB)
 {
-	set_width(400);
-	set_height(400);
+	set_measurements(400, 400);
 
-	slider_label_width_ = maximum<size_t>(font::text_area(music_label_,font::SIZE_NORMAL).w,
-	                      maximum<size_t>(font::text_area(sound_label_,font::SIZE_NORMAL).w,
-						  maximum<size_t>(font::text_area(scroll_label_,font::SIZE_NORMAL).w,font::text_area(gamma_label_,font::SIZE_NORMAL).w)));
+	slider_label_width_ = maximum<unsigned>(music_label_.width(),
+	                      maximum<unsigned>(sound_label_.width(),
+	                      maximum<unsigned>(scroll_label_.width(),
+	                                        gamma_label_.width())));
 
 	sound_slider_.set_min(1);
 	sound_slider_.set_max(100);
@@ -743,6 +743,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// General tab
 	int ypos = rect.y;
+	scroll_label_.set_location(rect.x, ypos);
 	SDL_Rect scroll_rect = { rect.x + slider_label_width_, ypos,
 	                         rect.w - slider_label_width_ - border, 0 };
 	scroll_slider_.set_location(scroll_rect);
@@ -758,6 +759,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y;
 	gamma_button_.set_location(rect.x, ypos);
 	ypos += 50;
+	gamma_label_.set_location(rect.x, ypos);
 	SDL_Rect gamma_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - border, 0 };
 	gamma_slider_.set_location(gamma_rect);
@@ -769,10 +771,12 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// Sound tab
 	ypos = rect.y;
+	music_label_.set_location(rect.x, ypos);
 	SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
 	                        rect.w - slider_label_width_ - border, 0 };
 	music_slider_.set_location(music_rect);
 	ypos += 50;
+	sound_label_.set_location(rect.x, ypos);
 	SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
 				rect.w - slider_label_width_ - border, 0 };
 	sound_slider_.set_location(sound_rect);
@@ -810,26 +814,14 @@ void preferences_dialog::process_event()
 		set_show_haloes(show_haloing_button_.checked());
 	if (gamma_button_.pressed()) {
 		set_adjust_gamma(gamma_button_.checked());
-		gamma_slider_.hide(!adjust_gamma());
-		// we need a textlabel widget so that we can deal with the "gamma" text
+		bool hide_gamma = !adjust_gamma();
+		gamma_slider_.hide(hide_gamma);
+		gamma_label_.hide(hide_gamma);
 	}
 	set_sound_volume(sound_slider_.value());
 	set_music_volume(music_slider_.value());
 	set_scroll_speed(scroll_slider_.value());
 	set_gamma(gamma_slider_.value());
-}
-
-void preferences_dialog::draw_contents()
-{
-	SDL_Rect const &loc = location();
-	if (tab_ == GENERAL_TAB) {
-		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, scroll_label_, loc.x, loc.y);
-	} else if (tab_ == DISPLAY_TAB && adjust_gamma()) {
-		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, gamma_label_, loc.x, loc.y + 50);
-	} else if(tab_ == SOUND_TAB) {
-		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, music_label_, loc.x, loc.y);
-		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, sound_label_, loc.x, loc.y + 50);
-	}
 }
 
 void preferences_dialog::set_selection(int index)
@@ -838,25 +830,32 @@ void preferences_dialog::set_selection(int index)
 	set_dirty();
 	bg_restore();
 
-	scroll_slider_.hide(tab_ != GENERAL_TAB);
-	turbo_button_.hide(tab_ != GENERAL_TAB);
-	show_ai_moves_button_.hide(tab_ != GENERAL_TAB);
-	turn_dialog_button_.hide(tab_ != GENERAL_TAB);
-	turn_bell_button_.hide(tab_ != GENERAL_TAB);
-	hotkeys_button_.hide(tab_ != GENERAL_TAB);
-	show_team_colours_button_.hide(tab_ != GENERAL_TAB);
-	show_grid_button_.hide(tab_ != GENERAL_TAB);
+	bool hide_general = tab_ != GENERAL_TAB;
+	scroll_label_.hide(hide_general);
+	scroll_slider_.hide(hide_general);
+	turbo_button_.hide(hide_general);
+	show_ai_moves_button_.hide(hide_general);
+	turn_dialog_button_.hide(hide_general);
+	turn_bell_button_.hide(hide_general);
+	hotkeys_button_.hide(hide_general);
+	show_team_colours_button_.hide(hide_general);
+	show_grid_button_.hide(hide_general);
 
-	gamma_slider_.hide(tab_ != DISPLAY_TAB || !adjust_gamma());
-	gamma_button_.hide(tab_ != DISPLAY_TAB);
-	show_floating_labels_button_.hide(tab_ != DISPLAY_TAB);
-	show_colour_cursors_button_.hide(tab_ != DISPLAY_TAB);
-	show_haloing_button_.hide(tab_ != DISPLAY_TAB);
-	fullscreen_button_.hide(tab_ != DISPLAY_TAB);
-	video_mode_button_.hide(tab_ != DISPLAY_TAB);
+	bool hide_display = tab_ != DISPLAY_TAB, hide_gamma = hide_display || !adjust_gamma();
+	gamma_label_.hide(hide_gamma);
+	gamma_slider_.hide(hide_gamma);
+	gamma_button_.hide(hide_display);
+	show_floating_labels_button_.hide(hide_display);
+	show_colour_cursors_button_.hide(hide_display);
+	show_haloing_button_.hide(hide_display);
+	fullscreen_button_.hide(hide_display);
+	video_mode_button_.hide(hide_display);
 
-	music_slider_.hide(tab_ != SOUND_TAB);
-	sound_slider_.hide(tab_ != SOUND_TAB);
+	bool hide_sound = tab_ != SOUND_TAB;
+	music_label_.hide(hide_sound);
+	music_slider_.hide(hide_sound);
+	sound_label_.hide(hide_sound);
+	sound_slider_.hide(hide_sound);
 }
 
 }
@@ -1036,7 +1035,6 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			event.type = 0;
 			int key=0; //just to avoid warning
 			int mod=0;
-			bool used = false;
 			while (event.type!=SDL_KEYDOWN) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
