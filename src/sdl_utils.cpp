@@ -13,18 +13,17 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
+#include "log.hpp"
+#include "sdl_utils.hpp"
+#include "util.hpp"
+#include "video.hpp"
+#include "wassert.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <map>
-
-#include "config.hpp"
-#include "log.hpp"
-#include "sdl_utils.hpp"
-#include "show_dialog.hpp"
-#include "util.hpp"
-#include "video.hpp"
-#include "wassert.hpp"
 
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
