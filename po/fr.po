@@ -4,15 +4,11 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # French Wesnoth translation team <wesnoth@ml.free.fr>, 2004.
 #
-#: data/units/Drake_Clasher.cfg:16 data/units/Drake_Fighter.cfg:17
-#: data/units/Drake_Fire.cfg:17 data/units/Drake_Guard.cfg:19
-#: data/units/Drake_Petit.cfg:16 data/units/Drake_Slasher.cfg:17
-#: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-07-23 01:40+0200\n"
+"POT-Creation-Date: 2004-08-05 21:41+0200\n"
 "PO-Revision-Date: 2004-07-20 13:35+0200\n"
 "Last-Translator: Yann Dirson <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -20,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/about.cpp:232 src/help.cpp:2058 src/show_dialog.cpp:470
+#: src/about.cpp:240 src/help.cpp:2058 src/show_dialog.cpp:470
 msgid "Close"
 msgstr ""
 
@@ -76,12 +72,12 @@ msgstr ""
 msgid "backstab"
 msgstr ""
 
-#: src/actions.cpp:681 src/actions.cpp:817 src/display.cpp:844
+#: src/actions.cpp:681 src/actions.cpp:817 src/display.cpp:877
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr ""
 
-#: src/actions.cpp:686 src/actions.cpp:822 src/display.cpp:840
+#: src/actions.cpp:686 src/actions.cpp:822 src/display.cpp:873
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr ""
@@ -90,31 +86,31 @@ msgstr ""
 msgid "stone"
 msgstr ""
 
-#: src/actions.cpp:1683
+#: src/actions.cpp:1686
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1711
+#: src/actions.cpp:1714
 msgid "Friendly unit sighted"
 msgstr ""
 
-#: src/actions.cpp:1713
+#: src/actions.cpp:1716
 msgid "Enemy unit sighted!"
 msgstr ""
 
-#: src/actions.cpp:1718
+#: src/actions.cpp:1721
 msgid "$friends Friendly units sighted"
 msgstr ""
 
-#: src/actions.cpp:1720
+#: src/actions.cpp:1723
 msgid "$enemies Enemy units sighted!"
 msgstr ""
 
-#: src/actions.cpp:1724
+#: src/actions.cpp:1727
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
-#: src/actions.cpp:1745
+#: src/actions.cpp:1748
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -166,7 +162,7 @@ msgstr "Tutoriel"
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:138 src/playturn.cpp:1399
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:138 src/playturn.cpp:1400
 msgid "Turn"
 msgstr ""
 
@@ -214,7 +210,7 @@ msgstr ""
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:515 src/multiplayer.cpp:88
+#: src/dialogs.cpp:515 src/hotkeys.cpp:136 src/multiplayer.cpp:88
 msgid "Load Game"
 msgstr ""
 
@@ -237,33 +233,33 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:716 src/display.cpp:850 src/help.cpp:477
-#: src/playturn.cpp:1724
+#: src/dialogs.cpp:716 src/display.cpp:883 src/help.cpp:477
+#: src/playturn.cpp:1725
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:737 src/display.cpp:868 src/help.cpp:530
-#: src/playturn.cpp:1888 src/unit.cpp:989
+#: src/dialogs.cpp:737 src/display.cpp:901 src/help.cpp:530
+#: src/playturn.cpp:1889 src/unit.cpp:1028
 msgid "HP"
 msgstr ""
 
-#: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:872
-#: src/display.cpp:880 src/playturn.cpp:1726 src/playturn.cpp:1889
-#: src/unit.cpp:1048
+#: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:905
+#: src/display.cpp:913 src/playturn.cpp:1727 src/playturn.cpp:1890
+#: src/unit.cpp:1087
 msgid "XP"
 msgstr ""
 
-#: src/dialogs.cpp:754 src/dialogs.cpp:867 src/display.cpp:884
-#: src/help.cpp:531 src/playturn.cpp:1890 src/unit.cpp:1025
+#: src/dialogs.cpp:754 src/dialogs.cpp:867 src/display.cpp:917
+#: src/help.cpp:531 src/playturn.cpp:1891 src/unit.cpp:1064
 msgid "Moves"
 msgstr ""
 
-#: src/dialogs.cpp:771 src/display.cpp:901 src/help.cpp:572
+#: src/dialogs.cpp:771 src/display.cpp:934 src/help.cpp:572
 #: src/playturn.cpp:616 src/reports.cpp:229
 msgid "melee"
 msgstr ""
 
-#: src/dialogs.cpp:772 src/display.cpp:902 src/help.cpp:572
+#: src/dialogs.cpp:772 src/display.cpp:935 src/help.cpp:572
 #: src/playturn.cpp:616 src/reports.cpp:230
 msgid "ranged"
 msgstr ""
@@ -280,7 +276,7 @@ msgstr ""
 msgid "Resistance"
 msgstr ""
 
-#: src/dialogs.cpp:820 src/mapgen_dialog.cpp:69 src/preferences.cpp:961
+#: src/dialogs.cpp:820 src/mapgen_dialog.cpp:69 src/preferences.cpp:981
 msgid "Close Window"
 msgstr ""
 
@@ -300,11 +296,11 @@ msgstr ""
 msgid "Defense"
 msgstr ""
 
-#: src/display.cpp:831
+#: src/display.cpp:864
 msgid "healthy"
 msgstr ""
 
-#: src/display.cpp:836 src/reports.cpp:105
+#: src/display.cpp:869 src/reports.cpp:105
 msgid "invisible"
 msgstr ""
 
@@ -312,11 +308,11 @@ msgstr ""
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/game.cpp:134 src/game.cpp:196 src/playturn.cpp:1403
+#: src/game.cpp:134 src/game.cpp:196 src/playturn.cpp:1404
 msgid "Name:"
 msgstr ""
 
-#: src/game.cpp:142 src/game.cpp:203 src/playturn.cpp:1412
+#: src/game.cpp:142 src/game.cpp:203 src/playturn.cpp:1413
 msgid "The game could not be saved"
 msgstr ""
 
@@ -334,8 +330,8 @@ msgid ""
 "load it?"
 msgstr ""
 
-#: src/game.cpp:779 src/game.cpp:784 src/game.cpp:789 src/playlevel.cpp:487
-#: src/playlevel.cpp:700
+#: src/game.cpp:779 src/game.cpp:784 src/game.cpp:789 src/playlevel.cpp:493
+#: src/playlevel.cpp:706
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
@@ -423,11 +419,11 @@ msgstr ""
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:547 src/playturn.cpp:1887
+#: src/help.cpp:547 src/playturn.cpp:1888
 msgid "Name"
 msgstr ""
 
-#: src/help.cpp:548 src/playturn.cpp:1886
+#: src/help.cpp:548 src/playturn.cpp:1887
 msgid "Type"
 msgstr ""
 
@@ -463,15 +459,243 @@ msgstr ""
 msgid "The Battle for Wesnoth Help"
 msgstr ""
 
-#: src/hotkeys.cpp:294 src/hotkeys.cpp:486
+#: src/hotkeys.cpp:121
+msgid "Next unit"
+msgstr ""
+
+#: src/hotkeys.cpp:122
+msgid "End Unit Turn"
+msgstr ""
+
+#: src/hotkeys.cpp:123 src/playturn.cpp:1471
+msgid "Leader"
+msgstr ""
+
+#: src/hotkeys.cpp:124
+msgid "Undo"
+msgstr ""
+
+#: src/hotkeys.cpp:125
+msgid "Redo"
+msgstr ""
+
+#: src/hotkeys.cpp:126
+msgid "Zoom In"
+msgstr ""
+
+#: src/hotkeys.cpp:127
+msgid "Zoom Out"
+msgstr ""
+
+#: src/hotkeys.cpp:128
+msgid "Default Zoom"
+msgstr ""
+
+#: src/hotkeys.cpp:129
+msgid "Fullscreen"
+msgstr ""
+
+#: src/hotkeys.cpp:130
+msgid "Accelerated"
+msgstr ""
+
+#: src/hotkeys.cpp:131
+msgid "Attack Resistance"
+msgstr ""
+
+#: src/hotkeys.cpp:132
+msgid "Terrain Table"
+msgstr ""
+
+#: src/hotkeys.cpp:133
+msgid "Unit Description"
+msgstr ""
+
+#: src/hotkeys.cpp:134 src/playturn.cpp:1376
+msgid "Rename Unit"
+msgstr ""
+
+#: src/hotkeys.cpp:135
+msgid "Save Game"
+msgstr ""
+
+#: src/hotkeys.cpp:137
+msgid "Recruit"
+msgstr ""
+
+#: src/hotkeys.cpp:138
+msgid "Repeat Recruit"
+msgstr ""
+
+#: src/hotkeys.cpp:139
+msgid "Recall"
+msgstr ""
+
+#: src/hotkeys.cpp:140 data/themes/default.cfg:79 data/themes/default.cfg:415
+msgid "End Turn"
+msgstr ""
+
+#: src/hotkeys.cpp:141
+msgid "Toggle Grid"
+msgstr ""
+
+#: src/hotkeys.cpp:142
+msgid "Status Table"
+msgstr ""
+
+#: src/hotkeys.cpp:143
+msgid "Mute"
+msgstr ""
+
+#: src/hotkeys.cpp:144
+msgid "Speak"
+msgstr ""
+
+#: src/hotkeys.cpp:145
+msgid "Create Unit (Debug!)"
+msgstr ""
+
+#: src/hotkeys.cpp:146
+msgid "Change Unit Side (Debug!)"
+msgstr ""
+
+#: src/hotkeys.cpp:147 src/preferences.cpp:881 src/titlescreen.cpp:157
+msgid "Preferences"
+msgstr ""
+
+#: src/hotkeys.cpp:148
+msgid "Scenario Objectives"
+msgstr ""
+
+#: src/hotkeys.cpp:149 src/playturn.cpp:1940
+msgid "Unit List"
+msgstr ""
+
+#: src/hotkeys.cpp:150 src/playturn.cpp:2002
+msgid "Statistics"
+msgstr ""
+
+#: src/hotkeys.cpp:151
+msgid "Quit Game"
+msgstr ""
+
+#: src/hotkeys.cpp:152
+msgid "Set Label"
+msgstr ""
+
+#: src/hotkeys.cpp:153
+msgid "Show Enemy Moves"
+msgstr ""
+
+#: src/hotkeys.cpp:154
+msgid "Best Possible Enemy Moves"
+msgstr ""
+
+#: src/hotkeys.cpp:155
+msgid "Quit Editor"
+msgstr ""
+
+#: src/hotkeys.cpp:156
+msgid "New Map"
+msgstr ""
+
+#: src/hotkeys.cpp:157
+msgid "Load Map"
+msgstr ""
+
+#: src/hotkeys.cpp:158
+msgid "Save Map"
+msgstr ""
+
+#: src/hotkeys.cpp:159
+msgid "Save As"
+msgstr ""
+
+#: src/hotkeys.cpp:160
+msgid "Set Player Start Position"
+msgstr ""
+
+#: src/hotkeys.cpp:161
+msgid "Flood Fill"
+msgstr ""
+
+#: src/hotkeys.cpp:162
+msgid "Fill Selection"
+msgstr ""
+
+#: src/hotkeys.cpp:163
+msgid "Cut"
+msgstr ""
+
+#: src/hotkeys.cpp:164
+msgid "Copy"
+msgstr ""
+
+#: src/hotkeys.cpp:165
+msgid "Paste"
+msgstr ""
+
+#: src/hotkeys.cpp:166
+msgid "Revert from Disk"
+msgstr ""
+
+#: src/hotkeys.cpp:167
+msgid "Resize Map"
+msgstr ""
+
+#: src/hotkeys.cpp:168
+msgid "Flip Map"
+msgstr ""
+
+#: src/hotkeys.cpp:169
+msgid "Select All"
+msgstr ""
+
+#: src/hotkeys.cpp:170
+msgid "Draw Terrain"
+msgstr ""
+
+#: src/hotkeys.cpp:171
+msgid "Delay Shroud Updates"
+msgstr ""
+
+#: src/hotkeys.cpp:172
+msgid "Update Shroud Now"
+msgstr ""
+
+#: src/hotkeys.cpp:173
+msgid "Continue Move"
+msgstr ""
+
+#: src/hotkeys.cpp:174
+msgid "Find Label or Unit"
+msgstr ""
+
+#: src/hotkeys.cpp:175
+msgid "Speak to Ally"
+msgstr ""
+
+#: src/hotkeys.cpp:176
+msgid "Speak to All"
+msgstr ""
+
+#: src/hotkeys.cpp:177 src/show_dialog.cpp:608
+msgid "Help"
+msgstr ""
+
+#: src/hotkeys.cpp:178
+msgid "View Chat Log"
+msgstr ""
+
+#: src/hotkeys.cpp:361 src/hotkeys.cpp:553
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/intro.cpp:90
+#: src/intro.cpp:91
 msgid "Next"
 msgstr ""
 
-#: src/intro.cpp:91
+#: src/intro.cpp:92
 msgid "Skip"
 msgstr ""
 
@@ -503,7 +727,7 @@ msgstr ""
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1471
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1472
 msgid "Villages"
 msgstr ""
 
@@ -636,8 +860,8 @@ msgid "Receiving game list..."
 msgstr ""
 
 #: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
-#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:686 src/playturn.cpp:1470
-#: src/playturn.cpp:1475 src/playturn.cpp:1562
+#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:692 src/playturn.cpp:1471
+#: src/playturn.cpp:1476 src/playturn.cpp:1563
 msgid "Gold"
 msgstr ""
 
@@ -797,60 +1021,60 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/playlevel.cpp:626
+#: src/playlevel.cpp:632
 msgid "Game Over"
 msgstr ""
 
-#: src/playlevel.cpp:627
+#: src/playlevel.cpp:633
 msgid "The game is over."
 msgstr ""
 
-#: src/playlevel.cpp:640
+#: src/playlevel.cpp:646
 msgid "Defeat"
 msgstr ""
 
-#: src/playlevel.cpp:641
+#: src/playlevel.cpp:647
 msgid "You have been defeated!"
 msgstr ""
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:679
 msgid "Victory"
 msgstr ""
 
-#: src/playlevel.cpp:674
+#: src/playlevel.cpp:680
 msgid "You have emerged victorious!"
 msgstr ""
 
-#: src/playlevel.cpp:676
+#: src/playlevel.cpp:682
 msgid "Remaining gold"
 msgstr ""
 
-#: src/playlevel.cpp:679
+#: src/playlevel.cpp:685
 msgid "Early finish bonus"
 msgstr ""
 
-#: src/playlevel.cpp:681
+#: src/playlevel.cpp:687
 msgid "per turn"
 msgstr ""
 
-#: src/playlevel.cpp:682
+#: src/playlevel.cpp:688
 msgid "Turns finished early"
 msgstr ""
 
-#: src/playlevel.cpp:684
+#: src/playlevel.cpp:690
 msgid "Bonus"
 msgstr ""
 
-#: src/playlevel.cpp:690
+#: src/playlevel.cpp:696
 #, c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
-#: src/playlevel.cpp:691
+#: src/playlevel.cpp:697
 msgid "Retained Gold"
 msgstr ""
 
-#: src/playlevel.cpp:715
+#: src/playlevel.cpp:721
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -888,365 +1112,345 @@ msgstr ""
 msgid "Choose weapon"
 msgstr ""
 
-#: src/playturn.cpp:1144
+#: src/playturn.cpp:1145
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1153 src/playturn.cpp:1158
+#: src/playturn.cpp:1154 src/playturn.cpp:1159
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1174
+#: src/playturn.cpp:1175
 msgid "Auto-Save"
 msgstr ""
 
-#: src/playturn.cpp:1176
+#: src/playturn.cpp:1177
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/playturn.cpp:1375
-msgid "Rename Unit"
-msgstr ""
-
-#: src/playturn.cpp:1410
+#: src/playturn.cpp:1411
 msgid "The game has been saved"
 msgstr ""
 
-#: src/playturn.cpp:1470
-msgid "Leader"
-msgstr ""
-
-#: src/playturn.cpp:1471
+#: src/playturn.cpp:1472
 msgid "Units"
 msgstr ""
 
-#: src/playturn.cpp:1472
+#: src/playturn.cpp:1473
 msgid "Upkeep"
 msgstr ""
 
-#: src/playturn.cpp:1472
+#: src/playturn.cpp:1473
 msgid "Income"
 msgstr ""
 
-#: src/playturn.cpp:1568
+#: src/playturn.cpp:1569
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/playturn.cpp:1581
+#: src/playturn.cpp:1582
 msgid "Recruit unit"
 msgstr ""
 
-#: src/playturn.cpp:1610
+#: src/playturn.cpp:1611
 msgid "You don't have enough gold to recruit that unit"
 msgstr ""
 
-#: src/playturn.cpp:1668
+#: src/playturn.cpp:1669
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1670
+#: src/playturn.cpp:1671
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1708
+#: src/playturn.cpp:1709
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/playturn.cpp:1710
+#: src/playturn.cpp:1711
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/playturn.cpp:1714
+#: src/playturn.cpp:1715
 msgid "You must have at least"
 msgstr ""
 
-#: src/playturn.cpp:1716
+#: src/playturn.cpp:1717
 msgid "gold pieces to recall a unit"
 msgstr ""
 
-#: src/playturn.cpp:1739
+#: src/playturn.cpp:1740
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/playturn.cpp:1752
+#: src/playturn.cpp:1753
 msgid "Select unit"
 msgstr ""
 
-#: src/playturn.cpp:1796
+#: src/playturn.cpp:1797
 msgid "Message"
 msgstr ""
 
-#: src/playturn.cpp:1796
+#: src/playturn.cpp:1797
 msgid "Send to allies only"
 msgstr ""
 
-#: src/playturn.cpp:1891
+#: src/playturn.cpp:1892
 msgid "Location"
 msgstr ""
 
-#: src/playturn.cpp:1939
-msgid "Unit List"
-msgstr ""
-
-#: src/playturn.cpp:1973 src/playturn.cpp:2007
+#: src/playturn.cpp:1974 src/playturn.cpp:2008
 msgid "Recruits"
 msgstr ""
 
-#: src/playturn.cpp:1979 src/playturn.cpp:2011
+#: src/playturn.cpp:1980 src/playturn.cpp:2012
 msgid "Recalls"
 msgstr ""
 
-#: src/playturn.cpp:1985 src/playturn.cpp:2015
+#: src/playturn.cpp:1986 src/playturn.cpp:2016
 msgid "Advancements"
 msgstr ""
 
-#: src/playturn.cpp:1991 src/playturn.cpp:2019
+#: src/playturn.cpp:1992 src/playturn.cpp:2020
 msgid "Losses"
 msgstr ""
 
-#: src/playturn.cpp:1997 src/playturn.cpp:2023
+#: src/playturn.cpp:1998 src/playturn.cpp:2024
 msgid "Kills"
 msgstr ""
 
-#: src/playturn.cpp:2001
-msgid "Statistics"
-msgstr ""
-
-#: src/playturn.cpp:2038
+#: src/playturn.cpp:2039
 msgid "Search"
 msgstr ""
 
-#: src/playturn.cpp:2054
+#: src/playturn.cpp:2055
 msgid "Chat Log"
 msgstr ""
 
-#: src/playturn.cpp:2119
+#: src/playturn.cpp:2120
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2131
+#: src/playturn.cpp:2132
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2132
+#: src/playturn.cpp:2133
 msgid "Label"
 msgstr ""
 
-#: src/playturn.cpp:2295
+#: src/playturn.cpp:2296
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2326
+#: src/playturn.cpp:2327
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2327
+#: src/playturn.cpp:2328
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2328
+#: src/playturn.cpp:2329
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:2330
+#: src/playturn.cpp:2331
 msgid "has left the game. What do you want to do?"
 msgstr ""
 
-#: src/preferences.cpp:110 src/preferences.cpp:156
+#: src/preferences.cpp:121 src/preferences.cpp:167
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
 
-#: src/preferences.cpp:328
+#: src/preferences.cpp:339
 msgid "player"
 msgstr ""
 
-#: src/preferences.cpp:587
+#: src/preferences.cpp:598
 msgid "Full Screen"
 msgstr ""
 
-#: src/preferences.cpp:588
+#: src/preferences.cpp:599
 msgid "Accelerated Speed"
 msgstr ""
 
-#: src/preferences.cpp:589
+#: src/preferences.cpp:600
 msgid "Skip AI Moves"
 msgstr ""
 
-#: src/preferences.cpp:590
+#: src/preferences.cpp:601
 msgid "Show Grid"
 msgstr ""
 
-#: src/preferences.cpp:591
+#: src/preferences.cpp:602
 msgid "Show Floating Labels"
 msgstr ""
 
-#: src/preferences.cpp:592
+#: src/preferences.cpp:603
 msgid "Turn Dialog"
 msgstr ""
 
-#: src/preferences.cpp:593
+#: src/preferences.cpp:604
 msgid "Turn Bell"
 msgstr ""
 
-#: src/preferences.cpp:594
+#: src/preferences.cpp:605
 msgid "Show Team Colors"
 msgstr ""
 
-#: src/preferences.cpp:595
+#: src/preferences.cpp:606
 msgid "Show Color Cursors"
 msgstr ""
 
-#: src/preferences.cpp:596
+#: src/preferences.cpp:607
 msgid "Show Haloing Effects"
 msgstr ""
 
-#: src/preferences.cpp:597
+#: src/preferences.cpp:608
 msgid "Video Mode"
 msgstr ""
 
-#: src/preferences.cpp:598
+#: src/preferences.cpp:609
 msgid "Hotkeys"
 msgstr ""
 
-#: src/preferences.cpp:599
+#: src/preferences.cpp:610
 msgid "Adjust Gamma"
 msgstr ""
 
-#: src/preferences.cpp:600
+#: src/preferences.cpp:611
 msgid "Music Volume:"
 msgstr ""
 
-#: src/preferences.cpp:600
+#: src/preferences.cpp:611
 msgid "SFX Volume:"
 msgstr ""
 
-#: src/preferences.cpp:601
+#: src/preferences.cpp:612
 msgid "Scroll Speed:"
 msgstr ""
 
-#: src/preferences.cpp:601
+#: src/preferences.cpp:612
 msgid "Gamma:"
 msgstr ""
 
-#: src/preferences.cpp:613
+#: src/preferences.cpp:624
 msgid "Change the sound effects volume"
 msgstr ""
 
-#: src/preferences.cpp:618
+#: src/preferences.cpp:629
 msgid "Change the music volume"
 msgstr ""
 
-#: src/preferences.cpp:623
+#: src/preferences.cpp:634
 msgid "Change the speed of scrolling around the map"
 msgstr ""
 
-#: src/preferences.cpp:626 src/preferences.cpp:631
+#: src/preferences.cpp:637 src/preferences.cpp:642
 msgid "Change the brightness of the display"
 msgstr ""
 
-#: src/preferences.cpp:634
+#: src/preferences.cpp:645
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 
-#: src/preferences.cpp:637
+#: src/preferences.cpp:648
 msgid "Make units move and fight faster"
 msgstr ""
 
-#: src/preferences.cpp:640
+#: src/preferences.cpp:651
 msgid "Do not animate AI units moving"
 msgstr ""
 
-#: src/preferences.cpp:643
+#: src/preferences.cpp:654
 msgid "Overlay a grid onto the map"
 msgstr ""
 
-#: src/preferences.cpp:646
+#: src/preferences.cpp:657
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 
-#: src/preferences.cpp:648
+#: src/preferences.cpp:659
 msgid "Change the resolution the game runs at"
 msgstr ""
 
-#: src/preferences.cpp:651
+#: src/preferences.cpp:662
 msgid "Display a dialog at the beginning of your turn"
 msgstr ""
 
-#: src/preferences.cpp:654
+#: src/preferences.cpp:665
 msgid "Play a bell sound at the beginning of your turn"
 msgstr ""
 
-#: src/preferences.cpp:657
+#: src/preferences.cpp:668
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 
-#: src/preferences.cpp:660
+#: src/preferences.cpp:671
 msgid "Use colored mouse cursors (may be slower)"
 msgstr ""
 
-#: src/preferences.cpp:663
+#: src/preferences.cpp:674
 msgid "Use graphical special effects (may be slower)"
 msgstr ""
 
-#: src/preferences.cpp:665
+#: src/preferences.cpp:676
 msgid "View and configure keyboard shortcuts"
 msgstr ""
 
-#: src/preferences.cpp:858 data/units/General.cfg:3
+#: src/preferences.cpp:869 data/units/General.cfg:3
 msgid "General"
 msgstr ""
 
-#: src/preferences.cpp:859
+#: src/preferences.cpp:870
 msgid "Display"
 msgstr ""
 
-#: src/preferences.cpp:860
+#: src/preferences.cpp:871
 msgid "Sound"
 msgstr ""
 
-#: src/preferences.cpp:870 src/titlescreen.cpp:157
-msgid "Preferences"
-msgstr ""
-
-#: src/preferences.cpp:914 src/preferences.cpp:933
+#: src/preferences.cpp:927
 msgid "There are no alternative video modes available"
 msgstr ""
 
-#: src/preferences.cpp:938
+#: src/preferences.cpp:958
 msgid "Choose Resolution"
 msgstr ""
 
-#: src/preferences.cpp:966
+#: src/preferences.cpp:986
 msgid "Hotkey Settings"
 msgstr ""
 
-#: src/preferences.cpp:970 src/preferences.cpp:1028
+#: src/preferences.cpp:990 src/preferences.cpp:1048
 msgid "Press desired HotKey"
 msgstr ""
 
-#: src/preferences.cpp:989
+#: src/preferences.cpp:1009
 msgid "Change Hotkey"
 msgstr ""
 
-#: src/preferences.cpp:992
+#: src/preferences.cpp:1012
 msgid "Save Hotkeys"
 msgstr ""
 
-#: src/preferences.cpp:1061
+#: src/preferences.cpp:1081
 msgid "This HotKey is already in use."
 msgstr ""
 
@@ -1314,11 +1518,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/show_dialog.cpp:608
-msgid "Help"
-msgstr ""
-
-#: src/show_dialog.cpp:938
+#: src/show_dialog.cpp:941
 msgid "KB"
 msgstr ""
 
@@ -1376,67 +1576,87 @@ msgstr ""
 msgid "-- The Tome of Wesnoth"
 msgstr ""
 
-#: src/unit_types.cpp:795
+#: src/unit_types.cpp:845
 msgid "lawful"
 msgstr ""
 
-#: src/unit_types.cpp:795
+#: src/unit_types.cpp:845
 #, fuzzy
 msgid "neutral"
 msgstr "Tutoriel"
 
-#: src/unit_types.cpp:795
+#: src/unit_types.cpp:845
 msgid "chaotic"
 msgstr ""
 
-#: data/game.cfg:87
+#: data/game.cfg:88
 msgid "Heir to the Throne"
 msgstr ""
 
-#: data/game.cfg:91
+#: data/game.cfg:92
 msgid ""
 "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
 "champion.png,Champion,(hardest)"
 msgstr ""
 
-#: data/game.cfg:97
+#: data/game.cfg:98
 msgid "The Dark Hordes"
 msgstr ""
 
-#: data/game.cfg:101
+#: data/game.cfg:102
 msgid ""
 "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
 "&undead-lich.png,Dark Lord,(hardest)"
 msgstr ""
 
-#: data/game.cfg:106
+#: data/game.cfg:107
 msgid "Son of the Black Eye (chapter I)"
 msgstr ""
 
-#: data/game.cfg:110
+#: data/game.cfg:111
 msgid ""
 "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
 "warlord.png,Warlord,(hardest)"
 msgstr ""
 
-#: data/game.cfg:116
-msgid "The Eastern Invasion (beta release)"
+#: data/game.cfg:117
+msgid "The Eastern Invasion"
 msgstr ""
 
-#: data/game.cfg:120
+#: data/game.cfg:121
 msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
 
-#: data/game.cfg:126
+#: data/game.cfg:127
 msgid "The Rise of Wesnoth"
 msgstr ""
 
-#: data/game.cfg:130
+#: data/game.cfg:131
 msgid ""
 "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
 "lord.png,Lord,(hardest)"
+msgstr ""
+
+#: data/game.cfg:201
+msgid "loyal"
+msgstr ""
+
+#: data/game.cfg:209
+msgid "strong"
+msgstr ""
+
+#: data/game.cfg:224
+msgid "quick"
+msgstr ""
+
+#: data/game.cfg:238
+msgid "intelligent"
+msgstr ""
+
+#: data/game.cfg:247
+msgid "resilient"
 msgstr ""
 
 #: data/multiplayer.cfg:2
@@ -1533,10 +1753,6 @@ msgstr ""
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
 msgid "Actions"
-msgstr ""
-
-#: data/themes/default.cfg:79 data/themes/default.cfg:415
-msgid "End Turn"
 msgstr ""
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
@@ -2371,7 +2587,7 @@ msgstr ""
 msgid "Arch Mage"
 msgstr ""
 
-#: data/units/Arch_Mage.cfg:19
+#: data/units/Arch_Mage.cfg:20
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
@@ -2462,16 +2678,6 @@ msgid ""
 "The best riders in Wesnoth are recruited into the military to become members "
 "of the cavalry. This strictly disciplined force is especially suited to "
 "capturing and holding villages."
-msgstr ""
-
-#: data/units/Cavalry.cfg:54 data/units/Cavalryman.cfg:52
-msgid "Scout"
-msgstr ""
-
-#: data/units/Cavalry.cfg:66 data/units/Cavalryman.cfg:64
-msgid ""
-"Since they use both the lightest of armor and the fastest of horses, Scouts "
-"are employed by most human armies to discover what dangers lie ahead."
 msgstr ""
 
 #: data/units/Cavalryman.cfg:3
@@ -3061,6 +3267,10 @@ msgstr ""
 msgid "Galleon"
 msgstr ""
 
+#: data/units/Gate.cfg:3
+msgid "Gate"
+msgstr ""
+
 #: data/units/General.cfg:18
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
@@ -3159,7 +3369,7 @@ msgstr ""
 msgid "Great Mage"
 msgstr ""
 
-#: data/units/Great_Mage.cfg:19
+#: data/units/Great_Mage.cfg:20
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
@@ -3330,7 +3540,7 @@ msgstr ""
 msgid "Mage"
 msgstr ""
 
-#: data/units/Mage.cfg:16
+#: data/units/Mage.cfg:17
 msgid ""
 "Mages are both weak and powerful. Moving slowly, and with poor defensive "
 "skills, Mages attack with magical missiles that always have a high chance of "
@@ -3342,7 +3552,7 @@ msgstr ""
 msgid "Mage of Light"
 msgstr ""
 
-#: data/units/Mage_of_Light.cfg:22
+#: data/units/Mage_of_Light.cfg:23
 msgid ""
 "Mages of Light are awesome allies of all lawful combatants, and fearsome "
 "foes to the forces of chaos. These Mages' powers of illumination are so "
@@ -3719,7 +3929,7 @@ msgstr ""
 msgid "Red Mage"
 msgstr ""
 
-#: data/units/Red_Mage.cfg:19
+#: data/units/Red_Mage.cfg:20
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
@@ -3834,7 +4044,7 @@ msgstr ""
 msgid "Silver Mage"
 msgstr ""
 
-#: data/units/Silver_Mage.cfg:21
+#: data/units/Silver_Mage.cfg:22
 msgid ""
 "Silver Mages are the most deft of foot and elusive of all mages. They can "
 "teleport from any friendly village to another, translating themselves in an "
@@ -4069,7 +4279,7 @@ msgstr ""
 msgid "White Mage"
 msgstr ""
 
-#: data/units/White_Mage.cfg:21
+#: data/units/White_Mage.cfg:22
 msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
