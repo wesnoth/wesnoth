@@ -74,10 +74,12 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	std::vector<gamemap::location> gotos;
 
 	for(unit_map::iterator ui = units.begin(); ui != units.end(); ++ui) {
-		if(ui->second.get_goto() == ui->first)
-			ui->second.set_goto(gamemap::location());
+		const std::vector<gamemap::location>& go = ui->second.get_gotos();
+		while(!go.empty() && go.front() == ui->first)
+			ui->second.done_goto();
 
-		if(ui->second.side() == team_num && map.on_board(ui->second.get_goto()))
+		if(!go.empty() && ui->second.side() == team_num &&
+		   map.on_board(go.front()))
 			gotos.push_back(ui->first);
 	}
 
@@ -94,8 +96,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		const std::set<gamemap::location>* const teleports =
 		     u.type().teleports() ? &current_team.towers() : NULL;
 
-		paths::route route = a_star_search(ui->first,ui->second.get_goto(),
-		                                   10000.0,calc,teleports);
+		paths::route route = a_star_search(ui->first,
+		               ui->second.get_gotos().front(),10000.0,calc,teleports);
 		if(route.steps.empty())
 			continue;
 
@@ -103,8 +105,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		route.move_left = route_turns_to_complete(ui->second,map,route);
 		gui.set_route(&route);
-		move_unit(&gui,map,units,teams,route.steps,
-		          &recorder,&turn_data.undos());
+		const int res = move_unit(&gui,map,units,teams,route.steps,
+		                          &recorder,&turn_data.undos());
+
+		if(res == route.steps.size())
+			ui->second.done_goto();
 	}
 
 	std::cerr << "done gotos\n";
@@ -264,6 +269,12 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 			const unit_map::const_iterator un = units_.find(selected_hex_);
 			
 			if(un != units_.end()) {
+				std::vector<gamemap::location> gotos = un->second.get_gotos();
+				if(!key_[SDLK_LCTRL] && !key_[SDLK_RCTRL]) {
+					gotos.clear();
+				}
+
+
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    units_,map_);
 				const bool can_teleport = un->second.type().teleports();
@@ -481,7 +492,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
-
+		if(!key_[SDLK_LCTRL] && !key_[SDLK_RCTRL]) {
+			
+		}
 
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);
@@ -532,7 +545,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		selected_hex_ = hex;
 		gui_.select_hex(hex);
 		current_route_.steps.clear();
-		gui_.set_route(NULL);
+
+		std::vector<paths::route> routes;
 
 		const unit_map::iterator it = units_.find(hex);
 		if(it != units_.end() && it->second.side() == team_num_) {
@@ -543,21 +557,28 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			gui_.set_paths(&current_paths_);
 
 			unit u = it->second;
-			const gamemap::location go_to = u.get_goto();
-			if(map_.on_board(go_to)) {
+			const std::vector<gamemap::location>& gotos = u.get_gotos();
+
+			for(std::vector<gamemap::location>::const_iterator g = gotos.begin();
+			    g != gotos.end(); ++g) {
+
 				const shortest_path_calculator calc(u,current_team,
 				                                    units_,map_);
 
 				const std::set<gamemap::location>* const teleports =
 				        teleport ? &current_team.towers() : NULL;
 
-				paths::route route = a_star_search(it->first,go_to,
+				const gamemap::location& src = g == gotos.begin() ? it->first :
+				                                                    *(g-1);
+
+				paths::route route = a_star_search(src,*g,
 				                               10000.0,calc,teleports);
 				route.move_left =
 			          route_turns_to_complete(it->second,map_,route);
-				gui_.set_route(&route);
 			}
 		}
+
+		gui_.set_routes(routes);
 	}
 }
 

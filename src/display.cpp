@@ -1238,26 +1238,37 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 {
-	std::vector<gamemap::location>::const_iterator i =
-	         std::find(route_.steps.begin(),route_.steps.end(),loc);
+	std::vector<paths::route>::const_iterator rt;
+	std::vector<gamemap::location>::const_iterator i;
+	
+	for(rt = routes_.begin(); rt != routes_.end(); ++rt) {
+		i = std::find(rt->steps.begin(),rt->steps.end(),loc);
+		if(i != rt->steps.end())
+			break;
+	}
 
-	if(i == route_.steps.begin() || i == route_.steps.end())
+	if(rt == routes_.end())
 		return;
 
-	const bool show_time = (i+1 == route_.steps.end());
+	const paths::route& route = *rt;
 
-	const bool left_foot = is_even(i - route_.steps.begin());
+	if(i == route.steps.begin() || i == route.steps.end())
+		return;
+
+	const bool show_time = (i+1 == route.steps.end());
+
+	const bool left_foot = is_even(i - route.steps.begin());
 
 	//generally we want the footsteps facing toward the direction they're going
 	//to go next.
 	//if we're on the last step, then we want them facing according to where
 	//they came from, so we move i back by one
-	if(i+1 == route_.steps.end() && i != route_.steps.begin())
+	if(i+1 == route.steps.end() && i != route.steps.begin())
 		--i;
 
 	gamemap::location::DIRECTION direction = gamemap::location::NORTH;
 
-	if(i+1 != route_.steps.end()) {
+	if(i+1 != route.steps.end()) {
 		for(int n = 0; n != 6; ++n) {
 			direction = gamemap::location::DIRECTION(n);
 			if(i->get_direction(direction) == *(i+1)) {
@@ -1302,9 +1313,9 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 
 	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
 
-	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
+	if(show_time && route.move_left > 0 && route.move_left < 10) {
 		static std::string str(1,'x');
-		str[0] = '0' + route_.move_left + 1;
+		str[0] = '0' + route.move_left + 1;
 		const SDL_Rect& text_area =
 		    font::draw_text(NULL,screen_area(),18,font::BUTTON_COLOUR,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
@@ -1554,9 +1565,12 @@ void display::set_paths(const paths* paths_list)
 
 void display::invalidate_route()
 {
-	for(std::vector<gamemap::location>::const_iterator i = route_.steps.begin();
-	    i != route_.steps.end(); ++i) {
-		invalidate(*i);
+	for(std::vector<paths::route>::const_iterator r = routes_.begin();
+	    r != routes_.end(); ++r) {
+		for(std::vector<gamemap::location>::const_iterator i = r->steps.begin();
+		    i != r->steps.end(); ++i) {
+			invalidate(*i);
+		}
 	}
 }
 
@@ -1564,10 +1578,18 @@ void display::set_route(const paths::route* route)
 {
 	invalidate_route();
 
-	if(route != NULL)
-		route_ = *route;
-	else
-		route_.steps.clear();
+	routes_.clear();
+	if(route != NULL) {
+		routes_.push_back(*route);
+		invalidate_route();
+	}
+}
+
+void display::set_routes(const std::vector<paths::route>& routes)
+{
+	invalidate_route();
+
+	routes_ = routes;
 
 	invalidate_route();
 }

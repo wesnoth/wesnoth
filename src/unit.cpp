@@ -540,14 +540,27 @@ bool unit::is_guardian() const
 	return guardian_;
 }
 
-const gamemap::location& unit::get_goto() const
+const std::vector<gamemap::location>& unit::get_gotos() const
 {
-	return goto_;
+	return gotos_;
 }
 
 void unit::set_goto(const gamemap::location& new_goto)
 {
-	goto_ = new_goto;
+	gotos_.clear();
+	add_goto(new_goto);
+}
+
+void unit::add_goto(const gamemap::location& new_goto)
+{
+	if(new_goto.valid())
+		gotos_.push_back(new_goto);
+}
+
+void unit::done_goto()
+{
+	if(gotos_.empty() == false)
+		gotos_.erase(gotos_.begin());
 }
 
 void unit::add_modification(const std::string& type,

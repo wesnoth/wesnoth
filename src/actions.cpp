@@ -283,6 +283,8 @@ battle_stats evaluate_battle_stats(
 		 * combat_modifier(state,units,a->first,a->second.type().alignment()))
 			 * (charge ? 2 : 1) * (backstab ? 2 : 1);
 
+	std::cerr << "damage defender takes: " << double(d->second.damage_against(attack)) << "*" <<combat_modifier(state,units,a->first,a->second.type().alignment()) << "*" << (charge ? 2:1) << " = " << res.damage_defender_takes << "\n";
+
 	if(under_leadership(units,attacker))
 		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
 
@@ -847,8 +849,8 @@ size_t move_unit(display* disp, const gamemap& map,
 
 	//if we can't get all the way there and have to set a go-to
 	if(steps.size() != route.size()) {
-		ui->second.set_goto(route.back());
-		u.set_goto(route.back());
+		ui->second.add_goto(route.back());
+		u.add_goto(route.back());
 	}
 
 	if(steps.size() < 2) {
@@ -890,7 +892,7 @@ size_t move_unit(display* disp, const gamemap& map,
 	}
 
 	if(disp != NULL) {
-		disp->set_route(NULL);
+		disp->set_routes(std::vector<paths::route>());
 		disp->draw();
 	}
 
@@ -975,7 +977,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 
 	//units with goto commands that have already done their gotos this turn
 	//(i.e. don't have full movement left) should be red
-	if(u.movement_left() < u.total_movement() && u.get_goto().valid()) {
+	if(u.movement_left() < u.total_movement() && !u.get_gotos().empty()) {
 		return false;
 	}
 
