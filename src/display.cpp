@@ -114,10 +114,10 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	std::fill(pixels,pixels+length,0);
 }
 
-void clear_surfaces(std::map<std::string,SDL_Surface*>& surfaces)
+template<typename Map>
+void clear_surfaces(Map& surfaces)
 {
-	for(std::map<std::string,SDL_Surface*>::iterator i = surfaces.begin();
-					i != surfaces.end(); ++i) {
+	for(typename Map::iterator i = surfaces.begin(); i != surfaces.end(); ++i) {
 		SDL_FreeSurface(i->second);
 	}
 
@@ -826,6 +826,13 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
                         double highlight_ratio, Pixel blend_with)
 
 {
+	if(map_.on_board(gamemap::location(x,y))) {
+		SDL_Surface* const tile = getTerrain(map_[x][y],UNSCALED,x,y);
+		SDL_Surface* minitile = scale_surface(tile,4,4);
+
+		SDL_FreeSurface(minitile);
+	}
+
 	if(updatesLocked_)
 		return;
 
@@ -1611,33 +1618,47 @@ SDL_Surface* display::getImageTinted(const std::string& filename, TINT tint)
 SDL_Surface* display::getMinimap(int w, int h)
 {
 	if(minimap_ == NULL) {
+		const int scale = 4;
 		SDL_Surface* const surface = screen_.getSurface();
-		minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,map_.x(),map_.y(),
-					                     surface->format->BitsPerPixel,
-										 surface->format->Rmask,
-										 surface->format->Gmask,
-										 surface->format->Bmask,
-										 surface->format->Amask);
+
+		minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,
+		                                map_.x()*scale,map_.y()*scale,
+		                                surface->format->BitsPerPixel,
+		                                surface->format->Rmask,
+		                                surface->format->Gmask,
+		                                surface->format->Bmask,
+		                                surface->format->Amask);
 		if(minimap_ == NULL)
 			return NULL;
 
-		const int xpad = is_odd(minimap_->w);
+		typedef std::map<gamemap::TERRAIN,SDL_Surface*> cache_map;
+		cache_map cache;
 
-		surface_lock lock(minimap_);
-		short* data = lock.pixels();
+		SDL_Rect minirect = {0,0,scale,scale};
 		for(int y = 0; y != map_.y(); ++y) {
 			for(int x = 0; x != map_.x(); ++x) {
+				if(map_.on_board(gamemap::location(x,y))) {
+					const gamemap::TERRAIN terrain = map_[x][y];
+					cache_map::iterator i = cache.find(terrain);
 
-				if(shrouded(x,y))
-					*data = 0;
-				else
-					*data = map_.get_terrain_info(map_[x][y]).get_rgb().
-					                                 format(surface->format);
-				++data;
+					if(i == cache.end()) {
+						SDL_Surface* const tile = getTerrain(map_[x][y],
+						                                     UNSCALED,x,y);
+						SDL_Surface* const minitile = scale_surface(tile,scale,
+						                                                 scale);
+						i = cache.insert(
+						      cache_map::value_type(terrain,minitile)).first;
+					}
+
+					assert(i != cache.end());
+					
+					SDL_Rect maprect = {x*scale,y*scale,0,0};
+					SDL_BlitSurface(i->second, &minirect, minimap_, &maprect);
+				}
 			}
-
-			data += xpad;
 		}
+
+		clear_surfaces(cache);
 	}
 
 	if(minimap_->w != w || minimap_->h != h) {
