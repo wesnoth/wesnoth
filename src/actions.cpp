@@ -406,6 +406,8 @@ battle_stats evaluate_battle_stats(
 
 	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
 
+	percent += tod_modifier;
+
 	if(include_strings && tod_modifier != 0) {
 		std::stringstream str_mod;
 		const time_of_day& tod = timeofday_at(state,units,a->first);
