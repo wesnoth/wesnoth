@@ -42,7 +42,7 @@ foreach my $file (@ARGV) {
 
       $translatable = ($1 ne '');
       $_ = $2;
-      if (m/(.*)\r/) { $_ = $1; }
+      if (m/(.*)\r/) { $_ = "$1\n"; }
       $str = $_;
       $line = $.;
 
@@ -62,7 +62,7 @@ foreach my $file (@ARGV) {
 
     } elsif (defined $str) {
       # part of multi-line
-      if (m/(.*)\r/) { $_ = $1; }
+      if (m/(.*)\r/) { $_ = "$1\n"; }
       $str .= $_;
 
     } elsif (m/(\S+)\s*=\s*(.*?)\s*$/) {
