@@ -806,6 +806,8 @@ msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
+"Olen täällä oppiakseni kuinka taistelen. Kokeneena vanhempana maagina "
+"osaat varmaankin neuvoa sotimisen taitoja minulle."
 
 #: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
@@ -814,6 +816,10 @@ msgid ""
 "select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
+"Ennen kuin ryntäät taisteluun, sinun täytyy värvätä yksiköitä. Värvätäksesi, "
+"paina hiiren oikeanpuoleista nappia linnaruudussa mihin haluat värvätä. "
+"Sitten valitse 'Värvää', ja paina 'Hyväksy'. Voit vain värvätä yksiköitä "
+"linnaruutuihin, jotka ovat yhteydessä johtajasi ruutuun."
 
 #: data/scenarios/tutorial/tutorial1.cfg:73
 #, fuzzy
@@ -831,12 +837,11 @@ msgstr "Hyvä! Värväsit juuri Elvish Fighter -yksikön."
 #: data/scenarios/tutorial/tutorial1.cfg:182
 #: data/scenarios/tutorial/tutorial1.cfg:206
 msgid "What do I do next?"
-msgstr ""
+msgstr "Mitä minun pitäisi tehdä seuraavaksi?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:83
-#, fuzzy
 msgid "How do I recruit units?"
-msgstr "Värvää yksikkö"
+msgstr "Kuinka värvään yksiköitä?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:83
 msgid ""
@@ -846,6 +851,11 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
+"Värvätäksesi yksikön, paina hiiren oikeanpuoleista nappia linnaruudussa "
+"mihin haluat värvätä. Sitten valitse 'Värvää', tai voit myös viedä hiiren "
+"osoittimen linnaruudun päälle, ja painaa 'Ctrl-R'. Seuraavaksi valitse "
+"värvättävän yksikön tyyppi, ja paina 'Hyväksy'. Painamalla 'Ctrl-Shift-R' "
+"toistat viimeeksi tehdyn värväyksen."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid ""
@@ -857,14 +867,21 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
+"Johtaja on yksikkö joka voi värvätä. Tämä tarkoittaa sitä, että kun johtaja "
+"on linnakkeessa, hän voi värvätä yksiköitä ympäröiviin linnaruutuihin. "
+"Johtajat ovat yleensä voimakkaita yksiköitä joita on kullakin puolella vain "
+"yksi. Yleensä johtaja on ensimmäinen yksikkö jota kontrolloit, ja se yleensä "
+"aloittaa pelin linnakkeessa. Johtajan valitseminen onnistuu nopeasti "
+"painamalla 'l'. Jos johtajasi kuolee, häviät. Useimmat skenaariot voit voittaa "
+"voittamalla vihollisjohtajat."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid "What's a leader?"
-msgstr ""
+msgstr "Mikä tai kuka on johtaja?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
 msgid "How should I choose what kind of units to recruit?"
-msgstr ""
+msgstr "Miten valitsen millaisia yksiköitä värvään?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
 msgid ""
@@ -872,10 +889,11 @@ msgid ""
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Sinun kannattaa katsoa yksiköiden kyvyt ja maksut huolella."
 
 #: data/scenarios/tutorial/tutorial1.cfg:86
 msgid "What happens when I recruit a unit?"
-msgstr ""
+msgstr "Mitä tapahtuu kun värvään yksikön?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:86
 msgid ""
@@ -892,9 +910,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:94
-#, fuzzy
 msgid "End your turn"
-msgstr "On sinun vuorosi"
+msgstr "Lopeta vuorosi"
 
 #: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
@@ -902,7 +919,7 @@ msgstr "Olet onnistuneesti lopettanut vuorosi."
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
 msgid "How do I end my turn?"
-msgstr ""
+msgstr "Kuinka lopetan vuoroni?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
 msgid ""
@@ -913,7 +930,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:104
 msgid "What happens when I end my turn?"
-msgstr ""
+msgstr "Mitä tapahtuu kun lopetan vuoroni?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:104
 msgid ""
@@ -933,9 +950,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:112
-#, fuzzy
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Siirrä taistelijasi kylään."
+msgstr "Siirrä taistelijasi Merlen vierelle."
 
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
@@ -946,7 +962,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Kuinka pitkälle voi taistelija liikkua?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid ""
@@ -977,7 +993,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Kuinka erotan ystävät vihollisista?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid ""
@@ -998,9 +1014,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:148
-#, fuzzy
 msgid "Attack Merle"
-msgstr "Hyökkääjä"
+msgstr "Hyökkää Merleä kohti"
 
 #: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
@@ -1008,7 +1023,7 @@ msgstr "Olet onnistuneesti hyökännyt Merleä vastaan."
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Voiko Merle kostaa iskuni?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid ""
@@ -1040,7 +1055,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Kuinka tiedän miten voimakkaat yksikköni hyökkäykset ovat?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid ""
@@ -1051,7 +1066,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "Osuuko taistelija joka kerta hyökätessään?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
@@ -1066,7 +1081,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid "What's experience?"
-msgstr ""
+msgstr "Mitä on kokemuspisteet?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid ""
@@ -1079,7 +1094,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Mitä tapahtuu kun yksikkö kehittyy?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid ""
@@ -1096,7 +1111,6 @@ msgid "Move your fighter onto a village."
 msgstr "Siirrä taistelijasi kylään."
 
 #: data/scenarios/tutorial/tutorial1.cfg:193
-#, fuzzy
 msgid "Move your fighter onto a village"
 msgstr "Siirrä taistelijasi kylään."
 
@@ -1106,7 +1120,7 @@ msgstr "Kylät parantavat vierailevia yksiköitä."
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid "What happens when a unit moves onto a village?"
-msgstr ""
+msgstr "Mitä tapahtuu kun yksikkö siirtyy kylään?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid ""
@@ -1122,7 +1136,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Kuinka parannan jos yhtäkään kylää ei ole lähellä?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid ""
@@ -1141,9 +1155,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:217
-#, fuzzy
 msgid "Defeat Merle"
-msgstr "Tappio"
+msgstr "Voita Merle"
 
 #: data/scenarios/tutorial/tutorial1.cfg:232
 msgid ""
@@ -1179,11 +1192,11 @@ msgstr ""
 #: data/scenarios/tutorial/tutorial1.cfg:267
 #: data/scenarios/tutorial/tutorial2.cfg:252
 msgid "Hooray!"
-msgstr ""
+msgstr "Hurraa!"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid "How do I know how to complete a scenario? Will you always tell me?"
-msgstr ""
+msgstr "Kuinka tiedän miten voitan skenaarion? Kerrotko sen aina?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid ""
@@ -1197,7 +1210,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Mitä tapahtuu kun voitan skenaarion?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid ""
@@ -1290,9 +1303,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:90
-#, fuzzy
 msgid "What happens when I recall a unit?"
-msgstr "kultapalaa voidaksesi kutsua yksikön takaisin"
+msgstr "Mitä tapahtuu kun kutsun yksikön takaisin?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid "How should I decide which units to recall?"
@@ -1347,7 +1359,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Kuinka paljon kultaa yksikköni maksavat?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:119
 msgid ""
@@ -1363,7 +1375,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Kuinka saan kultaa?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:120
 msgid ""
@@ -1398,7 +1410,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Kuinka saan selville mikä vuorokaudenaika on nyt?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:134
 msgid ""
@@ -1557,11 +1569,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:208
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Millaisia esineitä saatan nähdä?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Kuinka kauan nämä esineet kestävät?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:209
 msgid ""
@@ -1588,7 +1600,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Kuinkan pelaan kampanjan?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:254
 msgid ""
@@ -1599,7 +1611,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Kuinka pelaan monenpelaajan pelin?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid ""
@@ -1668,36 +1680,31 @@ msgstr "Lopeta vuoro"
 
 #: data/themes/default.cfg:126 data/themes/default.cfg:462
 msgid "hp"
-msgstr ""
+msgstr "osumapisteet (HP)"
 
 #: data/themes/default.cfg:133 data/themes/default.cfg:469
 msgid "xp"
-msgstr ""
+msgstr "kokemuspisteet (XP)"
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
-#, fuzzy
 msgid "gold"
-msgstr "kylmä"
+msgstr "kultaa"
 
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
-#, fuzzy
 msgid "villages"
-msgstr "Kyliä"
+msgstr "kyliä"
 
 #: data/themes/default.cfg:158 data/themes/default.cfg:494
-#, fuzzy
 msgid "units"
-msgstr "Yksiköt"
+msgstr "yksiköt"
 
 #: data/themes/default.cfg:166 data/themes/default.cfg:502
-#, fuzzy
 msgid "upkeep"
-msgstr "Ylläpito"
+msgstr "ylläpito"
 
 #: data/themes/default.cfg:174 data/themes/default.cfg:510
-#, fuzzy
 msgid "income"
-msgstr "Tulot"
+msgstr "tulot"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
@@ -2523,7 +2530,7 @@ msgstr "energiaimu"
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
 #: data/units/Lich.cfg:32
 msgid "magic"
-msgstr ""
+msgstr "taikuus"
 
 #: data/units/Ancient_Lich.cfg:34 data/units/Arch_Mage.cfg:42
 #: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:79
@@ -2554,7 +2561,7 @@ msgstr ""
 #: data/units/Ancient_Wose.cfg:6 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
-msgstr ""
+msgstr "väijytys,regenerointi"
 
 #: data/units/Ancient_Wose.cfg:17 data/units/Elder_Wose.cfg:18
 #: data/units/Wose.cfg:19
@@ -2644,7 +2651,7 @@ msgstr "tulipallo"
 #: data/units/Red_Mage.cfg:109 data/units/Silver_Mage.cfg:42
 #: data/units/Silver_Mage.cfg:129
 msgid "fire"
-msgstr ""
+msgstr "tuli"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -2787,7 +2794,7 @@ msgstr ""
 
 #: data/units/Battle_Princess.cfg:17 data/units/Battle_Princess.cfg:55
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "johtajuus,kahakointi"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:57
 msgid ""
@@ -3122,9 +3129,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Dark_Queen.cfg:20
-#, fuzzy
 msgid "scepter"
-msgstr "keihäs"
+msgstr ""
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4056,7 +4062,7 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
 msgid "halberd"
-msgstr ""
+msgstr "hilpari"
 
 #: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
 #: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
@@ -4197,7 +4203,7 @@ msgstr ""
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 msgid "illuminates,cures"
-msgstr "valaistus,parannus"
+msgstr "valaistus,lääkintä"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -4301,7 +4307,7 @@ msgstr ""
 
 #: data/units/Nightgaunt.cfg:18 data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr ""
+msgstr "yöväijyntä"
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
@@ -4543,7 +4549,7 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:17
 msgid "skirmisher,leadership"
-msgstr ""
+msgstr "kahakointi,johtajuus"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid ""
@@ -4579,7 +4585,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
 msgid "pitchfork"
-msgstr ""
+msgstr "heinähanko"
 
 #: data/units/Pikeman.cfg:3
 msgid "Pikeman"
@@ -4812,7 +4818,7 @@ msgstr ""
 
 #: data/units/Soul_Shooter.cfg:24
 msgid "bone"
-msgstr ""
+msgstr "luut"
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
@@ -4983,7 +4989,7 @@ msgstr ""
 
 #: data/units/Vampire_Lady.cfg:19
 msgid "blood kiss"
-msgstr ""
+msgstr "verisuudelma"
 
 #: data/units/Walking_Corpse.cfg:3
 msgid "Walking Corpse"
@@ -5002,7 +5008,7 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "kahakointi,regenerointi"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -5138,9 +5144,8 @@ msgid "+Music"
 msgstr ""
 
 #: src/about.cpp:102
-#, fuzzy
 msgid "+Scenario Designers"
-msgstr "Skenaarion tavoitteet"
+msgstr ""
 
 #: src/about.cpp:111
 msgid "+Packagers"
@@ -5262,7 +5267,7 @@ msgstr "hyökkääjä on haavoittuva"
 
 #: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
 msgid "Doubled"
-msgstr ""
+msgstr "Kaksinkertaistettu"
 
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
@@ -5277,9 +5282,8 @@ msgid "defender vulnerability vs"
 msgstr "puolustaja on haavoittuva"
 
 #: src/actions.cpp:496
-#, fuzzy
 msgid "Halved"
-msgstr "Luola"
+msgstr "Puolitettu"
 
 #: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
 #: src/reports.cpp:115
@@ -5332,13 +5336,12 @@ msgid "No objectives available"
 msgstr "Ei tavoitteita"
 
 #: src/dialogs.cpp:174
-#, fuzzy
 msgid "Save"
-msgstr "Luola"
+msgstr "Tallenna"
 
 #: src/dialogs.cpp:176
 msgid "Overwrite?"
-msgstr ""
+msgstr "Kirjoita päälle?"
 
 #: src/dialogs.cpp:177
 msgid "Save already exists. Do you want to overwrite it ?"
@@ -5397,8 +5400,8 @@ msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"Yhtäkään tallennettua peliä ei löytynyt.(Peli tallennetaan automaattisesti "
-"kun olet suorittanut skenaarion loppuun)"
+"Yhtäkään tallennettua peliä ei löytynyt.\n
+"(Peli tallennetaan automaattisesti kun olet suorittanut skenaarion loppuun)"
 
 #: src/dialogs.cpp:418
 msgid "Delete Save"
@@ -5521,16 +5524,15 @@ msgstr "Tiedosto jonka yritit avata on korruptoitunut"
 
 #: src/game.cpp:984
 msgid " ,Get More Campaigns..."
-msgstr ""
+msgstr " ,Hae lisää kampanjoita..."
 
 #: src/game.cpp:990
 msgid "Choose the campaign you want to play:"
 msgstr "Valitse pelattava kampanja:"
 
 #: src/game.cpp:1000
-#, fuzzy
 msgid "Connect to Server"
-msgstr "Jatka liikettä"
+msgstr "Yhdistä palvelimeen"
 
 #: src/game.cpp:1001
 msgid "You will now connect to a campaign server to download campaigns."
@@ -5538,10 +5540,9 @@ msgstr ""
 
 #: src/game.cpp:1002
 msgid "Server: "
-msgstr ""
+msgstr "Palvelin: "
 
 #: src/game.cpp:1014
-#, fuzzy
 msgid "Could not connect to host."
 msgstr "Yhteyttä isäntäkoneeseen ei saatu"
 
@@ -5549,54 +5550,51 @@ msgstr "Yhteyttä isäntäkoneeseen ei saatu"
 #: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
 #: src/playturn.cpp:1396 src/playturn.cpp:1410
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: src/game.cpp:1022
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Odotetaan palvelimen vastausta"
 
 #: src/game.cpp:1035
 msgid "Error communicating with the server."
 msgstr ""
 
 #: src/game.cpp:1046
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
-msgstr "Yhtäkään kampanjaa ei ole saatavilla"
+msgstr "Yhtäkään kampanjaa ei ole haettavissa tältä palvelimelta."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Choose the campaign to download."
-msgstr "Valitse avattava peli"
+msgstr "Valitse haettava kampanja."
 
 #: src/game.cpp:1050
-#, fuzzy
 msgid "Get Campaign"
-msgstr "Kampanja"
+msgstr "Hae kampanja"
 
 #: src/game.cpp:1059
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Haetaan kampanjaa..."
 
 #: src/game.cpp:1071
-#, fuzzy
 msgid "Campaign Installed"
-msgstr "Kampanja"
+msgstr "Kampanja on asennettu"
 
 #: src/game.cpp:1071
 msgid ""
 "The campaign has been installed. You will have to restart Wesnoth before you "
 "can play it."
 msgstr ""
+"Kampanja on asennettu. Sinun täytyy käynnistää Wesnoth uudelleen ennenkuin "
+"voit pelata sitä."
 
 #: src/game.cpp:1075
 msgid "Network communication error."
 msgstr ""
 
 #: src/game.cpp:1078
-#, fuzzy
 msgid "Remote host disconnected."
-msgstr "Valitse isäntäkone johon yhdistetään"
+msgstr "Isäntäkone katkaisi yhteyden."
 
 #: src/game.cpp:1081
 msgid ""
@@ -5669,7 +5667,7 @@ msgstr "Vaadittu kokemus (XP)"
 
 #: src/help.cpp:638 src/reports.cpp:233
 msgid "attacks"
-msgstr "hyökkäystä"
+msgstr "hyökkäykset"
 
 #: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1946
 msgid "Name"
@@ -5952,9 +5950,8 @@ msgid "Do you really want to quit?"
 msgstr "Haluatko todellakin lopettaa?"
 
 #: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-#, fuzzy
 msgid "Quit?"
-msgstr "Poistu"
+msgstr "Lopeta?"
 
 #: src/intro.cpp:87
 msgid "Next"
@@ -6287,9 +6284,8 @@ msgid "Player/Type"
 msgstr "Pelaaja/Tyyppi"
 
 #: src/multiplayer_connect.cpp:366 src/multiplayer_connect.cpp:369
-#, fuzzy
 msgid "Faction"
-msgstr "Toiminnot"
+msgstr "Puolue"
 
 #: src/multiplayer_connect.cpp:376 src/multiplayer_connect.cpp:379
 msgid "Color"
@@ -6341,7 +6337,7 @@ msgstr "Jäljellä oleva kulta"
 
 #: src/playlevel.cpp:762
 msgid "Early finish bonus"
-msgstr "Aikaisen lopetuksen boonus"
+msgstr "Aikaisen lopetuksen bonus"
 
 #: src/playlevel.cpp:764
 msgid "per turn"
@@ -6353,7 +6349,7 @@ msgstr "Ajoissa lopetus (vuoroja)"
 
 #: src/playlevel.cpp:767
 msgid "Bonus"
-msgstr "Boonus"
+msgstr "Bonus"
 
 #: src/playlevel.cpp:774
 #, no-c-format
@@ -6436,11 +6432,11 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
+"Tallenteen nimessä ei saa olla puolipistettä, kautta- tai kenoviivaa."
 
 #: src/playturn.cpp:1407
-#, fuzzy
 msgid "Saved"
-msgstr "Tallenna nimellä"
+msgstr "Tallennettu"
 
 #: src/playturn.cpp:1407
 msgid "The game has been saved"
@@ -6507,9 +6503,8 @@ msgstr ""
 "jotka voisit kutsua palvelukseen"
 
 #: src/playturn.cpp:1776
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "kultapalaa voidaksesi kutsua yksikön takaisin"
+msgstr "Sinulla täytyy olla vähintään $cost kultapalaa voidaksesi kutsua yksikön takaisin"
 
 #: src/playturn.cpp:1799
 msgid "Dismiss Unit"
@@ -6561,11 +6556,11 @@ msgstr "Otettu vahinko"
 
 #: src/playturn.cpp:2074
 msgid "Damage Inflicted (EV)"
-msgstr "Tehty vahinko (EV)"
+msgstr "Tehty vahinko (Arvio)"
 
 #: src/playturn.cpp:2081
 msgid "Damage Taken (EV)"
-msgstr "Otettu vahinko (EV)"
+msgstr "Otettu vahinko (Arvio)"
 
 #: src/playturn.cpp:2123
 msgid "Search"
@@ -6613,7 +6608,7 @@ msgstr "Keskeytä peli"
 
 #: src/playturn.cpp:2464
 msgid "Replace with "
-msgstr "Korvaa "
+msgstr "Korvaa pelaajalla "
 
 #: src/playturn.cpp:2468
 msgid "has left the game. What do you want to do?"
@@ -6676,19 +6671,16 @@ msgid "Chaotic units"
 msgstr "Kaoottiset yksiköt"
 
 #: src/reports.cpp:312
-#, fuzzy
 msgid "Owned village"
-msgstr "Kylä"
+msgstr "Omistamasi kylä"
 
 #: src/reports.cpp:314
-#, fuzzy
 msgid "Enemy village"
-msgstr "Kylä"
+msgstr "Viholliskylä"
 
 #: src/reports.cpp:316
-#, fuzzy
 msgid "Allied village"
-msgstr "Ystävällisiä"
+msgstr "Ystävällinen kylä"
 
 #: src/show_dialog.cpp:930
 msgid "KB"
@@ -6779,19 +6771,16 @@ msgid "strikes"
 msgstr "iskua"
 
 #: src/unit_types.cpp:886
-#, fuzzy
 msgid "chaotic"
-msgstr "Kaoottinen"
+msgstr "kaoottinen"
 
 #: src/unit_types.cpp:886
-#, fuzzy
 msgid "lawful"
-msgstr "Lainkuuliainen"
+msgstr "lainkuuliainen"
 
 #: src/unit_types.cpp:886
-#, fuzzy
 msgid "neutral"
-msgstr "Neutraali"
+msgstr "neutraali"
 
 #: src/widgets/file_chooser.cpp:30
 msgid "Delete File"
