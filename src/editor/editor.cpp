@@ -1068,7 +1068,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 	}
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_, NULL, "", "", gui::MESSAGE, &menu, NULL, "",
-									 NULL, NULL, NULL, xloc, yloc, &style);
+									 NULL, 256, NULL, NULL, xloc, yloc, &style);
 	if(res < 0 || (unsigned)res >= items.size())
 		return;
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
