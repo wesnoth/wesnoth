@@ -40,7 +40,7 @@ manager::manager()
 	       Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,1024);
 	if(res >= 0) {
 		mix_ok = true;
-		Mix_AllocateChannels(8);
+		Mix_AllocateChannels(16);
 	} else {
 		mix_ok = false;
 		std::cerr << "Could not initialize audio: " << SDL_GetError() << "\n";

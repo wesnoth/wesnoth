@@ -38,6 +38,8 @@ public:
 	void set_description(config* desc);
 	config* description();
 
+	void add_players(const game& other_game);
+
 private:
 	static int id_num;
 	int id_;

@@ -132,6 +132,8 @@ public:
 	const std::string& image_fighting(attack_type::RANGE range) const;
 	const std::string& image_defensive(attack_type::RANGE range) const;
 	const std::string& unit_description() const;
+	const std::string& get_hit_sound() const;
+	const std::string& die_sound() const;
 	int hitpoints() const;
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const;

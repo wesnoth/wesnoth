@@ -19,6 +19,10 @@
 #include "unit_types.hpp"
 #include "video.hpp"
 
+struct network_game_manager {
+	~network_game_manager();
+};
+
 void play_multiplayer_client(display& disp, game_data& units_data,
                              config& cfg, game_state& state);
 

@@ -132,3 +132,9 @@ config* game::description()
 {
 	return description_;
 }
+
+void game::add_players(const game& other_game)
+{
+	players_.insert(players_.end(),
+	                other_game.players_.begin(),other_game.players_.end());
+}

@@ -217,8 +217,44 @@ int main()
 					}
 
 					if(data.child("start_game")) {
-						std::cerr << "!! start_game: " << data.write() << "\n";
 						g->start_game();
+					} else if(data.child("leave_game")) {
+						const bool needed = g->is_needed(sock);
+						g->remove_player(sock);
+						lobby_players.add_player(sock);
+
+						if(needed) {
+
+							//tell all other players the game is over,
+							//because a needed player has left
+							config cfg;
+							cfg.add_child("leave_game");
+							g->send_data(cfg);
+
+							//delete the game's description
+							config* const gamelist =
+							            initial_response.child("gamelist");
+							assert(gamelist != NULL);
+							std::vector<config*>& vg =
+							                gamelist->children["game"];
+							std::vector<config*>::iterator desc =
+							    std::find(vg.begin(),vg.end(),g->description());
+							if(desc != vg.end()) {
+								delete *desc;
+								vg.erase(desc);
+							}
+
+							//put the players back in the lobby and send
+							//them the game list and user list again
+							g->send_data(initial_response);
+							lobby_players.add_players(*g);
+							games.erase(g);
+						}
+
+						//send the player who has quit the new game list
+						network::send_data(initial_response,sock);
+
+						continue;
 					} else if(data["side_secured"].empty() == false) {
 						continue;
 					} else if(data["failed"].empty() == false) {

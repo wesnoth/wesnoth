@@ -41,10 +41,12 @@ manager::manager() : free_(true)
 
 manager::~manager()
 {
-	disconnect();
-	SDLNet_FreeSocketSet(socket_set);
-	socket_set = 0;
-	SDLNet_Quit();
+	if(free_) {
+		disconnect();
+		SDLNet_FreeSocketSet(socket_set);
+		socket_set = 0;
+		SDLNet_Quit();
+	}
 }
 
 server_manager::server_manager(int port, bool create_server)

@@ -456,6 +456,16 @@ const std::string& unit_type::unit_description() const
 		return desc;
 }
 
+const std::string& unit_type::get_hit_sound() const
+{
+	return cfg_["get_hit_sound"];
+}
+
+const std::string& unit_type::die_sound() const
+{
+	return cfg_["die_sound"];
+}
+
 int unit_type::hitpoints() const
 {
 	return atoi(cfg_["hitpoints"].c_str());

@@ -212,6 +212,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						for(;;) {
 							network::connection res =
 							           network::receive_data(cfg);
+							if(res && cfg.child("leave_game")) {
+								throw network::error("");
+							}
+
 							if(res && cfg.children["turn"].empty() == false) {
 								break;
 							}
@@ -352,6 +356,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			return QUIT;
 		}
 		catch(network::error& e) {
+			if(e.socket) {
+				e.disconnect();
+			}
+
 			std::string label = string_table["multiplayer_save_name"];
 			const int res = gui::show_dialog(gui,NULL,"",
 			                 string_table["save_game_error"],

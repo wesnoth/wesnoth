@@ -1739,6 +1739,10 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	const std::vector<attack_type::sfx>& sounds = attack.sound_effects();
 	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
 
+	const std::string& hit_sound = def->second.type().get_hit_sound();
+	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
+	const int play_hit_sound_at = 0;
+
 	const bool hits = damage > 0;
 	const int begin_at = attack.get_first_frame();
 	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
@@ -1776,6 +1780,11 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			}
 
 			++sfx_it;
+		}
+
+		if(hits && !played_hit_sound && i >= play_hit_sound_at) {
+			sound::play_sound(hit_sound);
+			played_hit_sound = true;
 		}
 
 		const std::string* unit_image = attack.get_frame(i);
@@ -1869,6 +1878,14 @@ void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
 	if(update_locked() || shrouded(loc.x,loc.y))
 		return;
 
+	const unit_map::const_iterator u = units_.find(loc);
+	assert(u != units_.end());
+
+	const std::string& die_sound = u->second.type().die_sound();
+	if(die_sound != "" && die_sound != "null") {
+		sound::play_sound(die_sound);
+	}
+
 	const int frame_time = 30;
 	int ticks = SDL_GetTicks();
 
@@ -1953,6 +1970,10 @@ bool display::unit_attack(const gamemap::location& a,
 	const std::vector<attack_type::sfx>& sounds = attack.sound_effects();
 	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
 
+	const std::string& hit_sound = def->second.type().get_hit_sound();
+	bool played_hit_sound = (hit_sound == "" || hit_sound == "null");
+	const int play_hit_sound_at = 0;
+
 	const int time_resolution = 20;
 	const int acceleration = turbo() ? 5 : 1;
 
@@ -1992,6 +2013,11 @@ bool display::unit_attack(const gamemap::location& a,
 			}
 
 			++sfx_it;
+		}
+
+		if(hits && !played_hit_sound && i >= play_hit_sound_at) {
+			sound::play_sound(hit_sound);
+			played_hit_sound = true;
 		}
 
 		for(int j = 0; j != 6; ++j) {

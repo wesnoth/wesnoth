@@ -99,6 +99,18 @@ void check_response(network::connection res, const config& data)
 	}
 }
 
+void receive_gamelist(config& data)
+{
+	for(;;) {
+		const network::connection res = network::receive_data(data,0,3000);
+		check_response(res,data);
+
+		if(data.child("gamelist")) {
+			break;
+		}
+	}
+}
+
 class wait_for_start : public gui::dialog_action
 {
 public:
@@ -167,6 +179,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		            + "' while you are using version'" + game_config::version);
 	}
 
+	bool logged_in = false;
+
 	//if we got a direction to login
 	if(data.child("mustlogin")) {
 
@@ -196,133 +210,145 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 			error = data.child("error");
 		} while(error != NULL);
+
+		logged_in = true;
 	}
 
-	//if we got a gamelist back - otherwise we have
-	//got a description of the game back
-	const config* const gamelist = data.child("gamelist");
-	if(gamelist != NULL) {
-		config game_data = data;
-		const lobby::RESULT res = lobby::enter(disp,game_data);
-		switch(res) {
-			case lobby::QUIT: {
-				return;
-			}
-			case lobby::CREATE: {
-				std::cerr << "playing multiplayer...\n";
-				play_multiplayer(disp,units_data,cfg,state,false);
-				return;
-			}
-			case lobby::JOIN: {
-				break;
-			}
+	for(bool first_time = true; logged_in && network::nconnections() > 0;
+	    first_time = false) {
+
+		if(!first_time) {
+			receive_gamelist(data);
 		}
 
-		for(;;) {
-			data_res = network::receive_data(sides,0,5000);
-			check_response(data_res,data);
-
-			//if we have got valid side data
-			if(sides.child("gamelist") == NULL) {
-				break;
+		//if we got a gamelist back - otherwise we have
+		//got a description of the game back
+		const config* const gamelist = data.child("gamelist");
+		if(gamelist != NULL) {
+			config game_data = data;
+			const lobby::RESULT res = lobby::enter(disp,game_data);
+			switch(res) {
+				case lobby::QUIT: {
+					return;
+				}
+				case lobby::CREATE: {
+					play_multiplayer(disp,units_data,cfg,state,false);
+					continue;
+				}
+				case lobby::JOIN: {
+					break;
+				}
 			}
+    
+			for(;;) {
+				data_res = network::receive_data(sides,0,5000);
+				check_response(data_res,data);
+    
+				//if we have got valid side data
+				if(sides.child("gamelist") == NULL) {
+					break;
+				}
+			}
+		} else {
+			sides = data;
 		}
-	} else {
-		sides = data;
-	}
 
-	std::map<int,int> choice_map;
-	std::vector<std::string> choices;
-	choices.push_back(string_table["observer"]);
-
-	std::vector<config*>& sides_list = sides.children["side"];
-	for(std::vector<config*>::iterator s = sides_list.begin();
-	    s != sides_list.end(); ++s) {
-		if((*s)->values["controller"] == "network" &&
-		   (*s)->values["taken"] != "yes") {
-			choice_map[choices.size()] = 1 + s - sides_list.begin();
-			choices.push_back((*s)->values["name"] + " - " +
-			                  (*s)->values["type"]);
-		}
-	}
-
-	const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
-	                                    gui::OK_CANCEL,&choices);
-	if(choice < 0) {
-		return;
-	}
-
-	const int team_num = choice_map[choice];
-	const bool observer = choice == 0;
-
-	//send our choice of team to the server
-	if(!observer) {
-		config response;
-		std::stringstream stream;
-		stream << team_num;
-		response["side"] = stream.str();
-		response["description"] = preferences::login();
-		network::send_data(response);
-	}
-
-	wait_for_start waiter(sides);
-	const int dialog_res = gui::show_dialog(disp,NULL,"",
-	                        "Waiting for game to start...",
-	                        gui::CANCEL_ONLY,NULL,NULL,"",NULL,&waiter);
-	if(dialog_res != wait_for_start::START_GAME) {
-		return;
-	}
-
-	if(!observer && !waiter.got_side) {
-		throw network::error("Choice of team unavailable.");
-	}
-
-	//we want to make the network/human players look right from our
-	//perspective
-	{
+		//ensure we send a close game message to the server when we are done
+		const network_game_manager game_manager = network_game_manager();
+    
+		std::map<int,int> choice_map;
+		std::vector<std::string> choices;
+		choices.push_back(string_table["observer"]);
+    
 		std::vector<config*>& sides_list = sides.children["side"];
-		for(std::vector<config*>::iterator side = sides_list.begin();
-		    side != sides_list.end(); ++side) {
-			string_map& values = (*side)->values;
-			if(team_num-1 == side - sides_list.begin())
-				values["controller"] = "human";
-			else
-				values["controller"] = "network";
-		}
-	}
-
-	//any replay data is only temporary and should be removed from
-	//the level data in case we want to save the game later
-	config* const replay_data = sides.child("replay");
-	config replay_data_store;
-	if(replay_data != NULL) {
-		replay_data_store = *replay_data;
-		std::cerr << "setting replay\n";
-		recorder = replay(replay_data_store);
-		if(!recorder.empty()) {
-			const int res = gui::show_dialog(disp,NULL,
-	               "", string_table["replay_game_message"],
-				   gui::YES_NO);
-			//if yes, then show the replay, otherwise
-			//skip showing the replay
-			if(res == 0) {
-				recorder.set_skip(0);
-			} else {
-				std::cerr << "skipping...\n";
-				recorder.set_skip(-1);
+		for(std::vector<config*>::iterator s = sides_list.begin();
+		    s != sides_list.end(); ++s) {
+			if((*s)->values["controller"] == "network" &&
+			   (*s)->values["taken"] != "yes") {
+				choice_map[choices.size()] = 1 + s - sides_list.begin();
+				choices.push_back((*s)->values["name"] + " - " +
+				                  (*s)->values["type"]);
 			}
 		}
-
-		sides.children["replay"].clear();
+    
+		const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
+		                                    gui::OK_CANCEL,&choices);
+		if(choice < 0) {
+			continue;
+		}
+    
+		const int team_num = choice_map[choice];
+		const bool observer = choice == 0;
+    
+		//send our choice of team to the server
+		if(!observer) {
+			config response;
+			std::stringstream stream;
+			stream << team_num;
+			response["side"] = stream.str();
+			response["description"] = preferences::login();
+			network::send_data(response);
+		}
+    
+		wait_for_start waiter(sides);
+		const int dialog_res = gui::show_dialog(disp,NULL,"",
+		                        "Waiting for game to start...",
+		                        gui::CANCEL_ONLY,NULL,NULL,"",NULL,&waiter);
+		if(dialog_res != wait_for_start::START_GAME) {
+			continue;
+		}
+    
+		if(!observer && !waiter.got_side) {
+			throw network::error("Choice of team unavailable.");
+		}
+    
+		//we want to make the network/human players look right from our
+		//perspective
+		{
+			std::vector<config*>& sides_list = sides.children["side"];
+			for(std::vector<config*>::iterator side = sides_list.begin();
+			    side != sides_list.end(); ++side) {
+				string_map& values = (*side)->values;
+				if(team_num-1 == side - sides_list.begin())
+					values["controller"] = "human";
+				else
+					values["controller"] = "network";
+			}
+		}
+    
+		//any replay data is only temporary and should be removed from
+		//the level data in case we want to save the game later
+		config* const replay_data = sides.child("replay");
+		config replay_data_store;
+		if(replay_data != NULL) {
+			replay_data_store = *replay_data;
+			std::cerr << "setting replay\n";
+			recorder = replay(replay_data_store);
+			if(!recorder.empty()) {
+				const int res = gui::show_dialog(disp,NULL,
+		               "", string_table["replay_game_message"],
+					   gui::YES_NO);
+				//if yes, then show the replay, otherwise
+				//skip showing the replay
+				if(res == 0) {
+					recorder.set_skip(0);
+				} else {
+					std::cerr << "skipping...\n";
+					recorder.set_skip(-1);
+				}
+			}
+    
+			sides.children["replay"].clear();
+		}
+    
+		std::cerr << "starting game\n";
+    
+		state.starting_pos = sides;
+    
+		recorder.set_save_info(state);
+    
+		std::vector<config*> story;
+		play_level(units_data,cfg,&sides,disp.video(),state,story);
+		recorder.clear();
 	}
-
-	std::cerr << "starting game\n";
-
-	state.starting_pos = sides;
-
-	recorder.set_save_info(state);
-
-	std::vector<config*> story;
-	play_level(units_data,cfg,&sides,disp.video(),state,story);
-	recorder.clear();
 }
