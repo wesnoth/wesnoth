@@ -807,8 +807,8 @@ void campaign_preview_pane::draw()
 		int max_height = area.h-(txt_area.h+txt_area.y-area.y);
 
 		src_rect.x = src_rect.y = 0;
-		src_rect.w = minimum((int)area.w,img->w);
-		src_rect.h = minimum(max_height,img->h);
+		src_rect.w = minimum<int>(area.w,img->w);
+		src_rect.h = minimum<int>(max_height,img->h);
 		dst_rect.x = area.x+(area.w-src_rect.w)/2;
 		dst_rect.y = txt_area.y+(max_height-src_rect.h)/2;
 
