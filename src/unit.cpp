@@ -308,7 +308,8 @@ void unit::new_turn()
 		set_flag("ambush");
 	if(type().has_ability("nightstalk"))
 		set_flag("nightstalk");
-
+	if(type().has_ability("submerge"))
+		set_flag("submerge");
 	if(stone())
 		set_attacked();
 }
@@ -429,12 +430,25 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	bool is_inv = false;
 
 	static const std::string forest_invisible("ambush");
-	if(std::count(terrain.begin(),terrain.end(),static_cast<gamemap::TERRAIN>(gamemap::FOREST)) && has_flag(forest_invisible)) {
+	if ((has_flag(forest_invisible)) &&
+		(std::count(terrain.begin(), terrain.end(), gamemap::FOREST))) {
 		is_inv = true;
 	}
-	static const std::string night_invisible("nightstalk");
-	if((lawful_bonus < 0) && has_flag(night_invisible)) {
-		is_inv = true;
+	else
+	{
+		static const std::string night_invisible("nightstalk");
+		if ((lawful_bonus < 0) && has_flag(night_invisible)) {
+			is_inv = true;
+		}
+		else
+		{
+			static const std::string sea_invisible("submerge");
+			if ((has_flag(sea_invisible)) &&
+				((std::count(terrain.begin(), terrain.end(), gamemap::SEA)) ||
+				(std::count(terrain.begin(), terrain.end(), gamemap::DEEP_SEA)))) {
+					is_inv = true;
+				}
+		}
 	}
 
 	if(is_inv){
@@ -809,13 +823,6 @@ const std::vector<attack_type>& unit::attacks() const
 
 int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
-//don't allow level 0 units to take villages - removed until AI
-//is smart enough to deal with this.
-//	if(type_->level() == 0 && map.is_village(terrain))
-//		return 100;
-
-
-
 	const int res = type_->movement_type().movement_cost(map,terrain);
 
 	static const std::string slowed_string("slowed");
@@ -826,8 +833,7 @@ int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 	return res;
 }
 
-int unit::defense_modifier(const gamemap& map,
-                              gamemap::TERRAIN terrain) const
+int unit::defense_modifier(const gamemap& map, gamemap::TERRAIN terrain) const
 {
 	return type_->movement_type().defense_modifier(map,terrain);
 }

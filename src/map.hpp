@@ -28,12 +28,13 @@ class gamemap
 public:
 
 	typedef char TERRAIN;
+	enum { NB_TERRAIN = 256, ADD_INDEX_TERRAIN = 128 };
 
 	//some types of terrain which must be known, and can't just be loaded
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
-	enum { FOGGED = '~', VOID_TERRAIN = ' ', KEEP = 'K', CASTLE = 'C', VILLAGE = 't', FOREST = 'f' };
+	enum { FOGGED = '~', VOID_TERRAIN = ' ', KEEP = 'K', CASTLE = 'C', VILLAGE = 't', FOREST = 'f', DEEP_SEA = 's', SEA = 'c' };
 
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain
@@ -59,7 +60,12 @@ public:
 
 		void write(config& cfg) const;
 
-		bool valid() const { return x >= 0 && y >= 0; }
+		inline bool valid() const { return x >= 0 && y >= 0; }
+		
+		inline bool valid(const int parWidth, const int parHeight) const
+		{ 
+			return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight));
+		}
 
 		int x, y;
 

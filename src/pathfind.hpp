@@ -56,10 +56,17 @@ bool enemy_zoc(const gamemap& map,const gamestatus& status,
 		         const std::vector<team>& teams,
                const gamemap::location& loc,const team& current_team,int side);
 
+struct cost_calculator
+{
+	virtual double cost(const gamemap::location& loc, const double so_far, const bool isDst) const = 0;
+	virtual ~cost_calculator() {}
+	inline double getNoPathValue(void) const { return (42424242.0); }
+};
+
 //object which contains all the possible locations a unit can move to, with
 //associated best routes to those locations.
 struct paths
-{
+{	
 	paths() {}
 
 	//construct a list of paths for the unit at loc.
@@ -83,26 +90,25 @@ struct paths
 	};
 
 	typedef std::map<gamemap::location,route> routes_map;
-	routes_map routes;
+	routes_map routes;		
 };
+
+paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
+													 double stop_at, cost_calculator const *costCalculator,
+													 const size_t parWidth, const size_t parHeight,
+													 std::set<gamemap::location> const *teleports = NULL);
 
 //function which, given a unit and a route the unit can move on, will
 //return the number of turns it will take the unit to traverse the route.
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             const paths::route& rt);
 
-struct cost_calculator
-{
-	virtual double cost(const gamemap::location& loc, double so_far) const = 0;
-	virtual ~cost_calculator() {}
-};
-
 struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
 	                         const unit_map& units, const std::vector<team>& teams,
 	                         const gamemap& map, const gamestatus& status);
-	virtual double cost(const gamemap::location& loc, double so_far) const;
+	virtual double cost(const gamemap::location& loc, const double so_far, const bool isDst) const;
 
 private:
 	const unit& unit_;
@@ -112,9 +118,5 @@ private:
 	const gamemap& map_;
 	const gamestatus& status_;
 };
-
-paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
-                           double stop_at, cost_calculator const *obj,
-                           std::set<gamemap::location> const *teleports = NULL);
 
 #endif
