@@ -79,6 +79,7 @@ public:
 	void new_turn();
 	void get_shared_maps();
 	void spend_gold(int amount);
+	void set_income(int amount);
 
 	const std::set<std::string>& recruits() const;
 	std::set<std::string>& recruits();
@@ -98,6 +99,7 @@ public:
 	void make_ai();
 
 	const std::string& team_name() const;
+	void change_team(const std::string& name);
 
 	const std::string& ai_algorithm() const;
 	const config& ai_parameters() const;

@@ -340,6 +340,11 @@ void team::spend_gold(int amount)
 	gold_ -= amount;
 }
 
+void team::set_income(int amount)
+{
+	info_.income = lexical_cast<std::string>(amount);
+}
+
 const std::set<std::string>& team::recruits() const
 {
 	return info_.can_recruit;
@@ -413,6 +418,11 @@ void team::make_ai()
 const std::string& team::team_name() const
 {
 	return info_.team_name;
+}
+
+void team::change_team(const std::string& name)
+{
+	info_.team_name = name;
 }
 
 const std::string& team::ai_algorithm() const
