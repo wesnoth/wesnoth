@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-12 17:19+0200\n"
-"PO-Revision-Date: 2004-09-14 19:33+0200\n"
+"PO-Revision-Date: 2004-09-15 23:52+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -98,9 +98,9 @@ msgstr ""
 "om Wesnoth. Den tar upp hur man spelar och de grundläggande mekanismer som "
 "styr spelet. För mer information om hur man spelar, kan du studera "
 "<ref>dst=basic_strategy text='Grundläggande strategi'</ref> och "
-"<ref>dst=multiplayer_strategy text='Strategi för flera spelare'</ref>. Tänk "
-"på att detta bara är en översikt - om du följer länkarna kan du läsa om "
-"speciella undantag och situationer. \n"
+"<ref>dst=multiplayer_strategy text='Gruppspelsstrategi'</ref>. Tänk på att "
+"detta bara är en översikt - om du följer länkarna kan du läsa om speciella "
+"undantag och situationer. \n"
 "\n"
 "Till att börja med är det bäst att klicka på <italic>text=Träningsspel</"
 "italic> på huvudmenyn. Här lär du lär dig grunderna i spelet. När du tränat "
@@ -352,7 +352,7 @@ msgid ""
 "damage."
 msgstr ""
 "I Wesnoth finns det tre sorters skador som vanligtvis associeras med fysiska "
-"attacker: skär-, stick- och krosskador. Det finns ytterligare tre sorters "
+"attacker: hugg-, stick- och krosskador. Det finns ytterligare tre sorters "
 "skador vanligtvis associerade med magiska attacker: eld, frost, och heliga "
 "attacker. Truppernas olika motståndskraft kan förändra skadan de får från "
 "olika skadetyper.\n"
@@ -364,8 +364,8 @@ msgstr ""
 "motståndskraft, till exempel -100%, så kommer den att få 100% mer i skada "
 "när den får den sortens skada.\n"
 "\n"
-"Till exempel är skelett mycket motståndskraftiga mot skärande och stickande "
-"attacker, men de är sårbara för krossande attacker och eld. De är dessutom "
+"Till exempel är skelett mycket motståndskraftiga mot hugg- och "
+"stickattacker, men de är sårbara för kross- och eldattacker. De är dessutom "
 "extremt sårbara för heliga attacker. "
 
 #: data/help.cfg:126
@@ -1947,8 +1947,8 @@ msgstr ""
 "motståndskraft anges som en procentsats som dras från skadan som en "
 "motståndares vapen av en viss typ ger. Om till exempel en alvspejare anfalls "
 "av en alvbågskytt, så kommer bågskytten att göra 20% mer skada än normalt, "
-"eftersom alvspejare har en motståndskraft på -20% mot spetsande attacker. "
-"Denna bonus eller avdrag läggs samman med andra bonusar eller avdrag, vilket "
+"eftersom alvspejare har en motståndskraft på -20% mot stickattacker. Denna "
+"bonus eller avdrag läggs samman med andra bonusar eller avdrag, vilket "
 "betyder att två avdrag på -50% tillsammans ger -100%."
 
 #: data/scenarios/tutorial/tutorial2.cfg:161
@@ -1964,10 +1964,10 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then select Resistance."
 msgstr ""
-"Det finns 6 olika typer av attacker: skärande, spetsande, krossande, eld, "
+"Det finns 6 olika typer av attacker: huggande, stickande, krossande, eld, "
 "frost, och heliga attacker. Trupper med tunga rustningar har en hög "
-"motståndskraft mot de fysiska attackerna, dvs de skärande, spetsande och "
-"krossande attackerna. Däremot har de en låg motståndskraft mot de magiska "
+"motståndskraft mot de fysiska attackerna, dvs hugg-, stick- och "
+"krossattackerna. Däremot har de en låg motståndskraft mot de magiska "
 "attackerna, dvs eld och frost. Alla levande trupper har en hög "
 "motståndskraft mot heliga attacker, medan vandöda är mycket sårbara för "
 "dessa. För att ta reda på en trupps motståndskraft mot en viss typ av "
@@ -2127,7 +2127,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid "How do I play multiplayer?"
-msgstr "Hur startar jag ett spel för flera spelare?"
+msgstr "Hur startar jag ett gruppspel?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:255
 msgid ""
@@ -2137,9 +2137,9 @@ msgid ""
 "wesnoth.org'. This will connect you to the official Wesnoth server, where "
 "you can join a game by selecting it, then selecting 'Join Game'."
 msgstr ""
-"För att spela Wesnoth mot andra spelare, väljer du 'Flera spelare'. Om du "
-"har den senaste utvecklingsversionen av Wesnoth, väljer du därefter 'Anslut "
-"till den officiella servern'. Om du har version 1.0, väljer du 'Anslut till "
+"För att spela Wesnoth mot andra spelare, väljer du 'Gruppspel'. Om du har "
+"den senaste utvecklingsversionen av Wesnoth, väljer du därefter 'Anslut till "
+"den officiella servern'. Om du har version 1.0, väljer du 'Anslut till "
 "spel', och därefter skriver du 'server.wesnoth.org'. Detta kopplar upp dig "
 "mot Wesnoths officiella spelserver, där du kan ansluta dig till ett spel "
 "genom välja det, och sedan klicka 'Anslut till spel'."
@@ -2793,7 +2793,7 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"Det finns sex typer av attacker: spetsande, skärande, krossande, eld, frost "
+"Det finns sex typer av attacker: stickande, huggande, krossande, eld, frost "
 "samt heliga attacker. Olika trupper har olika motståndskraft mot olika typer "
 "av vapen. Om du högerklickar på en trupp och väljer 'Truppbeskrivning' och "
 "därefter 'Motståndskraft' så kan du se hur mycket motståndskraft truppen har "
@@ -2881,8 +2881,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Hästburna trupper är i allmänhet motståndskraftiga mot attacker med eggade "
-"och trubbiga vapen, men är sårbara mot spetsiga vapen, såsom bågar och spjut."
+"Hästburna trupper är i allmänhet motståndskraftiga mot hugg- och krossvapen, "
+"men är sårbara mot stickvapen, såsom bågar och spjut."
 
 #: data/translations/english.cfg:194
 msgid ""
@@ -2955,7 +2955,7 @@ msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
-"Skelett är motståndskraftiga mot spetsiga och eggade vapen, men sårbara mot "
+"Skelett är motståndskraftiga mot hugg- och stickvapen, men sårbara för "
 "trubbiga och heliga vapen samt eldvapen."
 
 #: data/translations/english.cfg:202
@@ -3171,7 +3171,7 @@ msgstr "krossa"
 #: data/units/Walking_Corpse.cfg:20 data/units/Warrior_King.cfg:23
 #: data/units/Wose.cfg:20 data/units/Yeti.cfg:34 data/units/Youth.cfg:22
 msgid "impact"
-msgstr "krossande"
+msgstr "kross"
 
 #: data/units/Arch_Mage.cfg:3 data/units/Arch_Mage.cfg:82
 msgid "Arch Mage"
@@ -3319,7 +3319,7 @@ msgstr "dolk"
 #: data/units/White_Mage.cfg:88 data/units/Wolf_Rider.cfg:21
 #: data/units/Wraith.cfg:20 data/units/Young_Ogre.cfg:19
 msgid "blade"
-msgstr "skärande"
+msgstr "hugg"
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
@@ -3533,7 +3533,7 @@ msgstr "båge"
 #: data/units/Vampire_Lady.cfg:34 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
 msgid "pierce"
-msgstr "spetsande"
+msgstr "stick"
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
@@ -5761,7 +5761,7 @@ msgid ""
 msgstr ""
 "En krigare, dödad i strid och återuppväckt från de döda med hjälp av svart "
 "magi. Som alla vandöda är de sårbara mot eld och heliga attacker, och "
-"motståndskraftiga mot eggade vapen."
+"motståndskraftiga mot huggvapen."
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -5885,7 +5885,7 @@ msgstr ""
 "Tjuvarna är snabbfotade och gäckande, vilket gör dem svåra att träffa. De är "
 "skickliga på att attackera sina fiender bakifrån, vilket har som effekt att "
 "tjuven gör dubbel skada om hans fiender är upptagna med en motståndare på "
-"andra sidan. Då tjuvar har en kaotisk livsföring, så slåss de bättre på "
+"andra sidan. Då tjuvar har en kaotisk livsåskådning, så slåss de bättre på "
 "natten än dagen."
 
 #: data/units/Thug.cfg:3
@@ -6422,7 +6422,7 @@ msgstr "Kampanj"
 
 #: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
-msgstr "Flera spelare"
+msgstr "Gruppspel"
 
 #: src/dialogs.cpp:369
 msgid "Tutorial"
@@ -6606,7 +6606,7 @@ msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
 #: src/game.cpp:975
 msgid "Host Multiplayer Game"
-msgstr "Var spelvärd för flera spelare"
+msgstr "Var spelvärd för gruppspel"
 
 #: src/game.cpp:975
 msgid "Host a game without using a server"
@@ -7192,7 +7192,7 @@ msgstr "Klar!"
 
 #: src/multiplayer_connect.cpp:97
 msgid "This is not a multiplayer save"
-msgstr "Detta är inte ett sparat spel för flera spelare"
+msgstr "Detta är inte ett sparat gruppspel"
 
 #: src/multiplayer_connect.cpp:237
 msgid ""
@@ -7294,7 +7294,7 @@ msgstr "Lediga platser"
 
 #: src/multiplayer_lobby.cpp:156
 msgid "Observe Game"
-msgstr "Var åskådare till spel"
+msgstr "Iaktta spel"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "Quit"
@@ -7461,7 +7461,7 @@ msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
-"Ers nåd, denna trupp är erfaren och har befordrats. Vill du verkligen "
+"Ers nåd, denna trupp är erfaren och har befordrats. Vill ni verkligen "
 "avskeda $noun?"
 
 #: src/playturn.cpp:1724
@@ -7469,7 +7469,7 @@ msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
-"Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill du "
+"Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill ni "
 "verkligen avskeda $noun?"
 
 #: src/playturn.cpp:1729
@@ -7698,7 +7698,7 @@ msgstr "Kampanj"
 
 #: src/titlescreen.cpp:162
 msgid "TitleScreen button^Multiplayer"
-msgstr "Flera spelare"
+msgstr "Gruppspel"
 
 #: src/titlescreen.cpp:163
 msgid "TitleScreen button^Load"
@@ -7733,8 +7733,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Starta ett spel för flera spelare (hotseat, LAN eller internet), eller ett "
-"separat scenario mot datorn"
+"Starta ett gruppspel (hotseat, LAN eller internet), eller ett separat "
+"scenario mot datorn"
 
 #: src/titlescreen.cpp:171
 msgid "Load a single player saved game"
