@@ -916,7 +916,7 @@ int main(int argc, char** argv)
 			if(pid < 0) {
 				std::cerr << "Could not fork and run as a daemon\n";
 				return -1;
-			} else {
+			} else if(pid > 0) {
 				std::cout << "Started wesnothd as a daemon with process id " << pid << "\n";
 				return 0;
 			}
