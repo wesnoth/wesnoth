@@ -7,6 +7,7 @@
 
 #include "game.hpp"
 #include "input_stream.hpp"
+#include "metrics.hpp"
 #include "player.hpp"
 
 #include <algorithm>
@@ -86,6 +87,8 @@ private:
 	time_t last_stats_;
 
 	input_stream& input_;
+
+	metrics metrics_;
 
 	bool is_ip_banned(const std::string& ip);
 	std::string ban_ip(const std::string& mask);
@@ -178,6 +181,8 @@ void server::process_command(const std::string& cmd)
 		}
 
 		std::cout << "---" << std::endl;
+	} else if(command == "metrics") {
+		std::cout << metrics_;
 	} else if(command == "ban") {
 
 		if(i == cmd.end()) {
@@ -270,6 +275,8 @@ void server::run()
 
 			config data;
 			while((sock = network::receive_data(data)) != NULL) {
+
+				metrics_.service_request();
 
 				//if someone who is not yet logged in is sending
 				//login details
@@ -645,6 +652,8 @@ void server::run()
 					}
 				}
 			}
+
+			metrics_.no_requests();
 			
 		} catch(network::error& e) {
 			if(!e.socket) {

@@ -50,9 +50,9 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_wesnothd_OBJECTS = game.$(OBJEXT) input_stream.$(OBJEXT) \
-	player.$(OBJEXT) server.$(OBJEXT) variable.$(OBJEXT) \
-	config.$(OBJEXT) filesystem.$(OBJEXT) game_config.$(OBJEXT) \
-	log.$(OBJEXT) network.$(OBJEXT)
+	metrics.$(OBJEXT) player.$(OBJEXT) server.$(OBJEXT) \
+	variable.$(OBJEXT) config.$(OBJEXT) filesystem.$(OBJEXT) \
+	game_config.$(OBJEXT) log.$(OBJEXT) network.$(OBJEXT)
 wesnothd_OBJECTS = $(am_wesnothd_OBJECTS)
 wesnothd_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
@@ -62,8 +62,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po ./$(DEPDIR)/game.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/input_stream.Po ./$(DEPDIR)/log.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/player.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/server.Po ./$(DEPDIR)/variable.Po
+@AMDEP_TRUE@	./$(DEPDIR)/metrics.Po ./$(DEPDIR)/network.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/player.Po ./$(DEPDIR)/server.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/variable.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -208,6 +209,7 @@ target_alias = @target_alias@
 #############################################################################
 wesnothd_SOURCES = game.cpp \
 		   input_stream.cpp \
+		   metrics.cpp \
 		   player.cpp \
 		   server.cpp \
 		   variable.cpp \
@@ -219,6 +221,7 @@ wesnothd_SOURCES = game.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   input_stream.hpp \
+		   metrics.hpp \
 		   player.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
@@ -300,6 +303,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game_config.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/input_stream.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/metrics.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/network.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/player.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server.Po@am__quote@
