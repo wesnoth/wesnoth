@@ -1,21 +1,44 @@
 CVS HEAD:
- * polished and added new unit images and attack icons
- * merman village
- * swamp village
- * ice terrain
+ * added new unit images, missile images and attack icons, polished some old ones
+ * merman and swamp villages
+ * ice terrain, 
  * dirt and swamp transitions
  * new minor terrain item: trash heap
  * new fog of war images
  * undergound daytime images
  * fading effect between daytime changes
- * made the 'Sword of Fire' shoot fireballs instead of lightning bolt
- * resting stacks with heal and cure
+ * attack stat tooltips
+ * user interface polishing
+ * support for cursors
  * shortcut keys are displayed next to menu items
  * undo, redo and next unit added to context menu
  * added deleting saved games 
  * added deleting units from recall list
  * added fight calculations
  * added in-game statistics
+ * 'Sword of Fire' shoots fireballs instead of lightning bolt
+ * resting stacks with heal and cure
+ * new scenarios for 'Heir to the Throne' campaign:
+   * Return to Wesnoth
+   * Valley of Statues
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Blackwater Port
+   * Hasty Alliance
+ * General melee attack number of strikes increased by one
+ * Princess (Li'Sar) changed to 2nd level unit
+ * reduced Sleeping Gryphon's number of attacks to same with Gryphon
+ * new units
+   * Battle Princess
+   * Cockatrice
+   * Grand Knight
+   * Yeti
+ * translations can specify font to use
+ * added Bepa-Roman.ttf which has cyrillic characters
+ * updated translations:
+   * danish
+   * hungarian
+   * portuguese-brazilian
+   * slovak
  * multiplayer enhancements:
    * random map generator enhanced
    * village number slider in random map generation is now proportional
@@ -23,24 +46,6 @@ CVS HEAD:
    * number of available positions in a game is shown in the lobby
    * current turn of a game underway is shown in the lobby
    * eye of the observer
- * General melee attack number of strikes increased by one
- * Princess (Li'Sar) changed to 2nd level unit
- * new units
-   * Cockatrice
-   * Yeti
-   * Battle Princess
- * new scenarios for 'Heir to the Throne' campaign:
-   * Return to Wesnoth
-   * Valley of Statues
- * scenario balancing for 'Heir to the Throne' campaign:
-   * Blackwater Port
-   * Hasty Alliance
- * translations can specify font to use
- * added Bepa-Roman.ttf which has cyrillic characters
- * updated translations:
-   * hungarian
-   * danish
-   * portuguese-brazilian
  * added [store_gold] tag to WML
  * defenders will choose their weapons more intelligently
  * de-elvished Gryphon Rider description and set race to human
@@ -51,7 +56,9 @@ CVS HEAD:
  * fixed enemies getting healed after loading, resting serialized in unit
  * fixed Merman Lord -> Triton in some scenarios
  * fixed allow/deny observers being not respected in multiplayer game creation
+ * fixed multiplayer replays
  * improved network protocol (breaks backward compatibility)
+ * added optimization to make the game load faster for people using the default english locale
  * slacknoth now ignores an insignificant makefile error
 
 Version 0.7:
