@@ -16,7 +16,7 @@ echo "Configuring..."
 ./configure --prefix=/usr --enable-server --enable-tools --enable-kde --enable-gnome
 make clean
 echo "Compiling and gathering package contents..."
-make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -march=$2" install
+make DESTDIR=/wesnothpack/wesnoth-$1 CXXFLAGS="-g -O2 -march=$2" install -i -k
 mkdir -p /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
 cp -Rf changelog COPYING copyright INSTALL MANUAL* README /wesnothpack/wesnoth-$1/usr/doc/wesnoth-$1
 echo "Cleaning up source..."
@@ -26,7 +26,7 @@ echo "Stripping binaries..."
 strip usr/bin/*
 echo "Adding package info..."
 mkdir install
-echo wesnoth: Battle for Wesnoth - CVS $1 > install/slack-desc
+echo wesnoth: Battle for Wesnoth $1 > install/slack-desc
 echo wesnoth: Copyright \(C\) 2003 by David White \<davidnwhite@optusnet.com.au\> >> install/slack-desc
 echo wesnoth: http://www.wesnoth.org/ >> install/slack-desc
 echo wesnoth: Packager: Mark Michelsen \<skovbaer@femgramskovbaerte.dk\> >> install/slack-desc
