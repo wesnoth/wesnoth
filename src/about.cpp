@@ -115,6 +115,7 @@ void show_about(display& disp)
 	text.push_back("-   Benjamin Drieu");
  	text.push_back("-   David White (Sirp)");
  	text.push_back("-   Francisco Muñoz (fmunoz)");
+ 	text.push_back("-   Joseph Simmons (Turin)");
  	text.push_back("-   Justin Zaun (jzaun)");
  	text.push_back("+ ");
 
