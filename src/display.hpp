@@ -164,6 +164,15 @@ public:
 	void draw_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	               double alpha=1.0, Uint32 blend_to=0);
 
+private:
+	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
+	                       double alpha=1.0, Uint32 blend_to=0);
+
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_TERRAIN, ADJACENT_FOG };
+	void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
+
+
+public:
 	//function to draw a footstep for the given location, on screen at
 	//pixel co-ordinates (xloc,yloc). A footstep will only be drawn if
 	//loc is on the current route set by set_route. Otherwise it will
@@ -191,6 +200,10 @@ public:
 	//function to schedule the minimap for recalculation. Useful if any
 	//terrain in the map has changed.
 	void recalculate_minimap();
+
+	//function to schedule the minimap to be redrawn. Useful if units
+	//have moved about on the map
+	void redraw_minimap();
 
 	//functions to add and remove overlays from locations. An overlay is an
 	//image that is displayed on top of the tile. One tile may have multiple
@@ -309,7 +322,7 @@ private:
 
 	void bounds_check_position();
 
-	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, image::TYPE type);
+	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 
 	//this surface must be freed by the caller
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
@@ -339,6 +352,7 @@ private:
 	SDL_Rect energy_bar_rect_;
 
 	SDL_Surface* minimap_;
+	bool redrawMinimap_;
 
 	const paths* pathsList_;
 	paths::route route_;

@@ -48,6 +48,7 @@ void draw_unit_ellipse(SDL_Surface* surf, Uint16 colour, const SDL_Rect& clip, i
 SDL_Surface* make_neutral_surface(SDL_Surface* surf);
 SDL_Surface* clone_surface(SDL_Surface* surface);
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h);
+SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h);
 SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);
 SDL_Surface* greyscale_image(SDL_Surface* surface);
 SDL_Surface* brighten_image(SDL_Surface* surface, double amount);

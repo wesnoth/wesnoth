@@ -52,7 +52,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg)
 		             : screen_(video), xpos_(0.0), ypos_(0.0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
-					   minimap_(NULL),
+					   minimap_(NULL), redrawMinimap_(false),
 					   pathsList_(NULL), status_(status),
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
@@ -456,6 +456,7 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {
+	log_scope("display::draw");
 	if(!panelsDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
 
@@ -485,8 +486,8 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		const SDL_Rect area = minimap_area();
-		draw_minimap(area.x,area.y,area.w,area.h);
+
+		redrawMinimap_ = true;
 	} else if(!map_.empty()) {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -496,8 +497,19 @@ void display::draw(bool update,bool force)
 		invalidated_.clear();
 	}
 
+	if(redrawMinimap_) {
+		std::cerr << "drawing minimap...\n";
+		redrawMinimap_ = false;
+		const SDL_Rect area = minimap_area();
+		draw_minimap(area.x,area.y,area.w,area.h);
+		std::cerr << "done drawing minimap...\n";
+	}
+
+
 	if(!map_.empty()) {
+		std::cerr << "sidebar...\n";
 		draw_sidebar();
+		std::cerr << "done sidebar...\n";
 	}
 
 	const int max_skips = 5;
@@ -509,7 +521,9 @@ void display::draw(bool update,bool force)
 	//TODO: review whether this is the correct thing to do
 	SDL_Delay(maximum<int>(10,wait_time));
 
+	std::cerr << "up...\n";
 	if(update) {
+		std::cerr << "up+\n";
 		lastDraw_ = SDL_GetTicks();
 
 		if(wait_time >= 0 || drawSkips_ >= max_skips || force)
@@ -518,6 +532,8 @@ void display::draw(bool update,bool force)
 			drawSkips_++;
 
 	}
+
+	std::cerr << "ret\n";
 }
 
 void display::update_display()
@@ -886,12 +902,25 @@ void display::draw_minimap(int x, int y, int w, int h)
 		return;
 
 	SDL_Rect minimap_location = {x,y,w,h};
-	x = minimap_location.x;
-	y = minimap_location.y;
-	w = minimap_location.w;
-	h = minimap_location.h;
 
-	SDL_BlitSurface(surface,NULL,screen_.getSurface(),&minimap_location);
+	clip_rect_setter clip_setter(video().getSurface(),minimap_location);
+
+	SDL_Rect loc = minimap_location;
+	SDL_BlitSurface(surface,NULL,video().getSurface(),&loc);
+
+	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+		if(fogged(u->first.x,u->first.y))
+			continue;
+
+		const int side = u->second.side();
+		const SDL_Color& col = font::get_side_colour(side);
+		const Uint16 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
+		SDL_Rect rect = {x + (u->first.x*w)/map_.x(),
+		                 y + (u->first.y*h)/map_.y(),
+						 w/map_.x(), h/map_.y() };
+		std::cerr << "drawing unit " << rect.x << "," << rect.y << "," << rect.w << "," << rect.h << "\n";
+		SDL_FillRect(video().getSurface(),&rect,mapped_col);
+	}
 
 	const double xscaling = double(surface->w)/double(map_.x());
 	const double yscaling = double(surface->h)/double(map_.y());
@@ -975,9 +1004,8 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 	return terrains[index];
 }
 
-void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
-                        double highlight_ratio, Uint32 blend_with)
-
+void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
+								double highlight_ratio, Uint32 blend_with)
 {
 	if(updatesLocked_)
 		return;
@@ -986,113 +1014,19 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
-	if(xpos >= int(map_area().x + map_area().w) || ypos >= int(map_area().y + map_area().h))
-		return;
+	SDL_Rect clip_rect = map_area();
 
-	int xend = xpos + static_cast<int>(zoom_);
-	int yend = int(get_location_y(gamemap::location(x,y+1)));
-
-	if(xend < int(map_area().x) || yend < int(map_area().y))
-		return;
-
-	const gamemap::location ne_loc(loc.get_direction(gamemap::location::NORTH_EAST));
-	const gamemap::location se_loc(loc.get_direction(gamemap::location::SOUTH_EAST));
-
-	const int ne_xpos = int(get_location_x(ne_loc));
-	const int ne_ypos = int(get_location_y(ne_loc));
-	const int se_xpos = int(get_location_x(se_loc));
-	const int se_ypos = int(get_location_y(se_loc));
-
-	const bool is_shrouded = shrouded(x,y);
-	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
-
-	if(!is_shrouded) {
-		terrain = map_.get_terrain(loc);
-	}
-
-	image::TYPE image_type = image::SCALED;
-
-	if(fogged(x,y)) {
-		image_type = image::FOGGED;
-	}
-
-	//find if this tile should be greyed
-	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
-					         pathsList_->routes.end()) {
-		image_type = image::GREYED;
-	}
-
-	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
-	   loc == selectedHex_ && units_.count(gamemap::location(x,y)) == 1) {
-		image_type = image::BRIGHTENED;
-	}
-
-	const scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
-
-	if(surface == NULL) {
-		std::cerr << "Could not get terrain surface\n";
+	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
+	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
 		return;
 	}
 
-	std::vector<SDL_Surface*> overlaps;
+	SDL_Surface* const dst = screen_.getSurface();
 
-	scoped_sdl_surface flag(NULL);
-
-	if(!is_shrouded) {
-		flag.assign(getFlag(terrain,x,y));
-		if(flag != NULL)
-			overlaps.push_back(flag);
-
-		const std::vector<SDL_Surface*>& adj = getAdjacentTerrain(x,y,image_type);
-
-		overlaps.insert(overlaps.end(),adj.begin(),adj.end());
-
-		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
-
-		for(std::pair<Itor,Itor> overlays =
-		    overlays_.equal_range(gamemap::location(x,y));
-			overlays.first != overlays.second; ++overlays.first) {
-
-			//even though the scoped surface will fall out-of-scope and call
-			//SDL_FreeSurface() on the underlying surface, the surface will remain
-			//valid so long as the image cache isn't invalidated, which should not
-			//happen inside this function
-			const scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
-
-			if(overlay_surface != NULL) {
-				overlaps.push_back(overlay_surface);
-			}
-		}
-	}
-
-	int ysrc = 0, xsrc = 0;
-
-	if(xpos < int(map_area().x)) {
-		xsrc += map_area().x - xpos;
-		xpos = map_area().x;
-	}
-
-	if(ypos < int(map_area().y)) {
-		ysrc += map_area().y - ypos;
-		ypos = map_area().y;
-	}
-
-	if(xend > map_area().x + map_area().w) {
-		xend = map_area().x + map_area().w;
-	}
-
-	if(yend > map_area().y + map_area().h) {
-		yend = map_area().y + map_area().h;
-	}
-
-	if(xend <= xpos || yend <= ypos)
-		return;
-
-	update_rect(xpos,ypos,xend-xpos,yend-ypos);
+	clip_rect_setter set_clip_rect(dst,clip_rect);
 
 	double unit_energy = 0.0;
 
-	const Uint16 energy_loss_colour = 0;
 	Uint16 energy_colour = 0;
 
 	const int max_energy = 80;
@@ -1110,6 +1044,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(it != units_.end() && (loc != hiddenUnit_ || !hideEnergy_)) {
 		if(unit_image == NULL)
 			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
+
+		if(unit_image == NULL) {
+			return;
+		}
 
 		const int unit_move = it->second.movement_left();
 		const int unit_total_move = it->second.total_movement();
@@ -1191,41 +1129,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		highlight_ratio = deadAmount_;
 	}
 
-	SDL_Surface* const dst = screen_.getSurface();
-
-	SDL_Rect clip_rect = map_area();
-	clip_rect_setter set_clip_rect(dst,clip_rect);
-
-	const Uint16 grid_colour = SDL_MapRGB(dst->format,0,0,0);
-
-	const int srcy = minimum<int>(ysrc,surface->h-1);
-	SDL_Rect srcrect = { xsrc, srcy, xend - xpos, yend - ypos };
-	SDL_Rect dstrect = { xpos, ypos, xend - xpos, yend - ypos };
-	SDL_BlitSurface(surface,&srcrect,dst,&dstrect);
-
-	for(std::vector<SDL_Surface*>::const_iterator ov = overlaps.begin();
-	    ov != overlaps.end(); ++ov) {
-		SDL_BlitSurface(*ov,&srcrect,dst,&dstrect);
-	}
-
-	if(grid_) {
-		scoped_sdl_surface grid_surface(image::get_image("terrain/grid.png"));
-		if(grid_surface != NULL) {
-			SDL_BlitSurface(grid_surface,&srcrect,dst,&dstrect);
-		}
-	}
-
-	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
-		const scoped_sdl_surface cross(image::get_image(game_config::cross_image));
-		if(cross != NULL)
-			draw_unit(xpos-xsrc,ypos-ysrc,cross,face_left,false,
-			          debugHighlights_[loc],0);
-	}
-
-	if(!is_shrouded) {
-		draw_footstep(loc,xpos-xsrc,ypos-ysrc);
-	}
-
 	if(unit_image == NULL || energy_image == NULL || fogged(x,y) ||
 			(teams_[currentTeam_].is_enemy(it->second.side()) && 
 			it->second.invisible(map_.underlying_terrain(map_[x][y]), 
@@ -1234,6 +1137,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		return;
 	}
 
+	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
 	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
 	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
@@ -1254,12 +1158,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 			const SDL_Color& col = font::get_side_colour(it->second.side());
 			const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
-			SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
+			SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
-			draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
+			draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
 		}
 
-		draw_unit(xpos-xsrc,ypos-ysrc - height_adjust,unit_image,face_left,false,
+		draw_unit(xpos,ypos - height_adjust,unit_image,face_left,false,
 		          highlight_ratio,blend_with,submerge);
 	}
 
@@ -1278,10 +1182,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	SDL_Rect second_energy = {0,energy_bar_loc.y+skip_energy_rows,energy_image->w,0};
 	second_energy.h = energy_image->w - second_energy.y;
 
-	blit_surface(xpos-xsrc,ypos-ysrc,energy_image,&first_energy,&clip_rect);
-	blit_surface(xpos-xsrc,ypos-ysrc+first_energy.h,energy_image,&second_energy,&clip_rect);
+	blit_surface(xpos,ypos,energy_image,&first_energy,&clip_rect);
+	blit_surface(xpos,ypos+first_energy.h,energy_image,&second_energy,&clip_rect);
 
-	SDL_Rect filled_energy_area = { xpos-xsrc + energy_bar_loc.x, ypos-ysrc+show_energy_after,
+	SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
 	          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
 	SDL_FillRect(dst,&filled_energy_area,energy_colour);
 
@@ -1289,9 +1193,151 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 		const SDL_Color& col = font::get_side_colour(it->second.side());
 		const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
-		SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
+		SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
-		draw_unit_ellipse(dst,colour,clip,xpos-xsrc,ypos-ysrc-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
+		draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
+	}
+}
+
+void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
+{
+	const gamemap::location loc(x,y);
+	int xpos = int(get_location_x(loc));
+	int ypos = int(get_location_y(loc));
+
+	SDL_Rect clip_rect = map_area();
+
+	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
+	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
+		return;
+	}
+
+	SDL_Surface* const dst = screen_.getSurface();
+
+	clip_rect_setter set_clip_rect(dst,clip_rect);
+	
+	const std::vector<SDL_Surface*>& adj = getAdjacentTerrain(x,y,image_type,type);
+
+	for(std::vector<SDL_Surface*>::const_iterator i = adj.begin(); i != adj.end(); ++i) {
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(*i,NULL,dst,&dstrect);
+	}
+}
+
+void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uint32 blend_to)
+{
+	if(updatesLocked_)
+		return;
+
+	const gamemap::location loc(x,y);
+	int xpos = int(get_location_x(loc));
+	int ypos = int(get_location_y(loc));
+
+	SDL_Rect clip_rect = map_area();
+
+	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
+	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
+		return;
+	}
+
+	SDL_Surface* const dst = screen_.getSurface();
+
+	clip_rect_setter set_clip_rect(dst,clip_rect);
+
+	const bool is_shrouded = shrouded(x,y);
+	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
+
+	if(!is_shrouded) {
+		terrain = map_.get_terrain(loc);
+	}
+
+	image::TYPE image_type = image::SCALED;
+
+	//find if this tile should be greyed
+	if(pathsList_ != NULL && pathsList_->routes.find(gamemap::location(x,y)) ==
+					         pathsList_->routes.end()) {
+		image_type = image::GREYED;
+	}
+
+	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
+	   loc == selectedHex_ && units_.count(gamemap::location(x,y)) == 1) {
+		image_type = image::BRIGHTENED;
+	}
+
+	const scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
+
+	if(surface == NULL) {
+		std::cerr << "Could not get terrain surface\n";
+		return;
+	}
+
+	std::vector<SDL_Surface*> overlaps;
+
+	scoped_sdl_surface flag(NULL);
+
+	update_rect(xpos,ypos,surface->w,surface->h);
+
+	//note that dstrect can be changed by SDL_BlitSurface and so a new instance should be
+	//initialized to pass to each call to SDL_BlitSurface
+	SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+	SDL_BlitSurface(surface,NULL,dst,&dstrect);
+
+	if(!is_shrouded) {
+		flag.assign(getFlag(terrain,x,y));
+		if(flag != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(flag,NULL,dst,&dstrect);
+		}
+
+		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
+
+		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
+			overlays.first != overlays.second; ++overlays.first) {
+
+			//even though the scoped surface will fall out-of-scope and call
+			//SDL_FreeSurface() on the underlying surface, the surface will remain
+			//valid so long as the image cache isn't invalidated, which should not
+			//happen inside this function
+			const scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
+
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(overlay_surface,NULL,dst,&dstrect);
+		}
+
+		draw_tile_adjacent(x,y,image_type,ADJACENT_TERRAIN);
+	}
+
+	if(!is_shrouded) {
+		draw_footstep(loc,xpos,ypos);
+	}
+
+	if(fogged(x,y)) {
+		const scoped_sdl_surface fog_surface(image::get_image("terrain/fog.png"));
+		if(fog_surface != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(fog_surface,NULL,dst,&dstrect);
+		}
+	}
+
+	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
+
+	if(!shrouded(x,y)) {
+		draw_tile_adjacent(x,y,image_type,ADJACENT_FOG);
+	}
+
+	if(grid_) {
+		scoped_sdl_surface grid_surface(image::get_image("terrain/grid.png"));
+		if(grid_surface != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(grid_surface,NULL,dst,&dstrect);
+		}
+	}
+
+	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
+		const scoped_sdl_surface cross(image::get_image(game_config::cross_image));
+		if(cross != NULL)
+			draw_unit(xpos,ypos,cross,false,false,
+			          debugHighlights_[loc],0);
 	}
 }
 
@@ -1395,8 +1441,7 @@ const std::string& get_direction(int n)
 
 }
 
-std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
-													  image::TYPE image_type)
+std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
 {
 	std::vector<SDL_Surface*> res;
 	gamemap::location loc(x,y);
@@ -1407,10 +1452,22 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
 	for(int i = 0; i != 6; ++i) {
-		tiles[i] = map_.get_terrain(adjacent[i]);
+		if(terrain_type == ADJACENT_FOG && shrouded(adjacent[i].x,adjacent[i].y))
+			tiles[i] = gamemap::VOID_TERRAIN;
+		else if(terrain_type == ADJACENT_FOG && !fogged(x,y) && fogged(adjacent[i].x,adjacent[i].y))
+			tiles[i] = gamemap::FOGGED;
+		else
+			tiles[i] = map_.get_terrain(adjacent[i]);
 	}
 
-	const std::vector<gamemap::TERRAIN>& precedence = map_.get_terrain_precedence();
+	static std::vector<gamemap::TERRAIN> fog_shroud;
+	if(fog_shroud.empty()) {
+		fog_shroud.push_back(gamemap::VOID_TERRAIN);
+		fog_shroud.push_back(gamemap::FOGGED);
+	}
+
+	const std::vector<gamemap::TERRAIN>& precedence = (terrain_type == ADJACENT_TERRAIN) ?
+	                                             map_.get_terrain_precedence() : fog_shroud;
 	std::vector<gamemap::TERRAIN>::const_iterator terrain =
 	       std::find(precedence.begin(),precedence.end(),current_terrain);
 
@@ -1441,7 +1498,8 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 			if(tiles[i] == *terrain) {
 				SDL_Surface* surface = NULL;
 				std::ostringstream stream;
-				for(int n = 0; tiles[i] == *terrain && n!=6; i = (i+1)%6, ++n) {
+				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
+
 					stream << get_direction(i);
 					const scoped_sdl_surface new_surface(getTerrain(
 					                    *terrain,image_type,x,y,stream.str()));
@@ -1579,10 +1637,13 @@ void display::blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect
 
 SDL_Surface* display::getMinimap(int w, int h)
 {
-	if(minimap_ == NULL)
+	if(minimap_ == NULL) {
+		std::cerr << "regetting minimap\n";
 		minimap_ = image::getMinimap(w,h,map_,
 				status_.get_time_of_day().lawful_bonus,
 				team_valid() ? &teams_[currentTeam_] : NULL, &units_, &teams_);
+		std::cerr << "done regetting minimap\n";
+	}
 
 	sdl_add_ref(minimap_);
 	return minimap_;
@@ -2266,6 +2327,13 @@ void display::recalculate_minimap()
 		SDL_FreeSurface(minimap_);
 		minimap_ = NULL;
 	}
+
+	redraw_minimap();
+}
+
+void display::redraw_minimap()
+{
+	redrawMinimap_ = true;
 }
 
 void display::invalidate_game_status()

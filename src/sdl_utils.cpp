@@ -110,11 +110,8 @@ SDL_Surface* clone_surface(SDL_Surface* surface)
 	if(surface == NULL)
 		return NULL;
 
-	std::cerr << "cloning surface...\n";
-
 	SDL_Surface* const result = SDL_DisplayFormatAlpha(surface);
 	SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-	std::cerr << "done cloning...\n";
 	return result;
 }
 
@@ -163,12 +160,91 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 	return clone_surface(dst);
 }
 
+SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h)
+{
+	if(surface == NULL)
+		return NULL;
+
+	if(w == surface->w && h == surface->h) {
+		sdl_add_ref(surface);
+		return surface;
+	}
+
+	scoped_sdl_surface dst(SDL_CreateRGBSurface(SDL_SWSURFACE,w,h,32,0xFF0000,0xFF00,0xFF,0xFF000000));
+	scoped_sdl_surface src(make_neutral_surface(surface));
+
+	if(src == NULL || dst == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
+		return NULL;
+	}
+
+	const double xratio = static_cast<double>(surface->w)/
+			              static_cast<double>(w);
+	const double yratio = static_cast<double>(surface->h)/
+			              static_cast<double>(h);
+
+	{
+		surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
+		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+
+		double ysrc = 0.0;
+		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
+			double xsrc = 0.0;
+			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
+				double red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
+
+				double summation = 0.0;
+
+				//we now have a rectangle, (xsrc,ysrc,xratio,yratio) which we
+				//want to derive the pixel from
+				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
+					const double xsize = minimum<double>(floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
+					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
+						const int xsrcint = maximum<int>(0,minimum<int>(src->w-1,static_cast<int>(xsrc)));
+						const int ysrcint = maximum<int>(0,minimum<int>(src->h-1,static_cast<int>(ysrc)));
+
+						const double ysize = minimum<double>(floor(yloc+1.0)-yloc,ysrc+yratio-yloc);		
+
+						Uint8 r,g,b,a;
+
+						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
+						const double value = xsize*ysize*double(a)/255.0;
+						summation += value;
+						
+						red += r*value;
+						green += g*value;
+						blue += b*value;
+						alpha += a*value;
+					}
+				}
+
+				if(summation == 0.0)
+					summation = 1.0;
+
+				red /= summation;
+				green /= summation;
+				blue /= summation;
+				alpha /= summation;
+
+				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
+			}
+		}
+	}
+
+	return clone_surface(dst);
+}
+
 SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 {
 	if(r == 0 && g == 0 && b == 0 || surface == NULL)
 		return clone_surface(surface);
 
+	std::cerr << "~\n";
 	scoped_sdl_surface surf(make_neutral_surface(surface));
+	std::cerr << "~+\n";
 
 	{
 		surface_lock lock(surf);
@@ -188,8 +264,6 @@ SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 			++beg;
 		}
 	}
-
-	std::cerr << "done adjusting colour...\n";
 
 	return clone_surface(surf);
 }

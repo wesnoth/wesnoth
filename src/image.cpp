@@ -14,8 +14,11 @@
 
 namespace {
 
+typedef std::map<gamemap::TERRAIN,SDL_Surface*> mini_terrain_cache_map;
+mini_terrain_cache_map mini_terrain_cache;
+
 typedef std::map<std::string,SDL_Surface*> image_map;
-image_map images_,scaledImages_,greyedImages_,brightenedImages_,foggedImages_;
+image_map images_,scaledImages_,greyedImages_,brightenedImages_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
@@ -65,9 +68,9 @@ void flush_cache()
 {
 	clear_surfaces(images_);
 	clear_surfaces(scaledImages_);
-	clear_surfaces(foggedImages_);
 	clear_surfaces(greyedImages_);
 	clear_surfaces(brightenedImages_);
+	clear_surfaces(mini_terrain_cache);
 }
 
 }
@@ -103,7 +106,6 @@ void set_colour_adjustment(int r, int g, int b)
 		green_adjust = g;
 		blue_adjust = b;
 		clear_surfaces(scaledImages_);
-		clear_surfaces(foggedImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
 	}
@@ -114,7 +116,6 @@ void set_zoom(double amount)
 	if(amount != zoom) {
 		zoom = amount;
 		clear_surfaces(scaledImages_);
-		clear_surfaces(foggedImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
 	}
@@ -127,23 +128,6 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 		result = get_tinted(filename,GREY_IMAGE);
 	} else if(type == BRIGHTENED) {
 		result = get_tinted(filename,BRIGHTEN_IMAGE);
-	} else if(type == FOGGED) {
-		const image_map::iterator i = foggedImages_.find(filename);
-		if(i != foggedImages_.end()) {
-			result = i->second;
-			SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-			sdl_add_ref(result);
-			return result;
-		}
-
-		scoped_sdl_surface surf(get_image(filename,SCALED));
-		if(surf == NULL)
-			return NULL;
-
-		result = scale_surface(surf,surf->w,surf->h);
-		surf.assign(result);
-		result = adjust_surface_colour(result,-50,-50,-50);
-		foggedImages_.insert(std::pair<std::string,SDL_Surface*>(filename,result));
 	} else {
 
 		image_map::iterator i;
@@ -245,10 +229,11 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 {
 	SDL_Surface* minimap = NULL;
 	if(minimap == NULL) {
-		const int scale = 4;
+		std::cerr << "x\n";
+		const int scale = 8;
 
 		minimap = SDL_CreateRGBSurface(SDL_SWSURFACE,
-		                               map.x()*scale,map.y()*scale,
+		                               map.x()*scale*0.75,map.y()*scale,
 		                               pixel_format->BitsPerPixel,
 		                               pixel_format->Rmask,
 		                               pixel_format->Gmask,
@@ -257,12 +242,15 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 		if(minimap == NULL)
 			return NULL;
 
-		typedef std::map<gamemap::TERRAIN,SDL_Surface*> cache_map;
-		cache_map cache;
+		typedef mini_terrain_cache_map cache_map;
+		//cache_map& cache = mini_terrain_cache;
+		static cache_map cache;
 
-		SDL_Rect minirect = {0,0,scale,scale};
+		std::cerr << "outputting map: " << map.x() << "," << map.y() << "\n";
 		for(int y = 0; y != map.y(); ++y) {
 			for(int x = 0; x != map.x(); ++x) {
+				std::cerr << x << "," << y << "\n";
+				std::cerr << "a\n";
 
 				SDL_Surface* surf = NULL;
 				scoped_sdl_surface scoped_surface(NULL);
@@ -270,12 +258,15 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 				const gamemap::location loc(x,y);
 				if(map.on_board(loc)) {
 					const bool shrouded = tm != NULL && tm->shrouded(x,y);
-					const bool fogged = tm != NULL && tm->fogged(x,y);
+					const bool fogged = tm != NULL && tm->fogged(x,y) && !shrouded;
 					const gamemap::TERRAIN terrain = shrouded ? gamemap::VOID_TERRAIN : map[x][y];
 					cache_map::iterator i = cache.find(terrain);
 
+					std::cerr << (int)terrain << " '" << (char)terrain << "'\n";
+
 					if(i == cache.end()) {
-						scoped_sdl_surface tile(get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png"));
+						std::cerr << "b\n";
+						scoped_sdl_surface tile(get_image("terrain/" + map.get_terrain_info(terrain).default_image() + ".png",image::UNSCALED));
 
 						if(tile == NULL) {
 							std::cerr << "Could not get image for terrrain '"
@@ -283,50 +274,52 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 							continue;
 						}
 
-						surf = scale_surface(tile,scale,scale);
+						std::cerr << "c\n";
+						surf = scale_surface_blended(tile,scale,scale);
+						std::cerr << "d\n";
 
-						if(units != NULL && teams != NULL && tm != NULL && !fogged) {
-							const unit_map::const_iterator u = 
-								find_visible_unit(*units,loc,
-										map,lawful_bonus,
-										*teams,*tm);
-							if(u != units->end()) {
-								const SDL_Color& colour = font::get_side_colour(u->second.side());								
-								SDL_Rect rect = {0,0,surf->w,surf->h};
-								const Uint16 col = Uint16(SDL_MapRGB(surf->format,colour.r,colour.g,colour.b));
-								SDL_FillRect(surf,&rect,col);
-							}
-
-							//we're not caching the surface, so make sure
-							//that it gets freed after use
-							scoped_surface.assign(surf);
-						} else if(fogged) {
-							scoped_surface.assign(adjust_surface_colour(surf,-50,-50,-50));
-							SDL_FreeSurface(surf);
-							surf = scoped_surface;
-						} else {
-							i = cache.insert(cache_map::value_type(terrain,surf)).first;
+						if(surf == NULL) {
+							continue;
 						}
+
+						i = cache.insert(cache_map::value_type(terrain,surf)).first;
 					} else {
+						std::cerr << "e\n";
 						surf = i->second;
 					}
 
+					if(fogged) {
+						std::cerr << "f\n";
+						scoped_surface.assign(adjust_surface_colour(surf,-50,-50,-50));
+						surf = scoped_surface;
+					}
+
+					std::cerr << "g\n";
+
 					assert(surf != NULL);
 					
-					SDL_Rect maprect = {x*scale,y*scale,0,0};
-					SDL_BlitSurface(surf, &minirect, minimap, &maprect);
+					std::cerr << "h\n";
+					SDL_Rect maprect = {x*scale*0.75,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
+					std::cerr << "i\n";
+					SDL_BlitSurface(surf, NULL, minimap, &maprect);
+					std::cerr << "j\n";
 				}
 			}
 		}
-
-		clear_surfaces(cache);
 	}
+
+	std::cerr << "k\n";
 
 	if(minimap->w != w || minimap->h != h) {
+		std::cerr << "y\n";
 		SDL_Surface* const surf = minimap;
-		minimap = scale_surface(surf,w,h);
+		std::cerr << "z\n";
+		minimap = scale_surface_blended(surf,w,h);
+		std::cerr << "z1\n";
 		SDL_FreeSurface(surf);
+		std::cerr << "z2\n";
 	}
+	std::cerr << "xxx\n";
 
 	return minimap;
 }

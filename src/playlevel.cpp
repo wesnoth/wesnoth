@@ -390,6 +390,8 @@ redo_turn:
 
 				} else if(!replaying && team_it->is_ai()) {
 					std::cerr << "is ai...\n";
+					gui.recalculate_minimap();
+
 					const hotkey::basic_handler key_events_handler(gui);
 
 					const int start_command = recorder.ncommands();

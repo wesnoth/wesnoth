@@ -1035,7 +1035,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
                       std::vector<gamemap::location>* cleared)
 {
 	bool result = false;
-	static gamemap::location adj[7];
+	gamemap::location adj[7];
 	get_adjacent_tiles(loc,adj);
 	adj[6] = loc;
 	for(int i = 0; i != 7; ++i) {

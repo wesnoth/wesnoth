@@ -973,7 +973,8 @@ void turn_info::undo()
 
 	recorder.undo();
 
-	clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+	const bool shroud_cleared = clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+
 	gui_.recalculate_minimap();
 }
 
