@@ -504,6 +504,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->second.movement_left();
 
+		const bool defensive_grouping = current_team().ai_parameters()["grouping"] == "defensive";
+
 		//we stop and consider whether the route to this
 		//target is dangerous, and whether we need to group some units to move in unison toward the target
 		//if any point along the path is too dangerous for our single unit, then we hold back
@@ -516,7 +518,9 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				break;
 			}
 
-			movement -= best->second.movement_cost(map_,map_.get_terrain(*i));
+			if(!defensive_grouping) {
+				movement -= best->second.movement_cost(map_,map_.get_terrain(*i));
+			}
 		}
 	}
 
