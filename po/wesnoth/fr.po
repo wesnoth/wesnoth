@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-14 09:27+0100\n"
-"PO-Revision-Date: 2005-02-20 15:40+0100\n"
+"PO-Revision-Date: 2005-02-20 17:00+0100\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr ""
 "<italic>text=Didacticiel</italic> du menu principal. Cela vous conduira à un "
 "apprentissage interactif, qui vous enseignera les bases de Wesnoth. Après "
 "cela, il est recommandé de jouer en premier la campagne L'héritier du "
-"trône : sélectionner <italic>text=Campagne</italic> puis <italic>text='L"
+"trône : sélectionner <italic>text=Campagne</italic> puis <italic>text='L"
 "\\'héritier du trône'</italic>. Comme Bataille pour Wesnoth peut être plutôt "
 "ardu, vous pourriez commencer en mode <italic>text=Facile</italic>."
 
@@ -250,7 +250,7 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
-"Le déplacement dans Bataille pour Wesnoth est simple : cliquez sur l'unité à "
+"Le déplacement dans Bataille pour Wesnoth est simple : cliquez sur l'unité à "
 "déplacer, puis cliquez sur l'hexagone vers lequel vous voulez la déplacer. "
 "Une fois l'unité sélectionnée, tous les hexagones qu'elle peut atteindre ce "
 "tour-ci sont éclairés, et les autres sont grisés. Passer la souris sur une "
@@ -402,7 +402,7 @@ msgid ""
 "chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Il y a deux exceptions à cette règle : <ref>dst=magical_attacks text='les "
+"Il y a deux exceptions à cette règle : <ref>dst=magical_attacks text='les "
 "attaques enchantées'</ref> et le <ref>dst=ability_marksman text='tireur d"
 "\\'élite'</ref>. Les attaques magiques ont toujours une probabilité de "
 "toucher de 70%, sans tenir compte du terrain, et les tireurs d'élite ont "
@@ -435,7 +435,7 @@ msgstr ""
 "Chaque coup qui porte inflige une quantité initiale de dégâts fonction du "
 "type d'attaque. Par exemple, un guerrier elfe avec une attaque à l'épée 5-4 "
 "cause 5 points de dégâts comme base. C'est habituellement modifié par deux "
-"facteurs : <ref>dst=damage_type_and_resistance text='la résistance'</ref> et "
+"facteurs : <ref>dst=damage_type_and_resistance text='la résistance'</ref> et "
 "<ref>dst=time_of_day text='la période de la journée'</ref>, lesquels sont "
 "expliqués ci-dessous."
 
@@ -468,7 +468,7 @@ msgid ""
 "damage which they take from certain damage types."
 msgstr ""
 "Dans Wesnoth, il y a trois types de dégâts habituellement associés avec des "
-"attaques physiques : tranchant, perforant et contondant. Par ailleurs, il y "
+"attaques physiques : tranchant, perforant et contondant. Par ailleurs, il y "
 "a trois autres types de dégâts communément associés avec des attaques "
 "enchantées : feu, froid et sacré. Des unités différentes peuvent avoir des "
 "résistances qui modifient la quantité de dégâts subis face à certains types "
@@ -489,7 +489,7 @@ msgstr ""
 "Les résistances fonctionnent très simplement. Si une unité a 40 % de "
 "résistance contre un type de dégâts, alors elle subit 40 % de dommages en "
 "moins sur un coup de ce type. Il est également possible pour une unité "
-"d'avoir une faiblesse ; si une unité a -100 % de résistance contre un type "
+"d'avoir une faiblesse ; si une unité a -100 % de résistance contre un type "
 "de dégâts, elle subira 100 % de dommages en plus sur une touche de ce type."
 
 #: data/help.cfg:128
@@ -527,7 +527,7 @@ msgstr ""
 "entre le jour et la nuit. L'heure courante peut être observée sous la mini-"
 "carte en haut à droite.\n"
 "\n"
-"Le cycle habituel jour/nuit est le suivant :\n"
+"Le cycle habituel jour/nuit est le suivant :\n"
 "\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
@@ -587,7 +587,7 @@ msgid ""
 "perpetually night!"
 msgstr ""
 "Gardez à l'esprit que certains scénarios se déroulent sous terre, où il fait "
-"perpétuellement nuit !"
+"perpétuellement nuit !"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
@@ -659,7 +659,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Repos : Une unité qui ne bouge pas, n'attaque pas, et ne se fait pas "
+"Repos : Une unité qui ne bouge pas, n'attaque pas, et ne se fait pas "
 "attaquer, se soignera de 2 PV à son prochain tour."
 
 #: data/help.cfg:173
@@ -668,7 +668,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Villages : Une unité qui commence un tour dans un village se soignera de 8 "
+"Villages : Une unité qui commence un tour dans un village se soignera de 8 "
 "PV."
 
 #: data/help.cfg:174
@@ -678,7 +678,7 @@ msgid ""
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Régénération</ref> : Certaines unités "
+"<ref>dst=ability_regeneration text=Régénération</ref> : Certaines unités "
 "(telles les trolls) guériront automatiquement de 8 PV à chaque tour."
 
 #: data/help.cfg:175
@@ -690,7 +690,7 @@ msgid ""
 "damage."
 msgstr ""
 "\n"
-"Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals "
+"Pouvoir de soin : Les unités avec la capacité <ref>dst=ability_heals "
 "text=Soin</ref> soigneront chaque tour toutes les unités amicales adjacentes "
 "de 4 PV chacune, dans la limite de 8 PV en tout, ou empêcheront le poison "
 "d'infliger des dégâts."
@@ -705,7 +705,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures "
+"Pouvoir de guérison : Les unités avec la capacité <ref>dst=ability_cures "
 "text=Guérison</ref> soigneront chaque tour toutes les unités amicales "
 "adjacentes de 8 PV chacune, dans la limite de 18 PV en tout, ou guériront de "
 "l'empoisonnement."
@@ -824,7 +824,7 @@ msgstr ""
 "stratégie de base, ou vous familiariser avec les <ref>dst=traits "
 "text=traits</ref> et les <ref>dst=abilities text=Capacités</ref>, mais vous "
 "connaissez maintenant tout ce qu'il vous faut savoir pour jouer le scénario "
-"L'héritier du trône. Amusez-vous bien et bonne chance !"
+"L'héritier du trône. Amusez-vous bien et bonne chance !"
 
 #: data/help.cfg:203 src/titlescreen.cpp:188
 msgid "About"
@@ -1545,7 +1545,7 @@ msgstr "Que dois-je faire ensuite ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:63
 msgid "How do I recruit units?"
-msgstr "Comment recruter une unité ?"
+msgstr "Comment recruter une unité ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:63
 msgid ""
@@ -1556,10 +1556,10 @@ msgid ""
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 "Pour recruter une unité, faites un clic droit sur la case du château où vous "
-"vous enrôler cette unité. Puis choisissez « Recruter », ou maintenez le "
-"curseur sur la case et appuyez sur « Ctrl-R ». Ensuite, choisissez le type "
-"d'unité à enrôler et appuyez sur « Ok ». Pour recruter plus vite, vous "
-"pouvez appuyer sur « Ctrl-Shift-R » pour enrôler une unité du même type que "
+"vous enrôler cette unité. Puis choisissez « Recruter », ou maintenez le "
+"curseur sur la case et appuyez sur « Ctrl-R ». Ensuite, choisissez le type "
+"d'unité à enrôler et appuyez sur « Ok ». Pour recruter plus vite, vous "
+"pouvez appuyer sur « Ctrl-Shift-R » pour enrôler une unité du même type que "
 "la précédente unité enrôlée."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:64
@@ -1577,7 +1577,7 @@ msgstr ""
 "château adjacentes. Les meneurs sont généralement des unités puissantes à "
 "raison d'une seule par camp. Aussi, votre meneur est généralement la "
 "première des unités que vous contrôlez, et il commence sur un donjon. Vous "
-"pouvez atteindre rapidement votre meneur en appuyant sur « l ». Si votre "
+"pouvez atteindre rapidement votre meneur en appuyant sur « l ». Si votre "
 "meneur meurt, vous perdez la partie. Vous pouvez gagner la plupart des "
 "scénarios en vainquant tous les meneurs ennemis."
 
@@ -1587,7 +1587,7 @@ msgstr "Qu'est-ce qu'un meneur ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid "How should I choose what kind of units to recruit?"
-msgstr "Comment choisir quel type d'unité recruter ?"
+msgstr "Comment choisir quel type d'unité recruter ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid ""
@@ -1635,7 +1635,7 @@ msgstr "Vous avez terminé votre tour avec succès."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:87
 msgid "How do I end my turn?"
-msgstr "Comment terminer mon tour ?"
+msgstr "Comment terminer mon tour ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:87
 msgid ""
@@ -1643,7 +1643,7 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
-"Une méthode pour terminer votre tour est d'appuyer sur « Alt-E ». Autrement, "
+"Une méthode pour terminer votre tour est d'appuyer sur « Alt-E ». Autrement, "
 "vous pouvez faire un clic-droit et choisir Fin de tour, ou cliquer sur le "
 "bouton Fin de tour dans le coin inférieur droit."
 
@@ -1694,7 +1694,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid "How far can my Elvish Fighter move?"
-msgstr "Jusqu'où mon guerrier elfe peut-il se déplacer ?"
+msgstr "Jusqu'où mon guerrier elfe peut-il se déplacer ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid ""
@@ -1738,11 +1738,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:123
 msgid "What's the zone of control?"
-msgstr "Qu'est-ce que la zone de contrôle ?"
+msgstr "Qu'est-ce que la zone de contrôle ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:124
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr "Comment savoir qui est allié et qui est ennemi ?"
+msgstr "Comment savoir qui est allié et qui est ennemi ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:124
 msgid ""
@@ -1784,7 +1784,7 @@ msgstr "Vous avez attaqué Merle avec succès."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid "Can Merle retaliate from my attack?"
-msgstr "Est-ce que Merle peut riposter à mon attaque ?"
+msgstr "Est-ce que Merle peut riposter à mon attaque ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid ""
@@ -1837,7 +1837,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr "Comment connaître la puissance des attaques d'une unité ?"
+msgstr "Comment connaître la puissance des attaques d'une unité ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid ""
@@ -1852,7 +1852,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid "Will my fighter hit every time when he attacks?"
-msgstr "Est-ce que mon guerrier touchera à chaque fois qu'il attaquera ?"
+msgstr "Est-ce que mon guerrier touchera à chaque fois qu'il attaquera ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:158
 msgid "End your turn, and wait for Merle to attack you."
@@ -1871,7 +1871,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "What's experience?"
-msgstr "Qu'est-ce que l'expérience ?"
+msgstr "Qu'est-ce que l'expérience ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1890,7 +1890,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
-msgstr "Que se passe-t-il lorsqu'une unité progresse ?"
+msgstr "Que se passe-t-il lorsqu'une unité progresse ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1920,7 +1920,7 @@ msgstr "Les villages soignent les unité qui sont dessus."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "What happens when a unit moves onto a village?"
-msgstr "Que se passe-t-il lorsqu'une unité rejoint un village ?"
+msgstr "Que se passe-t-il lorsqu'une unité rejoint un village ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid ""
@@ -1944,7 +1944,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr "Comment se soigner lorsqu'il n'y a pas de villages à proximité ?"
+msgstr "Comment se soigner lorsqu'il n'y a pas de villages à proximité ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid ""
@@ -1959,7 +1959,7 @@ msgstr ""
 "pas et ne combat pas pendant 1 tour, elle regagne 2 PV par le repos. "
 "Cependant si un ennemi l'attaque, elle ne peut pas recevoir de soins par le "
 "repos. Par ailleurs, il y a des unités qui soignent les unités qui les "
-"entourent. Le chaman elfe est une telle unité ; les unités à côté d'un "
+"entourent. Le chaman elfe est une telle unité ; les unités à côté d'un "
 "chaman elfe regagnent 4 PV par tour. En dernier lieu, lorsque vous gagnez un "
 "niveau toutes vos unités sont soignées en totalité."
 
@@ -2017,8 +2017,8 @@ msgstr "Hourra !"
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
-"Comment savoir que faire pour terminer un scénario ? Me le direz vous "
-"toujours ?"
+"Comment savoir que faire pour terminer un scénario ? Me le direz vous "
+"toujours ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid ""
@@ -2032,14 +2032,14 @@ msgstr ""
 "Parfois il ne suffit pas de suivre les dialogues pour savoir comment gagner "
 "un scénario. Dans ce cas, regardez les objectifs du scénarios, qui "
 "apparaissent après le dialogue d'ouverture. Ils peuvent être vus à nouveau "
-"en cliquant sur « Objectifs » dans le menu. Les objectifs du scénario sont "
+"en cliquant sur « Objectifs » dans le menu. Les objectifs du scénario sont "
 "une liste de conditions de victoire et de conditions de défaites, et si "
 "l'une ou l'autre est remplie, le niveau est fini. Espérons que ce soit une "
 "condition de victoire qui fut remplie."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
-msgstr "Que se passe-t-il lorsque je gagne un scénario ?"
+msgstr "Que se passe-t-il lorsque je gagne un scénario ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid ""
@@ -2055,7 +2055,7 @@ msgstr ""
 "victoire, tous les villages se rendent à vous immédiatement lors de celle-"
 "ci. Cependant 20 % de votre or est perdu entre deux scénarios."
 
-# Pourquoi changer scenario en niveau ?
+# Pourquoi changer scenario en niveau ?
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
 msgid "Do you want to review any of the skills learned in this scenario?"
@@ -2070,7 +2070,7 @@ msgstr "Oui"
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
 msgid "I'm done reviewing skills!"
-msgstr "J'ai fini de revoir les compétences !"
+msgstr "J'ai fini de revoir les compétences !"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:281
 msgid ""
@@ -2172,7 +2172,7 @@ msgstr "Que se passe-t-il quand je rappelle une unité ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid "How should I decide which units to recall?"
-msgstr "Comment choisir quelles unités rappeler ?"
+msgstr "Comment choisir quelles unités rappeler ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:80
 msgid ""
@@ -2184,7 +2184,7 @@ msgstr ""
 "Vous devriez généralement rappeler les unités qui ont déjà atteint le niveau "
 "suivant. Cependant, vous pourriez vouloir rappeler les unités avec une fort "
 "expérience et qui seront donc susceptibles de progresser. Vous devriez "
-"rappeler des unités qui seront utiles pour le scénario en cours ; par "
+"rappeler des unités qui seront utiles pour le scénario en cours ; par "
 "exemple dans un scénario forestier, rappelez des elfes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:89
@@ -2227,14 +2227,14 @@ msgstr ""
 "Il y a cinq caractéristiques différentes, qui présentent des effets allant "
 "de l'augmentation du nombre de points de vie à la diminution du nombre de "
 "points d'expérience nécessaire pour progresser. Cependant toutes les "
-"caractéristiques sont conçues pour améliorer la puissance d'une unité ; il "
-"n'y a pas de caractéristiques « négatives ». La plupart des unités ont la "
+"caractéristiques sont conçues pour améliorer la puissance d'une unité ; il "
+"n'y a pas de caractéristiques « négatives ». La plupart des unités ont la "
 "même probabilité de recevoir deux caractéristiques distinctes lors de leur "
 "recrutement."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "What kind of traits can my units get?"
-msgstr "Quel type de caractéristique mon unité peut-elle avoir ?"
+msgstr "Quel type de caractéristique mon unité peut-elle avoir ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:104
 msgid ""
@@ -2247,7 +2247,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
-msgstr "Combien d'or coûte mon unité ?"
+msgstr "Combien d'or coûte mon unité ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid ""
@@ -2271,7 +2271,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid "How do I get gold?"
-msgstr "Comment est-ce que je gagne de l'or ?"
+msgstr "Comment est-ce que je gagne de l'or ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid ""
@@ -2307,8 +2307,8 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
-"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 "
-"périodes dans la journée : le jour, le crépuscule et la nuit. Durant la "
+"Il existe 3 alignements : loyal, neutre et chaotique. Il y a aussi 3 "
+"périodes dans la journée : le jour, le crépuscule et la nuit. Durant la "
 "journée, les unités d'alignement loyal, comme les humains, font 25% de "
 "dégâts en plus, alors que les unités chaotiques, tels les mort-vivants, font "
 "25% en moins. De nuit, c'est l'inverse. Au crépuscule, toutes les unités "
@@ -2317,11 +2317,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:122
 msgid "What are the different alignments and times of day?"
-msgstr "Quels sont les différents alignements et les périodes de la journée ?"
+msgstr "Quels sont les différents alignements et les périodes de la journée ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid "How do I know what time of day it is?"
-msgstr "Comment savoir quelle est la période de la journée actuelle ?"
+msgstr "Comment savoir quelle est la période de la journée actuelle ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid ""
@@ -2332,7 +2332,7 @@ msgid ""
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
-"Les périodes de la journée se déroulent en ordre : aube -> identique au "
+"Les périodes de la journée se déroulent en ordre : aube -> identique au "
 "crépuscule, matin -> jour, après-midi -> jour, crépuscule, premier quart -> "
 "nuit, second quart -> nuit, puis on reprend au début. C'est représenté par "
 "le soleil et la lune qui se lève à l'est et se couche à l'ouest. Cependant, "
@@ -2367,11 +2367,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
-msgstr "Quelles sont les différentes propriétés des terrains ?"
+msgstr "Quelles sont les différentes propriétés des terrains ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid "How do I find out the properties of a specific terrain?"
-msgstr "Comment trouver les propriétés d'un terrain particulier ?"
+msgstr "Comment trouver les propriétés d'un terrain particulier ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid ""
@@ -2421,7 +2421,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
-msgstr "Comment la résistance affecte-t-elle les dommages ?"
+msgstr "Comment la résistance affecte-t-elle les dommages ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid ""
@@ -2432,9 +2432,9 @@ msgid ""
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then look at Resistances."
 msgstr ""
-"Il y a 6 types de dégâts différents : tranchant, perforant, contondant, feu, "
+"Il y a 6 types de dégâts différents : tranchant, perforant, contondant, feu, "
 "froid et sacré. Des unités fortement blindées ont une résistance élevée face "
-"aux attaques physiques : tranchante, perforante et contondante, mais une "
+"aux attaques physiques : tranchante, perforante et contondante, mais une "
 "faible résistance face aux attaques enchantées : feu et froid. Toutes les "
 "unités vivantes ont une résistance face au sacré alors que les mort-vivants "
 "sont extrêmement faibles face à lui. Pour trouver la résistance d'une unité "
@@ -2443,7 +2443,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
-msgstr "Quels sont les différents types de dégâts ?"
+msgstr "Quels sont les différents types de dégâts ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
 msgid ""
@@ -2464,7 +2464,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What do specialties do?"
-msgstr "Que font les spécialités ?"
+msgstr "Que font les spécialités ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid ""
@@ -2475,13 +2475,13 @@ msgid ""
 msgstr ""
 "Les spécialités d'une unité sont fonctions de son type d'unité; par exemple "
 "tous les généraux ont la spécialité commandement. Il y a deux types de "
-"spécialités : les capacités et les attaques spéciales. Les capacités "
+"spécialités : les capacités et les attaques spéciales. Les capacités "
 "s'appliquent aux unités alors que les attaques spéciales ne s'appliquent "
 "qu'à une seule attaque de l'unité."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
-msgstr "Quelles unités reçoivent des spécialités ?"
+msgstr "Quelles unités reçoivent des spécialités ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid ""
@@ -2493,18 +2493,18 @@ msgid ""
 msgstr ""
 "Il y a de nombreuses spécialités différentes, et apprendre à les connaître "
 "fait partie des points intéressants de Wesnoth. Les deux spécialités les "
-"plus fréquentes sont « enchantée » et « commandement ». Les attaques "
+"plus fréquentes sont « enchantée » et « commandement ». Les attaques "
 "enchantées ont 70 % de chances de toucher les ennemis quel que soit le "
-"terrain. Les unités à côté d'une unité de plus haut niveau avec « "
-"commandement » font plus de dégâts."
+"terrain. Les unités à côté d'une unité de plus haut niveau avec « "
+"commandement » font plus de dégâts."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
-msgstr "Quel type de spécialités peuvent avoir mes unités ?"
+msgstr "Quel type de spécialités peuvent avoir mes unités ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid "How do I use specialties?"
-msgstr "Comment utiliser les spécialités ?"
+msgstr "Comment utiliser les spécialités ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid ""
@@ -2549,11 +2549,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "What kind of objects am I likely to encounter?"
-msgstr "Quel type d'objets puis-je renconter ?"
+msgstr "Quel type d'objets puis-je renconter ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
 msgid "How long do these objects last?"
-msgstr "Combien de temps durent ces objets ?"
+msgstr "Combien de temps durent ces objets ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
 msgid ""
@@ -2586,7 +2586,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
 msgid "How do I play a campaign?"
-msgstr "Comment jouer une campagne ?"
+msgstr "Comment jouer une campagne ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
 msgid ""
@@ -2594,13 +2594,13 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
-"Pour jouer une campagne, démarrer Wesnoth, choisir « Campagne », puis la "
+"Pour jouer une campagne, démarrer Wesnoth, choisir « Campagne », puis la "
 "campagne à jouer, et enfin choisir la difficulté facile, normal ou "
 "difficile. L'héritier du trône est suggéré pour les débutants."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
 msgid "How do I play multiplayer?"
-msgstr "Comment jouer en mode multi-joueurs ?"
+msgstr "Comment jouer en mode multi-joueurs ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
 msgid ""
@@ -2609,7 +2609,7 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
-"Pour jouer à Wesnoth contre d'autres personnes, choisir « Multi-joueurs ». "
+"Pour jouer à Wesnoth contre d'autres personnes, choisir « Multi-joueurs ». "
 "Puis 'Rejoindre le serveur officiel'. Cela vous connectera au serveur "
 "officiel de Wesnoth, à partir duquel vous pourrez choisir une partie et y "
 "participer en sélectionnant 'Rejoindre une partie'."
@@ -2910,7 +2910,7 @@ msgstr ""
 "Toutes les unités ont une zone de contrôle sur chacun des hexagones qui leur "
 "sont adjacents. Si une unité se déplace dans la zone de contrôle ennemie "
 "elle ne peut faire aucun autre mouvement pour ce tour. Les unités de niveau "
-"0 sont trop faibles pour contrôler une zone ; les unités tirailleuses sont "
+"0 sont trop faibles pour contrôler une zone ; les unités tirailleuses sont "
 "quant à elle suffisamment habiles pour ignorer ces zones."
 
 #: data/tips.cfg:8
@@ -3462,7 +3462,7 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
-"Enchantée :\n"
+"Enchantée :\n"
 "Cette attaque a toujours 70 % de chance d'atteindre sa cible."
 
 #: data/translations/english.cfg:111
@@ -3481,7 +3481,7 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
-"Peste :\n"
+"Peste :\n"
 "Quand une unité est tuée par une telle attaque, elle est remplacée par une "
 "unité identique et dans la même armée que celle ayant porté l'attaque (cela "
 "ne marche pas contre les mort-vivants ou les unités stationnées dans les "
@@ -3520,7 +3520,7 @@ msgstr ""
 "Cette attaque transforme la cible en pierre. Les unités ainsi pétrifiées ne "
 "peuvent plus ni se déplacer, ni attaquer."
 
-# XXX Une note pour les traducteurs :
+# XXX Une note pour les traducteurs :
 # Ne pas chercher à traduire l'anglais exactement pour les noms de villages.
 # À la place, générer des noms de lieu qui sonnent français, sans aucune
 # limite. Plus il y a d'alternatives, mieux c'est. Éventuellement en répétant
@@ -3612,7 +3612,7 @@ msgstr ""
 msgid "touch"
 msgstr "toucher"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Ancient_Lich.cfg:23 data/units/Ancient_Lich.cfg:36
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
 #: data/units/Dark_Queen.cfg:33 data/units/Dark_Queen.cfg:34
@@ -3698,7 +3698,7 @@ msgstr ""
 msgid "crush"
 msgstr "écrasement"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Ancient_Wose.cfg:20 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:117 data/units/Bandit.cfg:20
 #: data/units/Cave_Spider.cfg:29 data/units/Cuttle_Fish.cfg:20
@@ -3791,7 +3791,7 @@ msgstr "bâton"
 msgid "fireball"
 msgstr "boule de feu"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Arch_Mage.cfg:45 data/units/Arch_Mage.cfg:138
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
@@ -3839,7 +3839,7 @@ msgstr ""
 msgid "dagger"
 msgstr "dague"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Assassin.cfg:22 data/units/Assassin.cfg:53
 #: data/units/Assassin.cfg:101 data/units/Assassin.cfg:132
 #: data/units/Battle_Princess.cfg:24 data/units/Battle_Princess.cfg:62
@@ -4046,7 +4046,7 @@ msgstr ""
 msgid "scepter of fire"
 msgstr "sceptre de feu"
 
-# Changer "sanglante" en "sanguinaire" ?
+# Changer "sanglante" en "sanguinaire" ?
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
 msgstr "Chauve-souris sanglante"
@@ -4085,7 +4085,7 @@ msgid ""
 msgstr ""
 "Ceux-ci, que leurs maîtres ont trouvés plus puissants, ont été équipés d'un "
 "arsenal réellement vil. Leurs carquois sont remplis de flèches faites non "
-"pas de bois, mais des os de leurs victimes. Surnommés « lanceurs d'os » par "
+"pas de bois, mais des os de leurs victimes. Surnommés « lanceurs d'os » par "
 "leurs infortunés ennemis, ces abominations font la terreur de tous les êtres "
 "vivants."
 
@@ -4113,7 +4113,7 @@ msgstr "flèche"
 msgid "bow"
 msgstr "arc"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Bone_Shooter.cfg:39 data/units/Bowman.cfg:38
 #: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
 #: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:56
@@ -4309,7 +4309,7 @@ msgstr "charge"
 msgid "Cockatrice"
 msgstr "Cockatrice"
 
-# XXX Dans la VO, la denière phrase est-elle vraiment nécessaire ?
+# XXX Dans la VO, la denière phrase est-elle vraiment nécessaire ?
 # Spoiler inutile à la description, àmha.
 #: data/units/Cockatrice.cfg:16
 msgid ""
@@ -4320,7 +4320,7 @@ msgstr ""
 "À première vue, ces créatures mystiques ressemblant à des serpents semblent "
 "faibles, mais il ne faut pas se fier à leur apparence car d'un simple "
 "regard, les cockatrices peuvent changer en pierre tout ennemi jusqu'à ce que "
-"la source de leur pouvoir soit détruit !"
+"la source de leur pouvoir soit détruit !"
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
@@ -4792,12 +4792,12 @@ msgstr ""
 "mais ils sont également capable de souffler le feu légendaire de leurs "
 "ancêtres."
 
-# TODO: traduire Draug ?
+# TODO: traduire Draug ?
 #: data/units/Draug.cfg:3
 msgid "Draug"
 msgstr "Draug"
 
-# Oh bon sang, il y a des mots que je trouve pas dans mon dico !
+# Oh bon sang, il y a des mots que je trouve pas dans mon dico !
 #: data/units/Draug.cfg:16
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
@@ -4951,8 +4951,8 @@ msgstr ""
 msgid "runic hammer"
 msgstr "marteau runique"
 
-# Ou éclair ?
-# Jean: Au chocolat ?
+# Ou éclair ?
+# Jean: Au chocolat ?
 #: data/units/Dwarvish_Runemaster.cfg:41
 msgid "Lightning bolt"
 msgstr "Foudre"
@@ -4974,7 +4974,7 @@ msgstr ""
 msgid "Dwarvish Stalwart"
 msgstr "Indéfectible nain"
 
-# XXX "des restes" ? Pas convaincu.
+# XXX "des restes" ? Pas convaincu.
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
@@ -5038,7 +5038,7 @@ msgstr ""
 msgid "dragonstick"
 msgstr "bâton du dragon"
 
-# TODO: traduire ulfserker ?
+# TODO: traduire ulfserker ?
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
 msgstr "Nain ulfserker"
@@ -5239,7 +5239,7 @@ msgstr ""
 "héros elfes préfèrent combattre au corps-à-corps à l'épée, mais savent "
 "également manier l'arc."
 
-# TODO: traduction de High Lord ?
+# TODO: traduction de High Lord ?
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
 msgstr "Haut seigneur elfe"
@@ -5520,7 +5520,7 @@ msgstr ""
 msgid "Fire Dragon"
 msgstr "Dragon de feu"
 
-# TODO: underlings ?
+# TODO: underlings ?
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
 "Long lived and terrifying, the fire dragon is a member of the dragon family "
@@ -5657,7 +5657,7 @@ msgstr ""
 "chair humaine, se lèvent d'entre les morts et se retrouvent emprisonnés dans "
 "l'existence torturée d'un goule."
 
-# Démesuré ?
+# Démesuré ?
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
 msgstr "Golem de boue démesuré"
@@ -5823,7 +5823,7 @@ msgstr ""
 "Les grands mages sont de redoutables et terrifiants adversaires, surpassant "
 "même les archimages en puissance."
 
-# Grand -> grande ?
+# Grand -> grande ?
 #: data/units/Great_Mage.cfg:96
 msgid "female^Great Mage"
 msgstr "Grande mage"
@@ -5939,7 +5939,7 @@ msgstr ""
 # Morning star => Morgenstern, c'est un peu traduire de l'anglais à l'allemand,
 # mais il n'y a pas de terme français et cette traduction est généralement
 # acceptée.
-# Jean : Généralement on trouve « étoile du matin » dans les ouvrage du moyen age et les JdR
+# Jean : Généralement on trouve « étoile du matin » dans les ouvrage du moyen age et les JdR
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:46
 #: data/units/Mounted_Commander.cfg:46 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
@@ -6042,7 +6042,7 @@ msgstr ""
 msgid "Lich"
 msgstr "Liche"
 
-# Commited completely => Entièrement tournée ?
+# Commited completely => Entièrement tournée ?
 #: data/units/Lich.cfg:16
 msgid ""
 "Liches are mages that have committed completely to the path of the dark "
@@ -6160,7 +6160,7 @@ msgstr ""
 msgid "lightbeam"
 msgstr "rayon de lumière"
 
-# garder masculin !
+# garder masculin !
 #: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:39 data/units/Mermaid_Priestess.cfg:37
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:46
@@ -7588,7 +7588,7 @@ msgid "blood kiss"
 msgstr "baiser de la mort"
 
 # Bien que l'on trouve parfois zombie dans la littérature, la véritable
-# orthographe est « zombi », zombie étant réservé au zombis femelles (Jean)
+# orthographe est « zombi », zombie étant réservé au zombis femelles (Jean)
 # TODO: à discuter sur la mailing-list, zombie est tout à fait correct et
 # usuel a priori (Cédric)
 #: data/units/Walking_Corpse.cfg:3
@@ -8035,10 +8035,10 @@ msgstr "Sauvegarder le jeu"
 
 #: src/dialogs.cpp:182
 msgid "Overwrite?"
-msgstr "Écraser ?"
+msgstr "Écraser ?"
 
 #: src/dialogs.cpp:183
-msgid "Save already exists. Do you want to overwrite it ?"
+msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Ce fichier existe déjà. Voulez-vous l'écraser ?"
 
 #: src/dialogs.cpp:212 src/dialogs.cpp:444
@@ -8073,7 +8073,7 @@ msgstr "Didacticiel"
 # Le sens est "ralenti", "rediffusion", "relecture", etc.
 # En l'absence d'inspiration, je laisse sans traduction, jusqu'à ce que
 # quelqu'un ait une illumination...
-# Jean: « revoir la partie » ?
+# Jean: « revoir la partie » ?
 #: src/dialogs.cpp:375
 msgid "replay"
 msgstr "film"
@@ -8187,15 +8187,15 @@ msgstr "Le jeu ne peut pas être sauvegardé"
 
 #: src/game.cpp:167 src/game.cpp:907 src/game.cpp:1320
 msgid "The game could not be loaded: "
-msgstr "Le jeu n'a pas pu être chargé : "
+msgstr "Le jeu n'a pas pu être chargé : "
 
 #: src/game.cpp:170 src/game.cpp:909 src/game.cpp:1322
 msgid "Error while playing the game: "
-msgstr "Erreur lors du déroulement de la partie : "
+msgstr "Erreur lors du déroulement de la partie : "
 
 #: src/game.cpp:173 src/game.cpp:1334
 msgid "The game map could not be loaded: "
-msgstr "La carte n'a pas pu être chargée : "
+msgstr "La carte n'a pas pu être chargée : "
 
 #: src/game.cpp:194
 msgid "Do you want to save your game?"
@@ -8203,7 +8203,7 @@ msgstr "Voulez-vous sauvegarder votre jeu ?"
 
 #: src/game.cpp:215
 msgid "Unknown scenario: '"
-msgstr "Scénario inconnu : '"
+msgstr "Scénario inconnu : '"
 
 #: src/game.cpp:611
 msgid "The Battle for Wesnoth"
@@ -8219,7 +8219,7 @@ msgstr ""
 
 #: src/game.cpp:847 src/game.cpp:850
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Le fichier que vous avez essayé de charger est corrompu : '"
+msgstr "Le fichier que vous avez essayé de charger est corrompu : '"
 
 #: src/game.cpp:853
 msgid "File I/O Error while reading the game"
@@ -8268,7 +8268,7 @@ msgstr ""
 
 #: src/game.cpp:1056
 msgid "Server: "
-msgstr "Serveur : "
+msgstr "Serveur : "
 
 #: src/game.cpp:1068
 msgid "Could not connect to host."
@@ -8300,11 +8300,11 @@ msgstr "Taille"
 
 #: src/game.cpp:1128
 msgid "Publish campaign: "
-msgstr "Diffuser la campagne : "
+msgstr "Diffuser la campagne : "
 
 #: src/game.cpp:1132
 msgid "Delete campaign: "
-msgstr "Effacer la campagne : "
+msgstr "Effacer la campagne : "
 
 #: src/game.cpp:1136
 msgid "There are no campaigns available for download from this server."
@@ -8352,7 +8352,7 @@ msgstr "Tentative de connexion expirée"
 
 #: src/game.cpp:1199 src/game.cpp:1237 src/game.cpp:1262
 msgid "The server responded with an error: \""
-msgstr "Le serveur a renvoyé une erreur : \""
+msgstr "Le serveur a renvoyé une erreur : \""
 
 #: src/game.cpp:1203
 msgid "Terms"
@@ -8416,11 +8416,11 @@ msgstr "Choisissez votre langue"
 
 #: src/game.cpp:1399
 msgid "Error loading game configuration files: '"
-msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
+msgstr "Erreur lors du chargement des fichiers de configuration du jeu : « "
 
 #: src/game.cpp:1400
 msgid "' (The game will now exit)"
-msgstr " » (Le jeu va maintenant se terminer)"
+msgstr " » (Le jeu va maintenant se terminer)"
 
 #: src/help.cpp:1022
 msgid "Advances to"
@@ -8676,7 +8676,7 @@ msgstr "Créer une partie"
 
 #: src/multiplayer.cpp:181
 msgid "Name of game:"
-msgstr "Nom du jeu :"
+msgstr "Nom du jeu :"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
@@ -8684,11 +8684,11 @@ msgstr "Jeu de $login"
 
 #: src/multiplayer.cpp:195
 msgid "Map to play:"
-msgstr "Carte à jouer :"
+msgstr "Carte à jouer :"
 
 #: src/multiplayer.cpp:291
 msgid "Era:"
-msgstr "Ère :"
+msgstr "Ère :"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
@@ -8696,7 +8696,7 @@ msgstr "Vous devez entrer un nom."
 
 #: src/multiplayer.cpp:363
 msgid "Turns: "
-msgstr "Tours : "
+msgstr "Tours : "
 
 #: src/multiplayer.cpp:367
 msgid "unlimited"
@@ -8704,15 +8704,15 @@ msgstr "illimité"
 
 #: src/multiplayer.cpp:380
 msgid "Village Gold: "
-msgstr "Or par village : "
+msgstr "Or par village : "
 
 #: src/multiplayer.cpp:393
 msgid "Experience Requirements: "
-msgstr "Expérience requise : "
+msgstr "Expérience requise : "
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
 msgid "Players: "
-msgstr "Joueurs : "
+msgstr "Joueurs : "
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -8782,14 +8782,14 @@ msgstr "Montrer les actions déjà effectuées jusqu'au point de sauvegarde ?"
 msgid "?"
 msgstr "?"
 
-# il faudrait choisir une traduction de leader une fois pour toute :)
+# il faudrait choisir une traduction de leader une fois pour toute :)
 #: src/multiplayer_client.cpp:790
 msgid "Leader: "
-msgstr "Chef : "
+msgstr "Chef : "
 
 #: src/multiplayer_client.cpp:792
 msgid "Recruits: "
-msgstr "Recrutements : "
+msgstr "Recrutements : "
 
 #: src/multiplayer_connect.cpp:54
 msgid " Computer vs Computer "
@@ -9264,7 +9264,7 @@ msgid ""
 msgstr ""
 "Cette unité est empoisonnée. Elle perdra 8 points de vie chaque tour jusqu'à "
 "ce qu'elle reçoive des soins en se rendant dans un village ou en se faisant "
-"soigner par une unité possédant la capacité « soin ».\n"
+"soigner par une unité possédant la capacité « soin ».\n"
 "\n"
 "Une unité ne peut pas être tuée simplement par du poison. Celui-ci ne fera "
 "pas baisser ses points de vie en dessous de 1."
