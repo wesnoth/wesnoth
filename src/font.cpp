@@ -24,6 +24,7 @@
 #include "tooltips.hpp"
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -583,6 +584,53 @@ surface get_rendered_text(const std::string& str, int size, const SDL_Color& col
 {
 	return render_text(str, size, colour, style);
 }
+
+//measure a single line of ucs2 text with a specific font_size and style
+//without newline chars.
+SDL_Rect measure_ucs2_text_line(ucs2_string::const_iterator first, ucs2_string::const_iterator last, int font_size, int style) {
+	wassert(last - first >= 0);
+
+	ucs2_string chunk((last - first ) + 2);
+
+	SDL_Rect rect;
+	rect.w = 0;
+	rect.h = 0;
+	int current_font = 0;
+
+	if(*first < font_map.size() && font_map[*first] >= 0) {
+		current_font = font_map[*first];
+	}	
+
+	for(;first != last; ++first) {
+		if(*first < font_map.size() && font_map[*first] >= 0 && font_map[*first] != current_font) {
+			TTF_Font* ttfont = get_font(font_id(current_font, font_size));
+			if(ttfont == NULL) {
+				chunk.clear();
+				continue;
+			}
+			chunk.push_back(0);
+			font_style_setter const style_setter(ttfont, style);
+			TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+			rect.w += rect.x;
+			rect.h = maximum<int>(rect.h, rect.y);
+			chunk.clear();
+			current_font = font_map[*first];
+		}
+		chunk.push_back(*first);
+	}
+	if (!chunk.empty()) {
+		TTF_Font* ttfont = get_font(font_id(current_font, font_size));
+		chunk.push_back(0);
+		font_style_setter const style_setter(ttfont, style);
+		TTF_SizeUNICODE(ttfont, (Uint16 const *)&chunk.front(), (int*)&rect.x, (int*)&rect.y);
+		rect.w += rect.x;
+		rect.h = maximum<int>(rect.h, rect.y);
+	}
+	rect.x = 0;
+	rect.y = 0;
+	return rect;
+}
+
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		   const SDL_Color& colour, const std::string& text,
