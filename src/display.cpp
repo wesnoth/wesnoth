@@ -2211,6 +2211,12 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		ypos += font::get_floating_label_rect(m->handle).h;
 	}
 
+	SDL_Color speaker_colour = {255,255,255,255};
+	if(side >= 1) {
+		speaker_colour = team::get_side_colour(side);
+	}
+	
+	SDL_Color message_colour = chat_message_colour;
 	std::stringstream str;
 	std::stringstream message_str;
 	message_str << msg;
@@ -2218,6 +2224,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		if(action) {
 			str << "<" << speaker;
 			message_str << ">";
+			message_colour = speaker_colour;
 		} else {
 			str << "<" << speaker << ">";
 		}
@@ -2225,22 +2232,19 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		if(action) {
 			str << "*" << speaker;
 			message_str << "*";
+			message_colour = speaker_colour;
 		} else {
 			str << "*" << speaker << "*";
 		}
 	}
 
-	SDL_Color speaker_colour = {255,255,255,255};
-	if(side >= 1) {
-		speaker_colour = team::get_side_colour(side);
-	}
 
 	const SDL_Rect rect = map_area();
 	const int speaker_handle = font::add_floating_label(str.str(),font::SIZE_SMALL,speaker_colour,
-	                                                   rect.x+chat_message_x,rect.y+ypos,
-													   0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
+		rect.x+chat_message_x,rect.y+ypos,
+		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
-	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,chat_message_colour,
+	const int message_handle = font::add_floating_label(message_str.str(),font::SIZE_SMALL,message_colour,
 		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
 		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
