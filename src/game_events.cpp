@@ -400,6 +400,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//modifications of some attributes of a side: gold, income, team name
 	else if(cmd == "modify_side") {
+		std::cerr << "modifying side...\n";
 		const std::string& side = cfg["side"];
 		const std::string& income = cfg["income"];
 		const std::string& team_name = cfg["team_name"];
@@ -408,7 +409,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const size_t team_index = side_num-1;
 
 		if(team_index < teams->size()) {
+			std::cerr << "modifying team: " << team_index << "\n";
 			if(!team_name.empty()) {
+				std::cerr << "change team to team_name '" << team_name << "'\n";
 				(*teams)[team_index].change_team(team_name);
 			}
 
@@ -1032,7 +1035,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	}
 
 	else if(cmd == "kill") {
-		for(unit_map::iterator un = units->begin(); un != units->end();) {
+		unit_map::iterator un = units->begin();
+		while(un != units->end()) {
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
 					screen->scroll_to_tile(un->first.x,un->first.y,display::WARP);
@@ -1042,6 +1046,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				if(cfg["fire_event"] == "yes") {
 					gamemap::location loc = un->first;
 					game_events::fire("die",loc,un->first);
+					un = units->find(loc);
+					if(un == units->end()) {
+						un = units->begin();
+						continue;
+					}
 				}
 				units->erase(un++);
 			} else {
