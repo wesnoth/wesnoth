@@ -600,16 +600,16 @@ void show_preferences_dialog(display& disp)
 
 	gui::button show_ai_moves_button(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK);
 	show_ai_moves_button.set_check(!show_ai_moves());
-	show_ai_moves_button.set_location(slider_left,sound_pos + 80 + 100);
+	show_ai_moves_button.set_location(slider_left,buttons_pos + 100);
 
 	gui::button grid_button(disp,string_table["grid_button"],gui::button::TYPE_CHECK);
 	grid_button.set_check(grid());
 
-	grid_button.set_location(slider_left,buttons_pos  + 100);
+	grid_button.set_location(slider_left,buttons_pos  + 150);
 
 	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
-	floating_labels_button.set_location(slider_left,buttons_pos + 150);
+	floating_labels_button.set_location(slider_left,buttons_pos + 200);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_location(slider_left,buttons_pos + 250);

@@ -1164,7 +1164,8 @@ void turn_info::end_turn()
 	config snapshot;
 	write_game_snapshot(snapshot);
 	try {
-		recorder.save_game(gameinfo_,string_table["auto_save"],snapshot,state_of_game_.starting_pos);
+		config starting_pos;
+		recorder.save_game(gameinfo_,string_table["auto_save"],snapshot,starting_pos,false);
 	} catch(gamestatus::save_game_failed& e) {
 		gui::show_dialog(gui_,NULL,"",string_table["auto_save_game_failed"],gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
@@ -1532,11 +1533,7 @@ void turn_info::write_game_snapshot(config& start) const
 	status_.write(start);
 	game_events::write_events(start);
 
-	write_game(state_of_game_,start);
-
-	//clear any unnecessary children that we don't want in a snapshot
-	start.clear_children("snapshot");
-	start.clear_children("replay_start");
+	write_game(state_of_game_,start,WRITE_SNAPSHOT_ONLY);
 
 	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
 

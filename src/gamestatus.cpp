@@ -247,15 +247,15 @@ game_state read_game(game_data& data, const config* cfg)
 		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
 	}
 
-	statistics::fresh_stats();
 	if(cfg->child("statistics")) {
+		statistics::fresh_stats();
 		statistics::read_stats(*cfg->child("statistics"));
 	}
 
 	return res;
 }
 
-void write_game(const game_state& game, config& cfg)
+void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
 	cfg["label"] = game.label;
@@ -280,12 +280,15 @@ void write_game(const game_state& game, config& cfg)
 		cfg.add_child("unit",new_cfg);
 	}
 
-	if(game.replay_data.child("replay") == NULL) {
-		cfg.add_child("replay",game.replay_data);
+	if(mode == WRITE_FULL_GAME) {
+		if(game.replay_data.child("replay") == NULL) {
+			cfg.add_child("replay",game.replay_data);
+		}
+		
+		cfg.add_child("snapshot",game.snapshot);
+		cfg.add_child("replay_start",game.starting_pos);
+		cfg.add_child("statistics",statistics::write_stats());
 	}
-
-	cfg.add_child("snapshot",game.snapshot);
-	cfg.add_child("replay_start",game.starting_pos);
 
 	std::stringstream can_recruit;
 	std::copy(game.can_recruit.begin(),game.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
@@ -296,8 +299,6 @@ void write_game(const game_state& game, config& cfg)
 		can_recruit_str.resize(can_recruit_str.size()-1);
 
 	cfg["can_recruit"] = can_recruit_str;
-
-	cfg.add_child("statistics",statistics::write_stats());
 }
 
 //a structure for comparing to save_info objects based on their modified time.

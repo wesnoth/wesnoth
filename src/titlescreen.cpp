@@ -170,7 +170,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::string style = "mainmenu";
 	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
 
-	gui::button next_tip_button(screen,string_table["next_tip"]);
+	gui::button next_tip_button(screen,string_table["next_tip"],button::TYPE_PRESS,"lite_small");
 
 	std::string tip_of_day = get_tip_of_day(ntip);
 	if(tip_of_day.empty() == false) {
@@ -185,7 +185,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 		area.w = maximum<size_t>(area.w,tome_area.w) + 2*pad;
 		area.h += tome_area.h + next_tip_button.location().h + 3*pad;
 
-		area.x = game_config::title_tip_x;
+		area.x = main_dialog_area.x - (game_config::title_tip_x*screen.x())/1024 - area.w;
 		area.y = main_dialog_area.y + main_dialog_area.h - area.h;
 
 		next_tip_button.set_location(area.x+area.w-next_tip_button.location().w - pad,area.y+area.h - pad - next_tip_button.location().h);

@@ -232,10 +232,11 @@ void replay::save_game(game_data& data, const std::string& label, const config& 
 	saveInfo_.snapshot = snapshot;
 	saveInfo_.starting_pos = starting_pos;
 
-	if(include_replay)
+	if(include_replay) {
 		saveInfo_.replay_data = cfg_;
-	else
+	} else {
 		saveInfo_.replay_data = config();
+	}
 
 	saveInfo_.label = label;
 

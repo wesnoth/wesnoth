@@ -245,7 +245,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
 				
 				//read the file and then write to the cache
-				cfg.read(preprocess_file("data/game.cfg",&defines,&line_src));
+				cfg.read(preprocess_file("data/game.cfg",&defines,&line_src),&line_src);
 				try {
 					compression_schema schema;
 					write_file(fname,cfg.write_compressed(schema));
@@ -259,7 +259,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 	}
 
 	std::cerr << "caching cannot be done. Reading file\n";
-	cfg.read(preprocess_file("data/game.cfg",&defines,&line_src));
+	cfg.read(preprocess_file("data/game.cfg",&defines,&line_src),&line_src);
 }
 
 }

@@ -157,8 +157,10 @@ struct save_info {
 //function to get a list of available saves.
 std::vector<save_info> get_saves_list();
 
+enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
+
 game_state read_game(game_data& data, const config* cfg);
-void write_game(const game_state& game, config& cfg);
+void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);

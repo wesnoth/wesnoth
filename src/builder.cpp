@@ -11,10 +11,11 @@
    See the COPYING file for more details.
 */
 
-#include "terrain.hpp"
+#include "array.hpp"
 #include "display.hpp"
-#include "util.hpp"
 #include "log.hpp"
+#include "terrain.hpp"
+#include "util.hpp"
 
 
 terrain_builder::tile::tile() 
@@ -775,7 +776,7 @@ void terrain_builder::build_terrains()
 			}
 		}
 
-		std::string adjacent_types[7];
+		util::array<std::string,7> adjacent_types;
 
 		if(biggest_constraint_adjacent > 0) {
 			gamemap::location loc[7];
