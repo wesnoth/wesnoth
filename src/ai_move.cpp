@@ -24,7 +24,7 @@
 
 #define LOG_AI lg::info(lg::ai)
 
-struct move_cost_calculator
+struct move_cost_calculator : cost_calculator
 {
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const game_data& data,
@@ -37,7 +37,7 @@ struct move_cost_calculator
 		avoid_enemies_(u.type().usage() == "scout")
 	{}
 
-	double cost(const gamemap::location& loc, double so_far) const
+	virtual double cost(const gamemap::location& loc, double) const
 	{
 		if(!map_.on_board(loc))
 			return 1000.0;
@@ -425,7 +425,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 		assert(map_.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
-		                       minimum(tg->value/best_rating,500.0),cost_calc);
+		                       minimum(tg->value/best_rating,500.0), &cost_calc);
 
 		double rating = tg->value/maximum<int>(1,cur_route.move_left);
 
@@ -493,7 +493,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	
 			const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc,enemy_dstsrc);
 			const paths::route cur_route = a_star_search(u->first,best_target->loc,
-				               minimum(best_target->value/best_rating,100.0),calc);
+				               minimum(best_target->value / best_rating, 100.0), &calc);
 			double rating = best_target->value/maximum<int>(1,cur_route.move_left);
 
 			//for 'support' targets, they are rated much higher if we can get there within two turns,
@@ -742,7 +742,8 @@ void ai::access_points(const move_map& srcdst, const location& u, const location
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const location& loc = i->second;
 		if(distance_between(loc,dst) <= u_it->second.total_movement()) {
-			const paths::route& rt = a_star_search(loc,dst,u_it->second.total_movement(),shortest_path_calculator(u_it->second,current_team(),units_,teams_,map_,state_));
+			shortest_path_calculator calc(u_it->second, current_team(), units_, teams_, map_, state_);
+			const paths::route& rt = a_star_search(loc, dst, u_it->second.total_movement(), &calc);
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);
 			}

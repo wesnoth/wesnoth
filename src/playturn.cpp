@@ -352,8 +352,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 						allowed_teleports.insert(un->first);
 				}
 
-				current_route_ = a_star_search(selected_hex_,dest,
-				                               10000.0,calc,teleports);
+				current_route_ = a_star_search(selected_hex_, dest, 10000.0, &calc, teleports);
 
 				current_route_.move_left = route_turns_to_complete(un->second,map_,current_route_);
 
@@ -835,8 +834,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 				}
 
-				paths::route route = a_star_search(it->first,go_to,
-				                               10000.0,calc,teleports);
+				paths::route route = a_star_search(it->first, go_to, 10000.0, &calc, teleports);
 				route.move_left = route_turns_to_complete(it->second,map_,route);
 				gui_.set_route(&route);
 			}
@@ -918,7 +916,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 			allowed_teleports.insert(ui->first);
 	}
 
-	paths::route route = a_star_search(ui->first,target,10000.0,calc,teleports);
+	paths::route route = a_star_search(ui->first, target, 10000.0, &calc, teleports);
 	if(route.steps.empty())
 		return;
 

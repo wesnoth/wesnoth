@@ -338,14 +338,14 @@ std::string output_map(const terrain_map& terrain)
 
 //an object that will calculate the cost of building a road over terrain
 //for use in the a_star_search algorithm.
-struct road_path_calculator
+struct road_path_calculator : cost_calculator
 {
 	road_path_calculator(const terrain_map& terrain, const config& cfg)
 		        : calls(0), map_(terrain), cfg_(cfg),
 
 				  //find out how windy roads should be.
 				  windiness_(maximum<int>(1,atoi(cfg["road_windiness"].c_str()))) {}
-	double cost(const location& loc, double so_far) const;
+	virtual double cost(const location& loc, double so_far) const;
 
 	void terrain_changed(const location& loc) { loc_cache_.erase(loc); }
 	mutable int calls;
@@ -357,7 +357,7 @@ private:
 	mutable std::map<char,double> cache_;
 };
 
-double road_path_calculator::cost(const location& loc, double so_far) const
+double road_path_calculator::cost(const location& loc, double) const
 {
 	++calls;
 	if(loc.x < 0 || loc.y < 0 || loc.x >= map_.size() || loc.y >= map_.front().size())
@@ -393,17 +393,6 @@ double road_path_calculator::cost(const location& loc, double so_far) const
 	loc_cache_.insert(std::pair<location,double>(loc,windiness*res));
 	return windiness*res;
 }
-
-struct road_path_calculator_wrapper
-{
-	explicit road_path_calculator_wrapper(const road_path_calculator& calc) : calc_(&calc)
-	{}
-
-	double cost(const location& loc, double so_far) const { return calc_->cost(loc,so_far); }
-
-private:
-	const road_path_calculator* calc_;
-};
 
 struct is_valid_terrain
 {
@@ -911,7 +900,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	std::set<location> bridges;
 
 	road_path_calculator calc(terrain,cfg);
-	const road_path_calculator_wrapper calc_wrapper(calc);
 	for(size_t road = 0; road != nroads; ++road) {
 		log_scope("creating road");
 
@@ -947,7 +935,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		}
 
 		//search a path out for the road
-		const paths::route rt = a_star_search(src,dst,10000.0,calc_wrapper);
+		const paths::route rt = a_star_search(src, dst, 10000.0, &calc);
 
 		const std::string& name = generate_name(name_generator,"road_name");
 		const int name_frequency = 20;

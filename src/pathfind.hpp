@@ -20,15 +20,10 @@
 #include "pathutils.hpp"
 #include "unit.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cmath>
-#include <iostream>
 #include <map>
 #include <list>
+#include <set>
 #include <vector>
-
-#define LOG_PF lg::info(lg::engine)
 
 //this module contains various pathfinding functions and utilities.
 
@@ -96,14 +91,18 @@ struct paths
 int route_turns_to_complete(const unit& u, const gamemap& map,
                             const paths::route& rt);
 
-struct shortest_path_calculator
+struct cost_calculator
+{
+	virtual double cost(const gamemap::location& loc, double so_far) const = 0;
+	virtual ~cost_calculator() {}
+};
+
+struct shortest_path_calculator : cost_calculator
 {
 	shortest_path_calculator(const unit& u, const team& t,
-	                         const unit_map& units, 
-									 const std::vector<team>& teams,
-									 const gamemap& map,
-									 const gamestatus& status);
-	double cost(const gamemap::location& loc, double so_far) const;
+	                         const unit_map& units, const std::vector<team>& teams,
+	                         const gamemap& map, const gamestatus& status);
+	virtual double cost(const gamemap::location& loc, double so_far) const;
 
 private:
 	const unit& unit_;
@@ -114,169 +113,8 @@ private:
 	const gamestatus& status_;
 };
 
-namespace detail {
-struct node {
-	static double heuristic(const gamemap::location& src,
-	                        const gamemap::location& dst) {
-		return distance_between(src,dst);
-	}
-
-	node(const gamemap::location& pos, const gamemap::location& dst,
-		double cost, const gamemap::location& parent,
-	     const std::set<gamemap::location>* teleports)
-	    : loc(pos), parent(parent), g(cost), h(heuristic(pos,dst))
-	{
-
-		//if there are teleport locations, correct the heuristic to
-		//take them into account
-		if(teleports != NULL) {
-			double srch = h, dsth = h;
-			std::set<gamemap::location>::const_iterator i;
-			for(i = teleports->begin(); i != teleports->end(); ++i) {
-				const double new_srch = heuristic(pos,*i);
-				const double new_dsth = heuristic(*i,dst);
-				if(new_srch < srch) {
-					srch = new_srch;
-				}
-
-				if(new_dsth < dsth) {
-					dsth = new_dsth;
-				}
-			}
-
-			if(srch + dsth + 1.0 < h) {
-				h = srch + dsth + 1.0;
-			}
-		}
-
-		f = g + h;
-	}
-
-	gamemap::location loc, parent;
-	double g, h, f;
-};
-
-}
-
-template<typename T>
-paths::route a_star_search(const gamemap::location& src,
-                           const gamemap::location& dst, double stop_at, T obj,
-                           const std::set<gamemap::location>* teleports=NULL)
-{
-	LOG_PF << "a* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
-	using namespace detail;
-	typedef gamemap::location location;
-
-	typedef std::map<location,node> list_map;
-	typedef std::pair<location,node> list_type;
-
-	std::multimap<double,location> open_list_ordered;
-	list_map open_list, closed_list;
-
-	open_list.insert(list_type(src,node(src,dst,0.0,location(),teleports)));
-	open_list_ordered.insert(std::pair<double,location>(0.0,src));
-
-	std::vector<location> locs;
-	while(!open_list.empty()) {
-
-		assert(open_list.size() == open_list_ordered.size());
-
-		const list_map::iterator lowest_in_open = open_list.find(open_list_ordered.begin()->second);
-		assert(lowest_in_open != open_list.end());
-
-		//move the lowest element from the open list to the closed list
-		closed_list.erase(lowest_in_open->first);
-		const list_map::iterator lowest = closed_list.insert(*lowest_in_open).first;
-
-		open_list.erase(lowest_in_open);
-		open_list_ordered.erase(open_list_ordered.begin());
-
-		//find nodes we can go to from this node
-		locs.resize(6);
-		get_adjacent_tiles(lowest->second.loc,&locs[0]);
-		if(teleports != NULL && teleports->count(lowest->second.loc) != 0) {
-			std::copy(teleports->begin(),teleports->end(),std::back_inserter(locs));
-		}
-
-		for(size_t j = 0; j != locs.size(); ++j) {
-
-			//if we have found a solution
-			if(locs[j] == dst) {
-				LOG_PF << "found solution; calculating it...\n";
-				paths::route rt;
-
-				for(location loc = lowest->second.loc; loc.valid(); ) {
-					rt.steps.push_back(loc);
-					list_map::const_iterator itor = open_list.find(loc);
-					if(itor == open_list.end()) {
-						itor = closed_list.find(loc);
-						assert(itor != closed_list.end());
-					}
-
-					loc = itor->second.parent;
-				}
-				
-				std::reverse(rt.steps.begin(),rt.steps.end());
-				rt.steps.push_back(dst);
-				rt.move_left = int(lowest->second.g + obj.cost(dst,lowest->second.g));
-
-				assert(rt.steps.front() == src);
-
-				LOG_PF << "exiting a* search (solved)\n";
-
-				return rt;
-			}
-
-			list_map::iterator current_best = open_list.find(locs[j]);
-			const bool in_open = current_best != open_list.end();
-			if(!in_open) {
-				current_best = closed_list.find(locs[j]);
-			}
-
-			if(current_best != closed_list.end() && current_best->second.g <= lowest->second.g+1.0) {
-				continue;
-			}
-
-			const double new_cost = obj.cost(locs[j],lowest->second.g);
-
-			const node nd(locs[j],dst,lowest->second.g+new_cost,
-			              lowest->second.loc,teleports);
-
-			if(current_best != closed_list.end()) {
-				if(current_best->second.g <= nd.g) {
-					continue;
-				} else if(in_open) {
-					typedef std::multimap<double,location>::iterator Itor;
-					std::pair<Itor,Itor> itors = open_list_ordered.equal_range(current_best->second.f);
-					while(itors.first != itors.second) {
-						if(itors.first->second == current_best->second.loc) {
-							open_list_ordered.erase(itors.first);
-							break;
-						}
-						++itors.first;
-					}
-
-					open_list.erase(current_best);
-				} else {
-					closed_list.erase(current_best);
-				}
-			}
-
-			if(nd.f < stop_at) {
-				open_list.insert(list_type(nd.loc,nd));
-				open_list_ordered.insert(std::pair<double,location>(nd.f,nd.loc));
-			} else {
-				closed_list.insert(list_type(nd.loc,nd));
-			}
-		}
-	}
-
-	LOG_PF << "aborted a* search\n";
-	paths::route val;
-	val.move_left = 100000;
-	return val;
-}
-
-#undef LOG_PF
+paths::route a_star_search(gamemap::location const &src, gamemap::location const &dst,
+                           double stop_at, cost_calculator const *obj,
+                           std::set<gamemap::location> const *teleports = NULL);
 
 #endif

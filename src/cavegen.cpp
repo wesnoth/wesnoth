@@ -262,13 +262,13 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 	}
 }
 
-struct passage_path_calculator
+struct passage_path_calculator : cost_calculator
 {
 	passage_path_calculator(const std::vector<std::vector<gamemap::TERRAIN> >& mapdata, gamemap::TERRAIN wall, double laziness, size_t windiness)
 		        : map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness)
 	{}
 	
-	double cost(const gamemap::location& loc, double so_far) const;
+	virtual double cost(const gamemap::location& loc, double so_far) const;
 private:
 	const std::vector<std::vector<gamemap::TERRAIN> >& map_;
 	gamemap::TERRAIN wall_;
@@ -276,7 +276,7 @@ private:
 	size_t windiness_;
 };
 
-double passage_path_calculator::cost(const gamemap::location& loc, double so_far) const
+double passage_path_calculator::cost(const gamemap::location& loc, double) const
 {
 	if(loc.x < 0 || loc.y < 0 || size_t(loc.x) >= map_.size() || map_.empty() || size_t(loc.y) >= map_.front().size()) {
 		return 100000.0;
@@ -307,7 +307,7 @@ void cave_map_generator::place_passage(const passage& p)
 	
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 	
-	const paths::route rt = a_star_search(p.src,p.dst,10000.0,calc);
+	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc);
 
 	const size_t width = maximum<size_t>(1,atoi(p.cfg["width"].c_str()));
 	const size_t jagged = atoi(p.cfg["jagged"].c_str());

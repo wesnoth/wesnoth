@@ -42,12 +42,12 @@
 #define LOG_NG lg::info(lg::engine)
 #define ERR_NW lg::err(lg::network)
 
-struct castle_cost_calculator
+struct castle_cost_calculator : cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
 	{}
 
-	double cost(const gamemap::location& loc, double cost_so_far) const
+	virtual double cost(const gamemap::location& loc, double) const
 	{
 		if(!map_.is_castle(loc))
 			return 10000;
@@ -104,8 +104,8 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 
 	if(need_castle && map.on_board(recruit_location)) {
-		const paths::route& rt = a_star_search(u->first,recruit_location,
-		                                   100.0,castle_cost_calculator(map));
+		castle_cost_calculator calc(map);
+		const paths::route& rt = a_star_search(u->first, recruit_location, 100.0, &calc);
 		if(rt.steps.empty() || units.find(recruit_location) != units.end() ||
 		   !map.is_castle(recruit_location))
 			recruit_location = gamemap::location();
@@ -448,8 +448,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (strings && resist != 0) {
 		std::stringstream str_resist;
 		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
-			<< ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
-			<< (resist > 0 ? "+" : "") << resist << '%';
+		           << ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
+		           << (resist > 0 ? "+" : "") << resist << '%';
 		strings->attack_calculations.push_back(str_resist.str());
 	}
 
@@ -468,7 +468,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	if (under_leadership(units,attacker,&leader_bonus).valid()) {
 		percent += leader_bonus;
 		
-		if(strings) {
+		if (strings) {
 			std::stringstream str;
 			str << _("leadership") << EMPTY_COLUMN << '+' << leader_bonus << '%';
 			strings->attack_calculations.push_back(str.str());
