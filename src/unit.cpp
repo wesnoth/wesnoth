@@ -218,9 +218,7 @@ bool unit::can_attack() const
 
 void unit::set_movement(int moves)
 {
-// next line commented to let undo work when space is pressed
-//	if(moves_ != -1)
-		moves_ = moves;
+	moves_ = moves;
 }
 
 void unit::set_attacked()
@@ -232,7 +230,7 @@ void unit::end_unit_turn()
 {
 	if(moves_ == total_movement()){
 		moves_ = NOT_MOVED;
-	} else {
+	} else if(moves_ >= 0) {
 		moves_ = MOVED;
 	}
 }
