@@ -371,7 +371,8 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		draw_minimap(mapx()+30,35,(this->x()-mapx())-60,120*sidebarScaling_);
+		draw_minimap(mapx()+30,35,(this->x()-mapx())-60,
+		                          int(120*sidebarScaling_));
 	} else {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -427,13 +428,13 @@ void display::draw_sidebar()
 			i = units_.find(selectedHex_);
 
 		if(i != units_.end())
-			draw_unit_details(mapx()+2,390*sidebarScaling_,selectedHex_,
+			draw_unit_details(mapx()+2,int(390*sidebarScaling_),selectedHex_,
 			                  i->second,unitDescriptionRect_,unitProfileRect_);
 		invalidateUnit_ = false;
 	}
 
 	if(invalidateGameStatus_) {
-		draw_game_status(mapx()+2,258*sidebarScaling_);
+		draw_game_status(mapx()+2,int(258*sidebarScaling_));
 		invalidateGameStatus_ = false;
 	}
 }
@@ -447,9 +448,6 @@ void display::draw_game_status(int x, int y)
 	rect.x = x;
 	rect.y = y;
 	rect.w = this->x() - x;
-
-	const int bgcolour = 0;
-	const int colour = 0xffffff;
 
 	gamestatus::TIME timeofday = status_.timeofday();
 	if(mouseoverHex_.valid()) {
@@ -465,10 +463,10 @@ void display::draw_game_status(int x, int y)
 
 		if(tod_surface != NULL) {
 			//hardcoded values as to where the time of day image appears
-			blit_surface(mapx() + 21,196*sidebarScaling_,tod_surface);
+			blit_surface(mapx() + 21,int(196*sidebarScaling_),tod_surface);
 			SDL_Rect update_area;
 			update_area.x = mapx() + 21;
-			update_area.y = 196*sidebarScaling_;
+			update_area.y = int(196*sidebarScaling_);
 			update_area.w = tod_surface->w;
 			update_area.h = tod_surface->h;
 			update_rect(update_area);
@@ -823,11 +821,11 @@ gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
 		return 0;
 
 	const std::vector<gamemap::TERRAIN>& terrains=map_.get_terrain_precedence();
-	if(y > paly+terrains.size()*height)
+	if(static_cast<size_t>(y) > paly+terrains.size()*height)
 		return 0;
 
-	const int index = (y - paly)/height;
-	if(index < 0 || index >= terrains.size())
+	const size_t index = (y - paly)/height;
+	if(index >= terrains.size())
 		return 0;
 
 	return terrains[index];
@@ -908,8 +906,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			  units_.count(gamemap::location(x,y)) == 1) {
 		image_type = BRIGHTENED;
 	}
-
-	int r = 0, g = 0, b = 0;
 
 	SDL_Surface* surface = getTerrain(terrain,image_type,x,y);
 
@@ -1035,7 +1031,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	const int show_energy_after = energy_bar_loc.first +
 	                              int((1.0-unit_energy)*total_energy);
 
-	const bool hide_unit = hiddenUnit_ == gamemap::location(x,y);
 	const bool draw_hit = hitUnit_ == gamemap::location(x,y);
 	const short hit_colour = short(0xF000);
 
@@ -1323,7 +1318,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,IMAGE_TYPE image_type,
 	std::string image = "terrain/" + map_.get_terrain_info(terrain).image();
 
 	if(tower) {
-		int i;
+		size_t i;
 		for(i = 0; i != teams_.size(); ++i) {
 			if(teams_[i].owns_tower(gamemap::location(x,y))) {
 				char buf[50];
@@ -1578,7 +1573,7 @@ void display::set_paths(const paths* paths_list)
 
 void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 {
-	for(int i = 0; i+1 < path.size(); ++i) {
+	for(size_t i = 0; i+1 < path.size(); ++i) {
 		if(path[i+1].x > path[i].x) {
 			u.set_facing_left(true);
 		} else if(path[i+1].x < path[i].x) {
@@ -1605,10 +1600,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
                                  const gamemap::location& b, int damage,
                                  const attack_type& attack)
 {
-	const unit_map::iterator att = units_.find(a);
 	const unit_map::iterator def = units_.find(b);
-
-	unit& attacker = att->second;
 
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.

@@ -140,8 +140,6 @@ private:
 	SDL_Rect unitDescriptionRect_;
 	SDL_Rect unitProfileRect_;
 
-	int lastTimeOfDay_;
-
 	void bounds_check_position();
 
 	std::vector<SDL_Surface*> getAdjacentTerrain(int x, int y, IMAGE_TYPE type);
@@ -199,6 +197,7 @@ private:
 	std::vector<SDL_Rect> updateRects_;
 
 	bool sideBarBgDrawn_;
+	int lastTimeOfDay_;
 
 	int currentTeam_;
 
