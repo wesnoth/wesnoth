@@ -1,0 +1,128 @@
+Steuerung
+
+    * Cursortasten:   Scrollen
+    * Linksklick:     Einheit wählen/bewegen
+    * Rechtsklick:    Hauptmenü, Aktion abbrechen
+    * Mittelklick:    Auf Cursorposition zentrieren
+    * Esc:            Spiel verlassen, Menü verlassen
+    * z:              hineinzoomen
+    * x:              herauszoomen
+    * c:              Zoom auf Standardgröße
+    * u:              Letzten Zug rückgängig machen (nur deterministische Züge können zurückgenommen werden)
+    * r:              Zug wiederherstellen
+    * n:              nächste Einheit, die noch bewegt werden kann, auswählen
+    * 1-7:            Zeigen, wie weit die gewählte Einheit in sovielen Zügen bewegt werden kann
+    * space:          Zug der Einheit beenden und nächste Einheit auswählen, die noch bewegt werden kann
+    * l:              Zum Anführer bewegen
+    * ctrl-f:         Umschalten zwischen Vollbild und Fenstermodus
+    * ctrl-r:         Einheit ausbilden
+    * ctrl-shift-r:   Letzte Einheiten-Ausbildung wiederholen
+    * ctrl-c:         Einheit einberufen
+    * ctrl-a:         Beschleunigten Spiel-Modus ein/ausschalten
+    * d:              Gewählte Einheit beschreiben
+    * ctrl-d:         Verteidigungswerte der gewählten Einheit anzeigen
+    * ctrl-t:         Geländeeinfluss auf die gewählte Einheit anzeigen
+    * ctrl-s:         Spiel speichern
+
+
+Sphären
+
+An der Spitze des Energiebalkens neben jeder Einheit befindet sich eine Sphäre. Diese Sphäre ist:
+
+   * grün, wenn du die Einheit steuerst und sie in dieser Runde noch nicht bewegt wurde
+   * gelb, wenn du die Einheit steuerst und sie in dieser Runde bereits bewegt wurde, aber noch weiter bewegt werden könnte
+   * rot, wenn du die Einheit steuerst, sie aber bereits alle Bewegungszüge dieser Runde aufgebraucht hat
+   * blau, wenn die Einheit ein Verbündeter ist, den du nicht steuern kannst
+
+Feindliche Einheiten haben keine Sphären auf ihrem Energiebalken (in alten Versionen < 0.5.2 war eine schwarze Sphäre auf der Spitze des Energiebalkens feindlicher Einheiten)
+
+
+Beschreibung
+
+Dieses Spiel findet auf einer Reihe von Schlachtfeldern, Szenarios genannt, statt. In jedem Szenario kämpfen deine Truppen gegen die Truppen des Gegners. Jede Seite beginnt mit einem Anführer in ihrem Burgfried.
+
+
+Gold
+
+Jede Seite startet mit einer bestimmten Menge Gold, und erhält zwei Goldstücke pro Zug, sowie ein weiteres Goldstück für jedes Dorf, das unter ihrer Kontrolle steht.
+
+Jede Einheit verursacht Erhaltungskosten. Die Erhaltungskosten entsprechen im Allgemeinen der Stufe der Einheit (ausgenommen loyale Truppen, siehe unten). Einheiten, die nicht ausgebildet oder einberufen werden - d.h. die sich freiwillig einer Seite anschliessen - verursachen keine Erhaltungskosten. Erhaltungskosten werden nur bezahlt, wenn die Summe der Erhaltungskosten größer ist als die Anzahl der kontrollierten Dörfer. Bezahlt wird die Differenz zwischen der Anzahl der Dürfer und den Erhaltungskosten.
+
+Daher ist die Formel für das Einkommen per Runde:
+
+2 + Dörfer - Maximum(0,Erhaltungskosten - Dörfer)
+
+wobei Erhaltungskosten die Summe der Stufen aller ausgebildeten und einberufenen Einheiten ist.
+
+
+Ausbilden and Einberufen
+
+Einheiten können zu einem bestimmten Preis ausgebildet werden, sofern der Anführer im Burgfried steht und noch ein Feld in der Burg frei ist. Das Ausbilden geschieht durch Rechtsklick und die Auswahl von 'Ausbilden'.
+
+Wenn ein Szenario durchgespielt wurde, stehen alle überlebenden Einheiten im nächsten Szenario zur Verfügung. Durch Rechtsklick und die Auswahl von 'Einberufen' können Einheiten aus früheren Szenarios reaktiviert werden. Das Einberufen kostet 20 Goldstücke.
+
+Du kannst ein freies Feld der Burg markieren und danach eine Einheit rekrutieren; auf diese Weise wählst du das Feld, in dem die Einheit erscheint. Das funktioniert sowohl beim Ausbilden als auch beim Einberufen.
+
+Eine gerade ausgebildete oder einberufene Einheit kann in der gleichen Runde nicht bewegt werden.
+
+
+Besondere Eigenschaften der Einheiten
+
+Die besonderen Eigenschaften der Einheiten können mit dem Menüpunkt 'Einheitenbeschreibung' eingesehen werden.
+
+
+Merkmale
+
+Einheiten haben Merkmale, die Aspekte ihres Charakters reflektieren. Die Merkmale werden bei der Erschaffung der Einheiten zufällig vergeben. Jede Einheit erhält zwei Merkmale. Folgende Merkmale sind möglich:
+
+   Loyal:         Die Erhaltungskosten der Einheit sind niemals höher als 1.
+   Stark:         Die Einheit verursacht mehr Schaden im Nahkampf und hat etwas mehr Lebenspunkte.
+   Schnell:       Die Einheit hat einen zusätzlichen Bewegungspunkt, dafür etwas weniger Lebenspunkte.
+   Unverwüstlich: Die Einheit hat mehr Lebenspunkte.
+   Intelligent:   Die Einheit braucht weniger Erfahrungspunkte, um im Rang aufzusteigen.
+
+
+Bewegung
+
+Wenn eine Einheit durch Mausklick gewählt wird, werden alle Felder beleuchtet, die sie in dieser Runde erreichen kann, während die anderen Felder grau gefärbt werden. Du kannst dann auf das Feld klicken, wohin sich die Einheit bewegen soll. Wenn eine Einheit auf ein Dorf bewegt wird, das neutral ist oder vom Gegner kontrolliert wird, dann übernimmst du die Kontrolle über das Dorf. Wird ein Ziel markiert, das außerhalb des in dieser Runde erreichbaren Gebietes liegt, dann wird sich diese Einheit zu Beginn der nächsten Runde(n) selbständig dorthin begeben. Du kannst Bewegungen einfach am Anfang der Runde zurücknehmen. Die selbständige Bewegung wird unterbrochen, in dem du die Einheit markierst und ein neues Ziel vorgibst.
+
+Du kannst dich nicht durch die sechs Felder um einen Feind herum (das Gebiet unter seiner Kontrolle) bewegen, ohne die Bewegung zu unterbrechen.
+
+
+Kampf
+
+Wenn du deine Einheit neben eine feindliche Einheit bewegst, kannst du diese angreifen. Klicke auf die eigene Einheit, die neben dem Feind steht, und dann auf die feindliche Einheit, die angegriffen werden soll. Jede Einheit hat eine oder mehrere Waffen, mit denen sie angreifen kann. Manche Waffen, wie z.B. Schwerter, sind Nahkampfwaffen, während andere Waffen, wie z.B. Bögen, Fernkampfwaffen sind.
+
+Wenn du einen Feind mit einer Nahkampfwaffe attakierst, wird er mit seiner Nahkampfwaffe zurückschlagen. Attakierst du mit einer Fernkampfwaffe, wird er mit einer Fernkampfwaffe zurückschlagen, sofern er eine hat.
+
+Verschiedene Angriffsarten verursachen unterschiedlich viel Schaden, und es kann mit jeder Waffe eine bestimmte Anzahl von Schlägen ausgeteilt werden. Zum Beispiel verursacht ein Kampfelf 5 Schaden bei jedem Treffer, und er kann bei jedem Kampf 4 mal zuschlagen. Dies wird allgemein als 5-4 geschrieben.
+
+Die Wahrscheinlichkeit einer Einheit, getroffen zu werden, ist vom Gelände abhängig. Einheiten in Dörfern und Burgen haben eine geringere Wahrscheinlichkeit, getroffen zu werden. Elfen in Wäldern werden ebenfalls nicht so leicht getroffen.
+
+
+Ausrichtung
+
+Jede Einheit hat eine Ausrichtung: rechtschaffen, neutral oder chaotisch. Diese Ausrichtung bestimmt, wie gut die Einheit zu bestimmten Tageszeiten kämpft. Die folgende Tabelle illustriert die verschiedenen Tageszeiten:
+
+ |  Zug  | Tageszeit |
+ ---------------------
+ |   1   | Morgen    |
+ |   2   | Tag       |
+ |   3   | Tag       |
+ |   4   | Abend     |
+ |   5   | Nacht     |
+ |   6   | Nacht     |
+	  
+Rechtschaffene Einheiten verursachen am Tag 25% mehr Schaden bei Tag, und 25% weniger Schaden bei Nacht. Chaotische Einheiten verursachen 25% mehr Schaden bei Nacht, und 25% weniger Schaden bei Tag. Neutrale Einheiten werden von der Tageszeit nicht beeinflusst.
+
+
+Heilung
+
+Verwundete Einheiten in Dörfern erholen sich pro Runde um 8 Lebenspunkte. Verwundete Einheiten, die neben Einheiten stehen, die über eine der Fähigkeiten "Heilung" oder "Behandlung" verfügt, werden ebenfalls geheilt. Einheiten neben einer Einheit mit der Fähigkeit "Heilung" werden um maximal 4 Lebenspunkte pro Runde geheilt, Einheiten neben einer Einheit mit der Fähigkeit "Behandlung" werden um maximal 8 Lebenspunkte pro Runde geheilt. Allerdings nimmt die Heilwirkung pro Einheit ab, je mehr Einheiten um eine Einheit mit Heilfähigkeiten herumstehen.
+
+'Heilung' verhindert die schädliche Wirkung einer Vergiftung, durch 'Behandlung' wird die Vergiftung aufgehoben. Wenn eine Vergiftung behandelt wird, erhält die Einheit in dieser Runde keine Lebenspunkte.
+
+
+Erfahrung
+
+Einheiten werden durch Kämpfe erfahrener, und sobald sie genug Erfahrungspunkte gesammelt haben, steigen sie eine Stufe im Rang, und werden dadurch stärker.
