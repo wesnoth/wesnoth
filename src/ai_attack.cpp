@@ -200,10 +200,10 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 
 		//TODO: improve this rating formula!
 		const double rating =
-		   stats.chance_to_hit_defender*stats.damage_defender_takes*
-		                                                 stats.nattacks -
-		   stats.chance_to_hit_attacker*stats.damage_attacker_takes*
-		                                                 stats.ndefends;
+		   (double(stats.chance_to_hit_defender)/100.0)*
+		               stats.damage_defender_takes*stats.nattacks -
+		   (double(stats.chance_to_hit_attacker)/100.0)*
+		               stats.damage_attacker_takes*stats.ndefends;
 		if(rating > current_rating || current_choice == -1) {
 			current_choice = a;
 			current_rating = rating;
@@ -284,12 +284,12 @@ void attack_analysis::analyze(const gamemap& map,
 			cost += (double(att->second.experience())/
 			         double(att->second.max_experience()))*cost;
 
-			terrain_quality += stat.chance_to_hit_attacker*cost;
+			terrain_quality += (double(stat.chance_to_hit_attacker)/100.0)*cost;
 			resources_used += cost;
 
 			while(attacks || defends) {
 				if(attacks) {
-					const double roll = double(rand()%1000)/1000.0;
+					const int roll = rand()%100;
 					if(roll < stat.chance_to_hit_defender) {
 						defhp -= stat.damage_defender_takes;
 						if(defhp <= 0) {
@@ -321,7 +321,7 @@ void attack_analysis::analyze(const gamemap& map,
 				}
 
 				if(defends) {
-					const double roll = double(rand()%1000)/1000.0;
+					const int roll = rand()%100;
 					if(roll < stat.chance_to_hit_attacker) {
 						atthp -= stat.damage_attacker_takes;
 						if(atthp <= 0) {
