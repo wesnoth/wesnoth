@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "cursor.hpp"
+#include "font.hpp"
 #include "image.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
@@ -277,6 +278,7 @@ void CVideo::flip()
 	if(fake_screen)
 		return;
 
+	font::draw_floating_labels(frameBuffer);
 	cursor::draw(frameBuffer);
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
@@ -287,6 +289,7 @@ void CVideo::flip()
 	clear_updates();
 
 	cursor::undraw(frameBuffer);
+	font::undraw_floating_labels(frameBuffer);
 }
 
 void CVideo::lock()

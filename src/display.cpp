@@ -410,7 +410,7 @@ void display::bounds_check_position()
 
 	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
 
-	const double xend = tile_width*map_.x();
+	const double xend = tile_width*map_.x() + tile_width/3;
 	const double yend = zoom_*map_.y() + zoom_/2.0;
 
 	if(xpos_ + static_cast<double>(map_area().w) > xend)
@@ -2088,6 +2088,14 @@ bool display::unit_attack(const gamemap::location& a,
 
 		Uint32 defender_colour = 0;
 		double defender_alpha = 1.0;
+
+		if(damage > 0 && i == 0) {
+			char buf[50];
+			sprintf(buf,"%d",damage);
+			const SDL_Color colour = {255,0,0,255};
+			font::add_floating_label(buf,20,colour,get_location_x(b)+zoom_*0.5,get_location_y(b),
+			                         0,-3,40,screen_area());
+		}
 
 		if(damage > 0 && i >= 0) {
 			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {

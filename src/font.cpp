@@ -18,6 +18,7 @@
 #include "game_config.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "sdl_utils.hpp"
 #include "tooltips.hpp"
 
 #include <cstdio>
@@ -459,5 +460,167 @@ namespace font {
     std::string wrapped_text = word_wrap_text(text, font_size, max_width);
     return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, bg, false, NO_MARKUP);
   }
+
+}
+
+//floating labels
+namespace {
+
+class floating_label
+{
+public:
+	floating_label(const std::string& text, int font_size, const SDL_Color& colour,
+	      int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
+		  : surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour), xpos_(xpos), ypos_(ypos),
+		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect)
+	{}
+
+	void move(int xmove, int ymove);
+
+	void draw(SDL_Surface* screen);
+	void undraw(SDL_Surface* screen);
+
+	bool expired() const;
+
+private:
+	shared_sdl_surface surf_, buf_;
+	std::string text_;
+	int font_size_;
+	SDL_Color colour_;
+	int xpos_, ypos_, xmove_, ymove_;
+	int lifetime_;
+	SDL_Rect clip_rect_;
+};
+
+typedef std::map<int,floating_label> label_map;
+label_map labels;
+int label_id = 0;
+
+bool hide_floating_labels = false;
+
+void floating_label::move(int xmove, int ymove)
+{
+	xpos_ += xmove;
+	ypos_ += ymove;
+}
+
+void floating_label::draw(SDL_Surface* screen)
+{
+	if(surf_ == NULL) {
+		TTF_Font* const font = get_font(font_size_);
+		if(font == NULL) {
+			return;
+		}
+
+		surf_.assign(font::render_text(font,text_,colour_));
+		if(surf_ == NULL) {
+			return;
+		}
+	}
+
+	if(buf_ == NULL) {
+		buf_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,surf_->w,surf_->h,surf_->format->BitsPerPixel,
+		                            surf_->format->Rmask,surf_->format->Gmask,surf_->format->Bmask,surf_->format->Amask));
+		if(buf_ == NULL) {
+			return;
+		}
+	}
+
+	if(screen == NULL) {
+		return;
+	}
+
+	SDL_Rect rect = {xpos_-surf_->w/2,ypos_,surf_->w,surf_->h};
+	const clip_rect_setter clip_setter(screen,clip_rect_);
+	SDL_BlitSurface(screen,&rect,buf_,NULL);
+	SDL_BlitSurface(surf_,NULL,screen,&rect);
+	update_rect(rect);
+}
+
+void floating_label::undraw(SDL_Surface* screen)
+{
+	if(screen == NULL || buf_ == NULL) {
+		return;
+	}
+
+	SDL_Rect rect = {xpos_-surf_->w/2,ypos_,surf_->w,surf_->h};
+	const clip_rect_setter clip_setter(screen,clip_rect_);
+	SDL_BlitSurface(buf_,NULL,screen,&rect);
+
+	update_rect(rect);
+
+	move(xmove_,ymove_);
+	if(lifetime_ > 0) {
+		--lifetime_;
+	}
+}
+
+bool floating_label::expired() const { return lifetime_ == 0; }
+
+}
+
+namespace font {
+int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
+					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
+{
+	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,xpos,ypos,xmove,ymove,lifetime,clip_rect)));
+	return label_id-1;
+}
+
+void move_floating_label(int handle, int xmove, int ymove)
+{
+	const label_map::iterator i = labels.find(handle);
+	if(i != labels.end()) {
+		i->second.move(xmove,ymove);
+	}
+}
+
+void remove_floating_label(int handle)
+{
+	const label_map::iterator i = labels.find(handle);
+	if(i != labels.end()) {
+		labels.erase(i);
+	}
+}
+
+floating_label_manager::floating_label_manager()
+{
+}
+
+floating_label_manager::~floating_label_manager()
+{
+	labels.clear();
+}
+
+floating_label_hider::floating_label_hider() : old_(hide_floating_labels)
+{
+	hide_floating_labels = true;
+}
+
+floating_label_hider::~floating_label_hider()
+{
+	hide_floating_labels = old_;
+}
+
+void draw_floating_labels(SDL_Surface* screen)
+{
+	//draw the labels in reverse order, so we can clear them in-order
+	//to make sure the draw-undraw order is LIFO
+	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
+		i->second.draw(screen);
+	}
+}
+
+void undraw_floating_labels(SDL_Surface* screen)
+{
+	for(label_map::iterator i = labels.begin(); i != labels.end(); ) {
+		i->second.undraw(screen);
+		if(i->second.expired()) {
+			i = labels.erase(i);
+		} else {
+			++i;
+		}
+	}
+}
 
 }

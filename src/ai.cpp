@@ -270,6 +270,25 @@ void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_
 			const location& src = m->first;
 			const location& dst = rtit->first;
 
+			bool friend_owns = false;
+
+			//don't take friendly villages
+			if(!enemy && info_.map.underlying_terrain(info_.map[dst.x][dst.y]) == gamemap::TOWER) {
+				for(size_t n = 0; n != info_.teams.size(); ++n) {
+					if(info_.teams[n].owns_tower(dst)) {
+						if(n+1 != info_.team_num && current_team().is_enemy(n+1) == false) {
+							friend_owns = true;
+						}
+
+						break;
+					}
+				}
+			}
+
+			if(friend_owns) {
+				continue;
+			}
+
 			if(src != dst && info_.units.find(dst) == info_.units.end()) {
 				srcdst.insert(std::pair<location,location>(src,dst));
 				dstsrc.insert(std::pair<location,location>(dst,src));

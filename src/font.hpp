@@ -70,32 +70,72 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
   
 bool is_format_char(char c);
 
-  ///
-  /// Determine the width of a line of text given a certain font size.
-  /// The font type used is the default wesnoth font type.
-  ///
-  int line_width(const std::string line, int font_size);
-  
-  ///
-  /// If the text exceedes the specified max width, wrap it one a word basis.
-  /// If the is not possible, e.g. the word is too big to fit, wrap it on a
-  /// char basis.
-  ///
-  std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width);
+///
+/// Determine the width of a line of text given a certain font size.
+/// The font type used is the default wesnoth font type.
+///
+int line_width(const std::string line, int font_size);
 
-  ///
-  /// Draw text on the screen. This method makes sure that the text
-  /// fits within a given maximum width. If a line exceedes this width it
-  /// will be wrapped on a word basis if possible, otherwise on a char
-  /// basis. This method is otherwise similar to the draw_text method,
-  /// but it doesn't support special markup or tooltips.
-  ///
-  /// @return a bounding rectangle of the text.
-  /// 
-  SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
+///
+/// If the text exceedes the specified max width, wrap it one a word basis.
+/// If the is not possible, e.g. the word is too big to fit, wrap it on a
+/// char basis.
+///
+std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width);
+
+///
+/// Draw text on the screen. This method makes sure that the text
+/// fits within a given maximum width. If a line exceedes this width it
+/// will be wrapped on a word basis if possible, otherwise on a char
+/// basis. This method is otherwise similar to the draw_text method,
+/// but it doesn't support special markup or tooltips.
+///
+/// @return a bounding rectangle of the text.
+/// 
+SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     const SDL_Color& colour, const std::string& text,
 			     int x, int y, int max_width, SDL_Surface* bg = NULL);
-  
+
+
+/// structure which manages floating labels. All floating labels on the screen
+/// will be removed when this object is destroyed
+struct floating_label_manager
+{
+	floating_label_manager();
+	~floating_label_manager();
+};
+
+/// structure which will hide floating labels for its lifetime
+struct floating_label_hider
+{
+	floating_label_hider();
+	~floating_label_hider();
+private:
+	bool old_;
+};
+
+/// add a label floating on the screen above everything else.
+/// 'text': the text to display
+/// 'font_size': the size to display the text in
+/// 'colour': the colour of the text
+/// 'xpos,ypos': the location on the screen to display the text.
+/// 'xmove,ymove': the amount to move the text each frame
+/// 'lifetime': the number of frames to display the text for, or -1 to display until removed
+/// 'clip_rect': the rectangle to clip the label to.
+///
+/// @returns a handle to the label which can be used with other label functions
+int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
+					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect);
+
+/// moves the floating label given by 'handle' by (xmove,ymove)
+void move_floating_label(int handle, int xmove, int ymove);
+
+/// removes the floating label given by 'handle' from the screen
+void remove_floating_label(int handle);
+
+void draw_floating_labels(SDL_Surface* screen);
+void undraw_floating_labels(SDL_Surface* screen);
+
 }
 
 #endif
