@@ -1282,16 +1282,13 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		LOG_AI << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
 
 		//search to see if there are any enemy units next
-		//to the tile which really should be attacked once the move is done
+		//to the tile which really should be attacked once the move is done.
 		gamemap::location adj[6];
 		get_adjacent_tiles(move.second,adj);
 		battle_stats bat_stats;
 		gamemap::location target;
 		int weapon = -1;
 
-		//the behavior of attacking anyone the AI ends up next to
-		//is disabled for the moment, to see how it works out
-		/*
 		for(int n = 0; n != 6; ++n) {
 			const unit_map::iterator enemy = find_visible_unit(units_,adj[n],
 					map_,
@@ -1300,13 +1297,18 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 			if(enemy != units_.end() &&
 			   current_team().is_enemy(enemy->second.side()) && enemy->second.stone() == false) {
-				target = adj[n];
-				weapon = choose_weapon(move.first,target,bat_stats,
+				const int res = choose_weapon(move.first,adj[n],bat_stats,
 				                       map_[move.second.x][move.second.y]);
-				break;
+
+				//current behavior is to only make risk-free attacks
+				if(bat_stats.damage_attacker_takes == 0) {
+					weapon = res;
+					target = adj[n];
+					break;
+				}
 			}
 		}
-		*/
+		
 
 		const location arrived_at = move_unit(move.first,move.second,possible_moves);
 
