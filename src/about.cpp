@@ -27,195 +27,196 @@
 namespace about
 {
 
+static const std::string credits[] = {
+	" ",
+	"- ",
+	" ",
+	"- ",
+	" ",
+	"- ",
+	" ",
+	"- ",
+	" ",
+	"- ",
+	" ",
+	"- ",
+
+	"+Core Developers",
+	"-   Main Developer",
+	"   David White (Sirp)",
+	"- ",
+	"-   Artwork and graphics designer",
+	"   Francisco Muñoz (fmunoz)",
+	"+ ",
+
+	"+Developers",
+	"-   Alfredo Beaumont (ziberpunk)",
+	"-   Cyril Bouthors (CyrilB)",
+	"-   Isaac Clerencia",
+	"-   John B. Messerly",
+	"-   Justin Zaun (jzaun)",
+	"-   J.R. Blain (Cowboy)",
+	"-   Kristoffer Erlandsson (erl)",
+	"-   Philippe Plantier (Ayin)",
+	"-   Zas",
+	"+ ",
+
+	"+General Purpose Administrators",
+	"-   Cedric Duval",
+	"-   Crossbow/Miyo",
+	"+ ",
+
+	"+Artwork and graphics designers",
+	"-   Andrew James Patterson (Kamahawk)",
+	"-   Christophe Anjard",
+	"-   Diego Brea (Cobretti)",
+	"-   Eli Dupree (Elvish Pillager)",
+	"-   Gareth Miller (Gafgarion)",
+	"-   Hogne Håskjold (frame)",
+	"-   James Barton (Sangel)",
+	"-   Jimmy Olsson (Azlan)",
+	"-   Johanna Manninen (lohari)",
+	"-   John Muccigrosso (Eponymous Archon)",
+	"-   John-Robert Funck (XJaPaN)",
+	"-   Jonatan Alamà (tin)",
+	"-   Joseph Simmons (Turin)",
+	"-   J.W. Bjerk (Eleazar)",
+	"-   J.W.C. McNabb (Darth Fool)",
+	"-   Neorice",
+	"-   Richard Kettering (Jetryl)",
+	"-   Slainte",
+	"-   Svetac",
+	"+ ",
+
+	"+Music",
+	"-   Aleksi",
+	"-   Fredrik Lindroth",
+	"-   Joseph Toscano (zhaymusic.com)",
+	"-   Pau Congost",
+	"+ ",
+
+	"+Scenario Designers",
+	"-   Benjamin Drieu",
+	"-   David White (Sirp)",
+	"-   Francisco Muñoz (fmunoz)",
+	"-   James Spencer (Shade)",
+	"-   Joseph Simmons (Turin)",
+	"-   Justin Zaun (jzaun)",
+	"+ ",
+
+	"+Packagers",
+	"-   Darryl Dixon",
+	"-   Jay Hopping",
+	"-   Marcin Konicki (ahwayakchih)",
+	"-   Marcus Phillips (Sithrandel)",
+	"-   Mark Michelsen (skovbaer)",
+	"+ ",
+
+	"+Miscellaneous",
+	"-   Francesco Gigli (Jaramir)",
+	"-   Jordà Polo (ettin)",
+	"-   Tom Chance (telex4)",
+	"+ ",
+
+	"+Internationalization Manager",
+	"-   Mark Michelsen (skovbaer)",
+	"+ ",
+
+	"+Brazilian Translation",
+	"-   Ambra Viviani Loos",
+	"-   Michel Loos",
+	"+ ",
+
+	"+Catalan Translation",
+	"-   Dan Rosàs Garcia (focks)",
+	"-   Jordà Polo (ettin)",
+	"+ ",
+
+	"+Danish Translation",
+	"-   Mark Michelsen (skovbaer)",
+	"+ ",
+
+	"+Dutch Translation",
+	"-   Lala",
+	"+ ",
+
+	"+Finnish Translation",
+	"-   paxed",
+	"+ ",
+
+	"+French Translation",
+	"-   Benoit Astruc",
+	"-   Guillaume Duwelz-Rebert",
+	"-   DaringTremayne",
+	"-   Zas",
+	"+ ",
+
+	"+German Translation",
+	"-   Arndt Muehlenfeld",
+	"-   ja-el",
+	"-   Jonas",
+	"-   ammoq",
+	"+ ",
+
+	"+Hungarian Translation",
+	"-   Khiraly",
+	"-   Széll Tamás (TomJoad)",
+	"+ ",
+
+	"+Italian Translation",
+	"-   crys0000",
+	"-   Federico Tomassetti",
+	"-   isazi",
+	"-   RokStar",
+	"+ ",
+
+	"+Norwegian Translation",
+	"-   Hallvard Norheim Bø (Lysander)",
+	"-   Erik J. Mesoy (Circon)",
+	"+ ",
+
+	"+Polish Translation",
+	"-   Artur R. Czechowski",
+	"-   methinks",
+	"-   BOrsuk",
+	"+ ",
+
+	"+Portuguese Translation",
+	"-   Celso Goya",
+	"-   Renato Cunha",
+	"+ ",
+
+	"+Slovak Translation",
+	"-   Viliam Bur",
+	"+ ",
+
+	"+Spanish Translation",
+	"-   Franciso Muñoz (fmunoz)",
+	"-   Gabriel Rodríguez (Chewie))",
+	"-   Jose Gordillo (kilder)",
+	"-   Jose Manuel Gomez (joseg)",
+	"+ ",
+
+	"+Swedish Translation",
+	"-   Alexander Kjäll (capitol)",
+	"-   wint3r",
+	"+ ",
+
+	"+Contributors",
+	"-   Cyril Bouthors (CyrilB)",
+	"-   edge",
+	"-   Frédéric Wagner",
+	"-   Jan Zvánovec (jaz)",
+	"-   Maksim Orlovich (SadEagle)",
+	"+ ",
+
+	"+ Bots",
+	"-   wesbot",
+	"+ "
+};
+
 std::vector<std::string> get_text() {
-	std::vector<std::string> text;
-	text.push_back(" ");
-	text.push_back("- ");
-	text.push_back(" ");
-	text.push_back("- ");
-	text.push_back(" ");
-	text.push_back("- ");
-	text.push_back(" ");
-	text.push_back("- ");
-	text.push_back(" ");
-	text.push_back("- ");
-	text.push_back(" ");
-	text.push_back("- ");
-
-  	text.push_back("+Core Developers");
- 	text.push_back("-   Main Developer");
- 	text.push_back("   David White (Sirp)");
-  	text.push_back("- ");
- 	text.push_back("-   Artwork and graphics designer");
- 	text.push_back("   Francisco Muñoz (fmunoz)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Developers");
- 	text.push_back("-   Alfredo Beaumont (ziberpunk)");
- 	text.push_back("-   Cyril Bouthors (CyrilB)");
- 	text.push_back("-   Isaac Clerencia");
- 	text.push_back("-   John B. Messerly");
- 	text.push_back("-   Justin Zaun (jzaun)");
- 	text.push_back("-   J.R. Blain (Cowboy)");
- 	text.push_back("-   Kristoffer Erlandsson (erl)");
- 	text.push_back("-   Philippe Plantier (Ayin)");
- 	text.push_back("-   Zas");
- 	text.push_back("+ ");
- 
- 	text.push_back("+General Purpose Administrators");
-	text.push_back("-   Cedric Duval");
- 	text.push_back("-   Crossbow/Miyo");
- 	text.push_back("+ ");
-
- 	text.push_back("+Artwork and graphics designers");
-	text.push_back("-   Andrew James Patterson (Kamahawk)");
-	text.push_back("-   Christophe Anjard");
-	text.push_back("-   Diego Brea (Cobretti)");
-	text.push_back("-   Eli Dupree (Elvish Pillager)");
-	text.push_back("-   Gareth Miller (Gafgarion)");
-	text.push_back("-   Hogne Håskjold (frame)");
-	text.push_back("-   James Barton (Sangel)");
-	text.push_back("-   Jimmy Olsson (Azlan)");
- 	text.push_back("-   Johanna Manninen (lohari)");
-	text.push_back("-   John Muccigrosso (Eponymous Archon)");
-	text.push_back("-   John-Robert Funck (XJaPaN)");
- 	text.push_back("-   Jonatan Alamà (tin)");
- 	text.push_back("-   Joseph Simmons (Turin)");
-	text.push_back("-   J.W. Bjerk (Eleazar)");
-	text.push_back("-   J.W.C. McNabb (Darth Fool)");
- 	text.push_back("-   Neorice");
-	text.push_back("-   Richard Kettering (Jetryl)");
- 	text.push_back("-   Slainte");
- 	text.push_back("-   Svetac");
- 	text.push_back("+ ");
-
- 	text.push_back("+Music");
- 	text.push_back("-   Aleksi");
- 	text.push_back("-   Fredrik Lindroth");
- 	text.push_back("-   Joseph Toscano (zhaymusic.com)");
- 	text.push_back("-   Pau Congost");
- 	text.push_back("+ ");
-
- 	text.push_back("+Scenario Designers");
-	text.push_back("-   Benjamin Drieu");
- 	text.push_back("-   David White (Sirp)");
- 	text.push_back("-   Francisco Muñoz (fmunoz)");
- 	text.push_back("-   James Spencer (Shade)");
- 	text.push_back("-   Joseph Simmons (Turin)");
- 	text.push_back("-   Justin Zaun (jzaun)");
- 	text.push_back("+ ");
-
- 	text.push_back("+Packagers");
- 	text.push_back("-   Darryl Dixon");
- 	text.push_back("-   Jay Hopping");
- 	text.push_back("-   Marcin Konicki (ahwayakchih)");
- 	text.push_back("-   Marcus Phillips (Sithrandel)");
- 	text.push_back("-   Mark Michelsen (skovbaer)");
- 	text.push_back("+ ");
-
- 	text.push_back("+Miscellaneous");
- 	text.push_back("-   Francesco Gigli (Jaramir)");
- 	text.push_back("-   Jordà Polo (ettin)");
- 	text.push_back("-   Tom Chance (telex4)");
- 	text.push_back("+ ");
-  
- 	text.push_back("+Internationalization Manager");
- 	text.push_back("-   Mark Michelsen (skovbaer)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Brazilian Translation");
- 	text.push_back("-   Ambra Viviani Loos");
- 	text.push_back("-   Michel Loos");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Catalan Translation");
- 	text.push_back("-   Dan Rosàs Garcia (focks)");
- 	text.push_back("-   Jordà Polo (ettin)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Danish Translation");
- 	text.push_back("-   Mark Michelsen (skovbaer)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Dutch Translation");
- 	text.push_back("-   Lala");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Finnish Translation");
- 	text.push_back("-   paxed");
- 	text.push_back("+ ");
- 
- 	text.push_back("+French Translation");
- 	text.push_back("-   Benoit Astruc");
- 	text.push_back("-   Guillaume Duwelz-Rebert");
- 	text.push_back("-   DaringTremayne");
- 	text.push_back("-   Zas");
- 	text.push_back("+ ");
- 
- 	text.push_back("+German Translation");
- 	text.push_back("-   Arndt Muehlenfeld");
- 	text.push_back("-   ja-el");
- 	text.push_back("-   Jonas");
- 	text.push_back("-   ammoq");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Hungarian Translation");
- 	text.push_back("-   Khiraly");
- 	text.push_back("-   Széll Tamás (TomJoad)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Italian Translation");
- 	text.push_back("-   crys0000");
- 	text.push_back("-   Federico Tomassetti");
- 	text.push_back("-   isazi");
- 	text.push_back("-   RokStar");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Norwegian Translation");
- 	text.push_back("-   Hallvard Norheim Bø (Lysander)");
- 	text.push_back("-   Erik J. Mesoy (Circon)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Polish Translation");
- 	text.push_back("-   Artur R. Czechowski");
- 	text.push_back("-   methinks");
- 	text.push_back("-   BOrsuk");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Portuguese Translation");
- 	text.push_back("-   Celso Goya");
- 	text.push_back("-   Renato Cunha");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Slovak Translation");
- 	text.push_back("-   Viliam Bur");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Spanish Translation");
- 	text.push_back("-   Franciso Muñoz (fmunoz)");
- 	text.push_back("-   Gabriel Rodríguez (Chewie))");
- 	text.push_back("-   Jose Gordillo (kilder)");
- 	text.push_back("-   Jose Manuel Gomez (joseg)");
- 	text.push_back("+ ");
- 
- 	text.push_back("+Swedish Translation");
- 	text.push_back("-   Alexander Kjäll (capitol)");
- 	text.push_back("-   wint3r");
- 	text.push_back("+ ");
- 
-  	text.push_back("+Contributors");
- 	text.push_back("-   Cyril Bouthors (CyrilB)");
- 	text.push_back("-   edge");
- 	text.push_back("-   Frédéric Wagner");
- 	text.push_back("-   Jan Zvánovec (jaz)");
- 	text.push_back("-   Maksim Orlovich (SadEagle)");
- 	text.push_back("+ ");
-
- 	text.push_back("+ Bots");
- 	text.push_back("-   wesbot");
- 	text.push_back("+ ");
-
-	return text;
+	return std::vector<std::string>(credits, credits + sizeof(credits) / sizeof(*credits));
 }
 
 void show_about(display& disp)
