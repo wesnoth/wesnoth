@@ -845,27 +845,20 @@ const std::string& unit::image() const
 		case STATE_DEFENDING_SHORT: {
 			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
 			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
-			if(anim != NULL) {
-				const unit_animation::frame& anim_frame = anim->get_current_frame();
-				const std::string* img = &anim_frame.image;
-				if(img != NULL) {
-					return *img;
-				}
-			}
-
-			return type_->image_defensive(range);
+			if (anim != NULL)
+				return anim->get_current_frame().image;
+			else
+				return type_->image_defensive(range);
 		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
 				return type_->image();
 
-			const unit_animation::frame& anim_frame = attackType_->animation().get_current_frame();
-			const std::string* const img = &anim_frame.image;
-
-			if(img->empty())
+			const std::string& img = attackType_->animation().get_current_frame().image;
+			if (img.empty())
 				return type_->image_fighting(attackType_->range());
 			else
-				return *img;
+				return img;
 		}
 		case STATE_HEALING:
 			return type_->image_healing();

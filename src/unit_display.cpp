@@ -716,7 +716,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
-		const std::string* unit_image = &unit_frame.image;
+		const std::string& unit_image = unit_frame.image.empty() ? attacker.image() : unit_frame.image;
 
 		if(!attacker.facing_left()) {
 			xoffset *= -1;
@@ -727,11 +727,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		xoffset = int(double(xoffset)*disp.zoom());
 
-		if(unit_image->empty()) {
-			unit_image = &attacker.image();
-		}
-
-		surface image((unit_image == NULL) ? surface(NULL) : image::get_image(*unit_image));
+		surface image(image::get_image(unit_image));
 		if(attacker.facing_left() == false) {
 			image.assign(image::reverse_image(image));
 		}
