@@ -11,6 +11,7 @@
 #include "team.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "wesconfig.h"
 
 #include "SDL_image.h"
 

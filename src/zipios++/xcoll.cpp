@@ -1,3 +1,5 @@
+#include "wesconfig.h"
+
 #ifdef USE_ZIPIOS
 
 #include <vector>
