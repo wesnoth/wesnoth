@@ -623,28 +623,28 @@ void unit_preview_pane::draw()
 		image_rect = rect;
 	}
 
-	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h,0,0};
-
-	if(u.description().empty() == false) {
-		std::stringstream desc;
-		desc << font::BOLD_TEXT << u.description();
-		const std::string description = desc.str();
-		description_rect = font::text_area(description,12);
-		description_rect = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h);
-	}
-
 	//place the 'unit profile' button
 	if(map_ != NULL) {
 		const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
-		                             image_rect.y + image_rect.h + description_rect.h,
+		                             image_rect.y + image_rect.h,
 		                             details_button_.location().w,details_button_.location().h};
 		details_button_.set_location(button_loc);
 	}
 
+	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h+details_button_.location().h,0,0};
+
+	if(u.description().empty() == false) {
+		std::stringstream desc;
+		desc << font::NORMAL_TEXT << u.description();
+		const std::string description = desc.str();
+		description_rect = font::text_area(description,14);
+		description_rect = font::draw_text(&disp(),area,14,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
+	}
+
 	std::stringstream details;
-	details << font::BOLD_TEXT << u.type().language_name()
-			<< "\n" << font::SMALL_TEXT << "(" << _("level") << " "
-			<< u.type().level() << ")\n"
+	details << u.type().language_name()
+			<< "\n" << _("level") << " "
+			<< u.type().level() << "\n"
 			<< string_table[unit_type::alignment_description(u.type().alignment())] << "\n"
 			<< u.traits_description() << " \n";
 
