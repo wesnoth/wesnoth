@@ -1,4 +1,5 @@
 #include "../config.hpp"
+#include "../filesystem.hpp"
 #include "../network.hpp"
 #include "../publish_campaign.hpp"
 #include "../util.hpp"
@@ -65,7 +66,7 @@ void campaign_server::run()
 			}
 
 			config data;
-			while((sock = network::receive_data(data)) != NULL) {
+			while((sock = network::receive_data(data)) != network::null_connection) {
 				if(data.child("request_campaign_list") != NULL) {
 					config campaign_list = campaigns();
 					config::child_list cmps = campaign_list.get_children("campaign");
