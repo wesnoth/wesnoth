@@ -2,6 +2,8 @@ ISUBDIRS = icons
 SUBDIRS = intl po m4 src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
+bin_SCRIPTS = utils/wmlxgettext
+
 findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
 
 if LITE
