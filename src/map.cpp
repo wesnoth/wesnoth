@@ -114,13 +114,13 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 	std::vector<config*>& terrains = cfg.children["terrain"];
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
 
-	int x = 0, y = 0;
+
+	size_t x = 0, y = 0;
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		char c = *i;
 		if(c == '\n') {
-			tiles_.push_back(std::vector<TERRAIN>());
-			y = 0;
-			++x;
+			x = 0;
+			++y;
 		} else {
 			if(letterToTerrain_.count(c) == 0) {
 				if(isdigit(*i)) {
@@ -133,12 +133,16 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 			}
 
 			if(c == TOWER) {
-				towers_.push_back(location(x,y));
+				towers_.push_back(location(int(x),int(y)));
 			}
 
-			tiles_.back().push_back(c);
+			if(x >= tiles_.size()) {
+				tiles_.resize(x+1);
+			}
 
-			++y;
+			tiles_[x].push_back(c);
+
+			++x;
 		}
 	}
 
@@ -147,6 +151,7 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 
 	for(size_t n = 0; n != tiles_.size(); ++n) {
 		if(tiles_[n].size() != size_t(this->y())) {
+			std::cerr << "Map is not rectangular!\n";
 			tiles_.erase(tiles_.begin()+n);
 			--n;
 		}
