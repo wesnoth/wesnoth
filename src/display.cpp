@@ -531,6 +531,8 @@ void draw_label(display& disp, surface target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {	
+	bool changed = false;
+
 	//log_scope("Drawing");
 	invalidate_animations();
 
@@ -551,6 +553,8 @@ void display::draw(bool update,bool force)
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
+
+		changed = true;
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -563,7 +567,11 @@ void display::draw(bool update,bool force)
 		invalidateAll_ = false;
 
 		redrawMinimap_ = true;
+		changed = true;
 	} else if(!map_.empty()) {
+		if(!invalidated_.empty())
+			changed = true;
+
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
 			draw_tile(it->x,it->y);
@@ -576,11 +584,13 @@ void display::draw(bool update,bool force)
 		redrawMinimap_ = false;
 		const SDL_Rect area = minimap_area();
 		draw_minimap(area.x,area.y,area.w,area.h);
+		changed = true;
 	}
 
 
 	if(!map_.empty()) {
 		draw_sidebar();
+		changed = true;
 	}
 
 	prune_chat_messages();
@@ -597,10 +607,12 @@ void display::draw(bool update,bool force)
 	if(update) {
 		lastDraw_ = SDL_GetTicks();
 
-		if(wait_time >= 0 || drawSkips_ >= max_skips || force)
-			update_display();
-		else
+		if(wait_time >= 0 || drawSkips_ >= max_skips || force) {
+			if(changed)
+				update_display();
+		} else {
 			drawSkips_++;
+		}
 	}
 }
 
@@ -1612,10 +1624,14 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 	std::vector<surface> res;
 	gamemap::location loc(x,y);
 
+	const time_of_day& tod = status_.get_time_of_day();
+	// const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
+
 	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == ADJACENT_FOREGROUND ?
 		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
-	const std::vector<animated<image::locator> >* const terrains = builder_.get_terrain_at(loc,builder_terrain_type);
+	const terrain_builder::imagelist* const terrains = builder_.get_terrain_at(loc,
+			tod.id, builder_terrain_type);
 
 	if(terrains != NULL) {
 		for(std::vector<animated<image::locator> >::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
@@ -1623,7 +1639,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 			image::locator image = it->get_current_frame();
 			// image.filename = "terrain/" + image.filename;
 
-			const surface surface(get_terrain(image,image_type,x,y,true));
+			const surface surface(get_terrain(image,image_type,x,y));
 			if(surface != NULL) {
 				res.push_back(surface);
 			}
@@ -1638,7 +1654,7 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 				image::locator image(*it);
 				// image.filename = "terrain/" + *it;
 
-				const surface surface(get_terrain(image,image_type,x,y,true));
+				const surface surface(get_terrain(image,image_type,x,y));
 				if(surface != NULL) {
 					res.push_back(surface);
 				}
@@ -1651,13 +1667,10 @@ std::vector<surface> display::get_terrain_images(int x, int y, image::TYPE image
 }
 
 surface display::get_terrain(const image::locator& image, image::TYPE image_type,
-                                 int x, int y, bool search_tod)
+                                 int x, int y)
 {
-	surface im(NULL);
 
-	const time_of_day& tod = status_.get_time_of_day();
-	const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
-
+#if 0
 	//see if there is a time-of-day specific version of this image
 	if(search_tod) {
 		// image::locator tod_image = image;
@@ -1669,15 +1682,17 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 			return im;
 		}
 	}
+#endif
 
 	// image::locator tmp = image;
 	// tmp.filename += ".png";
 
-	im = image::get_image(image, image_type);
+	const surface im(image::get_image(image, image_type));
 	if(im == NULL) {
 		return im;
 	}
 
+#if 0
 	//see if this tile is illuminated to a different colour than it'd
 	//normally be displayed as
 	const int radj = tod_at.red - tod.red;
@@ -1690,6 +1705,7 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 		if(im == NULL)
 			std::cerr << "could not adjust surface..\n";
 	}
+#endif
 	
 	return im;	
 }

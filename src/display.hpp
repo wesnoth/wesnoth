@@ -381,7 +381,7 @@ private:
 	//                        int x, int y, const std::string& dir="");
 	//this surface must be freed by the caller
 	surface get_terrain(const image::locator &image, image::TYPE type,
-	                        int x, int y, bool search_tod);
+	                        int x, int y);
 
 	//this surface must be freed by the caller
 	surface get_flag(gamemap::TERRAIN, int x, int y);
