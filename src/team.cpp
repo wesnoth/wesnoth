@@ -231,13 +231,15 @@ team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
 
 	const std::string& shroud_data = cfg["shroud_data"];
 	for(std::string::const_iterator sh = shroud_data.begin(); sh != shroud_data.end(); ++sh) {
-		if(shroud_.empty() || *sh == '\n')
+		if(*sh == '|')
 			shroud_.resize(shroud_.size()+1);
 
-		if(*sh == '1')
-			shroud_.back().push_back(true);
-		else if(*sh == '0')
-			shroud_.back().push_back(false);
+		if(shroud_.empty() == false) {
+			if(*sh == '1')
+				shroud_.back().push_back(true);
+			else if(*sh == '0')
+				shroud_.back().push_back(false);
+		}
 	}
 }
 
@@ -256,6 +258,8 @@ void team::write(config& cfg) const
 
 	std::stringstream shroud_str;
 	for(std::vector<std::vector<bool> >::const_iterator sh = shroud_.begin(); sh != shroud_.end(); ++sh) {
+		shroud_str << '|';
+
 		for(std::vector<bool>::const_iterator i = sh->begin(); i != sh->end(); ++i) {
 			shroud_str << (*i ? '1' : '0');
 		}

@@ -146,8 +146,8 @@ bool show_intro_part(display& screen, const config& part,
 
 	int xpos = textx, ypos = texty;
 	
-		//the maximum position that text can reach before wrapping
-		const int max_xpos = next_button.location().x - 10;
+	//the maximum position that text can reach before wrapping
+	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
 	std::string buf;
 	for(;;) {

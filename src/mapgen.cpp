@@ -36,8 +36,6 @@ namespace {
 typedef std::vector<std::vector<int> > height_map;
 typedef std::vector<std::vector<char> > terrain_map;
 
-//see http://216.239.39.104/search?q=cache:H2MSHn0AwBIJ:www.cosc.brocku.ca/Offerings/4V98/seminars/Terrain.ppt+height+map+algorithms&hl=en&ie=UTF-8 under
-//'Hill Algorithm' for a description of this algorithm
 //basically we generate alot of hills, each hill being centered at a certain point, with a certain radius - being a half sphere.
 //Hills are combined additively to form a bumpy surface
 //The size of each hill varies randomly from 1-hill_size.
