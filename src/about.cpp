@@ -217,6 +217,8 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+Swedish Translation"),
+		"-   Susanna Björverud (sanna)",
+		"-   Stefan Bergström",
 		"-   Alexander Kjäll (capitol)",
 		"-   wint3r",
 		"+ ",
