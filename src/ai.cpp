@@ -816,12 +816,14 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 	//if it wants to stop to recruit along the way.
 	std::pair<location,location> leader_move;
 
+	int moves_made = 0;
 	for(std::vector<std::pair<location,location> >::const_iterator i = moves.begin(); i != moves.end(); ++i) {
 		if(leader != units_.end() && leader->first == i->second) {
 			leader_move = *i;
 		} else {
 			if(units_.count(i->first) == 0) {
 				move_unit(i->second,i->first,possible_moves);
+				++moves_made;
 			}
 		}
 	}
@@ -829,10 +831,11 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 	if(leader_move.second.valid()) {
 		if(units_.count(leader_move.first) == 0) {
 			move_unit(leader_move.second,leader_move.first,possible_moves);
+			++moves_made;
 		}
 	}
 
-	return moves.empty() == false;
+	return moves_made > 0;
 }
 
 bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
