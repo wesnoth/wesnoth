@@ -61,6 +61,7 @@ void textbox::set_text(const std::string& text)
 {
 	text_ = string_to_wstring(text);
 	cursor_ = text_.size();
+	text_pos_ = 0;
 	selstart_ = -1;
 	selend_ = -1;
 	set_dirty(true);

@@ -76,15 +76,10 @@ void file_chooser::display_current_files() {
 		}
 	}
 	file_list_.set_items(to_show);
-	// This will prevent the "box" with filenames from changing size on
-	// every redisplay, it looks better when it's static.
-	file_list_.set_width(width());
 	current_path_label_.set_text(current_dir_);
 }
 
 void file_chooser::display_chosen_file() {
-	// Clearing is not really necessary, but things end up nicer if we do.
-	filename_textbox_.clear(); 
 	if (is_directory(chosen_file_)) {
 		filename_textbox_.set_text(strip_last_delim(chosen_file_) + path_delim_);
 	}
