@@ -888,6 +888,7 @@ bool game_controller::load_game()
 
 void game_controller::set_tutorial()
 {
+	state_ = game_state();
 	state_.campaign_type = "tutorial";
 	state_.scenario = "tutorial";
 	defines_map_["TUTORIAL"] = preproc_define();
@@ -896,7 +897,6 @@ void game_controller::set_tutorial()
 bool game_controller::new_campaign()
 {
 	state_ = game_state();
-
 	state_.campaign_type = "scenario";
 
 	config::child_list campaigns = game_config_.get_children("campaign");
@@ -1181,8 +1181,8 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 
 bool game_controller::play_multiplayer()
 {
+	state_ = game_state();
 	state_.campaign_type = "multiplayer";
-	state_.scenario = "";
 	state_.campaign_define = "MULTIPLAYER";
 
 	std::vector<std::string> host_or_join;

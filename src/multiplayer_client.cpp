@@ -565,11 +565,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 		state.starting_pos = sides;
 		state.snapshot = sides;
-
-                for(std::map<std::string, player_info>::iterator i=state.players.begin();
-                    i!=state.players.end(); ++i) {
-                  i->second.can_recruit.clear();
-                }
+		state.players.clear();
     
 		recorder.set_save_info(state);
     

@@ -64,11 +64,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 {
 	std::cerr << "setup dialog ctor\n";
 
-	for(std::map<std::string, player_info>::iterator i = state_.players.begin();
-	    i != state_.players.end(); ++i) {
-		i->second.available_units.clear();
-		i->second.can_recruit.clear();
-	}
+	state_.players.clear();
 	state_.variables.clear();
 
 	//build the list of scenarios to play

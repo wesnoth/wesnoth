@@ -85,12 +85,8 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 		log_scope("loading save");
 
+		state_->players.clear();
 		load_game(*data_, game, *state_);
-
-		for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
-			i->second.available_units.clear();
-			i->second.can_recruit.clear();
-		}
 
 		if(state_->campaign_type != "multiplayer") {
 			gui::show_dialog(*disp_, NULL, "", 
@@ -160,10 +156,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 	level_ = level_ptr;
 	state_->label = level_->values["name"];
-
-	for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
-		i->second.gold = -10000;
-	}
+	state_->players.clear();
 
 	state_->scenario = scenario_data["id"];
 
@@ -857,9 +850,7 @@ void mp_connect::start_game()
 	//it was just there to tell clients about the replay data
 	level_->clear_children("replay");
 	std::vector<config*> story;
-	for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
-		i->second.can_recruit.clear();
-	}
+	state_->players.clear();
 
 	play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
 	recorder.clear();
