@@ -71,6 +71,18 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				                 video,state,story);
 			}
 
+			//ask to save a replay of the game
+			if(res == VICTORY || res == DEFEAT) {
+				std::string label = state.label + " replay";
+				const int should_save = gui::show_dialog(disp,NULL,"",
+				                string_table["save_replay_message"],
+				                gui::YES_NO,NULL,NULL,
+								string_table["save_game_label"],&label);
+				if(should_save == 0) {
+					recorder.save_game(units_data,label);
+				}
+			}
+
 			recorder.clear();
 			state.replay_data.clear();
 

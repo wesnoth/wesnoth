@@ -1974,6 +1974,9 @@ void display::move_unit_between(const gamemap::location& a,
 		double xloc = xsrc + xstep*i;
 		double yloc = ysrc + ystep*i;
 
+		//we try to scroll the map if the unit is at the edge.
+		//keep track of the old position, and if the map moves at all,
+		//then recenter it on the unit
 		double oldxpos = xpos_;
 		double oldypos = ypos_;
 		if(xloc < side_threshhold) {
