@@ -207,7 +207,7 @@ surface locator::load_image_file() const
 surface locator::load_image_sub_file() const
 {
 	const surface mother_surface(get_image(val_.filename_, UNSCALED, NO_ADJUST_COLOUR));
-	const surface mask(get_image(game_config::terrain_mask_image, UNMASKED, NO_ADJUST_COLOUR));
+	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED, NO_ADJUST_COLOUR));
 	
 	if(mother_surface == NULL)
 		return surface(NULL);
