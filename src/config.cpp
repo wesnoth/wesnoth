@@ -815,6 +815,9 @@ void config::read(const std::string& data,
 				} else if(in_quotes || !has_quotes) {
 					expecting_value = false;
 					push_back(value, c);
+				} else if(expecting_value) {
+					// after a +, emulate !has_quotes so we can see any _ when we encounter a " later
+					push_back(value, c);
 				}
 
 				break;
