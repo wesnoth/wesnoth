@@ -10,17 +10,19 @@
 
    See the COPYING file for more details.
 */
+
 #include "terrain.hpp"
 
 #include <cassert>
 #include <cstdlib>
+#include <iostream>
 
-terrain_type::terrain_type() : image_("void"), type_(' '), letter_(' ')
+terrain_type::terrain_type() : images_(1,"void"), type_(' '), letter_(' ')
 {}
 
 terrain_type::terrain_type(config& cfg)
 {
-	image_ = cfg.values["image"];
+	images_ = config::split(cfg.values["image"]);
 	name_ = cfg.values["name"];
 	const std::string& letter = cfg.values["char"];
 	assert(!letter.empty());
@@ -35,9 +37,17 @@ terrain_type::terrain_type(config& cfg)
 	colour_.read(cfg);
 }
 
-const std::string& terrain_type::image() const
+const std::string& terrain_type::image(int x, int y) const
 {
-	return image_;
+	assert(!images_.empty());
+
+	return images_[(((x<<8)^3413402)+y^34984 + x*y)%images_.size()];
+}
+
+const std::string& terrain_type::default_image() const
+{
+	assert(!images_.empty());
+	return images_.front();
 }
 
 const std::string& terrain_type::name() const

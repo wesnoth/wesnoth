@@ -1282,7 +1282,9 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,IMAGE_TYPE image_type,
                                  int x, int y, const std::string& direction)
 {
 	const bool tower = (terrain == gamemap::TOWER);
-	std::string image = "terrain/" + map_.get_terrain_info(terrain).image();
+	std::string image = "terrain/" + (direction.empty() ?
+	                           map_.get_terrain_info(terrain).image(x,y) :
+	                           map_.get_terrain_info(terrain).default_image());
 
 	if(tower) {
 		size_t i;

@@ -24,7 +24,8 @@ public:
 	terrain_type();
 	terrain_type(config& cfg);
 
-	const std::string& image() const;
+	const std::string& image(int x, int y) const;
+	const std::string& default_image() const;
 	const std::string& name() const;
 	char letter() const;
 	char type() const;
@@ -33,7 +34,8 @@ public:
 
 	bool is_alias() const;
 private:
-	std::string image_, name_;
+	std::vector<std::string> images_;
+	std::string name_;
 
 	//the 'letter' is the letter that represents this
 	//terrain type. The 'type' is the letter of the
