@@ -538,6 +538,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		if(generator != NULL && generator->allow_user_config() && generator_settings.process(mousex,mousey,left_button)) {
 			generator->user_config(disp);
+			map_changed = true;
 		}
 
 		if(generator != NULL && (map_changed || regenerate_map.process(mousex,mousey,left_button))) {
