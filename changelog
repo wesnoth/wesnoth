@@ -16,9 +16,11 @@ CVS HEAD
    * pretty much all scenarios
  * scenario balancing for 'The Eastern Invasion' campaign
    * An Unexpected Appearance
+   * Weldyn under Attack
  * unit description updates
  * drakefoot movetype
  * remade Drakes and removed obsolete ones
+ * gave hammer to Dwarvish Lord
  * new units:
    * Drake Flare
    * Drake Gladiator
@@ -41,6 +43,7 @@ CVS HEAD
    * czech
    * danish
    * dutch
+   * finnish
    * french
    * german
    * norwegian
@@ -80,6 +83,8 @@ CVS HEAD
  * fixed knight appearances bug on 'The Eastern Invasion: Mal-Ravalans Capital' scenario
  * fixed double '{BIGMAP_BLACKWATER_PORT}' in 'Heir to the Throne: Blackwater Port' scenario
  * fixed gold and load game problem
+ * fixed divide-by-0 error in AI
+ * fixed statistics dialog seemingly endless loop
  * added a way to specify the actual position of multi-hex tiles
  * logging system improvements
  * made it possible to have [terrain_graphics] rule as childs of [scenario]s
