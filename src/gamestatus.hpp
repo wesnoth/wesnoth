@@ -131,6 +131,8 @@ struct game_state
 
 	std::set<std::string> can_recruit; //units the player has the ability to recruit
 
+	std::string campaign_define; //if there is a define the campaign uses to customize data
+
 	//if the game is saved mid-level, we have a series of replay steps to
 	//take the game up to the position it was saved at.
 	config replay_data;

@@ -112,6 +112,17 @@ struct check_item {
 	bool checked;
 };
 
+//an interface for a 'preview pane'. A preview pane is shown beside a dialog created
+//by 'show_dialog' and shows information about the selection.
+class preview_pane : public widget {
+public:
+	preview_pane(display& disp) : widget(disp) {}
+	virtual ~preview_pane() {}
+
+	virtual bool left_side() const = 0;
+	virtual void set_selection(int index) = 0;
+};
+
 //function to chop up one long string of text into lines
 size_t text_to_lines(std::string& text, size_t max_length);
 
@@ -122,7 +133,7 @@ int show_dialog(display& screen, SDL_Surface* image,
                 const std::string& caption, const std::string& message,
                 DIALOG_TYPE type=MESSAGE,
                 const std::vector<std::string>* menu_items=NULL,
-                const std::vector<unit>* units=NULL,
+                const std::vector<preview_pane*>* preview_panes=NULL,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
                 dialog_action* action=NULL,

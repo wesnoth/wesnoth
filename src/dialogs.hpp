@@ -16,8 +16,11 @@
 #include "actions.hpp"
 #include "config.hpp"
 #include "display.hpp"
+#include "map.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
+
+#include "widgets/button.hpp"
 
 namespace dialogs
 {
@@ -28,7 +31,7 @@ namespace dialogs
 //
 //note that 'loc' is not a reference, because deleting an item from the units map
 //(when replacing the unit that is being advanced) will possibly invalidate the reference
-void advance_unit(const game_data& info,unit_map& units, gamemap::location loc,
+void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gamemap::location loc,
 				  display& gui, bool random_choice=false);
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice);
@@ -57,6 +60,32 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 int show_file_chooser_dialog(display &displ, std::string &filename,
 							 const std::string title="Choose a File",
 							 int xloc=-1, int yloc=-1);
+
+class unit_preview_pane : public gui::preview_pane
+{
+public:
+	unit_preview_pane(display& disp, const gamemap* map, const unit& u, bool left_side=true);
+	unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, bool left_side=true);
+
+	bool left_side() const;
+	void set_selection(int index);
+
+private:
+	void draw();
+	void process();
+
+	gui::button details_button_;
+	const gamemap* map_;
+	const std::vector<unit>* units_;
+	std::vector<unit> unit_store_;
+	int index_;
+	bool left_;
+};
+
+void show_unit_description(display& disp, const gamemap& map, const unit& u);
+void show_unit_resistance(display& disp, const unit& u);
+void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u);
+
 }
 
 #endif

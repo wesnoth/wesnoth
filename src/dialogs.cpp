@@ -14,6 +14,7 @@
 #include "dialogs.hpp"
 #include "events.hpp"
 #include "font.hpp"
+#include "game_config.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
@@ -34,6 +35,7 @@ namespace dialogs
 {
 
 void advance_unit(const game_data& info,
+				  const gamemap& map,
                   std::map<gamemap::location,unit>& units,
                   gamemap::location loc,
                   display& gui, bool random_choice)
@@ -62,9 +64,14 @@ void advance_unit(const game_data& info,
 		res = rand()%options.size();
 	} else if(options.size() > 1) {
 
+		const events::event_context dialog_events_context;
+		unit_preview_pane unit_preview(gui,&map,sample_units);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&unit_preview);
+
 		res = gui::show_dialog(gui,NULL,string_table["advance_unit_heading"],
 		                       string_table["advance_unit_message"],
-		                       gui::OK_ONLY, &lang_options, &sample_units);
+		                       gui::OK_ONLY, &lang_options, &preview_panes);
 	}
 
 	recorder.choose_option(res);
@@ -156,12 +163,13 @@ namespace {
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, std::vector<save_info>& saves) : disp_(disp), saves_(saves) {}
+	delete_save(display& disp, std::vector<save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	std::vector<save_info>& saves_;
+	std::vector<config*>& summaries_;
 };
 
 gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
@@ -193,10 +201,165 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 
 		//remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
+
+		if(index < summaries_.size()) {
+			summaries_.erase(summaries_.begin() + index);
+		}
+
 		return gui::dialog_button_action::DELETE_ITEM;
 	} else {
 		return gui::dialog_button_action::NO_EFFECT;
 	}
+}
+
+static const SDL_Rect save_preview_pane_area = {-200,-400,200,400};
+static const int save_preview_border = 10;
+
+class save_preview_pane : public gui::preview_pane
+{
+public:
+	save_preview_pane(display& disp, const config& game_config, gamemap* map, const game_data& data,
+	                  const std::vector<save_info>& info, const std::vector<config*>& summaries)
+		: gui::preview_pane(disp), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
+	{
+		set_location(save_preview_pane_area);
+	}
+
+	void draw();
+	void set_selection(int index) {
+		index_ = index;
+		set_dirty();
+	}
+
+	bool left_side() const { return true; }
+
+private:
+	const config* game_config_;
+	gamemap* map_;
+	const game_data* data_;
+	const std::vector<save_info>* info_;
+	const std::vector<config*>* summaries_;
+	int index_;
+	std::map<std::string,shared_sdl_surface> map_cache_;
+};
+
+void save_preview_pane::draw()
+{
+	if(!dirty()) {
+		return;
+	}
+
+	bg_restore();
+
+	if(index_ < 0 || index_ >= int(summaries_->size()) || info_->size() != summaries_->size()) {
+		return;
+	}
+
+	const config& summary = *(*summaries_)[index_];
+
+	SDL_Surface* const screen = disp().video().getSurface();
+
+	const SDL_Rect area = { location().x+save_preview_border, location().y+save_preview_border,
+	                        location().w-save_preview_border*2, location().h-save_preview_border*2 };
+	SDL_Rect clip_area = area;
+	const clip_rect_setter clipper(screen,clip_area);
+
+	int ypos = area.y;
+
+	const game_data::unit_type_map::const_iterator leader = data_->unit_types.find(summary["leader"]);
+	if(leader != data_->unit_types.end()) {
+		const scoped_sdl_surface image(image::get_image(leader->second.image(),image::UNSCALED));
+		if(image != NULL) {
+			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
+			ypos += image_rect.y + image_rect.h + save_preview_border;
+
+			SDL_BlitSurface(image,NULL,screen,&image_rect);
+		}
+	}
+
+
+	std::string map_data = summary["map_data"];
+	if(map_data.empty()) {
+		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
+		if(scenario != NULL) {
+			map_data = (*scenario)["map_data"];
+			if(map_data.empty() && (*scenario)["map"].empty() == false) {
+				try {
+					map_data = read_map((*scenario)["map"]);
+				} catch(io_exception& e) {
+					std::cerr << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
+				}
+			}
+		}
+	}
+
+	SDL_Surface* map_surf = NULL;
+
+	if(map_data.empty() == false) {
+		const std::map<std::string,shared_sdl_surface>::const_iterator itor = map_cache_.find(map_data);
+		if(itor != map_cache_.end()) {
+			map_surf = itor->second;
+		} else if(map_ != NULL) {
+			try {
+				map_->read(map_data);
+
+				map_surf = image::getMinimap(100,100,*map_,0,NULL);
+				if(map_surf != NULL) {
+					map_cache_.insert(std::pair<std::string,shared_sdl_surface>(map_data,shared_sdl_surface(map_surf)));
+				}
+			} catch(gamemap::incorrect_format_exception&) {
+			}
+		}
+	}
+
+	if(map_surf != NULL) {
+		SDL_Rect map_rect = {area.x + area.w - map_surf->w,area.y,map_surf->w,map_surf->h};
+		ypos = maximum<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
+		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
+	}
+
+	char time_buf[256];
+	const size_t res = strftime(time_buf,sizeof(time_buf),string_table["date_format"].c_str(),localtime(&((*info_)[index_].time_modified)));
+	if(res == 0) {
+		time_buf[0] = 0;
+	}
+
+	std::stringstream str;
+
+	// escape all special characters in filenames
+	std::string name = (*info_)[index_].name;
+	str << font::BOLD_TEXT << config::escape(name) << "\n" << time_buf;
+
+	if(summary["corrupt"] == "yes") {
+		str << "\n" << string_table["save_invalid"];
+	} else if(summary["campaign_type"] != "") {
+		str << "\n";
+			
+		const std::string& campaign_type = summary["campaign_type"];
+		if(campaign_type == "scenario") {
+			str << translate_string("campaign_button");
+		} else if(campaign_type == "multiplayer") {
+			str << translate_string("multiplayer_button");
+		} else if(campaign_type == "tutorial") {
+			str << translate_string("tutorial_button");
+		} else {
+			str << translate_string(campaign_type);
+		}
+
+		str << "\n";
+			
+		if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
+			str << translate_string("replay");
+		} else if(summary["turn"] != "") {
+			str << translate_string("turn") << " " << summary["turn"];
+		} else {
+			str << string_table["scenario_start"];
+		}
+
+		str << "\n" << translate_string("difficulty") << ": " << translate_string(summary["difficulty"]);
+	}
+
+	font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,str.str(),area.x,ypos,NULL,true);
 }
 
 } //end anon namespace
@@ -204,11 +367,6 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
 {
 	std::vector<save_info> games = get_saves_list();
-
-	delete_save save_deleter(disp,games);
-	gui::dialog_button delete_button(&save_deleter,string_table["delete_save"]);
-	std::vector<gui::dialog_button> buttons;
-	buttons.push_back(delete_button);
 
 	if(games.empty()) {
 		gui::show_dialog(disp,NULL,
@@ -229,6 +387,11 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 		summaries.push_back(&cfg);
 	}
+
+	delete_save save_deleter(disp,games,summaries);
+	gui::dialog_button delete_button(&save_deleter,string_table["delete_save"]);
+	std::vector<gui::dialog_button> buttons;
+	buttons.push_back(delete_button);
 
 	bool generate_summaries = !no_summary.empty();
 
@@ -300,105 +463,19 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 		write_save_index();
 	}
 
-	util::scoped_ptr<gamemap> map_ptr(NULL);
-	string_map map_cache;
-
 	std::vector<std::string> items;
 	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name;
 		name.resize(minimum<size_t>(name.size(),40));
 
-		char time_buf[256];
-		const size_t res = strftime(time_buf,sizeof(time_buf),string_table["date_format"].c_str(),localtime(&(i->time_modified)));
-		if(res == 0)
-			time_buf[0] = 0;
-
-		std::stringstream str;
-
-		config& summary = *summaries[i - games.begin()];
-		const game_data::unit_type_map::const_iterator leader = data.unit_types.find(summary["leader"]);
-		if(leader != data.unit_types.end()) {
-			str << "&" << leader->second.image() << ",";
-		} else {
-			str << ",";
-		}
-
-		// escape all special characters in filenames
-		str << font::BOLD_TEXT << config::escape(name) << "\n" << time_buf;
-
-		if(summary["corrupt"] == "yes") {
-			str << "\n" << string_table["save_invalid"];
-		} else if(summary["campaign_type"] != "") {
-			str << "\n";
-			
-			const std::string& campaign_type = summary["campaign_type"];
-			if(campaign_type == "scenario") {
-				str << translate_string("campaign_button");
-			} else if(campaign_type == "multiplayer") {
-				str << translate_string("multiplayer_button");
-			} else if(campaign_type == "tutorial") {
-				str << translate_string("tutorial_button");
-			} else {
-				str << translate_string(campaign_type);
-			}
-
-			str << "\n";
-			
-			if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
-				str << translate_string("replay");
-			} else if(summary["turn"] != "") {
-				str << translate_string("turn") << " " << summary["turn"];
-			} else {
-				str << string_table["scenario_start"];
-			}
-
-			str << "\n" << translate_string("difficulty") << ": " << translate_string(summary["difficulty"]);
-
-			std::string map_data = summary["map_data"];
-			if(map_data.empty()) {
-				const config* const scenario = game_config.find_child(summary["campaign_type"],"id",summary["scenario"]);
-				if(scenario != NULL) {
-					map_data = (*scenario)["map_data"];
-					if(map_data.empty() && (*scenario)["map"].empty() == false) {
-						try {
-							map_data = read_map((*scenario)["map"]);
-						} catch(io_exception& e) {
-							std::cerr << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
-						}
-					}
-				}
-			}
-
-			if(map_data.empty() == false) {
-				const string_map::const_iterator itor = map_cache.find(map_data);
-				if(itor != map_cache.end()) {
-					str << ",&" << itor->second;
-				} else {
-
-					try {
-						if(map_ptr == NULL) {
-							map_ptr.assign(new gamemap(game_config,map_data));
-						} else {
-							map_ptr->read(map_data);
-						}
-
-						SDL_Surface* const minimap = image::getMinimap(72,72,*map_ptr,0,NULL);
-						if(minimap != NULL) {
-							const std::string id = "_map_image_" + name;
-							image::register_image(id,minimap);
-							str << ",&" << id;
-
-							map_cache[map_data] = id;
-						}
-					} catch(gamemap::incorrect_format_exception& e) {
-					}
-				}
-			}
-			
-		}
-
-		items.push_back(str.str());
+		items.push_back(name);
 	}
+
+	gamemap map_obj(game_config,"");
+
+	std::vector<gui::preview_pane*> preview_panes;
+	save_preview_pane save_preview(disp,game_config,&map_obj,data,games,summaries);
+	preview_panes.push_back(&save_preview);
 
 	//create an option for whether the replay should be shown or not
 	std::vector<gui::check_item> options;
@@ -409,7 +486,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	const int res = gui::show_dialog(disp,NULL,
 					 string_table["load_game_heading"],
 					 string_table["load_game_message"],
-			         gui::OK_CANCEL,&items,NULL,"",NULL,NULL,&options,-1,-1,NULL,&buttons);
+			         gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,&options,-1,-1,NULL,&buttons);
 
 	if(res == -1)
 		return "";
@@ -503,6 +580,256 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 		screen.flip();
 		SDL_Delay(10);
 	}
+}
+
+namespace {
+	static const SDL_Rect unit_preview_size = {-150,-350,150,350};
+	static const int unit_preview_border = 10;
+}
+
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, bool on_left_side)
+                                        : gui::preview_pane(disp), details_button_(disp,string_table["action_describeunit"]),
+										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side)
+{
+	set_location(unit_preview_size);
+	unit_store_.push_back(u);
+}
+
+unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, bool on_left_side)
+                                        : gui::preview_pane(disp), details_button_(disp,string_table["action_describeunit"]),
+										  map_(map), units_(&units), index_(0), left_(on_left_side)
+{
+	set_location(unit_preview_size);
+}
+
+bool unit_preview_pane::left_side() const
+{
+	return left_;
+}
+
+void unit_preview_pane::set_selection(int index)
+{
+	index = minimum<int>(int(units_->size()-1),index);
+	if(index != index_ && index >= 0) {
+		index_ = index;
+		set_dirty();
+		if(map_ != NULL) {
+			details_button_.set_dirty();
+		}
+	}
+}
+
+void unit_preview_pane::draw()
+{
+	if(!dirty()) {
+		return;
+	}
+
+	bg_restore();
+
+	if(index_ < 0 || index_ >= int(units_->size())) {
+		return;
+	}
+
+	const unit& u = (*units_)[index_];
+
+	set_dirty(false);
+
+	SDL_Surface* const screen = disp().video().getSurface();
+
+	const SDL_Rect area = { location().x+unit_preview_border, location().y+unit_preview_border,
+	                        location().w-unit_preview_border*2, location().h-unit_preview_border*2 };
+	SDL_Rect clip_area = area;
+	const clip_rect_setter clipper(screen,clip_area);
+
+	scoped_sdl_surface unit_image(image::get_image(u.type().image(),image::UNSCALED));
+	if(left_side() == false && unit_image != NULL) {
+		unit_image.assign(image::reverse_image(unit_image));
+	}
+
+	if(unit_image != NULL) {
+		SDL_Rect image_rect = {area.x,area.y,unit_image->w,unit_image->h};
+		SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
+	}
+
+	std::stringstream details;
+	details << font::BOLD_TEXT << u.description() << "\n"
+	        << font::BOLD_TEXT << u.type().language_name()
+			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
+			<< u.type().level() << ")\n"
+			<< translate_string(unit_type::alignment_description(u.type().alignment()))
+			<< "\n"
+			<< u.traits_description() << "\n";
+
+	const std::vector<std::string>& abilities = u.type().abilities();
+	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
+		details << translate_string_default("ability_" + *a, *a) << "\n";
+	}
+
+	//display in green/white/red depending on hitpoints
+	if(u.hitpoints() <= u.max_hitpoints()/3)
+		details << font::BAD_TEXT;
+	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
+		details << font::GOOD_TEXT;
+
+	details << string_table["hp"] << ": " << u.hitpoints()
+			<< "/" << u.max_hitpoints() << "\n";
+	
+	if(u.type().advances_to().empty()) {
+		details << string_table["xp"] << ": " << u.experience() << "/-";
+	} else {
+		//if killing a unit the same level as us would level us up,
+		//then display in green
+		if(u.max_experience() - u.experience() < game_config::kill_experience) {
+			details << font::GOOD_TEXT;
+		}
+
+		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();
+	}
+	
+	details << "\n"
+			<< string_table["moves"] << ": " << u.movement_left() << "/"
+			<< u.total_movement()
+			<< "\n";
+
+	const std::vector<attack_type>& attacks = u.attacks();
+	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
+	    at_it != attacks.end(); ++at_it) {
+
+		const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
+		const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
+		const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+		details << "\n"
+				<< (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
+				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
+				<< (lang_special.empty() ? at_it->special():lang_special)<<"\n"
+				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
+		        << (at_it->range() == attack_type::SHORT_RANGE ?
+		            string_table["short_range"] :
+					string_table["long_range"]);
+	
+		if(at_it->hexes() > 1) {
+			details << " (" << at_it->hexes() << ")";
+		}
+					
+		details << "\n\n";
+	}
+
+	const SDL_Rect& text_area = font::draw_text(&disp(),area,12,font::NORMAL_COLOUR,details.str(),
+	                            area.x,area.y + (unit_image != NULL ? unit_image->h : 0) + unit_preview_border);
+	if(map_ != NULL) {
+		const SDL_Rect button_loc = {area.x + unit_preview_border,area.y + area.h - details_button_.location().h - unit_preview_border,
+		                             details_button_.location().w,details_button_.location().h};
+		details_button_.set_location(button_loc);
+	}
+}
+
+void unit_preview_pane::process()
+{
+	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(units_->size())) {
+
+		show_unit_description(disp(),*map_,(*units_)[index_]);
+	}
+}
+
+void show_unit_description(display& disp, const gamemap& map, const unit& u)
+{
+	const std::string description = u.unit_description()
+	                                + "\n\n" + string_table["see_also"];
+
+	std::vector<std::string> options;
+
+	options.push_back(string_table["terrain_info"]);
+	options.push_back(string_table["attack_resistance"]);
+	options.push_back(string_table["close_window"]);
+
+	const scoped_sdl_surface profile(image::get_image(u.type().image_profile(),image::SCALED));
+
+	const int res = gui::show_dialog(disp, profile, u.type().language_name(),
+	                                 description,gui::MESSAGE, &options);
+	if(res == 0) {
+		show_unit_terrain_table(disp,map,u);
+	} else if(res == 1) {
+		show_unit_resistance(disp,u);
+	}
+}
+
+void show_unit_resistance(display& disp, const unit& u)
+{
+	std::vector<std::string> items;
+	items.push_back(string_table["attack_type"] + "," + string_table["attack_resistance"]);
+	const std::map<std::string,std::string>& table = u.type().movement_type().damage_table();
+	for(std::map<std::string,std::string>::const_iterator i = table.begin(); i != table.end(); ++i) {
+		int resistance = 100 - atoi(i->second.c_str());
+
+		//if resistance is less than 0, display in red
+		const char prefix = resistance < 0 ? font::BAD_TEXT : font::NULL_MARKUP;
+
+		const std::string& lang_weapon = string_table["weapon_type_" + i->first];
+		const std::string& weap = lang_weapon.empty() ? i->first : lang_weapon;
+
+		std::stringstream str;
+		str << weap << "," << prefix << resistance << "%";
+		items.push_back(str.str());
+	}
+
+	const events::event_context dialog_events_context;
+	dialogs::unit_preview_pane unit_preview(disp,NULL,u);
+	std::vector<gui::preview_pane*> preview_panes;
+	preview_panes.push_back(&unit_preview);
+
+	gui::show_dialog(disp,NULL,
+	                 u.type().language_name(),
+					 string_table["unit_resistance_table"],
+					 gui::MESSAGE,&items,&preview_panes);
+}
+
+void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
+{
+	std::vector<std::string> items;
+	items.push_back(string_table["terrain"] + "," +
+	                string_table["movement"] + "," +
+					string_table["defense"]);
+
+	const unit_type& type = u.type();
+	const unit_movement_type& move_type = type.movement_type();
+	const std::vector<gamemap::TERRAIN>& terrains = map.get_terrain_precedence();
+	for(std::vector<gamemap::TERRAIN>::const_iterator t =
+	    terrains.begin(); t != terrains.end(); ++t) {
+
+		//exclude fog and shroud
+		if(*t == gamemap::FOGGED || *t == gamemap::VOID_TERRAIN) {
+			continue;
+		}
+
+		const terrain_type& info = map.get_terrain_info(*t);
+		if(!info.is_alias()) {
+			const std::string& name = map.terrain_name(*t);
+			const std::string& lang_name = string_table[name];
+			const int moves = move_type.movement_cost(map,*t);
+
+			std::stringstream str;
+			str << lang_name << ",";
+			if(moves < 100)
+				str << moves;
+			else
+				str << "--";
+
+			const int defense = 100 - move_type.defense_modifier(map,*t);
+			str << "," << defense << "%";
+
+			items.push_back(str.str());
+		}
+	}
+
+	const events::event_context dialog_events_context;
+	dialogs::unit_preview_pane unit_preview(disp,NULL,u);
+	std::vector<gui::preview_pane*> preview_panes;
+	preview_panes.push_back(&unit_preview);
+
+	gui::show_dialog(disp,NULL,u.type().language_name(),
+					 string_table["terrain_info"],
+					 gui::MESSAGE,&items,&preview_panes);
 }
 
 } //end namespace dialogs

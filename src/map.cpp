@@ -252,9 +252,6 @@ void gamemap::read(const std::string& data)
 		}
 	}
 
-	if(tiles_.empty())
-		throw incorrect_format_exception("empty map");
-
 	for(size_t n = 0; n != tiles_.size(); ++n) {
 		if(tiles_[n].size() != size_t(this->y())) {
 			std::cerr << "Map is not rectangular!\n";

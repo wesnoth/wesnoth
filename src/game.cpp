@@ -883,9 +883,12 @@ int play_game(int argc, char** argv)
 					defines_map["MEDIUM"] = preproc_define();
 				}
 			}
+
+			state.campaign_define = campaign["define"];
 		} else if(res == gui::MULTIPLAYER) {
 			state.campaign_type = "multiplayer";
 			state.scenario = "";
+			state.campaign_define = "MULTIPLAYER";
 
 			std::vector<std::string> host_or_join;
 			host_or_join.push_back(string_table["join_game"]);
@@ -966,6 +969,10 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(disp);
 			continue;
+		}
+
+		if(state.campaign_define.empty() == false) {
+			defines_map[state.campaign_define] = preproc_define();
 		}
 
 		//make a new game config item based on the difficulty level

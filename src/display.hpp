@@ -224,7 +224,7 @@ public:
 	//functions to add and remove overlays from locations. An overlay is an
 	//image that is displayed on top of the tile. One tile may have multiple
 	//overlays. remove_overlay will remove all overlays on a tile.
-	void add_overlay(const gamemap::location& loc, const std::string& image);
+	void add_overlay(const gamemap::location& loc, const std::string& image, const std::string& halo="");
 	void remove_overlay(const gamemap::location& loc);
 
 	//function to serialize overlay data
@@ -422,6 +422,7 @@ private:
 	bool invalidateGameStatus_;
 
 	std::multimap<gamemap::location,std::string> overlays_;
+	std::multimap<gamemap::location,int> halo_overlays_;
 
 	bool panelsDrawn_;
 

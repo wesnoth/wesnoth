@@ -128,16 +128,20 @@ std::deque<context> event_contexts;
 
 } //end anon namespace
 
-event_context::event_context()
+event_context::event_context(bool create) : create_(create)
 {
-	event_contexts.push_back(context());
+	if(create_) {
+		event_contexts.push_back(context());
+	}
 }
 
 event_context::~event_context()
 {
-	assert(event_contexts.empty() == false);
+	if(create_) {
+		assert(event_contexts.empty() == false);
 
-	event_contexts.pop_back();
+		event_contexts.pop_back();
+	}
 }
 
 handler::handler() : unicode_(SDL_EnableUNICODE(1))

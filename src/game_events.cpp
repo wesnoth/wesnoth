@@ -657,8 +657,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "item") {
 		gamemap::location loc(cfg);
 		const std::string& img = cfg["image"];
-		if(!img.empty()) {
-			screen->add_overlay(loc,img);
+		const std::string& halo = cfg["halo"];
+		if(!img.empty() || !halo.empty()) {
+			screen->add_overlay(loc,img,cfg["halo"]);
 			screen->draw_tile(loc.x,loc.y);
 		}
 	}

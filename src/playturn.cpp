@@ -576,8 +576,6 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		const std::vector<attack_type>& attacks = u->second.attacks();
 		std::vector<std::string> items;
 
-		std::vector<unit> units_list;
-
 		const int range = distance_between(u->first,enemy->first);
 		std::vector<int> attacks_in_range;
 
@@ -642,7 +640,6 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			    << "%,&" << stats.back().defend_icon;
 
 			items.push_back(att.str());
-			units_list.push_back(enemy->second);
 		}
 		
 		if (best_weapon_index >= 0) {
@@ -659,10 +656,21 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		std::vector<gui::dialog_button> buttons;
 		buttons.push_back(gui::dialog_button(&calc_displayer,string_table["damage_calculations"]));
 
-		int res = gui::show_dialog(gui_,NULL,"",
-		                           string_table["choose_weapon"]+":\n",
-		                           gui::OK_CANCEL,&items,&units_list,"",NULL,NULL,NULL,-1,-1,
-								   NULL,&buttons);
+		int res = 0;
+
+		{
+			const events::event_context dialog_events_context;
+			dialogs::unit_preview_pane attacker_preview(gui_,&map_,u->second,true);
+			dialogs::unit_preview_pane defender_preview(gui_,&map_,enemy->second,false);
+			std::vector<gui::preview_pane*> preview_panes;
+			preview_panes.push_back(&attacker_preview);
+			preview_panes.push_back(&defender_preview);
+
+			res = gui::show_dialog(gui_,NULL,string_table["attack_enemy"],
+			                           string_table["choose_weapon"]+":\n",
+			                           gui::OK_CANCEL,&items,&preview_panes,"",NULL,NULL,NULL,-1,-1,
+									   NULL,&buttons);
+		}
 
 		cursor::set(cursor::NORMAL);
 
@@ -701,13 +709,13 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			} catch(end_level_exception&) {
 				//if the level ends due to a unit being killed, still see if
 				//either the attacker or defender should advance
-				dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);
-				dialogs::advance_unit(gameinfo_,units_,hex,gui_,!defender_human);
+				dialogs::advance_unit(gameinfo_,map_,units_,selected_hex_,gui_);
+				dialogs::advance_unit(gameinfo_,map_,units_,hex,gui_,!defender_human);
 				throw;
 			}
 
-			dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);
-			dialogs::advance_unit(gameinfo_,units_,hex,gui_,!defender_human);
+			dialogs::advance_unit(gameinfo_,map_,units_,selected_hex_,gui_);
+			dialogs::advance_unit(gameinfo_,map_,units_,hex,gui_,!defender_human);
 
 			selected_hex_ = gamemap::location();
 			current_route_.steps.clear();
@@ -1339,117 +1347,25 @@ void turn_info::terrain_table()
 {
 	unit_map::const_iterator un = current_unit();
 
-	if(un == units_.end()) {
-		return;
+	if(un != units_.end()) {
+		dialogs::show_unit_terrain_table(gui_,map_,un->second);
 	}
-
-	gui_.draw();
-
-	std::vector<std::string> items;
-	items.push_back(string_table["terrain"] + "," +
-	                string_table["movement"] + "," +
-					string_table["defense"]);
-
-	const unit_type& type = un->second.type();
-	const unit_movement_type& move_type = type.movement_type();
-	const std::vector<gamemap::TERRAIN>& terrains =
-	                    map_.get_terrain_precedence();
-	for(std::vector<gamemap::TERRAIN>::const_iterator t =
-	    terrains.begin(); t != terrains.end(); ++t) {
-
-		//exclude fog and shroud
-		if(*t == gamemap::FOGGED || *t == gamemap::VOID_TERRAIN) {
-			continue;
-		}
-
-		const terrain_type& info = map_.get_terrain_info(*t);
-		if(!info.is_alias()) {
-			const std::string& name = map_.terrain_name(*t);
-			const std::string& lang_name = string_table[name];
-			const int moves = move_type.movement_cost(map_,*t);
-
-			std::stringstream str;
-			str << lang_name << ",";
-			if(moves < 100)
-				str << moves;
-			else
-				str << "--";
-
-			const int defense = 100 - move_type.defense_modifier(map_,*t);
-			str << "," << defense << "%";
-
-			items.push_back(str.str());
-		}
-	}
-
-	const std::vector<unit> units_list(items.size(),un->second);
-	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(),image::UNSCALED));
-	gui::show_dialog(gui_,unit_image,un->second.type().language_name(),
-					 string_table["terrain_info"],
-					 gui::MESSAGE,&items,&units_list);
 }
 
 void turn_info::attack_resistance()
 {
 	const unit_map::const_iterator un = current_unit();
-	if(un == units_.end())
-		return;
-
-	gui_.draw();
-
-	std::vector<std::string> items;
-	items.push_back(string_table["attack_type"] + "," +
-	                string_table["attack_resistance"]);
-	const std::map<std::string,std::string>& table =
-	     un->second.type().movement_type().damage_table();
-	for(std::map<std::string,std::string>::const_iterator i
-	    = table.begin(); i != table.end(); ++i) {
-		int resistance = 100 - atoi(i->second.c_str());
-
-		//if resistance is less than 0, display in red
-		const char prefix = resistance < 0 ? font::BAD_TEXT : font::NULL_MARKUP;
-
-		const std::string& lang_weapon = string_table["weapon_type_" + i->first];
-		const std::string& weap = lang_weapon.empty() ? i->first : lang_weapon;
-
-		std::stringstream str;
-		str << weap << "," << prefix << resistance << "%";
-		items.push_back(str.str());
+	if(un != units_.end()) {
+		dialogs::show_unit_resistance(gui_,un->second);
 	}
 
-	const std::vector<unit> units_list(items.size(), un->second);
-	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(),image::UNSCALED));
-	gui::show_dialog(gui_,unit_image,
-	                 un->second.type().language_name(),
-					 string_table["unit_resistance_table"],
-					 gui::MESSAGE,&items,&units_list);
 }
 
 void turn_info::unit_description()
 {
 	const unit_map::const_iterator un = current_unit();
-	if(un == units_.end()) {
-		return;
-	}
-
-	const std::string description = un->second.unit_description()
-	                                + "\n\n" + string_table["see_also"];
-
-	std::vector<std::string> options;
-
-	options.push_back(string_table["terrain_info"]);
-	options.push_back(string_table["attack_resistance"]);
-	options.push_back(string_table["close_window"]);
-
-	const scoped_sdl_surface unit_image(image::get_image(un->second.type().image_profile(), image::UNSCALED));
-
-	const int res = gui::show_dialog(gui_,unit_image,
-                                     un->second.type().language_name(),
-	                                 description,gui::MESSAGE, &options);
-	if(res == 0) {
-		terrain_table();
-	} else if(res == 1) {
-		attack_resistance();
+	if(un != units_.end()) {
+		dialogs::show_unit_description(gui_,map_,un->second);
 	}
 }
 
@@ -1657,9 +1573,19 @@ void turn_info::recruit()
 		return;
 	}
 
-	const int recruit_res = gui::show_dialog(gui_,NULL,"",
-	                                 string_table["recruit_unit"] + ":\n",
-	                                 gui::OK_CANCEL,&items,&sample_units);
+	int recruit_res = 0;
+
+	{
+		const events::event_context dialog_events_context;
+		dialogs::unit_preview_pane unit_preview(gui_,&map_,sample_units);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&unit_preview);
+
+		recruit_res = gui::show_dialog(gui_,NULL,"",
+		                                 string_table["recruit_unit"] + ":\n",
+		                                 gui::OK_CANCEL,&items,&preview_panes);
+	}
+
 	if(recruit_res != -1) {
 		do_recruit(item_keys[recruit_res]);
 	}
@@ -1814,11 +1740,21 @@ void turn_info::recall()
 		std::vector<gui::dialog_button> buttons;
 		buttons.push_back(delete_button);
 
-		const int res = gui::show_dialog(gui_,NULL,"",
-		                                 string_table["select_unit"] + ":\n",
-		                                 gui::OK_CANCEL,&options,
-		                                 &recall_list,"",NULL,
-										 NULL,NULL,-1,-1,NULL,&buttons);
+		int res = 0;
+
+		{
+			const events::event_context dialog_events_context;
+			dialogs::unit_preview_pane unit_preview(gui_,&map_,recall_list);
+			std::vector<gui::preview_pane*> preview_panes;
+			preview_panes.push_back(&unit_preview);
+
+			res = gui::show_dialog(gui_,NULL,"",
+			                       string_table["select_unit"] + ":\n",
+			                       gui::OK_CANCEL,&options,
+			                       &preview_panes,"",NULL,
+			                       NULL,NULL,-1,-1,NULL,&buttons);
+		}
+
 		if(res >= 0) {
 			unit& un = recall_list[res];
 			gamemap::location loc = last_hex_;
@@ -1899,8 +1835,18 @@ void turn_info::create_unit()
 		unit_choices.back().new_turn();
 	}
 
-	const int choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
-		                                gui::OK_CANCEL,&options,&unit_choices);
+	int choice = 0;
+
+	{
+		const events::event_context dialog_events_context;
+		dialogs::unit_preview_pane unit_preview(gui_,&map_,unit_choices);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&unit_preview);
+
+		choice = gui::show_dialog(gui_,NULL,"","Create unit (debug):",
+		                          gui::OK_CANCEL,&options,&preview_panes);
+	}
+
 	if(choice >= 0 && choice < unit_choices.size()) {
 		units_.erase(last_hex_);
 		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit_choices[choice]));
@@ -1967,8 +1913,18 @@ void turn_info::unit_list()
 		units_list.push_back(i->second);
 	}
 
-	const int selected = gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
-	                                      gui::OK_ONLY,&items,&units_list);
+	int selected = 0;
+
+	{
+		const events::event_context dialog_events_context;
+		dialogs::unit_preview_pane unit_preview(gui_,&map_,units_list);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&unit_preview);
+
+		selected = gui::show_dialog(gui_,NULL,string_table["unit_list"],"",
+		                            gui::OK_ONLY,&items,&preview_panes);
+	}
+
 	if(selected > 0 && selected < int(locations_list.size())) {
 		const gamemap::location& loc = locations_list[selected];
 		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);

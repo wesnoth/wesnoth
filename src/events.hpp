@@ -61,8 +61,11 @@ bool has_focus(const handler* ptr);
 //before their context is destroyed
 struct event_context
 {
-	event_context();
+	event_context(bool create=true);
 	~event_context();
+
+private:
+	bool create_;
 };
 
 //causes events to be dispatched to all handler objects.

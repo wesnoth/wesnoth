@@ -205,6 +205,8 @@ game_state read_game(const game_data& data, const config* cfg)
 	if(res.difficulty.empty())
 		res.difficulty = "NORMAL";
 
+	res.campaign_define = (*cfg)["campaign_define"];
+
 	res.campaign_type = (*cfg)["campaign_type"];
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
@@ -271,6 +273,8 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 	cfg["campaign_type"] = game.campaign_type;
 
 	cfg["difficulty"] = game.difficulty;
+
+	cfg["campaign_define"] = game.campaign_define;
 
 	cfg.add_child("variables",game.variables);
 

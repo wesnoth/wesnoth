@@ -316,7 +316,7 @@ int show_dialog(display& disp, SDL_Surface* image,
                 const std::string& caption, const std::string& msg,
                 DIALOG_TYPE type,
 				const std::vector<std::string>* menu_items_ptr,
-				const std::vector<unit>* units_ptr,
+				const std::vector<preview_pane*>* preview_panes,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
                 dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
@@ -327,16 +327,16 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	std::cerr << "showing dialog '" << caption << "' '" << msg << "'\n";
 
-	const events::event_context dialog_events_context;
+	//create the event context, but only activate it if we don't have preview panes.
+	//the presence of preview panes indicates that the caller will create the context,
+	//so that their preview panes may fall inside it.
+	const events::event_context dialog_events_context(preview_panes == NULL);
 	const dialog_manager manager;
 
 	const events::resize_lock prevent_resizing;
 
 	const std::vector<std::string>& menu_items =
 	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
-
-	const std::vector<unit> empty_units;
-	const std::vector<unit>& units = (units_ptr == NULL) ? empty_units : *units_ptr;
 
 	static const int message_font_size = 16;
 	static const int caption_font_size = 18;
@@ -459,6 +459,19 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 	}
 
+	size_t preview_pane_height = 0, left_preview_pane_width = 0, right_preview_pane_width = 0;
+	if(preview_panes != NULL) {
+		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
+			const SDL_Rect& rect = (**i).location();
+			preview_pane_height = maximum<size_t>(rect.h,preview_pane_height);
+			if((**i).left_side()) {
+				left_preview_pane_width += rect.w;
+			} else {
+				right_preview_pane_width += rect.w;
+			}
+		}
+	}
+
 	const int left_padding = 10;
 	const int right_padding = 10;
 	const int image_h_padding = image != NULL ? 10 : 0;
@@ -489,45 +502,62 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                         padding_height + menu_.height() +
 							 text_widget_height + check_button_height;
 
-	if(xloc <= -1 || yloc <= -1) {
-		xloc = scr->w/2 - total_width/2;
-		yloc = scr->h/2 - total_height/2;
-	}
-
-	int unitx = 0;
-	int unity = 0;
-	//if we are showing a dialog with unit details, then we have
-	//to make more room for it
-	if(!units.empty()) {
-		xloc += scr->w/10;
-		unitx = xloc - 300;
-		if(unitx < 10)
-			unitx = 10;
-
-		unity = yloc;
-	}
-
 	const int border_padding = 10;
-	const int frame_width = total_width + border_padding*2;
-	const int frame_height = total_height + border_padding*2;
+	int frame_width = total_width + border_padding*2;
+	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
+
+	const int frame_height = maximum<int>(int(preview_pane_height),total_height + border_padding*2);
+
+	if(xloc <= -1 || yloc <= -1) {
+		xloc = xframe + left_preview_pane_width;
+		yloc = scr->h/2 - frame_height/2;
+	}
 
 	if(xloc + frame_width > scr->w) {
 		xloc = scr->w - frame_width;
+		if(xloc < xframe) {
+			xframe = xloc;
+		}
 	}
 
 	if(yloc + frame_height > scr->h) {
 		yloc = scr->h - frame_height;
-	}
+	}	
 
 	std::vector<button*> buttons_ptr;
 	for(std::vector<button>::iterator bt = buttons.begin(); bt != buttons.end(); ++bt) {
 		buttons_ptr.push_back(&*bt);
 	}
 
+	frame_width += left_preview_pane_width + right_preview_pane_width;
+
 	surface_restorer restorer;
 
 	const std::string& title = image == NULL ? caption : "";
-	draw_dialog(xloc,yloc,total_width,total_height,disp,title,dialog_style,&buttons_ptr,&restorer);
+	draw_dialog(xframe,yloc,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer);
+
+	//calculate the positions of the preview panes to the sides of the dialog
+	if(preview_panes != NULL) {
+
+		frame_width += left_preview_pane_width + right_preview_pane_width;
+		
+		int left_preview_pane = xframe;
+		int right_preview_pane = xframe + total_width + left_preview_pane_width;
+
+		for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
+			SDL_Rect area = (**i).location();
+			area.y = yloc;
+			if((**i).left_side()) {
+				area.x = left_preview_pane;
+				left_preview_pane += area.w;
+			} else {
+				area.x = right_preview_pane;
+				right_preview_pane += area.w;
+			}
+
+			(**i).set_location(area);
+		}
+	}
 
 	const int menu_xpos = xloc+total_image_width+left_padding+image_h_padding;
 	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding;
@@ -664,16 +694,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 				selection = 0;
 			}
 
-			if(size_t(selection) < units.size()) {
-				draw_dialog_frame(unitx,unity,unitw,unith,disp);
-
-				SDL_Rect clip_rect = { unitx, unity, unitw, unith };
-
-				disp.draw_unit_details(unitx+left_padding,
-				   unity+top_padding+60, gamemap::location(), units[selection],
-				   unit_details_rect, unitx+left_padding, unity+top_padding,
-				   &clip_rect);
-				disp.update_display();
+			if(preview_panes != NULL) {
+				for(std::vector<preview_pane*>::const_iterator i = preview_panes->begin(); i != preview_panes->end(); ++i) {
+					(**i).set_selection(selection);
+				}
 			}
 		}
 
@@ -682,7 +706,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		if(menu_.height() > 0) {
 			const int res = menu_.process(mousex,mousey,new_left_button,
 			                              !up_arrow && new_up_arrow,
-						      !down_arrow && new_down_arrow,
+			                              !down_arrow && new_down_arrow,
 			                              !page_up && new_page_up,
 			                              !page_down && new_page_down,
 			                              select_item);

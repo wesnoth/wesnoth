@@ -2089,14 +2089,23 @@ void display::invalidate_game_status()
 	invalidateGameStatus_ = true;
 }
 
-void display::add_overlay(const gamemap::location& loc, const std::string& img)
+void display::add_overlay(const gamemap::location& loc, const std::string& img, const std::string& halo)
 {
 	overlays_.insert(std::pair<gamemap::location,std::string>(loc,img));
+	halo_overlays_.insert(std::pair<gamemap::location,int>(loc,halo::add(get_location_x(loc)+hex_size()/2,get_location_y(loc)+hex_size()/2,halo)));
 }
 
 void display::remove_overlay(const gamemap::location& loc)
 {
 	overlays_.erase(loc);
+	typedef std::multimap<gamemap::location,int>::const_iterator Itor;
+	std::pair<Itor,Itor> itors = halo_overlays_.equal_range(loc);
+	while(itors.first != itors.second) {
+		halo::remove(itors.first->second);
+		++itors.first;
+	}
+
+	halo_overlays_.erase(loc);
 }
 
 void display::write_overlays(config& cfg) const
