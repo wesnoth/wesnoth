@@ -116,6 +116,9 @@ CVS HEAD:
  * share the object files between all the programs to halve the time of a full compilation
  * disabled "End turn" button when it is irrelevant.
  * added OS X ScrapManager support
+ * improved threading of campaign server
+ * fixed the dialog menus being larger than the screen
+ * made the game remember the last server used for downloading campaings
  * code refactoring and dependency cleanups
  * various bug fixes and code cleanups
 
@@ -159,8 +162,6 @@ Version 0.8.11:
  * fixed the width of 'HP' and 'XP' in the right side panel
  * fixed some multiplayer connect bugs
  * fixed the AI not going through the no-ZoC of lv0 units when it should have
- * fixed the dialog menus being larger than the screen
- * made the game remember the last server used for downloading campaings
  * code cleanups and bug fixes
 
 Version 0.8.10:
