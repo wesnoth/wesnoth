@@ -4,7 +4,11 @@ if SERVER
 SUBDIRS += server
 endif
 
-bin_PROGRAMS = wesnoth
+bin_PROGRAMS =
+
+if GAME
+bin_PROGRAMS += wesnoth
+endif
 
 if CAMPAIGNSERVER
 bin_PROGRAMS += campaignd

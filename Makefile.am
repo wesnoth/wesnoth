@@ -24,6 +24,7 @@ w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 
 install-data-local:
 	@$(NORMAL_INSTALL)
+if INSTALLDATA
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata) ) | while read p; do \
@@ -45,12 +46,14 @@ if TINYGUI
 	  convert -size $$dstsize -resize $$dstsize "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
 endif
+endif
 
 zip-install: install
 	$(top_srcdir)/utils/splittree "$(DESTDIR)$(pkgdatadir)" --zip
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
+if INSTALLDATA
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata) ) | while read p; do \
 	  case $$p in \
@@ -60,6 +63,8 @@ uninstall-local:
 	  echo " rm -f '$(DESTDIR)$(pkgdatadir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+endif
+
 dist-hook:
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)

@@ -1,5 +1,17 @@
 MAN_LANG = de
-dist_man6_MANS = wesnoth.6 wesnothd.6 wesnoth_editor.6
+dist_man6_MANS =
+
+if GAME
+dist_man6_MANS += wesnoth.6
+endif
+
+if SERVER
+dist_man6_MANS += wesnothd.6
+endif
+
+if EDITOR
+dist_man6_MANS += wesnoth_editor.6
+endif
 
 install-data-hook:
 	for i in $(MAN_LANG); do \

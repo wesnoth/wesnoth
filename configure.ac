@@ -24,23 +24,23 @@ AM_GNU_GETTEXT
 #######################################################################
 
 AC_ARG_ENABLE([debug],
-	      [  --enable-debug          enable debug in wesnoth],
+	      AS_HELP_STRING([--enable-debug], [enable debug in wesnoth]),
 	      [if test "x${enableval}" = "xyes" ; then
                    CXXFLAGS="$CXXFLAGS -DDEBUG -O0 -ggdb3"
 	       fi])
 
 AC_ARG_ENABLE([static],
-              [  --enable-static         enable static building of wesnoth],
+              AS_HELP_STRING([--enable-static], [enable static building of wesnoth]),
 	      [static=$enableval],
 	      [static=no])
 
 AC_ARG_ENABLE([lite],
-	      [  --enable-lite           enable lite version of wesnoth (without music or large images)],
+              AS_HELP_STRING([--enable-lite], [enable lite version of wesnoth (without music or large images)]),
 	      [lite=$enableval],
 	      [lite=no])
 
 AC_ARG_ENABLE([tinygui],
-	      [  --enable-tinygui        enable GUI reductions for resolutions down to 320x240 (PDAs)],
+              AS_HELP_STRING([--enable-tinygui], [enable GUI reductions for resolutions down to 320x240 (PDAs)]),
 	      [tinygui=$enableval],
 	      [tinygui=no])
 
@@ -51,9 +51,8 @@ fi
 AM_CONDITIONAL([TINYGUI], [test "x$tinygui" = "xyes"])
 
 DATADIR=$PACKAGE
-AC_ARG_ENABLE([datadir-name],,[AC_MSG_ERROR([Please use --with-datadir-name instead of obsolete --enable-datadir-name])])
 AC_ARG_WITH([datadir-name],
-	      [  --with-datadir-name[[=dir]]    change name of data directory. [[wesnoth]]], 
+            AS_HELP_STRING([--with-datadir-name@<:@=DIR@:>@], [change name of data directory @<:@wesnoth@:>@]),
 	      [case "${withval}" in
 	       yes)
 			DATADIR="wesnoth"
@@ -69,7 +68,7 @@ AC_SUBST([DATADIR])
 #LOCALEDIR="$datadir/locale"
 LOCALEDIR=translations
 AC_ARG_WITH([localedir],
-	      [  --with-localedir=dir    install locale data under dir [[translations]]],
+            AS_HELP_STRING([--with-localedir@<:@=DIR@:>@], [install locale data under dir @<:@translations@:>@]),
 	      [case "${withval}" in
 	       yes)
 			LOCALEDIR="translations"
@@ -92,7 +91,7 @@ AC_SUBST([HAS_RELATIVE_LOCALEDIR])
 
 # icondir and desktopdir may differ from datadir (suggested by Gentoo)
 AC_ARG_WITH([icondir],
-		  [  --with-icondir=dir      change icon directory under gnome],
+            AS_HELP_STRING([--with-icondir@<:@=DIR@:>@], [change icon directory under gnome]),
 		  [case "${withval}" in
 		   yes)
 				ICONDIR="$(datadir)/icons"
@@ -106,7 +105,7 @@ AC_ARG_WITH([icondir],
 AC_SUBST([ICONDIR])
 
 AC_ARG_WITH([desktopdir],
-		  [  --with-desktopdir=dir   change desktop directory under gnome 2],
+            AS_HELP_STRING([--with-desktopdir@<:@=DIR@:>@], [change desktop directory under gnome 2]),
 		  [case "${withval}" in
 		   yes)	
 				DESKTOPDIR="$(datadir)/applications"
@@ -120,54 +119,58 @@ AC_ARG_WITH([desktopdir],
 AC_SUBST([DESKTOPDIR])
 
 
+AC_ARG_ENABLE([game],
+              AS_HELP_STRING([--disable-game], [disable compilation of game]),
+	      [game=$enableval],
+	      [game=yes])
+
 AC_ARG_ENABLE([server],
-	      [  --enable-server         enable compilation of server],
+              AS_HELP_STRING([--enable-server], [enable compilation of server]),
 	      [server=$enableval],
 	      [server=no])
 
 AC_ARG_ENABLE([campaign_server],
-	      [  --enable-campaign-server       enable compilation of campaign server],
+              AS_HELP_STRING([--enable-campaign-server], [enable compilation of campaign server]),
 	      [campaignserver=$enableval],
 	      [campaignserver=no])
 
 AC_ARG_ENABLE([editor],
-	      [  --enable-editor         enable compilation of map editor],
+              AS_HELP_STRING([--enable-editor], [enable compilation of map editor]),
 	      [editor=$enableval],
 	      [editor=no])
 
 AC_ARG_ENABLE([tools],
-	      [  --enable-tools          enable compilation of tools for translators and artists],
+              AS_HELP_STRING([--enable-tools], [enable compilation of tools for translators and artists]),
 	      [tools=$enableval],
 	      [tools=no])
 
-AC_ARG_ENABLE([kde],,[AC_MSG_ERROR([Please use --with-kde instead of obsolete --enable-kde])])
 AC_ARG_WITH([kde],
-	      [  --with-kde              enable installation of icon and KDE menu entry],
+            AS_HELP_STRING([--with-kde], [enable installation of icon and KDE menu entry]),
 	      [kde=$withval],
 	      [kde=no])
 
-AC_ARG_ENABLE([gnome],,[AC_MSG_ERROR([Please use --with-gnome instead of obsolete --enable-gnome])])
 AC_ARG_WITH([gnome],
-	      [  --with-gnome            enable installation of icon and GNOME menu entry],
+            AS_HELP_STRING([--with-gnome], [enable installation of icon and GNOME menu entry]),
 	      [gnome=$withval],
 	      [gnome=no])
 
 AC_ARG_ENABLE([gnome1],
-              [  --disable-gnome1        disable installation of icon and menu entry in GNOME1],
+              AS_HELP_STRING([--disable-gnome1], [disable installation of icon and menu entry in GNOME1]),
               [gnome1=$enableval],
               [gnome1=yes])
 
 AC_ARG_ENABLE([gnome2],
-		  [  --disable-gnome2        disable installation of icon and menu entry in GNOME2],
+              AS_HELP_STRING([--disable-gnome2], [disable installation of icon and menu entry in GNOME2]),
 		  [gnome2=$enableval],
 		  [gnome2=yes])
 			
 AC_ARG_ENABLE([wzip],
-	      [	 --enable-wzip           enable compilation of wesnoth_zip program],
+              AS_HELP_STRING([--enable-wzip], [enable compilation of wesnoth_zip program]),
 	      [wzip=$enableval],
 	      [wzip=no])
 
 AM_CONDITIONAL([STATIC], [test x$static = xyes])
+AM_CONDITIONAL([GAME], [test x$game = xyes])
 AM_CONDITIONAL([SERVER], [test x$server = xyes])
 AM_CONDITIONAL([CAMPAIGNSERVER], [test x$campaignserver = xyes])
 AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
@@ -175,6 +178,7 @@ AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
+AM_CONDITIONAL([INSTALLDATA], [test x$game = xyes || x$editor = xyes])
 
 #######################################################################
 # Checks for programs.                                                #
@@ -235,9 +239,9 @@ AM_CONDITIONAL([LIBPNG], [test x$pngfound = xyes])
 # Check for SDL version. Taken from sdl.m4
 
 AC_ARG_ENABLE([sdltest],
-	      [  --disable-sdltest       do not try to compile and run a test SDL program],
+              AS_HELP_STRING([--disable-sdltest], [do not try to compile and run a test SDL program]),
 	      ,
-	      enable_sdltest=yes)
+              [enable_sdltest=yes])
 
 min_sdl_version=1.2.7
 AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
@@ -459,12 +463,15 @@ dnl
 dnl Get the cflags and libraries from the freetype-config script
 dnl
 
-AC_ARG_WITH(freetype-prefix,[  --with-freetype-prefix=PFX   Prefix where FREETYPE is 
-installed (optional)],
-            freetype_prefix="$withval", freetype_prefix="")
-AC_ARG_WITH(freetype-exec-prefix,[  --with-freetype-exec-prefix=PFX Exec prefix 
-where FREETYPE is installed (optional)],
-            freetype_exec_prefix="$withval", freetype_exec_prefix="")
+AC_ARG_WITH([freetype-prefix],
+            AS_HELP_STRING([--with-freetype-prefix=PFX], [Prefix where FREETYPE is installed (optional)]),
+            [freetype_prefix="$withval"],
+            [freetype_prefix=""])
+
+AC_ARG_WITH([freetype-exec-prefix],
+            AS_HELP_STRING([--with-freetype-exec-prefix=PFX], [Exec prefix where FREETYPE is installed (optional)]),
+            [freetype_exec_prefix="$withval"],
+            [freetype_exec_prefix=""])
 
 if test x$freetype_exec_prefix != x ; then
      freetype_args="$freetype_args --exec-prefix=$freetype_exec_prefix"
