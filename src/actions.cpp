@@ -1025,14 +1025,17 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 	return result;
 }
 
-//if known_units is not NULL, then the function will return true iff
-//a new unit has been seen. Otherwise it will return true iff some shroud
-//is cleared
+//returns true iff some shroud is cleared
+//returns true/false in seen_unit if new units has/has not been seen
+//if known_units is NULL, seen_unit can be NULL, seen_unit is undefined
 bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team,
-					   const std::set<gamemap::location>* known_units)
+					   const std::set<gamemap::location>* known_units,
+						bool* seen_unit)
 {
+	bool res;
+
 	std::vector<gamemap::location> cleared_locations;
 
 	paths p(map,gamedata,units,loc,teams,true,false);
@@ -1043,6 +1046,8 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 
 	//clear the location the unit is at
 	clear_shroud_loc(map,teams[team],loc,&cleared_locations);
+	
+	res = (cleared_locations.empty() == false);
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
@@ -1051,16 +1056,16 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 				static const std::string sighted("sighted");
 				game_events::fire(sighted,*it,loc);
 			} else if(known_units->count(*it) == 0) {
-				return true;
+				*seen_unit = true;
+				return res;
 			}
 		}
 	}
 
 	if(known_units != NULL) {
-		return false; //no new units spotted
-	} else {
-		return cleared_locations.empty() == false; //we have revealed some tiles
+		seen_unit = false;
 	}
+	return res;
 }
 
 }
@@ -1082,7 +1087,7 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 			unit& mutable_unit = const_cast<unit&>(i->second);
 			const unit_movement_resetter move_resetter(mutable_unit);
 
-			result |= clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL);
+			result |= clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 
@@ -1096,7 +1101,7 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 			unit& mutable_unit = const_cast<unit&>(i->second);
 			const unit_movement_resetter move_resetter(mutable_unit);
 
-			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL);
+			clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL,NULL);
 		}
 	}
 
@@ -1139,6 +1144,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 	const int starting_moves = u.movement_left();
 	int moves_left = starting_moves;
 	bool seen_unit = false;
+	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const gamemap::TERRAIN terrain = map[step->x][step->y];
@@ -1162,8 +1168,12 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
 			if(units.count(*step) == 0 && map.underlying_terrain(map.get_terrain(*step)) != gamemap::TOWER) {
 				units.insert(std::pair<gamemap::location,unit>(*step,ui->second));
-				const bool res = clear_shroud_unit(map,gamedata,units,*step,teams,
-				                                   ui->second.side()-1,&seen_units);
+				
+				bool res;
+
+				should_clear_stack = 
+					clear_shroud_unit(map,gamedata,units,*step,teams,
+				   	ui->second.side()-1,&seen_units,&res);
 				units.erase(*step);
 
 				//we've seen a new unit. Stop on the next iteration
@@ -1227,7 +1237,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 	const bool event_mutated = game_events::fire("moveto",steps.back());
 
 	if(undo_stack != NULL) {
-		if(event_mutated) {
+		if(event_mutated || should_clear_stack) {
 			undo_stack->clear();
 		} else {
 			undo_stack->push_back(undo_action(steps,starting_moves,orig_tower_owner));
