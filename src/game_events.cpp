@@ -462,7 +462,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const std::string& add = cfg["add"];
 		if(add.empty() == false) {
-			int value = atof(var.c_str());
+			int value = int(atof(var.c_str()));
 			value += atoi(add.c_str());
 			char buf[50];
 			sprintf(buf,"%d",value);
@@ -471,7 +471,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const std::string& multiply = cfg["multiply"];
 		if(multiply.empty() == false) {
-			int value = atof(var.c_str());
+			int value = int(atof(var.c_str()));
 			value = int(double(value) * atof(multiply.c_str()));
 			char buf[50];
 			sprintf(buf,"%d",value);

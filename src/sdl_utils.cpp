@@ -445,9 +445,9 @@ SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 		Uint8 red2, green2, blue2, alpha2;
 		SDL_GetRGBA(colour,surf->format,&red2,&green2,&blue2,&alpha2);
 
-		red2 *= amount;
-		green2 *= amount;
-		blue2 *= amount;
+		red2 = Uint8(red2*amount);
+		green2 = Uint8(green2*amount);
+		blue2 = Uint8(blue2*amount);
 
 		amount = 1.0 - amount;
 
@@ -455,9 +455,9 @@ SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 			Uint8 red, green, blue, alpha;
 			SDL_GetRGBA(*beg,surf->format,&red,&green,&blue,&alpha);
 
-			red = red*amount + red2;
-			green = green*amount + green2;
-			blue = blue*amount + blue2;
+			red = Uint8(red*amount) + red2;
+			green = Uint8(green*amount) + green2;
+			blue = Uint8(blue*amount) + blue2;
 
 			*beg = SDL_MapRGBA(surf->format,red,green,blue,alpha);
 

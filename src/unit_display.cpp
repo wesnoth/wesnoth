@@ -90,8 +90,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			ysrc = disp.get_location_y(a);
 			xdst = disp.get_location_x(b);
 			ydst = disp.get_location_y(b);
-			xloc = xsrc + xstep*i;
-			yloc = ysrc + ystep*i;
+			xloc = xsrc + int(xstep*i);
+			yloc = ysrc + int(ystep*i);
 		}
 
 		//invalidate the source tile and all adjacent tiles,
@@ -391,10 +391,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	                  || preferences::show_combat() == false;
 
 	if(!hide) {
-		const double side_threshhold = 80.0;
+		const int side_threshhold = 80;
 
-		double xloc = disp.get_location_x(a);
-		double yloc = disp.get_location_y(a);
+		int xloc = disp.get_location_x(a);
+		int yloc = disp.get_location_y(a);
 
 		SDL_Rect area = disp.map_area();
 
@@ -402,19 +402,19 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		//keep track of the old position, and if the map moves at all,
 		//then recenter it on the unit
 		if(xloc < area.x + side_threshhold) {
-			disp.scroll(xloc - side_threshhold - disp.map_area().x,0.0);
+			disp.scroll(xloc - side_threshhold - disp.map_area().x,0);
 		}
 
 		if(yloc < area.y + side_threshhold) {
-			disp.scroll(0.0,yloc - side_threshhold - area.y);
+			disp.scroll(0,yloc - side_threshhold - area.y);
 		}
 
 		if(xloc + disp.hex_size() > area.x + area.w - side_threshhold) {
-			disp.scroll(((xloc + disp.hex_size()) - (area.x + area.w - side_threshhold)),0.0);
+			disp.scroll(((xloc + disp.hex_size()) - (area.x + area.w - side_threshhold)),0);
 		}
 
 		if(yloc + disp.hex_size() > area.y + area.h - side_threshhold) {
-			disp.scroll(0.0,((yloc + disp.hex_size()) - (area.y + area.h - side_threshhold)));
+			disp.scroll(0,((yloc + disp.hex_size()) - (area.y + area.h - side_threshhold)));
 		}
 
 		if(xloc != disp.get_location_x(a) || yloc != disp.get_location_y(a)) {

@@ -1255,7 +1255,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	blit_surface(xpos,ypos,surf,&top);
 	blit_surface(xpos,ypos+top.h,surf,&bot);
 
-	const size_t unfilled = height*(1.0 - filled);
+	const size_t unfilled = size_t(height*(1.0 - filled));
 
 	if(unfilled < height) {
 		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};

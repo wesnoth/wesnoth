@@ -416,7 +416,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 
 	std::cerr << "creating minimap " << int(map.x()*scale*0.75) << "," << int(map.y()*scale) << "\n";
 
-	const size_t map_width = map.x()*scale*0.75;
+	const size_t map_width = map.x()*scale*3/4;
 	const size_t map_height = map.y()*scale;
 	if(map_width == 0 || map_height == 0) {
 		return NULL;
@@ -477,7 +477,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 
 				assert(surf != NULL);
 				
-				SDL_Rect maprect = {x*scale*0.75,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
+				SDL_Rect maprect = {x*scale*3/4,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
 				sdl_safe_blit(surf, NULL, minimap, &maprect);
 			}
 		}
