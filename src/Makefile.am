@@ -176,6 +176,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 sdl_utils.cpp \
 			 show_dialog.cpp \
 			 sound.cpp \
+			 statistics.cpp \
 			 team.cpp \
 			 terrain.cpp \
 			 theme.cpp \
@@ -224,6 +225,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 sdl_utils.hpp \
 			 show_dialog.hpp \
 			 sound.hpp \
+			 statistics.hpp \
 			 team.hpp \
 			 terrain.hpp \
 			 theme.hpp \
