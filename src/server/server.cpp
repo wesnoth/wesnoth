@@ -276,7 +276,7 @@ void server::run()
 			}
 
 			config data;
-			while((sock = network::receive_data(data)) != NULL) {
+			while((sock = network::receive_data(data)) != network::null_connection) {
 
 				metrics_.service_request();
 

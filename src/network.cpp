@@ -142,8 +142,6 @@ connection_stats get_connection_stats(connection connection_num)
 	return connection_stats(details.sent,details.received,details.connected_at);
 }
 
-const connection null_connection = 0;
-
 error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
 {
 	if(socket) {
