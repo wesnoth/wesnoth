@@ -565,19 +565,22 @@ void connect::start_game()
 		itor->resolve_random();
 	}
 
-	// FIXME: This is to be reviewed!
-	recorder.set_save_info(state_);
-	recorder.set_skip(-1);
-	level_.clear_children("replay");
-	state_.snapshot = level_;
-	state_.players.clear();
-
 	config lock;
 	lock.add_child("stop_updates");
 	network::send_data(lock);
 
+	// Replays the level
+	recorder.set_save_info(state_);
+	recorder.set_skip(-1);
+	level_.clear_children("replay");
+
 	// Re-sends the whole level
 	update_and_send_diff();
+
+	// This must be done after updating level_
+	state_.snapshot = level_;
+	state_.starting_pos = level_;
+	state_.players.clear();
 
 	config cfg;
 	cfg.add_child("start_game");
@@ -937,7 +940,7 @@ void connect::load_game()
 
 	state_.label = level_["name"];
 	state_.players.clear();
-	state_.scenario = params_.name;
+	level_["scenario"] = state_.scenario = params_.name;
 	state_.campaign_type = "multiplayer";
 
 	if(!params_.saved_game) 
