@@ -1275,7 +1275,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 			}
 		}
 
-		if((grid_ || show_unit_colour) && srcrect.w >= 1) {
+		if(grid_ && srcrect.w >= 1) {
 			SDL_Rect rect = dstrect;
 			if(j == ypos || j == yend-1) {
 				SDL_FillRect(dst,&rect,grid_colour);
@@ -1287,6 +1287,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 				SDL_FillRect(dst,&rect,grid_colour);
 			}
 		}
+	}
+
+	if(show_unit_colour) {
+		draw_ellipse(dst,grid_colour,xpos,ypos,zoom_,zoom_);
 	}
 
 	if(game_config::debug && debugHighlights_.count(gamemap::location(x,y))) {
@@ -2205,6 +2209,7 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
                         bool reverse, bool upside_down,
                         double alpha, Pixel blendto, double submerged)
 {
+	std::cerr << "drawing unit submerged at " << submerged << "\n";
 	//the alpha value to use for submerged units
 	static const double unit_submerged_alpha = 0.2;
 
@@ -2224,7 +2229,7 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 	surface_lock srclock(image);
 	const Pixel* src = srclock.pixels();
 
-	const int height = image->h; //*(1.0 - submerged);
+	const int height = image->h;
 	const int submerge_height = y + image->h*(1.0 - submerged);
 
 	const int endy = (y + height) < h ? (y + height) : h;

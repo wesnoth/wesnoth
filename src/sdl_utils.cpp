@@ -12,6 +12,7 @@
 */
 
 #include <algorithm>
+#include <cmath>
 #include <iostream>
 
 #include "game.hpp"
@@ -25,6 +26,32 @@ int sdl_add_ref(SDL_Surface* surface)
 		return surface->refcount++;
 	else
 		return 0;
+}
+
+void draw_ellipse(SDL_Surface* surf, short colour, int xloc, int yloc, int width, int height, const SDL_Rect& clip)
+{
+	const double centerx = xloc + double(width)*0.5;
+	const double centery = yloc + double(height)*0.5;
+	const double r = double(width)*0.5;
+
+	int last_y = 0;
+	for(int xit = xloc; xit != xloc+width; ++xit) {
+		//r^2 = x^2 + y^2
+		//y^2 = r^2 - x^2
+		const double x = double(xit) - centerx;
+		const int y = int(sqrt(r*r - x*x));
+
+		const int direction = y > last_y ? 1 : -1;
+		for(int i = last_y; i != y+direction; i += direction) {
+			const int yit = yloc+height/2-y;
+			if(xit >= 0 && yit >= 0 && xit < surf->w && yit < surf->h) {
+				SDL_Rect rect = {xit,yit,1,1};
+				SDL_FillRect(surf,&rect,colour);
+			}
+		}
+
+		last_y = y;
+	}
 }
 
 SDL_Surface* clone_surface(SDL_Surface* surface)
