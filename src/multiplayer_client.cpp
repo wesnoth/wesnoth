@@ -168,7 +168,14 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 	network::connection sock;
 
-	sock = network::connect(host);
+	int pos = host.find_first_of(":");
+ 
+ 	if(pos == -1) {
+ 		sock = network::connect(host);
+ 	} else {
+ 		sock = network::connect(host.substr(0,pos),atoi(host.substr(pos+1).c_str()));
+ 	}
+ 
 	config sides, data;
 
 
