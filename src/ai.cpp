@@ -17,6 +17,7 @@
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "network.hpp"
 #include "pathfind.hpp"
 #include "playlevel.hpp"
 #include "playturn.hpp"
@@ -115,6 +116,8 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 
 		//confirm the transaction - i.e. don't undo recruitment
 		replay_guard.confirm_transaction();
+
+		sync_network();
 		return true;
 	} else {
 		return false;
@@ -147,6 +150,16 @@ const team& ai_interface::current_team() const
 	return info_.teams[info_.team_num-1];
 }
 
+void ai_interface::sync_network()
+{
+	if(network::nconnections() > 0 && info_.start_command != info_.recorder.ncommands()) {
+		config cfg;
+		cfg.add_child("turn",recorder.get_data_range(info_.start_command,info_.recorder.ncommands()));
+		network::send_data(cfg);
+
+		info_.start_command = info_.recorder.ncommands();
+	}
+}
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
@@ -246,6 +259,8 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	}
 
 	recorder.add_movement(from,to);
+
+	sync_network();
 
 	return to;
 }
@@ -510,6 +525,8 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 				dialogs::advance_unit(info_.gameinfo,info_.units,target,info_.disp,!info_.teams[defender_team].is_human());
 			}
 		}
+
+		sync_network();
 	}
 }
 

@@ -196,13 +196,13 @@ void default_map_generator::user_config(display& disp)
 			break;
 		}
 
-		players_slider.process();
-		width_slider.process();
-		height_slider.process();
-		iterations_slider.process();
-		hillsize_slider.process();
-		villages_slider.process();
-		landform_slider.process();
+		players_slider.set_dirty();
+		width_slider.set_dirty();
+		height_slider.set_dirty();
+		iterations_slider.set_dirty();
+		hillsize_slider.set_dirty();
+		villages_slider.set_dirty();
+		landform_slider.set_dirty();
 
 		width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 		height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);

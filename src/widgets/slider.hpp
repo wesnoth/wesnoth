@@ -37,11 +37,6 @@ public:
 
 	void process();
 
-protected:
-	using widget::bg_restore;
-	using widget::set_dirty;
-	using widget::dirty;
-
 private:
 	SDL_Rect slider_area() const;
 	void draw();

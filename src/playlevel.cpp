@@ -473,15 +473,10 @@ redo_turn:
 						                    game_config,level,key,gui,
 						                    map,teams,player_number,units,true,textbox_info);
 
-					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
+					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data,recorder);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
-
-					if(network::nconnections() > 0) {
-						config cfg;
-						cfg.add_child("turn",recorder.get_data_range(start_command,recorder.ncommands()));
-						network::send_data(cfg);
-					}
+					ai_obj->sync_network();
 
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
