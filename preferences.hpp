@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
@@ -16,6 +17,7 @@
 #include "display.hpp"
 
 #include <string>
+#include <utility>
 
 namespace preferences {
 
@@ -33,6 +35,9 @@ namespace preferences {
 
 	bool fullscreen();
 	void set_fullscreen(bool ison);
+
+	std::pair<int,int> resolution();
+	void set_resolution(const std::pair<int,int>& res);
 
 	bool turbo();
 	void set_turbo(bool ison);

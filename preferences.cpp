@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
@@ -71,16 +72,52 @@ void set_fullscreen(bool ison)
 	prefs.values["fullscreen"] = (ison ? "true" : "false");
 
 	if(disp != NULL) {
+		const std::pair<int,int>& res = resolution();
 		CVideo& video = disp->video();
 		if(video.isFullScreen() != ison) {
 			const int flags = ison ? FULL_SCREEN : 0;
-			if(video.modePossible(1024,768,16,flags)) {
-				video.setMode(1024,768,16,flags);
+			if(video.modePossible(res.first,res.second,16,flags)) {
+				video.setMode(res.first,res.second,16,flags);
 				disp->redraw_everything();
 			} else {
 				gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],
 				                 gui::MESSAGE);
 			}
+		}
+	}
+}
+
+std::pair<int,int> resolution()
+{
+	const string_map::const_iterator x = prefs.values.find("xresolution");
+	const string_map::const_iterator y = prefs.values.find("yresolution");
+	if(x != prefs.values.end() && y != prefs.values.end() &&
+	   x->second.empty() == false && y->second.empty() == false) {
+		return std::pair<int,int>(atoi(x->second.c_str()),
+		                          atoi(y->second.c_str()));
+	} else {
+		return std::pair<int,int>(1024,768);
+	}
+}
+
+void set_resolution(const std::pair<int,int>& res)
+{
+	if(disp != NULL) {
+		CVideo& video = disp->video();
+		const int flags = video.isFullScreen() ? FULL_SCREEN : 0;
+		if(video.modePossible(res.first,res.second,16,flags)) {
+
+			video.setMode(res.first,res.second,16,flags);
+			disp->redraw_everything();
+
+			char buf[50];
+			sprintf(buf,"%d",res.first);
+			prefs.values["xresolution"] = buf;
+			sprintf(buf,"%d",res.second);
+			prefs.values["yresolution"] = buf;
+		} else {
+			gui::show_dialog(*disp,NULL,"",string_table["video_mode_fail"],
+			                 gui::MESSAGE);
 		}
 	}
 }

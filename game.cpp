@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
@@ -173,11 +174,15 @@ int play_game(int argc, char** argv)
 			game_config::debug = true;
 		}
 	}
+
+	const std::pair<int,int>& resolution = preferences::resolution();
 	
-	const int bpp = video.modePossible(1152,864,16,video_flags);
+	const int bpp = video.modePossible(resolution.first,resolution.second,
+	                                   16,video_flags);
 
 	if(bpp == 0) {
-		std::cerr << "The required video mode, 1024x768x16 "
+		std::cerr << "The required video mode, " << resolution.first
+		          << "x" << resolution.second << "x16 "
 		          << "is not supported\n";
 
 		if(video_flags == FULL_SCREEN && argc == 0)
@@ -195,9 +200,12 @@ int play_game(int argc, char** argv)
 		          << "For best results, run the program on a 16 bpp display\n";
 	}
 
-	const int res = video.setMode(1152,864,16,video_flags);
+	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
+	const int res = video.setMode(resolution.first,resolution.second,
+	                              16,video_flags);
 	if(res != 16) {
-		std::cerr << "required video mode, 1024x768x16 is not supported\n";
+		std::cerr << "required video mode, " << resolution.first << "x"
+		          << resolution.second << "x16 is not supported\n";
 		return 0;
 	}
 
