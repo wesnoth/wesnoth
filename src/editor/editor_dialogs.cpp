@@ -71,8 +71,8 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
 					      _("Create New Map"),0,0);
 
-	const std::string& width_label = string_table["map_width"] + ":";
-	const std::string& height_label = string_table["map_height"] + ":";
+	const std::string& width_label = _("Width") + ":";
+	const std::string& height_label = _("Height") + ":";
 
 	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
@@ -240,15 +240,15 @@ void preferences_dialog(display &disp, config &prefs) {
 
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 
-	gui::button close_button(disp,string_table["close_window"]);
+	gui::button close_button(disp,_("Close Window"));
 
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
+	gui::draw_dialog(xpos,ypos,width,height,disp,_("Preferences"),NULL,&buttons,&restorer);
 
-	const std::string& scroll_label = string_table["scroll_speed"];
+	const std::string& scroll_label = _("Scroll Speed:");
 
 	SDL_Rect scroll_rect = {0,0,0,0};
 	scroll_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
@@ -274,24 +274,24 @@ void preferences_dialog(display &disp, config &prefs) {
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
 
-	gui::button fullscreen_button(disp,string_table["full_screen"],
+	gui::button fullscreen_button(disp,_("Full Screen"),
 	                              gui::button::TYPE_CHECK);
 
 	fullscreen_button.set_check(preferences::fullscreen());
 
 	fullscreen_button.set_location(slider_left,scroll_pos + 80);
 
-	gui::button grid_button(disp,string_table["grid_button"],
+	gui::button grid_button(disp,_("Show Grid"),
 	                        gui::button::TYPE_CHECK);
 	grid_button.set_check(preferences::grid());
 
 	grid_button.set_location(slider_left + fullscreen_button.width() + 100,
 							 scroll_pos + 80);
 
-	gui::button resolution_button(disp,string_table["video_mode"]);
+	gui::button resolution_button(disp,_("Video Mode"));
 	resolution_button.set_location(slider_left,scroll_pos + 80 + 50);
 
-	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
+	gui::button hotkeys_button (disp,_("Hotkeys"));
 	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,
 								scroll_pos + 80 + 50);
 
@@ -312,7 +312,7 @@ void preferences_dialog(display &disp, config &prefs) {
 
 		if(redraw_all) {
 			restorer.cancel();
-			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
+			gui::draw_dialog(xpos,ypos,width,height,disp,_("Preferences"),NULL,&buttons,&restorer);
 			fullscreen_button.set_dirty();
 			close_button.set_dirty();
 			resolution_button.set_dirty();
@@ -382,8 +382,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
 					      _("Resize Map"),0,0);
 
-	const std::string& width_label = string_table["map_width"] + ":";
-	const std::string& height_label = string_table["map_height"] + ":";
+	const std::string& width_label = _("Width") + ":";
+	const std::string& height_label = _("Height") + ":";
 
 	SDL_Rect width_rect = font::draw_text(NULL, disp.screen_area(), 14, font::NORMAL_COLOUR,
 										  width_label, 0, 0);
