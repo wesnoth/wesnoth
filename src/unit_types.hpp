@@ -37,6 +37,8 @@ public:
 	int hexes() const;
 	int damage() const;
 	int num_attacks() const;
+	double attack_weight() const;
+	double defense_weight() const;
 
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
 	enum FRAME_DIRECTION { VERTICAL, DIAGONAL };
@@ -69,6 +71,8 @@ private:
 	int hexes_;
 	int damage_;
 	int num_attacks_;
+	double attack_weight_;
+	double defense_weight_;
 
 	struct frame {
 		frame(int i1, int i2, const std::string& img, int offset)

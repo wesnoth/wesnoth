@@ -251,6 +251,7 @@ battle_stats evaluate_battle_stats(
 		if(defender_attacks[defend_option].range() == attack.range() &&
 			defender_attacks[defend_option].hexes() >= combat_range) {
 			const double rating = a->second.damage_against(defender_attacks[defend_option])*defender_attacks[defend_option].num_attacks();
+			rating *= defender_attacks[defend_option].defense_weight();
 			if(defend == -1 || rating > best_defend_rating) {
 				best_defend_rating = rating;
 				defend = defend_option;

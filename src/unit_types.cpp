@@ -42,6 +42,13 @@ attack_type::attack_type(const config& cfg)
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
+	attack_weight_ = atof(cfg["attack_weight"].c_str());
+	defense_weight_ = atof(cfg["defense_weight"].c_str());
+	if ( ! attack_weight_ )
+	  attack_weight_ = 1.0;
+	if ( ! defense_weight_ )
+	  defense_weight_ = 1.0;
+
 	config::const_child_itors range = cfg.child_range("frame");
 	for(; range.first != range.second; ++range.first){
 		const int beg = atoi((**range.first)["begin"].c_str());
@@ -120,6 +127,16 @@ int attack_type::damage() const
 int attack_type::num_attacks() const
 {
 	return num_attacks_;
+}
+
+double attack_type::attack_weight() const
+{
+	return attack_weight_;
+}
+
+double attack_type::defense_weight() const
+{
+	return defense_weight_;
 }
 
 int attack_type::get_first_frame(attack_type::FRAME_TYPE type) const
