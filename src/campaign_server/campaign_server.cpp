@@ -124,6 +124,26 @@ void campaign_server::run()
 						write_file(file_,cfg_.write());
 						network::send_data(construct_message("Campaign accepted."),sock);
 					}
+				} else if(const config* erase = data.child("delete")) {
+					config* const campaign = campaigns().find_child("campaign","name",(*erase)["name"]);
+					if(campaign == NULL) {
+						network::send_data(construct_error("The campaign does not exist."),sock);
+						continue;
+					}
+
+					if((*campaign)["passphrase"] != (*erase)["passphrase"]) {
+						network::send_data(construct_error("The passphrase is incorrect."),sock);
+						continue;
+					}
+
+					//erase the campaign
+					write_file((*campaign)["filename"],"");
+					
+					const config::child_list& campaigns_list = campaigns().get_children("campaign");
+					const size_t index = std::find(campaigns_list.begin(),campaigns_list.end(),campaign) - campaigns_list.begin();
+					campaigns().remove_child("campaign",index);
+					write_file(file_,cfg_.write());
+					network::send_data(construct_message("Campaign erased."),sock);
 				}
 			}
 		} catch(network::error& e) {

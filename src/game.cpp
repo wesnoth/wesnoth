@@ -341,6 +341,7 @@ private:
 
 	void download_campaigns();
 	void upload_campaign(const std::string& campaign, network::connection sock);
+	void delete_campaign(const std::string& campaign, network::connection sock);
 
 	const int argc_;
 	int arg_;
@@ -1013,17 +1014,29 @@ void game_controller::download_campaigns()
 		std::vector<std::string> campaigns, options;
 		options.push_back(_(",Name,Version,Author,Downloads"));
 		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
+		const std::vector<std::string>& publish_options = available_campaigns();
+
+		std::vector<std::string> delete_options;
+
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
 			campaigns.push_back((**i)["name"]);
 			
 			std::string name = (**i)["name"];
+
+			if(std::count(publish_options.begin(),publish_options.end(),name) != 0) {
+				delete_options.push_back(name);
+			}
+
 			std::replace(name.begin(),name.end(),'_',' ');
 			options.push_back("&" + (**i)["icon"] + "," + name + "," + (**i)["version"] + "," + (**i)["author"] + "," + (**i)["downloads"]);
 		}
 
-		const std::vector<std::string>& publish_options = available_campaigns();
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
 			options.push_back(std::string(",") + _("Publish campaign: ") + *j);
+		}
+
+		for(std::vector<std::string>::const_iterator d = delete_options.begin(); d != delete_options.end(); ++d) {
+			options.push_back(std::string(",") + _("Delete campaign: ") + *d);
 		}
 
 		if(campaigns.empty() && publish_options.empty()) {
@@ -1033,6 +1046,11 @@ void game_controller::download_campaigns()
 
 		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&options) - 1;
 		if(index < 0) {
+			return;
+		}
+
+		if(index >= int(campaigns.size() + publish_options.size())) {
+			delete_campaign(delete_options[index - int(campaigns.size() + publish_options.size())],sock);
 			return;
 		}
 
@@ -1117,6 +1135,30 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	std::cerr << "uploading campaign...\n";
 	network::send_data(data,sock);
 	
+	sock = network::receive_data(data,sock,60000);
+	if(!sock) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
+	} else if(data.child("error")) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("The server responded with an error: \"") + (*data.child("error"))["message"] + "\"",gui::OK_ONLY);
+	} else if(data.child("message")) {
+		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
+	}
+}
+
+void game_controller::delete_campaign(const std::string& campaign, network::connection sock)
+{
+	config cfg;
+	get_campaign_info(campaign,cfg);
+
+	config msg;
+	msg["name"] = campaign;
+	msg["passphrase"] = cfg["passphrase"];
+
+	config data;
+	data.add_child("delete",msg);
+
+	network::send_data(data,sock);
+
 	sock = network::receive_data(data,sock,60000);
 	if(!sock) {
 		gui::show_dialog(disp(),NULL,_("Error"),_("Connection timed out"),gui::OK_ONLY);
