@@ -1906,6 +1906,8 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 	int ticks = SDL_GetTicks();
 
+	bool shown_label = false;
+
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
 
@@ -1937,7 +1939,9 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			draw_tile(a.x,a.y,image);
 		}
 
-		if(damage > 0 && i == missile_impact) {
+		if(damage > 0 && i >= missile_impact && shown_label == false) {
+			shown_label = true;
+
 			char buf[50];
 			sprintf(buf,"%d",damage);
 			float_label(b,buf,255,0,0);
@@ -2128,6 +2132,8 @@ bool display::unit_attack(const gamemap::location& a,
 	const double src_submerge = attacker.is_flying() ? 0 : map_.get_terrain_info(src_terrain).unit_submerge();
 	const double dst_submerge = attacker.is_flying() ? 0 : map_.get_terrain_info(dst_terrain).unit_submerge();
 
+	bool shown_label = false;
+
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
 
@@ -2154,7 +2160,8 @@ bool display::unit_attack(const gamemap::location& a,
 		Uint32 defender_colour = 0;
 		double defender_alpha = 1.0;
 
-		if(damage > 0 && i == 0) {
+		if(damage > 0 && i >= 0 && shown_label == false) {
+			shown_label = true;
 			char buf[50];
 			sprintf(buf,"%d",damage);
 			float_label(b,buf,255,0,0);
