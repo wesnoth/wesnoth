@@ -174,7 +174,7 @@ void unit::generate_traits()
 	std::sort(description.begin(),description.end());
 	for(std::vector<std::string>::const_iterator i = description.begin(); i != description.end(); ++i) {
 		if(i != description.begin()) {
-			traitsDescription_ += ",";
+			traitsDescription_ += ", ";
 		}
 
 		traitsDescription_ += gettext(i->c_str());

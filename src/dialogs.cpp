@@ -646,7 +646,7 @@ void unit_preview_pane::draw_contents()
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
 		details << gettext(a->c_str());
 		if(a+1 != abilities.end()) {
-			details << ",";
+			details << ", ";
 		}
 	}
 
