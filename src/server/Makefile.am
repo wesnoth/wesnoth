@@ -5,6 +5,7 @@ bin_PROGRAMS = wesnothd
 #############################################################################
 
 wesnothd_SOURCES = game.cpp \
+		   game_events.cpp \
 		   player.cpp \
 		   server.cpp \
 		   ../config.cpp \
@@ -13,6 +14,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
 		   game.hpp \
+		   game_events.hpp \
 		   player.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
