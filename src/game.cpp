@@ -1320,7 +1320,7 @@ bool game_controller::change_language()
 	                         gui::OK_CANCEL,&langs);
 	if(size_t(res) < langs.size()) {
 		set_language(known_languages[res]);
-		preferences::set_locale(known_languages[res].localename);
+		preferences::set_language(known_languages[res].localename);
 
 		//force a reload of configuration information
 		const bool old_cache = use_caching_;

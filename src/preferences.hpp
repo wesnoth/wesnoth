@@ -52,8 +52,8 @@ namespace preferences {
 	bool turbo();
 	void set_turbo(bool ison);
 
-	const std::string& locale();
-	void set_locale(const std::string& s);
+	const std::string& language();
+	void set_language(const std::string& s);
 
 	int music_volume();
 	void set_music_volume(int vol);

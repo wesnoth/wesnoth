@@ -227,12 +227,12 @@ void set_turbo(bool ison)
 	}
 }
 
-const std::string& locale()
+const std::string& language()
 {
 	return prefs["locale"];
 }
 
-void set_locale(const std::string& s)
+void set_language(const std::string& s)
 {
 	prefs["locale"] = s;
 }

@@ -177,7 +177,7 @@ const language_def& get_locale()
 {
 	//TODO: Add in support for querying the locale on Windows
 
-	const std::string& prefs_locale = preferences::locale();
+	const std::string& prefs_locale = preferences::language();
 	if(prefs_locale.empty() == false) {
 		char* setlocaleres = wesnoth_setlocale (LC_MESSAGES, prefs_locale.c_str());
 		if(setlocaleres == NULL)
