@@ -6,6 +6,7 @@
 #include "sdl_utils.hpp"
 #include "theme.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <cstdlib>
 #include <sstream>
@@ -284,7 +285,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		relative_loc_.w = (loc_.w*screen.w)/XDim;
 		break;
 	default:
-		assert(false);
+		wassert(false);
 	}
 
 	switch(yanchor_) {
@@ -305,7 +306,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		relative_loc_.h = (loc_.h*screen.h)/YDim;
 		break;
 	default:
-		assert(false);
+		wassert(false);
 	}
 
 	relative_loc_.x = minimum<int>(relative_loc_.x,screen.w);

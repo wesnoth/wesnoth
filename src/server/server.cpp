@@ -4,6 +4,7 @@
 #include "../game_config.hpp"
 #include "../network.hpp"
 #include "../util.hpp"
+#include "../wassert.hpp"
 
 #include "SDL.h"
 
@@ -13,7 +14,6 @@
 #include "player.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <cstdlib>
 #include <iostream>
 #include <map>
@@ -441,7 +441,7 @@ void server::run()
 					config* const message = data.child("message");
 					if(message != NULL) {
 						const player_map::const_iterator p = players_.find(sock);
-						assert(p != players_.end());
+						wassert(p != players_.end());
 						(*message)["sender"] = p->second.name();
 
 						truncate_message((*message)["message"]);
@@ -621,7 +621,7 @@ void server::run()
 
 							//delete the game's description
 							config* const gamelist = initial_response_.child("gamelist");
-							assert(gamelist != NULL);
+							wassert(gamelist != NULL);
 							const config::child_itors vg = gamelist->child_range("game");
 
 							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
@@ -709,7 +709,7 @@ void server::run()
 							//force the description to be correct to prevent
 							//spoofing of messages
 							const player_map::const_iterator pl = players_.find(sock);
-							assert(pl != players_.end());
+							wassert(pl != players_.end());
 							(*speak)["description"] = pl->second.name();
 
 							if((*speak)["team_name"] == "") {
@@ -799,7 +799,7 @@ void server::delete_game(std::vector<game>::iterator i)
 
 	//delete the game's configuration
 	config* const gamelist = initial_response_.child("gamelist");
-	assert(gamelist != NULL);
+	wassert(gamelist != NULL);
 	const config::child_itors vg = gamelist->child_range("game");
 	const config::child_list::iterator g = std::find(vg.first,vg.second,i->description());
 	if(g != vg.second) {

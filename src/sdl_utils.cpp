@@ -24,6 +24,7 @@
 #include "show_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"
+#include "wassert.hpp"
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
@@ -549,7 +550,7 @@ surface cut_surface(surface surf, const SDL_Rect& r)
 		Uint8* line_dest = dest + y * rpitch;
 		size_t size = r.w + r.x <= surf->w ? r.w : surf->w - r.x; 
 		
-		assert(rpitch >= r.w * rbpp);
+		wassert(rpitch >= r.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);
 	}
 

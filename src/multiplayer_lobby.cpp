@@ -14,6 +14,7 @@
 #include "show_dialog.hpp"
 #include "statistics.hpp"
 #include "sound.hpp"
+#include "wassert.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
@@ -215,7 +216,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 
 		if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
-			assert(game_vacant_slots.size() == game_observers.size());
+			wassert(game_vacant_slots.size() == game_observers.size());
 
 			join_game.hide(!game_vacant_slots[games_menu.selection()]);
 			observe_game.hide(!game_observers[games_menu.selection()]);
@@ -319,7 +320,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			if(games_available && (observe || join_game.pressed() || double_click)) {
 				const size_t index = size_t(games_menu.selection());
 				const config::const_child_itors i = gamelist->child_range("game");
-				assert(index < size_t(i.second - i.first));
+				wassert(index < size_t(i.second - i.first));
 				const std::string& id = (**(i.first+index))["id"];
 
 				config response;

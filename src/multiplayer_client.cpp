@@ -11,6 +11,7 @@
 #include "scoped_resource.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <sstream>
 
@@ -485,7 +486,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				leader = leader_selector.get_selected_leader();
 			}
 
-			assert(choice < possible_sides.size());
+			wassert(choice < possible_sides.size());
 
 			const config& chosen_side = *possible_sides[choice];
 			team_name = response["name"] = chosen_side["name"];

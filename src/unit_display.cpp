@@ -11,6 +11,7 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #define LOG_DP lg::info(lg::display)
 
@@ -316,7 +317,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()) {
 		leader = units.find(leader_loc);
-		assert(leader != units.end());
+		wassert(leader != units.end());
 		leader->second.set_leading(true);
 	}
 
@@ -627,12 +628,12 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	log_scope("unit_attack");
 
 	const unit_map::iterator att = units.find(a);
-	assert(att != units.end());
+	wassert(att != units.end());
 
 	unit& attacker = att->second;
 
 	const unit_map::iterator def = units.find(b);
-	assert(def != units.end());
+	wassert(def != units.end());
 
 	if(b.x > a.x) {
 		att->second.set_facing_left(true);
@@ -664,7 +665,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	if(leader_loc.valid()){
 		LOG_DP << "found leader at " << (leader_loc.x+1) << "," << (leader_loc.y+1) << "\n";
 		leader = units.find(leader_loc);
-		assert(leader != units.end());
+		wassert(leader != units.end());
 		leader->second.set_leading(true);
 	}
 

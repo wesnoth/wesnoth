@@ -6,11 +6,11 @@
 #include "mouse.hpp"
 #include "preferences.hpp"
 #include "video.hpp"
+#include "wassert.hpp"
 
 #include "SDL.h"
 
 #include <algorithm>
-#include <cassert>
 #include <deque>
 #include <utility>
 #include <vector>
@@ -141,7 +141,7 @@ event_context::event_context(bool create) : create_(create)
 event_context::~event_context()
 {
 	if(create_) {
-		assert(event_contexts.empty() == false);
+		wassert(event_contexts.empty() == false);
 
 		event_contexts.pop_back();
 	}
@@ -155,7 +155,7 @@ handler::handler() : unicode_(SDL_EnableUNICODE(1))
 
 handler::~handler()
 {
-	assert(event_contexts.empty() == false);
+	wassert(event_contexts.empty() == false);
 
 	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
 		if(i->remove_handler(this)) {

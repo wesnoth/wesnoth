@@ -31,6 +31,7 @@
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
+#include "wassert.hpp"
 
 #include "SDL_ttf.h"
 
@@ -874,7 +875,7 @@ int show_dialog(display& disp, surface image,
 				(*options)[n].checked = check_buttons[n].checked();
 			} else if(pressed) {
 				const size_t options_size = options == NULL ? 0 : options->size();
-				assert(action_buttons != NULL && action_buttons->size() > n - options_size);
+				wassert(action_buttons != NULL && action_buttons->size() > n - options_size);
 
 				const dialog_button_action::RESULT res = (*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
 				if(res == dialog_button_action::DELETE_ITEM) {

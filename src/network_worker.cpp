@@ -4,8 +4,8 @@
 #include "network_worker.hpp"
 #include "network.hpp"
 #include "thread.hpp"
+#include "wassert.hpp"
 
-#include <cassert>
 #include <cerrno>
 #include <iostream>
 #include <map>
@@ -52,7 +52,7 @@ int process_queue(void* data)
 				buffer_set::iterator itor = bufs.begin(), itor_end = bufs.end();
 				for(; itor != itor_end; ++itor) {
 					socket_state_map::iterator lock_it = sockets_locked.find((*itor)->sock);
-					assert(lock_it != sockets_locked.end());
+					wassert(lock_it != sockets_locked.end());
 					if(lock_it->second == SOCKET_READY) {
 						lock_it->second = SOCKET_LOCKED;
 						break;
@@ -95,7 +95,7 @@ int process_queue(void* data)
 		{
 			const threading::lock lock(*global_mutex);
 			socket_state_map::iterator lock_it = sockets_locked.find(sent_buf->sock);
-			assert(lock_it != sockets_locked.end());
+			wassert(lock_it != sockets_locked.end());
 			lock_it->second = result;
 			if(result == SOCKET_ERROR) {
 				++socket_errors;

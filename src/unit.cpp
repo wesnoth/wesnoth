@@ -23,6 +23,7 @@
 #include "replay.hpp"
 #include "unit.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -606,7 +607,7 @@ void unit::read(const game_data& data, const config& cfg)
 	else
 		throw gamestatus::load_game_failed("Unit not found: '" + cfg["type"] + "'");
 
-	assert(type_ != NULL);
+	wassert(type_ != NULL);
 
 	const std::string& gender = preferences::show_unit_genders() ? cfg["gender"] : "";
 	if(gender == "male") {
@@ -1219,7 +1220,7 @@ int unit::upkeep() const
 	case UPKEEP_FREE: return 0;
 	case UPKEEP_LOYAL: return minimum<int>(1,type().level());
 	case UPKEEP_FULL_PRICE: return type().level();
-	default: assert(false); return 0;
+	default: wassert(false); return 0;
 	}
 }
 

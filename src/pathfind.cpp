@@ -17,6 +17,7 @@
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <cmath>
 #include <iostream>
@@ -87,10 +88,10 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 	std::vector<location> locs;
 	while(!open_list.empty()) {
 
-		assert(open_list.size() == open_list_ordered.size());
+		wassert(open_list.size() == open_list_ordered.size());
 
 		const list_map::iterator lowest_in_open = open_list.find(open_list_ordered.begin()->second);
-		assert(lowest_in_open != open_list.end());
+		wassert(lowest_in_open != open_list.end());
 
 		//move the lowest element from the open list to the closed list
 		closed_list.erase(lowest_in_open->first);
@@ -120,7 +121,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 					list_map::const_iterator itor = open_list.find(loc);
 					if(itor == open_list.end()) {
 						itor = closed_list.find(loc);
-						assert(itor != closed_list.end());
+						wassert(itor != closed_list.end());
 					}
 
 					loc = itor->second.parent;
@@ -130,7 +131,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 				rt.steps.push_back(dst);
 				rt.move_left = int(lowest_gcost + obj->cost(dst, lowest_gcost));
 
-				assert(rt.steps.front() == src);
+				wassert(rt.steps.front() == src);
 
 				LOG_PF << "exiting a* search (solved)\n";
 
@@ -454,7 +455,7 @@ int route_turns_to_complete(const unit& u, const gamemap& map,
 	int turns = 0, movement = u.movement_left();
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 	    i != rt.steps.end(); ++i) {
-		assert(map.on_board(*i));
+		wassert(map.on_board(*i));
 		const int move_cost = u.movement_cost(map,map[i->x][i->y]);
 		movement -= move_cost;
 		if(movement < 0) {

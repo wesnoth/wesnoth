@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "terrain.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #define ERR_NG lg::err(lg::engine)
 
@@ -122,14 +123,14 @@ bool terrain_builder::tilemap::on_map(const gamemap::location &loc) const
 
 terrain_builder::tile& terrain_builder::tilemap::operator[](const gamemap::location &loc)
 {
-	assert(on_map(loc));
+	wassert(on_map(loc));
 		
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
 
 const terrain_builder::tile& terrain_builder::tilemap::operator[] (const gamemap::location &loc) const
 {
-	assert(on_map(loc));
+	wassert(on_map(loc));
 	
 	return map_[(loc.x+1) + (loc.y+1)*(x_+2)];
 }
@@ -331,7 +332,7 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 		{ 1./2. ,  3./4., -1., 1./2. },
 	};
 
-	assert(angle >= 0);
+	wassert(angle >= 0);
 
 	angle %= 6;	
 	terrain_constraint ret = constraint;

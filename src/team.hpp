@@ -16,7 +16,6 @@
 #include "config.hpp"
 #include "map.hpp"
 
-#include <cassert>
 #include <set>
 #include <string>
 #include <vector>

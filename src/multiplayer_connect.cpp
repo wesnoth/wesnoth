@@ -28,6 +28,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/combo.hpp"
@@ -146,7 +147,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		(*level_ptr)["turns"] = turns.str();
 	}
 
-	assert(level_ptr != NULL);
+	wassert(level_ptr != NULL);
 
 	if(scenario_data["era"].empty()) {
 		era_ = era;
@@ -414,8 +415,11 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	scroll_pane_.set_location(scroll_pane_rect);
 	config::child_iterator sd;
 
+	std::cerr << "Getting here :P" << std::endl;
+
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int side_num = sd - sides.first;
+		std::cerr << "Side num: " << side_num << std::endl;
 
 		//Player number
 		player_numbers_.push_back(gui::label(*disp_, (*sd)->values["side"],

@@ -21,8 +21,8 @@
 #include "../reports.hpp"
 #include "../language.hpp"
 #include "../util.hpp"
+#include "../wassert.hpp"
 
-#include <cassert>
 
 
 namespace map_editor {

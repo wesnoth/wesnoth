@@ -29,6 +29,7 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -499,13 +500,13 @@ int replay::get_random()
 
 const config* replay::get_random_results() const
 {
-	assert(random_ != NULL);
+	wassert(random_ != NULL);
 	return random_->child("results");
 }
 
 void replay::set_random_results(const config& cfg)
 {
-	assert(random_ != NULL);
+	wassert(random_ != NULL);
 	random_->clear_children("results");
 	random_->add_child("results",cfg);
 }

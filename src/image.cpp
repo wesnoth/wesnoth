@@ -10,6 +10,7 @@
 #include "sdl_utils.hpp"
 #include "team.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include "SDL_image.h"
 
@@ -246,7 +247,7 @@ surface locator::load_from_disk() const
 		default:
 			return surface(NULL);
 	}
-	assert(false);
+	wassert(false);
 }
 
 #if 0
@@ -595,7 +596,7 @@ locator get_alternative(const image::locator &i_locator, const std::string &alt)
 		res = locator(alternative, i_locator.get_loc());
 		break;
 	default:
-		assert(false);
+		wassert(false);
 	}
 	
 	i_locator.add_to_cache(alternative_images_, res);
@@ -691,7 +692,7 @@ surface getMinimap(int w, int h, const gamemap& map, const team* tm)
 					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
 				}
 
-				assert(surf != NULL);
+				wassert(surf != NULL);
 				
 				SDL_Rect maprect = {x*scale*3/4,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
 				SDL_BlitSurface(surf, NULL, minimap, &maprect);

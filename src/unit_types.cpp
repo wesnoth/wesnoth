@@ -19,9 +19,9 @@
 #include "log.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <cstdlib>
 #include <iostream>
 
@@ -227,7 +227,7 @@ bool attack_type::slow() const
 
 const unit_animation& attack_type::animation() const
 {
-	assert(animation_.empty() == false);
+	wassert(animation_.empty() == false);
 	return animation_[rand()%animation_.size()];
 }
 

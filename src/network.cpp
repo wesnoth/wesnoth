@@ -4,11 +4,11 @@
 #include "network.hpp"
 #include "network_worker.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include "SDL_net.h"
 
 #include <algorithm>
-#include <cassert>
 #include <cerrno>
 #include <queue>
 #include <iostream>
@@ -372,7 +372,7 @@ void disconnect(connection s)
 {
 	if(s == 0) {
 		while(sockets.empty() == false) {
-			assert(sockets.back() != 0);
+			wassert(sockets.back() != 0);
 			disconnect(sockets.back());
 		}
 
@@ -527,7 +527,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				}
 
 				const schema_map::iterator schema = schemas.find(*i);
-				assert(schema != schemas.end());
+				wassert(schema != schemas.end());
 
 				cfg.read_compressed(buffer,schema->second.incoming);
 
@@ -587,7 +587,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	}
 
 	const schema_map::iterator schema = schemas.find(connection_num);
-	assert(schema != schemas.end());
+	wassert(schema != schemas.end());
 
 	const std::string& value = cfg.write_compressed(schema->second.outgoing);
 
@@ -600,7 +600,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	buf.back() = 0;
 
 	const connection_map::iterator info = connections.find(connection_num);
-	assert(info != connections.end());
+	wassert(info != connections.end());
 
 	network_worker_pool::queue_data(info->second.sock,buf);
 }

@@ -2,8 +2,8 @@
 
 #include "game.hpp"
 #include "../util.hpp"
+#include "../wassert.hpp"
 
-#include <cassert>
 #include <iostream>
 
 int game::id_num = 1;
@@ -13,7 +13,7 @@ game::game(const player_map& info) : player_info_(&info), id_(id_num++), started
 
 bool game::is_owner(network::connection player) const
 {
-	assert(!players_.empty());
+	wassert(!players_.empty());
 	return player == players_.front();
 }
 
@@ -24,7 +24,7 @@ bool game::is_member(network::connection player) const
 
 bool game::is_needed(network::connection player) const
 {
-	assert(!players_.empty());
+	wassert(!players_.empty());
 	return player == players_.front();
 }
 
@@ -116,7 +116,7 @@ void game::start_game()
 
 bool game::take_side(network::connection player, const config& cfg)
 {
-	assert(is_member(player));
+	wassert(is_member(player));
 
 	const std::string& side = cfg["side"];
 	

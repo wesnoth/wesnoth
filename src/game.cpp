@@ -51,6 +51,7 @@
 #include "unit_types.hpp"
 #include "unit.hpp"
 #include "video.hpp"
+#include "wassert.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 

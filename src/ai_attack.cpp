@@ -19,9 +19,9 @@
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <cstdlib>
 #include <iostream>
 #include <set>
@@ -67,7 +67,7 @@ void ai::do_attack_analysis(
 	double rating_to_beat = cur_rating;
 
 	if(!cur_analysis.movements.empty()) {
-		assert(cur_analysis.movements.size() < 6);
+		wassert(cur_analysis.movements.size() < 6);
 		double& best_res = best_results[cur_analysis.movements.size()-1];
 		rating_to_beat = best_res = maximum(best_res,cur_rating);
 	}
@@ -76,7 +76,7 @@ void ai::do_attack_analysis(
 		const location current_unit = units[i];
 
 		const unit_map::const_iterator unit_itor = units_.find(current_unit);
-		assert(unit_itor != units_.end());
+		wassert(unit_itor != units_.end());
 
 		//see if the unit has the backstab ability -- units with backstab
 		//will want to try to have a friendly unit opposite the position they move to
@@ -251,7 +251,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	const std::set<battle_type>::const_iterator cache_itor = weapon_choice_cache.find(battle);
 
 	if(cache_itor != weapon_choice_cache.end()) {
-		assert(*cache_itor == battle);
+		wassert(*cache_itor == battle);
 
 		++cache_hits;
 		cur_stats = cache_itor->stats;
@@ -261,7 +261,7 @@ int ai::choose_weapon(const location& att, const location& def,
 			          << "/" << itor->second.attacks().size() << "\n";
 		}
 
-		assert(size_t(cache_itor->weapon) < itor->second.attacks().size());
+		wassert(size_t(cache_itor->weapon) < itor->second.attacks().size());
 		return cache_itor->weapon;
 	}
 
@@ -274,7 +274,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	int current_choice = -1;
 	double current_rating = 0.0;
 	const std::vector<attack_type>& attacks = itor->second.attacks();
-	assert(!attacks.empty());
+	wassert(!attacks.empty());
 
 	const unit_map::const_iterator d_itor = units_.find(def);
 	int d_hitpoints = d_itor->second.hitpoints();
@@ -297,7 +297,7 @@ int ai::choose_weapon(const location& att, const location& def,
 		}
 	}
 
-	assert(size_t(current_choice) < attacks.size());
+	wassert(size_t(current_choice) < attacks.size());
 
 	battle.stats = cur_stats;
 	battle.weapon = current_choice;
@@ -311,7 +311,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
                                   const ai::move_map& enemy_dstsrc, const ai::move_map& enemy_srcdst)
 {
 	const unit_map::const_iterator defend_it = units.find(target);
-	assert(defend_it != units.end());
+	wassert(defend_it != units.end());
 
 	//see if the target is a threat to our leader or an ally's leader
 	gamemap::location adj[6];
@@ -354,7 +354,7 @@ void ai::attack_analysis::analyze(const gamemap& map, unit_map& units, int num_s
 		battle_stats bat_stats;
 		const int weapon = ai_obj.choose_weapon(m->first,target, bat_stats, map[m->second.x][m->second.y],true);
 
-		assert(weapon != -1);
+		wassert(weapon != -1);
 		weapons.push_back(weapon);
 
 		stats.push_back(bat_stats);

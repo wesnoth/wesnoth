@@ -33,6 +33,7 @@
 #include "unit.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "widgets/menu.hpp"
 
 #include <cmath>
@@ -731,7 +732,7 @@ bool turn_info::move_unit_along_current_route(bool check_shroud)
 
 	redo_stack_.clear();
 
-	assert(moves <= steps.size());
+	wassert(moves <= steps.size());
 	const gamemap::location& dst = steps[moves-1];
 	const unit_map::const_iterator u = units_.find(dst);
 
@@ -946,7 +947,7 @@ gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& 
 
 void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move)
 {
-	assert(ui != units_.end());
+	wassert(ui != units_.end());
 
 	unit u = ui->second;
 	const shortest_path_calculator calc(u,current_team(),visible_units(),teams_,map_,status_);
@@ -965,7 +966,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 	if(route.steps.empty())
 		return;
 
-	assert(route.steps.front() == ui->first);
+	wassert(route.steps.front() == ui->first);
 
 	route.move_left = route_turns_to_complete(ui->second,map_,route);
 	gui_.set_route(&route);
@@ -1429,7 +1430,7 @@ void turn_info::redo()
 		std::vector<gamemap::location> route = action.route;
 		const unit_map::iterator u = units_.find(route.front());
 		if(u == units_.end()) {
-			assert(false);
+			wassert(false);
 			return;
 		}
 	
@@ -1797,7 +1798,7 @@ void turn_info::do_recruit(const std::string& name)
 
 	const std::map<std::string,unit_type>::const_iterator
 			u_type = gameinfo_.unit_types.find(name);
-	assert(u_type != gameinfo_.unit_types.end());
+	wassert(u_type != gameinfo_.unit_types.end());
 
 	if(u_type->second.cost() > current_team.gold()) {
 		gui::show_dialog(gui_,NULL,"",

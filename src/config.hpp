@@ -13,7 +13,6 @@
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
 
-#include <cassert>
 #include <map>
 #include <sstream>
 #include <string>

@@ -32,6 +32,7 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "widgets/menu.hpp"
 
 #include <cmath>
@@ -204,8 +205,8 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	const std::map<gamemap::location,unit>::iterator d = units.find(defender);
 
-	assert(a != units.end());
-	assert(d != units.end());
+	wassert(a != units.end());
+	wassert(d != units.end());
 
 	const gamemap::TERRAIN attacker_terrain = attacker_terrain_override ?
 	                 attacker_terrain_override : map[attacker.x][attacker.y];
@@ -217,7 +218,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 	const std::vector<attack_type>& attacker_attacks = a->second.attacks();
 	const std::vector<attack_type>& defender_attacks = d->second.attacks();
 
-	assert((unsigned)attack_with < attacker_attacks.size());
+	wassert((unsigned)attack_with < attacker_attacks.size());
 	const attack_type& attack = attacker_attacks[attack_with];
 	res.attacker_special = attack.special();
 
@@ -1107,7 +1108,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				if(!gets_healed[j])
 					continue;
 
-				assert(units.find(adjacent[j]) != units.end());
+				wassert(units.find(adjacent[j]) != units.end());
 
 				healed_units[adjacent[j]]
 				        = minimum(max_healing[adjacent[j]],
@@ -1155,7 +1156,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		const gamemap::location& loc = h->first;
 
-		assert(units.count(loc) == 1);
+		wassert(units.count(loc) == 1);
 
 		unit& u = units.find(loc)->second;
 
@@ -1176,7 +1177,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 			//iterate over any units that are healing this unit, and make them
 			//enter their healing frame
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-				assert(units.count(i->second));
+				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
 
 				const std::string& halo_image = healer.type().image_halo_healing();
@@ -1279,7 +1280,7 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 
 		if(show_healing) {
 			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
-				assert(units.count(i->second));
+				wassert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
 				healer.set_healing(false);
 
@@ -1351,7 +1352,7 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	for(size_t n = 0; n != seen_leaders.size(); ++n) {
 		const size_t side = seen_leaders[n]-1;
 
-		assert(side < teams.size());
+		wassert(side < teams.size());
 
 		for(size_t m = n+1; m != seen_leaders.size(); ++m) {
 			if(side < teams.size() && teams[side].is_enemy(seen_leaders[m])) {
@@ -1574,14 +1575,14 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  replay* move_recorder, undo_list* undo_stack,
                  gamemap::location *next_unit, bool continue_move, bool should_clear_shroud)
 {
-	assert(route.empty() == false);
+	wassert(route.empty() == false);
 
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
 
 	unit_map::iterator ui = units.find(route.front());
 
-	assert(ui != units.end());
+	wassert(ui != units.end());
 
 	ui->second.set_goto(gamemap::location());
 
@@ -1680,7 +1681,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		steps.pop_back();
 	}
 
-	assert(steps.size() <= route.size());
+	wassert(steps.size() <= route.size());
 
 	if (next_unit != NULL)
 		*next_unit = steps.back();
@@ -1756,7 +1757,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			for(std::set<gamemap::location>::const_iterator i = seen_units.begin(); i != seen_units.end(); ++i) {
 				LOG_NG << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
 				const unit_map::const_iterator u = units.find(*i);
-				assert(u != units.end());
+				wassert(u != units.end());
 				if(team.is_enemy(u->second.side())) {
 					++nenemies;
 				} else {
@@ -1818,7 +1819,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		game_events::fire("sighted",*seen,steps.back());
 	}
 
-	assert(steps.size() <= route.size());
+	wassert(steps.size() <= route.size());
 
 	return steps.size();
 }
@@ -1827,7 +1828,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams)
 {
 	const unit_map::const_iterator u_it = units.find(loc);
-	assert(u_it != units.end());
+	wassert(u_it != units.end());
 	
 	const unit& u = u_it->second;
 	const team& current_team = teams[u.side()-1];

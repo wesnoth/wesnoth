@@ -24,12 +24,12 @@
 #include "show_dialog.hpp"
 #include "unit.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/scrollbar.hpp"
 #include "widgets/widget.hpp"
 
-#include <cassert>
 #include <algorithm>
 #include <iostream>
 #include <list>
@@ -1204,7 +1204,7 @@ public:
 					 preferences::encountered_terrains().begin(),
 				 terrain_end = preferences::encountered_terrains().end();
 				 terrain_it != terrain_end; terrain_it++) {
-				assert(terrain_it->size() > 0);
+				wassert(terrain_it->size() > 0);
 				const gamemap::TERRAIN terrain = (*terrain_it)[0];
 				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
 					continue;
@@ -1258,7 +1258,7 @@ std::vector<topic> generate_unit_topics() {
 		} else if (desc_type == FULL_DESCRIPTION) {
 			unit_topic.text = new unit_topic_generator(type);
 		} else {
-			assert(false);
+			wassert(false);
 		}
 		topics.push_back(unit_topic);
 	}
@@ -1327,7 +1327,7 @@ std::vector<topic> generate_terrains_topics() {
 				 preferences::encountered_terrains().begin();
 			 terrain_it != preferences::encountered_terrains().end();
 			 terrain_it++) {
-			assert(terrain_it->size() > 0);
+			wassert(terrain_it->size() > 0);
 			const gamemap::TERRAIN terrain = (*terrain_it)[0];
 			show_info_about.push_back(terrain);
 		}

@@ -17,9 +17,9 @@
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <cctype>
 #include <cstdlib>
 #include <iostream>
@@ -155,7 +155,7 @@ gamemap::location gamemap::location::get_direction(
 		case SOUTH_WEST: return gamemap::location(x-1,y+is_odd(x));
 		case NORTH_WEST: return gamemap::location(x-1,y-is_even(x));
 		default:
-			assert(false);
+			wassert(false);
 			return gamemap::location();
 	}
 }

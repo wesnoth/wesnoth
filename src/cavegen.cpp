@@ -4,6 +4,7 @@
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #define LOG_NG lg::info(lg::engine)
 
@@ -188,7 +189,7 @@ void cave_map_generator::generate_chambers()
 			if(itor == chamber_ids_.end())
 				continue;
 
-			assert(itor->second < chambers_.size());
+			wassert(itor->second < chambers_.size());
 
 			passages_.push_back(passage(new_chamber.center,chambers_[itor->second].center,**p));
 		}

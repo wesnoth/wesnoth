@@ -21,6 +21,7 @@
 #include "replay.hpp"
 #include "team.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -221,7 +222,7 @@ void team::team_info::write(config& cfg) const
 	case HUMAN: cfg["controller"] = "human"; break;
 	case NETWORK: cfg["controller"] = "network"; break;
 	case EMPTY: cfg["controller"] = "null"; break;
-	default: assert(false);
+	default: wassert(false);
 	}
 
 	sprintf(buf,"%d",villages_per_scout);

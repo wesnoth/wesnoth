@@ -26,6 +26,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/progressbar.hpp"
 
@@ -214,7 +215,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 			                                 NULL,NULL,"",NULL,-1,NULL,&options);
 
 			//see if the user doesn't want to be asked this again
-			assert(options.empty() == false);
+			wassert(options.empty() == false);
 			if(options.front().checked) {
 				preferences::set_ask_delete_saves(false);
 			}

@@ -90,6 +90,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit_display.cpp \
 		  unit_types.cpp \
 		  video.cpp \
+		  wassert.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/label.cpp \
@@ -171,6 +172,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.hpp \
 		  util.hpp \
 		  video.hpp \
+		  wassert.hpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/label.hpp \

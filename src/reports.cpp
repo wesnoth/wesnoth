@@ -5,8 +5,8 @@
 #include "game_config.hpp"
 #include "language.hpp"
 #include "reports.hpp"
+#include "wassert.hpp"
 
-#include <cassert>
 #include <map>
 #include <set>
 #include <sstream>
@@ -25,8 +25,8 @@ namespace reports {
 
 const std::string& report_name(TYPE type)
 {
-	assert(sizeof(report_names)/sizeof(*report_names) == NUM_REPORTS);
-	assert(type < NUM_REPORTS);
+	wassert(sizeof(report_names)/sizeof(*report_names) == NUM_REPORTS);
+	wassert(type < NUM_REPORTS);
 
 	return report_names[type];
 }

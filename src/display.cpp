@@ -32,11 +32,11 @@
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include "SDL_image.h"
 
 #include <algorithm>
-#include <cassert>
 #include <cmath>
 #include <iostream>
 #include <sstream>
@@ -1149,7 +1149,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 			}
 		}
 
-		assert(energy_file != NULL);
+		wassert(energy_file != NULL);
 		if(energy_file == NULL) {
 			ERR_DP << "energy file is NULL\n";
 			return;
@@ -2001,7 +2001,7 @@ void display::write_overlays(config& cfg) const
 
 void display::set_team(size_t team)
 {
-	assert(team < teams_.size());
+	wassert(team < teams_.size());
 	currentTeam_ = team;
 
 	labels().recalculate_shroud();
@@ -2009,7 +2009,7 @@ void display::set_team(size_t team)
 
 void display::set_playing_team(size_t team)
 {
-	assert(team < teams_.size());
+	wassert(team < teams_.size());
 	activeTeam_ = team;
 	invalidate_game_status();
 }
@@ -2055,7 +2055,7 @@ void display::set_grid(bool grid)
 
 void display::debug_highlight(const gamemap::location& loc, double amount)
 {
-	assert(game_config::debug);
+	wassert(game_config::debug);
 	debugHighlights_[loc] += amount;
 }
 
@@ -2106,7 +2106,7 @@ const theme::menu* display::menu_pressed()
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
 		if(i->pressed()) {
 			const size_t index = i - buttons_.begin();
-			assert(index < theme_.menus().size());
+			wassert(index < theme_.menus().size());
 			return &theme_.menus()[index];
 		}
 	}

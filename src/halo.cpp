@@ -5,9 +5,9 @@
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <map>
 
 namespace halo
@@ -55,7 +55,7 @@ effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientati
 : images_(img), reverse_(orientation == REVERSE), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos),
   origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
-	assert(disp != NULL);
+	wassert(disp != NULL);
 	// std::cerr << "Constructing halo sequence from image " << img << "\n";
 
 	set_location(xpos,ypos);

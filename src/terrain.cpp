@@ -15,7 +15,6 @@
 
 #include "terrain.hpp"
 
-#include <cassert>
 #include <cstdlib>
 #include <iostream>
 

@@ -14,7 +14,6 @@
 #include "global.hpp"
 
 #include <algorithm>
-#include <cassert>
 #include <cctype>
 #include <fstream>
 #include <iostream>
@@ -29,6 +28,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 #include "wesconfig.h"
 
 #define ERR_CF lg::err(lg::config)
@@ -500,7 +500,7 @@ void config::read(const std::string& data,
 			case ELEMENT_NAME:
 				if(c == ']') {
 					if(value == "end" || value.empty() == false && value[0] == '/') {
-						assert(!elements.empty());
+						wassert(!elements.empty());
 
 						if(value[0] == '/' &&
 						   std::string("/" + element_names.top()) != value) {
@@ -832,7 +832,7 @@ std::string config::write() const
 	res.resize(write_size());
 
 	const std::string::iterator i = write_internal(res.begin());
-	assert(i == res.end());
+	wassert(i == res.end());
 	if(i != res.end()) {
 		ERR_CF << "size of config buffer: " << (i - res.begin()) << "/" << res.size() << "\n";
 	}
@@ -1176,7 +1176,7 @@ void config::remove_child(const std::string& key, size_t index)
 
 	//remove from the child map
 	child_list& v = children[key];
-	assert(index < v.size());
+	wassert(index < v.size());
 	config* const res = v[index];
 	v.erase(v.begin()+index);
 	delete res;

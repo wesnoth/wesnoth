@@ -24,6 +24,7 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "wassert.hpp"
 
 #include <cstdlib>
 #include <deque>
@@ -1010,7 +1011,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		//implement the consequences of the choice
 		if(options.empty() == false) {
-			assert(size_t(option_chosen) < menu_items.size());
+			wassert(size_t(option_chosen) < menu_items.size());
 			
 			for(config::const_child_itors events = option_events[option_chosen];
 			    events.first != events.second; ++events.first) {
