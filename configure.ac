@@ -658,6 +658,7 @@ for domain in `grep ^SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
     # Symlinks to the single copy of Makefile.in.in
     echo "creating po/$domain/Makefile.in.in"
+    mkdir -p po/$domain
     rm -f po/$domain/Makefile.in.in
     ln -s $topdir/po/Makefile.in.in po/$domain/Makefile.in.in
 
