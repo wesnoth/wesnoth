@@ -1068,26 +1068,33 @@ msgid ""
 "#Opponent moves the balls to your endzone more times than you move them to "
 "theirs"
 msgstr ""
+"\n"
+"Victoire:\n"
+"@Mettez n'importe quelle balle dans le but adverse plus souvent que votre "
+"adversaire dans la votre\n"
+"Defaite:\n"
+"#Votre adversaire ammène la balle dans votre but plus souvent que vous "
+"dans le sien\n"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Les rouges marquent ! Le score est maintenant de $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:247
 #: data/scenarios/multiplayer/Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Les bleus marquent ! Le score est maintenant de $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Dois je passer la balle à $passto.type ($xloc,$yloc) ?"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
 msgid "Yes!"
-msgstr ""
+msgstr "Oui !"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
@@ -1098,19 +1105,19 @@ msgstr "Non"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:661
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Les bleus gagnent ! Le score final est de $redscore à $bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:673
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Les rouges gagnent ! Le score final est de $redscore à $bluescore."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:685
 msgid "Draw! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Match nul, le score est de $redscore à $bluescore."
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
-msgstr ""
+msgstr "La bataille du pont de Weslin"
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -5656,7 +5663,6 @@ msgid "defender vulnerability vs"
 msgstr "vulnérabilité du défenseur contre"
 
 #: src/actions.cpp:496
-#, fuzzy
 msgid "Halved"
 msgstr "dégats réduits de moitié"
 
