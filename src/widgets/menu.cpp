@@ -116,7 +116,7 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
-	const size_t max_height = max_height_ == -1 ? (display_->y()*6)/10 : max_height_;
+	const size_t max_height = max_height_ == -1 ? (display_->y()*66)/100 : max_height_;
 	std::vector<int> heights;
 	size_t n;
 	for(n = 0; n != items_.size(); ++n) {

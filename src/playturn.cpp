@@ -1159,7 +1159,7 @@ void turn_info::status_table()
 {
 	std::vector<std::string> items;
 	std::stringstream heading;
-	heading << string_table["leader"] << "," << string_table["villages"] << ","
+	heading << string_table["leader"] << ", ," << string_table["villages"] << ","
 	        << string_table["units"] << "," << string_table["upkeep"] << ","
 	        << string_table["income"];
 
@@ -1183,10 +1183,16 @@ void turn_info::status_table()
 
 		std::stringstream str;
 
+		const unit_map::const_iterator leader = team_leader(n+1,units_);
+		if(leader != units_.end()) {
+			str << "&" << leader->second.type().image() << "," << char(n+1) << leader->second.description() << ",";
+		} else {
+			str << char(n+1) << "-," << char(n+1) << "-,";
+		}
+
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
-		str << char(n+1) << team_name(n+1,units_) << ","
-		    << data.villages << ","
+		str << data.villages << ","
 		    << data.units << "," << data.upkeep << ","
 		    << (data.net_income < 0 ? "#":"") << data.net_income;
 
@@ -1199,7 +1205,7 @@ void turn_info::status_table()
 	if(fog)
 		items.push_back("???\n");
 
-	gui::show_dialog(gui_,NULL,"","",gui::MESSAGE,&items);
+	gui::show_dialog(gui_,NULL,"","",gui::OK_ONLY,&items);
 }
 
 void turn_info::recruit()

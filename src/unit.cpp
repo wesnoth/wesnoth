@@ -101,7 +101,9 @@ unit::unit(const unit_type* t, const unit& u) :
 	new_level();
 
 	//generate traits for the unit if it doesn't already have some
-	generate_traits();
+	//currently removed, because we are testing not giving advancing
+	//traitless units new traits
+//	generate_traits();
 }
 
 void unit::generate_traits()
