@@ -98,7 +98,6 @@ int main(int argc, char** argv)
 			preferences::set_fullscreen(true);
 		} else if(val == "--datadir") {
 			if (arg+1 != argc) {
-				char buf[256];
 				const std::string val(argv[++arg]);
 
 				const std::string cwd = get_cwd();
