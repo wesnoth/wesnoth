@@ -224,6 +224,17 @@ void show_about(display& disp)
  	text.push_back("-   Jay Hopping");
  	text.push_back("+ ");
 
+	//substitute in the correct control characters for '+' and '-'
+	for(std::vector<std::string>::iterator itor = text.begin(); itor != text.end(); ++itor) {
+		if(itor->empty() == false) {
+			if((*itor)[0] == '-') {
+				(*itor)[0] = font::SMALL_TEXT;
+			} else if((*itor)[0] == '+') {
+				(*itor)[0] = font::LARGE_TEXT;
+			}
+		}
+	}
+
 	int startline = 0;
 
 	// the following two lines should be changed if the image of the map is changed
@@ -233,8 +244,6 @@ void show_about(display& disp)
 	int offset = 0;
 	bool is_new_line = true;
 
-	int mousex, mousey;
-	bool left_button;
 	int first_line_height = 0;
 
 	// the following rectangles define the top, middle and bottom of the background image
@@ -288,15 +297,17 @@ void show_about(display& disp)
 		SDL_BlitSurface(map_image,&upper_src,disp.video().getSurface(),&upper_dest);
 		SDL_BlitSurface(map_image,&lower_src,disp.video().getSurface(),&lower_dest);
 
+		// handle events
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+
 		// update screen and wait, so the text does not scroll too fast
 		update_rect(map_rect);
 		disp.video().flip();
 		SDL_Delay(20);
 
-		// handle events
-		events::pump();
-		left_button = SDL_GetMouseState(&mousex,&mousey)&SDL_BUTTON_LMASK;
-	} while(!close.process(mousex,mousey,left_button));
+	} while(!close.pressed());
 
 }
 

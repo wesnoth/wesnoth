@@ -50,6 +50,15 @@ public:
 		std::vector<std::string> has_flag;
 	};
 
+	struct tile
+	{
+		std::set<std::string> flags;
+		std::vector<image::locator> images_foreground;
+		std::vector<image::locator> images_background;
+
+		void clear();
+	};
+
 private:
 
 	struct building_rule
@@ -63,15 +72,6 @@ private:
 		std::string image_background;
 	};
 	
-	struct tile
-	{
-		std::set<std::string> flags;
-		std::vector<image::locator> images_foreground;
-		std::vector<image::locator> images_background;
-
-		void clear();
-	};
-
 	struct tilemap
 	{
 		tilemap(int x, int y) : x_(x), y_(y), map_((x+2)*(y+2)) {}
