@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-03 23:35+0200\n"
+"POT-Creation-Date: 2004-10-04 22:39+0200\n"
 "PO-Revision-Date: 2004-10-03 23:43+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -193,6 +193,7 @@ msgid "Movement"
 msgstr "Mouvement"
 
 #: data/help.cfg:90
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -209,7 +210,7 @@ msgid ""
 "movement point, most human and orc units spend 2, while horsemen spend 3. "
 "You can learn how many movement points a unit requires to enter a certain "
 "terrain type by right-clicking on it, selecting Unit Description, and then "
-"clicking <italic>text='Terrain Modifiers'</italic>.\n"
+"look at <italic>text='Terrain Modifiers'</italic>.\n"
 "\n"
 "Another thing to keep in mind while moving is <ref>dst=zones_of_control "
 "text='Zones of Control'</ref>. Each unit generates a zone of control in the "
@@ -251,6 +252,7 @@ msgid "Combat"
 msgstr "Combat"
 
 #: data/help.cfg:111
+#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -272,7 +274,7 @@ msgid ""
 "With two exceptions, the chance to hit a unit is based solely on its defense "
 "rating in the <ref>dst=terrain text=Terrain</ref> it is currently standing "
 "in. This may be found by right-clicking a unit, selecting Unit Description, "
-"and then clicking <italic>text='Terrain Modifiers'</italic>. For instance, "
+"and then look at <italic>text='Terrain Modifiers'</italic>. For instance, "
 "elves have a defense rating of 70% in forest, meaning a unit attacking them "
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in.\n"
@@ -287,7 +289,7 @@ msgid ""
 "Each blow which hits causes a base amount of damage depending on the attack "
 "type. For instance, an Elvish Fighter with a 5-4 sword attack causes a base "
 "of 5 damage. This is usually modified by two things: "
-"<ref>dst=damage_type_and_resistance text=Resistance</ref> and "
+"<ref>dst=damage_types_and_resistance text=Resistance</ref> and "
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below.\n"
 "\n"
@@ -610,6 +612,11 @@ msgstr ""
 "text=traits</ref> et les <ref>dst=abilities text=Capacités</ref>, mais vous "
 "connaissez maintenant tout ce qu'il vous faut savoir pour jouer le scénario "
 "L'héritier du trône. Amusez-vous bien et bonne chance !"
+
+#: data/help.cfg:197
+#, fuzzy
+msgid "About"
+msgstr "Jeune homme"
 
 #: data/help.cfg:242
 msgid ""
@@ -2015,9 +2022,10 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Comment trouver les propriétés d'un terrain particulier ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
+#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
-"right-click on the unit, select Unit Description, then select Terrain "
+"right-click on the unit, select Unit Description, then look at Terrain "
 "Modifiers. To find out which terrain is on a particular hex, move your "
 "cursor over that hex and look in the upper-right hand corner of the screen. "
 "This will display, in order, the name of the terrain, then the coordinates "
@@ -2064,13 +2072,14 @@ msgid "How does resistance affect attack damage?"
 msgstr "Comment la résistance affecte-t-elle les dommages ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
+#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
 "blade, pierce, and impact, but low resistance to the magical types: fire and "
 "cold. All living units have resistance to holy while undead are extremely "
 "weak to it. To find out a specific unit's resistance, right-click on the "
-"unit, select Unit Description, then select Resistance."
+"unit, select Unit Description, then look at Resistances."
 msgstr ""
 "Il y a 6 types de dégâts différents : tranchant, perforant, contondant, feu, "
 "froid et sacré. Des unités fortement blindées ont une résistance élevée face "
@@ -2251,9 +2260,9 @@ msgid ""
 "Game'."
 msgstr ""
 "Pour jouer à Wesnoth contre d'autres personnes, choisir 'Multijoueur'. Puis "
-"'Rejoindre le serveur officiel'. Cela vous connectera au serveur officiel "
-"de Wesnoth, à partir duquel vous pourrez choisir une partie, puis cliquer "
-"sur 'Rejoindre une partie'."
+"'Rejoindre le serveur officiel'. Cela vous connectera au serveur officiel de "
+"Wesnoth, à partir duquel vous pourrez choisir une partie, puis cliquer sur "
+"'Rejoindre une partie'."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2283,27 +2292,27 @@ msgstr ""
 msgid "Dawn"
 msgstr "Aube"
 
-#: data/schedules.cfg:11 data/schedules.cfg:22 data/schedules.cfg:28
+#: data/schedules.cfg:12 data/schedules.cfg:24 data/schedules.cfg:31
 msgid "Morning"
 msgstr "Matinée"
 
-#: data/schedules.cfg:37 data/schedules.cfg:43 data/schedules.cfg:59
+#: data/schedules.cfg:41 data/schedules.cfg:48 data/schedules.cfg:66
 msgid "Afternoon"
 msgstr "Après-midi"
 
-#: data/schedules.cfg:52 data/schedules.cfg:79 data/schedules.cfg:99
+#: data/schedules.cfg:58 data/schedules.cfg:88 data/schedules.cfg:110
 msgid "Dusk"
 msgstr "Aurore"
 
-#: data/schedules.cfg:70
+#: data/schedules.cfg:78
 msgid "First Watch"
 msgstr "Premier Quart"
 
-#: data/schedules.cfg:90
+#: data/schedules.cfg:100
 msgid "Second Watch"
 msgstr "Deuxième Quart"
 
-#: data/schedules.cfg:110 data/schedules.cfg:116
+#: data/schedules.cfg:122 data/schedules.cfg:129
 msgid "Underground"
 msgstr "Sous terre"
 
@@ -3427,8 +3436,8 @@ msgid ""
 msgstr ""
 "Les assassins sont les maîtres de la nuit. Comme les bandits, ils peuvent "
 "frapper par derrière, causant double dégât, et ignorent les zones de "
-"contrôle ennemies. Ils peuvent également lancer des couteaux empoisonnés "
-"à leurs adversaires."
+"contrôle ennemies. Ils peuvent également lancer des couteaux empoisonnés à "
+"leurs adversaires."
 
 #: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
 #: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
@@ -3460,8 +3469,8 @@ msgstr "dague"
 #: data/units/Dwarvish_Lord.cfg:25 data/units/Dwarvish_Lord.cfg:58
 #: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
-#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
-#: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:24
+#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:23
+#: data/units/Elvish_Archer.cfg:102 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
@@ -3578,8 +3587,8 @@ msgstr ""
 #: data/units/Dragoon.cfg:27 data/units/Drake_Clasher.cfg:21
 #: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
 #: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Slasher.cfg:21
-#: data/units/Drake_Warrior.cfg:21 data/units/Elvish_Archer.cfg:21
-#: data/units/Elvish_Archer.cfg:99 data/units/Elvish_Avenger.cfg:23
+#: data/units/Drake_Warrior.cfg:21 data/units/Elvish_Archer.cfg:22
+#: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:23
 #: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:23
 #: data/units/Elvish_Champion.cfg:21 data/units/Elvish_Fighter.cfg:23
 #: data/units/Elvish_Hero.cfg:21 data/units/Elvish_High_Lord.cfg:20
@@ -3672,8 +3681,8 @@ msgid "fist"
 msgstr "poing"
 
 #: data/units/Bone_Shooter.cfg:37 data/units/Bowman.cfg:37
-#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:38
-#: data/units/Elvish_Archer.cfg:116 data/units/Elvish_Avenger.cfg:39
+#: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
+#: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:39
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:39
 #: data/units/Elvish_Champion.cfg:40 data/units/Elvish_Fighter.cfg:40
 #: data/units/Elvish_Hero.cfg:40 data/units/Elvish_Marshal.cfg:40
@@ -3700,8 +3709,8 @@ msgstr "arc"
 #: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
 #: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
 #: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
-#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
-#: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:40
+#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:40
+#: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Druid.cfg:63
 #: data/units/Elvish_Fighter.cfg:41 data/units/Elvish_Hero.cfg:41
@@ -3790,8 +3799,8 @@ msgid ""
 "position."
 msgstr ""
 "Les meilleurs monteurs de Wesnoth sont recrutés par l'armée pour devenir "
-"hussards. Un hussard strictement discipliné ne charge pas dans la "
-"bataille comme un écuyer, mais s'efforce de tenir ferme sa position."
+"hussards. Un hussard strictement discipliné ne charge pas dans la bataille "
+"comme un écuyer, mais s'efforce de tenir ferme sa position."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -3860,8 +3869,8 @@ msgstr "charge"
 msgid "Cockatrice"
 msgstr "Cockatrice"
 
-#XXX Dans la VO, la denière phrase est-elle vraiment nécessaire ?
-#Spoiler inutile à la description, àmha.
+# XXX Dans la VO, la denière phrase est-elle vraiment nécessaire ?
+# Spoiler inutile à la description, àmha.
 #: data/units/Cockatrice.cfg:16
 msgid ""
 "At first sight, these mystical snake-like creatures appear weak, but looks "
@@ -3870,8 +3879,8 @@ msgid ""
 msgstr ""
 "À première vue, ces créatures mystiques ressemblant à des serpents semblent "
 "faibles, mais il ne faut pas se fier à leur apparence car d'un simple "
-"regard, les cockatrices peuvent changer en pierre tout ennemi jusqu'à ce "
-"que la source de leur pouvoir soit détruit !"
+"regard, les cockatrices peuvent changer en pierre tout ennemi jusqu'à ce que "
+"la source de leur pouvoir soit détruit !"
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
@@ -3966,8 +3975,8 @@ msgid ""
 msgstr ""
 "Usant de la magie noire, les adeptes des ténèbres sont des fanatiques "
 "psychotiques qui utilisent leurs pouvoirs pour semer la mort et la "
-"destruction. Ils se consacrent entièrement à l'étude de cette magie, "
-"sans se soucier d'apprendre à se défendre en combat rapproché."
+"destruction. Ils se consacrent entièrement à l'étude de cette magie, sans se "
+"soucier d'apprendre à se défendre en combat rapproché."
 
 #: data/units/Dark_Adept.cfg:22 data/units/Necromancer.cfg:35
 msgid "chill wave"
@@ -3983,10 +3992,10 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
-"Ashevière, la reine mère diabolique, a terrorisé Wesnoth depuis de nombreuses "
-"années. Ses connaissances de la magie en font un redoutable adversaire en "
-"combat bien que sa véritable puissance réside dans les troupes qu'elle "
-"commande."
+"Ashevière, la reine mère diabolique, a terrorisé Wesnoth depuis de "
+"nombreuses années. Ses connaissances de la magie en font un redoutable "
+"adversaire en combat bien que sa véritable puissance réside dans les troupes "
+"qu'elle commande."
 
 #: data/units/Dark_Queen.cfg:20
 msgid "scepter"
@@ -4558,11 +4567,11 @@ msgid ""
 "can quickly heal themselves in the face of tremendous injuries."
 msgstr ""
 
-#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:81
+#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:82
 msgid "Elvish Archer"
 msgstr "Archer elfe"
 
-#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:96
+#: data/units/Elvish_Archer.cfg:19 data/units/Elvish_Archer.cfg:98
 msgid ""
 "Elvish Archers are trained from youth in archery, and so skilled in long-"
 "range combat. Able to fire many arrows quickly and accurately, these Archers "
@@ -7005,11 +7014,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Invalide)"
 
-#: src/dialogs.cpp:365 src/game.cpp:925
+#: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
 msgstr "Campagne"
 
-#: src/dialogs.cpp:367 src/game.cpp:1185
+#: src/dialogs.cpp:367 src/game.cpp:1191
 msgid "Multiplayer"
 msgstr "Multi-joueurs"
 
@@ -7029,7 +7038,7 @@ msgstr "Tour"
 msgid "Scenario Start"
 msgstr "Début du scénario"
 
-#: src/dialogs.cpp:384 src/game.cpp:955
+#: src/dialogs.cpp:384 src/game.cpp:961
 msgid "Difficulty"
 msgstr "Difficulté"
 
@@ -7142,7 +7151,7 @@ msgstr "Voulez-vous sauvegarder votre jeu ?"
 msgid "The Battle for Wesnoth"
 msgstr "La bataille de Wesnoth"
 
-#: src/game.cpp:789 src/multiplayer_connect.cpp:104
+#: src/game.cpp:793 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7150,182 +7159,182 @@ msgstr ""
 "Cette sauvegarde a été enregistrée sous une version différente du jeu. "
 "Voulez-vous essayer de la charger ?"
 
-#: src/game.cpp:801 src/game.cpp:806 src/playlevel.cpp:549
+#: src/game.cpp:805 src/game.cpp:810 src/playlevel.cpp:549
 #: src/playlevel.cpp:791
 msgid "The file you have tried to load is corrupt"
 msgstr "Le fichier sauvegardé est corrompu"
 
-#: src/game.cpp:810
+#: src/game.cpp:814
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:915
+#: src/game.cpp:921
 msgid " ,Get More Campaigns..."
 msgstr " ,Récupérer d'autres campagnes..."
 
-#: src/game.cpp:916
+#: src/game.cpp:922
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
 # retour à la ligne nécessaire
-#: src/game.cpp:926
+#: src/game.cpp:932
 msgid "Choose the campaign you want to play:"
 msgstr ""
 "Choisissez la campagne à laquelle vous\n"
 "souhaitez jouer :"
 
-#: src/game.cpp:956
+#: src/game.cpp:962
 msgid "Select difficulty level:"
 msgstr "Choisissez le niveau de difficulté :"
 
-#: src/game.cpp:975
+#: src/game.cpp:981
 msgid "Connect to Server"
 msgstr "Connection au serveur"
 
-#: src/game.cpp:976
+#: src/game.cpp:982
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 "Vous allez maintenant être connecté à un serveur pour télécharger des "
 "campagnes."
 
-#: src/game.cpp:977
+#: src/game.cpp:983
 msgid "Server: "
 msgstr "Serveur : "
 
-#: src/game.cpp:989
+#: src/game.cpp:995
 msgid "Could not connect to host."
 msgstr "Impossible de se connecter au serveur."
 
-#: src/game.cpp:989 src/game.cpp:1004 src/game.cpp:1010 src/game.cpp:1043
-#: src/game.cpp:1072 src/game.cpp:1086 src/game.cpp:1088 src/game.cpp:1090
-#: src/game.cpp:1102 src/game.cpp:1105 src/game.cpp:1140 src/game.cpp:1142
-#: src/game.cpp:1164 src/game.cpp:1166 src/playturn.cpp:1396
+#: src/game.cpp:995 src/game.cpp:1010 src/game.cpp:1016 src/game.cpp:1049
+#: src/game.cpp:1078 src/game.cpp:1092 src/game.cpp:1094 src/game.cpp:1096
+#: src/game.cpp:1108 src/game.cpp:1111 src/game.cpp:1146 src/game.cpp:1148
+#: src/game.cpp:1170 src/game.cpp:1172 src/playturn.cpp:1396
 #: src/playturn.cpp:1410
 msgid "Error"
 msgstr "Erreur"
 
-#: src/game.cpp:997
+#: src/game.cpp:1003
 msgid "Awaiting response from server"
 msgstr "En attente d'une réponse du serveur"
 
-#: src/game.cpp:1010
+#: src/game.cpp:1016
 msgid "Error communicating with the server."
 msgstr "Erreur de communication avec le serveur."
 
-#: src/game.cpp:1015
+#: src/game.cpp:1021
 msgid ",Name,Version,Author,Downloads"
 msgstr ""
 
-#: src/game.cpp:1035
+#: src/game.cpp:1041
 #, fuzzy
 msgid "Publish campaign: "
 msgstr "Capitaine elfe"
 
-#: src/game.cpp:1039
+#: src/game.cpp:1045
 #, fuzzy
 msgid "Delete campaign: "
 msgstr "Charger la campagne"
 
-#: src/game.cpp:1043
+#: src/game.cpp:1049
 msgid "There are no campaigns available for download from this server."
 msgstr "Ce serveur ne propose pas de campagne téléchargeable."
 
-#: src/game.cpp:1047
+#: src/game.cpp:1053
 msgid "Choose the campaign to download."
 msgstr "Choisissez la campagne à télécharger."
 
-#: src/game.cpp:1047
+#: src/game.cpp:1053
 msgid "Get Campaign"
 msgstr "Charger la campagne"
 
-#: src/game.cpp:1066
+#: src/game.cpp:1072
 msgid "Downloading campaign..."
 msgstr "Téléchargement de la campagne en cours..."
 
-#: src/game.cpp:1084
+#: src/game.cpp:1090
 msgid "Campaign Installed"
 msgstr "Campagne installée"
 
-#: src/game.cpp:1084
+#: src/game.cpp:1090
 #, fuzzy
 msgid "The campaign has been installed."
 msgstr "Le jeu a été sauvegardé"
 
-#: src/game.cpp:1086
+#: src/game.cpp:1092
 msgid "Network communication error."
 msgstr "Erreur de communication réseau;"
 
-#: src/game.cpp:1088
+#: src/game.cpp:1094
 msgid "Remote host disconnected."
 msgstr "Serveur distant deconnecté."
 
-#: src/game.cpp:1090
+#: src/game.cpp:1096
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "Il s'est produit un problème pendant la création des fichiers nécessaires à "
 "l'installation de cette campagne."
 
-#: src/game.cpp:1102 src/game.cpp:1140 src/game.cpp:1164
+#: src/game.cpp:1108 src/game.cpp:1146 src/game.cpp:1170
 #: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:314
 msgid "Connection timed out"
 msgstr "Tentative de connexion expirée"
 
-#: src/game.cpp:1105 src/game.cpp:1142 src/game.cpp:1166
+#: src/game.cpp:1111 src/game.cpp:1148 src/game.cpp:1172
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1108
+#: src/game.cpp:1114
 #, fuzzy
 msgid "Terms"
 msgstr "Équipe"
 
-#: src/game.cpp:1144 src/game.cpp:1168
+#: src/game.cpp:1150 src/game.cpp:1174
 #, fuzzy
 msgid "Response"
 msgstr "pierre"
 
-#: src/game.cpp:1180
+#: src/game.cpp:1186
 msgid "Join Official Server"
 msgstr "Se connecter au serveur officiel"
 
-#: src/game.cpp:1180
+#: src/game.cpp:1186
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Se connecter sur le serveur multi-joueur officiel de Wesnoth"
 
-#: src/game.cpp:1181 src/multiplayer_lobby.cpp:160
+#: src/game.cpp:1187 src/multiplayer_lobby.cpp:160
 msgid "Join Game"
 msgstr "Se connecter à une partie"
 
-#: src/game.cpp:1181
+#: src/game.cpp:1187
 msgid "Join a server or hosted game"
 msgstr "Se connecter à un serveur ou une partie hébergée"
 
-#: src/game.cpp:1182
+#: src/game.cpp:1188
 msgid "Host Multiplayer Game"
 msgstr "Démarrer un serveur de jeu multi-joueurs"
 
-#: src/game.cpp:1182
+#: src/game.cpp:1188
 msgid "Host a game without using a server"
 msgstr "Héberger un jeu sans utiliser de serveur"
 
-#: src/game.cpp:1185 src/multiplayer_client.cpp:298
+#: src/game.cpp:1191 src/multiplayer_client.cpp:298
 msgid "Login"
 msgstr "Connexion"
 
-#: src/game.cpp:1262
+#: src/game.cpp:1268
 msgid "Language"
 msgstr "Langue"
 
-#: src/game.cpp:1263
+#: src/game.cpp:1269
 msgid "Choose your preferred language"
 msgstr "Choisissez votre langue"
 
-#: src/game.cpp:1491
+#: src/game.cpp:1497
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
 
-#: src/game.cpp:1493
+#: src/game.cpp:1499
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
 

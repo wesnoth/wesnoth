@@ -20,14 +20,20 @@ msgstr ""
 "#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.5-CVS)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/campaigns/Eastern_Invasion.cfg:5
+#: data/campaigns/Eastern_Invasion.cfg:6
 msgid "The Eastern Invasion"
 msgstr ""
 
-#: data/campaigns/Eastern_Invasion.cfg:9
+#: data/campaigns/Eastern_Invasion.cfg:10
 msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
+msgstr ""
+
+#: data/campaigns/Eastern_Invasion.cfg:11
+msgid ""
+"Lead the loyal armies of Wesnoth in battle against the undead hordes from "
+"the East."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:4
@@ -43,31 +49,31 @@ msgid ""
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
 "#Death of Owaec\n"
-"#Death of Sudoc"
+"#Death of Konrad II"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:122
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:125
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
 "We must break through to reach the king!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:136
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:139
 msgid ""
 "We have reached Weldyn. Now we must have a council to decide what to do next."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:141
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:144
 msgid "Come, into the castle."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:146
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:149
 msgid ""
 "Wait. First, what was that prophecy the lich talked about? I think you know "
 "of what he spoke."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:161
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:164
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr ""
 
@@ -260,21 +266,21 @@ msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:810
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:164
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:393
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:235
 msgid "Holy Water"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:813
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:167
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:396
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:814
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:168
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:397
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "I am not suited to using this item! Let another take it."
@@ -456,63 +462,65 @@ msgstr ""
 msgid "The Escape Tunnel"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:18
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:20
 msgid ""
 "\n"
 "Victory:\n"
 "@Reach the end of the tunnel\n"
 "Defeat:\n"
-"#Death of Gweddry"
+"#Death of Gweddry\n"
+"#Death of Dacyn\n"
+"#Turns run out"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:94
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:96
 msgid "Where are we? I can't see where we are going."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:99
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:101
 msgid ""
-"I do not know. There are trolls in here, which may try to fight us. now "
+"I do not know. There are trolls in here, which may try to fight us. Now "
 "hurry, we have to move quickly with those Lichs still behind us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:120
-msgid "This sign says 'Dead End'"
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:122
+msgid "This sign says 'Dead End'."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:133
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:135
 msgid "Who goes there?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:138
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:140
 msgid ""
 "We are travelers loyal to the king of Wesnoth. Will you help us escape these "
 "trolls?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:143
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:145
 msgid ""
 "Yes, we will help you, for we have no love for the trolls. Anyone attacked "
 "by them deserves some help, I think."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:205
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:207
 msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:279
-msgid "We have found you, human- Prepare to die!"
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:281
+msgid "We have found you, human! Prepare to die!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:284
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:286
 msgid ""
 "So Mal-Ravanal does not follow us himself. That at least is good. But still, "
 "we must get out of this tunnel!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:298
-msgid "We have reached the end of the escape tunnel. I see daylight above us."
+#: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:300
+msgid "We have reached the end of the escape tunnel. I see daylight above us!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:4
@@ -550,7 +558,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid ""
-"Well, i see those arcs are chasin' you, and if I blow up the bridge, they "
+"Well, I see those arcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you escape."
 msgstr ""
 
@@ -568,7 +576,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
 msgid ""
-"Deal. I c'n blow'er up once i get to that signpost ov'r 'ere. Thats where my "
+"Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. Thats where my "
 "eq'pment is."
 msgstr ""
 
@@ -612,8 +620,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
 msgid ""
-"Good, we have  escaped from these orcs. Now we have to go south. i think the "
-"undead probably aren't as densely populated this far west, so we won't get "
+"Good, we have escaped from these orcs. Now we have to go south. I think the "
+"undead probably aren't as numerous this far west, so we won't get "
 "immediately killed, anyway."
 msgstr ""
 
@@ -628,7 +636,7 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
-"go south. Hopefully the Undead are not as populated this far west."
+"go south. Hopefully the Undead are not as numerous this far west."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
@@ -726,38 +734,38 @@ msgstr ""
 msgid "These humans have dared to come this far into my land. Crush them!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:149
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:208
-msgid "You dare to attack ME?!? Go back to your master!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:226
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:156
 msgid ""
 "Thank you for destroying that skeleton warrior! Every time you kill one of "
 "the Revenants, one of my ally knights is let free!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:231
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:161
 msgid "Why? Are you the undead's prisoners?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:236
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:166
 msgid ""
 "Yes. My allies and I were questing when we were ambushed by undead. The "
 "guard is playing a sick game- whenever one of their warriors dies, one of us "
 "is let free, but whenever you lose a fighter, they kill one of us."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:241
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:171
 msgid ""
 "This sounds like a dangerous game. We will try to free as many of you as "
 "possible before we escape from here."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:246
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:176
 msgid ""
 "There are five of us still locked up in the jail. All of us will join you if "
 "you can get us free."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:234
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:208
+msgid "You dare to attack ME?!? Go back to your master!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:4
@@ -841,8 +849,38 @@ msgid ""
 "We will all die now!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:338
-msgid "{M}"
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:348
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:349
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:350
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:351
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:352
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:353
+msgid ""
+"You have gotten rid of some of these bandits, but I fear many still remain. "
+"Keep searching."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:356
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:357
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:358
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:359
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:360
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:361
+msgid ""
+"Good work so far. I suspect we have significantly weakened the bandit's "
+"number."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:364
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:365
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:366
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:367
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:368
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:369
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:370
+msgid ""
+"I think you have killed most of them. I hope those that are left don't kill "
+"us."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
@@ -1497,7 +1535,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:129
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:499
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:323
 msgid "Hmm..."
 msgstr ""
 
@@ -1661,7 +1699,7 @@ msgstr ""
 msgid "Weldyn under Attack"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:40
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:39
 msgid ""
 "\n"
 "Victory:\n"
@@ -1670,199 +1708,100 @@ msgid ""
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
 "#Death of Owaec\n"
-"#Death of Sudoc\n"
 "#Death of Konrad"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:236
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:197
 msgid ""
-"We need to fight soon, my lord. Look, night approaches- they will soon "
-"attack. I hope we can hold them off."
+"We will fight soon, my lord. Look, night approaches- they will soon attack. "
+"I hope we can hold them off."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:241
-msgid ""
-"I will hold my gate. With my quick and skillful warriors I can resist the "
-"undead, at least for a while."
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:202
+msgid "Very well. But is this... Mal-Ravanal, that you spoke of, is he here?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:246
-msgid ""
-"Yes, and my people may be slow, but their blows are the most powerful of "
-"all. I can hold my post."
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:207
+msgid "I do not think so, but he might be here, hiding."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:251
-msgid ""
-"Archers are the most powerful fighters of all, as they shall prove in the "
-"upcoming battle."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:256
-msgid ""
-"Peace, my sons! We are fighting the enemy, there is no need for rivalry "
-"within our camp."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:261
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:212
 msgid ""
 "In any case, the undead are attacking now. Let us hope we can last out the "
 "night."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:273
-msgid "No! These undead have defeated me!"
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:225
+msgid "Look, the undead are tearing down our defences!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:278
-msgid "And now we will revive you to serve us, as an undead Knight!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:291
-msgid "Time to defeat these pesky humans, in my new body."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:302
-msgid ""
-"No! I have been defeated! I only hope the undead do not raise me to fight "
-"against you!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:307
-msgid "Oh, don't worry, we will. Mwahahahahaha!!!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:320
-msgid "Well, my one-time father, let us see who will last out the night!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:329
-msgid ""
-"Its difficult to defeat these undead. It will be much easier to join them."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:334
-msgid "Huh?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:339
-msgid "You idiot, I'm defecting!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:344
-msgid "You traitor!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:349
-msgid "Yes! Now my victory is assured!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:373
-msgid "Come, my warriors, let us defeat this foolish King!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:385
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:249
 msgid "I have died, and with me the city shall fall."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:390
-msgid "Now I shall be the king of the undead Wesnoth!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:402
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:261
 msgid "Look, the sun has risen. The undead are retreating."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:414
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:273
 msgid "I come bearing a message from my leader:"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:419
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:278
+msgid "Very well, you may read it. (it might tell us something useful)."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:283
 msgid ""
 "He says: Well, you have defeated some of my captains. Good job. But that was "
-"only a small fraction of my horde."
+"only a small fraction of my horde. It would be very easy for me to defeat "
+"you. But I don't think it would do justice to my power. I mean my own power, "
+"not the power of my legions. And that brings me to my second point. You, "
+"Gweddry, as a commander, are a coward. You claim to have defeated my lord's "
+"captains, but it was really your hordes, not you."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:424
-msgid "What is your point?"
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:288
+msgid "What is the point of this message? All you do is insult us!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:429
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:293
 msgid ""
-"He says: Well, it would be very easy for me to defeat you. But I don't think "
-"it would do justice to my power."
+"The point is that Gweddry could not have defeated my lord's minions without "
+"the help of his slaves! I doubt Gweddry could even last two seconds in "
+"actual combat. And my Lord will prove it. He challenges you, Gweddry, to a "
+"contest, a battle."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:434
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:298
 msgid ""
-"We don't care about honoring your power. Attack us with all your might, we "
-"don't care!"
+"What are his terms? I won't accept anything obviously weighted towards his "
+"victory!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:439
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:303
 msgid ""
-"My lord has anticipated your whim. He says: Shut up, fool! I meant my own "
-"power, not the power of my legions. And that brings me to my second point. "
-"You, Gweddry, as a commander, are a coward."
+"That only proves you are a coward. Anyway, these are his terms: You pick "
+"your six best warriors and I will pick my six best. Then we will fight, to "
+"the death, until either you or he is destroyed!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:444
-msgid "What, me, a coward!?! Why!?!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:449
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:308
 msgid ""
-"Yes, you, a coward. He says: You claim to have defeated my lord's captains, "
-"but it was really your hordes, not you."
+"Gweddry, I don't think you should accept. He will bring more than seven "
+"undead to the battle; he will bring a whole army!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:454
-msgid "Hordes is a name used for undead. We prefer to call ourselves an army."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:459
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:313
 msgid ""
-"Silence, fool! The point is that Gweddry could not have defeated my lord's "
-"minions without the help of his slaves!"
+"Well, I think you should accept. This at least guarantees a somewhat fair "
+"fight, and otherwise we will have to face the whole undead army."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:464
-msgid "I'm not a slave! And YOU'RE the fool!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:469
+#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:318
 msgid ""
-"SHUT UP! He says: I doubt Gweddry could even last two seconds in actual "
-"combat. And I'll prove it. I challenge you, Gweddry, to a duel."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:474
-msgid "I'm not going to fight you in one-on-one combat!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:479
-msgid ""
-"That only proves you are a coward. Anyway, who said anything about one-on-"
-"one combat? He said: a duel, seven-on-seven. Pick your six best slaves and I "
-"will pick my six best minions."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:484
-msgid ""
-"That is a very interesting notion of a duel. Gweddry, I don't think you "
-"should accept. He will bring more than seven undead to the 'duel'."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:489
-msgid ""
-"I think you should accept. This at least guarantees a somewhat fair fight, "
-"and otherwise we will have to face the whole undead army."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:494
-msgid ""
-"I'll make it simple. Accept, or face the onslaught of my lord's hordes, like "
-"the coward that you are."
+"I will simplify your choice. Accept, or face the onslaught of my lord's "
+"hordes, like the coward that you are."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/deaths.cfg:9
