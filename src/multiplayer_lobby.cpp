@@ -119,7 +119,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	
 						//generate a unique id to show the map as
 						char buf[50];
-						sprintf(buf,"addr %d",(int)(SDL_Surface*)mini);
+						sprintf(buf,"addr %p", (SDL_Surface*)mini);
 	
 						image::register_image(buf,mini);
 	
