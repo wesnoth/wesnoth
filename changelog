@@ -20,7 +20,13 @@ CVS HEAD:
    * Dark Adept: increased ranged damage, reduced cost
    * Drake Slave: increased melee damage
    * Drake Worker: increased melee damage
+   * Noble Commander: increased hitpoints
+   * Noble Fighter: increased hitpoints and melee damage
+   * Noble Lord: reduced hitpoints, reduced melee and ranged damage
+   * Noble Youth: increased hitpoints, increased movement, increased melee damage
    * Outlaw: reduced hitpoints, reduced number of melee attacks, increased ranged damage
+   * Outlaw Princess: reduced hitpoints, reduced experience required to level, reduced number of melee attacks, increased ranged damage, replaced 'ambush' with 'skirmisher'
+   * Outlaw Queen: increased hitpoints, replaced 'ambush' with 'skirmisher', reduced number of melee attacks, increased ranged damage and number of ranged attacks
    * Soulless: increased melee damage
    * Thug: increased melee damage and reduced number of attacks
    * Walking Corpse: increased melee damage
@@ -57,6 +63,8 @@ CVS HEAD:
  * fixed holy water in 'Heir to the Throne: Valley of Death' scenario (#9930)
  * fixed a bug where a unit moving with [move_unit_fake] segfaulted the game
  * fixed problems with cache invalidation
+ * fixed file descriptor leak
+ * fixed 'gender' not working with move_unit_fake
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * limited length of schema items in compressed WML to make a DoS attack harder to perform 
