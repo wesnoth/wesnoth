@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "actions.hpp"
 #include "ai_attack.hpp"
 #include "game_config.hpp"
@@ -32,8 +33,8 @@ using namespace ai;
 void do_analysis(
                  const gamemap& map,
                  const location& loc,
-                 const std::multimap<location,location>& srcdst,
-                 const std::multimap<location,location>& dstsrc,
+                 const move_map& srcdst, const move_map& dstsrc,
+                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
 				 const location* tiles, bool* used_locations,
                  std::vector<location>& units,
 				 std::map<gamemap::location,unit>& units_map,
@@ -88,16 +89,28 @@ void do_analysis(
 			cur_analysis.movements.push_back(
 			           std::pair<location,location>(current_unit,tiles[j]));
 
+			const double vulnerability =
+			  power_projection(tiles[j],enemy_srcdst,enemy_dstsrc,units_map,map);
+			cur_analysis.vulnerability += vulnerability;
+
+			const double support =
+			   power_projection(tiles[j],srcdst,dstsrc,units_map,map);
+			cur_analysis.support += support;
+
 			cur_analysis.analyze(map,units_map,status,data,50);
 
 			if(cur_analysis.rating(0.0) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[j] = true;
-				do_analysis(map,loc,srcdst,dstsrc,tiles,used_locations,
+				do_analysis(map,loc,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+				            tiles,used_locations,
 				            units,units_map,result,data,status,cur_analysis);
 				used_locations[j] = false;
 			}
+
+			cur_analysis.vulnerability -= vulnerability;
+			cur_analysis.support -= support;
 
 			cur_analysis.movements.pop_back();
 		}
@@ -376,6 +389,9 @@ double attack_analysis::rating(double aggression) const
 	value += ((target_starting_damage/3 + avg_damage_inflicted)*
 					                     (target_value/resources_used) -
 	   (1.0-aggression)*avg_damage_taken*(resources_used/target_value))/10.0;
+
+	value += support*0.5 - vulnerability*terrain_quality;
+
 	value /= ((resources_used/2) + (resources_used/2)*terrain_quality);
 
 	return value;
@@ -383,8 +399,8 @@ double attack_analysis::rating(double aggression) const
 
 std::vector<attack_analysis> analyze_targets(
              const gamemap& map,
-             const std::multimap<location,location>& srcdst,
-			 const std::multimap<location,location>& dstsrc,
+             const move_map& srcdst, const move_map& dstsrc,
+             const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
 			 std::map<location,unit>& units,
 			 const team& current_team, int team_num,
 			 const gamestatus& status, const game_data& data
@@ -418,11 +434,14 @@ std::vector<attack_analysis> analyze_targets(
 			get_adjacent_tiles(j->first,adjacent);
 			attack_analysis analysis;
 			analysis.target = j->first;
+			analysis.vulnerability = 0.0;
+			analysis.support = 0.0;
 
 			const int ticks = SDL_GetTicks();
 
-			do_analysis(map,j->first,srcdst,dstsrc,adjacent,used_locations,
-			            unit_locs,units,res,data,status,analysis);
+			do_analysis(map,j->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+			            adjacent,used_locations,unit_locs,units,
+			            res,data,status,analysis);
 
 			const int time_taken = SDL_GetTicks() - ticks;
 			static int max_time = 0;
@@ -430,6 +449,106 @@ std::vector<attack_analysis> analyze_targets(
 				max_time = time_taken;
 
 			std::cerr << "do_analysis took " << time_taken << " (" << max_time << ")\n";
+		}
+	}
+
+	return res;
+}
+
+double power_projection(const gamemap::location& loc,
+                        const move_map& srcdst, const move_map& dstsrc,
+                        const unit_map& units, const gamemap& map)
+{
+	static gamemap::location used_locs[6];
+	static double ratings[6];
+	int num_used_locs = 0;
+
+	static gamemap::location locs[6];
+	get_adjacent_tiles(loc,locs);
+
+	double res = 0.0;
+
+	for(int i = 0; i != 6; ++i) {
+		if(map.on_board(locs[i]) == false) {
+			continue;
+		}
+
+		const gamemap::TERRAIN terrain = map[locs[i].x][locs[i].y];
+
+		typedef move_map::const_iterator Itor;
+		typedef std::pair<Itor,Itor> Range;
+		Range its = dstsrc.equal_range(locs[i]);
+		
+		gamemap::location* const beg_used = used_locs;
+		gamemap::location* end_used = used_locs + num_used_locs;
+
+		double best_rating = 0.0;
+		gamemap::location best_unit;
+
+		for(int n = 0; n != 2; ++n) {
+			for(Itor it = its.first; it != its.second; ++it) {
+				if(std::find(beg_used,end_used,it->second) != end_used) {
+					continue;
+				}
+
+				const unit_map::const_iterator u = units.find(it->second);
+
+				//unit might have been killed, and no longer exist
+				if(u == units.end()) {
+					continue;
+				}
+
+				const unit& un = u->second;
+	
+				const double hp = double(un.hitpoints())/
+				                  double(un.max_hitpoints());
+				int most_damage = 0;
+				for(std::vector<attack_type>::const_iterator att =
+				    un.attacks().begin(); att != un.attacks().end(); ++att) {
+					const int damage = att->damage()*att->num_attacks();
+					if(damage > most_damage)
+						most_damage = damage;
+				}
+
+				const double defense = 1.0 - un.defense_modifier(map,terrain);
+				const double rating = hp*defense*double(most_damage);
+				if(rating > best_rating) {
+					best_rating = rating;
+					best_unit = it->second;
+				}
+			}
+
+			//if this is the second time through, then we are looking at a unit
+			//that has already been used, but for whom we may have found
+			//a better position to attack from
+			if(n == 1 && best_unit.valid()) {
+				end_used = beg_used + num_used_locs;
+				gamemap::location* const pos
+				                  = std::find(beg_used,end_used,best_unit);
+				const int index = pos - beg_used;
+				if(best_rating >= ratings[index]) {
+					res -= ratings[index];
+					res += best_rating;
+					used_locs[index] = best_unit;
+					ratings[index] = best_rating;
+				}
+
+				best_unit = gamemap::location();
+				break;
+			}
+
+			if(best_unit.valid()) {
+				break;
+			}
+
+			end_used = beg_used;
+		}
+
+		if(best_unit.valid()) {
+			used_locs[num_used_locs] = best_unit;
+			ratings[num_used_locs] = best_rating;
+			++num_used_locs;
+			res += best_rating;
 		}
 	}
 

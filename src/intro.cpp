@@ -123,7 +123,7 @@ void show_intro(display& screen, config& data)
 				last = false;
 			}
 
-			screen.draw();
+			screen.video().flip();
 		}
 	}
 

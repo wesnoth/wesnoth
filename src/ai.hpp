@@ -23,6 +23,7 @@
 
 namespace ai {
 typedef gamemap::location location;
+typedef std::multimap<location,location> move_map;
 
 void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
              std::map<gamemap::location,unit>& units,

@@ -171,6 +171,9 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	typedef paths::route route;
 
+	std::multimap<location,location> enemy_srcdst;
+	std::multimap<location,location> enemy_dstsrc;
+
 	std::multimap<location,location> srcdst;
 	std::multimap<location,location> dstsrc;
 
@@ -178,9 +181,29 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	typedef std::map<location,paths> moves_map;
 	moves_map possible_moves;
-	for(std::map<gamemap::location,unit>::const_iterator un_it = units.begin();
+
+	for(std::map<gamemap::location,unit>::iterator un_it = units.begin();
 	    un_it != units.end(); ++un_it) {
 
+		if(current_team.is_enemy(un_it->second.side())) {
+			std::pair<location,location> trivial_mv(un_it->first,un_it->first);
+			enemy_srcdst.insert(trivial_mv);
+			enemy_dstsrc.insert(trivial_mv);
+
+			const unit_movement_resetter resetter(un_it->second);
+
+			const bool ignore_zocs = un_it->second.type().is_skirmisher();
+			const bool teleports = un_it->second.type().teleports();
+			const paths new_paths(map,gameinfo,units,
+			                      un_it->first,teams,ignore_zocs,teleports);
+			for(paths::routes_map::const_iterator rt = new_paths.routes.begin();
+			    rt != new_paths.routes.end(); ++rt) {
+				const std::pair<location,location> item(un_it->first,rt->first);
+				enemy_srcdst.insert(item);
+				enemy_dstsrc.insert(item);
+			}
+		}
+		
 		if(un_it->second.side() != team_num) {
 			continue;
 		}
@@ -208,7 +231,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	for(moves_map::iterator m = possible_moves.begin();
 	    m != possible_moves.end(); ++m) {
-		for(std::map<location,route>::iterator rtit =
+		for(paths::routes_map::iterator rtit =
 		    m->second.routes.begin(); rtit != m->second.routes.end();
 			++rtit) {
 			const location& src = m->first;
@@ -284,12 +307,13 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 	}
 
 	int ticks = SDL_GetTicks();
-	//look for targets of opportunity that we are hoping to kill this turn
+
 	std::vector<attack_analysis> analysis;
 
-	if(consider_combat)
-		analysis = analyze_targets(map,srcdst,dstsrc,units,
-		                           current_team,team_num,state,gameinfo);
+	if(consider_combat) {
+		analysis = analyze_targets(map,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
+		                           units,current_team,team_num,state,gameinfo);
+	}
 
 	int time_taken = SDL_GetTicks() - ticks;
 	std::cout << "took " << time_taken << " ticks for " << analysis.size() << " positions. Analyzing...\n";
@@ -448,24 +472,39 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		if(u.side() == team_num &&
 		   u.type().hitpoints() - u.hitpoints() >= game_config::cure_amount/2 &&
 		   !u.type().regenerates()) {
+
+			//look for the village which is the least vulnerable to enemy attack
 			typedef std::multimap<location,location>::iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
+			double best_vulnerability = 100000.0;
+			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const location& dst = it.first->second;
 				if(map[dst.x][dst.y] == gamemap::TOWER &&
 				   units.find(dst) == units.end()) {
-					const location& src = it.first->first;
-
-					std::cerr << "moving unit to village for healing...\n";
-
-					move_unit(gameinfo,disp,map,units,src,dst,
-					          possible_moves,teams,team_num);
-					do_move(disp,map,gameinfo,units,teams,team_num,state,
-					        consider_combat,additional_targets);
-					return;
+					const double vuln = power_projection(it.first->first,
+					                    enemy_srcdst,enemy_dstsrc,units,map);
+					if(vuln < best_vulnerability) {
+						best_vulnerability = vuln;
+						best_loc = it.first;
+					}
 				}
-
+				
 				++it.first;
+			}
+
+			//if we have found an eligible village
+			if(best_loc != it.second) {
+				const location& src = best_loc->first;
+				const location& dst = best_loc->second;
+
+				std::cerr << "moving unit to village for healing...\n";
+
+				move_unit(gameinfo,disp,map,units,src,dst,
+				          possible_moves,teams,team_num);
+				do_move(disp,map,gameinfo,units,teams,team_num,state,
+				        consider_combat,additional_targets);
+				return;
 			}
 		}
 	}
@@ -505,6 +544,40 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		move_unit(gameinfo,disp,map,units,move.first,move.second,
 		          possible_moves,teams,team_num);
 		std::cout << "end move_unit\n";
+
+		//search to see if there are any enemy units next
+		//to the tile which really should be attacked
+		gamemap::location adj[6];
+		get_adjacent_tiles(move.second,adj);
+		for(int n = 0; n != 6; ++n) {
+			const unit_map::iterator enemy = units.find(adj[n]);
+			if(enemy != units.end() &&
+			   current_team.is_enemy(enemy->second.side())) {
+				battle_stats stats;
+				const int weapon = choose_weapon(map,units,state,gameinfo,
+				                            move.second,adj[n],stats,
+				                            map[move.second.x][move.second.y]);
+				assert(weapon != -1);
+
+				const location attacker = move.second;
+				const location defender = adj[n];
+				
+				recorder.add_attack(attacker,defender,weapon);
+
+				game_events::fire("attack",attacker,defender);
+				if(units.count(attacker) && units.count(defender)) {
+					attack(disp,map,attacker,defender,weapon,units,state,
+					       gameinfo,false);
+					const int res = check_victory(units);
+					if(res == 1)
+						throw end_level_exception(VICTORY);
+					else if(res > 1)
+						throw end_level_exception(DEFEAT);
+				}
+
+				break;
+			}
+		}
 
 		//don't allow any other units to move onto the tile our unit
 		//just moved onto

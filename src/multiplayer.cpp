@@ -322,6 +322,9 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 			(*sd)->values["type"] = possible_sides.front()->values["type"];
 		if((*sd)->values["recruit"].empty())
 			(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
+		if((*sd)->values["recruitment_pattern"].empty())
+			(*sd)->values["recruitment_pattern"] =
+			        possible_sides.front()->values["recruitment_pattern"];
 	}
 
 	res = 0;
@@ -395,6 +398,8 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 				sides[res]->values["name"] = values["name"];
 				sides[res]->values["type"] = values["type"];
 				sides[res]->values["recruit"] = values["recruit"];
+				sides[res]->values["recruitment_pattern"] =
+				                          values["recruitment_pattern"];
 			}
 		}
 	}
