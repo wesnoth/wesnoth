@@ -329,7 +329,7 @@ void menu::scroll(int)
 namespace {
 	SDL_Rect item_size(const std::string& item) {
 		SDL_Rect res = {0,0,0,0};
-		std::vector<std::string> img_text_items = config::split(item, menu::IMG_TEXT_SEPARATOR);
+		std::vector<std::string> img_text_items = config::split(item, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			if (res.w > 0 || res.h > 0) {

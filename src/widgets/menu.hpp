@@ -12,7 +12,8 @@
 
 #include "SDL.h"
 
-char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = ',', IMAGE_PREFIX = '&';
+char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = ',',
+           IMAGE_PREFIX = '&', IMG_TEXT_SEPARATOR = 1;
 
 namespace gui {
 
@@ -51,8 +52,6 @@ public:
 	void set_numeric_keypress_selection(bool value);
 
 	void scroll(int pos);
-
-	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be something else to be settable from WML.
 
 protected:
 	void handle_event(const SDL_Event& event);
