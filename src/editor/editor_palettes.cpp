@@ -123,16 +123,16 @@ gamemap::TERRAIN terrain_palette::selected_bg_terrain() const {
 void terrain_palette::select_fg_terrain(gamemap::TERRAIN terrain) {
 	if (selected_fg_terrain_ != terrain) {
 		set_dirty();
-		update_report();
 		selected_fg_terrain_ = terrain;
+		update_report();
 	}
 }
 
 void terrain_palette::select_bg_terrain(gamemap::TERRAIN terrain) {
 	if (selected_bg_terrain_ != terrain) {
 		set_dirty();
-		update_report();
 		selected_bg_terrain_ = terrain;
+		update_report();
 	}
 }
 

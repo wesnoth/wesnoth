@@ -12,10 +12,13 @@
 
 #include "../font.hpp"
 #include "../events.hpp"
+#include "../language.hpp"
 #include "../display.hpp"
+#include "../show_dialog.hpp"
 #include "file_chooser.hpp"
 
 #include <sstream>
+#include <cstdio>
 
 namespace {
 	const std::string dir_picture = "misc/folder-icon.png";
@@ -24,7 +27,8 @@ namespace {
 namespace gui {
 
 file_chooser::file_chooser(display &disp, std::string start_file) 
-	: widget(disp), disp_(disp), path_delim_('/'), current_dir_(get_path(start_file)),
+	: widget(disp), disp_(disp), delete_button_(disp, translate_string("delete_file")),
+	  path_delim_('/'), current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), file_list_(disp, files_in_current_dir_, false),
 	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
 	  last_selection_(-1) {
@@ -49,8 +53,11 @@ void file_chooser::adjust_layout() {
 	current_path_rect_.h = 18;
 	const int file_list_y = current_path_y + current_path_rect_.h + 10;
 	const int filename_textbox_y = location().y + height() - filename_textbox_.height();
-		
-	const int file_list_height = filename_textbox_y  - file_list_y - 10;
+	const int file_list_height = filename_textbox_y  - file_list_y - 10 - 32;
+
+	const int delete_button_x = location().x + width() - delete_button_.width();
+	const int delete_button_y = file_list_y + file_list_height + 5;
+	delete_button_.set_location(delete_button_x, delete_button_y);
 
 	file_list_.set_width(width());
 	filename_textbox_.set_width(width());
@@ -80,8 +87,8 @@ void file_chooser::display_current_files() {
 		*it = ss.str();
 	}
 	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); it++) {
-		*it = std::string(" ,") + *it;
-		to_show.push_back(*it);
+		const std::string display_string = std::string(" ,") + *it;
+		to_show.push_back(display_string);
 	}
 	const int menu_font_size = 14; // Known from menu.cpp.
 	for (it = to_show.begin(); it != to_show.end(); it++) {
@@ -99,7 +106,7 @@ void file_chooser::display_current_files() {
 }
 
 void file_chooser::display_chosen_file() {
-	// Clearing is not really necessary, but things end up nicer of we do.
+	// Clearing is not really necessary, but things end up nicer if we do.
 	filename_textbox_.clear(); 
 	if (is_directory(chosen_file_)) {
 		filename_textbox_.set_text(strip_last_delim(chosen_file_) + path_delim_);
@@ -160,6 +167,17 @@ void file_chooser::process() {
 			entry_selected(new_selection);
 		}
 	}
+	if (delete_button_.pressed()) {
+		const int ret = remove(get_current_file().c_str());
+		if (ret == -1) {
+			show_dialog(disp_, NULL, "", translate_string("delete_failed"), OK_ONLY);
+		}
+		else {
+			update_file_lists();
+			chosen_file_ = current_dir_;
+			set_dirty(true);
+		}
+	}
 }
 
 void file_chooser::entry_selected(const unsigned entry) {
@@ -184,7 +202,6 @@ void file_chooser::entry_selected(const unsigned entry) {
 	}
 }
 
-/// Enter the directory or choose the file.
 void file_chooser::entry_chosen(const unsigned entry) {
 	const int entry_index = entry - (is_root(current_dir_) ? 0 : 1);
 	if (entry_index == -1) {
@@ -218,20 +235,34 @@ void file_chooser::entry_chosen(const unsigned entry) {
 	set_dirty(true);
 }
 
+std::string file_chooser::get_current_file() const {
+	const std::string textbox_contents = filename_textbox_.text();
+	// If the contents of the textbox is not equal to the chosen file it
+	// means that the textbox has been edited since the last selection,
+	// and the textbox contents is wanted.
+	if (textbox_contents != chosen_file_) {
+		return textbox_contents;
+	}
+	return chosen_file_;
+}
+	
+
 bool file_chooser::choice_made() const {
 	return choice_made_;
 }
 
 std::string file_chooser::get_choice() const {
-	if (filename_textbox_.focus()) {
-		return filename_textbox_.text();
-	}
-	return chosen_file_;
+	return get_current_file();
 }
 
 void file_chooser::set_dirty(bool dirty) {
 	widget::set_dirty(dirty);
-	filename_textbox_.set_dirty(dirty);
+	if (dirty) {
+		// These will set themselves to false when they are done
+		// drawing.
+		filename_textbox_.set_dirty(true);
+		delete_button_.set_dirty(true);
+	}
 }
 
 void file_chooser::set_location(const SDL_Rect& rect) {

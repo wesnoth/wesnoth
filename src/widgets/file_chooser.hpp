@@ -92,7 +92,13 @@ private:
 	/// Enter the directory or choose the file.
 	void entry_chosen(const unsigned entry);
 
+	/// Return the filename of either the currently selected file in the
+	/// file list, or the filename in the textbox, depending on which is
+	/// most recently updated.
+	std::string get_current_file() const;
+
 	display &disp_;
+	button delete_button_;
 	const char path_delim_;
 	std::string current_dir_;
 	std::string chosen_file_;
