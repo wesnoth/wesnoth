@@ -413,6 +413,37 @@ msgid ""
 "mind that some scenarios take place underground, where it is perpetually "
 "night!"
 msgstr ""
+"En los juegos de Wesnoth normalmente hay un ciclo regular entre día y noche. "
+"La hora actual del día se puede ver debajo del minimapa, arriba a la "
+"derecha.\n"
+"\n"
+"El ciclo normal de día y noche es el siguiente:\n"
+"\n"
+"Amanecer <jump>to=160</jump><img>src=misc/schedule-dawn.png align=here</"
+"img>\n"
+"Mañana <jump>to=160</jump><img>src=misc/schedule-morning.png align=here</"
+"img>\n"
+"Tarde <jump>to=160</jump><img>src=misc/schedule-afternoon.png align=here</"
+"img>\n"
+"Ocaso <jump>to=160</jump><img>src=misc/schedule-dusk.png align=here</img> \n"
+"Primera noche <jump>to=160</jump><img>src=misc/schedule-firstwatch.png "
+"align=here</img>\n"
+"Noche cerrada <jump>to=160</jump><img>src=misc/schedule-secondwatch.png "
+"align=here</img>\n"
+"\n"
+"La mañana y la tarde cuentan como día, y la primera noche y la noche cerrada "
+"como noche.\n"
+"\n"
+"La hora del día afecta al daño de ciertas unidades como sigue -\n"
+"\n"
+"Las unidades legales ganan un +25% de daño cuando es de día, y un -25% "
+"cuando es de noche.\n"
+"Las unidades caóticas ganan un +25% de daño de noche, y un -25% de día.\n"
+"Las unidades neutrales no se ven afectadas por la hora del día.\n"
+"\n"
+"<img>src=misc/schedule-underground.png align=right float=yes</img>Tenga en "
+"cuenta que algunos escenarios se desarrollan bajo tierra, donde ¡siempre es "
+"de noche!"
 
 #: data/help.cfg:151
 msgid "Experience and Advancement"
@@ -2502,7 +2533,7 @@ msgstr ""
 "Una unidad envenenada perderá 8 puntos de vida por turno, pero no morirá: el "
 "veneno nunca la dejará por debajo de 1 punto de vida. Las tropas envenenadas "
 "se curan en las aldeas o si están adyacentes a una unidad con la habilidad "
-"'curar'."
+"«curar»."
 
 #: data/translations/english.cfg:187
 msgid ""
@@ -2512,7 +2543,7 @@ msgid ""
 msgstr ""
 "La virtud de la persistencia:\n"
 "Podéis usar unidades veteranas de escenarios previos mediante "
-"'Reincorporar', en el menú del juego. Llamando a las mismas unidades "
+"«Reincorporar», en el menú del juego. Llamando a las mismas unidades "
 "conseguiréis unas tropas altamente competentes y experimentadas."
 
 #: data/translations/english.cfg:188
@@ -2522,7 +2553,7 @@ msgid ""
 "turn."
 msgstr ""
 "La virtud de la sutileza:\n"
-"Todas las tropas tienen una Zona de Control que abarca todas las casillas "
+"Todas las tropas tienen una «zona de control» que abarca todas las casillas "
 "que les rodean. Si una unidad entra en una zona de control enemiga, no se "
 "podrá mover más durante ese turno."
 
@@ -2535,9 +2566,8 @@ msgstr ""
 "La virtud de la ubicación:\n"
 "Las posibilidades de dañar a una unidad suelen depender de su habilidad para "
 "defenderse en el terreno en el que está. Sin embargo, existen excepciones "
-"como los ataques mágicos que siempre tienen un 70% para acertar o los "
-"tiradores que con sus certeros arcos poseen un 60% de posibilidades como "
-"mínimo."
+"como los ataques mágicos, que siempre tienen un 70% para acertar, o los "
+"tiradores, que tienen un 60% de posibilidades como mínimo."
 
 #: data/translations/english.cfg:190
 msgid ""
@@ -2552,7 +2582,7 @@ msgid ""
 "hitpoints at the beginning of their next turn."
 msgstr ""
 "La virtud del reposo:\n"
-"Las unidades que ni se mueven ni atacan durante su turno, descansan, "
+"Las unidades que ni se muevan ni ataquen durante su turno, descansan, "
 "recuperando así 2 puntos de vida al principio del siguiente turno."
 
 #: data/translations/english.cfg:192
@@ -2594,7 +2624,7 @@ msgid ""
 "fight very well in hills and mountains."
 msgstr ""
 "Las virtudes étnicas:\n"
-"Las tropas élficas luchan y se mueven muy bien en los bosques. Los Enanos, "
+"Las tropas élficas luchan y se mueven muy bien en los bosques. Los enanos, "
 "por contra, destacan en las montañas y colinas."
 
 #: data/translations/english.cfg:196
@@ -2602,7 +2632,7 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"La paciencia es la virtud:\n"
+"La virtud de la paciencia:\n"
 "En vez de lanzar el ataque en malas condiciones o con pocas tropas, es "
 "preferible esperar a mejores condiciones o refuerzos adicionales."
 
@@ -2631,9 +2661,9 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 "El valor de la velocidad:\n"
-"En muchas batallas si acabáis antes del límite de turnos, según el número de "
-"aldeas y de turnos restantes, recibiréis oro. Siempre saldréis ganando más "
-"oro de este modo que capturando aldeas y esperando el fin de los turnos."
+"En muchas batallas, si acabáis antes del límite de turnos, según el número "
+"de aldeas y de turnos restantes, recibiréis oro. Siempre saldréis ganando "
+"más oro de este modo que capturando aldeas y esperando el fin de los turnos."
 
 #: data/translations/english.cfg:200
 msgid ""
@@ -2654,7 +2684,7 @@ msgid ""
 "impact, fire, and holy attacks."
 msgstr ""
 "Que la luz nunca ceda:\n"
-"Los Esqueletos son resistentes a las armas de filo y que perforan, pero "
+"Los esqueletos son resistentes a las armas de filo y que perforan, pero "
 "vulnerables a las de impacto, fuego y sagradas."
 
 #: data/translations/english.cfg:202
@@ -2663,7 +2693,7 @@ msgid ""
 "side fight better."
 msgstr ""
 "La virtud del carisma:\n"
-"Las unidades con la habilidad 'Liderazgo' hacen que las tropas del mismo "
+"Las unidades con la habilidad «Liderazgo» hacen que las tropas del mismo "
 "bando adyacentes con niveles inferiores de experiencia luchen mejor."
 
 #: data/translations/english.cfg:203
@@ -2705,14 +2735,14 @@ msgid ""
 msgstr ""
 "La virtud de la rectificación:\n"
 "Si movéis una unidad pero no atacáis ni descubrís ninguna información nueva, "
-"podéis deshacer ese movimiento pulsando 'u'."
+"podéis deshacer ese movimiento pulsando «u»."
 
 #: data/translations/english.cfg:208
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"La virtud de la circunspección:\n"
+"Conoce a tu enemigo:\n"
 "Podéis conocer hasta donde pueden moverse las tropas enemigas situando el "
 "puntero encima de ellas."
 
@@ -2732,7 +2762,7 @@ msgid ""
 "effective against units that have a few powerful attacks."
 msgstr ""
 "La virtud de la picardía:\n"
-"Los ataques con la habilidad 'ralentizar' hacen que el enemigo se mueva más "
+"Los ataques con la habilidad «ralentizar» hacen que el enemigo se mueva más "
 "lento, pero también les resta un ataque, convirtiéndolo en una poderosa arma "
 "contra enemigos con pocos ataques."
 
@@ -2749,7 +2779,7 @@ msgid ""
 msgstr ""
 "La virtud de la astucia:\n"
 "Las unidades se curan cuando suben de nivel. Usado astutamente, puede "
-"cambiar el signo de la batalla."
+"cambiar el signo de una batalla."
 
 #: data/translations/english.cfg:213
 msgid ""
@@ -2763,7 +2793,7 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
-msgstr "Cadáver Anciano"
+msgstr "Cadáver anciano"
 
 #: data/units/Ancient_Lich.cfg:16
 msgid ""
@@ -2773,8 +2803,8 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
-"La forma definitiva que un mago de los no muertos puede alcanzar; el Lich "
-"Anciano siembra el terror en los corazones de aquellos que lo ven. No sólo "
+"La forma definitiva que un mago de los no muertos puede alcanzar; el cadáver "
+"anciano siembra el terror en los corazones de aquellos que lo ven. No sólo "
 "es su contacto como el de los muertos, sino que además sus hechizos son "
 "suficientemente fuertes como para congelar hasta a los más valientes allá "
 "donde estén."
@@ -3515,7 +3545,7 @@ msgstr ""
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr "Semilich"
+msgstr "Semicadáver"
 
 #: data/units/Demilich.cfg:15
 msgid ""
@@ -3579,7 +3609,7 @@ msgstr "pico"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
-msgstr ""
+msgstr "Draco incendiario"
 
 #: data/units/Drake_Burner.cfg:17
 msgid ""
@@ -3602,19 +3632,19 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:3
 msgid "Drake Fighter"
-msgstr ""
+msgstr "Luchador draco"
 
 #: data/units/Drake_Fire.cfg:3
 msgid "Fire Drake"
-msgstr ""
+msgstr "Draco de fuego"
 
 #: data/units/Drake_Flameheart.cfg:3
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Corazón de fuego draco"
 
 #: data/units/Drake_Guard.cfg:3
 msgid "Drake Guard"
-msgstr ""
+msgstr "Draco guardián"
 
 #: data/units/Drake_Hatchling.cfg:3
 msgid "Drake Hatchling"
@@ -3622,19 +3652,19 @@ msgstr ""
 
 #: data/units/Drake_Mage.cfg:3
 msgid "Drake Mage"
-msgstr ""
+msgstr "Draco mago"
 
 #: data/units/Drake_Mage.cfg:16
 msgid "Like all Mages, the Drake Mages are capable of using magic in battle."
-msgstr ""
+msgstr "Como todos los magos, el mago draco es capaz de usar magia en combate."
 
 #: data/units/Drake_Mage.cfg:63 data/units/Drake_Warmage.cfg:73
 msgid "ice shot"
-msgstr ""
+msgstr "golpe de hielo"
 
 #: data/units/Drake_Petit.cfg:3
 msgid "Drake Petit"
-msgstr ""
+msgstr "Pequeño draco"
 
 #: data/units/Drake_Slasher.cfg:3
 msgid "Drake Slasher"
@@ -3642,7 +3672,7 @@ msgstr ""
 
 #: data/units/Drake_Slave.cfg:3
 msgid "Drake Slave"
-msgstr ""
+msgstr "Esclavo draco"
 
 #: data/units/Drake_Slave.cfg:16
 msgid "Drake Slaves are servile members of this reptilian race."
@@ -3654,15 +3684,17 @@ msgstr ""
 
 #: data/units/Drake_Warrior.cfg:3
 msgid "Drake Warrior"
-msgstr ""
+msgstr "Guerrero draco"
 
 #: data/units/Drake_Worker.cfg:3
 msgid "Drake Worker"
-msgstr ""
+msgstr "Trabajador draco"
 
 #: data/units/Drake_Worker.cfg:16
 msgid "More advanced Drakes, the Workers fight with their own sharp claws."
 msgstr ""
+"Los trabajadores dracos, algo más avanzados, luchan con sus propias garras, "
+"muy afiladas."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -3674,7 +3706,7 @@ msgid ""
 "allows them to attack and parry with only one hand, while they wield a "
 "pistol in the other to shoot distant foes."
 msgstr ""
-"El Duelista es un maestro con la espada. Sus habilidades con el estoque le "
+"El duelista es un maestro con la espada. Sus habilidades con el estoque le "
 "permiten atacar y protegerse con una sola mano, mientras es capaz de llevar "
 "una pistola en la otra para disparar a distancia."
 
@@ -4627,12 +4659,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Lich.cfg:3
-#, fuzzy
 msgid "Lich"
 msgstr "Cadáver"
 
 #: data/units/Lich.cfg:16
-#, fuzzy
 msgid ""
 "Liches are mages that have committed completely to the path of the dark "
 "arts. To gain control over the undead, Liches have forfeited their own "
@@ -4640,11 +4670,11 @@ msgid ""
 "the life from their opponents with a single touch, and to cast powerful cold "
 "spells."
 msgstr ""
-"El Cadáver es un mago que se ha dedicado completamente al camino de las "
-"Artes Oscuras. Para ganar más control sobre los no muertos, el Cadáver ha "
-"dejado de lado su propio cuerpo convirtiéndose así él mismo en un  No "
-"Muerto. Ésto le da la capacidad de drenar la vida de sus enemigos con sólo "
-"tocarlos, y a lanzar poderosos hechizos de frío."
+"El cadáver es un mago que se ha dedicado completamente al camino de las "
+"artes oscuras. Para ganar más control sobre los no muertos, el cadáver ha "
+"dejado de lado su propio cuerpo, convirtiéndose así él mismo en un no "
+"muerto. Esto le da la capacidad de drenar la vida de sus enemigos con sólo "
+"tocarlos, y de lanzar poderosos hechizos de frío."
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
