@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-14 09:27+0100\n"
-"PO-Revision-Date: 2005-02-11 22:35+0100\n"
+"PO-Revision-Date: 2005-02-16 12:52+0100\n"
 "Last-Translator: Mark Polo <mpolon7@netscape.net>\n"
 "Language-Team: Latin\n"
 "MIME-Version: 1.0\n"
@@ -109,6 +109,13 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Haec pagina omnia summatim describit quae sapere necesse est ut Proelium pro "
+"Occidiseptentrione lusas. Includit quomodo lusas et scientias machinales "
+"post lusum. Ut plus nuntiorum vincendi lusum invenias, fortasse volabis "
+"<ref>dst=basic_strategy text='Artes imperatorias primas'</ref> consultare ac "
+"<ref>dst=multiplayer_strategy text='Artes imperatorias plurorum lusorum'</"
+"ref>. In animo habeto hoc tantum summatim describit -- ut exceptiones et "
+"condiciones speciales videas, sis sequere ligamina inclusa."
 
 #: data/help.cfg:70
 msgid ""
@@ -1136,7 +1143,6 @@ msgid "The Valley of Death"
 msgstr "Vallis Mortis"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Terra Deserta Nanorum"
 
@@ -2326,18 +2332,26 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"Dux tuus unitates a quoque arce in castello conscribere aut revocare potest, "
+"non tantum ab arce in quo incipit. Arcem ab hoste capere potes et illinc "
+"conscribere. Nonnulli socii etiam fortasse spatium tibi praebere in arce "
+"eorum volunt ut illic conscibere possis."
 
 #: data/tips.cfg:20
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
+"Ossa oppugnationes transfigentibus et laminarum repugnant, sed vulnerari "
+"possunt ab oppugnationibus incutientibus, igneis et sanctis."
 
 #: data/tips.cfg:21
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
+"Unitates cum ductu efficiunt ut unitates proximae ex gradibus inferioribus "
+"et eodem parte melius pugnent."
 
 #: data/tips.cfg:22
 msgid ""
@@ -2345,38 +2359,50 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"Fere vita se apud pagum vacuum movere. Unitas inimica in pagum moveri potest "
+"et te oppugnare, fruens defensum et sanationem pagi."
 
 #: data/tips.cfg:23
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
+"Cursore muris tento super facultatem vel lineamentum descriptio facultatis "
+"vel lineamento hoc monstratur."
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Aciebus unitatum utere ut unitates laesas protegant ad recuperationem "
+"permittendam."
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
-msgstr ""
+msgstr "Elenchum clavum notarum in tabula antepositorum lege."
 
 #: data/tips.cfg:26
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"Si unitatem moves sed non oppugnas aut nuntios supplementarios invenis, "
+"motum infectum reddere potes imprimens 'u'."
 
 #: data/tips.cfg:27
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Potes videre quantum unitates hostium moveri possunt cursorem muris super "
+"eis movens."
 
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Sanatoribus uti in auxilio oppugnationum tuarum - proelia vincent tibi sine "
+"necessitate oppugnationis propriae."
 
 #: data/tips.cfg:29
 msgid ""
@@ -2384,6 +2410,9 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
+"Facultas oppugnationis 'lentifacere' efficit ut unitates inimicae lentius "
+"movuntur atque unam oppugnationem tollit, quae aliter recipiant. Ergo valde "
+"valens est contra unitates quae paucas oppugnationes fortes habent."
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
@@ -2394,12 +2423,16 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Unitates sanantur cum gradu promovuntur. Hoc sapienter uso pugna commutare "
+"potest."
 
 #: data/tips.cfg:32
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
+"Unitates incurrentes optime utuntur contra inimicos qui ictu unico interfici "
+"poterunt."
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -4114,7 +4147,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Custos Nanorum"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up a "
@@ -4122,7 +4154,7 @@ msgid ""
 msgstr ""
 "Nani mollissimi nonnumquam in exercitu Nanorum Custodes ingrediuntur. Lenti "
 "et oppugnatione forti carentes, custodiunt cornua exercitus, damnum magnum "
-"ferrentes et hastas graves in hostes iactantes."
+"ferentes et hastas graves in hostes iactantes."
 
 #: data/units/Dwarvish_Lord.cfg:3
 msgid "Dwarvish Lord"
@@ -4451,7 +4483,6 @@ msgid "female^Elvish Lady"
 msgstr "Domina Dryadalis"
 
 #: data/units/Elvish_Lady.cfg:17
-#, fuzzy
 msgid ""
 "The Elvish Lady is a singular combination of beauty and wisdom, and is "
 "deeply respected by all elves. Her ability to see through the shroud of "
@@ -4459,9 +4490,10 @@ msgid ""
 "authority is used sparingly with a sense of gentle benevolence to guide her "
 "people in times of uncertainty."
 msgstr ""
-"Domina Dryadalis Paranda una ex praeaestimatis dryadibus unquam est. "
-"Facultate eius in videndo per caligines fati auctoritatis inter populos "
-"potitur, ducens eos in temporibus incertis."
+"Domina Dryadalis coniunctio singulares pulchritudinis et sapientiae et "
+"praeaestimata ab omnibus dryadibus est. Facultate eius in videndo per "
+"caligines fati auctoritatis in populo suo potitur. Auctoritate parce utitur "
+"cumsensu benevolentiae mitis ducens populum suum in temporibus incertis."
 
 #: data/units/Elvish_Lady.cfg:19
 msgid "shove"
@@ -6948,9 +6980,8 @@ msgid "+Dutch Translation"
 msgstr "+Reditio batava"
 
 #: src/about.cpp:182
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Reditio polonica"
+msgstr "+Reditio anglica (brittanica)"
 
 #: src/about.cpp:186
 msgid "+Finnish Translation"
