@@ -1179,6 +1179,12 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 
 	u.set_movement(moves_left);
 
+	units.insert(std::pair<gamemap::location,unit>(steps.back(),u));
+	if(disp != NULL) {
+		disp->invalidate_unit();
+		disp->invalidate(steps.back());
+	}
+
 	int orig_tower_owner = -1;
 	if(map.underlying_terrain(map[steps.back().x][steps.back().y]) == gamemap::TOWER) {
 		orig_tower_owner = tower_owner(steps.back(),teams);
@@ -1187,12 +1193,6 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 			get_tower(steps.back(),teams,team_num,units);
 			u.set_movement(0);
 		}
-	}
-
-	units.insert(std::pair<gamemap::location,unit>(steps.back(),u));
-	if(disp != NULL) {
-		disp->invalidate_unit();
-		disp->invalidate(steps.back());
 	}
 
 	const bool event_mutated = game_events::fire("moveto",steps.back());

@@ -526,6 +526,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				disp.move_unit(rt->second.steps,current_unit);
 
 			current_unit.set_movement(rt->second.move_left);
+			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
 			if(map.underlying_terrain(map[dst.x][dst.y]) == gamemap::TOWER) {
 				const int orig_owner = tower_owner(dst,teams) + 1;
 				if(orig_owner != team_num) {
@@ -533,8 +534,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 					get_tower(dst,teams,team_num-1,units);
 				}
 			}
-
-			units.insert(std::pair<gamemap::location,unit>(dst,current_unit));
 
 			if(!replayer.skipping()) {
 				disp.draw_tile(dst.x,dst.y);
