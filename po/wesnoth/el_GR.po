@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:56+0100\n"
+"POT-Creation-Date: 2005-02-02 21:17+0100\n"
 "PO-Revision-Date: 2004-10-03 15:21+0200\n"
 "Last-Translator: Konstantinos Karasavvas <ceekk@macs.hw.ac.uk>\n"
 "Language-Team: Greek <ceekk@macs.hw.ac.uk>\n"
@@ -44,11 +44,11 @@ msgstr "Εισαγωγή"
 msgid "Gameplay"
 msgstr ""
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2100
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2102
 msgid "Traits"
 msgstr ""
 
-#: data/help.cfg:28 src/playturn.cpp:1665
+#: data/help.cfg:28 src/playturn.cpp:1667
 msgid "Units"
 msgstr "Μονάδες"
 
@@ -1997,7 +1997,12 @@ msgstr "Χωριό"
 msgid "Hills"
 msgstr "Λόφοι"
 
-#: data/terrain.cfg:288 data/terrain.cfg:297
+#: data/terrain.cfg:288
+#, fuzzy
+msgid "Snow Hills"
+msgstr "Χωριό"
+
+#: data/terrain.cfg:297
 msgid "Desert Hills"
 msgstr ""
 
@@ -2065,13 +2070,13 @@ msgid "End Turn"
 msgstr "Τέλος Γύρου"
 
 #: data/themes/default.cfg:153 src/dialogs.cpp:661 src/display.cpp:972
-#: src/help.cpp:1060 src/playturn.cpp:2098 src/unit.cpp:1055
+#: src/help.cpp:1060 src/playturn.cpp:2100 src/unit.cpp:1055
 msgid "HP"
 msgstr ""
 
 #: data/themes/default.cfg:162 src/dialogs.cpp:665 src/dialogs.cpp:673
-#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1938
-#: src/playturn.cpp:2099 src/unit.cpp:1114
+#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1940
+#: src/playturn.cpp:2101 src/unit.cpp:1114
 msgid "XP"
 msgstr ""
 
@@ -2157,9 +2162,10 @@ msgstr ""
 
 #: data/tips.cfg:7
 msgid ""
-"All units have a Zone of Control in each of the hexes next to them. If a "
-"unit moves into an enemy's Zone of Control, it may not move any further that "
-"turn."
+"Units have a Zone of Control in each of the hexes next to them. If a unit "
+"moves into an enemy's Zone of Control, it may not move any further that "
+"turn. Level 0 units are too frail to control a zone; and skirmisher units "
+"are skilled enough to ignore these zones."
 msgstr ""
 
 #: data/tips.cfg:8
@@ -2449,7 +2455,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:353 src/actions.cpp:458
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:349 src/actions.cpp:450
 msgid "leadership"
 msgstr "ηγεσία"
 
@@ -2520,7 +2526,7 @@ msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:486
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:477
 msgid "steadfast"
 msgstr ""
 
@@ -2975,7 +2981,7 @@ msgstr "λεπίδα"
 #: data/units/Assassin.cfg:26 data/units/Assassin.cfg:105
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:25
-#: data/units/Thief.cfg:62 src/actions.cpp:477
+#: data/units/Thief.cfg:62 src/actions.cpp:468
 msgid "backstab"
 msgstr ""
 
@@ -3311,8 +3317,8 @@ msgstr "δόρυ"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:363
-#: src/actions.cpp:468
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:359
+#: src/actions.cpp:459
 msgid "charge"
 msgstr ""
 
@@ -3331,7 +3337,7 @@ msgstr ""
 msgid "gaze"
 msgstr ""
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:711 src/actions.cpp:857
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:709 src/actions.cpp:855
 #: src/reports.cpp:123
 msgid "stone"
 msgstr ""
@@ -6164,87 +6170,87 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 
-#: src/actions.cpp:203
+#: src/actions.cpp:211
 msgid "none"
 msgstr ""
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1005
+#: src/actions.cpp:280 src/dialogs.cpp:693 src/display.cpp:1005
 #: src/help.cpp:1130 src/reports.cpp:231
 msgid "melee"
 msgstr "σώμα με σώμα"
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1006
+#: src/actions.cpp:280 src/dialogs.cpp:693 src/display.cpp:1006
 #: src/help.cpp:1130 src/reports.cpp:232
 msgid "ranged"
 msgstr "εξ αποστάσεως"
 
-#: src/actions.cpp:322 src/actions.cpp:426
+#: src/actions.cpp:329 src/actions.cpp:429
 msgid "base damage"
 msgstr ""
 
-#: src/actions.cpp:331
-msgid "attacker resistance vs"
-msgstr ""
-
-#: src/actions.cpp:331
-msgid "attacker vulnerability vs"
-msgstr ""
-
-#: src/actions.cpp:363 src/actions.cpp:468 src/actions.cpp:477
+#: src/actions.cpp:359 src/actions.cpp:459 src/actions.cpp:468
 msgid "Doubled"
 msgstr ""
 
-#: src/actions.cpp:379 src/actions.cpp:501
+#: src/actions.cpp:367
+msgid "attacker resistance vs"
+msgstr ""
+
+#: src/actions.cpp:367
+msgid "attacker vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:381 src/actions.cpp:499
 msgid "total damage"
 msgstr ""
 
-#: src/actions.cpp:435
-msgid "defender resistance vs"
-msgstr ""
-
-#: src/actions.cpp:435
-msgid "defender vulnerability vs"
-msgstr ""
-
-#: src/actions.cpp:486
+#: src/actions.cpp:477
 msgid "Halved"
 msgstr ""
 
-#: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:948
+#: src/actions.cpp:485
+msgid "defender resistance vs"
+msgstr ""
+
+#: src/actions.cpp:485
+msgid "defender vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:695 src/actions.cpp:840 src/display.cpp:948
 #: src/reports.cpp:116
 msgid "poisoned"
 msgstr ""
 
-#: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:944
+#: src/actions.cpp:700 src/actions.cpp:845 src/display.cpp:944
 #: src/reports.cpp:111
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:1723
+#: src/actions.cpp:1721
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1751
+#: src/actions.cpp:1749
 msgid "Friendly unit sighted"
 msgstr "Εθεάθη φιλική μονάδα"
 
-#: src/actions.cpp:1753
+#: src/actions.cpp:1751
 msgid "Enemy unit sighted!"
 msgstr "Εθεάθη εχθρική μονάδα!"
 
-#: src/actions.cpp:1758
+#: src/actions.cpp:1756
 msgid "$friends Friendly units sighted"
 msgstr "Εθεάθησαν $friends φιλικές μονάδες"
 
-#: src/actions.cpp:1760
+#: src/actions.cpp:1758
 msgid "$enemies Enemy units sighted!"
 msgstr "Εθεάθησαν $friends εχθρικές μονάδες"
 
-#: src/actions.cpp:1764
+#: src/actions.cpp:1762
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Εθεάθησαν μονάδες! ($friends φιλικές, $enemies εχθρικές)"
 
-#: src/actions.cpp:1779
+#: src/actions.cpp:1777
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -6288,11 +6294,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:363 src/game.cpp:964
+#: src/dialogs.cpp:363 src/game.cpp:968
 msgid "Campaign"
 msgstr "Εκστρατεία"
 
-#: src/dialogs.cpp:365 src/game.cpp:1258
+#: src/dialogs.cpp:365 src/game.cpp:1281
 msgid "Multiplayer"
 msgstr "Δικτυακό Παιχνίδι"
 
@@ -6304,7 +6310,7 @@ msgstr "Εκμάθηση"
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1514
+#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1516
 msgid "Turn"
 msgstr "Γύρος"
 
@@ -6312,11 +6318,11 @@ msgstr "Γύρος"
 msgid "Scenario Start"
 msgstr "Αρχή Σεναρίου"
 
-#: src/dialogs.cpp:382 src/game.cpp:994
+#: src/dialogs.cpp:382 src/game.cpp:998
 msgid "Difficulty"
 msgstr "Δυσκολία"
 
-#: src/dialogs.cpp:384 src/game.cpp:1056 src/titlescreen.cpp:165
+#: src/dialogs.cpp:384 src/game.cpp:1096 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Έκδοση"
 
@@ -6369,12 +6375,12 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:640 src/display.cpp:954 src/help.cpp:1015
-#: src/playturn.cpp:1937
+#: src/playturn.cpp:1939
 msgid "level"
 msgstr "επίπεδο"
 
 #: src/dialogs.cpp:678 src/display.cpp:988 src/help.cpp:1061
-#: src/playturn.cpp:2101 src/unit.cpp:1091
+#: src/playturn.cpp:2103 src/unit.cpp:1091
 msgid "Moves"
 msgstr "Κινήσεις"
 
@@ -6394,24 +6400,24 @@ msgstr "FreeSans.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Θέλετε να αποθηκεύσετε ένα replay αυτού του σεναρίου;"
 
-#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1523
+#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1525
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1540
+#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1542
 msgid "The game could not be saved"
 msgstr "Η αποθήκευση του παιχνιδιού ήταν αδύνατη"
 
-#: src/game.cpp:167 src/game.cpp:903 src/game.cpp:1293
+#: src/game.cpp:167 src/game.cpp:907 src/game.cpp:1316
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Η αποθήκευση του παιχνιδιού ήταν αδύνατη"
 
-#: src/game.cpp:170 src/game.cpp:905 src/game.cpp:1295
+#: src/game.cpp:170 src/game.cpp:909 src/game.cpp:1318
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:173 src/game.cpp:1307
+#: src/game.cpp:173 src/game.cpp:1330
 #, fuzzy
 msgid "The game map could not be loaded: "
 msgstr "Η αποθήκευση του παιχνιδιού ήταν αδύνατη"
@@ -6428,7 +6434,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Η Μάχη για το Wesnoth"
 
-#: src/game.cpp:835 src/multiplayer_connect.cpp:108
+#: src/game.cpp:839 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6436,205 +6442,205 @@ msgstr ""
 "Αυτό το αρχείο είναι από διαφορετική έκδοση του παιχνιδιού. Θέλετε να "
 "επιχειρήσω να το φορτώσω;"
 
-#: src/game.cpp:843 src/game.cpp:846
+#: src/game.cpp:847 src/game.cpp:850
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:849
+#: src/game.cpp:853
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:954
+#: src/game.cpp:958
 msgid "Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:955
+#: src/game.cpp:959
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
-#: src/game.cpp:965
+#: src/game.cpp:969
 msgid "Choose the campaign you want to play:"
 msgstr "Επιλέξτε την εκστρατεία που θέλετε να παίξετε:"
 
-#: src/game.cpp:995
+#: src/game.cpp:999
 msgid "Select difficulty level:"
 msgstr "Επιλέξτε επίπεδο δυσκολίας:"
 
-#: src/game.cpp:1014
+#: src/game.cpp:1024
+msgid "B"
+msgstr ""
+
+#: src/game.cpp:1027 src/show_dialog.cpp:960
+msgid "KB"
+msgstr ""
+
+#: src/game.cpp:1030
+msgid "MB"
+msgstr ""
+
+#: src/game.cpp:1054
 msgid "Connect to Server"
 msgstr "Συνδεθείτε με έναν Εξυπηρέτη"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1055
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:1016
+#: src/game.cpp:1056
 msgid "Server: "
 msgstr "Εξυπηρέτης: "
 
-#: src/game.cpp:1028
+#: src/game.cpp:1068
 msgid "Could not connect to host."
 msgstr "Η σύνδεση με τον απομακρυσμένο Η/Υ απέτυχε"
 
-#: src/game.cpp:1036
+#: src/game.cpp:1076
 msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:1049
+#: src/game.cpp:1089
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:1055 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2097
+#: src/game.cpp:1095 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2099
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1097
 #, fuzzy
 msgid "Author"
 msgstr "αγκάθια"
 
-#: src/game.cpp:1058
+#: src/game.cpp:1098
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:1099
 #, fuzzy
 msgid "Size"
 msgstr "Λοχίας"
 
-#: src/game.cpp:1078
-msgid "B"
-msgstr ""
-
-#: src/game.cpp:1081 src/show_dialog.cpp:960
-msgid "KB"
-msgstr ""
-
-#: src/game.cpp:1084
-msgid "MB"
-msgstr ""
-
-#: src/game.cpp:1101
+#: src/game.cpp:1124
 msgid "Publish campaign: "
 msgstr ""
 
-#: src/game.cpp:1105
+#: src/game.cpp:1128
 msgid "Delete campaign: "
 msgstr ""
 
-#: src/game.cpp:1109
+#: src/game.cpp:1132
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:1113
+#: src/game.cpp:1136
 msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:1113
+#: src/game.cpp:1136
 msgid "Get Campaign"
 msgstr ""
 
-#: src/game.cpp:1132
+#: src/game.cpp:1155
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1151
+#: src/game.cpp:1174
 msgid "Campaign Installed"
 msgstr ""
 
-#: src/game.cpp:1151
+#: src/game.cpp:1174
 msgid "The campaign has been installed."
 msgstr ""
 
-#: src/game.cpp:1153
+#: src/game.cpp:1176
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1155
+#: src/game.cpp:1178
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1157
+#: src/game.cpp:1180
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1169 src/game.cpp:1208 src/game.cpp:1233
+#: src/game.cpp:1192 src/game.cpp:1231 src/game.cpp:1256
 #: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1172 src/game.cpp:1210 src/game.cpp:1235
+#: src/game.cpp:1195 src/game.cpp:1233 src/game.cpp:1258
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1176
+#: src/game.cpp:1199
 msgid "Terms"
 msgstr ""
 
-#: src/game.cpp:1213 src/game.cpp:1238
+#: src/game.cpp:1236 src/game.cpp:1261
 msgid "Response"
 msgstr ""
 
-#: src/game.cpp:1251
+#: src/game.cpp:1274
 msgid "Join Official Server"
 msgstr "Συνδεθείτε με τον Επίσημο Εξυπηρέτη"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1274
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1252 src/multiplayer_lobby.cpp:207
+#: src/game.cpp:1275 src/multiplayer_lobby.cpp:207
 msgid "Join Game"
 msgstr "Συνδεθείτε σε Δικτυακό Παιχνίδι"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1275
 msgid "Join a server or hosted game"
 msgstr "Συνδεθείτε με έναν εξυπηρέτη ή με απομακρυσμένο Η/Υ"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1276
 #, fuzzy
 msgid "Host Networked Game"
 msgstr "Ξεκινήστε Δικτυακό Παιχνίδι"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1276
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:1254
+#: src/game.cpp:1277
 #, fuzzy
 msgid "Hotseat Game"
 msgstr "Δημιουργία Παιχνιδιού"
 
-#: src/game.cpp:1254
+#: src/game.cpp:1277
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
-#: src/game.cpp:1255
+#: src/game.cpp:1278
 msgid "Human vs AI"
 msgstr ""
 
-#: src/game.cpp:1255
+#: src/game.cpp:1278
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1258 src/multiplayer_client.cpp:311
+#: src/game.cpp:1281 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1333
+#: src/game.cpp:1356
 msgid "Language"
 msgstr "Γλώσσα"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1357
 msgid "Choose your preferred language"
 msgstr "Επιλέξτε τη γλώσσα που προτιμάτε"
 
-#: src/game.cpp:1372
+#: src/game.cpp:1395
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1373
+#: src/game.cpp:1396
 msgid "' (The game will now exit)"
 msgstr ""
 
@@ -6654,7 +6660,7 @@ msgstr "Απαιτούμενη Εμπειρία"
 msgid "attacks"
 msgstr "επιθέσεις"
 
-#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2096
+#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2098
 msgid "Type"
 msgstr "Τύπος"
 
@@ -6782,7 +6788,7 @@ msgstr ""
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1664
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1666
 msgid "Villages"
 msgstr "Χωριά"
 
@@ -6943,7 +6949,7 @@ msgstr ""
 msgid "Receiving game list..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:132 src/playturn.cpp:1760
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1762
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Χρυσά"
@@ -7098,7 +7104,7 @@ msgid "Color"
 msgstr "Χρώμα"
 
 #: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
-#: src/playlevel.cpp:807 src/playturn.cpp:1663 src/playturn.cpp:1670
+#: src/playlevel.cpp:810 src/playturn.cpp:1665 src/playturn.cpp:1672
 msgid "Gold"
 msgstr "Χρυσά"
 
@@ -7130,61 +7136,61 @@ msgstr ""
 msgid "Quit"
 msgstr "Έξοδος"
 
-#: src/playlevel.cpp:566 src/playlevel.cpp:826
+#: src/playlevel.cpp:569 src/playlevel.cpp:829
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:733
 msgid "Defeat"
 msgstr ""
 
-#: src/playlevel.cpp:731
+#: src/playlevel.cpp:734
 msgid "You have been defeated!"
 msgstr ""
 
-#: src/playlevel.cpp:797
+#: src/playlevel.cpp:800
 msgid "Remaining gold"
 msgstr ""
 
-#: src/playlevel.cpp:800
+#: src/playlevel.cpp:803
 msgid "Early finish bonus"
 msgstr ""
 
-#: src/playlevel.cpp:802
+#: src/playlevel.cpp:805
 msgid "per turn"
 msgstr ""
 
-#: src/playlevel.cpp:803
+#: src/playlevel.cpp:806
 msgid "Turns finished early"
 msgstr ""
 
-#: src/playlevel.cpp:805
+#: src/playlevel.cpp:808
 msgid "Bonus"
 msgstr ""
 
-#: src/playlevel.cpp:812
+#: src/playlevel.cpp:815
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
-#: src/playlevel.cpp:812
+#: src/playlevel.cpp:815
 msgid "Retained Gold"
 msgstr ""
 
-#: src/playlevel.cpp:816
+#: src/playlevel.cpp:819
 msgid "Victory"
 msgstr "Νίκη"
 
-#: src/playlevel.cpp:817
+#: src/playlevel.cpp:820
 msgid "You have emerged victorious!"
 msgstr "Αναδειχθήκατε νικητής!"
 
-#: src/playlevel.cpp:820
+#: src/playlevel.cpp:823
 #, fuzzy
 msgid "Scenario Report"
 msgstr "Αρχή Σεναρίου"
 
-#: src/playlevel.cpp:841
+#: src/playlevel.cpp:844
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7237,201 +7243,201 @@ msgstr ""
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/playturn.cpp:1478
+#: src/playturn.cpp:1480
 msgid "Rename Unit"
 msgstr ""
 
-#: src/playturn.cpp:1526 src/playturn.cpp:1540 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
 msgid "Error"
 msgstr ""
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1528
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1539
 msgid "Saved"
 msgstr ""
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1539
 msgid "The game has been saved"
 msgstr "Το παιχνίδι αποθηκεύτηκε"
 
-#: src/playturn.cpp:1662
+#: src/playturn.cpp:1664
 msgid "Leader"
 msgstr "Ηγέτης"
 
-#: src/playturn.cpp:1666
+#: src/playturn.cpp:1668
 msgid "Upkeep"
 msgstr "Συντήρηση"
 
-#: src/playturn.cpp:1667
+#: src/playturn.cpp:1669
 msgid "Income"
 msgstr "Εισόδημα"
 
-#: src/playturn.cpp:1766
+#: src/playturn.cpp:1768
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/playturn.cpp:1778
+#: src/playturn.cpp:1780
 msgid "Recruit"
 msgstr "Στρατολόγηση"
 
-#: src/playturn.cpp:1779 src/playturn.cpp:1963
+#: src/playturn.cpp:1781 src/playturn.cpp:1965
 msgid "Select unit"
 msgstr "Επιλέξτε"
 
-#: src/playturn.cpp:1813
+#: src/playturn.cpp:1815
 msgid "You don't have enough gold to recruit that unit"
 msgstr ""
 
-#: src/playturn.cpp:1871
+#: src/playturn.cpp:1873
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1873
+#: src/playturn.cpp:1875
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
 
-#: src/playturn.cpp:1878
+#: src/playturn.cpp:1880
 msgid "her"
 msgstr ""
 
-#: src/playturn.cpp:1878
+#: src/playturn.cpp:1880
 msgid "him"
 msgstr ""
 
-#: src/playturn.cpp:1919
+#: src/playturn.cpp:1921
 msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/playturn.cpp:1921
+#: src/playturn.cpp:1923
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/playturn.cpp:1927
+#: src/playturn.cpp:1929
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 
-#: src/playturn.cpp:1950
+#: src/playturn.cpp:1952
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/playturn.cpp:1962
+#: src/playturn.cpp:1964
 msgid "Recall"
 msgstr "Ανάκληση"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid "Message"
 msgstr "Μήνυμα"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid "Send to allies only"
 msgstr ""
 
-#: src/playturn.cpp:2102
+#: src/playturn.cpp:2104
 msgid "Location"
 msgstr ""
 
-#: src/playturn.cpp:2150
+#: src/playturn.cpp:2152
 msgid "Unit List"
 msgstr "Λίστα Μονάδων"
 
-#: src/playturn.cpp:2185 src/playturn.cpp:2247
+#: src/playturn.cpp:2187 src/playturn.cpp:2249
 msgid "Recruits"
 msgstr "Στρατολογήσατε"
 
-#: src/playturn.cpp:2191 src/playturn.cpp:2251
+#: src/playturn.cpp:2193 src/playturn.cpp:2253
 msgid "Recalls"
 msgstr "Ανακαλέσατε"
 
-#: src/playturn.cpp:2197 src/playturn.cpp:2255
+#: src/playturn.cpp:2199 src/playturn.cpp:2257
 msgid "Advancements"
 msgstr "Προάγατε"
 
-#: src/playturn.cpp:2203 src/playturn.cpp:2259
+#: src/playturn.cpp:2205 src/playturn.cpp:2261
 msgid "Losses"
 msgstr "Χάσατε"
 
-#: src/playturn.cpp:2209 src/playturn.cpp:2263
+#: src/playturn.cpp:2211 src/playturn.cpp:2265
 msgid "Kills"
 msgstr "Σκοτώσατε"
 
-#: src/playturn.cpp:2215
+#: src/playturn.cpp:2217
 msgid "Damage Inflicted"
 msgstr ""
 
-#: src/playturn.cpp:2221
+#: src/playturn.cpp:2223
 msgid "Damage Taken"
 msgstr ""
 
-#: src/playturn.cpp:2227
+#: src/playturn.cpp:2229
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2236
 msgid "Damage Taken (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2240
+#: src/playturn.cpp:2242
 msgid "Statistics"
 msgstr "Στατιστικά"
 
-#: src/playturn.cpp:2277
+#: src/playturn.cpp:2279
 msgid "Search"
 msgstr ""
 
-#: src/playturn.cpp:2287
+#: src/playturn.cpp:2289
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/playturn.cpp:2298
+#: src/playturn.cpp:2300
 msgid "Chat Log"
 msgstr ""
 
-#: src/playturn.cpp:2363
+#: src/playturn.cpp:2365
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2456
+#: src/playturn.cpp:2458
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2457
+#: src/playturn.cpp:2459
 msgid "Label"
 msgstr ""
 
-#: src/playturn.cpp:2589
+#: src/playturn.cpp:2591
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2642
+#: src/playturn.cpp:2644
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2643
+#: src/playturn.cpp:2645
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2644
+#: src/playturn.cpp:2646
 msgid "Abort game"
 msgstr "Ματαίωση παιχνιδιού"
 
-#: src/playturn.cpp:2647
+#: src/playturn.cpp:2649
 msgid "Replace with "
 msgstr ""
 
-#: src/playturn.cpp:2651
+#: src/playturn.cpp:2653
 msgid "has left the game. What do you want to do?"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-28 22:56+0100\n"
+"POT-Creation-Date: 2005-02-02 21:17+0100\n"
 "PO-Revision-Date: 2005-01-07 23:01+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -46,11 +46,11 @@ msgstr "Úvod"
 msgid "Gameplay"
 msgstr "Hra"
 
-#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2100
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2102
 msgid "Traits"
 msgstr "Vlastnosti"
 
-#: data/help.cfg:28 src/playturn.cpp:1665
+#: data/help.cfg:28 src/playturn.cpp:1667
 msgid "Units"
 msgstr "Jednotky"
 
@@ -2335,7 +2335,12 @@ msgstr "Dedina"
 msgid "Hills"
 msgstr "Kopce"
 
-#: data/terrain.cfg:288 data/terrain.cfg:297
+#: data/terrain.cfg:288
+#, fuzzy
+msgid "Snow Hills"
+msgstr "Dedina"
+
+#: data/terrain.cfg:297
 #, fuzzy
 msgid "Desert Hills"
 msgstr "Vymaž súbor"
@@ -2403,13 +2408,13 @@ msgid "End Turn"
 msgstr "Koniec kola"
 
 #: data/themes/default.cfg:153 src/dialogs.cpp:661 src/display.cpp:972
-#: src/help.cpp:1060 src/playturn.cpp:2098 src/unit.cpp:1055
+#: src/help.cpp:1060 src/playturn.cpp:2100 src/unit.cpp:1055
 msgid "HP"
 msgstr "Životy"
 
 #: data/themes/default.cfg:162 src/dialogs.cpp:665 src/dialogs.cpp:673
-#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1938
-#: src/playturn.cpp:2099 src/unit.cpp:1114
+#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1940
+#: src/playturn.cpp:2101 src/unit.cpp:1114
 msgid "XP"
 msgstr "Skúsenosti"
 
@@ -2511,10 +2516,12 @@ msgstr ""
 "skúsenú armádu."
 
 #: data/tips.cfg:7
+#, fuzzy
 msgid ""
-"All units have a Zone of Control in each of the hexes next to them. If a "
-"unit moves into an enemy's Zone of Control, it may not move any further that "
-"turn."
+"Units have a Zone of Control in each of the hexes next to them. If a unit "
+"moves into an enemy's Zone of Control, it may not move any further that "
+"turn. Level 0 units are too frail to control a zone; and skirmisher units "
+"are skilled enough to ignore these zones."
 msgstr ""
 "Každá jednotka má 'pod kontrolou' vedľajšie políčka mapy. Ak sa jednotka "
 "pohne do oblasti pod kontrolou súpera, nemôže sa v tom kole ďalej pohybovať."
@@ -2898,7 +2905,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:18
 #: data/units/Princess.cfg:56 data/units/Sergeant.cfg:20
-#: data/units/Warrior_King.cfg:20 src/actions.cpp:353 src/actions.cpp:458
+#: data/units/Warrior_King.cfg:20 src/actions.cpp:349 src/actions.cpp:450
 msgid "leadership"
 msgstr "velenie"
 
@@ -2978,7 +2985,7 @@ msgstr ""
 
 #: data/translations/english.cfg:83 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
-#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:486
+#: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:477
 msgid "steadfast"
 msgstr "neoblomný"
 
@@ -3484,7 +3491,7 @@ msgstr "sečný"
 #: data/units/Assassin.cfg:26 data/units/Assassin.cfg:105
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
 #: data/units/Rogue.cfg:86 data/units/Shadow.cfg:25 data/units/Thief.cfg:25
-#: data/units/Thief.cfg:62 src/actions.cpp:477
+#: data/units/Thief.cfg:62 src/actions.cpp:468
 msgid "backstab"
 msgstr "zákerný"
 
@@ -3849,8 +3856,8 @@ msgstr "kopija"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:363
-#: src/actions.cpp:468
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:359
+#: src/actions.cpp:459
 msgid "charge"
 msgstr "výpad"
 
@@ -3872,7 +3879,7 @@ msgstr ""
 msgid "gaze"
 msgstr "pohľad"
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:711 src/actions.cpp:857
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:709 src/actions.cpp:855
 #: src/reports.cpp:123
 msgid "stone"
 msgstr "kameň"
@@ -7293,87 +7300,87 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
-#: src/actions.cpp:203
+#: src/actions.cpp:211
 msgid "none"
 msgstr "nič"
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1005
+#: src/actions.cpp:280 src/dialogs.cpp:693 src/display.cpp:1005
 #: src/help.cpp:1130 src/reports.cpp:231
 msgid "melee"
 msgstr "zblízka"
 
-#: src/actions.cpp:272 src/dialogs.cpp:693 src/display.cpp:1006
+#: src/actions.cpp:280 src/dialogs.cpp:693 src/display.cpp:1006
 #: src/help.cpp:1130 src/reports.cpp:232
 msgid "ranged"
 msgstr "na diaľku"
 
-#: src/actions.cpp:322 src/actions.cpp:426
+#: src/actions.cpp:329 src/actions.cpp:429
 msgid "base damage"
 msgstr "základné zranenie"
 
-#: src/actions.cpp:331
-msgid "attacker resistance vs"
-msgstr "útočníkova odolnosť voči"
-
-#: src/actions.cpp:331
-msgid "attacker vulnerability vs"
-msgstr "zraniteľnosť útočníka voči"
-
-#: src/actions.cpp:363 src/actions.cpp:468 src/actions.cpp:477
+#: src/actions.cpp:359 src/actions.cpp:459 src/actions.cpp:468
 msgid "Doubled"
 msgstr "Dvojnásobné"
 
-#: src/actions.cpp:379 src/actions.cpp:501
+#: src/actions.cpp:367
+msgid "attacker resistance vs"
+msgstr "útočníkova odolnosť voči"
+
+#: src/actions.cpp:367
+msgid "attacker vulnerability vs"
+msgstr "zraniteľnosť útočníka voči"
+
+#: src/actions.cpp:381 src/actions.cpp:499
 msgid "total damage"
 msgstr "celkové zranenie"
 
-#: src/actions.cpp:435
-msgid "defender resistance vs"
-msgstr "obrancova odolnosť voči"
-
-#: src/actions.cpp:435
-msgid "defender vulnerability vs"
-msgstr "zraniteľnosť obrancu voči"
-
-#: src/actions.cpp:486
+#: src/actions.cpp:477
 msgid "Halved"
 msgstr "Polovičné"
 
-#: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:948
+#: src/actions.cpp:485
+msgid "defender resistance vs"
+msgstr "obrancova odolnosť voči"
+
+#: src/actions.cpp:485
+msgid "defender vulnerability vs"
+msgstr "zraniteľnosť obrancu voči"
+
+#: src/actions.cpp:695 src/actions.cpp:840 src/display.cpp:948
 #: src/reports.cpp:116
 msgid "poisoned"
 msgstr "otrávený"
 
-#: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:944
+#: src/actions.cpp:700 src/actions.cpp:845 src/display.cpp:944
 #: src/reports.cpp:111
 msgid "slowed"
 msgstr "spomalený"
 
-#: src/actions.cpp:1723
+#: src/actions.cpp:1721
 msgid "Ambushed!"
 msgstr "Prepad!"
 
-#: src/actions.cpp:1751
+#: src/actions.cpp:1749
 msgid "Friendly unit sighted"
 msgstr "Vidím priateľskú jednotku"
 
-#: src/actions.cpp:1753
+#: src/actions.cpp:1751
 msgid "Enemy unit sighted!"
 msgstr "Vidím nepriateľskú jednotku!"
 
-#: src/actions.cpp:1758
+#: src/actions.cpp:1756
 msgid "$friends Friendly units sighted"
 msgstr "Vidím $friends priateľských jednotiek"
 
-#: src/actions.cpp:1760
+#: src/actions.cpp:1758
 msgid "$enemies Enemy units sighted!"
 msgstr "Vidím $enemies nepriateľských jednotiek!"
 
-#: src/actions.cpp:1764
+#: src/actions.cpp:1762
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr "Vidím jednotky! (priatelia: $friends, nepriatelia: $enemies)"
 
-#: src/actions.cpp:1779
+#: src/actions.cpp:1777
 msgid "(press $hotkey to continue)"
 msgstr "(stlač $hotkey a pokračujeme)"
 
@@ -7417,11 +7424,11 @@ msgstr "%a %b %d %H:%M %Y"
 msgid "#(Invalid)"
 msgstr "#(Neplatný)"
 
-#: src/dialogs.cpp:363 src/game.cpp:964
+#: src/dialogs.cpp:363 src/game.cpp:968
 msgid "Campaign"
 msgstr "Výprava"
 
-#: src/dialogs.cpp:365 src/game.cpp:1258
+#: src/dialogs.cpp:365 src/game.cpp:1281
 msgid "Multiplayer"
 msgstr "Zápas"
 
@@ -7433,7 +7440,7 @@ msgstr "Výcvik"
 msgid "replay"
 msgstr "záznam"
 
-#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1514
+#: src/dialogs.cpp:377 src/multiplayer_lobby.cpp:96 src/playturn.cpp:1516
 msgid "Turn"
 msgstr "Kolo"
 
@@ -7441,11 +7448,11 @@ msgstr "Kolo"
 msgid "Scenario Start"
 msgstr "Spusti mapu"
 
-#: src/dialogs.cpp:382 src/game.cpp:994
+#: src/dialogs.cpp:382 src/game.cpp:998
 msgid "Difficulty"
 msgstr "Zložitosť"
 
-#: src/dialogs.cpp:384 src/game.cpp:1056 src/titlescreen.cpp:165
+#: src/dialogs.cpp:384 src/game.cpp:1096 src/titlescreen.cpp:165
 msgid "Version"
 msgstr "Verzia"
 
@@ -7505,12 +7512,12 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/dialogs.cpp:640 src/display.cpp:954 src/help.cpp:1015
-#: src/playturn.cpp:1937
+#: src/playturn.cpp:1939
 msgid "level"
 msgstr "Úroveň"
 
 #: src/dialogs.cpp:678 src/display.cpp:988 src/help.cpp:1061
-#: src/playturn.cpp:2101 src/unit.cpp:1091
+#: src/playturn.cpp:2103 src/unit.cpp:1091
 msgid "Moves"
 msgstr "Ťahy"
 
@@ -7530,25 +7537,25 @@ msgstr "Bepa-Roman.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Chceš uložiť záznam prejdenia tejto mapy?"
 
-#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1523
+#: src/game.cpp:137 src/game.cpp:195 src/playturn.cpp:1525
 msgid "Name:"
 msgstr "Názov:"
 
-#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1540
+#: src/game.cpp:145 src/game.cpp:202 src/playturn.cpp:1542
 msgid "The game could not be saved"
 msgstr "Nepodarilo sa uložiť hru"
 
-#: src/game.cpp:167 src/game.cpp:903 src/game.cpp:1293
+#: src/game.cpp:167 src/game.cpp:907 src/game.cpp:1316
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Nepodarilo sa uložiť hru"
 
-#: src/game.cpp:170 src/game.cpp:905 src/game.cpp:1295
+#: src/game.cpp:170 src/game.cpp:909 src/game.cpp:1318
 #, fuzzy
 msgid "Error while playing the game: "
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:173 src/game.cpp:1307
+#: src/game.cpp:173 src/game.cpp:1330
 #, fuzzy
 msgid "The game map could not be loaded: "
 msgstr "Nepodarilo sa uložiť hru"
@@ -7565,211 +7572,211 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
-#: src/game.cpp:835 src/multiplayer_connect.cpp:108
+#: src/game.cpp:839 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr "Toto je uložená hra z inej verzie programu. Mám sa ju pokúsiť načítať?"
 
-#: src/game.cpp:843 src/game.cpp:846
+#: src/game.cpp:847 src/game.cpp:850
 #, fuzzy
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/game.cpp:849
+#: src/game.cpp:853
 msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
-#: src/game.cpp:954
+#: src/game.cpp:958
 #, fuzzy
 msgid "Get More Campaigns..."
 msgstr " ,Ďalšie výpravy..."
 
-#: src/game.cpp:955
+#: src/game.cpp:959
 msgid "Download more campaigns from a server on Internet."
 msgstr "Stiahni si ďalšie výpravy z internetového servera."
 
-#: src/game.cpp:965
+#: src/game.cpp:969
 msgid "Choose the campaign you want to play:"
 msgstr "Vyber si, ktorú výpravu chceš hrať:"
 
-#: src/game.cpp:995
+#: src/game.cpp:999
 msgid "Select difficulty level:"
 msgstr "Vyber si náročnosť:"
 
-#: src/game.cpp:1014
+#: src/game.cpp:1024
+msgid "B"
+msgstr "B"
+
+#: src/game.cpp:1027 src/show_dialog.cpp:960
+msgid "KB"
+msgstr "KB"
+
+#: src/game.cpp:1030
+msgid "MB"
+msgstr "MB"
+
+#: src/game.cpp:1054
 msgid "Connect to Server"
 msgstr "Pripoj sa na server"
 
-#: src/game.cpp:1015
+#: src/game.cpp:1055
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr "Teraz sa pripojíš na server výprav, aby si si stiahol výpravy."
 
-#: src/game.cpp:1016
+#: src/game.cpp:1056
 msgid "Server: "
 msgstr "Server:"
 
-#: src/game.cpp:1028
+#: src/game.cpp:1068
 msgid "Could not connect to host."
 msgstr "Neviem sa pripojiť na server."
 
-#: src/game.cpp:1036
+#: src/game.cpp:1076
 msgid "Awaiting response from server"
 msgstr "Čakám na odpoveď servera"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1089
 msgid "Error communicating with the server."
 msgstr "Chyba pri komunikácii so serverom."
 
-#: src/game.cpp:1055 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2097
+#: src/game.cpp:1095 src/help.cpp:1084 src/help.cpp:1085 src/playturn.cpp:2099
 msgid "Name"
 msgstr "Meno"
 
-#: src/game.cpp:1057
+#: src/game.cpp:1097
 #, fuzzy
 msgid "Author"
 msgstr "tŕne"
 
-#: src/game.cpp:1058
+#: src/game.cpp:1098
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:1099
 #, fuzzy
 msgid "Size"
 msgstr "Siréna"
 
-#: src/game.cpp:1078
-msgid "B"
-msgstr "B"
-
-#: src/game.cpp:1081 src/show_dialog.cpp:960
-msgid "KB"
-msgstr "KB"
-
-#: src/game.cpp:1084
-msgid "MB"
-msgstr "MB"
-
-#: src/game.cpp:1101
+#: src/game.cpp:1124
 msgid "Publish campaign: "
 msgstr "Publikuj výpravu:"
 
-#: src/game.cpp:1105
+#: src/game.cpp:1128
 msgid "Delete campaign: "
 msgstr "Vymaž výpravu:"
 
-#: src/game.cpp:1109
+#: src/game.cpp:1132
 msgid "There are no campaigns available for download from this server."
 msgstr "Na tomto serveri nie sú k dispozícii žiadne výpravy."
 
-#: src/game.cpp:1113
+#: src/game.cpp:1136
 msgid "Choose the campaign to download."
 msgstr "Vyber si výpravu, ktorú chceš stiahnuť."
 
-#: src/game.cpp:1113
+#: src/game.cpp:1136
 msgid "Get Campaign"
 msgstr "Stiahni výpravu"
 
-#: src/game.cpp:1132
+#: src/game.cpp:1155
 msgid "Downloading campaign..."
 msgstr "Sťahujem výpravu..."
 
-#: src/game.cpp:1151
+#: src/game.cpp:1174
 msgid "Campaign Installed"
 msgstr "Výprava nainštalovaná"
 
-#: src/game.cpp:1151
+#: src/game.cpp:1174
 msgid "The campaign has been installed."
 msgstr "Výprava je nainštalovaná."
 
-#: src/game.cpp:1153
+#: src/game.cpp:1176
 msgid "Network communication error."
 msgstr "Chyba pri komunikácii na sieti."
 
-#: src/game.cpp:1155
+#: src/game.cpp:1178
 msgid "Remote host disconnected."
 msgstr "Server sa odpojil"
 
-#: src/game.cpp:1157
+#: src/game.cpp:1180
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr "Nastala chyba pri vytváraní inštalačných súborov tejto výpravy."
 
-#: src/game.cpp:1169 src/game.cpp:1208 src/game.cpp:1233
+#: src/game.cpp:1192 src/game.cpp:1231 src/game.cpp:1256
 #: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
-#: src/game.cpp:1172 src/game.cpp:1210 src/game.cpp:1235
+#: src/game.cpp:1195 src/game.cpp:1233 src/game.cpp:1258
 msgid "The server responded with an error: \""
 msgstr "Server ohlásil chybu: \""
 
-#: src/game.cpp:1176
+#: src/game.cpp:1199
 msgid "Terms"
 msgstr "Podmienky"
 
-#: src/game.cpp:1213 src/game.cpp:1238
+#: src/game.cpp:1236 src/game.cpp:1261
 msgid "Response"
 msgstr "Odpoveď"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1274
 msgid "Join Official Server"
 msgstr "Prihlás sa na Wesnoth"
 
-#: src/game.cpp:1251
+#: src/game.cpp:1274
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Prihlás sa na oficiálny server Wesnothu"
 
-#: src/game.cpp:1252 src/multiplayer_lobby.cpp:207
+#: src/game.cpp:1275 src/multiplayer_lobby.cpp:207
 msgid "Join Game"
 msgstr "Pridaj sa k hre"
 
-#: src/game.cpp:1252
+#: src/game.cpp:1275
 msgid "Join a server or hosted game"
 msgstr "Pridaj sa na server alebo do založenej hry"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1276
 msgid "Host Networked Game"
 msgstr "Založ sieťovú hru"
 
-#: src/game.cpp:1253
+#: src/game.cpp:1276
 msgid "Host a game without using a server"
 msgstr "Založ novú hru bez pomoci servera"
 
-#: src/game.cpp:1254
+#: src/game.cpp:1277
 msgid "Hotseat Game"
 msgstr "Horúce kreslo"
 
-#: src/game.cpp:1254
+#: src/game.cpp:1277
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Hrajte zápas viacerí na jednom stroji"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1278
 msgid "Human vs AI"
 msgstr "Človek proti počítaču"
 
-#: src/game.cpp:1255
+#: src/game.cpp:1278
 msgid "Play a game against AI opponents"
 msgstr "Hraj zápas proti počítačovým súperom"
 
-#: src/game.cpp:1258 src/multiplayer_client.cpp:311
+#: src/game.cpp:1281 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr "Prihlásenie"
 
-#: src/game.cpp:1333
+#: src/game.cpp:1356
 msgid "Language"
 msgstr "Jazyk"
 
-#: src/game.cpp:1334
+#: src/game.cpp:1357
 msgid "Choose your preferred language"
 msgstr "Vyber si vhodný jazyk"
 
-#: src/game.cpp:1372
+#: src/game.cpp:1395
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1373
+#: src/game.cpp:1396
 #, fuzzy
 msgid "' (The game will now exit)"
 msgstr "Hra skončila."
@@ -7790,7 +7797,7 @@ msgstr "Potrebné skúsenosti"
 msgid "attacks"
 msgstr "útoky"
 
-#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2096
+#: src/help.cpp:1088 src/help.cpp:1089 src/playturn.cpp:2098
 msgid "Type"
 msgstr "Typ"
 
@@ -7920,7 +7927,7 @@ msgstr "Iterácie"
 msgid "Bump Size"
 msgstr "Hrúbka"
 
-#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1664
+#: src/mapgen_dialog.cpp:87 src/playturn.cpp:1666
 msgid "Villages"
 msgstr "Dediny"
 
@@ -8087,7 +8094,7 @@ msgstr "Upozornenie"
 msgid "Receiving game list..."
 msgstr "Zisťujem zoznam hier..."
 
-#: src/multiplayer_client.cpp:132 src/playturn.cpp:1760
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1762
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Zlato"
@@ -8243,7 +8250,7 @@ msgid "Color"
 msgstr "Farba"
 
 #: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
-#: src/playlevel.cpp:807 src/playturn.cpp:1663 src/playturn.cpp:1670
+#: src/playlevel.cpp:810 src/playturn.cpp:1665 src/playturn.cpp:1672
 msgid "Gold"
 msgstr "Zlato"
 
@@ -8275,61 +8282,61 @@ msgstr "Pozoruj hru"
 msgid "Quit"
 msgstr "Koniec"
 
-#: src/playlevel.cpp:566 src/playlevel.cpp:826
+#: src/playlevel.cpp:569 src/playlevel.cpp:829
 msgid "The file you have tried to load is corrupt"
 msgstr "Súbor, ktorý si chcel načítať, je poškodený"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:733
 msgid "Defeat"
 msgstr "Prehra"
 
-#: src/playlevel.cpp:731
+#: src/playlevel.cpp:734
 msgid "You have been defeated!"
 msgstr "Prehral si!"
 
-#: src/playlevel.cpp:797
+#: src/playlevel.cpp:800
 msgid "Remaining gold"
 msgstr "Zostávajúce zlato"
 
-#: src/playlevel.cpp:800
+#: src/playlevel.cpp:803
 msgid "Early finish bonus"
 msgstr "Bonus za rýchly koniec"
 
-#: src/playlevel.cpp:802
+#: src/playlevel.cpp:805
 msgid "per turn"
 msgstr "za ťah"
 
-#: src/playlevel.cpp:803
+#: src/playlevel.cpp:806
 msgid "Turns finished early"
 msgstr "Ušetrené kolá"
 
-#: src/playlevel.cpp:805
+#: src/playlevel.cpp:808
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:812
+#: src/playlevel.cpp:815
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% zlata sa prenáša do ďalšej mapy"
 
-#: src/playlevel.cpp:812
+#: src/playlevel.cpp:815
 msgid "Retained Gold"
 msgstr "Uchované zlato"
 
-#: src/playlevel.cpp:816
+#: src/playlevel.cpp:819
 msgid "Victory"
 msgstr "Víťazstvo"
 
-#: src/playlevel.cpp:817
+#: src/playlevel.cpp:820
 msgid "You have emerged victorious!"
 msgstr "Zvíťazil si!"
 
-#: src/playlevel.cpp:820
+#: src/playlevel.cpp:823
 #, fuzzy
 msgid "Scenario Report"
 msgstr "Spusti mapu"
 
-#: src/playlevel.cpp:841
+#: src/playlevel.cpp:844
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8380,15 +8387,15 @@ msgstr "Automatické uloženie"
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Nepodarilo sa automaticky uložiť hru. Prosím uložte hru pomocou menu."
 
-#: src/playturn.cpp:1478
+#: src/playturn.cpp:1480
 msgid "Rename Unit"
 msgstr "Premenuj jednotku"
 
-#: src/playturn.cpp:1526 src/playturn.cpp:1540 src/show_dialog.cpp:388
+#: src/playturn.cpp:1528 src/playturn.cpp:1542 src/show_dialog.cpp:388
 msgid "Error"
 msgstr "Chyba"
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1528
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -8396,43 +8403,43 @@ msgstr ""
 "Názvy uložených hier nesmú obsahovať bodkočiarky, lomky, ani opačné lomky. "
 "Prosím zadajte iný názov."
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1539
 msgid "Saved"
 msgstr "Uložená"
 
-#: src/playturn.cpp:1537
+#: src/playturn.cpp:1539
 msgid "The game has been saved"
 msgstr "Hra bola uložená"
 
-#: src/playturn.cpp:1662
+#: src/playturn.cpp:1664
 msgid "Leader"
 msgstr "Veliteľ"
 
-#: src/playturn.cpp:1666
+#: src/playturn.cpp:1668
 msgid "Upkeep"
 msgstr "Žold"
 
-#: src/playturn.cpp:1667
+#: src/playturn.cpp:1669
 msgid "Income"
 msgstr "Príjem"
 
-#: src/playturn.cpp:1766
+#: src/playturn.cpp:1768
 msgid "You have no units available to recruit."
 msgstr "Nemôžeš verbovať žiadne jednotky"
 
-#: src/playturn.cpp:1778
+#: src/playturn.cpp:1780
 msgid "Recruit"
 msgstr "Verbuj"
 
-#: src/playturn.cpp:1779 src/playturn.cpp:1963
+#: src/playturn.cpp:1781 src/playturn.cpp:1965
 msgid "Select unit"
 msgstr "Vyber si jednotku"
 
-#: src/playturn.cpp:1813
+#: src/playturn.cpp:1815
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Nemáš dosť zlata, aby si naverboval túto jednotku"
 
-#: src/playturn.cpp:1871
+#: src/playturn.cpp:1873
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -8440,7 +8447,7 @@ msgstr ""
 "Môj pane, táto jednotka je skúsená a bola povýšená! Chcete $noun naozaj "
 "rozpustiť?"
 
-#: src/playturn.cpp:1873
+#: src/playturn.cpp:1875
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -8448,19 +8455,19 @@ msgstr ""
 "Môj pane, táto jednotka má byť čoskoro povýšená! Chcete $noun naozaj "
 "rozpustiť?"
 
-#: src/playturn.cpp:1878
+#: src/playturn.cpp:1880
 msgid "her"
 msgstr "ju"
 
-#: src/playturn.cpp:1878
+#: src/playturn.cpp:1880
 msgid "him"
 msgstr "ho"
 
-#: src/playturn.cpp:1919
+#: src/playturn.cpp:1921
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Si ďaleko od svojich vojakov a nemôžeš ich privolať"
 
-#: src/playturn.cpp:1921
+#: src/playturn.cpp:1923
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -8468,121 +8475,121 @@ msgstr ""
 "Nemáš koho privolať\n"
 "(Z predchádzajúcej mapy neprežil žiaden veterán)"
 
-#: src/playturn.cpp:1927
+#: src/playturn.cpp:1929
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Musíš mať aspoň $cost zlatých, aby si privolal jednotku"
 
-#: src/playturn.cpp:1950
+#: src/playturn.cpp:1952
 msgid "Dismiss Unit"
 msgstr "Prepusti jednotku"
 
-#: src/playturn.cpp:1962
+#: src/playturn.cpp:1964
 msgid "Recall"
 msgstr "Privolaj"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid "Message"
 msgstr "Správa"
 
-#: src/playturn.cpp:2007
+#: src/playturn.cpp:2009
 msgid "Send to allies only"
 msgstr "Pošli iba spojencom"
 
-#: src/playturn.cpp:2102
+#: src/playturn.cpp:2104
 msgid "Location"
 msgstr "Poloha"
 
-#: src/playturn.cpp:2150
+#: src/playturn.cpp:2152
 msgid "Unit List"
 msgstr "Zoznam jednotiek"
 
-#: src/playturn.cpp:2185 src/playturn.cpp:2247
+#: src/playturn.cpp:2187 src/playturn.cpp:2249
 msgid "Recruits"
 msgstr "Naverbovaných"
 
-#: src/playturn.cpp:2191 src/playturn.cpp:2251
+#: src/playturn.cpp:2193 src/playturn.cpp:2253
 msgid "Recalls"
 msgstr "Privolaných"
 
-#: src/playturn.cpp:2197 src/playturn.cpp:2255
+#: src/playturn.cpp:2199 src/playturn.cpp:2257
 msgid "Advancements"
 msgstr "Povýšených"
 
-#: src/playturn.cpp:2203 src/playturn.cpp:2259
+#: src/playturn.cpp:2205 src/playturn.cpp:2261
 msgid "Losses"
 msgstr "Padlých"
 
-#: src/playturn.cpp:2209 src/playturn.cpp:2263
+#: src/playturn.cpp:2211 src/playturn.cpp:2265
 msgid "Kills"
 msgstr "Zabitých"
 
-#: src/playturn.cpp:2215
+#: src/playturn.cpp:2217
 msgid "Damage Inflicted"
 msgstr "Spôsobené zranenie"
 
-#: src/playturn.cpp:2221
+#: src/playturn.cpp:2223
 msgid "Damage Taken"
 msgstr "Utŕžené zranenie"
 
-#: src/playturn.cpp:2227
+#: src/playturn.cpp:2229
 msgid "Damage Inflicted (EV)"
 msgstr "Spôsobené zranenie (odhad)"
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2236
 msgid "Damage Taken (EV)"
 msgstr "Utŕžené zranenie (odhad)"
 
-#: src/playturn.cpp:2240
+#: src/playturn.cpp:2242
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/playturn.cpp:2277
+#: src/playturn.cpp:2279
 msgid "Search"
 msgstr "Hľadaj"
 
-#: src/playturn.cpp:2287
+#: src/playturn.cpp:2289
 msgid "prompt^Command:"
 msgstr "Príkaz:"
 
-#: src/playturn.cpp:2298
+#: src/playturn.cpp:2300
 msgid "Chat Log"
 msgstr "Záznam rozhovoru"
 
-#: src/playturn.cpp:2363
+#: src/playturn.cpp:2365
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Neviem nájsť značku ani jednotku, ktorá má v názve '$search'."
 
-#: src/playturn.cpp:2456
+#: src/playturn.cpp:2458
 msgid "Place Label"
 msgstr "Umiestni značku"
 
-#: src/playturn.cpp:2457
+#: src/playturn.cpp:2459
 msgid "Label"
 msgstr "Značka"
 
-#: src/playturn.cpp:2589
+#: src/playturn.cpp:2591
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr "Hry sa rozladili a treba ich ukončiť. Mám uložiť chybovú správu z hry?"
 
-#: src/playturn.cpp:2642
+#: src/playturn.cpp:2644
 msgid "Replace with AI"
 msgstr "Nahraď počítačom"
 
-#: src/playturn.cpp:2643
+#: src/playturn.cpp:2645
 msgid "Replace with local player"
 msgstr "Nahraď iným hráčom"
 
-#: src/playturn.cpp:2644
+#: src/playturn.cpp:2646
 msgid "Abort game"
 msgstr "Zruš hru"
 
-#: src/playturn.cpp:2647
+#: src/playturn.cpp:2649
 msgid "Replace with "
 msgstr "Nahradiť "
 
-#: src/playturn.cpp:2651
+#: src/playturn.cpp:2653
 msgid "has left the game. What do you want to do?"
 msgstr "opustil hru. Čo chceš urobiť?"
 
