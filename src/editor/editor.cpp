@@ -261,7 +261,7 @@ void map_editor::edit_flood_fill() {
 	map_undo_action action;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
 		to_invalidate.push_back((*it).first);
-		action.add((*it).second, palette_.selected_terrain(),
+		action.add_terrain((*it).second, palette_.selected_terrain(),
 			   (*it).first);
 	}
 	add_undo_action(action);
@@ -301,7 +301,7 @@ void map_editor::edit_fill_selection() {
 	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
 		 it != selected_hexes_.end(); it++) {
 		if (map_.on_board(*it)) {
-			undo_action.add(map_.get_terrain(*it), palette_.selected_terrain(), *it);
+			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_terrain(), *it);
 			map_.set_terrain(*it, palette_.selected_terrain());
 		}
 	}
@@ -332,20 +332,17 @@ void map_editor::edit_paste() {
 		const int x_offset = start_hex.x - clipboard_offset_loc_.x;
 		const int y_offset = start_hex.y - clipboard_offset_loc_.y;
 		gamemap::location target = get_hex_with_offset(l, x_offset, y_offset);
-			/*gamemap::location target(start_hex.x + (*it).x_offset, start_hex.y + (*it).y_offset); 
-		if (is_odd(clipboard_offset_loc_.x - start_hex.x) && is_odd(target.x - start_hex.x) ) {
-			target.y--;
-			}*/
 		if (map_.on_board(target)) {
-			undo_action.add(map_.get_terrain(target), (*it).terrain, target);
+			undo_action.add_terrain(map_.get_terrain(target), (*it).terrain, target);
 			map_.set_terrain(target, (*it).terrain);
 			filled.insert(target);
 			gui_.add_highlighted_loc(target);
 		}
 	}
+	undo_action.set_selection(filled, selected_hexes_);
 	invalidate_all_and_adjacent(filled);
 	selected_hexes_ = filled;
-	add_undo_action(undo_action);
+	add_undo_action(undo_action, false);
 }
 
 void map_editor::edit_revert() {
@@ -441,31 +438,40 @@ void map_editor::toggle_grid() {
 	gui_.invalidate_all();
 }
 
-void map_editor::add_undo_action(const map_undo_action &action) {
+void map_editor::add_undo_action(map_undo_action &action, const bool keep_selection) {
+	if (keep_selection) {
+		action.set_selection(selected_hexes_, selected_hexes_);
+	}
 	undo_stack_.push_back(action);
 	if(undo_stack_.size() > undo_limit) {
 		undo_stack_.pop_front();
 	}
+	// Adding an undo action means that an operations was performed,
+	// which in turns means that no further redo may be performed.
+	redo_stack_.clear();
 	num_operations_since_save_++;
 }
 
 void map_editor::undo() {
 	if(!undo_stack_.empty()) {
 		--num_operations_since_save_;
-		// Clear the selected hexes to avoid some weirdness from occuring.
-		selected_hexes_.clear();
-		gui_.clear_highlighted_locs();
 		map_undo_action action = undo_stack_.back();
+		selected_hexes_ = action.undo_selection();
+		highlight_selected_hexes(true);
 		std::vector<gamemap::location> to_invalidate;
-		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it = action.undo_terrains().begin();
+		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it =
+				action.undo_terrains().begin();
 		    it != action.undo_terrains().end(); ++it) {
 			map_.set_terrain(it->first, it->second);
 			to_invalidate.push_back(it->first);
 		}
 		undo_stack_.pop_back();
 		redo_stack_.push_back(action);
-		if(redo_stack_.size() > undo_limit)
+		if(redo_stack_.size() > undo_limit) {
 			redo_stack_.pop_front();
+		}
+		std::copy(selected_hexes_.begin(), selected_hexes_.end(),
+				  std::back_inserter(to_invalidate));
 		invalidate_all_and_adjacent(to_invalidate);
 	}
 }
@@ -473,10 +479,9 @@ void map_editor::undo() {
 void map_editor::redo() {
 	if(!redo_stack_.empty()) {
 		++num_operations_since_save_;
-		// Clear the selected hexes to avoid some weirdness from occuring.
-		selected_hexes_.clear();
-		gui_.clear_highlighted_locs();
 		map_undo_action action = redo_stack_.back();
+		selected_hexes_ = action.redo_selection();
+		highlight_selected_hexes(true);
 		std::vector<gamemap::location> to_invalidate;
 		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it =
 				action.redo_terrains().begin();
@@ -486,8 +491,22 @@ void map_editor::redo() {
 		}
 		redo_stack_.pop_back();
 		undo_stack_.push_back(action);
-		add_undo_action(action);
+		if (undo_stack_.size() > undo_limit) {
+			undo_stack_.pop_front();
+		}
+		std::copy(selected_hexes_.begin(), selected_hexes_.end(),
+				  std::back_inserter(to_invalidate));
 		invalidate_all_and_adjacent(to_invalidate);
+	}
+}
+
+void map_editor::highlight_selected_hexes(const bool clear_old) {
+	if (clear_old) {
+		gui_.clear_highlighted_locs();
+	}
+	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
+		 it != selected_hexes_.end(); it++) {
+		gui_.add_highlighted_loc(*it);
 	}
 }
 
@@ -596,7 +615,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 					    it != locs.end(); ++it) {
 						if(palette_.selected_terrain() != map_[it->x][it->y]) {
 							to_invalidate.push_back(*it);
-							action.add(map_[it->x][it->y], palette_.selected_terrain(), *it);
+							action.add_terrain(map_[it->x][it->y], palette_.selected_terrain(), *it);
 							map_.set_terrain(*it, palette_.selected_terrain());
 						}
 					}
@@ -636,7 +655,7 @@ void map_editor::perform_selection_move() {
 		const gamemap::location hl_loc =
 			get_hex_with_offset(*it, x_diff, y_diff);
 		if (map_.on_board(hl_loc)) {
-			undo_action.add(map_.get_terrain(hl_loc), map_.get_terrain(*it), hl_loc);
+			undo_action.add_terrain(map_.get_terrain(hl_loc), map_.get_terrain(*it), hl_loc);
 			gui_.add_highlighted_loc(hl_loc);
 			map_.set_terrain(hl_loc, map_.get_terrain(*it));
 			new_selection.insert(hl_loc);
@@ -646,21 +665,22 @@ void map_editor::perform_selection_move() {
 	// Fill the selection with the selected terrain.
 	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
 		if (map_.on_board(*it) && new_selection.find(*it) == new_selection.end()) {
-			undo_action.add(map_.get_terrain(*it), palette_.selected_terrain(), *it);
+			undo_action.add_terrain(map_.get_terrain(*it), palette_.selected_terrain(), *it);
 			map_.set_terrain(*it, palette_.selected_terrain());
 		}
 	}
+	undo_action.set_selection(new_selection, selected_hexes_);
 	invalidate_all_and_adjacent(selected_hexes_);
 	selected_hexes_ = new_selection;
 	invalidate_all_and_adjacent(selected_hexes_);
-	add_undo_action(undo_action);
+	add_undo_action(undo_action, false);
 }
 
 void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 							  const gamemap::location hex) {
-	redo_stack_.clear();
 	const gamemap::TERRAIN current_terrain = map_[hex.x][hex.y];
-	add_undo_action(map_undo_action(current_terrain, terrain, hex));
+	map_undo_action undo_action(current_terrain, terrain, hex);
+	add_undo_action(undo_action);
 	map_.set_terrain(hex, terrain);
 	invalidate_adjacent(hex);
 }

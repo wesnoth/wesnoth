@@ -32,27 +32,46 @@ class map_undo_action
 public:
 	map_undo_action() {
 	}
+
 	map_undo_action(const gamemap::TERRAIN& old_tr,
 			const gamemap::TERRAIN& new_tr,
 			const gamemap::location& lc){
-		add(old_tr, new_tr, lc);
+		add_terrain(old_tr, new_tr, lc);
 	}
+
  	const std::map<gamemap::location,gamemap::TERRAIN>& undo_terrains() const {
- 		return old_;
+ 		return old_terrain_;
  	}
+
  	const std::map<gamemap::location,gamemap::TERRAIN>& redo_terrains() const {
- 		return new_;
+ 		return new_terrain_;
  	}
-	void add(const gamemap::TERRAIN& old_tr,
+
+	const std::set<gamemap::location> undo_selection() const {
+		return old_selection_;
+	}
+	const std::set<gamemap::location> redo_selection() const {
+		return new_selection_;
+	}
+
+	void add_terrain(const gamemap::TERRAIN& old_tr,
 		 const gamemap::TERRAIN& new_tr,
 		 const gamemap::location& lc) {
-		old_[lc] = old_tr;
-		new_[lc] = new_tr;
+		old_terrain_[lc] = old_tr;
+		new_terrain_[lc] = new_tr;
+	}
+
+	void set_selection(const std::set<gamemap::location> &new_selection,
+					   const std::set<gamemap::location> &old_selection) {
+		new_selection_ = new_selection;
+		old_selection_ = old_selection;
 	}
 
 private:
-	std::map<gamemap::location,gamemap::TERRAIN> old_;
-	std::map<gamemap::location,gamemap::TERRAIN> new_;
+	std::map<gamemap::location,gamemap::TERRAIN> old_terrain_;
+	std::map<gamemap::location,gamemap::TERRAIN> new_terrain_;
+	std::set<gamemap::location> new_selection_;
+	std::set<gamemap::location> old_selection_;
 };
 
 typedef std::deque<map_undo_action> map_undo_list;
@@ -204,8 +223,11 @@ private:
 
 	/// Add an undo action to the undo stack. Resize the stack if it
 	/// gets larger than the maximum size. Add an operation to the
-	/// number done since save.
-	void add_undo_action(const map_undo_action &action);
+	/// number done since save. If keep_selection is true, it indicates
+	/// that the selection has not changed and the currently selected
+	/// terrain should be kept if this action is redone/undone. Also
+	/// clear the redo stack.
+	void add_undo_action(map_undo_action &action, const bool keep_selection=true);
 
 	/// Update the selection and highlightning of the hexes the mouse
 	/// currently is over.
@@ -225,6 +247,12 @@ private:
 
 	/// Return a string represeting the terrain and the underlying ones.
 	std::string get_terrain_string(const gamemap::TERRAIN);
+
+	/// Highlight the currently selected hexes. If clear_old is true the
+	/// old highlighting is cleared, otherwise the current selection is
+	/// only added, which may leave old selected terrain still
+	/// highlighted.
+	void highlight_selected_hexes(const bool clear_old=true);
 
 	/// An item in the clipboard. Consists of the copied terrain and an
 	/// offset. When pasting stuff, the offset is used to calculate
