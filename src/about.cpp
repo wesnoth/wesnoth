@@ -52,6 +52,7 @@ std::vector<std::string> get_text() {
 
 		_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
+		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
 		"-   Guillaume Melquiond (silene)",
 		"-   Isaac Clerencia",
@@ -65,7 +66,6 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+General Purpose Administrators"),
-		"-   Cedric Duval",
 		"-   Crossbow/Miyo",
 		"+ ",
 
