@@ -274,7 +274,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	const int border_size = 6;
 
-	const int max_line_length = 58;
+	const int max_line_length = 54;
 
 	std::string message = msg;
 	const size_t longest_line = text_to_lines(message,max_line_length);

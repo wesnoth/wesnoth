@@ -165,9 +165,12 @@ void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcds
 			continue;
 		}
 
-		if(!enemy && un_it->second.can_recruit()) {
+		if(!enemy && (un_it->second.can_recruit() || un_it->second.stone())) {
 			continue;
 		}
+
+		//if it's an enemy unit, reset its moves while we do the calculations
+		const unit_movement_resetter move_resetter(un_it->second,enemy);
 
 		//insert the trivial moves of staying on the same location
 		if(un_it->second.movement_left() == un_it->second.total_movement()) {
