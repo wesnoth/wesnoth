@@ -1,21 +1,30 @@
 CVS HEAD:
  * added and improved unit images and castle images
+ * reduced Dwarvish Fighter hitpoints to 36
+ * reduced Dwarvish Lord hitpoints to 75 and changed ranged attack to 10-2
+ * increased Dwarvish Steelclad hitpoints to 50 and melee attack to 11-3
  * new units:
    * Lizardman
+ * multiplayer improvements:
+   * added Lieutenant to Loyalists in Age of Heroes era
  * updated translations:
    * catalan
    * french
+ * made scrollbars faster by avoiding unnecessary redraws
+ * Added HOME and END keys support in textboxes
  * implemented mid-scenario changing of some side detail
  * attack and defence weighting improvements
- * made scrollbars faster by avoiding unnecessary redraws
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
  * fixed statistics showing incorrectly on all but scenario 1
  * fixed infliced damage labels being not always displayed
  * fixed strange name-endings in name generator
  * fixed bug where Scepter of Fire scenario is loaded instead of scenarios after the Scepter of Fire
+ * fixed messages and options not found by make_translation (#7415)
+ * fixed keeps located on the border of the screen having broken graphics
+ * fixed bug in Desert of Death scenario
+ * fixed textbox-content slow to update when it was larger than the textbox size
  * fixed networking bug
  * added fixes for OSX from Sithrandel
- * autotools signed char detection fix, now it uses C++ compiler
  * minor modifications to slacknoth
  * code cleanups
 
