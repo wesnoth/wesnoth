@@ -28,6 +28,7 @@
 
 #include <algorithm>
 #include <cstdio>
+#include <iostream>
 #include <iterator>
 #include <sstream>
 

@@ -14,7 +14,6 @@
 #define TERRAIN_H_INCLUDED
 
 class config;
-#include "sdl_utils.hpp"
 
 #include <map>
 #include <string>
@@ -35,8 +34,6 @@ public:
 
 	//the underlying type of the terrain
 	const std::string& type() const;
-
-	pixel_data get_rgb() const;
 
 	bool is_light() const;
 	bool is_alias() const;
@@ -60,8 +57,6 @@ private:
 	char letter_;
 	std::string type_;
 
-	pixel_data colour_;
-
 	int height_adjust_;
 
 	double submerge_;
@@ -74,6 +69,6 @@ private:
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          std::vector<char>& terrain_precedence,
                          std::map<char,terrain_type>& letter_to_terrain,
-						 std::map<std::string,terrain_type>& str_to_terrain);
+			 std::map<std::string,terrain_type>& str_to_terrain);
 
 #endif

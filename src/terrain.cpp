@@ -46,8 +46,6 @@ terrain_type::terrain_type(const config& cfg)
 		type_ = alias;
 	}
 
-	colour_.read(cfg);
-
 	height_adjust_ = atoi(cfg["unit_height_adjust"].c_str());
 	submerge_ = atof(cfg["submerge"].c_str());
 
@@ -82,11 +80,6 @@ char terrain_type::letter() const
 const std::string& terrain_type::type() const
 {
 	return type_;
-}
-
-pixel_data terrain_type::get_rgb() const
-{
-	return colour_;
 }
 
 bool terrain_type::is_light() const
