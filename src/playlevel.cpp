@@ -68,6 +68,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		   (*level)["disallow_recall"] != "yes")
 			ngold = state_of_game.gold;
 
+		const gamemap::location& start_pos =
+		             map.starting_position(new_unit.side());
+
+		if(!start_pos.valid()) {
+			std::stringstream err;
+			err << "No starting position for side " << new_unit.side();
+			throw gamestatus::load_game_failed(err.str());
+		}
+
 		units.insert(std::pair<gamemap::location,unit>(
 					     map.starting_position(new_unit.side()), new_unit));
 		teams.push_back(team(**ui,ngold));

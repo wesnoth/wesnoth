@@ -796,6 +796,11 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 	for(std::vector<gamemap::TERRAIN>::const_iterator i = terrains.begin();
 	    i != terrains.end(); ++i) {
 		SDL_Surface* const image = getTerrain(*i,image::SCALED,-1,-1);
+		if(image == NULL) {
+			std::cerr << "image for terrain '" << *i << "' not found\n";
+			return;
+		}
+
 		if(x + image->w >= this->x() || y + image->h >= this->y()) {
 			std::cout << "terrain palette can't fit: " << x + image->w << " > " << this->x() << " or " << y+image->h << " > " << this->y() << "\n";
 			return;
@@ -845,13 +850,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
                         double highlight_ratio, Pixel blend_with)
 
 {
-	if(map_.on_board(gamemap::location(x,y))) {
-		SDL_Surface* const tile = getTerrain(map_[x][y],image::UNSCALED,x,y);
-		SDL_Surface* minitile = scale_surface(tile,4,4);
-
-		SDL_FreeSurface(minitile);
-	}
-
 	if(updatesLocked_)
 		return;
 
@@ -1450,7 +1448,13 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 
 	image += direction + ".png";
 
-	return image::get_image(image,image_type);
+	SDL_Surface* im = image::get_image(image,image_type);
+	if(im == NULL) {
+		im = image::get_image("terrain/" +
+		        map_.get_terrain_info(terrain).default_image() + ".png");
+	}
+
+	return im;
 }
 
 void display::blit_surface(int x, int y, SDL_Surface* surface)
@@ -1530,8 +1534,14 @@ SDL_Surface* display::getMinimap(int w, int h)
 					cache_map::iterator i = cache.find(terrain);
 
 					if(i == cache.end()) {
-						SDL_Surface* const tile = getTerrain(map_[x][y],
+						SDL_Surface* const tile = getTerrain(terrain,
 						                                image::UNSCALED,x,y);
+						if(tile == NULL) {
+							std::cerr << "Could not get image for terrrain '"
+							          << terrain << "'\n";
+							continue;
+						}
+
 						SDL_Surface* const minitile = scale_surface(tile,scale,
 						                                                 scale);
 						i = cache.insert(
