@@ -144,6 +144,7 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
     key_(key), gui_(gui), map_(map), teams_(teams), team_num_(team_num),
     units_(units), browse_(browse),
     left_button_(false), right_button_(false), middle_button_(false),
+	 minimap_scrolling_(false),
     enemy_paths_(false), path_turns_(0), end_turn_(false)
 {
 }
@@ -235,7 +236,17 @@ void turn_info::handle_event(const SDL_Event& event)
 
 		break;
 	case SDL_MOUSEMOTION:
-		mouse_motion(event.motion);
+		// ignore old mouse motion events in the event queue
+		SDL_Event new_event;
+
+		if(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
+					SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0) {
+			while(SDL_PeepEvents(&new_event,1,SDL_GETEVENT,
+						SDL_EVENTMASK(SDL_MOUSEMOTION)) > 0);
+			mouse_motion(new_event.motion);
+		} else {
+			mouse_motion(event.motion);
+		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 	case SDL_MOUSEBUTTONUP:
@@ -250,6 +261,26 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 {
 	if(commands_disabled)
 		return;
+
+	if(minimap_scrolling_) {
+		//if the game is run in a window, we could miss a LMB up event
+		// if it occrus outside our window.
+		// thus, we need to check if the LMB is still down
+		minimap_scrolling_ = SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0;
+		if(minimap_scrolling_) {
+			const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
+			if(loc.valid()) {
+				if(loc != last_hex_) {
+					last_hex_ = loc;
+					gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+				}
+			} else {
+				// clicking outside of the minimap will end minimap scrolling
+				minimap_scrolling_ = false;
+			}
+		}
+		if(minimap_scrolling_) return;
+	}
 
 	const team& current_team = teams_[team_num_-1];
 	const gamemap::location new_hex = gui_.hex_clicked_on(event.x,event.y);
@@ -324,8 +355,10 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
 	if(commands_disabled)
 		return;
-	
-	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
+
+	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_RELEASED) {
+		minimap_scrolling_ = false;
+	} else if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
 		left_click(event);
 	} else if(event.button == SDL_BUTTON_RIGHT && event.state == SDL_PRESSED) {
 		if(!current_paths_.routes.empty()) {
@@ -375,8 +408,12 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 {
 	const team& current_team = teams_[team_num_-1];
 
+	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
+	minimap_scrolling_ = false;
 	if(loc.valid()) {
+		minimap_scrolling_ = true;
+		last_hex_ = loc;
 		gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
 		return;
 	}

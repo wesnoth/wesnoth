@@ -127,6 +127,7 @@ private:
 	bool browse_;
 
 	bool left_button_, right_button_, middle_button_;
+	bool minimap_scrolling_;
 	gamemap::location next_unit_;
 	paths current_paths_;
 	paths::route current_route_;
