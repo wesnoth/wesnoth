@@ -35,47 +35,50 @@ namespace {
 
 bool show_intro_part(display& screen, const config& part);
 
+void display_intro(display& screen, const config::child_list& parts,
+		const std::string& music_file) {
+
+	bool showing = true;
+
+	//play music if available
+	if(music_file != "") {
+		sound::play_music(music_file);
+	}
+
+	//display parts, but stop if ESC is pressed while displaying one
+	for(std::vector<config*>::const_iterator p = parts.begin(); p != parts.end() && showing ; ++p){
+		showing = show_intro_part(screen, **p);
+	}
+}
+
 void show_intro(display& screen, const config& data)
 {
 	std::cerr << "showing intro sequence...\n";
+
+	//stop the screen being resized while we're in this function
 	const events::resize_lock stop_resizing;
 	const events::event_context context;
 
-	const std::string& music = data["music"];
-	if(music != "") {
-		sound::play_music(music);
+	config::all_children_iterator i = data.ordered_begin();
+	std::pair<const std::string*, const config*> item = *i;
+
+	if(*item.first == "if") {
+		const std::string type = game_events::conditional_passed(
+				NULL, *item.second) ? "then":"else";
+		const config* const thens = (*item.second).child(type);
+		if(thens == NULL) {
+			std::cerr << "no intro story this way...\n";
+			return;
+		}
+		const config& selection = *thens;
+		show_intro(screen, selection);
+	}else{
+		const config::child_list& parts = data.get_children("part");
+		const std::string& music_file = data["music"];
+		display_intro(screen, parts, music_file);
 	}
 
-	bool showing = true;
-	
-	// it seems the best way to allow "if" tags in the story 
-	// is to use a little nested loop, like so.
-	for (config::all_children_iterator i = data.ordered_begin();
-		 showing && i != data.ordered_end(); ++i) {
-
-		const std::pair<const std::string*, const config*> item = *i;
-		if (*item.first == "if") {
-			const std::string type = game_events::conditional_passed(
-							NULL, *item.second) ? "then":"else";
-				
-			const config::child_list& thens = (*item.second).get_children(type);
-			for (config::child_list::const_iterator t = thens.begin();
-				 showing && t != thens.end(); ++t) {
-
-				const config::child_list& parts = (**t).get_children("part");
-				for (config::child_list::const_iterator p = parts.begin();
-					 showing && p != parts.end(); ++p) {
-					 
-					showing = show_intro_part(screen, **p);
-				}
-			}
-		}
-		else if (*item.first == "part") {
-			showing = show_intro_part(screen, *item.second);
-		}
-	}
 	std::cerr << "intro sequence finished...\n";
-			
 }
 
 bool show_intro_part(display& screen, const config& part)

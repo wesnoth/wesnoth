@@ -315,6 +315,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "b... " << (SDL_GetTicks() - ticks) << "\n";
 
+	//this *needs* to be created before the show_intro and show_map_scene
+	//as that functions use the manager state_of_game 
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
 
