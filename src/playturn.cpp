@@ -2433,6 +2433,14 @@ void turn_info::do_command(const std::string& str)
 				gui_.invalidate_unit();
 			}
 		}
+	} else if(game_config::debug && cmd == "create" && map_.on_board(last_hex_)) {
+		const game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.find(data);
+		if(i == gameinfo_.unit_types.end()) {
+			return;
+		}
+
+		units_.erase(last_hex_);
+		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit(&i->second,1,false)));
 	}
 }
 
