@@ -23,16 +23,6 @@ warning4786WorkAround() {}
 
 static warning4786WorkAround VariableThatHacksWarning4786IntoBeingMutedForSomeUnknownReason;
 
-#include <cmath>
-
-namespace std
-{
-
-using ::floor;
-using ::sqrt;
-
-}
-
 //put the mathematical functions where they belong: in the std namespace
 //it is necessary for VC6 at least
 #include <cmath>
