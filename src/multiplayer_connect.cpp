@@ -261,7 +261,7 @@ void mp_connect::lists_init()
 	player_types_.push_back("-----");
 	player_types_.push_back(preferences::login());
 
-	//Races
+	//Factions
 	const config::child_itors sides = level_->child_range("side");
 
 	const config* const era_cfg = cfg_->find_child("era","id",era_);
@@ -360,10 +360,10 @@ void mp_connect::set_area(const SDL_Rect& rect)
 			                          _("Player/Type"),0,0);
 	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
 	                _("Player/Type"),(left+30)+(launch_.width()/2)-(labelr.w/2),top+35);
-	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Race"),0,0);
+	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Faction"),0,0);
 
 	font::draw_text(disp_,rect,14,font::GOOD_COLOUR,
-	                _("Race"),(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
+	                _("Faction"),(left+145)+(launch_.width()/2)-(labelr.w/2),top+35);
 	
 	labelr = font::draw_text(NULL,rect,14,font::GOOD_COLOUR,_("Team"),0,0);
 
@@ -491,7 +491,7 @@ void mp_connect::gui_update()
 			combos_type_[n].set_selected(3);
 		}
 
-		//Player Race
+		//Player Faction
 		for (size_t m = 0; m != player_races_.size(); ++m) {
 			if (side["name"] == player_races_[m]) {
 				combos_race_[n].set_selected(m);

@@ -27,6 +27,7 @@ public:
 	void draw();
 
 	void set_location(int valx, int valy);
+	void set_width(int new_width);
 	void set_selected(int val);
 	void set_items(const std::vector<std::string>& items);
 

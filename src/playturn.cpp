@@ -1376,6 +1376,15 @@ void turn_info::load_game()
 	}
 }
 
+namespace {
+
+bool is_illegal_file_char(char c)
+{
+	return c == '/' || c == '\\' || c == ':';
+}
+
+}
+
 void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)
 {
 	std::stringstream stream;
@@ -1386,7 +1395,15 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 		label = message;
 	}
 
+	label.erase(std::remove_if(label.begin(),label.end(),is_illegal_file_char),label.end());
+
 	const int res = dialog_type == gui::NULL_DIALOG ? 0 : dialogs::get_save_name(gui_,message,_("Name:"),&label,dialog_type);
+
+	if(std::count_if(label.begin(),label.end(),is_illegal_file_char)) {
+		gui::show_dialog(gui_,NULL,_("Error"),_("Save names may not contain colons, slashes, or backslashes. Please choose a different name."),gui::OK_ONLY);
+		save_game(message,dialog_type);
+		return;
+	}
 
 	if(res == 0) {
 		config snapshot;
@@ -1394,7 +1411,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 		try {
 			recorder.save_game(gameinfo_,label,snapshot,state_of_game_.starting_pos);
 			if(dialog_type != gui::NULL_DIALOG) {
-				gui::show_dialog(gui_,NULL,"",_("The game has been saved"), gui::OK_ONLY);
+				gui::show_dialog(gui_,NULL,_("Error"),_("The game has been saved"), gui::OK_ONLY);
 			}
 		} catch(gamestatus::save_game_failed& e) {
 			gui::show_dialog(gui_,NULL,"",_("The game could not be saved"),gui::MESSAGE);

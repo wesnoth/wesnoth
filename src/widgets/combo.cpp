@@ -38,6 +38,11 @@ int combo::width() const
 	return button_.width();
 }
 
+void combo::set_width(int new_width)
+{
+	button_.set_width(new_width);
+}
+
 int combo::selected() const
 {
 	return selected_;
