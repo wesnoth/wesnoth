@@ -23,7 +23,9 @@ public:
 
 	int height() const;
 	int width() const;
-
+	/// Return the width of the area where the items are. That is, the
+	/// width excluding the scrollbar.
+	int item_area_width() const;
 	int selection() const;
 
 	void set_loc(int x, int y);

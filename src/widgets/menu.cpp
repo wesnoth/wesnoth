@@ -116,6 +116,10 @@ int menu::width() const
 	return width_;
 }
 
+int menu::item_area_width() const {
+	return width() - scrollbar_.get_width();
+}
+
 int menu::selection() const { return selected_; }
 
 void menu::set_loc(int x, int y)

@@ -276,7 +276,11 @@ void help_menu::handle_event(const SDL_Event &event) {
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			SDL_MouseButtonEvent mouse_event = event.button;
 			if (mouse_event.button == SDL_BUTTON_LEFT) {
-				clicked_ = true;
+				if (mousex < get_rect().x + item_area_width()) {
+					// See to that only clicks on items are noticed, not
+					// scrollbar clicks.
+					clicked_ = true;
+				}
 			}
 		}
 		menu::handle_event(event);
@@ -307,8 +311,8 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec) {
 	topic_list::const_iterator tit =
 		std::find(sec.topics.begin(), sec.topics.end(), t);
 	if (tit != sec.topics.end()) {
-			expand(sec);
-			return true;
+		expand(sec);
+		return true;
 	}
 	section_list::const_iterator sit;
 	for (sit = sec.sections.begin(); sit != sec.sections.end(); sit++) {
@@ -321,8 +325,8 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec) {
 }
 
 void help_menu::select_topic(const topic &t) {
-	if (chosen_topic_ != NULL && *chosen_topic_ == t) {
-		// The requested toic is already selected.
+	if (selected_item_ == t) {
+		// The requested topic is already selected.
 		return;
 	}
 	if (select_topic_internal(t, toplevel_)) {
@@ -347,14 +351,14 @@ int help_menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
  		if (clicked_) {
 			clicked_ = false;
  			if (selected_item_.sec != NULL) {
- 				// Open or close a section if it is double clicked.
+ 				// Open or close a section if it is clicked.
  				expanded(*selected_item_.sec) ? contract(*selected_item_.sec)
  					: expand(*selected_item_.sec);
  				update_visible_items(toplevel_);
  				display_visible_items();
  			}
  			else if (selected_item_.t != NULL) {
- 				/// Choose a topic if it is double clicked.
+ 				/// Choose a topic if it is clicked.
  				chosen_topic_ = selected_item_.t;
  			}
 		}

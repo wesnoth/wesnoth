@@ -161,7 +161,8 @@ private:
 	/// Draw the currently visible items.
 	void display_visible_items();
 	
-	/// Internal recursive thingie.
+	/// Internal recursive thingie. did_expand will be true if any
+	/// section was expanded, otherwise untouched.
 	bool select_topic_internal(const topic &t, const section &sec);
 
 	display &disp_;
