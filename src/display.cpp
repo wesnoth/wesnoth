@@ -2092,9 +2092,9 @@ void display::create_buttons()
 		std::cerr << "c\n";
 		b.set_location(loc.x,loc.y);
 
-//		if(rects_overlap(b.location(),map_area())) {
-//			b.set_volatile(true);
-//		}
+		if(rects_overlap(b.location(),map_area())) {
+			b.set_volatile(true);
+		}
 
 		std::cerr << "d\n";
 		buttons_.push_back(b);
@@ -2140,6 +2140,9 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 		str << font::NULL_MARKUP << "*" << speaker << "*";
 	}
 
+	std::stringstream message_str;
+	message_str << font::NULL_MARKUP << msg;
+
 	SDL_Color speaker_colour = {255,255,255,255};
 	if(side >= 1) {
 		speaker_colour = font::get_side_colour(side);
@@ -2150,7 +2153,7 @@ void display::add_chat_message(const std::string& speaker, int side, const std::
 	                                                   rect.x+chat_message_x,rect.y+ypos,
 													   0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 
-	const int message_handle = font::add_floating_label(msg,12,chat_message_colour,
+	const int message_handle = font::add_floating_label(message_str.str(),12,chat_message_colour,
 		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,rect.y+ypos,
 		0,0,-1,rect,font::LEFT_ALIGN,&chat_message_bg,chat_message_border);
 

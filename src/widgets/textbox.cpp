@@ -133,7 +133,7 @@ void textbox::draw()
 
 			const size_t max_height = scrollbar_.location().h;
 			const size_t proportion = (loc.h*100)/text_image_->h;
-			const size_t grip_height = (max_height*proportion)/100;
+			const size_t grip_height = maximum<size_t>((max_height*proportion)/100,scrollbar_.get_minimum_grip_height());
 			scrollbar_.set_grip_height(grip_height);
 
 			const size_t max_y = text_image_->h - loc.h;
