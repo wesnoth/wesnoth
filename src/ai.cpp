@@ -412,7 +412,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 						//actually have to check if it's invisible, since it being invisible is
 						//the only possibility
 						const unit_map::const_iterator invisible_unit = info_.units.find(adj[n]);
-						if(!ignore_zocs && invisible_unit != info_.units.end() && invisible_unit->second.stone() == false &&
+						if(!ignore_zocs && invisible_unit != info_.units.end() && invisible_unit->second.emits_zoc() &&
 						   current_team().is_enemy(invisible_unit->second.side())) {
 							to = *i;
 							steps.erase(i,steps.end());
