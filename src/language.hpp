@@ -44,6 +44,9 @@ std::vector<std::string> get_languages(config& cfg);
 //or the 2-letter version, like 'en'.
 bool set_language(const std::string& locale, config& cfg);
 
+//function which returns the name of the language currently used
+const std::string& get_language();
+
 //function which attempts to query and return the locale on the system
 std::string get_locale();
 

@@ -430,10 +430,10 @@ bool team::shrouded(size_t x, size_t y) const
 	return !shroud_[x][y];
 }
 
-void team::clear_shroud(size_t x, size_t y)
+bool team::clear_shroud(size_t x, size_t y)
 {
 	if(info_.use_shroud == false)
-		return;
+		return false;
 
 	if(x >= shroud_.size())
 		shroud_.resize(x+1);
@@ -441,7 +441,12 @@ void team::clear_shroud(size_t x, size_t y)
 	if(y >= shroud_[x].size())
 		shroud_[x].resize(y+1);
 
-	shroud_[x][y] = true;
+	if(shroud_[x][y] == false) {
+		shroud_[x][y] = true;
+		return true;
+	} else {
+		return false;
+	}
 }
 
 bool team::uses_fog() const
@@ -466,10 +471,10 @@ bool team::fogged(size_t x, size_t y) const
 		return true;
 }
 
-void team::clear_fog(size_t x, size_t y)
+bool team::clear_fog(size_t x, size_t y)
 {
 	if(info_.use_fog == false)
-		return;
+		return false;
 
 	if(x >= fog_.size())
 		fog_.resize(x+1);
@@ -477,7 +482,12 @@ void team::clear_fog(size_t x, size_t y)
 	if(y >= fog_[x].size())
 		fog_[x].resize(y+1);
 
-	fog_[x][y] = true;
+	if(fog_[x][y] == false) {
+		fog_[x][y] = true;
+		return true;
+	} else {
+		return false;
+	}
 }
 
 void team::refog()

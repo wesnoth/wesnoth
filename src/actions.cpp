@@ -997,29 +997,35 @@ int combat_modifier(const gamestatus& status,
 
 namespace {
 
-void clear_shroud_loc(const gamemap& map, team& tm,
+bool clear_shroud_loc(const gamemap& map, team& tm,
                       const gamemap::location& loc,
                       std::vector<gamemap::location>* cleared)
 {
+	bool result = false;
 	static gamemap::location adj[7];
 	get_adjacent_tiles(loc,adj);
 	adj[6] = loc;
 	for(int i = 0; i != 7; ++i) {
 		if(map.on_board(adj[i])) {
 			if(tm.fogged(adj[i].x,adj[i].y)) {
-				tm.clear_shroud(adj[i].x,adj[i].y);
-				tm.clear_fog(adj[i].x,adj[i].y);
+				const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
+				                 tm.clear_fog(adj[i].x,adj[i].y);
 
-				if(cleared != NULL) {
+				if(res && cleared != NULL) {
 					cleared->push_back(adj[i]);
 				}
+
+				result |= res;
 			}
 		}
 	}
+
+	return result;
 }
 
 //if known_units is not NULL, then the function will return true iff
-//a new unit has been seen
+//a new unit has been seen. Otherwise it will return true iff some shroud
+//is cleared
 bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team,
@@ -1048,7 +1054,11 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 		}
 	}
 
-	return false;
+	if(known_units != NULL) {
+		return false; //no new units spotted
+	} else {
+		return cleared_locations.empty() == false; //we have revealed some tiles
+	}
 }
 
 }
@@ -1059,9 +1069,24 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 	if(teams[team].uses_shroud() == false && teams[team].uses_fog() == false)
 		return false;
 
+	bool result = false;
+
+	unit_map::const_iterator i;
+	for(i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == team+1) {
+
+			//we're not really going to mutate the unit, just temporarily
+			//set its moves to maximum, but then switch them back
+			unit& mutable_unit = const_cast<unit&>(i->second);
+			const unit_movement_resetter move_resetter(mutable_unit);
+
+			result |= clear_shroud_unit(map,gamedata,units,i->first,teams,team,NULL);
+		}
+	}
+
 	teams[team].refog();
 
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+	for(i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == team+1) {
 
 			//we're not really going to mutate the unit, just temporarily
@@ -1075,7 +1100,7 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 
 	disp.recalculate_minimap();
 
-	return true;
+	return result;
 }
 
 size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,

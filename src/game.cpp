@@ -520,7 +520,12 @@ int play_game(int argc, char** argv)
 			continue;
 		} else if(res == gui::CHANGE_LANGUAGE) {
 
-			const std::vector<std::string>& langs = get_languages(game_config);
+			std::vector<std::string> langs = get_languages(game_config);
+
+			const std::vector<std::string>::iterator current = std::find(langs.begin(),langs.end(),get_language());
+			if(current != langs.end())
+				*current = "*" + *current;
+
 			const int res = gui::show_dialog(disp,NULL,"",
 			                         string_table["language_button"] + ":",
 			                         gui::OK_CANCEL,&langs);

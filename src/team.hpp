@@ -103,11 +103,11 @@ public:
 
 	bool uses_shroud() const;
 	bool shrouded(size_t x, size_t y) const;
-	void clear_shroud(size_t x, size_t y);
+	bool clear_shroud(size_t x, size_t y);
 
 	bool uses_fog() const;
 	bool fogged(size_t x, size_t y) const;
-	void clear_fog(size_t x, size_t y);
+	bool clear_fog(size_t x, size_t y);
 	void refog();
 
 	const std::string& music() const;

@@ -22,6 +22,7 @@
 
 namespace {
 	CHARSET charset_used = CHARSET_LATIN1;
+	std::string current_language;
 }
 
 CHARSET charset() { return charset_used; }
@@ -61,6 +62,8 @@ bool internal_set_language(const std::string& locale, config& cfg)
 	for(config::child_list::const_iterator i = lang.begin(); i != lang.end(); ++i) {
 		if((**i)["id"] == locale || (**i)["language"] == locale) {
 
+			current_language = (**i)["language"];
+
 			const std::string& enc = (**i)["encoding"];
 			if(enc == "UTF-8") {
 				charset_used = CHARSET_UTF8;
@@ -93,6 +96,8 @@ bool set_language(const std::string& locale, config& cfg)
 	internal_set_language("en",cfg);
 	return internal_set_language(locale,cfg);
 }
+
+const std::string& get_language() { return current_language; }
 
 std::string get_locale()
 {
