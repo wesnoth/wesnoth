@@ -560,8 +560,6 @@ void attack(display& gui, const gamemap& map,
 	a->second.remove_flag(forest_invisible);
 	static const std::string night_invisible("nightstalk");
 	a->second.remove_flag(night_invisible);
-	static const std::string sea_invisible("submerge");
-	a->second.remove_flag(sea_invisible);
 
 	battle_stats stats = evaluate_battle_stats(map, attacker, defender,
 	                                           attack_with, units, state);

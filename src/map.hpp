@@ -34,7 +34,7 @@ public:
 	//in dynamically because they're special. It's asserted that there will
 	//be corresponding entries for these types of terrain in the terrain
 	//configuration file.
-	enum { FOGGED = '~', VOID_TERRAIN = ' ', KEEP = 'K', CASTLE = 'C', VILLAGE = 't', FOREST = 'f', DEEP_SEA = 's', SEA = 'c' };
+	enum { FOGGED = '~', VOID_TERRAIN = ' ', KEEP = 'K', CASTLE = 'C', VILLAGE = 't', FOREST = 'f' };
 
 	//the name of the terrain is the terrain itself, the underlying terrain
 	//is the name of the terrain for game-logic purposes. I.e. if the terrain

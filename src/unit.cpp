@@ -308,8 +308,6 @@ void unit::new_turn()
 		set_flag("ambush");
 	if(type().has_ability("nightstalk"))
 		set_flag("nightstalk");
-	if(type().has_ability("submerge"))
-		set_flag("submerge");
 	if(stone())
 		set_attacked();
 }
@@ -442,14 +440,6 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 		static const std::string night_invisible("nightstalk");
 		if ((lawful_bonus < 0) && has_flag(night_invisible)) {
 			is_inv = true;
-		}
-		else
-		{
-			static const std::string sea_invisible("submerge");
-			if (has_flag(sea_invisible) &&
-			    (is_terrain(terrain, gamemap::SEA) || is_terrain(terrain, gamemap::DEEP_SEA))) {
-				is_inv = true;
-			}
 		}
 	}
 
