@@ -1,4 +1,4 @@
-CVS HEAD:
+Version 0.7.6:
  * added and improved unit images, leadership and healing images
  * added testing mode to move units on fog/shroud maps without updating the fog/shroud
  * lobby logo updated
@@ -33,7 +33,7 @@ CVS HEAD:
    * fixed dynamically generated terrain not showing correctly
    * fixed filename being not correctly remembered on load and save as
    * code cleanups and refactoring
- * added [store_unit], [unstore_unit], and [while] tags to WML
+ * added [store_unit], [unstore_unit], [while], [store_starting_location], [store_locations] and [store_gold] tags to WML
  * added idle AI
  * added image_healing' and 'image_leading' animation code
  * added floating labels to indicate healing/poisoning of units
@@ -296,7 +296,6 @@ Version 0.7.1:
    * hungarian
    * portuguese-brazilian
    * slovak
- * added [store_gold] tag to WML
  * defenders will choose their weapons more intelligently
  * de-elvished Gryphon Rider description and set race to human
  * fixed Cave Spider ranged attack to have slow specialty
