@@ -99,14 +99,11 @@ int main(int argc, char** argv)
 				char buf[256];
 				const std::string val(argv[++arg]);
 
+				const std::string cwd = get_cwd();
+
 				if(val[0] == '/') {
 					game_config::path = val;
-				} else if(getcwd(buf,sizeof(buf)) != NULL) {
-					std::string cwd(buf);
-
-#ifdef _WIN32
-					std::replace(cwd.begin(),cwd.end(),'\\','/');
-#endif
+				} else if(cwd != "") {
 					game_config::path = cwd + '/' + val;
 				} else {
 					std::cerr << "Could not get working directory\n";
@@ -200,7 +197,7 @@ int main(int argc, char** argv)
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
 	}
 
-	//set_language("English");
+	set_language(known_languages[0]);
 
 	if(mapdata.empty()) {
 		for(int i = 0; i != 20; ++i) {

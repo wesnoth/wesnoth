@@ -178,7 +178,6 @@ std::string get_intl_dir()
 {
 #ifdef _WIN32
 	std::string res = get_cwd() + "/po";
-	std::replace(res.begin(),res.end(),'\\','/');
 	return res;
 #else
 	return LOCALEDIR;
@@ -216,7 +215,13 @@ std::string get_cwd()
 	char buf[1024];
 	const char* const res = getcwd(buf,sizeof(buf));
 	if(res != NULL) {
-		return res;
+		std::string str(res);
+
+#ifdef WIN32
+		std::replace(str.begin(),str.end(),'\\','/');
+#endif
+
+		return str;
 	} else {
 		return "";
 	}
