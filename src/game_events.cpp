@@ -594,6 +594,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg;
 			item["type"] = *ti;
+			item["role"] = "";
 
 			std::map<gamemap::location,unit>::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {

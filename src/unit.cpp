@@ -201,6 +201,11 @@ int unit::side() const
 	return side_;
 }
 
+void unit::set_side(int new_side)
+{
+	side_ = new_side;
+}
+
 double unit::alpha() const
 {
 	return type().alpha();

@@ -141,6 +141,7 @@ private:
 	virtual void recall();
 	virtual void speak();
 	virtual void create_unit();
+	virtual void change_unit_side();
 	virtual void preferences();
 	virtual void objectives();
 	virtual void unit_list();

@@ -194,7 +194,15 @@ std::string get_dir(const std::string& dir_path)
 std::string get_user_data_dir()
 {
 #ifdef _WIN32
-	_mkdir("userdata");
+
+	static bool inited_dirs = false;
+
+	if(!inited_dirs) {
+		_mkdir("userdata");
+		_mkdir("userdata/editor");
+		_mkdir("userdata/editor/maps");
+		inited_dirs = true;
+	}
 
 	char buf[256];
 	const char* const res = getcwd(buf,sizeof(buf));
@@ -224,6 +232,10 @@ std::string get_user_data_dir()
 	DIR* dir = opendir(dir_path.c_str());
 	if(dir == NULL) {
 		const int res = mkdir(dir_path.c_str(),AccessMode);
+
+		//also create the maps directory
+		mkdir((dir_path + "/editor").c_str(),AccessMode);
+		mkdir((dir_path + "/editor/maps").c_str(),AccessMode);
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
 		} else {

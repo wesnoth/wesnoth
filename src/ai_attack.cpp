@@ -76,13 +76,21 @@ void ai::do_attack_analysis(
 
 		//see if the unit has the backstab ability -- units with backstab
 		//will want to try to have a friendly unit opposite the position they move to
-		bool backstab = false;
+		//see if the unit has the slow ability -- units with slow only attack first
+		bool backstab = false, slow = false;
 		const std::vector<attack_type>& attacks = unit_itor->second.attacks();
 		for(std::vector<attack_type>::const_iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			if(a->backstab()) {
 				backstab = true;
-				break;
 			}
+
+			if(a->slow()) {
+				slow = true;
+			}
+		}
+
+		if(slow && cur_analysis.movements.empty() == false) {
+			continue;
 		}
 
 		double best_vulnerability = 0.0, best_support = 0.0;
@@ -352,6 +360,8 @@ void ai::attack_analysis::analyze(const gamemap& map,
 
 		int defenderxp = 0;
 
+		bool defender_slowed = false;
+
 		int defhp = target_hp;
 		for(size_t i = 0; i != movements.size() && defhp; ++i) {
 			const battle_stats& stat = stats[i];
@@ -359,6 +369,13 @@ void ai::attack_analysis::analyze(const gamemap& map,
 
 			int attacks = stat.nattacks;
 			int defends = stat.ndefends;
+
+			if(defender_slowed && defends > 1) {
+				--defends;
+
+				//give an extra bonus based on slowing here
+				avg_damage_taken -= stat.damage_defender_takes;
+			}
 
 			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
@@ -389,8 +406,13 @@ void ai::attack_analysis::analyze(const gamemap& map,
 						}
 
 						atthp += stat.amount_attacker_drains;
-						if(atthp > hitpoints[i])
+						if(atthp > hitpoints[i]) {
 							atthp = hitpoints[i];
+						}
+
+						if(stat.attacker_slows && !defender_slowed && defend_it->second.has_flag("slowed") == false) {
+							defender_slowed = true;
+						}
 					}
 
 					--attacks;
@@ -413,8 +435,9 @@ void ai::attack_analysis::analyze(const gamemap& map,
 						}
 
 						defhp += stat.amount_defender_drains;
-						if(defhp > target_max_hp)
+						if(defhp > target_max_hp) {
 							defhp = target_max_hp;
+						}
 					}
 
 					--defends;

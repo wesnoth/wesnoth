@@ -94,6 +94,7 @@ public:
 	double defense_weight() const;
 
 	bool backstab() const;
+	bool slow() const;
 
 	const unit_animation& animation() const { return animation_; }
 
@@ -112,9 +113,9 @@ private:
 	double attack_weight_;
 	double defense_weight_;
 
-	//caches whether the unit can backstab. This is important
+	//caches whether the unit can backstab and slow. This is important
 	//because the AI queries it alot.
-	bool backstab_;
+	bool backstab_, slow_;
 };
 
 class unit_movement_type;

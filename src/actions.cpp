@@ -252,6 +252,9 @@ battle_stats evaluate_battle_stats(
 	res.attack_name    = attack.name();
 	res.attack_type    = attack.type();
 
+	static const std::string slow_string("slow");
+	res.attacker_slows = attack.special() == slow_string;
+
 	if(include_strings) {
 		res.attack_special = attack.special();
 		res.attack_icon = attack.icon();
@@ -402,6 +405,7 @@ battle_stats evaluate_battle_stats(
 		}
 
 		res.defender_plague = (defender_attacks[defend].special() == plague_string);
+		res.defender_slows = (defender_attacks[defend].special() == slow_string);
 
 		static const std::string first_strike = "firststrike";
 		res.defender_strikes_first = defender_attacks[defend].special() == first_strike && attack.special() != first_strike;
@@ -678,9 +682,7 @@ void attack(display& gui, const gamemap& map,
 					d->second.set_flag("poisoned");
 				}
 
-				static const std::string slow_string("slow");
-				if(stats.attack_special == slow_string &&
-				   d->second.has_flag("slowed") == false) {
+				if(stats.attacker_slows && d->second.has_flag("slowed") == false) {
 					gui.float_label(d->first,translate_string("slowed"),255,0,0);
 					d->second.set_flag("slowed");
 					if(stats.ndefends > 1)
@@ -816,9 +818,7 @@ void attack(display& gui, const gamemap& map,
 					a->second.set_flag("poisoned");
 				}
 
-				static const std::string slow_string("slow");
-				if(stats.defend_special == slow_string &&
-				   a->second.has_flag("slowed") == false) {
+				if(stats.defender_slows && a->second.has_flag("slowed") == false) {
 					gui.float_label(a->first,translate_string("slowed"),255,0,0);
 					a->second.set_flag("slowed");
 					if(stats.nattacks > 1)
