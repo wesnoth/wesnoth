@@ -78,6 +78,9 @@ namespace preferences {
 	const std::string& network_host();
 	void set_network_host(const std::string& host);
 
+	const std::string& campaign_server();
+	void set_campaign_server(const std::string& host);
+
 	const std::string& login();
 	void set_login(const std::string& username);
 

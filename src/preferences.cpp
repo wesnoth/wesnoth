@@ -368,6 +368,20 @@ void set_network_host(const std::string& host)
 	prefs["host"] = host;
 }
 
+const std::string& campaign_server()
+{
+	t_string& res = prefs["campaign_server"];
+	if(res.empty())
+		res = "campaigns.wesnoth.org";
+
+	return res;
+}
+
+void set_campaign_server(const std::string& host)
+{
+	prefs["campaign_server"] = host;
+}
+
 const std::string& login()
 {
 	t_string& res = prefs["login"];

@@ -986,7 +986,8 @@ std::string format_file_size(const std::string& size_str)
 
 void game_controller::download_campaigns()
 {
-	std::string host = "campaigns.wesnoth.org";
+	std::string host = preferences::campaign_server();
+
 	const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
 	        _("You will now connect to a campaign server to download campaigns."),
 	        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
@@ -996,6 +997,7 @@ void game_controller::download_campaigns()
 
 	const std::vector<std::string> items = utils::split(host, ':');
 	host = items.front();
+	preferences::set_campaign_server(host);
 
 	try {
 		const network::manager net_manager;
