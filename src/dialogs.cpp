@@ -441,7 +441,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 			std::vector<gui::check_item> options;
 			options.push_back(gui::check_item(_("Don't ask me again!"),false));
-			const int res = gui::show_dialog(disp,NULL,gettext(caption),gettext(message),
+			const int res = gui::show_dialog(disp,NULL,_(caption),_(message),
 			                                 gui::YES_NO,NULL,NULL,"",NULL,NULL,&options);
 
 			generate_summaries = res == 0;
