@@ -141,6 +141,8 @@ void merge_stats(stats& a, const stats& b)
 	a.recall_cost += b.recall_cost;
 	a.damage_inflicted += b.damage_inflicted;
 	a.damage_taken += b.damage_taken;
+	a.expected_damage_inflicted += b.expected_damage_inflicted;
+	a.expected_damage_taken += b.expected_damage_taken;
 }
 
 }
@@ -148,7 +150,7 @@ void merge_stats(stats& a, const stats& b)
 namespace statistics
 {
 
-stats::stats() : recruit_cost(0), recall_cost(0), damage_inflicted(0), damage_taken(0)
+stats::stats() : recruit_cost(0), recall_cost(0), damage_inflicted(0), damage_taken(0), expected_damage_inflicted(0), expected_damage_taken(0)
 {}
 
 stats::stats(const config& cfg)
@@ -179,6 +181,12 @@ config stats::write() const
 
 	sprintf(buf,"%d",damage_taken);
 	res["damage_taken"] = buf;
+
+	sprintf(buf,"%d",expected_damage_inflicted);
+	res["expected_damage_inflicted"] = buf;
+
+	sprintf(buf,"%d",expected_damage_taken);
+	res["expected_damage_taken"] = buf;
 
 	return res;
 }
@@ -221,6 +229,8 @@ void stats::read(const config& cfg)
 	recall_cost = atoi(cfg["recall_cost"].c_str());
 	damage_inflicted = atoi(cfg["damage_inflicted"].c_str());
 	damage_taken = atoi(cfg["damage_taken"].c_str());
+	expected_damage_inflicted = atoi(cfg["expected_damage_inflicted"].c_str());
+	expected_damage_taken = atoi(cfg["expected_damage_taken"].c_str());
 }
 
 disabler::disabler() { stats_disabled++; }
@@ -272,8 +282,14 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res)
 
 	push_back(attacker_res,(res == MISSES ? '0' : '1'));
 
-	attacker_stats().damage_inflicted += bat_stats.damage_defender_takes;
-	defender_stats().damage_taken += bat_stats.damage_defender_takes;
+	if(res != MISSES) {
+		attacker_stats().damage_inflicted += bat_stats.damage_defender_takes;
+		defender_stats().damage_taken += bat_stats.damage_defender_takes;
+	}
+	attacker_stats().expected_damage_inflicted +=
+		bat_stats.damage_defender_takes * bat_stats.chance_to_hit_defender;
+	defender_stats().expected_damage_taken +=
+		bat_stats.damage_defender_takes * bat_stats.chance_to_hit_defender;
 
 	if(res == KILLS) {
 		attacker_stats().killed[defender_type]++;
@@ -286,11 +302,16 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res)
 	if(stats_disabled > 0)
 		return;
 
-	defender_res.resize(defender_res.size()+1);
-	defender_res[defender_res.size()-1] = (res == MISSES ? '0' : '1');
+	push_back(defender_res,(res == MISSES ? '0' : '1'));
 
-	attacker_stats().damage_taken += bat_stats.damage_attacker_takes;
-	defender_stats().damage_inflicted += bat_stats.damage_defender_takes;
+	if(res != MISSES) {
+		attacker_stats().damage_taken += bat_stats.damage_attacker_takes;
+		defender_stats().damage_inflicted += bat_stats.damage_defender_takes;
+	}
+	attacker_stats().expected_damage_taken +=
+		bat_stats.damage_attacker_takes * bat_stats.chance_to_hit_attacker;
+	defender_stats().expected_damage_inflicted +=
+		bat_stats.damage_attacker_takes * bat_stats.chance_to_hit_attacker;
 
 	if(res == KILLS) {
 		attacker_stats().deaths[attacker_type]++;

@@ -1980,6 +1980,32 @@ void turn_info::show_statistics()
 		items.push_back(str.str());
 	}
 
+	{
+		std::stringstream str;
+		str << _("Damage Inflicted") << "," << stats.damage_inflicted;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Taken") << "," << stats.damage_taken;
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Inflicted (EV)") << "," << 
+			(stats.expected_damage_inflicted / 100.0);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << _("Damage Taken (EV)") << "," << 
+			(stats.expected_damage_taken / 100.0);
+		items.push_back(str.str());
+	}
+
 	const int res = gui::show_dialog(gui_,NULL,"",_("Statistics"),gui::MESSAGE,&items);
 	std::string title;
 	items.clear();

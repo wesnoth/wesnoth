@@ -28,6 +28,10 @@ namespace statistics
 		battle_result_map attacks, defends;
 
 		int damage_inflicted, damage_taken;
+
+		//expected value for damage inflicted/taken * 100, based on probability
+		//to hit, Use this long term to see how lucky a side is
+		int expected_damage_inflicted, expected_damage_taken;
 	};
 
 	int sum_str_int_map(const stats::str_int_map& m);
