@@ -22,7 +22,6 @@ AC_CONFIG_HEADER([config.h])
 AC_PROG_CXX
 AC_PROG_CC
 
-
 # SDL_CONFIG
 
 AC_PATH_PROGS([SDL_CONFIG], [sdl-config sdl11-config], [none])
@@ -71,23 +70,16 @@ AC_SUBST([KDE_ICON])
 # Checks for types.                                                   #
 #######################################################################
 
+AC_LANG([C++])
 AC_MSG_CHECKING([if char is signed])
 
-#AC_COMPILE_IFELSE(
-#[AC_LANG_SOURCE([
-#int main(int argc, char **argv)
-#{
-#[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
-#        test_array [0] = 0;
-#	return 0;
-#}
-#	]],#)],
 AC_COMPILE_IFELSE(
 	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
 	[AC_MSG_RESULT(yes)],
 	[AC_MSG_RESULT(no)] 
 	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
-chars. Try with another compiler (specify it using CXX environment variable.)])])
+chars. Try with another compiler (specify it using CXX environment variable.)
+If you use GCC, you can force signed chars with CXXFLAGS=-fsigned-char])])
 
 #######################################################################
 # Checks for libraries.                                               #
@@ -205,14 +197,15 @@ AC_CHECK_FUNCS([floor socket strtoul])
 # Check for PNG support in SDL_image                                  #
 #######################################################################
 
+AC_LANG([C])
 AC_MSG_CHECKING([for PNG support in SDL_image])
 
 OLD_CPPFLAGS=$CPPFLAGS
-OLD_CXXFLAGS=$CXXFLAGS
+OLD_CFLAGS=$CFLAGS
 OLD_LIBS=$LIBS
 
 CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
-CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
 
 AC_RUN_IFELSE([AC_LANG_SOURCE([
@@ -235,7 +228,7 @@ int main(int argc, char **argv)
 	[AC_MSG_RESULT[not tested in cross-compiling]])
 
 CPPFLAGS=$OLD_CPPFLAGS
-CXXFLAGS=$OLD_CXXFLAGS
+CFLAGS=$OLD_CFLAGS
 LIBS=$OLD_LIBS
 
 
@@ -243,14 +236,16 @@ LIBS=$OLD_LIBS
 # Check for OGG support in SDL_mixer                                  #
 #######################################################################
 
+AC_LANG([C])
 AC_MSG_CHECKING([for OGG support in SDL_mixer])
 
 OLD_CPPFLAGS=$CPPFLAGS
-OLD_CXXFLAGS=$CXXFLAGS
+OLD_CFLAGS=$CFLAGS
 OLD_LIBS=$LIBS
 
+
 CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
-CXXFLAGS="$CXXFLAGS $SDL_CFLAGS"
+CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
 
 AC_RUN_IFELSE([AC_LANG_SOURCE([
@@ -274,7 +269,7 @@ int main(int argc, char **argv)
 
 
 CPPFLAGS=$OLD_CPPFLAGS
-CXXFLAGS=$OLD_CXXFLAGS
+CFLAGS=$OLD_CFLAGS
 LIBS=$OLD_LIBS
 
 
