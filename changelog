@@ -60,7 +60,6 @@ CVS HEAD:
  * fixed segfault when a [story] background image was not found
  * fixed narrator messages not being displayed sometimes
  * fixed autoconf macro for checking OGG support in SDL_mixer (it depended on private symbols not always included by distributions)
- * fixed game segfaulting when a message with no speaker is issued
  * fixed markovian name generation not playing well with UTF-8 names
  * fixed map border not getting changed when using [terrain] to change terrain (#9840)
  * fixed extraneous dots path (#9903)
@@ -69,7 +68,6 @@ CVS HEAD:
  * fixed bug with exiting caves in 'The Eastern Invasion: Captured' scenario
  * fixed bugs in 'The Eastern Invasion: Evacuation' scenario
  * fixed holy water in 'Heir to the Throne: Valley of Death' scenario (#9930)
- * fixed a bug where a unit moving with [move_unit_fake] segfaulted the game
  * fixed problems with cache invalidation
  * fixed file descriptor leak
  * fixed 'gender' not working with move_unit_fake
