@@ -70,27 +70,6 @@ gamemap::location find_vacant_tile(const gamemap& map,
 	return gamemap::location();
 }
 
-void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
-{
-	res->x = a.x;
-	res->y = a.y-1;
-	++res;
-	res->x = a.x+1;
-	res->y = a.y - (is_even(a.x) ? 1:0);
-	++res;
-	res->x = a.x+1;
-	res->y = a.y + (is_odd(a.x) ? 1:0);
-	++res;
-	res->x = a.x;
-	res->y = a.y+1;
-	++res;
-	res->x = a.x-1;
-	res->y = a.y + (is_odd(a.x) ? 1:0);
-	++res;
-	res->x = a.x-1;
-	res->y = a.y - (is_even(a.x) ? 1:0);
-}
-
 namespace {
 
 void get_tiles_radius_internal(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
@@ -145,30 +124,6 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 		must_visit.clear();
 	}
 	res.insert(visited.begin(), visited.end());
-}
-
-bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
-{
-	//two tiles are adjacent if y is different by 1, and x by 0, or if
-	//x is different by 1 and y by 0, or if x and y are each different by 1,
-	//and the x value of the hex with the greater y value is even
-
-	const int xdiff = abs(a.x - b.x);
-	const int ydiff = abs(a.y - b.y);
-	return ydiff == 1 && a.x == b.x || xdiff == 1 && a.y == b.y ||
-	       xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x));
-}
-
-size_t distance_between(const gamemap::location& a, const gamemap::location& b)
-{
-	const size_t hdistance = abs(a.x - b.x);
-
-	const size_t vpenalty = (is_even(a.x) && is_odd(b.x) && a.y < b.y ||
-	                         is_even(b.x) && is_odd(a.x) && b.y < a.y) ? 1:0;
-	const size_t vdistance = abs(a.y - b.y) + vpenalty;
-	const size_t vsavings = minimum<int>(vdistance,hdistance/2 + hdistance%2);
-
-	return hdistance + vdistance - vsavings;
 }
 
 bool enemy_zoc(const gamemap& map, const gamestatus& status, 

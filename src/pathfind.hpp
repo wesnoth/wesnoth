@@ -17,7 +17,7 @@
 #include "gamestatus.hpp"
 #include "map.hpp"
 #include "unit.hpp"
-#include "unit_types.hpp"
+#include "pathutils.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -28,10 +28,6 @@
 #include <vector>
 
 //this module contains various pathfinding functions and utilities.
-
-//function which, given a location, will place all adjacent locations in
-//res. res must point to an array of 6 location objects.
-void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 
 //a convenient type for storing a list of tiles adjacent to a certain tile
 typedef util::array<gamemap::location,6> adjacent_tiles_array;
@@ -45,10 +41,6 @@ void get_tiles_radius(const gamemap& map, const std::vector<gamemap::location>& 
 
 //function which tells if two locations are adjacent.
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
-
-//function which gives the number of hexes between two tiles (i.e. the minimum
-//number of hexes that have to be traversed to get from one hex to the other)
-size_t distance_between(const gamemap::location& a, const gamemap::location& b);
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 

@@ -29,8 +29,6 @@
 #include "../sdl_utils.hpp"
 #include "../tooltips.hpp"
 #include "../team.hpp"
-#include "../unit_types.hpp"
-#include "../unit.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 
@@ -1134,7 +1132,7 @@ void map_editor::left_button_func_changed(const LEFT_BUTTON_FUNC func) {
 		l_button_func_ = func;
 		const std::string string_to_translate = std::string("action_") + get_action_name(func);
 		reports::set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-									translate_string(string_to_translate));
+					    translate_string(string_to_translate));
 		gui_.invalidate_game_status();
 		l_button_palette_dirty_ = true;
 	}

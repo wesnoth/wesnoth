@@ -75,42 +75,42 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	ai_attack.$(OBJEXT) ai_move.$(OBJEXT) builder.$(OBJEXT) \
 	cavegen.$(OBJEXT) clipboard.$(OBJEXT) config.$(OBJEXT) \
 	cursor.$(OBJEXT) dialogs.$(OBJEXT) display.$(OBJEXT) \
-	events.$(OBJEXT) filesystem.$(OBJEXT) font.$(OBJEXT) \
-	game.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) gettext.$(OBJEXT) halo.$(OBJEXT) \
-	help.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map.$(OBJEXT) map_label.$(OBJEXT) mapgen.$(OBJEXT) \
-	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
+	events.$(OBJEXT) filechooser.$(OBJEXT) filesystem.$(OBJEXT) \
+	font.$(OBJEXT) game.$(OBJEXT) game_config.$(OBJEXT) \
+	game_events.$(OBJEXT) gamestatus.$(OBJEXT) gettext.$(OBJEXT) \
+	halo.$(OBJEXT) help.$(OBJEXT) hotkeys.$(OBJEXT) \
+	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) \
+	map_label.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
+	mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
 	multiplayer_client.$(OBJEXT) multiplayer_connect.$(OBJEXT) \
 	multiplayer_lobby.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
-	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
-	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
-	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
-	terrain.$(OBJEXT) theme.$(OBJEXT) titlescreen.$(OBJEXT) \
-	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_display.$(OBJEXT) \
-	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
-	file_chooser.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
-	progressbar.$(OBJEXT) scrollbar.$(OBJEXT) slider.$(OBJEXT) \
-	textbox.$(OBJEXT) widget.$(OBJEXT)
+	pathfind.$(OBJEXT) pathutils.$(OBJEXT) playlevel.$(OBJEXT) \
+	playturn.$(OBJEXT) preferences.$(OBJEXT) race.$(OBJEXT) \
+	replay.$(OBJEXT) reports.$(OBJEXT) sdl_utils.$(OBJEXT) \
+	show_dialog.$(OBJEXT) sound.$(OBJEXT) statistics.$(OBJEXT) \
+	team.$(OBJEXT) terrain.$(OBJEXT) theme.$(OBJEXT) \
+	titlescreen.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
+	unit_display.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) file_chooser.$(OBJEXT) combo.$(OBJEXT) \
+	menu.$(OBJEXT) progressbar.$(OBJEXT) scrollbar.$(OBJEXT) \
+	slider.$(OBJEXT) textbox.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
 am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	map_manip.$(OBJEXT) editor_palettes.$(OBJEXT) \
 	editor_main.$(OBJEXT) editor_dialogs.$(OBJEXT) \
 	editor_undo.$(OBJEXT) about.$(OBJEXT) actions.$(OBJEXT) \
-	ai.$(OBJEXT) ai_attack.$(OBJEXT) ai_move.$(OBJEXT) \
 	builder.$(OBJEXT) cavegen.$(OBJEXT) clipboard.$(OBJEXT) \
 	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
-	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
-	font.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) gettext.$(OBJEXT) halo.$(OBJEXT) \
-	help.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
+	display.$(OBJEXT) events.$(OBJEXT) filechooser.$(OBJEXT) \
+	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
+	game_events.$(OBJEXT) gamestatus.$(OBJEXT) gettext.$(OBJEXT) \
+	halo.$(OBJEXT) help.$(OBJEXT) hotkeys.$(OBJEXT) \
+	image.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
 	map_label.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
 	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
-	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
+	pathutils.$(OBJEXT) pathfind.$(OBJEXT) playturn.$(OBJEXT) \
 	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
 	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
 	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
@@ -138,6 +138,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/editor_palettes.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/editor_undo.Po ./$(DEPDIR)/events.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/file_chooser.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/filechooser.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/filesystem.Po ./$(DEPDIR)/font.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po \
@@ -154,8 +155,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_connect.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_lobby.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/pathfind.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/playlevel.Po ./$(DEPDIR)/playturn.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/preferences.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pathutils.Po ./$(DEPDIR)/playlevel.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/playturn.Po ./$(DEPDIR)/preferences.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/progressbar.Po ./$(DEPDIR)/race.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/reports.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/scrollbar.Po ./$(DEPDIR)/sdl_utils.Po \
@@ -379,6 +380,7 @@ wesnoth_SOURCES = about.cpp \
 		  dialogs.cpp \
 		  display.cpp \
 		  events.cpp \
+		  filechooser.cpp \
 		  filesystem.cpp \
 		  font.cpp \
 		  game.cpp \
@@ -387,7 +389,7 @@ wesnoth_SOURCES = about.cpp \
 		  gamestatus.cpp \
 		  gettext.cpp \
 		  halo.cpp \
-          help.cpp \
+		  help.cpp \
 		  hotkeys.cpp \
 		  image.cpp \
 		  intro.cpp \
@@ -405,6 +407,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_lobby.cpp \
 		  network.cpp \
 		  pathfind.cpp \
+		  pathutils.cpp \
 		  playlevel.cpp \
 		  playturn.cpp \
 		  preferences.cpp \
@@ -457,7 +460,7 @@ wesnoth_SOURCES = about.cpp \
 		  gamestatus.hpp \
 		  gettext.hpp \
 		  halo.hpp \
-          help.hpp \
+		  help.hpp \
 		  hotkeys.hpp \
 		  image.hpp \
 		  intro.hpp \
@@ -475,6 +478,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_lobby.hpp \
 		  network.hpp \
 		  pathfind.hpp \
+		  pathutils.hpp \
 		  playlevel.hpp \
 		  playturn.hpp \
 		  preferences.hpp \
@@ -520,28 +524,25 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_undo.cpp \
 			 about.cpp \
 			 actions.cpp \
-			 ai.cpp \
-			 ai_attack.cpp \
-			 ai_move.cpp \
-		         builder.cpp \
-		 	 cavegen.cpp \
+			 builder.cpp \
+			 cavegen.cpp \
 			 clipboard.cpp \
 			 config.cpp \
 			 cursor.cpp \
 			 dialogs.cpp \
 			 display.cpp \
 			 events.cpp \
+			 filechooser.cpp \
 			 filesystem.cpp \
 			 font.cpp \
 			 game_config.cpp \
 			 game_events.cpp \
 			 gamestatus.cpp \
-		     gettext.cpp \
+			 gettext.cpp \
 			 halo.cpp \
-             help.cpp \
+			 help.cpp \
 			 hotkeys.cpp \
 			 image.cpp \
-			 intro.cpp \
 			 key.cpp \
 			 language.cpp \
 			 log.cpp \
@@ -551,8 +552,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mapgen_dialog.cpp \
 			 mouse.cpp \
 			 network.cpp \
+			 pathutils.cpp \
 			 pathfind.cpp \
-			 playlevel.cpp \
 			 playturn.cpp \
 			 preferences.cpp \
 			 race.cpp \
@@ -567,7 +568,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.cpp \
 			 tooltips.cpp \
 			 unit.cpp \
-		         unit_display.cpp \
+			 unit_display.cpp \
 			 unit_types.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
@@ -603,9 +604,9 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.hpp \
 			 game_events.hpp \
 			 gamestatus.hpp \
-		     gettext.hpp \
+			 gettext.hpp \
 			 halo.hpp \
-             help.hpp \
+			 help.hpp \
 			 hotkeys.hpp \
 			 image.hpp \
 			 intro.hpp \
@@ -619,6 +620,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mouse.hpp \
 			 network.hpp \
 			 pathfind.hpp \
+			 pathutils.hpp \
 			 playlevel.hpp \
 			 playturn.hpp \
 			 preferences.hpp \
@@ -634,7 +636,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.hpp \
 			 tooltips.hpp \
 			 unit.hpp \
-		         unit_display.hpp \
+			 unit_display.hpp \
 			 unit_types.hpp \
 			 video.hpp \
 			 widgets/button.hpp \
@@ -742,6 +744,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/editor_undo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/events.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/file_chooser.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filechooser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/filesystem.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game.Po@am__quote@
@@ -770,6 +773,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multiplayer_lobby.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/network.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pathfind.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pathutils.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/playlevel.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/playturn.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preferences.Po@am__quote@

@@ -39,6 +39,7 @@ wesnoth_SOURCES = about.cpp \
 		  dialogs.cpp \
 		  display.cpp \
 		  events.cpp \
+		  filechooser.cpp \
 		  filesystem.cpp \
 		  font.cpp \
 		  game.cpp \
@@ -47,7 +48,7 @@ wesnoth_SOURCES = about.cpp \
 		  gamestatus.cpp \
 		  gettext.cpp \
 		  halo.cpp \
-          help.cpp \
+		  help.cpp \
 		  hotkeys.cpp \
 		  image.cpp \
 		  intro.cpp \
@@ -65,6 +66,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_lobby.cpp \
 		  network.cpp \
 		  pathfind.cpp \
+		  pathutils.cpp \
 		  playlevel.cpp \
 		  playturn.cpp \
 		  preferences.cpp \
@@ -117,7 +119,7 @@ wesnoth_SOURCES = about.cpp \
 		  gamestatus.hpp \
 		  gettext.hpp \
 		  halo.hpp \
-          help.hpp \
+		  help.hpp \
 		  hotkeys.hpp \
 		  image.hpp \
 		  intro.hpp \
@@ -135,6 +137,7 @@ wesnoth_SOURCES = about.cpp \
 		  multiplayer_lobby.hpp \
 		  network.hpp \
 		  pathfind.hpp \
+		  pathutils.hpp \
 		  playlevel.hpp \
 		  playturn.hpp \
 		  preferences.hpp \
@@ -180,28 +183,25 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_undo.cpp \
 			 about.cpp \
 			 actions.cpp \
-			 ai.cpp \
-			 ai_attack.cpp \
-			 ai_move.cpp \
-		         builder.cpp \
-		 	 cavegen.cpp \
+			 builder.cpp \
+			 cavegen.cpp \
 			 clipboard.cpp \
 			 config.cpp \
 			 cursor.cpp \
 			 dialogs.cpp \
 			 display.cpp \
 			 events.cpp \
+			 filechooser.cpp \
 			 filesystem.cpp \
 			 font.cpp \
 			 game_config.cpp \
 			 game_events.cpp \
 			 gamestatus.cpp \
-		     gettext.cpp \
+			 gettext.cpp \
 			 halo.cpp \
-             help.cpp \
+			 help.cpp \
 			 hotkeys.cpp \
 			 image.cpp \
-			 intro.cpp \
 			 key.cpp \
 			 language.cpp \
 			 log.cpp \
@@ -211,8 +211,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mapgen_dialog.cpp \
 			 mouse.cpp \
 			 network.cpp \
+			 pathutils.cpp \
 			 pathfind.cpp \
-			 playlevel.cpp \
 			 playturn.cpp \
 			 preferences.cpp \
 			 race.cpp \
@@ -227,7 +227,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.cpp \
 			 tooltips.cpp \
 			 unit.cpp \
-		         unit_display.cpp \
+			 unit_display.cpp \
 			 unit_types.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
@@ -263,9 +263,9 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.hpp \
 			 game_events.hpp \
 			 gamestatus.hpp \
-		     gettext.hpp \
+			 gettext.hpp \
 			 halo.hpp \
-             help.hpp \
+			 help.hpp \
 			 hotkeys.hpp \
 			 image.hpp \
 			 intro.hpp \
@@ -279,6 +279,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mouse.hpp \
 			 network.hpp \
 			 pathfind.hpp \
+			 pathutils.hpp \
 			 playlevel.hpp \
 			 playturn.hpp \
 			 preferences.hpp \
@@ -294,7 +295,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.hpp \
 			 tooltips.hpp \
 			 unit.hpp \
-		         unit_display.hpp \
+			 unit_display.hpp \
 			 unit_types.hpp \
 			 video.hpp \
 			 widgets/button.hpp \
