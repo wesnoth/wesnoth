@@ -125,8 +125,7 @@ const config get_tips_of_day()
 	std::cerr << "Loading tips of day\n";
 	try {
 		cfg.read(preprocess_file("data/tips.cfg"));
-	} catch(config::error& e) {
-		e;
+	} catch(config::error&) {
 		std::cerr << "Could not read tips.cfg\n";
 	}
 
