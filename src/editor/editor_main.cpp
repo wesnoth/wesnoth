@@ -153,7 +153,6 @@ int main(int argc, char** argv)
 			std::cerr << "Using theme cfg: " << std::endl << theme_cfg->write() << std::endl;
 			display gui(units, video, map, status, teams,
 				    *theme_cfg, cfg);
-			gui.set_grid(preferences::grid());
 	
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
 			editor.set_file_to_save_as(filename);

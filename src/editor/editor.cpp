@@ -78,6 +78,7 @@ namespace map_editor {
 bool map_editor::first_time_created_ = true;
 int map_editor::num_operations_since_save_ = 0;
 config map_editor::prefs_;
+config map_editor::hotkeys_;
 
 map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
@@ -107,7 +108,10 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		hotkey::add_hotkeys(prefs_, true);
 		first_time_created_ = false;
 	}
-
+	else {
+		hotkey::get_hotkeys().clear();
+		hotkey::add_hotkeys(hotkeys_, true);
+	}
 	recalculate_starting_pos_labels();
 	gui_.begin_game();
 	gui_.invalidate_all();
@@ -116,6 +120,8 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 }
 
 map_editor::~map_editor() {
+	// Save the hotkeys so that they are remembered if the editor is recreated.
+	hotkey::save_hotkeys(hotkeys_);
 	try {
 		write_file(prefs_filename, prefs_.write());
 	}

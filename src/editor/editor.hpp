@@ -271,6 +271,7 @@ private:
 	bool mouse_moved_;
 	const preferences::display_manager prefs_disp_manager_;
 	static config prefs_;
+	static config hotkeys_;
 	static bool first_time_created_;
 	bool all_hexes_selected_;
 	
