@@ -10,7 +10,9 @@ CVS HEAD:
    * A New Land
    * Rough Landing
    * Return of the Fleet
- * changed Dragoon's pistol to crossbow.
+ * changed Dragoon's and Cavalier's pistol to crossbow.
+ * unit balancing: 
+   * Gryphon Rider: reduced cost
  * new units:
    * Draug
  * language fixes and polishing (english)
@@ -22,6 +24,7 @@ CVS HEAD:
    * german
    * italian
    * portuguese
+   * spanish
    * swedish
  * multiplayer improvements
    * Charge map
@@ -35,8 +38,10 @@ CVS HEAD:
  * fixed resizing multiplayer lobby creating some graphic glitches
  * fixed background refreshing of campaign selection dialog
  * fixed --enable-lite for current image location
+ * fixed wmlxgettext not working properly with msdos lin-endings in multiline strings
  * improved 320x240 resolution support
  * support for unrenamable units
+ * install wmlxgettext so that it can be used by user campaigns
  * rewrote hotkeys code
  * rewrote widgets code
  * image and data-file cleanups
