@@ -43,7 +43,15 @@ namespace sound {
 
 manager::manager()
 {
-	const int res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,4096);
+//sounds don't sound good on Windows unless the buffer size is 4k,
+//but this seems to cause crashes on other systems...
+#ifdef WIN32
+	const size_t buf_size = 4096
+#else
+	const size_t buf_size = 1024;
+#endif
+
+	const int res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,buf_size);
 	if(res >= 0) {
 		mix_ok = true;
 		Mix_AllocateChannels(16);
