@@ -6,52 +6,42 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
-"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-03 11:27+0200\n"
-"PO-Revision-Date: 2004-09-05 18:22+0100\n"
+"PO-Revision-Date: 2004-09-14 13:03+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/preferences.cpp:144 src/preferences.cpp:190
-#, fuzzy
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits "
-"per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
-"1024x768x16 for å kunne kjøres med full skjerm."
+#: src/preferences.cpp:144
+#: src/preferences.cpp:190
+msgid "The video mode could not be changed. Your window manager must be set to 16 bits per pixel to run the game in windowed mode. Your display must support 1024x768x16 to run the game full screen."
+msgstr "Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte 1024x768x16 for å kunne kjøres med full skjerm."
 
 #: src/preferences.cpp:362
 msgid "player"
 msgstr "spiller"
 
 #: src/preferences.cpp:639
-#, fuzzy
 msgid "Full Screen"
 msgstr "Fullskjerm"
 
 #: src/preferences.cpp:640
-#, fuzzy
 msgid "Accelerated Speed"
 msgstr "Akselerert"
 
 #: src/preferences.cpp:641
 msgid "Skip AI Moves"
-msgstr ""
+msgstr "Ignorer datamaskinens bevegelser"
 
 #: src/preferences.cpp:642
-#, fuzzy
 msgid "Show Grid"
 msgstr "Vis rutenett"
 
 #: src/preferences.cpp:643
 msgid "Show Floating Labels"
-msgstr ""
+msgstr "Vis flytende merkelapper"
 
 #: src/preferences.cpp:644
 msgid "Turn Dialog"
@@ -66,167 +56,152 @@ msgid "Show Team Colors"
 msgstr "Vis lagenes farger"
 
 #: src/preferences.cpp:647
-#, fuzzy
 msgid "Show Color Cursors"
-msgstr "Vis lagenes farger"
+msgstr "Vis fargede pekere"
 
 #: src/preferences.cpp:648
 msgid "Show Haloing Effects"
-msgstr ""
+msgstr "Vis halo-effekter"
 
 #: src/preferences.cpp:649
-#, fuzzy
 msgid "Video Mode"
 msgstr "Video-modus"
 
 #: src/preferences.cpp:650
-#, fuzzy
 msgid "Hotkeys"
 msgstr "Hurtigtaster"
 
 #: src/preferences.cpp:651
 msgid "Adjust Gamma"
-msgstr ""
+msgstr "Endre gammanivå"
 
 #: src/preferences.cpp:652
-#, fuzzy
 msgid "Music Volume:"
 msgstr "Musikkvolum:"
 
 #: src/preferences.cpp:652
-#, fuzzy
 msgid "SFX Volume:"
 msgstr "Lydeffektvolum:"
 
 #: src/preferences.cpp:653
-#, fuzzy
 msgid "Gamma:"
-msgstr "Spill"
+msgstr "Gamma:"
 
 #: src/preferences.cpp:653
-#, fuzzy
 msgid "Scroll Speed:"
 msgstr "Panoreringsfart:"
 
 #: src/preferences.cpp:665
 msgid "Change the sound effects volume"
-msgstr ""
+msgstr "Endre lydeffektsvolumet"
 
 #: src/preferences.cpp:670
 msgid "Change the music volume"
-msgstr ""
+msgstr "Endre musikkvolumet"
 
 #: src/preferences.cpp:675
 msgid "Change the speed of scrolling around the map"
-msgstr ""
+msgstr "Endre panoreringsfart"
 
-#: src/preferences.cpp:678 src/preferences.cpp:683
+#: src/preferences.cpp:678
+#: src/preferences.cpp:683
 msgid "Change the brightness of the display"
-msgstr ""
+msgstr "Endre lysstyrke"
 
 #: src/preferences.cpp:686
 msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
+msgstr "Velge om spillet skal kjøres med full skjerm eller i vindu"
 
 #: src/preferences.cpp:689
 msgid "Make units move and fight faster"
-msgstr ""
+msgstr "Enheter beveger og slåss raskere"
 
 #: src/preferences.cpp:692
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "Ikke vis at datastyrte enheter beveger seg"
 
 #: src/preferences.cpp:695
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Vis et rutenett på kartet"
 
 #: src/preferences.cpp:698
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
+msgstr "Vis tall over en truffet enhet for å vise påført skade"
 
 #: src/preferences.cpp:700
 msgid "Change the resolution the game runs at"
-msgstr ""
+msgstr "Endre oppløsningsgraden til spillet"
 
 #: src/preferences.cpp:703
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "Vis dialogboks hver gang det blir din tur"
 
 #: src/preferences.cpp:706
 msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
+msgstr "Pling hver gang det blir din tur"
 
 #: src/preferences.cpp:709
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
+msgid "Show a colored circle around the base of each unit to show which side it is on"
+msgstr "Vis farget oval rundt hver enhet for å vise hvilken side den tilhører"
 
 #: src/preferences.cpp:712
 msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
+msgstr "Bruk fargede musepekere (kan sakke spillet)"
 
 #: src/preferences.cpp:715
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "Bruk spesielle grafikk-effekter (kan sakke spillet)"
 
 #: src/preferences.cpp:717
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Se og endre snarveier på tastaturet"
 
 #: src/preferences.cpp:910
 msgid "Prefs section^General"
-msgstr ""
+msgstr "Allmenne innstillinger"
 
 #: src/preferences.cpp:911
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "Skjerminnstillinger"
 
 #: src/preferences.cpp:912
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Lydinnstillinger"
 
 #: src/preferences.cpp:922
-#, fuzzy
 msgid "Preferences"
-msgstr "Preferanser"
+msgstr "Innstillinger"
 
 #: src/preferences.cpp:968
-#, fuzzy
 msgid "There are no alternative video modes available"
 msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
 
 #: src/preferences.cpp:998
-#, fuzzy
 msgid "Choose Resolution"
 msgstr "Velg oppløsning"
 
 #: src/preferences.cpp:1021
-#, fuzzy
 msgid "Close Window"
 msgstr "Lukk vindu"
 
 #: src/preferences.cpp:1026
-#, fuzzy
 msgid "Hotkey Settings"
 msgstr "Innstillinger for Hurtigtaster"
 
-#: src/preferences.cpp:1030 src/preferences.cpp:1088
-#, fuzzy
+#: src/preferences.cpp:1030
+#: src/preferences.cpp:1088
 msgid "Press desired HotKey"
 msgstr "Trykk ønsket hurtigtast"
 
 #: src/preferences.cpp:1049
-#, fuzzy
 msgid "Change Hotkey"
 msgstr "Endre hurtigtast"
 
 #: src/preferences.cpp:1052
-#, fuzzy
 msgid "Save Hotkeys"
 msgstr "Lagre hurtigtaster"
 
 #: src/preferences.cpp:1121
-#, fuzzy
 msgid "This HotKey is already in use."
-msgstr "Denne hurtigtasten er allerede i bruk. Ingen endringer ble gjort."
+msgstr "Denne hurtigtasten er allerede i bruk."
+
