@@ -819,10 +819,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string image = cfg["image"];
 		std::string caption = cfg["name"];
 
-		const std::string& caption_lang = string_table[id + "_name"];
-		if(caption_lang.empty() == false)
-			caption = caption_lang;
-
 		std::string text;
 
 		gamemap::location loc;
@@ -844,11 +840,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::string command_type = "then";
 
 		if(u != units->end() && (filter == NULL || game_events::unit_matches_filter(u,*filter))) {
-			const std::string& lang = string_table[id];
-			if(!lang.empty())
-				text = lang;
-			else
-				text = cfg["description"];
+			text = cfg["description"];
 
 			u->second.add_modification("object",cfg);
 
@@ -858,11 +850,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			//mark that this item won't be used again
 			used_items.insert(id);
 		} else {
-			const std::string& lang = string_table[id + "_cannot_use"];
-			if(!lang.empty())
-				text = lang;
-			else
-				text = cfg["cannot_use_message"];
+			text = cfg["cannot_use_message"];
 
 			command_type = "else";
 		}
