@@ -107,12 +107,12 @@ connection connect(const std::string& host, int port)
 	char* const hostname = host.empty() ? NULL:const_cast<char*>(host.c_str());
 	IPaddress ip;
 	if(SDLNet_ResolveHost(&ip,hostname,port) == -1) {
-		throw error(SDLNet_GetError());
+		throw error("Could not connect to host");
 	}
 
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
-		throw error(SDLNet_GetError());
+		throw error("Could not connect to host");
 	}
 
 	//if this is not a server socket, then add it to the list

@@ -98,9 +98,10 @@ void textbox::draw()
 
 		pos += area.w;
 
+		if(cursor_ == i) {
+			draw_cursor(pos-1, disp());
+		}
 	}
-
-	draw_cursor(pos-1, disp());
 
 	set_dirty(false);
 	update_rect(location());
