@@ -76,9 +76,8 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	: gui_(gui), map_(map), tup_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
 	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
-	  draw_terrain_(false), map_dirty_(false),
-	  palette_(gui, size_specs_, map), brush_(gui, size_specs_), add_selection_(false) {
-
+	  map_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
+	  l_button_func_(NONE) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_, palette_.num_terrains());
@@ -135,34 +134,45 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 			show_menu(m->items(), mousex, mousey + 1, true);
 		}
 		if (button == SDL_BUTTON_LEFT) {
-			if (key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT]) {
-				// Set a boolean to indicate wether to add or remove selected hexes.
-				if (selected_hexes_.find(gui_.hex_clicked_on(mousex, mousey))
-					== selected_hexes_.end()) {
-					add_selection_ = true;
+			gamemap::location hex_clicked = gui_.hex_clicked_on(mousex, mousey);
+			if (map_.on_board(hex_clicked)) {
+				if (key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT]) {
+					if (selected_hexes_.find(hex_clicked)
+						== selected_hexes_.end()) {
+						l_button_func_ = ADD_SELECTION;
+					}
+					else {
+						l_button_func_ = REMOVE_SELECTION;
+					}
+				}
+				else if (selected_hexes_.find(hex_clicked) != selected_hexes_.end()) {
+					l_button_func_ = MOVE_SELECTION;
+					selection_move_start_ = hex_clicked;
+				}
+				else if (!selected_hexes_.empty()) {
+					// If hexes are selected, clear them and do not draw
+					// anything.
+					selected_hexes_.clear();
+					gui_.clear_highlighted_locs();
+					update_mouse_over_hexes(hex_clicked);
 				}
 				else {
-					add_selection_ = false;
+					l_button_func_ = DRAW_TERRAIN;
 				}
 			}
-			else if (!selected_hexes_.empty()
-					 && map_.on_board(gui_.hex_clicked_on(mousex, mousey))
-				&& !(key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT])) {
-				// If hexes are selected, clear them and do not draw
-				// anything.
-				selected_hexes_.clear();
-				gui_.clear_highlighted_locs();
-				update_mouse_over_hexes(gui_.hex_clicked_on(mousex, mousey));
-			}
 			else {
-				draw_terrain_ = true;
 				palette_.left_mouse_click(mousex, mousey);
 				brush_.left_mouse_click(mousex, mousey);
 			}
 		}
 	}
 	if (event.type == SDL_MOUSEBUTTONUP) {
-		draw_terrain_ = false;
+		// If we miss the mouse up event we need to perform the actual
+		// movement if we are in the progress of moving a selection.
+		if (l_button_func_ == MOVE_SELECTION) {
+			perform_selection_move();
+		}
+		l_button_func_ = NONE;
 	}
 }
 
@@ -276,24 +286,29 @@ void map_editor::edit_copy() {
 
 void map_editor::edit_paste() {
 	map_undo_action undo_action;
-	std::vector<gamemap::location> filled;
+	std::set<gamemap::location> filled;
 	gamemap::location start_hex = selected_hex_;
-	// The x coordinate may need to be adjusted because the same
-	// representation of the hexes may not look the same on the map, and
-	// we want to make sure it looks the same when pasted.
-	start_hex.x = start_hex.x % 2 == clipboard_offset_loc_.x % 2 ? start_hex.x : start_hex.x - 1;
+	gui_.clear_highlighted_locs();
 	for (std::vector<clipboard_item>::const_iterator it = clipboard_.begin();
 		 it != clipboard_.end(); it++) {
-		const gamemap::location target =
-			gamemap::location(start_hex.x + (*it).x_offset,
-							  start_hex.y + (*it).y_offset);
+		gamemap::location l(clipboard_offset_loc_.x + (*it).x_offset,
+							clipboard_offset_loc_.y + (*it).y_offset);
+		const int x_offset = start_hex.x - clipboard_offset_loc_.x;
+		const int y_offset = start_hex.y - clipboard_offset_loc_.y;
+		gamemap::location target = get_hex_with_offset(l, x_offset, y_offset);
+			/*gamemap::location target(start_hex.x + (*it).x_offset, start_hex.y + (*it).y_offset); 
+		if (is_odd(clipboard_offset_loc_.x - start_hex.x) && is_odd(target.x - start_hex.x) ) {
+			target.y--;
+			}*/
 		if (map_.on_board(target)) {
 			undo_action.add(map_.get_terrain(target), (*it).terrain, target);
 			map_.set_terrain(target, (*it).terrain);
-			filled.push_back(target);
+			filled.insert(target);
+			gui_.add_highlighted_loc(target);
 		}
 	}
 	invalidate_all_and_adjacent(filled);
+	selected_hexes_ = filled;
 	add_undo_action(undo_action);
 }
 
@@ -365,6 +380,9 @@ void map_editor::add_undo_action(const map_undo_action &action) {
 void map_editor::undo() {
 	if(!undo_stack_.empty()) {
 		--num_operations_since_save_;
+		// Clear the selected hexes to avoid some weirdness from occuring.
+		selected_hexes_.clear();
+		gui_.clear_highlighted_locs();
 		map_undo_action action = undo_stack_.back();
 		std::vector<gamemap::location> to_invalidate;
 		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it = action.undo_terrains().begin();
@@ -383,9 +401,13 @@ void map_editor::undo() {
 void map_editor::redo() {
 	if(!redo_stack_.empty()) {
 		++num_operations_since_save_;
+		// Clear the selected hexes to avoid some weirdness from occuring.
+		selected_hexes_.clear();
+		gui_.clear_highlighted_locs();
 		map_undo_action action = redo_stack_.back();
 		std::vector<gamemap::location> to_invalidate;
-		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it = action.redo_terrains().begin();
+		for(std::map<gamemap::location,gamemap::TERRAIN>::const_iterator it =
+				action.redo_terrains().begin();
 		    it != action.redo_terrains().end(); ++it) {
 			map_.set_terrain(it->first, it->second);
 			to_invalidate.push_back(it->first);
@@ -424,11 +446,20 @@ void map_editor::set_file_to_save_as(const std::string filename) {
 	filename_ = filename;
 }
 
+gamemap::location map_editor::get_hex_with_offset(const gamemap::location loc,
+												  const int x_offset, const int y_offset) {
+	gamemap::location new_loc(loc.x + x_offset, loc.y + y_offset);
+	if (new_loc.x % 2 != loc.x % 2 && is_odd(new_loc.x)) {
+		new_loc.y--;
+	}
+	return new_loc;
+}
+
 void map_editor::left_button_down(const int mousex, const int mousey) {
-	const gamemap::location& loc = gui_.minimap_location_on(mousex,mousey);
+	const gamemap::location& minimap_loc = gui_.minimap_location_on(mousex,mousey);
 	const gamemap::location hex = gui_.hex_clicked_on(mousex, mousey);
-	if (loc.valid()) {
-		gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+	if (minimap_loc.valid()) {
+		gui_.scroll_to_tile(minimap_loc.x,minimap_loc.y,display::WARP,false);
 	}
 	else if (key_[SDLK_RSHIFT] || key_[SDLK_LSHIFT]) {
 		if (key_[SDLK_RALT] || key_[SDLK_LALT]) {
@@ -437,7 +468,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 			selected = get_component(map_, selected_hex_);
 			for (std::set<gamemap::location>::const_iterator it = selected.begin();
 				 it != selected.end(); it++) {
-				if (add_selection_) {
+				if (l_button_func_ == ADD_SELECTION) {
 					gui_.add_highlighted_loc(*it);
 					selected_hexes_.insert(*it);
 				}
@@ -454,7 +485,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 			selected = get_tiles(map_, hex, brush_.selected_brush_size());
 			for (std::vector<gamemap::location>::const_iterator it = selected.begin();
 				 it != selected.end(); it++) {
-				if (add_selection_) {
+				if (l_button_func_ == ADD_SELECTION) {
 					gui_.add_highlighted_loc(*it);
 					selected_hexes_.insert(*it);
 				}
@@ -468,7 +499,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	}
 	// If the left mouse button is down and we beforhand have registred
 	// a mouse down event, draw terrain at the current location.
-	else if (draw_terrain_) {
+	else if (l_button_func_ == DRAW_TERRAIN) {
 		if(map_.on_board(hex)) {
 			const gamemap::TERRAIN terrain = map_[hex.x][hex.y];
 			if(key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
@@ -505,6 +536,53 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 			}
 		}
 	}
+	else if (l_button_func_ == MOVE_SELECTION) {
+		const int x_diff = hex.x - selection_move_start_.x;
+		const int y_diff = hex.y - selection_move_start_.y;
+		// No other selections should be active when doing this.
+		gui_.clear_highlighted_locs();
+		for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
+			 it != selected_hexes_.end(); it++) {
+			const gamemap::location hl_loc =
+				get_hex_with_offset(*it, x_diff, y_diff);
+			if (map_.on_board(hl_loc)) {
+				gui_.add_highlighted_loc(hl_loc);
+			}
+		}
+	}
+}
+
+void map_editor::perform_selection_move() {
+	map_undo_action undo_action;
+	const int x_diff = selected_hex_.x - selection_move_start_.x;
+	const int y_diff = selected_hex_.y - selection_move_start_.y;
+	gui_.clear_highlighted_locs();
+	std::set<gamemap::location> new_selection;
+	// Transfer the terrain to the new position.
+	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
+		 it != selected_hexes_.end(); it++) {
+		const gamemap::location hl_loc =
+			get_hex_with_offset(*it, x_diff, y_diff);
+		if (map_.on_board(hl_loc)) {
+			undo_action.add(map_.get_terrain(hl_loc), map_.get_terrain(*it), hl_loc);
+			gui_.add_highlighted_loc(hl_loc);
+			map_.set_terrain(hl_loc, map_.get_terrain(*it));
+			new_selection.insert(hl_loc);
+		}
+	}
+
+	// Fill the selection with the selected terrain.
+	for (std::set<gamemap::location>::const_iterator it = selected_hexes_.begin();
+		 it != selected_hexes_.end(); it++) {
+		if (map_.on_board(*it) && new_selection.find(*it) == new_selection.end()) {
+			undo_action.add(map_.get_terrain(*it), palette_.selected_terrain(), *it);
+			map_.set_terrain(*it, palette_.selected_terrain());
+		}
+	}
+	invalidate_all_and_adjacent(selected_hexes_);
+	selected_hexes_ = new_selection;
+	invalidate_all_and_adjacent(selected_hexes_);
+	add_undo_action(undo_action);
 }
 
 void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
@@ -580,12 +658,12 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 
 
 bool map_editor::confirm_exit_and_save() {
-	if (gui::show_dialog(gui_, NULL, "",
+	if (gui::show_dialog(gui_, NULL, "Exit?",
 						 "Do you want to exit the map editor?", gui::YES_NO) != 0) {
 		return false;
 	}
 	if (changed_since_save() &&
-		gui::show_dialog(gui_, NULL, "",
+		gui::show_dialog(gui_, NULL, "Save?",
 						 "Do you want to save the map before exiting?", gui::YES_NO) == 0) {
 		if (!save_map("", false)) {
 			return false;
@@ -718,8 +796,10 @@ void map_editor::main_loop() {
 		const bool m_button_down = mouse_flags & SDL_BUTTON_MMASK;
 
 		const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
-		if (cur_hex != selected_hex_
-			|| last_brush_size != brush_.selected_brush_size()) {
+		if (cur_hex != selected_hex_) {
+			mouse_moved_ = true;
+		}
+		if (mouse_moved_ || last_brush_size != brush_.selected_brush_size()) {
 			// The mouse have moved or the brush size has changed,
 			// adjust the hexes the mouse is over.
 			update_mouse_over_hexes(cur_hex);
@@ -749,6 +829,14 @@ void map_editor::main_loop() {
 	
 		if (l_button_down) {
 			left_button_down(mousex, mousey);
+		}
+		else {
+			if (l_button_func_ == MOVE_SELECTION) {
+				// When it is detected that the mouse is no longer down
+				// and we are in the progress of moving a selection,
+				// perform the movement.
+				perform_selection_move();
+			}
 		}
 		if (r_button_down) {
 			right_button_down(mousex, mousey);
@@ -787,6 +875,7 @@ void map_editor::main_loop() {
 				set_abort(DONT_ABORT);
 			}
 		}
+		mouse_moved_ = false;
 	}
 }
 

@@ -207,12 +207,25 @@ private:
 	/// Insert the currently selected locations in the clipboard.
 	void insert_selection_in_clipboard();
 
+	/// Return the hex with the given offset from loc. Make calculations
+	/// so the result with have the same _appearance_ as when the offset
+	/// was calculated ,not the same representation.
+	gamemap::location get_hex_with_offset(const gamemap::location loc,
+										  const int x_offset, const int y_offset);
+
+	/// Commit the movement of a selection.
+	void perform_selection_move();
+
 	struct clipboard_item {
 		clipboard_item(int xo, int yo, gamemap::TERRAIN t) :
 			x_offset(xo), y_offset(yo), terrain(t) {}
 		int x_offset, y_offset;
 		gamemap::TERRAIN terrain;
 	};
+
+	/// What to perform while the left button is held down.
+	enum LEFT_BUTTON_FUNC {DRAW_TERRAIN, ADD_SELECTION, REMOVE_SELECTION,
+						   MOVE_SELECTION, NONE};
 
 	display &gui_;
 	gamemap &map_;
@@ -228,7 +241,6 @@ private:
 	size_specs size_specs_;
 	config &theme_;
 	config &game_config_;
-	bool draw_terrain_;
 	CKey key_;
 	gamemap::location selected_hex_;
 	// When map_dirty_ is true, schedule redraw of the minimap and
@@ -240,9 +252,14 @@ private:
 	std::vector<gamemap::location> starting_positions_;
 	std::set<gamemap::location> mouse_over_hexes_;
 	std::set<gamemap::location> selected_hexes_;
-	bool add_selection_;
 	std::vector<clipboard_item> clipboard_;
 	gamemap::location clipboard_offset_loc_;
+	LEFT_BUTTON_FUNC l_button_func_;
+	gamemap::location selection_move_start_;
+	// mouse_moved_ will be true if the mouse have moved between two
+	// cycles.
+	bool mouse_moved_;
+	
 };
 
 }
