@@ -72,61 +72,81 @@ void show_intro(display& screen, config& data)
 			skip_button.set_y(dstrect.y+dstrect.h+70);
 		}
 
+		next_button.draw();
+		skip_button.draw();
+		update_whole_screen();
+		screen.video().flip();
+
 		const std::string& id = (*i)->values["id"];
 		const std::string& lang_story = string_table[id];
 		const std::string& story = lang_story.empty() ? (*i)->values["story"] :
 		                                                lang_story;
 
 		const int max_length = 60;
-		std::stringstream stream;
 		int cur_length = 0;
 
-		for(std::string::const_iterator j = story.begin(); j!=story.end();++j){
-			char c = *j;
-			if(c == ' ' && cur_length >= max_length)
-				c = '\n';
+		std::string::const_iterator j = story.begin();
 
-			if(c == '\n') {
-				cur_length = 0;
-			} else {
-				++cur_length;
-			}
-
-			stream << c;
-		}
-
-		static const SDL_Rect area = {0,0,screen.x(),screen.y()};
-		font::draw_text(&screen,area,16,font::NORMAL_COLOUR,stream.str(),
-		                textx,texty);
-		next_button.draw();
-		skip_button.draw();
-		update_whole_screen();
-		screen.video().flip();
-
-		bool last = true;
+		bool skip = false, last_key = true;
+		
+		int xpos = textx, ypos = texty;
+		size_t height = 0;
 		for(;;) {
-			SDL_Delay(10);
+			if(j != story.end()) {
+				char c = *j;
+				if(c == ' ' && cur_length >= max_length) {
+					xpos = textx;
+					ypos += height;
+					cur_length = 0;
+				} else {
+					char buf[2];
+					buf[0] = c;
+					buf[1] = 0;
+					const SDL_Rect rect = font::draw_text(&screen,
+					                       screen.screen_area(),16,
+					                       font::NORMAL_COLOUR,buf,xpos,ypos,
+										   NULL,false,font::NO_MARKUP);
+					if(rect.h > height)
+						height = rect.h;
+
+					xpos += rect.w;
+
+					update_rect(rect);
+
+					++cur_length;
+				}
+
+				++j;
+
+				if(j == story.end())
+					skip = true;
+			}
 
 			int mousex, mousey;
 			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
 			const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-			events::pump();
+			const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
+
+			if(keydown && !last_key ||
+				next_button.process(mousex,mousey,left_button)) {
+				if(skip == true)
+					break;
+				else
+					skip = true;
+			}
+
+			last_key = keydown;
 
 			if(key[SDLK_ESCAPE] ||
 			   skip_button.process(mousex,mousey,left_button))
 				return;
 
-			if(key[SDLK_SPACE] || key[SDLK_RETURN] ||
-			   next_button.process(mousex,mousey,left_button)) {
-				if(!last)
-					break;
-			} else {
-				last = false;
-			}
-
+			events::pump();
 			screen.video().flip();
+
+			if(!skip || j == story.end())
+				SDL_Delay(20);
 		}
 	}
 
