@@ -341,16 +341,6 @@ battle_stats evaluate_battle_stats(
 			res.defend_calculations.push_back(str_mod.str());
 		}
 
-		if(charge) {
-			percent += 100;
-
-			if(include_strings) {
-				std::stringstream str;
-				str << _("charge") << ", ,^+100%";
-				res.defend_calculations.push_back(str.str());
-			}
-		}
-
 		int leader_bonus = 0;
 		if(under_leadership(units,defender,&leader_bonus).valid()) {
 			percent += leader_bonus;
@@ -358,6 +348,16 @@ battle_stats evaluate_battle_stats(
 			if(include_strings) {
 				std::stringstream str;
 				str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
+				res.defend_calculations.push_back(str.str());
+			}
+		}
+
+		if(charge) {
+			percent = (100+percent)*2 - 100;
+
+			if(include_strings) {
+				std::stringstream str;
+				str << _("charge") << ", ," << _("Doubled");
 				res.defend_calculations.push_back(str.str());
 			}
 		}
@@ -459,34 +459,6 @@ battle_stats evaluate_battle_stats(
 		res.attack_calculations.push_back(str_mod.str());
 	}
 
-	if(charge) {
-		percent += 100;
-
-		if(include_strings) {
-			std::stringstream str;
-			str << _("charge") << ", ,^+100%";
-			res.attack_calculations.push_back(str.str());
-		}
-	}
-
-	if(backstab) {
-		percent += 100;
-		if(include_strings) {
-			std::stringstream str;
-			str << _("backstab") << ", ,^+100%";
-			res.attack_calculations.push_back(str.str());
-		}
-	}
-
-	if(steadfast) {
-		percent -= 50;
-		if(include_strings) {
-			std::stringstream str;
-			str << _("steadfast") << ", ,-50%";
-			res.attack_calculations.push_back(str.str());
-		}
-	}
-
 	int leader_bonus = 0;
 	if(under_leadership(units,attacker,&leader_bonus).valid()) {
 		percent += leader_bonus;
@@ -494,6 +466,34 @@ battle_stats evaluate_battle_stats(
 		if(include_strings) {
 			std::stringstream str;
 			str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(charge) {
+		percent = (100+percent)*2 - 100;
+
+		if(include_strings) {
+			std::stringstream str;
+			str << _("charge") << ", ," << _("Doubled");
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(backstab) {
+		percent = (100+percent)*2 - 100;
+		if(include_strings) {
+			std::stringstream str;
+			str << _("backstab") << ", ," << _("Doubled");
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
+	if(steadfast) {
+		percent = (100+percent)/2 - 100;
+		if(include_strings) {
+			std::stringstream str;
+			str << _("steadfast") << ", ," << _("Halved");
 			res.attack_calculations.push_back(str.str());
 		}
 	}
