@@ -26,6 +26,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
+#include "hotkeys.hpp"
 #include "key.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -537,6 +538,8 @@ int play_game(int argc, char** argv)
 	}
 
 	game_config::load_config(game_config.child("game_config"));
+
+	hotkey::add_hotkeys(game_config,false);
 
 	const binary_paths_manager bin_paths_manager(game_config);
 

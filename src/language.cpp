@@ -12,7 +12,6 @@
 */
 #include "config.hpp"
 #include "font.hpp"
-#include "hotkeys.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
@@ -135,8 +134,6 @@ bool internal_set_language(const language_def& locale, config& cfg)
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
 				strings_[j->first] = j->second;
 			}
-
-			hotkey::add_hotkeys(**i,false);
 
 			font::set_font((**i)["font"]);
 
