@@ -92,6 +92,7 @@ void show_about(display& disp)
 	text.push_back("-   Andrew James Patterson (Kamahawk)");
 	text.push_back("-   Cedric Duval");
 	text.push_back("-   Christophe Anjard");
+	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Gareth Miller (Gafgarion)");
 	text.push_back("-   James Barton (Sangel)");
 	text.push_back("-   Jimmy Olsson (Azlan)");
