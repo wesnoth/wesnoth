@@ -286,7 +286,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		catch(replay::error& e) {
 			gui::show_dialog(gui,NULL,"","The file you loaded is corrupt "
 			        "or from a different version of the game",gui::OK_ONLY);
-			return DEFEAT;
+			return QUIT;
 		}
 
 	} //end for(;;)

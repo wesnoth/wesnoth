@@ -292,6 +292,11 @@ int play_game(int argc, char** argv)
 				gui::show_dialog(disp,NULL,"",
 				           string_table["bad_save_message"],gui::OK_ONLY);
 				continue;
+			} catch(config::error& e) {
+				gui::show_dialog(disp,NULL,"",
+				    string_table["bad_save_message"] + ": " + e.message + "\n",
+				    gui::OK_ONLY);
+				continue;
 			}
 
 			recorder = replay(state.replay_data);

@@ -135,6 +135,8 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 				 std::vector<team>& teams,
 				 bool ignore_zocs, bool allow_teleport)
 {
+	team& current_team = teams[u.side()-1];
+
 	//find adjacent tiles
 	std::vector<gamemap::location> locs(6);
 	get_adjacent_tiles(loc,&locs[0]);
@@ -147,7 +149,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 		//teleport to
 		for(std::vector<gamemap::location>::const_iterator t = towers.begin();
 		    t != towers.end(); ++t) {
-			if(!teams[u.side()-1].owns_tower(*t))
+			if(!current_team.owns_tower(*t))
 				continue;
 
 			locs.push_back(*t);
@@ -166,7 +168,8 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 		//see if the tile is on top of an enemy unit
 		const std::map<gamemap::location,unit>::const_iterator unit_it =
 				units.find(locs[i]);
-		if(unit_it != units.end() && unit_it->second.side() != u.side())
+		if(unit_it != units.end() &&
+		   current_team.is_enemy(unit_it->second.side()))
 			continue;
 
 		//find the terrain of the adjacent location
@@ -184,7 +187,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 				continue;
 
 			const bool zoc = enemy_zoc(map,units,currentloc,
-			                           teams[u.side()-1],u.side()) &&
+			                           current_team,u.side()) &&
 			                 !ignore_zocs;
 			paths::route new_route = routes[loc];
 			new_route.steps.push_back(loc);
@@ -248,6 +251,10 @@ double shortest_path_calculator::cost(const gamemap::location& loc,
                                       double so_far) const
 {
 	if(!map_.on_board(loc))
+		return 100000.0;
+
+	const unit_map::const_iterator enemy_unit = units_.find(loc);
+	if(enemy_unit != units_.end() && team_.is_enemy(enemy_unit->second.side()))
 		return 100000.0;
 
 	if(unit_.type().is_skirmisher() == false) {

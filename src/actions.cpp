@@ -796,9 +796,12 @@ size_t move_unit(display* disp, const gamemap& map,
 	std::vector<gamemap::location>::const_iterator step;
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const gamemap::TERRAIN terrain = map[step->x][step->y];
+
+		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
 		const int mv = u.type().movement_type().movement_cost(map,terrain);
-		if(mv > moves_left) {
+		if(mv > moves_left || enemy_unit != units.end() &&
+		   teams[team_num].is_enemy(enemy_unit->second.side())) {
 			break;
 		} else {
 			moves_left -= mv;

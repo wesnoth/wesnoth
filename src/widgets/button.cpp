@@ -56,8 +56,8 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 
 	textRect_.x = 0;
 	textRect_.y = 0;
-	textRect_.w = 1024;
-	textRect_.h = 768;
+	textRect_.w = disp.x();
+	textRect_.h = disp.y();
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::NORMAL_COLOUR,label_,0,0);
@@ -145,7 +145,7 @@ void button::draw()
 		default: break;
 	}
 
-	const SDL_Rect clipArea = {0,0,1024,768};
+	const SDL_Rect clipArea = {0,0,display_->x(),display_->y()};
 	const int textx = x_ + image->w/2 - textRect_.w/2 + offset;
 	const int texty = y_ + image->h/2 - textRect_.h/2 + offset;
 
