@@ -165,8 +165,6 @@ public:
 	};
 	
 private:
-	void map_editor::rebuild_dirty_terrains();
-
 	/// Called in every iteration when the left mouse button is held
 	/// down. Note that this differs from a click.
 	void left_button_down(const int mousex, const int mousey);
@@ -194,7 +192,7 @@ private:
 		   const int yloc, const bool context_menu=false);
 	
 	/// Pass the command onto the hotkey handling system. Quit requests
-	/// are intercepted because the editor do not want the default
+	/// are intercepted because the editor does not want the default
 	/// behavior of those.
 	void execute_command(const hotkey::HOTKEY_COMMAND command);
 	
@@ -203,7 +201,9 @@ private:
 	void draw_terrain(const gamemap::TERRAIN terrain,
 			  const gamemap::location hex);
 	
-	// Invalidate the given hex and all the adjacent ones.
+	/// Invalidate the given hex and all the adjacent ones. Assume the
+	/// hex has changed, so rebuild the dynamic terrain at the hex and
+	/// the adjacent hexes.
 	void invalidate_adjacent(const gamemap::location hex);
 
 	/// Shows dialog to create new map.
@@ -236,7 +236,6 @@ private:
 	// scheduled.
 	bool minimap_dirty_;
 	terrain_palette palette_;
-	std::vector<gamemap::location> dirty_positions_;
 };
 
 
