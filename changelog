@@ -1,11 +1,17 @@
 2004-01-08:
- * new user-interface
-   * support for themes
-   * support for resolutions below 1024x768 (e.g. 800x600)
-   * very simple chatting is now possible in-game (mouse right-click menu -> speak)
-   * new time of day images, new buttons, checkboxes, panel has been split to top and right-side panel...
  * extended tutorial
  * two new music tracks
+ * new user-interface
+   * support for themes
+   * enhanced support for resolutions below 1024x768 (e.g. 800x600)
+   * very simple chatting is now possible in-game (mouse right-click menu -> speak)
+   * new time of day images, new buttons, checkboxes, panel has been split to top and right-side panel...
+ * medium difficulty level is used by default when starting new campaign
+ * snapshot saving, faster loading if you skip replay
+ * more unit graphics, animations and sounds
+ * healers can heal allies.
+ * undeads can not be drained anymore
+ * fixed description for 'Wolf Rider'
  * scenario balancing for 'Heir to the Throne' campaign:
    * A Choice Must Be Made
  * new scenarios for 'The Dark Hordes' campaign:
@@ -13,14 +19,8 @@
  * scenario balancing for 'Dark Hordes' campaign:
    * Brother Against Brother
    * The Skull of Agarash
- * medium difficulty level is used by default when starting new campaign
- * snapshot saving, faster loading if you skip replay
- * healers can heal allies.
- * more unit graphics, animations and sounds
- * undeads can not be drained anymore
- * fixed description for 'Wolf Rider'
  * units will stop moving when they see new units (shroud/fog)
- * when a leader dies all villages for that side become neutral and you can not anymore capture villages, you can still "neutralize" enemy villages
+ * when a leader dies all villages for that side become neutral and you can not anymore capture villages, you can still "neutralize" villages of other players
  * added 'show team colours' option to preferences dialog
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
@@ -31,31 +31,30 @@
    * made basic messaging possible using 'Speak' from main menu
    * 'delayed map sharing' between allies
    * when player quits or gets disconnected from multiplayer game, game creator chooses to replace them with ai/local player or abort
+   * loaded games should now start properly and with right settings
  * changes to AI to try to solve the 'move in single file' problem
+ * man-page for wesnoth_editor
  * new translations:
    * swedish
  * updated translations:
    * danish
    * dutch
    * french
- * man-page for wesnoth_editor
- * internationalization: string fixes
+ * internationalization string fixes
+ * made make_translation and merge_translations compile
  * improved speed of reading cfg-files
- * borders of game field show dummy terrain instead of black areas
  * units in water tiles are displayed partially submerged
  * added support for height adjustment of units
- * implemented new widget system with sample: textbox
- * all event tags are now handled in the order in which they appear
- * teleport event for scenario builders
- * allowed items to set status flags on units
- * added several new toys for scenario developers to play with (wesnoth --test to see all thats done)
- * implemented new 'team_name' tag to show alliances to replace 'enemy' tag
  * added snowed hills and forest - H and F
+ * all event tags are now handled in the order in which they appear
+ * teleport event
+ * added several new toys for scenario developers to play with (wesnoth --test to see all thats done)
+ * allowed items to set status flags on units
+ * implemented new 'team_name' tag to show alliances to replace 'enemy' tag
  * adjusted the way in which images are blitted
+ * implemented new widget system with sample: textbox
+ * borders of game field show dummy terrain instead of black areas
  * made images use proper transparency, instead of using black as transperant colour
- * a workaround to allow users not using 16 bpp to change video mode
- * changed drawing routines to use more SDL routines, and less direct manipulation of surfaces
- * multiplayer games loaded will start properly
  * fixed client-hosted multiplayer bug where more than two player games were not possible
  * fixed some bugs with loading replays
  * fixed problem with saving at the end of the scenario pointing to the previous scenario
@@ -70,13 +69,15 @@
  * fixed bug where very large dialogs could crash the game
  * fixed some problems with too-large dialog boxes
  * many network code fixes and changes to make it a bit more stable
- * made make_translation and merge_translations compile
- * autotools: changed AC_ARG_ENABLE in server, editor and tools to fix bug
- * autotools: checks for png support in sdl_image and ogg support in sdl_mixer
- * autotools: application icon and menu entries in KDE and GNOME
- * autotools: removed autoconf version 2.57 prerequisite
- * autotools: adding autogen.sh, so CVS users don't need autotools installed
+ * autotools: 
+   * changed AC_ARG_ENABLE in server, editor and tools to fix bug
+   * checks for png support in sdl_image and ogg support in sdl_mixer
+   * application icon and menu entries in KDE and GNOME
+   * removed autoconf version 2.57 prerequisite
+   * adding autogen.sh, so CVS users don't need autotools installed
  * moved network code to mp_connect
+ * a workaround to allow users not using 16 bpp to change video mode
+ * changed drawing routines to use more SDL routines, and less direct manipulation of surfaces
  * code refactoring and cleanups
 
 Version 0.6.1:
