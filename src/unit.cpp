@@ -885,11 +885,10 @@ const std::string& unit::image() const
 	}
 }
 
-void unit::set_defending(bool newval, bool hits, int ms, attack_type::RANGE range)
+void unit::set_defending(bool newval, bool hits, attack_type::RANGE range)
 {
 	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
 	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
-	// attackingMilliseconds_ = ms;
 	type_->defend_animation(getsHit_,range);
 
 	getsHit_ = hits;

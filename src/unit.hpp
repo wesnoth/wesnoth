@@ -117,7 +117,7 @@ public:
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
 
-	void set_defending(bool newval, bool hits=false, int ms=0,
+	void set_defending(bool newval, bool hits = false,
 	                   attack_type::RANGE range=attack_type::LONG_RANGE);
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 

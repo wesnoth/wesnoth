@@ -379,7 +379,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	while(animation_time < end_at) {
 
-		def->second.set_defending(true,hits,animation_time - missile_impact,attack_type::LONG_RANGE);
+		def->second.set_defending(true, hits, attack_type::LONG_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -662,7 +662,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5 : 1;
 
-	def->second.set_defending(true,attack_type::SHORT_RANGE);
+	def->second.set_defending(true, hits, attack_type::SHORT_RANGE);
 
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
@@ -714,7 +714,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	int animation_time = attack_anim.get_animation_time();
 	while(animation_time < end_at) {
 
-		def->second.set_defending(true,hits,animation_time,attack_type::SHORT_RANGE);
+		def->second.set_defending(true, hits, attack_type::SHORT_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
