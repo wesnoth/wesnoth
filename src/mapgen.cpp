@@ -868,6 +868,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//displaced from their position according to terrain and randomness, to
 	//add some variety.
 
+	std::set<location> villages;
+
 	if(nvillages > 0) {
 		//first we work out the size of the x and y distance between villages
 		const size_t tiles_per_village = ((width*height)/9)/nvillages;
@@ -882,7 +884,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
 		}
 	
-		std::set<location> villages;
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
 				const size_t add_x = rand()%3;
