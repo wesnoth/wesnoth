@@ -22,24 +22,29 @@ namespace {
 	const std::string scrollbar_top = "buttons/scrolltop.png";
 	const std::string scrollbar_bottom = "buttons/scrollbottom.png";
 	const std::string scrollbar_mid = "buttons/scrollmid.png";
+
+	const std::string scrollbar_top_hl = "buttons/scrolltop-active.png";
+	const std::string scrollbar_bottom_hl = "buttons/scrollbottom-active.png";
+	const std::string scrollbar_mid_hl = "buttons/scrollmid-active.png";
+	
 	const std::string groove_top = "buttons/scrollgroove-top.png";
 	const std::string groove_mid = "buttons/scrollgroove-mid.png";
 	const std::string groove_bottom = "buttons/scrollgroove-bottom.png";
-	const int sb_width_pad = 2;
+
 }
 
 namespace gui {
 
 scrollbar::scrollbar(display& d)
-	: widget(d), highlight_(false),
-	  clicked_(false), dragging_(false), grip_position_(0), grip_height_(0),
-	  enabled_(false), width_(0), minimum_grip_height_(0)
+	: widget(d), highlight_(false), clicked_(false), dragging_(false),
+	  grip_position_(0), grip_height_(0), enabled_(false), width_(0),
+	  minimum_grip_height_(0), groove_click_code_(0)
 {
 	static const scoped_sdl_surface img(image::get_image(scrollbar_mid, 
 										image::UNSCALED));
 	
 	if (img != NULL) {
-		width_ = img->w + sb_width_pad*2;
+		width_ = img->w;
 		// this is a bit rough maybe
 		minimum_grip_height_ = 2 * img->h;
 		grip_height_ = minimum_grip_height_;
@@ -112,12 +117,12 @@ void scrollbar::draw()
 	if (!enabled() || !dirty())
 		return;
 	
-	const scoped_sdl_surface mid_img(image::get_image(scrollbar_mid, 
-											image::UNSCALED));
-	const scoped_sdl_surface bottom_img(image::get_image(scrollbar_bottom,
-										image::UNSCALED));
-	const scoped_sdl_surface top_img(image::get_image(scrollbar_top,
-									 image::UNSCALED));
+	const scoped_sdl_surface mid_img(image::get_image(highlight_ ? 
+					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
+	const scoped_sdl_surface bottom_img(image::get_image(highlight_ ? 
+					scrollbar_bottom_hl : scrollbar_bottom, image::UNSCALED));
+	const scoped_sdl_surface top_img(image::get_image(highlight_ ?
+					scrollbar_top_hl : scrollbar_top, image::UNSCALED));
 
 	const scoped_sdl_surface top_grv(image::get_image(groove_top,
 											image::UNSCALED));
@@ -142,11 +147,6 @@ void scrollbar::draw()
 	const scoped_sdl_surface mid_scaled(scale_surface_blended(mid_img, 
 										mid_img->w, mid_height));
 
-	const scoped_sdl_surface highlighted(scale_surface_blended(
-						brighten_image(mid_img, 1.5), 
-						mid_img->w, mid_height));
-
-
 	int groove_height = location().h - top_grv->h - bottom_grv->h;
 	if (groove_height <= 0) {
 		groove_height = 1;
@@ -166,7 +166,7 @@ void scrollbar::draw()
 
 	bg_restore();
 
-	int xpos = location().x + sb_width_pad;
+	int xpos = location().x;
 
 	// draw scrollbar "groove"
 	disp().blit_surface(xpos, location().y, top_grv);
@@ -176,10 +176,9 @@ void scrollbar::draw()
 
 	// draw scrollbar "grip"
 	SDL_Rect scrollbar = scroll_grip_area();
-	xpos = scrollbar.x + sb_width_pad;
+	xpos = scrollbar.x;
 	disp().blit_surface(xpos, scrollbar.y, top_img); 
-	disp().blit_surface(xpos, scrollbar.y + top_img->h,
-						highlight_ ? highlighted : mid_scaled);
+	disp().blit_surface(xpos, scrollbar.y + top_img->h, mid_scaled);
 	disp().blit_surface(xpos, scrollbar.y + top_img->h + mid_height,
 						bottom_img);
 
@@ -203,6 +202,11 @@ int scrollbar::get_grip_position() const
 	return grip_position_;
 }
 
+int scrollbar::groove_clicked() const
+{
+	return groove_click_code_;
+}
+
 void scrollbar::process()
 {
 	if (!enabled()) 
@@ -217,10 +221,13 @@ void scrollbar::process()
 	set_location(rect);
 
 	const SDL_Rect& hit_area = scroll_grip_area();
-	const bool xrange = mousex > hit_area.x && mousex <= hit_area.x+hit_area.w;
-	const bool yrange = mousey > hit_area.y && mousey <= hit_area.y+hit_area.h;
+	const bool barx= mousex > hit_area.x && mousex <= hit_area.x+hit_area.w;
+	const bool gripy = mousey > hit_area.y && mousey <= hit_area.y+hit_area.h;
+	const bool bary = mousey > location().y && 
+					  mousey <= location().y+location().h;
 
-	const bool on = xrange && yrange;
+
+	const bool on = barx && gripy;
 
 	bool start_dragging = (button && !clicked_ && on);
 
@@ -237,27 +244,35 @@ void scrollbar::process()
 		set_dirty(true);
 	}
 
-	int new_position = grip_position_;
+	groove_click_code_ = 0;
 
 	if (dragging_) {
+		// mouse over grip & button down
+		int new_position = grip_position_;
 		highlight_ = true;
 		new_position = mousey - mousey_on_grip;
+		
+		if (new_position < 0)
+			new_position = 0;
+		if (new_position > location().h - grip_height_)
+			new_position = location().h - grip_height_;
+
+		if (new_position != grip_position_) {
+			grip_position_ = new_position;
+			set_dirty(true);
+		}
 	}
-	else if (button && xrange) {
-		int button_position = mousey - location().y;
-		if (button_position != grip_position_) 
-			new_position = button_position;
+	else if (button && barx && bary && (!clicked_)) {
+		if (mousey > hit_area.y + hit_area.h) {
+			// mouse on groove below grip & button down
+			groove_click_code_ = 1;
+		}
+		else {
+			// mouse on groove above grip & button down
+			groove_click_code_ = -1;
+		}
 	}
 
-	if (new_position < 0)
-		new_position = 0;
-	if (new_position > location().h - grip_height_)
-		new_position = location().h - grip_height_;
-
-	if (new_position != grip_position_) {
-		grip_position_ = new_position;
-		set_dirty(true);
-	}
 
 	clicked_ = button;
 	draw();

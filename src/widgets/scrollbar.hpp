@@ -21,6 +21,10 @@
 
 namespace gui{
 
+/// class scrollbar implements a rather stupid scrollbar widget. It requires
+/// some hand-holding from the widget using it. Many of these functions will
+/// likely be removed (possibly replaced) at a later date, as the "widget"
+/// class hierarchy is expanded
 class scrollbar : public widget
 {
 public:
@@ -85,6 +89,12 @@ public:
 	/// \return true if successful, false otherwise.
 	bool set_grip_height(int pos);
 
+	/// This function determines whether the user clicked on the scrollbar
+	/// groove, and whether it was above or below the grip
+	/// 
+	/// \return -1 if click was above, 1 if click was below, 0 otherwise
+	int  groove_clicked() const;
+
 protected:
 	using widget::bg_restore;
 	using widget::set_dirty;
@@ -108,6 +118,10 @@ private:
 	int grip_height_;
 
 	int enabled_;
+
+	// -1 if user just clicked above the groove, 1 if they just clicked below
+	// 0 otherwise
+	int groove_click_code_;
 };
 	
 }
