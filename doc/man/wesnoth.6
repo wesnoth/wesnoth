@@ -96,36 +96,39 @@ runs the game in windowed mode.
 
 .SH Options for --multiplayer (not yet implemented correctly)
 
-.TP
-.BR --algorithm=value
-not yet implemented correctly
+The side-specific multiplayer options are followed by a side number. It
+usually is 1 or 2.
 
 .TP
-.BR --controller=value
-not yet implemented correctly
+.BR --scenario=value
+select a multiplayer scenario. The default scenario is "multiplayer_test".
 
 .TP
-.BR --era=which
-Use this option to play in the selected era. (not yet implemented correctly)
-
+.BR --era=value
+use this option to play in the selected era instead of the "Default" era.
 
 .TP
-.BR --nogui
-Runs the game without the GUI. (not yet implemented correctly)
+.BR --algorithm9=value
+select a non-standard algorithm to be used by the AI controller for this
+side. Available values: "idle_ai" and "sample_ai".
 
+.TP
+.BR --controller9=value
+select the controller for this side. Available values: "human" and "ai".
+
+.TP
+.BR --side9=value
+select by id a faction of the current era for this side. Eras and
+factions are described in the data/multiplayer.cfg file.
 
 .TP
 .BR --parm=name:value
-Sets additional parameters. (not yet implemented correctly)
-
-
-.TP
-.BR --scenario=name
-Use this option to play the selected szenario or map. (not yet implemented correctly)
+set additional parameters for this side.
 
 .TP
-.BR --side=value
-not yet implemented correctly
+.BR --nogui
+run the game without the GUI.
+
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
