@@ -11,6 +11,7 @@
 #include "preferences.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -36,6 +37,8 @@ namespace lobby {
 RESULT enter(display& disp, config& game_data, const config& terrain_data, dialog* dlg,
 			 std::vector<std::string>& messages)
 {
+	statistics::fresh_stats();
+
 	std::cerr << "entered multiplayer lobby...\n";
 	const preferences::display_manager disp_manager(&disp);
 	const hotkey::basic_handler key_handler(&disp);
