@@ -1,0 +1,84 @@
+#!/usr/bin/perl -w
+
+use strict;
+use File::Basename;
+
+our $module = dirname ($0) . "/wmltrans.pm";
+eval "require \"$module\";";
+
+our ($str,$translatable,$line,%messages);
+
+chdir "..";
+foreach my $file (@ARGV) {
+  open (FILE, "<$file") or die "cannot read from $file";
+
+ LINE: while (<FILE>) {
+    # skip comments
+    next LINE if m/^\s*\#/ and !defined $str;
+
+    if (m/\S+\s*=\s*((?:_\s*)?)\"([^\"]*)\"\s*(?:\#.*)?$/) {
+      # single-line
+      die "nested string in $file" if defined $str;
+
+      push @{$messages{raw2postring($2)}}, "$file:$."
+#       print "#: $file:$.\n",
+# 	    "msgid ", raw2postring($2),
+# 	    "msgstr \"\"\n\n"
+	if ($1 ne '');
+
+    } elsif (m/\S+\s*=\s*((?:_\s*)?)\s*\"([^\"]*)/) {
+      # start of multi-line
+      die "nested string in $file" if defined $str;
+
+      $translatable = ($1 ne '');
+      $str = $2 . "\n";
+      $line = $.;
+
+    } elsif (m/(.*)\"\s*(?:\#.*)?$/) {
+      # end of multi-line
+      die "end of string without a start in $file" if !defined $str;
+
+      $str .= $1;
+
+      push @{$messages{"\"\"\n" . raw2postring($str)}}, "$file:$."
+#       print "#: $file:$line\n",
+# 	    "msgid \"\"\n", raw2postring($str),
+# 	    "msgstr \"\"\n\n"
+	if $translatable;
+      $str = undef;
+    } elsif (defined $str) {
+      # part of multi-line
+      $str .= $_;
+    }
+
+  }
+
+  close FILE;
+}
+
+## output
+
+print <<EOH
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\\n"
+"POT-Creation-Date: 2004-08-08 15:00+0200\\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"
+"Last-Translator: FULL NAME <EMAIL\@ADDRESS>\\n"
+"Language-Team: LANGUAGE <LL\@li.org>\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+EOH
+;
+
+foreach my $key (keys %messages) {
+  print "#:";
+  foreach my $line (@{$messages{$key}}) {
+    print " $line";
+  }
+  print "\nmsgid $key",
+    "msgstr \"\"\n\n";
+}
