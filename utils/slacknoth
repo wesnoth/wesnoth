@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ "$3" = "" ]
 then
-echo "slacknoth - Creates a Wesnoth package for Slackware Linux"
+echo "slacknoth v0.2 - Creates a Wesnoth package for Slackware Linux"
 echo "- by Skovbaer (Mark Michelsen)"
 echo ""
 echo "Usage: slacknoth [version tag] [architecture e.g. i386 or athlon]"
@@ -29,7 +29,7 @@ mkdir install
 echo wesnoth: Battle for Wesnoth $1 > install/slack-desc
 echo wesnoth: Copyright \(C\) 2003-`date +%Y` by David White \<davidnwhite@optusnet.com.au\> >> install/slack-desc
 echo wesnoth: http://www.wesnoth.org/ >> install/slack-desc
-echo wesnoth: Packager: Mark Michelsen \<skovbaer@femgramskovbaerte.dk\> >> install/slack-desc
+echo wesnoth: Made with Slacknoth: Mark Michelsen \<skovbaer@femgramskovbaerte.dk\> >> install/slack-desc
 echo wesnoth: >> install/slack-desc
 echo wesnoth: Battle for Wesnoth is a fantasy turn-based strategy game. >> install/slack-desc
 echo wesnoth: Battle for control of villages, using a variety of units which have >> install/slack-desc
