@@ -354,6 +354,7 @@ void map_editor::edit_flood_fill() {
 	std::vector<gamemap::location> to_invalidate;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
 		to_invalidate.push_back((*it).first);
+		num_operations_since_save_++;
 		undo_stack_.push_back(map_undo_action((*it).second, palette_.selected_terrain(),
 											  (*it).first));
 		if(undo_stack_.size() > undo_limit)
