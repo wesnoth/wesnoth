@@ -576,6 +576,9 @@ bool game_controller::init_config()
 {
 	units_data_.clear();
 	defines_map_.clear();
+	//Resets old_defines_map_, to force refresh_game_cfg to reload
+	//everything.
+	old_defines_map_.clear();
 
 	//load in the game's configuration files
 #if defined(__APPLE__)
