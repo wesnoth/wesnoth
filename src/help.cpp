@@ -1446,7 +1446,7 @@ void section::clear() {
 }
 
 help_menu::help_menu(display &disp, section const &toplevel, int max_height)
-	: menu(disp, empty_string_vector, false, max_height),
+	: gui::menu(disp, empty_string_vector, false, max_height),
 	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "") {
 	update_visible_items(toplevel_);
 	display_visible_items();

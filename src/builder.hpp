@@ -50,7 +50,7 @@ public:
 
 	//updates the animation at a given tile. returns true if something has
 	//changed, and must be redrawn.
-	bool terrain_builder::update_animation(const gamemap::location &loc);
+	bool update_animation(const gamemap::location &loc);
 
 	// regenerate the generated content at the given
 	// location. Currently: set the image at that location to the

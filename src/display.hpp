@@ -55,7 +55,7 @@ public:
 	display(unit_map& units, CVideo& video,
 			const gamemap& map, const gamestatus& status,
 			const std::vector<team>& t, const config& theme_cfg,
-			const config& config, const config& level);
+			const config& cfg, const config& level);
 	~display();
 
 	Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
