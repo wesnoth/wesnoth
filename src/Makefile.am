@@ -42,6 +42,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_config.cpp \
 		  game_events.cpp \
 		  gamestatus.cpp \
+		  halo.cpp \
 		  hotkeys.cpp \
 		  image.cpp \
 		  intro.cpp \
@@ -79,7 +80,7 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  widgets/button.cpp \
-          widgets/file_chooser.cpp \
+	          widgets/file_chooser.cpp \
 		  widgets/combo.cpp \
 		  widgets/menu.cpp \
 		  widgets/scrollbar.cpp \
@@ -104,6 +105,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_config.hpp \
 		  game_events.hpp \
 		  gamestatus.hpp \
+		  halo.hpp \
 		  hotkeys.hpp \
 		  image.hpp \
 		  intro.hpp \
@@ -143,7 +145,7 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  widgets/button.hpp \
-          widgets/file_chooser.hpp \
+	          widgets/file_chooser.hpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
 		  widgets/scrollbar.hpp \
@@ -160,8 +162,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/map_manip.cpp \
 			 editor/editor_palettes.cpp \
 			 editor/editor_main.cpp \
-             editor/editor_dialogs.cpp \
-             editor/editor_undo.cpp \
+			 editor/editor_dialogs.cpp \
+			 editor/editor_undo.cpp \
 			 actions.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
@@ -178,6 +180,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.cpp \
 			 game_events.cpp \
 			 gamestatus.cpp \
+			 halo.cpp \
 			 hotkeys.cpp \
 			 image.cpp \
 			 intro.cpp \
@@ -210,7 +213,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_types.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
-          widgets/file_chooser.cpp \
+			 widgets/file_chooser.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
 			 widgets/scrollbar.cpp \
@@ -220,8 +223,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 editor/editor_layout.hpp \
 			 editor/map_manip.hpp \
 			 editor/editor_palettes.hpp \
-             editor/editor_dialogs.hpp \
-             editor/editor_undo.hpp \
+			 editor/editor_dialogs.hpp \
+			 editor/editor_undo.hpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \
@@ -238,6 +241,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.hpp \
 			 game_events.hpp \
 			 gamestatus.hpp \
+			 halo.hpp \
 			 hotkeys.hpp \
 			 image.hpp \
 			 intro.hpp \
@@ -270,7 +274,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_types.hpp \
 			 video.hpp \
 			 widgets/button.hpp \
-            widgets/file_chooser.hpp \
+			 widgets/file_chooser.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
 			 widgets/scrollbar.hpp \
