@@ -49,7 +49,7 @@ UPDATEPOFILES = @UPDATEPOFILES@
 DUMMYPOFILES = @DUMMYPOFILES@
 DISTFILES.common = Makefile.in.in remove-potcdate.sin \
 $(DISTFILES.common.extra1) $(DISTFILES.common.extra2) $(DISTFILES.common.extra3)
-DISTFILES = $(DISTFILES.common) Makevars DOMAINS POTFILES.in $(DOMAIN).pot stamp-po \
+DISTFILES = $(DISTFILES.common) Makevars DOMAINS POTFILES.in stamp-po \
 $(DISTFILES.extra1) $(DISTFILES.extra2) $(DISTFILES.extra3)
 
 POTFILES = \
@@ -338,7 +338,7 @@ dist2: $(DISTFILES)
 	  for lang in `cat $(srcdir)/LINGUAS`; do \
 	    dists="$$dists $$lang/$$domain.po $$lang/$$domain.gmo"; \
 	  done; \
-	  dists="$$dists $$domain.POTFILES.in"; \
+	  dists="$$dists $$domain.POTFILES.in $$domain.pot"; \
 	  if test -f $$domain.FINDCFG; then \
 	    dists="$$dists $$domain.FINDCFG"; \
 	  fi; \
