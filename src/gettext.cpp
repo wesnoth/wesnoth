@@ -28,10 +28,10 @@ const char* dsgettext (const char * domainname, const char *msgid)
 	return msgval;
 }
 
-const char* vgettext (const char *msgid, const string_map& symbols)
+std::string vgettext (const char *msgid, const string_map& symbols)
 {
 	const std::string orig(gettext(msgid));
 	const std::string msg = config::interpolate_variables_into_string(orig,
 			&symbols);
-	return msg.c_str();
+	return msg;
 }

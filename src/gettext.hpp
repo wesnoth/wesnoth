@@ -7,7 +7,7 @@
 #include <libintl.h>
 const char* sgettext (const char*);
 const char* dsgettext (const char * domainname, const char *msgid);
-const char* vgettext (const char*,const string_map&);
+std::string vgettext (const char*,const string_map&);
 
 #ifdef GETTEXT_DOMAIN
 # define _(String) dgettext(GETTEXT_DOMAIN,String)
