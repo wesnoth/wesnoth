@@ -1,6 +1,7 @@
 CVS HEAD:
  * user interface improvements:
    * display savegame version in load dialog
+   * shadows for labels to make they visable on each type of terrain
  * graphics improvements: 
    * bridge, ice, castle floor, grassland
    * unit images and attack animations
@@ -58,7 +59,9 @@ CVS HEAD:
    * map descriptions
    * new maps: Broken Bridge
    * experience requirement now uses 10% increments
+   * updated lobby
  * added naming for coastal villages
+ * re-enabled italics and underlining for texts
  * fixed road layering in terrain-graphics.cfg
  * fixed assumption that "no advance" == 500 XP required in help code
  * fixed bugs in 'The Eastern Invasion: Weldyn Under Attack' scenario
@@ -77,13 +80,23 @@ CVS HEAD:
  * fixed wmlxgettext bugs
  * fixed window not always refreshing on resizing
  * fixed network threading bugs
+ * fixed bug in vgettext
+ * fixed assertion failure in playturn.cpp
+ * fixed long-standing strings in editor
  * added specifying the maximum lenght of the text widget in show_dialog
  * added displaying help strings in smaller font if they don't fit in the screen
  * 320x240 resolution with USE_TINY_GUI
- * switched networking code to new logging system
+ * added an ellipsis on the button text when it does not fit on the button
+ * switched networking code to use the new logging system
+ * switched image.cpp to use the new logging system
  * improved 'Out of Sync' detection
  * image and data-file cleanups
  * improved network threading
+ * help system speed optimizations
+ * moved tips from english.cfg to tips.cfg
+ * moved menu strings into wesnoth-lib textdomain
+ * per-language cache files
+ * added server facility to record the way games end
  * code cleanups
 
 Version 0.8.6:
