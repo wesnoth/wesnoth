@@ -142,7 +142,7 @@ const time_of_day& gamestatus::get_time_of_day_turn(int nturn) const
 		return times_[(nturn-1)%times_.size()];
 	} else {
 		config dummy_cfg;
-		const static time_of_day default_time(dummy_cfg);
+		static time_of_day const default_time(dummy_cfg);
 		return default_time;
 	}
 }
@@ -176,7 +176,7 @@ const time_of_day& gamestatus::get_time_of_day(bool illuminated, const gamemap::
 	}
 
 	config dummy_cfg;
-	const static time_of_day default_time(dummy_cfg);
+	static time_of_day const default_time(dummy_cfg);
 	return default_time;
 }
 

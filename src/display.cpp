@@ -1623,7 +1623,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 namespace {
 const std::string& get_direction(size_t n)
 {
-	const static std::string dirs[6] = {"-n","-ne","-se","-s","-sw","-nw"};
+	static std::string const dirs[6] = { "-n", "-ne", "-se", "-s", "-sw", "-nw" };
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
@@ -1631,13 +1631,13 @@ const std::string& get_direction(size_t n)
 
 bool angle_is_northern(size_t n)
 {
-	const static bool results[6] = {true,false,false,false,false,true};
+	static bool const results[6] = { true, false, false, false, false, true };
 	return results[n >= sizeof(results)/sizeof(*results) ? 0 : n];
 }
 
 const std::string& get_angle_direction(size_t n)
 {
-	const static std::string dirs[6] = {"-ne","-e","-se","-sw","-w","-nw"};
+	static std::string const dirs[6] = { "-ne", "-e", "-se", "-sw", "-w", "-nw" };
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
