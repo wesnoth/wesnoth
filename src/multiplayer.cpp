@@ -337,11 +337,10 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		return lobby::QUIT;
 
 	if(launch_game_->pressed() || maps_menu_->double_clicked()) {
-		if(name_entry_->text() != "") {
+		if (!name_entry_->text().empty())
 			return lobby::CREATE;
-		} else {
-			gui::show_dialog(disp_,NULL,"","You must enter a name.",gui::OK_ONLY);
-		}
+		else
+			gui::show_dialog(disp_, NULL, "", _("You must enter a name."), gui::OK_ONLY);
 	}
 
 	events::raise_process_event();

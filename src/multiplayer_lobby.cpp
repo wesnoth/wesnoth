@@ -156,7 +156,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 		const bool games_available = dlg == NULL && options.empty() == false;
 		if(!games_available) {
-			options.push_back("<no games open>");
+			options.push_back(_("<no games open>"));
 		}
 
 		gui::menu games_menu(disp,options);
