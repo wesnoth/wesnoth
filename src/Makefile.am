@@ -219,6 +219,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mapgen_dialog.cpp \
 			 mouse.cpp \
 			 network.cpp \
+			 network_worker.cpp \
 			 pathutils.cpp \
 			 pathfind.cpp \
 			 playturn.cpp \
@@ -232,6 +233,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 statistics.cpp \
 			 team.cpp \
 			 terrain.cpp \
+			 thread.cpp \
 			 theme.cpp \
 			 tooltips.cpp \
 			 unit.cpp \
@@ -286,6 +288,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 mapgen_dialog.hpp \
 			 mouse.hpp \
 			 network.hpp \
+			 network_worker.hpp \
 			 pathfind.hpp \
 			 pathutils.hpp \
 			 playlevel.hpp \
@@ -301,6 +304,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 team.hpp \
 			 terrain.hpp \
 			 theme.hpp \
+			 thread.hpp \
 			 tooltips.hpp \
 			 unit.hpp \
 			 unit_display.hpp \

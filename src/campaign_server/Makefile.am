@@ -12,7 +12,9 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../gettext.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
+		   ../network_worker.cpp \
 		   ../publish_campaign.cpp \
+		   ../thread.cpp \
 		   ../game_events.hpp \
 		   ../config.hpp \
 		   ../filesystem.hpp \
@@ -20,7 +22,9 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../gettext.hpp \
 		   ../log.hpp \
 		   ../network.hpp \
-		   ../publish_campaign.hpp
+		   ../network_worker.hpp \
+		   ../publish_campaign.hpp \
+		   ../thread.hpp 
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\"
 AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@
