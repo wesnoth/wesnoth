@@ -42,10 +42,10 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	}
 
 	const std::string button_image_file = "buttons/" + button_image_name + ".png";
-	scoped_sdl_surface button_image(image::get_image(button_image_file,image::UNSCALED));
-	scoped_sdl_surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png", image::UNSCALED));
-	scoped_sdl_surface active_image(image::get_image("buttons/" + button_image_name + "-active.png", image::UNSCALED));
-	scoped_sdl_surface pressed_active_image(image::get_image("buttons/" + button_image_name + "-active-pressed.png", image::UNSCALED));
+	surface button_image(image::get_image(button_image_file,image::UNSCALED));
+	surface pressed_image(image::get_image("buttons/" + button_image_name + "-pressed.png", image::UNSCALED));
+	surface active_image(image::get_image("buttons/" + button_image_name + "-active.png", image::UNSCALED));
+	surface pressed_active_image(image::get_image("buttons/" + button_image_name + "-active-pressed.png", image::UNSCALED));
 
 	if(pressed_image == NULL) {
 		pressed_image.assign(image::get_image(button_image_file,image::UNSCALED));
@@ -129,7 +129,7 @@ void button::draw()
 		bg_restore();
 	}
 
-	SDL_Surface* image = image_;
+	surface image = image_;
 	const int image_w = image_->w;
 	
 	int offset = 0;
@@ -155,7 +155,7 @@ void button::draw()
 		textx = location().x + image_w + checkbox_horizontal_padding/2;
 	}
 
-	scoped_sdl_surface greyed_image(NULL);
+	surface greyed_image(NULL);
 	if(!enabled_) {
 		greyed_image.assign(greyscale_image(image));
 		image = greyed_image;

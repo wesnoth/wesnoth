@@ -77,7 +77,7 @@ void textbox::draw_cursor(int pos, display &disp) const
 {
 	if(show_cursor_ && editable_) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
-		SDL_Surface* const frame_buffer = disp.video().getSurface();
+		surface const frame_buffer = disp.video().getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }

@@ -19,7 +19,7 @@ composer::composer() : interactive_(false), verbose_(false)
 }
 
 
-shared_sdl_surface composer::compose(const std::string &src, const std::string &dest)
+surface composer::compose(const std::string &src, const std::string &dest)
 {
 	cutter cut;
 	cut.set_verbose(verbose_);
@@ -36,11 +36,11 @@ shared_sdl_surface composer::compose(const std::string &src, const std::string &
 	if(verbose_) {
 		std::cerr << "Loading images...\n";
 	}
-	const shared_sdl_surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
+	const surface src_surface(make_neutral_surface(IMG_Load(src.c_str())));
 	if(src_surface == NULL)
 		throw exploder_failure("Unable to load the source image " + src);
 
-	const shared_sdl_surface dest_surface(make_neutral_surface(IMG_Load(dest.c_str())));
+	const surface dest_surface(make_neutral_surface(IMG_Load(dest.c_str())));
 	if(dest_surface == NULL)
 		throw exploder_failure("Unable to load the destination image " + dest);
 

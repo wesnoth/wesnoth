@@ -144,7 +144,7 @@ void menu::set_loc(int x, int y)
 	const int w = width();
 
 	SDL_Rect portion = {x_,y_,w,height()};
-	SDL_Surface* const screen = display_->video().getSurface();
+	surface const screen = display_->video().getSurface();
 	buffer_.assign(get_surface_portion(screen, portion));
 
 	if(show_scrollbar()) {
@@ -569,7 +569,7 @@ namespace {
 			const std::string str = *it;
 			if(str.empty() == false && str[0] == ImagePrefix) {
 				const std::string image_name(str.begin()+1,str.end());
-				SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+				surface const img = image::get_image(image_name,image::UNSCALED);
 				if(img != NULL) {
 					res.w += img->w;
 					res.h = maximum<int>(img->h, res.h);
@@ -650,7 +650,7 @@ void menu::draw_item(int item)
 			str = *it;
 			if(str.empty() == false && str[0] == ImagePrefix) {
 				const std::string image_name(str.begin()+1,str.end());
-				SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+				surface const img = image::get_image(image_name,image::UNSCALED);
 				const int max_width = max_width_ < 0 ? display_->x() :
 					minimum<int>(max_width_, display_->x() - xpos);
 				if(img != NULL && (xpos - rect.x) + img->w < max_width

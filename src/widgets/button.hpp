@@ -64,7 +64,7 @@ private:
 
 	std::string label_;
 	display* display_;
-	shared_sdl_surface image_, pressedImage_, activeImage_, pressedActiveImage_;
+	surface image_, pressedImage_, activeImage_, pressedActiveImage_;
 	SDL_Rect textRect_;
 
 	bool button_;

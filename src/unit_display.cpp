@@ -47,11 +47,15 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	int skips = 0;
 
 	const std::string& halo = u.type().image_halo();
+	util::scoped_resource<int,halo::remover> halo_effect(0);
+	if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
+		halo_effect.assign(halo::add(0,0,halo));
+	}
 
 	for(int i = 0; i < nsteps; ++i) {
 		events::pump();
 
-		scoped_sdl_surface image(image::get_image(u.type().image_moving()));
+		surface image(image::get_image(u.type().image_moving()));
 		if(!face_left) {
 			image.assign(image::reverse_image(image));
 		}
@@ -113,13 +117,12 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		const int xpos = static_cast<int>(xloc);
 		const int ypos = static_cast<int>(yloc) - height_adjust;
 
+		// disp.invalidate_animations();
 		disp.draw(false);
 		disp.draw_unit(xpos,ypos,image,false,1.0,0,submerge);
 
-		util::scoped_resource<int,halo::remover> halo_effect(0);
-		if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
-			halo_effect.assign(halo::add(xpos+disp.hex_size()/2,ypos+disp.hex_size()/2,halo));
-		}
+		if(halo_effect != 0)
+			halo::set_location(halo_effect, xpos+disp.hex_size()/2, ypos+disp.hex_size()/2);
 
 		const int new_ticks = SDL_GetTicks();
 		const int wait_time = time_between_frames - (new_ticks - ticks);
@@ -213,8 +216,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
-	const int first_missile = minimum<int>(-100,attack.animation().get_first_frame(unit_animation::MISSILE_FRAME));
-	const int last_missile = attack.animation().get_last_frame(unit_animation::MISSILE_FRAME);
+	const int first_missile = minimum<int>(-100,attack.animation().get_first_frame_time(unit_animation::MISSILE_FRAME));
+	const int last_missile = attack.animation().get_last_frame_time(unit_animation::MISSILE_FRAME);
 
 	const int real_last_missile = last_missile - first_missile;
 	const int missile_impact = -first_missile;
@@ -230,9 +233,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const int play_hit_sound_at = 0;
 
 	const bool hits = damage > 0;
-	const int begin_at = attack.animation().get_first_frame();
+	const int begin_at = attack.animation().get_first_frame_time(unit_animation::UNIT_FRAME);
 	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
-					       maximum(attack.animation().get_last_frame(),real_last_missile));
+				       maximum(attack.animation().get_last_frame_time(),real_last_missile));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -260,14 +263,22 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const std::string* unit_halo_image = NULL;
 	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
 	
-	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
+	unit_animation attack_anim = attack.animation();
+
+	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
+	attack_anim.start_animation(begin_at + first_missile, unit_animation::MISSILE_FRAME, acceleration);
+
+	attack_anim.update_current_frames();
+	int animation_time = attack_anim.get_animation_time();
+
+	while(animation_time < end_at) {
 		events::pump();
 
-		def->second.set_defending(true,hits,i - missile_impact,attack_type::LONG_RANGE);
+		def->second.set_defending(true,hits,animation_time - missile_impact,attack_type::LONG_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
-		while(!hide && sfx_it != sounds.end() && i >= sfx_it->time) {
+		while(!hide && sfx_it != sounds.end() && animation_time >= sfx_it->time) {
 			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
 			if(sfx.empty() == false) {
 				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
@@ -276,27 +287,35 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			++sfx_it;
 		}
 
-		if(!hide && hits && !played_hit_sound && i >= play_hit_sound_at) {
+		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
 			sound::play_sound(hit_sound);
 			played_hit_sound = true;
 		}
 
-		const std::string* new_halo = NULL;
-		int new_halo_x = 0, new_halo_y = 0;
-		const std::string* unit_image = attack.animation().get_frame(i,NULL,unit_animation::UNIT_FRAME,unit_animation::VERTICAL,&new_halo,&new_halo_x,&new_halo_y);
+		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
+
+		std::cerr << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
+		int new_halo_x = unit_frame.halo_x;
+		int new_halo_y = unit_frame.halo_y;
+		const std::string* unit_image = &unit_frame.image;
+
 		if(att->second.facing_left() == false) {
 			new_halo_x *= -1;
 		}
 
-		if(unit_halo_image != new_halo || unit_halo_x != new_halo_x || unit_halo_y != new_halo_y) {
+		if(unit_halo_image != &unit_frame.halo || 
+				unit_halo_x != new_halo_x ||
+				unit_halo_y != new_halo_y) {
 			
-			unit_halo_image = new_halo;
+			unit_halo_image = &unit_frame.halo;
 			unit_halo_x = new_halo_x;
 			unit_halo_y = new_halo_y;
 
-			if(unit_halo_image != NULL && !disp.fogged(a.x,a.y)) {
-				const int halo_xpos = int(disp.get_location_x(a)+disp.hex_size()/2.0 + unit_halo_x*disp.zoom());
-				const int halo_ypos = int(disp.get_location_y(a)+disp.hex_size()/2.0 + unit_halo_y*disp.zoom());
+			if(!unit_frame.halo.empty() && !disp.fogged(a.x,a.y)) {
+				const int halo_xpos = int(disp.get_location_x(a) +
+						disp.hex_size()/2.0 + unit_halo_x*disp.zoom());
+				const int halo_ypos = int(disp.get_location_y(a) +
+						disp.hex_size()/2.0 + unit_halo_y*disp.zoom());
 
 				unit_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*unit_halo_image));
 			} else {
@@ -304,16 +323,16 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			}
 		}
 
-		if(unit_image == NULL) {
+		if(unit_image->empty()) {
 			unit_image = &att->second.type().image_fighting(attack_type::LONG_RANGE);
 		}
 
 		if(!hide) {
-			const scoped_sdl_surface image((unit_image == NULL) ? NULL : image::get_image(*unit_image));
+			const surface image((unit_image == NULL) ? surface(NULL) : image::get_image(*unit_image));
 			disp.draw_tile(a.x,a.y,image);
 		}
 
-		if(damage > 0 && i >= missile_impact && shown_label == false) {
+		if(damage > 0 && animation_time >= missile_impact && shown_label == false) {
 			shown_label = true;
 			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 		}
@@ -321,7 +340,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		Uint32 defensive_colour = 0;
 		double defensive_alpha = 1.0;
 
-		if(damage > 0 && i >= missile_impact) {
+		std::cerr << "Waiting for missile impact at " << missile_impact << "\n";
+		if(damage > 0 && animation_time >= missile_impact) {
 			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
@@ -348,13 +368,14 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
-		if(i >= 0 && i < real_last_missile && !hide) {
-			const int missile_frame = i + first_missile;
+		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
+			const int missile_frame_time = animation_time + first_missile;
 
-			const std::string* new_halo = NULL;
-			int new_halo_x = 0, new_halo_y = 0;
-			const std::string* missile_image = attack.animation().get_frame(missile_frame,NULL,
-			                                                    unit_animation::MISSILE_FRAME,dir,&new_halo,&new_halo_x,&new_halo_y);
+			const unit_animation::frame& missile_frame = attack_anim.get_current_frame(unit_animation::MISSILE_FRAME);
+			std::cerr << "Missile: animation time :" << animation_time << ", image " << missile_frame.image << ", halo: " << missile_frame.halo << "\n";
+
+			new_halo_x = missile_frame.halo_x;
+			new_halo_y = missile_frame.halo_y;
 
 			if(att->second.facing_left() == false) {
 				new_halo_x *= -1;
@@ -363,22 +384,29 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			new_halo_x = int(new_halo_x*disp.zoom());
 			new_halo_y = int(new_halo_y*disp.zoom());
 
+			const std::string *missile_image = NULL;
+			if(dir == unit_animation::VERTICAL) {
+				missile_image = &missile_frame.image;
+			} else {
+				missile_image = &missile_frame.image_diagonal;
+			}
+
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
-			if(missile_image == NULL) {
+			if(missile_image->empty()) {
 				if(dir == unit_animation::VERTICAL)
 					missile_image = &default_missile;
 				else
 					missile_image = &default_diag_missile;
 			}
 
-			scoped_sdl_surface img(image::get_image(*missile_image));
+			surface img(image::get_image(*missile_image));
 
 			if(hflip) {
 				img.assign(image::reverse_image(img));
 			}
 
-			double pos = double(missile_impact - i)/double(missile_impact);
+			double pos = double(missile_impact - animation_time)/double(missile_impact);
 			if(pos < 0.0) {
 				pos = 0.0;
 			}
@@ -393,12 +421,14 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			const int halo_xpos = xpos+disp.hex_size()/2;
 			const int halo_ypos = ypos+disp.hex_size()/2;
 
-			if(missile_halo_image != new_halo || missile_halo_x != new_halo_x || missile_halo_y != new_halo_y) {
-				missile_halo_image = new_halo;
+			if(missile_halo_image != &missile_frame.halo || missile_halo_x != new_halo_x || missile_halo_y != new_halo_y) {
+				missile_halo_image = &missile_frame.halo;
 				missile_halo_x = new_halo_x;
 				missile_halo_y = new_halo_y;
 
-				if(missile_halo_image != NULL && !disp.fogged(b.x,b.y)) {
+				if(missile_halo_image != NULL &&
+						!missile_halo_image->empty() &&
+						!disp.fogged(b.x,b.y)) {
 					missile_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*missile_halo_image));
 				} else {
 					missile_halo_effect.assign(0);
@@ -413,6 +443,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			missile_halo_effect.assign(0);
 		}
 
+		//TODO: fix this
+		SDL_Delay(20);
+#if 0
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
 		if(wait_time > 0 && !hide) {
 			SDL_Delay(wait_time);
@@ -420,9 +453,12 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			//if we're not keeping up, then skip frames
 			i += minimum<int>(time_resolution*4,-wait_time);
 		}
+#endif
 
-		ticks = SDL_GetTicks();
+		// ticks = SDL_GetTicks();
 
+		attack_anim.update_current_frames();
+		animation_time = attack_anim.get_animation_time();
 		disp.update_display();
 	}
 
@@ -543,9 +579,9 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		leader->second.set_leading(true);
 	}
 
-	const int begin_at = minimum<int>(-200,attack.animation().get_first_frame());
+	const int begin_at = minimum<int>(-200,attack.animation().get_first_frame_time());
 	const int end_at = maximum<int>((damage+1)*time_resolution,
-	                                       maximum<int>(200,attack.animation().get_last_frame()));
+	                                       maximum<int>(200,attack.animation().get_last_frame_time()));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -579,14 +615,18 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const std::string* halo_image = NULL;
 	int halo_x = -1, halo_y = -1;
 
-	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
+	unit_animation attack_anim = attack.animation();
+	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
+
+	while(!attack_anim.animation_finished()) {
 		events::pump();
 
-		def->second.set_defending(true,hits,i,attack_type::SHORT_RANGE);
+		int animation_time = attack_anim.get_animation_time();
+		def->second.set_defending(true,hits,animation_time,attack_type::SHORT_RANGE);
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
-		while(!hide && sfx_it != sounds.end() && i >= sfx_it->time) {
+		while(!hide && sfx_it != sounds.end() && animation_time >= sfx_it->time) {
 			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
 			if(sfx.empty() == false) {
 				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
@@ -595,7 +635,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			++sfx_it;
 		}
 
-		if(!hide && hits && !played_hit_sound && i >= play_hit_sound_at) {
+		if(!hide && hits && !played_hit_sound && animation_time >= play_hit_sound_at) {
 			sound::play_sound(hit_sound);
 			played_hit_sound = true;
 		}
@@ -607,12 +647,12 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		Uint32 defender_colour = 0;
 		double defender_alpha = 1.0;
 
-		if(damage > 0 && i >= 0 && shown_label == false) {
+		if(damage > 0 && animation_time >= 0 && shown_label == false) {
 			shown_label = true;
 			disp.float_label(b,lexical_cast<std::string>(damage),255,0,0);
 		}
 
-		if(damage > 0 && i >= 0) {
+		if(damage > 0 && animation_time >= 0) {
 			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
@@ -633,12 +673,13 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
-		const std::string* new_halo_image = NULL;
-		int new_halo_x = 0, new_halo_y = 0;
 
 		int xoffset = 0;
-		const std::string* unit_image = attack.animation().get_frame(i,&xoffset,unit_animation::UNIT_FRAME,unit_animation::VERTICAL,
-		                                                             &new_halo_image,&new_halo_x,&new_halo_y);
+
+		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
+		int new_halo_x = unit_frame.halo_x;
+		int new_halo_y = unit_frame.halo_y;
+		const std::string* unit_image = &unit_frame.image;
 
 		if(!attacker.facing_left()) {
 			xoffset *= -1;
@@ -649,27 +690,31 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		xoffset = int(double(xoffset)*disp.zoom());
 
-		if(unit_image == NULL) {
+		if(unit_image->empty()) {
 			unit_image = &attacker.image();
 		}
 
-		scoped_sdl_surface image((unit_image == NULL) ? NULL : image::get_image(*unit_image));
+		surface image((unit_image == NULL) ? surface(NULL) : image::get_image(*unit_image));
 		if(attacker.facing_left() == false) {
 			image.assign(image::reverse_image(image));
 		}
 
-		const double pos = double(i)/double(i < 0 ? begin_at : end_at);
+		const double pos = double(animation_time)/double(animation_time < 0 ? begin_at : end_at);
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 
 		const int halo_xpos = posx+disp.hex_size()/2;
 		const int halo_ypos = posy+disp.hex_size()/2;
 
-		if(new_halo_image != halo_image || new_halo_x != halo_x || new_halo_y != halo_y) {
-			halo_image = new_halo_image;
+		if(&unit_frame.halo != halo_image ||
+				new_halo_x != halo_x ||
+				new_halo_y != halo_y) {
+			halo_image = &unit_frame.halo;
 			halo_x = new_halo_x;
 			halo_y = new_halo_y;
-			if(halo_image != NULL && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+
+			if(!unit_frame.halo.empty() && 
+					(!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
 				halo_effect.assign(halo::add(halo_xpos,halo_ypos,*halo_image));
 			} else {
 				halo_effect.assign(0);
@@ -694,6 +739,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		ticks = SDL_GetTicks();
 
+		attack_anim.update_current_frames();
 		disp.update_display();
 	}
 

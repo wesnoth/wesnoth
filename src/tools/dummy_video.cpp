@@ -13,7 +13,7 @@
 
 #include "../video.hpp"
 
-SDL_Surface* CVideo::getSurface()
+surface CVideo::getSurface()
 {
 	return NULL;
 }
@@ -22,12 +22,12 @@ void update_rect(const SDL_Rect& rect)
 {
 }
 
-SDL_Surface* display_format_alpha(SDL_Surface* surf)
+surface display_format_alpha(surface surf)
 {
 	return NULL;
 }
 
-SDL_Surface* get_video_surface()
+surface get_video_surface()
 {
 	return NULL;
 }

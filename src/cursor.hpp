@@ -2,6 +2,7 @@
 #define CURSOR_HPP_INCLUDED
 
 #include "SDL.h"
+#include "sdl_utils.hpp"
 
 namespace cursor
 {
@@ -18,8 +19,8 @@ void use_colour(bool value);
 
 void set(CURSOR_TYPE type);
 
-void draw(SDL_Surface* screen);
-void undraw(SDL_Surface* screen);
+void draw(surface screen);
+void undraw(surface screen);
 
 void set_focus(bool focus);
 

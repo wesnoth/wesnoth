@@ -540,7 +540,7 @@ void config::read(const std::string& data,
 	std::string var;
 	std::string value;
 
-	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false;
+	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false, translatable = false;;
 
 	int line = 0;
 
@@ -690,6 +690,15 @@ void config::read(const std::string& data,
 				} else if(c == '"') {
 					in_quotes = !in_quotes;
 					has_quotes = true;
+
+					//if we have an underscore outside of quotes in front, then
+					//we strip it away, since it simply indicates that this value is translatable.
+					if(value.empty() == false && std::count(value.begin(),value.end(),'_') == 1) {
+						std::string val = value;
+						if(strip(val) == "_") {
+							value = "";
+						}
+					}
 				} else if(c == '\n' && !in_quotes) {
 
 					//see if this is a CVS list=CVS list style assignment (e.g. x,y=5,8)
@@ -720,6 +729,10 @@ void config::read(const std::string& data,
 								strip(value);
 							}
 
+							if(translatable) {
+								//translate 'value' here using gettext
+							}
+
 							if(n < vars.size()) {
 								elements.top()->values[vars[n]] = value;
 							} else {
@@ -733,6 +746,7 @@ void config::read(const std::string& data,
 					value = "";
 					has_quotes = false;
 					escape_next = false;
+					translatable = false;
 				} else if(in_quotes || !has_quotes) {
 					push_back(value, c);
 				}

@@ -42,7 +42,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 	CKey key;
 
-	scoped_sdl_surface background(image::get_image("misc/lobby.png",image::UNSCALED));
+	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
 	background.assign(scale_surface(background,disp.x(),disp.y()));
 
 	if(background == NULL) {
@@ -110,11 +110,11 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				if(map_data != "") {
 					try {
 						gamemap map(terrain_data,map_data);
-						SDL_Surface* const mini = image::getMinimap(100,100,map,0);
+						const surface mini(image::getMinimap(100,100,map,0));
 	
 						//generate a unique id to show the map as
 						char buf[50];
-						sprintf(buf,"addr %d",(int)mini);
+						sprintf(buf,"addr %d",(int)(SDL_Surface*)mini);
 	
 						image::register_image(buf,mini);
 	

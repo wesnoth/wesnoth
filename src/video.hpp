@@ -14,14 +14,15 @@
 #define VIDEO_HPP_INCLUDED
 
 #include "SDL.h"
+#include "sdl_utils.hpp"
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
 #define VIDEO_MEMORY SDL_HWSURFACE
 #define SYSTEM_MEMORY SDL_SWSURFACE
 
-SDL_Surface* display_format_alpha(SDL_Surface* surf);
-SDL_Surface* get_video_surface();
+surface display_format_alpha(surface surf);
+surface get_video_surface();
 
 bool non_interactive();
 
@@ -57,7 +58,7 @@ class CVideo {
 
 	void flip();
 
-	SDL_Surface* getSurface( void );
+	surface getSurface( void );
 
 	bool isFullScreen() const;
 

@@ -230,7 +230,7 @@ bool operator==(const battle_type& a, const battle_type& b)
 std::set<battle_type> weapon_choice_cache;
 
 int ai::choose_weapon(const location& att, const location& def,
-					  battle_stats& cur_stats, gamemap::TERRAIN terrain)
+					  battle_stats& cur_stats, gamemap::TERRAIN terrain, bool use_cache)
 {
 	const std::map<location,unit>::const_iterator itor = units_.find(att);
 	if(itor == units_.end())
@@ -238,6 +238,10 @@ int ai::choose_weapon(const location& att, const location& def,
 
 	static int cache_hits = 0;
 	static int cache_misses = 0;
+
+	if(use_cache == false) {
+		weapon_choice_cache.clear();
+	}
 
 	battle_type battle(att,def,terrain);
 	const std::set<battle_type>::const_iterator cache_itor = weapon_choice_cache.find(battle);
@@ -347,7 +351,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 	std::vector<std::pair<location,location> >::const_iterator m;
 	for(m = movements.begin(); m != movements.end(); ++m) {
 		battle_stats bat_stats;
-		const int weapon = ai_obj.choose_weapon(m->first,target, bat_stats, map[m->second.x][m->second.y]);
+		const int weapon = ai_obj.choose_weapon(m->first,target, bat_stats, map[m->second.x][m->second.y],true);
 
 		assert(weapon != -1);
 		weapons.push_back(weapon);

@@ -1,5 +1,6 @@
 CVS HEAD:
  * improved user interface theme
+ * new graphics: signpost, sting attack frame
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -18,34 +19,66 @@ CVS HEAD:
    * The Undead Border Patrol
    * Undead Crossing
    * An Unexpected Appearance
-   * Weldyn Attack
+   * Weldyn Under Attack
    * Lake Vrug
    * Tribal Warfare
    * The Outpost
+ * gave names to Trolls
+ * new units
+   * Fire Dragon
+   * Giant Mudcrawler
+   * Haldric
+   * Mudcrawler
+   * Tentacle
+   * Female Outlaw
+   * Outlaw Princess
+   * Outlaw Queen
+   * Peasant
+   * Warrior King
  * return can now be used to navigate through help topics and sections
  * a box is now drawn around images in the help browser (can be disabled through minor tweaks to help config to handle new borders around images wml)
+ * implemented feature to tell observers when a new player has arrived in the lobby
  * updated translations:
    * catalan
    * czech
    * german
    * spanish
    * swedish
+ * added [then] and [else] tags under [object] tags
  * fixed the bug with multiplying help sections
  * fixed the problem where the forward and back button was shown brifly when opening the help browser
  * fixed --disable-debug not working as expected
  * fixed victory condition bug in 'Saving Inarix'
  * fixed problem where the editor would go slower and slower the more it was used
  * fixed a potential problem with a help browser recursive introduction section
+ * fixed incorrect #ifdefs in 'Training the Ogres' and 'Weldyn Under Attack'
+ * fixed some lacking death declarations
+ * fixed bug where tooltips could be left behind after 'load game' dialog.
+ * fixed bug where themes with multiple resolution specifiers could be displayed incorrectly
+ * fixed missing [removeitem] for Delfador's staff.
+ * fixed bug where multiplayer games that disallowed observers didn't work properly
+ * fixed removing items when legitimate unit picks it up
+ * fixed removal of items in scenarios
  * small fixes to unit display in help browser
+ * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
+ * moved items to their own hierarchy: images/items/
+ * added exploder and cutter tools
  * adding a limit to number of characters in a textbox
  * adding a maximal line width for text to be drawn, to circumvent a SDL / SDL_ttf bug
  * changed set_flag rather verbose syntax to set_flag=blah,foo,bar
  * implemented patch to aid making binary packages
  * implemented relative directory patch
- * added exploder and cutter tools
+ * cleaned a bit the textbox code
+ * refactoring of all animation code in unit_display and halo.
  * removed an obsolete feature in terrain graphics engine that was never used
  * removing commented-out obsolete code in display.cpp
- * cleaned a bit the textbox code
+ * optimizing halo movement when unit moves
+ * adding animated.hpp, and the animated<T> template.
+ * partial rewrite of image.?pp for speed: looking up images was what was slowing the game
+ * replacing all SDL_Surface*, and scoped_sdl_surface, with shared_sdl_surface, which was renamed surface.
+ * inlining some stuff for performance reasons
+ * optimizing invalide_all redraws
+ * adding support for animated terrain images
 
 Version 0.8:
  * added Drake flying animations

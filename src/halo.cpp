@@ -30,35 +30,15 @@ private:
 	const std::string& current_image();
 	void rezoom();
 
-	struct frame {
-		frame() : time(50) {}
+	animated<std::string> images_;
 
-		frame(const std::string& str) : time(50) {
-			if(std::find(str.begin(),str.end(),':') != str.end()) {
-				const std::vector<std::string>& items = config::split(str,':');
-				if(items.size() > 1) {
-					file = items.front();
-					time = lexical_cast<int>(items.back());
-					return;
-				}
-			}
-
-			file = str;
-		}
-
-		int time;
-		std::string file;
-	};
-
-	std::vector<frame> images_;
 	std::string current_image_;
 
 	bool reverse_;
-	int start_cycle_, cycle_time_, lifetime_;
 	
 	int origx_, origy_, x_, y_;
 	double origzoom_, zoom_;
-	shared_sdl_surface surf_, buffer_;
+	surface surf_, buffer_;
 	SDL_Rect rect_;
 };
 
@@ -70,28 +50,21 @@ bool hide_halo = false;
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
-: reverse_(orientation == REVERSE), start_cycle_(-1), cycle_time_(50), lifetime_(lifetime), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+: reverse_(orientation == REVERSE), origx_(xpos), origy_(ypos), x_(xpos), y_(ypos), origzoom_(disp->zoom()), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect), images_(img)
 {
-	if(std::find(img.begin(),img.end(),',') != img.end()) {
-		const std::vector<std::string>& imgs = config::split(img,',');
-		images_.resize(imgs.size());
-		std::copy(imgs.begin(),imgs.end(),images_.begin());
-
-		cycle_time_ = 0;
-		for(std::vector<frame>::const_iterator i = images_.begin(); i != images_.end(); ++i) {
-			cycle_time_ += i->time;
-		}
-	}
-
-	if(images_.empty()) {
-		images_.push_back(img);
-	}
-
 	assert(disp != NULL);
+	// std::cerr << "Constructing halo sequence from image " << img << "\n";
 
 	set_location(xpos,ypos);
 
-	current_image_ = images_.front().file;
+	images_.start_animation(0, -1);
+
+	if(!images_.animation_finished()) {
+		images_.update_current_frame();
+		SDL_Delay(20);
+	}
+
+	current_image_ = "";
 	rezoom();
 }
 
@@ -109,20 +82,11 @@ void effect::set_location(int x, int y)
 
 const std::string& effect::current_image()
 {
-	assert(!images_.empty());
-	if(images_.size() == 1 || cycle_time_ <= 0) {
-		return images_.front().file;
-	} else {
-		int current_time = (SDL_GetTicks() - start_cycle_)%cycle_time_;
-		for(std::vector<frame>::const_iterator i = images_.begin(); i != images_.end(); ++i) {
-			current_time -= i->time;
-			if(current_time < 0) {
-				return i->file;
-			}
-		}
-	}
+	static const std::string r = "";
 
-	return images_.front().file;
+	const std::string& res = images_.get_current_frame();
+
+	return res;
 }
 
 void effect::rezoom()
@@ -147,10 +111,7 @@ void effect::render()
 		return;
 	}
 
-	if(start_cycle_ == -1) {
-		start_cycle_ = SDL_GetTicks();
-	}
-
+	images_.update_current_frame();
 	const std::string& img = current_image();
 	if(surf_ == NULL || zoom_ != disp->zoom() || current_image_ != img) {
 		current_image_ = img;
@@ -176,7 +137,7 @@ void effect::render()
 		return;
 	}
 
-	SDL_Surface* const screen = disp->video().getSurface();
+	surface const screen = disp->video().getSurface();
 
 	const clip_rect_setter clip_setter(screen,clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
@@ -198,7 +159,7 @@ void effect::unrender()
 		return;
 	}
 
-	SDL_Surface* const screen = disp->video().getSurface();
+	surface const screen = disp->video().getSurface();
 
 	SDL_Rect clip_rect = disp->map_area();
 	const clip_rect_setter clip_setter(screen,clip_rect);
@@ -209,7 +170,7 @@ void effect::unrender()
 
 bool effect::expired() const
 {
-	return lifetime_ >= 0 && start_cycle_ >= 0 && SDL_GetTicks() - start_cycle_ > lifetime_*cycle_time_;
+	return images_.animation_finished();
 }
 
 }

@@ -255,7 +255,7 @@ void terrain_palette::draw(bool force) {
 		const gamemap::TERRAIN terrain = terrains_[counter];
 		const std::string filename = "terrain/" +
 			map_.get_terrain_info(terrain).default_image() + ".png";
-		scoped_sdl_surface image(image::get_image(filename, image::UNSCALED));
+		surface image(image::get_image(filename, image::UNSCALED));
 		if((unsigned)image->w != size_specs_.terrain_size
 		   || (unsigned)image->h != size_specs_.terrain_size) {
 			image.assign(scale_surface(image, size_specs_.terrain_size,
@@ -402,7 +402,7 @@ void brush_bar::draw(bool force) {
 	for (int i = 1; i <= total_brush_; i++) {
 		std::stringstream filename;
 		filename << "editor/brush-" << i << ".png";
-		scoped_sdl_surface image(image::get_image(filename.str(), image::UNSCALED));
+		surface image(image::get_image(filename.str(), image::UNSCALED));
 		if (image == NULL) {
 			std::cerr << "Image " << filename.str() << " not found." << std::endl;
 			continue;

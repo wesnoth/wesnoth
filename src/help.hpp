@@ -223,17 +223,17 @@ private:
 	/// that should be blitted along with some other information.
 	struct item {
 
-		item(shared_sdl_surface surface, int x, int y, const std::string text="",
+		item(surface surface, int x, int y, const std::string text="",
 			 const std::string reference_to="", bool floating=false,
 			 bool box=false, ALIGNMENT alignment=HERE);
 
-		item(shared_sdl_surface surface, int x, int y,
+		item(surface surface, int x, int y,
 			 bool floating, bool box=false, ALIGNMENT=HERE);
 
 		/// Relative coordinates of this item.
 		SDL_Rect rect;
 
-		shared_sdl_surface surf;
+		surface surf;
 
 		// If this item contains text, this will contain that text.
 		std::string text; 

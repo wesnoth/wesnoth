@@ -20,6 +20,7 @@
 #include "font.hpp"
 #include "halo.hpp"
 #include "network.hpp"
+#include "tooltips.hpp"
 #include "unit.hpp"
 #include "video.hpp"
 
@@ -50,11 +51,11 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& dialog_style);
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 colour, SDL_Surface* tg);
+void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,
-								 double alpha, SDL_Surface* target);
+								 double alpha, surface target);
 
 //given the location of a dialog, will draw its title.
 //Returns the area the title takes up
@@ -117,7 +118,7 @@ struct check_item {
 class preview_pane : public widget {
 public:
 	preview_pane(display& disp) : widget(disp) {}
-	virtual ~preview_pane() {}
+	virtual ~preview_pane() { tooltips::clear_tooltips(location()); }
 
 	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
@@ -130,7 +131,7 @@ size_t text_to_lines(std::string& text, size_t max_length);
 //if a menu is given, then returns -1 if the dialog was cancelled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
-int show_dialog(display& screen, SDL_Surface* image,
+int show_dialog(display& screen, surface image,
                 const std::string& caption, const std::string& message,
                 DIALOG_TYPE type=MESSAGE,
                 const std::vector<std::string>* menu_items=NULL,

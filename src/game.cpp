@@ -386,16 +386,8 @@ int play_game(int argc, char** argv)
 
 			if(val[0] == '/') {
 				game_config::path = val;
-			} else if(getcwd(buf,sizeof(buf)) != NULL) {
-				std::string cwd(buf);
-
-#ifdef _WIN32
-				std::replace(cwd.begin(),cwd.end(),'\\','/');
-#endif
-				game_config::path = cwd + '/' + val;
 			} else {
-				std::cerr << "Could not get working directory\n";
-				return 0;
+				game_config::path = get_cwd() + '/' + val;
 			}
 
 			if(!is_directory(game_config::path)) {
@@ -1115,9 +1107,9 @@ int main(int argc, char** argv)
 		//just means the game should quit
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
-	} catch(...) {
+	} /*catch(...) {
 		std::cerr << "Unhandled exception. Exiting\n";
-	}
+	}*/
 
 	return 0;
 }

@@ -72,11 +72,11 @@ void cutter::load_masks(const config& conf)
 			cur_mask.shift = shift;
 			cur_mask.cut = cut;
 			cur_mask.filename = image;
-			scoped_sdl_surface tmp(IMG_Load(image.c_str()));
+			surface tmp(IMG_Load(image.c_str()));
 			if(tmp == NULL)
 				throw exploder_failure("Unable to load mask image " + image);
 
-			cur_mask.image = shared_sdl_surface(make_neutral_surface(tmp));
+			cur_mask.image = surface(make_neutral_surface(tmp));
 		}
 
 		if(masks_[name].image == NULL)
@@ -85,7 +85,7 @@ void cutter::load_masks(const config& conf)
 }
 
 
-cutter::surface_map cutter::cut_surface(shared_sdl_surface surf, const config& conf)
+cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 {
 	surface_map res;
 
@@ -117,7 +117,7 @@ std::string cutter::find_configuration(const std::string &file)
 }
 
 
-void cutter::add_sub_image(const shared_sdl_surface &surf, surface_map &map, const config* config) 
+void cutter::add_sub_image(const surface &surf, surface_map &map, const config* config) 
 {
 	const std::string name = (*config)["name"];
 	if(name.empty())
@@ -140,7 +140,7 @@ void cutter::add_sub_image(const shared_sdl_surface &surf, surface_map &map, con
 	typedef std::pair<std::string, positioned_surface> sme;
 
 	positioned_surface ps;
-	ps.image = shared_sdl_surface(::cut_surface(surf, cut));
+	ps.image = surface(::cut_surface(surf, cut));
 	if(ps.image == NULL)
 		throw exploder_failure("Unable to cut surface!");
 	ps.name = name;

@@ -55,7 +55,7 @@ std::string get_exploder_dir()
 //translated to the position (x,y) on dest.
 //All surfaces are supposed to be neutral surfaces, mask and src are supposed
 //to be of identical size.
-void masked_overwrite_surface(SDL_Surface* dest, SDL_Surface* src, SDL_Surface* mask, int x, int y)
+void masked_overwrite_surface(surface dest, surface src, surface mask, int x, int y)
 {
 	surface_lock dest_lock(dest);
 	surface_lock src_lock(src);
@@ -139,7 +139,7 @@ void masked_overwrite_surface(SDL_Surface* dest, SDL_Surface* src, SDL_Surface* 
 
 //returns true if the image is empty. the surface surf is considered to be a
 //neutral surface.
-bool image_empty(SDL_Surface* surf)
+bool image_empty(surface surf)
 {
 	//an image is considered empty if
 	// * all its pixels have 0 alpha, OR
@@ -172,7 +172,7 @@ namespace {
 }
 
 //saves the given SDL structure into a given filename.
-void save_image(SDL_Surface *surf, const std::string &filename)
+void save_image(surface surf, const std::string &filename)
 {
 	//opens the actual file
 	const util::scoped_FILE file(fopen(filename.c_str(),"wb"));

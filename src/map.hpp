@@ -65,9 +65,11 @@ public:
 
 		int x, y;
 
-		bool operator<(const location& a) const;
-		bool operator==(const location& a) const;
-		bool operator!=(const location& a) const;
+		// Inlining those for performance reasons
+		bool operator<(const location& a) const { return x < a.x || x == a.x && y < a.y; }
+		bool operator==(const location& a) const { return x == a.x && y == a.y; }
+		bool operator!=(const location& a) const { return !operator==(a); }
+
 		// Adds an absolute location to a "delta" location
 		location operator-() const;
 		location operator+(const location &a) const;

@@ -27,7 +27,7 @@ public:
 		mask() : image(NULL) {}
 
 		std::string name;
-		shared_sdl_surface image;
+		surface image;
 		std::string filename;
 
 		exploder_point shift;
@@ -39,7 +39,7 @@ public:
 
 		std::string name;
 		exploder_point pos;
-		shared_sdl_surface image;
+		surface image;
 
 		cutter::mask mask;
 	};
@@ -49,12 +49,12 @@ public:
 
 	const config load_config(const std::string& filename);
 	void load_masks(const config& conf);
-	surface_map cut_surface(shared_sdl_surface surf, const config& conf);
+	surface_map cut_surface(surface surf, const config& conf);
 
 	void set_verbose(bool value);
 private:
 	std::string find_configuration(const std::string &file);
-	void add_sub_image(const shared_sdl_surface &surf, surface_map &map, const config* config);
+	void add_sub_image(const surface &surf, surface_map &map, const config* config);
 
 	mask_map masks_;
 

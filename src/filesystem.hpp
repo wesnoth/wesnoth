@@ -39,6 +39,8 @@ std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_user_data_dir();
 
+std::string get_cwd();
+
 std::string read_map(const std::string& name);
 
 //function which returns true iff the given file is a directory

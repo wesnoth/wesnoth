@@ -19,13 +19,13 @@ namespace {
 
 void fade_logo(display& screen, int xpos, int ypos)
 {
-	const scoped_sdl_surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
+	const surface logo(image::get_image(game_config::game_logo,image::UNSCALED));
 	if(logo == NULL) {
 		std::cerr << "Could not find game logo\n";
 		return;
 	}
 
-	SDL_Surface* const fb = screen.video().getSurface();
+	surface const fb = screen.video().getSurface();
 
 	if(fb == NULL || xpos < 0 || ypos < 0 || xpos + logo->w > fb->w || ypos + logo->h > fb->h) {
 		return;
@@ -118,8 +118,8 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 	const font::floating_label_context label_manager;
 	
-	const scoped_sdl_surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
-	const scoped_sdl_surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
+	const surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
+	const surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
 
 	if(title_surface == NULL) {
 		std::cerr << "Could not find title image\n";

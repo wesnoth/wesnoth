@@ -318,7 +318,7 @@ void game::send_data(const config& data, network::connection exclude)
 {
 	for(std::vector<network::connection>::const_iterator
 	    i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude && (allow_observers_ || sides_.count(*i) == 1)) {
+		if(*i != exclude && (allow_observers_ || is_needed(*i) || sides_.count(*i) == 1)) {
 			network::queue_data(data,*i);
 		}
 	}
@@ -354,6 +354,15 @@ void game::send_data_team(const config& data, const std::string& team, network::
 {
 	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && player_on_team(team,*i)) {
+			network::queue_data(data,*i);
+		}
+	}
+}
+
+void game::send_data_observers(const config& data)
+{
+	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+		if(is_observer(*i)) {
 			network::queue_data(data,*i);
 		}
 	}

@@ -6,6 +6,7 @@
 
 #include "SDL.h"
 #include <string>
+#include <vector>
 
 class team;
 
@@ -22,21 +23,82 @@ class team;
 /// - greyed: images are scaled and in greyscale
 /// - brightened: images are scaled and brighter than normal.
 namespace image {
-	///a generic image locator. Abstracts the location of an image.
-	///used as a key for a std::map
-	struct locator
+	struct cache_item {
+		cache_item() : loaded(false), image(NULL) {}
+		cache_item(surface image) : loaded(true), image(image) {}
+
+		bool loaded;
+		surface image;
+	};
+
+	typedef std::vector<cache_item> cache;
+
+	//a generic image locator. Abstracts the location of an image.
+	class locator
 	{
-		locator(const char *filename) : filename(filename) { type = FILE; }
-		locator(const std::string& filename) : filename(filename) { type = FILE; }
-		locator(const std::string& filename, const gamemap::location& loc) : filename(filename), loc(loc)
-			{ type = SUB_FILE; }
+	private:
+		// Called by each constructor after actual construction to
+		// initialize the index_ field
+		void init_index();
+	public:
+		enum type { NONE, FILE, SUB_FILE };
 
-		bool operator==(const locator &a) const;
-		bool operator<(const locator &a) const;
+		struct value {
+			value();
+			value(const value &a);
+			value(const char *filename);
+			value(const std::string& filename);
+			value(const std::string& filename, const gamemap::location& loc);
+			
+			bool operator==(const value& a) const;
+			bool operator<(const value& a) const;
 
-		enum { FILE, SUB_FILE } type;
-		std::string filename;
-		gamemap::location loc;
+			type type_;
+			std::string filename_;
+			gamemap::location loc_;
+		};
+
+		// Constructing locators is somewhat slow, accessing image
+		// through locators is fast. The idea is that calling functions
+		// should store locators, and not strings to construct locators
+		// (the second will work, of course, but will be slower)
+		locator();
+		locator(const locator &a);
+		locator(const char *filename);
+		locator(const std::string& filename);
+		locator(const std::string& filename, const gamemap::location& loc);
+
+		locator& operator=(const locator &a);
+		bool operator==(const locator &a) const { return index_ == a.index_; }
+		bool operator<(const locator &a) const { return index_ < a.index_; }
+
+		const std::string &get_filename() const { return val_.filename_; }
+		const gamemap::location& get_loc() const { return val_.loc_ ; }
+		const type get_type() const { return val_.type_; };
+		// const int get_index() const { return index_; };
+
+		// returns true if the locator does not correspond to any
+		// actual image 
+		bool is_void() const { return val_.type_ == NONE; }
+		// returns true if the locator already was stored in the given
+		// cache
+		bool locator::in_cache(const cache& cache) const;
+		// loads the image it is pointing to from the disk
+		surface load_from_disk() const;
+		// returns the image it is corresponding to in the given cache
+		surface locate_in_cache(const cache& cache) const;
+		// adds the given image to the given cache, indexed with the
+		// current locator
+		void add_to_cache(cache& cache, const surface &image) const;
+	protected:
+		static int last_index_;
+	private:
+
+		surface load_image_file() const;
+		surface load_image_sub_file() const;
+
+		int index_;
+		value val_;
 	};
 
 	///the image manager is responsible for setting up images, and destroying
@@ -80,32 +142,32 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
-	SDL_Surface* get_image(const locator& i_locator,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
+	surface get_image(const locator& i_locator,TYPE type=SCALED, COLOUR_ADJUSTMENT adj=ADJUST_COLOUR);
 
 	///function to get a scaled image, but scale it to specific dimensions.
 	///if you later try to get the same image using get_image() the image will
 	///have the dimensions specified here.
 	///Note that this surface must be freed by the user by calling SDL_FreeSurface
-	SDL_Surface* get_image_dim(const locator& i_locator, size_t x, size_t y);
+	surface get_image_dim(const locator& i_locator, size_t x, size_t y);
 
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
 	///and must be freed using SDL_FreeSurface()
-	SDL_Surface* reverse_image(SDL_Surface* surf);
+	surface reverse_image(const surface &surf);
 
 	///function to register an image with the given id. Calls to get_image(id,UNSCALED) will
 	///return this image. register_image() will take ownership of this image and free
 	///it when the cache is cleared (change of video mode or colour adjustment).
 	///If there is already an image registered with this id, that image will be freed
 	///and replaced with this image.
-	void register_image(const locator& i_locator, SDL_Surface* surf);
+	void register_image(const locator& i_locator, const surface& surf);
 
 	//returns true if the given image actually exists, without loading it.
 	bool exists(const locator& i_locator);
 
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, int lawful_bonus, const team* tm=NULL);
+	surface getMinimap(int w, int h, const gamemap& map_, int lawful_bonus, const team* tm=NULL);
 }
 
 #endif

@@ -17,7 +17,7 @@ void progress_bar::set_progress_percent(int progress)
 
 void progress_bar::draw()
 {
-	SDL_Surface* const surf = disp().video().getSurface();
+	surface const surf = disp().video().getSurface();
 	SDL_Rect area = location();
 
 	if(area.w >= 2 && area.h >= 2) {

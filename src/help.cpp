@@ -970,7 +970,7 @@ void help_text_area::show_topic(const topic &t) {
 }
 
 	
-help_text_area::item::item(shared_sdl_surface surface, int x, int y, const std::string _text,
+help_text_area::item::item(surface surface, int x, int y, const std::string _text,
 						   const std::string reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment)
 	: surf(surface), text(_text), ref_to(reference_to), floating(_floating), box(_box),
@@ -981,7 +981,7 @@ help_text_area::item::item(shared_sdl_surface surface, int x, int y, const std::
 	rect.h = box ? surface->h + box_width * 2 : surface->h;
 }
 
-help_text_area::item::item(shared_sdl_surface surface, int x, int y, bool _floating,
+help_text_area::item::item(surface surface, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment)
 	: surf(surface), text(""), ref_to(""), floating(_floating), box(_box), align(alignment) {
 	rect.x = x;
@@ -1000,7 +1000,7 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 	// Add the title item.
 	const std::string show_title =
 		font::make_text_ellipsis(shown_topic_->title, title_size, text_width());
-	shared_sdl_surface surf(font::get_rendered_text(show_title, title_size,
+	surface surf(font::get_rendered_text(show_title, title_size,
 													font::NORMAL_COLOUR, TTF_STYLE_BOLD));
 	if (surf != NULL) {
 		add_item(item(surf, 0, 0, show_title));
@@ -1270,7 +1270,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		state |= italic ? TTF_STYLE_ITALIC : 0;
 		// Always override the color if we have a cross reference.
 		const SDL_Color color = ref_dst == "" ? text_color : font::YELLOW_COLOUR;
-		shared_sdl_surface surf(font::get_rendered_text(first_part, font_size, color, state));
+		surface surf(font::get_rendered_text(first_part, font_size, color, state));
 		add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
 			// Parts remain, remove the first part from the string and
@@ -1295,7 +1295,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 
 void help_text_area::add_img_item(const std::string path, const std::string alignment,
 								  const bool floating, const bool box) {
-	shared_sdl_surface surf(image::get_image(path, image::UNSCALED));
+	surface surf(image::get_image(path, image::UNSCALED));
 	if (surf == NULL) {
 		std::stringstream msg;
 		msg << "Image " << path << " could not be loaded.";
@@ -1458,7 +1458,7 @@ void help_text_area::draw() {
 		uparrow_.hide(scrollbar_pos == 0 || !scrollbar_.enabled());
 		downarrow_.hide(scrollbar_pos + scrollbar_.get_grip_height() == (int)scrollbar_.height()
 						|| !scrollbar_.enabled());
-		SDL_Surface* const screen = disp_.video().getSurface();
+		surface const screen = disp_.video().getSurface();
 		clip_rect_setter clip_rect_set(screen, clip_rect);
 		std::list<item>::const_iterator it;
 		for (it = items_.begin(); it != items_.end(); it++) {
@@ -2039,7 +2039,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	const events::resize_lock prevent_resizing;
 
 	CVideo& screen = disp.video();
-	SDL_Surface* const scr = screen.getSurface();
+	surface const scr = screen.getSurface();
 
 	const int width = minimum<int>(900, scr->w - 20);
 	const int height = minimum<int>(800, scr->h - 150);

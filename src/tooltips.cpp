@@ -38,7 +38,7 @@ std::vector<tooltip>::const_iterator current_tooltip = tips.end();
 int tooltip_handle = 0;
 
 SDL_Rect current_rect;
-SDL_Surface* current_background = NULL;
+surface current_background = NULL;
 
 SDL_Rect get_text_size(const std::string& msg)
 {
@@ -155,7 +155,7 @@ void process(int mousex, int mousey, bool lbutton)
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    const SDL_Color& colour, const std::string& text,
-                   int x, int y, SDL_Surface* bg)
+                   int x, int y, surface bg)
 {
 	return font::draw_text(gui,area,size,colour,text,x,y,bg,true);
 }

@@ -250,11 +250,15 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config* const main_map_cfg = cfg.child("main_map");
 	if(main_map_cfg != NULL) {
 		main_map_ = object(*main_map_cfg);
+	} else {
+		main_map_ = object();
 	}
 
 	const config* const mini_map_cfg = cfg.child("mini_map");
 	if(mini_map_cfg != NULL) {
 		mini_map_ = object(*mini_map_cfg);
+	} else {
+		mini_map_ = object();
 	}
 	
 	const config* const status_cfg = cfg.child("status");

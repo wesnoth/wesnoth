@@ -22,7 +22,7 @@ class composer
 public:
 	composer();
 
-	shared_sdl_surface compose(const std::string &src, const std::string &dest);
+	surface compose(const std::string &src, const std::string &dest);
 
 	void set_interactive(bool value);
 	void set_verbose(bool value);

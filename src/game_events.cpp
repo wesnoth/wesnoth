@@ -738,7 +738,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::string text;
 
 		gamemap::location loc;
-		bool remove_overlay = false;
 		if(filter != NULL) {
 			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
 				if(game_events::unit_matches_filter(u,*filter)) {
@@ -749,11 +748,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		if(loc.valid() == false) {
-			remove_overlay = true;
 			loc = event_info.loc1;
 		}
 
 		const unit_map::iterator u = units->find(loc);
+
+		std::string command_type = "then";
 
 		if(u != units->end() && (filter == NULL || u->second.matches_filter(*filter))) {
 			const std::string& lang = string_table[id];
@@ -763,10 +763,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = cfg["description"];
 
 			u->second.add_modification("object",cfg);
-
-			if(remove_overlay) {
-				screen->remove_overlay(event_info.loc1);
-			}
 
 			screen->select_hex(event_info.loc1);
 			screen->invalidate_unit();
@@ -779,10 +775,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = lang;
 			else
 				text = cfg["cannot_use_message"];
+
+			command_type = "else";
 		}
 
 		if(cfg["silent"] != "yes") {
-			scoped_sdl_surface surface(NULL);
+			surface surface(NULL);
 
 			if(image.empty() == false) {
 				surface.assign(image::get_image(image,image::UNSCALED));
@@ -792,6 +790,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			screen->draw();
 
 			gui::show_dialog(*screen,surface,caption,text);
+		}
+
+		const config::child_list& commands = cfg.get_children(command_type);
+		for(config::child_list::const_iterator cmd = commands.begin();
+		    cmd != commands.end(); ++cmd) {
+			handle_event(event_info,*cmd);
 		}
 	}
 
@@ -878,7 +882,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			option_events.push_back((*mi)->child_range("command"));
 		}
 
-		scoped_sdl_surface surface(NULL);
+		surface surface(NULL);
 		if(image.empty() == false) {
 			surface.assign(image::get_image(image,image::UNSCALED));
 		}

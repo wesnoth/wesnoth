@@ -2,6 +2,7 @@
 #define HALO_HPP_INCLUDED
 
 #include "display.hpp"
+#include "animated.hpp"
 
 #include <string>
 
