@@ -48,6 +48,24 @@ private:
 	const gamemap& map_;
 };
 
+// Conditions placed on victory must be accessible from the global function
+// check_victory, but shouldn't be passed to that function as parameters,
+// since it is called from a variety of places.
+namespace victory_conditions
+{ 
+	bool when_enemies_defeated;
+
+	void set_victory_when_enemies_defeated(bool on) 
+	{
+		when_enemies_defeated = on;
+	}
+
+	const bool victory_when_enemies_defeated() 
+	{
+		return when_enemies_defeated;
+	}
+}
+
 std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location recruit_location, display* disp, bool need_castle, bool full_movement)
@@ -983,7 +1001,12 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	if(found_enemies == false) {
 		if(found_human) {
 			game_events::fire("enemies defeated");
+			if (victory_conditions::victory_when_enemies_defeated() == false) {
+				// this level has asked not to be ended by this condition
+				return;
+			}
 		}
+
 
 		if(non_interactive()) {
 			std::cout << "winner: ";

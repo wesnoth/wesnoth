@@ -195,4 +195,10 @@ bool clear_shroud(display& disp, const gamestatus& status,
 bool unit_can_move(const gamemap::location& loc, const unit_map& units,
                    const gamemap& map, const std::vector<team>& teams);
 
+
+namespace victory_conditions { 
+	void set_victory_when_enemies_defeated(bool on);
+	const bool victory_when_enemies_defeated();
+}
+
 #endif

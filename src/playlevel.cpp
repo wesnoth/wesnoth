@@ -253,6 +253,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		sound::play_music(music);
 	}
 
+	victory_conditions::set_victory_when_enemies_defeated(
+						(*level)["victory_when_enemies_defeated"] != "no");
+
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,gameinfo);
 
@@ -517,6 +520,7 @@ redo_turn:
 				game_events::pump();
 
 				check_victory(units,teams);
+
 			}
 
 			//time has run out
