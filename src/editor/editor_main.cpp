@@ -24,6 +24,7 @@
 #include "../preferences.hpp"
 #include "../language.hpp"
 #include "../cursor.hpp"
+#include "../wesconfig.h"
 
 #include <cctype>
 #include <cstdlib>
@@ -36,9 +37,12 @@ int main(int argc, char** argv)
 	setlocale (LC_ALL, "");
 
 	const std::string& intl_dir = get_intl_dir();
-	bindtextdomain ("wesnoth-editor", intl_dir.c_str());
-	textdomain ("wesnoth-editor");
-	bind_textdomain_codeset ("wesnoth-editor", "UTF-8");
+	bindtextdomain (PACKAGE "-editor", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-editor", "UTF-8");
+	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
+
+	textdomain (PACKAGE "-editor");
 
 	game_config::editor = true;
 
