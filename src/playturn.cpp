@@ -2423,9 +2423,9 @@ void turn_info::do_command(const std::string& str)
 		  gui::show_dialog(gui_,NULL,"",_("New theme will take effect on next new or loaded game."),gui::MESSAGE);
 		}
 
-	} else if(cmd == "ban") {
+	} else if(cmd == "ban" || cmd == "kick") {
 		config cfg;
-		config& ban = cfg.add_child("ban");
+		config& ban = cfg.add_child(cmd);
 		ban["username"] = data;
 
 		network::send_data(cfg);
