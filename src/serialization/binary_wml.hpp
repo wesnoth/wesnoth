@@ -17,7 +17,7 @@
 #include <map>
 #include <string>
 
-struct config;
+class config;
 
 //this object holds the schema by which config objects can be compressed and decompressed.
 struct compression_schema

@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-struct config;
+class config;
 struct line_source;
 
 line_source get_line_source(std::vector< line_source > const &line_src, int line);
