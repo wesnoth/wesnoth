@@ -4,7 +4,6 @@
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
-#include "display.hpp"
 #include "font.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"

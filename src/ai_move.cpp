@@ -14,7 +14,6 @@
 #include "global.hpp"
 
 #include "ai_move.hpp"
-#include "display.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "map.hpp"
