@@ -151,7 +151,7 @@ const SDL_Color& get_side_colour(int side)
 	                                   {0x00,0xFF,0x00,0},
 	                                   {0xFF,0xFF,0x00,0},
 	                                   {0xFF,0x00,0xFF,0},
-					   {0x33,0x33,0x33,0},
+					   {0xFF,0x7F,0x00,0},
 					   {0x89,0x89,0x89,0},
 					   {0xFF,0xFF,0xFF,0},
 					   {0x94,0x50,0x27,0},
@@ -183,21 +183,6 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& str,
 	}
 }
 
-/*
-int text_size(TTF_Font* font,const std::string& str, int &w, int &h)
-{
-	switch(charset())
-	{
-	case CHARSET_UTF8:
-		return TTF_SizeUTF8(font, str.c_str(), &w, &h);
-	case CHARSET_LATIN1:
-		return TTF_SizeText(font, str.c_str(), &w, &h);
-	default:
-		std::cerr << "Unrecognized charset\n";
-		return -1;
-	}
-}
-*/
 
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
@@ -250,28 +235,6 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 
 }
 
-/*
-SDL_Rect get_text_size(const std::string &str, int size)
-{
-	TTF_Font* const font = get_font(size);
-
-	SDL_Rect tsize;
-	int w, h;
-	int res = text_size(font, str, w, h);
-	if(res == -1) {
-		std::cerr << "Could not get ttf size: '" << str << "'\n";
-		SDL_Rect res;
-		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
-		return res;
-	}
-	tsize.x = 0;
-	tsize.y = 0;
-	tsize.w = w;
-	tsize.h = h;
-
-	return tsize;
-}
-*/
 
 SDL_Surface* get_rendered_text(const std::string& str, int size,
 			       const SDL_Color& colour)
