@@ -179,6 +179,7 @@ private:
 
 	void handle_event(const SDL_Event& event);
 	void mouse_motion(const SDL_MouseMotionEvent& event);
+	void mouse_motion(int x, int y);
 	void mouse_press(const SDL_MouseButtonEvent& event);
 
 	void left_click(const SDL_MouseButtonEvent& event);

@@ -265,13 +265,18 @@ void turn_info::handle_event(const SDL_Event& event)
 
 void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 {
+	mouse_motion(event.x,event.y);
+}
+
+void turn_info::mouse_motion(int x, int y)
+{
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
 		// thus, we need to check if the LMB/MMB is still down
 		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
 		if(minimap_scrolling_) {
-			const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
+			const gamemap::location& loc = gui_.minimap_location_on(x,y);
 			if(loc.valid()) {
 				if(loc != last_hex_) {
 					last_hex_ = loc;
@@ -287,7 +292,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 	gamemap::location::DIRECTION nearest_hex;
 	const team& current_team = teams_[team_num_-1];
-	const gamemap::location new_hex = gui_.hex_clicked_on(event.x,event.y,&nearest_hex);
+	const gamemap::location new_hex = gui_.hex_clicked_on(x,y,&nearest_hex);
 
 	if(new_hex != last_hex_ || nearest_hex != last_nearest_) {
 		if(new_hex.valid() == false) {
@@ -446,6 +451,8 @@ private:
 
 void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
+	mouse_motion(event.x,event.y);
+
 	if(is_left_click(event) && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
 	} else if(is_middle_click(event) && event.state == SDL_RELEASED) {

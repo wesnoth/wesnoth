@@ -1570,9 +1570,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  replay* move_recorder, undo_list* undo_stack,
                  gamemap::location *next_unit, bool continue_move, bool should_clear_shroud)
 {
-	if(route.empty()) {
-		return 0;
-	}
+	assert(route.empty() == false);
 
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
