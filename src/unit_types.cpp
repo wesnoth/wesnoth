@@ -622,8 +622,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		defensive_animations_.push_back(defensive_animation(**d));
 	}
 	const config::child_list& teleports = cfg_.get_children("teleport_anim");
-	for(config::child_list::const_iterator d = teleports.begin(); d != teleports.end(); ++d) {
-		teleport_animations_.push_back(unit_animation(**d));
+	for(config::child_list::const_iterator t = teleports.begin(); t != teleports.end(); ++t) {
+		teleport_animations_.push_back(unit_animation(**t));
 	}
 }
 
