@@ -14,7 +14,6 @@
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
-#include "../display.hpp"
 #include "../events.hpp"
 #include "../key.hpp"
 #include "../sdl_utils.hpp"

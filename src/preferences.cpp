@@ -171,42 +171,42 @@ void set_locale(const std::string& s)
 	prefs["locale"] = s;
 }
 
-double music_volume()
+int music_volume()
 {
-	static const double default_value = 1.0;
+	static const int default_value = 100;
 	const string_map::const_iterator volume = prefs.values.find("music_volume");
 	if(volume != prefs.values.end() && volume->second.empty() == false)
-		return atof(volume->second.c_str());
+		return atoi(volume->second.c_str());
 	else
 		return default_value;
 }
 
-void set_music_volume(double vol)
+void set_music_volume(int vol)
 {
 	std::stringstream stream;
 	stream << vol;
 	prefs["music_volume"] = stream.str();
 
-	sound::set_music_volume(vol);
+	sound::set_music_volume(vol / 100.0);
 }
 
-double sound_volume()
+int sound_volume()
 {
-	static const double default_value = 1.0;
+	static const int default_value = 100;
 	const string_map::const_iterator volume = prefs.values.find("sound_volume");
 	if(volume != prefs.values.end() && volume->second.empty() == false)
-		return atof(volume->second.c_str());
+		return atoi(volume->second.c_str());
 	else
 		return default_value;
 }
 
-void set_sound_volume(double vol)
+void set_sound_volume(int vol)
 {
 	std::stringstream stream;
 	stream << vol;
 	prefs["sound_volume"] = stream.str();
 
-	sound::set_sound_volume(vol);
+	sound::set_sound_volume(vol / 100.0);
 }
 
 void mute(bool muted)
@@ -276,32 +276,26 @@ namespace {
 	double scroll = 0.2;
 }
 
-double scroll_speed()
+int scroll_speed()
 {
-	return get_scroll_speed()*100.0 + 10.0;
-}
-
-double get_scroll_speed()
-{
-	static bool first_time = true;
-	if(first_time) {
-		first_time = false;
-		const string_map::const_iterator itor = prefs.values.find("scroll");
-		if(itor != prefs.values.end()) {
-			scroll = minimum<double>(1.0,maximum<double>(0.0,
-			                             atof(itor->second.c_str())));
-		}
+	static const int default_value = 100;
+	string_map::const_iterator i = prefs.values.find("scroll");
+	if(i != prefs.values.end() && i->second.empty() == false)
+	{
+		scroll = atoi(i->second.c_str()) / 100.0;
+		return atoi(i->second.c_str());
+	} else {
+		scroll = default_value / 100.0;
+		return default_value;
 	}
-
-	return scroll;
 }
 
-void set_scroll_speed(double new_speed)
+void set_scroll_speed(int new_speed)
 {
-	std::stringstream formatter;
-	formatter << new_speed;
-	prefs["scroll"] = formatter.str();
-	scroll = new_speed;
+	std::stringstream stream;
+	stream << new_speed;
+	prefs["scroll"] = stream.str();
+	scroll = new_speed / 100.0;
 }
 
 bool turn_bell()
@@ -390,6 +384,7 @@ void show_preferences_dialog(display& disp)
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
 	surface_restorer restorer(&disp.video(),dialog_rect);
 
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
 	                                      string_table["preferences"],0,0);
@@ -437,13 +432,22 @@ void show_preferences_dialog(display& disp)
 		return;
 
 	SDL_Rect slider_rect = { slider_left,sound_pos,slider_right-slider_left,10};
-	gui::slider sound_slider(disp,slider_rect,sound_volume());
+	gui::slider sound_slider(disp,slider_rect);
+	sound_slider.set_min(1);
+	sound_slider.set_max(100);
+	sound_slider.set_value(sound_volume());
 
 	slider_rect.y = music_pos;
-	gui::slider music_slider(disp,slider_rect,music_volume());
+	gui::slider music_slider(disp,slider_rect);
+	music_slider.set_min(1);
+	music_slider.set_max(100);
+	music_slider.set_value(music_volume());
 
 	slider_rect.y = scroll_pos;
-	gui::slider scroll_slider(disp,slider_rect,get_scroll_speed());
+	gui::slider scroll_slider(disp,slider_rect);
+	scroll_slider.set_min(1);
+	scroll_slider.set_max(100);
+	scroll_slider.set_value(scroll_speed());
 
 	gui::button fullscreen_button(disp,string_table["full_screen"],
 	                              gui::button::TYPE_CHECK);
@@ -505,21 +509,13 @@ void show_preferences_dialog(display& disp)
 			break;
 		}
 
-		const double new_music = music_slider.process(mousex,mousey,left_button);
-		const double new_sound = sound_slider.process(mousex,mousey,left_button);
-		const double new_scroll = scroll_slider.process(mousex,mousey,left_button);
+		music_slider.process();
+		sound_slider.process();
+		scroll_slider.process();
 
-		if(new_sound >= 0.0) {
-			set_sound_volume(new_sound);
-		}
-
-		if(new_music >= 0.0) {
-			set_music_volume(new_music);
-		}
-
-		if(new_scroll >= 0.0) {
-			set_scroll_speed(new_scroll);
-		}
+		set_sound_volume(sound_slider.value());
+		set_music_volume(music_slider.value());
+		set_scroll_speed(scroll_slider.value());
 
 		if(fullscreen_button.process(mousex,mousey,left_button)) {
 			//the underlying frame buffer is changing, so cancel
@@ -531,12 +527,6 @@ void show_preferences_dialog(display& disp)
 
 		if(redraw_all) {
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
-			sound_slider.background_changed();
-			music_slider.background_changed();
-			scroll_slider.background_changed();
-			sound_slider.draw();
-			music_slider.draw();
-			scroll_slider.draw();
 			fullscreen_button.draw();
 			turbo_button.draw();
 			grid_button.draw();

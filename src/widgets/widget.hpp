@@ -21,9 +21,12 @@ public:
 	void set_focus(bool focus);
 
 protected:
+	widget(const widget &o);
 	widget(display& disp);
-	widget(display& disp, const SDL_Rect& rect);
+	widget(display& disp, SDL_Rect& rect);
 	virtual ~widget() {}
+
+	widget& operator=(const widget& o);
 
 	void bg_restore() const;
 	void set_dirty(bool dirty);

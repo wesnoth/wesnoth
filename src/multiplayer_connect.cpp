@@ -401,7 +401,10 @@ void mp_connect::gui_init()
 		rect.y = (disp_->y()-height_)/2+55+(30*side_num);
 		rect.w = launch_.width()-5;
 		rect.h = launch_.height();
-		sliders_gold_.push_back(gui::slider(*disp_, rect, 0.0+((80.0)/979.0)));
+		sliders_gold_.push_back(gui::slider(*disp_, rect));
+		sliders_gold_.back().set_min(20);
+		sliders_gold_.back().set_max(1000);
+		sliders_gold_.back().set_value(100);
 		rect.w = 30;
 		rect.x = (disp_->x()-width_)/2+603;
 		gold_bg_.push_back(surface_restorer(&disp_->video(),rect));
@@ -470,7 +473,7 @@ void mp_connect::gui_update()
 
 		//Player Gold
 		std::string str = side["gold"];
-		sliders_gold_[n].set_value((atoi(str.c_str()) - 20 + 0.0) / 979.0);
+		sliders_gold_[n].set_value(atoi(str.c_str()));
 		rect.x = (disp_->x() - width_) / 2 + 603;
 		rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
 		rect.w = 30;
@@ -563,15 +566,13 @@ int mp_connect::gui_do()
 				network::send_data(*level_);
 			}
 
+			sliders_gold_[n].process();
 			if(!save_){
-				int check_playergold = 20 + int(979 *
-					sliders_gold_[n].process(mousex, mousey, left_button));
-				if(abs(check_playergold) == check_playergold)
-					new_playergold = check_playergold;
-				if(new_playergold != cur_playergold) {
-					cur_playergold = new_playergold;
-					std::stringstream playergold;
-					playergold << cur_playergold;
+				cur_playergold = sliders_gold_[n].value();
+				std::stringstream playergold;
+				playergold << cur_playergold;
+				if (side["gold"] != playergold.str())
+				{
 					side["gold"] = playergold.str();
 					rect.x = (disp_->x() - width_) / 2 + 603;
 					rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
@@ -585,8 +586,6 @@ int mp_connect::gui_do()
 					update_rect(rect);
 					network::send_data(*level_);
 				}
-			}else{
-				sliders_gold_[n].draw();
 			}
 		}
 

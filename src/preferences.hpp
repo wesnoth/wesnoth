@@ -45,11 +45,11 @@ namespace preferences {
 	const std::string& locale();
 	void set_locale(const std::string& s);
 
-	double music_volume();
-	void set_music_volume(double vol);
+	int music_volume();
+	void set_music_volume(int vol);
 
-	double sound_volume();
-	void set_sound_volume(double vol);
+	int sound_volume();
+	void set_sound_volume(int vol);
 
 	void mute(bool muted);
 	bool is_muted();
@@ -63,9 +63,8 @@ namespace preferences {
 	const std::string& login();
 	void set_login(const std::string& username);
 
-	double scroll_speed();
-	double get_scroll_speed();
-	void set_scroll_speed(double scroll);
+	int scroll_speed();
+	void set_scroll_speed(int scroll);
 
 	bool turn_bell();
 	void set_turn_bell(bool ison);

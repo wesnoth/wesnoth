@@ -123,7 +123,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	rect.y = (disp.y()-height)/2+100;
 	rect.h = name_entry.location().w;
 
-	gui::slider turns_slider(disp,rect,0.38);
+	gui::slider turns_slider(disp,rect);
+	turns_slider.set_min(20);
+	turns_slider.set_max(100);
+	turns_slider.set_value(50);
 
 	//Village Gold
 	rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
@@ -134,7 +137,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	                string_table["village_gold"] + ": 1",rect.x,rect.y);
 	rect.y = (disp.y()-height)/2+147;
 	rect.h = name_entry.location().w;
-	gui::slider villagegold_slider(disp,rect,0.0);
+	gui::slider villagegold_slider(disp,rect);
+	villagegold_slider.set_min(1);
+	villagegold_slider.set_max(10);
+	villagegold_slider.set_value(1);
 
 	//FOG of war
 	gui::button fog_game(disp,string_table["fog_of_war"],gui::button::TYPE_CHECK);
@@ -188,6 +194,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
 		name_entry.process();
+		turns_slider.process();
+		villagegold_slider.process();
 
 		maps_menu.process(mousex,mousey,left_button,
 		                  key[SDLK_UP],key[SDLK_DOWN],
@@ -199,7 +207,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		if(launch_game.process(mousex,mousey,left_button)) {
 			if(name_entry.text().empty() == false) {
 				//Connector
-				name_entry.set_focus(false);
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
 				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());
@@ -208,6 +215,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				const network::manager net_manager;
 				const network::server_manager server_man(15000,server);
+				name_entry.set_focus(false);
 				connector.gui_do();
 				return -1;
 			} else {
@@ -226,50 +234,41 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		}
 
 		fog_game.process(mousex,mousey,left_button);
+		fog_game.draw();
 		shroud_game.process(mousex,mousey,left_button);
+		shroud_game.draw();
 		observers_game.process(mousex,mousey,left_button);
+		observers_game.draw();
 
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		//Game turns are 20 to 99
-		//FIXME: Should never be a - number, but it is sometimes
-		int check_turns=20+int(79*turns_slider.process(mousex,mousey,left_button));		
-		if(abs(check_turns) == check_turns)
-			new_turns=check_turns;
-		if(new_turns != cur_turns) {
-			cur_turns = new_turns;
-			rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
-			rect.y = (disp.y()-height)/2+83;
-			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
-			rect.h = 12;
-			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
-			sprintf(buf,"Turns: %d", cur_turns);
-			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-			                buf,rect.x,rect.y);
-			update_rect(rect);
-		}
+		//Turns per game
+		cur_turns = turns_slider.value();
+		rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
+		rect.y = (disp.y()-height)/2+83;
+		rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
+		rect.h = 12;
+		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+		sprintf(buf,"Turns: %d", cur_turns);
+		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+		                buf,rect.x,rect.y);
+		update_rect(rect);
 
 		//work out if we have to generate a new map
 		bool map_changed = false;
 
 		//Villages can produce between 1 and 10 gold a turn
-		//FIXME: Should never be a - number, but it is sometimes
-		int check_villagegold=1+int(9*villagegold_slider.process(mousex,mousey,left_button));
-		if(abs(check_villagegold) == check_villagegold)
-			new_villagegold=check_villagegold;
-		if(new_villagegold != cur_villagegold) {
-			cur_villagegold = new_villagegold;
-			rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
-			rect.y = (disp.y()-height)/2+130;
-			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
-			rect.h = 12;
-			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
-			sprintf(buf,": %d", cur_villagegold);
-			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-			                string_table["village_gold"] + buf,rect.x,rect.y);
-			update_rect(rect);
-		}
+		cur_villagegold = villagegold_slider.value();
+		rect.x = (disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19;
+		rect.y = (disp.y()-height)/2+130;
+		rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
+		rect.h = 12;
+		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+		sprintf(buf,": %d", cur_villagegold);
+		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+		                string_table["village_gold"] + buf,rect.x,rect.y);
+		update_rect(rect);
 		
 		if(maps_menu.selection() != cur_selection) {
 			map_changed = true;

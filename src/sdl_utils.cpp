@@ -256,9 +256,7 @@ SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 	if(r == 0 && g == 0 && b == 0 || surface == NULL)
 		return clone_surface(surface);
 
-	std::cerr << "~\n";
 	scoped_sdl_surface surf(make_neutral_surface(surface));
-	std::cerr << "~+\n";
 
 	if(surf == NULL) {
 		std::cerr << "failed to make neutral surface\n";

@@ -15,44 +15,42 @@
 
 #include "SDL.h"
 
-#include "../display.hpp"
 #include "../sdl_utils.hpp"
+
+#include "widget.hpp"
 
 #include <vector>
 
 namespace gui {
 
-class slider
+class slider : public widget
 {
-	display* disp_;
-	scoped_sdl_surface buffer_;
-	SDL_Rect area_;
-
-	double value_;
-
-	bool drawn_;
-
-	bool highlight_, clicked_, dragging_;
-
-	SDL_Rect slider_area() const;
-
 public:
-	slider(display& disp, SDL_Rect& rect, double value);
-	slider(const slider& o);
-	slider& operator=(const slider& o);
+	slider(display& d, SDL_Rect& rect);
 
-	static int height(display& disp);
-	static double normalize(int value, int min_value, int max_value);
-	static int denormalize(double value, int min_value, int max_value);
+	void set_min(int value);
+	void set_max(int value);
+	void set_value(int value);
+	int value();
 
+	void process();
+
+protected:
+	using widget::bg_restore;
+	using widget::set_dirty;
+	using widget::dirty;
+
+private:
+	SDL_Rect slider_area() const;
 	void draw();
 
-	double process(int mousex, int mousey, bool button);
+	int min_;
+	int max_;
+	int value_;
 
-	const SDL_Rect& area() const;
-	void set_value(double value);
-
-	void background_changed();
+	bool highlight_;
+	bool clicked_;
+	bool dragging_;
 };
 
 }

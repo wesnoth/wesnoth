@@ -25,94 +25,98 @@ namespace {
 
 namespace gui {
 
-slider::slider(display& disp, SDL_Rect& rect, double value)
-: disp_(&disp),
- buffer_(NULL), area_(rect), value_(value), drawn_(false),
- highlight_(false), clicked_(true), dragging_(false)
+slider::slider(display& d, SDL_Rect& rect)
+	: widget(d, rect), highlight_(false), clicked_(true),
+	  dragging_(false)
 {
-	background_changed();
+	set_dirty(true);
 }
 
-slider::slider(const slider& o) :
-   disp_(o.disp_),
-   buffer_(NULL),
-   area_(o.area_), value_(o.value_), drawn_(o.drawn_), highlight_(o.highlight_),
-   clicked_(o.clicked_), dragging_(o.dragging_)
+void slider::set_min(int value)
 {
-	background_changed();
+	min_ = value;
+	if (value_ < min_)
+		value_ = min_;
+	set_dirty(true);
 }
 
-slider& slider::operator=(const slider& o)
+void slider::set_max(int value)
 {
-	disp_ = o.disp_;
-	buffer_.assign(NULL);
-	area_ = o.area_;
-	value_ = o.value_;
-	drawn_ = o.drawn_;
-	highlight_ = o.highlight_;
-	clicked_ = o.clicked_;
-	dragging_ = o.dragging_;
-	background_changed();
-
-	return *this;
+	max_ = value;
+	if (value_ > max_)
+		value_ = max_;
+	set_dirty(true);
 }
 
-int slider::height(display& disp)
+void slider::set_value(int value)
 {
-	const scoped_sdl_surface image(image::get_image(slider_image,image::UNSCALED));
-	if(image != NULL)
-		return image->h;
-	else
-		return 0;
+	value_ = value;
+	if (value_ > max_)
+		value_ = max_;
+	if (value_ < min_)
+		value_ = min_;
+
+	set_dirty(true);
 }
 
-double slider::normalize(int value, int min_value, int max_value)
+int slider::value()
 {
-	return (double(value) - double(min_value))/double(max_value - min_value);
+	return value_;
 }
 
-int slider::denormalize(double value, int min_value, int max_value)
+SDL_Rect slider::slider_area() const
 {
-	return min_value + int(value*double(max_value - min_value));
+	static const SDL_Rect default_value = {0,0,0,0};
+	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
+	if(img == NULL)
+		return default_value;
+
+	if(img->w >= location().w)
+		return default_value;
+
+	double tmp = (value_ - min_ + 0.0) / (max_ - min_ + 0.0);
+	int tmp2 = (int)(tmp * (location().w - img->w));
+	const int xpos = location().x + tmp2;
+	SDL_Rect res = {xpos,location().y,img->w,img->h};
+	return res;
 }
 
 void slider::draw()
 {
-	drawn_ = true;
-
 	const scoped_sdl_surface image(image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED));
-	if(image == NULL || buffer_ == NULL)
+	if(image == NULL || dirty() == false)
 		return;
 
-	const int hpadding = image->w/2;
-	if(hpadding*2 >= area_.w)
+	if(image->w >= location().w)
 		return;
 
-	SDL_Surface* const screen = disp_->video().getSurface();
+	SDL_Surface* const screen = disp().video().getSurface();
 
-	SDL_BlitSurface(buffer_,NULL,screen,&area_);
+	bg_restore();
 
-	SDL_Rect line_rect = {area_.x, area_.y + area_.h/3, area_.w-hpadding*2, 1};
+	SDL_Rect line_rect = {location().x, location().y + location().h/2,
+			      location().w, 1};
 	SDL_FillRect(screen,&line_rect,SDL_MapRGB(screen->format,255,255,255));
 
 	SDL_Rect slider = slider_area();
-	disp_->blit_surface(slider.x,slider.y,image);
+	disp().blit_surface(slider.x,slider.y,image);
 
-	update_rect(area_);
+	set_dirty(false);
+	update_rect(location());
 }
 
-void slider::set_value(double value)
+void slider::process()
 {
-	value_ = value;
-}
+	int mousex, mousey;
+	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	const bool button = mouse_flags&SDL_BUTTON_LMASK;
 
-double slider::process(int mousex, int mousey, bool button)
-{
 	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
 	if(img == NULL)
-		return 0.0;
+		return;
 
-	bool should_draw = !drawn_;
+	SDL_Rect rect = {location().x, location().y, location().w, img->h};
+	set_location(rect);
 
 	const SDL_Rect& hit_area = slider_area();
 	const bool on = mousex > hit_area.x && mousex <= hit_area.x+hit_area.w &&
@@ -120,7 +124,7 @@ double slider::process(int mousex, int mousey, bool button)
 
 	if(on != highlight_) {
 		highlight_ = on;
-		should_draw = true;
+		set_dirty(true);
 	}
 
 	const bool new_click = button && !clicked_;
@@ -134,53 +138,25 @@ double slider::process(int mousex, int mousey, bool button)
 
 	clicked_ = button;
 
-	double new_value = value_;
+	int new_value = value_;
 
 	if(dragging_) {
-		new_value = double(mousex - (area_.x + img->w/2))/
-		            double(area_.w - img->w);
-		if(new_value < 0.0)
-			new_value = 0.0;
+		int tmp = mousex - location().x;
+		if (tmp < 0)
+			tmp = 0;
+		if (tmp > location().w - img->w)
+			tmp = location().w - img->w;
 
-		if(new_value > 1.0)
-			new_value = 1.0;
+		double tmp2 = (tmp + 0.0) / (location().w - img->w + 0.0);
+		new_value = (int)(tmp2 * (max_ - min_ + 0.0)) + min_;
 	}
-
-	if(should_draw || new_value != value_)
-		draw();
 
 	if(new_value != value_) {
 		value_ = new_value;
-		return value_;
-	} else {
-		return -1.0;
+		set_dirty(true);
 	}
-}
 
-SDL_Rect slider::slider_area() const
-{
-	static const SDL_Rect default_value = {0,0,0,0};
-	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
-	if(img == NULL)
-		return default_value;
-
-	const int hpadding = img->w/2;
-	if(hpadding*2 >= area_.w)
-		return default_value;
-
-	const int position = int(value_*double(area_.w - hpadding*2));
-	const int xpos = area_.x + position;
-	SDL_Rect res = {xpos,area_.y,img->w,img->h};
-	return res;
-}
-
-void slider::background_changed()
-{
-	const scoped_sdl_surface img(image::get_image(slider_image,image::UNSCALED));
-	if(img != NULL) {
-		area_.h = img->h;
-		buffer_.assign(get_surface_portion(disp_->video().getSurface(),area_));
-	}
+	draw();
 }
 
 }
