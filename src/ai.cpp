@@ -93,6 +93,12 @@ team& ai::current_team()
 	return teams_[team_num_-1];
 }
 
+const team& ai::current_team() const
+{
+	return teams_[team_num_-1];
+}
+
+
 void ai::move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves)
 {
 	assert(units_.find(to) == units_.end() || from == to);
@@ -216,29 +222,57 @@ void ai::do_move()
 
 	unit_map::iterator leader = find_leader(units_,team_num_);
 
-	//no moves left, recruitment phase and leader movement phase
-	//take stock of our current set of units
-	if(srcdst.empty() || leader != units_.end() && srcdst.count(leader->first) == srcdst.size()) {
-		if(leader == units_.end()) {
-			recorder.end_turn();
-			return;
-		}
-
-		move_leader_to_keep(enemy_dstsrc);
-		do_recruitment();
-		move_leader_after_recruit(enemy_dstsrc);
-
-		recorder.end_turn();
-		return;
-	}
-
 	int ticks = SDL_GetTicks();
 
 	std::vector<attack_analysis> analysis;
 
 	if(consider_combat_) {
-		analysis = analyze_targets(srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
+		std::cerr << "combat...\n";
+		consider_combat_ = do_combat(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
+		if(consider_combat_) {
+			do_move();
+			return;
+		}
 	}
+
+	std::cerr << "villages...\n";
+	const bool got_village = get_villages(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	if(got_village) {
+		do_move();
+		return;
+	}
+
+	std::cerr << "healing...\n";
+	const bool healed_unit = get_healing(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
+	if(healed_unit) {
+		do_move();
+		return;
+	}
+
+	std::cerr << "retreating...\n";
+	const bool retreated_unit = retreat_units(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+	if(retreated_unit) {
+		do_move();
+		return;
+	}
+
+	move_to_targets(possible_moves,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,leader);
+
+	//recruitment phase and leader movement phase
+	if(leader != units_.end()) {
+		move_leader_to_keep(enemy_dstsrc);
+		do_recruitment();
+		move_leader_after_recruit(enemy_dstsrc);
+	}
+
+	recorder.end_turn();
+}
+
+bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+{
+	int ticks = SDL_GetTicks();
+
+	std::vector<attack_analysis> analysis = analyze_targets(srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 
 	int time_taken = SDL_GetTicks() - ticks;
 	std::cout << "took " << time_taken << " ticks for " << analysis.size() << " positions. Analyzing...\n";
@@ -298,12 +332,10 @@ void ai::do_move()
 		dialogs::advance_unit(gameinfo_,units_,to,disp_,true);
 		dialogs::advance_unit(gameinfo_,units_,target_loc,disp_,!defender_human);
 
-		do_move();
-		return;
+		return true;
 
 	} else {
 		log_scope("summoning reinforcements...\n");
-		consider_combat_ = false;
 
 		std::set<gamemap::location> already_done;
 
@@ -316,8 +348,24 @@ void ai::do_move()
 			additional_targets_.push_back(target(loc,3.0));
 			already_done.insert(loc);
 		}
+
+		return false;
 	}
-	
+}
+
+void ai::do_attack(const location& u, const location& target, int weapon)
+{
+	recorder.add_attack(u,target,weapon);
+
+	game_events::fire("attack",u,target);
+	if(units_.count(u) && units_.count(target)) {
+		attack(disp_,map_,teams_,u,target,weapon,units_,state_,gameinfo_,false);
+		check_victory(units_,teams_);
+	}
+}
+
+bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+{
 	//try to acquire towers
 	for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
 		if(map_.underlying_terrain(map_[i->first.x][i->first.y]) != gamemap::TOWER)
@@ -347,18 +395,22 @@ void ai::do_move()
 			const std::map<location,unit>::iterator un = units_.find(i->second);
 			if(un == units_.end()) {
 				assert(false);
-				return;
+				return false;
 			}
 
 			if(un->second.is_guardian())
 				continue;
 
 			move_unit(i->second,i->first,possible_moves);
-			do_move();
-			return;
+			return true;
 		}
 	}
 
+	return false;
+}
+
+bool ai::get_healing(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
+{
 	//find units in need of healing
 	unit_map::iterator u_it = units_.begin();
 	for(; u_it != units_.end(); ++u_it) {
@@ -372,7 +424,7 @@ void ai::do_move()
 		   !u.type().regenerates()) {
 
 			//look for the village which is the least vulnerable to enemy attack
-			typedef std::multimap<location,location>::iterator Itor;
+			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
 			double best_vulnerability = 100000.0;
 			Itor best_loc = it.second;
@@ -399,38 +451,80 @@ void ai::do_move()
 				std::cerr << "moving unit to village for healing...\n";
 
 				move_unit(src,dst,possible_moves);
-				do_move();
-				return;
+				return true;
 			}
 		}
 	}
 
-	if(dstsrc.empty()) {
-		do_move();
-		return;
+	return false;
+}
+
+bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc) const
+{
+	const double our_power = power_projection(loc,srcdst,dstsrc);
+	const double their_power = power_projection(loc,enemy_srcdst,enemy_dstsrc);
+	return their_power > our_power + our_power*current_team().aggression();
+}
+
+bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+{
+	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement()) {
+
+			//this unit still has movement left, and is a candidate to retreat. We see the amount
+			//of power of each side on the situation, and decide whether it should retreat.
+			if(should_retreat(i->first,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc)) {
+				//time to retreat. Look for the place where the power balance is most in our favor
+				typedef move_map::const_iterator Itor;
+				std::pair<Itor,Itor> itors = srcdst.equal_range(i->first);
+				gamemap::location best_pos;
+				double best_rating = -10000.0;
+				while(itors.first != itors.second) {
+					const gamemap::location& hex = itors.first->second;
+					const double our_power = power_projection(hex,srcdst,dstsrc);
+					const double their_power = power_projection(hex,enemy_srcdst,enemy_dstsrc);
+					const double rating = our_power - their_power;
+					if(!best_pos.valid() || rating > best_rating) {
+						best_pos = hex;
+						best_rating = rating;
+					}
+
+					++itors.first;
+				}
+
+				if(best_pos.valid()) {
+					std::cerr << "retreating '" << i->second.type().name() << "' " << i->first.x << "," << i->first.y << " -> " << best_pos.x << "," << best_pos.y << "\n";
+					move_unit(i->first,best_pos,possible_moves);
+					return true;
+				}
+			}
+		}
 	}
 
-	std::cout << "finding targets...\n";
+	return false;
+}
+
+void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
+{
+	std::cerr << "finding targets...\n";
 	std::vector<target> targets = find_targets(leader != units_.end());
 	targets.insert(targets.end(),additional_targets_.begin(),
 	                             additional_targets_.end());
 	for(;;) {
 		if(targets.empty()) {
-			recorder.end_turn();
-			return;
+			break;
 		}
 
-		std::cout << "choosing move...\n";
+		std::cerr << "choosing move...\n";
 		std::pair<location,location> move = choose_move(targets,dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 			assert(map_.on_board(ittg->loc));
 		}
 
-
 		if(move.first.valid() == false)
 			break;
 
-		std::cout << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
+		std::cerr << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
 
 		//search to see if there are any enemy units next
 		//to the tile which really should be attacked once the move is done
@@ -485,20 +579,6 @@ void ai::do_move()
 		typedef std::multimap<location,location>::iterator Itor;
 		std::pair<Itor,Itor> del = dstsrc.equal_range(move.second);
 		dstsrc.erase(del.first,del.second);
-	}
-
-	do_move();
-	return;
-}
-
-void ai::do_attack(const location& u, const location& target, int weapon)
-{
-	recorder.add_attack(u,target,weapon);
-
-	game_events::fire("attack",u,target);
-	if(units_.count(u) && units_.count(target)) {
-		attack(disp_,map_,teams_,u,target,weapon,units_,state_,gameinfo_,false);
-		check_victory(units_,teams_);
 	}
 }
 
