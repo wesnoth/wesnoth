@@ -334,7 +334,7 @@ void attack(display& gui, const gamemap& map,
 
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		if(stats.nattacks > 0) {
-			const bool hits = (get_random()%100)/stats.chance_to_hit_defender;
+			const bool hits = (get_random()%100) < stats.chance_to_hit_defender;
 			const bool dies = gui.unit_attack(attacker,defender,
 			            hits ? stats.damage_defender_takes : 0,
 						a->second.attacks()[attack_with]);
@@ -390,7 +390,7 @@ void attack(display& gui, const gamemap& map,
 		}
 
 		if(stats.ndefends > 0) {
-			const bool hits = (get_random()%100)/stats.chance_to_hit_attacker;
+			const bool hits = (get_random()%100) < stats.chance_to_hit_attacker;
 			const bool dies = gui.unit_attack(defender,attacker,
 			               hits ? stats.damage_attacker_takes : 0,
 						   d->second.attacks()[stats.defend_with]);

@@ -194,7 +194,7 @@ paths::route a_star_search(const gamemap::location& src,
 
 				std::reverse(rt.steps.begin(),rt.steps.end());
 				rt.steps.push_back(dst);
-				rt.move_left = int(lowest->f);
+				rt.move_left = int(lowest->g + obj.cost(dst,lowest->g));
 
 				assert(rt.steps.front() == src);
 

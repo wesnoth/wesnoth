@@ -69,7 +69,9 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 {
 	//calculate the unit's traits
 	const std::vector<config*> traits = t->possible_traits();
-	const size_t num_traits = 2;
+
+	//level 0 units get no traits, others get 2 traits
+	const size_t num_traits = type_->level() == 0 ? 0 : 2;
 	if(use_traits && traits.size() >= num_traits) {
 		std::set<int> chosen_traits;
 		for(size_t i = 0; i != num_traits; ++i) {
@@ -459,6 +461,9 @@ const std::vector<attack_type>& unit::attacks() const
 
 int unit::movement_cost(const gamemap& map, gamemap::TERRAIN terrain) const
 {
+	if(type_->level() == 0 && terrain == gamemap::TOWER)
+		return 100;
+
 	const int res = type_->movement_type().movement_cost(map,terrain);
 
 	static const std::string slowed_string("slowed");
