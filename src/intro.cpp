@@ -241,7 +241,7 @@ bool show_intro_part(display& screen, const config& part,
 				for(; start_word != end_word; ++start_word) {
 					word.append(start_word.substr().first, start_word.substr().second);
 				}
-				const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),
+				const SDL_Rect rect = font::draw_text(NULL,screen_area(),
 						font::SIZE_PLUS,font::NORMAL_COLOUR,
 						word, xpos, ypos, false);
 
@@ -258,7 +258,7 @@ bool show_intro_part(display& screen, const config& part,
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
 			const SDL_Rect rect = font::draw_text(&screen.video(),
-					screen.screen_area(),font::SIZE_PLUS,
+					screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,tmp,xpos,ypos,
 					false);
 
