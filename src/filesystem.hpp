@@ -31,6 +31,7 @@ void get_files_in_dir(const std::string& dir,
                       std::vector<std::string>* dirs=NULL,
                       FILE_NAME_MODE mode=FILE_NAME_ONLY);
 
+std::string get_dir(const std::string &dir);
 //the location of various important files
 std::string get_prefs_file();
 std::string get_saves_dir();

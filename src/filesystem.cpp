@@ -150,7 +150,11 @@ std::string get_prefs_file()
 std::string get_saves_dir()
 {
 	const std::string dir_path = get_user_data_dir() + "/saves";
+	return get_dir(dir_path);
+}
 
+std::string get_dir(const std::string& dir_path)
+{
 #ifdef _WIN32
 	_mkdir(dir_path.c_str());
 #else
