@@ -163,7 +163,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	return true;
 }
 
-void show_objectives(display& disp, config& level_info)
+void show_objectives(display& disp, const config& level_info)
 {
 	static const std::string no_objectives(_("No objectives available"));
 	const std::string& name = level_info["name"];

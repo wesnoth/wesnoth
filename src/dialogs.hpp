@@ -36,7 +36,7 @@ void advance_unit(const game_data& info, const gamemap& map,unit_map& units, gam
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice);
 
-void show_objectives(display& disp, config& level_info);
+void show_objectives(display& disp, const config& level_info);
 
 // Ask user if I should really save the game and what name I should use
 // returns 0 iff user wants to save the game

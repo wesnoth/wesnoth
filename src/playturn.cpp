@@ -60,9 +60,9 @@ command_disabler::~command_disabler()
 	--commands_disabled;
 }
 
-void play_turn(game_data& gameinfo, game_state& state_of_game,
-               gamestatus& status, const config& terrain_config,
-               config* level, CKey& key, display& gui, gamemap& map,
+void play_turn(const game_data& gameinfo, game_state& state_of_game,
+               const gamestatus& status, const config& terrain_config,
+               const config& level, CKey& key, display& gui, gamemap& map,
                std::vector<team>& teams, int team_num,
                std::map<gamemap::location,unit>& units,
                turn_info::floating_textbox& textbox,
@@ -139,11 +139,12 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	turn_data.send_data();
 }
 
-turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
-                     gamestatus& status, const config& terrain_config, config* level,
-                     CKey& key, display& gui, gamemap& map,
-                     std::vector<team>& teams, int team_num,
-                     unit_map& units, TURN_MODE mode, floating_textbox& textbox, replay_network_sender& replay_sender)
+turn_info::turn_info(const game_data& gameinfo, game_state& state_of_game,
+                     const gamestatus& status, const config& terrain_config, 
+		     const config& level, CKey& key, display& gui, gamemap& map,
+		     std::vector<team>& teams, int team_num, unit_map& units,
+		     TURN_MODE mode, floating_textbox& textbox,
+		     replay_network_sender& replay_sender)
   : paths_wiper(gui),
     gameinfo_(gameinfo), state_of_game_(state_of_game), status_(status),
     terrain_config_(terrain_config), level_(level),
@@ -1611,7 +1612,7 @@ unit_map::iterator turn_info::current_unit()
 
 void turn_info::write_game_snapshot(config& start) const
 {
-	start.values = level_->values;
+	start.values = level_.values;
 
 	start["snapshot"] = "yes";
 
@@ -1923,7 +1924,7 @@ void turn_info::recall()
 
 	gui_.draw(); //clear the old menu
 
-	if((*level_)["disallow_recall"] == "yes") {
+	if(level_["disallow_recall"] == "yes") {
 		gui::show_dialog(gui_,NULL,"",_("You are separated from your soldiers and may not recall them"));
 	} else if(recall_list.empty()) {
 		gui::show_dialog(gui_,NULL,"",_("There are no troops available to recall\n\
@@ -2095,7 +2096,7 @@ void turn_info::preferences()
 
 void turn_info::objectives()
 {
-	dialogs::show_objectives(gui_,*level_);
+	dialogs::show_objectives(gui_,level_);
 }
 
 void turn_info::unit_list()

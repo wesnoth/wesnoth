@@ -42,6 +42,15 @@
 #define WRN_FT lg::warn(lg::display)
 #define ERR_FT lg::err(lg::display)
 
+//Deliberately breaking compilation with the original SDL_ttf library. Remove
+//the lines below to be able to do this anyway, however this is buggy and may
+//cause random memory corruption errors depending on the OS / Version of
+//Freetype / Language you are using!
+//
+#ifndef SDL_TTF_WESNOTH
+#error Please use the SDL_ttf files in the sdl_ttf directory, and not the original SDL_ttf library.
+#endif
+
 namespace {
 
 // Signed int. Negative values mean "no subset".
@@ -435,11 +444,6 @@ std::vector<surface> const &text_surface::get_surfaces() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 		
-		//DEBUG
-		if (itor->text[0] == 'æ') {
-			std::cerr << "Nihongo detected:\n";
-		}
-
 		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
 		if(!s.null())
 			surfs_.push_back(s);

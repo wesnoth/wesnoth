@@ -485,7 +485,7 @@ std::string get_first_word(const std::string &s);
 
 namespace {
 	const config *game_cfg = NULL;
-	game_data *game_info = NULL;
+	const game_data *game_info = NULL;
 	gamemap *map = NULL;
 	// The default toplevel.
 	help::section toplevel; 
@@ -656,7 +656,7 @@ namespace {
 
 namespace help {
 
-help_manager::help_manager(const config *cfg, game_data *gameinfo, gamemap *_map) {
+help_manager::help_manager(const config *cfg, const game_data *gameinfo, gamemap *_map) {
 	game_cfg = cfg == NULL ? &dummy_cfg : cfg;
 	game_info = gameinfo;
 	map = _map;
@@ -1030,7 +1030,7 @@ public:
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
 				std::string unit_id = *advance_it;
-				std::map<std::string,unit_type>::iterator new_type = game_info->unit_types.find(unit_id);
+				std::map<std::string,unit_type>::const_iterator new_type = game_info->unit_types.find(unit_id);
 			 	if(new_type != game_info->unit_types.end()) {
 					std::string lang_unit = new_type->second.language_name();
 					std::string ref_id = std::string("unit_") + new_type->second.id();

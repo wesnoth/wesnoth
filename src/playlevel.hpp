@@ -37,7 +37,7 @@ struct end_turn_exception {
 	int redo;
 };
 
-LEVEL_RESULT play_level(game_data& gameinfo, const config& terrain_config,
+LEVEL_RESULT play_level(const game_data& gameinfo, const config& terrain_config,
 		config* level, CVideo& video,
 		game_state& state_of_game,
 		const std::vector<config*>& story);

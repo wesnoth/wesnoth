@@ -119,7 +119,7 @@ namespace {
 	}
 }
 
-LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
+LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		config* level, CVideo& video,
 		game_state& state_of_game,
 		const std::vector<config*>& story)
@@ -597,7 +597,7 @@ redo_turn:
 
 					try {
 						play_turn(gameinfo,state_of_game,status,game_config,
-						          level, key, gui, map, teams, player_number,
+						          *level, key, gui, map, teams, player_number,
 						          units, textbox_info, replay_sender);
 					} catch(end_turn_exception& end_turn) {
 						if (end_turn.redo == player_number)
@@ -616,9 +616,9 @@ redo_turn:
 					const cursor::setter cursor_setter(cursor::WAIT);
 
 					turn_info turn_data(gameinfo,state_of_game,status,
-						                game_config,level,key,gui,
+						                game_config,*level,key,gui,
 						                map,teams,player_number,units,
-										turn_info::BROWSE_AI,textbox_info,replay_sender);
+								turn_info::BROWSE_AI,textbox_info,replay_sender);
 
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
@@ -635,8 +635,10 @@ redo_turn:
 					LOG_NG << "is networked...\n";
 
 					turn_info turn_data(gameinfo,state_of_game,status,
-					                    game_config,level,key,gui,
-										map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
+					                    game_config,*level,key,gui,
+							    map,teams,player_number,units,
+							    turn_info::BROWSE_NETWORKED,
+							    textbox_info,replay_sender);
 
 					for(;;) {
 
@@ -853,8 +855,8 @@ redo_turn:
 		}
 
 		turn_info turn_data(gameinfo,state_of_game,status,
-					        game_config,level,key,gui,
-							map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
+				game_config,*level,key,gui,
+				map,teams,player_number,units,turn_info::BROWSE_NETWORKED,textbox_info,replay_sender);
 
 		turn_data.save_game(_("A network disconnection has occured, and the game cannot continue. Do you want to save the game?"),gui::YES_NO);
 		if(disconnect) {

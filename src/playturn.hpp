@@ -79,11 +79,12 @@ public:
 
 	enum TURN_MODE { PLAY_TURN, BROWSE_NETWORKED, BROWSE_AI };
 	
-	turn_info(game_data& gameinfo, game_state& state_of_game,
-	          gamestatus& status, const config& terrain_config, config* level,
-	          CKey& key, display& gui, gamemap& map,
-	          std::vector<team>& teams, int team_num,
-	          unit_map& units, TURN_MODE mode, floating_textbox& textbox, replay_network_sender& network_sender);
+	turn_info(const game_data& gameinfo, game_state& state_of_game,
+	          const gamestatus& status, const config& terrain_config,
+		  const config& level, CKey& key, display& gui, gamemap& map,
+		  std::vector<team>& teams, int team_num, unit_map& units,
+		  TURN_MODE mode, floating_textbox& textbox,
+		  replay_network_sender& network_sender);
 
 	void turn_slice();
 
@@ -201,11 +202,11 @@ private:
 
 	void change_side_controller(const std::string& side, const std::string& player, bool orphan_side=false);
 
-	game_data& gameinfo_;
+	const game_data& gameinfo_;
 	game_state& state_of_game_;
-	gamestatus& status_;
+	const gamestatus& status_;
 	const config& terrain_config_;
-	config* level_;
+	const config& level_;
 	CKey key_;
 	display& gui_;
 	gamemap& map_;
@@ -253,8 +254,9 @@ private:
 	replay_network_sender& replay_sender_;
 };
 
-void play_turn(game_data& gameinfo, game_state& state_of_game,
-               gamestatus& status, const config& terrain_config, config* level,
+void play_turn(const game_data& gameinfo, game_state& state_of_game,
+               const gamestatus& status, const config& terrain_config,
+	       const config& level,
                CKey& key, display& gui, gamemap& map,
                std::vector<team>& teams, int team_num,
                std::map<gamemap::location,unit>& units,

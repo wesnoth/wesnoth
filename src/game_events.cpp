@@ -141,7 +141,7 @@ gamemap* game_map = NULL;
 std::map<gamemap::location,unit>* units = NULL;
 std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
-game_data* game_data_ptr = NULL;
+const game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 std::set<std::string> used_items;
 
@@ -1553,10 +1553,11 @@ void set_variable(const std::string& key, const std::string& value)
 	state_of_game->variables[key] = value;
 }
 
-manager::manager(config& cfg, display& gui_, gamemap& map_,
+manager::manager(const config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
                  std::vector<team>& teams_,
-                 game_state& state_of_game_, gamestatus& status, game_data& game_data_)
+                 game_state& state_of_game_, gamestatus& status,
+		 const game_data& game_data_)
 {
 	const config::child_list& events_list = cfg.get_children("event");
 	for(config::child_list::const_iterator i = events_list.begin();
