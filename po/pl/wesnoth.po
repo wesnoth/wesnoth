@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-12 17:19+0200\n"
+"POT-Creation-Date: 2004-09-16 14:31+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -671,6 +671,12 @@ msgstr ""
 
 #: data/multiplayer.cfg:265
 msgid "&undead-necromancer.png,Alliance of Darkness"
+msgstr ""
+
+#: data/scenario-test.cfg:38
+msgid ""
+"You can come if you wish, but the leader is only interesting in speaking to "
+"Baldras."
 msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
@@ -1650,6 +1656,29 @@ msgstr ""
 msgid "xp"
 msgstr ""
 
+#: data/themes/default.cfg:142 data/themes/default.cfg:478
+msgid "gold"
+msgstr ""
+
+#: data/themes/default.cfg:150 data/themes/default.cfg:486
+#, fuzzy
+msgid "villages"
+msgstr "Wioska"
+
+#: data/themes/default.cfg:158 data/themes/default.cfg:494
+msgid "units"
+msgstr ""
+
+#: data/themes/default.cfg:166 data/themes/default.cfg:502
+#, fuzzy
+msgid "upkeep"
+msgstr "pika"
+
+#: data/themes/default.cfg:174 data/themes/default.cfg:510
+#, fuzzy
+msgid "income"
+msgstr "kleszcze"
+
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
 msgstr ""
@@ -2022,6 +2051,7 @@ msgstr "Piasek"
 #: data/translations/english.cfg:141 data/translations/english.cfg:143
 #: data/translations/english.cfg:144 data/translations/english.cfg:145
 #: data/translations/english.cfg:146 data/translations/english.cfg:147
+#: src/reports.cpp:310
 #, fuzzy
 msgid "Village"
 msgstr "Wioska"
@@ -2613,7 +2643,7 @@ msgstr "sztylet"
 #: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
-#: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:24
+#: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
@@ -2738,7 +2768,7 @@ msgstr ""
 #: data/units/Dragoon.cfg:27 data/units/Drake_Clasher.cfg:19
 #: data/units/Drake_Fighter.cfg:20 data/units/Drake_Slasher.cfg:20
 #: data/units/Drake_Warrior.cfg:20 data/units/Elvish_Archer.cfg:21
-#: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:23
+#: data/units/Elvish_Archer.cfg:99 data/units/Elvish_Avenger.cfg:23
 #: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:23
 #: data/units/Elvish_Champion.cfg:21 data/units/Elvish_Fighter.cfg:23
 #: data/units/Elvish_Hero.cfg:21 data/units/Elvish_High_Lord.cfg:20
@@ -2822,7 +2852,7 @@ msgstr "pięść"
 
 #: data/units/Bone_Shooter.cfg:37 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:38
-#: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:39
+#: data/units/Elvish_Archer.cfg:116 data/units/Elvish_Avenger.cfg:39
 #: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:39
 #: data/units/Elvish_Champion.cfg:40 data/units/Elvish_Fighter.cfg:40
 #: data/units/Elvish_Hero.cfg:40 data/units/Elvish_Marshal.cfg:40
@@ -2851,7 +2881,7 @@ msgstr "łuk"
 #: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
 #: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
-#: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:40
+#: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Druid.cfg:62
 #: data/units/Elvish_Fighter.cfg:41 data/units/Elvish_Hero.cfg:41
@@ -3604,11 +3634,11 @@ msgstr "lightning"
 msgid "Elder Wose"
 msgstr ""
 
-#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:82
+#: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:81
 msgid "Elvish Archer"
 msgstr ""
 
-#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:96
 msgid ""
 "Elvish Archers are trained from youth in archery, and so skilled in long-"
 "range combat. Able to fire many arrows quickly and accurately, these Archers "
@@ -5912,11 +5942,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:931
+#: src/dialogs.cpp:365 src/game.cpp:989
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:978
+#: src/dialogs.cpp:367 src/game.cpp:1125
 msgid "Multiplayer"
 msgstr ""
 
@@ -5928,7 +5958,7 @@ msgstr ""
 msgid "replay"
 msgstr ""
 
-#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
+#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1384
 msgid "Turn"
 msgstr ""
 
@@ -5936,7 +5966,7 @@ msgstr ""
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:954
+#: src/dialogs.cpp:384 src/game.cpp:1101
 msgid "Difficulty"
 msgstr ""
 
@@ -5976,7 +6006,7 @@ msgstr ""
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:85
 msgid "Load Game"
 msgstr ""
 
@@ -5989,33 +6019,33 @@ msgid "Profile"
 msgstr ""
 
 #: src/dialogs.cpp:646 src/display.cpp:884 src/help.cpp:567
-#: src/playturn.cpp:1778
+#: src/playturn.cpp:1784
 msgid "level"
 msgstr ""
 
 #: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:621
-#: src/playturn.cpp:1942 src/unit.cpp:1034
+#: src/playturn.cpp:1947 src/unit.cpp:1034
 msgid "HP"
 msgstr ""
 
 #: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1780 src/playturn.cpp:1943
+#: src/display.cpp:914 src/playturn.cpp:1786 src/playturn.cpp:1948
 #: src/unit.cpp:1093
 msgid "XP"
 msgstr ""
 
 #: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:622
-#: src/playturn.cpp:1944 src/unit.cpp:1070
+#: src/playturn.cpp:1949 src/unit.cpp:1070
 msgid "Moves"
 msgstr ""
 
 #: src/dialogs.cpp:697 src/display.cpp:935 src/help.cpp:699
-#: src/playturn.cpp:602 src/reports.cpp:230
+#: src/playturn.cpp:599 src/reports.cpp:230
 msgid "melee"
 msgstr ""
 
 #: src/dialogs.cpp:698 src/display.cpp:936 src/help.cpp:699
-#: src/playturn.cpp:602 src/reports.cpp:231
+#: src/playturn.cpp:599 src/reports.cpp:231
 msgid "ranged"
 msgstr ""
 
@@ -6031,90 +6061,160 @@ msgstr ""
 msgid "Vera.ttf"
 msgstr ""
 
-#: src/game.cpp:137
+#: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
 msgstr ""
 
-#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
+#: src/game.cpp:139 src/game.cpp:201 src/playturn.cpp:1393
 msgid "Name:"
 msgstr ""
 
-#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
+#: src/game.cpp:147 src/game.cpp:208 src/playturn.cpp:1410
 msgid "The game could not be saved"
 msgstr ""
 
-#: src/game.cpp:199
+#: src/game.cpp:200
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/game.cpp:587
+#: src/game.cpp:648
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:807 src/multiplayer_connect.cpp:104
+#: src/game.cpp:868 src/multiplayer_connect.cpp:106
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
-#: src/playlevel.cpp:747
+#: src/game.cpp:879 src/game.cpp:884 src/playlevel.cpp:549
+#: src/playlevel.cpp:789
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:924
-msgid "There are no campaigns available"
+#: src/game.cpp:984
+msgid " ,Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:932
+#: src/game.cpp:990
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:955
-msgid "Select difficulty level:"
+#: src/game.cpp:1000
+msgid "Connect to Server"
 msgstr ""
 
-#: src/game.cpp:973
-msgid "Join Official Server"
+#: src/game.cpp:1001
+msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:973
-msgid "Log on to the official Wesnoth multiplayer server"
+#: src/game.cpp:1002
+msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
-msgid "Join Game"
+#: src/game.cpp:1014
+#, fuzzy
+msgid "Could not connect to host."
+msgstr "Nie mogę się podłączyć do hosta"
+
+#: src/game.cpp:1014 src/game.cpp:1029 src/game.cpp:1035 src/game.cpp:1046
+#: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
+#: src/playturn.cpp:1396 src/playturn.cpp:1410
+msgid "Error"
 msgstr ""
 
-#: src/game.cpp:974
-msgid "Join a server or hosted game"
+#: src/game.cpp:1022
+msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:975
-msgid "Host Multiplayer Game"
+#: src/game.cpp:1035
+msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:975
-msgid "Host a game without using a server"
+#: src/game.cpp:1046
+msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:978 src/multiplayer_client.cpp:269
-msgid "Login"
+#: src/game.cpp:1050
+msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:1058
-msgid "Language"
+#: src/game.cpp:1050
+msgid "Get Campaign"
 msgstr ""
 
 #: src/game.cpp:1059
+msgid "Downloading campaign..."
+msgstr ""
+
+#: src/game.cpp:1071
+msgid "Campaign Installed"
+msgstr ""
+
+#: src/game.cpp:1071
+msgid ""
+"The campaign has been installed. You will have to restart Wesnoth before you "
+"can play it."
+msgstr ""
+
+#: src/game.cpp:1075
+msgid "Network communication error."
+msgstr ""
+
+#: src/game.cpp:1078
+msgid "Remote host disconnected."
+msgstr ""
+
+#: src/game.cpp:1081
+msgid ""
+"There was a problem creating the files necessary to install this campaign."
+msgstr ""
+
+#: src/game.cpp:1102
+msgid "Select difficulty level:"
+msgstr ""
+
+#: src/game.cpp:1120
+msgid "Join Official Server"
+msgstr ""
+
+#: src/game.cpp:1120
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#: src/game.cpp:1121 src/multiplayer_lobby.cpp:157
+msgid "Join Game"
+msgstr ""
+
+#: src/game.cpp:1121
+msgid "Join a server or hosted game"
+msgstr ""
+
+#: src/game.cpp:1122
+msgid "Host Multiplayer Game"
+msgstr ""
+
+#: src/game.cpp:1122
+msgid "Host a game without using a server"
+msgstr ""
+
+#: src/game.cpp:1125 src/multiplayer_client.cpp:269
+msgid "Login"
+msgstr ""
+
+#: src/game.cpp:1205
+msgid "Language"
+msgstr ""
+
+#: src/game.cpp:1206
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1144
+#: src/game.cpp:1291
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1146
+#: src/game.cpp:1293
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -6138,11 +6238,11 @@ msgstr ""
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1941
+#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1946
 msgid "Name"
 msgstr ""
 
-#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1940
+#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1945
 msgid "Type"
 msgstr ""
 
@@ -6206,7 +6306,7 @@ msgstr ""
 msgid "End Unit Turn"
 msgstr ""
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1524
+#: src/hotkeys.cpp:122 src/playturn.cpp:1525
 msgid "Leader"
 msgstr ""
 
@@ -6242,7 +6342,7 @@ msgstr ""
 msgid "Unit Description"
 msgstr ""
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1349
+#: src/hotkeys.cpp:131 src/playturn.cpp:1351
 msgid "Rename Unit"
 msgstr ""
 
@@ -6294,11 +6394,11 @@ msgstr ""
 msgid "Scenario Objectives"
 msgstr ""
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1993
+#: src/hotkeys.cpp:146 src/playturn.cpp:1998
 msgid "Unit List"
 msgstr ""
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2081
+#: src/hotkeys.cpp:147 src/playturn.cpp:2086
 msgid "Statistics"
 msgstr ""
 
@@ -6446,7 +6546,7 @@ msgstr ""
 msgid "Map Generator"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:481
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:484
 msgid "Players"
 msgstr ""
 
@@ -6466,7 +6566,7 @@ msgstr ""
 msgid "Bump Size"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1525
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1526
 msgid "Villages"
 msgstr ""
 
@@ -6494,119 +6594,119 @@ msgstr ""
 msgid "Island"
 msgstr ""
 
-#: src/multiplayer.cpp:94
+#: src/multiplayer.cpp:97
 msgid "The maximum turns the game will go for"
 msgstr ""
 
-#: src/multiplayer.cpp:100
+#: src/multiplayer.cpp:103
 msgid "The amount of income each village yields per turn"
 msgstr ""
 
-#: src/multiplayer.cpp:106
+#: src/multiplayer.cpp:109
 msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
-#: src/multiplayer.cpp:108
+#: src/multiplayer.cpp:111
 msgid "Fog Of War"
 msgstr ""
 
-#: src/multiplayer.cpp:110
+#: src/multiplayer.cpp:113
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 
-#: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
+#: src/multiplayer.cpp:115 src/multiplayer_lobby.cpp:127
 msgid "Shroud"
 msgstr ""
 
-#: src/multiplayer.cpp:114
+#: src/multiplayer.cpp:117
 msgid "The map is unknown until your units explore it"
 msgstr ""
 
-#: src/multiplayer.cpp:116 src/reports.cpp:375
+#: src/multiplayer.cpp:119 src/reports.cpp:376
 msgid "Observers"
 msgstr ""
 
-#: src/multiplayer.cpp:118
+#: src/multiplayer.cpp:121
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
+#: src/multiplayer.cpp:123 src/multiplayer_client.cpp:119
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
 #: src/show_dialog.cpp:462
 msgid "Cancel"
 msgstr ""
 
-#: src/multiplayer.cpp:121 src/show_dialog.cpp:442 src/show_dialog.cpp:455
+#: src/multiplayer.cpp:124 src/show_dialog.cpp:442 src/show_dialog.cpp:455
 msgid "Ok"
 msgstr ""
 
-#: src/multiplayer.cpp:123
+#: src/multiplayer.cpp:126
 msgid "Regenerate"
 msgstr ""
 
-#: src/multiplayer.cpp:125
+#: src/multiplayer.cpp:128
 msgid "Settings..."
 msgstr ""
 
-#: src/multiplayer.cpp:129
+#: src/multiplayer.cpp:132
 msgid "Share View"
 msgstr ""
 
-#: src/multiplayer.cpp:130
+#: src/multiplayer.cpp:133
 msgid "Share Maps"
 msgstr ""
 
-#: src/multiplayer.cpp:131
+#: src/multiplayer.cpp:134
 msgid "Share None"
 msgstr ""
 
-#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
+#: src/multiplayer.cpp:145 src/multiplayer_connect.cpp:181
 msgid "No multiplayer sides."
 msgstr ""
 
-#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
+#: src/multiplayer.cpp:173 src/multiplayer_lobby.cpp:158
 msgid "Create Game"
 msgstr ""
 
-#: src/multiplayer.cpp:174
+#: src/multiplayer.cpp:177
 msgid "Name of game"
 msgstr ""
 
-#: src/multiplayer.cpp:178
+#: src/multiplayer.cpp:181
 msgid "$login's game"
 msgstr ""
 
-#: src/multiplayer.cpp:189
+#: src/multiplayer.cpp:192
 msgid "Map to play"
 msgstr ""
 
-#: src/multiplayer.cpp:286
+#: src/multiplayer.cpp:289
 msgid "Era"
 msgstr ""
 
-#: src/multiplayer.cpp:348
+#: src/multiplayer.cpp:351
 msgid "Unlimited"
 msgstr ""
 
-#: src/multiplayer.cpp:352
+#: src/multiplayer.cpp:355
 msgid "Turns"
 msgstr ""
 
-#: src/multiplayer.cpp:360
+#: src/multiplayer.cpp:363
 msgid "Village Gold"
 msgstr ""
 
-#: src/multiplayer.cpp:372
+#: src/multiplayer.cpp:375
 msgid "Experience Requirements"
 msgstr ""
 
-#: src/multiplayer.cpp:497
+#: src/multiplayer.cpp:500
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
 
-#: src/multiplayer.cpp:497
+#: src/multiplayer.cpp:500
 msgid "Warning"
 msgstr ""
 
@@ -6618,9 +6718,9 @@ msgstr ""
 msgid "Receiving game list..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1524
-#: src/playturn.cpp:1529 src/playturn.cpp:1616
+#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:381
+#: src/multiplayer_connect.cpp:383 src/playlevel.cpp:769 src/playturn.cpp:1525
+#: src/playturn.cpp:1530 src/playturn.cpp:1616
 msgid "Gold"
 msgstr ""
 
@@ -6672,91 +6772,91 @@ msgstr ""
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:97
+#: src/multiplayer_connect.cpp:99
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:237
+#: src/multiplayer_connect.cpp:241
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:257
+#: src/multiplayer_connect.cpp:261
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:258
+#: src/multiplayer_connect.cpp:262
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:467
-#: src/multiplayer_connect.cpp:581 src/multiplayer_connect.cpp:675
+#: src/multiplayer_connect.cpp:263 src/multiplayer_connect.cpp:470
+#: src/multiplayer_connect.cpp:584 src/multiplayer_connect.cpp:678
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:260
+#: src/multiplayer_connect.cpp:264
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:368
-#: src/multiplayer_connect.cpp:371
+#: src/multiplayer_connect.cpp:291 src/multiplayer_connect.cpp:371
+#: src/multiplayer_connect.cpp:374
 msgid "Team"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:296
+#: src/multiplayer_connect.cpp:299
 msgid "Red"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:298
+#: src/multiplayer_connect.cpp:301
 msgid "Blue"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:300
+#: src/multiplayer_connect.cpp:303
 msgid "Green"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:302
+#: src/multiplayer_connect.cpp:305
 msgid "Yellow"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:304
+#: src/multiplayer_connect.cpp:307
 msgid "Purple"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:306
+#: src/multiplayer_connect.cpp:309
 msgid "Orange"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:308
+#: src/multiplayer_connect.cpp:311
 msgid "Grey"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:310
+#: src/multiplayer_connect.cpp:313
 msgid "White"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:312
+#: src/multiplayer_connect.cpp:315
 msgid "Brown"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:357
+#: src/multiplayer_connect.cpp:360
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:360 src/multiplayer_connect.cpp:362
+#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:365
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:366
+#: src/multiplayer_connect.cpp:366 src/multiplayer_connect.cpp:369
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
+#: src/multiplayer_connect.cpp:376 src/multiplayer_connect.cpp:379
 msgid "Color"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:530 src/multiplayer_connect.cpp:534
+#: src/multiplayer_connect.cpp:533 src/multiplayer_connect.cpp:537
 msgid "Waiting for network players to join"
 msgstr ""
 
@@ -6780,60 +6880,60 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:688
 msgid "Game Over"
 msgstr ""
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:689
 msgid "The game is over."
 msgstr ""
 
-#: src/playlevel.cpp:686
+#: src/playlevel.cpp:702
 msgid "Defeat"
 msgstr ""
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:703
 msgid "You have been defeated!"
 msgstr ""
 
-#: src/playlevel.cpp:719
-msgid "Victory"
-msgstr ""
-
-#: src/playlevel.cpp:720
-msgid "You have emerged victorious!"
-msgstr ""
-
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:759
 msgid "Remaining gold"
 msgstr ""
 
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:762
 msgid "Early finish bonus"
 msgstr ""
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:764
 msgid "per turn"
 msgstr ""
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:765
 msgid "Turns finished early"
 msgstr ""
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:767
 msgid "Bonus"
 msgstr ""
 
-#: src/playlevel.cpp:737
+#: src/playlevel.cpp:774
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
-#: src/playlevel.cpp:738
+#: src/playlevel.cpp:774
 msgid "Retained Gold"
 msgstr ""
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:778
+msgid "Victory"
+msgstr ""
+
+#: src/playlevel.cpp:779
+msgid "You have emerged victorious!"
+msgstr ""
+
+#: src/playlevel.cpp:804
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6843,78 +6943,74 @@ msgstr ""
 msgid "It is now your turn"
 msgstr ""
 
-#: src/playturn.cpp:490
+#: src/playturn.cpp:488
 msgid "Attacker"
 msgstr ""
 
-#: src/playturn.cpp:492
+#: src/playturn.cpp:490
 msgid "Defender"
 msgstr ""
 
-#: src/playturn.cpp:516 src/playturn.cpp:636
+#: src/playturn.cpp:514 src/playturn.cpp:633
 msgid "Damage Calculations"
 msgstr ""
 
-#: src/playturn.cpp:602
+#: src/playturn.cpp:599
 msgid "Melee"
 msgstr ""
 
-#: src/playturn.cpp:615 src/reports.cpp:210
+#: src/playturn.cpp:612 src/reports.cpp:210
 msgid "vs"
 msgstr ""
 
-#: src/playturn.cpp:648
+#: src/playturn.cpp:645
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/playturn.cpp:649
+#: src/playturn.cpp:646
 msgid "Choose weapon"
 msgstr ""
 
-#: src/playturn.cpp:1136
+#: src/playturn.cpp:1127
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1145 src/playturn.cpp:1150
+#: src/playturn.cpp:1136 src/playturn.cpp:1141
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
-#: src/playturn.cpp:1166
+#: src/playturn.cpp:1157
 msgid "Auto-Save"
 msgstr ""
 
-#: src/playturn.cpp:1168
+#: src/playturn.cpp:1159
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 
-#: src/playturn.cpp:1394 src/playturn.cpp:1408
-msgid "Error"
-msgstr ""
-
-#: src/playturn.cpp:1394
+#: src/playturn.cpp:1396
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "Saved"
 msgstr ""
 
-#: src/playturn.cpp:1405
+#: src/playturn.cpp:1407
 msgid "The game has been saved"
 msgstr ""
 
-#: src/playturn.cpp:1525
+#: src/playturn.cpp:1526
 msgid "Units"
 msgstr ""
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1527
 msgid "Income"
 msgstr ""
 
-#: src/playturn.cpp:1526
+#: src/playturn.cpp:1527
 msgid "Upkeep"
 msgstr ""
 
@@ -6950,127 +7046,123 @@ msgstr ""
 msgid "him"
 msgstr ""
 
-#: src/playturn.cpp:1762
+#: src/playturn.cpp:1768
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr ""
 
-#: src/playturn.cpp:1764
+#: src/playturn.cpp:1770
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 
-#: src/playturn.cpp:1768
-msgid "You must have at least"
+#: src/playturn.cpp:1776
+msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr ""
 
-#: src/playturn.cpp:1770
-msgid "gold pieces to recall a unit"
-msgstr ""
-
-#: src/playturn.cpp:1793
+#: src/playturn.cpp:1799
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/playturn.cpp:1806
+#: src/playturn.cpp:1812
 msgid "Select unit"
 msgstr ""
 
-#: src/playturn.cpp:1850
+#: src/playturn.cpp:1856
 msgid "Message"
 msgstr ""
 
-#: src/playturn.cpp:1850
+#: src/playturn.cpp:1856
 msgid "Send to allies only"
 msgstr ""
 
-#: src/playturn.cpp:1945
+#: src/playturn.cpp:1950
 msgid "Location"
 msgstr ""
 
-#: src/playturn.cpp:2027 src/playturn.cpp:2087
+#: src/playturn.cpp:2032 src/playturn.cpp:2092
 msgid "Recruits"
 msgstr ""
 
-#: src/playturn.cpp:2033 src/playturn.cpp:2091
+#: src/playturn.cpp:2038 src/playturn.cpp:2096
 msgid "Recalls"
 msgstr ""
 
-#: src/playturn.cpp:2039 src/playturn.cpp:2095
+#: src/playturn.cpp:2044 src/playturn.cpp:2100
 msgid "Advancements"
 msgstr ""
 
-#: src/playturn.cpp:2045 src/playturn.cpp:2099
+#: src/playturn.cpp:2050 src/playturn.cpp:2104
 msgid "Losses"
 msgstr ""
 
-#: src/playturn.cpp:2051 src/playturn.cpp:2103
+#: src/playturn.cpp:2056 src/playturn.cpp:2108
 msgid "Kills"
 msgstr ""
 
-#: src/playturn.cpp:2057
+#: src/playturn.cpp:2062
 msgid "Damage Inflicted"
 msgstr ""
 
-#: src/playturn.cpp:2063
+#: src/playturn.cpp:2068
 msgid "Damage Taken"
 msgstr ""
 
-#: src/playturn.cpp:2069
+#: src/playturn.cpp:2074
 msgid "Damage Inflicted (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2076
+#: src/playturn.cpp:2081
 msgid "Damage Taken (EV)"
 msgstr ""
 
-#: src/playturn.cpp:2118
+#: src/playturn.cpp:2123
 msgid "Search"
 msgstr ""
 
-#: src/playturn.cpp:2128
+#: src/playturn.cpp:2133
 msgid "prompt^Command:"
 msgstr ""
 
-#: src/playturn.cpp:2139
+#: src/playturn.cpp:2144
 msgid "Chat Log"
 msgstr ""
 
-#: src/playturn.cpp:2204
+#: src/playturn.cpp:2209
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2278
+#: src/playturn.cpp:2283
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2279
+#: src/playturn.cpp:2284
 msgid "Label"
 msgstr ""
 
-#: src/playturn.cpp:2402
+#: src/playturn.cpp:2407
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2454
+#: src/playturn.cpp:2459
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2455
+#: src/playturn.cpp:2460
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2456
+#: src/playturn.cpp:2461
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:2459
+#: src/playturn.cpp:2464
 msgid "Replace with "
 msgstr ""
 
-#: src/playturn.cpp:2463
+#: src/playturn.cpp:2468
 msgid "has left the game. What do you want to do?"
 msgstr ""
 
@@ -7122,17 +7214,20 @@ msgstr ""
 msgid "Chaotic units"
 msgstr ""
 
-#: src/reports.cpp:311
-msgid "Owned"
-msgstr ""
+#: src/reports.cpp:312
+#, fuzzy
+msgid "Owned village"
+msgstr "Wioska"
 
-#: src/reports.cpp:313
-msgid "Enemy"
-msgstr ""
+#: src/reports.cpp:314
+#, fuzzy
+msgid "Enemy village"
+msgstr "Wioska"
 
-#: src/reports.cpp:315
-msgid "Allied"
-msgstr ""
+#: src/reports.cpp:316
+#, fuzzy
+msgid "Allied village"
+msgstr "Goblin Pillager"
 
 #: src/show_dialog.cpp:930
 msgid "KB"

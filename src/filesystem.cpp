@@ -531,9 +531,22 @@ void init_binary_paths()
 
 }
 
+binary_paths_manager::binary_paths_manager()
+{}
+
 binary_paths_manager::binary_paths_manager(const config& cfg)
 {
-	binary_paths_cache.clear();
+	set_paths(cfg);
+}
+
+binary_paths_manager::~binary_paths_manager()
+{
+	cleanup();
+}
+
+void binary_paths_manager::set_paths(const config& cfg)
+{
+	cleanup();
 	init_binary_paths();
 
 	const config::child_list& items = cfg.get_children("binary_path");
@@ -546,7 +559,7 @@ binary_paths_manager::binary_paths_manager(const config& cfg)
 	}
 }
 
-binary_paths_manager::~binary_paths_manager()
+void binary_paths_manager::cleanup()
 {
 	binary_paths_cache.clear();
 

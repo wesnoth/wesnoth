@@ -95,10 +95,18 @@ std::string directory_name(const std::string& file);
 ///Binaries will be searched for in [wesnoth-path]/data/<path>/images/
 struct binary_paths_manager
 {
+	binary_paths_manager();
 	binary_paths_manager(const class config& cfg);
 	~binary_paths_manager();
 
+	void set_paths(const class config& cfg);
+
 private:
+	binary_paths_manager(const binary_paths_manager& o);
+	binary_paths_manager& operator=(const binary_paths_manager& o);
+
+	void cleanup();
+
 	std::vector<std::string> paths_;
 };
 

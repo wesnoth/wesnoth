@@ -1016,7 +1016,15 @@ const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE 
 	return NULL;
 }
 
+game_data::game_data()
+{}
+
 game_data::game_data(const config& cfg)
+{
+	set_config(cfg);
+}
+
+void game_data::set_config(const config& cfg)
 {
 	static const std::vector<config*> dummy_traits;
 	
@@ -1041,4 +1049,11 @@ game_data::game_data(const config& cfg)
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
 		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
 	}
+}
+
+void game_data::clear()
+{
+	movement_types.clear();
+	unit_types.clear();
+	races.clear();
 }

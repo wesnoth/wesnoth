@@ -312,7 +312,872 @@ bool less_campaigns_rank(const config* a, const config* b) {
 	       lexical_cast_default<int>((*b)["rank"],1000);
 }
 
+class game_controller
+{
+public:
+	game_controller(int argc, char** argv, bool use_sound);
+
+	display& disp();
+
+	bool init_video();
+	bool init_config();
+	bool init_language();
+	bool play_test();
+	bool play_multiplayer_mode();
+
+	bool is_loading() const;
+	bool load_game();
+	void set_tutorial();
+
+	bool new_campaign();
+	bool play_multiplayer();
+	bool change_language();
+
+	void play_game();
+
+private:
+	game_controller(const game_controller&);
+	void operator=(const game_controller&);
+
+	const int argc_;
+	int arg_;
+	const char* const * const argv_;
+
+	CVideo video_;
+
+	const font::manager font_manager_;
+	const sound::manager sound_manager_;
+	const preferences::manager prefs_manager_;
+	const image::manager image_manager_;
+	const events::event_context main_event_context_;
+	binary_paths_manager paths_manager_;
+
+	bool test_mode_, multiplayer_mode_, no_gui_;
+	bool use_caching_;
+	int force_bpp_;
+
+	config game_config_;
+	game_data units_data_;
+
+	util::scoped_ptr<display> disp_;
+
+	game_state state_;
+
+	std::string loaded_game_;
+	bool loaded_game_show_replay_;
+
+	preproc_map defines_map_;
+};
+
+game_controller::game_controller(int argc, char** argv, bool use_sound)
+   : argc_(argc), argv_(argv), arg_(1),
+     sound_manager_(use_sound), test_mode_(false), multiplayer_mode_(false),
+     no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
+     loaded_game_show_replay_(false)
+{
+	for(arg_ = 1; arg_ != argc_; ++arg_) {
+		const std::string val(argv_[arg_]);
+		if(val.empty()) {
+			continue;
+		}
+
+		if(val == "--nocache") {
+			use_caching_ = false;
+		} else if(val == "--resolution" || val == "-r") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				const std::string val(argv_[arg_]);
+				const std::vector<std::string> res = config::split(val,'x');
+				if(res.size() == 2) {
+					const int xres = lexical_cast_default<int>(res.front());
+					const int yres = lexical_cast_default<int>(res.back());
+					if(xres > 0 && yres > 0) {
+						const std::pair<int,int> resolution(xres,yres);
+						preferences::set_resolution(resolution);
+					}
+				}
+			}
+		} else if(val == "--bpp") {
+			if(arg_+1 != argc_) {
+				++arg_;
+				force_bpp_ = lexical_cast_default<int>(argv_[arg_],-1);
+			}
+		} else if(val == "--nogui") {
+			no_gui_ = true;
+		} else if(val == "--windowed" || val == "-w") {
+			preferences::set_fullscreen(false);
+		} else if(val == "--fullscreen" || val == "-f") {
+			preferences::set_fullscreen(true);
+		} else if(val == "--multiplayer") {
+			multiplayer_mode_ = true;
+			break; //parse the rest of the arguments when we set up the game
+		} else if(val == "--test" || val == "-t") {
+			test_mode_ = true;
+		} else if(val == "--debug" || val == "-d") {
+			game_config::debug = true;
+		} else if (val.substr(0, 6) == "--log-") {
+		} else if(val[0] == '-') {
+			std::cerr << "unknown option: " << val << "\n";
+			throw config::error("unknown option");
+		} else {
+
+			if(val[0] == '/') {
+				game_config::path = val;
+			} else {
+				game_config::path = get_cwd() + '/' + val;
+			}
+
+			if(!is_directory(game_config::path)) {
+				std::cerr << "Could not find directory '" << game_config::path << "'\n";
+				throw config::error("directory not found");
+			}
+
+		}
+	}
 }
+
+display& game_controller::disp()
+{
+	if(disp_.get() == NULL) {
+		display::unit_map u_map;
+		config dummy_cfg("");
+		disp_.assign(new display(u_map,video_,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0), std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg));
+	}
+
+	return *disp_.get();
+}
+
+bool game_controller::init_video()
+{
+	if(no_gui_) {
+		if(!multiplayer_mode_) {
+			std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
+			return false;
+		}
+		video_.make_fake();
+		return true;
+	}
+
+    image::set_wm_icon();
+
+	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
+
+	std::pair<int,int> resolution = preferences::resolution();
+
+	std::cerr << "checking mode possible...\n";
+	int bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+
+	std::cerr << bpp << "\n";
+
+	if(bpp == 0) {
+ 		//Video mode not supported, maybe from bad prefs.
+ 		std::cerr << "The video mode, " << resolution.first
+ 		          << "x" << resolution.second << "x16 "
+ 		          << "is not supported\nAttempting 1024x768x16...\n";
+ 		
+ 		//Attempt 1024x768.
+ 		resolution.first = 1024;
+ 		resolution.second = 768;
+
+ 		bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+
+		if(bpp == 0) {
+			 //Attempt 1024x768.
+ 			resolution.first = 1024;
+ 			resolution.second = 768;
+			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
+
+			resolution.first = 800;
+			resolution.second = 600;
+
+			bpp = video_.modePossible(resolution.first,resolution.second,16,video_flags);
+		}
+
+ 		if(bpp == 0) {
+ 			//couldn't do 1024x768 or 800x600
+
+			std::cerr << "The required video mode, " << resolution.first
+			          << "x" << resolution.second << "x16 "
+			          << "is not supported\n";
+
+			if((video_flags&FULL_SCREEN) != 0) {
+				std::cerr << "Try running the program with the --windowed option "
+				          << "using a 16bpp X windows setting\n";
+			}
+
+			if((video_flags&FULL_SCREEN) == 0) {
+				std::cerr << "Try running with the --fullscreen option\n";
+			}
+
+			return false;
+		}
+	}
+
+	if(force_bpp_ > 0) {
+		bpp = force_bpp_;
+	}
+
+	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
+	const int res = video_.setMode(resolution.first,resolution.second,bpp,video_flags);
+	video_.setBpp(bpp);
+	if(res == 0) {
+		std::cerr << "required video mode, " << resolution.first << "x"
+		          << resolution.second << "x" << bpp << " is not supported\n";
+		return false;
+	}
+
+	cursor::set(cursor::NORMAL);
+
+	return true;
+}
+
+bool game_controller::init_config()
+{
+	//load in the game's configuration files
+	defines_map_["NORMAL"] = preproc_define();
+	defines_map_["MEDIUM"] = preproc_define();
+
+	if(multiplayer_mode_) {
+		defines_map_["MULTIPLAYER"] = preproc_define();
+	}
+	std::vector<line_source> line_src;
+
+	try {
+		log_scope("loading config");
+		read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
+	} catch(config::error& e) {
+		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
+		                 gui::MESSAGE);
+		throw e;
+	}
+
+	game_config::load_config(game_config_.child("game_config"));
+
+	hotkey::add_hotkeys(game_config_,false);
+
+	paths_manager_.set_paths(game_config_);
+
+	const config* const units = game_config_.child("units");
+	if(units != NULL) {
+		units_data_.set_config(*units);
+	}
+
+	return true;
+}
+
+bool game_controller::init_language()
+{
+	const bool lang_res = set_language(get_locale());
+	if(!lang_res) {
+		std::cerr << "No translation for locale '" << get_locale().language
+		          << "', default to system locale\n";
+
+		const bool lang_res = set_language(known_languages[0]);
+		if(!lang_res) {
+			std::cerr << "Language data not found\n";
+		}
+	}
+
+	if(!no_gui_) {
+		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
+	}
+}
+
+bool game_controller::play_test()
+{
+	if(test_mode_ == false) {
+		return true;
+	}
+
+	state_.campaign_type = "test";
+	state_.scenario = "test";
+
+	::play_game(disp(),state_,game_config_,units_data_,video_);
+	return false;
+}
+
+bool game_controller::play_multiplayer_mode()
+{
+	if(!multiplayer_mode_) {
+		return true;
+	}
+
+   	std::string era = "era_default";
+   	std::string scenario = "multiplayer_test";
+   	std::map<int,std::string> side_types, side_controllers, side_algorithms;
+   	std::map<int,string_map> side_parameters;
+
+   	int sides_counted = 0;
+
+   	for(++arg_; arg_ < argc_; ++arg_) {
+   		const std::string val(argv_[arg_]);
+   		if(val.empty()) {
+   			continue;
+   		}
+
+   		std::vector<std::string> name_value = config::split(val,'=');
+   		if(name_value.size() > 2) {
+   			std::cerr << "invalid argument '" << val << "'\n";
+   			return false;
+   		} else if(name_value.size() == 2) {
+   			const std::string name = name_value.front();
+   			const std::string value = name_value.back();
+
+   			const std::string name_head = name.substr(0,name.size()-1);
+   			const char name_tail = name[name.size()-1];
+   			const bool last_digit = isdigit(name_tail) ? true:false;
+   			const int side = name_tail - '0';
+
+   			if(last_digit && side > sides_counted) {
+   				std::cerr << "counted sides: " << side << "\n";
+   				sides_counted = side;
+   			}
+
+   			if(name == "--scenario") {
+   				scenario = value;
+   			} else if(name == "--era") {
+   				era = value;
+   			} else if(last_digit && name_head == "--controller") {
+   				side_controllers[side] = value;
+   			} else if(last_digit && name_head == "--algorithm") {
+   				side_algorithms[side] = value;
+   			} else if(last_digit && name_head == "--side") {
+   				side_types[side] = value;
+   			} else if(last_digit && name_head == "--parm") {
+   				const std::vector<std::string> name_value = config::split(value,':');
+   				if(name_value.size() != 2) {
+   					std::cerr << "argument to '" << name << "' must be in the format name:value\n";
+   					return false;
+   				}
+
+   				side_parameters[side][name_value.front()] = name_value.back();
+   			} else {
+   				std::cerr << "unrecognized option: '" << name << "'\n";
+   				return false;
+   			}
+   		}
+   	}
+
+   	const config* const lvl = game_config_.find_child("multiplayer","id",scenario);
+   	if(lvl == NULL) {
+   		std::cerr << "Could not find scenario '" << scenario << "'\n";
+   		return false;
+   	}
+
+   	state_.campaign_type = "multiplayer";
+   	state_.scenario = "";
+   	state_.snapshot = config();
+
+   	config level = *lvl;
+   	std::vector<config*> story;
+
+   	const config* const era_cfg = game_config_.find_child("era","id",era);
+   	if(era_cfg == NULL) {
+   		std::cerr << "Could not find era '" << era << "'\n";
+   		return false;
+   	}
+
+   	const config* const side = era_cfg->child("multiplayer_side");
+   	if(side == NULL) {
+   		std::cerr << "Could not find multiplayer side\n";
+   		return false;
+   	}
+
+   	while(level.get_children("side").size() < sides_counted) {
+   		std::cerr << "now adding side...\n";
+   		level.add_child("side");
+   	}
+
+   	int side_num = 1;
+   	for(config::child_itors itors = level.child_range("side"); itors.first != itors.second; ++itors.first, ++side_num) {
+   		std::map<int,std::string>::const_iterator type = side_types.find(side_num),
+   		                                          controller = side_controllers.find(side_num),
+   		                                          algorithm = side_algorithms.find(side_num);
+
+   		const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
+   		                                                era_cfg->find_child("multiplayer_side","type",type->second);
+
+   		size_t tries = 0;
+   		while(side != NULL && (*side)["type"] == "random" && ++tries < 100) {
+   			const config::child_list& v = era_cfg->get_children("multiplayer_side");
+   			side = v[rand()%v.size()];
+   		}
+
+   		if(side == NULL || (*side)["type"] == "random") {
+   			std::string side_name = (type == side_types.end() ? "default" : type->second);
+   			std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
+   			return false;
+   		}
+
+   		char buf[20];
+   		sprintf(buf,"%d",side_num);
+   		(*itors.first)->values["side"] = buf;
+
+   		(*itors.first)->values["canrecruit"] = "1";
+
+   		for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
+   			(*itors.first)->values[i->first] = i->second;
+   		}
+
+   		if(controller != side_controllers.end()) {
+   			(*itors.first)->values["controller"] = controller->second;
+   		}
+
+   		if(algorithm != side_algorithms.end()) {
+   			(*itors.first)->values["ai_algorithm"] = algorithm->second;
+   		}
+
+   		config& ai_params = (*itors.first)->add_child("ai");
+
+   		//now add in any arbitrary parameters given to the side
+   		for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
+   			(*itors.first)->values[j->first] = j->second;
+   			ai_params[j->first] = j->second;
+   		}
+   	}
+
+   	try {
+   		play_level(units_data_,game_config_,&level,video_,state_,story);
+   	} catch(gamestatus::error& e) {
+   		std::cerr << "caught error: '" << e.message << "'\n";
+   	} catch(gamestatus::load_game_exception& e) {
+   		//the user's trying to load a game, so go into the normal title screen loop and load one
+   		loaded_game_ = e.game;
+   		loaded_game_show_replay_ = e.show_replay;
+		return true;
+   	} catch(...) {
+   		std::cerr << "caught unknown error playing level...\n";
+   	}
+
+	return false;
+}
+
+bool game_controller::is_loading() const
+{
+	return loaded_game_.empty() == false;
+}
+
+bool game_controller::load_game()
+{
+	bool show_replay = loaded_game_show_replay_;
+
+	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,units_data_,&show_replay) : loaded_game_;
+
+	loaded_game_ = "";
+
+	if(game == "") {
+		return false;
+	}
+
+	try {
+		::load_game(units_data_,game,state_);
+		if(state_.version != game_config::version) {
+			const int res = gui::show_dialog(disp(),NULL,"",
+			                      _("This save is from a different version of the game. Do you want to try to load it?"),
+			                      gui::YES_NO);
+			if(res == 1) {
+				return false;
+			}
+		}
+
+		defines_map_.clear();
+		defines_map_[state_.difficulty] = preproc_define();
+	} catch(gamestatus::error& e) {
+		std::cerr << "caught load_game_failed\n";
+		gui::show_dialog(disp(),NULL,"",
+		           _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",gui::OK_ONLY);
+		return false;
+	} catch(config::error& e) {
+		std::cerr << "caught config::error\n";
+		gui::show_dialog(disp(),NULL,"",
+		    _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",
+		    gui::OK_ONLY);
+		return false;
+	} catch(io_exception& e) {
+		gui::show_dialog(disp(),NULL,"",_("File I/O Error while reading the game"),gui::OK_ONLY);
+		return false;
+	}
+
+	recorder = replay(state_.replay_data);
+
+	std::cerr << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
+
+	//only play replay data if the user has selected to view the replay,
+	//or if there is no starting position data to use.
+	if(!show_replay && state_.snapshot.child("side") != NULL) {
+		std::cerr << "setting replay to end...\n";
+		recorder.set_to_end();
+		if(!recorder.at_end()) {
+			std::cerr << "recorder is not at the end!!!\n";
+		}
+	} else {
+
+		recorder.start_replay();
+
+		//set whether the replay is to be skipped or not
+		if(show_replay) {
+			recorder.set_skip(0);
+		} else {
+			std::cerr << "skipping...\n";
+			recorder.set_skip(-1);
+		}
+	}
+
+	if(state_.campaign_type == "multiplayer") {
+		//make all network players local
+		for(config::child_itors sides = state_.snapshot.child_range("side");
+		    sides.first != sides.second; ++sides.first) {
+			if((**sides.first)["controller"] == "network")
+				(**sides.first)["controller"] = "human";
+		}
+	
+		recorder.set_save_info(state_);
+		std::vector<config*> story;
+
+		config starting_pos;
+		if(recorder.at_end()) {
+			starting_pos = state_.snapshot;
+                                // state.gold = -100000;
+		} else {
+			starting_pos = state_.starting_pos;
+		}
+
+		try {
+			play_level(units_data_,game_config_,&starting_pos,video_,state_,story);
+			recorder.clear();
+		} catch(gamestatus::load_game_failed& e) {
+			gui::show_dialog(disp(),NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
+			std::cerr << "error loading the game: " << e.message
+			          << "\n";
+		} catch(gamestatus::game_error& e) {
+			gui::show_dialog(disp(),NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
+			std::cerr << "error while playing the game: "
+			          << e.message << "\n";
+		} catch(gamestatus::load_game_exception& e) {
+			//this will make it so next time through the title screen loop, this game is loaded
+			loaded_game_ = e.game;
+			loaded_game_show_replay_ = e.show_replay;
+		}
+
+		return false;
+	}
+
+	return true;
+}
+
+void game_controller::set_tutorial()
+{
+	state_.campaign_type = "tutorial";
+	state_.scenario = "tutorial";
+	defines_map_["TUTORIAL"] = preproc_define();
+}
+
+bool game_controller::new_campaign()
+{
+	state_.campaign_type = "scenario";
+
+	config::child_list campaigns = game_config_.get_children("campaign");
+	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
+
+	std::vector<std::string> campaign_names;
+
+	for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
+		std::stringstream str;
+		const std::string& icon = (**i)["icon"];
+		if(icon == "") {
+			str << " ,";
+		} else {
+			str << "&" << icon << ",";
+		}
+
+		str << (**i)["name"];
+
+		campaign_names.push_back(str.str());
+	}
+
+	campaign_names.push_back(_(" ,Get More Campaigns..."));
+
+	int res = 0;
+
+	if(campaign_names.size() > 1) {
+		res = gui::show_dialog(disp(),NULL,_("Campaign"),
+		                                 _("Choose the campaign you want to play:"),
+										 gui::OK_CANCEL,&campaign_names);
+
+		if(res == -1) {
+			return false;
+		}
+	}
+
+	//get more campaigns from server
+	if(res == int(campaign_names.size()-1)) {
+		std::string host = "campaigns.wesnoth.org";
+		const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
+		        _("You will now connect to a campaign server to download campaigns."),
+		        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
+		if(res != 0) {
+			return false;
+		}
+
+		const std::vector<std::string> items = config::split(host,':');
+		host = items.front();
+
+		try {
+			const network::manager net_manager;
+			const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
+			if(!sock) {
+				gui::show_dialog(disp(),NULL,_("Error"),_("Could not connect to host."),gui::OK_ONLY);
+				return false;
+			}
+
+			config cfg;
+			cfg.add_child("request_campaign_list");
+			network::send_data(cfg,sock);
+
+			network::connection res = gui::network_data_dialog(disp(),_("Awaiting response from server"),cfg,sock);
+			if(!res) {
+				return false;
+			}
+
+			const config* const error = cfg.child("error");
+			if(error != NULL) {
+				gui::show_dialog(disp(),NULL,_("Error"),(*error)["message"],gui::OK_ONLY);
+				return false;
+			}
+
+			const config* const campaigns_cfg = cfg.child("campaigns");
+			if(campaigns_cfg == NULL) {
+				gui::show_dialog(disp(),NULL,_("Error"),_("Error communicating with the server."),gui::OK_ONLY);
+				return false;
+			}
+
+			std::vector<std::string> campaigns;
+			const config::child_list& cmps = campaigns_cfg->get_children("campaign");
+			for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
+				campaigns.push_back((**i)["name"]);
+			}
+
+			if(campaigns.empty()) {
+				gui::show_dialog(disp(),NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
+				return false;
+			}
+
+			const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&campaigns);
+			if(index < 0 || index >= int(campaigns.size())) {
+				return false;
+			}
+
+			config request;
+			request.add_child("request_campaign")["name"] = campaigns[index];
+			network::send_data(request,sock);
+
+			res = gui::network_data_dialog(disp(),_("Downloading campaign..."),cfg,sock);
+			if(!res) {
+				return false;
+			}
+
+			if(cfg.child("error") != NULL) {
+				gui::show_dialog(disp(),NULL,_("Error"),(*cfg.child("error"))["message"],gui::OK_ONLY);
+				return false;
+			}
+
+			unarchive_campaign(cfg);
+
+			gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed. You will have to restart Wesnoth before you can play it."),gui::OK_ONLY);
+			return false;
+			
+		} catch(config::error& e) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
+			return false;
+		} catch(network::error& e) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
+			return false;
+		} catch(io_exception& e) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
+			return false;
+		}
+	}
+
+	const config& campaign = *campaigns[res];
+
+	state_.scenario = campaign["first_scenario"];
+
+	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
+	std::vector<std::string> difficulty_options = config::split(difficulty_descriptions,';');
+
+	const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
+
+	if(difficulties.empty() == false) {
+		if(difficulty_options.size() != difficulties.size()) {
+			difficulty_options.resize(difficulties.size());
+			std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
+		}
+
+		const int res = gui::show_dialog(disp(),NULL,_("Difficulty"),
+		                            _("Select difficulty level:"),
+		                            gui::OK_CANCEL,&difficulty_options);
+		if(res == -1) {
+			return false;
+		}
+
+		state_.difficulty = difficulties[res];
+		defines_map_.clear();
+		defines_map_[difficulties[res]] = preproc_define();
+	}
+
+	state_.campaign_define = campaign["define"];
+	
+	return true;
+}
+
+bool game_controller::play_multiplayer()
+{
+	state_.campaign_type = "multiplayer";
+	state_.scenario = "";
+	state_.campaign_define = "MULTIPLAYER";
+
+	std::vector<std::string> host_or_join;
+	const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
+	host_or_join.push_back(std::string("&icons/icon-server.png,") + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
+	host_or_join.push_back(std::string("&icons/icon-serverother.png,") + _("Join Game") + sep + _("Join a server or hosted game"));
+	host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Multiplayer Game") + sep + _("Host a game without using a server"));
+
+	std::string login = preferences::login();
+	const int res = gui::show_dialog(disp(),NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
+
+	if(res >= 0) {
+		preferences::set_login(login);
+	}
+	
+	try {
+		defines_map_[state_.campaign_define] = preproc_define();
+		std::vector<line_source> line_src;
+		config game_config;
+		read_game_cfg(defines_map_,line_src,game_config,use_caching_);
+		
+		if(res == 2) {
+			std::vector<std::string> chat;
+			config game_data;
+			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config,state_,true);
+			lobby::RESULT res = lobby::CONTINUE;
+			while(res == lobby::CONTINUE) {
+				res = lobby::enter(disp(),game_data,game_config,&mp_dialog,chat);
+			}
+
+			if(res == lobby::CREATE) {
+				mp_dialog.start_game();
+			}
+		} else if(res == 0 || res == 1) {
+			std::string host;
+			if(res == 0) {
+				host = preferences::official_network_host();
+			}
+
+			play_multiplayer_client(disp(),units_data_,game_config,state_,host);
+		}
+	} catch(gamestatus::load_game_failed& e) {
+		gui::show_dialog(disp(),NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
+		std::cerr << "error loading the game: " << e.message << "\n";
+	} catch(gamestatus::game_error& e) {
+		gui::show_dialog(disp(),NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
+		std::cerr << "error while playing the game: "
+		          << e.message << "\n";
+	} catch(network::error& e) {
+		std::cerr << "caught network error...\n";
+		if(e.message != "") {
+			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
+		}
+	} catch(config::error& e) {
+		std::cerr << "caught config::error...\n";
+		if(e.message != "") {
+			gui::show_dialog(disp(),NULL,"",e.message,gui::OK_ONLY);
+		}
+	} catch(gamemap::incorrect_format_exception& e) {
+		gui::show_dialog(disp(),NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);
+		std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
+	} catch(gamestatus::load_game_exception& e) {
+		//this will make it so next time through the title screen loop, this game is loaded
+		loaded_game_ = e.game;
+		loaded_game_show_replay_ = e.show_replay;
+	}
+
+	return false;
+}
+
+bool game_controller::change_language()
+{
+	std::vector<language_def> langdefs = get_languages();
+
+	// this only works because get_languages() returns a fresh vector at each calls
+	// unless show_gui cleans the "*" flag
+	const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
+	if(current != langdefs.end()) {
+		(*current).language = "*" + (*current).language;
+	}
+
+	// prepare a copy with just the labels for the list to be displayed
+	std::vector<std::string> langs;
+	langs.reserve(langdefs.size());
+	std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
+
+	const int res = gui::show_dialog(disp(),NULL,_("Language"),
+	                         _("Choose your preferred language") + std::string(":"),
+	                         gui::OK_CANCEL,&langs);
+	if(size_t(res) < langs.size()) {
+		set_language(known_languages[res]);
+		preferences::set_locale(known_languages[res].localename);
+	}
+
+	return false;
+}
+
+void game_controller::play_game()
+{
+	if(state_.campaign_define.empty() == false) {
+		defines_map_[state_.campaign_define] = preproc_define();
+	}
+
+	if(defines_map_.count("NORMAL")) {
+		defines_map_["MEDIUM"] = preproc_define();
+	}
+
+	//make a new game config item based on the difficulty level
+	std::vector<line_source> line_src;
+	config game_config;
+	
+	try {
+		read_game_cfg(defines_map_,line_src,game_config,use_caching_);
+	} catch(config::error& e) {
+		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
+		throw e;
+	}
+
+	const binary_paths_manager bin_paths_manager(game_config);
+
+	const config* const units = game_config.child("units");
+	if(units == NULL) {
+		std::cerr << "ERROR: Could not find game configuration files\n";
+		std::cerr << game_config.write();
+		return;
+	}
+
+	game_data units_data(*units);
+
+	try {
+		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config,units_data,video_);
+		if(result == VICTORY) {
+			the_end(disp());
+			about::show_about(disp());
+		}
+	} catch(gamestatus::load_game_exception& e) {
+
+		//this will make it so next time through the title screen loop, this game is loaded
+		loaded_game_ = e.game;
+		loaded_game_show_replay_ = e.show_replay;
+	}
+}
+
+} //end anon namespace
 
 int play_game(int argc, char** argv)
 {
@@ -338,9 +1203,6 @@ int play_game(int argc, char** argv)
  			<< "  -t, --test        Runs the game in a small example scenario\n"
  			<< "  -w, --windowed    Runs the game in windowed mode\n"
  			<< "  -v, --version     Prints the game's version number and exits\n"
-			<< "  --log-error=\"domain1,domain2,...\", --log-warning=..., --log-info=...\n"
-			<< "                    Set the severity level of the debug domains\n"
-			<< "                    \"all\" can be used to match any debug domain\n"
 			<< "  --nocache         Disables caching of game data\n";
  			return 0;
  		} else if(val == "--version" || val == "-v") {
@@ -353,30 +1215,6 @@ int play_game(int argc, char** argv)
  			return 0;
 		} else if(val == "--nosound") {
 			use_sound = false;
-		} else if (val.substr(0, 6) == "--log-") {
-			size_t p = val.find('=');
-			if (p == std::string::npos) {
-				std::cerr << "unknown option: " << val << '\n';
-				return 0;
-			}
-			std::string s = val.substr(6, p - 6);
-			int severity;
-			if (s == "error") severity = 0;
-			else if (s == "warning") severity = 1;
-			else if (s == "info") severity = 2;
-			else {
-				std::cerr << "unknown debug level: " << s << '\n';
-				return 0;
-			}
-			while (p != std::string::npos) {
-				size_t q = val.find(',', p + 1);
-				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
-				if (!lg::set_log_domain_severity(s, severity)) {
-					std::cerr << "unknown debug domain: " << s << '\n';
-					return 0;
-				}
-				p = q;
-			}
 		} else if(val == "--publish-campaign") {
 			if(arg+3 != argc && arg+4 != argc && arg+5 != argc) {
 				std::cerr << "usage: --publish-campaign <campaign> <passphrase> [<server> [<port>]]\n";
@@ -440,168 +1278,12 @@ int play_game(int argc, char** argv)
 		}
 	}
 
-
 	srand(time(NULL));
 
-	std::cerr << "starting play_game\n";
-
-	CVideo video;
-
-	std::cerr << "initialized video...\n";
-	const font::manager font_manager;
-
-	const sound::manager sound_manager(use_sound);
-	const preferences::manager prefs_manager;
-	const image::manager image_manager;
-	const events::event_context main_event_context;
-
-	std::cerr << "initialized managers\n";
-	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-	bool test_mode = false, multiplayer_mode = false, no_gui = false;
-
-	bool use_caching = true;
-
-	int force_bpp = -1;
-
-	for(arg = 1; arg != argc; ++arg) {
-		const std::string val(argv[arg]);
-		if(val.empty()) {
-			continue;
-		}
-
-		if(val == "--nocache") {
-			use_caching = false;
-		} else if(val == "--resolution" || val == "-r") {
-			if(arg+1 != argc) {
-				++arg;
-				const std::string val(argv[arg]);
-				const std::vector<std::string> res = config::split(val,'x');
-				if(res.size() == 2) {
-					const int xres = lexical_cast_default<int>(res.front());
-					const int yres = lexical_cast_default<int>(res.back());
-					if(xres > 0 && yres > 0) {
-						const std::pair<int,int> resolution(xres,yres);
-						preferences::set_resolution(resolution);
-					}
-				}
-			}
-		} else if(val == "--bpp") {
-			if(arg+1 != argc) {
-				++arg;
-				force_bpp = lexical_cast_default<int>(argv[arg],-1);
-			}
-		} else if(val == "--nogui") {
-			no_gui = true;
-		} else if(val == "--windowed" || val == "-w") {
-			preferences::set_fullscreen(false);
-		} else if(val == "--fullscreen" || val == "-f") {
-			preferences::set_fullscreen(true);
-		} else if(val == "--multiplayer") {
-			multiplayer_mode = true;
-			break; //parse the rest of the arguments when we set up the game
-		} else if(val == "--test" || val == "-t") {
-			test_mode = true;
-		} else if(val == "--debug" || val == "-d") {
-			game_config::debug = true;
-		} else if (val.substr(0, 6) == "--log-") {
-		} else if(val[0] == '-') {
-			std::cerr << "unknown option: " << val << "\n";
-			return 0;
-		} else {
-
-			if(val[0] == '/') {
-				game_config::path = val;
-			} else {
-				game_config::path = get_cwd() + '/' + val;
-			}
-
-			if(!is_directory(game_config::path)) {
-				std::cerr << "Could not find directory '" << game_config::path << "'\n";
-				return 0;
-			}
-
-		}
-	}
-
-	std::cerr << "parsed arguments\n";
-	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-	if(no_gui && !multiplayer_mode) {
-		std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
+	game_controller game(argc,argv,use_sound);
+	bool res = game.init_video();
+	if(res == false) {
 		return 0;
-	}
-
-	if(!no_gui) {
-        image::set_wm_icon();
-
-		int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
-
-		std::pair<int,int> resolution = preferences::resolution();
-
-		std::cerr << "checking mode possible...\n";
-		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-	
-		std::cerr << bpp << "\n";
-	
-		if(bpp == 0) {
-	 		//Video mode not supported, maybe from bad prefs.
-	 		std::cerr << "The video mode, " << resolution.first
-	 		          << "x" << resolution.second << "x16 "
-	 		          << "is not supported\nAttempting 1024x768x16...\n";
-	 		
-	 		//Attempt 1024x768.
-	 		resolution.first = 1024;
-	 		resolution.second = 768;
-	
-	 		bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-	
-			if(bpp == 0) {
-				 //Attempt 1024x768.
-	 			resolution.first = 1024;
-	 			resolution.second = 768;
-				std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
-	
-				resolution.first = 800;
-				resolution.second = 600;
-	
-				bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-			}
-	
-	 		if(bpp == 0) {
-	 			//couldn't do 1024x768 or 800x600
-	
-				std::cerr << "The required video mode, " << resolution.first
-				          << "x" << resolution.second << "x16 "
-				          << "is not supported\n";
-	
-				if((video_flags&FULL_SCREEN) != 0 && argc == 0)
-					std::cerr << "Try running the program with the --windowed option "
-					          << "using a 16bpp X windows setting\n";
-	
-				if((video_flags&FULL_SCREEN) == 0 && argc == 0)
-					std::cerr << "Try running with the --fullscreen option\n";
-	
-				return 0;
-			}
-		}
-
-		if(force_bpp > 0) {
-			bpp = force_bpp;
-		}
-	
-		std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "x" << bpp << "\n";
-		const int res = video.setMode(resolution.first,resolution.second,bpp,video_flags);
-		video.setBpp(bpp);
-		if(res == 0) {
-			std::cerr << "required video mode, " << resolution.first << "x"
-			          << resolution.second << "x" << bpp << " is not supported\n";
-			return 0;
-		}
-
-		cursor::set(cursor::NORMAL);
-	} else {
-		video.make_fake();
 	}
 
 	const cursor::manager cursor_manager;
@@ -609,77 +1291,10 @@ int play_game(int argc, char** argv)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
-	std::cerr << "initialized gui\n";
-	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-	//load in the game's configuration files
-	preproc_map defines_map;
-	defines_map["NORMAL"] = preproc_define();
-	defines_map["MEDIUM"] = preproc_define();
-	if(multiplayer_mode) {
-		defines_map["MULTIPLAYER"] = preproc_define();
-	}
-
-	std::vector<line_source> line_src;
-
-	config game_config;
-
-	try {
-		log_scope("loading config");
-		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-		read_game_cfg(defines_map,line_src,game_config,use_caching);
-		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-	} catch(config::error& e) {
-		display::unit_map u_map;
-		config dummy_cfg("");
-		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg);
-
-		gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
-		                 gui::MESSAGE);
-		throw e;
-	}
-
-	game_config::load_config(game_config.child("game_config"));
-
-	hotkey::add_hotkeys(game_config,false);
-
-	const binary_paths_manager bin_paths_manager(game_config);
-
-	std::cerr << "parsed config files\n";
-	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-	const config::child_list& units = game_config.get_children("units");
-	if(units.empty()) {
-		std::cerr << "ERROR: Could not find game configuration files\n";
-		std::cerr << game_config.write();
+	res = game.init_config() && game.init_language();
+	if(res == false) {
 		return 0;
 	}
-
-	game_data units_data(*units[0]);
-
-	const bool lang_res = set_language(get_locale());
-	if(!lang_res) {
-		std::cerr << "No translation for locale '" << get_locale().language
-		          << "', default to system locale\n";
-
-		const bool lang_res = set_language(known_languages[0]);
-		if(!lang_res) {
-			std::cerr << "Language data not found\n";
-		}
-	}
-
-	std::cerr << "set language\n";
-	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-	if(!no_gui) {
-		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
-	}
-
-	//these variables are used to store the game that the user selects to load
-	//from within the game
-	std::string loaded_game = "";
-	bool loaded_game_show_replay = false;
 
 	for(;;) {
 		statistics::fresh_stats();
@@ -689,609 +1304,59 @@ int play_game(int argc, char** argv)
 		std::cerr << "started music\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
 
-		game_state state;
-
-		display::unit_map u_map;
-		config dummy_cfg("");
-		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg);
-
-		std::cerr << "initialized display object\n";
-		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-
-		if(test_mode) {
-			state.campaign_type = "test";
-			state.scenario = "test";
-
-			play_game(disp,state,game_config,units_data,video);
+		if(game.play_test() == false) {
 			return 0;
 		}
 
-		//multiplayer mode skips straight into a multiplayer game, bypassing the main menu
-		//it is all handled inside this 'if' statement
-		if(multiplayer_mode) {
-
-			std::string era = "era_default";
-			std::string scenario = "multiplayer_test";
-			std::map<int,std::string> side_types, side_controllers, side_algorithms;
-			std::map<int,string_map> side_parameters;
-
-			int sides_counted = 0;
-
-			for(++arg; arg < argc; ++arg) {
-				const std::string val(argv[arg]);
-				if(val.empty()) {
-					continue;
-				}
-
-				std::vector<std::string> name_value = config::split(val,'=');
-				if(name_value.size() > 2) {
-					std::cerr << "invalid argument '" << val << "'\n";
-					return 0;
-				} else if(name_value.size() == 2) {
-					const std::string name = name_value.front();
-					const std::string value = name_value.back();
-
-					const std::string name_head = name.substr(0,name.size()-1);
-					const char name_tail = name[name.size()-1];
-					const bool last_digit = isdigit(name_tail) ? true:false;
-					const int side = name_tail - '0';
-
-					if(last_digit && side > sides_counted) {
-						std::cerr << "counted sides: " << side << "\n";
-						sides_counted = side;
-					}
-
-					if(name == "--scenario") {
-						scenario = value;
-					} else if(name == "--era") {
-						era = value;
-					} else if(last_digit && name_head == "--controller") {
-						side_controllers[side] = value;
-					} else if(last_digit && name_head == "--algorithm") {
-						side_algorithms[side] = value;
-					} else if(last_digit && name_head == "--side") {
-						side_types[side] = value;
-					} else if(last_digit && name_head == "--parm") {
-						const std::vector<std::string> name_value = config::split(value,':');
-						if(name_value.size() != 2) {
-							std::cerr << "argument to '" << name << "' must be in the format name:value\n";
-							return 0;
-						}
-
-						side_parameters[side][name_value.front()] = name_value.back();
-					} else {
-						std::cerr << "unrecognized option: '" << name << "'\n";
-						return 0;
-					}
-				}
-			}
-
-			const config* const lvl = game_config.find_child("multiplayer","id",scenario);
-			if(lvl == NULL) {
-				std::cerr << "Could not find scenario '" << scenario << "'\n";
-				return 0;
-			}
-
-			state.campaign_type = "multiplayer";
-			state.scenario = "";
-			state.snapshot = config();
-
-			config level = *lvl;
-			std::vector<config*> story;
-
-			const config* const era_cfg = game_config.find_child("era","id",era);
-			if(era_cfg == NULL) {
-				std::cerr << "Could not find era '" << era << "'\n";
-				return 0;
-			}
-
-			const config* const side = era_cfg->child("multiplayer_side");
-			if(side == NULL) {
-				std::cerr << "Could not find multiplayer side\n";
-				return 0;
-			}
-
-			while(level.get_children("side").size() < sides_counted) {
-				std::cerr << "now adding side...\n";
-				level.add_child("side");
-			}
-
-			int side_num = 1;
-			for(config::child_itors itors = level.child_range("side"); itors.first != itors.second; ++itors.first, ++side_num) {
-				std::map<int,std::string>::const_iterator type = side_types.find(side_num),
-				                                          controller = side_controllers.find(side_num),
-				                                          algorithm = side_algorithms.find(side_num);
-
-				const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
-				                                                era_cfg->find_child("multiplayer_side","type",type->second);
-
-				size_t tries = 0;
-				while(side != NULL && (*side)["type"] == "random" && ++tries < 100) {
-					const config::child_list& v = era_cfg->get_children("multiplayer_side");
-					side = v[rand()%v.size()];
-				}
-
-				if(side == NULL || (*side)["type"] == "random") {
-					std::string side_name = (type == side_types.end() ? "default" : type->second);
-					std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
-					return 0;
-				}
-
-				char buf[20];
-				sprintf(buf,"%d",side_num);
-				(*itors.first)->values["side"] = buf;
-
-				(*itors.first)->values["canrecruit"] = "1";
-
-				for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
-					(*itors.first)->values[i->first] = i->second;
-				}
-
-				if(controller != side_controllers.end()) {
-					(*itors.first)->values["controller"] = controller->second;
-				}
-
-				if(algorithm != side_algorithms.end()) {
-					(*itors.first)->values["ai_algorithm"] = algorithm->second;
-				}
-
-				config& ai_params = (*itors.first)->add_child("ai");
-
-				//now add in any arbitrary parameters given to the side
-				for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
-					(*itors.first)->values[j->first] = j->second;
-					ai_params[j->first] = j->second;
-				}
-			}
-
-			try {
-				play_level(units_data,game_config,&level,video,state,story);
-				return 0;
-			} catch(gamestatus::error& e) {
-				std::cerr << "caught error: '" << e.message << "'\n";
-				return 0;
-			} catch(gamestatus::load_game_exception& e) {
-				//the user's trying to load a game, so go into the normal title screen loop and load one
-				loaded_game = e.game;
-				loaded_game_show_replay = e.show_replay;
-			} catch(...) {
-				std::cerr << "caught unknown error playing level...\n";
-				return 0;
-			}
+		if(game.play_multiplayer_mode() == false) {
+			return 0;
 		}
 
 		recorder.clear();
 
 		std::cerr << "showing title screen...\n";
 		std::cerr << (SDL_GetTicks() - start_ticks) << "\n";
-		gui::TITLE_RESULT res = loaded_game.empty() ? gui::TITLE_CONTINUE : gui::LOAD_GAME;
+		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::TITLE_CONTINUE;
 
 		int ntip = -1;
 		while(res == gui::TITLE_CONTINUE) {
-			res = gui::show_title(disp,&ntip);
+			res = gui::show_title(game.disp(),&ntip);
 		}
 
 		std::cerr << "title screen returned result\n";
-
 		if(res == gui::QUIT_GAME) {
 			std::cerr << "quitting game...\n";
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
-
-			bool show_replay = loaded_game_show_replay;
-
-			const std::string game = loaded_game.empty() ? dialogs::load_game_dialog(disp,game_config,units_data,&show_replay) : loaded_game;
-
-			loaded_game = "";
-
-			if(game == "") {
+			if(game.load_game() == false) {
 				continue;
 			}
-
-			try {
-				load_game(units_data,game,state);
-				if(state.version != game_config::version) {
-					const int res = gui::show_dialog(disp,NULL,"",
-					                      _("This save is from a different version of the game. Do you want to try to load it?"),
-					                      gui::YES_NO);
-					if(res == 1)
-						continue;
-				}
-
-				defines_map.clear();
-				defines_map[state.difficulty] = preproc_define();
-			} catch(gamestatus::error& e) {
-				std::cerr << "caught load_game_failed\n";
-				gui::show_dialog(disp,NULL,"",
-				           _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",gui::OK_ONLY);
-				continue;
-			} catch(config::error& e) {
-				std::cerr << "caught config::error\n";
-				gui::show_dialog(disp,NULL,"",
-				    _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",
-				    gui::OK_ONLY);
-				continue;
-			} catch(io_exception& e) {
-				gui::show_dialog(disp,NULL,"","File I/O Error while reading the game",gui::OK_ONLY);
-				continue;
-			}
-
-			recorder = replay(state.replay_data);
-
-			std::cerr << "has snapshot: " << (state.snapshot.child("side") ? "yes" : "no") << "\n";
-
-			//only play replay data if the user has selected to view the replay,
-			//or if there is no starting position data to use.
-			if(!show_replay && state.snapshot.child("side") != NULL) {
-				std::cerr << "setting replay to end...\n";
-				recorder.set_to_end();
-				if(!recorder.at_end())
-					std::cerr << "recorder is not at the end!!!\n";
-			} else {
-
-				recorder.start_replay();
-
-				//set whether the replay is to be skipped or not
-				if(show_replay) {
-					recorder.set_skip(0);
-				} else {
-					std::cerr << "skipping...\n";
-					recorder.set_skip(-1);
-				}
-			}
-
-			if(state.campaign_type == "multiplayer") {
-				//make all network players local
-				for(config::child_itors sides = state.snapshot.child_range("side");
-				    sides.first != sides.second; ++sides.first) {
-					if((**sides.first)["controller"] == "network")
-						(**sides.first)["controller"] = "human";
-				}
-			
-				recorder.set_save_info(state);
-				std::vector<config*> story;
-
-				config starting_pos;
-				if(recorder.at_end()) {
-					starting_pos = state.snapshot;
-                                        // state.gold = -100000;
-				} else {
-					starting_pos = state.starting_pos;
-				}
-
-				try {
-					play_level(units_data,game_config,&starting_pos,video,state,story);
-					recorder.clear();
-				} catch(gamestatus::load_game_failed& e) {
-					gui::show_dialog(disp,NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
-					std::cerr << "error loading the game: " << e.message
-					          << "\n";
-					return 0;
-				} catch(gamestatus::game_error& e) {
-					gui::show_dialog(disp,NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
-					std::cerr << "error while playing the game: "
-					          << e.message << "\n";
-					return 0;
-				} catch(gamestatus::load_game_exception& e) {
-					//this will make it so next time through the title screen loop, this game is loaded
-					loaded_game = e.game;
-					loaded_game_show_replay = e.show_replay;
-				}
-
-				continue;
-			}
-
 		} else if(res == gui::TUTORIAL) {
-			state.campaign_type = "tutorial";
-			state.scenario = "tutorial";
-			defines_map["TUTORIAL"] = preproc_define();
-
+			game.set_tutorial();
 		} else if(res == gui::NEW_CAMPAIGN) {
-			state.campaign_type = "scenario";
-
-			config::child_list campaigns = game_config.get_children("campaign");
-			std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
-
-			std::vector<std::string> campaign_names;
-
-			for(config::child_list::const_iterator i = campaigns.begin(); i != campaigns.end(); ++i) {
-				std::stringstream str;
-				const std::string& icon = (**i)["icon"];
-				if(icon == "") {
-					str << " ,";
-				} else {
-					str << "&" << icon << ",";
-				}
-
-				str << (**i)["name"];
-
-				campaign_names.push_back(str.str());
-			}
-
-			campaign_names.push_back(_(" ,Get More Campaigns..."));
-
-			int res = 0;
-
-			if(campaign_names.size() > 1) {
-				res = gui::show_dialog(disp,NULL,_("Campaign"),
-				                                 _("Choose the campaign you want to play:"),
-												 gui::OK_CANCEL,&campaign_names);
-
-				if(res == -1)
-					continue;
-			}
-
-			//get more campaigns from server
-			if(res == int(campaign_names.size()-1)) {
-				std::string host = "campaigns.wesnoth.org";
-				const int res = gui::show_dialog(disp,NULL,_("Connect to Server"),
-				        _("You will now connect to a campaign server to download campaigns."),
-				        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
-				if(res != 0) {
-					continue;
-				}
-
-				const std::vector<std::string> items = config::split(host,':');
-				host = items.front();
-
-				try {
-					const network::manager net_manager;
-					const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
-					if(!sock) {
-						gui::show_dialog(disp,NULL,_("Error"),_("Could not connect to host."),gui::OK_ONLY);
-						continue;
-					}
-
-					config cfg;
-					cfg.add_child("request_campaign_list");
-					network::send_data(cfg,sock);
-
-					network::connection res = gui::network_data_dialog(disp,_("Awaiting response from server"),cfg,sock);
-					if(!res) {
-						continue;
-					}
-
-					const config* const error = cfg.child("error");
-					if(error != NULL) {
-						gui::show_dialog(disp,NULL,_("Error"),(*error)["message"],gui::OK_ONLY);
-						continue;
-					}
-
-					const config* const campaigns_cfg = cfg.child("campaigns");
-					if(campaigns_cfg == NULL) {
-						gui::show_dialog(disp,NULL,_("Error"),_("Error communicating with the server."),gui::OK_ONLY);
-						continue;
-					}
-
-					std::vector<std::string> campaigns;
-					const config::child_list& cmps = campaigns_cfg->get_children("campaign");
-					for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
-						campaigns.push_back((**i)["name"]);
-					}
-
-					if(campaigns.empty()) {
-						gui::show_dialog(disp,NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
-						continue;
-					}
-
-					const int index = gui::show_dialog(disp,NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&campaigns);
-					if(index < 0 || index >= int(campaigns.size())) {
-						continue;
-					}
-
-					config request;
-					request.add_child("request_campaign")["name"] = campaigns[index];
-					network::send_data(request,sock);
-
-					res = gui::network_data_dialog(disp,_("Downloading campaign..."),cfg,sock);
-					if(!res) {
-						continue;
-					}
-
-					if(cfg.child("error") != NULL) {
-						gui::show_dialog(disp,NULL,_("Error"),(*cfg.child("error"))["message"],gui::OK_ONLY);
-						continue;
-					}
-
-					unarchive_campaign(cfg);
-
-					gui::show_dialog(disp,NULL,_("Campaign Installed"),_("The campaign has been installed. You will have to restart Wesnoth before you can play it."),gui::OK_ONLY);
-					continue;
-					
-				} catch(config::error& e) {
-					gui::show_dialog(disp,NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
-					continue;
-				} catch(network::error& e) {
-					gui::show_dialog(disp,NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
-					continue;
-				} catch(io_exception& e) {
-					gui::show_dialog(disp,NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
-					continue;
-				}
-			}
-
-			const config& campaign = *campaigns[res];
-
-			state.scenario = campaign["first_scenario"];
-
-			const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
-			std::vector<std::string> difficulty_options = config::split(difficulty_descriptions,';');
-
-			const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
-
-			if(difficulties.empty() == false) {
-				if(difficulty_options.size() != difficulties.size()) {
-					difficulty_options.resize(difficulties.size());
-					std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
-				}
-
-				const int res = gui::show_dialog(disp,NULL,_("Difficulty"),
-				                            _("Select difficulty level:"),
-				                            gui::OK_CANCEL,&difficulty_options);
-				if(res == -1)
-					continue;
-
-				state.difficulty = difficulties[res];
-				defines_map.clear();
-				defines_map[difficulties[res]] = preproc_define();
-			}
-
-			state.campaign_define = campaign["define"];
-		} else if(res == gui::MULTIPLAYER) {
-			state.campaign_type = "multiplayer";
-			state.scenario = "";
-			state.campaign_define = "MULTIPLAYER";
-
-			std::vector<std::string> host_or_join;
-			const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
-			host_or_join.push_back(std::string("&icons/icon-server.png,") + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
-			host_or_join.push_back(std::string("&icons/icon-serverother.png,") + _("Join Game") + sep + _("Join a server or hosted game"));
-			host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Multiplayer Game") + sep + _("Host a game without using a server"));
-
-			std::string login = preferences::login();
-			const int res = gui::show_dialog(disp,NULL,_("Multiplayer"),"",gui::OK_CANCEL,&host_or_join,NULL,_("Login") + std::string(": "),&login);
-
-			if(res >= 0) {
-				preferences::set_login(login);
-			}
-			
-			try {
-				defines_map[state.campaign_define] = preproc_define();
-				std::vector<line_source> line_src;
-				config game_config;
-				read_game_cfg(defines_map,line_src,game_config,use_caching);
-				
-				if(res == 2) {
-					std::vector<std::string> chat;
-					config game_data;
-					multiplayer_game_setup_dialog mp_dialog(disp,units_data,game_config,state,true);
-					lobby::RESULT res = lobby::CONTINUE;
-					while(res == lobby::CONTINUE) {
-						res = lobby::enter(disp,game_data,game_config,&mp_dialog,chat);
-					}
-
-					if(res == lobby::CREATE) {
-						mp_dialog.start_game();
-					}
-				} else if(res == 0 || res == 1) {
-					std::string host;
-					if(res == 0) {
-						host = preferences::official_network_host();
-					}
-
-					play_multiplayer_client(disp,units_data,game_config,state,host);
-				}
-			} catch(gamestatus::load_game_failed& e) {
-				gui::show_dialog(disp,NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
-				std::cerr << "error loading the game: " << e.message << "\n";
-				return 0;
-			} catch(gamestatus::game_error& e) {
-				gui::show_dialog(disp,NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
-				std::cerr << "error while playing the game: "
-				          << e.message << "\n";
-				return 0;
-			} catch(network::error& e) {
-				std::cerr << "caught network error...\n";
-				if(e.message != "") {
-					gui::show_dialog(disp,NULL,"",e.message,gui::OK_ONLY);
-				}
-			} catch(config::error& e) {
-				std::cerr << "caught config::error...\n";
-				if(e.message != "") {
-					gui::show_dialog(disp,NULL,"",e.message,gui::OK_ONLY);
-				}
-			} catch(gamemap::incorrect_format_exception& e) {
-				gui::show_dialog(disp,NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);
-				std::cerr << "The game map could not be loaded: " << e.msg_ << "\n";
+			if(game.new_campaign() == false) {
 				continue;
-			} catch(gamestatus::load_game_exception& e) {
-				//this will make it so next time through the title screen loop, this game is loaded
-				loaded_game = e.game;
-				loaded_game_show_replay = e.show_replay;
 			}
-
-			continue;
+		} else if(res == gui::MULTIPLAYER) {
+			if(game.play_multiplayer() == false) {
+				continue;
+			}
 		} else if(res == gui::CHANGE_LANGUAGE) {
-
-			std::vector<language_def> langdefs = get_languages();
-
-			//std::sort(langs.begin(),langs.end());
-			//std::sort(langdefs.begin(),langdefs.end(),languagedef_lessthan_p);
-
-			// this only works because get_languages() returns a fresh vector at each calls
-			// unless show_gui cleans the "*" flag
-			const std::vector<language_def>::iterator current = std::find(langdefs.begin(),langdefs.end(),get_language());
-			if(current != langdefs.end())
-				(*current).language = "*" + (*current).language;
-
-			// prepare a copy with just the labels for the list to be displayed
-			std::vector<std::string> langs;
-			langs.reserve(langdefs.size());
-			std::transform(langdefs.begin(),langdefs.end(),std::back_inserter(langs),languagedef_name);
-
-			const int res = gui::show_dialog(disp,NULL,_("Language"),
-			                         _("Choose your preferred language") + std::string(":"),
-			                         gui::OK_CANCEL,&langs);
-			if(size_t(res) < langs.size()) {
-				set_language(known_languages[res]);
-				preferences::set_locale(known_languages[res].localename);
+			if(game.change_language() == false) {
+				continue;
 			}
-			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
-			const preferences::display_manager disp_manager(&disp);
-			preferences::show_preferences_dialog(disp);
+			const preferences::display_manager disp_manager(&game.disp());
+			preferences::show_preferences_dialog(game.disp());
 
-			disp.redraw_everything();
+			game.disp().redraw_everything();
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
-			about::show_about(disp);
+			about::show_about(game.disp());
 			continue;
 		}
-
-		if(state.campaign_define.empty() == false) {
-			defines_map[state.campaign_define] = preproc_define();
-		}
-
-		if(defines_map.count("NORMAL")) {
-			defines_map["MEDIUM"] = preproc_define();
-		}
-
-
-		//make a new game config item based on the difficulty level
-		std::vector<line_source> line_src;
-		config game_config;
 		
-		try {
-			read_game_cfg(defines_map,line_src,game_config,use_caching);
-		} catch(config::error& e) {
-			gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
-			throw e;
-		}
-
-		const binary_paths_manager bin_paths_manager(game_config);
-
-		const config::child_list& units = game_config.get_children("units");
-		if(units.empty()) {
-			std::cerr << "ERROR: Could not find game configuration files\n";
-			std::cerr << game_config.write();
-			return 0;
-		}
-
-		game_data units_data(*units[0]);
-
-		try {
-			const LEVEL_RESULT result = play_game(disp,state,game_config,units_data,video);
-			if(result == VICTORY) {
-				the_end(disp);
-				about::show_about(disp);
-			}
-		} catch(gamestatus::load_game_exception& e) {
-
-			//this will make it so next time through the title screen loop, this game is loaded
-			loaded_game = e.game;
-			loaded_game_show_replay = e.show_replay;
-		}
+		game.play_game();
 	}
 
 	return 0;

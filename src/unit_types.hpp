@@ -291,7 +291,11 @@ private:
 
 struct game_data
 {
+	game_data();
 	game_data(const config& cfg);
+	void set_config(const config& cfg);
+	void clear();
+
 	movement_type_map movement_types;
 	typedef std::map<std::string,unit_type> unit_type_map;
 	unit_type_map unit_types;
