@@ -660,15 +660,13 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			options.push_back(string_table["attack_resistance"]);
 			options.push_back(string_table["close_window"]);
 
-			std::vector<unit> units_list(options.size(),un->second);
-
 			SDL_Surface* const unit_image = gui.getImage(
 			           un->second.type().image_profile(), display::UNSCALED);
 
 			const int res = gui::show_dialog(gui,unit_image,
 		                                     un->second.type().language_name(),
 			                                 description,gui::MESSAGE,
-			                                 &options,&units_list);
+			                                 &options);
 
 			//terrain table
 			if(res == 0) {
