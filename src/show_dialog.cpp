@@ -917,8 +917,6 @@ TITLE_RESULT show_title(display& screen)
 		buttons.back().draw();
 	}
 
-	screen.video().flip();
-
 	std::cerr << "drew buttons dialog\n";
 
 	CKey key;

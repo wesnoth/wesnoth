@@ -772,11 +772,10 @@ int play_game(int argc, char** argv)
 			state.scenario = "";
 
 			std::vector<std::string> host_or_join;
-			host_or_join.push_back(string_table["host_game"]);
 			host_or_join.push_back(string_table["join_game"]);
+			host_or_join.push_back(string_table["host_game"]);
 
-			const int res = gui::show_dialog(disp,NULL,"","",gui::MESSAGE,
-			                                 &host_or_join);
+			const int res = gui::show_dialog(disp,NULL,"","",gui::OK_CANCEL,&host_or_join);
 			
 			try {
 				if(res == 0) {
