@@ -14,6 +14,7 @@
 #include "../global.hpp"
 
 #include "button.hpp"
+#include "menu.hpp"
 #include "../display.hpp"
 #include "../game.hpp"
 #include "../font.hpp"
@@ -182,7 +183,7 @@ bool button::hit(int x, int y) const
 }
 
 namespace {
-	bool not_image(const std::string& str) { return str != "" && str[0] != '&'; }
+	bool not_image(const std::string& str) { return !str.empty() && str[0] != IMAGE_PREFIX; }
 }
 
 void button::set_label(const std::string& val)
@@ -190,8 +191,8 @@ void button::set_label(const std::string& val)
 	label_ = val;
 
 	//if we have a list of items, use the first one that isn't an image
-	if(std::find(label_.begin(),label_.end(),',') != label_.end()) {
-		const std::vector<std::string>& items = config::split(label_);
+	if (std::find(label_.begin(), label_.end(), COLUMN_SEPARATOR) != label_.end()) {
+		const std::vector<std::string>& items = config::split(label_, COLUMN_SEPARATOR);
 		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),not_image);
 		if(i != items.end()) {
 			label_ = *i;
