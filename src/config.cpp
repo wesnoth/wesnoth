@@ -179,7 +179,7 @@ std::vector<std::string> parse_macro_arguments(const std::string& macro)
 		res.back() += " " + i->substr(begin,end-begin);
 		config::strip(res.back());
 
-		if(begin == 1) {
+		if(begin == 1 && end == i->size()) {
 			in_braces = true;
 		}
 	}
@@ -238,7 +238,7 @@ void internal_preprocess_data(const std::string& data,
 				if(val.arguments.size() != items.size()) {
 					std::cerr << "error: preprocessor symbol '" << symbol << "' has "
 					          << items.size() << " arguments, "
-							  << val.arguments.size() << " expected\n";
+							  << val.arguments.size() << " expected: '" << newfilename << "'\n";
 				}
 
 				std::string str = val.value;
@@ -1121,6 +1121,19 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
+std::string config::join(const std::vector<std::string>& v, char c)
+{
+	std::stringstream str;
+	for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
+		str << *i;
+		if(i+1 != v.end()) {
+			str << c;
+		}
+	}
+
+	return str.str();
+}
+
 std::vector<std::string> config::split(const std::string& val, char c, bool remove_empty)
 {
 	std::vector<std::string> res;
@@ -1267,7 +1280,7 @@ namespace {
 
 bool not_id(char c)
 {
-	return !isalpha(c) && c != '.' && c != '_';
+	return !isdigit(c) && !isalpha(c) && c != '.' && c != '_';
 }
 
 void do_interpolation(std::string& res, size_t npos, const string_map* m)

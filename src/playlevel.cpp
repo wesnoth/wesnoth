@@ -112,6 +112,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
+	std::cerr << "in play_level()...\n";
+
 	//if the entire scenario should be randomly generated
 	if((*level)["scenario_generation"] != "") {
 		std::cerr << "randomly generating scenario...\n";

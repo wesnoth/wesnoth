@@ -523,6 +523,21 @@ bool unit::has_flag(const std::string& flag) const
 	return statusFlags_.count(flag) != 0;
 }
 
+void unit::add_overlay(const std::string& overlay)
+{
+	overlays_.push_back(overlay);
+}
+
+void unit::remove_overlay(const std::string& overlay)
+{
+	overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end());
+}
+
+const std::vector<std::string>& unit::overlays() const
+{
+	return overlays_;
+}
+
 void unit::read(game_data& data, const config& cfg)
 {
 	std::map<std::string,unit_type>::iterator i = data.unit_types.find(cfg["type"]);
@@ -595,6 +610,11 @@ void unit::read(game_data& data, const config& cfg)
 		}
 	}
 
+	overlays_ = config::split(cfg["overlays"]);
+	if(overlays_.size() == 1 && overlays_.front() == "") {
+		overlays_.clear();
+	}
+
 	const config* const variables = cfg.child("variables");
 	if(variables != NULL) {
 		variables_ = *variables;
@@ -618,10 +638,7 @@ void unit::read(game_data& data, const config& cfg)
 		moves_ = atoi(moves.c_str());
 
 	const std::string& hitpoints = cfg["hitpoints"];
-	if(hitpoints.size() == 0)
-		hitpoints_ = maxHitpoints_;
-	else
-		hitpoints_ = atoi(hitpoints.c_str());
+	hitpoints_ = lexical_cast_default<int>(hitpoints,maxHitpoints_);
 
 	const std::string& experience = cfg["experience"];
 	if(experience.size() == 0)
@@ -656,8 +673,9 @@ void unit::write(config& cfg) const
 	}
 
 	cfg.add_child("variables",variables_);
-
 	cfg.add_child("status",status_flags);
+
+	cfg["overlays"] = config::join(overlays_);
 
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;

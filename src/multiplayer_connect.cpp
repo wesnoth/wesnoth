@@ -692,6 +692,7 @@ lobby::RESULT mp_connect::process()
 	}
 
 	if(start_game) {
+		std::cerr << "multiplayer_connect returning create...\n";
 		return lobby::CREATE;
 	}
 

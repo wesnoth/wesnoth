@@ -88,6 +88,10 @@ public:
 	void remove_flag(const std::string& flag);
 	bool has_flag(const std::string& flag) const;
 
+	void add_overlay(const std::string& overlay);
+	void remove_overlay(const std::string& overlay);
+	const std::vector<std::string>& overlays() const;
+
 	void read(game_data& data, const config& cfg);
 
 	void write(config& cfg) const;
@@ -173,6 +177,7 @@ private:
 	std::string role_;
 
 	std::set<std::string> statusFlags_;
+	std::vector<std::string> overlays_;
 
 	//this field stores user-variables associated with the unit
 	config variables_;

@@ -513,7 +513,6 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {	
-	std::cerr << "starting draw...\n";
 	if(!panelsDrawn_) {
 		std::cerr << "drawing panels...\n";
 		SDL_Surface* const screen = screen_.getSurface();
@@ -581,10 +580,7 @@ void display::draw(bool update,bool force)
 			update_display();
 		else
 			drawSkips_++;
-
 	}
-
-	std::cerr << "done draw...\n";
 }
 
 void display::update_display()
@@ -1420,6 +1416,16 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		if(img != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(img,NULL,dst,&dstrect);
+		}
+	}
+
+	const std::vector<std::string>& overlays = un->second.overlays();
+	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
+		const scoped_sdl_surface img(image::get_image(*ov));
+		std::cerr << "drawing overlay: '" << *ov << "'\n";
+		if(img.get() != NULL) {
+			std::cerr << "AA\n";
+			draw_unit(xpos,ypos,img);
 		}
 	}
 

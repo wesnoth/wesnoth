@@ -152,6 +152,7 @@ struct config
 	void clear_children(const std::string& key);
 	config* remove_child(const std::string& key, size_t index);
 
+	static std::string join(const std::vector<std::string>& v, char c=',');
 	static std::vector<std::string> split(const std::string& val, char c=',', bool remove_empty=true);
 	static std::vector<std::string> quoted_split(const std::string& val, char c=',',
 												 bool remove_empty=true, char quote='\\');

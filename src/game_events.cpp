@@ -616,6 +616,25 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		screen->remove_overlay(loc);
 	}
 
+	else if(cmd == "unit_overlay") {
+		for(std::map<gamemap::location,unit>::iterator itor = units->begin(); itor != units->end(); ++itor) {
+			if(game_events::unit_matches_filter(itor,cfg)) {
+				std::cerr << "adding overlay '" << cfg["image"] << "' to '" << itor->second.description() << "'\n";
+				itor->second.add_overlay(cfg["image"]);
+				break;
+			}
+		}
+	}
+
+	else if(cmd == "remove_unit_overlay") {
+		for(std::map<gamemap::location,unit>::iterator itor = units->begin(); itor != units->end(); ++itor) {
+			if(game_events::unit_matches_filter(itor,cfg)) {
+				itor->second.remove_overlay(cfg["image"]);
+				break;
+			}
+		}
+	}
+
 	//hiding units
 	else if(cmd == "hide_unit") {
 		const gamemap::location loc(cfg);
@@ -1006,6 +1025,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& variable = cfg["variable"];
 		const std::string& terrain = cfg["terrain"];
 		const config* const unit_filter = cfg.child("filter");
+
+		state_of_game->variables.clear_children(variable);
 
 		std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
 		if(locs.size() > MaxLoop) {
