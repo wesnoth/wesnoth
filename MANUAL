@@ -54,7 +54,7 @@ Gold
 
 Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 1 more gold piece for every village that side controls.
 
-Each unit also has a upkeep cost. The upkeep cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a upkeep cost associated with them. upkeep is only paid if the total upkeep of a side's units is greater than the number of villages that side controls. Upkeep paid is the difference between the number of villages and the upkeep cost. So, the formula for determining the income per turn is,
+Each unit also has a upkeep cost. The upkeep cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a upkeep cost associated with them. Upkeep is only paid if the total upkeep of a side's units is greater than the number of villages that side controls. Upkeep paid is the difference between the number of villages and the upkeep cost. So, the formula for determining the income per turn is,
 
  2 + villages - maximum(0,upkeep - villages)
 
