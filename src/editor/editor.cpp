@@ -1005,6 +1005,10 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 	std::string filename = fn;
 	if (filename == "") {
 		filename = filename_;
+		if(filename == "") {
+			edit_save_as();
+			return true;
+		}
 	}
 	else {
 		filename_ = filename;
@@ -1017,7 +1021,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 							 gui::OK_ONLY);
 		}
 	}
-	catch (io_exception e) {
+	catch (io_exception& e) {
 		string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg",symbols);
