@@ -909,7 +909,6 @@ void mp_connect::update_network()
 				changes = true;
 				i->second = 0;
 				i->first->values.erase("taken");
-
 				remove_player(i->first->values["description"]);
 				i->first->values["description"] = "";
 			}
@@ -939,9 +938,11 @@ void mp_connect::update_network()
 			if(pos != positions_.end()) {
 				pos->second = 0;
 				pos->first->values.erase("taken");
+				remove_player(pos->first->values["description"]);
 				pos->first->values["description"] = "";
 				network::send_data(*level_);
 			}
+			return;
 		}
 
 		int side_taken = atoi(cfg["side"].c_str())-1;
@@ -1026,8 +1027,6 @@ void mp_connect::update_network()
 			} else {
 				std::cerr << "tried to take illegal side: " << side_taken << "\n";
 			}
-		} else {
-			std::cerr << "tried to take unknown side: " << side_taken << "\n";
 		}
 	}
 }
