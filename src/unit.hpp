@@ -174,9 +174,11 @@ private:
 //object which temporarily resets a unit's movement
 struct unit_movement_resetter
 {
-	unit_movement_resetter(unit& u) : u_(u), moves_(u.moves_)
+	unit_movement_resetter(unit& u, bool operate=true) : u_(u), moves_(u.moves_)
 	{
-		u.moves_ = u.total_movement();
+		if(operate) {
+			u.moves_ = u.total_movement();
+		}
 	}
 
 	~unit_movement_resetter()

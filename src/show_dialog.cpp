@@ -252,7 +252,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	CVideo& screen = disp.video();
 	SDL_Surface* const scr = screen.getSurface();
 
-	SDL_Rect clipRect = { 0, 0, disp.x(), disp.y() };
+	SDL_Rect clipRect = disp.screen_area();
 
 	const bool use_textbox = text_widget_text != NULL;
 	static const std::string default_text_string = "";

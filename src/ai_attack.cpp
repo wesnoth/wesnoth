@@ -348,7 +348,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			
 			//if the attacker moved onto a village, reward it for doing so
 			else if(map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER) {
-				atthp += game_config::heal_amount;
+				atthp += game_config::heal_amount*2; //double reward to emphasize getting onto villages
 			}
 
 			defenderxp += (atthp == 0 ? 8:1)*att->second.type().level();
@@ -451,7 +451,7 @@ std::vector<ai::attack_analysis> ai::analyze_targets(
 	return res;
 }
 
-double ai::power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain)
+double ai::power_projection(const gamemap::location& loc, const move_map& srcdst, const move_map& dstsrc, bool use_terrain) const
 {
 	static gamemap::location used_locs[6];
 	static double ratings[6];
