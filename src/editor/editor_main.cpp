@@ -205,6 +205,22 @@ int main(int argc, char** argv)
 	// settings. Maybe they should be moved? Or set an EDITOR define and
 	// make it load that way maybe.
 	defines_map["MULTIPLAYER"] = preproc_define();
+
+	//Set the locale first, then read the configuration, or else WML
+	//strings are not correctly translated. Does this work on on the win32
+	//platform?
+	const bool lang_res = ::set_language(get_locale());
+	if(!lang_res) {
+		std::cerr << "No translation for locale '" << get_locale().language
+		          << "', default to system locale\n";
+
+		const bool lang_res = ::set_language(known_languages[0]);
+		if(!lang_res) {
+			std::cerr << "Language data not found\n";
+		}
+	}
+
+	//Read the configuration af
 	config cfg;
 	try {
 		cfg.read(preprocess_file("data/game.cfg", &defines_map));
@@ -212,8 +228,7 @@ int main(int argc, char** argv)
 	catch (config::error e) {
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
 	}
-
-	set_language(known_languages[0]);
+	font::load_font_config();
 
 	if(mapdata.empty()) {
 		for(int i = 0; i != 20; ++i) {

@@ -181,6 +181,8 @@ SDL_Rect get_floating_label_rect(int handle);
 void draw_floating_labels(surface screen);
 void undraw_floating_labels(surface screen);
 
+bool load_font_config();
+
 }
 
 #endif
