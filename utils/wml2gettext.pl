@@ -1,11 +1,10 @@
-#! /usr/bin/perl -wpi.bak
+#! /usr/bin/perl -wni.bak
 
 # This script extracts strings from english.cfg and injects them into
 # the C++ code tagged for gettext.  Then it produces an english.cfg
 # stripped down from those (hopefully) now-useless strings.
 
 # BUGS:
-# - should give special treatment to multiline strings
 # - should maybe keep the list of stripped strings from english.cfg
 # - should maybe report about those @ids items not stripped from english.cfg
 
@@ -18,25 +17,31 @@ BEGIN {
   %trans = readwml ('data/translations/english.cfg');
 }
 
-while (m/^(.*)translate_string\(\"([^\"]*)\"\)(.*)/) {
-  my $str = $trans{$2};
-  unless (defined $str) {
-    print STDERR "no translation found for \"$2\"\n";
-    $str = $2;
+while (m/translate_string\(\"([^\"]*)\"\)/m) {
+  my $id = $1;
+  unless (defined $trans{$id}) {
+    print STDERR "no translation found for \"$id\"\n";
+    $trans{$id} = $id;
   }
-  push @ids, $2;
-  $_ = "$1_(\"$str\")$3\n";
+  $trans{$id} =~ s/$/\\n\\/mg; chop $trans{$id}; chop $trans{$id}; chop $trans{$id};
+  my $str = $trans{$id};
+  push @ids, $id;
+  s/translate_string\(\"$id\"\)/_(\"$str\")/mg;
 }
 
-while (m/^(.*)string_table\[\"([^\"]*)\"\](.*)/) {
-  my $str = $trans{$2};
-  unless (defined $str) {
-    print STDERR "no translation found for \"$2\"\n";
+while (m/string_table\[\"([^\"]*)\"\]/m) {
+  my $id = $1;
+  unless (defined $trans{$id}) {
+    print STDERR "no translation found for \"$id\"\n";
     last;
   }
-  push @ids, $2;
-  $_ = "$1_(\"$str\")$3\n";
+  $trans{$id} =~ s/$/\\n\\/mg; chop $trans{$id}; chop $trans{$id}; chop $trans{$id};
+  my $str = $trans{$id};
+  push @ids, $id;
+  s/string_table\[\"$id\"\]/_(\"$str\")/mg;
 }
+
+print;
 
 END {
   open (OUTFD, ">data/translations/english.cfg.new")
