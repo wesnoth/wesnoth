@@ -499,9 +499,6 @@ void show_preferences_dialog(display& disp)
 		SDL_Delay(10);
 		events::pump();
 	}
-
-	disp.invalidate_all();
-	disp.draw();
 }
 
 void show_video_mode_dialog(display& disp)
