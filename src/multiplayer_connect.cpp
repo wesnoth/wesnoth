@@ -450,7 +450,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	type_title_label_(disp, _("Player/Type"), font::SIZE_NORMAL, font::GOOD_COLOUR),
 	faction_title_label_(disp, _("Faction"), font::SIZE_NORMAL, font::GOOD_COLOUR),
 	team_title_label_(disp, _("Team"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	colour_title_label_(disp, _("Colour"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	colour_title_label_(disp, _("Color"), font::SIZE_NORMAL, font::GOOD_COLOUR),
 	gold_title_label_(disp, _("Gold"), font::SIZE_NORMAL, font::GOOD_COLOUR),
 
 	ai_(disp, _("Computer vs Computer")),
