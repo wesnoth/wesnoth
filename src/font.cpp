@@ -171,8 +171,14 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	}
 
 	SDL_Rect dest;
-	dest.x = x;
-	dest.y = y;
+	if(x!=-1)
+		dest.x = x;
+	else
+		dest.x = (area.w/2)-(surface->w/2);
+	if(y!=-1)
+		dest.y = y;
+	else
+		dest.y = (area.h/2)-(surface->h/2);
 	dest.w = surface->w;
 	dest.h = surface->h;
 

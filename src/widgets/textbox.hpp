@@ -49,9 +49,12 @@ class textbox : public events::handler
 public:
 	textbox(display& disp, int width, const std::string& text="");
 
+	int x() const;
+	int y() const;
 	int height() const;
 	int width() const;
 	const std::string& text() const;
+	void set_text(std::string text);
 	void clear();
 
 	void draw() const;

@@ -231,17 +231,22 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		const config* const gamelist = data.child("gamelist");
 		if(gamelist != NULL) {
 			config game_data = data;
-			const lobby::RESULT res = lobby::enter(disp,game_data);
-			switch(res) {
-				case lobby::QUIT: {
-					return;
-				}
-				case lobby::CREATE: {
-					play_multiplayer(disp,units_data,cfg,state,false);
-					continue;
-				}
-				case lobby::JOIN: {
-					break;
+			int status = -1;
+			while(status == -1) {
+				const lobby::RESULT res = lobby::enter(disp,game_data);
+				switch(res) {
+					case lobby::QUIT: {
+						status = 1;
+						return;
+					}
+					case lobby::CREATE: {
+						status = play_multiplayer(disp,units_data,cfg,state,false);
+						break;
+					}
+					case lobby::JOIN: {
+						status = 1;
+						break;
+					}
 				}
 			}
     

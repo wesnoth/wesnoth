@@ -1,10 +1,10 @@
 #ifndef IMAGE_HPP_INCLUDED
 #define IMAGE_HPP_INCLUDED
 
-#include "SDL.h"
-
+#include "video.hpp"
 #include "map.hpp"
 
+#include "SDL.h"
 #include <string>
 
 //this module manages the cache of images. With an image name, you can get
@@ -51,6 +51,8 @@ namespace image {
 	//if you later try to get the same image using get_image() the image will
 	//have the dimensions specified here.
 	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
+
+	SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_);
 }
 
 #endif

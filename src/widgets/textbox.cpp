@@ -35,6 +35,16 @@ textbox::textbox(display& disp, int width, const std::string& text)
 	                          "ABCD",0,0).h;
 }
 
+int textbox::x() const
+{
+	return x_;
+}
+
+int textbox::y() const
+{
+	return y_;
+}
+
 int textbox::height() const
 {
 	return height_;
@@ -48,6 +58,12 @@ int textbox::width() const
 const std::string& textbox::text() const
 {
 	return text_;
+}
+
+void textbox::set_text(std::string text)
+{
+	text_ = text;
+	cursor_ = text_.size();
 }
 
 void textbox::clear()
@@ -118,6 +134,9 @@ void textbox::draw() const
 
 void textbox::handle_event(const SDL_Event& event)
 {
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+
 	if(event.type != SDL_KEYDOWN || !focus_)
 		return;
 

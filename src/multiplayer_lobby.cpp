@@ -128,20 +128,7 @@ RESULT enter(display& disp, config& game_data)
 			}
 			
 			if(new_game.process(mousex,mousey,left_button)) {
-				std::string name;
-				const int res = gui::show_dialog(disp,NULL,"","Name your game:",
-				                   gui::OK_CANCEL,NULL,NULL,"Name:",&name);
-				if(res == 0 && !name.empty()) {
-					config response;
-					config create_game;
-					create_game["name"] = name;
-					response.children["create_game"].push_back(
-					                                new config(create_game));
-					network::send_data(response);
-	
-					return CREATE;
-				}
-				update_whole_screen();
+				return CREATE;
 				break;
 			}
 

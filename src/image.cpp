@@ -1,6 +1,8 @@
 #include "game_config.hpp"
 #include "image.hpp"
+#include "display.hpp"
 #include "sdl_utils.hpp"
+#include "util.hpp"
 
 #include "SDL_image.h"
 
@@ -248,6 +250,43 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	}
 
 	return surf;
+}
+
+SDL_Surface* getMinimap(CVideo& video, int w, int h, gamemap& map_)
+{
+	SDL_Surface* const surface = video.getSurface();
+
+	SDL_Surface *minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,
+	                                map_.x(),map_.y(),
+	                                surface->format->BitsPerPixel,
+	                                surface->format->Rmask,
+	                                surface->format->Gmask,
+	                                surface->format->Bmask,
+	                                surface->format->Amask);
+	if(minimap_ == NULL)
+		return NULL;
+
+	const int xpad = is_odd(minimap_->w);
+
+	surface_lock lock(minimap_);
+	short* data = lock.pixels();
+	for(int y = 0; y != map_.y(); ++y) {
+		for(int x = 0; x != map_.x(); ++x) {
+
+			*data = map_.get_terrain_info(map_[x][y]).get_rgb().
+			                                 format(surface->format);
+			++data;
+		}
+		data += xpad;
+	}
+
+	if(minimap_->w != w || minimap_->h != h) {
+		SDL_Surface* const surf = minimap_;
+		minimap_ = scale_surface(surf,w,h);
+		SDL_FreeSurface(surf);
+	}
+
+	return minimap_;
 }
 
 

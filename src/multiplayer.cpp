@@ -11,8 +11,11 @@
    See the COPYING file for more details.
 */
 
+#include "events.hpp"
+#include "font.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "image.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
 #include "network.hpp"
@@ -20,6 +23,10 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "widgets/textbox.hpp"
+#include "widgets/button.hpp"
+#include "widgets/menu.hpp"
+#include "widgets/slider.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -240,9 +247,11 @@ bool accept_network_connections(display& disp, config& players)
 
 }
 
-void play_multiplayer(display& disp, game_data& units_data, config cfg,
+int play_multiplayer(display& disp, game_data& units_data, config cfg,
                       game_state& state, bool server)
 {
+	SDL_Rect rect;
+	char buf[100];
 	log_scope("play multiplayer");
 
 	//ensure we send a close game message to the server when we are done
@@ -252,6 +261,33 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 	//later allow configuration of amount of gold
 	state.gold = 100;
 
+	// Dialog width and height
+	int width=600;
+	int height=290;
+
+	int cur_selection = -1;
+	int cur_villagegold = 2;
+	int new_villagegold = 2;
+	int cur_turns = 50;
+	int new_turns = 50;
+
+	gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
+			       width, height, disp);
+
+	//Title
+	font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+	                "Create Game",-1,(disp.y()-height)/2+5);
+
+	//Name Entry
+	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                "Name of game:",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
+	gui::textbox name_entry(disp,width-20);
+	name_entry.set_location((disp.x()-width)/2+10,(disp.y()-height)/2+55);
+
+	//Maps
+	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                "Map to play:",(disp.x()-width)/2+(int)(width*0.4),
+			(disp.y()-height)/2+83);
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];
 	std::map<int,std::string> res_to_id;
@@ -267,211 +303,370 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 	}
 
 	options.push_back("Load game...");
+	gui::menu maps_menu(disp,options);
+	maps_menu.set_loc((disp.x()-width)/2+(int)(width*0.4),(disp.y()-height)/2+100);
 
-	int res = gui::show_dialog(disp,NULL,"",
-	                        string_table["choose_scenario"],gui::OK_CANCEL,
-							&options);
-	if(res == -1)
-		return;
+	//Game Turns
+	rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+	rect.y = (disp.y()-height)/2+83;
+	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+	rect.h = 12;
+	SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
+	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                "Turns: 50",rect.x,rect.y);
+	rect.y = (disp.y()-height)/2+100;
+	rect.h = name_entry.width();
+	gui::slider turns_slider(disp,rect,0.38);
 
+	//Village Gold
+	rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+	rect.y = (disp.y()-height)/2+130;
+	rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+	rect.h = 12;
+	//SDL_Surface* village_bg=get_surface_portion(disp.video().getSurface(), rect);
+	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+	                "Village Gold: 2",rect.x,rect.y);
+	rect.y = (disp.y()-height)/2+147;
+	rect.h = name_entry.width();
+	gui::slider villagegold_slider(disp,rect,0.1);
+
+	//FOG fo war
+	gui::button fog_game(disp,"Fog Of War",gui::button::TYPE_CHECK);
+	fog_game.set_check(true);
+	fog_game.set_xy(rect.x+6,rect.y+30);
+	fog_game.draw();
+
+	//Shroud
+	gui::button shroud_game(disp,"Shroud",gui::button::TYPE_CHECK);
+	shroud_game.set_check(false);
+	shroud_game.set_xy(rect.x+6,rect.y+60);
+	shroud_game.draw();
+
+	//Buttons
+	gui::button cancel_game(disp,string_table["cancel_button"]);
+	gui::button launch_game(disp,string_table["ok_button"]);
+	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,(disp.y()-height)/2+height-29);
+	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,(disp.y()-height)/2+height-29);
+
+
+	update_whole_screen();
+
+	CKey key;
 	config* level_ptr = NULL;
-	config loaded_level;
-	if(size_t(res) == options.size()-1) {
-		const std::vector<std::string>& games = get_saves_list();
-		if(games.empty()) {
-			gui::show_dialog(disp,NULL,
-			                 string_table["no_saves_heading"],
-							 string_table["no_saves_message"],
-			                 gui::OK_ONLY);
-			return;
-		}
+	for(;;) {
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-		const int res = gui::show_dialog(disp,NULL,
-		                                 string_table["load_game_heading"],
-		                                 string_table["load_game_message"],
-		                                 gui::OK_CANCEL, &games);
-		if(res == -1)
-			return;
+		maps_menu.process(mousex,mousey,left_button,
+		                  key[SDLK_UP],key[SDLK_DOWN],
+		                  key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
 
-		load_game(units_data,games[res],state);
+		if(cancel_game.process(mousex,mousey,left_button)) 
+			return -1;
 
-		if(state.campaign_type != "multiplayer") {
-			gui::show_dialog(disp,NULL,"",
-			                 "This is not a multiplayer save",gui::OK_ONLY);
-			return;
-		}
+		if(launch_game.process(mousex,mousey,left_button)) {
+			if(name_entry.text().empty() == false) {
+				// Send Initial information
+				config response;
+				config create_game;
+				create_game["name"] = name_entry.text();
+				response.children["create_game"].push_back(
+					new config(create_game));
+				network::send_data(response);
 
-		if(state.version != game_config::version) {
-			const int res = gui::show_dialog(disp,NULL,"",
-			                      string_table["version_save_message"],
-			                      gui::YES_NO);
-			if(res == 1)
-				return;
-		}
 
-		loaded_level = state.starting_pos;
-		level_ptr = &loaded_level;
+				// Setup the game
+				int res = maps_menu.selection();
 
-		//make all sides untaken
-		for(config::child_itors i = level_ptr->child_range("side");
-		    i.first != i.second; ++i.first) {
-			(**i.first)["taken"] = "";
-		}
+				if(res == -1)
+					break;
 
-		recorder = replay(state.replay_data);
-
-		//add the replay data under the level data so clients can
-		//receive it
-		level_ptr->children["replay"].clear();
-		level_ptr->add_child("replay") = state.replay_data;
-
-	} else {
-		level_ptr = levels[res];
-	}
-
-	assert(level_ptr != NULL);
-
-	config& level = *level_ptr;
-	state.label = level.values["name"];
-
-	state.scenario = res_to_id[res];
-
-	std::vector<config*>& sides = level.children["side"];
-	std::vector<config*>& possible_sides = cfg.children["multiplayer_side"];
-	if(sides.empty() || possible_sides.empty()) {
-		std::cerr << "no multiplayer sides found\n";
-		return;
-	}
-
-	for(std::vector<config*>::iterator sd = sides.begin();
-	    sd != sides.end(); ++sd) {
-		if((*sd)->values["name"].empty())
-			(*sd)->values["name"] = possible_sides.front()->values["name"];
-		if((*sd)->values["type"].empty())
-			(*sd)->values["type"] = possible_sides.front()->values["type"];
-		if((*sd)->values["recruit"].empty())
-			(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
-		if((*sd)->values["music"].empty())
-			(*sd)->values["music"]=possible_sides.front()->values["music"];
-		if((*sd)->values["recruitment_pattern"].empty())
-			(*sd)->values["recruitment_pattern"] =
-			        possible_sides.front()->values["recruitment_pattern"];
-
-		if((*sd)->values["description"].empty())
-			(*sd)->values["description"] = preferences::login();
-	}
-
-	res = 0;
-	while(size_t(res) != sides.size()) {
-		std::vector<std::string> sides_list;
-		for(std::vector<config*>::iterator sd = sides.begin();
-		    sd != sides.end(); ++sd) {
-			std::stringstream details;
-			details << (*sd)->values["side"] << ","
-					<< (*sd)->values["name"] << ",";
-
-			const std::string& controller = (*sd)->values["controller"];
-			if(controller == "human")
-				details << string_table["human_controlled"];
-			else if(controller == "network")
-				details << string_table["network_controlled"];
-			else
-				details << string_table["ai_controlled"];
-
-			sides_list.push_back(details.str());
-		}
-
-		sides_list.push_back(string_table["start_game"]);
-
-		res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
-		                       gui::MESSAGE,&sides_list);
-
-		if(size_t(res) < sides.size()) {
-			std::vector<std::string> choices;
-
-			for(int n = 0; n != 3; ++n) {
-				for(std::vector<config*>::iterator i = possible_sides.begin();
-				    i != possible_sides.end(); ++i) {
-					std::stringstream choice;
-					choice << (*i)->values["name"] << " - ";
-					switch(n) {
-						case 0: choice << string_table["human_controlled"];
-						        break;
-						case 1: choice << string_table["ai_controlled"];
-						        break;
-						case 2: choice << string_table["network_controlled"];
-						        break;
-						default: assert(false);
+				config loaded_level;
+				if(size_t(res) == options.size()-1) {
+					const std::vector<std::string>& games = get_saves_list();
+					if(games.empty()) {
+						gui::show_dialog(disp,NULL,
+						                 string_table["no_saves_heading"],
+								 string_table["no_saves_message"],
+						                 gui::OK_ONLY);
+						break;
 					}
-						
-					choices.push_back(choice.str());
-				}
-			}
 
-			int result = gui::show_dialog(disp,NULL,"",
-			                               string_table["choose_side"],
-										   gui::MESSAGE,&choices);
-			if(result >= 0) {
-				std::string controller = "network";
-				if(result < int(choices.size())/3) {
-					controller = "human";
-					sides[res]->values["description"] = preferences::login();
-				} else if(result < int(choices.size()/3)*2) {
-					controller = "ai";
-					result -= choices.size()/3;
-					sides[res]->values["description"] =
-					                string_table["ai_controlled"];
+					const int res = gui::show_dialog(disp,NULL,
+			                                 string_table["load_game_heading"],
+			                                 string_table["load_game_message"],
+			                                 gui::OK_CANCEL, &games);
+					if(res == -1)
+						break;
+
+					load_game(units_data,games[res],state);
+
+					if(state.campaign_type != "multiplayer") {
+						gui::show_dialog(disp,NULL,"",
+				                 "This is not a multiplayer save",gui::OK_ONLY);
+						break;
+					}
+
+					if(state.version != game_config::version) {
+						const int res = gui::show_dialog(disp,NULL,"",
+					                        string_table["version_save_message"],
+					                        gui::YES_NO);
+						if(res == 1)
+							break;
+					}
+
+					loaded_level = state.starting_pos;
+					level_ptr = &loaded_level;
+
+					//make all sides untaken
+					for(config::child_itors i = level_ptr->child_range("side");
+					    i.first != i.second; ++i.first) {
+						(**i.first)["taken"] = "";
+					}
+
+					recorder = replay(state.replay_data);
+
+					//add the replay data under the level data so clients can
+					//receive it
+					level_ptr->children["replay"].clear();
+					level_ptr->add_child("replay") = state.replay_data;
+
 				} else {
-					controller = "network";
-					result -= (choices.size()/3)*2;
+					level_ptr = levels[res];
 				}
 
-				sides[res]->values["controller"] = controller;
+				assert(level_ptr != NULL);
 
-				assert(result < int(possible_sides.size()));
+				config& level = *level_ptr;
+				state.label = level.values["name"];
 
-				std::map<std::string,std::string>& values =
-				                                possible_sides[result]->values;
-				sides[res]->values["name"] = values["name"];
-				sides[res]->values["type"] = values["type"];
-				sides[res]->values["recruit"] = values["recruit"];
-				sides[res]->values["recruitment_pattern"] =
-				                          values["recruitment_pattern"];
-				sides[res]->values["music"] = values["music"];
+				state.scenario = res_to_id[res];
+
+				std::vector<config*>& sides = level.children["side"];
+				std::vector<config*>& possible_sides = cfg.children["multiplayer_side"];
+				if(sides.empty() || possible_sides.empty()) {
+					std::cerr << "no multiplayer sides found\n";
+					return -1;
+				}
+	
+				for(std::vector<config*>::iterator sd = sides.begin();
+				    sd != sides.end(); ++sd) {
+					if((*sd)->values["name"].empty())
+						(*sd)->values["name"] = possible_sides.front()->values["name"];
+					if((*sd)->values["type"].empty())
+						(*sd)->values["type"] = possible_sides.front()->values["type"];
+					if((*sd)->values["recruit"].empty())
+						(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
+					if((*sd)->values["music"].empty())
+						(*sd)->values["music"]=possible_sides.front()->values["music"];
+					if((*sd)->values["recruitment_pattern"].empty())
+						(*sd)->values["recruitment_pattern"] =
+					        possible_sides.front()->values["recruitment_pattern"];
+
+					if((*sd)->values["description"].empty())
+						(*sd)->values["description"] = preferences::login();
+				}
+	
+				res = 0;
+				while(size_t(res) != sides.size()) {
+					std::vector<std::string> sides_list;
+					for(std::vector<config*>::iterator sd = sides.begin();
+					    sd != sides.end(); ++sd) {
+						std::stringstream details;
+						details << (*sd)->values["side"] << ","
+							<< (*sd)->values["name"] << ",";
+
+						const std::string& controller = (*sd)->values["controller"];
+						if(controller == "human")
+							details << string_table["human_controlled"];
+						else if(controller == "network")
+							details << string_table["network_controlled"];
+						else
+							details << string_table["ai_controlled"];
+
+						sides_list.push_back(details.str());
+					}
+	
+					sides_list.push_back(string_table["start_game"]);
+	
+					res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
+					                       gui::MESSAGE,&sides_list);
+	
+					if(size_t(res) < sides.size()) {
+						std::vector<std::string> choices;
+	
+						for(int n = 0; n != 3; ++n) {
+							for(std::vector<config*>::iterator i = possible_sides.begin();
+							    i != possible_sides.end(); ++i) {
+								std::stringstream choice;
+								choice << (*i)->values["name"] << " - ";
+								switch(n) {
+									case 0: choice << string_table["human_controlled"];
+									        break;
+									case 1: choice << string_table["ai_controlled"];
+									        break;
+									case 2: choice << string_table["network_controlled"];
+									        break;
+									default: assert(false);
+								}
+							
+								choices.push_back(choice.str());
+							}
+						}
+	
+						int result = gui::show_dialog(disp,NULL,"",
+				                           string_table["choose_side"],
+							   gui::MESSAGE,&choices);
+						if(result >= 0) {
+							std::string controller = "network";
+							if(result < int(choices.size())/3) {
+								controller = "human";
+								sides[res]->values["description"] = preferences::login();
+							} else if(result < int(choices.size()/3)*2) {
+								controller = "ai";
+								result -= choices.size()/3;
+								sides[res]->values["description"] = "";
+							} else {
+								controller = "network";
+								result -= (choices.size()/3)*2;
+							}
+	
+							sides[res]->values["controller"] = controller;
+	
+							assert(result < int(possible_sides.size()));
+	
+							std::map<std::string,std::string>& values =
+					                                possible_sides[result]->values;
+							sides[res]->values["name"] = values["name"];
+							sides[res]->values["type"] = values["type"];
+							sides[res]->values["recruit"] = values["recruit"];
+							sides[res]->values["recruitment_pattern"] =
+					                          values["recruitment_pattern"];
+							sides[res]->values["music"] = values["music"];
+						}
+					}
+				}
+
+				const network::manager net_manager;
+				const network::server_manager server_man(15000,server);
+	
+				const bool network_state = accept_network_connections(disp,level);
+				if(network_state == false)
+					return -1;
+
+				state.starting_pos = level;
+	
+				recorder.set_save_info(state);
+
+				if(!recorder.empty()) {
+					const int res = gui::show_dialog(disp,NULL,
+			               "", string_table["replay_game_message"],
+						   gui::YES_NO);
+					//if yes, then show the replay, otherwise
+					//skip showing the replay
+					if(res == 0) {
+						recorder.set_skip(0);
+					} else {
+						std::cerr << "skipping...\n";
+						recorder.set_skip(-1);
+					}
+				}
+
+				//any replay data isn't meant to hang around under the level,
+				//it was just there to tell clients about the replay data
+				level.children["replay"].clear();
+
+				std::vector<config*> story;
+				play_level(units_data,cfg,&level,disp.video(),state,story);
+				recorder.clear();
+				return -1;
+			} else {
+				rect.x=(disp.x()-width)/2;
+				rect.y=(disp.y()-height)/2;
+				rect.w=width;
+				rect.h=height;
+				SDL_Surface* dialog_bg=get_surface_portion(disp.video().getSurface(), rect);
+				gui::show_dialog(disp,NULL,"",
+				                 "You must enter a name.",gui::OK_ONLY);
+
+				SDL_BlitSurface(dialog_bg, NULL, disp.video().getSurface(), &rect);
+				SDL_FreeSurface(dialog_bg);
+				update_whole_screen();
 			}
 		}
-	}
 
-	const network::manager net_manager;
-	const network::server_manager server_man(15000,server);
-
-	const bool network_state = accept_network_connections(disp,level);
-	if(network_state == false)
-		return;
-
-	state.starting_pos = level;
-
-	recorder.set_save_info(state);
-
-	if(!recorder.empty()) {
-		const int res = gui::show_dialog(disp,NULL,
-               "", string_table["replay_game_message"],
-			   gui::YES_NO);
-		//if yes, then show the replay, otherwise
-		//skip showing the replay
-		if(res == 0) {
-			recorder.set_skip(0);
-		} else {
-			std::cerr << "skipping...\n";
-			recorder.set_skip(-1);
+		if(fog_game.process(mousex,mousey,left_button)) 
+		{
 		}
+
+		if(shroud_game.process(mousex,mousey,left_button)) 
+		{
+		}
+
+		name_entry.process();
+
+		//Game turns are 20 to 99
+		//FIXME: Should never be a - number, but it is sometimes
+		int check_turns=20+(int)(79*turns_slider.process(mousex,mousey,left_button));		
+		if(abs(check_turns) == check_turns)
+			new_turns=check_turns;
+		if(new_turns != cur_turns) {
+			cur_turns = new_turns;
+			rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+			rect.y = (disp.y()-height)/2+83;
+			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+			rect.h = 12;
+			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+			sprintf(buf,"Turns: %d", cur_turns);
+			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+			                buf,rect.x,rect.y);
+			update_rect(rect);
+		}
+
+		//Villages can produce between 1 and 10 gold a turn
+		//FIXME: Should never be a - number, but it is sometimes
+		int check_villagegold=1+(int)(9*villagegold_slider.process(mousex,mousey,left_button));		
+		if(abs(check_villagegold) == check_villagegold)
+			new_villagegold=check_villagegold;
+		if(new_villagegold != cur_villagegold) {
+			cur_villagegold = new_villagegold;
+			rect.x = (disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19;
+			rect.y = (disp.y()-height)/2+130;
+			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+(int)(width*0.4)+maps_menu.width()+19)-10;
+			rect.h = 12;
+			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
+			sprintf(buf,"Village Gold: %d", cur_villagegold);
+			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+			                buf,rect.x,rect.y);
+			update_rect(rect);
+		}
+		
+		if(maps_menu.selection() != cur_selection) {
+			cur_selection = maps_menu.selection();
+			if(size_t(maps_menu.selection()) != options.size()-1) {
+				level_ptr = levels[maps_menu.selection()];
+
+				gamemap map(cfg,read_file("data/maps/" + level_ptr->values["map"]));
+
+				SDL_Surface *mini = image::getMinimap(disp.video(),
+							175,175, map);
+				rect.x = ((disp.x()-width)/2+10)+20;
+				rect.y = (disp.y()-height)/2+80;
+				rect.w = 175;
+				rect.h = 175;
+				SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
+				SDL_FreeSurface(mini);
+				update_rect(rect);
+			}else{
+				//TODO: Load some other non-minimap
+				//      image, ie a floppy disk
+			}
+		}
+
+		events::pump();
+		disp.video().flip();
+		SDL_Delay(20);
 	}
-
-	//any replay data isn't meant to hang around under the level,
-	//it was just there to tell clients about the replay data
-	level.children["replay"].clear();
-
-	std::vector<config*> story;
-	play_level(units_data,cfg,&level,disp.video(),state,story);
-	recorder.clear();
+	return -1;
 }

@@ -30,7 +30,7 @@ struct network_game_manager {
 //game will accept connections from foreign hosts. Otherwise it'll
 //just use existing network connections for players, or the game
 //is an entirely local game
-void play_multiplayer(display& disp, game_data& units_data,
+int play_multiplayer(display& disp, game_data& units_data,
                       config cfg, game_state& state, bool server=true);
 
 #endif
