@@ -69,6 +69,10 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	tup_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.top_button_y);
 	tdown_.set_xy(gui.mapx() + size_specs_.button_x, size_specs_.bot_button_y);
 
+	// Clear the current hotkeys. Alot of hotkeys are already set
+	// through other configuration files (e.g. english.cfg) and we need
+	// to clear these or they will overlap.
+	hotkey::get_hotkeys().clear();
 	hotkey::add_hotkeys(theme_, true);
 }
 
@@ -473,10 +477,7 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 						get_tiles(map_, hex, brush_.selected_brush_size());
 					for(std::vector<gamemap::location>::const_iterator it = locs.begin();
 					    it != locs.end(); ++it) {
-						const gamemap::TERRAIN tmp_terrain = map_[it->x][it->y];
-						if(palette_.selected_terrain() != tmp_terrain) {
-							draw_terrain(palette_.selected_terrain(), *it);
-						}
+						draw_terrain(palette_.selected_terrain(), *it);
 					}
 
 				}
@@ -672,8 +673,6 @@ void map_editor::main_loop() {
 		gui_.draw(false);
 		palette_.draw();
 		brush_.draw();
-		//if(drawterrainpalette(gui_, tstart_, selected_terrain_, map_, size_specs_) == false)
-		//	scroll_palette_down();
 
 		if(tup_.process(mousex,mousey,l_button_down)) {
 			palette_.scroll_up();
