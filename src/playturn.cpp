@@ -295,6 +295,24 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 		gui_.highlight_hex(new_hex);
 
+
+		//see if we should show the normal cursor, the movement cursor, or
+		//the attack cursor
+
+		const unit_map::const_iterator selected_unit = units_.find(selected_hex_);
+		const unit_map::const_iterator mouseover_unit = units_.find(new_hex);
+		if(selected_unit != units_.end() && current_paths_.routes.count(new_hex)) {
+			if(mouseover_unit == units_.end()) {
+				cursor::set(cursor::MOVE);
+			} else if(current_team.is_enemy(mouseover_unit->second.side())) {
+				cursor::set(cursor::ATTACK);
+			} else {
+				cursor::set(cursor::NORMAL);
+			}
+		} else {
+			cursor::set(cursor::NORMAL);
+		}
+
 		if(enemy_paths_) {
 			enemy_paths_ = false;
 			current_paths_ = paths();

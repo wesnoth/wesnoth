@@ -394,6 +394,11 @@ void set_theme(const std::string& theme)
 	}
 }
 
+bool use_colour_cursors()
+{
+	return false;
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

@@ -17,6 +17,7 @@
 #include "actions.hpp"
 #include "ai.hpp"
 #include "config.hpp"
+#include "cursor.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
 #include "events.hpp"
@@ -210,6 +211,7 @@ int play_game(int argc, char** argv)
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
 	const events::event_context main_event_context;
+	const cursor::manager cursor_manager;
 
 	std::cerr << "initialized managers\n";
 
@@ -336,6 +338,8 @@ int play_game(int argc, char** argv)
 			          << resolution.second << "x16 is not supported\n";
 			return 0;
 		}
+
+		cursor::set(cursor::NORMAL);
 	} else {
 		video.make_fake();
 	}

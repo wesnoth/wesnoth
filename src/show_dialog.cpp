@@ -12,6 +12,7 @@
 */
 
 #include "config.hpp"
+#include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "image.hpp"
@@ -37,8 +38,15 @@ namespace gui {
 
 bool in_dialog() { return is_in_dialog; }
 
-dialog_manager::dialog_manager() : reset_to(is_in_dialog) {is_in_dialog = true;}
-dialog_manager::~dialog_manager() { is_in_dialog = reset_to; }
+dialog_manager::dialog_manager() : cursor::setter(cursor::NORMAL), reset_to(is_in_dialog)
+{
+	is_in_dialog = true;
+}
+
+dialog_manager::~dialog_manager()
+{
+	is_in_dialog = reset_to;
+}
 
 void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style)
 {

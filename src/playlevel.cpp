@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "cursor.hpp"
 #include "events.hpp"
 #include "game_events.hpp"
 #include "hotkeys.hpp"
@@ -416,6 +417,7 @@ redo_turn:
 					gui.recalculate_minimap();
 
 					const hotkey::basic_handler key_events_handler(gui);
+					const cursor::setter cursor_setter(cursor::WAIT);
 
 					const int start_command = recorder.ncommands();
 

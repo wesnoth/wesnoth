@@ -82,6 +82,8 @@ namespace preferences {
 	void set_ask_delete_saves(bool value);
 	bool ask_delete_saves();
 
+	bool use_colour_cursors();
+
 	std::string client_type();
 
 	void set_theme(const std::string& theme);

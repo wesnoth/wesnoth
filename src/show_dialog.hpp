@@ -15,6 +15,7 @@
 #define SHOW_DIALOG_HPP_INCLUDED
 
 #include "config.hpp"
+#include "cursor.hpp"
 #include "display.hpp"
 #include "network.hpp"
 #include "unit.hpp"
@@ -30,7 +31,7 @@ namespace gui
 
 bool in_dialog();
 
-struct dialog_manager {
+struct dialog_manager : private cursor::setter {
 	dialog_manager();
 	~dialog_manager();
 
