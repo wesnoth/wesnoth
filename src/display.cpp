@@ -2153,7 +2153,7 @@ const theme& display::get_theme() const
 	return theme_;
 }
 
-const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pressed)
+const theme::menu* display::menu_pressed()
 {
 
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {

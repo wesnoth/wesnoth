@@ -158,7 +158,7 @@ void turn_info::turn_slice()
 
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,true);
+	const theme::menu* const m = gui_.menu_pressed();
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
 		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);

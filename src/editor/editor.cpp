@@ -1201,8 +1201,7 @@ void map_editor::main_loop() {
 			update_mouse_over_hexes(cur_hex);
 			last_brush_size = brush_.selected_brush_size();
 		}
-		const theme::menu* const m = gui_.menu_pressed(mousex, mousey,
-													   mouse_flags & SDL_BUTTON_LMASK);
+		const theme::menu* const m = gui_.menu_pressed();
 		if (m != NULL) {
 			const SDL_Rect& menu_loc = m->location(gui_.screen_area());
 			const int x = menu_loc.x + 1;

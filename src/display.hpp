@@ -302,7 +302,7 @@ public:
 
 	const theme& get_theme() const;
 
-	const theme::menu* menu_pressed(int mousex, int mousey, bool button_pressed);
+	const theme::menu* menu_pressed();
 
 	void add_observer(const std::string& name);
 	void remove_observer(const std::string& name);
