@@ -585,5 +585,7 @@ install-exec-hook:
 
 uninstall-hook:
 	rm -rf $(localstatedir)/wesnothd/
-	
+else
+install-exec-hook:
+uninstall-hook:
 endif
