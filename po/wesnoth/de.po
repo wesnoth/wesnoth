@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
-"PO-Revision-Date: 2004-12-20 21:53+0100\n"
-"Last-Translator: Andre Schmidt <andre1969@gmx.de>\n"
+"PO-Revision-Date: 2004-12-21 00:07+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7595,7 +7595,6 @@ msgid "+Miscellaneous"
 msgstr "+Verschiedenes"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
 msgstr "+Internationalisierungsleitung"
 
@@ -7944,19 +7943,17 @@ msgid "The game could not be saved"
 msgstr "Der Spielstand konnte nicht gespeichert werden"
 
 #: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Der Spielstand konnte nicht gespeichert werden"
+msgstr "Der Spielstand konnte nicht geladen werden:"
 
+# klingt doof
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Dateifehler beim Einlesen des Spieles."
+msgstr "Fehler beim spielen des Spieles:"
 
 #: src/game.cpp:172 src/game.cpp:1292
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Der Spielstand konnte nicht gespeichert werden"
+msgstr "Die Karte konnte nicht geladen werden:"
 
 #: src/game.cpp:193
 msgid "Do you want to save your game?"
@@ -7964,7 +7961,7 @@ msgstr "Möchtet Ihr Euren Spielstand abspeichern?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Unbekanntes Szenario: '"
 
 # Vielleicht "Der Kampf um Wesnoth"
 #: src/game.cpp:603
@@ -7980,9 +7977,8 @@ msgstr ""
 "Spielstand laden?"
 
 #: src/game.cpp:828 src/game.cpp:831
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt."
+msgstr "Die Datei, die Ihr laden wolltet, ist beschädigt: '"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
@@ -8174,12 +8170,11 @@ msgstr "Wählt die gewünschte Sprache"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Fehler beim Laden der Konfigurationsdateien: '"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Das Spiel ist vorbei."
+msgstr "' (Das Spiel wird nun beendet)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -8453,7 +8448,7 @@ msgstr "Ära"
 
 #: src/multiplayer.cpp:343
 msgid "You must enter a name."
-msgstr ""
+msgstr "Ihr müsst einen Namen eingeben."
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -8666,7 +8661,7 @@ msgstr "Verfügbare Plätze"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<Keine Partien offen>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
