@@ -273,7 +273,6 @@ std::string default_map_generator::create_map(const std::vector<std::string>& ar
 
 std::string default_map_generator::generate_map(const std::vector<std::string>& args, std::map<gamemap::location,std::string>* labels)
 {
-	const size_t hill_size = (hill_size_*width_*height_)/(default_width_*default_height_);
 	size_t iterations = (iterations_*width_*height_)/(default_width_*default_height_);
 	size_t island_size = 0;
 	size_t island_off_center = 0;
