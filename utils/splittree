@@ -21,7 +21,16 @@ dirs_mp=multiplayer
 dirs_locales=translations
 dirs_junk='scenario-test.cfg convert.pl README man'
 
-for p in music sound httt ei sotbe tdh trow devel editor tutorial mp locales junk
+# must be last in $parts !
+dirs_coredata='data images'
+
+parts="sound httt ei sotbe tdh trow devel editor tutorial mp junk coredata"
+if [ "x$dst" != "x--zip" ]
+then
+    parts="music locales $parts"
+fi
+
+for p in $parts
 do
     [ "x$dst" = "x--zip" ] || rm -rf $dst/wesnoth-$p
     eval dirs=\${dirs_$p}
@@ -32,7 +41,8 @@ do
     done
     if [ "x$dst" = "x--zip" ]
     then
-	(cd $src && zip -Drum wesnoth-$p.zip $(find $findexpr))
+	rm -f $src/wesnoth-$p.zip
+	(cd $src && zip -Drm wesnoth-$p.zip $(find $findexpr))
     else
 	for d in $(cd $src && find $findexpr)
 	do
