@@ -1,7 +1,8 @@
 CVS HEAD:
+ * added alpha channel
  * new tutorial
  * theme update
- * more unit graphics and animations
+ * more unit graphics, animations, attack icons
  * resting implemented: units that don't do anything for a turn get few hitpoints back
  * new translations:
    * brazilian
@@ -9,8 +10,9 @@ CVS HEAD:
  * you can now actually find the flaming sword
  * fixed illegal memory access
  * fixed bug where Elf wouldn't do anything in 'Mages and Elves' scenario
+ * fixed flop() to work properly
+ * workaround to SDL bug
  * removed definition of log2 which clashes with some compilers
- * added alpha channel
 
 Version 0.6.99.3:
  * data compression for network games
