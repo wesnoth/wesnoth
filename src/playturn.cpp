@@ -1045,9 +1045,14 @@ void turn_info::recruit()
 		}
 
 		const unit_type& type = u_type->second;
+
+		//display units that we can't afford to recruit in red
+		const std::string prefix = (type.cost() > current_team.gold() ? "#" : "");
+
 		std::stringstream description;
 
-		description << type.language_name() << "," << type.cost() << " gold";
+		description << prefix << type.language_name() << ","
+		            << prefix << type.cost() << " gold";
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
 	}
