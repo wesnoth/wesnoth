@@ -200,6 +200,11 @@ int main()
 					e.disconnect();
 				}
 			}
+
+			continue;
+		} catch(config::error& e) {
+			std::cerr << "error in received data: " << e.message << "\n";
+			continue;
 		}
 
 		SDL_Delay(20);
