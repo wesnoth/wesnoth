@@ -435,6 +435,15 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 	                               current_paths_.routes.find(hex);
 	unit_map::iterator enemy = units_.find(hex);
 
+	//deselect the unit if it's an invisible enemy
+	if(enemy != units_.end()){
+		if(current_team.is_enemy(enemy->second.side()) &&
+				enemy->second.invisible(map_.underlying_terrain(map_[enemy->first.x][enemy->first.y]),
+				status_.get_time_of_day().lawful_bonus,enemy->first,units_,teams_)) {
+			enemy = units_.end();
+		}
+	}
+
 	//see if we're trying to attack an enemy
 	if(route != current_paths_.routes.end() && enemy != units_.end() &&
 	   hex != selected_hex_ && !browse_ &&

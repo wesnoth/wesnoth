@@ -580,7 +580,7 @@ void ai::do_move()
 			const unit_map::iterator enemy = units_.find(adj[n]);
 			if(enemy != units_.end() &&
 			   current_team().is_enemy(enemy->second.side()) &&
-			   !enemy->second.invisible(map_[enemy->first.x][enemy->first.y],
+			   !enemy->second.invisible(map_.underlying_terrain(map_[enemy->first.x][enemy->first.y]),
 					state_.get_time_of_day().lawful_bonus,enemy->first,
 					units_,teams_)) {
 				target = adj[n];

@@ -586,7 +586,7 @@ void display::draw_sidebar()
 		//if unit is not fogged and not an invisible enemy
 		if(i != units_.end() && !fogged(i->first.x,i->first.y) &&
 				(!teams_[viewing_team()].is_enemy(i->second.side()) ||
-				!i->second.invisible(map_[i->first.x][i->first.y],
+				!i->second.invisible(map_.underlying_terrain(map_[i->first.x][i->first.y]),
 					status_.get_time_of_day().lawful_bonus,
 					i->first,units_,teams_))) {
 			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
