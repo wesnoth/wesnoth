@@ -338,6 +338,8 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
+	void refresh_game_cfg();
+
 	void download_campaigns();
 	void upload_campaign(const std::string& campaign, network::connection sock);
 	void delete_campaign(const std::string& campaign, network::connection sock);
@@ -370,7 +372,7 @@ private:
 	std::string loaded_game_;
 	bool loaded_game_show_replay_;
 
-	preproc_map defines_map_;
+	preproc_map defines_map_, old_defines_map_;
 };
 
 game_controller::game_controller(int argc, char** argv, bool use_sound)
@@ -576,27 +578,14 @@ bool game_controller::init_config()
 	if(multiplayer_mode_) {
 		defines_map_["MULTIPLAYER"] = preproc_define();
 	}
-	std::vector<line_source> line_src;
 
-	try {
-		log_scope("loading config");
-		read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
-	} catch(config::error& e) {
-		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
-		                 gui::MESSAGE);
-		throw e;
-	}
+	refresh_game_cfg();
 
 	game_config::load_config(game_config_.child("game_config"));
 
 	hotkey::load_hotkeys(game_config_);
 
 	paths_manager_.set_paths(game_config_);
-
-	const config* const units = game_config_.child("units");
-	if(units != NULL) {
-		units_data_.set_config(*units);
-	}
 
 	return true;
 }
@@ -1239,9 +1228,7 @@ bool game_controller::play_multiplayer()
 	
 	try {
 		defines_map_[state_.campaign_define] = preproc_define();
-		std::vector<line_source> line_src;
-		config game_config;
-		read_game_cfg(defines_map_,line_src,game_config,use_caching_);
+		refresh_game_cfg();
 		
 		if(res >= 2) {
 			std::vector<std::string> chat;
@@ -1250,10 +1237,10 @@ bool game_controller::play_multiplayer()
 			const std::string controller = (res == 2 ? "network" : (res == 3 ? "human" : "ai"));
 			const bool is_server = res == 2;
 
-			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config,state_,is_server,controller);
+			multiplayer_game_setup_dialog mp_dialog(disp(),units_data_,game_config_,state_,is_server,controller);
 			lobby::RESULT res = lobby::CONTINUE;
 			while(res == lobby::CONTINUE) {
-				res = lobby::enter(disp(),game_data,game_config,&mp_dialog,chat);
+				res = lobby::enter(disp(),game_data,game_config_,&mp_dialog,chat);
 			}
 
 			if(res == lobby::CREATE) {
@@ -1265,7 +1252,7 @@ bool game_controller::play_multiplayer()
 				host = preferences::official_network_host();
 			}
 
-			play_multiplayer_client(disp(),units_data_,game_config,state_,host);
+			play_multiplayer_client(disp(),units_data_,game_config_,state_,host);
 		}
 	} catch(gamestatus::load_game_failed& e) {
 		gui::show_dialog(disp(),NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
@@ -1331,6 +1318,28 @@ bool game_controller::change_language()
 	return false;
 }
 
+void game_controller::refresh_game_cfg()
+{
+	try {
+		if(old_defines_map_.empty() || defines_map_ != old_defines_map_) {
+			std::vector<line_source> line_src;
+			read_game_cfg(defines_map_,line_src,game_config_,use_caching_);
+
+			units_data_.clear();
+
+			const config* const units = game_config_.child("units");
+			if(units != NULL) {
+				units_data_.set_config(*units);
+			}
+
+			old_defines_map_ = defines_map_;
+		}
+	} catch(config::error& e) {
+		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
+		throw e;
+	}
+}
+
 void game_controller::play_game()
 {
 	if(state_.campaign_define.empty() == false) {
@@ -1340,31 +1349,13 @@ void game_controller::play_game()
 	if(defines_map_.count("NORMAL")) {
 		defines_map_["MEDIUM"] = preproc_define();
 	}
-
-	//make a new game config item based on the difficulty level
-	std::vector<line_source> line_src;
-	config game_config;
 	
-	try {
-		read_game_cfg(defines_map_,line_src,game_config,use_caching_);
-	} catch(config::error& e) {
-		gui::show_dialog(disp(),NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)", gui::MESSAGE);
-		throw e;
-	}
+	refresh_game_cfg();
 
-	const binary_paths_manager bin_paths_manager(game_config);
-
-	const config* const units = game_config.child("units");
-	if(units == NULL) {
-		std::cerr << "ERROR: Could not find game configuration files\n";
-		std::cerr << game_config.write();
-		return;
-	}
-
-	game_data units_data(*units);
+	const binary_paths_manager bin_paths_manager(game_config_);
 
 	try {
-		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config,units_data,video_);
+		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
 		if(result == VICTORY) {
 			the_end(disp());
 			about::show_about(disp());

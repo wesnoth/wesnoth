@@ -406,9 +406,8 @@ void delete_game(const std::string& name)
 	remove((get_saves_dir() + "/" + modified_name).c_str());
 }
 
-void load_game(const game_data& data, const std::string& name, game_state& state)
+void read_save_file(const std::string& name, config& cfg)
 {
-	log_scope("load_game");
 	std::string modified_name = name;
 	std::replace(modified_name.begin(),modified_name.end(),' ','_');
 
@@ -418,12 +417,21 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 		file_data = read_file(get_saves_dir() + "/" + name);
 	}
 
-	config cfg(file_data);
+	cfg.clear();
+	cfg.read(file_data);
 
 	if(cfg.empty()) {
 		std::cerr << "Could not parse file data into config\n";
 		throw gamestatus::load_game_failed();
 	}
+}
+
+void load_game(const game_data& data, const std::string& name, game_state& state)
+{
+	log_scope("load_game");
+
+	config cfg;
+	read_save_file(name,cfg);
 	
 	state = read_game(data,&cfg);
 }
