@@ -13,7 +13,6 @@
 
 #include "global.hpp"
 
-#include "game.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"

@@ -135,7 +135,6 @@ wesnoth_SOURCES = about.cpp \
 		  events.hpp \
 		  filesystem.hpp \
 		  font.hpp \
-		  game.hpp \
 		  game_config.hpp \
 		  game_events.hpp \
 		  gamestatus.hpp \

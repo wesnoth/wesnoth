@@ -19,7 +19,6 @@
 #include <map>
 
 #include "config.hpp"
-#include "game.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"

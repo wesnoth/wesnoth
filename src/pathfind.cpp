@@ -13,7 +13,6 @@ See the COPYING file for more details.
 
 #include "global.hpp"
 
-#include "game.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
