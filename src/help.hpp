@@ -15,6 +15,7 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "map.hpp"
 #include "sdl_utils.hpp"
 #include "unit_types.hpp"
 #include "widgets/button.hpp"
@@ -31,9 +32,13 @@
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config, game_data *game_info);
+	help_manager(const config *game_config, game_data *game_info, gamemap *map);
 	~help_manager();
 };
+
+/// Generate the help contents from the configurations given to the
+/// manager.
+void generate_contents();
 
 struct section;
 
@@ -86,6 +91,12 @@ public:
 	bool operator()(const section *s) { return s != NULL && s->id == id_; }
 private:
 	const std::string id_;
+};
+
+/// To be used as a function object when sorting topic lists on the title.
+class title_less {
+public:
+	bool operator()(const topic &t1, const topic &t2) { return t1.title < t2.title; }
 };
 
 struct delete_section {
@@ -459,6 +470,9 @@ std::string to_lower(const std::string &s);
 
 /// Return a copy of s with the first letter capitalized.
 std::string cap(const std::string &s);
+
+/// Prepend all chars with meaning inside attributes with a backslash.
+std::string escape(const std::string &s);
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.

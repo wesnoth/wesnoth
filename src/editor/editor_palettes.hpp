@@ -68,9 +68,6 @@ public:
 	/// changed.
 	void terrain_palette::adjust_size();
 
-	//void bg_backup();
-	//void bg_restore();
-
 private:
 	void draw_old(bool);
 	/// To be called when a mouse click occurs. Check if the coordinates
@@ -99,7 +96,6 @@ private:
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;
 	size_t nterrains_, terrain_start_;
-	//surface_restorer restorer_;
 };
 
 /// A bar where the brush is drawin

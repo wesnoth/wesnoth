@@ -18,6 +18,7 @@
 
 #include <string>
 #include <utility>
+#include <set>
 
 namespace preferences {
 
@@ -108,6 +109,9 @@ namespace preferences {
 
 	bool show_haloes();
 	void set_show_haloes(bool value);
+
+	std::set<std::string> &encountered_units();
+	std::set<std::string> &encountered_terrains();
 
 	enum CACHE_SAVES_METHOD { CACHE_SAVES_ASK, CACHE_SAVES_NEVER, CACHE_SAVES_ALWAYS };
 	CACHE_SAVES_METHOD cache_saves();

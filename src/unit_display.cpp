@@ -34,8 +34,10 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const int src_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_height_adjust() * disp.zoom());
 	const int dst_height_adjust = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_height_adjust() * disp.zoom());
 
-	const double src_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(src_terrain).unit_submerge());
-	const double dst_submerge = u.is_flying() ? 0 : int(map.get_terrain_info(dst_terrain).unit_submerge());
+	const double src_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(src_terrain).unit_submerge();
+	const double dst_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(dst_terrain).unit_submerge();
+
+	std::cerr << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
 
 	const gamemap::TERRAIN terrain = map.get_terrain(b);
 	const int nsteps = disp.turbo() ? 3 : 10*u.movement_cost(map,terrain);
@@ -113,7 +115,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		}
 
 		const int height_adjust = src_height_adjust + (dst_height_adjust-src_height_adjust)*(i/nsteps);
-		const double submerge = src_submerge + (dst_submerge-src_submerge)*(i/nsteps);
+		const double submerge = src_submerge + (dst_submerge-src_submerge)*(double(i)/double(nsteps));
 
 		const int xpos = static_cast<int>(xloc);
 		const int ypos = static_cast<int>(yloc) - height_adjust;

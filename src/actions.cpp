@@ -1278,7 +1278,9 @@ void advance_unit(const game_data& info,
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
 
 	statistics::advance_unit(new_unit);
-	
+	preferences::encountered_units().insert(new_unit.type().name());
+	std::cout << "Added '" << new_unit.type().name() << "' to encountered units" << std::endl;
+
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 }
@@ -1410,7 +1412,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 
 		//we clear one past the edge of the board, so that the half-hexes
 		//at the edge can also be cleared of fog/shroud
-		if(map.on_board(adj[i]) || map.on_board(adj[0])) {
+		if(map.on_board(adj[i]) || map.on_board(loc)) {
 			const bool res = tm.clear_shroud(adj[i].x,adj[i].y) ||
 								tm.clear_fog(adj[i].x,adj[i].y);
 

@@ -1,15 +1,21 @@
-CVS HEAD:
+Version 0.8.2:
  * new and improved graphics: 
    * canyons
    * signpost
+   * grassland
  * improved sound quality
- * new commands: clear, w, wq, q, debug, n
- * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
+ * improved in-game help
+ * new "vi" commands: clear, w, wq, q, debug, n
+ * new tutorial
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Black Flag
+   * Silent Forest
  * storyline fixes to 'The Eastern Invasion' campaign
  * scenario balancing for 'The Eastern Invasion' campaign:
-   * Weldyn under attack
+   * Weldyn Under Attack
    * The Crossing
    * Mal-Ravanals Capital
+   * The Arena
  * scenario balancing for 'The Rise of Wesnoth' campaign:
    * Temple of the Deep
    * Lizard Beach
@@ -33,15 +39,15 @@ CVS HEAD:
  * new units
    * Drake Hatchling
    * Drake Warmage
+   * Great Troll
    * Skeletal Dragon
    * Troll Hero
    * Orcish Leader
    * Orcish Sovereign
  * multiplayer improvements:
    * 'Great War' era
-   * limit to username lenght
+   * limit to username length
    * banning for multiplayer server games
- * Scenario balancing for most of 'Son of the Black Eye' scenarios
  * language fixes and polishing (english)
  * support for multi-animation attacks
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
@@ -55,7 +61,6 @@ CVS HEAD:
  * fixed segfault when a [story] background image was not found
  * fixed narrator messages not being displayed sometimes
  * fixed autoconf macro for checking OGG support in SDL_mixer (it depended on private symbols not always included by distributions)
- * fixed game segfaulting when a message with no speaker is issued
  * fixed markovian name generation not playing well with UTF-8 names
  * fixed map border not getting changed when using [terrain] to change terrain (#9840)
  * fixed extraneous dots path (#9903)
@@ -64,10 +69,11 @@ CVS HEAD:
  * fixed bug with exiting caves in 'The Eastern Invasion: Captured' scenario
  * fixed bugs in 'The Eastern Invasion: Evacuation' scenario
  * fixed holy water in 'Heir to the Throne: Valley of Death' scenario (#9930)
- * fixed a bug where a unit moving with [move_unit_fake] segfaulted the game
  * fixed problems with cache invalidation
  * fixed file descriptor leak
  * fixed 'gender' not working with move_unit_fake
+ * fixed grüü losing experience when joining
+ * fixed units moving through water not being submerged while moving
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * limited length of schema items in compressed WML to make a DoS attack harder to perform 
@@ -142,7 +148,7 @@ Version 0.8.1:
    * implemented feature to tell observers when a new player has arrived in the lobby
    * disabled observers from setting labels
    * playername checks, stripping spaces at the end of name
-   * limited maximum lenght of observer messages
+   * limited maximum length of observer messages
    * added server commands: msg, kick, ban, unban, status, metrics
  * language fixes and polishing (english)
  * updated sample translation

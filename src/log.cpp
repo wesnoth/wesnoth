@@ -13,8 +13,6 @@
 
 #include "log.hpp"
 
-#include <unistd.h>
-
 #include <sstream>
 
 int scope_logger::indent = 0;
