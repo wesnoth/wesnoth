@@ -26,10 +26,6 @@
 #include <iostream>
 #include <sstream>
 
-namespace lg {
-log_domain engine("engine");
-}
-
 #define LOG_UT lg::info(lg::engine)
 
 namespace {

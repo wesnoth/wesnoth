@@ -38,7 +38,7 @@ public:
 };
 
 extern logger err, warn, info;
-extern log_domain general, ai, config, display, network;
+extern log_domain general, ai, config, display, engine, network;
 
 class scope_logger
 {

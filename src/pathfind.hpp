@@ -15,9 +15,10 @@
 
 #include "array.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 #include "map.hpp"
-#include "unit.hpp"
 #include "pathutils.hpp"
+#include "unit.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -26,6 +27,8 @@
 #include <map>
 #include <list>
 #include <vector>
+
+#define LOG_PF lg::info(lg::engine)
 
 //this module contains various pathfinding functions and utilities.
 
@@ -160,7 +163,7 @@ paths::route a_star_search(const gamemap::location& src,
                            const gamemap::location& dst, double stop_at, T obj,
                            const std::set<gamemap::location>* teleports=NULL)
 {
-	std::cerr  << "a* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
+	LOG_PF << "a* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
 	using namespace detail;
 	typedef gamemap::location location;
 
@@ -199,7 +202,7 @@ paths::route a_star_search(const gamemap::location& src,
 
 			//if we have found a solution
 			if(locs[j] == dst) {
-				std::cerr << "found solution; calculating it...\n";
+				LOG_PF << "found solution; calculating it...\n";
 				paths::route rt;
 
 				for(location loc = lowest->second.loc; loc.valid(); ) {
@@ -219,7 +222,7 @@ paths::route a_star_search(const gamemap::location& src,
 
 				assert(rt.steps.front() == src);
 
-				std::cerr  << "exiting a* search (solved)\n";
+				LOG_PF << "exiting a* search (solved)\n";
 
 				return rt;
 			}
@@ -268,10 +271,12 @@ paths::route a_star_search(const gamemap::location& src,
 		}
 	}
 
-	std::cerr  << "aborted a* search\n";
+	LOG_PF << "aborted a* search\n";
 	paths::route val;
 	val.move_left = 100000;
 	return val;
 }
+
+#undef LOG_PF
 
 #endif
