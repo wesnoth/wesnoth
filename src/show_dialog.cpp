@@ -176,8 +176,8 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 		return;
 	}
 
-	SDL_Rect rect = {x, y, w, h};
-	SDL_FillRect(target,&rect,SDL_MapRGBA(target->format,r,g,b,Uint8(alpha*255.0)));
+	SDL_Rect rect = {x,y,w,h};
+	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
 } //end namespace gui

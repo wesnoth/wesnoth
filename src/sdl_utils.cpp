@@ -18,6 +18,7 @@
 #include "game.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
+#include "show_dialog.hpp"
 #include "util.hpp"
 #include "video.hpp"
 
@@ -63,7 +64,7 @@ int sdl_add_ref(SDL_Surface* surface)
 		return 0;
 }
 
-void draw_unit_ellipse(SDL_Surface* target, Uint16 colour, const SDL_Rect& clip, int unitx, int unity, SDL_Surface* behind, bool image_reverse, ELLIPSE_HALF half)
+void draw_unit_ellipse(SDL_Surface* target, Uint16 colour, Uint8 alpha, const SDL_Rect& clip, int unitx, int unity, SDL_Surface* behind, bool image_reverse, ELLIPSE_HALF half)
 {
 	const int xloc = unitx + (behind->w*15)/100;
 	const int yloc = unity + (behind->h*7)/10;
@@ -94,7 +95,7 @@ void draw_unit_ellipse(SDL_Surface* target, Uint16 colour, const SDL_Rect& clip,
 			if(half == ELLIPSE_TOP && xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
 				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h) {
 				SDL_Rect rect = {xit,yit,1,2};
-				SDL_FillRect(target,&rect,colour);
+				fill_rect_alpha(rect,colour,alpha,target);
 			}
 
 			yit = yloc+height/2+y;
@@ -102,7 +103,7 @@ void draw_unit_ellipse(SDL_Surface* target, Uint16 colour, const SDL_Rect& clip,
 			if(half == ELLIPSE_BOTTOM && xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
 				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h) {
 				SDL_Rect rect = {xit,yit,1,2};
-				SDL_FillRect(target,&rect,colour);
+				fill_rect_alpha(rect,colour,alpha,target);
 			}
 		}
 
@@ -485,6 +486,27 @@ SDL_Surface* flop_surface(SDL_Surface* surface)
 	}
 
 	return clone_surface(surf);
+}
+
+void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, SDL_Surface* target)
+{
+	if(alpha == SDL_ALPHA_OPAQUE) {
+		SDL_FillRect(target,&rect,colour);
+		return;
+	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
+		return;
+	}
+
+	scoped_sdl_surface tmp(SDL_CreateRGBSurface(0,rect.w,rect.h,target->format->BitsPerPixel,
+	                                            target->format->Rmask,target->format->Gmask,target->format->Bmask,0));
+	if(tmp == NULL) {
+		return;
+	}
+
+	SDL_Rect r = {0,0,rect.w,rect.h};
+	SDL_FillRect(tmp,&r,colour);
+	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
+	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)

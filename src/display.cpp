@@ -1132,26 +1132,28 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
 	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
-	if(loc != hiddenUnit_) {
-		if(loc == advancingUnit_ && it != units_.end()) {
-			//the unit is advancing - set the advancing colour to white if it's a
-			//non-chaotic unit, otherwise black
-			blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
-			                                        rgb(16,16,16) : rgb(255,255,255);
-			highlight_ratio = advancingAmount_;
-		} else if(it->second.poisoned() && highlight_ratio == 1.0) {
-			//the unit is poisoned - draw with a green hue
-			blend_with = rgb(0,255,0);
-			highlight_ratio = 0.75;
-		}
+	if(loc == advancingUnit_ && it != units_.end()) {
+		//the unit is advancing - set the advancing colour to white if it's a
+		//non-chaotic unit, otherwise black
+		blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
+		                                        rgb(16,16,16) : rgb(255,255,255);
+		highlight_ratio = advancingAmount_;
+	} else if(it->second.poisoned() && highlight_ratio == 1.0) {
+		//the unit is poisoned - draw with a green hue
+		blend_with = rgb(0,255,0);
+		highlight_ratio = 0.75;
+	}
 
+	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
+
+	if(loc != hiddenUnit_) {
 		//the circle around the base of the unit
 		if(preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 			const SDL_Color& col = font::get_side_colour(it->second.side());
-			const Uint16 colour = SDL_MapRGBA(dst->format,col.r,col.g,col.b,Uint8(highlight_ratio*255));
+			const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
 			SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
-			draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
+			draw_unit_ellipse(dst,colour,energy_uses_alpha ? Uint8(highlight_ratio*255) : SDL_ALPHA_OPAQUE,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_TOP);
 		}
 
 		draw_unit(xpos,ypos - height_adjust,unit_image,face_left,false,
@@ -1167,7 +1169,6 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	const int lost_energy = int((1.0-unit_energy)*total_energy);
 	const int show_energy_after = energy_bar_loc.y + lost_energy;
 
-	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
 	if(energy_uses_alpha) {
 		energy_image.assign(adjust_surface_alpha(energy_image,highlight_ratio));
 	}
@@ -1179,17 +1180,19 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	blit_surface(xpos,ypos,energy_image,&first_energy,&clip_rect);
 	blit_surface(xpos,ypos+first_energy.h,energy_image,&second_energy,&clip_rect);
 
-	SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
-	          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
-	SDL_FillRect(dst,&filled_energy_area,energy_colour);
+	if(skip_energy_rows + lost_energy < energy_bar_loc.h) {
+		SDL_Rect filled_energy_area = { xpos + energy_bar_loc.x, ypos+show_energy_after,
+		          energy_bar_loc.w, energy_bar_loc.h - skip_energy_rows - lost_energy };
+		SDL_FillRect(dst,&filled_energy_area,energy_colour);
+	}
 
 	//the bottom half of the circle around the base of the unit
 	if(loc != hiddenUnit_ && preferences::show_side_colours() && !fogged(x,y) && it != units_.end()) {
 		const SDL_Color& col = font::get_side_colour(it->second.side());
-		const Uint16 colour = SDL_MapRGBA(dst->format,col.r,col.g,col.b,Uint8(highlight_ratio*255));
+		const Uint16 colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
 		SDL_Rect clip = {xpos,ypos,unit_image->w,unit_image->h};
 
-		draw_unit_ellipse(dst,colour,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
+		draw_unit_ellipse(dst,colour,energy_uses_alpha ? Uint8(highlight_ratio*255) : SDL_ALPHA_OPAQUE,clip,xpos,ypos-height_adjust,unit_image,!face_left,ELLIPSE_BOTTOM);
 	}
 }
 
