@@ -723,12 +723,12 @@ void display::draw_sidebar()
 	}
 
 	if(invalidateGameStatus_) {
-		draw_game_status(mapx()+SideBarGameStatus_x,SideBarGameStatus_y);
+		draw_game_status();
 		invalidateGameStatus_ = false;
 	}
 }
 
-void display::draw_game_status(int x, int y)
+void display::draw_game_status()
 {
 	if(teams_.empty())
 		return;
@@ -738,7 +738,7 @@ void display::draw_game_status(int x, int y)
 	}	
 }
 
-void display::draw_image_for_report(surface& img, surface& surf, SDL_Rect& rect)
+void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
 	SDL_Rect visible_area = get_non_transperant_portion(img);
 	SDL_Rect target = rect;
@@ -864,7 +864,7 @@ void display::draw_report(reports::TYPE report_num)
 					area.y = y;
 					area.w = minimum<int>(rect.w + rect.x - x, img->w);
 					area.h = minimum<int>(rect.h + rect.y - y, img->h);
-					draw_image_for_report(img,surf,area);
+					draw_image_for_report(img, area);
 
 					if(area.h > tallest) tallest = area.h;
 					x += area.w;

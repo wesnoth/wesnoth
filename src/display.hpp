@@ -365,14 +365,13 @@ private:
 
 	void draw_sidebar();
 	void draw_minimap(int x, int y, int w, int h);
-	void draw_game_status(int x, int y);
+	void draw_game_status();
 
 	SDL_Rect gameStatusRect_;
 	SDL_Rect unitDescriptionRect_;
 	SDL_Rect unitProfileRect_;
 
-	void draw_image_for_report(surface& img, 
-			surface& surf, SDL_Rect& rect);
+	void draw_image_for_report(surface& img, SDL_Rect& rect);
 	void draw_report(reports::TYPE report_num);
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
 	surface reportSurfaces_[reports::NUM_REPORTS];
