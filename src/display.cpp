@@ -1200,8 +1200,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		short* startdst = dstlock.pixels() + j*dst->w + xdst;
 
-		const Pixel replace_energy =
-		       Pixel(SDL_MapRGBA(energy_image->format,0xFF,0xFF,0xFF,0xFF));
 		const short new_energy = yloc >= show_energy_after ?
 		                             energy_colour : energy_loss_colour;
 
@@ -1215,16 +1213,18 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			              maximum<int>(xoffset,xsrc);
 
 			for(int i = 0; i != len; ++i) {
+				Uint8 r, g, b;
+				SDL_GetRGB(*startenergy,energy_image->format,&r,&g,&b);
 				if(startenergy != NULL && *startenergy != 0) {
 					if(!energy_uses_alpha) {
-						if(*startenergy == replace_energy) {
+						if(r > 230 && g > 230 && b > 230) {
 							*startdst = new_energy;
 						} else {
 							*startdst = *startenergy;
 						}
 					} else {
 						Pixel p = *startenergy;
-						if(*startenergy == replace_energy) {
+						if(r > 230 && g > 230 && b > 230) {
 							p = new_energy;
 						}
 						*startdst = alpha_blend_pixels(p,*startdst,
