@@ -15,6 +15,7 @@ struct manager
 };
 
 void clear_tooltips();
+void clear_tooltips(const SDL_Rect& rect);
 void add_tooltip(const SDL_Rect& rect, const std::string& message);
 void process(int mousex, int mousey, bool lbutton);
 

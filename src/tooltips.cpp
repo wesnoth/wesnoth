@@ -141,6 +141,20 @@ void clear_tooltips()
 	current_message = "";
 }
 
+void clear_tooltips(const SDL_Rect& rect)
+{
+	clear_tooltips();
+	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
+		if(rectangles_overlap(i->rect,rect)) {
+			i = tips.erase(i);
+		} else {
+			++i;
+		}
+	}
+
+	current_message = "";
+}
+
 void add_tooltip(const SDL_Rect& rect, const std::string& message)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {

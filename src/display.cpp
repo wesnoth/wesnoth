@@ -645,7 +645,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	if(teams_.empty())
 		return;
 
-	tooltips::clear_tooltips();
+	tooltips::clear_tooltips(description_rect);
 
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
 
