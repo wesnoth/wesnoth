@@ -43,6 +43,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 	update_whole_screen();
 
+	bool last_escape = true;
+
 	for(;;) {
 		if(background != NULL)
 			SDL_BlitSurface(background, NULL, disp.video().getSurface(), NULL);
@@ -210,9 +212,11 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 				message_entry.clear();
 			}
 
-			if(key[SDLK_ESCAPE] || quit_game.process(mousex,mousey,left_button)){
+			if(last_escape == false && key[SDLK_ESCAPE] || quit_game.process(mousex,mousey,left_button)){
 				return QUIT;
 			}
+
+			last_escape = bool(key[SDLK_ESCAPE]);
 
 			events::raise_process_event();
 			events::raise_draw_event();
