@@ -762,15 +762,25 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	std::cerr << "fading logo in....\n";
 
+	std::cerr << "logo size: " << logo->w << "," << logo->h << "\n";
+
 	for(int x = 0; x != logo->w; ++x) {
 		SDL_Rect srcrect = {x,0,1,logo->h};
 		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
 
+		std::cerr << "iteration " << x << " blitting " << srcrect.x << "," << srcrect.y << "," << srcrect.w << "," << srcrect.h
+		          << " -> " << dstrect.x << "," << dstrect.y << "," << dstrect.w << "," << dstrect.h << "\n";
+
 		SDL_BlitSurface(logo,&srcrect,fb,&dstrect);
+
+
+		std::cerr << "updating rect " << dstrect.x << "," << dstrect.y << "," << dstrect.w << "," << dstrect.h << "\n";
 
 		update_rect(dstrect);
 
 		if(!faded_in && (x%5) == 0) {
+			std::cerr << "checking keys...\n";
+
 			const bool new_button = key[SDLK_ESCAPE] || key[SDLK_SPACE];
 			if(new_button && !last_button) {
 				faded_in = true;
@@ -778,11 +788,17 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 			last_button = new_button;
 
+			std::cerr << "updating display...\n";
 			screen.update_display();
 			
+			std::cerr << "delaying...\n";
 			SDL_Delay(10);
+
+			std::cerr << "pumping events...\n";
 			events::pump();
 		}
+
+		std::cerr << "end iteration...\n";
 	}
 
 	std::cerr << "logo faded in\n";
@@ -885,7 +901,7 @@ TITLE_RESULT show_title(display& screen)
 
 		events::pump();
 
-		SDL_Delay(50);
+		SDL_Delay(20);
 	}
 
 	return QUIT_GAME;

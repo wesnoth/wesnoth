@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include "cursor.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
@@ -36,6 +37,7 @@ config prefs;
 display* disp = NULL;
 
 bool muted_ = false;
+bool colour_cursors = true;
 
 }
 
@@ -47,6 +49,8 @@ manager::manager()
 
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
+
+	set_colour_cursors(prefs["colour_cursors"] != "no");
 }
 
 manager::~manager()
@@ -396,7 +400,15 @@ void set_theme(const std::string& theme)
 
 bool use_colour_cursors()
 {
-	return false;
+	return colour_cursors;
+}
+
+void set_colour_cursors(bool value)
+{
+	prefs["colour_cursors"] = value ? "yes" : "no";
+	colour_cursors = value;
+
+	cursor::use_colour(value);
 }
 
 void show_preferences_dialog(display& disp)
@@ -407,7 +419,7 @@ void show_preferences_dialog(display& disp)
 	log_scope("show_preferences_dialog");
 
 	const int width = 600;
-	const int height = 400;
+	const int height = 440;
 	const int xpos = disp.x()/2 - width/2;
 	const int ypos = disp.y()/2 - height/2;
 
@@ -506,7 +518,7 @@ void show_preferences_dialog(display& disp)
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_x(slider_left);
-	resolution_button.set_y(sound_pos + 80 + 150);
+	resolution_button.set_y(sound_pos + 80 + 200);
 
 	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],
 	                               gui::button::TYPE_CHECK);
@@ -526,9 +538,15 @@ void show_preferences_dialog(display& disp)
 	side_colours_button.set_x(slider_left + fullscreen_button.width() + 100);
 	side_colours_button.set_y(sound_pos + 80 + 100);
 
+	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],
+	                                gui::button::TYPE_CHECK);
+	colour_cursors_button.set_check(use_colour_cursors());
+	colour_cursors_button.set_x(slider_left + fullscreen_button.width() + 100);
+	colour_cursors_button.set_y(sound_pos + 80 + 150);
+
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
 	hotkeys_button.set_x(slider_left + fullscreen_button.width() + 100);
-	hotkeys_button.set_y(sound_pos + 80 + 150);
+	hotkeys_button.set_y(sound_pos + 80 + 200);
 
 	bool redraw_all = true;
 
@@ -560,6 +578,7 @@ void show_preferences_dialog(display& disp)
 			turn_dialog_button.draw();
 			turn_bell_button.draw();
 			side_colours_button.draw();
+			colour_cursors_button.draw();
 			hotkeys_button.draw();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
@@ -610,9 +629,13 @@ void show_preferences_dialog(display& disp)
 			set_show_side_colours(side_colours_button.checked());
 		}
 
-		if(hotkeys_button.process (mousex, mousey, left_button)) {
+		if(hotkeys_button.process(mousex,mousey,left_button)) {
 			show_hotkeys_dialog (disp);
 			break;
+		}
+
+		if(colour_cursors_button.process(mousex,mousey,left_button)) {
+			set_colour_cursors(colour_cursors_button.checked());
 		}
 
 		music_slider.process();
@@ -625,7 +648,7 @@ void show_preferences_dialog(display& disp)
 
 		disp.update_display();
 
-		SDL_Delay(50);
+		SDL_Delay(20);
 		events::pump();
 	}
 }

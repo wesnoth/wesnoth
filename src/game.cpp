@@ -211,7 +211,6 @@ int play_game(int argc, char** argv)
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
 	const events::event_context main_event_context;
-	const cursor::manager cursor_manager;
 
 	std::cerr << "initialized managers\n";
 
@@ -343,6 +342,8 @@ int play_game(int argc, char** argv)
 	} else {
 		video.make_fake();
 	}
+
+	const cursor::manager cursor_manager;
 
 	std::cerr << "initialized gui\n";
 

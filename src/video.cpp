@@ -14,6 +14,7 @@
 #include <iostream>
 #include <vector>
 
+#include "cursor.hpp"
 #include "image.hpp"
 #include "mouse.hpp"
 #include "preferences.hpp"
@@ -276,6 +277,7 @@ void CVideo::flip()
 	if(fake_screen)
 		return;
 
+	cursor::draw(frameBuffer);
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {
@@ -283,6 +285,8 @@ void CVideo::flip()
 	}
 
 	clear_updates();
+
+	cursor::undraw(frameBuffer);
 }
 
 void CVideo::lock()

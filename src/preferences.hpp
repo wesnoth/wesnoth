@@ -83,6 +83,7 @@ namespace preferences {
 	bool ask_delete_saves();
 
 	bool use_colour_cursors();
+	void set_colour_cursors(bool value);
 
 	std::string client_type();
 

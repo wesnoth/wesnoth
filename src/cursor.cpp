@@ -6,6 +6,7 @@
 
 #include "SDL.h"
 
+#include <iostream>
 #include <vector>
 
 namespace
@@ -58,6 +59,9 @@ const std::string images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "mov
 
 cursor::CURSOR_TYPE current_cursor = cursor::NUM_CURSORS;
 
+int cursor_x = -1, cursor_y = -1;
+SDL_Surface* cursor_buf = NULL;
+
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	if(cache[type] == NULL) {
@@ -77,6 +81,11 @@ void clear_cache()
 			cache[n] = NULL;
 		}
 	}
+
+	if(cursor_buf != NULL) {
+		SDL_FreeSurface(cursor_buf);
+		cursor_buf = NULL;
+	}
 }
 
 }
@@ -86,11 +95,18 @@ namespace cursor
 
 manager::manager()
 {
+	use_colour(preferences::use_colour_cursors());
 }
 
 manager::~manager()
 {
 	clear_cache();
+	SDL_ShowCursor(SDL_ENABLE);
+}
+
+void use_colour(bool value)
+{
+	SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
 }
 
 void set(CURSOR_TYPE type)
@@ -115,6 +131,69 @@ setter::setter(CURSOR_TYPE type) : old_(current_cursor)
 setter::~setter()
 {
 	set(old_);
+}
+
+void draw(SDL_Surface* screen)
+{
+	if(preferences::use_colour_cursors() == false) {
+		return;
+	}
+
+	if(current_cursor == NUM_CURSORS) {
+		return;
+	}
+
+	int new_cursor_x, new_cursor_y;
+	SDL_GetMouseState(&new_cursor_x,&new_cursor_y);
+
+	const bool must_update = new_cursor_x != cursor_x || new_cursor_y != cursor_y;
+	cursor_x = new_cursor_x;
+	cursor_y = new_cursor_y;
+
+	const scoped_sdl_surface surf(image::get_image("cursors/" + images[current_cursor],image::UNSCALED));
+	if(surf == NULL) {
+		return;
+	}
+
+	if(cursor_buf != NULL && (cursor_buf->w != surf->w || cursor_buf->h != surf->h)) {
+		SDL_FreeSurface(cursor_buf);
+		cursor_buf = NULL;
+	}
+
+	if(cursor_buf == NULL) {
+		cursor_buf = SDL_CreateRGBSurface(SDL_SWSURFACE,surf->w,surf->h,surf->format->BitsPerPixel,
+		                                  surf->format->Rmask,surf->format->Gmask,surf->format->Bmask,surf->format->Amask);
+		if(cursor_buf == NULL) {
+			std::cerr << "Could not allocate surface for mouse cursor\n";
+			return;
+		}
+	}
+
+	//save the screen area where the cursor is being drawn onto the back buffer
+	SDL_Rect area = {cursor_x,cursor_y,surf->w,surf->h};
+	SDL_BlitSurface(screen,&area,cursor_buf,NULL);
+
+	//blit the surface
+	SDL_BlitSurface(surf,NULL,screen,&area);
+
+	if(must_update) {
+		update_rect(area);
+	}
+}
+
+void undraw(SDL_Surface* screen)
+{
+	if(preferences::use_colour_cursors() == false) {
+		return;
+	}
+	
+	if(cursor_buf == NULL) {
+		return;
+	}
+
+	SDL_Rect area = {cursor_x,cursor_y,cursor_buf->w,cursor_buf->h};
+	SDL_BlitSurface(cursor_buf,NULL,screen,&area);
+	update_rect(area);
 }
 
 }
