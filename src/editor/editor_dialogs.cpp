@@ -127,34 +127,37 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		}
 
 		if(new_map_button.process(mousex,mousey,left_button)) {
-				if ((confirmation_needed &&
-					 confirm_modification_disposal(disp))
-					|| !confirmation_needed) {
-					int i;
-					std::stringstream str;
-					std::stringstream map_str;
-					for (i = 0; i < width_slider.value(); i++) {
-						str << fill_terrain;
-					}
-					str << "\n";
-					for (i = 0; i < height_slider.value(); i++) {
-						map_str << str.str();
-					}
-					return map_str.str();
+			draw = true;
+			if ((confirmation_needed &&
+				 confirm_modification_disposal(disp))
+				|| !confirmation_needed) {
+				int i;
+				std::stringstream str;
+				std::stringstream map_str;
+				for (i = 0; i < width_slider.value(); i++) {
+					str << fill_terrain;
 				}
+				str << "\n";
+				for (i = 0; i < height_slider.value(); i++) {
+					map_str << str.str();
+				}
+				return map_str.str();
+			}
 		}
 		if(random_map_setting_button.process(mousex,mousey,left_button)) {
+			draw = true;
 			if (generator.get()->allow_user_config()) {
 				generator.get()->user_config(disp);
 			}
 		}
 
 		if(random_map_button.process(mousex,mousey,left_button)) {
-				if ((confirmation_needed
-					 && confirm_modification_disposal(disp))
-					|| !confirmation_needed) {
-					
-					const std::string map = generator.get()->create_map(std::vector<std::string>());
+			draw = true;
+			if ((confirmation_needed
+				 && confirm_modification_disposal(disp))
+				|| !confirmation_needed) {
+				
+				const std::string map = generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
 					gui::show_dialog(disp, NULL, "Creation Failed",
 									 "Map creation failed.", gui::OK_ONLY);
@@ -162,13 +165,38 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 				return map;
 			}
 		}
-		map_width = width_slider.value();
-		map_height = height_slider.value();
+		if (width_slider.value() != map_width
+			|| height_slider.value() != map_height) {
+			draw = true;
+		}
+		if (draw) {
+			map_width = width_slider.value();
+			map_height = height_slider.value();
+			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+										 "Create New Map",xpos+(width-title_rect.w)/2,ypos+10);
 
-		gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+							width_label,width_rect.x,width_rect.y);
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
+							height_label,height_rect.x,height_rect.y);
+			
+			std::stringstream width_str;
+			width_str << map_width;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+							slider_right+horz_margin,width_rect.y);
+			
+			std::stringstream height_str;
+			height_str << map_height;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+							slider_right+horz_margin,height_rect.y);
+			
+		}
 
-		width_slider.process();
-		height_slider.process();
+		new_map_button.set_dirty();
+		random_map_button.set_dirty();
+		random_map_setting_button.set_dirty();
+		cancel_button.set_dirty();
 
 		width_slider.set_min(min_width);
 		height_slider.set_min(min_width);
@@ -176,31 +204,9 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-                       "Create New Map",xpos+(width-title_rect.w)/2,ypos+10);
-
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
-						width_label,width_rect.x,width_rect.y);
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
-						height_label,height_rect.x,height_rect.y);
-
-		std::stringstream width_str;
-		width_str << map_width;
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
-		                slider_right+horz_margin,width_rect.y);
-
-		std::stringstream height_str;
-		height_str << map_height;
-		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
-		                slider_right+horz_margin,height_rect.y);
-		
-		new_map_button.draw();
-		random_map_button.draw();
-		random_map_setting_button.draw();
-		cancel_button.draw();
-
-		update_rect(xpos,ypos,width,height);
-
+		if (draw) {
+			update_rect(xpos,ypos,width,height);
+		}
 		disp.update_display();
 		SDL_Delay(10);
 		events::pump();

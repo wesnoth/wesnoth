@@ -85,6 +85,7 @@ int main(int argc, char** argv)
 		theme_cfg = &dummy_theme;
 	}
 	std::map<gamemap::location,unit> units;
+	events::event_context ec;
 	while (! done) {
 		try {
 			gamemap map(cfg, mapdata);
@@ -94,7 +95,6 @@ int main(int argc, char** argv)
 				    *theme_cfg, cfg);
 			gui.set_grid(preferences::grid());
 	
-			events::event_context ec;
 			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
 			editor.set_file_to_save_as(filename);
 			editor.main_loop();

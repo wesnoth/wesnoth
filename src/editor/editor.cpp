@@ -95,7 +95,10 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 
 	reports::set_report_content(reports::SELECTED_TERRAIN,
 								get_terrain_string(palette_.selected_terrain()));
+	gui_.begin_game();
 	gui_.invalidate_all();
+	gui_.draw();
+	events::raise_draw_event();
 }
 
 void map_editor::handle_event(const SDL_Event &event) {
@@ -941,6 +944,7 @@ void map_editor::main_loop() {
 		gui_.draw(false);
 		palette_.draw();
 		brush_.draw();
+		events::raise_draw_event();
 
 		if(tup_.process(mousex,mousey,l_button_down)) {
 			palette_.scroll_up();
