@@ -1455,7 +1455,15 @@ bool clear_shroud_unit(const gamemap& map,
 {
 	std::vector<gamemap::location> cleared_locations;
 
-	paths p(map,status,gamedata,units,loc,teams,true,false);
+	const unit_map::const_iterator u = units.find(loc);
+	if(u == units.end()) {
+		return false;
+	}
+
+	unit_map temp_units;
+	temp_units.insert(*u);
+
+	paths p(map,status,gamedata,temp_units,loc,teams,true,false);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
 	    i != p.routes.end(); ++i) {
 		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);

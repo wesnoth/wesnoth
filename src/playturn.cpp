@@ -1423,7 +1423,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 				gui::show_dialog(gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 			}
 		} catch(gamestatus::save_game_failed& e) {
-			gui::show_dialog(gui_,NULL,"",_("The game could not be saved"),gui::MESSAGE);
+			gui::show_dialog(gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
 		};
 	}
