@@ -671,6 +671,11 @@ const std::string& unit_type::image_healing() const
 	}
 }
 
+const std::string& unit_type::image_halo_healing() const
+{
+	return cfg_["image_halo_healing"];
+}
+
 const std::string& unit_type::image_profile() const
 {
 	const std::string& val = cfg_["profile"];

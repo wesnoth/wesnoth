@@ -1281,7 +1281,7 @@ void ai::analyze_potential_recruit_movements()
 
 	std::cerr << "targets: " << targets.size() << "\n";
 
-	int best_score = -1;
+	std::map<std::string,int> best_scores;
 	
 	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
@@ -1318,13 +1318,21 @@ void ai::analyze_potential_recruit_movements()
 			const int average_cost = cost/targets_reached;
 			const int score = (average_cost * (targets_reached+targets_missed))/targets_reached;
 			unit_movement_scores_[*i] = score;
-			if(best_score == -1 || score < best_score) {
-				best_score = score;
+
+			const std::map<std::string,int>::const_iterator current_best = best_scores.find(temp_unit.type().usage());
+			if(current_best == best_scores.end() || score < current_best->second) {
+				best_scores[temp_unit.type().usage()] = score;
 			}
 		}
 	}
 
 	for(std::map<std::string,int>::iterator j = unit_movement_scores_.begin(); j != unit_movement_scores_.end(); ++j) {
+		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(j->first);
+		if(info == gameinfo_.unit_types.end()) {
+		}
+		continue;
+
+		const int best_score = best_scores[info->second.usage()];
 		if(best_score > 0) {
 			j->second = (j->second*10)/best_score;
 			if(j->second > 15) {
@@ -1515,7 +1523,7 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 	std::cerr << "moving leader after recruit...\n";
 
 	const unit_map::iterator leader = find_leader(units_,team_num_);
-	if(leader == units_.end() || leader->second.stone()) {
+	if(leader == units_.end() || leader->second.incapacitated()) {
 		return;
 	}
 
@@ -1597,6 +1605,29 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 			}
 		}
 	}
+}
+
+bool ai::leader_can_reach_keep() const
+{
+	const unit_map::iterator leader = find_leader(units_,team_num_);
+	if(leader == units_.end() || leader->second.incapacitated()) {
+		return false;
+	}
+
+	const gamemap::location& start_pos = nearest_keep(leader->first);
+	if(start_pos.valid() == false) {
+		return false;
+	}
+
+	if(leader->first == start_pos) {
+		return true;
+	}
+
+	//find where the leader can move
+	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
+	
+
+	return leader_paths.routes.count(start_pos) > 0;
 }
 
 int ai::rate_terrain(const unit& u, const gamemap::location& loc)
@@ -1741,12 +1772,13 @@ const gamemap::location& ai::nearest_keep(const gamemap::location& loc) const
 const std::set<gamemap::location>& ai::avoided_locations() const
 {
 	if(avoid_.empty()) {
-		const std::string& xrange = current_team().ai_parameters()["avoid_x"];
-		const std::string& yrange = current_team().ai_parameters()["avoid_y"];
+		const config::child_list& avoids = current_team().ai_parameters().get_children("avoid");
+		for(config::child_list::const_iterator a = avoids.begin(); a != avoids.end(); ++a) {
 
-		const std::vector<location>& locs = parse_location_range(xrange,yrange);
-		for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
-			avoid_.insert(*i);
+			const std::vector<location>& locs = parse_location_range((**a)["x"],(**a)["y"]);
+			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+				avoid_.insert(*i);
+			}
 		}
 
 		if(avoid_.empty()) {

@@ -166,6 +166,7 @@ public:
 	const std::string& image_defensive(attack_type::RANGE range) const;
 	const std::string& image_leading() const;
 	const std::string& image_healing() const;
+	const std::string& image_halo_healing() const;
 	const std::string& unit_description() const;
 	const std::string& get_hit_sound() const;
 	const std::string& die_sound() const;

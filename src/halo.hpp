@@ -25,10 +25,12 @@ private:
 	bool old;
 };
 
+enum ORIENTATION { NORMAL, REVERSE };
+
 ///function to add a haloing effect using 'image'
 ///centered on (x,y)
 ///returns the handle to the halo object
-int add(int x, int y, const std::string& image);
+int add(int x, int y, const std::string& image, ORIENTATION orientation=NORMAL, int lifetime_cycles=-1);
 
 ///function to set the position of an existing haloing
 ///effect, according to its handle

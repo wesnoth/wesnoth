@@ -16,12 +16,14 @@ display* disp = NULL;
 class effect
 {
 public:
-	effect(int xpos, int ypos, const std::string& img);
+	effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime);
 
 	void set_location(int x, int y);
 
 	void render();
 	void unrender();
+
+	bool expired() const;
 private:
 
 	const std::string& current_image();
@@ -50,7 +52,8 @@ private:
 	std::vector<frame> images_;
 	std::string current_image_;
 
-	int start_cycle_, cycle_time_;
+	bool reverse_;
+	int start_cycle_, cycle_time_, lifetime_;
 	
 	int x_, y_;
 	double zoom_;
@@ -65,8 +68,8 @@ bool hide_halo = false;
 
 static const SDL_Rect empty_rect = {0,0,0,0};
 
-effect::effect(int xpos, int ypos, const std::string& img)
-: start_cycle_(-1), cycle_time_(50), x_(xpos), y_(ypos), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+effect::effect(int xpos, int ypos, const std::string& img, ORIENTATION orientation, int lifetime)
+: reverse_(orientation == REVERSE), start_cycle_(-1), cycle_time_(50), lifetime_(lifetime), x_(xpos), y_(ypos), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
 	if(std::find(img.begin(),img.end(),',') != img.end()) {
 		const std::vector<std::string>& imgs = config::split(img,',');
@@ -125,6 +128,10 @@ void effect::rezoom()
 	zoom_ = new_zoom;
 
 	surf_.assign(image::get_image(current_image_,image::UNSCALED));
+	if(surf_ != NULL && reverse_) {
+		surf_.assign(image::reverse_image(surf_));
+	}
+
 	if(surf_ != NULL && zoom_ != 1.0) {
 		surf_.assign(scale_surface(surf_,int(surf_->w*zoom_),int(surf_->h*zoom_)));
 	}
@@ -196,6 +203,11 @@ void effect::unrender()
 	update_rect(rect_);
 }
 
+bool effect::expired() const
+{
+	return lifetime_ >= 0 && start_cycle_ >= 0 && SDL_GetTicks() - start_cycle_ > lifetime_*cycle_time_;
+}
+
 }
 
 manager::manager(display& screen) : old(disp)
@@ -219,10 +231,10 @@ halo_hider::~halo_hider()
 	hide_halo = old;
 }
 
-int add(int x, int y, const std::string& image)
+int add(int x, int y, const std::string& image, ORIENTATION orientation, int lifetime_cycles)
 {
 	const int id = halo_id++;
-	haloes.insert(std::pair<int,effect>(id,effect(x,y,image)));
+	haloes.insert(std::pair<int,effect>(id,effect(x,y,image,orientation,lifetime_cycles)));
 	return id;
 }
 
@@ -245,8 +257,13 @@ void render()
 		return;
 	}
 
-	for(std::map<int,effect>::iterator i = haloes.begin(); i != haloes.end(); ++i) {
-		i->second.render();
+	for(std::map<int,effect>::iterator i = haloes.begin(); i != haloes.end(); ) {
+		if(i->second.expired()) {
+			haloes.erase(i++);
+		} else {
+			i->second.render();
+			++i;
+		}
 	}
 }
 

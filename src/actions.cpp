@@ -1118,6 +1118,12 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				unit& healer = units.find(i->second)->second;
 				healer.set_healing(true);
 
+				const std::string& halo_image = healer.type().image_halo_healing();
+				if(halo_image.empty() == false) {
+					halo::add(disp.get_location_x(i->second)+disp.hex_size()/2,disp.get_location_y(i->second)+disp.hex_size()/2,
+					          halo_image,healer.facing_left() ? halo::NORMAL : halo::REVERSE,1);
+				}
+
 				disp.draw_tile(i->second.x,i->second.y);
 			}
 

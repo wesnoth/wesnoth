@@ -324,6 +324,8 @@ public:
 	                                                  const move_map& enemy_dstsrc, const move_map& enemy_srcdst) const;
 	void invalidate_defensive_position_cache();
 
+	bool leader_can_reach_keep() const;
+
 protected:
 
 	mutable std::map<location,defensive_position> defensive_position_cache_;
