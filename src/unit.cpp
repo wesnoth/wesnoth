@@ -69,7 +69,7 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 //constructor for creating a new unit
 unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
                gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
-               type_(t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
+               type_(&t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
 			   hitpoints_(type_->hitpoints()),
 			   maxHitpoints_(type_->hitpoints()),
                backupMaxHitpoints_(type_->hitpoints()), experience_(0),
@@ -97,7 +97,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 
 //constructor for advancing a unit from a lower level
 unit::unit(const unit_type* t, const unit& u) :
-               gender_(u.gender_), type_(t->get_gender_unit_type(u.gender_)),
+               gender_(u.gender_), variation_(u.variation_),
+               type_(&t->get_gender_unit_type(u.gender_).get_variation(u.variation_)),
                state_(STATE_NORMAL),
 			   hitpoints_(type_->hitpoints()),
 			   maxHitpoints_(type_->hitpoints()),
@@ -607,16 +608,12 @@ void unit::read(const game_data& data, const config& cfg)
 		}
 	}
 
-	type_ = type_->get_gender_unit_type(gender_);
+	type_ = &type_->get_gender_unit_type(gender_);
 
-	attacks_ = type_->attacks();
-	backupAttacks_ = attacks_;
-	maxHitpoints_ = type_->hitpoints();
-	backupMaxHitpoints_ = type_->hitpoints();
-	maxMovement_ = type_->movement();
-	backupMaxMovement_ = type_->movement();
-	maxExperience_ = type_->experience_needed();
-	backupMaxExperience_ = type_->experience_needed();
+	variation_ = cfg["variation"];
+	type_ = &type_->get_variation(variation_);
+
+	reset_modifications();
 
 	side_ = atoi(cfg["side"].c_str());
 	if(side_ <= 0) {
@@ -727,6 +724,8 @@ void unit::write(config& cfg) const
 	cfg["side"] = sd.str();
 
 	cfg["gender"] = gender_ == unit_race::MALE ? "male" : "female";
+
+	cfg["variation"] = variation_;
 
 	cfg["role"] = role_;
 
@@ -995,7 +994,14 @@ void unit::add_modification(const std::string& type,
 
 		const std::string& apply_to = (**i.first)["apply_to"];
 
-		if(apply_to == "new_attack") {
+		//apply variations -- only apply if we are adding this
+		//for the first time.
+		if(apply_to == "variation" && no_add == false) {
+			variation_ = (**i.first)["name"];
+			type_ = &type_->get_variation(variation_);
+			reset_modifications();
+			apply_modifications();
+		} else if(apply_to == "new_attack") {
 			attacks_.push_back(attack_type(**i.first));
 		} else if(apply_to == "attack") {
 
@@ -1136,6 +1142,18 @@ void unit::add_modification(const std::string& type,
 	description << "\n";
 
 	modificationDescriptions_[type] += description.str();
+}
+
+void unit::reset_modifications()
+{
+	attacks_ = type_->attacks();
+	backupAttacks_ = attacks_;
+	maxHitpoints_ = type_->hitpoints();
+	backupMaxHitpoints_ = type_->hitpoints();
+	maxMovement_ = type_->movement();
+	backupMaxMovement_ = type_->movement();
+	maxExperience_ = type_->experience_needed();
+	backupMaxExperience_ = type_->experience_needed();
 }
 
 void unit::apply_modifications()

@@ -161,7 +161,8 @@ public:
 
 	~unit_type();
 
-	const unit_type* get_gender_unit_type(unit_race::GENDER gender) const;
+	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
+	const unit_type& get_variation(const std::string& name) const;
 
 	int num_traits() const;
 
@@ -244,6 +245,8 @@ private:
 	void operator=(const unit_type& o);
 
 	unit_type* gender_types_[2];
+
+	std::map<std::string,unit_type> variations_;
 
 	const config& cfg_;
 

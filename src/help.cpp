@@ -551,15 +551,14 @@ std::vector<topic> generate_unit_topics() {
 		}
 		else if (desc_type == FULL_DESCRIPTION) {
 			const std::string detailed_description = type.unit_description();
-			const unit_type *female_type = type.get_gender_unit_type(unit_race::FEMALE);
-			const unit_type *male_type = type.get_gender_unit_type(unit_race::MALE);
+			const unit_type& female_type = type.get_gender_unit_type(unit_race::FEMALE);
+			const unit_type& male_type = type.get_gender_unit_type(unit_race::MALE);
 
-			// Show the unit's image and it's level.
-			if (male_type != NULL) {
-				ss << "<img>src='" << male_type->image() << "'</img> ";
-			}
-			if (female_type != NULL && female_type != male_type) {
-				ss << "<img>src='" << female_type->image() << "'</img> ";
+			// Show the unit's image and its level.
+			ss << "<img>src='" << male_type.image() << "'</img> ";
+
+			if (&female_type != &male_type) {
+				ss << "<img>src='" << female_type.image() << "'</img> ";
 			}
 			ss  << "<format>font_size=11 text=' " << escape(_("level"))
 				<< " " << type.level() << "'</format>\n";

@@ -152,6 +152,7 @@ public:
 private:
 	unit_race::GENDER generate_gender(const unit_type& type, bool use_genders);
 	unit_race::GENDER gender_;
+	std::string variation_;
 
 	const unit_type* type_;
 
@@ -213,6 +214,7 @@ private:
 
 	UPKEEP_COST upkeep_;
 
+	void reset_modifications();
 	void apply_modifications();
 	void remove_temporary_modifications();
 	void generate_traits();

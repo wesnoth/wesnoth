@@ -512,7 +512,8 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 }
 
 unit_type::unit_type(const unit_type& o)
-    : cfg_(o.cfg_), race_(o.race_), alpha_(o.alpha_), abilities_(o.abilities_),
+    : variations_(o.variations_), cfg_(o.cfg_), race_(o.race_),
+      alpha_(o.alpha_), abilities_(o.abilities_),
       max_heals_(o.max_heals_), heals_(o.heals_), regenerates_(o.regenerates_),
       leadership_(o.leadership_), illuminates_(o.illuminates_),
       skirmish_(o.skirmish_), teleport_(o.teleport_),
@@ -529,6 +530,11 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const race_map& races, const std::vector<config*>& traits)
                 : cfg_(cfg), alpha_(1.0), movementType_(cfg), possibleTraits_(traits)
 {
+	const config::child_list& variations = cfg.get_children("variation");
+	for(config::child_list::const_iterator var = variations.begin(); var != variations.end(); ++var) {
+		variations_.insert(std::pair<std::string,unit_type>((**var)["variation_name"],unit_type(**var,mv_types,races,traits)));
+	}
+
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
@@ -617,14 +623,24 @@ unit_type::~unit_type()
 	delete gender_types_[unit_race::FEMALE];
 }
 
-const unit_type* unit_type::get_gender_unit_type(unit_race::GENDER gender) const
+const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;
 	if(i < sizeof(gender_types_)/sizeof(*gender_types_) && gender_types_[i] != NULL) {
-		return gender_types_[i];
+		return *gender_types_[i];
 	}
 
-	return this;
+	return *this;
+}
+
+const unit_type& unit_type::get_variation(const std::string& name) const
+{
+	const std::map<std::string,unit_type>::const_iterator i = variations_.find(name);
+	if(i != variations_.end()) {
+		return i->second;
+	} else {
+		return *this;
+	}
 }
 
 int unit_type::num_traits() const { return race_->num_traits(); }
