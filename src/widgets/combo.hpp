@@ -30,6 +30,7 @@ public:
 	void set_y(int val);
 	void set_xy(int valx, int valy);
 	void set_selected(int val);
+	void set_items(const std::vector<std::string>& items);
 
 	int width() const;
 	int height() const;

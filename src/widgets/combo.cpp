@@ -28,7 +28,6 @@ combo::combo(display& disp, const std::vector<std::string>& items) :
 {
 }
 
-
 int combo::height() const
 {
 	return button_.height();
@@ -44,6 +43,11 @@ int combo::selected() const
 	return selected_;
 }
 
+void combo::set_items(const std::vector<std::string>& items)
+{
+	items_ = items;
+}
+
 void combo::set_xy(int x, int y)
 {
 	button_.set_xy(x,y);
@@ -57,6 +61,11 @@ void combo::set_selected(int val)
 		selected_ = val;
 		button_.draw();
 	}
+}
+
+void combo::draw()
+{
+	button_.draw();
 }
 
 bool combo::process(int x, int y, bool button)

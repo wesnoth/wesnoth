@@ -362,6 +362,13 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,(disp.y()-height)/2+height-29);
 	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,(disp.y()-height)/2+height-29);
 
+	//player amount number background
+	rect.x = ((disp.x()-width)/2+10)+35;
+	rect.y = (disp.y()-height)/2+235;
+	rect.w = 145;
+	rect.h = 25;
+	SDL_Surface* playernum_bg=get_surface_portion(disp.video().getSurface(), rect);
+
 	update_whole_screen();
 
 	CKey key;
@@ -600,7 +607,13 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 					if(loading) {
 						if((**sd)["controller"] == "network") {
-							combo_type.back().set_selected(1);
+							if((**sd)["description"] == "") {
+								combo_type.back().set_selected(1);
+							}else{
+								player_type.push_back((**sd)["description"]);
+								combo_type.back().set_items(player_type);
+								combo_type.back().set_selected(player_type.size());
+							}
 						}else if((**sd)["controller"] == "human") {
 							if((**sd)["description"] == preferences::login())
 							{
@@ -682,6 +695,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 						config& side = **(sides.first+n);
 
+						if(side["allow_changes"] != "no"){
 						if(combo_type[n].process(mousex,mousey,left_button)) {
 							if(combo_type[n].selected() == 0) {
 								side["controller"] = "human";
@@ -705,9 +719,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							}else if(combo_type[n].selected() == 3){
 								side["controller"] = "human";
 								side["description"] = "";
+							}else {
+								side["controller"] = "network";
+								side["description"] = "";
 							}
 						}
-								
+						}else{
+							combo_type[n].draw();
+						}
+						
+						if(side["allow_changes"] != "no"){
 						if(combo_race[n].process(mousex,mousey,left_button))
 						{
 							const string_map& values = possible_sides[combo_race[n].selected()]->values;
@@ -716,7 +737,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 								side[i->first] = i->second;
 							}
 						}
-
+						}else{
+							combo_race[n].draw();
+						}
+						
 						if(combo_team[n].process(mousex,mousey,left_button))
 						{
 							const size_t nsides = sides.second - sides.first;
@@ -735,7 +759,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						}
 
 						combo_color[n].process(mousex,mousey,left_button);
-
+						
+						if(side["allow_changes"] != "no"){
 						int check_playergold = 20+int(979*slider_gold[n].process(mousex,mousey,left_button));
 						if(abs(check_playergold) == check_playergold)
 							new_playergold=check_playergold;
@@ -752,6 +777,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 							font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 							                (*sides.first[n])["gold"],rect.x,rect.y);
 							update_rect(rect);
+						}
+						}else{
+							slider_gold[n].draw();
 						}
 					}
 
@@ -877,19 +905,55 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 				gamemap map(cfg,map_data);
 
-				const scoped_sdl_surface mini(image::getMinimap(175,175,map));
+				const scoped_sdl_surface mini(image::getMinimap(145,145,map));
 
 				if(mini != NULL) {
-					rect.x = ((disp.x()-width)/2+10)+20;
+					rect.x = ((disp.x()-width)/2+10)+35;
 					rect.y = (disp.y()-height)/2+80;
-					rect.w = 175;
-					rect.h = 175;
+					rect.w = 145;
+					rect.h = 145;
 					SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
 					update_rect(rect);
 				}
+
+				//Display the number of players
+				rect.x = ((disp.x()-width)/2+10)+35;
+				rect.y = (disp.y()-height)/2+235;
+				rect.w = 145;
+				rect.h = 25;
+				SDL_BlitSurface(playernum_bg, NULL, disp.video().getSurface(), &rect);
+				config& level = *level_ptr;
+				const config::child_itors sides = level.child_range("side");
+				int sides_num;
+				config::child_iterator sd;
+				for(sd = sides.first; sd != sides.second; ++sd) {
+					sides_num = sd - sides.first;
+				}
+				std::stringstream players;
+				players << "Players: " << sides_num + 1;
+				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+					                players.str(),rect.x+45,rect.y);
+				update_rect(rect);
 			}else{
-				//TODO: Load some other non-minimap
-				//      image, ie a floppy disk
+				const scoped_sdl_surface disk(image::get_image("misc/disk.png",image::UNSCALED));
+
+				if(disk != NULL) {
+					rect.x = ((disp.x()-width)/2+10)+35;
+					rect.y = (disp.y()-height)/2+80;
+					rect.w = 145;
+					rect.h = 145;
+					SDL_BlitSurface(disk, NULL, disp.video().getSurface(), &rect);
+					update_rect(rect);
+				}
+
+				rect.x = ((disp.x()-width)/2+10)+35;
+				rect.y = (disp.y()-height)/2+235;
+				rect.w = 145;
+				rect.h = 25;
+				SDL_BlitSurface(playernum_bg, NULL, disp.video().getSurface(), &rect);
+				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+					                " Load Map ",rect.x+45,rect.y);
+				update_rect(rect);
 			}
 		}
 
