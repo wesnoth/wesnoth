@@ -358,7 +358,7 @@ stats calculate_stats(int category, int side)
 
 		return res;
 	} else {
-		const size_t index = master_stats.size() - size_t(side);
+		const size_t index = master_stats.size() - size_t(category);
 		const size_t side_index = size_t(side) - 1;
 		if(index < master_stats.size() && side_index < master_stats[index].team_stats.size()) {
 			return master_stats[index].team_stats[side_index];
