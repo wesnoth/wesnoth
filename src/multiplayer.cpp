@@ -491,14 +491,20 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					if((**sd)["description"].empty())
 						(**sd)["description"] = preferences::login();
 				}
+
+				std::cerr << "starting second dialog...\n";
 	
 				// Wait to players, Configure players
 				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
 						       width, height, disp);
 
+				std::cerr << "a\n";
+
 				//Buttons
 				gui::button launch2_game(disp,string_table["launch"]);
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
+
+				std::cerr << "a\n";
 
 				//Title and labels
 				SDL_Rect labelr;
@@ -510,6 +516,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
 				                string_table["player_type"],((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
+				std::cerr << "b\n";
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
 						string_table["race"],0,0);
@@ -535,6 +542,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				                string_table["gold"],((disp.x()-width)/2+480)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
 
+				std::cerr << "c\n";
+
 				//Options
 				std::vector<std::string> player_type;
 				player_type.push_back(preferences::login());
@@ -546,14 +555,15 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				player_race.push_back(string_table["humans"]);
 				player_race.push_back(string_table["undead"]);
 				std::vector<std::string> player_team;
-				char label[16];
-				int counter=0;
 				
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
-					counter++;
-					sprintf(label, "%s %d", string_table["team"], counter);
-					player_team.push_back(label);
+					const int team_num = sd - sides.begin();
+
+					std::stringstream str;
+					str << string_table["team"] << " " << team_num;
+					player_team.push_back(str.str());
 				}
+
 				std::vector<std::string> player_color;
 				player_color.push_back(string_table["red"]);
 				player_color.push_back(string_table["blue"]);
@@ -569,39 +579,39 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::vector<gui::combo> combo_team;
 				std::vector<gui::combo> combo_color;
 				std::vector<gui::slider> slider_gold;
-				counter = 0;
+
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
+					const int side_num = sd - sides.begin();
+
 					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
 					                (*sd)->values["side"],(disp.x()-width)/2+10,
-							(disp.y()-height)/2+53+(30*counter));
+							(disp.y()-height)/2+53+(30*side_num));
 					combo_type.push_back(gui::combo(disp,player_type));
-					combo_type[counter].set_xy((disp.x()-width)/2+30,
-							(disp.y()-height)/2+55+(30*counter));
-					if(counter>0)
-						combo_type[counter].set_selected(1);
+					combo_type.back().set_xy((disp.x()-width)/2+30,
+							(disp.y()-height)/2+55+(30*side_num));
+
+					if(side_num>0)
+						combo_type.back().set_selected(1);
+
 					combo_race.push_back(gui::combo(disp,player_race));
-					combo_race[counter].set_xy((disp.x()-width)/2+145,
-							(disp.y()-height)/2+55+(30*counter));
+					combo_race.back().set_xy((disp.x()-width)/2+145,
+							(disp.y()-height)/2+55+(30*side_num));
 					combo_team.push_back(gui::combo(disp,player_team));
-					combo_team[counter].set_xy((disp.x()-width)/2+260,
-							(disp.y()-height)/2+55+(30*counter));
-					combo_team[counter].set_selected(counter);
+					combo_team.back().set_xy((disp.x()-width)/2+260,
+							(disp.y()-height)/2+55+(30*side_num));
+					combo_team.back().set_selected(side_num);
 					combo_color.push_back(gui::combo(disp,player_color));
-					combo_color[counter].set_xy((disp.x()-width)/2+375,
-							(disp.y()-height)/2+55+(30*counter));
-					combo_color[counter].set_selected(counter);
+					combo_color.back().set_xy((disp.x()-width)/2+375,
+							(disp.y()-height)/2+55+(30*side_num));
+					combo_color.back().set_selected(side_num);
 
 					//Player Gold
 					rect.x = (disp.x()-width)/2+492;
-					rect.y = (disp.y()-height)/2+55+(30*counter);
+					rect.y = (disp.y()-height)/2+55+(30*side_num);
 					rect.w = launch2_game.width();
 					rect.h = launch2_game.height();
 					slider_gold.push_back(gui::slider(disp,rect,0.1));
-
-					counter++;
 				}
-
-				int total_players = counter--;
 
 				update_whole_screen();
 
@@ -609,23 +619,25 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 					const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
-					for(counter=0; counter<=total_players; counter++) {
+					for(size_t n = 0; n != combo_type.size(); ++n) {
 						//FIXME: the locals player should not be able to
 						//	 change the combo_type of another network
 						//	 player that has already joined the game.
 						//Make sure only one side is the local player
-						if(combo_type[counter].process(mousex,mousey,left_button))
-							if(combo_type[counter].selected()==0)
-								for(int counterb=0; counterb<=total_players; counterb++)
-									if(combo_type[counterb].selected()==0 &&
-									   counterb != counter)
-										combo_type[counterb].set_selected(1);
+						if(combo_type[n].process(mousex,mousey,left_button)) {
+							if(combo_type[n].selected() == 0) {
+								for(size_t m = 0; m != combo_type.size(); ++m) {
+									if(combo_type[m].selected() == 0 && m != n) {
+										combo_type[m].set_selected(1);
+									}
+								}
+							}
+						}
 								
-						combo_race[counter].process(mousex,mousey,left_button);
-						combo_team[counter].process(mousex,mousey,left_button);
-						combo_color[counter].process(mousex,mousey,left_button);
-						int check_playergold=20+int(480*slider_gold[counter].process(mousex,mousey,left_button));
-
+						combo_race[n].process(mousex,mousey,left_button);
+						combo_team[n].process(mousex,mousey,left_button);
+						combo_color[n].process(mousex,mousey,left_button);
+						int check_playergold = 20+int(480*slider_gold[n].process(mousex,mousey,left_button));
 					}
 
 					if(launch2_game.process(mousex,mousey,left_button)) {
