@@ -126,7 +126,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		// disp.invalidate_animations();
 		disp.draw(false);
-		disp.draw_unit(xpos,ypos,image,false,1.0,0,submerge);
+		disp.draw_unit(xpos, ypos, image, false, 1.0, 0, 0.0, submerge);
 
 		if(halo_effect != 0)
 			halo::set_location(halo_effect, xpos+disp.hex_size()/2, ypos+disp.hex_size()/2);
@@ -751,7 +751,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const double submerge = src_submerge*pos + dst_submerge*(1.0-pos);
 
 		if(image != NULL && !hide) {
-			disp.draw_unit(posx,posy-height_adjust,image,false,1.0,0,submerge);
+			disp.draw_unit(posx, posy - height_adjust, image, false, 1.0, 0, 0.0, submerge);
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
