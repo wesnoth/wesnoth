@@ -794,7 +794,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_,NULL,"","",
 	                                 gui::MESSAGE,&menu,NULL,"",NULL,NULL,NULL,xloc,yloc,&style);
-	if(res == -1)
+	if(res < 0 || res >= items.size())
 		return;
 
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(items[res]);
