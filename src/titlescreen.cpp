@@ -149,16 +149,22 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::cerr << "drew version number\n";
 
 	//members of this array must correspond to the enumeration TITLE_RESULT
-	static const char* button_labels[] = { N_("Tutorial"), "campaign_button", "multiplayer_button",
-		"load_button", "language_button", "preferences", "about_button", "quit_button" };
+	static const char* button_labels[] = { N_("Tutorial"),
+					       N_("Campaign"),
+					       N_("Multiplayer"),
+					       N_("Load"),
+					       N_("Language"),
+					       N_("Preferences"),
+					       N_("About"),
+					       N_("Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
-						    "help_string_campaign_button",
-						    "help_string_multiplayer_button",
-						    "help_string_load_button",
-						    "help_string_language_button",
-						    "help_string_preferences",
-						    "help_string_about_button",
-						    "help_string_quit_button" };
+						    N_("Start a new single player campaign"),
+						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
+						    N_("Load a single player saved game"),
+						    N_("Change the language"),
+						    N_("Configure the game's settings"),
+						    N_("View the credits"),
+						    N_("Quit the game") };
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 
