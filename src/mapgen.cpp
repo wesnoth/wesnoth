@@ -306,11 +306,9 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 		std::cerr << "castle at " << ci->x << "," << ci->y << "\n";
 	}
 
-	std::set<gamemap::location> villages = village_locs;
-	std::set<gamemap::location>::iterator v;
-	for(v = villages.begin(); v != villages.end(); ++v) {
-		v->x *= 1000;
-		v->y *= 1000;
+	std::vector<gamemap::location> villages;
+	for(std::set<gamemap::location>::const_iterator v = village_locs.begin(); v != village_locs.end(); ++v) {
+		villages.push_back(gamemap::location(v->x*1000,v->y*1000));
 	}
 
 	const double force_multiplier = 0.00001;
@@ -344,7 +342,7 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 			}
 
 			//go through each village, attracting
-			for(v = villages.begin(); v != villages.end(); ++v) {
+			for(std::vector<gamemap::location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 				if(v->x < min_x*1000 || v->x > max_x*1000 || v->y < min_y*1000 || v->y > max_y*1000) {
 					continue;
 				}
