@@ -305,6 +305,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 				if(team_units(units,player_number) == 0)
 					continue;
 
+				std::stringstream player_number_str;
+				player_number_str << player_number;
+				game_events::set_variable("side_number",player_number_str.str());
+				game_events::fire("side turn");
+
 				//we want to work out if units for this player should get healed, and the
 				//player should get income now. healing/income happen if it's not the first
 				//turn of processing, or if we are loading a game, and this is not the
@@ -515,12 +520,14 @@ redo_turn:
 			}
 
 			std::stringstream event_stream;
-			event_stream << "turn " << status.turn();
+			event_stream << status.turn();
 
 			{
 				std::cerr << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
-				game_events::fire(event_stream.str());
+				const std::string turn_num = event_stream.str();
+				game_events::set_variable("turn_number",turn_num);
+				game_events::fire("turn " + turn_num);
 				game_events::fire("new turn");
 			}
 

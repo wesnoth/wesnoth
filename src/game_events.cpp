@@ -914,6 +914,11 @@ const std::string& get_variable(const std::string& key)
 	}
 }
 
+void set_variable(const std::string& key, const std::string& value)
+{
+	state_of_game->variables[key] = value;
+}
+
 manager::manager(config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
                  std::vector<team>& teams_,
