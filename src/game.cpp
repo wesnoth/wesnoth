@@ -1690,8 +1690,8 @@ int main(int argc, char** argv)
 {
 	try {
 		std::cerr << "Battle for Wesnoth v" << VERSION << "\n";
-		std::time_t t = std::time(NULL);
-		std::cerr << "Started on " << std::ctime(&t) << "\n";
+		time_t t = time(NULL);
+		std::cerr << "Started on " << ctime(&t) << "\n";
 
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
