@@ -19,6 +19,9 @@ public:
 protected:
 	handler();
 	virtual ~handler();
+
+private:
+	const int unicode_;
 };
 
 void pump();

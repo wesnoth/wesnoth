@@ -28,7 +28,7 @@ resize_lock::~resize_lock()
 
 std::vector<handler*> event_handlers;
 
-handler::handler()
+handler::handler() : unicode_(SDL_EnableUNICODE(1))
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 	event_handlers.push_back(this);
@@ -43,6 +43,8 @@ handler::~handler()
 		event_handlers.erase(std::find(event_handlers.begin(),
 		                               event_handlers.end(),this));
 	}
+
+	SDL_EnableUNICODE(unicode_);
 }
 
 void pump()

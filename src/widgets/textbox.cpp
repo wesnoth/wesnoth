@@ -95,7 +95,8 @@ void textbox::draw() const
 	for(size_t i = firstOnScreen_; i < text_.size(); ++i) {
 		str[0] = text_[i];
 		const SDL_Rect area =
-		    font::draw_text(NULL,clip,font_size,font::NORMAL_COLOUR,str,0,0);
+		    font::draw_text(NULL,clip,font_size,font::NORMAL_COLOUR,str,0,0,
+		                    NULL,false,font::NO_MARKUP);
 
 		//if we can't fit the next character on screen
 		if(pos + area.w > width()) {
@@ -103,7 +104,7 @@ void textbox::draw() const
 		}
 
 		font::draw_text(&disp_,clip,font_size,font::NORMAL_COLOUR,str,
-		                x_ + pos, y_);
+		                x_ + pos, y_, NULL, false, font::NO_MARKUP);
 
 		pos += area.w;
 
@@ -122,7 +123,7 @@ void textbox::handle_event(const SDL_Event& event)
 	const SDL_keysym& key
 	           = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 	
-	int c = key.sym;
+	const int c = key.sym;
 
 	if(c == SDLK_LEFT && cursor_ > 0) {
 		--cursor_;
@@ -150,13 +151,10 @@ void textbox::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if(c >= INPUT_CHAR_START && c < INPUT_CHAR_END) {
-		
-		if(islower(c) && (key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT])) {
-			c = toupper(c);
-		}
+	const char character = static_cast<char>(key.unicode);
 
-		text_.insert(text_.begin()+cursor_,c);
+	if(character >= INPUT_CHAR_START && character < INPUT_CHAR_END) {
+		text_.insert(text_.begin()+cursor_,character);
 		++cursor_;
 	}
 }

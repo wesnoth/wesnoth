@@ -177,7 +177,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    COLOUR colour, const std::string& txt, int x, int y,
-                   SDL_Surface* bg, bool use_tooltips)
+                   SDL_Surface* bg, bool use_tooltips, MARKUP use_markup)
 {
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
@@ -196,18 +196,20 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 		if(i1 != i2) {
 			COLOUR col = colour;
 			int sz = size;
-			if(*i1 == '#') {
-				col = BAD_COLOUR;
-				++i1;
-			} else if(*i1 == '@') {
-				col = GOOD_COLOUR;
-				++i1;
-			} else if(*i1 == '+') {
-				sz += 2;
-				++i1;
-			} else if(*i1 == '-') {
-				sz -= 2;
-				++i1;
+			if(use_markup == USE_MARKUP) {
+				if(*i1 == '#') {
+					col = BAD_COLOUR;
+					++i1;
+				} else if(*i1 == '@') {
+					col = GOOD_COLOUR;
+					++i1;
+				} else if(*i1 == '+') {
+					sz += 2;
+					++i1;
+				} else if(*i1 == '-') {
+					sz -= 2;
+					++i1;
+				}
 			}
 
 			if(i1 != i2) {
