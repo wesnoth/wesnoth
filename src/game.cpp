@@ -428,6 +428,8 @@ int main(int argc, char** argv)
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {
 		std::cerr << "Could not create button: Image could not be found\n";
+	} catch(CVideo::quit&) {
+		//just means the game should quit
 	}
 
 	return 0;

@@ -230,6 +230,12 @@ void pump_events()
 					resize_dimensions.first = resize->w;
 					resize_dimensions.second = resize->h;
 				}
+
+				break;
+			}
+
+			case SDL_QUIT: {
+				throw CVideo::quit();
 			}
 		}
 	}

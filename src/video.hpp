@@ -51,6 +51,8 @@ class CVideo {
 
 	struct error {};
 
+	struct quit {};
+
      private:
 
 	SDL_Surface* frameBuffer;
