@@ -150,34 +150,33 @@ void unit::generate_traits()
 		return;
 
 	//calculate the unit's traits
-	const std::vector<config*> traits = type().possible_traits();
+	std::vector<config*> candidate_traits = type().possible_traits();
+	std::vector<config*> traits;
 
 	const size_t num_traits = type().num_traits();
-	if(traits.size() >= num_traits) {
-		std::set<int> chosen_traits;
-		for(size_t i = 0; i != num_traits; ++i) {
-			int num = get_random()%(traits.size()-i);
-			while(chosen_traits.count(num)) {
-				++num;
-			}
+	for(size_t n = 0; n != num_traits && candidate_traits.empty() == false; ++n) {
+		const int num = get_random()%candidate_traits.size();
+		traits.push_back(candidate_traits[num]);
+		candidate_traits.erase(candidate_traits.begin()+num);
+	}
 
-			chosen_traits.insert(num);
+	std::vector<std::string> description;
+	
+	for(std::vector<config*>::const_iterator j = traits.begin(); j != traits.end(); ++j) {
+		add_modification("trait",**j);
+		description.push_back((**j)["name"]);
+	}
 
-			add_modification("trait",*traits[num]);
-		}
+	traitsDescription_ = "";
 
-		//build the traits description, making sure the traits are always
-		//in the same order.
-		for(std::set<int>::const_iterator itor = chosen_traits.begin();
-		    itor != chosen_traits.end(); ++itor) {
-			const std::string& trait_name = (*traits[*itor])["name"];
-			traitsDescription_ += gettext(trait_name.c_str());
+	//we want to make sure the description always has a consistent ordering
+	std::sort(description.begin(),description.end());
+	for(std::vector<std::string>::const_iterator i = description.begin(); i != description.end(); ++i) {
+		if(i != description.begin()) {
 			traitsDescription_ += ",";
 		}
 
-		//get rid of the trailing comma
-		if(!traitsDescription_.empty())
-			traitsDescription_.resize(traitsDescription_.size()-1);
+		traitsDescription_ += gettext(i->c_str());
 	}
 }
 
@@ -600,6 +599,7 @@ const std::vector<std::string>& unit::overlays() const
 
 void unit::read(const game_data& data, const config& cfg)
 {
+	const std::string& type = cfg["type"];
 	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
 		type_ = &i->second;
