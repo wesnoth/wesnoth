@@ -13,6 +13,8 @@
 #ifndef SCOPED_RESOURCE_H_INCLUDED
 #define SCOPED_RESOURCE_H_INCLUDED
 
+#include <cstdio> //for FILE
+
 /**
 * The util namespace should take all classes which are of a generic type,
 * used to perform common tasks which are not BibleTime-specific. See

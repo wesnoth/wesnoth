@@ -738,7 +738,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::string text;
 
 		gamemap::location loc;
-		bool remove_overlay = false;
 		if(filter != NULL) {
 			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
 				if(game_events::unit_matches_filter(u,*filter)) {
@@ -749,7 +748,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		if(loc.valid() == false) {
-			remove_overlay = true;
 			loc = event_info.loc1;
 		}
 
@@ -763,10 +761,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = cfg["description"];
 
 			u->second.add_modification("object",cfg);
-
-			if(remove_overlay) {
-				screen->remove_overlay(event_info.loc1);
-			}
 
 			screen->select_hex(event_info.loc1);
 			screen->invalidate_unit();

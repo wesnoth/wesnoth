@@ -934,6 +934,11 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
 
+				//if we didn't make it to the destination, it means we were ambushed.
+				if(loc != i->first) {
+					return true;
+				}
+
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
 				if(new_unit != units_.end() && power_projection(i->first,enemy_srcdst,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {

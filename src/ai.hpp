@@ -301,7 +301,7 @@ public:
 	virtual void play_turn();
 
 	virtual int choose_weapon(const location& att, const location& def,
-	                          battle_stats& cur_stats, gamemap::TERRAIN terrain);
+	                          battle_stats& cur_stats, gamemap::TERRAIN terrain, bool use_cache=false);
 
 	struct target {
 		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };

@@ -1702,6 +1702,11 @@ void display::blit_surface(int x, int y, SDL_Surface* surface, SDL_Rect* srcrect
 
 SDL_Surface* display::get_minimap(int w, int h)
 {
+	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
+		SDL_FreeSurface(minimap_);
+		minimap_ = NULL;
+	}
+
 	if(minimap_ == NULL) {
 		minimap_ = image::getMinimap(w,h,map_,
 				status_.get_time_of_day().lawful_bonus,

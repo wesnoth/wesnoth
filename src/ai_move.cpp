@@ -306,7 +306,13 @@ bool ai::move_group(const location& dst, const std::vector<location>& route, con
 
 		if(best_loc.valid()) {
 			res = true;
-			move_unit(*i,best_loc,possible_moves);
+			const location res = move_unit(*i,best_loc,possible_moves);
+
+			//if we were ambushed, abort the group's movement.
+			if(res != best_loc) {
+				return true;
+			}
+
 			preferred_moves.erase(std::find(preferred_moves.begin(),preferred_moves.end(),best_loc));
 
 			//find locations that are 'perpendicular' to the direction of movement for further units to move to.

@@ -20,6 +20,7 @@
 #include "font.hpp"
 #include "halo.hpp"
 #include "network.hpp"
+#include "tooltips.hpp"
 #include "unit.hpp"
 #include "video.hpp"
 
@@ -117,7 +118,7 @@ struct check_item {
 class preview_pane : public widget {
 public:
 	preview_pane(display& disp) : widget(disp) {}
-	virtual ~preview_pane() {}
+	virtual ~preview_pane() { tooltips::clear_tooltips(location()); }
 
 	virtual bool show_above() const { return false; }
 	virtual bool left_side() const = 0;
