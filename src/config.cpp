@@ -830,6 +830,7 @@ std::string::const_iterator config::read_compressed_internal(std::string::const_
 
 void config::read_compressed(const std::string& data, compression_schema& schema)
 {
+	clear();
 	read_compressed_internal(data.begin(),data.end(),schema);
 }
 
