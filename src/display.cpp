@@ -1248,7 +1248,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	std::vector<gamemap::location>::const_iterator i =
 	         std::find(route_.steps.begin(),route_.steps.end(),loc);
 
-	if(i == route_.steps.end())
+	if(i == route_.steps.begin() || i == route_.steps.end())
 		return;
 
 	const bool left_foot = is_even(i - route_.steps.begin());
