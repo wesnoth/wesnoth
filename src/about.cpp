@@ -161,6 +161,10 @@ std::vector<std::string> get_text() {
 		"-   Pau Rul·lan Ferragut",
 		"+ ",
 
+		"_" N_("+Chinese Translation"),
+		"-   Lim Choon Kiat",
+		"+ ",
+
 		"_" N_("+Czech Translation"),
 		"-   David Nečas (Yeti)",
 		"-   Mintaka",
