@@ -1425,6 +1425,7 @@ void turn_info::do_recruit(const std::string& name)
 		   recruit_unit(map_,team_num_,units_,new_unit,last_hex_,&gui_);
 		if(msg.empty()) {
 			current_team.spend_gold(u_type->second.cost());
+			statistics::recruit_unit(new_unit);
 		} else {
 			recorder.undo();
 			gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
@@ -1503,6 +1504,8 @@ void turn_info::recall()
 			if(!err.empty()) {
 				gui::show_dialog(gui_,NULL,"",err,gui::OK_ONLY);
 			} else {
+				statistics::recall_unit(state_of_game_.available_units[res]);
+
 				current_team.spend_gold(game_config::recall_cost);
 				state_of_game_.available_units.erase(
 				   state_of_game_.available_units.begin()+res);
@@ -1632,12 +1635,90 @@ void turn_info::unit_list()
 	}
 }
 
+std::vector<std::string> turn_info::create_unit_table(const statistics::stats::str_int_map& m)
+{
+	std::vector<std::string> table;
+	for(statistics::stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		const game_data::unit_type_map::const_iterator type = gameinfo_.unit_types.find(i->first);
+		if(type == gameinfo_.unit_types.end()) {
+			continue;
+		}
+
+		std::stringstream str;
+		str << "&" << type->second.image() << "," << type->second.language_name() << "," << i->second << "\n";
+		table.push_back(str.str());
+	}
+
+	return table;
+}
+
 void turn_info::show_statistics()
 {
-	std::stringstream str;
-	str << "Kills: " << statistics::calculate_stats(0,team_num_).killed.size() << "\n"
-		<< "Deaths: " << statistics::calculate_stats(0,team_num_).deaths.size() << "\n";
-	gui::show_dialog(gui_,NULL,"",str.str(),gui::OK_ONLY);
+	const statistics::stats& stats = statistics::calculate_stats(0,team_num_);
+	std::vector<std::string> items;
+	
+	{
+		std::stringstream str;
+		str << string_table["total_recruits"] << "," << statistics::sum_str_int_map(stats.recruits);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << string_table["total_recalls"] << "," << statistics::sum_str_int_map(stats.recalls);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << string_table["total_advances"] << "," << statistics::sum_str_int_map(stats.advanced_to);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << string_table["total_deaths"] << "," << statistics::sum_str_int_map(stats.deaths);
+		items.push_back(str.str());
+	}
+
+	{
+		std::stringstream str;
+		str << string_table["total_kills"] << "," << statistics::sum_str_int_map(stats.killed);
+		items.push_back(str.str());
+	}
+
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["action_statistics"],gui::MESSAGE,&items);
+	std::string title;
+	items.clear();
+	switch(res) {
+	case 0:
+		items = create_unit_table(stats.recruits);
+		title = string_table["total_recruits"];
+		break;
+	case 1:
+		items = create_unit_table(stats.recalls);
+		title = string_table["total_recalls"];
+		break;
+	case 2:
+		items = create_unit_table(stats.advanced_to);
+		title = string_table["total_advances"];
+		break;
+	case 3:
+		items = create_unit_table(stats.deaths);
+		title = string_table["total_deaths"];
+		break;
+	case 4:
+		items = create_unit_table(stats.killed);
+		title = string_table["total_kills"];
+		break;
+	default:
+		return;
+	}
+
+	if(items.empty() == false) {
+		gui::show_dialog(gui_,NULL,"",title,gui::OK_ONLY,&items);
+		show_statistics();
+	}
 }
 
 unit_map::iterator turn_info::current_unit()

@@ -15,6 +15,7 @@
 #include "gamestatus.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "statistics.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -168,6 +169,11 @@ game_state read_game(game_data& data, const config* cfg)
 		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
 	}
 
+	statistics::fresh_stats();
+	if(cfg->child("statistics")) {
+		statistics::read_stats(*cfg->child("statistics"));
+	}
+
 	return res;
 }
 
@@ -211,6 +217,8 @@ void write_game(const game_state& game, config& cfg)
 		can_recruit_str.resize(can_recruit_str.size()-1);
 
 	cfg["can_recruit"] = can_recruit_str;
+
+	cfg.add_child("statistics",statistics::write_stats());
 }
 
 //a structure for comparing to save_info objects based on their modified time.

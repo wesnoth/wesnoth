@@ -159,6 +159,7 @@ struct config
 	static bool has_value(const std::string& values, const std::string& val);
 
 	void clear();
+	bool empty() const;
 
 	struct error {
 		error(const std::string& msg) : message(msg) {}

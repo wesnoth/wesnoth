@@ -393,6 +393,15 @@ battle_stats evaluate_battle_stats(
 		}
 	}
 
+	if(res.damage_defender_takes < 1) {
+		res.damage_defender_takes = 1;
+		if(include_strings) {
+			std::stringstream str;
+			str << translate_string("minimum_damage") << ", ,1";
+			res.attack_calculations.push_back(str.str());
+		}
+	}
+
 	//if the attacker drains, and the defender is a living creature, then
 	//the attacker will drain for half the damage it does
 	if(attack.special() == drain_string && !d->second.type().not_living()) {
@@ -1034,6 +1043,8 @@ void advance_unit(const game_data& info,
                   gamemap::location loc, const std::string& advance_to)
 {
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
+
+	statistics::advance_unit(new_unit);
 	
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));

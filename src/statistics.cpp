@@ -2,16 +2,44 @@
 
 namespace {
 
+//this variable is true whenever the statistics are mid-scenario. This means
+//a new scenario shouldn't be added to the master stats record.
+bool mid_scenario = false;
+
 typedef statistics::stats stats;
 
 struct scenario_stats
 {
-	scenario_stats(const std::string& name) : scenario_name(name)
+	explicit scenario_stats(const std::string& name) : scenario_name(name)
 	{}
+
+	explicit scenario_stats(const config& cfg);
+
+	config write() const;
 
 	std::vector<stats> team_stats;
 	std::string scenario_name;
 };
+
+scenario_stats::scenario_stats(const config& cfg)
+{
+	scenario_name = cfg["scenario"];
+	const config::child_list& teams = cfg.get_children("team");
+	for(config::child_list::const_iterator i = teams.begin(); i != teams.end(); ++i) {
+		team_stats.push_back(stats(**i));
+	}
+}
+
+config scenario_stats::write() const
+{
+	config res;
+	res["scenario"] = scenario_name;
+	for(std::vector<stats>::const_iterator i = team_stats.begin(); i != team_stats.end(); ++i) {
+		res.add_child("team",i->write());
+	}
+
+	return res;
+}
 
 std::vector<scenario_stats> master_stats;
 
@@ -28,6 +56,57 @@ stats& get_stats(int team)
 	}
 
 	return team_stats[index];
+}
+
+config write_str_int_map(const stats::str_int_map& m)
+{
+	config res;
+	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		char buf[50];
+		sprintf(buf,"%d",i->second);
+		res[i->first] = buf;
+	}
+
+	return res;
+}
+
+stats::str_int_map read_str_int_map(const config& cfg)
+{
+	stats::str_int_map m;
+	for(string_map::const_iterator i = cfg.values.begin(); i != cfg.values.end(); ++i) {
+		m[i->first] = atoi(i->second.c_str());
+	}
+
+	return m;
+}
+
+config write_battle_result_map(const stats::battle_result_map& m)
+{
+	config res;
+	for(stats::battle_result_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		config& new_cfg = res.add_child("sequence");
+		new_cfg = write_str_int_map(i->second);
+
+		char buf[50];
+		sprintf(buf,"%d",i->first);
+		new_cfg["_num"] = buf;
+	}
+
+	return res;
+}
+
+stats::battle_result_map read_battle_result_map(const config& cfg)
+{
+	stats::battle_result_map m;
+	const config::child_list c = cfg.get_children("sequence");
+	for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
+		config item = **i;
+		const int key = atoi(item["_num"].c_str());
+		item.values.erase("_num");
+		m[key] = read_str_int_map(item);
+	}
+
+	return m;
 }
 
 void merge_str_int_map(stats::str_int_map& a, const stats::str_int_map& b)
@@ -69,13 +148,90 @@ namespace statistics
 stats::stats() : recruit_cost(0), recall_cost(0), damage_inflicted(0), damage_taken(0)
 {}
 
+stats::stats(const config& cfg)
+{
+	read(cfg);
+}
+
+config stats::write() const
+{
+	config res;
+	res.add_child("recruits",write_str_int_map(recruits));
+	res.add_child("recalls",write_str_int_map(recalls));
+	res.add_child("advances",write_str_int_map(advanced_to));
+	res.add_child("deaths",write_str_int_map(deaths));
+	res.add_child("killed",write_str_int_map(killed));
+	res.add_child("attacks",write_battle_result_map(attacks));
+	res.add_child("defends",write_battle_result_map(defends));
+
+	char buf[50];
+	sprintf(buf,"%d",recruit_cost);
+	res["recruit_cost"] = buf;
+
+	sprintf(buf,"%d",recall_cost);
+	res["recall_cost"] = buf;
+
+	sprintf(buf,"%d",damage_inflicted);
+	res["damage_inflicted"] = buf;
+
+	sprintf(buf,"%d",damage_taken);
+	res["damage_taken"] = buf;
+
+	return res;
+}
+
+void stats::read(const config& cfg)
+{
+	if(cfg.child("recruits")) {
+		recruits = read_str_int_map(*cfg.child("recruits"));
+	}
+
+	if(cfg.child("recalls")) {
+		recalls = read_str_int_map(*cfg.child("recalls"));
+	}
+
+	if(cfg.child("advances")) {
+		advanced_to = read_str_int_map(*cfg.child("advances"));
+	}
+
+	if(cfg.child("deaths")) {
+		deaths = read_str_int_map(*cfg.child("deaths"));
+	}
+
+	if(cfg.child("killed")) {
+		killed = read_str_int_map(*cfg.child("killed"));
+	}
+
+	if(cfg.child("recalls")) {
+		recalls = read_str_int_map(*cfg.child("recalls"));
+	}
+
+	if(cfg.child("attacks")) {
+		attacks = read_battle_result_map(*cfg.child("attacks"));
+	}
+
+	if(cfg.child("defends")) {
+		attacks = read_battle_result_map(*cfg.child("attacks"));
+	}
+
+	recruit_cost = atoi(cfg["recruit_cost"].c_str());
+	recall_cost = atoi(cfg["recall_cost"].c_str());
+	damage_inflicted = atoi(cfg["damage_inflicted"].c_str());
+	damage_taken = atoi(cfg["damage_taken"].c_str());
+}
+
 scenario_context::scenario_context(const std::string& name)
 {
-	master_stats.push_back(scenario_stats(name));
+	if(!mid_scenario || master_stats.empty()) {
+		master_stats.push_back(scenario_stats(name));
+	}
+
+	mid_scenario = true;
 }
 
 scenario_context::~scenario_context()
 {
+	mid_scenario = false;
 }
 
 attack_context::attack_context(const unit& a, const unit& d, const battle_stats& stats)
@@ -177,6 +333,45 @@ stats calculate_stats(int category, int side)
 			return stats();
 		}
 	}
+}
+
+config write_stats()
+{
+	config res;
+	res["mid_scenario"] = (mid_scenario ? "true" : "false");
+
+	for(std::vector<scenario_stats>::const_iterator i = master_stats.begin(); i != master_stats.end(); ++i) {
+		res.add_child("scenario",i->write());
+	}
+
+	return res;
+}
+
+void read_stats(const config& cfg)
+{
+	fresh_stats();
+	mid_scenario = (cfg["mid_scenario"] == "true");
+
+	const config::child_list& scenarios = cfg.get_children("scenario");
+	for(config::child_list::const_iterator i = scenarios.begin(); i != scenarios.end(); ++i) {
+		master_stats.push_back(scenario_stats(**i));
+	}
+}
+
+void fresh_stats()
+{
+	master_stats.clear();
+	mid_scenario = false;
+}
+
+int sum_str_int_map(const stats::str_int_map& m)
+{
+	int res = 0;
+	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
+		res += i->second;
+	}
+
+	return res;
 }
 
 }

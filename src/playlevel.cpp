@@ -25,6 +25,7 @@
 #include "replay.hpp"
 #include "scoped_resource.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "tooltips.hpp"
 
 #include <iostream>
@@ -98,6 +99,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
+	const statistics::scenario_context statistics_context(translate_string_default((*level)["id"],(*level)["name"]));
+
 	const int num_turns = atoi(level->values["turns"].c_str());
 	gamestatus status(*level,num_turns);
 

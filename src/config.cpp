@@ -1130,6 +1130,11 @@ void config::clear()
 	ordered_children.clear();
 }
 
+bool config::empty() const
+{
+	return children.empty() && values.empty();
+}
+
 config::all_children_iterator::all_children_iterator(config::all_children_iterator::Itor i) : i_(i)
 {}
 

@@ -9,6 +9,10 @@ namespace statistics
 	struct stats
 	{
 		stats();
+		explicit stats(const config& cfg);
+
+		config write() const;
+		void read(const config& cfg);
 
 		typedef std::map<std::string,int> str_int_map;
 		str_int_map recruits, recalls, advanced_to, deaths, killed;
@@ -25,6 +29,8 @@ namespace statistics
 
 		int damage_inflicted, damage_taken;
 	};
+
+	int sum_str_int_map(const stats::str_int_map& m);
 	
 	struct scenario_context
 	{
@@ -58,8 +64,9 @@ namespace statistics
 
 	void advance_unit(const unit& u);
 
-	config write_stats(int team);
-	void read_stats(int team, const config& cfg);
+	config write_stats();
+	void read_stats(const config& cfg);
+	void fresh_stats();
 
 	std::vector<std::string> get_categories();
 	stats calculate_stats(int category, int side);

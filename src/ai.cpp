@@ -22,6 +22,7 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "statistics.hpp"
 
 #include <iostream>
 
@@ -102,6 +103,7 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 
 	//see if we can actually recruit (i.e. have enough room etc)
 	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,&info_.disp).empty()) {
+		statistics::recruit_unit(new_unit);
 		current_team().spend_gold(u->second.cost());
 
 		//confirm the transaction - i.e. don't undo recruitment

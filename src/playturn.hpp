@@ -26,6 +26,7 @@
 #include "key.hpp"
 #include "pathfind.hpp"
 #include "show_dialog.hpp"
+#include "statistics.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit.hpp"
@@ -113,6 +114,8 @@ private:
 
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const;
+
+	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
 
 	game_data& gameinfo_;
 	game_state& state_of_game_;

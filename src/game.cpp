@@ -38,6 +38,7 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
+#include "statistics.hpp"
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "unit.hpp"
@@ -362,6 +363,8 @@ int play_game(int argc, char** argv)
 	}
 
 	for(;;) {
+		statistics::fresh_stats();
+
 		sound::play_music(game_config::title_music);
 
 		game_state state;

@@ -22,6 +22,7 @@
 #include "playturn.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
+#include "statistics.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -451,6 +452,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
+			statistics::recruit_unit(new_unit);
+
 			current_team.spend_gold(u_type->second.cost());
 		}
 
@@ -465,6 +468,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location loc(*child);
 
 			if(val >= 0 && val < int(state_of_game.available_units.size())) {
+				statistics::recall_unit(state_of_game.available_units[val]);
 				recruit_unit(map,team_num,units,state_of_game.available_units[val],loc);
 				state_of_game.available_units.erase(state_of_game.available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
