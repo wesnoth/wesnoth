@@ -1012,6 +1012,42 @@ bool game_controller::new_campaign()
 	return true;
 }
 
+namespace
+{
+
+std::string format_file_size(const std::string& size_str)
+{
+	double size = lexical_cast_default<double>(size_str,0.0);
+
+	const double k = 1024;
+	if(size > 0.0) {
+		std::string size_postfix = _("B");
+		if(size > k) {
+			size /= k;
+			size_postfix = _("KB");
+			if(size > k) {
+				size /= k;
+				size_postfix = _("MB");
+			}
+		}
+
+		std::ostringstream stream;
+		//Visual C++ makes 'precision' set the number of decimal places. Other platforms
+		//make it set the number of significant figures
+#ifdef _MSC_VER
+		stream.precision(1);
+#else
+		stream.precision(3);
+#endif
+		stream << std::fixed << size << size_postfix;
+		return stream.str();
+	} else {
+		return "";
+	}
+}
+
+}
+
 void game_controller::download_campaigns()
 {
 	std::string host = "campaigns.wesnoth.org";
@@ -1075,30 +1111,13 @@ void game_controller::download_campaigns()
 				delete_options.push_back(name);
 			}
 
-			size_t size = lexical_cast_default<size_t>((**i)["size"],0);
-			std::string size_str = "";
-
-			if(size > 0) {
-				std::string size_postfix = _("B");
-				if(size > 1024) {
-					size /= 1024;
-					size_postfix = _("KB");
-					if(size > 1024) {
-						size /= 1024;
-						size_postfix = _("MB");
-					}
-				}
-
-				size_str = lexical_cast<std::string>(size) + size_postfix;
-			}
-
 			std::replace(name.begin(),name.end(),'_',' ');
 			options.push_back(IMAGE_PREFIX + (**i)["icon"] + COLUMN_SEPARATOR +
 			                  name + COLUMN_SEPARATOR +
 			                  (**i)["version"] + COLUMN_SEPARATOR +
 			                  (**i)["author"] + COLUMN_SEPARATOR +
 			                  (**i)["downloads"] + COLUMN_SEPARATOR +
-			                  size_str);
+			                  format_file_size((**i)["size"]));
 		}
 
 		for(std::vector<std::string>::const_iterator j = publish_options.begin(); j != publish_options.end(); ++j) {
