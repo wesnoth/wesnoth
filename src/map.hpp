@@ -95,6 +95,7 @@ public:
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
 	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+	void read(const std::string& data);
 
 	std::string write() const;
 

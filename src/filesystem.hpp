@@ -34,6 +34,7 @@ void get_files_in_dir(const std::string& dir,
 std::string get_dir(const std::string &dir);
 //the location of various important files
 std::string get_prefs_file();
+std::string get_save_index_file();
 std::string get_saves_dir();
 std::string get_cache_dir();
 std::string get_user_data_dir();

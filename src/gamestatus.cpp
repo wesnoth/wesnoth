@@ -16,6 +16,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "statistics.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -191,7 +192,7 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
-game_state read_game(game_data& data, const config* cfg)
+game_state read_game(const game_data& data, const config* cfg)
 {
 	log_scope("read_game");
 	game_state res;
@@ -347,7 +348,7 @@ void delete_game(const std::string& name)
 	remove((get_saves_dir() + "/" + modified_name).c_str());
 }
 
-void load_game(game_data& data, const std::string& name, game_state& state)
+void load_game(const game_data& data, const std::string& name, game_state& state)
 {
 	log_scope("load_game");
 	std::string modified_name = name;
@@ -373,8 +374,129 @@ void save_game(const game_state& state)
 	config cfg;
 	try {
 		write_game(state,cfg);
-		write_file(get_saves_dir() + "/" + name,cfg.write());
+
+		const std::string fname = get_saves_dir() + "/" + name;
+		write_file(fname,cfg.write());
+
+		config& summary = save_summary(state.label);
+		extract_summary_data_from_save(state,summary);
+		const int mod_time = static_cast<int>(file_create_time(fname));
+		summary["mod_time"] = str_cast(mod_time);
+
+		write_save_index();
 	} catch(io_exception& e) {
 		throw gamestatus::save_game_failed(e.what());
 	};
+}
+
+namespace {
+bool save_index_loaded = false;
+config save_index_cfg;
+}
+
+config& save_index()
+{
+	if(save_index_loaded == false) {
+		try {
+			save_index_cfg.read(read_file(get_save_index_file()));
+		} catch(io_exception& e) {
+			std::cerr << "error reading save index: '" << e.what() << "'\n";
+		} catch(config::error& e) {
+			std::cerr << "error parsing save index config file\n";
+			save_index_cfg.clear();
+		}
+
+		save_index_loaded = true;
+	}
+
+	return save_index_cfg;
+}
+
+config& save_summary(const std::string& save)
+{
+	config& cfg = save_index();
+	config* res = cfg.find_child("save","save",save);
+	if(res == NULL) {
+		res = &cfg.add_child("save");
+		(*res)["save"] = save;
+	}
+
+	return *res;
+}
+
+void delete_save_summary(const std::string& save)
+{
+	config& cfg = save_index();
+	const config* const res = cfg.find_child("save","save",save);
+	if(res != NULL) {
+		const config::child_list& children = cfg.get_children("save");
+		const size_t index = std::find(children.begin(),children.end(),res) - children.begin();
+		cfg.remove_child("save",index);
+	}
+}
+
+void write_save_index()
+{
+	try {
+		write_file(get_save_index_file(),save_index().write());
+	} catch(io_exception& e) {
+		std::cerr << "error writing to save index file: '" << e.what() << "'\n";
+	}
+}
+
+void extract_summary_data_from_save(const game_state& state, config& out)
+{
+	const bool has_replay = state.replay_data.empty() == false;
+	const bool has_snapshot = state.snapshot.child("side") != NULL;
+
+	out["replay"] = has_replay ? "yes" : "no";
+	out["snapshot"] = has_snapshot ? "yes" : "no";
+	
+	if(has_snapshot) {
+		out["map_data"] = state.snapshot["map_data"];
+	} else if(has_replay) {
+		out["map_data"] = state.starting_pos["map_data"];
+	}
+
+	out["campaign_type"] = state.campaign_type;
+	out["scenario"] = state.scenario;
+	out["difficulty"] = state.difficulty;
+	out["corrupt"] = "";
+
+	if(has_snapshot) {
+		out["turn"] = state.snapshot["turn_at"];
+		if(state.snapshot["turns"] != "-1") {
+			out["turn"] += "/" + state.snapshot["turns"];
+		}
+	}
+
+	//find the first human leader so we can display their icon in the load menu
+	std::string leader;
+	
+	for(std::vector<unit>::const_iterator u = state.available_units.begin(); u != state.available_units.end(); ++u) {
+		if(u->can_recruit()) {
+			leader = u->type().name();
+		}
+	}
+
+	if(leader == "") {
+		const config& snapshot = has_snapshot ? state.snapshot : state.starting_pos;
+		const config::child_list& sides = snapshot.get_children("side");
+		for(config::child_list::const_iterator s = sides.begin(); s != sides.end() && leader.empty(); ++s) {
+
+			if((**s)["controller"] != "human") {
+				continue;
+			}
+
+			const config::child_list& units = (**s).get_children("unit");
+			for(config::child_list::const_iterator u = units.begin(); u != units.end(); ++u) {
+				if((**u)["canrecruit"] == "1") {
+					leader = (**u)["type"];
+					break;
+				}
+			}
+		}
+	}
+
+	out["leader"] = leader;
 }

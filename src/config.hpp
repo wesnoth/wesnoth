@@ -151,7 +151,7 @@ struct config
 	                         const std::string& value) const;
 
 	void clear_children(const std::string& key);
-	config* remove_child(const std::string& key, size_t index);
+	void remove_child(const std::string& key, size_t index);
 
 	// REMOVE_EMPTY : remove empty elements
 	// STRIP_SPACES : strips leading and trailing blank spaces

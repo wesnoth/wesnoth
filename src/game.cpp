@@ -709,7 +709,7 @@ int play_game(int argc, char** argv)
 
 			bool show_replay = loaded_game_show_replay;
 
-			const std::string game = loaded_game.empty() ? dialogs::load_game_dialog(disp,&show_replay) : loaded_game;
+			const std::string game = loaded_game.empty() ? dialogs::load_game_dialog(disp,game_config,units_data,&show_replay) : loaded_game;
 
 			loaded_game = "";
 
@@ -844,7 +844,7 @@ int play_game(int argc, char** argv)
 			int res = 0;
 
 			if(campaign_names.size() > 1) {
-				res = gui::show_dialog(disp,NULL,"",
+				res = gui::show_dialog(disp,NULL,string_table["new_campaign"],
 				                                 string_table["choose_campaign"],
 												 gui::OK_CANCEL,&campaign_names);
 
@@ -867,7 +867,7 @@ int play_game(int argc, char** argv)
 					std::transform(difficulties.begin(),difficulties.end(),difficulty_options.begin(),translate_string);
 				}
 
-				const int res = gui::show_dialog(disp,NULL,"",
+				const int res = gui::show_dialog(disp,NULL,string_table["difficulty"],
 				                            string_table["difficulty_level"],
 				                            gui::OK_CANCEL,&difficulty_options);
 				if(res == -1)

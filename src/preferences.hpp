@@ -104,6 +104,10 @@ namespace preferences {
 	bool show_haloes();
 	void set_show_haloes(bool value);
 
+	enum CACHE_SAVES_METHOD { CACHE_SAVES_ASK, CACHE_SAVES_NEVER, CACHE_SAVES_ALWAYS };
+	CACHE_SAVES_METHOD cache_saves();
+	void set_cache_saves(CACHE_SAVES_METHOD method);
+
 	std::string client_type();
 
 	void set_theme(const std::string& theme);

@@ -547,7 +547,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 
 	std::cerr << "scaling minimap..." << int(minimap) << "." << int(minimap->pixels) << "\n";
 
-	if(minimap->w != w || minimap->h != h) {
+	if((minimap->w != w || minimap->h != h) && w != 0) {
 		const scoped_sdl_surface surf(minimap);
 		minimap = scale_surface(surf,w,h);
 	}

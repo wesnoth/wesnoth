@@ -1109,9 +1109,9 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 				energy_file = &game_config::ally_energy_image;
 			}
 		} else {
-			if(activeTeam_ == currentTeam_ && unit_move == unit_total_move) {
+			if(activeTeam_ == currentTeam_ && unit_move == unit_total_move && !it->second.user_end_turn()) {
 				energy_file = &game_config::unmoved_energy_image;
-			} else if(activeTeam_ == currentTeam_ && unit_can_move(loc,units_,map_,teams_)) {
+			} else if(activeTeam_ == currentTeam_ && unit_can_move(loc,units_,map_,teams_) && !it->second.user_end_turn()) {
 				energy_file = &game_config::partmoved_energy_image;
 			} else {
 				energy_file = &game_config::moved_energy_image;

@@ -492,6 +492,32 @@ void set_show_haloes(bool value)
 	prefs["show_haloes"] = value ? "yes" : "no";
 }
 
+CACHE_SAVES_METHOD cache_saves()
+{
+	if(prefs["cache_saves"] == "always") {
+		return CACHE_SAVES_ALWAYS;
+	} else if(prefs["cache_saves"] == "never") {
+		return CACHE_SAVES_NEVER;
+	} else {
+		return CACHE_SAVES_ASK;
+	}
+}
+
+void set_cache_saves(CACHE_SAVES_METHOD method)
+{
+	switch(method) {
+	case CACHE_SAVES_ALWAYS:
+		prefs["cache_saves"] = "always";
+		break;
+	case CACHE_SAVES_NEVER:
+		prefs["cache_saves"] = "never";
+		break;
+	case CACHE_SAVES_ASK:
+		prefs["cache_saves"] = "ask";
+		break;
+	}
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

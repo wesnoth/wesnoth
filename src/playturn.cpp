@@ -1077,6 +1077,7 @@ void turn_info::cycle_units()
 		for(++it; it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
+			   it->second.user_end_turn() == false &&
 			   !gui_.fogged(it->first.x,it->first.y)) {
 				break;
 			}
@@ -1087,6 +1088,7 @@ void turn_info::cycle_units()
 		for(it = units_.begin(); it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
+			   it->second.user_end_turn() == false &&
 			   !gui_.fogged(it->first.x,it->first.y))
 				break;
 		}
@@ -1191,18 +1193,15 @@ void turn_info::end_unit_turn()
 	const unit_map::iterator un = units_.find(selected_hex_);
 	if(un != units_.end() && un->second.side() == team_num_ &&
 	   un->second.movement_left() >= 0) {
-		std::vector<gamemap::location> steps;
-		steps.push_back(selected_hex_);
-		undo_stack_.push_back(undo_action(un->second,steps,un->second.movement_left(),-1));
-		redo_stack_.clear();
-		un->second.end_unit_turn();
+		un->second.set_user_end_turn(!un->second.user_end_turn());
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
 		gui_.set_paths(NULL);
 		current_paths_ = paths();
-		recorder.add_movement(selected_hex_,selected_hex_);
 
-		cycle_units();
+		if(un->second.user_end_turn()) {
+			cycle_units();
+		}
 	}
 }
 
@@ -1245,10 +1244,13 @@ void turn_info::undo()
 		un.set_goto(gamemap::location());
 		units_.erase(u);
 		unit_display::move_unit(gui_,map_,route,un);
+
 		un.set_movement(starting_moves);
 		units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 		gui_.draw_tile(route.back().x,route.back().y);
+		gui_.update_display();
 	}
+
 	gui_.invalidate_unit();
 	gui_.invalidate_game_status();
 
@@ -1473,7 +1475,7 @@ void turn_info::save_game()
 void turn_info::load_game()
 {
 	bool show_replay = false;
-	const std::string game = dialogs::load_game_dialog(gui_,&show_replay);
+	const std::string game = dialogs::load_game_dialog(gui_,terrain_config_,gameinfo_,&show_replay);
 	if(game != "") {
 		throw gamestatus::load_game_exception(game,show_replay);
 	}

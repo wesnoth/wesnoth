@@ -45,7 +45,7 @@ int get_save_name(display & disp, const std::string& caption,
 //of the save they want to load. Stores whether the user wants to show
 //a replay of the game in show_replay. If show_replay is NULL, then
 //the user will not be asked if they want to show a replay.
-std::string load_game_dialog(display& disp, bool* show_replay);
+std::string load_game_dialog(display& disp, const config& terrain_config, const game_data& data, bool* show_replay);
 
 void unit_speak(const config& message_info, display& disp, const unit_map& units);
 

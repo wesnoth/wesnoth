@@ -210,6 +210,15 @@ gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);
 
+	read(data);
+}
+
+void gamemap::read(const std::string& data)
+{
+	tiles_.clear();
+	villages_.clear();
+	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
+
 	size_t x = 0, y = 0;
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		char c = *i;

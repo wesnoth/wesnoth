@@ -48,8 +48,8 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 }
 
 //constructor for reading a unit
-unit::unit(game_data& data, const config& cfg) : state_(STATE_NORMAL),
-                                           moves_(0), facingLeft_(true),
+unit::unit(const game_data& data, const config& cfg) : state_(STATE_NORMAL),
+                                           moves_(0), user_end_turn_(false), facingLeft_(true),
                                            recruit_(false),
                                            guardian_(false), upkeep_(UPKEEP_FREE)
 {
@@ -64,7 +64,7 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit) :
                backupMaxHitpoints_(t->hitpoints()), experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
-               side_(side), moves_(0), facingLeft_(side != 1),
+               side_(side), moves_(0), user_end_turn_(false), facingLeft_(side != 1),
 			   maxMovement_(t->movement()),
 			   backupMaxMovement_(t->movement()),
 			   recruit_(false), attacks_(t->attacks()),
@@ -92,7 +92,7 @@ unit::unit(const unit_type* t, const unit& u) :
 			   experience_(0),
 			   maxExperience_(t->experience_needed()),
 			   backupMaxExperience_(t->experience_needed()),
-               side_(u.side()), moves_(u.moves_), facingLeft_(u.facingLeft_),
+               side_(u.side()), moves_(u.moves_), user_end_turn_(false), facingLeft_(u.facingLeft_),
 			   maxMovement_(t->movement()),
 			   backupMaxMovement_(t->movement()),
 			   underlying_description_(u.underlying_description_),
@@ -233,7 +233,18 @@ bool unit::can_attack() const
 
 void unit::set_movement(int moves)
 {
+	user_end_turn_ = false;
 	moves_ = moves;
+}
+
+void unit::set_user_end_turn(bool value)
+{
+	user_end_turn_ = value;
+}
+
+bool unit::user_end_turn() const
+{
+	return user_end_turn_;
 }
 
 void unit::set_attacked()
@@ -252,6 +263,7 @@ void unit::end_unit_turn()
 
 void unit::new_turn()
 {
+	user_end_turn_ = false;
 	moves_ = total_movement();
 	if(type().has_ability("ambush"))
 		set_flag("ambush");
@@ -549,9 +561,9 @@ const std::vector<std::string>& unit::overlays() const
 	return overlays_;
 }
 
-void unit::read(game_data& data, const config& cfg)
+void unit::read(const game_data& data, const config& cfg)
 {
-	std::map<std::string,unit_type>::iterator i = data.unit_types.find(cfg["type"]);
+	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
 		type_ = &i->second;
 	else
@@ -583,8 +595,7 @@ void unit::read(game_data& data, const config& cfg)
 	custom_unit_description_ = cfg["unit_description"];
 
 	traitsDescription_ = cfg["traits_description"];
-	const std::map<std::string,std::string>::const_iterator recruit_itor =
-			                                 cfg.values.find("canrecruit");
+	const std::map<std::string,std::string>::const_iterator recruit_itor = cfg.values.find("canrecruit");
 	if(recruit_itor != cfg.values.end() && recruit_itor->second == "1") {
 		recruit_ = true;
 	}

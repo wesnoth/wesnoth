@@ -162,7 +162,7 @@ const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
                 BUTTON_COLOUR = {0xBC,0xB0,0x88,0};
 
 const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
-           NORMAL_TEXT='{', BLACK_TEXT='}', IMAGE='&', NULL_MARKUP='^';
+           NORMAL_TEXT='{', BLACK_TEXT='}', BOLD_TEXT='~', IMAGE='&', NULL_MARKUP='^';
 
 
 const SDL_Color& get_side_colour(int side)
@@ -259,7 +259,7 @@ SDL_Surface* render_text(TTF_Font* font,const std::string& text, const SDL_Color
 
 //function which will parse the markup tags at the front of a string
 std::string::const_iterator parse_markup(std::string::const_iterator i1, std::string::const_iterator i2,
-										 int* font_size, SDL_Color* colour)
+										 int* font_size, SDL_Color* colour, int* style)
 {
 	if(font_size == NULL || colour == NULL) {
 		return i1;
@@ -288,6 +288,9 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1, std::st
 			break;
 		case SMALL_TEXT:
 			*font_size -= 2;
+			break;
+		case BOLD_TEXT:
+			*style |= TTF_STYLE_BOLD;
 			break;
 		case NULL_MARKUP:
 			return i1+1;
@@ -430,15 +433,16 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 	for(;;) {
 		SDL_Color col = colour;
 		int sz = size;
+		int text_style = style;
 
-		i1 = parse_markup(i1,i2,&sz,&col);
+		i1 = parse_markup(i1,i2,&sz,&col,&text_style);
 
 		if(i1 != i2) {
 			std::string new_string(i1,i2);
 
 			config::unescape(new_string);
 
-			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips,style);
+			const SDL_Rect rect = draw_text_line(gui,area,sz,col,new_string,x,y,bg,use_tooltips,text_style);
 			if(rect.w > res.w) {
 				res.w = rect.w;
 			}
@@ -691,13 +695,14 @@ SDL_Surface* floating_label::create_surface()
 		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
 			SDL_Color colour = colour_;
 			int size = font_size_;
-			const std::string::const_iterator i1 = font::parse_markup(ln->begin(),ln->end(),&size,&colour);
+			int style = 0;
+			const std::string::const_iterator i1 = font::parse_markup(ln->begin(),ln->end(),&size,&colour,&style);
 			const std::string str(i1,ln->end());
 
 			TTF_Font* const font = get_font(size);
 
 			if(str != "" && font != NULL) {
-				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour,0)));
+				surfaces.push_back(shared_sdl_surface(font::render_text(font,str,colour,style)));
 			}
 		}
 

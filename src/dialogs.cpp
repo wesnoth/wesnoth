@@ -15,11 +15,13 @@
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
 #include "widgets/file_chooser.hpp"
+#include "widgets/progressbar.hpp"
 
 #include <cstdio>
 #include <map>
@@ -199,7 +201,7 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 
 } //end anon namespace
 
-std::string load_game_dialog(display& disp, bool* show_replay)
+std::string load_game_dialog(display& disp, const config& game_config, const game_data& data, bool* show_replay)
 {
 	std::vector<save_info> games = get_saves_list();
 
@@ -216,8 +218,93 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 		return "";
 	}
 
+	std::vector<size_t> no_summary; //all items that aren't in the summary table
+	std::vector<config*> summaries;
+	std::vector<save_info>::const_iterator i;
+	for(i = games.begin(); i != games.end(); ++i) {
+		config& cfg = save_summary(i->name);
+		if(cfg["campaign_type"].empty() && cfg["corrupt"] != "yes" || lexical_cast<int>(cfg["mod_time"]) != static_cast<int>(i->time_modified)) {
+			no_summary.push_back(i - games.begin());
+		}
+
+		summaries.push_back(&cfg);
+	}
+
+	bool generate_summaries = !no_summary.empty();
+
+	//if there are more than 5 saves without a summary, it may take a substantial
+	//amount of time to convert them over. Ask the user if they want to do this
+	if(no_summary.size() > 5) {
+
+		if(preferences::cache_saves() == preferences::CACHE_SAVES_NEVER) {
+			generate_summaries = false;
+		} else if(preferences::cache_saves() == preferences::CACHE_SAVES_ALWAYS) {
+			generate_summaries = true;
+		} else {
+			std::string caption = "import_saves_caption", message = "import_old_saves";
+
+			//if there are already some cached games, then we assume that the user is importing new
+			//games, and it's not a total import, so tailor the message accordingly
+			if(no_summary.size() < games.size()) {
+				message = "import_saves";
+			}
+
+			std::vector<gui::check_item> options;
+			options.push_back(gui::check_item(string_table["dont_ask_again"],false));
+			const int res = gui::show_dialog(disp,NULL,string_table[caption],string_table[message],
+			                                 gui::YES_NO,NULL,NULL,"",NULL,NULL,&options);
+
+			generate_summaries = res == 0;
+			if(options.front().checked) {
+				preferences::set_cache_saves(generate_summaries ? preferences::CACHE_SAVES_ALWAYS : preferences::CACHE_SAVES_NEVER);
+			}
+		}
+	}
+
+	if(generate_summaries) {
+		const events::event_context context;
+		gui::progress_bar bar(disp);
+		const SDL_Rect bar_area = {disp.x()/2 - 100, disp.y()/2 - 20, 200, 40};
+		bar.set_location(bar_area);
+
+		for(std::vector<size_t>::const_iterator s = no_summary.begin(); s != no_summary.end(); ++s) {
+			bar.set_progress_percent(((s - no_summary.begin())*100)/no_summary.size());
+			events::raise_draw_event();
+			events::pump();
+			disp.update_display();
+
+			log_scope("load");
+			std::cerr << "loading game: '" << games[*s].name << "'\n";
+			game_state state;
+
+			config& summary = save_summary(games[*s].name);
+
+			try {
+				summary["mod_time"] = str_cast(lexical_cast<int>(games[*s].time_modified));
+				load_game(data,games[*s].name,state);
+				extract_summary_data_from_save(state,summary);
+			} catch(io_exception&) {
+				summary["corrupt"] = "yes";
+				std::cerr << "save '" << games[*s].name << "' could not be loaded (io_exception)\n";
+			} catch(config::error&) {
+				summary["corrupt"] = "yes";
+				std::cerr << "save '" << games[*s].name << "' could not be loaded (config parse error)\n";
+			} catch(gamestatus::load_game_failed&) {
+				summary["corrupt"] = "yes";
+				std::cerr << "save '" << games[*s].name << "' could not be loaded (load_game_failed exception)\n";
+			}
+			
+			std::cerr << "loaded...\n";
+		}
+
+		write_save_index();
+	}
+
+	util::scoped_ptr<gamemap> map_ptr(NULL);
+	string_map map_cache;
+
 	std::vector<std::string> items;
-	for(std::vector<save_info>::const_iterator i = games.begin(); i != games.end(); ++i) {
+	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name;
 		name.resize(minimum<size_t>(name.size(),40));
 
@@ -227,8 +314,89 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 			time_buf[0] = 0;
 
 		std::stringstream str;
+
+		config& summary = *summaries[i - games.begin()];
+		const game_data::unit_type_map::const_iterator leader = data.unit_types.find(summary["leader"]);
+		if(leader != data.unit_types.end()) {
+			str << "&" << leader->second.image() << ",";
+		} else {
+			str << ",";
+		}
+
 		// escape all special characters in filenames
-		str << config::escape(name) << "," << time_buf;
+		str << font::BOLD_TEXT << config::escape(name) << "\n" << time_buf;
+
+		if(summary["corrupt"] == "yes") {
+			str << "\n" << string_table["save_invalid"];
+		} else if(summary["campaign_type"] != "") {
+			str << "\n";
+			
+			const std::string& campaign_type = summary["campaign_type"];
+			if(campaign_type == "scenario") {
+				str << translate_string("campaign_button");
+			} else if(campaign_type == "multiplayer") {
+				str << translate_string("multiplayer_button");
+			} else if(campaign_type == "tutorial") {
+				str << translate_string("tutorial_button");
+			} else {
+				str << translate_string(campaign_type);
+			}
+
+			str << "\n";
+			
+			if(summary["snapshot"] == "no" && summary["replay"] == "yes") {
+				str << translate_string("replay");
+			} else if(summary["turn"] != "") {
+				str << translate_string("turn") << " " << summary["turn"];
+			} else {
+				str << string_table["scenario_start"];
+			}
+
+			str << "\n" << translate_string("difficulty") << ": " << translate_string(summary["difficulty"]);
+
+			std::string map_data = summary["map_data"];
+			if(map_data.empty()) {
+				const config* const scenario = game_config.find_child(summary["campaign_type"],"id",summary["scenario"]);
+				if(scenario != NULL) {
+					map_data = (*scenario)["map_data"];
+					if(map_data.empty() && (*scenario)["map"].empty() == false) {
+						try {
+							map_data = read_map((*scenario)["map"]);
+						} catch(io_exception& e) {
+							std::cerr << "could not read map '" << (*scenario)["map"] << "': " << e.what() << "\n";
+						}
+					}
+				}
+			}
+
+			if(map_data.empty() == false) {
+				const string_map::const_iterator itor = map_cache.find(map_data);
+				if(itor != map_cache.end()) {
+					str << ",&" << itor->second;
+				} else {
+
+					try {
+						if(map_ptr == NULL) {
+							map_ptr.assign(new gamemap(game_config,map_data));
+						} else {
+							map_ptr->read(map_data);
+						}
+
+						SDL_Surface* const minimap = image::getMinimap(72,72,*map_ptr,0,NULL);
+						if(minimap != NULL) {
+							const std::string id = "_map_image_" + name;
+							image::register_image(id,minimap);
+							str << ",&" << id;
+
+							map_cache[map_data] = id;
+						}
+					} catch(gamemap::incorrect_format_exception& e) {
+					}
+				}
+			}
+			
+		}
+
 		items.push_back(str.str());
 	}
 
@@ -246,8 +414,14 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 	if(res == -1)
 		return "";
 
-	if(show_replay != NULL)
+	if(show_replay != NULL) {
 		*show_replay = options.front().checked;
+
+		const config& summary = *summaries[res];
+		if(summary["replay"] == "yes" && summary["snapshot"] == "no") {
+			*show_replay = true;
+		}
+	}
 
 	return games[res].name;
 }

@@ -149,6 +149,11 @@ std::string get_prefs_file()
 	return get_user_data_dir() + "/preferences";
 }
 
+std::string get_save_index_file()
+{
+	return get_user_data_dir() + "/save_index";
+}
+
 std::string get_saves_dir()
 {
 	const std::string dir_path = get_user_data_dir() + "/saves";

@@ -1114,7 +1114,7 @@ void config::clear_children(const std::string& key)
 	children.erase(key);
 }
 
-config* config::remove_child(const std::string& key, size_t index)
+void config::remove_child(const std::string& key, size_t index)
 {
 	//remove from the ordering
 	const child_pos pos(children.find(key),index);
@@ -1133,7 +1133,7 @@ config* config::remove_child(const std::string& key, size_t index)
 	assert(index < v.size());
 	config* const res = v[index];
 	v.erase(v.begin()+index);
-	return res;
+	delete res;
 }
 
 std::string& config::operator[](const std::string& key)

@@ -31,7 +31,7 @@ class unit
 public:
 	friend struct unit_movement_resetter;
 
-	unit(game_data& data, const config& cfg);
+	unit(const game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false);
 
 	//a constructor used when advancing a unit
@@ -58,6 +58,8 @@ public:
 	bool can_recruit() const;
 	int total_movement() const;
 	int movement_left() const;
+	void set_user_end_turn(bool value=true);
+	bool user_end_turn() const;
 	bool can_attack() const;
 	void set_movement(int moves);
 	void set_attacked();
@@ -92,7 +94,7 @@ public:
 	void remove_overlay(const std::string& overlay);
 	const std::vector<std::string>& overlays() const;
 
-	void read(game_data& data, const config& cfg);
+	void read(const game_data& data, const config& cfg);
 
 	void write(config& cfg) const;
 
@@ -161,6 +163,7 @@ private:
 	// NOT_MOVED if not moved and pressed "end turn"
 	enum MOVES { ATTACKED=-1, MOVED=-2, NOT_MOVED=-3 };
 	int moves_;
+	bool user_end_turn_;
 	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;
 	bool resting_;

@@ -80,7 +80,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		//Load a saved game
 		save_ = true;
 		bool show_replay = false;
-		const std::string game = dialogs::load_game_dialog(*disp_, &show_replay);
+		const std::string game = dialogs::load_game_dialog(*disp_, *cfg_, *data_, &show_replay);
 		if(game == "") {
 			return -1;
 		}

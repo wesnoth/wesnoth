@@ -159,18 +159,26 @@ std::vector<save_info> get_saves_list();
 
 enum WRITE_GAME_MODE { WRITE_SNAPSHOT_ONLY, WRITE_FULL_GAME };
 
-game_state read_game(game_data& data, const config* cfg);
+game_state read_game(const game_data& data, const config* cfg);
 void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode=WRITE_FULL_GAME);
 
 // function returns true iff there is already savegame with that name
 bool save_game_exists(const std::string & name);
 
 //functions to load/save games.
-void load_game(game_data& data, const std::string& name, game_state& state);
+void load_game(const game_data& data, const std::string& name, game_state& state);
 //throws gamestatus::save_game_failed
 void save_game(const game_state& state);
 
 //function to delete a save
 void delete_game(const std::string& name);
+
+config& save_index();
+config& save_summary(const std::string& save);
+void delete_save_summary(const std::string& save);
+
+void write_save_index();
+
+void extract_summary_data_from_save(const game_state& state, config& out);
 
 #endif

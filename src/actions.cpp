@@ -641,6 +641,7 @@ void attack(display& gui, const gamemap& map,
 					attackerxp = game_config::kill_experience/2;
 
 				a->second.get_experience(attackerxp);
+				gui.invalidate(a->first);
 				attackerxp = 0;
 				defenderxp = 0;
 
@@ -779,6 +780,7 @@ void attack(display& gui, const gamemap& map,
 					defenderxp = game_config::kill_experience/2;
 
 				d->second.get_experience(defenderxp);
+				gui.invalidate(d->first);
 				defenderxp = 0;
 				attackerxp = 0;
 
@@ -854,10 +856,12 @@ void attack(display& gui, const gamemap& map,
 
 	if(attackerxp) {
 		a->second.get_experience(attackerxp);
+		gui.invalidate(a->first);
 	}
 
 	if(defenderxp) {
 		d->second.get_experience(defenderxp);
+		gui.invalidate(d->first);
 	}
 
 	gui.invalidate_unit();
