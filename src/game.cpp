@@ -581,6 +581,7 @@ bool game_controller::init_language()
 	if(!no_gui_) {
 		SDL_WM_SetCaption(_("The Battle for Wesnoth"), NULL);
 	}
+	return true;
 }
 
 bool game_controller::play_test()
