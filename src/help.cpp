@@ -789,7 +789,7 @@ std::vector<topic> generate_unit_topics() {
 					const terrain_type& info = map->get_terrain_info(terrain);
 					if (!info.is_alias()) {
 						std::vector<std::pair<std::string, unsigned> > row;
-						const std::string &name = info.name();
+						const std::string &name = string_table[info.name()];
 						const int moves = movement_type.movement_cost(*map,terrain);
 						std::stringstream str;
 						str << "<ref>text='" << escape(name) << "' dst='"
