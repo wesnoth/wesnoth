@@ -14,7 +14,9 @@
 
 #include "config.hpp"
 #include "display.hpp"
+#include "font.hpp"
 #include "sdl_utils.hpp"
+#include "unit_types.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/scrollbar.hpp"
@@ -29,7 +31,7 @@
 namespace help {
 
 struct help_manager {
-	help_manager(const config *help_config);
+	help_manager(const config *game_config, game_data *game_info);
 	~help_manager();
 };
 
@@ -268,6 +270,7 @@ private:
 	void handle_italic_cfg(const config &cfg);
 	void handle_header_cfg(const config &cfg);
 	void handle_jump_cfg(const config &cfg);
+	void handle_format_cfg(const config &cfg);
 
 	void handle_event(const SDL_Event &event);
 	void draw();
@@ -286,7 +289,8 @@ private:
 	/// reference points to. If font_size is below zero, the default
 	/// will be used.
 	void add_text_item(const std::string text, const std::string ref_dst="",
-					   int font_size=-1, bool bold=false, bool italic=false);
+					   int font_size=-1, bool bold=false, bool italic=false,
+					   SDL_Color color=font::NORMAL_COLOUR);
 
 	/// Add an image item with the specified attributes.
 	void add_img_item(const std::string path, const std::string alignment, const bool floating);
@@ -379,20 +383,34 @@ private:
 	topic const *shown_topic_;
 };
 
+// Generator stuff below. Maybe move to a separate file? This one is
+// getting crowded. Dunno if much more is needed though so I'll wait and
+// see.
+
+/// Dispatch generators to their appropriate functions.
+std::vector<section> generate_sections(const std::string &generator);
+std::vector<topic> generate_topics(const std::string &generator);
+std::string generate_topic_text(const std::string &generator);
+std::string generate_about_text();
+std::string generate_traits_text();
+std::vector<topic> generate_unit_topics();
+enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
+/// Return the type of description that should be shown for a unit of
+/// the given kind. This method is intended to filter out information
+/// about units that should not be shown, for example due to not being
+/// encountered.
+UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
+std::vector<topic> generate_ability_topics();
+std::vector<topic> generate_weapon_special_topics();
+
+
+
 /// Parse a help config, return the top level section. Return an empty
 /// section if cfg is NULL.
 section parse_config(const config *cfg); 
 /// Recursive function used by parse_config.
 void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level=0);
-
-/// Dispatch generators to their appropriate functions.
-std::vector<section> generate_sections(const std::string &generator);
-std::vector<topic> generate_topics(const std::string &generator);
-std::string generate_topic_text(const std::string &generator);
-
-std::string generate_about();
-std::vector<topic> generate_trait_topics();
 
 /// Search for the topic with the specified identifier in the section
 /// and it's subsections. Return the found topic, or NULL if none could
@@ -412,6 +430,10 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 /// (yes/true/...), otherwise false.
 bool get_bool(const std::string &s);
 
+/// Return the color the string represents. Return font::NORMAL_COLOUR if
+/// the string is empty or can't be matched against any other color.
+SDL_Color string_to_color(const std::string &s);
+
 /// Make a best effort to word wrap s. All parts are less than width.
 std::vector<std::string> split_in_width(const std::string &s, const int font_size, 
 										const unsigned width);
@@ -420,6 +442,9 @@ std::string remove_first_space(const std::string& text);
 
 /// Return a lowercase copy of s.
 std::string to_lower(const std::string &s);
+
+/// Return a copy of s with the first letter capitalized.
+std::string cap(const std::string &s);
 
 /// Return the first word in s, not removing any spaces in the start of
 /// it.

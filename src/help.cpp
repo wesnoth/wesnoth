@@ -29,11 +29,14 @@
 #include <iostream>
 #include <locale>
 #include <queue>
+#include <set>
 #include <stack>
 #include <sstream>
 
 namespace {
 	const config *help_config = NULL;
+	const config *game_config = NULL;
+	game_data *game_info = NULL;
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
@@ -53,6 +56,15 @@ namespace {
 	/// be defined in the config.
 	bool is_valid_id(const std::string &id) {
 		if (id == "toplevel") {
+			return false;
+		}
+		if (id.find("unit_") == 0) {
+			return false;
+		}
+		if (id.find("ability_") == 0) {
+			return false;
+		}
+		if (id.find("weaponspecial_") == 0) {
 			return false;
 		}
 		return true;
@@ -99,78 +111,103 @@ namespace {
 	private:
 		bool text_started_;
 	};
+
+	// Small helpers for making generation of topics easier.
+	std::string jump_to(const unsigned pos) {
+		std::stringstream ss;
+		ss << "<jump>to=" << pos << "</jump>";
+		return ss.str();
+	}
+	
+	std::string bold(const std::string &s) {
+		std::stringstream ss;
+		ss << "<bold>text='" << s << "'</bold>";
+		return ss.str();
+	}
+
 }
 
 namespace help {
 
-	void parse_config_internal(const config *help_cfg, const config *section_cfg,
-							   section &sec, int level) {
-		if (level > max_section_level) {
-			std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
-					  << std::endl;
+help_manager::help_manager(const config *cfg, game_data *gameinfo) {
+	game_config = cfg == NULL ? &dummy_cfg : cfg;
+	if (game_config != NULL) {
+		help_config = game_config->child("help");
+		if (help_config == NULL) {
+			help_config = &dummy_cfg;
 		}
-		else if (section_cfg != NULL) {
-			const std::vector<std::string> sections = config::quoted_split((*section_cfg)["sections"]);
-			const std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"];
-			if (level != 0) {
-				if (!is_valid_id(id)) {
+	}
+	game_info = gameinfo;
+}
+
+void parse_config_internal(const config *help_cfg, const config *section_cfg,
+						   section &sec, int level) {
+	if (level > max_section_level) {
+		std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
+				  << std::endl;
+	}
+	else if (section_cfg != NULL) {
+		const std::vector<std::string> sections = config::quoted_split((*section_cfg)["sections"]);
+		const std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"];
+		if (level != 0) {
+			if (!is_valid_id(id)) {
+				std::stringstream ss;
+				ss << "Invalid ID, used for internal purpose: '" << id << "'";
+				throw parse_error(ss.str());
+			}
+		}
+		const std::string title = level == 0 ? "" : (*section_cfg)["title"];
+		sec.id = id;
+		sec.title = title;
+		std::vector<std::string>::const_iterator it;
+		// Find all child sections.
+		for (it = sections.begin(); it != sections.end(); it++) {
+			config const *child_cfg = help_cfg->find_child("section", "id", *it);
+			if (child_cfg != NULL) {
+				section child_section;
+				parse_config_internal(help_cfg, child_cfg, child_section, level + 1);
+				sec.add_section(child_section);
+			}
+			else {
+				std::stringstream ss;
+				ss << "Help-section '" << *it << "' referenced from '"
+				   << id << "' but could not be found.";
+				throw parse_error(ss.str());
+			}
+		}
+		const std::vector<section> generated_sections =
+			generate_sections((*section_cfg)["generator"]);
+		std::transform(generated_sections.begin(), generated_sections.end(),
+					   std::back_inserter(sec.sections), create_section());
+		const std::vector<std::string> topics  = config::quoted_split((*section_cfg)["topics"]);
+		// Find all topics in this section.
+		for (it = topics.begin(); it != topics.end(); it++) {
+			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
+			if (topic_cfg != NULL) {
+				std::string text = (*topic_cfg)["text"];
+				text += generate_topic_text((*topic_cfg)["generator"]);
+				topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
+				if (!is_valid_id(child_topic.id)) {
 					std::stringstream ss;
 					ss << "Invalid ID, used for internal purpose: '" << id << "'";
 					throw parse_error(ss.str());
 				}
+				sec.topics.push_back(child_topic);
 			}
-			const std::string title = level == 0 ? "" : (*section_cfg)["title"];
-			sec.id = id;
-			sec.title = title;
-			std::vector<std::string>::const_iterator it;
-			// Find all child sections.
-			for (it = sections.begin(); it != sections.end(); it++) {
-				config const *child_cfg = help_cfg->find_child("section", "id", *it);
-				if (child_cfg != NULL) {
-					section child_section;
-					parse_config_internal(help_cfg, child_cfg, child_section, level + 1);
-					sec.add_section(child_section);
-				}
-				else {
-					std::stringstream ss;
-					ss << "Help-section '" << *it << "' referenced from '"
-					   << id << "' but could not be found.";
-					throw parse_error(ss.str());
-				}
+			else {
+				std::stringstream ss;
+				ss << "Help-topic '" << *it << "' referenced from '" << id
+				   << "' but could not be found." << std::endl;
+				throw parse_error(ss.str());
 			}
-			const std::vector<section> generated_sections =
-				generate_sections((*section_cfg)["generator"]);
-			std::transform(generated_sections.begin(), generated_sections.end(),
-						   std::back_inserter(sec.sections), create_section());
-			const std::vector<std::string> topics  = config::quoted_split((*section_cfg)["topics"]);
-			// Find all topics in this section.
-			for (it = topics.begin(); it != topics.end(); it++) {
-				config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
-				if (topic_cfg != NULL) {
-					std::string text = (*topic_cfg)["text"];
-					text += generate_topic_text((*topic_cfg)["generator"]);
-					topic child_topic((*topic_cfg)["title"], (*topic_cfg)["id"], text);
-					if (!is_valid_id(child_topic.id)) {
-						std::stringstream ss;
-						ss << "Invalid ID, used for internal purpose: '" << id << "'";
-						throw parse_error(ss.str());
-					}
-					sec.topics.push_back(child_topic);
-				}
-				else {
-					std::stringstream ss;
-					ss << "Help-topic '" << *it << "' referenced from '" << id
-					   << "' but could not be found." << std::endl;
-					throw parse_error(ss.str());
-				}
-			}
-			const std::vector<topic> generated_topics =
-				generate_topics((*section_cfg)["generator"]);
-			std::copy(generated_topics.begin(), generated_topics.end(),
-					  std::back_inserter(sec.topics));
-								  
 		}
-	}	
+		const std::vector<topic> generated_topics =
+			generate_topics((*section_cfg)["generator"]);
+		std::copy(generated_topics.begin(), generated_topics.end(),
+				  std::back_inserter(sec.topics));
+							  
+	}
+}	
 
 section parse_config(const config *cfg) {
 	section sec;
@@ -187,7 +224,6 @@ std::vector<section> generate_sections(const std::string &generator) {
 	if (generator == "") {
 		return empty_vec;
 	}
-
 	return empty_vec;
 }
 
@@ -196,8 +232,14 @@ std::vector<topic> generate_topics(const std::string &generator) {
 	if (generator == "") {
 		return empty_vec;
 	}
-	if (generator == "traits") {
-		return generate_trait_topics();
+	if (generator == "units") {
+		return generate_unit_topics();
+	}
+	if (generator == "abilities") {
+		return generate_ability_topics();
+	}
+	if (generator == "weapon_specials") {
+		return generate_weapon_special_topics();
 	}
 	return empty_vec;
 }
@@ -208,17 +250,295 @@ std::string generate_topic_text(const std::string &generator) {
 		return empty_string;
 	}
 	if (generator == "about") {
-		return generate_about();
+		return generate_about_text();
+	}
+	if (generator == "traits") {
+		// See comment on generate_traits_text()
+		//return generate_traits_text();
 	}
 	return empty_string;
 }
 
-std::vector<topic> generate_trait_topics() {
-	return std::vector<topic>();
+std::vector<topic> generate_weapon_special_topics() {
+	std::vector<topic> topics;
+	if (game_info == NULL) {
+		return topics;
+	}
+	std::set<std::string> checked_specials;
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); i++) {
+		const unit_type &type = (*i).second;
+		// Only show the weapon special if we find it on a unit that
+		// detailed description should be shown about.
+		if (description_type(type) == FULL_DESCRIPTION) {
+			std::vector<attack_type> attacks = type.attacks();
+			for (std::vector<attack_type>::const_iterator it = attacks.begin();
+				 it != attacks.end(); it++) {
+				const std::string special = (*it).special();
+				if (checked_specials.find(special) == checked_specials.end()) {
+					std::string lang_special = string_table["weapon_special_" + special];
+					if (lang_special == "") {
+						lang_special = special;
+					}
+					lang_special = cap(lang_special);
+					std::string description
+						= string_table["weapon_special_" + special + "_description"];
+					const size_t colon_pos = description.find(':');
+					if (colon_pos != std::string::npos) {
+						// Remove the first colon and the following newline.
+						description.erase(0, colon_pos + 2); 
+					}
+					topic t(lang_special, "weaponspecial_" + special, description);
+					topics.push_back(t);
+					checked_specials.insert(special);
+				}
+			}
+		}
+	}
+	return topics;
+}
+
+std::vector<topic> generate_ability_topics() {
+	std::vector<topic> topics;
+	if (game_info == NULL) {
+		return topics;
+	}
+	std::set<std::string> checked_abilities;
+	// Look through all the unit types, check if a unit of this type
+	// should have a full description, if so, add this units abilities
+	// for display. We do not want to show abilities that the user has
+	// not enountered yet.
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); i++) {
+		const unit_type &type = (*i).second;
+		if (description_type(type) == FULL_DESCRIPTION) {
+			for (std::vector<std::string>::const_iterator it = type.abilities().begin();
+				 it != type.abilities().end(); it++) {
+				if (checked_abilities.find(*it) == checked_abilities.end()) {
+					const std::string id = "ability_" + *it;
+					std::string lang_ability = cap(string_table[id]);
+					if (lang_ability == "") {
+						lang_ability = cap(*it);
+					}
+					std::string description = string_table[*it + "_description"];
+					const size_t colon_pos = description.find(':');
+					if (colon_pos != std::string::npos) {
+						// Remove the first colon and the following newline.
+						description.erase(0, colon_pos + 2); 
+					}
+					//if (description != "") {
+					topic t(lang_ability, id, description);
+					topics.push_back(t);
+					//}
+					checked_abilities.insert(*it);
+				}
+			}
+		}
+		
+	}
+	return topics;
+}
+
+std::vector<topic> generate_unit_topics() {
+	std::vector<topic> topics;
+	if (game_info == NULL) {
+		return topics;
+	}
+	for(game_data::unit_type_map::const_iterator i = game_info->unit_types.begin();
+	    i != game_info->unit_types.end(); i++) {
+		const unit_type &type = (*i).second;
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
+		if (desc_type == NO_DESCRIPTION) {
+			continue;
+		}
+		const std::string lang_name = type.language_name();
+		const std::string id = type.id();
+		topic unit_topic(lang_name, std::string("unit_") + id, "");
+		std::stringstream ss;
+		if (desc_type == NON_REVEALING_DESCRIPTION) {
+			
+		}
+		else if (desc_type == FULL_DESCRIPTION) {
+			const std::string detailed_description = type.unit_description();
+			const std::string normal_image = type.image();
+
+			// Show the unit's image and it's level.
+			ss << "<img>src='" << normal_image << "' align=left float=no</img>"
+			   << "<format>font_size=11 text='" << translate_string("level")
+			   << " " << type.level() << "'</format>\n";
+
+			// Print the units this unit can advance to. Cross reference
+			// to the topics containing information about those units.
+			std::vector<std::string> next_units = type.advances_to();
+			if (next_units.size() > 0) {
+				ss << cap(translate_string("advances_to")) << ": ";
+				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
+					 advance_it != next_units.end(); advance_it++) {
+					std::string ref_id = std::string("unit_") + *advance_it;
+					// Remove the spaces, which will create the ID to
+					// reference to. This relies a bit on that we know
+					// that unit_type::id() does this.
+					ref_id.erase(std::remove(ref_id.begin(), ref_id.end(), ' '), ref_id.end());
+					ss << "<ref>dst='" << ref_id << "' text='" << *advance_it << "'</ref>";
+					if (advance_it + 1 != next_units.end()) {
+						ss << ", ";
+					}
+				}
+				ss << "\n";
+			}
+
+			// Print the abilities the units has, cross-reference them
+			// to their respective topics.
+			if (type.abilities().size() > 0) {
+				ss << cap(translate_string("abilities")) << ": ";
+				for (std::vector<std::string>::const_iterator ability_it = type.abilities().begin();
+					 ability_it != type.abilities().end(); ability_it++) {
+					const std::string ref_id = std::string("ability_") + *ability_it;
+					std::string lang_ability = string_table[ref_id];
+					if (lang_ability == "") {
+						lang_ability = *ability_it;
+					}
+					ss << "<ref>dst='" << ref_id << "' text='" << lang_ability << "'</ref>";
+					if (ability_it + 1 != type.abilities().end()) {
+						ss << ", ";
+					}
+				}
+				ss << "\n";
+			}
+
+			if (next_units.size() != 0 || type.abilities().size() != 0) {
+				ss << "\n";
+			}
+			// Print some basic information such as HP and movement points.
+			ss << translate_string("hp") << ": " << type.hitpoints() << jump_to(100)
+			   << translate_string("moves") << ": " << type.movement() << jump_to(200)
+			   << translate_string("alignment") << ": "
+			   << type.alignment_description(type.alignment()) << jump_to(350);
+			if (type.experience_needed() != 500) {
+				// 500 is apparently used when the units cannot advance.
+				ss << translate_string("required_xp") << ": " << type.experience_needed();
+			}
+
+			// Print the detailed description about the unit.
+			ss << "\n\n" << detailed_description;
+
+			// Print the different attacks a unit has, if it has any.
+			std::vector<attack_type> attacks = type.attacks();
+			if (attacks.size() > 0) {
+				// Print headers for the table.
+				ss << "\n\n<header>text='" << cap(translate_string("attacks")) << "'</header>\n\n";
+				ss << jump_to(60) << bold(cap(translate_string("name"))) << jump_to(200)
+				   << bold(cap(translate_string("type")))
+				   << jump_to(280) << bold(cap(translate_string("dmg"))) << jump_to(340)
+				   << bold(cap(translate_string("nattacks")))
+				   << jump_to(400) << bold(cap(translate_string("range"))) << jump_to(480)
+				   << bold(cap(translate_string("special"))) << "\n";
+
+				// Print information about every attack.
+				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
+					 attack_it != attacks.end(); attack_it++) {
+					std::string lang_weapon
+						= string_table["weapon_name_" + attack_it->name()];
+					if (lang_weapon == "") {
+						lang_weapon = attack_it->name();
+					}
+					std::string lang_type
+						= string_table["weapon_type_" + attack_it->type()];
+					if (lang_type == "") {
+						lang_type = attack_it->type();
+					}
+					ss << "\n<img>src='" << (*attack_it).icon() << "'</img>" << jump_to(60);
+					ss << lang_weapon << jump_to(200) << lang_type
+					   << jump_to(280) << (*attack_it).damage() << jump_to(340)
+					   << (*attack_it).num_attacks() << jump_to(400)
+					   << ((*attack_it).range() == attack_type::SHORT_RANGE ?
+						   translate_string("short_range") : translate_string("long_range"));
+					
+					// Show this attack's special, if it has any. Cross
+					// reference it to the section describing the
+					// special.
+					if ((*attack_it).special() != "") {
+						const std::string ref_id = std::string("weaponspecial_")
+							+ (*attack_it).special();
+						std::string lang_special
+							= string_table["weapon_special_" + attack_it->special()];
+						if (lang_special == "") {
+							lang_special = attack_it->special();
+						}
+						ss << jump_to(480) << "<ref>dst='" << ref_id << "' text='"
+						   << lang_special << "'</ref>";
+					}
+				}
+			}
+
+			// Print the resistance table of the unit.
+			ss << "\n\n<header>text='" << cap(translate_string("resistances"))
+			   << "'</header>\n\n";
+			const unit_movement_type &movement_type = type.movement_type();
+			string_map dam_tab = movement_type.damage_table();
+			for (string_map::const_iterator dam_it = dam_tab.begin();
+				 dam_it != dam_tab.end(); dam_it++) {
+				int resistance = 100 - atoi((*dam_it).second.c_str());
+				std::string color = "";
+				if (resistance < 0) {
+					color = "red";
+				}
+				std::string lang_weapon = string_table["weapon_type_" + (*dam_it).first];
+				if (lang_weapon == "") {
+					lang_weapon = (*dam_it).first;
+				}
+				ss << lang_weapon << jump_to(150) << "<format>color=" << color
+				   << " text='"<< resistance << "%'</format>\n";
+			}
+
+		}
+		else {
+			assert(false);
+		}
+		unit_topic.text = ss.str();
+		topics.push_back(unit_topic);
+	}
+	return topics;
+}
+	
+UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
+	// For now, until decision is made, show the full description for everything.
+	return FULL_DESCRIPTION;
+}
+
+std::string generate_traits_text() {
+	// Ok, this didn't go as well as I thought since the information
+	// generated from this is rather short and not suitable for the help
+	// system. Hence, this method is not used currently :).
+	std::stringstream ss;
+	if (game_config != NULL) {
+		const config *unit_cfg = game_config->child("units");
+		if (unit_cfg != NULL) {
+			const config::child_list child_list = unit_cfg->get_children("trait");
+			for (config::const_child_iterator it = child_list.begin();
+				 it != child_list.end(); it++) {
+				if (game_info->unit_types.size() > 0) {
+					unit dummy_unit(&(*(game_info->unit_types.begin())).second, 0, false, true);
+					dummy_unit.add_modification("trait", *(*it), true);
+					std::string s = dummy_unit.modification_description("trait");
+					size_t pos = 0;
+					while (pos != std::string::npos) {
+						// Remove paranthesis, they do not look good in the help.
+						pos = s.find_first_of("()");
+						if (pos != std::string::npos) {
+							s.replace(pos, pos+1, "");
+						}
+					}
+					ss << s << '\n';
+				}
+			}
+		}
+	}
+	return ss.str();
 }
 
 
-std::string generate_about() {
+std::string generate_about_text() {
 	std::vector<std::string> about_lines = about::get_text();
 	std::vector<std::string> res_lines;
 	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
@@ -228,12 +548,6 @@ std::string generate_about() {
 	std::vector<std::string> res_lines_rem(res_lines.begin(), it);
 	std::string text = config::join(res_lines_rem, '\n');
 	return text;
-}
-
-
-
-help_manager::help_manager(const config *hlp_config) {
-	help_config = hlp_config == NULL ? &dummy_cfg : hlp_config;
 }
 
 help_manager::~help_manager() {
@@ -611,6 +925,10 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 				if (child != NULL) {
 					handle_jump_cfg(*child);
 				}
+				child = cfg.child("format");
+				if (child != NULL) {
+					handle_format_cfg(*child);
+				}
 			}
 			catch (config::error e) {
 				std::stringstream msg;
@@ -712,6 +1030,26 @@ void help_text_area::handle_jump_cfg(const config &cfg) {
 	}
 }
 
+void help_text_area::handle_format_cfg(const config &cfg) {
+	const std::string text = cfg["text"];
+	if (text == "") {
+		throw parse_error("Format markup must have text attribute.");
+	}
+	const bool bold = get_bool(cfg["bold"]);
+	const bool italic = get_bool(cfg["italic"]);
+	int font_size = normal_font_size;
+	if (cfg["font_size"] != "") {
+		try {
+			font_size = lexical_cast<int, std::string>(cfg["font_size"]);
+		}
+		catch (bad_lexical_cast) {
+			throw parse_error("Invalid font_size in format markup.");
+		}
+	}
+	SDL_Color color = string_to_color(cfg["color"]);
+	add_text_item(text, "", font_size, bold, italic, color);
+}
+
 void help_text_area::update_scrollbar() {
 	if (!use_scrollbar_) {
 		scrollbar_.enable(false);
@@ -760,7 +1098,8 @@ int help_text_area::text_width() const {
 }
 
 void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
-								   int _font_size, bool bold, bool italic) {
+								   int _font_size, bool bold, bool italic,
+								   SDL_Color text_color) {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
 	if (text == "") {
 		return;
@@ -774,7 +1113,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		down_one_line();
 		std::string rest_text = text;
 		rest_text.erase(0, first_word_start + 1);
-		add_text_item(rest_text, ref_dst, _font_size, bold, italic);
+		add_text_item(rest_text, ref_dst, _font_size, bold, italic, text_color);
 		return;
 	}
 	const std::string first_word = get_first_word(text);
@@ -783,7 +1122,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		// The first word does not fit, and we are not at the start of
 		// the line. Move down.
 		down_one_line();
-		add_text_item(text, ref_dst, _font_size, bold, italic);
+		add_text_item(text, ref_dst, _font_size, bold, italic, text_color);
 	}
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
@@ -792,7 +1131,8 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 		int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
 		state |= bold ? TTF_STYLE_BOLD : 0;
 		state |= italic ? TTF_STYLE_ITALIC : 0;
-		const SDL_Color color = ref_dst == "" ? font::NORMAL_COLOUR : font::YELLOW_COLOUR;
+		// Always override the color if we have a cross reference.
+		const SDL_Color color = ref_dst == "" ? text_color : font::YELLOW_COLOUR;
 		shared_sdl_surface surf(font::get_rendered_text(first_part, font_size, color, state));
 		add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
@@ -811,7 +1151,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 				// without a space at the end of the line.
 				down_one_line();
 			}
-			add_text_item(s, ref_dst, _font_size, bold, italic);
+			add_text_item(s, ref_dst, _font_size, bold, italic, text_color);
 		}
 	}
 }
@@ -1425,10 +1765,28 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 }
 
 bool get_bool(const std::string &s) {
-	if (s == "yes" || s == "true" || s == "1" || s == "on") {
+	const std::string cmp_str = to_lower(s);
+	if (cmp_str == "yes" || cmp_str == "true" || cmp_str == "1" || cmp_str == "on") {
 		return true;
 	}
 	return false;
+}
+
+SDL_Color string_to_color(const std::string &s) {
+	const std::string cmp_str = to_lower(s);
+	if (cmp_str == "green") {
+		return font::GOOD_COLOUR;
+	}
+	if (cmp_str == "red") {
+		return font::BAD_COLOUR;
+	}
+	if (cmp_str == "black") {
+		return font::BLACK_COLOUR;
+	}
+	if (cmp_str == "yellow") {
+		return font::YELLOW_COLOUR;
+	}
+	return font::NORMAL_COLOUR;
 }
 
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
@@ -1451,6 +1809,15 @@ std::string to_lower(const std::string &s) {
 	std::transform(s.begin(), s.end(), lower_string.begin(), tolower);
 	return lower_string;
 }
+
+std::string cap(const std::string &s) {
+	std::string res = s;
+	if (s.size() > 0) {
+		res[0] = toupper(res[0]);
+	}
+	return res;
+}
+	
 		
 std::string get_first_word(const std::string &s) {
 	size_t first_word_start = s.find_first_not_of(" ");

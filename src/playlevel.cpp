@@ -338,7 +338,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
-	help::help_manager help_manager(game_config.child("help"));
+	help::help_manager help_manager(&game_config, &gameinfo);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level->get_children("item");
