@@ -849,6 +849,45 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
 	return NO_DESCRIPTION;
 }
 
+struct terrain_topic_generator: topic_generator
+{
+	terrain_topic_generator(terrain_type const &t): type(t) {}
+	terrain_type type;
+	virtual std::string operator()() const {
+		std::stringstream ss;
+		ss << "<img>src='terrain/" << type.symbol_image() << ".png'</img>\n\n";
+		if (type.is_alias()) {
+			const std::string aliased_terrains = type.type();
+			std::stringstream alias_ss;
+			for (std::string::const_iterator it = aliased_terrains.begin();
+				 it != aliased_terrains.end(); it++) {
+				const gamemap::TERRAIN t = *it;
+				const std::string &alias_name = map->get_terrain_info(t).name();
+				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
+					 << escape(std::string("terrain_") + t) << "'</ref>";
+				if (it + 2 == aliased_terrains.end())
+					alias_ss << " " << _("or") << " ";
+				else if (it + 1 != aliased_terrains.end())
+					alias_ss << ", ";
+			}
+			string_map sm;
+			sm["terrains"] = alias_ss.str();
+			ss << config::interpolate_variables_into_string(string_table["terrain_acts_as"], &sm)
+			   << ".";
+			if (aliased_terrains.size() > 1)
+				ss << " " << string_table["best_terrain_chosen"] << ".";
+			ss << "\n\n";
+		}
+		if (type.is_keep())
+			ss << string_table["terrain_is_keep"] << ".\n\n";
+		if (type.is_castle())
+			ss << string_table["terrain_is_castle"] << ".\n\n";
+		if (type.gives_healing())
+			ss << string_table["terrain_gives_healing"] << ".\n\n";
+		return ss.str();
+	}
+};
+
 std::vector<topic> generate_terrains_topics() {
 	std::vector<topic> res;
 	std::vector<gamemap::TERRAIN> show_info_about;
@@ -872,45 +911,8 @@ std::vector<topic> generate_terrains_topics() {
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
-		//const std::string &name = string_table[info.name()];
 		const std::string &name = info.name();
-		std::stringstream ss;
-		ss << "<img>src='terrain/" << info.symbol_image() << ".png'</img>\n\n";
-		if (info.is_alias()) {
-			const std::string aliased_terrains = info.type();
-			std::stringstream alias_ss;
-			for (std::string::const_iterator it = aliased_terrains.begin();
-				 it != aliased_terrains.end(); it++) {
-				const gamemap::TERRAIN t = *it;
-				const std::string &alias_name = map->get_terrain_info(t).name();
-				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
-						 << escape(std::string("terrain_") + t) << "'</ref>";
-				if (it + 2 == aliased_terrains.end()) {
-					alias_ss << " " << _("or") << " ";
-				}
-				else if (it + 1 != aliased_terrains.end()) {
-					alias_ss << ", ";
-				}
-			}
-			string_map sm;
-			sm["terrains"] = alias_ss.str();
-			ss << config::interpolate_variables_into_string(string_table["terrain_acts_as"], &sm)
-			   << ".";
-			if (aliased_terrains.size() > 1) {
-				ss << " " << string_table["best_terrain_chosen"] << ".";
-			}
-			ss << "\n\n";
-		}
-		if (info.is_keep()) {
-			ss << string_table["terrain_is_keep"] << ".\n\n";
-		}
-		if (info.is_castle()) {
-			ss << string_table["terrain_is_castle"] << ".\n\n";
-		}
-		if (info.gives_healing()) {
-			ss << string_table["terrain_gives_healing"] << ".\n\n";
-		}
-		topic t(name, std::string("terrain_") + *terrain_it, ss.str());
+		topic t(name, std::string("terrain_") + *terrain_it, new terrain_topic_generator(info));
 		res.push_back(t);
 	}
 	return res;
