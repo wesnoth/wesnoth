@@ -67,7 +67,7 @@ mp_connect::~mp_connect()
 	}
 }
 
-int mp_connect::load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
+int mp_connect::load_map(const std::string& era, config& scenario_data, int num_turns, int village_gold, int xpmodifier,
                          bool fog_game, bool shroud_game, bool allow_observers, bool share_view, bool share_maps)
 {
 	log_scope("load_map");
@@ -76,9 +76,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 
 	era_ = era;
 
-	const config::child_list& levels = cfg_->get_children("multiplayer");
-
-	if(map == levels.size()) {
+	if(scenario_data.empty()) {
 		//Load a saved game
 		save_ = true;
 		bool show_replay = false;
@@ -110,8 +108,8 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 			}
 		}
 
-		loaded_level_ = state_->snapshot;
-		level_ptr = &loaded_level_;
+		scenario_data = state_->snapshot;
+		level_ptr = &scenario_data;
 
 		//make all sides untaken
 		for(config::child_itors i = level_ptr->child_range("side");
@@ -127,7 +125,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 		config* const start = level_ptr->child("start");
 
 		//if this is a snapshot save, we don't want to use the replay data
-		if(loaded_level_["snapshot"] == "yes") {
+		if(scenario_data["snapshot"] == "yes") {
 			if(start != NULL)
 				start->clear_children("replay");
 			level_ptr->clear_children("replay");
@@ -142,8 +140,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 	} else {
 		//Load a new map
 		save_ = false;
-		loaded_level_ = *levels[map];
-		level_ptr = &loaded_level_;
+		level_ptr = &scenario_data;
 
 		//set the number of turns here
 		std::stringstream turns;
@@ -160,13 +157,7 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 	state_->label = level_->values["name"];
 	state_->gold = -10000;
 
-	std::map<int,std::string> res_to_id;
-	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
-		const std::string& id = (**i)["id"];
-		res_to_id[i - levels.begin()] = id;
-	}
-
-	state_->scenario = res_to_id[map];
+	state_->scenario = scenario_data["id"];
 
 	level_->values["observer"] = allow_observers ? "yes" : "no";
 

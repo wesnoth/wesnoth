@@ -1,4 +1,5 @@
 #include "events.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
 #include "image.hpp"
 #include "key.hpp"
@@ -108,7 +109,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	
 				std::string map_data = (**i.first)["map_data"];
 				if(map_data == "") {
-					map_data = read_file("data/maps/" + (**i.first)["map"]);
+					map_data = read_map((**i.first)["map"]);
 				}
 	
 				if(map_data != "") {

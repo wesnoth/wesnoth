@@ -36,7 +36,7 @@ public:
 		   game_state& state, bool join = false);
 	~mp_connect();
 
-	int load_map(const std::string& era, int map, int num_turns, int village_gold, int xpmodifier,
+	int load_map(const std::string& era, config& scenario, int num_turns, int village_gold, int xpmodifier,
 	             bool fog_game, bool shroud_game, bool allow_observers, bool share_view, bool share_maps);
 
 	void start_game();
@@ -68,8 +68,6 @@ private:
 	//so that we can generate a diff to send to clients
 	config old_level_;
 	std::map<config*,network::connection> positions_;
-
-	config loaded_level_;
 
 	bool show_replay_;
 	bool save_;

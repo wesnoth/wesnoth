@@ -13,6 +13,7 @@
 
 #include "cursor.hpp"
 #include "events.hpp"
+#include "filesystem.hpp"
 #include "game_events.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
@@ -129,7 +130,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	
 	std::string map_data = (*level)["map_data"];
 	if(map_data == "" && (*level)["map"] != "") {
-		map_data = read_file("data/maps/" + (*level)["map"]);
+		map_data = read_map((*level)["map"]);
 	}
 
 	//if the map should be randomly generated

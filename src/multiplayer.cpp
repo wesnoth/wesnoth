@@ -13,6 +13,7 @@
 
 #include "cursor.hpp"
 #include "events.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -68,12 +69,13 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	state_.can_recruit.clear();
 
 	//build the list of scenarios to play
-	std::vector<std::string> options;
+	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);
+
+	std::vector<std::string> options = user_maps_;
+
 	const config::child_list& levels = cfg.get_children("multiplayer");
-	std::map<int,std::string> res_to_id;
 	for(config::child_list::const_iterator i = levels.begin(); i != levels.end(); ++i){
 		const std::string& id = (**i)["id"];
-		res_to_id[i - levels.begin()] = id;
 
 		const std::string& lang_name = string_table[id];
 		if(lang_name.empty() == false)
@@ -378,23 +380,37 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		generator_.assign(NULL);
 
 		const size_t select = size_t(maps_menu_->selection());
-		if(select != maps_menu_->nitems()-1) {
+
+		if(select < user_maps_.size()) {
+			const config* const generic_multiplayer = cfg_.child("generic_multiplayer");
+			if(generic_multiplayer != NULL) {
+				scenario_data_ = *generic_multiplayer;
+				scenario_data_["map_data"] = read_map(user_maps_[select]);
+				level_ = &scenario_data_;
+			}
+
+		} else if(select != maps_menu_->nitems()-1) {
+			const size_t index = select - user_maps_.size();
 			const config::child_list& levels = cfg_.get_children("multiplayer");
 
-			assert(select < levels.size());
-			config& scenario = *levels[select];
-			level_ = &scenario;
+			if(index < levels.size()) {
 
-			std::string& map_data = scenario["map_data"];
-			if(map_data == "" && scenario["map"] != "") {
-				map_data = read_file("data/maps/" + scenario["map"]);
-			}
+				scenario_data_ = *levels[index];
+				level_ = &scenario_data_;
 
-			//if the map should be randomly generated
-			if(scenario["map_generation"] != "") {
-				generator_.assign(create_map_generator(scenario["map_generation"],scenario.child("generator")));
+				std::string& map_data = scenario_data_["map_data"];
+				if(map_data == "" && scenario_data_["map"] != "") {
+					map_data = read_map(scenario_data_["map"]);
+				}
+
+				//if the map should be randomly generated
+				if(scenario_data_["map_generation"] != "") {
+					generator_.assign(create_map_generator(scenario_data_["map_generation"],scenario_data_.child("generator")));
+				}
 			}
 		} else {
+
+			scenario_data_.clear();
 
 			playernum_restorer_.restore();
 			minimap_restorer_.restore();
@@ -490,7 +506,7 @@ void multiplayer_game_setup_dialog::start_game()
 
 	const int share = vision_combo_->selected();
 	const int res = connector.load_map((*era_list[era_combo_->selected()])["id"],
-	                   maps_menu_->selection(), turns, village_gold_slider_->value(),
+	                   scenario_data_, turns, village_gold_slider_->value(),
 					   xp_modifier_slider_->value(), fog_game_->checked(),
 					   shroud_game_->checked(), observers_game_->checked(),
 					   share == 0, share == 1);

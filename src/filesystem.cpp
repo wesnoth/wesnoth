@@ -44,6 +44,7 @@
 #include <iostream>
 #include <fstream>
 
+#include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "util.hpp"
@@ -222,6 +223,20 @@ std::string get_user_data_dir()
 
 	return dir_path;
 #endif
+}
+
+std::string read_map(const std::string& name)
+{
+	std::string res = read_file("data/maps/" + name);
+	if(res == "") {
+		res = read_file(get_user_data_dir() + "/data/maps/" + name);
+	}
+
+	if(res == "") {
+		res = read_file(get_user_data_dir() + "/editor/maps/" + name);
+	}
+
+	return res;
 }
 
 namespace {

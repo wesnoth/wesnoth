@@ -58,6 +58,9 @@ private:
 
 	int map_selection_;
 
+	std::vector<std::string> user_maps_;
+	config scenario_data_;
+
 	util::scoped_ptr<gui::menu> maps_menu_;
 	util::scoped_ptr<gui::slider> turns_slider_, village_gold_slider_, xp_modifier_slider_;
 	util::scoped_ptr<gui::button> fog_game_, shroud_game_, observers_game_,
