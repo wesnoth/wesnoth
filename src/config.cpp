@@ -140,32 +140,50 @@ void internal_preprocess_file(const std::string& fname,
 				break;
 
 			const std::string newfilename = newfile.str();
-			const std::vector<std::string> items = config::split(newfilename,' ');
-			const std::string& symbol = items.front();
+			std::vector<std::string> items = config::split(newfilename,' ');
+			const std::string symbol = items.front();
 
 			//if this is a known pre-processing symbol, then we insert
 			//it, otherwise we assume it's a file name to load
 			if(defines_map.count(symbol) != 0) {
+				items.erase(items.begin());
+
 				const preproc_define& val = defines_map[symbol];
-				if(val.arguments.size() != items.size()-1) {
+				if(val.arguments.size() != items.size()) {
 					std::cerr << "error: preprocessor symbol '" << symbol << "' has "
-					          << (items.size()-1) << " arguments, "
+					          << items.size() << " arguments, "
 							  << val.arguments.size() << " expected\n";
 				}
 
 				std::string str = val.value;
 
+				std::cerr << "symbol '" << symbol << "' called with arguments: ";
+
 				//substitute in given arguments
 				for(size_t n = 0; n != val.arguments.size(); ++n) {
+					const std::string& replace_with = (n < items.size()) ? items[n] : "";
+
+					int subs = 0;
+
 					const std::string item = "{" + val.arguments[n] + "}";
 					std::string::size_type pos = str.find(item);
 					while(pos != std::string::npos) {
-						const size_t index = n+1;
-						const std::string& replace_with = (index < items.size()) ? items[index] : "";
+						++subs;
 						str.replace(pos,item.size(),replace_with);
-						pos = str.find(item);
+						const std::string::size_type new_pos = str.find(item);
+						if(new_pos < pos+replace_with.size()) {
+							std::cerr << "macro substitution in symbol '" << symbol
+								      << "' could lead to infinite recursion. Aborting.\n";
+							break;
+						}
+
+						pos = new_pos;
 					}
+
+					std::cerr << "'" << replace_with << "' (substituted " << subs << " times), ";
 				}
+
+				std::cerr << "\n";
 
 				res.insert(res.end(),str.begin(),str.end());
 				line += std::count(str.begin(),str.end(),'\n');
