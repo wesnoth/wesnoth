@@ -295,13 +295,22 @@ void map_editor::edit_load_map() {
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
 	int res = dialogs::show_file_chooser_dialog(gui_, fn, "Choose a Map to Load");
 	if (res == 0) {
-		const std::string new_map = load_map(fn);
-		if (new_map != "") {
+		std::string new_map;
+		try {
+			new_map = load_map(fn);
+		}
+		catch (load_map_exception) {
+			return;
+		}
+		if (valid_mapdata(new_map, game_config_)) {
 			if (!changed_since_save() || confirm_modification_disposal(gui_)) {
 				num_operations_since_save_ = 0;
 				clear_undo_actions();
 				throw new_map_exception(new_map, fn);
 			}
+		}
+		else {
+			gui::show_dialog(gui_, NULL, "", "The file does not contain a valid map.", gui::OK_ONLY);
 		}
 	}
 }
@@ -362,12 +371,21 @@ void map_editor::edit_paste() {
 }
 
 void map_editor::edit_revert() {
-	const std::string new_map = load_map(filename_);
-	if (new_map != "") {
+	std::string new_map;
+	try {
+		new_map = load_map(filename_);
+	}
+	catch (load_map_exception) {
+		return;
+	}
+	if (valid_mapdata(new_map, game_config_)) {
 		map_undo_action action;
 		action.set_map_data(map_.write(), new_map);
 		save_undo_action(action);
 		throw new_map_exception(new_map, filename_);
+	}
+	else {
+		gui::show_dialog(gui_, NULL, "", "The file does not contain a valid map.", gui::OK_ONLY);
 	}
 }
 
@@ -432,7 +450,7 @@ std::string map_editor::load_map(const std::string filename) {
 	}
 	if (!load_successful) {
 		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
-		return "";
+		throw load_map_exception();
 	}
 	else {
 		return new_map;

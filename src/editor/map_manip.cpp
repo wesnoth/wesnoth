@@ -251,6 +251,22 @@ std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
 	}
 	return config::join(new_lines, '\n');
 }
+
+bool valid_mapdata(const std::string &data, const config &cfg) {
+	bool res = data.size() != 0;
+	// Create a map and see if we get an exception. Not very efficient,
+	// but simple as things are implemented now.
+	try {
+		const gamemap m(cfg, data);
+		// Having a zero size map may cause floating point exceptions at
+		// some places later on.
+		res = m.x() != 0 && m.y() != 0;
+	}
+	catch (gamemap::incorrect_format_exception) {
+		res = false;
+	}
+	return res;
+}
 	
 
 }

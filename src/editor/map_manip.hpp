@@ -52,6 +52,10 @@ enum FLIP_AXIS {NO_FLIP, FLIP_X, FLIP_Y};
 /// Return the string representation of the map after it has been
 /// flipped around the axis.
 std::string flip_map(const gamemap &map, const FLIP_AXIS axis);
+
+/// Return true if the data is valid to create a map with, othwerwise
+/// false.
+bool valid_mapdata(const std::string &data, const config &cfg);
 }
 
 #endif // MAP_MANIP_H_INCLUDED

@@ -61,8 +61,12 @@ public:
 	bool save_map(const std::string filename="",
 				  const bool display_confirmation=true);
 
+	/// Exception thrown when the loading of a map failed.
+	struct load_map_exception {};
+
 	/// Load the map from filename. Return the string representation of
-	/// the map, or the empty string of the load failed.
+	/// the map. Show a message if the load failed. Throw
+	/// load_map_exception if the file could not be loaded.
 	std::string load_map(const std::string filename);
 	
 	virtual void handle_event(const SDL_Event &event);
