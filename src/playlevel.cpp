@@ -440,7 +440,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level->get_children("item");
 	for(config::child_list::const_iterator overlay = overlays.begin(); overlay != overlays.end(); ++overlay) {
-		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"]);
+		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"], (**overlay)["halo"]);
 	}
 
 	int turn = 1, player_number = 0;
