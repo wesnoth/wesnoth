@@ -753,6 +753,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const unit_map::iterator u = units->find(loc);
 
+		std::string command_type = "then";
+
 		if(u != units->end() && (filter == NULL || u->second.matches_filter(*filter))) {
 			const std::string& lang = string_table[id];
 			if(!lang.empty())
@@ -773,6 +775,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				text = lang;
 			else
 				text = cfg["cannot_use_message"];
+
+			command_type = "else";
 		}
 
 		if(cfg["silent"] != "yes") {
@@ -786,6 +790,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			screen->draw();
 
 			gui::show_dialog(*screen,surface,caption,text);
+		}
+
+		const config::child_list& commands = cfg.get_children(command_type);
+		for(config::child_list::const_iterator cmd = commands.begin();
+		    cmd != commands.end(); ++cmd) {
+			handle_event(event_info,*cmd);
 		}
 	}
 

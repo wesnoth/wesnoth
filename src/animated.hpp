@@ -57,7 +57,7 @@ public:
 
 	//Starts an animation cycle. The first frame of the animation to start
 	//may be set to any value
-	static const int INFINITE_CYCLES = -1;
+	enum { INFINITE_CYCLES = -1 };
 	void start_animation(int start_time=0, int cycles=1, int acceleration=1);
 
 	int get_first_frame_time() const;

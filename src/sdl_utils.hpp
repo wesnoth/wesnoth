@@ -82,6 +82,8 @@ private:
 	scoped_sdl_surface surface_;
 };
 
+bool operator<(const surface& a, const surface& b);
+
 surface make_neutral_surface(surface surf);
 surface create_optimized_surface(surface surface);
 surface scale_surface(surface surface, int w, int h);
@@ -92,7 +94,7 @@ surface brighten_image(surface surface, double amount);
 surface get_surface_portion(surface src, SDL_Rect& rect);
 surface adjust_surface_alpha(surface surface, double amount);
 surface adjust_surface_alpha_add(surface surface, int amount);
-surface mask_surface(surface surface, surface mask);
+surface mask_surface(surface surf, surface mask);
 surface cut_surface(surface surface, const SDL_Rect& r);
 surface blend_surface(surface surface, double amount, Uint32 colour);
 surface flip_surface(surface surface);

@@ -33,6 +33,11 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 	       point_in_rect(rect1.x,rect1.y+rect1.h,rect2) || point_in_rect(rect1.x+rect1.w,rect1.y+rect1.h,rect2);
 }
 
+bool operator<(const surface& a, const surface& b)
+{
+	return a.get() < b.get();
+}
+
 namespace {
 	SDL_PixelFormat& get_neutral_pixel_format()
 	{

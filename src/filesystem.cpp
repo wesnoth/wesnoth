@@ -191,6 +191,17 @@ std::string get_dir(const std::string& dir_path)
 	return dir_path;
 }
 
+std::string get_cwd()
+{
+	char buf[1024];
+	const char* const res = getcwd(buf,sizeof(buf));
+	if(res != NULL) {
+		return res;
+	} else {
+		return "";
+	}
+}
+
 std::string get_user_data_dir()
 {
 #ifdef _WIN32
