@@ -1022,7 +1022,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		}
 
 		const int maxlen = static_cast<int>(zoom_) - xoffset*2;
-		int len = ((xend - xdst) > maxlen) ? maxlen : xend - xdst;
+		int len = minimum(xend - xdst,maxlen);
 
 		const int neoffset = ne_xpos+ne_xoffset;
 		const int seoffset = se_xpos+se_xoffset;
@@ -1040,14 +1040,22 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		}
 
 		const int srcy = minimum<int>(yloc,surface->h-1);
+		assert(srcy >= 0);
 
 		surface_lock srclock(surface);
 		short* startsrc = srclock.pixels() + srcy*(surface->w+xpad) +
-		                  (xoffset > xsrc ? xoffset:xsrc);
+		                  maximum(xoffset,xsrc);
 		short* endsrc = startsrc + len;
 
-		assert(startsrc >= srclock.pixels() &&
-		       endsrc <= srclock.pixels() + (surface->w+xpad)*surface->h);
+		if(!(startsrc >= srclock.pixels() &&
+		       endsrc <= srclock.pixels() + (surface->w+xpad)*surface->h)) {
+			std::cerr << "CRITICAL ERROR: overwrite at " << __FILE__ << ","
+			          << __LINE__ << "\n"
+			          << "len: " << len << "\n"
+			          << "width: " << surface->w << "\n"
+			          << "x: " << x << "\n"
+			          << "y: " << y << "\n";
+		}
 
 		surface_lock dstlock(dst);
 		short* startdst = dstlock.pixels() + j*dst->w + xdst;

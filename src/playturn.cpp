@@ -169,10 +169,18 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			if(u != units.end() && u->second.side() != team_num) {
 				const bool ignore_zocs = u->second.type().is_skirmisher();
 				const bool teleport = u->second.type().teleports();
+
+				//temporarily set moves to full to see how far
+				//it could move
+				const int movement = u->second.movement_left();
+				u->second.set_movement(u->second.total_movement());
 				current_paths = paths(map,gameinfo,units,new_hex,teams,
 				                      ignore_zocs,teleport);
 				gui.set_paths(&current_paths);
 				enemy_paths = true;
+
+				//restore unit's movement
+				u->second.set_movement(movement);
 			}
 		}
 
