@@ -26,6 +26,18 @@ config construct_error(const std::string& msg)
 	return cfg;
 }
 
+config construct_system_message(const std::string& message)
+{
+	config turn;
+	config& cmd = turn.add_child("turn");
+	config& cfg = cmd.add_child("command");
+	config& msg = cfg.add_child("speak");
+	msg["description"] = "system";
+	msg["message"] = message;
+
+	return turn;
+}
+
 class server
 {
 public:
@@ -170,6 +182,11 @@ void server::run()
 					lobby_players_.send_data(sync_initial_response(),sock);
 
 					std::cerr << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
+
+					const config msg(construct_system_message(username + " has logged into the lobby"));
+					for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
+						g->send_data_observers(msg);
+					}
 
 				} else if(lobby_players_.is_member(sock)) {
 					const config* const create_game = data.child("create_game");

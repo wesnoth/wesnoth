@@ -359,6 +359,15 @@ void game::send_data_team(const config& data, const std::string& team, network::
 	}
 }
 
+void game::send_data_observers(const config& data)
+{
+	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+		if(is_observer(*i)) {
+			network::queue_data(data,*i);
+		}
+	}
+}
+
 void game::record_data(const config& data)
 {
 	history_.append(data);

@@ -47,6 +47,8 @@ public:
 
 	void send_data(const config& data, network::connection exclude=0);
 	void send_data_team(const config& data, const std::string& team, network::connection exclude=0);
+	void send_data_observers(const config& data);
+
 	void record_data(const config& data);
 
 	//the full scenario data
