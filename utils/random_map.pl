@@ -5,15 +5,6 @@
 # 
 # Todo: Insert proper gpl notice here.
 #
-# todo: make town/castle placeement algorithm a little better.
-# currently it decides if it can placec one by checking
-# the max distance in each direction, it won't take into account
-# something like
-#
-# txxxxx
-# xxtxxx
-# 
-# since they aren't totaly in-line.
 # 
 # todo: clean it up some, add some comments, make it produce
 # WML for the map, some form of interface (perl-gtk?) to allow
@@ -21,14 +12,31 @@
 # Reorganize settings variables to make more sense, remove
 # unused crap.
 # Add river/road support.
+#
+# Turn castles/towns on/off.
+# ansi-ize the map
+# Getopts for options.
+#
+# Changelog:
+# 	Nov 17 2003 
+# 		- Better comments
+# 		- Updated proximity scanning routines
+# 		They now radiate out in squares to judge
+# 		distance.
+# 		- little bit of code cleanup in various places.
+# 		- fixed up castle placing mostly.  Still has an 
+# 		issue where it's placing them too close to edges
+# 		at times.
+# 		
+# 	Nov 16 2003 
+# 		- initial release
+# 	
 # 
 
 use strict;
 use warnings;
 use List::Util qw( shuffle );
 use POSIX qw( ceil );
-# params:
-# width, height, players
 
 use vars qw( $PARAMS $MAP $NUMBERS $DIRMAP $SQUARES );
 
@@ -61,14 +69,14 @@ $NUMBERS = {
 		},
 	},			
 	towns => {
-		squares_per_town => 7 * 7,  # 1 town in this many squares.
-		min_town_distance => 4, # at least 3 squares from another town.
+		squares_per_town => 6 * 6,  # 1 town in this many squares.
+		min_town_distance => 2, # at least 3 squares from another town.
 		type => 't',
 	},
 	players => {
 		count => 8,
 		preferred_distance => 30,
-		decrement_unit => 5,
+		decrement_unit => 1,
 	},
 };
 $PARAMS = {
@@ -109,6 +117,12 @@ $SQUARES = {
 	}
 };
 
+# $DIRMAP -> used to provide a map of 'general'
+# directions for things like rivers, roads, ect.
+# north could mean north, north-east,  or north-west,
+# ect.  This allows rivers/roads (and other things that
+# use this approximate direction stuff) to meander a little
+# while staying mostly true to course.
 $DIRMAP = {
 	0 => { 7 => 1, 0 => 1, 1 => 1 },
 	1 => { 0 => 1, 1 => 1, 2 => 1 },
@@ -149,6 +163,8 @@ add_towns();
 add_castles();
 print_map();
 
+
+
 sub add_terrain {
 	foreach my $key (keys %{ $NUMBERS->{terrain} }) {
 		if ($NUMBERS->{terrain}->{$key}->{mod} eq 'round') {
@@ -156,16 +172,17 @@ sub add_terrain {
 			my ($counts,$avg_size) = _get_min_max_sizes($key);
 			while ($x < $counts) {
 				place_round(
-					int(rand(@{ $MAP })),
-					int(rand(@{ $MAP->[0] })),
+					int(rand($PARAMS->{width})),
+					int(rand($PARAMS->{height})),
 					$avg_size,
 					$NUMBERS->{terrain}->{$key}->{type});
 				++$x;
 			}
 		}
 	}
-
 }
+
+
 sub add_towns {
 	my $towns = ceil(($PARAMS->{height} * $PARAMS->{width}) / $NUMBERS->{towns}->{squares_per_town});
 	my $x = 1;
@@ -173,10 +190,9 @@ sub add_towns {
 		my $y = 1;
 		# 200 tries to place a town.
 		while ($y <= 200) {
-			my $plx = int(rand(@{ $MAP }));
-			my $ply = int(rand(@{ $MAP->[0] }));
+			my $plx = int(rand($PARAMS->{height}));
+			my $ply = int(rand($PARAMS->{width}));
 			if (
-				
 				_town_ok_to_place (
 					$plx,
 					$ply,
@@ -198,12 +214,12 @@ sub add_castles {
 	while ($x <= $castle_count) {
 		my $cur_distance = $NUMBERS->{players}->{preferred_distance};
 		my $done = 0;
-		while ($cur_distance > 0 && !$done) {
+		while ($cur_distance > 1 && !$done) {
 			my $y = 1;
 			# 200 tries to place a castle.
 			while ($y <= 200) {
-				my $plx = int(rand(@{ $MAP }));
-				my $ply = int(rand(@{ $MAP->[0] }));
+				my $plx = int(rand($PARAMS->{height}));
+				my $ply = int(rand($PARAMS->{width}));
 				if (
 					
 					_castle_ok_to_place (
@@ -223,6 +239,9 @@ sub add_castles {
 				++$y;
 			}
 			$cur_distance -= $NUMBERS->{players}->{decrement_unit};
+		}
+		if (!$done) {
+			die "Something screwed up, could not place castle $x\n";
 		}
 		++$x;
 	}
@@ -248,23 +267,8 @@ sub _town_ok_to_place {
 	if ($MAP->[$x]->[$y] eq $type) {
 		return undef;
 	}
-	my @dirs = (0,1,2,3,4,5,6,7);
-	foreach my $dir (@dirs) {
-		my $cnt = 1;
-		my $bx = $x;
-		my $by = $y;
-		while ($cnt <= $search_dist) {
-			($bx,$by) = _move_direction($bx,$by,$dir);
-			if (defined($bx) && defined($by)) {
-				if ($MAP->[$bx]->[$by] eq $type) {
-					return undef;
-				}
-			}
-			else {
-				$cnt = $search_dist; # this will get us out of the loop safely.
-			}
-			++$cnt;
-		}
+	if (_scan_ring($x,$y,$search_dist,$type)) {
+		return undef;
 	}
 	return 1;
 }
@@ -276,30 +280,75 @@ sub _castle_ok_to_place {
 	# is a bit of a hog.
 	
 	# simple check, are we on top of one?
-	if ($MAP->[$x]->[$y] =~ /^\d+$/) {
+	if (_is_castle($MAP->[$x]->[$y])) {
 		return undef;
 	}
-	my @dirs = (0,1,2,3,4,5,6,7);
-	foreach my $dir (@dirs) {
-		my $cnt = 1;
-		my $bx = $x;
-		my $by = $y;
-		while ($cnt <= $search_dist) {
-			($bx,$by) = _move_direction($bx,$by,$dir);
-			if (defined($bx) && defined($by)) {
-				if ($MAP->[$bx]->[$by] =~ /^\d+$/) {
-					return undef;
-				}
-			}
-			else {
-				$cnt = $search_dist; # this will get us out of the loop safely.
-			}
-			++$cnt;
-		}
+	if (_scan_border($x,$y,4)) {
+		# at least 4 squares from the map edge.
+		return undef;
+	}
+	if (_scan_ring($x,$y,$search_dist,'castle')) {
+		return undef;
 	}
 	return 1;
 }
 
+sub _scan_border {
+	my ($x,$y,$dist) = @_;
+	unless ($MAP->[$x + $dist + 1]->[$y + $dist + 1]) {
+		return 1;
+	}
+	unless ($MAP->[$x - $dist]->[$y - $dist]) {
+		return 1;
+	}
+	return undef;
+}
+
+# scans in a ring around location looking
+# for a specific type of terrain.
+# if it finds it, it returns true,
+# otherwise, returns undef.
+# used by place town, place castle
+sub _scan_ring {
+	my ($x,$y,$dist,$type) = @_;
+	# first we build a list of all the
+	# x,y locations that match our ring.
+	# 
+	
+
+	my $sx = $x - $dist; # starting x point
+	my $sy = $y - $dist; # starting y point
+	my $ex = $x + $dist; # ending x point
+	my $ey = $y + $dist; # ending y point
+	
+	
+	my $cx = $sx;
+	while ($cx <= $ex) {
+		my $cy = $sy;
+		while ($cy <= $ey) {
+			if ($MAP->[$cx]->[$cy] && $type eq 'castle' && _is_castle($MAP->[$cx]->[$cy])) {
+				return 1;
+			}
+			if ($MAP->[$cx]->[$cy] && $type eq $MAP->[$cx]->[$cy]) {
+				return 1;
+			}
+			++$cy;
+		}
+		$cx++;
+	}
+	return undef;
+
+}
+
+# just a nicely named routine to keep from using
+# regular expressions all over.
+sub _is_castle {
+	my ($type) = @_;
+	if ($type =~ /^\d$/) {
+		return 1;
+	}
+	return undef;
+}
 
 sub surround {
 	my ($x,$y,$type) = @_;
@@ -363,8 +412,8 @@ sub _is_placeable {
 # It's sorta an ugly fix to some of the randomness issues,
 # but thus far has seemed to work out ok.
 sub level_terrain {
-	my $height = @{ $MAP };
-	my $width = @{ $MAP->[0] };
+	my $height = $PARAMS->{height};
+	my $width = $PARAMS->{width};
 	$height--;
 	$width--;
 	my $x = 0;
@@ -404,25 +453,25 @@ sub _move_direction {
 			--$x;
 	}
 	# move north-east if possible.
-	elsif ($dir == 2 && ($x - 1) >= 0 && ($y + 1) < @{ $MAP->[0] }) {
+	elsif ($dir == 2 && ($x - 1) >= 0 && ($y + 1) < $PARAMS->{width}) {
 			++$y;
 			--$x;
 	}
 	# move east if possible
-	elsif ($dir == 3 && ($y + 1) < @{ $MAP->[0] }) {
+	elsif ($dir == 3 && ($y + 1) < $PARAMS->{width}) {
 			++$y;
 	}
 	# move south-east if possible.
-	elsif ($dir == 4 && ($y + 1) < @{ $MAP->[0] } && ($x + 1) < @{ $MAP }) {
+	elsif ($dir == 4 && ($y + 1) < $PARAMS->{width} && ($x + 1) < $PARAMS->{height}) {
 			++$y;
 			++$x;
 	}
 	# move south if possible
-	elsif ($dir == 5  && ($x + 1) < @{ $MAP }) {
+	elsif ($dir == 5  && ($x + 1) < $PARAMS->{height}) {
 			++$x;
 	}
 	# move south-west if possible
-	elsif ($dir == 6  && ($y - 1) >= 0 && ($x + 1) < @{ $MAP }) {
+	elsif ($dir == 6  && ($y - 1) >= 0 && ($x + 1) < $PARAMS->{height}) {
 			--$y;
 			++$x;
 	}
@@ -450,7 +499,6 @@ sub _get_next_map_square {
 
 	my $x = $args{x};
 	my $y = $args{y};
-	debug("FINDING NEXT SQUARE FOR: $x $y\n");
 	foreach my $dir (@try_dirs) {
 		my ($bx,$by) = _move_direction($x,$y,$dir);
 		if (_is_placeable($bx,$by)) {
@@ -458,9 +506,6 @@ sub _get_next_map_square {
 		}
 	}
 	return (x => undef,  y => undef);
-}
-sub debug {
-	#warn @_;
 }
 
 
