@@ -1,19 +1,25 @@
 CVS HEAD:
  * added dir for user created campaigns
- * help browser
+ * help browser, hotkey is <F1>
+ * new tabbed preferences dialog
+ * basic clipboard functionality
  * improved and added new graphics: unit animations, healing animations, tent
  * traits removed from treefolk (Woses)
  * treefolk piercing, impact and cold resistance increased
  * Wose renamed to Elder Wose, Sapling Wose renamed to Wose
  * Wose hitpoints and melee damage increased
+ * Reduced cost for Drake Burner, Drake Fighter, Drake Mage and Drake Slave
  * new units
    * Drake Beak
    * Drake Worker
    * Dwarvish Ulfserker
+   * Fire Drake
+   * Gryphon Master
    * Lancer
  * scenario balancing for 'Heir to the Throne' campaign:
    * Dwarven Doors
    * Mountain Pass
+   * Plunging Into the Darkness
  * new scenario for 'The Dark Hordes' campaign:
    * Confrontation
  * scenario balancing for 'The Dark Hordes' campaign:
@@ -24,11 +30,13 @@ CVS HEAD:
    * The Skull of Agarash
  * multiplayer improvements
    * added Drakes to Wesbowl
+   * added Drakes to 'Classic' era
  * AI improvements
    * made AI attack when getting ambushed
  * language fixes and polishing (english)
  * translation updates:
    * catalan
+   * german
    * spanish
  * editor improvements:
    * added some command line flags, such as --datadir
@@ -44,10 +52,14 @@ CVS HEAD:
  * fixed assertion failure/infinite loop in AI logic
  * fixed bug in WML
  * fixed segfault
+ * fixed bug in generating random maps
+ * fixed wesnothd crashing due SIGPIPE
  * disabled some font settings to work around bug in SDL_ttf
  * added CASTLE_AND_SIMPLE_KEEP macro, where the keep is composed of only a unique tile with walls
  * added BUILDING_ macros to add houses, tents etc. over other terrains
  * added CASTLE_FLOOR macro
+ * transitions may be now specified between a terrain and another one (in terrain-graphics.cfg)
+ * enabled castle-to-forest transitions for encampments
  * relocated 'Heir to the Throne' maps in they own subdir, and gave them an explicit names
  * relocated 'Son of the Black Eye' maps in they own subdir, and gave them an explicit names
  * relocated 'The Dark Hordes' maps in they own subdir, and gave them an explicit names
