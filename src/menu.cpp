@@ -824,6 +824,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 				}
 			}
 		}
+
+		SDL_Delay(20);
 	}
 
 	return -1;
