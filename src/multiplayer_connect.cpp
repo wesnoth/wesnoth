@@ -451,7 +451,7 @@ void mp_connect::gui_update()
 		if (side["controller"] == "network") {
 			if (side["description"] == "") {
 				combos_type_[n].set_selected(0);
-			} else if (side["description"] == "Computer Player") {
+			} else if (side["description"] == string_table["ai_controlled"]) {
 				//When loading a game you did not create AI players are marked
 				//as network players, set back to AI
 				combos_type_[n].set_selected(2);
@@ -855,47 +855,84 @@ void mp_connect::update_network()
 			}
 		}
 
-		const int side_taken = atoi(cfg["side"].c_str())-1;
+		int side_taken = atoi(cfg["side"].c_str())-1;
 		if(side_taken >= 0 && side_taken < int(sides.size())) {
 			std::map<config*,network::connection>::iterator pos = positions_.find(sides[side_taken]);
 			if(pos != positions_.end()) {
-				if(!pos->second || pos->second == sock) {
-					std::cerr << "client has taken a valid position\n";
+				//see if we can reassign the player to a different position
+				if(pos->second && pos->second != sock) {
+					side_taken = 0;
+					for(pos = positions_.begin(); pos != positions_.end(); ++pos, ++side_taken) {
+						if(pos->first->values["controller"] == "network" &&
+							pos->first->values["taken"] != "yes") {
+							break;
+						}
+					}
 
-					//does the client already own the side, and is just updating
-					//it, or is it taking a vacant slot?
-					const bool update_only = pos->second == sock;
+					if(pos == positions_.end()) {
+						config response;
+						response.values["failed"] = "yes";
+						network::send_data(response,sock);
+						return;
+					}
 
-					//broadcast to everyone the new game status
-					pos->first->values["controller"] = "network";
-					pos->first->values["taken"] = "yes";
-					pos->first->values["description"] = cfg["description"];
-					pos->first->values["name"] = cfg["name"];
-					pos->first->values["type"] = cfg["type"];
-					pos->first->values["recruit"] = cfg["recruit"];
-					pos->first->values["music"] = cfg["music"];
-					pos->first->values["terrain_liked"] = cfg["terrain_liked"];
-					pos->second = sock;
-					network::send_data(*level_);
-
-					std::cerr << "sent player data\n";
-
-					//send a reply telling the client they have secured
-					//the side they asked for
-					std::stringstream side;
-					side << (side_taken+1);
-					config reply;
-					reply.values["side_secured"] = side.str();
-					std::cerr << "going to send data...\n";
-					network::send_data(reply,sock);
-
-					// Add to combo list
-					add_player(cfg["description"]);
-				} else {
-					config response;
-					response.values["failed"] = "yes";
-					network::send_data(response,sock);
+					config reassign;
+					config& cfg = reassign.add_child("reassign_side");
+					cfg["from"] = cfg["side"];
+					cfg["to"] = lexical_cast<std::string>(side_taken+1);
+					network::send_data(reassign,sock);
 				}
+
+				std::cerr << "client has taken a valid position\n";
+
+				//does the client already own the side, and is just updating
+				//it, or is it taking a vacant slot?
+				const bool update_only = pos->second == sock;
+
+				//broadcast to everyone the new game status
+				pos->first->values["controller"] = "network";
+				pos->first->values["taken"] = "yes";
+
+				if(cfg["description"].empty() == false) {
+					pos->first->values["description"] = cfg["description"];
+				}
+
+				if(cfg["name"].empty() == false) {
+					pos->first->values["name"] = cfg["name"];
+				}
+
+				if(cfg["type"].empty() == false) {
+					pos->first->values["type"] = cfg["type"];
+				}
+
+				if(cfg["recruit"].empty() == false) {
+					pos->first->values["recruit"] = cfg["recruit"];
+				}
+
+				if(cfg["music"].empty() == false) {
+					pos->first->values["music"] = cfg["music"];
+				}
+
+				if(cfg["terrain_liked"].empty() == false) {
+					pos->first->values["terrain_liked"] = cfg["terrain_liked"];
+				}
+
+				pos->second = sock;
+				network::send_data(*level_);
+
+				std::cerr << "sent player data\n";
+
+				//send a reply telling the client they have secured
+				//the side they asked for
+				std::stringstream side;
+				side << (side_taken+1);
+				config reply;
+				reply.values["side_secured"] = side.str();
+				std::cerr << "going to send data...\n";
+				network::send_data(reply,sock);
+
+				// Add to combo list
+				add_player(cfg["description"]);
 			} else {
 				std::cerr << "tried to take illegal side: " << side_taken << "\n";
 			}

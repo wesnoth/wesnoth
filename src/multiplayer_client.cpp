@@ -8,6 +8,7 @@
 #include "replay.hpp"
 #include "scoped_resource.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 
 #include <sstream>
 
@@ -34,59 +35,6 @@ public:
 private:
 	config cfg;
 };
-
-enum GAME_LIST_RESULT { QUIT_GAME, CREATE_GAME, JOIN_GAME };
-
-GAME_LIST_RESULT manage_game_list(display& disp, const config* gamelist)
-{
-	gamelist_manager manager;
-	for(;;) {
-		std::vector<std::string> options;
-		options.push_back(string_table["create_new_game"]);
-		for(config::const_child_itors i = gamelist->child_range("game");
-		    i.first != i.second; ++i.first) {
-			options.push_back((**i.first)["name"]);
-		}
-		
-		options.push_back(string_table["quit_button"]);
-
-		const int res = gui::show_dialog(disp,NULL,"","Choose game to join",
-		                       gui::MESSAGE,&options,NULL,"",NULL,&manager);
-		if(res == gamelist_manager::UPDATED_GAMELIST) {
-			gamelist = manager.get_gamelist();
-		} else if(res == 0) {
-			std::string name;
-			const int res = gui::show_dialog(disp,NULL,"","Name your game:",
-			                   gui::OK_CANCEL,NULL,NULL,"Name:",&name);
-			if(res == 0) {
-				config response;
-				config& create_game = response.add_child("create_game");;
-				create_game["name"] = name;
-
-				network::send_data(response);
-
-				return CREATE_GAME;
-			}
-		} else if(size_t(res) == options.size()-1) {
-			return QUIT_GAME;
-		} else if(res > 0 && size_t(res) < options.size()) {
-			const config::const_child_itors i = gamelist->child_range("game");
-			const size_t index = size_t(res)-1;
-			assert(i.second - i.first > int(index));
-			const std::string& id = (**(i.first+index))["id"];
-			
-			config response;
-			config& join = response.add_child("join");
-			join["id"] = id;
-			
-			network::send_data(response);
-
-			return JOIN_GAME;
-		}
-	}
-
-	return QUIT_GAME;
-}
 
 void check_response(network::connection res, const config& data)
 {
@@ -116,7 +64,7 @@ void receive_gamelist(display& disp, config& data)
 class wait_for_start : public lobby::dialog
 {
 public:
-	wait_for_start(display& disp, config& cfg) : got_side(false), status(START_GAME), disp_(disp), cancel_button_(NULL), sides_(cfg) {}
+	wait_for_start(display& disp, config& cfg, int team_num) : got_side(false), team(team_num), status(START_GAME), disp_(disp), cancel_button_(NULL), sides_(cfg) {}
 
 	void set_area(const SDL_Rect& area) {
 		const std::string text = string_table["waiting_start"];
@@ -146,6 +94,13 @@ public:
 		const network::connection res = network::receive_data(reply);
 		if(res) {
 			std::cerr << "received data while waiting: " << reply.write() << "\n";
+			const config::child_list& assigns = reply.get_children("reassign_side");
+			for(config::child_list::const_iterator a = assigns.begin(); a != assigns.end(); ++a) {
+				if(lexical_cast_default<int>((**a)["from"]) == team) {
+					team = lexical_cast_default<int>((**a)["to"]);
+				}
+			}
+
 			if(reply.values["failed"] == "yes") {
 				status = SIDE_UNAVAILABLE;
 				return lobby::QUIT;
@@ -175,6 +130,7 @@ public:
 	}
 
 	bool got_side;
+	int team;
 	enum { START_GAME, GAME_CANCELLED, SIDE_UNAVAILABLE } status;
 
 private:
@@ -275,8 +231,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		logged_in = true;
 	}
 
-	for(bool first_time = true;
-	    (first_time || logged_in) && network::nconnections() > 0;
+	for(bool first_time = true; (first_time || logged_in) && network::nconnections() > 0;
 	    first_time = false) {
 
 		if(!first_time) {
@@ -284,6 +239,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		}
 
 		std::cerr << "when receiving gamelist got '" << data.write() << "'\n";
+
+		bool observer = false;
 
 		//if we got a gamelist back - otherwise we have
 		//got a description of the game back
@@ -310,6 +267,9 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 						break;
 					}
+
+					case lobby::OBSERVE:
+						observer = true;
 					case lobby::JOIN: {
 						status = 1;
 						break;
@@ -332,56 +292,41 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 		//ensure we send a close game message to the server when we are done
 		network_game_manager game_manager;
-    
-		std::map<int,int> choice_map;
-		std::vector<std::string> choices, race_names;
-		std::vector<bool> changes_allowed;
 
-		const bool allow_observer = sides["observer"] != "no";
-
-		if(allow_observer) {
-			choices.push_back(string_table["observer"]);
-		}
-    
 		const config::child_list& sides_list = sides.get_children("side");
-		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
-			if((**s)["controller"] == "network" &&
-			   (**s)["taken"] != "yes") {
-				choice_map[choices.size()] = 1 + s - sides_list.begin();
-				choices.push_back((**s)["name"] + "," + (**s)["type"] + "," + (**s)["description"]);
+
+		int team_num = 0;
+		
+		if(!observer) {
+			//search for an appropriate vacant slot. If a description is set
+			//(i.e. we're loading from a saved game), then prefer to get the side
+			//with the same description as our login. Otherwise just choose the first
+			//available side.
+			config::child_list::const_iterator side_choice = sides_list.end();
+			int nchoice = -1, n = 1;
+			bool allow_changes = false;
+			std::string default_race;
+			for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s, ++n) {
+				if((**s)["controller"] == "network" &&
+				   (**s)["taken"] != "yes") {
+					if(side_choice == sides_list.end() || (**s)["description"] == preferences::login()) {
+						side_choice = s;
+						nchoice = n;
+						allow_changes = (**s)["changes_allowed"] != "no";
+						default_race = (**s)["name"];
+					}
+				}
 			}
 
-			race_names.push_back((**s)["name"]);
-			changes_allowed.push_back((**s)["allow_changes"] != "no");
-		}
+			if(side_choice == sides_list.end()) {
+				gui::show_dialog(disp,NULL,"",string_table["no_sides_available"],gui::OK_ONLY);
+				continue;
+			}
 
-		if(choices.empty()) {
-			gui::show_dialog(disp,NULL,"",string_table["no_sides_available"],gui::OK_ONLY);
-			continue;
-		}
-    
-		int choice = gui::show_dialog(disp,NULL,"",string_table["client_choose_side"],
-		                                    gui::OK_CANCEL,&choices);
-
-		if((choice != 0 || allow_observer == false) && choice_map.count(choice) == 0) {
-			continue;
-		}
-    
-		const bool observer = allow_observer && choice == 0;
-
-		const int team_num = observer ? -1 : choice_map[choice];
-    
-		//send our choice of team to the server
-		if(!observer) {
-
-			assert(team_num >= 1 && team_num <= race_names.size());
-			const std::string& default_race = race_names[team_num-1];
-			const bool allow_changes = changes_allowed[team_num-1];
+			team_num = nchoice;
 
 			config response;
-			std::stringstream stream;
-			stream << team_num;
-			response["side"] = stream.str();
+			response["side"] = lexical_cast<std::string>(nchoice);
 			response["description"] = preferences::login();
 
 			const std::string& era = sides["era"];
@@ -407,8 +352,9 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
 				choices.push_back(translate_string_default((**side)["id"],(**side)["name"]));
 
-				if(choices.back() == default_race)
+				if(choices.back() == default_race) {
 					choice = side - possible_sides.begin();
+				}
 			}
 
 			//if the client is allowed to choose their team, instead of having
@@ -429,7 +375,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			network::send_data(response);
 		}
     
-		wait_for_start waiter(disp,sides);
+		wait_for_start waiter(disp,sides,team_num);
 		std::vector<std::string> messages;
 		config game_data;
 		const lobby::RESULT dialog_res = lobby::enter(disp,game_data,cfg,&waiter,messages);
@@ -450,6 +396,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		if(!observer && !waiter.got_side) {
 			throw network::error("Choice of team unavailable.");
 		}
+
+		team_num = waiter.team;
     
 		//we want to make the network/human players look right from our
 		//perspective

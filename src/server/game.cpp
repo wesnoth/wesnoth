@@ -111,9 +111,36 @@ bool game::take_side(network::connection player, const config& cfg)
 
 	const std::string& side = cfg["side"];
 	
-	//if the player is already on a side or the side is already taken
-	if(sides_.count(player) || sides_taken_.count(side))
+	//if the player is already on a side
+	if(sides_.count(player))
 		return false;
+
+	//if the side is already taken, see if we can give the player
+	//another side instead
+	if(sides_taken_.count(side)) {
+		std::cerr << "side '" << side << "' taken, searching for alternative side\n";
+		const config::child_list& sides = level_.get_children("side");
+		for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
+			if((**i)["controller"] == "network" && sides_taken_.count((**i)["side"]) == 0) {
+				config new_cfg = cfg;
+				new_cfg["side"] = (**i)["side"];
+
+				const bool res = take_side(player,new_cfg);
+
+				//if there's another side available, then tell the player that they've
+				//had their side reassigned
+				if(res) {
+					config response;
+					config& reassign = response.add_child("reassign_side");
+					reassign["from"] = cfg["side"];
+					reassign["to"] = new_cfg["side"];
+					network::send_data(response,player);
+				}
+
+				return res;
+			}
+		}
+	}
 
 	sides_[player] = side;
 	sides_taken_.insert(side);

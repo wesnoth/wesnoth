@@ -242,7 +242,8 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		break;
 	}
 	case UPKEEP: {
-		str << team_upkeep(units,current_side);
+		const team_data data = calculate_team_data(current_team,current_side,units);
+		str << data.expenses << " (" << data.upkeep << ")";
 		break;
 	}
 	case EXPENSES: {

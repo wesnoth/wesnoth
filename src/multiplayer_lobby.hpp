@@ -8,7 +8,7 @@
 ///allows players to chat, create games, and join games.
 namespace lobby {
 
-enum RESULT { QUIT, CREATE, JOIN, CONTINUE };
+enum RESULT { QUIT, CREATE, JOIN, OBSERVE, CONTINUE };
 
 ///interface for an interactive dialog that is displayed while lobby user lists
 ///and lobby chat continue

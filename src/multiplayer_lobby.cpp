@@ -83,6 +83,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		chat_textbox.scroll_to_bottom();
 
 		std::vector<std::string> options;
+		std::vector<bool> game_vacant_slots, game_observers;
 
 		const config* const gamelist = game_data.child("gamelist");
 
@@ -144,6 +145,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				}
 	
 				options.push_back(str.str());
+				game_vacant_slots.push_back(slots != "" && slots != "0");
+				game_observers.push_back((**i.first)["observer"] != "no");
 			}
 		}
 
@@ -153,17 +156,25 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 
 		gui::menu games_menu(disp,options);
+		gui::button observe_game(disp,string_table["observe_game"]);
 		gui::button join_game(disp,string_table["join_game"]);
 		gui::button new_game(disp,string_table["create_new_game"]);
 		gui::button quit_game(disp,string_table["quit_button"]);
 
 		if(dlg != NULL) {
+			observe_game.hide();
 			join_game.hide();
 			new_game.hide();
 			quit_game.hide();
 		}
 
-		if(!games_available) {
+		if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
+			assert(game_vacant_slots.size() == game_observers.size());
+
+			join_game.hide(!game_vacant_slots[games_menu.selection()]);
+			observe_game.hide(!game_observers[games_menu.selection()]);
+		} else {
+			observe_game.hide();
 			join_game.hide();
 		}
 		
@@ -217,8 +228,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 		update_rect(xscale(disp,19),yscale(disp,23),xscale(disp,832),yscale(disp,520));
 		join_game.set_location(xscale(disp,19),yscale(disp,545));
-		new_game.set_location(xscale(disp,19)+join_game.width()+5,yscale(disp,545));
-		quit_game.set_location(xscale(disp,19)+join_game.width()+5+new_game.width()+5,yscale(disp,545));
+		observe_game.set_location(join_game.location().x + join_game.location().w + 5,yscale(disp,545));
+		new_game.set_location(observe_game.location().x + observe_game.location().w + 5,yscale(disp,545));
+		quit_game.set_location(new_game.location().x + new_game.location().w + 5,yscale(disp,545));
 		message_entry.set_location(xscale(disp,19),yscale(disp,725));
 		message_entry.set_width(xscale(disp,832));
 
@@ -241,14 +253,19 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				games_menu.process(mousex,mousey,left_button,
 				                   key[SDLK_UP],key[SDLK_DOWN],
 				                   key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
+
+				if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
+					join_game.hide(!game_vacant_slots[games_menu.selection()]);
+					observe_game.hide(!game_observers[games_menu.selection()]);
+				}
 			}
 
 			users_menu.process(mousex,mousey,left_button,
 			                   key[SDLK_UP],key[SDLK_DOWN],
 			                   key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
 			 
-			if(games_available &&
-			   (join_game.process(mousex,mousey,left_button) || games_menu.double_clicked())) {
+			const bool observe = observe_game.pressed();
+			if(games_available && (observe || join_game.pressed() || games_menu.double_clicked())) {
 				const size_t index = size_t(games_menu.selection());
 				const config::const_child_itors i = gamelist->child_range("game");
 				assert(index < size_t(i.second - i.first));
@@ -258,10 +275,10 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				config& join = response.add_child("join");
 				join["id"] = id;
 				network::send_data(response);
-				return JOIN;
+				return observe ? OBSERVE : JOIN;
 			}
 			
-			if(dlg == NULL && new_game.process(mousex,mousey,left_button)) {
+			if(dlg == NULL && new_game.pressed()) {
 				return CREATE;
 				break;
 			}

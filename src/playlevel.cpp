@@ -112,6 +112,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
+	const int ticks = SDL_GetTicks();
 	std::cerr << "in play_level()...\n";
 
 	//if the entire scenario should be randomly generated
@@ -146,12 +147,16 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		state_of_game.starting_pos = new_level;
 	}
 
+	std::cerr << "generated map " << (SDL_GetTicks() - ticks) << "\n";
+
 	const statistics::scenario_context statistics_context(translate_string_default((*level)["id"],(*level)["name"]));
 
 	const int num_turns = atoi(level->values["turns"].c_str());
 	gamestatus status(*level,num_turns);
 
 	gamemap map(game_config,map_data);
+
+	std::cerr << "created objects... " << (SDL_GetTicks() - ticks) << "\n";
 
 	CKey key;
 	unit_map units;
@@ -175,6 +180,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	}
 
 	std::cerr << "initializing teams..." << unit_cfg.size() << "\n";;
+	std::cerr << (SDL_GetTicks() - ticks) << "\n";
 
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
 		std::cerr << "initializing team...\n";
@@ -268,6 +274,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		}
 	}
 
+	std::cerr << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
+
 	const config* theme_cfg = NULL;
 	if((*level)["theme"] != "") {
 		theme_cfg = game_config.find_child("theme","name",(*level)["theme"]);
@@ -277,13 +285,18 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		theme_cfg = game_config.find_child("theme","name",preferences::theme());
 	}
 
+	std::cerr << "initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 	const config dummy_cfg;
 	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config);
+
+	std::cerr << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 
 	//object that will make sure that labels are removed at the end of the scenario
 	const font::floating_label_manager labels_manager;
 
 	gui.labels().read(*level);
+
+	std::cerr << "a... " << (SDL_GetTicks() - ticks) << "\n";
 
 	if(first_human_team != -1) {
 		gui.set_team(first_human_team);
@@ -291,6 +304,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	const preferences::display_manager prefs_disp_manager(&gui);
 	const tooltips::manager tooltips_manager(gui);
+
+	std::cerr << "b... " << (SDL_GetTicks() - ticks) << "\n";
 
 	if(recorder.skipping() == false) {
 		for(std::vector<config*>::const_iterator story_i = story.begin();
@@ -301,13 +316,19 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		show_map_scene(gui,*level);
 	}
 
+	std::cerr << "c... " << (SDL_GetTicks() - ticks) << "\n";
+
 	const std::string& music = level->values["music"];
 	if(music != "") {
 		sound::play_music(music);
 	}
 
+	std::cerr << "d... " << (SDL_GetTicks() - ticks) << "\n";
+
 	victory_conditions::set_victory_when_enemies_defeated(
 						(*level)["victory_when_enemies_defeated"] != "no");
+
+	std::cerr << "initializing events manager... " << (SDL_GetTicks() - ticks) << "\n";
 
 	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,status,gameinfo);
@@ -322,17 +343,23 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	turn_info::floating_textbox textbox_info;
 
+	std::cerr << "entering try... " << (SDL_GetTicks() - ticks) << "\n";
+
 	try {
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
 		game_events::fire("prestart");
 
+		std::cerr << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 		if(first_human_team != -1) {
 			clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
+			std::cerr << "b " << (SDL_GetTicks() - ticks) << "\n";
 			gui.scroll_to_tile(map.starting_position(first_human_team+1).x,map.starting_position(first_human_team+1).y,display::WARP);
+			std::cerr << "c " << (SDL_GetTicks() - ticks) << "\n";
 		}
 	
 		gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
+		std::cerr << "done scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 
 		bool replaying = (recorder.at_end() == false);
 	
@@ -345,6 +372,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		}
 
 		std::cerr << "starting main loop\n";
+		std::cerr << (SDL_GetTicks() - ticks) << "\n";
 
 		std::deque<config> data_backlog;
 		
