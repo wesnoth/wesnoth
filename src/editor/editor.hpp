@@ -227,7 +227,7 @@ private:
 	// Keep track of the number of operations performed since the last
 	// save. If this is zero when the editor is exited there is no need
 	// to ask the user to save.
-	int num_operations_since_save_;
+	static int num_operations_since_save_;
 	size_specs size_specs_;
 	config &theme_;
 	config &game_config_;
@@ -250,7 +250,8 @@ private:
 	// cycles.
 	bool mouse_moved_;
 	const preferences::display_manager prefs_disp_manager_;
-	config prefs_;
+	static config prefs_;
+	static bool first_time_created_;
 	
 };
 

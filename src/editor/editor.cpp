@@ -75,33 +75,49 @@ namespace {
 }
 
 namespace map_editor {
+
+// The map_editor object will be recreated when operations that affect
+// the whole map takes place. It may not be the most beautiful solution,
+// but it is the way the least interference with the game system is
+// needed. That is the reason we need some static variables to handle
+// things that should be permanent through the program's life time. Of
+// course, the functionality of this assumes that no more than one
+// map_editor object will exist, but that is a reasonable restriction
+// imho.
+bool map_editor::first_time_created_ = true;
+int map_editor::num_operations_since_save_ = 0;
+config map_editor::prefs_;
+
 map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
-	  num_operations_since_save_(0), theme_(theme), game_config_(game_config),
-	  map_dirty_(false), palette_(gui, size_specs_, map), brush_(gui, size_specs_),
+	  theme_(theme), game_config_(game_config), map_dirty_(false),
+	  palette_(gui, size_specs_, map), brush_(gui, size_specs_),
 	  l_button_func_(NONE), prefs_disp_manager_(&gui_) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
 	palette_.adjust_size();
 	brush_.adjust_size();
-
-	// Clear the current hotkeys. Alot of hotkeys are already set
-	// through other configuration files (e.g. english.cfg and
-	// preferences) and we need to clear these or they will overlap.
-	hotkey::get_hotkeys().clear();
-	hotkey::add_hotkeys(theme_, true);
-	try {
-		prefs_.read(read_file(prefs_filename));
+	if (first_time_created_) {
+		// Perform some initializations that should only be performed
+		// the first time the editor object is created.
+		try {
+			prefs_.read(read_file(prefs_filename));
+		}
+		catch (config::error e) {
+			std::cerr << "Error when reading " << prefs_filename << ": "
+					  << e.message << std::endl;
+		}
+		// Clear the current hotkeys. Alot of hotkeys are already set
+		// through other configuration files (e.g. english.cfg and
+		// preferences) and we need to clear these or they will overlap.
+		hotkey::get_hotkeys().clear();
+		hotkey::add_hotkeys(theme_, true);
+		hotkey::add_hotkeys(prefs_, true);
+		first_time_created_ = false;
 	}
-	catch (config::error e) {
-		std::cerr << "Error when reading " << prefs_filename << ": "
-				  << e.message << std::endl;
-	}
-	hotkey::add_hotkeys(prefs_, true);
 
 	recalculate_starting_pos_labels();
-
 	gui_.begin_game();
 	gui_.invalidate_all();
 	gui_.draw();
@@ -276,6 +292,7 @@ void map_editor::edit_new_map() {
 	const std::string map = new_map_dialog(gui_, palette_.selected_terrain(),
 										   changed_since_save(), game_config_);
  	if (map != "") {
+		num_operations_since_save_ = 0;
 		clear_undo_actions();
 		throw new_map_exception(map);
 	}
@@ -287,6 +304,7 @@ void map_editor::edit_load_map() {
 		const std::string new_map = load_map(fn);
 		if (new_map != "") {
 			if (!changed_since_save() || confirm_modification_disposal(gui_)) {
+				num_operations_since_save_ = 0;
 				clear_undo_actions();
 				throw new_map_exception(new_map, fn);
 			}
@@ -726,7 +744,9 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 				invalidate_adjacent(locs[i]);
 			}
 		}
-		gui_.rebuild_terrain(locs[i]);
+		if (map_.is_built(locs[i])) {
+			gui_.rebuild_terrain(locs[i]);
+		}
 		gui_.invalidate(locs[i]);
 	}
 	map_dirty_ = true;
@@ -754,7 +774,9 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 				invalidate_adjacent(*its);
 			}
 		}
-		gui_.rebuild_terrain(*its);
+		if (map_.is_built(*its)) {
+			gui_.rebuild_terrain(*its);
+		}
 		gui_.invalidate(*its);
 	}
 	map_dirty_ = true;
