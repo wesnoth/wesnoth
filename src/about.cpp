@@ -78,6 +78,7 @@ void show_about(display& disp)
  	text.push_back("-   Isaac Clerencia");
  	text.push_back("-   J.R. Blain (Cowboy)");
  	text.push_back("-   Justin Zaun (jzaun)");
+ 	text.push_back("-   Philippe Plantier (Ayin)");
  	text.push_back("-   Zas");
  	text.push_back("+ ");
  
