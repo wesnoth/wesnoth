@@ -538,13 +538,6 @@ void mp_connect::gui_update()
 		if (!save_) 
 			player_leaders_[n].set_leader(side["type"]);
 
-		//Player Team
-		const std::string& team_name = side["team_name"];
-		if(team_name != "" && isdigit(team_name[0]))
-			combos_team_[n].set_selected(team_name[0] - '1');
-
-		//Player Color
-
 		//Player Gold
 		std::string str = side["gold"];
 		sliders_gold_[n].set_value(atoi(str.c_str()));
