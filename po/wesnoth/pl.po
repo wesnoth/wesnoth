@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-03-20 21:27+0100\n"
+"POT-Creation-Date: 2005-03-21 09:57+0100\n"
 "PO-Revision-Date: 2005-01-22 17:15+0100\n"
 "Last-Translator: Paweł Stradomski <pstradomski@poczta.gazeta.pl>\n"
 "Language-Team:  <pl@li.org>\n"
@@ -779,7 +779,7 @@ msgstr "Ta woda sprawia, że broń do walki wręcz tej jednostki jest święta."
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Nie mogę wziąć tej rzeczy, niech przyjdzie po nią ktoś inny."
 
-#: data/items.cfg:451 data/scenarios/tutorial/Traits_and_Specialties.cfg:194
+#: data/items.cfg:451
 msgid "Potion of Strength"
 msgstr "Eliksir siły"
 
@@ -1140,8 +1140,8 @@ msgstr "Tak!"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/Basic_Training.cfg:280
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:270
+#: data/scenarios/tutorial/Basic_Training.cfg:293
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:271
 msgid "No"
 msgstr "Nie"
 
@@ -1215,19 +1215,12 @@ msgstr "Bitwa księżniczki"
 msgid "King of the Hill"
 msgstr "Król wzgórza"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:16
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
+#: data/scenarios/tutorial/Basic_Training.cfg:4
 #, fuzzy
-msgid "Konrad"
-msgstr "Władca"
+msgid "Basic Training"
+msgstr "+Tłumaczenie baskijskie"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:25
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
-msgid "Delfador"
-msgstr "Broniący się"
-
-#: data/scenarios/tutorial/Basic_Training.cfg:49
+#: data/scenarios/tutorial/Basic_Training.cfg:64
 #, fuzzy
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
@@ -1236,12 +1229,12 @@ msgstr ""
 "Przyszedłem tu, by nauczyć się walczyć. Skoro jesteś doświadczonym starym "
 "magiem, z pewnością możesz mnie wtajemniczyć w arkana sztuki wojennej."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:53
+#: data/scenarios/tutorial/Basic_Training.cfg:68
 #, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
-"select Recruit, and select 'OK'. You can only recruit units on castle tiles "
+"select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
 "Zanim ruszysz do walki, musisz rekrutować jednostki. Aby rekrutować "
@@ -1249,37 +1242,37 @@ msgstr ""
 "się znalazła. Potem wybierz \"Rekrutuj\" i kliknij \"OK\". Możesz rekrutować "
 "tylko na polach zamku połączonych z twierdzą, w której stoi Twój dowódca."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:55
+#: data/scenarios/tutorial/Basic_Training.cfg:70
 msgid "Recruit a unit"
 msgstr "Rekrutuj jednostkę"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:61
+#: data/scenarios/tutorial/Basic_Training.cfg:76
 #, fuzzy
-msgid "Excellent! You have recruited an Elvish Fighter."
+msgid "Excellent! You recruited an Elvish Fighter."
 msgstr "Doskonale! Rekrutowałeś elfowego wojownika."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:63
-#: data/scenarios/tutorial/Basic_Training.cfg:87
-#: data/scenarios/tutorial/Basic_Training.cfg:123
-#: data/scenarios/tutorial/Basic_Training.cfg:152
-#: data/scenarios/tutorial/Basic_Training.cfg:170
-#: data/scenarios/tutorial/Basic_Training.cfg:194
+#: data/scenarios/tutorial/Basic_Training.cfg:78
+#: data/scenarios/tutorial/Basic_Training.cfg:102
+#: data/scenarios/tutorial/Basic_Training.cfg:137
+#: data/scenarios/tutorial/Basic_Training.cfg:165
+#: data/scenarios/tutorial/Basic_Training.cfg:183
+#: data/scenarios/tutorial/Basic_Training.cfg:207
 #, fuzzy
 msgid "What do I do next?"
 msgstr "Co mam teraz zrobić?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:65
+#: data/scenarios/tutorial/Basic_Training.cfg:80
 #, fuzzy
 msgid "How do I recruit units?"
 msgstr "Jak mam rekrutować jednostki?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:65
+#: data/scenarios/tutorial/Basic_Training.cfg:80
 #, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
 "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
-"recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
+"recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 "Aby rekrutować jednostkę, kliknij prawym klawiszem myszy na polu zamku, "
@@ -1289,7 +1282,7 @@ msgstr ""
 "szybciej możesz po prostu wcisnąć Ctrl-Shift-R, co powtórzy ostatnią "
 "rekrutację."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:66
+#: data/scenarios/tutorial/Basic_Training.cfg:81
 #, fuzzy
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
@@ -1308,33 +1301,33 @@ msgstr ""
 "dowódca zginie, przegrywasz grę. Większość bitew wygrywa się przez zabicie "
 "wszystkich dowódców wroga."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:66
+#: data/scenarios/tutorial/Basic_Training.cfg:81
 #, fuzzy
 msgid "What's a leader?"
 msgstr "Kim jest dowódca?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:67
+#: data/scenarios/tutorial/Basic_Training.cfg:82
 #, fuzzy
 msgid "How should I choose what kind of units to recruit?"
 msgstr "Jak powinienem decydować, które jednostki należy rekrutować?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:67
+#: data/scenarios/tutorial/Basic_Training.cfg:82
 #, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
-"of the unit selection box,  and cost, which is displayed after the name of "
+"of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
 "Musisz dokładnie porównać ich zdolności, które są wyświetlone po lewej "
 "stronie okna wyboru i cenę, która jest podana zaraz za nazwą jednostki. "
 "Więcej o tym dowiesz się w dalszej części ćwiczeń."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:68
+#: data/scenarios/tutorial/Basic_Training.cfg:83
 #, fuzzy
 msgid "What happens when I recruit a unit?"
 msgstr "Co się stanie, gdy rekrutuję jednostkę?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:68
+#: data/scenarios/tutorial/Basic_Training.cfg:83
 #, fuzzy
 msgid ""
 "When you recruit a unit, it appears at full health on a castle tile of your "
@@ -1345,7 +1338,7 @@ msgstr ""
 "Ciebie polu zamku. Otrzymuje też dwaie cechy, o których powiem później. Nie "
 "może się ruszać ani atakować zanim zakończysz turę. "
 
-#: data/scenarios/tutorial/Basic_Training.cfg:78
+#: data/scenarios/tutorial/Basic_Training.cfg:93
 #, fuzzy
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
@@ -1356,22 +1349,22 @@ msgstr ""
 "rekrutowane, musisz zakończyć swoją turę. W tym celu po prostu kliknij na "
 "\"Zakończ turę\" w dolnym prawym rogu."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:80
+#: data/scenarios/tutorial/Basic_Training.cfg:95
 #, fuzzy
 msgid "End your turn"
 msgstr "Zakończ turę"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:85
+#: data/scenarios/tutorial/Basic_Training.cfg:100
 #, fuzzy
-msgid "You have successfully ended your turn."
+msgid "You successfully ended your turn."
 msgstr "Udało Ci się zakończyć turę."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:89
+#: data/scenarios/tutorial/Basic_Training.cfg:104
 #, fuzzy
 msgid "How do I end my turn?"
 msgstr "Jak mogę zakończyć turę?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:89
+#: data/scenarios/tutorial/Basic_Training.cfg:104
 #, fuzzy
 msgid ""
 "One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
@@ -1382,12 +1375,12 @@ msgstr ""
 "kliknąć prawym przyciskiem myszy i wybrać \"Zakończ turę\" albo kliknąć "
 "przycisk \"Zakończ turę\" w dolnym prawym rogu ekranu."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:90
+#: data/scenarios/tutorial/Basic_Training.cfg:105
 #, fuzzy
 msgid "What happens when I end my turn?"
 msgstr "Co się stanie, gdy zakończę turę?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:90
+#: data/scenarios/tutorial/Basic_Training.cfg:105
 #, fuzzy
 msgid ""
 "When you end your turn, it becomes another side's turn and only that side "
@@ -1404,7 +1397,7 @@ msgstr ""
 "ruchu. Numer obecnej tury jest wyświetlany na pasku stanu u góry ekranu, tuż "
 "obok flagi. Gdy skończy się limit tur przegrywasz grę."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:96
+#: data/scenarios/tutorial/Basic_Training.cfg:111
 #, fuzzy
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
@@ -1415,34 +1408,28 @@ msgstr ""
 "jednostką najpierw ją wybierz (klikając na nią), potem wybierz jej cel. W "
 "tym wypadku wyślij ją do lasu koło Merle, elfowego szamana."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:98
+#: data/scenarios/tutorial/Basic_Training.cfg:113
 #, fuzzy
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Przesuń swojego elfowego wojownika do lasu koło Merle"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:106
-#: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
-msgid "Merle"
-msgstr "Więcej"
-
-#: data/scenarios/tutorial/Basic_Training.cfg:121
+#: data/scenarios/tutorial/Basic_Training.cfg:135
 #, fuzzy
 msgid ""
-"Excellent! You have successfully moved your Elvish Fighter. However, since "
-"he moved next to an enemy unit, he has lost all his movement for this turn; "
-"this is called the 'zone of control'."
+"Excellent! You successfully moved your Elvish Fighter. However, when he "
+"moved next to an enemy unit, he lost all his movement for this turn; this is "
+"called the 'zone of control'."
 msgstr ""
 "Doskonale! Udało Ci się poruszyć elfowym wojownikie. Jednakże, ponieważ "
 "postawiłeś(aś) go koło wrogiej jednostki, stracił już zdolność ruchu w tej "
 "turze - jest to tak zwana \"strefa kontroli\"."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:125
+#: data/scenarios/tutorial/Basic_Training.cfg:139
 #, fuzzy
 msgid "How far can my Elvish Fighter move?"
 msgstr "Jak daleko mój elfowy wojownik może się poruszyć?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:125
+#: data/scenarios/tutorial/Basic_Training.cfg:139
 #, fuzzy
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
@@ -1466,7 +1453,7 @@ msgstr ""
 "automatycznie ruszając się o tyle, ile może co turę. Jeśli przypadkowo "
 "każesz jednostce dokądś iść, kliknij ją dwa razy, by to odwołać."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:126
+#: data/scenarios/tutorial/Basic_Training.cfg:140
 #, fuzzy
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
@@ -1481,17 +1468,17 @@ msgstr ""
 "punkty ruchu. Strefy kontroli mogą służyć ochronie Twoich słabych i rannych "
 "jednostek."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:126
+#: data/scenarios/tutorial/Basic_Training.cfg:140
 #, fuzzy
 msgid "What's the zone of control?"
 msgstr "Co to jest ta strefa kontroli?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:127
+#: data/scenarios/tutorial/Basic_Training.cfg:141
 #, fuzzy
 msgid "How do I tell who is allied and who is an enemy?"
 msgstr "Skąd mam wiedzieć, kto jest przyjacielem, a kto wrogiem?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:127
+#: data/scenarios/tutorial/Basic_Training.cfg:141
 #, fuzzy
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
@@ -1511,7 +1498,7 @@ msgstr ""
 "Ustawieniach, co spowoduje, że pod każdą jednostką pojawi się okrąd w "
 "kolorze jej drużyny."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:133
+#: data/scenarios/tutorial/Basic_Training.cfg:147
 #, fuzzy
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
@@ -1523,21 +1510,22 @@ msgstr ""
 "sąsiednim heksie. Zobaczysz wtedy okienko z opcjami ataku, gdzie będziesz "
 "musiał(a) wybrać rodzaj ataku."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:135
+#: data/scenarios/tutorial/Basic_Training.cfg:149
 #, fuzzy
 msgid "Attack Merle"
 msgstr "Zaatakuj Merle"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:150
-msgid "You have successfully attacked Merle."
+#: data/scenarios/tutorial/Basic_Training.cfg:163
+#, fuzzy
+msgid "You successfully attacked Merle."
 msgstr "Udało Ci się zaatakować Merle."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:154
+#: data/scenarios/tutorial/Basic_Training.cfg:167
 #, fuzzy
 msgid "Can Merle retaliate from my attack?"
 msgstr "Czy Merle może odpowiedzieć na mój atak?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:154
+#: data/scenarios/tutorial/Basic_Training.cfg:167
 #, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
@@ -1547,11 +1535,11 @@ msgid ""
 "well. However, any unit can only retaliate by using a weapon of the same "
 "range as the one used to attack. This means that a ranged attack can only be "
 "countered by a ranged attack and a melee attack can only be countered by a "
-"melee attack. Most units have more powerful melee attacks than ranged "
-"attacks. Units with strong ranged attacks are useful in retaliation against "
-"melee oriented units. Some melee units without ranged attacks won't be able "
-"to retaliate at all. However ranged units cannot shoot across multiple "
-"hexes; this is one of the distinctive features of Wesnoth."
+"melee attack. Most units have more powerful melee attacks than ranged, so "
+"units with ranged attacks are useful in that retaliation against them is "
+"less powerful; often there is no retaliation. However ranged units cannot "
+"shoot across multiple hexes; this is one of the distinctive features of "
+"Wesnoth."
 msgstr ""
 "Gdy jakaś jednostka zostanie zaatakowana, broni się własną bronią. To "
 "oznacza, że po każdym ciosie atakującego następuje cios obrońcy. Taka walka "
@@ -1566,7 +1554,7 @@ msgstr ""
 "atakować tylko na sąsiedni heks - jest to jedna z charakterystycznych cech "
 "Bitwy o Wesnoth."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:155
+#: data/scenarios/tutorial/Basic_Training.cfg:168
 #, fuzzy
 msgid ""
 "Every attack does a certain amount of damage per hit, and can be used a "
@@ -1586,12 +1574,12 @@ msgstr ""
 "błyskawicą powoduje 14 punktów obrażeń na cios i ma 4 ciosy, czyli "
 "maksymalnie może spowodować 56 punktów obrażeń w pojedynczej walce."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:155
+#: data/scenarios/tutorial/Basic_Training.cfg:168
 #, fuzzy
 msgid "How can you tell how powerful a unit's attacks are?"
 msgstr "Skąd mam wiedzieć, jak silne są ataki?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:156
+#: data/scenarios/tutorial/Basic_Training.cfg:169
 #, fuzzy
 msgid ""
 "Units have the ability to block blows. The chance that a unit has to hit is "
@@ -1602,33 +1590,33 @@ msgstr ""
 "jednostki jest zależna od jej zdolności robienia uników i jest podana w menu "
 "ataku zaraz za siłą ataku i liczbą ciosów."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:156
+#: data/scenarios/tutorial/Basic_Training.cfg:169
 #, fuzzy
 msgid "Will my fighter hit every time when he attacks?"
 msgstr "Czy mój wojownik za każdym razem trafia gdy atakuje?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:162
+#: data/scenarios/tutorial/Basic_Training.cfg:175
 #, fuzzy
 msgid "End your turn, and wait for Merle to attack you."
 msgstr "Zakończ swoją turę, zaczekaj, aż Merle cię zaatakuje."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:168
+#: data/scenarios/tutorial/Basic_Training.cfg:181
 #, fuzzy
 msgid ""
-"Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
-"it gets experience from the combat. Once a unit gains enough experience, it "
+"Your fighter survived Merle's attack. Whenever a unit survives a battle, it "
+"gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
 "Twój wojownik przeżył atak Merle. Kiedy jednostka przeżyje walkę, zdobywa "
 "doświadczenie. Gdy jednostka zdobędzie wystarczająco dużo doświadczenia, "
 "awansuje na następny poziom i staje się potężniejsza."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:172
+#: data/scenarios/tutorial/Basic_Training.cfg:185
 #, fuzzy
 msgid "What's experience?"
 msgstr "Co to jest doświadczenie?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:172
+#: data/scenarios/tutorial/Basic_Training.cfg:185
 #, fuzzy
 msgid ""
 "When a unit fights another unit, it gains experience, denoted 'XP', from the "
@@ -1643,41 +1631,45 @@ msgstr ""
 "więcej punktów doświadczenia jest zdobywane jest po pokonaniu przeciwnika. "
 "Zwycięzca otrzymuje 8 razy tyle punktów, ile wynosi poziom pokonanego."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:173
+#: data/scenarios/tutorial/Basic_Training.cfg:186
 #, fuzzy
 msgid "What happens when a unit advances?"
 msgstr "Co dzieje się, kiedy jednostka awansuje?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:173
+#: data/scenarios/tutorial/Basic_Training.cfg:186
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
 "will be more than one choice of what to advance into. Advanced units are "
 "usually more powerful and 1 level higher than they were originally. Also, "
-"when a unit advances, it is healed completely and any handicaps that have "
-"been cast on it are removed. This is known as 'advance-heal'."
+"when a unit advances, it is healed completely and any handicaps cast on it "
+"are removed. This is known as 'advance-heal'."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:179
-#: data/scenarios/tutorial/Basic_Training.cfg:181
+#: data/scenarios/tutorial/Basic_Training.cfg:192
 #, fuzzy
 msgid "Move your fighter onto a village."
 msgstr "Wejdź wojownikiem do wioski."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:192
+#: data/scenarios/tutorial/Basic_Training.cfg:194
+#, fuzzy
+msgid "Move your fighter onto a village"
+msgstr "Wejdź wojownikiem do wioski"
+
+#: data/scenarios/tutorial/Basic_Training.cfg:205
 #, fuzzy
 msgid "Villages heal the units on them."
 msgstr "Wioski leczą stacjonujące w nich jednostki."
 
-#: data/scenarios/tutorial/Basic_Training.cfg:196
+#: data/scenarios/tutorial/Basic_Training.cfg:209
 msgid "What happens when a unit moves onto a village?"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:196
+#: data/scenarios/tutorial/Basic_Training.cfg:209
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
-"a side give the side several benefits, including giving the side an extra "
+"a side give the side several benefits, including giving the side a extra "
 "gold coin every turn, and reducing the total upkeep cost of that side's "
 "units by one. The total number of villages you control is also displayed on "
 "the status bar after the picture of a house. In addition to the economic "
@@ -1685,31 +1677,31 @@ msgid ""
 "on them 8 HP per turn."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:197
+#: data/scenarios/tutorial/Basic_Training.cfg:210
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:197
+#: data/scenarios/tutorial/Basic_Training.cfg:210
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
 "him he cannot receive rest-heal. Also, there are some units which heal the "
 "units surrounding them. The Elvish Shaman is one such unit; units next to an "
-"Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
-"scenario all of your units are fully healed."
+"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
+"all your units are healed fully."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:203
+#: data/scenarios/tutorial/Basic_Training.cfg:216
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:205
+#: data/scenarios/tutorial/Basic_Training.cfg:218
 msgid "Defeat Merle"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:220
+#: data/scenarios/tutorial/Basic_Training.cfg:233
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
 "not on a keep, you cannot recruit. Also remember that if your leader dies, "
@@ -1717,48 +1709,49 @@ msgid ""
 "back onto your keep."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:236
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:224
+#: data/scenarios/tutorial/Basic_Training.cfg:249
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
-"have gained wisdom from my teachings anyway."
-msgstr ""
-
-#: data/scenarios/tutorial/Basic_Training.cfg:243
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:231
-msgid ""
-"Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:253
-msgid "You have successfully completed the first training scenario."
+#: data/scenarios/tutorial/Basic_Training.cfg:256
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:240
+msgid ""
+"Unfortunately, you lost, because you ran out of time. Hopefully you gained "
+"wisdom from my teachings anyway."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:255
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
+#: data/scenarios/tutorial/Basic_Training.cfg:266
+msgid "You successfully completed the first training scenario."
+msgstr ""
+
+#: data/scenarios/tutorial/Basic_Training.cfg:268
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:287
 msgid "Hooray!"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:257
+#: data/scenarios/tutorial/Basic_Training.cfg:270
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:257
+#: data/scenarios/tutorial/Basic_Training.cfg:270
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
-"appear after the opening dialog. It can also be accessed by clicking "
-"'Objectives' on the menu. The scenario objectives are a list of victory "
-"conditions and defeat conditions, and when any of the conditions are met, "
-"the scenario is over. Hopefully, it was a victory condition that was met."
+"appear after the opening dialog and whenever they change. It can also be "
+"accessed by clicking 'Scenario Objectives' on the menu. The scenario "
+"objectives are a list of victory conditions and defeat conditions, and when "
+"any of the conditions are met, the level is over. Hopefully, it was a "
+"victory condition that was met."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:258
+#: data/scenarios/tutorial/Basic_Training.cfg:271
 msgid "What happens when I win a scenario?"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:258
+#: data/scenarios/tutorial/Basic_Training.cfg:271
 msgid ""
 "When you win a scenario, all of your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -1767,51 +1760,51 @@ msgid ""
 "lost."
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:264
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
+#: data/scenarios/tutorial/Basic_Training.cfg:277
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
 #, fuzzy
-msgid "Do you want to review any of the skills learned in this scenario?"
+msgid "Do you want to review any of the skills learned on this level?"
 msgstr "Czy zapisać przebieg tej misji?"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:266
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
+#: data/scenarios/tutorial/Basic_Training.cfg:279
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
 msgid "Yes"
 msgstr "Tak"
 
-#: data/scenarios/tutorial/Basic_Training.cfg:268
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
+#: data/scenarios/tutorial/Basic_Training.cfg:281
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:258
 msgid "I'm done reviewing skills!"
 msgstr ""
 
-#: data/scenarios/tutorial/Basic_Training.cfg:285
+#: data/scenarios/tutorial/Basic_Training.cfg:298
 msgid ""
-"Although you have completed your first scenario, your training is not yet "
-"over. We will now proceed to the next scenario, in which you will fight me "
-"in a mock battle."
+"Although you completed your first scenario, your training is not yet over. "
+"We will now proceed to the next scenario, in which you will fight me in a "
+"mock battle."
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:41
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:39
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:45
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
 "you in this battle. To recall him, right-click on a castle tile, select "
-"Recall, select your fighter, then select 'OK'. You should also recruit "
+"Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:60
 msgid ""
-"@Skills covered:\n"
+"Skills covered:\n"
 "Recalling\n"
 "Traits\n"
 "Gold\n"
@@ -1819,30 +1812,42 @@ msgid ""
 "Terrains\n"
 "Resistance\n"
 "Specialties\n"
-"Objects\n"
-"Playing Wesnoth\n"
-"@Objectives\n"
-"@Victory\n"
-"Defeat Delfador"
+"Objects"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
-msgid "You have successfully recalled your Elvish Fighter."
-msgstr ""
-
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:93
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:122
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
 #, fuzzy
-msgid "En garde!"
+msgid "Defeat Delfador"
+msgstr "Broniący się"
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
+#: data/scenarios/tutorial/utils.cfg:49
+msgid "Death of Konrad"
+msgstr ""
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:70
+#: data/scenarios/tutorial/utils.cfg:57
+msgid "Turns run out"
+msgstr ""
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:83
+#, fuzzy
+msgid "You successfully recalled your Elvish Fighter."
+msgstr "Udało Ci się zakończyć turę."
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:85
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:99
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:117
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:131
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:145
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:159
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:173
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:206
+#, fuzzy
+msgid "En guarde!"
 msgstr "En guarde!"
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:81
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 msgid ""
 "First, you must pay 20 pieces of gold for each unit you recall, regardless "
 "of the type of unit. Other than that, recalled units are basically like "
@@ -1850,31 +1855,31 @@ msgid ""
 "previous scenario will appear."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:81
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 #, fuzzy
 msgid "What happens when I recall a unit?"
 msgstr "Co się dzieje, gdy przywołuję jednostkę?"
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
 msgid "How should I decide which units to recall?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:82
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:88
 msgid ""
-"You should usually recall units that have already advanced to the next "
-"level. However, you may also want to recall units that have high experience, "
-"and are thus likely to advance. You should recall units that will be useful "
-"for the scenario you are in; for example in a forest scenario, recall elves."
+"You should usually recall units that are already advanced to the next level. "
+"However, you may also want to recall units that have high experience, and "
+"are thus likely to advance. You should recall units that will be useful for "
+"the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:97
 msgid ""
 "You may notice that your units have slightly different statistics than the "
-"statistics shown before you recruited them. This is because they have been "
+"statistics shown before you recruited them. This is because of their "
 "assigned traits."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:95
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 msgid ""
 "The function of traits is add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -1883,12 +1888,12 @@ msgid ""
 "putting your cursor over that trait."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:95
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:101
 #, fuzzy
 msgid "What do traits do?"
 msgstr "Do czego służą cechy?"
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:96
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid ""
 "There are five distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -1897,21 +1902,21 @@ msgid ""
 "traits when they are recruited."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:96
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid "What kind of traits can my units get?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid "How much gold do my units cost?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:119
 msgid ""
 "You need to pay each unit you recruit or recall gold when you recruit it. "
 "The cost of recruiting a unit is displayed under the unit's name. The cost "
@@ -1923,27 +1928,27 @@ msgid ""
 "red arrow."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid "How do I get gold?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
-"You begin each scenario with a percentage of gold from the previous "
-"scenario. If this is less than 100 gold, you begin with 100 gold instead. "
-"The amount of gold you have is displayed on the status bar after the picture "
-"of gold. After the start of a scenario, you receive 2 gold every turn. Since "
-"you usually need more gold than that, you should flag villages, which give "
-"you 1 gold per turn."
+"You begin each level with a percentage of gold from the previous level. If "
+"this is less than 100 gold, you begin with 100 gold instead. The amount of "
+"gold you have is displayed on the status bar after the picture of gold. "
+"After the start of a scenario, you receive 2 gold every turn. Since you "
+"usually need more gold than that, you should flag villages, which give you 1 "
+"gold per turn."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During day, units of the alignment Lawful, "
@@ -1952,15 +1957,15 @@ msgid ""
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:133
 msgid "What are the different alignments and times of day?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid "How do I know what time of day it is?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -1970,35 +1975,34 @@ msgid ""
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
 msgid ""
-"Two terrains have properties which have already been described; namely "
-"villages and castle. However the properties of most terrains are more "
-"subtle, and have to do with the advantages and disadvantages different units "
-"have when they move onto them. The first property of a terrain is the number "
-"of move points it takes each unit to move through the hex. The second "
-"property is the defense that the terrain gives units standing on it. This is "
-"a percentage which determines the unit's chance to be hit on that terrain. "
-"For example; many elves have 70% defense in woods, and are therefore hit 30% "
-"of the time."
+"Two terrains have properties which I described earlier: namely villages and "
+"castle. However the properties of most terrains are more subtle, and have to "
+"do with the advantages and disadvantages different units have when they move "
+"onto them. The first property of a terrain is the number of move points it "
+"takes each unit to move through the hex. The second property is the defense "
+"that the terrain gives units standing on it. This is a percentage which "
+"determines the unit's chance to be hit on that terrain. For example; elves "
+"have 70% defense on grass, and are therefore hit 30% of the time."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:138
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:147
 msgid "What are the different properties that terrains have?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:139
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid "How do I find out the properties of a specific terrain?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:139
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
-"right-click on the unit, select Unit Description, then look at Terrain "
+"right-click on the unit, select Unit Description, then select Terrain "
 "Modifiers. To find out which terrain is on a particular hex, move your "
 "cursor over that hex and look in the upper-right hand corner of the screen. "
 "This will display, in order, the name of the terrain, then the coordinates "
@@ -2006,13 +2010,13 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:157
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:152
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid ""
 "Each unit has a certain resistance against each attack type. This resistance "
 "is a percentage which is subtracted from the damage of opponent's weapons of "
@@ -2023,41 +2027,41 @@ msgid ""
 "100%."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:152
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:161
 msgid "How does resistance affect attack damage?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
 "blade, pierce, and impact, but low resistance to the magical types: fire and "
 "cold. All living units have resistance to holy while undead are extremely "
 "weak to it. To find out a specific unit's resistance, right-click on the "
-"unit, select Unit Description, then look at Resistances."
-msgstr ""
-
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
-msgid "What are the different damage types?"
+"unit, select Unit Description, then select Resistance."
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
+msgid "What are the different damage types?"
+msgstr ""
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:171
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid ""
 "Each specialty does something different; that's the whole point of a "
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:175
 msgid "What do specialties do?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:176
 msgid ""
 "The specialties a unit gets are determined by the unit type; for example all "
 "generals have the specialty leadership. There are two kinds of specialties: "
@@ -2065,11 +2069,11 @@ msgid ""
 "specials only apply to one of the unit's attacks."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:176
 msgid "Which units get specialties?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:168
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid ""
 "There are many different specialties, and learning about them is one of the "
 "interesting parts of playing Wesnoth. The two most common specialties are "
@@ -2078,15 +2082,15 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:168
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:177
 msgid "What kinds of specialties can my units get?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:169
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid "How do I use specialties?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:169
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:178
 msgid ""
 "To use a specialty, you just have to move and/or attack with your units in a "
 "way which triggers the specialty. For example, in order to use leadership, "
@@ -2094,18 +2098,18 @@ msgid ""
 "the other unit."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:186
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:193
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:202
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:199
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:208
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -2113,50 +2117,52 @@ msgid ""
 "objects in a campaign."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:199
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:208
 msgid "What kind of objects am I likely to encounter?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:209
 msgid "How long do these objects last?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:209
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
-"few objects, such as holy water, last only until the end of the scenario."
+"few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:214
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:223
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
 msgid ""
-"Congratulations! You have defeated me, and completed the second and final "
-"training scenario. Next, you may want to begin a campaign, or play "
-"multiplayer."
+"Congratulations! By defeating me, you complete the second training scenario."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:245
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:285
+msgid "Next, you may want to begin a campaign, or play multiplayer."
+msgstr ""
+
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid "How do I play a campaign?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:245
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:289
 msgid ""
 "To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:246
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid "How do I play multiplayer?"
 msgstr ""
 
-#: data/scenarios/tutorial/Traits_and_Specialties.cfg:246
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:290
 msgid ""
 "To play Wesnoth against other people, select 'Multiplayer'. Then select "
 "'Join Official Server'. This will connect you to the official Wesnoth "
@@ -2168,17 +2174,24 @@ msgstr ""
 msgid "That was explained well! But.."
 msgstr ""
 
-#: data/scenarios/tutorial/utils.cfg:44
+#: data/scenarios/tutorial/utils.cfg:42
 msgid ""
-"@Skills covered:\n"
+"Skills covered:\n"
 "Recruiting units\n"
 "Moving units\n"
 "Attacking enemy units\n"
 "Gaining experience\n"
-"Winning scenarios\n"
-"@Current objective:\n"
-"{OBJECTIVE}"
+"Winning scenarios"
 msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:43
+msgid "Current objective:"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:53
+#, fuzzy
+msgid "Death of Delfador"
+msgstr "Broniący się"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -9180,6 +9193,14 @@ msgstr "praworządny"
 msgid "neutral"
 msgstr "neutralny"
 
+#, fuzzy
+#~ msgid "Konrad"
+#~ msgstr "Władca"
+
+#, fuzzy
+#~ msgid "Merle"
+#~ msgstr "Więcej"
+
 #~ msgid "Players"
 #~ msgstr "Gracze"
 
@@ -9233,7 +9254,3 @@ msgstr "neutralny"
 
 #~ msgid "Deletion of the file failed."
 #~ msgstr "Kasowanie pliku nie powiodło się."
-
-#, fuzzy
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Wejdź wojownikiem do wioski"
