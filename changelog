@@ -1,21 +1,31 @@
 CVS HEAD:
  * changed vision range based on potential move
  * changed charge, backstab and steadfast abilities use true doubling and halving rather than additive percentage calculations
+ * some new sound effects
  * new and improved graphics:
    * snow forest tiles
    * unit images
    * tower
    * units images and animations
+   * attack icons
  * new scenarios for 'Heir to the Throne' campaign:
    * Battle for Wesnoth (final scenario)
  * scenario balancing for 'Heir to the Throne' campaign:
    * Crossroads
    * Test of the Clans
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Silent Forest
  * plot changes in 'The Eastern Invasion' campaign
  * scenario balancing for 'The Eastern Invasion' campaign:
-   * The Duel
    * Approaching Weldyn
    * Lake Vrug
+   * Northern Outpost
+   * The Duel
+   * The Outpost
+   * Two Paths
+ * scenario balancing for 'The Rise of Wesnoth' campaign:
+   * A Final Spring
+   * A Harrowing Escape
  * spirit movetype, with high resistances against "physical" attacks, slowed on open water
  * unit balancing: 
    * treefolk (Woses): reduced pierce, impact and cold resistance
@@ -27,6 +37,8 @@ CVS HEAD:
    * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Orcish Archer: reduced cost
+   * Peasant: reduced cost, increased melee damage
  * new units
    * Dark Queen
  * language fixes and polishing (english)
@@ -35,13 +47,17 @@ CVS HEAD:
    * czech
    * finnish
    * french
+   * hungarian
+   * italian
+   * norwegian
    * spanish
    * swedish
+ * status for translations (gettext) - http://gettext.wesnoth.org
  * multiplayer improvements:
    * restored Thug to Knalgan Alliance on default era
    * added many 2nd level units to factions on 'Age of Heroes' era
- * status for translations (gettext) - http://gettext.wesnoth.org
  * made hosting games work elegantly when wesnothd is running on the same machine
+ * added new @ prefix to {inclusion} in config files to make it search both in the user's preferences dir and in the main data dir
  * fixed typo causing 'Troll Whelp' being recruitable in 'The Dark Hordes: A New Chance' scenario
  * fixed alignment and abilities not being shown in panel
  * fixed hitpoints and experience being not translatable in default theme
@@ -60,7 +76,9 @@ CVS HEAD:
  * fixed Delfador appearing in 'The Dark Hordes: Inside The Tower'
  * fixed about/credits not being translatable
  * fixed 'Orcish Ruler' appearing in 'The Rise of Wesnoth' campaign
+ * fixed 'Heavy Infantryman' recruiting bug in 'The Eastern Invasion: Mal-Ravanals Capital' scenario
  * fixed editor not being translatable
+ * workaround for Reiser4 feature bug (#10264)
  * re-implemented enhanced sound quality fix
  * multiple textdomain (gettext) infrastructure
  * added error dialog when a campaign has corrupt WML
