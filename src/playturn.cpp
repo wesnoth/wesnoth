@@ -1723,10 +1723,12 @@ void turn_info::recall()
 			       << string_table["xp"] << ": "
 			       << u->experience() << "/";
 
-			if(u->type().advances_to().empty())
+			if(u->can_advance() == false) {
 				option << "-";
-			else
+			} else {
 				option << u->max_experience();
+			}
+
 			options.push_back(option.str());
 		}
 
@@ -1885,7 +1887,7 @@ void turn_info::unit_list()
 		    << "/" << i->second.max_hitpoints() << ","
 			<< i->second.experience() << "/";
 
-		if(i->second.type().advances_to().empty())
+		if(i->second.can_advance() == false)
 			row << "-";
 		else
 			row << i->second.max_experience();

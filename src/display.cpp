@@ -841,7 +841,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	details << string_table["hp"] << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
-	if(u.type().advances_to().empty()) {
+	if(u.can_advance() == false) {
 		details << string_table["xp"] << ": " << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,
@@ -1219,7 +1219,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
 	}
 
-	if(u.experience() > 0 && u.type().can_advance()) {
+	if(u.experience() > 0 && u.can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
 		const int level = maximum<int>(u.type().level(),1);
 		const SDL_Color normal_colour = {02,153,255,0}, near_advance_colour = {255,255,255,0};

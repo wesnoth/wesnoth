@@ -45,25 +45,37 @@ void advance_unit(const game_data& info,
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
+	std::cerr << "advance_unit: " << u->second.type().name() << "\n";
+
 	const std::vector<std::string>& options = u->second.type().advances_to();
 
 	std::vector<std::string> lang_options;
 
 	std::vector<unit> sample_units;
-	for(std::vector<std::string>::const_iterator op = options.begin();
-	    op != options.end(); ++op) {
+	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
 		const unit_type& type = sample_units.back().type();
 		lang_options.push_back("&" + type.image() + "," + type.language_name());
 	}
 
+	const config::child_list& mod_options = u->second.get_modification_advances();
+
+	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
+		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().name()));
+		sample_units.back().add_modification("advance",**mod);
+		const unit_type& type = sample_units.back().type();
+		lang_options.push_back("&" + type.image() + "," + translate_string_default("advance_" + (**mod)["id"],(**mod)["description"]));
+	}
+
+	std::cerr << "options: " << options.size() << "\n";
+
 	int res = 0;
 
-	if(options.empty()) {
+	if(lang_options.empty()) {
 		return;
 	} else if(random_choice) {
-		res = rand()%options.size();
-	} else if(options.size() > 1) {
+		res = rand()%lang_options.size();
+	} else if(lang_options.size() > 1) {
 
 		const events::event_context dialog_events_context;
 		unit_preview_pane unit_preview(gui,&map,sample_units);
@@ -77,6 +89,7 @@ void advance_unit(const game_data& info,
 
 	recorder.choose_option(res);
 
+	std::cerr << "animating advancement...\n";
 	animate_unit_advancement(info,units,loc,gui,size_t(res));
 }
 
@@ -90,7 +103,9 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	}
 
 	const std::vector<std::string>& options = u->second.type().advances_to();
-	if(choice >= options.size()) {
+	const config::child_list& mod_options = u->second.get_modification_advances();
+
+	if(choice >= options.size() + mod_options.size()) {
 		return false;
 	}
 	
@@ -107,7 +122,13 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		}
 	}
 
-	::advance_unit(info,units,loc,options[choice]);
+	const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().name();
+	::advance_unit(info,units,loc,chosen_unit);
+
+	u = units.find(loc);
+	if(u != units.end() && choice >= options.size()) {
+		u->second.add_modification("advance",*mod_options[choice - options.size()]);
+	}
 
 	gui.invalidate_unit();
 
@@ -714,7 +735,7 @@ void unit_preview_pane::draw()
 	details << string_table["hp"] << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
-	if(u.type().advances_to().empty()) {
+	if(u.can_advance() == false) {
 		details << string_table["xp"] << ": " << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,

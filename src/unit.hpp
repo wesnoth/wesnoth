@@ -134,6 +134,11 @@ public:
 
 	bool is_flying() const;
 
+	bool can_advance() const;
+	config::child_list get_modification_advances() const;
+
+	size_t modification_count(const std::string& type, const std::string& id) const;
+
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 

@@ -868,13 +868,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			u = units.find(src);
 			tgt = units.find(dst);
 
-			if(u != units.end() && u->second.advances() &&
-			   u->second.type().advances_to().empty() == false) {
+			if(u != units.end() && u->second.advances()) {
 				advancing_units.push_back(u->first);
 			}
 
-			if(tgt != units.end() && tgt->second.advances() &&
-			   tgt->second.type().advances_to().empty() == false) {
+			if(tgt != units.end() && tgt->second.advances()) {
 				advancing_units.push_back(tgt->first);
 			}
 

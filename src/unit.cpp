@@ -27,9 +27,9 @@
 #include <sstream>
 
 namespace {
-	const std::string ModificationTypes[] = { "object", "trait" };
-	const int NumModificationTypes = sizeof(ModificationTypes)/
-	                                 sizeof(*ModificationTypes);
+	const std::string ModificationTypes[] = { "object", "trait", "advance" };
+	const size_t NumModificationTypes = sizeof(ModificationTypes)/
+	                                    sizeof(*ModificationTypes);
 }
 
 bool compare_unit_values::operator()(const unit& a, const unit& b) const
@@ -354,7 +354,7 @@ bool unit::get_experience(int xp)
 
 bool unit::advances() const
 {
-	return experience_ >= max_experience() && !type().advances_to().empty();
+	return experience_ >= max_experience() && can_advance();
 }
 
 bool unit::gets_hit(int damage)
@@ -890,6 +890,37 @@ const gamemap::location& unit::get_goto() const
 void unit::set_goto(const gamemap::location& new_goto)
 {
 	goto_ = new_goto;
+}
+
+bool unit::can_advance() const
+{
+	return type().can_advance() || get_modification_advances().empty() == false;
+}
+
+config::child_list unit::get_modification_advances() const
+{
+	config::child_list res;
+	const config::child_list& advances = type().modification_advancements();
+	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
+		if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
+			res.push_back(*i);
+		}
+	}
+
+	return res;
+}
+
+size_t unit::modification_count(const std::string& type, const std::string& id) const
+{
+	size_t res = 0;
+	const config::child_list& items = modifications_.get_children(type);
+	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+		if((**i)["id"] == id) {
+			++res;
+		}
+	}
+
+	return res;
 }
 
 void unit::add_modification(const std::string& type,
