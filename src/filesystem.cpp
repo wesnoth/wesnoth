@@ -467,7 +467,7 @@ std::string read_file(const std::string& fname)
 {
 	//if we have a path to the data,
 	//convert any filepath which is relative
-	//std::cerr << "Reading " << fname << "\n";
+	LOG_G << "Reading " << fname << "\n";
 #ifdef USE_ZIPIOS
 	if(!fname.empty() && fname[0] != '/') {
 		zipios::ConstEntryPointer p = the_collection.getEntry(fname);
