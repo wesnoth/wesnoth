@@ -27,7 +27,7 @@
 std::string recruit_unit(const gamemap& map, int team,
                          std::map<gamemap::location,unit>& units,
 						 unit& unit, gamemap::location preferred_location,
-                         display *disp=NULL);
+                         display *disp=NULL, bool need_castle=true);
 
 struct battle_stats
 {
@@ -111,5 +111,8 @@ size_t move_unit(display* disp, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& steps,
                  replay* move_recorder, undo_list* undos);
+
+bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
+                  const unit_map& units, std::vector<team>& teams, int team);
 
 #endif

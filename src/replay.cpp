@@ -414,6 +414,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			game_events::fire("moveto",dst);
+
+			clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
 		}
 
 		else if((it = cfg->children.find("attack")) != cfg->children.end()) {

@@ -51,7 +51,8 @@ struct paths
 		int move_left;
 	};
 
-	std::map<gamemap::location,route> routes;
+	typedef std::map<gamemap::location,route> routes_map;
+	routes_map routes;
 };
 
 struct shortest_path_calculator

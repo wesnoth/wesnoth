@@ -89,6 +89,8 @@ team::team_info::team_info(config& cfg)
 	    tgt != tgts.end(); ++tgt) {
 		targets.push_back(target(**tgt));
 	}
+
+	use_shroud = (cfg.values["shroud"] == "yes");
 }
 
 team::team(config& cfg, int gold) : gold_(gold), info_(cfg)
@@ -190,4 +192,37 @@ int team::villages_per_scout() const
 std::vector<team::target>& team::targets()
 {
 	return info_.targets;
+}
+
+bool team::uses_shroud() const
+{
+	return info_.use_shroud;
+}
+
+bool team::shrouded(size_t x, size_t y) const
+{
+	if(info_.use_shroud == false)
+		return false;
+
+	if(x >= shroud_.size())
+		return true;
+
+	if(y >= shroud_[x].size())
+		return true;
+
+	return !shroud_[x][y];
+}
+
+void team::clear_shroud(size_t x, size_t y)
+{
+	if(info_.use_shroud == false)
+		return;
+
+	if(x >= shroud_.size())
+		shroud_.resize(x+1);
+
+	if(y >= shroud_[x].size())
+		shroud_[x].resize(y+1);
+
+	shroud_[x][y] = true;
 }

@@ -129,6 +129,10 @@ SDL_Rect display::screen_area() const
 
 void display::select_hex(gamemap::location hex)
 {
+	if(team_valid() && teams_[currentTeam_].shrouded(hex.x,hex.y)) {
+		return;
+	}
+
 	invalidate(selectedHex_);
 	selectedHex_ = hex;
 	invalidate(selectedHex_);
@@ -203,13 +207,22 @@ void display::zoom(double amount)
 	clear_surfaces(brightenedImages_);
 	energy_bar_count_ = std::pair<int,int>(-1,-1);
 
+	const double orig_xpos = xpos_;
+	const double orig_ypos = ypos_;
+
 	xpos_ /= zoom_;
 	ypos_ /= zoom_;
 
 	const double max_zoom = 200.0;
+	const double orig_zoom = zoom_;
+
 	zoom_ += amount;
-	if(zoom_ > max_zoom)
-		zoom_ = max_zoom;
+	if(zoom_ > max_zoom) {
+		zoom_ = orig_zoom;
+		xpos_ = orig_xpos;
+		ypos_ = orig_ypos;
+		return;
+	}
 
 	xpos_ *= zoom_;
 	ypos_ *= zoom_;
@@ -217,7 +230,16 @@ void display::zoom(double amount)
 	xpos_ += amount*2;
 	ypos_ += amount*2;
 
+	const double prev_zoom = zoom_;
+
 	bounds_check_position();
+
+	if(zoom_ != prev_zoom) {
+		xpos_ = orig_xpos;
+		ypos_ = orig_ypos;
+		zoom_ = orig_zoom;
+		return;
+	}
 
 	invalidate_all();
 }
@@ -229,7 +251,7 @@ void display::default_zoom()
 
 void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 {
-	if(update_locked())
+	if(update_locked() || shrouded(x,y))
 		return;
 
 	const double xpos = static_cast<double>(x)*zoom_*0.75 - xpos_;
@@ -440,7 +462,7 @@ void display::draw_sidebar()
 			i = units_.find(selectedHex_);
 
 		if(i != units_.end())
-			draw_unit_details(mapx()+2,int(390*sidebarScaling_),selectedHex_,
+			draw_unit_details(mapx()+2,int(400*sidebarScaling_),selectedHex_,
 			                  i->second,unitDescriptionRect_,unitProfileRect_);
 		invalidateUnit_ = false;
 	}
@@ -494,21 +516,29 @@ void display::draw_game_status(int x, int y)
 	int nunits = 0;
 	for(std::map<gamemap::location,unit>::const_iterator uit = units_.begin();
 	    uit != units_.end(); ++uit) {
-		if(uit->second.side() == currentTeam_+1) {
+		if(size_t(uit->second.side()) == currentTeam_+1) {
 			++nunits;
 		}
 	}
 
-	const int income = teams_[currentTeam_].income() - nunits;
-
 	std::stringstream details;
-	details << string_table["turn"] << ": " << status_.turn() << "/"
-			<< status_.number_of_turns() << "\n" << string_table["gold"] << ": "
-			<< teams_[currentTeam_].gold() << "\n"
-			<< string_table["villages"] << ": "
-			<< teams_[currentTeam_].towers().size() << "\n"
-			<< string_table["units"] << ": " << nunits << "\n"
-			<< string_table["income"] << ": " << income << "\n";
+
+	if(team_valid()) {
+		const int upkeep = team_upkeep(units_,currentTeam_+1);
+
+		const int expenses = upkeep - teams_[currentTeam_].towers().size();
+		const int income = teams_[currentTeam_].income() - maximum(expenses,0);
+
+		details << string_table["turn"] << ": " << status_.turn() << "/"
+				<< status_.number_of_turns() << "\n"
+		        << string_table["gold"] << ": "
+				<< teams_[currentTeam_].gold() << "\n"
+				<< string_table["villages"] << ": "
+				<< teams_[currentTeam_].towers().size() << "\n"
+				<< string_table["units"] << ": " << nunits << "\n"
+		        << string_table["upkeep"] << ": " << upkeep << "\n"
+				<< string_table["income"] << ": " << income << "\n";
+	}
 
 	if(map_.on_board(mouseoverHex_)) {
 		const gamemap::TERRAIN terrain = map_[mouseoverHex_.x][mouseoverHex_.y];
@@ -860,10 +890,12 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	const int se_xpos = (int)get_location_x(se_loc);
 	const int se_ypos = (int)get_location_y(se_loc);
 
+	const bool is_shrouded = shrouded(x,y);
 	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
 
-	if(x >= 0 && y >= 0 && x < map_.x() && y < map_.y())
+	if(map_.on_board(loc) && !is_shrouded) {
 		terrain = map_[x][y];
+	}
 
 	IMAGE_TYPE image_type = SCALED;
 
@@ -887,14 +919,23 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		return;
 	}
 
-	std::vector<SDL_Surface*> overlaps = getAdjacentTerrain(x,y,image_type);
-	typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
-	for(std::pair<Itor,Itor> overlays =
-	    overlays_.equal_range(gamemap::location(x,y));
-		overlays.first != overlays.second; ++overlays.first) {
-		SDL_Surface* const overlay_surface = getImage(overlays.first->second);
-		if(overlay_surface != NULL) {
-			overlaps.push_back(overlay_surface);
+	std::vector<SDL_Surface*> overlaps;
+
+	if(!is_shrouded) {
+		overlaps = getAdjacentTerrain(x,y,image_type);
+
+		typedef std::multimap<gamemap::location,std::string>::const_iterator
+		        Itor;
+
+		for(std::pair<Itor,Itor> overlays =
+		    overlays_.equal_range(gamemap::location(x,y));
+			overlays.first != overlays.second; ++overlays.first) {
+			SDL_Surface* const overlay_surface =
+			                        getImage(overlays.first->second);
+
+			if(overlay_surface != NULL) {
+				overlaps.push_back(overlay_surface);
+			}
 		}
 	}
 
@@ -939,8 +980,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 
 		const char* energy_file = NULL;
 
-		if(it->second.side() != currentTeam_+1) {
-			if(teams_[currentTeam_].is_enemy(it->second.side())) {
+		if(size_t(it->second.side()) != currentTeam_+1) {
+			if(team_valid() &&
+			   teams_[currentTeam_].is_enemy(it->second.side())) {
 				energy_file = "enemy-energy.png";
 			} else {
 				energy_file = "ally-energy.png";
@@ -1118,7 +1160,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			          debugHighlights_[gamemap::location(x,y)],0);
 	}
 
-	if(unit_image == NULL || energy_image == NULL)
+	if(unit_image == NULL || energy_image == NULL || is_shrouded)
 		return;
 
 	if(loc != hiddenUnit_) {
@@ -1527,8 +1569,11 @@ SDL_Surface* display::getMinimap(int w, int h)
 		for(int y = 0; y != map_.y(); ++y) {
 			for(int x = 0; x != map_.x(); ++x) {
 
-				*data = map_.get_terrain_info(map_[x][y]).get_rgb().
-				                                     format(surface->format);
+				if(shrouded(x,y))
+					*data = 0;
+				else
+					*data = map_.get_terrain_info(map_[x][y]).get_rgb().
+					                                 format(surface->format);
 				++data;
 			}
 
@@ -1600,6 +1645,9 @@ bool display::unit_attack_ranged(const gamemap::location& a,
                                  const gamemap::location& b, int damage,
                                  const attack_type& attack)
 {
+	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y);
+
+	const unit_map::iterator att = units_.find(a);
 	const unit_map::iterator def = units_.find(b);
 
 	def->second.set_defending(true,attack_type::LONG_RANGE);
@@ -1648,7 +1696,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
-		while(!update_locked() && sfx_it != sounds.end() && i >= sfx_it->time) {
+		while(!hide && sfx_it != sounds.end() && i >= sfx_it->time) {
 			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
 			if(sfx.empty() == false) {
 				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
@@ -1657,9 +1705,14 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 			++sfx_it;
 		}
 
-		const std::string* const unit_image = attack.get_frame(i);
+		const std::string* unit_image = attack.get_frame(i);
 
-		if(!update_locked()) {
+		if(unit_image == NULL) {
+			unit_image =
+			       &att->second.type().image_fighting(attack_type::LONG_RANGE);
+		}
+
+		if(!hide) {
 			SDL_Surface* const image = (unit_image == NULL) ?
 			                                NULL : getImage(*unit_image);
 			draw_tile(a.x,a.y,image);
@@ -1692,7 +1745,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 		draw_tile(b.x,b.y,NULL,defensive_alpha,defensive_colour);
 
-		if(i >= 0 && i < real_last_missile && !update_locked()) {
+		if(i >= 0 && i < real_last_missile && !hide) {
 			const int missile_frame = i + first_missile;
 
 			const std::string* missile_image
@@ -1721,7 +1774,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !turbo() && !update_locked())
+		if(wait_time > 0 && !turbo() && !hide)
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
@@ -1740,7 +1793,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 
 void display::unit_die(const gamemap::location& loc, SDL_Surface* image)
 {
-	if(update_locked())
+	if(update_locked() || shrouded(loc.x,loc.y))
 		return;
 
 	const int frame_time = 30;
@@ -1764,6 +1817,8 @@ bool display::unit_attack(const gamemap::location& a,
                           const gamemap::location& b, int damage,
 						  const attack_type& attack)
 {
+	const bool hide = update_locked() || shrouded(a.x,a.y) && shrouded(b.x,b.y);
+
 	log_scope("unit_attack");
 	invalidate_all();
 	draw(true,true);
@@ -1823,7 +1878,7 @@ bool display::unit_attack(const gamemap::location& a,
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
-		while(!update_locked() && sfx_it != sounds.end() && i >= sfx_it->time) {
+		while(!hide && sfx_it != sounds.end() && i >= sfx_it->time) {
 			const std::string& sfx = hits ? sfx_it->on_hit : sfx_it->on_miss;
 			if(sfx.empty() == false) {
 				sound::play_sound(hits ? sfx_it->on_hit : sfx_it->on_miss);
@@ -1874,11 +1929,11 @@ bool display::unit_attack(const gamemap::location& a,
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 
-		if(image != NULL && !update_locked())
+		if(image != NULL && !hide)
 			draw_unit(posx,posy,image,attacker.facing_left());
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !turbo() && !update_locked())
+		if(wait_time > 0 && !turbo() && !hide)
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
@@ -1900,7 +1955,9 @@ void display::move_unit_between(const gamemap::location& a,
                                 const gamemap::location& b,
 								const unit& u)
 {
-	if(update_locked())
+	if(update_locked() || team_valid()
+	                   && teams_[currentTeam_].shrouded(a.x,a.y)
+	                   && teams_[currentTeam_].shrouded(b.x,b.y))
 		return;
 
 	const bool face_left = u.facing_left();
@@ -2060,12 +2117,17 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 
 	surface_lock screen_lock(screen);
 
+	const Pixel ShroudColour = 0;
+
 	for(; y != endy; ++y, src += src_increment) {
 		Pixel* dst = screen_lock.pixels() + y*screen->w + x;
 
 		if(alpha == 1.0) {
 			if(reverse) {
 				for(int i = xoffset; i != len; ++i) {
+					if(dst[i-xoffset] == ShroudColour)
+						continue;
+
 					if(src[i] == semi_trans)
 						dst[i-xoffset] = alpha_blend_pixels(
 						                     0,dst[i-xoffset],fmt,0.5);
@@ -2074,6 +2136,9 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 				}
 			} else {
 				for(int i = image->w-1-xoffset; i != image->w-len-1; --i,++dst){
+					if(*dst == ShroudColour)
+						continue;
+
 					if(src[i] == semi_trans)
 						*dst = alpha_blend_pixels(0,*dst,fmt,0.5);
 					else if(src[i] != 0)
@@ -2083,6 +2148,9 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 		} else {
 			if(reverse) {
 				for(int i = xoffset; i != len; ++i) {
+					if(dst[i-xoffset] == ShroudColour)
+						continue;
+
 					const Pixel blend = blendto ? blendto : dst[i-xoffset];
 
 					if(src[i] != 0)
@@ -2091,6 +2159,9 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 				}
 			} else {
 				for(int i = image->w-1-xoffset; i != image->w-len-1; --i,++dst){
+					if(*dst == ShroudColour)
+						continue;
+
 					const Pixel blend = blendto ? blendto : *dst;
 					if(src[i] != 0)
 						*dst = alpha_blend_pixels(src[i],blend,fmt,alpha);
@@ -2172,8 +2243,9 @@ void display::remove_overlay(const gamemap::location& loc)
 	overlays_.erase(loc);
 }
 
-void display::set_team(int team)
+void display::set_team(size_t team)
 {
+	assert(team < teams_.size());
 	currentTeam_ = team;
 }
 
@@ -2225,4 +2297,17 @@ void display::debug_highlight(const gamemap::location& loc, double amount)
 void display::clear_debug_highlights()
 {
 	debugHighlights_.clear();
+}
+
+bool display::shrouded(int x, int y) const
+{
+	if(team_valid())
+		return teams_[currentTeam_].shrouded(x,y);
+	else
+		return false;
+}
+
+bool display::team_valid() const
+{
+	return currentTeam_ < teams_.size();
 }

@@ -250,7 +250,7 @@ shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
 double shortest_path_calculator::cost(const gamemap::location& loc,
                                       double so_far) const
 {
-	if(!map_.on_board(loc))
+	if(!map_.on_board(loc) || team_.shrouded(loc.x,loc.y))
 		return 100000.0;
 
 	const unit_map::const_iterator enemy_unit = units_.find(loc);

@@ -102,7 +102,7 @@ public:
 	void draw_terrain_palette(int x, int y, gamemap::TERRAIN selected);
 	gamemap::TERRAIN get_terrain_on(int palx, int paly, int x, int y);
 
-	void set_team(int team);
+	void set_team(size_t team);
 
 	void set_advancing_unit(const gamemap::location& loc, double amount);
 
@@ -116,6 +116,8 @@ public:
 
 	static void debug_highlight(const gamemap::location& loc, double amount);
 	static void clear_debug_highlights();
+
+	bool shrouded(int x, int y) const;
 
 private:
 	display(const display&);
@@ -182,6 +184,8 @@ private:
 
 	const gamestatus& status_;
 
+	bool team_valid() const;
+
 	const std::vector<team>& teams_;
 
 	int lastDraw_;
@@ -200,7 +204,7 @@ private:
 	bool sideBarBgDrawn_;
 	int lastTimeOfDay_;
 
-	int currentTeam_;
+	size_t currentTeam_;
 
 	//used to store a unit that is not drawn, because it's currently
 	//being moved or otherwise changed

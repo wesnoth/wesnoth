@@ -52,7 +52,7 @@ struct config
 	          const std::vector<line_source>* lines=0); //throws config::error
 	std::string write() const;
 
-	std::map<std::string,std::string> values;
+	string_map values;
 	std::map<std::string,std::vector<config*> > children;
 
 	static std::vector<std::string> split(const std::string& val);

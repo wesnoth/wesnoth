@@ -45,7 +45,7 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 unit::unit(game_data& data, config& cfg) : state_(STATE_NORMAL),
                                            moves_(0), facingLeft_(true),
                                            recruit_(false),
-                                           guardian_(false)
+                                           guardian_(false), loyal_(false)
 {
 	read(data,cfg);
 }
@@ -63,7 +63,7 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 			   backupMaxMovement_(t->movement()),
 			   recruit_(false), attacks_(t->attacks()),
 			   backupAttacks_(t->attacks()),
-               guardian_(false)
+               guardian_(false), loyal_(false)
 {
 	//calculate the unit's traits
 	std::vector<config*> traits = t->possible_traits();
@@ -113,7 +113,7 @@ unit::unit(const unit_type* t, const unit& u) :
 			   attacks_(t->attacks()), backupAttacks_(t->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
-               guardian_(false)
+               guardian_(false), loyal_(false)
 {
 	//apply modifications etc, refresh the unit
 	new_level();
@@ -491,7 +491,7 @@ const std::string& unit::image() const
 			          attackType_->get_frame(attackingMilliseconds_);
 
 			if(img == NULL)
-				return type_->image();
+				return type_->image_fighting(attackType_->range());
 			else
 				return *img;
 		}
@@ -639,6 +639,8 @@ void unit::add_modification(const std::string& type, config& mod, bool no_add)
 			if(maxExperience_ < 1) {
 				maxExperience_ = 1;
 			}
+		} else if(apply_to == "loyal") {
+			loyal_ = true;
 		}
 	}
 }
@@ -653,4 +655,28 @@ void unit::apply_modifications()
 			add_modification(ModificationTypes[i],**j,true);
 		}
 	}
+}
+
+int unit::upkeep() const
+{
+	//special units with descriptions don't have any upkeep,
+	//as they are major units, not hired units
+	if(description_.empty() == false)
+		return 0;
+
+	//loyal units always have an upkeep of 1 gold. Other units have an
+	//upkeep equal to their level
+	return loyal_ ? 1 : type().level();
+}
+
+int team_upkeep(const unit_map& units, int side)
+{
+	int res = 0;
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == side) {
+			res += i->second.upkeep();
+		}
+	}
+
+	return res;
 }

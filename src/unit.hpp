@@ -95,6 +95,8 @@ public:
 	const gamemap::location& get_goto() const;
 	void set_goto(const gamemap::location& new_goto);
 
+	int upkeep() const;
+
 	void add_modification(const std::string& type, config& modification,
 	                      bool no_add=false);
 
@@ -138,6 +140,8 @@ private:
 
 	gamemap::location goto_;
 
+	bool loyal_;
+
 	void apply_modifications();
 };
 
@@ -147,5 +151,7 @@ struct compare_unit_values
 };
 
 typedef std::map<gamemap::location,unit> unit_map;
+
+int team_upkeep(const unit_map& units, int team_num);
 
 #endif

@@ -16,12 +16,12 @@ namespace game_config
 {
 	const int unit_cost = 1;
 	const int base_income = 2;
-	const int tower_income = 2;
+	const int tower_income = 1;
 	const int heal_amount = 4;
 	const int healer_heals_per_turn = 8;
 	const int cure_amount = 8;
 	const int curer_heals_per_turn = 18;
 	const int recall_cost = 20;
-	const std::string version = "0.4.8";
+	const std::string version = "0.4.9-CVS";
 	bool debug = false;
 }

@@ -142,10 +142,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 int play_game(int argc, char** argv)
 {
-	std::string text_chr = read_file("data/text.chr");
-	text_chr.resize(256*8);
-
-	CVideo video(text_chr.c_str());
+	CVideo video;
 	const font::manager font_manager;
 	const sound::manager sound_manager;
 	const preferences::manager prefs_manager;

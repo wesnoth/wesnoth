@@ -32,8 +32,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	gamemap map(terrain_config,read_file("data/maps/" + level->values["map"]));
 
 	CKey key;
-	typedef std::map<gamemap::location,unit> units_map;
-	units_map units;
+	unit_map units;
 
 	std::vector<team> teams;
 
@@ -99,7 +98,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		sound::play_music(music);
 	}
 
-	game_events::manager events_manager(*level,gui,map,units,
+	game_events::manager events_manager(*level,gui,map,units,teams,
 	                                    state_of_game,gameinfo);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
@@ -110,7 +109,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		                (*overlay)->values["image"]);
 	}
 
-	for(units_map::iterator i = units.begin(); i != units.end(); ++i) {
+	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 		i->second.new_turn();
 	}
 
@@ -124,6 +123,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		try {
 
 			if(first_time) {
+				clear_shroud(gui,map,gameinfo,units,teams,0);
+
 				update_locker lock_display(gui,recorder.skipping());
 				game_events::fire("start");
 				gui.draw();
@@ -135,10 +136,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
 
+				clear_shroud(gui,map,gameinfo,units,teams,player_number-1);
+
 				calculate_healing(gui,map,units,player_number);
 
 				//scroll the map to the leader
-				const units_map::iterator leader =
+				const unit_map::iterator leader =
 				                   find_leader(units,player_number);
 
 				if(leader != units.end() && !recorder.skipping()) {
@@ -175,7 +178,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					SDL_Delay(1000);
 				}
 
-				for(units_map::iterator uit = units.begin();
+				for(unit_map::iterator uit = units.begin();
 				    uit != units.end(); ++uit) {
 					if(uit->second.side() == player_number)
 						uit->second.end_turn();
@@ -206,18 +209,25 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			}
 
 			std::map<int,int> expenditure;
-			for(units_map::iterator i = units.begin();
+			for(unit_map::iterator i = units.begin();
 			    i != units.end(); ++i) {
 				i->second.new_turn();
-				expenditure[i->second.side()]++;
 			}
 
 			int team_num = 1;
 			for(std::vector<team>::iterator it = teams.begin();
 			    it != teams.end(); ++it, ++team_num) {
 				it->new_turn();
-				it->spend_gold(expenditure[team_num]);
+
+				//if the expense is less than the number of villages owned,
+				//then we don't have to pay anything at all
+				const int expense = team_upkeep(units,team_num) -
+				                    it->towers().size();
+				if(expense > 0) {
+					it->spend_gold(expense);
+				}
 			}
+
 		} catch(end_level_exception& end_level) {
 
 			if(end_level.result == QUIT || end_level.result == REPLAY) {
@@ -255,7 +265,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				const int turns_left = status.number_of_turns() - status.turn();
 				const int finishing_bonus = end_level.gold_bonus ?
 				              (finishing_bonus_per_turn * turns_left) : 0;
-				state_of_game.gold = (remaining_gold+finishing_bonus)/2;
+				state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;
 
 				gui::show_dialog(gui,NULL,string_table["victory_heading"],
 				                 string_table["victory_message"],gui::OK_ONLY);

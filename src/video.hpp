@@ -22,8 +22,8 @@
 
 class CVideo {
      public:
-	CVideo(const char* text);
-	CVideo( int x, int y, int bits_per_pixel, int flags, const char* text );
+	CVideo();
+	CVideo(int x, int y, int bits_per_pixel, int flags);
 	~CVideo();
 
 	int modePossible( int x, int y, int bits_per_pixel, int flags );
@@ -56,7 +56,6 @@ class CVideo {
      private:
 
 	SDL_Surface* frameBuffer;
-	char text_[256*8];
 };
 
 void allow_resizing(bool);

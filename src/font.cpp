@@ -118,7 +118,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		return res;
 	}
 
-	SDL_Surface* const surface = TTF_RenderText_Blended(font,text.c_str(),col);
+	scoped_sdl_surface surface(TTF_RenderText_Blended(font,text.c_str(),col));
 	if(surface == NULL) {
 		std::cerr << "Could not render ttf: '" << text << "'\n";
 		SDL_Rect res;
@@ -146,8 +146,6 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		src.y = 0;
 		SDL_BlitSurface(surface,&src,gui->video().getSurface(),&dest);
 	}
-
-	SDL_FreeSurface(surface);
 
 	return dest;
 }

@@ -396,6 +396,21 @@ const std::string& unit_type::image() const
 	return cfg_.values["image"];
 }
 
+const std::string& unit_type::image_fighting(attack_type::RANGE range) const
+{
+	static const std::string short_range("image_short");
+	static const std::string long_range("image_long");
+
+	const std::string& str = range == attack_type::LONG_RANGE ?
+	                                  long_range : short_range;
+	const std::string& val = cfg_.values[str];
+
+	if(!val.empty())
+		return val;
+	else
+		return image();
+}
+
 const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 {
 	{

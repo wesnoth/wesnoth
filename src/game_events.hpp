@@ -17,6 +17,7 @@
 #include "display.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
+#include "team.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 
@@ -31,7 +32,7 @@ bool conditional_passed(game_state& state_of_game,
 
 struct manager {
 	manager(config& cfg, display& disp, gamemap& map,
-	        std::map<gamemap::location,unit>& units,
+	        std::map<gamemap::location,unit>& units, std::vector<team>& teams,
 		    game_state& state_of_game, game_data& data);
 	~manager();
 };

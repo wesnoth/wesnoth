@@ -179,6 +179,12 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 			unit_map::iterator u = units.find(selected_hex);
 
+			//if the unit is selected and then itself clicked on,
+			//any goto command is cancelled
+			if(selected_hex == hex && u->second.side() == team_num) {
+				u->second.set_goto(gamemap::location());
+			}
+
 			//if we can move to that tile
 			std::map<gamemap::location,paths::route>::const_iterator
 					route = enemy_paths ? current_paths.routes.end() :
@@ -229,13 +235,13 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					att << attack_name << " (" << attack_type
 					    << ") " << stats.damage_defender_takes << "-"
 						<< stats.nattacks << " " << range << " "
-						<< int(ceil(100.0*stats.chance_to_hit_defender)) << "%";
+						<< int(round(100.0*stats.chance_to_hit_defender))<< "%";
 
 					att << "," << string_table["versus"] << ",";
 					att << defend_name << " (" << defend_type
 					    << ") " << stats.damage_attacker_takes << "-"
 						<< stats.ndefends << " "
-						<< int(ceil(100.0*stats.chance_to_hit_attacker)) << "%";
+						<< int(round(100.0*stats.chance_to_hit_attacker))<< "%";
 
 					items.push_back(att.str());
 					units_list.push_back(enemy->second);
@@ -307,6 +313,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 				const size_t moves = move_unit(&gui,map,units,teams,
 				                   current_route.steps,&recorder,&undo_stack);
+
 				redo_stack.clear();
 
 				selected_hex = gamemap::location();
@@ -341,6 +348,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					gui.set_paths(&current_paths);
 				}
 
+				if(clear_shroud(gui,map,gameinfo,units,teams,team_num-1)) {
+					undo_stack.clear();
+				}
 			} else {
 				gui.set_paths(NULL);
 				current_paths = paths();
@@ -411,9 +421,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 
 				else if(result == string_table["end_turn"]) {
-					recorder.save_game(gameinfo,string_table["auto_save"]);
-					recorder.end_turn();
-					return;
+					command = HOTKEY_ENDTURN;
 				}
 
 				else if(result == string_table["scenario_objectives"]) {
@@ -483,6 +491,12 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		if(command == HOTKEY_NULL)
 			command = check_keys(gui);
+
+		if(command == HOTKEY_ENDTURN) {
+			recorder.save_game(gameinfo,string_table["auto_save"]);
+			recorder.end_turn();
+			return;
+		}
 
 		if(command == HOTKEY_RECRUIT) {
 			std::vector<unit> sample_units;
@@ -679,10 +693,15 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					prefix = "#";
 				}
 
-				const int resist=int(100.0-ceil(100.0*resistance));
+				const int resist = 100 - int(round(100.0*resistance));
+
+				const std::string& lang_weapon =
+				               string_table["weapon_type_" + i->first];
+				const std::string& weap = lang_weapon.empty() ? i->first :
+				                                                lang_weapon;
 
 				std::stringstream str;
-				str << i->first << "," << prefix << resist << "%";
+				str << weap << "," << prefix << resist << "%";
 				items.push_back(str.str());
 			}
 
@@ -692,7 +711,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		      gui.getImage(un->second.type().image_profile(),display::UNSCALED);
 			gui::show_dialog(gui,unit_image,
 			                 un->second.type().language_name(),
-							 "Unit resistance table",
+							 string_table["unit_resistance_table"],
 							 gui::MESSAGE,&items,&units_list);
 		}
 
@@ -719,7 +738,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 					const double defense = move_type.defense_modifier(map,*t);
 
-					const int def = int(100.0-ceil(100.0*defense));
+					const int def = 100-int(round(100.0*defense));
 
 					std::stringstream str;
 					str << lang_name << ",";

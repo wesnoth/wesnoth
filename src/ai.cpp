@@ -103,7 +103,9 @@ void move_unit(const game_data& gameinfo, display& disp,
 	paths current_paths = paths(map,gameinfo,units,from,teams,
 	                            ignore_zocs,teleport);
 	paths_wiper wiper(disp);
-	disp.set_paths(&current_paths);
+
+	if(!disp.shrouded(from.x,from.y))
+		disp.set_paths(&current_paths);
 
 	disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
@@ -402,6 +404,9 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		if(want_tower) {
+			std::cerr << "trying to acquire village: " << i->first.x
+			          << ", " << i->first.y << "\n";
+
 			const std::map<location,unit>::iterator un = units.find(i->second);
 			if(un == units.end()) {
 				assert(false);
@@ -419,7 +424,6 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			return;
 		}
 	}
-	std::cout << "b\n";
 
 	//find units in need of healing
 	std::map<location,unit>::iterator u_it = units.begin();
@@ -430,7 +434,7 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 		//worth of healing, and doesn't regenerate itself, then try to
 		//find a vacant village for it to rest in
 		if(u.side() == team_num &&
-		   u.type().hitpoints() - u.hitpoints() >= game_config::heal_amount/2 &&
+		   u.type().hitpoints() - u.hitpoints() >= game_config::cure_amount/2 &&
 		   !u.type().regenerates()) {
 			typedef std::multimap<location,location>::iterator Itor;
 			std::pair<Itor,Itor> it = srcdst.equal_range(u_it->first);
@@ -439,6 +443,8 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 				if(map[dst.x][dst.y] == gamemap::TOWER &&
 				   units.find(dst) == units.end()) {
 					const location& src = it.first->first;
+
+					std::cerr << "moving unit to village for healing...\n";
 
 					move_unit(gameinfo,disp,map,units,src,dst,
 					          possible_moves,teams,team_num);

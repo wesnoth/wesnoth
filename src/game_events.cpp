@@ -15,6 +15,7 @@
 #include "language.hpp"
 #include "playlevel.hpp"
 #include "replay.hpp"
+#include "sound.hpp"
 
 #include <cstdlib>
 #include <deque>
@@ -55,8 +56,8 @@ bool conditional_passed(game_state& state_of_game,
 	std::vector<config*>& variables = cond.children["variable"];
 	for(std::vector<config*>::iterator var = variables.begin();
 	    var != variables.end(); ++var) {
-		std::map<std::string,std::string>& values = (*var)->values;
-		std::map<std::string,std::string>& vars = state_of_game.variables;
+		string_map& values = (*var)->values;
+		string_map& vars = state_of_game.variables;
 		const std::string& name = values["name"];
 
 		//if we don't have a record of the variable, then the statement
@@ -74,7 +75,7 @@ bool conditional_passed(game_state& state_of_game,
 		const std::string& value = vars[name];
 		const double num_value = atof(value.c_str());
 
-		std::map<std::string,std::string>::iterator itor;
+		string_map::iterator itor;
 
 		itor = values.find("equals");
 		if(itor != values.end() && itor->second != value) {
@@ -127,6 +128,7 @@ namespace {
 display* screen = NULL;
 gamemap* game_map = NULL;
 std::map<gamemap::location,unit>* units = NULL;
+std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
 game_data* game_data_ptr = NULL;
 
@@ -191,11 +193,32 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		handle_event(event_info,*cmd);
 	}
 
+	//sounds
+	std::vector<config*>& sounds = cfg->children["sound"];
+	for(std::vector<config*>::iterator sfx = sounds.begin();
+	    sfx != sounds.end(); ++sfx) {
+		sound::play_sound((*sfx)->values["name"]);
+	}
+
+	//an award of gold to a particular side
+	std::vector<config*>& gold = cfg->children["gold"];
+	for(std::vector<config*>::iterator gd = gold.begin(); gd!=gold.end();++gd) {
+		string_map& values = (*gd)->values;
+		const std::string& side = values["side"];
+		const std::string& amount = values["amount"];
+		const int side_num = side.empty() ? 1 : atoi(side.c_str());
+		const int amount_num = atoi(amount.c_str());
+		const size_t team_index = side_num-1;
+		if(team_index < teams->size()) {
+			(*teams)[team_index].spend_gold(-amount_num);
+		}
+	}
+
 	//setting a variable
 	std::vector<config*>& set_vars = cfg->children["set_variable"];
 	for(std::vector<config*>::iterator var = set_vars.begin();
 	    var != set_vars.end(); ++var) {
-		std::map<std::string,std::string>& vals = (*var)->values;
+		string_map& vals = (*var)->values;
 		const std::string& name = vals["name"];
 		const std::string& value = vals["value"];
 		if(value.empty() == false) {
@@ -341,7 +364,8 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		for(std::vector<unit>::iterator u = avail.begin();
 		    u != avail.end(); ++u) {
 			if(u->matches_filter(**ir)) {
-				recruit_unit(*game_map,1,*units,*u,gamemap::location(),screen);
+				recruit_unit(*game_map,1,*units,*u,gamemap::location(),
+				             screen,false);
 				u = avail.erase(u);
 				if(u == avail.end())
 					break;
@@ -352,7 +376,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 	std::vector<config*>& objects = cfg->children["object"];
 	for(std::vector<config*>::iterator obj = objects.begin();
 	    obj != objects.end(); ++obj) {
-		std::map<std::string,std::string>& values = (*obj)->values;
+		string_map& values = (*obj)->values;
 
 		//if this item has already been used
 		if(values["used"].empty() == false)
@@ -414,7 +438,8 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 	std::vector<config*>& messages = cfg->children["message"];
 	for(std::vector<config*>::iterator msg = messages.begin();
 	    msg != messages.end(); ++msg) {
-		std::map<std::string,std::string>& values = (*msg)->values;
+		string_map& values = (*msg)->values;
+
 		std::map<gamemap::location,unit>::iterator speaker = units->end();
 		if(values["speaker"] == "unit") {
 			speaker = units->find(event_info.loc1);
@@ -432,6 +457,11 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 				//continue onto the next message
 				continue;
 			}
+		}
+
+		const string_map::const_iterator sfx = values.find("sound");
+		if(sfx != values.end()) {
+			sound::play_sound(sfx->second);
 		}
 
 		const std::string& id = values["id"];
@@ -665,6 +695,7 @@ namespace game_events {
 
 manager::manager(config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
+                 std::vector<team>& teams_,
                  game_state& state_of_game_, game_data& game_data_)
 {
 	std::vector<config*>& events_list = cfg.children["event"];
@@ -675,6 +706,7 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
 		                                   new_handler.name(), new_handler));
 	}
 
+	teams = &teams_;
 	screen = &gui_;
 	game_map = &map_;
 	units = &units_;

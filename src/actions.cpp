@@ -47,7 +47,7 @@ private:
 
 std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
-       gamemap::location recruit_location, display* disp)
+       gamemap::location recruit_location, display* disp, bool need_castle)
 {
 	typedef std::map<gamemap::location,unit> units_map;
 
@@ -75,7 +75,8 @@ std::string recruit_unit(const gamemap& map, int side,
 	}
 
 	if(!map.on_board(recruit_location)) {
-		recruit_location = find_vacant_tile(map,units,u->first,gamemap::CASTLE);
+		recruit_location = find_vacant_tile(map,units,u->first,
+		                                    need_castle ? gamemap::CASTLE : 0);
 	}
 
 	if(!map.on_board(recruit_location)) {
@@ -87,7 +88,8 @@ std::string recruit_unit(const gamemap& map, int side,
 	units.insert(std::pair<gamemap::location,unit>(
 							recruit_location,new_unit));
 
-	if(disp != NULL && !disp->turbo()) {
+	if(disp != NULL && !disp->turbo() &&
+	   !disp->shrouded(recruit_location.x,recruit_location.y)) {
 		disp->draw(true,true);
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
@@ -328,9 +330,9 @@ void attack(display& gui, const gamemap& map,
 			            hits ? stats.damage_defender_takes : 0,
 						a->second.attacks()[attack_with]);
 			if(dies) {
-				attackerxp = 10*d->second.type().level();
+				attackerxp = 8*d->second.type().level();
 				if(d->second.type().level() == 0)
-					attackerxp = 5;
+					attackerxp = 4;
 
 				defenderxp = 0;
 
@@ -386,9 +388,9 @@ void attack(display& gui, const gamemap& map,
 						   d->second.attacks()[stats.defend_with]);
 
 			if(dies) {
-				defenderxp = 10*a->second.type().level();
+				defenderxp = 8*a->second.type().level();
 				if(a->second.type().level() == 0)
-					defenderxp = 5;
+					defenderxp = 4;
 
 				attackerxp = 0;
 
@@ -583,7 +585,8 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		const gamemap::location& loc = h->first;
 
-		const bool show_healing = !disp.turbo() && !recorder.skipping();
+		const bool show_healing = !disp.turbo() && !recorder.skipping() &&
+		                          !disp.shrouded(loc.x,loc.y);
 
 		assert(units.count(loc) == 1);
 
@@ -870,4 +873,54 @@ size_t move_unit(display* disp, const gamemap& map,
 	}
 
 	return steps.size();
+}
+
+void clear_shroud_loc(const gamemap& map, team& tm,
+                      const gamemap::location& loc)
+{
+	if(map.on_board(loc))
+		tm.clear_shroud(loc.x,loc.y);
+
+	static gamemap::location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(int i = 0; i != 6; ++i) {
+		if(map.on_board(adj[i])) {
+			tm.clear_shroud(adj[i].x,adj[i].y);
+		}
+	}
+}
+
+void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
+                       const unit_map& units, const gamemap::location& loc,
+                       std::vector<team>& teams, int team)
+{
+	paths p(map,gamedata,units,loc,teams,true,false);
+	for(paths::routes_map::const_iterator i = p.routes.begin();
+	    i != p.routes.end(); ++i) {
+		clear_shroud_loc(map,teams[team],i->first);
+	}
+}
+
+bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
+                  const unit_map& units, std::vector<team>& teams, int team)
+{
+	if(teams[team].uses_shroud() == false)
+		return false;
+
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == team+1) {
+
+			//we're not really going to mutate the unit, just temporarily
+			//set its moves to maximum, but then switch them back
+			unit& mutable_unit = const_cast<unit&>(i->second);
+			const int old_moves = mutable_unit.movement_left();
+			mutable_unit.set_movement(mutable_unit.total_movement());
+			clear_shroud_unit(map,gamedata,units,i->first,teams,team);
+			mutable_unit.set_movement(old_moves);
+		}
+	}
+
+	disp.recalculate_minimap();
+
+	return true;
 }
