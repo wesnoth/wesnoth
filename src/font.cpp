@@ -435,6 +435,11 @@ std::vector<surface> const &text_surface::get_surfaces() const
 			continue;
 		font_style_setter const style_setter(ttfont, style_);
 		
+		//DEBUG
+		if (itor->text[0] == 'æ') {
+			std::cerr << "Nihongo detected:\n";
+		}
+
 		surface s = surface(TTF_RenderUNICODE_Blended(ttfont, (Uint16 const *)&(itor->ucs2_text.front()), color_));
 		if(!s.null())
 			surfs_.push_back(s);

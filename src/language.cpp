@@ -1,4 +1,5 @@
 /* $Id$ */
+/* vim:set encoding=utf-8: */
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Part of the Battle for Wesnoth Project http://wesnoth.whitevine.net
@@ -51,6 +52,7 @@ language_def known_languages[] = {
 	language_def("la_IT", "Latina"),
 	language_def("hu_HU", "Magyar"),
 	language_def("nl_NL", "Nederlands"),
+	language_def("ja_JP", "日本語 (Nihongo)"),
 	language_def("no_NO", "Norsk"),
 	language_def("pl_PL", "Polski"),
 	language_def("pt_BR", "Português do Brasil"),

@@ -521,7 +521,7 @@ static FT_Error Load_Glyph( TTF_Font* font, Uint16 ch, c_glyph* cached, int want
 		 * a freetype2 bug because it is inconsistent with the
 		 * freetype2 documentation under FT_Render_Mode section.
 		 * */
-		if ( mono || !FT_IS_SCALABLE(face) ) {
+		if ( mono || !FT_IS_SCALABLE(face) || dst->pixel_mode == FT_PIXEL_MODE_MONO ) {
 			dst->pitch *= 8;
 		}
 
@@ -547,27 +547,18 @@ static FT_Error Load_Glyph( TTF_Font* font, Uint16 ch, c_glyph* cached, int want
 			for( i = 0; i < src->rows; i++ ) {
 				int soffset = i * src->pitch;
 				int doffset = i * dst->pitch;
-				if ( mono ) {
+				if ( mono || dst->pixel_mode == FT_PIXEL_MODE_MONO ) {
 					unsigned char *srcp = src->buffer + soffset;
 					unsigned char *dstp = dst->buffer + doffset;
 					int j;
 					for ( j = 0; j < src->width; j += 8 ) {
 						unsigned char ch = *srcp++;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
-						ch <<= 1;
-						*dstp++ = (ch&0x80) >> 7;
+
+						int k;
+						for ( k = 0; k < 8; ++k) {
+							*dstp++ = ch & 0x80 ? 0xff : 0;
+							ch <<= 1;
+						}
 					}
 				} else if ( !FT_IS_SCALABLE(face) ) {
 					/* This special case wouldn't
