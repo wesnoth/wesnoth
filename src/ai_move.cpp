@@ -98,7 +98,7 @@ std::vector<ai::target> ai::find_targets(bool has_leader)
 	if(has_leader && current_team().village_value() > 0.0) {
 		const std::vector<location>& towers = map_.towers();
 		for(std::vector<location>::const_iterator t = towers.begin(); t != towers.end(); ++t) {
-			assert(map.on_board(*t));
+			assert(map_.on_board(*t));
 			bool get_tower = true;
 			for(size_t i = 0; i != teams_.size(); ++i) {
 				if(!current_team().is_enemy(i+1) && teams_[i].owns_tower(*t)) {
