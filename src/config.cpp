@@ -618,6 +618,28 @@ std::string config::write() const
 	return res;
 }
 
+//data compression. Compression is designed for network traffic.
+//assumptions compression is based on:
+// - most space is taken up by element names and attribute names
+// - there are relatively few element names and attribute names that are repeated many times
+//
+//how it works: there are some control characters:
+// 'compress_open_element': signals that the next word found is an element.
+// any words found that are not after this are assumed to be attributes
+// 'compress_close_element': signals to close the current element
+// 'compress_schema_item': signals that following is a nul-delimited string, which should
+//                         be added as a word in the schema
+// 'compress_literal_word': signals that following is a word stored as a nul-delimited string
+//    (an attribute name, unless it was preceeded by 'compress_open_element')
+//
+// all other characters are mapped to words. When an item is inserted into the schema,
+// it is mapped to the first available character. Any attribute found is always followed
+// by a nul-delimited string which is the value for the attribute.
+//
+// the schema objects are designed to be persisted. That is, in a network game, both peers
+// can store their schema objects, and so rather than sending schema data each time, the peers
+// use and build their schemas as the game progresses, adding a new word to the schema anytime
+// it is required.
 namespace {
 	const unsigned char compress_open_element = 0, compress_close_element = 1,
 	                    compress_schema_item = 2, compress_literal_word = 3,

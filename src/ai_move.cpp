@@ -238,9 +238,6 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	assert(best_target >= targets.begin() && best_target < targets.end());
-	best_target->value -= best->second.type().cost()/20.0;
-	if(best_target->value <= 0.0)
-		targets.erase(best_target);
 
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 		assert(map_.on_board(ittg->loc));
@@ -262,6 +259,15 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
 			if(its.first->second == best->first && !should_retreat(its.first->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
+				const double value = best_target->value - best->second.type().cost()/20.0;
+				targets.erase(best_target);
+
+				//if this is a sufficiently valuable target, we add this unit as a target -- meaning
+				//that a group of units will rally around it, creating a teaming effect
+				if(best_target->value > 0.0) {
+					targets.push_back(target(its.first->first,value));
+				}
+				
 				return std::pair<location,location>(its.first->second,its.first->first);
 			}
 
@@ -271,6 +277,10 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	if(best != units_.end()) {
 		std::cout << "Could not make good move, staying still\n";
+
+		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
+		//create this as a target, attempting to rally units around
+		targets.push_back(target(best->first,best_target->value));
 		return std::pair<location,location>(best->first,best->first);
 	}
 

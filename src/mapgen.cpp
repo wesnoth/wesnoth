@@ -303,7 +303,6 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 		ci->y *= 1000;
 		xvelocity.push_back(0.0);
 		yvelocity.push_back(0.0);
-		std::cerr << "castle at " << ci->x << "," << ci->y << "\n";
 	}
 
 	std::vector<gamemap::location> villages;
@@ -337,7 +336,6 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 					const double ypower = power * ydist/(xdist+ydist) * (ci->y < i->y ? -1.0 : 1.0);
 					xvelocity[index] += xpower;
 					yvelocity[index] += ypower;
-					std::cerr << "xpower = " << xpower << ", ypower = " << ypower << "\n";
 				}
 			}
 
@@ -416,8 +414,6 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 				yvelocity[index] *= -1.0;
 				ci->y = min_y*1000;
 			}
-
-			std::cerr << "castle at " << ci->x << "," << ci->y << " (" << xvelocity[index] << "," << yvelocity[index] << "\n";
 		}
 	}
 
@@ -711,7 +707,7 @@ std::string default_generate_map(size_t width, size_t height,
 			castles.push_back(location(x,y));
 		}
 
-		place_castles(castles,villages,width/3,height/3,(width/3)*2 - 1,(height/3)*2 - 1);
+		place_castles(castles,villages,width/3 + 2,height/3 + 2,(width/3)*2 - 3,(height/3)*2 - 3);
 
 		//make sure all castles are placed on valid terrain. Check the castle tile
 		//itself, and all surrounding tiles
