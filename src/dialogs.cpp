@@ -651,12 +651,12 @@ void unit_preview_pane::draw()
 	details << u.type().language_name()
 			<< "\n" << _("level") << " "
 			<< u.type().level() << "\n"
-			<< string_table[unit_type::alignment_description(u.type().alignment())] << "\n"
+			<< unit_type::alignment_description(u.type().alignment()) << "\n"
 			<< u.traits_description() << " \n";
 
 	const std::vector<std::string>& abilities = u.type().abilities();
 	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
-		details << *a;
+		details << gettext(a->c_str());
 		if(a+1 != abilities.end()) {
 			details << ",";
 		}
@@ -696,12 +696,13 @@ void unit_preview_pane::draw()
 		    at_it != attacks.end(); ++at_it) {
 
 			details << "\n"
-				<< at_it->name() << " (" << at_it->type() << ")\n"
-				<< at_it->special() << "\n"
-				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
-			        << (at_it->range() == attack_type::SHORT_RANGE ?
-			            _("melee") :
-						_("ranged"));
+			        << gettext(at_it->name().c_str())
+			        << " (" << gettext(at_it->type().c_str()) << ")\n";
+			if (!at_it->special().empty())
+				details << gettext(at_it->special().c_str());
+			details << "\n"
+			        << at_it->damage() << "-" << at_it->num_attacks() << " -- "
+			        << (at_it->range() == attack_type::SHORT_RANGE ? _("melee") : _("ranged"));
 	
 			if(at_it->hexes() > 1) {
 				details << " (" << at_it->hexes() << ")";
