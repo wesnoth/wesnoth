@@ -339,6 +339,8 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
+	void download_campaigns();
+
 	const int argc_;
 	int arg_;
 	const char* const * const argv_;
@@ -533,6 +535,8 @@ bool game_controller::init_video()
 
 bool game_controller::init_config()
 {
+	defines_map_.clear();
+
 	//load in the game's configuration files
 	defines_map_["NORMAL"] = preproc_define();
 	defines_map_["MEDIUM"] = preproc_define();
@@ -912,91 +916,8 @@ bool game_controller::new_campaign()
 
 	//get more campaigns from server
 	if(res == int(campaign_names.size()-1)) {
-		std::string host = "campaigns.wesnoth.org";
-		const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
-		        _("You will now connect to a campaign server to download campaigns."),
-		        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
-		if(res != 0) {
-			return false;
-		}
-
-		const std::vector<std::string> items = config::split(host,':');
-		host = items.front();
-
-		try {
-			const network::manager net_manager;
-			const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
-			if(!sock) {
-				gui::show_dialog(disp(),NULL,_("Error"),_("Could not connect to host."),gui::OK_ONLY);
-				return false;
-			}
-
-			config cfg;
-			cfg.add_child("request_campaign_list");
-			network::send_data(cfg,sock);
-
-			network::connection res = gui::network_data_dialog(disp(),_("Awaiting response from server"),cfg,sock);
-			if(!res) {
-				return false;
-			}
-
-			const config* const error = cfg.child("error");
-			if(error != NULL) {
-				gui::show_dialog(disp(),NULL,_("Error"),(*error)["message"],gui::OK_ONLY);
-				return false;
-			}
-
-			const config* const campaigns_cfg = cfg.child("campaigns");
-			if(campaigns_cfg == NULL) {
-				gui::show_dialog(disp(),NULL,_("Error"),_("Error communicating with the server."),gui::OK_ONLY);
-				return false;
-			}
-
-			std::vector<std::string> campaigns;
-			const config::child_list& cmps = campaigns_cfg->get_children("campaign");
-			for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
-				campaigns.push_back((**i)["name"]);
-			}
-
-			if(campaigns.empty()) {
-				gui::show_dialog(disp(),NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
-				return false;
-			}
-
-			const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&campaigns);
-			if(index < 0 || index >= int(campaigns.size())) {
-				return false;
-			}
-
-			config request;
-			request.add_child("request_campaign")["name"] = campaigns[index];
-			network::send_data(request,sock);
-
-			res = gui::network_data_dialog(disp(),_("Downloading campaign..."),cfg,sock);
-			if(!res) {
-				return false;
-			}
-
-			if(cfg.child("error") != NULL) {
-				gui::show_dialog(disp(),NULL,_("Error"),(*cfg.child("error"))["message"],gui::OK_ONLY);
-				return false;
-			}
-
-			unarchive_campaign(cfg);
-
-			gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed. You will have to restart Wesnoth before you can play it."),gui::OK_ONLY);
-			return false;
-			
-		} catch(config::error& e) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
-			return false;
-		} catch(network::error& e) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
-			return false;
-		} catch(io_exception& e) {
-			gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
-			return false;
-		}
+		download_campaigns();
+		return new_campaign();
 	}
 
 	const config& campaign = *campaigns[res];
@@ -1029,6 +950,96 @@ bool game_controller::new_campaign()
 	state_.campaign_define = campaign["define"];
 	
 	return true;
+}
+
+void game_controller::download_campaigns()
+{
+	std::string host = "campaigns.wesnoth.org";
+	const int res = gui::show_dialog(disp(),NULL,_("Connect to Server"),
+	        _("You will now connect to a campaign server to download campaigns."),
+	        gui::OK_CANCEL,NULL,NULL,_("Server: "),&host);
+	if(res != 0) {
+		return;
+	}
+
+	const std::vector<std::string> items = config::split(host,':');
+	host = items.front();
+
+	try {
+		const network::manager net_manager;
+		const network::connection sock = network::connect(items.front(),lexical_cast_default<int>(items.back(),15002));
+		if(!sock) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("Could not connect to host."),gui::OK_ONLY);
+			return;
+		}
+
+		config cfg;
+		cfg.add_child("request_campaign_list");
+		network::send_data(cfg,sock);
+
+		network::connection res = gui::network_data_dialog(disp(),_("Awaiting response from server"),cfg,sock);
+		if(!res) {
+			return;
+		}
+
+		const config* const error = cfg.child("error");
+		if(error != NULL) {
+			gui::show_dialog(disp(),NULL,_("Error"),(*error)["message"],gui::OK_ONLY);
+			return;
+		}
+
+		const config* const campaigns_cfg = cfg.child("campaigns");
+		if(campaigns_cfg == NULL) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("Error communicating with the server."),gui::OK_ONLY);
+			return;
+		}
+
+		std::vector<std::string> campaigns;
+		const config::child_list& cmps = campaigns_cfg->get_children("campaign");
+		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
+			campaigns.push_back((**i)["name"]);
+		}
+
+		if(campaigns.empty()) {
+			gui::show_dialog(disp(),NULL,_("Error"),_("There are no campaigns available for download from this server."),gui::OK_ONLY);
+			return;
+		}
+
+		const int index = gui::show_dialog(disp(),NULL,_("Get Campaign"),_("Choose the campaign to download."),gui::OK_CANCEL,&campaigns);
+		if(index < 0 || index >= int(campaigns.size())) {
+			return;
+		}
+
+		config request;
+		request.add_child("request_campaign")["name"] = campaigns[index];
+		network::send_data(request,sock);
+
+		res = gui::network_data_dialog(disp(),_("Downloading campaign..."),cfg,sock);
+		if(!res) {
+			return;
+		}
+
+		if(cfg.child("error") != NULL) {
+			gui::show_dialog(disp(),NULL,_("Error"),(*cfg.child("error"))["message"],gui::OK_ONLY);
+			return;
+		}
+
+		unarchive_campaign(cfg);
+
+		//force a reload of configuration information
+		const bool old_cache = use_caching_;
+		use_caching_ = false;
+		init_config();
+		use_caching_ = old_cache;
+
+		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);
+	} catch(config::error& e) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
+	} catch(network::error& e) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
+	} catch(io_exception& e) {
+		gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
+	}
 }
 
 bool game_controller::play_multiplayer()
