@@ -680,9 +680,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		status = "#" + string_table["poisoned"];
 	}
 
-	const std::string& lang_ability =
-	             string_table["ability_" + u.type().ability()];
-
 	std::stringstream details;
 	details << "+" << u.description() << "\n"
 	        << "+" << u.type().language_name()
@@ -691,9 +688,14 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< status << "\n"
 			<< unit_type::alignment_description(u.type().alignment())
 			<< "\n"
-			<< u.traits_description() << "\n"
-			<< (lang_ability.empty() ? u.type().ability() : lang_ability)<<"\n"
-			<< string_table["hp"] << ": " << u.hitpoints()
+			<< u.traits_description() << "\n";
+
+	const std::vector<std::string>& abilities = u.type().abilities();
+	for(std::vector<std::string>::const_iterator a = abilities.begin(); a != abilities.end(); ++a) {
+		details << translate_string_default("ability_" + *a, *a) << "\n";
+	}
+
+	details << string_table["hp"] << ": " << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n"
 			<< string_table["xp"] << ": ";
 	

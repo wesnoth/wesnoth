@@ -349,6 +349,13 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
                      const std::vector<config*>& traits)
                 : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
 {
+	abilities_ = config::split(cfg_["ability"]);
+
+	//if the string was empty, split will give us one empty string in the list,
+	//remove it.
+	if(!abilities_.empty() && abilities_.back() == "")
+		abilities_.pop_back();
+
 	if(has_ability("heals")) {
 		heals_ = game_config::healer_heals_per_turn;
 		max_heals_ = game_config::heal_amount;
@@ -579,9 +586,9 @@ double unit_type::alpha() const
 	return alpha_;
 }
 
-const std::string& unit_type::ability() const
+const std::vector<std::string>& unit_type::abilities() const
 {
-	return cfg_["ability"];
+	return abilities_;
 }
 
 int unit_type::max_unit_healing() const
@@ -626,7 +633,7 @@ bool unit_type::nightvision() const
 
 bool unit_type::has_ability(const std::string& ability) const
 {
-	return config::has_value(this->ability(),ability);
+	return std::find(abilities_.begin(),abilities_.end(),ability) != abilities_.end();
 }
 
 const std::vector<config*>& unit_type::possible_traits() const

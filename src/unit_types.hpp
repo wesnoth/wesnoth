@@ -159,7 +159,7 @@ public:
 
 	double alpha() const;
 
-	const std::string& ability() const;
+	const std::vector<std::string>& abilities() const;
 
 	//max_unit_healing returns the maximum hitpoints a unit next to this
 	//unit can heal per turn. heals returns the total amount of hitpoints
@@ -181,6 +181,8 @@ private:
 	const config& cfg_;
 
 	double alpha_;
+
+	std::vector<std::string> abilities_;
 
 	int max_heals_;
 	int heals_;
