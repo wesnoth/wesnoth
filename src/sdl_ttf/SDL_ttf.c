@@ -71,6 +71,13 @@
 #define CACHED_BITMAP	0x01
 #define CACHED_PIXMAP	0x02
 
+/*
+ * Allows building with early libfreetype 2.1.x (x < 3)
+ */
+#ifndef FT_PIXEL_MODE_MONO
+#define FT_PIXEL_MODE_MONO ft_pixel_mode_mono
+#endif
+
 /* Cached glyph information */
 typedef struct cached_glyph {
 	int stored;
