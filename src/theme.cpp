@@ -118,7 +118,7 @@ theme::label::label()
 {}
 
 theme::label::label(const config& cfg)
-      : object(cfg), text_(cfg["prefix"] + string_table[cfg["text"]] + cfg["postfix"]),
+      : object(cfg), text_(cfg["prefix"] + cfg["text"] + cfg["postfix"]),
 	    icon_(cfg["icon"]), font_(atoi(cfg["font_size"].c_str()))
 {
 	if(font_ == 0)
@@ -147,8 +147,8 @@ size_t theme::label::font_size() const
 
 theme::status_item::status_item(const config& cfg)
         : object(cfg),
-		  prefix_(string_table[cfg["prefix"]] + cfg["prefix_literal"]),
-		  postfix_(cfg["postfix_literal"] + string_table[cfg["postfix"]]),
+		  prefix_(cfg["prefix"] + cfg["prefix_literal"]),
+		  postfix_(cfg["postfix_literal"] + cfg["postfix"]),
           font_(atoi(cfg["font_size"].c_str()))
 {
 	if(font_ == 0)
@@ -192,7 +192,7 @@ theme::menu::menu() : context_(false)
 {}
 
 theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
-                                       title_(translate_string(cfg["title"]) + cfg["title_literal"]),
+                                       title_(cfg["title"] + cfg["title_literal"]),
 									   image_(cfg["image"]),
 									   items_(config::split(cfg["items"]))
 {}
