@@ -612,7 +612,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const std::string& defend_type = translate_string_default("weapon_type_"+st.defend_type,st.defend_type);
 			const std::string& defend_special = translate_string_default("weapon_special_"+st.defend_special,st.defend_special);
 
-			const std::string& range = translate_string_default(st.range == "Melee" ? "short_range" : "long_range",st.range);
+			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
 
 			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 			//that the attacks line up nicely.
