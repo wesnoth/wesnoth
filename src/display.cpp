@@ -1222,7 +1222,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	if(u.experience() > 0 && u.type().can_advance()) {
 		const double filled = double(u.experience())/double(u.max_experience());
 		const int level = maximum<int>(u.type().level(),1);
-		const SDL_Color normal_colour = {173,200,248,0}, near_advance_colour = {255,255,255,0};
+		const SDL_Color normal_colour = {02,153,255,0}, near_advance_colour = {255,255,255,0};
 		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
 		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
 

@@ -90,13 +90,21 @@ void server::run()
 	config& gamelist = initial_response_.add_child("gamelist");
 	old_initial_response_ = initial_response_;
 
+	bool sync_scheduled = false;
 	for(int loop = 0;; ++loop) {
 		try {
+			if(sync_scheduled) {
+				//send all players the information that a player has logged
+				//out of the system
+				lobby_players_.send_data(sync_initial_response());
+				sync_scheduled = false;
+			}
+
+			
 			//make sure we log stats every 5 minutes
 			if((loop%100) == 0 && last_stats_+5*60 < time(NULL)) {
 				dump_stats();
 			}
-
 
 			network::process_send_queue();
 
@@ -500,9 +508,7 @@ void server::run()
 					e.disconnect();
 				}
 
-				//send all players the information that a player has logged
-				//out of the system
-				lobby_players_.send_data(sync_initial_response());
+				sync_scheduled = true;
 
 				std::cerr << "done closing socket...\n";
 			}
@@ -570,7 +576,7 @@ int main(int argc, char** argv)
 	try {
 		server(port).run();
 	} catch(network::error& e) {
-		std::cerr << "error starting server: " << e.message << "\n";
+		std::cerr << "caught network error while server was running. aborting.: " << e.message << "\n";
 		return -1;
 	}
 
