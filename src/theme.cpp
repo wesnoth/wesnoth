@@ -8,6 +8,7 @@
 #include "util.hpp"
 
 #include <cstdlib>
+#include <sstream>
 
 #define LOG_DP lg::info(lg::display)
 
@@ -32,23 +33,69 @@ namespace {
 
 	SDL_Rect read_rect(const config& cfg) {
 		SDL_Rect rect;
-		static SDL_Rect ref_rect = empty_rect;
 		const std::vector<std::string> items = config::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
-			rect.x = compute(items[0], ref_rect.x, ref_rect.x+ref_rect.w);
+			rect.x = atoi(items[0].c_str());
 
 		if(items.size() >= 2)
-			rect.y = compute(items[1], ref_rect.y, ref_rect.y+ref_rect.h);
+			rect.y = atoi(items[1].c_str());
 
 		if(items.size() >= 3)
-			rect.w = compute(items[2], ref_rect.x+ref_rect.w, rect.x) - rect.x;
+			rect.w = atoi(items[2].c_str()) - rect.x;
 
 		if(items.size() >= 4)
-			rect.h = compute(items[3], ref_rect.y+ref_rect.h, rect.y) - rect.y;
+			rect.h = atoi(items[3].c_str()) - rect.y;
 
-		ref_rect = rect;
 		return rect;
 	}
+
+	std::string resolve_rect(const std::string& rect_str) {
+		typedef struct { size_t x1,y1,x2,y2; } _rect;
+		static _rect ref_rect = { 0, 0, 0, 0 };
+		_rect rect;
+		std::stringstream resolved;
+		const std::vector<std::string> items = config::split(rect_str.c_str());
+		if(items.size() >= 1) {
+			rect.x1 = compute(items[0], ref_rect.x1, ref_rect.x2);
+			resolved << rect.x1;
+		}
+		if(items.size() >= 2) {
+			rect.y1 = compute(items[1], ref_rect.y1, ref_rect.y2);
+			resolved << "," << rect.y1;
+		}
+		if(items.size() >= 3) {
+			rect.x2 = compute(items[2], ref_rect.x2, rect.x1);
+			resolved << "," << rect.x2;
+		}
+		if(items.size() >= 4) {
+			rect.y2 = compute(items[3], ref_rect.y2, rect.y1);
+			resolved << "," << rect.y2;
+		}
+
+		// std::cerr << "Rect " << rect_str << "\t: " << resolved.str() << "\n";
+
+		ref_rect = rect;
+		return resolved.str();
+	}
+
+	config& resolve_rects(const config& cfg) {
+		config* newcfg = new config();
+		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
+			const std::pair<const std::string*,const config*>& value = *i;
+			newcfg->add_child(*value.first,resolve_rects(*value.second));
+		}
+
+		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
+			newcfg->values[j->first] = j->second;
+		}
+
+		if (cfg["rect"] != "") {
+			newcfg->values["rect"] = resolve_rect(cfg["rect"]);
+		}
+
+		return *newcfg;
+	}
+
 }
 
 theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
@@ -225,7 +272,7 @@ const std::string& theme::menu::image() const { return image_; }
 
 const std::vector<std::string>& theme::menu::items() const { return items_; }
 
-theme::theme(const config& cfg, const SDL_Rect& screen) : cfg_(cfg)
+theme::theme(const config& cfg, const SDL_Rect& screen) : cfg_(resolve_rects(cfg))
 {
 	set_resolution(screen);
 }
