@@ -2151,7 +2151,7 @@ void help_browser::adjust_layout() {
 	set_dirty(true);
 }
 
-void help_browser::update_location(const SDL_Rect& rect) {
+void help_browser::update_location(SDL_Rect const &) {
 	adjust_layout();
 }
 
