@@ -565,9 +565,14 @@ std::string unit_type::generate_description() const
 
 std::string unit_type::id() const
 {
-	std::string n = name();
-	n.erase(std::remove(n.begin(),n.end(),' '),n.end());
-	return n;
+	std::string id = cfg_["id"];
+
+	if (id.empty()) {
+		// his code is only for compatibility with old unit defs and savefiles
+		std::string n = name();
+		return n;
+	} else
+		return id;
 }
 
 std::string unit_type::language_name() const
@@ -929,6 +934,6 @@ game_data::game_data(const config& cfg)
 	for(config::const_child_itors j = cfg.child_range("unit");
 	    j.first != j.second; ++j.first) {
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
-		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
+		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 	}
 }
