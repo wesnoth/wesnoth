@@ -180,6 +180,27 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 namespace gui
 {
 
+size_t text_to_lines(std::string& message, size_t max_length)
+{
+	size_t cur_line = 0, longest_line = 0;
+	for(std::string::iterator i = message.begin(); i != message.end(); ++i) {
+		if(*i == ' ' && cur_line > max_length)
+			*i = '\n';
+
+		if(*i == '\n' || i+1 == message.end()) {
+			if(cur_line > longest_line)
+				longest_line = cur_line;
+
+			cur_line = 0;
+
+		} else {
+			++cur_line;
+		}
+	}
+
+	return longest_line;
+}
+
 int show_dialog(display& disp, SDL_Surface* image,
                 const std::string& caption, const std::string& msg,
                 DIALOG_TYPE type,
@@ -229,29 +250,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 	menu menu_(disp,menu_items,type == MESSAGE);
 
 	const int border_size = 6;
-	int nlines = 1;
-	int longest_line = 0;
-	int cur_line = 0;
 
 	const int max_line_length = 58;
 
 	std::string message = msg;
-	for(std::string::iterator message_it = message.begin();
-	    message_it != message.end(); ++message_it) {
-		if(*message_it == ' ' && cur_line > max_line_length)
-			*message_it = '\n';
-
-		if(*message_it == '\n') {
-			if(cur_line > longest_line)
-				longest_line = cur_line;
-
-			cur_line = 0;
-
-			++nlines;
-		} else {
-			++cur_line;
-		}
-	}
+	const size_t longest_line = text_to_lines(message,max_line_length);
 
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {
@@ -323,9 +326,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(button_heights > 0) {
 		button_heights += button_height_padding;
 	}
-
-	if(cur_line > longest_line)
-		longest_line = cur_line;
 
 	int check_button_height = 0;
 	int check_button_width = 0;

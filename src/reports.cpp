@@ -8,8 +8,8 @@
 
 namespace {
 	const std::string report_names[] = { "unit_description", "unit_type", "unit_level",
-		"unit_traits","unit_status","unit_alignment","unit_hp","unit_xp","unit_moves",
-		"unit_weapons","unit_image","unit_profile","time_of_day",
+		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
+		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
 		"income", "terrain", "position" };
 }
@@ -46,24 +46,55 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	switch(type) {
 	case UNIT_DESCRIPTION:
 		return report(u->second.description());
-	case UNIT_TYPE:
-		return report(u->second.type().language_name());
+	case UNIT_TYPE: {
+		report res(u->second.type().language_name());
+		res.tooltip = u->second.type().unit_description();
+		return res;
+	}
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
 	case UNIT_TRAITS:
 		return report(u->second.traits_description());
-	case UNIT_STATUS:
-		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y])))
-			return report("@" + string_table["invisible"]);
-		else if(u->second.has_flag("slowed"))
-			return report("#" + string_table["slowed"]);
-		else if(u->second.has_flag("poisoned"))
+	case UNIT_STATUS: {
+		std::string status = "healthy", prefix = "";
+		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]))) {
+			status = "invisible";
+			prefix = "@";
+		} else if(u->second.has_flag("slowed")) {
+			status = "slowed";
+			prefix = "#";
 			return report("#" + string_table["poisoned"]);
-		else
-			return report(string_table["healthy"]);
-	case UNIT_ALIGNMENT:
-		return report(unit_type::alignment_description(u->second.type().alignment()));
+		} else if(u->second.has_flag("poisoned")) {
+			status = "poisoned";
+			prefix = "#";
+		}
+
+		report res(prefix + string_table[status]);
+		res.tooltip = string_table[status + "_description"];
+		return res;
+	}
+	case UNIT_ALIGNMENT: {
+		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
+		report res(translate_string(align));
+		res.tooltip = string_table[align + "_description"];
+		return res;
+	}
+	case UNIT_ABILITIES: {
+		std::stringstream tooltip;
+		const std::vector<std::string>& abilities = u->second.type().abilities();
+		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
+			str << translate_string(*i);
+			if(i+1 != abilities.end())
+				str << ",";
+
+			tooltip << string_table[*i + "_description"] << "\n\n";
+		}
+
+		report res(str.str());
+		res.tooltip = tooltip.str();
+		return res;
+	}
 	case UNIT_HP:
 		if(u->second.hitpoints() <= u->second.max_hitpoints()/3)
 			str << "#";
@@ -118,8 +149,20 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		return report("",u->second.type().image());
 	case UNIT_PROFILE:
 		return report("",u->second.type().image_profile());
-	case TIME_OF_DAY:
-		return report("",timeofday_at(status,units,mouseover).image);
+	case TIME_OF_DAY: {
+		const time_of_day& tod = timeofday_at(status,units,mouseover);
+		report res("",tod.image);
+		std::stringstream tooltip;
+		
+		tooltip << "+" << translate_string_default(tod.id,tod.name) << "\n"
+		        << translate_string("lawful") << " " << string_table["units"] << ": "
+				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
+				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
+				<< translate_string("chaotic") << " " << string_table["units"] << ": "
+				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
+		res.tooltip = tooltip.str();
+		return res;
+	}
 	case TURN:
 		str << status.turn() << "/" << status.number_of_turns() << "\n";
 		break;

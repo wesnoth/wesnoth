@@ -24,7 +24,9 @@ display* display_ = NULL;
 struct tooltip
 {
 	tooltip(const SDL_Rect& r, const std::string& msg) : rect(r), message(msg)
-	{}
+	{
+		gui::text_to_lines(message,60);
+	}
 	SDL_Rect rect;
 	std::string message;
 };
@@ -143,7 +145,7 @@ void clear_tooltips()
 
 void clear_tooltips(const SDL_Rect& rect)
 {
-	clear_tooltips();
+	clear_tooltip();
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
 		if(rectangles_overlap(i->rect,rect)) {
 			i = tips.erase(i);
@@ -169,8 +171,7 @@ void add_tooltip(const SDL_Rect& rect, const std::string& message)
 
 void process(int mousex, int mousey, bool lbutton)
 {
-	for(std::vector<tooltip>::const_iterator i = tips.begin();
-	    i != tips.end(); ++i) {
+	for(std::vector<tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(mousex > i->rect.x && mousey > i->rect.y &&
 		   mousex < i->rect.x + i->rect.w && mousey < i->rect.y + i->rect.h) {
 			show_tooltip(*i);

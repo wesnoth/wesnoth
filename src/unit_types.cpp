@@ -611,11 +611,7 @@ unit_type::ALIGNMENT unit_type::alignment() const
 const std::string& unit_type::alignment_description(unit_type::ALIGNMENT align)
 {
 	static const std::string aligns[] = { "lawful", "neutral", "chaotic" };
-	const string_map::const_iterator i = string_table.find(aligns[align]);
-	if(i != string_table.end())
-		return i->second;
-	else
-		return aligns[align];
+	return aligns[align];
 }
 
 double unit_type::alpha() const

@@ -13,7 +13,7 @@
 namespace reports {
 
 	enum TYPE { UNIT_DESCRIPTION, UNIT_TYPE, UNIT_LEVEL, UNIT_TRAITS, UNIT_STATUS,
-	            UNIT_ALIGNMENT, UNIT_HP, UNIT_XP, UNIT_MOVES, UNIT_WEAPONS,
+	            UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP, UNIT_MOVES, UNIT_WEAPONS,
 				UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 				TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES, INCOME, TERRAIN, POSITION,
 	            NUM_REPORTS};
@@ -28,9 +28,9 @@ namespace reports {
 		explicit report(const std::string& text) : text(text) {}
 		report(const std::string& text, const std::string& image) : text(text), image(image) {}
 		bool empty() const { return text.empty() && image.empty(); }
-		bool operator==(const report& o) const { return o.text == text && o.image == image; }
+		bool operator==(const report& o) const { return o.text == text && o.image == image && o.tooltip == tooltip; }
 		bool operator!=(const report& o) const { return !(o == *this); }
-		std::string text, image;
+		std::string text, image, tooltip;
 	};
 
 	report generate_report(TYPE type, const gamemap& map, const unit_map& units,

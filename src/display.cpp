@@ -751,6 +751,8 @@ void display::draw_report(reports::TYPE report_num)
 
 		tooltips::clear_tooltips(rect);
 
+		SDL_Rect area = rect;
+
 		if(report.text.empty() == false) {
 			std::string str = item->prefix();
 
@@ -764,7 +766,11 @@ void display::draw_report(reports::TYPE report_num)
 
 			str += report.text.substr(nchop) + item->postfix();
 
-			font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
+			area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
+		}
+
+		if(report.tooltip.empty() == false) {
+			tooltips::add_tooltip(area,report.tooltip);
 		}
 
 		if(report.image.empty() == false) {
@@ -816,7 +822,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	if(teams_.empty())
 		return;
 
-
 	tooltips::clear_tooltips(description_rect);
 
 	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
@@ -858,7 +863,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			<< "\n-(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
-			<< unit_type::alignment_description(u.type().alignment())
+			<< translate_string(unit_type::alignment_description(u.type().alignment()))
 			<< "\n"
 			<< u.traits_description() << "\n";
 
