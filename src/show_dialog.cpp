@@ -475,7 +475,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	if(button_list != NULL) {
 		try {
-			while(button_list[0] != '\0') {
+			while((*button_list)[0] != '\0') {
 				buttons.push_back(button(disp,gettext(*button_list)));
 
 				++button_list;
