@@ -224,10 +224,12 @@ private:
 	/// where to put the pasted hex when calculating from the one
 	/// selected when the paste takes place.
 	struct clipboard_item {
-		clipboard_item(int xo, int yo, gamemap::TERRAIN t) :
-			x_offset(xo), y_offset(yo), terrain(t) {}
+		clipboard_item(int xo, int yo, gamemap::TERRAIN t, int start_side) :
+			x_offset(xo), y_offset(yo), terrain(t),
+			starting_side(start_side){}
 		int x_offset, y_offset;
 		gamemap::TERRAIN terrain;
+		int starting_side;
 	};
 
 	/// What to perform while the left button is held down.

@@ -345,6 +345,12 @@ void map_editor::edit_paste() {
 		if (map_.on_board(target)) {
 			undo_action.add_terrain(map_.get_terrain(target), (*it).terrain, target);
 			map_.set_terrain(target, (*it).terrain);
+			const int start_side = (*it).starting_side;
+			if (start_side != -1) {
+				undo_action.add_starting_location(start_side, start_side,
+												  map_.starting_position(start_side), target);
+				map_.set_starting_position(start_side, target);
+			}
 			filled.insert(target);
 			gui_.add_highlighted_loc(target);
 		}
@@ -453,7 +459,8 @@ void map_editor::insert_selection_in_clipboard() {
 		const int x_offset = (*it).x - offset_hex.x;
 		const int y_offset = (*it).y - offset_hex.y;
 		gamemap::TERRAIN terrain = map_.get_terrain(*it);
-		clipboard_.push_back(clipboard_item(x_offset, y_offset, terrain));
+		clipboard_.push_back(clipboard_item(x_offset, y_offset, terrain,
+											starting_side_at(map_, *it)));
 	}
 }
 
@@ -741,6 +748,12 @@ void map_editor::perform_selection_move() {
 			undo_action.add_terrain(map_.get_terrain(hl_loc), map_.get_terrain(*it), hl_loc);
 			gui_.add_highlighted_loc(hl_loc);
 			map_.set_terrain(hl_loc, map_.get_terrain(*it));
+			const int start_side = starting_side_at(map_, *it);
+			if (start_side != -1) {
+				// Starting side at the old location that needs transfering.
+				map_.set_starting_position(start_side, hl_loc);
+				undo_action.add_starting_location(start_side, start_side, *it, hl_loc);
+			}
 			new_selection.insert(hl_loc);
 		}
 	}
