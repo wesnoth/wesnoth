@@ -20,9 +20,7 @@ private:
 	void handle_event(const SDL_Event& event);
 
 	void cycle_units();
-	void end_turn() {}
 	void goto_leader();
-	void end_unit_turn() {}
 	void undo();
 	void redo();
 	void terrain_table();
@@ -32,17 +30,11 @@ private:
 	void save_game();
 	void toggle_grid();
 	void status_table();
-	void recall() {}
-	void recruit() {}
-	void repeat_recruit() {}
-	void speak() {}
 	void create_unit();
 	void preferences();
 	void objectives();
 	void unit_list();
-	void show_statistics() {}
 	void label_terrain();
-	void show_enemy_moves(bool ignore_units) {}
 
 	void edit_set_terrain();
 

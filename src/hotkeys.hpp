@@ -83,32 +83,32 @@ HOTKEY_COMMAND string_to_command(const std::string& str);
 class command_executor
 {
 public:
-	virtual void cycle_units() = 0;
-	virtual void end_turn() = 0;
-	virtual void goto_leader() = 0;
-	virtual void end_unit_turn() = 0;
-	virtual void undo() = 0;
-	virtual void redo() = 0;
-	virtual void terrain_table() = 0;
-	virtual void attack_resistance() = 0;
-	virtual void unit_description() = 0;
-	virtual void rename_unit() = 0;
-	virtual void save_game() = 0;
-	virtual void toggle_grid() = 0;
-	virtual void status_table() = 0;
-	virtual void recall() = 0;
-	virtual void recruit() = 0;
-	virtual void repeat_recruit() = 0;
-	virtual void speak() = 0;
-	virtual void create_unit() = 0;
-	virtual void preferences() = 0;
-	virtual void objectives() = 0;
-	virtual void unit_list() = 0;
-	virtual void show_statistics() = 0;
-	virtual void label_terrain() = 0;
-	virtual void show_enemy_moves(bool ignore_units) = 0;
-	virtual void toggle_shroud_updates() = 0;
-	virtual void update_shroud_now() = 0;
+	virtual void cycle_units() {};
+	virtual void end_turn() {};
+	virtual void goto_leader() {};
+	virtual void end_unit_turn() {};
+	virtual void undo() {};
+	virtual void redo() {};
+	virtual void terrain_table() {};
+	virtual void attack_resistance() {};
+	virtual void unit_description() {};
+	virtual void rename_unit() {};
+	virtual void save_game() {};
+	virtual void toggle_grid() {};
+	virtual void status_table() {};
+	virtual void recall() {};
+	virtual void recruit() {};
+	virtual void repeat_recruit() {};
+	virtual void speak() {};
+	virtual void create_unit() {};
+	virtual void preferences() {};
+	virtual void objectives() {};
+	virtual void unit_list() {};
+	virtual void show_statistics() {};
+	virtual void label_terrain() {};
+	virtual void show_enemy_moves(bool ignore_units) {};
+	virtual void toggle_shroud_updates() {};
+	virtual void update_shroud_now() {};
 
 	// Map editor stuff.
 	virtual void edit_set_terrain() {}

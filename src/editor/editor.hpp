@@ -116,33 +116,6 @@ public:
 	
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
-	// These are defined here because they are pure virtual in
-	// hotkey::command_executor.
-	virtual void cycle_units() {}
-	virtual void end_turn() {}
-	virtual void goto_leader() {}
-	virtual void end_unit_turn() {}
-	virtual void terrain_table() {}
-	virtual void attack_resistance() {}
-	virtual void unit_description() {}
-	virtual void rename_unit() {}
-	virtual void status_table() {}
-	virtual void recall() {}
-	virtual void recruit() {}
-	virtual void repeat_recruit() {}
-	virtual void speak() {}
-	virtual void create_unit() {}
-	virtual void preferences() {}
-	virtual void objectives() {}
-	virtual void unit_list() {}
-	virtual void show_statistics() {}
-	virtual void save_game() {}
-	virtual void label_terrain() {}
-	virtual void show_enemy_moves(bool ignore_units) {}
-	virtual void edit_set_terrain() {}
-	virtual void toggle_shroud_updates() {}
-	virtual void update_shroud_now() {}
-	
 	// exception thrown when new map is to be loaded.
 	struct new_map_exception {
 		new_map_exception(const std::string &new_map) : new_map_(new_map) {}
