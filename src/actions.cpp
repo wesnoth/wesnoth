@@ -808,9 +808,8 @@ unit get_advanced_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
                   const gamemap::location& loc, const std::string& advance_to)
 {
-	const std::map<std::string,unit_type>::const_iterator new_type =
-	     info.unit_types.find(advance_to);
-	std::map<gamemap::location,unit>::iterator un = units.find(loc);
+	const std::map<std::string,unit_type>::const_iterator new_type = info.unit_types.find(advance_to);
+	const std::map<gamemap::location,unit>::iterator un = units.find(loc);
 	if(new_type != info.unit_types.end() && un != units.end()) {
 		return unit(&(new_type->second),un->second);
 	} else {
@@ -821,9 +820,10 @@ unit get_advanced_unit(const game_data& info,
 
 void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
-                  const gamemap::location& loc, const std::string& advance_to)
+                  gamemap::location loc, const std::string& advance_to)
 {
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
+	
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 }

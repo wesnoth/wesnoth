@@ -119,9 +119,12 @@ unit get_advanced_unit(const game_data& info,
                   const gamemap::location& loc, const std::string& advance_to);
 
 //function which will advance the unit at loc to 'advance_to'.
+//note that 'loc' is not a reference, because if it were a reference, we couldn't
+//safely pass in a reference to the item in the map that we're going to delete,
+//since deletion would invalidate the reference.
 void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
-                  const gamemap::location& loc, const std::string& advance_to);
+                  gamemap::location loc, const std::string& advance_to);
 
 //function which returns true iff the unit at loc is currently affected
 //by leadership. (i.e. has a higher-level 'leadership' unit next to it)

@@ -21,9 +21,16 @@
 
 namespace dialogs
 {
+//function to handle an advancing unit. If there is only one choice to advance
+//to, the unit will be automatically advanced. If there is a choice, and 'random_choice'
+//is true, then a unit will be selected at random. Otherwise, a dialog will be displayed
+//asking the user what to advance to.
+//
+//note that 'loc' is not a reference, because deleting an item from the units map
+//(when replacing the unit that is being advanced) will possibly invalidate the reference
 void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
-				  const gamemap::location& loc,
+				  gamemap::location loc,
 				  display& gui, bool random_choice=false);
 
 void show_objectives(display& disp, config& level_info);
