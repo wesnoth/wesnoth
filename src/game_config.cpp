@@ -25,7 +25,7 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
-	const std::string version = "0.6.99.5-CVS";
+	const std::string version = "0.6.99.5";
 	bool debug = false;
 
 	std::string game_icon, game_title, game_logo, title_music;

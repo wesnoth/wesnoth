@@ -43,6 +43,8 @@ Installing:
  $ make install
 	  
 
-Note:
+Updating:
 
-Users compiling CVS sources should 'make clean' before 'make' after any tree update.
+ When updating wesnoth (e.g. redoing "configure" with new switches, or updating from CVS) clean the tree first with:
+
+ $ make clean
