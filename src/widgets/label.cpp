@@ -67,21 +67,10 @@ void label::draw_contents()
 	font::draw_text(&disp(), disp().screen_area(), size_, colour_, text_, location().x, location().y);
 }
 
-void label::set_location(const SDL_Rect& rect)
-{
-	if (location().x == rect.x && location().y == rect.y && 
-			location().w == rect.w && location().h == rect.h)
-		return;
-
-	widget::set_location(rect);
-	register_rectangle(rect);
-}
-
 void label::update_label_size()
 {
 	SDL_Rect area = font::text_area(text_, size_);
-	set_width(area.w);
-	set_height(area.h);
+	set_measurements(area.w, area.h);
 }
 
 

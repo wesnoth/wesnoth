@@ -46,9 +46,6 @@ public:
 	void set_selection(int index);
 	std::string get_selected_leader();
 
-	virtual void set_location(const SDL_Rect& rect);
-	using widget::set_location;
-
 private:
 	void draw_contents();
 	void process();

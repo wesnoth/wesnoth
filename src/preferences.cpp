@@ -636,7 +636,7 @@ private:
 	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
-	void set_location(SDL_Rect const &rect);
+	void update_location(SDL_Rect const &rect);
 
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
@@ -736,10 +736,9 @@ slider_label_width_(0), tab_(GENERAL_TAB)
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
 }
 
-void preferences_dialog::set_location(SDL_Rect const &rect)
+void preferences_dialog::update_location(SDL_Rect const &rect)
 {
-	widget::set_location(rect);
-	register_rectangle(rect);
+	bg_register(rect);
 	const int border = 10;
 
 	// General tab

@@ -63,7 +63,7 @@ void terrain_palette::adjust_size() {
 		(button_height + button_palette_padding) * 2;
 	rect.y = terrain_start_;
 	rect.h = space_for_terrains;
-	register_rectangle(rect);
+	bg_register(rect);
 	const unsigned terrains_fitting =
 		(unsigned)(space_for_terrains / size_specs_.terrain_space) * 2;
 	const unsigned total_terrains = num_terrains();
@@ -336,8 +336,7 @@ brush_bar::brush_bar(display &gui, const size_specs &sizes)
 
 void brush_bar::adjust_size() {
 	set_location(size_specs_.brush_x, size_specs_.brush_y);
-	set_width(size_ * total_brush_);
-	set_height(size_);
+	set_measurements(size_ * total_brush_, size_);
 	set_dirty();
 }
 

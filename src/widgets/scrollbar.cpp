@@ -51,16 +51,15 @@ scrollbar::scrollbar(display &d)
 	}
 }
 
-void scrollbar::set_location(SDL_Rect const &rect)
+void scrollbar::update_location(SDL_Rect const &rect)
 {
-	widget::set_location(rect);
 	int uh = uparrow_.height(), dh = downarrow_.height();
 	uparrow_.set_location(rect.x, rect.y);
 	downarrow_.set_location(rect.x, rect.y + rect.h - dh);
 	SDL_Rect r = rect;
 	r.y += uh;
 	r.h -= uh + dh;
-	register_rectangle(r);
+	bg_register(r);
 }
 
 void scrollbar::hide(bool value)

@@ -363,11 +363,6 @@ class help_browser : public gui::widget {
 public:
 	help_browser(display &disp, const section &toplevel);
 
-	// Overloaded from widget so that the layout may be adjusted to fit
-	// the new dimensions.
-	virtual void set_location(const SDL_Rect& rect);
-	using gui::widget::set_location;
-
 	void adjust_layout();
 
 	/// Display the topic with the specified identifier. Open the menu
@@ -375,6 +370,7 @@ public:
 	void show_topic(const std::string &topic_id);
 
 protected:
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void process_event();
 	virtual void handle_event(const SDL_Event &event);
 
@@ -1614,7 +1610,7 @@ help_text_area::help_text_area(display &disp, const section &toplevel)
 {}
 
 void help_text_area::set_inner_location(SDL_Rect const &rect) {
-	register_rectangle(rect);
+	bg_register(rect);
 }
 
 void help_text_area::show_topic(const topic &t) {
@@ -2112,9 +2108,7 @@ help_browser::help_browser(display &disp, const section &toplevel)
 	back_button_.hide(true);
 	forward_button_.hide(true);
 	// Set sizes to some default values.
-	set_location(1, 1);
-	set_width(400);
-	set_height(500);
+	set_measurements(400, 500);
 }
 
 void help_browser::adjust_layout() {
@@ -2152,8 +2146,7 @@ void help_browser::adjust_layout() {
 	set_dirty(true);
 }
 
-void help_browser::set_location(const SDL_Rect& rect) {
-	widget::set_location(rect);
+void help_browser::update_location(const SDL_Rect& rect) {
 	adjust_layout();
 }
 

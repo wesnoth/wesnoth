@@ -39,9 +39,7 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 		chosen_file_ = current_dir_;
 	}
 	// Set sizes to some default values.
-	set_location(1, 1);
-	set_width(400);
-	set_height(500);
+	set_measurements(400, 500);
 	update_file_lists();
 }
 
@@ -251,23 +249,7 @@ void file_chooser::set_dirty(bool dirty) {
 	}
 }
 
-void file_chooser::set_location(const SDL_Rect& rect) {
-	widget::set_location(rect);
-	adjust_layout();
-}
-
-void file_chooser::set_location(int x, int y) {
-	widget::set_location(x, y);
-	adjust_layout();
-}
-
-void file_chooser::set_width(int w) {
-	widget::set_width(w);
-	adjust_layout();
-}
-
-void file_chooser::set_height(int h) {
-	widget::set_height(h);
+void file_chooser::update_location(SDL_Rect const &rect) {
 	adjust_layout();
 }
 

@@ -37,17 +37,13 @@ public:
 
 	void set_dirty(bool dirty=true);
 
-	void set_location(const SDL_Rect& rect);
-	void set_location(int x, int y);
-	void set_width(int w);
-	void set_height(int h);
-
 	/// Return true if the user is done making her choice.
 	bool choice_made() const;
 
 	/// Return the choosen file.
 	std::string get_choice() const;
 protected:
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 
 private:

@@ -32,9 +32,8 @@ bool scrollarea::has_scrollbar() const
 	return scrollbar_.grip_height_ < scrollbar_.full_height_;
 }
 
-void scrollarea::set_location(SDL_Rect const &rect)
+void scrollarea::update_location(SDL_Rect const &rect)
 {
-	widget::set_location(rect);
 	SDL_Rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
 	if (shown_scrollbar_) {

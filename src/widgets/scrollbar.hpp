@@ -32,8 +32,6 @@ public:
 	/// \param callback a callback interface for warning that the grip has been moved
 	scrollbar(display &d);
 
-	virtual void set_location(SDL_Rect const &rect);
-	using widget::set_location;
 	virtual void hide(bool value = true);
 
 	/// This function is used to determine where the scrollbar is.
@@ -57,6 +55,7 @@ public:
 	void set_full_size(unsigned h);
 
 protected:
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
 	virtual void draw_contents();

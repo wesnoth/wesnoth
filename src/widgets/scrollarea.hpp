@@ -29,11 +29,10 @@ public:
 	/// \param pane the widget where wheel events take place
 	scrollarea(display &d);
 
-	virtual void set_location(SDL_Rect const &rect);
-	using widget::set_location;
 	virtual void hide(bool value = true);
 
 protected:
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
 	virtual void scroll(int pos) = 0;

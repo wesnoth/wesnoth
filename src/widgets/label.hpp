@@ -35,9 +35,6 @@ public:
 	const SDL_Color& get_colour() const;
 
 	virtual void draw_contents();
-	virtual void set_location(const SDL_Rect& rect);
-	using widget::set_location;
-
 private:
 	void update_label_size();
 

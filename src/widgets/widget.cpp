@@ -40,45 +40,57 @@ void widget::bg_cancel()
 
 void widget::set_location(SDL_Rect const &rect)
 {
-	//if (rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
-	//	return;
+	if (rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
+		return;
 	if (state_ == UNINIT && rect.x != -1234 && rect.y != -1234)
 		state_ = DRAWN;
 	bg_restore();
+	bg_cancel();
 	rect_ = rect;
 	set_dirty(true);
-	bg_cancel();
+	update_location(rect);
 }
 
-void widget::register_rectangle(SDL_Rect const &rect)
+void widget::update_location(SDL_Rect const &rect)
 {
-	restorer_.push_back(surface_restorer(&disp().video(), rect));
+	bg_register(rect);
+}
+
+void widget::bg_register(SDL_Rect const &rect)
+{
+	restorer_.push_back(surface_restorer(&disp_->video(), rect));
 }
 
 void widget::set_location(int x, int y)
 {
-	SDL_Rect rect = { x, y, location().w, location().h };
+	SDL_Rect rect = { x, y, rect_.w, rect_.h };
 	set_location(rect);
 }
 
-void widget::set_width(int w)
+void widget::set_width(unsigned w)
 {
-	SDL_Rect rect = { location().x, location().y, w, location().h };
+	SDL_Rect rect = { rect_.x, rect_.y, w, rect_.h };
 	set_location(rect);
 }
 
-void widget::set_height(int h)
+void widget::set_height(unsigned h)
 {
-	SDL_Rect rect = { location().x, location().y, location().w, h };
+	SDL_Rect rect = { rect_.x, rect_.y, rect_.w, h };
 	set_location(rect);
 }
 
-size_t widget::width() const
+void widget::set_measurements(unsigned w, unsigned h)
+{
+	SDL_Rect rect = { rect_.x, rect_.y, w, h };
+	set_location(rect);
+}
+
+unsigned widget::width() const
 {
 	return rect_.w;
 }
 
-size_t widget::height() const
+unsigned widget::height() const
 {
 	return rect_.h;
 }

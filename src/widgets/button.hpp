@@ -40,9 +40,6 @@ public:
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE);
 
 	virtual ~button() {}
-	virtual void set_location(SDL_Rect const &rect);
-	using widget::set_location;
-
 	void set_check(bool check);
 	bool checked() const;
 

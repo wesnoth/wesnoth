@@ -16,13 +16,14 @@ class widget : public events::handler
 {
 public:
 	SDL_Rect const &location() const;
-	virtual void set_location(SDL_Rect const &rect);
+	void set_location(SDL_Rect const &rect);
 	void set_location(int x, int y);
-	void set_width(int w);
-	void set_height(int h);
+	void set_width(unsigned w);
+	void set_height(unsigned h);
+	void set_measurements(unsigned w, unsigned h);
 
-	size_t width() const;
-	size_t height() const;
+	unsigned width() const;
+	unsigned height() const;
 
 	virtual bool focus() const;
 	void set_focus(bool focus);
@@ -56,7 +57,7 @@ protected:
 
 	// During each relocation, this function should be called to register
 	// the rectangles the widget needs to refresh automatically
-	void register_rectangle(SDL_Rect const &rect);
+	void bg_register(SDL_Rect const &rect);
 	void bg_restore() const;
 	void bg_restore(SDL_Rect const &rect) const;
 
@@ -66,6 +67,7 @@ protected:
 
 	virtual void draw();
 	virtual void draw_contents() {};
+	virtual void update_location(SDL_Rect const &rect);
 
 private:
 	void volatile_draw();

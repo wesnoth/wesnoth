@@ -251,9 +251,6 @@ public:
 		set_height(400);
 	}
 
-	virtual void set_location(SDL_Rect const &rect);
-	using widget::set_location;
-
 	void draw_contents();
 	void set_selection(int index) {
 		index_ = index;
@@ -271,12 +268,6 @@ private:
 	int index_;
 	std::map<std::string,surface> map_cache_;
 };
-
-void save_preview_pane::set_location(SDL_Rect const &rect)
-{
-	widget::set_location(rect);
-	register_rectangle(rect);
-}
 
 void save_preview_pane::draw_contents()
 {
@@ -594,12 +585,6 @@ void unit_preview_pane::set_selection(int index)
 	}
 }
 
-void unit_preview_pane::set_location(SDL_Rect const &rect)
-{
-	widget::set_location(rect);
-	register_rectangle(rect);
-}
-
 void unit_preview_pane::draw_contents()
 {
 	if(index_ < 0 || index_ >= int(units_->size())) {
@@ -755,12 +740,6 @@ campaign_preview_pane::campaign_preview_pane(display& disp,std::vector<std::pair
 {
 	set_width(350);
 	set_height(400);
-}
-
-void campaign_preview_pane::set_location(SDL_Rect const &rect)
-{
-	gui::preview_pane::set_location(rect);
-	register_rectangle(rect);
 }
 
 bool campaign_preview_pane::show_above() const { return false; }

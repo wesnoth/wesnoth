@@ -110,7 +110,7 @@ void menu::set_inner_location(SDL_Rect const &rect)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-	register_rectangle(rect);
+	bg_register(rect);
 }
 
 void menu::change_item(int pos1, int pos2,std::string str)
@@ -150,7 +150,6 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	if (!keep_viewport)
 		set_position(0);
 	update_scrollbar_grip_height();
-	set_location(location()); // Force some more updating.
 	adjust_viewport_to_selection();
 	set_dirty();
 }

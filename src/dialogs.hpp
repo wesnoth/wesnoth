@@ -72,8 +72,6 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
-	void set_location(SDL_Rect const &);
-	using gui::preview_pane::set_location;
 
 private:
 	void draw_contents();
@@ -99,8 +97,6 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
-	void set_location(SDL_Rect const &);
-	using gui::preview_pane::set_location;
 
 private:
 	void draw_contents();

@@ -37,14 +37,13 @@ textbox::textbox(display& d, int width, const std::string& text, bool editable, 
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
-	set_height(font::get_max_height(font_size));
-	set_width(width);
+	set_measurements(width, font::get_max_height(font_size));
 	update_text_cache(true);
 }
 
 void textbox::set_inner_location(SDL_Rect const &rect)
 {
-	register_rectangle(rect);
+	bg_register(rect);
 }
 
 const std::string textbox::text() const

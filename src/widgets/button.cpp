@@ -101,12 +101,6 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	}
 }
 
-void button::set_location(SDL_Rect const &rect)
-{
-	widget::set_location(rect);
-	register_rectangle(rect);
-}
-
 void button::set_check(bool check)
 {
 	if (type_ != TYPE_CHECK)
