@@ -36,8 +36,12 @@ public:
 			ADJACENT_TERRAIN_TYPE terrain_type) const;
 
 
-	// regenerate the generated content at the given location.
+	// regenerate the generated content at the given
+	// location. Currently: set the image at that location to the
+	// default image for the terrain.
 	void rebuild_terrain(const gamemap::location &loc);
+	void rebuild_all();
+	
 
 	typedef std::multimap<int, std::string> imagelist;
 

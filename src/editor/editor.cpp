@@ -840,21 +840,24 @@ void map_editor::draw_on_mouseover_hexes(const gamemap::TERRAIN terrain) {
 				draw_terrain(terrain, hex);
 			}
 		}
-		std::vector<gamemap::location> locs =
-			get_tiles(map_, hex, brush_.selected_brush_size());
-		map_undo_action action;
-		std::vector<gamemap::location> to_invalidate;
-		for(std::vector<gamemap::location>::const_iterator it = locs.begin();
-			it != locs.end(); ++it) {
-			if(terrain != map_[it->x][it->y]) {
-				to_invalidate.push_back(*it);
-				action.add_terrain(map_.get_terrain(*it), terrain, *it);
-				map_.set_terrain(*it, terrain);
+		else {
+			std::vector<gamemap::location> locs =
+				get_tiles(map_, hex, brush_.selected_brush_size());
+			map_undo_action action;
+			std::vector<gamemap::location> to_invalidate;
+			for(std::vector<gamemap::location>::const_iterator it = locs.begin();
+				it != locs.end(); ++it) {
+				if(terrain != map_[it->x][it->y]) {
+					to_invalidate.push_back(*it);
+					action.add_terrain(map_.get_terrain(*it), terrain, *it);
+					map_.set_terrain(*it, terrain);
+					gui_.rebuild_terrain(*it);
+				}
 			}
-		}
-		if (!to_invalidate.empty()) {
-			terrain_changed(to_invalidate, action);
-			save_undo_action(action);
+			if (!to_invalidate.empty()) {
+				terrain_changed(to_invalidate, action);
+				save_undo_action(action);
+			}
 		}
 	}
 }
@@ -901,11 +904,10 @@ void map_editor::perform_selection_move() {
 void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 							  const gamemap::location hex) {
 	const gamemap::TERRAIN current_terrain = map_.get_terrain(hex);
-	//const int xpos = gui_.get_location_x(hex);
-	//const int ypos = gui_.get_location_x(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
 	map_.set_terrain(hex, terrain);
+	gui_.rebuild_terrain(hex);
 	terrain_changed(hex, undo_action);
 	save_undo_action(undo_action);
 }
@@ -1266,8 +1268,7 @@ void map_editor::main_loop() {
 		if (map_dirty_) {
 			if (!l_button_down && !r_button_down) {
 				map_dirty_ = false;
-				// XXX Currently this rebuilds all terrain, so we only want to do it once.
-				gui_.rebuild_terrain(gamemap::location(1,1));
+				gui_.rebuild_all();
 				gui_.invalidate_all();
 				recalculate_starting_pos_labels();
 				gui_.recalculate_minimap();

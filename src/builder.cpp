@@ -77,11 +77,19 @@ const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap
 
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
+	if (tile_map_.on_map(loc)) {
+		tile& btile = tile_map_[loc];
+		btile.clear();
+		const std::string filename =
+			map_.get_terrain_info(map_.get_terrain(loc)).default_image();
+		image::locator img_loc(filename);
+		btile.images_foreground.push_back(img_loc);
+	}
+}
+
+void terrain_builder::rebuild_all() {
 	tile_map_.reset();
 	terrain_by_type_.clear();
-	
-	// For now, rebuild the whole map on each rebuilt_terrain. This is highly slow and
-	// inefficient, but this is simple
 	build_terrains();
 }
 

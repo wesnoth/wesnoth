@@ -2339,6 +2339,10 @@ void display::rebuild_terrain(const gamemap::location &loc) {
 	builder_.rebuild_terrain(loc);
 }
 
+void display::rebuild_all() {
+	builder_.rebuild_all();
+}
+
 void display::add_highlighted_loc(const gamemap::location &hex) {
 	// Only invalidate and insert if this is a new addition, for
 	// efficiency.

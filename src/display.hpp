@@ -320,6 +320,8 @@ public:
 
 	//rebuild the dynamic terrain at the given location.
     void rebuild_terrain(const gamemap::location &location);
+	//rebuild all dynamic terrain.
+	void rebuild_all();
 	
 	//Add a location to highlight. Note that this has nothing to do with
 	//selecting hexes, it is pure highlighting. These hexes will be
