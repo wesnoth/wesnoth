@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-14 23:50+0100\n"
-"PO-Revision-Date: 2004-11-07 12:20+0100\n"
-"Last-Translator: sanna\n"
+"PO-Revision-Date: 2004-11-15 20:26+0100\n"
+"Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: data/game.cfg:500 data/translations/english.cfg:61
 msgid "loyal"
@@ -2075,7 +2076,6 @@ msgstr ""
 "egenskaper."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2087,14 +2087,14 @@ msgid ""
 "For example; elves have 70% defense in woods, and are therefore hit 30% of "
 "the time."
 msgstr ""
-"Två sorters terräng har redan beskrivits, nämligen byar och borgar. Hur "
-"andra sorters terräng påverkar spelet är inte lika uppenbart, men det har "
-"att göra hur olika truppslag påverkas. Den första egenskapen är hur mycket "
-"det kostar för en trupp att förflytta sig över en ruta med en viss terräng. "
-"Den andra egenskapen är det försvar som olika sorters terräng ger olika "
-"truppslag. Varje terräng ger en trupp en viss sannolikhet att träffas av en "
-"viss attack. Till exempel har alver 70% försvar på slätter, vilket innebär "
-"att de träffas av attacker i 30% av fallen."
+"Två sorters terräng har redan beskrivits, nämligen byar och borgar. Terräng "
+"har två andra viktiga egenskaper, som påverkar de olika truppslagen på olika "
+"sätt. Den första egenskapen är hur mycket det kostar för en trupp att "
+"förflytta sig över en ruta med en viss terräng. Den andra egenskapen är det "
+"försvar som olika sorters terräng ger olika truppslag. Varje terräng ger en "
+"trupp en viss sannolikhet att träffas av en viss attack. Till exempel har "
+"alver 70% försvar i skog, vilket innebär att de träffas av attacker i 30% av "
+"fallen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
@@ -3838,6 +3838,10 @@ msgid ""
 "allows them to strike at many a foe with impunity, and their mettle has "
 "turned the tide of some of the greatest battles in known history."
 msgstr ""
+"Kavaljererna utgör en ståtlig syn på slagfältet, som de mästare från "
+"hästryggen med både svärd och armborst de är. Deras flinkhet med "
+"distansvapen tillåter dem att tryggt anfalla sina fiender, och deras "
+"eldighet har vänt stridslyckan i några av historiens största slag."
 
 #: data/units/Cavalier.cfg:48 data/units/Death_Knight.cfg:36
 #: data/units/Dragoon.cfg:48 data/units/Duelist.cfg:36
@@ -5865,9 +5869,8 @@ msgstr ""
 "attackerar genom att spruta kokande vatten på sina fiender."
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Krigare"
+msgstr "Nagakämpe"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5877,15 +5880,19 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss.  They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Det ormlika nagafolket är en av få raser som kan röra sig obehindrat i "
+"vatten, vilket ger dem en hel värld som är förbjuden landlevande varelser. "
+"Dock är de inte vattenvarelser helt och hållet, då de inte kan andas under "
+"vatten. De är små och något bräckliga, men oftast mycket kvickare än sina "
+"motståndare."
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Sjökämpe"
+msgstr "Naginikämpe"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Nagamyrmidon"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5895,10 +5902,14 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest tränade av nagafolkets svärdsmästare tas upp i bland Myrmidonerna, "
+"mästare på kamp med två svärd. De slår till lika snabbt som de ormar de "
+"liknar, och dansar lätt bort från attacker. De är farliga motståndare på "
+"öppen terräng, och dessutom ger deras simförmåga dem en dödlig rörlighet."
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Naginimyrmidon"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -5908,11 +5919,14 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"De mest tränade av nagafolkets svärdsmästare tas upp i bland Myrmidonerna, "
+"mästare på kamp med två svärd. De slår till lika snabbt som de ormar de "
+"liknar, och dansar lätt bort från attacker. De är farliga motståndare på "
+"öppen terräng, och dessutom ger deras simförmåga dem en dödlig rörlighet."
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Ödlekrigare"
+msgstr "Nagakrigare"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5923,11 +5937,15 @@ msgid ""
 "dodge from blows.  This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"Många av de unga krigarna bland nagafolket strävar efter att förtjäna sitt "
+"andra svärd. Deras kampkonst med två svärd är helt olika orchernas och andra "
+"rasers, då de har börjat lära sig att utnyttja sin ormlikhet med största "
+"skicklighet. Detta gör dem till farliga motståndare på land, men i vatten "
+"försämras deras förmåga av vattenmotståndet."
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Ödlekrigare"
+msgstr "Naginikrigare"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
@@ -7253,9 +7271,8 @@ msgid "+Contributors"
 msgstr "+Bidrag"
 
 #: src/about.cpp:256
-#, fuzzy
 msgid "+Bots"
-msgstr "+ Bots"
+msgstr "+Bots"
 
 #: src/about.cpp:292 src/help.cpp:2564 src/show_dialog.cpp:496
 msgid "Close"
@@ -8694,38 +8711,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:157
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid ""
-#~ "Only the most experienced and heroic Dragoons can achieve to ride the "
-#~ "battlefield as Cavaliers. Armed with magical artifacts, keen swords and "
-#~ "fine armours, they are one of the best mounted troops in all know world."
-#~ msgstr ""
-#~ "Endast de mest erfarna och hjältemodiga dragonerna kan uppnå en befordran "
-#~ "till kavaljer. De är beväpnade med magiska artefakter, skarpa svärd och "
-#~ "goda rustningar, och tillhör de allra bästa beridna trupperna i den kända "
-#~ "världen."
-
-#~ msgid "pistol"
-#~ msgstr "pistol"
-
-#~ msgid "Next tip"
-#~ msgstr "Nästa tips"
-
-#~ msgid "Tip of the Day"
-#~ msgstr "Dagens tips"
-
-#~ msgid "Do not show tips"
-#~ msgstr "Visa inte tips"
-
-#~ msgid ""
-#~ "Riding a fast horse and armed with sword and a magical artifact, a "
-#~ "Dragoon make a versatile enemy."
-#~ msgstr ""
-#~ "Ridande på snabba hästar, beväpnade med svärd och magiska artefakter är "
-#~ "dragonerna ett mycket mångsidigt truppslag."
-
-#~ msgid "Could not initialize video. Exiting.\n"
-#~ msgstr "Ett skärmfel uppstod. Avbryter.\n"
-
-#~ msgid "Could not initialize fonts. Exiting.\n"
-#~ msgstr "Typsnittsfel. Avbryter.\n"
