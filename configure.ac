@@ -195,86 +195,6 @@ AC_CHECK_FUNCS([floor socket strtoul])
 
 
 #######################################################################
-# Check for PNG support in SDL_image                                  #
-#######################################################################
-
-AC_LANG([C])
-AC_MSG_CHECKING([for PNG support in SDL_image])
-
-OLD_CPPFLAGS=$CPPFLAGS
-OLD_CFLAGS=$CFLAGS
-OLD_LIBS=$LIBS
-
-CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
-CFLAGS="$CFLAGS $SDL_CFLAGS"
-LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
-
-AC_RUN_IFELSE([AC_LANG_SOURCE([
-#include <SDL_image.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv)
-{
-	SDL_RWops *src;
-
-	src = SDL_RWFromFile("images/mage.png", "rb");
-	if (src == NULL)
-		exit(0);
-	exit(!IMG_isPNG(src));
-}
-	])],
-	[AC_MSG_RESULT(yes)],
-	[AC_MSG_RESULT(no)] 
-	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
-
-CPPFLAGS=$OLD_CPPFLAGS
-CFLAGS=$OLD_CFLAGS
-LIBS=$OLD_LIBS
-
-
-#######################################################################
-# Check for OGG support in SDL_mixer                                  #
-#######################################################################
-
-AC_LANG([C])
-AC_MSG_CHECKING([for OGG support in SDL_mixer])
-
-OLD_CPPFLAGS=$CPPFLAGS
-OLD_CFLAGS=$CFLAGS
-OLD_LIBS=$LIBS
-
-
-CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
-CFLAGS="$CFLAGS $SDL_CFLAGS"
-LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
-
-AC_RUN_IFELSE([AC_LANG_SOURCE([
-#include <SDL_mixer.h>
-#include <stdlib.h>
-
-int main(int argc, char **argv)
-{
-	char *music;
-
-	music = (char *) OGG_new("music/wesnoth-1.ogg");
-	if (music == NULL)
-		exit(1);
-	exit(0);
-}
-	])],
-	[AC_MSG_RESULT(yes)],
-	[AC_MSG_RESULT(no)]
-	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
-	[AC_MSG_RESULT[not tested in cross-compiling]])
-
-
-CPPFLAGS=$OLD_CPPFLAGS
-CFLAGS=$OLD_CFLAGS
-LIBS=$OLD_LIBS
-
-
-#######################################################################
 # Configuration options                                               #
 #######################################################################
 
@@ -340,6 +260,90 @@ AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
 AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
 AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
+
+#######################################################################
+# Check for PNG support in SDL_image                                  #
+#######################################################################
+
+AC_LANG([C])
+AC_MSG_CHECKING([for PNG support in SDL_image])
+
+OLD_CPPFLAGS=$CPPFLAGS
+OLD_CFLAGS=$CFLAGS
+OLD_LIBS=$LIBS
+
+CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+CFLAGS="$CFLAGS $SDL_CFLAGS"
+LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
+
+AC_RUN_IFELSE([AC_LANG_SOURCE([
+#include <SDL_image.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv)
+{
+	SDL_RWops *src;
+
+	src = SDL_RWFromFile("images/mage.png", "rb");
+	if (src == NULL)
+		exit(0);
+	exit(!IMG_isPNG(src));
+}
+	])],
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)] 
+	[AC_MSG_ERROR([*** SDL_image has no PNG support! You need SDL_image with PNG support])],
+	[AC_MSG_RESULT[not tested in cross-compiling]])
+
+CPPFLAGS=$OLD_CPPFLAGS
+CFLAGS=$OLD_CFLAGS
+LIBS=$OLD_LIBS
+
+
+#######################################################################
+# Check for OGG support in SDL_mixer                                  #
+#######################################################################
+
+if test "x$lite" = "xno"; then
+    if test -e "music/wesnoth-1.ogg" ; then
+        AC_LANG([C])
+	AC_MSG_CHECKING([for OGG support in SDL_mixer])
+
+        OLD_CPPFLAGS=$CPPFLAGS
+	OLD_CFLAGS=$CFLAGS
+        OLD_LIBS=$LIBS
+
+
+	CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
+        CFLAGS="$CFLAGS $SDL_CFLAGS"
+	LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
+
+        AC_RUN_IFELSE([AC_LANG_SOURCE([
+	#include <SDL_mixer.h>
+        #include <stdlib.h>
+
+	int main(int argc, char **argv)
+        {
+	    char *music;
+
+	    music = (char *) OGG_new("music/wesnoth-1.ogg");
+	    if (music == NULL)
+		exit(1);
+	    exit(0);
+        }
+	])],
+	[AC_MSG_RESULT(yes)],
+	[AC_MSG_RESULT(no)]
+	[AC_MSG_ERROR([*** SDL_mixer has no OGG support! You need SDL_mixer with OGG support])],
+	[AC_MSG_RESULT[not tested in cross-compiling]])
+
+
+        CPPFLAGS=$OLD_CPPFLAGS
+	CFLAGS=$OLD_CFLAGS
+        LIBS=$OLD_LIBS
+    fi
+fi
+
 
 #######################################################################
 # Data file substitution.                                             #
