@@ -452,11 +452,6 @@ std::vector<team::target>& team::targets()
 	return info_.targets;
 }
 
-bool team::uses_shroud() const
-{
-	return info_.use_shroud;
-}
-
 bool team::shrouded(size_t x, size_t y) const
 {
 	bool res = side_shrouded(x,y);
@@ -523,11 +518,6 @@ bool team::clear_shroud(size_t x, size_t y)
 	}
 }
 
-bool team::uses_fog() const
-{
-	return info_.use_fog;
-}
-
 bool team::side_fogged(size_t x, size_t y) const
 {
 	if(info_.use_fog == false)
@@ -570,6 +560,15 @@ void team::refog()
 	    i != fog_.end(); ++i) {
 		std::fill(i->begin(),i->end(),false);
 	}
+}
+
+
+bool team::knows_about_team(size_t index) const
+{
+	if(this == &((*teams)[index])) return true;
+	bool shroud = !uses_shroud() || (*teams)[index].uses_shroud() && (*teams)[index].share_maps();
+	bool fog = !uses_fog() || (*teams)[index].uses_fog() && (*teams)[index].share_vision();	
+	return shroud && fog;
 }
 
 const std::string& team::music() const

@@ -1567,9 +1567,9 @@ void turn_info::status_table()
 {
 	std::vector<std::string> items;
 	std::stringstream heading;
-	heading << string_table["leader"] << ", ," << string_table["villages"] << ","
-	        << string_table["units"] << "," << string_table["upkeep"] << ","
-	        << string_table["income"];
+	heading << string_table["leader"] << ", ," << string_table["gold"] << ","
+			<< string_table["villages"] << "," << string_table["units"] << ","
+			<< string_table["upkeep"] << "," << string_table["income"];
 
 	if(game_config::debug)
 		heading << "," << string_table["gold"];
@@ -1581,11 +1581,14 @@ void turn_info::status_table()
 	//if the player is under shroud or fog, they don't get to see
 	//details about the other sides, only their own side, allied sides and a ??? is
 	//shown to demonstrate lack of information about the other sides
-	const bool fog = viewing_team.uses_fog() || viewing_team.uses_shroud();
-
+	bool fog = false;
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(fog && viewing_team.is_enemy(n+1))
+		const bool known = viewing_team.knows_about_team(n);
+		const bool enemy = viewing_team.is_enemy(n+1);
+		if(!known) {
+			fog = true;
 			continue;
+		}
 
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);
 
@@ -1598,6 +1601,11 @@ void turn_info::status_table()
 			str << char(n+1) << "-," << char(n+1) << "-,";
 		}
 
+		if(enemy) {
+			str << " ,";
+		} else {
+			str << data.gold << ",";
+		}
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
 		str << data.villages << ","

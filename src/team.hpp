@@ -118,11 +118,13 @@ public:
 	bool shrouded(size_t x, size_t y) const;
 	bool fogged(size_t x, size_t y) const;
 	
-	bool uses_shroud() const;
+	bool uses_shroud() const { return info_.use_shroud; }
+	bool uses_fog() const { return info_.use_fog; }
 	bool clear_shroud(size_t x, size_t y);
-	bool uses_fog() const;
 	bool clear_fog(size_t x, size_t y);
 	void refog();
+	
+	bool knows_about_team(size_t index) const;
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
@@ -132,6 +134,10 @@ public:
 	static int nteams();
 
 private:
+	//Make these public if you need them, but look at knows_about_team(...) first.
+	bool share_maps() const { return info_.share_maps; }
+	bool share_vision() const { return info_.share_vision; }
+	
 	//Return true if the hex is shrouded/fogged for this side only
 	//Ignores allied teams.
 	bool side_shrouded(size_t x, size_t y) const;
