@@ -243,6 +243,15 @@ void mp_connect::lists_init()
 	player_colors_.push_back(string_table["purple"]);
 }
 
+void mp_connect::add_player(std::string name)
+{
+	player_types_.push_back(name);
+
+	for(size_t n = 0; n != combos_type_.size(); ++n) {
+		combos_type_[n].set_items(player_types_);
+	}
+}
+
 void mp_connect::gui_init()
 {
 
@@ -376,6 +385,7 @@ void mp_connect::gui_update()
 			}
 		}
 
+		//Player Team
 		const std::string& team_name = side["team_name"];
 		if(team_name != "" && isdigit(team_name[0]))
 			combos_team_[n].set_selected(team_name[0] - '1');
@@ -417,42 +427,38 @@ int mp_connect::gui_do()
 
 			//Player type
 			//Don't let user change this if a player is sitting
-			if(!save_) {
-				if(combos_type_[n].selected() < 4) {
-				int old_select = combos_type_[n].selected();
-				if(combos_type_[n].process(mousex, mousey, left_button)) {
-					if(combos_type_[n].selected() == 0) {
-						side["controller"] = "network";
-						side["description"] = "";
-					}else if(combos_type_[n].selected() == 1){
-						side["controller"] = "human";
-						side["description"] = "";
-					}else if(combos_type_[n].selected() == 2){
-						side["controller"] = "ai";
-						side["description"] = string_table["ai_controlled"];
-					}else if(combos_type_[n].selected() == 3){
-						combos_type_[n].set_selected(old_select);
-					}else if(combos_type_[n].selected() == 4){
-						side["controller"] = "human";
-						side["description"] = preferences::login();
-						for(size_t m = 0; m != combos_type_.size(); ++m) {
-							if(m != n) {
-								if(combos_type_[m].selected() == 4){
-									combos_type_[m].set_selected(0);
-									config& si = **(sides.first+m);
-									si["controller"] = "network";
-									si["description"] = "";
-								}
+			if(combos_type_[n].selected() < 4) {
+			int old_select = combos_type_[n].selected();
+			if(combos_type_[n].process(mousex, mousey, left_button)) {
+				if(combos_type_[n].selected() == 0) {
+					side["controller"] = "network";
+					side["description"] = "";
+				}else if(combos_type_[n].selected() == 1){
+					side["controller"] = "human";
+					side["description"] = "";
+				}else if(combos_type_[n].selected() == 2){
+					side["controller"] = "ai";
+					side["description"] = string_table["ai_controlled"];
+				}else if(combos_type_[n].selected() == 3){
+					combos_type_[n].set_selected(old_select);
+				}else if(combos_type_[n].selected() == 4){
+					side["controller"] = "human";
+					side["description"] = preferences::login();
+					for(size_t m = 0; m != combos_type_.size(); ++m) {
+						if(m != n) {
+							if(combos_type_[m].selected() == 4){
+								combos_type_[m].set_selected(0);
+								config& si = **(sides.first+m);
+								si["controller"] = "network";
+								si["description"] = "";
 							}
 						}
-					}else{
-						side["controller"] = "network";
-						side["description"] = "";
 					}
+				}else{
+					side["controller"] = "network";
+					side["description"] = "";
 				}
-				}
-			} else {
-				combos_type_[n].draw();
+			}
 			}
 
 			//Player race

@@ -40,6 +40,7 @@ private:
 	void lists_init();
 	void gui_init();
 	void gui_update();
+	void add_player(std::string name);
 
 	display *disp_;
 
