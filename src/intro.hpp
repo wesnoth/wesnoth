@@ -13,10 +13,9 @@
 #ifndef INTRO_HPP_INCLUDED
 #define INTRO_HPP_INCLUDED
 
+class config;
+class display;
 #include "SDL.h"
-#include "config.hpp"
-#include "display.hpp"
-#include "gamestatus.hpp"
 
 #include <string>
 

@@ -1,7 +1,7 @@
 #ifndef HALO_HPP_INCLUDED
 #define HALO_HPP_INCLUDED
 
-#include "display.hpp"
+class display;
 #include "animated.hpp"
 
 #include <string>

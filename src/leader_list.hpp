@@ -14,9 +14,10 @@
 #ifndef LEADER_LIST_HPP_INCLUDED
 #define LEADER_LIST_HPP_INCLUDED
 
-#include "config.hpp"
-#include "widgets/combo.hpp"
-#include "gamestatus.hpp"
+class config;
+namespace gui { class combo; }
+
+#include "unit_types.hpp"
 #include <string>
 
 class leader_list_manager

@@ -13,10 +13,9 @@
 #ifndef HOTKEYS_HPP_INCLUDED
 #define HOTKEYS_HPP_INCLUDED
 
-#include "config.hpp"
-#include "display.hpp"
-#include "events.hpp"
-#include "key.hpp"
+class config;
+class display;
+#include "SDL.h"
 
 //the hotkey system allows hotkey definitions to be loaded from
 //configuration objects, and then detect if a keyboard event

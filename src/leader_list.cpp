@@ -16,6 +16,7 @@
 #include "leader_list.hpp"
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
+#include "widgets/combo.hpp"
 #include "widgets/menu.hpp"
 
 const std::string leader_list_manager::random_enemy_picture("random-enemy.png");
