@@ -23,6 +23,7 @@
 #include "../key.hpp"
 #include "../widgets/menu.hpp"
 #include "../language.hpp"
+#include "../pathfind.hpp"
 #include "../playlevel.hpp"
 #include "../preferences.hpp"
 #include "../sdl_utils.hpp"
@@ -50,14 +51,6 @@ namespace {
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
 		+ "/preferences";
 	
-
-	double location_distance(const gamemap::location loc1, const gamemap::location loc2) {
-		const double xdiff = loc1.x - loc2.x;
-		const double ydiff = loc1.y - loc2.y;
-		const double dist = sqrt(xdiff * xdiff + ydiff * ydiff);
-		return dist;
-	}
-
 	// Return the side that has it's starting position at hex, or -1 if
 	// none has.
 	int starting_side_at(const gamemap& map, const gamemap::location hex) {
@@ -421,8 +414,8 @@ void map_editor::insert_selection_in_clipboard() {
 	// Find the hex that is closest to the selected one, use this as the
 	// one to calculate the offset from.
 	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
-		if (location_distance(selected_hex_, *it) <
-			location_distance(selected_hex_, offset_hex)) {
+		if (distance_between(selected_hex_, *it) <
+			distance_between(selected_hex_, offset_hex)) {
 			offset_hex = *it;
 		}
 	}
@@ -803,7 +796,6 @@ void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location
 				invalidate_adjacent(*its);
 			}
 		}
-		gui_.rebuild_terrain(*its);
 		gui_.invalidate(*its);
 	}
 	map_dirty_ = true;
@@ -1020,6 +1012,10 @@ void map_editor::main_loop() {
 		if (map_dirty_) {
 			if (!l_button_down) {
 				map_dirty_ = false;
+				// XXX Currently this rebuilds the whole map, thus we
+				// only want to perform it at these times.
+				gui_.rebuild_terrain(gamemap::location(1,1));
+				gui_.invalidate_all();
 				recalculate_starting_pos_labels();
 				gui_.recalculate_minimap();
 			}
