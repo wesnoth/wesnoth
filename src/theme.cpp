@@ -146,6 +146,8 @@ namespace {
 			outcfg = new config(*origcfg);
 		}
 
+		// FIXME: we should ignore any id attribute from inherited [resolution]
+
 		// override attributes
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
 			outcfg->values[j->first] = j->second;
@@ -156,7 +158,8 @@ namespace {
 			const config::child_list& c = cfg.get_children("remove");
 			for(config::child_list::const_iterator i = c.begin(); i != c.end(); ++i) {
 				const config* parent;
-				config& target = find_ref ((**i)["id"], *outcfg, true);
+				find_ref ((**i)["id"], *outcfg,
+					  true /* remove found child*/);
 			}
 		}
 		{
@@ -184,7 +187,6 @@ namespace {
 			if (*value.first == "partialresolution") {
 				childname = new std::string("resolution");
 				sourceconfig = expand_partialresolution (*sourceconfig, topcfg);
-				//std::cerr << sourceconfig->write();
 			}
 			config& childcfg = resolved_config.add_child(*childname);
 			do_resolve_rects(*sourceconfig, childcfg, topcfg,
@@ -226,6 +228,7 @@ namespace {
 		config* newcfg = new config();
 
 		do_resolve_rects(cfg, *newcfg, cfg);
+		//std::cerr << newcfg->write();
 
 		return *newcfg;
 	}
