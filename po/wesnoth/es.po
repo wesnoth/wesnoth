@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.6-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-21 21:58+0200\n"
-"PO-Revision-Date: 2004-10-20 13:30+0200\n"
+"PO-Revision-Date: 2004-10-22 11:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -1055,21 +1055,18 @@ msgstr "Mapa aleatorio"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:16
-#, fuzzy
 msgid "Random map (Desert)"
-msgstr "Mapa aleatorio"
+msgstr "Mapa aleatorio (Desierto)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:16
-#, fuzzy
 msgid "Random map (Marsh)"
-msgstr "Mapa aleatorio"
+msgstr "Mapa aleatorio (Marismas)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:16
-#, fuzzy
 msgid "Random map (Winter)"
-msgstr "Mapa aleatorio"
+msgstr "Mapa aleatorio (Invierno)"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -1456,7 +1453,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "¿Puede Merle devolver mi ataque?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -2171,9 +2167,8 @@ msgid "Village"
 msgstr "Aldea"
 
 #: data/terrain.cfg:51
-#, fuzzy
 msgid "Swamp Water"
-msgstr "Aguas someras"
+msgstr "Aguas pantanosas"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2200,18 +2195,16 @@ msgid "Grassland"
 msgstr "Pradera"
 
 #: data/terrain.cfg:158
-#, fuzzy
 msgid "Snow"
-msgstr "Sombra"
+msgstr "Nieve"
 
 #: data/terrain.cfg:177
 msgid "Hills"
 msgstr "Colinas"
 
 #: data/terrain.cfg:184
-#, fuzzy
 msgid "Snow hills"
-msgstr "Los Llanos nevados"
+msgstr "Colinas nevadas"
 
 #: data/terrain.cfg:192
 msgid "Mountains"
@@ -2222,12 +2215,10 @@ msgid "Forest"
 msgstr "Bosque"
 
 #: data/terrain.cfg:206
-#, fuzzy
 msgid "Snow forest"
-msgstr "Bosque del Silencio"
+msgstr "Bosque nevado"
 
 #: data/terrain.cfg:214
-#, fuzzy
 msgid "Cave wall"
 msgstr "Pared de cueva"
 
@@ -2244,18 +2235,16 @@ msgid "Encampment"
 msgstr "Campamento"
 
 #: data/terrain.cfg:258
-#, fuzzy
 msgid "Dwarven castle"
-msgstr "Páramo de los Enanos"
+msgstr "Castillo enano"
 
 #: data/terrain.cfg:268
 msgid "Keep"
 msgstr "Torreón"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Canyon"
-msgstr "ninguna"
+msgstr "Cañón"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
@@ -2483,11 +2472,12 @@ msgid "leadership"
 msgstr "liderazgo"
 
 #: data/translations/english.cfg:59
-#, fuzzy
 msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
-msgstr "Sólo requieren 1 moneda de mantenimiento"
+msgstr ""
+"Leal:\n"
+"Su coste de mantenimiento siempre es 1."
 
 #: data/translations/english.cfg:64
 msgid ""
@@ -2506,6 +2496,9 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Regenera:\n"
+"La unidad se recuperará cada turno 8 pv. Si está envenenada, eliminará el "
+"veneno en vez de curarse."
 
 #: data/translations/english.cfg:71 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
@@ -3379,9 +3372,8 @@ msgid "fire"
 msgstr "fuego"
 
 #: data/units/Arch_Mage.cfg:82
-#, fuzzy
 msgid "female^Arch Mage"
-msgstr "Archimago"
+msgstr "Archimaga"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3518,7 +3510,6 @@ msgid "mace"
 msgstr "maza"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
-#, fuzzy
 msgid "female^Princess"
 msgstr "Princesa"
 
@@ -3917,7 +3908,6 @@ msgid "chill wave"
 msgstr "ola de frío"
 
 #: data/units/Dark_Queen.cfg:3
-#, fuzzy
 msgid "female^Dark Queen"
 msgstr "Reina oscura"
 
@@ -4502,9 +4492,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Archer.cfg:82
-#, fuzzy
 msgid "female^Elvish Archer"
-msgstr "Arquero elfo"
+msgstr "Arquera elfa"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -4519,9 +4508,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Avenger.cfg:76
-#, fuzzy
 msgid "female^Elvish Avenger"
-msgstr "Vengador elfo"
+msgstr "Vengadora elfa"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4552,9 +4540,8 @@ msgstr ""
 "lo que le hace capaz de dañar a sus enemigos en cortas y largas distancias."
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "female^Elvish Druid"
-msgstr "Druida elfo"
+msgstr "Druida elfa"
 
 #: data/units/Elvish_Druid.cfg:20
 msgid ""
@@ -4576,7 +4563,6 @@ msgid "thorns"
 msgstr "espinas"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Elvish Enchantress"
 msgstr "Encantadora elfa"
 
@@ -4643,7 +4629,6 @@ msgstr ""
 "distancia, como con sus devastadoras bolas de fuego desde lejos."
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "female^Elvish Lady"
 msgstr "Dama elfa"
 
@@ -4695,9 +4680,8 @@ msgid "marksman"
 msgstr "tirador"
 
 #: data/units/Elvish_Marksman.cfg:80
-#, fuzzy
 msgid "female^Elvish Marksman"
-msgstr "Tirador elfo"
+msgstr "Tiradora elfa"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -4743,9 +4727,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:79
-#, fuzzy
 msgid "female^Elvish Ranger"
-msgstr "Montaraz elfo"
+msgstr "Montaraz elfa"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4773,9 +4756,8 @@ msgstr ""
 "aunque carecen de fuerza en el combate"
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "female^Elvish Shaman"
-msgstr "Chamán elfo"
+msgstr "Chamán elfa"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -4800,12 +4782,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "female^Elvish Sharpshooter"
-msgstr "Saetero elfo"
+msgstr "Saetera elfa"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "female^Elvish Shyde"
 msgstr "Shyde elfa"
 
@@ -4825,7 +4805,6 @@ msgid "faerie touch"
 msgstr "toque faérico"
 
 #: data/units/Elvish_Sorceress.cfg:3
-#, fuzzy
 msgid "female^Elvish Sorceress"
 msgstr "Conjuradora elfa"
 
@@ -4838,7 +4817,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
-#, fuzzy
 msgid "female^Elvish Sylph"
 msgstr "Sílfide elfa"
 
@@ -5161,9 +5139,8 @@ msgstr ""
 "poder a un archimago."
 
 #: data/units/Great_Mage.cfg:79
-#, fuzzy
 msgid "female^Great Mage"
-msgstr "Gran mago"
+msgstr "Gran maga"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -5450,9 +5427,8 @@ msgid "holy"
 msgstr "sagrado"
 
 #: data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "female^Mage of Light"
-msgstr "Mago de la Luz"
+msgstr "Maga de la Luz"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5470,7 +5446,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Adivinadora sirénida"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5480,9 +5456,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Mermaid Enchantress"
-msgstr "Encantadora elfa"
+msgstr "Encantadora sirénida"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5504,7 +5479,7 @@ msgstr "chorro de agua"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Iniciada sirénida"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5526,12 +5501,11 @@ msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
 msgid "female^Siren"
-msgstr ""
+msgstr "Sirena"
 
 #: data/units/Mermaid_Siren.cfg:23
-#, fuzzy
 msgid "naia touch"
-msgstr "toque faérico"
+msgstr "toque de náyade"
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
@@ -5546,48 +5520,40 @@ msgid "trident"
 msgstr "tridente"
 
 #: data/units/Merman_Entangler.cfg:3
-#, fuzzy
 msgid "Merman Entangler"
-msgstr "enredar"
+msgstr "Enredador sirénido"
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Luchador draco"
+msgstr "Luchador sirénido"
 
 #: data/units/Merman_Hoplite.cfg:3
-#, fuzzy
 msgid "Merman Hoplite"
-msgstr "Sirénido"
+msgstr "Hoplita sirénido"
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Sirénido"
+msgstr "Cazador sirénido"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Lanzador de jabalinas sirénido"
 
 #: data/units/Merman_Netcaster.cfg:3
-#, fuzzy
 msgid "Merman Netcaster"
-msgstr "Saurio hechicero de hielo"
+msgstr "Lanzador de redes sirénido"
 
 #: data/units/Merman_Spearman.cfg:3
-#, fuzzy
 msgid "Merman Spearman"
-msgstr "Lancero"
+msgstr "Lancero sirénido"
 
 #: data/units/Merman_Triton.cfg:3
-#, fuzzy
 msgid "Merman Triton"
-msgstr "+Traducción alemana"
+msgstr "Tritón sirénido"
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Guerrero saurio"
+msgstr "Guerrero sirénido"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -5601,7 +5567,7 @@ msgstr ""
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
 msgid ""
@@ -5621,7 +5587,7 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Un Nigromante es un mago que ha decidido seguir los caminos de las artes "
+"Un nigromante es un mago que ha decidido seguir los caminos de las artes "
 "oscuras. Usando los poderes de los no muertos, el nigromante es capaz de "
 "lanzar hechizos que drenan la fuerza vital de sus enemigos y se la dan a él."
 
@@ -5932,9 +5898,8 @@ msgid "Outlaws fight better at night."
 msgstr "Los forajidos luchan mejor de noche."
 
 #: data/units/Outlaw.cfg:75
-#, fuzzy
 msgid "female^Outlaw"
-msgstr "Forajido"
+msgstr "Forajida"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
@@ -5943,7 +5908,6 @@ msgstr ""
 "estilo."
 
 #: data/units/Outlaw_Princess.cfg:4
-#, fuzzy
 msgid "female^Outlaw Princess"
 msgstr "Princesa forajida"
 
@@ -5956,7 +5920,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
-#, fuzzy
 msgid "female^Outlaw Queen"
 msgstr "Reina forajida"
 
@@ -5989,7 +5952,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Campesino"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -6081,9 +6044,8 @@ msgstr ""
 "valioso en casi cualquier situación."
 
 #: data/units/Red_Mage.cfg:72
-#, fuzzy
 msgid "female^Red Mage"
-msgstr "Mago Rojo"
+msgstr "Maga Roja"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6202,7 +6164,6 @@ msgid "Saurian Warrior"
 msgstr "Guerrero saurio"
 
 #: data/units/Saurian_Warrior.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Warriors are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -6218,7 +6179,6 @@ msgstr ""
 "aprovecharse de ello."
 
 #: data/units/Sea_Hag.cfg:3
-#, fuzzy
 msgid "female^Sea Hag"
 msgstr "Bruja marina"
 
@@ -6227,8 +6187,8 @@ msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
 msgstr ""
-"Las brujas marinas son las nagas más viejas y más experimentadas, que han "
-"aprendido a controlar la magia del Agua."
+"Las brujas marinas son las nagas más viejas y más experimentadas, y han "
+"aprendido a controlar la magia del agua."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -6317,9 +6277,8 @@ msgstr ""
 "también son muy resistentes a la mayoría de formas de ataques mágicos."
 
 #: data/units/Silver_Mage.cfg:142
-#, fuzzy
 msgid "female^Silver Mage"
-msgstr "Mago de Plata"
+msgstr "Maga de Plata"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -6614,7 +6573,6 @@ msgstr ""
 "objetivos junto con su energía vital, dándole así su energía al murciélago."
 
 #: data/units/Vampire_Lady.cfg:3
-#, fuzzy
 msgid "female^Vampire Lady"
 msgstr "Dama vampiro"
 
@@ -6710,9 +6668,8 @@ msgstr ""
 "los cuales sufren muchos daños a causa de sus rayos de luz."
 
 #: data/units/White_Mage.cfg:65
-#, fuzzy
 msgid "female^White Mage"
-msgstr "Mago Blanco"
+msgstr "Maga Blanca"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
