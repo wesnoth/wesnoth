@@ -5,6 +5,7 @@ CVS HEAD:
    * swamp, deep water, shallow water, snow, cave wall, cave floor, ice, lava, dirt, forest, bridge, road
    * chest, nest
    * portraits and unit animations
+   * icon resize
  * scenario balancing for 'The Dark Hordes' campaign:
    * Underground Pool
  * scenario balancing for 'The Eastern Invasion' campaign:
@@ -24,6 +25,9 @@ CVS HEAD:
  * increased Soul Shooter ranged damage
  * reduced Woses resistance to cold
  * more female units
+ * new units
+   * Dwarvish Guardsman
+   * Dwarvish Stalwart
  * language fixes and polishing (english)
  * switched to using gettext, following languages have been converted:
    * catalan
@@ -59,6 +63,7 @@ CVS HEAD:
  * fixed "drain" not working on final blow (#10038)
  * fixed bad victory conditions in 'The Rise of Wesnoth: The Dragon' scenario
  * fixed some units shadows not being semi-transparent
+ * fixed crash bug that could occur after undoing
  * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
  * fixed a little bug where a space could disappear near EOL in the help system
  * new file hierarchy for portraits
