@@ -62,6 +62,7 @@ struct node {
 	}
 
 	gamemap::location loc, parent;
+	// g: already traveled time, h: estimated time still to travel, f: estimated full time
 	double g, h, f;
 };
 
@@ -105,6 +106,8 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 			std::copy(teleports->begin(),teleports->end(),std::back_inserter(locs));
 		}
 
+		double const lowest_gcost = lowest->second.g;
+
 		for(size_t j = 0; j != locs.size(); ++j) {
 
 			//if we have found a solution
@@ -125,7 +128,7 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 				
 				std::reverse(rt.steps.begin(),rt.steps.end());
 				rt.steps.push_back(dst);
-				rt.move_left = int(lowest->second.g + obj->cost(dst,lowest->second.g));
+				rt.move_left = int(lowest_gcost + obj->cost(dst, lowest_gcost));
 
 				assert(rt.steps.front() == src);
 
@@ -136,21 +139,25 @@ paths::route a_star_search(gamemap::location const &src, gamemap::location const
 
 			list_map::iterator current_best = open_list.find(locs[j]);
 			const bool in_open = current_best != open_list.end();
-			if(!in_open) {
+			bool in_lists = in_open;
+			if (!in_lists) {
 				current_best = closed_list.find(locs[j]);
+				in_lists = current_best != closed_list.end();
+			}
+			double current_gcost = 0;
+			if (in_lists) {
+				current_gcost = current_best->second.g;
+				if (current_gcost <= lowest_gcost + 1.0)
+					continue;
 			}
 
-			if(current_best != closed_list.end() && current_best->second.g <= lowest->second.g+1.0) {
-				continue;
-			}
+			double const new_cost = obj->cost(locs[j], lowest_gcost);
 
-			const double new_cost = obj->cost(locs[j],lowest->second.g);
-
-			const node nd(locs[j],dst,lowest->second.g+new_cost,
+			node const nd(locs[j], dst, lowest_gcost + new_cost,
 			              lowest->second.loc,teleports);
 
-			if(current_best != closed_list.end()) {
-				if(current_best->second.g <= nd.g) {
+			if (in_lists) {
+				if (current_gcost <= nd.g) {
 					continue;
 				} else if(in_open) {
 					typedef std::multimap<double,location>::iterator Itor;
