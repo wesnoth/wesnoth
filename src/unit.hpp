@@ -51,6 +51,9 @@ public:
 	int experience() const;
 	int max_experience() const;
 	bool get_experience(int xp);
+	//the name of this unit is fixed by scenario, it is impossible to
+	//change it.
+	bool unrenamable() const;
 	bool advances() const;
 	int side() const;
 	unit_race::GENDER gender() const;
@@ -213,6 +216,8 @@ private:
 	enum UPKEEP_COST { UPKEEP_FREE, UPKEEP_LOYAL, UPKEEP_FULL_PRICE };
 
 	UPKEEP_COST upkeep_;
+
+	bool unrenamable_;
 
 	void reset_modifications();
 	void apply_modifications();

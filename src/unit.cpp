@@ -89,7 +89,8 @@ unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_
 			   backupMaxMovement_(type_->movement()),
 			   recruit_(false), attacks_(type_->attacks()),
 			   backupAttacks_(type_->attacks()),
-               guardian_(false), upkeep_(UPKEEP_FULL_PRICE)
+               guardian_(false), upkeep_(UPKEEP_FULL_PRICE),
+               unrenamable_(false)
 {
 	//dummy units used by the 'move_unit_fake' command don't need to have a side.
 	if(dummy_unit == false) validate_side(side_);
@@ -125,7 +126,8 @@ unit::unit(const unit_type* t, const unit& u) :
 			   attacks_(type_->attacks()), backupAttacks_(type_->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
-			   guardian_(false), upkeep_(u.upkeep_)
+			   guardian_(false), upkeep_(u.upkeep_),
+			   unrenamable_(u.unrenamable_)
 {
 	validate_side(side_);
 
@@ -211,7 +213,9 @@ const std::string& unit::unit_description() const
 
 void unit::rename(const std::string& new_description)
 {
-	description_ = new_description;
+	if (!unrenamable_) {
+		description_ = new_description;
+	}
 }
 
 int unit::side() const
@@ -227,6 +231,11 @@ unit_race::GENDER unit::gender() const
 void unit::set_side(int new_side)
 {
 	side_ = new_side;
+}
+
+bool unit::unrenamable() const
+{
+	return unrenamable_;
 }
 
 double unit::alpha() const
@@ -708,6 +717,7 @@ void unit::read(const game_data& data, const config& cfg)
 		experience_ = atoi(experience.c_str());
 
 	resting_ = (cfg["resting"] == "yes");
+	unrenamable_ = (cfg["unrenamable"] == "yes");
 }
 
 void unit::write(config& cfg) const
@@ -775,6 +785,7 @@ void unit::write(config& cfg) const
 	cfg["moves"] = buf;
 
 	cfg["resting"] = resting_ ? "yes" : "no"; 
+	cfg["unrenamable"] = unrenamable_ ? "yes" : "no";
 }
 
 void unit::assign_role(const std::string& role)

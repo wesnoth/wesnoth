@@ -952,7 +952,10 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return current_unit() != units_.end();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
-		return !commands_disabled && current_unit() != units_.end() && current_unit()->second.side() == gui_.viewing_team()+1;
+		return !commands_disabled &&
+			current_unit() != units_.end() &&
+			!(current_unit()->second.unrenamable()) &&
+			current_unit()->second.side() == gui_.viewing_team()+1;
 
 	case hotkey::HOTKEY_LABEL_TERRAIN:
 		return !commands_disabled && map_.on_board(last_hex_) && !gui_.shrouded(last_hex_.x,last_hex_.y) && !is_observer();
