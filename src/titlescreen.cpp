@@ -169,7 +169,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 					       N_("TitleScreen button^Load"),
 					       N_("TitleScreen button^Language"),
 					       N_("TitleScreen button^Preferences"),
-					       N_("TitleScreen button^About"),
+					       N_("About"),
 					       N_("TitleScreen button^Quit") };
 	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
 						    N_("Start a new single player campaign"),
