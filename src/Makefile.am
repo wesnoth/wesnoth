@@ -217,6 +217,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.cpp \
 			 widgets/file_chooser.cpp \
 			 widgets/menu.cpp \
+		     widgets/progressbar.cpp \
 			 widgets/textbox.cpp \
 			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
@@ -278,6 +279,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/file_chooser.hpp \
 			 widgets/menu.hpp \
+		     widgets/progressbar.hpp \
 			 widgets/textbox.hpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \

@@ -360,6 +360,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.cpp \
 			 widgets/file_chooser.cpp \
 			 widgets/menu.cpp \
+		     widgets/progressbar.cpp \
 			 widgets/textbox.cpp \
 			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
@@ -421,6 +422,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/file_chooser.hpp \
 			 widgets/menu.hpp \
+		     widgets/progressbar.hpp \
 			 widgets/textbox.hpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
@@ -488,8 +490,8 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) editor_layout.$(OBJEXT) \
 	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
 	unit_display.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
 	button.$(OBJEXT) file_chooser.$(OBJEXT) menu.$(OBJEXT) \
-	textbox.$(OBJEXT) scrollbar.$(OBJEXT) slider.$(OBJEXT) \
-	widget.$(OBJEXT)
+	progressbar.$(OBJEXT) textbox.$(OBJEXT) scrollbar.$(OBJEXT) \
+	slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
