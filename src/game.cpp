@@ -417,7 +417,7 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode_ = true;
-		} else if(val == "--debug" || val == "-d") {http://www.wesnoth.org/forum/profile.php?mode=viewprofile&u=195
+		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
 		} else if (val.substr(0, 6) == "--log-") {
 		} else if(val == "--nosound") {
