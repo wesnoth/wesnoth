@@ -152,7 +152,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
 			 ai_move.cpp \
-		     builder.cpp \
+		         builder.cpp \
 		 	 cavegen.cpp \
 			 config.cpp \
 			 cursor.cpp \
@@ -170,7 +170,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 key.cpp \
 			 language.cpp \
 			 log.cpp \
-		     map_label.cpp \
+		         map_label.cpp \
 			 map.cpp \
 			 mapgen.cpp \
 			 mapgen_dialog.cpp \
@@ -192,6 +192,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.cpp \
 			 tooltips.cpp \
 			 unit.cpp \
+		         unit_display.cpp \
 			 unit_types.cpp \
 			 video.cpp \
 			 widgets/button.cpp \
@@ -204,7 +205,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.hpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
-		     builder.hpp \
+		         builder.hpp \
 		 	 cavegen.hpp \
 			 config.hpp \
 			 cursor.hpp \
@@ -244,6 +245,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 theme.hpp \
 			 tooltips.hpp \
 			 unit.hpp \
+		         unit_display.hpp \
 			 unit_types.hpp \
 			 video.hpp \
 			 widgets/button.hpp \
