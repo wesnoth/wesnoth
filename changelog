@@ -6,7 +6,7 @@ CVS HEAD:
  * added experience gauge, meld with hit points gauge
  * support different resolutions for 'fullscreen' and 'windowed'
  * various UI cleanups
- * added and improved village images, healing images, hill images
+ * added and improved village images, healing images, hill images, unit images
  * resized ellipses
  * renamed Lizardman to Saurian
  * Elvish Outrider made 3rd level unit, increased hitpoins and ranged attack damage
@@ -14,13 +14,25 @@ CVS HEAD:
  * new units:
    * Elvish Rider
    * Saurian Warrior
- * new scenario for 'Son of the Black Eye' campaign:
-   * Saving Inarix
- * scenario balancing for 'Son of the Black Eye' campaign (all scenarios)
+   * Necrophage
  * scenario balancing for 'Heir to the Throne' campaign:
    * Bay of Pearls
    * Blackwater Port
    * Isle of Anduin
+   * Isle of the Damned
+   * Muff Malal's Peninsula
+ * new scenario for 'Son of the Black Eye' campaign:
+   * Saving Inarix
+ * new scenario for 'The Dark Hordes' campaign:
+   * A New Chance
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Towards Mountains of Haag
+   * To The Harbour of Tirigaz
+   * Black Flag
+   * Desert of Death
+   * End of Peace
+   * Silent Forest
+   * The Siege of Barag Gor
  * translation updates:
    * french
    * spanish
@@ -34,6 +46,7 @@ CVS HEAD:
    * shared vision option
    * made village placement fairer in random map generation
    * game setup improvements
+   * random maps have now less forest
  * editor improvements:
    * added map resizing
    * added revert from disk functionality
@@ -59,6 +72,7 @@ CVS HEAD:
  * added caching of data files to speed game loading
  * added a "fire_event" in [kill] tags that allow die events to be processed if specified
  * re-ordered attacks: short range attacks are now always before long range attack on all units
+ * support for multi-hex tiles
  * removed old castle images
  * wesnoth_zip
 
