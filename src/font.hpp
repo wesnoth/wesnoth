@@ -16,10 +16,12 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
-#include "display.hpp"
-#include "video.hpp"
+class display;
+#include "sdl_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <string>
+#include <vector>
 
 namespace font {
 

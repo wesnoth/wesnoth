@@ -14,6 +14,7 @@
 #include "../global.hpp"
 
 #include "label.hpp"
+#include "../display.hpp"
 #include "../font.hpp"
 
 namespace gui {

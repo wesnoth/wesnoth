@@ -5,6 +5,7 @@
 #include "../display.hpp"
 #include "../font.hpp"
 #include "../util.hpp"
+#include "../video.hpp"
 
 namespace gui {
 

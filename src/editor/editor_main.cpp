@@ -24,6 +24,7 @@
 #include "../preferences.hpp"
 #include "../team.hpp"
 #include "../util.hpp"
+#include "../video.hpp"
 #include "../wesconfig.h"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
