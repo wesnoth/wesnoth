@@ -25,6 +25,7 @@ namespace mp {
 create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	ui(disp, cfg, c, gamelist),
 
+	tooltip_manager_(disp),
 	map_selection_(-1),
 
 	maps_menu_(disp, std::vector<std::string>()),
@@ -167,6 +168,10 @@ create::parameters& create::get_parameters()
 
 void create::process_event()
 {
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	tooltips::process(mousex, mousey);
+
 	if(cancel_game_.pressed()) {
 		set_result(QUIT);
 		return;
@@ -241,7 +246,7 @@ void create::process_event()
 					generator_.assign(create_map_generator(parameters_.scenario_data["map_generation"],parameters_.scenario_data.child("generator")));
 				}
 
-				if(parameters_.scenario_data["description"].empty() == false) {
+				if(!parameters_.scenario_data["description"].empty()) {
 					tooltips::add_tooltip(minimap_rect_,parameters_.scenario_data["description"]);
 				}
 			}
@@ -446,8 +451,11 @@ void create::layout_children(const SDL_Rect& rect)
 #endif
 
 	// Buttons
-	right_button->set_location(ca.w - right_button->width(), ca.y + ca.h - right_button->height());
-	left_button->set_location(right_button->location().x - right_button->width(), ca.y + ca.h - right_button->height());
+	right_button->set_location(ca.x + ca.w - right_button->width() - gui::ButtonHPadding, 
+			ca.y + ca.h - right_button->height() - gui::ButtonVPadding);
+	left_button->set_location(right_button->location().x - left_button->width() -
+			gui::ButtonHPadding,
+			ca.y + ca.h - left_button->height() - gui::ButtonVPadding);
 }
 
 }

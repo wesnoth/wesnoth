@@ -18,6 +18,7 @@
 #include "widgets/label.hpp"
 #include "widgets/combo.hpp"
 #include "mapgen.hpp"
+#include "tooltips.hpp"
 
 namespace mp {
 
@@ -73,6 +74,7 @@ protected:
 private:
 	void update_minimap(void);
 
+	tooltips::manager tooltip_manager_;
 	int map_selection_;
 
 	std::vector<std::string> user_maps_;
