@@ -1837,7 +1837,7 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 		return;
 	}
 
-	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,surf->h*(1.0-submerged)));
+	const int submerge_height = minimum<int>(surf->h,maximum<int>(0,int(surf->h*(1.0-submerged))));
 
 	SDL_Rect clip_rect = map_area();
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};

@@ -18,7 +18,7 @@ class gamelist_manager : public gui::dialog_action
 public:
 	int do_action() {
 		const network::connection res = network::receive_data(cfg);
-		if(res != NULL && get_gamelist() != NULL) {
+		if(res != 0 && get_gamelist() != NULL) {
 			return UPDATED_GAMELIST;
 		} else {
 			return CONTINUE_DIALOG;

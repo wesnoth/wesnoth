@@ -574,7 +574,7 @@ void floating_label::move(double xmove, double ymove)
 
 int floating_label::xpos(size_t width) const
 {
-	int xpos = xpos_;
+	int xpos = int(xpos_);
 	if(align_ == font::CENTER_ALIGN) {
 		xpos -= width/2;
 	} else if(align_ == font::RIGHT_ALIGN) {
@@ -679,7 +679,7 @@ void floating_label::draw(SDL_Surface* screen)
 		return;
 	}
 
-	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
+	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	std::cerr << "blit a\n";
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
@@ -687,7 +687,7 @@ void floating_label::draw(SDL_Surface* screen)
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
 
 	if(foreground_ != NULL) {
-		SDL_Rect rect = {xpos(surf_->w)+border_,ypos_+border_,foreground_->w,foreground_->h};
+		SDL_Rect rect = {xpos(surf_->w)+border_,int(ypos_)+border_,foreground_->w,foreground_->h};
 		SDL_BlitSurface(foreground_,NULL,screen,&rect);
 	}
 
@@ -704,7 +704,7 @@ void floating_label::undraw(SDL_Surface* screen)
 
 	std::cerr << "undraw....\n";
 
-	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
+	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 

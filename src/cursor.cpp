@@ -157,7 +157,7 @@ void draw(SDL_Surface* screen)
 		return;
 	}
 
-	if(have_focus == NULL) {
+	if(have_focus == false) {
 		SDL_FreeSurface(cursor_buf);
 		cursor_buf = NULL;
 		return;
