@@ -73,9 +73,8 @@ public:
 		enum CONTROLLER { HUMAN, AI, NETWORK, EMPTY };
 		CONTROLLER controller;
 		std::string ai_algorithm;
-		config ai_params;
 
-		std::map<std::string,config> ai_params_tod;
+		std::vector<config> ai_params;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -100,7 +99,7 @@ public:
 	int gold() const;
 	int income() const;
 	void new_turn();
-	void set_time_of_day(const struct time_of_day& tod);
+	void set_time_of_day(int turn, const struct time_of_day& tod);
 	void get_shared_maps();
 	void spend_gold(int amount);
 	void set_income(int amount);
@@ -176,6 +175,9 @@ private:
 	team_info info_;
 
 	config aiparams_;
+
+	//cached values for ai parameters
+	double aggression_, caution_;
 };
 
 struct teams_manager {

@@ -136,8 +136,9 @@ void advance_unit(const game_data& info,
 //by leadership. (i.e. has a higher-level 'leadership' unit next to it).
 //if it does, then the location of the leader unit will be returned, otherwise
 //gamemap::location::null_location will be returned
+//if 'bonus' is not NULL, the % bonus will be stored in it
 gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
-                                   const gamemap::location& loc);
+                                   const gamemap::location& loc, int* bonus=NULL);
 
 //checks to see if a side has won, and will throw an end_level_exception
 //if one has. Will also remove control of villages from sides  with dead leaders

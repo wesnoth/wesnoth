@@ -138,7 +138,7 @@ std::string recruit_unit(const gamemap& map, int side,
 }
 
 gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
-                                   const gamemap::location& loc)
+                                   const gamemap::location& loc, int* bonus)
 {
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -150,16 +150,24 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	const int side = un->second.side();
 	const int level = un->second.type().level();
 
+	int best_leader = -1;
+	gamemap::location best_loc;
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && it->second.side() == side &&
 			it->second.type().is_leader() && it->second.type().level() > level &&
+			it->second.type().level() > best_leader &&
 			it->second.incapacitated() == false) {
-			return adjacent[i];
+			best_leader = it->second.type().level();
+			best_loc = adjacent[i];
 		}
 	}
 
-	return gamemap::location::null_location;
+	if(bonus != NULL && best_leader != -1) {
+		*bonus = (best_leader - level)*game_config::leadership_bonus;
+	}
+
+	return best_loc;
 }
 
 battle_stats evaluate_battle_stats(
@@ -330,12 +338,13 @@ battle_stats evaluate_battle_stats(
 			}
 		}
 
-		if(under_leadership(units,defender).valid()) {
-			percent += 25;
+		int leader_bonus = 0;
+		if(under_leadership(units,defender,&leader_bonus).valid()) {
+			percent += leader_bonus;
 
 			if(include_strings) {
 				std::stringstream str;
-				str << translate_string("leadership") << ", ,^+25%";
+				str << translate_string("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
 				res.defend_calculations.push_back(str.str());
 			}
 		}
@@ -455,12 +464,13 @@ battle_stats evaluate_battle_stats(
 		}
 	}
 
-	if(under_leadership(units,attacker).valid()) {
-		percent += 25;
+	int leader_bonus = 0;
+	if(under_leadership(units,attacker,&leader_bonus).valid()) {
+		percent += leader_bonus;
 		
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("leadership") << ", ,^+25%";
+			str << translate_string("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}

@@ -29,6 +29,7 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
+	extern int leadership_bonus;
 	extern const std::string version;
 
 	extern bool debug, editor;

@@ -470,6 +470,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	const bool dumb_ai = current_team().ai_parameters()["simple_targetting"] == "yes";
 
 	if(dumb_ai == false) {
+		std::cerr << "complex targetting...\n";
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if(u->second.side() != team_num_ || u->second.can_recruit() ||
@@ -512,6 +513,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				best_route = cur_route;
 			}
 		}
+
+		std::cerr << "done complex targetting...\n";
 	} else {
 		u = units_.end();
 	}
@@ -525,6 +528,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	//if our target is a position to support, then we
 	//see if we can move to a position in support of this target
 	if(best_target->type == target::SUPPORT) {
+		std::cerr << "support...\n";
+
 		std::vector<location> locs;
 		access_points(srcdst,best->first,best_target->loc,locs);
 
@@ -548,6 +553,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				}
 			}
 
+			std::cerr << "returning support...\n";
 			return std::pair<location,location>(best->first,best_loc);
 		}
 	}
@@ -560,6 +566,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	bool dangerous = false;
 
 	if(current_team().ai_parameters()["grouping"] != "no") {
+		std::cerr << "grouping...\n";
 		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
 		int movement = best->second.movement_left();
 
@@ -581,6 +588,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				movement -= best->second.movement_cost(map_,map_.get_terrain(*i));
 			}
 		}
+
+		std::cerr << "done grouping...\n";
 	}
 
 	if(dangerous) {
@@ -649,9 +658,6 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			return std::pair<location,location>(loc,best_loc);
 		}
 	}
-
-	AI_LOG("Best route is " + best->second.type().name() + " " + str_cast(best_route.steps.front().x+1) + "," + str_cast(best_route.steps.front().y+1) + " -> "
-		                    + str_cast(best_route.steps.back().x+1) + "," + str_cast(best_route.steps.back().y+1));
 
 	for(std::vector<location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {

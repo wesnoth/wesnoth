@@ -48,29 +48,14 @@ void team::target::write(config& cfg) const
 
 team::team_info::team_info(const config& cfg)
 {
-	//parse the ai parameters. AI parameters appear in [ai] tags. There may be multiple [ai] tags, which are
-	//appended onto each other. If an [ai] tag has a 'time_of_day' attribute, it is only active for that time
-	//of the day, and so we place it as part of a special map that gets calculated in team::new_turn
+	config global_ai_params;
 	const config::child_list& ai_parameters = cfg.get_children("ai");
 	for(config::child_list::const_iterator aiparam = ai_parameters.begin(); aiparam != ai_parameters.end(); ++aiparam) {
+		ai_params.push_back(**aiparam);
 
-		const config& parm = **aiparam;
-		std::cerr << "parsing aiparam: '" << parm.write() << "'\n";
-		const std::string& tod = parm["time_of_day"];
-		if(tod == "") {
-			std::cerr << "appending to params\n";
-			ai_params.append(parm);
-		} else {
-			const std::vector<std::string>& tods = config::split(tod);
-			for(std::vector<std::string>::const_iterator i = tods.begin(); i != tods.end(); ++i) {
-				std::cerr << "appending to '" << *i << "'\n";
-				ai_params_tod[*i].append(parm);
-			}
+		if((**aiparam)["turn"].empty() && (**aiparam)["time_of_day"].empty()) {
+			global_ai_params.append(**aiparam);
 		}
-	}
-
-	for(string_map::const_iterator s = cfg.values.begin(); s != cfg.values.end(); ++s) {
-		ai_params[s->first] = s->second;
 	}
 
 	gold = cfg["gold"];
@@ -109,13 +94,13 @@ team::team_info::team_info(const config& cfg)
 	ai_algorithm = cfg["ai_algorithm"];
 
 	if(ai_algorithm.empty()) {
-		ai_algorithm = ai_params["ai_algorithm"];
+		ai_algorithm = global_ai_params["ai_algorithm"];
 	}
 
 	std::string scouts_val = cfg["villages_per_scout"];
 
 	if(scouts_val.empty()) {
-		scouts_val = ai_params["villages_per_scout"];
+		scouts_val = global_ai_params["villages_per_scout"];
 	}
 
 	if(scouts_val.empty()) {
@@ -127,7 +112,7 @@ team::team_info::team_info(const config& cfg)
 	std::string leader_val = cfg["leader_value"];
 
 	if(leader_val.empty()) {
-		leader_val = ai_params["leader_value"];
+		leader_val = global_ai_params["leader_value"];
 	}
 
 	if(leader_val.empty()) {
@@ -139,7 +124,7 @@ team::team_info::team_info(const config& cfg)
 	std::string village_val = cfg["village_value"];
 
 	if(village_val.empty()) {
-		village_val = ai_params["village_value"];
+		village_val = global_ai_params["village_value"];
 	}
 
 	if(village_val.empty()) {
@@ -155,7 +140,7 @@ team::team_info::team_info(const config& cfg)
 
 	std::string recruit_pattern = cfg["recruitment_pattern"];
 	if(recruit_pattern.empty()) {
-		recruit_pattern = ai_params["recruitment_pattern"];
+		recruit_pattern = global_ai_params["recruitment_pattern"];
 	}
 
 	recruitment_pattern = config::split(recruit_pattern);
@@ -173,7 +158,7 @@ team::team_info::team_info(const config& cfg)
 		targets.push_back(target(**tgts.first));
 	}
 
-	for(tgts = ai_params.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
+	for(tgts = global_ai_params.child_range("target"); tgts.first != tgts.second; ++tgts.first) {
 		targets.push_back(target(**tgts.first));
 	}
 
@@ -189,9 +174,8 @@ team::team_info::team_info(const config& cfg)
 
 void team::team_info::write(config& cfg) const
 {
-	cfg.add_child("ai",ai_params);
-	for(std::map<std::string,config>::const_iterator ai = ai_params_tod.begin(); ai != ai_params_tod.end(); ++ai) {
-		cfg.add_child("ai",ai->second)["time_of_day"] = ai->first;
+	for(std::vector<config>::const_iterator ai = ai_params.begin(); ai != ai_params.end(); ++ai) {
+		cfg.add_child("ai",*ai);
 	}
 
 	cfg["gold"] = gold;
@@ -261,7 +245,7 @@ void team::team_info::write(config& cfg) const
 		cfg["music"] = music;
 }
 
-team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true), info_(cfg)
+team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true), info_(cfg), aggression_(0.0), caution_(0.0)
 {
 	fog_.set_enabled(cfg["fog"] == "yes");
 	shroud_.set_enabled(cfg["shroud"] == "yes");
@@ -342,12 +326,43 @@ void team::new_turn()
 	gold_ += income();
 }
 
-void team::set_time_of_day(const time_of_day& tod)
+void team::set_time_of_day(int turn, const time_of_day& tod)
 {
-	aiparams_ = info_.ai_params;
-	aiparams_.append(info_.ai_params_tod[tod.id]);
+	aiparams_.clear();
+	for(std::vector<config>::const_iterator i = info_.ai_params.begin(); i != info_.ai_params.end(); ++i) {
+		const std::string& time_of_day = (*i)["time_of_day"];
+		if(time_of_day.empty() == false) {
+			const std::vector<std::string>& times = config::split(time_of_day);
+			if(std::count(times.begin(),times.end(),tod.id) == 0) {
+				continue;
+			}
+		}
 
-	std::cerr << "for time of day '" << tod.id << "' set ai_params to: ---\n" << aiparams_.write() << "\n---\n";
+		const std::string& turns = (*i)["turns"];
+		if(turns.empty() == false) {
+			bool matched = false;
+
+			const std::vector<std::string>& turns_list = config::split(turns);
+			for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end(); ++j) {
+				const std::pair<int,int> range = config::parse_range(*j);
+				if(turn >= range.first && turn <= range.second) {
+					matched = true;
+					break;
+				}
+			}
+
+			if(!matched) {
+				continue;
+			}
+		}
+
+		aiparams_.append(*i);
+	}
+
+	aggression_ = lexical_cast_default<double>(aiparams_["aggression"],0.5);
+	caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
+
+	std::cerr << "for turn " << turn << ", time of day '" << tod.id << "' set ai_params to: ---\n" << aiparams_.write() << "\n---\n";
 }
 
 void team::spend_gold(int amount)
@@ -406,12 +421,12 @@ bool team::is_enemy(int n) const
 
 double team::aggression() const
 {
-	return lexical_cast_default<double>(ai_parameters()["aggression"],0.5);
+	return aggression_;
 }
 
 double team::caution() const
 {
-	return lexical_cast_default<double>(ai_parameters()["caution"],0.25);
+	return caution_;
 }
 
 bool team::is_human() const

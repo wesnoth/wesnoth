@@ -25,6 +25,7 @@ namespace game_config
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
 	int kill_experience = 8;
+	int leadership_bonus = 25;
 	const std::string version = "0.7.9-CVS";
 	bool debug = false, editor = false;
 

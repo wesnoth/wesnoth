@@ -58,7 +58,7 @@ void ai::do_attack_analysis(
 	}
 
 	const double cur_rating = cur_analysis.movements.empty() ? -1.0 :
-	                          cur_analysis.rating(0.0,*this);
+	                          cur_analysis.rating(current_team().aggression(),*this);
 
 	double rating_to_beat = cur_rating;
 
@@ -171,7 +171,7 @@ void ai::do_attack_analysis(
 
 			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this,dstsrc,srcdst,enemy_dstsrc,enemy_srcdst);
 
-			if(cur_analysis.rating(0.0,*this) > rating_to_beat) {
+			if(cur_analysis.rating(current_team().aggression(),*this) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
 				used_locations[cur_position] = true;
@@ -534,7 +534,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 			ai_obj.log_message("attack option has value " + str_cast(value) + " with exposure " + str_cast(exposure) + ": " + str_cast(vulnerability) + "/" + str_cast(support));
 		}
 
-		value -= exposure;
+		value -= exposure*(1.0-aggression);
 	}
 
 	//if this attack uses our leader, and the leader can reach the keep, and has gold to spend, reduce
