@@ -1,4 +1,5 @@
 # translation of ca.po to 
+# translation of ca.po to
 # translation of wesnoth.po to Català
 # translation of ca.po to Català
 # Catalan translations for Battle for Wesnoth package.
@@ -12,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-05 00:48+0100\n"
-"PO-Revision-Date: 2004-11-26 18:43+0100\n"
+"PO-Revision-Date: 2004-12-08 16:09+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team:  <ca@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -54,15 +55,15 @@ msgstr "Trets"
 
 #: data/help.cfg:28 src/playturn.cpp:1629
 msgid "Units"
-msgstr ""
+msgstr "Unitats"
 
 #: data/help.cfg:34 src/help.cpp:1042
 msgid "Abilities"
-msgstr ""
+msgstr "Habilitats"
 
 #: data/help.cfg:41
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Armes especials"
 
 #: data/help.cfg:47
 msgid "Terrains"
@@ -1490,7 +1491,7 @@ msgid ""
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
 "Les unitats tenen l'habilitat de blocar els cops. Les possibilitats de que "
-"això pasi es basen en l'habilitat d'aturar cops del defensor. Apareixen a la "
+"això passi es basen en l'habilitat d'aturar cops del defensor. Apareixen a la "
 "llista d'opcions d'atac després del mal i el nombre de cops."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
@@ -1612,7 +1613,7 @@ msgid ""
 msgstr ""
 "Oups! Heu mogut el vostre líder fora de la torre. Recordeu, quan el vostre "
 "líder no està en una torre, no podeu reclutar. També heu de recordar que si "
-"el vostre líder mor, perdereu. Per tal de continuar la tutoria, sereu "
+"el vostre líder mor, perderéu. Per tal de continuar la tutoria, sereu "
 "teletransportat a la torre."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:232
@@ -1677,7 +1678,7 @@ msgstr ""
 "Quan guanyeu un escenari, totes les vostres unitats sobreviuen, són curades, "
 "i no heu de pagar el seu manteniment durant els torns restants. A més, si el "
 "vostre exèrcit continua en la mateixa zona després de vèncer, totes les "
-"viles que hi hagi seran vostres inmediatament després de la victòria. "
+"viles que hi hagi seran vostres immediatament després de la victòria. "
 "Tingueu en compte, però, que entre els escenaris es perd un 20% de l'or "
 "recaptat."
 
@@ -1715,8 +1716,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1803,7 +1803,7 @@ msgid ""
 "and are thus likely to advance. You should recall units that will be useful "
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
-"Normalment haurieu de reincorporar unitats que ja han avançat de nivell. "
+"Normalment hauríeu de reincorporar unitats que ja han avançat de nivell. "
 "També podeu reincorporar unitats que tinguin una bona experiència o que "
 "estiguin a punt de pujar de nivell."
 
@@ -1981,8 +1981,7 @@ msgid "What are the different damage types?"
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
@@ -2119,7 +2118,7 @@ msgid ""
 "{OBJECTIVE}"
 msgstr ""
 "@Habilitats covertes:\n"
-"Relutar unitats\n"
+"Reclutar unitats\n"
 "Moure unitats\n"
 "Atacar unitats enemigues\n"
 "Guanyar experiència\n"
@@ -2133,11 +2132,11 @@ msgstr "Sota terra"
 
 #: data/terrain.cfg:7 src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:133
 msgid "Shroud"
-msgstr ""
+msgstr "Ocult"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Boira"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
@@ -2152,12 +2151,11 @@ msgstr "Aigua baixa"
 #: data/terrain.cfg:183 data/terrain.cfg:194 data/terrain.cfg:213
 #: data/terrain.cfg:278 src/reports.cpp:310
 msgid "Village"
-msgstr "Vila"
+msgstr "Llogaret"
 
 #: data/terrain.cfg:51
-#, fuzzy
 msgid "Swamp"
-msgstr "Aigua baixa"
+msgstr "Pantà"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2185,7 +2183,7 @@ msgstr "Herba"
 
 #: data/terrain.cfg:205
 msgid "Snow"
-msgstr ""
+msgstr "Neu"
 
 #: data/terrain.cfg:224 data/terrain.cfg:231
 msgid "Hills"
@@ -2200,7 +2198,6 @@ msgid "Forest"
 msgstr "Bosc"
 
 #: data/terrain.cfg:263
-#, fuzzy
 msgid "Cave wall"
 msgstr "Paret de la cova"
 
@@ -2217,9 +2214,8 @@ msgid "Encampment"
 msgstr "Campament"
 
 #: data/terrain.cfg:307
-#, fuzzy
 msgid "Dwarven castle"
-msgstr "Terra de Nans"
+msgstr "Castell nan"
 
 #: data/terrain.cfg:317
 msgid "Keep"
@@ -2227,7 +2223,7 @@ msgstr "Torre"
 
 #: data/terrain.cfg:337
 msgid "Canyon"
-msgstr ""
+msgstr "Gorja"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 #: data/themes/default.cfg:697
@@ -2265,7 +2261,7 @@ msgstr "Or"
 #: data/themes/default.cfg:150 data/themes/default.cfg:486
 #: data/themes/default.cfg:833
 msgid "villages"
-msgstr "viles"
+msgstr "llogarets"
 
 #: data/themes/default.cfg:158 data/themes/default.cfg:494
 #: data/themes/default.cfg:841
@@ -2357,8 +2353,7 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
 #: data/tips.cfg:10
@@ -2407,8 +2402,7 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
 #: data/tips.cfg:18
@@ -2635,9 +2629,8 @@ msgstr ""
 "de nit, y com ho faria al alba durant la vesprada."
 
 #: data/translations/english.cfg:49
-#, fuzzy
 msgid "illuminates"
-msgstr "viles"
+msgstr "il·lumina"
 
 #: data/translations/english.cfg:54
 msgid ""
@@ -2668,11 +2661,12 @@ msgid "leadership"
 msgstr "lideratge"
 
 #: data/translations/english.cfg:59
-#, fuzzy
 msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
-msgstr "Només requereix 1 moneda d'or de manteniment."
+msgstr ""
+"Lleial:\n"
+"Només requereix 1 moneda d'or de manteniment."
 
 #: data/translations/english.cfg:64
 msgid ""
@@ -2691,13 +2685,15 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Regenera:\n"
+"La unitat es cura a ella mateixa 8 punts de vida per torn. Si està enverinada, eliminarà el verí en comptes de curar-se."
 
 #: data/translations/english.cfg:71 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
 #: data/units/Troll_Hero.cfg:7 data/units/Troll_Rocklobber.cfg:7
 #: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
 msgid "regenerates"
-msgstr ""
+msgstr "regenera"
 
 #: data/translations/english.cfg:74
 msgid ""
@@ -2719,17 +2715,18 @@ msgid "skirmisher"
 msgstr "hostilitza"
 
 #: data/translations/english.cfg:79
-#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit takes half normal damage when it did not initiate the attack."
-msgstr "Aquesta unitat rep la meitat de mal quan no ha iniciat l'atac."
+msgstr ""
+"Fermesa:\n"
+"Aquesta unitat rep la meitat de mal quan no ha iniciat l'atac."
 
 #: data/translations/english.cfg:81 data/units/Dwarvish_Guardsman.cfg:15
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
 #: data/units/Merman_Hoplite.cfg:26 src/actions.cpp:505
 msgid "steadfast"
-msgstr ""
+msgstr "fermesa"
 
 #: data/translations/english.cfg:84
 msgid ""
@@ -2743,7 +2740,7 @@ msgstr ""
 #: data/translations/english.cfg:86 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:160
 msgid "teleport"
-msgstr ""
+msgstr "teletransport"
 
 #: data/translations/english.cfg:91
 msgid ""
@@ -2761,7 +2758,7 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
-"Rauxa:\n"
+"Berserk:\n"
 "Ja sigui utilitzada ofensiva o defensivament, aquesta atac allarga la lluita "
 "fins la mort d'un dels dos combatents."
 
@@ -2835,7 +2832,7 @@ msgid ""
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
-"Alentitza:\n"
+"Alenteix:\n"
 "Aquesta unitat alenteix l'objectiu. Les unitats alentides es mouen a la "
 "meitat de la seva velocitat habitual i poden realitzar menys atacs en combat "
 "durant un torn."
@@ -2916,8 +2913,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
 #: data/translations/english.cfg:142
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
@@ -3084,7 +3080,7 @@ msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 msgstr ""
-"Un líder entre els mags, l'Arximag llança grans boles de foc als seus "
+"Un líder entre els mags, l'arximag llança grans boles de foc als seus "
 "enemics."
 
 #: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
@@ -3128,9 +3124,8 @@ msgid "fire"
 msgstr "foc"
 
 #: data/units/Arch_Mage.cfg:82
-#, fuzzy
 msgid "female^Arch Mage"
-msgstr "Arximag"
+msgstr "Arximaga"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3273,7 +3268,6 @@ msgid "mace"
 msgstr "maça"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
-#, fuzzy
 msgid "female^Princess"
 msgstr "Princesa"
 
@@ -3282,7 +3276,6 @@ msgid "leadership,skirmisher"
 msgstr "lideratge,hostilitza"
 
 #: data/units/Battle_Princess.cfg:20
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3293,7 +3286,7 @@ msgstr ""
 "Generals, i ha conegut l'estratègia amb els més grans savis. Ens trobem, "
 "doncs, davant una gran combatent i millor líder, capaç de millorar les "
 "habilitats de lluita dels seus soldats de rang inferior. La princesa és, "
-"tammateix, àgil i destra, posseint habilitats pròpies fins i tot d'un lladre."
+"tanmateix, àgil i destra, posseint habilitats pròpies fins i tot d'un lladre."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -3394,9 +3387,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "punyalada"
+msgstr "ganivetada"
 
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
@@ -3535,7 +3527,7 @@ msgstr ""
 "Les Aranyes gegants són normalment ubicades per la tradició als llocs més "
 "profunds de Knalga, on causen tot tipus de mals... Poden mossegar els "
 "enemics, injectant-los verí, i llançar tel·les aràcnides per tal de "
-"ralentitzar-los."
+"alentir-los."
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
@@ -3559,8 +3551,8 @@ msgid ""
 "civilization, the skeletal Chocobones can move faster than most cavalry "
 "units."
 msgstr ""
-"Montats sobre l'esquelet d'una gran au, usada en els seus temps per una "
-"antiga i oblidada civilització, els Chocobons es poden moure més ràpid que "
+"Muntats sobre l'esquelet d'una gran au, usada en els seus temps per una "
+"antiga i oblidada civilització, els Chocobos es poden moure més ràpid que "
 "moltes d'altres unitats de cavalleria."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
@@ -3990,7 +3982,6 @@ msgid "Duelist"
 msgstr "Duelista"
 
 #: data/units/Duelist.cfg:17
-#, fuzzy
 msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
@@ -3998,11 +3989,11 @@ msgid ""
 msgstr ""
 "El Duelista és un mestre de l'espasa. Les seves habilitats amb el estoc el "
 "permeten atacar i protegir-se amb una sola mà, a la vegada que és capaç de "
-"portar una pistola amb l'altra, per tal de disparar a distància."
+"portar una ballesta amb l'altra, per tal de disparar a distància."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
-msgstr ""
+msgstr "estoc"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -4028,7 +4019,7 @@ msgstr "rauxa berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
-msgstr ""
+msgstr "berserk"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
@@ -4166,7 +4157,7 @@ msgid ""
 msgstr ""
 "Els Mosqueters nans donen cobertura al exèrcit nan amb suport de llarga "
 "distància, un suport molt necessitat pels potents però lents guerrers. El "
-"seus mosquets són més lents, sorollossos i ruidossos que els elegants i "
+"seus mosquets són més lents i sorollossos que els elegants i "
 "ràpids arcs èlfics, però la seva potència de foc i d'atac és insuperable."
 
 #: data/units/Dwarvish_Thunderer.cfg:40
@@ -4641,8 +4632,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 
 #: data/units/Footpad.cfg:3
@@ -4722,12 +4712,10 @@ msgstr ""
 "envers els seus enemics."
 
 #: data/units/Ghoul.cfg:3
-#, fuzzy
 msgid "Ghoul"
 msgstr "Ghoul"
 
 #: data/units/Ghoul.cfg:16
-#, fuzzy
 msgid ""
 "Sometimes starved and ravenous humans who are forced to eat human corpses "
 "awake after their deaths to find that they are trapped in a tortured "
@@ -4735,7 +4723,7 @@ msgid ""
 msgstr ""
 "Alguns homes afamegats, obligats a menjar carn humana, sovint desperten "
 "després de les seves morts atrapats en una existència terrible: són els "
-"Ghouls..."
+"Ghouls."
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
@@ -4994,13 +4982,13 @@ msgid ""
 "against Asheviere's tyranny often use Horsemen against her."
 msgstr ""
 "Els genets són tropes ràpides i poderoses en l'atac. Entrenats des de "
-"l'infantesa per a muntar, poden fer una càrrega sobre els seus enemics per "
+"la seva infantesa per a muntar, poden fer una càrrega sobre els seus enemics per "
 "tal d'infringir el doble de mal; no obstant, també rebran en aquest cas el "
 "doble de ferides en ser atacats."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
-msgstr ""
+msgstr "Iniciat"
 
 #: data/units/Initiate.cfg:16
 msgid ""
@@ -5067,7 +5055,6 @@ msgstr ""
 "llançar poderosos conjurs de fred."
 
 #: data/units/Lieutenant.cfg:3
-#, fuzzy
 msgid "Lieutenant"
 msgstr "Tinent"
 
@@ -5093,7 +5080,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Lord.cfg:3 data/units/Lord.cfg:66
-#, fuzzy
 msgid "Lord"
 msgstr "Senyor"
 
@@ -5112,10 +5098,9 @@ msgstr ""
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
-msgstr ""
+msgstr "Mag"
 
 #: data/units/Mage.cfg:17 data/units/Mage.cfg:84
-#, fuzzy
 msgid ""
 "Mages are both weak and powerful. Moving slowly, and with poor defensive "
 "skills, Mages attack with magical missiles that always have a high chance of "
@@ -5124,31 +5109,27 @@ msgid ""
 msgstr ""
 "El Mag és feble, però potent. Es mou amb lentitud i es defensivament "
 "vulnerable, però els seus atacs màgics sempre tenen una alta probabilitat "
-"d'encert.\n"
-"\n"
-"Per aquesta raó, el Mag és una elecció excel·lent per afrontar enemics "
+"d'encert. Per aquesta raó, el Mag és una elecció excel·lent per afrontar enemics "
 "defensant terrenys favorables."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
-msgstr ""
+msgstr "míssil"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "Maga"
 
 #: data/units/Mage_of_Light.cfg:3
-#, fuzzy
 msgid "Mage of Light"
 msgstr "Mag de la Llum"
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr ""
+msgstr "il·lumina,cura"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
-#, fuzzy
 msgid ""
 "Mages of Light are awesome allies of all lawful combatants, and fearsome "
 "foes to the forces of chaos. These Mages' powers of illumination are so "
@@ -5159,11 +5140,9 @@ msgid ""
 "units."
 msgstr ""
 "El Mag de la Llum és un perfecte aliat en la lluita pels  qui combaten en "
-"nom del Bé, i un terrible oponent per les forces del Mal. És capaç de curar "
+"nom del Bé, i un terrible adversari per les forces del Mal. És capaç de curar "
 "els seus aliats, i els poders de la llum són tan grans en ell que als "
-"voltants de la seva figura mai serà de nit.\n"
-"\n"
-"Quan una unitat lluita al seu costat, lluitarà com si fos de dia a l'alba i "
+"voltants de la seva figura mai serà de nit. Quan una unitat lluita al seu costat, lluitarà com si fos de dia a l'alba i "
 "al vespre, i com si encara no s'hagués fet fos durant la nit."
 
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
@@ -5180,9 +5159,8 @@ msgid "holy"
 msgstr ""
 
 #: data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "female^Mage of Light"
-msgstr "Mag de la Llum"
+msgstr "Maga de la Llum"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5197,7 +5175,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Endevinadora sirènida"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5208,7 +5186,7 @@ msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Encantadora sirènida"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5230,7 +5208,7 @@ msgstr ""
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Iniciada sirènida"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5241,7 +5219,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Sacerdotessa sirènida"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -5251,9 +5229,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "foc"
+msgstr "Sirena"
 
 #: data/units/Mermaid_Siren.cfg:23
 #, fuzzy
@@ -5261,7 +5238,6 @@ msgid "naiad touch"
 msgstr "toc"
 
 #: data/units/Merman.cfg:3
-#, fuzzy
 msgid "Merman"
 msgstr "Sirènid"
 
@@ -5270,21 +5246,19 @@ msgstr "Sirènid"
 #: data/units/Merman_Triton.cfg:34 data/units/Merman_Warrior.cfg:22
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:22
 msgid "trident"
-msgstr ""
+msgstr "trident"
 
 #: data/units/Merman_Entangler.cfg:3
 msgid "Merman Entangler"
-msgstr ""
+msgstr "Enredador sirènid"
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Guerrer"
+msgstr "Lluitador sirènid"
 
 #: data/units/Merman_Hoplite.cfg:3
-#, fuzzy
 msgid "Merman Hoplite"
-msgstr "Sirènid"
+msgstr "Hoplita sirènid"
 
 #: data/units/Merman_Hoplite.cfg:32
 msgid ""
@@ -5295,27 +5269,24 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Sirènid"
+msgstr "Caçador sirènid"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Llançador de javelina sirènid"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "Llançador de xarxes sirènid"
 
 #: data/units/Merman_Spearman.cfg:3
-#, fuzzy
 msgid "Merman Spearman"
-msgstr "Llancer"
+msgstr "Llancer sirènid"
 
 #: data/units/Merman_Triton.cfg:3
-#, fuzzy
 msgid "Merman Triton"
-msgstr "Sirènid"
+msgstr "Tritó sirènid"
 
 #: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
 msgid ""
@@ -5325,9 +5296,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Troll Guerrer"
+msgstr "Guerrer sirènid"
 
 #: data/units/Merman_Warrior.cfg:19
 msgid ""
@@ -5336,9 +5306,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Captain.cfg:3
-#, fuzzy
 msgid "Mounted Captain"
-msgstr "Muntanyes"
+msgstr "Capità muntat"
 
 #: data/units/Mounted_Captain.cfg:17
 msgid ""
@@ -5349,9 +5318,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Commander.cfg:3
-#, fuzzy
 msgid "Mounted Commander"
-msgstr "Comandant"
+msgstr "Comandant muntat"
 
 #: data/units/Mounted_Commander.cfg:17
 msgid ""
@@ -5363,7 +5331,7 @@ msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Rossegador de fang"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
@@ -5372,9 +5340,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Guerrer"
+msgstr "Lluitador naga"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5386,13 +5353,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Guerrer"
+msgstr "Lluitadora naga"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Mirmidó naga"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5405,7 +5371,7 @@ msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Mirmidona naga"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -5417,9 +5383,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Troll Guerrer"
+msgstr "Guerrer naga"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5432,30 +5397,26 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Troll Guerrer"
+msgstr "Guerrera naga"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
-#, fuzzy
 msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
-"Les Nagues, com els Sirènids, habiten els mars. Encara que són més petitas i "
+"Els Nagues, com els Sirènids, habiten els mars. Encara que són més petits i "
 "hàbils, comparteixen amb aquests la seva aversió per la terra ferma."
 
 #: data/units/Necromancer.cfg:3
-#, fuzzy
 msgid "Necromancer"
 msgstr "Nigromant"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancer are Mages that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
@@ -5463,12 +5424,12 @@ msgid ""
 msgstr ""
 "Un Nigromant és un mag que ha decidit prosseguir pels camins de les Arts "
 "Obscures. Dominant els poders dels no morts, el Nigromant és capaç de "
-"llançar conjurs què absorveixen la vida dels seus enemics per otorgar-li a "
+"llançar conjurs que absorbeixen la vida dels seus enemics per atorgar-li a "
 "ell."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
-msgstr ""
+msgstr "Necròfag"
 
 #: data/units/Necrophage.cfg:16
 msgid ""
@@ -5478,7 +5439,7 @@ msgstr ""
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Malson"
 
 #: data/units/Nightgaunt.cfg:16
 msgid ""
@@ -5489,11 +5450,11 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Comandant noble"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Lluitador noble"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -5504,11 +5465,11 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Senyor noble"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Jove noble"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
@@ -5521,18 +5482,16 @@ msgid "training sword"
 msgstr ""
 
 #: data/units/Ogre.cfg:3
-#, fuzzy
 msgid "Ogre"
 msgstr "Ogre"
 
 #: data/units/Ogre.cfg:16
-#, fuzzy
 msgid ""
 "Ogres are stupid giant humanoids that usually live alone in the wilderness. "
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Els Ogres són gegants, estúpids humanoids que normalment viuen sols a llocs "
+"Els Ogres són gegants estúpids que normalment viuen sols a llocs "
 "salvatges. Encara que poden ser fàcilment evitats, la seva força no ha de "
 "ser subestimada."
 
@@ -5542,48 +5501,44 @@ msgid "cleaver"
 msgstr "nivell"
 
 #: data/units/Orcish_Archer.cfg:3
-#, fuzzy
 msgid "Orcish Archer"
-msgstr "Arquer Orc"
+msgstr "Arquer orc"
 
 #: data/units/Orcish_Archer.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Archers are considered by many of their fellow orcs to be a lesser "
 "caste of warrior, for attacking their enemies from a distance. However, "
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
-"L'Arquer Orc sol ser considerat per molts congèneres com uns subjectes "
+"L'arquer orc sol ser considerat per molts congèneres com uns subjectes "
 "inferiors als guerrers, ja que ataquen els enemics a distància. No obstant, "
-"degut a la incapacitat dels Orcs d'usar un arc, són imprescindibles en les "
-"files de l'exèrcit Orc."
+"degut a la incapacitat dels orcs d'usar un arc, són imprescindibles en les "
+"files de l'exèrcit orc."
 
 #: data/units/Orcish_Assassin.cfg:3
-#, fuzzy
 msgid "Orcish Assassin"
-msgstr "Assassí Orc"
+msgstr "Assassí orc"
 
 #: data/units/Orcish_Assassin.cfg:16
-#, fuzzy
 msgid ""
 "While not so strong in combat, Orcish Assassins are fast and can defend "
 "themselves well over different kinds of terrain. These Assassins use "
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
-"Encara que no sigui excessivament fort en el cos a cos, l'Assassí és ràpid, "
+"Encara que no sigui excessivament fort en el cos a cos, l'assassí és ràpid, "
 "capaç de defensar-se en diversos terrenys i d'enverinar els seus dards. Una "
 "víctima afectada pel verí veurà minvada la seva vida a cada torn, fins que "
 "pugui ser sanat."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
-msgstr ""
+msgstr "dards"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "Ballester orc"
 
 #: data/units/Orcish_Crossbowman.cfg:16
 msgid ""
@@ -5595,27 +5550,25 @@ msgstr ""
 
 #: data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
-msgstr ""
+msgstr "espasa curta"
 
 #: data/units/Orcish_Grunt.cfg:3
-#, fuzzy
 msgid "Orcish Grunt"
 msgstr "Orc"
 
 #: data/units/Orcish_Grunt.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Un Orc poc entrenat forma la base dels exèrcits dels Orcs. Encara que és més "
+"Un orc poc entrenat forma la base dels exèrcits dels orcs. Encara que és més "
 "lent que qualsevol humà o elf, els seus atacs són més poderosos, i són "
 "capaços de suportar més ferides abans de desfallir."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Líder orc"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -5628,11 +5581,11 @@ msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "Dirigent orc"
 
 #: data/units/Orcish_Shaman.cfg:3
 msgid "Orcish Shaman"
-msgstr ""
+msgstr "Xaman orc"
 
 #: data/units/Orcish_Shaman.cfg:15
 msgid ""
@@ -5647,11 +5600,11 @@ msgstr ""
 #: data/units/Orcish_Shaman.cfg:25 data/units/Orcish_Shaman.cfg:68
 #: data/units/Orcish_Shaman.cfg:111 data/units/Vampire_Lady.cfg:34
 msgid "curse"
-msgstr ""
+msgstr "maledicció"
 
 #: data/units/Orcish_Shaman.cfg:46
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "Xaman orc novell"
 
 #: data/units/Orcish_Shaman.cfg:58
 msgid ""
@@ -5666,7 +5619,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:89
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Xaman orc veterà"
 
 #: data/units/Orcish_Shaman.cfg:101
 msgid ""
@@ -5680,22 +5633,20 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Slayer.cfg:3
-#, fuzzy
 msgid "Orcish Slayer"
-msgstr "Matador Orc"
+msgstr "Matador orc"
 
 #: data/units/Orcish_Slayer.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
 "Ràpid i àgil, competent tant a curt com a llarg abast, usant atacs "
-"enverinats, el Matador Orc és un formidable enemic."
+"enverinats, el matador orc és un formidable enemic."
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Sobirà orc"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -5707,40 +5658,36 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Warlord.cfg:3
-#, fuzzy
 msgid "Orcish Warlord"
-msgstr "Senyor de la Guerra"
+msgstr "Senyor de guerra orc"
 
 #: data/units/Orcish_Warlord.cfg:16
-#, fuzzy
 msgid ""
 "Only Orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
 "the orcish fighting groups."
 msgstr ""
-"Només els Orcs de gran talent i força poden arribar a ser Senyors de la "
-"Guerra. Tan hàbils amb l'espasa com amb l'arc, aquests bestials guerrers  "
+"Només els orcs de gran talent i força poden arribar a ser Senyors de la "
+"guerra. Tan hàbils amb l'espasa com amb l'arc, aquests bestials guerrers  "
 "dirigeixen les tropes d'orcs a la batalla."
 
 #: data/units/Orcish_Warrior.cfg:3
-#, fuzzy
 msgid "Orcish Warrior"
-msgstr "Guerrer Orc"
+msgstr "Guerrer orc"
 
 #: data/units/Orcish_Warrior.cfg:16
-#, fuzzy
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
-"El Guerrer Orc és una peça altament respectada dins la tribu, ja que l'art "
+"El guerrer orc és una peça altament respectada dins la tribu, ja que l'art "
 "de la llutia amb dos armes el fa temible. La seva única dificultat és "
 "l'incapacitat d'usar arcs."
 
 #: data/units/Outlaw.cfg:3
 msgid "Outlaw"
-msgstr ""
+msgstr "Proscrit"
 
 #: data/units/Outlaw.cfg:17
 msgid "Outlaws fight better at night."
@@ -5748,7 +5695,7 @@ msgstr ""
 
 #: data/units/Outlaw.cfg:75
 msgid "female^Outlaw"
-msgstr ""
+msgstr "Proscrita"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
@@ -5756,7 +5703,7 @@ msgstr ""
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Princesa proscrita"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -5768,7 +5715,7 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Reina proscrita"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid "skirmisher,leadership"
@@ -5785,22 +5732,20 @@ msgid ""
 msgstr ""
 
 #: data/units/Paladin.cfg:3
-#, fuzzy
 msgid "Paladin"
 msgstr "Paladí"
 
 #: data/units/Paladin.cfg:21
-#, fuzzy
 msgid ""
 "Knights of the highest virtue, Paladins have all the skills of the Knight, "
 "and can also heal adjacent friendly units."
 msgstr ""
-"Un Cavaller de virtuds insuperables, el Paladí poseeix totes les habilitats "
+"Un cavaller de virtuts insuperables, el paladí poseeix totes les habilitats "
 "d'un cavaller més la de curar els seus aliats."
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Pagès"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -5815,12 +5760,10 @@ msgid "pitchfork"
 msgstr ""
 
 #: data/units/Pikeman.cfg:3
-#, fuzzy
 msgid "Pikeman"
 msgstr "Piquer"
 
 #: data/units/Pikeman.cfg:16
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -5828,16 +5771,16 @@ msgid ""
 "cavalry."
 msgstr ""
 "Els piquers són l'èlit dels llancers, aquells soldats més experimentats que "
-"canvien les seves llances per llargues piques. Els Piquers són un adversari "
+"canvien les seves llances per llargues piques. Els piquers són un adversari "
 "temible per les unitats de cavalleria."
 
 #: data/units/Pikeman.cfg:19
 msgid "pike"
-msgstr ""
+msgstr "pica"
 
 #: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "Gal·leó pirata"
 
 #: data/units/Pirate_Galleon.cfg:14
 msgid ""
@@ -5853,7 +5796,7 @@ msgstr ""
 
 #: data/units/Poacher.cfg:3
 msgid "Poacher"
-msgstr ""
+msgstr "Caçador furtiu"
 
 #: data/units/Poacher.cfg:16
 msgid ""
@@ -5862,7 +5805,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Princess.cfg:20 data/units/Princess.cfg:58
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -5873,30 +5815,27 @@ msgstr ""
 "Noble de naixement, la Princesa ha après a lluitar amb els més grans "
 "Generals, i ha après estratègia amb els més grans savis. Ens trobem, doncs, "
 "davant una gran combatent i millor líder, capaç de millorar les habilitats "
-"de lluita dels seus soldats de rang inferior. La princesa és, tammateix, "
+"de lluita dels seus soldats de rang inferior. La princesa és, tanmateix, "
 "àgil i destra, posseint habilitats pròpies fins i tot d'un lladre."
 
 #: data/units/Red_Mage.cfg:3
-#, fuzzy
 msgid "Red Mage"
-msgstr "Mag Roig"
+msgstr "Mag roig"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:89
-#, fuzzy
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
-"El Mag Roig usa potents boles de foc, amb una habilitat soprenent que es "
+"El mag roig usa potents boles de foc, amb una habilitat sorprenent que es "
 "tradueix en alta probabilitat d'impactar. Hàbil tant de dia com de nit, i "
-"ràpid de moviments, el Mag Roig és un valiós aliat en gairebé qualsevol "
+"ràpid de moviments, el mag roig és un valiós aliat en gairebé qualsevol "
 "situació."
 
 #: data/units/Red_Mage.cfg:72
-#, fuzzy
 msgid "female^Red Mage"
-msgstr "Mag Roig"
+msgstr "Maga roja"
 
 #: data/units/Revenant.cfg:3
 #, fuzzy
@@ -5933,18 +5872,16 @@ msgstr ""
 "víctima."
 
 #: data/units/Royal_Guard.cfg:3
-#, fuzzy
 msgid "Royal Guard"
-msgstr "Guardia Reial"
+msgstr "Guàrdia Reial"
 
 #: data/units/Royal_Guard.cfg:16
-#, fuzzy
 msgid ""
 "Members of the Royal Guard are hand picked from the strongest and sturdiest "
 "of the army. They are deployed only in critical situations and, so far, have "
 "always succeeded in their assigned tasks."
 msgstr ""
-"Els membres de la Guardia Reial són cuidadosament escollits d'entre els més "
+"Els membres de la Guàrdia Reial són cuidadosament escollits d'entre els més "
 "forts i resistents guerrers de l'exèrcit. Només intervenen en situacions "
 "crítiques i, fins ara, sempre han gaudit de rotunds éxits en les seves "
 "empreses."
@@ -6096,10 +6033,8 @@ msgstr "Serp Marina"
 
 #: data/units/Sea_Serpent.cfg:16
 #, fuzzy
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -7118,8 +7053,7 @@ msgid "Remote host disconnected."
 msgstr ""
 
 #: src/game.cpp:1145
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
 #: src/game.cpp:1157 src/game.cpp:1195 src/game.cpp:1219
@@ -7263,8 +7197,7 @@ msgstr "o"
 #: src/help.cpp:1303
 #, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1305
 #, fuzzy
@@ -7768,8 +7701,7 @@ msgid "Choose weapon"
 msgstr "Trieu l'arma"
 
 #: src/playturn.cpp:1213
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
 #: src/playturn.cpp:1222 src/playturn.cpp:1227
@@ -8133,3 +8065,4 @@ msgstr "Suprimeix fitxer"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr ""
+
