@@ -9,8 +9,8 @@
 #include <numeric>
 
 namespace {
-const size_t menu_font_size = 16;
-const size_t menu_cell_padding = 10;
+const size_t menu_font_size = 14;
+const size_t menu_cell_padding = 12;
 }
 
 namespace gui {
