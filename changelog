@@ -2,6 +2,7 @@ CVS HEAD:
  * user interface improvements:
    * display savegame version in load dialog
    * shadows for labels to make they visible on each type of terrain
+   * help system speed optimizations
  * graphics improvements: 
    * bridge, ice, castle floor, grassland
    * unit images and attack animations
@@ -72,7 +73,6 @@ CVS HEAD:
  * fixed showing incorrect teams when loading a saved multiplayer game
  * fixed compile error on 64bit systems
  * fixed 'Drake Slashers' first strike
- * fixed displaying translated terrains in help
  * fixed AI not being aware that units in villages can not be plagued
  * fixed some missing unit descriptions
  * fixed lots of untranslatable strings
@@ -96,9 +96,8 @@ CVS HEAD:
  * improved network threading
  * added server facility to record the way games end
  * improved 'Out of Sync' detection
- * help system speed optimizations
  * Imported SDL_ttf into the Wesnoth source tree, removed the dependency to SDL_ttf, added a dependency to libfreetype2
- * Fixed memory corruption errors on font rendering in SDL_ttf
+ * fixed memory corruption errors on font rendering in SDL_ttf
  * image and data-file cleanups
  * code cleanups
 
