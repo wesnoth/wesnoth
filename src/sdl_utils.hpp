@@ -106,6 +106,7 @@ surface get_surface_portion(surface src, SDL_Rect& rect);
 surface adjust_surface_alpha(surface surface, double amount);
 surface adjust_surface_alpha_add(surface surface, int amount);
 surface mask_surface(surface surf, surface mask);
+surface blur_surface(surface surf, int depth=1);
 surface cut_surface(surface surface, const SDL_Rect& r);
 surface blend_surface(surface surface, double amount, Uint32 colour);
 surface flip_surface(surface surface);

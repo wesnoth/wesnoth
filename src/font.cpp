@@ -733,11 +733,12 @@ class floating_label
 {
 public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
-		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, font::ALIGN align,
-		int border_size, bool scroll_with_map)
-		  : surf_(NULL), buf_(NULL), foreground_(NULL), text_(text), font_size_(font_size), colour_(colour), bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
-		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-			alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size), scroll_(scroll_with_map)
+			double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect,
+			font::ALIGN align, int border_size, bool scroll_with_map)
+		: surf_(NULL), buf_(NULL), foreground_(NULL), text_(text), font_size_(font_size), colour_(colour),
+		bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
+		xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
+		alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size), scroll_(scroll_with_map)
 	{}
 
 	void move(double xmove, double ymove);
@@ -801,15 +802,15 @@ int floating_label::xpos(size_t width) const
 surface floating_label::create_surface()
 {
 	if (surf_.null()) {
-		surf_ = font::render_text(get_font(font_size_), text_, colour_, 0);
+		foreground_ = font::render_text(get_font(font_size_), text_, colour_, 0);
 
-		if(surf_ == NULL) {
+		if(foreground_ == NULL) {
 			return NULL;
 		}
 
 		//if the surface has to be created onto some kind of background, then do that here
 		if(bgalpha_ != 0) {
-			surface tmp(create_compatible_surface(surf_,surf_->w+border_*2,surf_->h+border_*2));
+			surface tmp(create_compatible_surface(foreground_,foreground_->w+border_*2,foreground_->h+border_*2));
 			if(tmp == NULL) {
 				return NULL;
 			}
@@ -822,9 +823,15 @@ surface floating_label::create_surface()
 				}
 			}
 
-			foreground_.assign(surf_);
 			surf_.assign(tmp);
+		} else {
+			surface background = font::render_text(get_font(font_size_), text_, font::BLACK_COLOUR, 0);
+			background = blur_surface(background,4);
+			background = adjust_surface_alpha(background, 4);
+
+			surf_.assign(background);
 		}
+
 	}
 
 	return surf_;
@@ -897,8 +904,8 @@ void floating_label::show(bool value) { visible_ = value; }
 
 namespace font {
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-					   double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
-					   const SDL_Color* bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode)
+		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
+		const SDL_Color* bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode)
 {
 	if(label_contexts.empty()) {
 		return 0;

@@ -429,6 +429,90 @@ surface mask_surface(surface surf, surface mask)
 	//return create_optimized_surface(nsurf);
 }
 
+// Cross-fades a surface
+surface blur_surface(surface surf, int depth)
+{
+	if(surf == NULL) {
+		return NULL;
+	}
+
+	surface nsurf = make_neutral_surface(surf);
+	surface res = create_compatible_surface(nsurf, surf->w, surf->h);
+	
+	if(nsurf == NULL || res == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	for(int count = 0; count < depth; ++count) {
+		surface_lock lock(nsurf);
+		surface_lock rlock(res);
+
+		{
+			Uint32* p = lock.pixels();
+			Uint32* left = p - 1;
+			Uint32* right = p + 1;
+			Uint32* top = p - res->w;
+			Uint32* bottom = p + res->w;
+			Uint32* rp = rlock.pixels();
+
+			for(int y = 0; y < res->h; ++y) {
+				for(int x = 0; x < res->w; ++x) {
+					Uint8 red, green, blue, alpha;
+					Uint16 rred=0, rgreen=0, rblue=0, ralpha=0;
+
+					if (x != 0) {
+						SDL_GetRGBA(*left, nsurf->format, &red, &green, &blue, &alpha);
+						rred += red;
+						rgreen += green;
+						rblue += blue;
+						ralpha += alpha;
+					}
+
+					if (x != res->w - 1) {
+						SDL_GetRGBA(*right, nsurf->format, &red, &green, &blue, &alpha);
+						rred += red;
+						rgreen += green;
+						rblue += blue;
+						ralpha += alpha;
+					}
+
+					if (y != 0) {
+						SDL_GetRGBA(*top, nsurf->format, &red, &green, &blue, &alpha);
+						rred += red;
+						rgreen += green;
+						rblue += blue;
+						ralpha += alpha;
+					}
+
+					if (y != res->h - 1) {
+						SDL_GetRGBA(*bottom, nsurf->format, &red, &green, &blue, &alpha);
+						rred += red;
+						rgreen += green;
+						rblue += blue;
+						ralpha += alpha;
+					}
+
+					rred /= 4;
+					rgreen /= 4;
+					rblue /= 4;
+					ralpha /= 4;
+
+					*rp = SDL_MapRGBA(res->format, (Uint8)rred, (Uint8)rgreen, (Uint8)rblue, (Uint8)ralpha);
+
+					++left; ++right; ++top; ++bottom; ++rp;
+				}
+			}
+		}
+
+		if (count < depth - 1) {
+			nsurf = res;
+		}
+	}
+
+	return create_optimized_surface(res);
+}
+
 // Cuts a rectangle from a surface.
 surface cut_surface(surface surf, const SDL_Rect& r)
 {
