@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 #include "game_config.hpp"
+#include <config.h>
 
 #include <cstdlib>
 
@@ -26,7 +27,7 @@ namespace game_config
 	int recall_cost = 20;
 	int kill_experience = 8;
 	int leadership_bonus = 25;
-	const std::string version = "0.8.1-CVS";
+	const std::string version = VERSION;
 	bool debug = false, editor = false;
 
 	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;

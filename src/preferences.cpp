@@ -25,6 +25,7 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/menu.hpp"
+#include <config.h>
 
 #include <cstdlib>
 #include <iostream>
@@ -297,7 +298,7 @@ void set_grid(bool ison)
 
 const std::string& official_network_host()
 {
-	static const std::string host = "devsrv.wesnoth.org";
+	static const std::string host = WESNOTH_DEFAULT_SERVER;
 	return host;
 }
 
@@ -305,7 +306,7 @@ const std::string& network_host()
 {
 	std::string& res = prefs["host"];
 	if(res.empty())
-		res = "devsrv.wesnoth.org";
+		res = WESNOTH_DEFAULT_SERVER;
 
 	return res;
 }
