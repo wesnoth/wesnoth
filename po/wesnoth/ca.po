@@ -1,4 +1,3 @@
-# translation of ca.po to
 # Catalan translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
@@ -10,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-25 10:47+0100\n"
-"PO-Revision-Date: 2005-01-20 19:17+0100\n"
+"PO-Revision-Date: 2005-01-28 17:02+0100\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team:  <ca@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +69,7 @@ msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
-msgstr ""
+msgstr "Certes unitats tenen habilitats que, o bé afecten directament altres unitats, o bé tenen un impacte en com la unitat interactúa amb la resta. Aquestes habilitats es mostren a continuació."
 
 #: data/help.cfg:62
 msgid ""
@@ -105,7 +104,7 @@ msgid ""
 "<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
-msgstr ""
+msgstr "Aquesta pàgina resumeix tot el que necessites saber per jugar a La Batalla per Wesnoth. Explica com jugar i els mecanismes bàsics que hi ha darrera el joc. Per més informació sobre com conquerir el joc, us pot interessar <ref>dst=basic_strategy text='Estratègia bàsica'</ref>. Recordeu que això és només un resum. Per a situacions especials o excepcions, seguiu els enllaços que s'inclouen."
 
 #: data/help.cfg:70
 msgid ""
@@ -118,13 +117,17 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Per començar, el millor és fer clic sobre el botó <italic>text=Tutoria</italic> "
+"al menú principal. Això us portarà a fer una tutoria interactiva, que us ensenyarà els conceptes bàsica de Wesnoth. Després d'això, és recomanable jugar la campanya Hereu al Tron: clic a <italic>text=Campanya</italic>, i després <italic>text='Hereu al Tron'</italic>. Wesnoth és un joc desafiant, així que és recomanable començar en nivell <italic>text=Fàcil</italic>."
 
 #: data/help.cfg:73
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
-msgstr ""
+msgstr "Mentre jugueu, recordeu que si poseu el punter del ratolí sobre alguns dels elements del menú lateral dret, apareixerà una descripció explicatòria. Això pot ser especialment útil quan trobeu noves habilitats per primera vegada."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -140,7 +143,7 @@ msgid ""
 "menu, which lists units available for recruitment, along with their gold "
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
-msgstr ""
+msgstr "Al començament de cada batalla, i de vegades en mig d'aquesta, necessitareu reclutar unitats pel vostre exèrcit. Per tal de fer-ho, heu de tenir al vostre líder (per exemple Konrad a Hereu al Tron) a la torre del castell. Aleshores, podreu reclutar ja sigui triant <italic>text=Recluta</italic> des del menú o fent clic amb el botó dret sobre un hexàgon i seleccionant <italic>text=Recluta</italic>. Això mostrarà el diàleg de reclutament, que llistarà les unitats disponibles i el seu cost en monedes d'or. Si feu clic sobre una unitat veureu les seves estadístiques a l'esquerra. Si aleshores feu clic sobre el botó <italic>text=D'acord</italic>, reclutareu la unitat seleccionada."
 
 #: data/help.cfg:81
 msgid ""
@@ -151,6 +154,9 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Fent clic amb el botó dret sobre un hexàgon del castell i seleccionant <italic>text=Recluta</italic>, farà que la nova unitat aparegui en aquell hexàgon. D'altra banda, si no seleccioneu cap hexàgon, apareixerà en qualsevol zona lliure propera a la torre. Només podeu reclutar tantes unitats com hexàgons disponibles hi hagi, i no podeu gastar més diners dels que tingueu per reclutar."
 
 #: data/help.cfg:83
 msgid ""
@@ -159,6 +165,9 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Les unitats reclutades tenen dos <ref>dst=traits text=trets</ref> aleatoris que modifiquen les seves estadístiques."
 
 #: data/help.cfg:85
 msgid ""
@@ -169,6 +178,9 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"En escenaris més avançats, també podeu reincorporar unitats supervivents de batalles anteriors. La reincorporació funciona exactament igual que el reclutament, excepte pel fet que les unitats reincorporades tenen un cost estàndard de 20 monedes d'or i el diàleg presenta una llista de totes les unitats que han sobreviscut als escenaris anteriors."
 
 #: data/help.cfg:87
 msgid ""
@@ -178,6 +190,9 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Recordeu que les unitats no només costen diners a l'hora de reclutar i reincorporar, sinó que també requereixen diners de manteniment. Veure <ref>dst=income_and_upkeep text='guanys i manteniment'</ref> per a més informació."
 
 #: data/help.cfg:92 src/help.cpp:1194 src/help.cpp:1195
 msgid "Movement"
@@ -192,6 +207,11 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"El moviment a Batalla per Wesnoth és simple: primer feu un clic a la unitat"
+"que desitgeu moure i aleshores feu clic al hexàgon de destí. Quan una unitat"
+"està seleccionada, tots els hexàgons on pot desplaçar-se en el torn actual"
+"queden il·luminats. Movent el ratolí sobre un hexàgon fora de la zona"
+"il·luminada mostrarà els nombre de torns necessaris per arribar-hi."
 
 #: data/help.cfg:95
 msgid ""
@@ -207,6 +227,16 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Cada unitat té un cert nombre de punts de moviment que es gasten cada vegada"
+"que la unitat es mou, depenent del <ref>dst=terrain text=terreny</ref>. Per"
+"exemple, entrar a una zona de herba casi sempre costa un punt de moviment."
+"El nombre exacte de punts de moviment que que es gasten depèn també de la "
+"unitat. Als boscos, els elfs només gasten 1 punt, la majoria d'humans i "
+"orcs 2, i els genets 3. Podeu veure quants punts necessita una unitat per"
+"entrar en un determinat tipus de terreny fent clic sobre ella amb el botó dret i "
+"seleccionant <italic>text='Descriu unitat'</italic>. "
 
 #: data/help.cfg:97
 msgid ""
@@ -219,6 +249,15 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Un altre factor a tenir en compte són les <ref>dst=zones_of_control "
+"text='zones de control'</ref>. Cada unitat genera una zona de control sobre "
+"els hexàgons que té al voltant. Si una unitat enemiga entra en aquesta zona, "
+"acaba el seu moviment. Aprendre com fer servir les zones de control és un "
+"avantatge important a Wesnoth ja que només les unitats amb l'habilitat "
+"d'<ref>dst=ability_skirmish text='hostilitzar'</ref> poden ignorar aquestes "
+"zones."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -233,6 +272,12 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Hi ha dos tipus de combat a Batalla per Wesnoth: de curt i de llarg abast. "
+"En ambdós casos els combats tenen lloc en hexàgons adjacents. Els de curt "
+"abast en general impliquen l'ús d'armes com ara espases, destrals o ullals. "
+"En canvi, en els de llarg abast, s'utilitzen arcs, llances o boles de foc. "
+"El combat és bastant directe; l'atacant i el defensor alternen els atacs "
+"fins que cadascun d'ells els esgota."
 
 #: data/help.cfg:105
 msgid ""
@@ -240,6 +285,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Ordre i nombre dels atacs'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -251,6 +299,14 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"L'atacant realitza el primer atac i després ho fa el defensor. Això continua "
+"fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels "
+"atacs de cada unitat pot variar. Per exemple, un Lluitador elf amb un atac "
+"d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. "
+"En canvi un Recluta orc amb 9-2 només tindrà la possibilitat d'atacar 2 vegades, "
+"però amb 9 punts de mal."
 
 #: data/help.cfg:109
 msgid ""
@@ -258,6 +314,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Possibilitat de colpejar'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -271,6 +330,10 @@ msgid ""
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"La possibilitat de colpejar una unitat està basada únicament en el seu grau "
+"de defensa en el <ref>dst=terrain text=terreny</ref> en el que es troba. Podeu veure el seu grau fent clic amb el botó dret sobre una unitat i seleccionant la opció <italic>text='Descriu unitat'</italic>. Per exemple, els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una unitat els ataca només tindrà un 30% de possibilitats de colpejar. Inversament, les possibilitats dels elfs de colpejar l'enemic dependran del terreny en que es trobi l'atacant."
 
 #: data/help.cfg:112
 msgid ""
@@ -281,6 +344,9 @@ msgid ""
 "terrain, and, when used offensively, Marksmen always have at least a 60% "
 "chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"Hi ha dos excepcions a aquesta regla: <ref>dst=magical_attacks text='els atacs màgics'</ref>, i l'habilitat de <ref>dst=ability_marksman text='tirador'</ref>. Els atacs màgics sempre tenen un 70% de possibilitats de colpejar, sigui quin sigui el "
+"terreny, mentre que amb l'habilitat de tirador, les possibilitats són del 60%."
 
 #: data/help.cfg:114
 msgid ""
@@ -288,6 +354,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Mal</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -300,6 +369,13 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per "
+"exemple, un Lluitador elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
+"punts. Això es veu modificat per dos factors: "
+"<ref>dst=damage_type_and_resistance text='resistència'</ref> i "
+"<ref>dst=time_of_day text='hora del dia'</ref>."
 
 #: data/help.cfg:118
 msgid ""
@@ -310,6 +386,12 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Algunes unitats tenen habilitats que poden afectar el mal infligit en "
+"combat. La més comuna és la <ref>dst=ability_charge text='càrrega'</ref>, la "
+"qual dobla el mal causat per l'atacant i pel defensor quan la unitat amb "
+"aquesta habilitat ataca."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -322,7 +404,7 @@ msgid ""
 "further types of damage usually associated with magical attacks: Fire, Cold "
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
-msgstr ""
+msgstr "A Wesnoth hi ha tres tipus de mal associats amb atacs físics: tallant, perforant i impactant. D'altra banda, també hi ha tres tipus de mal associats a la màgia: foc, fred i sagrat. Cada unitat té resistències a aquests atacs que alteren el mal que poden rebre."
 
 #: data/help.cfg:126
 msgid ""
@@ -334,6 +416,9 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Les resistències funcionen de manera molt simple: si una unitat té una resistència del 40% contra un tipus de mal, aleshores patirà un 40% menys de mal quan sigui colpejada per aquest tipus. A més, és possible tindre debilitat; si una unitat té -100% de resistència contra un determinat tipus de mal, patirà un 100% més de mal quan sigui colpejada."
 
 #: data/help.cfg:128
 msgid ""
@@ -343,6 +428,9 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Per exemple, els esquelets són molt resistents al mal de tipus tallant o perforant, vulnerables als impactes i al foc, i extremament débils contra els atacs sagrats."
 
 #: data/help.cfg:133
 msgid "Time of Day"
@@ -573,7 +661,7 @@ msgid ""
 "watch your gold as well, especially in campaigns, where you can carry extra "
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
-msgstr ""
+msgstr "Reclutar unitats i lluitar no és suficient. També heu de tenir en compte la vostra quantitat d'or, especialment a les campanyes, on podeu acumular monedes d'un escenari al següent. Hi ha dos aspectes a tenir en compte sobre aquest tema: els guanys i el manteniment."
 
 #: data/help.cfg:187
 msgid ""
@@ -584,6 +672,9 @@ msgid ""
 "Unfortunately, your Upkeep costs are subtracted from this income, as "
 "detailed below."
 msgstr ""
+"\n"
+"\n"
+"Els guanys són fàcils. Per cada llogaret controlat, guanyeu una moneda d'or cada torn. Per tant, si teniu 10 llogarets, guanyareu 10 monedes d'or. Malauradament, els costos de manteniment es resten als guanys, tal i com es mostra a continuació."
 
 #: data/help.cfg:189
 msgid ""
@@ -596,6 +687,9 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold a turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"El manteniment també és força fàcil d'entendre. Cada unitat requereix un cert manteniment igual al seu nivell. Podeu tenir tants nivells d'unitats com llogarets controlats. Tanmateix, per cada nivell per sobre del nombre de llogarets que tingueu, haureu de pagar una moneda d'or per torn. Per exemple, si teniu dotze unitats de nivell 1, i deu llogarets, tindreu que pagar dos monedes d'or de manteniment cada torn."
 
 #: data/help.cfg:191
 msgid ""
@@ -604,6 +698,9 @@ msgid ""
 "These costs are subtracted from your Income, so in the case of twelve levels "
 "of units and ten villages, your resultant Income would be 8 gold a turn."
 msgstr ""
+"\n"
+"\n"
+"Aquest cost es resta als guanys, de tal manera que en el cas anterior, amb dotze nivells d'unitats i deu llogarets, els guanys finals serien 8 monedes d'or per torn."
 
 #: data/help.cfg:192
 msgid ""
@@ -614,6 +711,8 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
+"\n"
+"Hi ha dues excepcions al manteniment. En primer lloc, les unitats amb el tret lleial, que equivaldran a unitats de nivell 1, sigui quin sigui el seu nivell. En segon lloc, les unitats amb les que comenceu l'escenari (com ara Konrad i Delfador) o les unitats que s'uneixin durant aquest, mai tindran cap cost de manteniment."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -645,6 +744,9 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"La majoria d'unitats tenen dos trets. Els trets són atributs que modifiquen les característiques de la unitat lleugerament. S'assignen aleatoriament quan es recluta una unitat.\n"
+"\n"
+"Els trets disponibles són els següents."
 
 #: data/help.cfg:219
 msgid ""
@@ -661,6 +763,14 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Intel·ligent</header>\n"
+"\n"
+"Les unitats intel·ligents requereixen un 20% menys d'experiència per avançar de nivell.\n"
+"\n"
+"Les unitats intel·ligents són molt útils al principi de les campanyes, ja que poden avançar més ràpidament i convertir-se en unitats de nivells superiors. En etapes posteriors, no són tan útils, i si teniu moltes unitats de nivells alts, us trobareu reclutant unitats amb trets més útils a llarga distància."
 
 #: data/help.cfg:226
 msgid ""
@@ -676,6 +786,14 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Lleial</header>\n"
+"\n"
+"Les unitats lleials només requereixen el manteniment equivalent a una unitat de nivell 1, sigui quin sigui el seu nivell.\n"
+"\n"
+"El tret lleial no afecta les unitats de nivell 1, cosa que el fa inútil al principi de les campanyes. Però una vegada comença es comença a pujar de nivell, pot fer-vos estalviar una considerable quantitat de diners."
 
 #: data/help.cfg:233
 msgid ""
@@ -692,6 +810,14 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Ràpid</header>\n"
+"\n"
+"Les unitats ràpides tenen un punt de moviment extra, però un 10% menys de vida de lo normal.\n"
+"\n"
+"La rapidesa és un dels trets més notables, particularment en unitats lentes com ara els trolls o la infanteria pesada. Les unitats amb aquest tret guanyen una considerable mobilitat en terrenys escabrosos. Recordeu també que les unitats ràpides són menys resistents, i per tant, no són tan bones per mantenir posicions."
 
 #: data/help.cfg:240
 msgid ""
@@ -707,6 +833,14 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Resistent</header>\n"
+"\n"
+"Les unitats resistents tenen 7 punts de vida més del que és habitual."
+"\n"
+"Les unitats resistents poden ser molt útils en totes les etapes de la campanya, i és un tret vàlid per a totes les únitts. Les unitats resistents són especialment vàlides per mantenir posicions davant l'oponent."
 
 #: data/help.cfg:247
 msgid ""
@@ -723,6 +857,14 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Fort</header>\n"
+"\n"
+"Les unitats fortes fan 1 punt més de mal en combat cos a cos, i tenen 2 punts més de vida.\n"
+"\n"
+"Útils per a qualsevol combat a curta distància, el tret fort és més efectiu amb unitats que tenen un nombre elevat de oportunitats de colpejar, com ara el Lluitador elfs. Les unitats fortes poden ser molt bones quan només un petit augment del mal és capaç de convertir un cop fort en un cop mortal."
 
 #: data/items.cfg:264
 msgid ""
@@ -995,38 +1137,38 @@ msgid ""
 "of dominating the centre island. North-West: Forest dominated area, North-"
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
-msgstr ""
+msgstr "Un mapa de 4 jugadors convenient per partides individuals o per equips. La victòria passa per dominar el centre de la illa. Nord-oest: àrea dominada per bosc; nord-est: plana nevada; sud-oest: plana desèrtica; sud-est: muntanyes."
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
-msgstr ""
+msgstr "Blitz"
 
 #: data/scenarios/multiplayer/Blitz.cfg:9
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
-msgstr ""
+msgstr "Un mapa molt ràpid per fer duels. Es recomana 2 monedes d'or per llogaret."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr ""
+msgstr "El pont destruit"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
 "A small two vs. two map across the ruins of a once great bridge. Perfect for "
 "fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
 "2,4."
-msgstr ""
+msgstr "Un petit mapa 2 contra 2 a través de les ruïnes del que una vegada fou un gran pont. Perfecte per a partida ràpida, amb combats intensius, i per equips. El jugadors 1 i 3 lluitaran contra el 2 i el 4."
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "L'illa dels castells"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
 "2, 4 for 2v2."
-msgstr ""
+msgstr "Molts castells propers i estratègicament situats. Mapa petit per a partides ràpides. Es recomana 2 monedes d'or per llogaret, i que els jugadors 1 i 3 juguin contra el 2 i el 4 si es desitja un 2 contra 2."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
@@ -1388,12 +1530,11 @@ msgid ""
 msgstr ""
 "La vostra propera tasca consistirà en moure el vostre lluitador. Per moure "
 "una unitat, primer seleccioneu-la, i després seleccioneu la seva destinació. "
-"En aquest cas, la seva destinació serà el bosc proper a Merle, el Bruixot "
-"elf."
+"En aquest cas, la seva destinació serà el bosc proper a Merle, la Xaman elfa."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:96
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "Moveu el vostre lluitador a una vila."
+msgstr "Moveu el vostre lluitador a un llogaret."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:118
 msgid ""
@@ -1611,11 +1752,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
-msgstr "Mou el teu lluitador a una vila."
+msgstr "Mou el teu lluitador a un llogaret."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:177
 msgid "Move your fighter onto a village"
-msgstr "Mou el teu lluitador a una vila."
+msgstr "Mou el teu lluitador a un llogaret."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:188
 msgid "Villages heal the units on them."
@@ -1623,7 +1764,7 @@ msgstr "Les viles curen les unitats."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "What happens when a unit moves onto a village?"
-msgstr "Què passa quan una unitat es mou a una vila?"
+msgstr "Què passa quan una unitat es mou a un llogaret?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid ""
@@ -1635,11 +1776,11 @@ msgid ""
 "the status bar after the picture of a house. In addition to the economic "
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
-msgstr ""
+msgstr "Sempre que una unitat entra en un llogaret, captura aquest llogaret per al seu bàndol. Aquesta acció esgota els punts de moviments restants de la unitat. Els llogarets capturats tenen nombrosos beneficis, com l'increment dels guanys i la reducció del manteniment. El nombre total de llogarets controlats apareix a la barra d'estat superior, al costat d'un dibuix d'una casa. A més del factor econòmic, els llogarets també poden ser usats durant la batalla, ja que permeten guarir i curar les unitats."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Com puc curar una unitat quan no hi ha cap llogaret a prop?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid ""
@@ -1649,7 +1790,7 @@ msgid ""
 "units surrounding them. The Elvish Shaman is one such unit; units next to an "
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
-msgstr ""
+msgstr "Hi ha diferents maneres de fer-ho fins i tot sense llogarets. Si una unitat no es mou ni ataca durant un torn, cura 2 punts de vida per descansar. A més, hi ha certes unitats que són capaces de guarir les unitats properes. La Xaman elfa és una d'aquestes unitats; les unitats ferides que estiguin al seu voltant recuperaran 4 punts de vida cada torn. Finalment, sempre que una unitat guanyi un nivell, recuperarà tots els seus punts de vida."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
 msgid ""
@@ -1775,8 +1916,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1811,7 +1951,7 @@ msgstr ""
 "Reincorporar\n"
 "Trets\n"
 "Or\n"
-"Temps del dia\n"
+"Hora del dia\n"
 "Terreny\n"
 "Resistència\n"
 "Especialitats\n"
@@ -1872,7 +2012,7 @@ msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
-msgstr ""
+msgstr "Segurament heu notat que les vostres unitats tenen unes estadístiques lleugerament diferents de les que es mostren abans de reclutar-les. Això passa perquè en reclutar unitats s'assignen els seus trets aleatòriament."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:93
 msgid ""
@@ -1881,11 +2021,11 @@ msgid ""
 "traits when they are recruited. The traits that a unit has are displayed on "
 "the Status Table, and the function of a specific trait can be found by "
 "putting your cursor over that trait."
-msgstr ""
+msgstr "La funció dels trets és afegir varietat fent que les unitats del mateix tipus siguin diferents. Els trets que té cada unitat es poden veure a la barra d'estat de la dreta, i el que fa cada tret específicament es pot trobar posant el ratolí sobre el tret en concret."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:93
 msgid "What do traits do?"
-msgstr ""
+msgstr "Què fan els trets?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid ""
@@ -1894,21 +2034,21 @@ msgid ""
 "However all traits are designed to improve unit's power; there are no "
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
-msgstr ""
+msgstr "Hi ha cinc tipus diferents de trets que tenen diferents efectes, des de incrementar els punts de vida fins a reduir l'experiència necessària per avançar. En qualsevol cas, els trets estan dissenyats per millorar les unitats; no hi ha trets negatius. La majoria de les unitats tenen la mateixa possibilitat de tenir dos trets diferents quan són reclutades."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
 msgid "What kind of traits can my units get?"
-msgstr ""
+msgstr "Quin tipus de trets poden obtenir les meves unitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:104
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
-msgstr ""
+msgstr "Quan recluteu o reincorporeu unitats, perdeu diners. Si una acció comporta quedar-se amb menys de 0 monedes d'or, no podrà realitzar-se."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Quants diners costen les meves unitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid ""
@@ -1920,11 +2060,11 @@ msgid ""
 "do not cost any gold at all. The total upkeep cost of your units is "
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
-msgstr ""
+msgstr "Heu de pagar diners per cada unitat reclutada o reincorporada. El cost de reclutar apareix al diàleg de reclutament, mentre que el cost de una reincorporació és sempre de 20 monedes d'or. Cada unitat del teu bàndol també té un cost de manteniment, igual al nivell de la unitat. Algunes unitats però, com els líders, no costen diners. El cost total del manteniment de les vostres unitats apareix a la barra d'estat superior, al costat d'un dibuix d'unes monedes d'or i una fletxa vermella."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid "How do I get gold?"
-msgstr ""
+msgstr "Com puc aconseguir diners?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
 msgid ""
@@ -1934,13 +2074,13 @@ msgid ""
 "After the start of a scenario, you receive 2 gold every turn. Since you "
 "usually need more gold than that, you should flag villages, which give you 1 "
 "gold per turn."
-msgstr ""
+msgstr "Cada escenari comença amb un percentatge del diners del nivell anterior. Si aquesta quantitat és inferior a 100 monedes, començareu amb 100. La quantitat de monedes que teniu apareix a la barra d'estat superior al costat d'un dibuix d'unes monedes. Després de començar l'escenari, rebreu 2 monedes cada torn. Com que normalment necessitareu més diners, haureu de capturar llogarets, que us donaran 1 moneda d'or per torn."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:118
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
-msgstr ""
+msgstr "El sol es pon sobre Wesnoth. L'hora del dia afecta a la quantitat de mal que les unitats de diferents alineacions infligeixen a les altres."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:122
 msgid ""
@@ -1949,15 +2089,15 @@ msgid ""
 "such as humans, do 25% more damage, while Chaotic units such as undead do "
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
-msgstr ""
+msgstr "Hi ha tres alineacions: legal, neutral i caòtica. També hi ha tres zones horàries: dia, alba/vespre i nit. Durant el dia, les unitats legals com els humans, fan un 25% més de mal, mentre que les caòtiques com els no morts fan un 25% menys. A la nit passa el mateix però a la inversa. Durant l'alba i el vespre, totes les unitats fan el seu mal normal. Les unitats neutrals, com els elfs, no es veuen afectats per l'hora del dia."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:122
 msgid "What are the different alignments and times of day?"
-msgstr ""
+msgstr "Quines alineacions i hores del dia hi ha?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Com puc saber quina hora del dia és?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:123
 msgid ""
@@ -1967,11 +2107,11 @@ msgid ""
 "which each rise in the east and set in the west. However some scenarios have "
 "a different sequence, such as underground where it is perpetually night. You "
 "can find out the current time of day by looking at the Status Table."
-msgstr ""
+msgstr "L'hora del dia normalment segueix una seqüència: alba, matí, migdia, vespre, nit, matinada. Això es representa amb el sol i la lluna que surten a l'est i es ponen a l'oest. Tot i així, de vegades es segueix una seqüència diferent, com en els escenaris sota terra, on sempre és de nit. També podeu consultar l'hora del dia a la barra d'estat de la dreta."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:132
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
-msgstr ""
+msgstr "Cada hexàgon té un terreny que li dona unes propietats diferents."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid ""
@@ -1984,15 +2124,15 @@ msgid ""
 "a percentage which determines the unit's chance to be hit on that terrain. "
 "For example; elves have 70% defense in woods, and are therefore hit 30% of "
 "the time."
-msgstr ""
+msgstr "Dos terrenys tenen propietats que ja han estat descrites: els llogarets i els castells. Tanmateix, les propietats de la majoria dels terrenys són més subtils, i tenen més a veure amb els avantatges i desavantatges que les diferents unitats tenen sobre aquests. La primera propietat d'un terreny és el nombre de punts de moviment que necessita cada unitat per moure's. La segona propietat és la defensa que cada terreny li proporciona. Aquesta és un percentatge que determina les possibilitats de la unitat de ser colpejada. Per exemple, els elfs tenen un 70% de defense als boscos, que vol dir que seran colpejats només un 30% de les vegades."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
-msgstr ""
+msgstr "Quines són les diferents propietats dels terrenys?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid "How do I find out the properties of a specific terrain?"
-msgstr ""
+msgstr "Com puc saber quines són les propietats d'un terreny en concret?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:137
 msgid ""
@@ -2003,13 +2143,13 @@ msgid ""
 "This will display, in order, the name of the terrain, then the coordinates "
 "of the hex, then the selected unit's defense, then the number of move points "
 "it will cost the selected unit to move through that hex."
-msgstr ""
+msgstr "Per saber quines són les propietats d'un terreny respecte una unitat, feu clic amb el botó dret sobre la unitat i seleccioneu 'Descriu unitat'. Allà hi trobareu un llistat dels modificadors de terreny. D'altra banda, a la barra d'estat superior, a la part dreta, hi podeu veure el nom del terreny i les coordenades, i si hi ha alguna unitat, la seva defensa i el nombre de punts de moviment que necessaris per passar per aquell terreny."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
-msgstr ""
+msgstr "Cada atac té un tipus de mal que afecta a la quantitat de mal que fa sobre les unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid ""
@@ -2020,11 +2160,11 @@ msgid ""
 "resistance to pierce. This bonus/penalty is calculated additively with other "
 "bonuses/penalties like time of day, so two -50% penalties would add up to -"
 "100%."
-msgstr ""
+msgstr "Cada unitat té una certa resistència contra cada tipus de mal. Aquesta resistència és un percentatge que es resta al mal de les armes del mateix tipus de l'adversari. Per exemple, si un Escorta elf és atacat per un Arquer elf, l'arquer farà un 20% més de mal del normal, ja que els escortes tenen una resistència de -20% contra les armes perforadores. Aquesta bonificació/penalització es calcula a més a més de les altres bonficacions/penalitzacions com l'hora del dia."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Com afecta la resistència al mal?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid ""
@@ -2034,27 +2174,26 @@ msgid ""
 "cold. All living units have resistance to holy while undead are extremely "
 "weak to it. To find out a specific unit's resistance, right-click on the "
 "unit, select Unit Description, then look at Resistances."
-msgstr ""
+msgstr "Hi ha 6 tipus de mal diferents: tallant, perforant, impactant, foc, fred i sagrat. Les unitats fortament armades tenen molta resistència contra els atacs físics: tallant, perforant i impactant; però un són dèbils contra atacs màgics: foc, fred i sagrat. Totes les unitats vivents tenen resistència contra els atacs sagrats mentre que els no morts són molt vulnerables. Per veure les resistències específiques de cada unitat, feu clic amb el botó dret sobre la unitat i seleccioneu 'Descriu unitat'."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Quins són els diferents tipus de mal?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
-msgstr ""
+msgid "Many units have a specialty which changes the rules of play in some way."
+msgstr "Moltes unitats tenen alguna característica que canvia les regles del joc d'alguna manera."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid ""
 "Each specialty does something different; that's the whole point of a "
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
-msgstr ""
+msgstr "Cadascuna d'aquestes característiques fa coses diferents, aquesta és la seva gràcia. Per veure la descripció d'una d'aquestes especialitats, poseu el ratolí sobre aquesta."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Què fan les especialitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid ""
@@ -2062,11 +2201,11 @@ msgid ""
 "generals have the specialty leadership. There are two kinds of specialties: "
 "abilities, and attack specials. Abilities apply to units while attack "
 "specials only apply to one of the unit's attacks."
-msgstr ""
+msgstr "Les especialitats estan determinades pel tipus d'unitat. Per exemple, els generals tenen l'habilitat de lideratge. Hi ha dos tipus d'especialitats: les habilitats i els atacs especials. Les habilitats s'apliquen a la unitat en general mentre que els atacs especials només afecten algun atac en concret."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Quines unitats tenen especialitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid ""
@@ -2075,15 +2214,15 @@ msgid ""
 "called 'magical' and 'leadership'. Magical attacks have a 70% chance of "
 "hitting enemies regardless of what terrain they are on. Units do more damage "
 "while next to a unit of higher level with leadership."
-msgstr ""
+msgstr "Hi ha molts tipus d'especialitats, i aprendre quines són és una de les parts interessants de jugar a Wesnoth. Les dos més comunes són les anomenades 'lideratge' i 'màgic'. Les unitats fan més mal si estan a prop d'una unitat líder. Els atacs màgics per la seva part sempre tenen un 70% de possibilitats d'encertar."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Quin tipus d'especialitats poden obtenir les meves unitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Com puc fer servir les especialitats?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid ""
@@ -2091,18 +2230,18 @@ msgid ""
 "way which triggers the specialty. For example, in order to use leadership, "
 "you must move a unit with leadership next to another unit, then attack with "
 "the other unit."
-msgstr ""
+msgstr "Per fer servir una especialitat, només cal moure i/o atacar amb la vostra unitat de manera que l'utilitzi. Per exemple, per fer servir el lideratge, haureu de moure la unitat amb aquesta habilitat al costat d'altres unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:184
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
-msgstr ""
+msgstr "Alguns objectes poden canviar les estadístiques de les unitats. Una de les vostres unitats ha trobat una poció que la fará més efectiva en aquest atac. Per veure les seves noves estadítiques, observa la barra d'estat lateral."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:191
 msgid "This potion increases the damage of all the drinker's attacks by four."
-msgstr ""
+msgstr "Aquesta poció incrementa per quatre el mal del atacs de qui la beu."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid ""
@@ -2110,50 +2249,50 @@ msgid ""
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
-msgstr ""
+msgstr "Els objectes que trobeu poden són diferents segons les campanyes. A Hereu al Tron, la majoria d'objectes donen a la unitat una nova arma. Tanmateix no sol haver-hi massa objectes en una campanya."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "Quin tipus d'objectes puc trobar-me?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
 msgid "How long do these objects last?"
-msgstr ""
+msgstr "Quina durada tenen aquests objectes?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
-msgstr ""
+msgstr "La majoria d'objectes són permanents. Ara, també hi ha alguns objectes, com l'aigua sagrada, que només tenen efecte mentre dura l'escenari."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:212
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
-msgstr ""
+msgstr "Recordeu prevenir que l'enemic capturi llogarets, i torneu a capturar aquells que ja siguin seus. D'aquesta manera reduireu el seu subministre de diners, impossibilitant que recluti unitats."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:239
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
-msgstr ""
+msgstr "Felicitats! M'heu derrotat i heu completat l'escenari segon i últim. Ara ja esteu preparats per començar una campanya o per fer partides multijugador."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
 msgid "How do I play a campaign?"
-msgstr ""
+msgstr "Com puc començar una campanya?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
 msgid ""
 "To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
-msgstr ""
+msgstr "Per començar una campanya, premeu 'Campanya' al menú principal i seleccioneu-ne una. Després haureu de seleccionar també el nivell de dificultat entre fàcil, normal o difícil. Hereu al Tron és la campanya recomanada per als nous jugadors."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
 msgid "How do I play multiplayer?"
-msgstr ""
+msgstr "Com puc fer partides multijugador?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
 msgid ""
@@ -2161,11 +2300,11 @@ msgid ""
 "'Join Official Server'. This will connect you to the official Wesnoth "
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
-msgstr ""
+msgstr "Per jugar a Wesnoth contra altres persones, seleccioneu 'Multijugador' al menú principal. Aleshores trieu 'Unir-se al servidor oficial'. Això us connectarà al servidor oficial de Wesnoth, on podeu unir-vos a una partida o crear-ne una de nova."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Ho heu explicat bé, però..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -2243,27 +2382,25 @@ msgstr "Herba"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Sabana"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
 msgstr "Llogaret"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Llogaret"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Oasi"
 
 #: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Neu"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
 msgstr "Llogaret"
 
@@ -2272,16 +2409,14 @@ msgid "Hills"
 msgstr "Turons"
 
 #: data/terrain.cfg:288 data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Suprimeix fitxer"
+msgstr "Dunes"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Muntanyes"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
 msgstr "Muntanyes"
 
@@ -2290,13 +2425,12 @@ msgid "Forest"
 msgstr "Bosc"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Bosc"
+msgstr "Bosc nevat"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Bosc tropical"
 
 #: data/terrain.cfg:344
 msgid "Cave wall"
@@ -2379,11 +2513,11 @@ msgstr "moviments"
 
 #: data/themes/default.cfg:499
 msgid "Act."
-msgstr ""
+msgstr "Acc."
 
 #: data/themes/default.cfg:532
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Fi"
 
 #: data/tips.cfg:1
 msgid ""
@@ -2450,8 +2584,7 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:9
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
 #: data/tips.cfg:10
@@ -2500,8 +2633,7 @@ msgid ""
 msgstr ""
 
 #: data/tips.cfg:17
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
 #: data/tips.cfg:18
@@ -2705,7 +2837,7 @@ msgstr ""
 "Cada unitat pot recuperar fins a 4 punts de vida per torn.\n"
 "És possible sanar fins a 8 punts de vida en un torn, per a totes les "
 "unitats.\n"
-"Una unitat enverinada no pot ser guarida, haurà de buscar una vila o una "
+"Una unitat enverinada no pot ser guarida, haurà de buscar un llogaret o una "
 "unitat amb l'habilitat de cura."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
@@ -3001,8 +3133,7 @@ msgstr "$name|a,El gual de $name,El creuament de $name,$river|ós,$river"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
-"Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
+msgstr "Pont de $river,El pont de $river,Pont de $river,Roda de $name,Pont $name"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3017,8 +3148,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr "$name,$name,$name,$name,$name"
 
 #: data/translations/english.cfg:144
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr "$name,$name,$name,$name,$name,$name,$name"
 
 #: data/units/Ancient_Lich.cfg:3
@@ -3335,7 +3465,7 @@ msgstr "daga"
 #: data/units/Wolf_Rider.cfg:21 data/units/Wraith.cfg:25
 #: data/units/Young_Ogre.cfg:20
 msgid "blade"
-msgstr "fulla"
+msgstr "talla"
 
 #: data/units/Assassin.cfg:26 data/units/Assassin.cfg:105
 #: data/units/Nightgaunt.cfg:25 data/units/Rogue.cfg:26
@@ -4751,8 +4881,7 @@ msgid "Fireball"
 msgstr "Bola de foc"
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 
 #: data/units/Footpad.cfg:3
@@ -4985,15 +5114,12 @@ msgid "Great Mage"
 msgstr "Gran mag"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:97
-#, fuzzy
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
-"El Gran Mag és un enemic tan impressionant com temible, superant en poder "
-"fins i tot l'arximag. Com aquest últim, el gran Mag pot teletransportar-se "
-"de vila en vila, projectant el seu poder a totes les zones del camp de "
-"batalla."
+"El Gran mag és un enemic tan impressionant com temible, superant en poder "
+"fins i tot l'arximag."
 
 #: data/units/Great_Mage.cfg:80
 msgid "female^Great Mage"
@@ -6081,7 +6207,7 @@ msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Flanquejador sauri"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -6187,10 +6313,8 @@ msgid "Sea Serpent"
 msgstr "Serp marina"
 
 #: data/units/Sea_Serpent.cfg:16
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -6584,7 +6708,7 @@ msgid ""
 msgstr ""
 "El mag blanc és feble en el combat, però tot un expert en la curació. Les "
 "unitats situades prop d'aquest mag curaran les seves ferides com si "
-"descansessin a una vila. Tanmateix, el mag blanc és poderós en la lluita "
+"descansessin a un llogaret. Tanmateix, el mag blanc és poderós en la lluita "
 "envers els no morts, els quals pateixen danys terribles dels rajos de llum "
 "dels mags."
 
@@ -6764,9 +6888,8 @@ msgid "+Italian Translation"
 msgstr "+Traducció italiana"
 
 #: src/about.cpp:232
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Traducció catalana"
+msgstr "+Traducció llatina"
 
 #: src/about.cpp:236
 msgid "+Norwegian Translation"
@@ -6810,15 +6933,15 @@ msgstr "Tanca"
 
 #: src/actions.cpp:100
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "No teniu un líder amb el que reclutar."
 
 #: src/actions.cpp:104
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
+msgstr "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
 #: src/actions.cpp:121
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "El castell no disposa de més zones lliures per reclutar."
 
 #: src/actions.cpp:203
 msgid "none"
@@ -7011,7 +7134,7 @@ msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
-msgstr ""
+msgstr "El vostre directori de partides desades conté alguns fitxers que no corresponen a aquesta versió de Batalla per Wesnoth. Voleu registrar aquests fitxers amb el joc?"
 
 #: src/dialogs.cpp:510
 msgid "Show replay"
@@ -7101,7 +7224,7 @@ msgstr "El fitxer que heu intentat carregar està corromprès."
 
 #: src/game.cpp:847
 msgid "File I/O Error while reading the game"
-msgstr ""
+msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
 #: src/game.cpp:952
 msgid "Get More Campaigns..."
@@ -7212,8 +7335,7 @@ msgid "Remote host disconnected."
 msgstr "Servidor remot desconnectat."
 
 #: src/game.cpp:1155
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 "S'ha produit un error creant els fitxers necessaris per instal·lar aquesta "
 "campanya."
@@ -7261,7 +7383,7 @@ msgstr "Serveix una partida sense usar el servidor"
 
 #: src/game.cpp:1252
 msgid "Hotseat Game"
-msgstr "Escalfa cadira"
+msgstr "Escalfa-cadira"
 
 #: src/game.cpp:1252
 msgid "Play a multiplayer game sharing the same machine"
@@ -7361,8 +7483,7 @@ msgstr "o"
 
 #: src/help.cpp:1304
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: src/help.cpp:1306
 msgid "The terrain with the best modifier is chosen automatically."
@@ -7588,7 +7709,7 @@ msgstr "Jugadors:"
 msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
-msgstr ""
+msgstr "No ha estat possible connectar al port necessari per servir partides en xarxa. Els jugadors de la xarxa no podran unir-se."
 
 #: src/multiplayer.cpp:532
 msgid "Warning"
@@ -7838,7 +7959,7 @@ msgstr "Heu estat el vencedor!"
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
-msgstr ""
+msgstr "S'ha produit una desconnexió de la xarxa i la partida no pot continuar. Voleu desar la partida?"
 
 #: src/playturn.cpp:82
 msgid "It is now your turn"
@@ -7869,8 +7990,7 @@ msgid "Choose weapon"
 msgstr "Trieu l'arma"
 
 #: src/playturn.cpp:1248
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr "No heu començat a moure. Segur de que voleu finalitzar el vostre torn?"
 
 #: src/playturn.cpp:1257 src/playturn.cpp:1262
@@ -7901,7 +8021,7 @@ msgstr "Error"
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
-msgstr ""
+msgstr "Els noms no poden contindre comes ni barres. Si us plau, trieu un altre nom."
 
 #: src/playturn.cpp:1537
 msgid "Saved"
@@ -7943,13 +8063,13 @@ msgstr "No teniu prou diners per reclutar aquesta unitat."
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
-msgstr ""
+msgstr "Senyor, aquesta unitat és experimentada. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1872
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
-msgstr ""
+msgstr "Senyor, aquesta unitat està a punt de pujar de nivell. Segur que voleu acomiadar a $noun?"
 
 #: src/playturn.cpp:1877
 msgid "her"
@@ -7961,17 +8081,19 @@ msgstr "ell"
 
 #: src/playturn.cpp:1918
 msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Esteu separat dels vostres soldats i no podeu reincorporar-los"
 
 #: src/playturn.cpp:1920
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"No hi ha tropes disponibles per a reincorporar\n"
+"(Heu de tenir supervivents veterans d'escenaris anteriors)"
 
 #: src/playturn.cpp:1926
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr ""
+msgstr "Necessiteu al menys $cost monedes d'or per reincorporar una unitat"
 
 #: src/playturn.cpp:1949
 msgid "Dismiss Unit"
@@ -8027,11 +8149,11 @@ msgstr "Mal rebut"
 
 #: src/playturn.cpp:2226
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Mal infligit (esperat)"
 
 #: src/playturn.cpp:2233
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Mal rebut (esperat)"
 
 #: src/playturn.cpp:2239
 msgid "Statistics"
@@ -8051,7 +8173,7 @@ msgstr "Registre del xat"
 
 #: src/playturn.cpp:2362
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "No s'ha trobat cap etiqueta o unitat amb el nom '$search'."
 
 #: src/playturn.cpp:2455
 msgid "Place Label"
@@ -8065,7 +8187,7 @@ msgstr "Etiqueta"
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
-msgstr ""
+msgstr "La partida no està sincronitzada i haurà de finalitzar. Voleu desar un registre de l'error de la partida?"
 
 #: src/playturn.cpp:2640
 msgid "Replace with AI"
@@ -8110,11 +8232,13 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Aquesta unitat està enverinada. Perdrà 8 punts de vida cada torn fins que trobi una cura al verí en un llogaret o d'una unitat amiga amb l'habilitat de curació.\n"
+"\n"
+"Les unitats no poden morir només a causa del verí, que només reuirà els punts de vida fins a 1."
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-"Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
+msgstr "Aquesta unitat ha estat convertida en pedra. No es pot moure ni atacar."
 
 #: src/reports.cpp:233
 msgid "damage"
@@ -8188,7 +8312,7 @@ msgstr "Comença una nova campanya"
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr ""
+msgstr "Juga acompanyat o contra la màquina"
 
 #: src/titlescreen.cpp:193
 msgid "Load a single player saved game"
@@ -8242,8 +8366,3 @@ msgstr "Suprimeix fitxer"
 msgid "Deletion of the file failed."
 msgstr "No ha estat possible esborrar el fitxer."
 
-#~ msgid "Game Over"
-#~ msgstr "Final"
-
-#~ msgid "The game is over."
-#~ msgstr "La partida s'ha acabat."
