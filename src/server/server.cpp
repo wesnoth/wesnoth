@@ -920,6 +920,8 @@ int main(int argc, char** argv)
 				std::cout << "Started wesnothd as a daemon with process id " << pid << "\n";
 				return 0;
 			}
+
+			setsid();
 #endif
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << "\n";
