@@ -90,6 +90,8 @@ private:
 std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
+ucs2_string utf8_string_to_ucs2_string(const utf8_string& src);
+utf8_string ucs2_string_to_utf8_string(const ucs2_string& src);
 
 }
 

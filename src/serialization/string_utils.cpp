@@ -490,4 +490,46 @@ wide_string string_to_wstring(const std::string &src)
 	return res;
 }
 
+ucs2_string utf8_string_to_ucs2_string(const utf8_string& src)
+{
+	ucs2_string res;
+	try {
+		utf8_iterator i1(src);
+		const utf8_iterator i2(utf8_iterator::end(src));
+		while(i1 != i2) {
+			push_back(res, *i1);
+			++i1;
+		}
+	}
+	catch(invalid_utf8_exception e) {
+		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
+		return res;
+	}
+	return res;
+}
+
+utf8_string ucs2_string_to_utf8_string(const ucs2_string& src)
+{
+	utf8_string dst;
+	dst.reserve(src.size());
+	ucs2_string::const_iterator itor = src.begin();
+	for(;itor != src.end(); ++itor) {
+		if(*itor < 0x0080) {
+			dst.push_back(*itor);
+			continue;
+		}
+		if(0x0080 <= *itor < 0x0800) {
+			dst.push_back((*itor >> 6) | 0xC0);
+			dst.push_back((*itor & 0x003F) | 0x80);
+			continue;
+		}
+		if((0x0800 <= *itor < 0xD800) || (0xDFFF < *itor < 0xFFFE)) {
+			dst.push_back((*itor >> 12) | 0xE0);
+			dst.push_back(((*itor >> 6) & 0x003F) | 0x80);
+			dst.push_back((*itor & 0x003F) | 0x80);
+		}
+	}
+	return dst;
+}
+
 }
