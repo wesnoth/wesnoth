@@ -47,28 +47,47 @@ struct section;
 
 typedef std::vector<section *> section_list;
 
-struct topic_generator;
+/// Generate a topic text on the fly.
+class topic_generator {
+	unsigned count;
+	friend class topic_text;
+public:
+	topic_generator(): count(1) {}
+	virtual std::string operator()() const = 0;
+	virtual ~topic_generator() {}
+};
 
+class text_topic_generator: public topic_generator {
+	std::string text_;
+public:
+	text_topic_generator(std::string const &t): text_(t) {}
+	virtual std::string operator()() const { return text_; }
+};
+
+/// The text displayed in a topic. It is generated on the fly with the information
+/// contained in generator_.
 class topic_text {
-	mutable std::string text_;
+	mutable std::vector< std::string > parsed_text_;
 	mutable topic_generator *generator_;
 public:
 	~topic_text();
 	topic_text(): generator_(NULL) {}
-	topic_text(std::string const &t): text_(t), generator_(NULL) {}
+	topic_text(std::string const &t): generator_(new text_topic_generator(t)) {}
 	explicit topic_text(topic_generator *g): generator_(g) {}
 	topic_text &operator=(topic_generator *g);
 	topic_text(topic_text const &t);
-	operator std::string() const;
+	operator std::vector< std::string > const &() const;
 };
 
 /// A topic contains a title, an id and some text.
 struct topic {
+	topic() {}
+	topic(const std::string &_title, const std::string &_id)
+		: title(_title), id(_id) {}
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
 		: title(_title), id(_id), text(_text) {}
 	topic(const std::string &_title, const std::string &_id, topic_generator *g)
 		: title(_title), id(_id), text(g) {}
-	topic() : title(""), id(""), text("") {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
 	/// Comparison on the ID.
@@ -917,22 +936,12 @@ std::string generate_topic_text(const std::string &generator) {
 	return empty_string;
 }
 
-struct topic_generator
-{
-	topic_generator(): count(1) {}
-	virtual std::string operator()() const = 0;
-	virtual ~topic_generator() {}
-private:
-	unsigned count;
-	friend class topic_text;
-};
-
 topic_text::~topic_text() {
 	if (generator_ && --generator_->count == 0)
 		delete generator_;
 }
 
-topic_text::topic_text(topic_text const &t): text_(t.text_), generator_(t.generator_) {
+topic_text::topic_text(topic_text const &t): parsed_text_(t.parsed_text_), generator_(t.generator_) {
 	if (generator_)
 		++generator_->count;
 }
@@ -944,14 +953,14 @@ topic_text &topic_text::operator=(topic_generator *g) {
 	return *this;
 }
 
-topic_text::operator std::string() const {
+topic_text::operator std::vector< std::string > const &() const {
 	if (generator_) {
-		text_ = (*generator_)();
+		parsed_text_ = parse_text((*generator_)());
 		if (--generator_->count == 0)
 			delete generator_;
 		generator_ = NULL;
 	}
-	return text_;
+	return parsed_text_;
 }
 
 std::vector<topic> generate_weapon_special_topics() {
@@ -1017,10 +1026,8 @@ std::vector<topic> generate_ability_topics() {
 						// Remove the first colon and the following newline.
 						description.erase(0, colon_pos + 2); 
 					}
-					//if (description != "") {
 					topic t(lang_ability, id, description);
 					topics.push_back(t);
-					//}
 					checked_abilities.insert(*it);
 				}
 			}
@@ -1030,248 +1037,246 @@ std::vector<topic> generate_ability_topics() {
 	return topics;
 }
 
-struct unit_topic_generator: topic_generator
+class unit_topic_generator: public topic_generator
 {
-	unit_topic_generator(unit_type const &t): type(t) {}
-	unit_type type;
+	unit_type type_;
+public:
+	unit_topic_generator(unit_type const &t): type_(t) {}
 	virtual std::string operator()() const {
 		std::stringstream ss;
-			const std::string detailed_description = type.unit_description();
-			const unit_type& female_type = type.get_gender_unit_type(unit_race::FEMALE);
-			const unit_type& male_type = type.get_gender_unit_type(unit_race::MALE);
+		std::string clear_stringstream;
+		const std::string detailed_description = type_.unit_description();
+		const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
+		const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-			// Show the unit's image and its level.
-			ss << "<img>src='" << male_type.image() << "'</img> ";
+		// Show the unit's image and its level.
+		ss << "<img>src='" << male_type.image() << "'</img> ";
 
-			if (&female_type != &male_type) {
-				ss << "<img>src='" << female_type.image() << "'</img> ";
-			}
-			ss  << "<format>font_size=11 text=' " << escape(_("level"))
-				<< " " << type.level() << "'</format>\n";
+		if (&female_type != &male_type)
+			ss << "<img>src='" << female_type.image() << "'</img> ";
+		ss << "<format>font_size=11 text=' " << escape(_("level"))
+		   << " " << type_.level() << "'</format>\n";
 
-			// Print the units this unit can advance to. Cross reference
-			// to the topics containing information about those units.
-			std::vector<std::string> next_units = type.advances_to();
-			if (next_units.size() > 0) {
-				ss << _("Advances to") << ": ";
-				for (std::vector<std::string>::const_iterator advance_it = next_units.begin();
-					 advance_it != next_units.end(); advance_it++) {
-					std::string unit_id = *advance_it;
-					std::map<std::string,unit_type>::iterator new_type = game_info->unit_types.find(unit_id);
-				 	if(new_type != game_info->unit_types.end()) {
-						std::string lang_unit = new_type->second.language_name();
-						std::string ref_id = std::string("unit_") + new_type->second.id();
-						ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
-						if (advance_it + 1 != next_units.end()) {
-							ss << ", ";
-						}
-					}
-				}
-				ss << "\n";
-			}
-
-			// Print the abilities the units has, cross-reference them
-			// to their respective topics.
-			if (type.abilities().size() > 0) {
-				ss << _("Abilities") << ": ";
-				for (std::vector<std::string>::const_iterator ability_it = type.abilities().begin();
-					 ability_it != type.abilities().end(); ability_it++) {
-					const std::string ref_id = std::string("ability_") + *ability_it;
-					std::string lang_ability = string_table[ref_id];
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
+		// Print the units this unit can advance to. Cross reference
+		// to the topics containing information about those units.
+		std::vector<std::string> next_units = type_.advances_to();
+		if (!next_units.empty()) {
+			ss << _("Advances to") << ": ";
+			for (std::vector<std::string>::const_iterator advance_it = next_units.begin(),
+				 advance_end = next_units.end();
+				 advance_it != advance_end; ++advance_it) {
+				std::string unit_id = *advance_it;
+				std::map<std::string,unit_type>::iterator new_type = game_info->unit_types.find(unit_id);
+			 	if(new_type != game_info->unit_types.end()) {
+					std::string lang_unit = new_type->second.language_name();
+					std::string ref_id = std::string("unit_") + new_type->second.id();
+					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit)
 					   << "'</ref>";
-					if (ability_it + 1 != type.abilities().end()) {
+					if (advance_it + 1 != advance_end)
 						ss << ", ";
-					}
 				}
-				ss << "\n";
 			}
+			ss << "\n";
+		}
 
-			if (next_units.size() != 0 || type.abilities().size() != 0) {
-				ss << "\n";
+		// Print the abilities the units has, cross-reference them
+		// to their respective topics.
+		if (!type_.abilities().empty()) {
+			ss << _("Abilities") << ": ";
+			for(std::vector<std::string>::const_iterator ability_it = type_.abilities().begin(),
+				 ability_end = type_.abilities().end();
+				 ability_it != ability_end; ++ability_it) {
+				const std::string ref_id = std::string("ability_") + *ability_it;
+				std::string lang_ability = string_table[ref_id];
+				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
+				   << "'</ref>";
+				if (ability_it + 1 != ability_end)
+					ss << ", ";
 			}
-			// Print some basic information such as HP and movement points.
-			ss << _("HP") << ": " << type.hitpoints() << jump(30)
-			   << _("Moves") << ": " << type.movement() << jump(30)
-			   << _("Alignment") << ": "
-			   << type.alignment_description(type.alignment())
-			   << jump(30);
-			if (type.can_advance()) {
-				ss << _("Required XP") << ": " << type.experience_needed();
-			}
+			ss << "\n";
+		}
 
-			// Print the detailed description about the unit.
-			ss << "\n\n" << detailed_description;
+		if (!next_units.empty() || !type_.abilities().empty())
+			ss << "\n";
+		// Print some basic information such as HP and movement points.
+		ss << _("HP") << ": " << type_.hitpoints() << jump(30)
+		   << _("Moves") << ": " << type_.movement() << jump(30)
+		   << _("Alignment") << ": "
+		   << type_.alignment_description(type_.alignment())
+		   << jump(30);
+		if (type_.can_advance())
+			ss << _("Required XP") << ": " << type_.experience_needed();
 
-			// Print the different attacks a unit has, if it has any.
-			std::vector<attack_type> attacks = type.attacks();
-			if (attacks.size() > 0) {
-				// Print headers for the table.
-				ss << "\n\n<header>text='" << escape(cap(_("attacks")))
-				   << "'</header>\n\n";
-				table_spec table;
+		// Print the detailed description about the unit.
+		ss << "\n\n" << detailed_description;
 
-				typedef std::pair<std::string,unsigned int> item;
-				std::vector<item> first_row;
-				// Dummy element, icons are below.
-				first_row.push_back(item("", 0));
-				first_row.push_back(item(bold(_("Name")),
-							 font::line_width(cap(_("Name")),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				first_row.push_back(item(bold(_("Type")),
-							 font::line_width(_("Type"),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				first_row.push_back(item(bold(_("Dmg")),
-							 font::line_width(_("Dmg"),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				first_row.push_back(item(bold(_("Strikes")),
-							 font::line_width(_("Strikes"),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				first_row.push_back(item(bold(_("Range")),
-							 font::line_width(_("Range"),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				first_row.push_back(item(bold(_("Special")),
-							 font::line_width(_("Special"),
-									  normal_font_size,
-									  TTF_STYLE_BOLD)));
-				table.push_back(first_row);
-				// Print information about every attack.
-				for (std::vector<attack_type>::const_iterator attack_it =attacks.begin();
-					 attack_it != attacks.end(); attack_it++) {
-					std::string lang_weapon = gettext(attack_it->name().c_str());
-					std::string lang_type = gettext(attack_it->type().c_str());
-					std::vector<std::pair<std::string, unsigned> > row;
-					std::stringstream attack_ss;
-					attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
-					row.push_back(std::make_pair(attack_ss.str(),
-								     image_width(attack_it->icon())));
-					attack_ss.str("");
-					push_tab_pair(row, lang_weapon);
-					push_tab_pair(row, lang_type);
-					attack_ss << attack_it->damage();
-					push_tab_pair(row, attack_ss.str());
-					attack_ss.str("");
-					attack_ss << attack_it->num_attacks();
-					push_tab_pair(row, attack_ss.str());
-					attack_ss.str("");
-					push_tab_pair(row, (*attack_it).range() == attack_type::SHORT_RANGE ?
-								  _("melee") : _("ranged"));
-					// Show this attack's special, if it has any. Cross
-					// reference it to the section describing the
-					// special.
-					if ((*attack_it).special() != "") {
-						const std::string ref_id = std::string("weaponspecial_")
-							+ (*attack_it).special();
-						std::string lang_special = gettext(attack_it->special().c_str());
-						attack_ss << "<ref>dst='" << escape(ref_id) << "' text='"
-								  << escape(lang_special) << "'</ref>";
-						row.push_back(std::make_pair(attack_ss.str(),
-									     font::line_width(lang_special,
-											      normal_font_size)));
-						
-					}
-					table.push_back(row);
-				}
-				ss << generate_table(table);
-			}
+		typedef std::pair<std::string,unsigned int> item;
 
-			// Print the resistance table of the unit.
-			ss << "\n\n<header>text='" << escape(_("Resistances"))
+		// Print the different attacks a unit has, if it has any.
+		std::vector<attack_type> attacks = type_.attacks();
+		if (!attacks.empty()) {
+			// Print headers for the table.
+			ss << "\n\n<header>text='" << escape(cap(_("attacks")))
 			   << "'</header>\n\n";
-			table_spec resistance_table;
-			std::vector<std::pair<std::string, unsigned> > first_res_row;
-			first_res_row.push_back(std::make_pair(bold(_("Attack Type")),
-							       font::line_width(_("Attack Type"),
-										normal_font_size,
-										TTF_STYLE_BOLD)));
-			first_res_row.push_back(std::make_pair(bold(_("Resistance")),
-							       font::line_width(_("Resistance"),
-										normal_font_size,
-										TTF_STYLE_BOLD)));
-			resistance_table.push_back(first_res_row);
-			const unit_movement_type &movement_type = type.movement_type();
-			string_map dam_tab = movement_type.damage_table();
-			for (string_map::const_iterator dam_it = dam_tab.begin();
-				 dam_it != dam_tab.end(); dam_it++) {
-				std::vector<std::pair<std::string, unsigned> > row;
-				int resistance = 100 - atoi((*dam_it).second.c_str());
-				std::string color = "";
-				if (resistance < 0) {
-					color = "red";
-				}
-				std::string lang_weapon = gettext(dam_it->first.c_str());
+			table_spec table;
+
+			std::vector<item> first_row;
+			// Dummy element, icons are below.
+			first_row.push_back(item("", 0));
+			first_row.push_back(item(bold(_("Name")),
+						 font::line_width(cap(_("Name")),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			first_row.push_back(item(bold(_("Type")),
+						 font::line_width(_("Type"),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			first_row.push_back(item(bold(_("Dmg")),
+						 font::line_width(_("Dmg"),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			first_row.push_back(item(bold(_("Strikes")),
+						 font::line_width(_("Strikes"),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			first_row.push_back(item(bold(_("Range")),
+						 font::line_width(_("Range"),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			first_row.push_back(item(bold(_("Special")),
+						 font::line_width(_("Special"),
+								  normal_font_size,
+								  TTF_STYLE_BOLD)));
+			table.push_back(first_row);
+			// Print information about every attack.
+			for(std::vector<attack_type>::const_iterator attack_it = attacks.begin(),
+				 attack_end = attacks.end();
+				 attack_it != attack_end; ++attack_it) {
+				std::string lang_weapon = gettext(attack_it->name().c_str());
+				std::string lang_type = gettext(attack_it->type().c_str());
+				std::vector<item> row;
+				std::stringstream attack_ss;
+				attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
+				row.push_back(std::make_pair(attack_ss.str(),
+							     image_width(attack_it->icon())));
+				attack_ss.str(clear_stringstream);
 				push_tab_pair(row, lang_weapon);
-				std::stringstream str;
-				str << "<format>color=" << color << " text='"<< resistance << "%'</format>";
-				const std::string markup = str.str();
-				str.str("");
-				str << resistance << "%";
-				row.push_back(std::make_pair(markup,
-							     font::line_width(str.str(), normal_font_size)));
-				resistance_table.push_back(row);
+				push_tab_pair(row, lang_type);
+				attack_ss << attack_it->damage();
+				push_tab_pair(row, attack_ss.str());
+				attack_ss.str(clear_stringstream);
+				attack_ss << attack_it->num_attacks();
+				push_tab_pair(row, attack_ss.str());
+				attack_ss.str(clear_stringstream);
+				push_tab_pair(row, (*attack_it).range() == attack_type::SHORT_RANGE ?
+							  _("melee") : _("ranged"));
+				// Show this attack's special, if it has any. Cross
+				// reference it to the section describing the
+				// special.
+				if (!attack_it->special().empty()) {
+					const std::string ref_id = std::string("weaponspecial_")
+						+ (*attack_it).special();
+					std::string lang_special = gettext(attack_it->special().c_str());
+					attack_ss << "<ref>dst='" << escape(ref_id)
+					          << "' text='" << escape(lang_special) << "'</ref>";
+					row.push_back(std::make_pair(attack_ss.str(),
+								     font::line_width(lang_special,
+										      normal_font_size)));
+				}
+				table.push_back(row);
 			}
-			ss << generate_table(resistance_table);
-			if (map != NULL) {
-				// Print the terrain modifier table of the unit.
-				ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
-				   << "'</header>\n\n";
-				std::vector<std::pair<std::string, unsigned> > first_row;
-				table_spec table;
-				first_row.push_back(std::make_pair(bold(_("Terrain")),
+			ss << generate_table(table);
+		}
+
+		// Print the resistance table of the unit.
+		ss << "\n\n<header>text='" << escape(_("Resistances"))
+		   << "'</header>\n\n";
+		table_spec resistance_table;
+		std::vector<item> first_res_row;
+		first_res_row.push_back(std::make_pair(bold(_("Attack Type")),
+						       font::line_width(_("Attack Type"),
+									normal_font_size,
+									TTF_STYLE_BOLD)));
+		first_res_row.push_back(std::make_pair(bold(_("Resistance")),
+						       font::line_width(_("Resistance"),
+									normal_font_size,
+									TTF_STYLE_BOLD)));
+		resistance_table.push_back(first_res_row);
+		const unit_movement_type &movement_type = type_.movement_type();
+		string_map dam_tab = movement_type.damage_table();
+		for(string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
+			 dam_it != dam_end; ++dam_it) {
+			std::vector<item> row;
+			int resistance = 100 - atoi((*dam_it).second.c_str());
+			std::string color;
+			if (resistance < 0)
+				color = "red";
+			std::string lang_weapon = gettext(dam_it->first.c_str());
+			push_tab_pair(row, lang_weapon);
+			std::stringstream str;
+			str << "<format>color=" << color << " text='"<< resistance << "%'</format>";
+			const std::string markup = str.str();
+			str.str(clear_stringstream);
+			str << resistance << "%";
+			row.push_back(std::make_pair(markup,
+						     font::line_width(str.str(), normal_font_size)));
+			resistance_table.push_back(row);
+		}
+		ss << generate_table(resistance_table);
+		if (map != NULL) {
+			// Print the terrain modifier table of the unit.
+			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
+			   << "'</header>\n\n";
+			std::vector<item> first_row;
+			table_spec table;
+			first_row.push_back(std::make_pair(bold(_("Terrain")),
 								   font::line_width(_("Terrain"),
 										    normal_font_size,
 										    TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Movement")),
-								   font::line_width(_("Movement"),
-										    normal_font_size,
-										    TTF_STYLE_BOLD)));
-				first_row.push_back(std::make_pair(bold(_("Defense")),
-								   font::line_width(_("Defense"),
-										    normal_font_size,
-										    TTF_STYLE_BOLD)));
-				table.push_back(first_row);
-				for (std::set<std::string>::const_iterator terrain_it =
-						 preferences::encountered_terrains().begin();
-					 terrain_it != preferences::encountered_terrains().end();
-					 terrain_it++) {
-					assert(terrain_it->size() > 0);
-					const gamemap::TERRAIN terrain = (*terrain_it)[0];
-					if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN) {
-						continue;
-					}
-					const terrain_type& info = map->get_terrain_info(terrain);
-					if (!info.is_alias()) {
-						std::vector<std::pair<std::string, unsigned> > row;
-						//const std::string &name = string_table[info.name()];
-						const std::string& name = info.name();
-						const int moves = movement_type.movement_cost(*map,terrain);
-						std::stringstream str;
-						str << "<ref>text='" << escape(name) << "' dst='"
-							<< escape(std::string("terrain_") + terrain) << "'</ref>";
-						row.push_back(std::make_pair(str.str(), 
-									     font::line_width(name,
-											      normal_font_size)));
-						str.str("");
-						if(moves < 100)
-							str << moves;
-						else
-							str << "--";
-						push_tab_pair(row, str.str());
-						str.str("");
-						const int defense =
-							100 - movement_type.defense_modifier(*map,terrain);
-						str << defense << "%";
-						push_tab_pair(row, str.str());
-						table.push_back(row);
-					}
+			first_row.push_back(std::make_pair(bold(_("Movement")),
+							   font::line_width(_("Movement"),
+									    normal_font_size,
+									    TTF_STYLE_BOLD)));
+			first_row.push_back(std::make_pair(bold(_("Defense")),
+							   font::line_width(_("Defense"),
+									    normal_font_size,
+									    TTF_STYLE_BOLD)));
+			table.push_back(first_row);
+			for (std::set<std::string>::const_iterator terrain_it =
+					 preferences::encountered_terrains().begin(),
+				 terrain_end = preferences::encountered_terrains().end();
+				 terrain_it != terrain_end; terrain_it++) {
+				assert(terrain_it->size() > 0);
+				const gamemap::TERRAIN terrain = (*terrain_it)[0];
+				if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN)
+					continue;
+				const terrain_type& info = map->get_terrain_info(terrain);
+				if (!info.is_alias()) {
+					std::vector<item> row;
+					const std::string& name = info.name();
+					const int moves = movement_type.movement_cost(*map,terrain);
+					std::stringstream str;
+					str << "<ref>text='" << escape(name) << "' dst='"
+					    << escape(std::string("terrain_") + terrain) << "'</ref>";
+					row.push_back(std::make_pair(str.str(), 
+								     font::line_width(name,
+										      normal_font_size)));
+					str.str(clear_stringstream);
+					if(moves < 100)
+						str << moves;
+					else
+						str << "--";
+					push_tab_pair(row, str.str());
+					str.str(clear_stringstream);
+					const int defense =
+						100 - movement_type.defense_modifier(*map,terrain);
+					str << defense << "%";
+					push_tab_pair(row, str.str());
+					table.push_back(row);
 				}
-				ss << generate_table(table);
 			}
+			ss << generate_table(table);
+		}
 		return ss.str();
 	}
 };
@@ -1723,9 +1728,7 @@ void help_text_area::show_topic(const topic &t) {
 	// A new topic will be shown, we do not know yet if a new scrollbar
 	// is needed.
 	use_scrollbar_ = false;
-	std::vector<std::string> parsed_text;
-	parsed_text = parse_text(t.text);
-	set_items(parsed_text, t.title);
+	set_items(t.text, t.title);
 	set_dirty(true);
 }
 
