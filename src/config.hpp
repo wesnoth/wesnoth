@@ -134,15 +134,4 @@ private:
 bool operator==(const config& a, const config& b);
 bool operator!=(const config& a, const config& b);
 
-struct config_has_value {
-	config_has_value(const std::string& name, const std::string& value)
-	              : name_(name), value_(value)
-	{}
-
-	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
-
-private:
-	const std::string name_, value_;
-};
-
 #endif

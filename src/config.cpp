@@ -158,6 +158,8 @@ config& config::add_child_at(const std::string& key, const config& val, size_t i
 	return *v[index];
 }
 
+namespace {
+
 struct remove_ordered {
 	remove_ordered(const std::string& key) : key_(key) {}
 
@@ -165,6 +167,8 @@ struct remove_ordered {
 private:
 	std::string key_;
 };
+
+}
 
 void config::clear_children(const std::string& key)
 {
@@ -224,6 +228,21 @@ const std::string& config::get_attribute(const std::string& key) const
 		static const std::string empty_string;
 		return empty_string;
 	}
+}
+
+namespace {
+
+struct config_has_value {
+	config_has_value(const std::string& name, const std::string& value)
+	              : name_(name), value_(value)
+	{}
+
+	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
+
+private:
+	const std::string name_, value_;
+};
+
 }
 
 config* config::find_child(const std::string& key,
