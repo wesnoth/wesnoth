@@ -1912,7 +1912,7 @@ void display::move_unit_between(const gamemap::location& a,
 	double xdst = get_location_x(b);
 	double ydst = get_location_y(b);
 
-	const double nsteps = 10.0;
+	const double nsteps = turbo() ? 2.0 : 10.0;
 	const double xstep = (xdst - xsrc)/nsteps;
 	const double ystep = (ydst - ysrc)/nsteps;
 
@@ -1989,7 +1989,7 @@ void display::move_unit_between(const gamemap::location& a,
 
 		const int new_ticks = SDL_GetTicks();
 		const int wait_time = time_between_frames - (new_ticks - ticks);
-		if(wait_time > 0 && !turbo()) {
+		if(wait_time > 0) {
 			SDL_Delay(wait_time);
 		}
 
