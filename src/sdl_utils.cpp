@@ -59,7 +59,6 @@ SDL_Surface* make_neutral_surface(SDL_Surface* surf)
 	}
 
 	SDL_Surface* const result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),SDL_SWSURFACE);
-	invalidate_sdl_surface_cache(surf);
 	if(result != NULL) {
 		SDL_SetAlpha(result,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 	}
@@ -75,13 +74,12 @@ int sdl_add_ref(SDL_Surface* surface)
 		return 0;
 }
 
-SDL_Surface* clone_surface(SDL_Surface* surface)
+SDL_Surface* create_optimized_surface(SDL_Surface* surface)
 {
 	if(surface == NULL)
 		return NULL;
 
 	SDL_Surface* const result = display_format_alpha(surface);
-	invalidate_sdl_surface_cache(surface);
 	if(result == surface) {
 		std::cerr << "resulting surface is the same as the source!!!\n";
 	}
@@ -135,7 +133,7 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 		}
 	}
 
-	return clone_surface(dst);
+	return create_optimized_surface(dst);
 }
 
 SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h)
@@ -212,13 +210,13 @@ SDL_Surface* scale_surface_blended(SDL_Surface* surface, int w, int h)
 		}
 	}
 
-	return clone_surface(dst);
+	return create_optimized_surface(dst);
 }
 
 SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 {
 	if(r == 0 && g == 0 && b == 0 || surface == NULL)
-		return clone_surface(surface);
+		return create_optimized_surface(surface);
 
 	scoped_sdl_surface surf(make_neutral_surface(surface));
 
@@ -246,7 +244,7 @@ SDL_Surface* adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* greyscale_image(SDL_Surface* surface)
@@ -286,7 +284,7 @@ SDL_Surface* greyscale_image(SDL_Surface* surface)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* brighten_image(SDL_Surface* surface, double amount)
@@ -321,7 +319,7 @@ SDL_Surface* brighten_image(SDL_Surface* surface, double amount)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount)
@@ -354,7 +352,7 @@ SDL_Surface* adjust_surface_alpha(SDL_Surface* surface, double amount)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount)
@@ -387,7 +385,7 @@ SDL_Surface* adjust_surface_alpha_add(SDL_Surface* surface, int amount)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 // Applies a mask on a surface
@@ -431,7 +429,7 @@ SDL_Surface* mask_surface(SDL_Surface* surface, SDL_Surface* mask)
 	}
 
 	return surf;
-	//return clone_surface(surf);
+	//return create_optimized_surface(surf);
 }
 
 // Cuts a rectangle from a surface.
@@ -503,7 +501,7 @@ SDL_Surface* blend_surface(SDL_Surface* surface, double amount, Uint32 colour)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* flip_surface(SDL_Surface* surface)
@@ -532,7 +530,7 @@ SDL_Surface* flip_surface(SDL_Surface* surface)
 		}
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* flop_surface(SDL_Surface* surface)
@@ -561,7 +559,7 @@ SDL_Surface* flop_surface(SDL_Surface* surface)
 		}		
 	}
 
-	return clone_surface(surf);
+	return create_optimized_surface(surf);
 }
 
 SDL_Surface* create_compatible_surface(SDL_Surface* surf, int width, int height)
@@ -622,7 +620,7 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 
 	SDL_Rect dstarea = {0,0,0,0};
 
-	sdl_safe_blit(src,&area,dst,&dstarea);
+	SDL_BlitSurface(src,&area,dst,&dstarea);
 
 	return dst;
 }
@@ -745,7 +743,7 @@ surface_restorer::~surface_restorer()
 void surface_restorer::restore()
 {
 	if(surface_ != NULL) {
-		sdl_safe_blit(surface_,NULL,target_->getSurface(),&rect_);
+		SDL_BlitSurface(surface_,NULL,target_->getSurface(),&rect_);
 		update_rect(rect_);
 	}
 }
@@ -761,23 +759,4 @@ void surface_restorer::update()
 void surface_restorer::cancel()
 {
 	surface_.assign(NULL);
-}
-
-//dummy definition of this SDL-private data structure, so that we can clear
-//the surface's cache
-struct SDL_BlitMap {
-	SDL_Surface* dst;
-};
-
-void invalidate_sdl_surface_cache(SDL_Surface* surf)
-{
-	if(surf->map->dst != get_video_surface()) {
-		surf->map->dst = NULL;
-	}
-}
-
-void sdl_safe_blit(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* dst, SDL_Rect* dstrect)
-{
-	SDL_BlitSurface(src,srcrect,dst,dstrect);
-	invalidate_sdl_surface_cache(src);
 }

@@ -1447,7 +1447,7 @@ void help_text_area::draw() {
 			if (dst.y < (int)height() && dst.y + (*it).surf->h > 0) {
 				dst.x += location().x;
 				dst.y += location().y;
-				sdl_safe_blit((*it).surf, NULL, screen, &dst);
+				SDL_BlitSurface((*it).surf, NULL, screen, &dst);
 			}
 		}
 		update_rect(location());
