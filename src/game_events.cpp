@@ -584,7 +584,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//a unit that matches
 		std::vector<std::string>::iterator ti;
 		for(ti = types.begin(); ti != types.end(); ++ti) {
-			config item;
+			config item = cfg;
 			item["type"] = *ti;
 
 			std::map<gamemap::location,unit>::iterator itor;

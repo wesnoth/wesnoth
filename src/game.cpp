@@ -922,7 +922,7 @@ int play_game(int argc, char** argv)
 			host_or_join.push_back(string_table["host_game"] + sep + string_table["host_game_help"]);
 
 			std::string login = preferences::login();
-			const int res = gui::show_dialog(disp,NULL,string_table["multiplayer"],"",gui::OK_CANCEL,&host_or_join,NULL,string_table["login"] + ": ",&login);
+			const int res = gui::show_dialog(disp,NULL,string_table["multiplayer_button"],"",gui::OK_CANCEL,&host_or_join,NULL,string_table["login"] + ": ",&login);
 
 			if(res >= 0) {
 				preferences::set_login(login);
@@ -989,8 +989,8 @@ int play_game(int argc, char** argv)
 			if(current != langs.end())
 				*current = "*" + *current;
 
-			const int res = gui::show_dialog(disp,NULL,"",
-			                         string_table["language_button"] + ":",
+			const int res = gui::show_dialog(disp,NULL,string_table["language_button"],
+			                         string_table["choose_language"] + ":",
 			                         gui::OK_CANCEL,&langs);
 			if(size_t(res) < langs.size()) {
 				set_language(langs[res]);
