@@ -73,4 +73,13 @@ To lexical_cast_default(From a, To def=To())
 	}
 }
 
+//a definition of 'push_back' for strings, since some implementations
+//don't support string::push_back
+template<typename T, typename C>
+void push_back(T& str, C c)
+{
+	str.resize(str.size()+1);
+	str[str.size()-1] = c;
+}
+
 #endif

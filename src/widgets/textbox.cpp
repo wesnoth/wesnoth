@@ -140,7 +140,7 @@ void textbox::update_text_cache(bool changed)
 		
 		for(std::wstring::const_iterator itor = text_.begin(); itor != text_.end(); itor++) {
 			std::wstring s;
-			s.push_back(*itor);
+			push_back(s,*itor);
 			visible_string.append(wstring_to_string(s));
 			const int w = font::line_width(visible_string, font_size);		
 		

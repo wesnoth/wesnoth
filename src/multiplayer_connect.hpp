@@ -46,7 +46,7 @@ private:
 	void remove_player(const std::string& name);
 	void update_positions();
 	void update_network();
-	void is_full();
+	bool is_full();
 
 	display *disp_;
 
@@ -64,7 +64,6 @@ private:
 	bool save_;
 	int status_;
 	bool join_;
-	bool full_;
 
 	int width_;
 	int height_;

@@ -15,6 +15,7 @@
 #include "hotkeys.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
+#include "util.hpp"
 
 #include <cctype>
 #include <cstdlib>
@@ -183,7 +184,7 @@ namespace
 {
 std::string wstring_to_utf8(const std::wstring &src)
 {
-        unsigned wchar_t ch;
+    wchar_t ch;
 	std::wstring::const_iterator i;
 	int j;
 	Uint32 bitmask;
@@ -211,17 +212,19 @@ std::string wstring_to_utf8(const std::wstring &src)
 				throw invalid_utf8_exception();
 
 			if(count == 1) {
-				ret.push_back(ch);
+				push_back(ret,ch);
 			} else {
 				for(j = count-1; j >= 0; --j) {
 					unsigned char c = (ch >> (6*j)) & 0x3f;
 					if(j == count-1)
 						c |= 0xff << (8 - count);
-					ret.push_back(c) ;
+					push_back(ret,c);
 				}
 			}
 
-		}		
+		}
+
+		return ret;
 	}
 	catch(invalid_utf8_exception e) {
 		std::cerr << "Invalid wide character string\n";
@@ -232,7 +235,7 @@ std::string wstring_to_utf8(const std::wstring &src)
 std::wstring utf8_to_wstring(const std::string &src)
 {
 	std::wstring ret;	
-        unsigned wchar_t ch;
+    wchar_t ch;
 	std::string::const_iterator i;
 	
 	try {
@@ -272,7 +275,7 @@ std::wstring utf8_to_wstring(const std::string &src)
 			}
 			i += (count - 1);
 			
-			ret.push_back(ch);
+			push_back(ret,ch);
 		}
 	}
 	catch(invalid_utf8_exception e) {
@@ -294,9 +297,9 @@ std::string wstring_to_string(const std::wstring &src)
 	std::string ret;
 	for(std::wstring::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
 		if(*itor <= 0xff) {
-			ret.push_back(*itor);
+			push_back(ret,*itor);
 		} else {
-			ret.push_back('?');
+			push_back(ret,'?');
 		}
 	}
 	return ret;
@@ -309,9 +312,9 @@ std::wstring string_to_wstring(const std::string &src)
 	}
 
 	std::wstring ret;
-	for(std::string::const_iterator itor = src.begin(); itor != src.end(); ++itor) {
-		ret.push_back(*itor);
-	}
+	ret.resize(src.size());
+	std::copy(src.begin(),src.end(),ret.begin());
+
 	return ret;
 }
 

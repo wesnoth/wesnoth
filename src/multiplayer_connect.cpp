@@ -48,7 +48,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
 	    ai_(gui::button(disp, string_table["ai_players"])),
-	    width_(630), height_(290), full_(false)
+	    width_(630), height_(290)
 {
 	// Send Initial information
 	config response;
@@ -158,6 +158,9 @@ int mp_connect::load_map(const std::string& era, int map, int num_turns, int vil
 	}
 
 	assert(level_ptr != NULL);
+
+	//this will force connecting clients to be using the same version number as us.
+	(*level_ptr)["version"] = game_config::version;
 
 	level_ = level_ptr;
 	state_->label = level_->values["name"];
@@ -646,7 +649,7 @@ int mp_connect::gui_do()
 			level_changed = true;
 		}
 
-		launch_.enable(full_);
+		launch_.enable(is_full());
 
 		if(launch_.process(mousex,mousey,left_button)) {
 			//Tell everyone to start
@@ -702,7 +705,6 @@ int mp_connect::gui_do()
 		gui_update();
 		update_positions();
 		update_network();
-		is_full();
 
 		events::pump();
 		disp_->video().flip();
@@ -844,18 +846,17 @@ void mp_connect::update_network()
 	}
 }
 
-void mp_connect::is_full()
+bool mp_connect::is_full()
 {
 	//see if all positions are now filled
-	full_ = true;
-	const config::child_itors sides = level_->child_range("side");
-	config::child_iterator sd;
-	for(sd = sides.first; sd != sides.second; ++sd) {
-		if((**sd)["controller"] == "network" &&
-		   (**sd)["description"] == "") {
-			if(positions_[*sd] == 0) {
-				full_ = false;
-			}
+	bool full = true;
+	const config::const_child_itors sides = level_->child_range("side");
+
+	for(config::const_child_iterator sd = sides.first; sd != sides.second; ++sd) {
+		if((**sd)["controller"] == "network" && positions_[*sd] == 0) {
+			full = false;
 		}
 	}
+
+	return full;
 }
