@@ -45,6 +45,7 @@ public:
 	void add_attack(const gamemap::location& a, const gamemap::location& b,
 	                int weapon);
 	void choose_option(int index);
+	void add_label(const std::string& text, const gamemap::location& loc);
 	void end_turn();
 
 	void speak(const config& cfg);

@@ -15,17 +15,14 @@ map_labels::~map_labels()
 	clear();
 }
 
-config map_labels::write() const
+void map_labels::write(config& res) const
 {
-	config res;
 	for(label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i) {
 		config item;
 		i->first.write(item);
 		item.values["text"] = get_label(i->first);
 		res.add_child("label",item);
 	}
-
-	return res;
 }
 
 void map_labels::read(const config& cfg)
@@ -72,6 +69,10 @@ void map_labels::set_label(const gamemap::location& loc, const std::string& text
 	const int handle = font::add_floating_label(text,14,colour,xloc,yloc,0,0,-1,disp_.map_area());
 
 	labels_.insert(std::pair<gamemap::location,int>(loc,handle));
+
+	if(disp_.shrouded(loc.x,loc.y)) {
+		font::show_floating_label(handle,false);
+	}
 }
 
 void map_labels::clear()
@@ -98,5 +99,12 @@ void map_labels::recalculate_labels()
 		const std::string text = font::get_floating_label_text(i->second);
 		font::remove_floating_label(i->second);
 		set_label(i->first,text);
+	}
+}
+
+void map_labels::recalculate_shroud()
+{
+	for(label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i) {
+		font::show_floating_label(i->second,!disp_.shrouded(i->first.x,i->first.y));
 	}
 }

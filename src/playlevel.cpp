@@ -262,6 +262,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	const config dummy_cfg;
 	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg);
 
+	gui.labels().read(*level);
+
 	if(first_human_team != -1) {
 		gui.set_team(first_human_team);
 	}

@@ -1391,6 +1391,8 @@ bool clear_shroud(display& disp, const gamestatus& status,
 
 	recalculate_fog(map,status,gamedata,units,teams,team);
 
+	disp.labels().recalculate_shroud();
+
 	return result;
 }
 

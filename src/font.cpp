@@ -473,7 +473,7 @@ public:
 	      int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect)
 		  : surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour), xpos_(xpos), ypos_(ypos),
 		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-			alpha_change_(-255/lifetime)
+			alpha_change_(-255/lifetime), visible_(true)
 	{}
 
 	void move(int xmove, int ymove);
@@ -485,6 +485,8 @@ public:
 
 	const std::string& text() const;
 
+	void show(bool value);
+
 private:
 	shared_sdl_surface surf_, buf_;
 	std::string text_;
@@ -494,6 +496,7 @@ private:
 	int lifetime_;
 	SDL_Rect clip_rect_;
 	int alpha_change_;
+	bool visible_;
 };
 
 typedef std::map<int,floating_label> label_map;
@@ -510,6 +513,11 @@ void floating_label::move(int xmove, int ymove)
 
 void floating_label::draw(SDL_Surface* screen)
 {
+	if(!visible_) {
+		buf_.assign(NULL);
+		return;
+	}
+
 	if(surf_ == NULL) {
 		TTF_Font* const font = get_font(font_size_);
 		if(font == NULL) {
@@ -566,6 +574,8 @@ bool floating_label::expired() const { return lifetime_ == 0; }
 
 const std::string& floating_label::text() const { return text_; }
 
+void floating_label::show(bool value) { visible_ = value; }
+
 }
 
 namespace font {
@@ -589,6 +599,14 @@ void remove_floating_label(int handle)
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
 		labels.erase(i);
+	}
+}
+
+void show_floating_label(int handle, bool value)
+{
+	const label_map::iterator i = labels.find(handle);
+	if(i != labels.end()) {
+		i->second.show(value);
 	}
 }
 

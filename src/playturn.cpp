@@ -267,7 +267,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 	if(minimap_scrolling_) {
 		//if the game is run in a window, we could miss a LMB up event
-		// if it occrus outside our window.
+		// if it occurs outside our window.
 		// thus, we need to check if the LMB is still down
 		minimap_scrolling_ = SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0;
 		if(minimap_scrolling_) {
@@ -1334,6 +1334,8 @@ void turn_info::write_game_snapshot(config& start) const
 
 	//write out the current state of the map
 	start["map_data"] = map_.write();
+
+	gui_.labels().write(start);
 }
 
 void turn_info::toggle_grid()
@@ -1841,6 +1843,7 @@ void turn_info::label_terrain()
 	                                 NULL,NULL,string_table["label"] + ":",&label);
 	if(res == 0) {
 		gui_.labels().set_label(last_hex_,label);
+		recorder.add_label(label,last_hex_);
 	}
 }
 

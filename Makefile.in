@@ -167,9 +167,9 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive pdf-recursive \
 	check-recursive installcheck-recursive
 DIST_COMMON = README $(dist_man6_MANS) $(dist_noinst_DATA) \
 	$(nobase_dist_pkgdata_DATA) $(srcdir)/Makefile.in \
-	$(srcdir)/configure COPYING INSTALL Makefile.am aclocal.m4 \
-	config.h.in configure configure.ac depcomp install-sh missing \
-	mkinstalldirs
+	$(srcdir)/configure COPYING ChangeLog INSTALL Makefile.am \
+	aclocal.m4 config.h.in configure configure.ac depcomp \
+	install-sh missing mkinstalldirs
 DIST_SUBDIRS = $(SUBDIRS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

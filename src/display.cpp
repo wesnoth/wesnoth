@@ -2481,6 +2481,8 @@ void display::set_team(size_t team)
 {
 	assert(team < teams_.size());
 	currentTeam_ = team;
+
+	labels().recalculate_shroud();
 }
 
 void display::set_playing_team(size_t team)

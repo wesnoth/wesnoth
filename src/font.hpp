@@ -135,6 +135,9 @@ void move_floating_label(int handle, int xmove, int ymove);
 /// removes the floating label given by 'handle' from the screen
 void remove_floating_label(int handle);
 
+/// hides or shows a floating label
+void show_floating_label(int handle, bool show);
+
 const std::string& get_floating_label_text(int handle);
 
 void draw_floating_labels(SDL_Surface* screen);

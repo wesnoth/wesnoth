@@ -221,6 +221,18 @@ void replay::choose_option(int index)
 	add_value("choose",index);
 }
 
+void replay::add_label(const std::string& text, const gamemap::location& loc)
+{
+	config* const cmd = add_command();
+
+	config val;
+
+	loc.write(val);
+	val["text"] = text;
+
+	cmd->add_child("label",val);
+}
+
 void replay::end_turn()
 {
 	config* const cmd = add_command();
@@ -624,6 +636,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 		} else if((child = cfg->child("speak")) != NULL) {
 			dialogs::unit_speak(*child,disp,units);
+		} else if((child = cfg->child("label")) != NULL) {
+			const gamemap::location loc(*child);
+			const std::string& text = (*child)["text"];
+
+			disp.labels().set_label(loc,text);
 		} else {
 			std::cerr << "unrecognized action: '" << cfg->write() << "'\n";
 			throw replay::error();
