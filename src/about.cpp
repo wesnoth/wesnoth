@@ -137,7 +137,7 @@ std::vector<std::string> get_text() {
 		"- David Nečas (Yeti)",
 		"- Mintaka",
 		"- Petr Kopač (Ferda)",
-		"- Petr Kovář (Juans)",
+		"- Petr Kovár (Juans)",
 		"- Sofronius",
 		"- Vít Krčál",
 		"+ ",
