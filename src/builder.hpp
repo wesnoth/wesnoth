@@ -104,6 +104,9 @@ private:
 	const gamemap& map_;
 	tilemap tile_map_;
 
+	typedef std::map<unsigned char, std::vector<gamemap::location> > terrain_by_type_map;
+	terrain_by_type_map terrain_by_type_;
+	
 	typedef std::vector<building_rule> building_ruleset;
 	building_ruleset building_rules_;
 

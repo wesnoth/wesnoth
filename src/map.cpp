@@ -147,6 +147,15 @@ bool gamemap::location::operator<(const gamemap::location& a) const
 	return x < a.x || x == a.x && y < a.y;
 }
 
+gamemap::location gamemap::location::operator-() const
+{
+	location ret;
+	ret.x = -x;
+	ret.y = -y;
+
+	return ret;
+}
+
 gamemap::location gamemap::location::operator+(const gamemap::location& a) const
 {
 	gamemap::location ret = *this;
@@ -154,7 +163,7 @@ gamemap::location gamemap::location::operator+(const gamemap::location& a) const
 	return ret;
 }
 
-gamemap::location &gamemap::location::operator+=(const gamemap::location &a) 
+gamemap::location& gamemap::location::operator+=(const gamemap::location &a) 
 {
 	bool parity = (x & 1) != 0;
 	
@@ -167,6 +176,16 @@ gamemap::location &gamemap::location::operator+=(const gamemap::location &a)
 		y--;
 
 	return *this;
+}
+
+gamemap::location gamemap::location::operator-(const gamemap::location &a) const
+{
+	return operator+(-a);
+}
+
+gamemap::location& gamemap::location::operator-=(const gamemap::location &a)
+{
+	return operator+=(-a);
 }
 
 gamemap::location gamemap::location::get_direction(

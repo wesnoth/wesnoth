@@ -69,8 +69,11 @@ public:
 		bool operator==(const location& a) const;
 		bool operator!=(const location& a) const;
 		// Adds an absolute location to a "delta" location
+		location operator-() const;
 		location operator+(const location &a) const;
 		location &operator+=(const location &a);
+		location operator-(const location &a) const;
+		location &operator-=(const location &a);
 
 		location get_direction(DIRECTION d) const;
 

@@ -42,6 +42,8 @@ const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
 	tile_map_.clear();
+	terrain_by_type_.clear();
+	
 	// For now, rebuild the whole map on each rebuilt_terrain. This is highly slow and
 	// inefficient, but this is simple
 	build_terrains();
@@ -170,8 +172,12 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 	std::vector<std::string>::const_iterator line = lines.begin();
 	
 	//Strips trailing empty lines
-	while(std::find_if(line->begin(),line->end(),config::notspace) == line->end())
+	while(line != lines.end() && std::find_if(line->begin(),line->end(),config::notspace) == line->end()) {
 		line++;
+	}
+	//Break if there only are blank lines
+	if(line == lines.end())
+		return;
 	
 	//If the strings starts with a space, the first line is an odd line, else it is an even one
 	if((*line)[0] == ' ')
@@ -304,6 +310,9 @@ void terrain_builder::parse_config(const config &cfg)
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc)
 {
+	if(!loc.valid())
+		return false;
+	
 	if(rule.location_constraints.valid() && rule.location_constraints != loc)
 		return false;
 	
@@ -398,14 +407,49 @@ void terrain_builder::build_terrains()
 
 	log_scope("terrain_builder::build_terrains");
 
+	//builds the terrain_by_type_ cache
+	for(int x = -1; x <= map_.x(); ++x) {
+		for(int y = -1; y <= map_.y(); ++y) {
+			const gamemap::location loc(x,y);
+			const gamemap::TERRAIN t = map_.get_terrain(loc);
+
+			terrain_by_type_[t].push_back(loc);
+		}
+	}
+
 	for(building_ruleset::const_iterator rule = building_rules_.begin();
 	    rule != building_rules_.end(); ++rule) {
 
-		for(int x = -1; x <= map_.x(); ++x) {
-			for(int y = -1; y <= map_.y(); ++y) {
-				const gamemap::location loc(x,y);
-				if(rule_matches(*rule, loc))
-					apply_rule(*rule, loc);
+		//find a constraint that contains an unique terrain type on the current
+		//rule
+		building_rule::constraint_set::const_iterator constraint;
+		for(constraint = rule->constraints.begin();
+		    constraint != rule->constraints.end(); ++constraint) {
+			
+			if(constraint->second.terrain_types.size() == 1 && (constraint->second.terrain_types[0] != '*')) {
+				break;
+			}
+		}
+
+		if(constraint != rule->constraints.end()) {
+			gamemap::TERRAIN c = constraint->second.terrain_types[0];
+			gamemap::location loc = constraint->second.loc;
+			const std::vector<gamemap::location>& locations = terrain_by_type_[c];
+			
+			for(std::vector<gamemap::location>::const_iterator itor = locations.begin();
+			    itor != locations.end(); ++itor) {
+				
+				if(rule_matches(*rule, *itor - loc)) {
+					apply_rule(*rule, *itor - loc);
+				}
+			}
+		} else {
+			for(int x = -1; x <= map_.x(); ++x) {
+				for(int y = -1; y <= map_.y(); ++y) {
+					const gamemap::location loc(x,y);
+					if(rule_matches(*rule, loc))
+						apply_rule(*rule, loc);
+				}
 			}
 		}
 	}
