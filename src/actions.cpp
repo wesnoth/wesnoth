@@ -1818,7 +1818,7 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 		if(map.on_board(locs[n])) {
 			const unit_map::const_iterator i = units.find(locs[n]);
 			if(i != units.end()) {
-				if(current_team.is_enemy(i->second.side())) {
+				if(i->second.incapacitated() == false && current_team.is_enemy(i->second.side())) {
 					return true;
 				}
 			}
