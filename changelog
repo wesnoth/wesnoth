@@ -5,17 +5,18 @@ CVS HEAD:
    * support for themes
    * enhanced support for resolutions below 1024x768 (e.g. 800x600)
    * very simple chatting is now possible in-game (mouse right-click menu -> speak)
-   * new time of day images, new buttons, checkboxes, panel has been split to top and right-side panel...
+   * new time of day images, attack icons, new buttons, checkboxes, panel has been split to top and right-side panel...
  * medium difficulty level is used by default when starting new campaign
  * snapshot saving, faster loading if you skip replay
  * more unit graphics, animations and sounds
  * healers can heal allies.
  * undeads can not be drained anymore
- * dart damage type changed from pierce to blade, this affects 'Orcish Assassin'
- and 'Orcish Slayer'
+ * dart damage type changed from pierce to blade, this affects 'Orcish Assassin' and 'Orcish Slayer'
  * fixed description for 'Wolf Rider'
+ * changed 'Evil Necromancer' advanceto 'Lich'
  * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic), 60 experience needed to advance
  * reduced movement for Arch Mage and Great Mage to 4
+ * Dwarvish Lord changes: renamed 'tomahawk' to 'hatchet', removed leadership, increased resistance against blade, piercing and impact
  * new scenarios for 'Heir to the Throne' campaign:
    * North Elves
  * scenario balancing for 'Heir to the Throne' campaign:
@@ -34,7 +35,9 @@ CVS HEAD:
  * added 'show team colours' option to preferences dialog
  * added some explanatory tooltips for some unit attributes on sidebar
  * added in flag to show whose turn it currently is
+ * added end turn confirmation when units can still move (requires editing preferences-file - see WesnothPreferences on http://wiki.wesnoth.org for more information)
  * added 'unit list' to context menu
+ * restored 'save game' in the context menu (#7172)
  * multiplayer improvements:
    * enhanced multiplayer game setup
    * random maps
@@ -44,11 +47,15 @@ CVS HEAD:
    * loaded games should now start properly and with right settings
    * there are now flags (and colors) for 10 teams
    * minimap shows FoW and units.
+   * configurable wesnothd port see 'wesnothd --help'
+   * client support for non-standard server ports, syntax: server.address.here:port
  * AI improvements
    * leader seeks for healing as long as his keep is safe
+   * leader captures nearby villages in some situations
    * leader requests help when attacked
-   * attack to use is chosen more effectively
+   * attack is chosen more effectively
    * movement algorithm changes
+   * restructured AI code
  * man-page for wesnoth_editor
  * new translations:
    * swedish
@@ -58,6 +65,7 @@ CVS HEAD:
    * french
  * internationalization string fixes
  * made make_translation and merge_translations compile
+ * fixed "Computer vs Computer" not in string_table (#7295)
  * improved speed of reading cfg-files
  * units in water tiles are displayed partially submerged
  * added support for height adjustment of units
@@ -67,12 +75,17 @@ CVS HEAD:
  * teleport event
  * added several new toys for scenario developers to play with (wesnoth --test to see all thats done)
  * allowed items to set status flags on units
+ * tweaked unit cfg-files for "weapon namespace uniformity" - needed for attack icons
  * implemented new 'team_name' tag to show alliances to replace 'enemy' tag
  * adjusted the way in which images are blitted
  * implemented new widget system with sample: textbox
  * borders of game field show dummy terrain instead of black areas
  * made images use proper transparency, instead of using black as transperant colour
+ * fixed player being able to see enemy unit list on enemy turn (#7312)
+ * fixed unit list not showing data in correct columns for units without name (#7313)
+ * disabled observers using the in-game speak (#7156)
  * fixed client-hosted multiplayer bug where more than two player games were not possible
+ * fixed some multiplayer saving/loading bugs
  * fixed some bugs with loading replays
  * fixed problem with saving at the end of the scenario pointing to the previous scenario
  * fixed problem with units having goto orders at the beginning of scenarios
@@ -88,8 +101,10 @@ CVS HEAD:
  * fixed bug where an invalid side specification for a unit could crash the game
  * fixed problem in Ford of Abez with monsters attacking Li'sar
  * music on intro now has less interference
- * fixed WML parser bug
+ * fixed WML parser bugs
+ * fixed misspelled 'The Siege of Elensefar' scenario filename 
  * many network and wesnothd code fixes and changes to make it a bit more stable
+ * moved network code to mp_connect
  * autotools: 
    * changed AC_ARG_ENABLE in server, editor and tools to fix bug
    * checks for png support in sdl_image and ogg support in sdl_mixer
@@ -97,9 +112,9 @@ CVS HEAD:
    * application icon and menu entries in Gnome with --enable-gnome
    * removed autoconf version 2.57 prerequisite
    * adding autogen.sh, so CVS users don't need autotools installed
- * moved network code to mp_connect
  * a workaround to allow users not using 16 bpp to change video mode
  * changed drawing routines to use more SDL routines, and less direct manipulation of surfaces
+ * removed unnecessary diagnostics
  * code refactoring and cleanups
 
 Version 0.6.1:
