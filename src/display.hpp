@@ -429,9 +429,9 @@ private:
 	bool invalidateGameStatus_;
 
 	struct overlay {
-		overlay(const std::string& img, const std::string& halo,
-		        int halo_handle) : image(image), halo(halo),
-		                           halo_handle(halo_handle) {}
+		overlay(const std::string& img, const std::string& halo_img,
+		        int handle) : image(img), halo(halo_img),
+		                           halo_handle(handle) {}
 		std::string image;
 		std::string halo;
 		int halo_handle;
