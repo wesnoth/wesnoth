@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.12-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-02-13 00:54+0100\n"
+"PO-Revision-Date: 2005-02-28 15:54+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -691,9 +691,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Botande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Bota</"
+"Helande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Hela</"
 "ref> återskänker 8 HP per drag till trupper som står i de intilliggande "
-"rutorna, upp till sammanlagt 18 HP, alternativt botar en trupps förgiftning."
+"rutorna, upp till sammanlagt 18 HP, alternativt botar en trupp från "
+"förgiftning."
 
 #: data/help.cfg:179
 msgid ""
@@ -706,7 +707,7 @@ msgstr ""
 "\n"
 "\n"
 "Kom ihåg att vila kombineras med andra sorters helande, medan byar, "
-"regenerering och vårda/bota inte kan kombineras med varandra. Alla trupper "
+"regenerering och vårda/hela inte kan kombineras med varandra. Alla trupper "
 "återfår sin styrka mellan scenarier."
 
 #: data/help.cfg:184
@@ -1470,15 +1471,13 @@ msgstr "Herre på täppan"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Furste"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Försvarare"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1656,9 +1655,8 @@ msgstr "Flytta din krigare till Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Läs mer"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -2829,7 +2827,7 @@ msgstr ""
 "Förgiftade trupper förlorar 8 HP varje drag, men de kan inte dö av "
 "förgiftning allena: de får aldrig mindre än 1 HP av giftet. Förgiftade "
 "trupper kan botas genom att ställas i en by eller alldeles bredvid en trupp "
-"som har förmågan att 'bota'."
+"som har förmågan att 'hela'."
 
 #: data/tips.cfg:6
 msgid ""
@@ -3138,16 +3136,16 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Botar:\n"
+"Helar:\n"
 "Den här truppen kombinerar örter och andra naturläkemedel med magi för att "
 "återställa trupper snabbare än vad som vanligtvis är möjligt på ett "
 "slagfält.\n"
 "\n"
-"En botare tar hand om alla trupper som står på närliggande rutor i början av "
+"En helare tar hand om alla trupper som står på närliggande rutor i början av "
 "varje drag.\n"
 "Varje trupp kommer att återfå upp till 8 HP per drag.\n"
-"En botare kan sammanlagt återställa högst 18 HP per drag.\n"
-"En trupp som kan bota kan också häva en förgiftning, till priset av att den "
+"En helare kan sammanlagt återställa högst 18 HP per drag.\n"
+"En trupp som kan hela kan också häva en förgiftning, till priset av att den "
 "förgiftade truppen inte återfår några HP under samma drag."
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
@@ -3155,7 +3153,7 @@ msgstr ""
 #: data/units/Saurian_Soothsayer.cfg:20 data/units/White_Mage.cfg:13
 #: data/units/White_Mage.cfg:84
 msgid "cures"
-msgstr "botar"
+msgstr "helar"
 
 #: data/translations/english.cfg:40
 msgid ""
@@ -3174,7 +3172,7 @@ msgstr ""
 "Truppen återställer upp till 4 HP per drag.\n"
 "Truppen kan sammanlagt återställa högst 8 HP per drag.\n"
 "En förgiftad trupp kan inte återställas helt av vård, utan måste söka "
-"tillflykt till en by eller bli få hjälp av en trupp som kan bota."
+"tillflykt till en by eller bli få hjälp av en trupp som kan hela."
 
 #: data/translations/english.cfg:42 data/units/Elvish_Shaman.cfg:11
 #: data/units/Paladin.cfg:20 data/units/Saurian_Icecaster.cfg:19
@@ -4629,6 +4627,9 @@ msgid ""
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Molndrakarna är molnens sanna herrar. Med sin fart och sin förmåga att "
+"spruta eld förintar de otaliga fiender. De kan snabbt slå ner på sitt byte, "
+"och är sedan länge borta igen innan någon kan stoppa dem."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -5090,14 +5091,14 @@ msgid "Elvish Hero"
 msgstr "Alvhjälte"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
-"Alvhjältarna har finjusterat sina stridskunskaper till ett maximum. De "
-"föredrar att slåss i närstrid med svärd, men är även skickliga med bågen."
+"Alvhjältarna har fintrimmat sina stridskunskaper till skrämmande "
+"skicklighet. De föredrar att slåss i närstrid med svärd, men är även "
+"skickliga med bågen."
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
@@ -5455,7 +5456,7 @@ msgstr "Port"
 
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "Dörren öppnar sig enbart för allierade trupper."
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -5968,7 +5969,7 @@ msgstr "Ljusets magiker"
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr "lyser upp, botar"
+msgstr "lyser upp, helar"
 
 #: data/units/Mage_of_Light.cfg:27 data/units/Mage_of_Light.cfg:99
 msgid ""
@@ -5985,7 +5986,7 @@ msgstr ""
 "lysa upp sin omgivning är så stark att rutorna runt honom aldrig upplever "
 "natt. När en trupp är i en ruta bredvid honom så kommer den att slåss som om "
 "det vore dag när det är skymning och skymning när det är natt. Likt en vit "
-"magiker så botar han närliggande trupper."
+"magiker så helar han närliggande trupper."
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:118
 #: data/units/Mermaid_Diviner.cfg:38 data/units/Mermaid_Priestess.cfg:36
@@ -6078,7 +6079,7 @@ msgid ""
 "well as being a potent defense against the unworldly."
 msgstr ""
 "De mer lärda bland sjöfolkets kvinnor studerar ofta de heliga vägarna. Detta "
-"ger dem både förmågan att bota deras sårade kamrater och ett effektivt "
+"ger dem både förmågan att hela deras sårade kamrater och ett effektivt "
 "försvar mot de krafter som inte är av denna världen."
 
 #: data/units/Mermaid_Siren.cfg:3
@@ -6949,7 +6950,7 @@ msgid ""
 "curing their allies they possess knowledge of cold magic."
 msgstr ""
 "Ödlefolkets sökare högaktas som helare, då de kan bistå sina vänner oavsett "
-"terräng eller motstånd. Utöver att de kan bota sina allierade besitter de "
+"terräng eller motstånd. Utöver att de kan hela sina allierade besitter de "
 "kunskaper om frostmagi."
 
 #: data/units/Saurian_Tribalist.cfg:4
@@ -7168,8 +7169,8 @@ msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
-"Dessa gående lik har blivit starka genom sin långa erfarenhet av att slåss "
-"mot de levande."
+"Dessa vandrande döda har blivit starka genom sin långa erfarenhet av att "
+"slåss mot de levande."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
@@ -7388,7 +7389,7 @@ msgstr "blodskyss"
 
 #: data/units/Walking_Corpse.cfg:3
 msgid "Walking Corpse"
-msgstr "Gående lik"
+msgstr "Vandrande död"
 
 #: data/units/Walking_Corpse.cfg:16
 msgid ""
@@ -7396,9 +7397,9 @@ msgid ""
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
-"Gående lik är de dödas kroppar som blivit återuppväckta av mörk magi. Även "
-"om de är svaga i strid, så kan de sprida sin förbannelse till dem som de "
-"dödar, så att de vandödas armé växer."
+"Vandrande döda är de dödas kroppar som blivit återuppväckta av mörk magi. "
+"Även om de är svaga i strid, så kan de sprida sin förbannelse till dem som "
+"de dödar, så att de vandödas armé växer."
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
@@ -7458,10 +7459,9 @@ msgid ""
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam"
 msgstr ""
-"Vita magiker är svaga i strid, men experter på att bota trupper. Trupper som "
-"står bredvid en vit magiker tillfrisknar som om de vilade i en by. Vita "
-"magiker är kraftfulla i strid med vandöda, vilka lider stor skada av deras "
-"ljusbåge."
+"Vita magiker är svaga i strid, men experter på helande. Trupper som står "
+"bredvid en vit magiker tillfrisknar som om de vilade i en by. Vita magiker "
+"är kraftfulla i strid med vandöda, vilka lider stor skada av deras ljusbåge."
 
 #: data/units/White_Mage.cfg:77
 msgid "female^White Mage"
@@ -7636,9 +7636,8 @@ msgid "+English (GB) Translation"
 msgstr "+Brittisk-engelsk översättning"
 
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Rysk översättning"
+msgstr "+Estnisk översättning"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -7870,14 +7869,12 @@ msgid "Scenario Start"
 msgstr "Scenariostart"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Svårighetsgrad"
+msgstr "Svårighetsgrad: "
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Version"
+msgstr "Version: "
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -7940,20 +7937,17 @@ msgid "level"
 msgstr "nivå"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "HP"
+msgstr "HP: "
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "EP"
+msgstr "EP: "
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Förflyttning"
+msgstr "Förflyttning: "
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -8122,7 +8116,7 @@ msgstr "Hämtar kampanj..."
 
 #: src/game.cpp:1174
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Kan inte läsa om filsystemet"
 
 #: src/game.cpp:1185
 msgid "Campaign Installed"
@@ -8205,18 +8199,16 @@ msgid "Play a game against AI opponents"
 msgstr "Spela mot datorn"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Logga in"
+msgstr "Logga in: "
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Språk"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Välj språk"
+msgstr "Välj språk: "
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -8227,29 +8219,24 @@ msgid "' (The game will now exit)"
 msgstr "' (Spelet kommer nu att avslutas)"
 
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Kan befordras till"
+msgstr "Kan befordras till: "
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Förmågor"
+msgstr "Förmågor: "
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Sinnelag"
+msgstr "Sinnelag: "
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "EP för nästa nivå"
+msgstr "EP för nästa nivå: "
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -8370,39 +8357,32 @@ msgid "Map Generator"
 msgstr "Kartgenerator"
 
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
 msgstr "Spelare: "
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Bredd"
+msgstr "Bredd: "
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Höjd"
+msgstr "Höjd: "
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Iterationer"
+msgstr "Iterationer: "
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Kullstorlek"
+msgstr "Kullstorlek: "
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
-msgstr "Byar"
+msgstr "Byar: "
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Landform:"
-msgstr "Landform"
+msgstr "Landform: "
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -8429,9 +8409,8 @@ msgid "Connect to Host"
 msgstr "Anslut till server"
 
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Välj server att ansluta dig till"
+msgstr "Välj server att ansluta till: "
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -8442,30 +8421,28 @@ msgid "You must log in to this server"
 msgstr "Du måste logga in på den här servern."
 
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Ledig plats"
+msgstr "(Ledig plats)"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anonym lokal spelare"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
 msgstr "Datorspelare"
 
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Tom plats)"
 
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Inga fördefinierade grupper i denna era"
 
 #: src/multiplayer_connect.cpp:428
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Kan ej finna lämplig ledare för gruppen $faction"
 
 #: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
@@ -8480,7 +8457,6 @@ msgid "Faction"
 msgstr "Grupp"
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Färg"
 
@@ -8489,7 +8465,6 @@ msgid "Gold"
 msgstr "Guld"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr "Dator mot dator"
 
@@ -8504,7 +8479,7 @@ msgstr "Avbryt"
 
 #: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Scenariot är ogiltigt då det saknar sidor."
 
 #: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
@@ -8527,9 +8502,8 @@ msgid "Empty"
 msgstr "Tom"
 
 #: src/multiplayer_connect.cpp:786
-#, fuzzy
 msgid "Era not available: "
-msgstr "Inga mål tillgängliga"
+msgstr "Eran ej tillgänglig: "
 
 #: src/multiplayer_connect.cpp:821
 msgid "Red"
@@ -8573,7 +8547,7 @@ msgstr "Detta är inte ett sparat gruppspel"
 
 #: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Kan ej finna $era|-eran"
 
 #: src/multiplayer_connect.cpp:939
 msgid ""
@@ -8584,24 +8558,20 @@ msgstr ""
 "@Besegra fiendens ledare"
 
 #: src/multiplayer_connect.cpp:975
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Väntar på att nätverksspelare skall ansluta sig"
+msgstr "Väntar på att spelare skall ansluta sig..."
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
-msgstr "Spelets namn:"
+msgstr "Spelets namn: "
 
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
-msgstr "Era:"
+msgstr "Era: "
 
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
-msgstr "Karta att spela:"
+msgstr "Karta att spela: "
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
@@ -8613,7 +8583,7 @@ msgstr "Åskådare"
 
 #: src/multiplayer_create.cpp:47
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:48
 msgid "Regenerate"
@@ -8666,7 +8636,7 @@ msgstr "Inga sidor angivna."
 
 #: src/multiplayer_create.cpp:116
 msgid "No eras found"
-msgstr ""
+msgstr "Inga eror funna"
 
 #: src/multiplayer_create.cpp:125
 msgid "$login's game"
@@ -8674,7 +8644,7 @@ msgstr "$login|s spel"
 
 #: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Ogiltig era vald"
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
@@ -8685,19 +8655,16 @@ msgid "Turns: "
 msgstr "Drag: "
 
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "obegränsat"
+msgstr "Obegränsat antal drag"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
 msgstr "Byguld: "
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Terrängavdrag"
+msgstr "Terrängavdrag: "
 
 #: src/multiplayer_create.cpp:313
 msgid "Players: "
@@ -8740,19 +8707,16 @@ msgid "Getting game data..."
 msgstr "Hämtar spelinformation..."
 
 #: src/multiplayer_wait.cpp:177
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Det finns inga tillgängliga sidor."
+msgstr "Det finns inga gruppspelssidor tillgängliga i detta spel."
 
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "Era not available"
-msgstr "Inga mål tillgängliga"
+msgstr "Eran ej tillgänglig"
 
 #: src/multiplayer_wait.cpp:207
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Inga sidor angivna."
+msgstr "Inga gruppspelssidor funna"
 
 #: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
@@ -8768,12 +8732,11 @@ msgstr "Filen du försöker öppna är felaktig"
 
 #: src/playlevel.cpp:724
 msgid "Game Over"
-msgstr ""
+msgstr "Spelet är slut"
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Spelet har sparats"
+msgstr "Spelet är slut"
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -8784,33 +8747,28 @@ msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Resterande guld"
+msgstr "Resterande guld: "
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Bonus för tidig seger"
+msgstr "Bonus för tidig seger: "
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "per drag"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Tidigt avklarade drag"
+msgstr "Tidigt avklarade drag: "
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Guld"
+msgstr "Guld: "
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -8818,9 +8776,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% av guldet bibehålls till nästa scenario"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Bibehållet guld"
+msgstr "Bibehållet guld: "
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -8867,9 +8824,8 @@ msgid "Attack Enemy"
 msgstr "Anfall fiende"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Välj vapen:"
+msgstr "Välj vapen: "
 
 #: src/playturn.cpp:1250
 msgid ""
@@ -8939,9 +8895,8 @@ msgid "Recruit"
 msgstr "Rekrytera"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Välj trupp"
+msgstr "Välj trupp: "
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -8990,9 +8945,8 @@ msgstr ""
 "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "nivå"
+msgstr "nivå: "
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -9003,9 +8957,8 @@ msgid "Recall"
 msgstr "Återkalla"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Meddelande"
+msgstr "Meddelande: "
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -9084,9 +9037,8 @@ msgid "Place Label"
 msgstr "Sätt ut namn"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Namn"
+msgstr "Namn: "
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -9123,9 +9075,8 @@ msgstr ""
 "fiendetrupper"
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "osynlig"
+msgstr "osynlig: "
 
 #: src/reports.cpp:111
 msgid ""
@@ -9136,9 +9087,8 @@ msgstr ""
 "nominella hastighet och kan attackera en gång mindre än normalt"
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "långsam"
+msgstr "långsam: "
 
 #: src/reports.cpp:116
 msgid ""
@@ -9150,16 +9100,15 @@ msgid ""
 "1 HP."
 msgstr ""
 "Den här truppen är förgiftad och kommer att förlora 8 HP per drag tills den "
-"kan hitta ett motmedel i en by eller från en allierad med förmågan att "
-"bota.\n"
+"kan hitta ett motmedel i en by eller få hjälp av en allierad med förmågan "
+"att hela.\n"
 "\n"
 "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
 "mindre än 1 HP."
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "förgiftad"
+msgstr "förgiftad: "
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9167,28 +9116,24 @@ msgstr ""
 "Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "sten"
+msgstr "förstenad: "
 
 #: src/reports.cpp:233
 msgid "damage"
-msgstr "Skada"
+msgstr "skada"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Lagenliga trupper"
+msgstr "Lagenliga trupper: "
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Neutrala trupper"
+msgstr "Neutrala trupper: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Kaotiska trupper"
+msgstr "Kaotiska trupper: "
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -9203,9 +9148,8 @@ msgid "Allied village"
 msgstr "Allierad by"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Åskådare"
+msgstr "Åskådare: "
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
@@ -9294,55 +9238,3 @@ msgstr "lagenlig"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "neutral"
-
-#~ msgid "Players"
-#~ msgstr "Spelare"
-
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Lag"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Drag"
-
-#~ msgid "Load Game..."
-#~ msgstr "Öppna spel..."
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#~ msgid "Experience Requirements: "
-#~ msgstr "Erfarenhetskrav: "
-
-#~ msgid ""
-#~ "The game was unable to bind to the port needed to host games over the "
-#~ "network. Network players will be unable to connect to this game"
-#~ msgstr ""
-#~ "Spelet kunde inte öppna porten som behövs för att agera värddator över "
-#~ "nätverket. Nätverksspelare kommer inte att kunna koppla upp sig mot det "
-#~ "här spelet."
-
-#~ msgid "Warning"
-#~ msgstr "Varning"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Hämtar spellista..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Spelet har blivit avbrutet"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "Den sida som du har valt är inte längre tillgänglig"
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Visa repris av spelet fram till senaste gången du sparade?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "<no games open>"
-#~ msgstr "<inga spel pågår>"
