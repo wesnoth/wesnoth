@@ -3,15 +3,15 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2005.
+# MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-30 01:34+0900\n"
+"PO-Revision-Date: 2005-04-05 01:42+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
@@ -738,7 +738,7 @@ msgid ""
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
 "\n"
-"維持費には２つの主要な例外があります。 ひとつめは、 特性として 「忠誠」を持つ"
+"維持費には２つの主要な例外があります。 ひとつめは、 特性として 「忠義」を持つ"
 "ユニットは、 実際のレベルに関係なく維持費１として 数えられることです。 ふたつ"
 "めは、 シナリオ開始時のユニット(KonradやDelfadorなど)や、 シナリオの途中で加"
 "わったユニット(「王位を継ぐ者」のシナリオ２での騎兵など)には 維持費がかからな"
@@ -824,11 +824,11 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<header>text=忠誠</header>\n"
+"<header>text=忠義</header>\n"
 "\n"
-"「忠誠」を持つユニットは、レベルに関係なく維持費が１ですむ。\n"
+"「忠義」を持つユニットは、レベルに関係なく維持費が１ですむ。\n"
 "\n"
-"忠誠はレベル１のユニットには 効果がないため、 初期のキャンペーンでは 意味があ"
+"忠義はレベル１のユニットには 効果がないため、 初期のキャンペーンでは 意味があ"
 "りませんが、 一度ユニットがレベルアップし始めれば、 一連の キャンペーンを通し"
 "て、 かなりのゴールドを 節約できることになります。"
 
@@ -1169,7 +1169,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
 msgid "An Island"
-msgstr "「島」"
+msgstr "島"
 
 #: data/scenarios/multiplayer/An_Island.cfg:10
 msgid ""
@@ -1178,8 +1178,9 @@ msgid ""
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
 msgstr ""
-"独立あるいはチームプレーに的した４人用マップ、中央の島を 北西: 森に支配された"
-"地域、北東: 混在、南西：砂漠が混在した平地、山岳地帯"
+"個別、あるいはチームプレーに適した４人用マップで、島の残りの中央の支配が勝利"
+"となる。 北西：森林地域、 北東：雪混じりの平地、 南西：砂漠の平地、 南東：山"
+"岳地帯"
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -2505,7 +2506,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
-msgstr "現在の目標："
+msgstr "現在の目標:"
 
 #: data/scenarios/tutorial/utils.cfg:55
 msgid "Death of Delfador"
@@ -2750,11 +2751,11 @@ msgid ""
 "'Resistance' to see how much resistance a unit has against different attack "
 "types."
 msgstr ""
-"戦闘には６種類ある：突き刺し、刃物、突進、炎、冷気、そして神聖な攻撃である。"
-"それぞれのユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上"
-"で右クリックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユ"
-"ニットがそれぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ること"
-"ができる。"
+"戦闘には６種類、貫通、剣、打撃、 火炎、冷気、そして神聖の攻撃がある。それぞれ"
+"のユニットは攻撃の種類によってて異なる弱点を持っている。ユニットの上で右ク"
+"リックして、「ユニットの解説」を選択し、「耐性」をクリックすると、ユニットが"
+"それぞれの攻撃の種類に対してどのくらい抵抗力を持っているかを見ることができ"
+"る。"
 
 #: data/tips.cfg:4
 msgid ""
@@ -2841,6 +2842,8 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
+"馬に乗ったユニットは全般的に、 剣や打撃の攻撃には耐えられるが、 弓や槍などの "
+"貫通する武器での攻撃には弱い。"
 
 #: data/tips.cfg:13
 msgid ""
@@ -2848,29 +2851,37 @@ msgid ""
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
+"敵ユニットにとどめの一撃を与えることが、 経験を得る最も良い方法である。 敵を"
+"殺したユニットは、 その敵のレベルの 8倍の 経験値を得られる。"
 
 #: data/tips.cfg:14
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
+"エルフのユニットは、 森における移動や戦闘が 得意である。 ドワーフのユニット"
+"は、 丘や山における移動や攻撃を 得意とする。"
 
 #: data/tips.cfg:15
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
+"忍耐はしばしば鍵となる。 悪条件や少数軍で攻撃するよりも、 より良い条件になる"
+"まで待ってから 攻撃するとよい。"
 
 #: data/tips.cfg:16
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
+"もし多方面からの攻撃を受けたなら、 敵ユニットを遅らせるため、 何方向かに 損害"
+"覚悟のユニットを送るのも 良い考えかもしれない。"
 
 #: data/tips.cfg:17
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
-msgstr ""
+msgstr "退却や再編成を怖れてはいけない。 それは、 しばしば勝利への鍵となる。"
 
 #: data/tips.cfg:18
 msgid ""
@@ -2879,6 +2890,9 @@ msgid ""
 "finish early. You will always earn more gold this way than through capturing "
 "villages and waiting for turns to run out."
 msgstr ""
+"多くのキャンペーンにおいて、早期終了に対するボーナスゴールドを、 マップ上の村"
+"の数と、 早々に終了したターン数に応じて、受け取る。 この方が、 村を占領して"
+"ターンがつきるまで待ったりするよりも 多くのゴールドを稼ぐことになるだろう。"
 
 #: data/tips.cfg:19
 msgid ""
@@ -2887,6 +2901,10 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
+"あなたのリーダーは、 スタート地点だけでなく、 城内のどの主塔からも ユニットを"
+"雇ったり召還することができる。 敵から主塔を奪って、 そこから雇ったりもでき"
+"る。 また、 あなたの同盟軍のあるものは、 主塔の場所をあなたのために空けて、 "
+"そこから雇うことができるように してくれるかもしれない。"
 
 #: data/tips.cfg:20
 msgid ""
@@ -2901,6 +2919,8 @@ msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
+"リーダーシップ能力をもつユニットは、 同陣営で 自分より低レベルの 隣接するユ"
+"ニットの戦闘力を より良くしてくれる。"
 
 #: data/tips.cfg:22
 msgid ""
@@ -2908,38 +2928,51 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"一般的に、 未占拠の村の隣に移動することは避けた方がよい。 敵ユニットがその村"
+"に移動してきて、 あなたを攻撃するかもしれない。 その村での防御力と 治療効果を"
+"楽しみながら。"
 
 #: data/tips.cfg:23
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
+"能力や特性の上にマウスカーソルをのせると、 その能力や特性についての説明が 示"
+"される。"
 
 #: data/tips.cfg:24
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"負傷したユニットを 回復のために ふるい分けるには、 ユニットのラインを 使うと"
+"よい。"
 
 #: data/tips.cfg:25
 msgid "Read the hotkeys list in the preferences menu."
-msgstr ""
+msgstr "設定メニューのホットキーの一覧を 読んでみよ。"
 
 #: data/tips.cfg:26
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"もし、ユニットを動かしても、 攻撃をしたり、 何も追加情報を発見していないな"
+"ら、 'u'を押して その移動を元に戻す(アンドゥ)ことができる。"
 
 #: data/tips.cfg:27
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"敵ユニットがどれだけの距離を移動できるかは、 マウスカーソルをそのユニットの上"
+"に 当てることで、 見ることができる。"
 
 #: data/tips.cfg:28
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"治療する者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、 あなた"
+"を戦いに勝利させてくれるだろう。"
 
 #: data/tips.cfg:29
 msgid ""
@@ -2947,16 +2980,21 @@ msgid ""
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
+"「遅化」攻撃の能力は敵ユニットを遅くするが、 普段よりも攻撃回数を1回少なくも"
+"する。 それゆえ、 少ない強力な攻撃を持つ ユニットに対して、 非常に効果的であ"
+"る。"
 
 #: data/tips.cfg:30
 msgid "Holy attacks are very powerful against undead."
-msgstr ""
+msgstr "神聖な攻撃はアンデッドに対して大変強力である。"
 
 #: data/tips.cfg:31
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"ユニットはレベルが上がると回復する。 これを賢く使えば、 戦いに逆転することも"
+"できる。"
 
 #: data/tips.cfg:32
 msgid ""
@@ -2966,7 +3004,7 @@ msgstr "突撃ユニットは、 一撃で倒すことのできる 敵に対し�
 
 #: data/traits.cfg:4 data/translations/english.cfg:61
 msgid "loyal"
-msgstr "忠誠"
+msgstr "忠義"
 
 #: data/traits.cfg:5
 msgid "Zero upkeep"
@@ -3177,7 +3215,7 @@ msgid ""
 "Loyal:\n"
 "Never more than 1 upkeep."
 msgstr ""
-"忠誠:\n"
+"忠義:\n"
 "維持費用が１より大きくはなりません。"
 
 #: data/translations/english.cfg:66
@@ -3374,19 +3412,19 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name の橋を $name が渡っている"
+msgstr "$name の橋, $name の渡"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "$name の高速道路 $name が通る $name の道"
+msgstr "$name の高速道路, $name の通り, $name の道"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
-msgstr "$name 川、川 $name"
+msgstr "$name 川,$name 河"
 
 #: data/translations/english.cfg:135
 msgid "$name Forest,$name's Forest"
-msgstr "$name 森、 $name の森"
+msgstr "$name 森,$name の森"
 
 #: data/translations/english.cfg:136
 msgid "$name Lake"
@@ -3398,7 +3436,7 @@ msgstr ""
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr "$name|harbor,$name|port"
+msgstr "$name|湾,$name|港"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
@@ -3406,7 +3444,7 @@ msgstr ""
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|橋,$river|橋,$river|橋,$name|大橋,$name|橋"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
@@ -3414,7 +3452,7 @@ msgstr ""
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|森,$name|森,$name|森,$name 森"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
@@ -3423,7 +3461,7 @@ msgstr ""
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr ""
+msgstr "$name|山,$name|山,$name|岳,$name|山脈,$name|山脈,$name|岳,$name|岳"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -7025,15 +7063,16 @@ msgstr "閉じる"
 
 #: src/actions.cpp:105
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "雇うためのリーダーがいません。"
 
 #: src/actions.cpp:109
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
+"ユニットを雇ったり 召還するためには、 リーダーが 主塔にいなければなりません。"
 
 #: src/actions.cpp:126
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "ユニットを雇うための 城タイルの空きがありません。"
 
 #: src/actions.cpp:216
 msgid "none"
@@ -7051,19 +7090,19 @@ msgstr "投射"
 
 #: src/actions.cpp:331 src/actions.cpp:431
 msgid "base damage"
-msgstr ""
+msgstr "基本ダメージ"
 
 #: src/actions.cpp:361 src/actions.cpp:461 src/actions.cpp:470
 msgid "Doubled"
-msgstr ""
+msgstr "二倍"
 
 #: src/actions.cpp:369
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "攻撃側の以下に対する抵抗力："
 
 #: src/actions.cpp:369
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "攻撃側の以下の攻撃に対する受けやすさ："
 
 #: src/actions.cpp:383 src/actions.cpp:501
 msgid "total damage"
@@ -7071,19 +7110,19 @@ msgstr "総ダメージ"
 
 #: src/actions.cpp:479
 msgid "Halved"
-msgstr ""
+msgstr "半減"
 
 #: src/actions.cpp:487
 msgid "defender resistance vs"
-msgstr ""
+msgstr "防御側の以下に対する抵抗力："
 
 #: src/actions.cpp:487
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "防御側の以下の攻撃に対する受けやすさ："
 
 #: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:1007
 msgid "poisoned"
-msgstr "毒をもっている"
+msgstr "毒を受けた"
 
 #: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:1003
 msgid "slowed"
@@ -7119,11 +7158,11 @@ msgstr "(続けるには $hotkey を押して下さい)"
 
 #: src/dialogs.cpp:99
 msgid "Advance Unit"
-msgstr ""
+msgstr "ユニットの昇進"
 
 #: src/dialogs.cpp:100
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "この勝利ユニットは何になりますか？"
 
 #: src/dialogs.cpp:169
 msgid "No objectives available"
@@ -7151,7 +7190,7 @@ msgstr "このゲームを本当に削除しますか？"
 
 #: src/dialogs.cpp:348
 msgid "%a %b %d %H:%M %Y"
-msgstr ""
+msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:361
 msgid "#(Invalid)"
@@ -7215,6 +7254,9 @@ msgid ""
 "Wesnoth. Would you like to update these to the latest version? This may take "
 "some time."
 msgstr ""
+"あなたの保存用ディレクトリには、 旧バージョンの Battle for Wesnoth からのファ"
+"イルが 含まれています。 これらを最新バージョンに 更新しますか？ これには、 "
+"少々時間がかかります。"
 
 #: src/dialogs.cpp:443
 msgid ""
@@ -7222,6 +7264,9 @@ msgid ""
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
+"あなたの保存用ディレクトリには、 このバージョンの Battle for Wesnoth で作成し"
+"たとは思えないファイルが 含まれています。 これらのファイルをゲームに登録しま"
+"すか？"
 
 #: src/dialogs.cpp:513
 msgid "Show replay"
@@ -7262,11 +7307,11 @@ msgstr "健康"
 
 #: src/display.cpp:999
 msgid "invisible"
-msgstr ""
+msgstr "透明"
 
 #: src/filechooser.cpp:38
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:492
 #: src/multiplayer_create.cpp:52 src/multiplayer_wait.cpp:148
@@ -7311,7 +7356,7 @@ msgstr "不明なシナリオ: '"
 
 #: src/game.cpp:620
 msgid "The Battle for Wesnoth"
-msgstr ""
+msgstr "The Battle for Wesnoth"
 
 #: src/game.cpp:848 src/multiplayer_connect.cpp:898
 msgid ""
@@ -7537,11 +7582,11 @@ msgstr "Battle for Wesnoth"
 
 #: src/game_events.cpp:569
 msgid "Victory:"
-msgstr "勝利条件："
+msgstr "勝利条件:"
 
 #: src/game_events.cpp:572
 msgid "Defeat:"
-msgstr "敗北条件："
+msgstr "敗北条件:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -7613,17 +7658,19 @@ msgstr "あるいは"
 
 #: src/help.cpp:1346
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
+msgstr "この地形は、移動や防御において $terrains として作用します。"
 
 #: src/help.cpp:1348
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr ""
+msgstr "最良の修正をもつ地形が、 自動的に選択されます。"
 
 #: src/help.cpp:1352
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
+"この地形は主塔のように作用します。 すなわち、リーダーがこの地形をもつ地点にい"
+"れば、 ユニットを雇うことができます。"
 
 #: src/help.cpp:1354
 msgid ""
@@ -7855,7 +7902,7 @@ msgstr "使用マップ:"
 
 #: src/multiplayer_create.cpp:49
 msgid "Fog Of War"
-msgstr ""
+msgstr "戦争の霧"
 
 #: src/multiplayer_create.cpp:51
 msgid "Observers"
@@ -7931,7 +7978,7 @@ msgstr "名前を入れて下さい。"
 
 #: src/multiplayer_create.cpp:201
 msgid "Turns: "
-msgstr "ターン:"
+msgstr "ターン数: "
 
 #: src/multiplayer_create.cpp:203
 msgid "Unlimited Turns"
@@ -7939,7 +7986,7 @@ msgstr "無制限ターン"
 
 #: src/multiplayer_create.cpp:210
 msgid "Village Gold: "
-msgstr "村からの収入:"
+msgstr "村からの収入: "
 
 #: src/multiplayer_create.cpp:216
 msgid "Experience Modifier: "
@@ -7947,7 +7994,7 @@ msgstr "経験の修正: "
 
 #: src/multiplayer_create.cpp:319
 msgid "Players: "
-msgstr "プレイヤー数:"
+msgstr "プレイヤー数: "
 
 #: src/multiplayer_create.cpp:379 src/multiplayer_lobby.cpp:30
 msgid "Create Game"
@@ -8363,7 +8410,7 @@ msgstr "文字「 $search 」を含む ラベル名や ユニットは見つか�
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr "保存テーマ設定： "
+msgstr "保存テーマ設定: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
@@ -8583,13 +8630,15 @@ msgstr "ゲームに慣れるためのチュートリアルを開始します"
 
 #: src/titlescreen.cpp:195
 msgid "Start a new single player campaign"
-msgstr "新しいシングルプレイヤーキャンペーンを開始します"
+msgstr "新たに一人用キャンペーンを開始します"
 
 #: src/titlescreen.cpp:196
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
-msgstr "マルチプレイヤーゲームまたはシングルシナリオをAIと対戦します"
+msgstr ""
+"マルチプレイヤーゲーム （交互に一台か、 LAN、 あるいはインターネット）、 また"
+"はAIとの対戦で単一シナリオをプレイします。"
 
 #: src/titlescreen.cpp:197
 msgid "Load a single player saved game"
@@ -8597,7 +8646,7 @@ msgstr "シングルプレイヤーゲームを読み込みます"
 
 #: src/titlescreen.cpp:198
 msgid "Change the language"
-msgstr "言語の変更を行います"
+msgstr "言語を変更します"
 
 #: src/titlescreen.cpp:199
 msgid "Configure the game's settings"
