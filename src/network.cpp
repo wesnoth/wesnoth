@@ -1,12 +1,12 @@
 #include "global.hpp"
 
+#include "serialization/binary_wml.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "network_worker.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
-#include "serialization/binary_wml.hpp"
 
 #include "SDL_net.h"
 
@@ -101,6 +101,7 @@ void check_error()
 }
 
 SDLNet_SocketSet socket_set = 0;
+std::set<network::connection> waiting_sockets;
 typedef std::vector<network::connection> sockets_list;
 sockets_list sockets;
 
@@ -184,6 +185,7 @@ manager::~manager()
 		worker_pool_man = NULL;
 		SDLNet_FreeSocketSet(socket_set);
 		socket_set = 0;
+		waiting_sockets.clear();
 		SDLNet_Quit();
 	}
 }
@@ -270,6 +272,8 @@ connection connect(const std::string& host, int port)
 		throw network::error("Could not add socket to socket set");
 	}
 
+	waiting_sockets.insert(connect);
+
 	sockets.push_back(connect);
 	wassert(schemas.count(connect) == 0);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
@@ -349,6 +353,7 @@ connection accept_connection()
 			throw network::error("Could not add socket to socket set");
 		}
 
+
 		const connection connect = create_connection(sock,"",0);
 
 		//send back their connection number
@@ -359,6 +364,7 @@ connection accept_connection()
 			throw network::error("Could not send initial handshake");
 		}
 
+		waiting_sockets.insert(connect);
 		sockets.push_back(connect);
 		wassert(schemas.count(connect) == 0);
 		schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
@@ -398,6 +404,7 @@ void disconnect(connection s)
 
 		const TCPsocket sock = get_socket(s);
 
+		waiting_sockets.erase(s);
 		SDLNet_TCP_DelSocket(socket_set,sock);
 		SDLNet_TCP_Close(sock);
 
@@ -459,7 +466,7 @@ connection receive_data(config& cfg, connection connection_num)
 
 	const int res = SDLNet_CheckSockets(socket_set,0);
 
-	for(sockets_list::const_iterator i = sockets.begin(); res != 0 && i != sockets.end(); ++i) {
+	for(std::set<network::connection>::iterator i = waiting_sockets.begin(); res != 0 && i != waiting_sockets.end(); ) {
 		connection_details& details = get_connection_details(*i);
 		const TCPsocket sock = details.sock;
 		if(SDLNet_SocketReady(sock)) {
@@ -479,8 +486,11 @@ connection receive_data(config& cfg, connection connection_num)
 				continue;
 			}
 
-			network_worker_pool::receive_data(sock);
+			waiting_sockets.erase(i++);
 			SDLNet_TCP_DelSocket(socket_set,sock);
+			network_worker_pool::receive_data(sock);
+		} else {
+			++i;
 		}
 	}
 
@@ -502,13 +512,15 @@ connection receive_data(config& cfg, connection connection_num)
 	}
 
 	if(result == 0) {
+		assert(false);
 		return result;
 	}
+	waiting_sockets.insert(result);
 
 	const schema_map::iterator schema = schemas.find(result);
 	wassert(schema != schemas.end());
 
-	read_compressed(cfg, std::string(buf.begin(), buf.end()), schema->second.incoming);
+	read_compressed(cfg,std::string(buf.begin(),buf.end()),schema->second.incoming);
 
 	return result;
 }
@@ -556,7 +568,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	const schema_map::iterator schema = schemas.find(connection_num);
 	wassert(schema != schemas.end());
 
-	const std::string& value = write_compressed(cfg, schema->second.outgoing);
+	const std::string& value = write_compressed(cfg,schema->second.outgoing);
 
 //	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
 //	          << cfg.write() << "'\n--- END SEND DATA\n";

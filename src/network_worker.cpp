@@ -213,7 +213,6 @@ manager::~manager()
 		{
 			const threading::lock lock(*global_mutex);
 			managed = false;
-			sockets_locked.clear();
 			socket_errors = 0;
 		}
 		cond->notify_all();
@@ -230,6 +229,8 @@ manager::~manager()
 		delete cond;
 		global_mutex = NULL;
 		cond = NULL;
+
+		sockets_locked.clear();
 
 		LOG_NW << "exiting manager::~manager()\n";
 	}
