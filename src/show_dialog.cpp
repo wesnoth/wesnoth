@@ -501,6 +501,16 @@ int show_dialog(display& disp, SDL_Surface* image,
 			return -1;
 		}
 
+		if(!key_down && key[KEY_ESCAPE] &&
+		   (type == YES_NO || type == OK_CANCEL)) {
+
+			if(menu_.height() == 0) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
+
 		if(menu_.selection() != cur_selection || first_time) {
 			cur_selection = menu_.selection();
 
