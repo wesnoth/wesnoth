@@ -322,6 +322,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	turn_info::floating_textbox textbox_info;
 
 	try {
+		gui.create_buttons();
 		gui.adjust_colours(0,0,0);
 		game_events::fire("prestart");
 
@@ -331,7 +332,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		}
 	
 		gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
-	
+
 		bool replaying = (recorder.at_end() == false);
 	
 		//if a team is specified whose turn it is, it means we're loading a game
@@ -354,12 +355,14 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
+				events::raise_draw_event();
 				game_events::fire("start");
 				gui.draw();
 			}
 
 			gui.new_turn();
 			gui.invalidate_game_status();
+			events::raise_draw_event();
 
 			std::cerr << "turn: " << turn++ << "\n";
 

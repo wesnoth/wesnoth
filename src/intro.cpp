@@ -41,6 +41,7 @@ void show_intro(display& screen, const config& data,
 {
 	std::cerr << "showing intro sequence...\n";
 	const events::resize_lock stop_resizing;
+	const events::event_context context;
 
 	const std::string& music = data["music"];
 	if(music != "") {
@@ -89,9 +90,6 @@ bool show_intro_part(display& screen, const config& part,
 	gui::button next_button(screen,string_table["next_button"] + ">>>");
 	gui::button skip_button(screen,string_table["skip_button"]);
 
-	next_button.set_location(screen.x()-200,screen.y()-150);
-	skip_button.set_location(screen.x()-200,screen.y()-100);
-
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
 			0,0,0,1.0,screen.video().getSurface());
 	const std::string& image_name = part["image"];
@@ -122,7 +120,11 @@ bool show_intro_part(display& screen, const config& part,
 
 		next_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+20);
 		skip_button.set_location(dstrect.x+dstrect.w-40,dstrect.y+dstrect.h+70);
+	} else {
+		next_button.set_location(screen.x()-200,screen.y()-150);
+		skip_button.set_location(screen.x()-200,screen.y()-100);
 	}
+
 
 	next_button.draw();
 	skip_button.draw();
@@ -223,6 +225,8 @@ bool show_intro_part(display& screen, const config& part,
 			return false;
 
 		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
 		screen.video().flip();
 
 		if(!skip || j == story.end())

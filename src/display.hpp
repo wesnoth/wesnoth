@@ -319,6 +319,8 @@ public:
 
 	void remove_highlighted_loc(const gamemap::location &hex);
 
+	void create_buttons();
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -420,7 +422,6 @@ private:
 	theme theme_;
 	terrain_builder builder_;
 	
-	void create_buttons();
 	std::vector<gui::button> buttons_;
 
 	bool firstTurn_;

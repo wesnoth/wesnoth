@@ -668,9 +668,9 @@ void show_preferences_dialog(display& disp)
 			set_colour_cursors(colour_cursors_button.checked());
 		}
 
-		music_slider.process();
-		sound_slider.process();
-		scroll_slider.process();
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
 
 		set_sound_volume(sound_slider.value());
 		set_music_volume(music_slider.value());
@@ -679,7 +679,6 @@ void show_preferences_dialog(display& disp)
 		disp.update_display();
 
 		SDL_Delay(20);
-		events::pump();
 	}
 }
 
@@ -869,15 +868,18 @@ void show_hotkeys_dialog (display & disp)
 			hotkey::save_hotkeys(prefs);
 			redraw_all = true;
 		}
-		disp.update_display ();
 
 		menu_.process (mousex, mousey, left_button, false,
 			       false, false, false);
-		
-		SDL_Delay (10);
-		events::pump ();
-	}
 
+		events::pump();
+		events::raise_process_event();
+		events::raise_draw_event();
+		
+		disp.update_display();
+
+		SDL_Delay(10);
+	}
 }
 
 bool green_confirm()

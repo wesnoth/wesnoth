@@ -35,6 +35,8 @@
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect);
 
+bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
+
 struct free_sdl_surface {
 	void operator()(SDL_Surface* surface) const { SDL_FreeSurface(surface); }
 };

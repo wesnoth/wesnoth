@@ -8,7 +8,7 @@
 
 #include <algorithm>
 #include <cassert>
-#include <stack>
+#include <deque>
 #include <utility>
 #include <vector>
 
@@ -35,7 +35,7 @@ struct context
 {
 	context() : focused_handler(-1) {}
 	void add_handler(handler* ptr);
-	void remove_handler(handler* ptr);
+	bool remove_handler(handler* ptr);
 	int cycle_focus();
 	void set_focus(const handler* ptr);
 
@@ -53,6 +53,7 @@ void context::add_handler(handler* ptr)
 
 void context::delete_handler_index(size_t handler)
 {
+	std::cerr << "delete handler index " << handler << "\n";
 	if(focused_handler == int(handler)) {
 		focused_handler = -1;
 	} else if(focused_handler > int(handler)) {
@@ -61,14 +62,19 @@ void context::delete_handler_index(size_t handler)
 
 	handlers.erase(handlers.begin()+handler);
 
-	cycle_focus();
+	std::cerr << "done delete handler index " << handler << "\n";
 }
 
-void context::remove_handler(handler* ptr)
+bool context::remove_handler(handler* ptr)
 {
 	if(handlers.empty()) {
-		return;
+		return false;
 	}
+
+	std::cerr << "remove handler...\n";
+
+	static int depth = 0;
+	++depth;
 
 	//the handler is most likely on the back of the events array,
 	//so look there first, otherwise do a complete search.
@@ -78,8 +84,22 @@ void context::remove_handler(handler* ptr)
 		const std::vector<handler*>::iterator i = std::find(handlers.begin(),handlers.end(),ptr);
 		if(i != handlers.end()) {
 			delete_handler_index(i - handlers.begin());
+		} else {
+			return false;
 		}
 	}
+
+	--depth;
+
+	if(depth == 0) {
+		cycle_focus();
+	} else {
+		focused_handler = -1;
+	}
+
+	std::cerr << "done remove handler...\n";
+	
+	return true;
 }
 
 int context::cycle_focus()
@@ -111,33 +131,37 @@ void context::set_focus(const handler* ptr)
 //a new event context is created when e.g. a modal dialog is opened, and then
 //closed when that dialog is closed. Each context contains a list of the handlers
 //in that context. The current context is the one on the top of the stack
-std::stack<context> event_contexts;
+std::deque<context> event_contexts;
 
 } //end anon namespace
 
 event_context::event_context()
 {
-	event_contexts.push(context());
+	event_contexts.push_back(context());
 }
 
 event_context::~event_context()
 {
 	assert(event_contexts.empty() == false);
 
-	event_contexts.pop();
+	event_contexts.pop_back();
 }
 
 handler::handler() : unicode_(SDL_EnableUNICODE(1))
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
-	event_contexts.top().add_handler(this);
+	event_contexts.back().add_handler(this);
 }
 
 handler::~handler()
 {
 	assert(event_contexts.empty() == false);
 
-	event_contexts.top().remove_handler(this);
+	for(std::deque<context>::reverse_iterator i = event_contexts.rbegin(); i != event_contexts.rend(); ++i) {
+		if(i->remove_handler(this)) {
+			break;
+		}
+	}
 
 	SDL_EnableUNICODE(unicode_);
 }
@@ -145,14 +169,14 @@ handler::~handler()
 void focus_handler(const handler* ptr)
 {
 	if(event_contexts.empty() == false) {
-		event_contexts.top().set_focus(ptr);
+		event_contexts.back().set_focus(ptr);
 	}
 }
 
 void cycle_focus()
 {
 	if(event_contexts.empty() == false) {
-		event_contexts.top().cycle_focus();
+		event_contexts.back().cycle_focus();
 	}
 }
 
@@ -166,7 +190,7 @@ bool has_focus(const handler* ptr)
 		return true;
 	}
 
-	const int index = event_contexts.top().focused_handler;
+	const int index = event_contexts.back().focused_handler;
 	
 	//if no-one has focus at the moment, this handler obviously wants
 	//focus, so give it to it.
@@ -174,7 +198,7 @@ bool has_focus(const handler* ptr)
 		focus_handler(ptr);
 		return true;
 	} else {
-		return event_contexts.top().handlers[index] == ptr;
+		return event_contexts.back().handlers[index] == ptr;
 	}
 }
 
@@ -261,7 +285,7 @@ void pump()
 
 		if(event_contexts.empty() == false) {
 
-			const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+			const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
 
 			//events may cause more event handlers to be added and/or removed,
 			//so we must use indexes instead of iterators here.
@@ -282,7 +306,7 @@ void raise_process_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -296,7 +320,7 @@ void raise_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -310,7 +334,7 @@ void raise_volatile_draw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
@@ -324,7 +348,7 @@ void raise_volatile_undraw_event()
 {
 	if(event_contexts.empty() == false) {
 
-		const std::vector<handler*>& event_handlers = event_contexts.top().handlers;
+		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
 
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.

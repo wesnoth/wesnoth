@@ -194,11 +194,13 @@ void menu::calculate_position()
 	if(selected_ < first_item_on_screen_) {
 		first_item_on_screen_ = selected_;
 		itemRects_.clear();
+		drawn_ = false;
 	}
 	
 	if(selected_ >= first_item_on_screen_ + int(max_items_onscreen())) {
 		first_item_on_screen_ = selected_ - (max_items_onscreen() - 1);
 		itemRects_.clear();
+		drawn_ = false;
 	}
 }
 
@@ -209,7 +211,8 @@ void menu::key_press(SDLKey key)
 			if(!click_selects_ && selected_ > 0) {
 				--selected_;
 				calculate_position();
-				drawn_ = false;
+				undrawn_items_.insert(selected_);
+				undrawn_items_.insert(selected_+1);
 			}
 
 			break;
@@ -219,7 +222,8 @@ void menu::key_press(SDLKey key)
 			if(!click_selects_ && selected_ < int(items_.size())-1) {
 				++selected_;
 				calculate_position();
-				drawn_ = false;
+				undrawn_items_.insert(selected_);
+				undrawn_items_.insert(selected_-1);
 			}
 
 			break;
@@ -258,9 +262,11 @@ void menu::key_press(SDLKey key)
 	if(key >= SDLK_1 && key <= SDLK_9 && num_selects_) {
 		const int pos = key - SDLK_1;
 		if(size_t(pos) < items_.size()) {
+			undrawn_items_.insert(selected_);
 			selected_ = pos;
 			calculate_position();
-			drawn_ = false;
+			undrawn_items_.insert(selected_);
+
 		}
 	}
 }
@@ -284,8 +290,9 @@ void menu::handle_event(const SDL_Event& event)
 
 		const int item = hit(x,y);
 		if(item != -1) {
+			undrawn_items_.insert(selected_);
 			selected_ = item;
-			drawn_ = false;
+			undrawn_items_.insert(selected_);
 
 			if(click_selects_) {
 				show_result_ = true;
@@ -512,7 +519,7 @@ void menu::draw_item(int item)
 			}
 
 		} else {
-			const SDL_Rect& text_size = font::draw_text(NULL,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,rect.y);
+			const SDL_Rect& text_size = font::text_area(str,menu_font_size);
 			const size_t y = rect.y + (rect.h - text_size.h)/2;
 			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,y);
 		}
@@ -522,10 +529,23 @@ void menu::draw_item(int item)
 
 void menu::draw()
 {
-	if(x_ == 0 && y_ == 0 || drawn_) {
+	if(x_ == 0 && y_ == 0 || drawn_ && undrawn_items_.empty()) {
 		return;
 	}
 
+	if(drawn_) {
+		for(std::set<size_t>::const_iterator i = undrawn_items_.begin(); i != undrawn_items_.end(); ++i) {
+			if(*i < items_.size()) {
+				draw_item(*i);
+				update_rect(get_item_rect(*i));
+			}
+		}
+
+		undrawn_items_.clear();
+		return;
+	}
+
+	undrawn_items_.clear();
 	drawn_ = true;
 
 	// update enabled/disabled status for up/down buttons

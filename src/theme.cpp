@@ -284,6 +284,8 @@ bool theme::set_resolution(const SDL_Rect& screen)
 			context_ = new_menu;
 		else
 			menus_.push_back(new_menu);
+
+		std::cerr << "done adding menu...\n";
 	}
 
 	return result;

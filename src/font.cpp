@@ -190,6 +190,31 @@ const SDL_Color& get_side_colour(int side)
 }
 
 namespace {
+
+SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colour, int style)
+{
+	const font_style_setter style_setter(font,style);
+	SDL_Rect res = {0,0,0,0};
+	int w = 0, h = 0;
+
+	switch(charset())
+	{
+	case CHARSET_UTF8:
+		TTF_SizeUTF8(font,str.c_str(),&w,&h);
+		break;
+	case CHARSET_LATIN1:
+		TTF_SizeText(font,str.c_str(),&w,&h);
+		break;
+	default:
+		std::cerr << "Unrecognized charset\n";
+	}
+
+	res.w = size_t(w);
+	res.h = size_t(h);
+
+	return res;
+}
+
 SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 						 const SDL_Color& colour, int style)
 {
@@ -324,15 +349,17 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
 		std::cerr << "Could not get font\n";
-		SDL_Rect res;
-		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
+		SDL_Rect res = {0,0,0,0};
 		return res;
 	}
 
-	scoped_sdl_surface surface(render_text(font,text.c_str(),colour,style));
+	if(gui_surface == NULL) {
+		return text_size(font,text,colour,style);
+	}
+
+	scoped_sdl_surface surface(render_text(font,text,colour,style));
 	if(surface == NULL) {
-		SDL_Rect res;
-		res.x = 0; res.y = 0; res.w = 0; res.h = 0;
+		SDL_Rect res = {0,0,0,0};
 		return res;
 	}
 
@@ -398,10 +425,10 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	return draw_text_line(surface, area, size, colour, text, x, y, bg, use_tooltips, style);
 }
 
-SDL_Rect text_area(const std::string& text, int size)
+SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
-	return draw_text(NULL,area,size,font::NORMAL_COLOUR,text,0,0);
+	return draw_text(NULL,area,size,font::NORMAL_COLOUR,text,0,0,NULL,false,USE_MARKUP,style);
 }
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,

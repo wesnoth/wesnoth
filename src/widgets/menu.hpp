@@ -70,6 +70,7 @@ private:
 	bool click_selects_;
 	bool previous_button_;
 	bool drawn_;
+	std::set<size_t> undrawn_items_;
 
 	bool show_result_;
 

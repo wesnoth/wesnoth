@@ -709,6 +709,18 @@ bool mp_connect::get_network_data(config& cfg)
 
 void mp_connect::start_game()
 {
+	combos_type_.clear();
+	combos_race_.clear();
+	combos_team_.clear();
+	combos_color_.clear();
+	sliders_gold_.clear();
+
+	ai_.hide();
+	launch_.hide();
+	cancel_.hide();
+	gold_bg_.clear();
+
+
 	//Tell everyone to start
 	config cfg;
 	cfg.add_child("start_game");

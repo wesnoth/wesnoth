@@ -144,6 +144,8 @@ turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
 void turn_info::turn_slice()
 {
 	events::pump();
+	events::raise_process_event();
+	events::raise_draw_event();
 
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);

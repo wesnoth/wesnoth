@@ -27,6 +27,12 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
 }
 
+bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
+{
+	return point_in_rect(rect1.x,rect1.y,rect2) || point_in_rect(rect1.x+rect1.w,rect1.y,rect2) ||
+	       point_in_rect(rect1.x,rect1.y+rect1.h,rect2) || point_in_rect(rect1.x+rect1.w,rect1.y+rect1.h,rect2);
+}
+
 namespace {
 	SDL_PixelFormat& get_neutral_pixel_format()
 	{

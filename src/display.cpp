@@ -73,8 +73,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 	energy_bar_rect_.x = -1;
 
-	create_buttons();
-
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
 	image::set_zoom(zoom_);
@@ -446,7 +444,10 @@ void display::redraw_everything()
 	tooltips::clear_tooltips();
 
 	theme_.set_resolution(screen_area());
-	create_buttons();
+
+	if(buttons_.empty() == false) {
+		create_buttons();
+	}
 
 	panelsDrawn_ = false;
 
@@ -458,7 +459,7 @@ void display::redraw_everything()
 
 namespace {
 
-void draw_panel(display& disp, const theme::panel& panel)
+void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
 	log_scope("draw panel");
 	scoped_sdl_surface surf(image::get_image(panel.image(),image::UNSCALED));
@@ -473,6 +474,12 @@ void draw_panel(display& disp, const theme::panel& panel)
 
 	disp.blit_surface(loc.x,loc.y,surf);
 	update_rect(loc);
+
+	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
+		if(rects_overlap(b->location(),loc)) {
+			b->set_dirty(true);
+		}
+	}
 }
 
 void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
@@ -506,12 +513,14 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 
 void display::draw(bool update,bool force)
 {	
+	std::cerr << "starting draw...\n";
 	if(!panelsDrawn_) {
+		std::cerr << "drawing panels...\n";
 		SDL_Surface* const screen = screen_.getSurface();
 
 		const std::vector<theme::panel>& panels = theme_.panels();
 		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(*this,*p);
+			draw_panel(*this,*p,buttons_);
 		}
 
 		const std::vector<theme::label>& labels = theme_.labels();
@@ -519,14 +528,12 @@ void display::draw(bool update,bool force)
 			draw_label(*this,screen,*i);
 		}
 		
-		for(std::vector<gui::button>::iterator b = buttons_.begin(); b != buttons_.end(); ++b) {
-			b->draw();
-		}
-
 		//invalidate the reports so they are redrawn
 		std::fill(reports_,reports_+sizeof(reports_)/sizeof(*reports_),reports::report());
 		invalidateGameStatus_ = true;
 		panelsDrawn_ = true;
+
+		std::cerr << "done panels...\n";
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -576,6 +583,8 @@ void display::draw(bool update,bool force)
 			drawSkips_++;
 
 	}
+
+	std::cerr << "done draw...\n";
 }
 
 void display::update_display()
@@ -668,6 +677,8 @@ void display::draw_report(reports::TYPE report_num)
 	if(!team_valid())
 		return;
 
+	std::cerr << "drawing report " << (int)report_num << "\n";
+
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
 
@@ -682,6 +693,7 @@ void display::draw_report(reports::TYPE report_num)
 
 		//report and its location is unchanged since last time. Do nothing.
 		if(rect == new_rect && reports_[report_num] == report) {
+			std::cerr << "report needs no redrawing\n";
 			return;
 		}
 
@@ -772,6 +784,8 @@ void display::draw_report(reports::TYPE report_num)
 	} else {
 		reportSurfaces_[report_num].assign(NULL);
 	}
+
+	std::cerr << "done drawing report\n";
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
@@ -821,7 +835,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	std::stringstream details;
 	details << font::LARGE_TEXT << u.description() << "\n"
 	        << font::LARGE_TEXT << u.type().language_name()
-			<< "\n-(" << string_table["level"] << " "
+			<< "\n" << font::SMALL_TEXT << "(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
 			<< translate_string(unit_type::alignment_description(u.type().alignment()))
@@ -2059,15 +2073,29 @@ const theme::menu* display::menu_pressed(int mousex, int mousey, bool button_pre
 
 void display::create_buttons()
 {
+	std::cerr << "clearing buttons...\n";
 	buttons_.clear();
 
+	std::cerr << "creating buttons...\n";
 	const std::vector<theme::menu>& buttons = theme_.menus();
 	for(std::vector<theme::menu>::const_iterator i = buttons.begin(); i != buttons.end(); ++i) {
+		std::cerr << "a\n";
 		gui::button b(*this,i->title(),gui::button::TYPE_PRESS,i->image());
+		std::cerr << "b\n";
 		const SDL_Rect& loc = i->location(screen_area());
+		std::cerr << "c\n";
 		b.set_location(loc.x,loc.y);
+
+//		if(rects_overlap(b.location(),map_area())) {
+//			b.set_volatile(true);
+//		}
+
+		std::cerr << "d\n";
 		buttons_.push_back(b);
+		std::cerr << "e\n";
 	}
+
+	std::cerr << "done creating buttons...\n";
 }
 
 void display::add_observer(const std::string& name)

@@ -1307,8 +1307,7 @@ std::string config::interpolate_variables_into_string(const std::string& str, co
 
 void config::clear()
 {
-	for(std::map<std::string,std::vector<config*> >::iterator i =
-					children.begin(); i != children.end(); ++i) {
+	for(std::map<std::string,std::vector<config*> >::iterator i = children.begin(); i != children.end(); ++i) {
 		std::vector<config*>& v = i->second;
 		for(std::vector<config*>::iterator j = v.begin(); j != v.end(); ++j)
 			delete *j;

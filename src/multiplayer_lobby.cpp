@@ -162,6 +162,10 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			new_game.hide();
 			quit_game.hide();
 		}
+
+		if(!games_available) {
+			join_game.hide();
+		}
 		
 		std::vector<std::string> users;
 		for(config::const_child_itors i = game_data.child_range("user"); i.first != i.second; ++i.first) {
