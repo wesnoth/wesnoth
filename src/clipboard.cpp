@@ -1,6 +1,6 @@
 #include "clipboard.hpp"
 
-#ifdef _X11
+#if defined(_X11) && !defined(__APPLE__)
 
 #define CLIPBOARD_FUNCS_DEFINED
 
@@ -387,3 +387,4 @@ void handle_system_event(const SDL_Event& event)
 }
 
 #endif
+

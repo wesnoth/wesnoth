@@ -495,7 +495,7 @@ int play_game(int argc, char** argv)
 	}
 
 	const cursor::manager cursor_manager;
-#ifdef _X11
+#if defined(_X11) && !defined(__APPLE__)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
