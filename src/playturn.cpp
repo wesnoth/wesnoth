@@ -416,6 +416,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 
 			cursor::set(cursor::NORMAL);
 		} else {
+			gui_.draw(); // redraw highlight (and maybe some more)
 			const theme::menu* const m = gui_.get_theme().context_menu();
 			if (m != NULL)
 				show_menu(m->items(),event.x,event.y,true);
