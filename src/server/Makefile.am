@@ -5,16 +5,14 @@ bin_PROGRAMS = wesnothd
 #############################################################################
 
 wesnothd_SOURCES = game.cpp \
-		   ../game_events.cpp \
 		   player.cpp \
 		   server.cpp \
+		   variable.cpp \
 		   ../config.cpp \
 		   ../filesystem.cpp \
 		   ../game_config.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
-		   ../replay.cpp \
-		   ../unit.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   player.hpp \
@@ -22,9 +20,7 @@ wesnothd_SOURCES = game.cpp \
 		   ../filesystem.hpp \
 		   ../game_config.hpp \
 		   ../log.hpp \
-		   ../network.hpp \
-		   ../replay.hpp \
-		   ../unit.hpp
+		   ../network.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@
 AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@
