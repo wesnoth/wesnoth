@@ -85,6 +85,7 @@ void menu::set_width(int w)
 {
 	width_ = w;
 	set_loc(x_, y_);
+	itemRects_.clear();
 }
 
 void menu::redraw()
