@@ -1399,6 +1399,8 @@ void turn_info::save_game(const std::string& message)
 
 void turn_info::write_game_snapshot(config& start) const
 {
+	start.values = level_->values;
+
 	start["snapshot"] = "yes";
 
 	char buf[50];
@@ -1429,11 +1431,6 @@ void turn_info::write_game_snapshot(config& start) const
 
 	write_game(state_of_game_,start);
 	start["gold"] = "-1000000"; //just make sure gold is read in from the teams
-
-	//copy over all scenario stats
-	for(string_map::const_iterator s = level_->values.begin(); s != level_->values.end(); ++s) {
-		start[s->first] = s->second;
-	}
 
 	//write out the current state of the map
 	start["map_data"] = map_.write();
