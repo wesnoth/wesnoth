@@ -515,18 +515,18 @@ utf8_string ucs2_string_to_utf8_string(const ucs2_string& src)
 	ucs2_string::const_iterator itor = src.begin();
 	for(;itor != src.end(); ++itor) {
 		if(*itor < 0x0080) {
-			dst.push_back(*itor);
+			push_back(dst,*itor);
 			continue;
 		}
-		if(0x0080 <= *itor < 0x0800) {
-			dst.push_back((*itor >> 6) | 0xC0);
-			dst.push_back((*itor & 0x003F) | 0x80);
+		if(0x0080 <= *itor && *itor < 0x0800) {
+			push_back(dst,(*itor >> 6) | 0xC0);
+			push_back(dst,(*itor & 0x003F) | 0x80);
 			continue;
 		}
-		if((0x0800 <= *itor < 0xD800) || (0xDFFF < *itor < 0xFFFE)) {
-			dst.push_back((*itor >> 12) | 0xE0);
-			dst.push_back(((*itor >> 6) & 0x003F) | 0x80);
-			dst.push_back((*itor & 0x003F) | 0x80);
+		if((0x0800 <= *itor && *itor < 0xD800) || (0xDFFF < *itor && *itor < 0xFFFE)) {
+			push_back(dst,(*itor >> 12) | 0xE0);
+			push_back(dst,((*itor >> 6) & 0x003F) | 0x80);
+			push_back(dst,(*itor & 0x003F) | 0x80);
 		}
 	}
 	return dst;
