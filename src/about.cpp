@@ -158,7 +158,7 @@ std::vector<std::string> get_text() {
 
 		_("+French Translation"),
 		"-   Benoit Astruc",
-		"_   Cedric Duval",
+		"-   Cedric Duval",
 		"-   Guillaume Duwelz-Rebert",
 		"-   Guillaume Melquiond (silene)",
 		"-   DaringTremayne",
