@@ -1260,6 +1260,13 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Lorsque vous terminez votre tour, la main passe à un autre camp et seul "
+"celui-ci a le droit de déplacer ses unités, jusqu'à la fin du tour de ce "
+"camp. Une fois que tous les camps ont terminé leur tour, un nouveau tour "
+"commence. Plusieurs effets se produisent alors, notamment la récupération "
+"du potentiel de mouvement complet pour chaque unité. Le numéro du tour "
+"courant est affiché sur la barre de statut à côté de l'image d'un drapeau. "
+"Lorsque ce nombre excède le nombre maximum de tours, vous perdez la partie."
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
@@ -1287,7 +1294,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Jusqu'où mon guerrier elfe peut-il se déplacer ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid ""
@@ -1302,6 +1309,17 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Votre guerrier elfe commence chaque tour avec un certain nombre de points de "
+"mouvement; c'est sa vitesse. Lorsque votre guerrier elfe se déplace en "
+"suivant son chemin, chaque hexagone traversé lui coûte des points de "
+"mouvement; cela inclut sa destination. Lorsque vous sélectionnez votre "
+"guerrier elfe, tous les hexagones inaccessibles en un tour sont grisés. Si "
+"sa destination est suffisamment éloignée pour nécessiter plus d'un tour à "
+"atteindre, un nombre apparaîtra indiquant le nombre de tours nécessaires. "
+"Cliquer sur une case éloignée va mettre l'unité en route vers cette case, "
+"la déplaçant automatiquement le plus possible chaque tour vers la case "
+"cible. Si vous mettez une unité en route par inadvertance, cliquez deux fois "
+"dessus pour retirer la route."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid ""
@@ -1311,14 +1329,20 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"La zone de contrôle d'une unité est l'ensemble des hexagones adjacents à "
+"celui de l'unité. Des unités ne peuvent pas se déplacer à travers les zones "
+"contrôle d'adversaires; elles ne peuvent qu'y pénétrer. Lorsqu'elles le "
+"font, elles perdent tout le reste de leur mouvement. Les zones de contrôle "
+"peuvent servir à empêcher des ennemis d'atteindre vos unités faibles ou "
+"blessées."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid "What's the zone of control?"
-msgstr ""
+msgstr "Qu'est-ce que la zone de contrôle ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Comment savoir qui est allié et qui est ennemi ?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid ""
@@ -1330,6 +1354,14 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
+"Les unités que vous contrôlez ont un cercle d'énergie vert, jaune ou rouge "
+"au-dessus de leur barre de vie, la barre verticale verte sur leur côté. Les "
+"unités avec leur potentiel de mouvement complet en ont un vert, celles avec "
+"un potentiel entamé un jaune, et celles avec plus de potentiel un rouge. "
+"Les unités alliées que vous ne contrôlez pas, comme moi, ont une cercle "
+"d'énergie bleu. Par ailleurs, l'option 'Montrer la couleur des équipes', "
+"dans les Préférences, affiche la couleur du contrôleur de l'unité sous forme "
+"de disque en-dessous de l'unité."
 
 #: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
