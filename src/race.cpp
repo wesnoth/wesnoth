@@ -52,7 +52,38 @@ std::string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		}
 	}
 
+	// Getting here means that the maximum length was reached when
+	// generating the name, hence the ending of the name has to be
+	// made valid. Otherwise weird names like Unárierinil- and
+	// Thramboril-G may occur.
+
+	// Strip characters from the end until the last prefix of the
+	// name has end-of-string as a possible next character in the
+	// markov prefix map. If no valid ending is found, use the
+	// originally generated name.
+	std::string originalRes = res;
+	int prefixLen;
+	while (res.size() > 0) {
+	  prefixLen = chain_size < res.size() ? chain_size : res.size();
+	  prefix = res.substr(res.size() - prefixLen, prefixLen);
+	  const markov_prefix_map::const_iterator i = prefixes.find(prefix);
+	  if (i == prefixes.end() || i->second.empty()) {
 	return res;
+}
+	  if (std::find(i->second.begin(), i->second.end(), 0)
+	      != i->second.end()) { 
+	    // This ending is valid. 
+	    return res;
+	  }
+	  // The current ending is invalid, remove the last character
+	  // and retry.
+	  res.erase(res.size() - 1);
+	}
+	// No valid ending at all could be found. This generally should
+	// not happen, unless the chain length is very long or the
+	// maximum length is very small. Return the originally generated
+	// name, it's not much we can do about it.
+	return originalRes;
 }
 
 }
