@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2005-03-16 18:23+0100\n"
+"PO-Revision-Date: 2005-03-17 00:23+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -2138,7 +2138,7 @@ msgid ""
 "@Victory\n"
 "Defeat Delfador"
 msgstr ""
-"@Habilidades a tratar:\n"
+"@Habilidades tratadas:\n"
 "Reincorporación\n"
 "Rasgos\n"
 "Oro\n"
@@ -2557,6 +2557,10 @@ msgid ""
 "who picks them up a new weapon. However there are usually not that many "
 "objects in a campaign."
 msgstr ""
+"Los objetos que encuentras están colocados por el diseñador del escenario, "
+"por lo que varían de campaña a campaña. En «Heredero al trono», la mayoría "
+"de los objetos dan a la unidad que lo recoge una nueva arma. Sin embargo, "
+"normalmente no hay tantos objetos en una campaña."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:199
 msgid "What kind of objects am I likely to encounter?"
@@ -2571,6 +2575,9 @@ msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
+"Muchos objetos provocan cambios permanentes en la unidad que lo recoge. Sin "
+"embargo, algunos objetos, como el agua bendita, sólo duran hasta el final "
+"del escenario."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:214
 msgid ""
@@ -2578,6 +2585,9 @@ msgid ""
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
+"Recuerda intentar evitar que el enemigo capture aldeas, y también recapturar "
+"las que ya tenga. Esto cortará su suministro de oro y hará que sea incapaz "
+"de reclutar más unidades."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
 msgid ""
@@ -2585,6 +2595,9 @@ msgid ""
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
 msgstr ""
+"¡Felicidades! Me has derrotado, y completado así el segundo y último "
+"escenario de entrenamiento. Ahora, puedes comenzar una campaña, o jugar con "
+"otros jugadores."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:245
 msgid "How do I play a campaign?"
@@ -2596,6 +2609,9 @@ msgid ""
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
+"Para empezar una campaña, inicia Wesnoth, selecciona «Campaña», elige a qué "
+"campaña deseas jugar, y entonces escoge entre «fácil», «normal» o «difícil». "
+"Te sugiero «Heredero al trono» como primera opción si eres novato en Wesnoth."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:246
 msgid "How do I play multiplayer?"
@@ -2608,6 +2624,10 @@ msgid ""
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
+"Para jugar a Wesnoth contra otras personas, selecciona »Multijugador». "
+"Después «Unirse al servidor oficial». Esto te conectará al servidor oficial "
+"de Wesnoth, donde podrás unirte a un juego seleccionándolo, y luego pulsando "
+"la opción «Unirse a la partida»."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
@@ -2624,6 +2644,14 @@ msgid ""
 "@Current objective:\n"
 "{OBJECTIVE}"
 msgstr ""
+"@Habilidades tratadas:\n"
+"Reclutamiento de unidades\n"
+"Movimiento de unidades\n"
+"Atacar unidades enemigas\n"
+"Ganar experiencia\n"
+"Ganar escenarios\n"
+"@Objetivo actual:\n"
+"{OBJECTIVE}"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -3594,36 +3622,37 @@ msgstr "Lago $name"
 
 #: data/translations/english.cfg:137
 msgid "$name|bury,$name|ham,$name|ton"
-msgstr ""
+msgstr "$name|bury,$name|ham,$name|ton"
 
 #: data/translations/english.cfg:138
 msgid "$name|harbor,$name|port"
-msgstr ""
+msgstr "$name|harbor,$name|puerto"
 
 #: data/translations/english.cfg:139
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
-msgstr ""
+msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 
 #: data/translations/english.cfg:140
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
-msgstr ""
+msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 
 #: data/translations/english.cfg:141
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|field"
 
 #: data/translations/english.cfg:142
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
-msgstr ""
+msgstr "$name|ham,$name|ton,$name|wood,Bosque $name"
 
 #: data/translations/english.cfg:143
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 
 #: data/translations/english.cfg:144
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 
 #: data/units/Ancient_Lich.cfg:3
 msgid "Ancient Lich"
@@ -3715,6 +3744,8 @@ msgstr "Wose Anciano"
 msgid "ambush,regenerates"
 msgstr "embosca,regenera"
 
+# "Terribles y amenazadores, los woses más ancianos crecen hasta adquirir proporciones "
+# "gigantescas. Son casi criaturas de leyenda, "
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
 "Terrible and awe-inspiring, the most ancient of woses grow to a tremendous "
