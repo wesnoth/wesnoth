@@ -35,10 +35,15 @@
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
 
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
+
+#define ERR_CF lg::err(lg::config)
+#define LOG_CF lg::info(lg::config)
+#define ERR_NW lg::err(lg::network)
+#define LOG_NW lg::info(lg::network)
+#define LOG_G lg::info(lg::general)
 
 mp_connect::mp_connect(display& disp, std::string game_name,
 		       const config &cfg, game_data& data, game_state& state,
@@ -170,7 +175,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 	const config* const era_cfg = cfg_->find_child("era","id",era_);
 
 	if(era_cfg == NULL) {
-		std::cerr << "ERROR: era '" << era_ << "' not found\n";
+		ERR_CF << "era '" << era_ << "' not found\n";
 		return -1;
 	}
 
@@ -180,7 +185,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		gui::show_dialog(*disp_, NULL, "", 
 				 _("No multiplayer sides."),
 				 gui::OK_ONLY);
-		std::cerr << "no multiplayer sides found\n";
+		ERR_CF << "no multiplayer sides found\n";
 		return -1;
 	}
 
@@ -432,11 +437,9 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	scroll_pane_.set_location(scroll_pane_rect);
 	config::child_iterator sd;
 
-	std::cerr << "Getting here :P" << std::endl;
-
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int side_num = sd - sides.first;
-		std::cerr << "Side num: " << side_num << std::endl;
+		LOG_CF << "Side num: " << side_num << std::endl;
 
 		//Player number
 		player_numbers_.push_back(gui::label(*disp_, (*sd)->values["side"],
@@ -503,7 +506,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
 	}
 
-	std::cerr << "done set_area()\n";
+	LOG_CF << "done set_area()\n";
 
 	update_whole_screen();
 }
@@ -615,7 +618,7 @@ lobby::RESULT mp_connect::process()
 	const config* const era_cfg = cfg_->find_child("era","id",era_);
 
 	if(era_cfg == NULL) {
-		std::cerr << "ERROR: cannot find era '" << era_ << "'\n";
+		ERR_CF << "cannot find era '" << era_ << "'\n";
 		return lobby::QUIT;
 	}
 
@@ -681,7 +684,7 @@ lobby::RESULT mp_connect::process()
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			side["random_faction"] = "";
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
-				std::cerr << "value: " << i->first << " , " << i->second<< std::endl;
+				LOG_CF << "value: " << i->first << " , " << i->second << std::endl;
 				side[i->first] = i->second;
 			}
 			level_changed = true;
@@ -749,7 +752,6 @@ lobby::RESULT mp_connect::process()
 
 		for(config::child_iterator side = sides.first; side != sides.second; ++side) {
 			int ntry = 0;
-			//std::cerr << "Checking random faction for " << (**side)["name"] << ". Random faction is " << (**side)["random_faction"] << "\n";
 			while((**side)["random_faction"] == "yes" && ntry < 1000) {
 				const int choice = rand()%real_sides.size();
 
@@ -771,7 +773,6 @@ lobby::RESULT mp_connect::process()
 			}
 
 			if ((**side)["type"] == "random" || (**side)["type"].empty()) {
-				//std::cerr << "Choosing a random type for " << (**side)["name"] << "\n";
 				// Choose a random leader type.  
 				std::vector<std::string> types = 
 					config::split((**side)["leader"]);
@@ -779,9 +780,8 @@ lobby::RESULT mp_connect::process()
 					const int lchoice = rand() % types.size();
 					(**side)["type"] = types[lchoice];
 				} else {
-					lg::err(lg::config) << "Unable to find a type for side " << (**side)["name"] << "!\n";
+					ERR_CF << "Unable to find a type for side " << (**side)["name"] << "!\n";
 				}
-				//std::cerr << "Leader chosen: " << (**side)["type"] << "\n";
 				level_changed = true;
 			}
 		}
@@ -799,7 +799,7 @@ lobby::RESULT mp_connect::process()
 	}
 
 	if(start_game) {
-		std::cerr << "multiplayer_connect returning create...\n";
+		LOG_G << "multiplayer_connect returning create...\n";
 		return lobby::CREATE;
 	}
 
@@ -837,7 +837,7 @@ void mp_connect::start_game()
 		if(false) {
 			recorder.set_skip(0);
 		} else {
-			std::cerr << "skipping...\n";
+			LOG_G << "skipping...\n";
 			recorder.set_skip(-1);
 		}
 	}
@@ -882,7 +882,7 @@ void mp_connect::update_network()
 			//We are waiting on someone
 			network::connection sock = network::accept_connection();
 			if(sock) {
-				std::cerr << "Received connection\n";
+				LOG_NW << "Received connection\n";
 				network::send_data(*level_,sock);
 			}
 		}
@@ -896,7 +896,7 @@ void mp_connect::update_network()
 	try {
 		sock = network::receive_data(cfg);
 	} catch(network::error& e) {
-		std::cerr << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
+		ERR_NW << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
 		sock = 0;
 
 		//if the problem isn't related to any specific connection,
@@ -986,7 +986,7 @@ void mp_connect::update_network()
 					network::send_data(reassign,sock);
 				}
 
-				std::cerr << "client has taken a valid position\n";
+				LOG_CF << "client has taken a valid position\n";
 
 				//broadcast to everyone the new game status
 				pos->first->values["controller"] = "network";
@@ -1028,7 +1028,7 @@ void mp_connect::update_network()
 				pos->second = sock;
 				network::send_data(*level_);
 
-				std::cerr << "sent player data\n";
+				LOG_NW << "sent player data\n";
 
 				//send a reply telling the client they have secured
 				//the side they asked for
@@ -1036,13 +1036,13 @@ void mp_connect::update_network()
 				side << (side_taken+1);
 				config reply;
 				reply.values["side_secured"] = side.str();
-				std::cerr << "going to send data...\n";
+				LOG_NW << "going to send data...\n";
 				network::send_data(reply,sock);
 
 				// Add to combo list
 				add_player(cfg["description"]);
 			} else {
-				std::cerr << "tried to take illegal side: " << side_taken << "\n";
+				ERR_CF << "tried to take illegal side: " << side_taken << '\n';
 			}
 		}
 	}
