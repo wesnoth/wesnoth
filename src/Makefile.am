@@ -177,6 +177,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.hpp \
 		  widgets/textbox.hpp \
 		  widgets/widget.hpp \
+		  sdl_ttf/SDL_ttf.h \
 		  wesconfig.h
 
 #############################################################################
@@ -320,6 +321,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/scrollbar.hpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp \
+			 sdl_ttf/SDL_ttf.h \
 			 wesconfig.h
 
 AM_CXXFLAGS = -I sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
