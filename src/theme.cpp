@@ -18,21 +18,35 @@ namespace {
 
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
 
+	size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
+		size_t ref = 0;
+		if (expr[0] == '=') {
+		  ref = ref1;
+		  expr = expr.substr(1);
+		} else if ((expr[0] == '+') || (expr[0] == '-')) {
+		  ref = ref2;
+		}
+
+		return ref + atoi(expr.c_str());
+	}
+
 	SDL_Rect read_rect(const config& cfg) {
 		SDL_Rect rect;
+		static SDL_Rect ref_rect = empty_rect;
 		const std::vector<std::string> items = config::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
-			rect.x = atoi(items[0].c_str());
+			rect.x = compute(items[0], ref_rect.x, ref_rect.x+ref_rect.w);
 
 		if(items.size() >= 2)
-			rect.y = atoi(items[1].c_str());
+			rect.y = compute(items[1], ref_rect.y, ref_rect.y+ref_rect.h);
 
 		if(items.size() >= 3)
-			rect.w = atoi(items[2].c_str()) - rect.x;
+			rect.w = compute(items[2], ref_rect.x+ref_rect.w, rect.x) - rect.x;
 
 		if(items.size() >= 4)
-			rect.h = atoi(items[3].c_str()) - rect.y;
+			rect.h = compute(items[3], ref_rect.y+ref_rect.h, rect.y) - rect.y;
 
+		ref_rect = rect;
 		return rect;
 	}
 }
