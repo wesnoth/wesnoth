@@ -253,39 +253,6 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 
-	preproc_map defines_map;
-	defines_map["NORMAL"] = preproc_define();
-	std::vector<line_source> line_src;
-
-	std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,&line_src);
-
-	config game_config(game_cfg,&line_src);
-
-	//clear game_cfg so it doesn't take up memory
-	std::string().swap(game_cfg);
-
-	game_config::load_config(game_config.child("game_config"));
-
-	const config::child_list& units = game_config.get_children("units");
-	if(units.empty()) {
-		std::cerr << "ERROR: Could not find game configuration files\n";
-		std::cerr << game_config.write();
-		return 0;
-	}
-
-	game_data units_data(*units[0]);
-
-	const bool lang_res = set_language(get_locale(), game_config);
-	if(!lang_res) {
-		std::cerr << "No translation for locale '" << get_locale()
-		          << "', default to locale 'en'\n";
-
-		const bool lang_res = set_language("en", game_config);
-		if(!lang_res) {
-			std::cerr << "Language data not found\n";
-		}
-	}
-
 	if(!no_gui) {
 		image::set_wm_icon();
 
@@ -354,10 +321,58 @@ int play_game(int argc, char** argv)
 			          << resolution.second << "x16 is not supported\n";
 			return 0;
 		}
-	
-		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 	} else {
 		video.make_fake();
+	}
+
+	//load in the game's configuration files
+	preproc_map defines_map;
+	defines_map["NORMAL"] = preproc_define();
+	std::vector<line_source> line_src;
+
+	config game_config;
+
+	try {
+		log_scope("loading config");
+		const std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,&line_src);
+		game_config.read(game_cfg,&line_src);
+	} catch(config::error& e) {
+		display::unit_map u_map;
+		config dummy_cfg("");
+		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
+		             std::vector<team>(),dummy_cfg);
+
+		//we don't have a translation loaded yet, so tell it what "Ok" should be.
+		string_table["ok_button"] = "Ok";
+		gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
+		                 gui::OK_ONLY);
+		throw e;
+	}
+
+	game_config::load_config(game_config.child("game_config"));
+
+	const config::child_list& units = game_config.get_children("units");
+	if(units.empty()) {
+		std::cerr << "ERROR: Could not find game configuration files\n";
+		std::cerr << game_config.write();
+		return 0;
+	}
+
+	game_data units_data(*units[0]);
+
+	const bool lang_res = set_language(get_locale(), game_config);
+	if(!lang_res) {
+		std::cerr << "No translation for locale '" << get_locale()
+		          << "', default to locale 'en'\n";
+
+		const bool lang_res = set_language("en", game_config);
+		if(!lang_res) {
+			std::cerr << "Language data not found\n";
+		}
+	}
+
+	if(!no_gui) {
+		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 	}
 
 	for(;;) {

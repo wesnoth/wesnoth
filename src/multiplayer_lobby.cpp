@@ -28,7 +28,7 @@ namespace {
 
 namespace lobby {
 
-RESULT enter(display& disp, config& game_data)
+RESULT enter(display& disp, config& game_data, const config& terrain_data)
 {
 	const events::resize_lock prevent_resizing;
 
@@ -67,10 +67,50 @@ RESULT enter(display& disp, config& game_data)
 		std::vector<std::string> options;
 		config::const_child_itors i;
 		for(i = gamelist->child_range("game"); i.first != i.second; ++i.first) {
+
+			std::cerr << "game data here:" << (**i.first).write() << "end game data here\n";
+
+			std::stringstream str;
+
+			std::string map_data = (**i.first)["map_data"];
+			if(map_data == "") {
+				map_data = read_file("data/maps/" + (**i.first)["map"]);
+			}
+
+			if(map_data != "") {
+				try {
+					gamemap map(terrain_data,map_data);
+					SDL_Surface* const mini = image::getMinimap(100,100,map,0);
+
+					//generate a unique id to show the map as
+					char buf[50];
+					sprintf(buf,"addr %d",(int)mini);
+
+					image::register_image(buf,mini);
+
+					str << "&" << buf << ",";
+				} catch(gamemap::incorrect_format_exception& e) {
+					std::cerr << "illegal map: " << e.msg_ << "\n";
+				}
+			} else {
+				str << "(" << translate_string("shroud") << "),";
+			}
+
 			std::string name = (**i.first)["name"];
 			if(name.size() > 30)
 				name.resize(30);
-			options.push_back(name);
+
+			str << name;
+
+			const std::string& turn = (**i.first)["turn"];
+			const std::string& slots = (**i.first)["slots"];
+			if(turn != "") {
+				str << "," << translate_string("turn") << " " << turn;
+			} else if(slots != "") {
+				str << "," << slots << " " << string_table[slots == "1" ? "vacant_slot" : "vacant_slots"];
+			}
+
+			options.push_back(str.str());
 		}
 
 		const bool games_available = options.empty() == false;
@@ -88,6 +128,13 @@ RESULT enter(display& disp, config& game_data)
 			std::string name = (**i.first)["name"];
 			if(name.size() > 30)
 				name.resize(30);
+
+			const std::string avail = (**i.first)["available"];
+
+			//display unavailable players in red
+			if(avail == "no") {
+				name.insert(name.begin(),'#');
+			}
 
 			users.push_back(name);
 		}

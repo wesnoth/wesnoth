@@ -78,7 +78,7 @@ public:
 	//data should be a series of lines, with each character representing
 	//one hex on the map. Starting locations are represented by numbers,
 	//and will be of type keep.
-	gamemap(config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
+	gamemap(const config& terrain_cfg, const std::string& data); //throw(incorrect_format_exception)
 
 	std::string write() const;
 

@@ -5,7 +5,7 @@
 
 int game::id_num = 1;
 
-game::game() : id_(id_num++), started_(false), description_(NULL)
+game::game(const player_map& info) : player_info_(&info), id_(id_num++), started_(false), description_(NULL), end_turn_(0), allow_observers_(true)
 {}
 
 bool game::is_member(network::connection player) const
@@ -22,6 +22,22 @@ bool game::is_needed(network::connection player) const
 void game::start_game()
 {
 	started_ = true;
+
+	describe_slots();
+	if(description()) {
+		description()->values["turn"] = "1";
+	}
+
+	allow_observers_ = level_["observer"] != "no";
+
+	//send [observer] tags for all observers that have already joined.
+	//we can do this by re-joining all players that don't have sides, and aren't
+	//the first player (game creator)
+	for(std::vector<network::connection>::const_iterator pl = players_.begin()+1; pl != players_.end(); ++pl) {
+		if(sides_.count(*pl) == 0) {
+			add_player(*pl);
+		}
+	}
 }
 
 bool game::take_side(network::connection player, const config& cfg)
@@ -45,8 +61,94 @@ bool game::take_side(network::connection player, const config& cfg)
 	return true;
 }
 
+size_t game::available_slots() const
+{
+	size_t total_slots = 0;
+	const config::child_list& sides = level_.get_children("side");
+	for(config::child_list::const_iterator i = sides.begin(); i != sides.end(); ++i) {
+		std::cerr << "side controller: '" << (**i)["controller"] << "'\n";
+		if((**i)["controller"] == "network") {
+			++total_slots;
+		}
+	}
+
+	return total_slots - sides_taken_.size();
+}
+
+bool game::describe_slots()
+{
+	if(description() == NULL)
+		return false;
+
+	const int val = int(available_slots());
+	char buf[50];
+	sprintf(buf,"%d",val);
+
+	if(buf != (*description())["slots"]) {
+		description()->values["slots"] = buf;
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool game::process_commands(const config& cfg)
+{
+	std::cerr << "processing commands: '" << cfg.write() << "'\n";
+	bool res = false;
+	const config::child_list& cmd = cfg.get_children("command");
+	for(config::child_list::const_iterator i = cmd.begin(); i != cmd.end(); ++i) {
+		if((**i).child("end_turn") != NULL) {
+			res = res || end_turn();
+			std::cerr << "res: " << (res ? "yes" : "no") << "\n";
+		}
+	}
+
+	return res;
+}
+
+bool game::end_turn()
+{
+	//it's a new turn every time each side in the game ends their turn.
+	++end_turn_;
+
+	const size_t nsides = level_.get_children("side").size();
+
+	if((end_turn_%nsides) != 0) {
+		return false;
+	}
+
+	const size_t turn = end_turn_/nsides + 1;
+
+	config* const desc = description();
+	if(desc == NULL) {
+		return false;
+	}
+
+	char buf[50];
+	sprintf(buf,"%d",int(turn));
+	desc->values["turn"] = buf;
+
+	return true;
+}
+
 void game::add_player(network::connection player)
 {
+	//if the game has already started, we add the player as an observer
+	if(started_) {
+		const player_map::const_iterator pl = player_info_->find(player);
+		if(pl != player_info_->end()) {
+			config observer_join;
+			observer_join.add_child("observer").values["name"] = pl->second.name();
+			send_data(observer_join);
+		}
+	}
+
+	//if the player is already in the game, don't add them.
+	if(std::find(players_.begin(),players_.end(),player) != players_.end()) {
+		return;
+	}
+
 	players_.push_back(player);
 
 	//send the player the history of the game to-date
@@ -63,6 +165,7 @@ void game::remove_player(network::connection player)
 	if(itor != players_.end())
 		players_.erase(itor);
 
+	bool observer = true;
 	std::map<network::connection,std::string>::iterator side = sides_.find(player);
 	if(side != sides_.end()) {
 		//send the host a notification of removal of this side
@@ -74,7 +177,19 @@ void game::remove_player(network::connection player)
 
 		sides_taken_.erase(side->second);
 		sides_.erase(side);
+
+		observer = false;
 	}
+
+	const player_map::const_iterator pl = player_info_->find(player);
+	if(!observer || pl == player_info_->end()) {
+		return;
+	}
+
+	//they're just an observer, so send them having quit to clients
+	config observer_quit;
+	observer_quit.add_child("observer_quit").values["name"] = pl->second.name();
+	send_data(observer_quit);
 }
 
 int game::id() const
@@ -86,7 +201,7 @@ void game::send_data(const config& data, network::connection exclude)
 {
 	for(std::vector<network::connection>::const_iterator
 	    i = players_.begin(); i != players_.end(); ++i) {
-		if(*i != exclude) {
+		if(*i != exclude && (allow_observers_ || sides_.count(*i) == 1)) {
 			network::send_data(data,*i);
 		}
 	}

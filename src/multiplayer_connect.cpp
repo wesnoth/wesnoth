@@ -37,7 +37,7 @@
 #include <vector>
 
 mp_connect::mp_connect(display& disp, std::string game_name,
-		       config &cfg, game_data& data, game_state& state,
+		       const config &cfg, game_data& data, game_state& state,
 		       bool join) : 
 	    disp_(&disp), cfg_(&cfg), data_(&data), state_(&state),
 	    show_replay_(false), save_(false), status_(0), join_(join),
@@ -67,7 +67,7 @@ mp_connect::~mp_connect()
 }
 
 int mp_connect::load_map(int map, int num_turns, int village_gold,
-			 bool fog_game, bool shroud_game)
+                         bool fog_game, bool shroud_game, bool allow_observers)
 {
 	log_scope("load_map");
 	// Setup the game
@@ -165,6 +165,8 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	}
 
 	state_->scenario = res_to_id[map];
+
+	level_->values["observer"] = allow_observers ? "yes" : "no";
 
 	const config::child_itors sides = level_->child_range("side");
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");

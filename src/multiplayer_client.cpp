@@ -124,7 +124,7 @@ public:
 			std::cerr << "received data while waiting: " << reply.write() << "\n";
 			if(reply.values["failed"] == "yes") {
 				got_side = false;
-				throw network::error("Side chosen is unavailable");
+				return SIDE_UNAVAILABLE;
 			} else if(reply["side_secured"].empty() == false) {
 				std::cerr << "received side secured message\n";
 				got_side = true;
@@ -148,7 +148,7 @@ public:
 
 	bool got_side;
 
-	enum { START_GAME = 1, GAME_CANCELLED = 2 };
+	enum { START_GAME = 1, GAME_CANCELLED, SIDE_UNAVAILABLE };
 
 private:
 	config& sides_;
@@ -246,7 +246,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			config game_data = data;
 			int status = -1;
 			while(status == -1) {
-				const lobby::RESULT res = lobby::enter(disp,game_data);
+				const lobby::RESULT res = lobby::enter(disp,game_data,cfg);
 				switch(res) {
 					case lobby::QUIT: {
 						status = 1;
@@ -282,7 +282,12 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		std::map<int,int> choice_map;
 		std::vector<std::string> choices, race_names;
 		std::vector<bool> changes_allowed;
-		choices.push_back(string_table["observer"]);
+
+		const bool allow_observer = sides["observer"] != "no";
+
+		if(allow_observer) {
+			choices.push_back(string_table["observer"]);
+		}
     
 		const config::child_list& sides_list = sides.get_children("side");
 		for(config::child_list::const_iterator s = sides_list.begin(); s != sides_list.end(); ++s) {
@@ -295,14 +300,20 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			race_names.push_back((**s)["name"]);
 			changes_allowed.push_back((**s)["allow_changes"] != "no");
 		}
-    
-		const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
-		                                    gui::OK_CANCEL,&choices);
-		if(choice != 0 && choice_map.count(choice) == 0) {
+
+		if(choices.empty()) {
+			gui::show_dialog(disp,NULL,"",string_table["no_sides_available"],gui::OK_ONLY);
 			continue;
 		}
     
-		const bool observer = choice == 0;
+		int choice = gui::show_dialog(disp,NULL,"",string_table["client_choose_side"],
+		                                    gui::OK_CANCEL,&choices);
+
+		if((choice != 0 || allow_observer == false) && choice_map.count(choice) == 0) {
+			continue;
+		}
+    
+		const bool observer = allow_observer && choice == 0;
 
 		const int team_num = observer ? -1 : choice_map[choice];
     
@@ -363,6 +374,10 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			gui::show_dialog(disp,NULL,"",string_table["game_cancelled"],
 			                 gui::OK_ONLY);
 			continue;
+		} else if(dialog_res == wait_for_start::SIDE_UNAVAILABLE) {
+			gui::show_dialog(disp,NULL,"",string_table["side_unavailable"],
+			                 gui::OK_ONLY);
+			continue;			
 		} else if(dialog_res != wait_for_start::START_GAME) {
 			continue;
 		}

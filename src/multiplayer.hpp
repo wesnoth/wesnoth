@@ -31,6 +31,6 @@ struct network_game_manager {
 //just use existing network connections for players, or the game
 //is an entirely local game
 int play_multiplayer(display& disp, game_data& units_data,
-                      config cfg, game_state& state, bool server=true);
+                      const config& cfg, game_state& state, bool server=true);
 
 #endif

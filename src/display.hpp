@@ -279,6 +279,9 @@ public:
 
 	void unit_die(const gamemap::location& loc, SDL_Surface* image=NULL);
 
+	void add_observer(const std::string& name);
+	void remove_observer(const std::string& name);
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -403,6 +406,8 @@ private:
 	std::vector<gui::button> buttons_;
 
 	bool firstTurn_;
+
+	std::set<std::string> observers_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

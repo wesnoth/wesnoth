@@ -104,6 +104,7 @@ void show_about(display& disp)
  	text.push_back("-   Slainte");
 	text.push_back("-   Andrew James Patterson (Kamahawk)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
+	text.push_back("-   James \"Sangel\" Barton");
  	text.push_back("+ ");
  
  	text.push_back("+Music");

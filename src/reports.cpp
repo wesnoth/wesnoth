@@ -12,7 +12,7 @@ namespace {
 		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		"income", "terrain", "position", "side_playing" };
+		"income", "terrain", "position", "side_playing", "observers" };
 }
 
 namespace reports {
@@ -29,7 +29,8 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 						const std::vector<team>& teams,
                   const team& current_team, int current_side, int playing_side,
 					   const gamemap::location& loc, const gamemap::location& mouseover,
-					   const gamestatus& status, const std::string* format_string)
+					   const gamestatus& status, const std::set<std::string>& observers,
+					   const std::string* format_string)
 {
 	unit_map::const_iterator u = units.end();
 	
@@ -266,6 +267,20 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		char buf[50];
 		sprintf(buf,"terrain/flag-team%d.png",playing_side);
 		return report("",buf);
+	}
+
+	case OBSERVERS: {
+		if(observers.empty()) {
+			return report("none");
+		}
+
+		for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
+			str << *i << "\n";
+		}
+
+		report res("",game_config::observer_image);
+		res.tooltip = str.str();
+		return res;
 	}
 
 	}

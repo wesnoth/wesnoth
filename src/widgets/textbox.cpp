@@ -98,7 +98,7 @@ void textbox::draw()
 
 		pos += area.w;
 
-		if(cursor_ == i) {
+		if(cursor_ == i+1) {
 			draw_cursor(pos-1, disp());
 		}
 	}

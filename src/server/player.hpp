@@ -10,6 +10,8 @@ class player
 public:
 	player(const std::string& n, config& cfg);
 
+	void mark_available(bool val);
+
 	const std::string& name() const;
 
 	config* config_address();

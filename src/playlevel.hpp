@@ -44,7 +44,7 @@ struct end_level_exception {
 	bool gold_bonus;
 };
 
-LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
+LEVEL_RESULT play_level(game_data& gameinfo, const config& terrain_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
 						const std::vector<config*>& story);

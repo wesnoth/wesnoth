@@ -28,7 +28,7 @@ namespace game_config
 	const std::string version = "0.7.1-CVS";
 	bool debug = false;
 
-	std::string game_icon, game_title, game_logo, title_music;
+	std::string game_icon = "wesnoth-icon.png", game_title, game_logo, title_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0;
 
 	std::string missile_n_image, missile_ne_image;
@@ -47,6 +47,8 @@ namespace game_config
 	std::string cross_image = "misc/cross.png";
 
 	std::string foot_left_nw, foot_left_n, foot_right_nw, foot_right_n;
+
+	std::string observer_image;
 
 #ifdef WESNOTH_PATH
 	std::string path = WESNOTH_PATH;
@@ -102,5 +104,7 @@ namespace game_config
 
 		missile_n_image = v["missile_n_image"];
 		missile_ne_image = v["missile_ne_image"];
+
+		observer_image = v["observer_image"];
 	}
 }

@@ -238,6 +238,20 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 	return surf;
 }
 
+void register_image(const std::string& id, SDL_Surface* surf)
+{
+	if(surf == NULL) {
+		return;
+	}
+
+	image_map::iterator i = images_.find(id);
+	if(i != images_.end()) {
+		SDL_FreeSurface(i->second);
+	}
+
+	images_[id] = surf;
+}
+
 SDL_Surface* getMinimap(int w, int h, const gamemap& map, 
 		int lawful_bonus, const team* tm)
 {

@@ -119,7 +119,7 @@ gamemap::location gamemap::location::get_direction(
 	}
 }
 
-gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
+gamemap::gamemap(const config& cfg, const std::string& data) : tiles_(1)
 {
 	const config::child_list& terrains = cfg.get_children("terrain");
 	create_terrain_maps(terrains,terrainPrecedence_,letterToTerrain_,terrain_);

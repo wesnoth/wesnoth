@@ -57,7 +57,7 @@ class turn_info : public hotkey::command_executor, public events::handler,
 {
 public:
 	turn_info(game_data& gameinfo, game_state& state_of_game,
-	          gamestatus& status, config& terrain_config, config* level,
+	          gamestatus& status, const config& terrain_config, config* level,
 	          CKey& key, display& gui, gamemap& map,
 	          std::vector<team>& teams, int team_num,
 	          unit_map& units, bool browse_only);
@@ -120,7 +120,7 @@ private:
 	game_data& gameinfo_;
 	game_state& state_of_game_;
 	gamestatus& status_;
-	config& terrain_config_;
+	const config& terrain_config_;
 	config* level_;
 	CKey key_;
 	display& gui_;
@@ -148,16 +148,9 @@ private:
 };
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
-               gamestatus& status, config& terrain_config, config* level,
+               gamestatus& status, const config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
-			   std::vector<team>& teams, int team_num, unit_map& units);
-
-bool turn_slice(game_data& gameinfo, game_state& state_of_game,
-                gamestatus& status, config& terrain_config, config* level,
-                CVideo& video, CKey& key, display& gui, gamemap& map,
-                std::vector<team>& teams, int team_num,
-                unit_map& units, turn_info& turn_data, bool browse_only);
-                
+			   std::vector<team>& teams, int team_num, unit_map& units);                
 
 #endif

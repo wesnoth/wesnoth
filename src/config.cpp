@@ -338,7 +338,7 @@ void internal_preprocess_file(const std::string& fname,
 
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
-			if(f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
+			if(is_directory(*f) || (f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg"))) {
 				internal_preprocess_file(*f,defines_map,depth,res,
 				                         lines_src,line);
 			}

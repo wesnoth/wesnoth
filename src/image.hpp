@@ -67,6 +67,13 @@ namespace image {
 	//Note that this surface must be freed by the user by calling SDL_FreeSurface
 	SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y);
 
+	//function to register an image with the given id. Calls to get_image(id,UNSCALED) will
+	//return this image. register_image() will take ownership of this image and free
+	//it when the cache is cleared (change of video mode or colour adjustment).
+	//If there is already an image registered with this id, that image will be freed
+	//and replaced with this image.
+	void register_image(const std::string& id, SDL_Surface* surf);
+
 	//the surface returned must be freed by the user
 	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, int lawful_bonus,
 			const team* tm=NULL);

@@ -392,6 +392,7 @@ bool unit::stone() const
 bool unit::matches_filter(const config& cfg) const
 {
 	const std::string& description = cfg["description"];
+	const std::string& speaker = cfg["speaker"];
 	const std::string& type = cfg["type"];
 	const std::string& ability = cfg["ability"];
 	const std::string& side = cfg["side"];
@@ -399,6 +400,11 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& role = cfg["role"];
 
 	if(description.empty() == false && description != this->underlying_description()) {
+		return false;
+	}
+
+	//allow 'speaker' as an alternative to description, since people use it so often
+	if(speaker.empty() == false && speaker != this->underlying_description()) {
 		return false;
 	}
 

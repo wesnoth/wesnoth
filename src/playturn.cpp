@@ -41,7 +41,7 @@ command_disabler::command_disabler() { ++commands_disabled; }
 command_disabler::~command_disabler() { --commands_disabled; }
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
-               gamestatus& status, config& terrain_config, config* level,
+               gamestatus& status, const config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
 			   std::vector<team>& teams, int team_num,
@@ -135,7 +135,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 }
 
 turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
-                     gamestatus& status, config& terrain_config, config* level,
+                     gamestatus& status, const config& terrain_config, config* level,
                      CKey& key, display& gui, gamemap& map,
                      std::vector<team>& teams, int team_num,
                      unit_map& units, bool browse)

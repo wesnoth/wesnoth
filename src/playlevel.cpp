@@ -94,7 +94,7 @@ namespace {
 	}
 }
 
-LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
+LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
@@ -433,15 +433,38 @@ redo_turn:
 					bool turn_end = false;
 
 					while(!turn_end) {
-
-						config cfg;
-	
 						turn_info turn_data(gameinfo,state_of_game,status,
 						                    game_config,level,key,gui,
 						                    map,teams,player_number,units,true);
 
+						config cfg;
+
 						for(;;) {
+							cfg = config();
 							network::connection res = network::receive_data(cfg);
+
+							if(res) {
+								std::cerr << "received network data: '" << cfg.write() << "'\n";
+							}
+
+							if(res && cfg.child("observer") != NULL) {
+								const config::child_list& observers = cfg.get_children("observer");
+								for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
+									gui.add_observer((**ob)["name"]);
+								}
+
+								continue;
+							}
+
+							if(res && cfg.child("observer_quit") != NULL) {
+								const config::child_list& observers = cfg.get_children("observer_quit");
+								for(config::child_list::const_iterator ob = observers.begin(); ob != observers.end(); ++ob) {
+									gui.remove_observer((**ob)["name"]);
+								}
+
+								continue;
+							}
+
 							if(res && cfg.child("leave_game") != NULL) {
 								throw network::error("");
 							}

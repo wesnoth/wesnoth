@@ -673,7 +673,7 @@ void display::draw_report(reports::TYPE report_num)
 				units_, teams_,
 		      teams_[viewing_team()],
 				currentTeam_+1,activeTeam_+1,
-				selectedHex_,mouseoverHex_,status_);
+				selectedHex_,mouseoverHex_,status_,observers_);
 
 		SDL_Rect& rect = reportRects_[report_num];
 		const SDL_Rect& new_rect = item->location(screen_area());
@@ -2544,4 +2544,14 @@ void display::create_buttons()
 		b.set_xy(loc.x,loc.y);
 		buttons_.push_back(b);
 	}
+}
+
+void display::add_observer(const std::string& name)
+{
+	observers_.insert(name);
+}
+
+void display::remove_observer(const std::string& name)
+{
+	observers_.erase(name);
 }

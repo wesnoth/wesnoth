@@ -30,12 +30,12 @@ class mp_connect
 
 public:
 	mp_connect(display& disp, std::string game_name,
-		   config &cfg, game_data& units_data,
+		   const config &cfg, game_data& units_data,
 		   game_state& state, bool join = false);
 	~mp_connect();
 
 	int load_map(int map, int num_turns, int village_gold,
-		     bool fog_game, bool shroud_game);
+		     bool fog_game, bool shroud_game, bool allow_observers);
 	int gui_do();
 
 private:
@@ -50,7 +50,7 @@ private:
 
 	display *disp_;
 
-	config *cfg_;
+	const config *cfg_;
 	game_data *data_;
 	game_state *state_;
 	config *level_;

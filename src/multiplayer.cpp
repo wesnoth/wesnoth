@@ -51,7 +51,7 @@ network_game_manager::~network_game_manager()
 
 // TODO: This function is way to big. It should be split into 2 functions,
 //       one for each dialog.
-int play_multiplayer(display& disp, game_data& units_data, config cfg,
+int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
                       game_state& state, bool server)
 {
 	state.available_units.clear();
@@ -210,7 +210,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				//Connector
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
-				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());
+				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked(), observers_game.checked());
 				if(res == -1)
 					return -1;
 

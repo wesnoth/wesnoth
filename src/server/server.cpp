@@ -40,7 +40,6 @@ private:
 
 	config sync_initial_response();
 
-	typedef std::map<network::connection,player> player_map;
 	player_map players_;
 
 	game not_logged_in_;
@@ -48,7 +47,7 @@ private:
 	std::vector<game> games_;
 };
 
-server::server(int port) : net_manager_(), server_(port)
+server::server(int port) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
@@ -116,7 +115,9 @@ void server::run()
 					}
 					
 					config* const player_cfg = &initial_response_.add_child("user");
+
 					const player new_player(username,*player_cfg);
+
 					players_.insert(std::pair<network::connection,player>(sock,new_player));
 
 					//remove player from the not-logged-in list and place
@@ -140,7 +141,7 @@ void server::run()
 
 						//create the new game, remove the player from the
 						//lobby and put him/her in the game they have created
-						games_.push_back(game());
+						games_.push_back(game(players_));
 						lobby_players_.remove_player(sock);
 						games_.back().add_player(sock);
 
@@ -149,6 +150,16 @@ void server::run()
 						std::stringstream converter;
 						converter << games_.back().id();
 						games_.back().level()["id"] = converter.str();
+
+						//mark the player as unavailable in the lobby
+						const player_map::iterator pl = players_.find(sock);
+						if(pl != players_.end()) {
+							pl->second.mark_available(false);
+
+							lobby_players_.send_data(sync_initial_response());
+						} else {
+							std::cerr << "ERROR: Could not find player in map\n";
+						}
 
 						continue;
 					}
@@ -172,6 +183,16 @@ void server::run()
 						network::send_data(it->level(),sock);
 
 						it->add_player(sock);
+
+						//mark the player as unavailable in the lobby
+						const player_map::iterator pl = players_.find(sock);
+						if(pl != players_.end()) {
+							pl->second.mark_available(false);
+
+							lobby_players_.send_data(sync_initial_response());
+						} else {
+							std::cerr << "ERROR: Could not find player in map\n";
+						}
 					}
 
 					//see if it's a message, in which case we add the name
@@ -199,16 +220,31 @@ void server::run()
 					if(data.child("scenario_diff")) {
 						g->level().apply_diff(*data.child("scenario_diff"));
 						g->send_data(data,sock);
+
+						const bool lobby_changes = g->describe_slots();
+						if(lobby_changes) {
+							lobby_players_.send_data(sync_initial_response());
+						}
 					}
 
-					//if this is data describing the level for a game
+					//if this is data describing the level for a game.
 					else if(data.child("side") != NULL) {
 
 						const bool is_init = g->level_init();
 
-						//if this game is having its level-data initialized
-						//for the first time, and is ready for players to join
+						//if this game is having its level data initialized
+						//for the first time, and is ready for players to join.
+						//We should currently have a summary of the game in g->level().
+						//we want to move this summary to the initial_response_, and
+						//place a pointer to that summary in the game's description.
+						//g->level() should then receive the full data for the game.
 						if(!is_init) {
+
+							//if there is no shroud, then tell players in the lobby what the map looks like
+							if((*data.child("side"))["shroud"] != "yes") {
+								g->level().values["map_data"] = data["map_data"];
+								g->level().values["map"] = data["map"];
+							}
 							
 							//update our config object which describes the
 							//open games, and notifies the game of where its description
@@ -216,14 +252,20 @@ void server::run()
 							config& desc = gamelist.add_child("game",g->level());
 							g->set_description(&desc);
 
+							//record the full description of the scenario in g->level()
+							g->level() = data;
+							g->describe_slots();
+
 							//send all players in the lobby the update to the list of games
 							lobby_players_.send_data(sync_initial_response());
+						} else {
+
+							//we've already initialized this scenario, but clobber its old
+							//contents with the new ones given here
+							g->level() = data;
 						}
 
-						//record the new level data, and send to all players
-						//who are in the game
-						g->level() = data;
-
+						//send all players in the level, except the sender, the new data
 						g->send_data(data,sock);
 						continue;
 					}
@@ -235,6 +277,12 @@ void server::run()
 						if(res) {
 							std::cerr << "played joined side\n";
 							response["side_secured"] = side->second;
+
+							//update the number of available slots
+							const bool res = g->describe_slots();
+							if(res) {
+								lobby_players_.send_data(sync_initial_response());
+							}
 						} else {
 							response["failed"] = "yes";
 						}
@@ -244,7 +292,15 @@ void server::run()
 					}
 
 					if(data.child("start_game")) {
+						//send notification of the game starting immediately.
+						//g->start_game() will send data that assumes the [start_game]
+						//message has been sent
+						g->send_data(data,sock);
+						g->record_data(data);
+
 						g->start_game();
+						lobby_players_.send_data(sync_initial_response());
+						continue;
 					} else if(data.child("leave_game")) {
 						const bool needed = g->is_needed(sock);
 
@@ -267,9 +323,16 @@ void server::run()
 							}
 
 							//update the state of the lobby to players in it.
-							//We have to sync the state of the lobby because we can
+							//We have to sync the state of the lobby so we can
 							//send it to the players leaving the game
 							lobby_players_.send_data(sync_initial_response());
+
+							//set the availability status for all quitting players
+							for(player_map::iterator pl = players_.begin(); pl != players_.end(); ++pl) {
+								if(g->is_member(pl->first)) {
+									pl->second.mark_available(true);
+								}
+							}
 
 							//put the players back in the lobby and send
 							//them the game list and user list again
@@ -282,7 +345,18 @@ void server::run()
 						} else {
 
 							g->remove_player(sock);
+							g->describe_slots();
 							lobby_players_.add_player(sock);
+
+							//mark the player as available in the lobby
+							const player_map::iterator pl = players_.find(sock);
+							if(pl != players_.end()) {
+								pl->second.mark_available(true);
+
+								lobby_players_.send_data(sync_initial_response());
+							} else {
+								std::cerr << "ERROR: Could not find player in map\n";
+							}
 
 							//send the player who has quit the game list
 							network::send_data(initial_response_,sock);
@@ -294,6 +368,16 @@ void server::run()
 					} else if(data["failed"].empty() == false) {
 						std::cerr << "ERROR: failure to get side\n";
 						continue;
+					}
+
+					if(data.child("turn") != NULL) {
+						//notify the game of the commands, and if it changes
+						//the description, then sync the new description
+						//to players in the lobby
+						const bool res = g->process_commands(*data.child("turn"));
+						if(res) {
+							lobby_players_.send_data(sync_initial_response());
+						}
 					}
 
 					//forward data to all players who are in the game,

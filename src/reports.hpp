@@ -1,7 +1,9 @@
 #ifndef REPORTS_HPP_INCLUDED
 #define REPORTS_HPP_INCLUDED
 
+#include <set>
 #include <string>
+#include <vector>
 
 #include "gamestatus.hpp"
 #include "map.hpp"
@@ -16,7 +18,7 @@ namespace reports {
 	            UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP, UNIT_MOVES, UNIT_WEAPONS,
 				UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 				TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES, INCOME, TERRAIN, POSITION,
-				SIDE_PLAYING, NUM_REPORTS};
+				SIDE_PLAYING, OBSERVERS, NUM_REPORTS};
 
 	enum { UNIT_REPORTS_BEGIN=UNIT_DESCRIPTION, UNIT_REPORTS_END=UNIT_PROFILE+1 };
 	enum { STATUS_REPORTS_BEGIN=TIME_OF_DAY, STATUS_REPORTS_END=NUM_REPORTS};
@@ -37,7 +39,8 @@ namespace reports {
 							const std::vector<team>& teams,
 	                  const team& current_team, int current_side, int active_side,
 						   const gamemap::location& loc, const gamemap::location& mouseover,
-						   const gamestatus& status, const std::string* format_string=NULL);
+						   const gamestatus& status, const std::set<std::string>& observers,
+						   const std::string* format_string=NULL);
 }
 
 #endif
