@@ -1,11 +1,14 @@
 CVS HEAD:
- * added new unit images, missile images and attack icons, polished some old ones
+ * changed damage calculations to use additive percentage calculations
+ * resting stacks with heal and cure
+ * 'Sword of Fire' changed melee weapon with fire damage
+ * added and improved unit images, missile images and attack icons
  * merman and swamp villages
- * ice terrain, 
+ * ice terrain 
  * dirt and swamp transitions
  * new minor terrain item: trash heap
  * new fog of war images
- * undergound daytime images
+ * underground daytime images
  * fading effect between daytime changes
  * attack stat tooltips
  * user interface polishing
@@ -16,29 +19,22 @@ CVS HEAD:
  * added deleting units from recall list
  * added fight calculations
  * added in-game statistics
- * 'Sword of Fire' shoots fireballs instead of lightning bolt
- * resting stacks with heal and cure
  * new scenarios for 'Heir to the Throne' campaign:
    * Return to Wesnoth
    * Valley of Statues
  * scenario balancing for 'Heir to the Throne' campaign:
    * Blackwater Port
    * Hasty Alliance
+   * Scepter of Fire
  * General melee attack number of strikes increased by one
  * Princess (Li'Sar) changed to 2nd level unit
  * reduced Sleeping Gryphon's number of attacks to same with Gryphon
+ * improved swimmer (Merman, Naga, etc) movement on swamp, grassland, sand and tundra
  * new units
    * Battle Princess
    * Cockatrice
    * Grand Knight
    * Yeti
- * translations can specify font to use
- * added Bepa-Roman.ttf which has cyrillic characters
- * updated translations:
-   * danish
-   * hungarian
-   * portuguese-brazilian
-   * slovak
  * multiplayer enhancements:
    * random map generator enhanced
    * village number slider in random map generation is now proportional
@@ -46,9 +42,17 @@ CVS HEAD:
    * number of available positions in a game is shown in the lobby
    * current turn of a game underway is shown in the lobby
    * eye of the observer
+ * translations can specify font to use
+ * added Bepa-Roman.ttf which has cyrillic characters
+ * updated translations:
+   * danish
+   * hungarian
+   * portuguese-brazilian
+   * slovak
  * added [store_gold] tag to WML
  * defenders will choose their weapons more intelligently
  * de-elvished Gryphon Rider description and set race to human
+ * fixed Cave Spider ranged attack to have slow specialty
  * fixed minor glitch in tutorial id messages
  * fixed random map generator creating invalid small maps
  * fixed result=continue showing victory message
@@ -56,7 +60,13 @@ CVS HEAD:
  * fixed enemies getting healed after loading, resting serialized in unit
  * fixed Merman Lord -> Triton in some scenarios
  * fixed allow/deny observers being not respected in multiplayer game creation
- * fixed multiplayer replays
+ * fixed multiplayer replays not working
+ * fixed random map generator retain the 'number of players' setting
+ * fixed PNG and OGG checking bugs in configure for MacOSX and Windows (with cygwin)
+ * fixed crash on empty maps
+ * fixed problem with units having movement reset
+ * fixed 'right column inaccessible' bug
+ * made it less likely for castles to appear in the sea on randomly generated maps
  * improved network protocol (breaks backward compatibility)
  * added optimization to make the game load faster for people using the default english locale
  * slacknoth now ignores an insignificant makefile error
