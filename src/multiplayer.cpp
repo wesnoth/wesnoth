@@ -12,18 +12,19 @@
 */
 
 #include "global.hpp"
+
+#include "game_config.hpp"
+#include "gettext.hpp"
+#include "log.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
 #include "multiplayer_create.hpp"
-#include "preferences.hpp"
-#include "game_config.hpp"
-#include "log.hpp"
-#include "playlevel.hpp"
 #include "network.hpp"
-#include "gettext.hpp"
+#include "playlevel.hpp"
+#include "preferences.hpp"
 
 #define LOG_NW lg::info(lg::network)
 
@@ -153,8 +154,6 @@ server_type open_connection(display& disp, const std::string& host)
 			if(!data_res) {
 				throw network::error(_("Connection timed out"));
 			}
-
-			LOG_NW << "login response: '" << data.write() << "'\n";
 
 			error = data.child("error");
 		} while(error != NULL);

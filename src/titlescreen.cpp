@@ -16,6 +16,8 @@
 #include "titlescreen.hpp"
 #include "util.hpp"
 #include "video.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 
 #include "SDL_ttf.h"
 
@@ -124,7 +126,7 @@ const config get_tips_of_day()
 
 	std::cerr << "Loading tips of day\n";
 	try {
-		cfg.read(preprocess_file("data/tips.cfg"));
+		read(cfg, preprocess_file("data/tips.cfg"));
 	} catch(config::error&) {
 		std::cerr << "Could not read tips.cfg\n";
 	}

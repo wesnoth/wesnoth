@@ -391,9 +391,6 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 
 	aggression_ = lexical_cast_default<double>(aiparams_["aggression"],0.5);
 	caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
-
-	LOG_NG << "for turn " << turn << ", time of day '" << tod.id << "' set ai_params to: ---\n"
-	       << aiparams_.write() << "\n---\n";
 }
 
 void team::spend_gold(int amount)

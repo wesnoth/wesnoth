@@ -25,6 +25,8 @@
 #include "../team.hpp"
 #include "../util.hpp"
 #include "../wesconfig.h"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cctype>
@@ -223,7 +225,7 @@ int main(int argc, char** argv)
 	//Read the configuration af
 	config cfg;
 	try {
-		cfg.read(preprocess_file("data/game.cfg", &defines_map));
+		read(cfg, preprocess_file("data/game.cfg", &defines_map));
 	}
 	catch (config::error e) {
 		std::cerr << "Error when reading game config: '" << e.message << "'" << std::endl;
@@ -243,7 +245,7 @@ int main(int argc, char** argv)
 	// Add a dummy team so the reports will be handled properly.
 	teams.push_back(team(cfg));
 	config* theme_cfg = cfg.find_child("theme", "name", "editor");
-	config dummy_theme("");
+	config dummy_theme;
 	if (!theme_cfg) {
 		std::cerr << "Editor theme could not be loaded." << std::endl;
 		theme_cfg = &dummy_theme;
@@ -257,7 +259,7 @@ int main(int argc, char** argv)
 			std::cerr << "creating map...\n";
 			gamemap map(cfg, mapdata);
 
-			const config dummy_cfg("");
+			const config dummy_cfg;
 			display gui(units, video, map, status, teams,
 				    *theme_cfg, cfg, dummy_cfg);
 	

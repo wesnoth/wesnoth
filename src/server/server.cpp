@@ -157,18 +157,15 @@ config server::sync_initial_response()
 
 void server::dump_stats()
 {
-	config parent;
-	config& stats = parent.add_child("statistics");
-
-	stats["num_players"] = str_cast(players_.size());
-	stats["lobby_players"] = str_cast(lobby_players_.nplayers());
-	stats["num_games"] = str_cast(games_.size());
-	stats["start_interval"] = str_cast(last_stats_);
+	time_t old_stats = last_stats_;
 	last_stats_ = time(NULL);
-	stats["end_interval"] = str_cast(last_stats_);
-
-	//write and flush the output stream
-	std::cout << parent.write() << std::endl;
+	
+	std::cout <<
+		"Statistics\n"
+		"\tnum_players = " << players_.size() << "\n"
+		"\tlobby_players = " << lobby_players_.nplayers() << "\n"
+		"\tstart_interval = " << old_stats << "\n"
+		"\tend_interval = " << last_stats_ << std::endl;
 }
 
 void server::process_command(const std::string& cmd)

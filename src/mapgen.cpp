@@ -674,8 +674,6 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		naming = *names_info;
 	}
 
-	LOG_NG << "random map config: '" << cfg.write() << "'\n";
-	LOG_NG << "making dummy race for naming: '" << naming.write() << "'\n";
 	//make a dummy race for generating names
 	unit_race name_generator(naming);
 

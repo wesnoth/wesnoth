@@ -21,13 +21,6 @@
 #include <sstream>
 #include <vector>
 
-#if 0
-#include "config.hpp"
-#include "game_config.hpp"
-#include "game_events.hpp"
-#include "gettext.hpp"
-#include "util.hpp"
-#endif
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "wesconfig.h"
@@ -37,26 +30,8 @@
 #define ERR_CF lg::err(lg::config)
 #define LOG_CF lg::info(lg::config)
 
-bool line_source::operator<(line_source const &v) const {
-	return linenum < v.linenum;
-}
-
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
-}
-
-line_source get_line_source(std::vector< line_source > const &line_src, int line)
-{
-	line_source res(line, "", 0);
-	std::vector< line_source >::const_iterator it =
-		std::upper_bound(line_src.begin(), line_src.end(), res);
-	if (it != line_src.begin()) {
-		--it;
-		res.file = it->file;
-		res.fileline = it->fileline + (line - it->linenum);
-	}
-
-	return res;
 }
 
 // FIXME

@@ -28,10 +28,8 @@ struct line_source
 	int linenum;
 	std::string file;
 	int fileline;
-	bool operator<(line_source const &) const;
+	bool operator<(line_source const &v) const { return linenum < v.linenum; }
 };
-
-line_source get_line_source(std::vector< line_source > const &line_src, int line);
 
 struct preproc_define
 {

@@ -3,6 +3,7 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "publish_campaign.hpp"
+#include "serialization/parser.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -25,12 +26,12 @@ void setup_dirs()
 
 void get_campaign_info(const std::string& campaign_name, config& cfg)
 {
-	cfg.read(read_file(campaign_dir() + "/" + campaign_name + ".pbl"));
+	read(cfg, read_file(campaign_dir() + "/" + campaign_name + ".pbl"));
 }
 
 void set_campaign_info(const std::string& campaign_name, const config& cfg)
 {
-	write_file(campaign_dir() + "/" + campaign_name + ".pbl", cfg.write());
+	write_file(campaign_dir() + "/" + campaign_name + ".pbl", write(cfg));
 }
 
 std::vector<std::string> available_campaigns()

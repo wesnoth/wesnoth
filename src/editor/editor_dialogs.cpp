@@ -128,7 +128,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		const config* const toplevel_cfg = game_config.find_child("multiplayer","id","ranmap");
 		const config* const cfg = toplevel_cfg == NULL ? NULL : toplevel_cfg->child("generator");
 		if (cfg == NULL) {
-			config dummy_cfg("");
+			config dummy_cfg;
 			random_map_generator.assign(create_map_generator("", &dummy_cfg));
 		}
 		else {

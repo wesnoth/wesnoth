@@ -26,6 +26,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -1671,7 +1672,8 @@ void help_text_area::set_items() {
 		if (*it != "" && (*it)[0] == '[') {
 			// Should be parsed as WML.
 			try {
-				config cfg(*it);
+				config cfg;
+				read(cfg, *it);
 				config *child = cfg.child("ref");
 				if (child != NULL) {
 					handle_ref_cfg(*child);
@@ -1729,7 +1731,7 @@ void help_text_area::handle_ref_cfg(const config &cfg) {
 	if (dst == "") {
 		std::string msg = 
 			"Ref markup must have dst attribute. Please submit a bug report if you have not modified the game files yourself. Errornous config: ";
-		msg += cfg.write();
+		msg += write(cfg);
 		throw parse_error(msg);
 	}
 	if (show_ref) {

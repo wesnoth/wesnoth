@@ -23,8 +23,10 @@
 #include "team.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
-#include "serialization/string_utils.hpp"
 #include "wassert.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -331,8 +333,8 @@ private:
 	SDL_Color color_;
 	int style_;
 	mutable int w_, h_;
-	mutable bool initialized_;
 	std::string str_;
+	mutable bool initialized_;
 	mutable std::vector<text_chunk> chunks_;
 	mutable std::vector<surface> surfs_;
 	void hash();
@@ -1309,7 +1311,7 @@ bool load_font_config()
 	//config when changing languages
 	config cfg;
 	try {
-		cfg.read(preprocess_file("data/fonts.cfg"));
+		read(cfg, preprocess_file("data/fonts.cfg"));
 	} catch(config::error&) {
 		std::cerr << "Could not read fonts.cfg\n";
 		return false;

@@ -13,6 +13,7 @@
 
 #include "global.hpp"
 
+#include "gettext.hpp"
 #include "log.hpp"
 #include "multiplayer_wait.hpp"
 #include "preferences.hpp"
@@ -20,7 +21,6 @@
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
-#include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 
 #define LOG_NW lg::info(lg::network)
@@ -266,8 +266,6 @@ void wait::start_game()
 			(**side)["controller"] = "network";
 		}
 	}
-
-	std::cerr << level_.write() << "\n";
 
 	// FIXME: To be reviewed
 	

@@ -21,6 +21,8 @@
 #include "preferences.hpp"
 #include "statistics.hpp"
 #include "util.hpp"
+#include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -420,7 +422,7 @@ void read_save_file(const std::string& name, config& cfg)
 	}
 
 	cfg.clear();
-	cfg.detect_format_and_read(file_data);
+	detect_format_and_read(cfg, file_data);
 
 	if(cfg.empty()) {
 		std::cerr << "Could not parse file data into config\n";
@@ -452,7 +454,7 @@ void save_game(const game_state& state)
 
 		const std::string fname = get_saves_dir() + "/" + name;
 
-		write_file(fname,preferences::compress_saves() ? cfg.write_compressed() : cfg.write());
+		write_file(fname, preferences::compress_saves() ? write_compressed(cfg) : write(cfg));
 
 		config& summary = save_summary(state.label);
 		extract_summary_data_from_save(state,summary);
@@ -475,7 +477,7 @@ config& save_index()
 {
 	if(save_index_loaded == false) {
 		try {
-			save_index_cfg.detect_format_and_read(read_file(get_save_index_file()));
+			detect_format_and_read(save_index_cfg, read_file(get_save_index_file()));
 		} catch(io_exception& e) {
 			std::cerr << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
@@ -516,7 +518,7 @@ void write_save_index()
 {
 	log_scope("write_save_index()");
 	try {
-		write_file(get_save_index_file(),save_index().write_compressed());
+		write_file(get_save_index_file(), write_compressed(save_index()));
 	} catch(io_exception& e) {
 		std::cerr << "error writing to save index file: '" << e.what() << "'\n";
 	}

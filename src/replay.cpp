@@ -933,7 +933,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 			fix_shroud = true;
 		} else {
-			ERR_NW << "unrecognized action: '" << cfg->write() << "'\n";
+			ERR_NW << "unrecognized action\n";
 			throw replay::error();
 		}
 

@@ -14,6 +14,8 @@
 #include "exploder_cutter.hpp"
 #include "filesystem.hpp"
 #include "sdl_utils.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "SDL_image.h"
 
@@ -30,7 +32,7 @@ const config cutter::load_config(const std::string &filename)
 	config res;
 	
 	try {
-		res.read(pre_conf_string);
+		read(res, pre_conf_string);
 	} catch(config::error err) {
 		throw exploder_failure("Unable to load the configuration for the file " + filename + ": "+ err.message);
 	}

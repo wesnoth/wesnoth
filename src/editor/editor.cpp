@@ -32,6 +32,7 @@
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 
 #include "editor.hpp"
@@ -99,7 +100,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 		// Perform some initializations that should only be performed
 		// the first time the editor object is created.
 		try {
-			prefs_.read(read_file(prefs_filename));
+			read(prefs_, read_file(prefs_filename));
 		}
 		catch (config::error e) {
 			std::cerr << "Error when reading " << prefs_filename << ": "
@@ -135,7 +136,7 @@ map_editor::~map_editor() {
 	old_bg_terrain_ = palette_.selected_bg_terrain();
 	old_brush_size_ = brush_.selected_brush_size();
 	try {
-		write_file(prefs_filename, prefs_.write());
+		write_file(prefs_filename, write(prefs_));
 	}
 	catch (io_exception& e) {
 		std::cerr << "Error when writing to " << prefs_filename << ": "

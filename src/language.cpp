@@ -17,6 +17,8 @@
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 
 #include <cctype>
 #include <cerrno>
@@ -152,7 +154,7 @@ bool set_language(const language_def& locale)
 
 	// fill string_table (should be moved somwhere else some day)
 	try {
-		cfg.read(preprocess_file("data/translations/english.cfg"));
+		read(cfg, preprocess_file("data/translations/english.cfg"));
 	} catch(config::error& e) {
 		std::cerr << "Could not read english.cfg\n";
 		throw e;

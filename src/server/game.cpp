@@ -61,7 +61,7 @@ bool game::filter_commands(network::connection player, config& cfg)
 			} else if(observers_can_chat() && (*i)->child("speak") != NULL && (*i)->all_children().size() == 1) {
 				;
 			} else {
-				std::cerr << "removing observer's illegal command: '" << (*i)->write() << "'\n";
+				std::cerr << "removing observer's illegal command\n";
 				marked.push_back(index - marked.size());
 			}
 

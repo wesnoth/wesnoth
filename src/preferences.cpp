@@ -28,6 +28,7 @@
 #include "util.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/label.hpp"
@@ -65,7 +66,7 @@ namespace preferences {
 
 manager::manager()
 {
-	prefs.read(read_file(get_prefs_file()));
+	read(prefs, read_file(get_prefs_file()));
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
@@ -94,7 +95,7 @@ manager::~manager()
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	try {
-		write_file(get_prefs_file(),prefs.write());
+		write_file(get_prefs_file(), write(prefs));
 	} catch(io_exception&) {
 		std::cerr << "error writing to preferences file '" << get_prefs_file() << "'\n";
 	}

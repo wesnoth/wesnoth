@@ -1,8 +1,10 @@
-#include "../config.hpp"
-#include "../filesystem.hpp"
-#include "../network.hpp"
-#include "../publish_campaign.hpp"
-#include "../util.hpp"
+#include "config.hpp"
+#include "filesystem.hpp"
+#include "network.hpp"
+#include "publish_campaign.hpp"
+#include "util.hpp"
+#include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
 
 #include "SDL.h"
 
@@ -30,7 +32,7 @@ public:
 	explicit campaign_server(const std::string& cfgfile);
 	void run();
 private:
-
+	int load_config(); // return the server port
 	const config& campaigns() const { return *cfg_.child("campaigns"); }
 	config& campaigns() { return *cfg_.child("campaigns"); }
 	config cfg_;
@@ -40,9 +42,14 @@ private:
 
 };
 
+int campaign_server::load_config()
+{
+	read(cfg_, read_file(file_));
+	return lexical_cast_default<int>(cfg_["port"], 15002);
+}
+
 campaign_server::campaign_server(const std::string& cfgfile)
-     : cfg_(read_file(cfgfile)), file_(cfgfile),
-       server_manager_(lexical_cast_default<int>(cfg_["port"],15002))
+     : file_(cfgfile), server_manager_(load_config())
 {
 	if(cfg_.child("campaigns") == NULL) {
 		cfg_.add_child("campaigns");
@@ -55,7 +62,7 @@ void campaign_server::run()
 		try {
 			//write config to disk every ten minutes
 			if((increment%(60*10*2)) == 0) {
-				write_file(file_,cfg_.write());
+				write_file(file_, write(cfg_));
 			}
 
 			network::process_send_queue();
@@ -84,7 +91,7 @@ void campaign_server::run()
 					} else {
 						config cfg;
 						compression_schema schema;
-						cfg.read_compressed(read_file((*campaign)["filename"]),schema);
+						read_compressed(cfg, read_file((*campaign)["filename"]),schema);
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;
@@ -120,12 +127,12 @@ void campaign_server::run()
 						const config* const data = upload->child("data");
 						if(data != NULL) {
 							compression_schema schema;
-							const std::string& filedata = data->write_compressed(schema);
+							const std::string& filedata = write_compressed(*data, schema);
 							write_file((*campaign)["filename"],filedata);
 							(*campaign)["size"] = lexical_cast<std::string>(filedata.size());
 						}
 
-						write_file(file_,cfg_.write());
+						write_file(file_, write(cfg_));
 						network::send_data(construct_message("Campaign accepted."),sock);
 					}
 				} else if(const config* erase = data.child("delete")) {
@@ -146,7 +153,7 @@ void campaign_server::run()
 					const config::child_list& campaigns_list = campaigns().get_children("campaign");
 					const size_t index = std::find(campaigns_list.begin(),campaigns_list.end(),campaign) - campaigns_list.begin();
 					campaigns().remove_child("campaign",index);
-					write_file(file_,cfg_.write());
+					write_file(file_, write(cfg_));
 					network::send_data(construct_message("Campaign erased."),sock);
 				}
 			}

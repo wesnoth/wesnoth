@@ -52,6 +52,9 @@
 #include "video.hpp"
 #include "wassert.hpp"
 #include "wml_separators.hpp"
+#include "serialization/binary_wml.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
@@ -87,7 +90,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		//if the starting state is specified, then use that,
 		//otherwise get the scenario data and start from there.
 		if(state.starting_pos.empty() == false) {
-			std::cerr << "loading starting position: '" << state.starting_pos.write() << "'\n";
+			std::cerr << "loading starting position: '" << write(state.starting_pos) << "'\n";
 			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
 		} else {
@@ -253,7 +256,8 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				if(use_cache) {
 					try {
 						if(file_exists(fname_checksum)) {
-							const config checksum_cfg(read_file(fname_checksum));
+							config const checksum_cfg;
+							read(cfg, read_file(fname_checksum));
 							dir_checksum = file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
@@ -269,7 +273,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					compression_schema schema;
 
 					try {
-						cfg.read_compressed(read_file(fname),schema);
+						read_compressed(cfg, read_file(fname), schema);
 						return;
 					} catch(config::error&) {
 						std::cerr << "cache is corrupt. Loading from files\n";
@@ -281,15 +285,15 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
 				
 				//read the file and then write to the cache
-				cfg.read(preprocess_file("data/game.cfg",&defines,&line_src),&line_src);
+				read(cfg, preprocess_file("data/game.cfg", &defines, &line_src), &line_src);
 				try {
 					compression_schema schema;
-					write_file(fname,cfg.write_compressed(schema));
+					write_file(fname, write_compressed(cfg, schema));
 
 					config checksum_cfg;
 					data_tree_checksum().write(checksum_cfg);
-					std::cerr << "wrote checksum: '" << checksum_cfg.write() << "'\n";
-					write_file(fname_checksum,checksum_cfg.write());
+					std::cerr << "wrote checksum: '" << write(checksum_cfg) << "'\n";
+					write_file(fname_checksum, write(checksum_cfg));
 				} catch(io_exception&) {
 					std::cerr << "could not write to cache '" << fname << "'\n";
 				}
@@ -300,7 +304,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 	}
 
 	std::cerr << "caching cannot be done. Reading file\n";
-	cfg.read(preprocess_file("data/game.cfg",&defines,&line_src),&line_src);
+	read(cfg, preprocess_file("data/game.cfg", &defines, &line_src), &line_src);
 }
 
 bool less_campaigns_rank(const config* a, const config* b) {
@@ -454,7 +458,7 @@ display& game_controller::disp()
 		}
 
 		static display::unit_map dummy_umap;
-		static config dummy_cfg("");
+		static config dummy_cfg;
 		static gamemap dummy_map(dummy_cfg, "1");
 		static gamestatus dummy_status(dummy_cfg, 0);
 		static std::vector<team> dummy_teams;
@@ -1519,7 +1523,7 @@ int play_game(int argc, char** argv)
 
 			const bool compress = val == "--compress";
 			try {
-				const bool is_compressed = cfg.detect_format_and_read(in);
+				const bool is_compressed = detect_format_and_read(cfg, in);
 				if(is_compressed && compress) {
 					std::cerr << input << " is already compressed\n";
 					return 0;
@@ -1528,7 +1532,7 @@ int play_game(int argc, char** argv)
 					return 0;
 				}
 
-				const std::string res(compress ? cfg.write_compressed() : cfg.write());
+				const std::string res(compress ? write_compressed(cfg) : write(cfg));
 				write_file(output,res);
 
 			} catch(config::error& e) {

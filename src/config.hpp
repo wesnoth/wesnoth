@@ -14,11 +14,8 @@
 #define CONFIG_HPP_INCLUDED
 
 #include <map>
-#include <sstream>
 #include <string>
 #include <vector>
-
-#include "serialization/preprocessor.hpp"
 
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
@@ -30,16 +27,6 @@
 
 typedef std::map<std::string,std::string> string_map;
 
-//this object holds the schema by which config objects can be compressed and decompressed.
-struct compression_schema
-{
-	typedef std::map<unsigned int,std::string> char_word_map;
-	char_word_map char_to_word;
-
-	typedef std::map<std::string,unsigned int> word_char_map;
-	word_char_map word_to_char;
-};
-
 //a config object defines a single node in a WML file, with access to
 //child nodes.
 class config
@@ -48,40 +35,10 @@ public:
 	//create an empty node.
 	config() {}
 
-	//create a node from data
-	explicit config(const std::string& data,
-	       const std::vector<line_source>* lines=0); //throws config::error
 	config(const config& cfg);
 	~config();
 
 	config& operator=(const config& cfg);
-
-	//read data in, clobbering existing data.
-	void read(const std::string& data,
-	          const std::vector<line_source>* lines=0); //throws config::error
-	std::string write() const;
-
-	//functions to read and write compressed data. The schema will be created and written
-	//with the data. However if you are making successive writes (e.g. a network connection)
-	//you can re-use the same schema on the sending end, and the receiver can store the schema,
-	//meaning that the entire schema won't have to be transmitted each time.
-	std::string write_compressed(compression_schema& schema) const;
-	void read_compressed(const std::string& data, compression_schema& schema); //throws config::error
-
-	std::string write_compressed() const {
-		compression_schema schema;
-		return write_compressed(schema);
-	}
-
-	void read_compressed(const std::string& data) {
-		compression_schema schema;
-		read_compressed(data,schema);
-	}
-
-	//function which reads a file, and automatically detects whether it's compressed or not before
-	//reading it. If it's not a valid file at all, it will throw an error as if it was trying to
-	//read it as text WML. Returns true iff the format is compressed
-	bool detect_format_and_read(const std::string& data); //throws config::error
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
@@ -168,11 +125,6 @@ public:
 	string_map values;
 
 private:
-	size_t write_size(size_t tab=0) const;
-	std::string::iterator write_internal(std::string::iterator out, size_t tab=0) const;
-	std::string::const_iterator read_compressed_internal(std::string::const_iterator i1, std::string::const_iterator i2, compression_schema& schema, int level);
-	void write_compressed_internal(compression_schema& schema, std::vector<char>& res, int level) const;
-
 	//a list of all children of this node.
 	child_map children;
 

@@ -5,6 +5,7 @@
 #include "network_worker.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/binary_wml.hpp"
 
 #include "SDL_net.h"
 
@@ -506,7 +507,7 @@ connection receive_data(config& cfg, connection connection_num)
 	const schema_map::iterator schema = schemas.find(result);
 	wassert(schema != schemas.end());
 
-	cfg.read_compressed(std::string(buf.begin(),buf.end()),schema->second.incoming);
+	read_compressed(cfg, std::string(buf.begin(), buf.end()), schema->second.incoming);
 
 	return result;
 }
@@ -554,7 +555,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	const schema_map::iterator schema = schemas.find(connection_num);
 	wassert(schema != schemas.end());
 
-	const std::string& value = cfg.write_compressed(schema->second.outgoing);
+	const std::string& value = write_compressed(cfg, schema->second.outgoing);
 
 //	std::cerr << "--- SEND DATA to " << ((int)connection_num) << ": '"
 //	          << cfg.write() << "'\n--- END SEND DATA\n";

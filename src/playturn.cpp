@@ -2032,7 +2032,6 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 		cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
 	}
 
-	lg::info(lg::config) << "logging speech: '" << cfg.write() << "'\n";
 	recorder.speak(cfg);
 	gui_.add_chat_message(cfg["description"],side,message,
 		                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
