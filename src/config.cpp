@@ -430,6 +430,9 @@ void config::read(const std::string& data,
 
 	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
 		const char c = *i;
+		if(c == '\r') //ignore any DOS-style newlines
+			continue;
+
 		if(c == '\n')
 			++line;
 
