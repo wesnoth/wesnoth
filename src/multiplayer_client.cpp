@@ -312,6 +312,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			response["name"] = chosen_side["name"];
 			response["type"] = chosen_side["type"];
 			response["recruit"] = chosen_side["recruit"];
+			response["music"] = chosen_side["music"];
 
 			network::send_data(response);
 		}

@@ -145,7 +145,7 @@ battle_stats evaluate_battle_stats(
 	res.attack_with = attack_with;
 
 	if(include_strings)
-		res.defend_name = "none";
+		res.defend_name = string_table["weapon_none"];
 
 	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	const std::map<gamemap::location,unit>::iterator d = units.find(defender);

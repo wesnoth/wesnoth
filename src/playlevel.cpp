@@ -165,6 +165,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					std::cerr << "result of replay: " << (replaying?"true":"false") << "\n";
 				}
 
+				if(!replaying && team_it->music().empty() == false) {
+					sound::play_music(team_it->music());
+				}
+
 				if(!replaying && team_it->is_human()) {
 					std::cerr << "is human...\n";
 

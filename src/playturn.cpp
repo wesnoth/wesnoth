@@ -299,7 +299,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		//see if we're trying to attack an enemy
 		if(route != current_paths.routes.end() && enemy != units.end() &&
 		   hex != selected_hex && !browse &&
-		   enemy->second.side() != u->second.side()) {
+		   enemy->second.side() != u->second.side() &&
+		   current_team.is_enemy(enemy->second.side())) {
 
 			const std::vector<attack_type>& attacks = u->second.attacks();
 			std::vector<std::string> items;

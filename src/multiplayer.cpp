@@ -144,6 +144,7 @@ int connection_acceptor::do_action()
 					pos->first->values["name"] = cfg["name"];
 					pos->first->values["type"] = cfg["type"];
 					pos->first->values["recruit"] = cfg["recruit"];
+					pos->first->values["music"] = cfg["music"];
 					positions_[sides[side_taken]] = sock;
 					network::send_data(players_);
 
@@ -346,6 +347,8 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 			(*sd)->values["type"] = possible_sides.front()->values["type"];
 		if((*sd)->values["recruit"].empty())
 			(*sd)->values["recruit"]=possible_sides.front()->values["recruit"];
+		if((*sd)->values["music"].empty())
+			(*sd)->values["music"]=possible_sides.front()->values["recruit"];
 		if((*sd)->values["recruitment_pattern"].empty())
 			(*sd)->values["recruitment_pattern"] =
 			        possible_sides.front()->values["recruitment_pattern"];
@@ -428,6 +431,7 @@ void play_multiplayer(display& disp, game_data& units_data, config cfg,
 				sides[res]->values["recruit"] = values["recruit"];
 				sides[res]->values["recruitment_pattern"] =
 				                          values["recruitment_pattern"];
+				sides[res]->values["music"] = values["music"];
 			}
 		}
 	}
