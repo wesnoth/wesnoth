@@ -111,7 +111,7 @@ void do_interpolation(std::string &res, variable_set& set)
 		//Replace = remove original, and then insert new value, if any.
 		res.erase(var_begin, var_end);
 
-		res.insert(var_begin_loc, set.get_variable(var_name));
+		res.insert(var_begin_loc, set.get_variable_const(var_name));
 	}
 	
 	//Remove any remaining '|', which are used to separate variable names,
@@ -200,7 +200,7 @@ class string_map_variable_set : public variable_set
 public:
 	string_map_variable_set(const string_map& map) : map_(map) {};
 	
-	virtual const t_string& get_variable(const std::string& key)
+	virtual const t_string& get_variable_const(const std::string& key)
 	{
 		static const t_string empty_string = "";
 

@@ -700,6 +700,11 @@ t_string& game_state::get_variable(const std::string& key)
 	return empty_string;
 }
 
+const t_string& game_state::get_variable_const(const std::string& key)
+{
+	return get_variable(key);
+}
+
 config& game_state::get_variable_cfg(const std::string& key)
 {
 	config* res = NULL;

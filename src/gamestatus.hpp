@@ -116,7 +116,9 @@ struct game_state : public variable_set
 	config variables; //variables that have been set
 
 	//Variable access
-	virtual t_string& get_variable(const std::string& varname);
+	t_string& get_variable(const std::string& varname);
+	virtual const t_string& get_variable_const(const std::string& varname);
+
 	config& get_variable_cfg(const std::string& varname);
 	void set_variable(const std::string& varname, const t_string& value);
 

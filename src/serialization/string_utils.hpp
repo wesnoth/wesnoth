@@ -27,7 +27,7 @@ class variable_set
 public:
 	virtual ~variable_set();
 
-	virtual const t_string& get_variable(const std::string& id) = 0;
+	virtual const t_string& get_variable_const(const std::string& id) = 0;
 };
 
 //the type we use to represent Unicode strings.
