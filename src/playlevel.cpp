@@ -555,8 +555,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 					try {
 						replaying = do_replay(gui,map,gameinfo,units,teams,
 						                      player_number,status,state_of_game);
-					} catch(replay::error& e) {
-						e;
+					} catch(replay::error&) {
 						std::cerr << "caught replay::error\n";
 						gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
 
@@ -808,8 +807,7 @@ redo_turn:
 			return VICTORY;
 		}
 	} //end catch
-	catch(replay::error& e) {
-		e;
+	catch(replay::error&) {
 		std::cerr << "caught replay::error\n";
 		gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),
 		                 gui::OK_ONLY);
