@@ -1040,13 +1040,25 @@ bool unit_type::defensive_animation::matches(bool h, attack_type::RANGE r) const
 
 const unit_animation* unit_type::defend_animation(bool hits, attack_type::RANGE range) const
 {
+	//select one of the matching animations at random
+	const unit_animation* res = NULL;
+	std::vector<const unit_animation*> options;
 	for(std::vector<defensive_animation>::const_iterator i = defensive_animations_.begin(); i != defensive_animations_.end(); ++i) {
 		if(i->matches(hits,range)) {
-			return &i->animation;
+			if(res != NULL) {
+				options.push_back(res);
+			}
+
+			res = &i->animation;
 		}
 	}
 
-	return NULL;
+	if(options.empty()) {
+		return res;
+	} else {
+		options.push_back(res);
+		return options[rand()%options.size()];
+	}
 }
 
 const unit_animation* unit_type::teleport_animation( ) const
