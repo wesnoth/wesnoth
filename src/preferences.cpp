@@ -995,8 +995,8 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	std::vector<hotkey::hotkey_item> hotkeys = hotkey::get_hotkeys();
 	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
 		std::stringstream str,name;
-		name << "action_"<< hotkey::command_to_string(i->action);
-		str << string_table[name.str()];
+		name<< hotkey::command_to_description(i->action);
+		str << name.str();
 		str << ",  :  ,";
 		str << hotkey::get_hotkey_name(*i); 
 		menu_items.push_back (str.str ());

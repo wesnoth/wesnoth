@@ -1039,7 +1039,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 			str << '&' << img << ',';
 		}
 		
-		str << translate_string("action_" + *i);
+		str << hotkey::command_to_description(hotkey::string_to_command(*i));
 		
 		//see if this menu item has an associated hotkey
 		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
