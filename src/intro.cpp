@@ -105,53 +105,64 @@ void show_intro(display& screen, const config& data)
 		bool skip = false, last_key = true;
 		
 		int xpos = textx, ypos = texty;
-		// xpos + image->w - 70 is the left most edge of the bounding box of the buttons.
-		// subtract 96 more than we need, so intro text does not overlap the buttons.
-		// TODO: should handle word wrap *before* drawing anything, so the text will not overlap the button.
-		const int max_xpos = xpos + (image != NULL ? image->w : 0) - 70 - 96;
+
+		//the maximum position that text can reach before wrapping
+		const int max_xpos = next_button.location().x - 10;
 		size_t height = 0;
 		std::string buf;
 		for(;;) {
 			if(j != story.end()) {
 				unsigned char c = *j;
-				if(c == ' ' && xpos >= max_xpos) {
-					xpos = textx;
-					ypos += height;
-					++j;
-				} else {
-					//how many bytes does the current utf8 character require?
-					int bytes = 1;
+				if(c == ' ') {
+					//we're at a space, so find the next space or end-of-text,
+					//to find out if the next word will fit, or if it has to be wrapped
+					std::string::const_iterator end_word = std::find(j+1,story.end(),' ');
+					const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),16,font::NORMAL_COLOUR,
+						                                  std::string(j,end_word),xpos,ypos,NULL,
+														  false,font::NO_MARKUP);
 
-					if(c >= 0xC0U) 
-						bytes++;
-					if(c >= 0xE0U)
-						bytes++;
-					if(c >= 0xF0U)
-						bytes++;
-					if(c >= 0xF8U)
-						bytes++;
-					if(c >= 0xFCU)
-						bytes++;
-
-					//copy the character
-					buf.resize(bytes);
-					for(int i = 0; i < bytes && j != story.end(); ++i) {
-						buf[i] = *j;
+					if(xpos + rect.w >= max_xpos) {
+						xpos = textx;
+						ypos += height;
 						++j;
+						continue;
 					}
-
-					// output the character
-					const SDL_Rect rect = font::draw_text(&screen,
-										screen.screen_area(),16,
-										font::NORMAL_COLOUR,buf,xpos,ypos,
-										NULL,false,font::NO_MARKUP);
-
-					buf = "";
-					if(rect.h > height)
-						height = rect.h;
-					xpos += rect.w; 
-					update_rect(rect);
 				}
+
+				//how many bytes does the current utf8 character require?
+				int bytes = 1;
+
+				if(charset() == CHARSET_UTF8) {
+					if(j[bytes-1] >= 0xC0U) 
+						bytes++;
+					if(j[bytes-1] >= 0xE0U)
+						bytes++;
+					if(j[bytes-1] >= 0xF0U)
+						bytes++;
+					if(j[bytes-1] >= 0xF8U)
+						bytes++;
+					if(j[bytes-1] >= 0xFCU)
+						bytes++;
+				}
+
+				//copy the character
+				buf.resize(bytes);
+				for(int i = 0; i < bytes && j != story.end(); ++i) {
+					buf[i] = *j;
+					++j;
+				}
+
+				// output the character
+				const SDL_Rect rect = font::draw_text(&screen,
+									screen.screen_area(),16,
+									font::NORMAL_COLOUR,buf,xpos,ypos,
+									NULL,false,font::NO_MARKUP);
+
+				buf = "";
+				if(rect.h > height)
+					height = rect.h;
+				xpos += rect.w; 
+				update_rect(rect);
 
 				if(j == story.end())
 					skip = true;

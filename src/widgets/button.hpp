@@ -45,6 +45,11 @@ public:
 	void set_xy(int valx, int valy);
 	void set_label(const std::string& val);
 
+	SDL_Rect location() const {
+		const SDL_Rect pos = {x_,y_,w_,h_};
+		return pos;
+	}
+
 	int width() const;
 	int height() const;
 

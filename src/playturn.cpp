@@ -162,7 +162,7 @@ void turn_info::turn_slice()
 	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,mouse_flags&SDL_BUTTON_LMASK);
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
-		show_menu(m->items(),menu_loc.x,menu_loc.y + menu_loc.h);
+		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1);
 	}
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
