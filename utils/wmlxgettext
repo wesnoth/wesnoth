@@ -2,8 +2,6 @@
 
 # FIXME:
 # - maybe restrict "ability" matching to unit defs (not yet necessary)
-# - maybe handle some xgettext flags and behaviours to be more
-#   predictable to the command-line user
 
 use strict;
 use File::Basename;
@@ -28,15 +26,14 @@ foreach my $file (@ARGV) {
     # skip comments
     next LINE if m/^\s*\#/ and !defined $str;
 
-    if (m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)$/) {
+    if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*)\"(.*)/) {
       # single-line quoted string
-      die "nested string in $file" if defined $str;
 
       push @{$messages{raw2postring($2)}}, "$file:$."
 	if ($1 ne ''); # ie. translatable
 
       # process remaining of the line
-      $_ = $3;
+      $_ = $3 . "\n";
       redo LINE;
 
     } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
@@ -48,7 +45,7 @@ foreach my $file (@ARGV) {
       $str = $_;
       $line = $.;
 
-    } elsif (m/(.*?)\"(.*)$/) {
+    } elsif (m/(.*?)\"(.*)/) {
       # end of multi-line
       die "end of string without a start in $file" if !defined $str;
 
@@ -59,7 +56,7 @@ foreach my $file (@ARGV) {
       $str = undef;
 
       # process remaining of the line
-      $_ = $2;
+      $_ = $2 . "\n";
       redo LINE;
 
     } elsif (defined $str) {
