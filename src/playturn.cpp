@@ -56,11 +56,11 @@ command_disabler::~command_disabler()
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, const config& terrain_config, config* level,
-			   CVideo& video, CKey& key, display& gui,
-               game_events::manager& events_manager, gamemap& map,
-			   std::vector<team>& teams, int team_num,
-			   std::map<gamemap::location,unit>& units, turn_info::floating_textbox& textbox,
-			   replay_network_sender& network_sender)
+               CKey& key, display& gui, gamemap& map,
+               std::vector<team>& teams, int team_num,
+               std::map<gamemap::location,unit>& units,
+               turn_info::floating_textbox& textbox,
+               replay_network_sender& network_sender)
 {
 	log_scope("player turn");
 

@@ -582,8 +582,8 @@ redo_turn:
 					}
 
 					play_turn(gameinfo,state_of_game,status,game_config,
-					          level, video, key, gui, events_manager, map,
-							  teams, player_number, units, textbox_info, replay_sender);
+					          level, key, gui, map, teams, player_number,
+					          units, textbox_info, replay_sender);
 
 					if(game_config::debug)
 						display::clear_debug_highlights();
