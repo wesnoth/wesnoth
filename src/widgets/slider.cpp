@@ -126,7 +126,7 @@ void slider::draw_contents()
 	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format, 255, 255, 255));
 
 	SDL_Rect const &slider = slider_area();
-	disp().blit_surface(slider.x, slider.y, image);
+	video().blit_surface(slider.x, slider.y, image);
 }
 
 void slider::set_slider_position(int x)

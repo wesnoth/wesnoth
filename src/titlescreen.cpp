@@ -154,7 +154,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	if(title_surface == NULL) {
 		ERR_DP << "Could not find title image\n";
 	} else {
-		screen.blit_surface(0,0,title_surface);
+		screen.video().blit_surface(0,0,title_surface);
 		update_rect(screen_area());
 
 		LOG_DP << "displayed title image\n";

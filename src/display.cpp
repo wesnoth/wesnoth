@@ -546,18 +546,18 @@ void display::redraw_everything()
 
 namespace {
 
-void draw_panel(display& disp, const theme::panel& panel, std::vector<gui::button>& buttons)
+void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::button>& buttons)
 {
 	//log_scope("draw panel");
 	surface surf(image::get_image(panel.image(),image::UNSCALED));
 
-	const SDL_Rect screen = disp.screen_area();
+	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
 	if(surf->w != loc.w || surf->h != loc.h) {
 		surf.assign(scale_surface(surf,loc.w,loc.h));
 	}
 
-	disp.blit_surface(loc.x,loc.y,surf);
+	video.blit_surface(loc.x,loc.y,surf);
 	update_rect(loc);
 
 	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
@@ -608,7 +608,7 @@ void display::draw(bool update,bool force)
 
 		const std::vector<theme::panel>& panels = theme_.panels();
 		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
-			draw_panel(*this,*p,buttons_);
+			draw_panel(video(),*p,buttons_);
 		}
 
 		const std::vector<theme::label>& labels = theme_.labels();
@@ -1301,7 +1301,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		surface crown(image::get_image("misc/leader-crown.png",image::SCALED,image::NO_ADJUST_COLOUR));
 		if(!crown.null()) {
 			SDL_Rect r = {0, 0, crown->w, crown->h};
-			blit_surface(xpos,ypos,crown,&r);
+			video().blit_surface(xpos,ypos,crown,&r);
 		}
 	}
 
@@ -1342,8 +1342,8 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
 	bot.h = surf->w - bot.y;
 
-	blit_surface(xpos,ypos,surf,&top);
-	blit_surface(xpos,ypos+top.h,surf,&bot);
+	video().blit_surface(xpos,ypos,surf,&top);
+	video().blit_surface(xpos,ypos+top.h,surf,&bot);
 
 	const size_t unfilled = (const size_t)(height*(1.0 - filled));
 
@@ -1775,19 +1775,6 @@ surface display::get_flag(gamemap::TERRAIN terrain, int x, int y)
 	return surface(NULL);
 }
 
-void display::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
-{
-	const surface target(video().getSurface());
-	SDL_Rect dst = {x,y,0,0};
-	
-	if(clip_rect != NULL) {
-		const clip_rect_setter clip_setter(target,*clip_rect);
-		SDL_BlitSurface(surf,srcrect,target,&dst);
-	} else {
-		SDL_BlitSurface(surf,srcrect,target,&dst);
-	}
-}
-
 surface display::get_minimap(int w, int h)
 {
 	if(minimap_ != NULL && (minimap_->w != w || minimap_->h != h)) {
@@ -1884,7 +1871,7 @@ void display::draw_unit(int x, int y, surface image,
 
 	SDL_Rect clip_rect = map_area();
 	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
-	blit_surface(x,y,surf,&srcrect,&clip_rect);
+	video().blit_surface(x,y,surf,&srcrect,&clip_rect);
 
 	if(submerge_height != surf->h) {
 		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2)));
@@ -1893,7 +1880,7 @@ void display::draw_unit(int x, int y, surface image,
 		srcrect.h = surf->h-submerge_height;
 		y += submerge_height;
 
-		blit_surface(x,y,surf,&srcrect,&clip_rect);
+		video().blit_surface(x,y,surf,&srcrect,&clip_rect);
 	}
 
 	if(ellipse_front != NULL) {

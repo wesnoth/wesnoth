@@ -170,7 +170,7 @@ void button::draw_contents()
 	if (!enabled_)
 		image = greyscale_image(image);
 
-	disp().blit_surface(loc.x, loc.y, image);
+	video().blit_surface(loc.x, loc.y, image);
 	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
 	font::draw_text(&video(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
 

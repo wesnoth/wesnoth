@@ -117,25 +117,25 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 	surface top_image(scale_surface(top,w,top->h));
 
 	if(top_image != NULL) {
-		disp.blit_surface(x,y-top->h,top_image);
+		disp.video().blit_surface(x,y-top->h,top_image);
 	}
 
 	surface bot_image(scale_surface(bot,w,bot->h));
 
 	if(bot_image != NULL) {
-		disp.blit_surface(x,y+h,bot_image);
+		disp.video().blit_surface(x,y+h,bot_image);
 	}
 
 	surface left_image(scale_surface(left,left->w,h));
 
 	if(left_image != NULL) {
-		disp.blit_surface(x-left->w,y,left_image);
+		disp.video().blit_surface(x-left->w,y,left_image);
 	}
 
 	surface right_image(scale_surface(right,right->w,h));
 
 	if(right_image != NULL) {
-		disp.blit_surface(x+w,y,right_image);
+		disp.video().blit_surface(x+w,y,right_image);
 	}
 
 	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
@@ -148,10 +148,10 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 		return;
 	}
 
-	disp.blit_surface(x-top_left->w,y-top_left->h,top_left);
-	disp.blit_surface(x-bot_left->w,y+h,bot_left);
-	disp.blit_surface(x+w,y-top_right->h,top_right);
-	disp.blit_surface(x+w,y+h,bot_right);
+	disp.video().blit_surface(x-top_left->w,y-top_left->h,top_left);
+	disp.video().blit_surface(x-bot_left->w,y+h,bot_left);
+	disp.video().blit_surface(x+w,y-top_right->h,top_right);
+	disp.video().blit_surface(x+w,y+h,bot_right);
 }
 
 void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& style)
@@ -711,7 +711,7 @@ int show_dialog(display& disp, surface image,
 		const int x = xloc + left_padding;
 		const int y = yloc + top_padding;
 
-		disp.blit_surface(x,y,image);
+		disp.video().blit_surface(x,y,image);
 
 		font::draw_text(&disp.video(), clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,

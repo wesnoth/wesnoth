@@ -421,7 +421,7 @@ void menu::draw_item(int item)
 				if(img != NULL && (xpos - rect.x) + img->w < max_width
 				   && rect.y + img->h < area.h) {
 					const size_t y = rect.y + (rect.h - img->h)/2;
-					disp().blit_surface(xpos,y,img);
+					video().blit_surface(xpos,y,img);
 					xpos += img->w + 5;
 				}
 			} else {

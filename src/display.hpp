@@ -14,7 +14,6 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
-class CVideo;
 #include "gamestatus.hpp"
 #include "image.hpp"
 #include "key.hpp"
@@ -26,6 +25,7 @@ class CVideo;
 #include "team.hpp"
 #include "theme.hpp"
 #include "unit.hpp"
+#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include "SDL.h"
@@ -205,9 +205,6 @@ public:
 
 	//gets the underlying screen object.
 	CVideo& video() { return screen_; }
-
-	//blits a surface with black as alpha
-	void blit_surface(int x, int y, surface surface, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 
 	//function to invalidate all tiles.
 	void invalidate_all();

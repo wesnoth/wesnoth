@@ -60,6 +60,8 @@ class CVideo {
 	void unlock();
 	int mustLock();
 
+	//blits a surface with black as alpha
+	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 	void flip();
 
 	surface getSurface( void );

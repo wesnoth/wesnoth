@@ -239,14 +239,14 @@ void scrollbar::draw_contents()
 	surface const screen = video().getSurface();
 
 	// draw scrollbar "groove"
-	disp().blit_surface(groove.x, groove.y, top_grv);
-	disp().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
-	disp().blit_surface(groove.x, groove.y + top_grv->h + groove_height, bottom_grv);
+	video().blit_surface(groove.x, groove.y, top_grv);
+	video().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
+	video().blit_surface(groove.x, groove.y + top_grv->h + groove_height, bottom_grv);
 
 	// draw scrollbar "grip"
-	disp().blit_surface(grip.x, grip.y, top_img);
-	disp().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
-	disp().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
+	video().blit_surface(grip.x, grip.y, top_img);
+	video().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
+	video().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
 
 	update_rect(groove);
 }
