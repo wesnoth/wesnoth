@@ -12,6 +12,9 @@
 
 #include <sstream>
 
+#define LOG_NW lg::info(lg::network)
+#define ERR_NW lg::err(lg::network)
+
 namespace {
 
 class gamelist_manager : public gui::dialog_action
@@ -167,7 +170,7 @@ public:
 		config reply;
 		const network::connection res = network::receive_data(reply);
 		if(res) {
-			std::cerr << "received data while waiting: " << reply.write() << "\n";
+			LOG_NW << "received data while waiting: " << reply.write() << "\n";
 			const config::child_list& assigns = reply.get_children("reassign_side");
 			for(config::child_list::const_iterator a = assigns.begin(); a != assigns.end(); ++a) {
 				if(lexical_cast_default<int>((**a)["from"]) == team) {
@@ -181,9 +184,9 @@ public:
 				return lobby::QUIT;
 			} else if(reply["side_secured"].empty() == false) {
 				got_side = true;
-				std::cerr << "received side secured message\n";
+				LOG_NW << "received side secured message\n";
 			} else if(reply.child("start_game")) {
-				std::cerr << "received start_game message\n";
+				LOG_NW << "received start_game message\n";
 				//break out of dialog
 				status = START_GAME;
 				return lobby::CREATE;
@@ -191,12 +194,14 @@ public:
 				status = GAME_CANCELLED;
 				return lobby::QUIT;
 			} else if(reply.child("scenario_diff")) {
-				std::cerr << "received diff for scenario....applying...\n";
+				LOG_NW << "received diff for scenario....applying...\n";
 				sides_.apply_diff(*reply.child("scenario_diff"));
 				generate_menu(false);
 			} else if(reply.child("side")) {
 				sides_ = reply;
-				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
+				LOG_NW << "got some sides. Current number of sides = "
+				       << sides_.get_children("side").size() << ","
+				       << reply.get_children("side").size() << "\n";
 			} else {
 				data_.push_back(reply);
 			}
@@ -239,7 +244,7 @@ private:
 void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
                              game_state& state, std::string& host)
 {
-	log_scope("playing multiplayer client");
+	log_scope2(network, "playing multiplayer client");
 
 	const network::manager net_manager;
 
@@ -314,7 +319,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				throw network::error(_("Connection timed out"));
 			}
 
-			std::cerr << "login response: '" << data.write() << "'\n";
+			LOG_NW << "login response: '" << data.write() << "'\n";
 
 			error = data.child("error");
 		} while(error != NULL);
@@ -329,7 +334,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			receive_gamelist(disp,data);
 		}
 
-		std::cerr << "when receiving gamelist got '" << data.write() << "'\n";
+		LOG_NW << "when receiving gamelist got '" << data.write() << "'\n";
 
 		bool observer = false;
 
@@ -441,14 +446,14 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			const config* const era_cfg = cfg.find_child("era","id",era);
 
 			if(era_cfg == NULL) {
-				std::cerr << "era '" << era << "' not found\n";
+				ERR_NW << "era '" << era << "' not found\n";
 				return;
 			}
 
 			const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
 			if(possible_sides.empty()) {
-				std::cerr << "no multiplayer sides found\n";
+				ERR_NW << "no multiplayer sides found\n";
 				return;
 			}
 
@@ -541,7 +546,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		config replay_data_store;
 		if(replay_data != NULL) {
 			replay_data_store = *replay_data;
-			std::cerr << "setting replay\n";
+			LOG_NW << "setting replay\n";
 			recorder = replay(replay_data_store);
 			if(!recorder.empty()) {
 				const int res = gui::show_dialog(disp,NULL,
@@ -553,7 +558,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 					sides = state.starting_pos;
 					recorder.set_skip(0);
 				} else {
-					std::cerr << "skipping...\n";
+					LOG_NW << "skipping...\n";
 					recorder.set_skip(-1);
 				}
 			}
@@ -561,7 +566,7 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 			sides.clear_children("replay");
 		}
     
-		std::cerr << "starting game\n";
+		LOG_NW << "starting game\n";
 
 		state.starting_pos = sides;
 		state.snapshot = sides;

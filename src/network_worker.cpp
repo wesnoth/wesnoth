@@ -1,3 +1,4 @@
+#include "log.hpp"
 #include "network_worker.hpp"
 #include "network.hpp"
 #include "thread.hpp"
@@ -7,6 +8,8 @@
 #include <iostream>
 #include <map>
 #include <set>
+
+#define LOG_NW lg::info(lg::network)
 
 namespace {
 
@@ -42,7 +45,7 @@ int process_queue(void* data)
 {
 	threading::mutex m;
 	const threading::lock mutex_lock(m);
-	std::cerr << "thread started...\n";
+	LOG_NW << "thread started...\n";
 	for(;;) {
 
 		std::multiset<buffer>::iterator itor;
@@ -51,14 +54,14 @@ int process_queue(void* data)
 		{
 			const threading::lock lock(*global_mutex);
 
-			std::cerr << "thread " << reinterpret_cast<int>(data) << " looking for a buf to send: " << bufs.size() << "\n";
+			LOG_NW << "thread " << reinterpret_cast<long>(data) << " looking for a buf to send: " << bufs.size() << "\n";
 
 			for(itor = bufs.begin(); itor != bufs.end(); ++itor) {
 				if(itor->processing_started) {
 					continue;
 				}
 
-				std::cerr << "thread found a buffer...\n";
+				LOG_NW << "thread found a buffer...\n";
 
 				lock_it = sockets_locked.find(itor->sock);
 				assert(lock_it != sockets_locked.end());
@@ -73,12 +76,12 @@ int process_queue(void* data)
 
 			if(itor == bufs.end()) {
 				if(managed == false) {
-					std::cerr << "worker thread " << (int)data << " exiting...\n";
+					LOG_NW << "worker thread " << reinterpret_cast<long>(data) << " exiting...\n";
 					return 0;
 				}
 
 				cond->wait(*global_mutex);
-				std::cerr << "thread couldn't find a buffer...\n";
+				LOG_NW << "thread couldn't find a buffer...\n";
 				continue;
 			}
 		}
@@ -96,7 +99,7 @@ int process_queue(void* data)
 			}
 		}
 
-		std::cerr << "thread sent " << v.size() << " bytes of data...\n";
+		LOG_NW << "thread sent " << v.size() << " bytes of data...\n";
 
 		{
 			const threading::lock lock(*global_mutex);
@@ -141,9 +144,9 @@ manager::~manager()
 		}
 
 		for(std::vector<threading::thread*>::const_iterator i = threads.begin(); i != threads.end(); ++i) {
-			std::cerr << "waiting for thread " << int(i - threads.begin()) << " to exit...\n";
+			LOG_NW << "waiting for thread " << int(i - threads.begin()) << " to exit...\n";
 			delete *i;
-			std::cerr << "thread exited...\n";
+			LOG_NW << "thread exited...\n";
 		}
 
 		threads.clear();
@@ -153,7 +156,7 @@ manager::~manager()
 		global_mutex = NULL;
 		cond = NULL;
 
-		std::cerr << "exiting manager::~manager()\n";
+		LOG_NW << "exiting manager::~manager()\n";
 	}
 }
 
@@ -161,7 +164,7 @@ void queue_data(TCPsocket sock, std::vector<char>& buf)
 {
 	const threading::lock lock(*global_mutex);
 
-	std::cerr << "queuing " << buf.size() << " bytes of data...\n";
+	LOG_NW << "queuing " << buf.size() << " bytes of data...\n";
 
 	const std::multiset<buffer>::iterator i = bufs.insert(buffer(sock));
 	i->buf.swap(buf);

@@ -15,6 +15,10 @@
 
 #include <signal.h>
 
+#define LOG_NW lg::info(lg::network)
+#define WRN_NW lg::warn(lg::network)
+// only warnings and not errors to avoid DoS by log flooding
+
 namespace {
 
 //We store the details of a connection in a map that must be looked up by its handle.
@@ -160,12 +164,12 @@ manager::manager(size_t nthreads) : free_(true)
 
 	//on Unix-based systems, set sigpipe to be ignored
 #if !(defined(_WIN32) || defined(__APPLE__))
-	std::cerr << "ignoring SIGPIPE\n";
+	WRN_NW << "ignoring SIGPIPE\n";
 	signal(SIGPIPE,SIG_IGN);
 #endif
 
 	if(SDLNet_Init() == -1) {
-		std::cerr << "could not initialize SDLNet; throwing error...\n";
+		lg::err(lg::network) << "could not initialize SDLNet; throwing error...\n";
 		throw error(SDL_GetError());
 	}
 
@@ -199,7 +203,7 @@ server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(fa
 			}
 		}
 
-		std::cerr << "server socket initialized: " << server_socket << "\n";
+		LOG_NW << "server socket initialized: " << server_socket << "\n";
 		free_ = true;
 	}
 }
@@ -248,7 +252,7 @@ connection connect(const std::string& host, int port)
 		return create_connection(sock,"",port);
 	}
 
-	std::cerr << "sending handshake...\n";
+	LOG_NW << "sending handshake...\n";
 	//send data telling the remote host that this is a new connection
 	char buf[4];
 	SDLNet_Write32(0,buf);
@@ -257,7 +261,7 @@ connection connect(const std::string& host, int port)
 		SDLNet_TCP_Close(sock);
 		throw network::error("Could not send initial handshake");
 	}
-	std::cerr << "sent handshake...\n";
+	LOG_NW << "sent handshake...\n";
 
 	//allocate this connection a connection handle
 	const network::connection connect = create_connection(sock,host,port);
@@ -291,7 +295,7 @@ connection accept_connection()
 
 	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
 	if(sock) {
-		std::cerr << "received connection. Pending handshake...\n";
+		LOG_NW << "received connection. Pending handshake...\n";
 		pending_sockets.push_back(sock);
 		if(pending_socket_set == 0) {
 			pending_socket_set = SDLNet_AllocSocketSet(64);
@@ -311,7 +315,7 @@ connection accept_connection()
 		return 0;
 	}
 
-	std::cerr << "pending socket activity...\n";
+	LOG_NW << "pending socket activity...\n";
 
 	for(std::vector<TCPsocket>::iterator i = pending_sockets.begin(); i != pending_sockets.end(); ++i) {
 		if(!SDLNet_SocketReady(*i)) {
@@ -326,18 +330,18 @@ connection accept_connection()
 		SDLNet_TCP_DelSocket(pending_socket_set,sock);
 		pending_sockets.erase(i);
 
-		std::cerr << "receiving data from pending socket...\n";
+		LOG_NW << "receiving data from pending socket...\n";
 
 		const int len = SDLNet_TCP_Recv(sock,buf,4);
 		if(len != 4) {
-			std::cerr << "pending socket disconnected\n";
+			WRN_NW << "pending socket disconnected\n";
 			SDLNet_TCP_Close(sock);
 			return 0;
 		}
 
 		const int handle = SDLNet_Read32(buf);
 
-		std::cerr << "received handshake from client: '" << handle << "'\n";
+		LOG_NW << "received handshake from client: '" << handle << "'\n";
 
 		const int res = SDLNet_TCP_AddSocket(socket_set,sock);
 		if(res == -1) {
@@ -402,7 +406,7 @@ void disconnect(connection s)
 		remove_connection(s);
 	} else {
 		if(sockets.size() == 1) {
-			std::cerr << "valid socket: " << (int)*sockets.begin() << "\n";
+			LOG_NW << "valid socket: " << (int)*sockets.begin() << "\n";
 		}
 	}
 }
@@ -475,10 +479,10 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 				len = SDLNet_Read32(num_buf);
 
-				std::cerr << "received packet length: " << len << "\n";
+				LOG_NW << "received packet length: " << len << "\n";
 
 				if((len < 1) || (len > 10000000)) {
-					std::cerr << "bad length in network packet. Throwing error\n";
+					WRN_NW << "bad length in network packet. Throwing error\n";
 					throw error("network error: bad length data",*i);
 				}
 
@@ -488,7 +492,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				//make sure that this connection still has data
 				const int res = SDLNet_CheckSockets(socket_set,0);
 				if(res <= 0 || !SDLNet_SocketReady(sock)) {
-					std::cerr << "packet has no data after length. Throwing error\n";
+					WRN_NW << "packet has no data after length. Throwing error\n";
 					throw error("network error: received wrong number of bytes: 0",*i);
 				}
 			}
@@ -499,26 +503,26 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 			const size_t expected = buf.buf.size() - buf.upto;
 			const int nbytes = SDLNet_TCP_Recv(sock,&buf.buf[buf.upto],expected);
 			if(nbytes <= 0) {
-				std::cerr << "SDLNet_TCP_Recv returned " << nbytes << " error in socket\n";
+				WRN_NW << "SDLNet_TCP_Recv returned " << nbytes << " error in socket\n";
 				throw error("remote host disconnected",*i);
 			}
 
 			details.received += nbytes;
 
 			buf.upto += nbytes;
-			std::cerr << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
+			LOG_NW << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
 
 			if(buf.upto == buf.buf.size()) {
 				current_connection = received_data.end();
 				const std::string buffer(buf.buf.begin(),buf.buf.end());
 				received_data.erase(part_received); //invalidates buf. don't use again
 				if(buffer == "") {
-					std::cerr << "buffer from remote host is empty\n";
+					WRN_NW << "buffer from remote host is empty\n";
 					throw error("remote host closed connection",*i);
 				}
 
 				if(buffer[buffer.size()-1] != 0) {
-					std::cerr << "buf not nul-delimited. Network error\n";
+					WRN_NW << "buf not nul-delimited. Network error\n";
 					throw error("sanity check on incoming data failed",*i);
 				}
 
@@ -553,7 +557,7 @@ void set_default_send_size(size_t max_size)
 
 void send_data(const config& cfg, connection connection_num, size_t max_size, SEND_TYPE mode)
 {
-	std::cerr << "in send_data()...\n";
+	LOG_NW << "in send_data()...\n";
 	if(cfg.empty()) {
 		return;
 	}
@@ -570,13 +574,12 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 		max_size = 8;
 	}
 
-	log_scope("sending data");
+	log_scope2(network, "sending data");
 	if(!connection_num) {
-		std::cerr << "sockets: " << sockets.size() << "\n";
+		LOG_NW << "sockets: " << sockets.size() << "\n";
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
-			std::cerr << "server socket: " << server_socket << "\n";
-			std::cerr << "current socket: " << *i << "\n";
+			LOG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
 			send_data(cfg,*i);
 		}
 
