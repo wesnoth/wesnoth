@@ -17,6 +17,8 @@
 #include <ctime>
 #include <vector>
 
+#include <signal.h>
+
 config construct_error(const std::string& msg)
 {
 	config cfg;
@@ -564,6 +566,11 @@ int main(int argc, char** argv)
 			port = atoi(argv[arg]);
 		}
 	}
+
+#ifndef WIN32
+	//trap the 'SIGPIPE' signal which specifies a broken pipe, and ignore it
+	signal(SIGPIPE,SIG_IGN);
+#endif
 			
 	try {
 		server(port).run();
