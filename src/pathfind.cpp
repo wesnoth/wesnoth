@@ -214,13 +214,11 @@ void find_routes(const gamemap& map, const gamestatus& status,
 					rtit = routes.find(currentloc);
 
 			//if a better route to that tile has already been found
-			if(rtit != routes.end() &&
-			   rtit->second.move_left >= total_movement)
+			if(rtit != routes.end() && rtit->second.move_left >= total_movement)
 				continue;
 
-			const bool zoc = enemy_zoc(map,status,units,teams,currentloc,
-			                           current_team,u.side()) &&
-			                 !ignore_zocs;
+			const bool zoc = !ignore_zocs && enemy_zoc(map,status,units,teams,currentloc,
+			                                           current_team,u.side());
 			paths::route new_route = routes[loc];
 			new_route.steps.push_back(loc);
 

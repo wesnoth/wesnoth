@@ -83,7 +83,6 @@ bool show_intro_part(display& screen, const config& part,
 					 game_state& state_of_game)
 {
 	std::cerr << "showing intro part\n";
-	//stop the screen being resized while we're in this function
 
 	CKey key;
 
@@ -103,7 +102,6 @@ bool show_intro_part(display& screen, const config& part,
 	if(image_name.empty() == false) {
 		image.assign(image::get_image(image_name,image::UNSCALED));
 	}
-
 
 	int textx = 200;
 	int texty = 400;
