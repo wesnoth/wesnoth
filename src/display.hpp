@@ -56,6 +56,10 @@ public:
 	//lighting settings.
 	void new_turn();
 
+	//this will add r,g,b to the colours for all images displayed on
+	//the map. Used for special effects like flashes.
+	void adjust_colours(int r, int g, int b);
+
 	//function to make it so a unit is 'hidden' - not displayed
 	//when the tile it is on is drawn. Only one unit may be hidden
 	//at a time. The previously hidden unit will be returned.

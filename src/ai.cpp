@@ -154,6 +154,10 @@ void move_unit(const game_data& gameinfo, display& disp,
 	disp.draw();
 
 	game_events::fire("moveto",to);
+
+	if((teams.front().uses_fog() || teams.front().uses_shroud()) && !teams.front().fogged(to.x,to.y)) {
+		game_events::fire("sighted",to);
+	}
 }
 
 void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
@@ -322,8 +326,8 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 	const int max_sims = 30000;
 	int num_sims = analysis.empty() ? 0 : max_sims/analysis.size();
-	if(num_sims < 8)
-		num_sims = 8;
+	if(num_sims < 12)
+		num_sims = 12;
 	if(num_sims > 20)
 		num_sims = 20;
 

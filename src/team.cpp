@@ -260,7 +260,10 @@ bool team::fogged(size_t x, size_t y) const
 	if(y >= fog_[x].size())
 		return true;
 
-	return !fog_[x][y];
+	if(fog_[x][y])
+		return shrouded(x,y);
+	else
+		return true;
 }
 
 void team::clear_fog(size_t x, size_t y)

@@ -502,6 +502,9 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			game_events::fire("moveto",dst);
+			if(team_num != 1 && (teams.front().uses_shroud() || teams.front().uses_fog()) && !teams.front().fogged(dst.x,dst.y)) {
+				game_events::fire("sighted",dst);
+			}
 
 			clear_shroud(disp,map,gameinfo,units,teams,team_num-1);
 		}

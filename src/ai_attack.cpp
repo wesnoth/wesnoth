@@ -347,22 +347,25 @@ void attack_analysis::analyze(const gamemap& map,
 				break;
 			} else if(atthp == 0) {
 				avg_losses += cost;
-			} else if(map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER) {
+			}
+			
+			//if the attacker moved onto a village, reward it for doing so
+			else if(map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER) {
 				atthp += game_config::heal_amount;
-				if(atthp > hitpoints[i])
-					atthp = hitpoints[i];
 			}
 
-			defenderxp += (atthp == 0 ? 10:1)*att->second.type().level();
+			defenderxp += (atthp == 0 ? 8:1)*att->second.type().level();
 
 			avg_damage_taken += hitpoints[i] - atthp;
 		}
 
-		//penalty for allowing advancement is a 'negative' kill
+		//penalty for allowing advancement is a 'negative' kill, and
+		//defender's hitpoints get restored to maximum
 		if(defend_it->second.experience() < defend_it->second.max_experience()&&
 		   defend_it->second.experience() + defenderxp >=
 		   defend_it->second.max_experience()) {
 			chance_to_kill -= 1.0;
+			defhp = defend_it->second.hitpoints();
 		} else if(defhp == 0) {
 			chance_to_kill += 1.0;
 		} else if(map.underlying_terrain(map[defend_it->first.x][defend_it->first.y]) == gamemap::TOWER) {
@@ -511,9 +514,11 @@ double power_projection(const gamemap::location& loc,
 						most_damage = damage;
 				}
 
-				const double defense =
-				        double(100 - un.defense_modifier(map,terrain))/100.0;
-				const double rating = hp*defense*double(most_damage);
+				const bool village = map.underlying_terrain(terrain) == gamemap::TOWER;
+				const double village_bonus = village ? 1.5 : 1.0;
+
+				const double defense = double(100 - un.defense_modifier(map,terrain))/100.0;
+				const double rating = village_bonus*hp*defense*double(most_damage);
 				if(rating > best_rating) {
 					best_rating = rating;
 					best_unit = it->second;

@@ -978,29 +978,31 @@ void turn_info::status_table()
 
 	items.push_back(heading.str());
 
-	const team& current_team = teams_[team_num_-1];
-	const bool fog = current_team.uses_fog() || current_team.uses_shroud();
+	//if the player is under shroud or fog, they don't get to see
+	//details about the other sides, only their own side, and a ??? is
+	//shown to demonstrate lack of information about the other sides
+	const bool fog = teams_[team_num_-1].uses_fog() || teams_[team_num_-1].uses_shroud();
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
+		if(fog && team_num_-1 != n)
+			continue;
+
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);
 
 		std::stringstream str;
 
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct colour
-		str << (char)(n+1) << team_name(n+1,units_) << ",";
-
-		str << data.villages << ",";
-		
-		if(fog && team_num_-1 != n)
-			str << "???,???,";
-		else
-			str << data.units << "," << data.upkeep << ",";
-
-		str << (data.net_income < 0 ? "#":"") << data.net_income;
+		str << (char)(n+1) << team_name(n+1,units_) << ","
+		    << data.villages << ","
+		    << data.units << "," << data.upkeep << ","
+		    << (data.net_income < 0 ? "#":"") << data.net_income;
 
 		items.push_back(str.str());
 	}
+
+	if(fog)
+		items.push_back("???\n");
 
 	gui::show_dialog(gui_,NULL,"","",gui::MESSAGE,&items);
 }

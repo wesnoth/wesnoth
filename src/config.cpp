@@ -464,10 +464,11 @@ void config::read(const std::string& data,
 	}
 
 	assert(!element_names.empty());
+	const std::string top = element_names.top();
 	element_names.pop();
 	if(!element_names.empty()) {
 		throw error("Configuration not terminated: no closing tag to '" +
-		            element_names.top() + "'");
+		            top + "'");
 	}
 }
 

@@ -933,8 +933,10 @@ void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
-		static const std::string sighted("sighted");
-		game_events::fire(sighted,*it,loc);
+		if(units.count(*it)) {
+			static const std::string sighted("sighted");
+			game_events::fire(sighted,*it,loc);
+		}
 	}
 }
 

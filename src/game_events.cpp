@@ -237,6 +237,31 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		sound::play_sound((*sfx)->values["name"]);
 	}
 
+	std::vector<config*>& colour_adjust = cfg->children["colour_adjust"];
+	for(std::vector<config*>::const_iterator col = colour_adjust.begin();
+	col != colour_adjust.end(); ++col) {
+		const int r = atoi((**col)["red"].c_str());
+		const int g = atoi((**col)["green"].c_str());
+		const int b = atoi((**col)["blue"].c_str());
+		screen->adjust_colours(r,g,b);
+		screen->invalidate_all();
+		screen->draw(true,true);
+	}
+
+	const config* delay = cfg->child("delay");
+	if(delay != NULL) {
+		const int delay_time = atoi((*delay)["time"].c_str());
+		::SDL_Delay(delay_time);
+	}
+
+	const config* scroll = cfg->child("scroll");
+	if(scroll != NULL) {
+		const int xoff = atoi((*scroll)["x"].c_str());
+		const int yoff = atoi((*scroll)["y"].c_str());
+		screen->scroll(xoff,yoff);
+		screen->draw(true,true);
+	}
+
 	//an award of gold to a particular side
 	std::vector<config*>& gold = cfg->children["gold"];
 	for(std::vector<config*>::iterator gd = gold.begin(); gd!=gold.end();++gd) {

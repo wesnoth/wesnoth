@@ -146,8 +146,13 @@ display::~display()
 
 void display::new_turn()
 {
+	adjust_colours(0,0,0);
+}
+
+void display::adjust_colours(int r, int g, int b)
+{
 	const time_of_day& tod = status_.get_time_of_day();
-	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
+	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
 gamemap::location display::hide_unit(const gamemap::location& loc)
@@ -1548,6 +1553,11 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 		} else if(path[i+1].x < path[i].x) {
 			u.set_facing_left(false);
 		}
+
+		//remove the footstep we are on.
+		const std::vector<gamemap::location>::iterator it = std::find(route_.steps.begin(),route_.steps.end(),path[i]);
+		if(it != route_.steps.end())
+			route_.steps.erase(it);
 
 		move_unit_between(path[i],path[i+1],u);
 	}
