@@ -43,6 +43,8 @@ public:
 
 	bool double_clicked() const;
 
+	void set_numeric_keypress_selection(bool value);
+
 private:
 	size_t max_items_onscreen() const;
 
@@ -100,6 +102,10 @@ private:
 	gui::scrollbar scrollbar_;
 	int scrollbar_width_;
 	int scrollbar_height_;
+
+	///variable which determines whether a numeric keypress should
+	///select an item on the dialog
+	bool num_selects_;
 };
 
 }

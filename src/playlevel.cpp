@@ -568,6 +568,11 @@ redo_turn:
 
 	} catch(end_level_exception& end_level) {
 
+		if((end_level.result == DEFEAT || end_level.result == VICTORY) && is_observer(teams)) {
+			gui::show_dialog(gui,NULL,string_table["observer_endgame_heading"],
+			                          string_table["observer_endgame"], gui::OK_ONLY);
+		}
+
 		if(end_level.result == QUIT || end_level.result == REPLAY) {
 			return end_level.result;
 		} else if(end_level.result == DEFEAT) {

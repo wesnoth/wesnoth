@@ -87,6 +87,7 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 
 	//create the scenarios menu
 	maps_menu_.assign(new gui::menu(disp_,options));
+	maps_menu_->set_numeric_keypress_selection(false);
 
 	SDL_Rect rect = {0,0,0,0};
 
@@ -303,7 +304,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 	if(cancel_game_->process(mousex,mousey,left_button) || key[SDLK_ESCAPE]) 
 		return lobby::QUIT;
 
-	if(launch_game_->process(mousex,mousey,left_button)) {
+	if(launch_game_->process(mousex,mousey,left_button) || maps_menu_->double_clicked()) {
 		if(name_entry_->text() != "") {
 			return lobby::CREATE;
 		} else {

@@ -25,7 +25,7 @@ menu::menu(display& disp, const std::vector<std::string>& items,
 		  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
           downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
 		  scrollbar_(disp),  scrollbar_height_(0),
-		  double_clicked_(false)
+		  double_clicked_(false), num_selects_(true)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
@@ -253,7 +253,7 @@ void menu::key_press(SDLKey key)
 			break;
 	}
 
-	if(key >= SDLK_1 && key <= SDLK_9) {
+	if(key >= SDLK_1 && key <= SDLK_9 && num_selects_) {
 		const int pos = key - SDLK_1;
 		if(size_t(pos) < items_.size()) {
 			selected_ = pos;
@@ -412,6 +412,11 @@ bool menu::show_scrollbar() const
 bool menu::double_clicked() const
 {
 	return double_clicked_;
+}
+
+void menu::set_numeric_keypress_selection(bool value)
+{
+	num_selects_ = value;
 }
 
 namespace {
