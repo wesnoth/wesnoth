@@ -41,7 +41,7 @@
 std::map<gamemap::location,double> display::debugHighlights_;
 
 namespace {
-	const int DefaultZoom = 70;
+	const int DefaultZoom = 72;
 	const int MaxZoom = 200;
 
 	const size_t SideBarGameStatus_x = 16;
@@ -86,24 +86,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	SDL_Surface* const disp = screen_.getSurface();
 	SDL_Rect area = screen_area();
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
-}
-
-//we have to go through all this trickery on clear_surfaces because
-//some compilers don't support 'typename type::iterator'
-template<typename Map,typename FwIt>
-void clear_surfaces_internal(Map& surfaces, FwIt beg, FwIt end)
-{
-	for(; beg != end; ++beg) {
-		SDL_FreeSurface(beg->second);
-	}
-
-	surfaces.clear();
-}
-
-template<typename Map>
-void clear_surfaces(Map& surfaces)
-{
-	clear_surfaces_internal(surfaces,surfaces.begin(),surfaces.end());
 }
 
 display::~display()

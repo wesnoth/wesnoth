@@ -28,7 +28,7 @@ std::string image_mask;
 
 SDL_PixelFormat* pixel_format = NULL;
 
-int zoom = 70;
+int zoom = 72;
 
 //we have to go through all this trickery on clear_surfaces because
 //some compilers don't support 'typename type::iterator'

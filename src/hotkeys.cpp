@@ -252,7 +252,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 
 void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor)
 {
-	const double zoom_amount = 5.0;
+	const int zoom_amount = 4;
 
 	if(executor != NULL && executor->can_execute_command(command) == false)
 		return;
