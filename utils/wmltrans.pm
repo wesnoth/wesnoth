@@ -92,6 +92,7 @@ sub po2rawstring {
     $line =~ m/"(.*)"/;
     $str .= $1;
   }
+  $str =~ s/\\n/\n/gm;
 
   return $str;
 }

@@ -31,7 +31,7 @@ foreach my $file (@ARGV) {
       die "nested string in $file" if defined $str;
 
       $translatable = ($1 ne '');
-      $str = $2 . "\n";
+      $str = $2;
       $line = $.;
 
     } elsif (m/(.*)\"\s*(?:\#.*)?$/) {
