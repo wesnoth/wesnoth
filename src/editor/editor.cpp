@@ -526,6 +526,10 @@ void map_editor::edit_select_all() {
 void map_editor::edit_draw() {
 	left_button_func_changed(DRAW);
 }
+void map_editor::edit_refresh() {
+	image::flush_cache();
+	redraw_everything();
+}
 
 std::string map_editor::load_map(const std::string filename) {
 	bool load_successful = true;
@@ -610,6 +614,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_FLIP:
 	case hotkey::HOTKEY_EDIT_SELECT_ALL:
 	case hotkey::HOTKEY_EDIT_DRAW:
+	case hotkey::HOTKEY_EDIT_REFRESH:
 		return true;
 	default:
 		return false;

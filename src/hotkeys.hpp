@@ -46,6 +46,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_EDIT_FILL_SELECTION, HOTKEY_EDIT_CUT, HOTKEY_EDIT_COPY,
 	HOTKEY_EDIT_PASTE, HOTKEY_EDIT_REVERT, HOTKEY_EDIT_RESIZE,
 	HOTKEY_EDIT_FLIP, HOTKEY_EDIT_SELECT_ALL, HOTKEY_EDIT_DRAW,
+	HOTKEY_EDIT_REFRESH,
 	HOTKEY_USER_CMD,
 	HOTKEY_NULL 
 };
@@ -173,6 +174,7 @@ public:
 	virtual void edit_flip() {}
 	virtual void edit_select_all() {}
 	virtual void edit_draw() {}
+	virtual void edit_refresh() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND command) const { return ""; }

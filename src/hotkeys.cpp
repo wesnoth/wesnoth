@@ -91,6 +91,7 @@ const struct {
 	{ hotkey::HOTKEY_EDIT_FLIP, "editflip", N_("Flip Map"),true },
 	{ hotkey::HOTKEY_EDIT_SELECT_ALL, "editselectall", N_("Select All"),true },
 	{ hotkey::HOTKEY_EDIT_DRAW, "editdraw", N_("Draw Terrain"),true },
+	{ hotkey::HOTKEY_EDIT_REFRESH, "editrefresh", N_("Refresh Image Cache"), true },
 
 	{ hotkey::HOTKEY_DELAY_SHROUD, "delayshroud", N_("Delay Shroud Updates"), false },
 	{ hotkey::HOTKEY_UPDATE_SHROUD, "updateshroud", N_("Update Shroud Now"), false },
@@ -620,6 +621,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		 case HOTKEY_EDIT_DRAW:
 			if(executor)
 				executor->edit_draw();
+			break;
+		 case HOTKEY_EDIT_REFRESH:
+			if(executor)
+				executor->edit_refresh();
 			break;
 		default:
 			std::cerr << "command_executor: unknown command number " << command << ", ignoring.\n";

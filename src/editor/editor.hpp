@@ -115,6 +115,7 @@ public:
 	/// this operations has been invoked before or not.
 	virtual void edit_select_all();
 	virtual void edit_draw();
+	virtual void edit_refresh();
 
 	void perform_flood_fill();
 	void perform_paste();
