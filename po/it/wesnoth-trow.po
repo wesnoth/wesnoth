@@ -1,13 +1,6 @@
-# #-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#
-# Italian translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-08-08 15:00+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
@@ -16,9 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-trow.po (Battle for Wesnoth 0.8.4-CVS)  #-#-#-#-#\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"#-#-#-#-#  wesnoth.po (Battle for Wesnoth 0.8.2-CVS)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Beach.cfg:3
@@ -94,13 +84,15 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:229
 msgid "Ruby of Fire"
-msgstr ""
+msgstr "Rubino di Fuoco"
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:231
 msgid ""
 "The Ruby of Fire was imbued with magic in the distant West, and can be used "
 "to scorch enemies into submission."
 msgstr ""
+"Il Rubino di Fuoco è stato reso magico nel lontano Occidente, e può essere "
+"usato per far sottomettere i propri nemici."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:260
 msgid ""
@@ -181,7 +173,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:490
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:495
 msgid "Agreed."
-msgstr ""
+msgstr "Accettato."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Final_Spring.cfg:357
 msgid ""
@@ -403,6 +395,10 @@ msgid ""
 "Orcs would go there. The Midlands were nice, but who knows what's going on "
 "there now."
 msgstr ""
+"Adesso, devo andare a Sud-Est nella strada che costeggia il fiume o a Sud-"
+"Ovest attraverso le terre di mezzo? La strada che costeggia il fiume "
+"attraversa la Palude di Esten, perciò dubito che ci siano Orchi là. Le terre "
+"di mezzo sono belle, ma chissà cosa succede da quelle parti."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Harrowing_Escape.cfg:251
 msgid "I think I'll take the River Road. . ."
@@ -672,11 +668,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:119
 msgid "(Sigh) Agreed."
-msgstr ""
+msgstr "(Sigh) Accettato."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Spy_in_the_Woods.cfg:130
 msgid "(Whispering) Some friends. I must tell Haldric."
-msgstr ""
+msgstr "(Sospirando) Alcuni amici. Devo dire Haldric."
 
 #: data/scenarios/The_Rise_of_Wesnoth/A_Summer_of_Storms.cfg:3
 msgid "A Summer of Storms"
@@ -1070,6 +1066,8 @@ msgid ""
 "Resources are scarce, we need all of the help we can get. Be brave and fight "
 "hard my friend!"
 msgstr ""
+"Le nostre risorse scarseggiano, abbiamo bisogno di tutti gli aiuti "
+"possibili. Sii coraggioso e combatti con vigore amico mio!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Cursed_Isle.cfg:3
 msgid "Cursed Isle"
@@ -1230,7 +1228,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:290
 msgid "In the name of Peace between our Peoples:"
-msgstr ""
+msgstr "Nel nome della Pace tra le nostre Genti:"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Elf_Lords.cfg:308
 msgid ""
@@ -1513,7 +1511,7 @@ msgstr ""
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:317
 #: data/scenarios/The_Rise_of_Wesnoth/The_Fall.cfg:269
 msgid "Hmm... after some thought. . ."
-msgstr ""
+msgstr "Hmmm... dopo alcune riflessioni..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Fallen_Lich_Point.cfg:321
 msgid "I think I'll say that magic phrase."
@@ -1699,7 +1697,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:3
 msgid "Return of the Fleet"
-msgstr ""
+msgstr "Il Ritorno della Flotta"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:26
 msgid ""
@@ -1712,18 +1710,31 @@ msgid ""
 "#Death of Lt. Aethyr or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Vittoria:\n"
+"@Sconfiggi tutti i nemici\n"
+"Sconfitta:\n"
+"#Morte del Principe Haldric o\n"
+"#Morte di Lady Jessica o\n"
+"#Morte del Tenente Aethyr o\n"
+"#Fine dei turni a disposizione"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:200
 msgid ""
 "Haldric reaches the site where the fleet is due to return. Several ships "
 "have already docked. The Orcs are on the frontier."
 msgstr ""
+"Haldric raggiunge il luogo in cui la flotta deve tornare. Alcune "
+"imbarcazioni sono già attraccate. Gli Orchi adesso sono alla frontiera."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:205
 msgid ""
 "Sir, some ships have landed. . . They look like they've been damaged by the "
 "voyage. Hmm, it seems that most of the ships are staying at sea."
 msgstr ""
+"Signore, alcune barche hanno attraccato... Sembra che siano state "
+"danneggiate durante il viaggio. Hmmm, sembra che la maggior parte delle navi "
+"sia ancora in mare."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:210
 msgid ""
@@ -1731,32 +1742,37 @@ msgid ""
 "defeat these monsters before everybody starves at sea, or before Jevyan "
 "launches an attack with his fleet."
 msgstr ""
+"Hanno indubbiamente avvistato il fumo dei fuochi appiccati dagli Orchi. "
+"Dobbiamo sconfiggere questi mostri prima che tutti vadano via per mare o "
+"prima che Jevyan lanci un attacco con la sua flotta."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:215
 msgid ""
 "Yes Sir! The rest of the refugees have fled South, to our initial landing "
 "site. If we fail here they'll get slaughtered."
 msgstr ""
+"Sì Signore! Il resto dei rifugiati è scappato verso Sud dove si trovava il "
+"nostro punto di sbarco originale. Se falliamo verranno fatti a pezzi."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:220
 msgid "Well, that settles it. Enough talking, time to fight!"
-msgstr ""
+msgstr "Bene, abbiamo parlato abbastanza, è ora di combattere!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:225
 msgid "For the glory of the men of The Green Isle!"
-msgstr ""
+msgstr "Per la Gloria degli uomini dell'Isola Verde!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:230
 msgid "No, for the Glory of all of the people of the West North! Charge!"
-msgstr ""
+msgstr "No, per la Gloria di tutte le persone di Nord Ovest! Carica!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:235
 msgid "Bah! Human- we will stomp you under our heels!"
-msgstr ""
+msgstr "Bah! Umani - salteremo sulle vostre carcasse!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:240
 msgid ". . .And raise your dead to serve forever!"
-msgstr ""
+msgstr "... E risorgi per servire per sempre!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:269
 msgid ""
@@ -1764,6 +1780,9 @@ msgid ""
 "the power of the Ruby of Fire. It makes little difference, your undead "
 "corpse will lay it at my feet."
 msgstr ""
+"Arrenditi ragazzo! Non puoi sconfiggermi. Hmmm e questo cos'è? Hai imparato "
+"a controllare il potere del Rubino di Fuoco. Allora le cose cambiano, il tuo "
+"cadavere implorerà ai miei piedi."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:274
 msgid ""
@@ -1771,51 +1790,62 @@ msgid ""
 "war, but you're the real monster! You sacrificed you're own people to "
 "preserve your immortal un-life."
 msgstr ""
+"Abbiamo capito. Il Folle Principe di Southbay ha sbagliato ad iniziare "
+"questa guerra, me sei tu il vero mostro! Hai sacrificato la tua gente per "
+"preservare la tua non-vita immortale!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:279
 msgid "Enough of this. A curse of darkness upon you young prince."
 msgstr ""
+"Ne ho abbastanza. Una maledizione oscura cadrà su di te, giovane principe."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:333
 msgid "I see masts on the horizon. Jevyan's fleet is here! It's all over."
 msgstr ""
+"Vedo alberi all'orizzonte. La flotta di Jevyan è arrivata! E' tutto finito."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:347
 msgid "Please Diembark in an Orderly Fashion and Proceed South"
-msgstr ""
+msgstr "Ringrazia Diembark in una Forma di Cortesia e Procedi verso Sud."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:352
 msgid "Hmm, they left off the 'or the Orcs will eat you' part."
-msgstr ""
+msgstr "Hmmm, hanno tralasciato la parte 'O gli Orchi ti mangiarenno'."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:384
 msgid ""
 "I'm back, things went well! Haldric, I sure hope you know what you're doing."
 msgstr ""
+"Sono tornato, le cose andavano bene! Haldric, spero davvero che tu sappia "
+"cosa stai facendo."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:389
 msgid ""
 "Umm, we'll talk about it later. I'm just a little busy at the moment. I'm "
 "glad you made it back in one piece."
 msgstr ""
+"Ummm, ne parleremo più tardi. Al momento sono un po' occupato. Sono contento "
+"che tu sia ritornato tutto intero."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:394
 msgid "Yeah, it looks like you could use all of the help you can get."
-msgstr ""
+msgstr "Già, sembra che tu possa contare su tutto l'aiuto di cui hai bisogno."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:403
 msgid ""
 "We've defeated Jevyan's forces. The ships must diembark their passengers "
 "quickly-"
 msgstr ""
+"Abbiamo sconfitto le armate di Jevyan. La nave deve far scendere al più "
+"presto i suoi passeggeri."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:408
 msgid "Haldric, what's going on? What's the plan?"
-msgstr ""
+msgstr "Haldric, cosa succede? Qual'è il piano?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:413
 msgid "Well, we're going to confront Jevyan and destroy him."
-msgstr ""
+msgstr "Dunque, stiamo andando a sfidare Jevyan e a sconfiggerlo."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:418
 msgid ""
@@ -1823,38 +1853,44 @@ msgid ""
 "Lords will follow. It's because of that Ruby. If I were paranoid I'd say "
 "that our dear old 'tree-friend' might have known as much."
 msgstr ""
+"E' più facile a dirsi che a farsi. Anche se lo sconfiggiamo, gli altri "
+"Signori Lich arriveranno. E' a causa del Rubino. Se fossi paranoico direi "
+"che il nostro vecchio caro 'alberello' lo sapesse già."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:423
 msgid "We should discuss this in private. Here, come with me."
-msgstr ""
+msgstr "Ne parleremo in privato. Su, vieni con me."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:448
 msgid "Slurp, click, click, click!"
-msgstr ""
+msgstr "Slurp, click, click, click!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:453
 msgid "I don't know what that is, but it doesn't sound friendly."
-msgstr ""
+msgstr "Non so cosa sia ma sembra amichevole."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:479
 msgid ""
 "You Again. You will sssuffer for your attack against my people! Shek'kahan, "
 "our Naga friendsss- You'll pay! We have new friends now."
 msgstr ""
+"Ancora tu. Soffrirai per aver attaccato la mia gente! Shek'kahan, la nostra "
+"amica Naga. La pagherete! Abbiamo nuovi amici adesso."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:506
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:463
 msgid "Oh, to join my family again! Do not mourn my passing."
-msgstr ""
+msgstr "Oh, per riunirmi alla mia famiglia. Non ostacolate il mio passaggio."
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:527
 msgid ""
 "My people are like a rock slide, you can run, but we will crush you- Ahhck!"
 msgstr ""
+"La mia gente è come una valanga, puoi correre, ma ti schiaccerà - Ahhck!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_of_the_Fleet.cfg:549
 msgid "I- I die?"
-msgstr ""
+msgstr "Io - sono morto?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Return_to_Oldwood.cfg:3
 msgid "Return to Oldwood"
@@ -2553,7 +2589,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:474
 msgid "We've slain the Dragon: "
-msgstr ""
+msgstr "Abbiamo ucciso il Drago:"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:478
 msgid "Let's get out of here!"
@@ -3038,11 +3074,11 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:3
 msgid "The Plan"
-msgstr ""
+msgstr "Il Piano"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:138
 msgid "So what is your plan?"
-msgstr ""
+msgstr "Allora, qual è il piano?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:143
 msgid ""
@@ -3050,12 +3086,17 @@ msgid ""
 "secure our place in this new land. Then if the Orcs return, hopefully "
 "they'll go looking for our not so loyal Elven allies first."
 msgstr ""
+"Andiamo a convincere Jevyan che abbiamo dato il Rubino di Fuoco agli Elfi "
+"per metterlo al sicuro in questa nuova terra. Poi se gli orchi tornano, c'è "
+"la speranza che cerchino prima i nostri non così fedeli amici Elfi."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:148
 msgid ""
 "Haldric, that's devious. I kind of like this plan. But you spoke a pact with "
 "the Elves, you'll be expected to come to their aid."
 msgstr ""
+"Haldric, è assurdo. Potrei apprezzare questo piano. Ma hai stipulato un "
+"patto con gli Elfi, si aspettano il tuo aiuto."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:153
 msgid ""
@@ -3064,6 +3105,9 @@ msgid ""
 "assult must fall on somebody else. Who knows, maybe I won't even come to "
 "their aid at all-"
 msgstr ""
+"Sì, e potremmo aiutarli. Dobbiamo pesare le notre opzioni al tempo dovuto. "
+"Se gli orchi tornassero in gran numero la furia del loro attacco sarebbe "
+"diretta su qualcun altro. Chissà, magari non dovrò nemmeno aiutarli."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:158
 msgid ""
@@ -3071,16 +3115,22 @@ msgid ""
 "on your pact with the Elves. It's not like you can tell people what I "
 "overheard."
 msgstr ""
+"Molte persone ti chiamerebbero codardo. Direbbero che non hai onorato il "
+"patto con gli Elfi. Non potresti negare di fronte al popolo quello che ho "
+"detto."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:163
 msgid ""
 "Recent events have taught me one thing: that survival trumps honour. "
 "Besides, they won't be screaming at me- I'll be dead."
 msgstr ""
+"Gli avvenimenti recenti mi hanno fatto pensare una cosa: che la "
+"sopravvivenza scavalca l'onore. Comunque non se la prenderanno con me - Io "
+"sarò morto."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:168
 msgid "WHAT!"
-msgstr ""
+msgstr "COSA!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:173
 msgid ""
@@ -3089,6 +3139,11 @@ msgid ""
 "point. Jessica, you're going to forge a very official looking treaty, in "
 "which we give the Elves the Ruby of Fire, in return for our place here."
 msgstr ""
+"Io sarò morto. Mi spiego; non possiamo dire che abbiamo dato via il Rubino "
+"di Fuoco, o spedire una lettera a Jevyan. Perciò dovremmo dire che sono "
+"morto- ma non è questo il punto. Jessica, stai stipulando un trattato "
+"ufficiale in cui noi diamo agli Elfi il Rubino di Fuoco in cambio del nostro "
+"posto qui."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:178
 msgid ""
@@ -3097,40 +3152,50 @@ msgid ""
 "after word of the treaty is spread to the Orcs, but before he has a chance "
 "to read my undead mind. . ."
 msgstr ""
+"Io vado a sfidare Jevyan, e se lo voci sul suo potere fossere vere allora "
+"prenderà la mia resa dal mio corpo maciullato. Dunque, andrai ad affrontare "
+"Jevyan dopo che la voce del trattato si sarà diffusa tra gli Orchi, ma prima "
+"avrà la possibilità di leggere la mia mente di non-morto..."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:183
 msgid ""
 "Haldric! I won't do it. . . I won't help. What is it with your kind, always "
 "rushing to a fool's death. Who'll lead these people?"
 msgstr ""
+"Haldric! Io non voglio .. Non ti aiuterò. Perché le persone come te amano "
+"correre verso una stupida morte? Chi guiderà questa gente?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:188
 msgid ""
 "You will. I wouldn't have made it this far without you. We really have to "
 "convince Jevyan-"
 msgstr ""
+"Li guiderai tu. Non sarei mai arrivato fino a questo punto senza di te. "
+"Dobbiamo per forza convincere Jevyan-"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:193
 msgid "Haldric, this is ridiculous! I- -"
-msgstr ""
+msgstr "Haldric, tutto ciò è ridicolo! Io - - "
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:226
 msgid ""
 "There is no way I'm letting you go through with this Sir! Over our dead "
 "bodies, right Jessica?"
 msgstr ""
+"Non ve lo lascerò fare Signore! Dovrà passare sui nostri cadaveri, vero "
+"Jessica?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:231
 msgid "Right!"
-msgstr ""
+msgstr "Vero!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:236
 msgid "I'll do it sir."
-msgstr ""
+msgstr "Lo farò io signore."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:241
 msgid "No. I can't ask you to do this."
-msgstr ""
+msgstr "No. Non posso chiederti di farlo."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:246
 msgid ""
@@ -3138,16 +3203,23 @@ msgid ""
 "Clearwater Port, and once again when your ships rescued me. I'll not be "
 "denied in this a third time!"
 msgstr ""
+"MI avete impedito una morte onorabile almeno due volte. La prima volta "
+"quando arrivaste a Clearwater Port, e la volta successiva quando mi avete "
+"recuperato con le vostre imbarcazioni. Non me lo potrete negare per la terza "
+"volta!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:251
 msgid "No, this is my sacrifice to make!"
-msgstr ""
+msgstr "No, questo è un sacrificio che dovrò portare a termine personalmente!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:257
 msgid ""
 "Sir, my family has been slaughtered, and my home lost. All I long for is to "
 "join them. Give me this honourable death. . . Please sir! I beg of you!"
 msgstr ""
+"Signore, la mia famiglia è stata sterminata e la mia casa è perduta. Tutto "
+"quello che chiedo è di riunirmi a loro. Concedetemi questa onorabile "
+"morte... Per favore Signore! Ve ne prego!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:262
 msgid ""
@@ -3155,6 +3227,9 @@ msgid ""
 "alone, with no honourable way of joining them. I want to look that monster "
 "Jevyan in the eye before I go! I won't be denied!"
 msgstr ""
+"Una volta che questo conflitto sarà terminato dovrò soffrire in solitudine "
+"per anni senza nessun modo onorabile per unirmi a loro. Voglio guardare "
+"negli occhi quel mostro di Jevyan prima di morire! Non potete negarmelo!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:267
 msgid ""
@@ -3162,6 +3237,10 @@ msgid ""
 "of Jevyan himself. We can't have an illiterate Orc or mindless Skeleton "
 "getting the treaty. We will honour your sacrifice."
 msgstr ""
+"Molto bene, se non potete essere convinto altrimenti. Ricordati, tu DEVI "
+"essere ucciso dalla mano di Jevyan. Non possiamo permettere che un Orco "
+"analfabeta o uno stupido Scheletro prendano il trattato. Onoreremo il tuo "
+"sacrificio."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:272
 msgid ""
@@ -3169,10 +3248,13 @@ msgid ""
 "to me. I want to rest in the ground, not be some mindless undead slave for "
 "all eternity!"
 msgstr ""
+"Onoratemi distruggendo Jevyan! Magari prima che egli possa fare cose "
+"innaturali su di me. Voglio riposare nel suolo, non voglio diventare uno "
+"schiavo non-morto per tutta l'eternità!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:277
 msgid "We'll make sure. I promise."
-msgstr ""
+msgstr "Molto bene. Lo prometto."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Plan.cfg:282
 msgid ""
@@ -3181,6 +3263,10 @@ msgid ""
 "Sheesh. . . What is your kind's infatuation with rushing to an 'honourable "
 "death'?"
 msgstr ""
+"Dovremmo essere cauti per poter lasciare che un comandante degli Orchi "
+"scappi verso l'Isola Verde con la notizia che gli Elfi 'possiedono' il "
+"Rubino di Fuoco. Sheesh .. Che tipo di infatuazione hai nel correre verso "
+"una 'onorabile morte'?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_River_Road.cfg:3
 msgid "The Swamp of Esten"
@@ -3313,7 +3399,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:3
 msgid "The Vanguard"
-msgstr ""
+msgstr "L'avanguardia"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:25
 msgid ""
@@ -3325,6 +3411,13 @@ msgid ""
 "#Death of Lt. Aethyr or\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Vittoria:\n"
+"@Sconfiggi tutti i nemici\n"
+"Sconfitta:\n"
+"#Morte di Prince Haldric o\n"
+"#Morte del Tenente Aethyr o\n"
+"#Fine dei turni a disposizione"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:201
 msgid ""
@@ -3332,24 +3425,29 @@ msgid ""
 "Orcish threat. On the eve of battle Lady Jessica catches up with Haldric on "
 "a fog covered plain."
 msgstr ""
+"Haldric e i suoi compagni cavalcano attraverso le pianure per affrontare gli "
+"Orchi. Durante la battaglia Lady Jessica si ritrova assieme ad Haldric in "
+"una pianura piena di nebbia."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:206
 msgid "Haldric, the Elves, we can't trust them!"
-msgstr ""
+msgstr "Haldric, gli Elfi, non possiamo fidarci di loro!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:212
 msgid "I could have told you that."
-msgstr ""
+msgstr "E' quello che stavo per dire."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:217
 msgid ""
 "Haldric, it's bad. The Elves are having second thoughts. They think we might "
 "be more trouble than we're worth. We have to defeat these Orcs decisively."
 msgstr ""
+"Haldric, non ci siamo. Gli Elfi ci hanno ripensato. Pensano che siamo più "
+"problematici che utili. Dobbiamo sconfiggere definitivamente questi Orchi."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:222
 msgid "Well, that sounds reasonable."
-msgstr ""
+msgstr "Penso che tu abbia ragione."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:227
 msgid ""
@@ -3357,6 +3455,9 @@ msgid ""
 "follow us here the Elves seem content to let us fight it out. Then they said "
 "they would 'deal with the survivors'."
 msgstr ""
+"Altri Orchi arriveranno dopo questi, questo rubino ne è la garanzia. Se "
+"altri Orchi ci raggiungono qua gli Elfi saranno felici di lasciarceli "
+"combattere. Poi diranno che vorranno 'accordarsi con i sopravvissuti'."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:232
 msgid ""
@@ -3364,32 +3465,41 @@ msgid ""
 "prize as the Ruby of Fire just slip away. Especially when he sees that he "
 "has the advantage."
 msgstr ""
+"Jevyan è qui. . . Il suo familiare, quel pipistrello. Non ci lascerà un "
+"gioiello così importante come il Rubino di Fuoco. Specialmente quando vedrà "
+"che è in vantaggio."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:237
 msgid ""
 "I have a plan. Jessica, remember that Troll Hole? Here, take the Ruby of "
 "Fire, hide it in the hole."
 msgstr ""
+"Ho un piano. Jessica, ti ricordi quella caverna dei Troll? Ecco, prendi il "
+"Rubino di Fuoco e nascondilo in quella caverna."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:242
 msgid "Haldric! What! Why?"
-msgstr ""
+msgstr "Haldric? Cosa? Perché?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:247
 msgid "Just do it."
-msgstr ""
+msgstr "Fallo e basta."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:252
 msgid ""
 "Lt. Aethyr, did these Orcs come on our ships, did they capture the fleet we "
 "sent out?"
 msgstr ""
+"Tenente Aethyr, gli Orchi sono saliti nelle nostre imbarcazioni, hanno "
+"catturato la flotta che abbiamo inviato?"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:257
 msgid ""
 "No Sir! They must have seized all of remaining boats on the Green Isle. Our "
 "fleet should be returning any day now."
 msgstr ""
+"No Signore! Devono aver bloccato tutte le navi restanti nell'Isola Verde. La "
+"nostra flotta dovrebbe tornare da un momento all'altro."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:262
 msgid ""
@@ -3397,66 +3507,82 @@ msgid ""
 "beachhead. If they capture our ships all is lost. We will be crushed under a "
 "tide of Orcs."
 msgstr ""
+"Siamo dei rifugiati, dobbiamo neutralizzare la loro avanguardia e mettere al "
+"sicuro la spiaggia. Se prendono le nostre navi sarà tutto perduto. Verremo "
+"schiacciati da una marea di Orchi."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:276
 msgid "Lady Jessica soon departs. In the distance a voice booms:"
-msgstr ""
+msgstr "Lady Jessica partì presto. Da lontano una voce tuona:"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:295
 msgid ""
 "Drop the gold where it is! We've payed our friends enough. There are humans "
 "about, I can smell 'em!"
 msgstr ""
+"Lasciate stare l'oro! Abbiamo pagato abbastanza i nostri amici. Sono umani, "
+"posso sentirne l'odore!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:305
 msgid "We have run out of time. . . We'll never beat the Orcs to the beach"
 msgstr ""
+"Siamo fuori tempo limite. . . Non sconfiggeremo mai gli Orchi sulla spiaggia"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:319
 msgid "I've found the Orcs' chest! It's filled with gold."
-msgstr ""
+msgstr "Ho trovato lo scrigno degli Orchi! E' pieno d'oro."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:352
 msgid "Rhaarg!"
-msgstr ""
+msgstr "Rhaarg!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:358
 msgid ""
 "How'd they get that thing here? It must have walked across the bottom of the "
 "ocean."
 msgstr ""
+"Come avranno portato questa cosa qui? Deve aver camminato sul fondo "
+"dell'oceano."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:380
 msgid ""
 "Never trust the living to do the job of the undead. Prepare to meet the "
 "inevitable!"
 msgstr ""
+"Mai fidarsi di un vivo che svolge il lavoro di un non-morto. Preparati "
+"all'inevitabile!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:386
 msgid ""
 "The only job of the dead is to remain dead. Prepare to be reunited with the "
 "ground."
 msgstr ""
+"L'unico lavoro di un morto è rimanere morto. Preparati a tornare sotto terra."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:410
 msgid "We must block the human advance!"
-msgstr ""
+msgstr "Dobbiamo bloccare l'avanzata degli umani!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:432
 msgid "Reserves! We can't let them get to their landing site."
-msgstr ""
+msgstr "Riserve! Non possiamo lasciarli prendere il molo."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:447
 msgid ""
 "We've defeated their vanguard. We have to meet the fleet before Jevyan "
 "destroys them, and captures the ships. I hope Jessica makes it back soon."
 msgstr ""
+"Abbiamo sconfitto l'avanguardia. Dobbiamo incontrare la flotta prima che "
+"Jevyan la distrugga, e prendere le nostre navi. Spero che Jessica torni "
+"presto."
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Vanguard.cfg:480
 msgid ""
 "Ahh, it's great to be home! I'm not much for the politics, but it's great to "
 "be home!"
 msgstr ""
+"Ahh, che bello essere a casa! Non mi interesso di politica, ma è magnifico "
+"essere a casa!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/Troll_Hole.cfg:3
 msgid "Troll Hole"
@@ -3501,6 +3627,8 @@ msgid ""
 "The trolls are beaten. No wonder why the elves are getting us to do their "
 "dirty linens."
 msgstr ""
+"I troll sono stati sconfitti. Non capisco perché gli elfi ci stanno usando "
+"per i loro piani."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-deaths.cfg:9
 msgid "I can't be finished yet. . . I still have so much more to do."
@@ -3662,6 +3790,10 @@ msgid ""
 "with, and Southbay still stands. This is excellent news. As per your orders "
 "a third of the fleet has headed back out."
 msgstr ""
+"Haldric, un messaggero mi ha appena informata che la flotta è tornata dalla "
+"nostra vecchia casa. Sono tornati indietro quasi tutti e Southbay è ancora "
+"intatta. E' un'ottima notizia. E come hai ordinato un terzo della flotta sta "
+"venendo qua."
 
 #: data/scenarios/The_Rise_of_Wesnoth/trow-nlmsg.cfg:123
 msgid ""
