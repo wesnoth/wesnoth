@@ -203,6 +203,10 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 	const std::vector<attack_type>& attacks = itor->second.attacks();
 	assert(!attacks.empty());
 
+	const std::map<location,unit>::const_iterator d_itor = units.find(def);
+	int d_hitpoints = d_itor->second.hitpoints();
+	int a_hitpoints = itor->second.hitpoints();
+	
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		const battle_stats stats = evaluate_battle_stats(map,att,def,a,units,
 		                                          status,info,terrain,false);
@@ -210,9 +214,9 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 		//TODO: improve this rating formula!
 		const double rating =
 		   (double(stats.chance_to_hit_defender)/100.0)*
-		               stats.damage_defender_takes*stats.nattacks -
+		               minimum<int>(stats.damage_defender_takes*stats.nattacks,d_hitpoints) -
 		   (double(stats.chance_to_hit_attacker)/100.0)*
-		               stats.damage_attacker_takes*stats.ndefends;
+		               minimum<int>(stats.damage_attacker_takes*stats.ndefends,a_hitpoints);
 		if(rating > current_rating || current_choice == -1) {
 			current_choice = a;
 			current_rating = rating;

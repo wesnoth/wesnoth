@@ -397,6 +397,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		const int range = distance_between(u->first,enemy->first);
 		std::vector<int> attacks_in_range;
 
+		int best_weapon_index = -1;
+		int best_weapon_rating = 0;
+
 		for(size_t a = 0; a != attacks.size(); ++a) {
 			if(attacks[a].hexes() < range)
 				continue;
@@ -407,6 +410,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			                               map_,selected_hex_,hex,
 										   a,units_,status_,gameinfo_);
 
+			int weapon_rating = stats.chance_to_hit_defender *
+			                stats.damage_defender_takes * stats.nattacks;
+			
+			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
+				best_weapon_index = items.size();
+				best_weapon_rating = weapon_rating;
+			}
+			
 			const std::string& lang_attack_name =
 			            string_table["weapon_name_"+stats.attack_name];
 			const std::string& lang_attack_type =
@@ -448,7 +459,11 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			items.push_back(att.str());
 			units_list.push_back(enemy->second);
 		}
-
+		
+		if (best_weapon_index >= 0) {
+			items[best_weapon_index] = "*" + items[best_weapon_index];
+		}
+			
 		//make it so that when we attack an enemy, the attacking unit
 		//is again shown in the status bar, so that we can easily
 		//compare between the attacking and defending unit
