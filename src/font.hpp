@@ -106,6 +106,8 @@ struct floating_label_manager
 };
 
 /// structure which will hide floating labels for its lifetime
+/// it will draw the floating labels in its constructor, and then
+/// undraw them in its destructor
 struct floating_label_hider
 {
 	floating_label_hider();
@@ -132,6 +134,8 @@ void move_floating_label(int handle, int xmove, int ymove);
 
 /// removes the floating label given by 'handle' from the screen
 void remove_floating_label(int handle);
+
+const std::string& get_floating_label_text(int handle);
 
 void draw_floating_labels(SDL_Surface* screen);
 void undraw_floating_labels(SDL_Surface* screen);

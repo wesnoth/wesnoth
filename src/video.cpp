@@ -154,6 +154,14 @@ void update_rect(const SDL_Rect& rect_value)
 		if(rect.y + rect.h > fb->h) {
 			rect.h = fb->h - rect.y;
 		}
+
+		if(size_t(rect.x) >= fb->w) {
+			return;
+		}
+
+		if(size_t(rect.y) >= fb->h) {
+			return;
+		}
 	}
 
 	for(std::vector<SDL_Rect>::iterator i = update_rects.begin();

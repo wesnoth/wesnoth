@@ -33,7 +33,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
 					  HOTKEY_SPEAK, HOTKEY_CREATE_UNIT, HOTKEY_PREFERENCES,
 					  HOTKEY_OBJECTIVES, HOTKEY_UNIT_LIST, HOTKEY_STATISTICS, HOTKEY_QUIT_GAME,
-                      HOTKEY_NULL };
+                      HOTKEY_LABEL_TERRAIN, HOTKEY_NULL };
 
 struct hotkey_item {
 	explicit hotkey_item(const config& cfg);
@@ -97,6 +97,7 @@ public:
 	virtual void objectives() = 0;
 	virtual void unit_list() = 0;
 	virtual void show_statistics() = 0;
+	virtual void label_terrain() = 0;
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command) const = 0;
 };

@@ -438,11 +438,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			const gamemap::location loc(*child);
 
 			const std::set<std::string>& recruits = current_team.recruits();
+
+			if(val < 0 || val >= recruits.size()) {
+				std::cerr << "recruitment index is illegal: " << val
+				          << " while this side only has " << recruits.size() << " units available for recruitment\n";
+				throw replay::error();
+			}
+
 			std::set<std::string>::const_iterator itor = recruits.begin();
 			std::advance(itor,val);
 			const std::map<std::string,unit_type>::const_iterator u_type = gameinfo.unit_types.find(*itor);
 			if(u_type == gameinfo.unit_types.end()) {
-				std::cerr << "recruiting illegal unit\n";
+				std::cerr << "recruiting illegal unit: '" << *itor << "'\n";
 				throw replay::error();
 			}
 

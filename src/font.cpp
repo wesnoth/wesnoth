@@ -483,6 +483,8 @@ public:
 
 	bool expired() const;
 
+	const std::string& text() const;
+
 private:
 	shared_sdl_surface surf_, buf_;
 	std::string text_;
@@ -562,6 +564,8 @@ void floating_label::undraw(SDL_Surface* screen)
 
 bool floating_label::expired() const { return lifetime_ == 0; }
 
+const std::string& floating_label::text() const { return text_; }
+
 }
 
 namespace font {
@@ -588,6 +592,17 @@ void remove_floating_label(int handle)
 	}
 }
 
+const std::string& get_floating_label_text(int handle)
+{
+	const label_map::iterator i = labels.find(handle);
+	if(i != labels.end()) {
+		return i->second.text();
+	} else {
+		static const std::string empty_str;
+		return empty_str;
+	}
+}
+
 floating_label_manager::floating_label_manager()
 {
 }
@@ -599,16 +614,30 @@ floating_label_manager::~floating_label_manager()
 
 floating_label_hider::floating_label_hider() : old_(hide_floating_labels)
 {
+	SDL_Surface* const screen = SDL_GetVideoSurface();
+	if(screen != NULL) {
+		draw_floating_labels(screen);
+	}
+
 	hide_floating_labels = true;
 }
 
 floating_label_hider::~floating_label_hider()
 {
 	hide_floating_labels = old_;
+
+	SDL_Surface* const screen = SDL_GetVideoSurface();
+	if(screen != NULL) {
+		undraw_floating_labels(screen);
+	}
 }
 
 void draw_floating_labels(SDL_Surface* screen)
 {
+	if(hide_floating_labels) {
+		return;
+	}
+
 	//draw the labels in reverse order, so we can clear them in-order
 	//to make sure the draw-undraw order is LIFO
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
@@ -618,6 +647,10 @@ void draw_floating_labels(SDL_Surface* screen)
 
 void undraw_floating_labels(SDL_Surface* screen)
 {
+	if(hide_floating_labels) {
+		return;
+	}
+
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ) {
 		i->second.undraw(screen);
 		if(i->second.expired()) {

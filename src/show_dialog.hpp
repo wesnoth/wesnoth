@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
+#include "font.hpp"
 #include "network.hpp"
 #include "unit.hpp"
 #include "video.hpp"
@@ -31,7 +32,7 @@ namespace gui
 
 bool in_dialog();
 
-struct dialog_manager : private cursor::setter {
+struct dialog_manager : private cursor::setter, private font::floating_label_hider {
 	dialog_manager();
 	~dialog_manager();
 

@@ -18,6 +18,7 @@
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
+#include "map_label.hpp"
 #include "pathfind.hpp"
 #include "reports.hpp"
 #include "team.hpp"
@@ -286,6 +287,9 @@ public:
 	void add_observer(const std::string& name);
 	void remove_observer(const std::string& name);
 
+	map_labels& labels() { return map_labels_; }
+	const map_labels& labels() const { return map_labels_; }
+
 private:
 	display(const display&);
 	void operator=(const display&);
@@ -340,8 +344,6 @@ private:
 
 	//this surface must be freed by the caller
 	SDL_Surface* getMinimap(int w, int h);
-
-	void clearImageCache();
 
 	CVideo& screen_;
 	mutable CKey keys_;
@@ -412,6 +414,8 @@ private:
 	bool firstTurn_;
 
 	std::set<std::string> observers_;
+
+	map_labels map_labels_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

@@ -152,6 +152,9 @@ void draw(SDL_Surface* screen)
 
 	const scoped_sdl_surface surf(image::get_image("cursors/" + images[current_cursor],image::UNSCALED));
 	if(surf == NULL) {
+		//fall back to b&w cursors
+		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
+		preferences::set_colour_cursors(false);
 		return;
 	}
 

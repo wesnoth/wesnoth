@@ -17,6 +17,7 @@
 #include "image.hpp"
 #include "language.hpp"
 #include "log.hpp"
+#include "map_label.hpp"
 #include "mouse.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
@@ -833,9 +834,12 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	//commands we can only do if there is an active unit
 	case hotkey::HOTKEY_TERRAIN_TABLE:
 	case hotkey::HOTKEY_ATTACK_RESISTANCE:
-   case hotkey::HOTKEY_UNIT_DESCRIPTION:
+	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return current_unit() != units_.end();
+
+	case hotkey::HOTKEY_LABEL_TERRAIN:
+		return map_.on_board(last_hex_);
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
@@ -1823,6 +1827,20 @@ void turn_info::show_statistics()
 	if(items.empty() == false) {
 		gui::show_dialog(gui_,NULL,"",title,gui::OK_ONLY,&items);
 		show_statistics();
+	}
+}
+
+void turn_info::label_terrain()
+{
+	if(map_.on_board(last_hex_) == false) {
+		return;
+	}
+
+	std::string label = gui_.labels().get_label(last_hex_);
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["place_label"],gui::OK_CANCEL,
+	                                 NULL,NULL,string_table["label"] + ":",&label);
+	if(res == 0) {
+		gui_.labels().set_label(last_hex_,label);
 	}
 }
 

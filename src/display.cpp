@@ -60,7 +60,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg,screen_area()), firstTurn_(true)
+					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -266,6 +266,7 @@ void display::scroll(double xmove, double ymove)
 
 	//only invalidate if we've actually moved
 	if(orig_x != xpos_ || orig_y != ypos_) {
+		map_labels_.scroll(orig_x - xpos_, orig_y - ypos_);
 		invalidate_all();
 	}
 }
@@ -300,6 +301,7 @@ void display::zoom(double amount)
 	bounds_check_position();
 
 	if(zoom_ != prev_zoom) {
+		map_labels_.recalculate_labels();
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
 		zoom_ = orig_zoom;
@@ -448,6 +450,9 @@ void display::redraw_everything()
 	create_buttons();
 
 	panelsDrawn_ = false;
+
+	map_labels_.recalculate_labels();
+
 	invalidate_all();
 	draw(true,true);
 }
