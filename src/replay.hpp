@@ -105,6 +105,7 @@ private:
 	unsigned int pos_;
 
 	config* current_;
+	config* random_;
 
 	game_state saveInfo_;
 

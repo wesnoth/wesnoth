@@ -187,10 +187,10 @@ void set_random_results(const config& cfg)
 	random_generator->set_random_results(cfg);
 }
 
-replay::replay() : pos_(0), current_(NULL), skip_(0)
+replay::replay() : pos_(0), current_(NULL), random_(NULL), skip_(0)
 {}
 
-replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), skip_(0)
+replay::replay(const config& cfg) : cfg_(cfg), pos_(0), current_(NULL), random_(NULL), skip_(0)
 {}
 
 config& replay::get_config()
@@ -287,6 +287,7 @@ void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 	add_pos("move",a,b);
 	//current_->add_child("verify",make_verify_units());
 	current_ = NULL;
+	random_ = NULL;
 }
 
 void replay::add_attack(const gamemap::location& a, const gamemap::location& b,
@@ -296,6 +297,7 @@ void replay::add_attack(const gamemap::location& a, const gamemap::location& b,
 	char buf[100];
 	sprintf(buf,"%d",weapon);
 	current_->child("attack")->values["weapon"] = buf;
+	random_ = current_;
 }
 
 void replay::add_pos(const std::string& type,
@@ -430,7 +432,7 @@ config* replay::add_command()
 
 int replay::get_random()
 {
-	if(current_ == NULL) {
+	if(random_ == NULL) {
 		return rand();
 	}
 
@@ -439,34 +441,34 @@ int replay::get_random()
 	//the end of the list. Generating a new random number means
 	//nesting a new node inside the current node, and making
 	//the current node the new node
-	config* const random = current_->child("random");
+	config* const random = random_->child("random");
 	if(random == NULL) {
 		const int res = rand();
-		current_ = &current_->add_child("random");
+		random_ = &random_->add_child("random");
 
 		char buf[100];
 		sprintf(buf,"%d",res);
-		(*current_)["value"] = buf;
+		(*random_)["value"] = buf;
 
 		return res;
 	} else {
 		const int res = atol((*random)["value"].c_str());
-		current_ = random;
+		random_ = random;
 		return res;
 	}
 }
 
 const config* replay::get_random_results() const
 {
-	assert(current_ != NULL);
-	return current_->child("results");
+	assert(random_ != NULL);
+	return random_->child("results");
 }
 
 void replay::set_random_results(const config& cfg)
 {
-	assert(current_ != NULL);
-	current_->clear_children("results");
-	current_->add_child("results",cfg);
+	assert(random_ != NULL);
+	random_->clear_children("results");
+	random_->add_child("results",cfg);
 }
 
 void replay::start_replay()
@@ -481,7 +483,7 @@ config* replay::get_next_action()
 
 	std::cerr << "up to replay action " << pos_ << "/" << commands().size() << "\n";
 
-	current_ = commands()[pos_];
+	random_ = current_ = commands()[pos_];
 	++pos_;
 	return current_;
 }
@@ -495,6 +497,7 @@ void replay::set_to_end()
 {
 	pos_ = commands().size();
 	current_ = NULL;
+	random_ = NULL;
 }
 
 void replay::clear()
@@ -502,6 +505,7 @@ void replay::clear()
 	cfg_ = config();
 	pos_ = 0;
 	current_ = NULL;
+	random_ = NULL;
 	skip_ = 0;
 }
 
