@@ -82,16 +82,16 @@ game_state read_game(game_data& data, config* cfg)
 {
 	log_scope("read_game");
 	game_state res;
-	res.label = cfg->values["label"];
-	res.version = cfg->values["version"];
-	res.gold = atoi(cfg->values["gold"].c_str());
-	res.scenario = cfg->values["scenario"];
+	res.label = (*cfg)["label"];
+	res.version = (*cfg)["version"];
+	res.gold = atoi((*cfg)["gold"].c_str());
+	res.scenario = (*cfg)["scenario"];
 
-	res.difficulty = cfg->values["difficulty"];
+	res.difficulty = (*cfg)["difficulty"];
 	if(res.difficulty.empty())
 		res.difficulty = "NORMAL";
 
-	res.campaign_type = cfg->values["campaign_type"];
+	res.campaign_type = (*cfg)["campaign_type"];
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
 
@@ -122,18 +122,18 @@ game_state read_game(game_data& data, config* cfg)
 
 void write_game(const game_state& game, config& cfg)
 {
-	cfg.values["label"] = game.label;
-	cfg.values["version"] = game_config::version;
+	cfg["label"] = game.label;
+	cfg["version"] = game_config::version;
 
 	char buf[50];
 	sprintf(buf,"%d",game.gold);
-	cfg.values["gold"] = buf;
+	cfg["gold"] = buf;
 
-	cfg.values["scenario"] = game.scenario;
+	cfg["scenario"] = game.scenario;
 
-	cfg.values["campaign_type"] = game.campaign_type;
+	cfg["campaign_type"] = game.campaign_type;
 
-	cfg.values["difficulty"] = game.difficulty;
+	cfg["difficulty"] = game.difficulty;
 
 	config* vars = new config();
 	vars->values = game.variables;

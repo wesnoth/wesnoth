@@ -44,7 +44,7 @@ public:
 	void set_x(int val);
 	void set_y(int val);
 	void set_xy(int valx, int valy);
-	void button::set_label(std::string val);
+	void set_label(std::string val);
 
 	int width() const;
 	int height() const;

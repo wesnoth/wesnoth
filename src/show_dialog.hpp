@@ -57,6 +57,12 @@ public:
 
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY };
 
+struct check_item {
+	check_item(const std::string& label, bool checked) : label(label), checked(checked) {}
+	std::string label;
+	bool checked;
+};
+
 //if a menu is given, then returns -1 if the dialog was cancelled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
@@ -67,7 +73,8 @@ int show_dialog(display& screen, SDL_Surface* image,
                 const std::vector<unit>* units=NULL,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
-                dialog_action* action=NULL
+                dialog_action* action=NULL,
+				std::vector<check_item>* options=NULL
 			 );
 
 enum TITLE_RESULT { TUTORIAL, NEW_CAMPAIGN, MULTIPLAYER, LOAD_GAME, QUIT_GAME,

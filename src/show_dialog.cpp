@@ -195,7 +195,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::vector<unit>* units_ptr,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
-                dialog_action* action)
+                dialog_action* action, std::vector<check_item>* options)
 {
 	if(disp.update_locked())
 		return -1;
@@ -334,6 +334,20 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(cur_line > longest_line)
 		longest_line = cur_line;
 
+	int check_button_height = 0;
+	int check_button_width = 0;
+
+	std::vector<button> check_buttons;
+	if(options != NULL) {
+		for(std::vector<check_item>::const_iterator i = options->begin(); i != options->end(); ++i) {
+			button check_button(disp,i->label,button::TYPE_CHECK);
+			check_button_height += check_button.height() + button_height_padding;
+			check_button_width = maximum(check_button.width(),check_button_width);
+
+			check_buttons.push_back(check_button);
+		}
+	}
+
 	const int left_padding = 10;
 	const int right_padding = 10;
 	const int image_h_padding = image != NULL ? 10 : 0;
@@ -362,7 +376,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	const int total_height = (image_height+8 > text_size.h ?
 	                          image_height+8 : text_size.h) +
 	                         padding_height + button_heights + menu_.height() +
-							 text_widget_height;
+							 text_widget_height + check_button_height;
 
 	if(total_width > scr->w - 100 || total_height > scr->h - 100)
 		return false;
@@ -437,9 +451,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 					xloc+total_image_width+left_padding+image_h_padding,
 					yloc+top_padding);
 
+	const int image_h = image != NULL ? image->h : 0;
+	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h;
+
 	if(use_textbox) {
-		const int image_h = image != NULL ? image->h : 0;
-		const int text_widget_y = yloc+top_padding+image_h-6+text_size.h;
 		text_widget.set_location(xloc + left_padding +
 		                         text_widget_width - text_widget.width(),
 		                         text_widget_y);
@@ -447,6 +462,19 @@ int show_dialog(display& disp, SDL_Surface* image,
 		font::draw_text(&disp, clipRect, message_font_size,
 		                font::NORMAL_COLOUR, text_widget_label,
 						xloc + left_padding,text_widget_y);
+	}
+
+	//set the position of any tick boxes. they go right below the menu, slammed against
+	//the right side of the dialog
+	if(options != NULL) {
+		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height();
+		for(size_t i = 0; i != check_buttons.size(); ++i) {
+			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
+			check_buttons[i].set_y(options_y);
+
+			options_y += check_buttons[i].height() + button_height_padding;
+			check_buttons[i].set_check((*options)[i].checked);
+		}
 	}
 
 	screen.flip();
@@ -488,7 +516,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 			if(key['1' + item])
 				select_item = item;
 		}
-
 
 		if(!key_down && key[SDLK_RETURN] &&
 		   (type == YES_NO || type == OK_CANCEL)) {
@@ -618,6 +645,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 					return -1;
 				}
 			}
+		}
+
+		for(int n = 0; n != check_buttons.size(); ++n) {
+			check_buttons[n].process(mousex,mousey,left_button);
+			check_buttons[n].draw();
+			(*options)[n].checked = check_buttons[n].checked();
 		}
 
 		if(action != NULL) {

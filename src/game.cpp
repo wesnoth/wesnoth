@@ -299,12 +299,18 @@ int play_game(int argc, char** argv)
 				continue;
 			}
 
+			//create an option for whether the replay should be shown or not
+			std::vector<gui::check_item> options;
+			options.push_back(gui::check_item(string_table["show_replay"],false));
 			const int res = gui::show_dialog(disp,NULL,
 							 string_table["load_game_heading"],
 							 string_table["load_game_message"],
-					         gui::OK_CANCEL, &games);
+					         gui::OK_CANCEL,&games,NULL,"",NULL,NULL,&options);
+
 			if(res == -1)
 				continue;
+
+			const bool show_replay = options.front().checked;
 
 			try {
 				load_game(units_data,games[res],state);
@@ -333,12 +339,8 @@ int play_game(int argc, char** argv)
 
 			recorder = replay(state.replay_data);
 			if(!recorder.empty()) {
-				const int res = gui::show_dialog(disp,NULL,
-				               "", string_table["replay_game_message"],
-							   gui::YES_NO);
-				//if yes, then show the replay, otherwise
-				//skip showing the replay
-				if(res == 0) {
+				//set whether the replay is to be skipped or not
+				if(show_replay) {
 					recorder.set_skip(0);
 				} else {
 					std::cerr << "skipping...\n";
