@@ -92,7 +92,10 @@ all-no:
 # $(POFILES) has been designed to not touch files that don't need to be
 # changed.
 stamp-po: $(srcdir)/$(DOMAIN).pot
-	test -z "$(GMOFILES)" || $(MAKE) $(GMOFILES)
+	test -z "$(GMOFILES)" || \
+	  for domain in `cat DOMAINS`; do \
+	    $(MAKE) DOMAIN=$$domain $(GMOFILES) ;\
+	  done
 	@echo "touch stamp-po"
 	@echo timestamp > stamp-poT
 	@mv stamp-poT stamp-po
