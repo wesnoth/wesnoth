@@ -1396,12 +1396,15 @@ int play_game(int argc, char** argv)
 
 	game_controller game(argc,argv,use_sound);
 
-	bool res = game.init_config();
+	bool res;
+#ifdef WIN32
+	res = game.init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 0;
 	}
-	
+#endif
+
 	res = game.init_video();
 	if(res == false) {
 		std::cerr << "could not initialize display\n";
@@ -1413,6 +1416,16 @@ int play_game(int argc, char** argv)
 		std::cerr << "could not initialize the language\n";
 		return 0;
 	}
+
+#ifndef WIN32
+	// it is better for gettext-native platforms to read the config
+	// files after having pre-initialized the language, maybe...
+	res = game.init_config();
+	if(res == false) {
+		std::cerr << "could not initialize game config\n";
+		return 0;
+	}
+#endif
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)
