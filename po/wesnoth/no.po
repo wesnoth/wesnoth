@@ -1,23 +1,36 @@
+# translation of no.po to Norwegian Bokmål
 # Norwegian translations for Battle for Wesnoth package.
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
+# , 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
+"Project-Id-Version: no\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2004-09-10 15:28+0100\n"
-"Last-Translator: Erik <erikmesoy@yahoo.com>\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2005-03-15 20:09+0100\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian Bokmål <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -25,11 +38,11 @@ msgstr "Innledning"
 
 #: data/help.cfg:16
 msgid "Gameplay"
-msgstr ""
+msgstr "Spillteknikk"
 
 #: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2105
 msgid "Traits"
-msgstr "Trekk"
+msgstr "Karaktertrekk"
 
 #: data/help.cfg:28 src/playturn.cpp:1671
 msgid "Units"
@@ -40,9 +53,8 @@ msgid "Abilities"
 msgstr "Egenskaper"
 
 #: data/help.cfg:41
-#, fuzzy
 msgid "Weapon Specials"
-msgstr "Spesial"
+msgstr "Særtrekk"
 
 #: data/help.cfg:47
 msgid "Terrains"
@@ -54,6 +66,10 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Enkelte enheter har egenskaper som enten direkte påvirker andre enheter "
+"eller har en innvirkning på hvordan enheten samspiller med andre enheter. "
+"Disse egenskapene vil bli listet under dette emnet etter hvert som du støter "
+"på dem."
 
 #: data/help.cfg:62
 msgid ""
@@ -66,10 +82,19 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
+"\n"
+"\n"
+"Kampen om Wesnoth er et rundebasert strategispill med et fantasytema. "
+"Spillet avviker noe fra moderne strategispill. Mens andre spill strekker seg "
+"etter kompleksitet både i regler og spillopplevelse, strekker Kampen om "
+"Wesnoth seg etter enkelhet i regler og spillopplevelse. Dette gjør ikke "
+"spillet enkelt, derimot vil det fra disse enkle reglene reise seg en verden "
+"av forskellige strategimuligheter. Noe som gjør spillet lett å lære, men "
+"vanskelig å bli en mester i."
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
-msgstr "Grunnleggende spillekunnskaper"
+msgstr "Grunnleggende spillteknikk"
 
 #: data/help.cfg:68
 msgid ""
@@ -81,6 +106,13 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Denne siden beskriver det du trenger å vite for å spille Kampen om Wesnoth. "
+"Det dekker hvordan man spiller og de grunnleggende mekanismene bak spillet. "
+"For mer informasjon om å beherske spillet kan du lese "
+"<ref>dst=basic_strategy text='Grunnleggende strategi'</ref> og "
+"<ref>dst=multiplayer_strategy text='Gruppespillerstrategi'</ref>. Hugs at "
+"dette bare er en kort inntroduksjon. Følg linkene for spesielle unntak og "
+"situasjoner."
 
 #: data/help.cfg:70
 msgid ""
@@ -93,6 +125,14 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Til å begynne med er det best å trykke på knappen <italic>text=Øvingsspill</"
+"italic> i hovedmenyen. Her vil du lære det grunnleggende i Kampen om "
+"Wesnoth. Når du er ferdig med øvingsspillet er det anbefalt å spille "
+"felttoget Tronarvingen først - trykk <italic>text=Felttog</italic> så "
+"<italic>text=Tronarvingen</italic>. Siden Kampen om Wesnoth kan være ganske "
+"krevende kan det være lurt å stare med <italic>text=Lett</italic>."
 
 #: data/help.cfg:73
 msgid ""
@@ -100,6 +140,10 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Når du spiller kan du holde muspekeren over informasjonen i feltet til "
+"høgre, da vil det komme frem en kort beskrivelse for elementet der "
+"muspekeren er. Dette er særlig nyttig når du støter på nye egenskaper for "
+"første gang."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -116,6 +160,14 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Når du spiller et scenario - spesiellt i starten - kommer du til å måtte "
+"rekruttere nye tropper til armèen din. For å kunne gjøre dette må lederen "
+"din (Konrad i felttoget Tronarvingen) stå hovedtårnet i en borg. Du "
+"rekrutterer enten ved å velge «Rekruttér» fra menyen eller høyreklikke på en "
+"rute og velge <italic>text=Rekruttér</italic>. Dette får frem "
+"rekrutteringmenyen der tilgjenglige enheter vises sammen med hva det koster "
+"å rekruttere dem. Trykk på en enhet for å vise dens egenskaper til venstre i "
+"dialogruten. For å rekruttere enheten som er valgt trykker du på «Rekruttér»."
 
 #: data/help.cfg:81
 msgid ""
@@ -126,6 +178,13 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Viss du høyreklikket på en borgrute og valgte «Rekruttér», så vil den nye "
+"enheten komme frem på denne ruten. Ellers vil den komme frem på en ledig "
+"rute nær hovedtårnet. Du kan bare rekruttere så mange enheter som det er "
+"plass til i borgen, og du kan ikke bruke mere gull enn du har til "
+"rekruttering."
 
 #: data/help.cfg:83
 msgid ""
@@ -134,6 +193,10 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Rekrutterte enheter kommer med to tilfeldige <ref>dst=traits "
+"text=karaktertrekk</ref> som endrer deres egenskaper."
 
 #: data/help.cfg:85
 msgid ""
@@ -144,6 +207,13 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"I senere scenarier vil du også kunne velge å tilbakekalle veteraner fra "
+"tidlegere scenarier. Dette foregår på samme måte som rekruttering, bortestt "
+"fra at det koster 20 gull å tilbakekalle en enhet uansett hva det kostet å "
+"rekruttere den. Om du velger å tilbakekalle får du opp en liste over de "
+"tilgjengelige veteraner som du kan velge mellom."
 
 #: data/help.cfg:87
 msgid ""
@@ -153,6 +223,11 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Hugs at enheter ikke bare koster gull å rekruttere eller tilbakekalle, men "
+"det koster også å underholde dem. Les <ref>dst income_and_upkeep "
+"text=«Inntekt og underhold»</ref> for mer informasjon."
 
 #: data/help.cfg:92 src/help.cpp:1200 src/help.cpp:1201
 msgid "Movement"
@@ -385,7 +460,7 @@ msgstr ""
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
-msgstr "Erfaring og avansering"
+msgstr "Erfaring og avansement"
 
 #: data/help.cfg:160
 msgid ""
@@ -538,9 +613,8 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:203 src/titlescreen.cpp:190
-#, fuzzy
 msgid "About"
-msgstr "Ungdom"
+msgstr "Om"
 
 #: data/help.cfg:212
 msgid ""
@@ -550,6 +624,11 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"De fleste enheter har to karaktertrekk. Disse karaktertrekkene gjør "
+"småendringer enhetens egenskaper. De blir tillagt enheten tilfeldig når "
+"enheten blir rekruttert.\n"
+"\n"
+"De nåverende tilgjengelige karaktertrekk er:"
 
 #: data/help.cfg:219
 msgid ""
@@ -566,6 +645,18 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Intelligent</header>\n"
+"\n"
+"Intelligente enheter trenger 20% færre erfaringspoeng for å avansere.\n"
+"\n"
+"Intelligente enheter er svært nyttige i starten av et felttog, siden de "
+"raskt kan avansere til enheter med høyere nivå. Noe som er viktig. Senere i "
+"felttoget er de ikke så nyttige, og viss du har massevis av enheter på høyt "
+"nivå kan det vere lurere å tilbakekalle enheter med mer attraktive "
+"«langsiktige» karaktertrekk."
 
 #: data/help.cfg:226
 msgid ""
@@ -581,6 +672,17 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Lojal</header>\n"
+"\n"
+"Lojale enheter trenger aldri mer underhold enn en, uansett hvilket nivå de "
+"er på.\n"
+"\n"
+"Lojalitet har ingen innvirkning på nivå 1 enheter, noe som gjør dem mindre "
+"attraktive tidlig i felttoget. Når enheten kommer opp i nivå, derimot, kan "
+"det spare deg for mye gull i løpet av felttoget."
 
 #: data/help.cfg:233
 msgid ""
@@ -597,6 +699,19 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Kjapp</header>\n"
+"\n"
+"Kjappe enheter har ett ekstra forflytningspoeng, men 10% mindre LP enn "
+"vanlig.\n"
+"\n"
+"Kjapp er det mest merkbare karaktertrekket. Spesiellt på trege enheter som "
+"troll og tungt infanteri. Enheter som er kjappe kan ofte ha mye større "
+"mobilitet i røft terreng, så ta det med i betraktningen når du plasserer ut "
+"styrkene dine. Hugs også at kjappe enheter er ikkje så tøffe som andre og er "
+"derfor ikke så gode til å holde posisjoner."
 
 #: data/help.cfg:240
 msgid ""
@@ -612,6 +727,17 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Tøff<header>\n"
+"\n"
+"Tøffe enheter har 7 flere LP enn vanlig.\n"
+"\n"
+"Tøffe enheter kan være nyttige i alle stadium i et felttog og er et nyttig "
+"karaktertrekk for alle enheter. Du vil legge mer merke til det på enkelte "
+"enheter enn andre. Tøffe enheter er spesiellt nyttige til å holde posisjoner "
+"mot motstanderen."
 
 #: data/help.cfg:247
 msgid ""
@@ -628,6 +754,17 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Sterk</header>\n"
+"\n"
+"Sterke enheter gjør mer skade per slag i nærkamp og har 2 flere LP.\n"
+"\n"
+"Nyttig for nærkampsenheter. Sterk er mest effektiv for enheter som har mange "
+"antall slag, slik som Alvisk kriger. Sterke enheter kav være svært nyttige "
+"når det skal berre litt til for å gjøre et slag som gir skade om til et "
+"dødelig slag."
 
 #: data/items.cfg:264
 msgid ""
@@ -655,12 +792,11 @@ msgstr "Mye gull"
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
-"Jeg ønsker at denne ene gullmynten skal gi ti ganger så mye tilbake til meg."
+msgstr "Jeg ønsker at denne ene gullmynten skal gi ti gullmynter tilbake."
 
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
-msgstr "Fred over Wesnoth"
+msgstr "Fred i hele Wesnoth"
 
 #: data/items.cfg:306
 msgid "The only thing worth wishing for is peace throughout the land."
@@ -672,7 +808,7 @@ msgstr "Intet ønske."
 
 #: data/items.cfg:336
 msgid "Potion of Healing"
-msgstr "Livseliksir"
+msgstr "Helbredelsesbrygg"
 
 #: data/items.cfg:339
 msgid "A feeling of well-being overwhelms the drinker."
@@ -700,7 +836,7 @@ msgstr "Dette vannet vill gjøre nærkampsvåpen hellige i en kort stund."
 
 #: data/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr "La en annen ta denne, jeg er ikke verdig."
+msgstr "La en annen ta dette, jeg kan ikke bruke det."
 
 #: data/items.cfg:451 data/scenarios/tutorial/Traits_and_Specialties.cfg:194
 msgid "Potion of Strength"
@@ -732,11 +868,11 @@ msgstr "Beklager, kan ikke tilordne egenskaper ennå."
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
-msgstr "Sakthetsring"
+msgstr "Treghetsring"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
-msgstr "Bæreren av denne ringen sakkes."
+msgstr "Bæreren av denne ringen blir tregere."
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
@@ -760,7 +896,7 @@ msgstr "Denne treforken lar en havmann skyte lynkiler på sine fiender!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
-msgstr "Kun havemennene kan bruke denne!"
+msgstr "Bare havemennene kan bruke denne!"
 
 #: data/items.cfg:669
 msgid "storm trident"
@@ -772,30 +908,27 @@ msgstr "Flammesverd"
 
 #: data/items.cfg:711
 msgid "Only the leader of an army can wield this sword!"
-msgstr "Kun lederen av en hær kan bruke dette sverdet!"
+msgstr "Bare lederen av en hær kan bruke dette sverdet!"
 
 #: data/items.cfg:723
 msgid "flaming sword"
 msgstr "flammesverd"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Ildsepter"
 
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
-"Dette eldgamle Septeret er et utsøkt stykke dvergisk arbeid og et symbol på "
-"Wesnoths kongedømme. Det har kraft i seg til å skyte ildkuler på alle "
-"bærerens fiender!"
+"Dette eldgamle septeret er utsøkt dvergisk håndverk og et symbol på Wesnoths "
+"kongedømme. Det har kraft i seg til å skyte ildkuler på alle bærerens "
+"fiender!"
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -823,16 +956,15 @@ msgstr "Tilfeldig kart"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Lojale"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Tilbakekallinger"
+msgstr "Utbrytere"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Nordfolk"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -840,14 +972,12 @@ msgid "Undead"
 msgstr "Vandøde"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Den Knalgaiske Allianse (Knalgiske? Knalgas Allianse?)"
+msgstr "Den Knalgaiske Allianse"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Slag"
+msgstr "Drager"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -866,9 +996,8 @@ msgid "Orcs"
 msgstr "Orker"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Dvergisk Ødeland"
+msgstr "Dverger"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -876,32 +1005,31 @@ msgstr "Saurianer"
 
 #: data/multiplayer.cfg:211
 msgid "Age of Heroes"
-msgstr "Heltenes Alder"
+msgstr "Heltenes tidsalder"
 
 #: data/multiplayer.cfg:301
 msgid "Great War"
 msgstr "Den store krigen"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Lysets Trollmann"
+msgstr "Lysets allianse"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-lich.png,Mørkets Allianse"
+msgstr "Mørkets allianse"
 
 #: data/scenario-test.cfg:38
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr ""
+"Du kan komme viss du vil, men lederen er bare interessert i å snakke med "
+"Baldras."
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
-#, fuzzy
 msgid "An Island"
-msgstr "Øy"
+msgstr "En øy"
 
 #: data/scenarios/multiplayer/An_Island.cfg:50
 msgid ""
@@ -910,6 +1038,10 @@ msgid ""
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
 msgstr ""
+"Et kart for fire spillere som passer for individuelt spill eller lagspill. "
+"Seieren sikres ved å dominere den sentrale øyen. Nordvest: Område dominert "
+"av skog. Nordøst: Blandet snø og flatt land. Sørvest: Blandet ørken og flatt "
+"land. Sørøst: Område dominert av fjell."
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -921,9 +1053,8 @@ msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
-#, fuzzy
 msgid "The Broken Bridge"
-msgstr "Mørkets Horder"
+msgstr "Den ødelagde broen"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -977,9 +1108,8 @@ msgstr "Tilfeldig kart"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
-#, fuzzy
 msgid "Random map (Desert)"
-msgstr "Tilfeldig kart"
+msgstr "Tilfeldig kart (Ørken)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
 msgid ""
@@ -990,9 +1120,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
-#, fuzzy
 msgid "Random map (Marsh)"
-msgstr "Tilfeldig kart"
+msgstr "Tilfeldig kart (Sump)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:5
 msgid ""
@@ -1003,9 +1132,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
-#, fuzzy
 msgid "Random map (Winter)"
-msgstr "Tilfeldig kart"
+msgstr "Tilfeldig kart (Vinter)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
 msgid ""
@@ -1050,7 +1178,7 @@ msgstr "Blå skårer! Stillingen er nå $redscore-$bluescore"
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Skal jeg sende ballen til $passto.type ($xloc,$yloc)?"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
@@ -1122,7 +1250,6 @@ msgid "The Valley of Death"
 msgstr "Dødens Dal"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Dvergisk Ødeland"
 
@@ -1136,27 +1263,23 @@ msgstr "Kongen På Haugen"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Herre"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Forsvarer"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
-#, fuzzy
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
 msgstr ""
-"Så jeg er her for å lære hvordan lede en kamp. Som erfaren trollmann kan du "
-"sikkert forklare det for meg."
+"Feg er her for å lære hvordan kjempe i kamp. Som erfaren trollmann kan du "
+"sikkert lære meg kunsten å kjempe i kamp."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:53
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1166,7 +1289,7 @@ msgstr ""
 "Før enhver kamp er du nødt til å rekruttere enheter. For å gjøre det, "
 "høyreklikk på den ruten i borgen din der du vil rekruttere enheten. Velg så "
 "Rekrutter, og trykk 'OK'. Du kan bare rekruttere enheter på ruter i en borg "
-"forbundet mes festningen lederen din står i."
+"forbundet med festningen lederen din står i."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:55
 msgid "Recruit a unit"
@@ -1174,7 +1297,7 @@ msgstr "Rekrutter enhet"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:61
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr "Utmerket! Du har rekruttert en ALvisk Kriger."
+msgstr "Utmerket! Du har rekruttert en Alvisk Kriger."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:63
 #: data/scenarios/tutorial/Basic_Training.cfg:87
@@ -1190,7 +1313,6 @@ msgid "How do I recruit units?"
 msgstr "Hvordan rekrutterer jeg enheter?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1198,10 +1320,11 @@ msgid ""
 "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
-"For å rekruttere en enhe, høyreklikk på ruten i borgen der du vil rekruttere "
-"enheten. Velg så Rekrutter, eller bare pek på ruten og tast 'Ctrl-R'. Velg "
-"så typen enhet du vil rekruttere, og velg 'Ok'. For å rekruttere fortere, "
-"kan du bruke Ctrl-Shift-R for å rekruttere en til av den forrige typen enhet."
+"For å rekruttere en enhet, høyreklikk på ruten i borgen der du vil "
+"rekruttere enheten. Velg så Rekrutter, eller bare pek på ruten og trykk "
+"«Ctrl-R». Velg så typen enhet du vil rekruttere, og velg «Ok». For å "
+"rekruttere fortere, kan du bruke «Ctrl-Shift-R» for å rekruttere en til av "
+"den samme type enhet."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid ""
@@ -1216,8 +1339,8 @@ msgstr ""
 "En leder er en enhet som kan rekruttere. Det betyr at når lederen din står i "
 "en festning, kan du rekruttere enheter til borgen der. Ledere er vanligvis "
 "mektige enheter som hver side bare har en av. Dessuten er lederen din "
-"vanligvis den første enheten din side kontrollerer, og starter vanligvis på "
-"en festning. Du kan hoppe til lederen din ved å trykke 'l'. Hvis lederen din "
+"vanligvis den første enheten siden din kontrollerer, og starter vanligvis på "
+"en festning. Du kan hoppe til lederen din ved å trykke «l». Hvis lederen din "
 "dør, har du tapt. Du kan vinne de fleste scenarier ved at alle fiendens "
 "ledere dør."
 
@@ -1227,18 +1350,17 @@ msgstr "Hva er en leder?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:67
 msgid "How should I choose what kind of units to recruit?"
-msgstr "Hvordan skal jeg velge hivlke enheter jeg bør rekruttere?"
+msgstr "Hvilke enheter bør jeg rekruttere?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:67
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
-"Du må se gjennom evnene deres, som vises til venstre for dialogboksen for "
-"valg av enheter, og pris, som vises etter enhetens navn. Du vil lære mer om "
-"disse videre i opplæringen."
+"Du må se gjennom egenskapene deres, som vises til venstre for dialogboksen "
+"for valg av enheter, og pris, som vises etter enhetens navn. Du vil lære mer "
+"om disse videre i opplæringen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
 msgid "What happens when I recruit a unit?"
@@ -1250,9 +1372,9 @@ msgid ""
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
-"Når en enhet rekrutteres, dukker den opp på en borgrute du kan velge med "
-"fullt liv. Den har også to trekk, noe som diskuteres senere. Den kan ikke "
-"bevege seg eller angripe før du avslutter runden din."
+"Når en enhet rekrutteres, dukker den opp med fullt lib på en borgrute du "
+"selv kan velge. Den har også to karaktertrekk, noe som diskuteres senere. "
+"Den kan ikke bevege seg eller angripe før du avslutter runden din."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid ""
@@ -1266,11 +1388,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
 msgid "End your turn"
-msgstr "Avslutt turen din"
+msgstr "Avslutt runden din"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
 msgid "You have successfully ended your turn."
-msgstr "Du har endt din første runde."
+msgstr "Du har fullført den første runden din."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid "How do I end my turn?"
@@ -1282,9 +1404,9 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
-"En måte å avslutte en runde på er å taste Alt-E. Alternativt kan du "
-"høyreklikke og velge 'Avslutt runde', eller trykke på 'Avslutt runde'-"
-"knappen nederst til høyre."
+"En måte å avslutte en runde på er å taste «Alt-E». Alternativt kan du "
+"høyreklikke og velge «Avslutt runde», eller trykke på knappen «Avslutt "
+"runde» nederst til høyre."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
 msgid "What happens when I end my turn?"
@@ -1299,6 +1421,13 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Når du avslutter runden din blir det en annen side sin tur, og bare den "
+"siden kan gjøre forflytninger helt til den er ferdige. Når alle sidene har "
+"avsluttet sin tur, starter neste runde. Dette fører til ulike ting, "
+"inkludert at alle enheter får tilbake sitt fulle forflytningspotensiale. "
+"Denne rundens nummer blir vist på statuslinjen ved siden av et bilda av et "
+"flagg. Når dette tallet overgår det maksimale antallet runder vil du tape "
+"spillet."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:96
 msgid ""
@@ -1306,16 +1435,19 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
+"Din neste oppgave er å flytte den Alviske Krigeren din. For å flytte en "
+"enhet, velg den først og så klikk på den ruten han skal flytte til. I dette "
+"tilfellet skal han flyttes til skogen ved siden av den Alviske Shamanen, "
+"Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:98
 msgid "Move your Elvish Fighter next to Merle"
-msgstr ""
+msgstr "Flytt den Alviske Krigeren din frem til Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Nærkamp"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -1323,10 +1455,13 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
+"Nydelig! Du har klart å flytte den Alviske Krigeren. Men siden han ble "
+"flyttet til en naborute av en fiendtlig enhet, har han tapt alle gjenværende "
+"forflytningspoeng for denne runden. Dette blir kalt «kontrollsonen»."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Hvor langt kan min Alviske Kriger flytte?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid ""
@@ -1341,6 +1476,19 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Den Alviske Krigeren din starter med et visst antall forflytningspoeng hver "
+"runde. Dette blir referert til som farten til enheten. Når den Alviske "
+"Krigeren går over landskapet vil det koste ham forflytningspoeng for hver "
+"rute han går gjennom. Dette inkluderer den siste ruten som han stopper i. "
+"Når du velger den Alviske Krigeren vil alle ruter som han ikke kan flytte "
+"bli skygget ut. Viss ruten han skal gå til er lenger unna enn hva han kan "
+"flytte på en runde, så vil et tall komme frem som forteller hvor mange "
+"runder runder det vil ta for å nå den ruten. Ved å klikke på en rute langt "
+"borte vil enheten flytte så langt som mulig denne runden i den retningen. De "
+"påfølgende rundene vil enheten bli flyttet automatisk inntil den har nådd "
+"målruten. Viss du har sendt avgårde en enhet til et sted du likevel ikke vil "
+"sende den, kan du velge enheten to ganger for å fjerne den automatiske gå-"
+"til-funksjonen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:126
 msgid ""
@@ -1350,14 +1498,19 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"Kontrollsonen til en enhet er alle rutene som ligger inntil ruten som "
+"enheten står i. Enheter kan ikke flytte gjennom motstanderens kontrollsoner, "
+"de kan bare flytte inn i dem. Når de gjør dette mister de resten av "
+"forflytningspoengene sine. Kontrollsoner kan brukes til å hindre fienden i å "
+"nå de svake å sårede enhetene dine."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:126
 msgid "What's the zone of control?"
-msgstr ""
+msgstr "Hva er kontrollsonen?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Hvordan ser jeg hvem som er allierte og hvem som er fiender?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid ""
@@ -1371,11 +1524,12 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:133
+#, fuzzy
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
-msgstr ""
+msgstr "Nå må du angripe med krigeren din. For å angripe"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
 msgid "Attack Merle"
@@ -1383,11 +1537,11 @@ msgstr "Angrip Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid "You have successfully attacked Merle."
-msgstr ""
+msgstr "Du har angrepet Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Kan Merle gjøre motangrep etter mitt angrep?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid ""
@@ -1404,6 +1558,19 @@ msgid ""
 "to retaliate at all. However ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
+"Hver gang en enhet blir angrepet, kan den svare med et angrep med dens egne "
+"våpen. Dette betyr at for hvert slag fra angriperen, vil forsvareren svare "
+"med et slag. Dette holder på til en av dem har brukt opp alle sine slag. Da "
+"vil den andre enheten fortsette å slå til den har brukt opp sine slag også. "
+"Men enheter kan bare besvare et angrep med den samme våpenkategorien som "
+"angriperen slåss med. Dette betyr at et angrep med et distansevåpen bare kan "
+"besvares med et distansevåpen og et angrep med et nærvåpen bare kan besvares "
+"med et nærvåpen. De fleste enheter har kraftigere nærvåpen enn "
+"distansevåpen. Enheter med sterke distansevåpen er nyttige mot "
+"nærkamporienterte enheter. Noen nærkampenheter er uten distansevåpen i det "
+"hele og har ikke mulighet til å besvare angrepet i det hele. Distansevåpen "
+"kan derimot ikke brukes over flere ruter. Dette er en av karaktertrekkene "
+"med Wesnoth."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid ""
@@ -1416,10 +1583,18 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Hvert angrep gjør en viss mengde skade per treff og kan bli brukt et visst "
+"antall ganger per kamp. Disse tallene, som blir kalt skadetall og "
+"angrepstall, blir vist i den rekkefølgen under namnet på angrepet på "
+"enhetens statustabell og ved siden av den i angrepsvalgmenyen. For å raskt "
+"finne ut hvor mye skade et angrep maksimalt kan påføre, multipliser "
+"skadetallet med angrepstallet. Et eksempel: mitt lynangrep har et skadetall "
+"på 14 og et angrepstall på 4, ved å multiplisere opp ser du at det kan gi "
+"inntil 56 i skade i en kamp."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Hvordan kan du vite hvor kraftig en enhets angrep er?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:156
 msgid ""
@@ -1427,14 +1602,18 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"Enheter har mulighet til å blokkere slag. Sjangsen for at en enhet klarer å "
+"blokkere et angrep er basert på hvor dyktig forsvareren er på å stå i mot "
+"angrep. Dette blir vist i prosent i angrepsvalgmenyen etter skadetallet og "
+"angrepstallet."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:156
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "Vil krigeren min treffe hver gang han angriper?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:162
 msgid "End your turn, and wait for Merle to attack you."
-msgstr ""
+msgstr "Avslutt runden din og vent på at Merle skal angripe deg."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1442,10 +1621,13 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
+"Krigeren din har overlevd angrepet til Merle. Hver gang en enhet overlever "
+"en kamp får den erfaringspoeng frå kampen. Når en enhet har fått nok "
+"erfaring, vil den avansere til neste nivå og bli bedre."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid "What's experience?"
-msgstr ""
+msgstr "Hva er erfaring?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid ""
@@ -1455,10 +1637,15 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Når en enhet slåss mot en annen enhet får den mer erfaring, kalt «EP», etter "
+"kampen. Enheten får like mange erfaringspoeng fra en kamp som nivået til "
+"motstanderen den slåss mot. Enheter på høyere nivå er vanskeligere å slåss "
+"mot enn enheter på lavt nivå. Men for å nedkjempe en motstanderenhet får man "
+"mye mer erfaringspoeng. Da får man 8 ganger nivået til motstanderenheten."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Hva hender når en enhet avanserer?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid ""
@@ -1469,19 +1656,25 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
+"Når en enhet avanserer blir den en annen type enhet. Denne enhetstypen er "
+"avhengig av hva den opprinnelige enheten var. Men av og til er det mer en "
+"ett valg den kan avansere til. Avanserte enheter er vanligvis bedre og ett "
+"nivå høyere enn de opprinnelig var. En annen ting er at enheter som "
+"avanserer blir fullstendig helbredet og alle hemningar som er kastet på dem "
+"blir fjerna. Dette er kjent som «kur ved avansement»."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:179
 #: data/scenarios/tutorial/Basic_Training.cfg:181
 msgid "Move your fighter onto a village."
-msgstr ""
+msgstr "Flytt krigeren din til en landsby."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "Villages heal the units on them."
-msgstr ""
+msgstr "Landsbyer helbreder enheter som er på dem."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
 msgid "What happens when a unit moves onto a village?"
-msgstr ""
+msgstr "Hva skjer når en enhet flyttes inn i en landsby?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
 msgid ""
@@ -1494,10 +1687,18 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Når en enhet flyttes inn i en landsby, vil den flagge landsbyen for sin "
+"side. Denne handlingen bruker opp resten av enhetens forflytningspoeng. En "
+"landsby som er flagget for en side, gir den siden flere fordeler. Blant "
+"annet at den gir ett ekstra gullstykke til den siden hver runde og reduserer "
+"det totale underholdet til den siden med en. Det totale antallet landsbyer "
+"du kontrollerer blir også vist på statuslinjen etter bildet av et hus. I "
+"tillegg til den økonomiske fordelen med landsbyer, kan de også brukes i "
+"kamp. Landsbyer helbreder enheter som står på dem med 8 per runde."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:197
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Hvordan bli helbredet når det ikke er noen landsbyer i nærheten?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:197
 msgid ""
@@ -1508,12 +1709,21 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
 "scenario all of your units are fully healed."
 msgstr ""
+"Det er måter å helbrede på uten landsbyer. Viss en enhet ikke flytter eller "
+"angriper i en runde, vil enheten helbrede to LP av at den hviler. Viss en "
+"motstander angriper enheten vil den ikke bli helbredet av hvile. Det er også "
+"noen enheter som helbreder enhetene rundt dem. Den Alviske Shamanen er en "
+"slik enhet. Enheter ved siden av en Alvisk Shaman blir helbredet 4 LP for "
+"hver runde. Til slutt, når du gjør ferdig ett brett vil alle enhetene dine "
+"bli fullstendig helbredet."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:203
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
+"Nå må du nedkjempe Merle ved å redusere henne til 0 LP eller lavere. Bara "
+"angrip til du er ferdig."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:205
 msgid "Defeat Merle"
@@ -1579,9 +1789,9 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "Vil du lagre hendelsene som skjedde i dette scenariet?"
+msgstr ""
+"Vil du gå gjennom noko av det du har lært i dette scenariet en gang til?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -1591,7 +1801,7 @@ msgstr "Ja"
 #: data/scenarios/tutorial/Basic_Training.cfg:268
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "Eg er ferdig!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:285
 msgid ""
@@ -1999,7 +2209,7 @@ msgstr "Skygge"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Tåke"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
@@ -2045,69 +2255,61 @@ msgstr "Gresslette"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Savanne"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Landsby"
+msgstr "Ørkenlandsby"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Tropisk skogslandsby"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Oase"
 
 #: data/terrain.cfg:262
-#, fuzzy
 msgid "Snow"
-msgstr "Skygge"
+msgstr "Snø"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Landsby"
+msgstr "Vinterlandsby"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Åser"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
-msgstr "Landsby"
+msgstr "Vinteråser"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Slett fil"
+msgstr "Ørkenåser"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Fjell"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Fjell"
+msgstr "Ørkenfjell"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Skog"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Skog"
+msgstr "Vinterskog"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Tropisk skog"
 
 #: data/terrain.cfg:344
-#, fuzzy
 msgid "Cave wall"
 msgstr "Hulevegg"
 
@@ -2124,18 +2326,16 @@ msgid "Encampment"
 msgstr ""
 
 #: data/terrain.cfg:388
-#, fuzzy
 msgid "Dwarven castle"
-msgstr "Dvergisk Ødeland"
+msgstr "Dvergisk borg"
 
 #: data/terrain.cfg:398
 msgid "Keep"
 msgstr "Festning"
 
 #: data/terrain.cfg:418
-#, fuzzy
 msgid "Canyon"
-msgstr "ingenting"
+msgstr "Kløft"
 
 #: data/terrain.cfg:438
 #, fuzzy
@@ -2171,37 +2371,32 @@ msgid "XP"
 msgstr "EP"
 
 #: data/themes/default.cfg:186
-#, fuzzy
 msgid "gold"
-msgstr "frost"
+msgstr "gull"
 
 #: data/themes/default.cfg:195
-#, fuzzy
 msgid "villages"
-msgstr "Landsbyer"
+msgstr "landsbyer"
 
 #: data/themes/default.cfg:204
-#, fuzzy
 msgid "units"
-msgstr "Enheter"
+msgstr "enheter"
 
 #: data/themes/default.cfg:213
-#, fuzzy
 msgid "upkeep"
-msgstr "Underhold"
+msgstr "underhold"
 
 #: data/themes/default.cfg:222
-#, fuzzy
 msgid "income"
-msgstr "Inntekt"
+msgstr "inntekt"
 
 #: data/themes/default.cfg:358
 msgid "statuspanel^level"
-msgstr ""
+msgstr "statuspanel^nivå"
 
 #: data/themes/default.cfg:389
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "statuspanel^forflytning"
 
 #: data/themes/default.cfg:513
 msgid "Act."
@@ -2224,7 +2419,7 @@ msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
-"I løpet av en kampanje kan du gjenbruke erfarne enheter fra tidligere "
+"I løpet av et felttog kan du gjenbruke erfarne enheter fra tidligere "
 "scenarier ved å bruke kommandoen 'tilbakekall'."
 
 #: data/tips.cfg:3
@@ -2258,6 +2453,10 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cure' ability."
 msgstr ""
+"Forgiftede enheter taper 8 livspoeng for hver runde, men de vil ikke dø av "
+"forgiftning. Gift vil aldri gi dem mindre enn 1 livspoeng. Forgiftede "
+"enheter kan kureres ved å flytte dem til en landsby, eller plassere dem ved "
+"siden av en enhet som kan «kurere»."
 
 #: data/tips.cfg:6
 msgid ""
@@ -2430,12 +2629,12 @@ msgstr ""
 
 #: data/traits.cfg:4 data/translations/english.cfg:61
 msgid "loyal"
-msgstr "Lojal"
+msgstr "lojal"
 
 #: data/traits.cfg:5
 #, fuzzy
 msgid "Zero upkeep"
-msgstr "Underhold"
+msgstr "underhold"
 
 #: data/traits.cfg:15
 #, fuzzy
@@ -2448,7 +2647,7 @@ msgstr ""
 
 #: data/traits.cfg:23
 msgid "strong"
-msgstr "Sterk"
+msgstr "sterk"
 
 #: data/traits.cfg:40
 msgid "dextrous"
@@ -2456,15 +2655,15 @@ msgstr ""
 
 #: data/traits.cfg:52
 msgid "quick"
-msgstr "Kjapp"
+msgstr "kjapp"
 
 #: data/traits.cfg:68
 msgid "intelligent"
-msgstr "Intelligent"
+msgstr "intelligent"
 
 #: data/traits.cfg:79
 msgid "resilient"
-msgstr "Motstandsdyktig"
+msgstr "tøff"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -2499,7 +2698,6 @@ msgstr ""
 "døgnets tider."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
@@ -2525,7 +2723,7 @@ msgstr ""
 "\n"
 "Fiendtlige enheter kan ikke se eller angripe denne enheten når den er i "
 "skog, med unntak av når den har utført et angrep forrige runde, eller hvis "
-"de står rett ved den."
+"de står rett ved siden av den."
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
 #: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
@@ -6747,9 +6945,8 @@ msgid "+Scenario Designers"
 msgstr "+Scenarieutviklere"
 
 #: src/about.cpp:119
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Flerspiller"
+msgstr "+Gruppespillkart"
 
 #: src/about.cpp:124
 msgid "+Packagers"
@@ -7015,11 +7212,11 @@ msgstr "#(Ugydig)"
 
 #: src/dialogs.cpp:368 src/game.cpp:974
 msgid "Campaign"
-msgstr "Kampanje"
+msgstr "Felttog"
 
 #: src/dialogs.cpp:370 src/game.cpp:1297
 msgid "Multiplayer"
-msgstr "Flerspiller"
+msgstr "Gruppespill"
 
 #: src/dialogs.cpp:372
 msgid "Tutorial"
@@ -7189,9 +7386,8 @@ msgid "File I/O Error while reading the game"
 msgstr ""
 
 #: src/game.cpp:964
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr "Kampanje"
+msgstr "Hent flere felttog ..."
 
 #: src/game.cpp:965
 msgid "Download more campaigns from a server on Internet."
@@ -7199,7 +7395,7 @@ msgstr ""
 
 #: src/game.cpp:975
 msgid "Choose the campaign you want to play:"
-msgstr "Velg hvilken kampanje du vil spille:"
+msgstr "Velg hvilket felttog du vil spille:"
 
 #: src/game.cpp:1004
 msgid "Difficulty"
@@ -7334,17 +7530,15 @@ msgstr "Forbindelse utgått på tid"
 
 #: src/game.cpp:1211 src/game.cpp:1249 src/game.cpp:1274
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "Teneren svarte med en feil: \""
 
 #: src/game.cpp:1215
-#, fuzzy
 msgid "Terms"
-msgstr "Lag"
+msgstr "Vilkår"
 
 #: src/game.cpp:1252 src/game.cpp:1277
-#, fuzzy
 msgid "Response"
-msgstr "stein"
+msgstr "Svar"
 
 #: src/game.cpp:1290
 msgid "Join Official Server"
@@ -7363,9 +7557,8 @@ msgid "Join a server or hosted game"
 msgstr "Koble opp til en vertsmaskin eller annet spill"
 
 #: src/game.cpp:1292
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "Nettverksspiller"
+msgstr "Vær vert for nettverksspill"
 
 #: src/game.cpp:1292
 msgid "Host a game without using a server"
@@ -7374,67 +7567,59 @@ msgstr "Vær vert for et spill uten server"
 #: src/game.cpp:1293
 #, fuzzy
 msgid "Hotseat Game"
-msgstr "Opprett Spill"
+msgstr "Populære spill"
 
 #: src/game.cpp:1293
 msgid "Play a multiplayer game sharing the same machine"
-msgstr ""
+msgstr "Spill et gruppespill med den samme datamaskinen"
 
 #: src/game.cpp:1294
-#, fuzzy
 msgid "Human vs AI"
-msgstr "Mennesker"
+msgstr "Mennesker mot datamaskin"
 
 #: src/game.cpp:1294
 msgid "Play a game against AI opponents"
-msgstr ""
+msgstr "Spill mot datamaskinen"
 
 #: src/game.cpp:1297 src/multiplayer.cpp:141
-#, fuzzy
 msgid "Login: "
-msgstr "Logg inn"
+msgstr "Logg inn: "
 
 #: src/game.cpp:1367
 msgid "Language"
 msgstr "Språk"
 
 #: src/game.cpp:1368
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Velg språket du foretrekker"
+msgstr "Velg språket du foretrekker:"
 
 #: src/game.cpp:1407
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
 #: src/game.cpp:1408
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Spillet er slutt."
+msgstr "' (Spillet vil nå avsluttes)"
 
 #: src/game.cpp:1475
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
 #: src/help.cpp:1028
-#, fuzzy
 msgid "Advances to: "
-msgstr "Forfremmes til"
+msgstr "Forfremmes til: "
 
 #: src/help.cpp:1049
-#, fuzzy
 msgid "Abilities: "
-msgstr "Egenskaper"
+msgstr "Egenskaper: "
 
 #: src/help.cpp:1068
 msgid "Alignment: "
-msgstr ""
+msgstr "Sinnelag: "
 
 #: src/help.cpp:1072
-#, fuzzy
 msgid "Required XP: "
-msgstr "Nødvendige EP"
+msgstr "Nødvendige EP: "
 
 #: src/help.cpp:1083 src/reports.cpp:235
 msgid "attacks"
@@ -7491,27 +7676,32 @@ msgstr "eller"
 #: src/help.cpp:1310
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
+"Dette terrenget blir betraktet som $terrains i forflyttnings- og "
+"forsvarsøyemed."
 
 #: src/help.cpp:1312
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr ""
+msgstr "Det terrenget som er mest fordelsaktig blir automatisk brukt."
 
 #: src/help.cpp:1316
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
+"Dette terrenget fungerer som hovedtårn. Du kan altså rekruttere enheter når "
+"lederen din befinner seg på dette terrenget."
 
 #: src/help.cpp:1318
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
+"Dette terrenget fungerer som en borg. Du kan altså rekruttere enheter på "
+"dette terrenget."
 
 #: src/help.cpp:1320
-#, fuzzy
 msgid "This terrain gives healing."
-msgstr "Denne terrengtypen helbreder"
+msgstr "Denne terrengtypen helbreder."
 
 #: src/help.cpp:2117
 msgid "< Back"
@@ -7550,39 +7740,32 @@ msgid "Map Generator"
 msgstr "Kartgenerator"
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Players:"
-msgstr "Spillere"
+msgstr "Spillere:"
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Width:"
-msgstr "Bredde"
+msgstr "Bredde:"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Height:"
-msgstr "Høyde"
+msgstr "Høyde:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Iterations:"
-msgstr "Gjentagelser"
+msgstr "Iterasjoner:"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Humpstørrelse"
+msgstr "Humpstørrelse:"
 
 #: src/mapgen_dialog.cpp:89
-#, fuzzy
 msgid "Villages:"
-msgstr "Landsbyer"
+msgstr "Landsbyer:"
 
 #: src/mapgen_dialog.cpp:90
-#, fuzzy
 msgid "Landform:"
-msgstr "Landfasong"
+msgstr "Landform:"
 
 #: src/mapgen_dialog.cpp:196
 msgid "Roads Between Castles"
@@ -7605,14 +7788,12 @@ msgid "Island"
 msgstr "Øy"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Connect to Host"
-msgstr "Fortsett forflytning"
+msgstr "Koble til vert"
 
 #: src/multiplayer.cpp:91
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Velg vert å koble til"
+msgstr "Velg vert å koble til: "
 
 #: src/multiplayer.cpp:116
 msgid "Connecting to remote host..."
@@ -7623,30 +7804,28 @@ msgid "You must log in to this server"
 msgstr "Du må logge inn på denne tjeneren"
 
 #: src/multiplayer_connect.cpp:265
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Tom rubrikk"
+msgstr "(Ledig plass)"
 
 #: src/multiplayer_connect.cpp:271
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anonym lokal spiller"
 
 #: src/multiplayer_connect.cpp:277
-#, fuzzy
 msgid "Computer player"
 msgstr "Datastyrt spiller"
 
 #: src/multiplayer_connect.cpp:280
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Tom plass)"
 
 #: src/multiplayer_connect.cpp:414
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Ingen forhåndsdefinerte grupper i denne epoken"
 
 #: src/multiplayer_connect.cpp:430
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Klarer ikke finne en passende leder for gruppen $faction"
 
 #: src/multiplayer_connect.cpp:444 src/multiplayer_connect.cpp:453
 msgid "Team"
@@ -7670,9 +7849,8 @@ msgid "Gold"
 msgstr "Gullstykker"
 
 #: src/multiplayer_connect.cpp:457
-#, fuzzy
 msgid "Computer vs Computer"
-msgstr " La datamaskinen spille mot seg selv "
+msgstr "Datamaskin mot datamaskin"
 
 #: src/multiplayer_connect.cpp:458
 msgid "I'm Ready"
@@ -7685,7 +7863,7 @@ msgstr "Avbryt"
 
 #: src/multiplayer_connect.cpp:474
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Scenarioet er ugyldig fordi det ikke har noen sider."
 
 #: src/multiplayer_connect.cpp:761
 msgid "Game Lobby"
@@ -7708,9 +7886,8 @@ msgid "Empty"
 msgstr "Tom(t)"
 
 #: src/multiplayer_connect.cpp:788
-#, fuzzy
 msgid "Era not available: "
-msgstr "Ingen mål tilgjengelig."
+msgstr "Epoke ikke tilgjengelig: "
 
 #: src/multiplayer_connect.cpp:823
 msgid "Red"
@@ -7754,7 +7931,7 @@ msgstr "Dette er ikke et lagret flerspiller-spill"
 
 #: src/multiplayer_connect.cpp:923
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Finner ikke epoke $era"
 
 #: src/multiplayer_connect.cpp:941
 msgid ""
@@ -7765,24 +7942,20 @@ msgstr ""
 "@Overvinn fiendens leder(e)"
 
 #: src/multiplayer_connect.cpp:977
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Venter på at spillere skal opprette forbindelse"
+msgstr "Venter på at spillere skal bli med ..."
 
 #: src/multiplayer_create.cpp:45
-#, fuzzy
 msgid "Name of game:"
-msgstr "Spillets navn"
+msgstr "Spillets navn:"
 
 #: src/multiplayer_create.cpp:47
-#, fuzzy
 msgid "Era:"
-msgstr "Æra"
+msgstr "Epoke:"
 
 #: src/multiplayer_create.cpp:48
-#, fuzzy
 msgid "Map to play:"
-msgstr "Kart å spille"
+msgstr "Kart å spille:"
 
 #: src/multiplayer_create.cpp:49
 msgid "Fog Of War"
@@ -7794,7 +7967,7 @@ msgstr "Observatører"
 
 #: src/multiplayer_create.cpp:53
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:54
 msgid "Regenerate"
@@ -7848,7 +8021,7 @@ msgstr "Ingen lag i flerspiller."
 
 #: src/multiplayer_create.cpp:122
 msgid "No eras found"
-msgstr ""
+msgstr "Ingen epoker funne"
 
 #: src/multiplayer_create.cpp:131
 msgid "$login's game"
@@ -7856,37 +8029,31 @@ msgstr "s spill"
 
 #: src/multiplayer_create.cpp:161
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Ugyldig epoke valgt"
 
 #: src/multiplayer_create.cpp:192
-#, fuzzy
 msgid "You must enter a name."
-msgstr "Du må ha minst"
+msgstr "Du må oppgi et navn."
 
 #: src/multiplayer_create.cpp:201
-#, fuzzy
 msgid "Turns: "
-msgstr "Runder"
+msgstr "Runder: "
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "Ubegrenset"
+msgstr "Ubegrenset antall runder"
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Gull fra landsbyer"
+msgstr "Gull fra landsbyer: "
 
 #: src/multiplayer_create.cpp:216
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Terrengmodifikasjoner"
+msgstr "Erfaringskrav: "
 
 #: src/multiplayer_create.cpp:319
-#, fuzzy
 msgid "Players: "
-msgstr "Spillere"
+msgstr "Spillere: "
 
 #: src/multiplayer_create.cpp:379 src/multiplayer_lobby.cpp:29
 msgid "Create Game"
@@ -7913,14 +8080,12 @@ msgid "<no games open>"
 msgstr ""
 
 #: src/multiplayer_wait.cpp:113
-#, fuzzy
 msgid "Leader: "
-msgstr "Leder"
+msgstr "Leder: "
 
 #: src/multiplayer_wait.cpp:115
-#, fuzzy
 msgid "Recruits: "
-msgstr "Rekrutter"
+msgstr "Rekrutter: "
 
 #: src/multiplayer_wait.cpp:148
 msgid "Waiting for game to start..."
@@ -7931,28 +8096,24 @@ msgid "Getting game data..."
 msgstr "Laster spilldata..."
 
 #: src/multiplayer_wait.cpp:180
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Det er ingen tilgjengelige sider i dette spillet."
+msgstr "Det er ingen tilgjengelige flerspillsider i dette spillet."
 
 #: src/multiplayer_wait.cpp:202
-#, fuzzy
 msgid "Era not available"
-msgstr "Ingen mål tilgjengelig."
+msgstr "Epoke ikke tilgjengelig"
 
 #: src/multiplayer_wait.cpp:210
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Ingen lag i flerspiller."
+msgstr "Ingen flerspillsider funnet"
 
 #: src/multiplayer_wait.cpp:230
 msgid "Choose your side:"
 msgstr "Velg side:"
 
 #: src/multiplayer_wait.cpp:398 src/playturn.cpp:1766
-#, fuzzy
 msgid "unit^Gold"
-msgstr "Gullstykker"
+msgstr "Gull"
 
 #: src/playlevel.cpp:574 src/playlevel.cpp:844
 msgid "The file you have tried to load is corrupt"
@@ -7975,33 +8136,28 @@ msgid "You have been defeated!"
 msgstr "Du har tapt!"
 
 #: src/playlevel.cpp:813
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Gjenværende gullstykker"
+msgstr "Gjenværende gull: "
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Tidlig ferdig bonus"
+msgstr "Tidlig ferdig bonus: "
 
 #: src/playlevel.cpp:818
 msgid "per turn"
 msgstr "for hver runde"
 
 #: src/playlevel.cpp:819
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Antall runder ferdig før tiden"
+msgstr "Antall runder ferdig før tiden: "
 
 #: src/playlevel.cpp:821
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:823
-#, fuzzy
 msgid "Gold: "
-msgstr "Gullstykker"
+msgstr "Gull: "
 
 #: src/playlevel.cpp:828
 #, no-c-format
@@ -8009,9 +8165,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% av gullet blir med videre til neste scenario"
 
 #: src/playlevel.cpp:829
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Beholdte gullstykker"
+msgstr "Beholdte gullstykker: "
 
 #: src/playlevel.cpp:834
 msgid "Victory"
@@ -8022,9 +8177,8 @@ msgid "You have emerged victorious!"
 msgstr "Du har vunnet!"
 
 #: src/playlevel.cpp:838
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Scenariestart"
+msgstr "Scenariorapport"
 
 #: src/playlevel.cpp:859
 msgid ""
@@ -8059,9 +8213,8 @@ msgid "Attack Enemy"
 msgstr "Angrip fiende"
 
 #: src/playturn.cpp:653
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Velg våpen"
+msgstr "Velg våpen:"
 
 #: src/playturn.cpp:1252
 msgid ""
@@ -8131,9 +8284,8 @@ msgid "Recruit"
 msgstr "Rekrutter"
 
 #: src/playturn.cpp:1785 src/playturn.cpp:1969
-#, fuzzy
 msgid "Select unit:"
-msgstr "Velg enhet"
+msgstr "Velg enhet:"
 
 #: src/playturn.cpp:1819
 msgid "You don't have enough gold to recruit that unit"
@@ -8164,7 +8316,6 @@ msgid "him"
 msgstr "ham"
 
 #: src/playturn.cpp:1925
-#, fuzzy
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Du er blitt skilt fra soldatene dine og kan ikke kalle dem tilbake"
 
@@ -8177,14 +8328,12 @@ msgstr ""
 "(Du må ha veterantropper som har overlevd tidligere scenarier)."
 
 #: src/playturn.cpp:1933
-#, fuzzy
 msgid "You must have at least $cost gold pieces to recall a unit"
-msgstr "gullstykker for å tilbakekalle en enhet."
+msgstr "Du må ha minst $cost gullstykker for å tilbakekalle en enhet"
 
 #: src/playturn.cpp:1943
-#, fuzzy
 msgid "level: "
-msgstr "nivå"
+msgstr "nivå: "
 
 #: src/playturn.cpp:1956
 msgid "Dismiss Unit"
@@ -8195,9 +8344,8 @@ msgid "Recall"
 msgstr "Tilbakekall"
 
 #: src/playturn.cpp:2013
-#, fuzzy
 msgid "Message:"
-msgstr "Beskjed"
+msgstr "Beskjed:"
 
 #: src/playturn.cpp:2013
 msgid "Send to allies only"
@@ -8241,15 +8389,16 @@ msgstr "Skade mottat"
 
 #: src/playturn.cpp:2226
 msgid "Damage Taken"
-msgstr "Skade utdelt"
+msgstr "Mottatt skade"
 
 #: src/playturn.cpp:2232
+#, fuzzy
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Utført skade (VV)"
 
 #: src/playturn.cpp:2239
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Mottatt skade (VV)"
 
 #: src/playturn.cpp:2245
 msgid "Statistics"
@@ -8261,7 +8410,7 @@ msgstr "Søk"
 
 #: src/playturn.cpp:2292
 msgid "prompt^Command:"
-msgstr ""
+msgstr "Kommando:"
 
 #: src/playturn.cpp:2303
 msgid "Chat Log"
@@ -8269,16 +8418,15 @@ msgstr "Pratelogg"
 
 #: src/playturn.cpp:2368
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Kunne ikke finne merkelapp elelr enhet som inneholdt '$search'."
+msgstr "Kunne ikke finne navn eller enhet som inneholdt '$search'."
 
 #: src/playturn.cpp:2476
 msgid "Place Label"
-msgstr "Sett merkelapp"
+msgstr "Sett ut navn"
 
 #: src/playturn.cpp:2477
-#, fuzzy
 msgid "Label:"
-msgstr "Merkelapp"
+msgstr "Namn:"
 
 #: src/playturn.cpp:2609
 msgid ""
@@ -8315,22 +8463,20 @@ msgstr ""
 "enheter."
 
 #: src/reports.cpp:107
-#, fuzzy
 msgid "invisible: "
-msgstr "usynlig"
+msgstr "usynlig: "
 
 #: src/reports.cpp:112
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
-"Denne enheten har blitt saktnet. Den kan bare bevege seg halvparten så langt "
-"som vanlig og har et angrep mindre enn normalt i kamp."
+"Denne enheten har blitt gjort treg. Den kan bare bevege seg halvparten så "
+"langt som vanlig og har et angrep mindre enn normalt i kamp."
 
 #: src/reports.cpp:112
-#, fuzzy
 msgid "slowed: "
-msgstr "saktnet"
+msgstr "treg: "
 
 #: src/reports.cpp:117
 msgid ""
@@ -8349,9 +8495,8 @@ msgstr ""
 "enn 1 LP."
 
 #: src/reports.cpp:117
-#, fuzzy
 msgid "poisoned: "
-msgstr "forgiftet"
+msgstr "forgiftet: "
 
 #: src/reports.cpp:124
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -8359,48 +8504,40 @@ msgstr ""
 "Denne enheten er blitt forsteinet. Den kan ikke bevege seg eller kjempe."
 
 #: src/reports.cpp:124
-#, fuzzy
 msgid "stone: "
-msgstr "stein"
+msgstr "forsteinet: "
 
 #: src/reports.cpp:234
 msgid "damage"
 msgstr "skade"
 
 #: src/reports.cpp:252
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Lovlydige enheter"
+msgstr "Lovlydige enheter: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Nøytrale enheter"
+msgstr "Nøytrale enheter: "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Kaotiske enheter"
+msgstr "Kaotiske enheter: "
 
 #: src/reports.cpp:309
-#, fuzzy
 msgid "Owned village"
-msgstr "Landsby"
+msgstr "Kontrollert landsby"
 
 #: src/reports.cpp:311
-#, fuzzy
 msgid "Enemy village"
-msgstr "Landsby"
+msgstr "Fiendtlig landsby"
 
 #: src/reports.cpp:313
-#, fuzzy
 msgid "Allied village"
-msgstr "Gnomisk Plyndrer"
+msgstr "Alliert by"
 
 #: src/reports.cpp:373
-#, fuzzy
 msgid "Observers:"
-msgstr "Observatører"
+msgstr "Observatører:"
 
 #: src/titlescreen.cpp:184
 msgid "TitleScreen button^Tutorial"
@@ -8460,7 +8597,7 @@ msgstr "Rediger innstillingene"
 
 #: src/titlescreen.cpp:198
 msgid "View the credits"
-msgstr "Se liste over medvirkende"
+msgstr "Se liste over bidragsytere"
 
 #: src/titlescreen.cpp:199
 msgid "Quit the game"
@@ -8472,7 +8609,7 @@ msgstr "Mer"
 
 #: src/titlescreen.cpp:240
 msgid "-- The Tome of Wesnoth"
-msgstr "-- Boken om Wesnoth"
+msgstr "-- Wesnoths krønike"
 
 #: src/unit_types.cpp:325
 msgid "strikes"
@@ -8488,494 +8625,4 @@ msgstr "lovlydig"
 
 #: src/unit_types.cpp:914
 msgid "neutral"
-msgstr "Nøytral"
-
-#~ msgid "Players"
-#~ msgstr "Spillere"
-
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Lag"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Runde"
-
-#, fuzzy
-#~ msgid "Load Game..."
-#~ msgstr "Last inn spill"
-
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#, fuzzy
-#~ msgid "Experience Requirements: "
-#~ msgstr "Erfaringskrav"
-
-#~ msgid "Warning"
-#~ msgstr "Advarsel"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Mottar spilliste..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Spillet er avlyst"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "Siden du har valgt er ikke lenger tilgjengelig."
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Vis reprise av spill frem til lagringspunkt?"
-
-#~ msgid "Waiting for network players to join"
-#~ msgstr "Venter på at nettverksspillere skal koble til"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "Help"
-#~ msgstr "Hjelp"
-
-#~ msgid "Delete File"
-#~ msgstr "Slett fil"
-
-#~ msgid "Deletion of the file failed."
-#~ msgstr "Filsletting slo feil."
-
-#, fuzzy
-#~ msgid "skirmisher,heals"
-#~ msgstr "speider"
-
-#, fuzzy
-#~ msgid "skirmisher,cures"
-#~ msgstr "speider"
-
-#~ msgid "hexes"
-#~ msgstr "ruter"
-
-#~ msgid "&random-enemy.png,Random"
-#~ msgstr "&random-enemy.png,Tilfeldig"
-
-#, fuzzy
-#~ msgid "&human-lieutenant.png,Loyalists"
-#~ msgstr "&human-general.png,Lojalister"
-
-#, fuzzy
-#~ msgid "&elvish-captain.png,Rebels"
-#~ msgstr "&elvish-lord.png,Opprørere"
-
-#, fuzzy
-#~ msgid "&orcish-warrior.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Nordboere"
-
-#, fuzzy
-#~ msgid "&undead-necromancer.png,Undead"
-#~ msgstr "&undead-lich.png,Vandøde"
-
-#, fuzzy
-#~ msgid "&dwarf-warrior.png,Knalgan Alliance"
-#~ msgstr ""
-#~ "&dwarf-lord.png,Den Knalgaiske Allianse (Knalgiske? Knalgas Allianse?)"
-
-#, fuzzy
-#~ msgid "&drake-flare.png,Drakes"
-#~ msgstr "&drake-warrior.png,Draker"
-
-#, fuzzy
-#~ msgid "&human-lieutenant.png,Humans"
-#~ msgstr "&human-general.png,Mennesker"
-
-#, fuzzy
-#~ msgid "&elvish-captain.png,Elves"
-#~ msgstr "&elvish-lord.png,Alver"
-
-#, fuzzy
-#~ msgid "&orcish-warrior.png,Orcs"
-#~ msgstr "&orcish-warlord.png,Orker"
-
-#, fuzzy
-#~ msgid "&dwarf-warrior.png,Dwarves"
-#~ msgstr "&dwarf-lord.png,Dverger"
-
-#~ msgid "&human-general.png,Loyalists"
-#~ msgstr "&human-general.png,Lojalister"
-
-#, fuzzy
-#~ msgid "&elvish-marshal.png,Rebels"
-#~ msgstr "&elvish-lord.png,Opprørere"
-
-#~ msgid "&orcish-warlord.png,Northerners"
-#~ msgstr "&orcish-warlord.png,Nordboere"
-
-#~ msgid "&undead-lich.png,Undead"
-#~ msgstr "&undead-lich.png,Vandøde"
-
-#~ msgid "&white-mage.png,Alliance of Light"
-#~ msgstr "&white-mage.png,Lysets Allianse"
-
-#~ msgid ""
-#~ "In Wesnoth, there are three types of damage usually associated with "
-#~ "physical attacks: Blade, Pierce and Impact damage. Additionally, there "
-#~ "are three further types of damage usually associated with magical "
-#~ "attacks: Fire, Cold and Holy attacks. Different units may have "
-#~ "resistances which alter the damage which they take from certain damage "
-#~ "types.\n"
-#~ "\n"
-#~ "Resistances work very simply: If a unit has 40% resistance against a "
-#~ "damage type, then they will suffer 40% less damage when hit with that "
-#~ "damage type. It is also possible for a unit to have weakness; if a unit "
-#~ "has -100% resistance against a damage type, it will suffer 100% more "
-#~ "damage when hit by that type. \n"
-#~ "\n"
-#~ "For example, Skeletons are highly resistant to Blade and Pierce damage, "
-#~ "but are vulnerable to Impact and Fire damage, and extremely vulnerable to "
-#~ "Holy damage."
-#~ msgstr ""
-#~ "I Wesnoth er det tre skadetyper som vanligvis forbindes med fysiske "
-#~ "angrep: klinge-, spidde- og slag- skade. I tillegg er det tre videre "
-#~ "typer som vanligvis forbindes med magiske angrep: ild, kulde og hellige "
-#~ "angrep. Forskjellige enheter kan ha motstand som endrer skaden de tar fra "
-#~ "visse typer angrep. \n"
-#~ "\n"
-#~ "Motstand er veldig enkelt: Om en enhet har 40% motstand mot en skadetype, "
-#~ "tar de 40% mindre skade når truffet av et angrep av den typen. Det er "
-#~ "også mulig for en enhet å være svak mot et angrep; hvis en enhet har -"
-#~ "100% motstand mot en skadetype, vil den ta dobbel skade når det angripes "
-#~ "av et angrep av den typen. \n"
-#~ "\n"
-#~ "For eksempel er Skjelettkrigere meget motstandsdyktige overfor klinge- og "
-#~ "spiddeangrep, men svake for slag- og ildangrep, og meget svake overfor "
-#~ "hellige angrep."
-
-#~ msgid ""
-#~ "These elite undead archers strike terror in the hearts of their foes by "
-#~ "using the bones of the slain as weapons."
-#~ msgstr ""
-#~ "Disse vandøde elitebueskytterne skyter knokler fra dem som er døde i kamp "
-#~ "på sine motstandere, ikke bare for å drepe dem, men også for å spre frykt "
-#~ "i deres hjerter."
-
-#~ msgid ""
-#~ "Wrapped in dark cloaks, the soul shooters roam the lands searching "
-#~ "targets for its bone arrows."
-#~ msgstr ""
-#~ "Inhyllet i mørke kapper streifer sjeleskytere omkring på jakt etter nye "
-#~ "mål for sine piler av beinsplinter."
-
-#~ msgid "bone"
-#~ msgstr "bein"
-
-#~ msgid "pistol"
-#~ msgstr "pistol"
-
-#~ msgid "Next tip"
-#~ msgstr "Neste tips"
-
-#~ msgid "Tip of the Day"
-#~ msgstr "Dagens tips"
-
-#~ msgid "Do not show tips"
-#~ msgstr "Ikke vis tips"
-
-#, fuzzy
-#~ msgid ""
-#~ "Riding a fast horse and armed with sword and a magical artifact, a "
-#~ "Dragoon make a versatile enemy."
-#~ msgstr ""
-#~ "Dragoner er mangesidige tropper. Væpnet med sverd og flintemundur-"
-#~ "pistoler vil deres raske hester bringe dem hvor som helst."
-
-#~ msgid "Could not initialize video. Exiting.\n"
-#~ msgstr "Kunne ikke sette opp video. Lukker. \n"
-
-#~ msgid "Could not initialize fonts. Exiting.\n"
-#~ msgstr "Kunne ikke sette opp skrifttyper. Lukker. \n"
-
-#~ msgid "Next unit"
-#~ msgstr "Neste enhet"
-
-#~ msgid "End Unit Turn"
-#~ msgstr "Avslutt enhetens tur"
-
-#~ msgid "Undo"
-#~ msgstr "Ta tilbake"
-
-#~ msgid "Redo"
-#~ msgstr "Gjør om"
-
-#~ msgid "Zoom In"
-#~ msgstr "Gå nærmere"
-
-#~ msgid "Zoom Out"
-#~ msgstr "Gå ut"
-
-#~ msgid "Default Zoom"
-#~ msgstr "Standardoppløsning"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Full skjerm"
-
-#~ msgid "Accelerated"
-#~ msgstr "Akselerert"
-
-#~ msgid "Unit Description"
-#~ msgstr "Enhetsbeskrivelse"
-
-#~ msgid "Repeat Recruit"
-#~ msgstr "Gjenta rekruttering"
-
-#~ msgid "Toggle Grid"
-#~ msgstr "Rutenett"
-
-#~ msgid "Status Table"
-#~ msgstr "Statustabell"
-
-#~ msgid "Mute"
-#~ msgstr "Stum"
-
-#~ msgid "Speak"
-#~ msgstr "Si"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "Lag enhet (Kun for testing!)"
-
-#~ msgid "Change Unit Side (Debug!)"
-#~ msgstr "Endre enhetens side (Kun for testing!)"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferanser"
-
-#~ msgid "Scenario Objectives"
-#~ msgstr "Scenariets mål"
-
-#~ msgid "Quit Game"
-#~ msgstr "Avslutt spill"
-
-#~ msgid "Set Label"
-#~ msgstr "Sett merkelapp"
-
-#~ msgid "Show Enemy Moves"
-#~ msgstr "Vis fiendens rekkevidde"
-
-#~ msgid "Best Possible Enemy Moves"
-#~ msgstr "Vis fiendens beste mulige rekkevidde"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Lukk kartbehandler"
-
-#~ msgid "New Map"
-#~ msgstr "Nytt kart"
-
-#~ msgid "Load Map"
-#~ msgstr "Last inn kart"
-
-#~ msgid "Save Map"
-#~ msgstr "Lagre kart"
-
-#~ msgid "Save As"
-#~ msgstr "Lagre som"
-
-#~ msgid "Set Player Start Position"
-#~ msgstr "Sett startposisjon for spiller"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Fyll"
-
-#~ msgid "Fill Selection"
-#~ msgstr "Fyll valgt"
-
-#~ msgid "Cut"
-#~ msgstr "Klipp ut"
-
-#~ msgid "Copy"
-#~ msgstr "Kopier"
-
-#~ msgid "Paste"
-#~ msgstr "Lim inn"
-
-#~ msgid "Resize Map"
-#~ msgstr "Endre kartets dimensjoner"
-
-#~ msgid "Flip Map"
-#~ msgstr "Speilvend kart"
-
-#~ msgid "Select All"
-#~ msgstr "Velg alt/alle"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Tegn terreng"
-
-#~ msgid "Delay Shroud Updates"
-#~ msgstr "Forsink skyggeoppdateringer"
-
-#~ msgid "Update Shroud Now"
-#~ msgstr "Oppdater skygge nå"
-
-#~ msgid "Continue Move"
-#~ msgstr "Fortsett forflytning"
-
-#~ msgid "Find Label or Unit"
-#~ msgstr "Finn merkelapp eller enhet"
-
-#~ msgid "Speak to Ally"
-#~ msgstr "Snakk med allierte"
-
-#~ msgid "Speak to All"
-#~ msgstr "Snakk med alle"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Se pratelogg"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Vil du virkelig avslutte?"
-
-#~ msgid "minimum damage"
-#~ msgstr "minimumsskade"
-
-#~ msgid "Game"
-#~ msgstr "Spill"
-
-#~ msgid "Scenario"
-#~ msgstr "Scenario"
-
-#~ msgid "Configure Sides:"
-#~ msgstr "Konfigurer Sider:"
-
-#~ msgid "Choose Team Settings:"
-#~ msgstr "Velg laginstillinger:"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr "Kunne ikke opprette forbindelse til ekstern vert"
-
-#~ msgid "Filled"
-#~ msgstr "Opptatt"
-
-#~ msgid "Available"
-#~ msgstr "Ledig"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "Observatør"
-
-#~ msgid "Describe Unit"
-#~ msgstr "Beskriv enhet"
-
-#~ msgid "Full Screen or Windowed?"
-#~ msgstr "Fullskjerm eller Vindu?"
-
-#~ msgid "Display:"
-#~ msgstr "Visning:"
-
-#~ msgid "Windowed"
-#~ msgstr "I vindu"
-
-#~ msgid "Speed:"
-#~ msgstr "Hastighet:"
-
-#~ msgid "Normal"
-#~ msgstr "Vanlig"
-
-#~ msgid "Sound Settings..."
-#~ msgstr "Lydinstillinger..."
-
-#~ msgid "Options"
-#~ msgstr "Innstillinger"
-
-#~ msgid "Choose Scenario"
-#~ msgstr "Velg scenario"
-
-#~ msgid "Unit resistance table"
-#~ msgstr "Motstandstabell"
-
-#~ msgid "See Also..."
-#~ msgstr "Se Også..."
-
-#, fuzzy
-#~ msgid "Swamp Water"
-#~ msgstr "Grunt vann"
-
-#, fuzzy
-#~ msgid "_description"
-#~ msgstr "Enhetsbeskrivelse"
-
-#~ msgid "first strike"
-#~ msgstr "første slag"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "Naga"
-#~ msgstr "Naga"
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Vert for flerspiller"
-
-#~ msgid "TitleScreen button^About"
-#~ msgstr "Om"
-
-#~ msgid "hp"
-#~ msgstr "lp"
-
-#~ msgid "xp"
-#~ msgstr "ep"
-
-#~ msgid ""
-#~ "Armed with heavy mace, Bandits are adept at robbing and killing at night."
-#~ msgstr ""
-#~ "Banditter bærer tunge stridklubber og er best skikket til ran om natten."
-
-#~ msgid "beak"
-#~ msgstr "nebb"
-
-#~ msgid "+Brazilian Translation"
-#~ msgstr "+Brasiliansk oversettelse"
-
-#~ msgid "Save"
-#~ msgstr "Lagre"
-
-#~ msgid "Quit?"
-#~ msgstr "Avslutt?"
-
-#~ msgid "Recruit unit"
-#~ msgstr "Rekrutter enhet"
-
-#~ msgid "Owned"
-#~ msgstr "Eid"
-
-#~ msgid "Enemy"
-#~ msgstr "Fiendtlige"
-
-#~ msgid "Allied"
-#~ msgstr "Allierte"
-
-#~ msgid "Heir to the Throne"
-#~ msgstr "Tronarvingen"
-
-#~ msgid ""
-#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-#~ "champion.png,Champion,(hardest)"
-#~ msgstr ""
-#~ "&elvish-fighter.png,Kriger,(lettest);*&elvish-hero.png,Helt;&elvish-"
-#~ "champion.png,Kampmester,(svært vanskelig)"
-
-#~ msgid ""
-#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-#~ "&undead-lich.png,Dark Lord,(hardest)"
-#~ msgstr ""
-#~ "&undead-initiate.png,Innvidd,(lettest);*&undead-necromancer.png,"
-#~ "Mørkemester;&undead-lich.png,Mørkets Herre,(vanskeligst)"
-
-#~ msgid "Son of the Black Eye (chapter I)"
-#~ msgstr "Den Sorte Øyes sønn (kapittel I)"
-
-#~ msgid ""
-#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-#~ "warlord.png,Warlord,(hardest)"
-#~ msgstr ""
-#~ "&orcish-grunt.png,Fotsoldat,(lettest);*&orcish-warrior.png,Kriger;&orcish-"
-#~ "warlord.png,Krigsherre,(vanskeligst)"
-
-#~ msgid "The Eastern Invasion"
-#~ msgstr "Den østlige invasjon"
-
-#~ msgid "The Rise of Wesnoth"
-#~ msgstr "Wesnoths Opprinnelse"
+msgstr "nøytral"
