@@ -309,8 +309,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 	const std::vector<std::string>& menu_items =
 	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
-	const std::vector<unit>& units =
-	   (units_ptr == NULL) ? std::vector<unit>() : *units_ptr;
+
+	const std::vector<unit> empty_units;
+	const std::vector<unit>& units = (units_ptr == NULL) ? empty_units : *units_ptr;
 
 	static const int message_font_size = 16;
 	static const int caption_font_size = 18;
@@ -632,8 +633,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 			cur_selection = menu_.selection();
 
 			int selection = cur_selection;
-			if(first_time)
+			if(selection < 0) {
 				selection = 0;
+			}
 
 			if(size_t(selection) < units.size()) {
 				draw_dialog_frame(unitx,unity,unitw,unith,disp);
@@ -683,7 +685,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 		for(std::vector<button>::iterator button_it = buttons.begin();
 		    button_it != buttons.end(); ++button_it) {
-			if(button_it->process(mousex,mousey,left_button)) {
+			if(button_it->pressed()) {
 				if(text_widget_text != NULL && use_textbox)
 					*text_widget_text = text_widget.text();
 
@@ -714,6 +716,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 				const dialog_button_action::RESULT res = (*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
 				if(res == dialog_button_action::DELETE_ITEM) {
+					first_time = true;
 					menu_.erase_item(menu_.selection());
 					if(menu_.nitems() == 0) {
 						return -1;

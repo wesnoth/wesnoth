@@ -1750,9 +1750,9 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//about it
 		std::string message = "";
 		if(u.type().level() > 1) {
-			message = "really_delete_veteran_unit";
+			message = string_table["really_delete_veteran_unit"];
 		} else if(u.experience() > u.max_experience()/2) {
-			message = "really_delete_xp_unit";
+			message = string_table["really_delete_xp_unit"];
 		}
 
 		if(message != "") {
