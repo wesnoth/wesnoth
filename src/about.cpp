@@ -240,8 +240,8 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Swedish Translation"),
 		"-   Alexander Kjäll (capitol)",
-		"-   Susanna Björverud (sanna)",
 		"-   Stefan Bergström (tephlon)",
+		"-   Susanna Björverud (sanna)",
 		"-   wint3r",
 		"+ ",
 		
