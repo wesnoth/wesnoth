@@ -622,26 +622,18 @@ void register_image(const image::locator& id, const surface& surf)
 
 bool exists(const image::locator& i_locator)
 {
-	bool ret=false;
-
-	if(i_locator.get_type() != image::locator::FILE && 
-			i_locator.get_type() != image::locator::SUB_FILE) 
+	typedef image::locator loc;
+	loc::type type = i_locator.get_type();
+	if (type != loc::FILE && type != loc::SUB_FILE) 
 		return false;
 
-	if(image_existance_map.find(i_locator) != image_existance_map.end())
-		return image_existance_map[i_locator];
-
-#ifdef USE_ZIPIOS
-	if(file_exists("images/" + i_locator.get_filename()))
-		ret = true;
-#else
-	if(get_binary_file_location("images",i_locator.get_filename()).empty() == false) {
-		ret = true;
-	}
-#endif
-	image_existance_map[i_locator] = ret;
-
-	return ret;
+	// the insertion will fail if there is already an element in the cache
+	std::pair< std::map< image::locator, bool >::iterator, bool >
+		it = image_existance_map.insert(std::make_pair(i_locator, false));
+	bool &cache = it.first->second;
+	if (it.second)
+		cache = !get_binary_file_location("images", i_locator.get_filename()).empty();
+	return cache;
 }
 
 surface getMinimap(int w, int h, const gamemap& map, const team* tm)
