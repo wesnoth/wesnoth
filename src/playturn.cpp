@@ -406,7 +406,39 @@ bool is_right_click(const SDL_MouseButtonEvent& event)
 	return event.button == SDL_BUTTON_RIGHT || event.button == SDL_BUTTON_LEFT && command_active();
 }
 
-}
+//which attack is the better one to select for the player by default
+//(the player can change the selected weapon if desired)
+class simple_attack_rating
+{
+public:
+	simple_attack_rating() : attacker_weapon_rating_(0), defender_weapon_rating_(0) {}
+
+	simple_attack_rating(const battle_stats& stats) : 
+		attacker_weapon_rating_(stats.chance_to_hit_defender *
+				stats.damage_defender_takes * stats.nattacks),
+		defender_weapon_rating_(stats.chance_to_hit_attacker *
+				stats.damage_attacker_takes * stats.ndefends) {}
+
+	bool operator<(const simple_attack_rating& a) const
+	{
+		//if our weapon does less damage, it's worse
+		if(attacker_weapon_rating_ < a.attacker_weapon_rating_)
+			return true;
+
+		//if both weapons are the same but 
+		//ours makes the enemy retaliate for more damage, it's worse
+		else if(attacker_weapon_rating_ == a.attacker_weapon_rating_ &&
+		   defender_weapon_rating_ > a.defender_weapon_rating_)
+			return true;
+
+		//otherwise, ours is at least as good a default weapon
+		return false;
+	}
+private:
+	int attacker_weapon_rating_, defender_weapon_rating_;
+};
+
+} //end anonymous namespace
 
 void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
@@ -544,7 +576,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	std::vector<int> attacks_in_range;
 
 	int best_weapon_index = -1;
-	int best_weapon_rating = 0;
+	simple_attack_rating best_weapon_rating;
 
 	attack_calculations_displayer::stats_vector stats;
 
@@ -559,13 +591,13 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 		                                        a, units_, status_, 0, &sts);
 		stats.push_back(sts);
 
-		int weapon_rating = st.chance_to_hit_defender * st.damage_defender_takes * st.nattacks;
-		
+		simple_attack_rating weapon_rating(st);
+
 		if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
 			best_weapon_index = items.size();
 			best_weapon_rating = weapon_rating;
 		}
-		
+
 		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 		//that the attacks line up nicely.
 		std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
