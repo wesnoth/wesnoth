@@ -531,7 +531,7 @@ void config::read(const std::string& data,
 	std::string var;
 	std::string value;
 
-	bool in_quotes = false, has_quotes = false, in_comment = false;
+	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false;
 
 	int line = 0;
 
@@ -642,12 +642,17 @@ void config::read(const std::string& data,
 					if(line_sources != NULL) {
 						const line_source src = get_line_source(*line_sources,line);
 						std::cerr << src.file << " " << src.fileline << ": ";
+					} else {
+						std::cerr << "line " << line << ": ";
 					}
 
 					std::cerr << "WARNING: square bracket found in string. Is this a run-away string?\n";
 				}
 				
-				if(c == '"') {
+				if(in_quotes && c == '"' && (i+1) != data.end() && *(i+1) == '"') {
+					push_back(value, c);
+					++i; // skip the next double-quote
+				} else if(c == '"') {
 					in_quotes = !in_quotes;
 					has_quotes = true;
 				} else if(c == '\n' && !in_quotes) {
@@ -692,9 +697,9 @@ void config::read(const std::string& data,
 					var = "";
 					value = "";
 					has_quotes = false;
+					escape_next = false;
 				} else if(in_quotes || !has_quotes) {
-					value.resize(value.size()+1);
-					value[value.size()-1] = c;
+					push_back(value, c);
 				}
 
 				break;
@@ -718,6 +723,17 @@ namespace {
 	const std::string EndElementPrefix = "[/";
 	const std::string EndElementPostfix = "]\n";
 	const std::string ConfigPostfix = "\n";
+
+std::string escaped_string(const std::string& value) {
+	std::vector<char> res;
+	for(std::string::const_iterator i = value.begin(); i != value.end(); ++i) {
+		//double interior quotes
+		if(*i == '\"') res.push_back(*i);
+		res.push_back(*i);
+	}
+	return std::string(res.begin(), res.end());
+}
+
 }
 
 size_t config::write_size(size_t tab) const
@@ -726,7 +742,7 @@ size_t config::write_size(size_t tab) const
 	for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 		if(i->second.empty() == false) {
 			res += i->first.size() + AttributeEquals.size() +
-			       i->second.size() + AttributePostfix.size() + tab;
+			       escaped_string(i->second).size() + AttributePostfix.size() + tab;
 		}
 	}
 
@@ -754,7 +770,8 @@ std::string::iterator config::write_internal(std::string::iterator out, size_t t
 
 			out = std::copy(i->first.begin(),i->first.end(),out);
 			out = std::copy(AttributeEquals.begin(),AttributeEquals.end(),out);
-			out = std::copy(i->second.begin(),i->second.end(),out);
+			std::string value = escaped_string(i->second);
+			out = std::copy(value.begin(),value.end(),out);
 			out = std::copy(AttributePostfix.begin(),AttributePostfix.end(),out);
 		}
 	}
