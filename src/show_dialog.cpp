@@ -354,7 +354,7 @@ int show_dialog(display& disp, surface image,
 	const bool use_textbox = text_widget_text != NULL;
 	const bool editable_textbox = use_textbox && std::find(text_widget_text->begin(),text_widget_text->end(),'\n') == text_widget_text->end();
 	static const std::string default_text_string = "";
-	const unsigned int text_box_width = 350;
+	const unsigned int text_box_width = font::relative_size(350);
 	textbox text_widget(screen,text_box_width,
 	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox, text_widget_max_chars);
 
@@ -376,11 +376,11 @@ int show_dialog(display& disp, surface image,
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 
-	const size_t left_padding = 10;
-	const size_t right_padding = 10;
-	const size_t image_h_padding = image != NULL ? 10 : 0;
-	const size_t top_padding = 10;
-	const size_t bottom_padding = 10;
+	const size_t left_padding = font::relative_size(10);
+	const size_t right_padding = font::relative_size(10);
+	const size_t image_h_padding = font::relative_size(image != NULL ? 10 : 0);
+	const size_t top_padding = font::relative_size(10);
+	const size_t bottom_padding = font::relative_size(10);
 
 	const std::string message = font::word_wrap_text(msg, message_font_size,
 			screen.getx() / 2,
@@ -413,14 +413,14 @@ int show_dialog(display& disp, surface image,
 
 		case YES_NO: {
 			static const char* thebuttons[] = { N_("Yes"),
-			                                          N_("No"), ""};
+							    N_("No"), ""};
 			button_list = thebuttons;
 			break;
 		}
 
 		case OK_CANCEL: {
 			static const char* thebuttons[] = { N_("Ok"),
-			                                          N_("Cancel"),""};
+							    N_("Cancel"),""};
 			button_list = thebuttons;
 			break;
 		}
@@ -500,7 +500,7 @@ int show_dialog(display& disp, surface image,
 		}
 	}
 
-	const int menu_hpadding = text_size.h > 0 && menu_.height() > 0 ? 10 : 0;
+	const int menu_hpadding = font::relative_size(text_size.h > 0 && menu_.height() > 0 ? 10 : 0);
 	const size_t padding_width = left_padding + right_padding + image_h_padding;
 	const size_t padding_height = top_padding + bottom_padding + menu_hpadding;
 	const size_t caption_width = caption_size.w;

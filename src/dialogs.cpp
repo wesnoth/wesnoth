@@ -736,12 +736,12 @@ void show_unit_description(display &disp, const unit& u)
 
 
 namespace {
-	static const int campaign_preview_border = 10;
+	static const int campaign_preview_border = font::relative_size(10);
 }
 
 campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
-	set_measurements(350, 400);
+	set_measurements(font::relative_size(350), font::relative_size(400));
 }
 
 bool campaign_preview_pane::show_above() const { return false; }
