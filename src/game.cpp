@@ -373,7 +373,7 @@ private:
 };
 
 game_controller::game_controller(int argc, char** argv, bool use_sound)
-   : argc_(argc), argv_(argv), arg_(1),
+   : argc_(argc), arg_(1), argv_(argv),
      sound_manager_(use_sound), test_mode_(false), multiplayer_mode_(false),
      no_gui_(false), use_caching_(true), force_bpp_(-1), disp_(NULL),
      loaded_game_show_replay_(false)
@@ -442,9 +442,13 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 display& game_controller::disp()
 {
 	if(disp_.get() == NULL) {
-		display::unit_map u_map;
-		config dummy_cfg("");
-		disp_.assign(new display(u_map,video_,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0), std::vector<team>(),dummy_cfg,dummy_cfg,dummy_cfg));
+		static display::unit_map dummy_umap;
+		static config dummy_cfg("");
+		static gamemap dummy_map(dummy_cfg, "1");
+		static gamestatus dummy_status(dummy_cfg, 0);
+		static std::vector<team> dummy_teams;
+		disp_.assign(new display(dummy_umap, video_, dummy_map, dummy_status,
+			dummy_teams, dummy_cfg, dummy_cfg, dummy_cfg));
 	}
 
 	return *disp_.get();
