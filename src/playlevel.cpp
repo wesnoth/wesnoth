@@ -477,44 +477,46 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 		if(first_player < 0 || first_player >= int(teams.size())) {
 			first_player = 0;
 		}
-		events::raise_draw_event();
-		gui.draw();
 		
+		events::raise_draw_event();
 		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
 			clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 		}
 		gui.recalculate_minimap();
+		gui.draw();
 		
-		events::raise_draw_event();
 		if(!loading_game) {
 			game_events::fire("prestart");
+			events::raise_draw_event();
+			gui.draw();
+			for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+				clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
+			}
+			gui.recalculate_minimap();
 		}
-		gui.draw();
 		
-		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-			clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
-		}
-		gui.recalculate_minimap();
 
 		std::deque<config> data_backlog;
 		
-		const hotkey::basic_handler key_events_handler(&gui);
-
-		LOG_NG << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
-		events::raise_draw_event();
-		if(!loading_game) {
-			game_events::fire("start");
-			game_events::set_variable("turn_number", "1");
-		}
-		gui.draw();
-
-		for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
-			clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
-		}
-		gui.recalculate_minimap();
-		
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks) << "\n";
 		for(bool first_time = true; true; first_time = false, first_player = 0) {
+			if(first_time) {
+				const hotkey::basic_handler key_events_handler(&gui);
+
+				LOG_NG << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
+				update_locker lock_display(gui.video(),recorder.skipping());
+				events::raise_draw_event();
+				if(!loading_game) {
+					game_events::fire("start");
+					game_events::set_variable("turn_number", "1");
+				}
+				gui.draw();
+
+				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
+					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
+				}
+				gui.recalculate_minimap();
+			}
 			player_number = 0;
 
 			gui.new_turn();
