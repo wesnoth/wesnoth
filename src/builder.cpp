@@ -70,6 +70,9 @@ terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
 const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap::location &loc,
 								   ADJACENT_TERRAIN_TYPE terrain_type) const 
 {
+	if(!tile_map_.on_map(loc))
+		return NULL;
+
 	if(terrain_type == ADJACENT_BACKGROUND) {
 		if(tile_map_[loc].images_background.size())
 			return &tile_map_[loc].images_background;
