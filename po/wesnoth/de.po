@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-08 23:04+0100\n"
-"PO-Revision-Date: 2005-02-05 15:38+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2005-02-09 00:09+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic@gmx.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1173,13 +1173,11 @@ msgid "flaming sword"
 msgstr "Flammenschwert"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Zepter des Feuers"
 
 # Korrigiert von chrber
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -1190,7 +1188,6 @@ msgstr ""
 "Feuerbälle auf seine Feinde zu feuern."
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
@@ -1557,7 +1554,6 @@ msgstr ""
 "Magier und könnt mich sicherlich in der Kunst des Kampfes unterweisen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:51
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1592,7 +1588,6 @@ msgstr "Wie bilde ich Einheiten aus?"
 
 # Korrigiert von chrber
 #: data/scenarios/tutorial/Basic_Training.cfg:63
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1979,7 +1974,6 @@ msgstr "Was passiert, wenn eine Einheit auf ein Dorf zieht?"
 
 # Korrigiert von chrber
 #: data/scenarios/tutorial/Basic_Training.cfg:192
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -2010,7 +2004,6 @@ msgstr ""
 
 # Korrigiert von chrber
 #: data/scenarios/tutorial/Basic_Training.cfg:193
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -2086,7 +2079,6 @@ msgstr ""
 "mir das immer sagen?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2123,7 +2115,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "Möchtest Ihr die Kennisse, die in diesem Level vermittelt werden, anschauen?"
@@ -2162,7 +2153,6 @@ msgstr ""
 "Testkampf besiegen."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2219,7 +2209,6 @@ msgstr "Ihr habt euren Elfenkrieger erfolgreich einberufen."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
-#, fuzzy
 msgid "En garde!"
 msgstr "En garde!"
 
@@ -2344,7 +2333,6 @@ msgid "How do I get gold?"
 msgstr "Wie komme ich zu Gold?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2416,7 +2404,6 @@ msgstr ""
 "Eigenschaften verleiht."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2434,9 +2421,9 @@ msgstr ""
 "verbraucht, wenn sie sich auf ein ein Feld eines Geländetyps bewegt, und zum "
 "Zweiten der Verteidigungswert einer Einheit, wenn sie auf einem Feld eines "
 "Geländetyps steht. Der Verteidigungswert ist ein Prozentsatz, der die "
-"Trefferwahrscheinlichkeit für angreifende Einheiten festlegt. Elfen haben "
-"zum beispiel auf Grasland einen Verteidigungswert von 70%, und somit treffen "
-"Angreifer in 30% aller Fälle."
+"Trefferwahrscheinlichkeit für angreifende Einheiten festlegt. Viele Elfen "
+"haben zum Beispiel in Wäldern einen Verteidigungswert von 70%, und somit "
+"treffen Angreifer in 30% aller Fälle."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:136
 msgid "What are the different properties that terrains have?"
@@ -2627,7 +2614,6 @@ msgid "How long do these objects last?"
 msgstr "Wie lange wirken diese Objekte?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -4468,7 +4454,6 @@ msgid "Cuttle Fish"
 msgstr "Tintenfisch"
 
 #: data/units/Cuttle_Fish.cfg:16
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -4822,7 +4807,6 @@ msgstr "Drake Gleiter"
 
 # edited by ivanovic
 #: data/units/Drake_Glider.cfg:19
-#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
@@ -4982,7 +4966,6 @@ msgid "Dwarvish Dragonguard"
 msgstr "Zwergen Drachenwächter"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
-#, fuzzy
 msgid ""
 "The guardians of the great dwarvish cities, they blast at their enemies "
 "using fire from what are called dragonstaves. They are the chief possessors "
@@ -5023,7 +5006,6 @@ msgid "Dwarvish Guardsman"
 msgstr "Zwergen Gardist"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
-#, fuzzy
 msgid ""
 "The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
@@ -6766,7 +6748,6 @@ msgid "Orcish Crossbowman"
 msgstr "Orkarmbruster"
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
@@ -7086,7 +7067,6 @@ msgid "Pirate Galleon"
 msgstr "Piratengalleone"
 
 #: data/units/Pirate_Galleon.cfg:14
-#, fuzzy
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
@@ -7274,7 +7254,6 @@ msgid "Saurian Skirmisher"
 msgstr "Saurianischer Plänkler"
 
 #: data/units/Saurian_Skirmisher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7292,7 +7271,6 @@ msgid "Saurian Soothsayer"
 msgstr "Saurianischer Wahrsager"
 
 #: data/units/Saurian_Soothsayer.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -7307,7 +7285,6 @@ msgid "Saurian Tribalist"
 msgstr "Saurianischer Tribalist"
 
 #: data/units/Saurian_Tribalist.cfg:18
-#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
 "Saurian Tribalists are valued as healers because they can provide aid to "
@@ -7762,7 +7739,6 @@ msgid "female^Vampire Lady"
 msgstr "Vampirin"
 
 #: data/units/Vampire_Lady.cfg:17
-#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -9596,7 +9572,3 @@ msgstr "Datei löschen"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Das Löschen der Datei ist fehlgeschlagen."
-
-# Korrigiert von chrber
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Zieht Euren Kämpfer auf ein Dorf."
