@@ -4,6 +4,7 @@ CVS HEAD:
  * new units
    * Drake Hatchling
  * multiplayer improvements:
+   * 'Great War' era
    * limit to username lenght
    * banning for multiplayer server games
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
@@ -18,7 +19,8 @@ CVS HEAD:
  * fixed autoconf macro for checking OGG support in SDL_mixer (it depended on private symbols not always included by distributions)
  * fixed game segfaulting when a message with no speaker is issued
  * fixed markovian name generation not playing well with UTF-8 names
- * fixed map border not getting changed when using [terrain] to change terrain
+ * fixed map border not getting changed when using [terrain] to change terrain (#9840)
+ * fixed extraneous dots path (#9903)
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * dummy config.h file for platforms where ./configure is not used
