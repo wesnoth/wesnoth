@@ -355,7 +355,9 @@ void menu::draw_item(int item)
 			}
 
 		} else {
-			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,rect.y);
+			const SDL_Rect& text_size = font::draw_text(NULL,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,rect.y);
+			const size_t y = rect.y + (rect.h - text_size.h)/2;
+			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,y);
 		}
 		xpos += widths[i];
 	}

@@ -483,7 +483,6 @@ void show_preferences_dialog(display& disp)
 	side_colours_button.set_x(slider_left + fullscreen_button.width() + 100);
 	side_colours_button.set_y(sound_pos + 80 + 100);
 
-
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
 	hotkeys_button.set_x(slider_left + fullscreen_button.width() + 100);
 	hotkeys_button.set_y(sound_pos + 80 + 150);

@@ -1067,7 +1067,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
 		//which case we should stop immediately.
 		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
-			if(units.count(*step) == 0) {
+			if(units.count(*step) == 0 && map.underlying_terrain(map.get_terrain(*step)) != gamemap::TOWER) {
 				units.insert(std::pair<gamemap::location,unit>(*step,ui->second));
 				const bool res = clear_shroud_unit(map,gamedata,units,*step,teams,
 				                                   ui->second.side()-1,&seen_units);
