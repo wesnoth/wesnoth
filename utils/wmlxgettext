@@ -28,6 +28,10 @@ foreach my $file (@ARGV) {
       push @{$messages{raw2postring($2)}}, "$file:$."
 	if ($1 ne ''); # ie. translatable
 
+      # process remaining of the line
+      $_ = $3;
+      redo LINE;
+
     } elsif (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\s*\"([^\"]*)/) {
       # start of multi-line
 
@@ -44,6 +48,10 @@ foreach my $file (@ARGV) {
       push @{$messages{"\"\"\n" . raw2postring($str)}}, "$file:$."
 	if $translatable;
       $str = undef;
+
+      # process remaining of the line
+      $_ = $2;
+      redo LINE;
 
     } elsif (defined $str) {
       # part of multi-line
