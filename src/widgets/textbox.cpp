@@ -51,7 +51,7 @@ const std::string& textbox::text() const
 
 void textbox::clear()
 {
-	text_.clear();
+	text_ = "";
 	cursor_ = 0;
 	firstOnScreen_ = 0;
 }
