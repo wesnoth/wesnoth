@@ -306,8 +306,17 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			const unit_map::const_iterator un = units_.find(selected_hex_);
-			
+			unit_map::const_iterator un = units_.find(selected_hex_);
+
+			//deselect the unit if it's an invisible enemy
+			if(un != units_.end()){
+				if(current_team.is_enemy(un->second.side()) &&
+						un->second.invisible(map_.underlying_terrain(map_[un->first.x][un->first.y]),
+						status_.get_time_of_day().lawful_bonus,un->first,units_,teams_)) {
+					un = units_.end();
+				}
+			}
+
 			if(un != units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    units_,map_);
@@ -333,7 +342,16 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 			}
 		}
 
-		const unit_map::iterator un = units_.find(new_hex);
+		unit_map::iterator un = units_.find(new_hex);
+
+		//deselect the unit if it's an invisible enemy
+		if(un != units_.end()){
+			if(current_team.is_enemy(un->second.side()) &&
+					un->second.invisible(map_.underlying_terrain(map_[un->first.x][un->first.y]),
+					status_.get_time_of_day().lawful_bonus,un->first,units_,teams_)) {
+				un = units_.end();
+			}
+		}
 
 		if(un != units_.end() && un->second.side() != team_num_ &&
 		   current_paths_.routes.empty() && !gui_.fogged(un->first.x,un->first.y)) {
