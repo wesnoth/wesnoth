@@ -64,7 +64,12 @@ public:
 	bool map_data_set() const;
 
 	void add_starting_location(const int old_side, const int new_side,
-							   const gamemap::location &loc);
+							   const gamemap::location &old_loc,
+							   const gamemap::location &new_loc);
+	
+	/// Return true if starting locations have been saved in this undo
+	/// action.
+	bool starting_location_set() const;
 
 private:
 	std::map<gamemap::location,gamemap::TERRAIN> old_terrain_;

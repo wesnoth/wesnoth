@@ -95,10 +95,15 @@ bool map_undo_action::map_data_set() const {
 }
 
 void map_undo_action::add_starting_location(const int old_side, const int new_side,
-											const gamemap::location &loc) {
-	old_starting_locations_[loc] = old_side;
-	new_starting_locations_[loc] = new_side;
+											const gamemap::location &old_loc,
+											const gamemap::location &new_loc) {
+	old_starting_locations_[old_loc] = old_side;
+	new_starting_locations_[new_loc] = new_side;
 	starting_locations_set_ = true;
+}
+
+bool map_undo_action::starting_location_set() const {
+	return starting_locations_set_;
 }
 
 void add_undo_action(const map_undo_action &action) {

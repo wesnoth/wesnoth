@@ -50,8 +50,9 @@ CVS HEAD:
  * editor improvements:
    * added map resizing
    * added revert from disk functionality
-   * selection of terrain is kep through undo and redo operations
+   * selection of terrain is kept through undo and redo operations
    * preferences dialog
+   * setting and removal of starting positions are now undoable operations
    * fixed name of the currently selected terrain not being displayed
    * fixed compile problems on some architectures
  * fixed 'show enemy moves' and 'best possible enemy moves' showing in context menu when no enemies visible

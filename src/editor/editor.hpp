@@ -198,10 +198,17 @@ private:
 	/// highlighted.
 	void highlight_selected_hexes(const bool clear_old=true);
 
-	/// If a starting position is at the specified hex, unset it if
-	/// something else than a keep is the terrain at the hex. Save the
-	/// starting position change in undo_action.
-	void terrain_changed(const gamemap::location &hex);
+	/// Terrain has changed at the specified hex. If the hex was a
+	/// starting position, remove this position. Save additional
+	/// information in the undo_action and invalidate the hex and the
+	/// adjacent ones.
+	void terrain_changed(const gamemap::location &hex,
+						 map_undo_action &undo_action);
+	void terrain_changed(const std::vector<gamemap::location> &hexes,
+						 map_undo_action &undo_action);
+	void terrain_changed(const std::set<gamemap::location> &hexes,
+						 map_undo_action &undo_action);
+	
 
 	/// Save an action so that it may be undone. Add an operation to the
 	/// number done since save.
