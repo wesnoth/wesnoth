@@ -449,6 +449,8 @@ int show_dialog(display& disp, surface image,
 
 	menu menu_(disp,menu_items,type == MESSAGE);
 
+	menu_.set_numeric_keypress_selection(use_textbox == false);
+
 #ifdef USE_TINY_GUI
 	const int max_line_length = 30;
 #else

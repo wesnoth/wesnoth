@@ -23,15 +23,114 @@
 #include <sstream>
 
 namespace {
-	int xscale(display& disp, int x)
-	{
-		return (x*disp.x())/1024;
+int xscale(display& disp, int x)
+{
+	return (x*disp.x())/1024;
+}
+
+int yscale(display& disp, int y)
+{
+	return (y*disp.y())/768;
+}
+
+const config* generate_game_options(const config& terrain_data, const config& game_data, int& game_selection,
+					 	            std::vector<std::string>& options, std::vector<bool>& game_vacant_slots, std::vector<bool>& game_observers)
+{
+	const config* const gamelist = game_data.child("gamelist");
+
+	// Game List GUI
+	if(gamelist == NULL) {
+		return gamelist;
 	}
 
-	int yscale(display& disp, int y)
-	{
-		return (y*disp.y())/768;
+	options.clear();
+	game_vacant_slots.clear();
+	game_observers.clear();
+
+	config::const_child_itors i;
+	for(i = gamelist->child_range("game"); i.first != i.second; ++i.first) {
+
+		std::cerr << "game data here:" << (**i.first).write() << "end game data here\n";
+
+		std::stringstream str;
+
+		//if this is the item that should be selected, make it selected by default
+		if(game_selection-- == 0) {
+			str << DEFAULT_ITEM;
+		}
+
+		std::string map_data = (**i.first)["map_data"];
+		if(map_data == "") {
+			map_data = read_map((**i.first)["map"]);
+		}
+
+		if(map_data != "") {
+			try {
+				gamemap map(terrain_data,map_data);
+				const surface mini(image::getMinimap(100,100,map,0));
+
+				//generate a unique id to show the map as
+				char buf[50];
+				sprintf(buf,"addr %p", (SDL_Surface*)mini);
+
+				image::register_image(buf,mini);
+
+				str << IMAGE_PREFIX << buf << COLUMN_SEPARATOR;
+			} catch(gamemap::incorrect_format_exception& e) {
+				std::cerr << "illegal map: " << e.msg_ << "\n";
+			}
+		} else {
+			str << '(' << _("Shroud") << ')' << COLUMN_SEPARATOR;
+		}
+
+		std::string name = (**i.first)["name"];
+		if(name.size() > 30)
+			name.resize(30);
+
+		str << name;
+
+		const std::string& turn = (**i.first)["turn"];
+		const std::string& slots = (**i.first)["slots"];
+		if (!turn.empty()) {
+			str << COLUMN_SEPARATOR << _("Turn") << ' ' << turn;
+		} else if(!slots.empty()) {
+			str << COLUMN_SEPARATOR << slots << ' '
+			    << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
+		}
+
+		options.push_back(str.str());
+		game_vacant_slots.push_back(slots != "" && slots != "0");
+		game_observers.push_back((**i.first)["observer"] != "no");
 	}
+
+	return gamelist;
+}
+
+void generate_user_list(const config& game_data, std::vector<std::string>& users, int& user_selection)
+{
+	users.clear();
+
+	for(config::const_child_itors i = game_data.child_range("user"); i.first != i.second; ++i.first) {
+		std::string name = (**i.first)["name"];
+		if(name.size() > 30)
+			name.resize(30);
+
+		const std::string avail = (**i.first)["available"];
+
+		//display unavailable players in red
+		if(avail == "no") {
+			name.insert(name.begin(),'#');
+		}
+
+		//if this user should be selected
+		if(user_selection-- == 0) {
+			name.insert(name.begin(), DEFAULT_ITEM);
+		}
+
+		users.push_back(name);
+	}
+}
+
 }
 
 namespace lobby {
@@ -88,74 +187,17 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		std::vector<std::string> options;
 		std::vector<bool> game_vacant_slots, game_observers;
 
-		const config* const gamelist = game_data.child("gamelist");
+		const config* gamelist = NULL;
 
 		if(dlg == NULL) {
-			// Game List GUI
+			gamelist = generate_game_options(terrain_data,game_data,game_selection,options,game_vacant_slots,game_observers);
 			if(gamelist == NULL) {
 				std::cerr << "ERROR: could not find gamelist\n";
 				return QUIT;
 			}
-	
-			config::const_child_itors i;
-			for(i = gamelist->child_range("game"); i.first != i.second; ++i.first) {
-	
-				std::cerr << "game data here:" << (**i.first).write() << "end game data here\n";
-	
-				std::stringstream str;
-	
-				//if this is the item that should be selected, make it selected by default
-				if(game_selection-- == 0) {
-					str << DEFAULT_ITEM;
-				}
-	
-				std::string map_data = (**i.first)["map_data"];
-				if(map_data == "") {
-					map_data = read_map((**i.first)["map"]);
-				}
-	
-				if(map_data != "") {
-					try {
-						gamemap map(terrain_data,map_data);
-						const surface mini(image::getMinimap(100,100,map,0));
-	
-						//generate a unique id to show the map as
-						char buf[50];
-						sprintf(buf,"addr %p", (SDL_Surface*)mini);
-	
-						image::register_image(buf,mini);
-	
-						str << IMAGE_PREFIX << buf << COLUMN_SEPARATOR;
-					} catch(gamemap::incorrect_format_exception& e) {
-						std::cerr << "illegal map: " << e.msg_ << "\n";
-					}
-				} else {
-					str << '(' << _("Shroud") << ')' << COLUMN_SEPARATOR;
-				}
-	
-				std::string name = (**i.first)["name"];
-				if(name.size() > 30)
-					name.resize(30);
-	
-				str << name;
-	
-				const std::string& turn = (**i.first)["turn"];
-				const std::string& slots = (**i.first)["slots"];
-				if (!turn.empty()) {
-					str << COLUMN_SEPARATOR << _("Turn") << ' ' << turn;
-				} else if(!slots.empty()) {
-					str << COLUMN_SEPARATOR << slots << ' '
-					    << gettext(slots == "1" ? N_("Vacant Slot") : N_("Vacant Slots"));
-				}
-	
-				options.push_back(str.str());
-				game_vacant_slots.push_back(slots != "" && slots != "0");
-				game_observers.push_back((**i.first)["observer"] != "no");
-			}
 		}
 
-		const bool games_available = dlg == NULL && options.empty() == false;
-		if(!games_available) {
+		if(dlg == NULL && options.empty()) {
 			options.push_back(_("<no games open>"));
 		}
 
@@ -183,25 +225,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 		
 		std::vector<std::string> users;
-		for(config::const_child_itors i = game_data.child_range("user"); i.first != i.second; ++i.first) {
-			std::string name = (**i.first)["name"];
-			if(name.size() > 30)
-				name.resize(30);
 
-			const std::string avail = (**i.first)["available"];
-
-			//display unavailable players in red
-			if(avail == "no") {
-				name.insert(name.begin(),'#');
-			}
-
-			//if this user should be selected
-			if(user_selection-- == 0) {
-				name.insert(name.begin(), DEFAULT_ITEM);
-			}
-
-			users.push_back(name);
-		}
+		generate_user_list(game_data,users,user_selection);
 
 		if(users.empty()) {
 			users.push_back(preferences::login());
@@ -215,6 +240,9 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		}
 
 		gui::menu users_menu(disp,users);
+
+		games_menu.set_numeric_keypress_selection(false);
+		users_menu.set_numeric_keypress_selection(false);
 
 		// Set GUI locations
 		users_menu.set_width(xscale(disp,156));
@@ -284,7 +312,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			}
 
 			users_menu.process();
-			 
+			
+			const bool games_available = game_vacant_slots.empty() == false;
 			const bool double_click = games_menu.double_clicked();
 			const bool observe = observe_game.pressed() || !games_available && double_click;
 			if(games_available && (observe || join_game.pressed() || double_click)) {
@@ -364,16 +393,37 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 					game_data = data;
 					break;
 				} else if(data.child("gamelist_diff")) {
+					const config old_gamelist = game_data.child("gamelist") != NULL ? *game_data.child("gamelist") : config();
+
 					const int old_users = game_data.get_children("user").size();
 					game_data.apply_diff(*data.child("gamelist_diff"));
 					const int new_users = game_data.get_children("user").size();
+
+					const config new_gamelist = game_data.child("gamelist") != NULL ? *game_data.child("gamelist") : config();
 					if(new_users < old_users) {
 						sound::play_sound(game_config::sounds::user_leave);
 					} else if(new_users > old_users) {
 						sound::play_sound(game_config::sounds::user_arrive);
 					}
 
-					break;
+					generate_user_list(game_data,users,user_selection);
+					users_menu.set_items(users);
+
+					gamelist = game_data.child("gamelist");
+					if(gamelist == NULL) {
+						std::cerr << "ERROR: could not find game list\n";
+						return QUIT;
+					}
+
+					if(dlg == NULL && *gamelist != old_gamelist) {
+						generate_game_options(terrain_data,game_data,game_selection,options,game_vacant_slots,game_observers);
+					}
+
+					if(dlg == NULL && options.empty()) {
+						options.push_back(_("<no games open>"));
+					}
+
+					games_menu.set_items(options);
 				} else if(data.child("error")) {
 					throw network::error((*data.child("error"))["message"]);
 				} else if(data.child("message")) {

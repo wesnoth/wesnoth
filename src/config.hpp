@@ -133,6 +133,7 @@ public:
 	const config* child(const std::string& key) const;
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
+	config& add_child_at(const std::string& key, const config& val, size_t index);
 	std::string& operator[](const std::string& key);
 	const std::string& operator[](const std::string& key) const;
 

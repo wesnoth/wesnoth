@@ -1116,6 +1116,36 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
+config& config::add_child_at(const std::string& key, const config& val, size_t index)
+{
+	child_list& v = children[key];
+	if(index > v.size()) {
+		throw error("illegal index to add child at");
+	}
+
+	v.insert(v.begin()+index,new config(val));
+
+	bool inserted = false;
+
+	const child_pos value(children.find(key),index);
+
+	std::vector<child_pos>::iterator ord = ordered_children.begin();
+	for(; ord != ordered_children.end(); ++ord) {
+		if(!inserted && ord->index == index && ord->pos->first == key) {
+			ord = ordered_children.insert(ord,value);
+			inserted = true;
+		} else if(ord->index >= index && ord->pos->first == key) {
+			ord->index++;
+		}
+	}
+
+	if(!inserted) {
+		ordered_children.push_back(value);
+	}
+
+	return *v[index];
+}
+
 struct remove_ordered {
 	remove_ordered(const std::string& key) : key_(key) {}
 
@@ -1632,17 +1662,7 @@ void config::apply_diff(const config& diff)
 		const size_t index = atoi((**i)["index"].c_str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
-
-			if(item.first->empty()) {
-				continue;
-			}
-
-			child_list& v = children[*item.first];
-			if(index > v.size()) {
-				throw error("error in diff: could not find element '" + *item.first + "'");
-			}
-
-			v.insert(v.begin()+index,new config(*item.second));
+			add_child_at(*item.first,*item.second,index);
 		}
 	}
 
@@ -1652,17 +1672,7 @@ void config::apply_diff(const config& diff)
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
 
-			if(item.first->empty()) {
-				continue;
-			}
-
-			const child_map::iterator itor = children.find(*item.first);
-			if(itor == children.end() || index > itor->second.size()) {
-				throw error("error in diff: could not find element '" + *item.first + "'");
-			}
-
-			delete *(itor->second.begin()+index);
-			itor->second.erase(itor->second.begin()+index);
+			remove_child(*item.first,index);
 		}
 	}
 }
