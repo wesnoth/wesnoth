@@ -186,6 +186,14 @@ private:
 
 	void show_attack_options(unit_map::const_iterator u);
 
+	//function which, given the location of a potential enemy to attack, will return the location
+	//that the currently selected unit would move to and attack it from this turn. Returns an
+	//invalid location if not possible.
+	gamemap::location current_unit_attacks_from(const gamemap::location& loc) const;
+
+	bool attack_enemy(unit_map::iterator attacker, unit_map::iterator defender);
+	bool move_unit_along_current_route(bool check_shroud=true);
+
 	bool clear_shroud();
 	void clear_undo_stack();
 	

@@ -1575,7 +1575,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  unit_map& units, std::vector<team>& teams,
                  std::vector<gamemap::location> route,
                  replay* move_recorder, undo_list* undo_stack,
-                 gamemap::location *next_unit, bool continue_move)
+                 gamemap::location *next_unit, bool continue_move, bool should_clear_shroud)
 {
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
@@ -1595,7 +1595,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	const bool skirmisher = u.type().is_skirmisher();
 
 	team& team = teams[team_num];
-	const bool check_shroud = team.auto_shroud_updates() &&
+	const bool check_shroud = should_clear_shroud && team.auto_shroud_updates() &&
 		(team.uses_shroud() || team.uses_fog());
 	
 	//if we use shroud/fog of war, count out the units we can currently see

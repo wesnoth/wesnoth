@@ -300,7 +300,14 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 		const unit_map::const_iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::const_iterator mouseover_unit = find_unit(new_hex);
-		if(selected_unit != units_.end() && current_paths_.routes.count(new_hex)) {
+
+		gamemap::location attack_from;
+		if(selected_unit != units_.end() && mouseover_unit != units_.end()) {
+			attack_from = current_unit_attacks_from(new_hex);
+		}
+
+		if(selected_unit != units_.end() && (current_paths_.routes.count(new_hex) ||
+		                                     attack_from.valid())) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
 			} else if(current_team.is_enemy(mouseover_unit->second.side())) {
@@ -321,12 +328,14 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		if(new_hex == selected_hex_) {
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
-		} else if(!enemy_paths_ && new_hex != last_hex_ &&
+		} else if(new_hex != last_hex_ &&
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
+			const gamemap::location& dest = attack_from.valid() ? attack_from : new_hex;
+
 			unit_map::const_iterator un = find_unit(selected_hex_);
-			const unit_map::const_iterator dest_un = find_unit(new_hex);
+			const unit_map::const_iterator dest_un = find_unit(dest);
 
 			if(un != units_.end() && dest_un == units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
@@ -343,7 +352,7 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 						allowed_teleports.insert(un->first);
 				}
 
-				current_route_ = a_star_search(selected_hex_,new_hex,
+				current_route_ = a_star_search(selected_hex_,dest,
 				                               10000.0,calc,teleports);
 
 				current_route_.move_left = route_turns_to_complete(un->second,map_,current_route_);
@@ -521,13 +530,213 @@ gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(
 
 }
 
+bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender)
+{
+	//we must get locations by value instead of by references, because the iterators
+	//may become invalidated later
+	const gamemap::location attacker_loc = attacker->first;
+	const gamemap::location defender_loc = defender->first;
+
+	const std::vector<attack_type>& attacks = attacker->second.attacks();
+	std::vector<std::string> items;
+
+	const int range = distance_between(attacker->first,defender->first);
+	std::vector<int> attacks_in_range;
+
+	int best_weapon_index = -1;
+	int best_weapon_rating = 0;
+
+	std::vector<battle_stats> stats;
+
+	for(size_t a = 0; a != attacks.size(); ++a) {
+		if(attacks[a].hexes() < range)
+			continue;
+
+		attacks_in_range.push_back(a);
+
+		stats.push_back(evaluate_battle_stats(map_, attacker_loc, defender_loc,
+		                                      a, units_, status_));
+
+		int weapon_rating = stats.back().chance_to_hit_defender *
+		                stats.back().damage_defender_takes * stats.back().nattacks;
+		
+		if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
+			best_weapon_index = items.size();
+			best_weapon_rating = weapon_rating;
+		}
+		
+		const battle_stats& st = stats.back();
+
+		const std::string& attack_name = st.attack_name;
+		const std::string& attack_special = st.attack_special.empty() ? "" : gettext(st.attack_special.c_str());
+		const std::string& defend_name = st.defend_name;
+		const std::string& defend_special = st.defend_special.empty() ? "" : gettext(st.defend_special.c_str());
+
+		const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
+
+		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
+		//that the attacks line up nicely.
+		std::string special_pad = (attack_special.empty() == false || defend_special.empty() == false) ? " " : "";
+
+		std::stringstream att;
+		att << IMAGE_PREFIX << stats.back().attack_icon << COLUMN_SEPARATOR
+		    << font::BOLD_TEXT << attack_name
+		    << "\n" << stats.back().damage_defender_takes << "-"
+			<< stats.back().nattacks << " " << range << " ("
+			<< stats.back().chance_to_hit_defender << "%)\n"
+			<< attack_special << special_pad;
+
+		att << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR;
+		att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
+			<< stats.back().ndefends << " " << range << " ("
+			<< stats.back().chance_to_hit_attacker
+		    << "%)\n" << defend_special << special_pad << COLUMN_SEPARATOR
+		    << IMAGE_PREFIX << stats.back().defend_icon;
+
+		items.push_back(att.str());
+	}
+	
+	if (best_weapon_index >= 0) {
+		items[best_weapon_index] = "*" + items[best_weapon_index];
+	}
+		
+	//make it so that when we attack an enemy, the attacking unit
+	//is again shown in the status bar, so that we can easily
+	//compare between the attacking and defending unit
+	gui_.highlight_hex(gamemap::location());
+	gui_.draw(true,true);
+
+	attack_calculations_displayer calc_displayer(gui_,stats);
+	std::vector<gui::dialog_button> buttons;
+	buttons.push_back(gui::dialog_button(&calc_displayer,_("Damage Calculations")));
+
+	int res = 0;
+
+	{
+		const events::event_context dialog_events_context;
+		dialogs::unit_preview_pane attacker_preview(gui_,&map_,attacker->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
+		dialogs::unit_preview_pane defender_preview(gui_,&map_,defender->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&attacker_preview);
+		preview_panes.push_back(&defender_preview);
+
+		res = gui::show_dialog(gui_,NULL,_("Attack Enemy"),
+				_("Choose weapon")+std::string(":\n"),
+				gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
+				NULL,&buttons);
+	}
+
+	cursor::set(cursor::NORMAL);
+
+	if(size_t(res) < attacks_in_range.size()) {
+		res = attacks_in_range[res];
+
+		attacker->second.set_goto(gamemap::location());
+		clear_undo_stack();
+		redo_stack_.clear();
+
+		current_paths_ = paths();
+		gui_.set_paths(NULL);
+
+		game_events::fire("attack",attacker_loc,defender_loc);
+
+		//the event could have killed either the attacker or
+		//defender, so we have to make sure they still exist
+		attacker = units_.find(attacker_loc);
+		defender = units_.find(defender_loc);
+
+		if(attacker == units_.end() || defender == units_.end() || size_t(res) >= attacks.size()) {
+			return true;
+		}
+
+		gui_.invalidate_all();
+		gui_.draw();
+
+		const bool defender_human = teams_[defender->second.side()-1].is_human();
+
+		recorder.add_attack(attacker_loc,defender_loc,res);
+
+		try {
+			attack(gui_,map_,teams_,attacker_loc,defender_loc,res,units_,status_,gameinfo_);
+		} catch(end_level_exception&) {
+			//if the level ends due to a unit being killed, still see if
+			//either the attacker or defender should advance
+			dialogs::advance_unit(gameinfo_,map_,units_,attacker_loc,gui_);
+			dialogs::advance_unit(gameinfo_,map_,units_,defender_loc,gui_,!defender_human);
+			throw;
+		}
+
+		dialogs::advance_unit(gameinfo_,map_,units_,attacker_loc,gui_);
+		dialogs::advance_unit(gameinfo_,map_,units_,defender_loc,gui_,!defender_human);
+
+		selected_hex_ = gamemap::location();
+		current_route_.steps.clear();
+		gui_.set_route(NULL);
+
+		check_victory(units_,teams_);
+
+		gui_.invalidate_all();
+		gui_.draw(); //clear the screen
+
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool turn_info::move_unit_along_current_route(bool check_shroud)
+{
+	const std::vector<gamemap::location> steps = current_route_.steps;
+	const size_t moves = ::move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
+	                   steps,&recorder,&undo_stack_,&next_unit_,false,check_shroud);
+
+	cursor::set(cursor::NORMAL);
+
+	gui_.invalidate_game_status();
+
+	selected_hex_ = gamemap::location();
+	gui_.select_hex(gamemap::location());
+	
+	gui_.set_route(NULL);
+	gui_.set_paths(NULL);
+	current_paths_ = paths();
+
+	if(moves == 0)
+		return false;
+
+	redo_stack_.clear();
+
+	assert(moves <= steps.size());
+	const gamemap::location& dst = steps[moves-1];
+	const unit_map::const_iterator u = units_.find(dst);
+
+	//u may be equal to units_.end() in the case of e.g. a [teleport]
+	if(u != units_.end()) {
+		//Reselect the unit if the move was interrupted
+		if(dst != steps.back()) {
+			selected_hex_ = dst;
+			gui_.select_hex(dst);
+		}
+		
+		current_route_.steps.clear();
+		show_attack_options(u);
+		
+		if(current_paths_.routes.empty() == false) {
+			current_paths_.routes[dst] = paths::route();
+			selected_hex_ = dst;
+			gui_.select_hex(dst);
+			gui_.set_paths(&current_paths_);
+		}
+	}
+
+	return moves == steps.size();
+}
+
 void turn_info::left_click(const SDL_MouseButtonEvent& event)
 {
 	if(commands_disabled) {
 		return;
 	}
-
-	const team& current_team = teams_[team_num_-1];
 
 	// clicked on a hex on the minimap? then initiate minimap scrolling
 	const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
@@ -556,153 +765,36 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	unit_map::iterator enemy = find_unit(hex);
 
+	//see if we're trying to do a move-and-attack
+	if(!browse_ && u != units_.end() && enemy != units_.end()) {
+		const gamemap::location& attack_from = current_unit_attacks_from(hex);
+		if(attack_from.valid()) {
+			if(move_unit_along_current_route(false)) { //move the unit without updating shroud
+				u = find_unit(attack_from);
+				enemy = find_unit(hex);
+				if(u != units_.end() && u->second.side() == team_num_ &&
+				   enemy != units_.end() && current_team().is_enemy(enemy->second.side())) {
+					if(attack_enemy(u,enemy) == false) {
+						undo();
+						return;
+					}
+				}
+			}
+
+			if(clear_shroud()) {
+				clear_undo_stack();
+			}
+
+			return;
+		}
+	}
+
 	//see if we're trying to attack an enemy
 	if(u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
 	   hex != selected_hex_ && !browse_ &&
 	   enemy->second.side() != u->second.side() &&
-	   current_team.is_enemy(enemy->second.side())) {
-
-		const std::vector<attack_type>& attacks = u->second.attacks();
-		std::vector<std::string> items;
-
-		const int range = distance_between(u->first,enemy->first);
-		std::vector<int> attacks_in_range;
-
-		int best_weapon_index = -1;
-		int best_weapon_rating = 0;
-
-		std::vector<battle_stats> stats;
-
-		for(size_t a = 0; a != attacks.size(); ++a) {
-			if(attacks[a].hexes() < range)
-				continue;
-
-			attacks_in_range.push_back(a);
-
-			stats.push_back(evaluate_battle_stats(map_, selected_hex_, hex,
-			                                      a, units_, status_));
-
-			int weapon_rating = stats.back().chance_to_hit_defender *
-			                stats.back().damage_defender_takes * stats.back().nattacks;
-			
-			if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
-				best_weapon_index = items.size();
-				best_weapon_rating = weapon_rating;
-			}
-			
-			const battle_stats& st = stats.back();
-
-			const std::string& attack_name = st.attack_name;
-			const std::string& attack_special = st.attack_special.empty() ? "" : gettext(st.attack_special.c_str());
-			const std::string& defend_name = st.defend_name;
-			const std::string& defend_special = st.defend_special.empty() ? "" : gettext(st.defend_special.c_str());
-
-			const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
-
-			//if there is an attack special or defend special, we output a single space for the other unit, to make sure
-			//that the attacks line up nicely.
-			std::string special_pad = (attack_special.empty() == false || defend_special.empty() == false) ? " " : "";
-
-			std::stringstream att;
-			att << IMAGE_PREFIX << stats.back().attack_icon << COLUMN_SEPARATOR
-			    << font::BOLD_TEXT << attack_name
-			    << "\n" << stats.back().damage_defender_takes << "-"
-				<< stats.back().nattacks << " " << range << " ("
-				<< stats.back().chance_to_hit_defender << "%)\n"
-				<< attack_special << special_pad;
-
-			att << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR;
-			att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
-				<< stats.back().ndefends << " " << range << " ("
-				<< stats.back().chance_to_hit_attacker
-			    << "%)\n" << defend_special << special_pad << COLUMN_SEPARATOR
-			    << IMAGE_PREFIX << stats.back().defend_icon;
-
-			items.push_back(att.str());
-		}
-		
-		if (best_weapon_index >= 0) {
-			items[best_weapon_index] = DEFAULT_ITEM + items[best_weapon_index];
-		}
-			
-		//make it so that when we attack an enemy, the attacking unit
-		//is again shown in the status bar, so that we can easily
-		//compare between the attacking and defending unit
-		gui_.highlight_hex(gamemap::location());
-		gui_.draw(true,true);
-
-		attack_calculations_displayer calc_displayer(gui_,stats);
-		std::vector<gui::dialog_button> buttons;
-		buttons.push_back(gui::dialog_button(&calc_displayer,_("Damage Calculations")));
-
-		int res = 0;
-
-		{
-			const events::event_context dialog_events_context;
-			dialogs::unit_preview_pane attacker_preview(gui_,&map_,u->second,dialogs::unit_preview_pane::SHOW_BASIC,true);
-			dialogs::unit_preview_pane defender_preview(gui_,&map_,enemy->second,dialogs::unit_preview_pane::SHOW_BASIC,false);
-			std::vector<gui::preview_pane*> preview_panes;
-			preview_panes.push_back(&attacker_preview);
-			preview_panes.push_back(&defender_preview);
-
-			res = gui::show_dialog(gui_,NULL,_("Attack Enemy"),
-					_("Choose weapon")+std::string(":\n"),
-					gui::OK_CANCEL,&items,&preview_panes,"",NULL,-1,NULL,NULL,-1,-1,
-					NULL,&buttons);
-		}
-
-		cursor::set(cursor::NORMAL);
-
-		if(size_t(res) < attacks_in_range.size()) {
-			res = attacks_in_range[res];
-
-			u->second.set_goto(gamemap::location());
-			clear_undo_stack();
-			redo_stack_.clear();
-
-			current_paths_ = paths();
-			gui_.set_paths(NULL);
-
-			game_events::fire("attack",selected_hex_,hex);
-
-			//the event could have killed either the attacker or
-			//defender, so we have to make sure they still exist
-			u = units_.find(selected_hex_);
-			enemy = units_.find(hex);
-
-			if(u == units_.end() || enemy == units_.end() || size_t(res) >= attacks.size()) {
-				return;
-			}
-
-			gui_.invalidate_all();
-			gui_.draw();
-
-			const bool defender_human = teams_[enemy->second.side()-1].is_human();
-
-			recorder.add_attack(selected_hex_,hex,res);
-
-			try {
-				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,status_,gameinfo_);
-			} catch(end_level_exception&) {
-				//if the level ends due to a unit being killed, still see if
-				//either the attacker or defender should advance
-				dialogs::advance_unit(gameinfo_,map_,units_,selected_hex_,gui_);
-				dialogs::advance_unit(gameinfo_,map_,units_,hex,gui_,!defender_human);
-				throw;
-			}
-
-			dialogs::advance_unit(gameinfo_,map_,units_,selected_hex_,gui_);
-			dialogs::advance_unit(gameinfo_,map_,units_,hex,gui_,!defender_human);
-
-			selected_hex_ = gamemap::location();
-			current_route_.steps.clear();
-			gui_.set_route(NULL);
-
-			check_victory(units_,teams_);
-
-			gui_.invalidate_all();
-			gui_.draw(); //clear the screen
-		}
+	   current_team().is_enemy(enemy->second.side())) {
+		attack_enemy(u,enemy);
 	}
 
 	//otherwise we're trying to move to a hex
@@ -710,50 +802,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     units_.count(selected_hex_) && !enemy_paths_ &&
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
-
-		const std::vector<gamemap::location> steps = current_route_.steps;
-		const size_t moves = move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
-		                   steps,&recorder,&undo_stack_,&next_unit_);
-
-		cursor::set(cursor::NORMAL);
-
-		gui_.invalidate_game_status();
-
-		selected_hex_ = gamemap::location();
-		gui_.select_hex(gamemap::location());
-		
-		gui_.set_route(NULL);
-		gui_.set_paths(NULL);
-		current_paths_ = paths();
-
-		if(moves == 0)
-			return;
-
-		redo_stack_.clear();
-
-		assert(moves <= steps.size());
-		const gamemap::location& dst = steps[moves-1];
-		const unit_map::const_iterator u = units_.find(dst);
-
-		//u may be equal to units_.end() in the case of e.g. a [teleport]
-		if(u != units_.end()) {
-			//Reselect the unit if the move was interrupted
-			if(dst != steps.back()) {
-				selected_hex_ = dst;
-				gui_.select_hex(dst);
-			}
-			
-			current_route_.steps.clear();
-			show_attack_options(u);
-			
-			if(current_paths_.routes.empty() == false) {
-				current_paths_.routes[dst] = paths::route();
-				selected_hex_ = dst;
-				gui_.select_hex(dst);
-				gui_.set_paths(&current_paths_);
-			}
-
-			if(clear_shroud()) clear_undo_stack();
+		move_unit_along_current_route();
+		if(clear_shroud()) {
+			clear_undo_stack();
 		}
 	} else {
 		gui_.set_paths(NULL);
@@ -781,16 +832,16 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			unit u = it->second;
 			const gamemap::location go_to = u.get_goto();
 			if(map_.on_board(go_to)) {
-				const shortest_path_calculator calc(u,current_team,
+				const shortest_path_calculator calc(u,current_team(),
 				                                    visible_units(),teams_,map_,status_);
 
 				const std::set<gamemap::location>* teleports = NULL;
 
 				std::set<gamemap::location> allowed_teleports;
 				if(u.type().teleports()) {
-					allowed_teleports = vacant_villages(current_team.villages(),units_);
+					allowed_teleports = vacant_villages(current_team().villages(),units_);
 					teleports = &allowed_teleports;
-					if(current_team.villages().count(it->first))
+					if(current_team().villages().count(it->first))
 						allowed_teleports.insert(it->first);
 
 				}
@@ -818,6 +869,47 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 			current_paths_.routes[target->first] = paths::route();
 		}
 	}
+}
+
+gamemap::location turn_info::current_unit_attacks_from(const gamemap::location& loc) const
+{
+	const unit_map::const_iterator current = find_unit(selected_hex_);
+	if(current == units_.end() || current->second.side() != team_num_) {
+		return gamemap::location();
+	}
+
+	const unit_map::const_iterator enemy = find_unit(loc);
+	if(enemy == units_.end() || current_team().is_enemy(enemy->second.side()) == false) {
+		return gamemap::location();
+	}
+
+	int best_defense = 100;
+	gamemap::location res;
+	gamemap::location adj[6];
+	get_adjacent_tiles(loc,adj);
+	for(size_t n = 0; n != 6; ++n) {
+		if(map_.on_board(adj[n]) == false) {
+			continue;
+		}
+
+		if(adj[n] == selected_hex_) {
+			return gamemap::location();
+		}
+
+		if(find_unit(adj[n]) != units_.end()) {
+			continue;
+		}
+
+		if(current_paths_.routes.count(adj[n])) {
+			const int defense = current->second.defense_modifier(map_,map_.get_terrain(loc));
+			if(defense < best_defense || res.valid() == false) {
+				best_defense = defense;
+				res = adj[n];
+			}
+		}
+	}
+
+	return res;
 }
 
 void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move)

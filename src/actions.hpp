@@ -186,7 +186,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				std::vector<gamemap::location> steps,
 				replay* move_recorder, undo_list* undos,
 				gamemap::location *next_unit = NULL,
-				bool continue_move = false);
+				bool continue_move = false, bool should_clear_shroud=true);
 
 //function which recalculates the fog
 void recalculate_fog(const gamemap& map, const gamestatus& status,
