@@ -24,6 +24,9 @@ CVS HEAD:
    * The Skull of Agarash
  * multiplayer improvements
    * added Drakes to Wesbowl
+ * AI improvements
+   * made AI attack when getting ambushed
+ * language fixes and polishing (english)
  * translation updates:
    * catalan
    * spanish
@@ -41,6 +44,7 @@ CVS HEAD:
  * fixed assertion failure/infinite loop in AI logic
  * fixed bug in WML
  * fixed segfault
+ * disabled some font settings to work around bug in SDL_ttf
  * added CASTLE_AND_SIMPLE_KEEP macro, where the keep is composed of only a unique tile with walls
  * added BUILDING_ macros to add houses, tents etc. over other terrains
  * added CASTLE_FLOOR macro
