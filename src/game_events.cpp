@@ -629,10 +629,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			surface.assign(image::get_image(image,image::UNSCALED));
 		}
 
-		gui::show_dialog(*screen,surface,caption,text);
-
 		//this will redraw the unit, with its new stats
 		screen->draw();
+
+		gui::show_dialog(*screen,surface,caption,text);
+
 	}
 
 	//displaying a message dialog
