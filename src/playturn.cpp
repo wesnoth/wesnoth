@@ -554,7 +554,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 	unit_map::iterator enemy = find_unit(hex);
 
 	//see if we're trying to attack an enemy
-	if(route != current_paths_.routes.end() && enemy != units_.end() &&
+	if(u != units_.end() && route != current_paths_.routes.end() && enemy != units_.end() &&
 	   hex != selected_hex_ && !browse_ &&
 	   enemy->second.side() != u->second.side() &&
 	   current_team.is_enemy(enemy->second.side())) {
