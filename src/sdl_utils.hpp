@@ -111,7 +111,6 @@ surface blend_surface(surface surface, double amount, Uint32 colour);
 surface flip_surface(surface surface);
 surface flop_surface(surface surface);
 surface create_compatible_surface(surface surf, int width=-1, int height=-1);
-surface blur_surface(surface surf);
 
 void fill_rect_alpha(SDL_Rect& rect, Uint32 colour, Uint8 alpha, surface target);
 
