@@ -1,4 +1,9 @@
 CVS HEAD:
+ * The Rise of Wesnoth fixes:
+   * WML Plague is weaker in Temple of the Deep
+   * quartex's Clearwater Port dialogue changes
+   * Typo's and minor dialogue Tweaks and Fixes
+   * Please Note: Sign's and Dialogue featuring the 'Narrator' were broken in .8.1 so if you felt like you were missing something. . .
  * new and improved graphics: 
    * canyons
    * signpost
@@ -20,6 +25,7 @@ CVS HEAD:
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
  * support for relative {./includes} in WML files
  * added recruit event
+ * fixed Messages by Narrator not appearing
  * fixed enemies being on wrong side in 'The Dark Hordes: A New Chance' scenario
  * fixed image::locator not building on MSVC6
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
@@ -33,8 +39,6 @@ CVS HEAD:
  * fixed map border not getting changed when using [terrain] to change terrain (#9840)
  * fixed extraneous dots path (#9903)
  * fixed shift due to the way coordinates are now interpreted
- * fixed objectives, spelling and grammar in 'The Rise of Wesnoth' campaign
- * fixed 'The Rise of Wesnoth: Temple of Deep' scenario
  * fixed seeing invisible units when they move (#9488)
  * fixed bug with exiting caves in 'The Eastern Invasion: Captured' scenario
  * fixed bugs in 'The Eastern Invasion: Evacuation' scenario
