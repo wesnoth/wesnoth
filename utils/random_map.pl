@@ -18,36 +18,36 @@
 # Changelog:
 #
 #    Nov 18 2003 (Cowboy)
-#    - Cleaned up a little after Miyo :)
-#    	- switched some if ($foo => $bar) to if ($foo >= $bar)
-#    		so it doesn't think it's a hash assignment
-#    		and throw a stupid warning.
+#	- Cleaned up a little after Miyo :)
+#    		- switched some if ($foo => $bar) to if ($foo >= $bar)
+#    		  so it doesn't think it's a hash assignment
+#    		  and throw a stupid warning.
 #
-#    - Updated to clean up some routines, 
-#    - remove an endless loop (not sure if it was mine or miyos)
-#    - added "snow"
-#    - updated _scan_ring to handle invalid ranges better. (faster)    
+#	- Updated to clean up some routines, 
+#	- remove an endless loop (not sure if it was mine or miyos)
+#	- added "snow"
+#	- updated _scan_ring to handle invalid ranges better. (faster)    
 #
 #    Nov 18 2003 (Miyo)
-#     - added '#!/usr/bin/perl -w'
-#     - implemented Getops::Long
-#     - usage|help
-# 		- enable/disable towns
-# 		- selectable base terrain type
-# 		- configurable terrain leveling
+#	- added '#!/usr/bin/perl -w'
+#	- implemented Getops::Long
+#	- usage|help
+# 	- enable/disable towns
+# 	- selectable base terrain type
+# 	- configurable terrain leveling
 #
-# 	Nov 17 2003 
-# 		- Better comments
-# 		- Updated proximity scanning routines
-# 		They now radiate out in squares to judge
-# 		distance.
-# 		- little bit of code cleanup in various places.
-# 		- fixed up castle placing mostly.  Still has an 
-# 		issue where it's placing them too close to edges
-# 		at times.
+#    Nov 17 2003 
+# 	- Better comments
+# 	- Updated proximity scanning routines
+# 	  They now radiate out in squares to judge
+# 	  distance.
+# 	- little bit of code cleanup in various places.
+# 	- fixed up castle placing mostly.  Still has an 
+# 	  issue where it's placing them too close to edges
+# 	  at times.
 # 		
-# 	Nov 16 2003 
-# 		- initial release
+#     Nov 16 2003 
+# 	- initial release
 
 use strict;
 use warnings;
