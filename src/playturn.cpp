@@ -298,10 +298,10 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 	}
 
 	if(minimap_scrolling_) {
-		//if the game is run in a window, we could miss a LMB up event
+		//if the game is run in a window, we could miss a LMB/MMB up event
 		// if it occurs outside our window.
-		// thus, we need to check if the LMB is still down
-		minimap_scrolling_ = SDL_GetMouseState(NULL,NULL) & SDL_BUTTON(1) != 0;
+		// thus, we need to check if the LMB/MMB is still down
+		minimap_scrolling_ = ((SDL_GetMouseState(NULL,NULL) & (SDL_BUTTON(1) | SDL_BUTTON(2))) != 0);
 		if(minimap_scrolling_) {
 			const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
 			if(loc.valid()) {
@@ -417,6 +417,8 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 
 	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_RELEASED) {
 		minimap_scrolling_ = false;
+	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_RELEASED) {
+		minimap_scrolling_ = false;
 	} else if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
 		left_click(event);
 	} else if(event.button == SDL_BUTTON_RIGHT && event.state == SDL_PRESSED) {
@@ -439,6 +441,16 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			}
 		}
 	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_PRESSED) {
+	  // clicked on a hex on the minimap? then initiate minimap scrolling
+	  const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
+	  minimap_scrolling_ = false;
+	  if(loc.valid()) {
+	    minimap_scrolling_ = true;
+	    last_hex_ = loc;
+	    gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+	    return;
+	  }
+	  else {
 		const SDL_Rect& rect = gui_.map_area();
 		const int centerx = (rect.x + rect.w)/2;
 		const int centery = (rect.y + rect.h)/2;
@@ -447,6 +459,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		const int ydisp = event.y - centery;
 
 		gui_.scroll(xdisp,ydisp);
+	  }
 	} else if(event.button == SDL_BUTTON_WHEELUP ||
 	          event.button == SDL_BUTTON_WHEELDOWN) {
 		const double speed = preferences::scroll_speed() *
@@ -1984,13 +1997,13 @@ unit_map::iterator turn_info::current_unit()
 {
 	unit_map::iterator i = units_.end();
 
-	if(gui_.fogged(last_hex_.x,last_hex_.y)==false){
+	if(gui_.fogged(last_hex_.x,last_hex_.y) == false){
 		i = find_visible_unit(units_,
 				last_hex_, map_,
 				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
 	}
 
-	if(gui_.fogged(selected_hex_.x,selected_hex_.y)==false){
+	if(gui_.fogged(selected_hex_.x,selected_hex_.y) == false){
 		if(i == units_.end()) {
 			unit_map::iterator i = find_visible_unit(units_, selected_hex_, 
 					map_,

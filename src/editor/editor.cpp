@@ -16,6 +16,7 @@
 #include "../actions.hpp"
 #include "../ai.hpp"
 #include "../config.hpp"
+#include "../cursor.hpp"
 #include "../dialogs.hpp"
 #include "../display.hpp"
 #include "../filesystem.hpp"
@@ -40,18 +41,31 @@
 #include <string>
 
 namespace {
-	const size_t nterrains = 6;
-	const size_t terrain_size = 70;
+	const size_t nterrains = 24;
+	const size_t terrain_size = 35;
 	const size_t terrain_padding = 2;
 	const size_t terrain_space = terrain_size + terrain_padding;
 	const size_t button_x = 50;
 	const size_t top_button_y = 200;
-	const size_t palette_x = 50;
+	const size_t palette_x = 40;
 	const size_t palette_y = top_button_y + 40;
-	const size_t bot_button_y = palette_y + terrain_space*nterrains;
+	const size_t bot_button_y = palette_y + terrain_space*nterrains/2;
 
 	bool is_invalid_terrain(char c) { return c == ' ' || c == '~'; }
+
+	const int undo_limit = 20;
 }
+
+struct map_undo_action {
+	map_undo_action(const gamemap::TERRAIN& old_tr,
+			const gamemap::TERRAIN& new_tr,
+			const gamemap::location& lc)
+		: old_terrain(old_tr), new_terrain(new_tr), location(lc) {}
+	gamemap::TERRAIN old_terrain;
+	gamemap::TERRAIN new_terrain;
+	gamemap::location location;
+};
+typedef std::deque<map_undo_action> map_undo_list;
 
 void drawbar(display& disp);
 bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gamemap map);
@@ -60,6 +74,8 @@ int tileselected(int x, int y, display& disp);
 
 int main(int argc, char** argv)
 {
+	game_config::editor = true;
+
 	if(argc > 2) {
 		std::cout << "usage: " << argv[0] << " map-name\n";
 		return 0;
@@ -94,7 +110,7 @@ int main(int argc, char** argv)
 
 		config dummy_theme;
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>(), dummy_theme);
+		             std::vector<team>(), dummy_theme, cfg);
 
 		std::vector<std::string> files;
 		get_files_in_dir(path,&files);
@@ -139,7 +155,7 @@ int main(int argc, char** argv)
 	const config* const theme_cfg = cfg.find_child("theme","name",preferences::theme());
 	config dummy_theme;
 	std::map<gamemap::location,unit> units;
-	display gui(units,video,map,status,teams,theme_cfg ? *theme_cfg : dummy_theme);
+	display gui(units,video,map,status,teams,theme_cfg ? *theme_cfg : dummy_theme, cfg);
 
 	std::vector<std::string> terrain_names;
 	std::vector<gamemap::TERRAIN> terrains = map.get_terrain_precedence();
@@ -163,6 +179,9 @@ int main(int argc, char** argv)
 
 	//Draw the nice background bar
 	drawbar(gui);
+
+	map_undo_list undo_stack;
+	map_undo_list redo_stack;
 
 	std::cerr << "starting for(;;)\n";
 	for(;;) {
@@ -195,6 +214,39 @@ int main(int argc, char** argv)
 		if(key[SDLK_d])
 			gui.default_zoom();
 
+		if(key[SDLK_u]) {
+ 			if(!undo_stack.empty()) {
+				map_undo_action action = undo_stack.back();
+				map.set_terrain(action.location,action.old_terrain);
+				undo_stack.pop_back();
+				redo_stack.push_back(action);
+				if(redo_stack.size() > undo_limit)
+					redo_stack.pop_front();
+				gamemap::location locs[7];
+				locs[0] = action.location;
+				get_adjacent_tiles(action.location,locs+1);
+				for(int i = 0; i != 7; ++i) {
+					gui.draw_tile(locs[i].x,locs[i].y);
+				}
+			}
+		}
+		if(key[SDLK_r]) {
+ 			if(!redo_stack.empty()) {
+				map_undo_action action = redo_stack.back();
+				map.set_terrain(action.location,action.new_terrain);
+				redo_stack.pop_back();
+				undo_stack.push_back(action);
+				if(undo_stack.size() > undo_limit)
+					undo_stack.pop_front();
+				gamemap::location locs[7];
+				locs[0] = action.location;
+				get_adjacent_tiles(action.location,locs+1);
+				for(int i = 0; i != 7; ++i) {
+					gui.draw_tile(locs[i].x,locs[i].y);
+				}
+			}
+		}
+
 		const gamemap::location cur_hex = gui.hex_clicked_on(mousex,mousey);
 		for(int num_key = SDLK_1; num_key != SDLK_9; ++num_key) {
 			if(key[num_key]) {
@@ -211,21 +263,34 @@ int main(int argc, char** argv)
 		gui.highlight_hex(cur_hex);
 		if(new_left_button) {
 
+			const gamemap::location& loc = gui.minimap_location_on(mousex,mousey);
+			if (loc.valid()) {
+				gui.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+				continue;
+			}
+
 			const gamemap::location hex = gui.hex_clicked_on(mousex,mousey);
 			if(map.on_board(hex)) {
 				const gamemap::TERRAIN terrain = map[hex.x][hex.y];
 				if(selected_terrain != terrain) {
-					map.set_terrain(hex,selected_terrain);
+					if(key[SDLK_RCTRL] || key[SDLK_LCTRL]) {
+						selected_terrain = terrain;
+					} else {
+						undo_stack.push_back(map_undo_action(terrain,selected_terrain,hex));
+						if(undo_stack.size() > undo_limit)
+							undo_stack.pop_front();
+						map.set_terrain(hex,selected_terrain);
 
-					gamemap::location locs[7];
-					locs[0] = hex;
-					get_adjacent_tiles(hex,locs+1);
-					for(int i = 0; i != 7; ++i) {
-						gui.draw_tile(locs[i].x,locs[i].y);
+						gamemap::location locs[7];
+						locs[0] = hex;
+						get_adjacent_tiles(hex,locs+1);
+						for(int i = 0; i != 7; ++i) {
+							gui.draw_tile(locs[i].x,locs[i].y);
+						}
+
+						gui.draw();
+						gui.recalculate_minimap();
 					}
-
-					gui.draw();
-					gui.recalculate_minimap();
 				}
 			}else{
 				int tselect = tileselected(mousex,mousey,gui);
@@ -237,16 +302,18 @@ int main(int argc, char** argv)
 
 		gui.draw(false);
 		if(drawterrainpalette(gui, tstart, selected_terrain, map)==false)
-			tstart--;
+			tstart += 2;
 
 		if(tup.process(mousex,mousey,new_left_button)) {
-			tstart--;
+			tstart -= 2;
 			if(tstart<0)
 				tstart=0;
 		}
 
 		if(tdown.process(mousex,mousey,new_left_button)) {
-			tstart++;
+			tstart += 2;
+			if(tstart+nterrains>terrains.size())
+				tstart-=2;
 		}
 
 		gui.update_display();
@@ -309,21 +376,19 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 		}
 
 		SDL_Rect dstrect;
-		dstrect.x = x;
+		dstrect.x = x + (counter % 2 != 0 ?  0 : terrain_space);
 		dstrect.y = y;
 		dstrect.w = image->w;
 		dstrect.h = image->h;
 
 		SDL_BlitSurface(image,NULL,screen,&dstrect);
-		gui::draw_rectangle(x,y,image->w-1,image->h-1,
+		gui::draw_rectangle(dstrect.x,dstrect.y,image->w,image->h,
 		                    terrain == selected?0xF000:0,screen);
-
-		y += terrain_space;
-
-		if(image->w > invalid_rect.w)
-			invalid_rect.w = image->w;
-
+		
+		if (counter % 2 != 0)
+			y += terrain_space;
 	}
+	invalid_rect.w = terrain_space * 2;
 
 	invalid_rect.h = y - invalid_rect.y;
 	update_rect(invalid_rect);
@@ -333,8 +398,8 @@ bool drawterrainpalette(display& disp, int start, gamemap::TERRAIN selected, gam
 int tileselected(int x, int y, display& disp)
 {
 	for(int i = 0; i != nterrains; i++) {
-		const int px = disp.mapx() + palette_x;
-		const int py = palette_y + i*terrain_space;
+		const int px = disp.mapx() + palette_x + (i % 2 != 0 ? 0 : terrain_space);
+		const int py = palette_y + i*terrain_space/2;
 		const int pw = terrain_space;
 		const int ph = terrain_space;
 

@@ -35,7 +35,7 @@ public:
 	const std::vector<std::string> *terrain_builder::get_terrain_at(const gamemap::location &loc,
 								  ADJACENT_TERRAIN_TYPE terrain_type) const;
        
-protected:
+private:
 	//pre-calculates the list of generated content for all tiles (will slow the game
 	//too much otherwise)
 	void build_terrains();
@@ -44,7 +44,6 @@ protected:
 	std::vector<std::string> build_terrain_at(const gamemap::location &loc, 
 						  ADJACENT_TERRAIN_TYPE terrain_type);
 		
-private:
 	const config::child_list cfg_;
 	const gamemap& map_;
 

@@ -1,4 +1,5 @@
 #include "cursor.hpp"
+#include "game_config.hpp"
 #include "image.hpp"
 #include "preferences.hpp"
 #include "scoped_resource.hpp"
@@ -11,6 +12,11 @@
 
 namespace
 {
+
+bool use_colour_cursors()
+{
+	return game_config::editor == false && preferences::use_colour_cursors();
+}
 
 SDL_Cursor* create_cursor(SDL_Surface* surface)
 {
@@ -96,7 +102,7 @@ namespace cursor
 
 manager::manager()
 {
-	use_colour(preferences::use_colour_cursors());
+	use_colour(use_colour_cursors());
 }
 
 manager::~manager()
@@ -107,7 +113,9 @@ manager::~manager()
 
 void use_colour(bool value)
 {
-	SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
+	if(game_config::editor == false) {
+		SDL_ShowCursor(value ? SDL_DISABLE : SDL_ENABLE);
+	}
 }
 
 void set(CURSOR_TYPE type)
@@ -141,7 +149,7 @@ setter::~setter()
 
 void draw(SDL_Surface* screen)
 {
-	if(preferences::use_colour_cursors() == false) {
+	if(use_colour_cursors() == false) {
 		return;
 	}
 
@@ -197,7 +205,7 @@ void draw(SDL_Surface* screen)
 
 void undraw(SDL_Surface* screen)
 {
-	if(preferences::use_colour_cursors() == false) {
+	if(use_colour_cursors() == false) {
 		return;
 	}
 	

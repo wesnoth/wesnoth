@@ -31,7 +31,7 @@ namespace game_config
 	extern int kill_experience;
 	extern const std::string version;
 
-	extern bool debug;
+	extern bool debug, editor;
 
 	extern std::string path;
 
