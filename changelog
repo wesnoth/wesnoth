@@ -87,16 +87,17 @@ CVS HEAD:
  * added displaying help strings in smaller font if they don't fit in the screen
  * 320x240 resolution with USE_TINY_GUI
  * added an ellipsis on the button text when it does not fit on the button
+ * moved menu strings into wesnoth-lib textdomain
+ * moved tips from english.cfg to tips.cfg
+ * per-language cache files
+ * forced config reload upon language change
  * switched networking code to use the new logging system
  * switched image.cpp to use the new logging system
- * improved 'Out of Sync' detection
- * image and data-file cleanups
  * improved network threading
- * help system speed optimizations
- * moved tips from english.cfg to tips.cfg
- * moved menu strings into wesnoth-lib textdomain
- * per-language cache files
  * added server facility to record the way games end
+ * improved 'Out of Sync' detection
+ * help system speed optimizations
+ * image and data-file cleanups
  * code cleanups
 
 Version 0.8.6:
