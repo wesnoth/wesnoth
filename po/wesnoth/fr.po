@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-02-25 20:43+0100\n"
-"Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
+"PO-Revision-Date: 2005-04-04 18:20+0100\n"
+"Last-Translator: Guillaume MASSART <massart.guillaume@wanadoo.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -87,7 +87,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Bases du jeu"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -96,11 +95,8 @@ msgid ""
 msgstr ""
 "Cette page mets en évidence tout ce dont vous aurez besoin pour jouer à "
 "Bataille pour Wesnoth. Elle couvre la manière de jouer et les mécanismes "
-"élémentaires du jeu. Pour en apprendre plus sur les tactiques à employer, "
-"vous pouvez consulter <ref>dst=basic_strategy text='Stratégie élémentaire'</"
-"ref> et <ref>dst=multiplayer_strategy text='Stratégie multi-joueurs'</ref>. "
-"Gardez en tête que cela n'est qu'un survol. Pour les cas particuliers et les "
-"exceptions, veuillez vous reporter aux liens fournis."
+"élémentaires du jeu. Gardez en tête que cela n'est qu'un survol. Pour les "
+"cas particuliers et les exceptions, veuillez vous reporter aux liens fournis."
 
 #: data/help.cfg:70
 msgid ""
@@ -241,7 +237,6 @@ msgstr ""
 "chemin le plus court à ce tour et aux suivants."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -258,19 +253,17 @@ msgstr ""
 "\n"
 "\n"
 "Chaque unité dispose d'un certain nombre de points de mouvement qui sont "
-"dépensés lors d'un déplacement vers un nouvel hexagone, fonction du <ref> "
-"dst=terrain text=Terrain</ref> de cette case. Par exemple, la prairie coûte "
-"presque toujours 1 point de mouvement. Le nombre exact de points dépensés "
-"pour pénétrer dans un hexagone dépend du type d'unité - en forêt, les unités "
-"elfes n'utilisent qu'1 point, la plupart des unités humaines et orcs en "
-"consomme 2, alors que les cavaliers en dépensent 3. Vous pouvez apprendre "
-"combien de points une unité nécessite pour entrer dans un type de terrain "
-"donné en effectuant un clic-droit sur celle-ci, en choisissant Description "
-"de l'unité, puis en regardant la rubrique <italic>text='Modificateurs de "
-"Terrain'</italic>."
+"dépensés lors d'un déplacement vers un nouvel hexagone, fonction du Terrain "
+"de cette case. Par exemple, la prairie coûte presque toujours 1 point de "
+"mouvement. Le nombre exact de points dépensés pour pénétrer dans un hexagone "
+"dépend du type d'unité - en forêt, les unités elfes n'utilisent qu'1 point, "
+"la plupart des unités humaines et orcs en consomme 2, alors que les "
+"cavaliers en dépensent 3. Vous pouvez apprendre combien de points une unité "
+"nécessite pour entrer dans un type de terrain donné en effectuant un clic-"
+"droit sur celle-ci, en choisissant Description de l'unité, puis en regardant "
+"la rubrique <italic>text='Modificateurs de Terrain'</italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -284,12 +277,12 @@ msgstr ""
 "\n"
 "\n"
 "Une autre chose à ne pas oublier lors des déplacements est la notion de "
-"<ref>dst=zones_of_control text='Zones de contrôle'</ref>. Chaque unité "
-"génère une zone de contrôle dans les hexagones qui l'entourent, et toute "
-"unité ennemie qui pénètre dans ces hexagones termine immédiatement son "
-"mouvement. Apprendre de quelle manière utiliser les zones de contrôle à "
-"votre avantage est une part importante de Wesnoth, puisque seuls les "
-"<ref>dst=ability_skirmish text='Tirailleurs'</ref> peuvent les ignorer."
+"Zones de contrôle. Chaque unité génère une zone de contrôle dans les "
+"hexagones qui l'entourent, et toute unité ennemie qui pénètre dans ces "
+"hexagones termine immédiatement son mouvement. Apprendre de quelle manière "
+"utiliser les zones de contrôle à votre avantage est une part importante de "
+"Wesnoth, puisque seuls les <ref>dst=ability_skirmisher text='Tirailleurs'</"
+"ref> peuvent les ignorer."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -353,7 +346,6 @@ msgstr ""
 "<header>text='Probabilité de toucher'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -368,9 +360,9 @@ msgstr ""
 "\n"
 "\n"
 "Avec deux exceptions, la probabilité de toucher une unité est uniquement "
-"fondée sur son taux de défense dans le <ref>dst=terrain text=Terrain</ref> "
-"sur lequel elle se tient. Cela peut être trouvé par un clic-droit sur une "
-"unité, en choissant Description de l'unité puis en regardant la rubrique "
+"fondée sur son taux de défense dans le Terrain sur lequel elle se tient. "
+"Cela peut être trouvé par un clic-droit sur une unité, en choissant "
+"Description de l'unité puis en regardant la rubrique "
 "<italic>text='Modificateurs de terrain'</italic>. Par exemple, les elfes ont "
 "une défense de 70% en forêt, ce qui signifie qu'une unité les attaquant n'a "
 "que 30% de chance de les atteindre. Par opposition, la probabilité de l'elfe "
@@ -378,7 +370,6 @@ msgstr ""
 "trouve."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -388,12 +379,12 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"Il y a deux exceptions à cette règle : <ref>dst=magical_attacks text='les "
-"attaques enchantées'</ref> et le <ref>dst=ability_marksman text='tireur d"
-"\\'élite'</ref>. Les attaques magiques ont toujours une probabilité de "
-"toucher de 70%, sans tenir compte du terrain, et les tireurs d'élite ont "
-"toujours au moins 60% de probabilité de toucher lorsque ce son eux qui "
-"attaquent, sans tenir compte du terrain."
+"Il y a deux exceptions à cette règle : <ref>dst=weaponspecial_magical "
+"text='les attaques enchantées'</ref> et le <ref>dst=weaponspecial_marksman "
+"text='tireur d\\'élite'</ref>. Les attaques magiques ont toujours une "
+"probabilité de toucher de 70%, sans tenir compte du terrain, et les tireurs "
+"d'élite ont toujours au moins 60% de probabilité de toucher lorsque ce son "
+"eux qui attaquent, sans tenir compte du terrain."
 
 #: data/help.cfg:114
 msgid ""
@@ -426,7 +417,6 @@ msgstr ""
 "expliqués ci-dessous."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -439,8 +429,9 @@ msgstr ""
 "\n"
 "Quelques unités possèdent des capacités spéciales qui affectent la quantité "
 "de dégâts infligés en combat. La plus fréquente d'entre elles est la "
-"<ref>dst=ability_charge text=charge</ref>, qui double les dégâts infligés, "
-"et par l'attaquant, et par le défenseur lorsque l'unité avec charge attaque."
+"<ref>dst=weaponspecial_charge text=charge</ref>, qui double les dégâts "
+"infligés, et par l'attaquant, et par le défenseur lorsque l'unité avec "
+"charge attaque."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -608,10 +599,9 @@ msgstr ""
 "(c'est 20 % de moins pour les unités avec le trait intelligence). Une fois "
 "ce montant atteint, elles avancent immédiatement au niveau suivant, se "
 "soignant complètement au cours du processus. Dans certains cas, le choix des "
-"'options d'avancement vous sera proposé."
+"options d'avancement vous sera proposé."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -622,7 +612,7 @@ msgstr ""
 "\n"
 "Gardez à l'esprit que si la plupart des unités ont trois niveaux, ce n'est "
 "pas le cas de toutes, et que des unités occasionnelles (telles les "
-"<ref>dst=unit_mage text=Mages</ref>) peuvent en avoir quatre."
+"<ref>dst=unit_Mage text=Mages</ref>) peuvent en avoir quatre."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -660,14 +650,13 @@ msgstr ""
 "PV."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Régénération</ref> : Certaines unités "
+"<ref>dst=ability_regenerates text=Régénération</ref> : Certaines unités "
 "(telles les trolls) guériront automatiquement de 8 PV à chaque tour."
 
 #: data/help.cfg:175
@@ -1300,12 +1289,10 @@ msgid "Charge"
 msgstr "Charge"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
 msgstr "Classique"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
@@ -1323,17 +1310,18 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "Jeux d'équipe en 2 contre 2 ou 3 contre 3"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
-#, fuzzy
 msgid "Icy Waters"
-msgstr "Eau bénite"
+msgstr "Eau verglacée"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
 msgid ""
 "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
+"Bataille dans et en dehors des eaux verglacées du port crucial du nord de "
+"Wesnoth"
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1527,9 +1515,8 @@ msgid "King of the Hill"
 msgstr "Le roi de la colline"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+Traduction basque"
+msgstr "Entraînement de base"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:71
 msgid ""
@@ -1540,7 +1527,6 @@ msgstr ""
 "mage expérimenté, vous pourrez sûrement m'expliquer l'art du combat."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1558,7 +1544,6 @@ msgid "Recruit a unit"
 msgstr "Recruter une unité"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Excellent ! Vous venez de recruter un guerrier elfe."
 
@@ -1576,7 +1561,6 @@ msgid "How do I recruit units?"
 msgstr "Comment recruter une unité ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1585,7 +1569,7 @@ msgid ""
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 "Pour recruter une unité, faites un clic droit sur la case du château où vous "
-"vous enrôler cette unité. Puis choisissez « Recruter », ou maintenez le "
+"voulez enrôler cette unité. Puis choisissez « Recruter », ou maintenez le "
 "curseur sur la case et appuyez sur « Ctrl-R ». Ensuite, choisissez le type "
 "d'unité à enrôler et appuyez sur « Ok ». Pour recruter plus vite, vous "
 "pouvez appuyer sur « Ctrl-Shift-R » pour enrôler une unité du même type que "
@@ -1619,13 +1603,12 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Comment choisir quel type d'unité recruter ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
-"Vous devez regarder attentivement leurs compétences, qui sont affichées à "
+"Vous devez regarder attentivement leurs compétences qui sont affichées à "
 "gauche de la liste de sélection des unités, et leur coût, qui est affiché "
 "après le nom de l'unité. Vous en apprendrez plus sur ces statistiques au "
 "cours du didacticiel."
@@ -1660,7 +1643,6 @@ msgid "End your turn"
 msgstr "Terminez votre tour"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "Vous avez terminé votre tour avec succès."
 
@@ -1714,7 +1696,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Déplacez votre guerrier elfe près de Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1763,10 +1744,9 @@ msgid ""
 msgstr ""
 "La zone de contrôle d'une unité est l'ensemble des hexagones adjacents à "
 "celui de l'unité. Des unités ne peuvent pas se déplacer à travers les zones "
-"contrôle d'adversaires; elles ne peuvent qu'y pénétrer. Lorsqu'elles le "
-"font, elles perdent tout le reste de leur mouvement. Les zones de contrôle "
-"peuvent servir à empêcher des ennemis d'atteindre vos unités faibles ou "
-"blessées."
+"de contrôle adverses; elles ne peuvent qu'y pénétrer. Lorsqu'elles le font, "
+"elles perdent tout le reste de leur mouvement. Les zones de contrôle peuvent "
+"servir à empêcher des ennemis d'atteindre vos unités faibles ou blessées."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:165
 msgid "What's the zone of control?"
@@ -1789,11 +1769,11 @@ msgstr ""
 "Les unités que vous contrôlez ont un cercle d'énergie vert, jaune ou rouge "
 "au-dessus de leur barre de vie, la barre verticale verte sur leur côté. Les "
 "unités avec leur potentiel de mouvement complet en ont un vert, celles avec "
-"un potentiel entamé un jaune, et celles avec plus de potentiel un rouge. Les "
-"unités alliées que vous ne contrôlez pas, comme moi, ont une cercle "
-"d'énergie bleu. Par ailleurs, l'option 'Montrer la couleur des équipes', "
-"dans les Préférences, affiche la couleur du contrôleur de l'unité sous forme "
-"de disque en-dessous de l'unité."
+"un potentiel entamé un jaune, et celles sans potentiel un rouge. Les unités "
+"alliées que vous ne contrôlez pas, comme moi, ont une cercle d'énergie bleu. "
+"Par ailleurs, l'option 'Montrer la couleur des équipes', dans les "
+"Préférences, affiche la couleur du contrôleur de l'unité sous forme de "
+"disque en-dessous de l'unité."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid ""
@@ -1811,7 +1791,6 @@ msgid "Attack Merle"
 msgstr "Attaquez Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "Vous avez attaqué Merle avec succès."
 
@@ -1820,7 +1799,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Est-ce que Merle peut riposter à mon attaque ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1893,7 +1871,6 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "Terminez votre tour et attendez que Merle vous attaque."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1901,7 +1878,7 @@ msgid ""
 msgstr ""
 "Votre guerrier a survécu à l'attaque de Merle. Quand une unité survit à une "
 "attaque, elle gagne de l'expérience du combat. Une fois qu'une unité a gagné "
-"assez d'expérience, elle progresse vers le niveau suivant et devient plus "
+"assez d'expérience, elle évolue vers le niveau suivant et devient plus "
 "puissante."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:221
@@ -1928,7 +1905,6 @@ msgid "What happens when a unit advances?"
 msgstr "Que se passe-t-il lorsqu'une unité progresse ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1937,13 +1913,13 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
-"Lorsqu'une unité progresse, elle se transforme en une unité d'un autre type. "
-"Ce type d'unité est fonction de l'unité initiale, mais parfois il y aura "
+"Lorsqu'une unité évolue, elle se transforme en une unité d'un autre type. Ce "
+"type d'unité est fonction de l'unité initiale, mais parfois il y aura "
 "plusieurs choix vers lesquels progresser. Les unités avancées sont "
 "généralement plus puissante et 1 niveau plus haut que ce qu'elles étaient "
-"initialement. Par ailleurs, lorsqu'une unité progresse, elle est "
-"complètement guérie et toutes les pénalités subies lui sont retirées. C'est "
-"connu sous le nom de 'guérison par avancement'."
+"initialement. Par ailleurs, lorsqu'une unité évolue, elle est complètement "
+"guérie et toutes les pénalités subies lui sont retirées. C'est connu sous le "
+"nom de 'guérison par avancement'."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:229
 #: data/scenarios/tutorial/Basic_Training.cfg:232
@@ -1952,14 +1928,13 @@ msgstr "Déplacez votre guerrier dans un village."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:246
 msgid "Villages heal the units on them."
-msgstr "Les villages soignent les unité qui sont dessus."
+msgstr "Les villages soignent les unités qui sont dessus."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
 msgid "What happens when a unit moves onto a village?"
 msgstr "Que se passe-t-il lorsqu'une unité rejoint un village ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1977,14 +1952,13 @@ msgstr ""
 "d'entretien des unités de son camp de un. Le nombre total de villages que "
 "vous contrôlez est affiché dans la barre de statut après l'image d'une "
 "maison. En plus de l'avantage économique, les villages peuvent servir en "
-"combat. Les villages soignent les unités qui y siègent de 8 PV par tour."
+"combat, ceux-ci soignant les unités qui y siègent de 8 PV par tour."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr "Comment se soigner lorsqu'il n'y a pas de villages à proximité ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -2027,17 +2001,15 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
-"Malheureusement, vous avez perdu car que votre chef a été vaincu. Vous avez "
-"tout de même gagné en sagesse par mon enseignement."
+"Malheureusement, vous avez perdu car votre chef a été vaincu. Vous avez tout "
+"de même gagné en sagesse par mon enseignement."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -2046,7 +2018,6 @@ msgstr ""
 "Vous avez tout de même gagné en sagesse par mon enseignement."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "Vous avez terminé avec succès le premier scénario d'entraînement."
 
@@ -2062,7 +2033,6 @@ msgstr ""
 "toujours ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2097,10 +2067,8 @@ msgstr ""
 "victoire, tous les villages se rendent à vous immédiatement lors de celle-"
 "ci. Cependant 20 % de votre or est perdu entre deux scénarios."
 
-# Pourquoi changer scenario en niveau ?
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "Voulez-vous réviser une des choses que vous avez apprises dans ce scénario ?"
@@ -2116,13 +2084,12 @@ msgid "I'm done reviewing skills!"
 msgstr "J'ai fini de revoir les compétences !"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
-#, fuzzy
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
-"Bien que vous avez terminé votre premier scénario, votre entraînement n'est "
+"Bien que vous ayez terminé votre premier scénario, votre entraînement n'est "
 "pas encore arrivé à son terme. Nous allons maintenant passer au scénario "
 "suivant dans lequel vous devrez me combattre dans un simulacre de bataille."
 
@@ -2139,7 +2106,6 @@ msgstr ""
 "me vaincre dans un simulacre de bataille."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2155,7 +2121,6 @@ msgstr ""
 "également recruter des guerriers et des archers elfes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -2167,7 +2132,7 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
-"@Éléments abordés :\n"
+"Éléments abordés :\n"
 "Rappeler\n"
 "Caractéristiques\n"
 "Or\n"
@@ -2175,29 +2140,23 @@ msgstr ""
 "Terrains\n"
 "Résistances\n"
 "Spécialités\n"
-"Objets\n"
-"Jouer à Wesnoth\n"
-"@Objectifs :\n"
-"@Victoire\n"
-"Vaincre Delfador"
+"Objets"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Défenseur"
+msgstr "Battez Delfador"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Mort de Konrad"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/utils.cfg:59
 msgid "Turns run out"
-msgstr ""
+msgstr "Nombre de tours dépassé"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Vous avez rappelé votre guerrier elfe avec succès."
 
@@ -2209,7 +2168,6 @@ msgstr "Vous avez rappelé votre guerrier elfe avec succès."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "En garde !"
 
@@ -2234,7 +2192,6 @@ msgid "How should I decide which units to recall?"
 msgstr "Comment choisir quelles unités rappeler ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -2242,13 +2199,12 @@ msgid ""
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
 "Vous devriez généralement rappeler les unités qui ont déjà atteint le niveau "
-"suivant. Cependant, vous pourriez vouloir rappeler les unités avec une fort "
+"suivant. Cependant, vous pourriez vouloir rappeler les unités avec une forte "
 "expérience et qui seront donc susceptibles de progresser. Vous devriez "
 "rappeler des unités qui seront utiles pour le scénario en cours ; par "
 "exemple dans un scénario forestier, rappelez des elfes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2269,7 +2225,7 @@ msgstr ""
 "Le rôle des caractéristiques est d'ajouter de la variété en différenciant "
 "des unités de même type. C'est possible par attribution aléatoire des "
 "caractéristiques à chaque unité lors de son enrôlement. Les caractéristiques "
-"d'une unité sont affichées dans le panneau de statut, et le rôle de d'une "
+"d'une unité sont affichées dans le panneau de statut, et le rôle d'une "
 "caractéristique spécifique peut être trouvé en plaçant votre curseur sur la "
 "caractéristique elle-même."
 
@@ -2335,7 +2291,6 @@ msgid "How do I get gold?"
 msgstr "Comment est-ce que je gagne de l'or ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2408,7 +2363,6 @@ msgstr ""
 "Chaque case a un terrain, lequel donne à la case des propriétés distinctes."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2422,11 +2376,12 @@ msgid ""
 msgstr ""
 "Les propriétés du village et du château ont déjà été présentées. Mais la "
 "majorité des terrains ont des propriétés plus subtiles qui consistent en des "
-"bonus ou malus selon les unités. La première propriété d'un terrain est son "
-"coût en point de mouvement pour y pénétrer. La seconde est la défense que "
-"procure le terrain à l'unité. C'est un pourcentage qui détermine la "
-"probabilité d'être touché en étant sur ce terrain. Par exemple, de nombreux  "
-"elfes ont 70% de défense en forêt et ne sont donc touchés que 30% du temps."
+"bonus ou malus selon les unités qui les traversent. La première propriété "
+"d'un terrain est son coût en point de mouvement pour y pénétrer. La seconde "
+"est la défense que procure le terrain à l'unité. C'est un pourcentage qui "
+"détermine la probabilité d'être touché en étant sur ce terrain. Par exemple, "
+"de nombreux  elfes ont 70% de défense en forêt et ne sont donc touchés que "
+"30% du temps."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "What are the different properties that terrains have?"
@@ -2437,7 +2392,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "Comment trouver les propriétés d'un terrain particulier ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2488,7 +2442,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Comment la résistance affecte-t-elle les dommages ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2621,14 +2574,13 @@ msgid "How long do these objects last?"
 msgstr "Combien de temps durent ces objets ?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:236
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
 "La majorité des objets sont des modifications permanentes sur les unités qui "
 "les reçoivent. Cependant, certains objets, telle l'eau sacrée, ne durent que "
-"jusqu'à la fin du niveau."
+"jusqu'à la fin du scenario."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:253
 msgid ""
@@ -2643,6 +2595,8 @@ msgstr ""
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:319
 msgid "Next, you may want to begin a campaign, or play multiplayer."
 msgstr ""
+"Prochainement, vous voudriez peut être commencer une campagne ou jouer en "
+"multijoueurs."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:324
 msgid "How do I play a campaign?"
@@ -2679,7 +2633,6 @@ msgid "That was explained well! But.."
 msgstr "C'était bien expliqué ! Mais..."
 
 #: data/scenarios/tutorial/utils.cfg:44
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recruiting units\n"
@@ -2688,23 +2641,20 @@ msgid ""
 "Gaining experience\n"
 "Winning scenarios"
 msgstr ""
-"@Éléments abordés :\n"
+"Éléments abordés :\n"
 "Recruter des unités\n"
 "Déplacer des unités\n"
 "Attaquer des unités ennemies\n"
 "Gagner de l'expérience\n"
-"Gagner un scénario\n"
-"@Objectifs actuel :\n"
-"{OBJECTIVE}"
+"Gagner un scénario"
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
-msgstr ""
+msgstr "Objectif courant : "
 
 #: data/scenarios/tutorial/utils.cfg:55
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Défenseur"
+msgstr "La Mort de Delfador"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2846,25 +2796,25 @@ msgid "Canyon"
 msgstr "Canyon"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "ruin"
-msgstr "drainage"
+msgstr "ruine"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr ""
+msgstr "ruine submergée"
 
 #: data/terrain.cfg:459
 msgid "swamp ruin"
-msgstr ""
+msgstr "ruine marécageuse"
 
+# Piou2fois : un gué est forcément sur une rivière, donc pas besoin de préciser
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "Gué"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "La lave"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -3221,27 +3171,27 @@ msgstr ""
 msgid "loyal"
 msgstr "loyal"
 
+# pas sur de la signification
 #: data/traits.cfg:5
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "entretien"
+msgstr "Sans entretien"
 
 #: data/traits.cfg:15
-#, fuzzy
 msgid "undead"
-msgstr "Mort-vivants"
+msgstr "Morts-vivants"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr ""
+msgstr "Immunisé contre le poison"
 
 #: data/traits.cfg:23
 msgid "strong"
 msgstr "fort"
 
+# Piou2fois : Je l'ai pas trouvé dans mon dico. Dextrously voulant dire "avec dextérité"
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr ""
+msgstr "Dextérité"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -3489,7 +3439,7 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
-"Escarmouches :\n"
+"Escarmouche :\n"
 "Cette unités est très habile pour se aller rapidement derrière les lignes "
 "ennemies et ignore les zones de contrôle ennemies."
 
@@ -3545,14 +3495,13 @@ msgstr ""
 "armée)."
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "When used offensively, this attack presses the engagement until one of the "
 "combatants is slain."
 msgstr ""
 "Furie :\n"
-"Qu'elle soit utilisée de manière offensive ou défensive, cette attaque force "
+"Lorsqu'elle est utilisée de manière offensive, cette attaque force "
 "l'engagement jusqu'à ce qu'un des deux combattants ne meure."
 
 #: data/translations/english.cfg:99
@@ -3620,7 +3569,7 @@ msgid ""
 "they are cured or are reduced to 1 HP."
 msgstr ""
 "Empoisonnement :\n"
-"Cette attaque empoisonne le cible. Les unités empoisonnées perdent 8 points "
+"Cette attaque empoisonne la cible. Les unités empoisonnées perdent 8 points "
 "de vie à chaque tour jusqu'à ce qu'elles soient guéries, ou n'aient plus "
 "qu'un seul point de vie."
 
@@ -3824,12 +3773,12 @@ msgid ""
 msgstr ""
 "Terrible et intimidants, les woses les plus anciens ont acquit une taille "
 "énorme.  Ils apparaissent rarement en dehors des légendes, où l'on dit "
-"qu'ils posséder une force immense, écrasant les plus grand des rochers en "
+"qu'ils possédent une force immense, écrasant les plus grand des rochers en "
 "fine poudre, comme si toute l'énergie qu'un arbre utilise pour se développer "
 "et fendre la pierre année après année était appliquée en un instant. Ces "
 "mêmes légendes parlent de leur relation aux forêts de ce monde, dont la "
-"destruction est souvent la seule chose qui pourrait provoquer la colère ces "
-"derniers. Autrement, ce sont des êtres aimables et curieux."
+"destruction est souvent la seule chose qui pourrait provoquer la colère de "
+"ces derniers. Autrement, ce sont des êtres aimables et curieux."
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
@@ -4200,7 +4149,7 @@ msgstr ""
 "Les chauve-souris sanglantes sont rapides et peuvent drainer le sang de ceux "
 "qu'elles attaquent, se soignant en cela, jusqu'à devenir plus fortes que "
 "lorsqu'elles ont commencé le combat ! Leur furie est telle que la fourrure "
-"de ces bêtes volantes mort-vivantes est teintée du rouge du sang de leurs "
+"de ces bêtes volantes mortes-vivantes est teintée du rouge du sang de leurs "
 "victimes."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
@@ -4413,7 +4362,7 @@ msgid ""
 msgstr ""
 "Montant les squelettes de grands oiseaux employés comme monture par une "
 "civilisation antique et perdue, les chocob'os peuvent se déplacer plus "
-"rapidement que la plupart des unités montés."
+"rapidement que la plupart des unités montées."
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
 #: data/units/Drake_Gladiator.cfg:43 data/units/Drake_Slasher.cfg:39
@@ -4555,8 +4504,9 @@ msgstr "sceptre"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Sorcier Sombre"
 
+# Piou2fois : A corriger, c'est vraiment approximatif
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
 "Dark Sorcerers did not fully embrace the power of the undead by becoming "
@@ -4564,6 +4514,10 @@ msgid ""
 "made them stronger, but not nearly as powerful as they would have been as "
 "Liches. Because they retain their humanity, they do not fear holy magic. "
 msgstr ""
+"Les Sorciers Sombres n'ont pas acquis complètement la puissance des morts-"
+"vivants en le devenant eux-mêmes. Au lieu de cela, leurs études avancées de "
+"l'art sombre les ont rendus plus forts, mais pas aussi puissant que les "
+"Liches qu'ils auraient pu être."
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4621,7 +4575,7 @@ msgid ""
 "They are deadly fighters, ignoring all danger to themselves, and caring only "
 "about killing as many other as possible with their swirling blades."
 msgstr ""
-"Les sombres lames haïssent les vivants et cherchent à détruite tout ce "
+"Les sombres lames haïssent les vivants et cherchent à détruire tout ce "
 "qu'ils ont jadis aimé. Ce sont des combattants mortels qui ignorent tout "
 "danger, n'agissant que dans le seul but de tuer autant que possible avec "
 "leur lames tourbillonnantes."
@@ -4640,7 +4594,7 @@ msgstr ""
 "Les errances de Gwiti sur le chemin sombre lui ont donné des pouvoirs "
 "normalement non accordés aux mortels, mais pour un coût terrible : les morts-"
 "vivants auxquels il a donné son âme réclament aussi petit à petit son "
-"enveloppe mortelle. Avec le temps, il deviendra un vrai mort vivant et une "
+"enveloppe mortelle. Avec le temps, il deviendra un vrai mort-vivant et une "
 "terreur pour tout ce qui vit."
 
 #: data/units/Demilich.cfg:3
@@ -4733,7 +4687,6 @@ msgid "Drake Clasher"
 msgstr "Cogneur drake"
 
 #: data/units/Drake_Clasher.cfg:18
-#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
@@ -4745,11 +4698,11 @@ msgstr ""
 "Avec leurs épaisses ailes vestigiales, et leur incapacité à utiliser leur "
 "feu intérieur en tant qu'arme, certains peuvent penser que ces drakes sont "
 "désavantagés. Cependant, ils auraient tort : afin de compenser ces "
-"faiblesses, ils sont devenus des artisans fort capables, et peuvent "
-"fabriquer des armes munis de lames d'émeraude, et portent de lourdes "
-"armures. Les armes de prédilection des cogneurs sont l'épée et la lance, "
-"qu'ils utilisent de manière très efficace. Les meilleurs cogneurs peuvent "
-"devenir des gladiateurs, ou des tailladeurs."
+"faiblesses, ils sont devenus de bons artisans capables de fabriquer des "
+"armes munis de lames d'émeraude, et porter de lourdes armures. Les armes de "
+"prédilection des cogneurs sont l'épée et la lance, qu'ils utilisent de "
+"manière très efficace. Les meilleurs cogneurs peuvent devenir des "
+"gladiateurs, ou des tailladeurs."
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
@@ -4856,11 +4809,11 @@ msgid ""
 "ranks of the high flying Sky Drakes."
 msgstr ""
 "Les planeurs drakes portent une armure aussi légère que possible, afin de "
-"pouvoir échapper le plus vite possibles à leurs ennemis lorsqu'ils quittent "
+"pouvoir échapper le plus vite possible à leurs ennemis lorsqu'ils quittent "
 "leurs cavernes. Ces drakes sont des combattants compétents et possèdent le "
 "feu intérieur qu'ils partagent avec les membres de leur espèce. Les planeurs "
 "peuvent utiliser leur grande vitesse pour se jeter violemment contre leurs "
-"ennemis. Les meilleures planeurs peuvent espérer être acceptés parmi les "
+"ennemis. Les meilleurs planeurs peuvent espérer être acceptés parmi les "
 "rangs des drakes du firmament."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
@@ -4879,7 +4832,7 @@ msgid ""
 "Infernos have utterly mastered their internal fire, and rival their "
 "predecessors the Dragons in their ability to use it."
 msgstr ""
-"Les créatures volantes connues sous le nom de drake infernaux portent de "
+"Les créatures volantes connues sous le nom de drakes infernaux portent de "
 "massives armures d'or, quasiment impénétrables. Ces drakes sont également "
 "pratiquement immunisés contre le feu, car ils sont habitués à se cacher dans "
 "les cratères des volcans. Les drakes infernaux ont complètement maîtrisé "
@@ -4917,10 +4870,10 @@ msgstr ""
 "Avec leurs épaisses ailes vestigiales, et leur incapacité à utiliser leur "
 "feu intérieur en tant qu'arme, certains peuvent penser que ces drakes sont "
 "désavantagés. Cependant, ils auraient tort : afin de compenser ces "
-"faiblesses, ils sont devenus des artisans fort capables, et peuvent "
-"fabriquer des armes munis de lames d'émeraude, et portent de lourdes "
-"armures. L'arme de prédilection des tailladeurs est la hallebarde, qu'ils "
-"utilisent de manière très efficace."
+"faiblesses, ils sont devenus de bons artisans capables de fabriquer des "
+"armes munis de lames d'émeraude, et poter de lourdes armures. L'arme de "
+"prédilection des tailladeurs est la hallebarde, qu'ils utilisent de manière "
+"très efficace."
 
 #: data/units/Drake_Slasher.cfg:42 data/units/Goblin_Impaler.cfg:26
 #: data/units/Halbardier.cfg:26 data/units/Halbardier.cfg:44
@@ -4939,7 +4892,7 @@ msgid ""
 "skills of their ancestors."
 msgstr ""
 "Non seulement les guerriers drakes manient l'épée avec beaucoup d'habileté, "
-"mais ils sont également capable de souffler le feu légendaire de leurs "
+"mais ils sont également capables de souffler le feu légendaire de leurs "
 "ancêtres."
 
 #: data/units/Draug.cfg:3
@@ -4957,11 +4910,11 @@ msgid ""
 "of their struggle have long faded into oblivion."
 msgstr ""
 "Restes de ce qui était autrefois des guerriers légendaires, les Draugs "
-"frappent terreurs les cœurs de ceux qui s'opposent à eux. Ils ne sont pas "
-"animés pas la méchanceté mais sont contraints, dans leur non-vie, à "
+"frappent de terreurs les cœurs de ceux qui s'opposent à eux. Ils ne sont pas "
+"animés par la méchanceté mais sont contraints, dans leur non-vie, à "
 "reproduire pour l'éternité les grandes batailles de leur mémoire, combattant "
-"désespérément sans même se souvenir du nom de leur ennemis ni du but de leur "
-"lutte."
+"désespérément sans même se souvenir du nom de leurs ennemis ni du but de "
+"leur lutte."
 
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:36 data/units/Skeleton.cfg:37
@@ -5024,7 +4977,7 @@ msgid ""
 msgstr ""
 "Gardiens des grandes cités naines, ils carbonisent leurs ennemis en faisant "
 "feu de ce qu'ils appellent des bâtons de dragon. Ils sont également les "
-"gardiens des arcanes de la technologies naine."
+"gardiens des arcanes de la technologie naine."
 
 #: data/units/Dwarvish_Dragonguard.cfg:20
 #: data/units/Dwarvish_Dragonguard.cfg:38
@@ -5064,7 +5017,7 @@ msgid ""
 msgstr ""
 "Les nains les plus résistants rejoignent parfois l'armée naine en tant que "
 "gardes. Lents et dépourvu d'attaque puissante, ils protègent les flancs de "
-"l'armée, absorbent les dommages et lancent leurs lourdes lancent sur leurs "
+"l'armée, absorbent les dommages et lancent leurs lourdes lances sur leurs "
 "ennemis."
 
 #: data/units/Dwarvish_Lord.cfg:3
@@ -5077,7 +5030,7 @@ msgid ""
 "axe is unmatched, and they are able to hit even enemies that are far away. "
 "Their fine armor is made of the strong alloys crafted by their kin."
 msgstr ""
-"Les seigneurs nains sont le rois sous les montagnes. Leur habileté à la "
+"Les seigneurs nains sont les rois sous les montagnes. Leur habileté à la "
 "hache de bataille est inégalée et ils peuvent même frapper des ennemis "
 "distants. Leurs précieuses armures sont faites des plus résistants alliages "
 "forgés par les leurs."
@@ -5686,7 +5639,7 @@ msgid ""
 "its tail. Fire Dragons are cunning and cruel, and often take underlings whom "
 "they help lead to victory."
 msgstr ""
-"Séculaire et terrifiant, le dragon de feu et un membre de la famille des "
+"Séculaire et terrifiant, le dragon de feu est un membre de la famille des "
 "dragons qui a la capacité de cracher des flammes. D'ailleurs, il n'hésite "
 "pas à faire bon usage de son souffle ardent. Il possède également une "
 "morsure puissante et peut écraser ses adversaires avec sa queue. Les dragons "
@@ -5765,9 +5718,14 @@ msgid "Gate"
 msgstr "Porte"
 
 # Pas sûr du sens
+# *Piou2fois :
+# phrase d'origine :
+# "La porte ne s'ouvrira pas pour quiconque n'est pas allié avec elle"
+# ma proposition :
+# "La porte s'ouvrira à quiconque est allié avec elle"
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr "La porte ne s'ouvrira pas pour quiconque n'est pas allié avec elle"
+msgstr "La porte s'ouvrira à quiconque est allié avec elle"
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -6029,9 +5987,9 @@ msgid ""
 "earth-bound tremble, for these mighty pairs may strike from anywhere."
 msgstr ""
 "Les maîtres des griffons ont tellement l'habitude de voler avec leurs "
-"montures que les griffons sont devenus une extension d'eux-même. Cette "
+"montures que les griffons sont devenus une extension d'eux-mêmes. Cette "
 "relation spéciale fait trembler le cœur des terriens, car ces puissantes "
-"créatures peuvent surgir de nulle part part à tout moment."
+"créatures peuvent surgir de nulle part à tout moment."
 
 #: data/units/Gryphon_Rider.cfg:3
 msgid "Gryphon Rider"
@@ -6080,7 +6038,7 @@ msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
-"Les soldats d'infanterie lourde sont protégés des attaques par leurs armures "
+"Les soldats d'infanterie lourde sont protégés des attaques par leur armure "
 "de fer. Le manque de célérité est leur seule faiblesse."
 
 #: data/units/Horse_Lord.cfg:3
@@ -6166,10 +6124,10 @@ msgid ""
 "defending."
 msgstr ""
 "Les javelinistes ont maîtrisés le maniement des lances pointues qui leurs "
-"furent à leur recrutement. Dangereux en mêlée, ils on également développés "
-"leurs capacité à lancer leurs javelots, ce qui les rend efficace dans les "
-"deux styles de combat. À cause de la longueur de leurs lances, ils frappent "
-"les premiers en combat et ceci même s'ils se défendent."
+"furent données à leur recrutement. Dangereux en mêlée, ils on également "
+"développés leur capacité à lancer leurs javelots, ce qui les rend efficace "
+"dans les deux styles de combat. À cause de la longueur de leurs lances, ils "
+"frappent les premiers en combat et ceci même s'ils se défendent."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -6395,7 +6353,7 @@ msgid ""
 msgstr ""
 "Les jeunes ondines sont souvent initiées à la magie aquatique de leur "
 "peuple. Malgré leur fragilité, cela fait d'elles des adversaires "
-"extraordinaires, car elles peuvent en appeler à l'au elle-même afin de "
+"extraordinaires, car elles peuvent en appeler à l'eau elle-même afin de "
 "frapper leurs ennemis."
 
 #: data/units/Mermaid_Priestess.cfg:3
@@ -6674,7 +6632,7 @@ msgid ""
 msgstr ""
 "Les nécromanciens sont des mages qui ont décidé de suivre le coté sombre de "
 "la magie. Faisant appel à la puissance des morts-vivants, les nécromanciens "
-"peut jeter des sorts qui drainent la vitalité de leurs adversaires pour "
+"peuvent jeter des sorts qui drainent la vitalité de leurs adversaires pour "
 "l'ajouter à la leur."
 
 #: data/units/Necrophage.cfg:3
@@ -6687,7 +6645,7 @@ msgid ""
 "hoped-for food with poisonous claws."
 msgstr ""
 "Mus par un appétit maléfique pour la chair morte, les nécrophages attaquent "
-"avec des griffes empoisonnées ce qu'ils espèrent devenir leur nourriture."
+"leur nourriture tant espérée avec des griffes empoisonnées."
 
 #: data/units/Nightgaunt.cfg:3
 msgid "Nightgaunt"
@@ -6699,8 +6657,8 @@ msgid ""
 "effort to hide their souls of pure evil. These despicable creatures are able "
 "to hide at night, leaving no trace of their presence."
 msgstr ""
-"Les spectres nocturnes hantent les nuits, dissimulant leurs hideux visages "
-"derrière des masques pour cacher leurs âmes noires. Ces créatures ignobles "
+"Les spectres nocturnes hantent les nuits, dissimulant leur hideux visage "
+"derrière des masques pour cacher leur âme noire. Ces créatures ignobles "
 "peuvent se cacher la nuit, ne laissant aucune trace de leur présence."
 
 #: data/units/Noble_Commander.cfg:3
@@ -6717,7 +6675,7 @@ msgid ""
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
-"Jeune et impétueux, les guerriers sont habiles dans le maniement de l'épée "
+"Jeunes et impétueux, les guerriers sont habiles dans le maniement de l'épée "
 "mais vulnérables aux attaques distantes de leurs ennemis. Néanmoins ils ont "
 "le potentiel de devenir un jour de grands guerriers."
 
@@ -6786,8 +6744,8 @@ msgid ""
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
-"Bien que pas très forts en combat, les assassins orcs sont rapides et savent "
-"se défendre efficacement sur plusieurs types de terrain. Les assassins "
+"Bien que faibles en combat, les assassins orcs sont rapides et savent se "
+"défendre efficacement sur plusieurs types de terrain. Les assassins "
 "utilisent des dards empoisonnés qui infligent des dégâts continus à leurs "
 "victimes jusqu'a ce qu'elles se fasse soigner, soit par un soigneur, soit "
 "dans un village."
@@ -7014,8 +6972,8 @@ msgid ""
 "the life of an Outlaw. She dreams of founding her own Queendom with the "
 "plunder she finds on the road."
 msgstr ""
-"De noble lignée, la reine des bandits a appris le maniement de l'épée avec "
-"les plus grands généraux. Malgré tout, elle est le produit d'une "
+"De noble lignée, la princesse des bandits a appris le maniement de l'épée "
+"avec les plus grands généraux. Malgré tout, elle est le produit d'une "
 "aristocratie défaillante qui opta pour une vie de hors-la-loi. Elle rêve de "
 "fonder son propre royaume avec les pillards qu'elle rencontre sur les routes."
 
@@ -7157,7 +7115,7 @@ msgid ""
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
 "Les mages rouges attaquent avec de puissantes boules de feu, les chances de "
-"toucher l'ennemi étant ainsi très élevées. Aussi efficace de jour comme de "
+"toucher l'ennemi étant ainsi très élevées. Aussi efficaces de jour comme de "
 "nuit et rapides marcheurs, les mages rouges sont précieux dans presque "
 "toutes les situations."
 
@@ -7175,7 +7133,7 @@ msgid ""
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
-"Un Revenant est le cadavre morts-vivant d'un guerrier autrefois puissant. "
+"Un Revenant est le cadavre mort-vivant d'un guerrier autrefois puissant. "
 "Tandis que la volonté et l'âme du guerrier sont presque perdues, ses "
 "compétences en combat demeurent intactes."
 
@@ -7193,7 +7151,7 @@ msgstr ""
 "Les bandits sont des maîtres d'agilité et peuvent déborder l'ennemi en "
 "ignorant les zones de contrôle. Voleurs experts, ils possèdent la capacité "
 "de frapper par derrière, leur permettant de doubler les dommages occasionnés "
-"si un de leur alliés se trouve sur une case située du côté opposé de "
+"si un de leurs alliés se trouve sur une case située du côté opposé de "
 "l'ennemi attaqué."
 
 #: data/units/Rogue.cfg:63
@@ -7279,8 +7237,8 @@ msgid ""
 msgstr ""
 "Les sauriens lanceurs de glace ont abandonné tout entraînement dans les arts "
 "de la guérison afin de perfectionner leurs maîtrise des arts sombres. Bien "
-"que fragiles, ils peuvent invoquer la magie du nord glacé et conservent "
-"leurs capacités basiques de guérison."
+"que fragiles, ils peuvent invoquer la magie du nord glacé et conservent leur "
+"capacité basique de guérison."
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -7380,9 +7338,9 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
-"Bien que souvent considérés comme inférieur à leur équivalent terrestre, les "
-"orcs marins représentent une avancée pour tous les gobelinoïdes de par leur "
-"adaptation au milieu aquatique. Grâce à leur épée courbée, ce sont des "
+"Bien que souvent considérés comme inférieurs à leur équivalent terrestre, "
+"les orcs marins représentent une avancée pour tous les gobelinoïdes de par "
+"leur adaptation au milieu aquatique. Grâce à leur épée courbée, ce sont des "
 "guerriers habiles, mais leur manque d'arme à distance et leur faible défense "
 "sur la terre ferme sont des faiblesses stratégiques."
 
@@ -7394,7 +7352,7 @@ msgstr "Serpent des mers"
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
-"Les serpents des mers sont des monstres gigantesques capable à eux-seuls de "
+"Les serpents des mers sont des monstres gigantesques capables à eux-seuls de "
 "faire chavirer un bateau."
 
 #: data/units/Sergeant.cfg:3
@@ -7476,7 +7434,7 @@ msgstr ""
 "fut ressuscité par les sombres pouvoirs de la nécromancie, dont il est "
 "désormais le servant. Peut-être que le dragon squelettique n'est rien "
 "d'autres qu'un vieux tas d'os, mais peu parmi ceux qui ont pensé cela ont "
-"vécu suffisamment longtemps pour changer d'abis."
+"vécu suffisamment longtemps pour changer d'avis."
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
@@ -7509,7 +7467,7 @@ msgid ""
 msgstr ""
 "Les archers squelettes sont les cadavres morts-vivants des archers tombés "
 "dans la bataille. Comme tout les morts-vivants, ils sont particulièrement "
-"vulnérable aux flammes et aux attaques sacrées mais résistent aux attaques "
+"vulnérables aux flammes et aux attaques sacrées mais résistent aux attaques "
 "tranchantes."
 
 #: data/units/Sleeping_Gryphon.cfg:3
@@ -7584,7 +7542,7 @@ msgid ""
 msgstr ""
 "Les spectres sont les fantômes les plus puissants dans le rang des morts-"
 "vivants. Ils peuvent employer leur pouvoir pour invoquer une épée spectrale "
-"qui draine la vie de leurs ennemis et se renforcer eux-même. Ils poussent "
+"qui draine la vie de leurs ennemis et se renforcer eux-mêmes. Ils poussent "
 "également des râles lugubres qui glacent le cœur des plus faibles."
 
 #: data/units/Swordsman.cfg:3
@@ -7752,7 +7710,7 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Les chauves-souris vampire sont des créatures volantes mort-vivantes qui "
+"Les chauves-souris vampire sont des créatures volantes mortes-vivantes qui "
 "attaquent en mordant leurs victimes. Bien que leurs crocs ne soient pas très "
 "puissants, ils drainent le sang et la vie de leurs proies, permettant à la "
 "créature de se ressourcer."
@@ -7808,11 +7766,11 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
-"Gardiens de Weldyn, la capitale, le guet patrouille sur les remparts de la "
-"ville. Avec leur arbalètes, les guetteurs tirent sur leur ennemis sans que "
-"ceux-ci puisse riposter, même avec une attaque à distance. Parce qu'ils sont "
-"perchés sur les remparts, ils ne peuvent pas se déplacer, sauf sur les murs "
-"et dans le château."
+"Gardiens de Weldyn, la capitale, le guetteur patrouille sur les remparts de "
+"la ville. Avec leur arbalètes, les guetteurs tirent sur leur ennemis sans "
+"que ceux-ci puissent riposter, même avec une attaque à distance. Parce "
+"qu'ils sont perchés sur les remparts, ils ne peuvent pas se déplacer, sauf "
+"sur les murs et dans le château."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -7899,7 +7857,7 @@ msgstr ""
 "impossibles à distinguer d'arbres ordinaires. Leur forme est très lente et "
 "très robuste, et ne leur permet pas d'éviter très efficacement les attaques. "
 "Leur écorce épaisse est hautement résistante au froid, aux attaques "
-"contondantes, et aux flèches, bien que les lames n'aient aucun problème à la "
+"contondantes, et aux flèches, cependant les lames n'ont aucun problème à la "
 "trancher, et ils sont hautement inflammables. En tirant les nutriments de la "
 "terre, et l'énergie du soleil, les woses peuvent régénérer leurs membres "
 "blessés après un combat."
@@ -7915,7 +7873,7 @@ msgid ""
 "strengthening themselves. They also have a terrible wail that freezes the "
 "heart of the weak."
 msgstr ""
-"Les apparitions sont parmi le plus puissants fantômes dans les rangs des "
+"Les apparitions sont parmi les plus puissants fantômes dans les rangs des "
 "morts-vivants. Ils peuvent invoquer une épée spectrale qui draine la vie de "
 "leurs ennemis, se renforçant ainsi eux-mêmes. Ils possèdent également un "
 "terrible râle qui glace le cœur des plus faibles."
@@ -7930,7 +7888,7 @@ msgid ""
 "survived an encounter with one, and their existence is doubted by many."
 msgstr ""
 "Les yétis sont de gigantesques humanoïdes qui vivent dans les montagnes. Peu "
-"ont survécu à une de leurs rencontre et leur existence même est remise en "
+"ont survécu à une de leurs rencontres et leur existence même est remise en "
 "cause."
 
 #: data/units/Young_Ogre.cfg:3
@@ -7946,7 +7904,7 @@ msgstr ""
 "Encore jeunes, les ogres sont enrôlés dans l'armée pour être entraînés. "
 "Comme ils ne sont pas assez habiles pour manier une arme, on leur a donné un "
 "grand couteau avec l'espoir qu'ils seront assez intelligents pour l'utiliser "
-"contre les ennemis plutôt que contre eux-même."
+"contre les ennemis plutôt que contre eux-mêmes."
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -8021,9 +7979,8 @@ msgid "+Catalan Translation"
 msgstr "+Traduction catalane"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Traduction finlandaise"
+msgstr "+Traduction chinoise"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -8042,9 +7999,8 @@ msgid "+English (GB) Translation"
 msgstr "+Traduction anglaise (de Grande Bretagne)"
 
 #: src/about.cpp:192
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Traduction russe"
+msgstr "+Traduction estonienne"
 
 #: src/about.cpp:196
 msgid "+Finnish Translation"
@@ -8095,7 +8051,6 @@ msgid "+Slovak Translation"
 msgstr "+Traduction slovaque"
 
 #: src/about.cpp:284
-#, fuzzy
 msgid "+Slovenian Translation"
 msgstr "+Traduction slovaque"
 
@@ -8355,20 +8310,17 @@ msgid "level"
 msgstr "niveau"
 
 #: src/dialogs.cpp:666 src/display.cpp:1031 src/help.cpp:1100
-#, fuzzy
 msgid "HP: "
-msgstr "PV"
+msgstr "PV : "
 
 #: src/dialogs.cpp:670 src/dialogs.cpp:678 src/display.cpp:1035
 #: src/display.cpp:1043 src/playturn.cpp:1961
-#, fuzzy
 msgid "XP: "
-msgstr "XP"
+msgstr "XP : "
 
 #: src/dialogs.cpp:683 src/display.cpp:1047 src/help.cpp:1101
-#, fuzzy
 msgid "Moves: "
-msgstr "Déplacements"
+msgstr "Déplacements : "
 
 #: src/display.cpp:994
 msgid "healthy"
@@ -8633,18 +8585,16 @@ msgid "Play a game against AI opponents"
 msgstr "Jouer contre l'ordinateur"
 
 #: src/game.cpp:1309 src/multiplayer.cpp:142
-#, fuzzy
 msgid "Login: "
-msgstr "Connexion"
+msgstr "Connexion : "
 
 #: src/game.cpp:1379
 msgid "Language"
 msgstr "Langue"
 
 #: src/game.cpp:1380
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Choisissez votre langue"
+msgstr "Choisissez votre langue préférée : "
 
 #: src/game.cpp:1419
 msgid "Error loading game configuration files: '"
@@ -8655,39 +8605,33 @@ msgid "' (The game will now exit)"
 msgstr " » (Le jeu va maintenant se terminer)"
 
 #: src/game.cpp:1487
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "La Bataille pour Wesnoth"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Victoire"
+msgstr "Victoire : "
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Défaite"
+msgstr "Défaite : "
 
+# Piou2fois : Je préfère "evolue" à "avance"
 #: src/help.cpp:1062
-#, fuzzy
 msgid "Advances to: "
-msgstr "Avance en"
+msgstr "Evolue en : "
 
 #: src/help.cpp:1083
-#, fuzzy
 msgid "Abilities: "
-msgstr "Capacités"
+msgstr "Capacités : "
 
 #: src/help.cpp:1102
-#, fuzzy
 msgid "Alignment: "
-msgstr "Alignement"
+msgstr "Alignement : "
 
 #: src/help.cpp:1106
-#, fuzzy
 msgid "Required XP: "
-msgstr "Expérience requise"
+msgstr "Expérience requise : "
 
 #: src/help.cpp:1117 src/reports.cpp:236
 msgid "attacks"
@@ -8811,39 +8755,32 @@ msgid "Map Generator"
 msgstr "Générateur de carte"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Players:"
 msgstr "Joueurs : "
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Width:"
-msgstr "Largeur"
+msgstr "Largeur : "
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Height:"
-msgstr "Hauteur"
+msgstr "Hauteur : "
 
 #: src/mapgen_dialog.cpp:89
-#, fuzzy
 msgid "Iterations:"
-msgstr "Itérations"
+msgstr "Itérations : "
 
 #: src/mapgen_dialog.cpp:90
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Taille des collines"
+msgstr "Taille des collines : "
 
 #: src/mapgen_dialog.cpp:91
-#, fuzzy
 msgid "Villages:"
-msgstr "Villages"
+msgstr "Villages : "
 
 #: src/mapgen_dialog.cpp:92
-#, fuzzy
 msgid "Landform:"
-msgstr "Forme du terrain"
+msgstr "Forme du terrain : "
 
 #: src/mapgen_dialog.cpp:198
 msgid "Roads Between Castles"
@@ -8870,9 +8807,8 @@ msgid "Connect to Host"
 msgstr "Connection au serveur"
 
 #: src/multiplayer.cpp:92
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Choisissez un serveur sur lequel vous connecter"
+msgstr "Choisissez un serveur sur lequel vous connecter : "
 
 #: src/multiplayer.cpp:117
 msgid "Connecting to remote host..."
@@ -8883,30 +8819,28 @@ msgid "You must log in to this server"
 msgstr "Vous devez vous connecter à ce serveur"
 
 #: src/multiplayer_connect.cpp:298
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Place vacante"
+msgstr "(Place vacante)"
 
 #: src/multiplayer_connect.cpp:304
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Joueur local anonyme"
 
 #: src/multiplayer_connect.cpp:310
-#, fuzzy
 msgid "Computer player"
 msgstr "Ordinateur"
 
 #: src/multiplayer_connect.cpp:313
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(place vacante)"
 
 #: src/multiplayer_connect.cpp:447
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "Aucun camp non-aléatoire dans l'ére actuelle"
 
 #: src/multiplayer_connect.cpp:463
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "Aucun leader pour la faction $faction n'est trouvable"
 
 #: src/multiplayer_connect.cpp:477 src/multiplayer_connect.cpp:486
 msgid "Team"
@@ -8921,7 +8855,6 @@ msgid "Faction"
 msgstr "Faction"
 
 #: src/multiplayer_connect.cpp:487
-#, fuzzy
 msgid "Color"
 msgstr "Couleur"
 
@@ -8930,7 +8863,6 @@ msgid "Gold"
 msgstr "Or"
 
 #: src/multiplayer_connect.cpp:490
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr "Ordinateur contre ordinateur"
 
@@ -8938,9 +8870,10 @@ msgstr "Ordinateur contre ordinateur"
 msgid "I'm Ready"
 msgstr "Je suis prêt"
 
+# Piou2fois : sides<->camps?
 #: src/multiplayer_connect.cpp:507
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Le scénario n'est pas valide car il ne possède pas de camps."
 
 #: src/multiplayer_connect.cpp:797
 msgid "Game Lobby"
@@ -8963,9 +8896,8 @@ msgid "Empty"
 msgstr "Vide"
 
 #: src/multiplayer_connect.cpp:824
-#, fuzzy
 msgid "Era not available: "
-msgstr "Aucun objectif disponible"
+msgstr "Ere non disponible : "
 
 #: src/multiplayer_connect.cpp:890
 msgid "This is not a multiplayer save"
@@ -8973,7 +8905,7 @@ msgstr "Cette sauvegarde ne provient pas d'un jeu multi-joueurs"
 
 #: src/multiplayer_connect.cpp:943
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Ere $era introuvable"
 
 #: src/multiplayer_connect.cpp:961
 msgid ""
@@ -8984,24 +8916,20 @@ msgstr ""
 "@Vaincre le(s) chef(s) ennemi(s)"
 
 #: src/multiplayer_connect.cpp:997
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "En attente d'autres joueurs"
+msgstr "En attente d'autres joueurs..."
 
 #: src/multiplayer_create.cpp:45
-#, fuzzy
 msgid "Name of game:"
-msgstr "Nom du jeu :"
+msgstr "Nom du jeu : "
 
 #: src/multiplayer_create.cpp:47
-#, fuzzy
 msgid "Era:"
-msgstr "Ère :"
+msgstr "Ère : "
 
 #: src/multiplayer_create.cpp:48
-#, fuzzy
 msgid "Map to play:"
-msgstr "Carte à jouer :"
+msgstr "Carte à jouer : "
 
 #: src/multiplayer_create.cpp:49
 msgid "Fog Of War"
@@ -9086,19 +9014,16 @@ msgid "Turns: "
 msgstr "Tours : "
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "illimité"
+msgstr "Nombre de tours illimité"
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Village Gold: "
 msgstr "Or par village : "
 
 #: src/multiplayer_create.cpp:216
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Modificateurs de Terrain"
+msgstr "Modifications d'expérience : "
 
 #: src/multiplayer_create.cpp:319
 msgid "Players: "
@@ -9166,7 +9091,7 @@ msgstr "Marron"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Couleur invalide"
 
 # il faudrait choisir une traduction de leader une fois pour toute :)
 #: src/multiplayer_wait.cpp:114
@@ -9186,19 +9111,16 @@ msgid "Getting game data..."
 msgstr "Réception des données du jeu..."
 
 #: src/multiplayer_wait.cpp:181
-#, fuzzy
 msgid "No multiplayer sides available in this game"
 msgstr "Il n'y a aucun camp de disponible."
 
 #: src/multiplayer_wait.cpp:203
-#, fuzzy
 msgid "Era not available"
-msgstr "Aucun objectif disponible"
+msgstr "Ere non disponible"
 
 #: src/multiplayer_wait.cpp:211
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Aucun camp multi-joueurs."
+msgstr "Aucun camp multi-joueurs"
 
 #: src/multiplayer_wait.cpp:231
 msgid "Choose your side:"
@@ -9206,11 +9128,11 @@ msgstr "Choisissez votre camp :"
 
 #: src/multiplayer_wait.cpp:421
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:421
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:422 src/playturn.cpp:1783
 msgid "unit^Gold"
@@ -9226,7 +9148,7 @@ msgstr "Fin de la partie"
 
 #: src/playlevel.cpp:758
 msgid "The game is over."
-msgstr "La partie est terminé."
+msgstr "La partie est terminée."
 
 #: src/playlevel.cpp:771
 msgid "Defeat"
@@ -9237,33 +9159,28 @@ msgid "You have been defeated!"
 msgstr "Vous avez été battu !"
 
 #: src/playlevel.cpp:841
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Or restant"
+msgstr "Or restant : "
 
 #: src/playlevel.cpp:844
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Bonus de fin anticipée"
+msgstr "Bonus de fin anticipée : "
 
 #: src/playlevel.cpp:846
 msgid "per turn"
 msgstr "par tour"
 
 #: src/playlevel.cpp:847
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Tours finis de façon anticipée"
+msgstr "Tours finis de façon anticipée : "
 
 #: src/playlevel.cpp:849
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus : "
 
 #: src/playlevel.cpp:851
-#, fuzzy
 msgid "Gold: "
-msgstr "Or"
+msgstr "Or : "
 
 #: src/playlevel.cpp:856
 #, no-c-format
@@ -9271,9 +9188,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80 % de l'or est gardé pour le prochain scénario"
 
 #: src/playlevel.cpp:857
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Or conservé"
+msgstr "Or conservé : "
 
 #: src/playlevel.cpp:862
 msgid "Victory"
@@ -9320,9 +9236,8 @@ msgid "Attack Enemy"
 msgstr "Attaquer l'ennemi"
 
 #: src/playturn.cpp:662
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Choisissez une arme"
+msgstr "Choisissez une arme : "
 
 #: src/playturn.cpp:1269
 msgid ""
@@ -9396,9 +9311,8 @@ msgid "Recruit"
 msgstr "Recruter"
 
 #: src/playturn.cpp:1802 src/playturn.cpp:1986
-#, fuzzy
 msgid "Select unit:"
-msgstr "Sélectionner l'unité"
+msgstr "Sélectionner l'unité : "
 
 #: src/playturn.cpp:1836
 msgid "You don't have enough gold to recruit that unit"
@@ -9445,9 +9359,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Vous devez posséder au moins $cost pièces d'or pour rappeler une unité"
 
 #: src/playturn.cpp:1960
-#, fuzzy
 msgid "level: "
-msgstr "niveau"
+msgstr "niveau : "
 
 #: src/playturn.cpp:1973
 msgid "Dismiss Unit"
@@ -9458,9 +9371,8 @@ msgid "Recall"
 msgstr "Rappeler"
 
 #: src/playturn.cpp:2030
-#, fuzzy
 msgid "Message:"
-msgstr "Message"
+msgstr "Message : "
 
 #: src/playturn.cpp:2030
 msgid "Send to allies only"
@@ -9537,20 +9449,21 @@ msgstr ""
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Thème préféré sauvegardé : "
 
+# Piou2fois : j'ai mis des parenthèses pour éviter les répétitions de "partie"
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
 msgstr ""
+"Le nouveau thème sera effectif à la prochaine partie (nouvelle ou chargée)"
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
 msgstr "Placez l'étiquette"
 
 #: src/playturn.cpp:2507
-#, fuzzy
 msgid "Label:"
-msgstr "Étiquette"
+msgstr "Étiquette : "
 
 #: src/playturn.cpp:2639
 msgid ""
@@ -9587,9 +9500,8 @@ msgstr ""
 "ennemies."
 
 #: src/reports.cpp:108
-#, fuzzy
 msgid "invisible: "
-msgstr "invisible"
+msgstr "invisible : "
 
 #: src/reports.cpp:113
 msgid ""
@@ -9600,9 +9512,8 @@ msgstr ""
 "normale et a une attaque en moins qu'à son habitude."
 
 #: src/reports.cpp:113
-#, fuzzy
 msgid "slowed: "
-msgstr "ralentie"
+msgstr "ralentie : "
 
 #: src/reports.cpp:118
 msgid ""
@@ -9621,9 +9532,8 @@ msgstr ""
 "pas baisser ses points de vie en dessous de 1."
 
 #: src/reports.cpp:118
-#, fuzzy
 msgid "poisoned: "
-msgstr "empoisonné"
+msgstr "empoisonné : "
 
 #: src/reports.cpp:125
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -9632,28 +9542,24 @@ msgstr ""
 "attaquer."
 
 #: src/reports.cpp:125
-#, fuzzy
 msgid "stone: "
-msgstr "pierre"
+msgstr "pierre : "
 
 #: src/reports.cpp:235
 msgid "damage"
 msgstr "dégâts"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Unités justes"
+msgstr "Unités justes : "
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Unités neutres"
+msgstr "Unités neutres : "
 
 #: src/reports.cpp:256
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Unités chaotiques"
+msgstr "Unités chaotiques : "
 
 #: src/reports.cpp:310
 msgid "Owned village"
@@ -9668,9 +9574,8 @@ msgid "Allied village"
 msgstr "Village allié"
 
 #: src/reports.cpp:374
-#, fuzzy
 msgid "Observers:"
-msgstr "Observateurs"
+msgstr "Observateurs : "
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
@@ -9689,9 +9594,8 @@ msgid "Unterminated [element] tag"
 msgstr ""
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "Ère invalide sélectionnée"
+msgstr "Nom d'étiquette incorrect"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
@@ -9718,9 +9622,8 @@ msgid "Found invalid closing tag for tag $tag (line $line)"
 msgstr ""
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
-#, fuzzy
 msgid "Empty variable name"
-msgstr "Ère invalide sélectionnée"
+msgstr "Nom de variable vide"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -9732,11 +9635,11 @@ msgstr ""
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error dans le fichier $file (ligne $line, colonne $column)"
 
 #: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error (ligne $line, colonne $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
