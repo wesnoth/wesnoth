@@ -354,7 +354,7 @@ void game::add_player(network::connection player)
 		
 		//send observer join of all the observers in the game to player
 		for(std::vector<network::connection>::const_iterator pl = players_.begin()+1; pl != players_.end(); ++pl) {
-			if(sides_.count(*pl) == 0) {
+			if(sides_.count(*pl) == 0 && *pl != player) {
 				info = player_info_->find(*pl);
 				if(info != player_info_->end()) {
 					cfg.clear();
