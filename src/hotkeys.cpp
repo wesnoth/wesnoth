@@ -48,6 +48,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("resistance",HOTKEY_ATTACK_RESISTANCE));
 		m.insert(val("terraintable",HOTKEY_TERRAIN_TABLE));
 		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
+		m.insert(val("renameunit",HOTKEY_RENAME_UNIT));
 		m.insert(val("save",HOTKEY_SAVE_GAME));
 		m.insert(val("recruit",HOTKEY_RECRUIT));
 		m.insert(val("repeatrecruit",HOTKEY_REPEAT_RECRUIT));
@@ -296,6 +297,10 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 		case HOTKEY_UNIT_DESCRIPTION:
 			if(executor)
 				executor->unit_description();
+			break;
+		case HOTKEY_RENAME_UNIT:
+			if(executor)
+				executor->rename_unit();
 			break;
 		case HOTKEY_SAVE_GAME:
 			if(executor)

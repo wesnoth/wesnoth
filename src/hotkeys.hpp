@@ -28,7 +28,7 @@ enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
                       HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
                       HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
                       HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
-                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
+                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_SAVE_GAME,
                       HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
                       HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE, HOTKEY_MUTE,
                       HOTKEY_NULL };
@@ -83,6 +83,7 @@ public:
 	virtual void terrain_table() = 0;
 	virtual void attack_resistance() = 0;
 	virtual void unit_description() = 0;
+	virtual void rename_unit() = 0;
 	virtual void save_game() = 0;
 	virtual void toggle_grid() = 0;
 	virtual void status_table() = 0;

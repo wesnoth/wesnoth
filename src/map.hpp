@@ -91,7 +91,9 @@ public:
 	//functions to manipulate starting positions of the different sides.
 	const location& starting_position(int side) const;
 	int num_starting_positions() const;
-	bool is_starting_position(const location& loc) const;
+	int is_starting_position(const location& loc) const;
+
+	void set_starting_position(int side, const location& loc);
 
 	//function which, given a location, will tell if that location is
 	//on the map. Should be called before indexing using []

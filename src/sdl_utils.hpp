@@ -45,6 +45,8 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& rect);
 
+SDL_Surface *rotate( SDL_Surface *s, float ang );
+
 struct pixel_data
 {
 	pixel_data() : r(0), g(0), b(0)

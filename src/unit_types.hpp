@@ -15,6 +15,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
+#include "race.hpp"
 #include "team.hpp"
 
 #include <string>
@@ -125,7 +126,11 @@ public:
 	//this class assumes that the passed in references will remain valid
 	//for at least as long as the class instance
 	unit_type(const config& cfg, const movement_type_map& movement_types,
-	          const std::vector<config*>& traits);
+	          const race_map& races, const std::vector<config*>& traits);
+
+	int num_traits() const;
+
+	std::string generate_description() const;
 
 	//the name of the unit in the current language setting
 	std::string language_name() const;
@@ -172,6 +177,7 @@ public:
 	bool is_skirmisher() const;
 	bool teleports() const;
 	bool nightvision() const;
+	bool not_living() const;
 
 	bool has_ability(const std::string& ability) const;
 
@@ -179,6 +185,8 @@ public:
 
 private:
 	const config& cfg_;
+
+	const unit_race* race_;
 
 	double alpha_;
 
@@ -204,6 +212,7 @@ struct game_data
 	movement_type_map movement_types;
 	typedef std::map<std::string,unit_type> unit_type_map;
 	unit_type_map unit_types;
+	race_map races;
 };
 
 #endif

@@ -247,6 +247,12 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 				} else if(*i1 == '@') {
 					col = GOOD_COLOUR;
 					++i1;
+				} else if(*i1 == '{') {
+					col = NORMAL_COLOUR;
+					++i1;
+				} else if(*i1 == '}') {
+					col = BLACK_COLOUR;
+					++i1;
 				} else if(*i1 == '+') {
 					sz += 2;
 					++i1;

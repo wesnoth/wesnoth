@@ -657,24 +657,16 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						//	 change the combo_type of another network
 						//	 player that has already joined the game.
 
-						//Make sure only one side is the local player
 						if(combo_type[n].process(mousex,mousey,left_button)) {
 							if(combo_type[n].selected() == 0) {
 								sides[n]->values["controller"] = "human";
 								sides[n]->values["description"] = preferences::login();
-								for(size_t m = 0; m != combo_type.size(); ++m) {
-									if(combo_type[m].selected() == 0 && m != n) {
-										combo_type[m].set_selected(1);
-										sides[m]->values["controller"] = "network";
-										sides[m]->values["description"] = "";
-									}
-								}
 							}else if(combo_type[n].selected() == 1){
 								sides[n]->values["controller"] = "network";
 								sides[n]->values["description"] = "";
 							}else if(combo_type[n].selected() == 2){
 								sides[n]->values["controller"] = "ai";
-								sides[n]->values["description"] = "";
+								sides[n]->values["description"] = string_table["ai_controlled"];
 							}
 						}
 								

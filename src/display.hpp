@@ -174,6 +174,9 @@ public:
 	//function to invalidate all tiles.
 	void invalidate_all();
 
+	//function to invalidate a specific tile
+	void invalidate(const gamemap::location& loc);
+
 	//function to invalidate the game status displayed on the sidebar.
 	void invalidate_game_status();
 
@@ -313,7 +316,6 @@ private:
 	int lastDraw_;
 	int drawSkips_;
 
-	void invalidate(const gamemap::location& loc);
 	void invalidate_route();
 
 	std::set<gamemap::location> invalidated_;

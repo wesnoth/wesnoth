@@ -594,6 +594,10 @@ void turn_info::show_menu()
 
 	if(un != units_.end()) {
 		menu.push_back(string_table["describe_unit"]);
+
+		//if the unit is on our side, we can rename it
+		if(un->second.side() == gui_.viewing_team()+1)
+			menu.push_back(string_table["rename_unit"]);
 	}
 
 	const int res = gui::show_dialog(gui_,NULL,"",
@@ -608,6 +612,8 @@ void turn_info::show_menu()
 
 	if(result == string_table["describe_unit"]) {
 		unit_description();
+	} else if(result == string_table["rename_unit"]) {
+		rename_unit();
 	} else if(result == string_table["preferences"]) {
 		preferences::show_preferences_dialog(gui_);
 	} else if(result == string_table["end_turn"]) {
@@ -959,6 +965,20 @@ void turn_info::unit_description()
 	}
 }
 
+void turn_info::rename_unit()
+{
+	const unit_map::iterator un = current_unit();
+	if(un == units_.end() || gui_.viewing_team()+1 != un->second.side())
+		return;
+
+	std::string name = un->second.description();
+	const int res = gui::show_dialog(gui_,NULL,"",string_table["rename_unit"], gui::OK_CANCEL,NULL,NULL,"",&name);
+	if(res == 0) {
+		un->second.rename(name);
+		gui_.invalidate_unit();
+	}
+}
+
 void turn_info::save_game()
 {
 	std::stringstream stream;
@@ -970,8 +990,7 @@ void turn_info::save_game()
 
 	if(res == 0) {
 		recorder.save_game(gameinfo_,label);
-		gui::show_dialog(gui_,NULL,"",
-		                 string_table["save_confirm_message"], gui::OK_ONLY);
+		gui::show_dialog(gui_,NULL,"",string_table["save_confirm_message"], gui::OK_ONLY);
 	}
 }
 
@@ -1180,9 +1199,9 @@ void turn_info::recall()
 	}
 }
 
-unit_map::const_iterator turn_info::current_unit()
+unit_map::iterator turn_info::current_unit()
 {
-	unit_map::const_iterator i = units_.find(last_hex_);
+	unit_map::iterator i = units_.find(last_hex_);
 	if(i == units_.end()) {
 		i = units_.find(selected_hex_);
 	}

@@ -13,6 +13,7 @@
 
 #include "SDL.h"
 
+#include "about.hpp"
 #include "actions.hpp"
 #include "ai.hpp"
 #include "config.hpp"
@@ -223,6 +224,8 @@ int play_game(int argc, char** argv)
 			std::cerr << "Language data not found\n";
 		}
 	}
+
+	image::set_wm_icon();
 
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
@@ -446,6 +449,9 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::EDIT_PREFERENCES) {
 			const preferences::display_manager disp_manager(&disp);
 			preferences::show_preferences_dialog(disp);
+			continue;
+		} else if(res == gui::SHOW_ABOUT) {
+			about::show_about(disp);
 			continue;
 		}
 

@@ -35,6 +35,10 @@ public:
 	const unit_type& type() const;
 	std::string name() const;
 	const std::string& description() const;
+	const std::string& underlying_description() const;
+
+	void rename(const std::string& new_description);
+
 	int hitpoints() const;
 	int max_hitpoints() const;
 	int experience() const;
@@ -124,7 +128,7 @@ private:
 	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;
 
-	std::string description_;
+	std::string underlying_description_, description_;
 
 	bool recruit_;
 
@@ -143,7 +147,9 @@ private:
 
 	gamemap::location goto_;
 
-	bool loyal_;
+	enum UPKEEP_COST { UPKEEP_FREE, UPKEEP_LOYAL, UPKEEP_FULL_PRICE };
+
+	UPKEEP_COST upkeep_;
 
 	void apply_modifications();
 };

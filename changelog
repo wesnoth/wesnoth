@@ -1,24 +1,32 @@
 Version CVS:
+ * radical storyline changes, this breaks saves from older versions
  * fog of war
  * support for multiple campaigns
- * new campaign: 'Hordes of the Undead'
+ * enemy units do not vanish anymore when enemy leader is killed
  * new scenarios for 'Heir to the Throne' (Konrad's Tale):
    * Northern Winter
    * The Lost General
- * scenario balacing:
-   * Bay of Pearl
+   * Hasty Alliance
+   * Sceptre of Fire
+   * A Choice Must Be Made
+   * Snow Plains
+   * Swamp of Dread
+ * scenario balancing:
+   * Bay of Pearls
    * Isle of Anduin
    * Dwarven Doors
    * Mountain Pass
    * Valley of Death
+ * new campaign started: 'Hordes of the Undead'
  * multiplayer improvements:
    * show minimap when selecting map for new game
    * configurable starting gold per side
    * configurable 'gold per village'
    * teaming (alliances)
    * configurable number of turns
- * new Makefile (debugging is now enabled by default)
- * added Makefile.nodebug 
+   * configurable fog of war
+   * configurable shroud
+ * autotools has been taken in use, old Makefiles can be found under utils/
  * updated docs - INSTALL, MANUAL
  * man-pages for wesnoth and wesnothd (contributed by Debian package maintainer) - doc/man/
  * added a script for easy Slackware package creation - utils/slacknoth
@@ -36,21 +44,31 @@ Version CVS:
    * Sea Hag
    * Goblin Pillager
    * Death Knight
+   * Elvish Scout
+ * undead are now immune to poinson and plague
  * reduced movement for Elvish Lord
  * reduced cost of Mage
  * changed Mage attack to fire based
  * changed Shaman slowing attack to 3-2 from 4-1, and reduced cost from 21 to 18
  * changed 'Red Mage' to neutral alignment
+ * removed 'Elvish Outrider' as evolution from 'Horseman'
+ * fixed max experience for Orcish Warlord.
+ * auto-naming (currently elves and humans only) of units and renaming of units
+ * units now have races defined in cfg-files
  * more and improved unit graphics and animations
  * changed team 6 color to purple
  * new translations:
    * german
+   * hungarian
  * updated translations:
    * danish
    * french
+   * spanish
  * translated manuals:
    * french
    * italian
+   * spanish
+   * german
  * changed "AI" in the english config to "Computer Player"
  * fixed problem with stripping of non-latin characters at end of string in config files
  * allow internationalization of traits
@@ -58,13 +76,14 @@ Version CVS:
  * added in support for some special effects: flashing and scrolling/tremors
  * added coding support for displaying different terrain images (particularly useful for villages) at different times of the day
  * fixed minor bugs in unit configuration files for Elvish Sharpshooter and Fencer
- * fixed max experience for Orcish Warlord.
  * footsteps disappear as you walk over them
  * text is drawn on screen progressively instead of all at once during introductory sequence
  * fixed problems with map updating on map scene
  * fixed bug with 'slow' attacks sometimes causing saved games to be corrupt
  * fixed bug with crashing when switch to full screen from preferences menu
  * updated MapEditor so it compiles again
+ * fixed tiny maps bug 
+ * fixed editor so it compiles again
  * fixed problem with items on status table displaying on top of each other
  * fixed problem with server crashing on startup
  * converted combat calculations to use fixed-point math
@@ -80,6 +99,7 @@ Version CVS:
  * fixed seg fault bug
  * fixed energy bar images
  * changed energy movement orbs
+ * white spaces were changed to _ in scenario IDs and next_scenarios
  * fixed problem with loading saved games with duplicate roles
  * fixed bug in AI path finding
  * fixed problem with undos/redos causing assertion failure

@@ -106,6 +106,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0)
 {
 	new_turn();
+
 	image::set_zoom(zoom_);
 
 	gameStatusRect_.w = 0;
@@ -376,6 +377,8 @@ void display::bounds_check_position()
 	const double min_zoom = min_zoom1 > min_zoom2 ? min_zoom1 : min_zoom2;
 	const double max_zoom = 200.0;
 
+	const int orig_zoom = int(zoom_);
+
 	zoom_ = floor(zoom_);
 
 	if(zoom_ < min_zoom) {
@@ -400,6 +403,9 @@ void display::bounds_check_position()
 
 	if(ypos_ < 0.0)
 		ypos_ = 0.0;
+
+	if(int(zoom_) != orig_zoom)
+		image::set_zoom(zoom_);
 }
 
 void display::redraw_everything()
@@ -575,13 +581,13 @@ void display::draw_game_status(int x, int y)
 				<< string_table["income"] << ": " << data.net_income << "\n";
 	}
 
-	if(map_.on_board(mouseoverHex_)) {
+	if(map_.on_board(mouseoverHex_) && !shrouded(mouseoverHex_.x,mouseoverHex_.y)) {
 		const gamemap::TERRAIN terrain = map_[mouseoverHex_.x][mouseoverHex_.y];
 		std::string name = map_.terrain_name(terrain);
 		std::string underlying_name = map_.underlying_terrain_name(terrain);
 
 		if(terrain == gamemap::CASTLE &&
-		   map_.is_starting_position(mouseoverHex_)) {
+		   map_.is_starting_position(mouseoverHex_) != -1) {
 			name = "keep";
 		}
 
@@ -1444,7 +1450,7 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	                           map_.get_terrain_info(terrain).adjacent_image());
 
 	if(terrain == gamemap::CASTLE &&
-	   map_.is_starting_position(gamemap::location(x,y))) {
+	   map_.is_starting_position(gamemap::location(x,y)) != -1) {
 		image = "terrain/keep";
 	}
 

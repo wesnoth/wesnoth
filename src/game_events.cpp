@@ -350,7 +350,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 
 		//if the if statement passed, then execute all 'then' statements,
 		//otherwise execute 'else' statements
-		std::vector<config*>& commands = cfg->children[type];
+		std::vector<config*>& commands = (*cond)->children[type];
 		for(std::vector<config*>::iterator cmd = commands.begin();
 		    cmd != commands.end(); ++cmd) {
 			handle_event(event_info,*cmd);
@@ -467,6 +467,7 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
+			screen->invalidate(loc);
 		} else {
 			state_of_game->available_units.push_back(new_unit);
 		}

@@ -132,6 +132,16 @@ manager::~manager()
 	flush_cache();
 }
 
+void set_wm_icon()
+{
+	//this code seems to only display the top part of the icon in Windows XP
+//	SDL_Surface* const icon = scale_surface(get_image("icon.png",UNSCALED),32,32);
+//	if(icon != NULL) {
+//		std::cerr << "setting icon...\n";
+//		::SDL_WM_SetIcon(icon,NULL);
+//	}
+}
+
 void set_pixel_format(SDL_PixelFormat* format)
 {
 	pixel_format = format;
@@ -164,11 +174,6 @@ void set_zoom(double amount)
 
 SDL_Surface* get_image(const std::string& filename,TYPE type)
 {
-	if(pixel_format == NULL) {
-		std::cerr << "pixel format uninitialized\n";
-		return NULL;
-	}
-
 	if(type == GREYED) {
 		return get_tinted(filename,GREY_IMAGE);
 	} else if(type == BRIGHTENED) {
@@ -218,11 +223,14 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 			return NULL;
 		}
 
-		SDL_Surface* const conv = SDL_ConvertSurface(surf,
-						                     pixel_format,SDL_SWSURFACE);
-		SDL_FreeSurface(surf);
+		if(pixel_format != NULL) {
+			SDL_Surface* const conv = SDL_ConvertSurface(surf,
+							                     pixel_format,SDL_SWSURFACE);
+			SDL_FreeSurface(surf);
+			surf = conv;
+		}
 
-		i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,conv))
+		i = images_.insert(std::pair<std::string,SDL_Surface*>(filename,surf))
 				               .first;
 	}
 

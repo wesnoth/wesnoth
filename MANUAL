@@ -9,7 +9,7 @@ Controls
    Escape:         Exit game, exit menu
    z:              Zoom in
    x:              Zoom out
-   c:              Default zoom level
+   c:              Reset zoom to default
    u:              Undo last move (only deterministic moves can be undone)
    r:              Redo move
    n:              Cycle through units that have movement left
@@ -25,17 +25,16 @@ Controls
    ctrl-d:         View defensive ratings of current unit against attacks
    ctrl-t:         View how the current unit behaves in various terrain
    ctrl-s:         Save game
-   ctrl-m:         Mute/unmute sound and music
 
 
 Orbs
 
 On the top of the energy bar shown next to each unit of yours is an orb. This orb is:
 
-   * green if you control the unit and it hasn't moved this turn
-   * yellow if you control the unit and it has moved this turn, but could still move further.
-   * red if you control this unit, but it has already used all its movement this turn
-   * blue if the unit is an ally, but you cannot move it 
+    * green if you control the unit and it hasn't moved this turn
+    * yellow if you control the unit and it has moved this turn, but could still move further.
+    * red if you control this unit, but it has already used all its movement this turn
+    * blue if the unit is an ally, but you cannot move it 
 
 Enemy units have no orb on the top of their energy bar. (In older versions < 0.5.2 there was a black orb on the top of energy bar of enemy units)
 
@@ -49,9 +48,7 @@ Gold
 
 Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 1 more gold piece for every village that side controls.
 
-Each unit also has a maintenance cost. The maintenance cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a maintenance cost associated with them. Maintenance is only paid if the total maintenance of a side's units is greater than the number of villages that side controls. Maintenance paid is the difference between the number of villages and the maintenance cost.
-
-So, the formula for determining the income per turn is,
+Each unit also has a maintenance cost. The maintenance cost is generally equal to the level of the unit (but see the 'Loyal' trait below). Units that are not recalled or recruited - i.e. that lead the side or join the side voluntarily - do not have a maintenance cost associated with them. Maintenance is only paid if the total maintenance of a side's units is greater than the number of villages that side controls. Maintenance paid is the difference between the number of villages and the maintenance cost. So, the formula for determining the income per turn is,
 
 2 + villages - maximum(0,maintenance - villages)
 
@@ -115,13 +112,15 @@ Every unit has an alignment: lawful, neutral, or chaotic. Their alignment affect
  |  4   |    dusk    |
  |  5   |    night   |
  |  6   |    night   |
-	  
+
 Units that are Lawful deal 25% more damage at day, and 25% less damage at night. Units that are Chaotic deal 25% more damage at night, and 25% less damage at day. Neutral units have their fighting unaffected by the day/night cycle.
 
 
 Healing
 
 Injured units in villages will recover 8 hitpoints every turn. Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal. Units next to unit(s) with the 'heal' ability will heal a maximum of 4 hitpoints per turn, and 8 hitpoints per turn for unit(s) with the 'cure' ability. However the more units around a unit that can heal, the less each one will be healed.
+
+'Heal' prevents poisoning to cause damage while 'cure' removes poisoning. When poisoning is cured unit does not gain hitpoints on that turn.
 
 
 Experience

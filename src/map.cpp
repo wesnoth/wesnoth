@@ -162,8 +162,8 @@ gamemap::gamemap(config& cfg, const std::string& data) : tiles_(1)
 std::string gamemap::write() const
 {
 	std::stringstream str;
-	for(int i = 0; i != x(); ++i) {
-		for(int j = 0; j != y(); ++j) {
+	for(int j = 0; j != y(); ++j) {
+		for(int i = 0; i != x(); ++i) {
 			int n;
 			for(n = 0; n != 10; ++n) {
 				if(startingPositions_[n] == location(i,j))
@@ -200,11 +200,19 @@ int gamemap::num_starting_positions() const
 	return sizeof(startingPositions_)/sizeof(*startingPositions_);
 }
 
-bool gamemap::is_starting_position(const gamemap::location& loc) const
+int gamemap::is_starting_position(const gamemap::location& loc) const
 {
-	const gamemap::location* const end
-	                  = startingPositions_+num_starting_positions();
-	return std::find(startingPositions_,end,loc) != end;
+	const gamemap::location* const end = startingPositions_+num_starting_positions();
+	const gamemap::location* const pos = std::find(startingPositions_,end,loc);
+
+	return pos == end ? -1 : pos - startingPositions_;
+}
+
+void gamemap::set_starting_position(int side, const gamemap::location& loc)
+{
+	if(side >= 0 && side < num_starting_positions()) {
+		startingPositions_[side] = loc;
+	}
 }
 
 const terrain_type& gamemap::get_terrain_info(TERRAIN terrain) const

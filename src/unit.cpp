@@ -48,7 +48,7 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 unit::unit(game_data& data, const config& cfg) : state_(STATE_NORMAL),
                                            moves_(0), facingLeft_(true),
                                            recruit_(false),
-                                           guardian_(false), loyal_(false)
+                                           guardian_(false), upkeep_(UPKEEP_FREE)
 {
 	read(data,cfg);
 }
@@ -66,13 +66,18 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 			   backupMaxMovement_(t->movement()),
 			   recruit_(false), attacks_(t->attacks()),
 			   backupAttacks_(t->attacks()),
-               guardian_(false), loyal_(false)
+               guardian_(false), upkeep_(UPKEEP_FULL_PRICE)
 {
+	//units that don't have traits generated are just generic
+	//units, so they shouldn't get a description either.
+	if(use_traits) {
+		description_ = t->generate_description();
+	}
+
 	//calculate the unit's traits
 	const std::vector<config*> traits = t->possible_traits();
 
-	//level 0 units get no traits, others get 2 traits
-	const size_t num_traits = type_->level() == 0 ? 0 : 2;
+	const size_t num_traits = type_->num_traits();
 	if(use_traits && traits.size() >= num_traits) {
 		std::set<int> chosen_traits;
 		for(size_t i = 0; i != num_traits; ++i) {
@@ -119,12 +124,13 @@ unit::unit(const unit_type* t, const unit& u) :
                side_(u.side()), moves_(u.moves_), facingLeft_(u.facingLeft_),
 			   maxMovement_(t->movement()),
 			   backupMaxMovement_(t->movement()),
+			   underlying_description_(u.underlying_description_),
 			   description_(u.description_), recruit_(u.recruit_),
 			   role_(u.role_), statusFlags_(u.statusFlags_),
 			   attacks_(t->attacks()), backupAttacks_(t->attacks()),
 			   modifications_(u.modifications_),
 			   traitsDescription_(u.traitsDescription_),
-               guardian_(false), loyal_(false)
+               guardian_(false), upkeep_(u.upkeep_)
 {
 	//apply modifications etc, refresh the unit
 	new_level();
@@ -146,6 +152,16 @@ std::string unit::name() const
 const std::string& unit::description() const
 {
 	return description_;
+}
+
+const std::string& unit::underlying_description() const
+{
+	return underlying_description_;
+}
+
+void unit::rename(const std::string& new_description)
+{
+	description_ = new_description;
 }
 
 int unit::side() const
@@ -302,7 +318,7 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& weapon = cfg["has_weapon"];
 	const std::string& role = cfg["role"];
 
-	if(description.empty() == false && description != this->description()) {
+	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
 	}
 
@@ -402,12 +418,26 @@ void unit::read(game_data& data, const config& cfg)
 		experience_ = atoi(experience.c_str());
 
 	side_ = atoi(cfg["side"].c_str());
-	description_ = cfg["description"];
+	description_ = cfg["user_description"];
+	underlying_description_ = cfg["description"];
+	if(description_ == "") {
+		description_ = underlying_description_;
+	}
+
 	traitsDescription_ = cfg["traits_description"];
 	const std::map<std::string,std::string>::const_iterator recruit_itor =
 			                                 cfg.values.find("canrecruit");
 	if(recruit_itor != cfg.values.end() && recruit_itor->second == "1") {
 		recruit_ = true;
+	}
+
+	const std::string& upkeep = cfg["upkeep"];
+	if(upkeep == "full") {
+		upkeep_ = UPKEEP_FULL_PRICE;
+	} else if(upkeep == "loyal") {
+		upkeep_ = UPKEEP_LOYAL;
+	} else if(upkeep == "free") {
+		upkeep_ = UPKEEP_FREE;
 	}
 
 	const config* const modifications = cfg.child("modifications");
@@ -444,7 +474,8 @@ void unit::write(config& cfg) const
 	sd << side_;
 	cfg["side"] = sd.str();
 
-	cfg["description"] = description_;
+	cfg["user_description"] = description_;
+	cfg["description"] = underlying_description_;
 
 	cfg["traits_description"] = traitsDescription_;
 
@@ -454,6 +485,12 @@ void unit::write(config& cfg) const
 	cfg.children["modifications"].push_back(new config(modifications_));
 
 	cfg["facing"] = facingLeft_ ? "normal" : "reverse";
+
+	switch(upkeep_) {
+	case UPKEEP_FULL_PRICE: cfg["upkeep"] = "full"; break;
+	case UPKEEP_LOYAL: cfg["upkeep"] = "loyal"; break;
+	case UPKEEP_FREE: cfg["upkeep"] = "free"; break;
+	}
 }
 
 void unit::assign_role(const std::string& role)
@@ -659,7 +696,8 @@ void unit::add_modification(const std::string& type,
 				maxExperience_ = 1;
 			}
 		} else if(apply_to == "loyal") {
-			loyal_ = true;
+			if(upkeep_ > UPKEEP_LOYAL)
+				upkeep_ = UPKEEP_LOYAL;
 		}
 	}
 }
@@ -680,14 +718,12 @@ void unit::apply_modifications()
 
 int unit::upkeep() const
 {
-	//special units with descriptions don't have any upkeep,
-	//as they are major units, not hired units
-	if(description_.empty() == false)
-		return 0;
-
-	//loyal units have a maximum upkeep of 1 gold. Other units have an
-	//upkeep equal to their level
-	return loyal_ ? minimum<int>(1,type().level()) : type().level();
+	switch(upkeep_) {
+	case UPKEEP_FREE: return 0;
+	case UPKEEP_LOYAL: return minimum<int>(1,type().level());
+	case UPKEEP_FULL_PRICE: return type().level();
+	default: assert(false); return 0;
+	}
 }
 
 int team_units(const unit_map& units, int side)

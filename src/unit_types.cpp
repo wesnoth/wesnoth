@@ -346,9 +346,17 @@ void unit_movement_type::set_parent(const unit_movement_type* parent)
 }
 
 unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
-                     const std::vector<config*>& traits)
+                     const race_map& races, const std::vector<config*>& traits)
                 : cfg_(cfg), alpha_(1.0), possibleTraits_(traits), movementType_(cfg)
 {
+	const race_map::const_iterator race_it = races.find(cfg["race"]);
+	if(race_it != races.end()) {
+		race_ = &race_it->second;
+	} else {
+		static const unit_race dummy_race;
+		race_ = &dummy_race;
+	}
+
 	abilities_ = config::split(cfg_["ability"]);
 
 	//if the string was empty, split will give us one empty string in the list,
@@ -401,6 +409,13 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		std::cerr << "image '" << cfg_["image"] << "' does not exist!\n";
 	}
 #endif
+}
+
+int unit_type::num_traits() const { return race_->num_traits(); }
+
+std::string unit_type::generate_description() const
+{
+	return race_->generate_name(cfg_["gender"] == "female" ? unit_race::FEMALE : unit_race::MALE);
 }
 
 std::string unit_type::id() const
@@ -631,6 +646,11 @@ bool unit_type::nightvision() const
 	return nightvision_;
 }
 
+bool unit_type::not_living() const
+{
+	return race_->not_living();
+}
+
 bool unit_type::has_ability(const std::string& ability) const
 {
 	return std::find(abilities_.begin(),abilities_.end(),ability) != abilities_.end();
@@ -656,10 +676,15 @@ game_data::game_data(const config& cfg)
 						                                  move_type));
 	}
 
+	for(config::const_child_itors r = cfg.child_range("race");
+	    r.first != r.second; ++r.first) {
+		const unit_race race(**r.first);
+		races.insert(std::pair<std::string,unit_race>(race.name(),race));
+	}
+
 	for(config::const_child_itors j = cfg.child_range("unit");
 	    j.first != j.second; ++j.first) {
-		const unit_type u_type(**j.first,movement_types,unit_traits);
-		unit_types.insert(
-				std::pair<std::string,unit_type>(u_type.name(),u_type));
+		const unit_type u_type(**j.first,movement_types,races,unit_traits);
+		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
 	}
 }

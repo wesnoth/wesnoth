@@ -67,7 +67,7 @@ std::string recruit_unit(const gamemap& map, int side,
 	if(u == units.end())
 		return string_table["no_leader_to_recruit"];
 
-	if(!map.is_starting_position(u->first)) {
+	if(map.is_starting_position(u->first) == -1) {
 		std::cerr << "Leader not on start: leader is on " << (u->first.x+1) << "," << (u->first.y+1) << "\n";
 		return string_table["leader_not_on_start"];
 	}
@@ -199,7 +199,7 @@ battle_stats evaluate_battle_stats(
 	}
 
 	static const std::string plague_string("plague");
-	res.attacker_plague = (attack.special() == plague_string);
+	res.attacker_plague = !d->second.type().not_living() && (attack.special() == plague_string);
 	res.defender_plague = false;
 
 	res.attack_name    = attack.name();
@@ -332,6 +332,8 @@ void attack(display& gui, const gamemap& map,
 	battle_stats stats = evaluate_battle_stats(map,attacker,defender,
 	                                           attack_with,units,state,info);
 
+	static const std::string poison_string("poison");
+
 	while(stats.nattacks > 0 || stats.ndefends > 0) {
 		if(stats.nattacks > 0) {
 			const bool hits = (get_random()%100) < stats.chance_to_hit_defender;
@@ -367,9 +369,9 @@ void attack(display& gui, const gamemap& map,
 
 				break;
 			} else if(hits) {
-				static const std::string poison_string("poison");
 				if(stats.attack_special == poison_string &&
-				   d->second.has_flag("poisoned") == false) {
+				   d->second.has_flag("poisoned") == false &&
+				   !d->second.type().not_living()) {
 					d->second.set_flag("poisoned");
 				}
 
@@ -423,8 +425,9 @@ void attack(display& gui, const gamemap& map,
 				}
 				break;
 			} else if(hits) {
-				if(stats.defend_special == "poison" &&
-				   a->second.has_flag("poisoned") == false) {
+				if(stats.defend_special == poison_string &&
+				   a->second.has_flag("poisoned") == false &&
+				   !a->second.type().not_living()) {
 					a->second.set_flag("poisoned");
 				}
 
@@ -738,16 +741,17 @@ void check_victory(std::map<gamemap::location,unit>& units,
 	}
 
 	//remove any units which are leaderless
+	//this code currently removed, to try not removing leaderless enemies
+	/*
 	std::map<gamemap::location,unit>::iterator j = units.begin();
 	while(j != units.end()) {
-		if(std::find(seen_leaders.begin(),seen_leaders.end(),j->second.side())
-		   == seen_leaders.end()) {
+		if(std::find(seen_leaders.begin(),seen_leaders.end(),j->second.side()) == seen_leaders.end()) {
 			units.erase(j);
 			j = units.begin();
 		} else {
 			++j;
 		}
-	}
+	}*/
 }
 
 const time_of_day& timeofday_at(const gamestatus& status,
@@ -992,8 +996,9 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 				if(current_team.is_enemy(i->second.side())) {
 					return true;
 				}
-			} else if(u.movement_cost(map,map[locs[n].x][locs[n].y]) <=
-			          u.movement_left()) {
+			}
+			
+			if(u.movement_cost(map,map[locs[n].x][locs[n].y]) <= u.movement_left()) {
 				return true;
 			}
 		}

@@ -31,6 +31,10 @@ then
 
 followed by
   	
+ $ ./configure
+
+compile with
+
  $ make
 	  
 
@@ -38,20 +42,6 @@ Installing:
   	
  $ make install
 	  
-
-Relocating Data:
-
-By default game is installed to /usr/local. There is a way to get Wesnoth to locate its data and have the data files not under the executable. Variables with defaults are:
-
- DESTDIR=/usr/local # base path for game binaries, pixmaps, and man pages
- DATADIR=/usr/local # base path for wesnoth-data
- SERVDIR=/usr/local # base path for server-binary
-
-These are given as args to make. To install wesnoth to /opt...
-
- $ make DESTDIR=/opt/wesnoth-0.5.1-cvs DATADIR=/opt/wesnoth-0.5.1-cvs SERVDIR=/opt/wesnoth-server-0.5.1-cvs
- $ make install DESTDIR=/opt/wesnoth-0.5.1-cvs DATADIR=/opt/wesnoth-0.5.1-cvs SERVDIR=/opt/wesnoth-server-0.5.1-cvs
-
 
 Note:
 

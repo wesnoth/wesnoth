@@ -80,6 +80,7 @@ private:
 	void terrain_table();
 	void attack_resistance();
 	void unit_description();
+	void rename_unit();
 	void save_game();
 	void toggle_grid();
 	void status_table();
@@ -96,7 +97,7 @@ private:
 	void left_click(const SDL_MouseButtonEvent& event);
 	void show_menu();
 
-	unit_map::const_iterator current_unit();
+	unit_map::iterator current_unit();
 
 	game_data& gameinfo_;
 	game_state& state_of_game_;
