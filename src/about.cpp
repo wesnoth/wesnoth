@@ -147,10 +147,15 @@ std::vector<std::string> get_text() {
 		"-   Alfredo Beaumont (ziberpunk)",
 		"+ ",
 
+		"_" N_("+Bulgarian Translation"),
+		"-   Anton Tsigularov (Atilla)",
+		"+ ",
+
 		"_" N_("+Catalan Translation"),
 		"-   Carles Company (brrr)",
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
+		"-   Pau Rul·lan Ferragut",
 		"+ ",
 
 		"_" N_("+Czech Translation"),
