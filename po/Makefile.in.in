@@ -113,17 +113,22 @@ $(DOMAIN).pot-update: $(POTFILES) $(srcdir)/POTFILES.in remove-potcdate.sed
 	  --copyright-holder='$(COPYRIGHT_HOLDER)' \
 	  --msgid-bugs-address='$(MSGID_BUGS_ADDRESS)' \
 	  --keyword=_ --keyword=N_ \
-	  --output=- | sed s/charset=CHARSET/charset=UTF-8/ > $(DOMAIN).cpp.po
+	  --output=$(DOMAIN).cpp.po
+	if test -f $(DOMAIN).cpp.po ; then \
+	  sed s/charset=CHARSET/charset=UTF-8/ $(DOMAIN).cpp.po > $(DOMAIN).cpp1.po ;\
+	fi
 	if test -r $(srcdir)/FINDCFG ;\
 	then ${WMLXGETTEXT} --directory=$(top_srcdir) \
 	  `cd $(top_srcdir) && sh $(subdir)/FINDCFG` > $(DOMAIN).wml.po ;\
 	fi
-	if test -f $(DOMAIN).wml.po ; then \
-	  msgcat --sort-by-file $(DOMAIN).cpp.po $(DOMAIN).wml.po -o $(DOMAIN).po && \
-	  rm -f $(DOMAIN).cpp.po $(DOMAIN).wml.po; \
+	if test -f $(DOMAIN).wml.po -a -f $(DOMAIN).cpp1.po ; then \
+	  msgcat --sort-by-file $(DOMAIN).cpp1.po $(DOMAIN).wml.po -o $(DOMAIN).po ;\
+	elif test -f $(DOMAIN).wml.po ; then \
+	  mv $(DOMAIN).wml.po $(DOMAIN).po ;\
 	else \
-	  mv $(DOMAIN).cpp.po $(DOMAIN).po ;\
+	  mv $(DOMAIN).cpp1.po $(DOMAIN).po ;\
 	fi
+	rm -f $(DOMAIN).cpp.po $(DOMAIN).cpp1.po $(DOMAIN).wml.po
 	test ! -f $(DOMAIN).po || { \
 	  if test -f $(srcdir)/$(DOMAIN).pot; then \
 	    sed -f remove-potcdate.sed < $(srcdir)/$(DOMAIN).pot > $(DOMAIN).1po && \
