@@ -182,6 +182,40 @@ private:
 	config* cfg_;
 };
 
+std::pair<int,int> parse_range(const std::string& str)
+{
+	const std::string::const_iterator dash = std::find(str.begin(),str.end(),'-');
+	const std::string a(str.begin(),dash);
+	const std::string b = dash != str.end() ? std::string(dash+1,str.end()) : a;
+	std::pair<int,int> res(atoi(a.c_str()),atoi(b.c_str()));
+	if(res.second < res.first)
+		res.second = res.first;
+
+	return res;
+}
+
+std::vector<gamemap::location> multiple_locs(const config& cfg)
+{
+	std::vector<gamemap::location> res;
+	const std::vector<std::string> xvals = config::split(cfg["x"]);
+	const std::vector<std::string> yvals = config::split(cfg["y"]);
+
+	for(int i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
+		const std::pair<int,int> xrange = parse_range(xvals[i]);
+		const std::pair<int,int> yrange = parse_range(yvals[i]);
+		std::cerr << "range: " << xrange.first << "-" << xrange.second << "\n";
+		std::cerr << "range: " << yrange.first << "-" << yrange.second << "\n";
+
+		for(int x = xrange.first; x <= xrange.second; ++x) {
+			for(int y = yrange.first; y <= yrange.second; ++y) {
+				res.push_back(gamemap::location(x-1,y-1));
+			}
+		}
+	}
+
+	return res;
+}
+
 std::multimap<std::string,event_handler> events_map;
 
 void event_handler::handle_event(const queued_event& event_info, config* cfg)
@@ -227,10 +261,8 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 		                          game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
 			unit dummy_unit(&itor->second,0);
-			const std::vector<std::string> xvals =
-			                        config::split((*muf)->values["x"]);
-			const std::vector<std::string> yvals =
-			                        config::split((*muf)->values["y"]);
+			const std::vector<std::string> xvals = config::split((*muf)->values["x"]);
+			const std::vector<std::string> yvals = config::split((*muf)->values["y"]);
 			std::vector<gamemap::location> path;
 			for(size_t i = 0; i != minimum(xvals.size(),yvals.size()); ++i) {
 				path.push_back(gamemap::location(atoi(xvals[i].c_str())-1,
@@ -375,12 +407,15 @@ void event_handler::handle_event(const queued_event& event_info, config* cfg)
 	std::vector<config*>& terrain_changes = cfg->children["terrain"];
 	for(std::vector<config*>::iterator tc = terrain_changes.begin();
 	    tc != terrain_changes.end(); ++tc) {
-		gamemap::location loc(**tc);
-		const std::string& terrain_type = (*tc)->values["letter"];
-		if(terrain_type.size() > 0) {
-			game_map->set_terrain(loc,terrain_type[0]);
-			screen->recalculate_minimap();
-			screen->invalidate_all();
+		const std::vector<gamemap::location> locs = multiple_locs(**tc);
+
+		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
+			const std::string& terrain_type = (**tc)["letter"];
+			if(terrain_type.size() > 0) {
+				game_map->set_terrain(*loc,terrain_type[0]);
+				screen->recalculate_minimap();
+				screen->invalidate_all();
+			}
 		}
 	}
 

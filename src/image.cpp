@@ -319,43 +319,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map, const team* tm)
 	}
 
 	return minimap;
-
-/*
-	if(pixel_format == NULL)
-		return NULL;
-
-	SDL_Surface *minimap_ = SDL_CreateRGBSurface(SDL_SWSURFACE,
-	                                map_.x(),map_.y(),
-	                                pixel_format->BitsPerPixel,
-	                                pixel_format->Rmask,
-	                                pixel_format->Gmask,
-	                                pixel_format->Bmask,
-	                                pixel_format->Amask);
-	if(minimap_ == NULL)
-		return NULL;
-
-	const int xpad = is_odd(minimap_->w);
-
-	surface_lock lock(minimap_);
-	short* data = lock.pixels();
-	for(int y = 0; y != map_.y(); ++y) {
-		for(int x = 0; x != map_.x(); ++x) {
-
-			*data = map_.get_terrain_info(map_[x][y]).get_rgb().
-			                                 format(pixel_format);
-			++data;
-		}
-		data += xpad;
-	}
-
-	if(minimap_->w != w || minimap_->h != h) {
-		SDL_Surface* const surf = minimap_;
-		minimap_ = scale_surface(surf,w,h);
-		SDL_FreeSurface(surf);
-	}
-
-	return minimap_;
-*/}
+}
 
 
 }

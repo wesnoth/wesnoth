@@ -458,8 +458,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					return -1;
 				}
 
-				for(std::vector<config*>::iterator sd = sides.begin();
-				    sd != sides.end(); ++sd) {
+				std::vector<config*>::iterator sd;
+				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 
 					if((**sd)["fog"].empty())
 						(**sd)["fog"] = fog_game.checked() ? "yes" : "no";
@@ -506,10 +506,10 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				player_race.push_back("Humans");
 				player_race.push_back("Undead");
 				std::vector<std::string> player_team;
-				char label[8];
+				char label[16];
 				int counter=0;
-				for(std::vector<config*>::iterator sd = sides.begin();
-				    sd != sides.end(); ++sd) {
+				
+				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					counter++;
 					sprintf(label, "Team %d", counter);
 					player_team.push_back(label);
@@ -529,8 +529,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				std::vector<gui::combo> combo_team;
 				std::vector<gui::combo> combo_color;
 				counter = 0;
-				for(std::vector<config*>::iterator sd = sides.begin();
-				    sd != sides.end(); ++sd) {
+				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
 					                (*sd)->values["side"],(disp.x()-width)/2+10,
 							(disp.y()-height)/2+38+(30*counter));
