@@ -1016,7 +1016,7 @@ int play_game(int argc, char** argv)
 			                         gui::OK_CANCEL,&langs);
 			if(size_t(res) < langs.size()) {
 				set_language(known_languages[res]);
-				preferences::set_locale(langs[res]);
+				preferences::set_locale(known_languages[res].localename);
 			}
 			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
