@@ -164,7 +164,7 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 			}
 
 			if(pixel_format != NULL) {
-				SDL_Surface* const conv = SDL_DisplayFormatAlpha(surf);
+				SDL_Surface* const conv = display_format_alpha(surf);
 				SDL_FreeSurface(surf);
 				surf = conv;
 			}

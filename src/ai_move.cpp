@@ -213,7 +213,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(u == units_.end()) {
-		std::cout << "no eligible units found\n";
+		std::cerr  << "no eligible units found\n";
 		return std::pair<location,location>();
 	}
 
@@ -242,7 +242,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 
 	if(best_target == targets.end()) {
-		std::cout << "no eligible targets found\n";
+		std::cerr  << "no eligible targets found\n";
 		return std::pair<location,location>();
 	}
 
@@ -316,7 +316,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 	}
 
 	if(best != units_.end()) {
-		std::cout << "Could not make good move, staying still\n";
+		std::cerr  << "Could not make good move, staying still\n";
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
@@ -324,6 +324,6 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		return std::pair<location,location>(best->first,best->first);
 	}
 
-	std::cout << "Could not find anywhere to move!\n";
+	std::cerr  << "Could not find anywhere to move!\n";
 	return std::pair<location,location>();
 }

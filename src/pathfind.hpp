@@ -159,7 +159,7 @@ paths::route a_star_search(const gamemap::location& src,
                            const gamemap::location& dst, double stop_at, T obj,
                            const std::set<gamemap::location>* teleports=NULL)
 {
-	std::cout << "a* search: " << src.x << ", " << src.y << " - " << dst.x << ", " << dst.y << "\n";
+	std::cerr  << "a* search: " << src.x << ", " << src.y << " - " << dst.x << ", " << dst.y << "\n";
 	using namespace detail;
 	typedef gamemap::location location;
 	std::list<node> open_list, closed_list;
@@ -209,7 +209,7 @@ paths::route a_star_search(const gamemap::location& src,
 
 				assert(rt.steps.front() == src);
 
-				std::cout << "exiting a* search (solved)\n";
+				std::cerr  << "exiting a* search (solved)\n";
 
 				return rt;
 			}
@@ -232,7 +232,7 @@ paths::route a_star_search(const gamemap::location& src,
 		}
 	}
 
-	std::cout << "aborted a* search\n";
+	std::cerr  << "aborted a* search\n";
 	paths::route val;
 	val.move_left = 100000;
 	return val;

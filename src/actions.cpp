@@ -985,6 +985,15 @@ void check_victory(std::map<gamemap::location,unit>& units,
 			game_events::fire("enemies defeated");
 		}
 
+		if(non_interactive()) {
+			std::cout << "winner: ";
+			for(std::vector<int>::const_iterator i = seen_leaders.begin(); i != seen_leaders.end(); ++i) {
+				std::cout << *i << " ";
+			}
+
+			std::cout << "\n";
+		}
+
 		throw end_level_exception(found_human ? VICTORY : DEFEAT);
 	}
 

@@ -199,18 +199,24 @@ int play_game(int argc, char** argv)
 	const image::manager image_manager;
 	const events::event_context main_event_context;
 
-	bool test_mode = false;
+	bool test_mode = false, multiplayer_mode = false, no_gui = false;
 
-	for(int arg = 1; arg != argc; ++arg) {
+	int arg;
+	for(arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
 		if(val.empty()) {
 			continue;
 		}
 
-		if(val == "--windowed" || val == "-w") {
+		if(val == "--nogui") {
+			no_gui = true;
+		} else if(val == "--windowed" || val == "-w") {
 			preferences::set_fullscreen(false);
 		} else if(val == "--fullscreen" || val == "-f") {
 			preferences::set_fullscreen(true);
+		} else if(val == "--multiplayer") {
+			multiplayer_mode = true;
+			break; //parse the rest of the arguments when we set up the game
 		} else if(val == "--test" || val == "-t") {
 			test_mode = true;
 		} else if(val == "--debug" || val == "-d") {
@@ -239,6 +245,11 @@ int play_game(int argc, char** argv)
 
 			game_config::path = val;
 		}
+	}
+
+	if(no_gui && !multiplayer_mode) {
+		std::cerr << "--nogui flag is only valid with --multiplayer flag\n";
+		return 0;
 	}
 
 	preproc_map defines_map;
@@ -276,75 +287,79 @@ int play_game(int argc, char** argv)
 		}
 	}
 
-	image::set_wm_icon();
+	if(!no_gui) {
+		image::set_wm_icon();
 
-	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
+		int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
 
-	std::pair<int,int> resolution = preferences::resolution();
+		std::pair<int,int> resolution = preferences::resolution();
 
-	std::cerr << "checking mode possible...\n";
-	const int bpp = video.modePossible(resolution.first,resolution.second,
-	                                   16,video_flags);
-
-	std::cerr << bpp << "\n";
-
-	if(bpp == 0) {
- 		//Video mode not supported, maybe from bad prefs.
- 		std::cerr << "The video mode, " << resolution.first
- 		          << "x" << resolution.second << "x16 "
- 		          << "is not supported\nAttempting 1024x768x16...\n";
- 		
- 		//Attempt 1024x768.
- 		resolution.first = 1024;
- 		resolution.second = 768;
-
- 		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
-
+		std::cerr << "checking mode possible...\n";
+		const int bpp = video.modePossible(resolution.first,resolution.second,
+		                                   16,video_flags);
+	
+		std::cerr << bpp << "\n";
+	
 		if(bpp == 0) {
-			 //Attempt 1024x768.
- 			resolution.first = 1024;
- 			resolution.second = 768;
-			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
-
-			resolution.first = 800;
-			resolution.second = 600;
-
-			bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	 		//Video mode not supported, maybe from bad prefs.
+	 		std::cerr << "The video mode, " << resolution.first
+	 		          << "x" << resolution.second << "x16 "
+	 		          << "is not supported\nAttempting 1024x768x16...\n";
+	 		
+	 		//Attempt 1024x768.
+	 		resolution.first = 1024;
+	 		resolution.second = 768;
+	
+	 		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+	
+			if(bpp == 0) {
+				 //Attempt 1024x768.
+	 			resolution.first = 1024;
+	 			resolution.second = 768;
+				std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
+	
+				resolution.first = 800;
+				resolution.second = 600;
+	
+				bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+			}
+	
+	 		if(bpp == 0) {
+	 			//couldn't do 1024x768 or 800x600
+	
+				std::cerr << "The required video mode, " << resolution.first
+				          << "x" << resolution.second << "x16 "
+				          << "is not supported\n";
+	
+				if((video_flags&FULL_SCREEN) != 0 && argc == 0)
+					std::cerr << "Try running the program with the --windowed option "
+					          << "using a 16bpp X windows setting\n";
+	
+				if((video_flags&FULL_SCREEN) == 0 && argc == 0)
+					std::cerr << "Try running with the --fullscreen option\n";
+	
+				return 0;
+			}
 		}
-
- 		if(bpp == 0) {
- 			//couldn't do 1024x768 or 800x600
-
-			std::cerr << "The required video mode, " << resolution.first
-			          << "x" << resolution.second << "x16 "
-			          << "is not supported\n";
-
-			if((video_flags&FULL_SCREEN) != 0 && argc == 0)
-				std::cerr << "Try running the program with the --windowed option "
-				          << "using a 16bpp X windows setting\n";
-
-			if((video_flags&FULL_SCREEN) == 0 && argc == 0)
-				std::cerr << "Try running with the --fullscreen option\n";
-
+	
+		if(bpp != 16) {
+			std::cerr << "Video mode must be emulated; the game may run slowly. "
+			          << "For best results, run the program on a 16 bpp display\n";
+		}
+	
+		std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
+		const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
+		video.setBpp(bpp);
+		if(res != 16) {
+			std::cerr << "required video mode, " << resolution.first << "x"
+			          << resolution.second << "x16 is not supported\n";
 			return 0;
 		}
+	
+		SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
+	} else {
+		video.make_fake();
 	}
-
-	if(bpp != 16) {
-		std::cerr << "Video mode must be emulated; the game may run slowly. "
-		          << "For best results, run the program on a 16 bpp display\n";
-	}
-
-	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
-	const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
-	video.setBpp(bpp);
-	if(res != 16) {
-		std::cerr << "required video mode, " << resolution.first << "x"
-		          << resolution.second << "x16 is not supported\n";
-		return 0;
-	}
-
-	SDL_WM_SetCaption(string_table["game_title"].c_str(), NULL);
 
 	for(;;) {
 		sound::play_music(game_config::title_music);
@@ -361,6 +376,116 @@ int play_game(int argc, char** argv)
 			state.scenario = "test";
 
 			play_game(disp,state,game_config,units_data,video);
+			return 0;
+		}
+
+		if(multiplayer_mode) {
+
+			std::string scenario = "multiplayer_test";
+			std::map<int,std::string> side_types, side_controllers, side_algorithms;
+
+			int sides_counted = 0;
+
+			for(++arg; arg < argc; ++arg) {
+				const std::string val(argv[arg]);
+				if(val.empty()) {
+					continue;
+				}
+
+				std::vector<std::string> name_value = config::split(val,'=');
+				if(name_value.size() == 2) {
+					const std::string name = name_value.front();
+					const std::string value = name_value.back();
+
+					const std::string name_head = name.substr(0,name.size()-1);
+					const char name_tail = name[name.size()-1];
+					const bool last_digit = isdigit(name_tail) ? true:false;
+					const int side = name_tail - '0';
+
+					if(last_digit && side > sides_counted) {
+						std::cerr << "counted sides: " << side << "\n";
+						sides_counted = side;
+					}
+
+					if(name == "--scenario") {
+						scenario = value;
+					} else if(last_digit && name_head == "--controller") {
+						side_controllers[side] = value;
+					} else if(last_digit && name_head == "--algorithm") {
+						side_algorithms[side] = value;
+					} else if(last_digit && name_head == "--side") {
+						side_types[side] = value;
+					} else {
+						std::cerr << "unrecognized option: '" << name << "'\n";
+						return 0;
+					}
+				}
+			}
+
+			const config* const lvl = game_config.find_child("multiplayer","id",scenario);
+			if(lvl == NULL) {
+				std::cerr << "Could not find scenario '" << scenario << "'\n";
+				return 0;
+			}
+
+			state.campaign_type = "multiplayer";
+			state.scenario = "";
+			state.starting_pos = config();
+
+			config level = *lvl;
+			std::vector<config*> story;
+
+			const config* const side = game_config.child("multiplayer_side");
+			if(side == NULL) {
+				std::cerr << "Could not find side\n";
+				return 0;
+			}
+
+			while(level.get_children("side").size() < sides_counted) {
+				std::cerr << "now adding side...\n";
+				level.add_child("side");
+			}
+
+			int side_num = 1;
+			for(config::child_itors itors = level.child_range("side"); itors.first != itors.second; ++itors.first, ++side_num) {
+				std::map<int,std::string>::const_iterator type = side_types.find(side_num),
+				                                          controller = side_controllers.find(side_num),
+				                                          algorithm = side_algorithms.find(side_num);
+
+				const config* side = type == side_types.end() ? game_config.child("multiplayer_side") :
+				                                                game_config.find_child("multiplayer_side","type",type->second);
+				if(side == NULL) {
+					std::string side_name = (type == side_types.end() ? "default" : type->second);
+					std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
+					return 0;
+				}
+
+				char buf[20];
+				sprintf(buf,"%d",side_num);
+				(*itors.first)->values["side"] = buf;
+
+				(*itors.first)->values["canrecruit"] = "1";
+
+				for(string_map::const_iterator i = side->values.begin(); i != side->values.end(); ++i) {
+					(*itors.first)->values[i->first] = i->second;
+				}
+
+				if(controller != side_controllers.end()) {
+					(*itors.first)->values["controller"] = controller->second;
+				}
+
+				if(algorithm != side_algorithms.end()) {
+					(*itors.first)->values["ai_algorithm"] = controller->second;
+				}
+			}
+
+			try {
+				play_level(units_data,game_config,&level,video,state,story);
+			} catch(...) {
+				std::cerr << "caught error playing level...\n";
+				return 0;
+			}
+
 			return 0;
 		}
 

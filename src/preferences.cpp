@@ -147,6 +147,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 
 bool turbo()
 {
+	if(non_interactive())
+		return true;
+
 	const string_map::const_iterator turbo = prefs.values.find("turbo");
 	return turbo != prefs.values.end() && turbo->second == "true";
 }
@@ -360,6 +363,9 @@ const std::string& theme()
 	std::string& res = prefs["theme"];
 	if(res.empty())
 		res = "Default";
+
+	if(non_interactive())
+		res = "null";
 
 	return res;
 }

@@ -90,6 +90,28 @@ void clear_updates()
 	update_rects.clear();
 }
 
+SDL_Surface* frameBuffer = NULL;
+
+}
+
+bool non_interactive()
+{
+	return SDL_GetVideoSurface() == NULL;
+}
+
+SDL_Surface* display_format_alpha(SDL_Surface* surf)
+{
+	if(SDL_GetVideoSurface() != NULL)
+		return SDL_DisplayFormatAlpha(surf);
+	else if(frameBuffer != NULL)
+		return SDL_ConvertSurface(surf,frameBuffer->format,0);
+	else
+		return NULL;
+}
+
+SDL_Surface* get_video_surface()
+{
+	return frameBuffer;
 }
 
 void update_rect(size_t x, size_t y, size_t w, size_t h)
@@ -105,7 +127,7 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
-	SDL_Surface* const fb = SDL_GetVideoSurface();
+	SDL_Surface* const fb = get_video_surface();
 	if(fb != NULL) {
 		if(rect.x < 0) {
 			if(rect.x*-1 > int(rect.w))
@@ -157,7 +179,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo() : frameBuffer(NULL), bpp(0)
+CVideo::CVideo() : bpp(0), fake_screen(false)
 {
 	const int res = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 
@@ -168,7 +190,7 @@ CVideo::CVideo() : frameBuffer(NULL), bpp(0)
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
-		 : frameBuffer(NULL), bpp(0)
+		 : bpp(0), fake_screen(false)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -181,6 +203,13 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags)
 CVideo::~CVideo()
 {
 	SDL_Quit();
+}
+
+void CVideo::make_fake()
+{
+	fake_screen = true;
+	frameBuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,1,1,24,0xFF0000,0xFF00,0xFF,0);
+	image::set_pixel_format(frameBuffer->format);
 }
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
@@ -244,6 +273,9 @@ int CVideo::getBlueMask()
 
 void CVideo::flip()
 {
+	if(fake_screen)
+		return;
+
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {

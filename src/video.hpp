@@ -20,6 +20,12 @@
 #define VIDEO_MEMORY SDL_HWSURFACE
 #define SYSTEM_MEMORY SDL_SWSURFACE
 
+SDL_Surface* display_format_alpha(SDL_Surface* surf);
+SDL_Surface* get_video_surface();
+
+bool non_interactive();
+
+
 void update_rect(size_t x, size_t y, size_t w, size_t h);
 void update_rect(const SDL_Rect& rect);
 void update_whole_screen();
@@ -60,10 +66,15 @@ class CVideo {
 	//functions to allow changing video modes when 16BPP is emulated
 	void setBpp( int bpp );
 	int getBpp();
-     private:
 
-	SDL_Surface* frameBuffer;
+	void make_fake();
+
+private:
+
 	int bpp;	// Store real bits per pixel
+
+	//if there is no display at all, but we 'fake' it for clients
+	bool fake_screen;
 };
 
 #endif

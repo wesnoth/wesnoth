@@ -117,7 +117,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	log_scope("move_unit");
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
-		std::cout << "Could not find unit at " << from.x << ", "
+		std::cerr  << "Could not find unit at " << from.x << ", "
 		          << from.y << "\n";
 		assert(false);
 		return location();
@@ -333,7 +333,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	std::vector<attack_analysis> analysis = analyze_targets(srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 
 	int time_taken = SDL_GetTicks() - ticks;
-	std::cout << "took " << time_taken << " ticks for " << analysis.size() << " positions. Analyzing...\n";
+	std::cerr  << "took " << time_taken << " ticks for " << analysis.size() << " positions. Analyzing...\n";
 
 	ticks = SDL_GetTicks();
 
@@ -344,7 +344,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	if(num_sims > 40)
 		num_sims = 40;
 
-	std::cout << "simulations: " << num_sims << "\n";
+	std::cerr  << "simulations: " << num_sims << "\n";
 
 	const int max_positions = 30000;
 	const int skip_num = analysis.size()/max_positions;
@@ -356,7 +356,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			continue;
 
 		const double rating = it->rating(current_team().aggression());
-		std::cout << "attack option rated at " << rating << " (" << current_team().aggression() << ")\n";
+		std::cerr  << "attack option rated at " << rating << " (" << current_team().aggression() << ")\n";
 		if(rating > choice_rating) {
 			choice_it = it;
 			choice_rating = rating;
@@ -364,7 +364,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	}
 
 	time_taken = SDL_GetTicks() - ticks;
-	std::cout << "analysis took " << time_taken << " ticks\n";
+	std::cerr  << "analysis took " << time_taken << " ticks\n";
 
 	if(choice_rating > 0.0) {
 		location from   = choice_it->movements[0].first;

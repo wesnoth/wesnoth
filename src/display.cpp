@@ -62,6 +62,9 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area())
 {
+	if(non_interactive())
+		updatesLocked_++;
+
 	energy_bar_rect_.x = -1;
 
 	create_buttons();
@@ -965,7 +968,7 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 		}
 
 		if(x + image->w >= this->x() || y + image->h >= this->y()) {
-			std::cout << "terrain palette can't fit: " << x + image->w << " > " << this->x() << " or " << y+image->h << " > " << this->y() << "\n";
+			std::cerr << "terrain palette can't fit: " << x + image->w << " > " << this->x() << " or " << y+image->h << " > " << this->y() << "\n";
 			return;
 		}
 

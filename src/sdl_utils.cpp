@@ -116,7 +116,7 @@ SDL_Surface* clone_surface(SDL_Surface* surface)
 	if(surface == NULL)
 		return NULL;
 
-	SDL_Surface* const result = SDL_DisplayFormatAlpha(surface);
+	SDL_Surface* const result = display_format_alpha(surface);
 	invalidate_sdl_surface_cache(surface);
 	if(result == surface) {
 		std::cerr << "resulting surface is the same as the source!!!\n";
@@ -683,7 +683,7 @@ struct SDL_BlitMap {
 
 void invalidate_sdl_surface_cache(SDL_Surface* surf)
 {
-	if(surf->map->dst != SDL_GetVideoSurface()) {
+	if(surf->map->dst != get_video_surface()) {
 		surf->map->dst = NULL;
 	}
 }

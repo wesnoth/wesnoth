@@ -280,7 +280,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	}
 
 	int turn = 1;
-	std::cout << "starting main loop\n";
+	std::cerr << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false, first_player = 0) {
 		int player_number = 0;
 
@@ -521,6 +521,10 @@ redo_turn:
 
 			//time has run out
 			if(!status.next_turn()) {
+				if(non_interactive()) {
+					std::cout << "time over (draw)\n";
+				}
+
 				game_events::fire("time over");
 				throw end_level_exception(DEFEAT);
 			}
