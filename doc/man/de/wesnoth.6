@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "Dezember 28, 2004" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "5. Februar 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 Battle for Wesnoth \- rundebasiertes Strategiespiel
@@ -35,36 +35,96 @@ Waffen und Sprüchen, aus und zerschmettert Euren Gegner.
 .SH KOMMANDOZEILENOPTIONEN
 
 .TP
-.BR -h , \ --help
-Gibt die möglichen Kommandozeilenoptionen aus.
-
-.TP
-.BR -f , \ --fullscreen
-Startet das Programm im Vollbildmodus.
-
-.TP
-.BR -w , \ --windowed
-Startet das Programm im Fenstermodus.
-
-.TP
-.BR -t , \ --test
-Startet das Programm mit einem kleinen Testszenario.
-
-.TP
-.BR --nocache
-Veranlasst das Programm, keine Daten zwischen zu speichern.
+.BR --bpp
+Gibt einem die Möglichkeit die Farbtiefe zu bestimmen, in der das Spiel gestartet wird. Bsp: --bpp32 
 
 .TP
 .BR -d , \ --debug
 Zeigt Eintwicklerinformationen im Spiel an.
 
 .TP
+.BR -f , \ --fullscreen
+Startet das Programm im Vollbildmodus.
+
+.TP
+.BR --fps
+Hiermit kann man sich die Anzahl der Bilder pro Sekunde anzeigen lassen.
+
+.TP
+.BR -h , \ --help
+Gibt die möglichen Kommandozeilenoptionen aus.
+
+.TP
 .BR --log-error="domain1,domain2,..." , \ --log-warning=... , \ --log-info=...
 Setzt die Stufe der Debugausgabe. Verwenden Sie "all", um sämtliche Meldungen auszugeben.
+
+TP
+.BR --multiplayer
+Starte das Spiel im Mehrerspieler-Modus. Es gibt noch zusätzliche Optionen die zusammen mit "--multiplayer" verwendet werden können. Diese werden weiter unten näher erklärt.
+
+.TP
+.BR --nocache
+Veranlasst das Programm, keine Daten zwischen zu speichern.
+
+.TP
+.BR --nosound
+Deaktiviert jegliche Soundeffekte im Spiel.
+
+.TP
+.BR --path
+Zeigt an, wo sich der Ordner mit den Spieldateien befindet .
+
+.TP
+.BR -r , \ --resolution
+Ermöglich es, die Auflösung zu bestimmen, in der das Spiel gestartet wird. Bsp: -r 800x600
+
+.TP
+.BR -t , \ --test
+Startet das Programm mit einem kleinen Testszenario.
 
 .TP
 .BR -v , \ --version
 Zeigt die Versionsnummer an und beendet das Programm.
+
+.TP
+.BR -w , \ --windowed
+Startet das Programm im Fenstermodus.
+
+.SH Zusätzliche Optionen für „ --multiplayer“
+
+Die seitenspezifischen Einstellungen sind mit <NUMMER> markiert. <NUMMER> muss dabei durch die Nummer der jeweiligen Seite ersetzt werden. Meistens ist diese Nummer 1 oder 2, doch hängt es letztendlich von der Anzahl der möglichen Spieler in dem gewählten Scenario ab.
+
+.TP
+.BR --era=<WERT>
+Benutze diese Option um das Zeitalter zu bestimmen in dem das Spiel gestartet wird. Das Zeitalter wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Zeitalter ist in der Datei data/multiplayer.cfg zu finden.
+
+.TP
+.BR --nogui
+Starte das Spiel ohne grafische Oberfläche. 
+
+.TP
+.BR --scenario=<WERT>
+Ermöglicht es, sich ein Szenario auszusuchen. Standard ist "multiplayer_test".
+
+.TP
+.BR --algorithm<NUMMER>=<WERT>
+Ermöglich es, einen anderen als den Standardalgorithmus für die KI der gewählten Seite festzulegen. Mögliche Werte: "idle_ai" und "sample_ai". 
+
+.TP
+.BR --controller<NUMMER>=<WERT>
+Bestimmt wer die gewählte Seite kontrolliert. Mögliche Werte:"human" für einen Menschen und "ai" für einen KI-Spieler.
+
+.TP
+.BR --parm<NUMMER>=<NAME>:<WERT>
+Gibt zusätzliche Parameter für diese Seite an. Die möglichen Parameter hängen davon ab, welche Optionen man für
+.B --controller 
+und
+.B --algorithm 
+verwendet. Sollte nur für Leuten nützlich sein, die ihre eigene "KI" entwickeln wollen.
+
+.TP
+.BR --side<NUMMER>=<WERT>
+Dies bestimmt die Rasse für die festegelegte Seite abhängig vom gewählten Zeitalter. Die Rasse wird per "id" bestimmt. Eine genaue Beschreibung der Rassen und Zeitalter ist in der Datei data/multiplayer.cfg zu finden.
 
 .SH AUTOR
 Geschrieben von David White <davidnwhite@optusnet.com.au>.
@@ -75,7 +135,7 @@ Bearbeitet von Nils Kneuper <crazy-ivanovic@gmx.net>.
 .br
 Diese Beschreibung stammt im Original von Cyril Bouthors <cyril@bouthors.org>.
 .br
-Besucht auch die offizielle Webseite: http://www.wesnoth.org/
+Besucht auch die offizielle Internetseite: http://www.wesnoth.org/
 
 .SH COPYRIGHT
 Copyright \(co 2003 David White <davidnwhite@optusnet.com.au>
@@ -85,3 +145,4 @@ Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU 
 Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+

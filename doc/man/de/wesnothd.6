@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTHD 6 "Dezember 28, 2004" "Wesnothd" "Battle for Wesnoth Mehrspieler Netzwerkdämon"
+.TH WESNOTHD 6 "5. Februar 2005" "Wesnothd" "Battle for Wesnoth Mehrspieler Netzwerkdämon"
 
 .SH NAME
 Battle for Wesnoth Mehrspieler Netzwerkdämon
@@ -29,12 +29,24 @@ Mehrspieler Netzwerkdämon
 .SH KOMMANDOZEILENOPTIONEN
 
 .TP
+.BR --fifo <PFAD>
+Legt den  PFAD (Weg) zur der Datei fest, die als Eingabestream benutzt werden soll.
+
+.TP
 .BR -h , \ --help
 Gibt die möglichen Kommandozeilenoptionen aus.
 
 .TP
+.BR -m , \ --max_packet_size
+Bestimmt die maximale Größe eine Packetes.
+
+.TP
 .BR -p , \ --port
 Weist dem Server einen bestimmten Port zu. Wenn kein Port angegeben wird, wird Port 15000 verwendet.
+
+.TP
+.BR -v , \ --version
+Zeigt die Versionsnummer an und beendet das Programm.
 
 .SH AUTOR
 Geschrieben von David White <davidnwhite@optusnet.com.au>.
@@ -55,3 +67,4 @@ Dieses Programm ist freie Software. Sie können es unter den Bedingungen der GNU 
 Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, daß es Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
 .br
 Sie sollten eine Kopie der GNU General Public License zusammen mit diesem Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+
