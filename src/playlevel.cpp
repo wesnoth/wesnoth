@@ -680,8 +680,10 @@ redo_turn:
 		return QUIT;
 	}
 	catch(network::error& e) {
+		bool disconnect = false;
 		if(e.socket) {
 			e.disconnect();
+			disconnect = true;
 		}
 
 		turn_info turn_data(gameinfo,state_of_game,status,
@@ -689,7 +691,11 @@ redo_turn:
 					        map,teams,player_number,units,true,textbox_info);
 
 		turn_data.save_game(string_table["save_game_error"],gui::YES_NO);
-		throw network::error();
+		if(disconnect) {
+			throw network::error();
+		} else {
+			return QUIT;
+		}
 	}
 
 	return QUIT;

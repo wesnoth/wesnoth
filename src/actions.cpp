@@ -13,6 +13,7 @@
 
 #include "actions.hpp"
 #include "display.hpp"
+#include "events.hpp"
 #include "game.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
@@ -124,6 +125,7 @@ std::string recruit_unit(const gamemap& map, int side,
 		disp->draw(true,true);
 
 		for(double alpha = 0.0; alpha <= 1.0; alpha += 0.1) {
+			events::pump();
 			disp->draw_tile(recruit_location.x,recruit_location.y,NULL,alpha);
 			disp->update_display();
 			SDL_Delay(20);
@@ -1118,6 +1120,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				u.remove_flag("poisoned");
 
 				if(show_healing) {
+					events::pump();
+
 					sound::play_sound("heal.wav");
 					SDL_Delay(DelayAmount);
 					disp.invalidate_unit();
@@ -1155,6 +1159,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 					disp.draw_tile(loc.x,loc.y,NULL,0.5,heal_colour);
 				else
 					disp.draw_tile(loc.x,loc.y);
+
+				events::pump();
 				SDL_Delay(DelayAmount);
 				disp.update_display();
 			}
@@ -1172,6 +1178,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				else
 					disp.draw_tile(loc.x,loc.y);
 
+				events::pump();
+
 				SDL_Delay(DelayAmount);
 				disp.update_display();
 			}
@@ -1184,6 +1192,8 @@ void calculate_healing(display& disp, const gamestatus& status, const gamemap& m
 				assert(units.count(i->second));
 				unit& healer = units.find(i->second)->second;
 				healer.set_healing(false);
+
+				events::pump();
 
 				disp.draw_tile(i->second.x,i->second.y);
 			}

@@ -79,7 +79,7 @@ public:
 	///the constructor. All derived classes should take an argument of type info& which
 	///they should pass to this constructor
 	ai_interface(info& arg) : info_(arg), last_interact_(0) {}
-	virtual ~ai_interface() {}
+	virtual ~ai_interface() { sync_network(); }
 
 	///the function that is called when the AI must play its turn. Derived classes should
 	///implement their AI algorithm in this function

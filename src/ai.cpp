@@ -793,7 +793,7 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 		}
 
 		const unit_map::const_iterator u = units_.find(j->second);
-		if(u == units_.end()) {
+		if(u == units_.end() || u->second.is_guardian()) {
 			continue;
 		}
 

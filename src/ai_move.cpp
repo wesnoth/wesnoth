@@ -423,6 +423,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 			if(enemies_guarding.size() > 1) {
 				rating /= enemies_guarding.size();
+			} else {
+				//scouts who can travel on their route without coming in range of many enemies
+				//get a massive bonus, so that they can be processed first, and avoid getting
+				//bogged down in lots of massing
+				rating *= 10;
 			}
 		}
 
@@ -467,6 +472,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 				if(enemies_guarding.size() > 1) {
 					rating /= enemies_guarding.size();
+				} else {
+					rating *= 10;
 				}
 			}
 
@@ -493,16 +500,18 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	bool dangerous = false;
 
-	//we stop and consider whether the route to this
-	//target is dangerous, and whether we need to group some units to move in unison toward the target
-	//if any point along the path is too dangerous for our single unit, then we hold back
-	for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end(); ++i) {
-		const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
-		const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
-		if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
-		   unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
-			dangerous = true;
-			break;
+	if(current_team().ai_parameters()["grouping"] != "no") {
+		//we stop and consider whether the route to this
+		//target is dangerous, and whether we need to group some units to move in unison toward the target
+		//if any point along the path is too dangerous for our single unit, then we hold back
+		for(std::vector<location>::const_iterator i = best_route.steps.begin(); i != best_route.steps.end(); ++i) {
+			const unit_map::const_iterator unit_at_target = units_.find(best_target->loc);
+			const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
+			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
+			   unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
+				dangerous = true;
+				break;
+			}
 		}
 	}
 

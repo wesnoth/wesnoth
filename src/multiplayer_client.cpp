@@ -257,13 +257,14 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 						status = 1;
 						return;
 					}
-					case lobby::CREATE: {;
+					case lobby::CREATE: {
 						multiplayer_game_setup_dialog mp_dialog(disp,units_data,cfg,state,false);
 						const lobby::RESULT res = lobby::enter(disp,game_data,cfg,&mp_dialog,chat_messages);
 						if(res == lobby::CREATE) {
 							mp_dialog.start_game();
-							status = -1;
 						}
+
+						status = -1;
 
 						break;
 					}

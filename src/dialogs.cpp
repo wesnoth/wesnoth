@@ -12,6 +12,7 @@
 */
 
 #include "dialogs.hpp"
+#include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
@@ -86,6 +87,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	if(!gui.update_locked()) {
 		for(double intensity = 1.0; intensity >= 0.0; intensity -= 0.05) {
 			gui.set_advancing_unit(loc,intensity);
+			events::pump();
 			gui.draw(false);
 			gui.update_display();
 			SDL_Delay(30);
@@ -99,6 +101,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 	if(!gui.update_locked()) {
 		for(double intensity = 0.0; intensity <= 1.0; intensity += 0.05) {
 			gui.set_advancing_unit(loc,intensity);
+			events::pump();
 			gui.draw(false);
 			gui.update_display();
 			SDL_Delay(30);
