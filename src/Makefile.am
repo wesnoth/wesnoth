@@ -60,6 +60,7 @@ wesnoth_SOURCES = about.cpp \
 		  sound.cpp \
 		  team.cpp \
 		  terrain.cpp \
+		  theme.cpp \
 		  tooltips.cpp \
 		  unit.cpp \
 		  unit_types.cpp \
@@ -110,6 +111,7 @@ wesnoth_SOURCES = about.cpp \
 		  sound.hpp \
 		  team.hpp \
 		  terrain.hpp \
+		  theme.hpp \
 		  tooltips.hpp \
 		  unit.hpp \
 		  unit_types.hpp \

@@ -375,9 +375,9 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
 	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
 	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
-	team.$(OBJEXT) terrain.$(OBJEXT) tooltips.$(OBJEXT) \
-	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
-	button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
+	team.$(OBJEXT) terrain.$(OBJEXT) theme.$(OBJEXT) \
+	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_types.$(OBJEXT) \
+	video.$(OBJEXT) button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
 	slider.$(OBJEXT) textbox.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
@@ -430,9 +430,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/show_dialog.Po ./$(DEPDIR)/slider.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/team.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/terrain.Po ./$(DEPDIR)/textbox.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/tooltips.Po ./$(DEPDIR)/unit.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/widget.Po
+@AMDEP_TRUE@	./$(DEPDIR)/theme.Po ./$(DEPDIR)/tooltips.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/unit.Po ./$(DEPDIR)/unit_types.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/video.Po ./$(DEPDIR)/widget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -544,6 +544,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/team.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/terrain.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/textbox.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/theme.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tooltips.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit_types.Po@am__quote@
