@@ -100,6 +100,9 @@ namespace image {
 	///and replaced with this image.
 	void register_image(const locator& i_locator, SDL_Surface* surf);
 
+	//returns true if the given image actually exists, without loading it.
+	bool exists(const locator& i_locator);
+
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
 	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, int lawful_bonus, const team* tm=NULL);

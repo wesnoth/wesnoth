@@ -24,7 +24,7 @@ public:
 	terrain_type();
 	terrain_type(const config& cfg);
 
-	const std::string& image(int x, int y) const;
+	//const std::string& image(int x, int y) const;
 	const std::string& default_image() const;
 	const std::string& adjacent_image() const;
 	const std::string& name() const;

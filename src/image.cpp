@@ -22,6 +22,8 @@ typedef std::map<image::locator,SDL_Surface*> image_map;
 image_map images_,scaledImages_,unmaskedImages_,greyedImages_;
 image_map brightenedImages_,semiBrightenedImages_;
 
+std::map<image::locator,bool> image_existance_map;
+
 std::map<SDL_Surface*,SDL_Surface*> reversedImages_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
@@ -95,30 +97,40 @@ void flush_cache()
 	clear_surfaces(reversedImages_);
 }
 
+std::vector<std::string> get_search_locations(const std::string &file)
+{
+	std::vector<std::string> ret;
+
+	static const std::string images_path = "images/";
+	const std::string image_filename = images_path + file;
+
+	if(!game_config::path.empty()) {
+		ret.push_back(game_config::path + "/" + image_filename);
+	}
+
+	ret.push_back(image_filename);
+
+	ret.push_back(get_user_data_dir() + "/" + image_filename);
+
+	return ret;
+}
+
 SDL_Surface* load_image_file(image::locator i_locator)
 {
 	SDL_Surface* surf = NULL;
 
-	static const std::string images_path = "images/";
-	const std::string images_filename = images_path + i_locator.filename;
+	const std::vector<std::string>& locations = get_search_locations(i_locator.filename);
+	for(std::vector<std::string>::const_iterator itor = locations.begin();
+			itor != locations.end(); ++itor) {
 
-	if(game_config::path.empty() == false) {
-		const std::string& fullpath = game_config::path + "/" +
-			images_filename;
-		surf = IMG_Load(fullpath.c_str());
-	}
-	
-	if(surf == NULL) {
-		surf = IMG_Load(images_filename.c_str());
-	}
-
-	if(surf == NULL) {
-		const std::string user_image = get_user_data_dir() + "/" + images_filename;
-		surf = IMG_Load(user_image.c_str());
+		surf = IMG_Load(itor->c_str());
+		if(surf != NULL)
+			return surf;
 	}
 
 	return surf;
 }
+
 
 SDL_Surface * load_image_sub_file(image::locator i_locator)
 {
@@ -432,6 +444,29 @@ void register_image(const image::locator& id, SDL_Surface* surf)
 void register_image(const std::string &id, SDL_Surface* surf)
 {
 	register_image(locator(id), surf);
+}
+
+bool exists(const image::locator& i_locator)
+{
+	bool ret=false;
+
+	if(i_locator.type != image::locator::FILE && 
+			i_locator.type != image::locator::SUB_FILE) 
+		return false;
+
+	if(image_existance_map.find(i_locator) != image_existance_map.end())
+		return image_existance_map[i_locator];
+
+	const std::vector<std::string>& locations = get_search_locations(i_locator.filename);
+	for(std::vector<std::string>::const_iterator itor = locations.begin();
+			itor != locations.end(); ++itor) {
+
+		if(file_exists(*itor))
+			ret = true;
+	}
+	image_existance_map[i_locator] = ret;
+
+	return ret;
 }
 
 SDL_Surface* getMinimap(int w, int h, const gamemap& map, 

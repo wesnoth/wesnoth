@@ -33,9 +33,13 @@ public:
 	//built content for this tile.
 	//Returns NULL if there is no built content for this tile.
 	const std::vector<image::locator> *get_terrain_at(const gamemap::location &loc,
-						       ADJACENT_TERRAIN_TYPE terrain_type) const;
+			ADJACENT_TERRAIN_TYPE terrain_type) const;
+
+
 	// regenerate the generated content at the given location.
 	void rebuild_terrain(const gamemap::location &loc);
+
+	typedef std::multimap<int, std::string> imagelist;
 
 	struct terrain_constraint
 	{
@@ -48,8 +52,10 @@ public:
 		std::vector<std::string> set_flag;
 		std::vector<std::string> no_flag;
 		std::vector<std::string> has_flag;
-	};
 
+		imagelist images;
+	};
+	
 	struct tile
 	{
 		std::set<std::string> flags;
@@ -60,16 +66,17 @@ public:
 	};
 
 private:
+	typedef std::map<gamemap::location, terrain_constraint> constraint_set;
 
 	struct building_rule
 	{
-		typedef std::map<gamemap::location, terrain_constraint> constraint_set;
 		constraint_set constraints;
 		gamemap::location location_constraints;
 
 		int probability;
-		std::string image_foreground;
-		std::string image_background;
+		int precedence;
+		
+		imagelist images;
 	};
 	
 	struct tilemap
@@ -88,21 +95,28 @@ private:
 		int y_;
 	};
 
+	typedef std::multimap<int, building_rule> building_ruleset;
+
 	terrain_constraint rotate(const terrain_constraint &constraint, int angle);
-	void replace_rotation(std::string &s, const std::string &replacement);
+	void replace_token(std::string &, const std::string &token, const std::string& replacement);
+	void replace_token(imagelist &, const std::string &token, const std::string& replacement);
+	void replace_token(building_rule &s, const std::string &token, const std::string& replacement);
 
-	building_rule rotate_rule(const building_rule &rule, int angle, const std::string &angle_name);
+	building_rule rotate_rule(const building_rule &rule, int angle, const std::vector<std::string>& angle_name);
+	void add_rotated_rules(building_ruleset& rules, const building_rule& tpl, const std::string &rotations);
+	void add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item);
 
-	void add_constraint_item(std::vector<std::string> &list, const std::string &item);
+	void terrain_builder::add_images_from_config(imagelist &images, const config &cfg);
+
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints,
 			     const gamemap::location &loc, const std::string& type);
 	void add_constraints(std::map<gamemap::location, terrain_constraint>& constraints, const gamemap::location &loc,
 			     const config &cfg);
-
+	
 	typedef std::multimap<int, gamemap::location> anchormap;
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
 			     anchormap& anchors);
-	
+	terrain_builder::building_rule rule_from_terrain_template(const terrain_builder::building_rule &tpl, const gamemap::TERRAIN terrain);
 	void parse_config(const config &cfg);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index);
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
@@ -113,8 +127,7 @@ private:
 
 	typedef std::map<unsigned char, std::vector<gamemap::location> > terrain_by_type_map;
 	terrain_by_type_map terrain_by_type_;
-	
-	typedef std::vector<building_rule> building_ruleset;
+
 	building_ruleset building_rules_;
 
 };

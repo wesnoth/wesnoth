@@ -175,13 +175,17 @@ public:
 	                 int red, int green, int blue);
 
 private:
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
+
+	//composes and draws the terrains on a tile
+	void draw_terrain_on_tile(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
+
 	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	                       double alpha=1.0, Uint32 blend_to=0);
 
 	void draw_halo_on_tile(int x, int y);
 
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
-	void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
+	// void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 
 public:
@@ -239,7 +243,7 @@ public:
 	void update_display();
 
 	//functions used in the editor.
-	void draw_terrain_palette(int x, int y, gamemap::TERRAIN selected);
+	//void draw_terrain_palette(int x, int y, gamemap::TERRAIN selected);
 	gamemap::TERRAIN get_terrain_on(int palx, int paly, int x, int y);
 
 	//set_team sets the team controlled by the player using the computer,
@@ -351,21 +355,23 @@ private:
 
 	void bounds_check_position();
 
-	std::vector<shared_sdl_surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
-	std::vector<shared_sdl_surface> getBuiltTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	// std::vector<shared_sdl_surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<shared_sdl_surface> get_terrain_images(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<std::string> get_fog_shroud_graphics(const gamemap::location& loc);
+
 
 	//this surface must be freed by the caller
-	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
-	                        int x, int y, const std::string& dir="");
+	//SDL_Surface* get_terrain(gamemap::TERRAIN, image::TYPE type,
+	//                        int x, int y, const std::string& dir="");
 	//this surface must be freed by the caller
-	SDL_Surface* getTerrain(const image::locator &image, image::TYPE type,
+	SDL_Surface* get_terrain(const image::locator &image, image::TYPE type,
 	                        int x, int y, bool search_tod);
 
 	//this surface must be freed by the caller
-	SDL_Surface* getFlag(gamemap::TERRAIN, int x, int y);
+	SDL_Surface* get_flag(gamemap::TERRAIN, int x, int y);
 
 	//this surface must be freed by the caller
-	SDL_Surface* getMinimap(int w, int h);
+	SDL_Surface* get_minimap(int w, int h);
 
 	CVideo& screen_;
 	mutable CKey keys_;

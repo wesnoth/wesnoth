@@ -59,16 +59,17 @@ terrain_type::terrain_type(const config& cfg)
 	castle_ = cfg["recruit_onto"] == "true";
 	keep_ = cfg["recruit_from"] == "true";
 }
-
+#if 0
 const std::string& terrain_type::image(int x, int y) const
 {
 	assert(!images_.empty());
-
-	return images_[(((x<<8)^3413402)+y^34984 + x*y)%images_.size()];
+	//return images_[(((x<<8)^3413402)+y^34984 + x*y)%images_.size()];
+	return default_image();
 }
-
+#endif
 const std::string& terrain_type::default_image() const
 {
+	//static const std::string ret = "void";
 	assert(!images_.empty());
 	return images_.front();
 }
