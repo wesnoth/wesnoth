@@ -858,7 +858,7 @@ std::vector<topic> generate_terrains_topics() {
 	for (std::vector<gamemap::TERRAIN>::const_iterator terrain_it = show_info_about.begin();
 		 terrain_it != show_info_about.end(); terrain_it++) {
 		const terrain_type& info = map->get_terrain_info(*terrain_it);
-		const std::string &name = info.name();
+		const std::string &name = string_table[info.name()];
 		std::stringstream ss;
 		ss << "<img>src='terrain/" << info.default_image() << ".png'</img>\n\n";
 		if (info.is_alias()) {
@@ -867,7 +867,7 @@ std::vector<topic> generate_terrains_topics() {
 			for (std::string::const_iterator it = aliased_terrains.begin();
 				 it != aliased_terrains.end(); it++) {
 				const gamemap::TERRAIN t = *it;
-				const std::string alias_name = map->get_terrain_info(t).name();
+				const std::string &alias_name = string_table[map->get_terrain_info(t).name()];
 				alias_ss << "<ref>text='" << escape(alias_name) << "' dst='"
 						 << escape(std::string("terrain_") + t) << "'</ref>";
 				if (it + 2 == aliased_terrains.end()) {
