@@ -179,6 +179,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.cpp \
 		  log.cpp \
 		  map.cpp \
+		  map_label.cpp \
 		  mapgen.cpp \
 		  mapgen_dialog.cpp \
 		  mouse.cpp \
@@ -236,6 +237,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.hpp \
 		  log.hpp \
 		  map.hpp \
+		  map_label.hpp \
 		  mapgen.hpp \
 		  mapgen_dialog.hpp \
 		  mouse.hpp \
@@ -398,8 +400,9 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	font.$(OBJEXT) game.$(OBJEXT) game_config.$(OBJEXT) \
 	game_events.$(OBJEXT) gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) \
 	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
-	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
-	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) \
+	map_label.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
+	mouse.$(OBJEXT) multiplayer.$(OBJEXT) \
 	multiplayer_client.$(OBJEXT) multiplayer_connect.$(OBJEXT) \
 	multiplayer_lobby.$(OBJEXT) network.$(OBJEXT) \
 	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
@@ -454,9 +457,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/image.Po ./$(DEPDIR)/intro.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/key.Po ./$(DEPDIR)/language.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/log.Po ./$(DEPDIR)/map.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/mapgen.Po ./$(DEPDIR)/mapgen_dialog.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/menu.Po ./$(DEPDIR)/mouse.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/multiplayer.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/map_label.Po ./$(DEPDIR)/mapgen.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/mapgen_dialog.Po ./$(DEPDIR)/menu.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/mouse.Po ./$(DEPDIR)/multiplayer.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_client.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_connect.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/multiplayer_lobby.Po \
@@ -565,6 +568,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/language.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/map.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/map_label.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapgen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mapgen_dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/menu.Po@am__quote@
