@@ -14,6 +14,7 @@
 #define LANGUAGE_HPP_INCLUDED
 
 #include "config.hpp"
+#include "gettext.hpp"
 
 #include <map>
 #include <string>
@@ -75,13 +76,5 @@ std::vector<std::string> split_utf8_string(const std::string &src);
 std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
-
-
-// gettext-related declarations
-#include <libintl.h>
-const char* sgettext (const char*);
-#define _(String) gettext(String)
-#define gettext_noop(String) String
-#define N_(String) gettext_noop (String)
 
 #endif

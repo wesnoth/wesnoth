@@ -45,6 +45,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_config.cpp \
 		  game_events.cpp \
 		  gamestatus.cpp \
+		  gettext.cpp \
 		  halo.cpp \
           help.cpp \
 		  hotkeys.cpp \
@@ -113,6 +114,7 @@ wesnoth_SOURCES = about.cpp \
 		  game_config.hpp \
 		  game_events.hpp \
 		  gamestatus.hpp \
+		  gettext.hpp \
 		  halo.hpp \
           help.hpp \
 		  hotkeys.hpp \
@@ -192,6 +194,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.cpp \
 			 game_events.cpp \
 			 gamestatus.cpp \
+		     gettext.cpp \
 			 halo.cpp \
              help.cpp \
 			 hotkeys.cpp \
@@ -258,6 +261,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 game_config.hpp \
 			 game_events.hpp \
 			 gamestatus.hpp \
+		     gettext.hpp \
 			 halo.hpp \
              help.hpp \
 			 hotkeys.hpp \

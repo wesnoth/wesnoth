@@ -352,16 +352,3 @@ wide_string string_to_wstring(const std::string &src)
 {
 	return utf8_to_wstring(src);
 }
-
-const char* sgettext (const char *msgid)
-{
-	const char *msgval = gettext (msgid);
-	if (msgval == msgid) {
-		msgval = strrchr (msgid, '|');
-		if (msgval == NULL)
-			msgval = msgid;
-		else
-			msgval++;
-	}
-	return msgval;
-}
