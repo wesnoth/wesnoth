@@ -208,7 +208,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				} else if(!replaying && team_it->is_network()) {
 					config cfg;
 					for(;;) {
-						network::connection res=network::receive_data(cfg,0,50);
+						network::connection res=network::receive_data(cfg,0,20);
 						if(res && cfg.children["turn"].empty() == false) {
 							break;
 						}

@@ -14,6 +14,7 @@
 #include "font.hpp"
 #include "hotkeys.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
@@ -22,6 +23,7 @@
 #include "widgets/slider.hpp"
 
 #include <cstdlib>
+#include <iostream>
 #include <sstream>
 
 namespace {
@@ -96,13 +98,13 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find("yresolution");
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (maximum(atoi(x->second.c_str()),800),
-		                        maximum(atoi(y->second.c_str()),600));
+		std::pair<int,int> res (maximum(atoi(x->second.c_str()),1024),
+		                        maximum(atoi(y->second.c_str()),768));
 		res.first &= ~1;
 		res.second &= ~1;
 		return res;
 	} else {
-		return std::pair<int,int>(800,600);
+		return std::pair<int,int>(1024,768);
 	}
 }
 
@@ -247,15 +249,16 @@ void set_scroll_speed(double new_speed)
 
 void show_preferences_dialog(display& disp)
 {
+	assert(::disp != NULL);
+
 	const resize_lock prevent_resizing;
+	
+	log_scope("show_preferences_dialog");
 
 	const int xpos = disp.x()/2 - 300;
 	const int ypos = disp.y()/2 - 200;
 	const int width = 600;
 	const int height = 400;
-
-	disp.invalidate_all();
-	disp.draw();
 
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
@@ -341,6 +344,7 @@ void show_preferences_dialog(display& disp)
 	bool redraw_all = true;
 
 	for(;;) {
+		log_scope("looping");
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
@@ -444,7 +448,7 @@ void show_video_mode_dialog(display& disp)
 	}
 
 	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
+		if(modes[i]->w >= 1024 && modes[i]->h >= 768) {
 			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
 			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
 				continue;

@@ -79,7 +79,7 @@ namespace {
 CVideo::CVideo() : frameBuffer(NULL)
 {
 	const int res =
-	       SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
+	       SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO ); // | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
 		std::cerr << "Could not initialize SDL: " << SDL_GetError() << "\n";
@@ -215,7 +215,7 @@ void pump_events()
 				const SDL_ResizeEvent* const resize
 				              = reinterpret_cast<SDL_ResizeEvent*>(&event);
 
-				if(resize->w < 800 || resize->h < 600) {
+				if(resize->w < 1024 || resize->h < 768) {
 					resize_dimensions.first = 0;
 					resize_dimensions.second = 0;
 				} else {
