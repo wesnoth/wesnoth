@@ -28,7 +28,7 @@ std::string image_mask;
 
 SDL_PixelFormat* pixel_format = NULL;
 
-double zoom = 70.0;
+int zoom = 70;
 
 //we have to go through all this trickery on clear_surfaces because
 //some compilers don't support 'typename type::iterator'
@@ -147,7 +147,7 @@ void set_image_mask(const std::string& image)
 
 }
 
-void set_zoom(double amount)
+void set_zoom(int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;
@@ -226,8 +226,7 @@ SDL_Surface* get_image(const std::string& filename, TYPE type, COLOUR_ADJUSTMENT
 			result = i->second;
 		} else {
 
-			const int z = static_cast<int>(zoom);
-			const scoped_sdl_surface scaled_surf(scale_surface(i->second,z,z));
+			const scoped_sdl_surface scaled_surf(scale_surface(i->second,zoom,zoom));
 
 			if(scaled_surf == NULL) {
 				return NULL;

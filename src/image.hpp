@@ -55,7 +55,7 @@ namespace image {
 
 	///sets the amount scaled images should be scaled. Invalidates all
 	///scaled images.
-	void set_zoom(double zoom);
+	void set_zoom(int zoom);
 
 	enum TYPE { UNSCALED, SCALED, UNMASKED, GREYED, BRIGHTENED };
 

@@ -41,7 +41,8 @@
 std::map<gamemap::location,double> display::debugHighlights_;
 
 namespace {
-	const double DefaultZoom = 70.0;
+	const int DefaultZoom = 70;
+	const int MaxZoom = 200;
 
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
@@ -52,7 +53,7 @@ namespace {
 display::display(unit_map& units, CVideo& video, const gamemap& map,
 				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
 				 const config& built_terrains)
-		             : screen_(video), xpos_(0.0), ypos_(0.0),
+		             : screen_(video), xpos_(0), ypos_(0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
 					   minimap_(NULL), redrawMinimap_(false),
 					   pathsList_(NULL), status_(status),
@@ -227,34 +228,29 @@ void display::highlight_hex(gamemap::location hex)
 gamemap::location display::hex_clicked_on(int xclick, int yclick)
 {
 	const SDL_Rect& rect = map_area();
-	if(xclick < rect.x || xclick >= rect.x + rect.w ||
-	   yclick < rect.y || yclick >= rect.y + rect.h)
+	if(point_in_rect(xclick,yclick,rect) == false) {
 		return gamemap::location();
+	}
 
 	xclick -= rect.x;
 	yclick -= rect.y;
 
-	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+	const int tile_width = hex_width();
 
-	const double xtile = xpos_/tile_width +
-			               static_cast<double>(xclick)/tile_width - 0.25;
-	const double ytile = ypos_/zoom_ + static_cast<double>(yclick)/zoom_
-	                      + (is_odd(int(xtile)) ? -0.5:0.0);
+	const int xtile = (xpos_ + xclick)/tile_width;
+	const int ytile = (ypos_ + yclick - (is_odd(xtile) ? zoom_/2 : 0))/zoom_; //(yclick + is_odd(xtile) ? -yclick/2 : 0)/zoom_;
 
-	return gamemap::location(static_cast<int>(xtile),static_cast<int>(ytile));
+	return gamemap::location(xtile,ytile);
 }
 
-double display::get_location_x(const gamemap::location& loc) const
+int display::get_location_x(const gamemap::location& loc) const
 {
-	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
-
-	return map_area().x + loc.x*tile_width - xpos_;
+	return map_area().x + loc.x*hex_width() - xpos_;
 }
 
-double display::get_location_y(const gamemap::location& loc) const
+int display::get_location_y(const gamemap::location& loc) const
 {
-	return map_area().y + static_cast<double>(loc.y)*zoom_ - ypos_ +
-					         (is_odd(loc.x) ? zoom_/2.0 : 0.0);
+	return map_area().y + loc.y*zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0);
 }
 
 gamemap::location display::minimap_location_on(int x, int y)
@@ -272,19 +268,13 @@ gamemap::location display::minimap_location_on(int x, int y)
 	return gamemap::location(int((x - rect.x)/xdiv),int((y-rect.y)/ydiv));
 }
 
-void display::scroll(double xmove, double ymove)
+void display::scroll(int xmove, int ymove)
 {
-	const double orig_x = xpos_;
-	const double orig_y = ypos_;
+	const int orig_x = xpos_;
+	const int orig_y = ypos_;
 	xpos_ += xmove;
 	ypos_ += ymove;
 	bounds_check_position();
-
-	if(int(util::round(xpos_)) == int(util::round(orig_x)))
-		xpos_ = orig_x;
-
-	if(int(util::round(ypos_)) == int(util::round(orig_y)))
-		ypos_ = orig_y;
 
 	//only invalidate if we've actually moved
 	if(orig_x != xpos_ || orig_y != ypos_) {
@@ -295,30 +285,34 @@ void display::scroll(double xmove, double ymove)
 
 int display::hex_size() const
 {
-	return int(zoom_);
+	return zoom_;
 }
 
-double display::zoom(double amount)
+int display::hex_width() const
 {
-	if(amount == 0.0) {
-		return zoom_/DefaultZoom;
+	return (zoom_*3)/4;
+}
+
+double display::zoom(int amount)
+{
+	if(amount == 0) {
+		return double(zoom_)/double(DefaultZoom);
 	}
 
-	const double orig_xpos = xpos_;
-	const double orig_ypos = ypos_;
+	const int orig_xpos = xpos_;
+	const int orig_ypos = ypos_;
 
 	xpos_ /= zoom_;
 	ypos_ /= zoom_;
 
-	const double max_zoom = 200.0;
-	const double orig_zoom = zoom_;
+	const int orig_zoom = zoom_;
 
 	zoom_ += amount;
-	if(zoom_ > max_zoom) {
+	if(zoom_ > MaxZoom) {
 		zoom_ = orig_zoom;
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
-		return zoom_/DefaultZoom;
+		return double(zoom_)/double(DefaultZoom);
 	}
 
 	xpos_ *= zoom_;
@@ -327,7 +321,7 @@ double display::zoom(double amount)
 	xpos_ += amount*2;
 	ypos_ += amount*2;
 
-	const double prev_zoom = zoom_;
+	const int prev_zoom = zoom_;
 
 	bounds_check_position();
 
@@ -335,16 +329,18 @@ double display::zoom(double amount)
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
 		zoom_ = orig_zoom;
-		return zoom_/DefaultZoom;
+		return double(zoom_)/double(DefaultZoom);
 	}
 
 	energy_bar_rect_.x = -1;
+
+	std::cerr << "zoomed to: " << zoom_ << "\n";
 
 	image::set_zoom(zoom_);
 	map_labels_.recalculate_labels();
 	invalidate_all();
 
-	return zoom_/DefaultZoom;
+	return double(zoom_)/double(DefaultZoom);
 }
 
 void display::default_zoom()
@@ -357,47 +353,38 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 	if(update_locked() || (check_fogged && fogged(x,y)))
 		return;
 
-	if(map_.on_board(gamemap::location(x,y)) == false)
+	const gamemap::location loc(x,y);
+
+	if(map_.on_board(loc) == false)
 		return;
 
-	const double xpos = static_cast<double>(x)*zoom_*0.75 - xpos_;
-	const double ypos = static_cast<double>(y)*zoom_ - ypos_ +
-					                    ((x % 2) == 1 ? zoom_/2.0 : 0.0);
+	const int xpos = get_location_x(loc);
+	const int ypos = get_location_y(loc);
 
-	const double speed = preferences::scroll_speed()*2.0;
+	const int speed = preferences::scroll_speed()*2;
 
 	const SDL_Rect& area = map_area();
-	const double desiredxpos = area.w/2.0 - zoom_/2.0;
-	const double desiredypos = area.h/2.0 - zoom_/2.0;
+	const int desiredxpos = area.w/2 - zoom_/2;
+	const int desiredypos = area.h/2 - zoom_/2;
 
-	const double xmove = xpos - desiredxpos;
-	const double ymove = ypos - desiredypos;
+	const int xmove = xpos - desiredxpos;
+	const int ymove = ypos - desiredypos;
 
-	int num_moves = static_cast<int>((fabs(xmove) > fabs(ymove) ?
-	                                  fabs(xmove):fabs(ymove))/speed);
+	int num_moves = (abs(xmove) > abs(ymove) ? abs(xmove):abs(ymove))/speed;
 
 	if(scroll_type == WARP || turbo())
 		num_moves = 1;
 
-	const double divisor = static_cast<double>(num_moves);
-
-	double xdiff = 0.0, ydiff = 0.0;
-
 	for(int i = 0; i != num_moves; ++i) {
 		events::pump();
-		xdiff += xmove/divisor;
-		ydiff += ymove/divisor;
 
 		//accelerate scroll rate if either shift key is held down
 		if((i%4) != 0 && i != num_moves-1 && turbo()) {
 			continue;
 		}
 
-		scroll(xdiff,ydiff);
+		scroll(xmove/num_moves,ymove/num_moves);
 		draw();
-
-		xdiff = 0.0;
-		ydiff = 0.0;
 	}
 
 	invalidate_all();
@@ -407,17 +394,16 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type, bool check_f
 void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
                               SCROLL_TYPE scroll_type, bool check_fogged)
 {
-	const double xpos1 = static_cast<double>(x1)*zoom_*0.75 - xpos_;
-	const double ypos1 = static_cast<double>(y1)*zoom_ - ypos_ +
-					                    ((x1 % 2) == 1 ? zoom_/2.0 : 0.0);
-	const double xpos2 = static_cast<double>(x2)*zoom_*0.75 - xpos_;
-	const double ypos2 = static_cast<double>(y2)*zoom_ - ypos_ +
-					                    ((x2 % 2) == 1 ? zoom_/2.0 : 0.0);
+	const gamemap::location loc1(x1,y1), loc2(x2,y2);
+	const int xpos1 = get_location_x(loc1);
+	const int ypos1 = get_location_y(loc1);
+	const int xpos2 = get_location_x(loc2);;
+	const int ypos2 = get_location_y(loc2);;
 
-	const double diffx = fabs(xpos1 - xpos2);
-	const double diffy = fabs(ypos1 - ypos2);
+	const int diffx = abs(xpos1 - xpos2);
+	const int diffy = abs(ypos1 - ypos2);
 
-	if(diffx > map_area().w/(zoom_*0.75) || diffy > map_area().h/zoom_) {
+	if(diffx > map_area().w/hex_width() || diffy > map_area().h/zoom_) {
 		scroll_to_tile(x1,y1,scroll_type,check_fogged);
 	} else {
 		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type,check_fogged);
@@ -426,41 +412,38 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 
 void display::bounds_check_position()
 {
-	const double min_zoom1 = static_cast<double>(map_area().w/(map_.x()*0.75 + 0.25));
-	const double min_zoom2 = static_cast<double>(map_area().h/map_.y());
-	const double min_zoom = ceil(maximum<double>(min_zoom1,min_zoom2)/5.0)*5.0;
-	const double max_zoom = 200.0;
+	const int min_zoom1 = map_area().w/((map_.x()*3)/4);
+	const int min_zoom2 = map_area().h/map_.y();
+	const int min_zoom = maximum<int>(min_zoom1,min_zoom2);
 
-	const int orig_zoom = int(zoom_);
-
-	zoom_ = floor(zoom_);
+	const int orig_zoom = zoom_;
 
 	if(zoom_ < min_zoom) {
 		zoom_ = min_zoom;
 	}
 
-	if(zoom_ > max_zoom) {
-		zoom_ = max_zoom;
+	if(zoom_ > MaxZoom) {
+		zoom_ = MaxZoom;
 	}
 
-	const int tile_width = static_cast<int>(static_cast<int>(zoom_)*0.75) + 1;
+	const int tile_width = hex_width();
 
-	const double xend = tile_width*map_.x() + tile_width/3;
-	const double yend = zoom_*map_.y() + zoom_/2.0;
+	const int xend = tile_width*map_.x() + tile_width/3;
+	const int yend = zoom_*map_.y() + zoom_/2;
 
-	if(xpos_ + static_cast<double>(map_area().w) > xend)
-		xpos_ -= xpos_ + static_cast<double>(map_area().w) - xend;
+	if(xpos_ + map_area().w > xend)
+		xpos_ -= xpos_ + map_area().w - xend;
 
-	if(ypos_ + static_cast<double>(map_area().h) > yend)
-		ypos_ -= ypos_ + static_cast<double>(map_area().h) - yend;
+	if(ypos_ + map_area().h > yend)
+		ypos_ -= ypos_ + map_area().h - yend;
 
-	if(xpos_ < 0.0)
-		xpos_ = 0.0;
+	if(xpos_ < 0)
+		xpos_ = 0;
 
-	if(ypos_ < 0.0)
-		ypos_ = 0.0;
+	if(ypos_ < 0)
+		ypos_ = 0;
 
-	if(int(zoom_) != orig_zoom)
+	if(zoom_ != orig_zoom)
 		image::set_zoom(zoom_);
 }
 
@@ -1074,13 +1057,13 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		return;
 
 	const gamemap::location loc(x,y);
-	int xpos = int(get_location_x(loc));
-	int ypos = int(get_location_y(loc));
+	int xpos = get_location_x(loc);
+	int ypos = get_location_y(loc);
 
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
+	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
 		return;
 	}
 
@@ -1209,7 +1192,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 	}
 
 	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
-	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*(zoom_/DefaultZoom));
+	const int height_adjust = it->second.is_flying() ? 0 : int(map_.get_terrain_info(terrain).unit_height_adjust()*zoom());
 	const double submerge = it->second.is_flying() ? 0.0 : map_.get_terrain_info(terrain).unit_submerge();
 
 	if(loc == advancingUnit_ && it != units_.end()) {
@@ -1278,7 +1261,7 @@ void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos > clip_rect.x + clip_rect.w || ypos > clip_rect.y + clip_rect.h ||
-	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
+	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
 		return;
 	}
 
@@ -1314,7 +1297,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 	SDL_Rect clip_rect = map_area();
 
 	if(xpos >= clip_rect.x + clip_rect.w || ypos >= clip_rect.y + clip_rect.h ||
-	   xpos + static_cast<int>(zoom_) < clip_rect.x || ypos + static_cast<int>(zoom_) < clip_rect.y) {
+	   xpos + zoom_ < clip_rect.x || ypos + zoom_ < clip_rect.y) {
 		return;
 	}
 
@@ -1522,8 +1505,8 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		std::string str(1,'x');
 		str[0] = '1' + route_.move_left;
 		const SDL_Rect& text_area = font::draw_text(NULL,rect,18,text_colour,str,0,0);
-		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
-		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
+		const int x = xloc + zoom_/2 - text_area.w/2;
+		const int y = yloc + zoom_/2 - text_area.h/2;
 		font::draw_text(this,rect,18,text_colour,str,x,y);
 	}
 }
@@ -1805,7 +1788,7 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 	}
 
 	const SDL_Color colour = {red,green,blue,255};
-	font::add_floating_label(text,24,colour,get_location_x(loc)+zoom_*0.5,get_location_y(loc),
+	font::add_floating_label(text,24,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
 	                         0,-2,60,screen_area());
 }
 

@@ -22,6 +22,11 @@
 #include "util.hpp"
 #include "video.hpp"
 
+bool point_in_rect(int x, int y, const SDL_Rect& rect)
+{
+	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
+}
+
 namespace {
 	SDL_PixelFormat& get_neutral_pixel_format()
 	{

@@ -76,11 +76,11 @@ public:
 
 	//function which scrolls the display by xmov,ymov. Invalidation and
 	//redrawing will be scheduled.
-	void scroll(double xmov, double ymov);
+	void scroll(int xmov, int ymov);
 
 	//function which zooms the display by the specified amount. Negative
-	//valeus zoom out. Returns the current zoom ratio
-	double zoom(double amount=0.0);
+	//values zoom out. Returns the current zoom ratio
+	double zoom(int amount=0);
 
 	//function to take the zoom amount to the default.
 	void default_zoom();
@@ -88,6 +88,8 @@ public:
 	//function which returns the size of a hex in pixels
 	//(from top tip to bottom tip or left edge to right edge)
 	int hex_size() const;
+
+	int hex_width() const;
 
 	enum SCROLL_TYPE { SCROLL, WARP };
 
@@ -153,8 +155,8 @@ public:
 	void set_route(const paths::route* route);
 
 	//functions to get the on-screen positions of hexes.
-	double get_location_x(const gamemap::location& loc) const;
-	double get_location_y(const gamemap::location& loc) const;
+	int get_location_x(const gamemap::location& loc) const;
+	int get_location_y(const gamemap::location& loc) const;
 
 	//function to remove a footstep from a specific location
 	void remove_footstep(const gamemap::location& loc);
@@ -348,7 +350,7 @@ private:
 
 	CVideo& screen_;
 	mutable CKey keys_;
-	double xpos_, ypos_, zoom_;
+	int xpos_, ypos_, zoom_;
 	const gamemap& map_;
 
 	gamemap::location selectedHex_;

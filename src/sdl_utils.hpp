@@ -33,6 +33,8 @@
 #define SDL_BUTTON_WHEELDOWN 5
 #endif
 
+bool point_in_rect(int x, int y, const SDL_Rect& rect);
+
 struct free_sdl_surface {
 	void operator()(SDL_Surface* surface) const { SDL_FreeSurface(surface); }
 };
