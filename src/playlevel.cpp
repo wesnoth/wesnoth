@@ -23,6 +23,7 @@
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
+#include "scoped_resource.hpp"
 #include "sound.hpp"
 #include "tooltips.hpp"
 
@@ -402,7 +403,7 @@ redo_turn:
 					update_locker lock(gui,!preferences::show_ai_moves());
 
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status);
-					std::auto_ptr<ai_interface> ai_obj(create_ai("",ai_info));
+					util::scoped_ptr<ai_interface> ai_obj(create_ai("",ai_info));
 					ai_obj->play_turn();
 
 					if(network::nconnections() > 0) {
