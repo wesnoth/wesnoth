@@ -83,6 +83,9 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		const std::string game = dialogs::load_game_dialog(*disp_, &show_replay);
 		if(game == "")
 		{
+			gui::show_dialog(*disp_, NULL, "", 
+					 "Sae Game Error, game == \"\"",
+					 gui::OK_ONLY);
 			status_ = -1;
 			return status_;
 		}
@@ -166,6 +169,9 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 
 	if(sides.first == sides.second || possible_sides.empty()) {
+		gui::show_dialog(*disp_, NULL, "", 
+				 "No multiplayer sides found.",
+				 gui::OK_ONLY);
 		std::cerr << "no multiplayer sides found\n";
 		status_ = -1;
 		return status_;
@@ -406,6 +412,8 @@ void mp_connect::gui_update()
 		if (side["controller"] == "network") {
 			if (side["description"] == "") {
 				combos_type_[n].set_selected(0);
+			} else if (side["description"] == "Computer Player") {
+				combos_type_[n].set_selected(2);
 			} else {
 				for (size_t m = 0; m != player_types_.size(); ++m) {
 					if (side["description"] == player_types_[m]) {
@@ -560,6 +568,11 @@ int mp_connect::gui_do()
 		}
 
 		if(cancel_.process(mousex,mousey,left_button)) {
+			if(network::nconnections() > 0) {
+				config cfg;
+				cfg.add_child("leave_game");
+				network::send_data(cfg);
+			}
 			status_ = 0;
 			return status_;
 		}
@@ -602,6 +615,12 @@ int mp_connect::gui_do()
 			std::vector<config*> story;
 			play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
 			recorder.clear();
+
+			if(network::nconnections() > 0) {
+				config cfg;
+				cfg.add_child("leave_game");
+				network::send_data(cfg);
+			}
 
 			status_ = 0;
 			return status_;
