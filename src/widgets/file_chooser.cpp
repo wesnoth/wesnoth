@@ -30,7 +30,7 @@ namespace {
 namespace gui {
 
 file_chooser::file_chooser(display &disp, std::string start_file) 
-  : widget(disp), disp_(disp), delete_button_(disp, _("Delete File")),
+	: widget(disp), delete_button_(disp, _("Delete File")),
 	  path_delim_('/'), current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), file_list_(disp, files_in_current_dir_, false),
 	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
@@ -93,9 +93,9 @@ void file_chooser::display_chosen_file() {
 void file_chooser::draw_contents() {
 	display_current_files();
 	display_chosen_file();
-	font::draw_text(&disp_, current_path_rect_, font::SIZE_NORMAL, font::NORMAL_COLOUR,
+	font::draw_text(&disp(), current_path_rect_, font::SIZE_NORMAL, font::NORMAL_COLOUR,
 					current_dir_, current_path_rect_.x, current_path_rect_.y,
-					disp_.video().getSurface());
+					disp().video().getSurface());
 }
 
 void file_chooser::process_event() {
@@ -133,7 +133,7 @@ void file_chooser::process_event() {
 	if (delete_button_.pressed()) {
 		const int ret = remove(get_current_file().c_str());
 		if (ret == -1) {
-			show_dialog(disp_, NULL, "", _("Deletion of the file failed."), OK_ONLY);
+			show_dialog(disp(), NULL, "", _("Deletion of the file failed."), OK_ONLY);
 		}
 		else {
 			update_file_lists();

@@ -86,7 +86,6 @@ private:
 	/// most recently updated.
 	std::string get_current_file() const;
 
-	display &disp_;
 	button delete_button_;
 	const char path_delim_;
 	std::string current_dir_;
