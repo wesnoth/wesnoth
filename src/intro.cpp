@@ -98,48 +98,58 @@ void show_intro(display& screen, const config& data)
 		const std::string& lang_story = string_table[id];
 		const std::string& story = lang_story.empty() ? (**i)["story"] : lang_story;
 
-		const int max_length = 60;
-		int cur_length = 0;
-
 		std::string::const_iterator j = story.begin();
 
 		bool skip = false, last_key = true;
 		
 		int xpos = textx, ypos = texty;
+		// xpos + image->w - 70 is the left most edge of the bounding box of the buttons.
+		// subtract 96 more than we need, so intro text does not overlap the buttons.
+		// TODO: should handle word wrap *before* drawing anything, so the text will not overlap the button.
+		const int max_xpos = xpos + image->w - 70 - 96;
 		size_t height = 0;
 		std::string buf;
 		for(;;) {
 			if(j != story.end()) {
 				unsigned char c = *j;
-				if(c == ' ' && cur_length >= max_length) {
+				if(c == ' ' && xpos >= max_xpos) {
 					xpos = textx;
 					ypos += height;
-					cur_length = 0;
+					++j;
 				} else {
-					buf.resize(buf.size()+1);
-					buf[buf.size()-1] = c;
-					
-					//if this is definitely a non-UTF8 character, output it now
-					if(c < 128 || j+1 == story.end()) {
-						const SDL_Rect rect = font::draw_text(&screen,
-						                       screen.screen_area(),16,
-						                       font::NORMAL_COLOUR,buf,xpos,ypos,
-											   NULL,false,font::NO_MARKUP);
+					//how many bytes does the current utf8 character require?
+					int bytes = 1;
 
-						buf = "";
+					if(c >= 0xC0U) 
+						bytes++;
+					if(c >= 0xE0U)
+						bytes++;
+					if(c >= 0xF0U)
+						bytes++;
+					if(c >= 0xF8U)
+						bytes++;
+					if(c >= 0xFCU)
+						bytes++;
 
-						if(rect.h > height)
-							height = rect.h;
-
-						xpos += rect.w;
-
-						update_rect(rect);
+					//copy the character
+					buf.resize(bytes);
+					for(int i = 0; i < bytes && j != story.end(); ++i) {
+						buf[i] = *j;
+						++j;
 					}
 
-					++cur_length;
-				}
+					// output the character
+					const SDL_Rect rect = font::draw_text(&screen,
+										screen.screen_area(),16,
+										font::NORMAL_COLOUR,buf,xpos,ypos,
+										NULL,false,font::NO_MARKUP);
 
-				++j;
+					buf = "";
+					if(rect.h > height)
+						height = rect.h;
+					xpos += rect.w; 
+					update_rect(rect);
+				}
 
 				if(j == story.end())
 					skip = true;
