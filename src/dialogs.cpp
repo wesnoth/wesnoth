@@ -15,6 +15,7 @@
 
 #include "dialogs.hpp"
 #include "events.hpp"
+#include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
 #include "help.hpp"
@@ -25,7 +26,6 @@
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
-#include "widgets/file_chooser.hpp"
 #include "widgets/progressbar.hpp"
 
 #include <cstdio>
