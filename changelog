@@ -1,5 +1,11 @@
 CVS HEAD:
  * polished and added new unit images and attack icons
+ * merman village
+ * swamp village
+ * ice terrain
+ * dirt and swamp transitions
+ * new fog of war images
+ * fading effect between daytime changes
  * made the 'Sword of Fire' shoot fireballs instead of lightning bolt
  * resting stacks with heal and cure
  * shortcut keys are displayed next to menu items
@@ -10,16 +16,24 @@ CVS HEAD:
  * added deleting units from recall list
  * added cave-based terrain generator
  * added fight calculations
- * added some statistics
+ * added in-game statistics
+ * random map generator enhanced
  * new units
    * Cockatrice
+   * Yeti
+ * General melee attack number of strikes increased by one
  * new scenarios for 'Heir to the Throne' campaign:
    * Return to Wesnoth
    * Valley of Statues
  * scenario balancing for 'Heir to the Throne' campaign:
+   * Blackwater Port
    * Hasty Alliance
+ * translations can specify font to use
+ * added Bepa-Roman.ttf which has cyrillic characters
  * updated translations:
    * hungarian
+ * added [store_gold] tag to WML
+ * defenders will choose their weapons more intelligently
  * de-elvished Gryphon Rider description and set race to human
  * fixed minor glitch in tutorial id messages
  * fixed random map generator creating invalid small maps
@@ -27,8 +41,8 @@ CVS HEAD:
  * fixed units not getting resting if they ended turn with space
  * fixed enemies getting healed after loading, resting serialized in unit
  * fixed Merman Lord -> Triton in some scenarios
+ * improved network protocol (breaks backward compatibility)
  * slacknoth now ignores an insignificant makefile error
- * added [store_gold] tag to WML
 
 Version 0.7:
  * added new sounds, unit images and attack icons
