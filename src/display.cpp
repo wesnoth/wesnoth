@@ -714,24 +714,52 @@ void display::draw_report(reports::TYPE report_num)
 
 		SDL_Rect area = rect;
 
-		if(report.text.empty() == false) {
+		// Code for handling a report with multiple tooltips in different areas of the text
+		// XXX figure out if prefix/postfix makes sense for these reports, and if so how 
+		// should we support it?
+		if(report.text.size() > 1) {
+			int x = rect.x, y = rect.y;
+			for(size_t i = 0; i < report.text.size(); ++i) {
+				std::string text = report.text[i];
+				std::string tooltip = (i < report.tooltip.size() ? report.tooltip[i] : "");
+				
+				area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,text,x,y);
+				if(text != "" && *(text.end()-1) == '\n') {
+					x = area.x;
+					y = area.y + area.h;
+				} else {
+					x = area.x + area.w;
+					y = area.y;
+				}
+				if(tooltip.empty() == false) {
+					tooltips::add_tooltip(area,tooltip);
+				}
+			}
+			// Skip single-tooltip report code and image drawing code
+			return;
+		}
+
+		std::string text = report.text.size() ? report.text[0] : "";
+		std::string tooltip = report.tooltip.size() ? report.tooltip[0] : "";
+		
+		if(text.empty() == false) {
 			std::string str = item->prefix();
 
 			int nchop;
 
 			//if there are formatting directives on the front of the report,
 			//move them to the front of the string
-			for(nchop = 0; nchop != report.text.size() && font::is_format_char(report.text[nchop]); ++nchop) {
-				str.insert(str.begin(),report.text[0]);
+			for(nchop = 0; nchop != text.size() && font::is_format_char(text[nchop]); ++nchop) {
+				str.insert(str.begin(),text[nchop]);
 			}
 
-			str += report.text.substr(nchop) + item->postfix();
+			str += text.substr(nchop) + item->postfix();
 
 			area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
 		}
 
-		if(report.tooltip.empty() == false) {
-			tooltips::add_tooltip(area,report.tooltip);
+		if(tooltip.empty() == false) {
+			tooltips::add_tooltip(area,tooltip);
 		}
 
 		if(report.image.empty() == false) {
@@ -756,7 +784,7 @@ void display::draw_report(reports::TYPE report_num)
 
 				int x = rect.x, y = rect.y;
 				const std::vector<std::string> rows = config::split(report.image,';');
-				const std::vector<std::string> tooltip_rows = config::split(report.tooltip,';');
+				const std::vector<std::string> tooltip_rows = config::split(tooltip,';');
 				std::vector<std::string>::const_iterator current_tooltip = tooltip_rows.begin();
 				for(std::vector<std::string>::const_iterator row = rows.begin(); row != rows.end(); ++row) {
 

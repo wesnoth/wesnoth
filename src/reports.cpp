@@ -25,6 +25,23 @@ const std::string& report_name(TYPE type)
 	return report_names[type];
 }
 
+void report::add_text(std::stringstream& text, std::stringstream& tooltip) {
+	add_text(text.str(), tooltip.str());
+	// Clear the streams
+	text.str("");
+	tooltip.str("");
+}
+
+void report::add_text(const std::string& text, const std::string& tooltip) {
+	this->text.push_back(text);
+	this->tooltip.push_back(tooltip);
+}
+
+void report::set_tooltip(const std::string& tooltip) {
+	this->tooltip.clear();
+	this->tooltip.push_back(tooltip);
+}
+
 report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 						const std::vector<team>& teams,
                   const team& current_team, int current_side, int playing_side,
@@ -64,7 +81,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		return report(u->second.description());
 	case UNIT_TYPE: {
 		report res(u->second.type().language_name());
-		res.tooltip = u->second.type().unit_description();
+		res.set_tooltip(u->second.type().unit_description());
 		return res;
 	}
 	case UNIT_LEVEL:
@@ -72,7 +89,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		break;
 	case UNIT_TRAITS: {
 		report res(u->second.traits_description());
-		res.tooltip = u->second.modification_description("trait");
+		res.set_tooltip(u->second.modification_description("trait"));
 		return res;
 	}
 	case UNIT_STATUS: {
@@ -101,13 +118,13 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 
 		report res("",unit_status.str());
-		res.tooltip = tooltip.str();
+		res.set_tooltip(tooltip.str());
 		return res;
 	}
 	case UNIT_ALIGNMENT: {
 		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
 		report res(translate_string(align));
-		res.tooltip = string_table[align + "_description"];
+		res.set_tooltip(string_table[align + "_description"]);
 		return res;
 	}
 	case UNIT_ABILITIES: {
@@ -122,7 +139,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 
 		report res(str.str());
-		res.tooltip = tooltip.str();
+		res.set_tooltip(tooltip.str());
 		return res;
 	}
 	case UNIT_HP:
@@ -152,28 +169,40 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		str << u->second.movement_left() << "/" << u->second.total_movement();
 		break;
 	case UNIT_WEAPONS: {
+		report res;
+		std::stringstream tooltip;
+		
 		const std::vector<attack_type>& attacks = u->second.attacks();
 		for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 		    at_it != attacks.end(); ++at_it) {
 			const std::string& lang_weapon = string_table["weapon_name_" + at_it->name()];
 			const std::string& lang_type = string_table["weapon_type_" + at_it->type()];
 			const std::string& lang_special = string_table["weapon_special_" + at_it->special()];
+			
 			str << (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
-				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n"
-				<< (lang_special.empty() ? at_it->special():lang_special) << "\n"
-				<< at_it->damage() << "-" << at_it->num_attacks() << " -- "
+				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n";
+			res.add_text(str, tooltip);
+			
+			str << (lang_special.empty() ? at_it->special():lang_special) << "\n";
+			tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
+			res.add_text(str, tooltip);
+			
+			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
 		            string_table["short_range"] :
 					string_table["long_range"]);
+			tooltip << at_it->damage() << " " << string_table["damage"] << ", "
+					<< at_it->num_attacks() << " " << string_table["attacks"];
 			
 			if(at_it->hexes() > 1) {
 				str << " (" << at_it->hexes() << ")";
+				tooltip << ", " << at_it->hexes() << " " << string_table["hexes"];
 			}
-
 			str << "\n";
+			res.add_text(str, tooltip);
 		}
 
-		break;
+		return res;
 	}
 	case UNIT_IMAGE:
 		return report("",u->second.type().image());
@@ -190,7 +219,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
 				<< translate_string("chaotic") << " " << string_table["units"] << ": "
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
-		res.tooltip = tooltip.str();
+		res.set_tooltip(tooltip.str());
 		return res;
 	}
 	case TURN:
@@ -271,7 +300,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 	case OBSERVERS: {
 		if(observers.empty()) {
-			return report("none");
+			return report();
 		}
 
 		for(std::set<std::string>::const_iterator i = observers.begin(); i != observers.end(); ++i) {
@@ -279,7 +308,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 
 		report res("",game_config::observer_image);
-		res.tooltip = str.str();
+		res.set_tooltip(str.str());
 		return res;
 	}
 

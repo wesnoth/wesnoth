@@ -26,13 +26,20 @@ namespace reports {
 	const std::string& report_name(TYPE type);
 
 	struct report {
+		std::string image;
+		std::vector<std::string> text, tooltip;
+		
 		report() {}
-		explicit report(const std::string& text) : text(text) {}
-		report(const std::string& text, const std::string& image) : text(text), image(image) {}
+		explicit report(const std::string& text) { this->text.push_back(text); }
+		report(const std::string& text, const std::string& image) : image(image) { this->text.push_back(text); }
 		bool empty() const { return text.empty() && image.empty(); }
 		bool operator==(const report& o) const { return o.text == text && o.image == image && o.tooltip == tooltip; }
 		bool operator!=(const report& o) const { return !(o == *this); }
-		std::string text, image, tooltip;
+		
+		// Convenience functions
+		void add_text(std::stringstream& text, std::stringstream& tooltip);
+		void add_text(const std::string& text, const std::string& tooltip);
+		void set_tooltip(const std::string& tooltip);
 	};
 
 	report generate_report(TYPE type, const gamemap& map, const unit_map& units,

@@ -51,7 +51,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data)
 
 		// Display Chats
 		std::stringstream text;
-		for(size_t n = messages.size() > 8 ? messages.size()-8 : 0;
+		for(size_t n = messages.size() > 6 ? messages.size()-6 : 0;
 		    n != messages.size(); ++n) {
 			text << messages[n] << "\n";
 		}
