@@ -43,6 +43,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.cpp \
 		  log.cpp \
 		  map.cpp \
+		  map_label.cpp \
 		  mapgen.cpp \
 		  mapgen_dialog.cpp \
 		  mouse.cpp \
@@ -100,6 +101,7 @@ wesnoth_SOURCES = about.cpp \
 		  language.hpp \
 		  log.hpp \
 		  map.hpp \
+		  map_label.hpp \
 		  mapgen.hpp \
 		  mapgen_dialog.hpp \
 		  mouse.hpp \
