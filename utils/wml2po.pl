@@ -65,36 +65,72 @@ our %suffix = (
 @wmlfiles = glob ("data/*.cfg");
 foreach my $wmlfile (@wmlfiles) {
   open (WML, $wmlfile) or die "cannot open $wmlfile";
-  my ($id, $str);
+  print STDERR " Processing $wmlfile\n";
+  my ($id, $str, $key, $value,$strtype);
   while (<WML>) {
 #    print STDERR $_;
     if (m/id\s*=\s*(.*)/) {
       $id = $1;
-      print STDERR "XXX $id\n";
+      print STDERR "--> $id\n";
 #     } elsif (m,\[/.*\],) {
 #       $id = undef;
-    } elsif (m/unit_description\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
-      # single-line
-      if (defined $id) {
-	set($id . '_description',$1);
-      } else {
-	print STDERR "No id for unit_description $1\n";
-      }
     } elsif (m/(difficulty\_descriptions|cannot\_use\_message)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
       # single-line
+      die "nested key" if defined $key;
+
       if (defined $id) {
 	set($id . $suffix{$1},$2);
       } else {
 	print STDERR "No id for $1 $2\n";
       }
-    } elsif (m/(?:title|message|name)\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
+    } elsif (m/(difficulty\_descriptions|cannot\_use\_message)\s*=\s*(?:_\s*)?\"(.*)\s*$/) {
+      # start of multi-line
+      die "nested key" if defined $key;
+
+      $strtype=1;
+      $key = $1;
+      $value = $2 . "\n";
+    } elsif (m/(?:title|message|name|story)\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
+      # single-line
       set($id,$1);
+    } elsif (m/(title|message|name|story)\s*=\s*(?:_\s*)\"(.*)\s*$/) {
+      # start of multi-line
+      die "nested key" if defined $key;
+
+      $strtype = 2;
+      $key = $1;
+      $value = $2 . "\n";
+    } elsif (m/(\S+)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
+      # ignored single-line
+    } elsif (m/(\S+)\s*=\s*(?:_\s*)?\s*\"(.*)/) {
+      # start of ignored multi-line
+      $strtype = 0;
+      $value = $2 . "\n";
+    } elsif (m/(.*)\"\s*$/ and $strtype == 1) {
+      # end of multi-line
+      die "end of string without a key" unless defined $key;
+
+      $value .= $1;
+      set($key,$value);
+      $key = undef;
+    } elsif (m/(.*)\"\s*$/ and $strtype == 2) {
+      # end of multi-line
+      die "end of string without a key" unless defined $key;
+
+      $value .= $1;
+      set($id,$value);
+      $key = undef;
+    } elsif (m/(.*)\"\s*$/ and $strtype == 0) {
+      # end of ignored multi-line
+    } elsif (defined $key) {
+      # part of multi-line
+      $value .= $_;
     }
   }
   close WML;
 }
 
-exit;
+exit; # this is for debug only :)
 
 # reverse the hash to use the strings to find the id
 foreach my $key (keys %english) {
