@@ -3,13 +3,19 @@ CVS HEAD:
  * added turn-to-stone special weapon ability
  * invisible units are now revealed when enemy comes adjacent to them
  * poisoned units are shown with a green hue
+ * updated MANUAL
  * new units:
    * Thug
    * Poacher
  * scenario balancing for 'Heir to the Throne' campaign:
    * Home of the North Elves
  * minimap scrolling
- * theme updated: new menus, added menu buttons to top left of screen, slider updated, new buttons
+ * theme updated: 
+   * new menus
+   * added menu buttons to top left of screen
+   * slider updated
+   * new buttons
+   * status icons in unit information panel
  * wesnothd.6 manual updated
  * credits, people ordered by role
  * tweaked look of tooltips
@@ -19,6 +25,7 @@ CVS HEAD:
  * removed show_ai_move options, since there is a serious bug with it
  * fixed poison healing bug
  * fixed bug where killing an enemy that caused an [endlevel] event to occur prevented advancement by the unit killing
+ * fixed bug where commander would carry over movement from previous level
  * fixed storyline image for Isle of the Damned
  * fixed adjacent terrain for pier terrain
  * fixed bug that caused Wesnoth to fail to compile in ia64
@@ -30,6 +37,8 @@ CVS HEAD:
  * attempt to fix problem where after being disconnected from the server, players would be unable to reconnect without quitting the client
  * attempt to fix STL-related compile error on Slackware
  * added find_visible_unit, to find a visible_unit by location in a unit_map
+ * initial implementation of developer documentation (doxygen)
+ * refactored some AI code
 
 Version 0.6.99.1:
  * extended tutorial
