@@ -25,6 +25,7 @@
 #include "show_dialog.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/button.hpp"
+#include "widgets/combo.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/slider.hpp"
 
@@ -486,119 +487,211 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						(**sd)["description"] = preferences::login();
 				}
 	
-				res = 0;
-				while(size_t(res) != sides.size()) {
-					std::vector<std::string> sides_list;
+				// Wait to players, Configure players
+				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
+						       width, height, disp);
+
+				//Title
+				font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+				                "Game Lobby",-1,(disp.y()-height)/2+5);
+
+				//Options
+				std::vector<std::string> player_type;
+				player_type.push_back(string_table["human_controlled"]);
+				player_type.push_back(string_table["network_controlled"]);
+				player_type.push_back(string_table["ai_controlled"]);
+				std::vector<std::string> player_race;
+				player_race.push_back("Elves");
+				player_race.push_back("Orcs");
+				player_race.push_back("Humans");
+				player_race.push_back("Undead");
+				std::vector<std::string> player_team;
+				char label[8];
+				int counter=0;
+				for(std::vector<config*>::iterator sd = sides.begin();
+				    sd != sides.end(); ++sd) {
+					counter++;
+					sprintf(label, "Team %d", counter);
+					player_team.push_back(label);
+				}
+				std::vector<std::string> player_color;
+				player_color.push_back("Red");
+				player_color.push_back("Blue");
+				player_color.push_back("Green");
+				player_color.push_back("Yellow");
+				player_color.push_back("Pink");
+				player_color.push_back("Purple");
+
+				//Players
+				std::vector<std::string> sides_list;
+				std::vector<gui::combo> combo_type;
+				std::vector<gui::combo> combo_race;
+				std::vector<gui::combo> combo_team;
+				std::vector<gui::combo> combo_color;
+				counter = 0;
+				for(std::vector<config*>::iterator sd = sides.begin();
+				    sd != sides.end(); ++sd) {
+					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
+					                (*sd)->values["side"],(disp.x()-width)/2+10,
+							(disp.y()-height)/2+38+(30*counter));
+					combo_type.push_back(gui::combo(disp,player_type));
+					combo_type[counter].set_xy((disp.x()-width)/2+30,
+							(disp.y()-height)/2+40+(30*counter));
+					combo_race.push_back(gui::combo(disp,player_race));
+					combo_race[counter].set_xy((disp.x()-width)/2+150,
+							(disp.y()-height)/2+40+(30*counter));
+					combo_team.push_back(gui::combo(disp,player_team));
+					combo_team[counter].set_xy((disp.x()-width)/2+270,
+							(disp.y()-height)/2+40+(30*counter));
+					combo_team[counter].set_selected(counter);
+					combo_color.push_back(gui::combo(disp,player_color));
+					combo_color[counter].set_xy((disp.x()-width)/2+390,
+							(disp.y()-height)/2+40+(30*counter));
+					combo_color[counter].set_selected(counter);
+					counter++;
+				}
+
+				//Buttons
+				gui::button launch2_game(disp,"Launch");
+				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
+
+				update_whole_screen();
+
+				for(;;) {
+					const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+					const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+					counter=0;
 					for(std::vector<config*>::iterator sd = sides.begin();
 					    sd != sides.end(); ++sd) {
-						std::stringstream details;
-						details << (*sd)->values["side"] << ","
-							<< (*sd)->values["name"] << ",";
-
-						const std::string& controller = (*sd)->values["controller"];
-						if(controller == "human")
-							details << string_table["human_controlled"];
-						else if(controller == "network")
-							details << string_table["network_controlled"];
-						else
-							details << string_table["ai_controlled"];
-
-						sides_list.push_back(details.str());
+						combo_type[counter].process(mousex,mousey,left_button);
+						combo_race[counter].process(mousex,mousey,left_button);
+						combo_team[counter].process(mousex,mousey,left_button);
+						combo_color[counter].process(mousex,mousey,left_button);
+						counter++;
 					}
+
+					if(launch2_game.process(mousex,mousey,left_button)) {
+						res = 0;
+						while(size_t(res) != sides.size()) {
+							std::vector<std::string> sides_list;
+							for(std::vector<config*>::iterator sd = sides.begin();
+							    sd != sides.end(); ++sd) {
+								std::stringstream details;
+								details << (*sd)->values["side"] << ","
+									<< (*sd)->values["name"] << ",";
+
+								const std::string& controller = (*sd)->values["controller"];
+								if(controller == "human")
+									details << string_table["human_controlled"];
+								else if(controller == "network")
+									details << string_table["network_controlled"];
+								else
+									details << string_table["ai_controlled"];
+
+								sides_list.push_back(details.str());
+							}
 	
-					sides_list.push_back(string_table["start_game"]);
+							sides_list.push_back(string_table["start_game"]);
 	
-					res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
-					                       gui::MESSAGE,&sides_list);
+							res = gui::show_dialog(disp,NULL,"",string_table["configure_sides"],
+							                       gui::MESSAGE,&sides_list);
 	
-					if(size_t(res) < sides.size()) {
-						std::vector<std::string> choices;
+							if(size_t(res) < sides.size()) {
+								std::vector<std::string> choices;
 	
-						for(int n = 0; n != 3; ++n) {
-							for(std::vector<config*>::iterator i = possible_sides.begin();
-							    i != possible_sides.end(); ++i) {
-								std::stringstream choice;
-								choice << (*i)->values["name"] << " - ";
-								switch(n) {
-									case 0: choice << string_table["human_controlled"];
-									        break;
-									case 1: choice << string_table["ai_controlled"];
-									        break;
-									case 2: choice << string_table["network_controlled"];
-									        break;
-									default: assert(false);
-								}
+								for(int n = 0; n != 3; ++n) {
+									for(std::vector<config*>::iterator i = possible_sides.begin();
+									    i != possible_sides.end(); ++i) {
+										std::stringstream choice;
+										choice << (*i)->values["name"] << " - ";
+										switch(n) {
+											case 0: choice << string_table["human_controlled"];
+											        break;
+											case 1: choice << string_table["ai_controlled"];
+											        break;
+											case 2: choice << string_table["network_controlled"];
+											        break;
+											default: assert(false);
+										}
 							
-								choices.push_back(choice.str());
+										choices.push_back(choice.str());
+									}
+								}
+	
+								int result = gui::show_dialog(disp,NULL,"",
+						                           string_table["choose_side"],
+									   gui::MESSAGE,&choices);
+								if(result >= 0) {
+									std::string controller = "network";
+									if(result < int(choices.size())/3) {
+										controller = "human";
+										sides[res]->values["description"] = preferences::login();
+									} else if(result < int(choices.size()/3)*2) {
+										controller = "ai";
+										result -= choices.size()/3;
+										sides[res]->values["description"] = "";
+									} else {
+										controller = "network";
+										result -= (choices.size()/3)*2;
+									}
+	
+									sides[res]->values["controller"] = controller;
+	
+									assert(result < int(possible_sides.size()));
+
+									std::map<std::string,std::string>& values =
+							                                possible_sides[result]->values;
+									sides[res]->values["name"] = values["name"];
+									sides[res]->values["type"] = values["type"];
+									sides[res]->values["recruit"] = values["recruit"];
+									sides[res]->values["recruitment_pattern"] =
+							                          values["recruitment_pattern"];
+									sides[res]->values["music"] = values["music"];
+								}
 							}
 						}
+
+						const network::manager net_manager;
+						const network::server_manager server_man(15000,server);
 	
-						int result = gui::show_dialog(disp,NULL,"",
-				                           string_table["choose_side"],
-							   gui::MESSAGE,&choices);
-						if(result >= 0) {
-							std::string controller = "network";
-							if(result < int(choices.size())/3) {
-								controller = "human";
-								sides[res]->values["description"] = preferences::login();
-							} else if(result < int(choices.size()/3)*2) {
-								controller = "ai";
-								result -= choices.size()/3;
-								sides[res]->values["description"] = "";
+						const bool network_state = accept_network_connections(disp,level);
+						if(network_state == false)
+							return -1;
+
+						state.starting_pos = level;
+	
+						recorder.set_save_info(state);
+
+						if(!recorder.empty()) {
+							const int res = gui::show_dialog(disp,NULL,
+					               "", string_table["replay_game_message"],
+								   gui::YES_NO);
+							//if yes, then show the replay, otherwise
+							//skip showing the replay
+							if(res == 0) {
+								recorder.set_skip(0);
 							} else {
-								controller = "network";
-								result -= (choices.size()/3)*2;
+								std::cerr << "skipping...\n";
+								recorder.set_skip(-1);
 							}
-	
-							sides[res]->values["controller"] = controller;
-	
-							assert(result < int(possible_sides.size()));
-	
-							std::map<std::string,std::string>& values =
-					                                possible_sides[result]->values;
-							sides[res]->values["name"] = values["name"];
-							sides[res]->values["type"] = values["type"];
-							sides[res]->values["recruit"] = values["recruit"];
-							sides[res]->values["recruitment_pattern"] =
-					                          values["recruitment_pattern"];
-							sides[res]->values["music"] = values["music"];
 						}
+
+						//any replay data isn't meant to hang around under the level,
+						//it was just there to tell clients about the replay data
+						level.children["replay"].clear();
+
+						std::vector<config*> story;
+						play_level(units_data,cfg,&level,disp.video(),state,story);
+						recorder.clear();
+						return -1;
 					}
+
+					events::pump();
+					disp.video().flip();
+					SDL_Delay(20);
 				}
 
-				const network::manager net_manager;
-				const network::server_manager server_man(15000,server);
-	
-				const bool network_state = accept_network_connections(disp,level);
-				if(network_state == false)
-					return -1;
-
-				state.starting_pos = level;
-	
-				recorder.set_save_info(state);
-
-				if(!recorder.empty()) {
-					const int res = gui::show_dialog(disp,NULL,
-			               "", string_table["replay_game_message"],
-						   gui::YES_NO);
-					//if yes, then show the replay, otherwise
-					//skip showing the replay
-					if(res == 0) {
-						recorder.set_skip(0);
-					} else {
-						std::cerr << "skipping...\n";
-						recorder.set_skip(-1);
-					}
-				}
-
-				//any replay data isn't meant to hang around under the level,
-				//it was just there to tell clients about the replay data
-				level.children["replay"].clear();
-
-				std::vector<config*> story;
-				play_level(units_data,cfg,&level,disp.video(),state,story);
-				recorder.clear();
-				return -1;
 			} else {
 				rect.x=(disp.x()-width)/2;
 				rect.y=(disp.y()-height)/2;

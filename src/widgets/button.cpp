@@ -178,6 +178,16 @@ bool button::hit(int x, int y) const
 void button::set_x(int val) { x_ = val; }
 void button::set_y(int val) { y_ = val; }
 void button::set_xy(int valx, int valy) { x_ = valx; y_ = valy; }
+void button::set_label(std::string val)
+{
+	label_ = val;
+	textRect_.x = 0;
+	textRect_.y = 0;
+	textRect_.w = display_->x();
+	textRect_.h = display_->y();
+	textRect_ = font::draw_text(NULL,textRect_,font_size,
+	                            font::BUTTON_COLOUR,label_,0,0);
+}
 
 int button::width() const
 {
