@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-20 23:22+0100\n"
-"PO-Revision-Date: 2004-12-19 14:26+0100\n"
+"PO-Revision-Date: 2004-12-21 14:34+0100\n"
 "Last-Translator: Automatically generated <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,6 @@ msgid ""
 msgstr ""
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -84,13 +83,13 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
 "\n"
 "A Harc Wesnoth-ért egy körökre osztott stratégiai játék, mely kicsit "
-"rendhagyó a modern stratégiai játékok közt. Míg más játékok bonyolultságra "
+"rendhagyó a mai stratégiai játékok közt. Míg más játékok bonyolultságra "
 "törekednek, mind a szabályok, mind a játékmenet terén, a Harc Wesnoth-ért "
-"célja az egyszerűség. Ez nem teszi a játékot is egyszerűvé, sőt - ezekből az "
-"egyszerű szabályokból emelkedik ki a stratégiai lehetőségek gazdagsága. Így "
+"célja az egyszerűség. Ez nem teszi a játékot is egyszerűvé, sőt! Ezekből az "
+"egyszerű szabályokból emelkedik ki a stratégiai lehetőségek gazdagsága, így "
 "a játék könnyen elsajátítható, de művelése kihívás."
 
 #: data/help.cfg:67
@@ -837,23 +836,20 @@ msgstr "Alapértelmezés"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:664
-#, fuzzy
 msgid "Random"
-msgstr "Véletlenszerű pályakialakítás"
+msgstr "Véletlenszerű"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
 msgstr ""
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Visszahív"
+msgstr "Lázadók"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
-#, fuzzy
 msgid "Northerners"
-msgstr "Tél északon"
+msgstr "Északiak"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:127
@@ -861,14 +857,12 @@ msgid "Undead"
 msgstr "Élőholtak"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "Egy tünde szövetség"
+msgstr "Knalgan szövetség"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Égperzsekény"
+msgstr "Perzsekények"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -887,9 +881,8 @@ msgid "Orcs"
 msgstr "Orkok"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Törp vár"
+msgstr "Törpök"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -904,17 +897,14 @@ msgid "Great War"
 msgstr "Nagy háború"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Fény mágusa"
+msgstr "A Fény szövetsége"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,A Sötétség Szövetsége"
+msgstr "A Sötétség szövetsége"
 
 #: data/scenario-test.cfg:38
-#, fuzzy
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
@@ -964,9 +954,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/multiplayer/Charge.cfg:7
-#, fuzzy
 msgid "Charge"
-msgstr "roham"
+msgstr "Roham"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1966,9 +1955,8 @@ msgid "Village"
 msgstr "Falu"
 
 #: data/terrain.cfg:51
-#, fuzzy
 msgid "Swamp"
-msgstr "Mocsaras víz"
+msgstr "Láp"
 
 #: data/terrain.cfg:70
 msgid "Ice"
@@ -2164,7 +2152,6 @@ msgstr ""
 "már nem mehet tovább."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2173,8 +2160,9 @@ msgid ""
 msgstr ""
 "Az esély egy egység megütésére általában attól függ, hogy az adott egység "
 "milyen jól tudja megvédeni magát azon a területen amin éppen áll, azonban a "
-"mágikus támadások mindig 70% eséllyel találnak, és a mesterlövészeknek "
-"legalább 60% esélyük van a sikeres lövésre."
+"mágikus támadások védekezéskor és támadáskor is mindig 70% eséllyel "
+"találnak, és a mesterlövészeknek legalább 60% esélyük van támadáskor a "
+"sikeres lövésre."
 
 #: data/tips.cfg:9
 msgid ""
@@ -3147,7 +3135,7 @@ msgstr "Hercegnő"
 
 #: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "hadvezetés, menetelés"
 
 #: data/units/Battle_Princess.cfg:20
 #, fuzzy
@@ -3265,9 +3253,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "bot"
+msgstr "szúrás"
 
 #: data/units/Bone_Shooter.cfg:26 data/units/Bone_Shooter.cfg:39
 #: data/units/Bowman.cfg:38 data/units/Cavalier.cfg:49
@@ -3558,7 +3545,7 @@ msgstr "fagyhullám"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "female^Dark Queen"
-msgstr ""
+msgstr "Sötét királynő"
 
 #: data/units/Dark_Queen.cfg:17
 msgid ""
@@ -3615,9 +3602,8 @@ msgid "battle axe"
 msgstr "csatabárd"
 
 #: data/units/Deathblade.cfg:4
-#, fuzzy
 msgid "Deathblade"
-msgstr "penge"
+msgstr "Halálpenge"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -3715,8 +3701,9 @@ msgstr ""
 #: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:45
 #: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:49
 #: data/units/Drake_Warrior.cfg:44 data/units/Fire_Dragon.cfg:58
+#, fuzzy
 msgid "fire breath"
-msgstr ""
+msgstr "tűzokádás"
 
 #: data/units/Drake_Clasher.cfg:4
 msgid "Drake Clasher"
@@ -3745,7 +3732,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
-msgstr ""
+msgstr "handzsár"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
@@ -3762,7 +3749,7 @@ msgstr ""
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "Lángszívű perzsekény"
 
 #: data/units/Drake_Flameheart.cfg:20
 msgid ""
@@ -3775,7 +3762,7 @@ msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
-msgstr "Perzsekény rabszolga"
+msgstr "Perzsekény lobbanó"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -3800,7 +3787,7 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "Perzsekény surranó"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -3814,11 +3801,11 @@ msgstr ""
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
-msgstr ""
+msgstr "becsapódás"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "Inferno perzsekény"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -3834,8 +3821,9 @@ msgid "Sky Drake"
 msgstr "Égperzsekény"
 
 #: data/units/Drake_Slasher.cfg:4
+#, fuzzy
 msgid "Drake Slasher"
-msgstr ""
+msgstr "Perzsekény vagdalkozó"
 
 #: data/units/Drake_Slasher.cfg:18
 msgid ""
@@ -3864,9 +3852,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Draug.cfg:3
-#, fuzzy
 msgid "Draug"
-msgstr "Dragonyos"
+msgstr "Felejtő"
 
 #: data/units/Draug.cfg:16
 msgid ""
@@ -3929,8 +3916,9 @@ msgid "berserk"
 msgstr "dühöngés"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
+#, fuzzy
 msgid "Dwarvish Dragonguard"
-msgstr ""
+msgstr "Törp sárkányőrző"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
 msgid ""
@@ -3967,7 +3955,7 @@ msgstr "kalapács"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "Törp őrmester"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
@@ -4021,7 +4009,7 @@ msgstr "Villámcsapás"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Törp őr"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
@@ -4031,7 +4019,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Törp stalwart"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -4074,7 +4062,7 @@ msgstr "villámvessző"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
 msgid "Dwarvish Thunderguard"
-msgstr ""
+msgstr "Törp villámőrző"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
 msgid ""
@@ -4090,7 +4078,7 @@ msgstr "sárkánypálca"
 
 #: data/units/Dwarvish_Ulfserker.cfg:3
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "Törp dühöngő"
 
 #: data/units/Dwarvish_Ulfserker.cfg:16
 msgid ""
@@ -4270,7 +4258,7 @@ msgstr ""
 
 #: data/units/Elvish_High_Lord.cfg:3
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "Tünde nagyúr"
 
 #: data/units/Elvish_High_Lord.cfg:17
 msgid ""
@@ -4307,7 +4295,7 @@ msgstr ""
 
 #: data/units/Elvish_Marksman.cfg:3
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "Tünde mesterlövész"
 
 #: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:95
 #, fuzzy
@@ -4522,7 +4510,7 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:3
 msgid "Fire Dragon"
-msgstr ""
+msgstr "Tűzperzsekény"
 
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
@@ -4644,7 +4632,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:3
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "Óriás sártipró"
 
 #: data/units/Giant_Mudcrawler.cfg:16
 msgid ""
@@ -4753,18 +4741,16 @@ msgid ""
 msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
-#, fuzzy
 msgid "Grand Knight"
-msgstr "Nagy Lovag"
+msgstr "Nagy lovag"
 
 #: data/units/Grand_Knight.cfg:16
-#, fuzzy
 msgid ""
 "The most powerful mounted warriors of any race, Grand Knights have reached "
 "the acme of skill with sword and lance."
 msgstr ""
-"Minden faj közt a legerősebb lovas harcosok, a Nagy Lovagok a kardforgatás "
-"és lándsza használat legmagasabb fokát érték el."
+"Minden faj közt a legerősebb lovas harcosok, a Nagy lovagok a kardforgatás "
+"és lándzsahasználat legmagasabb fokát érték el."
 
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
@@ -4773,7 +4759,7 @@ msgstr "kopja"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Nagy tábornok"
 
 #: data/units/Grand_Marshal.cfg:21
 msgid ""
@@ -4785,28 +4771,24 @@ msgid ""
 msgstr ""
 
 #: data/units/Great_Mage.cfg:3
-#, fuzzy
 msgid "Great Mage"
-msgstr "Udvari Mágus"
+msgstr "Nagy mágus"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:97
-#, fuzzy
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
-"Az Udvari Mágus rettegett és dicsőséges harcos, hatalma túllép a "
-"Varázslómesterén is. Akárcsak a Varázslómester, az Udvari Mágus is "
-"teleportálhat falvak között, hogy az egész csatatéren bevethesse varázslatait"
+"Az Nagy mágus rettegett és dicsőséges harcos, hatalma túllép a "
+"Varázslómesterén is."
 
 #: data/units/Great_Mage.cfg:80
-#, fuzzy
 msgid "female^Great Mage"
-msgstr "Udvari Mágusnő"
+msgstr "Nagy mágusnő"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
-msgstr ""
+msgstr "Óriás troll"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -4831,7 +4813,7 @@ msgstr ""
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
-msgstr ""
+msgstr "Griff úr"
 
 #: data/units/Gryphon_Master.cfg:18
 msgid ""
@@ -4891,9 +4873,8 @@ msgstr ""
 "Egyetlen hátrányuk lassúságukban áll."
 
 #: data/units/Horse_Lord.cfg:3
-#, fuzzy
 msgid "Horse Lord"
-msgstr "Törp-báró"
+msgstr "Lovas úr"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -4901,13 +4882,16 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"A alföldek lakóinak legelsejei, a Lovas urak otthon családfők és nagy "
+"tiszteletben részesülnek mindenki által, legyen az barát vagy ellenség. "
+"Kardjuk elbánik a legtöbb előforduló ellensággel, tüskés buzogányuk pedig "
+"lekaszabolja a megmaradtakat."
 
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:44
 #: data/units/Mounted_Commander.cfg:44 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
-#, fuzzy
 msgid "morning star"
-msgstr "Reggel"
+msgstr "tüskés buzogány"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -4941,7 +4925,7 @@ msgstr ""
 
 #: data/units/Iron_Mauler.cfg:3
 msgid "Iron Mauler"
-msgstr ""
+msgstr "Vasöklű"
 
 #: data/units/Iron_Mauler.cfg:15
 msgid ""
@@ -5082,7 +5066,7 @@ msgstr "lövedék"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "Mágusnő"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5144,7 +5128,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Sellő jósnő"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5155,7 +5139,7 @@ msgstr ""
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "Sellő varázslőnő"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
 #: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
@@ -5176,7 +5160,7 @@ msgstr "vízpermet"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Sellő beavatott"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5187,7 +5171,7 @@ msgstr ""
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Sellő papnő"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -5197,12 +5181,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "tűz"
+msgstr "Szirén"
 
 #: data/units/Mermaid_Siren.cfg:23
-#, fuzzy
 msgid "naiad touch"
 msgstr "habérintés"
 
@@ -5243,11 +5225,11 @@ msgstr "Sellő vadász"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Sellő lándzsás"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "Sellő hálóhajító"
 
 #: data/units/Merman_Spearman.cfg:3
 msgid "Merman Spearman"
@@ -5277,9 +5259,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Captain.cfg:4
-#, fuzzy
 msgid "Mounted Captain"
-msgstr "Hegyvidék"
+msgstr "Lovas kapitány"
 
 #: data/units/Mounted_Captain.cfg:18 data/units/Mounted_Fighter.cfg:17
 msgid ""
@@ -5290,9 +5271,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Commander.cfg:4
-#, fuzzy
 msgid "Mounted Commander"
-msgstr "Fővezér"
+msgstr "Lovas vezér"
 
 #: data/units/Mounted_Commander.cfg:18
 msgid ""
@@ -5303,14 +5283,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Sellő verekedő"
+msgstr "Lovas verekedő"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Sellő harcos"
+msgstr "Lovas harcos"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -5322,7 +5300,7 @@ msgstr ""
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr ""
+msgstr "Sártipró"
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
@@ -5331,9 +5309,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Csatlós"
+msgstr "Naga verekedő"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:48
 msgid ""
@@ -5345,13 +5322,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:34
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Sellő verekedő"
+msgstr "Nagini verekedő"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "Naga fogdmeg"
 
 #: data/units/Naga-Myrmidon.cfg:21
 msgid ""
@@ -5364,7 +5340,7 @@ msgstr ""
 
 #: data/units/Naga-Myrmidon.cfg:38
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "Nagini fogdmeg"
 
 #: data/units/Naga-Myrmidon.cfg:56
 msgid ""
@@ -5376,9 +5352,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Gyík harcos"
+msgstr "Naga harcos"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:56
 msgid ""
@@ -5391,13 +5366,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:38
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Gyík harcos"
+msgstr "Nagini harcos"
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
 msgid ""
@@ -5449,11 +5423,11 @@ msgstr ""
 
 #: data/units/Noble_Commander.cfg:3
 msgid "Noble Commander"
-msgstr ""
+msgstr "Nemes vezér"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr ""
+msgstr "Nemes harcos"
 
 #: data/units/Noble_Fighter.cfg:20
 msgid ""
@@ -5464,11 +5438,11 @@ msgstr ""
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Nemesúr"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
-msgstr ""
+msgstr "Fiatal nemes"
 
 #: data/units/Noble_Youth.cfg:20
 msgid ""
@@ -5482,7 +5456,7 @@ msgstr "edzőkard"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
-msgstr "Hegyi óriás"
+msgstr "Óriás"
 
 #: data/units/Ogre.cfg:16
 msgid ""
@@ -5495,7 +5469,6 @@ msgstr ""
 "erejüket nem szabad lebecsülni."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:18
-#, fuzzy
 msgid "cleaver"
 msgstr "húsbárd"
 
@@ -5569,7 +5542,7 @@ msgstr ""
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr ""
+msgstr "Ork fővezér"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -5620,7 +5593,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:89
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Ork sámánmester"
 
 #: data/units/Orcish_Shaman.cfg:101
 msgid ""
@@ -5647,7 +5620,7 @@ msgstr ""
 
 #: data/units/Orcish_Sovereign.cfg:3
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "Ork felsőbbség"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -5705,7 +5678,7 @@ msgstr ""
 
 #: data/units/Outlaw_Princess.cfg:4
 msgid "female^Outlaw Princess"
-msgstr ""
+msgstr "Törvényenkívüli hercegnő"
 
 #: data/units/Outlaw_Princess.cfg:22
 msgid ""
@@ -5717,11 +5690,11 @@ msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:3
 msgid "female^Outlaw Queen"
-msgstr ""
+msgstr "Törvényenkívüli királynő"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid "skirmisher,leadership"
-msgstr ""
+msgstr "menetelő, hadvezetés"
 
 #: data/units/Outlaw_Queen.cfg:23
 msgid ""
@@ -5747,7 +5720,7 @@ msgstr ""
 
 #: data/units/Peasant.cfg:3
 msgid "Peasant"
-msgstr ""
+msgstr "Paraszt"
 
 #: data/units/Peasant.cfg:17
 msgid ""
@@ -5897,9 +5870,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
-#, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Gyík"
+msgstr "Gyík rajtaütő"
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -5911,9 +5883,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
-#, fuzzy
 msgid "Saurian Flanker"
-msgstr "Gyík harcos"
+msgstr "Gyík megkerülő"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -5926,7 +5897,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
 msgid "Saurian Icecaster"
-msgstr ""
+msgstr "Gyík jéghajító"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -5938,7 +5909,7 @@ msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
 msgid "skirmisher,heals"
-msgstr ""
+msgstr "menetelő, gyógyít"
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -5946,9 +5917,8 @@ msgid "frost blast"
 msgstr "fagylökés"
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Gyík harcos"
+msgstr "Gyík menetelő"
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -5960,7 +5930,7 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "Gyík jövendőmondó"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -5971,11 +5941,11 @@ msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:20
 msgid "skirmisher,cures"
-msgstr ""
+msgstr "menetelő, átkoz"
 
 #: data/units/Saurian_Tribalist.cfg:4
 msgid "Saurian Tribalist"
-msgstr ""
+msgstr "Gyík sámán"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -5999,7 +5969,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:3
-#, fuzzy
 msgid "female^Sea Hag"
 msgstr "Tengerek véne"
 
@@ -6012,9 +5981,8 @@ msgstr ""
 "fortélyát."
 
 #: data/units/Sea_Orc.cfg:3
-#, fuzzy
 msgid "Sea Orc"
-msgstr "Orc des mers"
+msgstr "Tengeri ork"
 
 #: data/units/Sea_Orc.cfg:16
 #, fuzzy
@@ -6040,7 +6008,7 @@ msgstr ""
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
-msgstr ""
+msgstr "Őrmester"
 
 #: data/units/Sergeant.cfg:21
 msgid ""
@@ -6079,7 +6047,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr ""
+msgstr "Ezüstmágus"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:162
 msgid ""
@@ -6090,11 +6058,11 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:143
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "Ezüst mágusnő"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Csontsárkány"
 
 #: data/units/Skeletal_Dragon.cfg:17
 msgid ""
@@ -6147,7 +6115,7 @@ msgstr "Psssszt! Alszik a griff! Jobb, ha nem ébreszted fel!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
-msgstr ""
+msgstr "Lélek-íjász"
 
 #: data/units/Soul_Shooter.cfg:15
 msgid ""
@@ -6218,7 +6186,7 @@ msgstr ""
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Mélybeli polipkar"
 
 #: data/units/Tentacle.cfg:17
 msgid ""
@@ -6294,7 +6262,7 @@ msgstr ""
 
 #: data/units/Troll_Hero.cfg:3
 msgid "Troll Hero"
-msgstr ""
+msgstr "Troll hős"
 
 #: data/units/Troll_Hero.cfg:16
 msgid ""
@@ -6305,7 +6273,7 @@ msgstr ""
 
 #: data/units/Troll_Rocklobber.cfg:3
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Troll kőemelő"
 
 #: data/units/Troll_Rocklobber.cfg:17
 #, fuzzy
@@ -6391,11 +6359,11 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Várvédő"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "menetelő, gyógyul"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -6408,7 +6376,7 @@ msgstr ""
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
-msgstr ""
+msgstr "Harcos király"
 
 #: data/units/Warrior_King.cfg:22
 msgid ""
@@ -6570,9 +6538,8 @@ msgid "+Scenario Designers"
 msgstr "+Történetírók"
 
 #: src/about.cpp:118
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Többjátékos"
+msgstr "+Többjátékos Pályák"
 
 #: src/about.cpp:123
 msgid "+Packagers"
@@ -6583,9 +6550,8 @@ msgid "+Miscellaneous"
 msgstr "+Egyéb"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Honosítási Vezető"
+msgstr "+Honosítási Vezetők"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
@@ -6644,9 +6610,8 @@ msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugál (brazil) Fordítás"
 
 #: src/about.cpp:241
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Magyar Fordítás"
+msgstr "+Orosz Fordítás"
 
 #: src/about.cpp:247
 msgid "+Slovak Translation"
@@ -6665,7 +6630,6 @@ msgid "+Contributors"
 msgstr "+Résztvevők"
 
 #: src/about.cpp:270
-#, fuzzy
 msgid "+Bots"
 msgstr "+Botok"
 
@@ -6925,19 +6889,16 @@ msgid "The game could not be saved"
 msgstr "A játék nem menthető el"
 
 #: src/game.cpp:166 src/game.cpp:888 src/game.cpp:1278
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "A játék nem menthető el"
+msgstr "A játékot nem sikerült betölteni: "
 
 #: src/game.cpp:169 src/game.cpp:890 src/game.cpp:1280
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Fájl I/O hiba a játék beolvasásakor"
+msgstr "Hiba a játék közben: "
 
 #: src/game.cpp:172 src/game.cpp:1292
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "A játék nem menthető el"
+msgstr "A pályát nem sikerült betölteni: "
 
 #: src/game.cpp:193
 msgid "Do you want to save your game?"
@@ -6945,7 +6906,7 @@ msgstr "El kívánod menteni a játékot?"
 
 #: src/game.cpp:214
 msgid "Unknown scenario: '"
-msgstr ""
+msgstr "Ismeretlen pálya: '"
 
 #: src/game.cpp:603
 msgid "The Battle for Wesnoth"
@@ -6959,22 +6920,20 @@ msgstr ""
 "Ez a mentés a játék másik verziójával készült. Megpróbálod mégis betölteni? "
 
 #: src/game.cpp:828 src/game.cpp:831
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "A fájl amit be próbáltál tölteni hibás"
+msgstr "A fájl amit be próbáltál tölteni hibás: '"
 
 #: src/game.cpp:834
 msgid "File I/O Error while reading the game"
 msgstr "Fájl I/O hiba a játék beolvasásakor"
 
 #: src/game.cpp:939
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr " ,Szerezz be további hadjáratokat..."
+msgstr "Szerezz be további hadjáratokat..."
 
 #: src/game.cpp:940
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "További hadjáratok letöltése az internetről"
 
 #: src/game.cpp:950
 msgid "Choose the campaign you want to play:"
@@ -7014,23 +6973,20 @@ msgid "Name"
 msgstr "Név"
 
 #: src/game.cpp:1042
-#, fuzzy
 msgid "Author"
-msgstr "tövis"
+msgstr "Szerző"
 
 #: src/game.cpp:1043
 msgid "Downloads"
-msgstr ""
+msgstr "Letöltések"
 
 #: src/game.cpp:1044
-#, fuzzy
 msgid "Size"
-msgstr "Kiemelkedés mérete"
+msgstr "Méret"
 
 #: src/game.cpp:1063
-#, fuzzy
 msgid "B"
-msgstr "KB"
+msgstr "B"
 
 #: src/game.cpp:1066 src/show_dialog.cpp:956
 msgid "KB"
@@ -7038,7 +6994,7 @@ msgstr "KB"
 
 #: src/game.cpp:1069
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:1086
 msgid "Publish campaign: "
@@ -7108,7 +7064,7 @@ msgstr "Csatlakozás a hivatalos szervehez"
 
 #: src/game.cpp:1236
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Bejelentkezés a Wesnoth hivatalos többjátékos szerverére"
 
 #: src/game.cpp:1237 src/multiplayer_lobby.cpp:164
 msgid "Join Game"
@@ -7116,15 +7072,15 @@ msgstr "Csatlakozás játékhoz"
 
 #: src/game.cpp:1237
 msgid "Join a server or hosted game"
-msgstr ""
+msgstr "Csatlakozás egy szerverhez, vagy egy játékhoz"
 
 #: src/game.cpp:1238
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Hálózati játék készítése"
 
 #: src/game.cpp:1238
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Játék készítése szerver használata nélkül"
 
 #: src/game.cpp:1239
 msgid "Hotseat Game"
@@ -7132,7 +7088,7 @@ msgstr "Hotseat játék"
 
 #: src/game.cpp:1239
 msgid "Play a multiplayer game sharing the same machine"
-msgstr ""
+msgstr "Többjátékos játék játszása ugyanazon számítógép megosztásával"
 
 #: src/game.cpp:1240
 msgid "Human vs AI"
@@ -7140,7 +7096,7 @@ msgstr "Játékos kontra MI"
 
 #: src/game.cpp:1240
 msgid "Play a game against AI opponents"
-msgstr ""
+msgstr "Játék indítása a Mestersége Intelligencia ellen"
 
 #: src/game.cpp:1243 src/multiplayer_client.cpp:303
 msgid "Login"
@@ -7152,16 +7108,15 @@ msgstr "Nyelv"
 
 #: src/game.cpp:1319
 msgid "Choose your preferred language"
-msgstr ""
+msgstr "Leginkább megfelelő nyelv kiválasztása"
 
 #: src/game.cpp:1356
 msgid "Error loading game configuration files: '"
-msgstr ""
+msgstr "Hiba a konfigurációs fájlok betöoltésekor: '"
 
 #: src/game.cpp:1357
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "A játék véget ért."
+msgstr "' (A játék most ki fog lépni)"
 
 #: src/help.cpp:1021
 msgid "Advances to"
@@ -7228,36 +7183,32 @@ msgid "or"
 msgstr "vagy"
 
 #: src/help.cpp:1303
-#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
-"Ez a terület, mint $terrains viselkedik lépés és védekezés tekintetében."
+msgstr "Ez a terep, mint $terrains viselkedik lépés és védekezés tekintetében."
 
 #: src/help.cpp:1305
-#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr "A megjobb módosító tulajdonságú terület lesz önműködően kiválasztva."
+msgstr "A megjobb módosító tulajdonságú terep lesz önműködően kiválasztva."
 
 #: src/help.cpp:1309
-#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
-"Ez az terület vártoronyként viselkedik, például toborozzhatsz egységeket, ha "
-"a vezetőd egy ilyen területen áll."
+"Ez az terep vártoronyként viselkedik, például toborozhatsz egységeket, ha a "
+"vezetőd egy ilyen helyen áll."
 
 #: src/help.cpp:1311
-#, fuzzy
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
-msgstr "Ez a terület várként viselkedik, például toborozhatsz ide egységeket."
+msgstr ""
+"Ez a terep várként viselkedik, például toborozhatsz az ilyen helyekre "
+"egységeket."
 
 #: src/help.cpp:1313
-#, fuzzy
 msgid "This terrain gives healing."
-msgstr "Ez a terüelt gyógyít."
+msgstr "Ez a terep gyógyít."
 
 #: src/help.cpp:2107
 msgid "< Back"
@@ -7345,15 +7296,15 @@ msgstr "Sziget"
 
 #: src/multiplayer.cpp:93
 msgid "The maximum turns the game will go for"
-msgstr ""
+msgstr "A legtovább ennyi körig tarthat a játék"
 
 #: src/multiplayer.cpp:99
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "A bevétel mértéke, amit egy falu körönként biztosít"
 
 #: src/multiplayer.cpp:106
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "A tapasztalati követelmény mértéke, egy egység szintlépéséhez"
 
 #: src/multiplayer.cpp:108
 msgid "Fog Of War"
@@ -7361,11 +7312,11 @@ msgstr "Köd"
 
 #: src/multiplayer.cpp:110
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
+msgstr "Az ellenség nem látható, amíg az egységeid látókörébe nem kerül"
 
 #: src/multiplayer.cpp:114
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "A pálya ismeretlen, amíg az egységeid fel nem fedezik"
 
 #: src/multiplayer.cpp:116 src/reports.cpp:376
 msgid "Observers"
@@ -7373,7 +7324,7 @@ msgstr "Megfigyelők"
 
 #: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "A játék megtekintésének engedélyezése a játékban nem résztvevőknek"
 
 #: src/multiplayer.cpp:120 src/multiplayer_client.cpp:151
 #: src/multiplayer_connect.cpp:52 src/show_dialog.cpp:494
@@ -7431,7 +7382,7 @@ msgstr "Éra"
 
 #: src/multiplayer.cpp:343
 msgid "You must enter a name."
-msgstr ""
+msgstr "Meg kell adnod egy nevet."
 
 #: src/multiplayer.cpp:360
 msgid "Unlimited"
@@ -7467,7 +7418,6 @@ msgid "Receiving game list..."
 msgstr "Játéklista letöltése..."
 
 #: src/multiplayer_client.cpp:126 src/playturn.cpp:1745
-#, fuzzy
 msgid "unit^Gold"
 msgstr "Arany"
 
@@ -7644,7 +7594,7 @@ msgstr "Üres hely"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "<no games open>"
-msgstr ""
+msgstr "<nincs nyitott játék>"
 
 #: src/multiplayer_lobby.cpp:163
 msgid "Observe Game"
@@ -8036,7 +7986,6 @@ msgid "Enemy village"
 msgstr "Ellenséges falu"
 
 #: src/reports.cpp:316
-#, fuzzy
 msgid "Allied village"
 msgstr "Szövetséges falu"
 
@@ -8074,33 +8023,34 @@ msgstr "TitleScreen button^Kilép"
 
 #: src/titlescreen.cpp:190
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Gyakorlópályák indítása, a játékkal való ismerkedéshez"
 
 #: src/titlescreen.cpp:191
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Új egyjátékos hadjárat indítása"
 
 #: src/titlescreen.cpp:192
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Többjátékos (hotseat, LAN vagy internet), vagy MI elleni összecsapás játszása"
 
 #: src/titlescreen.cpp:193
 msgid "Load a single player saved game"
-msgstr ""
+msgstr "Egyjátékos mentett állás betöltése"
 
 #: src/titlescreen.cpp:194
 msgid "Change the language"
-msgstr ""
+msgstr "Nyelv megváltoztatása"
 
 #: src/titlescreen.cpp:195
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Játék beállításainak áttekintése"
 
 #: src/titlescreen.cpp:196
 msgid "View the credits"
-msgstr ""
+msgstr "Stáblista megtekintése"
 
 #: src/titlescreen.cpp:197
 msgid "Quit the game"
@@ -8445,7 +8395,7 @@ msgstr "A fájl törlése sikertelen"
 #~ msgstr "Elnémítás"
 
 #~ msgid "Speak"
-#~ msgstr "Beszéd"
+#~ msgstr "Beszélés"
 
 #~ msgid "Create Unit (Debug!)"
 #~ msgstr "Egység létrehozása (hibajavítás!)"
