@@ -71,7 +71,7 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 	for(int y = 0; y != surface->h; ++y, pixel += xpad) {
 		const short* const end = pixel + surface->w;
 		while(pixel != end) {
-			if(*pixel != 0 && *pixel != 0xFF) {
+			if(*pixel != 0 && *pixel != short(0xFFFF)) {
 				Uint8 red, green, blue;
 				SDL_GetRGB(*pixel,surface->format,&red,&green,&blue);
 
