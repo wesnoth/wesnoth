@@ -1452,6 +1452,16 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 		image = "terrain/keep";
 	}
 
+	//see if there is a time-of-day specific version of this image
+	if(direction == "") {
+		const time_of_day& tod = status_.get_time_of_day();
+		const std::string tod_image = image + "-" + tod.id + ".png";
+		SDL_Surface* const im = image::get_image(tod_image,image_type);
+		if(im != NULL) {
+			return im;
+		}
+	}
+
 	image += direction + ".png";
 
 	SDL_Surface* im = image::get_image(image,image_type);

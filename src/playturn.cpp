@@ -106,6 +106,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		gui.set_route(&route);
 		move_unit(&gui,map,units,teams,route.steps,
 		          &recorder,&turn_data.undos());
+		gui.invalidate_game_status();
 	}
 
 	std::cerr << "done gotos\n";
@@ -772,6 +773,7 @@ void turn_info::undo()
 	un.set_movement(starting_moves);
 	units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	gui_.invalidate_unit();
+	gui_.invalidate_game_status();
 	gui_.draw_tile(route.back().x,route.back().y);
 
 	redo_stack_.push_back(undo_stack_.back());
@@ -817,6 +819,7 @@ void turn_info::redo()
 	un.set_movement(starting_moves);
 	units_.insert(std::pair<gamemap::location,unit>(route.back(),un));
 	gui_.invalidate_unit();
+	gui_.invalidate_game_status();
 
 	recorder.add_movement(route.front(),route.back());
 

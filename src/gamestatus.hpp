@@ -31,6 +31,7 @@ struct time_of_day
 	//the image to be displayed in the game status.
 	std::string image;
 	std::string name;
+	std::string id;
 
 	//the colour modifications that should
 	//be made to the game board to reflect the time of day.

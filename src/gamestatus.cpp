@@ -21,13 +21,13 @@
 #include <sstream>
 
 time_of_day::time_of_day(config& cfg)
-                 : lawful_bonus(atoi(cfg.values["lawful_bonus"].c_str())),
-                   image(cfg.values["image"]), name(cfg.values["name"]),
-                   red(atoi(cfg.values["red"].c_str())),
-                   green(atoi(cfg.values["green"].c_str())),
-                   blue(atoi(cfg.values["blue"].c_str()))
+                 : lawful_bonus(atoi(cfg["lawful_bonus"].c_str())),
+                   image(cfg["image"]), name(cfg["name"]), id(cfg["id"]),
+                   red(atoi(cfg["red"].c_str())),
+                   green(atoi(cfg["green"].c_str())),
+                   blue(atoi(cfg["blue"].c_str()))
 {
-	const std::string& lang_name = string_table[cfg.values["id"]];
+	const std::string& lang_name = string_table[cfg["id"]];
 	if(lang_name.empty() == false)
 		name = lang_name;
 }
