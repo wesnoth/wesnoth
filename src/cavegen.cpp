@@ -277,11 +277,10 @@ private:
 	size_t windiness_;
 };
 
-double passage_path_calculator::cost(const gamemap::location& loc, double, bool) const
+double passage_path_calculator::cost(const gamemap::location& loc, const double, const bool) const
 {
-	if(loc.x < 0 || loc.y < 0 || size_t(loc.x) >= map_.size() || map_.empty() || size_t(loc.y) >= map_.front().size()) {
-		return 100000.0;
-	}
+	wassert(loc.x >= 0 && loc.y >= 0 && size_t(loc.x) < map_.size() &&
+	        !map_.empty() && size_t(loc.y) < map_.front().size());
 
 	double res = 1.0;
 	if(map_[loc.x][loc.y] == wall_) {
@@ -308,10 +307,9 @@ void cave_map_generator::place_passage(const passage& p)
 	
 	passage_path_calculator calc(map_,wall_,laziness,windiness);
 	
+	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width_, height_);
+
 	const size_t width = maximum<size_t>(1,atoi(p.cfg["width"].c_str()));
-	const size_t height = maximum<size_t>(1,atoi(p.cfg["height"].c_str()));
-	
-	const paths::route rt = a_star_search(p.src, p.dst, 10000.0, &calc, width, height);
 
 	const size_t jagged = atoi(p.cfg["jagged"].c_str());
 	
