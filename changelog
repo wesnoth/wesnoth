@@ -26,16 +26,17 @@ CVS HEAD:
  * scenario balancing for 'The Rise of Wesnoth' campaign:
    * A Final Spring
    * A Harrowing Escape
+   * The Vanguard
  * spirit movetype, with high resistances against "physical" attacks, slowed on open water
  * unit balancing: 
-   * treefolk (Woses): reduced pierce, impact and cold resistance
+   * treefolk (Woses): reduced pierce, impact and cold resistances
    * undeadfoot: "deep walking" (movement in deep water)
    * Wose: reduced melee damage
    * Walking Corpse: increased hitpoints, increased melee damage
    * Ghost: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Wraith: switched movetype to 'spirit', halved hitpoints, reduced movement
-   * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement
-   * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement
+   * Spectre: switched movetype to 'spirit', halved hitpoints, reduced movement, backstab
+   * Nightgaunt: switched movetype to 'spirit', halved hitpoints, reduced movement, backstab
    * Shadow: switched movetype to 'spirit', halved hitpoints, reduced movement
    * Orcish Archer: reduced cost
    * Peasant: reduced cost, increased melee damage
@@ -53,6 +54,7 @@ CVS HEAD:
    * spanish
    * swedish
  * status for translations (gettext) - http://gettext.wesnoth.org
+ * splitted po-files into domains (gettext)
  * multiplayer improvements:
    * restored Thug to Knalgan Alliance on default era
    * added many 2nd level units to factions on 'Age of Heroes' era
@@ -80,7 +82,6 @@ CVS HEAD:
  * fixed editor not being translatable
  * workaround for Reiser4 feature bug (#10264)
  * re-implemented enhanced sound quality fix
- * multiple textdomain (gettext) infrastructure
  * added error dialog when a campaign has corrupt WML
  * added better error messages for machines that cannot bind to local ports 
  * switched relevant flags from --enable-* to --with-* in autotools
