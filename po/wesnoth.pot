@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-30 17:23+0200\n"
+"POT-Creation-Date: 2004-08-31 13:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12903,7 +12903,7 @@ msgid "blade"
 msgstr ""
 
 #: data/units/Assassin.cfg:25 data/units/Rogue.cfg:25 data/units/Thief.cfg:24
-#: src/actions.cpp:476
+#: src/actions.cpp:487
 msgid "backstab"
 msgstr ""
 
@@ -13181,8 +13181,8 @@ msgstr ""
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:349
-#: src/actions.cpp:467
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:360
+#: src/actions.cpp:478
 msgid "charge"
 msgstr ""
 
@@ -13219,7 +13219,7 @@ msgstr ""
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:17
 #: data/units/Princess.cfg:55 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:17 src/actions.cpp:360 src/actions.cpp:496
+#: data/units/Warrior_King.cfg:17 src/actions.cpp:350 src/actions.cpp:468
 msgid "leadership"
 msgstr ""
 
@@ -13558,7 +13558,7 @@ msgid "Dwarvish Guardsman"
 msgstr ""
 
 #: data/units/Dwarvish_Guardsman.cfg:29 data/units/Dwarvish_Stalwart.cfg:29
-#: src/actions.cpp:485
+#: src/actions.cpp:496
 msgid "steadfast"
 msgstr ""
 
@@ -15200,6 +15200,118 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
+#: src/about.cpp:44
+msgid "+Core Developers"
+msgstr ""
+
+#: src/about.cpp:45
+msgid "-   Main Developer"
+msgstr ""
+
+#: src/about.cpp:48
+msgid "-   Artwork and graphics designer"
+msgstr ""
+
+#: src/about.cpp:52
+msgid "+Developers"
+msgstr ""
+
+#: src/about.cpp:64
+msgid "+General Purpose Administrators"
+msgstr ""
+
+#: src/about.cpp:69
+msgid "+Artwork and graphics designers"
+msgstr ""
+
+#: src/about.cpp:91
+msgid "+Music"
+msgstr ""
+
+#: src/about.cpp:98
+msgid "+Scenario Designers"
+msgstr ""
+
+#: src/about.cpp:107
+msgid "+Packagers"
+msgstr ""
+
+#: src/about.cpp:115
+msgid "+Miscellaneous"
+msgstr ""
+
+#: src/about.cpp:121
+msgid "+Internationalization Manager"
+msgstr ""
+
+#: src/about.cpp:125
+msgid "+Brazilian Translation"
+msgstr ""
+
+#: src/about.cpp:130
+msgid "+Catalan Translation"
+msgstr ""
+
+#: src/about.cpp:135
+msgid "+Danish Translation"
+msgstr ""
+
+#: src/about.cpp:139
+msgid "+Dutch Translation"
+msgstr ""
+
+#: src/about.cpp:143
+msgid "+Finnish Translation"
+msgstr ""
+
+#: src/about.cpp:147
+msgid "+French Translation"
+msgstr ""
+
+#: src/about.cpp:154
+msgid "+German Translation"
+msgstr ""
+
+#: src/about.cpp:161
+msgid "+Hungarian Translation"
+msgstr ""
+
+#: src/about.cpp:166
+msgid "+Italian Translation"
+msgstr ""
+
+#: src/about.cpp:173
+msgid "+Norwegian Translation"
+msgstr ""
+
+#: src/about.cpp:178
+msgid "+Polish Translation"
+msgstr ""
+
+#: src/about.cpp:184
+msgid "+Portuguese Translation"
+msgstr ""
+
+#: src/about.cpp:189
+msgid "+Slovak Translation"
+msgstr ""
+
+#: src/about.cpp:193
+msgid "+Spanish Translation"
+msgstr ""
+
+#: src/about.cpp:200
+msgid "+Swedish Translation"
+msgstr ""
+
+#: src/about.cpp:205
+msgid "+Contributors"
+msgstr ""
+
+#: src/about.cpp:213
+msgid "+ Bots"
+msgstr ""
+
 #: src/about.cpp:241 src/help.cpp:2368 src/show_dialog.cpp:468
 msgid "Close"
 msgstr ""
@@ -15232,6 +15344,10 @@ msgstr ""
 msgid "attacker vulnerability vs"
 msgstr ""
 
+#: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
+msgid "Doubled"
+msgstr ""
+
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
 msgstr ""
@@ -15242,6 +15358,10 @@ msgstr ""
 
 #: src/actions.cpp:445
 msgid "defender vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:496
+msgid "Halved"
 msgstr ""
 
 #: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
