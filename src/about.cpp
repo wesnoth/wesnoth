@@ -64,71 +64,73 @@ void show_about(display& disp)
 	text.push_back(" ");
 	text.push_back("- ");
 
-	text.push_back("+Core Developers");
-	text.push_back("- ");
-	text.push_back("David White (Sirp)");
-	text.push_back("-main developer");
-	text.push_back("-scenario designer");
-	text.push_back("Francisco Muñoz (fmunoz)");
-	text.push_back("-artwork and graphics designer");
-	text.push_back("- ");
-	text.push_back("- ");
-	text.push_back("- ");
-	text.push_back("+Active Contributors");
-	text.push_back("- ");
-	text.push_back("Alfredo Beaumont (ziberpunk)");
-	text.push_back("-developer");
-	text.push_back("Arndt Muehlenfeld (Arndt)");
-	text.push_back("-translator");
-	text.push_back("Crossbow/Miyo");
-	text.push_back("-wesnoth general purpose administrator");
-	text.push_back("Cyril Bouthors (CyrilB)");
-	text.push_back("-packager");
-	text.push_back("-developer");
-	text.push_back("Federico Tomassetti");
-	text.push_back("-translator");
-	text.push_back("Guillaume Duwelz-Rebert");
-	text.push_back("-translator");
-	text.push_back("-developer");
-	text.push_back("Isaac Clerencia");
-	text.push_back("-developer");
-	text.push_back("Jaramir");
-	text.push_back("-web developer");
-	text.push_back("Johanna Manninen (lohari)");
-	text.push_back("-artwork and graphics designer");
-	text.push_back("Jordà  Polo (ettin)");
-	text.push_back("-web developer");
-	text.push_back("-artwork and graphics designer");
-	text.push_back("Joseph Toscano (zhaymusic.com)");
-	text.push_back("-music");
-	text.push_back("Justin Zaun (jzaun)");
-	text.push_back("-developer");
-	text.push_back("-scenario designer");
-	text.push_back("J.R. Blain (Cowboy)");
-	text.push_back("-developer");
-	text.push_back("Marcus Phillips (Sithrandel)");
-	text.push_back("-packager");
-	text.push_back("Mark Joakim Bekker Michelsen (skovbaer)");
-	text.push_back("-internationalization manager");
-	text.push_back("-translator");
-	text.push_back("Pau Congost");
-	text.push_back("-music");
-	text.push_back("Fredrik Lindroth");
-	text.push_back("-music");
-	text.push_back("Slainte");
-	text.push_back("-artwork and graphics designer");
-	text.push_back("Zas");
-	text.push_back("-translator");
-	text.push_back("-developer");
-	text.push_back("- ");
-	text.push_back("- ");
-	text.push_back("- ");
-	text.push_back("+Past Contributors");
-	text.push_back("- ");
-	text.push_back("Jan ZvÃ¡novec (jaz)");
-	text.push_back("-developer");
-	text.push_back("Jay Hopping");
-	text.push_back("-artwork and graphics designer");
+  	text.push_back("+Core Developers");
+ 	text.push_back("-   Main Developer");
+ 	text.push_back("   David White (Sirp)");
+  	text.push_back("- ");
+ 	text.push_back("-   Artwork and graphics designer");
+ 	text.push_back("   Francisco Muñoz (fmunoz)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Developers");
+ 	text.push_back("-   Alfredo Beaumont (ziberpunk)");
+ 	text.push_back("-   Cyril Bouthors (CyrilB)");
+ 	text.push_back("-   Guillaume Duwelz-Rebert");
+ 	text.push_back("-   Isaac Clerencia");
+ 	text.push_back("-   J.R. Blain (Cowboy)");
+ 	text.push_back("-   Justin Zaun (jzaun)");
+ 	text.push_back("-   Zas");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+General Purpose Administrator");
+ 	text.push_back("-   Crossbow (miyo)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Internationalization Manager");
+ 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Translators");
+ 	text.push_back("-   Arndt Muehlenfeld (Arndt)");
+ 	text.push_back("-   Federico Tomassetti");
+ 	text.push_back("-   Guillaume Duwelz-Rebert");
+ 	text.push_back("-   Mark Joakim Bekker Michelsen (skovbaer)");
+ 	text.push_back("-   Zas");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Artwork and graphics designers");
+ 	text.push_back("-   Johanna Manninen (lohari)");
+ 	text.push_back("-   Jordà Polo (ettin)");
+ 	text.push_back("-   Slainte");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Music");
+ 	text.push_back("-   Fredrik Lindroth");
+ 	text.push_back("-   Joseph Toscano (zhaymusic.com)");
+ 	text.push_back("-   Pau Congost");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Scenario Designers");
+ 	text.push_back("-   David White (Sirp)");
+ 	text.push_back("-   Justin Zaun (jzaun)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Packagers");
+ 	text.push_back("-   Cyril Bouthors (CyrilB)");
+ 	text.push_back("-   Marcus Phillips (Sithrandel)");
+ 	text.push_back("+ ");
+ 
+ 	text.push_back("+Web Developers");
+ 	text.push_back("-   Jaramir");
+ 	text.push_back("-   Jordà Polo (ettin)");
+ 	text.push_back("+ ");
+ 
+  	text.push_back("+Past Contributors");
+ 	text.push_back("-   Jan Zvánovec (jaz)");
+ 	text.push_back("-   Developer");
+  	text.push_back("- ");
+ 	text.push_back("-   Jay Hopping");
+ 	text.push_back("-   Artwork and graphics designer");
 
 	int startline = 0;
 
@@ -164,7 +166,7 @@ void show_about(display& disp)
 
 		do {
 			SDL_Rect tr = font::draw_text(&disp,disp.screen_area(),24,font::BLACK_COLOUR,
-					              text[line], -1,y);
+					              text[line], map_rect.x + map_rect.w / 8,y);
 			if(is_new_line) {
 				is_new_line = false;
 				first_line_height = tr.h + line_spacing;
