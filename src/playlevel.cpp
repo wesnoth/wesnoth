@@ -791,7 +791,7 @@ redo_turn:
 							report << "\n";
 						}
 
-						report << i->save_id() << ": " << "\n";
+						report << font::BOLD_TEXT << i->save_id() << "\n";
 					}
 
 					report << _("Remaining gold") << ": "
@@ -817,7 +817,7 @@ redo_turn:
 			                 _("You have emerged victorious!"),gui::OK_ONLY);
 
 			if(state_of_game.players.size()>0 && has_next_scenario) {
-				gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
+				gui::show_dialog(gui,NULL,_("Scenario Report"),report.str(),gui::OK_ONLY);
 			}
 			return VICTORY;
 		}
