@@ -42,7 +42,8 @@ namespace map_editor {
 
 bool confirm_modification_disposal(display& disp) {
 	const int res = gui::show_dialog(disp, NULL, "",
-									 translate_string("edit_modifications_lost_confirm"),
+									 _("Your modifications to the map will be lost.
+										 Continue?"),
 									 gui::OK_CANCEL);
 	return res == 0;
 }
@@ -69,7 +70,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-					      translate_string("edit_create_new_map_title"),0,0);
+					      _("Create New Map"),0,0);
 
 	const std::string& width_label = string_table["map_width"] + ":";
 	const std::string& height_label = string_table["map_height"] + ":";
@@ -88,10 +89,10 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button new_map_button(disp, translate_string("edit_generate_new_map"));
-	gui::button random_map_button(disp, translate_string("edit_generate_random_map"));
-	gui::button random_map_setting_button(disp, translate_string("edit_random_generator_settings"));
-	gui::button cancel_button(disp, translate_string("cancel_button"));
+	gui::button new_map_button(disp, _("Generate New Map"));
+	gui::button random_map_button(disp, _("Generate Random Map"));
+	gui::button random_map_setting_button(disp, _("Random Generator Settings"));
+	gui::button cancel_button(disp, _("Cancel"));
 
 	new_map_button.set_location(xpos + horz_margin,height_rect.y + height_rect.h + vertical_margin);
 	random_map_button.set_location(xpos + horz_margin,ypos + height - random_map_button.height()-14*2-vertical_margin);
@@ -174,7 +175,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 					random_map_generator.get()->create_map(std::vector<std::string>());
 				if (map == "") {
 					gui::show_dialog(disp, NULL, "",
-									 translate_string("edit_map_creation_failed"), gui::OK_ONLY);
+									 _("Map creation failed."), gui::OK_ONLY);
 				}
 				return map;
 			}
@@ -188,7 +189,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-										 translate_string("edit_create_new_map_title"),
+										 _("Create New Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
 
 			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
@@ -380,7 +381,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
 	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
-					      translate_string("edit_resize_map_title"),0,0);
+					      _("Resize Map"),0,0);
 
 	const std::string& width_label = string_table["map_width"] + ":";
 	const std::string& height_label = string_table["map_height"] + ":";
@@ -399,8 +400,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button cancel_button(disp, translate_string("cancel_button"));
-	gui::button ok_button(disp, translate_string("ok_button"));
+	gui::button cancel_button(disp, _("Cancel"));
+	gui::button ok_button(disp, _("Ok"));
 
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
@@ -438,7 +439,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 			map_height = height_slider.value();
 			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-										 translate_string("edit_resize_map_title"),
+										 _("Resize Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
 
 			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,
