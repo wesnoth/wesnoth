@@ -430,6 +430,7 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			throw config::error("unknown option");
 		} else {
 
+		  std::cerr << "Setting path using " << val;
 			if(val[0] == '/') {
 				game_config::path = val;
 			} else {
@@ -1422,6 +1423,19 @@ int play_game(int argc, char** argv)
 
 	game_controller game(argc,argv,use_sound);
 
+	// I would prefer to setup locale first so that early error
+	// messages can get localized, but we need the game_controller
+	// initialized to have get_intl_dir() to work.  Note: this
+	// setlocale() but this does not take GUI language setting
+	// into account.
+	setlocale (LC_ALL, "");
+	const std::string& intl_dir = get_intl_dir();
+	bindtextdomain (PACKAGE, intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE, "UTF-8");
+	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
+	textdomain (PACKAGE);
+
 	bool res;
 #ifdef WIN32
 	res = game.init_config();
@@ -1528,27 +1542,15 @@ int play_game(int argc, char** argv)
 
 int main(int argc, char** argv)
 {
-	// setup locale first so that early error messages can get localized
-	// but this does not take GUI language setting into account
-	setlocale (LC_ALL, "");
-
-	const std::string& intl_dir = get_intl_dir();
-	bindtextdomain (PACKAGE, intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE, "UTF-8");
-	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
-
-	textdomain (PACKAGE);
-
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
 		const int res = play_game(argc,argv);
 		std::cerr << "exiting with code " << res << "\n";
 		return res;
 	} catch(CVideo::error&) {
-		std::cerr << _("Could not initialize video. Exiting.\n");
+		std::cerr << "Could not initialize video. Exiting.\n";
 	} catch(font::manager::error&) {
-		std::cerr << _("Could not initialize fonts. Exiting.\n");
+		std::cerr << "Could not initialize fonts. Exiting.\n";
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
 	} catch(gui::button::error&) {

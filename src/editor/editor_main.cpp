@@ -34,16 +34,6 @@
 
 int main(int argc, char** argv)
 {
-	setlocale (LC_ALL, "");
-
-	const std::string& intl_dir = get_intl_dir();
-	bindtextdomain (PACKAGE "-editor", intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE "-editor", "UTF-8");
-	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
-	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
-
-	textdomain (PACKAGE "-editor");
-
 	game_config::editor = true;
 
 	int arg;
@@ -141,6 +131,15 @@ int main(int argc, char** argv)
 			}
 		}
 	}
+
+	setlocale (LC_ALL, "");
+	const std::string& intl_dir = get_intl_dir();
+	bindtextdomain (PACKAGE "-editor", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-editor", "UTF-8");
+	bindtextdomain (PACKAGE "-lib", intl_dir.c_str());
+	bind_textdomain_codeset (PACKAGE "-lib", "UTF-8");
+	textdomain (PACKAGE "-editor");
+
 	// Blatant cut and paste from game.cpp
 	image::set_wm_icon();
 	int video_flags = preferences::fullscreen() ? FULL_SCREEN : 0;
