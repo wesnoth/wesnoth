@@ -219,7 +219,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
-		SDL_BlitSurface(surface,&src,gui->video().getSurface(),&dest);
+		sdl_safe_blit(surface,&src,gui->video().getSurface(),&dest);
 	}
 
 	if(use_tooltips) {

@@ -261,8 +261,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"]);
 	}
 
-	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,
-	                   display::WARP);
+	if(first_human_team != -1) {
+		clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
+		gui.scroll_to_tile(map.starting_position(first_human_team+1).x,map.starting_position(first_human_team+1).y,display::WARP);
+	}
+
+	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
 
 	bool replaying = (recorder.at_end() == false);
 
@@ -283,7 +287,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 
 			if(first_time) {
 				const hotkey::basic_handler key_events_handler(gui);
-				clear_shroud(gui,status,map,gameinfo,units,teams,0);
 
 				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());

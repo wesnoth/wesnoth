@@ -128,6 +128,10 @@ bool button::enabled() const
 
 void button::draw()
 {
+	if(x_ <= 0 && y_ <= 0) {
+		return;
+	}
+
 	if(type_ == TYPE_CHECK) {
 		hide();
 		backup_background();

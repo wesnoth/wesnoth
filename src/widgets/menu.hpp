@@ -49,6 +49,8 @@ private:
 
 	void handle_event(const SDL_Event& event);
 
+	bool show_scrollbar() const;
+
 	display* display_;
 	int x_, y_;
 	std::vector<std::vector<std::string> > items_;

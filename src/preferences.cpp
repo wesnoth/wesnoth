@@ -701,15 +701,13 @@ void show_hotkeys_dialog (display & disp)
 		menu_items.push_back (str.str ());
 	}
 
-	gui::menu menu_ (disp, menu_items, 0);;
-	menu_.set_loc (xpos + 20, ypos + 30);
+	gui::menu menu_ (disp, menu_items);
 	menu_.set_width(400);	
+	menu_.set_loc (xpos + 20, ypos + 30);
 	
 	gui::button close_button (disp, string_table["close_window"]);
-	close_button.set_x (xpos + width  -
-			    close_button.width () -30 );
-	close_button.set_y (ypos + height - close_button.height () -
-			    70);
+	close_button.set_x (xpos + width  - close_button.width () - 30);
+	close_button.set_y (ypos + height - close_button.height () - 70);
 
 	gui::button change_button (disp, string_table["change_hotkey_button"]);
 	change_button.set_x (xpos + width -

@@ -83,7 +83,7 @@ void menu::set_loc(int x, int y)
 	SDL_Surface* const screen = display_->video().getSurface();
 	buffer_.assign(get_surface_portion(screen, portion));
 
-	if(items_.size() > max_items_onscreen()) {
+	if(show_scrollbar()) {
 		uparrow_.set_x(x_);
 		uparrow_.set_y(y_);
 		downarrow_.set_x(x_);
@@ -299,6 +299,11 @@ int menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	}
 }
 
+bool menu::show_scrollbar() const
+{
+	return items_.size() > max_items_onscreen();
+}
+
 bool menu::double_clicked() const
 {
 	return double_clicked_;
@@ -394,7 +399,7 @@ void menu::draw()
 	drawn_ = true;
 
 	// update enabled/disabled status for up/down buttons
-	if(items_.size() > max_items_onscreen()) {
+	if(show_scrollbar()) {
 		if(first_item_on_screen_ == 0) {
 			uparrow_.enable(false);
 			uparrow_.hide();
@@ -497,7 +502,7 @@ size_t menu::get_item_height(int item) const
 
 int menu::items_start() const
 {
-	if(items_.size() > max_items_onscreen())
+	if(show_scrollbar())
 		return uparrow_.height();
 	else
 		return 0;
@@ -505,7 +510,7 @@ int menu::items_start() const
 
 int menu::items_end() const
 {
-	if(items_.size() > max_items_onscreen())
+	if(show_scrollbar())
 		return height() - downarrow_.height();
 	else
 		return height();
