@@ -65,11 +65,22 @@ EDITOR_TRUE = @EDITOR_TRUE@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FONT_FILES = @FONT_FILES@
+GNOME1_DESKTOP = @GNOME1_DESKTOP@
+GNOME1_FALSE = @GNOME1_FALSE@
+GNOME1_TRUE = @GNOME1_TRUE@
+GNOME_CONFIG = @GNOME_CONFIG@
+ICONS_FALSE = @ICONS_FALSE@
+ICONS_TRUE = @ICONS_TRUE@
 IMAGE_FILES = @IMAGE_FILES@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+KDE_CONFIG = @KDE_CONFIG@
+KDE_DESKTOP = @KDE_DESKTOP@
+KDE_FALSE = @KDE_FALSE@
+KDE_ICON = @KDE_ICON@
+KDE_TRUE = @KDE_TRUE@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
@@ -194,6 +205,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/menu.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
+		  widgets/widget.cpp \
                   about.hpp \
 		  actions.hpp \
 		  ai.hpp \
@@ -243,7 +255,8 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/combo.hpp \
 		  widgets/menu.hpp \
 		  widgets/slider.hpp \
-		  widgets/textbox.hpp
+		  widgets/textbox.hpp \
+		  widgets/widget.hpp
 
 
 
@@ -293,6 +306,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/menu.cpp \
 			 widgets/textbox.cpp \
 			 widgets/slider.cpp \
+			 widgets/widget.cpp \
 			 actions.hpp \
 			 ai.hpp \
 			 ai_attack.hpp \
@@ -334,7 +348,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/button.hpp \
 			 widgets/menu.hpp \
 			 widgets/textbox.hpp \
-			 widgets/slider.hpp
+			 widgets/slider.hpp \
+			 widgets/widget.hpp
 
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -361,7 +376,7 @@ am_wesnoth_OBJECTS = about.$(OBJEXT) actions.$(OBJEXT) ai.$(OBJEXT) \
 	team.$(OBJEXT) terrain.$(OBJEXT) tooltips.$(OBJEXT) \
 	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
 	button.$(OBJEXT) combo.$(OBJEXT) menu.$(OBJEXT) \
-	slider.$(OBJEXT) textbox.$(OBJEXT)
+	slider.$(OBJEXT) textbox.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_OBJECTS = $(am_wesnoth_OBJECTS)
 wesnoth_LDADD = $(LDADD)
 wesnoth_DEPENDENCIES =
@@ -380,7 +395,7 @@ am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	sound.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
 	tooltips.$(OBJEXT) unit.$(OBJEXT) unit_types.$(OBJEXT) \
 	video.$(OBJEXT) button.$(OBJEXT) menu.$(OBJEXT) \
-	textbox.$(OBJEXT) slider.$(OBJEXT)
+	textbox.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
@@ -414,7 +429,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/team.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/terrain.Po ./$(DEPDIR)/textbox.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/tooltips.Po ./$(DEPDIR)/unit.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po
+@AMDEP_TRUE@	./$(DEPDIR)/unit_types.Po ./$(DEPDIR)/video.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/widget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -530,6 +546,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit_types.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/video.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/widget.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
@@ -662,6 +679,28 @@ textbox.obj: widgets/textbox.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/textbox.Po' tmpdepfile='$(DEPDIR)/textbox.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o textbox.obj `if test -f 'widgets/textbox.cpp'; then $(CYGPATH_W) 'widgets/textbox.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/textbox.cpp'; fi`
+
+widget.o: widgets/widget.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT widget.o -MD -MP -MF "$(DEPDIR)/widget.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o widget.o `test -f 'widgets/widget.cpp' || echo '$(srcdir)/'`widgets/widget.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/widget.Tpo" "$(DEPDIR)/widget.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/widget.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/widget.cpp' object='widget.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/widget.Po' tmpdepfile='$(DEPDIR)/widget.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o widget.o `test -f 'widgets/widget.cpp' || echo '$(srcdir)/'`widgets/widget.cpp
+
+widget.obj: widgets/widget.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT widget.obj -MD -MP -MF "$(DEPDIR)/widget.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o widget.obj `if test -f 'widgets/widget.cpp'; then $(CYGPATH_W) 'widgets/widget.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/widget.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/widget.Tpo" "$(DEPDIR)/widget.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/widget.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='widgets/widget.cpp' object='widget.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/widget.Po' tmpdepfile='$(DEPDIR)/widget.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o widget.obj `if test -f 'widgets/widget.cpp'; then $(CYGPATH_W) 'widgets/widget.cpp'; else $(CYGPATH_W) '$(srcdir)/widgets/widget.cpp'; fi`
 
 editor.o: editor/editor.cpp
 @am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT editor.o -MD -MP -MF "$(DEPDIR)/editor.Tpo" \
