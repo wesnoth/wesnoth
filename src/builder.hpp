@@ -123,7 +123,6 @@ private:
 	typedef std::multimap<int, gamemap::location> anchormap;
 	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
 			     anchormap& anchors);
-	terrain_builder::building_rule rule_from_terrain_template(const terrain_builder::building_rule &tpl, const gamemap::TERRAIN terrain);
 	void parse_config(const config &cfg);
 	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index, bool check_loc);

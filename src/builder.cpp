@@ -224,20 +224,6 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
-terrain_builder::building_rule terrain_builder::rule_from_terrain_template(const terrain_builder::building_rule&tpl, const gamemap::TERRAIN terrain)
-{
-	terrain_builder::building_rule ret = tpl;
-
-	std::string ter(1, terrain);
-	constraint_set::iterator cons;
-	for(cons = ret.constraints.begin(); cons != ret.constraints.end(); ++cons) {
-		replace_token(cons->second.terrain_types, "@", ter);
-	}
-	replace_token(ret, "@T", map_.get_terrain_info(terrain).default_image());
-
-	return ret;
-}
-
 void terrain_builder::add_images_from_config(imagelist& images, const config &cfg)
 {
 	const config::child_list& cimages = cfg.get_children("image");
@@ -444,18 +430,8 @@ void terrain_builder::parse_config(const config &cfg)
 
 		// Handles rotations
 		const std::string rotations = (**br)["rotations"];
-		const std::string terrains = (**br)["terrains"];
 
-		if(terrains.empty()) {
-			add_rotated_rules(building_rules_, pbr, rotations);
-		} else {
-			for(std::string::const_iterator terrain = terrains.begin();
-					terrain != terrains.end(); ++terrain) {
-
-				const building_rule r = rule_from_terrain_template(pbr, *terrain);
-				add_rotated_rules(building_rules_, r, rotations);
-			}
-		}
+		add_rotated_rules(building_rules_, pbr, rotations);
 
 	}
 
