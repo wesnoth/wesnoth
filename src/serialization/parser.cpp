@@ -216,9 +216,9 @@ void read(config &cfg, std::string const &data, std::vector< line_source > const
 				if(c == '[' && in_quotes) {
 					if(line_sources != NULL) {
 						const line_source src = get_line_source(*line_sources,line);
-						LOG_CF << src.file << " " << src.fileline << ": ";
+						WRN_CF << src.file << " " << src.fileline << ": ";
 					} else {
-						LOG_CF << "line " << line << ": ";
+						WRN_CF << "line " << line << ": ";
 					}
 
 					WRN_CF << "square bracket found in string. Is this a run-away string?\n";
