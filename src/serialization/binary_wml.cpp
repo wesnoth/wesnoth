@@ -114,16 +114,17 @@ static void compress_emit_word(std::ostream &out, std::string const &word, compr
 static std::string compress_read_literal_word(std::istream &in)
 {
 	std::stringstream stream;
-	in.get(*stream.rdbuf(), 0);
-	if (in.get() || in.fail())
-		throw config::error("Unexpected end of data in compressed config read\n");
+	if (in.peek()) // this conditional works around the failure of the empty word
+		in.get(*stream.rdbuf(), 0);
+	if (in.get() || !in.good())
+		throw config::error("Unexpected end of data in compressed config read");
 	return stream.str();
 }
 
 static void write_compressed_internal(std::ostream &out, config const &cfg, compression_schema &schema, int level)
 {
 	if (level > max_recursion_levels)
-		throw config::error("Too many recursion levels in compressed config write\n");
+		throw config::error("Too many recursion levels in compressed config write");
 
 	for (string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
 		if (i->second.empty() == false) {
@@ -155,12 +156,12 @@ void write_compressed(std::ostream &out, config const &cfg, compression_schema &
 static void read_compressed_internal(config &cfg, std::istream &in, compression_schema &schema, int level)
 {
 	if (level >= max_recursion_levels)
-		throw config::error("Too many recursion levels in compressed config read\n");
+		throw config::error("Too many recursion levels in compressed config read");
 	
 	bool in_open_element = false;
 	for(;;) {
 		unsigned char const c = in.get();
-		if (in.fail())
+		if (!in.good())
 			return;
 		switch (c) {
 		case compress_open_element:
@@ -183,7 +184,7 @@ static void read_compressed_internal(config &cfg, std::istream &in, compression_
 					= schema.char_to_word.find(code);
 				if (itor == schema.char_to_word.end()) {
 					ERR_CF << "illegal word code: " << code << "\n";
-					throw config::error("Illegal character in compression input\n");
+					throw config::error("Illegal character in compression input");
 				}
 
 				word = itor->second;
