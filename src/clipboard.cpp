@@ -343,7 +343,7 @@ void copy_ucs2_to_clipboard(const ucs2_string& text)
 		return;
 	EmptyClipboard();
 
-	// convert newlines
+	//convert newlines
 	ucs2_string str;
 	str.reserve(text.size() + 1);
 	ucs2_string::const_iterator first = text.begin();
@@ -380,7 +380,7 @@ void copy_to_clipboard(const std::string& text)
 		return;
 	EmptyClipboard();
 
-	// convert newlines
+	//convert newlines
 	std::string str;
 	str.reserve(text.size());
 	std::string::const_iterator first = text.begin();
@@ -407,18 +407,65 @@ void copy_to_clipboard(const std::string& text)
 	CloseClipboard();
 }
 
+ucs2_string copy_ucs2_from_clipboard()
+{
+	if(!IsClipboardFormatAvailable(CF_UNICODETEXT))
+		return ucs2_string();
+	if(!OpenClipboard(NULL))
+		return ucs2_string();
+
+	HGLOBAL hglb = GetClipboardData(CF_UNICODETEXT);
+	if(hglb == NULL) {
+		CloseClipboard();
+		return ucs2_string();
+	}
+	Uint16 const * buffer = reinterpret_cast<Uint16 const *>(GlobalLock(hglb));
+	if(buffer == NULL) {
+		CloseClipboard();
+		return ucs2_string();
+	}
+	
+	//convert newlines
+	ucs2_string str;
+	while(*buffer != '\0') {
+		if(*buffer != '\r')
+			str.push_back(*buffer);
+		++buffer;
+	}
+	GlobalUnlock(hglb);
+	CloseClipboard();
+	return str;
+}
+
 std::string copy_from_clipboard()
 {
-	if(OpenClipboard(NULL)) {
-		const HANDLE data = GetClipboardData(CF_TEXT);
-		char* const buffer = reinterpret_cast<char*>(GlobalLock(data));
-		GlobalUnlock(data);
+	if(!IsClipboardFormatAvailable(CF_TEXT))
+		return "";
+	if(!OpenClipboard(NULL))
+		return "";
+	
+	HGLOBAL hglb = GetClipboardData(CF_TEXT);
+	if(hglb == NULL) {
 		CloseClipboard();
-
-		return buffer;
+		return "";
 	}
-
-	return "";
+	char const * buffer = reinterpret_cast<char*>(GlobalLock(hglb));
+	if(buffer == NULL) {
+		CloseClipboard();
+		return "";
+	}
+	
+	//convert newlines
+	std::string str;
+	while(*buffer != '\0') {
+		if(*buffer != '\r')
+			str.push_back(*buffer);
+		++buffer;
+	}
+	
+	GlobalUnlock(hglb);
+	CloseClipboard();
+	return str;
 }
 
 #endif
