@@ -89,8 +89,8 @@ battle_stats evaluate_battle_stats(
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,
 				std::vector<team>& teams,
-            const gamemap::location& attacker,
-            const gamemap::location& defender,
+            gamemap::location attacker,
+            gamemap::location defender,
             int attack_with,
             std::map<gamemap::location,unit>& units,
             const gamestatus& state,
