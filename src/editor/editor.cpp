@@ -139,9 +139,26 @@ void map_editor::edit_quit() {
 }
 
 void map_editor::edit_save_as() {
-	// TODO
-	gui::show_dialog(gui_, NULL, "",
-					 "Not implemented.", gui::OK_ONLY);
+	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
+	int res = 0;
+	int overwrite = 0;
+	do {
+		res = gui::show_dialog(gui_, NULL, "", "Save As ", gui::OK_CANCEL, NULL,NULL,"",&input_name);
+					   
+		if (res == 0) {
+			if (file_exists(input_name)) {
+				overwrite = gui::show_dialog(gui_,NULL,"",
+							     "Map already exists.  Do you want to overwrite it?",gui::YES_NO);
+			}
+			else
+				overwrite = 0;
+		}
+	} while (res == 0 && overwrite != 0);
+
+	if (res == 0) {
+		set_file_to_save_as(input_name);
+		save_map("", true);
+	}
 }
 
 void map_editor::edit_set_start_pos() {
