@@ -1420,7 +1420,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 		try {
 			recorder.save_game(gameinfo_,label,snapshot,state_of_game_.starting_pos);
 			if(dialog_type != gui::NULL_DIALOG) {
-				gui::show_dialog(gui_,NULL,_("Error"),_("The game has been saved"), gui::OK_ONLY);
+				gui::show_dialog(gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 			}
 		} catch(gamestatus::save_game_failed& e) {
 			gui::show_dialog(gui_,NULL,"",_("The game could not be saved"),gui::MESSAGE);

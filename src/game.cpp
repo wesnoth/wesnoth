@@ -310,6 +310,8 @@ int play_game(int argc, char** argv)
 {
 	const int start_ticks = SDL_GetTicks();
 
+	bool use_sound = true;
+
 	//parse arguments that shouldn't require a display device
 	int arg;
 	for(arg = 1; arg != argc; ++arg) {
@@ -338,6 +340,8 @@ int play_game(int argc, char** argv)
  			std::cout <<  game_config::path
  			          << "\n";
  			return 0;
+		} else if(val == "--nosound") {
+			use_sound = false;
 		}
 	}
 
@@ -351,7 +355,7 @@ int play_game(int argc, char** argv)
 	std::cerr << "initialized video...\n";
 	const font::manager font_manager;
 
-	const sound::manager sound_manager;
+	const sound::manager sound_manager(use_sound);
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
 	const events::event_context main_event_context;

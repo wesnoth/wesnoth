@@ -192,7 +192,6 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 	if (!title.empty()) {
 		title_area = draw_dialog_title(0,0,NULL,title);
 		title_area.w += border_size;
-		title_area.h += border_size;
 	}
 
 	SDL_Rect buttons_area = {0,0,0,0};

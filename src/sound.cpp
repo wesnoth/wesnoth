@@ -41,8 +41,12 @@ bool sound_off = false;
 
 namespace sound {
 
-manager::manager()
+manager::manager(bool sound_on)
 {
+	if(!sound_on) {
+		return;
+	}
+
 //sounds don't sound good on Windows unless the buffer size is 4k,
 //but this seems to cause crashes on other systems...
 #ifdef WIN32

@@ -18,7 +18,7 @@
 namespace sound {
 
 struct manager {
-	manager();
+	manager(bool sound_on);
 	~manager();
 };
 
