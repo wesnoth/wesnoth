@@ -105,6 +105,7 @@ void show_about(display& disp)
 	text.push_back("-   Andrew James Patterson (Kamahawk)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
 	text.push_back("-   James \"Sangel\" Barton");
+	text.push_back("-   Cedric Duval");
  	text.push_back("+ ");
  
  	text.push_back("+Music");
@@ -116,6 +117,7 @@ void show_about(display& disp)
  	text.push_back("+Scenario Designers");
  	text.push_back("-   David White (Sirp)");
  	text.push_back("-   Justin Zaun (jzaun)");
+	text.push)back("-   Benjamin Drieu");
  	text.push_back("+ ");
  
  	text.push_back("+Packagers");
