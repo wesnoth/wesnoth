@@ -981,7 +981,7 @@ bool will_heal(const gamemap::location& loc, int side, const std::vector<team>& 
 	get_adjacent_tiles(loc,adjacent);
 	for(int n = 0; n != 6; ++n) {
 		const unit_map::const_iterator u = units.find(adjacent[n]);
-		if(u != units.end() && u->second.hitpoints() < u->second.max_hitpoints()) {
+		if(u != units.end() && (u->second.hitpoints() < u->second.max_hitpoints() || u->second.poisoned())) {
 			const int unit_side = u->second.side();
 
 			//the healer won't heal an ally if there is a wounded unit on the same
