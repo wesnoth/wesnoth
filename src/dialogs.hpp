@@ -87,8 +87,6 @@ private:
 };
 
 void show_unit_description(display& disp, const gamemap& map, const unit& u);
-void show_unit_resistance(display& disp, const unit& u);
-void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u);
 
 }
 

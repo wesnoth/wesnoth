@@ -486,14 +486,21 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 
 void multiplayer_game_setup_dialog::start_game()
 {
+	std::cerr << "calling start_game()\n";
+	const network::manager net_manager;
+	const network::server_manager server_man(15000,server_);
+
 	turns_restorer_ = surface_restorer();
 	village_gold_restorer_ = surface_restorer();
 	xp_restorer_ = surface_restorer();
 	playernum_restorer_ = surface_restorer();
 	minimap_restorer_ = surface_restorer();
 
+	std::cerr << "loading connector...\n";
 	//Connector
 	mp_connect connector(disp_, name_entry_->text(), cfg_, units_data_, state_);
+
+	std::cerr << "done loading connector...\n";
 
 	const int turns = turns_slider_->value() < turns_slider_->max_value() ?
 		turns_slider_->value() : -1;
@@ -510,8 +517,6 @@ void multiplayer_game_setup_dialog::start_game()
 		return;
 	}
 
-	const network::manager net_manager;
-	const network::server_manager server_man(15000,server_);
 	name_entry_->set_focus(false);
 
 	//free up widget resources so they're not consumed while the game is on

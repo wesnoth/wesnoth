@@ -15,6 +15,7 @@
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "help.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "playturn.hpp"
@@ -808,101 +809,7 @@ void unit_preview_pane::process()
 
 void show_unit_description(display& disp, const gamemap& map, const unit& u)
 {
-	const std::string description = u.unit_description()
-	                                + "\n\n" + _("See Also...");
-
-	std::vector<std::string> options;
-
-	options.push_back(_("Terrain Modifiers"));
-	options.push_back(_("Resistance"));
-	options.push_back(_("Close Window"));
-
-	const surface profile(image::get_image(u.type().image_profile(),image::SCALED));
-
-	const int res = gui::show_dialog(disp, profile, u.type().language_name(),
-	                                 description,gui::MESSAGE, &options);
-	if(res == 0) {
-		show_unit_terrain_table(disp,map,u);
-	} else if(res == 1) {
-		show_unit_resistance(disp,u);
-	}
-}
-
-void show_unit_resistance(display& disp, const unit& u)
-{
-	std::vector<std::string> items;
-	items.push_back(_("Attack Type") + std::string(",") + _("Resistance"));
-	const std::map<std::string,std::string>& table = u.type().movement_type().damage_table();
-	for(std::map<std::string,std::string>::const_iterator i = table.begin(); i != table.end(); ++i) {
-		int resistance = 100 - atoi(i->second.c_str());
-
-		//if resistance is less than 0, display in red
-		const char prefix = resistance < 0 ? font::BAD_TEXT : font::NULL_MARKUP;
-
-		const std::string& weap = i->first;
-
-		std::stringstream str;
-		str << weap << "," << prefix << resistance << "%";
-		items.push_back(str.str());
-	}
-
-	const events::event_context dialog_events_context;
-	dialogs::unit_preview_pane unit_preview(disp,NULL,u);
-	std::vector<gui::preview_pane*> preview_panes;
-	preview_panes.push_back(&unit_preview);
-
-	gui::show_dialog(disp,NULL,
-	                 u.type().language_name(),
-					 _("Unit resistance table"),
-					 gui::MESSAGE,&items,&preview_panes);
-}
-
-void show_unit_terrain_table(display& disp, const gamemap& map, const unit& u)
-{
-	std::vector<std::string> items;
-	items.push_back(_("Terrain") + std::string(",") +
-	                _("Moves") + "," +
-					_("Defense"));
-
-	const unit_type& type = u.type();
-	const unit_movement_type& move_type = type.movement_type();
-	const std::vector<gamemap::TERRAIN>& terrains = map.get_terrain_precedence();
-	for(std::vector<gamemap::TERRAIN>::const_iterator t =
-	    terrains.begin(); t != terrains.end(); ++t) {
-
-		//exclude fog and shroud
-		if(*t == gamemap::FOGGED || *t == gamemap::VOID_TERRAIN) {
-			continue;
-		}
-
-		const terrain_type& info = map.get_terrain_info(*t);
-		if(!info.is_alias()) {
-			const std::string& name = map.terrain_name(*t);
-			const std::string& lang_name = name;
-			const int moves = move_type.movement_cost(map,*t);
-
-			std::stringstream str;
-			str << lang_name << ",";
-			if(moves < 100)
-				str << moves;
-			else
-				str << "--";
-
-			const int defense = 100 - move_type.defense_modifier(map,*t);
-			str << "," << defense << "%";
-
-			items.push_back(str.str());
-		}
-	}
-
-	const events::event_context dialog_events_context;
-	dialogs::unit_preview_pane unit_preview(disp,NULL,u);
-	std::vector<gui::preview_pane*> preview_panes;
-	preview_panes.push_back(&unit_preview);
-
-	gui::show_dialog(disp,NULL,u.type().language_name(),
-					 _("Terrain Modifiers"),
-					 gui::MESSAGE,&items,&preview_panes);
+	help::show_help(disp,"unit_" + u.type().id());
 }
 
 } //end namespace dialogs

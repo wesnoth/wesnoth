@@ -46,8 +46,6 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("zoomdefault",HOTKEY_ZOOM_DEFAULT));
 		m.insert(val("fullscreen",HOTKEY_FULLSCREEN));
 		m.insert(val("accelerated",HOTKEY_ACCELERATED));
-		m.insert(val("resistance",HOTKEY_ATTACK_RESISTANCE));
-		m.insert(val("terraintable",HOTKEY_TERRAIN_TABLE));
 		m.insert(val("describeunit",HOTKEY_UNIT_DESCRIPTION));
 		m.insert(val("renameunit",HOTKEY_RENAME_UNIT));
 		m.insert(val("save",HOTKEY_SAVE_GAME));
@@ -129,8 +127,6 @@ std::string command_to_description(const HOTKEY_COMMAND &command)
 	case HOTKEY_ZOOM_DEFAULT: return _("Default Zoom");
 	case HOTKEY_FULLSCREEN: return _("Fullscreen");
 	case HOTKEY_ACCELERATED: return _("Accelerated");
-	case HOTKEY_ATTACK_RESISTANCE: return _("Attack Resistance");
-	case HOTKEY_TERRAIN_TABLE: return _("Terrain Table");
 	case HOTKEY_UNIT_DESCRIPTION: return _("Unit Description");
 	case HOTKEY_RENAME_UNIT: return _("Rename Unit");
 	case HOTKEY_SAVE_GAME: return _("Save Game");
@@ -435,14 +431,6 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_REDO:
 			if(executor)
 				executor->redo();
-			break;
-		case HOTKEY_TERRAIN_TABLE:
-			if(executor)
-				executor->terrain_table();
-			break;
-		case HOTKEY_ATTACK_RESISTANCE:
-			if(executor)
-				executor->attack_resistance();
 			break;
 		case HOTKEY_UNIT_DESCRIPTION:
 			if(executor)

@@ -129,8 +129,6 @@ private:
 	virtual void end_unit_turn();
 	virtual void undo();
 	virtual void redo();
-	virtual void terrain_table();
-	virtual void attack_resistance();
 	virtual void unit_description();
 	virtual void rename_unit();
 	virtual void save_game();

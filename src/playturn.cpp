@@ -971,8 +971,6 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return !browse_ && !commands_disabled;
 
 	//commands we can only do if there is an active unit
-	case hotkey::HOTKEY_TERRAIN_TABLE:
-	case hotkey::HOTKEY_ATTACK_RESISTANCE:
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 		return current_unit() != units_.end();
 
@@ -1339,24 +1337,6 @@ void turn_info::redo()
 
 	undo_stack_.push_back(action);
 	redo_stack_.pop_back();
-}
-
-void turn_info::terrain_table()
-{
-	unit_map::const_iterator un = current_unit();
-
-	if(un != units_.end()) {
-		dialogs::show_unit_terrain_table(gui_,map_,un->second);
-	}
-}
-
-void turn_info::attack_resistance()
-{
-	const unit_map::const_iterator un = current_unit();
-	if(un != units_.end()) {
-		dialogs::show_unit_resistance(gui_,un->second);
-	}
-
 }
 
 void turn_info::unit_description()

@@ -153,6 +153,7 @@ manager::manager() : free_(true)
 #endif
 
 	if(SDLNet_Init() == -1) {
+		std::cerr << "could not initialize SDLNet; throwing error...\n";
 		throw error(SDL_GetError());
 	}
 
