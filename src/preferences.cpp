@@ -598,17 +598,17 @@ void show_preferences_dialog(display& disp)
 		if(redraw_all) {
 			restorer.cancel();
 			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
-			fullscreen_button.draw();
-			turbo_button.draw();
-			grid_button.draw();
-			floating_labels_button.draw();
-			close_button.draw();
-			resolution_button.draw();
-			turn_dialog_button.draw();
-			turn_bell_button.draw();
-			side_colours_button.draw();
-			colour_cursors_button.draw();
-			hotkeys_button.draw();
+			fullscreen_button.set_dirty();
+			turbo_button.set_dirty();
+			grid_button.set_dirty();
+			floating_labels_button.set_dirty();
+			close_button.set_dirty();
+			resolution_button.set_dirty();
+			turn_dialog_button.set_dirty();
+			turn_bell_button.set_dirty();
+			side_colours_button.set_dirty();
+			colour_cursors_button.set_dirty();
+			hotkeys_button.set_dirty();
 
 			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
 	                        music_rect.x,music_rect.y);

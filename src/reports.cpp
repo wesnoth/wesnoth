@@ -263,9 +263,11 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		const std::string& name = map.terrain_name(terrain);
 		const std::vector<std::string>& underlying_names = map.underlying_terrain_name(terrain);
 
-		str << translate_string(name);
+		const std::string& translated_name = translate_string(name);
 
-		if(underlying_names.size() != 1 || underlying_names.front() != name) {
+		str << translated_name;
+
+		if(underlying_names.size() != 1 || translate_string(underlying_names.front()) != translated_name) {
 			str << " (";
 			
 			for(std::vector<std::string>::const_iterator i = underlying_names.begin(); i != underlying_names.end(); ++i) {

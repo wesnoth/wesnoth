@@ -312,6 +312,10 @@ SOURCE=.\src\theme.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\titlescreen.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\tooltips.cpp
 # End Source File
 # Begin Source File
@@ -561,6 +565,10 @@ SOURCE=.\src\widgets\textbox.hpp
 # Begin Source File
 
 SOURCE=.\src\theme.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\titlescreen.hpp
 # End Source File
 # Begin Source File
 

@@ -131,6 +131,10 @@ public:
 		cancel_button_->draw();
 	}
 
+	void clear_widgets() {
+		cancel_button_.assign(NULL);
+	}
+
 	lobby::RESULT process() {
 		int mousex, mousey;
 		const bool button = SDL_GetMouseState(&mousex,&mousey)&SDL_BUTTON_LMASK;
@@ -429,6 +433,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		std::vector<std::string> messages;
 		config game_data;
 		const lobby::RESULT dialog_res = lobby::enter(disp,game_data,cfg,&waiter,messages);
+		waiter.clear_widgets();
+
 		if(waiter.status == wait_for_start::GAME_CANCELLED) {
 			gui::show_dialog(disp,NULL,"",string_table["game_cancelled"],
 			                 gui::OK_ONLY);
