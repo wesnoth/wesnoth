@@ -310,6 +310,14 @@ public:
 
 	//rebuild the dynamic terrain at the given location.
     void rebuild_terrain(const gamemap::location &location);
+	
+	//Add a location to highlight. Note that this has nothign to do with
+	//selecting hexes, it is pure highlighting.
+	void add_highlighted_loc(const gamemap::location &hex);
+
+	void clear_highlighted_locs(const gamemap::location &hex);
+
+	void remove_highlighted_loc(const gamemap::location &hex);
 
 private:
 	display(const display&);
@@ -441,6 +449,8 @@ private:
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;
+
+	std::set<gamemap::location> highlighted_locations_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

@@ -1310,6 +1310,9 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 	   loc == selectedHex_ && (un != units_.end())) {
 		image_type = image::BRIGHTENED;
 	}
+	else if (highlighted_locations_.find(loc) != highlighted_locations_.end()) {
+		image_type = image::BRIGHTENED;
+	}
 
 	scoped_sdl_surface surface(getTerrain(terrain,image_type,x,y));
 
@@ -2117,7 +2120,32 @@ void display::prune_chat_messages(bool remove_all)
 	}
 }
 
-
 void display::rebuild_terrain(const gamemap::location &loc) {
 	builder_.rebuild_terrain(loc);
+}
+
+void display::add_highlighted_loc(const gamemap::location &hex) {
+	// Only invalidate and insert if this is a new addition, for
+	// efficiency.
+	if (highlighted_locations_.find(hex) == highlighted_locations_.end()) {
+		highlighted_locations_.insert(hex);
+		invalidate(hex);
+	}
+}
+
+void display::clear_highlighted_locs(const gamemap::location &hex) {
+	for (std::set<gamemap::location>::const_iterator it = highlighted_locations_.begin();
+		 it != highlighted_locations_.end(); it++) {
+		invalidate(*it);
+	}
+	highlighted_locations_.clear();
+}
+
+void display::remove_highlighted_loc(const gamemap::location &hex) {
+	std::set<gamemap::location>::iterator it = highlighted_locations_.find(hex);
+	// Only invalidate and remove if the hex was found, for efficiency.
+	if (it != highlighted_locations_.end()) {
+		highlighted_locations_.erase(it);
+		invalidate(hex);
+	}
 }
