@@ -253,7 +253,8 @@ battle_stats evaluate_battle_stats(
 	}
 
 	static const std::string plague_string("plague");
-	res.attacker_plague = !d->second.type().not_living() && (attack.special() == plague_string);
+	res.attacker_plague = !d->second.type().not_living() && (attack.special() == plague_string)
+	                      && !map.is_village(defender);
 	res.defender_plague = false;
 
 	res.attack_name    = attack.name();
@@ -276,7 +277,7 @@ battle_stats evaluate_battle_stats(
 
 	res.nattacks = attack.num_attacks();
 	double best_defend_rating = 0.0;
-	int defend = -1;
+	int defend_with = -1;
 	res.ndefends = 0;
 	for(int defend_option = 0; defend_option != int(defender_attacks.size()); ++defend_option) {
 		if(defender_attacks[defend_option].range() == attack.range() &&
@@ -284,35 +285,36 @@ battle_stats evaluate_battle_stats(
 			const double rating = a->second.damage_against(defender_attacks[defend_option])
 			                      *defender_attacks[defend_option].num_attacks()
 				                  *defender_attacks[defend_option].defense_weight();
-			if(defend == -1 || rating > best_defend_rating) {
+			if(defend_with == -1 || rating > best_defend_rating) {
 				best_defend_rating = rating;
-				defend = defend_option;
+				defend_with = defend_option;
 			}
 		}
 	}
 
-	res.defend_with = defend;
+	res.defend_with = defend_with;
 
-	const bool counterattack = defend != -1;
+	const bool counterattack = defend_with != -1;
 
 	static const std::string drain_string("drain");
 	static const std::string magical_string("magical");
 
 	res.damage_attacker_takes = 0;
 	if(counterattack) {
-		if(defender_attacks[defend].special() == to_the_death_string) {
+		const attack_type& defend = defender_attacks[defend_with];
+		if(defend.special() == to_the_death_string) {
 			res.to_the_death = true;
 		}
 
 		//magical attacks always have a 70% chance to hit
-		if(defender_attacks[defend].special() == magical_string) {
+		if(defend.special() == magical_string) {
 			res.chance_to_hit_attacker = 70;
 		}
 
 		int percent = 0;
 
-		const int base_damage = defender_attacks[defend].damage();
-		const int resistance_modifier = a->second.damage_against(defender_attacks[defend]);
+		const int base_damage = defend.damage();
+		const int resistance_modifier = a->second.damage_against(defend);
 		
 		//res.damage_attacker_takes = (base_damage * (100+modifier))/100;
 
@@ -328,7 +330,7 @@ battle_stats evaluate_battle_stats(
 		if(include_strings && resist != 0) {
 			std::stringstream str_resist;
 
-			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << string_table[defender_attacks[defend].type()]
+			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs")) << " " << string_table[defend.type()]
 				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 			res.defend_calculations.push_back(str_resist.str());
 		}
@@ -393,29 +395,30 @@ battle_stats evaluate_battle_stats(
 			res.defend_calculations.push_back(str.str());
 		}
 
-		res.ndefends = defender_attacks[defend].num_attacks();
+		res.ndefends = defend.num_attacks();
 
-		res.defend_name    = defender_attacks[defend].name();
-		res.defend_type    = defender_attacks[defend].type();
+		res.defend_name    = defend.name();
+		res.defend_type    = defend.type();
 
 		if(include_strings) {
-			res.defend_special = defender_attacks[defend].special();
-			res.defend_icon = defender_attacks[defend].icon();
+			res.defend_special = defend.special();
+			res.defend_icon = defend.icon();
 		}
 
 		//if the defender drains, and the attacker is a living creature, then
 		//the defender will drain for half the damage it does
-		if(defender_attacks[defend].special() == drain_string && !a->second.type().not_living()) {
+		if(defend.special() == drain_string && !a->second.type().not_living()) {
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		} else {
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague = !a->second.type().not_living() && (defender_attacks[defend].special() == plague_string);
-		res.defender_slows = (defender_attacks[defend].special() == slow_string);
+		res.defender_plague = !a->second.type().not_living() && (defend.special() == plague_string)
+		                      && !map.is_village(attacker);
+		res.defender_slows = (defend.special() == slow_string);
 
 		static const std::string first_strike = "firststrike";
-		res.defender_strikes_first = defender_attacks[defend].special() == first_strike && attack.special() != first_strike;
+		res.defender_strikes_first = defend.special() == first_strike && attack.special() != first_strike;
 	}
 
 	if(attack.special() == magical_string)
@@ -695,8 +698,7 @@ void attack(display& gui, const gamemap& map,
 				}
 
 				//plague units make clones of themselves on the target hex
-				//units on villages that die cannot be plagued
-				if(stats.attacker_plague && !map.is_village(loc)) {
+				if(stats.attacker_plague) {
 					a = units.find(attacker_loc);
 					if(a != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(loc,a->second));
@@ -842,8 +844,7 @@ void attack(display& gui, const gamemap& map,
 				}
 
 				//plague units make clones of themselves on the target hex.
-				//units on villages that die cannot be plagued
-				if(stats.defender_plague && !map.is_village(loc)) {
+				if(stats.defender_plague) {
 					d = units.find(defender_loc);
 					if(d != units.end()) {
 						units.insert(std::pair<gamemap::location,unit>(loc,d->second));
