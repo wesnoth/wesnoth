@@ -22,7 +22,6 @@
 #include "log.hpp"
 #include "playlevel.hpp"
 #include "network.hpp"
-#include "hotkeys.hpp"
 
 #define LOG_NW lg::info(lg::network)
 
@@ -31,7 +30,7 @@ namespace {
 class network_game_manager
 {
 public:
-	// Add this to avoid stupid warnings with somme versions of GCC
+	// Add a constructor to avoid stupid warnings with some versions of GCC
 	network_game_manager() {};
 
 	~network_game_manager()
@@ -319,7 +318,6 @@ void start_server(display& disp, const config& game_config, game_data& data,
 	mp::chat chat;
 	config gamelist;
 	const preferences::display_manager disp_manager(&disp);
-	const hotkey::basic_handler key_handler(&disp);
 
 	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 }
@@ -329,7 +327,6 @@ void start_client(display& disp, const config& game_config, game_data& data,
 {
 	const network::manager net_manager;
 	const preferences::display_manager disp_manager(&disp);
-	const hotkey::basic_handler key_handler(&disp);
 
 	mp::chat chat;
 	config gamelist;

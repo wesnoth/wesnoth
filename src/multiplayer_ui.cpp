@@ -86,6 +86,8 @@ std::string chat::format_message(const msg& message)
 ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp),
 
+	hotkey_handler_(&disp),
+
 	game_config_(cfg),
 	chat_(c),
 	gamelist_(gamelist),

@@ -19,6 +19,7 @@
 #include "widgets/menu.hpp"
 #include "network.hpp"
 #include "config.hpp"
+#include "hotkeys.hpp"
 
 #include <deque>
 #include <string>
@@ -133,6 +134,9 @@ protected:
 	// Returns the current gamelist
 	config& gamelist() { return gamelist_; };
 private:
+	// Ensures standard hotkeys are coorectly handled
+	const hotkey::basic_handler hotkey_handler_;
+
 	// The main game configuration, as defined by loading the preprocessed
 	// WML files. Access using the game_config() method if necessary.
 	const config& game_config_;
