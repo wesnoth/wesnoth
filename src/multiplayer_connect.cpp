@@ -296,8 +296,7 @@ void mp_connect::lists_init()
 		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
 		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
 
-		if (!save_) 
-			player_leaders_.push_back(leader_list_manager(possible_sides, data_));
+		player_leaders_.push_back(leader_list_manager(possible_sides, data_));
 	}
 
 	std::string prefix;
@@ -435,7 +434,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 
 		//Player team
 		combos_team_.push_back(gui::combo(*disp_, player_teams_));
-		combos_team_.back().set_selected(side_num);
+		combos_team_.back().set_selected(combo_index_to_team(side_num));
 
 		//Player color
 		combos_color_.push_back(gui::combo(*disp_, player_colors_));
@@ -467,22 +466,20 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		
 	//Doing this after creating the combos, because growing vectors may
 	//move their elements in memory, and we need a stable pointer
-	if (!save_) {
-		for(sd = sides.first; sd != sides.second; ++sd) {
-			const int side_num = sd - sides.first;
-			const int spos = 60 * side_num;
+	for(sd = sides.first; sd != sides.second; ++sd) {
+		const int side_num = sd - sides.first;
+		const int spos = 60 * side_num;
 
-			scroll_pane_.add_widget(&player_numbers_[side_num], 10, 3 + spos);
-			scroll_pane_.add_widget(&combos_type_[side_num], 30, 5 + spos);
-			scroll_pane_.add_widget(&combos_race_[side_num], 145, 5 + spos);
-			scroll_pane_.add_widget(&combos_leader_[side_num], 145, 35 + spos);
-			scroll_pane_.add_widget(&combos_team_[side_num], 260, 5 + spos);
-			scroll_pane_.add_widget(&combos_color_[side_num], 375, 5 + spos);
-			scroll_pane_.add_widget(&sliders_gold_[side_num], 490, 5 + spos);
-			scroll_pane_.add_widget(&labels_gold_[side_num], 500 + sliders_gold_[side_num].width(), 5 + spos);
+		scroll_pane_.add_widget(&player_numbers_[side_num], 10, 3 + spos);
+		scroll_pane_.add_widget(&combos_type_[side_num], 30, 5 + spos);
+		scroll_pane_.add_widget(&combos_race_[side_num], 145, 5 + spos);
+		scroll_pane_.add_widget(&combos_leader_[side_num], 145, 35 + spos);
+		scroll_pane_.add_widget(&combos_team_[side_num], 260, 5 + spos);
+		scroll_pane_.add_widget(&combos_color_[side_num], 375, 5 + spos);
+		scroll_pane_.add_widget(&sliders_gold_[side_num], 490, 5 + spos);
+		scroll_pane_.add_widget(&labels_gold_[side_num], 500 + sliders_gold_[side_num].width(), 5 + spos);
 
-			player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
-		}
+		player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
 	}
 
 	std::cerr << "done set_area()\n";
@@ -677,8 +674,6 @@ lobby::RESULT mp_connect::process()
 
 		//Player leader
 		if (!save_ && combos_leader_[n].changed()) {
-			std::stringstream str;
-			str << (combos_team_[n].selected()+1);
 			side["type"] = player_leaders_[n].get_leader();
 			level_changed = true;
 		}
@@ -686,7 +681,7 @@ lobby::RESULT mp_connect::process()
 		//Player team
 		if (combos_team_[n].changed()) {
 			std::stringstream str;
-			str << (combos_team_[n].selected()+1);
+			str << (combo_index_to_team(combos_team_[n].selected())+1);
 			side["team_name"] = str.str();
 			level_changed = true;
 		}
@@ -1039,4 +1034,16 @@ bool mp_connect::is_full()
 	}
 
 	return full;
+}
+
+size_t mp_connect::combo_index_to_team(size_t index) const
+{
+	//in the case of loading a game, we may have the same team repeated multiple times in the list
+	//of team options. This function maps all such indexes to the same number, by using the first
+	//team of that name.
+	if(index >= player_teams_.size()) {
+		return 0;
+	}
+
+	return std::find(player_teams_.begin(),player_teams_.end(),player_teams_[index]) - player_teams_.begin();
 }

@@ -61,6 +61,8 @@ private:
 	void update_network();
 	bool is_full();
 
+	size_t combo_index_to_team(size_t index) const;
+
 	display *disp_;
 
 	std::string era_;
