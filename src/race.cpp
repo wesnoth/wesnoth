@@ -1,4 +1,5 @@
 #include "race.hpp"
+#include "replay.hpp"
 
 #include <cstdlib>
 
@@ -37,7 +38,7 @@ std::string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 		if(i == prefixes.end() || i->second.empty())
 			return res;
 	
-		const char c = i->second[rand()%i->second.size()];
+		const char c = i->second[get_random()%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
