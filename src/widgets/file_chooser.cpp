@@ -96,9 +96,9 @@ void file_chooser::process_event() {
 	// The menu does not implement focus functionality, so we fake
 	// it. We give the file list focus whenever the filename textbox
 	// does not have focus. Inflexible but easy solution.
-	if (!(mousex > location().x && (unsigned)mousex < location().x + width()
-		&& mousey > location().y 
-		&& (unsigned)mousey < location().y + height() - filename_textbox_.height())) {
+	SDL_Rect const &loc = location();
+	if (!(mousex > loc.x && (unsigned)mousex < loc.x + loc.w && mousey > loc.y 
+		&& (unsigned)mousey < loc.y + loc.h - filename_textbox_.height())) {
 		// Hmm, as I understand it this should happen automatically when
 		// the mouse is in the textbox again. However this is not the
 		// case so this is done explicitly here.
