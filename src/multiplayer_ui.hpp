@@ -19,6 +19,7 @@
 #include "widgets/menu.hpp"
 #include "network.hpp"
 #include "config.hpp"
+#include "preferences.hpp"
 #include "hotkeys.hpp"
 
 #include <deque>
@@ -136,6 +137,8 @@ protected:
 private:
 	// Ensures standard hotkeys are coorectly handled
 	const hotkey::basic_handler hotkey_handler_;
+
+	const preferences::display_manager disp_manager_;
 
 	// The main game configuration, as defined by loading the preprocessed
 	// WML files. Access using the game_config() method if necessary.

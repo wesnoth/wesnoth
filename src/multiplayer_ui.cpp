@@ -14,7 +14,6 @@
 #include "global.hpp"
 #include "multiplayer_ui.hpp"
 #include "network.hpp"
-#include "preferences.hpp"
 #include "game_config.hpp"
 #include "sound.hpp"
 
@@ -89,6 +88,7 @@ ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 	gui::widget(disp),
 
 	hotkey_handler_(&disp),
+	disp_manager_(&disp),
 
 	game_config_(cfg),
 	chat_(c),

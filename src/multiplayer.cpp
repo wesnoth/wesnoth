@@ -318,7 +318,6 @@ void start_server(display& disp, const config& game_config, game_data& data,
 {
 	mp::chat chat;
 	config gamelist;
-	const preferences::display_manager disp_manager(&disp);
 
 	enter_create_mode(disp, game_config, data, chat, gamelist, default_controller, is_server);
 }
@@ -327,7 +326,6 @@ void start_client(display& disp, const config& game_config, game_data& data,
 		const std::string host)
 {
 	const network::manager net_manager;
-	const preferences::display_manager disp_manager(&disp);
 
 	mp::chat chat;
 	config gamelist;
