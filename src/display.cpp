@@ -1144,7 +1144,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 
 		if(loc == selectedHex_ && highlight_ratio == 1.0) {
 			highlight_ratio = 1.5;
-			blend_with = rgb(255,255,255);
+			// blend_with = rgb(255,255,255);
 		}
 
 		if(u.max_hitpoints() > 0) {
@@ -1200,10 +1200,10 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		blend_with = it->second.type().alignment() == unit_type::CHAOTIC ?
 		                                        rgb(16,16,16) : rgb(255,255,255);
 		highlight_ratio = advancingAmount_;
-	} else if(it->second.poisoned() && highlight_ratio == 1.0) {
+	} else if(it->second.poisoned() /* && highlight_ratio == 1.0 */) {
 		//the unit is poisoned - draw with a green hue
 		blend_with = rgb(0,255,0);
-		highlight_ratio = 0.75;
+		//highlight_ratio *= 0.75;
 	}
 
 	if(loc != hiddenUnit_) {
@@ -1846,12 +1846,15 @@ void display::draw_unit(int x, int y, surface image,
 		surf.assign(flop_surface(surf));
 	}
 
+	if(blendto != 0) {
+		surf = blend_surface(surf, 0.25, blendto);
+	}
 	if(alpha > 1.0) {
-		surf.assign(brighten_image(surf,alpha));
-	} else if(alpha != 1.0 && blendto != 0) {
-		surf.assign(blend_surface(surf,1.0-alpha,blendto));
+		surf = brighten_image(surf,alpha);
+	//} else if(alpha != 1.0 && blendto != 0) {
+	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
 	} else if(alpha != 1.0) {
-		surf.assign(adjust_surface_alpha(surf,alpha));
+		surf = adjust_surface_alpha(surf,alpha);
 	}
 
 	if(surf == NULL) {
