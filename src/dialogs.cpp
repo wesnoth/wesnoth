@@ -592,6 +592,12 @@ void unit_preview_pane::set_selection(int index)
 	}
 }
 
+void unit_preview_pane::set_location(SDL_Rect const &rect)
+{
+	widget::set_location(rect);
+	register_rectangle(rect);
+}
+
 void unit_preview_pane::draw_contents()
 {
 	if(index_ < 0 || index_ >= int(units_->size())) {
@@ -725,7 +731,7 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-void unit_preview_pane::process()
+void unit_preview_pane::process_event()
 {
 	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(units_->size())) {
 
