@@ -7,7 +7,7 @@ update-po:
 		( cd $$dir && make $@ || exit $? ); \
 	done
 
-clean-local:
+distclean-local:
 	@for dir in $(SUBDIRS); do \
 		rm -f $$dir/Makefile.in.in ; \
 	done
