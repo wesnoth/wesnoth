@@ -962,7 +962,7 @@ void turn_info::unit_description()
 void turn_info::save_game()
 {
 	std::stringstream stream;
-	stream << state_of_game_.scenario << " " << string_table["turn"]
+	stream << translate_string(state_of_game_.scenario) << " " << string_table["turn"]
 	       << " " << status_.turn();
 	std::string label = stream.str();
 

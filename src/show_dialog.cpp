@@ -465,7 +465,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	//set the position of any tick boxes. they go right below the menu, slammed against
 	//the right side of the dialog
 	if(options != NULL) {
-		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height();
+		int options_y = text_widget_y + (use_textbox ? text_widget.height() : 0) + menu_.height() + button_height_padding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
 			check_buttons[i].set_x(xloc + total_width - padding_width - check_buttons[i].width());
 			check_buttons[i].set_y(options_y);

@@ -37,10 +37,13 @@ void advance_unit(const game_data& info,
 
 	const std::vector<std::string>& options = u->second.type().advances_to();
 
+	std::vector<std::string> lang_options;
+
 	std::vector<unit> sample_units;
 	for(std::vector<std::string>::const_iterator op = options.begin();
 	    op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(info,units,loc,*op));
+		lang_options.push_back(sample_units.back().type().language_name());
 	}
 
 	int res = 0;
@@ -53,7 +56,7 @@ void advance_unit(const game_data& info,
 
 		res = gui::show_dialog(gui,NULL,string_table["advance_unit_heading"],
 		                       string_table["advance_unit_message"],
-		                       gui::OK_ONLY, &options, &sample_units);
+		                       gui::OK_ONLY, &lang_options, &sample_units);
 	}
 
 	//when the unit advances, it fades to white, and then switches to the

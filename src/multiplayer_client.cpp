@@ -195,8 +195,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 
 			std::string login = preferences::login();
 			const int res = gui::show_dialog(disp,NULL,"",
-			                    "You must log in to this server",gui::OK_CANCEL,
-			                    NULL,NULL,"Login: ",&login);
+			                    string_table["must_login"],gui::OK_CANCEL,
+								NULL,NULL,string_table["login"] + ": ",&login);
 			if(res != 0 || login.empty()) {
 				return;
 			}

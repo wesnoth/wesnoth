@@ -281,17 +281,17 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 	//Title
 	font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-	                "Create Game",-1,(disp.y()-height)/2+5);
+	                string_table["create_new_game"],-1,(disp.y()-height)/2+5);
 
 	//Name Entry
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                "Name of game:",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
+	                string_table["name_of_game"] + ":",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
 	gui::textbox name_entry(disp,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]);
 	name_entry.set_location((disp.x()-width)/2+10,(disp.y()-height)/2+55);
 
 	//Maps
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-	                "Map to play:",(disp.x()-width)/2+(int)(width*0.4),
+	                string_table["map_to_play"] + ":",(disp.x()-width)/2+(int)(width*0.4),
 			(disp.y()-height)/2+83);
 	std::vector<std::string> options;
 	std::vector<config*>& levels = cfg.children["multiplayer"];
@@ -307,7 +307,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			options.push_back((**i)["name"]);
 	}
 
-	options.push_back("Load game...");
+	options.push_back(string_table["load_game"] + "...");
 	gui::menu maps_menu(disp,options);
 	maps_menu.set_loc((disp.x()-width)/2+(int)(width*0.4),(disp.y()-height)/2+100);
 
@@ -814,9 +814,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			rect.w = ((disp.x()-width)/2+width)-((disp.x()-width)/2+int(width*0.4)+maps_menu.width()+19)-10;
 			rect.h = 12;
 			SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
-			sprintf(buf,"Village Gold: %d", cur_villagegold);
+			sprintf(buf,": %d", cur_villagegold);
 			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-			                buf,rect.x,rect.y);
+			                string_table["village_gold"] + buf,rect.x,rect.y);
 			update_rect(rect);
 		}
 		
