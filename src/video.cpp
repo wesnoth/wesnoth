@@ -157,11 +157,11 @@ void update_rect(const SDL_Rect& rect_value)
 			rect.h = fb->h - rect.y;
 		}
 
-		if(size_t(rect.x) >= fb->w) {
+		if(rect.x >= fb->w) {
 			return;
 		}
 
-		if(size_t(rect.y) >= fb->h) {
+		if(rect.y >= fb->h) {
 			return;
 		}
 	}

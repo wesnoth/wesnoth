@@ -21,8 +21,6 @@
 
 struct move_cost_calculator
 {
-	enum MODE { NO_AVOID_ENEMIES, AVOID_ENEMIES };
-
 	move_cost_calculator(const unit& u, const gamemap& map,
 	                     const game_data& data,
 					 	 const unit_map& units,
@@ -416,6 +414,16 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 		double rating = tg->value/cur_route.move_left;
 
+		//for 'support' targets, they are rated much higher if we can get there within two turns,
+		//otherwise they are worthless to go for at all.
+		if(tg->type == target::SUPPORT) {
+			if(cur_route.move_left <= u->second.movement_left()*2) {
+				rating *= 10.0;
+			} else {
+				rating = 0.0;
+			}
+		}
+
 		//scouts do not like encountering enemies on their paths
 		if(u->second.type().usage() == "scout") {
 			std::set<location> enemies_guarding;
@@ -426,8 +434,13 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			} else {
 				//scouts who can travel on their route without coming in range of many enemies
 				//get a massive bonus, so that they can be processed first, and avoid getting
-				//bogged down in lots of massing
+				//bogged down in lots of grouping
 				rating *= 100;
+			}
+
+			//scouts also get a bonus for going after villages
+			if(tg->type == target::VILLAGE) {
+				rating *= lexical_cast_default<int>(current_team().ai_parameters()["scout_village_targetting"],3);
 			}
 		}
 
@@ -465,6 +478,16 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				               minimum(best_target->value/best_rating,100.0),calc);
 			double rating = best_target->value/cur_route.move_left;
 
+			//for 'support' targets, they are rated much higher if we can get there within two turns,
+			//otherwise they are worthless to go for at all.
+			if(best_target->type == target::SUPPORT) {
+				if(cur_route.move_left <= u->second.movement_left()*2) {
+					rating *= 10.0;
+				} else {
+					rating = 0.0;
+				}
+			}
+
 			//scouts do not like encountering enemies on their paths
 			if(u->second.type().usage() == "scout") {
 				std::set<location> enemies_guarding;
@@ -493,6 +516,36 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		assert(map_.on_board(ittg->loc));
 	}
 
+	//if our target is a position to support, then we
+	//see if we can move to a position in support of this target
+	if(best_target->type == target::SUPPORT) {
+		std::vector<location> locs;
+		access_points(srcdst,best->first,best_target->loc,locs);
+
+		if(locs.empty() == false) {
+			AI_DIAGNOSTIC("supporting unit at " + str_cast(best_target->loc.x+1) + "," + str_cast(best_target->loc.y+1));
+			location best_loc;
+			int best_defense = 0;
+			double best_vulnerability = 0.0;
+			int best_distance = 0;
+
+			for(std::vector<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+				const int distance = distance_between(*i,best_target->loc);
+				const int defense = best->second.defense_modifier(map_,map_.get_terrain(*i));
+				const double vulnerability = power_projection(*i,enemy_srcdst,enemy_dstsrc);
+				
+				if(best_loc.valid() == false || defense < best_defense || defense == best_defense && vulnerability < best_vulnerability) {
+					best_loc = *i;
+					best_defense = defense;
+					best_vulnerability = vulnerability;
+					best_distance = distance;
+				}
+			}
+
+			return std::pair<location,location>(best->first,best_loc);
+		}
+	}
+
 	std::map<gamemap::location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
@@ -513,7 +566,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 			
 			const double threat = power_projection(*i,enemy_srcdst,enemy_dstsrc);
 			if(threat >= double(best->second.hitpoints()) && threat > power_projection(*i,fullmove_srcdst,fullmove_dstsrc) ||
-			   unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
+			   i >= best_route.steps.end()-2 && unit_at_target != units_.end() && current_team().is_enemy(unit_at_target->second.side())) {
 				dangerous = true;
 				break;
 			}
@@ -642,4 +695,26 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	std::cerr  << "Could not find anywhere to move!\n";
 	return std::pair<location,location>();
+}
+
+void ai::access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out)
+{
+	const unit_map::const_iterator u_it = units_.find(u);
+	if(u_it == units_.end()) {
+		return;
+	}
+
+	unit_map single_unit;
+	single_unit.insert(*u_it);
+
+	const std::pair<move_map::const_iterator,move_map::const_iterator> locs = srcdst.equal_range(u);
+	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
+		const location& loc = i->second;
+		if(distance_between(loc,dst) <= u_it->second.total_movement()) {
+			const paths::route& rt = a_star_search(loc,dst,u_it->second.total_movement(),shortest_path_calculator(u_it->second,current_team(),units_,teams_,map_,state_));
+			if(rt.steps.empty() == false) {
+				out.push_back(loc);
+			}
+		}
+	}
 }

@@ -23,7 +23,7 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
 	  last_selection_(-1) {
 	// If the start file is not a file or directory, use the root.
-	if (!file_exists(chosen_file_) || !is_directory(current_dir_)) {
+	if(!file_exists(chosen_file_) && !is_directory(chosen_file_) || !is_directory(current_dir_)) {
 		current_dir_ = path_delim_;
 		chosen_file_ = current_dir_;
 	}
@@ -162,7 +162,11 @@ void file_chooser::entry_selected(const unsigned entry) {
 		}
 		else {
 			const int file_index = entry_index - dirs_in_current_dir_.size();
-			selected = files_in_current_dir_[file_index];
+			if(file_index >= 0 && size_t(file_index) < files_in_current_dir_.size()) {
+				selected = files_in_current_dir_[file_index];
+			} else {
+				return;
+			}
 		}
 		chosen_file_ = add_path(current_dir_, selected);
 		display_chosen_file();

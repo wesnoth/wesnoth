@@ -88,7 +88,7 @@ class dialog_button_action
 public:
 	virtual ~dialog_button_action() {}
 
-	enum RESULT { DELETE_ITEM, NO_EFFECT };
+	enum RESULT { DELETE_ITEM, NO_EFFECT, CLOSE_DIALOG };
 
 	virtual RESULT button_pressed(int menu_selection) = 0;
 };

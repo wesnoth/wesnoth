@@ -129,7 +129,8 @@ int main(int argc, char** argv)
 			mapdata = mapdata + "gggggggggggggggggggg\n";
 		}
 	}
-	std::srand(std::time(NULL));
+	
+	srand(time(NULL));
 	bool done = false;
 	gamestatus status(cfg, 0);
 	std::vector<team> teams;

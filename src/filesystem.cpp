@@ -189,7 +189,17 @@ std::string get_user_data_dir()
 {
 #ifdef _WIN32
 	_mkdir("userdata");
-	return "userdata";
+
+	char buf[256];
+	const char* const res = getcwd(buf,sizeof(buf));
+
+	if(res != NULL) {
+		std::string cur_path(res);
+		std::replace(cur_path.begin(),cur_path.end(),'\\','/');
+		return cur_path + "/userdata";
+	} else {
+		return "userdata";
+	}
 #else
 
 	static const char* const current_dir = ".";

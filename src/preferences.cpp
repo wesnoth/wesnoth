@@ -447,6 +447,16 @@ void set_message_private(bool value)
 	message_private_on = value;
 }
 
+bool show_tip_of_day()
+{
+	return prefs["tip_of_day"] != "no";
+}
+
+void set_show_tip_of_day(bool value)
+{
+	prefs["tip_of_day"] = value ? "yes" : "no";
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;

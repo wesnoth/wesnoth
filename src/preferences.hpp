@@ -94,6 +94,9 @@ namespace preferences {
 	bool message_private();
 	void set_message_private(bool value);
 
+	bool show_tip_of_day();
+	void set_show_tip_of_day(bool value);
+
 	std::string client_type();
 
 	void set_theme(const std::string& theme);

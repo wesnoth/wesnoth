@@ -458,8 +458,9 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(text_widget_width+left_padding+right_padding > total_width)
 		total_width = text_widget_width+left_padding+right_padding;
 
-	const int total_height = (total_image_height > text_size.h ?
-	                          total_image_height : text_size.h) +
+	const size_t text_and_image_height = total_image_height > text_size.h ? total_image_height : text_size.h;
+
+	const int total_height = text_and_image_height +
 	                         padding_height + menu_.height() +
 							 text_widget_height + check_button_height;
 
@@ -504,7 +505,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	draw_dialog(xloc,yloc,total_width,total_height,disp,title,dialog_style,&buttons_ptr,&restorer);
 
 	const int menu_xpos = xloc+total_image_width+left_padding+image_h_padding;
-	const int menu_ypos = yloc+top_padding+text_size.h+menu_hpadding;
+	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding;
 	if(menu_.height() > 0) {
 		menu_.set_loc(menu_xpos,menu_ypos);
 	}
@@ -534,8 +535,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 					xloc+total_image_width+left_padding+image_h_padding,
 					yloc+top_padding);
 
-	const int image_h = image != NULL ? image->h : 0;
-	const int text_widget_y = yloc+top_padding+image_h-6+text_size.h+menu_hpadding;
+	const int text_widget_y = yloc+top_padding+text_and_image_height-6+menu_hpadding;
 
 	if(use_textbox) {
 		const int text_widget_y_unpadded = text_widget_y + (text_widget_height - text_widget.location().h)/2;
@@ -553,7 +553,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(check_buttons.empty() == false) {
 		int options_y = text_widget_y + text_widget_height + menu_.height() + button_height_padding + menu_hpadding;
 		for(size_t i = 0; i != check_buttons.size(); ++i) {
-			check_buttons[i].set_location(xloc + total_width - padding_width - check_buttons[i].width(),options_y);
+			check_buttons[i].set_location(xloc + total_width - check_buttons[i].width() - ButtonHPadding,options_y);
 
 			options_y += check_buttons[i].height() + button_height_padding;
 
@@ -724,6 +724,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 					if(menu_.nitems() == 0) {
 						return -1;
 					}
+				} else if(res == dialog_button_action::CLOSE_DIALOG) {
+					return -1;
 				}
 			}
 		}

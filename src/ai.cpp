@@ -16,6 +16,7 @@
 #include "ai_move.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
+#include "game_events.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "pathfind.hpp"
@@ -49,7 +50,7 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 ai::ai(ai_interface::info& info)
 	   : ai_interface(info), disp_(info.disp), map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
 	     teams_(info.teams), team_num_(info.team_num), state_(info.state),
-		 consider_combat_(true)
+		 consider_combat_(true), threats_found_(false)
 {}
 
 bool ai::recruit_usage(const std::string& usage)
@@ -461,6 +462,72 @@ void ai::remove_unit_from_moves(const gamemap::location& loc, move_map& srcdst, 
 	}
 }
 
+namespace {
+
+//a structure to place an item we're trying to protect in
+struct protected_item {
+	protected_item(double value, int radius, const gamemap::location& loc) : value(value), radius(radius), loc(loc) {}
+	double value;
+	int radius;
+	gamemap::location loc;
+};
+
+}
+
+
+void ai::find_threats()
+{
+	if(threats_found_) {
+		return;
+	}
+
+	threats_found_ = true;
+
+	const config& parms = current_team().ai_parameters();
+
+	std::vector<protected_item> items;
+
+	//we want to protect our leader
+	const unit_map::const_iterator leader = find_leader(units_,team_num_);
+	if(leader != units_.end()) {
+		items.push_back(protected_item(lexical_cast_default<double>(parms["protect_leader"],1.0),lexical_cast_default<int>(parms["protect_leader_radius"],20),leader->first));
+	}
+
+	//look for directions to protect a specific location
+	const config::child_list& locations = parms.get_children("protect_location");
+	for(config::child_list::const_iterator i = locations.begin(); i != locations.end(); ++i) {
+		items.push_back(protected_item(lexical_cast_default<double>((**i)["value"],1.0),lexical_cast_default<int>((**i)["radius"],20),location(**i)));
+	}
+
+	//look for directions to protect a unit
+	const config::child_list& protected_units = parms.get_children("protect_unit");
+	for(config::child_list::const_iterator j = protected_units.begin(); j != protected_units.end(); ++j) {
+
+		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+			if(game_events::unit_matches_filter(u,**j)) {
+				items.push_back(protected_item(lexical_cast_default<double>((**j)["value"],1.0),lexical_cast_default<int>((**j)["radius"],20),u->first));
+			}
+		}
+	}
+
+	//iterate over all protected locations, and if enemy units are within the protection radius, set them
+	//as hostile targets
+	for(std::vector<protected_item>::const_iterator k = items.begin(); k != items.end(); ++k) {
+		const protected_item& item = *k;
+
+		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
+			if(current_team().is_enemy(u->second.side()) && distance_between(u->first,item.loc) < item.radius) {
+				add_target(target(u->first,item.value,target::THREAT));
+			}
+		}
+	}
+}
+
+void ai::add_target(const target& tgt)
+{
+	additional_targets_.push_back(tgt);
+}
+
 void ai::play_turn()
 {
 	consider_combat_ = true;
@@ -537,6 +604,8 @@ void ai::do_move()
 	if(leader != units_.end()) {
 		remove_unit_from_moves(leader->first,srcdst,dstsrc);
 	}
+
+	find_threats();
 
 	AI_DIAGNOSTIC("move/targetting phase");
 
@@ -633,7 +702,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 		//if this is the only unit in the planned attack, and the target
 		//is still alive, then also summon reinforcements
 		if(choice_it->movements.size() == 1 && units_.count(target_loc)) {
-			additional_targets_.push_back(target(target_loc,3.0,target::BATTLE_AID));
+			add_target(target(target_loc,3.0,target::BATTLE_AID));
 		}
 
 		return true;
@@ -649,7 +718,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 			if(already_done.count(loc) > 0)
 				continue;
 
-			additional_targets_.push_back(target(loc,3.0,target::BATTLE_AID));
+			add_target(target(loc,3.0,target::BATTLE_AID));
 			already_done.insert(loc);
 		}
 
@@ -825,8 +894,14 @@ bool ai::get_villages(std::map<gamemap::location,paths>& possible_moves, const m
 			leader_move = *i;
 		} else {
 			if(units_.count(i->first) == 0) {
-				move_unit(i->second,i->first,possible_moves);
+				const location loc = move_unit(i->second,i->first,possible_moves);
 				++moves_made;
+
+				const unit_map::const_iterator new_unit = units_.find(loc);
+
+				if(new_unit != units_.end() && power_projection(i->first,enemy_srcdst,enemy_dstsrc) >= new_unit->second.hitpoints()/4) {
+					add_target(target(new_unit->first,1.0,target::SUPPORT));
+				}
 			}
 		}
 	}

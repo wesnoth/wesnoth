@@ -302,7 +302,7 @@ public:
 	                          battle_stats& cur_stats, gamemap::TERRAIN terrain);
 
 	struct target {
-		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS };
+		enum TYPE { VILLAGE, LEADER, EXPLICIT, THREAT, BATTLE_AID, MASS, SUPPORT };
 
 		target(const location& pos, double val, TYPE target_type=VILLAGE) : loc(pos), value(val), type(target_type)
 		{}
@@ -344,6 +344,11 @@ protected:
 	virtual bool recruit_usage(const std::string& usage);
 
 	void remove_unit_from_moves(const gamemap::location& u, move_map& srcdst, move_map& dstsrc);
+
+	//a function which will find enemy units that threaten our valuable assets
+	void find_threats();
+
+	bool threats_found_;
 
 	//function which will calculate which movements should be made to get an optimal number of villages
 	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc,
@@ -475,6 +480,8 @@ protected:
 	bool consider_combat_;
 	std::vector<target> additional_targets_;
 
+	void add_target(const target& tgt);
+
 	//function which will analyze all the units that this side can recruit and rate
 	//their movement types. Ratings will be placed in 'unit_movement_scores_', with
 	//lower scores being better, and the lowest possible rating being '10'.
@@ -506,6 +513,11 @@ protected:
 	const location& nearest_keep(const location& loc) const;
 
 	mutable std::set<location> keeps_;
+
+	//function which, given a unit position, and a position the unit wants to
+	//get to in two turns, will return all possible positions the unit can
+	//move to, that will make the destination position accessible next turn
+	void access_points(const move_map& srcdst, const location& u, const location& dst, std::vector<location>& out);
 };
 
 #endif

@@ -352,9 +352,16 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	replay_network_sender replay_sender(recorder);
 
 	try {
+		//if a team is specified whose turn it is, it means we're loading a game
+		//instead of starting a fresh one
+		const bool loading_game = (*level)["playing_team"].empty() == false;
+		
 		gui.begin_game();
 		gui.adjust_colours(0,0,0);
-		game_events::fire("prestart");
+
+		if(!loading_game) {
+			game_events::fire("prestart");
+		}
 
 		std::cerr << "scrolling... " << (SDL_GetTicks() - ticks) << "\n";
 		if(first_human_team != -1) {
@@ -369,9 +376,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		bool replaying = (recorder.at_end() == false);
 	
-		//if a team is specified whose turn it is, it means we're loading a game
-		//instead of starting a fresh one
-		const bool loading_game = (*level)["playing_team"].empty() == false;
 		int first_player = atoi((*level)["playing_team"].c_str());
 		if(first_player < 0 || first_player >= int(teams.size())) {
 			first_player = 0;
@@ -391,12 +395,16 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
 				events::raise_draw_event();
-				game_events::fire("start");
+				if(!loading_game) {
+					game_events::fire("start");
+				}
+
 				gui.draw();
 				
 				for(std::vector<team>::iterator t = teams.begin(); t != teams.end(); ++t) {
 					clear_shroud(gui,status,map,gameinfo,units,teams,(t-teams.begin()));
 				}
+
 				gui.recalculate_minimap();
 			}
 
@@ -489,9 +497,12 @@ redo_turn:
 				if(!replaying && team_it->is_human()) {
 					std::cerr << "is human...\n";
 
-					if(first_time && team_it == teams.begin() &&
-					   level->values["objectives"].empty() == false) {
-						dialogs::show_objectives(gui,*level);
+					if(first_time && team_it == teams.begin()) {
+						if(level->values["objectives"].empty() == false) {
+							dialogs::show_objectives(gui,*level);
+						}
+
+						dialogs::tip_of_day(gui);
 					}
 
 					play_turn(gameinfo,state_of_game,status,game_config,
