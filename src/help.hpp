@@ -34,7 +34,7 @@ struct help_manager {
 
 struct section;
 
-typedef std::list<section *> section_list;
+typedef std::vector<section *> section_list;
 
 /// A topic contains a title, an id and some text.
 struct topic {
