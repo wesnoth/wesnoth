@@ -12,6 +12,7 @@
 # Modified by Yann Dirson for Battle for Wesnoth, for:
 # - WML files support
 # - proper behaviour when msgfmt is missing
+# - support for relative localedir
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -26,7 +27,9 @@ VPATH = @srcdir@
 prefix = @prefix@
 exec_prefix = @exec_prefix@
 datadir = @datadir@
-localedir = $(datadir)/locale
+DATADIR = @DATADIR@
+LOCALEDIR = @LOCALEDIR@
+localedir = @FULLLOCALEDIR@
 gettextsrcdir = $(datadir)/gettext/po
 
 INSTALL = @INSTALL@
