@@ -15,13 +15,23 @@ Version 0.8.11:
    for those that cannot be displayed in the default font (russian,
    bulgarian, greek)
  * language fixes and polishing (English)
- * fixed Delfador appearing in the water when turns run out in 'The Bay of Pearls'
- * fixed the talking tentacle in 'Temple of the Deep'
- * updated all uses of the 'old fireball' to use the 'new fireballs'
+ * fixed Delfador appearing in the water when turns run out in 'The Bay of Pearls' (HttT)
+ * updated maps for: 'Northern Winter' & 'Mountain Pass' (HttT)
+ * updated 'Evacuation' & 'Captured' (EI)
+ * fixed the talking tentacle in 'Temple of the Deep' (TroW)
  * fixed several units using non-existing sound files
+ * added sounds (existing) to several attacks
+ * updated all uses of the 'old fireball' to use the 'new fireballs'
+ * added new images and animations for all mages
  * updated the attack frame sequences for the Drakes
  * added attack icons for 'slam' and 'ballista'
  * switch to the new Merfolk and Nagas in TRoW and HttT
+ * obsoleted all instances of the old 'Mermen' & 'Naga' unit lines
+ * modified defense weight for Drake Slasher
+ * decreased hitpoints for Gate
+ * renamed 'Elvish Lady Parandra' 'Elvish Lady'
+ * mada all mages use staff (impact) as melee attack
+ * added support for directional attack animations
  * fixed slovene being wrongly localized as sl_SL insteof sl_SI
  * fixed zipios support so that user campaigns custom images and sounds can be loaded
  * fixed locale-dependent numeric input/output bug,
@@ -30,9 +40,9 @@ Version 0.8.11:
  * use fixed-point arithmetics in critical functions, so that wesnoth
    can reasonably run on an FPU-less machine (eg. ipaq PDA)
  * fixed the width of 'HP' and 'XP' in the right side panel
+ * fixed some multiplayer connect bugs
  * fixed the AI not going through the no-ZoC of lv0 units when it should have
- * obsoleted all instances of the old 'Mermen' & 'Naga' unit lines
- * updated maps for: 'Northern Winter' & 'Mountain Pass' 
+ * code cleanups and bug fixes
 
 Version 0.8.10:
  * user interface tweaks
