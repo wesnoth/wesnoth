@@ -49,6 +49,7 @@ campaign_server::campaign_server(const std::string& cfgfile)
 void campaign_server::run()
 {
 	for(;;) {
+		SDL_Delay(1000);
 		try {
 			network::process_send_queue();
 
