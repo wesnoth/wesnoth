@@ -150,7 +150,6 @@ int main()
 					//of the sender, and forward it to all players in the lobby
 					config* const message = data.child("message");
 					if(message != NULL) {
-						std::cerr << "received message: " << data.write() << "\n";
 						const player_map::const_iterator p = players.find(sock);
 						assert(p != players.end());
 						(*message)["sender"] = p->second.name();
@@ -190,8 +189,6 @@ int main()
 						//record the new level data, and send to all players
 						//who are in the game
 						g->level() = data;
-
-						std::cerr << "registered game: " << data.write() << "\n";
 					}
 
 					const string_map::const_iterator side =
