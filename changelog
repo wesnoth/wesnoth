@@ -4,7 +4,11 @@ CVS HEAD:
  * graphics improvements: 
    * bridge, ice, castle floor, grassland
    * unit images and attack animations
+   * Haldric, Burin, Edmond
+   * The Green Isle map (The Rise of Wesnoth)
  * in-game help updates and enhancements
+ * scenario balancing for 'Heir to the Throne' campaign
+   * Crossroads
  * scenario balancing for 'The Eastern Invasion' campaign
    * Weldyn under Attack
    * Northern Outpost
@@ -72,11 +76,14 @@ CVS HEAD:
  * fixed female units lacking gender attribute
  * fixed wmlxgettext bugs
  * fixed window not always refreshing on resizing
+ * fixed network threading bugs
  * added specifying the maximum lenght of the text widget in show_dialog
  * added displaying help strings in smaller font if they don't fit in the screen
+ * 320x240 resolution with USE_TINY_GUI
  * switched networking code to new logging system
  * improved 'Out of Sync' detection
  * image and data-file cleanups
+ * improved network threading
  * code cleanups
 
 Version 0.8.6:
