@@ -1031,7 +1031,7 @@ bool clear_shroud_loc(const gamemap& map, team& tm,
 
 //returns true iff some shroud is cleared
 //returns true/false in seen_unit if new units has/has not been seen
-//if known_units is NULL, seen_unit can be NULL, seen_unit is undefined
+//if known_units is NULL, seen_unit can be NULL and seen_unit is undefined
 bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team,
@@ -1056,7 +1056,7 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
 		if(units.count(*it)) {
-			if(known_units == NULL) {
+			if(seen_unit == NULL) {
 				static const std::string sighted("sighted");
 				game_events::fire(sighted,*it,loc);
 			} else if(known_units->count(*it) == 0) {
@@ -1066,8 +1066,8 @@ bool clear_shroud_unit(const gamemap& map, const game_data& gamedata,
 		}
 	}
 
-	if(known_units != NULL) {
-		seen_unit = false;
+	if(seen_unit != NULL) {
+		*seen_unit = false;
 	}
 	return res;
 }
@@ -1181,7 +1181,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 				
 				bool res;
 
-				should_clear_stack = 
+				should_clear_stack |= 
 					clear_shroud_unit(map,gamedata,units,*step,teams,
 				   	ui->second.side()-1,&seen_units,&res);
 				units.erase(*step);
