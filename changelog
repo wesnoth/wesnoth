@@ -1,7 +1,7 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (22 scenarios)
  * improved user interface theme
- * new and improved graphics: signpost, mountains, grassland, attack icons and frames
+ * new and improved graphics: signpost, mountains, grassland, attack icons and frames, maps
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
    * Peasant Revolt
@@ -65,6 +65,8 @@ CVS HEAD:
  * fixed victory conditions in 'The Siege of Barag Gor'
  * fixed attack animation not being complete
  * fixed absence of animation when units without attack frame attack
+ * fixed obsolete Heavy Infantry unit still used in multiplayer
+ * fixed a bug where, in some windowing environments, the colour cursor may not reappear when the user re-enters a Wesnoth window
  * small fixes to unit display in help browser
  * deleted duplicate battleworld.cg
  * moved deaths.cfg from data/ to data/scenarios/Heir_To_The_Throne/
