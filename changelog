@@ -19,6 +19,9 @@ CVS HEAD:
  * Mage stats changed: hitpoints increased to 24, ranged attack does now 6-3 (magic), 60 experience needed to advance
  * reduced movement for Arch Mage and Great Mage to 4
  * Dwarvish Lord changes: renamed 'tomahawk' to 'hatchet', removed leadership, increased resistance against blade, piercing and impact
+ * Necromancer changed to 'human' (movement_type is now 'smallfoot'), experience needed to advance increased to 80
+ * Lich experience needed to advance increased to 250.
+ * 'Ancient Lich' Melee damage decreased to 8-4
  * new scenarios for 'Heir to the Throne' campaign:
    * North Elves
  * scenario balancing for 'Heir to the Throne' campaign:
@@ -65,6 +68,7 @@ CVS HEAD:
    * danish
    * dutch
    * french
+   * spanish
  * internationalization string fixes
  * made make_translation and merge_translations compile
  * fixed "Computer vs Computer" not in string_table (#7295)
@@ -86,7 +90,6 @@ CVS HEAD:
  * pressing space really ends turn for a unit (#7311)
  * menu arrows are disabled when we are on top or in the bottom of menu (#7389)
  * allow scrolling to fogged zones clicking the minimap 
- * fixed clicking on the mini map to lose focus on your unit (#7307)
  * fixed pressing 'n' (next unit) returning to same unit (#7308)
  * fixed player being able to see enemy unit list on enemy turn (#7312)
  * fixed unit list not showing data in correct columns for units without name (#7313)
@@ -99,6 +102,7 @@ CVS HEAD:
  * fixed problem with saving at the end of the scenario pointing to the previous scenario
  * fixed problem with units having goto orders at the beginning of scenarios
  * fixed seeing footprints of other team's units
+ * fixed clicking on minimap losing focus on your unit (#7402)
  * fixed problem with old units being displayed in status bar
  * fixed bug where capturing a village with a leader would not change the village to your side
  * fixed bug where scenario objectives in loaded games would sometimes have weird boxes on the end
@@ -114,6 +118,10 @@ CVS HEAD:
  * fixed Wraith appearing squashed in the panel (#7185)
  * fixed WML parser bugs
  * fixed misspelled 'The Siege of Elensefar' scenario filename 
+ * fixed visualization problems with in fmunoz & ettin's names in Credits
+ * fixed strange text handling in intro (#7418)
+ * fixed Pikeman advanceto typo (#7337)
+ * fixed client connecting forever after a client disconnection (#7195)
  * many network and wesnothd code fixes and changes to make it a bit more stable
  * moved network code to mp_connect
  * autotools: 
