@@ -1,14 +1,13 @@
 CVS HEAD:
- * added dir for user created campaigns
  * help browser, hotkey is <F1>
  * new tabbed preferences dialog
- * basic clipboard functionality
- * improved and added new graphics: unit animations, healing animations, tent, forests
+ * basic clipboard functionality, does not yet work on all platforms
+ * improved and added new graphics: unit animations, healing animations, tent, forest
  * traits removed from treefolk (Woses)
  * treefolk piercing, impact and cold resistance increased
  * Wose renamed to Elder Wose, Sapling Wose renamed to Wose
  * Wose hitpoints and melee damage increased
- * Reduced cost for Drake Burner, Drake Fighter, Drake Mage and Drake Slave
+ * reduced cost for Drake Burner, Drake Fighter, Drake Mage and Drake Slave
  * new units
    * Drake Beak
    * Drake Worker
@@ -38,7 +37,9 @@ CVS HEAD:
  * language fixes and polishing (english)
  * translation updates:
    * catalan
+   * dutch
    * german
+   * italian
    * spanish
  * editor improvements:
    * added some command line flags, such as --datadir
@@ -67,9 +68,11 @@ CVS HEAD:
  * relocated 'The Dark Hordes' maps in they own subdir, and gave them an explicit names
  * relocated multiplayer maps in they own subdir, and gave them an explicit names
  * relocated tutorial maps in they own subdir, and gave them an explicit names
+ * added dir for user created campaigns
  * added basic statistics output to wesnothd
  * changed HttT maps to use encampments
  * removed unused maps
+ * libpng checks for configure
  * changed the RGB to Grayscale function to use a more correct formula.
 
 Version 0.7.9:
