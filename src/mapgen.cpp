@@ -40,7 +40,7 @@ config random_generate_scenario(const std::string& parms)
 	map_generator* const generator = get_map_generator(parameters.front());
 	if(generator == NULL) {
 		std::cerr << "could not find map generator '" << parameters.front() << "'\n";
-		return "";
+		return config();
 	}
 
 	parameters.erase(parameters.begin());
