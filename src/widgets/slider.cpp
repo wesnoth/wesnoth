@@ -34,10 +34,11 @@ slider::slider(display& d)
 {
 }
 
-void slider::update_location(SDL_Rect const &rect)
+void slider::set_location(SDL_Rect const &rect)
 {
-	SDL_Rect dst = { rect.x, rect.y, rect.w, image_->h };
-	bg_register(dst);
+	SDL_Rect r = rect;
+	r.h = image_->h;
+	widget::set_location(r);
 }
 
 void slider::set_min(int value)

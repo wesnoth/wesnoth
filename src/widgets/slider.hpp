@@ -37,8 +37,10 @@ public:
 	int max_value() const;
 	int min_value() const;
 
+	virtual void set_location(SDL_Rect const &rect);
+	using widget::set_location;
+
 protected:
-	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void draw_contents();
 

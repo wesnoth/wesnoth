@@ -16,7 +16,7 @@ class widget : public events::handler
 {
 public:
 	SDL_Rect const &location() const;
-	void set_location(SDL_Rect const &rect);
+	virtual void set_location(SDL_Rect const &rect);
 	void set_location(int x, int y);
 	void set_width(unsigned w);
 	void set_height(unsigned h);
