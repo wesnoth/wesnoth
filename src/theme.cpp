@@ -13,7 +13,7 @@
 #include <cstdlib>
 #include <sstream>
 
-#define LOG_DP lg::info(lg::display)
+#define LOG_DP LOG_STREAM(info, display)
 
 namespace {
 	const SDL_Rect empty_rect = {0,0,0,0};
@@ -455,7 +455,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if(current == resolutions.end()) {
 		if(!resolutions.empty())
-			lg::err(lg::display) << "No valid resolution found\n";
+			LOG_STREAM(err, display) << "No valid resolution found\n";
 		return false;
 	}
 

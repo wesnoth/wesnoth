@@ -17,8 +17,8 @@
 #include <map>
 #include <string>
 
-#define LOG_DP lg::info(lg::display)
-#define ERR_DP lg::err(lg::display)
+#define LOG_DP LOG_STREAM(info, display)
+#define ERR_DP LOG_STREAM(err, display)
 
 namespace {
 

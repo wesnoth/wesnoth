@@ -489,7 +489,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			if (m != NULL)
 				show_menu(m->items(),event.x,event.y,true);
 			else
-				lg::warn(lg::display) << "no context menu found...\n";
+				LOG_STREAM(warn, display) << "no context menu found...\n";
 		}
 	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
 		// clicked on a hex on the minimap? then initiate minimap scrolling
@@ -998,7 +998,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 }
 
 void turn_info::start_interactive_turn() {
-	lg::info(lg::engine) << "done gotos\n";
+	LOG_STREAM(info, engine) << "done gotos\n";
 	start_ncmd_ = recorder.ncommands();
 }
 
@@ -1346,7 +1346,7 @@ void turn_info::undo()
 		player_info* const player = state_of_game_.get_player(teams_[team_num_-1].save_id());
 
 		if(player == NULL) {
-			lg::err(lg::engine) << "trying to undo a recall for side " << team_num_
+			LOG_STREAM(err, engine) << "trying to undo a recall for side " << team_num_
 				<< ", which has no recall list!\n";
 		} else {
 			// Undo a recall action
@@ -1372,7 +1372,7 @@ void turn_info::undo()
 		const unit_map::iterator u = units_.find(route.front());
 		if(u == units_.end()) {
 			//this can actually happen if the scenario designer has abused the [allow_undo] command
-			lg::err(lg::engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
+			LOG_STREAM(err, engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
 			return;
 		}
 	
@@ -1434,7 +1434,7 @@ void turn_info::redo()
 	if(action.is_recall()) {
 		player_info *player=state_of_game_.get_player(teams_[team_num_-1].save_id());
 		if(!player) {
-			lg::err(lg::engine) << "trying to redo a recall for side " << team_num_
+			LOG_STREAM(err, engine) << "trying to redo a recall for side " << team_num_
 				<< ", which has no recall list!\n";
 		} else {
 			// Redo recall
@@ -1765,7 +1765,7 @@ void turn_info::recruit()
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
 		if(u_type == gameinfo_.unit_types.end()) {
-			lg::err(lg::engine) << "could not find unit '" << *it << "'";
+			LOG_STREAM(err, engine) << "could not find unit '" << *it << "'";
 			return;
 		}
 
@@ -1924,7 +1924,7 @@ void turn_info::recall()
 
 	player_info *player = state_of_game_.get_player(teams_[team_num_-1].save_id());
 	if(!player) {
-		lg::err(lg::engine) << "cannot recall a unit for side " << team_num_
+		LOG_STREAM(err, engine) << "cannot recall a unit for side " << team_num_
 			<< ", which has no recall list!\n";
 		return;
 	}
@@ -2675,7 +2675,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	if(cfg["side_drop"] != "") {
 		const size_t side = atoi(cfg["side_drop"].c_str())-1;
 		if(side >= teams_.size()) {
-			lg::err(lg::network) << "unknown side " << side << " is dropping game\n";
+			LOG_STREAM(err, network) << "unknown side " << side << " is dropping game\n";
 			throw network::error("");
 		}
 
@@ -2805,7 +2805,7 @@ void turn_info::enter_textbox()
 		do_command(textbox_.box->text());
 		break;
 	default:
-		lg::err(lg::display) << "unknown textbox mode\n";
+		LOG_STREAM(err, display) << "unknown textbox mode\n";
 	}
 
 	close_textbox();
@@ -2872,14 +2872,14 @@ void turn_info::tab_textbox()
 		break;
 	}
 	default:
-		lg::err(lg::display) << "unknown textbox mode\n";
+		LOG_STREAM(err, display) << "unknown textbox mode\n";
 	}
 }
 
 const unit_map& turn_info::visible_units() const
 {
 	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
-		lg::info(lg::engine) << "all units are visible...\n";
+		LOG_STREAM(info, engine) << "all units are visible...\n";
 		return units_;
 	}
 
@@ -2890,7 +2890,7 @@ const unit_map& turn_info::visible_units() const
 		}
 	}
 
-	lg::info(lg::engine) << "number of visible units: " << visible_units_.size() << "\n";
+	LOG_STREAM(info, engine) << "number of visible units: " << visible_units_.size() << "\n";
 
 	return visible_units_;
 }

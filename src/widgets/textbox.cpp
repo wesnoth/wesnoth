@@ -341,7 +341,7 @@ void textbox::handle_event(const SDL_Event& event)
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
-		lg::warn(lg::display) << "out-of-boundary selection\n";
+		LOG_STREAM(warn, display) << "out-of-boundary selection\n";
 		selstart_ = selend_ = -1;
 	}
 
@@ -463,7 +463,7 @@ void textbox::handle_event(const SDL_Event& event)
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 	   c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME)) {
 		if(character != 0)
-			lg::info(lg::display) << "Char: " << character << ", c = " << c << "\n";
+			LOG_STREAM(info, display) << "Char: " << character << ", c = " << c << "\n";
 	
 		if(event.key.keysym.mod & KMOD_CTRL) {
 			switch(c) {

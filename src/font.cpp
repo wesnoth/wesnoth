@@ -39,9 +39,9 @@
 #include <stack>
 #include <string>
 
-#define LOG_FT lg::info(lg::display)
-#define WRN_FT lg::warn(lg::display)
-#define ERR_FT lg::err(lg::display)
+#define LOG_FT LOG_STREAM(info, display)
+#define WRN_FT LOG_STREAM(warn, display)
+#define ERR_FT LOG_STREAM(err, display)
 
 //Deliberately breaking compilation with the original SDL_ttf library. Remove
 //the lines below to be able to do this anyway, however this is buggy and may

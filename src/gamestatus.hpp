@@ -116,7 +116,7 @@ struct game_state
 		std::map<std::string, player_info>::iterator found=players.find(id);
 
 		if(found==players.end()) {
-			lg::warn(lg::engine) << "player " << id << " does not exist." << std::endl;
+			LOG_STREAM(warn, engine) << "player " << id << " does not exist." << std::endl;
 			return NULL;
 		} else {
 			return &found->second;

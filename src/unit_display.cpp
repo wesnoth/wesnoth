@@ -15,7 +15,7 @@
 #include "util.hpp"
 #include "wassert.hpp"
 
-#define LOG_DP lg::info(lg::display)
+#define LOG_DP LOG_STREAM(info, display)
 
 namespace
 {
@@ -126,7 +126,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		}
 
 		if(image == NULL) {
-			lg::err(lg::display) << "failed to get image " << u.type().image_moving() << "\n";
+			LOG_STREAM(err, display) << "failed to get image " << u.type().image_moving() << "\n";
 			return;
 		}
 

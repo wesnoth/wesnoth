@@ -27,7 +27,7 @@
 #include <iostream>
 #include <set>
 
-#define LOG_AI lg::info(lg::ai)
+#define LOG_AI LOG_STREAM(info, ai)
 
 const int max_positions = 10000;
 
@@ -258,7 +258,7 @@ int ai::choose_weapon(const location& att, const location& def,
 		cur_stats = cache_itor->stats;
 
 		if(!(size_t(cache_itor->weapon) < itor->second.attacks().size())) {
-			lg::err(lg::ai) << "cached illegal weapon: " << cache_itor->weapon
+			LOG_STREAM(err, ai) << "cached illegal weapon: " << cache_itor->weapon
 			          << "/" << itor->second.attacks().size() << "\n";
 		}
 

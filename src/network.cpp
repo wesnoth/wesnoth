@@ -19,8 +19,8 @@
 
 #include <signal.h>
 
-#define LOG_NW lg::info(lg::network)
-#define WRN_NW lg::warn(lg::network)
+#define LOG_NW LOG_STREAM(info, network)
+#define WRN_NW LOG_STREAM(warn, network)
 // only warnings and not errors to avoid DoS by log flooding
 
 namespace {
@@ -168,7 +168,7 @@ manager::manager(size_t nthreads) : free_(true)
 #endif
 
 	if(SDLNet_Init() == -1) {
-		lg::err(lg::network) << "could not initialize SDLNet; throwing error...\n";
+		LOG_STREAM(err, network) << "could not initialize SDLNet; throwing error...\n";
 		throw error(SDL_GetError());
 	}
 

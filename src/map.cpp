@@ -27,8 +27,8 @@
 #include <iostream>
 #include <sstream>
 
-#define ERR_CF lg::err(lg::config)
-#define LOG_G lg::info(lg::general)
+#define ERR_CF LOG_STREAM(err, config)
+#define LOG_G LOG_STREAM(info, general)
 
 gamemap::location gamemap::location::null_location;
 

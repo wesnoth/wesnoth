@@ -22,7 +22,7 @@
 #include <iostream>
 #include <sstream>
 
-#define ERR_CF lg::err(lg::config)
+#define ERR_CF LOG_STREAM(err, config)
 
 //data compression. Compression is designed for network traffic.
 //assumptions compression is based on:

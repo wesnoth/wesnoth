@@ -25,8 +25,8 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 
-#define ERR_CF lg::err(lg::config)
-#define LOG_CF lg::info(lg::config)
+#define ERR_CF LOG_STREAM(err, config)
+#define LOG_CF LOG_STREAM(info, config)
 
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;

@@ -13,7 +13,7 @@
 #include <map>
 #include <vector>
 
-#define LOG_NW lg::info(lg::network)
+#define LOG_NW LOG_STREAM(info, network)
 
 namespace {
 

@@ -47,7 +47,7 @@
 #include <iostream>
 #include <iterator>
 
-#define LOG_NG lg::info(lg::engine)
+#define LOG_NG LOG_STREAM(info, engine)
 
 namespace {
 	int placing_score(const config& side, const gamemap& map, const gamemap::location& pos)

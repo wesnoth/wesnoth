@@ -30,9 +30,9 @@
 #include <sstream>
 #include <stack>
 
-#define ERR_CF lg::err(lg::config)
-#define WRN_CF lg::warn(lg::config)
-#define LOG_CF lg::info(lg::config)
+#define ERR_CF LOG_STREAM(err, config)
+#define WRN_CF LOG_STREAM(warn, config)
+#define LOG_CF LOG_STREAM(info, config)
 
 static const int max_recursion_levels = 100;
 

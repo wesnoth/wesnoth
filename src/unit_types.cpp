@@ -380,7 +380,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 
 	if(movement_costs != NULL) {
 		if(underlying.size() != 1) {
-			lg::err(lg::config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
 			return impassable;
 		}
 
@@ -439,7 +439,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN ter
 
 	if(defense != NULL) {
 		if(underlying.size() != 1) {
-			lg::err(lg::config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
+			LOG_STREAM(err, config) << "terrain '" << terrain << "' has " << underlying.size() << " underlying names - 0 expected\n";
 			return 100;
 		}
 
@@ -630,7 +630,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	else if(align == "neutral")
 		alignment_ = NEUTRAL;
 	else {
-		lg::err(lg::config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
+		LOG_STREAM(err, config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
 

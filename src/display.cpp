@@ -43,7 +43,7 @@
 #include <iostream>
 #include <sstream>
 
-#define ERR_DP lg::err(lg::display)
+#define ERR_DP LOG_STREAM(err, display)
 
 std::map<gamemap::location,fixed_t> display::debugHighlights_;
 
@@ -109,7 +109,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 			flag = teams_[i].flag();
 		}
 
-		lg::info(lg::display) << "Adding flag for team " << i << " from animation " << flag << "\n";
+		LOG_STREAM(info, display) << "Adding flag for team " << i << " from animation " << flag << "\n";
 		flags_.push_back(animated<image::locator>(flag));
 		flags_.back().start_animation(0, animated<image::locator>::INFINITE_CYCLES);
 	}

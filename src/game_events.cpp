@@ -39,10 +39,10 @@
 #include <set>
 #include <string>
 
-#define LOG_NG lg::info(lg::engine)
-#define WRN_NG lg::warn(lg::engine)
-#define ERR_NG lg::err(lg::engine)
-#define LOG_DP lg::info(lg::display)
+#define LOG_NG LOG_STREAM(info, engine)
+#define WRN_NG LOG_STREAM(warn, engine)
+#define ERR_NG LOG_STREAM(err, engine)
+#define LOG_DP LOG_STREAM(info, display)
 
 namespace game_events {
 

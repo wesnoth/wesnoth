@@ -23,7 +23,7 @@
 #include "variable.hpp"
 #include "SDL_types.h"
 
-#define ERR_GENERAL lg::err(lg::general)
+#define ERR_GENERAL LOG_STREAM(err, general)
 
 namespace {
 

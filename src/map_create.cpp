@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-#define ERR_CF lg::err(lg::config)
+#define ERR_CF LOG_STREAM(err, config)
 
 map_generator* create_map_generator(const std::string& name, const config* cfg)
 {

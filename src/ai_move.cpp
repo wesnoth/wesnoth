@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-#define LOG_AI lg::info(lg::ai)
+#define LOG_AI LOG_STREAM(info, ai)
 
 struct move_cost_calculator : cost_calculator
 {

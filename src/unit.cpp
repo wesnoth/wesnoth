@@ -31,7 +31,7 @@
 #include <iostream>
 #include <sstream>
 
-#define LOG_UT lg::info(lg::engine)
+#define LOG_UT LOG_STREAM(info, engine)
 
 namespace {
 	const std::string ModificationTypes[] = { "object", "trait", "advance" };

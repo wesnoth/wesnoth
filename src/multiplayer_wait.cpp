@@ -26,8 +26,8 @@
 #include "wml_separators.hpp"
 #include "serialization/string_utils.hpp"
 
-#define LOG_NW lg::info(lg::network)
-#define ERR_NW lg::err(lg::network)
+#define LOG_NW LOG_STREAM(info, network)
+#define ERR_NW LOG_STREAM(err, network)
 
 namespace {
 const SDL_Rect leader_pane_position = {-260,-370,260,370};

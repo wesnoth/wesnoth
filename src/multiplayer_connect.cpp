@@ -25,10 +25,10 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
-#define LOG_NW lg::info(lg::network)
-#define ERR_NW lg::err(lg::network)
-#define LOG_CF lg::info(lg::config)
-#define ERR_CF lg::err(lg::config)
+#define LOG_NW LOG_STREAM(info, network)
+#define ERR_NW LOG_STREAM(err, network)
+#define LOG_CF LOG_STREAM(info, config)
+#define ERR_CF LOG_STREAM(err, config)
 
 namespace {
 	const char* controller_names[] = {

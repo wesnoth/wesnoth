@@ -32,7 +32,7 @@
 #include <cstdlib>
 #include <map>
 
-#define ERR_G lg::err(lg::general)
+#define ERR_G LOG_STREAM(err, general)
 
 namespace {
 

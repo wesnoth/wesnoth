@@ -43,8 +43,8 @@
 #include <time.h>
 #include <vector>
 
-#define LOG_DP lg::info(lg::display)
-#define ERR_G  lg::err(lg::general)
+#define LOG_DP LOG_STREAM(info, display)
+#define ERR_G  LOG_STREAM(err, general)
 
 namespace dialogs
 {

@@ -25,7 +25,7 @@ class gamestatus;
 #include <cmath>
 #include <iostream>
 
-#define LOG_PF lg::info(lg::engine)
+#define LOG_PF LOG_STREAM(info, engine)
 
 typedef std::vector<gamemap::location> vector_location;
 typedef std::vector<a_star_node*> vector_a_star_node;

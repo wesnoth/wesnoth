@@ -39,8 +39,8 @@
 #include <set>
 #include <sstream>
 
-#define LOG_NW lg::info(lg::network)
-#define ERR_NW lg::err(lg::network)
+#define LOG_NW LOG_STREAM(info, network)
+#define ERR_NW LOG_STREAM(err, network)
 
 //functions to verify that the unit structure on both machines is identical
 namespace {

@@ -21,7 +21,7 @@
 #include "variable.hpp"
 #include "wassert.hpp"
 
-#define ERR_CF lg::err(lg::config)
+#define ERR_CF LOG_STREAM(err, config)
 
 config::config(const config& cfg)
 {

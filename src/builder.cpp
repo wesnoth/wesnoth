@@ -23,7 +23,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
-#define ERR_NG lg::err(lg::engine)
+#define ERR_NG LOG_STREAM(err, engine)
 
 namespace {
 
@@ -706,7 +706,7 @@ void terrain_builder::parse_config(const config &cfg)
 			if((**tc)["pos"].size()) {
 				int pos = atoi((**tc)["pos"].c_str());
 				if(anchors.find(pos) == anchors.end()) {
-					lg::warn(lg::engine) << "Invalid anchor!\n";
+					LOG_STREAM(warn, engine) << "Invalid anchor!\n";
 					continue;
 				}
 

@@ -63,7 +63,7 @@ BPath be_path;
 #include "scoped_resource.hpp"
 #include "util.hpp"
 
-#define LOG_G lg::info(lg::general)
+#define LOG_G LOG_STREAM(info, general)
 
 #ifdef USE_ZIPIOS
 #include <sstream>

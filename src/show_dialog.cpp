@@ -43,9 +43,9 @@
 #include <iostream>
 #include <numeric>
 
-#define ERR_DP lg::err(lg::display)
-#define LOG_DP lg::info(lg::display)
-#define ERR_G  lg::err(lg::general)
+#define ERR_DP LOG_STREAM(err, display)
+#define LOG_DP LOG_STREAM(info, display)
+#define ERR_G  LOG_STREAM(err, general)
 
 namespace {
 bool is_in_dialog = false;
@@ -858,7 +858,7 @@ int dialog_action_receive_network::do_action()
 	if(res_ != 0)
 		return CONNECTION_COMPLETE;
 	else if(network::current_transfer_stats().first != stats_.first) {
-		lg::info(lg::network) << "continuing connection...\n";
+		LOG_STREAM(info, network) << "continuing connection...\n";
 		return CONNECTION_CONTINUING;
 	} else
 		return CONTINUE_DIALOG;

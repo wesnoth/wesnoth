@@ -7,7 +7,7 @@
 #include "wassert.hpp"
 #include "serialization/string_utils.hpp"
 
-#define LOG_NG lg::info(lg::engine)
+#define LOG_NG LOG_STREAM(info, engine)
 
 cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('o'),
                                                             cfg_(cfg), width_(50), height_(50), village_density_(0),

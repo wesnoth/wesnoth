@@ -45,8 +45,8 @@
 #include <string>
 #include <sstream>
 
-#define LOG_NG lg::info(lg::engine)
-#define ERR_NW lg::err(lg::network)
+#define LOG_NG LOG_STREAM(info, engine)
+#define ERR_NW LOG_STREAM(err, network)
 
 struct castle_cost_calculator : cost_calculator
 {
@@ -1296,7 +1296,7 @@ void advance_unit(const game_data& info,
 
 	statistics::advance_unit(new_unit);
 	preferences::encountered_units().insert(new_unit.type().name());
-	lg::info(lg::config) << "Added '" << new_unit.type().name() << "' to encountered units\n";
+	LOG_STREAM(info, config) << "Added '" << new_unit.type().name() << "' to encountered units\n";
 
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));

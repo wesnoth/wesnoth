@@ -20,7 +20,7 @@ void wassert(bool expression)
 {
 	// crash if expression is false
 	if(! expression) {
-		lg::err(lg::general) << "Assertion failure" << "\n";
+		LOG_STREAM(err, general) << "Assertion failure" << "\n";
 		*reinterpret_cast<int*>(0) = 5;
 	}
 }

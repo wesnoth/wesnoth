@@ -20,8 +20,8 @@
 #include "util.hpp"
 #include "serialization/string_utils.hpp"
 
-#define ERR_CF lg::err(lg::config)
-#define LOG_NG lg::info(lg::engine)
+#define ERR_CF LOG_STREAM(err, config)
+#define LOG_NG LOG_STREAM(info, engine)
 
 config map_generator::create_scenario(const std::vector<std::string>& args)
 {

@@ -34,7 +34,7 @@
 
 #include <iostream>
 
-#define LOG_AI lg::info(lg::ai)
+#define LOG_AI LOG_STREAM(info, ai)
 
 ///a trivial ai that sits around doing absolutely nothing
 class idle_ai : public ai_interface {
@@ -195,7 +195,7 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	else if(name == "ai2")
 		return new ai2(info);
 	else if(name != "")
-		lg::err(lg::ai) << "AI not found: '" << name << "'\n";
+		LOG_STREAM(err, ai) << "AI not found: '" << name << "'\n";
 
 	return new ai(info);
 }
@@ -374,7 +374,7 @@ gamemap::location ai_interface::move_unit_partial(location from, location to, st
 	log_scope2(ai, "move_unit");
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
-		lg::err(lg::ai) << "Could not find unit at " << from.x << ", " << from.y << "\n";
+		LOG_STREAM(err, ai) << "Could not find unit at " << from.x << ", " << from.y << "\n";
 		wassert(false);
 		return location();
 	}
@@ -911,7 +911,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 		const location arrived_at = move_unit(from,to,possible_moves);
 		if(arrived_at != to) {
-			lg::warn(lg::ai) << "unit moving to attack has ended up unexpectedly at "
+			LOG_STREAM(warn, ai) << "unit moving to attack has ended up unexpectedly at "
 				<< (arrived_at.x + 1) << "," << (arrived_at.y + 1) << " when moving to "
 				<< (to.x + 1) << "," << (to.y + 1) << " moved from "
 				<< (from.x + 1) << "," << (from.y + 1) << "\n";
@@ -940,7 +940,7 @@ void ai_interface::attack_enemy(const location& u, const location& target, int w
 
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.stone()) {
-			lg::err(lg::ai) << "attempt to attack unit that is turned to stone\n";
+			LOG_STREAM(err, ai) << "attempt to attack unit that is turned to stone\n";
 			return;
 		}
 
@@ -1345,7 +1345,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		//we didn't arrive at our intended destination. We return true, meaning that
 		//the AI algorithm should be recalculated from the start.
 		if(arrived_at != move.second) {
-			lg::warn(lg::ai) << "didn't arrive at destination\n";
+			LOG_STREAM(warn, ai) << "didn't arrive at destination\n";
 			return true;
 		}
 

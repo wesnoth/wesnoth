@@ -27,7 +27,7 @@
 #include <cstdlib>
 #include <sstream>
 
-#define LOG_NG lg::info(lg::engine)
+#define LOG_NG LOG_STREAM(info, engine)
 
 namespace {
 	std::vector<team>* teams = NULL;
