@@ -21,6 +21,83 @@ AM_MAINTAINER_MODE
 AM_GNU_GETTEXT
 
 #######################################################################
+# Configuration options                                               #
+#######################################################################
+
+AC_ARG_ENABLE([debug],
+	      [  --enable-debug        Enable debug in wesnoth],
+	      [if test "x${enableval}" = "xyes" ; then
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
+	       fi])
+
+AC_ARG_ENABLE([static],
+              [  --enable-static       Enable static building of wesnoth],
+	      [static=$enableval],
+	      [static=no])
+
+AC_ARG_ENABLE([lite],
+	      [  --enable-lite         Enable lite version of wesnoth (without music)],
+	      [lite=$enableval],
+	      [lite=no])
+
+DATADIR=$PACKAGE
+AC_ARG_ENABLE([datadir-name],
+	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
+	      [case "${enableval}" in
+	       yes)
+			DATADIR="wesnoth-data"
+			;;
+		no)
+			;;
+		*)
+			DATADIR="${enableval}"
+			;;
+		esac])
+
+AC_SUBST([DATADIR])
+		
+AC_ARG_ENABLE([server],
+	      [  --enable-server       Enable compilation of server],
+	      [server=$enableval],
+	      [server=no])
+
+AC_ARG_ENABLE([editor],
+	      [  --enable-editor       Enable compilation of map editor],
+	      [editor=$enableval],
+	      [editor=no])
+
+AC_ARG_ENABLE([tools],
+	      [  --enable-tools        Enable compilation of tools for translators and artists],
+	      [tools=$enableval],
+	      [tools=no])
+
+AC_ARG_ENABLE([kde],
+	      [  --enable-kde          Enable installation of icon and KDE menu entry],
+	      [kde=$enableval],
+	      [kde=no])
+
+AC_ARG_ENABLE([gnome],
+	      [  --enable-gnome        Enable installation of icon and GNOME menu entry],
+	      [gnome=$enableval],
+	      [gnome=no])
+
+AC_ARG_ENABLE([wzip],
+	      [  --enable-wzip         Enable compilation of wesnoth_zip program],
+	      [wzip=$enableval],
+	      [wzip=no])
+
+AM_CONDITIONAL([STATIC], [test x$static = xyes])
+AM_CONDITIONAL([SERVER], [test x$server = xyes])
+AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
+AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
+AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
+AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
+AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
+AM_CONDITIONAL([GCC], [test x$GXX = xyes])
+AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
+AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
+
+#######################################################################
 # Checks for programs.                                                #
 #######################################################################
 
@@ -222,7 +299,22 @@ AC_SUBST([KDE_ICON])
 # Checks for libraries.                                               #
 #######################################################################
 
-SDL_LIBS=`$SDL_CONFIG --libs`
+# Use a modified version of ac_link so that libtool gets called
+AC_PATH_PROG([LTOOL], [libtool], [])
+if test "$static" = "yes" -a -n "$LTOOL"
+then
+	LDPREFIX="$LTOOL --mode=link"
+else
+	LDPREFIX=""
+fi
+AC_SUBST([LDPREFIX])
+
+#
+
+if test -n "$LDPREFIX" -a -r /usr/lib/libSDL.la
+then SDL_LIBS=/usr/lib/libSDL.la
+else SDL_LIBS=`$SDL_CONFIG --libs`
+fi
 OLD_LIBS=$LIBS
 LIBS="$LIBS $SDL_LIBS"
 
@@ -230,27 +322,40 @@ LIBS="$LIBS $SDL_LIBS"
 # it doesn't find it in FreeBSD
 # AC_CHECK_LIB([SDL], [SDL_Init])
 
+ac_link="$LDPREFIX $ac_link"
 AC_CHECK_LIB([SDL_image],
 	     [IMG_Load],
-	     [SDL_IMAGE_LIBS=-lSDL_image],
+	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_image.la
+then SDL_IMAGE_LIBS=/usr/lib/libSDL_image.la
+else SDL_IMAGE_LIBS=-lSDL_image
+fi],
 	     [AC_MSG_ERROR([*** SDL_image lib not found! Get SDL_image from
 http://www.libsdl.org/projects/SDL_image/index.html])])
 
 AC_CHECK_LIB([SDL_mixer],
 	     [Mix_OpenAudio],
-	     [SDL_MIXER_LIBS=-lSDL_mixer],
+	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_mixer.la
+then SDL_MIXER_LIBS=/usr/lib/libSDL_mixer.la
+else SDL_MIXER_LIBS=-lSDL_mixer
+fi],
 	     [AC_MSG_ERROR([*** SDL_mixer lib not found! Get SDL_mixer from
 http://www.libsdl.org/projects/SDL_mixer/index.html])])
 	     
 AC_CHECK_LIB([SDL_net],
 	     [SDLNet_Init],
-	     [SDL_NET_LIBS=-lSDL_net],
+	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_net.la
+then SDL_NET_LIBS=/usr/lib/libSDL_net.la
+else SDL_NET_LIBS=-lSDL_net
+fi],
 	     [AC_MSG_ERROR([*** SDL_net lib not found! Get SDL_net from
 http://www.libsdl.org/projects/SDL_net/index.html])])
 
 AC_CHECK_LIB([SDL_ttf],
 	     [TTF_OpenFont],
-	     [SDL_TTF_LIBS=-lSDL_ttf],
+	     [if test -n "$LDPREFIX" -a -r /usr/lib/libSDL_ttf.la
+then SDL_TTF_LIBS=/usr/lib/libSDL_ttf.la
+else SDL_TTF_LIBS=-lSDL_ttf
+fi],
 	     [AC_MSG_ERROR([*** SDL_ttf lib not found! Get SDL_ttf from
 http://www.libsdl.org/projects/SDL_ttf/index.html])])
 
@@ -331,83 +436,6 @@ AC_CHECK_FUNCS([floor socket strtoul])
 
 
 #######################################################################
-# Configuration options                                               #
-#######################################################################
-
-AC_ARG_ENABLE([debug],
-	      [  --enable-debug        Enable debug in wesnoth],
-	      [if test "x${enableval}" = "xyes" ; then
-                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
-	       fi])
-
-AC_ARG_ENABLE([static],
-              [  --enable-static       Enable static building of wesnoth],
-	      [static=$enableval],
-	      [static=no])
-
-AC_ARG_ENABLE([lite],
-	      [  --enable-lite         Enable lite version of wesnoth (without music)],
-	      [lite=$enableval],
-	      [lite=no])
-
-DATADIR=$PACKAGE
-AC_ARG_ENABLE([datadir-name],
-	      [  --datadir-name[[=dir]] Change name of data directory. Default with this option: wesnoth-data], 
-	      [case "${enableval}" in
-	       yes)
-			DATADIR="wesnoth-data"
-			;;
-		no)
-			;;
-		*)
-			DATADIR="${enableval}"
-			;;
-		esac])
-
-AC_SUBST([DATADIR])
-		
-AC_ARG_ENABLE([server],
-	      [  --enable-server       Enable compilation of server],
-	      [server=$enableval],
-	      [server=no])
-
-AC_ARG_ENABLE([editor],
-	      [  --enable-editor       Enable compilation of map editor],
-	      [editor=$enableval],
-	      [editor=no])
-
-AC_ARG_ENABLE([tools],
-	      [  --enable-tools        Enable compilation of tools for translators and artists],
-	      [tools=$enableval],
-	      [tools=no])
-
-AC_ARG_ENABLE([kde],
-	      [  --enable-kde          Enable installation of icon and KDE menu entry],
-	      [kde=$enableval],
-	      [kde=no])
-
-AC_ARG_ENABLE([gnome],
-	      [  --enable-gnome        Enable installation of icon and GNOME menu entry],
-	      [gnome=$enableval],
-	      [gnome=no])
-
-AC_ARG_ENABLE([wzip],
-	      [  --enable-wzip         Enable compilation of wesnoth_zip program],
-	      [wzip=$enableval],
-	      [wzip=no])
-
-AM_CONDITIONAL([STATIC], [test x$static = xyes])
-AM_CONDITIONAL([SERVER], [test x$server = xyes])
-AM_CONDITIONAL([EDITOR], [test x$editor = xyes])
-AM_CONDITIONAL([TOOLS], [test x$tools = xyes])
-AM_CONDITIONAL([KDE], [test x$kde = xyes && test x$kdefound = xyes])
-AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
-AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
-AM_CONDITIONAL([GCC], [test x$GXX = xyes])
-AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
-AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
-
-#######################################################################
 # Check for PNG support in SDL_image                                  #
 #######################################################################
 
@@ -422,6 +450,7 @@ CPPFLAGS="$CPPFLAGS $SDL_CFLAGS"
 CFLAGS="$CFLAGS $SDL_CFLAGS"
 LIBS="$LIBS $SDL_LIBS $SDL_IMAGE_LIBS"
 
+ac_link="$LDPREFIX $ac_link"
 AC_RUN_IFELSE([AC_LANG_SOURCE([
 #include <SDL_image.h>
 #include <stdlib.h>
@@ -464,6 +493,7 @@ if test "x$lite" = "xno"; then
         CFLAGS="$CFLAGS $SDL_CFLAGS"
 	LIBS="$LIBS $SDL_LIBS $SDL_MIXER_LIBS"
 
+	ac_link="$LDPREFIX $ac_link"
         AC_RUN_IFELSE([AC_LANG_SOURCE([
 	#include <SDL_mixer.h>
         #include <stdlib.h>

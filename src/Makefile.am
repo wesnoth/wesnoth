@@ -310,12 +310,19 @@ if GCC
     CXXFLAGS += -fno-omit-frame-pointer
 endif
 
-LIBS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
-	@SDL_TTF_LIBS@ @LIBINTL@
+CXXLD = $(LDPREFIX) $(CXX)
+
+
+LIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
+	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBINTL)
 
 if STATIC
-LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
--lSDL_mixer -lSDL_net -lSDL_ttf -lSDL -lpthread -ldl -laudio -lXt -lX11 -lXext \
--lSDL_image -lSDL_mixer -lSDL_net -lSDL_ttf -lstdc++ -lm -lSM -lICE -ljpeg \
--lpng -lz -lvorbisfile -lvorbis -logg -lsmpeg -lfreetype
+LDFLAGS += -all-static
 endif
+
+#if STATIC
+#LIBS += -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
+#-lSDL_mixer -lSDL_net -lSDL_ttf -lSDL -lpthread -ldl -laudio -lXt -lX11 -lXext \
+#-lSDL_image -lSDL_mixer -lSDL_net -lSDL_ttf -lstdc++ -lm -lSM -lICE -ljpeg \
+#-lpng -lz -lvorbisfile -lvorbis -logg -lsmpeg -lfreetype
+#endif
