@@ -267,6 +267,16 @@ void unit::new_level()
 	statusFlags_.clear();
 }
 
+void unit::set_resting(bool resting)
+{
+	resting_ = resting;	
+}
+
+bool get_resting() const
+{
+	return resting_;
+}
+
 int unit::hitpoints() const
 {
 	return hitpoints_;

@@ -62,6 +62,9 @@ public:
 	void end_turn();
 	void new_level();
 
+	void set_resting(bool resting);
+	bool get_resting() const;
+
 	bool gets_hit(int damage);
 	void heal();
 	void heal(int amount);
@@ -141,6 +144,7 @@ private:
 	int moves_;
 	bool facingLeft_;
 	int maxMovement_, backupMaxMovement_;
+	bool resting_;
 
 	std::string underlying_description_, description_;
 
