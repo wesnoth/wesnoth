@@ -282,7 +282,7 @@ int ai::choose_weapon(const location& att, const location& def,
 	
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		const battle_stats stats = evaluate_battle_stats(map_, att, def, a, units_,
-		                                                 state_, terrain, false);
+		                                                 state_, terrain);
 
 		//TODO: improve this rating formula!
 		const double rating =

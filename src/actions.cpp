@@ -32,6 +32,7 @@
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
+#include "widgets/menu.hpp"
 
 #include <cmath>
 #include <set>
@@ -184,15 +185,14 @@ gamemap::location under_leadership(const std::map<gamemap::location,unit>& units
 	return best_loc;
 }
 
-battle_stats evaluate_battle_stats(
-                   const gamemap& map,
-                   const gamemap::location& attacker,
-                   const gamemap::location& defender,
-				   int attack_with,
-				   std::map<gamemap::location,unit>& units,
-				   const gamestatus& state,
-				   gamemap::TERRAIN attacker_terrain_override,
-				   bool include_strings)
+battle_stats evaluate_battle_stats(const gamemap& map,
+                                   const gamemap::location& attacker,
+                                   const gamemap::location& defender,
+                                   int attack_with,
+                                   std::map<gamemap::location,unit>& units,
+                                   const gamestatus& state,
+                                   gamemap::TERRAIN attacker_terrain_override,
+                                   battle_stats_strings *strings)
 {
 	//if these are both genuine positions, work out the range
 	//combat is taking place at
@@ -202,8 +202,8 @@ battle_stats evaluate_battle_stats(
 
 	res.attack_with = attack_with;
 
-	if(include_strings)
-		res.defend_name = _("none");
+	if (strings)
+		strings->defend_name = _("none");
 
 	const std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	const std::map<gamemap::location,unit>::iterator d = units.find(defender);
@@ -221,23 +221,24 @@ battle_stats evaluate_battle_stats(
 	const std::vector<attack_type>& attacker_attacks = a->second.attacks();
 	const std::vector<attack_type>& defender_attacks = d->second.attacks();
 
-	assert(attack_with >= 0 && attack_with < int(attacker_attacks.size()));
+	assert((unsigned)attack_with < attacker_attacks.size());
 	const attack_type& attack = attacker_attacks[attack_with];
+	res.attacker_special = attack.special();
 
 	static const std::string charge_string("charge");
-	const bool charge = (attack.special() == charge_string);
+	const bool charge = res.attacker_special == charge_string;
 	const bool steadfast = d->second.type().steadfast();
 
 	bool backstab = false;
 
 	static const std::string to_the_death_string("berserk");
-	res.to_the_death = attack.special() == to_the_death_string;
+	res.to_the_death = res.attacker_special == to_the_death_string;
 	res.defender_strikes_first = false;
 
 	static const std::string backstab_string("backstab");
-	if(attack.special() == backstab_string) {
+	if (res.attacker_special == backstab_string) {
 		gamemap::location adj[6];
-		get_adjacent_tiles(defender,adj);
+		get_adjacent_tiles(defender, adj);
 		int i;
 		for(i = 0; i != 6; ++i) {
 			if(adj[i] == attacker)
@@ -254,26 +255,24 @@ battle_stats evaluate_battle_stats(
 	}
 
 	static const std::string plague_string("plague");
-	res.attacker_plague = !d->second.type().not_living() && (attack.special() == plague_string)
+	res.attacker_plague = !d->second.type().not_living() && (res.attacker_special == plague_string)
 	                      && !map.is_village(defender);
 	res.defender_plague = false;
 
-	res.attack_name    = attack.name();
-	res.attack_type    = attack.type();
-
 	static const std::string slow_string("slow");
-	res.attacker_slows = attack.special() == slow_string;
+	res.attacker_slows = res.attacker_special == slow_string;
 
-	if(include_strings) {
-		res.attack_special = attack.special();
-		res.attack_icon = attack.icon();
+	if (strings) {
+		strings->attack_name = egettext(attack.name().c_str());
+		strings->attack_type = egettext(attack.type().c_str());
+		strings->attack_special = egettext(res.attacker_special.c_str());
+		strings->attack_icon = attack.icon();
 
 		//don't show backstabbing unless it's actually happening
-		if(res.attack_special == "backstab" && !backstab)
-			res.attack_special = "";
+		if(attack.special() == backstab_string && !backstab)
+			strings->attack_special.clear();
 
-		res.range = (attack.range() == attack_type::SHORT_RANGE ?
-		             "Melee" : "Ranged");
+		strings->range = gettext(attack.range() == attack_type::SHORT_RANGE ? N_("melee") : N_("ranged"));
 	}
 
 	res.nattacks = attack.num_attacks();
@@ -299,16 +298,18 @@ battle_stats evaluate_battle_stats(
 
 	static const std::string drain_string("drain");
 	static const std::string magical_string("magical");
+	static const std::string EMPTY_COLUMN = std::string(1, COLUMN_SEPARATOR) + ' ' + COLUMN_SEPARATOR;
 
 	res.damage_attacker_takes = 0;
-	if(counterattack) {
+	if (counterattack) {
 		const attack_type& defend = defender_attacks[defend_with];
-		if(defend.special() == to_the_death_string) {
+		res.defender_special = defend.special();
+		if (res.defender_special == to_the_death_string) {
 			res.to_the_death = true;
 		}
 
 		//magical attacks always have a 70% chance to hit
-		if(defend.special() == magical_string) {
+		if (res.defender_special == magical_string) {
 			res.chance_to_hit_attacker = 70;
 		}
 
@@ -319,53 +320,51 @@ battle_stats evaluate_battle_stats(
 		
 		//res.damage_attacker_takes = (base_damage * (100+modifier))/100;
 
-		if(include_strings) {
+		if (strings) {
 			std::stringstream str_base;
-			str_base << _("base damage") << "," << base_damage << ",";
-			res.defend_calculations.push_back(str_base.str());
+			str_base << _("base damage") << COLUMN_SEPARATOR << base_damage;
+			strings->defend_calculations.push_back(str_base.str());
 		}
 
 		const int resist = resistance_modifier - 100;
 		percent += resist;
 
-		if(include_strings && resist != 0) {
+		if (strings && resist != 0) {
 			std::stringstream str_resist;
-
 			str_resist << gettext(resist < 0 ? N_("attacker resistance vs") : N_("attacker vulnerability vs"))
-				<< " " << gettext(defend.type().c_str())
-				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
-			res.defend_calculations.push_back(str_resist.str());
+			           << ' ' << gettext(defend.type().c_str()) << EMPTY_COLUMN
+			           << (resist > 0 ? "+" : "") << resist << '%';
+			strings->defend_calculations.push_back(str_resist.str());
 		}
 
 		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
 		percent += tod_modifier;
 
-		if(include_strings && tod_modifier != 0) {
+		if (strings && tod_modifier != 0) {
 			std::stringstream str_mod;
 			const time_of_day& tod = timeofday_at(state,units,d->first);
-			str_mod << tod.name << ", ,^"
-			        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
-			res.defend_calculations.push_back(str_mod.str());
+			str_mod << tod.name << EMPTY_COLUMN << (tod_modifier > 0 ? "+" : "") << tod_modifier << '%';
+			strings->defend_calculations.push_back(str_mod.str());
 		}
 
 		int leader_bonus = 0;
-		if(under_leadership(units,defender,&leader_bonus).valid()) {
+		if (under_leadership(units, defender, &leader_bonus).valid()) {
 			percent += leader_bonus;
 
-			if(include_strings) {
+			if (strings) {
 				std::stringstream str;
-				str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
-				res.defend_calculations.push_back(str.str());
+				str << _("leadership") << EMPTY_COLUMN << '+' << leader_bonus << '%';
+				strings->defend_calculations.push_back(str.str());
 			}
 		}
 
-		if(charge) {
+		if (charge) {
 			percent = (100+percent)*2 - 100;
 
-			if(include_strings) {
+			if (strings) {
 				std::stringstream str;
-				str << _("charge") << ", ," << _("Doubled");
-				res.defend_calculations.push_back(str.str());
+				str << _("charge") << EMPTY_COLUMN << _("Doubled");
+				strings->defend_calculations.push_back(str.str());
 			}
 		}
 
@@ -388,48 +387,48 @@ battle_stats evaluate_battle_stats(
 
 		res.damage_attacker_takes = maximum<int>(1,base_damage + difference);
 
-		if(include_strings) {
+		if (strings) {
 			percent *= is_negative;
 
 			std::stringstream str;
-			str << _("total damage") << "," << res.damage_attacker_takes
-				<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
-			res.defend_calculations.push_back(str.str());
+			str << _("total damage") << COLUMN_SEPARATOR << res.damage_attacker_takes
+			    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
+			    << "% (" << (difference >= 0 ? "+" : "") << difference << ')';
+			strings->defend_calculations.push_back(str.str());
 		}
 
 		res.ndefends = defend.num_attacks();
 
-		res.defend_name    = defend.name();
-		res.defend_type    = defend.type();
-
-		if(include_strings) {
-			res.defend_special = defend.special();
-			res.defend_icon = defend.icon();
+		if (strings) {
+			strings->defend_name = egettext(defend.name().c_str());
+			strings->defend_type = egettext(defend.type().c_str());
+			strings->defend_special = egettext(res.defender_special.c_str());
+			strings->defend_icon = defend.icon();
 		}
 
 		//if the defender drains, and the attacker is a living creature, then
 		//the defender will drain for half the damage it does
-		if(defend.special() == drain_string && !a->second.type().not_living()) {
+		if (res.defender_special == drain_string && !a->second.type().not_living()) {
 			res.amount_defender_drains = res.damage_attacker_takes/2;
 		} else {
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague = !a->second.type().not_living() && (defend.special() == plague_string)
+		res.defender_plague = !a->second.type().not_living() && (res.defender_special == plague_string)
 		                      && !map.is_village(attacker);
 		res.defender_slows = (defend.special() == slow_string);
 
 		static const std::string first_strike = "firststrike";
-		res.defender_strikes_first = defend.special() == first_strike && attack.special() != first_strike;
+		res.defender_strikes_first = res.defender_special == first_strike && res.attacker_special != first_strike;
 	}
 
-	if(attack.special() == magical_string)
+	if (res.attacker_special == magical_string)
 		res.chance_to_hit_defender = 70;
 
 	static const std::string marksman_string("marksman");
 
 	//offensive marksman attacks always have at least 60% chance to hit
-	if(res.chance_to_hit_defender < 60 && attack.special() == marksman_string)
+	if(res.chance_to_hit_defender < 60 && res.attacker_special == marksman_string)
 		res.chance_to_hit_defender = 60;
 
 	int percent = 0;
@@ -437,73 +436,70 @@ battle_stats evaluate_battle_stats(
 	const int base_damage = attack.damage();
 	const int resistance_modifier = d->second.damage_against(attack);
 
-	if(include_strings) {
+	if (strings) {
 		std::stringstream str_base;
-
-		str_base << _("base damage") << "," << base_damage << ",";
-		res.attack_calculations.push_back(str_base.str());
+		str_base << _("base damage") << COLUMN_SEPARATOR << base_damage << COLUMN_SEPARATOR;
+		strings->attack_calculations.push_back(str_base.str());
 	}
 
 	const int resist = resistance_modifier - 100;
 	percent += resist;
 
-	if(include_strings && resist != 0) {
+	if (strings && resist != 0) {
 		std::stringstream str_resist;
-
 		str_resist << gettext(resist < 0 ? N_("defender resistance vs") : N_("defender vulnerability vs"))
-			<< " " << gettext(attack.type().c_str())
-			<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
-		res.attack_calculations.push_back(str_resist.str());
+			<< ' ' << gettext(attack.type().c_str()) << EMPTY_COLUMN
+			<< (resist > 0 ? "+" : "") << resist << '%';
+		strings->attack_calculations.push_back(str_resist.str());
 	}
 
 	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
 
 	percent += tod_modifier;
 
-	if(include_strings && tod_modifier != 0) {
+	if (strings && tod_modifier != 0) {
 		std::stringstream str_mod;
 		const time_of_day& tod = timeofday_at(state,units,a->first);
-		str_mod << tod.name << ", ,^"
-		        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
-		res.attack_calculations.push_back(str_mod.str());
+		str_mod << tod.name << EMPTY_COLUMN << (tod_modifier > 0 ? "+" : "") << tod_modifier << '%';
+		strings->attack_calculations.push_back(str_mod.str());
 	}
 
 	int leader_bonus = 0;
-	if(under_leadership(units,attacker,&leader_bonus).valid()) {
+	if (under_leadership(units,attacker,&leader_bonus).valid()) {
 		percent += leader_bonus;
 		
-		if(include_strings) {
+		if(strings) {
 			std::stringstream str;
-			str << _("leadership") << ", ,^+" + str_cast(leader_bonus) + "%";
-			res.attack_calculations.push_back(str.str());
+			str << _("leadership") << EMPTY_COLUMN << '+' << leader_bonus << '%';
+			strings->attack_calculations.push_back(str.str());
 		}
 	}
 
-	if(charge) {
+	if (charge) {
 		percent = (100+percent)*2 - 100;
 
-		if(include_strings) {
+		if (strings) {
 			std::stringstream str;
-			str << _("charge") << ", ," << _("Doubled");
-			res.attack_calculations.push_back(str.str());
+			str << _("charge") << EMPTY_COLUMN << _("Doubled");
+			strings->attack_calculations.push_back(str.str());
 		}
 	}
 
-	if(backstab) {
+	if (backstab) {
 		percent = (100+percent)*2 - 100;
-		if(include_strings) {
+		if (strings) {
 			std::stringstream str;
-			str << _("backstab") << ", ," << _("Doubled");
-			res.attack_calculations.push_back(str.str());
+			str << _("backstab") << EMPTY_COLUMN << _("Doubled");
+			strings->attack_calculations.push_back(str.str());
 		}
 	}
 
-	if(steadfast) {
+	if (steadfast) {
 		percent = (100+percent)/2 - 100;
-		if(include_strings) {
+		if (strings) {
 			std::stringstream str;
-			str << _("steadfast") << ", ," << _("Halved");
-			res.attack_calculations.push_back(str.str());
+			str << _("steadfast") << EMPTY_COLUMN << _("Halved");
+			strings->attack_calculations.push_back(str.str());
 		}
 	}
 
@@ -525,13 +521,14 @@ battle_stats evaluate_battle_stats(
 	difference /= 100*is_negative;
 
 	res.damage_defender_takes = maximum<int>(1,base_damage + difference);
-	if(include_strings) {
+	if (strings) {
 		percent *= is_negative;
 
 		std::stringstream str;
-		str << _("total damage") << "," << res.damage_defender_takes
-			<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
-		res.attack_calculations.push_back(str.str());
+		str << _("total damage") << COLUMN_SEPARATOR << res.damage_defender_takes
+		    << COLUMN_SEPARATOR << (percent >= 0 ? "+" : "") << percent
+		    << "% (" << (difference >= 0 ? "+" : "") << difference << ')';
+		strings->attack_calculations.push_back(str.str());
 	}
 
 	//if the attacker drains, and the defender is a living creature, then
@@ -721,7 +718,7 @@ void attack(display& gui, const gamemap& map,
 				gui.update_display();
 				break;
 			} else if(hits) {
-				if(stats.attack_special == poison_string &&
+				if (stats.attacker_special == poison_string &&
 				   d->second.has_flag("poisoned") == false &&
 				   !d->second.type().not_living()) {
 					gui.float_label(d->first,_("poisoned"),255,0,0);
@@ -737,7 +734,7 @@ void attack(display& gui, const gamemap& map,
 
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if(stats.attack_special == stone_string) {
+				if (stats.attacker_special == stone_string) {
 					gui.float_label(d->first,_("stone"),255,0,0);
 					d->second.set_flag(stone_string);
 					stats.ndefends = 0;
@@ -867,7 +864,7 @@ void attack(display& gui, const gamemap& map,
 				recalculate_fog(map,state,info,units,teams,attacker_side-1);
 				break;
 			} else if(hits) {
-				if(stats.defend_special == poison_string &&
+				if (stats.defender_special == poison_string &&
 				   a->second.has_flag("poisoned") == false &&
 				   !a->second.type().not_living()) {
 					gui.float_label(a->first,_("poisoned"),255,0,0);
@@ -884,7 +881,7 @@ void attack(display& gui, const gamemap& map,
 
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
-				if(stats.defend_special == stone_string) {
+				if (stats.defender_special == stone_string) {
 					gui.float_label(a->first,_("stone"),255,0,0);
 					a->second.set_flag(stone_string);
 					stats.ndefends = 0;

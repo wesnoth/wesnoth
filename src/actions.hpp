@@ -47,11 +47,6 @@ std::string recruit_unit(const gamemap& map, int team, unit_map& units,
 //battle that could take place.
 struct battle_stats
 {
-	std::string attack_name, defend_name;
-	std::string attack_type, defend_type;
-	std::string attack_special, defend_special;
-	std::string range;
-	std::string attack_icon, defend_icon;
 	int chance_to_hit_attacker, chance_to_hit_defender;
 	int damage_attacker_takes, damage_defender_takes;
 	int amount_attacker_drains, amount_defender_drains;
@@ -59,8 +54,18 @@ struct battle_stats
 	int attack_with, defend_with;
 	bool attacker_plague, defender_plague;
 	bool attacker_slows, defender_slows;
-	std::vector<std::string> attack_calculations, defend_calculations;
 	bool to_the_death, defender_strikes_first;
+	std::string attacker_special, defender_special;
+};
+
+struct battle_stats_strings
+{
+	std::string attack_name, defend_name;
+	std::string attack_type, defend_type;
+	std::string attack_special, defend_special;
+	std::string range;
+	std::string attack_icon, defend_icon;
+	std::vector<std::string> attack_calculations, defend_calculations;
 };
 
 //evaluate_battle_stats: a function which, if given an attacker
@@ -76,15 +81,14 @@ struct battle_stats
 //if include_strings is false, then none of the strings in
 //battle_stats will be populated, and the function will run
 //substantially faster.
-battle_stats evaluate_battle_stats(
-                   const gamemap& map,
-                   const gamemap::location& attacker,
-                   const gamemap::location& defender,
-				   int attack_with,
-				   std::map<gamemap::location,unit>& units,
-				   const gamestatus& state,
-				   gamemap::TERRAIN attacker_terrain_override=0,
-				   bool include_strings=true);
+battle_stats evaluate_battle_stats(const gamemap& map,
+                                   const gamemap::location& attacker,
+                                   const gamemap::location& defender,
+                                   int attack_with,
+                                   std::map<gamemap::location,unit>& units,
+                                   const gamestatus& state,
+                                   gamemap::TERRAIN attacker_terrain_override = 0,
+                                   battle_stats_strings *strings = NULL);
 
 //attack: executes an attack.
 void attack(display& gui, const gamemap& map,

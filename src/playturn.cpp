@@ -478,58 +478,59 @@ namespace {
 class attack_calculations_displayer : public gui::dialog_button_action
 {
 public:
-	attack_calculations_displayer(display& disp, std::vector<battle_stats>& stats)
+	typedef std::vector< battle_stats_strings > stats_vector;
+	attack_calculations_displayer(display &disp, stats_vector const &stats)
 		: disp_(disp), stats_(stats)
 	{}
 
 	RESULT button_pressed(int selection);
 private:
-	display& disp_;
-	std::vector<battle_stats>& stats_;
+	display &disp_;
+	stats_vector const &stats_;
 };
 
 gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(int selection)
 {
 	const size_t index = size_t(selection);
 	if(index < stats_.size()) {
-		const battle_stats& stats = stats_[index];
-		std::vector<std::string> calcs;
+		battle_stats_strings const &sts = stats_[index];
+		std::vector< std::string > sts_att = sts.attack_calculations,
+		                           sts_def = sts.defend_calculations,
+		                           calcs;
+		unsigned sts_att_sz = sts_att.size(),
+		         sts_def_sz = sts_def.size(),
+		         sts_sz = maximum< unsigned >(sts_att_sz, sts_def_sz);
 
 		std::stringstream str;
 		str << _("Attacker") << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR;
-		if(stats.defend_calculations.empty() == false) {
+		if (sts_def_sz > 0)
 			str << _("Defender");
-		}
-
 		calcs.push_back(str.str());
 
-		for(size_t i = 0; i < maximum<size_t>(stats.attack_calculations.size(),stats.defend_calculations.size()); ++i) {
+		for(unsigned i = 0; i < sts_sz; ++i) {
 			std::stringstream str;
-			if(i < stats.attack_calculations.size() && stats.attack_calculations.empty() == false) {
-				str << stats.attack_calculations[i];
-			} else {
+			if (i < sts_att_sz)
+				str << sts_att[i];
+			else
 				str << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
-			}
 
 			str << COLUMN_SEPARATOR;
 
-			if(i < stats.defend_calculations.size() && stats.defend_calculations.empty() == false) {
-				str << stats.defend_calculations[i];
-			} else {
+			if (i < sts_def_sz)
+				str << sts_def[i];
+			else
 				str << ' ' << COLUMN_SEPARATOR << ' ' << COLUMN_SEPARATOR << ' ';
-			}
 
 			calcs.push_back(str.str());
 		}
 
-		gui::show_dialog(disp_,NULL,"",_("Damage Calculations"),gui::OK_ONLY,&calcs);
+		gui::show_dialog(disp_, NULL, "", _("Damage Calculations"), gui::OK_ONLY, &calcs);
 	}
 
 	return NO_EFFECT;
 }
 
 }
-
 bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender)
 {
 	//we must get locations by value instead of by references, because the iterators
@@ -546,7 +547,7 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 	int best_weapon_index = -1;
 	int best_weapon_rating = 0;
 
-	std::vector<battle_stats> stats;
+	attack_calculations_displayer::stats_vector stats;
 
 	for(size_t a = 0; a != attacks.size(); ++a) {
 		if(attacks[a].hexes() < range)
@@ -554,52 +555,40 @@ bool turn_info::attack_enemy(unit_map::iterator attacker, unit_map::iterator def
 
 		attacks_in_range.push_back(a);
 
-		stats.push_back(evaluate_battle_stats(map_, attacker_loc, defender_loc,
-		                                      a, units_, status_));
+		battle_stats_strings sts;
+		battle_stats st = evaluate_battle_stats(map_, attacker_loc, defender_loc,
+		                                        a, units_, status_, 0, &sts);
+		stats.push_back(sts);
 
-		int weapon_rating = stats.back().chance_to_hit_defender *
-		                stats.back().damage_defender_takes * stats.back().nattacks;
+		int weapon_rating = st.chance_to_hit_defender * st.damage_defender_takes * st.nattacks;
 		
 		if (best_weapon_index < 0 || best_weapon_rating < weapon_rating) {
 			best_weapon_index = items.size();
 			best_weapon_rating = weapon_rating;
 		}
 		
-		const battle_stats& st = stats.back();
-
-		const std::string& attack_name = st.attack_name;
-		const std::string& attack_special = st.attack_special.empty() ? "" : gettext(st.attack_special.c_str());
-		const std::string& defend_name = st.defend_name;
-		const std::string& defend_special = st.defend_special.empty() ? "" : gettext(st.defend_special.c_str());
-
-		const std::string& range = gettext(st.range == "Melee" ? N_("melee") : N_("ranged"));
-
 		//if there is an attack special or defend special, we output a single space for the other unit, to make sure
 		//that the attacks line up nicely.
-		std::string special_pad = (attack_special.empty() == false || defend_special.empty() == false) ? " " : "";
+		std::string special_pad = (sts.attack_special.empty() && sts.defend_special.empty()) ? "" : " ";
 
 		std::stringstream att;
-		att << IMAGE_PREFIX << stats.back().attack_icon << COLUMN_SEPARATOR
-		    << font::BOLD_TEXT << attack_name
-		    << "\n" << stats.back().damage_defender_takes << "-"
-			<< stats.back().nattacks << " " << range << " ("
-			<< stats.back().chance_to_hit_defender << "%)\n"
-			<< attack_special << special_pad;
-
-		att << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR;
-		att << font::BOLD_TEXT << defend_name << "\n" << stats.back().damage_attacker_takes << "-"
-			<< stats.back().ndefends << " " << range << " ("
-			<< stats.back().chance_to_hit_attacker
-		    << "%)\n" << defend_special << special_pad << COLUMN_SEPARATOR
-		    << IMAGE_PREFIX << stats.back().defend_icon;
+		att << IMAGE_PREFIX << sts.attack_icon << COLUMN_SEPARATOR
+		    << font::BOLD_TEXT << sts.attack_name << "\n" << st.damage_defender_takes << "-"
+		    << st.nattacks << " " << sts.range << " (" << st.chance_to_hit_defender << "%)\n"
+		    << sts.attack_special << special_pad
+		    << COLUMN_SEPARATOR << _("vs") << COLUMN_SEPARATOR
+		    << font::BOLD_TEXT << sts.defend_name << "\n" << st.damage_attacker_takes << "-"
+		    << st.ndefends << " " << sts.range << " (" << st.chance_to_hit_attacker << "%)\n"
+		    << sts.defend_special << special_pad << COLUMN_SEPARATOR
+		    << IMAGE_PREFIX << sts.defend_icon;
 
 		items.push_back(att.str());
 	}
-	
+
 	if (best_weapon_index >= 0) {
-		items[best_weapon_index] = "*" + items[best_weapon_index];
+		items[best_weapon_index] = DEFAULT_ITEM + items[best_weapon_index];
 	}
-		
+
 	//make it so that when we attack an enemy, the attacking unit
 	//is again shown in the status bar, so that we can easily
 	//compare between the attacking and defending unit
