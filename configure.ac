@@ -57,12 +57,12 @@ AC_ARG_WITH([datadir-name],
 AC_SUBST([DATADIR])
 
 #LOCALEDIR="$datadir/locale"
-LOCALEDIR=po
+LOCALEDIR=translations
 AC_ARG_WITH([localedir],
-	      [  --with-localedir=dir    install locale data under dir [[po]]],
+	      [  --with-localedir=dir    install locale data under dir [[translations]]],
 	      [case "${withval}" in
 	       yes)
-			LOCALEDIR="po"
+			LOCALEDIR="translations"
 			;;
 		no)
 			;;
@@ -555,13 +555,13 @@ fi
 # Symlinks that allow message catalogs to be used from build tree     #
 #######################################################################
 
-for lang in `cat po/LINGUAS`
+rm -rf translations
+for domain in `grep SUBDIRS $srcdir/po/Makefile.am | cut -d= -f2`
 do
-    mkdir -p po/$lang/LC_MESSAGES
-    rm -f po/$lang/LC_MESSAGES/*
-    for domain in `cat po/DOMAINS`
+    for lang in `cat $srcdir/po/$domain/LINGUAS`
     do
-	ln -s ../$domain.gmo po/$lang/LC_MESSAGES/$domain.mo
+        mkdir -p translations/$lang/LC_MESSAGES
+	ln -s ../../../po/$domain/$lang.gmo translations/$lang/LC_MESSAGES/$domain.mo
     done
 done
 
