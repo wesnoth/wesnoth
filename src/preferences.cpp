@@ -30,6 +30,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <iterator>
 
 namespace {
 
@@ -44,6 +45,9 @@ bool message_private_on = true;
 
 bool haloes = true;
 
+std::set<std::string> encountered_units_set;
+std::set<std::string> encountered_terrains_set;
+
 }
 
 namespace preferences {
@@ -51,16 +55,33 @@ namespace preferences {
 manager::manager()
 {
 	prefs.read(read_file(get_prefs_file()));
-
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
 
 	set_colour_cursors(prefs["colour_cursors"] == "yes");
 	set_show_haloes(prefs["show_haloes"] != "no");
+
+	std::vector<std::string> v;
+	v = config::split(prefs["encountered_units"]);
+	std::copy(v.begin(), v.end(),
+			  std::inserter(encountered_units_set, encountered_units_set.begin()));
+	v = config::split(prefs["encountered_terrains"]);
+	std::copy(v.begin(), v.end(),
+			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }
 
 manager::~manager()
 {
+	
+	std::vector<std::string> v;
+	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
+	prefs["encountered_units"] = config::join(v);
+	v.clear();
+	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
+			  std::back_inserter(v));
+	prefs["encountered_terrains"] = config::join(v);
+	encountered_units_set.clear();
+	encountered_terrains_set.clear();
 	try {
 		write_file(get_prefs_file(),prefs.write());
 	} catch(io_exception&) {
@@ -525,6 +546,14 @@ void set_show_haloes(bool value)
 {
 	haloes = value;
 	prefs["show_haloes"] = value ? "yes" : "no";
+}
+
+std::set<std::string> &encountered_units() {
+	return encountered_units_set;
+}
+
+std::set<std::string> &encountered_terrains() {
+	return encountered_terrains_set;
 }
 
 CACHE_SAVES_METHOD cache_saves()

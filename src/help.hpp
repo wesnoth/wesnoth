@@ -15,6 +15,7 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "font.hpp"
+#include "map.hpp"
 #include "sdl_utils.hpp"
 #include "unit_types.hpp"
 #include "widgets/button.hpp"
@@ -31,9 +32,13 @@
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config, game_data *game_info);
+	help_manager(const config *game_config, game_data *game_info, gamemap *map);
 	~help_manager();
 };
+
+/// Generate the help contents from the configurations given to the
+/// manager.
+void generate_contents();
 
 struct section;
 

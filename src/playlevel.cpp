@@ -261,7 +261,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		if(teams.size() == 1) {
 			state_of_game.can_recruit = teams.back().recruits();
 		}
-
+		
 		//if there are additional starting units on this side
 		const config::child_list& starting_units = (*ui)->get_children("unit");
 		for(config::child_list::const_iterator su = starting_units.begin();
@@ -281,8 +281,51 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				std::cerr << "inserting unit for side " << new_unit.side() << "\n";
 			}
 		}
+
 	}
 
+	// Add all recruitable units as encountered so that information
+	// about them are displayed to the user in the help system.
+	for (std::vector<team>::const_iterator help_team_it = teams.begin();
+		 help_team_it != teams.end(); help_team_it++) {
+		std::cout << "Adding help units for team '" << help_team_it->name()
+				  << "'" << std::endl;
+		const std::set<std::string> &recruitable = help_team_it->recruits();
+		std::set<std::string> &enc_units = preferences::encountered_units();
+		std::cout << "Adding recruitable units: " << std::endl;
+		for (std::set<std::string>::iterator it = recruitable.begin();
+			 it != recruitable.end(); it++) {
+			std::cout << *it << std::endl;
+		}
+		std::cout << "Added all recruitable units" << std::endl;
+		std::copy(recruitable.begin(), recruitable.end(), 
+				  std::inserter(enc_units, enc_units.begin()));
+	}
+		
+	// Add all units that exist at the start to the encountered units so
+	// that information about them are displayed to the user in the help
+	// system.
+	for (unit_map::const_iterator help_unit_it = units.begin();
+		 help_unit_it != units.end(); help_unit_it++) {
+		const std::string name = help_unit_it->second.type().name();
+		preferences::encountered_units().insert(name);
+	}
+
+	// Add all units that are recallable as encountred units.
+	for(std::vector<unit>::iterator help_recall_it = state_of_game.available_units.begin();
+		help_recall_it != state_of_game.available_units.end(); help_recall_it++) {
+		preferences::encountered_units().insert(help_recall_it->type().name());
+	}
+
+	// Add all terrains on the map as encountered terrains.
+	for (int map_x = 0; map_x < map.x(); map_x++) {
+		for (int map_y = 0; map_y < map.y(); map_y++) {
+			const gamemap::TERRAIN t = map.get_terrain(gamemap::location(map_x, map_y));
+			std::string s;
+			s += t;
+			preferences::encountered_terrains().insert(s);
+		}
+	}
 	std::cerr << "initialized teams... " << (SDL_GetTicks() - ticks) << "\n";
 
 	const config* theme_cfg = NULL;
@@ -344,7 +387,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::cerr << "initializing events manager... " << (SDL_GetTicks() - ticks) << "\n";
 
-	help::help_manager help_manager(&game_config, &gameinfo);
+	help::help_manager help_manager(&game_config, &gameinfo, &map);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level->get_children("item");

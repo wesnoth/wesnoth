@@ -16,6 +16,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "playlevel.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
@@ -294,6 +295,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::vector<std::string>& types = config::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().insert(*i);
+			preferences::encountered_units().insert(*i);
 			if(index == 0) {
 				state_of_game->can_recruit.insert(*i);
 			}
@@ -679,6 +681,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		for(std::vector<gamemap::location>::const_iterator loc = locs.begin(); loc != locs.end(); ++loc) {
 			const std::string& terrain_type = cfg["letter"];
+			preferences::encountered_terrains().insert(terrain_type);
 			if(terrain_type.size() > 0) {
 				game_map->set_terrain(*loc,terrain_type[0]);
 			}
@@ -691,6 +694,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
 		unit new_unit(*game_data_ptr,cfg);
+		preferences::encountered_units().insert(new_unit.type().name());
 		gamemap::location loc(cfg);
 
 		if(game_map->on_board(loc)) {

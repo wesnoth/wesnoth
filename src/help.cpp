@@ -36,6 +36,7 @@
 namespace {
 	const config *game_config = NULL;
 	game_data *game_info = NULL;
+	gamemap *map = NULL;
 	// The default toplevel.
 	help::section toplevel; 
 	// All sections and topics not referenced from the default toplevel.
@@ -137,9 +138,15 @@ namespace {
 
 namespace help {
 
-help_manager::help_manager(const config *cfg, game_data *gameinfo) {
+help_manager::help_manager(const config *cfg, game_data *gameinfo, gamemap *_map) {
 	game_config = cfg == NULL ? &dummy_cfg : cfg;
 	game_info = gameinfo;
+	map = _map;
+}
+
+void generate_contents() {
+	toplevel.clear();
+	hidden_sections.clear();
 	if (game_config != NULL) {
 		const config *help_config = game_config->child("help");
 		if (help_config == NULL) {
@@ -203,6 +210,7 @@ help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 help_manager::~help_manager() {
 	game_config = NULL;
 	game_info = NULL;
+	map = NULL;
 	toplevel.clear();
 	hidden_sections.clear();
 }
@@ -385,22 +393,24 @@ std::vector<topic> generate_weapon_special_topics() {
 			for (std::vector<attack_type>::const_iterator it = attacks.begin();
 				 it != attacks.end(); it++) {
 				const std::string special = (*it).special();
-				if (checked_specials.find(special) == checked_specials.end()) {
-					std::string lang_special = string_table["weapon_special_" + special];
-					if (lang_special == "") {
-						lang_special = special;
+				if (special != "") {
+					if (checked_specials.find(special) == checked_specials.end()) {
+						std::string lang_special = string_table["weapon_special_" + special];
+						if (lang_special == "") {
+							lang_special = special;
+						}
+						lang_special = cap(lang_special);
+						std::string description
+							= string_table["weapon_special_" + special + "_description"];
+						const size_t colon_pos = description.find(':');
+						if (colon_pos != std::string::npos) {
+							// Remove the first colon and the following newline.
+							description.erase(0, colon_pos + 2); 
+						}
+						topic t(lang_special, "weaponspecial_" + special, description);
+						topics.push_back(t);
+						checked_specials.insert(special);
 					}
-					lang_special = cap(lang_special);
-					std::string description
-						= string_table["weapon_special_" + special + "_description"];
-					const size_t colon_pos = description.find(':');
-					if (colon_pos != std::string::npos) {
-						// Remove the first colon and the following newline.
-						description.erase(0, colon_pos + 2); 
-					}
-					topic t(lang_special, "weaponspecial_" + special, description);
-					topics.push_back(t);
-					checked_specials.insert(special);
 				}
 			}
 		}
@@ -470,12 +480,18 @@ std::vector<topic> generate_unit_topics() {
 		}
 		else if (desc_type == FULL_DESCRIPTION) {
 			const std::string detailed_description = type.unit_description();
-			const std::string normal_image = type.image();
+			const unit_type *female_type = type.get_gender_unit_type(unit_race::FEMALE);
+			const unit_type *male_type = type.get_gender_unit_type(unit_race::MALE);
 
 			// Show the unit's image and it's level.
-			ss << "<img>src='" << normal_image << "' align=left float=no</img>"
-			   << "<format>font_size=11 text='" << translate_string("level")
-			   << " " << type.level() << "'</format>\n";
+			if (male_type != NULL) {
+				ss << "<img>src='" << male_type->image() << "'</img> ";
+			}
+			if (female_type != NULL && female_type != male_type) {
+				ss << "<img>src='" << female_type->image() << "'</img> ";
+			}
+			ss  << "<format>font_size=11 text=' " << translate_string("level")
+				<< " " << type.level() << "'</format>\n";
 
 			// Print the units this unit can advance to. Cross reference
 			// to the topics containing information about those units.
@@ -530,7 +546,8 @@ std::vector<topic> generate_unit_topics() {
 			ss << translate_string("hp") << ": " << type.hitpoints() << jump_to(100)
 			   << translate_string("moves") << ": " << type.movement() << jump_to(200)
 			   << translate_string("alignment") << ": "
-			   << type.alignment_description(type.alignment()) << jump_to(350);
+			   << translate_string(type.alignment_description(type.alignment()))
+			   << jump_to(350);
 			if (type.experience_needed() != 500) {
 				// 500 is apparently used when the units cannot advance.
 				ss << translate_string("required_xp") << ": " << type.experience_needed();
@@ -608,6 +625,39 @@ std::vector<topic> generate_unit_topics() {
 				   << " text='"<< resistance << "%'</format>\n";
 			}
 
+			if (map != NULL) {
+				// Print the terrain modifier table of the unit.
+				ss << "\n<header>text='" << cap(translate_string("terrain_info"))
+				   << "'</header>\n\n"
+				   << bold(cap(translate_string("terrain"))) << jump_to(140)
+				   << bold(cap(translate_string("movement"))) << jump_to(280)
+				   << bold(cap(translate_string("defense"))) << "\n";
+				for (std::set<std::string>::const_iterator terrain_it =
+						 preferences::encountered_terrains().begin();
+					 terrain_it != preferences::encountered_terrains().end();
+					 terrain_it++) {
+					assert(terrain_it->size() > 0);
+					const gamemap::TERRAIN terrain = (*terrain_it)[0];
+					if (terrain == gamemap::FOGGED || terrain == gamemap::VOID_TERRAIN) {
+						continue;
+					}
+					const terrain_type& info = map->get_terrain_info(terrain);
+					if (!info.is_alias()) {
+						const std::string& name = map->terrain_name(terrain);
+						const std::string& lang_name = string_table[name];
+						const int moves = movement_type.movement_cost(*map,terrain);
+						std::stringstream str;
+						ss << lang_name << jump_to(140);
+						if(moves < 100)
+							ss << moves;
+						else
+							ss << "--";
+						const int defense =
+							100 - movement_type.defense_modifier(*map,terrain);
+						ss << jump_to(280) << defense << "%\n";
+					}
+				}
+			}
 		}
 		else {
 			assert(false);
@@ -619,8 +669,12 @@ std::vector<topic> generate_unit_topics() {
 }
 	
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type) {
-	// For now, until decision is made, show the full description for everything.
-	return FULL_DESCRIPTION;
+	const std::string id = type.name();
+	const std::set<std::string> &encountered_units = preferences::encountered_units();
+	if (encountered_units.find(id) != encountered_units.end()) {
+		return FULL_DESCRIPTION;
+	}
+	return NO_DESCRIPTION;
 }
 
 std::string generate_traits_text() {
@@ -2061,6 +2115,7 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 	gui::draw_dialog(xloc, yloc, width, height, disp, translate_string("help_title"),
 					 NULL, &buttons_ptr, &restorer);
 
+	generate_contents();
 	try {
 		help_browser hb(disp, toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
