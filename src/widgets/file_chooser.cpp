@@ -123,7 +123,7 @@ void file_chooser::draw_contents() {
 					disp_.video().getSurface());
 }
 
-void file_chooser::process() {
+void file_chooser::process_event() {
 	CKey key;
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);

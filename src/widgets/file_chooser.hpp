@@ -33,7 +33,6 @@ public:
 	file_chooser(display &disp, std::string start_file="");
 
 	void draw_contents();
-	void process();
 
 	void set_dirty(bool dirty=true);
 
@@ -45,6 +44,7 @@ public:
 protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
+	virtual void process_event();
 
 private:
 	/// If file_or_dir is a file, return the directory the file is in,
