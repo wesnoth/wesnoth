@@ -548,8 +548,10 @@ void unit_speak(const config& message_info, display& disp, const unit_map& units
 
 
 namespace {
-	static const SDL_Rect unit_preview_size = {-200,-370,200,370};
-	static const SDL_Rect weaponless_unit_preview_size = {-190,-140,190,140};
+	static const SDL_Rect unit_preview_size = {-font::relative_size(200),-font::relative_size(370),
+						   font::relative_size(200),font::relative_size(370)};
+	static const SDL_Rect weaponless_unit_preview_size = {-font::relative_size(190),-font::relative_size(140),
+							      font::relative_size(190),font::relative_size(140)};
 	static const int unit_preview_border = 10;
 }
 
