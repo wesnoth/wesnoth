@@ -29,18 +29,18 @@ config construct_error(const std::string& msg)
 	return cfg;
 }
 
-config construct_system_message(const std::string& message, const game& g)
+config construct_server_message(const std::string& message, const game& g)
 {
 	config turn;
 	if(g.started()) {
 		config& cmd = turn.add_child("turn");
 		config& cfg = cmd.add_child("command");
 		config& msg = cfg.add_child("speak");
-		msg["description"] = "system";
+		msg["description"] = "server";
 		msg["message"] = message;
 	} else {
 		config& msg = turn.add_child("message");
-		msg["sender"] = "system";
+		msg["sender"] = "server";
 		msg["message"] = message; 
 	}
 
@@ -129,9 +129,9 @@ void server::process_command(const std::string& cmd)
 		}
 
 		const std::string msg(i+1,cmd.end());
-		lobby_players_.send_data(construct_system_message(msg,lobby_players_));
+		lobby_players_.send_data(construct_server_message(msg,lobby_players_));
 		for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
-			g->send_data(construct_system_message(msg,*g));
+			g->send_data(construct_server_message(msg,*g));
 		}
 
 		std::cerr << "message '" << msg << "' relayed to players\n";
@@ -232,7 +232,7 @@ void server::run()
 					std::cerr << "'" << username << "' (" << network::ip_address(sock) << ") has logged on\n";
 
 					for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
-						g->send_data_observers(construct_system_message(username + " has logged into the lobby",*g));
+						g->send_data_observers(construct_server_message(username + " has logged into the lobby",*g));
 					}
 
 				} else if(lobby_players_.is_member(sock)) {
