@@ -36,7 +36,7 @@ attack_type::attack_type(const config& cfg)
 	backstab_ = special_ == "backstab";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
-		icon_ = "misc/" + name_ + ".png";
+		icon_ = "attacks/" + name_ + ".png";
 
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
 	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
