@@ -746,13 +746,12 @@ lobby::RESULT mp_connect::process()
 			}
 			pos->first->values.erase("taken");
 			remove_player(pos->first->values["description"]);
-			pos->first->values["description"] = "";
-			pos->first->values["name"] = player_races_.front();
-			pos->first->values["random_faction"] = "yes";
-			pos->first->values["type"] = "";
-			si["controller"] = "ai";
-			si["description"] = _("Computer Player");
-			combos_type_[m].set_selected(2);
+			if(!save_) {
+				si["description"] = _("Computer Player");
+				si["controller"] = "ai";
+				si["id"] = possible_faction_ids_.front();
+				si["random_faction"] = "yes";
+			}
 		}
 		level_changed = true;
 	}
@@ -815,9 +814,9 @@ lobby::RESULT mp_connect::process()
 		return lobby::CREATE;
 	}
 
-	gui_update();
 	update_positions();
 	update_network();
+	gui_update();
 
 	return lobby::CONTINUE;
 }
@@ -929,10 +928,12 @@ void mp_connect::update_network()
 				i->second = 0;
 				i->first->values.erase("taken");
 				remove_player(i->first->values["description"]);
-				i->first->values["description"] = "";
-				i->first->values["name"] = player_races_.front();
-				i->first->values["random_faction"] = "yes";
-				i->first->values["type"] = "";
+				if(!save_) {
+					i->first->values["description"] = "";
+					i->first->values["id"] = possible_faction_ids_.front();
+					i->first->values["random_faction"] = "yes";
+					i->first->values["type"] = "";
+				}
 			}
 		}
 
@@ -961,10 +962,12 @@ void mp_connect::update_network()
 				pos->second = 0;
 				pos->first->values.erase("taken");
 				remove_player(pos->first->values["description"]);
-				pos->first->values["description"] = "";
-				pos->first->values["name"] = player_races_.front();
-				pos->first->values["random_faction"] = "yes";
-				pos->first->values["type"] = "";
+				if(!save_) {
+					pos->first->values["description"] = "";
+					pos->first->values["id"] = possible_faction_ids_.front();
+					pos->first->values["random_faction"] = "yes";
+					pos->first->values["type"] = "";
+				}
 				network::send_data(*level_);
 			}
 			return;
