@@ -1112,6 +1112,7 @@ void turn_info::cycle_units()
 		next_unit_ = it->first;
 		selected_hex_ = next_unit_;
 		gui_.select_hex(selected_hex_);
+		gui_.highlight_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
 		show_attack_options(it);
