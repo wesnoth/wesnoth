@@ -536,7 +536,7 @@ void display::draw_game_status(int x, int y)
 	if(tod_surface != NULL) {
 		//hardcoded values as to where the time of day image appears
 		blit_surface(mapx() + TimeOfDay_x,TimeOfDay_y,tod_surface);
-		update_rect(TimeOfDay_x,TimeOfDay_y,tod_surface->w,tod_surface->h);
+		update_rect(mapx() + TimeOfDay_x,TimeOfDay_y,tod_surface->w,tod_surface->h);
 	}
 
 	if(gameStatusRect_.w > 0) {

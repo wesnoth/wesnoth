@@ -177,7 +177,7 @@ int turn_info::send_data(int first_command)
 
 void turn_info::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog())
+	if(gui::in_dialog() || commands_disabled)
 		return;
 
 	switch(event.type) {
