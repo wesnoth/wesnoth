@@ -26,7 +26,7 @@ namespace gui {
 class slider : public widget
 {
 public:
-	slider(display& d, SDL_Rect& rect);
+	slider(display& d, const SDL_Rect& rect);
 
 	void set_min(int value);
 	void set_max(int value);

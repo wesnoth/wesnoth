@@ -214,13 +214,19 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		handle_event(event_info,&cfg);
 	}
 
-	//reveal sections of the map that would otherwise be under shroud
-	else if(cmd == "remove_shroud") {
+	//change shroud settings for portions of the map
+	else if(cmd == "remove_shroud" || cmd == "place_shroud") {
+		const bool remove = cmd == "remove_shroud";
+
 		const size_t index = maximum<int>(1,atoi(cfg["side"].c_str())) - 1;
 		if(index < teams->size()) {
 			const std::vector<gamemap::location>& locs = multiple_locs(cfg);
 			for(std::vector<gamemap::location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-				(*teams)[index].clear_shroud(j->x,j->y);
+				if(remove) {
+					(*teams)[index].clear_shroud(j->x,j->y);
+				} else {
+					(*teams)[index].place_shroud(j->x,j->y);
+				}
 			}
 		}
 		
@@ -259,7 +265,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 						get_village(vacant_dst,*teams,side,*units);
 					}
 
-					clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
+					if(cfg["clear_shroud"] != "no") {
+						clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
+					}
 				}
 			}
 		}
@@ -703,7 +711,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			if(u->matches_filter(cfg)) {
 				gamemap::location loc(cfg);
-				recruit_unit(*game_map,1,*units,*u,loc,screen,false,true);
+				recruit_unit(*game_map,1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
 				avail.erase(u);
 				break;
 			}

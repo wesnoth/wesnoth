@@ -26,7 +26,7 @@ namespace {
 
 namespace gui {
 
-slider::slider(display& d, SDL_Rect& rect)
+slider::slider(display& d, const SDL_Rect& rect)
 	: widget(d, rect), min_(-100000), max_(100000), value_(0), highlight_(false), clicked_(true),
 	  dragging_(false)
 {
@@ -94,6 +94,10 @@ SDL_Rect slider::slider_area() const
 
 void slider::draw()
 {
+	if(!dirty() || hidden()) {
+		return;
+	}
+
 	const scoped_sdl_surface image(image::get_image(highlight_ ? selected_image : slider_image,image::UNSCALED));
 	if(image == NULL || dirty() == false)
 		return;
@@ -118,6 +122,10 @@ void slider::draw()
 
 void slider::process()
 {
+	if(hidden()) {
+		return;
+	}
+
 	int mousex, mousey;
 	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	const bool button = mouse_flags&SDL_BUTTON_LMASK;

@@ -515,9 +515,13 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			out["map_data"] = state.snapshot["map_data"];
+			if(state.snapshot.find_child("side","shroud","yes") == NULL) {
+				out["map_data"] = state.snapshot["map_data"];
+			}
 		} else if(has_replay) {
-			out["map_data"] = state.starting_pos["map_data"];
+			if(state.starting_pos.find_child("side","shroud","yes") == NULL) {
+				out["map_data"] = state.starting_pos["map_data"];
+			}
 		}
 	}
 }

@@ -51,7 +51,7 @@ public:
 protected:
 	widget(const widget &o);
 	widget(display& disp);
-	widget(display& disp, SDL_Rect& rect);
+	widget(display& disp, const SDL_Rect& rect);
 	virtual ~widget() { restorer_.cancel(); }
 
 	void bg_restore() const;

@@ -659,6 +659,16 @@ bool team::shroud_map::clear(size_t x, size_t y)
 	}
 }
 
+void team::shroud_map::place(size_t x, size_t y)
+{
+	if(enabled_ == false)
+		return;
+
+	if(x < data_.size() && y < data_[x].size()) {
+		data_[x][y] = false;
+	}
+}
+
 void team::shroud_map::reset()
 {
 	for(std::vector<std::vector<bool> >::iterator i = data_.begin(); i != data_.end(); ++i) {

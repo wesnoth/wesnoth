@@ -19,7 +19,7 @@ widget::widget(display& disp) :
 {
 }
 
-widget::widget(display& disp, SDL_Rect& rect) :
+widget::widget(display& disp, const SDL_Rect& rect) :
 	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false), help_string_(0)
 {
 	set_location(rect);
@@ -190,7 +190,7 @@ void widget::set_help_string(const std::string& str)
 
 void widget::process_help_string(int mousex, int mousey)
 {
-	if(point_in_rect(mousex,mousey,location())) {
+	if(!hidden() && point_in_rect(mousex,mousey,location())) {
 		if(help_string_ == 0 && help_text_ != "") {
 			std::cerr << "setting help string to '" << help_text_ << "'\n";
 			help_string_ = disp().set_help_string(help_text_);

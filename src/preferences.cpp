@@ -237,11 +237,27 @@ void mute(bool muted)
 	muted_ = muted;
 }
 
+bool adjust_gamma()
+{
+	return prefs["adjust_gamma"] == "yes";
+}
+
+void set_adjust_gamma(bool val)
+{
+	//if we are turning gamma adjustment off, then set it to '1.0'
+	if(val == false && adjust_gamma()) {
+		CVideo& video = disp->video();
+		video.setGamma(1.0);
+	}
+
+	prefs["adjust_gamma"] = val ? "yes" : "no";
+}
+
 int gamma()
 {
 	static const int default_value = 100;
 	const string_map::const_iterator gamma = prefs.values.find("gamma");
-	if(gamma != prefs.values.end() && gamma->second.empty() == false)
+	if(adjust_gamma() && gamma != prefs.values.end() && gamma->second.empty() == false)
 		return atoi(gamma->second.c_str());
 	else
 		return default_value;
@@ -253,8 +269,10 @@ void set_gamma(int gamma)
 	stream << gamma;
 	prefs["gamma"] = stream.str();
 
-	CVideo& video = disp->video();
-	video.setGamma((float)gamma / 100);
+	if(adjust_gamma()) {
+		CVideo& video = disp->video();
+		video.setGamma((float)gamma / 100);
+	}
 }
 
 bool is_muted()
@@ -524,284 +542,349 @@ void set_cache_saves(CACHE_SAVES_METHOD method)
 	}
 }
 
+namespace {
+
+const SDL_Rect empty_rect = {0,0,0,0};
+const SDL_Rect preferences_dialog_area = {-400,-400,400,400};
+
+class preferences_dialog : public gui::preview_pane
+{
+public:
+	preferences_dialog(display& disp);
+
+	struct video_mode_change_exception
+	{
+		enum TYPE { CHANGE_RESOLUTION, MAKE_FULLSCREEN, MAKE_WINDOWED };
+
+		video_mode_change_exception(TYPE type) : type(type)
+		{}
+
+		TYPE type;
+	};
+
+private:
+
+	void draw();
+	void process();
+	bool left_side() const { return false; }
+	void set_selection(int index);
+
+	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
+	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
+	            show_grid_button_, show_floating_labels_button_, turn_dialog_button_,
+				turn_bell_button_, show_team_colours_button_, show_colour_cursors_button_,
+				show_haloing_button_, video_mode_button_, hotkeys_button_, gamma_button_;
+	std::string music_label_, sound_label_, scroll_label_, gamma_label_;
+	size_t slider_label_width_;
+
+	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB };
+	TAB tab_;
+};
+
+preferences_dialog::preferences_dialog(display& disp) : gui::preview_pane(disp),
+music_slider_(disp,empty_rect), sound_slider_(disp,empty_rect),
+scroll_slider_(disp,empty_rect), gamma_slider_(disp,empty_rect),
+fullscreen_button_(disp,string_table["full_screen"],gui::button::TYPE_CHECK),
+turbo_button_(disp,string_table["speed_turbo"],gui::button::TYPE_CHECK),
+show_ai_moves_button_(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK),
+show_grid_button_(disp,string_table["grid_button"],gui::button::TYPE_CHECK),
+show_floating_labels_button_(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK),
+turn_dialog_button_(disp,string_table["turn_dialog_button"],gui::button::TYPE_CHECK),
+turn_bell_button_(disp,string_table["turn_bell_button"],gui::button::TYPE_CHECK),
+show_team_colours_button_(disp,string_table["show_side_colours"],gui::button::TYPE_CHECK),
+show_colour_cursors_button_(disp,string_table["show_colour_cursors"],gui::button::TYPE_CHECK),
+show_haloing_button_(disp,string_table["show_haloes"],gui::button::TYPE_CHECK),
+video_mode_button_(disp,string_table["video_mode"]),
+hotkeys_button_(disp,string_table["hotkeys_button"]),
+gamma_button_(disp,string_table["gamma_button"],gui::button::TYPE_CHECK),
+music_label_(string_table["music_volume"]), sound_label_(string_table["sound_volume"]),
+scroll_label_(string_table["scroll_speed"]), gamma_label_(string_table["gamma"]),
+slider_label_width_(0), tab_(GENERAL_TAB)
+{
+	set_location(preferences_dialog_area);
+
+	slider_label_width_ = maximum<size_t>(font::text_area(music_label_,14).w,
+	                      maximum<size_t>(font::text_area(sound_label_,14).w,
+						  maximum<size_t>(font::text_area(scroll_label_,14).w,font::text_area(gamma_label_,14).w)));
+
+	sound_slider_.set_min(1);
+	sound_slider_.set_max(100);
+	sound_slider_.set_value(sound_volume());
+	sound_slider_.set_help_string(string_table["help_string_sound_slider"]);
+
+	music_slider_.set_min(1);
+	music_slider_.set_max(100);
+	music_slider_.set_value(music_volume());
+	music_slider_.set_help_string(string_table["help_string_music_slider"]);
+
+	scroll_slider_.set_min(1);
+	scroll_slider_.set_max(100);
+	scroll_slider_.set_value(scroll_speed());
+	scroll_slider_.set_help_string(string_table["help_string_scroll_slider"]);
+
+	gamma_button_.set_check(adjust_gamma());
+	gamma_button_.set_help_string(string_table["help_string_gamma_slider"]);
+
+	gamma_slider_.set_min(50);
+	gamma_slider_.set_max(200);
+	gamma_slider_.set_value(gamma());
+	gamma_slider_.set_help_string(string_table["help_string_gamma_slider"]);
+
+	fullscreen_button_.set_check(fullscreen());
+	fullscreen_button_.set_help_string(string_table["help_string_full_screen"]);
+
+	turbo_button_.set_check(turbo());
+	turbo_button_.set_help_string(string_table["help_string_accelerated_speed"]);
+
+	show_ai_moves_button_.set_check(!show_ai_moves());
+	show_ai_moves_button_.set_help_string(string_table["help_string_skip_ai_moves"]);
+
+	show_grid_button_.set_check(grid());
+	show_grid_button_.set_help_string(string_table["help_string_show_grid"]);
+
+	show_floating_labels_button_.set_check(show_floating_labels());
+	show_floating_labels_button_.set_help_string(string_table["help_string_show_floating_labels"]);
+
+	video_mode_button_.set_help_string(string_table["help_string_video_mode"]);
+
+	turn_dialog_button_.set_check(turn_dialog());
+	turn_dialog_button_.set_help_string(string_table["help_string_turn_dialog"]);
+
+	turn_bell_button_.set_check(turn_bell());
+	turn_bell_button_.set_help_string(string_table["help_string_turn_bell"]);
+
+	show_team_colours_button_.set_check(show_side_colours());
+	show_team_colours_button_.set_help_string(string_table["help_string_show_team_colors"]);
+
+	show_colour_cursors_button_.set_check(use_colour_cursors());
+	show_colour_cursors_button_.set_help_string(string_table["help_string_show_color_cursors"]);
+
+	show_haloing_button_.set_check(show_haloes());
+	show_haloing_button_.set_help_string(string_table["help_string_show_haloing"]);
+
+	hotkeys_button_.set_help_string(string_table["help_string_hotkeys"]);
+}
+
+void preferences_dialog::process()
+{
+	if(turbo_button_.pressed()) {
+		set_turbo(turbo_button_.checked());
+	}
+
+	if(show_ai_moves_button_.pressed()) {
+		set_show_ai_moves(!show_ai_moves_button_.checked());
+	}
+
+	if(show_grid_button_.pressed()) {
+		set_grid(show_grid_button_.checked());
+	}
+
+	if(show_floating_labels_button_.pressed()) {
+		set_show_floating_labels(show_floating_labels_button_.checked());
+	}
+
+	if(video_mode_button_.pressed()) {
+		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
+	}
+
+	if(fullscreen_button_.pressed()) {
+		throw video_mode_change_exception(fullscreen_button_.checked() ? video_mode_change_exception::MAKE_FULLSCREEN
+		                                                               : video_mode_change_exception::MAKE_WINDOWED);
+	}
+
+	if(turn_bell_button_.pressed()) {
+		set_turn_bell(turn_bell_button_.checked());
+	}
+
+	if(turn_dialog_button_.pressed()) {
+		set_turn_dialog(turn_dialog_button_.checked());
+	}
+
+	if(show_team_colours_button_.pressed()) {
+		set_show_side_colours(show_team_colours_button_.checked());
+	}
+
+	if(hotkeys_button_.pressed()) {
+		show_hotkeys_dialog(disp());
+	}
+
+	if(show_colour_cursors_button_.pressed()) {
+		set_colour_cursors(show_colour_cursors_button_.checked());
+	}
+
+	if(show_haloing_button_.pressed()) {
+		set_show_haloes(show_haloing_button_.checked());
+	}
+
+	if(gamma_button_.pressed()) {
+		set_adjust_gamma(gamma_button_.checked());
+		set_selection(int(tab_));
+	}
+
+	set_sound_volume(sound_slider_.value());
+	set_music_volume(music_slider_.value());
+	set_scroll_speed(scroll_slider_.value());
+	set_gamma(gamma_slider_.value());
+}
+
+void preferences_dialog::draw()
+{
+	if(!dirty()) {
+		return;
+	}
+
+	bg_restore();
+
+	music_slider_.set_dirty();
+	sound_slider_.set_dirty();
+	scroll_slider_.set_dirty();
+	gamma_slider_.set_dirty();
+	fullscreen_button_.set_dirty();
+	turbo_button_.set_dirty();
+	show_ai_moves_button_.set_dirty();
+	show_grid_button_.set_dirty();
+	show_floating_labels_button_.set_dirty();
+	turn_dialog_button_.set_dirty();
+	turn_bell_button_.set_dirty();
+	show_team_colours_button_.set_dirty();
+	show_colour_cursors_button_.set_dirty();
+	show_haloing_button_.set_dirty();
+	video_mode_button_.set_dirty();
+	hotkeys_button_.set_dirty();
+	gamma_button_.set_dirty();
+
+	const int border = 10;
+
+	int ypos = location().y;
+	if(tab_ == GENERAL_TAB) {
+		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,scroll_label_,location().x,ypos);
+		const SDL_Rect scroll_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		scroll_slider_.set_location(scroll_rect);
+
+		ypos += 50;
+		turbo_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		show_ai_moves_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		turn_dialog_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		turn_bell_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		show_team_colours_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		show_grid_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		hotkeys_button_.set_location(location().x,ypos);
+
+	} else if(tab_ == DISPLAY_TAB) {
+		gamma_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+
+		if(adjust_gamma()) {
+			font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
+		}
+
+		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		gamma_slider_.set_location(gamma_rect);
+
+		ypos += 50;
+		show_floating_labels_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		show_colour_cursors_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		show_haloing_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		fullscreen_button_.set_location(location().x,ypos);
+
+		ypos += 50;
+		video_mode_button_.set_location(location().x,ypos);
+
+	} else if(tab_ == SOUND_TAB) {
+		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,music_label_,location().x,ypos);
+		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		music_slider_.set_location(music_rect);
+
+		ypos += 50;
+
+		font::draw_text(&disp(),location(),14,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
+		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
+		sound_slider_.set_location(sound_rect);
+	}
+
+	set_dirty(false);
+}
+
+void preferences_dialog::set_selection(int index)
+{
+	tab_ = TAB(index);
+	set_dirty();
+
+	scroll_slider_.hide(tab_ != GENERAL_TAB);
+	gamma_slider_.hide(tab_ != DISPLAY_TAB || !adjust_gamma());
+	music_slider_.hide(tab_ != SOUND_TAB);
+	sound_slider_.hide(tab_ != SOUND_TAB);
+	turbo_button_.hide(tab_ != GENERAL_TAB);
+	show_ai_moves_button_.hide(tab_ != GENERAL_TAB);
+	turn_dialog_button_.hide(tab_ != GENERAL_TAB);
+	turn_bell_button_.hide(tab_ != GENERAL_TAB);
+	hotkeys_button_.hide(tab_ != GENERAL_TAB);
+	show_team_colours_button_.hide(tab_ != GENERAL_TAB);
+	show_grid_button_.hide(tab_ != GENERAL_TAB);
+
+	gamma_button_.hide(tab_ != DISPLAY_TAB);
+	show_floating_labels_button_.hide(tab_ != DISPLAY_TAB);
+	show_colour_cursors_button_.hide(tab_ != DISPLAY_TAB);
+	show_haloing_button_.hide(tab_ != DISPLAY_TAB);
+	fullscreen_button_.hide(tab_ != DISPLAY_TAB);
+	video_mode_button_.hide(tab_ != DISPLAY_TAB);
+}                                          
+
+}
+
 void show_preferences_dialog(display& disp)
 {
-	const events::resize_lock prevent_resizing;
-	const events::event_context dialog_events_context;
-	const gui::dialog_manager dialog_mgr;
-	
-	log_scope("show_preferences_dialog");
-
-	const int width = 600;
-	const int height = 500;
-	const int xpos = disp.x()/2 - width/2;
-	const int ypos = disp.y()/2 - height/2;
-
-	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
-
-	gui::button close_button(disp,string_table["close_window"]);
-
-	std::vector<gui::button*> buttons;
-	buttons.push_back(&close_button);
-
-	surface_restorer restorer;
-	gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
-
-	const std::string& music_label = string_table["music_volume"];
-	const std::string& sound_label = string_table["sound_volume"];
-	const std::string& scroll_label = string_table["scroll_speed"];
-	const std::string& gamma_label = string_table["gamma"];
-
-	SDL_Rect music_rect = {0,0,0,0};
-	music_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
-	                             music_label,0,0);
-
-	SDL_Rect sound_rect = {0,0,0,0};
-	sound_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
-	                             sound_label,0,0);
-
-	SDL_Rect scroll_rect = {0,0,0,0};
-	scroll_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
-	                              scroll_label,0,0);
-
-	SDL_Rect gamma_rect = {0,0,0,0};
-	gamma_rect = font::draw_text(NULL,clip_rect,14,font::NORMAL_COLOUR,
-	                              gamma_label,0,0);
-
-	const int text_right = xpos + maximum(maximum(scroll_rect.w, gamma_rect.w),
-			maximum(music_rect.w,sound_rect.w)) + 5;
-
-	const int music_pos = ypos + 20;
-	const int sound_pos = music_pos + 50;
-	const int scroll_pos = sound_pos + 50;
-	const int gamma_pos = scroll_pos + 50;
-	const int buttons_pos = gamma_pos + 50;
-
-	music_rect.x = text_right - music_rect.w;
-	music_rect.y = music_pos;
-
-	sound_rect.x = text_right - sound_rect.w;
-	sound_rect.y = sound_pos;
-
-	scroll_rect.x = text_right - scroll_rect.w;
-	scroll_rect.y = scroll_pos;
-
-	gamma_rect.x = text_right - gamma_rect.w;
-	gamma_rect.y = gamma_pos;
-
-	const int slider_left = text_right + 10;
-	const int slider_right = xpos + width - 5;
-	if(slider_left >= slider_right)
-		return;
-
-	SDL_Rect slider_rect = { slider_left,sound_pos,slider_right-slider_left,10};
-	gui::slider sound_slider(disp,slider_rect);
-	sound_slider.set_min(1);
-	sound_slider.set_max(100);
-	sound_slider.set_value(sound_volume());
-	sound_slider.set_help_string(string_table["help_string_sound_slider"]);
-
-	slider_rect.y = music_pos;
-	gui::slider music_slider(disp,slider_rect);
-	music_slider.set_min(1);
-	music_slider.set_max(100);
-	music_slider.set_value(music_volume());
-	music_slider.set_help_string(string_table["help_string_music_slider"]);
-
-	slider_rect.y = scroll_pos;
-	gui::slider scroll_slider(disp,slider_rect);
-	scroll_slider.set_min(1);
-	scroll_slider.set_max(100);
-	scroll_slider.set_value(scroll_speed());
-	scroll_slider.set_help_string(string_table["help_string_scroll_slider"]);
-
-	slider_rect.y = gamma_pos;
-	gui::slider gamma_slider(disp,slider_rect);
-	gamma_slider.set_min(50);
-	gamma_slider.set_max(200);
-	gamma_slider.set_value(gamma());
-	gamma_slider.set_help_string(string_table["help_string_gamma_slider"]);
-
-	gui::button fullscreen_button(disp,string_table["full_screen"],
-	                              gui::button::TYPE_CHECK);
-	fullscreen_button.set_check(fullscreen());
-	fullscreen_button.set_location(slider_left,buttons_pos );
-	fullscreen_button.set_help_string(string_table["help_string_full_screen"]);
-
-	gui::button turbo_button(disp,string_table["speed_turbo"],gui::button::TYPE_CHECK);
-	turbo_button.set_check(turbo());
-	turbo_button.set_location(slider_left,buttons_pos  + 50);
-	turbo_button.set_help_string(string_table["help_string_accelerated_speed"]);
-
-	gui::button show_ai_moves_button(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK);
-	show_ai_moves_button.set_check(!show_ai_moves());
-	show_ai_moves_button.set_location(slider_left,buttons_pos + 100);
-	show_ai_moves_button.set_help_string(string_table["help_string_skip_ai_moves"]);
-
-	gui::button grid_button(disp,string_table["grid_button"],gui::button::TYPE_CHECK);
-	grid_button.set_check(grid());
-	grid_button.set_location(slider_left,buttons_pos  + 150);
-	grid_button.set_help_string(string_table["help_string_show_grid"]);
-
-	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
-	floating_labels_button.set_check(show_floating_labels());
-	floating_labels_button.set_location(slider_left,buttons_pos + 200);
-	floating_labels_button.set_help_string(string_table["help_string_show_floating_labels"]);
-
-	gui::button resolution_button(disp,string_table["video_mode"]);
-	resolution_button.set_location(slider_left,buttons_pos + 250);
-	resolution_button.set_help_string(string_table["help_string_video_mode"]);
-
-	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],gui::button::TYPE_CHECK);
-	turn_dialog_button.set_check(turn_dialog());
-	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos);
-	turn_dialog_button.set_help_string(string_table["help_string_turn_dialog"]);
-
-	gui::button turn_bell_button(disp,string_table["turn_bell_button"],gui::button::TYPE_CHECK);
-	turn_bell_button.set_check(turn_bell());
-	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos + 50);
-	turn_bell_button.set_help_string(string_table["help_string_turn_bell"]);
-
-	gui::button side_colours_button(disp,string_table["show_side_colours"],gui::button::TYPE_CHECK);
-	side_colours_button.set_check(show_side_colours());
-	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 100);
-	side_colours_button.set_help_string(string_table["help_string_show_team_colors"]);
-
-	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],gui::button::TYPE_CHECK);
-	colour_cursors_button.set_check(use_colour_cursors());
-	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 150);
-	colour_cursors_button.set_help_string(string_table["help_string_show_color_cursors"]);
-
-	gui::button haloes_button(disp,string_table["show_haloes"],gui::button::TYPE_CHECK);
-	haloes_button.set_check(show_haloes());
-	haloes_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 200);
-	haloes_button.set_help_string(string_table["help_string_show_haloing"]);
-
-	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
-	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 250);
-	hotkeys_button.set_help_string(string_table["help_string_hotkeys"]);
-
-	bool redraw_all = true;
+	std::vector<std::string> items;
+	items.push_back(string_table["preferences_item_general"]);
+	items.push_back(string_table["preferences_item_display"]);
+	items.push_back(string_table["preferences_item_sound"]);
 
 	for(;;) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+		try {
+			const events::event_context dialog_events_context;
 
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+			preferences_dialog dialog(disp);
+			std::vector<gui::preview_pane*> panes;
+			panes.push_back(&dialog);
 
-		if(close_button.process(mousex,mousey,left_button)) {
-			break;
-		}
-
-		if(fullscreen_button.process(mousex,mousey,left_button)) {
-			//the underlying frame buffer is changing, so cancel
-			//the surface restorer restoring the frame buffer state
-			restorer.cancel();
-			set_fullscreen(fullscreen_button.checked());
-			redraw_all = true;
-		}
-
-		if(redraw_all) {
-			restorer.cancel();
-			gui::draw_dialog(xpos,ypos,width,height,disp,string_table["preferences"],NULL,&buttons,&restorer);
-			fullscreen_button.set_dirty();
-			turbo_button.set_dirty();
-			show_ai_moves_button.set_dirty();
-			grid_button.set_dirty();
-			floating_labels_button.set_dirty();
-			close_button.set_dirty();
-			resolution_button.set_dirty();
-			turn_dialog_button.set_dirty();
-			turn_bell_button.set_dirty();
-			side_colours_button.set_dirty();
-			colour_cursors_button.set_dirty();
-			haloes_button.set_dirty();
-			hotkeys_button.set_dirty();
-			sound_slider.set_dirty();
-			scroll_slider.set_dirty();
-			music_slider.set_dirty();
-			gamma_slider.set_dirty();
-
-			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,music_label,
-	                        music_rect.x,music_rect.y);
-
-			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,sound_label,
-	    	                sound_rect.x,sound_rect.y);
-
-			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,scroll_label,
-	    	                scroll_rect.x,scroll_rect.y);
-
-			font::draw_text(&disp,clip_rect,14,font::NORMAL_COLOUR,gamma_label,
-	    	                gamma_rect.x,gamma_rect.y);
-
-			update_rect(disp.screen_area());
-
-			redraw_all = false;
-		}
-
-		if(turbo_button.process(mousex,mousey,left_button)) {
-			set_turbo(turbo_button.checked());
-		}
-
-		if(show_ai_moves_button.process(mousex,mousey,left_button)) {
-			set_show_ai_moves(!show_ai_moves_button.checked());
-		}
-
-		if(grid_button.process(mousex,mousey,left_button)) {
-			set_grid(grid_button.checked());
-		}
-
-		if(floating_labels_button.process(mousex,mousey,left_button)) {
-			set_show_floating_labels(floating_labels_button.checked());
-		}
-
-		if(resolution_button.process(mousex,mousey,left_button)) {
-			const bool mode_changed = show_video_mode_dialog(disp);
-			if(mode_changed) {
-				//the underlying frame buffer is changing, so cancel
-				//the surface restorer restoring the frame buffer state
-				restorer.cancel();
+			gui::show_dialog(disp,NULL,string_table["preferences"],"",gui::CLOSE_ONLY,&items,&panes);
+			return;
+		} catch(preferences_dialog::video_mode_change_exception& e) {
+			switch(e.type) {
+			case preferences_dialog::video_mode_change_exception::CHANGE_RESOLUTION:
+				show_video_mode_dialog(disp);
+				break;
+			case preferences_dialog::video_mode_change_exception::MAKE_FULLSCREEN:
+				set_fullscreen(true);
+				break;
+			case preferences_dialog::video_mode_change_exception::MAKE_WINDOWED:
+				set_fullscreen(false);
 				break;
 			}
+
+			if(items[1].empty() || items[1][0] != '*') {
+				items[1] = "*" + items[1];
+			}
 		}
-
-		if(turn_bell_button.process(mousex,mousey,left_button)) {
-			set_turn_bell(turn_bell_button.checked());
-		}
-
-		if(turn_dialog_button.process(mousex,mousey,left_button)) {
-			set_turn_dialog(turn_dialog_button.checked());
-		}
-
-		if(side_colours_button.process(mousex,mousey,left_button)) {
-			set_show_side_colours(side_colours_button.checked());
-		}
-
-		if(hotkeys_button.process(mousex,mousey,left_button)) {
-			show_hotkeys_dialog (disp);
-			break;
-		}
-
-		if(colour_cursors_button.process(mousex,mousey,left_button)) {
-			set_colour_cursors(colour_cursors_button.checked());
-		}
-
-		if(haloes_button.process(mousex,mousey,left_button)) {
-			set_show_haloes(haloes_button.checked());
-		}
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-
-		set_sound_volume(sound_slider.value());
-		set_music_volume(music_slider.value());
-		set_scroll_speed(scroll_slider.value());
-		set_gamma(gamma_slider.value());
-
-		disp.update_display();
-
-		SDL_Delay(20);
 	}
 }
 

@@ -288,7 +288,7 @@ void save_preview_pane::draw()
 	std::string map_data = summary["map_data"];
 	if(map_data.empty()) {
 		const config* const scenario = game_config_->find_child(summary["campaign_type"],"id",summary["scenario"]);
-		if(scenario != NULL) {
+		if(scenario != NULL && scenario->find_child("side","shroud","yes") == NULL) {
 			map_data = (*scenario)["map_data"];
 			if(map_data.empty() && (*scenario)["map"].empty() == false) {
 				try {

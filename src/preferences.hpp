@@ -54,6 +54,9 @@ namespace preferences {
 	void mute(bool muted);
 	bool is_muted();
 
+	bool adjust_gamma();
+	void set_adjust_gamma(bool val);
+
 	int gamma();
 	void set_gamma(int gamma);
 
