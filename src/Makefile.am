@@ -92,6 +92,8 @@ wesnoth_SOURCES = about.cpp \
 		  unit_types.cpp \
 		  video.cpp \
 		  wassert.cpp \
+		  serialization/preprocessor.cpp \
+		  serialization/string_utils.cpp \
 		  widgets/button.cpp \
 		  widgets/combo.cpp \
 		  widgets/label.cpp \
@@ -176,6 +178,8 @@ wesnoth_SOURCES = about.cpp \
 		  util.hpp \
 		  video.hpp \
 		  wassert.hpp \
+		  serialization/preprocessor.hpp \
+		  serialization/string_utils.hpp \
 		  widgets/button.hpp \
 		  widgets/combo.hpp \
 		  widgets/label.hpp \
@@ -254,6 +258,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_display.cpp \
 			 unit_types.cpp \
 			 video.cpp \
+			 serialization/preprocessor.cpp \
+			 serialization/string_utils.cpp \
 			 widgets/button.cpp \
 			 widgets/file_chooser.cpp \
 			 widgets/label.cpp \
@@ -329,6 +335,8 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 unit_display.hpp \
 			 unit_types.hpp \
 			 video.hpp \
+			 serialization/preprocessor.hpp \
+			 serialization/string_utils.hpp \
 			 widgets/button.hpp \
 			 widgets/file_chooser.hpp \
 			 widgets/label.hpp \

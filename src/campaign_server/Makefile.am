@@ -15,6 +15,8 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../network_worker.cpp \
 		   ../publish_campaign.cpp \
 		   ../thread.cpp \
+		   ../serialization/preprocessor.cpp \
+		   ../serialization/string_utils.cpp \
 		   ../zipios++/xcoll.cpp \
 		   ../game_events.hpp \
 		   ../config.hpp \
@@ -25,6 +27,8 @@ campaignd_SOURCES = campaign_server.cpp \
 		   ../network.hpp \
 		   ../network_worker.hpp \
 		   ../publish_campaign.hpp \
+		   ../serialization/preprocessor.hpp \
+		   ../serialization/string_utils.hpp \
 		   ../thread.hpp \
 		   ../zipios++/xcoll.hpp
 

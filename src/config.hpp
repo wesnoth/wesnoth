@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "serialization/preprocessor.hpp"
+
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
 //is defined in Wiki, under BuildingScenariosWML
@@ -25,42 +27,6 @@
 //All configuration files are stored in this format, and data is
 //sent across the network in this format. It is thus used extensively
 //throughout the game.
-
-//an object which defines the location an error occurred at when
-//parsing WML files
-struct line_source
-{
-	line_source(int ln,const std::string& fname, int line) :
-	              linenum(ln), file(fname), fileline(line)
-	{}
-
-	int linenum;
-	std::string file;
-	int fileline;
-};
-
-bool operator<(const line_source& a, const line_source& b);
-
-struct preproc_define {
-	preproc_define() {}
-	explicit preproc_define(const std::string& val) : value(val) {}
-	preproc_define(const std::string& val, const std::vector<std::string>& args)
-		: value(val), arguments(args) {}
-	std::string value;
-	std::vector<std::string> arguments;
-};
-
-typedef std::map<std::string,preproc_define> preproc_map;
-
-inline bool operator==(const preproc_define& a, const preproc_define& b) { return a.value == b.value && a.arguments == b.arguments; }
-inline bool operator!=(const preproc_define& a, const preproc_define& b) { return !operator==(a,b); }
-
-//function to use the WML preprocessor on a file, and returns the resulting
-//preprocessed file data. defines is a map of symbols defined. src is used
-//internally and should be set to NULL
-std::string preprocess_file(const std::string& fname,
-                            const preproc_map* defines=NULL,
-                            std::vector<line_source>* src=NULL);
 
 typedef std::map<std::string,std::string> string_map;
 

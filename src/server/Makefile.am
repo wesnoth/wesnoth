@@ -18,6 +18,8 @@ wesnothd_SOURCES = game.cpp \
 		   ../network.cpp \
 		   ../network_worker.cpp \
 		   ../thread.cpp \
+		   ../serialization/preprocessor.cpp \
+		   ../serialization/string_utils.cpp \
 		   ../zipios++/xcoll.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
@@ -32,6 +34,8 @@ wesnothd_SOURCES = game.cpp \
 		   ../network.hpp \
 		   ../network_worker.hpp \
 		   ../thread.hpp \
+		   ../serialization/preprocessor.hpp \
+		   ../serialization/string_utils.hpp \
 		   ../zipios++/xcoll.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..

@@ -20,10 +20,14 @@ exploder_SOURCES = exploder.cpp \
 		   ../game_config.cpp \
 		   ../sdl_utils.cpp \
 		   ../log.cpp \
+		   ../serialization/preprocessor.cpp \
+		   ../serialization/string_utils.cpp \
 		   ../zipios++/xcoll.cpp \
 		   exploder_composer.hpp \
 		   exploder_cutter.hpp \
 		   exploder_utils.hpp \
+		   ../serialization/preprocessor.hpp \
+		   ../serialization/string_utils.hpp \
 		   ../zipios++/xcoll.hpp \
 		   ../gettext.cpp
 
@@ -37,10 +41,14 @@ cutter_SOURCES = cutter.cpp \
 		   ../game_config.cpp \
 		   ../sdl_utils.cpp \
 		   ../log.cpp \
+		   ../serialization/preprocessor.cpp \
+		   ../serialization/string_utils.cpp \
 		   ../zipios++/xcoll.cpp \
 		   exploder_composer.hpp \
 		   exploder_cutter.hpp \
 		   exploder_utils.hpp \
+		   ../serialization/preprocessor.hpp \
+		   ../serialization/string_utils.hpp \
 		   ../zipios++/xcoll.hpp \
 		   ../gettext.cpp
 
