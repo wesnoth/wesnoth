@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-05 19:02+0200\n"
+"POT-Creation-Date: 2004-09-11 23:01+0200\n"
 "PO-Revision-Date: 2004-09-09 23:38+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
@@ -242,6 +242,7 @@ msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:90
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -256,7 +257,7 @@ msgid ""
 "movement point to enter. Exactly how many movement points are spent entering "
 "a hex depends on the unit type - in forest, elvish units only spend 1 "
 "movement point, most human and orc units spend 2, while horsemen spend 3. "
-"You can learn how many unit points a unit requires to enter a certain "
+"You can learn how many movement points a unit requires to enter a certain "
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "clicking <italic>text='Terrain Modifiers'</italic>.\n"
 "\n"
@@ -1210,9 +1211,10 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Hur kan jag veta vilken sorts trupper jag ska rekrytera?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
+#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
-"of the unit selection box,  and cost, which is displayed after the name of "
+"of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
 "Du måste noggrant studera deras egenskaper som visas till vänster om truppen "
@@ -3203,15 +3205,15 @@ msgstr "krossa"
 #: data/units/Deathmaster.cfg:20 data/units/Drake_Beak.cfg:38
 #: data/units/Drake_Mage.cfg:20 data/units/Drake_Petit.cfg:38
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Warmage.cfg:20
-#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:29
-#: data/units/Dwarvish_Fighter.cfg:44 data/units/Dwarvish_Runemaster.cfg:21
-#: data/units/Dwarvish_Steelclad.cfg:45 data/units/Elder_Mage.cfg:23
+#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:21
+#: data/units/Dwarvish_Fighter.cfg:37 data/units/Dwarvish_Runemaster.cfg:21
+#: data/units/Dwarvish_Steelclad.cfg:43 data/units/Elder_Mage.cfg:23
 #: data/units/Elder_Wose.cfg:19 data/units/Elvish_Druid.cfg:23
-#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shaman.cfg:25
-#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:25
-#: data/units/Elvish_Shyde.cfg:51 data/units/Fire_Dragon.cfg:41
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
-#: data/units/Galleon.cfg:17 data/units/Gate.cfg:24
+#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Lady.cfg:17
+#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
+#: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
+#: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
+#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:18 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
@@ -3304,8 +3306,8 @@ msgstr ""
 "och de bryr sig inte om fiendens kontrollzoner. De kan också kasta "
 "förgiftade knivar på sina fiender."
 
-#: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:28
-#: data/units/Dwarvish_Thunderguard.cfg:28 data/units/Mage.cfg:20
+#: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
+#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
 #: data/units/Mage.cfg:87 data/units/Orcish_Archer.cfg:20
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Shaman.cfg:18
 #: data/units/Orcish_Shaman.cfg:61 data/units/Orcish_Shaman.cfg:104
@@ -3329,11 +3331,11 @@ msgstr "dolk"
 #: data/units/Drake_Fire.cfg:20 data/units/Drake_Hatchling.cfg:20
 #: data/units/Drake_Slasher.cfg:21 data/units/Drake_Slave.cfg:20
 #: data/units/Drake_Warrior.cfg:21 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Fighter.cfg:27
-#: data/units/Dwarvish_Lord.cfg:27 data/units/Dwarvish_Lord.cfg:44
-#: data/units/Dwarvish_Steelclad.cfg:28 data/units/Dwarvish_Thunderer.cfg:29
-#: data/units/Dwarvish_Thunderguard.cfg:29
-#: data/units/Dwarvish_Ulfserker.cfg:35 data/units/Elvish_Archer.cfg:22
+#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:20
+#: data/units/Dwarvish_Lord.cfg:25 data/units/Dwarvish_Lord.cfg:42
+#: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:21
+#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
 #: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
@@ -3382,7 +3384,8 @@ msgstr "dolk"
 msgid "blade"
 msgstr "skärande"
 
-#: data/units/Assassin.cfg:25 data/units/Rogue.cfg:25 data/units/Thief.cfg:24
+#: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
+#: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:487
 msgid "backstab"
 msgstr "rygghugg"
@@ -3552,10 +3555,11 @@ msgstr "båge"
 #: data/units/Death_Knight.cfg:37 data/units/Dragoon.cfg:49
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Guard.cfg:23
 #: data/units/Drake_Slasher.cfg:53 data/units/Duelist.cfg:32
-#: data/units/Dwarvish_Dragonguard.cfg:47 data/units/Dwarvish_Guardsman.cfg:40
-#: data/units/Dwarvish_Guardsman.cfg:53 data/units/Dwarvish_Stalwart.cfg:40
-#: data/units/Dwarvish_Stalwart.cfg:53 data/units/Dwarvish_Thunderer.cfg:49
-#: data/units/Dwarvish_Thunderguard.cfg:55 data/units/Elvish_Archer.cfg:39
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
+#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
+#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
+#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
 #: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Druid.cfg:62
@@ -3679,8 +3683,9 @@ msgstr ""
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
-#: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Guardsman.cfg:52
-#: data/units/Dwarvish_Stalwart.cfg:38 data/units/Dwarvish_Stalwart.cfg:52
+#: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
+#: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
+#: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
 #: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
 #: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
 #: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
@@ -3842,8 +3847,8 @@ msgstr ""
 "plågas av hat och ångest, kommer ibland tillbaka till den här världen som "
 "Dödsriddare."
 
-#: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:26
-#: data/units/Dwarvish_Steelclad.cfg:26
+#: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:24
+#: data/units/Dwarvish_Steelclad.cfg:24
 msgid "battle axe"
 msgstr "stridsyxa"
 
@@ -4056,22 +4061,23 @@ msgid "Dwarvish Berserker"
 msgstr "Dvärgbärsärk"
 
 #: data/units/Dwarvish_Berserker.cfg:16
+#, fuzzy
 msgid ""
-"Dwarves are an ancient race of powerful fighters. Their Berserkers forgo all "
-"defense in exchange for massive damage against their enemies. Once a battle "
-"is entered, Dwarvish Berserkers attack ferociously, continuing to push the "
-"attack until either they or their enemy lies dead."
+"Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
+"all defense in exchange for massive damage against their enemies. Once a "
+"battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
+"push the attack until either they or their enemy lies dead."
 msgstr ""
 "Dvärgarna är en urgammal ras av kraftfulla krigare. Deras bärsärkar glömmer "
 "all självbevarelsedrift för att få in fler träffar på motståndaren. När de "
 "har givit sig in i striden attackerar de vildsint tills antingen de själva "
 "eller deras fiende ligger död på marken."
 
-#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Ulfserker.cfg:33
+#: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
 msgstr "bärsärkagång"
 
-#: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:36
+#: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
 msgstr "bärsärk"
 
@@ -4089,8 +4095,8 @@ msgstr ""
 "fiender med eld från vad dvärgarna kallar drakstavar. De har den främsta "
 "kunskapen om uråldrig dvärgteknologi."
 
-#: data/units/Dwarvish_Dragonguard.cfg:28
-#: data/units/Dwarvish_Dragonguard.cfg:46
+#: data/units/Dwarvish_Dragonguard.cfg:20
+#: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
 msgstr "drakstav"
 
@@ -4109,12 +4115,12 @@ msgstr ""
 "stridsyxor gör dem till fruktade motståndare i närstrid. Om än något "
 "långsamma så kompenseras detta av deras styrka och uthållighet."
 
-#: data/units/Dwarvish_Fighter.cfg:26 data/units/Revenant.cfg:23
+#: data/units/Dwarvish_Fighter.cfg:19 data/units/Revenant.cfg:23
 #: data/units/Skeleton.cfg:24
 msgid "axe"
 msgstr "yxa"
 
-#: data/units/Dwarvish_Fighter.cfg:43 data/units/Dwarvish_Steelclad.cfg:44
+#: data/units/Dwarvish_Fighter.cfg:36 data/units/Dwarvish_Steelclad.cfg:42
 msgid "hammer"
 msgstr "hammare"
 
@@ -4122,12 +4128,12 @@ msgstr "hammare"
 msgid "Dwarvish Guardsman"
 msgstr "Dvärgväktare"
 
-#: data/units/Dwarvish_Guardsman.cfg:29 data/units/Dwarvish_Stalwart.cfg:29
-#: src/actions.cpp:496
+#: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
+#: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
 msgid "steadfast"
 msgstr "ståndaktig"
 
-#: data/units/Dwarvish_Guardsman.cfg:35
+#: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
 "The most resiliant dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
@@ -4141,7 +4147,7 @@ msgstr ""
 msgid "Dwarvish Lord"
 msgstr "Bergakung"
 
-#: data/units/Dwarvish_Lord.cfg:23
+#: data/units/Dwarvish_Lord.cfg:21
 msgid ""
 "Dwarvish Lords are kings under the mountains. Their skill with the battle "
 "axe is unmatched, and they are able to hit even enemies that are far away. "
@@ -4151,7 +4157,7 @@ msgstr ""
 "av en stridsyxa, de kan till och med kasta den. Deras rustningar är gjorda "
 "av de starka legeringar som enbart dvärgarna kan framställa."
 
-#: data/units/Dwarvish_Lord.cfg:43
+#: data/units/Dwarvish_Lord.cfg:41
 msgid "hatchet"
 msgstr "kastyxa"
 
@@ -4179,11 +4185,22 @@ msgstr "runhammare"
 msgid "Lightning bolt"
 msgstr "åskvigg"
 
+#: data/units/Dwarvish_Sentinel.cfg:3
+#, fuzzy
+msgid "Dwarvish Sentinel"
+msgstr "Dvärgarnas Järnnäve"
+
+#: data/units/Dwarvish_Sentinel.cfg:23
+msgid ""
+"The Sentinel, with his tower shield and great courage, refuses to yeild "
+"under even the strongest of enemy attacks."
+msgstr ""
+
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr "Dvärgarnas Pansarnäve"
 
-#: data/units/Dwarvish_Stalwart.cfg:35
+#: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are the feared for "
@@ -4197,7 +4214,7 @@ msgstr ""
 msgid "Dwarvish Steelclad"
 msgstr "Dvärgarnas Järnnäve"
 
-#: data/units/Dwarvish_Steelclad.cfg:23
+#: data/units/Dwarvish_Steelclad.cfg:21
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -4221,7 +4238,7 @@ msgstr ""
 "Deras mystiska vapen är tyngre, långsammare och mer högljudda än alvernas "
 "långbågar, men deras genomslagskraft är utan motstycke."
 
-#: data/units/Dwarvish_Thunderer.cfg:48
+#: data/units/Dwarvish_Thunderer.cfg:40
 msgid "thunderstick"
 msgstr "åskstav"
 
@@ -4230,18 +4247,19 @@ msgid "Dwarvish Thunderguard"
 msgstr "Dvärgarnas Tordönsvakt"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
+#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
 "they are no faster than the more common Thunderers, their attack is much "
-"more deadly. "
+"more deadly."
 msgstr ""
 "Dvärgarnas berömda Tordönsvakt använder sig av mystiska och fruktade vapen, "
 "som smitts av dvärgarnas vapenmästare, vilka är experter på urtida "
 "dvärgteknologi. Även om de inte är lika snabba som de vanliga "
 "dundrardvärgarna, så är de mycket mer dödliga."
 
-#: data/units/Dwarvish_Thunderguard.cfg:54
+#: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
 msgstr "drakstav"
 
@@ -4378,6 +4396,15 @@ msgid ""
 msgstr ""
 "Alvstorfurstarna är skräckinjagande i strid; där de använder svärd och "
 "förödande eldklot."
+
+#: data/units/Elvish_Lady.cfg:4
+#, fuzzy
+msgid "Elvish Lady"
+msgstr "Alvfurste"
+
+#: data/units/Elvish_Lady.cfg:16 data/units/Galleon.cfg:17
+msgid "dummy"
+msgstr "inget"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
@@ -4600,10 +4627,6 @@ msgstr "slunga"
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
 msgstr "Galjon"
-
-#: data/units/Galleon.cfg:16
-msgid "dummy"
-msgstr "inget"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
@@ -6222,51 +6245,51 @@ msgstr "+Finsk översättning"
 msgid "+French Translation"
 msgstr "+Fransk översättning"
 
-#: src/about.cpp:171
+#: src/about.cpp:172
 msgid "+German Translation"
 msgstr "+Tysk översättning"
 
-#: src/about.cpp:178
+#: src/about.cpp:181
 msgid "+Hungarian Translation"
 msgstr "+Ungersk översättning"
 
-#: src/about.cpp:183
+#: src/about.cpp:186
 msgid "+Italian Translation"
 msgstr "+Italiensk översättning"
 
-#: src/about.cpp:190
+#: src/about.cpp:193
 msgid "+Norwegian Translation"
 msgstr "+Norsk översättning"
 
-#: src/about.cpp:195
+#: src/about.cpp:199
 msgid "+Polish Translation"
 msgstr "+Polsk översättning"
 
-#: src/about.cpp:201
+#: src/about.cpp:205
 msgid "+Portuguese Translation"
 msgstr "+Portugisisk översättning"
 
-#: src/about.cpp:206
+#: src/about.cpp:210
 msgid "+Slovak Translation"
 msgstr "+Slovakisk översättning"
 
-#: src/about.cpp:210
+#: src/about.cpp:214
 msgid "+Spanish Translation"
 msgstr "+Spansk översättning"
 
-#: src/about.cpp:218
+#: src/about.cpp:222
 msgid "+Swedish Translation"
 msgstr "+Svensk översättning"
 
-#: src/about.cpp:223
+#: src/about.cpp:229
 msgid "+Contributors"
 msgstr "+Bidrag"
 
-#: src/about.cpp:231
+#: src/about.cpp:237
 msgid "+ Bots"
 msgstr "+ Bots"
 
-#: src/about.cpp:258 src/help.cpp:2372 src/show_dialog.cpp:468
+#: src/about.cpp:264 src/help.cpp:2372 src/show_dialog.cpp:468
 msgid "Close"
 msgstr "Stäng"
 
@@ -6400,11 +6423,11 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
-#: src/dialogs.cpp:365 src/game.cpp:923
+#: src/dialogs.cpp:365 src/game.cpp:924
 msgid "Campaign"
 msgstr "Kampanj"
 
-#: src/dialogs.cpp:367 src/game.cpp:970
+#: src/dialogs.cpp:367 src/game.cpp:971
 msgid "Multiplayer"
 msgstr "Flera spelare"
 
@@ -6416,7 +6439,7 @@ msgstr "Träningsspel"
 msgid "replay"
 msgstr "repris"
 
-#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1400
+#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
 msgid "Turn"
 msgstr "Drag"
 
@@ -6424,7 +6447,7 @@ msgstr "Drag"
 msgid "Scenario Start"
 msgstr "Scenariostart"
 
-#: src/dialogs.cpp:384 src/game.cpp:946
+#: src/dialogs.cpp:384 src/game.cpp:947
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
@@ -6485,33 +6508,33 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/dialogs.cpp:646 src/display.cpp:884 src/help.cpp:567
-#: src/playturn.cpp:1738
+#: src/playturn.cpp:1778
 msgid "level"
 msgstr "nivå"
 
 #: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:621
-#: src/playturn.cpp:1902 src/unit.cpp:1034
+#: src/playturn.cpp:1942 src/unit.cpp:1034
 msgid "HP"
 msgstr "KP"
 
 #: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1740 src/playturn.cpp:1903
+#: src/display.cpp:914 src/playturn.cpp:1780 src/playturn.cpp:1943
 #: src/unit.cpp:1093
 msgid "XP"
 msgstr "XP"
 
 #: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:622
-#: src/playturn.cpp:1904 src/unit.cpp:1070
+#: src/playturn.cpp:1944 src/unit.cpp:1070
 msgid "Moves"
 msgstr "Förflyttning"
 
 #: src/dialogs.cpp:697 src/display.cpp:935 src/help.cpp:699
-#: src/playturn.cpp:618 src/reports.cpp:230
+#: src/playturn.cpp:602 src/reports.cpp:230
 msgid "melee"
 msgstr "närstrid"
 
 #: src/dialogs.cpp:698 src/display.cpp:936 src/help.cpp:699
-#: src/playturn.cpp:618 src/reports.cpp:231
+#: src/playturn.cpp:602 src/reports.cpp:231
 msgid "ranged"
 msgstr "distans"
 
@@ -6523,7 +6546,7 @@ msgstr "bra hälsa"
 msgid "invisible"
 msgstr "osynlig"
 
-#: src/font.cpp:163
+#: src/font.cpp:164
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
@@ -6531,11 +6554,11 @@ msgstr "Vera.ttf"
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vill du spara en repris av detta scenario?"
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1409
+#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1391
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1426
+#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1408
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
@@ -6543,11 +6566,11 @@ msgstr "Spelet kunde inte sparas"
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/game.cpp:580
+#: src/game.cpp:581
 msgid "The Battle for Wesnoth"
 msgstr "Striden om Wesnoth"
 
-#: src/game.cpp:800 src/multiplayer_connect.cpp:104
+#: src/game.cpp:801 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6555,64 +6578,64 @@ msgstr ""
 "Detta sparade spel är från en annan version av Wesnoth. Vill du försöka "
 "öppna spelet ändå?"
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:535
-#: src/playlevel.cpp:749
+#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
+#: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game.cpp:916
+#: src/game.cpp:917
 msgid "There are no campaigns available"
 msgstr "Det finns inga kampanjer att spela"
 
-#: src/game.cpp:924
+#: src/game.cpp:925
 msgid "Choose the campaign you want to play:"
 msgstr "Välj kampanj"
 
-#: src/game.cpp:947
+#: src/game.cpp:948
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Join Official Server"
 msgstr "Anslut till den officiella servern"
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Striden om Wesnoths officiella spelserver"
 
-#: src/game.cpp:966 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Anslut till spel"
 
-#: src/game.cpp:966
+#: src/game.cpp:967
 msgid "Join a server or hosted game"
 msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
-#: src/game.cpp:967
+#: src/game.cpp:968
 msgid "Host Multiplayer Game"
 msgstr "Var spelvärd för flera spelare"
 
-#: src/game.cpp:967
+#: src/game.cpp:968
 msgid "Host a game without using a server"
 msgstr "Var värd för ett spel utan att använda en server"
 
-#: src/game.cpp:970 src/multiplayer_client.cpp:269
+#: src/game.cpp:971 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Logga in"
 
-#: src/game.cpp:1050
+#: src/game.cpp:1051
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1052
 msgid "Choose your preferred language"
 msgstr "Välj språk"
 
-#: src/game.cpp:1136
+#: src/game.cpp:1137
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Ett skärmfel uppstod. Avbryter.\n"
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Typsnittsfel. Avbryter.\n"
 
@@ -6636,11 +6659,11 @@ msgstr "XP för nästa nivå"
 msgid "attacks"
 msgstr "attacker"
 
-#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1901
+#: src/help.cpp:646 src/help.cpp:647 src/playturn.cpp:1941
 msgid "Name"
 msgstr "Namn"
 
-#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1900
+#: src/help.cpp:650 src/help.cpp:651 src/playturn.cpp:1940
 msgid "Type"
 msgstr "Typ"
 
@@ -6704,7 +6727,7 @@ msgstr "Nästa trupp"
 msgid "End Unit Turn"
 msgstr "Avsluta truppens drag"
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1484
+#: src/hotkeys.cpp:122 src/playturn.cpp:1524
 msgid "Leader"
 msgstr "Ledare"
 
@@ -6740,7 +6763,7 @@ msgstr "Accelererad"
 msgid "Unit Description"
 msgstr "Truppbeskrivning"
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1367
+#: src/hotkeys.cpp:131 src/playturn.cpp:1349
 msgid "Rename Unit"
 msgstr "Döp om truppen"
 
@@ -6792,11 +6815,11 @@ msgstr "Inställningar"
 msgid "Scenario Objectives"
 msgstr "Scenariomål"
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1953
+#: src/hotkeys.cpp:146 src/playturn.cpp:1993
 msgid "Unit List"
 msgstr "Trupplista"
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2041
+#: src/hotkeys.cpp:147 src/playturn.cpp:2081
 msgid "Statistics"
 msgstr "Statistik"
 
@@ -6932,7 +6955,7 @@ msgstr "Hoppa över"
 msgid "The End"
 msgstr "Slut"
 
-#: src/language.cpp:30
+#: src/language.cpp:31
 msgid "System default language"
 msgstr "Systemets standardspråk"
 
@@ -6964,7 +6987,7 @@ msgstr "Iterationer"
 msgid "Bump Size"
 msgstr "Kullstorlek"
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1485
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1525
 msgid "Villages"
 msgstr "Byar"
 
@@ -7121,8 +7144,8 @@ msgid "Receiving game list..."
 msgstr "Hämtar spellista..."
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:734 src/playturn.cpp:1484
-#: src/playturn.cpp:1489 src/playturn.cpp:1576
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1524
+#: src/playturn.cpp:1529 src/playturn.cpp:1616
 msgid "Gold"
 msgstr "Guld"
 
@@ -7284,60 +7307,60 @@ msgstr "Var åskådare till spel"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: src/playlevel.cpp:674
+#: src/playlevel.cpp:672
 msgid "Game Over"
 msgstr "Spelet är slut"
 
-#: src/playlevel.cpp:675
+#: src/playlevel.cpp:673
 msgid "The game is over."
 msgstr "Spelet är slut."
 
-#: src/playlevel.cpp:688
+#: src/playlevel.cpp:686
 msgid "Defeat"
 msgstr "Nederlag"
 
-#: src/playlevel.cpp:689
+#: src/playlevel.cpp:687
 msgid "You have been defeated!"
 msgstr "Du har förlorat!"
 
-#: src/playlevel.cpp:721
+#: src/playlevel.cpp:719
 msgid "Victory"
 msgstr "Seger"
 
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:720
 msgid "You have emerged victorious!"
 msgstr "Du har segrat!"
 
-#: src/playlevel.cpp:724
+#: src/playlevel.cpp:722
 msgid "Remaining gold"
 msgstr "Resterande guld"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:725
 msgid "Early finish bonus"
 msgstr "Bonus för tidig seger"
 
-#: src/playlevel.cpp:729
+#: src/playlevel.cpp:727
 msgid "per turn"
 msgstr "per drag"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:728
 msgid "Turns finished early"
 msgstr "Tidigt avklarade drag"
 
-#: src/playlevel.cpp:732
+#: src/playlevel.cpp:730
 msgid "Bonus"
 msgstr "Bonus"
 
-#: src/playlevel.cpp:739
+#: src/playlevel.cpp:737
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "80% av guldet bibehålls till nästa scenario"
 
-#: src/playlevel.cpp:740
+#: src/playlevel.cpp:738
 msgid "Retained Gold"
 msgstr "Bibehållet guld"
 
-#: src/playlevel.cpp:764
+#: src/playlevel.cpp:762
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7349,58 +7372,58 @@ msgstr ""
 msgid "It is now your turn"
 msgstr "Nu är det din tur"
 
-#: src/playturn.cpp:503
+#: src/playturn.cpp:490
 msgid "Attacker"
 msgstr "Anfallare"
 
-#: src/playturn.cpp:505
+#: src/playturn.cpp:492
 msgid "Defender"
 msgstr "Försvarare"
 
-#: src/playturn.cpp:529 src/playturn.cpp:652
+#: src/playturn.cpp:516 src/playturn.cpp:636
 msgid "Damage Calculations"
 msgstr "Skadeberäkning"
 
-#: src/playturn.cpp:618
+#: src/playturn.cpp:602
 msgid "Melee"
 msgstr "Närstrid"
 
-#: src/playturn.cpp:631 src/reports.cpp:210
+#: src/playturn.cpp:615 src/reports.cpp:210
 msgid "vs"
 msgstr "mot"
 
-#: src/playturn.cpp:664
+#: src/playturn.cpp:648
 msgid "Attack Enemy"
 msgstr "Anfall fiende"
 
-#: src/playturn.cpp:665
+#: src/playturn.cpp:649
 msgid "Choose weapon"
 msgstr "Välj vapen:"
 
-#: src/playturn.cpp:1154
+#: src/playturn.cpp:1136
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 "Du har ännu inte påbörjat ditt drag. Vill du verkligen avsluta ditt drag?"
 
-#: src/playturn.cpp:1163 src/playturn.cpp:1168
+#: src/playturn.cpp:1145 src/playturn.cpp:1150
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
 
-#: src/playturn.cpp:1184
+#: src/playturn.cpp:1166
 msgid "Auto-Save"
 msgstr "Automatsparat"
 
-#: src/playturn.cpp:1186
+#: src/playturn.cpp:1168
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Kunde inte automatspara spelet. Var vänlig och spara spelet manuellt."
 
-#: src/playturn.cpp:1412 src/playturn.cpp:1426
+#: src/playturn.cpp:1394 src/playturn.cpp:1408
 msgid "Error"
 msgstr "Fel"
 
-#: src/playturn.cpp:1412
+#: src/playturn.cpp:1394
 msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
@@ -7408,39 +7431,39 @@ msgstr ""
 "Du får inte använda kolon eller någon form av snedstreck när du sparar ett "
 "spel. Var vänlig välj ett annat namn."
 
-#: src/playturn.cpp:1423
+#: src/playturn.cpp:1405
 msgid "Saved"
 msgstr "Sparat"
 
-#: src/playturn.cpp:1423
+#: src/playturn.cpp:1405
 msgid "The game has been saved"
 msgstr "Spelet har sparats"
 
-#: src/playturn.cpp:1485
+#: src/playturn.cpp:1525
 msgid "Units"
 msgstr "Trupper"
 
-#: src/playturn.cpp:1486
+#: src/playturn.cpp:1526
 msgid "Income"
 msgstr "Inkomst"
 
-#: src/playturn.cpp:1486
+#: src/playturn.cpp:1526
 msgid "Upkeep"
 msgstr "Underhåll"
 
-#: src/playturn.cpp:1582
+#: src/playturn.cpp:1622
 msgid "You have no units available to recruit."
 msgstr "Det finns inte några trupper tillgängliga att värva till armén."
 
-#: src/playturn.cpp:1595
+#: src/playturn.cpp:1635
 msgid "Recruit unit"
 msgstr "Rekrytera trupp"
 
-#: src/playturn.cpp:1624
+#: src/playturn.cpp:1664
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
 
-#: src/playturn.cpp:1682
+#: src/playturn.cpp:1722
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
@@ -7448,7 +7471,7 @@ msgstr ""
 "Ers nåd, denna trupp är erfaren och har befordrats. Vill du verkligen "
 "avskeda $noun?"
 
-#: src/playturn.cpp:1684
+#: src/playturn.cpp:1724
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
@@ -7456,20 +7479,20 @@ msgstr ""
 "Ers nåd, denna trupp kommer snart att avancera till en högre nivå. Vill du "
 "verkligen avskeda $noun?"
 
-#: src/playturn.cpp:1689
+#: src/playturn.cpp:1729
 msgid "her"
 msgstr "henne"
 
-#: src/playturn.cpp:1689
+#: src/playturn.cpp:1729
 msgid "him"
 msgstr "honom"
 
-#: src/playturn.cpp:1722
+#: src/playturn.cpp:1762
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr ""
 "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
 
-#: src/playturn.cpp:1724
+#: src/playturn.cpp:1764
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7477,92 +7500,92 @@ msgstr ""
 "Det finns inga trupper att återkalla.\n"
 "(Du måste ha överlevande veteraner från ett tidigare scenario)"
 
-#: src/playturn.cpp:1728
+#: src/playturn.cpp:1768
 msgid "You must have at least"
 msgstr "Du måste ha minst"
 
-#: src/playturn.cpp:1730
+#: src/playturn.cpp:1770
 msgid "gold pieces to recall a unit"
 msgstr "guld för att kunna återkalla en trupp"
 
-#: src/playturn.cpp:1753
+#: src/playturn.cpp:1793
 msgid "Dismiss Unit"
 msgstr "Avskeda trupp"
 
-#: src/playturn.cpp:1766
+#: src/playturn.cpp:1806
 msgid "Select unit"
 msgstr "Välj trupp"
 
-#: src/playturn.cpp:1810
+#: src/playturn.cpp:1850
 msgid "Message"
 msgstr "Meddelande"
 
-#: src/playturn.cpp:1810
+#: src/playturn.cpp:1850
 msgid "Send to allies only"
 msgstr "Skicka enbart till allierade"
 
-#: src/playturn.cpp:1905
+#: src/playturn.cpp:1945
 msgid "Location"
 msgstr "Position"
 
-#: src/playturn.cpp:1987 src/playturn.cpp:2047
+#: src/playturn.cpp:2027 src/playturn.cpp:2087
 msgid "Recruits"
 msgstr "Rekryterade"
 
-#: src/playturn.cpp:1993 src/playturn.cpp:2051
+#: src/playturn.cpp:2033 src/playturn.cpp:2091
 msgid "Recalls"
 msgstr "Återkallade"
 
-#: src/playturn.cpp:1999 src/playturn.cpp:2055
+#: src/playturn.cpp:2039 src/playturn.cpp:2095
 msgid "Advancements"
 msgstr "Befordringar"
 
-#: src/playturn.cpp:2005 src/playturn.cpp:2059
+#: src/playturn.cpp:2045 src/playturn.cpp:2099
 msgid "Losses"
 msgstr "Förluster"
 
-#: src/playturn.cpp:2011 src/playturn.cpp:2063
+#: src/playturn.cpp:2051 src/playturn.cpp:2103
 msgid "Kills"
 msgstr "Dödsfall"
 
-#: src/playturn.cpp:2017
+#: src/playturn.cpp:2057
 msgid "Damage Inflicted"
 msgstr "Åsamkad skada"
 
-#: src/playturn.cpp:2023
+#: src/playturn.cpp:2063
 msgid "Damage Taken"
 msgstr "Mottagen skada"
 
-#: src/playturn.cpp:2029
+#: src/playturn.cpp:2069
 msgid "Damage Inflicted (EV)"
 msgstr "Åsamkad skada (EV)"
 
-#: src/playturn.cpp:2036
+#: src/playturn.cpp:2076
 msgid "Damage Taken (EV)"
 msgstr "Mottagen skada (EV)"
 
-#: src/playturn.cpp:2078
+#: src/playturn.cpp:2118
 msgid "Search"
 msgstr "Sök"
 
-#: src/playturn.cpp:2088
+#: src/playturn.cpp:2128
 msgid "prompt^Command:"
 msgstr "Kommando:"
 
-#: src/playturn.cpp:2099
+#: src/playturn.cpp:2139
 msgid "Chat Log"
 msgstr "Chatlogg"
 
-#: src/playturn.cpp:2164
+#: src/playturn.cpp:2204
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 "Kunde inte finna etikett eller trupp som innehöll textsträngen '$search'."
 
-#: src/playturn.cpp:2238
+#: src/playturn.cpp:2278
 msgid "Place Label"
 msgstr "Sätt ut etikett"
 
-#: src/playturn.cpp:2239
+#: src/playturn.cpp:2279
 msgid "Label"
 msgstr "Etikett"
 
@@ -7752,15 +7775,15 @@ msgstr "-- Wesnoths annaler"
 msgid "strikes"
 msgstr "slag"
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "chaotic"
 msgstr "kaotisk"
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "lawful"
 msgstr "lagenlig"
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "neutral"
 msgstr "neutral"
 
