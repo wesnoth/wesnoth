@@ -1353,6 +1353,10 @@ std::string config::interpolate_variables_into_string(const std::string& str, co
 {
 	std::string res = str;
 	do_interpolation(res,0,symbols);
+
+	//remove any pipes in the string, as they are used simply to seperate variables
+	res.erase(std::remove(res.begin(),res.end(),'|'),res.end());
+
 	return res;
 }
 

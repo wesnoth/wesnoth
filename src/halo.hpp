@@ -30,6 +30,10 @@ private:
 ///returns the handle to the halo object
 int add(int x, int y, const std::string& image);
 
+///function to set the position of an existing haloing
+///effect, according to its handle
+void set_location(int handle, int x, int y);
+
 ///function to remove the halo with the given handle
 void remove(int handle);
 

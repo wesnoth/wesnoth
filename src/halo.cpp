@@ -1,7 +1,9 @@
 #include "halo.hpp"
 #include "image.hpp"
 #include "sdl_utils.hpp"
+#include "util.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <map>
 
@@ -16,13 +18,40 @@ class effect
 public:
 	effect(int xpos, int ypos, const std::string& img);
 
+	void set_location(int x, int y);
+
 	void render();
 	void unrender();
 private:
 
+	const std::string& current_image();
 	void rezoom();
 
-	std::string image_;
+	struct frame {
+		frame() : time(50) {}
+
+		frame(const std::string& str) : time(50) {
+			if(std::find(str.begin(),str.end(),':') != str.end()) {
+				const std::vector<std::string>& items = config::split(str,':');
+				if(items.size() > 1) {
+					file = items.front();
+					time = lexical_cast<int>(items.back());
+					return;
+				}
+			}
+
+			file = str;
+		}
+
+		int time;
+		std::string file;
+	};
+
+	std::vector<frame> images_;
+	std::string current_image_;
+
+	int start_cycle_, cycle_time_;
+	
 	int x_, y_;
 	double zoom_;
 	shared_sdl_surface surf_, buffer_;
@@ -37,15 +66,54 @@ bool hide_halo = false;
 static const SDL_Rect empty_rect = {0,0,0,0};
 
 effect::effect(int xpos, int ypos, const std::string& img)
-: image_(img), x_(xpos), y_(ypos), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
+: start_cycle_(-1), cycle_time_(50), x_(xpos), y_(ypos), zoom_(disp->zoom()), surf_(NULL), buffer_(NULL), rect_(empty_rect)
 {
+	if(std::find(img.begin(),img.end(),',') != img.end()) {
+		const std::vector<std::string>& imgs = config::split(img,',');
+		images_.resize(imgs.size());
+		std::copy(imgs.begin(),imgs.end(),images_.begin());
+
+		cycle_time_ = 0;
+		for(std::vector<frame>::const_iterator i = images_.begin(); i != images_.end(); ++i) {
+			cycle_time_ += i->time;
+		}
+	}
+
+	if(images_.empty()) {
+		images_.push_back(img);
+	}
+
 	assert(disp != NULL);
 
-	const gamemap::location zero_loc(0,0);
-	x_ -= disp->get_location_x(zero_loc);
-	y_ -= disp->get_location_y(zero_loc);
+	set_location(xpos,ypos);
 
+	current_image_ = images_.front().file;
 	rezoom();
+}
+
+void effect::set_location(int x, int y)
+{
+	const gamemap::location zero_loc(0,0);
+	x_ = x - disp->get_location_x(zero_loc);
+	y_ = y - disp->get_location_y(zero_loc);
+}
+
+const std::string& effect::current_image()
+{
+	assert(!images_.empty());
+	if(images_.size() == 1 || cycle_time_ <= 0) {
+		return images_.front().file;
+	} else {
+		int current_time = (SDL_GetTicks() - start_cycle_)%cycle_time_;
+		for(std::vector<frame>::const_iterator i = images_.begin(); i != images_.end(); ++i) {
+			current_time -= i->time;
+			if(current_time < 0) {
+				return i->file;
+			}
+		}
+	}
+
+	return images_.front().file;
 }
 
 void effect::rezoom()
@@ -56,7 +124,7 @@ void effect::rezoom()
 
 	zoom_ = new_zoom;
 
-	surf_.assign(image::get_image(image_,image::UNSCALED));
+	surf_.assign(image::get_image(current_image_,image::UNSCALED));
 	if(surf_ != NULL && zoom_ != 1.0) {
 		surf_.assign(scale_surface(surf_,surf_->w*zoom_,surf_->h*zoom_));
 	}
@@ -64,11 +132,17 @@ void effect::rezoom()
 
 void effect::render()
 {
-	if(disp == NULL || surf_ == NULL) {
+	if(disp == NULL) {
 		return;
 	}
 
-	if(zoom_ != disp->zoom()) {
+	if(start_cycle_ == -1) {
+		start_cycle_ = SDL_GetTicks();
+	}
+
+	const std::string& img = current_image();
+	if(surf_ == NULL || zoom_ != disp->zoom() || current_image_ != img) {
+		current_image_ = img;
 		rezoom();
 	}
 
@@ -150,6 +224,14 @@ int add(int x, int y, const std::string& image)
 	const int id = halo_id++;
 	haloes.insert(std::pair<int,effect>(id,effect(x,y,image)));
 	return id;
+}
+
+void set_location(int handle, int x, int y)
+{
+	const std::map<int,effect>::iterator itor = haloes.find(handle);
+	if(itor != haloes.end()) {
+		itor->second.set_location(x,y);
+	}
 }
 
 void remove(int handle)

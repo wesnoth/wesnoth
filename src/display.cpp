@@ -1031,7 +1031,7 @@ void display::draw_halo_on_tile(int x, int y)
 	const halo_map::iterator halo_it = haloes_.find(loc);
 
 	//see if there is a unit on this tile
-	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
+	const unit_map::const_iterator it = fogged(x,y) ? units_.end() : units_.find(gamemap::location(x,y));
 
 	if(halo_it != haloes_.end() && it == units_.end()) {
 		halo::remove(halo_it->second);

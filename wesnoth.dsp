@@ -148,6 +148,10 @@ SOURCE=.\src\events.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\widgets\file_chooser.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\filesystem.cpp
 # End Source File
 # Begin Source File
@@ -169,6 +173,10 @@ SOURCE=.\src\game_events.cpp
 # Begin Source File
 
 SOURCE=.\src\gamestatus.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\halo.cpp
 # End Source File
 # Begin Source File
 
@@ -417,6 +425,10 @@ SOURCE=.\src\game_events.hpp
 # Begin Source File
 
 SOURCE=.\src\gamestatus.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\halo.hpp
 # End Source File
 # Begin Source File
 

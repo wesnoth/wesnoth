@@ -527,15 +527,23 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 	return best_loc;
 }
 
-std::string generate_name(const unit_race& name_generator, const std::string& id)
+std::string generate_name(const unit_race& name_generator, const std::string& id, std::string* base_name=NULL,
+						  std::map<std::string,std::string>* additional_symbols=NULL)
 {
 	const std::vector<std::string>& options = config::split(string_table[id]);
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
 		const std::string& name = name_generator.generate_name(unit_race::MALE);
+		if(base_name != NULL) {
+			*base_name = name;
+		}
 		std::map<std::string,std::string> table;
-		table["name"] = name;
-		return config::interpolate_variables_into_string(options[choice],&table);
+		if(additional_symbols == NULL) {
+			additional_symbols = &table;
+		}
+
+		(*additional_symbols)["name"] = name;
+		return config::interpolate_variables_into_string(options[choice],additional_symbols);
 	}
 
 	return "";
@@ -700,6 +708,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	//We will also attempt to source a river from each lake.
 	std::set<location> lake_locs;
 
+	std::map<location,std::string> river_names, lake_names;
+
 	const int nlakes = max_lakes > 0 ? (rand()%max_lakes) : 0;
 	for(size_t lake = 0; lake != nlakes; ++lake) {
 		for(int tries = 0; tries != 100; ++tries) {
@@ -709,12 +719,18 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				const std::vector<location> river = generate_river(heights,terrain,x,y,atoi(cfg["river_frequency"].c_str()));
 				
 				if(river.empty() == false && labels != NULL) {
-					const std::string& name = generate_name(name_generator,"river_name");
+					std::string base_name;
+					const std::string& name = generate_name(name_generator,"river_name",&base_name);
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
+
+						const gamemap::location loc(r->x-width/3,r->y-height/3);
+
 						if(((r - river.begin())%name_frequency) == name_frequency/2) {
-							labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(r->x-width/3,r->y-height/3),name));
+							labels->insert(std::pair<gamemap::location,std::string>(loc,name));
 						}
+
+						river_names.insert(std::pair<location,std::string>(loc,base_name));
 					}
 				}
 
@@ -723,21 +739,37 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				if(res && labels != NULL) {
 					bool touches_other_lake = false;
 
+					std::string base_name;
+					const std::string& name = generate_name(name_generator,"lake_name",&base_name);
+
+					std::set<location>::const_iterator i;
+
 					//only generate a name if the lake hasn't touched any other lakes, so that we
 					//don't end up with one big lake with multiple names
-					for(std::set<location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+					for(i = locs.begin(); i != locs.end(); ++i) {
 						if(lake_locs.count(*i) != 0) {
 							touches_other_lake = true;
+
+							//reassign the name of this lake to be the same as the other lake
+							const location loc(i->x-width/3,i->y-height/3);
+							const std::map<location,std::string>::const_iterator other_name = lake_names.find(loc);
+							if(other_name != lake_names.end()) {
+								base_name = other_name->second;
+							}
 						}
 
 						lake_locs.insert(*i);
 					}
 
 					if(!touches_other_lake) {
-						const std::string& name = generate_name(name_generator,"lake_name");
 						const gamemap::location loc(x-width/3,y-height/3);
 						labels->erase(loc);
 						labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+					}
+
+					for(i = locs.begin(); i != locs.end(); ++i) {
+						const location loc(i->x-width/3,i->y-height/3);
+						lake_names.insert(std::pair<location,std::string>(*i,base_name));
 					}
 				}
 
@@ -861,6 +893,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		nroads += castles.size()*castles.size();
 	}
 
+	std::set<location> bridges;
+
 	road_path_calculator calc(terrain,cfg);
 	const road_path_calculator_wrapper calc_wrapper(calc);
 	for(size_t road = 0; road != nroads; ++road) {
@@ -961,7 +995,9 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					if(labels != NULL && on_bridge == false) {
 						on_bridge = true;
 						const std::string& name = generate_name(name_generator,"bridge_name");
-						labels->insert(std::pair<gamemap::location,std::string>(gamemap::location(x-width/3,y-height/3),name));
+						const location loc(x-width/3,y-height/3);
+						labels->insert(std::pair<gamemap::location,std::string>(loc,name));
+						bridges.insert(loc);
 					}
 
 					if(direction != -1) {
@@ -1039,6 +1075,8 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 			(*village_ptr)++;
 			village_ptr = (village_ptr == &village_x ? &village_y : &village_x);
 		}
+
+		std::set<std::string> used_names;
 	
 		for(size_t vx = 0; vx < width; vx += village_x) {
 			for(size_t vy = rand()%village_y; vy < height; vy += village_y) {
@@ -1060,7 +1098,71 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 							if(labels != NULL && naming_cfg.empty() == false) {
 								const gamemap::location loc(res.x-width/3,res.y-height/3);
-								labels->insert(std::pair<gamemap::location,std::string>(loc,village_names_generator.generate_name(unit_race::MALE)));
+
+								gamemap::location adj[6];
+								get_adjacent_tiles(loc,adj);
+
+								std::string name_type = "village_name";
+
+								const std::string field = "g", forest = "f", mountain = "m", hill = "h";
+
+								size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
+
+								std::map<std::string,std::string> symbols;
+
+								size_t n;
+								for(n = 0; n != 6; ++n) {
+									const std::map<location,std::string>::const_iterator river_name = river_names.find(adj[n]);
+									if(river_name != river_names.end()) {
+										symbols["river"] = river_name->second;
+										name_type = "village_name_river";
+
+										if(bridges.count(loc)) {
+											name_type = "village_name_river_bridge";
+										}
+
+										break;
+									}
+
+									const std::map<location,std::string>::const_iterator lake_name = lake_names.find(adj[n]);
+									if(lake_name != lake_names.end()) {
+										symbols["lake"] = lake_name->second;
+										name_type = "village_name_lake";
+										break;
+									}
+									
+									const gamemap::TERRAIN terr = terrain[adj[n].x+width/3][adj[n].y+height/3];
+
+									if(std::count(field.begin(),field.end(),terr) > 0) {
+										++field_count;
+									} else if(std::count(forest.begin(),forest.end(),terr) > 0) {
+										++forest_count;
+									} else if(std::count(hill.begin(),hill.end(),terr) > 0) {
+										++hill_count;
+									} else if(std::count(mountain.begin(),mountain.end(),terr) > 0) {
+										++mountain_count;
+									}
+								}
+
+								if(n == 6) {
+									if(field_count == 6) {
+										name_type = "village_name_grassland";
+									} else if(forest_count >= 2) {
+										name_type = "village_name_forest";
+									} else if(mountain_count >= 1) {
+										name_type = "village_name_mountain";
+									} else if(hill_count >= 2) {
+										name_type = "village_name_hill";
+									}
+								}
+
+								std::string name;
+								for(size_t ntry = 0; ntry != 30 && (ntry == 0 || used_names.count(name) > 0); ++ntry) {
+									name = generate_name(village_names_generator,name_type,NULL,&symbols);
+								}
+
+								used_names.insert(name);
+								labels->insert(std::pair<gamemap::location,std::string>(loc,name));
 							}
 						}
 					}

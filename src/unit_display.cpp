@@ -117,7 +117,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		disp.draw_unit(xpos,ypos,image,false,1.0,0,submerge);
 
 		util::scoped_resource<int,halo::remover> halo_effect(0);
-		if(halo.empty() == false) {
+		if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
 			halo_effect.assign(halo::add(xpos+disp.hex_width()/2,ypos+disp.hex_size()/2,halo));
 		}
 
@@ -259,6 +259,11 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	int ticks = SDL_GetTicks();
 
 	bool shown_label = false;
+
+	util::scoped_resource<int,halo::remover> missile_halo_effect(0), unit_halo_effect(0);
+	const std::string* missile_halo_image = NULL;
+	const std::string* unit_halo_image = NULL;
+	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
 	
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
@@ -279,19 +284,25 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			played_hit_sound = true;
 		}
 
-		util::scoped_resource<int,halo::remover> unit_halo_effect(0);
-		const std::string* unit_halo = NULL;
-		int halo_x = 0, halo_y = 0;
-		const std::string* unit_image = attack.get_frame(i,NULL,attack_type::UNIT_FRAME,attack_type::VERTICAL,&unit_halo,&halo_x,&halo_y);
-
-		if(unit_halo != NULL) {
-			if(att->second.facing_left() == false) {
-				halo_x *= -1;
-			}
-
-			unit_halo_effect.assign(halo::add(disp.get_location_x(a)+disp.hex_width()/2 + halo_x*disp.zoom(),disp.get_location_y(a)+disp.hex_size()/2 + halo_y*disp.zoom(),*unit_halo));
+		const std::string* new_halo = NULL;
+		int new_halo_x = 0, new_halo_y = 0;
+		const std::string* unit_image = attack.get_frame(i,NULL,attack_type::UNIT_FRAME,attack_type::VERTICAL,&new_halo,&new_halo_x,&new_halo_y);
+		if(att->second.facing_left() == false) {
+			new_halo_x *= -1;
 		}
 
+		if(unit_halo_image != new_halo || unit_halo_x != new_halo_x || unit_halo_y != new_halo_y) {
+			
+			unit_halo_image = new_halo;
+			unit_halo_x = new_halo_x;
+			unit_halo_y = new_halo_y;
+
+			if(unit_halo_image != NULL && !disp.fogged(a.x,a.y)) {
+				unit_halo_effect.assign(halo::add(disp.get_location_x(a)+disp.hex_width()/2 + unit_halo_x*disp.zoom(),disp.get_location_y(a)+disp.hex_size()/2 + unit_halo_y*disp.zoom(),*unit_halo_image));
+			} else {
+				unit_halo_effect.assign(0);
+			}
+		}
 
 		if(unit_image == NULL) {
 			unit_image = &att->second.type().image_fighting(attack_type::LONG_RANGE);
@@ -337,22 +348,20 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
-		util::scoped_resource<int,halo::remover> halo_effect(0);
-
 		if(i >= 0 && i < real_last_missile && !hide) {
 			const int missile_frame = i + first_missile;
 
-			const std::string* halo_image = NULL;
-			int halo_x = 0, halo_y = 0;
+			const std::string* new_halo = NULL;
+			int new_halo_x = 0, new_halo_y = 0;
 			const std::string* missile_image = attack.get_frame(missile_frame,NULL,
-			                                                    attack_type::MISSILE_FRAME,dir,&halo_image,&halo_x,&halo_y);
+			                                                    attack_type::MISSILE_FRAME,dir,&new_halo,&new_halo_x,&new_halo_y);
 
 			if(att->second.facing_left() == false) {
-				halo_x *= -1;
+				new_halo_x *= -1;
 			}
 
-			halo_x *= disp.zoom();
-			halo_y *= disp.zoom();
+			new_halo_x *= disp.zoom();
+			new_halo_y *= disp.zoom();
 
 			static const std::string default_missile(game_config::missile_n_image);
 			static const std::string default_diag_missile(game_config::missile_ne_image);
@@ -374,15 +383,30 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 				pos = 0.0;
 			}
 
-			const int xpos = int((xsrc+halo_x)*pos + xdst*(1.0-pos));
-			const int ypos = int((ysrc+halo_y)*pos + ydst*(1.0-pos));
+			const int xpos = int((xsrc+new_halo_x)*pos + xdst*(1.0-pos));
+			const int ypos = int((ysrc+new_halo_y)*pos + ydst*(1.0-pos));
 
 			if(img != NULL) {
 				disp.draw_unit(xpos,ypos,img,vflip);
 			}
 
-			if(halo_image != NULL) {
-				halo_effect.assign(halo::add(xpos+disp.hex_width()/2,ypos+disp.hex_size()/2,*halo_image));
+			const int halo_xpos = xpos+disp.hex_width()/2;
+			const int halo_ypos = ypos+disp.hex_size()/2;
+
+			if(missile_halo_image != new_halo || missile_halo_x != new_halo_x || missile_halo_y != new_halo_y) {
+				missile_halo_image = new_halo;
+				missile_halo_x = new_halo_x;
+				missile_halo_y = new_halo_y;
+
+				if(missile_halo_image != NULL && !disp.fogged(b.x,b.y)) {
+					missile_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*missile_halo_image));
+				} else {
+					missile_halo_effect.assign(0);
+				}
+			}
+
+			else if(missile_halo_effect != 0) {
+				halo::set_location(missile_halo_effect,halo_xpos,halo_ypos);
 			}
 		}
 
@@ -398,6 +422,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		disp.update_display();
 	}
+
+	unit_halo_effect.assign(0);
+	missile_halo_effect.assign(0);
 
 	if(damage > 0 && def->second.gets_hit(damage)) {
 		dead = true;
@@ -543,6 +570,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	bool shown_label = false;
 
+	util::scoped_resource<int,halo::remover> halo_effect(0);
+	const std::string* halo_image = NULL;
+	int halo_x = -1, halo_y = -1;
+
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
 
@@ -596,18 +627,19 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			disp.draw_tile(leader_loc.x,leader_loc.y);
 		}
 
-		const std::string* halo_image = NULL;
-		int halo_x = 0, halo_y = 0;
+		const std::string* new_halo_image = NULL;
+		int new_halo_x = 0, new_halo_y = 0;
 
 		int xoffset = 0;
 		const std::string* unit_image = attack.get_frame(i,&xoffset,attack_type::UNIT_FRAME,attack_type::VERTICAL,
-		                                                 &halo_image,&halo_x,&halo_y);
+		                                                 &new_halo_image,&new_halo_x,&new_halo_y);
+
 		if(!attacker.facing_left()) {
 			xoffset *= -1;
-			halo_x *= -1;
+			new_halo_x *= -1;
 		}
 
-		halo_x *= disp.zoom();
+		new_halo_x *= disp.zoom();
 
 		xoffset = int(double(xoffset)*disp.zoom());
 
@@ -624,9 +656,22 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 
-		util::scoped_resource<int,halo::remover> halo_effect(0);
-		if(halo_image != NULL) {
-			halo_effect.assign(halo::add(posx+disp.hex_width()/2,posy+disp.hex_size()/2,*halo_image));
+		const int halo_xpos = posx+disp.hex_width()/2;
+		const int halo_ypos = posy+disp.hex_size()/2;
+
+		if(new_halo_image != halo_image || new_halo_x != halo_x || new_halo_y != halo_y) {
+			halo_image = new_halo_image;
+			halo_x = new_halo_x;
+			halo_y = new_halo_y;
+			if(halo_image != NULL && (!disp.fogged(b.x,b.y) || !disp.fogged(a.x,a.y))) {
+				halo_effect.assign(halo::add(halo_xpos,halo_ypos,*halo_image));
+			} else {
+				halo_effect.assign(0);
+			}
+		}
+
+		else if(halo_effect != 0) {
+			halo::set_location(halo_effect,halo_xpos,halo_ypos);
 		}
 
 		const int height_adjust = int(src_height_adjust*pos + dst_height_adjust*(1.0-pos));
@@ -645,6 +690,8 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		disp.update_display();
 	}
+
+	halo_effect.assign(0);
 
 	disp.hide_unit(gamemap::location());
 
