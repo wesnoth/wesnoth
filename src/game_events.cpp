@@ -313,8 +313,13 @@ bool event_handler::handle_event_command(const queued_event& event_info,
 	else if(cmd == "unstone") {
 		const vconfig filter = cfg.child("filter");
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(i->second.stone() && (!filter.null() || game_events::unit_matches_filter(i, filter))) {
-				i->second.remove_flag("stone");
+			if(i->second.stone()) {
+				if(!filter.null()) {
+					if(game_events::unit_matches_filter(i, filter))
+						i->second.remove_flag("stone");
+				} else {
+					i->second.remove_flag("stone");
+				}
 			}
 		}
 	}
