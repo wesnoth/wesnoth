@@ -182,7 +182,7 @@ paths::route a_star_search(const gamemap::location& src,
 		assert(open_list.size() == open_list_ordered.size());
 
 		const list_map::iterator lowest_in_open = open_list.find(open_list_ordered.begin()->second);
-		assert(lowest != open_list.end());
+		assert(lowest_in_open != open_list.end());
 
 		//move the lowest element from the open list to the closed list
 		closed_list.erase(lowest_in_open->first);
