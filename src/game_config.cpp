@@ -11,9 +11,7 @@
    See the COPYING file for more details.
 */
 #include "game_config.hpp"
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
+#include "wesconfig.h"
 
 #include <cstdlib>
 

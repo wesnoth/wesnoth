@@ -55,11 +55,7 @@
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
 
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#else
-# warning "This platform will need to define parameters like PACKAGE and LOCALEDIR"
-#endif
+#include "wesconfig.h"
 
 #include <cmath>
 #include <cstdlib>

@@ -25,9 +25,7 @@
 #include "widgets/button.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/menu.hpp"
-#ifdef HAVE_CONFIG_H
-# include "config.h"
-#endif
+#include "wesconfig.h"
 
 #include <cstdlib>
 #include <iostream>

@@ -51,7 +51,7 @@
 #include <iostream>
 #include <set>
 
-#include "config.h"
+#include "wesconfig.h"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
