@@ -35,4 +35,4 @@ wesnothd_SOURCES = game.cpp \
 		   ../zipios++/xcoll.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..
-AM_LDFLAGS = @SDL_LIBS@ @SDL_NET_LIBS@ $(LIBZIPIOS)
+LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)

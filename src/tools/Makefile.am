@@ -8,8 +8,6 @@ bin_PROGRAMS = exploder cutter
 
 AM_CXXFLAGS = @SDL_CFLAGS@ @PNG_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ \
 	      -DLOCALEDIR=\"$(LOCALEDIR)\" -I$(srcdir)/..
-AM_LDFLAGS = @SDL_LIBS@
-
 
 exploder_SOURCES = exploder.cpp \
 		   exploder_utils.cpp \
@@ -47,7 +45,7 @@ cutter_SOURCES = cutter.cpp \
 		   ../gettext.cpp
 
 
-exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@ $(LIBZIPIOS)
-cutter_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@ $(LIBZIPIOS)
+exploder_LDADD = @SDL_IMAGE_LIBS@ @PNG_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+cutter_LDADD = @SDL_IMAGE_LIBS@ @PNG_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
 
 endif

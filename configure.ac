@@ -495,7 +495,7 @@ AC_SUBST([FREETYPE_LIBS])
 AC_LANG(C++)
 AC_MSG_CHECKING([for libzipios++])
 OLD_LIBS="$LIBS"
-LIBS="$LIBS -lzipios"
+LIBS="-lzipios -lz"
 LIBZIPIOS=
 AC_LINK_IFELSE([AC_LANG_SOURCE([
 #include <zipios++/dircoll.h>
@@ -505,7 +505,7 @@ int main(int argc, char **argv)
 }
 	])],
 	[AC_MSG_RESULT(yes)
-	LIBZIPIOS=-lzipios
+	LIBZIPIOS="-lzipios -lz"
 	AC_DEFINE([USE_ZIPIOS],[1],[Make use of the zipios++ library to read data in zip files])],
 	[AC_MSG_RESULT(no)
 	AC_MSG_WARN([*** libzipios++ not found - support for ZIP files is disabled])])
