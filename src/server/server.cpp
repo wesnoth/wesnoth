@@ -8,6 +8,7 @@
 #include "player.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdlib>
 #include <iostream>
 #include <map>
