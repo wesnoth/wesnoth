@@ -40,6 +40,7 @@ public:
 		int halo_x, halo_y;
 	};
 
+	unit_animation();
 	explicit unit_animation(const config& cfg);
 
 	enum FRAME_TYPE { UNIT_FRAME, MISSILE_FRAME };
@@ -82,7 +83,6 @@ public:
 	const std::string& special() const;
 	const std::string& icon() const;
 	RANGE range() const;
-	int hexes() const;
 	int damage() const;
 	int num_attacks() const;
 	double attack_weight() const;

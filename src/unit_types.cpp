@@ -42,6 +42,9 @@ unit_animation::frame::frame(const config& cfg)
 	halo_y = atoi(cfg["halo_y"].c_str());
 }
 
+unit_animation::unit_animation()
+{}
+
 unit_animation::unit_animation(const config& cfg) 
 {
 	config::const_child_itors range = cfg.child_range("frame");
@@ -156,7 +159,6 @@ attack_type::attack_type(const config& cfg)
 		icon_ = "attacks/" + name_ + ".png";
 
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
-	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
 	damage_ = atol(cfg["damage"].c_str());
 	num_attacks_ = atol(cfg["number"].c_str());
 
@@ -191,11 +193,6 @@ const std::string& attack_type::icon() const
 attack_type::RANGE attack_type::range() const
 {
 	return range_;
-}
-
-int attack_type::hexes() const
-{
-	return hexes_;
 }
 
 int attack_type::damage() const
