@@ -170,15 +170,12 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 				//temporarily set moves to full to see how far
 				//it could move
-				const int movement = u->second.movement_left();
-				u->second.set_movement(u->second.total_movement());
+				const unit_movement_resetter move_change(u->second);
+
 				current_paths = paths(map,gameinfo,units,new_hex,teams,
 				                      ignore_zocs,teleport);
 				gui.set_paths(&current_paths);
 				enemy_paths = true;
-
-				//restore unit's movement
-				u->second.set_movement(movement);
 			}
 		}
 

@@ -24,6 +24,8 @@
 class unit
 {
 public:
+	friend struct unit_movement_resetter;
+
 	unit(game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false);
 
@@ -143,6 +145,24 @@ private:
 	bool loyal_;
 
 	void apply_modifications();
+};
+
+//object which temporarily resets a unit's movement
+struct unit_movement_resetter
+{
+	unit_movement_resetter(unit& u) : u_(u), moves_(u.moves_)
+	{
+		u.moves_ = u.total_movement();
+	}
+
+	~unit_movement_resetter()
+	{
+		u_.moves_ = moves_;
+	}
+
+private:
+	unit& u_;
+	int moves_;
 };
 
 struct compare_unit_values
