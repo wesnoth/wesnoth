@@ -155,7 +155,7 @@ void map_editor::handle_event(const SDL_Event &event) {
 }
 
 void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
-									   const int /*mousex*/, const int /*mousey*/) {
+                                       const int /*mousex*/, const int /*mousey*/) {
 	if (event.type == SDL_KEYDOWN) {
 		const SDLKey sym = event.keysym.sym;
 		// We must intercept escape-presses here because we don't want the
@@ -180,7 +180,7 @@ void map_editor::handle_keyboard_event(const SDL_KeyboardEvent &event,
 }
 
 void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
-										   const int mousex, const int mousey) {
+                                           const int mousex, const int mousey) {
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		const Uint8 button = event.button;
 		if (button == SDL_BUTTON_RIGHT) {
@@ -298,17 +298,16 @@ void map_editor::right_click(const gamemap::location hex_clicked ) {
 void map_editor::edit_save_as() {
 	const std::string default_dir =
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
-	std::string input_name = filename_ == "" ? default_dir : filename_;
+	std::string input_name = filename_.empty() ? default_dir : filename_;
 	int res = 0;
 	int overwrite = 0;
 	do {
-		res = dialogs::show_file_chooser_dialog(gui_, input_name,
-												_("Choose a Map to Load"));
+		res = dialogs::show_file_chooser_dialog(gui_, input_name, _("Save the Map As"));
 		if (res == 0) {
 			if (file_exists(input_name)) {
-				overwrite = gui::show_dialog(gui_, NULL,
-											 "", _("The map already exists. Do you want to overwrite it?"),
-											 gui::YES_NO);
+				overwrite = gui::show_dialog(gui_, NULL, "",
+					_("The map already exists. Do you want to overwrite it?"),
+					gui::YES_NO);
 			}
 			else
 				overwrite = 0;
@@ -329,8 +328,8 @@ void map_editor::perform_set_starting_pos() {
 		players.push_back(str.str());
 	}
 	const int res = gui::show_dialog(gui_, NULL, _("Which Player?"),
-									 _("Which player should start here?"),
-									 gui::OK_CANCEL, &players);
+	                                 _("Which player should start here?"),
+	                                 gui::OK_CANCEL, &players);
 	if (res >= 0) {
 		set_starting_position(res, selected_hex_);
 	}
@@ -368,7 +367,7 @@ void map_editor::edit_quit() {
 
 void map_editor::edit_new_map() {
 	const std::string map = new_map_dialog(gui_, palette_.selected_bg_terrain(),
-										   changed_since_save(), game_config_);
+	                                       changed_since_save(), game_config_);
  	if (map != "") {
 		num_operations_since_save_ = 0;
 		clear_undo_actions();
@@ -377,10 +376,9 @@ void map_editor::edit_new_map() {
 }
 
 void map_editor::edit_load_map() {
-	std::string fn = filename_ == "" ?
+	std::string fn = filename_.empty() ?
 		get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/") : filename_;
-	int res = dialogs::show_file_chooser_dialog(gui_, fn,
-												_("Choose a Map to Load"));
+	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Load"));
 	if (res == 0) {
 		std::string new_map;
 		try {
@@ -444,7 +442,7 @@ void map_editor::perform_paste() {
 			const int start_side = (*it).starting_side;
 			if (start_side != -1) {
 				undo_action.add_starting_location(start_side, start_side,
-												  map_.starting_position(start_side), target);
+					map_.starting_position(start_side), target);
 				map_.set_starting_position(start_side, target);
 			}
 			filled.insert(target);
@@ -578,7 +576,7 @@ void map_editor::insert_selection_in_clipboard() {
 		const int y_offset = (*it).y - offset_hex.y;
 		gamemap::TERRAIN terrain = map_.get_terrain(*it);
 		clipboard_.push_back(clipboard_item(x_offset, y_offset, terrain,
-											starting_side_at(map_, *it)));
+		                     starting_side_at(map_, *it)));
 	}
 }
 
@@ -741,7 +739,7 @@ void map_editor::set_starting_position(const int player, const gamemap::location
 	}
 	else {
 		gui::show_dialog(gui_, NULL, "",
-						 _("You must have a hex selected on the board."), gui::OK_ONLY);
+		                 _("You must have a hex selected on the board."), gui::OK_ONLY);
 	}
 }
 
@@ -754,7 +752,7 @@ void map_editor::set_file_to_save_as(const std::string filename) {
 }
 
 gamemap::location map_editor::get_hex_with_offset(const gamemap::location loc,
-												  const int x_offset, const int y_offset) {
+                                                  const int x_offset, const int y_offset) {
 	gamemap::location new_loc(loc.x + x_offset, loc.y + y_offset);
 	if (new_loc.x % 2 != loc.x % 2 && is_odd(new_loc.x)) {
 		new_loc.y--;
@@ -896,8 +894,7 @@ void map_editor::perform_selection_move() {
 	save_undo_action(undo_action);
 }
 
-void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
-							  const gamemap::location hex) {
+void map_editor::draw_terrain(const gamemap::TERRAIN terrain, const gamemap::location hex) {
 	const gamemap::TERRAIN current_terrain = map_.get_terrain(hex);
 	map_undo_action undo_action;
 	undo_action.add_terrain(current_terrain, terrain, hex);
@@ -907,8 +904,7 @@ void map_editor::draw_terrain(const gamemap::TERRAIN terrain,
 	save_undo_action(undo_action);
 }
 
-void map_editor::terrain_changed(const gamemap::location &hex,
-								 map_undo_action &undo_action) {
+void map_editor::terrain_changed(const gamemap::location &hex, map_undo_action &undo_action) {
 	std::vector<gamemap::location> v;
 	v.push_back(hex);
 	terrain_changed(v, undo_action);
@@ -923,8 +919,7 @@ void map_editor::terrain_changed(const std::vector<gamemap::location> &hexes,
 			// A terrain which had a starting position has changed, save
 			// this position in the undo_action and unset it.
 			map_.set_starting_position(start_side, gamemap::location());
-			undo_action.add_starting_location(start_side, start_side,
-											  *it, gamemap::location());
+			undo_action.add_starting_location(start_side, start_side, *it, gamemap::location());
 		}
 	}
 	invalidate_all_and_adjacent(hexes);
@@ -993,12 +988,12 @@ void map_editor::middle_button_down(const int mousex, const int mousey) {
 
 bool map_editor::confirm_exit_and_save() {
 	if (gui::show_dialog(gui_, NULL, "",
-						 _("Quit Editor"), gui::YES_NO) != 0) {
+	                     _("Quit Editor"), gui::YES_NO) != 0) {
 		return false;
 	}
 	if (changed_since_save() &&
-		gui::show_dialog(gui_, NULL, "",
-						 _("Do you want to save the map before quitting?"), gui::YES_NO) == 0) {
+	    gui::show_dialog(gui_, NULL, "",
+		             _("Do you want to save the map before quitting?"), gui::YES_NO) == 0) {
 		if (!save_map("", false)) {
 			return false;
 		}
@@ -1053,7 +1048,7 @@ void map_editor::show_menu(const std::vector<std::string>& items_arg, const int 
 	}
 	static const std::string style = "menu2";
 	const int res = gui::show_dialog(gui_, NULL, "", "", gui::MESSAGE, &menu, NULL, "",
-									 NULL, 256, NULL, NULL, xloc, yloc, &style);
+	                                 NULL, 256, NULL, NULL, xloc, yloc, &style);
 	if(res < 0 || (unsigned)res >= items.size())
 		return;
 	const hotkey::HOTKEY_COMMAND cmd = hotkey::get_hotkey(items[res]).get_id();
