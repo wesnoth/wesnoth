@@ -40,7 +40,6 @@ CVS HEAD:
  * allow multiple sides (comma separared) to be specified in unit filters
  * [have_unit] now honors location
  * new time of day image masks which get laid over hexes when it's that time of day
- * fixed on-map labels slowly shifting
  * fixed on-map labels not printing black on light coloured terrains
  * fixed ellipses not fading when a unit dies
  * fixed bug where if the host changed their name, it would show that name to users connecting to the game
@@ -48,8 +47,11 @@ CVS HEAD:
  * fixed bug with AI not getting villages
  * fixed some compiler warnings
  * fixed Dwarvish Berserker and Yeti using blunt attack type, which does not exist 
+ * fixed Mage of Light aura slowing the game
  * fixed bugs with tooltips
+ * fixed network bug
  * minor autotools fixes
+ * autotools support for static builds
  * slacknoth improvements
  * added recovering connections framework to network protocol
 
