@@ -111,6 +111,8 @@ public:
 	void refog();
 
 	const std::string& music() const;
+
+	static int nteams();
 private:
 	int gold_;
 	std::set<gamemap::location> towers_;

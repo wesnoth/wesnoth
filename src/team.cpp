@@ -502,3 +502,12 @@ const std::string& team::music() const
 {
 	return info_.music;
 }
+
+int team::nteams()
+{
+	if(teams == NULL) {
+		return 0;
+	} else {
+		return teams->size();
+	}
+}
