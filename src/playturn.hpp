@@ -120,6 +120,18 @@ private:
 	team& current_team() { return teams_[team_num_-1]; }
 	const team& current_team() const { return teams_[team_num_-1]; }
 
+	team& viewing_team() { return teams_[gui_.viewing_team()]; }
+	const team& viewing_team() const { return teams_[gui_.viewing_team()]; }
+
+	unit_map::const_iterator find_unit(const gamemap::location& hex) const;
+	unit_map::iterator find_unit(const gamemap::location& hex);
+
+	unit_map::const_iterator selected_unit() const;
+	unit_map::iterator selected_unit();
+
+	unit_map::iterator current_unit();
+	unit_map::const_iterator current_unit() const;
+
 	void write_game_snapshot(config& cfg) const;
 
 	bool unit_in_cycle(unit_map::const_iterator it) const;
@@ -177,9 +189,6 @@ private:
 	bool clear_shroud();
 	void clear_undo_stack();
 	
-	unit_map::iterator current_unit();
-	unit_map::const_iterator current_unit() const;
-
 	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m);
 	
 	bool enemies_visible() const;
@@ -197,6 +206,9 @@ private:
 	std::vector<team>& teams_;
 	int team_num_;
 	unit_map& units_;
+
+	const unit_map& visible_units() const;
+	mutable unit_map visible_units_;
 	bool browse_;
 	bool allow_network_commands_;
 

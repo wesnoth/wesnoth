@@ -223,17 +223,9 @@ void turn_info::handle_event(const SDL_Event& event)
 			if(new_path_turns != path_turns_) {
 				path_turns_ = new_path_turns;
 
-				unit_map::iterator u = units_.find(selected_hex_);
-				if(u == units_.end() || gui_.fogged(u->first.x,u->first.y)) {
-					u = units_.find(last_hex_);
-					if(u != units_.end() && (u->second.side() == team_num_ || gui_.fogged(u->first.x,u->first.y))) {
-						u = units_.end();
-					}
-				} else if(u->second.side() != team_num_ || gui_.fogged(u->first.x,u->first.y)) {
-					u = units_.end();
-				}
+				const unit_map::iterator u = selected_unit();
 
-				if(u != units_.end()) {
+				if(u != units_.end() && u->second.side() == team_num_) {
 					const bool ignore_zocs = u->second.type().is_skirmisher();
 					const bool teleport = u->second.type().teleports();
 					current_paths_ = paths(map_,status_,gameinfo_,units_,u->first,
@@ -304,8 +296,8 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
 
-		const unit_map::const_iterator selected_unit = units_.find(selected_hex_);
-		const unit_map::const_iterator mouseover_unit = units_.find(new_hex);
+		const unit_map::const_iterator selected_unit = find_unit(selected_hex_);
+		const unit_map::const_iterator mouseover_unit = find_unit(new_hex);
 		if(selected_unit != units_.end() && current_paths_.routes.count(new_hex)) {
 			if(mouseover_unit == units_.end()) {
 				cursor::set(cursor::MOVE);
@@ -331,15 +323,12 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
 
-			unit_map::const_iterator un = find_visible_unit(units_,selected_hex_,map_,
-			                                                status_.get_time_of_day().lawful_bonus,teams_,current_team);
-
-			const unit_map::const_iterator dest_un = find_visible_unit(units_,new_hex,map_,
-			                                              status_.get_time_of_day().lawful_bonus,teams_,current_team);
+			unit_map::const_iterator un = find_unit(selected_hex_);
+			const unit_map::const_iterator dest_un = find_unit(new_hex);
 
 			if(un != units_.end() && dest_un == units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
-				                                    units_,teams_,map_,status_);
+				                                    visible_units(),teams_,map_,status_);
 				const bool can_teleport = un->second.type().teleports();
 
 				const std::set<gamemap::location>* teleports = NULL;
@@ -357,15 +346,13 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 				current_route_.move_left = route_turns_to_complete(un->second,map_,current_route_);
 
-				if(!browse_)
+				if(!browse_) {
 					gui_.set_route(&current_route_);
+				}
 			}
 		}
 
-		unit_map::iterator un = find_visible_unit(units_,
-				new_hex,
-				map_,
-				status_.get_time_of_day().lawful_bonus,teams_,current_team);
+		unit_map::iterator un = find_unit(new_hex);
 
 		if(un != units_.end() && un->second.side() != team_num_ &&
 		   current_paths_.routes.empty() && !gui_.fogged(un->first.x,un->first.y)) {
@@ -554,9 +541,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y);
 
-	unit_map::iterator u = find_visible_unit(units_,
-			selected_hex_, map_,
-			status_.get_time_of_day().lawful_bonus,teams_,current_team);
+	unit_map::iterator u = find_unit(selected_hex_);
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
@@ -570,8 +555,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			route = enemy_paths_ ? current_paths_.routes.end() :
 	                               current_paths_.routes.find(hex);
 
-	unit_map::iterator enemy = find_visible_unit(units_, hex, map_,
-			status_.get_time_of_day().lawful_bonus,teams_,current_team);
+	unit_map::iterator enemy = find_unit(hex);
 
 	//see if we're trying to attack an enemy
 	if(route != current_paths_.routes.end() && enemy != units_.end() &&
@@ -782,9 +766,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
 
-		const unit_map::iterator it = find_visible_unit(units_,
-				hex, map_,
-				status_.get_time_of_day().lawful_bonus,teams_,current_team);
+		const unit_map::iterator it = find_unit(hex);
 
 		if(it != units_.end() && it->second.side() == team_num_ && !gui_.fogged(it->first.x,it->first.y)) {
 			const bool ignore_zocs = it->second.type().is_skirmisher();
@@ -802,7 +784,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const gamemap::location go_to = u.get_goto();
 			if(map_.on_board(go_to)) {
 				const shortest_path_calculator calc(u,current_team,
-				                                    units_,teams_,map_,status_);
+				                                    visible_units(),teams_,map_,status_);
 
 				const std::set<gamemap::location>* teleports = NULL;
 
@@ -845,7 +827,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 	assert(ui != units_.end());
 
 	unit u = ui->second;
-	const shortest_path_calculator calc(u,current_team(),units_,teams_,map_,status_);
+	const shortest_path_calculator calc(u,current_team(),visible_units(),teams_,map_,status_);
 
 	const std::set<gamemap::location>* teleports = NULL;
 
@@ -1426,6 +1408,64 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 			gui::show_dialog(gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
 		};
+	}
+}
+
+unit_map::const_iterator turn_info::find_unit(const gamemap::location& hex) const
+{
+	if(gui_.fogged(hex.x,hex.y)) {
+		return units_.end();
+	}
+
+	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
+}
+
+unit_map::iterator turn_info::find_unit(const gamemap::location& hex)
+{
+	if(gui_.fogged(hex.x,hex.y)) {
+		return units_.end();
+	}
+
+	return find_visible_unit(units_,hex,map_,status_.get_time_of_day().lawful_bonus,teams_,viewing_team());
+}
+
+unit_map::const_iterator turn_info::selected_unit() const
+{
+	unit_map::const_iterator res = find_unit(selected_hex_);
+	if(res != units_.end()) {
+		return res;
+	} else {
+		return find_unit(last_hex_);
+	}
+}
+
+unit_map::iterator turn_info::selected_unit()
+{
+	unit_map::iterator res = find_unit(selected_hex_);
+	if(res != units_.end()) {
+		return res;
+	} else {
+		return find_unit(last_hex_);
+	}
+}
+
+unit_map::const_iterator turn_info::current_unit() const
+{
+	unit_map::const_iterator res = find_unit(last_hex_);
+	if(res != units_.end()) {
+		return res;
+	} else {
+		return find_unit(selected_hex_);
+	}
+}
+
+unit_map::iterator turn_info::current_unit()
+{
+	unit_map::iterator res = find_unit(last_hex_);
+	if(res != units_.end()) {
+		return res;
+	} else {
+		return find_unit(selected_hex_);
 	}
 }
 
@@ -2321,46 +2361,6 @@ void turn_info::continue_move()
 	move_unit_to_loc(i,i->second.get_interrupted_move(),true);
 }
 
-unit_map::iterator turn_info::current_unit()
-{
-	unit_map::iterator i = units_.end();
-
-	if(gui_.fogged(last_hex_.x,last_hex_.y) == false){
-		i = find_visible_unit(units_,last_hex_,map_,
-			status_.get_time_of_day().lawful_bonus,teams_,current_team());
-	}
-
-	if(gui_.fogged(selected_hex_.x,selected_hex_.y) == false){
-		if(i == units_.end()) {
-			unit_map::iterator i = find_visible_unit(units_, selected_hex_,map_,
-				status_.get_time_of_day().lawful_bonus,teams_,current_team());
-		}
-	}
-
-	return i;
-}
-
-unit_map::const_iterator turn_info::current_unit() const
-{
-	unit_map::const_iterator i = units_.end();
-
-	if(gui_.fogged(last_hex_.x,last_hex_.y)==false){
-		i = find_visible_unit(units_,
-			last_hex_, map_,
-			status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
-	}
-
-	if(gui_.fogged(selected_hex_.x,selected_hex_.y)==false){
-		if(i == units_.end()) {
-			i = find_visible_unit(units_, selected_hex_, 
-					map_,
-					status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
-		}
-	}
-
-	return i;
-}
-
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, network::connection from, std::deque<config>& backlog)
 {
 	if(cfg.child("observer") != NULL) {
@@ -2567,4 +2567,23 @@ void turn_info::enter_textbox()
 	}
 
 	close_textbox();
+}
+
+const unit_map& turn_info::visible_units() const
+{
+	if(viewing_team().uses_shroud() == false && viewing_team().uses_fog() == false) {
+		std::cerr << "all units are visible...\n";
+		return units_;
+	}
+
+	visible_units_.clear();
+	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+		if(gui_.fogged(i->first.x,i->first.y) == false) {
+			visible_units_.insert(*i);
+		}
+	}
+
+	std::cerr << "number of visible units: " << visible_units_.size() << "\n";
+
+	return visible_units_;
 }
