@@ -123,16 +123,18 @@ void default_map_generator::user_config(display& disp)
 	const int max_width = 200;
 	const int min_height = 20;
 	const int max_height = 200;
+	const int extra_size_per_player = 2;
+	
 
 	slider_rect.y = width_rect.y;
 	gui::slider width_slider(disp,slider_rect);
-	width_slider.set_min(min_width);
+	width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	width_slider.set_max(max_width);
 	width_slider.set_value(width_);
 
 	slider_rect.y = height_rect.y;
 	gui::slider height_slider(disp,slider_rect);
-	height_slider.set_min(min_height);
+	height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	height_slider.set_max(max_height);
 	height_slider.set_value(height_);
 
@@ -188,6 +190,9 @@ void default_map_generator::user_config(display& disp)
 		iterations_slider.process();
 		hillsize_slider.process();
 		villages_slider.process();
+
+		width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
+		height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 
 		events::raise_process_event();
 		events::raise_draw_event();
