@@ -78,7 +78,7 @@ std::vector<text_chunk> split_text(wide_string text)
 	wide_string current_chunk;
 	std::vector<text_chunk> res;
 	bool first = true;
-	int current_font;
+	int current_font = 0;
 
 	for(wide_string::const_iterator itor = text.begin(); itor != text.end(); ++itor) {
 
