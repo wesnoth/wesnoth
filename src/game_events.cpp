@@ -149,6 +149,7 @@ std::map<gamemap::location,unit>* units = NULL;
 std::vector<team>* teams = NULL;
 game_state* state_of_game = NULL;
 game_data* game_data_ptr = NULL;
+gamestatus* status_ptr = NULL;
 std::set<std::string> used_items;
 
 bool events_init() { return screen != NULL; }
@@ -261,10 +262,14 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			if(game_map->on_board(dst)) {
 				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
+					const int side = u->second.side();
+
 					//note that inserting into a map does NOT invalidate iterators
 					//into the map, so this sequence is fine.
 					units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
 					units->erase(u);
+
+					clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
 				}
 			}
 		}
@@ -1074,7 +1079,7 @@ void set_variable(const std::string& key, const std::string& value)
 manager::manager(config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
                  std::vector<team>& teams_,
-                 game_state& state_of_game_, game_data& game_data_)
+                 game_state& state_of_game_, gamestatus& status, game_data& game_data_)
 {
 	const config::child_list& events_list = cfg.get_children("event");
 	for(config::child_list::const_iterator i = events_list.begin();
@@ -1090,6 +1095,7 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
 	units = &units_;
 	state_of_game = &state_of_game_;
 	game_data_ptr = &game_data_;
+	status_ptr = &status;
 
 	used_items.clear();
 	const std::string& used = cfg["used_items"];
@@ -1131,6 +1137,7 @@ manager::~manager() {
 	units = NULL;
 	state_of_game = NULL;
 	game_data_ptr = NULL;
+	status_ptr = NULL;
 }
 
 void raise(const std::string& event,

@@ -299,7 +299,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 						(*level)["victory_when_enemies_defeated"] != "no");
 
 	game_events::manager events_manager(*level,gui,map,units,teams,
-	                                    state_of_game,gameinfo);
+	                                    state_of_game,status,gameinfo);
 
 	//find a list of 'items' (i.e. overlays) on the level, and add them
 	const config::child_list& overlays = level->get_children("item");
