@@ -930,7 +930,7 @@ int play_game(int argc, char** argv)
 
 			state.scenario = campaign["first_scenario"];
 
-			const std::string difficulty_descriptions = translate_string_default(campaign["id"] + "_difficulties",campaign["difficulty_descriptions"]);
+			const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
 			std::vector<std::string> difficulty_options = config::split(difficulty_descriptions,';');
 
 			const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
