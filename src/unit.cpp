@@ -332,8 +332,6 @@ bool unit::advances() const
 bool unit::gets_hit(int damage)
 {
 	hitpoints_ -= damage;
-	if(hitpoints_ > max_hitpoints() && damage > 0)
-		hitpoints_ = max_hitpoints();
 	return hitpoints_ <= 0;
 }
 
