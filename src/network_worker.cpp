@@ -164,8 +164,6 @@ int process_queue(void* data)
 
 			delete sent_buf;
 			sent_buf = NULL;
-
-			LOG_NW << "thread sent " << v.size() << " bytes of data...\n";
 		} else {
 			result = receive_buf(sock,buf);
 		}
