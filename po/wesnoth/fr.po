@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-28 23:56+0200\n"
-"PO-Revision-Date: 2004-10-22 22:06+0200\n"
+"PO-Revision-Date: 2004-10-29 23:48+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
@@ -72,6 +72,10 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Certaines unités ont des capacités qui affectent les autres unités, "
+"ou qui ont un impact sur la manière dont l'unité interagit avec les autres. "
+"Ces capacités seront listées dans cette rubrique au fur et à mesure "
+"que vous les rencontrerez."
 
 #: data/help.cfg:62
 msgid ""
@@ -269,7 +273,6 @@ msgid "Combat"
 msgstr "Combat"
 
 #: data/help.cfg:117
-#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -315,8 +318,8 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
-"Il y a deux types de combat dans Bataille pour Wesnoth, à courte et à longue "
-"portée, mais les deux se déroulent entre des unités adjacentes.Un combat à "
+"Il y a deux types de combat dans la Bataille pour Wesnoth, à courte et à longue "
+"portée, mais les deux se déroulent entre des unités adjacentes. Un combat à "
 "courte portée implique habituellement des armes telles des épées, des haches "
 "ou des crocs, alors qu'un combat à longue portée utilise communément des "
 "armes telles des arcs, des javelots et des boules de feu. Le principe d'un "
@@ -347,7 +350,7 @@ msgstr ""
 "attaques enchantées'</ref> et le <ref>dst=ability_marksman text='tireur "
 "d'élite'</ref>. Les attaques magiques ont toujours une probabilité de "
 "toucher de 70%, sans tenir compte du terrain, et les tireurs d'élite ont "
-"toujours au moins 60% de probabilité de toucher, sans tenir compte du "
+"toujours au moins 60% de probabilité de toucher lorsque ce son eux qui attaquent, sans tenir compte du "
 "terrain.\n"
 "\n"
 "<header>text=Dégâts</header>\n"
@@ -635,7 +638,6 @@ msgid "About"
 msgstr "À propos"
 
 #: data/help.cfg:245
-#, fuzzy
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -721,8 +723,8 @@ msgstr ""
 "Les unités fidèles n'auront jamais qu'un coût d'entretien à un, quel que "
 "soit leur niveau.\n"
 "\n"
-"La fidélité n'a aucun effet sur une unité de niveau 1, ce que la rend futile "
-"dans le début de campgne. Cependant, une fois qu'une unité commence à monter "
+"La fidélité n'a aucun effet sur une unité de niveau 1, ce que la rend inutile "
+"dans le début de campagne. Cependant, une fois qu'une unité commence à monter "
 "de niveau, cela peut vous économiser énormement d'or sur la durée d'une "
 "campagne.\n"
 "\n"
@@ -758,7 +760,7 @@ msgstr ""
 "Utiles pour n'importe quelle unité de combat rapproché, la force est la plus "
 "efficaces pour les unités qui ont un nombre élevé de coups, tels les "
 "guerriers elfes. Les unités fortes sont très utiles lorsqu'un tout petit peu "
-"de dégâts infligés en plus est juste ce qu'il faut pour transformer un coup "
+"de dégâts infligés supplémentaire est juste ce qu'il faut pour transformer un coup "
 "blessant en un coup mortel."
 
 #: data/items.cfg:264
@@ -1056,16 +1058,23 @@ msgid ""
 "fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
 "2,4."
 msgstr ""
+"Une petite carte deux contre deux, à travers les ruines d'un point à la "
+"splendeur passée. Parfaite pour des parties rapides et intenses en équipe. "
+"Les joueurs 1 et 3 doivent affronter les joueurs 2 et 4."
 
+# FIXME: this translation kinda sucks.
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "L'île aux sauts de forteresse"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
 msgid ""
 "Many close by and strategically located castles. Small map for fast play. "
 "Recommended setting of 2 gold per village."
 msgstr ""
+"Beaucoup de châteaux proches, et stratégiquement placés. Une petite carte "
+"pour un jeu rapide. Il est recommandé de configurer 2 pièces d'or par "
+"village.
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1102,6 +1111,12 @@ msgid ""
 "blunt weapons, and healers are on hand, so when units are killed, they "
 "return to that player's end zone with an injury."
 msgstr ""
+"Dans le Wesbowl, un joueur doit amener sa balle de l'autre côté du terrain, "
+"dans la « zone morte » de l'autre joueur. "
+"Toutefois, l'autre joueur peut attaquer vos unités. Le Wesbowl se joue "
+"avec des armes émoussées, et des guérisseurs sont présents, ce qui fait "
+"que lorsque des unités sont « tuées », elles reviennent dans la zone morte "
+"du joueur, blessées."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -1170,6 +1185,9 @@ msgid ""
 "Teams of 2 fight for control of the central bridge choke-point. Good for "
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
+"Des équipes de 2 se battent pour le contrôle d'un goulet central constitué "
+"d'un pont. Bon pour des parties de durée moyenne. Les joueurs 1 et 3 doivent "
+"être alliés, de même que les joueurs 2 et 4"
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -1189,6 +1207,9 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"Cette carte est un moyen pratique de tester deux factions, car elle "
+"est assez bien équilibrée envers les deux camps.\n"
+"Vous pouvez utiliser le mode IA contre IA afin de comparer les factions."
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
@@ -1500,7 +1521,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Est-ce que Merle peut riposter à mon attaque ?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1523,8 +1543,9 @@ msgstr ""
 "distance ne sera contrée que par une attaque à distance et c'est pareil pour "
 "une attaque de mêlée. La plupart des unités ont des attaques de mêlée plus "
 "puissantes que celles à distance, aussi les unités avec des attaques à "
-"distance puissantes sont-elles appropriées dans ce cas puisqu'il n'y aura "
-"souvent pas ou peu de riposte. Cependant les unités à distance ne peuvent "
+"distance puissantes sont-elles appropriées pour attaquer des unités "
+"orientées vers le combat de mêlée ; certaines unités sans attaque à distance "
+"ne pourront même pas riposter. Cependant les unités à distance ne peuvent "
 "pas tirer à plusieurs hexagones de distance; c'est une particularité de "
 "Wesnoth."
 
@@ -4362,16 +4383,15 @@ msgid "Drake Fighter"
 msgstr "Combattant drake"
 
 #: data/units/Drake_Fighter.cfg:18
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved scimitars with deadly skill, and possess the "
 "fire breathing skills of their ancestors. The most skilled Fighters go on to "
 "join the ranks of the elite Drake Warriors."
 msgstr ""
-"Non seulement les drakes ardents manient leurs griffes de façon mortelle "
+"Non seulement les combattants drakes manient leurs cimeterres de façon mortelle, "
 "mais ils sont également capables de souffler le feu légendaire de leurs "
-"lointains ancêtres. Leurs adversaires seront bien avisés de garder leurs "
-"distances."
+"lointains ancêtres. Les combattants les plus doués rejoignent les rangs "
+"des guerriers drakes d'élite."
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
@@ -4389,6 +4409,11 @@ msgid ""
 "most ferocious Fire Drakes become the flying configurations known as Drake "
 "Infernos."
 msgstr ""
+"Les grands drakes incendiaires s'équipent d'armures de plaques d'argent "
+"afin de se protéger des blessures graves. Bien que leur technique de "
+"combat au corps-à-corps soit primitive, ils ont maîtrisé leur feu intérieur, "
+"et sont à craindre. Les drakes incendiaires les plus féroces deviennent "
+"ces créatures volantes qu'on nomme les drakes infernaux."
 
 #: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
@@ -4402,6 +4427,11 @@ msgid ""
 "between their crackling flames and their wicked swords, few who meet them "
 "survive to confirm this saying."
 msgstr ""
+"Un vieux dicton dit « Les généraux des armées drake on du feu dans leurs "
+"veines, et non du sang ». Personne ne mettra en doute ces dires après avoir "
+"fait face à ces créatures de dévastation pure... Toutefois, entre leurs "
+"flammes crépitantes et leurs épées sournoises, peu sont ceux qui survivent "
+"pour confirmer ces dires."
 
 #: data/units/Drake_Flare.cfg:4
 msgid "Drake Flare"
@@ -4414,6 +4444,11 @@ msgid ""
 "broader aspirations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
+"Les drakes flamboyants aspirent à devenir les meneurs de leur espèce. "
+"Bien que leur maîtrise de leur feu intérieur ne soit pas aussi grande "
+"que celle de certains de leurs congénères, ces drakes ont de plus hautes "
+"ambitions. Ils sont habiles à l'épée, et aspirent à devenir les plus "
+"valeureux des leurs."
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
@@ -4427,6 +4462,12 @@ msgid ""
 "thick brass armour and they arm themselves with as many emerald edged "
 "weapons as possible to fend off whatever opponents may await them."
 msgstr ""
+"Avec leurs épaisses ailes vestigiales, et leur incapacité à utiliser leur "
+"feu intérieur en tant qu'arme, certains peuvent penser que ces drakes "
+"sont désavantagés. Cependant, ils auraient tort : les gladiateurs drakes "
+"protègent leurs peau vulnérables avec d'épaisses armures de cuivre, "
+"et s'arment d'autant d'armes aux lames d'émeraude que possible, afin "
+"d'être à même d'affronter tout adversaire qui les attend."
 
 #: data/units/Drake_Glider.cfg:4
 msgid "Drake Glider"
@@ -4441,10 +4482,17 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"Les planeurs drakes portent une armure aussi légère que possible, afin de "
+"pouvoir échapper le plus vite possibles à leurs ennemis lorsqu'ils quittent "
+"leurs cavernes. Ces drakes sont des combattants compétents, et possèdent "
+"le feu intérieur qu'ils partagent avec les membres de leur espèce. Les "
+"planeurs peuvent utiliser leur grande vitesse pour se jeter violemment contre "
+"leurs ennemis. Les meilleures planeurs peuvent espérer être acceptés "
+"parmi les rangs des drakes du firmament."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
 msgid "slam"
-msgstr ""
+msgstr "aterrissage"
 
 #: data/units/Drake_Inferno.cfg:4
 msgid "Inferno Drake"
@@ -4458,6 +4506,12 @@ msgid ""
 "Infernos have utterly mastered their internal fire, and rival their "
 "predecessors the Dragons in their ability to use it."
 msgstr ""
+"Les créatures volantes connues sous le nom de drake infernaux portent "
+"de massives armures d'or, quasiment impénétrables. Ces drakes sont "
+"également pratiquement immunisés contre le feu, car ils sont habitués "
+"à se cacher dans les cratères des volcans. Les drakes infernaux ont "
+"complètement maîtrisé leur feu intérieur, et rivalisent avec leurs "
+"ancêtres les dragons dans leur capacité à l'utiliser."
 
 #: data/units/Drake_Sky.cfg:3
 msgid "Sky Drake"
@@ -4491,6 +4545,9 @@ msgid ""
 "Drake Fighters wield swords with great skill, and possess the fire breathing "
 "skills of their ancestors."
 msgstr ""
+"Non seulement les guerriers drakes manient l'épée avec beaucoup d'habileté,"
+"mais ils sont également capable de souffler le feu légendaire de leurs "
+"ancêtres."
 
 #: data/units/Duelist.cfg:3
 msgid "Duelist"
@@ -4731,6 +4788,9 @@ msgid ""
 "ferocious of these in battle: they attack without stopping fighting until "
 "either their enemy or they are dead, no matter how many wounds they receive."
 msgstr ""
+"Les nains sont une ancienne race de puissants combattants. Les ulfserkers "
+"sont les plus féroces d'entre eux : ils attaquent sans arrêter de combattre, "
+"sans considération pour leurs blessures, jusqu'à ce que mort s'ensuive."
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
@@ -4763,6 +4823,14 @@ msgid ""
 "still quite flammable. Drawing energy from nature around them, Elder Woses "
 "can quickly heal themselves in the face of tremendous injuries."
 msgstr ""
+"Les woses vénérables sont devenus, au fils des ans, larges et hauts. "
+"Surplombant la plupart des ennemis, ils peuvent porter des coups écrasants "
+"tout en résistant aux contre-attaques. Voir l'un d'entre eux surgir par "
+"surprise des bois est un spectacle terrifiant. Ils restent très lents, et "
+"très résistants ; presque invulnérables aux flèches, mais toujours "
+"très inflammables. Tirant leur énergie de la nature qui les entourent, "
+"les woses vénérables peuvent rapidement récupérer de blessures "
+"impressionnantes."
 
 #: data/units/Elvish_Archer.cfg:3
 msgid "Elvish Archer"
@@ -4866,6 +4934,10 @@ msgid ""
 "enemies both with blasts of icy wind drawn from the ethereal plane, and "
 "magically animate roots with which they bind their enemies in place."
 msgstr ""
+"Les enchanterresses elfes sont les maîtresses de la magie offsensive, "
+"frappant leurs ennemis à la fois de rafales de vent glacé provenant "
+"directement des plans éthérés, ou animant des racines magiques qui "
+"immobilisent leurs ennemis."
 
 #: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:43
 #: data/units/Elvish_Sorceress.cfg:65
@@ -4930,9 +5002,11 @@ msgid ""
 "see through the fogs of destiny has gained her a wisely used authority among "
 "her people, guiding them in times of uncertainty."
 msgstr ""
+"La dame elfe Parandra est l'une des elfes les plus respectées de tous les "
+"temps. Sa capacité à voir à travers les brumes du destin lui a valu "
+"une sage ascendance sur les siens, les guidant durant ces temps de doutes."
 
 #: data/units/Elvish_Lady.cfg:19
-#, fuzzy
 msgid "shove"
 msgstr "bousculade"
 
@@ -5124,6 +5198,11 @@ msgid ""
 "entangling attack is notably more effective than before, and they can call "
 "upon bursts of chilling ethereal wind to smite those who oppose them."
 msgstr ""
+"Abandonnant l'étude de la guérison en faveur d'une utilisation plus agressive "
+"de la magie, les sorcières elfes sont devenues très efficaces au combat "
+"à distance. Leur attaque enchevêtrante est largement plus efficace qu'avant, "
+"et elles peuvent invoquer des rafales glacées de vent éthéré afin de "
+"frapper ceux qui s'opposent à elles."
 
 #: data/units/Elvish_Sylph.cfg:3
 msgid "female^Elvish Sylph"
@@ -5135,6 +5214,9 @@ msgid ""
 "developed their faerie side, they transform into creatures of both worlds, "
 "wielding powerful magic against their enemies."
 msgstr ""
+"Les sylphes sont des modèles de beauté dans les plans mortels. Ayant "
+"totalement développé leur côté féérique, elles se transforment en créatures "
+"des deux mondes, détentrices d'un pouvoir magique puissant."
 
 #: data/units/Elvish_Sylph.cfg:51
 msgid "gossamer"
@@ -5243,6 +5325,11 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
+"Même ceux vivant heureux chez eux en viennent à nécessiter un moyen de "
+"transport maritime, ne serait-ce que pour aller pêcher, ou pour faire du "
+"commerce. Le galion est parfait pour ça : il est rapide et résistant, "
+"mais non préparé au combat, et est capable de s'adapter à de nombreuses "
+"tâches. "
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
@@ -5354,6 +5441,10 @@ msgid ""
 "of sophisticated weaponry by attempting to overwhelm there foes by sheer "
 "numbers. These are the larger and more able kinsmen of the Goblin Spearman."
 msgstr ""
+"Les gobelins ont tendance à essayer de compenser leur idiotie, leur "
+"fragilité, et leur manque d'armes sophistiquées en utilisant d'écraser "
+"l'ennemi sous leur nombre. Ceux-ci sont plus grands, et meilleurs "
+"combattants, que les lanciers gobelins."
 
 #: data/units/Goblin_Knight.cfg:3
 msgid "Goblin Knight"
@@ -5402,6 +5493,12 @@ msgid ""
 "are well-equipped for a war of attrition. The best Goblin Spearman can look "
 "forward to becoming Goblin Impalers."
 msgstr ""
+"Les gobelins ont tendance à essayer de compenser leur idiotie, leur "
+"fragilité, et leur manque d'armes sophistiquées en utilisant d'écraser "
+"l'ennemi sous leur nombre. Bien que dépourvus d'armes ou d'armures, ces "
+"faibles lanciers sont bien équipés pour une guerre d'usure. Les "
+"meilleurs lanciers gobelins peuvent espérer devenir des empaleurs "
+"gobelins."
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -5432,6 +5529,11 @@ msgid ""
 "facility.  Their presence on the battlefield is of great aid to those "
 "serving beneath them."
 msgstr ""
+"Le grade de grand maréchal est l'un des plus estimés dans les armées "
+"humaines, et ceux qui portent ce titre ont surpassé bien des fois "
+"l'épreuve du feu, prouvant leurs considérables capacités aussi bien "
+"au combat qu'au commandement tactique. Leur présence sur le champ de "
+"bataille est une aide précieuse à ceux qui servent sous leurs ordres."
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
@@ -5539,9 +5641,8 @@ msgstr ""
 "de fer. Le manque de célérité est leur seule faiblesse."
 
 #: data/units/Horse_Lord.cfg:3
-#, fuzzy
 msgid "Horse Lord"
-msgstr "Noble seigneur"
+msgstr "Seigneur à cheval"
 
 #: data/units/Horse_Lord.cfg:17
 msgid ""
@@ -5549,12 +5650,18 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"Parmi les meilleurs des hommes des plaines, ces chevaliers à cheval "
+"sont à là tête de leurs clans, et respectés de tous, amis comme ennemis. "
+"Leur épée peut tuer la plupart des ennemis ordinaires, et leur "
+"morgenstern écrase ceux qui restent."
 
+# Morning star => Morgenstern, c'est un peu traduire de l'anglais à l'allemand,
+# mais il n'y a pas de terme français et cette traduction est généralement
+# acceptée.
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:43
 #: data/units/Mounted_Commander.cfg:43
-#, fuzzy
 msgid "morning star"
-msgstr "Matinée"
+msgstr "morgenstern"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -5715,7 +5822,7 @@ msgstr "projectile magique"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "Mage"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5777,7 +5884,7 @@ msgstr ""
 
 #: data/units/Mermaid_Diviner.cfg:3
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "Ondine divinatrice"
 
 #: data/units/Mermaid_Diviner.cfg:23
 msgid ""
@@ -5785,6 +5892,10 @@ msgid ""
 "illumination, which prevents their surroundings from ever seeing true "
 "night.  Their power is a stalwart counter to the forces of darkness."
 msgstr ""
+"Les ondines les plus dévôtes et les plus pieuses gagnent le pouvoir "
+"exceptionnel d'illumination, empêchant leurs alentours de jamais connaître "
+"la vraie nuit. Leur pouvoir est une puissante défense contre les forces "
+"des ténèbres."
 
 #: data/units/Mermaid_Enchantress.cfg:3
 msgid "female^Mermaid Enchantress"
@@ -5809,7 +5920,7 @@ msgstr "jet d'eau"
 
 #: data/units/Mermaid_Initiate.cfg:3
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "Initiée ondine"
 
 #: data/units/Mermaid_Initiate.cfg:20
 msgid ""
@@ -5817,10 +5928,14 @@ msgid ""
 "Despite their frailty, this makes them formidable opponents, as they can "
 "call upon the very water about them to smite their enemies."
 msgstr ""
+"Les jeunes ondines sont souvent initiées à la magie aquatique de leur "
+"peuple. Malgré leur fragilité, cela fait d'elles des adversaires "
+"extraordinaires, car elles peuvent en appeler à l'au elle-même afin "
+"de frapper leurs ennemis."
 
 #: data/units/Mermaid_Priestess.cfg:3
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "Prêtresse ondine"
 
 #: data/units/Mermaid_Priestess.cfg:21
 msgid ""
@@ -5828,16 +5943,18 @@ msgid ""
 "leaves them quite capable of ministering to the wounds of their comrades, as "
 "well as being a potent defense against the unworldly."
 msgstr ""
+"Les plus éduquées parmi les ondines prennent souvent le chemin de l'étude "
+"des choses sacrées. Cela leur permet d'être à même de guérir les blessures "
+"de leurs congénères, et d'être une puissante défense contre les aberrations "
+"qui n'appartiennent pas à ce monde."
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "brûlure"
+msgstr "Sirène"
 
 #: data/units/Mermaid_Siren.cfg:23
-#, fuzzy
 msgid "naiad touch"
-msgstr "doigt de fée"
+msgstr "toucher de naïade"
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
@@ -5870,6 +5987,11 @@ msgid ""
 "steadfast line against the rages of battle.  In times of desperation, they "
 "can even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"Avec leur boucliers-tours, les hoplites ondins forment la garde d'élite "
+"du royaume aquatique. Leur solide armure, et leur discipline de fer, leur "
+"permet de tenir une ligne infranchissable sous le feu du combat. Dans "
+"les cas les plus désespérés, ils sont à même de faire de même à terre, bien "
+"que de manière moins efficace qu'une créature pourvue de jambes."
 
 #: data/units/Merman_Hunter.cfg:3
 msgid "Merman Hunter"
@@ -5877,7 +5999,7 @@ msgstr "Chasseur ondin"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "Javeliniste ondin"
 
 #: data/units/Merman_Netcaster.cfg:3
 msgid "Merman Netcaster"
@@ -5910,11 +6032,12 @@ msgid ""
 "The Mermen Warriors form the core of the mermen armies.  Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
+"Les guerriers ondins forment le noyau des armées ondines. Armés de puissants "
+"tridents, ils sont le fléau de quiconque ose pénétrer dans leurs eaux."
 
 #: data/units/Mounted_Captain.cfg:3
-#, fuzzy
 msgid "Mounted Captain"
-msgstr "Montagnes"
+msgstr "Capitaine monté"
 
 #: data/units/Mounted_Captain.cfg:17
 msgid ""
@@ -5923,11 +6046,14 @@ msgid ""
 "commanding their comrades, and they are the ones that become the captains of "
 "the armies of the Clans."
 msgstr ""
+"Les nobles des plaines sont entraînés avec le reste de leurs cavaliers "
+"dans le but de devenir de grands guerriers. Toutefois, ils sont aussi "
+"entraînés à commander leurs camarade ; ce sont eux qui deviennet les capitaines "
+"des armées des Clans."
 
 #: data/units/Mounted_Commander.cfg:3
-#, fuzzy
 msgid "Mounted Commander"
-msgstr "Noble commandant"
+msgstr "Commandant monté"
 
 #: data/units/Mounted_Commander.cfg:17
 msgid ""
@@ -5936,6 +6062,10 @@ msgid ""
 "the battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
 msgstr ""
+"Commandants des plaines, les commandants montés sont doués dans l'utilisation "
+"de l'épée et du morgenstern. Montés à cheval, ils peuvent se déplacer à travers "
+"le champ de bataille avec vélocité, et peuvent fournir une assistance "
+"salutaire sur plusieurs fronts."
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -5951,7 +6081,7 @@ msgstr ""
 
 #: data/units/Naga.cfg:3
 msgid "female^Naga"
-msgstr ""
+msgstr "Naga"
 
 #: data/units/Naga.cfg:17
 msgid ""
@@ -6403,6 +6533,10 @@ msgid ""
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
+"Les galions pirates sont aux navires de transport ce que les loups sont "
+"aux brebis. Les navires chargés de marchandises ne devraient pas être seuls "
+"si loin de la terre... Il vaut mieux les aider à ne pas couler par excès de "
+"chargement."
 
 #: data/units/Pirate_Galleon.cfg:16 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
@@ -6513,9 +6647,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:4
-#, fuzzy
 msgid "Saurian Icecaster"
-msgstr "Guerrier saurien"
+msgstr "Saurien Lance-glace"
 
 #: data/units/Saurian_Icecaster.cfg:17
 msgid ""
@@ -7192,9 +7325,8 @@ msgid "+Scenario Designers"
 msgstr "+Scénaristes"
 
 #: src/about.cpp:112
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Multi-joueurs"
+msgstr "+Cartes multi-joueurs"
 
 #: src/about.cpp:116
 msgid "+Packagers"
@@ -8298,7 +8430,7 @@ msgstr "Montrer les actions déjà effectuées jusqu'au point de sauvegarde ?"
 
 #: src/multiplayer_client.cpp:688 src/multiplayer_client.cpp:691
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/multiplayer_client.cpp:782
 msgid "Leader: "
