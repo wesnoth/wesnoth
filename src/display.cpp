@@ -1579,12 +1579,12 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 				//	stream << "void";
 				//else
 				//	stream << "fog";
-				stream << map_.get_terrain_info(*terrain).default_image();
+				stream << "terrain/" << map_.get_terrain_info(*terrain).default_image();
 
 				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);
 
-					if(!image::exists("terrain/" + stream.str() + ".png")) {
+					if(!image::exists(stream.str() + ".png")) {
 						//if we don't have any surface at all,
 						//then move onto the next overlapped area
 						if(name.empty())
@@ -1596,7 +1596,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 				}
 
 				if(!name.empty()) {
-					res.push_back(name);
+					res.push_back(name + ".png");
 				}
 			} else {
 				i = (i+1)%6;
