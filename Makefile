@@ -43,7 +43,7 @@ install:
 	mkdir -p $(DESTDIR)/games
 	cp -p wesnoth $(DESTDIR)/games
 	mkdir -p $(DESTDIR)/share/man/man6
-	cp -p wesnoth.6 $(DESTDIR)/share/man/man6
+	cp -p doc/man/wesnoth.6 $(DESTDIR)/share/man/man6
 	mkdir -p $(DESTDIR)/share/pixmaps
 # data
 	mkdir -p $(DATADIR)/share/games/wesnoth-data
@@ -52,4 +52,4 @@ install:
 	mkdir -p $(SERVDIR)/games
 	cp -p src/server/wesnothd $(SERVDIR)/games
 	mkdir -p $(SERVDIR)/share/man/man6
-	cp -p wesnothd.6 $(SERVDIR)/share/man/man6
+	cp -p doc/man/wesnothd.6 $(SERVDIR)/share/man/man6
