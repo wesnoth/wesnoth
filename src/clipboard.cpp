@@ -226,6 +226,16 @@ void handle_system_event(const SDL_Event& event)
 	}
 }
 
+void copy_ucs2_to_clipboard(const ucs2_string& text)
+{
+	if(text.empty())
+		return;
+	clipboard_string = ucs2_string_to_utf8_string(text);
+	UseX x11;
+	XSetSelectionOwner(x11->dpy(), XA_PRIMARY, x11->window(), CurrentTime);
+	XSetSelectionOwner(x11->dpy(), x11->XA_CLIPBOARD(), x11->window(), CurrentTime);
+}
+
 void copy_to_clipboard(const std::string& text)
 {
 	if (text.empty()) {
@@ -299,6 +309,23 @@ static bool try_grab_target(Atom target, std::string& ret)
 	
 	//Timed out -- return empty string
 	return false;
+}
+ucs2_string copy_ucs2_from_clipboard()
+{
+	if(!clipboard_string.empty()) {
+		return utf8_string_to_ucs2_string(clipboard_string);
+	utf8_string text;
+	
+	UseX x11;
+	if(try_grab_target(x11->UTF8_STRING(), text))
+		return utf8_string_to_ucs2_string(text);
+	if(try_grab_target(x11->XA_COMPOUND_TEXT(), text))
+		return utf8_string_to_ucs2_string(text);
+	if(try_grab_target(x11->XA_TEXT(), text))
+		return utf8_string_to_ucs2_string(text);
+	if(try_grab_target(XA_STRING, text))
+		return utf8_string_to_ucs2_string(text);
+	return ucs2_string();
 }
 
 std::string copy_from_clipboard()
