@@ -407,7 +407,7 @@ battle_stats evaluate_battle_stats(
 			res.amount_defender_drains = 0;
 		}
 
-		res.defender_plague = (defender_attacks[defend].special() == plague_string);
+		res.defender_plague = !a->second.type().not_living() && (defender_attacks[defend].special() == plague_string);
 		res.defender_slows = (defender_attacks[defend].special() == slow_string);
 
 		static const std::string first_strike = "firststrike";
