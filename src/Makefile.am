@@ -192,8 +192,8 @@ wesnoth_SOURCES = \
 	util.hpp \
 	video.hpp \
 	wassert.hpp \
-	serialization/binary_wml.hp \
-	serialization/parser.hp \
+	serialization/binary_wml.hpp \
+	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
 	widgets/button.hpp \
