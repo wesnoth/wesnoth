@@ -5,7 +5,7 @@ pkgdatadir=$(datadir)/@DATADIR@
 findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
 
 if LITE
-findmoredata=;find images $(findfilterflags) -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -print
+findmoredata=;find images $(findfilterflags) -o -path "images/campaigns/*/story*" -o -path "images/campaigns/*/sotbe*" -o -print
 else
 findmoredata=;find images music $(findfilterflags) -o -print
 endif
