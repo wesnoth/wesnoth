@@ -44,9 +44,15 @@
 std::map<gamemap::location,double> display::debugHighlights_;
 
 namespace {
-	const int MinZoom = 36;
 	const int DefaultZoom = 72;
 	const int MaxZoom = 200;
+
+	const int MinZoom(const gamemap& map, const SDL_Rect& viewport)
+	{
+		const int min_zoom1 = viewport.w/((map.x()*3)/4);
+		const int min_zoom2 = viewport.h/map.y();
+		const int min_zoom = maximum<int>(min_zoom1,min_zoom2);
+	}
 
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
@@ -370,7 +376,7 @@ double display::zoom(int amount)
 	const int orig_zoom = zoom_;
 
 	zoom_ += amount;
-	if(zoom_ < MinZoom || zoom_ > MaxZoom) {
+	if(zoom_ < MinZoom(map_,map_area()) || zoom_ > MaxZoom) {
 		zoom_ = orig_zoom;
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
@@ -477,9 +483,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 
 void display::bounds_check_position()
 {
-	const int min_zoom1 = map_area().w/((map_.x()*3)/4);
-	const int min_zoom2 = map_area().h/map_.y();
-	const int min_zoom = maximum<int>(min_zoom1,min_zoom2);
+	const int min_zoom = MinZoom(map_,map_area());
 
 	const int orig_zoom = zoom_;
 
