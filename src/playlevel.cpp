@@ -323,10 +323,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	if(recorder.skipping() == false) {
 		for(std::vector<config*>::const_iterator story_i = story.begin();
 		    story_i != story.end(); ++story_i) {
-			show_intro(gui,**story_i);
+			show_intro(gui,**story_i, *level);
 		}
-
-		show_map_scene(gui,*level);
 	}
 
 	std::cerr << "c... " << (SDL_GetTicks() - ticks) << "\n";

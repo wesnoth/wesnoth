@@ -33,25 +33,10 @@ namespace {
 	const int min_room_at_bottom = 150;
 }
 
-bool show_intro_part(display& screen, const config& part);
+bool show_intro_part(display& screen, const config& part,
+		const std::string& scenario);
 
-void display_intro(display& screen, const config::child_list& parts,
-		const std::string& music_file) {
-
-	bool showing = true;
-
-	//play music if available
-	if(music_file != "") {
-		sound::play_music(music_file);
-	}
-
-	//display parts, but stop if ESC is pressed while displaying one
-	for(std::vector<config*>::const_iterator p = parts.begin(); p != parts.end() && showing ; ++p){
-		showing = show_intro_part(screen, **p);
-	}
-}
-
-void show_intro(display& screen, const config& data)
+void show_intro(display& screen, const config& data, const config& level)
 {
 	std::cerr << "showing intro sequence...\n";
 
@@ -59,31 +44,47 @@ void show_intro(display& screen, const config& data)
 	const events::resize_lock stop_resizing;
 	const events::event_context context;
 
-	config::all_children_iterator i = data.ordered_begin();
-	std::pair<const std::string*, const config*> item = *i;
+	bool showing = true;
 
-	if(*item.first == "if") {
-		const std::string type = game_events::conditional_passed(
+	const std::string& scenario_id = level["id"];
+	const std::string& scenario_name = string_table[scenario_id];
+
+	const std::string& scenario = scenario_name.empty() ? level["name"] :
+	                                                      scenario_name;
+
+	for(config::all_children_iterator i = data.ordered_begin();
+			i != data.ordered_end() && showing; i++) {
+		std::pair<const std::string*, const config*> item = *i;
+
+		if(*item.first == "part") {
+			showing = show_intro_part(screen, (*item.second), scenario);
+		} else if(*item.first == "if") {
+			const std::string type = game_events::conditional_passed(
 				NULL, *item.second) ? "then":"else";
-		const config* const thens = (*item.second).child(type);
-		if(thens == NULL) {
-			std::cerr << "no intro story this way...\n";
-			return;
+			const config* const thens = (*item.second).child(type);
+			if(thens == NULL) {
+				std::cerr << "no intro story this way...\n";
+				return;
+			}
+			const config& selection = *thens;
+			show_intro(screen, selection, level);
 		}
-		const config& selection = *thens;
-		show_intro(screen, selection);
-	}else{
-		const config::child_list& parts = data.get_children("part");
-		const std::string& music_file = data["music"];
-		display_intro(screen, parts, music_file);
 	}
 
 	std::cerr << "intro sequence finished...\n";
 }
 
-bool show_intro_part(display& screen, const config& part)
+bool show_intro_part(display& screen, const config& part,
+		const std::string& scenario)
 {
 	std::cerr << "showing intro part\n";
+
+	const std::string& music_file = part["music"];
+
+	//play music if available
+	if(music_file != "") {
+		sound::play_music(music_file);
+	}
 
 	CKey key;
 
@@ -92,7 +93,10 @@ bool show_intro_part(display& screen, const config& part)
 
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
 			0,0,0,1.0,screen.video().getSurface());
-	const std::string& image_name = part["image"];
+
+
+	const std::string& image_name = part["background"];
+	const bool show_title = (part["show_title"] == "yes");
 
 	surface image(NULL);
 	if(image_name.empty() == false) {
@@ -102,8 +106,9 @@ bool show_intro_part(display& screen, const config& part)
 	int textx = 200;
 	int texty = 400;
 
+	SDL_Rect dstrect;
+
 	if(image != NULL) {
-		SDL_Rect dstrect;
 		dstrect.x = screen.x()/2 - image->w/2;
 		dstrect.y = screen.y()/2 - image->h/2;
 		dstrect.w = image->w;
@@ -124,12 +129,80 @@ bool show_intro_part(display& screen, const config& part)
 		next_button.set_location(screen.x()-200,screen.y()-150);
 		skip_button.set_location(screen.x()-200,screen.y()-100);
 	}
-
-
 	next_button.draw();
 	skip_button.draw();
+
+	//draw title if needed
+	if(show_title) {
+		const SDL_Rect area = {0,0,screen.x(),screen.y()};
+		const SDL_Rect scenario_size =
+		      font::draw_text(NULL,area,24,font::NORMAL_COLOUR,scenario,0,0);
+				update_rect(font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
+				dstrect.x,dstrect.y - scenario_size.h - 4));
+	}
+
 	update_whole_screen();
 	screen.video().flip();
+
+	//draw images
+	const config::child_list& images = part.get_children("image");
+
+	bool pass = false;
+
+	for(std::vector<config*>::const_iterator i = images.begin(); i != images.end(); ++i){
+		const std::string& xloc = (**i)["x"];
+		const std::string& yloc = (**i)["y"];
+		const std::string& image_name = (**i)["file"];
+		const std::string& delay_str = (**i)["delay"];
+		const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
+		const int x = atoi(xloc.c_str());
+		const int y = atoi(yloc.c_str());
+		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
+			continue;
+
+		surface img;
+		img.assign(image::get_image(image_name,image::UNSCALED));
+		if(image == NULL) continue;
+
+		SDL_Rect image_rect;
+		image_rect.x = x + dstrect.x;
+		image_rect.y = y + dstrect.y;
+		image_rect.w = img->w;
+		image_rect.h = img->h;
+
+		SDL_BlitSurface(img,NULL,screen.video().getSurface(),&image_rect);
+
+		update_rect(image_rect);
+
+		if(pass == false) {
+			for(int i = 0; i != 50; ++i) {
+				if(key[SDLK_ESCAPE]) {
+					std::cerr << "escape pressed..\n";
+					return false;
+				}
+
+				SDL_Delay(delay/50);
+
+				events::pump();
+
+				int a, b;
+				const int mouse_flags = SDL_GetMouseState(&a,&b);
+				if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
+					std::cerr << "key pressed..\n";
+					pass = true;
+					continue;
+				}
+
+				screen.video().flip();
+			}
+		}
+
+		if(key[SDLK_ESCAPE]) {
+			std::cerr << "escape pressed..\n";
+			pass = true;
+			continue;
+		}
+	}
 
 	const std::string& id = part["id"];
 	const std::string& lang_story = string_table[id];
@@ -225,189 +298,4 @@ bool show_intro_part(display& screen, const config& part)
                                      screen.video().getSurface());
 
 	return true;
-}
-
-void display_map_scene(display& screen, const std::string& scenario,
-		const config::child_list& dots, const std::string& image_file) {
-
-	const surface image(image::get_image(image_file,image::UNSCALED));
-	const surface dot_image(image::get_image(game_config::dot_image,image::UNSCALED));
-	const surface cross_image(image::get_image(game_config::cross_image,image::UNSCALED));
-	if(image == NULL || dot_image == NULL || cross_image == NULL) {
-		std::cerr << "could not find map image: '" << image_file << "': " << (image == NULL ? "failed" : "ok") << "\n"
-			<< "'" << game_config::dot_image << "': " << (dot_image == NULL ? "failed" : "ok") << "\n"
-			<< "'" << game_config::cross_image << "': " << (cross_image == NULL ? "failed" : "ok") << "\n";
-		return;
-	}
-
-	SDL_Rect dstrect;
-	dstrect.x = screen.x()/2 - image->w/2;
-	dstrect.y = screen.y()/2 - image->h/2;
-	dstrect.w = image->w;
-	dstrect.h = image->h;
-
-	if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
-		dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
-	}
-
-	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
-	update_whole_screen();
-
-	screen.video().flip();
-
-	CKey key;
-
-	for(std::vector<config*>::const_iterator d = dots.begin(); d != dots.end(); ++d){
-		const std::string& xloc = (**d)["x"];
-		const std::string& yloc = (**d)["y"];
-		const int x = atoi(xloc.c_str());
-		const int y = atoi(yloc.c_str());
-		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
-			continue;
-
-		surface img = dot_image;
-		if((**d)["type"] == "cross") {
-			img = cross_image;
-		}
-
-		int xdot = x - img->w/2;
-		int ydot = y - img->h/2;
-
-		if(xdot < 0)
-			xdot = 0;
-
-		if(ydot < 0)
-			ydot = 0;
-
-		SDL_Rect dot_rect;
-		dot_rect.x = xdot + dstrect.x;
-		dot_rect.y = ydot + dstrect.y;
-		dot_rect.w = img->w;
-		dot_rect.h = img->h;
-
-		SDL_BlitSurface(img,NULL,screen.video().getSurface(),&dot_rect);
-
-		update_rect(dot_rect);
-
-		for(int i = 0; i != 50; ++i) {
-			if(key[SDLK_ESCAPE]) {
-				std::cerr << "escape pressed..\n";
-				break;
-			}
-
-			SDL_Delay(10);
-
-			events::pump();
-
-			int a, b;
-			const int mouse_flags = SDL_GetMouseState(&a,&b);
-			if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
-				std::cerr << "key pressed..\n";
-				break;
-			}
-
-			screen.video().flip();
-		}
-
-		if(key[SDLK_ESCAPE]) {
-			std::cerr << "escape pressed..\n";
-			break;
-		}
-	}
-
-	if(!key[SDLK_ESCAPE]) {
-		for(int i = 0; i != 50; ++i) {
-			SDL_Delay(10);
-			screen.video().flip();
-		}
-	}
-
-	static const SDL_Rect area = {0,0,screen.x(),screen.y()};
-	const SDL_Rect scenario_size =
-	      font::draw_text(NULL,area,24,font::NORMAL_COLOUR,scenario,0,0);
-	update_rect(font::draw_text(&screen,area,24,font::NORMAL_COLOUR,scenario,
-		                        dstrect.x,dstrect.y - scenario_size.h - 4));
-
-	screen.video().flip();
-
-	bool last_state = true;
-	for(;;) {
-		int a, b;
-		const int mouse_flags = SDL_GetMouseState(&a,&b);
-
-		const bool new_state = mouse_flags || key[SDLK_ESCAPE] ||
-		           key[SDLK_RETURN] || key[SDLK_SPACE];
-
-		if(new_state && !last_state) {
-			std::cerr << "key pressed..\n";
-			break;
-		}
-
-		last_state = new_state;
-
-		SDL_Delay(20);
-		events::pump();
-		screen.video().flip();
-	}
-
-	//clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
-                                     screen.video().getSurface());
-}
-
-void show_map_scene_cfg(display& screen, const std::string& scenario,
-		const config& cfg) {
-	config::all_children_iterator i = cfg.ordered_begin();
-	if(i != cfg.ordered_end()) {
-		std::pair<const std::string*, const config*> item = *i;
-
-		if(*item.first == "if") {
-			const std::string type = game_events::conditional_passed(
-					NULL, *item.second) ? "then":"else";
-			const config* const thens = (*item.second).child(type);
-			if(thens == NULL) {
-				std::cerr << "no map scene this way...\n";
-				return;
-			}
-			const config& selection = *thens;
-			show_map_scene_cfg(screen, scenario, selection);
-		}else{
-			const config::child_list& dots = cfg.get_children("dot");
-			const std::string& image_file = cfg["image"];
-			display_map_scene(screen, scenario, dots, image_file);
-		}
-	} else { //it still can have an image attribute
-		const config::child_list dummy;
-		const std::string& image_file = cfg["image"];
-		display_map_scene(screen, scenario, dummy, image_file);
-	}
-}
-
-void show_map_scene(display& screen, config& data)
-{
-	std::cerr << "showing map scene...\n";
-	//stop the screen being resized while we're in this function
-	const events::resize_lock stop_resizing;
-	const events::event_context context;
-
-	//clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
-                                     screen.video().getSurface());
-
-
-	const config* const cfg_item = data.child("bigmap");
-	if(cfg_item == NULL) {
-		std::cerr << "no map scene...\n";
-		return;
-	}
-
-	const std::string& id = data.values["id"];
-	const std::string& scenario_name = string_table[id];
-
-	const std::string& scenario = scenario_name.empty() ? data.values["name"] :
-	                                                      scenario_name;
-
-	const config& cfg = *cfg_item;
-
-	show_map_scene_cfg(screen, scenario, cfg);
 }
