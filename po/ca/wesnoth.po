@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-16 14:31+0200\n"
+"POT-Creation-Date: 2004-09-24 13:41+0200\n"
 "PO-Revision-Date: 2004-09-24 13:39+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català\n"
@@ -19,23 +19,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: data/game.cfg:319
+#: data/game.cfg:321
 msgid "loyal"
 msgstr "lleial"
 
-#: data/game.cfg:327
+#: data/game.cfg:329
 msgid "strong"
 msgstr "fort"
 
-#: data/game.cfg:342
+#: data/game.cfg:344
 msgid "quick"
 msgstr "ràpid"
 
-#: data/game.cfg:356
+#: data/game.cfg:358
 msgid "intelligent"
 msgstr "intel·ligent"
 
-#: data/game.cfg:365
+#: data/game.cfg:367
 msgid "resilient"
 msgstr "resistent"
 
@@ -285,21 +285,49 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
-"Hi ha dos tipus de combat a Batalla per Wesnoth, the curt i de llarg abast. En ambdós casos els combats tenen lloc en hexàgons adjacents. Els de curt abast en general impliquen l'ús d'armes com ara espases, destrals o ullals. En canvi, en els de llarg abast, s'utilitzen arcs, llances o boles de foc. El combat és bastant directe; l'atacant i el defensor alternen els atacs fins que cadascun d'ells els esgota. \n"
+"Hi ha dos tipus de combat a Batalla per Wesnoth, the curt i de llarg abast. "
+"En ambdós casos els combats tenen lloc en hexàgons adjacents. Els de curt "
+"abast en general impliquen l'ús d'armes com ara espases, destrals o ullals. "
+"En canvi, en els de llarg abast, s'utilitzen arcs, llances o boles de foc. "
+"El combat és bastant directe; l'atacant i el defensor alternen els atacs "
+"fins que cadascun d'ells els esgota. \n"
 "\n"
 "<header>text='Ordre i nombre dels atacs'</header>\n"
 "\n"
-"L'atacant realitza el primer atac i després ho fa el defensor. Això continua fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels atacs de cada unitat pot variar. Per exemple, un Lluitador Elf amb un atac d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. En canvi un Orc amb 9-2 només tindrà la possibilitat d'atacar 2 vegades, però amb 9 punts de mal.\n"
+"L'atacant realitza el primer atac i després ho fa el defensor. Això continua "
+"fins que cadascuna de les unitats ha fet tots els seus atacs. El nombre dels "
+"atacs de cada unitat pot variar. Per exemple, un Lluitador Elf amb un atac "
+"d'espasa de 5-4 podrà realitzar 4 atacs fent 5 punts de mal en cada intent. "
+"En canvi un Orc amb 9-2 només tindrà la possibilitat d'atacar 2 vegades, "
+"però amb 9 punts de mal.\n"
 "\n"
 "<header>text='Possibilitat de colpejar'</header>\n"
 "\n"
-"La possibilitat de colpejar una unitat està basada únicament en el seu grau de defensa en el terreny en el que es troba. Podeu veure el seu grau fent clic amb el botó dret sobre una unitat i seleccionant la opció 'Descriu unitat'. Per exemple, els elfs tenen un grau de defensa del 70% als boscos, que vol dir que si una unitat els ataca només tindrà un 30% de possibilitats de colpejar. Inversament, les possibilitats dels elfs de colpejar l'enemic dependran del terreny en que es trobi l'atacant. Hi ha dos excepcions a aquesta regla: <ref>dst=magical_attacks text='els atacs màgics'</ref>, i la habilitat de <ref>dst=ability_marksman text='tirador'</ref>. Els atacs màgics sempre tentn un 70% de possibilitats de colpejar, sigui quin sigui el terreny, mentre que que els amb la habilitat de tirador, les possibilitats són del 60%.\n"
+"La possibilitat de colpejar una unitat està basada únicament en el seu grau "
+"de defensa en el terreny en el que es troba. Podeu veure el seu grau fent "
+"clic amb el botó dret sobre una unitat i seleccionant la opció 'Descriu "
+"unitat'. Per exemple, els elfs tenen un grau de defensa del 70% als boscos, "
+"que vol dir que si una unitat els ataca només tindrà un 30% de possibilitats "
+"de colpejar. Inversament, les possibilitats dels elfs de colpejar l'enemic "
+"dependran del terreny en que es trobi l'atacant. Hi ha dos excepcions a "
+"aquesta regla: <ref>dst=magical_attacks text='els atacs màgics'</ref>, i la "
+"habilitat de <ref>dst=ability_marksman text='tirador'</ref>. Els atacs "
+"màgics sempre tentn un 70% de possibilitats de colpejar, sigui quin sigui el "
+"terreny, mentre que que els amb la habilitat de tirador, les possibilitats "
+"són del 60%.\n"
 "\n"
 "<header>text=Mal</header>\n"
 "\n"
-"Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per exemple, un Lluitador Elf amb un atac d'espasa de 5-4 causa un mal base de 5 punts. Això es veu modificat per dos factors: <ref>dst=damage_type_and_resistance text='resistència'</ref> i <ref>dst=time_of_day text='temps del dia'</ref>.\n"
+"Cada vegada que es colpeja, es causa un mal base depenent de l'atac. Per "
+"exemple, un Lluitador Elf amb un atac d'espasa de 5-4 causa un mal base de 5 "
+"punts. Això es veu modificat per dos factors: "
+"<ref>dst=damage_type_and_resistance text='resistència'</ref> i "
+"<ref>dst=time_of_day text='temps del dia'</ref>.\n"
 "\n"
-"Algunes unitats tenen habilitats que poden afectar el mal infligit en combat. La més comuna és la <ref>dst=ability_charge text='càrrega'</ref>, la qual dobla el mal causat per l'atacant i pel defensor quan l'unitat amb aquesta l'habilitat de càrrega ataca."
+"Algunes unitats tenen habilitats que poden afectar el mal infligit en "
+"combat. La més comuna és la <ref>dst=ability_charge text='càrrega'</ref>, la "
+"qual dobla el mal causat per l'atacant i pel defensor quan l'unitat amb "
+"aquesta l'habilitat de càrrega ataca."
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
@@ -451,7 +479,12 @@ msgid ""
 "ref> and <ref>dst=abilities text=Abilities</ref>, but you now know "
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
-msgstr "Això conclou els fonaments bàsics de Wesnoth. Per continuar aprenent més sobre el joc, us pot interessar llegir Estratègia bàsica, o familiaritzar-vos vosaltres mateixos amb els <ref>dst=traits text='trets'</ref> i les <ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
+msgstr ""
+"Això conclou els fonaments bàsics de Wesnoth. Per continuar aprenent més "
+"sobre el joc, us pot interessar llegir Estratègia bàsica, o familiaritzar-"
+"vos vosaltres mateixos amb els <ref>dst=traits text='trets'</ref> i les "
+"<ref>dst=abilities text='habilitats'</ref>, però ara ja sabeu tot el que "
+"necessiteu per jugar la campanya Hereu al tron. Divertiu-vos, i bona sort!"
 
 #: data/help.cfg:242
 msgid ""
@@ -698,69 +731,100 @@ msgstr ""
 msgid "Default"
 msgstr "Per defecte"
 
-#: data/multiplayer.cfg:23 data/multiplayer.cfg:98 data/multiplayer.cfg:173
-#: data/multiplayer.cfg:249
+#: data/multiplayer.cfg:23 data/multiplayer.cfg:104 data/multiplayer.cfg:185
+#: data/multiplayer.cfg:267 src/multiplayer_client.cpp:661
 msgid "&random-enemy.png,Random"
 msgstr "&random-enemy.png,Aleatori"
 
-#: data/multiplayer.cfg:28 data/multiplayer.cfg:178
+#: data/multiplayer.cfg:28
+#, fuzzy
+msgid "&human-lieutenant.png,Loyalists"
+msgstr "&human-general.png,Lleials"
+
+#: data/multiplayer.cfg:40
+#, fuzzy
+msgid "&elvish-captain.png,Rebels"
+msgstr "&elvish-high-lord.png,Rebels"
+
+#: data/multiplayer.cfg:52
+#, fuzzy
+msgid "&orcish-warrior.png,Northerners"
+msgstr "&orcish-warlord.png,Nortenys"
+
+#: data/multiplayer.cfg:64 data/multiplayer.cfg:145
+#, fuzzy
+msgid "&undead-necromancer.png,Undead"
+msgstr "&undead-lich.png,No morts"
+
+#: data/multiplayer.cfg:76
+#, fuzzy
+msgid "&dwarf-warrior.png,Knalgan Alliance"
+msgstr "&dwarf-lord.png,Aliança Knalgan"
+
+#: data/multiplayer.cfg:88 data/multiplayer.cfg:169 data/multiplayer.cfg:250
+#, fuzzy
+msgid "&drake-flare.png,Drakes"
+msgstr "&drake-warrior.png,Dracs"
+
+#: data/multiplayer.cfg:101
+msgid "Classic"
+msgstr "Clàssic"
+
+#: data/multiplayer.cfg:109
+#, fuzzy
+msgid "&human-lieutenant.png,Humans"
+msgstr "&human-general.png,Humans"
+
+#: data/multiplayer.cfg:121
+#, fuzzy
+msgid "&elvish-captain.png,Elves"
+msgstr "&elvish-high-lord.png,Elfs"
+
+#: data/multiplayer.cfg:133
+#, fuzzy
+msgid "&orcish-warrior.png,Orcs"
+msgstr "&orcish-warlord.png,Orcs"
+
+#: data/multiplayer.cfg:157
+#, fuzzy
+msgid "&dwarf-warrior.png,Dwarves"
+msgstr "&dwarf-lord.png,Nans"
+
+#: data/multiplayer.cfg:182
+msgid "Age of Heroes"
+msgstr "L'Era dels Herois"
+
+#: data/multiplayer.cfg:190
 msgid "&human-general.png,Loyalists"
 msgstr "&human-general.png,Lleials"
 
-#: data/multiplayer.cfg:39 data/multiplayer.cfg:189
-msgid "&elvish-high-lord.png,Rebels"
+#: data/multiplayer.cfg:202
+#, fuzzy
+msgid "&elvish-marshal.png,Rebels"
 msgstr "&elvish-high-lord.png,Rebels"
 
-#: data/multiplayer.cfg:50 data/multiplayer.cfg:200
+#: data/multiplayer.cfg:214
 #, fuzzy
 msgid "&orcish-warlord.png,Northerners"
 msgstr "&orcish-warlord.png,Nortenys"
 
-#: data/multiplayer.cfg:61 data/multiplayer.cfg:136 data/multiplayer.cfg:211
+#: data/multiplayer.cfg:226
 msgid "&undead-lich.png,Undead"
 msgstr "&undead-lich.png,No morts"
 
-#: data/multiplayer.cfg:72 data/multiplayer.cfg:222
+#: data/multiplayer.cfg:238
 msgid "&dwarf-lord.png,Knalgan Alliance"
 msgstr "&dwarf-lord.png,Aliança Knalgan"
 
-#: data/multiplayer.cfg:83 data/multiplayer.cfg:158 data/multiplayer.cfg:233
-msgid "&drake-warrior.png,Drakes"
-msgstr "&drake-warrior.png,Dracs"
-
-#: data/multiplayer.cfg:95
-msgid "Classic"
-msgstr "Clàssic"
-
-#: data/multiplayer.cfg:103
-msgid "&human-general.png,Humans"
-msgstr "&human-general.png,Humans"
-
-#: data/multiplayer.cfg:114
-msgid "&elvish-high-lord.png,Elves"
-msgstr "&elvish-high-lord.png,Elfs"
-
-#: data/multiplayer.cfg:125
-msgid "&orcish-warlord.png,Orcs"
-msgstr "&orcish-warlord.png,Orcs"
-
-#: data/multiplayer.cfg:147
-msgid "&dwarf-lord.png,Dwarves"
-msgstr "&dwarf-lord.png,Nans"
-
-#: data/multiplayer.cfg:170
-msgid "Age of Heroes"
-msgstr "L'Era dels Herois"
-
-#: data/multiplayer.cfg:246
+#: data/multiplayer.cfg:264
 msgid "Great War"
 msgstr "La Gran Guerra"
 
-#: data/multiplayer.cfg:254
+#: data/multiplayer.cfg:272
 msgid "&white-mage.png,Alliance of Light"
 msgstr "&elvish-lord.png,Aliança de la Llum"
 
-#: data/multiplayer.cfg:265
+#: data/multiplayer.cfg:284
 msgid "&undead-necromancer.png,Alliance of Darkness"
 msgstr "&undead-lich.png,Aliança de la Foscor"
 
@@ -768,6 +832,10 @@ msgstr "&undead-lich.png,Aliança de la Foscor"
 msgid ""
 "You can come if you wish, but the leader is only interesting in speaking to "
 "Baldras."
+msgstr ""
+
+#: data/scenarios/multiplayer/An_Island.cfg:7
+msgid "An Island"
 msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
@@ -815,8 +883,9 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/tutorial1.cfg:292
-#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:449
+#: data/scenarios/tutorial/Basic_Training.cfg:276
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:266
+#: src/show_dialog.cpp:449
 msgid "No"
 msgstr ""
 
@@ -876,15 +945,16 @@ msgstr "El camp de batalla de la Princesa"
 msgid "King of the Hill"
 msgstr "Rey de la muntanya"
 
-#: data/scenarios/tutorial/tutorial1.cfg:67
+#: data/scenarios/tutorial/Basic_Training.cfg:47
+#, fuzzy
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
-"surely you can explain the art of combat to me."
+"surely you can explain the art of combat to me..."
 msgstr ""
 "Estic aquí per aprendre com lluitar en una batalla. Com a mag experimentat, "
 "segur que podeu explicar-me l'art del combat."
 
-#: data/scenarios/tutorial/tutorial1.cfg:71
+#: data/scenarios/tutorial/Basic_Training.cfg:51
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -896,28 +966,28 @@ msgstr ""
 "Aleshores, premeu 'Reclutar' i després 'D'acord'. Només podeu reclutar "
 "unitats des del castell on esteu."
 
-#: data/scenarios/tutorial/tutorial1.cfg:73
+#: data/scenarios/tutorial/Basic_Training.cfg:53
 msgid "Recruit a unit"
 msgstr "Recluta unitat"
 
-#: data/scenarios/tutorial/tutorial1.cfg:79
+#: data/scenarios/tutorial/Basic_Training.cfg:59
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Excel·lent! Heu reclutat un Lluitador Elf."
 
-#: data/scenarios/tutorial/tutorial1.cfg:81
-#: data/scenarios/tutorial/tutorial1.cfg:101
-#: data/scenarios/tutorial/tutorial1.cfg:136
-#: data/scenarios/tutorial/tutorial1.cfg:164
-#: data/scenarios/tutorial/tutorial1.cfg:182
-#: data/scenarios/tutorial/tutorial1.cfg:206
+#: data/scenarios/tutorial/Basic_Training.cfg:61
+#: data/scenarios/tutorial/Basic_Training.cfg:85
+#: data/scenarios/tutorial/Basic_Training.cfg:120
+#: data/scenarios/tutorial/Basic_Training.cfg:148
+#: data/scenarios/tutorial/Basic_Training.cfg:166
+#: data/scenarios/tutorial/Basic_Training.cfg:190
 msgid "What do I do next?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:83
+#: data/scenarios/tutorial/Basic_Training.cfg:63
 msgid "How do I recruit units?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:83
+#: data/scenarios/tutorial/Basic_Training.cfg:63
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -926,7 +996,7 @@ msgid ""
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:84
+#: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid ""
 "A leader is a unit that can recruit. This means that when the leader is on a "
 "keep, he can recruit units on the surrounding castle tiles. Leaders are "
@@ -937,33 +1007,33 @@ msgid ""
 "leaders."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:84
+#: data/scenarios/tutorial/Basic_Training.cfg:64
 msgid "What's a leader?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:85
+#: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid "How should I choose what kind of units to recruit?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:85
+#: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
-"of the unit selection box, and cost, which is displayed after the name of "
+"of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:86
+#: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid "What happens when I recruit a unit?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:86
+#: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid ""
 "When you recruit a unit, it appears at full health on a castle tile of your "
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:92
+#: data/scenarios/tutorial/Basic_Training.cfg:76
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
@@ -973,30 +1043,33 @@ msgstr ""
 "reclutades, heu de finalitzar el vostre torn. Per fer-ho, simplement cliqueu "
 "sobre el botó 'Fi del torn' que hi ha a l'esquina inferior dreta."
 
-#: data/scenarios/tutorial/tutorial1.cfg:94
+#: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid "End your turn"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:99
+#: data/scenarios/tutorial/Basic_Training.cfg:83
 msgid "You have successfully ended your turn."
 msgstr "Has finalitzat correctament el teu torn."
 
-#: data/scenarios/tutorial/tutorial1.cfg:103
+#: data/scenarios/tutorial/Basic_Training.cfg:87
 msgid "How do I end my turn?"
 msgstr "Com puc finalitzar el meu torn?"
 
-#: data/scenarios/tutorial/tutorial1.cfg:103
+#: data/scenarios/tutorial/Basic_Training.cfg:87
 msgid ""
 "One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
-msgstr "Una manera de fer-ho és simplement clicant sobre el botó 'Fi del torn' que hi ha a l'esquina inferior dreta. També podeu fer servir la drecera de teclat 'Alt-E'."
+msgstr ""
+"Una manera de fer-ho és simplement clicant sobre el botó 'Fi del torn' que "
+"hi ha a l'esquina inferior dreta. També podeu fer servir la drecera de "
+"teclat 'Alt-E'."
 
-#: data/scenarios/tutorial/tutorial1.cfg:104
+#: data/scenarios/tutorial/Basic_Training.cfg:88
 msgid "What happens when I end my turn?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:104
+#: data/scenarios/tutorial/Basic_Training.cfg:88
 msgid ""
 "When you end your turn, it becomes another side's turn and only that side "
 "has the right to move, until that side ends its turn. After all sides end "
@@ -1006,7 +1079,7 @@ msgid ""
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:110
+#: data/scenarios/tutorial/Basic_Training.cfg:94
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
 "it, then select his destination. In this case, his destination is the forest "
@@ -1017,12 +1090,12 @@ msgstr ""
 "En aquest cas, la seva destinació serà el bosc proper a Merle, el Bruixot "
 "Elf."
 
-#: data/scenarios/tutorial/tutorial1.cfg:112
+#: data/scenarios/tutorial/Basic_Training.cfg:96
 #, fuzzy
 msgid "Move your Elvish Fighter next to Merle"
 msgstr "Mou el teu lluitador a una vila."
 
-#: data/scenarios/tutorial/tutorial1.cfg:134
+#: data/scenarios/tutorial/Basic_Training.cfg:118
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1032,11 +1105,11 @@ msgstr ""
 "l'heu posat a prop d'una unitat enemiga, ha perdut el seu moviment restant "
 "per aquest torn. Això s'anomena 'Zona de control'."
 
-#: data/scenarios/tutorial/tutorial1.cfg:138
+#: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid "How far can my Elvish Fighter move?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:138
+#: data/scenarios/tutorial/Basic_Training.cfg:122
 msgid ""
 "Your Elvish Fighter begins with a certain number of move points each turn; "
 "this is called his speed. When your Elvish Fighter moves along a path, each "
@@ -1050,7 +1123,7 @@ msgid ""
 "twice to remove the course."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:139
+#: data/scenarios/tutorial/Basic_Training.cfg:123
 msgid ""
 "A unit's zone of control is the location consisting of all hexes the unit is "
 "adjacent to. Units cannot move through opponent's zones of control; they can "
@@ -1059,15 +1132,15 @@ msgid ""
 "weak and wounded units."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:139
+#: data/scenarios/tutorial/Basic_Training.cfg:123
 msgid "What's the zone of control?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:140
+#: data/scenarios/tutorial/Basic_Training.cfg:124
 msgid "How do I tell who is allied and who is an enemy?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:140
+#: data/scenarios/tutorial/Basic_Training.cfg:124
 msgid ""
 "Units you control have a green, yellow, or red energy circle above their "
 "health bar, the green vertical bar next to them. Units with full movement "
@@ -1078,7 +1151,7 @@ msgid ""
 "displayed as a disc below the unit."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:146
+#: data/scenarios/tutorial/Basic_Training.cfg:130
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
@@ -1089,19 +1162,19 @@ msgstr ""
 "unitat enemiga propera. Veureu aleshores el diàleg d'atac, on haureu de "
 "seleccionar l'atac realitzar."
 
-#: data/scenarios/tutorial/tutorial1.cfg:148
+#: data/scenarios/tutorial/Basic_Training.cfg:132
 msgid "Attack Merle"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:162
+#: data/scenarios/tutorial/Basic_Training.cfg:146
 msgid "You have successfully attacked Merle."
 msgstr "Heu atacat Merle correctament."
 
-#: data/scenarios/tutorial/tutorial1.cfg:166
+#: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid "Can Merle retaliate from my attack?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:166
+#: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1117,7 +1190,7 @@ msgid ""
 "Wesnoth."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:167
+#: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid ""
 "Every attack does a certain amount of damage per hit, and can be used a "
 "certain number of times per battle. These numbers, called the attack's "
@@ -1129,26 +1202,26 @@ msgid ""
 "combat."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:167
+#: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid "How can you tell how powerful a unit's attacks are?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:168
+#: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid ""
 "Units have the ability to block blows. The chance that a unit has to hit is "
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:168
+#: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid "Will my fighter hit every time when he attacks?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:174
+#: data/scenarios/tutorial/Basic_Training.cfg:158
 msgid "End your turn, and wait for Merle to attack you."
 msgstr "Finalitzar el teu torn i espera que Merle t'ataqui."
 
-#: data/scenarios/tutorial/tutorial1.cfg:180
+#: data/scenarios/tutorial/Basic_Training.cfg:164
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
@@ -1159,11 +1232,11 @@ msgstr ""
 "que té suficient experiència, avança al següent nivell i es converteix en "
 "una unitat més poderosa."
 
-#: data/scenarios/tutorial/tutorial1.cfg:184
+#: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "What's experience?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:184
+#: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
 "When a unit fights another unit, it gains experience, denoted 'XP', from the "
 "combat. The amount of experience gained is equal to the opponent's level, "
@@ -1172,11 +1245,11 @@ msgid ""
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:185
+#: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:185
+#: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1186,23 +1259,23 @@ msgid ""
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:191
+#: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
 msgstr "Mou el teu lluitador a una vila."
 
-#: data/scenarios/tutorial/tutorial1.cfg:193
+#: data/scenarios/tutorial/Basic_Training.cfg:177
 msgid "Move your fighter onto a village"
 msgstr "Mou el teu lluitador a una vila."
 
-#: data/scenarios/tutorial/tutorial1.cfg:204
+#: data/scenarios/tutorial/Basic_Training.cfg:188
 msgid "Villages heal the units on them."
 msgstr "Les viles curen les unitats."
 
-#: data/scenarios/tutorial/tutorial1.cfg:208
+#: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "What happens when a unit moves onto a village?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:208
+#: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1214,11 +1287,11 @@ msgid ""
 "on them 8 HP per turn."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:209
+#: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid "How do I heal when there aren't any villages nearby?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:209
+#: data/scenarios/tutorial/Basic_Training.cfg:193
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1228,7 +1301,7 @@ msgid ""
 "all your units are healed fully."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:215
+#: data/scenarios/tutorial/Basic_Training.cfg:199
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
@@ -1236,11 +1309,11 @@ msgstr ""
 "Ara, heu de derrotar Merle reduint els seus punts de vida a 0. Simplement "
 "ataca fins aconseguir-ho."
 
-#: data/scenarios/tutorial/tutorial1.cfg:217
+#: data/scenarios/tutorial/Basic_Training.cfg:201
 msgid "Defeat Merle"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:232
+#: data/scenarios/tutorial/Basic_Training.cfg:216
 msgid ""
 "Oops! You moved your leader off of the keep. Remember, when your leader is "
 "not on a keep, you cannot recruit. Also remember that if your leader dies, "
@@ -1248,8 +1321,8 @@ msgid ""
 "back onto your keep."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:248
-#: data/scenarios/tutorial/tutorial2.cfg:233
+#: data/scenarios/tutorial/Basic_Training.cfg:232
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:220
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -1257,8 +1330,8 @@ msgstr ""
 "Desafortunadament heu perdut, el vostre líder ha estat derrotat. Tot i així "
 "espero que les meves ensenyances us hagin servit per aprendre alguna cosa."
 
-#: data/scenarios/tutorial/tutorial1.cfg:255
-#: data/scenarios/tutorial/tutorial2.cfg:240
+#: data/scenarios/tutorial/Basic_Training.cfg:239
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:227
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -1266,34 +1339,34 @@ msgstr ""
 "Desafortunadament heu perdut, s'han acabat el temps. Tot i així espero que "
 "les meves ensenyances us hagin servit per aprendre alguna cosa."
 
-#: data/scenarios/tutorial/tutorial1.cfg:265
+#: data/scenarios/tutorial/Basic_Training.cfg:249
 msgid "You have successfully completed the first training scenario."
 msgstr "Heu finalitzat amb èxit el primer escenari d'entrenament."
 
-#: data/scenarios/tutorial/tutorial1.cfg:267
-#: data/scenarios/tutorial/tutorial2.cfg:252
+#: data/scenarios/tutorial/Basic_Training.cfg:251
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:239
 msgid "Hooray!"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:269
+#: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:269
+#: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
 "appear after the opening dialog. It can also be accessed by clicking "
 "'Objectives' on the menu. The scenario objectives are a list of victory "
-"conditions and defeat conditions, and if any of the conditions are met, the "
-"level is over. Hopefully, it was a victory condition that was met."
+"conditions and defeat conditions, and when any of the conditions are met, "
+"the level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:270
+#: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:270
+#: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid ""
 "When you win a scenario, all of your units survive and are revived to full "
 "health, and you do not have to pay them for the remaining turns. Also, if "
@@ -1302,22 +1375,23 @@ msgid ""
 "lost."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:276
-#: data/scenarios/tutorial/tutorial2.cfg:261
+#: data/scenarios/tutorial/Basic_Training.cfg:260
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:248
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr "Voleu revisar alguna de les questions que heu après en aquest nivell?"
 
-#: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:448
+#: data/scenarios/tutorial/Basic_Training.cfg:262
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
+#: src/show_dialog.cpp:448
 msgid "Yes"
 msgstr "Sí"
 
-#: data/scenarios/tutorial/tutorial1.cfg:280
-#: data/scenarios/tutorial/tutorial2.cfg:265
+#: data/scenarios/tutorial/Basic_Training.cfg:264
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 msgid "I'm done reviewing skills!"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:297
+#: data/scenarios/tutorial/Basic_Training.cfg:281
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -1327,17 +1401,18 @@ msgstr ""
 "Ara procedirem al següent escenari, en el que lluitareu contra mi en una "
 "batalla de prova."
 
-#: data/scenarios/tutorial/tutorial2.cfg:3
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:60
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:37
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr ""
+"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
-#: data/scenarios/tutorial/tutorial2.cfg:64
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:41
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -1346,7 +1421,7 @@ msgid ""
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:79
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:62
 msgid ""
 "@Skills covered:\n"
 "Recalling\n"
@@ -1363,22 +1438,22 @@ msgid ""
 "Defeat Delfador"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:86
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:73
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:88
-#: data/scenarios/tutorial/tutorial2.cfg:102
-#: data/scenarios/tutorial/tutorial2.cfg:117
-#: data/scenarios/tutorial/tutorial2.cfg:131
-#: data/scenarios/tutorial/tutorial2.cfg:145
-#: data/scenarios/tutorial/tutorial2.cfg:159
-#: data/scenarios/tutorial/tutorial2.cfg:173
-#: data/scenarios/tutorial/tutorial2.cfg:206
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:89
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:104
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:118
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:132
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:146
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:193
 msgid "En guarde!"
 msgstr "En guardia!"
 
-#: data/scenarios/tutorial/tutorial2.cfg:90
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 msgid ""
 "First, you must pay 20 pieces of gold for each unit you recall, regardless "
 "of the type of unit. Other than that, recalled units are basically like "
@@ -1386,15 +1461,15 @@ msgid ""
 "previous scenario will appear."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:90
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 msgid "What happens when I recall a unit?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:91
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:78
 msgid "How should I decide which units to recall?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:91
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:78
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -1402,14 +1477,14 @@ msgid ""
 "for the scenario you are in; for example in a forest scenario, recall elves."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:100
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:87
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
 "assigned traits."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:104
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
 msgid ""
 "The function of traits is add variety by making units of the same type "
 "different from each other. This is done by randomly assigning each unit "
@@ -1418,11 +1493,11 @@ msgid ""
 "putting your cursor over that trait."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:104
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:91
 msgid "What do traits do?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:105
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:92
 msgid ""
 "There are five distinct traits, which have effects ranging from increasing a "
 "unit's hit points to decreasing the amount of XP required to advance. "
@@ -1431,21 +1506,21 @@ msgid ""
 "traits when they are recruited."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:105
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:92
 msgid "What kind of traits can my units get?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:115
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:102
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:119
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
 msgid "How much gold do my units cost?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:119
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:106
 msgid ""
 "You need to pay each unit you recruit or recall gold when you recruit it. "
 "The cost of recruiting a unit is displayed under the unit's name. The cost "
@@ -1457,11 +1532,11 @@ msgid ""
 "red arrow."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:120
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
 msgid "How do I get gold?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:120
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:107
 msgid ""
 "You begin each level with a percentage of gold from the previous level. If "
 "this is less than 100 gold, you begin with 100 gold instead. The amount of "
@@ -1471,13 +1546,13 @@ msgid ""
 "gold per turn."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:129
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:116
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:133
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
 "There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
 "of day: day, twilight, and night. During day, units of the alignment Lawful, "
@@ -1486,15 +1561,15 @@ msgid ""
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:133
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid "What are the different alignments and times of day?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:134
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:121
 msgid "How do I know what time of day it is?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:134
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:121
 msgid ""
 "The times of day usually progress in a sequence: dawn- identical to "
 "twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
@@ -1504,11 +1579,11 @@ msgid ""
 "can find out the current time of day by looking at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:143
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:130
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:147
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -1521,15 +1596,15 @@ msgid ""
 "the time."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:147
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
 msgid "What are the different properties that terrains have?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:148
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:135
 msgid "How do I find out the properties of a specific terrain?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:148
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:135
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then select Terrain "
@@ -1540,13 +1615,13 @@ msgid ""
 "it will cost the selected unit to move through that hex."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:157
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:144
 msgid ""
 "Each attack has a damage type which affects how much damage different units "
 "take from that attack."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:161
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid ""
 "Each unit has a certain resistance against each attack type. This resistance "
 "is a percentage which is subtracted from the damage of opponent's weapons of "
@@ -1557,11 +1632,11 @@ msgid ""
 "100%."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:161
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 msgid "How does resistance affect attack damage?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:162
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:149
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -1571,26 +1646,27 @@ msgid ""
 "unit, select Unit Description, then select Resistance."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:162
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:149
 msgid "What are the different damage types?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:171
-msgid "Many units have a specialty which changes the rules of play in some way."
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:158
+msgid ""
+"Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:175
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid ""
 "Each specialty does something different; that's the whole point of a "
 "specialty. To find a description of a unit's specialty, put your cursor over "
 "the name of the specialty."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:175
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid "What do specialties do?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:176
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:163
 msgid ""
 "The specialties a unit gets are determined by the unit type; for example all "
 "generals have the specialty leadership. There are two kinds of specialties: "
@@ -1598,11 +1674,11 @@ msgid ""
 "specials only apply to one of the unit's attacks."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:176
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:163
 msgid "Which units get specialties?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:177
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid ""
 "There are many different specialties, and learning about them is one of the "
 "interesting parts of playing Wesnoth. The two most common specialties are "
@@ -1611,15 +1687,15 @@ msgid ""
 "while next to a unit of higher level with leadership."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:177
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What kinds of specialties can my units get?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:178
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "How do I use specialties?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:178
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid ""
 "To use a specialty, you just have to move and/or attack with your units in a "
 "way which triggers the specialty. For example, in order to use leadership, "
@@ -1627,18 +1703,18 @@ msgid ""
 "the other unit."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:195
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:202
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:189
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:208
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid ""
 "The objects you encounter are put in by the scenario designer, so they vary "
 "from campaign to campaign. In Heir to the Throne, most objects give the unit "
@@ -1646,56 +1722,55 @@ msgid ""
 "objects in a campaign."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:208
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 msgid "What kind of objects am I likely to encounter?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:209
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:196
 msgid "How long do these objects last?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:209
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:196
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the level."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:223
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:210
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:250
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:237
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:254
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
 msgid "How do I play a campaign?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:254
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:241
 msgid ""
 "To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
 "to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
 "suggested for newcomers to Wesnoth."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:255
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:242
 msgid "How do I play multiplayer?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:255
+#: data/scenarios/tutorial/Traits_and_Specialties.cfg:242
 msgid ""
-"To play Wesnoth against other people, select 'Multiplayer'. If you have the "
-"latest development version of Wesnoth, select 'Join Official Server'. "
-"However, if you have version 1.0, select 'Join Game', then type in 'server."
-"wesnoth.org'. This will connect you to the official Wesnoth server, where "
-"you can join a game by selecting it, then selecting 'Join Game'."
+"To play Wesnoth against other people, select 'Multiplayer'. Then select "
+"'Join Official Server'. This will connect you to the official Wesnoth "
+"server, where you can join a game by selecting it, then selecting 'Join "
+"Game'."
 msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:11
@@ -1762,13 +1837,17 @@ msgstr "Accions"
 msgid "End Turn"
 msgstr "Fi del torn"
 
-#: data/themes/default.cfg:126 data/themes/default.cfg:462
-msgid "hp"
-msgstr "HP"
+#: data/themes/default.cfg:126 data/themes/default.cfg:462 src/dialogs.cpp:667
+#: src/display.cpp:902 src/help.cpp:621 src/playturn.cpp:1947
+#: src/unit.cpp:1029
+msgid "HP"
+msgstr ""
 
-#: data/themes/default.cfg:133 data/themes/default.cfg:469
-msgid "xp"
-msgstr "XP"
+#: data/themes/default.cfg:133 data/themes/default.cfg:469 src/dialogs.cpp:671
+#: src/dialogs.cpp:679 src/display.cpp:906 src/display.cpp:914
+#: src/playturn.cpp:1786 src/playturn.cpp:1948 src/unit.cpp:1088
+msgid "XP"
+msgstr ""
 
 #: data/themes/default.cfg:142 data/themes/default.cfg:478
 msgid "gold"
@@ -1792,11 +1871,11 @@ msgstr "guanys"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr "statuspanel^nivell"
+msgstr "nivell"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr "statuspanel^moviments"
+msgstr "moviments"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -2252,7 +2331,8 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
 #: data/translations/english.cfg:177
-msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid ""
+"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #: data/translations/english.cfg:179
@@ -2326,7 +2406,8 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:190
-msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid ""
+"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
 #: data/translations/english.cfg:191
@@ -2375,7 +2456,8 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:198
-msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid ""
+"Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
 #: data/translations/english.cfg:199
@@ -2497,10 +2579,13 @@ msgstr ""
 #: data/units/Dark_Queen.cfg:27 data/units/Dark_Queen.cfg:28
 #: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:36
 #: data/units/Demilich.cfg:19 data/units/Demilich.cfg:32
-#: data/units/Drake_Mage.cfg:64 data/units/Drake_Warmage.cfg:74
-#: data/units/Ghost.cfg:20 data/units/Ghost.cfg:32 data/units/Initiate.cfg:20
-#: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
-#: data/units/Spectre.cfg:33 data/units/Wraith.cfg:33
+#: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
+#: data/units/Elvish_Sylph.cfg:83 data/units/Ghost.cfg:20
+#: data/units/Ghost.cfg:32 data/units/Initiate.cfg:20 data/units/Lich.cfg:20
+#: data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
+#: data/units/Saurian_Icecaster.cfg:41 data/units/Saurian_Soothsayer.cfg:40
+#: data/units/Saurian_Tribalist.cfg:40 data/units/Spectre.cfg:33
+#: data/units/Wraith.cfg:33
 msgid "cold"
 msgstr ""
 
@@ -2524,11 +2609,12 @@ msgstr ""
 #: data/units/Arch_Mage.cfg:121 data/units/Battle_Princess.cfg:79
 #: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
 #: data/units/Dark_Queen.cfg:29 data/units/Deathmaster.cfg:37
-#: data/units/Demilich.cfg:33 data/units/Drake_Mage.cfg:68
-#: data/units/Drake_Warmage.cfg:78 data/units/Dwarvish_Runemaster.cfg:43
+#: data/units/Demilich.cfg:33 data/units/Dwarvish_Runemaster.cfg:43
 #: data/units/Elder_Mage.cfg:41 data/units/Elvish_Druid.cfg:63
-#: data/units/Elvish_High_Lord.cfg:38 data/units/Elvish_Lord.cfg:38
-#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:72
+#: data/units/Elvish_Enchantress.cfg:121 data/units/Elvish_High_Lord.cfg:38
+#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
+#: data/units/Elvish_Shyde.cfg:72 data/units/Elvish_Sorceress.cfg:121
+#: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:84
 #: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
 #: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
 #: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:105
@@ -2536,9 +2622,10 @@ msgstr ""
 #: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:79
 #: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:111
-#: data/units/Sea_Hag.cfg:31 data/units/Silver_Mage.cfg:44
-#: data/units/Silver_Mage.cfg:131 data/units/White_Mage.cfg:47
-#: data/units/White_Mage.cfg:106
+#: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
+#: data/units/Saurian_Tribalist.cfg:41 data/units/Sea_Hag.cfg:31
+#: data/units/Silver_Mage.cfg:44 data/units/Silver_Mage.cfg:131
+#: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
 msgid "magical"
 msgstr ""
 
@@ -2551,25 +2638,36 @@ msgstr ""
 msgid "ambush,regenerates"
 msgstr ""
 
-#: data/units/Ancient_Wose.cfg:17 data/units/Elder_Wose.cfg:18
+#: data/units/Ancient_Wose.cfg:15
+msgid ""
+"Terrible and awe-inspiring, Ancient Woses are majestic treefolk not to be "
+"trifled with. Fearsome fighters, they resist many attacks while delivering "
+"devastating blows to their enemies. They are slow and flammable, but can "
+"hide in forest and regenerate wounds, drawing strength from the environment."
+msgstr ""
+
+#: data/units/Ancient_Wose.cfg:18 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
 msgid "crush"
 msgstr ""
 
-#: data/units/Ancient_Wose.cfg:18 data/units/Arch_Mage.cfg:24
+#: data/units/Ancient_Wose.cfg:19 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
 #: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:29
 #: data/units/Cuttle_Fish.cfg:20 data/units/Dark_Queen.cfg:21
-#: data/units/Deathmaster.cfg:20 data/units/Drake_Beak.cfg:38
-#: data/units/Drake_Mage.cfg:20 data/units/Drake_Petit.cfg:38
-#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Warmage.cfg:20
-#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:21
+#: data/units/Deathmaster.cfg:20 data/units/Drake_Beak.cfg:25
+#: data/units/Drake_Gladiator.cfg:58 data/units/Drake_Glider.cfg:23
+#: data/units/Drake_Petit.cfg:25 data/units/Drake_Sky.cfg:27
+#: data/units/Drake_Sky.cfg:75 data/units/Dwarvish_Dragonguard.cfg:21
 #: data/units/Dwarvish_Fighter.cfg:37 data/units/Dwarvish_Runemaster.cfg:21
 #: data/units/Dwarvish_Steelclad.cfg:43 data/units/Elder_Mage.cfg:23
-#: data/units/Elder_Wose.cfg:19 data/units/Elvish_Druid.cfg:23
-#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Lady.cfg:17
+#: data/units/Elder_Wose.cfg:20 data/units/Elvish_Druid.cfg:23
+#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Enchantress.cfg:26
+#: data/units/Elvish_Enchantress.cfg:66 data/units/Elvish_Lady.cfg:18
 #: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
 #: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
+#: data/units/Elvish_Sorceress.cfg:26 data/units/Elvish_Sorceress.cfg:66
+#: data/units/Elvish_Sylph.cfg:25 data/units/Elvish_Sylph.cfg:52
 #: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
 #: data/units/Footpad.cfg:38 data/units/Galleon.cfg:18 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
@@ -2583,14 +2681,17 @@ msgstr ""
 #: data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:94 data/units/Outlaw.cfg:112
 #: data/units/Outlaw_Princess.cfg:24 data/units/Outlaw_Princess.cfg:42
 #: data/units/Outlaw_Queen.cfg:25 data/units/Outlaw_Queen.cfg:43
-#: data/units/Sea_Hag.cfg:29 data/units/Shock_Trooper.cfg:20
-#: data/units/Silver_Mage.cfg:26 data/units/Silver_Mage.cfg:113
-#: data/units/Skeleton_Archer.cfg:24 data/units/Soul_Shooter.cfg:25
-#: data/units/Soulless.cfg:20 data/units/Tentacle.cfg:22
-#: data/units/Thug.cfg:20 data/units/Troll.cfg:21 data/units/Troll_Hero.cfg:21
-#: data/units/Troll_Warrior.cfg:20 data/units/Troll_Whelp.cfg:21
-#: data/units/Walking_Corpse.cfg:20 data/units/Warrior_King.cfg:23
-#: data/units/Wose.cfg:20 data/units/Yeti.cfg:34 data/units/Youth.cfg:22
+#: data/units/Saurian_Icecaster.cfg:23 data/units/Saurian_Soothsayer.cfg:23
+#: data/units/Saurian_Tribalist.cfg:23 data/units/Sea_Hag.cfg:29
+#: data/units/Shock_Trooper.cfg:20 data/units/Silver_Mage.cfg:26
+#: data/units/Silver_Mage.cfg:113 data/units/Skeleton_Archer.cfg:24
+#: data/units/Soul_Shooter.cfg:25 data/units/Soulless.cfg:20
+#: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:21
+#: data/units/Troll_Hero.cfg:21 data/units/Troll_Rocklobber.cfg:21
+#: data/units/Troll_Rocklobber.cfg:39 data/units/Troll_Warrior.cfg:20
+#: data/units/Troll_Whelp.cfg:21 data/units/Walking_Corpse.cfg:20
+#: data/units/Warrior_King.cfg:23 data/units/Wose.cfg:20
+#: data/units/Yeti.cfg:34 data/units/Youth.cfg:22
 msgid "impact"
 msgstr ""
 
@@ -2610,12 +2711,13 @@ msgstr ""
 "amigues, gràcies a la seva habilitat de teletransport."
 
 #: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:102
-#: data/units/Deathmaster.cfg:19 data/units/Drake_Mage.cfg:19
-#: data/units/Drake_Warmage.cfg:19 data/units/Elder_Mage.cfg:22
-#: data/units/Elvish_Druid.cfg:22 data/units/Elvish_Shaman.cfg:24
+#: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:22
+#: data/units/Elvish_Druid.cfg:22 data/units/Elvish_Enchantress.cfg:25
+#: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
 #: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:99
-#: data/units/Necromancer.cfg:19 data/units/Silver_Mage.cfg:25
-#: data/units/Silver_Mage.cfg:112
+#: data/units/Necromancer.cfg:19 data/units/Saurian_Icecaster.cfg:22
+#: data/units/Saurian_Soothsayer.cfg:22 data/units/Saurian_Tribalist.cfg:22
+#: data/units/Silver_Mage.cfg:25 data/units/Silver_Mage.cfg:112
 msgid "staff"
 msgstr ""
 
@@ -2629,11 +2731,10 @@ msgstr ""
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Battle_Princess.cfg:77 data/units/Commander.cfg:121
-#: data/units/Drake_Burner.cfg:44 data/units/Drake_Fighter.cfg:44
-#: data/units/Drake_Fire.cfg:43 data/units/Drake_Flameheart.cfg:22
-#: data/units/Drake_Flameheart.cfg:60 data/units/Drake_Guard.cfg:46
-#: data/units/Drake_Mage.cfg:38 data/units/Drake_Warmage.cfg:43
-#: data/units/Drake_Warrior.cfg:44 data/units/Dwarvish_Runemaster.cfg:38
+#: data/units/Drake_Burner.cfg:42 data/units/Drake_Fire.cfg:44
+#: data/units/Drake_Flameheart.cfg:49 data/units/Drake_Flare.cfg:44
+#: data/units/Drake_Glider.cfg:47 data/units/Drake_Inferno.cfg:44
+#: data/units/Drake_Sky.cfg:51 data/units/Dwarvish_Runemaster.cfg:38
 #: data/units/Elder_Mage.cfg:39 data/units/Elvish_High_Lord.cfg:37
 #: data/units/Elvish_Lord.cfg:37 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:59 data/units/Fireball.cfg:18
@@ -2653,8 +2754,8 @@ msgstr "Assassí"
 
 #: data/units/Assassin.cfg:16 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:17
-#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:17
-#: data/units/Saurian_Warrior.cfg:17
+#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:19
+#: data/units/Saurian_Warrior.cfg:19
 msgid "skirmisher"
 msgstr ""
 
@@ -2689,14 +2790,14 @@ msgstr ""
 #: data/units/Commander.cfg:24 data/units/Commander.cfg:99
 #: data/units/Dark_Spirit.cfg:20 data/units/Death_Knight.cfg:20
 #: data/units/Direwolf_Rider.cfg:19 data/units/Direwolf_Rider.cfg:31
-#: data/units/Dragoon.cfg:28 data/units/Drake_Burner.cfg:21
-#: data/units/Drake_Clasher.cfg:20 data/units/Drake_Fighter.cfg:21
-#: data/units/Drake_Fire.cfg:20 data/units/Drake_Hatchling.cfg:20
-#: data/units/Drake_Slasher.cfg:21 data/units/Drake_Slave.cfg:20
-#: data/units/Drake_Warrior.cfg:21 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:20
-#: data/units/Dwarvish_Lord.cfg:25 data/units/Dwarvish_Lord.cfg:42
-#: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Dragoon.cfg:28 data/units/Drake_Burner.cfg:22
+#: data/units/Drake_Clasher.cfg:22 data/units/Drake_Fire.cfg:25
+#: data/units/Drake_Flameheart.cfg:24 data/units/Drake_Flare.cfg:24
+#: data/units/Drake_Gladiator.cfg:26 data/units/Drake_Inferno.cfg:25
+#: data/units/Duelist.cfg:21 data/units/Dwarvish_Berserker.cfg:28
+#: data/units/Dwarvish_Fighter.cfg:20 data/units/Dwarvish_Lord.cfg:25
+#: data/units/Dwarvish_Lord.cfg:42 data/units/Dwarvish_Steelclad.cfg:26
+#: data/units/Dwarvish_Thunderer.cfg:21
 #: data/units/Dwarvish_Thunderguard.cfg:21
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
 #: data/units/Elvish_Archer.cfg:100 data/units/Elvish_Avenger.cfg:24
@@ -2749,7 +2850,7 @@ msgstr ""
 
 #: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
 #: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
-#: src/actions.cpp:487
+#: src/actions.cpp:490
 msgid "backstab"
 msgstr ""
 
@@ -2770,17 +2871,18 @@ msgid "Bandit"
 msgstr ""
 
 #: data/units/Bandit.cfg:16
-msgid "Armed with heavy mace, Bandits are adept at robbing and killing at night."
+msgid ""
+"Armed with heavy mace, Bandits are adept at robbing and killing at night."
 msgstr ""
 
-#: data/units/Bandit.cfg:19 data/units/Drake_Slasher.cfg:75
-#: data/units/Drake_Worker.cfg:19 data/units/Great_Troll.cfg:20
-#: data/units/Heavy_Infantry.cfg:20 data/units/Heavy_Infantryman.cfg:19
-#: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:29
-#: data/units/Mage_of_Light.cfg:89 data/units/Outlaw.cfg:20
-#: data/units/Outlaw.cfg:93 data/units/Outlaw_Princess.cfg:23
-#: data/units/Outlaw_Queen.cfg:24 data/units/Shock_Trooper.cfg:19
-#: data/units/Troll_Warrior.cfg:19 data/units/Warrior_King.cfg:22
+#: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
+#: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantry.cfg:20
+#: data/units/Heavy_Infantryman.cfg:19 data/units/Iron_Mauler.cfg:19
+#: data/units/Mage_of_Light.cfg:29 data/units/Mage_of_Light.cfg:89
+#: data/units/Outlaw.cfg:20 data/units/Outlaw.cfg:93
+#: data/units/Outlaw_Princess.cfg:23 data/units/Outlaw_Queen.cfg:24
+#: data/units/Shock_Trooper.cfg:19 data/units/Troll_Warrior.cfg:19
+#: data/units/Warrior_King.cfg:22
 msgid "mace"
 msgstr ""
 
@@ -2807,9 +2909,9 @@ msgstr ""
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
 #: data/units/Cavalry.cfg:30 data/units/Cavalryman.cfg:28
 #: data/units/Commander.cfg:23 data/units/Commander.cfg:98
-#: data/units/Dragoon.cfg:27 data/units/Drake_Clasher.cfg:19
-#: data/units/Drake_Fighter.cfg:20 data/units/Drake_Slasher.cfg:20
-#: data/units/Drake_Warrior.cfg:20 data/units/Elvish_Archer.cfg:21
+#: data/units/Dragoon.cfg:27 data/units/Drake_Clasher.cfg:21
+#: data/units/Drake_Flameheart.cfg:23 data/units/Drake_Flare.cfg:23
+#: data/units/Drake_Gladiator.cfg:25 data/units/Elvish_Archer.cfg:21
 #: data/units/Elvish_Archer.cfg:99 data/units/Elvish_Avenger.cfg:23
 #: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:23
 #: data/units/Elvish_Champion.cfg:21 data/units/Elvish_Fighter.cfg:23
@@ -2884,8 +2986,8 @@ msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Giant_Mudcrawler.cfg:33
 #: data/units/Skeleton_Archer.cfg:23 data/units/Soulless.cfg:19
-#: data/units/Troll_Whelp.cfg:20 data/units/Walking_Corpse.cfg:19
-#: data/units/Yeti.cfg:33
+#: data/units/Troll_Rocklobber.cfg:20 data/units/Troll_Whelp.cfg:20
+#: data/units/Walking_Corpse.cfg:19 data/units/Yeti.cfg:33
 msgid "fist"
 msgstr ""
 
@@ -2912,12 +3014,12 @@ msgstr ""
 #: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
 #: data/units/Commander.cfg:46 data/units/Cuttle_Fish.cfg:27
 #: data/units/Death_Knight.cfg:37 data/units/Dragoon.cfg:49
-#: data/units/Drake_Clasher.cfg:52 data/units/Drake_Guard.cfg:23
-#: data/units/Drake_Slasher.cfg:53 data/units/Duelist.cfg:32
-#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
-#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
-#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
-#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Drake_Clasher.cfg:40 data/units/Drake_Gladiator.cfg:44
+#: data/units/Duelist.cfg:32 data/units/Dwarvish_Dragonguard.cfg:39
+#: data/units/Dwarvish_Guardsman.cfg:26 data/units/Dwarvish_Guardsman.cfg:39
+#: data/units/Dwarvish_Sentinel.cfg:28 data/units/Dwarvish_Sentinel.cfg:41
+#: data/units/Dwarvish_Stalwart.cfg:28 data/units/Dwarvish_Stalwart.cfg:41
+#: data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
 #: data/units/Elvish_Archer.cfg:117 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
@@ -2930,6 +3032,8 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:39
 #: data/units/Elvish_Sharpshooter.cfg:118 data/units/Elvish_Shyde.cfg:71
 #: data/units/General.cfg:45 data/units/Giant_Scorpion.cfg:20
+#: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:39
+#: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:33
 #: data/units/Grand_Knight.cfg:37 data/units/Halbardier.cfg:19
 #: data/units/Horseman.cfg:21 data/units/Knight.cfg:37
 #: data/units/Lancer.cfg:21 data/units/Lieutenant.cfg:39
@@ -2944,13 +3048,13 @@ msgstr ""
 #: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
 #: data/units/Peasant.cfg:34 data/units/Pikeman.cfg:20
-#: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
-#: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
-#: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
+#: data/units/Pirate_Galleon.cfg:16 data/units/Poacher.cfg:42
+#: data/units/Saurian.cfg:23 data/units/Saurian.cfg:40
+#: data/units/Saurian_Warrior.cfg:23 data/units/Saurian_Warrior.cfg:40
 #: data/units/Sea_Hag.cfg:21 data/units/Sea_Serpent.cfg:20
 #: data/units/Sergeant.cfg:39 data/units/Skeleton_Archer.cfg:41
 #: data/units/Soul_Shooter.cfg:38 data/units/Spearman.cfg:20
-#: data/units/Spearman.cfg:33 data/units/Transport_Galleon.cfg:16
+#: data/units/Spearman.cfg:33 data/units/Transport_Galleon.cfg:17
 #: data/units/Trapper.cfg:42 data/units/Triton.cfg:20
 #: data/units/Vampire_Lady.cfg:34 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
@@ -3015,8 +3119,9 @@ msgid "web"
 msgstr ""
 
 #: data/units/Cave_Spider.cfg:38 data/units/Elvish_Druid.cfg:43
-#: data/units/Elvish_Shaman.cfg:45 data/units/Elvish_Shyde.cfg:52
-#: data/units/Goblin_Pillager.cfg:37
+#: data/units/Elvish_Enchantress.cfg:67 data/units/Elvish_Shaman.cfg:45
+#: data/units/Elvish_Shyde.cfg:52 data/units/Elvish_Sorceress.cfg:67
+#: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:37
 msgid "slow"
 msgstr ""
 
@@ -3036,22 +3141,23 @@ msgstr ""
 "antiga i oblidada civilització, els Chocobones es poden moure més ràpid que "
 "moltes d'altres unitats de cavalleria."
 
-#: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:51
-#: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
-#: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
-#: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
-#: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
-#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
-#: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
-#: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
-#: data/units/Spearman.cfg:32
+#: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:39
+#: data/units/Drake_Gladiator.cfg:43 data/units/Dwarvish_Guardsman.cfg:24
+#: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Sentinel.cfg:26
+#: data/units/Dwarvish_Sentinel.cfg:40 data/units/Dwarvish_Stalwart.cfg:26
+#: data/units/Dwarvish_Stalwart.cfg:40 data/units/Goblin_Impaler.cfg:20
+#: data/units/Goblin_Impaler.cfg:38 data/units/Goblin_Spearman.cfg:20
+#: data/units/Goblin_Spearman.cfg:32 data/units/Horseman.cfg:20
+#: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
+#: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
+#: data/units/Spearman.cfg:19 data/units/Spearman.cfg:32
 msgid "spear"
 msgstr ""
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
-#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:360
-#: src/actions.cpp:478
+#: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:363
+#: src/actions.cpp:481
 msgid "charge"
 msgstr ""
 
@@ -3070,7 +3176,7 @@ msgstr ""
 msgid "gaze"
 msgstr ""
 
-#: data/units/Cockatrice.cfg:26 src/actions.cpp:717 src/actions.cpp:857
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:728 src/actions.cpp:876
 #: src/reports.cpp:122
 msgid "stone"
 msgstr ""
@@ -3081,7 +3187,8 @@ msgid "Commander"
 msgstr "Comandant"
 
 #: data/units/Commander.cfg:11 data/units/Commander.cfg:86
-#: data/units/Death_Knight.cfg:14 data/units/Elvish_Captain.cfg:11
+#: data/units/Death_Knight.cfg:14 data/units/Drake_Flameheart.cfg:16
+#: data/units/Drake_Flare.cfg:11 data/units/Elvish_Captain.cfg:11
 #: data/units/Elvish_Marshal.cfg:12 data/units/Fire_Dragon.cfg:7
 #: data/units/General.cfg:16 data/units/Lieutenant.cfg:16
 #: data/units/Lord.cfg:10 data/units/Lord.cfg:73
@@ -3089,7 +3196,7 @@ msgstr "Comandant"
 #: data/units/Orcish_Leader.cfg:9 data/units/Orcish_Ruler.cfg:9
 #: data/units/Orcish_Sovereign.cfg:9 data/units/Princess.cfg:17
 #: data/units/Princess.cfg:55 data/units/Sergeant.cfg:17
-#: data/units/Warrior_King.cfg:17 src/actions.cpp:350 src/actions.cpp:468
+#: data/units/Warrior_King.cfg:17 src/actions.cpp:353 src/actions.cpp:471
 msgid "leadership"
 msgstr ""
 
@@ -3246,9 +3353,8 @@ msgid ""
 "enemies."
 msgstr ""
 
-#: data/units/Direwolf_Rider.cfg:30 data/units/Drake_Burner.cfg:20
-#: data/units/Drake_Fire.cfg:19 data/units/Drake_Flameheart.cfg:20
-#: data/units/Drake_Hatchling.cfg:19 data/units/Drake_Slave.cfg:19
+#: data/units/Direwolf_Rider.cfg:30 data/units/Drake_Burner.cfg:21
+#: data/units/Drake_Fire.cfg:24 data/units/Drake_Inferno.cfg:24
 #: data/units/Ghoul.cfg:19 data/units/Goblin_Direwolver.cfg:32
 #: data/units/Gryphon.cfg:18 data/units/Gryphon_Master.cfg:21
 #: data/units/Gryphon_Rider.cfg:19 data/units/Necrophage.cfg:19
@@ -3276,99 +3382,188 @@ msgstr ""
 
 #: data/units/Drake_Beak.cfg:16
 msgid ""
-"Smaller than most Drakes, the Beaks are therefore more agile and can fight "
-"even when flying."
+"Smaller and slightly less robust than most Drakes, the Drake Beak makes up "
+"for this with its graceful flight and higher speed."
 msgstr ""
 
-#: data/units/Drake_Beak.cfg:37 data/units/Drake_Petit.cfg:37
+#: data/units/Drake_Beak.cfg:24 data/units/Drake_Petit.cfg:24
 msgid "beak"
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:3
+#: data/units/Drake_Burner.cfg:4
 msgid "Drake Burner"
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:17
+#: data/units/Drake_Burner.cfg:18
 msgid ""
-"Not only can the Drake Burners wield their claws with deadly skill, but they "
-"possess the fire-breathing abilities of their remote ancestors. Enemies are "
-"well advised to keep their distance."
+"Not only can a Drake Burner wield its claws with deadly skill, but it still "
+"possesses the fire-breathing abilities of its remote ancestors. Enemies "
+"would be well advised to keep their distance. The most skilled Burners will "
+"often go on to become Fire Drakes who seek to master their internal fire, or "
+"Drake Flares who aspire to be leaders of their kind."
 msgstr ""
 
-#: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:42
-#: data/units/Drake_Fire.cfg:41 data/units/Drake_Flameheart.cfg:58
-#: data/units/Drake_Guard.cfg:44 data/units/Drake_Mage.cfg:36
-#: data/units/Drake_Warmage.cfg:41 data/units/Drake_Warrior.cfg:42
-#: data/units/Fire_Dragon.cfg:57
+#: data/units/Drake_Burner.cfg:40 data/units/Drake_Fire.cfg:42
+#: data/units/Drake_Flameheart.cfg:47 data/units/Drake_Flare.cfg:42
+#: data/units/Drake_Glider.cfg:45 data/units/Drake_Inferno.cfg:42
+#: data/units/Drake_Sky.cfg:49 data/units/Fire_Dragon.cfg:57
 msgid "fire breath"
 msgstr ""
 
-#: data/units/Drake_Clasher.cfg:3
+#: data/units/Drake_Clasher.cfg:4
 msgid "Drake Clasher"
 msgstr ""
 
-#: data/units/Drake_Fighter.cfg:3
-msgid "Drake Fighter"
+#: data/units/Drake_Clasher.cfg:18
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged, they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armour. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 
-#: data/units/Drake_Fire.cfg:3
+#: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
 msgstr ""
 
-#: data/units/Drake_Flameheart.cfg:3
+#: data/units/Drake_Fire.cfg:18
+msgid ""
+"The great fire drakes equip themselves with silver plated armour to defend "
+"themselves from serious injuries. Although their melee technique is "
+"primitive, they have mastered their internal fire and are to be feared. The "
+"most ferocious Fire Drakes become the flying configurations known as Drake "
+"Infernos."
+msgstr ""
+
+#: data/units/Drake_Flameheart.cfg:4
 msgid "Drake Flameheart"
 msgstr ""
 
-#: data/units/Drake_Guard.cfg:3
-msgid "Drake Guard"
+#: data/units/Drake_Flameheart.cfg:20
+msgid ""
+"There is an old saying that, 'The generals in Drake armies have fire in "
+"their veins instead of blood'. Nobody would doubt the truth in that saying "
+"after facing these towering creatures of sheer devastation... However, "
+"butween their crackling flames and their wicked swords, few who meet them "
+"survive to confirm this saying."
 msgstr ""
 
-#: data/units/Drake_Hatchling.cfg:3
-msgid "Drake Hatchling"
+#: data/units/Drake_Flare.cfg:4
+msgid "Drake Flare"
 msgstr ""
 
-#: data/units/Drake_Mage.cfg:3
-msgid "Drake Mage"
+#: data/units/Drake_Flare.cfg:20
+msgid ""
+"Drake Flares aspire to be leaders of their kind. While their mastery of "
+"their internal fire is not as great as some of their kin these Drakes have "
+"broader asperations. They are skilled with swords, and they aspire to be the "
+"greatest of their kind."
 msgstr ""
 
-#: data/units/Drake_Mage.cfg:16
-msgid "Like all Mages, the Drake Mages are capable of using magic in battle."
+#: data/units/Drake_Gladiator.cfg:4
+msgid "Drake Gladiator"
 msgstr ""
 
-#: data/units/Drake_Mage.cfg:63 data/units/Drake_Warmage.cfg:73
-msgid "ice shot"
+#: data/units/Drake_Gladiator.cfg:19
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged, they "
+"would be mistaken. Drakes Gladiators protect their vulnerable hides with "
+"thick brass armour and they arm themselves with as many emerald edged "
+"weapons as possible to fend off whatever opponents may await them."
+msgstr ""
+
+#: data/units/Drake_Glider.cfg:4
+msgid "Drake Glider"
+msgstr ""
+
+#: data/units/Drake_Glider.cfg:19
+msgid ""
+"Drake gliders wear as little armour as possible so they can quickly escape "
+"their foes when they leave their caves. These Drakes are compotent fighters, "
+"possesing the internal fire common to many of their kin. Gliders can also "
+"effectively use their speed to viciously slam their opponents into "
+"submission. The best gliders can look forward to being accepted into the "
+"ranks of the high flying Sky Drakes."
+msgstr ""
+
+#: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
+msgid "slam"
+msgstr ""
+
+#: data/units/Drake_Inferno.cfg:4
+msgid "Inferno Drake"
+msgstr ""
+
+#: data/units/Drake_Inferno.cfg:18
+msgid ""
+"The flying configurations known as Drake Infernos wear massive gold armour "
+"that is almost impenetrable. These drakes are also practically immune to "
+"fire as they have adjusted to hiding in the cones of volcanoes. Drake "
+"Infernos have utterly mastered their internal fire, and rival their "
+"predecessors the Dragons in their ability to use it."
 msgstr ""
 
 #: data/units/Drake_Petit.cfg:3
 msgid "Drake Petit"
 msgstr ""
 
-#: data/units/Drake_Slasher.cfg:3
+#: data/units/Drake_Petit.cfg:16
+msgid ""
+"While small and less robust than most Drakes, the Drake Petit makes up for "
+"this with its graceful flight and high speed. The best Drake Petits get "
+"promoted to become the far more ferocious Drake Beak."
+msgstr ""
+
+#: data/units/Drake_Sky.cfg:3
+msgid "Sky Drake"
+msgstr ""
+
+#: data/units/Drake_Sky.cfg:74
+msgid "gust"
+msgstr ""
+
+#: data/units/Drake_Sky.cfg:77 data/units/Elvish_Marksman.cfg:39
+#: data/units/Elvish_Marksman.cfg:117 data/units/Elvish_Sharpshooter.cfg:40
+#: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
+msgid "marksman"
+msgstr ""
+
+#: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
 msgstr ""
 
-#: data/units/Drake_Slave.cfg:3
-msgid "Drake Slave"
+#: data/units/Drake_Slasher.cfg:18
+msgid ""
+"With their stumpy vestigial wings and inability to use their great internal "
+"fire as a weapon some may think that these Drakes are disadvantaged, they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armour. The Slashers' "
+"weapon of choice is the halberd, which they use to great effect."
 msgstr ""
 
-#: data/units/Drake_Slave.cfg:16
-msgid "Drake Slaves are servile members of this reptilian race."
+#: data/units/Drake_Slasher.cfg:21
+#, fuzzy
+msgid "sword "
+msgstr "Senyor"
+
+#: data/units/Drake_Slasher.cfg:22
+msgid "blade "
 msgstr ""
 
-#: data/units/Drake_Warmage.cfg:3
-msgid "Drake Warmage"
+#: data/units/Drake_Slasher.cfg:39
+#, fuzzy
+msgid "spear "
+msgstr "ceptre de foc"
+
+#: data/units/Drake_Slasher.cfg:40
+msgid "pierce "
 msgstr ""
 
-#: data/units/Drake_Warrior.cfg:3
-msgid "Drake Warrior"
-msgstr ""
-
-#: data/units/Drake_Worker.cfg:3
-msgid "Drake Worker"
-msgstr ""
-
-#: data/units/Drake_Worker.cfg:16
-msgid "More advanced Drakes, the Workers fight with their own sharp claws."
+#: data/units/Drake_Slasher.cfg:42
+msgid "first strike "
 msgstr ""
 
 #: data/units/Duelist.cfg:3
@@ -3468,7 +3663,7 @@ msgid "Dwarvish Guardsman"
 msgstr "Senyor Nan"
 
 #: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
-#: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
+#: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:499
 msgid "steadfast"
 msgstr ""
 
@@ -3629,6 +3824,16 @@ msgstr ""
 msgid "Elder Wose"
 msgstr ""
 
+#: data/units/Elder_Wose.cfg:16
+msgid ""
+"Elder Woses have grown great and tall. Towering over most enemies, they can "
+"deliver crushing blows, while resisting the enemy's counterattacks. Watching "
+"one unexpectedly come stalking towards you out of a forest is a terrifying "
+"sight. They are still very slow and stiff, being nearly immune to arrows but "
+"still quite flammable. Drawing energy from nature around them, Elder Woses "
+"can quickly heal themselves in the face of tremendous injuries."
+msgstr ""
+
 #: data/units/Elvish_Archer.cfg:3 data/units/Elvish_Archer.cfg:81
 #, fuzzy
 msgid "Elvish Archer"
@@ -3720,6 +3925,28 @@ msgstr ""
 msgid "thorns"
 msgstr ""
 
+#: data/units/Elvish_Enchantress.cfg:3
+#, fuzzy
+msgid "Elvish Enchantress"
+msgstr "Bruixot Elf"
+
+#: data/units/Elvish_Enchantress.cfg:21
+msgid ""
+"The Elven Enchantresses are masters of offensive magic, striking at their "
+"enemies both with blasts of icy wind drawn from the ethereal plane, and "
+"magically animate roots with which they bind their enemies in place."
+msgstr ""
+
+#: data/units/Elvish_Enchantress.cfg:65 data/units/Elvish_Shaman.cfg:43
+#: data/units/Elvish_Sorceress.cfg:65
+msgid "entangle"
+msgstr ""
+
+#: data/units/Elvish_Enchantress.cfg:116 data/units/Elvish_Sorceress.cfg:116
+#: data/units/Elvish_Sylph.cfg:82
+msgid "fey gale"
+msgstr ""
+
 #: data/units/Elvish_Fighter.cfg:3
 #, fuzzy
 msgid "Elvish Fighter"
@@ -3773,8 +4000,8 @@ msgstr ""
 msgid "Elvish Lady"
 msgstr "Senyor Elf"
 
-#: data/units/Elvish_Lady.cfg:16 data/units/Galleon.cfg:17
-msgid "dummy"
+#: data/units/Elvish_Lady.cfg:17
+msgid "shove"
 msgstr ""
 
 #: data/units/Elvish_Lord.cfg:3
@@ -3808,12 +4035,6 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
 msgid "longbow"
-msgstr ""
-
-#: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:117
-#: data/units/Elvish_Sharpshooter.cfg:40
-#: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
-msgid "marksman"
 msgstr ""
 
 #: data/units/Elvish_Marshal.cfg:3
@@ -3907,10 +4128,6 @@ msgstr ""
 "l'enemic. El seu atac ralentitza i redueix el nombre d'atacs de la víctima, "
 "i les seves habilitats curatives sanen les tropes aliades."
 
-#: data/units/Elvish_Shaman.cfg:43
-msgid "entangle"
-msgstr ""
-
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 #, fuzzy
 msgid "Elvish Sharpshooter"
@@ -3941,8 +4158,37 @@ msgstr ""
 "l'esquena surten ales, fines com les d'una libèl·lula, cosa que les permet "
 "volar àgilment pels boscos elfs."
 
-#: data/units/Elvish_Shyde.cfg:24
+#: data/units/Elvish_Shyde.cfg:24 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
+msgstr ""
+
+#: data/units/Elvish_Sorceress.cfg:3
+#, fuzzy
+msgid "Elvish Sorceress"
+msgstr "Arquer Elf"
+
+#: data/units/Elvish_Sorceress.cfg:21
+msgid ""
+"Eschewing the study of healing in favor of more aggressive uses of magic, "
+"Elvish Sorceresses have become quite proficient at ranged combat.  Their "
+"entangling attack is notably more effective than before, and they can call "
+"upon bursts of chilling ethereal wind to smite those who oppose them."
+msgstr ""
+
+#: data/units/Elvish_Sylph.cfg:3
+#, fuzzy
+msgid "Elvish Sylph"
+msgstr "Nimfes Elf"
+
+#: data/units/Elvish_Sylph.cfg:20
+msgid ""
+"Elvish Sylphs are scions of beauty in the mortal plane.  Having fully "
+"developed their faerie side, they transform into creatures of both worlds, "
+"wielding powerful magic against their enemies."
+msgstr ""
+
+#: data/units/Elvish_Sylph.cfg:51
+msgid "gossamer"
 msgstr ""
 
 #: data/units/Fencer.cfg:3
@@ -4004,7 +4250,8 @@ msgid "Fireball"
 msgstr ""
 
 #: data/units/Fireball.cfg:16
-msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid ""
+"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 
 #: data/units/Footpad.cfg:3
@@ -4024,7 +4271,7 @@ msgstr ""
 
 #: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:38
 #: data/units/Outlaw.cfg:111 data/units/Outlaw_Princess.cfg:41
-#: data/units/Outlaw_Queen.cfg:42
+#: data/units/Outlaw_Queen.cfg:42 data/units/Troll_Rocklobber.cfg:38
 msgid "sling"
 msgstr ""
 
@@ -4032,6 +4279,10 @@ msgstr ""
 #, fuzzy
 msgid "Galleon"
 msgstr "Gal·leó"
+
+#: data/units/Galleon.cfg:17
+msgid "dummy"
+msgstr ""
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
@@ -4126,6 +4377,24 @@ msgstr ""
 msgid "pincers"
 msgstr ""
 
+#: data/units/Goblin_Impaler.cfg:4
+#, fuzzy
+msgid "Goblin Impaler"
+msgstr "Saquejador Goblin"
+
+#: data/units/Goblin_Impaler.cfg:17
+msgid ""
+"Goblins tend to try and make up for their general idiocy, frailty, and lack "
+"of sophisticated weaponry by attempting to overwhelm there foes by sheer "
+"numbers. These are the larger and more able kinsmen of the Goblin Spearman."
+msgstr ""
+
+#: data/units/Goblin_Impaler.cfg:25 data/units/Halbardier.cfg:23
+#: data/units/Halbardier.cfg:41 data/units/Pikeman.cfg:24
+#: data/units/Spearman.cfg:24
+msgid "firststrike"
+msgstr ""
+
 #: data/units/Goblin_Knight.cfg:3
 #, fuzzy
 msgid "Goblin Knight"
@@ -4161,6 +4430,20 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:35
 msgid "net"
+msgstr ""
+
+#: data/units/Goblin_Spearman.cfg:4
+#, fuzzy
+msgid "Goblin Spearman"
+msgstr "Llancer"
+
+#: data/units/Goblin_Spearman.cfg:17
+msgid ""
+"Goblins tend to try and make up for their general idiocy, frailty, and lack "
+"of sophisticated weaponry by attempting to overwhelm there foes by sheer "
+"numbers. Though lacking in decent armour or weapons, these meagre spearmen "
+"are well-equipped for a war of attrition. The best Goblin Spearman can look "
+"forward to becoming Goblin Impalers."
 msgstr ""
 
 #: data/units/Grand_Knight.cfg:3
@@ -4200,7 +4483,8 @@ msgstr ""
 
 #: data/units/Great_Troll.cfg:7 data/units/Tentacle.cfg:7
 #: data/units/Troll.cfg:7 data/units/Troll_Hero.cfg:7
-#: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
+#: data/units/Troll_Rocklobber.cfg:7 data/units/Troll_Warrior.cfg:6
+#: data/units/Troll_Whelp.cfg:7
 msgid "regenerates"
 msgstr ""
 
@@ -4270,11 +4554,6 @@ msgstr ""
 
 #: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
 msgid "halberd"
-msgstr ""
-
-#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
-#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
-msgid "firststrike"
 msgstr ""
 
 #: data/units/Heavy_Infantryman.cfg:3
@@ -4913,11 +5192,11 @@ msgstr ""
 msgid "pike"
 msgstr ""
 
-#: data/units/Pirate_Galleon.cfg:49
+#: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr ""
 
-#: data/units/Pirate_Galleon.cfg:61 data/units/Transport_Galleon.cfg:15
+#: data/units/Pirate_Galleon.cfg:15 data/units/Transport_Galleon.cfg:16
 #: data/units/Watch_Tower.cfg:17
 msgid "ballista"
 msgstr ""
@@ -5015,12 +5294,78 @@ msgstr ""
 "crítiques i, fins ara, sempre han gaudit de rotunds éxits en les seves "
 "empreses."
 
-#: data/units/Saurian.cfg:3
+#: data/units/Saurian.cfg:4
 msgid "Saurian"
 msgstr ""
 
-#: data/units/Saurian_Warrior.cfg:3
+#: data/units/Saurian.cfg:17
+msgid ""
+"Saurians are skilled in the use of the spear. Despite their lethargic cold "
+"blooded heritage, and their relative frailty, they are highly valued as "
+"scouts as the can navigate through rough terrain and around opponents. The "
+"best Saurians go on to become Saurian Warriors."
+msgstr ""
+
+#: data/units/Saurian_Icecaster.cfg:4
+msgid "Saurian Icecaster"
+msgstr ""
+
+#: data/units/Saurian_Icecaster.cfg:17
+msgid ""
+"Saurian Icecasters have cast aside their role as healers to refine their "
+"skills with the dark arts. While frail, they posses deep knowledge of cold "
+"magic and retain their abilities as healers."
+msgstr ""
+
+#: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
+msgid "skirmisher,heals"
+msgstr ""
+
+#: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
+#: data/units/Saurian_Tribalist.cfg:39
+msgid "frost blast"
+msgstr ""
+
+#: data/units/Saurian_Soothsayer.cfg:4
+msgid "Saurian Soothsayer"
+msgstr ""
+
+#: data/units/Saurian_Soothsayer.cfg:18
+msgid ""
+"Saurian Soothsayers are highly valued as healers because they can provide "
+"aide to their friends regardless of terrain or opposition. In addition to "
+"cure their allies they posses knowledge of cold magic."
+msgstr ""
+
+#: data/units/Saurian_Soothsayer.cfg:20
+msgid "skirmisher,cures"
+msgstr ""
+
+#: data/units/Saurian_Tribalist.cfg:4
+msgid "Saurian Tribalist"
+msgstr ""
+
+#: data/units/Saurian_Tribalist.cfg:18
+msgid ""
+"Despite their lethargic cold blooded heritage, and their relative frailty, "
+"Saurian Tribalists are valued as healers because they can provide aide to "
+"their friends regardless of terrain or opposition. In addition to healing "
+"they posses knowledge of cold magic. The wisest of the tribalists are "
+"confronted with the choice of continuing down the path of the healer as a "
+"Soothsayer, or refining their dark magic as Icecasters."
+msgstr ""
+
+#: data/units/Saurian_Warrior.cfg:4
 msgid "Saurian Warrior"
+msgstr ""
+
+#: data/units/Saurian_Warrior.cfg:17
+msgid ""
+"Saurian Warriors are highly skilled in the use of the spear. Despite their "
+"lethargic cold blooded heritage, and their relative frailty, they are highly "
+"valued as scouts as the can navigate through rough terrain and around "
+"opponents. Saurian Warriors posses the strength to take full advantage of "
+"this fact."
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:3
@@ -5048,9 +5393,9 @@ msgstr "Orc Marí"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
-"While often viewed as inferior to their land loving counterparts Sea Orcs "
+"While often viewed as inferior to their land loving counterparts, Sea Orcs "
 "represent a great leap for all goblinoids as they have adapted to aquatic "
-"environments. With their curved swords they are compotent fighters, although "
+"environments. With their curved swords they are competent fighters, although "
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
@@ -5062,8 +5407,10 @@ msgstr "Serp Marina"
 
 #: data/units/Sea_Serpent.cfg:16
 #, fuzzy
-msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr "La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid ""
+"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr ""
+"La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -5280,6 +5627,12 @@ msgstr ""
 msgid "Transport Galleon"
 msgstr ""
 
+#: data/units/Transport_Galleon.cfg:13
+msgid ""
+"Transport Galleons are well-armed ships that carry troops. If they reach the "
+"shore, they can deposit the troops to attack."
+msgstr ""
+
 #: data/units/Trapper.cfg:3
 msgid "Trapper"
 msgstr ""
@@ -5326,6 +5679,21 @@ msgid ""
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
+
+#: data/units/Troll_Rocklobber.cfg:3
+msgid "Troll Rocklobber"
+msgstr ""
+
+#: data/units/Troll_Rocklobber.cfg:17
+#, fuzzy
+msgid ""
+"Trolls are humanoid monsters that have the amazing ability to regenerate, "
+"recovering from their wounds during battle. These trolls have armed "
+"themselves with large rocks they hurl at their opponents."
+msgstr ""
+"Encara que sembli una dèbil criatura, aquesta raça es desenvolupa ràpidament "
+"per a convertir-se en unes bésties brutals, capaces de recuperar-se de les "
+"seves ferides en plena batalla."
 
 #: data/units/Troll_Warrior.cfg:3
 #, fuzzy
@@ -5477,6 +5845,17 @@ msgstr ""
 msgid "Wose"
 msgstr ""
 
+#: data/units/Wose.cfg:16
+msgid ""
+"Woses are treelike creatures of legend. They rose from the forest, and when "
+"in a forest they are indistinguishable from ordinary trees. Their form is "
+"very slow and stiff, so they cannot avoid attacks very well. Their tough "
+"bark is highly resistant to cold, crushing attacks, and arrows, although "
+"blades have no trouble cutting through it, and they are very flammable. By "
+"drawing nutrients from the ground and energy from the sun, Woses can regrow "
+"missing limbs after a fight."
+msgstr ""
+
 #: data/units/Wraith.cfg:3
 #, fuzzy
 msgid "Wraith"
@@ -5578,18 +5957,18 @@ msgid "+Internationalization Manager"
 msgstr ""
 
 #: src/about.cpp:129
-msgid "+Brazilian Translation"
+msgid "+Basque Translation"
 msgstr ""
 
-#: src/about.cpp:134
+#: src/about.cpp:133
 msgid "+Catalan Translation"
 msgstr ""
 
-#: src/about.cpp:139
+#: src/about.cpp:138
 msgid "+Czech Translation"
 msgstr ""
 
-#: src/about.cpp:148
+#: src/about.cpp:147
 msgid "+Danish Translation"
 msgstr ""
 
@@ -5597,146 +5976,146 @@ msgstr ""
 msgid "+Dutch Translation"
 msgstr ""
 
-#: src/about.cpp:156
+#: src/about.cpp:157
 msgid "+Finnish Translation"
 msgstr ""
 
-#: src/about.cpp:160
+#: src/about.cpp:161
 msgid "+French Translation"
 msgstr ""
 
-#: src/about.cpp:172
+#: src/about.cpp:173
 msgid "+German Translation"
 msgstr ""
 
-#: src/about.cpp:181
+#: src/about.cpp:183
 msgid "+Hungarian Translation"
 msgstr ""
 
-#: src/about.cpp:186
+#: src/about.cpp:188
 msgid "+Italian Translation"
 msgstr ""
 
-#: src/about.cpp:193
+#: src/about.cpp:195
 msgid "+Norwegian Translation"
 msgstr ""
 
-#: src/about.cpp:199
+#: src/about.cpp:201
 msgid "+Polish Translation"
 msgstr ""
 
-#: src/about.cpp:205
-msgid "+Portuguese Translation"
+#: src/about.cpp:207
+msgid "+Portuguese (Brazil) Translation"
 msgstr ""
 
-#: src/about.cpp:210
+#: src/about.cpp:215
 msgid "+Slovak Translation"
 msgstr ""
 
-#: src/about.cpp:214
+#: src/about.cpp:219
 msgid "+Spanish Translation"
 msgstr ""
 
-#: src/about.cpp:222
+#: src/about.cpp:227
 msgid "+Swedish Translation"
 msgstr ""
 
-#: src/about.cpp:229
+#: src/about.cpp:234
 msgid "+Contributors"
 msgstr ""
 
-#: src/about.cpp:237
+#: src/about.cpp:242
 msgid "+ Bots"
 msgstr ""
 
-#: src/about.cpp:264 src/help.cpp:2372 src/show_dialog.cpp:468
+#: src/about.cpp:269 src/help.cpp:2372 src/show_dialog.cpp:468
 msgid "Close"
 msgstr ""
 
-#: src/actions.cpp:93
+#: src/actions.cpp:96
 msgid "You don't have a leader to recruit with."
 msgstr ""
 
-#: src/actions.cpp:97
+#: src/actions.cpp:100
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 
-#: src/actions.cpp:114
+#: src/actions.cpp:117
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr ""
 
-#: src/actions.cpp:202
+#: src/actions.cpp:205
 msgid "none"
 msgstr ""
 
-#: src/actions.cpp:318 src/actions.cpp:435
+#: src/actions.cpp:321 src/actions.cpp:438
 msgid "base damage"
 msgstr ""
 
-#: src/actions.cpp:328
+#: src/actions.cpp:331
 msgid "attacker resistance vs"
 msgstr ""
 
-#: src/actions.cpp:328
+#: src/actions.cpp:331
 msgid "attacker vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
+#: src/actions.cpp:363 src/actions.cpp:481 src/actions.cpp:490
 msgid "Doubled"
 msgstr ""
 
-#: src/actions.cpp:388 src/actions.cpp:523
+#: src/actions.cpp:391 src/actions.cpp:526
 msgid "total damage"
 msgstr ""
 
-#: src/actions.cpp:445
+#: src/actions.cpp:448
 msgid "defender resistance vs"
 msgstr ""
 
-#: src/actions.cpp:445
+#: src/actions.cpp:448
 msgid "defender vulnerability vs"
 msgstr ""
 
-#: src/actions.cpp:496
+#: src/actions.cpp:499
 #, fuzzy
 msgid "Halved"
 msgstr "Cova"
 
-#: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
+#: src/actions.cpp:714 src/actions.cpp:861 src/display.cpp:878
 #: src/reports.cpp:115
 msgid "poisoned"
 msgstr ""
 
-#: src/actions.cpp:708 src/actions.cpp:847 src/display.cpp:874
+#: src/actions.cpp:719 src/actions.cpp:866 src/display.cpp:874
 #: src/reports.cpp:110
 msgid "slowed"
 msgstr ""
 
-#: src/actions.cpp:1718
+#: src/actions.cpp:1738
 msgid "Ambushed!"
 msgstr ""
 
-#: src/actions.cpp:1746
+#: src/actions.cpp:1766
 msgid "Friendly unit sighted"
 msgstr ""
 
-#: src/actions.cpp:1748
+#: src/actions.cpp:1768
 msgid "Enemy unit sighted!"
 msgstr ""
 
-#: src/actions.cpp:1753
+#: src/actions.cpp:1773
 msgid "$friends Friendly units sighted"
 msgstr ""
 
-#: src/actions.cpp:1755
+#: src/actions.cpp:1775
 msgid "$enemies Enemy units sighted!"
 msgstr ""
 
-#: src/actions.cpp:1759
+#: src/actions.cpp:1779
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
 msgstr ""
 
-#: src/actions.cpp:1780
+#: src/actions.cpp:1800
 msgid "(press $hotkey to continue)"
 msgstr ""
 
@@ -5752,10 +6131,9 @@ msgstr ""
 msgid "No objectives available"
 msgstr ""
 
-#: src/dialogs.cpp:174
-#, fuzzy
-msgid "Save"
-msgstr "Cova"
+#: src/dialogs.cpp:174 src/hotkeys.cpp:132
+msgid "Save Game"
+msgstr "Desa partida"
 
 #: src/dialogs.cpp:176
 msgid "Overwrite?"
@@ -5781,11 +6159,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:989
+#: src/dialogs.cpp:365 src/game.cpp:924
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:1125
+#: src/dialogs.cpp:367 src/game.cpp:1143
 msgid "Multiplayer"
 msgstr ""
 
@@ -5805,7 +6183,7 @@ msgstr ""
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:1101
+#: src/dialogs.cpp:384 src/game.cpp:954
 msgid "Difficulty"
 msgstr ""
 
@@ -5862,19 +6240,8 @@ msgstr ""
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:621
-#: src/playturn.cpp:1947 src/unit.cpp:1034
-msgid "HP"
-msgstr ""
-
-#: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1786 src/playturn.cpp:1948
-#: src/unit.cpp:1093
-msgid "XP"
-msgstr ""
-
 #: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:622
-#: src/playturn.cpp:1949 src/unit.cpp:1070
+#: src/playturn.cpp:1949 src/unit.cpp:1065
 msgid "Moves"
 msgstr ""
 
@@ -5896,7 +6263,7 @@ msgstr ""
 msgid "invisible"
 msgstr ""
 
-#: src/font.cpp:164
+#: src/font.cpp:169
 msgid "Vera.ttf"
 msgstr ""
 
@@ -5916,143 +6283,178 @@ msgstr ""
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/game.cpp:648
+#: src/game.cpp:591
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
-#: src/game.cpp:868 src/multiplayer_connect.cpp:106
+#: src/game.cpp:788 src/multiplayer_connect.cpp:106
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:879 src/game.cpp:884 src/playlevel.cpp:549
+#: src/game.cpp:800 src/game.cpp:805 src/playlevel.cpp:549
 #: src/playlevel.cpp:789
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:984
+#: src/game.cpp:809
+msgid "File I/O Error while reading the game"
+msgstr ""
+
+#: src/game.cpp:914
 msgid " ,Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:990
+#: src/game.cpp:915
+msgid "Download more campaigns from a server on Internet."
+msgstr ""
+
+#: src/game.cpp:925
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:1000
+#: src/game.cpp:955
+msgid "Select difficulty level:"
+msgstr ""
+
+#: src/game.cpp:974
 msgid "Connect to Server"
 msgstr ""
 
-#: src/game.cpp:1001
+#: src/game.cpp:975
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:1002
+#: src/game.cpp:976
 msgid "Server: "
 msgstr ""
 
-#: src/game.cpp:1014
+#: src/game.cpp:988
 #, fuzzy
 msgid "Could not connect to host."
 msgstr "No ha estat possible connectar al servidor remot."
 
-#: src/game.cpp:1014 src/game.cpp:1029 src/game.cpp:1035 src/game.cpp:1046
-#: src/game.cpp:1065 src/game.cpp:1075 src/game.cpp:1078 src/game.cpp:1081
+#: src/game.cpp:988 src/game.cpp:1003 src/game.cpp:1009 src/game.cpp:1030
+#: src/game.cpp:1054 src/game.cpp:1068 src/game.cpp:1070 src/game.cpp:1072
+#: src/game.cpp:1084 src/game.cpp:1087 src/game.cpp:1122 src/game.cpp:1124
 #: src/playturn.cpp:1396 src/playturn.cpp:1410
 msgid "Error"
 msgstr ""
 
-#: src/game.cpp:1022
+#: src/game.cpp:996
 msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:1035
+#: src/game.cpp:1009
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:1046
+#: src/game.cpp:1014
+msgid ",Name,Version,Author,Downloads"
+msgstr ""
+
+#: src/game.cpp:1026
+#, fuzzy
+msgid "Publish campaign: "
+msgstr "Capità Elf"
+
+#: src/game.cpp:1030
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:1050
+#: src/game.cpp:1034
 msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:1050
+#: src/game.cpp:1034
 msgid "Get Campaign"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:1048
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1071
+#: src/game.cpp:1066
 msgid "Campaign Installed"
 msgstr ""
 
-#: src/game.cpp:1071
-msgid ""
-"The campaign has been installed. You will have to restart Wesnoth before you "
-"can play it."
+#: src/game.cpp:1066
+msgid "The campaign has been installed."
 msgstr ""
 
-#: src/game.cpp:1075
+#: src/game.cpp:1068
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1078
+#: src/game.cpp:1070
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1081
-msgid "There was a problem creating the files necessary to install this campaign."
+#: src/game.cpp:1072
+msgid ""
+"There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1102
-msgid "Select difficulty level:"
+#: src/game.cpp:1084 src/game.cpp:1122 src/multiplayer_client.cpp:42
+#: src/multiplayer_client.cpp:314
+msgid "Connection timed out"
 msgstr ""
 
-#: src/game.cpp:1120
+#: src/game.cpp:1087 src/game.cpp:1124
+msgid "The server responded with an error: \""
+msgstr ""
+
+#: src/game.cpp:1090
+#, fuzzy
+msgid "Terms"
+msgstr "Terrenys"
+
+#: src/game.cpp:1126
+msgid "Response"
+msgstr ""
+
+#: src/game.cpp:1138
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:1120
+#: src/game.cpp:1138
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:1121 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:1139 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:1121
+#: src/game.cpp:1139
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:1122
+#: src/game.cpp:1140
 msgid "Host Multiplayer Game"
 msgstr ""
 
-#: src/game.cpp:1122
+#: src/game.cpp:1140
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:1125 src/multiplayer_client.cpp:269
+#: src/game.cpp:1143 src/multiplayer_client.cpp:298
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1205
+#: src/game.cpp:1220
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1206
+#: src/game.cpp:1221
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1291
+#: src/game.cpp:1449
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1293
+#: src/game.cpp:1451
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -6084,7 +6486,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: src/help.cpp:654 src/help.cpp:655 src/unit_types.cpp:301
+#: src/help.cpp:654 src/help.cpp:655 src/unit_types.cpp:302
 msgid "Dmg"
 msgstr ""
 
@@ -6184,11 +6586,7 @@ msgstr "Descriu unitat"
 msgid "Rename Unit"
 msgstr "Renomena unitat"
 
-#: src/hotkeys.cpp:132
-msgid "Save Game"
-msgstr "Desa partida"
-
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:134 src/playturn.cpp:1634
 msgid "Recruit"
 msgstr "Recluta"
 
@@ -6196,7 +6594,7 @@ msgstr "Recluta"
 msgid "Repeat Recruit"
 msgstr ""
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:136 src/playturn.cpp:1811
 msgid "Recall"
 msgstr "Reincorpora"
 
@@ -6356,8 +6754,8 @@ msgstr ""
 msgid "Do you really want to quit?"
 msgstr ""
 
-#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Quit?"
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542 src/multiplayer_lobby.cpp:159
+msgid "Quit"
 msgstr ""
 
 #: src/intro.cpp:87
@@ -6468,7 +6866,7 @@ msgstr ""
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: src/multiplayer.cpp:123 src/multiplayer_client.cpp:119
+#: src/multiplayer.cpp:123 src/multiplayer_client.cpp:145
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:456
 #: src/show_dialog.cpp:462
 msgid "Cancel"
@@ -6548,59 +6946,68 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:285
-msgid "Connection timed out"
-msgstr ""
-
 #: src/multiplayer_client.cpp:59
 msgid "Receiving game list..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:381
-#: src/multiplayer_connect.cpp:383 src/playlevel.cpp:769 src/playturn.cpp:1525
+#: src/multiplayer_client.cpp:121 src/multiplayer_connect.cpp:389
+#: src/multiplayer_connect.cpp:391 src/playlevel.cpp:769 src/playturn.cpp:1525
 #: src/playturn.cpp:1530 src/playturn.cpp:1616
 msgid "Gold"
 msgstr ""
 
-#: src/multiplayer_client.cpp:113
+#: src/multiplayer_client.cpp:139
 msgid "Waiting for game to start..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:221
+#: src/multiplayer_client.cpp:250
 msgid "Choose host to connect to"
 msgstr ""
 
-#: src/multiplayer_client.cpp:239
+#: src/multiplayer_client.cpp:268
 msgid "Connecting to remote host..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:268
+#: src/multiplayer_client.cpp:297
 msgid "You must log in to this server"
 msgstr ""
 
-#: src/multiplayer_client.cpp:348
+#: src/multiplayer_client.cpp:377
 msgid "Getting game data..."
 msgstr ""
 
-#: src/multiplayer_client.cpp:399
+#: src/multiplayer_client.cpp:429
 msgid "There are no available sides in this game."
 msgstr ""
 
-#: src/multiplayer_client.cpp:441
+#: src/multiplayer_client.cpp:477
 msgid "Choose your side:"
 msgstr ""
 
-#: src/multiplayer_client.cpp:466
+#: src/multiplayer_client.cpp:507
 msgid "The game has been cancelled"
 msgstr ""
 
-#: src/multiplayer_client.cpp:470
+#: src/multiplayer_client.cpp:511
 msgid "The side you have chosen is no longer available"
 msgstr ""
 
-#: src/multiplayer_client.cpp:506
+#: src/multiplayer_client.cpp:547
 msgid "Show replay of game up to save point?"
 msgstr ""
+
+#: src/multiplayer_client.cpp:686 src/multiplayer_client.cpp:689
+msgid "?"
+msgstr ""
+
+#: src/multiplayer_client.cpp:780
+msgid "Leader: "
+msgstr ""
+
+#: src/multiplayer_client.cpp:782
+#, fuzzy
+msgid "Recruits: "
+msgstr "Recluta"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
@@ -6614,87 +7021,87 @@ msgstr ""
 msgid "This is not a multiplayer save"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:241
+#: src/multiplayer_connect.cpp:247
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:261
+#: src/multiplayer_connect.cpp:267
 msgid "Network Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:262
+#: src/multiplayer_connect.cpp:268
 msgid "Local Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:263 src/multiplayer_connect.cpp:470
-#: src/multiplayer_connect.cpp:584 src/multiplayer_connect.cpp:678
+#: src/multiplayer_connect.cpp:269 src/multiplayer_connect.cpp:491
+#: src/multiplayer_connect.cpp:611 src/multiplayer_connect.cpp:720
 msgid "Computer Player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:264
+#: src/multiplayer_connect.cpp:270
 msgid "Empty"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:291 src/multiplayer_connect.cpp:371
-#: src/multiplayer_connect.cpp:374
+#: src/multiplayer_connect.cpp:297 src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:382
 msgid "Team"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:299
+#: src/multiplayer_connect.cpp:307
 msgid "Red"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:301
+#: src/multiplayer_connect.cpp:309
 msgid "Blue"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:303
+#: src/multiplayer_connect.cpp:311
 msgid "Green"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:305
+#: src/multiplayer_connect.cpp:313
 msgid "Yellow"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:307
+#: src/multiplayer_connect.cpp:315
 msgid "Purple"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:309
+#: src/multiplayer_connect.cpp:317
 msgid "Orange"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:311
+#: src/multiplayer_connect.cpp:319
 msgid "Grey"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:313
+#: src/multiplayer_connect.cpp:321
 msgid "White"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:315
+#: src/multiplayer_connect.cpp:323
 msgid "Brown"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:360
+#: src/multiplayer_connect.cpp:368
 msgid "Game Lobby"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:365
+#: src/multiplayer_connect.cpp:371 src/multiplayer_connect.cpp:373
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:366 src/multiplayer_connect.cpp:369
+#: src/multiplayer_connect.cpp:374 src/multiplayer_connect.cpp:377
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:376 src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:384 src/multiplayer_connect.cpp:387
 msgid "Color"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:533 src/multiplayer_connect.cpp:537
+#: src/multiplayer_connect.cpp:560 src/multiplayer_connect.cpp:564
 msgid "Waiting for network players to join"
 msgstr ""
 
@@ -6712,10 +7119,6 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:156
 msgid "Observe Game"
-msgstr ""
-
-#: src/multiplayer_lobby.cpp:159
-msgid "Quit"
 msgstr ""
 
 #: src/playlevel.cpp:688
@@ -6810,7 +7213,8 @@ msgid "Choose weapon"
 msgstr ""
 
 #: src/playturn.cpp:1127
-msgid "You have not started your turn yet.  Do you really want to end your turn?"
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
 #: src/playturn.cpp:1136 src/playturn.cpp:1141
@@ -6856,9 +7260,9 @@ msgstr ""
 msgid "You have no units available to recruit."
 msgstr ""
 
-#: src/playturn.cpp:1635
-msgid "Recruit unit"
-msgstr "Recluta unitat"
+#: src/playturn.cpp:1635 src/playturn.cpp:1812
+msgid "Select unit"
+msgstr ""
 
 #: src/playturn.cpp:1664
 msgid "You don't have enough gold to recruit that unit"
@@ -6885,7 +7289,7 @@ msgid "him"
 msgstr ""
 
 #: src/playturn.cpp:1768
-msgid "You are seperated from your soldiers and may not recall them"
+msgid "You are separated from your soldiers and may not recall them"
 msgstr ""
 
 #: src/playturn.cpp:1770
@@ -6900,10 +7304,6 @@ msgstr ""
 
 #: src/playturn.cpp:1799
 msgid "Dismiss Unit"
-msgstr ""
-
-#: src/playturn.cpp:1812
-msgid "Select unit"
 msgstr ""
 
 #: src/playturn.cpp:1856
@@ -6970,37 +7370,37 @@ msgstr ""
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
 
-#: src/playturn.cpp:2283
+#: src/playturn.cpp:2286
 msgid "Place Label"
 msgstr ""
 
-#: src/playturn.cpp:2284
+#: src/playturn.cpp:2287
 msgid "Label"
 msgstr ""
 
-#: src/playturn.cpp:2407
+#: src/playturn.cpp:2410
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
 
-#: src/playturn.cpp:2459
+#: src/playturn.cpp:2462
 msgid "Replace with AI"
 msgstr ""
 
-#: src/playturn.cpp:2460
+#: src/playturn.cpp:2463
 msgid "Replace with local player"
 msgstr ""
 
-#: src/playturn.cpp:2461
+#: src/playturn.cpp:2464
 msgid "Abort game"
 msgstr ""
 
-#: src/playturn.cpp:2464
+#: src/playturn.cpp:2467
 msgid "Replace with "
 msgstr ""
 
-#: src/playturn.cpp:2468
+#: src/playturn.cpp:2471
 msgid "has left the game. What do you want to do?"
 msgstr ""
 
@@ -7147,7 +7547,7 @@ msgstr "Més"
 msgid "-- The Tome of Wesnoth"
 msgstr ""
 
-#: src/unit_types.cpp:313
+#: src/unit_types.cpp:314
 msgid "strikes"
 msgstr ""
 
@@ -7174,3 +7574,15 @@ msgstr ""
 msgid "Deletion of the file failed."
 msgstr ""
 
+#~ msgid "hp"
+#~ msgstr "HP"
+
+#~ msgid "xp"
+#~ msgstr "XP"
+
+#, fuzzy
+#~ msgid "Save"
+#~ msgstr "Cova"
+
+#~ msgid "Recruit unit"
+#~ msgstr "Recluta unitat"
