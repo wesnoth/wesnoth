@@ -32,7 +32,8 @@ std::string image_mask;
 
 SDL_PixelFormat* pixel_format = NULL;
 
-int zoom = 72;
+const int tile_size = 72;
+int zoom = tile_size;
 
 //we have to go through all this trickery on clear_surfaces because
 //some compilers don't support 'typename type::iterator'
@@ -145,7 +146,12 @@ SDL_Surface * load_image_sub_file(image::locator i_locator)
 	if(mask == NULL)
 		return NULL;
 	
-	SDL_Rect srcrect = { 54 * i_locator.loc.x, 72 * i_locator.loc.y + 36 * (i_locator.loc.x % 2), 72, 72 };
+	SDL_Rect srcrect = { 
+		((tile_size*3) / 4) * i_locator.loc.x,
+	       	tile_size * i_locator.loc.y + (tile_size/2) * (i_locator.loc.x % 2),
+	       	tile_size, tile_size
+	};
+       
 	tmp = cut_surface(mother_surface, srcrect);
 	surf = mask_surface(tmp, mask);
 

@@ -62,10 +62,13 @@ public:
 	
 	struct tile
 	{
+		tile(); 
 		std::set<std::string> flags;
 		std::vector<image::locator> images_foreground;
 		std::vector<image::locator> images_background;
 
+		gamemap::TERRAIN adjacents[7];
+		
 		void clear();
 	};
 
@@ -122,8 +125,12 @@ private:
 			     anchormap& anchors);
 	terrain_builder::building_rule rule_from_terrain_template(const terrain_builder::building_rule &tpl, const gamemap::TERRAIN terrain);
 	void parse_config(const config &cfg);
+	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
 	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index);
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
+
+	int get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc);
+	int get_constraint_size(const building_rule& rule, const terrain_constraint& constraint, bool& border);
 	void build_terrains();
 	
 	const gamemap& map_;
@@ -131,6 +138,7 @@ private:
 
 	typedef std::map<unsigned char, std::vector<gamemap::location> > terrain_by_type_map;
 	terrain_by_type_map terrain_by_type_;
+	terrain_by_type_map terrain_by_type_border_;
 
 	building_ruleset building_rules_;
 

@@ -16,11 +16,18 @@
 #include "util.hpp"
 #include "log.hpp"
 
+
+terrain_builder::tile::tile() 
+{
+       	memset(adjacents, 0, sizeof(adjacents)); 
+}
+
 void terrain_builder::tile::clear() 
 {
 	flags.clear();
 	images_foreground.clear();
 	images_background.clear();
+	memset(adjacents, 0, sizeof(adjacents));
 }
 
 void terrain_builder::tilemap::reset()
@@ -174,10 +181,12 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	ret.probability = rule.probability;
 	ret.precedence = rule.precedence;
 
+	constraint_set tmp_cons;
 	constraint_set::const_iterator cons;
 	for(cons = rule.constraints.begin(); cons != rule.constraints.end(); ++cons) {
 		const terrain_constraint &rcons = rotate(cons->second, angle);
-		ret.constraints[rcons.loc] = rcons;
+
+		tmp_cons[rcons.loc] = rcons;
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
@@ -185,7 +194,7 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	int miny = INT_MAX;
 
 	constraint_set::iterator cons2;
-	for(cons2 = ret.constraints.begin(); cons2 != ret.constraints.end(); ++cons2) {
+	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
 		minx = minimum<int>(cons2->second.loc.x, minx);
 		miny = minimum<int>(2*cons2->second.loc.y + (cons2->second.loc.x & 1), miny);
 	}
@@ -195,15 +204,16 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	if(!(miny & 1) && (minx & 1) && (minx > 0))
 		miny -= 2;
 
-	for(cons2 = ret.constraints.begin(); cons2 != ret.constraints.end(); ++cons2) {	
+	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {	
 		//Adjusts positions
 		cons2->second.loc += gamemap::location(-minx, -((miny-1)/2));
+		ret.constraints[cons2->second.loc] = cons2->second;
 	}
 
 	for(int i = 0; i < 6; ++i) {
 		int a = (angle+i) % 6;
 		std::string token = "@R";
-	    push_back(token,'0' + i);
+		push_back(token,'0' + i);
 		replace_token(ret, token, rot[a]);
 	}
 
@@ -280,7 +290,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 	int lineno = 0;
 	int x = 0;
 
-	std::cerr << "Loading map \"" << mapstring << "\"\n";
+	// std::cerr << "Loading map \"" << mapstring << "\"\n";
 	
 	const std::vector<std::string> &lines = config::split(mapstring, '\n', 0);
 	std::vector<std::string>::const_iterator line = lines.begin();
@@ -297,12 +307,12 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 	if((*line)[0] == ' ')
 		lineno = 1;
 
-	std::cerr << "--- Begin map ---\n";
+	//std::cerr << "--- Begin map ---\n";
 	
 	for(; line != lines.end(); ++line) {
 		//cuts each line into chunks of 4 characters, ignoring the 2 first ones if the line is odd
 
-		std::cerr << "Line is " << *line << "\n";
+		//std::cerr << "Line is " << *line << "\n";
 		
 		x = 0;
 		std::string::size_type lpos = 0;
@@ -315,7 +325,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			std::string types = line->substr(lpos, 4);
 			config::strip(types);
 			
-			std::cerr << types << "/";
+			//std::cerr << types << "/";
 			
 			//If there are numbers in the types string, consider it is an anchor
 			if(types[0] == '.') {
@@ -330,10 +340,10 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			lpos += 4;
 			x += 2;
 		}
-		std::cerr << "\n";
+		//std::cerr << "\n";
 		lineno++;
 	}
-	std::cerr << "--- End map ---\n";
+	//std::cerr << "--- End map ---\n";
 
 }
 
@@ -472,19 +482,44 @@ void terrain_builder::parse_config(const config &cfg)
 
 }
 
+namespace {
+int matches = 0;
+}
+
+bool terrain_builder::terrain_matches(gamemap::TERRAIN letter, const std::string &terrains)
+{
+
+	bool res = false;
+	bool negative = false;
+	std::string::const_iterator itor;
+
+	if(terrains.empty())
+		return true;
+	for(itor = terrains.begin(); itor != terrains.end(); ++itor) {
+		if(*itor == '*')
+			return true;
+		if(*itor == '!') {
+			negative = true;
+			continue;
+		}
+		if(*itor == letter)
+			break;
+	}
+
+	if(itor == terrains.end())
+		return negative;
+	return !negative;
+}
+
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc, int rule_index)
 {
+	matches++;
+
 	if(rule.location_constraints.valid() && rule.location_constraints != loc)
 		return false;
 	
-	// FIXME: should probability checks be done before, or after rule checks?
-	if(rule.probability != -1) {
-		int random = ((loc.x^827634) * 7613863 + (loc.y^87623) * 87987 + (rule_index^198729) * 89237) % 100;
 		
-		if(random > rule.probability)
-			return false;
-	}
-		
+	/*
 	for(constraint_set::const_iterator cons = rule.constraints.begin();
 	    cons != rule.constraints.end(); ++cons) {
 		
@@ -496,10 +531,26 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 		
 		const tile& btile = tile_map_[tloc];
 
-		if(!cons->second.terrain_types.empty()) {
-			if(!map_.get_terrain_info(tloc).matches(cons->second.terrain_types))
-				return false;
-		}
+		if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types))
+			return false;
+	}
+	*/
+
+
+	if(rule.probability != -1) {
+		int random = (((loc.x+23293)^827634) * 7613863 + ((loc.y+19827)^87623) * 87987 + (rule_index^198729) * 89237) % 100;
+		
+		if(random > rule.probability)
+			return false;
+	}
+
+	for(constraint_set::const_iterator cons = rule.constraints.begin();
+	    cons != rule.constraints.end(); ++cons) {
+
+		const gamemap::location tloc = loc + cons->second.loc;
+		if(!tile_map_.on_map(tloc))
+			return false;
+		const tile& btile = tile_map_[tloc];
 
 		std::vector<std::string>::const_iterator itor;
 		for(itor = cons->second.no_flag.begin(); itor != cons->second.no_flag.end(); ++itor) {
@@ -560,9 +611,77 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
+int terrain_builder::get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc)
+{
+	int res = 0;
+
+	gamemap::location adj[6];
+	int i;
+	get_adjacent_tiles(loc, adj);
+	
+	for(i = 0; i < 6; ++i) {
+		if(rule.constraints.find(adj[i]) != rule.constraints.end()) {
+			res++;
+		}
+	}	
+	return res;
+}
+
+//returns the "size" of a constraint: that is, the number of map tiles on which
+//this constraint may possibly match. INT_MAX means "I don't know / all of them".
+int terrain_builder::get_constraint_size(const building_rule& rule, const terrain_constraint& constraint, bool& border)
+{
+	const std::string &types = constraint.terrain_types;	
+
+	if(types.empty())
+		return INT_MAX;
+	if(types[0] == '!')
+		return INT_MAX;
+	if(types.find('*') != std::string::npos)
+		return INT_MAX;
+
+	gamemap::location adj[6];
+	int i;
+	get_adjacent_tiles(constraint.loc, adj);
+
+	border = false;
+
+	//if the current constraint only applies to a non-isolated tile,
+	//the "border" flag can be set.
+	for(i = 0; i < 6; ++i) {
+		if(rule.constraints.find(adj[i]) != rule.constraints.end()) {
+			const std::string& atypes = rule.constraints.find(adj[i])->second.terrain_types;
+			for(std::string::const_iterator itor = types.begin();
+					itor != types.end(); ++itor) {
+				if(!terrain_matches(*itor, atypes)) {
+					border = true;
+					break;
+				}
+
+			}
+		}
+		if(border == true)
+			break;
+	}	
+
+	int constraint_size = 0;
+
+	for(std::string::const_iterator itor = types.begin();
+			itor != types.end(); ++itor) {
+		if(border) {
+			constraint_size += terrain_by_type_border_[*itor].size();
+		} else {
+			constraint_size += terrain_by_type_[*itor].size();
+		}
+	}
+
+	return constraint_size;
+}
+
 void terrain_builder::build_terrains()
 {
 	log_scope("terrain_builder::build_terrains");
+	matches = 0;
 
 	//builds the terrain_by_type_ cache
 	for(int x = -1; x <= map_.x(); ++x) {
@@ -571,6 +690,24 @@ void terrain_builder::build_terrains()
 			const gamemap::TERRAIN t = map_.get_terrain(loc);
 
 			terrain_by_type_[t].push_back(loc);
+
+			gamemap::location adj[6];
+			int i;
+			bool border = false;
+
+			get_adjacent_tiles(loc, adj);
+
+			tile_map_[loc].adjacents[0] = t;
+			for(i = 0; i < 6; ++i) {
+				//updates the list of adjacents for this tile
+				tile_map_[loc].adjacents[i+1] = map_.get_terrain(adj[i]);
+
+				//determines if this tile is a border tile
+				if(map_.get_terrain(adj[i]) != t) 
+					border = true;
+			}
+			if(border)
+				terrain_by_type_border_[t].push_back(loc);
 		}
 	}
 
@@ -608,38 +745,93 @@ void terrain_builder::build_terrains()
 		if(absent_image)
 			continue;
 
-		//find the constraint that contains the less terrain of all terrain rules
+		//find the constraint that contains the less terrain of all terrain rules.
 		constraint_set::const_iterator smallest_constraint;
+		constraint_set::const_iterator constraint_most_adjacents;
 		int smallest_constraint_size = INT_MAX;
+		int bigger_constraint_adjacent = -1;
+		bool smallest_constraint_border = false;
 
 		for(constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 		
-			const std::string &types = constraint->second.terrain_types;	
-			
-			if(types.empty())
-				continue;
-			if(types[0] == '!')
-				continue;
-			if(types.find('*') != std::string::npos)
-				continue;
-			if(types.size() >= smallest_constraint_size)
-				continue;
+			bool border;
 
-			smallest_constraint_size = types.size();
-			smallest_constraint = constraint;
+			int size = get_constraint_size(rule->second, constraint->second, border);
+			if(size < smallest_constraint_size) {
+				smallest_constraint_size = size;
+				smallest_constraint = constraint;
+				smallest_constraint_border = border;
+			}
+
+			int nadjacents = get_constraint_adjacents(rule->second, constraint->second.loc);
+			if(nadjacents > bigger_constraint_adjacent) {
+				bigger_constraint_adjacent = nadjacents;
+				constraint_most_adjacents = constraint;
+			}
 		}
 
+		std::vector<std::string> adjacent_types(7);
+
+		if(bigger_constraint_adjacent > 0) {
+			gamemap::location loc[7];
+			loc[0] = constraint_most_adjacents->second.loc;
+			get_adjacent_tiles(loc[0], loc+1);
+			for(int i = 0; i < 7; ++i) {
+				constraint_set::const_iterator cons = rule->second.constraints.find(loc[i]) ;
+				if(cons != rule->second.constraints.end()) {
+					adjacent_types[i] = cons->second.terrain_types;
+				} else {
+					adjacent_types[i].clear();
+				}
+			}
+				
+		}
 		if(smallest_constraint_size != INT_MAX) {
 			const std::string &types = smallest_constraint->second.terrain_types;
 			const gamemap::location loc = smallest_constraint->second.loc;
+			const gamemap::location aloc = constraint_most_adjacents->second.loc;
 
 			for(std::string::const_iterator c = types.begin(); c != types.end(); ++c) {
-				const std::vector<gamemap::location>& locations = terrain_by_type_[*c];
+				const std::vector<gamemap::location>* locations;
+				if(smallest_constraint_border) {
+					locations = &terrain_by_type_border_[*c];
+				} else {
+					locations = &terrain_by_type_[*c];
+				}
 			
-				for(std::vector<gamemap::location>::const_iterator itor = locations.begin();
-						itor != locations.end(); ++itor) {
+				for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
+						itor != locations->end(); ++itor) {
 				
+					if(bigger_constraint_adjacent > 0) {
+						const gamemap::location pos = (*itor - loc) + aloc;
+						if(!tile_map_.on_map(pos))
+							continue;
+
+						const gamemap::TERRAIN *adjacents = tile_map_[pos].adjacents;
+						int i;
+						
+						for(i = 0; i < 7; ++i) {
+							if(!terrain_matches(adjacents[i], adjacent_types[i])) {
+								break;
+							}
+						}
+						// propagates the break
+						if (i < 7)
+							continue;
+
+#if 0
+						// If we are here, we have a match. Dump some info
+						std::cerr << "MATCH! Adjacents are " << adjacents << ", types: ";
+						for(i = 0; i < 7; ++i) {
+							std::cerr << adjacent_types[i] << ", ";
+						}
+						std::cerr << "pos = (" << pos.x << ", " << pos.y << ")";
+						std::cerr << "aloc = (" << aloc.x << ", " << aloc.y << ")";
+						std::cerr << "\n";
+#endif
+					}
+
 					if(rule_matches(rule->second, *itor - loc, rule_index)) {
 						apply_rule(rule->second, *itor - loc);
 					}
@@ -657,4 +849,6 @@ void terrain_builder::build_terrains()
 
 		rule_index++;
 	}
+
+	std::cerr << "Matches = " << matches << "\n";
 }

@@ -52,10 +52,6 @@ public:
 	bool is_castle() const;
 	bool is_keep() const;
 
-	//returns true if the terrain matches the given expression.
-	//expression is of type a|b|c or !a|b|c, a, b and c being
-	//terrain types.
-	bool matches(const std::string &expression) const;
 private:
 	std::vector<std::string> images_;
 	std::string adjacent_image_;

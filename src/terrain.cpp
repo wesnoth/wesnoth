@@ -144,33 +144,6 @@ bool terrain_type::is_keep() const
 	return keep_;
 }
 
-bool terrain_type::matches(const std::string &expression) const
-{
-	bool res = false;
-	
-	std::string types;
-	bool negative = false;
-	
-	// If there is a wildcard in the string, it matches.
-	if(expression.find('*') != std::string::npos)
-		return true;
-	
-	if(expression[0] == '!') {
-		types = expression.substr(1);
-		negative = true;
-	} else {
-		types = expression;
-	}
-
-	if(types.find(letter_) != std::string::npos)
-		res = true;
-	
-	if(negative)
-		return !res;
-	
-	return res;
-}
-
 void create_terrain_maps(const std::vector<config*>& cfgs,
                          std::vector<char>& terrain_precedence,
                          std::map<char,terrain_type>& letter_to_terrain,
