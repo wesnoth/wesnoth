@@ -53,6 +53,9 @@ uninstall-hook:
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
 
+clean-local:
+	rm -rf po/*/LC_MESSAGES
+
 BINARY_STAGING=/tmp/$(PACKAGE)-$(VERSION)-staging
 BINARY_DIST=/tmp/$(PACKAGE)-binary-$(VERSION).tar.gz
 DATA_DIST=/tmp/$(PACKAGE)-data-$(VERSION).tar.gz

@@ -684,7 +684,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-recursive
 
-clean-am: clean-generic mostlyclean-am
+clean-am: clean-generic clean-local mostlyclean-am
 
 distclean: distclean-recursive
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
@@ -738,7 +738,7 @@ uninstall-info: uninstall-info-recursive
 uninstall-man: uninstall-man6
 
 .PHONY: $(RECURSIVE_TARGETS) CTAGS GTAGS all all-am am--refresh check \
-	check-am clean clean-generic clean-recursive ctags \
+	check-am clean clean-generic clean-local clean-recursive ctags \
 	ctags-recursive dist dist-all dist-bzip2 dist-gzip dist-shar \
 	dist-tarZ dist-zip distcheck distclean distclean-generic \
 	distclean-hdr distclean-recursive distclean-tags \
@@ -789,6 +789,9 @@ uninstall-hook:
 	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi
+
+clean-local:
+	rm -rf po/*/LC_MESSAGES
 
 binary-dist:
 	@rm -rf $(BINARY_STAGING) $(BINARY_DIST)
