@@ -49,7 +49,8 @@ namespace {
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
-				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg)
+				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg,
+				 const config& built_terrains)
 		             : screen_(video), xpos_(0.0), ypos_(0.0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
 					   minimap_(NULL), redrawMinimap_(false),
@@ -60,7 +61,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   currentTeam_(0), activeTeam_(0), hideEnergy_(false),
 					   deadAmount_(0.0), advancingAmount_(0.0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg,screen_area()), firstTurn_(true), map_labels_(*this,map),
+					   theme_(theme_cfg,screen_area()), builder_(built_terrains, map),
+					   firstTurn_(true), map_labels_(*this,map),
 					   tod_hex_mask1(NULL), tod_hex_mask2(NULL)
 {
 	if(non_interactive())
@@ -525,7 +527,7 @@ void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
 }
 
 void display::draw(bool update,bool force)
-{
+{	
 	if(!panelsDrawn_ && !teams_.empty()) {
 		SDL_Surface* const screen = screen_.getSurface();
 
@@ -1508,6 +1510,7 @@ const std::string& get_direction(size_t n)
 	const static std::string dirs[6] = {"-n","-ne","-se","-s","-sw","-nw"};
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
+}
 
 bool angle_is_northern(size_t n)
 {
@@ -1519,8 +1522,6 @@ const std::string& get_angle_direction(size_t n)
 {
 	const static std::string dirs[6] = {"-ne","-e","-se","-sw","-w","-nw"};
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
-}
-
 }
 
 std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
@@ -1612,128 +1613,48 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 {
 	std::vector<shared_sdl_surface> res;
 	gamemap::location loc(x,y);
-	
-	// If the current tile is a castle tile, or if any adjacent tile is, this tile will have
-	// some castle-wall adjustable decorations.
-	// For now, the type of tiles (castle, !castle) is built-in.
-	// For now, the type of tiles (castle, !castle) is built-in.
 
-	gamemap::location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	
-	signed char angle_type;
-	bool ti, tj, to;
-	// TODO: change this to something like map_.is_castle(blah) to support
-	// keeps, elven/orcish castles, etc.
-	gamemap::TERRAIN terrain = gamemap::CASTLE;
-	to = map_.is_built(loc);
+	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
+	      (terrain_type == ADJACENT_FOREGROUND ?
+		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
+	const std::vector<std::string>* const terrains = builder_.get_terrain_at(loc,builder_terrain_type);
 
- 	// Adjacent terrains use 6 directions. From direction 0 to direction 5, these are
- 	// n, ne, se, s, sw, nw . To build castles, we will introduce corners. From corner
- 	// 0 to corner 5, those are ne, e, se, sw, w, nw ; corner i is the angle between
- 	// side i and side (i+1) (modulus 6).
- 	// On each corner, the boundary between a castle-tile and a non-castle tile may be
- 	// of 6 different types, each one corresponding to a corner. Those are shown below:
- 	//     0 (ne)   1 (e)   2 (se)   3 (sw)   4 (w)  5 (nw)
- 	//     _        \       _/       \_       /      _
- 	//      \       /                         \     /
- 	// Additionaly, each angle may be a convex (-i), or a concave (-e) angle.
- 	// Castles are built for angles. Castle tiles names start with castle-<angle>-<conc>-
- 	// to represent the angle they are on.
- 	// Finally, each angle is composed of 3 tiles. Those are named according to the corner
- 	// this angle would be on, for this tile. That is:
- 	//
- 	// (even angles) (odd angles)
- 	//  se  /            \  sw
- 	//  ___/ w        e   \___
-    //     \              /
-    //  ne  \            /  ne
- 	//
- 	// Castle tiles complete names are: castle-<angle>-<conc>-<tile>.png
-	for(int i = 0; i != 6; ++i) {
-		int j = i+1;
-		if(j == 6)
-			j = 0;
-		
-		ti = map_.is_built(adjacent[i]);
-		tj = map_.is_built(adjacent[j]);
-
- 		// Determine the angle type, according to the built adjacent tiles. 
- 		// (This is the tricky part).
- 		// If one of the three tiles is different, the direction at which the current corner
- 		// is, relatively to this different tile, is the angle direction. If the different tile
- 		// is the current tile, the angle direction is the direction corresponding to the current
- 		// corner. If the different tile is the first of the adjacent tiles, the angle direction 
- 		// is "the direction corresponding to the current corner, according to the first adjacent
- 		// tile", which is the direction corresponding to the current corner, rotated 2pi/3 (pheeew).
- 		// Hence the modulus. QED. (the same for the other adjacent tile)
- 		// (trust me, it is way more easy to understand when drawn :) )
-		if ((ti != to) && (tj != to)) {
-			angle_type = i;
-		} else if ((ti == to) && (tj != to)) {
-			angle_type = (i+4) % 6;
-		} else if ((ti != to) && (tj == to)) {
-			angle_type = (i+2) % 6;
-		} else {
-			angle_type = -1;
+	if(terrains != NULL) {
+		for(std::vector<std::string>::const_iterator it = terrains->begin(); it != terrains->end(); ++it) {
+			const std::string image = "terrain/" + *it;
+			const shared_sdl_surface surface(getTerrain(image,image_type,x,y,true));
+			if(surface != NULL) {
+				res.push_back(surface);
+			}
 		}
-
-		if(angle_type == -1) {
-			continue;
-		}
-
- 		// Count the number of built tiles between the current tile, and the two
- 		// tiles adjacent to the current corner. If only on of those tiles is built,
- 		// the angle is convex. If two are built, the angle is concave. If 0 or 3 are 
- 		// built, there is no wall there.
-		int ncastles = (to?1:0) + (ti?1:0) + (tj?1:0);
-
-		const bool angle_northern = angle_is_northern(i);
-		if(angle_northern && terrain_type == ADJACENT_FOREGROUND ||
-			!angle_northern && terrain_type == ADJACENT_BACKGROUND) {
-			continue;
-		}
-
-		static const std::string exterior = "-e", interior = "-i";
-		std::ostringstream stream;
-		stream << get_angle_direction(angle_type) << 
-			(ncastles == 2? exterior : interior) << get_angle_direction(i);
-		const shared_sdl_surface surface(getTerrain(terrain,
-							    image_type,x,y,stream.str()));
-		if(surface != NULL)
-			res.push_back(surface);
 	}
 
 	return res;
 }
 
-SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type,
-                                 int x, int y, const std::string& direction)
+SDL_Surface* display::getTerrain(const std::string& image, image::TYPE image_type,
+                                 int x, int y, bool search_tod)
 {
-	std::string image = "terrain/" + (direction.empty() ?
-	                           map_.get_terrain_info(terrain).image(x,y) :
-	                           map_.get_terrain_info(terrain).adjacent_image());
+	SDL_Surface* im = NULL;
 
 	const time_of_day& tod = status_.get_time_of_day();
 	const time_of_day& tod_at = timeofday_at(status_,units_,gamemap::location(x,y));
 
 	//see if there is a time-of-day specific version of this image
-	if(direction == "") {
-		
+	if(search_tod) {	
 		const std::string tod_image = image + "-" + tod.id + ".png";
-		SDL_Surface* const im = image::get_image(tod_image,image_type);
+		im = image::get_image(tod_image,image_type);
 
 		if(im != NULL) {
 			return im;
 		}
 	}
 
-	image += direction + ".png";
+	const std::string file = image + ".png";
 
-	SDL_Surface* im = image::get_image(image,image_type);
-	if(im == NULL && direction.empty()) {
-		im = image::get_image("terrain/" +
-		        map_.get_terrain_info(terrain).default_image() + ".png");
+	im = image::get_image(file,image_type);
+	if(im == NULL) {
+		return NULL;
 	}
 
 	//see if this tile is illuminated to a different colour than it'd
@@ -1749,6 +1670,25 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 		std::cerr << "done adjust...\n";
 		if(im == NULL)
 			std::cerr << "could not adjust surface..\n";
+	}
+
+	return im;	
+}
+
+SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain, image::TYPE image_type,
+                                 int x, int y, const std::string& direction)
+{
+	std::string image = "terrain/" + (direction.empty() ?
+	                           map_.get_terrain_info(terrain).image(x,y) :
+	                           map_.get_terrain_info(terrain).adjacent_image());
+
+	image += direction;
+
+	SDL_Surface* im = getTerrain(image, image_type, x, y, direction.empty());
+	
+	if(im == NULL && direction.empty()) {
+		im = image::get_image("terrain/" +
+		        map_.get_terrain_info(terrain).default_image() + ".png");
 	}
 
 	return im;

@@ -18,6 +18,7 @@
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
+#include "builder.hpp"
 #include "map_label.hpp"
 #include "pathfind.hpp"
 #include "reports.hpp"
@@ -53,7 +54,8 @@ public:
 
 	display(unit_map& units, CVideo& video,
 	        const gamemap& map, const gamestatus& status,
-			const std::vector<team>& t, const config& theme_cfg);
+			const std::vector<team>& t, const config& theme_cfg,
+		const config& built_terrains);
 	~display();
 
 	Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue);
@@ -343,6 +345,9 @@ private:
 	//this surface must be freed by the caller
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,
 	                        int x, int y, const std::string& dir="");
+	//this surface must be freed by the caller
+	SDL_Surface* getTerrain(const std::string &image, image::TYPE type,
+	                        int x, int y, bool search_tod);
 
 	//this surface must be freed by the caller
 	SDL_Surface* getFlag(gamemap::TERRAIN, int x, int y);
@@ -412,7 +417,8 @@ private:
 	double sidebarScaling_;
 
 	theme theme_;
-
+	terrain_builder builder_;
+	
 	void create_buttons();
 	std::vector<gui::button> buttons_;
 
@@ -468,5 +474,8 @@ private:
 	display& disp;
 	bool unlock;
 };
+
+bool angle_is_northern(size_t n);
+const std::string& get_angle_direction(size_t n);
 
 #endif

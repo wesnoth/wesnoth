@@ -127,6 +127,10 @@ SOURCE=.\src\config.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\cursor.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\dialogs.cpp
 # End Source File
 # Begin Source File
@@ -191,6 +195,10 @@ SOURCE=.\src\map.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\map_label.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\mapgen.cpp
 # End Source File
 # Begin Source File
@@ -252,6 +260,10 @@ SOURCE=.\src\replay.cpp
 # Begin Source File
 
 SOURCE=.\src\reports.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\editor\scenario_editor.cpp
 # End Source File
 # Begin Source File
 
@@ -351,6 +363,10 @@ SOURCE=.\src\config.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\cursor.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\dialogs.hpp
 # End Source File
 # Begin Source File
@@ -412,6 +428,10 @@ SOURCE=.\src\log.hpp
 # Begin Source File
 
 SOURCE=.\src\map.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\map_label.hpp
 # End Source File
 # Begin Source File
 
@@ -479,6 +499,10 @@ SOURCE=.\src\reports.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\editor\scenario_editor.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\scoped_resource.hpp
 # End Source File
 # Begin Source File
@@ -488,6 +512,10 @@ SOURCE=.\src\widgets\scrollbar.hpp
 # Begin Source File
 
 SOURCE=.\src\sdl_utils.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\shared_ptr.hpp
 # End Source File
 # Begin Source File
 

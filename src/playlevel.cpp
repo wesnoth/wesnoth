@@ -265,7 +265,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	}
 
 	const config dummy_cfg;
-	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg);
+	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg, game_config);
 
 	//object that will make sure that labels are removed at the end of the scenario
 	const font::floating_label_manager labels_manager;

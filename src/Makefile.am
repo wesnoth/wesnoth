@@ -25,6 +25,7 @@ wesnoth_SOURCES = about.cpp \
 		  ai.cpp \
 		  ai_attack.cpp \
 		  ai_move.cpp \
+		  builder.cpp \
 		  cavegen.cpp \
 		  config.cpp \
 		  cursor.cpp \

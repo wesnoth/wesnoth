@@ -2,13 +2,15 @@
 #
 
 syntaxerror() {
-    echo "usage: $0 [-c <cutout>] [-m <mask>] file"
+    echo "usage: $0 [-b <basename>] [-c <cutout>] [-m <mask>] [-o <output>] [-t <template>] file"
     exit 1
 }
 
 cutoutf="cutout.png"
 maskf="mask.png"
 output="castle"
+basename="castle"
+template="castle-walls.tmpl"
 
 while [ $# -ne 0 ]; do
     case "$1" in
@@ -25,6 +27,16 @@ while [ $# -ne 0 ]; do
 	-o* )
 	shift
 	output="$1"
+	shift
+	;;
+	-b* )
+	shift
+	basename="$1"
+	shift
+	;;
+	-t* )
+	shift
+	template="$1"
 	shift
 	;;
 	-* )
@@ -69,11 +81,13 @@ done
 
 # Cuts the castle, and the castle's alpha, according to the 12 masks
 
-directions="ne-e e-e se-e sw-e w-e nw-e ne-i e-i se-i sw-i w-i nw-i"
+# directions="concave-ne concave-e concave-se concave-sw concave-w concave-nw convex-ne convex-e convex-se convex-sw convex-w convex-nw"
+directions=`cat $template`
+
 i=0
 
 for direction in $directions; do
-	ccastle[$i]="$tmpdir/castle-$direction"
+	ccastle[$i]="$tmpdir/$basename-$direction"
 	calpha[$i]="$tmpdir/alpha-$direction"
 	pnmarith -multiply ${cmask[$i]} $castle > ${ccastle[$i]}.ppm
 	pnmarith -multiply ${cmask[$i]} $alpha > ${calpha[$i]}.pgm
@@ -84,8 +98,8 @@ done
 
 # Coordinates of the angles 0
 
-angle0e="71,35"
-angle0i="177,35"
+angle0e="71,70"
+angle0i="177,70"
 
 # Coordinates of each other angle, relative to angle 0
 
