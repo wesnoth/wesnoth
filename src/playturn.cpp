@@ -318,6 +318,21 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		} else {
 			show_menu();
 		}
+	} else if(event.button == SDL_BUTTON_WHEELUP ||
+	          event.button == SDL_BUTTON_WHEELDOWN) {
+		const double speed = preferences::scroll_speed() *
+			(event.button == SDL_BUTTON_WHEELUP ? -1.0:1.0);
+
+		const int centerx = gui_.mapx()/2;
+		const int centery = gui_.y()/2;
+
+		const int xdisp = abs(centerx - event.x);
+		const int ydisp = abs(centery - event.y);
+
+		if(xdisp > ydisp)
+			gui_.scroll(speed,0.0);
+		else
+			gui_.scroll(0.0,speed);
 	}
 }
 
