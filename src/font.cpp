@@ -835,9 +835,10 @@ int add_floating_label(const std::string& text, int font_size, const SDL_Color& 
 		bg = *bg_colour;
 	}
 
-	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size,scroll_mode == ANCHOR_LABEL_MAP)));
-	label_contexts.top().insert(label_id-1);
-	return label_id-1;
+	++label_id;
+	labels.insert(std::pair<int,floating_label>(label_id,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size,scroll_mode == ANCHOR_LABEL_MAP)));
+	label_contexts.top().insert(label_id);
+	return label_id;
 }
 
 void move_floating_label(int handle, double xmove, double ymove)
@@ -951,7 +952,7 @@ void undraw_floating_labels(SDL_Surface* screen)
 		return;
 	}
 
-	const std::set<int>& context = label_contexts.top();
+	std::set<int>& context = label_contexts.top();
 
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
@@ -963,7 +964,8 @@ void undraw_floating_labels(SDL_Surface* screen)
 
 	//remove expired labels
 	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(i->first) > 0 && j->second.expired()) {
+		if(context.count(j->first) > 0 && j->second.expired()) {
+			context.erase(j->first);
 			labels.erase(j++);
 		} else {
 			j++;
