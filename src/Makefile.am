@@ -266,6 +266,10 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/widget.hpp
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+if GCC
+    CXXFLAGS += -fno-omit-frame-pointer
+endif
+
 AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
 	@SDL_TTF_LIBS@
 

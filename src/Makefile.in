@@ -37,7 +37,8 @@ POST_UNINSTALL = :
 @SERVER_TRUE@am__append_1 = server
 @TOOLS_TRUE@am__append_2 = tools
 @EDITOR_TRUE@am__append_3 = wesnoth_editor
-@STATIC_TRUE@am__append_4 = -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
+@GCC_TRUE@am__append_4 = -fno-omit-frame-pointer
+@STATIC_TRUE@am__append_5 = -static -L/usr/lib -Wl,-rpath,/usr/lib -L/usr/X11R6/lib -lSDL_image \
 @STATIC_TRUE@-lSDL_mixer -lSDL_net -lSDL_ttf -lSDL -lpthread -ldl -laudio -lXt -lX11 -lXext \
 @STATIC_TRUE@-lSDL_image -lSDL_mixer -lSDL_net -lSDL_ttf -lstdc++ -lm -lSM -lICE -ljpeg \
 @STATIC_TRUE@-lpng -lz -lvorbisfile -lvorbis -logg -lsmpeg -lfreetype
@@ -59,7 +60,7 @@ CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
 CXXDEPMODE = @CXXDEPMODE@
-CXXFLAGS = @CXXFLAGS@
+CXXFLAGS = @CXXFLAGS@ $(am__append_4)
 CYGPATH_W = @CYGPATH_W@
 DATADIR = @DATADIR@
 DATA_FILES = @DATA_FILES@
@@ -73,6 +74,8 @@ EDITOR_TRUE = @EDITOR_TRUE@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 FONT_FILES = @FONT_FILES@
+GCC_FALSE = @GCC_FALSE@
+GCC_TRUE = @GCC_TRUE@
 GNOME1_DESKTOP = @GNOME1_DESKTOP@
 GNOME1_FALSE = @GNOME1_FALSE@
 GNOME1_TRUE = @GNOME1_TRUE@
@@ -91,7 +94,7 @@ KDE_ICON = @KDE_ICON@
 KDE_TRUE = @KDE_TRUE@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
-LIBS = @LIBS@ $(am__append_4)
+LIBS = @LIBS@ $(am__append_5)
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MANUAL_FILES = @MANUAL_FILES@
@@ -399,6 +402,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 
 
 AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+
 AM_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @SDL_MIXER_LIBS@ @SDL_NET_LIBS@ \
 	@SDL_TTF_LIBS@
 
