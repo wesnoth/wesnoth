@@ -13,8 +13,6 @@
 
 #include "tokenizer.hpp"
 #include "string_utils.hpp"
-#include "filesystem.hpp"
-#include "gettext.hpp"
 
 #include <iostream>
 #include <sstream>
@@ -55,10 +53,12 @@ const token& tokenizer::next_token()
 		if ((comment_line.size() == 2 || comment_line.size() == 3)
 				&& comment_line[0] == "#textdomain") {
 			textdomain_ = comment_line[1];
+#if 0
 			std::string path;
 			if (comment_line.size() == 3)
 				path = comment_line[2];
 			textdomain_init(textdomain_, path);
+#endif
 		}
 	} 
 
@@ -163,8 +163,3 @@ std::string& tokenizer::textdomain()
 	return textdomain_;
 }
 
-void tokenizer::textdomain_init(const std::string& domain, const std::string& path)
-{
-	bindtextdomain(domain.c_str(), path.empty() ? get_intl_dir().c_str() : path.c_str());
-	bind_textdomain_codeset(domain.c_str(), "UTF-8");
-}

@@ -131,7 +131,7 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 			compress_emit_word(out, i->first, schema);
 
 			//output the value, with no compression
-			compress_output_literal_word(out, i->second.value());
+			compress_output_literal_word(out, i->second.to_serialized());
 		}
 	}
 

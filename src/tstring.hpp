@@ -50,6 +50,7 @@ public:
 	~t_string();
 
 	static t_string from_serialized(const std::string& string);
+	std::string to_serialized() const;
 
 	t_string& operator=(const t_string&);
 	t_string& operator=(const std::string&);

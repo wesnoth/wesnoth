@@ -17,6 +17,7 @@
 #include "tstring.hpp"
 #include "wassert.hpp"
 #include "gettext.hpp"
+#include "filesystem.hpp"
 #include "log.hpp"
 
 #define ERR_CF lg::err(lg::config)
@@ -25,9 +26,10 @@ namespace {
 	const char TRANSLATABLE_PART = 0x01;
 	const char UNTRANSLATABLE_PART = 0x02;
 	const char TEXTDOMAIN_SEPARATOR = 0x03;
+	const char ID_TRANSLATABLE_PART = 0x04;
 
-	//std::vector<std::string> id_to_textdomain;
-	//std::map<std::string, char> textdomain_to_id;
+	std::vector<std::string> id_to_textdomain;
+	std::map<std::string, unsigned int> textdomain_to_id;
 }
 
 t_string::walker::walker(const t_string& string) :
@@ -88,7 +90,10 @@ std::string::const_iterator t_string::walker::end() const
 
 void t_string::walker::update()
 {
-	static std::string mark = std::string(TRANSLATABLE_PART, 1) + UNTRANSLATABLE_PART;
+	unsigned int id;
+
+	static std::string mark = std::string(TRANSLATABLE_PART, 1) + UNTRANSLATABLE_PART +
+		ID_TRANSLATABLE_PART;
 
 	if(begin_ == string_.size())
 		return;
@@ -114,18 +119,44 @@ void t_string::walker::update()
 
 		break;
 	}
-	case UNTRANSLATABLE_PART:
-		end_ = string_.find_first_of(mark, begin_ + 1);
-		if (end_ == std::string::npos)
+	case ID_TRANSLATABLE_PART:
+		if(begin_ + 3 >= string_.size()) {
+			ERR_CF << "Error: invalid string\n";
+			begin_ = string_.size();
+			return;
+		}
+		end_ = string_.find_first_of(mark, begin_ + 3);
+		if(end_ == std::string::npos)
 			end_ = string_.size();
 
-		wassert(int(end_) - int(begin_) - 1 >= 0);
+		id = string_[begin_ + 1] + string_[begin_ + 2] * 256;
+		if(id >= id_to_textdomain.size()) {
+			ERR_CF << "Error: invalid string\n";
+			begin_ = string_.size();
+			return;
+		}
+		textdomain_ = id_to_textdomain[id];
+		begin_ += 3;
+		translatable_ = true;
+
+		break;
+
+	case UNTRANSLATABLE_PART:
+		end_ = string_.find_first_of(mark, begin_ + 1);
+		if(end_ == std::string::npos)
+			end_ = string_.size();
+
+		if(end_ <= begin_ + 1) {
+			ERR_CF << "Error: invalid string\n";
+			begin_ = string_.size();
+			return;
+		}
 
 		translatable_ = false;
 		textdomain_ = "";
 		begin_ += 1;
-
 		break;
+
 	default:
 		end_ = string_.size();
 		translatable_ = false;
@@ -154,10 +185,25 @@ t_string::t_string(const std::string& string) :
 
 t_string::t_string(const std::string& string, const std::string& textdomain) :
 	translatable_(true),
-	value_(TRANSLATABLE_PART, 1)
+	value_(1, ID_TRANSLATABLE_PART)
 {
-	value_ += textdomain;
-	value_ += TEXTDOMAIN_SEPARATOR;
+	std::map<std::string, unsigned int>::const_iterator idi = textdomain_to_id.find(textdomain);
+	unsigned int id;
+
+	if(idi == textdomain_to_id.end()) {
+		textdomain_to_id[textdomain] = id_to_textdomain.size();
+		id = id_to_textdomain.size();
+		id_to_textdomain.push_back(textdomain);
+
+		// Register and bind this textdomain
+		bindtextdomain(textdomain.c_str(), get_intl_dir().c_str());
+		bind_textdomain_codeset(textdomain.c_str(), "UTF-8");
+	} else {
+		id = idi->second;
+	}
+
+	value_ += char(id & 0xff);
+	value_ += char(id >> 8);
 	value_ += string;
 }
 
@@ -173,15 +219,50 @@ t_string::~t_string()
 
 t_string t_string::from_serialized(const std::string& string)
 {
-	t_string res(string);
+	t_string orig(string);
 	
 	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)) {
-		res.translatable_ = true;
+		orig.translatable_ = true;
 	} else {
-		res.translatable_ = false;
+		orig.translatable_ = false;
+	}
+	
+	t_string res;
+
+	for(walker w(orig); !w.eos(); w.next()) {
+		std::string substr(w.begin(), w.end());
+
+		if(w.translatable()) {
+			res += t_string(substr, w.textdomain());
+		} else {
+			res += substr;
+		}
 	}
 
 	return res;
+}
+
+std::string t_string::to_serialized() const
+{
+	t_string res;
+
+	for(walker w(*this); !w.eos(); w.next()) {
+		t_string chunk;
+
+		std::string substr(w.begin(), w.end());
+		if(w.translatable()) {
+			chunk.translatable_ = true;
+			chunk.value_ = TRANSLATABLE_PART + w.textdomain() + 
+				TEXTDOMAIN_SEPARATOR + substr;
+		} else {
+			chunk.translatable_ = false;
+			chunk.value_ = substr;
+		}
+
+		res += chunk;
+	}
+
+	return res.value();
 }
 
 t_string& t_string::operator=(const t_string& string)
