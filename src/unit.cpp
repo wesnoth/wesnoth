@@ -256,12 +256,24 @@ void unit::new_turn()
 		set_attacked();
 }
 
+bool unit::move_interrupted() const {
+	return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0;
+}
+const gamemap::location& unit::get_interrupted_move() const {
+	return interrupted_move_;
+}
+void unit::set_interrupted_move(const gamemap::location& interrupted_move) {
+	interrupted_move_ = interrupted_move;
+}
+
 void unit::end_turn()
 {
 	remove_flag("slowed");
 	if((moves_ != total_movement()) && (moves_ != NOT_MOVED)){
 		resting_ = false;
 	}
+	//clear interrupted move
+	set_interrupted_move(gamemap::location());
 }
 
 void unit::new_level()

@@ -131,6 +131,9 @@ public:
 
 	const std::string& modification_description(const std::string& type) const;
 
+	bool move_interrupted() const;
+	const gamemap::location& get_interrupted_move() const;
+	void set_interrupted_move(const gamemap::location& interrupted_move);
 private:
 	const unit_type* type_;
 
@@ -183,7 +186,7 @@ private:
 
 	bool guardian_;
 
-	gamemap::location goto_;
+	gamemap::location goto_, interrupted_move_;
 
 	enum UPKEEP_COST { UPKEEP_FREE, UPKEEP_LOYAL, UPKEEP_FULL_PRICE };
 

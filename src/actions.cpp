@@ -1440,7 +1440,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  const gamestatus& status, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& route,
-                 replay* move_recorder, undo_list* undo_stack, gamemap::location *next_unit)
+                 replay* move_recorder, undo_list* undo_stack,
+                 gamemap::location *next_unit, bool continue_move)
 {
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands(disp);
@@ -1459,14 +1460,15 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	const bool skirmisher = u.type().is_skirmisher();
 
-	const bool check_shroud = teams[team_num].auto_shroud_updates() &&
-		(teams[team_num].uses_shroud() || teams[team_num].uses_fog());
+	team& team = teams[team_num];
+	const bool check_shroud = team.auto_shroud_updates() &&
+		(team.uses_shroud() || team.uses_fog());
 	
 	//if we use shroud/fog of war, count out the units we can currently see
 	std::set<gamemap::location> known_units;
 	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
-			if(teams[team_num].fogged(u->first.x,u->first.y) == false) {
+			if(team.fogged(u->first.x,u->first.y) == false) {
 				known_units.insert(u->first);
 			}
 		}
@@ -1485,14 +1487,14 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
 		const int mv = u.movement_cost(map,terrain);
-		if(discovered_unit || seen_units.empty() == false || mv > moves_left || enemy_unit != units.end() &&
-		   teams[team_num].is_enemy(enemy_unit->second.side())) {
+		if(discovered_unit || continue_move == false && seen_units.empty() == false ||
+		   mv > moves_left || enemy_unit != units.end() && team.is_enemy(enemy_unit->second.side())) {
 			break;
 		} else {
 			moves_left -= mv;
 		}
 
-		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,teams[team_num],u.side())) {
+		if(!skirmisher && enemy_zoc(map,status,units,teams,*step,team,u.side())) {
 			moves_left = 0;
 		}
 
@@ -1525,7 +1527,8 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 			const std::map<gamemap::location,unit>::const_iterator it = units.find(adjacent[i]);
 			if(it != units.end() && teams[u.side()-1].is_enemy(it->second.side()) &&
-					it->second.invisible(map.underlying_terrain(map[it->first.x][it->first.y]),status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
+			   it->second.invisible(map.underlying_terrain(map[it->first.x][it->first.y]),
+			   status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
 				discovered_unit = true;
 				should_clear_stack = true;
 				break;
@@ -1543,16 +1546,20 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	assert(steps.size() <= route.size());
 
-	if (next_unit != NULL )
+	if (next_unit != NULL)
 		*next_unit = steps.back();
 
-	//if we can't get all the way there and have to set a go-to,
-	//unless we stop early because of sighting a unit
-	if(steps.size() != route.size() && seen_units.empty()) {
-		ui->second.set_goto(route.back());
-		u.set_goto(route.back());
+	//if we can't get all the way there and have to set a go-to.
+	if(steps.size() != route.size() && discovered_unit == false) {
+		if(seen_units.empty() == false) {
+			u.set_interrupted_move(route.back());
+		} else {
+			u.set_goto(route.back());
+		}
+	} else {
+		u.set_interrupted_move(gamemap::location());
 	}
-
+	
 	if(steps.size() < 2) {
 		return 0;
 	}
@@ -1605,7 +1612,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 									 0.0,0.0,100,disp->map_area(),font::CENTER_ALIGN);
 		}
 
-		if(seen_units.empty() == false) {
+		if(continue_move == false && seen_units.empty() == false) {
 			//the message depends on how many units have been sighted, and whether
 			//they are allies or enemies, so calculate that out here
 			int nfriends = 0, nenemies = 0;
@@ -1613,7 +1620,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				std::cerr << "processing unit at " << (i->x+1) << "," << (i->y+1) << "\n";
 				const unit_map::const_iterator u = units.find(*i);
 				assert(u != units.end());
-				if(teams[team_num].is_enemy(u->second.side())) {
+				if(team.is_enemy(u->second.side())) {
 					++nenemies;
 				} else {
 					++nfriends;

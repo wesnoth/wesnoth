@@ -95,36 +95,8 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	for(std::vector<gamemap::location>::const_iterator g = gotos.begin();
 	    g != gotos.end(); ++g) {
-
-		const unit_map::iterator ui = units.find(*g);
-
-		assert(ui != units.end());
-
-		unit u = ui->second;
-		const shortest_path_calculator calc(u,current_team,units,teams,map,status);
-
-		const std::set<gamemap::location>* teleports = NULL;
-
-		std::set<gamemap::location> allowed_teleports;
-		if(u.type().teleports()) {
-			allowed_teleports = vacant_villages(current_team.villages(),units);
-			teleports = &allowed_teleports;
-			if(current_team.villages().count(ui->first))
-				allowed_teleports.insert(ui->first);
-		}
-
-		paths::route route = a_star_search(ui->first,ui->second.get_goto(),
-		                                   10000.0,calc,teleports);
-		if(route.steps.empty())
-			continue;
-
-		assert(route.steps.front() == *g);
-
-		route.move_left = route_turns_to_complete(ui->second,map,route);
-		gui.set_route(&route);
-		move_unit(&gui,gameinfo,status,map,units,teams,route.steps,
-		          &recorder,&turn_data.undos());
-		gui.invalidate_game_status();
+		unit_map::const_iterator ui = units.find(*g);
+		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
 
 	std::cerr << "done gotos\n";
@@ -735,17 +707,17 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
-
 		const size_t moves = move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
-		                   current_route_.steps,&recorder,&undo_stack_, &next_unit_);
+		                   current_route_.steps,&recorder,&undo_stack_,&next_unit_);
 
 		cursor::set(cursor::NORMAL);
 
 		gui_.invalidate_game_status();
 
 		selected_hex_ = gamemap::location();
-		gui_.set_route(NULL);
 		gui_.select_hex(gamemap::location());
+		
+		gui_.set_route(NULL);
 		gui_.set_paths(NULL);
 		current_paths_ = paths();
 
@@ -760,14 +732,16 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		//u may be equal to units_.end() in the case of e.g. a [teleport]
 		if(u != units_.end()) {
-			assert(u != units_.end());
-
+			//Reselect the unit if the move was interrupted
+			if(dst != current_route_.steps.back()) {
+				selected_hex_ = dst;
+				gui_.select_hex(dst);
+			}
+			
 			const int range = u->second.longest_range();
-
 			current_route_.steps.clear();
-
 			show_attack_options(u);
-
+			
 			if(current_paths_.routes.empty() == false) {
 				current_paths_.routes[dst] = paths::route();
 				selected_hex_ = dst;
@@ -844,6 +818,35 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
+void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move)
+{
+	assert(ui != units_.end());
+
+	unit u = ui->second;
+	const shortest_path_calculator calc(u,current_team(),units_,teams_,map_,status_);
+
+	const std::set<gamemap::location>* teleports = NULL;
+
+	std::set<gamemap::location> allowed_teleports;
+	if(u.type().teleports()) {
+		allowed_teleports = vacant_villages(current_team().villages(),units_);
+		teleports = &allowed_teleports;
+		if(current_team().villages().count(ui->first))
+			allowed_teleports.insert(ui->first);
+	}
+
+	paths::route route = a_star_search(ui->first,target,10000.0,calc,teleports);
+	if(route.steps.empty())
+		return;
+
+	assert(route.steps.front() == ui->first);
+
+	route.move_left = route_turns_to_complete(ui->second,map_,route);
+	gui_.set_route(&route);
+	move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,route.steps,&recorder,&undos(),NULL,continue_move);
+	gui_.invalidate_game_status();
+}
+
 hotkey::ACTION_STATE turn_info::get_action_state(hotkey::HOTKEY_COMMAND command) const
 {
 	switch(command) {
@@ -862,11 +865,10 @@ bool turn_info::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	//Only display these if the mouse is over a castle or keep tile
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
-	case hotkey::HOTKEY_RECALL: {
+	case hotkey::HOTKEY_RECALL:
 		// last_hex_ is set by turn_info::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
 		return map_.is_castle(last_hex_);
-	}
 	default:
 		return true;
 	}
@@ -905,10 +907,18 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_UNDO:
 		return !browse_ && !undo_stack_.empty();
 
+	case hotkey::HOTKEY_CONTINUE_MOVE: {
+		if(browse_) return false;
+		if(current_unit()->second.move_interrupted()) return true;
+		const unit_map::const_iterator i = units_.find(selected_hex_);
+		if (i == units_.end()) return false;
+		return i->second.move_interrupted();
+	}
+	
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return !browse_ && (current_team().uses_fog() || current_team().uses_shroud());
 	case hotkey::HOTKEY_UPDATE_SHROUD:
-		return !browse_ && !current_team().auto_shroud_updates();
+		return !browse_ && current_team().auto_shroud_updates() == false;
 
 	//commands we can only do if we are actually playing, not just viewing
 	case hotkey::HOTKEY_END_UNIT_TURN:
@@ -2025,43 +2035,53 @@ void turn_info::show_enemy_moves(bool ignore_units)
 }
 
 void turn_info::toggle_shroud_updates() {
-	bool auto_shroud = teams_[team_num_-1].auto_shroud_updates();
+	bool auto_shroud = current_team().auto_shroud_updates();
 	// If we're turning automatic shroud updates on, then commit all moves
 	if(auto_shroud == false) update_shroud_now();
-	teams_[team_num_-1].set_auto_shroud_updates(!auto_shroud);
+	current_team().set_auto_shroud_updates(!auto_shroud);
 }
 
-void turn_info::update_shroud_now() {
-	clear_undo_stack();
-}
-
-bool turn_info::clear_shroud() {
-	return teams_[team_num_-1].auto_shroud_updates() && 
+bool turn_info::clear_shroud()
+{
+	return current_team().auto_shroud_updates() && 
 		::clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 }
 
-void turn_info::clear_undo_stack() {
-	if (teams_[team_num_-1].auto_shroud_updates() == false)
+void turn_info::clear_undo_stack()
+{
+	if(current_team().auto_shroud_updates() == false)
 		apply_shroud_changes(undo_stack_,&gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
 	undo_stack_.clear();
 }
 
+void turn_info::update_shroud_now()
+{
+	clear_undo_stack();
+}
+
+void turn_info::continue_move()
+{
+	unit_map::iterator i = current_unit();
+	if(i == units_.end() || i->second.move_interrupted() == false) {
+		i = units_.find(selected_hex_);
+		if (i == units_.end() || i->second.move_interrupted() == false) return;
+	}
+	move_unit_to_loc(i,i->second.get_interrupted_move(),true);
+}
 
 unit_map::iterator turn_info::current_unit()
 {
 	unit_map::iterator i = units_.end();
 
 	if(gui_.fogged(last_hex_.x,last_hex_.y) == false){
-		i = find_visible_unit(units_,
-				last_hex_, map_,
-				status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+		i = find_visible_unit(units_,last_hex_,map_,
+			status_.get_time_of_day().lawful_bonus,teams_,current_team());
 	}
 
 	if(gui_.fogged(selected_hex_.x,selected_hex_.y) == false){
 		if(i == units_.end()) {
-			unit_map::iterator i = find_visible_unit(units_, selected_hex_, 
-					map_,
-					status_.get_time_of_day().lawful_bonus,teams_,teams_[team_num_-1]);
+			unit_map::iterator i = find_visible_unit(units_, selected_hex_,map_,
+				status_.get_time_of_day().lawful_bonus,teams_,current_team());
 		}
 	}
 

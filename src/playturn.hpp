@@ -73,6 +73,8 @@ public:
 
 	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
+	
+	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move);
 
 	void save_game(const std::string& message);
 
@@ -121,6 +123,7 @@ private:
 	virtual void show_enemy_moves(bool ignore_units);
 	virtual void toggle_shroud_updates();
 	virtual void update_shroud_now();
+	virtual void continue_move();
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command) const;
 	
 	void do_recruit(const std::string& name);
@@ -136,7 +139,7 @@ private:
 
 	bool clear_shroud();
 	void clear_undo_stack();
-
+	
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const;
 

@@ -180,11 +180,12 @@ typedef std::deque<undo_action> undo_list;
 //a goto order will be set. If move_recorder is not NULL, the move will
 //be recorded in it. If undos is not NULL, undo information will be added.
 size_t move_unit(display* disp, const game_data& gamedata, 
-						const gamestatus& status, const gamemap& map, 
-						unit_map& units, std::vector<team>& teams,
-						const std::vector<gamemap::location>& steps,
-						replay* move_recorder, undo_list* undos,
-		 gamemap::location *next_unit = NULL);
+				const gamestatus& status, const gamemap& map, 
+				unit_map& units, std::vector<team>& teams,
+				const std::vector<gamemap::location>& steps,
+				replay* move_recorder, undo_list* undos,
+				gamemap::location *next_unit = NULL,
+				bool continue_move = false);
 
 //function which recalculates the fog
 void recalculate_fog(const gamemap& map, const gamestatus& status,
