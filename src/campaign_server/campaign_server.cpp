@@ -50,7 +50,7 @@ int campaign_server::load_config()
 }
 
 campaign_server::campaign_server(const std::string& cfgfile)
-     : file_(cfgfile), server_manager_(load_config())
+     : file_(cfgfile), net_manager_(5), server_manager_(load_config())
 {
 	if(cfg_.child("campaigns") == NULL) {
 		cfg_.add_child("campaigns");
