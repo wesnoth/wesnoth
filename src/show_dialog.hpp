@@ -58,6 +58,8 @@ public:
 	enum { CONTINUE_DIALOG=-2 };
 };
 
+enum { ESCAPE_DIALOG=-3 };
+
 enum DIALOG_TYPE { MESSAGE, OK_ONLY, YES_NO, OK_CANCEL, CANCEL_ONLY };
 
 struct check_item {

@@ -535,7 +535,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 		}
 
 		if(!key_down && key[SDLK_ESCAPE] && type == MESSAGE) {
-			return -1;
+			return ESCAPE_DIALOG;
 		}
 
 		if(!key_down && key[SDLK_ESCAPE] &&

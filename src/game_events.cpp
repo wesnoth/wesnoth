@@ -187,7 +187,7 @@ public:
 	void handle_event(const queued_event& event_info, const config* cfg=NULL);
 
 private:
-	void handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg);
+	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg);
 
 	std::string name_;
 	bool first_time_only_;
@@ -233,8 +233,9 @@ std::multimap<std::string,event_handler> events_map;
 
 //this function handles all the different types of actions that can be triggered
 //by an event.
-void event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg)
+bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg)
 {
+	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
 		handle_event(event_info,&cfg);
@@ -298,7 +299,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
 		if(index > teams->size())
-			return;
+			return rval;
 
 		const std::string& type = cfg["type"];
 		(*teams)[index].recruits().insert(type);
@@ -312,7 +313,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
 		if(index > teams->size())
-			return;
+			return rval;
 
 		const std::string& type = cfg["type"];
 		(*teams)[index].recruits().erase(type);
@@ -325,7 +326,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		const int side = maximum<int>(1,atoi(cfg["side"].c_str()));
 		const size_t index = side-1;
 		if(index > teams->size())
-			return;
+			return rval;
 
 		std::vector<std::string> recruit = config::split(cfg["recruit"]);
 		if(recruit.size() == 1 && recruit.back() == "")
@@ -572,7 +573,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 
 		//if this item has already been used
 		if(used_items.count(id))
-			return;
+			return rval;
 
 		const std::string image = cfg["image"];
 		std::string caption = cfg["name"];
@@ -584,7 +585,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::map<gamemap::location,unit>::iterator u = units->find(event_info.loc1);
 
 		if(u == units->end())
-			return;
+			return rval;
 
 		std::string text;
 
@@ -640,7 +641,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 			if(speaker == units->end()) {
 				//no matching unit found, so the dialog can't come up
 				//continue onto the next message
-				return;
+				return rval;
 			}
 		}
 
@@ -704,6 +705,10 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 		                        lang_message.empty() ? cfg["message"] : lang_message,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
+
+			if (option_chosen == gui::ESCAPE_DIALOG){
+				rval = false;
+			}
 
 			if(options.empty() == false) {
 				recorder.choose_option(option_chosen);
@@ -778,6 +783,8 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 			throw end_level_exception(DEFEAT);
 		}
 	}
+
+	return rval;
 }
 
 void event_handler::handle_event(const queued_event& event_info, const config* cfg)
@@ -785,10 +792,23 @@ void event_handler::handle_event(const queued_event& event_info, const config* c
 	if(cfg == NULL)
 		cfg = cfg_;
 
+	bool skip_messages = false;
 	for(config::all_children_iterator i = cfg->ordered_begin(); i != cfg->ordered_end(); ++i) {
 		const std::pair<const std::string*,const config*> item = *i;
 
-		handle_event_command(event_info,*item.first,*item.second);
+		if ((skip_messages) && (*item.first == "message")) {
+			std::cerr << "message skipped!\n";
+			continue;
+		}
+
+		if (!handle_event_command(event_info,*item.first,*item.second))  {
+			std::cerr << "skipping messages!\n";
+			skip_messages = true;
+		}
+		else { 
+			std::cerr << "not skipping messages!\n";
+			skip_messages = false;
+		}
 	}
 }
 
