@@ -107,6 +107,16 @@ std::string ip_address(connection connection_num);
 //function to see the number of bytes being processed on the current socket
 std::pair<int,int> current_transfer_stats();
 
+struct connection_stats
+{
+	connection_stats(int sent, int received, int connected_at);
+
+	int bytes_sent, bytes_received;
+	int time_connected;
+};
+
+connection_stats get_connection_stats(connection connection_num);
+
 struct error
 {
 	error(const std::string& msg="", connection sock=0);

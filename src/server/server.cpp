@@ -86,12 +86,44 @@ private:
 	time_t last_stats_;
 
 	input_stream& input_;
+
+	bool is_ip_banned(const std::string& ip);
+	std::string ban_ip(const std::string& mask);
+	std::vector<std::string> bans_;
 };
 
 server::server(int port, input_stream& input) : net_manager_(), server_(port), not_logged_in_(players_), lobby_players_(players_), last_stats_(time(NULL)), input_(input)
 {
 	login_response_.add_child("mustlogin");
 	login_response_["version"] = game_config::version;
+}
+
+bool server::is_ip_banned(const std::string& ip)
+{
+	for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+		std::cerr << "comparing for ban '" << *i << "' vs '" << ip << "'\n";
+		const std::string::const_iterator itor = std::mismatch(i->begin(),i->end(),ip.c_str()).first;
+		if(itor == i->end() && i->size() == ip.size() || itor != i->end() && *itor == '*') {
+			std::cerr << "is banned\n";
+			return true;
+		}
+
+		std::cerr << "not banned\n";
+	}
+
+	return false;
+}
+
+std::string server::ban_ip(const std::string& mask)
+{
+	const std::string::const_iterator asterisk = std::find(mask.begin(),mask.end(),'*');
+	if(asterisk != mask.end() && asterisk != mask.end()-1) {
+		return "'*' may only appear at the end of the mask";
+	}
+
+	bans_.push_back(mask);
+
+	return "";
 }
 
 config server::sync_initial_response()
@@ -124,19 +156,77 @@ void server::process_command(const std::string& cmd)
 	const std::string command(cmd.begin(),i);
 	if(command == "msg") {
 		if(i == cmd.end()) {
-			std::cerr << "you must type a message\n";
+			std::cout << "you must type a message" << std::endl;
 			return;
 		}
 
-		const std::string msg(i+1,cmd.end());
-		lobby_players_.send_data(construct_server_message(msg,lobby_players_));
+		const std::string msg(i+1,cmd.end()); lobby_players_.send_data(construct_server_message(msg,lobby_players_));
 		for(std::vector<game>::iterator g = games_.begin(); g != games_.end(); ++g) {
 			g->send_data(construct_server_message(msg,*g));
 		}
 
-		std::cerr << "message '" << msg << "' relayed to players\n";
+		std::cout << "message '" << msg << "' relayed to players\n";
+	} else if(command == "status") {
+		std::cout << "STATUS REPORT\n---\n";
+		for(player_map::const_iterator i = players_.begin(); i != players_.end(); ++i) {
+			const network::connection_stats& stats = network::get_connection_stats(i->first);
+			const int time_connected = stats.time_connected/1000;
+			const int seconds = time_connected%60;
+			const int minutes = (time_connected/60)%60;
+			const int hours = time_connected/(60*60);
+			std::cout << "'" << i->second.name() << "' @ " << network::ip_address(i->first) << " connected for " << hours << ":" << minutes << ":" << seconds << " sent " << stats.bytes_sent << " bytes, received " << stats.bytes_received << " bytes\n";
+		}
+
+		std::cout << "---" << std::endl;
+	} else if(command == "ban") {
+
+		if(i == cmd.end()) {
+			std::cout << "BAN LIST\n---\n";
+			for(std::vector<std::string>::const_iterator i = bans_.begin(); i != bans_.end(); ++i) {
+				std::cout << *i << "\n";
+			}
+			std::cout << "---" << std::endl;
+		} else {
+			const std::string mask(i+1,cmd.end());
+			const std::string& diagnostic = ban_ip(mask);
+			if(diagnostic != "") {
+				std::cout << "Could not ban '" << mask << "': " << diagnostic << std::endl;
+			} else {
+				std::cout << "Set ban on '" << mask << "'\n";
+			}
+		}
+	} else if(command == "unban") {
+		if(i == cmd.end()) {
+			std::cout << "You must enter a mask to unban" << std::endl;
+			return;
+		}
+
+		const std::string mask(i+1,cmd.end());
+
+		const std::vector<std::string>::iterator itor = std::remove(bans_.begin(),bans_.end(),mask);
+		if(itor == bans_.end()) {
+			std::cout << "there is no ban on '" << mask << "'" << std::endl;
+		} else {
+			bans_.erase(itor,bans_.end());
+			std::cout << "ban removed on '" << mask << "'" << std::endl;
+		}
+		
+	} else if(command == "kick") {
+		if(i == cmd.end()) {
+			std::cout << "you must enter a nick to kick\n";
+			return;
+		}
+
+		const std::string nick(i+1,cmd.end());
+
+		for(player_map::const_iterator j = players_.begin(); j != players_.end(); ++j) {
+			if(j->second.name() == nick) {
+				std::cout << "kicking nick '" << j->second.name() << "'\n";
+				throw network::error("",j->first);
+			}
+		}
 	} else {
-		std::cerr << "command '" << command << "' is not recognized\n";
+		std::cout << "command '" << command << "' is not recognized" << std::endl;
 	}
 }
 
@@ -169,7 +259,11 @@ void server::run()
 			network::process_send_queue();
 
 			network::connection sock = network::accept_connection();
-			if(sock) {
+			if(sock && is_ip_banned(network::ip_address(sock))) {
+				std::cerr << "rejected banned user '" << network::ip_address(sock) << "'\n";
+				network::send_data(construct_error("You are banned."),sock);
+				network::disconnect(sock);
+			} else if(sock) {
 				network::send_data(login_response_,sock);
 				not_logged_in_.add_player(sock);
 			}

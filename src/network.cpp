@@ -21,7 +21,8 @@ namespace {
 //the same, so it's all seamless to the user
 struct connection_details {
 	connection_details(TCPsocket sock, const std::string& host, int port)
-		: sock(sock), host(host), port(port), remote_handle(0)
+		: sock(sock), host(host), port(port), remote_handle(0),
+	      connected_at(SDL_GetTicks()), sent(0), received(0)
 	{}
 
 	TCPsocket sock;
@@ -31,6 +32,9 @@ struct connection_details {
 	//the remote handle is the handle assigned to this connection by the remote host.
 	//is 0 before a handle has been assigned.
 	int remote_handle;
+
+	int connected_at;
+	int sent, received;
 };
 
 typedef std::map<network::connection,connection_details> connection_map;
@@ -109,6 +113,16 @@ std::set<network::connection> bad_sockets;
 }
 
 namespace network {
+
+connection_stats::connection_stats(int sent, int received, int connected_at)
+       : bytes_sent(sent), bytes_received(received), time_connected(SDL_GetTicks() - connected_at)
+{}
+
+connection_stats get_connection_stats(connection connection_num)
+{
+	connection_details& details = get_connection_details(connection_num);
+	return connection_stats(details.sent,details.received,details.connected_at);
+}
 
 const connection null_connection = 0;
 
@@ -385,7 +399,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 	}
 
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
-		const TCPsocket sock = get_socket(*i);
+		connection_details& details = get_connection_details(*i);
+		const TCPsocket sock = details.sock;
 		if(SDLNet_SocketReady(sock)) {
 
 			//see if this socket is still waiting for it to be assigned its remote handle
@@ -412,6 +427,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				if(len != 4) {
 					throw error("Remote host disconnected",*i);
 				}
+
+				details.received += len;
 
 				len = SDLNet_Read32(num_buf);
 
@@ -442,6 +459,8 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				std::cerr << "SDLNet_TCP_Recv returned " << nbytes << " error in socket\n";
 				throw error("remote host disconnected",*i);
 			}
+
+			details.received += nbytes;
 
 			buf.upto += nbytes;
 			std::cerr << "received " << nbytes << "=" << buf.upto << "/" << buf.buf.size() << "\n";
@@ -568,7 +587,8 @@ void process_send_queue(connection connection_num, size_t max_size)
 		max_size = 8;
 	}
 
-	const TCPsocket sock = get_socket(connection_num);
+	connection_details& details = get_connection_details(connection_num);
+	const TCPsocket sock = details.sock;
 
 	std::pair<send_queue_map::iterator,send_queue_map::iterator> itor = send_queue.equal_range(connection_num);
 	if(itor.first != itor.second) {
@@ -591,6 +611,7 @@ void process_send_queue(connection connection_num, size_t max_size)
 		std::cerr << "sent.\n";
 
 		upto += res;
+		details.sent += res;
 
 		//if we've now sent the entire item, erase it from the send queue
 		if(upto == buf.size()) {
