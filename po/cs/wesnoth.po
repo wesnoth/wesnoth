@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-09-12 17:19+0200\n"
-"PO-Revision-Date: 2004-09-06 00:14+0200\n"
+"PO-Revision-Date: 2004-09-12 22:53+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,6 @@ msgid "Movement"
 msgstr "Pohyby"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -237,8 +236,8 @@ msgstr ""
 "vytváří oblast kontroly skládající se ze sousedních políček. Nepřátelská "
 "jednotka, která vstoupí na takové políčko, se už v tomto kole dál nepohne. "
 "Naučit se využívat oblasti kontroly ke svému prospěchu je důležitá část "
-"Wesnothu, neboť pouze <ref>dst=ability_skirmish text=průbojné</ref> jednotky "
-"dokáží oblasti kontroly ignorovat."
+"Wesnothu, neboť pouze <ref>dst=ability_skirmish text='průbojné'</ref> "
+"jednotky dokáží oblasti kontroly ignorovat."
 
 #: data/help.cfg:95
 msgid "Combat"
@@ -881,7 +880,7 @@ msgstr ""
 
 #: data/items.cfg:812
 msgid "Zap~"
-msgstr ""
+msgstr "Vžum"
 
 #: data/multiplayer.cfg:3
 msgid "User Map"
@@ -1037,7 +1036,7 @@ msgstr "Obležené hrady"
 
 #: data/scenarios/multiplayer/scenarios.cfg:3
 msgid "Across The River"
-msgstr ""
+msgstr "Za řekou"
 
 #: data/scenarios/multiplayer/scenarios.cfg:108
 msgid "The Isle of Anduin"
@@ -1045,33 +1044,35 @@ msgstr "Ostrov Anduin"
 
 #: data/scenarios/multiplayer/scenarios.cfg:135
 msgid "The Three Rivers"
-msgstr ""
+msgstr "Tři řeky"
 
 #: data/scenarios/multiplayer/scenarios.cfg:162
 msgid "The Isles of the Damned"
-msgstr ""
+msgstr "Ostrov zatracení"
 
 #: data/scenarios/multiplayer/scenarios.cfg:195
 msgid "The Valley of Death"
-msgstr ""
+msgstr "Údolí smrti"
 
 #: data/scenarios/multiplayer/scenarios.cfg:238
 msgid "Dwarvern Wasteland"
-msgstr ""
+msgstr "Trpasličí pustina"
 
 #: data/scenarios/multiplayer/scenarios.cfg:277
 msgid "Princess's Battlefield"
-msgstr ""
+msgstr "Princeznino bitevní pole"
 
 #: data/scenarios/multiplayer/scenarios.cfg:304
 msgid "King of the Hill"
-msgstr ""
+msgstr "Král vršku"
 
 #: data/scenarios/tutorial/tutorial1.cfg:67
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
+"Jsem tu, abych se naučil bojovat v bitvě. Jako zkušený starý mág mě jistě "
+"dokážeš umění boje vysvětlit."
 
 #: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
@@ -1080,6 +1081,10 @@ msgid ""
 "select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
+"Než vstoupíš do bitvy, potřebuješ naverbovat jednotky. Jednotku naverbuješ "
+"tak, že klikneš pravým tlačítkem myši na políčko hradu, kde chceš, aby se "
+"objevila. Potom zvolíš „Naverbuj“ a klikneš na „OK“. Můžeš verbovat jednotky "
+"jen na políčka hradu spojená s tvrzí, ve které se nachází tvůj vůdce."
 
 #: data/scenarios/tutorial/tutorial1.cfg:73
 msgid "Recruit a unit"
@@ -1087,7 +1092,7 @@ msgstr "Naverbuj nějakou jednotku"
 
 #: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr ""
+msgstr "Výborně! Naverboval jsi elfího bojovníka."
 
 #: data/scenarios/tutorial/tutorial1.cfg:81
 #: data/scenarios/tutorial/tutorial1.cfg:101
@@ -1110,6 +1115,11 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
+"Jednotku naverbuješ tak, že klikneš pravým tlačítkem myši na políčko hradu, "
+"kde chceš jednotku naverbovat. Potom vyber „Naverbuj“; nebo prostě podrž "
+"kursor nad políčkem a stiskni „Ctrl-R“. Pak vyber typ jednotky, který chceš "
+"naverbovat, a klikni na „OK“. Stiskem „Shift-Ctrl-R“ můžeš rychle naverbovat "
+"další jednotku stejného typu jako posledně."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid ""
@@ -1121,6 +1131,12 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
+"Vůdce je jednotka, která může verbovat. To znamená, že je-li velitel v "
+"tvrzi, může verbovat jednotky na okolní políčka hradu. Vůdci jsou obvykle "
+"silné jednotky, jakou každá strana ovládá jen jedinou. Tvůj vůdce je také "
+"obvykle první jednotkou, kterou tvá strana ovládá, a začíná v tvrzi. Vůdce "
+"můžeš snadno vybrat stiskem „l“. Zemře-li tvůj vůdce, prohráváš hru. Většinu "
+"scénářů můžeš vyhrát poražením všech nepřátelských vůdců."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid "What's a leader?"
@@ -1128,7 +1144,7 @@ msgstr "Co je to vůdce?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
 msgid "How should I choose what kind of units to recruit?"
-msgstr ""
+msgstr "Čím bych se měl při verbování jednotek řídit?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
 msgid ""
@@ -1136,6 +1152,9 @@ msgid ""
 "of the unit selection box, and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Musíš důkladně posoudit její schopnosti, jež se zobrazují nalevo od výběru "
+"jednotek, a cenu, která se zobrazuje napravo od jména jednotky. V průběhu "
+"výcviku se o těchto statistikách dozvíš více."
 
 #: data/scenarios/tutorial/tutorial1.cfg:86
 msgid "What happens when I recruit a unit?"
@@ -1147,6 +1166,9 @@ msgid ""
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
+"Když naverbuješ jednotku, objeví se s plným počtem životů na příslušném "
+"políčku hradu. Také získá dvě vlastnosti, které probereme později. V témže "
+"kole už se nemůže pohnout ani útočit."
 
 #: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
@@ -1154,6 +1176,9 @@ msgid ""
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
+"Protože se jednotky nemohou pohybovat v kole, v němž byly naverbovány, "
+"musíšteď ukončit své kolo. To uděláš jednoduše kliknutím na tlačítko „Ukonči "
+"kolo“ v pravém dolním rohu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:94
 msgid "End your turn"
@@ -1161,11 +1186,11 @@ msgstr "Konec tvého kola"
 
 #: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
-msgstr ""
+msgstr "Úspěšně jsi ukončil své kolo."
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
 msgid "How do I end my turn?"
-msgstr ""
+msgstr "Jak ukončím kolo?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:103
 msgid ""
@@ -1173,6 +1198,9 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
+"Jeden ze způsobů, jak ukončit kolo, je stisknout „Alt-E“. Také můžeš "
+"kliknoutpravým tlačítkem myši a zvolit „Ukonči kolo“ nebo kliknout na "
+"tlačítko „Ukonči kolo“ v pravém dolním rohu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:104
 msgid "What happens when I end my turn?"
@@ -1187,6 +1215,12 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Když ukončíš své kolo, je na tahu další strana a jen ona může tahat, dokud "
+"neukončí své kolo. Poté, co všechny strany ukončí své kolo, začne nové kolo. "
+"To má různé následky, včetně toho, že vsechny jednotky opět získají plný "
+"počet pohybů. Číslo současného kola se zobrazuje nahoře ve stavovém řádku "
+"vedle obrázku vlajky. Když číslo kola překročí maximální počet kol, ztrácíš "
+"hru (obvykle)."
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
@@ -1194,10 +1228,13 @@ msgid ""
 "it, then select his destination. In this case, his destination is the forest "
 "next to the Elvish Shaman, Merle."
 msgstr ""
+"Tvým dalším úkolem bude přesunout svého elfího bojovníka. Jednotku přesuneš "
+"tak, že nejprve vybereš ji, pak klikneš, kam má dojít. V tomto případě je "
+"jejím cílem les vedle elfí šamanky Merly."
 
 #: data/scenarios/tutorial/tutorial1.cfg:112
 msgid "Move your Elvish Fighter next to Merle"
-msgstr ""
+msgstr "Přesuň svého elfího bojovníka k Merle."
 
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
@@ -1205,10 +1242,13 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
+"Výborně! Podařilo se ti přesunout svého elfího bojovníka. Avšak protože se "
+"přesunul přímo k nepřátelské jednotce, nemůže už se v tomto kole dále "
+"pohybovat. Tomuto se říká „oblasti kontroly“."
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Jak daleko můj elfí bojovník dojde?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:138
 msgid ""
@@ -1223,6 +1263,15 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Tvůj elfí bojovník začíná každé kolo s určitým počtem pohybů. Když se "
+"pohybuje po nějaké trase, každé políčko, přes které projde, ho stojí nějaké "
+"pohyby; včetně cílového políčka. Když vybereš svého elfího bojovníka, "
+"všechna políčka, kam nedokáže dojít v tomto kole, ztmavnou. Pokud je cíl tak "
+"daleko, že potřebuje více kol, aby ho dosáhl, ukáže se počet kol, které k "
+"tomu potřebuje. Klikneš-li na vzdálené místo, jednotka se vydá na cestu k "
+"němu, což znamená, že se k němu v každém kole sama přiblíží, jak daleko bude "
+"moci, dokud tam nedojde. Pokud vyšleš jednotku na cestu omylem, zvol tentýž "
+"cíl znovu, čímž ho zrušíš."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid ""
@@ -1232,14 +1281,19 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"Oblast kontroly určité jednotky se skládá ze všech přiléhajících políček. "
+"Jednotky se nemohou pohybovat skrz protivníkovu oblast kontroly; mohou se "
+"přesunout pouze do ní. Když to udělají, ztratí všechny zbývající pohyby. "
+"Oblasti kontroly lze využít k zabránění nepříteli dostat se k tvým slabým a "
+"zraněným jednotkám."
 
 #: data/scenarios/tutorial/tutorial1.cfg:139
 msgid "What's the zone of control?"
-msgstr ""
+msgstr "Co je to oblast kontroly?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Jak poznám, kdo je spojenec, a kdo nepřítel?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:140
 msgid ""
@@ -1251,6 +1305,13 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
+"Jedtnoky mají nad svým pruhem ukazujícím počet životů (ten zelený pruh vedle "
+"jednotky) zelený, žlutý nebo červený kroužek. Jednotky s plným počtem pohybů "
+"ho mají zelený; ty, které ještě mají nějaké pohyby, mají žlutý; a jednotky, "
+"které už se nemohou pohnout, mají červený. Jednotky ovládané nepřítelem "
+"žádné kroužky nemají. Jednotky spojenců, které neovládáš, jako kupříkladu "
+"já, mají modrý kroužek. Volba „Zobrazuj barvy týmů“ v nastavení způsobí, že "
+"se pod každou jednotkou bude zobrazovat kružnice v barvě jejího týmu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
@@ -1258,6 +1319,10 @@ msgid ""
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
+"Nyní se svým bojovníkem potřebuješ zaútočit. Zaútočíš tak, že nejprve "
+"vybereš jednotku, potom vybereš cíl útoku, což musí být jednotka na některém "
+"sousedním políčku. Poté se ti zobrazí dialog s volbami útoku, kde zvolíš, "
+"jak má jednotka zaútočit."
 
 #: data/scenarios/tutorial/tutorial1.cfg:148
 msgid "Attack Merle"
@@ -1265,11 +1330,11 @@ msgstr "Zaútoč na Merlu"
 
 #: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
-msgstr ""
+msgstr "Úspěšně jsi zaútočil na Merlu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Může mi Merla oplatit můj útok?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid ""
@@ -1286,6 +1351,17 @@ msgid ""
 "shoot across multiple hexes; this is one of the distinctive features of "
 "Wesnoth."
 msgstr ""
+"Když je jednotka napadena, oplácí útok jednou ze svých zbraní. To znamená, "
+"že po každém útočníkově úderu udeří jednou i obránce. Tak to pokračuje, "
+"dokud jedna ze stran nevyčerpá svůj počet útoků, potom útočí už jen druhá "
+"jednotka, dokud i ona nevyčerpá své útoky. Avšak každá jednotka může oplácet "
+"útok jen zbraní na stejnou vzdálenost, jako zbraň, jíž je napadena. To "
+"znamená, že útok zbraní na dálku může lze oplatit opět jen zbraněmi na "
+"dálku; a útok zbraní pro boj zblízka lze oplatit zase jen takovýmito "
+"zbraněmi. Většina jednotek má silnější útok zblízka než na dálku, jednotky s "
+"útokem na dálku jsou proto užitečné v tom, že napadené jednotky vracejí útok "
+"menší silou, často vůbec. Avšak ani jednotky s útokem na dálku nemohou "
+"střílet přes více políček; to je jedna ze zvláštností Wesnothu."
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid ""
@@ -1298,10 +1374,17 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Každý útok, který zasáhne, způsobí určité poranění, a každý útok má stanoven "
+"počet opakování v každém souboji. Tato čísla, nazývaná poškození (poranění) "
+"a počet úderů, se zobrazují v tomto pořadí pod jméne útoku v tabulce stavu "
+"jednotky; a poblíž něj v menu s volbami útoku. Největší možné poranění, jaké "
+"může útok způsobit, získáš vynásobením počtu úderů poškozením. Například "
+"každý můj útok blesky způsobuje poškození 14 a mám 4 údery, takže mohu "
+"způsobit poranění až 56 životů v jediném souboji."
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Jak poznám, jak silné jsou útoky nějaké jednotky?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid ""
@@ -1309,14 +1392,17 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"Jednotky se dokáží bránit. Šance, že jednotka zasáhne, závisí na obráncově "
+"schopnosti bránit se, v menu volby útoku je uvedena po poškození a počtu "
+"úderů."
 
 #: data/scenarios/tutorial/tutorial1.cfg:168
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "Zasáhne můj bojovník pokaždé, když zaútočí?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
-msgstr ""
+msgstr "Ukonči své kolo, a počkej, až Merla zaútočí na tebe."
 
 #: data/scenarios/tutorial/tutorial1.cfg:180
 msgid ""
@@ -1324,10 +1410,13 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
+"Tvůj bojovník přežil útok Merly. Kdykoli jednotka přežije souboj, získá z "
+"něj zkušenosti. Jakmile nasbírá dost zkušeností, povyšuje na vyšší úroveň a "
+"stává se mocnější."
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid "What's experience?"
-msgstr ""
+msgstr "Co jsou to zkušenosti?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:184
 msgid ""
@@ -1337,10 +1426,15 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Když jednotka bojuje s jinou jednotkou, získává soubojem zkušenosti, "
+"označované „Zkušenost“. Množství získaných zkušeností je rovno úrovni "
+"protivníka, která obvykle representuje jeho sílu. Avšak mnohem více "
+"zkušeností získá poražením nepřátelské jednotky. Množství zkušeností "
+"získaných zabitím nepřítele je rovno osminásobku jeho úrovně."
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Co se stane, když je jednotka povýšena?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid ""
@@ -1351,22 +1445,27 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
+"Když je jednotka povýšena, přemění se v jednotku jiného typu, o jednu úroveň "
+"vyššího . Tento typ závisí na tom, čím byla původně, ale občas je na výběr "
+"více možností, na co může být povýšena. Jednotky vyšší úrovně jsou obvykle "
+"silnější. Při povýšení je jednotka také zcela vyléčena a všechna její "
+"postižení jsou odstraněna. Říká se tomu povýšení-zdravení."
 
 #: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
-msgstr ""
+msgstr "Přesuň svého bojovníka do vesnice."
 
 #: data/scenarios/tutorial/tutorial1.cfg:193
 msgid "Move your fighter onto a village"
-msgstr ""
+msgstr "Přesuň svého bojovníka do vesnice"
 
 #: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
-msgstr ""
+msgstr "Vesnice léči jednotky, které v nich pobývají."
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid "What happens when a unit moves onto a village?"
-msgstr ""
+msgstr "Co se stane, když se jednotka přesune do vesnice?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:208
 msgid ""
@@ -1379,10 +1478,17 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
+"Kdykoli se jednotka přesune do vesnice, zabere ji pro svou stranu. Tato "
+"činnost zabere všechny její zbývajícící pohyby. Vesnice přinášejí straně, "
+"které patří, řadu výhod, včetně příjmu jednoho zlatého za kolo a zmenšení "
+"celkových výdajů na vydržování jednotek o jeden zlatý za kolo. Celkový počet "
+"vesnic, jež ovládáš, se také zobrazuje nahoře ve stavovém řádku, vedle "
+"obrázku domu. Vesnice kromě ekonomických výhod mohou být využity i v bitvě. "
+"Vesnice léčí v nich umístěné jednotky o 8 životů za kolo."
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid "How do I heal when there aren't any villages nearby?"
-msgstr ""
+msgstr "Jak mám léčit, když poblíž nejsou žádné vesnice?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid ""
@@ -1393,12 +1499,21 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
 "all your units are healed fully."
 msgstr ""
+"Jsou způsoby, jak léčit i bez vesnic. Jednotka, která se během kola nepohne "
+"ani neútočí, se vyléčí o dva životy díky odpočinku. Avšak pokud na ni "
+"zaútočí nepřátelská jednotka, nemůže se vyléčit odpočinkem. Kromě toho "
+"některé jednotky léčí jednotky, jež je obklopují. Elfí šamanka je jedna "
+"takových jednotek; jednotky těsně vedle elfí šamanky se lečí o 4 životy za "
+"kolo. A konečně, když úspěšně dokončíš scénář, všechny tvé jednotky se zcela "
+"vyléčí."
 
 #: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
+"Nyní musíš porazit Merlu zmenšením počtu jejích životu na 0 či méně. Prostě "
+"opakovaně útoč."
 
 #: data/scenarios/tutorial/tutorial1.cfg:217
 msgid "Defeat Merle"
@@ -1411,6 +1526,9 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Oops! Pohnul jsi svým vůdcem z tvrze. Pamatuj, pokud tvůj vůdce není v "
+"tvrzi, nemůžeš verbovat. Také pamatuj, že když zemře, prohráváš. Abychom "
+"mohli pokračovat ve výcviku, teleportuji tě teď zpět do tvrze."
 
 #: data/scenarios/tutorial/tutorial1.cfg:248
 #: data/scenarios/tutorial/tutorial2.cfg:233
@@ -1418,6 +1536,8 @@ msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
+"Bohužel jsi prohrál, protože tvůj vůdce byl poražen. Snad sis z mých lekcí i "
+"tak něco odnesl."
 
 #: data/scenarios/tutorial/tutorial1.cfg:255
 #: data/scenarios/tutorial/tutorial2.cfg:240
@@ -1425,19 +1545,21 @@ msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
+"Bohužel jsi prohrál, protože ti došel vymezený čas. Snad sis z mých lekcí i "
+"tak něco odnesl."
 
 #: data/scenarios/tutorial/tutorial1.cfg:265
 msgid "You have successfully completed the first training scenario."
-msgstr ""
+msgstr "Úspěšně jsi dokončil první scénář výcviku."
 
 #: data/scenarios/tutorial/tutorial1.cfg:267
 #: data/scenarios/tutorial/tutorial2.cfg:252
 msgid "Hooray!"
-msgstr ""
+msgstr "Hurá!"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid "How do I know how to complete a scenario? Will you always tell me?"
-msgstr ""
+msgstr "Jak zjistím, jak dokončit nějaký scénář? Povíš mi to pokaždé?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:269
 msgid ""
@@ -1448,10 +1570,16 @@ msgid ""
 "conditions and defeat conditions, and if any of the conditions are met, the "
 "level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Někdy není zřejmé, jak dokončit scénář, jen z vyslechnutých rozhovorů. V "
+"takovém případě je třeba se podívat na úkoly scénáře, které se zobrazí po "
+"úvodním rozhovoru. Dostaneš se k němu i kliknutím na „Úkoly scénáře“ v menu. "
+"Úkoly scénáře je seznam podmínek vítězství a podmínek porážky. Je-li některá "
+"z nich splněna, scénář skončil. Doufejme, že to bude podmínka vítězství, jež "
+"byla splněna."
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid "What happens when I win a scenario?"
-msgstr ""
+msgstr "Co se stane, když vyhraji scénář?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:270
 msgid ""
@@ -1461,11 +1589,16 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Když zvítězíš ve scénáři, všechny tvé jednotky přežijí a jsou oživeny na "
+"plný počet životů; a nemusíš za ně za zbývající kola platit. Pokud navíc tvá "
+"armáda zůstává v oblasti, kde jsi zvítězil, všechny vesnice se ti hned poté "
+"vzdají. Avšak mezi scénáři ztrácíš 20% svého zlata."
 
 #: data/scenarios/tutorial/tutorial1.cfg:276
 #: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr ""
+"Chceš si znovu vyzkoušet některé z dovedností, jež ses naučil v této úrovni?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:278
 #: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:448
@@ -1475,7 +1608,7 @@ msgstr "Ano"
 #: data/scenarios/tutorial/tutorial1.cfg:280
 #: data/scenarios/tutorial/tutorial2.cfg:265
 msgid "I'm done reviewing skills!"
-msgstr ""
+msgstr "Skončil jsem s přezkušováním dovedností!"
 
 #: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
@@ -1483,16 +1616,20 @@ msgid ""
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
+"Přestože jsi dokončil svůj první scénář, tvůj výcvik ještě není u konce. "
+"Budeme pokračovat do dalšího scénáře, kde budeš bojovat proti mě v "
+"simulované bitvě."
 
 #: data/scenarios/tutorial/tutorial2.cfg:3
 msgid "Traits and Specialties"
-msgstr ""
+msgstr "Vlastnosti a schopnosti"
 
 #: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
+"Nyní budeš podroben obtížnější zkoušce. Musíš mě porazit v simulované bitvě."
 
 #: data/scenarios/tutorial/tutorial2.cfg:64
 msgid ""
@@ -1502,6 +1639,11 @@ msgid ""
 "Recall, select your fighter, then select 'Ok'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
+"Většinu scénářů můžeš vyhrát jednoduše poražením všech nepřátelských vůdců. "
+"Zvítěz v tomto scénáři nade mnou. Tvůj bojovník z přechozího scénáře ti v "
+"této bitvě může pomoci. Abys ho přivolal, klikni pravým tlačítkem myši na "
+"políčko hradu, vyber „Přivolej“, vyber svého bojovníka a zvol „OK“. Měl bys "
+"také naverbovat elfí bojovníky a lučištníky."
 
 #: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
@@ -1519,10 +1661,23 @@ msgid ""
 "@Victory\n"
 "Defeat Delfador"
 msgstr ""
+"@Získané dovednosti:\n"
+"Přivolávání\n"
+"Vlastnosti\n"
+"Zlato\n"
+"Denní doba\n"
+"Terén\n"
+"Odolnost\n"
+"Zvlášnosti\n"
+"Předměty\n"
+"Hra Wesnothu\n"
+"@Úkol:\n"
+"@Vítězství\n"
+"Poraž Delfadora"
 
 #: data/scenarios/tutorial/tutorial2.cfg:86
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr ""
+msgstr "Úspěšně jsi přivolal svého elfího bojovníka."
 
 #: data/scenarios/tutorial/tutorial2.cfg:88
 #: data/scenarios/tutorial/tutorial2.cfg:102
@@ -1858,7 +2013,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Pěkně jsi to vysvětlil! Ale..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -1882,31 +2037,31 @@ msgstr ""
 
 #: data/schedules.cfg:4
 msgid "Dawn"
-msgstr ""
+msgstr "Svítání"
 
 #: data/schedules.cfg:11 data/schedules.cfg:22 data/schedules.cfg:28
 msgid "Morning"
-msgstr ""
+msgstr "Dopoledne"
 
 #: data/schedules.cfg:37 data/schedules.cfg:43 data/schedules.cfg:59
 msgid "Afternoon"
-msgstr ""
+msgstr "Odpoledne"
 
 #: data/schedules.cfg:52 data/schedules.cfg:79 data/schedules.cfg:99
 msgid "Dusk"
-msgstr ""
+msgstr "Soumrak"
 
 #: data/schedules.cfg:70
 msgid "First Watch"
-msgstr ""
+msgstr "První hlídka"
 
 #: data/schedules.cfg:90
 msgid "Second Watch"
-msgstr ""
+msgstr "Druhá hlídka"
 
 #: data/schedules.cfg:110 data/schedules.cfg:116
 msgid "Underground"
-msgstr ""
+msgstr "Podzemí"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
@@ -1930,11 +2085,11 @@ msgstr "zkušeností"
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr ""
+msgstr "úroveň"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "pohyby"
 
 #: data/translations/english.cfg:2
 msgid "Easy"
@@ -2099,6 +2254,8 @@ msgstr "nikdy si nebere více než jeden zlaťák"
 #: data/translations/english.cfg:54
 msgid "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
+"Tato jednotka utrpí jen polovinu normálního poškození, pokud neiniciovala "
+"útok."
 
 #: data/translations/english.cfg:56
 msgid "minimum damage"
@@ -2413,7 +2570,7 @@ msgstr "Zeď jeskyně"
 
 #: data/translations/english.cfg:163
 msgid "Encampment"
-msgstr ""
+msgstr "Ležení"
 
 #: data/translations/english.cfg:166
 msgid "$name's Bridge,$name's Crossing"
@@ -3317,6 +3474,8 @@ msgid ""
 "are deceiving. With just a glance at their enemies, Cockatrices can turn "
 "them into stone!"
 msgstr ""
+"Na první pohled se tato mýtická hadupodobná stvoření zdají slabá, ale zdání "
+"klame. Bazilišci dokáží proměnit své nepřátele v kámen pouhým pohledem!"
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
@@ -3640,7 +3799,6 @@ msgid "Dwarvish Berserker"
 msgstr "Trpaslík berserk"
 
 #: data/units/Dwarvish_Berserker.cfg:16
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies. Once a "
@@ -3751,16 +3909,15 @@ msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:20
 msgid "runic hammer"
-msgstr ""
+msgstr "runové kladivo"
 
 #: data/units/Dwarvish_Runemaster.cfg:37
 msgid "Lightning bolt"
 msgstr "hromový úder"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
-#, fuzzy
 msgid "Dwarvish Sentinel"
-msgstr "Trpasličí těžkooděnec"
+msgstr "Trpasličí stráž"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
@@ -3770,7 +3927,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "Trpasličí silák"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -3816,7 +3973,6 @@ msgid "Dwarvish Thunderguard"
 msgstr "Trpasličí hromová stráž"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
-#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
@@ -3986,9 +4142,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "Elvish Lady"
-msgstr "Elfí lord"
+msgstr "Elfí paní"
 
 #: data/units/Elvish_Lady.cfg:16 data/units/Galleon.cfg:17
 msgid "dummy"
@@ -5617,31 +5772,31 @@ msgstr ""
 
 #: src/about.cpp:45
 msgid "+Core Developers"
-msgstr ""
+msgstr "+Kmenoví vývojáři"
 
 #: src/about.cpp:46
 msgid "-   Main Developer"
-msgstr ""
+msgstr "-   Hlavní vývojář"
 
 #: src/about.cpp:49
 msgid "-   Artwork and graphics designer"
-msgstr ""
+msgstr "-   Kresby a grafický design"
 
 #: src/about.cpp:53
 msgid "+Developers"
-msgstr ""
+msgstr "+Vývojáři"
 
 #: src/about.cpp:67
 msgid "+General Purpose Administrators"
-msgstr ""
+msgstr "+Administrátoři všeho možného"
 
 #: src/about.cpp:72
 msgid "+Artwork and graphics designers"
-msgstr ""
+msgstr "+Kresby a grafický design"
 
 #: src/about.cpp:95
 msgid "+Music"
-msgstr ""
+msgstr "+Hudba"
 
 #: src/about.cpp:102
 msgid "+Scenario Designers"
@@ -5649,87 +5804,87 @@ msgstr "+Tvůrci scénářů"
 
 #: src/about.cpp:111
 msgid "+Packagers"
-msgstr ""
+msgstr "+Tvůrci balíčků"
 
 #: src/about.cpp:119
 msgid "+Miscellaneous"
-msgstr ""
+msgstr "+Různé"
 
 #: src/about.cpp:125
 msgid "+Internationalization Manager"
-msgstr ""
+msgstr "+Správce internacionalizace"
 
 #: src/about.cpp:129
 msgid "+Brazilian Translation"
-msgstr ""
+msgstr "+Brazilský překlad"
 
 #: src/about.cpp:134
 msgid "+Catalan Translation"
-msgstr ""
+msgstr "+Katalánský překlad"
 
 #: src/about.cpp:139
 msgid "+Czech Translation"
-msgstr ""
+msgstr "+Český překlad"
 
 #: src/about.cpp:148
 msgid "+Danish Translation"
-msgstr ""
+msgstr "+Dánský překlad"
 
 #: src/about.cpp:152
 msgid "+Dutch Translation"
-msgstr ""
+msgstr "+Holandský překlad"
 
 #: src/about.cpp:156
 msgid "+Finnish Translation"
-msgstr ""
+msgstr "+Finský překlad"
 
 #: src/about.cpp:160
 msgid "+French Translation"
-msgstr ""
+msgstr "+Francouzský překlad"
 
 #: src/about.cpp:172
 msgid "+German Translation"
-msgstr ""
+msgstr "+Německý překlad"
 
 #: src/about.cpp:181
 msgid "+Hungarian Translation"
-msgstr ""
+msgstr "+Maďarský překlad"
 
 #: src/about.cpp:186
 msgid "+Italian Translation"
-msgstr ""
+msgstr "+Italský překlad"
 
 #: src/about.cpp:193
 msgid "+Norwegian Translation"
-msgstr ""
+msgstr "+Norský překlad"
 
 #: src/about.cpp:199
 msgid "+Polish Translation"
-msgstr ""
+msgstr "+Polský překlad"
 
 #: src/about.cpp:205
 msgid "+Portuguese Translation"
-msgstr ""
+msgstr "+Portugalský překlad"
 
 #: src/about.cpp:210
 msgid "+Slovak Translation"
-msgstr ""
+msgstr "+Slovenský překlad"
 
 #: src/about.cpp:214
 msgid "+Spanish Translation"
-msgstr ""
+msgstr "+Španělský překlad"
 
 #: src/about.cpp:222
 msgid "+Swedish Translation"
-msgstr ""
+msgstr "+Švédský překlad"
 
 #: src/about.cpp:229
 msgid "+Contributors"
-msgstr ""
+msgstr "+Přispěvatelé"
 
 #: src/about.cpp:237
 msgid "+ Bots"
-msgstr ""
+msgstr "+ Boti"
 
 #: src/about.cpp:264 src/help.cpp:2372 src/show_dialog.cpp:468
 msgid "Close"
@@ -5753,7 +5908,7 @@ msgstr "žádná"
 
 #: src/actions.cpp:318 src/actions.cpp:435
 msgid "base damage"
-msgstr ""
+msgstr "základní poškození"
 
 #: src/actions.cpp:328
 msgid "attacker resistance vs"
@@ -5765,11 +5920,11 @@ msgstr "zranitelnost útočníka vs."
 
 #: src/actions.cpp:360 src/actions.cpp:478 src/actions.cpp:487
 msgid "Doubled"
-msgstr ""
+msgstr "Zdvojnásobeno"
 
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
-msgstr ""
+msgstr "celkové poškození"
 
 #: src/actions.cpp:445
 msgid "defender resistance vs"
@@ -5781,7 +5936,7 @@ msgstr "zranitelnost obránce vs."
 
 #: src/actions.cpp:496
 msgid "Halved"
-msgstr ""
+msgstr "Zmenšeno na polovinu"
 
 #: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
 #: src/reports.cpp:115
@@ -5839,7 +5994,7 @@ msgstr "Uložit"
 
 #: src/dialogs.cpp:176
 msgid "Overwrite?"
-msgstr ""
+msgstr "Přepsat?"
 
 #: src/dialogs.cpp:177
 msgid "Save already exists. Do you want to overwrite it ?"
@@ -5863,7 +6018,7 @@ msgstr "#(Neplatné)"
 
 #: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
-msgstr ""
+msgstr "Tažení"
 
 #: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
@@ -6545,7 +6700,7 @@ msgstr "Epocha"
 
 #: src/multiplayer.cpp:348
 msgid "Unlimited"
-msgstr ""
+msgstr "Neomezeně"
 
 #: src/multiplayer.cpp:352
 msgid "Turns"
@@ -7259,6 +7414,9 @@ msgstr "Smazání souboru se nezdařilo."
 #~ msgstr ""
 #~ "&human-spearman.png,Pěšák,(nejsnažší);*&human-swordman.png,Šermíř;&human-"
 #~ "royalguard.png,Královská garda,(nejobtížnějsí)"
+
+#~ msgid "The Rise of Wesnoth"
+#~ msgstr "Úsvit Wesnothu"
 
 #~ msgid ""
 #~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
