@@ -87,9 +87,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 			while(res == REPLAY) {
 				state = recorder.get_save_info();
-				if(!recorder.empty()) {
-					recorder.start_replay();
-				}
 
 				res = play_level(units_data,game_config,scenario,
 				                 video,state,story);
@@ -383,13 +380,19 @@ int play_game(int argc, char** argv)
 
 			recorder = replay(state.replay_data);
 
+			std::cerr << "has starting position: " << (state.starting_pos.child("side") ? "yes" : "no") << "\n";
+
 			//only play replay data if the user has selected to view the replay,
 			//or if there is no starting position data to use.
 			if(!show_replay && state.starting_pos.child("side") != NULL) {
+				std::cerr << "setting replay to end...\n";
 				recorder.set_to_end();
-			}
+				if(!recorder.at_end())
+					std::cerr << "recorder is not at the end!!!\n";
+			} else {
 
-			if(!recorder.at_end()) {
+				recorder.start_replay();
+
 				//set whether the replay is to be skipped or not
 				if(show_replay) {
 					recorder.set_skip(0);

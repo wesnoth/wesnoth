@@ -460,9 +460,14 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			const gamemap::location loc(*child);
 
-			recruit_unit(map,team_num,units,state_of_game.available_units[val],loc);
-			state_of_game.available_units.erase(state_of_game.available_units.begin()+val);
-			current_team.spend_gold(game_config::recall_cost);
+			if(val >= 0 && val < int(state_of_game.available_units.size())) {
+				recruit_unit(map,team_num,units,state_of_game.available_units[val],loc);
+				state_of_game.available_units.erase(state_of_game.available_units.begin()+val);
+				current_team.spend_gold(game_config::recall_cost);
+			} else {
+				std::cerr << "illegal recall\n";
+				throw replay::error();
+			}
 		}
 
 		else if((child = cfg->child("move")) != NULL) {
