@@ -118,6 +118,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		gamemap::location new_hex = gui.hex_clicked_on(mousex,mousey);
 
+		if(new_hex.valid() == false) {
+			current_route.steps.clear();
+			gui.set_route(NULL);
+		}
+
 		//highlight the hex that is currently moused over
 		if(new_hex != last_hex) {
 			gui.highlight_hex(new_hex);
@@ -156,7 +161,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		HOTKEY_COMMAND command = HOTKEY_NULL;
 
 		if(new_left_button) {
-			const gamemap::location loc =gui.minimap_location_on(mousex,mousey);
+			const gamemap::location loc=gui.minimap_location_on(mousex,mousey);
 			if(loc.valid()) {
 				gui.scroll_to_tile(loc.x,loc.y,display::WARP);
 			}

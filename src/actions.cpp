@@ -866,16 +866,20 @@ size_t move_unit(display* disp, const gamemap& map,
 }
 
 void clear_shroud_loc(const gamemap& map, team& tm,
-                      const gamemap::location& loc)
+                      const gamemap::location& loc,
+                      std::vector<gamemap::location>* cleared)
 {
-	if(map.on_board(loc))
-		tm.clear_shroud(loc.x,loc.y);
-
-	static gamemap::location adj[6];
+	static gamemap::location adj[7];
 	get_adjacent_tiles(loc,adj);
+	adj[6] = loc;
 	for(int i = 0; i != 6; ++i) {
 		if(map.on_board(adj[i])) {
-			tm.clear_shroud(adj[i].x,adj[i].y);
+			if(tm.shrouded(adj[i].x,adj[i].y)) {
+				tm.clear_shroud(adj[i].x,adj[i].y);
+				if(cleared != NULL) {
+					cleared->push_back(adj[i]);
+				}
+			}
 		}
 	}
 }
@@ -884,10 +888,18 @@ void clear_shroud_unit(const gamemap& map, const game_data& gamedata,
                        const unit_map& units, const gamemap::location& loc,
                        std::vector<team>& teams, int team)
 {
+	std::vector<gamemap::location> cleared_locations;
+
 	paths p(map,gamedata,units,loc,teams,true,false);
 	for(paths::routes_map::const_iterator i = p.routes.begin();
 	    i != p.routes.end(); ++i) {
-		clear_shroud_loc(map,teams[team],i->first);
+		clear_shroud_loc(map,teams[team],i->first,&cleared_locations);
+	}
+
+	for(std::vector<gamemap::location>::const_iterator it =
+	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
+		static const std::string sighted("sighted");
+		game_events::fire(sighted,*it,loc);
 	}
 }
 
