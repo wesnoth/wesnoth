@@ -93,13 +93,11 @@ namespace {
 	const config find_ref(const std::string& id, const config& resol_cfg) {
 		for(config::all_children_iterator i = resol_cfg.ordered_begin();
 		    i != resol_cfg.ordered_end(); i++) {
-			//std::cerr << "Looking at " << *(*i).first << " " << (*(*i).second)["id"] << "\n";
 			if ((*(*i).second)["id"] == id) {
 				//std::cerr << "Found a " << *(*i).first << "\n";
 				return *(*i).second;
 			}
 			// recursively look in children
-			//std::cerr << "Looking in " << *(*i).first << " " << (*(*i).second)["id"] << "\n";
 			const config c = find_ref(id, *(*i).second);
 			if (!c["id"].empty()) {
 				return c;
@@ -109,41 +107,50 @@ namespace {
 		return config();
 	}
 
-	config& resolve_rects(const config& cfg, config* resol_cfg = NULL, bool is_resolution = false) {
-		config* newcfg = new config();
+	void do_resolve_rects(const config& cfg, config& resolved_config,
+			      config* resol_cfg = NULL) {
 
 		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
-			newcfg->add_child(*value.first,
-					  resolve_rects(*value.second,
-							is_resolution ? newcfg : resol_cfg,
-							(*value.first=="resolution") ? true : false));
+			config& childcfg = resolved_config.add_child(*value.first);
+			do_resolve_rects(*value.second, childcfg,
+					 (*value.first=="resolution") ? &childcfg : resol_cfg);
 		}
 
 		// copy all key/values
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
-			newcfg->values[j->first] = j->second;
+			resolved_config.values[j->first] = j->second;
 		}
 
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
-			//std::cerr << ">> Looking for " << cfg["ref"] << "\n";
-			const config ref = find_ref (cfg["ref"], *resol_cfg);
-
-			if (ref["id"].empty()) {
-				std::cerr << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
-			} else if (ref["rect"].empty()) {
-				std::cerr << "Reference to id \"" << cfg["ref"] <<
-					"\" which does not have a \"rect\"\n";
+			if (resol_cfg == NULL) {
+				std::cerr << "Use of ref= outside a [resolution] block\n";
 			} else {
-				ref_rect = read_rect(ref);
+				//std::cerr << ">> Looking for " << cfg["ref"] << "\n";
+				const config ref = find_ref (cfg["ref"], *resol_cfg);
+
+				if (ref["id"].empty()) {
+					std::cerr << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
+				} else if (ref["rect"].empty()) {
+					std::cerr << "Reference to id \"" << cfg["ref"] <<
+						"\" which does not have a \"rect\"\n";
+				} else {
+					ref_rect = read_rect(ref);
+				}
 			}
 		}
 		// resolve the rect value to absolute coordinates
 		if (!cfg["rect"].empty()) {
-			newcfg->values["rect"] = resolve_rect(cfg["rect"]);
+			resolved_config.values["rect"] = resolve_rect(cfg["rect"]);
 		}
+	}
+
+	config& resolve_rects(const config& cfg) {
+		config* newcfg = new config();
+
+		do_resolve_rects(cfg, *newcfg);
 
 		return *newcfg;
 	}
