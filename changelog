@@ -11,7 +11,7 @@ CVS HEAD:
    * preparations for mountain and desert village graphics
    * new attack icons: bone arrow stab, cleaver, morning star
  * scenario fixes for 'Eastern Invasion' campaign:
-   * Weldyn Under Attack
+   * Weldyn Under Attack (#11051)
    * Capture
  * scenario fixes for 'Son of the Black Eye' campaign:
    * Saving Inarix
@@ -52,7 +52,6 @@ CVS HEAD:
    * Deathblade
  * changed Dragoon's and Cavalier's pistol to crossbow.
  * renamed 'Saurian' to 'Saurian Skirmisher' and 'Saurian Warrior' to 'Saurian Ambusher'
- * fixed units incorrectly not using the spear icon
  * language fixes and polishing (english)
  * revised MANUAL
    * english
@@ -78,6 +77,7 @@ CVS HEAD:
  * give the Drakes music in Multiplayer
  * new rectangle syntax allowing width/height and relative positionning in themes
  * new --enable-tinygui configure flag for adventurous PDA users
+ * fixed units incorrectly not using the spear icon
  * fixed missing diagonal projectiles on several units
  * fixed Gwiti's animation (#10926)
  * fixed translations being searched for in installdir when running in builddir
@@ -85,10 +85,11 @@ CVS HEAD:
  * fixed code for handling objects (#10904, #10954, #10963)
  * fixed many untranslatable strings
  * fixed layering of desert and dirt
- * fixed multiplayer setup screen being broken on low resolutions
+ * fixed multiplayer setup screen being broken on low resolutions (#10919)
  * fixed resizing multiplayer lobby creating some graphic glitches
  * fixed --enable-lite for current image location
  * fixed wmlxgettext not working properly with msdos line-endings in multiline strings
+ * fixed documentation (#10999)
  * fixed zoom behavior (#9890)
  * fixed several crashes (#10959, #11102, #11115, #11158)
  * improved 320x240 resolution support
