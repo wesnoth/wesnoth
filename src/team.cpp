@@ -94,7 +94,7 @@ team::team_info::team_info(const config& cfg)
 
 	const std::string& enemies_list = cfg["enemy"];
 	if(!enemies_list.empty()) {
-		std::vector<std::string> venemies = config::split(enemies_list);
+		std::vector<std::string> venemies = utils::split(enemies_list);
 		for(std::vector<std::string>::const_iterator i = venemies.begin(); i != venemies.end(); ++i) {
 			enemies.push_back(atoi(i->c_str()));
 		}
@@ -156,7 +156,7 @@ team::team_info::team_info(const config& cfg)
 		village_value = atof(village_val.c_str());
 	}
 
-	std::vector<std::string> recruits = config::split(cfg["recruit"]);
+	std::vector<std::string> recruits = utils::split(cfg["recruit"]);
 	for(std::vector<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
 		can_recruit.insert(*i);
 	}
@@ -166,7 +166,7 @@ team::team_info::team_info(const config& cfg)
 		recruit_pattern = global_ai_params["recruitment_pattern"];
 	}
 
-	recruitment_pattern = config::split(recruit_pattern);
+	recruitment_pattern = utils::split(recruit_pattern);
 
 	//default recruitment pattern is to buy 2 fighters for every 1 archer
 	if(recruitment_pattern.empty()) {
@@ -361,7 +361,7 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 	for(std::vector<config>::const_iterator i = info_.ai_params.begin(); i != info_.ai_params.end(); ++i) {
 		const std::string& time_of_day = (*i)["time_of_day"];
 		if(time_of_day.empty() == false) {
-			const std::vector<std::string>& times = config::split(time_of_day);
+			const std::vector<std::string>& times = utils::split(time_of_day);
 			if(std::count(times.begin(),times.end(),tod.id) == 0) {
 				continue;
 			}
@@ -371,9 +371,9 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 		if(turns.empty() == false) {
 			bool matched = false;
 
-			const std::vector<std::string>& turns_list = config::split(turns);
+			const std::vector<std::string>& turns_list = utils::split(turns);
 			for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end(); ++j) {
-				const std::pair<int,int> range = config::parse_range(*j);
+				const std::pair<int,int> range = utils::parse_range(*j);
 				if(turn >= range.first && turn <= range.second) {
 					matched = true;
 					break;

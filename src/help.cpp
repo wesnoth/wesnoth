@@ -735,7 +735,7 @@ bool section_is_referenced(const std::string &section_id, const config &cfg) {
 	const config *toplevel = cfg.child("toplevel");
 	if (toplevel != NULL) {
 		const std::vector<std::string> toplevel_refs
-			= config::quoted_split((*toplevel)["sections"]);
+			= utils::quoted_split((*toplevel)["sections"]);
 		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), section_id)
 			!= toplevel_refs.end()) {
 			return true;
@@ -744,7 +744,7 @@ bool section_is_referenced(const std::string &section_id, const config &cfg) {
 	for (config::const_child_itors itors = cfg.child_range("section");
 		 itors.first != itors.second; itors.first++) {
 		const std::vector<std::string> sections_refd
-			= config::quoted_split((*(*itors.first))["sections"]);
+			= utils::quoted_split((*(*itors.first))["sections"]);
 		if (std::find(sections_refd.begin(), sections_refd.end(), section_id)
 			!= sections_refd.end()) {
 			return true;
@@ -757,7 +757,7 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg) {
 	const config *toplevel = cfg.child("toplevel");
 	if (toplevel != NULL) {
 		const std::vector<std::string> toplevel_refs
-			= config::quoted_split((*toplevel)["topics"]);
+			= utils::quoted_split((*toplevel)["topics"]);
 		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), topic_id)
 			!= toplevel_refs.end()) {
 			return true;
@@ -766,7 +766,7 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg) {
 	for (config::const_child_itors itors = cfg.child_range("section");
 		 itors.first != itors.second; itors.first++) {
 		const std::vector<std::string> topics_refd
-			= config::quoted_split((*(*itors.first))["topics"]);
+			= utils::quoted_split((*(*itors.first))["topics"]);
 		if (std::find(topics_refd.begin(), topics_refd.end(), topic_id)
 			!= topics_refd.end()) {
 			return true;
@@ -782,7 +782,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				  << std::endl;
 	}
 	else if (section_cfg != NULL) {
-		const std::vector<std::string> sections = config::quoted_split((*section_cfg)["sections"]);
+		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
 		const std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"];
 		if (level != 0) {
 			if (!is_valid_id(id)) {
@@ -814,7 +814,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			generate_sections((*section_cfg)["generator"]);
 		std::transform(generated_sections.begin(), generated_sections.end(),
 					   std::back_inserter(sec.sections), create_section());
-		const std::vector<std::string> topics = config::quoted_split((*section_cfg)["topics"]);
+		const std::vector<std::string> topics = utils::quoted_split((*section_cfg)["topics"]);
 		// Find all topics in this section.
 		for (it = topics.begin(); it != topics.end(); it++) {
 			config const *topic_cfg = help_cfg->find_child("topic", "id", *it);
@@ -1300,7 +1300,7 @@ struct terrain_topic_generator: topic_generator
 			}
 			string_map sm;
 			sm["terrains"] = alias_ss.str();
-			ss << config::interpolate_variables_into_string(
+			ss << utils::interpolate_variables_into_string(
 				_("This terrain acts as $terrains for movement and defense purposes."), &sm);
 			if (aliased_terrains.size() > 1)
 				ss << " " << _("The terrain with the best modifier is chosen automatically.");
@@ -1386,7 +1386,7 @@ std::string generate_about_text() {
 	std::vector<std::string>::iterator it =
 		std::remove(res_lines.begin(), res_lines.end(), "");
 	std::vector<std::string> res_lines_rem(res_lines.begin(), it);
-	std::string text = config::join(res_lines_rem, '\n');
+	std::string text = utils::join(res_lines_rem, '\n');
 	return text;
 }
 
@@ -2449,7 +2449,7 @@ SDL_Color string_to_color(const std::string &s) {
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,
 										const unsigned width) {
 	std::string wrapped = font::word_wrap_text(s, font_size, width);
-	std::vector<std::string> parts = config::split(wrapped, '\n', 0);
+	std::vector<std::string> parts = utils::split(wrapped, '\n', 0);
 	return parts;
 }
 

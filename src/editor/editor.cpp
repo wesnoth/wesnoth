@@ -546,7 +546,7 @@ std::string map_editor::load_map(const std::string filename) {
 	if (!load_successful) {
 		const std::string failed_msg = _("Load failed: ");
 		const std::string show_msg = failed_msg +
-			config::interpolate_variables_into_string(msg, &symbols);
+			utils::interpolate_variables_into_string(msg, &symbols);
 		gui::show_dialog(gui_, NULL, "", show_msg, gui::OK_ONLY);
 		throw load_map_exception();
 	}

@@ -82,7 +82,7 @@ int main(int argc, char** argv)
 			if(arg+1 != argc) {
 				++arg;
 				const std::string val(argv[arg]);
-				const std::vector<std::string> res = config::split(val,'x');
+				const std::vector<std::string> res = utils::split(val, 'x');
 				if(res.size() == 2) {
 					const int xres = lexical_cast_default<int>(res.front());
 					const int yres = lexical_cast_default<int>(res.back());

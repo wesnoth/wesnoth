@@ -99,8 +99,8 @@ unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false)
 unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg["num_traits"].c_str())),
                                           not_living_(cfg["not_living"] == "yes")
 {
-	names_[MALE] = config::split(cfg["male_names"]);
-	names_[FEMALE] = config::split(cfg["female_names"]);
+	names_[MALE] = utils::split(cfg["male_names"]);
+	names_[FEMALE] = utils::split(cfg["female_names"]);
 
 	chain_size_ = atoi(cfg["markov_chain_size"].c_str());
 	if(chain_size_ <= 0)

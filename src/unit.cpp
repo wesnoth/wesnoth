@@ -507,7 +507,7 @@ bool unit::matches_filter(const config& cfg) const
 		if(std::find(type.begin(),type.end(),',') != type.end() &&
 		   std::search(type.begin(),type.end(),this_type.begin(),
 			           this_type.end()) != type.end()) {
-			const std::vector<std::string>& vals = config::split(type);
+			const std::vector<std::string>& vals = utils::split(type);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
 				return false;
@@ -535,7 +535,7 @@ bool unit::matches_filter(const config& cfg) const
 	if(side.empty() == false && this->side() != atoi(side.c_str()))
 	  {
 		if(std::find(side.begin(),side.end(),',') != side.end()) {
-			const std::vector<std::string>& vals = config::split(side);
+			const std::vector<std::string>& vals = utils::split(side);
 
 			std::ostringstream s;
 			s << (this->side());
@@ -694,7 +694,7 @@ void unit::read(const game_data& data, const config& cfg)
 		}
 	}
 
-	overlays_ = config::split(cfg["overlays"]);
+	overlays_ = utils::split(cfg["overlays"]);
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
 	}
@@ -764,7 +764,7 @@ void unit::write(config& cfg) const
 	cfg.add_child("variables",variables_);
 	cfg.add_child("status",status_flags);
 
-	cfg["overlays"] = config::join(overlays_);
+	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["user_description"] = description_;
 	cfg["description"] = underlying_description_;
@@ -1005,7 +1005,7 @@ void unit::add_modification(const std::string& type,
 		//see if the effect only applies to certain unit types
 		const std::string& type_filter = (**i.first)["unit_type"];
 		if(type_filter.empty() == false) {
-			const std::vector<std::string>& types = config::split(type_filter);
+			const std::vector<std::string>& types = utils::split(type_filter);
 			if(std::find(types.begin(),types.end(),this->type().name()) == types.end()) {
 				continue;
 			}

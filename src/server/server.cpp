@@ -5,6 +5,7 @@
 #include "../network.hpp"
 #include "../util.hpp"
 #include "../wassert.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "SDL.h"
 
@@ -367,7 +368,7 @@ void server::process_login(const network::connection sock, const config& data, c
 
 	//check the username is valid (all alpha-numeric or space)
 	std::string username = (*login)["username"];
-	config::strip(username);
+	utils::strip(username);
 	const int alnum = std::count_if(username.begin(),username.end(),isalnum);
 	const int spaces = std::count(username.begin(),username.end(),' ');
 	if((alnum + spaces != username.size()) || spaces == username.size() || username.empty()) {

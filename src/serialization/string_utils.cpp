@@ -13,6 +13,7 @@
 */
 
 #include <cctype>
+#include <sstream>
 
 #include "serialization/string_utils.hpp"
 
@@ -131,11 +132,108 @@ std::string interpolate_variables_into_string(std::string const &str, string_map
 	do_interpolation(res, 0, symbols);
 
 	//remove any pipes in the string, as they are used simply to seperate variables
-	res.erase(std::remove(res.begin(),res.end(),'|'),res.end());
+	res.erase(std::remove(res.begin(), res.end(), '|'), res.end());
 
 	return res;
 }
 
+//prepend all special characters with a backslash
+//special characters are:
+//#@{}+-,\*
+std::string &escape(std::string &str)
+{
+	std::string::size_type pos = 0;
+	do {
+		pos = str.find_first_of("#@{}+-,\\*", pos);
+		if (pos == std::string::npos)
+			break;
+		str.insert(pos, 1, '\\');
+		pos += 2;
+	} while (pos < str.size());
+	return str;
+}
 
+// remove all escape characters (backslash)
+std::string &unescape(std::string &str)
+{
+	std::string::size_type pos = 0;
+	do {
+		pos = str.find('\\', pos);
+		if (pos == std::string::npos)
+			break;
+		str.erase(pos, 1);
+		++pos;
+	} while (pos < str.size());
+	return str;
+}
+
+std::string join(std::vector< std::string > const &v, char c)
+{
+	std::stringstream str;
+	for(std::vector< std::string >::const_iterator i = v.begin(); i != v.end(); ++i) {
+		str << *i;
+		if (i + 1 != v.end())
+			str << c;
+	}
+
+	return str.str();
+}
+
+//identical to split(), except it does not split when it otherwise
+//would if the previous character was identical to the parameter 'quote'.
+//i.e. it does not split quoted commas.
+//this method was added to make it possible to quote user input,
+//particularly so commas in user input will not cause visual problems in menus.
+//why not change split()? that would change the methods post condition.
+std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
+{
+	std::vector<std::string> res;
+
+	std::string::const_iterator i1 = val.begin();
+	std::string::const_iterator i2 = val.begin();
+
+	while (i2 != val.end()) {
+		if (*i2 == quote) {
+			// ignore quoted character
+			++i2;
+			if (i2 != val.end()) ++i2;
+		} else if (*i2 == c) {
+			std::string new_val(i1, i2);
+			if (flags & STRIP_SPACES)
+				strip(new_val);
+			if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+				res.push_back(new_val);
+			++i2;
+			if (flags & STRIP_SPACES) {
+				while(i2 != val.end() && *i2 == ' ')
+					++i2;
+			}
+
+			i1 = i2;
+		} else {
+			++i2;
+		}
+	}
+
+	std::string new_val(i1, i2);
+	if (flags & STRIP_SPACES)
+		strip(new_val);
+	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
+		res.push_back(new_val);
+
+	return res;
+}
+
+std::pair< int, int > parse_range(std::string const &str)
+{
+	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
+	const std::string a(str.begin(), dash);
+	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	std::pair<int,int> res(atoi(a.c_str()), atoi(b.c_str()));
+	if (res.second < res.first)
+		res.second = res.first;
+
+	return res;
+}
 
 }

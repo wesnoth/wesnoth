@@ -146,7 +146,7 @@ attack_type::attack_type(const config& cfg)
 		if(dir == "") {
 			animation_.push_back(unit_animation(**an));
 		} else {
-			const std::vector<std::string>& directions = config::split(dir);
+			const std::vector<std::string>& directions = utils::split(dir);
 			for(std::vector<std::string>::const_iterator i = directions.begin(); i != directions.end(); ++i) {
 				const gamemap::location::DIRECTION d = gamemap::location::parse_direction(*i);
 				if(d != gamemap::location::NDIRECTIONS) {
@@ -569,7 +569,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		gender_types_[unit_race::FEMALE] = new unit_type(*female_cfg,mv_types,races,traits);
 	}
 
-	const std::vector<std::string> genders = config::split(cfg["gender"]);
+	const std::vector<std::string> genders = utils::split(cfg["gender"]);
 	for(std::vector<std::string>::const_iterator i = genders.begin();
 	    i != genders.end(); ++i) {
 		if(*i == "male") {
@@ -591,7 +591,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		race_ = &dummy_race;
 	}
 
-	abilities_ = config::split(cfg_["ability"]);
+	abilities_ = utils::split(cfg_["ability"]);
 
 	//if the string was empty, split will give us one empty string in the list,
 	//remove it.
@@ -868,7 +868,7 @@ std::vector<std::string> unit_type::advances_to() const
 	if(val == "null" || val == "")
 		return std::vector<std::string>();
 	else
-		return config::split(val);
+		return utils::split(val);
 }
 
 const std::string& unit_type::usage() const

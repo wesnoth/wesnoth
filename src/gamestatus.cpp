@@ -208,7 +208,7 @@ player_info read_player(const game_data& data, const config* cfg)
 
 	const std::string& can_recruit_str = (*cfg)["can_recruit"];
 	if(can_recruit_str != "") {
-		const std::vector<std::string> can_recruit = config::split(can_recruit_str);
+		const std::vector<std::string> can_recruit = utils::split(can_recruit_str);
 		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
 	}
 

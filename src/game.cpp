@@ -392,7 +392,7 @@ game_controller::game_controller(int argc, char** argv, bool use_sound)
 			if(arg_+1 != argc_) {
 				++arg_;
 				const std::string val(argv_[arg_]);
-				const std::vector<std::string> res = config::split(val,'x');
+				const std::vector<std::string> res = utils::split(val, 'x');
 				if(res.size() == 2) {
 					const int xres = lexical_cast_default<int>(res.front());
 					const int yres = lexical_cast_default<int>(res.back());
@@ -650,7 +650,7 @@ bool game_controller::play_multiplayer_mode()
    			continue;
    		}
 
-   		std::vector<std::string> name_value = config::split(val,'=');
+   		std::vector<std::string> name_value = utils::split(val, '=');
    		if(name_value.size() > 2) {
    			std::cerr << "invalid argument '" << val << "'\n";
    			return false;
@@ -679,7 +679,7 @@ bool game_controller::play_multiplayer_mode()
    			} else if(last_digit && name_head == "--side") {
    				side_types[side] = value;
    			} else if(last_digit && name_head == "--parm") {
-   				const std::vector<std::string> name_value = config::split(value,':');
+   				const std::vector<std::string> name_value = utils::split(value, ':');
    				if(name_value.size() != 2) {
    					std::cerr << "argument to '" << name << "' must be in the format name:value\n";
    					return false;
@@ -985,9 +985,9 @@ bool game_controller::new_campaign()
 	state_.scenario = campaign["first_scenario"];
 
 	const std::string difficulty_descriptions = campaign["difficulty_descriptions"];
-	std::vector<std::string> difficulty_options = config::split(difficulty_descriptions,';');
+	std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
 
-	const std::vector<std::string> difficulties = config::split(campaign["difficulties"]);
+	const std::vector<std::string> difficulties = utils::split(campaign["difficulties"]);
 
 	if(difficulties.empty() == false) {
 		if(difficulty_options.size() != difficulties.size()) {
@@ -1058,7 +1058,7 @@ void game_controller::download_campaigns()
 		return;
 	}
 
-	const std::vector<std::string> items = config::split(host,':');
+	const std::vector<std::string> items = utils::split(host, ':');
 	host = items.front();
 
 	try {

@@ -30,7 +30,7 @@ std::string random_generate_map(const std::string& parms, const config* cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
-	std::vector<std::string> parameters = config::split(parms,' ');
+	std::vector<std::string> parameters = utils::split(parms, ' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
@@ -45,7 +45,7 @@ config random_generate_scenario(const std::string& parms, const config* cfg)
 {
 	//the first token is the name of the generator, tokens after
 	//that are arguments to the generator
-	std::vector<std::string> parameters = config::split(parms,' ');
+	std::vector<std::string> parameters = utils::split(parms, ' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
 		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
@@ -526,7 +526,7 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 std::string generate_name(const unit_race& name_generator, const std::string& id, std::string* base_name=NULL,
 						  std::map<std::string,std::string>* additional_symbols=NULL)
 {
-	const std::vector<std::string>& options = config::split(string_table[id]);
+	const std::vector<std::string>& options = utils::split(string_table[id]);
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
 		LOG_NG << "calling name generator...\n";
@@ -546,7 +546,7 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 
 		(*additional_symbols)["name"] = name;
 		LOG_NG << "interpolation variables into '" << options[choice] << "'\n";
-		return config::interpolate_variables_into_string(options[choice],additional_symbols);
+		return utils::interpolate_variables_into_string(options[choice], additional_symbols);
 	}
 
 	return "";
@@ -1007,7 +1007,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 					}
 
 					if(direction != -1) {
-						const std::vector<std::string> items = config::split(convert_to_bridge);
+						const std::vector<std::string> items = utils::split(convert_to_bridge);
 						if(size_t(direction) < items.size() && items[direction].empty() == false) {
 							terrain[x][y] = items[direction][0];
 						}

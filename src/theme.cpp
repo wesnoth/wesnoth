@@ -37,7 +37,7 @@ namespace {
 
 	_rect read_rect(const config& cfg) {
 		_rect rect = { 0, 0, 0, 0 };
-		const std::vector<std::string> items = config::split(cfg["rect"].c_str());
+		const std::vector<std::string> items = utils::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
 			rect.x1 = atoi(items[0].c_str());
 
@@ -67,7 +67,7 @@ namespace {
 	std::string resolve_rect(const std::string& rect_str) {
 		_rect rect = { 0, 0, 0, 0 };
 		std::stringstream resolved;
-		const std::vector<std::string> items = config::split(rect_str.c_str());
+		const std::vector<std::string> items = utils::split(rect_str.c_str());
 		if(items.size() >= 1) {
 			rect.x1 = compute(items[0], ref_rect.x1, ref_rect.x2);
 			resolved << rect.x1;
@@ -411,7 +411,7 @@ theme::menu::menu() : context_(false)
 theme::menu::menu(const config& cfg) : object(cfg), context_(cfg["is_context_menu"] == "true"),
                                        title_(cfg["title"] + cfg["title_literal"]),
 									   image_(cfg["image"]),
-									   items_(config::split(cfg["items"]))
+									   items_(utils::split(cfg["items"]))
 {}
 
 bool theme::menu::is_context() const { return context_; }

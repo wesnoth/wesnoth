@@ -13,6 +13,7 @@
 #include "../map.hpp"
 #include "../config.hpp"
 #include "../util.hpp"
+#include "serialization/string_utils.hpp"
 
 #include "map_manip.hpp"
 
@@ -192,7 +193,7 @@ get_component(const gamemap &map, const gamemap::location &start_loc) {
 std::string resize_map(const gamemap &map, const unsigned new_w,
 					   const unsigned new_h, const gamemap::TERRAIN fill_with) {
 	std::string str_map = map.write();
-	std::vector<std::string> lines = config::split(str_map, '\n');
+	std::vector<std::string> lines = utils::split(str_map, '\n');
 	bool map_changed = false;
 	const unsigned old_w = (unsigned)map.x();
 	const unsigned old_h = (unsigned)map.y();
@@ -209,7 +210,7 @@ std::string resize_map(const gamemap &map, const unsigned new_w,
 		map_changed = true;
 	}
 	if (map_changed) {
-		return config::join(lines, '\n');
+		return utils::join(lines, '\n');
 	}
 	else {
 		return "";
@@ -222,7 +223,7 @@ std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
 	if (str_map == "") {
 		return str_map;
 	}
-	std::vector<std::string> lines = config::split(str_map, '\n');
+	std::vector<std::string> lines = utils::split(str_map, '\n');
 	std::vector<std::string> new_lines;
 	if (axis == FLIP_Y) {
 		if (is_even(lines[0].size())) {
@@ -249,7 +250,7 @@ std::string flip_map(const gamemap &map, const FLIP_AXIS axis) {
 	else {
 		new_lines = lines;
 	}
-	return config::join(new_lines, '\n');
+	return utils::join(new_lines, '\n');
 }
 
 bool valid_mapdata(const std::string &data, const config &cfg) {

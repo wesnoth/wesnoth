@@ -27,10 +27,11 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "serialization/preprocessor.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
 #include "wesconfig.h"
+#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 
 #define ERR_CF lg::err(lg::config)
 #define WRN_CF lg::warn(lg::config)
@@ -290,7 +291,7 @@ void config::read(const std::string& data,
 					//we strip it away, since it simply indicates that this value is translatable.
 					if(value.empty() == false && std::count(value.begin(),value.end(),'_') == 1) {
 						std::string val = value;
-						if(strip(val) == "_") {
+						if (utils::strip(val) == "_") {
 							value = "";
 							translatable = true;
 						}
@@ -319,8 +320,8 @@ void config::read(const std::string& data,
 					//see if this is a CSV list=CSV list style assignment (e.g. x,y=5,8)
 					std::vector<std::string> vars, values;
 					if(std::count(var.begin(),var.end(),',') > 0) {
-						vars = config::split(var);
-						values = config::split(value);
+						vars = utils::split(var);
+						values = utils::split(value);
 					} else {
 						vars.push_back(var);
 						values.push_back(value);
@@ -352,7 +353,7 @@ void config::read(const std::string& data,
 							}
 
 							if(has_quotes == false) {
-								strip(value);
+								utils::strip(value);
 							}
 
 							if(n < vars.size()) {
@@ -911,213 +912,13 @@ const config* config::find_child(const std::string& key,
 		return NULL;
 }
 
-std::string config::join(const std::vector<std::string>& v, char c)
-{
-	std::stringstream str;
-	for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
-		str << *i;
-		if(i+1 != v.end()) {
-			str << c;
-		}
-	}
-
-	return str.str();
-}
-
-std::vector<std::string> config::split(const std::string& val, char c, int flags)
-{
-	std::vector<std::string> res;
-
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2 = val.begin();
-
-	while(i2 != val.end()) {
-		if(*i2 == c) {
-			std::string new_val(i1,i2);
-			if(flags & STRIP_SPACES)
-				strip(new_val);
-			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
-			++i2;
-			if(flags & STRIP_SPACES) {
-				while(i2 != val.end() && *i2 == ' ')
-					++i2;
-			}
-
-			i1 = i2;
-		} else {
-			++i2;
-		}
-	}
-
-	std::string new_val(i1,i2);
-	if(flags & STRIP_SPACES)
-		strip(new_val);
-	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
-
-	return res;
-}
-
-//identical to split(), except it does not split when it otherwise
-//would if the previous character was identical to the parameter 'quote'.
-//i.e. it does not split quoted commas.
-//this method was added to make it possible to quote user input,
-//particularly so commas in user input will not cause visual problems in menus.
-//why not change split()? that would change the methods post condition.
-std::vector<std::string> config::quoted_split(const std::string& val, char c, int flags, char quote)
-{
-	std::vector<std::string> res;
-
-	std::string::const_iterator i1 = val.begin();
-	std::string::const_iterator i2 = val.begin();
-
-	while(i2 != val.end()) {
-		if(*i2 == quote) {
-			// ignore quoted character
-			++i2;
-			if(i2 != val.end()) ++i2;
-		} else if(*i2 == c) {
-			std::string new_val(i1,i2);
-			if(flags & STRIP_SPACES)
-				strip(new_val);
-			if(!(flags & REMOVE_EMPTY) || !new_val.empty())
-				res.push_back(new_val);
-			++i2;
-			if(flags & STRIP_SPACES) {
-				while(i2 != val.end() && *i2 == ' ')
-					++i2;
-			}
-
-			i1 = i2;
-		} else {
-			++i2;
-		}
-	}
-
-	std::string new_val(i1,i2);
-	if(flags & STRIP_SPACES)
-		strip(new_val);
-	if(!(flags & REMOVE_EMPTY) || !new_val.empty())
-		res.push_back(new_val);
-
-	return res;
-}
-
-std::pair<int,int> config::parse_range(const std::string& str)
-{
-	const std::string::const_iterator dash = std::find(str.begin(),str.end(),'-');
-	const std::string a(str.begin(),dash);
-	const std::string b = dash != str.end() ? std::string(dash+1,str.end()) : a;
-	std::pair<int,int> res(atoi(a.c_str()),atoi(b.c_str()));
-	if(res.second < res.first)
-		res.second = res.first;
-
-	return res;
-}
-
-//make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
-//all consider these differently.
-bool config::notspace(char c) { return !portable_isspace(c); }
-
-//prepend all special characters with a backslash
-//special characters are:
-//#@{}+-,\*
-std::string& config::escape(std::string& str)
-{
-	if(!str.empty()) {
-		std::string::size_type pos = 0;
-
-		do {
-			pos = str.find_first_of("#@{}+-,\\*",pos);
-			if(pos != std::string::npos) {
-				str.insert(pos,1,'\\');
-				pos += 2;
-			}
-		} while(pos < str.size() && pos != std::string::npos);
-	}
-	return str;
-}
-// remove all escape characters (backslash)
-std::string& config::unescape(std::string& str)
-{
-	std::string::size_type pos = 0;
-
-	do {
-		pos = str.find('\\',pos);
-		if(pos != std::string::npos) {
-			str.erase(pos,1);
-			++pos;
-		}
-	} while(pos < str.size() && pos != std::string::npos);
-	return str;
-}
-std::string& config::strip(std::string& str)
-{
-	//if all the string contains is whitespace, then the whitespace may
-	//have meaning, so don't strip it
-	const std::string::iterator it=std::find_if(str.begin(),str.end(),notspace);
-	if(it == str.end())
-		return str;
-
-	str.erase(str.begin(),it);
-	str.erase(std::find_if(str.rbegin(),str.rend(),notspace).base(),str.end());
-
-	return str;
-}
-
+#if 0
 bool config::has_value(const std::string& values, const std::string& val)
 {
 	const std::vector<std::string>& vals = split(values);
 	return std::count(vals.begin(),vals.end(),val) > 0;
 }
-
-namespace {
-
-bool not_id(char c)
-{
-	return !isdigit(c) && !isalpha(c) && c != '.' && c != '_';
-}
-
-void do_interpolation(std::string& res, size_t npos, const string_map* m)
-{
-	LOG_CF << "doing interpolation into '" << res << "': " << npos << "\n";
-	const std::string::iterator i = std::find(res.begin()+npos,res.end(),'$');
-	if(i == res.end() || i+1 == res.end()) {
-		return;
-	}
-
-	npos = i - res.begin();
-
-	const std::string::iterator end = std::find_if(i+1,res.end(),not_id);
-
-	const std::string key(i+1,end);
-	res.erase(i,end);
-
-	if(m != NULL) {
-		const string_map::const_iterator itor = m->find(key);
-		if(itor != m->end()) {
-			res.insert(npos,itor->second);
-		}
-	} else {
-		res.insert(npos,game_events::get_variable_const(key));
-	}
-
-	do_interpolation(res,npos,m);
-}
-
-}
-
-std::string config::interpolate_variables_into_string(const std::string& str, const string_map* symbols)
-{
-	std::string res = str;
-	do_interpolation(res,0,symbols);
-
-	//remove any pipes in the string, as they are used simply to seperate variables
-	res.erase(std::remove(res.begin(),res.end(),'|'),res.end());
-
-	return res;
-}
+#endif
 
 void config::clear()
 {

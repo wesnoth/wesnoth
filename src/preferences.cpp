@@ -71,10 +71,10 @@ manager::manager()
 	set_show_haloes(prefs["show_haloes"] != "no");
 
 	std::vector<std::string> v;
-	v = config::split(prefs["encountered_units"]);
+	v = utils::split(prefs["encountered_units"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_units_set, encountered_units_set.begin()));
-	v = config::split(prefs["encountered_terrains"]);
+	v = utils::split(prefs["encountered_terrains"]);
 	std::copy(v.begin(), v.end(),
 			  std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
 }
@@ -84,11 +84,11 @@ manager::~manager()
 	
 	std::vector<std::string> v;
 	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
-	prefs["encountered_units"] = config::join(v);
+	prefs["encountered_units"] = utils::join(v);
 	v.clear();
 	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
 			  std::back_inserter(v));
-	prefs["encountered_terrains"] = config::join(v);
+	prefs["encountered_terrains"] = utils::join(v);
 	encountered_units_set.clear();
 	encountered_terrains_set.clear();
 	try {

@@ -633,7 +633,7 @@ void leader_list_manager::update_leader_list(int side_index)
 	}
 
 	if(!side["leader"].empty()) {
-		leaders_ = config::split(side["leader"]);
+		leaders_ = utils::split(side["leader"]);
 	}
 	
 	const std::string default_leader = side["type"];
@@ -747,7 +747,7 @@ void leader_preview_pane::draw_contents()
 		const config& side = *side_list_[selection_];
 		std::string faction = side["name"];
 		const std::string recruits = side["recruit"];
-		const std::vector<std::string> recruit_list = config::split(recruits);
+		const std::vector<std::string> recruit_list = utils::split(recruits);
 		std::ostringstream recruit_string;
 
 		if(faction[0] == font::IMAGE) {

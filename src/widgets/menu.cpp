@@ -36,7 +36,7 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
 	for(std::vector<std::string>::const_iterator item = items.begin();
 	    item != items.end(); ++item) {
-		items_.push_back(config::quoted_split(*item, COLUMN_SEPARATOR, !strip_spaces));
+		items_.push_back(utils::quoted_split(*item, COLUMN_SEPARATOR, !strip_spaces));
 
 		//make sure there is always at least one item
 		if(items_.back().empty())
@@ -64,7 +64,7 @@ void menu::create_help_strings()
 			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
 				help_.back().push_back("");
 			} else {
-				const std::vector<std::string>& items = config::split(*j,HELP_STRING_SEPARATOR,0);
+				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
 				if(items.size() >= 2) {
 					*j = items.front();
 					help_.back().push_back(items.back());
@@ -329,7 +329,7 @@ void menu::scroll(int)
 namespace {
 	SDL_Rect item_size(const std::string& item) {
 		SDL_Rect res = {0,0,0,0};
-		std::vector<std::string> img_text_items = config::split(item, IMG_TEXT_SEPARATOR);
+		std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			if (res.w > 0 || res.h > 0) {
@@ -406,7 +406,7 @@ void menu::draw_item(int item)
 	for(size_t i = 0; i != items_[item].size(); ++i) {
 		const int last_x = xpos;
 		std::string str = items_[item][i];
-		std::vector<std::string> img_text_items = config::split(str, IMG_TEXT_SEPARATOR);
+		std::vector<std::string> img_text_items = utils::split(str, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			str = *it;

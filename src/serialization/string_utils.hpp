@@ -32,7 +32,7 @@ std::vector< std::string > split(std::string const &val, char c = ',', int flags
 std::string join(std::vector< std::string > const &v, char c = ',');
 std::vector< std::string > quoted_split(std::string const &val, char c= ',',
                                         int flags = REMOVE_EMPTY | STRIP_SPACES, char quote = '\\');
-std::pair< int, int > parse_range(const std::string& str);
+std::pair< int, int > parse_range(std::string const &str);
 bool notspace(char c);
 std::string &escape(std::string &str);
 std::string &unescape(std::string &str);

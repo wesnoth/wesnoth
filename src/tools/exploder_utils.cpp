@@ -12,13 +12,13 @@
 */
 
 #include "exploder_utils.hpp"
-#include "../game_config.hpp"
-#include "../config.hpp"
+#include "game_config.hpp"
+#include "serialization/string_utils.hpp"
 #include <png.h>
 
 exploder_point::exploder_point(const std::string &s)
 {
-	std::vector<std::string> items = config::split(s);
+	std::vector<std::string> items = utils::split(s);
 	if(items.size() != 2) {
 		x = y = 0;
 	} else {
@@ -29,7 +29,7 @@ exploder_point::exploder_point(const std::string &s)
 
 exploder_rect::exploder_rect(const std::string &s)
 {
-	std::vector<std::string> items = config::split(s);
+	std::vector<std::string> items = utils::split(s);
 	if(items.size() != 4) {
 		x = y = w = h = 0;
 	} else {

@@ -495,7 +495,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		} else if((**img)["position"] == "vertical") {
 
-			std::vector<std::string> base = config::split((**img)["base"]);
+			std::vector<std::string> base = utils::split((**img)["base"]);
 			int basex = 0, basey = 0;
 
 			if(base.size() >= 2) {
@@ -546,7 +546,7 @@ void terrain_builder::add_constraints(
 void terrain_builder::add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item)
 {
 	if(!cfg[item].empty()) {
-		std::vector<std::string> item_string = config::split(cfg[item]);
+		std::vector<std::string> item_string = utils::split(cfg[item]);
 		
 		for(std::vector<std::string>::const_iterator itor = item_string.begin();
 				itor != item_string.end(); ++itor) {
@@ -575,11 +575,11 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	int lineno = 0;
 	int x = 0;
 
-	const std::vector<std::string> &lines = config::split(mapstring, '\n', 0);
+	const std::vector<std::string> &lines = utils::split(mapstring, '\n', 0);
 	std::vector<std::string>::const_iterator line = lines.begin();
 	
 	//Strips trailing empty lines
-	while(line != lines.end() && std::find_if(line->begin(),line->end(),config::notspace) == line->end()) {
+	while (line != lines.end() && std::find_if(line->begin(), line->end(), utils::notspace) == line->end()) {
 		line++;
 	}
 	//Break if there only are blank lines
@@ -604,7 +604,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 
 		while(lpos < line->size()) {
 			std::string types = line->substr(lpos, 4);
-			config::strip(types);
+			utils::strip(types);
 			
 			//If there are numbers in the types string, consider it
 			//is an anchor
@@ -641,7 +641,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 
 		add_rule(rules, tpl);
 	} else {
-		const std::vector<std::string>& rot = config::split(rotations, ',');
+		const std::vector<std::string>& rot = utils::split(rotations, ',');
 			
 		for(size_t angle = 0; angle < rot.size(); angle++) {
 			building_rule rule = rotate_rule(tpl, angle, rot);
@@ -688,7 +688,7 @@ void terrain_builder::parse_config(const config &cfg)
 				loc.y = atoi((**tc)["y"].c_str());
 			} 
 			if(!(**tc)["loc"].empty()) {
-				std::vector<std::string> sloc = config::split((**tc)["pos"]);
+				std::vector<std::string> sloc = utils::split((**tc)["pos"]);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());

@@ -137,7 +137,7 @@ void cave_map_generator::generate_chambers()
 		size_t min_xpos = 0, min_ypos = 0, max_xpos = width_, max_ypos = height_;
 
 		if(xpos != "") {
-			const std::vector<std::string>& items = config::split(xpos,'-');
+			const std::vector<std::string>& items = utils::split(xpos, '-');
 			if(items.empty() == false) {
 				min_xpos = atoi(items.front().c_str()) - 1;
 				max_xpos = atoi(items.back().c_str());
@@ -145,7 +145,7 @@ void cave_map_generator::generate_chambers()
 		}
 
 		if(ypos != "") {
-			const std::vector<std::string>& items = config::split(ypos,'-');
+			const std::vector<std::string>& items = utils::split(ypos, '-');
 			if(items.empty() == false) {
 				min_ypos = atoi(items.front().c_str()) - 1;
 				max_ypos = atoi(items.back().c_str());

@@ -301,7 +301,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const std::string& type = cfg["type"];
 
-		const std::vector<std::string>& types = config::split(type);
+		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().insert(*i);
 			preferences::encountered_units().insert(*i);
@@ -321,7 +321,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			return rval;
 
 		const std::string& type = cfg["type"];
-		const std::vector<std::string>& types = config::split(type);
+		const std::vector<std::string>& types = utils::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().erase(*i);
 
@@ -338,7 +338,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(index >= teams->size())
 			return rval;
 
-		std::vector<std::string> recruit = config::split(cfg["recruit"]);
+		std::vector<std::string> recruit = utils::split(cfg["recruit"]);
 		if(recruit.size() == 1 && recruit.back() == "")
 			recruit.clear();
 
@@ -461,8 +461,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const game_data::unit_type_map::const_iterator itor = game_data_ptr->unit_types.find(type);
 		if(itor != game_data_ptr->unit_types.end()) {
 			unit dummy_unit(&itor->second,0,false,true,gender);
-			const std::vector<std::string> xvals = config::split(cfg["x"]);
-			const std::vector<std::string> yvals = config::split(cfg["y"]);
+			const std::vector<std::string> xvals = utils::split(cfg["x"]);
+			const std::vector<std::string> yvals = utils::split(cfg["y"]);
 			std::vector<gamemap::location> path;
 			gamemap::location src;
 			gamemap::location dst;
@@ -493,19 +493,22 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//setting a variable
 	else if(cmd == "set_variable") {
-		const std::string& name = config::interpolate_variables_into_string(cfg.get_attribute("name"));
+		const std::string& name = utils::interpolate_variables_into_string(
+			cfg.get_attribute("name"));
 		std::string& var = game_events::get_variable(name);
 		const std::string& value = cfg["value"];
 		if(value.empty() == false) {
 			var = value;
 		}
 
-		const std::string& format = config::interpolate_variables_into_string(cfg.get_attribute("format"));
+		const std::string& format = utils::interpolate_variables_into_string(
+			cfg.get_attribute("format"));
 		if(format.empty() == false) {
 			var = format;
 		}
 
-		const std::string& to_variable = config::interpolate_variables_into_string(cfg.get_attribute("to_variable"));
+		const std::string& to_variable = utils::interpolate_variables_into_string(
+			cfg.get_attribute("to_variable"));
 		if(to_variable.empty() == false) {
 			var = game_events::get_variable(to_variable);
 		}
@@ -628,9 +631,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "role") {
 
 		//get a list of the types this unit can be
-		std::vector<std::string> types = config::split(cfg["type"]);
+		std::vector<std::string> types = utils::split(cfg["type"]);
 
-                std::vector<std::string> sides = config::split(cfg["side"]);
+                std::vector<std::string> sides = utils::split(cfg["side"]);
 
 		//iterate over all the types, and for each type, try to find
 		//a unit that matches
@@ -977,7 +980,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
-			const std::string msg = config::interpolate_variables_into_string(cfg["message"]);
+			const std::string msg = utils::interpolate_variables_into_string(cfg["message"]);
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
@@ -1127,7 +1130,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	}
 
 	else if(cmd == "unstore_unit") {
-		const config& var = game_events::get_variable_cfg(config::interpolate_variables_into_string(cfg.get_attribute("variable")));
+		const config& var = game_events::get_variable_cfg(
+			utils::interpolate_variables_into_string(cfg.get_attribute("variable")));
 
 		try {
 			const unit u(*game_data_ptr,var);
@@ -1282,8 +1286,8 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
                                                    const std::string& yloc)
 {
 	if(std::find(xloc.begin(),xloc.end(),',') != xloc.end()) {
-		std::vector<std::string> xlocs = config::split(xloc);
-		std::vector<std::string> ylocs = config::split(yloc);
+		std::vector<std::string> xlocs = utils::split(xloc);
+		std::vector<std::string> ylocs = utils::split(yloc);
 
 		const int size = xlocs.size() < ylocs.size()?xlocs.size():ylocs.size();
 		for(int i = 0; i != size; ++i) {
@@ -1540,7 +1544,7 @@ manager::manager(config& cfg, display& gui_, gamemap& map_,
 	used_items.clear();
 	const std::string& used = cfg["used_items"];
 	if(!used.empty()) {
-		const std::vector<std::string>& v = config::split(used);
+		const std::vector<std::string>& v = utils::split(used);
 		for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
 			used_items.insert(*i);
 		}

@@ -1,6 +1,7 @@
 #include "global.hpp"
 
 #include "gettext.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <cstring>
 
@@ -38,7 +39,6 @@ const char* dsgettext (const char * domainname, const char *msgid)
 std::string vgettext (const char *msgid, const string_map& symbols)
 {
 	const std::string orig(gettext(msgid));
-	const std::string msg = config::interpolate_variables_into_string(orig,
-			&symbols);
+	const std::string msg = utils::interpolate_variables_into_string(orig, &symbols);
 	return msg;
 }

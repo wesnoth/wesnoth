@@ -1878,7 +1878,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		if(message != "") {
 			string_map symbols;
 			symbols["noun"] = (u.gender() == unit_race::MALE ? _("him") : _("her"));
-			message = config::interpolate_variables_into_string(message,&symbols);
+			message = utils::interpolate_variables_into_string(message, &symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
 			if(res != 0) {
@@ -2310,7 +2310,7 @@ void turn_info::do_search(const std::string& new_search)
 	bool found = false;
 	gamemap::location loc = last_search_hit_;
 	//If this is a location search, just center on that location.
-	std::vector<std::string> args = config::split(last_search_,',');
+	std::vector<std::string> args = utils::split(last_search_, ',');
 	if(args.size() == 2) {
 		int x, y;
 		x = lexical_cast_default<int>(args[0], 0)-1;
@@ -2361,7 +2361,7 @@ void turn_info::do_search(const std::string& new_search)
 		//Not found, inform the player
 		string_map symbols;
 		symbols["search"] = last_search_;
-		const std::string msg = config::interpolate_variables_into_string(
+		const std::string msg = utils::interpolate_variables_into_string(
 			_("Couldn't find label or unit containing the string '$search'."),&symbols);
 		gui::show_dialog(gui_,NULL,"",msg);
 	}

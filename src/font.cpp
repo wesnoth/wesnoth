@@ -344,7 +344,7 @@ surface render_text(TTF_Font* font,const std::string& text, const SDL_Color& col
 		return surface();
 
 	// XXX Changed by erl, to not strip when rendering text. Works everywhere?
-	const std::vector<std::string> lines = config::split(text,'\n', config::REMOVE_EMPTY);
+	const std::vector<std::string> lines = utils::split(text, '\n', utils::REMOVE_EMPTY);
 	std::vector<surface> surfaces;
 	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
@@ -565,7 +565,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 		if(i1 != i2) {
 			std::string new_string(i1,i2);
 
-			config::unescape(new_string);
+			utils::unescape(new_string);
 
 			const SDL_Rect rect = draw_text_line(gui, area, sz, col, new_string, x, y, use_tooltips, text_style);
 			if(rect.w > res.w) {

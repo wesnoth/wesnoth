@@ -192,7 +192,7 @@ void button::set_label(const std::string& val)
 
 	//if we have a list of items, use the first one that isn't an image
 	if (std::find(label_.begin(), label_.end(), COLUMN_SEPARATOR) != label_.end()) {
-		const std::vector<std::string>& items = config::split(label_, COLUMN_SEPARATOR);
+		const std::vector<std::string>& items = utils::split(label_, COLUMN_SEPARATOR);
 		const std::vector<std::string>::const_iterator i = std::find_if(items.begin(),items.end(),not_image);
 		if(i != items.end()) {
 			label_ = *i;

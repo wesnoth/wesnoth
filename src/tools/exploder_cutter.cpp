@@ -12,8 +12,9 @@
 */
 
 #include "exploder_cutter.hpp"
-#include "../filesystem.hpp"
-#include "../sdl_utils.hpp"
+#include "filesystem.hpp"
+#include "sdl_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "SDL_image.h"
 
 cutter::cutter() : verbose_(false)
@@ -128,7 +129,7 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 
 	const cutter::mask& mask = masks_[name];
 
-	std::vector<std::string> pos = config::split((*config)["pos"]);
+	std::vector<std::string> pos = utils::split((*config)["pos"]);
 	if(pos.size() != 2) 
 		throw exploder_failure("Invalid position " + (*config)["pos"]);
 
