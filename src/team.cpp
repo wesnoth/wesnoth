@@ -510,22 +510,22 @@ std::vector<team::target>& team::targets()
 	return info_.targets;
 }
 
-bool team::shrouded(size_t x, size_t y) const
+bool team::shrouded(int x, int y) const
 {
 	if(!teams || !share_view())
-		return shroud_.value(x,y);
+		return shroud_.value(x+1,y+1);
 
-	return shroud_.shared_value(ally_shroud(*teams),x,y);
+	return shroud_.shared_value(ally_shroud(*teams),x+1,y+1);
 }
 
-bool team::fogged(size_t x, size_t y) const
+bool team::fogged(int x, int y) const
 {
 	if(shrouded(x,y)) return true;
 	
 	if(!teams || !share_view())
-		return fog_.value(x,y);
+		return fog_.value(x+1,y+1);
 
-	return fog_.shared_value(ally_fog(*teams),x,y);
+	return fog_.shared_value(ally_fog(*teams),x+1,y+1);
 }
 
 std::vector<const team::shroud_map*> team::ally_shroud(const std::vector<team>& teams) const
