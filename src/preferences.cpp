@@ -174,9 +174,14 @@ void set_resolution(const std::pair<int,int>& resolution)
 {
 	std::pair<int,int> res = resolution;
 
+	// - Ayin: disabled the following code. Why would one want to enforce that? 
+	// Some 16:9, or laptop screens, may have resolutions which do not
+	// comply to this rule (see bug 10630). I'm commenting this until it
+	// proves absolutely necessary.
+	//
 	//make sure resolutions are always divisible by 4
-	res.first &= ~3;
-	res.second &= ~3;
+	//res.first &= ~3;
+	//res.second &= ~3;
 
 	bool write_resolution = true;
 
