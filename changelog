@@ -24,6 +24,8 @@ CVS HEAD:
  * fixed slow down right before a unit arrives at its destination hex, due to redrawing of the minimap                                      
  * fixed ghosted usernames on server (#7655)
  * fixed focus not returning Konrad on new turn (#7188)
+ * fixed wrapping of text in opening sequence (#7878)
+ * fixed bug where on large maps, the cursor wouldn't point at the correct hex toward the eastern side of the map
  * tweaks to the widget class, fixes to the textbox widget
  * removed some debug cerrs
  * refactored widget class
