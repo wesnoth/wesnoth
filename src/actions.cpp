@@ -33,6 +33,7 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
+#include "serialization/string_utils.hpp"
 #include "widgets/menu.hpp"
 
 #include <cmath>
@@ -1764,7 +1765,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 					msg << '\n' << _("(press $hotkey to continue)");
 				}
 			}
-			const std::string message = config::interpolate_variables_into_string(msg.str(),&symbols);
+			const std::string message = utils::interpolate_variables_into_string(msg.str(), &symbols);
 
 			font::add_floating_label(message,font::SIZE_XLARGE,font::BAD_COLOUR,
 			                         disp->map_area().w/2,disp->map_area().h/3,

@@ -16,6 +16,42 @@
 
 #include "serialization/string_utils.hpp"
 
+namespace game_events {
+std::string const &get_variable_const(std::string const &varname);
+}
+
+namespace {
+
+bool not_id(char c)
+{
+	return !isdigit(c) && !isalpha(c) && c != '.' && c != '_';
+}
+
+void do_interpolation(std::string &res, size_t npos, utils::string_map const *m)
+{
+	const std::string::iterator i = std::find(res.begin() + npos, res.end(), '$');
+	if (i == res.end() || i + 1 == res.end())
+		return;
+
+	npos = i - res.begin();
+
+	const std::string::iterator end = std::find_if(i + 1, res.end(), not_id);
+
+	const std::string key(i + 1, end);
+	res.erase(i, end);
+
+	if (m != NULL) {
+		const utils::string_map::const_iterator itor = m->find(key);
+		if (itor != m->end())
+			res.insert(npos,itor->second);
+	} else
+		res.insert(npos, game_events::get_variable_const(key));
+
+	do_interpolation(res,npos,m);
+}
+
+}
+
 namespace utils {
 
 bool isnewline(char c)
@@ -85,6 +121,17 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 		strip(new_val);
 	if (!(flags & REMOVE_EMPTY) || !new_val.empty())
 		res.push_back(new_val);
+
+	return res;
+}
+
+std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols)
+{
+	std::string res = str;
+	do_interpolation(res, 0, symbols);
+
+	//remove any pipes in the string, as they are used simply to seperate variables
+	res.erase(std::remove(res.begin(),res.end(),'|'),res.end());
 
 	return res;
 }

@@ -17,8 +17,8 @@
 #include <string>
 #include <vector>
 #include "SDL.h"
-#include "config.hpp"
 #include "util.hpp"
+#include "serialization/string_utils.hpp"
 
 template<typename T>
 class void_value
@@ -45,9 +45,6 @@ public:
 	//to do the job
 
 	animated(const std::string &cfg, const string_initializer& init=string_initializer());
-
-	// //if T can be constructed from a config&, you may use this constructor
-	//animated(const config& cfg, const std::string& tag);
 
 	// Adds a void frame
 	void add_frame(int start);
@@ -142,13 +139,13 @@ animated<T,T_void_value>::animated(const std::string &cfg, const string_initiali
 	start_ticks_(0),
 	acceleration_(1)
 {
-	std::vector<std::string> items = config::split(cfg);
+	std::vector<std::string> items = utils::split(cfg);
 
 	int current_time = 0;
 
 	std::vector<std::string>::const_iterator itor = items.begin();
 	for(; itor != items.end(); ++itor) {
-		const std::vector<std::string>& items = config::split(*itor, ':');
+		const std::vector<std::string>& items = utils::split(*itor, ':');
 		std::string str;
 		int time;
 
