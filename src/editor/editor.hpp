@@ -106,6 +106,9 @@ public:
 	virtual void edit_revert();
 	virtual void edit_resize();
 	virtual void edit_flip();
+	/// Either select or deselect all hexes on the map depending on if
+	/// this operations has been invoked before or not.
+	virtual void edit_select_all();
 
 	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 	
@@ -263,6 +266,7 @@ private:
 	const preferences::display_manager prefs_disp_manager_;
 	static config prefs_;
 	static bool first_time_created_;
+	bool all_hexes_selected_;
 	
 };
 

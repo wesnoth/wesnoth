@@ -82,7 +82,7 @@ map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_c
 	: gui_(gui), map_(map), abort_(DONT_ABORT),
 	  theme_(theme), game_config_(game_config), map_dirty_(false),
 	  palette_(gui, size_specs_, map), brush_(gui, size_specs_),
-	  l_button_func_(NONE), prefs_disp_manager_(&gui_) {
+	  l_button_func_(NONE), prefs_disp_manager_(&gui_), all_hexes_selected_(false) {
 
 	// Set size specs.
 	adjust_sizes(gui_, size_specs_);
@@ -389,6 +389,22 @@ void map_editor::edit_flip() {
 	}
 }
 
+void map_editor::edit_select_all() {
+	if (!all_hexes_selected_) {
+		for (int i = 0; i < map_.x(); i++) {
+			for (int j = 0; j < map_.y(); j++) {
+				selected_hexes_.insert(gamemap::location(i, j));
+			}
+		}
+		all_hexes_selected_ = true;
+	}
+	else {
+		selected_hexes_.clear();
+		all_hexes_selected_ = false;
+	}
+	highlight_selected_hexes();
+}
+
 std::string map_editor::load_map(const std::string filename) {
 	bool load_successful = true;
 	std::string msg = "'";
@@ -464,6 +480,7 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_REVERT:
 	case hotkey::HOTKEY_EDIT_RESIZE:
 	case hotkey::HOTKEY_EDIT_FLIP:
+	case hotkey::HOTKEY_EDIT_SELECT_ALL:
 		return true;
 	default:
 		return false;
