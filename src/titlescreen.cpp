@@ -177,10 +177,10 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
-		buttons.push_back(button(screen,gettext(button_labels[b])));
+		buttons.push_back(button(screen,sgettext(button_labels[b])));
 		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
-		buttons.back().set_help_string(gettext(help_button_labels[b]));
-		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << gettext(help_button_labels[b]) << "'\n";
+		buttons.back().set_help_string(sgettext(help_button_labels[b]));
+		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << sgettext(help_button_labels[b]) << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
