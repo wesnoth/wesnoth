@@ -770,7 +770,7 @@ void terrain_builder::build_terrains()
 			}
 		}
 
-		std::vector<std::string> adjacent_types(7);
+		std::string adjacent_types[7];
 
 		if(biggest_constraint_adjacent > 0) {
 			gamemap::location loc[7];
@@ -781,7 +781,7 @@ void terrain_builder::build_terrains()
 				if(cons != rule->second.constraints.end()) {
 					adjacent_types[i] = cons->second.terrain_types;
 				} else {
-					adjacent_types[i].clear();
+					adjacent_types[i] = "";
 				}
 			}
 				
