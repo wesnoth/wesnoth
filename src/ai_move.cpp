@@ -162,7 +162,7 @@ std::vector<ai::target> ai::find_targets(bool has_leader)
 	return targets;
 }
 
-std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::target>& targets,const std::multimap<location,location>& dstsrc)
+std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc)
 {
 	log_scope("choosing move");
 
@@ -246,6 +246,11 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 		assert(map_.on_board(ittg->loc));
 	}
 
+	std::map<gamemap::location,paths> dummy_possible_moves;
+	move_map fullmove_srcdst;
+	move_map fullmove_dstsrc;
+	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+
 	for(std::vector<location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
@@ -256,7 +261,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<ai::t
 		typedef std::multimap<location,location>::const_iterator Itor;
 		std::pair<Itor,Itor> its = dstsrc.equal_range(*ri);
 		while(its.first != its.second) {
-			if(its.first->second == best->first) {
+			if(its.first->second == best->first && !should_retreat(its.first->first,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc)) {
 				return std::pair<location,location>(its.first->second,its.first->first);
 			}
 

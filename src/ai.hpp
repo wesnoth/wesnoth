@@ -133,7 +133,7 @@ private:
 
 	std::vector<target> find_targets(bool has_leader);
 
-	std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc);
+	std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
 	display& disp_;
 	const gamemap& map_;

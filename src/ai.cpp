@@ -166,8 +166,12 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
 {
 	for(std::map<gamemap::location,unit>::iterator un_it = units_.begin(); un_it != units_.end(); ++un_it) {
+		//if we are looking for the movement of enemies, then this unit must be an enemy unit
+		//if we are looking for movement of our own units, it must be on our side.
+		//if we are assuming full movement, then it may be a unit on our side, or allied
 		if(enemy && current_team().is_enemy(un_it->second.side()) == false ||
-		   !enemy && un_it->second.side() != team_num_) {
+		   !enemy && !assume_full_movement && un_it->second.side() != team_num_ ||
+		   !enemy && assume_full_movement && current_team().is_enemy(un_it->second.side())) {
 			continue;
 		}
 
@@ -469,9 +473,10 @@ bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, co
 bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
 {
 	//get versions of the move map that assume that all units are at full movement
+	std::map<gamemap::location,paths> dummy_possible_moves;
 	move_map fullmove_srcdst;
 	move_map fullmove_dstsrc;
-	calculate_possible_moves(possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
+	calculate_possible_moves(dummy_possible_moves,fullmove_srcdst,fullmove_dstsrc,false,true);
 
 	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 		if(i->second.side() == team_num_ && i->second.movement_left() == i->second.total_movement()) {
@@ -526,7 +531,7 @@ void ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		}
 
 		std::cerr << "choosing move...\n";
-		std::pair<location,location> move = choose_move(targets,dstsrc);
+		std::pair<location,location> move = choose_move(targets,dstsrc,enemy_srcdst,enemy_dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 			assert(map_.on_board(ittg->loc));
 		}
