@@ -455,7 +455,7 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 		(*level_)["modify_placing"] = "true";
 	}
 
-	if(map_changed) {
+	if(map_changed && (scenario_data_.child("side") != NULL)) {
 		generator_settings_->hide(generator_ == NULL);
 		regenerate_map_->hide(generator_ == NULL);
 
