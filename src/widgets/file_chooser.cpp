@@ -15,6 +15,12 @@
 #include "../display.hpp"
 #include "file_chooser.hpp"
 
+#include <sstream>
+
+namespace {
+	const std::string dir_picture = "misc/folder-icon.png";
+}
+
 namespace gui {
 
 file_chooser::file_chooser(display &disp, std::string start_file) 
@@ -23,7 +29,8 @@ file_chooser::file_chooser(display &disp, std::string start_file)
 	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
 	  last_selection_(-1) {
 	// If the start file is not a file or directory, use the root.
-	if(!file_exists(chosen_file_) && !is_directory(chosen_file_) || !is_directory(current_dir_)) {
+	if(!file_exists(chosen_file_) && !is_directory(chosen_file_)
+	   || !is_directory(current_dir_)) {
 		current_dir_ = path_delim_;
 		chosen_file_ = current_dir_;
 	}
@@ -67,21 +74,25 @@ void file_chooser::display_current_files() {
 			  std::back_inserter(to_show));
 	std::vector<std::string>::iterator it;
 	for (it = to_show.begin(); it != to_show.end(); it++) {
-		// Add a delimiter to show that these are directories.
-		(*it) += path_delim_;
+		// Add an image to show that these are directories.
+		std::stringstream ss;
+		ss << font::IMAGE << dir_picture << ',' << *it;
+		*it = ss.str();
 	}
-	std::copy(files_in_current_dir_.begin(), files_in_current_dir_.end(),
-			  std::back_inserter(to_show));
+	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); it++) {
+		*it = std::string(" ,") + *it;
+		to_show.push_back(*it);
+	}
 	const int menu_font_size = 14; // Known from menu.cpp.
 	for (it = to_show.begin(); it != to_show.end(); it++) {
 		// Make sure that all lines fit.
 		// Guess the width of the scrollbar to be 30 since it is not accessible from here.
-		while (font::line_width(*it, menu_font_size) > file_list_.width() - 30) {
+		// -25 to compensate for the picture column.
+		while (font::line_width(*it, menu_font_size) > file_list_.width() - 30 - 25) {
 			(*it).resize((*it).size() - 1);
 		}
 	}
 	file_list_.set_items(to_show);
-
 	// This will prevent the "box" with filenames from changing size on
 	// every redisplay, it looks better when it's static.
 	file_list_.set_width(width());  
