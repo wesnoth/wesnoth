@@ -76,6 +76,7 @@ public:
 	                 int damage, const attack_type& attack);
 	void draw_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	               double alpha=1.0, short blend_to=0);
+	void draw_footstep(const gamemap::location& loc, int xloc, int yloc);
 
 	CVideo& video() { return screen_; }
 

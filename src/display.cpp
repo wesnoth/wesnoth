@@ -906,9 +906,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	}
 
 	if(loc == mouseoverHex_ || loc == selectedHex_ &&
-	   units_.count(gamemap::location(x,y)) == 1 ||
-	   std::find(route_.steps.begin(),route_.steps.end(),loc) !=
-		         route_.steps.end()) {
+	   units_.count(gamemap::location(x,y)) == 1) {
 		image_type = BRIGHTENED;
 	}
 
@@ -1157,7 +1155,11 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		SDL_Surface* const cross = getImage("cross.png");
 		if(cross != NULL)
 			draw_unit(xpos-xsrc,ypos-ysrc,cross,face_left,false,
-			          debugHighlights_[gamemap::location(x,y)],0);
+			          debugHighlights_[loc],0);
+	}
+
+	if(!is_shrouded) {
+		draw_footstep(loc,xpos-xsrc,ypos-ysrc);
 	}
 
 	if(unit_image == NULL || energy_image == NULL || is_shrouded)
@@ -1239,6 +1241,71 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 			}
 		}
 	}
+}
+
+void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
+{
+	std::vector<gamemap::location>::const_iterator i =
+	         std::find(route_.steps.begin(),route_.steps.end(),loc);
+
+	if(i == route_.steps.end())
+		return;
+
+	const bool left_foot = is_even(i - route_.steps.begin());
+
+	//generally we want the footsteps facing toward the direction they're going
+	//to go next.
+	//if we're on the last step, then we want them facing according to where
+	//they came from, so we move i back by one
+	if(i+1 == route_.steps.end() && i != route_.steps.begin())
+		--i;
+
+	gamemap::location::DIRECTION direction = gamemap::location::NORTH;
+
+	if(i+1 != route_.steps.end()) {
+		for(int n = 0; n != 6; ++n) {
+			direction = gamemap::location::DIRECTION(n);
+			if(i->get_direction(direction) == *(i+1)) {
+				break;
+			}
+		}
+	}
+
+	static const std::string left_nw("misc/foot-left-nw.png");
+	static const std::string left_n("misc/foot-left-n.png");
+	static const std::string right_nw("misc/foot-right-nw.png");
+	static const std::string right_n("misc/foot-right-n.png");
+
+	const std::string* image_str = &left_nw;
+
+	if(left_foot) {
+		if(direction == gamemap::location::NORTH ||
+		   direction == gamemap::location::SOUTH) {
+			image_str = &left_n;
+		} else {
+			image_str = &left_nw;
+		}
+	} else {
+		if(direction == gamemap::location::NORTH ||
+		   direction == gamemap::location::SOUTH) {
+			image_str = &right_n;
+		} else {
+			image_str = &right_nw;
+		}
+	}
+
+	SDL_Surface* const image = getImage(*image_str);
+	if(image == NULL) {
+		std::cerr << "Could not find image: " << *image_str << "\n";
+		return;
+	}
+
+	const bool hflip = !(direction > gamemap::location::NORTH &&
+	                     direction <= gamemap::location::SOUTH);
+	const bool vflip = (direction >= gamemap::location::SOUTH_EAST &&
+	                    direction <= gamemap::location::SOUTH_WEST);
+
+	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
 }
 
 namespace {
@@ -1627,6 +1694,12 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 
 		move_unit_between(path[i],path[i+1],u);
 	}
+
+	//make sure the entire path is cleaned properly
+	for(std::vector<gamemap::location>::const_iterator it = path.begin();
+	    it != path.end(); ++it) {
+		draw_tile(it->x,it->y);
+	}
 }
 
 double display::get_location_x(const gamemap::location& loc) const
@@ -1971,7 +2044,7 @@ void display::move_unit_between(const gamemap::location& a,
 	double xdst = get_location_x(b);
 	double ydst = get_location_y(b);
 
-	const double nsteps = turbo() ? 2.0 : 10.0;
+	const double nsteps = turbo() ? 3.0 : 10.0;
 	const double xstep = (xdst - xsrc)/nsteps;
 	const double ystep = (ydst - ysrc)/nsteps;
 
