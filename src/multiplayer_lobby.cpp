@@ -122,7 +122,7 @@ void lobby::gamelist_updated()
 	}
 
 	if(game_strings.empty()) {
-		game_strings.push_back("<no games open>");
+		game_strings.push_back(_("<no games open>"));
 	}
 
 	games_menu_.set_items(game_strings);
