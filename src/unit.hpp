@@ -117,8 +117,9 @@ public:
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
 
-	void set_defending(bool newval, bool hits = false,
-	                   attack_type::RANGE range=attack_type::LONG_RANGE);
+	void set_standing();
+	void set_defending(bool hits, attack_type::RANGE range, int start_frame, int acceleration);
+	void update_defending_frame();
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
 	void set_leading(bool newval);
@@ -218,6 +219,9 @@ private:
 	UPKEEP_COST upkeep_;
 
 	bool unrenamable_;
+
+	unit_animation anim_;
+	const unit_animation* get_animation() const;
 
 	void reset_modifications();
 	void apply_modifications();

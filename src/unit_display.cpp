@@ -375,9 +375,9 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 	attack_anim.update_current_frames();
 	int animation_time = attack_anim.get_animation_time();
 
-	while(animation_time < end_at) {
+	def->second.set_defending(hits, attack_type::LONG_RANGE, animation_time, acceleration);
 
-		def->second.set_defending(true, hits, attack_type::LONG_RANGE);
+	while(animation_time < end_at) {
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -560,6 +560,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		// ticks = SDL_GetTicks();
 
 		attack_anim.update_current_frames();
+		def->second.update_defending_frame();
 		animation_time = attack_anim.get_animation_time();
 		events::pump();
 		disp.update_display();
@@ -578,7 +579,7 @@ bool unit_attack_ranged(display& disp, unit_map& units,
 		damage = 0;
 	}
 
-	def->second.set_defending(false);
+	def->second.set_standing();
 
 	if(leader_loc.valid()){
 		leader->second.set_leading(false);
@@ -660,8 +661,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5 : 1;
 
-	def->second.set_defending(true, hits, attack_type::SHORT_RANGE);
-
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
@@ -710,9 +709,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 
 	int animation_time = attack_anim.get_animation_time();
-	while(animation_time < end_at) {
 
-		def->second.set_defending(true, hits, attack_type::SHORT_RANGE);
+	def->second.set_defending(hits, attack_type::SHORT_RANGE, animation_time, acceleration);
+
+	while(animation_time < end_at) {
 
 		//this is a while instead of an if, because there might be multiple
 		//sounds playing simultaneously or close together
@@ -826,6 +826,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		ticks = SDL_GetTicks();
 
 		attack_anim.update_current_frames();
+		def->second.update_defending_frame();
 		animation_time = attack_anim.get_animation_time();
 		events::pump();
 		disp.update_display();
@@ -845,7 +846,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		damage = 0;
 	}
 
-	def->second.set_defending(false);
+	def->second.set_standing();
 
 	if(leader_loc.valid()){
 		leader->second.set_leading(false);

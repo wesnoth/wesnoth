@@ -859,12 +859,15 @@ const std::string& unit::image() const
 		case STATE_NORMAL: return type_->image();
 		case STATE_DEFENDING_LONG:
 		case STATE_DEFENDING_SHORT: {
+			if(get_animation()) {
+				const std::string& res = anim_.get_current_frame().image;
+				if(res != "") {
+					return res;
+				}
+			}
+
 			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
-			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
-			if (anim != NULL)
-				return anim->get_current_frame().image;
-			else
-				return type_->image_defensive(range);
+			return type_->image_defensive(range);
 		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
@@ -885,13 +888,42 @@ const std::string& unit::image() const
 	}
 }
 
-void unit::set_defending(bool newval, bool hits, attack_type::RANGE range)
+const unit_animation* unit::get_animation() const
 {
-	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
-	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
-	type_->defend_animation(getsHit_,range);
+	switch(state_) {
+	case STATE_DEFENDING_LONG:
+	case STATE_DEFENDING_SHORT: {
+			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
+			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
+			return anim;
+	}
+	default:
+		return NULL;
+	}
+}
 
+void unit::set_standing()
+{
+	state_ = STATE_NORMAL;
+}
+
+void unit::set_defending(bool hits, attack_type::RANGE range, int start_frame, int acceleration)
+{
+	state_ = range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG : STATE_DEFENDING_SHORT;
 	getsHit_ = hits;
+					   
+	const unit_animation* const anim = get_animation();
+	if(anim != NULL) {
+		anim_ = *anim;
+		anim_.start_animation(start_frame,unit_animation::UNIT_FRAME,acceleration);
+	}
+}
+
+void unit::update_defending_frame()
+{
+	if(get_animation()) {
+		anim_.update_current_frames();
+	}
 }
 
 void unit::set_attacking(bool newval, const attack_type* type, int ms)
