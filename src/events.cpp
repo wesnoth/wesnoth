@@ -332,7 +332,7 @@ void raise_process_event()
 		//events may cause more event handlers to be added and/or removed,
 		//so we must use indexes instead of iterators here.
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
-			event_handlers[i1]->process();
+			event_handlers[i1]->process_event();
 		}
 	}
 }

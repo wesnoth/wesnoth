@@ -27,7 +27,7 @@ class handler
 {
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
-	virtual void process() {}
+	virtual void process_event() {}
 	virtual void draw() {}
 
 	virtual void volatile_draw() {}

@@ -84,21 +84,19 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	maps_menu_.assign(new gui::menu(disp_,map_options_));
 	maps_menu_->set_numeric_keypress_selection(false);
 
-	SDL_Rect rect = {0,0,0,0};
-
-	turns_slider_.assign(new gui::slider(disp_,rect));
+	turns_slider_.assign(new gui::slider(disp_));
 	turns_slider_->set_min(20);
 	turns_slider_->set_max(100);
 	turns_slider_->set_value(50);
 	turns_slider_->set_help_string(_("The maximum turns the game will go for"));
 
-	village_gold_slider_.assign(new gui::slider(disp_,rect));
+	village_gold_slider_.assign(new gui::slider(disp_));
 	village_gold_slider_->set_min(1);
 	village_gold_slider_->set_max(5);
 	village_gold_slider_->set_value(1);
 	village_gold_slider_->set_help_string(_("The amount of income each village yields per turn"));
 
-	xp_modifier_slider_.assign(new gui::slider(disp_,rect));
+	xp_modifier_slider_.assign(new gui::slider(disp_));
 	xp_modifier_slider_->set_min(25);
 	xp_modifier_slider_->set_max(200);
 	xp_modifier_slider_->set_value(100);
@@ -191,7 +189,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	maps_menu_->set_max_width(area.x + area.w - (xpos + minimap_width) - 250);
 	maps_menu_->set_max_height(area.y + area.h - (ypos + map_label_height));
 	maps_menu_->set_items(map_options_);
-	maps_menu_->set_loc(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
+	maps_menu_->set_location(xpos + minimap_width + border_size,ypos + map_label_height + border_size);
 	maps_menu_->set_dirty();
 
 	SDL_Rect rect;
@@ -252,7 +250,6 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 
 	//Ally shared view settings
 	vision_combo_->set_location(rect.x,rect.y);
-	vision_combo_->set_dirty();
 
 	rect.y += vision_combo_->height() + border_size;
 
@@ -272,14 +269,10 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	
 
 	regenerate_map_->set_location(rect.x,rect.y);
-	regenerate_map_->bg_backup();
-	regenerate_map_->set_dirty();
 
 	rect.y += regenerate_map_->location().h + border_size;
 
 	generator_settings_->set_location(rect.x,rect.y);
-	generator_settings_->bg_backup();
-	generator_settings_->set_dirty();
 
 	//player amount number background
 	SDL_Rect player_num_rect = {xpos+minimap_width/2 - 30,ypos+minimap_width,100,25};
@@ -290,7 +283,6 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	                           era_rect.x,era_rect.y);
 	
 	era_combo_->set_location(era_rect.x+era_rect.w+border_size,era_rect.y);
-	era_combo_->set_dirty();
 
 	SDL_Rect minimap_rect = {xpos,ypos,minimap_width,minimap_width};
 	minimap_restorer_ = surface_restorer(&disp_.video(),minimap_rect);
@@ -302,19 +294,8 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 {
 	CKey key;
 
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
 	name_entry_->process();
-	turns_slider_->process();
-	village_gold_slider_->process();
-	xp_modifier_slider_->process();
-	era_combo_->process(mousex,mousey,left_button);
-	vision_combo_->process(mousex,mousey,left_button);
-	maps_menu_->process(mousex,mousey,left_button,
-	                    key[SDLK_UP],key[SDLK_DOWN],
-	                    key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
+	maps_menu_->process();
 
 	if(cancel_game_->pressed() || key[SDLK_ESCAPE]) 
 		return lobby::QUIT;
@@ -326,13 +307,6 @@ lobby::RESULT multiplayer_game_setup_dialog::process()
 			gui::show_dialog(disp_,NULL,"","You must enter a name.",gui::OK_ONLY);
 		}
 	}
-
-	fog_game_->pressed();
-	fog_game_->draw();
-	shroud_game_->pressed();
-	shroud_game_->draw();
-	observers_game_->pressed();
-	observers_game_->draw();
 
 	events::raise_process_event();
 	events::raise_draw_event();

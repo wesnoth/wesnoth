@@ -22,25 +22,10 @@ const int font_size = font::SIZE_SMALL;
 const int horizontal_padding = 10;
 const int vertical_padding = 10;
 
-combo::combo(display& disp, const std::vector<std::string>& items) :
-		items_(items), selected_(0), display_(&disp),
-		button_(gui::button(disp, items.empty() ? "" : items[0]))
+combo::combo(display& disp, const std::vector<std::string>& items)
+	: button(disp, items.empty() ? "" : items[0]),
+	  items_(items), selected_(0), oldSelected_(0)
 {
-}
-
-int combo::height() const
-{
-	return button_.height();
-}
-
-int combo::width() const
-{
-	return button_.width();
-}
-
-void combo::set_width(int new_width)
-{
-	button_.set_width(new_width);
 }
 
 int combo::selected() const
@@ -48,49 +33,38 @@ int combo::selected() const
 	return selected_;
 }
 
+bool combo::changed()
+{
+	if (oldSelected_ != selected_) {
+		oldSelected_ = selected_;
+		return true;
+	} else
+		return false;
+}
+
 void combo::set_items(const std::vector<std::string>& items)
 {
 	items_ = items;
 }
 
-void combo::set_location(int x, int y)
-{
-	button_.set_location(x,y);
-}
-
 void combo::set_selected(int val)
 {
 	const size_t index = size_t(val);
-	if(index < items_.size()) {
-		button_.set_label(items_[index]);
-		selected_ = val;
-		button_.draw();
-	}
+	if (val == selected_ || index >= items_.size())
+		return;
+	set_label(items_[index]);
+	oldSelected_ = selected_;
+	selected_ = val;
 }
 
-void combo::draw()
+void combo::process_event()
 {
-	button_.draw();
+	if (!pressed())
+		return;
+	SDL_Rect const &loc = location();
+	set_selected(gui::show_dialog(disp(), NULL, "", "",
+			gui::MESSAGE, &items_, NULL, "", NULL, -1, NULL, NULL,
+			loc.x, loc.y + loc.h));
 }
-
-bool combo::process(int x, int y, bool button)
-{
-	if(button_.process(x,y,button)) {
-		const SDL_Rect rect = button_.location();
-		set_selected(gui::show_dialog(*display_,NULL,"","",
-					gui::MESSAGE,&items_,NULL,"",NULL,-1,NULL,NULL,
-					rect.x,rect.y+rect.h));
-		
-		button_.draw();
-
-		return true;
-	}
-
-	return false;
-}
-
-void combo::enable(bool new_val) { button_.enable(new_val); }
-
-bool combo::enabled() const { return button_.enabled(); }
 
 }

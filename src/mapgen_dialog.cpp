@@ -122,7 +122,8 @@ void default_map_generator::user_config(display& disp)
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - horz_margin - right_space;
 	SDL_Rect slider_rect = { slider_left,players_rect.y,slider_right-slider_left,players_rect.h};
-	gui::slider players_slider(disp,slider_rect);
+	gui::slider players_slider(disp);
+	players_slider.set_location(slider_rect);
 	players_slider.set_min(2);
 	players_slider.set_max(max_players);
 	players_slider.set_value(nplayers_);
@@ -133,13 +134,15 @@ void default_map_generator::user_config(display& disp)
 	const int extra_size_per_player = 2;
 	
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp,slider_rect);
+	gui::slider width_slider(disp);
+	width_slider.set_location(slider_rect);
 	width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	width_slider.set_max(max_width);
 	width_slider.set_value(width_);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp,slider_rect);
+	gui::slider height_slider(disp);
+	height_slider.set_location(slider_rect);
 	height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	height_slider.set_max(max_height);
 	height_slider.set_value(height_);
@@ -148,7 +151,8 @@ void default_map_generator::user_config(display& disp)
 	const int max_iterations = 3000;
 
 	slider_rect.y = iterations_rect.y;
-	gui::slider iterations_slider(disp,slider_rect);
+	gui::slider iterations_slider(disp);
+	iterations_slider.set_location(slider_rect);
 	iterations_slider.set_min(min_iterations);
 	iterations_slider.set_max(max_iterations);
 	iterations_slider.set_value(iterations_);
@@ -157,7 +161,8 @@ void default_map_generator::user_config(display& disp)
 	const int max_hillsize = 50;
 
 	slider_rect.y = hillsize_rect.y;
-	gui::slider hillsize_slider(disp,slider_rect);
+	gui::slider hillsize_slider(disp);
+	hillsize_slider.set_location(slider_rect);
 	hillsize_slider.set_min(min_hillsize);
 	hillsize_slider.set_max(max_hillsize);
 	hillsize_slider.set_value(hill_size_);
@@ -166,7 +171,8 @@ void default_map_generator::user_config(display& disp)
 	const int max_villages = 50;
 
 	slider_rect.y = villages_rect.y;
-	gui::slider villages_slider(disp,slider_rect);
+	gui::slider villages_slider(disp);
+	villages_slider.set_location(slider_rect);
 	villages_slider.set_min(min_villages);
 	villages_slider.set_max(max_villages);
 	villages_slider.set_value(nvillages_);
@@ -174,7 +180,8 @@ void default_map_generator::user_config(display& disp)
 	const int min_landform = 0;
 	const int max_landform = int(max_island);
 	slider_rect.y = landform_rect.y;
-	gui::slider landform_slider(disp,slider_rect);
+	gui::slider landform_slider(disp);
+	landform_slider.set_location(slider_rect);
 	landform_slider.set_min(min_landform);
 	landform_slider.set_max(max_landform);
 	landform_slider.set_value(island_size_);
@@ -187,11 +194,6 @@ void default_map_generator::user_config(display& disp)
 	link_castles.set_location(link_rect);
 
 	for(bool draw = true;; draw = false) {
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
 		nplayers_ = players_slider.value();
 		width_ = width_slider.value();
 		height_ = height_slider.value();
@@ -202,9 +204,8 @@ void default_map_generator::user_config(display& disp)
 
 		dialog_restorer.restore();
 		close_button.set_dirty(true);
-		if(close_button.process(mousex,mousey,left_button)) {
+		if (close_button.pressed())
 			break;
-		}
 
 		players_slider.set_dirty();
 		width_slider.set_dirty();

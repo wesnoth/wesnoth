@@ -33,8 +33,8 @@
 #endif
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect);
-
 bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
+SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 
 struct surface
 {
@@ -184,7 +184,8 @@ struct surface_restorer
 	surface_restorer(class CVideo* target, const SDL_Rect& rect);
 	~surface_restorer();
 
-	void restore();
+	void restore() const;
+	void restore(SDL_Rect const &dst) const;
 	void update();
 	void cancel();
 

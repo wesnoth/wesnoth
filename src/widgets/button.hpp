@@ -32,7 +32,7 @@ class button : public widget
 public:
 	struct error {};
 
-	enum TYPE { TYPE_PRESS, TYPE_CHECK };
+	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO };
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
@@ -40,15 +40,14 @@ public:
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE);
 
 	virtual ~button() {}
+	virtual void set_location(SDL_Rect const &rect);
+	using widget::set_location;
 
 	void set_check(bool check);
 	bool checked() const;
 
-	void draw();
-
 	void set_label(const std::string& val);
 
-	bool process(int mousex, int mousey, bool button);
 	bool pressed();
 
 	void enable(bool new_val);
@@ -59,11 +58,11 @@ protected:
 	virtual void mouse_motion(const SDL_MouseMotionEvent& event);
 	virtual void mouse_down(const SDL_MouseButtonEvent& event);
 	virtual void mouse_up(const SDL_MouseButtonEvent& event);
+	virtual void draw();
 
 private:
 
 	std::string label_;
-	display* display_;
 	surface image_, pressedImage_, activeImage_, pressedActiveImage_;
 	SDL_Rect textRect_;
 

@@ -62,7 +62,7 @@ void file_chooser::adjust_layout() {
 	file_list_.set_width(width());
 	filename_textbox_.set_width(width());
 
-	file_list_.set_loc(location().x, file_list_y);
+	file_list_.set_location(location().x, file_list_y);
 	filename_textbox_.set_location(location().x, filename_textbox_y);
 
 	file_list_.set_max_height(file_list_height);
@@ -131,7 +131,6 @@ void file_chooser::draw() {
 void file_chooser::process() {
 	CKey key;
 	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 	// The menu does not implement focus functionality, so we fake
 	// it. We give the file list focus whenever the filename textbox
 	// does not have focus. Inflexible but easy solution.
@@ -147,15 +146,7 @@ void file_chooser::process() {
 		filename_textbox_.set_focus(false);
 	}
 	if (!filename_textbox_.focus()) {
-		const bool new_left_button = mouse_flags&SDL_BUTTON_LMASK;
-		
-		const bool new_up_arrow = key[SDLK_UP];
-		const bool new_down_arrow = key[SDLK_DOWN];
-		
-		const bool new_page_up = key[SDLK_PAGEUP];
-		const bool new_page_down = key[SDLK_PAGEDOWN];
-		file_list_.process(mousex, mousey, new_left_button, new_up_arrow,
-						   new_down_arrow, new_page_up, new_page_down, -1);
+		file_list_.process();
 		const int new_selection = file_list_.selection();
 		const bool double_click = file_list_.double_clicked();
 		if (double_click && new_selection >= 0) {

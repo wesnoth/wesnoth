@@ -74,9 +74,8 @@ private:
 	int show_cursor_at_;
 	surface text_image_;
 
-	//variables used for multi-line textboxes which support scrolling
+	//variable used for multi-line textboxes which support scrolling
 	scrollbar scrollbar_;
-	button uparrow_, downarrow_;
 
 	bool scroll_bottom_;
 

@@ -16,8 +16,8 @@
 
 #include "SDL.h"
 #include "../sdl_utils.hpp"
+#include "button.hpp"
 #include "widget.hpp"
-#include <vector>
 
 namespace gui {
 
@@ -27,109 +27,61 @@ public:
 	virtual void scroll(int pos) = 0;
 };
 
-/// class scrollbar implements a rather stupid scrollbar widget. It requires
-/// some hand-holding from the widget using it. Many of these functions will
-/// likely be removed (possibly replaced) at a later date, as the "widget"
-/// class hierarchy is expanded
 class scrollbar : public widget
 {
 public:
-	/// Create a scrollbar
-	/// \param d The display object
-	///
-	scrollbar(display& d, scrollable* callback);
+	/// Create a scrollbar.
+	/// \param d the display object
+	/// \param pane the widget where wheel events take place
+	/// \param callback a callback interface for warning that the grip has been moved
+	scrollbar(display &d, widget const &pane, scrollable *callback);
 
-	/// \return the current width of the scrollbar (if it is disabled,
-	///			that value is zero
-	///
-	int get_width() const;
+	virtual void set_location(SDL_Rect const &rect);
+	using widget::set_location;
+	virtual void hide(bool value = true);
 
-	/// \return the maximum width of the scrollbar, determined by the
-	///			image files used and a constant "padding" value
-	///
-	int get_max_width() const;
-	
+	/// This function is used to determine where the scrollbar is.
+	/// \return the position. For example, will return 0 if the scrollbar
+	///  is at the top, and (full_size - shown_size) if it is at the bottom.
+	unsigned get_position() const;
 
-	/// Process any scrollbar usage
-	///
-	void process();
+	/// Used to manually update the scrollbar.
+	void set_position(unsigned pos);
 
-	/// Turn scrollbar on or off
-	///
-	/// \param en true to enable, false otherwise
-	///
-	void enable(bool en);
-	
-	/// \return true if scrollbar enabled, false otherwise
-	bool enabled() const;
+	/// Ensure the viewport contains the position.
+	void adjust_position(unsigned pos);
 
-	void redraw();
+	///Move the scrollbar.
+	void move_position(int dep);
 
-	/// This function is used to determine where the scrollbar is. This 
-	/// should be used when trying to find out if the user has moved
-	/// the scrollbar.
-	///
-	/// \return The distance in pixels from the highest
-	///  (vertically) position. For example, will return 0 if the scrollbar
-	///  is at the top.
-	int get_grip_position() const;
+	/// Set the relative size of the grip.
+	void set_shown_size(unsigned h);
 
-	/// Used to manually update the scrollbar; for example, if the user has
-	/// changed the scroll position some other way (via button or mousewheel)
-	///
-	/// \param the distance from the top of the scrollbar
-	///
-	/// \return true if the function succeeds, false otherwise.
-	bool set_grip_position(int pos); 
+	/// Set the relative size of the scrollbar.
+	void set_full_size(unsigned h);
 
-	/// \return the smallest the scrollbar "grip" can be
-	int get_minimum_grip_height() const;
-
-	/// \return the current height of the grip.
-	int get_grip_height() const;
-
-	/// Set the size of the grip
-	///
-	/// \param pos the size for the grip
-	///
-	/// \return true if successful, false otherwise.
-	bool set_grip_height(int pos);
-
-	/// This function determines whether the user clicked on the scrollbar
-	/// groove, and whether it was above or below the grip. The query
-	/// resets the state.
-	/// 
-	/// \return -1 if click was above, 1 if click was below, 0 otherwise
-	int groove_clicked();
+protected:
+	virtual void handle_event(const SDL_Event& event);
+	virtual void process_event();
+	virtual void draw();
 
 private:
-	SDL_Rect scroll_grip_area() const;
-	void draw();
-
+	SDL_Rect grip_area() const;
+	SDL_Rect groove_area() const;
+	widget const &pane_;
 	surface mid_scaled_, groove_scaled_;
 
 	scrollable* callback_;
+	button uparrow_, downarrow_;
 
-	int minimum_grip_height_;
-	int width_;
-	bool highlight_;
-	bool clicked_;
+	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
+	STATE state_;
 
-	bool dragging_;
-
-	// location of scrollbar grip (number of pixels below top of scrollbar)
-	int grip_position_;
-
-	// vertical extent of grip
-	int grip_height_;
-
-	int enabled_;
-
-	// -1 if user just clicked above the groove, 1 if they just clicked below
-	// 0 otherwise
-	int groove_click_code_;
+	int minimum_grip_height_, mousey_on_grip_;
+	// Relative data
+	int grip_position_, old_position_, grip_height_, full_height_;
 };
-	
+
 }
 
 #endif

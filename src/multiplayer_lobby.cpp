@@ -214,9 +214,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		gui::menu users_menu(disp,users);
 
 		// Set GUI locations
-		users_menu.set_loc(xscale(disp,856),yscale(disp,42));
 		users_menu.set_width(xscale(disp,156));
-		users_menu.set_max_width(xscale(disp,156));
+		users_menu.set_location(xscale(disp,856),yscale(disp,42));
 
 		update_rect(xscale(disp,856),yscale(disp,42),xscale(disp,156),yscale(disp,708));
 
@@ -225,8 +224,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				dlg->set_area(dlg_rect);
 			}
 		} else {
-			games_menu.set_loc(xscale(disp,12),yscale(disp,42));
 			games_menu.set_width(xscale(disp,832));
+			games_menu.set_location(xscale(disp,12),yscale(disp,42));
 		}
 
 		update_rect(xscale(disp,12),yscale(disp,42),xscale(disp,832),yscale(disp,518));
@@ -276,9 +275,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 					return res;
 				}
 			} else {
-				games_menu.process(mousex,mousey,left_button,
-				                   key[SDLK_UP],key[SDLK_DOWN],
-				                   key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
+				games_menu.process();
 
 				if(games_menu.selection() >= 0 && games_menu.selection() < int(game_vacant_slots.size())) {
 					join_game.hide(!game_vacant_slots[games_menu.selection()]);
@@ -286,9 +283,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				}
 			}
 
-			users_menu.process(mousex,mousey,left_button,
-			                   key[SDLK_UP],key[SDLK_DOWN],
-			                   key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);
+			users_menu.process();
 			 
 			const bool double_click = games_menu.double_clicked();
 			const bool observe = observe_game.pressed() || !games_available && double_click;
@@ -338,7 +333,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				message_entry.clear();
 			}
 
-			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.process(mousex,mousey,left_button)){
+			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.pressed()){
 				return QUIT;
 			}
 

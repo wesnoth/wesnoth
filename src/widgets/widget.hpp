@@ -2,10 +2,11 @@
 #define WIDGET_HPP_INCLUDED
 
 #include "../events.hpp"
-
 #include "../sdl_utils.hpp"
 
 #include "SDL.h"
+
+#include <vector>
 
 class display;
 
@@ -14,8 +15,8 @@ namespace gui {
 class widget : public events::handler
 {
 public:
-	const SDL_Rect& location() const;
-	void set_location(const SDL_Rect& rect);
+	SDL_Rect const &location() const;
+	virtual void set_location(SDL_Rect const &rect);
 	void set_location(int x, int y);
 	void set_width(int w);
 	void set_height(int h);
@@ -26,10 +27,8 @@ public:
 	virtual bool focus() const;
 	void set_focus(bool focus);
 
-	void hide(bool value=true);
+	virtual void hide(bool value = true);
 	bool hidden() const;
-
-	void bg_backup();
 
 	//Function to set the widget to draw in 'volatile' mode.
 	//When in 'volatile' mode, instead of using the normal
@@ -49,29 +48,34 @@ public:
 	virtual void process_help_string(int mousex, int mousey);
 
 protected:
-	widget(const widget &o);
+	widget(widget const &o);
 	widget(display& disp);
-	widget(display& disp, const SDL_Rect& rect);
-	virtual ~widget() { restorer_.cancel(); }
+	virtual ~widget();
 
+	// During each relocation, this function should be called to register
+	// the rectangles the widget needs to refresh automatically
+	void register_rectangle(SDL_Rect const &rect);
 	void bg_restore() const;
+	void bg_restore(SDL_Rect const &rect) const;
 
 	display& disp() const { return *disp_; }
 
-	virtual void handle_event(const SDL_Event& event);
+	virtual void handle_event(SDL_Event const &event) {}
 
 private:
 	void volatile_draw();
 	void volatile_undraw();
 
-	mutable display* disp_;
-	mutable surface_restorer restorer_;
+	void bg_update();
+	void bg_cancel();
+
+	display* disp_;
+	std::vector< surface_restorer > restorer_;
 	SDL_Rect rect_;
 	bool focus_;		// Should user input be ignored?
-	bool dirty_;		// Does the widget need drawn?
-	mutable bool needs_restore_; //have we drawn ourselves, so that if moved, we need to restore the background?
+	mutable bool needs_restore_; // Have we drawn ourselves, so that if moved, we need to restore the background?
 
-	bool hidden_;
+	enum { UNINIT, HIDDEN, DIRTY, DRAWN } state_;
 
 	bool volatile_;
 

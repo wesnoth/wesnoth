@@ -615,9 +615,6 @@ void set_cache_saves(CACHE_SAVES_METHOD method)
 
 namespace {
 
-const SDL_Rect empty_rect = {0,0,0,0};
-const SDL_Rect preferences_dialog_area = {-400,-400,400,400};
-
 class preferences_dialog : public gui::preview_pane
 {
 public:
@@ -636,9 +633,10 @@ public:
 private:
 
 	void draw();
-	void process();
+	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
+	void set_location(SDL_Rect const &rect);
 
 	gui::slider music_slider_, sound_slider_, scroll_slider_, gamma_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
@@ -652,9 +650,10 @@ private:
 	TAB tab_;
 };
 
-preferences_dialog::preferences_dialog(display& disp) : gui::preview_pane(disp),
-music_slider_(disp,empty_rect), sound_slider_(disp,empty_rect),
-scroll_slider_(disp,empty_rect), gamma_slider_(disp,empty_rect),
+preferences_dialog::preferences_dialog(display& disp)
+	: gui::preview_pane(disp),
+	  music_slider_(disp), sound_slider_(disp),
+	  scroll_slider_(disp), gamma_slider_(disp),
 fullscreen_button_(disp,_("Full Screen"),gui::button::TYPE_CHECK),
 turbo_button_(disp,_("Accelerated Speed"),gui::button::TYPE_CHECK),
 show_ai_moves_button_(disp,_("Skip AI Moves"),gui::button::TYPE_CHECK),
@@ -672,7 +671,8 @@ music_label_(_("Music Volume:")), sound_label_(_("SFX Volume:")),
 scroll_label_(_("Scroll Speed:")), gamma_label_(_("Gamma:")),
 slider_label_width_(0), tab_(GENERAL_TAB)
 {
-	set_location(preferences_dialog_area);
+	set_width(400);
+	set_height(400);
 
 	slider_label_width_ = maximum<size_t>(font::text_area(music_label_,font::SIZE_NORMAL).w,
 	                      maximum<size_t>(font::text_area(sound_label_,font::SIZE_NORMAL).w,
@@ -736,62 +736,84 @@ slider_label_width_(0), tab_(GENERAL_TAB)
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
 }
 
-void preferences_dialog::process()
+void preferences_dialog::set_location(SDL_Rect const &rect)
 {
-	if(turbo_button_.pressed()) {
+	widget::set_location(rect);
+	register_rectangle(rect);
+	const int border = 10;
+
+	// General tab
+	int ypos = rect.y;
+	SDL_Rect scroll_rect = { rect.x + slider_label_width_, ypos,
+	                         rect.w - slider_label_width_ - border, 0 };
+	scroll_slider_.set_location(scroll_rect);
+	ypos += 50; turbo_button_.set_location(rect.x, ypos);
+	ypos += 50; show_ai_moves_button_.set_location(rect.x, ypos);
+	ypos += 50; turn_dialog_button_.set_location(rect.x, ypos);
+	ypos += 50; turn_bell_button_.set_location(rect.x, ypos);
+	ypos += 50; show_team_colours_button_.set_location(rect.x, ypos);
+	ypos += 50; show_grid_button_.set_location(rect.x, ypos);
+	ypos += 50; hotkeys_button_.set_location(rect.x, ypos);
+
+	// Display tab
+	ypos = rect.y;
+	gamma_button_.set_location(rect.x, ypos);
+	ypos += 50;
+	SDL_Rect gamma_rect = { rect.x + slider_label_width_, ypos,
+	                        rect.w - slider_label_width_ - border, 0 };
+	gamma_slider_.set_location(gamma_rect);
+	ypos += 50; show_floating_labels_button_.set_location(rect.x, ypos);
+	ypos += 50; show_colour_cursors_button_.set_location(rect.x, ypos);
+	ypos += 50; show_haloing_button_.set_location(rect.x, ypos);
+	ypos += 50; fullscreen_button_.set_location(rect.x, ypos);
+	ypos += 50; video_mode_button_.set_location(rect.x, ypos);
+
+	// Sound tab
+	ypos = rect.y;
+	SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
+	                        rect.w - slider_label_width_ - border, 0 };
+	music_slider_.set_location(music_rect);
+	ypos += 50;
+	SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
+				rect.w - slider_label_width_ - border, 0 };
+	sound_slider_.set_location(sound_rect);
+
+	set_selection(tab_);
+}
+
+void preferences_dialog::process_event()
+{
+	if (turbo_button_.pressed())
 		set_turbo(turbo_button_.checked());
-	}
-
-	if(show_ai_moves_button_.pressed()) {
+	if (show_ai_moves_button_.pressed())
 		set_show_ai_moves(!show_ai_moves_button_.checked());
-	}
-
-	if(show_grid_button_.pressed()) {
+	if (show_grid_button_.pressed())
 		set_grid(show_grid_button_.checked());
-	}
-
-	if(show_floating_labels_button_.pressed()) {
+	if (show_floating_labels_button_.pressed())
 		set_show_floating_labels(show_floating_labels_button_.checked());
-	}
-
-	if(video_mode_button_.pressed()) {
+	if (video_mode_button_.pressed())
 		throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
-	}
-
-	if(fullscreen_button_.pressed()) {
-		throw video_mode_change_exception(fullscreen_button_.checked() ? video_mode_change_exception::MAKE_FULLSCREEN
-		                                                               : video_mode_change_exception::MAKE_WINDOWED);
-	}
-
-	if(turn_bell_button_.pressed()) {
+	if (fullscreen_button_.pressed())
+		throw video_mode_change_exception(fullscreen_button_.checked()
+		                                  ? video_mode_change_exception::MAKE_FULLSCREEN
+		                                  : video_mode_change_exception::MAKE_WINDOWED);
+	if (turn_bell_button_.pressed())
 		set_turn_bell(turn_bell_button_.checked());
-	}
-
-	if(turn_dialog_button_.pressed()) {
+	if (turn_dialog_button_.pressed())
 		set_turn_dialog(turn_dialog_button_.checked());
-	}
-
-	if(show_team_colours_button_.pressed()) {
+	if (show_team_colours_button_.pressed())
 		set_show_side_colours(show_team_colours_button_.checked());
-	}
-
-	if(hotkeys_button_.pressed()) {
+	if (hotkeys_button_.pressed())
 		show_hotkeys_dialog(disp());
-	}
-
-	if(show_colour_cursors_button_.pressed()) {
+	if (show_colour_cursors_button_.pressed())
 		set_colour_cursors(show_colour_cursors_button_.checked());
-	}
-
-	if(show_haloing_button_.pressed()) {
+	if (show_haloing_button_.pressed())
 		set_show_haloes(show_haloing_button_.checked());
-	}
-
-	if(gamma_button_.pressed()) {
+	if (gamma_button_.pressed()) {
 		set_adjust_gamma(gamma_button_.checked());
-		set_selection(int(tab_));
+		gamma_slider_.hide(!adjust_gamma());
+		// we need a textlabel widget so that we can deal with the "gamma" text
 	}
-
 	set_sound_volume(sound_slider_.value());
 	set_music_volume(music_slider_.value());
 	set_scroll_speed(scroll_slider_.value());
@@ -800,96 +822,17 @@ void preferences_dialog::process()
 
 void preferences_dialog::draw()
 {
-	if(!dirty()) {
+	if (!dirty())
 		return;
-	}
 
-	bg_restore();
-
-	music_slider_.set_dirty();
-	sound_slider_.set_dirty();
-	scroll_slider_.set_dirty();
-	gamma_slider_.set_dirty();
-	fullscreen_button_.set_dirty();
-	turbo_button_.set_dirty();
-	show_ai_moves_button_.set_dirty();
-	show_grid_button_.set_dirty();
-	show_floating_labels_button_.set_dirty();
-	turn_dialog_button_.set_dirty();
-	turn_bell_button_.set_dirty();
-	show_team_colours_button_.set_dirty();
-	show_colour_cursors_button_.set_dirty();
-	show_haloing_button_.set_dirty();
-	video_mode_button_.set_dirty();
-	hotkeys_button_.set_dirty();
-	gamma_button_.set_dirty();
-
-	const int border = 10;
-
-	int ypos = location().y;
-	if(tab_ == GENERAL_TAB) {
-		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,scroll_label_,location().x,ypos);
-		const SDL_Rect scroll_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,scroll_slider_.location().h};
-		scroll_slider_.set_location(scroll_rect);
-
-		ypos += 50;
-		turbo_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		show_ai_moves_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		turn_dialog_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		turn_bell_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		show_team_colours_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		show_grid_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		hotkeys_button_.set_location(location().x,ypos);
-
-	} else if(tab_ == DISPLAY_TAB) {
-		gamma_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-
-		if(adjust_gamma()) {
-			font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,gamma_label_,location().x,ypos);
-		}
-
-		const SDL_Rect gamma_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,gamma_slider_.location().h};
-		gamma_slider_.set_location(gamma_rect);
-
-		ypos += 50;
-		show_floating_labels_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		show_colour_cursors_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		show_haloing_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		fullscreen_button_.set_location(location().x,ypos);
-
-		ypos += 50;
-		video_mode_button_.set_location(location().x,ypos);
-
+	SDL_Rect const &loc = location();
+	if (tab_ == GENERAL_TAB) {
+		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, scroll_label_, loc.x, loc.y);
+	} else if (tab_ == DISPLAY_TAB && adjust_gamma()) {
+		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, gamma_label_, loc.x, loc.y + 50);
 	} else if(tab_ == SOUND_TAB) {
-		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,music_label_,location().x,ypos);
-		const SDL_Rect music_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,music_slider_.location().h};
-		music_slider_.set_location(music_rect);
-
-		ypos += 50;
-
-		font::draw_text(&disp(),location(),font::SIZE_NORMAL,font::NORMAL_COLOUR,sound_label_,location().x,ypos);
-		const SDL_Rect sound_rect = {location().x + slider_label_width_,ypos,location().w - slider_label_width_ - border,sound_slider_.location().h};
-		sound_slider_.set_location(sound_rect);
+		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, music_label_, loc.x, loc.y);
+		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, sound_label_, loc.x, loc.y + 50);
 	}
 
 	set_dirty(false);
@@ -899,11 +842,9 @@ void preferences_dialog::set_selection(int index)
 {
 	tab_ = TAB(index);
 	set_dirty();
+	bg_restore();
 
 	scroll_slider_.hide(tab_ != GENERAL_TAB);
-	gamma_slider_.hide(tab_ != DISPLAY_TAB || !adjust_gamma());
-	music_slider_.hide(tab_ != SOUND_TAB);
-	sound_slider_.hide(tab_ != SOUND_TAB);
 	turbo_button_.hide(tab_ != GENERAL_TAB);
 	show_ai_moves_button_.hide(tab_ != GENERAL_TAB);
 	turn_dialog_button_.hide(tab_ != GENERAL_TAB);
@@ -912,13 +853,17 @@ void preferences_dialog::set_selection(int index)
 	show_team_colours_button_.hide(tab_ != GENERAL_TAB);
 	show_grid_button_.hide(tab_ != GENERAL_TAB);
 
+	gamma_slider_.hide(tab_ != DISPLAY_TAB || !adjust_gamma());
 	gamma_button_.hide(tab_ != DISPLAY_TAB);
 	show_floating_labels_button_.hide(tab_ != DISPLAY_TAB);
 	show_colour_cursors_button_.hide(tab_ != DISPLAY_TAB);
 	show_haloing_button_.hide(tab_ != DISPLAY_TAB);
 	fullscreen_button_.hide(tab_ != DISPLAY_TAB);
 	video_mode_button_.hide(tab_ != DISPLAY_TAB);
-}                                          
+
+	music_slider_.hide(tab_ != SOUND_TAB);
+	sound_slider_.hide(tab_ != SOUND_TAB);
+}
 
 }
 
@@ -1063,9 +1008,9 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		menu_items.push_back (str.str ());
 	}
 
-	gui::menu menu_ (disp, menu_items, false, height);
+	gui::menu menu_(disp, menu_items, false, height);
 	menu_.set_width(400);	
-	menu_.set_loc (xpos + 20, ypos);
+	menu_.set_location(xpos + 20, ypos);
 	
 	gui::button change_button (disp, _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () -30,ypos + 80);
@@ -1073,28 +1018,12 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::button save_button (disp, _("Save Hotkeys"));
 	save_button.set_location(xpos + width - save_button.width () - 30,ypos + 130);
 
-	bool redraw_all = true;
-
 	for(;;) {
 
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState (&mousex, &mousey);
-		const bool left_button = mouse_flags & SDL_BUTTON_LMASK;
-
-		if(redraw_all) {
-			menu_.redraw();
-			close_button.draw ();
-			change_button.draw();
-			save_button.draw();
-						
-			redraw_all = false;
-		};
-
-		if(close_button.process (mousex, mousey, left_button)) {
+		if (close_button.pressed())
 			break;
-		}
 
-		if(change_button.process (mousex, mousey, left_button)) {
+		if (change_button.pressed ()) {
 			// Lets change this hotkey......
 			SDL_Rect dlgr = {centerx-text_size.w/2-30,
 								centery-text_size.h/2 - 16,
@@ -1140,21 +1069,16 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 				menu_.change_item(menu_.selection(), 2, newhk.get_name());
 			};
-			redraw_all = true;
 		}
-		if (save_button.process(mousex, mousey, left_button))
-		{
+		if (save_button.pressed()) {
 			if (save_config == NULL) {
 				hotkey::save_hotkeys(prefs);
-			}
-			else {
+			} else {
 				hotkey::save_hotkeys(*save_config);
 			}
-			redraw_all = true;
 		}
 
-		menu_.process(mousex, mousey, left_button, false,
-			       false, false, false);
+		menu_.process();
 
 		events::pump();
 		events::raise_process_event();

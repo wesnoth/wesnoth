@@ -130,7 +130,7 @@ public:
 		SDL_FillRect(disp_.video().getSurface(),&rect,SDL_MapRGB(disp_.video().getSurface()->format,0,0,0));
 
 		menu_.assign(new gui::menu(disp_,details,false,area_.h/2));
-		menu_->set_loc(area_.x,area_.y);
+		menu_->set_location(area_.x,area_.y);
 		menu_->set_width(area_.w);
 	}
 	
@@ -148,7 +148,7 @@ public:
 		cancel_button_.assign(new gui::button(disp_,_("Cancel")));
 		cancel_button_->set_location(area.x+area.w - cancel_button_->width() - gui::ButtonHPadding,
 			                         area.y+area.h - cancel_button_->height() - gui::ButtonVPadding);
-		cancel_button_->draw();
+		events::raise_draw_event();
 	}
 
 	void clear_widgets() {
@@ -157,14 +157,11 @@ public:
 	}
 
 	lobby::RESULT process() {
-		int mousex, mousey;
-		const bool button = SDL_GetMouseState(&mousex,&mousey)&SDL_BUTTON_LMASK;
-		if(cancel_button_->process(mousex,mousey,button)) {
+		if (cancel_button_->pressed())
 			return lobby::QUIT;
-		}
 
 		if(menu_ != NULL) {
-			menu_->process(mousex,mousey,button,false,false,false,false);
+			menu_->process();
 		}
 
 		config reply;
@@ -712,11 +709,7 @@ leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
 
 void leader_preview_pane::process()
 {
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-	if(leader_combo_.process(mousex, mousey, left_button)) {
+	if (leader_combo_.changed()) {
 		set_dirty();
 	}
 }
@@ -806,7 +799,6 @@ void leader_preview_pane::set_selection(int selection)
 	selection_ = selection;
 	leaders_.update_leader_list(selection_);
 	set_dirty();
-	leader_combo_.set_dirty();
 }
 
 std::string leader_preview_pane::get_selected_leader()

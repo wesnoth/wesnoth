@@ -108,13 +108,15 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
 
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp,slider_rect);
+	gui::slider width_slider(disp);
+	width_slider.set_location(slider_rect);
 	width_slider.set_min(map_min_width);
 	width_slider.set_max(map_max_width);
 	width_slider.set_value(map_width);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp,slider_rect);
+	gui::slider height_slider(disp);
+	height_slider.set_location(slider_rect);
 	height_slider.set_min(map_min_height);
 	height_slider.set_max(map_max_height);
 	height_slider.set_value(map_height);
@@ -269,7 +271,8 @@ void preferences_dialog(display &disp, config &prefs) {
 	SDL_Rect slider_rect = { slider_left, scroll_pos, slider_right - slider_left, 10  };
 
 	slider_rect.y = scroll_pos;
-	gui::slider scroll_slider(disp,slider_rect);
+	gui::slider scroll_slider(disp);
+	scroll_slider.set_location(slider_rect);
 	scroll_slider.set_min(1);
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
@@ -415,13 +418,15 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
 
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp,slider_rect);
+	gui::slider width_slider(disp);
+	width_slider.set_location(slider_rect);
 	width_slider.set_min(map_min_width);
 	width_slider.set_max(map_max_width);
 	width_slider.set_value(map_width);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp,slider_rect);
+	gui::slider height_slider(disp);
+	height_slider.set_location(slider_rect);
 	height_slider.set_min(map_min_height);
 	height_slider.set_max(map_max_height);
 	height_slider.set_value(map_height);

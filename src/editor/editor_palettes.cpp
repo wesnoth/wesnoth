@@ -54,14 +54,16 @@ void terrain_palette::adjust_size() {
 	scroll_top();
 	const size_t button_height = 24;
 	const size_t button_palette_padding = 8;
-	set_location(size_specs_.palette_x, size_specs_.palette_y);
-	set_width(size_specs_.palette_w);
-	set_height(size_specs_.palette_h);
+	SDL_Rect rect = { size_specs_.palette_x, size_specs_.palette_y, size_specs_.palette_w, size_specs_.palette_h };
+	set_location(rect);
 	top_button_y_ = size_specs_.palette_y;
 	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
 	terrain_start_ = top_button_y_ + button_height + button_palette_padding;
 	const size_t space_for_terrains = size_specs_.palette_h -
 		(button_height + button_palette_padding) * 2;
+	rect.y = terrain_start_;
+	rect.h = space_for_terrains;
+	register_rectangle(rect);
 	const unsigned terrains_fitting =
 		(unsigned)(space_for_terrains / size_specs_.terrain_space) * 2;
 	const unsigned total_terrains = num_terrains();
@@ -72,7 +74,6 @@ void terrain_palette::adjust_size() {
 	bot_button_.set_location(button_x_, bot_button_y_);
 	top_button_.set_dirty();
 	bot_button_.set_dirty();
-	bg_backup();
 	set_dirty();
 }
 
@@ -295,6 +296,7 @@ void terrain_palette::draw(bool force) {
 	update_rect(loc);
 	set_dirty(false);
 }
+
 int terrain_palette::tile_selected(const int x, const int y) const {
 	for(unsigned int i = 0; i != nterrains_; i++) {
 		const int px = size_specs_.palette_x +

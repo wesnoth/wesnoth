@@ -20,35 +20,22 @@
 
 namespace gui {
 
-class combo
+class combo : public button
 {
 public:
 	combo(display& disp, const std::vector<std::string>& items);
-	void draw();
 
-	void set_location(int valx, int valy);
-	void set_width(int new_width);
 	void set_selected(int val);
 	void set_items(const std::vector<std::string>& items);
-
-	int width() const;
-	int height() const;
 	int selected() const;
+	bool changed();
 
-	bool process(int mousex, int mousey, bool button);
-
-	void enable(bool new_val);
-	bool enabled() const;
-
-	void set_dirty() { button_.set_dirty(); }
+protected:
+	virtual void process_event();
 
 private:
 	std::vector<std::string> items_;
-	int selected_;
-	display *display_;
-	gui::button button_;
-
-
+	int selected_, oldSelected_;
 }; //end class combo
 
 }

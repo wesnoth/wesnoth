@@ -238,7 +238,6 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 	}
 }
 
-static const SDL_Rect save_preview_pane_area = {-200,-400,200,400};
 static const int save_preview_border = 10;
 
 class save_preview_pane : public gui::preview_pane
@@ -248,8 +247,12 @@ public:
 	                  const std::vector<save_info>& info, const std::vector<config*>& summaries)
 		: gui::preview_pane(disp), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
 	{
-		set_location(save_preview_pane_area);
+		set_width(200);
+		set_height(400);
 	}
+
+	virtual void set_location(SDL_Rect const &rect);
+	using widget::set_location;
 
 	void draw();
 	void set_selection(int index) {
@@ -268,6 +271,12 @@ private:
 	int index_;
 	std::map<std::string,surface> map_cache_;
 };
+
+void save_preview_pane::set_location(SDL_Rect const &rect)
+{
+	widget::set_location(rect);
+	register_rectangle(rect);
+}
 
 void save_preview_pane::draw()
 {

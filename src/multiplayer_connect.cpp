@@ -442,7 +442,8 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		r.y = top+55+(60*side_num);
 		r.w = launch_.width()-5;
 		r.h = launch_.height();
-		sliders_gold_.push_back(gui::slider(*disp_, r));
+		sliders_gold_.push_back(gui::slider(*disp_));
+		sliders_gold_.back().set_location(r);
 		sliders_gold_.back().set_min(20);
 		sliders_gold_.back().set_max(1000);
 		sliders_gold_.back().set_increment(25);
@@ -582,10 +583,6 @@ lobby::RESULT mp_connect::process()
 
 	const config::child_itors sides = level_->child_range("side");
 
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
 	bool start_game = false;
 
 	bool level_changed = false;
@@ -597,23 +594,21 @@ lobby::RESULT mp_connect::process()
 		//Don't let user change this if a player is sitting
 		combos_type_[n].enable(combos_type_[n].selected() < 4);
 
-		int old_select = combos_type_[n].selected();
-		if(combos_type_[n].process(mousex, mousey, left_button)) {
-			if(combos_type_[n].selected() == 0) {
-				side["controller"] = "network";
-				side["description"] = "";
-			} else if(combos_type_[n].selected() == 1){
+		if (combos_type_[n].changed()) {
+			switch (combos_type_[n].selected()) {
+			case 1:
 				side["controller"] = "human";
 				side["description"] = "";
-			} else if(combos_type_[n].selected() == 2){
+				break;
+			case 2:
 				side["controller"] = "ai";
 				side["description"] = _("Computer Player");
-			} else if(combos_type_[n].selected() == 3) {
+				break;
+			case 3:
 				side["controller"] = "null";
 				side["description"] = "";
-			} else if(combos_type_[n].selected() == 4){
-				combos_type_[n].set_selected(old_select);
-			} else if(combos_type_[n].selected() == 5){
+				break;
+			case 5:
 				side["controller"] = "human";
 				side["description"] = preferences::login();
 				for(size_t m = 0; m != combos_type_.size(); ++m) {
@@ -626,7 +621,11 @@ lobby::RESULT mp_connect::process()
 						}
 					}
 				}
-			}else{
+				break;
+			case 4:
+				combos_type_[n].set_selected(0);
+			case 0:
+			default:
 				side["controller"] = "network";
 				side["description"] = "";
 			}
@@ -634,13 +633,12 @@ lobby::RESULT mp_connect::process()
 			level_changed = true;
 		}
 
-		if(combos_color_[n].process(mousex, mousey, left_button)) {
+		if (combos_color_[n].changed()) {
 			side["colour"] = lexical_cast_default<std::string>(combos_color_[n].selected()+1);
 		}
 
 			
-		old_select = combos_race_[n].selected();
-		if(combos_race_[n].process(mousex, mousey, left_button)) {
+		if (combos_race_[n].changed()) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
 			side["random_faction"] = "";
 			for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
@@ -650,13 +648,11 @@ lobby::RESULT mp_connect::process()
 			level_changed = true;
 
 			assert(!save_);
-			if (combos_race_[n].selected() != old_select) {
 				player_leaders_[n].update_leader_list(combos_race_[n].selected());
-			}
 		}
 
 		//Player leader
-		if(combos_leader_[n].process(mousex, mousey, left_button)) {
+		if (combos_leader_[n].changed()) {
 			assert(!save_);
 			std::stringstream str;
 			str << (combos_team_[n].selected()+1);
@@ -665,18 +661,17 @@ lobby::RESULT mp_connect::process()
 		}
 
 		//Player team
-		if(combos_team_[n].process(mousex, mousey, left_button)) {
+		if (combos_team_[n].changed()) {
 			std::stringstream str;
 			str << (combos_team_[n].selected()+1);
 			side["team_name"] = str.str();
 			level_changed = true;
 		}
 
-		if(combos_color_[n].process(mousex, mousey, left_button)) {
+		if (combos_color_[n].changed()) {
 			level_changed = true;
 		}
 
-		sliders_gold_[n].process();
 		if(!save_){
 			const int cur_playergold = sliders_gold_[n].value();
 			std::stringstream playergold;
@@ -699,7 +694,7 @@ lobby::RESULT mp_connect::process()
 		}
 	}
 
-	if(cancel_.process(mousex,mousey,left_button)) {
+	if (cancel_.pressed()) {
 		if(network::nconnections() > 0) {
 			config cfg;
 			cfg.add_child("leave_game");
@@ -709,7 +704,7 @@ lobby::RESULT mp_connect::process()
 		return lobby::QUIT;
 	}
 
-	if(ai_.process(mousex,mousey,left_button)) {
+	if (ai_.pressed()) {
 		for(size_t m = 0; m != combos_team_.size(); ++m) {
 			config& si = **(sides.first+m);
 			si["controller"] = "ai";
@@ -721,7 +716,7 @@ lobby::RESULT mp_connect::process()
 
 	launch_.enable(is_full());
 
-	if(launch_.process(mousex,mousey,left_button)) {
+	if (launch_.pressed()) {
 		const config::child_list& real_sides = era_cfg->get_children("multiplayer_side");
 
 		for(config::child_iterator side = sides.first; side != sides.second; ++side) {

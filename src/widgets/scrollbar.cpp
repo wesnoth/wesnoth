@@ -36,97 +36,141 @@ namespace {
 
 namespace gui {
 
-scrollbar::scrollbar(display& d, scrollable* callback)
-	: widget(d), mid_scaled_(NULL), groove_scaled_(NULL),
-	  callback_(callback), minimum_grip_height_(0), width_(0),
-	  highlight_(false), clicked_(false), dragging_(false),
-	  grip_position_(0), grip_height_(0), enabled_(false),
-	  groove_click_code_(0)
+scrollbar::scrollbar(display& d, widget const &pane, scrollable* callback)
+	: widget(d), pane_(pane), mid_scaled_(NULL), groove_scaled_(NULL), callback_(callback),
+	  uparrow_(d, "", button::TYPE_TURBO, "uparrow-button"),
+	  downarrow_(d, "", button::TYPE_TURBO, "downarrow-button"),
+	  state_(NORMAL), grip_position_(0), old_position_(0), grip_height_(0), full_height_(0)
 {
-	static const surface img(image::get_image(scrollbar_mid, 
-										image::UNSCALED));
+	static const surface img(image::get_image(scrollbar_mid, image::UNSCALED));
 	
 	if (img != NULL) {
-		width_ = img->w;
+		set_width(img->w);
 		// this is a bit rough maybe
 		minimum_grip_height_ = 2 * img->h;
-		grip_height_ = minimum_grip_height_;
 	}
 }
 
-void scrollbar::enable(bool en)
+void scrollbar::set_location(SDL_Rect const &rect)
 {
-	enabled_ = en;
+	widget::set_location(rect);
+	int uh = uparrow_.height(), dh = downarrow_.height();
+	uparrow_.set_location(rect.x, rect.y);
+	downarrow_.set_location(rect.x, rect.y + rect.h - dh);
+	SDL_Rect r = rect;
+	r.y += uh;
+	r.h -= uh + dh;
+	register_rectangle(r);
 }
 
-bool scrollbar::enabled() const 
+void scrollbar::hide(bool value)
 {
-	return enabled_;
-}
-		
-int scrollbar::get_width() const
-{
-	if (enabled()) 
-		return get_max_width();
-	else 
-		return 0;
+	widget::hide(value);
+	uparrow_.hide(value);
+	downarrow_.hide(value);
 }
 
-int scrollbar::get_max_width() const 
+unsigned scrollbar::get_position() const
 {
-	return width_;
+	return grip_position_;
 }
 
-int scrollbar::get_grip_height() const 
+void scrollbar::set_position(unsigned pos)
 {
-	return grip_height_;
+	if (pos > full_height_ - grip_height_)
+		pos = full_height_ - grip_height_;
+	if (pos == grip_position_)
+		return;
+	grip_position_ = pos;
+	uparrow_.enable(grip_position_ != 0);
+	downarrow_.enable(grip_position_ < full_height_ - grip_height_);
+	set_dirty();
 }
 
-bool scrollbar::set_grip_height(int h) 
+void scrollbar::adjust_position(unsigned pos)
 {
-	if (h < minimum_grip_height_ || h > location().h) {
-		return false;
-	}
-
-	if(h != grip_height_) {
-		grip_height_ = h;
-		set_dirty(true);
-	}
-
-	return true;
+	if (pos < grip_position_)
+		set_position(pos);
+	else if (pos >= grip_position_ + grip_height_)
+		set_position(pos - (grip_height_ - 1));
 }
 
-int scrollbar::get_minimum_grip_height() const 
+void scrollbar::move_position(int dep)
 {
-	return minimum_grip_height_;
+	int pos = grip_position_ + dep;
+	if (pos > 0)
+		set_position(pos);
+	else
+		set_position(0);
 }
-	
 
-SDL_Rect scrollbar::scroll_grip_area() const
+void scrollbar::set_shown_size(unsigned h)
 {
-	SDL_Rect res = {location().x, location().y+grip_position_, 
-					width_, grip_height_};
+	if (h > full_height_)
+		h = full_height_;
+	if (h == grip_height_)
+		return;
+	grip_height_ = h;
+	set_position(grip_position_);
+	set_dirty(true);
+}
+
+void scrollbar::set_full_size(unsigned h)
+{
+	if (h == full_height_)
+		return;
+	full_height_ = h;
+	set_shown_size(grip_height_);
+	set_position(grip_position_);
+	set_dirty(true);
+}
+
+void scrollbar::process_event()
+{
+	if (uparrow_.pressed())
+		move_position(-1);
+	if (downarrow_.pressed())
+		move_position(1);
+
+	if (grip_position_ == old_position_)
+		return;
+	old_position_ = grip_position_;
+	if (callback_)
+		callback_->scroll(grip_position_);
+}
+
+SDL_Rect scrollbar::groove_area() const
+{
+	SDL_Rect loc = location();
+	int uh = uparrow_.height();
+	loc.y += uh;
+	loc.h -= uh + downarrow_.height();
+	return loc;
+}
+
+SDL_Rect scrollbar::grip_area() const
+{
+	SDL_Rect const &loc = groove_area();
+	if (full_height_ == grip_height_)
+		return loc;
+	int h = (int)loc.h * grip_height_ / full_height_;
+	if (h < minimum_grip_height_)
+		h = minimum_grip_height_;
+	int y = loc.y + ((int)loc.h - h) * grip_position_ / (full_height_ - grip_height_);
+	SDL_Rect res = { loc.x, y, loc.w, h };
 	return res;
-
-}
-
-void scrollbar::redraw()
-{
-	draw();
 }
 
 void scrollbar::draw()
 {
-	if(!enabled() || !dirty())
+	if (hidden() || !dirty())
 		return;
 
-	set_dirty(false);
-	
-	const surface mid_img(image::get_image(highlight_ ? 
+	const surface mid_img(image::get_image(state_ != NORMAL ? 
 					scrollbar_mid_hl : scrollbar_mid, image::UNSCALED));
-	const surface bottom_img(image::get_image(highlight_ ? 
+	const surface bottom_img(image::get_image(state_ != NORMAL ? 
 					scrollbar_bottom_hl : scrollbar_bottom, image::UNSCALED));
-	const surface top_img(image::get_image(highlight_ ?
+	const surface top_img(image::get_image(state_ != NORMAL ?
 					scrollbar_top_hl : scrollbar_top, image::UNSCALED));
 
 	const surface top_grv(image::get_image(groove_top,image::UNSCALED));
@@ -134,15 +178,16 @@ void scrollbar::draw()
 	const surface bottom_grv(image::get_image(groove_bottom,image::UNSCALED));
 
 	if (mid_img == NULL || bottom_img == NULL || top_img == NULL
-	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL){
+	 || top_grv == NULL || bottom_grv == NULL || mid_grv == NULL) {
 		std::cerr << "Failure to load scrollbar image.\n";
 		return;
 	}
 
-	int mid_height = grip_height_ - top_img->h - bottom_img->h;
+	SDL_Rect grip = grip_area();
+	int mid_height = grip.h - top_img->h - bottom_img->h;
 	if (mid_height <= 0) {
 		// for now, minimum size of the middle piece is 1. This should
-		// never really be encountered, and if it is, it's an symptom
+		// never really be encountered, and if it is, it's a symptom
 		// of a larger problem, I think.
 		mid_height = 1;
 	}
@@ -151,12 +196,13 @@ void scrollbar::draw()
 		mid_scaled_.assign(scale_surface_blended(mid_img,mid_img->w,mid_height));
 	}
 
-	int groove_height = location().h - top_grv->h - bottom_grv->h;
+	SDL_Rect groove = groove_area();
+	int groove_height = groove.h - top_grv->h - bottom_grv->h;
 	if (groove_height <= 0) {
 		groove_height = 1;
 	}
 
-	if(groove_scaled_.null() || groove_scaled_->h != groove_height) {
+	if (groove_scaled_.null() || groove_scaled_->h != groove_height) {
 		groove_scaled_.assign(scale_surface_blended(mid_grv,mid_grv->w,groove_height));
 	}
 
@@ -165,7 +211,7 @@ void scrollbar::draw()
 		return;
 	}
 
-	if (grip_height_ > location().h) {
+	if (grip.h > groove.h) {
 		std::cerr << "abort draw scrollbar: grip too large\n";
 		return;
 	}
@@ -174,118 +220,80 @@ void scrollbar::draw()
 
 	bg_restore();
 
-	int xpos = location().x;
-
 	// draw scrollbar "groove"
-	disp().blit_surface(xpos, location().y, top_grv);
-	disp().blit_surface(xpos, location().y + top_grv->h, groove_scaled_);
-	disp().blit_surface(xpos, location().y + top_grv->h + groove_height,
-						bottom_grv);
+	disp().blit_surface(groove.x, groove.y, top_grv);
+	disp().blit_surface(groove.x, groove.y + top_grv->h, groove_scaled_);
+	disp().blit_surface(groove.x, groove.y + top_grv->h + groove_height, bottom_grv);
 
 	// draw scrollbar "grip"
-	SDL_Rect scrollbar = scroll_grip_area();
-	xpos = scrollbar.x;
-	disp().blit_surface(xpos, scrollbar.y, top_img); 
-	disp().blit_surface(xpos, scrollbar.y + top_img->h, mid_scaled_);
-	disp().blit_surface(xpos, scrollbar.y + top_img->h + mid_height,
-						bottom_img);
+	disp().blit_surface(grip.x, grip.y, top_img);
+	disp().blit_surface(grip.x, grip.y + top_img->h, mid_scaled_);
+	disp().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
 
-	update_rect(location());
+	set_dirty(false);
+	update_rect(groove);
 }	
 
-bool scrollbar::set_grip_position(int pos) 
+void scrollbar::handle_event(const SDL_Event& event)
 {
-	if (pos < 0)
-		pos = 0;
-	if (pos >= location().h - grip_height_) 
-		pos = location().h - grip_height_;
+	if (hidden())
+		return;
 
-	if(pos != grip_position_) {
-		grip_position_ = pos;
+	STATE new_state = state_;
+	SDL_Rect const &grip = grip_area();
+	SDL_Rect const &groove = groove_area();
+
+	switch (event.type) {
+	case SDL_MOUSEBUTTONUP:
+	{
+		SDL_MouseButtonEvent const &e = event.button;
+		bool on_grip = point_in_rect(e.x, e.y, grip);
+		new_state = on_grip ? ACTIVE : NORMAL;
+		break;
+	}
+	case SDL_MOUSEBUTTONDOWN:
+	{
+		SDL_MouseButtonEvent const &e = event.button;
+		bool on_grip = point_in_rect(e.x, e.y, grip);
+		bool on_groove = point_in_rect(e.x, e.y, groove);
+		bool on_scrollable = point_in_rect(e.x, e.y, pane_.location()) || on_groove;
+		if (on_scrollable && e.button == SDL_BUTTON_WHEELDOWN) {
+			move_position(1);
+		} else if (on_scrollable && e.button == SDL_BUTTON_WHEELUP) {
+			move_position(-1);
+		} else if (on_grip && e.button == SDL_BUTTON_LEFT) {
+			mousey_on_grip_ = e.y - grip.y;
+			new_state = DRAGGED;
+		} else if (on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h) {
+			if (e.y < grip.y)
+				move_position(-grip_height_);
+			else
+				move_position(grip_height_);
+		}
+		break;
+	}
+	case SDL_MOUSEMOTION:
+	{
+		SDL_MouseMotionEvent const &e = event.motion;
+		if (state_ == NORMAL || state_ == ACTIVE) {
+			bool on_grip = point_in_rect(e.x, e.y, grip);
+			new_state = on_grip ? ACTIVE : NORMAL;
+		} else if (state_ == DRAGGED && groove.h != grip.h) {
+			int y_dep = e.y - grip.y - mousey_on_grip_;
+			int dep = y_dep * (full_height_ - grip_height_) / (int)(groove.h - grip.h);
+			move_position(dep);
+		}
+		break;
+	}
+	default:
+		break;
+	}
+
+	if ((new_state == NORMAL) ^ (state_ == NORMAL)) {
 		set_dirty();
-	}
-
-	return true;
-}
-
-int scrollbar::get_grip_position() const
-{
-	return grip_position_;
-}
-
-int scrollbar::groove_clicked()
-{
-	int res = groove_click_code_;
-	groove_click_code_ = 0;
-	return res;
-}
-
-void scrollbar::process()
-{
-	if (!enabled()) 
-		return; 
-
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex, &mousey);
-	const bool button = mouse_flags & SDL_BUTTON_LMASK;
-	static int mousey_on_grip = 0;
-
-	const SDL_Rect& hit_area = scroll_grip_area();
-	const bool barx= mousex > hit_area.x && mousex <= hit_area.x+hit_area.w;
-	const bool gripy = mousey > hit_area.y && mousey <= hit_area.y+hit_area.h;
-	const bool bary = mousey > location().y && 
-					  mousey <= location().y+location().h;
-
-	const bool on = barx && gripy;
-
-	bool start_dragging = (button && !clicked_ && on);
-
-	if(start_dragging) {
-		dragging_ = true;
-		mousey_on_grip = mousey - grip_position_;
-	}
-
-	if(!button) {
-		dragging_ = false;
-	}
-	
-	if(highlight_ != on) {
-		highlight_ = on;
 		mid_scaled_.assign(NULL);
-		set_dirty(true);
 	}
-
-	if(dragging_) {
-		// mouse over grip & button down
-		int new_position = grip_position_;
-		highlight_ = true;
-		new_position = mousey - mousey_on_grip;
-		
-		if(new_position < 0)
-			new_position = 0;
-		if(new_position > location().h - grip_height_)
-			new_position = location().h - grip_height_;
-
-		if(new_position != grip_position_) {
-			grip_position_ = new_position;
-			set_dirty(true);
-
-			callback_->scroll(grip_position_);
-		}
-	}
-	else if (button && barx && bary && (!clicked_)) {
-		if (mousey > hit_area.y + hit_area.h) {
-			// mouse on groove below grip & button down
-			groove_click_code_ = 1;
-		}
-		else {
-			// mouse on groove above grip & button down
-			groove_click_code_ = -1;
-		}
-	}
-
-	clicked_ = button;
-	draw();
+	state_ = new_state;
 }
-	
+
 }

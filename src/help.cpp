@@ -153,17 +153,7 @@ struct create_section {
 class help_menu : public gui::menu {
 public:
 	help_menu(display& disp, const section &toplevel, int max_height=-1);
-	void bg_backup();
-	void bg_restore();
-	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-	            bool page_up, bool page_down, int select_item=-1);
-
-	/// Overloaded from menu so that the background can be saved.
-	void set_loc(int x, int y);
-	/// Overloaded from menu so that the background can be saved.
-	void set_width(int w);
-	/// Overloaded from menu so that the background can be saved.
-	void set_max_height(const int new_height);
+	int process();
 
 	/// Make the topic the currently selected one, and expand all
 	/// sections that need to be expanded to show it.
@@ -173,8 +163,6 @@ public:
 	/// NULL. If one topic is returned, it will not be returned again,
 	/// if it is not re-chosen.
 	const topic *chosen_topic();
-protected:
-	void handle_event(const SDL_Event &event);
 
 private:
 	/// Information about an item that is visible in the menu.
@@ -220,16 +208,13 @@ private:
 	/// section was expanded, otherwise untouched.
 	bool select_topic_internal(const topic &t, const section &sec);
 
-	display &disp_;
 	std::vector<visible_item> visible_items_;
 	const section &toplevel_;
 	std::set<const section*> expanded_; 
 	surface_restorer restorer_;
 	SDL_Rect rect_;
 	topic const *chosen_topic_;
-	int internal_width_;
 	visible_item selected_item_;
-	bool selected_;
 };
 
 /// Thrown when the help system fails to parse something.
@@ -255,15 +240,9 @@ public:
 
 	void scroll(int pos);
 
-	void set_dirty(bool dirty);
+	virtual void set_location(const SDL_Rect& rect);
+	using gui::widget::set_location;
 
-	/// Scroll the contents up an amount. If how_much is below zero the
-	/// amount will depend on the height.
-	void scroll_up(const int how_much=-1);
-
-	/// Scroll the contents down an amount. If how_much is below zero
-	/// the amount will depend on the height.
-	void scroll_down(const int how_much=-1);
 private:
 	enum ALIGNMENT {LEFT, MIDDLE, RIGHT, HERE};
 	/// Convert a string to an alignment. Throw parse_error if
@@ -326,16 +305,7 @@ private:
 	void handle_jump_cfg(const config &cfg);
 	void handle_format_cfg(const config &cfg);
 
-	void handle_event(const SDL_Event &event);
 	void draw();
-	void process();
-
-	/// Update the scrollbar to take account for the current items.
-	void update_scrollbar();
-
-	/// Get the current amount of scrolling that should be
-	/// added/substracted from the locations to get the desired effect.
-	unsigned get_scroll_offset() const;
 
 	/// Add an item with text. If ref_dst is something else than the
 	/// empty string, the text item will be underlined to show that it
@@ -381,7 +351,6 @@ private:
 
 	std::list<item> items_;
 	std::list<item *> last_row_;
-	display &disp_;
 	const section &toplevel_;
 	topic const *shown_topic_;
 	const int title_spacing_;
@@ -390,8 +359,6 @@ private:
 	const unsigned min_row_height_;
 	unsigned curr_row_height_;
 	gui::scrollbar scrollbar_;
-	bool use_scrollbar_;
-	gui::button uparrow_, downarrow_;
 	/// The height of all items in total.
 	int contents_height_;
 };
@@ -403,25 +370,24 @@ public:
 
 	// Overloaded from widget so that the layout may be adjusted to fit
 	// the new dimensions.
-	void set_location(const SDL_Rect& rect);
-	void set_location(int x, int y);
-	void set_width(int w);
-	void set_height(int h);
+	virtual void set_location(const SDL_Rect& rect);
+	using gui::widget::set_location;
 
-	void set_dirty(bool dirty);
 	void adjust_layout();
 
-	void process();
 	/// Display the topic with the specified identifier. Open the menu
 	/// on the right location and display the topic in the text area.
 	void show_topic(const std::string &topic_id);
+
+protected:
+	virtual void process_event();
+	virtual void handle_event(const SDL_Event &event);
 
 private:
 	/// Update the current cursor, set it to the reference cursor if
 	/// mousex, mousey is over a cross-reference, otherwise, set it to
 	/// the normal cursor.
 	void update_cursor();
-	void handle_event(const SDL_Event &event);
 	void show_topic(const topic &t, bool save_in_history=true);
 	/// Move in the topic history. Pop an element from from and insert
 	/// it in to. Pop at the fronts if the maximum number of elements is
@@ -1486,26 +1452,14 @@ void section::clear() {
 	sections.clear();
 }
 
-help_menu::help_menu(display& disp, const section &toplevel, int max_height)
-	: menu(disp, empty_string_vector, false, max_height), disp_(disp),
-	  toplevel_(toplevel), chosen_topic_(NULL), internal_width_(0), selected_item_(&toplevel, ""),
-	  selected_(false) {
-	bg_backup();
+help_menu::help_menu(display &disp, section const &toplevel, int max_height)
+	: menu(disp, empty_string_vector, false, max_height),
+	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "") {
 	update_visible_items(toplevel_);
 	display_visible_items();
-	if (!visible_items_.empty()) {
+	if (!visible_items_.empty())
 		selected_item_ = visible_items_.front();
-	}
 }
-
-void help_menu::bg_backup() {
-	restorer_ = surface_restorer(&disp_.video(), get_rect());
-}
-
-void help_menu::bg_restore() {
-	restorer_.restore();
-}
-
 
 bool help_menu::expanded(const section &sec) {
 	return expanded_.find(&sec) != expanded_.end();
@@ -1567,52 +1521,6 @@ std::string help_menu::get_string_to_show(const topic &topic, const unsigned lev
 	return to_show.str();
 }
 
-void help_menu::handle_event(const SDL_Event &event) {
-	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
-	// Only handle events if we have focus, that is, the mouse is within
-	// the menu.
-	if (point_in_rect(mousex, mousey, get_rect())) {
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			SDL_MouseButtonEvent mouse_event = event.button;
-			if (mouse_event.button == SDL_BUTTON_LEFT) {
-				if (mousex < get_rect().x + item_area_width()) {
-					// See to that only clicks on items are noticed, not
-					// scrollbar clicks.
-					selected_ = true;
-				}
-			}
-		}
-		else if (event.type == SDL_KEYDOWN) {
-			if (event.key.keysym.sym == SDLK_RETURN) {
-				// Select items on return press too.
-				selected_ = true;
-			}
-		}
-		menu::handle_event(event);
-	}
-}
-
-void help_menu::set_loc(int x, int y) {
-	menu::set_loc(x, y);
-	bg_backup();
-	display_visible_items();
-}
-
-void help_menu::set_width(int w) {
-	menu::set_width(w);
-	set_max_width(w);
-	bg_backup();
-	internal_width_ = w;
-	display_visible_items();
-}
-
-void help_menu::set_max_height(const int new_height) {
-	menu::set_max_height(new_height);
-	bg_backup();
-	display_visible_items();
-}
-
 bool help_menu::select_topic_internal(const topic &t, const section &sec) {
 	topic_list::const_iterator tit =
 		std::find(sec.topics.begin(), sec.topics.end(), t);
@@ -1648,25 +1556,20 @@ void help_menu::select_topic(const topic &t) {
 	}
 }
 	
-int help_menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-					   bool page_up, bool page_down, int select_item) {
-	int res = menu::process(x, y, button, up_arrow, down_arrow, page_up, page_down, select_item);
-	if (!visible_items_.empty() && selection() >= 0
-		&& (unsigned)selection() < visible_items_.size()) {
-		selected_item_ = visible_items_[selection()];
- 		if (selected_) {
-			selected_ = false;
- 			if (selected_item_.sec != NULL) {
- 				// Open or close a section if it is clicked.
- 				expanded(*selected_item_.sec) ? contract(*selected_item_.sec)
- 					: expand(*selected_item_.sec);
- 				update_visible_items(toplevel_);
- 				display_visible_items();
- 			}
- 			else if (selected_item_.t != NULL) {
- 				/// Choose a topic if it is clicked.
- 				chosen_topic_ = selected_item_.t;
- 			}
+int help_menu::process() {
+	int res = menu::process();
+	if (double_clicked())
+		res = selection();
+	if (!visible_items_.empty() && (unsigned)res < visible_items_.size()) {
+		selected_item_ = visible_items_[res];
+		if (selected_item_.sec != NULL) {
+			// Open or close a section if it is clicked.
+			expanded(*selected_item_.sec) ? contract(*selected_item_.sec) : expand(*selected_item_.sec);
+			update_visible_items(toplevel_);
+			display_visible_items();
+		} else if (selected_item_.t != NULL) {
+			/// Choose a topic if it is clicked.
+			chosen_topic_ = selected_item_.t;
 		}
 	}
 	return res;
@@ -1679,18 +1582,15 @@ const topic *help_menu::chosen_topic() {
 }
 	
 void help_menu::display_visible_items() {
-	bg_restore();
 	std::vector<std::string> menu_items;
-	std::vector<visible_item>::const_iterator items_it;
-	for (items_it = visible_items_.begin(); items_it != visible_items_.end(); items_it++) {
-		std::string to_show = (*items_it).visible_string;
-		if (selected_item_ == *items_it) {
+	for(std::vector<visible_item>::const_iterator items_it = visible_items_.begin(),
+		 end = visible_items_.end(); items_it != end; ++items_it) {
+		std::string to_show = items_it->visible_string;
+		if (selected_item_ == *items_it)
 			to_show = std::string("*") + to_show;
-		}
 		menu_items.push_back(to_show);
 	}
 	set_items(menu_items, false, true);
-	menu::set_width(internal_width_);
 }
 
 help_menu::visible_item::visible_item(const section *_sec, const std::string &vis_string) :
@@ -1712,22 +1612,26 @@ bool help_menu::visible_item::operator==(const visible_item &vis_item) const {
 }
 
 help_text_area::help_text_area(display &disp, const section &toplevel)
-	: gui::widget(disp), disp_(disp), toplevel_(toplevel), shown_topic_(NULL),
+	: gui::widget(disp), toplevel_(toplevel), shown_topic_(NULL),
 	  title_spacing_(16), curr_loc_(0, 0),
 	  min_row_height_(font::get_max_height(normal_font_size)), curr_row_height_(min_row_height_),
-	  scrollbar_(disp, this), use_scrollbar_(false),
-	  uparrow_(disp,"",gui::button::TYPE_PRESS,"uparrow-button"),
-	  downarrow_(disp,"",gui::button::TYPE_PRESS,"downarrow-button"),
-	  contents_height_(0)
+	  scrollbar_(disp, *this, this), contents_height_(0)
 {}
+
+void help_text_area::set_location(SDL_Rect const &rect) {
+	widget::set_location(rect);
+	SDL_Rect r = rect;
+	int w = scrollbar_.width();
+	r.w -= w;
+	register_rectangle(r);
+	r.x += r.w;
+	r.w = w;
+	scrollbar_.set_location(r);
+}
 
 void help_text_area::show_topic(const topic &t) {
 	bg_restore();
 	shown_topic_ = &t;
-	scrollbar_.set_grip_position(0);
-	// A new topic will be shown, we do not know yet if a new scrollbar
-	// is needed.
-	use_scrollbar_ = false;
 	set_items(t.text, t.title);
 	set_dirty(true);
 }
@@ -1771,19 +1675,10 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 		contents_height_ = title_spacing_;
 		down_one_line();
 	}
-	bool retry = false;
 	// Parse and add the text.
 	std::vector<std::string>::const_iterator it;
 	for (it = parsed_items.begin(); it != parsed_items.end(); it++) {
 		if (*it != "" && (*it)[0] == '[') {
-			if (contents_height_ > (int)height() && !use_scrollbar_) {
-				// The items did not fit, we need a
-				// scrollbar. Everything has to be redone since the
-				// width is less now and items added before may not fit.
-				retry = true;
-				use_scrollbar_ = true;
-				break;
-			}
 			// Should be parsed as WML.
 			try {
 				config cfg(*it);
@@ -1827,15 +1722,10 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 		}
 	}
 	down_one_line(); // End the last line.
-	if (contents_height_ > (int)height() && !use_scrollbar_) {
-		// Last line caused us to have to use a scrollbar.
-		use_scrollbar_ = true;
-		retry = true;
-	}
-	if (retry) {
-		set_items(parsed_items, title);
-	}
-	update_scrollbar();
+	int h = height();
+	scrollbar_.set_full_size(contents_height_);
+	scrollbar_.set_shown_size(h);
+	scrollbar_.hide(h >= contents_height_);
 }
 
 void help_text_area::handle_ref_cfg(const config &cfg) {
@@ -1944,8 +1834,7 @@ void help_text_area::handle_format_cfg(const config &cfg) {
 	if (cfg["font_size"] != "") {
 		try {
 			font_size = lexical_cast<int, std::string>(cfg["font_size"]);
-		}
-		catch (bad_lexical_cast) {
+		} catch (bad_lexical_cast) {
 			throw parse_error("Invalid font_size in format markup.");
 		}
 	}
@@ -1953,60 +1842,16 @@ void help_text_area::handle_format_cfg(const config &cfg) {
 	add_text_item(text, "", font_size, bold, italic, color);
 }
 
-void help_text_area::update_scrollbar() {
-	if (!use_scrollbar_) {
-		scrollbar_.enable(false);
-		downarrow_.hide(true);
-		uparrow_.hide(true);
-		return;
-	}
-	uparrow_.set_location(location().x + width() - uparrow_.width(), location().y);
-	downarrow_.set_location(location().x + width() - downarrow_.width(),
-							location().y + location().h - downarrow_.height());
-	const int scrollbar_height = height() - uparrow_.height() - downarrow_.height();
-	scrollbar_.enable(true);
-	scrollbar_.set_location(location().x + width() - scrollbar_.get_width(),
-							location().y + uparrow_.height());
-	scrollbar_.set_height(scrollbar_height);
-	scrollbar_.set_width(scrollbar_.get_max_width()); // Needed to update the screen.
-	float pos_percent = (float)scrollbar_height / (float)contents_height_;
-	int grip_height = (int)(pos_percent * scrollbar_height);
-	const int min_height = scrollbar_.get_minimum_grip_height();
-	if (grip_height < min_height) {
-		grip_height = min_height;
-	}
-	if (grip_height > (int)height()) {
-		std::cerr << "Strange. For some reason I want my scrollbar"
-				  << " to be larger than me!\n\n";
-		grip_height = height();
-	}
-	scrollbar_.set_grip_height(grip_height);
-	scrollbar_.set_grip_position(0);
-}
-
-void help_text_area::set_dirty(bool dirty) {
-	widget::set_dirty(dirty);
-	if (dirty) {
-		scrollbar_.set_dirty(true);
-		uparrow_.set_dirty(true);
-		downarrow_.set_dirty(true);
-	}
-}
-
 int help_text_area::text_width() const {
-	if (use_scrollbar_) {
-		return width() - scrollbar_.get_max_width();
-	}
-	return width();
+	return width() - scrollbar_.width();
 }
 
 void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
 								   int _font_size, bool bold, bool italic,
 								   SDL_Color text_color) {
 	const int font_size = _font_size < 0 ? normal_font_size : _font_size;
-	if (text == "") {
+	if (text.empty())
 		return;
-	}
 	const int remaining_width = get_remaining_width();
 	size_t first_word_start = text.find_first_not_of(" ");
 	if (first_word_start == std::string::npos) {
@@ -2218,115 +2063,36 @@ int help_text_area::get_remaining_width() {
 	return total_w - curr_loc_.first;
 }
 
-unsigned help_text_area::get_scroll_offset() const {
-	const int scrollbar_pos = scrollbar_.get_grip_position();
-	float pos_percent = scrollbar_.height() / (float)contents_height_;
-	unsigned to_sub = 0;
-	if (pos_percent > 0) {
-		to_sub = (unsigned)(scrollbar_pos / pos_percent);
-	}
-	return to_sub;
-}
-
 void help_text_area::draw() {
-	if (dirty()) {
-		bg_restore();
-		SDL_Rect clip_rect = { location().x, location().y, text_width(), height() };
-		const int scrollbar_pos = scrollbar_.get_grip_position();
-		uparrow_.hide(scrollbar_pos == 0 || !scrollbar_.enabled());
-		downarrow_.hide(scrollbar_pos + scrollbar_.get_grip_height() == (int)scrollbar_.height()
-						|| !scrollbar_.enabled());
-		surface const screen = disp_.video().getSurface();
-		clip_rect_setter clip_rect_set(screen, clip_rect);
-		std::list<item>::const_iterator it;
-		for (it = items_.begin(); it != items_.end(); it++) {
-			SDL_Rect dst = (*it).rect;
-			dst.y -= get_scroll_offset();
-			if (dst.y < (int)height() && dst.y + (*it).rect.h > 0) {
-				dst.x += location().x;
-				dst.y += location().y;
-				if ((*it).box) {
-					for (int i = 0; i < box_width; i++) {
-						gui::draw_rectangle(dst.x, dst.y, (*it).rect.w - i * 2, (*it).rect.h - i * 2,
-											0, screen);
-						dst.x++;
-						dst.y++;
-					}
-				}
-				SDL_BlitSurface((*it).surf, NULL, screen, &dst);
-			}
-		}
-		update_rect(location());
-		scrollbar_.set_dirty(true);
-		set_dirty(false);
-	}
-}
-
-void help_text_area::process() {
-	if (uparrow_.pressed()) {
-		scroll_up();
-	}
-	if (downarrow_.pressed()) {
-		scroll_down();
-	}
-}
-
-void help_text_area::scroll_up(int how_much) {
-	if (use_scrollbar_) {
-		// Only allow scrolling when we have a scrollbar.
-		const int amount = how_much < 0 ? height() / 50 : how_much;
-		scrollbar_.set_grip_position(scrollbar_.get_grip_position() - amount);
-		set_dirty(true);
-	}
-}
-
-void help_text_area::scroll_down(int how_much) {
-	if (use_scrollbar_) {
-		// Only allow scrolling when we have a scrollbar.
-		const int amount = how_much < 0 ? height() / 50 : how_much;
-		scrollbar_.set_grip_position(scrollbar_.get_grip_position() + amount);
-		set_dirty(true);
-	}
-}
-
-void help_text_area::handle_event(const SDL_Event &event) {
-	if(event.type == SDL_MOUSEMOTION) {
-		// If the mouse has moved, check if this widget still has focus or not.
-		int mousex, mousey;
-		SDL_GetMouseState(&mousex,&mousey);
-		if (point_in_rect(mousex, mousey, location())) {
-			if (!focus()) {
-				set_focus(true);
-				// wiget::set_focus will set everything dirty, so we
-				// need to redraw the contents.
-				set_dirty(true);
-			}
-		}
-		else {
-			if (focus()) {
-				set_focus(false);
-				// wiget::set_focus will set everything dirty, so we
-				// need to redraw the contents.
-				set_dirty(true);
-			}
-		}
+	if (!dirty())
 		return;
-	}
-	if (focus()) {
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			// Scroll up/down when the mouse wheel is used.
-			SDL_MouseButtonEvent mouse_event = event.button;
-			if (mouse_event.button == SDL_BUTTON_WHEELUP) {
-				scroll_up();
+	SDL_Rect const &loc = location();
+	SDL_Rect clip_rect = { loc.x, loc.y, text_width(), loc.h };
+	bg_restore(clip_rect);
+	surface const screen = disp().video().getSurface();
+	clip_rect_setter clip_rect_set(screen, clip_rect);
+	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
+		SDL_Rect dst = it->rect;
+		dst.y -= scrollbar_.get_position();
+		if (dst.y < (int)loc.h && dst.y + it->rect.h > 0) {
+			dst.x += loc.x;
+			dst.y += loc.y;
+			if (it->box) {
+				for (int i = 0; i < box_width; i++) {
+					gui::draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
+					                    0, screen);
+					dst.x++;
+					dst.y++;
+				}
 			}
-			if (mouse_event.button == SDL_BUTTON_WHEELDOWN) {
-				scroll_down();
-			}
+			SDL_BlitSurface(it->surf, NULL, screen, &dst);
 		}
 	}
+	update_rect(clip_rect);
+	set_dirty(false);
 }
 
-void help_text_area::scroll(int pos) {
+void help_text_area::scroll(int) {
 	// Nothing will be done on the actual scroll event. The scroll
 	// position is checked when drawing instead and things drawn
 	// accordingly.
@@ -2341,7 +2107,7 @@ std::string help_text_area::ref_at(const int x, const int y) {
 	const int local_x = x - location().x;
 	const int local_y = y - location().y;
 	if (local_y < (int)height() && local_y > 0) {
-		const int cmp_y = local_y + get_scroll_offset();
+		const int cmp_y = local_y + scrollbar_.get_position();
 		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));
 		if (it != items_.end()) {
@@ -2393,7 +2159,7 @@ void help_browser::adjust_layout() {
 	const int forward_button_y = back_button_y;
 
 	menu_.set_width(menu_w);
-	menu_.set_loc(menu_x, menu_y);
+	menu_.set_location(menu_x, menu_y);
 	menu_.set_max_height(menu_h);
 	menu_.set_max_width(menu_w);
 
@@ -2407,53 +2173,19 @@ void help_browser::adjust_layout() {
 	set_dirty(true);
 }
 
-void help_browser::set_dirty(bool dirty) {
-	widget::set_dirty(dirty);
-	if (dirty) {
-		update_cursor();
-		forward_button_.set_dirty();
-		back_button_.set_dirty();
-		menu_.set_dirty();
-		text_area_.set_dirty(true);
-	}
-}
-
 void help_browser::set_location(const SDL_Rect& rect) {
 	widget::set_location(rect);
 	adjust_layout();
 }
 
-void help_browser::set_location(int x, int y) {
-	widget::set_location(x, y);
-	adjust_layout();
-}
-
-void help_browser::set_width(int w) {
-	widget::set_width(w);
-	adjust_layout();
-}
-
-void help_browser::set_height(int h) {
-	widget::set_height(h);
-	adjust_layout();
-}
-
-void help_browser::process() {
+void help_browser::process_event() {
 	CKey key;
 	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	SDL_GetMouseState(&mousex,&mousey);
 
-	const bool new_left_button = mouse_flags&SDL_BUTTON_LMASK;
-	
-	const bool new_up_arrow = key[SDLK_UP];
-	const bool new_down_arrow = key[SDLK_DOWN];
-	
-	const bool new_page_up = key[SDLK_PAGEUP];
-	const bool new_page_down = key[SDLK_PAGEDOWN];
 	/// Fake focus functionality for the menu, only process it if it has focus.
-	if (point_in_rect(mousex, mousey, menu_.get_rect())) {
-		menu_.process(mousex, mousey, new_left_button, new_up_arrow,
-					  new_down_arrow, new_page_up, new_page_down, -1);
+	if (point_in_rect(mousex, mousey, menu_.location())) {
+		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
 		if (chosen_topic != NULL && chosen_topic != shown_topic_) {
 			/// A new topic has been chosen in the menu, display it.

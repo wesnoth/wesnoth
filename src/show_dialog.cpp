@@ -682,7 +682,7 @@ int show_dialog(display& disp, surface image,
 	const int menu_xpos = xloc+image_width+left_padding+image_h_padding;
 	const int menu_ypos = yloc+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget.location().h + top_padding : 0);
 	if(menu_.height() > 0) {
-		menu_.set_loc(menu_xpos,menu_ypos);
+		menu_.set_location(menu_xpos,menu_ypos);
 	}
 
 	if(image != NULL) {
@@ -751,12 +751,6 @@ int show_dialog(display& disp, surface image,
 		const bool new_page_up = key[SDLK_PAGEUP];
 		const bool new_page_down = key[SDLK_PAGEDOWN];
 
-		int select_item = -1;
-		for(int item = 0; item != 10; ++item) {
-			if(key['1' + item])
-				select_item = item;
-		}
-
 		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
 		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY || type == CLOSE_ONLY)) {
 
@@ -806,12 +800,7 @@ int show_dialog(display& disp, surface image,
 		first_time = false;
 
 		if(menu_.height() > 0) {
-			const int res = menu_.process(mousex,mousey,new_left_button,
-			                              !up_arrow && new_up_arrow,
-			                              !down_arrow && new_down_arrow,
-			                              !page_up && new_page_up,
-			                              !page_down && new_page_down,
-			                              select_item);
+			const int res = menu_.process();
 			if(res != -1)
 			{
 				return res;	
@@ -863,8 +852,7 @@ int show_dialog(display& disp, surface image,
 		}
 
 		for(unsigned int n = 0; n != check_buttons.size(); ++n) {
-			const bool pressed = check_buttons[n].process(mousex,mousey,left_button);
-			check_buttons[n].draw();
+			const bool pressed = check_buttons[n].pressed();
 
 			if(options != NULL && n < options->size()) {
 				(*options)[n].checked = check_buttons[n].checked();

@@ -26,7 +26,7 @@ namespace gui {
 class slider : public widget
 {
 public:
-	slider(display& d, const SDL_Rect& rect);
+	slider(display& d);
 
 	void set_min(int value);
 	void set_max(int value);
@@ -37,20 +37,26 @@ public:
 	int max_value() const;
 	int min_value() const;
 
-	void process();
+	virtual void set_location(SDL_Rect const &rect);
+
+protected:
+	virtual void handle_event(const SDL_Event& event);
+	virtual void draw();
 
 private:
+	void mouse_motion(const SDL_MouseMotionEvent& event);
+	void mouse_down(const SDL_MouseButtonEvent& event);
+	void set_slider_position(int x);
 	SDL_Rect slider_area() const;
-	void draw();
+	surface image_, highlightedImage_;
 
 	int min_;
 	int max_;
 	int value_;
 	int increment_;
 
-	bool highlight_;
-	bool clicked_;
-	bool dragging_;
+	enum STATE { UNINIT, NORMAL, ACTIVE, CLICKED, DRAGGED };
+	STATE state_;
 };
 
 }

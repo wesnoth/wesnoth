@@ -15,27 +15,14 @@
 
 namespace gui {
 
-class menu : public events::handler, public scrollable
+class menu : public widget, public scrollable
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
 	     bool click_selects=false, int max_height=-1, int max_width=-1);
 
-	int height() const;
-	int width() const;
-	/// Return the width of the area where the items are. That is, the
-	/// width excluding the scrollbar.
-	int item_area_width() const;
 	int selection() const;
 
-	void set_loc(int x, int y);
-	void set_width(int w);
-	// Get the rect bounding the menu. If the max_height/max_width is
-	// set, use those, otherwise use the current values.
-	SDL_Rect get_rect() const;
-
-	void redraw(); //forced redraw
-	
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,std::string str);
 
@@ -49,15 +36,14 @@ public:
 				   bool keep_viewport=false);
 
 	/// Set a new max height for this menu. Note that this does not take
-	/// effect immideately, only after certain operations that clear
+	/// effect immediately, only after certain operations that clear
 	/// everything, such as set_items().
 	void set_max_height(const int new_max_height);
 	void set_max_width(const int new_max_width);
 
 	size_t nitems() const { return items_.size(); }
 	
-	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
-	            bool page_up, bool page_down, int select_item=-1);
+	int process();
 
 	bool double_clicked();
 
@@ -65,11 +51,11 @@ public:
 
 	void scroll(int pos);
 
-	void set_dirty() { drawn_ = false; }
 	enum { HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*' };
-	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be
-									 // something else to be settable
-									 // from WML.
+	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be something else to be settable from WML.
+
+	virtual void set_location(const SDL_Rect& rect);
+	using widget::set_location;
 
 protected:
 	void handle_event(const SDL_Event& event);
@@ -83,11 +69,8 @@ private:
 	void adjust_viewport_to_selection();
 	void key_press(SDLKey key);
 
-
 	bool show_scrollbar() const;
 
-	display* display_;
-	int x_, y_;
 	std::vector<std::vector<std::string> > items_, help_;
 
 	void create_help_strings();
@@ -98,20 +81,12 @@ private:
 
 	mutable std::vector<int> column_widths_;
 
-	surface buffer_;
 	size_t selected_;
 	bool click_selects_;
 	bool previous_button_;
-	bool drawn_;
 	std::set<size_t> undrawn_items_;
 
 	bool show_result_;
-
-	mutable int height_;
-	mutable int width_;
-
-	mutable size_t first_item_on_screen_;
-	gui::button uparrow_, downarrow_;
 
 	bool double_clicked_;
 
@@ -125,6 +100,7 @@ private:
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 
+	SDL_Rect get_list_rect() const;
 	SDL_Rect get_item_rect(int item) const;
 	size_t get_item_height_internal(int item) const;
 	size_t get_item_height(int item) const;
@@ -133,15 +109,8 @@ private:
 	int items_end() const;
 	int items_height() const;
 
-	/// Set the vertical size of the scroll bar grip. The size should
-	/// vary inversely with the ratio of the number of items to the 
-	/// size of the viewing rect
 	void update_scrollbar_grip_height();
-	/// Update the current position of the scrollbar to reflect possible
-	/// changes in the menu. Return the new position of the scrollbar.
-	int update_scrollbar_position();
 	gui::scrollbar scrollbar_;
-	int scrollbar_width_;
 
 	///variable which determines whether a numeric keypress should
 	///select an item on the dialog
@@ -156,12 +125,10 @@ private:
 	/// remain at the item edges.
 	void fill_items(const std::vector<std::string>& items, bool strip_spaces);
 
+	void update_size();
 	void move_selection_up(size_t dep);
 	void move_selection_down(size_t dep);
 	void move_selection(size_t pos);
-	void move_viewport_up(size_t dep);
-	void move_viewport_down(size_t dep);
-	void move_viewport(size_t pos);
 };
 
 }

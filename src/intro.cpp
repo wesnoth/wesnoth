@@ -125,8 +125,6 @@ bool show_intro_part(display& screen, const config& part,
 		next_button.set_location(screen.x()-200,screen.y()-150);
 		skip_button.set_location(screen.x()-200,screen.y()-100);
 	}
-	next_button.draw();
-	skip_button.draw();
 
 	//draw title if needed
 	if(show_title) {
@@ -267,10 +265,6 @@ bool show_intro_part(display& screen, const config& part,
 
 		}
 
-		int mousex, mousey;
-		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
 		const bool keydown = key[SDLK_SPACE] || key[SDLK_RETURN];
 
 		if(keydown && !last_key || next_button.pressed()) {
@@ -283,7 +277,7 @@ bool show_intro_part(display& screen, const config& part,
 
 		last_key = keydown;
 
-		if(key[SDLK_ESCAPE] || skip_button.process(mousex,mousey,left_button))
+		if(key[SDLK_ESCAPE] || skip_button.pressed())
 			return false;
 
 		events::pump();

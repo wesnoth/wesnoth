@@ -34,6 +34,16 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 	       point_in_rect(rect1.x,rect1.y+rect1.h,rect2) || point_in_rect(rect1.x+rect1.w,rect1.y+rect1.h,rect2);
 }
 
+SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+{
+	SDL_Rect res;
+	res.x = maximum(rect1.x, rect2.x);
+	res.y = maximum(rect1.y, rect2.y);
+	res.w = maximum<int>(minimum<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x, 0);
+	res.h = maximum<int>(minimum<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y, 0);
+	return res;
+}
+
 bool operator<(const surface& a, const surface& b)
 {
 	return a.get() < b.get();
@@ -846,12 +856,27 @@ surface_restorer::~surface_restorer()
 	restore();
 }
 
-void surface_restorer::restore()
+void surface_restorer::restore(SDL_Rect const &dst) const
 {
-	if(surface_ != NULL) {
-		SDL_BlitSurface(surface_,NULL,target_->getSurface(),&rect_);
-		update_rect(rect_);
-	}
+	if (surface_.null())
+		return;
+	SDL_Rect dst2 = intersect_rects(dst, rect_);
+	if (dst2.w == 0 || dst2.h == 0)
+		return;
+	SDL_Rect src = dst2;
+	src.x -= rect_.x;
+	src.y -= rect_.y;
+	SDL_BlitSurface(surface_, &src, target_->getSurface(), &dst2);
+	update_rect(dst2);
+}
+
+void surface_restorer::restore() const
+{
+	if (surface_.null())
+		return;
+	SDL_Rect dst = rect_;
+	SDL_BlitSurface(surface_, NULL, target_->getSurface(), &dst);
+	update_rect(rect_);
 }
 
 void surface_restorer::update()

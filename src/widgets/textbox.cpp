@@ -33,9 +33,7 @@ textbox::textbox(display& d, int width, const std::string& text, bool editable, 
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
-	     scrollbar_(d,this),
-	     uparrow_(d,"",gui::button::TYPE_PRESS,"uparrow-button"),
-             downarrow_(d,"",gui::button::TYPE_PRESS,"downarrow-button"),
+	     scrollbar_(d, *this, this),
 	     scroll_bottom_(false), wrap_(false), line_height_(0), yscroll_(0)
 {
 	static const SDL_Rect area = d.screen_area();
@@ -114,20 +112,15 @@ void textbox::draw_cursor(int pos, display &disp) const
 
 void textbox::draw()
 {
-	if(location().x == 0 || !dirty()) {
-		uparrow_.draw();
-		downarrow_.draw();
+	if (location().x == 0 || !dirty())
 		return;
-	}
 
 	bg_restore();
 
 	const bool has_scrollbar = show_scrollbar();
 	SDL_Rect loc = location();
-	if(has_scrollbar && loc.w > scrollbar_.get_max_width()) {
-		scrollbar_.set_dirty();
-		loc.w -= scrollbar_.get_max_width();
-	}
+	if (has_scrollbar)
+		loc.w -= scrollbar_.width();
 
 	gui::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
 	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
@@ -142,50 +135,6 @@ void textbox::draw()
 		SDL_Rect dest = disp().screen_area();
 		dest.x = loc.x;
 		dest.y = loc.y;
-
-		scrollbar_.enable(has_scrollbar);
-
-		if(has_scrollbar && text_image_->h > 0 && loc.h > uparrow_.height() + downarrow_.height()) {
-			SDL_Rect scroll_loc = {loc.x + loc.w,loc.y + uparrow_.height(),
-			                       scrollbar_.get_max_width(),loc.h - uparrow_.height() - downarrow_.height()};
-			scrollbar_.set_location(scroll_loc);
-
-			uparrow_.set_location(loc.x + loc.w,loc.y);
-			downarrow_.set_location(loc.x + loc.w,loc.y + loc.h - downarrow_.height());
-
-			const size_t max_height = scrollbar_.location().h;
-			const size_t proportion = (loc.h*100)/text_image_->h;
-			const size_t grip_height = maximum<size_t>((max_height*proportion)/100,scrollbar_.get_minimum_grip_height());
-			scrollbar_.set_grip_height(grip_height);
-
-			const size_t max_y = text_image_->h - loc.h;
-
-			const size_t max_grip_y = scrollbar_.location().h - grip_height;
-
-			if(scroll_bottom_) {
-				scrollbar_.set_grip_position(max_grip_y);
-			}
-
-			if(max_grip_y > 0) {
-				const size_t grip_y = scrollbar_.get_grip_position();
-
-				uparrow_.hide(grip_y == 0);
-				downarrow_.hide(grip_y == max_grip_y);
-
-				src.y = (max_y*(grip_y*100)/max_grip_y)/100;
-				lg::info(lg::display) << "set src.y to " << src.y << "/" << max_grip_y << "\n";
-			}
-
-			uparrow_.set_dirty(true);
-			downarrow_.set_dirty(true);
-			uparrow_.draw();
-			downarrow_.draw();
-
-			scrollbar_.redraw();
-		} else {
-			uparrow_.hide();
-			downarrow_.hide();
-		}
 
 		scroll_bottom_ = false;
 
@@ -229,18 +178,6 @@ void textbox::draw()
 
 void textbox::process()
 {
-	if(show_scrollbar()) {
-		if(uparrow_.pressed()) {
-			scrollbar_.set_grip_position(scrollbar_.get_grip_position() - scrollbar_.get_grip_height()/5);
-			set_dirty(true);
-		}
-
-		if(downarrow_.pressed()) {
-			scrollbar_.set_grip_position(scrollbar_.get_grip_position() + scrollbar_.get_grip_height()/5);
-			set_dirty(true);
-		}
-	}
-
 	if(editable_) {
 		if(focus()) {
 			const int ticks = SDL_GetTicks();
@@ -324,7 +261,7 @@ surface textbox::add_text_line(const wide_string& text)
 
 		int w = font::line_width(visible_string, font_size);
 
-		if(wrap_ && w >= location().w - scrollbar_.get_max_width()) {
+		if(wrap_ && w >= location().w - scrollbar_.width()) {
 			if(backup_itor != text.end()) {
 				int backup = itor - backup_itor;
 				itor = backup_itor + 1;
@@ -352,6 +289,7 @@ surface textbox::add_text_line(const wide_string& text)
 
 	return res;
 }
+
 
 void textbox::update_text_cache(bool changed)
 {
@@ -407,7 +345,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 	if( (grabmouse_ && (event.type == SDL_MOUSEMOTION)) ||  (
 		    event.type == SDL_MOUSEBUTTONDOWN  && (mousebuttons & SDL_BUTTON(1))  && ! 
-			(mousex < location().x || mousex > location().x + location().w - (show_scrollbar() ? scrollbar_.get_max_width() : 0) ||
+			(mousex < location().x || mousex > location().x + location().w - (show_scrollbar() ? scrollbar_.width() : 0) ||
 		    mousey < location().y || mousey > location().y + location().h))) {
 
 		const int x = mousex - location().x + text_pos_;
