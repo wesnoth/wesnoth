@@ -5,6 +5,7 @@ CVS HEAD:
    * snow forest tiles
    * unit images
    * tower
+   * units images and animations
  * new scenarios for 'Heir to the Throne' campaign:
    * Battle for Wesnoth (final scenario)
  * scenario balancing for 'Heir to the Throne' campaign:
@@ -36,6 +37,7 @@ CVS HEAD:
    * french
    * spanish
    * swedish
+ * status for translations (gettext) - http://gettext.wesnoth.org
  * made hosting games work elegantly when wesnothd is running on the same machine
  * fixed typo causing 'Troll Whelp' being recruitable in 'The Dark Hordes: A New Chance' scenario
  * fixed alignment and abilities not being shown in panel
@@ -55,15 +57,20 @@ CVS HEAD:
  * fixed Delfador appearing in 'The Dark Hordes: Inside The Tower'
  * fixed about/credits not being translatable
  * fixed 'Orcish Ruler' appearing in 'The Rise of Wesnoth' campaign
+ * fixed editor not being translatable
  * re-implemented enhanced sound quality fix
+ * multiple textdomain (gettext) infrastructure
  * added error dialog when a campaign has corrupt WML
  * added better error messages for machines that cannot bind to local ports 
- * village placement optimizations
+ * switched relevant flags from --enable-* to --with-* in autotools
+ * autotools re-organizations for better BSD support
+ * editor dependency cleanups
  * help system optimizations
+ * village placement optimizations
  * compile speed optimizations
  * squashed many compile warnings
  * code cleanups
-
+ 
 Version 0.8.3:
  * information about encountered terrain added in the help system
  * removed the unit description dialog in favor of in-game help
