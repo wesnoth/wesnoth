@@ -37,6 +37,7 @@ CVS HEAD
    * Troll Rocklobber
  * unit description updates
  * language fixes and polishing (english)
+ * added FreeSans font
  * updated translations:
    * basque
    * catalan
@@ -46,6 +47,7 @@ CVS HEAD
    * finnish
    * french
    * german
+   * greek
    * italian
    * norwegian
    * polish
@@ -56,7 +58,7 @@ CVS HEAD
    * swedish
  * multiplayer improvements
    * added increments to sliders
-   * choose your leader
+   * allowed choosing your leader
    * new map: An Island
    * gave Goblin Spearman to northeners and removed Saurian from them
    * gave Saurian to Drakes
@@ -93,6 +95,8 @@ CVS HEAD
  * fixed pressing 'shift' while scrolling to your leader would halt scrolling
  * fixed many deprecated units in scenarios
  * fixed statistics not being reset between multiplayer games
+ * fixed forest<->snow forest transitions
+ * fixed crash in editor
  * added a way to specify the actual position of multi-hex tiles
  * added option to preferences file, 'unit_genders', which determines whether units with different genders should be used
  * added internationalization parameter for Mac OS X
