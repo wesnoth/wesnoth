@@ -156,6 +156,8 @@ wesnothd_SOURCES = game.cpp \
 		   ../game_config.cpp \
 		   ../log.cpp \
 		   ../network.cpp \
+		   ../replay.cpp \
+		   ../unit.cpp \
 		   game.hpp \
 		   ../game_events.hpp \
 		   player.hpp \
@@ -163,7 +165,9 @@ wesnothd_SOURCES = game.cpp \
 		   ../filesystem.hpp \
 		   ../game_config.hpp \
 		   ../log.hpp \
-		   ../network.hpp
+		   ../network.hpp \
+		   ../replay.hpp \
+		   ../unit.hpp
 
 
 AM_CXXFLAGS = @SDL_CFLAGS@
@@ -179,7 +183,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am_wesnothd_OBJECTS = game.$(OBJEXT) game_events.$(OBJEXT) \
 	player.$(OBJEXT) server.$(OBJEXT) config.$(OBJEXT) \
 	filesystem.$(OBJEXT) game_config.$(OBJEXT) log.$(OBJEXT) \
-	network.$(OBJEXT)
+	network.$(OBJEXT) replay.$(OBJEXT) unit.$(OBJEXT)
 wesnothd_OBJECTS = $(am_wesnothd_OBJECTS)
 wesnothd_LDADD = $(LDADD)
 wesnothd_DEPENDENCIES =
@@ -192,7 +196,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/game.Po ./$(DEPDIR)/game_config.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/game_events.Po ./$(DEPDIR)/log.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/player.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/server.Po
+@AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/server.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/unit.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -257,7 +262,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/network.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/player.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/replay.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/server.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unit.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" \
@@ -412,6 +419,50 @@ network.obj: ../network.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/network.Po' tmpdepfile='$(DEPDIR)/network.TPo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o network.obj `if test -f '../network.cpp'; then $(CYGPATH_W) '../network.cpp'; else $(CYGPATH_W) '$(srcdir)/../network.cpp'; fi`
+
+replay.o: ../replay.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT replay.o -MD -MP -MF "$(DEPDIR)/replay.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o replay.o `test -f '../replay.cpp' || echo '$(srcdir)/'`../replay.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/replay.Tpo" "$(DEPDIR)/replay.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/replay.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../replay.cpp' object='replay.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/replay.Po' tmpdepfile='$(DEPDIR)/replay.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o replay.o `test -f '../replay.cpp' || echo '$(srcdir)/'`../replay.cpp
+
+replay.obj: ../replay.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT replay.obj -MD -MP -MF "$(DEPDIR)/replay.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o replay.obj `if test -f '../replay.cpp'; then $(CYGPATH_W) '../replay.cpp'; else $(CYGPATH_W) '$(srcdir)/../replay.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/replay.Tpo" "$(DEPDIR)/replay.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/replay.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../replay.cpp' object='replay.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/replay.Po' tmpdepfile='$(DEPDIR)/replay.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o replay.obj `if test -f '../replay.cpp'; then $(CYGPATH_W) '../replay.cpp'; else $(CYGPATH_W) '$(srcdir)/../replay.cpp'; fi`
+
+unit.o: ../unit.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT unit.o -MD -MP -MF "$(DEPDIR)/unit.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o unit.o `test -f '../unit.cpp' || echo '$(srcdir)/'`../unit.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/unit.Tpo" "$(DEPDIR)/unit.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/unit.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../unit.cpp' object='unit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/unit.Po' tmpdepfile='$(DEPDIR)/unit.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o unit.o `test -f '../unit.cpp' || echo '$(srcdir)/'`../unit.cpp
+
+unit.obj: ../unit.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT unit.obj -MD -MP -MF "$(DEPDIR)/unit.Tpo" \
+@am__fastdepCXX_TRUE@	  -c -o unit.obj `if test -f '../unit.cpp'; then $(CYGPATH_W) '../unit.cpp'; else $(CYGPATH_W) '$(srcdir)/../unit.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/unit.Tpo" "$(DEPDIR)/unit.Po"; \
+@am__fastdepCXX_TRUE@	else rm -f "$(DEPDIR)/unit.Tpo"; exit 1; \
+@am__fastdepCXX_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='../unit.cpp' object='unit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	depfile='$(DEPDIR)/unit.Po' tmpdepfile='$(DEPDIR)/unit.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	$(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o unit.obj `if test -f '../unit.cpp'; then $(CYGPATH_W) '../unit.cpp'; else $(CYGPATH_W) '$(srcdir)/../unit.cpp'; fi`
 uninstall-info-am:
 
 ETAGS = etags
