@@ -286,7 +286,7 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	//Name Entry
 	font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 	                "Name of game:",(disp.x()-width)/2+10,(disp.y()-height)/2+38);
-	gui::textbox name_entry(disp,width-20,preferences::login() + string_table["game_postfix"]);
+	gui::textbox name_entry(disp,width-20,string_table["game_prefix"] + preferences::login() + string_table["game_postfix"]);
 	name_entry.set_location((disp.x()-width)/2+10,(disp.y()-height)/2+55);
 
 	//Maps
