@@ -47,6 +47,7 @@
 #include "unit.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
+#include "widgets/menu.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -915,9 +916,10 @@ int play_game(int argc, char** argv)
 			state.campaign_define = "MULTIPLAYER";
 
 			std::vector<std::string> host_or_join;
-			host_or_join.push_back(string_table["join_server"] + menu::HELP_STRING_SEPERATOR + string_table["join_server_help"]);
-			host_or_join.push_back(string_table["join_game"] + menu::HELP_STRING_SEPERATOR + string_table["join_game_help"]);
-			host_or_join.push_back(string_table["host_game"] + menu::HELP_STRING_SEPERATOR + string_table["host_game_help"]);
+			const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
+			host_or_join.push_back(string_table["join_server"] + sep + string_table["join_server_help"]);
+			host_or_join.push_back(string_table["join_game"] + sep + string_table["join_game_help"]);
+			host_or_join.push_back(string_table["host_game"] + sep + string_table["host_game_help"]);
 
 			std::string login = preferences::login();
 			const int res = gui::show_dialog(disp,NULL,string_table["multiplayer"],"",gui::OK_CANCEL,&host_or_join,NULL,string_table["login"] + ": ",&login);
