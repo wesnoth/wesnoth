@@ -65,7 +65,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	for(bool first_time = true; ; first_time = false) {
 		message_entry.set_focus(true);
 
-		const SDL_Rect dlg_rect = {xscale(disp,19),yscale(disp,23),xscale(disp,832),yscale(disp,520)};
+		const SDL_Rect dlg_rect = {xscale(disp,12),yscale(disp,46),xscale(disp,832),yscale(disp,518)};
 
 		//if the dialog is present, back it up before we repaint the entire screen
 		surface_restorer dlg_restorer;
@@ -78,7 +78,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		dlg_restorer.restore();
 		dlg_restorer = surface_restorer();
 
-		const SDL_Rect chat_area = { xscale(disp,19), yscale(disp,574), xscale(disp,832), yscale(disp,130) };
+		const SDL_Rect chat_area = { xscale(disp,12), yscale(disp,576), xscale(disp,832), yscale(disp,142) };
 
 		gui::textbox chat_textbox(disp,chat_area.w,"",false);
 
@@ -213,27 +213,27 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 		gui::menu users_menu(disp,users);
 
 		// Set GUI locations
-		users_menu.set_loc(xscale(disp,869),yscale(disp,23));
-		users_menu.set_width(xscale(disp,129));
-		users_menu.set_max_width(xscale(disp,129));
+		users_menu.set_loc(xscale(disp,856),yscale(disp,46));
+		users_menu.set_width(xscale(disp,156));
+		users_menu.set_max_width(xscale(disp,156));
 
-		update_rect(xscale(disp,869),yscale(disp,23),xscale(disp,129),yscale(disp,725));
+		update_rect(xscale(disp,856),yscale(disp,46),xscale(disp,156),yscale(disp,708));
 
 		if(dlg != NULL) {
 			if(first_time) {
 				dlg->set_area(dlg_rect);
 			}
 		} else {
-			games_menu.set_loc(xscale(disp,19),yscale(disp,23));
+			games_menu.set_loc(xscale(disp,12),yscale(disp,46));
 			games_menu.set_width(xscale(disp,832));
 		}
 
-		update_rect(xscale(disp,19),yscale(disp,23),xscale(disp,832),yscale(disp,520));
-		join_game.set_location(xscale(disp,19),yscale(disp,545));
-		observe_game.set_location(join_game.location().x + join_game.location().w + 5,yscale(disp,545));
-		new_game.set_location(observe_game.location().x + observe_game.location().w + 5,yscale(disp,545));
-		quit_game.set_location(new_game.location().x + new_game.location().w + 5,yscale(disp,545));
-		message_entry.set_location(xscale(disp,19),yscale(disp,725));
+		update_rect(xscale(disp,12),yscale(disp,46),xscale(disp,832),yscale(disp,518));
+		join_game.set_location(xscale(disp,12),yscale(disp,4));
+		observe_game.set_location(join_game.location().x + join_game.location().w + 5,yscale(disp,4));
+		new_game.set_location(observe_game.location().x + observe_game.location().w + 5,yscale(disp,4));
+		quit_game.set_location(new_game.location().x + new_game.location().w + 5,yscale(disp,4));
+		message_entry.set_location(xscale(disp,12),yscale(disp,730));
 		message_entry.set_width(xscale(disp,832));
 
 		update_whole_screen();
