@@ -61,8 +61,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 	const gamemap::TERRAIN terrain = map.get_terrain(b);
 	const int nsteps = disp.turbo() ? 3 : 10*u.movement_cost(map,terrain);
-	const double xstep = double(xdst - xsrc)/double(nsteps);
-	const double ystep = double(ydst - ysrc)/double(nsteps);
+	const double xstep = double(xdst - xsrc) / nsteps;
+	const double ystep = double(ydst - ysrc) / nsteps;
 
 	const int time_between_frames = disp.turbo() ? 2 : 10;
 	int ticks = SDL_GetTicks();
@@ -96,8 +96,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		xdst = disp.get_location_x(b);
 		ydst = disp.get_location_y(b);
 
-		int xloc = xsrc + int(xstep*double(i));
-		int yloc = ysrc + int(ystep*double(i));
+		int xloc = xsrc + int(xstep * i);
+		int yloc = ysrc + int(ystep * i);
 
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,
@@ -121,8 +121,8 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 			disp.draw_tile(src_adjacent[tile].x, src_adjacent[tile].y);
 		}
 
-		const int height_adjust = src_height_adjust + (dst_height_adjust-src_height_adjust)*(i/nsteps);
-		const double submerge = src_submerge + (dst_submerge-src_submerge)*(double(i)/double(nsteps));
+		const int height_adjust = src_height_adjust + (dst_height_adjust - src_height_adjust) * i / nsteps;
+		const double submerge = src_submerge + (dst_submerge - src_submerge) * i / nsteps;
 
 		const int xpos = xloc;
 		const int ypos = yloc - height_adjust;
