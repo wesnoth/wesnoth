@@ -274,6 +274,10 @@ std::vector<std::string> get_text() {
 		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
 		"+ ",
+		
+		"_" N_("+Slovenian Translation"),
+		"-   Jaka Kranjc (lynx)",
+		"+ ",
 
 		"_" N_("+Spanish Translation"),
 		"-   David Martínez",
