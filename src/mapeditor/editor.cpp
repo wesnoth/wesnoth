@@ -11,6 +11,7 @@
 */
 
 #include "SDL.h"
+#include "SDL_keysym.h"
 
 #include "../actions.hpp"
 #include "../ai.hpp"
@@ -35,6 +36,15 @@
 #include <iostream>
 #include <map>
 #include <string>
+
+
+// I just not have time now to search if there are any versions
+// of SDL that needs uppercase. So both is supported...    --Sofronius
+#ifndef SDLK_X
+	#define SDLK_X SDLK_x
+	#define SDLK_D SDLK_d
+	#define SDLK_Z SDLK_z
+#endif
 
 int main(int argc, char** argv)
 {
@@ -73,7 +83,7 @@ int main(int argc, char** argv)
 
 	std::map<gamemap::location,unit> units;
 	display gui(units,video,map,status,teams);
-	gui.draw_terrain_palette(gui.mapx()+10,150,0);
+	gui.draw_terrain_palette(gui.mapx()+10,142,0);
 
 	gamemap::TERRAIN selected_terrain = 0;
 
@@ -115,10 +125,10 @@ int main(int argc, char** argv)
 		gui.highlight_hex(gui.hex_clicked_on(mousex,mousey));
 		if(new_left_button) {
 			const gamemap::TERRAIN terrain_on =
-			               gui.get_terrain_on(gui.mapx()+10,150,mousex,mousey);
+			               gui.get_terrain_on(gui.mapx()+10,142,mousex,mousey);
 			if(terrain_on && terrain_on != selected_terrain) {
 				selected_terrain = terrain_on;
-				gui.draw_terrain_palette(gui.mapx()+10,150,selected_terrain);
+				gui.draw_terrain_palette(gui.mapx()+10,142,selected_terrain);
 			}
 
 			const gamemap::location hex = gui.hex_clicked_on(mousex,mousey);
@@ -142,7 +152,7 @@ int main(int argc, char** argv)
 
 		if(first_time) {
 			std::cerr << "drawing terrain pallette...\n";
-			gui.draw_terrain_palette(gui.mapx()+10,150,0);
+			gui.draw_terrain_palette(gui.mapx()+10,142,0);
 			first_time = false;
 		}
 
