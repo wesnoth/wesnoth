@@ -269,8 +269,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	state.gold = 100;
 
 	// Dialog width and height
-	int width=600;
-	int height=290;
+	int width=640;
+	int height=340;
 
 	int cur_selection = -1;
 	int cur_villagegold = 1;
@@ -363,14 +363,25 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	launch_game.set_xy((disp.x()/2)-launch_game.width()*2-19,(disp.y()-height)/2+height-29);
 	cancel_game.set_xy((disp.x()/2)+cancel_game.width()+19,(disp.y()-height)/2+height-29);
 
+	gui::button regenerate_map(disp,string_table["regenerate_map"]);
+	regenerate_map.set_xy(rect.x+6,rect.y+30+(3*fog_game.height())+6);
+	regenerate_map.backup_background();
+
+	gui::button generator_settings(disp,string_table["generator_settings"]);
+	generator_settings.set_xy(rect.x+6,rect.y+30+(4*fog_game.height())+8);
+	generator_settings.backup_background();
+
 	//player amount number background
 	rect.x = ((disp.x()-width)/2+10)+35;
 	rect.y = (disp.y()-height)/2+235;
 	rect.w = 145;
 	rect.h = 25;
-	SDL_Surface* playernum_bg=get_surface_portion(disp.video().getSurface(), rect);
+	surface_restorer playernum_bg(&disp.video(),rect);
 
 	update_whole_screen();
+
+	//the current map generator
+	map_generator* generator = NULL;
 
 	CKey key;
 	config* level_ptr = NULL;
@@ -464,6 +475,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 			update_rect(rect);
 		}
 
+		//work out if we have to generate a new map
+		bool map_changed = false;
+
 		//Villages can produce between 1 and 10 gold a turn
 		//FIXME: Should never be a - number, but it is sometimes
 		int check_villagegold=1+int(9*villagegold_slider.process(mousex,mousey,left_button));
@@ -483,68 +497,22 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		}
 		
 		if(maps_menu.selection() != cur_selection) {
+			map_changed = true;
+			generator = NULL;
+
 			cur_selection = maps_menu.selection();
 			if(size_t(maps_menu.selection()) != options.size()-1) {
 				level_ptr = levels[maps_menu.selection()];
 
-				std::string map_data = (*level_ptr)["map_data"];
+				std::string& map_data = (*level_ptr)["map_data"];
 				if(map_data == "" && (*level_ptr)["map"] != "") {
 					map_data = read_file("data/maps/" + (*level_ptr)["map"]);
 				}
 
 				//if the map should be randomly generated
-				if(map_data == "" && (*level_ptr)["map_generation"] != "") {
-					map_data = random_generate_map((*level_ptr)["map_generation"]);
-
-					//record the map data of the map, so that when we send to
-					//remote clients, they will use the given map, and won't try
-					//to generate their own.
-					(*level_ptr)["map_data"] = map_data;
+				if((*level_ptr)["map_generation"] != "") {
+					generator = get_map_generator((*level_ptr)["map_generation"]);
 				}
-
-				gamemap map(cfg,map_data);
-
-				//if there are less sides in the configuration than there are starting
-				//positions, then generate the additional sides
-				const int map_positions = map.num_valid_starting_positions();
-				std::cerr << "map_positions: " << map_positions << "\n";
-				for(int pos = level_ptr->get_children("side").size(); pos < map_positions; ++pos) {
-					std::cerr << "adding side...\n";
-					config& side = level_ptr->add_child("side");
-					side["enemy"] = "1";
-					char buf[50];
-					sprintf(buf,"%d",(pos+1));
-					side["side"] = buf;
-					side["team_name"] = buf;
-					side["canrecruit"] = "1";
-					side["controller"] = "human";
-				}
-
-				const scoped_sdl_surface mini(image::getMinimap(145,145,map));
-
-				if(mini != NULL) {
-					rect.x = ((disp.x()-width)/2+10)+35;
-					rect.y = (disp.y()-height)/2+80;
-					rect.w = 145;
-					rect.h = 145;
-					SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
-					update_rect(rect);
-				}
-
-				//Display the number of players
-				rect.x = ((disp.x()-width)/2+10)+35;
-				rect.y = (disp.y()-height)/2+235;
-				rect.w = 145;
-				rect.h = 25;
-				SDL_BlitSurface(playernum_bg, NULL, disp.video().getSurface(), &rect);
-				config& level = *level_ptr;
-				const int nsides = level.get_children("side").size();
-
-				std::stringstream players;
-				players << "Players: " << nsides;
-				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-					                players.str(),rect.x+45,rect.y);
-				update_rect(rect);
 			}else{
 				const scoped_sdl_surface disk(image::get_image("misc/disk.png",image::UNSCALED));
 
@@ -561,11 +529,77 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				rect.y = (disp.y()-height)/2+235;
 				rect.w = 145;
 				rect.h = 25;
-				SDL_BlitSurface(playernum_bg, NULL, disp.video().getSurface(), &rect);
+				playernum_bg.restore();
 				font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 					                " Load Map ",rect.x+45,rect.y);
 				update_rect(rect);
 			}
+		}
+
+		if(generator != NULL && generator->allow_user_config() && generator_settings.process(mousex,mousey,left_button)) {
+			generator->user_config(disp);
+		}
+
+		if(generator != NULL && (map_changed || regenerate_map.process(mousex,mousey,left_button))) {
+			//generate the random map
+			(*level_ptr)["map_data"] = generator->create_map(std::vector<std::string>());
+			map_changed = true;
+		}
+
+		if(map_changed) {
+			if(generator != NULL) {
+				generator_settings.draw();
+				regenerate_map.draw();
+			} else {
+				generator_settings.hide();
+				regenerate_map.hide();
+			}
+
+			const std::string& map_data = (*level_ptr)["map_data"];
+
+			gamemap map(cfg,map_data);
+
+			//if there are less sides in the configuration than there are starting
+			//positions, then generate the additional sides
+			const int map_positions = map.num_valid_starting_positions();
+			std::cerr << "map_positions: " << map_positions << "\n";
+			for(int pos = level_ptr->get_children("side").size(); pos < map_positions; ++pos) {
+				std::cerr << "adding side...\n";
+				config& side = level_ptr->add_child("side");
+				side["enemy"] = "1";
+				char buf[50];
+				sprintf(buf,"%d",(pos+1));
+				side["side"] = buf;
+				side["team_name"] = buf;
+				side["canrecruit"] = "1";
+				side["controller"] = "human";
+			}
+
+			const scoped_sdl_surface mini(image::getMinimap(145,145,map));
+
+			if(mini != NULL) {
+				rect.x = ((disp.x()-width)/2+10)+35;
+				rect.y = (disp.y()-height)/2+80;
+				rect.w = 145;
+				rect.h = 145;
+				SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
+				update_rect(rect);
+			}
+
+			//Display the number of players
+			rect.x = ((disp.x()-width)/2+10)+35;
+			rect.y = (disp.y()-height)/2+235;
+			rect.w = 145;
+			rect.h = 25;
+			playernum_bg.restore();
+			config& level = *level_ptr;
+			const int nsides = level.get_children("side").size();
+
+			std::stringstream players;
+			players << "Players: " << nsides;
+			font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
+				                players.str(),rect.x+45,rect.y);
+			update_rect(rect);
 		}
 
 		events::pump();

@@ -373,10 +373,10 @@ void show_preferences_dialog(display& disp)
 	
 	log_scope("show_preferences_dialog");
 
-	const int xpos = disp.x()/2 - 300;
-	const int ypos = disp.y()/2 - 200;
 	const int width = 600;
 	const int height = 400;
+	const int xpos = disp.x()/2 - width/2;
+	const int ypos = disp.y()/2 - height/2;
 
 	//make sure that the frame buffer is restored to its original state
 	//when the dialog closes. Not const, because we might want to cancel

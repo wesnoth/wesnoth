@@ -100,12 +100,22 @@ bool button::checked() const
 	return state_ == PRESSED || state_ == PRESSED_ACTIVE;
 }
 
+void button::backup_background()
+{
+	const SDL_Rect area = {x_,y_,w_,h_};
+	restorer_ = surface_restorer(&display_->video(),area);
+}
+
+void button::hide()
+{
+	restorer_.restore();
+}
+
 void button::draw()
 {
 	if(type_ == TYPE_CHECK) {
-		restorer_.restore();
-		const SDL_Rect area = {x_,y_,w_,h_};
-		restorer_ = surface_restorer(&display_->video(),area);
+		hide();
+		backup_background();
 	}
 
 	SDL_Surface* image = image_;

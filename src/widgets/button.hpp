@@ -50,6 +50,9 @@ public:
 
 	bool process(int mousex, int mousey, bool button);
 
+	void backup_background();
+	void hide();
+
 private:
 	surface_restorer restorer_;
 	std::string label_;

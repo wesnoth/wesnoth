@@ -9,9 +9,16 @@
 #include <ctime>
 #include <vector>
 
+#include "events.hpp"
+#include "font.hpp"
+#include "language.hpp"
 #include "mapgen.hpp"
 #include "pathfind.hpp"
+#include "show_dialog.hpp"
 #include "util.hpp"
+
+#include "widgets/button.hpp"
+#include "widgets/slider.hpp"
 
 //function to generate a random map, from a string which describes
 //the generator to use and its arguments
@@ -685,9 +692,141 @@ default_map_generator::default_map_generator(const config& game_config)
 	}
 }
 
-bool default_map_generator::allow_user_config() const { return false; }
+bool default_map_generator::allow_user_config() const { return true; }
 
-void default_map_generator::user_config(display& disp) {}
+void default_map_generator::user_config(display& disp)
+{
+	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
+
+	const int width = 600;
+	const int height = 400;
+	const int xpos = disp.x()/2 - width/2;
+	const int ypos = disp.y()/2 - height/2;
+
+	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
+	surface_restorer restorer(&disp.video(),dialog_rect);
+
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+
+	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
+	                                            string_table["map_generator"],0,0);
+
+	gui::button close_button(disp,string_table["close_window"]);
+
+	close_button.set_x(xpos + width/2 - close_button.width()/2);
+	close_button.set_y(ypos + height - close_button.height()-14);
+
+	const std::string& players_label = string_table["num_players"] + ":";
+	const std::string& width_label = string_table["map_width"] + ":";
+	const std::string& height_label = string_table["map_height"] + ":";
+
+	SDL_Rect players_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,0,0);
+	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,0,0);
+	SDL_Rect height_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,0,0);
+
+	const int horz_margin = 5;
+	const int text_right = xpos + horz_margin + maximum<int>(maximum<int>(players_rect.w,width_rect.w),height_rect.w);
+
+	players_rect.x = text_right - players_rect.w;
+	width_rect.x = text_right - width_rect.w;
+	height_rect.x = text_right - height_rect.w;
+	
+	const int vertical_margin = 20;
+	players_rect.y = ypos + title_rect.h + vertical_margin*2;
+	width_rect.y = players_rect.y + players_rect.h + vertical_margin;
+	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
+
+	const int max_players = 9;
+
+	const int right_space = 100;
+
+	const int slider_left = text_right + 10;
+	const int slider_right = xpos + width - horz_margin - right_space;
+	SDL_Rect slider_rect = { slider_left,players_rect.y,slider_right-slider_left,players_rect.h};
+	gui::slider players_slider(disp,slider_rect,gui::slider::normalize(nplayers_,2,max_players));
+
+	const int min_width = 20;
+	const int max_width = 80;
+	const int min_height = 20;
+	const int max_height = 80;
+
+	slider_rect.y = width_rect.y;
+	gui::slider width_slider(disp,slider_rect,gui::slider::normalize(width_,min_height,max_height));
+
+	slider_rect.y = height_rect.y;
+	gui::slider height_slider(disp,slider_rect,gui::slider::normalize(height_,min_width,max_width));
+
+
+	for(bool draw = true;; draw = false) {
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+
+		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+		if(close_button.process(mousex,mousey,left_button)) {
+			break;
+		}
+
+		const double new_players = players_slider.process(mousex,mousey,left_button);
+		if(new_players >= 0.0) {
+			nplayers_ = gui::slider::denormalize(new_players,2,max_players);
+			std::cerr << "set players to " << nplayers_ << "," << new_players << "\n";
+			draw = true;
+		}
+
+		const double new_width = width_slider.process(mousex,mousey,left_button);
+		if(new_width >= 0.0) {
+			width_ = gui::slider::denormalize(new_width,min_width,max_width);
+			draw = true;
+		}
+
+		const double new_height = height_slider.process(mousex,mousey,left_button);
+		if(new_height >= 0.0) {
+			height_ = gui::slider::denormalize(new_height,min_height,max_height);
+			draw = true;
+		}
+
+		if(draw) {
+
+			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+
+			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+	                       string_table["map_generator"],xpos+(width-title_rect.w)/2,ypos+10);
+
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
+			
+			std::stringstream players_str;
+			players_str << nplayers_;
+
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_str.str(),
+			                slider_right+horz_margin,players_rect.y);
+
+			std::stringstream width_str;
+			width_str << width_;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+			                slider_right+horz_margin,width_rect.y);
+
+			std::stringstream height_str;
+			height_str << height_;
+			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+			                slider_right+horz_margin,height_rect.y);
+
+			players_slider.draw();
+			width_slider.draw();
+			height_slider.draw();
+			close_button.draw();
+
+			update_rect(xpos,ypos,width,height);
+		}
+
+		disp.update_display();
+		SDL_Delay(10);
+		events::pump();
+	}
+}
 
 std::string default_map_generator::name() const { return "default"; }
 

@@ -66,6 +66,16 @@ int slider::height(display& disp)
 		return 0;
 }
 
+double slider::normalize(int value, int min_value, int max_value)
+{
+	return (double(value) - double(min_value))/double(max_value - min_value);
+}
+
+int slider::denormalize(double value, int min_value, int max_value)
+{
+	return min_value + int(value*double(max_value - min_value));
+}
+
 void slider::draw()
 {
 	drawn_ = true;

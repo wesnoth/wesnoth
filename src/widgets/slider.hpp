@@ -42,6 +42,8 @@ public:
 	slider& operator=(const slider& o);
 
 	static int height(display& disp);
+	static double normalize(int value, int min_value, int max_value);
+	static int denormalize(double value, int min_value, int max_value);
 
 	void draw();
 
