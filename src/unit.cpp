@@ -521,6 +521,12 @@ void unit::read(game_data& data, const config& cfg)
 		}
 	}
 
+	const config* const modifications = cfg.child("modifications");
+	if(modifications != NULL) {
+		modifications_ = *modifications;
+		apply_modifications();
+	}
+
 	goto_.x = atoi(cfg["goto_x"].c_str()) - 1;
 	goto_.y = atoi(cfg["goto_y"].c_str()) - 1;
 
@@ -541,12 +547,6 @@ void unit::read(game_data& data, const config& cfg)
 		experience_ = 0;
 	else
 		experience_ = atoi(experience.c_str());
-
-	const config* const modifications = cfg.child("modifications");
-	if(modifications != NULL) {
-		modifications_ = *modifications;
-		apply_modifications();
-	}
 }
 
 void unit::write(config& cfg) const
