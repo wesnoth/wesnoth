@@ -334,13 +334,13 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 	gui::slider villagegold_slider(disp,rect,0.0);
 
 	//FOG of war
-	gui::button fog_game(disp,"Fog Of War",gui::button::TYPE_CHECK);
+	gui::button fog_game(disp,string_table["fog_of_war"],gui::button::TYPE_CHECK);
 	fog_game.set_check(false);
 	fog_game.set_xy(rect.x+6,rect.y+30);
 	fog_game.draw();
 
 	//Shroud
-	gui::button shroud_game(disp,"Shroud",gui::button::TYPE_CHECK);
+	gui::button shroud_game(disp,string_table["shroud"],gui::button::TYPE_CHECK);
 	shroud_game.set_check(false);
 	shroud_game.set_xy(rect.x+6,rect.y+60);
 	shroud_game.draw();
@@ -497,36 +497,36 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 						       width, height, disp);
 
 				//Buttons
-				gui::button launch2_game(disp,"Launch");
+				gui::button launch2_game(disp,string_table["launch"]);
 				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2,(disp.y()-height)/2+height-29);
 
 				//Title and labels
 				SDL_Rect labelr;
 				font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-				                "Game Lobby",-1,(disp.y()-height)/2+5);
+				                string_table["game_lobby"],-1,(disp.y()-height)/2+5);
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						"Player/Type",0,0);
+						string_table["player_type"],0,0);
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                "Player/Type",((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
+				                string_table["player_type"],((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						"Race",0,0);
+						string_table["race"],0,0);
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                "Race",((disp.x()-width)/2+145)+(launch2_game.width()/2)-(labelr.w/2),
+				                string_table["race"],((disp.x()-width)/2+145)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						"Team",0,0);
+						string_table["team"],0,0);
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                "Team",((disp.x()-width)/2+260)+(launch2_game.width()/2)-(labelr.w/2),
+				                string_table["team"],((disp.x()-width)/2+260)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						"Color",0,0);
+						string_table["color"],0,0);
 				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                "Color",((disp.x()-width)/2+375)+(launch2_game.width()/2)-(labelr.w/2),
+				                string_table["color"],((disp.x()-width)/2+375)+(launch2_game.width()/2)-(labelr.w/2),
 						(disp.y()-height)/2+35);
 				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
 				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
@@ -541,26 +541,26 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				player_type.push_back(string_table["network_controlled"]);
 				player_type.push_back(string_table["ai_controlled"]);
 				std::vector<std::string> player_race;
-				player_race.push_back("Elves");
-				player_race.push_back("Orcs");
-				player_race.push_back("Humans");
-				player_race.push_back("Undead");
+				player_race.push_back(string_table["elves"]);
+				player_race.push_back(string_table["orcs"]);
+				player_race.push_back(string_table["humans"]);
+				player_race.push_back(string_table["undead"]);
 				std::vector<std::string> player_team;
 				char label[16];
 				int counter=0;
 				
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
 					counter++;
-					sprintf(label, "Team %d", counter);
+					sprintf(label, "%s %d", string_table["team"], counter);
 					player_team.push_back(label);
 				}
 				std::vector<std::string> player_color;
-				player_color.push_back("Red");
-				player_color.push_back("Blue");
-				player_color.push_back("Green");
-				player_color.push_back("Yellow");
-				player_color.push_back("Pink");
-				player_color.push_back("Purple");
+				player_color.push_back(string_table["red"]);
+				player_color.push_back(string_table["blue"]);
+				player_color.push_back(string_table["green"]);
+				player_color.push_back(string_table["yellow"]);
+				player_color.push_back(string_table["pink"]);
+				player_color.push_back(string_table["purple"]);
 
 				//Players
 				std::vector<std::string> sides_list;
