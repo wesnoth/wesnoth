@@ -375,7 +375,7 @@ void place_castles(std::vector<gamemap::location>& castles, const std::set<gamem
 				if(*ci == *v)
 					ci->x += 1;
 			
-				const double force_size = 30000;
+				const double force_size = 10000;
 				if(dist < force_size) {
 					const double power = force_multiplier * (force_size - dist) * (force_size - dist);
 					const double xpower = power * xdist/(xdist+ydist) * (ci->x < v->x ? 1.0 : -1.0);
