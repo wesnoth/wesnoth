@@ -5,9 +5,37 @@
 #######################################################################
 
 AC_PREREQ([2.57])
-AC_INIT([Battle for Wesnoth], [0.8.11+cvs], [davidnwhite@optusnet.com.au], [wesnoth])
-dnl AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["server.wesnoth.org"], [The default server for this version])
-AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["devsrv.wesnoth.org"], [The default server for this version])
+
+define([WESNOTH_VERSION],[0.8.11+cvs])
+
+dnl define([WESNOTH_DEFAULT_SERVER],[server.wesnoth.org])
+define([WESNOTH_DEFAULT_SERVER],[devsrv.wesnoth.org])
+
+AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, [davidnwhite@optusnet.com.au], [wesnoth])
+AC_DEFINE([WESNOTH_DEFAULT_SERVER], ["]WESNOTH_DEFAULT_SERVER["], [The default server for this version])
+
+dnl
+dnl Generate wesconfig.h from the information above
+dnl
+AC_CONFIG_COMMANDS([src/wesconfig.h],
+		   [cat > src/wesconfig.h <<EOF
+#ifndef WESCONFIG_H_INCLUDED
+#define WESCONFIG_H_INCLUDED
+
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#else
+# define VERSION "]WESNOTH_VERSION["
+# define WESNOTH_DEFAULT_SERVER "]WESNOTH_DEFAULT_SERVER["
+# define PACKAGE "wesnoth"
+# ifndef LOCALEDIR
+#  define LOCALEDIR "translations"
+# endif
+#endif
+
+#endif
+EOF
+])
 
 AC_REVISION([$Revision$])
 
