@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.12-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-21 09:57+0100\n"
-"PO-Revision-Date: 2005-03-16 21:58+0100\n"
+"PO-Revision-Date: 2005-03-21 10:39+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -13,9 +13,8 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -81,7 +80,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Grundläggande spelteknik"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -90,11 +88,8 @@ msgid ""
 msgstr ""
 "Den här sidan ger en översikt över allt du behöver veta för att spela Kampen "
 "om Wesnoth. Den tar upp hur man spelar och de grundläggande mekanismer som "
-"styr spelet. För mer information om hur man spelar, kan du studera "
-"<ref>dst=basic_strategy text='Grundläggande strategi'</ref> och "
-"<ref>dst=multiplayer_strategy text='Gruppspelsstrategi'</ref>. Tänk på att "
-"detta bara är en översikt - om du följer länkarna kan du läsa om speciella "
-"undantag och situationer."
+"styr spelet. Tänk på att detta bara är en översikt - om du följer länkarna "
+"kan du läsa om speciella undantag och situationer."
 
 #: data/help.cfg:70
 msgid ""
@@ -234,7 +229,6 @@ msgstr ""
 "snabbaste vägen under kommande drag."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -250,18 +244,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Varje trupp har ett givet antal förflyttningspoäng för varje drag, och "
-"kostnaden att förflytta sig över en viss ruta avgörs av dess "
-"<ref>dst=terrain text='Terräng'</ref>. Till exempel kostar det nästan alltid "
-"1 förflyttningspoäng att gå på en slättruta. Exakt hur många poäng det "
-"kostar att gå på en vis typ av ruta avgörs av truppens typ. I skog kostar "
-"det bara 1 poäng för alver, 2 för de flesta människo- och orchtrupper, medan "
-"det för ryttare kostar 3. Om du vill veta vad det kostar för en trupp att gå "
-"på en viss typ av terräng, så kan du högerklicka på truppen, välja "
-"Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</italic>."
+"Varje trupp har ett givet antal förflyttningspoäng för varje drag, och som "
+"spenderas för varje ruta som truppen träder in i. Kostnaden att förflytta "
+"sig över en viss ruta avgörs av rutans Terräng. Till exempel kostar det "
+"nästan alltid 1 förflyttningspoäng att gå på en slättruta. Exakt hur många "
+"poäng det kostar att gå på en vis typ av ruta avgörs av truppens typ. I skog "
+"kostar det bara 1 poäng för alver, 2 för de flesta människo- och "
+"orchtrupper, medan det för ryttare kostar 3. Om du vill veta vad det kostar "
+"för en trupp att gå på en viss typ av terräng, så kan du högerklicka på "
+"truppen, välja Truppbeskrivning, och sedan <italic>text='Terrängavdrag'</"
+"italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -274,13 +268,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Under förflyttning är det viktigt att komma ihåg de så kallade "
-"<ref>dst=zones_of_control text='Kontrollzonerna'</ref>. Varje trupp skapar "
-"en kontrollzon i de 6 rutorna alldeles utanför rutan truppen står på. En "
-"fiendetrupp som kommer till en sådan 'kontrollerad' ruta måste omedelbart "
-"stanna. En viktig del av Kampen om Wesnoth är att lära sig hur dessa "
-"kontrollzoner fungerar, eftersom bara <ref>dst=ability_skirmish "
-"text='stigfinnarna'</ref> kan röra sig obehindrat över dessa."
+"Under förflyttning är det viktigt att komma ihåg Kontrollzonerna. Varje "
+"trupp skapar en kontrollzon i de närmaste 6 rutorna. En fiendetrupp som "
+"kommer till en sådan 'kontrollerad' ruta måste omedelbart stanna. En viktig "
+"del av Kampen om Wesnoth är att lära sig hur dessa kontrollzoner fungerar, "
+"eftersom bara <ref>dst=ability_skirmish text='stigfinnarna'</ref> kan röra "
+"sig obehindrat över dessa."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -341,7 +334,6 @@ msgstr ""
 "<header>text='Chans för träff'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -355,16 +347,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chansen att en trupp träffar en annan beror i stort sett bara på vilken "
-"<ref>dst=terrain text=Terräng</ref> försvararen står på. Chansen att träffa "
-"kan man se genom att högerklicka på en trupp, välja Truppbeskrivning, och "
-"sedan <italic>text=Terrängavdrag</italic>. Till exempel har en alv en "
-"försvarsnivå på 70% i skog, vilket innebär att en attackerande trupp bara "
-"har 30% chans att träffa. Precis på samma sätt avgörs träffmöjligheten för "
-"alven av terrängen som den andra truppen står på."
+"Chansen att en trupp träffar en annan under ett anfall beror i princip bara "
+"på vilken terräng försvararen står på. Chansen att träffa kan man se genom "
+"att högerklicka på en trupp, välja Truppbeskrivning, och sedan "
+"<italic>text=Terrängavdrag</italic>. Till exempel har en alv en försvarsnivå "
+"på 60% i skog, vilket innebär att en attackerande trupp bara har 40% chans "
+"att träffa. Precis på samma sätt avgörs träffmöjligheten för alven av "
+"terrängen som den andra truppen står på."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -376,9 +367,9 @@ msgstr ""
 "\n"
 "Det finns två undantag till den här regeln: vid <ref>dst=magical_attacks "
 "text='Magiska attacker'</ref> och då <ref>dst=ability_marksman "
-"text='Prickskyttar'</ref> anfaller. Magiska attacker har alltid 70% chans "
-"för träff, oavsett terräng, och prickskyttar 60% när de anfaller, oavsett "
-"terräng."
+"text=Prickskyttar</ref> anfaller. Magiska attacker har alltid 70% chans att "
+"träffa, oavsett terräng; när prickskyttar anfaller har de alltid minst 60% "
+"chans att träffa, även dessa oavsett terräng."
 
 #: data/help.cfg:114
 msgid ""
@@ -411,7 +402,6 @@ msgstr ""
 "nedan."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -424,7 +414,7 @@ msgstr ""
 "\n"
 "Vissa trupper har speciella förmågor som påverkar hur mycket skada de vållar "
 "sina fiender i strid. Den vanligaste av dessa är förmågan är att "
-"<ref>dst=ability_charge text='Storma'</ref>. Då en trupp stormar en annan "
+"<ref>dst=ability_charge text=Storma</ref>. Då en trupp stormar en annan "
 "fördubblas skadan som både anfallaren och försvararen vållar."
 
 #: data/help.cfg:123
@@ -595,7 +585,6 @@ msgstr ""
 "fulla styrka. I vissa fall ges möjlighet att välja truppens nästa roll."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -643,7 +632,6 @@ msgstr ""
 "HP."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
@@ -3137,7 +3125,7 @@ msgstr "stark"
 
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr "smidig"
+msgstr "flink"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -4408,7 +4396,7 @@ msgstr "spira"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Mörkermagiker"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -4417,6 +4405,10 @@ msgid ""
 "made them stronger, but not nearly as powerful as they would have been as "
 "Liches. Because they retain their humanity, they do not fear holy magic. "
 msgstr ""
+"Mörkermagikernas avancerade studier i de mörka konsterna har gjort dem "
+"mycket starka. Men istället för att offra sina kroppar och bli vandöda "
+"själva, så har de valt att behålla sin mänsklighet. På grund av detta kommer "
+"de inte i närheten av häxmästarnas makt, men de slipper frukta helig magi."
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -6891,7 +6883,7 @@ msgstr ""
 "generalerna och i strategi av de största tänkarna. Detta har fått henne att "
 "bli både en utsökt krigare och ledare. Lägre rankade trupper runt omkring "
 "Prinsessan inspireras av hennes närvaro och kämpar bättre. Prinsessan är "
-"både smidig och fingerfärdig, och har tjuvliknande färdigheter."
+"både flink och smidig, och har tjuvliknande färdigheter."
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
@@ -8805,7 +8797,7 @@ msgstr "Brun"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Ogiltig färg"
 
 #: src/multiplayer_wait.cpp:113
 msgid "Leader: "
@@ -8841,11 +8833,11 @@ msgstr "Välj sida:"
 
 #: src/multiplayer_wait.cpp:414
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:414
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:415 src/playturn.cpp:1775
 msgid "unit^Gold"
