@@ -467,7 +467,7 @@ bool ai::should_retreat(const gamemap::location& loc, const move_map& srcdst, co
 {
 	const double our_power = power_projection(loc,srcdst,dstsrc);
 	const double their_power = power_projection(loc,enemy_srcdst,enemy_dstsrc);
-	return their_power > our_power + our_power*current_team().aggression();
+	return their_power > 2.0*our_power + our_power*current_team().aggression();
 }
 
 bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader)
