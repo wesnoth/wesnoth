@@ -409,10 +409,11 @@ void unit::heal()
 
 void unit::heal(int amount)
 {
-	if(hitpoints_ < max_hitpoints()) {
+	int max_hp = max_hitpoints();
+	if (hitpoints_ < max_hp) {
 		hitpoints_ += amount;
-		if(hitpoints_ > max_hitpoints())
-			hitpoints_ = max_hitpoints();
+		if (hitpoints_ > max_hp)
+			hitpoints_ = max_hp;
 	}
 }
 

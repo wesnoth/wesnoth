@@ -651,7 +651,7 @@ void attack(display& gui, const gamemap& map,
 					char buf[50];
 					sprintf(buf,"%d",stats.amount_attacker_drains);
 					gui.float_label(a->first,buf,0,255,0);
-					a->second.gets_hit(-stats.amount_attacker_drains);
+					a->second.heal(stats.amount_attacker_drains);
 				}
 			}
 
@@ -797,8 +797,7 @@ void attack(display& gui, const gamemap& map,
 					char buf[50];
 					sprintf(buf,"%d",stats.amount_defender_drains);
 					gui.float_label(d->first,buf,0,255,0);
-
-					d->second.gets_hit(-stats.amount_defender_drains);
+					d->second.heal(stats.amount_defender_drains);
 				}
 			}
 				
