@@ -243,6 +243,8 @@ std::vector<std::string> get_text() {
 		"-   Artur R. Czechowski",
 		"-   methinks",
 		"-   BOrsuk",
+		"-   Paweł Stradomski",
+		"-   Paweł Tomak",
 		"+ ",
 
 		"_" N_("+Portuguese (Brazil) Translation"),
