@@ -518,10 +518,10 @@ AC_CHECK_HEADER([SDL_net.h],
 		[AC_MSG_ERROR([*** SDL_net include files not found!
 You should install development package.])])
 		
-AC_CHECK_HEADER([SDL_ttf.h],
-		[],
-		[AC_MSG_ERROR([*** SDL_ttf include files not found!
-You should install development package.])])
+#AC_CHECK_HEADER([SDL_ttf.h],
+#		[],
+#		[AC_MSG_ERROR([*** SDL_ttf include files not found!
+#You should install development package.])])
 
 CPPFLAGS=$OLD_CPPFLAGS
 CXXFLAGS=$OLD_CXXFLAGS
