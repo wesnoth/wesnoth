@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-01-11 22:07+0100\n"
-"PO-Revision-Date: 2005-01-02 21:29+0100\n"
+"PO-Revision-Date: 2005-01-12 02:01+0100\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -633,7 +633,6 @@ msgstr ""
 "att de äger rum i början av ditt drag, innan några order ges."
 
 #: data/help.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -642,8 +641,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Vila: En trupp som varken förflyttas eller anfaller kommer att återfå 2 HP "
-"nästa drag."
+"Vila: En trupp som varken förflyttas, anfaller eller blir anfallen själv "
+"återfår 2 HP nästa drag."
 
 #: data/help.cfg:173
 msgid ""
@@ -665,7 +664,6 @@ msgstr ""
 "troll) återfår alltid 8 HP i början av draget."
 
 #: data/help.cfg:175
-#, fuzzy
 msgid ""
 "\n"
 "Healing units: Units with the <ref>dst=ability_heals text=Heals</ref> "
@@ -675,11 +673,11 @@ msgid ""
 msgstr ""
 "\n"
 "Vårdande trupper: Trupper med förmågan att <ref>dst=ability_heals "
-"text=Vårda</ref> återskänker 4 HP per drag till trupper som står i rutorna "
-"alldeles bredvid, samtidigt som de också skyddar mot gift."
+"text=Vårda</ref> återskänker omedelbart 4 HP till de trupper som står i "
+"rutorna alldeles bredvid, upp till sammanlagt 8 HP, alternativt hindrar de "
+"gift att verka."
 
 #: data/help.cfg:177
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -691,7 +689,7 @@ msgstr ""
 "\n"
 "Botande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Bota</"
 "ref> återskänker 8 HP per drag till trupper som står i de intilliggande "
-"rutorna, alternativt botar en trupps förgiftning."
+"rutorna, upp till sammanlagt 18 HP, alternativt botar en trupps förgiftning."
 
 #: data/help.cfg:179
 msgid ""
@@ -3148,7 +3146,6 @@ msgid "illuminates"
 msgstr "lyser upp"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -3164,7 +3161,9 @@ msgstr ""
 "bättre.\n"
 "\n"
 "Närliggande allierade trupper av lägre nivå kommer att utdela mer skada i "
-"strid."
+"strid. En trupp som är på lägre nivå, på samma sida, och står bredvid en "
+"trupp som har egenskapen ledarskap utdelar 25% mer i skada gånger deras "
+"nivåskillnad."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -3190,7 +3189,6 @@ msgstr ""
 "Aldrig mer än 1 i underhåll."
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -3199,11 +3197,10 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Bakhåll:\n"
-"Den här truppen kan gömma sig i skog, och blir inte upptäckt av sina "
-"fiender.\n"
+"Skuggsteg:\n"
+"Den här truppen blir osynlig nattetid.\n"
 "\n"
-"Fiendetrupper kan inte se eller attackera den här truppen i skogen, förutom "
+"Fiendetrupper kan inte se eller attackera den här truppen nattetid, förutom "
 "precis efter att den har attackerat, eller om det finns fiendetrupper "
 "alldeles bredvid."
 
@@ -3263,15 +3260,14 @@ msgid "steadfast"
 msgstr "ståndaktig"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Teleportera:\n"
-"Den här truppen kan förflytta sig mellan två kontrollerade byar "
-"ögonblickligen."
+"Den här truppen kan teleportera sig mellan två kontrollerade byar. Den "
+"använder då ett av sina förflyttningspoäng."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:161
@@ -3279,15 +3275,14 @@ msgid "teleport"
 msgstr "teleportera"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Rygghugg:\n"
-"Denna typ av attack orsakar dubbel skada om en allierad sinnad trupp "
-"befinner sig på motsatt sida av målet."
+"Denna typ av attack orsakar dubbel skada om en allierad trupp befinner sig "
+"på motsatt sida av målet. (Fungerar inte tillsammans med allierade trupper.)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3350,6 +3345,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Pest:\n"
+"När en trupp dödas av pestsmitta, ersätts truppen av en likadan, men som "
+"tillhör sidan som pestsmittade truppen. (Detta fungerar inte mot vandöda "
+"eller trupper i byar.)"
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -3362,7 +3361,6 @@ msgstr ""
 "tills de botas eller har försvagats till 1 HP."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3371,7 +3369,8 @@ msgid ""
 msgstr ""
 "Sakta ner:\n"
 "Denna typ av attack får målet att saktas ner. Trupper som är nersaktade rör "
-"sig med halva sin normala hastighet, och har ett slag mindre under sitt drag."
+"sig med halva sin normala hastighet, och har i strid ett slag mindre fram "
+"tills dess att truppen som kastade besvärjelsen avslutat sitt drag."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -8271,9 +8270,8 @@ msgid "Island"
 msgstr "Ö"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Öppna spel"
+msgstr "Öppna spel..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -8347,52 +8345,44 @@ msgid "Create Game"
 msgstr "Skapa nytt spel"
 
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Spelets namn"
+msgstr "Spelets namn:"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
 msgstr "$login|s spel"
 
 #: src/multiplayer.cpp:195
-#, fuzzy
 msgid "Map to play:"
-msgstr "Spelkarta"
+msgstr "Karta att spela:"
 
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Era"
+msgstr "Era:"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
 msgstr "Du måste ange ett namn."
 
 #: src/multiplayer.cpp:363
-#, fuzzy
 msgid "Turns: "
-msgstr "Drag"
+msgstr "Drag: "
 
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
-msgstr "Obegränsat"
+msgstr "obegränsat"
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Byguld"
+msgstr "Byguld: "
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Erfarenhetskrav"
+msgstr "Erfarenhetskrav: "
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Spelare"
+msgstr "Spelare: "
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -9082,26 +9072,3 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
-
-#~ msgid ""
-#~ "Nightstalk:\n"
-#~ "The unit becomes invisible during night."
-#~ msgstr ""
-#~ "Skuggsteg:\n"
-#~ "Truppen är osynlig nattetid."
-
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Pest:\n"
-#~ "Om denna typ av attack dödar ett levande mål som inte befinner sig i en "
-#~ "by, kommer den döda truppens lik att återuppväckas och slåss på "
-#~ "anfallarens sida."
-
-#~ msgid "skirmisher,heals"
-#~ msgstr "stigfinnare, vårdar"
-
-#~ msgid "skirmisher,cures"
-#~ msgstr "stigfinnare, botar"
