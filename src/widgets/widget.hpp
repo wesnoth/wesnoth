@@ -42,7 +42,7 @@ public:
 	void set_volatile(bool val=true);
 
 	void set_dirty(bool dirty=true);
-	const bool dirty() const;
+	bool dirty() const;
 
 	void set_help_string(const std::string& str);
 

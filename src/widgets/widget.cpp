@@ -138,7 +138,7 @@ void widget::set_dirty(bool dirty)
 	}
 }
 
-const bool widget::dirty() const
+bool widget::dirty() const
 {
 	return dirty_;
 }

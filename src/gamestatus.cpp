@@ -369,6 +369,7 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 	config cfg(file_data);
 
 	if(cfg.empty()) {
+		std::cerr << "Could not parse file data into config\n";
 		throw gamestatus::load_game_failed();
 	}
 	

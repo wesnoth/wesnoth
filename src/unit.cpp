@@ -589,7 +589,7 @@ void unit::read(const game_data& data, const config& cfg)
 	if(i != data.unit_types.end())
 		type_ = &i->second;
 	else
-		throw gamestatus::load_game_failed("Unit not found: '" + cfg["type"] + "'" + " : " + cfg.write() + "'\n");
+		throw gamestatus::load_game_failed("Unit not found: '" + cfg["type"] + "'");
 
 	assert(type_ != NULL);
 

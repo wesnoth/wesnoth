@@ -347,6 +347,8 @@ int play_game(int argc, char** argv)
 	std::cerr << "starting play_game\n";
 
 	CVideo video;
+
+	std::cerr << "initialized video...\n";
 	const font::manager font_manager;
 
 	const sound::manager sound_manager;
@@ -799,20 +801,15 @@ int play_game(int argc, char** argv)
 
 				defines_map.clear();
 				defines_map[state.difficulty] = preproc_define();
-			} catch(gamestatus::load_game_failed& e) {
+			} catch(gamestatus::error& e) {
 				std::cerr << "caught load_game_failed\n";
 				gui::show_dialog(disp,NULL,"",
-				           _("The file you have tried to load is corrupt"),gui::OK_ONLY);
-				continue;
-			} catch(gamestatus::game_error& e) {
-				std::cerr << "caught game_error\n";
-				gui::show_dialog(disp,NULL,"",
-				           _("The file you have tried to load is corrupt"),gui::OK_ONLY);
+				           _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",gui::OK_ONLY);
 				continue;
 			} catch(config::error& e) {
 				std::cerr << "caught config::error\n";
 				gui::show_dialog(disp,NULL,"",
-				    _("The file you have tried to load is corrupt") + std::string(": ") + e.message + "\n",
+				    _("The file you have tried to load is corrupt") + std::string(": '") + e.message + "'",
 				    gui::OK_ONLY);
 				continue;
 			} catch(io_exception& e) {

@@ -201,7 +201,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 				   seen_units.count(&u_it->second.type()) == 0) {
 					seen_units.insert(&u_it->second.type());
 					const int resistance = u_it->second.type().movement_type().resistance_against(*at_it) - 100;
-					resistances[resistance].push_back(string_table[u_it->second.type().name()]);
+					resistances[resistance].push_back(u_it->second.type().language_name());
 				}
 			}
 
@@ -250,7 +250,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		const time_of_day& tod = timeofday_at(status,units,mouseover);
 		std::stringstream tooltip;
 		
-		tooltip << font::LARGE_TEXT << tod.name << "\n"
+		tooltip << tod.name << "\n"
 		        << _("Lawful units") << ": "
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
 				<< _("Neutral units") << ": " << "0%\n"
