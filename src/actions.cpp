@@ -1098,8 +1098,6 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 		}
 	}
 
-	disp.recalculate_minimap();
-
 	return result;
 }
 
@@ -1208,6 +1206,7 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 	if(disp != NULL) {
 		disp->invalidate_unit();
 		disp->invalidate(steps.back());
+		disp->recalculate_minimap();
 	}
 
 	int orig_tower_owner = -1;

@@ -214,9 +214,9 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 		//TODO: improve this rating formula!
 		const double rating =
 		   (double(stats.chance_to_hit_defender)/100.0)*
-		               minimum<int>(stats.damage_defender_takes*stats.nattacks,d_hitpoints) -
+		               minimum<int>(stats.damage_defender_takes,d_hitpoints)*stats.nattacks -
 		   (double(stats.chance_to_hit_attacker)/100.0)*
-		               minimum<int>(stats.damage_attacker_takes*stats.ndefends,a_hitpoints);
+		               minimum<int>(stats.damage_attacker_takes,a_hitpoints)*stats.ndefends;
 		if(rating > current_rating || current_choice == -1) {
 			current_choice = a;
 			current_rating = rating;

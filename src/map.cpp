@@ -227,7 +227,7 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 	TERRAIN used_terrain = 0;
 	int terrain_count = 0;
 	for(int i = 0; i != nitems; ++i) {
-		if(items[i] != used_terrain) {
+		if(items[i] != used_terrain && underlying_terrain(items[i]) != TOWER) {
 			const int c = std::count(items+i+1,items+nitems,items[i]) + 1;
 			if(c > terrain_count) {
 				used_terrain = items[i];

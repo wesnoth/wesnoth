@@ -124,7 +124,7 @@ const SDL_Color& get_side_colour(int side)
 	                                   {0x00,0xFF,0x00,0},
 	                                   {0xFF,0xFF,0x00,0},
 	                                   {0xFF,0x55,0x55,0},
-	                                   {0xFF,0x55,0x55,0} };
+	                                   {0xFF,0x00,0xFF,0} };
 
 	static const size_t nsides = sizeof(sides)/sizeof(*sides);
 

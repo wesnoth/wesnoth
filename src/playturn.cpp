@@ -847,6 +847,7 @@ void turn_info::undo()
 	recorder.undo();
 
 	clear_shroud(gui_,map_,gameinfo_,units_,teams_,team_num_-1);
+	gui_.recalculate_minimap();
 }
 
 void turn_info::redo()
@@ -1226,6 +1227,7 @@ void turn_info::do_recruit(const std::string& name)
 		undo_stack_.clear();
 		redo_stack_.clear();
 
+		gui_.recalculate_minimap();
 		gui_.invalidate_game_status();
 		gui_.invalidate_all();
 	}
