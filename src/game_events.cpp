@@ -255,6 +255,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 					units->insert(std::pair<gamemap::location,unit>(vacant_dst,u->second));
 					units->erase(u);
 
+					if(game_map->is_village(vacant_dst)) {
+						get_village(vacant_dst,*teams,side,*units);
+					}
+
 					clear_shroud(*screen,*status_ptr,*game_map,*game_data_ptr,*units,*teams,side-1);
 				}
 			}
@@ -656,6 +660,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
+			if(game_map->is_village(loc)) {
+				get_village(loc,*teams,new_unit.side(),*units);
+			}
+
 			screen->invalidate(loc);
 		} else {
 			state_of_game->available_units.push_back(new_unit);

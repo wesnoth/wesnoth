@@ -31,7 +31,6 @@ gamemap::location find_vacant(const gamemap& map,
 	touched.insert(loc);
 
 	if(map.on_board(loc) && units.find(loc) == units.end() &&
-	   map.is_village(loc) == false &&
 	   (vacancy == VACANT_ANY || map.is_castle(loc))) {
 		return loc;
 	} else if(depth == 0) {
