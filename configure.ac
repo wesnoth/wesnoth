@@ -467,9 +467,7 @@ if test "x$lite" = "xno"; then
 
 	int main(int argc, char **argv)
         {
-	    char *music;
-
-	    music = (char *) OGG_new("music/main_menu.ogg");
+	    Mix_Music* music = Mix_LoadMUS("music/main_menu.ogg");
 	    if (music == NULL)
 		exit(1);
 	    exit(0);
