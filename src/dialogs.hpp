@@ -74,7 +74,7 @@ public:
 	void set_selection(int index);
 
 private:
-	void draw();
+	void draw_contents();
 	void process();
 
 	gui::button details_button_;
@@ -97,9 +97,11 @@ public:
 	bool show_above() const;
 	bool left_side() const;
 	void set_selection(int index);
+	void set_location(SDL_Rect const &);
+	using gui::preview_pane::set_location;
 
 private:
-	void draw();
+	void draw_contents();
 
 	const std::vector<std::pair<std::string,std::string> >* descriptions_;
 	int index_;

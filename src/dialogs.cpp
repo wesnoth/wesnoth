@@ -254,7 +254,7 @@ public:
 	virtual void set_location(SDL_Rect const &rect);
 	using widget::set_location;
 
-	void draw();
+	void draw_contents();
 	void set_selection(int index) {
 		index_ = index;
 		set_dirty();
@@ -278,19 +278,11 @@ void save_preview_pane::set_location(SDL_Rect const &rect)
 	register_rectangle(rect);
 }
 
-void save_preview_pane::draw()
+void save_preview_pane::draw_contents()
 {
-	if(!dirty()) {
-		return;
-	}
-
-	bg_restore();
-
 	if(index_ < 0 || index_ >= int(summaries_->size()) || info_->size() != summaries_->size()) {
 		return;
 	}
-
-	set_dirty(false);
 
 	const config& summary = *(*summaries_)[index_];
 
@@ -600,21 +592,13 @@ void unit_preview_pane::set_selection(int index)
 	}
 }
 
-void unit_preview_pane::draw()
+void unit_preview_pane::draw_contents()
 {
-	if(!dirty()) {
-		return;
-	}
-
-	bg_restore();
-
 	if(index_ < 0 || index_ >= int(units_->size())) {
 		return;
 	}
 
 	const unit& u = (*units_)[index_];
-
-	set_dirty(false);
 
 	const bool right_align = left_side();
 
@@ -756,13 +740,19 @@ void show_unit_description(display& disp, const gamemap& map, const unit& u)
 
 
 namespace {
-	static const SDL_Rect campaign_preview_size = {-350,-400,350,400};
 	static const int campaign_preview_border = 10;
 }
 
 campaign_preview_pane::campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(disp),descriptions_(desc),index_(0)
 {
-	set_location(campaign_preview_size);
+	set_width(350);
+	set_height(400);
+}
+
+void campaign_preview_pane::set_location(SDL_Rect const &rect)
+{
+	gui::preview_pane::set_location(rect);
+	register_rectangle(rect);
 }
 
 bool campaign_preview_pane::show_above() const { return false; }
@@ -777,19 +767,11 @@ void campaign_preview_pane::set_selection(int index)
 	}
 }
 
-void campaign_preview_pane::draw()
+void campaign_preview_pane::draw_contents()
 {
-	if(!dirty()) {
-		return;
-	}
-
-	bg_restore();
-
 	if(index_ < 0 || index_ >= descriptions_->size()) {
 		return;
 	}
-
-	set_dirty(false);
 
 	const SDL_Rect area = {
 		location().x+campaign_preview_border,
