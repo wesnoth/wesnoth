@@ -194,7 +194,9 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				//Connector
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
-				connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());
+				const int res = connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());
+				if(res == -1)
+					return -1;
 
 				const network::manager net_manager;
 				const network::server_manager server_man(15000,server);

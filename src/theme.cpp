@@ -241,8 +241,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 		}
 	}
 
-	if(!resolutions.empty() && current == resolutions.end()) {
-		std::cerr << "ERROR: No valid resolution found\n";
+	if(current == resolutions.end()) {
+		if(!resolutions.empty())
+			std::cerr << "ERROR: No valid resolution found\n";
 		return false;
 	}
 

@@ -1462,11 +1462,10 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 		const SDL_Rect& rect = map_area();
 		static std::string str(1,'x');
 		str[0] = '0' + route_.move_left + 1;
-		const SDL_Rect& text_area =
-		    font::draw_text(NULL,rect,18,text_colour,str,0,0);
+		const SDL_Rect& text_area = font::draw_text(NULL,map_area(),18,text_colour,str,0,0);
 		const int x = xloc + int(zoom_/2.0) - text_area.w/2;
 		const int y = yloc + int(zoom_/2.0) - text_area.h/2;
-		font::draw_text(this,rect,18,text_colour,str,x,y);
+		font::draw_text(this,map_area(),18,text_colour,str,x,y);
 	}
 }
 
