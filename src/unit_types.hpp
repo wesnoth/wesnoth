@@ -203,6 +203,7 @@ public:
 	bool teleports() const;
 	bool nightvision() const;
 	bool not_living() const;
+	bool can_advance() const;
 
 	bool has_ability(const std::string& ability) const;
 
@@ -229,6 +230,7 @@ private:
 	bool skirmish_;
 	bool teleport_;
 	bool nightvision_;
+	bool can_advance_;
 
 	unit_movement_type movementType_;
 

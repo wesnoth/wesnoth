@@ -372,10 +372,12 @@ private:
 
 	unit_map& units_;
 
+	void draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, double alpha);
+
 	//function which finds the start and end rows on the energy bar image
 	//where white pixels are substituted for the colour of the energy
-	const SDL_Rect& calculate_energy_bar();
-	SDL_Rect energy_bar_rect_;
+	const SDL_Rect& calculate_energy_bar(SDL_Surface* surf);
+	std::map<SDL_Surface*,SDL_Rect> energy_bar_rects_;
 
 	SDL_Surface* minimap_;
 	bool redrawMinimap_;

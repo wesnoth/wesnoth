@@ -63,27 +63,30 @@ public:
 	//has expired.
 	bool next_turn();
 
-	//an exception object used when loading a game fails.
-	struct load_game_failed {
-		load_game_failed() {}
-		load_game_failed(const std::string& msg) : message(msg) {}
+	struct error {
+		error() {}
+		error(const std::string& msg) : message(msg)
+		{}
 
 		std::string message;
 	};
 
-	//an exception object used when saving a game fails.
-	struct save_game_failed {
-		save_game_failed() {}
-		save_game_failed(const std::string& msg) : message(msg) {}
+	//an exception object used when loading a game fails.
+	struct load_game_failed : public error {
+		load_game_failed() {}
+		load_game_failed(const std::string& msg) : error("load_game_failed: " + msg) {}
+	};
 
-		std::string message;
+	//an exception object used when saving a game fails.
+	struct save_game_failed : public error {
+		save_game_failed() {}
+		save_game_failed(const std::string& msg) : error("save_game_failed: " + msg) {}
 	};
 
 	//an exception object used for any general game error.
 	//e.g. data files are corrupt.
-	struct game_error {
-		game_error(const std::string& msg) : message(msg) {}
-		std::string message;
+	struct game_error : public error {
+		game_error(const std::string& msg) : error("game_error: " + msg) {}
 	};
 
 private:

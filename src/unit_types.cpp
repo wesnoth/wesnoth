@@ -508,6 +508,8 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 		movementType_.set_parent(&(it->second));
 	}
 
+	can_advance_ = advances_to().empty() == false;
+
 	//check if the images necessary for units exist
 #ifdef linux
 	struct stat stat_buf;
@@ -792,6 +794,11 @@ bool unit_type::nightvision() const
 bool unit_type::not_living() const
 {
 	return race_->not_living();
+}
+
+bool unit_type::can_advance() const
+{
+	return can_advance_;
 }
 
 bool unit_type::has_ability(const std::string& ability) const

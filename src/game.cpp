@@ -586,7 +586,7 @@ int play_game(int argc, char** argv)
 							return 0;
 						}
 
-						side_parameters[side][name_value.front()] = name_value.back();						
+						side_parameters[side][name_value.front()] = name_value.back();
 					} else {
 						std::cerr << "unrecognized option: '" << name << "'\n";
 						return 0;
@@ -632,7 +632,14 @@ int play_game(int argc, char** argv)
 
 				const config* side = type == side_types.end() ? era_cfg->child("multiplayer_side") :
 				                                                era_cfg->find_child("multiplayer_side","type",type->second);
-				if(side == NULL) {
+
+				size_t tries = 0;
+				while(side != NULL && (*side)["type"] == "random" && ++tries < 100) {
+					const config::child_list& v = era_cfg->get_children("multiplayer_side");
+					side = v[rand()%v.size()];
+				}
+
+				if(side == NULL || (*side)["type"] == "random") {
 					std::string side_name = (type == side_types.end() ? "default" : type->second);
 					std::cerr << "Could not find side '" << side_name << "' for side " << side_num << "\n";
 					return 0;
@@ -656,16 +663,22 @@ int play_game(int argc, char** argv)
 					(*itors.first)->values["ai_algorithm"] = algorithm->second;
 				}
 
+				config& ai_params = (*itors.first)->add_child("ai");
+
 				//now add in any arbitrary parameters given to the side
 				for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
 					(*itors.first)->values[j->first] = j->second;
+					ai_params[j->first] = j->second;
 				}
 			}
 
 			try {
 				play_level(units_data,game_config,&level,video,state,story);
+			} catch(gamestatus::error& e) {
+				std::cerr << "caught error: '" << e.message << "'\n";
+				return 0;
 			} catch(...) {
-				std::cerr << "caught error playing level...\n";
+				std::cerr << "caught unknown error playing level...\n";
 				return 0;
 			}
 

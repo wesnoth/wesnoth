@@ -71,8 +71,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 	if(non_interactive())
 		updatesLocked_++;
 
-	energy_bar_rect_.x = -1;
-
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
 
 	image::set_zoom(zoom_);
@@ -313,7 +311,7 @@ double display::zoom(int amount)
 		return double(zoom_)/double(DefaultZoom);
 	}
 
-	energy_bar_rect_.x = -1;
+	energy_bar_rects_.clear();
 
 	std::cerr << "zoomed to: " << zoom_ << "\n";
 
@@ -1058,22 +1056,27 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	double unit_energy = 0.0;
 
-	Uint16 energy_colour = 0;
-
-	const int max_energy = 80;
-	double energy_size = 1.0;
+	SDL_Color energy_colour = {0,0,0,0};
 
 	if(unit_image_override != NULL)
 		sdl_add_ref(unit_image_override);
 
 	scoped_sdl_surface unit_image(unit_image_override);
-	scoped_sdl_surface energy_image(NULL);
+
+	const std::string* energy_file = NULL;
 
 	//see if there is a unit on this tile
 	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
-	if(it != units_.end() && (loc != hiddenUnit_ || !hideEnergy_)) {
-		if(unit_image == NULL)
+	if(it == units_.end()) {
+		return;
+	}
+
+	const unit& u = it->second;
+
+	if(loc != hiddenUnit_ || !hideEnergy_) {
+		if(unit_image == NULL) {
 			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
+		}
 
 		if(unit_image == NULL) {
 			return;
@@ -1082,9 +1085,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		const int unit_move = it->second.movement_left();
 		const int unit_total_move = it->second.total_movement();
 
-		const std::string* energy_file = NULL;
-
-		if(size_t(it->second.side()) != currentTeam_+1) {
+		if(size_t(u.side()) != currentTeam_+1) {
 			if(team_valid() &&
 			   teams_[currentTeam_].is_enemy(it->second.side())) {
 				energy_file = &game_config::enemy_energy_image;
@@ -1107,19 +1108,10 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			return;
 		}
 
-		energy_image.assign(image::get_image(*energy_file,image::SCALED,image::NO_ADJUST_COLOUR));
-
-		if(energy_image.get() == NULL) {
-			std::cerr << "failed to get energy image: '" << *energy_file << "'\n";
-			return;
-		}
-
-		unit_energy = minimum<double>(1.0,double(it->second.hitpoints()) / double(it->second.max_hitpoints()));
-
 		if(highlight_ratio == 1.0)
 			highlight_ratio = it->second.alpha();
 
-		if(it->second.invisible(map_.underlying_terrain(map_[x][y]), 
+		if(u.invisible(map_.underlying_terrain(map_[x][y]), 
 					status_.get_time_of_day().lawful_bonus,loc,
 					units_,teams_) &&
 		   highlight_ratio > 0.5) {
@@ -1131,27 +1123,25 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			blend_with = rgb(255,255,255);
 		}
 
-		{
-			int er = 0;
-			int eg = 0;
-			int eb = 0;
-			if(unit_energy < 0.33) {
-				er = 200;
-			} else if(unit_energy < 0.66) {
-				er = 200;
-				eg = 200;
-			} else {
-				eg = 200;
-			}
-
-			energy_colour = ::SDL_MapRGB(screen_.getSurface()->format,er,eg,eb);
+		if(u.max_hitpoints() > 0) {
+			unit_energy = double(u.hitpoints())/double(u.max_hitpoints());
 		}
 
-		if(it->second.max_hitpoints() < max_energy) {
-			energy_size = double(it->second.max_hitpoints())/double(max_energy);
+		if(unit_energy < 0.33) {
+			energy_colour.r = 200;
+			energy_colour.g = 0;
+			energy_colour.b = 0;
+		} else if(unit_energy < 0.66) {
+			energy_colour.r = 200;
+			energy_colour.g = 200;
+			energy_colour.b = 0;
+		} else {
+			energy_colour.r = 0;
+			energy_colour.g = 200;
+			energy_colour.b = 0;
 		}
 
-		if(it->second.facing_left() == false) {
+		if(u.facing_left() == false) {
 			//reverse the image here. image::reverse_image is more efficient, however
 			//it can be used only if we are sure that unit_image came from image::get_image.
 			//Since we aren't sure of that in the case of overrides, use the less efficient
@@ -1168,7 +1158,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		highlight_ratio = deadAmount_;
 	}
 
-	if(unit_image == NULL || energy_image == NULL || fogged(x,y) ||
+	if(unit_image == NULL || fogged(x,y) ||
 			(teams_[currentTeam_].is_enemy(it->second.side()) && 
 			it->second.invisible(map_.underlying_terrain(map_[x][y]), 
 					status_.get_time_of_day().lawful_bonus,loc,
@@ -1192,8 +1182,6 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		highlight_ratio = 0.75;
 	}
 
-	const bool energy_uses_alpha = highlight_ratio < 1.0 && blend_with == 0;
-
 	if(loc != hiddenUnit_) {
 		scoped_sdl_surface ellipse_front(NULL);
 		scoped_sdl_surface ellipse_back(NULL);
@@ -1209,6 +1197,23 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 		draw_unit(xpos,ypos - height_adjust,unit_image,false,
 		          highlight_ratio,blend_with,submerge,ellipse_back,ellipse_front);
 	}
+
+	const double bar_alpha = highlight_ratio < 1.0 && blend_with == 0 ? highlight_ratio : 1.0;
+	if(energy_file != NULL) {
+		draw_bar(*energy_file,xpos,ypos,(u.max_hitpoints()*2)/3,unit_energy,energy_colour,bar_alpha);
+	}
+
+	if(u.experience() > 0 && u.type().can_advance()) {
+		const double filled = double(u.experience())/double(u.max_experience());
+		const int level = maximum<int>(u.type().level(),1);
+		const SDL_Color normal_colour = {200,200,0,0}, near_advance_colour = {255,255,255,0};
+		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
+		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
+
+		draw_bar("enemy-energy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
+	}
+
+/*
 
 	const SDL_Rect& energy_bar_loc = calculate_energy_bar();
 	double total_energy = double(energy_bar_loc.h);
@@ -1256,7 +1261,7 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			SDL_FillRect(dst,&filled_xp_area,xp_colour);
 		}
 	}
-
+*/
 	const std::vector<std::string>& overlays = it->second.overlays();
 	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
 		const scoped_sdl_surface img(image::get_image(*ov));
@@ -1265,6 +1270,46 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			std::cerr << "AA\n";
 			draw_unit(xpos,ypos,img);
 		}
+	}
+}
+
+void display::draw_bar(const std::string& image, int xpos, int ypos, size_t height, double filled, const SDL_Color& col, double alpha)
+{
+	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
+
+	scoped_sdl_surface surf(image::get_image(image,image::SCALED,image::NO_ADJUST_COLOUR));
+	scoped_sdl_surface unmoved_surf(image::get_image("unmoved-energy.png",image::SCALED,image::NO_ADJUST_COLOUR));
+	if(surf == NULL || unmoved_surf == NULL) {
+		return;
+	}
+
+	const SDL_Rect& bar_loc = calculate_energy_bar(unmoved_surf);
+	if(height > bar_loc.h) {
+		height = bar_loc.h;
+	}
+
+	if(alpha != 1.0) {
+		surf.assign(adjust_surface_alpha(surf,alpha));
+		if(surf == NULL) {
+			return;
+		}
+	}
+
+	const size_t skip_rows = bar_loc.h - height;
+
+	SDL_Rect top = {0,0,surf->w,bar_loc.y};
+	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
+	bot.h = surf->w - bot.y;
+
+	blit_surface(xpos,ypos,surf,&top);
+	blit_surface(xpos,ypos+top.h,surf,&bot);
+
+	const size_t unfilled = height*(1.0 - filled);
+
+	if(unfilled < height) {
+		SDL_Rect filled_area = {xpos+bar_loc.x,ypos+bar_loc.y+unfilled,bar_loc.w,height-unfilled};
+		const Uint16 colour = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
+		SDL_FillRect(video().getSurface(),&filled_area,colour);
 	}
 }
 
@@ -1874,16 +1919,16 @@ struct is_energy_colour {
 												  (colour&0x000000FF) > 0x00000099; }
 };
 
-const SDL_Rect& display::calculate_energy_bar()
+const SDL_Rect& display::calculate_energy_bar(SDL_Surface* surf)
 {
-	if(energy_bar_rect_.x != -1) {
-		return energy_bar_rect_;
+	const std::map<SDL_Surface*,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
+	if(i != energy_bar_rects_.end()) {
+		return i->second;
 	}
 
 	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
 
-	scoped_sdl_surface image(image::get_image(game_config::unmoved_energy_image,image::SCALED));
-	image.assign(make_neutral_surface(image));
+	scoped_sdl_surface image(make_neutral_surface(surf));
 
 	surface_lock image_lock(image);
 	const Uint32* const begin = image_lock.pixels();
@@ -1905,9 +1950,8 @@ const SDL_Rect& display::calculate_energy_bar()
 	}
 
 	const SDL_Rect res = {first_col,first_row,last_col-first_col,last_row+1-first_row};
-
-	energy_bar_rect_ = res;
-	return energy_bar_rect_;
+	energy_bar_rects_.insert(std::pair<SDL_Surface*,SDL_Rect>(surf,res));
+	return calculate_energy_bar(surf);
 }
 
 void display::invalidate(const gamemap::location& loc)
