@@ -527,14 +527,7 @@ void connect::process_event()
 	// network:
 	if (changed) {
 		update_playerlist_state();
-
-		config old_level = level_;
-		update_level();
-		
-		config diff;
-		diff.add_child("scenario_diff",level_.get_diff(old_level));
-
-		network::send_data(diff);
+		update_and_send_diff();
 	}
 }
 
@@ -557,8 +550,6 @@ void connect::start_game()
 		itor->resolve_random();
 	}
 
-	update_level();
-
 	// FIXME: This is to be reviewed!
 	recorder.set_save_info(state_);
 	recorder.set_skip(-1);
@@ -571,7 +562,7 @@ void connect::start_game()
 	network::send_data(lock);
 
 	// Re-sends the whole level
-	network::send_data(level_);
+	update_and_send_diff();
 
 	config cfg;
 	cfg.add_child("start_game");
@@ -615,8 +606,7 @@ void connect::process_network_data(const config& data, const network::connection
 				users_.erase(player);
 				update_user_combos();
 			}
-
-			network::send_data(level_);
+			update_and_send_diff();
 			return;
 		}
 	}
@@ -663,9 +653,8 @@ void connect::process_network_data(const config& data, const network::connection
 
 			// sides_[side_taken].set_connection(sock);
 			sides_[side_taken].import_network_user(data);
-			update_level();
 			update_playerlist_state();
-			network::send_data(level_);
+			update_and_send_diff();
 
 			LOG_NW << "sent player data\n";
 
@@ -715,9 +704,7 @@ void connect::process_network_error(network::error& error)
 	//if there have been changes to the positions taken,
 	//then notify other players
 	if(changes) {
-		// FIXME: shouldn't a diff be sent here instead?
-		update_level();
-		network::send_data(level_);
+		update_and_send_diff();
 		update_playerlist_state();
 	}
 }
@@ -959,6 +946,15 @@ void connect::update_level()
 
 		level_.add_child("side", itor->get_config());
 	}
+}
+
+void connect::update_and_send_diff()
+{
+	config old_level = level_;
+	update_level();
+	config diff;
+	diff.add_child("scenario_diff",level_.get_diff(old_level));
+	network::send_data(diff);
 }
 
 bool connect::sides_available()

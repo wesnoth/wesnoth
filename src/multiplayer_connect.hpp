@@ -162,6 +162,9 @@ private:
 
 	// Updates the level_ variable to reflect the sides in the sides_ vector
 	void update_level();
+	
+	// Updates the level, and send a diff to the clients
+	void update_and_send_diff();
 
 	// Returns true if there still are sides available for this game
 	bool sides_available();
