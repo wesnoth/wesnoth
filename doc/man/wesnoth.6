@@ -13,7 +13,7 @@
 .\" Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 .\"
 
-.TH WESNOTH 6 "January 27th, 2005" "Wesnoth" "Battle for Wesnoth"
+.TH WESNOTH 6 "January 29th, 2005" "Wesnoth" "Battle for Wesnoth"
 
 .SH NAME
 battle for wesnoth \- fantasy turn-based strategy game
@@ -28,13 +28,9 @@ Battle for
 .B Wesnoth
 is a fantasy turn-based strategy game.
 
-Battle for control of villages, using variety of units which have
-advantages and disadvantages in different types of terrains and
-against different types of attacks.  Units gain experience and advance
-levels, and are carried over from one scenario to the next campaign.
+Battle for control of villages, using variety of units which have advantages and disadvantages in different types of terrains and against different types of attacks. Units gain experience, advance levels and can be carried over from one scenario to the next.
 
-Build a Hero, and lead your army.  Different races, with distinctive
-abilities, weapons and spells.
+Build a Hero, and lead your army.  Different races, with distinctive abilities, weapons and spells.
 
 .SH OPTIONS
 
@@ -52,7 +48,7 @@ runs the game in full screen mode.
 
 .TP
 .BR --fps
-displays the number of frames per second the game is currently running with in a corner of the screen.
+displays the number of frames per second the game is currently running at, in a corner of the screen.
 
 .TP
 .BR -h , \ --help
@@ -64,7 +60,7 @@ sets the severity level of the debug domains. "all" can be used to match any deb
 
 .TP
 .BR --multiplayer
-runs multiplayer game. There are more extra options that can be used together with --multiplayer. They are explained below. (not yet implemented correctly)
+runs a multiplayer game. There are more extra options that can be used together with --multiplayer. They are explained below.
 
 .TP
 .BR --nocache
@@ -94,45 +90,47 @@ shows version number and exits.
 .BR -w , \ --windowed
 runs the game in windowed mode.
 
-.SH Options for --multiplayer (not yet implemented correctly)
+.SH Options for --multiplayer
 
-The side-specific multiplayer options are followed by a side number. It
-usually is 1 or 2.
-
-.TP
-.BR --scenario=value
-select a multiplayer scenario. The default scenario is "multiplayer_test".
+The side-specific multiplayer options are marked with <number>. <number> has to be replaced by a side number. It usually is 1 or 2 but depends on the number of players possible in the choosen scenario.
 
 .TP
 .BR --era=value
-use this option to play in the selected era instead of the "Default" era.
-
-.TP
-.BR --algorithm9=value
-select a non-standard algorithm to be used by the AI controller for this
-side. Available values: "idle_ai" and "sample_ai".
-
-.TP
-.BR --controller9=value
-select the controller for this side. Available values: "human" and "ai".
-
-.TP
-.BR --side9=value
-select by id a faction of the current era for this side. Eras and
-factions are described in the data/multiplayer.cfg file.
-
-.TP
-.BR --parm=name:value
-set additional parameters for this side.
+use this option to play in the selected era instead of the "Default" era. The era is choosen by an id. Eras and factions are described in the data/multiplayer.cfg file.
 
 .TP
 .BR --nogui
-run the game without the GUI.
+runs the game without the GUI.
 
+.TP
+.BR --scenario=value
+selects a multiplayer scenario. The default scenario is "multiplayer_test".
+
+.TP
+.BR --algorithm<number>=value
+selects a non-standard algorithm to be used by the AI controller for this side. Available values: "idle_ai" and "sample_ai".
+
+.TP
+.BR --controller<number>=value
+selects the controller for this side. Available values: "human" and "ai".
+
+.TP
+.BR --parm<number>=name:value
+sets additional parameters for this side. This parameter depends on the options used with
+.B --controller 
+and
+.B --algorithm.
+It should only be usefull for people designing their own AI. (not yet documented completely)
+
+.TP
+.BR --side<number>=value
+selects a faction of the current era for this side. The faction is choosen by an id. Eras and factions are described in the data/multiplayer.cfg file.
 
 .SH AUTHOR
 Written by David White <davidnwhite@optusnet.com.au>.
+.br
 Edited by Nils Kneuper <crazy-ivanovic@gmx.net>.
+.br
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visit the official homepage: http://www.wesnoth.org/
