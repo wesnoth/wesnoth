@@ -509,7 +509,6 @@ int play_game(int argc, char** argv)
 				return 0;
 			} catch(network::error& e) {
 				std::cerr << "caught network error...\n";
-				e.disconnect();
 				gui::show_dialog(disp,NULL,"",e.message,gui::OK_ONLY);
 			} catch(gamemap::incorrect_format_exception& e) {
 				gui::show_dialog(disp,NULL,"",std::string("The game map could not be loaded: ") + e.msg_,gui::OK_ONLY);

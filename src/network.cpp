@@ -153,13 +153,16 @@ connection accept_connection()
 
 void disconnect(connection s)
 {
-	if(!s && nconnections() > 1) {
+	if(s == 0) {
+		std::cerr << "closing all sockets " << sockets.size() << "\n";
 		while(sockets.empty() == false) {
 			disconnect(sockets.back());
 		}
 
 		return;
 	}
+
+	std::cerr << "closing socket " << (int)s << "\n";
 
 	bad_sockets.erase(s);
 	received_data.erase(s);
@@ -223,6 +226,7 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				std::cerr << "received packet length: " << len << "\n";
 
 				if(len > 10000000) {
+					std::cerr << "bad length in network packet. Throwing error\n";
 					throw error(std::string("network error: bad length data"),*i);
 				}
 
