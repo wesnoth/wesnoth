@@ -41,7 +41,7 @@ struct move_cost_calculator
 		typedef std::multimap<location,location>::const_iterator Itor;
 		std::pair<Itor,Itor> range = dstsrc_.equal_range(loc);
 		while(range.first != range.second) {
-			if(range.first->first == loc)
+			if(range.first->second == loc_)
 				return 0.01;
 			++range.first;
 		}
@@ -211,8 +211,7 @@ std::pair<location,location> choose_move(
 	                                     u->first,dstsrc);
 
 	//choose the best target for that unit
-	for(std::vector<target>::iterator tg = targets.begin();
-	    tg != targets.end(); ++tg) {
+	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		assert(map.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
 		                       minimum(tg->value/best_rating,100.0),cost_calc);

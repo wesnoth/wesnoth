@@ -503,11 +503,11 @@ void display::draw_sidebar()
 		//otherwise we display the unit that is selected
 		std::map<gamemap::location,unit>::const_iterator i
 		                                = units_.find(mouseoverHex_);
-		if(i == units_.end()) {
+		if(i == units_.end() || shrouded(i->first.x,i->first.y)) {
 			i = units_.find(selectedHex_);
 		}
 
-		if(i != units_.end()) {
+		if(i != units_.end() && !shrouded(i->first.x,i->first.y)) {
 			draw_unit_details(mapx()+SideBarText_x,SideBarUnit_y,selectedHex_,
 			                  i->second,unitDescriptionRect_,
 			                  mapx()+SideBarText_x,SideBarUnitProfile_y);

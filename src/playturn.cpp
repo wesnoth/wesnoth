@@ -579,7 +579,7 @@ void turn_info::show_menu()
                               "recall","unit_list","status_table",
 	                          "save_game","preferences","end_turn",""};
 	static const std::string browse_menu_items[] =
-	                         {"scenario_objectives","unit_list",
+	                         {"scenario_objectives",
 	                          "status_table","save_game","preferences",
 	                          ""};
 	std::vector<std::string> menu;

@@ -950,10 +950,9 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 			//we're not really going to mutate the unit, just temporarily
 			//set its moves to maximum, but then switch them back
 			unit& mutable_unit = const_cast<unit&>(i->second);
-			const int old_moves = mutable_unit.movement_left();
-			mutable_unit.set_movement(mutable_unit.total_movement());
+			const unit_movement_resetter move_resetter(mutable_unit);
+
 			clear_shroud_unit(map,gamedata,units,i->first,teams,team);
-			mutable_unit.set_movement(old_moves);
 		}
 	}
 
