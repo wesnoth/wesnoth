@@ -1579,7 +1579,7 @@ void turn_info::status_table()
 	}
 
 	if(fog)
-		items.push_back("???\n");
+		items.push_back("&random-enemy.png,&random-enemy.png");
 
 	gui::show_dialog(gui_,NULL,"","",gui::CLOSE_ONLY,&items);
 }
