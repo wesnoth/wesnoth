@@ -1,4 +1,5 @@
 CVS HEAD:
+ * trained AI to take advantage of backstab
  * added and improved unit images and castle images
  * reduced Dwarvish Fighter hitpoints to 36
  * reduced Dwarvish Lord hitpoints to 75 and changed ranged attack to 10-2
@@ -7,13 +8,16 @@ CVS HEAD:
    * Lizardman
  * multiplayer improvements:
    * added Lieutenant to Loyalists in Age of Heroes era
+   * 9 player support in random map generator
  * updated translations:
    * catalan
    * french
  * made scrollbars faster by avoiding unnecessary redraws
- * Added HOME and END keys support in textboxes
- * implemented mid-scenario changing of some side detail
+ * added HOME and END keys support in textboxes
+ * implemented mid-scenario changing of some side detail(s)
  * attack and defence weighting improvements
+ * improved macros handling arguments with space
+ * fixed AI attacking from silly places
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
  * fixed statistics showing incorrectly on all but scenario 1
  * fixed infliced damage labels being not always displayed
@@ -23,9 +27,15 @@ CVS HEAD:
  * fixed keeps located on the border of the screen having broken graphics
  * fixed bug in Desert of Death scenario
  * fixed textbox-content slow to update when it was larger than the textbox size
+ * fixed editor handing keys improperly
+ * fixed zooming messing up labels
+ * fixed bug that caused crash in [kill] event
+ * fixed alignments not being atomic strings
  * fixed networking bug
  * added fixes for OSX from Sithrandel
+ * added configure --enable-lite
  * minor modifications to slacknoth
+ * added checking of return values in constructors
  * code cleanups
 
 Version 0.7.3:
