@@ -1052,6 +1052,8 @@ void display::draw_minimap(int x, int y, int w, int h)
 	SDL_Rect loc = minimap_location;
 	SDL_BlitSurface(surf,NULL,video().getSurface(),&loc);
 
+	int map_w = map_.x(), map_h = map_.y();
+
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if(fogged(u->first.x,u->first.y) || 
 				(teams_[currentTeam_].is_enemy(u->second.side()) &&
@@ -1063,14 +1065,14 @@ void display::draw_minimap(int x, int y, int w, int h)
 		const int side = u->second.side();
 		const SDL_Color& col = team::get_side_colour(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-		SDL_Rect rect = {x + (u->first.x*w)/map_.x(),
-		                 y + (u->first.y*h)/map_.y(),
-						 w/map_.x(), h/map_.y() };
+		SDL_Rect rect = { x + (u->first.x * w) / map_w,
+		                  y + (u->first.y * h + (is_odd(u->first.x) ? h / 2 : 0)) / map_h,
+		                  w / map_w, h / map_h };
 		SDL_FillRect(video().getSurface(),&rect,mapped_col);
 	}
 
-	const double xscaling = double(surf->w)/double(map_.x());
-	const double yscaling = double(surf->h)/double(map_.y());
+	const double xscaling = double(surf->w) / map_w;
+	const double yscaling = double(surf->h) / map_h;
 
 	const int xbox = static_cast<int>(xscaling*xpos_/(zoom_*0.75));
 	const int ybox = static_cast<int>(yscaling*ypos_/zoom_);
