@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-11 23:01+0200\n"
-"PO-Revision-Date: 2004-09-09 23:38+0200\n"
+"POT-Creation-Date: 2004-09-12 17:19+0200\n"
+"PO-Revision-Date: 2004-09-12 16:15+0200\n"
 "Last-Translator: tephlon\n"
 "Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
@@ -12,83 +12,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: data/game.cfg:257
-msgid "Heir to the Throne"
-msgstr "Tronarvingen"
-
-#: data/game.cfg:261
-msgid ""
-"&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
-"champion.png,Champion,(hardest)"
-msgstr ""
-"&elvish-fighter.png,Krigare,(lätt);*&elvish-hero.png,Hjälte;&elvish-champion."
-"png,Förkämpe,(svårt)"
-
-#: data/game.cfg:267
-msgid "The Dark Hordes"
-msgstr "De mörka horderna"
-
-#: data/game.cfg:271
-msgid ""
-"&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
-"&undead-lich.png,Dark Lord,(hardest)"
-msgstr ""
-"&undead-adept.png,Lärling,(lätt);*&undead-necromancer.png,Mästare;&undead-"
-"lich.png,Mörkrets Furste,(svårt)"
-
-#: data/game.cfg:276
-msgid "Son of the Black Eye (chapter I)"
-msgstr "Svartögats son (kapitel I)"
-
-#: data/game.cfg:280
-msgid ""
-"&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
-"warlord.png,Warlord,(hardest)"
-msgstr ""
-"&orcish-grunt.png,Fotsoldat,(lätt);*&orcish-warrior.png,Krigare;&orcish-"
-"warlord.png,Krigsherre,(svårt)"
-
-#: data/game.cfg:286
-msgid "The Eastern Invasion"
-msgstr "Invasion i Öst"
-
-#: data/game.cfg:290
-msgid ""
-"&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
-"royalguard.png,Royal Guard,(hardest)"
-msgstr ""
-"&human-spearman.png,Spjutbärare,(lätt);*&human-swordman.png,Svärdssoldat;"
-"&human-royalguard.png,Kunglig Vakt,(svårt)"
-
-#: data/game.cfg:296
-msgid "The Rise of Wesnoth"
-msgstr "Wesnoths uppgång"
-
-#: data/game.cfg:300
-msgid ""
-"&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
-"lord.png,Lord,(hardest)"
-msgstr ""
-"&noble-fighter.png,Krigare,(lätt);*&noble-commander.png,Befälhavare;&noble-"
-"lord.png,Furste,(svårt)"
-
-#: data/game.cfg:370
+#: data/game.cfg:319
 msgid "loyal"
 msgstr "lojal"
 
-#: data/game.cfg:378
+#: data/game.cfg:327
 msgid "strong"
 msgstr "stark"
 
-#: data/game.cfg:393
+#: data/game.cfg:342
 msgid "quick"
 msgstr "snabb"
 
-#: data/game.cfg:407
+#: data/game.cfg:356
 msgid "intelligent"
 msgstr "intelligent"
 
-#: data/game.cfg:416
+#: data/game.cfg:365
 msgid "resilient"
 msgstr "stryktålig"
 
@@ -166,7 +106,7 @@ msgstr ""
 "italic> på huvudmenyn. Här lär du lär dig grunderna i spelet. När du tränat "
 "klart, rekommenderas att du spelar kampanjen Tronarvingen först - klicka "
 "<italic>text=Kampanj</italic> och därefter <italic>text=Tronarvingen</"
-"italic>. Då Striden om Wesnoth kan vara riktigt utmanande, ska du kanske "
+"italic>. Då Striden om Wesnoth kan vara riktigt utmanande, skall du kanske "
 "börja med en <italic>text=Lätt</italic> kampanj.\n"
 "\n"
 "<img>src=help/tooltip.png align=right float=yes</img>Under tiden du spelar "
@@ -242,7 +182,6 @@ msgid "Movement"
 msgstr "Förflyttning"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -288,7 +227,7 @@ msgstr ""
 "\n"
 "Under förflyttning är det viktigt att komma ihåg de så kallade "
 "<ref>dst=zones_of_control text='Kontrollzonerna'</ref>. Varje trupp skapar "
-"en kontrollzon i de 6 rutorna omedelbart utanför rutan truppen står på. En "
+"en kontrollzon i de 6 rutorna alldeles utanför rutan truppen står på. En "
 "fiendetrupp som kommer till en sådan 'kontrollerad' ruta måste omedelbart "
 "stanna. En viktig del av Striden om Wesnoth är att lära sig hur dessa "
 "kontrollzoner fungerar, eftersom bara <ref>dst=ability_skirmish "
@@ -377,7 +316,7 @@ msgstr ""
 "<header>text=Skada</header>\n"
 "\n"
 "Varje träff ger en grundskada som beror på typen av attack. Till exempel ger "
-"en alvkrigare med ett 5-4-svärd en grundskada på 5 kroppspoäng (KP). Detta "
+"en alvkrigare med ett 5-4-svärd en grundskada på 5 hälsopoäng (HP). Detta "
 "kan ändras beroende på två saker: försvararens "
 "<ref>dst=damage_type_and_resistance text='Motståndskraft'</ref> samt vilken "
 "<ref>dst=time_of_day text='Tid på dygnet'</ref> det är. Båda dessa förklaras "
@@ -512,7 +451,7 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
-"Om båda trupper överlever en strid, får de lika många erfarenhetspoäng (XP) "
+"Om båda trupper överlever en strid, får de lika många erfarenhetspoäng (EP) "
 "som den erfarenhetsnivå deras motståndares är på. Om en trupp dödar en annan "
 "i strid, får den däremot mycket mer erfarenhet: 4 poäng för en trupp på "
 "nollte nivån, 8 för en på första, 16 för en på andra, 24 för en på tredje, "
@@ -557,18 +496,18 @@ msgstr ""
 "trupper helas på många olika sätt. Det gemensamma för dessa olika sätt är "
 "att de äger rum i början av ditt drag, innan några order ges.\n"
 "\n"
-"Vila: En trupp som varken förflyttas eller anfaller kommer att återfå 2 KP "
+"Vila: En trupp som varken förflyttas eller anfaller kommer att återfå 2 HP "
 "nästa drag.\n"
 "Byar: trupper som som befinner sig vid en by då ett drag startar återfår 8 "
-"KP. \n"
+"HP. \n"
 "<ref>dst=ability_regeneration text=Regenerering</ref>: Vissa trupper (såsom "
-"troll) återfår alltid 8 KP i början av draget.\n"
+"troll) återfår alltid 8 HP i början av draget.\n"
 "Vårdande trupper: Trupper med förmågan att <ref>dst=ability_heals "
-"text=Vårda</ref> återskänker 4 KP per drag till trupper som står i rutorna "
+"text=Vårda</ref> återskänker 4 HP per drag till trupper som står i rutorna "
 "alldeles bredvid, samtidigt som de också skyddar mot gift.\n"
 "\n"
 "Botande trupper: Trupper med förmågan att <ref>dst=ability_cures text=Bota</"
-"ref> återskänker 8 KP per drag till trupper som står i de intilliggande "
+"ref> återskänker 8 HP per drag till trupper som står i de intilliggande "
 "rutorna, alternativt botar en trupps förgiftning. \n"
 "\n"
 "Kom ihåg att vila kombineras med andra sorters helande, medan byar, "
@@ -740,8 +679,8 @@ msgstr ""
 "\n"
 "<header>text=Snabb</header>\n"
 "\n"
-"Snabba trupper har en extra förflyttningspoäng, men 10% mindre kroppspoäng "
-"än vanligt.\n"
+"Snabba trupper har en extra förflyttningspoäng, men 10% mindre hälsopoäng än "
+"vanligt.\n"
 "\n"
 "Detta är det karaktärsdrag som märks mest, speciellt hos långsamma trupper "
 "som troll eller tungt infanteri. Dessa trupper rör sig ofta mycket snabbare "
@@ -752,7 +691,7 @@ msgstr ""
 "\n"
 "<header>text=Stryktålig</header>\n"
 "\n"
-"Stryktåliga trupper har 7 kroppspoäng mer än vanligt.\n"
+"Stryktåliga trupper har 7 hälsopoäng mer än vanligt.\n"
 "\n"
 "Stryktåliga trupper är användbara i alla lägen under en kampanj. Det är ett "
 "nyttigt karaktärsdrag för alla trupper, även om det märks mer hos vissa. "
@@ -762,7 +701,7 @@ msgstr ""
 "<header>text=Stark</header>\n"
 "\n"
 "Starka trupper vållar 1 mer skada per träff i närstrid och har 2 mer "
-"kroppspoäng.\n"
+"hälsopoäng.\n"
 "\n"
 "Starka trupper är bra för närstridstrupper och allra bäst är det för trupper "
 "som har ett stort antal slag, såsom alvkrigaren. Starka trupper kan vara "
@@ -1208,10 +1147,9 @@ msgstr "Vad är en ledare?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
 msgid "How should I choose what kind of units to recruit?"
-msgstr "Hur kan jag veta vilken sorts trupper jag ska rekrytera?"
+msgstr "Hur kan jag veta vilken sorts trupper jag skall rekrytera?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:85
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box, and cost, which is displayed after the name of "
@@ -1497,11 +1435,11 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
-"När en trupp slåss med en annan får den erfarenhet - förkortat 'XP' - av "
+"När en trupp slåss med en annan får den erfarenhet - förkortat 'EP' - av "
 "striden. Mängden erhållen erfarenhet är lika med motståndarens "
 "erfarenhetsnivå, vilket är en representation av hur mäktig den truppen är. "
 "Betydligt mer erfarenhet får en trupp om den besegrar en fiende. Mängden "
-"erhållen XP är då lika med 8 gånger fiendetruppens nivå. "
+"erhållen EP är då lika med 8 gånger fiendetruppens nivå. "
 
 #: data/scenarios/tutorial/tutorial1.cfg:185
 msgid "What happens when a unit advances?"
@@ -1555,7 +1493,7 @@ msgstr ""
 "fördelar, såsom mer inkomst, och genom att minska underhållskostnaden per "
 "drag med ett. Antalet byar du kontrollerar visas på Statuspanelen bredvid "
 "bilden med ett hus. Utöver de ekonomiska fördelarna av byarna, kan de också "
-"användas i strid. Byar läker trupperna i dem med 8 KP per drag."
+"användas i strid. Byar läker trupperna i dem med 8 HP per drag."
 
 #: data/scenarios/tutorial/tutorial1.cfg:209
 msgid "How do I heal when there aren't any villages nearby?"
@@ -1571,11 +1509,11 @@ msgid ""
 "all your units are healed fully."
 msgstr ""
 "Trupper kan läka även utan byar. Om en trupp inte förflyttar sig eller "
-"anfaller under ett drag, så återfår den 2 KP genom att vila. Om en fiende "
+"anfaller under ett drag, så återfår den 2 HP genom att vila. Om en fiende "
 "attackerar truppen får truppen inte sin vila och kan då heller inte läka "
 "under det draget. Det finns också vissa trupper som kan läka trupperna som "
 "omger dem. Alvshamanen är en sådan trupp, och trupper som står alldeles "
-"bredvid en alvshaman får tillbaka 4 KP per drag. Och slutligen, när du "
+"bredvid en alvshaman får tillbaka 4 HP per drag. Och slutligen, när du "
 "vinner ett scenario återfår dina trupper alla sina krafter. "
 
 #: data/scenarios/tutorial/tutorial1.cfg:215
@@ -1583,7 +1521,7 @@ msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
-"Nu måste du strida mot Merle tills hon har 0 KP. Fortsätt bara att anfalla."
+"Nu måste du strida mot Merle tills hon har 0 HP. Fortsätt bara att anfalla."
 
 #: data/scenarios/tutorial/tutorial1.cfg:217
 msgid "Defeat Merle"
@@ -1777,7 +1715,7 @@ msgstr "Vad händer när jag återkallar en trupp?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid "How should I decide which units to recall?"
-msgstr "Hur avgör jag vilka trupper jag ska återkalla?"
+msgstr "Hur avgör jag vilka trupper jag skall återkalla?"
 
 #: data/scenarios/tutorial/tutorial2.cfg:91
 msgid ""
@@ -1825,8 +1763,8 @@ msgid ""
 "'negative' traits. Most units have an equal chance to get any two different "
 "traits when they are recruited."
 msgstr ""
-"Det finns fem olika karaktärsdrag som t ex gör att en trupps KP ökar eller "
-"att antalet XP som krävs för befordran minskas. Alla karaktärsdrag är till "
+"Det finns fem olika karaktärsdrag som t ex gör att en trupps HP ökar eller "
+"att antalet EP som krävs för befordran minskas. Alla karaktärsdrag är till "
 "för att göra trupperna mer kraftfulla. De flesta truppslag har lika stor "
 "sannolikhet för att få ett visst karaktärsdrag då de rekryteras. "
 
@@ -2343,8 +2281,8 @@ msgstr ""
 "Vårdar:\n"
 "Truppen vårdar närliggande trupper i början av varje drag.\n"
 "\n"
-"Truppen återställer upp till 4 KP per drag.\n"
-"Truppen kan återställa sammanlagt högst 8 KP per drag.\n"
+"Truppen återställer upp till 4 HP per drag.\n"
+"Truppen kan återställa sammanlagt högst 8 HP per drag.\n"
 "En förgiftad trupp kan inte återställas helt av vård, utan måste söka "
 "tillflykt till en by eller bli få hjälp av en trupp som kan bota."
 
@@ -2368,10 +2306,10 @@ msgstr ""
 "\n"
 "En botare tar hand om alla trupper som står på närliggande rutor i början av "
 "varje drag.\n"
-"Varje trupp kommer att återfå upp till 8 KP per drag.\n"
-"En botare kan återställa högst 18 KP per drag.\n"
+"Varje trupp kommer att återfå upp till 8 HP per drag.\n"
+"En botare kan återställa högst 18 HP per drag.\n"
 "En trupp som kan bota kan ta häva en förgiftning, till priset av att den "
-"förgiftade truppen inte återfår några KP under samma drag."
+"förgiftade truppen inte återfår några HP under samma drag."
 
 #: data/translations/english.cfg:32
 msgid ""
@@ -2629,8 +2567,8 @@ msgid ""
 "they are cured or are reduced to 1 HP."
 msgstr ""
 "Gift:\n"
-"Denna typ av attack förgiftar målet. Förgiftade trupper förlorar 8 KP varje "
-"drag tills de botas eller har försvagats till 1 KP."
+"Denna typ av attack förgiftar målet. Förgiftade trupper förlorar 8 HP varje "
+"drag tills de botas eller har försvagats till 1 HP."
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -2880,8 +2818,8 @@ msgid ""
 "be cured by moving them to a village, or placing them next to a unit with "
 "the 'cure' ability."
 msgstr ""
-"Förgiftade trupper förlorar 8 KP varje drag, men de kan inte  dö av "
-"förgiftning allena: de får aldrig mindre än 1 KP av giftet.Förgiftade "
+"Förgiftade trupper förlorar 8 HP varje drag, men de kan inte  dö av "
+"förgiftning allena: de får aldrig mindre än 1 HP av giftet.Förgiftade "
 "trupper kan botas genom att ställas i en by, eller i omedelbar närhet av en "
 "trupp som har förmågan att 'bota'."
 
@@ -2918,7 +2856,7 @@ msgstr ""
 #: data/translations/english.cfg:190
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
-msgstr "Trupper som befinner sig i byar återfår 8 KP i början på sitt drag."
+msgstr "Trupper som befinner sig i byar återfår 8 HP i början på sitt drag."
 
 #: data/translations/english.cfg:191
 msgid ""
@@ -2926,7 +2864,7 @@ msgid ""
 "hitpoints at the beginning of their next turn."
 msgstr ""
 "Trupper som inte flyttar eller attackerar under ett drag vilar, och återfår "
-"två KP vid början av nästa drag."
+"två HP vid början av nästa drag."
 
 #: data/translations/english.cfg:192
 msgid ""
@@ -2954,7 +2892,7 @@ msgid ""
 "the unit they kill."
 msgstr ""
 "Det bästa sättet för en trupp att skaffa sig erfarenhet är att utdela "
-"dödsstöten för en fiendetrupp. Trupper som dödar en fiendetrupp får 8 XP för "
+"dödsstöten för en fiendetrupp. Trupper som dödar en fiendetrupp får 8 EP för "
 "varje nivå som den dödade truppen har."
 
 #: data/translations/english.cfg:195
@@ -4061,7 +3999,6 @@ msgid "Dwarvish Berserker"
 msgstr "Dvärgbärsärk"
 
 #: data/units/Dwarvish_Berserker.cfg:16
-#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
 "all defense in exchange for massive damage against their enemies. Once a "
@@ -4186,15 +4123,16 @@ msgid "Lightning bolt"
 msgstr "åskvigg"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
-#, fuzzy
 msgid "Dwarvish Sentinel"
-msgstr "Dvärgarnas Järnnäve"
+msgstr "Dvärgarnas Vaktpost"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yeild "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Vaktposten, med sin breda sköld och stora mod, vägrar att ge vika även under "
+"de mest kraftiga attacker."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -4247,7 +4185,6 @@ msgid "Dwarvish Thunderguard"
 msgstr "Dvärgarnas Tordönsvakt"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
-#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
@@ -4255,9 +4192,9 @@ msgid ""
 "more deadly."
 msgstr ""
 "Dvärgarnas berömda Tordönsvakt använder sig av mystiska och fruktade vapen, "
-"som smitts av dvärgarnas vapenmästare, vilka är experter på urtida "
-"dvärgteknologi. Även om de inte är lika snabba som de vanliga "
-"dundrardvärgarna, så är de mycket mer dödliga."
+"som smitts av dvärgarnas vapenmästare, experter på urtida dvärgteknologi. "
+"Även om de inte är lika snabba som de vanliga tordönstrupperna, så är de "
+"mycket mer dödliga."
 
 #: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
@@ -4293,6 +4230,16 @@ msgstr "Äldre Wose"
 msgid "Elvish Archer"
 msgstr "Alvbågskytt"
 
+#: data/units/Elvish_Archer.cfg:18 data/units/Elvish_Archer.cfg:97
+msgid ""
+"Elvish Archers are trained from youth in archery, and so skilled in long-"
+"range combat. Able to fire many arrows quickly and accurately, these Archers "
+"make up a large portion of the Elvish military."
+msgstr ""
+"Alvernas bågskyttar börjar träna redan i unga år, och uppnår stor "
+"skicklighet i distansstrid. Dessa träffsäkra och snabba bågskyttar utgör en "
+"stor del av alvernas militär."
+
 #: data/units/Elvish_Avenger.cfg:3 data/units/Elvish_Avenger.cfg:76
 msgid "Elvish Avenger"
 msgstr "Alvjägare"
@@ -4301,6 +4248,17 @@ msgstr "Alvjägare"
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
 msgstr "bakhåll"
+
+#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
+msgid ""
+"Elvish Avengers are extremely skillful and extremely quick, powerful in all "
+"forms of combat. Avengers are considered the best of all woodsmen in "
+"Wesnoth, and can ambush their foes in the forest, because they cannot be "
+"seen in the woods until just after they have attacked."
+msgstr ""
+"Alvjägarna är extremt snabba och skickliga i alla stridsformer. De anses som "
+"de absolut bästa skogsmännen i Wesnoth. De kan enkelt ligga i bakhåll för "
+"sina fiender i skogen, då de inte kan upptäckas förrän efter de anfallit."
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4398,9 +4356,8 @@ msgstr ""
 "förödande eldklot."
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "Elvish Lady"
-msgstr "Alvfurste"
+msgstr "Alvfurstinna"
 
 #: data/units/Elvish_Lady.cfg:16 data/units/Galleon.cfg:17
 msgid "dummy"
@@ -4421,6 +4378,18 @@ msgstr ""
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
 msgid "Elvish Marksman"
 msgstr "Alvprickskytt"
+
+#: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:96
+msgid ""
+"Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
+"60% chance to hit enemies, even those hidden in difficult terrain. This "
+"great skill with the bow compensates for their lack of skill in melee combat "
+"and lesser speed."
+msgstr ""
+"Alvprickskyttarna är experter i bågskytte. Deras skicklighet garanterar en "
+"träffsäkerhet på 60%, även då fienden har gömt sig i svår terräng. Denna "
+"stora skicklighet med bågen kompenserar deras något mindre färdigheter i "
+"närstrid och lägre hastighet."
 
 #: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:115
 #: data/units/Elvish_Sharpshooter.cfg:38
@@ -4465,7 +4434,19 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
-msgstr "Skogvaktaralv"
+msgstr "Skogsvaktaralv"
+
+#: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
+msgid ""
+"Elvish Rangers are quick and powerful. Skilled in both short- and long-range "
+"combat, Rangers are truly all-round fighters. The best of all woodsmen, "
+"Rangers cannot be seen by enemies while they are in forest, unless they have "
+"just made an attack, or there are enemies adjacent to them."
+msgstr ""
+"Skogsvaktaralverna är både starka och snabba. Då de är skickliga i både när- "
+"och distansstrid, så är de mycket användbara. Som de bästa av skogsmän kan "
+"de inte upptäckas av fienden medan de är i skogen förrän de har gått till "
+"attack, eller då fienden står alldeles inpå dem."
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4516,6 +4497,17 @@ msgstr "snärja"
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
 msgid "Elvish Sharpshooter"
 msgstr "Alvernas skarpskytt"
+
+#: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
+msgid ""
+"The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
+"incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
+"when firing very quickly. Sharpshooters are excellent at picking off "
+"entrenched enemies."
+msgstr ""
+"Som den allra skickligaste eliten i Wesnoth är alvernas skarpskyttar "
+"otroligt träffsäkra, och träffar i 60% av fallen, även då de skjuter mycket "
+"snabbt. Skarpskyttarna är utmärkta till att rensa ut svåråtkomliga fiender."
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "Elvish Shyde"
@@ -4599,7 +4591,7 @@ msgstr "Eldklot"
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
-"Ett eldklot. Detta ska inte användas till nåt annat än 'Move_Unit_Fake'!"
+"Ett eldklot. Detta skall inte användas till nåt annat än 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
@@ -5222,7 +5214,7 @@ msgid ""
 "underestimated."
 msgstr ""
 "Jättar är stora, dumma humanoider som oftast lever ensamma i vildmarken. "
-"Även om de är lätta att springa ifrån och lura så ska man se upp med deras "
+"Även om de är lätta att springa ifrån och lura så skall man se upp med deras "
 "styrka."
 
 #: data/units/Orcish_Archer.cfg:3
@@ -6423,11 +6415,11 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "#(Invalid)"
 msgstr "#(Ogiltigt)"
 
-#: src/dialogs.cpp:365 src/game.cpp:924
+#: src/dialogs.cpp:365 src/game.cpp:931
 msgid "Campaign"
 msgstr "Kampanj"
 
-#: src/dialogs.cpp:367 src/game.cpp:971
+#: src/dialogs.cpp:367 src/game.cpp:978
 msgid "Multiplayer"
 msgstr "Flera spelare"
 
@@ -6447,7 +6439,7 @@ msgstr "Drag"
 msgid "Scenario Start"
 msgstr "Scenariostart"
 
-#: src/dialogs.cpp:384 src/game.cpp:947
+#: src/dialogs.cpp:384 src/game.cpp:954
 msgid "Difficulty"
 msgstr "Svårighetsgrad"
 
@@ -6515,13 +6507,13 @@ msgstr "nivå"
 #: src/dialogs.cpp:667 src/display.cpp:902 src/help.cpp:621
 #: src/playturn.cpp:1942 src/unit.cpp:1034
 msgid "HP"
-msgstr "KP"
+msgstr "HP"
 
 #: src/dialogs.cpp:671 src/dialogs.cpp:679 src/display.cpp:906
 #: src/display.cpp:914 src/playturn.cpp:1780 src/playturn.cpp:1943
 #: src/unit.cpp:1093
 msgid "XP"
-msgstr "XP"
+msgstr "EP"
 
 #: src/dialogs.cpp:684 src/display.cpp:918 src/help.cpp:622
 #: src/playturn.cpp:1944 src/unit.cpp:1070
@@ -6550,27 +6542,27 @@ msgstr "osynlig"
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
-#: src/game.cpp:136
+#: src/game.cpp:137
 msgid "Do you want to save a replay of this scenario?"
 msgstr "Vill du spara en repris av detta scenario?"
 
-#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1391
+#: src/game.cpp:138 src/game.cpp:200 src/playturn.cpp:1391
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1408
+#: src/game.cpp:146 src/game.cpp:207 src/playturn.cpp:1408
 msgid "The game could not be saved"
 msgstr "Spelet kunde inte sparas"
 
-#: src/game.cpp:198
+#: src/game.cpp:199
 msgid "Do you want to save your game?"
 msgstr "Vill du spara ditt spel?"
 
-#: src/game.cpp:581
+#: src/game.cpp:587
 msgid "The Battle for Wesnoth"
 msgstr "Striden om Wesnoth"
 
-#: src/game.cpp:801 src/multiplayer_connect.cpp:104
+#: src/game.cpp:807 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6578,64 +6570,64 @@ msgstr ""
 "Detta sparade spel är från en annan version av Wesnoth. Vill du försöka "
 "öppna spelet ändå?"
 
-#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
+#: src/game.cpp:818 src/game.cpp:823 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game.cpp:917
+#: src/game.cpp:924
 msgid "There are no campaigns available"
 msgstr "Det finns inga kampanjer att spela"
 
-#: src/game.cpp:925
+#: src/game.cpp:932
 msgid "Choose the campaign you want to play:"
 msgstr "Välj kampanj"
 
-#: src/game.cpp:948
+#: src/game.cpp:955
 msgid "Select difficulty level:"
 msgstr "Välj svårighetsgrad:"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Join Official Server"
 msgstr "Anslut till den officiella servern"
 
-#: src/game.cpp:966
+#: src/game.cpp:973
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Logga in på Striden om Wesnoths officiella spelserver"
 
-#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:974 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr "Anslut till spel"
 
-#: src/game.cpp:967
+#: src/game.cpp:974
 msgid "Join a server or hosted game"
 msgstr "Anslut till en server eller ett spel som någon annan är värd för"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host Multiplayer Game"
 msgstr "Var spelvärd för flera spelare"
 
-#: src/game.cpp:968
+#: src/game.cpp:975
 msgid "Host a game without using a server"
 msgstr "Var värd för ett spel utan att använda en server"
 
-#: src/game.cpp:971 src/multiplayer_client.cpp:269
+#: src/game.cpp:978 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr "Logga in"
 
-#: src/game.cpp:1051
+#: src/game.cpp:1058
 msgid "Language"
 msgstr "Språk"
 
-#: src/game.cpp:1052
+#: src/game.cpp:1059
 msgid "Choose your preferred language"
 msgstr "Välj språk"
 
-#: src/game.cpp:1137
+#: src/game.cpp:1144
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Ett skärmfel uppstod. Avbryter.\n"
 
-#: src/game.cpp:1139
+#: src/game.cpp:1146
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Typsnittsfel. Avbryter.\n"
 
@@ -6653,7 +6645,7 @@ msgstr "Livsåskådning"
 
 #: src/help.cpp:628
 msgid "Required XP"
-msgstr "XP för nästa nivå"
+msgstr "EP för nästa nivå"
 
 #: src/help.cpp:638 src/reports.cpp:233
 msgid "attacks"
@@ -7640,12 +7632,12 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Den här truppen är förgiftad och kommer att förlora 8 KP varje drag tills "
+"Den här truppen är förgiftad och kommer att förlora 8 HP varje drag tills "
 "den kan hitta ett motmedel i en by eller från en allierad med förmågan att "
 "bota.\n"
 "\n"
 "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
-"mindre än 1 KP."
+"mindre än 1 HP."
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
@@ -7794,3 +7786,53 @@ msgstr "Radera fil"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Kunde ej radera fil."
+
+#~ msgid "Heir to the Throne"
+#~ msgstr "Tronarvingen"
+
+#~ msgid ""
+#~ "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
+#~ "champion.png,Champion,(hardest)"
+#~ msgstr ""
+#~ "&elvish-fighter.png,Krigare,(lätt);*&elvish-hero.png,Hjälte;&elvish-"
+#~ "champion.png,Förkämpe,(svårt)"
+
+#~ msgid "The Dark Hordes"
+#~ msgstr "De mörka horderna"
+
+#~ msgid ""
+#~ "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
+#~ "&undead-lich.png,Dark Lord,(hardest)"
+#~ msgstr ""
+#~ "&undead-adept.png,Lärling,(lätt);*&undead-necromancer.png,Mästare;&undead-"
+#~ "lich.png,Mörkrets Furste,(svårt)"
+
+#~ msgid "Son of the Black Eye (chapter I)"
+#~ msgstr "Svartögats son (kapitel I)"
+
+#~ msgid ""
+#~ "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
+#~ "warlord.png,Warlord,(hardest)"
+#~ msgstr ""
+#~ "&orcish-grunt.png,Fotsoldat,(lätt);*&orcish-warrior.png,Krigare;&orcish-"
+#~ "warlord.png,Krigsherre,(svårt)"
+
+#~ msgid "The Eastern Invasion"
+#~ msgstr "Invasion i Öst"
+
+#~ msgid ""
+#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
+#~ "&human-royalguard.png,Royal Guard,(hardest)"
+#~ msgstr ""
+#~ "&human-spearman.png,Spjutbärare,(lätt);*&human-swordman.png,Svärdssoldat;"
+#~ "&human-royalguard.png,Kunglig Vakt,(svårt)"
+
+#~ msgid "The Rise of Wesnoth"
+#~ msgstr "Wesnoths uppgång"
+
+#~ msgid ""
+#~ "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;"
+#~ "&noble-lord.png,Lord,(hardest)"
+#~ msgstr ""
+#~ "&noble-fighter.png,Krigare,(lätt);*&noble-commander.png,Befälhavare;"
+#~ "&noble-lord.png,Furste,(svårt)"
