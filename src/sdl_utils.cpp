@@ -158,9 +158,17 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 {
-	if(area.x + area.w > src->w || area.y + area.h > src->h) {
+	if(area.x >= src->w || area.y >= src->h) {
 		std::cerr << "illegal surface portion...\n";
 		return NULL;
+	}
+
+	if(area.x + area.w > src->w) {
+		area.w = src->w - area.x;
+	}
+
+	if(area.y + area.h > src->h) {
+		area.h = src->h - area.y;
 	}
 
 	const SDL_PixelFormat* const fmt = src->format;

@@ -40,14 +40,20 @@ bool in_dialog() { return is_in_dialog; }
 dialog_manager::dialog_manager() : reset_to(is_in_dialog) {is_in_dialog = true;}
 dialog_manager::~dialog_manager() { is_in_dialog = reset_to; }
 
-void draw_dialog_frame(int x, int y, int w, int h, display& disp)
+void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style)
 {
-	draw_dialog_background(x,y,w,h,disp);
+	
+	if(dialog_style == NULL) {
+		static const std::string default_style("menu");
+		dialog_style = &default_style;
+	}
 
-	const scoped_sdl_surface top(image::get_image("misc/menu-border-top.png",image::UNSCALED));
-	const scoped_sdl_surface bot(image::get_image("misc/menu-border-bottom.png",image::UNSCALED));
-	const scoped_sdl_surface left(image::get_image("misc/menu-border-left.png",image::UNSCALED));
-	const scoped_sdl_surface right(image::get_image("misc/menu-border-right.png",image::UNSCALED));
+	draw_dialog_background(x,y,w,h,disp,*dialog_style);
+
+	const scoped_sdl_surface top(image::get_image("misc/" + *dialog_style + "-border-top.png",image::UNSCALED));
+	const scoped_sdl_surface bot(image::get_image("misc/" + *dialog_style + "-border-bottom.png",image::UNSCALED));
+	const scoped_sdl_surface left(image::get_image("misc/" + *dialog_style + "-border-left.png",image::UNSCALED));
+	const scoped_sdl_surface right(image::get_image("misc/" + *dialog_style + "-border-right.png",image::UNSCALED));
 
 	if(top == NULL || bot == NULL || left == NULL || right == NULL)
 		return;
@@ -78,12 +84,11 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 
 	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
 
-	const scoped_sdl_surface top_left(image::get_image("misc/menu-border-topleft.png",image::UNSCALED));
-	const scoped_sdl_surface bot_left(image::get_image("misc/menu-border-botleft.png",image::UNSCALED));
-	const scoped_sdl_surface top_right(image::get_image("misc/menu-border-topright.png",image::UNSCALED));
-	const scoped_sdl_surface bot_right(image::get_image("misc/menu-border-botright.png",image::UNSCALED));
-	if(top_left == NULL || bot_left == NULL || top_right == NULL ||
-	   bot_right == NULL)
+	const scoped_sdl_surface top_left(image::get_image("misc/" + *dialog_style + "-border-topleft.png",image::UNSCALED));
+	const scoped_sdl_surface bot_left(image::get_image("misc/" + *dialog_style + "-border-botleft.png",image::UNSCALED));
+	const scoped_sdl_surface top_right(image::get_image("misc/" + *dialog_style + "-border-topright.png",image::UNSCALED));
+	const scoped_sdl_surface bot_right(image::get_image("misc/" + *dialog_style + "-border-botright.png",image::UNSCALED));
+	if(top_left == NULL || bot_left == NULL || top_right == NULL || bot_right == NULL)
 		return;
 
 	disp.blit_surface(x-top_left->w,y-top_left->h,top_left);
@@ -92,11 +97,15 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 	disp.blit_surface(x+w,y+h,bot_right);
 }
 
-void draw_dialog_background(int x, int y, int w, int h, display& disp)
+void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& style)
 {
-	static const std::string menu_background = "misc/menu-background.png";
+	const std::string menu_background = "misc/" + style + "-background.png";
 
 	const scoped_sdl_surface bg(image::get_image(menu_background,image::UNSCALED));
+	if(bg == NULL) {
+		std::cerr << "could not find dialog background '" << style << "'\n";
+		return;
+	}
 
 	const SDL_Rect& screen_bounds = disp.screen_area();
 	if(x < 0)
@@ -221,7 +230,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const std::vector<unit>* units_ptr,
 				const std::string& text_widget_label,
 				std::string* text_widget_text,
-                dialog_action* action, std::vector<check_item>* options, int xloc, int yloc)
+                dialog_action* action, std::vector<check_item>* options, int xloc, int yloc,
+				const std::string* dialog_style)
 {
 	if(disp.update_locked())
 		return -1;
@@ -385,7 +395,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                         padding_height + button_heights + menu_.height() +
 							 text_widget_height + check_button_height;
 
-	if(xloc == -1 || yloc == -1) {
+	if(xloc <= -1 || yloc <= -1) {
 		xloc = scr->w/2 - total_width/2;
 		yloc = scr->h/2 - total_height/2;
 	}
@@ -403,6 +413,18 @@ int show_dialog(display& disp, SDL_Surface* image,
 		unity = yloc;
 	}
 
+	const int border_padding = 10;
+	const int frame_width = total_width + border_padding*2;
+	const int frame_height = total_height + border_padding*2;
+
+	if(xloc + frame_width > scr->w) {
+		xloc = scr->w - frame_width;
+	}
+
+	if(yloc + frame_height > scr->h) {
+		yloc = scr->h - frame_height;
+	}
+
 	const int button_wpadding = total_width - button_widths;
 	int button_offset = 0;
 	for(size_t button_num = 0; button_num != buttons.size(); ++button_num) {
@@ -413,11 +435,12 @@ int show_dialog(display& disp, SDL_Surface* image,
 		button_offset += buttons[button_num].width();
 	}
 
-	SDL_Rect dlgr = {xloc-10,yloc-10,total_width+20,total_height+20};
+	SDL_Rect dlgr = {xloc-border_padding,yloc-border_padding,
+	                 total_width+border_padding*2,total_height+border_padding*2};
 
 	const surface_restorer restorer(&disp.video(),dlgr);
 
-	draw_dialog_frame(xloc,yloc,total_width,total_height,disp);
+	draw_dialog_frame(xloc,yloc,total_width,total_height,disp,dialog_style);
 
 	if(menu_.height() > 0)
 		menu_.set_loc(xloc+total_image_width+left_padding+image_h_padding,

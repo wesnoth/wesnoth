@@ -106,7 +106,7 @@ private:
 	void mouse_press(const SDL_MouseButtonEvent& event);
 
 	void left_click(const SDL_MouseButtonEvent& event);
-	void show_menu(const std::vector<std::string>& items);
+	void show_menu(const std::vector<std::string>& items, int xloc, int yloc);
 
 	void show_attack_options(unit_map::const_iterator u);
 

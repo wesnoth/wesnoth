@@ -38,9 +38,9 @@ private:
 	bool reset_to;
 };
 
-void draw_dialog_frame(int x, int y, int w, int h, display& disp);
+void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style=NULL);
 
-void draw_dialog_background(int x, int y, int w, int h, display& disp);
+void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& dialog_style);
 
 void draw_rectangle(int x, int y, int w, int h, short colour, SDL_Surface* tg);
 
@@ -80,7 +80,8 @@ int show_dialog(display& screen, SDL_Surface* image,
 				const std::string& text_widget_label="",
 				std::string* text_widget_text=NULL,
                 dialog_action* action=NULL,
-				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1
+				std::vector<check_item>* options=NULL, int xloc=-1, int yloc=-1,
+				const std::string* dialog_style=NULL
 			 );
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

@@ -161,7 +161,8 @@ void turn_info::turn_slice()
 
 	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,mouse_flags&SDL_BUTTON_LMASK);
 	if(m != NULL) {
-		show_menu(m->items());
+		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
+		show_menu(m->items(),menu_loc.x,menu_loc.y + menu_loc.h);
 	}
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
@@ -378,7 +379,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			const theme::menu* const m = gui_.get_theme().context_menu();
 			if(m != NULL) {
 				std::cerr << "found context menu\n";
-				show_menu(m->items());
+				show_menu(m->items(),event.x,event.y);
 			} else {
 				std::cerr << "no context menu found...\n";
 			}
@@ -764,7 +765,7 @@ namespace {
 	};
 }
 
-void turn_info::show_menu(const std::vector<std::string>& items_arg)
+void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc)
 {
 	std::vector<std::string> items = items_arg;
 	std::cerr << "Erasing elements" << std::endl;
@@ -784,8 +785,9 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg)
 		menu.push_back(translate_string("action_" + *i));
 	}
 
-	const int res = gui::show_dialog(gui_,NULL,"",string_table["options"]+":\n",
-	                                 gui::MESSAGE,&menu);
+	static const std::string style = "menu2";
+	const int res = gui::show_dialog(gui_,NULL,"","",
+	                                 gui::MESSAGE,&menu,NULL,"",NULL,NULL,NULL,xloc,yloc,&style);
 	if(res == -1)
 		return;
 
