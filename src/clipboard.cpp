@@ -2,6 +2,8 @@
 
 #ifdef _X11
 
+#define CLIPBOARD_FUNCS_DEFINED
+
 #include <X11/Xlib.h>
 #include <unistd.h> 
 #include <iostream>
@@ -326,6 +328,8 @@ std::string copy_from_clipboard()
 #ifdef WIN32
 #include <windows.h>
 
+#define CLIPBOARD_FUNCS_DEFINED
+
 void handle_system_event(const SDL_Event& )
 {}
 
@@ -362,6 +366,19 @@ std::string copy_from_clipboard()
 		return buffer;
 	}
 
+	return "";
+}
+
+#endif
+
+#ifndef CLIPBOARD_FUNCS_DEFINED
+
+void copy_to_clipboard(const std::string& text)
+{
+}
+
+std::string copy_from_clipboard()
+{
 	return "";
 }
 
