@@ -1,7 +1,7 @@
 #ifndef DISABLE_4786_HPP_INCLUDED
 #define DISABLE_4786_HPP_INCLUDED
 
-#ifdef _WIN32
+#ifdef _MSC_VER
 
 //disable the warning to let us know about 'this' being used in
 //initializer list, since it's a common thing to want to do
@@ -22,6 +22,14 @@ warning4786WorkAround() {}
 };
 
 static warning4786WorkAround VariableThatHacksWarning4786IntoBeingMutedForSomeUnknownReason;
+
+//put the mathematical functions where they belong: in the std namespace
+//it is necessary for VC6 at least
+#include <cmath>
+namespace std {
+  using ::floor;
+  using ::sqrt;
+}
 
 #endif
 

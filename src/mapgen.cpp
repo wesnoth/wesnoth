@@ -133,7 +133,7 @@ height_map generate_height_map(size_t width, size_t height,
 		if(island_size != 0) {
 			const size_t diffx = abs(x1 - int(center_x));
 			const size_t diffy = abs(y1 - int(center_y));
-			const size_t dist = size_t(sqrt(double(diffx*diffx + diffy*diffy)));
+			const size_t dist = size_t(std::sqrt(double(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}
 
@@ -149,7 +149,7 @@ height_map generate_height_map(size_t width, size_t height,
 				const int xdiff = (x2-x1);
 				const int ydiff = (y2-y1);
 
-				const int height = radius - int(sqrt(double(xdiff*xdiff + ydiff*ydiff)));
+				const int height = radius - int(std::sqrt(double(xdiff*xdiff + ydiff*ydiff)));
 
 				if(height > 0) {
 					if(is_valley) {
