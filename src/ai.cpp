@@ -102,7 +102,7 @@ const team& ai_interface::current_team() const
 }
 
 
-void ai_interface::move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves)
+void ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
 	assert(info_.units.find(to) == info_.units.end() || from == to);
 

@@ -52,7 +52,7 @@ public:
 
 protected:
 	void attack_enemy(const location& u, const location& target, int weapon);
-	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
+	void move_unit(location from, location to, std::map<location,paths>& possible_moves);
 
 	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
 
