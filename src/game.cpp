@@ -609,6 +609,8 @@ bool game_controller::play_test()
 
 bool game_controller::play_multiplayer_mode()
 {
+	state_ = game_state();
+
 	if(!multiplayer_mode_) {
 		return true;
 	}
@@ -772,6 +774,8 @@ bool game_controller::is_loading() const
 
 bool game_controller::load_game()
 {
+	state_ = game_state();
+
 	bool show_replay = loaded_game_show_replay_;
 
 	const std::string game = loaded_game_.empty() ? dialogs::load_game_dialog(disp(),game_config_,units_data_,&show_replay) : loaded_game_;
@@ -887,6 +891,8 @@ void game_controller::set_tutorial()
 
 bool game_controller::new_campaign()
 {
+	state_ = game_state();
+
 	state_.campaign_type = "scenario";
 
 	config::child_list campaigns = game_config_.get_children("campaign");
