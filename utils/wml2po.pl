@@ -8,7 +8,6 @@
 #  ./utils/wml2po.pl data/translations/XXXXXXX.cfg po/XX.po
 
 # TODO:
-# - how to permanently get rid of this supurious c-format keyword ?
 # - maybe try to detect when a single english string was translated in
 # different ways, instead of just taking the 1st version ?
 
@@ -197,7 +196,7 @@ if (defined $curid and defined $curmsg) {
 }
 
 ## keep a list of previously translated entries not migrated
-my $n = keys %lang;
+my $n = (keys %lang) - 1;	# initial entry does not count
 if ($n == 0) {
   print STDERR "\nFINAL WORD: ALL $migrated TRANSLATIONS MIGRATED !\n";
 } else {
