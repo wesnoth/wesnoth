@@ -131,8 +131,17 @@ const std::vector<unit_animation::sfx>& unit_animation::sound_effects() const
 	return sfx_;
 }
 
-attack_type::attack_type(const config& cfg) : animation_(cfg)
+attack_type::attack_type(const config& cfg)
 {
+	const config::child_list& animations = cfg.get_children("animation");
+	for(config::child_list::const_iterator an = animations.begin(); an != animations.end(); ++an) {
+		animation_.push_back(unit_animation(cfg));
+	}
+
+	if(animation_.empty()) {
+		animation_.push_back(unit_animation(cfg));
+	}
+
 	name_ = cfg["name"];
 	type_ = cfg["type"];
 	special_ = cfg["special"];
@@ -213,6 +222,12 @@ bool attack_type::backstab() const
 bool attack_type::slow() const
 {
 	return slow_;
+}
+
+const unit_animation& attack_type::animation() const
+{
+	assert(animation_.empty() == false);
+	return animation_[rand()%animation_.size()];
 }
 
 bool attack_type::matches_filter(const config& cfg) const

@@ -245,10 +245,12 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		leader->second.set_leading(true);
 	}
 
+	unit_animation attack_anim = attack.animation();
+
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
-	const int first_missile = minimum<int>(-100,attack.animation().get_first_frame_time(unit_animation::MISSILE_FRAME));
-	const int last_missile = attack.animation().get_last_frame_time(unit_animation::MISSILE_FRAME);
+	const int first_missile = minimum<int>(-100,attack_anim.get_first_frame_time(unit_animation::MISSILE_FRAME));
+	const int last_missile = attack_anim.get_last_frame_time(unit_animation::MISSILE_FRAME);
 
 	const int real_last_missile = last_missile - first_missile;
 	const int missile_impact = -first_missile;
@@ -256,7 +258,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const int time_resolution = 20;
 	const int acceleration = disp.turbo() ? 5:1;
 
-	const std::vector<unit_animation::sfx>& sounds = attack.animation().sound_effects();
+	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
 	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
 
 	const std::string& hit_sound = def->second.type().get_hit_sound();
@@ -264,9 +266,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const int play_hit_sound_at = 0;
 
 	const bool hits = damage > 0;
-	const int begin_at = attack.animation().get_first_frame_time(unit_animation::UNIT_FRAME);
+	const int begin_at = attack_anim.get_first_frame_time(unit_animation::UNIT_FRAME);
 	const int end_at   = maximum((damage+1)*time_resolution+missile_impact,
-				       maximum(attack.animation().get_last_frame_time(),real_last_missile));
+				       maximum(attack_anim.get_last_frame_time(),real_last_missile));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -294,8 +296,6 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	const std::string* unit_halo_image = NULL;
 	int missile_halo_x = -1, missile_halo_y = -1, unit_halo_x = -1, unit_halo_y = -1;
 	
-	unit_animation attack_anim = attack.animation();
-
 	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 	attack_anim.start_animation(begin_at + first_missile, unit_animation::MISSILE_FRAME, acceleration);
 
@@ -588,8 +588,10 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		return unit_attack_ranged(disp,units,map,a,b,damage,attack);
 	}
 
+	unit_animation attack_anim = attack.animation();
+
 	const bool hits = damage > 0;
-	const std::vector<unit_animation::sfx>& sounds = attack.animation().sound_effects();
+	const std::vector<unit_animation::sfx>& sounds = attack_anim.sound_effects();
 	std::vector<unit_animation::sfx>::const_iterator sfx_it = sounds.begin();
 
 	const std::string& hit_sound = def->second.type().get_hit_sound();
@@ -610,9 +612,9 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		leader->second.set_leading(true);
 	}
 
-	const int begin_at = minimum<int>(-200,attack.animation().get_first_frame_time());
+	const int begin_at = minimum<int>(-200,attack_anim.get_first_frame_time());
 	const int end_at = maximum<int>((damage+1)*time_resolution,
-	                                       maximum<int>(200,attack.animation().get_last_frame_time()));
+	                                       maximum<int>(200,attack_anim.get_last_frame_time()));
 
 	const double xsrc = disp.get_location_x(a);
 	const double ysrc = disp.get_location_y(a);
@@ -646,7 +648,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const std::string* halo_image = NULL;
 	int halo_x = -1, halo_y = -1;
 
-	unit_animation attack_anim = attack.animation();
 	attack_anim.start_animation(begin_at, unit_animation::UNIT_FRAME, acceleration);
 
 	int animation_time = attack_anim.get_animation_time();
