@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-27 16:15+0200\n"
+"POT-Creation-Date: 2004-08-29 22:08+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
-"Last-Translator: Automatically generated\n"
+"Last-Translator: Pasi Kallinen <paxed@alt.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,13 +18,15 @@ msgstr ""
 
 #: data/game.cfg:257
 msgid "Heir to the Throne"
-msgstr ""
+msgstr "Valtaistuimen perillinen"
 
 #: data/game.cfg:261
 msgid ""
 "&elvish-fighter.png,Fighter,(easiest);*&elvish-hero.png,Hero;&elvish-"
 "champion.png,Champion,(hardest)"
 msgstr ""
+"&elvish-fighter.png,Fighter,(helpoin);*&elvish-hero.png,Hero;&elvish-"
+"champion.png,Champion,(vaikein)"
 
 #: data/game.cfg:267
 msgid "The Dark Hordes"
@@ -35,6 +37,8 @@ msgid ""
 "&undead-initiate.png,Apprentice,(easiest);*&undead-necromancer.png,Master;"
 "&undead-lich.png,Dark Lord,(hardest)"
 msgstr ""
+"&undead-initiate.png,Apprentice,(helpoin);*&undead-necromancer.png,Master;"
+"&undead-lich.png,Dark Lord,(vaikein)"
 
 #: data/game.cfg:276
 msgid "Son of the Black Eye (chapter I)"
@@ -45,6 +49,8 @@ msgid ""
 "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
 "warlord.png,Warlord,(hardest)"
 msgstr ""
+"&orcish-grunt.png,Grunt,(helpoin);*&orcish-warrior.png,Warrior;&orcish-"
+"warlord.png,Warlord,(vaikein)"
 
 #: data/game.cfg:286
 msgid "The Eastern Invasion"
@@ -55,6 +61,8 @@ msgid ""
 "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;&human-"
 "royalguard.png,Royal Guard,(hardest)"
 msgstr ""
+"&human-spearman.png,Spearman,(helpoin);*&human-swordman.png,Swordsman;&human-"
+"royalguard.png,Royal Guard,(vaikein)"
 
 #: data/game.cfg:296
 msgid "The Rise of Wesnoth"
@@ -65,42 +73,44 @@ msgid ""
 "&noble-fighter.png,Fighter,(easiest);*&noble-commander.png,Commander;&noble-"
 "lord.png,Lord,(hardest)"
 msgstr ""
+"&noble-fighter.png,Fighter,(helpoin);*&noble-commander.png,Commander;&noble-"
+"lord.png,Lord,(vaikein)"
 
 #: data/game.cfg:370
 msgid "loyal"
-msgstr ""
+msgstr "uskollinen"
 
 #: data/game.cfg:378
 msgid "strong"
-msgstr ""
+msgstr "vahva"
 
 #: data/game.cfg:393
 msgid "quick"
-msgstr ""
+msgstr "nopea"
 
 #: data/game.cfg:407
 msgid "intelligent"
-msgstr ""
+msgstr "älykäs"
 
 #: data/game.cfg:416
 msgid "resilient"
-msgstr ""
+msgstr "kestävä"
 
 #: data/help.cfg:10 data/help.cfg:52
 msgid "Introduction"
-msgstr ""
+msgstr "Esittely"
 
 #: data/help.cfg:16
 msgid "Gameplay"
-msgstr ""
+msgstr "Pelaaminen"
 
 #: data/help.cfg:22 data/help.cfg:203
 msgid "Traits"
-msgstr ""
+msgstr "Kyvyt"
 
 #: data/help.cfg:46
 msgid "Terrains"
-msgstr ""
+msgstr "Maastot"
 
 #: data/help.cfg:55
 msgid ""
@@ -113,10 +123,19 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
+"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
+"Battle for Wesnoth on vuoropohjainen fantasiastrategiapeli, joka on hieman "
+"muista moderneista strategiapeleistä poikkeava. Siinä missä muut pelit "
+"pyrkivät olemaan mahdollisimman monimutkaisia, sekä sääntöjen että "
+"pelaamisen osalta, Battle for Wesnoth pyrkii sääntöjen ja pelattavuuden "
+"yksinkertaisuuteen. Tämä en kuitenkaan tarkoita että peli olisi "
+"yksinkertainen; näistä yksinkertaisista säännöistä saadaan kasaan "
+"monenlaisia strategioita, joten peli on helppo oppia, mutta vaikea hallita."
 
 #: data/help.cfg:60
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Pelaamisen perusteet"
 
 #: data/help.cfg:65
 msgid ""
@@ -140,10 +159,30 @@ msgid ""
 "description will pop up explaining that item. This is especially useful when "
 "you encounter new abilities for the first time."
 msgstr ""
+"Tämä sivusto kertoo pääpiirteittäin kaiken jota tarvitset pelataksesi Battle "
+"for Wesnothia. Kuinka tätä peliä pelataan ja kaikki perusmekanismit pelissä "
+"löytyvät täältä. Jos haluat lisää tietoa pelin voittamisesta, voit tutkia "
+"<ref>dst=basic_strategy text='Perusstrategia'</ref> ja "
+"<ref>dst=multiplayer_strategy text='Moninpelistrategia'</ref>-osuuksia. "
+"Muista että tämä on kuitenkin vain luonnostelma; erikoistapauksia ja muita "
+"tilanteita varten, seuraa sisällytettyjä linkkejä.\n"
+"\n"
+"Ensiksi on parasta kun valitset <italic>text=Harjoittelun</italic> "
+"päävalikosta. Siitä pääset vuorovaikutteiseen ohjaukseen, joka opettaa "
+"sinulle Wesnothin perusteet. Tämän jälkeen on suositeltavaa että pelaat Heir "
+"to the Throne -kampanjan ensin: valitse <italic>text=Kampanja</italic> ja "
+"sitten <italic>text='Heir to the Throne'</italic>. Battle for Wesnoth voi "
+"olla hyvinkin haastava, joten voi olla hyvä, että aloitat "
+"<italic>text=Helpolla</italic> vaikeustasolla.\n"
+"\n"
+"<img>src=help/tooltip.png align=right float=yes</img>Pelatessasi, muista "
+"että voit viedä hiiren useimpien oikealla olevan valikon kohteiden päälle, "
+"ja saat lyhyen selostuksen siitä kohteesta. Tämä on hyvin käytännöllistä kun "
+"näet tuntemattomia kykyjä ensimmäistä kertaa."
 
 #: data/help.cfg:70
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Värväys ja kutsuminen"
 
 #: data/help.cfg:80
 msgid ""
@@ -176,9 +215,9 @@ msgid ""
 "Upkeep'</ref> for more information."
 msgstr ""
 
-#: data/help.cfg:85 src/help.cpp:766 src/help.cpp:767
+#: data/help.cfg:85 src/help.cpp:768 src/help.cpp:769
 msgid "Movement"
-msgstr ""
+msgstr "Liikkuminen"
 
 #: data/help.cfg:90
 msgid ""
@@ -209,7 +248,7 @@ msgstr ""
 
 #: data/help.cfg:95
 msgid "Combat"
-msgstr ""
+msgstr "Taistelu"
 
 #: data/help.cfg:111
 msgid ""
@@ -260,7 +299,7 @@ msgstr ""
 
 #: data/help.cfg:116
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Vahinkotyypit ja vastustukset"
 
 #: data/help.cfg:121
 msgid ""
@@ -283,7 +322,7 @@ msgstr ""
 
 #: data/help.cfg:126
 msgid "Time of Day"
-msgstr ""
+msgstr "Vuorokausirytmi"
 
 #: data/help.cfg:146
 msgid ""
@@ -319,7 +358,7 @@ msgstr ""
 
 #: data/help.cfg:151
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Kokemus ja kehittyminen"
 
 #: data/help.cfg:156
 msgid ""
@@ -339,7 +378,7 @@ msgstr ""
 
 #: data/help.cfg:161
 msgid "Healing"
-msgstr ""
+msgstr "Parannus"
 
 #: data/help.cfg:172
 msgid ""
@@ -367,7 +406,7 @@ msgstr ""
 
 #: data/help.cfg:177
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Tulot ja menot"
 
 #: data/help.cfg:186
 msgid ""
@@ -399,7 +438,7 @@ msgstr ""
 
 #: data/help.cfg:191
 msgid "Wrap Up"
-msgstr ""
+msgstr "Lopuksi"
 
 #: data/help.cfg:192
 msgid ""
@@ -605,7 +644,7 @@ msgstr ""
 
 #: data/items.cfg:669
 msgid "storm trident"
-msgstr ""
+msgstr "myrskyjen kolmikärki"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -617,7 +656,7 @@ msgstr ""
 
 #: data/items.cfg:723
 msgid "flaming sword"
-msgstr ""
+msgstr "liekehtivä miekka"
 
 #: data/items.cfg:755 data/scenarios/Heir_To_The_Throne/Sceptre.cfg:278
 msgid "Sceptre of Fire"
@@ -638,7 +677,7 @@ msgstr ""
 
 #: data/items.cfg:771
 msgid "sceptre of fire"
-msgstr ""
+msgstr "tulen valtikka"
 
 #: data/items.cfg:827
 msgid "Zap~"
@@ -650,72 +689,72 @@ msgstr ""
 
 #: data/multiplayer.cfg:20
 msgid "Default"
-msgstr ""
+msgstr "Oletus"
 
 #: data/multiplayer.cfg:23 data/multiplayer.cfg:98 data/multiplayer.cfg:173
 #: data/multiplayer.cfg:249
 msgid "&random-enemy.png,Random"
-msgstr ""
+msgstr "&random-enemy.png,Satunnaisesti valittu"
 
 #: data/multiplayer.cfg:28 data/multiplayer.cfg:178
 msgid "&human-general.png,Loyalists"
-msgstr ""
+msgstr "&human-general.png,Lojalistit"
 
 #: data/multiplayer.cfg:39 data/multiplayer.cfg:189
 msgid "&elvish-high-lord.png,Rebels"
-msgstr ""
+msgstr "&elvish-high-lord.png,Kapinalliset"
 
 #: data/multiplayer.cfg:50 data/multiplayer.cfg:200
 msgid "&orcish-warlord.png,Northerners"
-msgstr ""
+msgstr "&orcish-warlord.png,Pohjalaiset"
 
 #: data/multiplayer.cfg:61 data/multiplayer.cfg:136 data/multiplayer.cfg:211
 msgid "&undead-lich.png,Undead"
-msgstr ""
+msgstr "&undead-lich.png,Epäkuolleet"
 
 #: data/multiplayer.cfg:72 data/multiplayer.cfg:222
 msgid "&dwarf-lord.png,Knalgan Alliance"
-msgstr ""
+msgstr "&dwarf-lord.png,Knalganin Liittoutuma"
 
 #: data/multiplayer.cfg:83 data/multiplayer.cfg:158 data/multiplayer.cfg:233
 msgid "&drake-warrior.png,Drakes"
-msgstr ""
+msgstr "&drake-warrior.png,Draket"
 
 #: data/multiplayer.cfg:95
 msgid "Classic"
-msgstr ""
+msgstr "Klassinen"
 
 #: data/multiplayer.cfg:103
 msgid "&human-general.png,Humans"
-msgstr ""
+msgstr "&human-general.png,Ihmiset"
 
 #: data/multiplayer.cfg:114
 msgid "&elvish-high-lord.png,Elves"
-msgstr ""
+msgstr "&elvish-high-lord.png,Haltiat"
 
 #: data/multiplayer.cfg:125
 msgid "&orcish-warlord.png,Orcs"
-msgstr ""
+msgstr "&orcish-warlord.png,Örkit"
 
 #: data/multiplayer.cfg:147
 msgid "&dwarf-lord.png,Dwarves"
-msgstr ""
+msgstr "&dwarf-lord.png,Kääpiöt"
 
 #: data/multiplayer.cfg:170
 msgid "Age of Heroes"
-msgstr ""
+msgstr "Sankareiden Aika"
 
 #: data/multiplayer.cfg:246
 msgid "Great War"
-msgstr ""
+msgstr "Suuri Sota"
 
 #: data/multiplayer.cfg:254
-msgid "&elvish-high-lord.png,Alliance of Light"
-msgstr ""
+msgid "&white-mage.png,Alliance of Light"
+msgstr "&white-mage.png,Valon Liitto"
 
 #: data/multiplayer.cfg:265
-msgid "&undead-lich.png,Alliance of Darkness"
-msgstr ""
+msgid "&undead-necromancer.png,Alliance of Darkness"
+msgstr "&undead-necromancer.png,Pimeyden Liitto"
 
 #: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:3
 msgid "Approaching Weldyn"
@@ -733,22 +772,28 @@ msgid ""
 "#Death of Sudoc"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:124
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:121
 msgid ""
 "We have finally reached Weldyn, but it seems the undead have surrounded it. "
 "We must break through to reach the king!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:138
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:135
 msgid ""
 "We have reached Weldyn. Now we must have a council to decide what to do next."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:143
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:140
 msgid "Come, into the castle."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:158
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:145
+msgid ""
+"Wait. First, what was that prophecy the lich talked about? I think you know "
+"of what he spoke."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Approaching_Weldyn.cfg:160
 msgid "Weldyn has been captured, and Wesnoth is no more..."
 msgstr ""
 
@@ -918,9 +963,7 @@ msgid "This is the right key! Lets open the door, quick!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:737
-msgid ""
-"Help us! The guards are planning to execute us tomorrow! I can help you get "
-"out of the mountains!"
+msgid "Help us! The guards are planning to execute us tomorrow!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:742
@@ -1130,11 +1173,13 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:93
-msgid "Where are we? I cannot see where we are going."
+msgid "Where are we? I can't see where we are going."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:98
-msgid "I do not know. There are trolls in here, which may try to fight us."
+msgid ""
+"I do not know. There are trolls in here, which may try to fight us. now "
+"hurry, we have to move quickly with those Lichs still behind us."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:119
@@ -1154,8 +1199,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:142
 msgid ""
-"Yes, we will help you, for although we have no loyalty to Wesnoth, we "
-"believe that you are on a noble quest."
+"Yes, we will help you, for we have no love for the trolls. Anyone attacked "
+"by them deserves some help, I think."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:204
@@ -1170,7 +1215,9 @@ msgid "We have found you, human- Prepare to die!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:283
-msgid "They follow us. We must move quickly!"
+msgid ""
+"So Mal-Ravanal does not follow us himself. That at least is good. But still, "
+"we must get out of this tunnel!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:297
@@ -1328,7 +1375,7 @@ msgid ""
 "across it. We can get through the mountains that way. And remember, if we "
 "had stayed south of the river, the undead would have killed us by now and "
 "raised our corpses to fight against the king. We do not have much of a "
-"choice, we have to stay north of the river where we are not deteced by the "
+"choice, we have to stay north of the river where we are not detected by the "
 "undead, and so we may be able to get around them and attack them where there "
 "are not as many enemies."
 msgstr ""
@@ -1385,7 +1432,7 @@ msgid "These humans have dared to come this far into my land. Crush them!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:149
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:217
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:207
 msgid "You dare to attack ME?!? Go back to your master!"
 msgstr ""
 
@@ -1455,32 +1502,33 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:164
 msgid ""
-"We will see if we can get across to where you are without thieves killing "
-"us. Also, we will try to go to the villages and drive the thieves out. "
-"Onward, men!"
+"Gweddry, I don't think we should try to regain our outpost. We need to go "
+"directly to the king. We will see if we can get across to where you are "
+"without thieves killing us. Also, we will try to go to the villages and "
+"drive the thieves out. Onward, men!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:169
-msgid "Stop these intruders from getting through. Ambush them!"
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:209
+msgid "We have defeated these bandits. Dacyn, where should we go now?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:214
 msgid ""
-"We have defeated these bandits. Perhaps, now that we are here, Owaec's "
-"troops will not be afraid to exit his castle."
+"Well, our outpost has been overrun by undead, and we can't go back there "
+"safely. What about yours, Owaec? Have you encountered them?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:219
 msgid ""
-"Yes, hopefully. Our outpost has been overrun by undead. What about yours? "
-"Have you encountered them?"
+"No, I haven't seen any undead yet. However, if you say more undead are "
+"coming, I believe you. I don't think me and my men could fight against them, "
+"so we will come with you."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:224
 msgid ""
-"No, I have not encountered any undead yet. However, I don't think me and my "
-"men can do any more good here. We will come with you to see if, together, we "
-"cannot find a way to push back these undead."
+"Very well. We are going north right now, because there are too many undead "
+"to the east and they have already passed us in the west and south."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:247
@@ -1610,8 +1658,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:67
 msgid ""
-"The lich-lord must have flooded the valley. The undead like the swamp. It is "
-"death, decay, everything that they are themselves."
+"The lich-lord Mal-Ravanal must have flooded the valley. The undead like the "
+"swamp. It is death, decay, everything that they are themselves."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:71
@@ -1627,26 +1675,36 @@ msgid "What is that?!?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:91
-msgid "I leave you to your doom."
+msgid ""
+"Ah, the dragon Khrakrahs. When it was alive, it was the most powerful "
+"creature ever, living in the Eastern Mountains. It must have fled when the "
+"Undead came."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:129
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:95
+msgid ""
+"Yes, the dragon fled, but not even the mightiest can escape the all-powerful "
+"clutches of the great lich Mal-Ravanal. You remember the prophecy, Dacyn. "
+"You will meet your doom!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:102
+msgid "Prophecy?"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:137
 msgid "Undead are rising out of the ground! We must destroy them, quickly!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:135
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:143
 msgid "My lord, undead are rising out of the cracks in the ground!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:139
-msgid "This might be more difficult than i thought."
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:147
+msgid "This might be more difficult than I thought."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:181
-msgid "I will get you! I... will... get... youu...."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:185
+#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:190
 msgid "Now lets get out of this bog!"
 msgstr ""
 
@@ -1679,14 +1737,18 @@ msgid "The first leader to fall loses the duel."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:93
-msgid "Let the battle begin!!!"
+msgid ""
+"Other than these, there are no rules. The battle will not stop until one of "
+"the leaders is dead. Let the battle begin!!!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:153
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:176
 msgid "Foul! He's not allowed to do that!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:158
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:181
 msgid ""
 "Actually he is. The rules say he can only bring six of his minions,they "
 "didn't say he couldn't summon more after the duel started. However, Gweddry "
@@ -1695,20 +1757,21 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:163
-msgid "Very well. Continue the duel!"
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:186
+msgid "That is very unfair. Very well. Continue the duel!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Duel.cfg:175
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:198
 msgid "I can't believe I lost the duel..."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Duel.cfg:180
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:203
 msgid ""
 "What? He lost? Now we'll start to loooose alllll ourrrrr poweerrrrrr......."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Duel.cfg:192
-msgid "Well, the duel's over now. I win by default. Kill them, minions!"
+#: data/scenarios/Eastern_Invasion/The_Duel.cfg:215
+msgid "And more!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:3
@@ -1747,29 +1810,22 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Outpost.cfg:136
-msgid "So, you're the leader of this entire undead force?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:141
-msgid "We should probably try to get this knowledge to the king."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:146
 msgid ""
-"Sir, we cannot defeat a lich this powerful. I am going to search the castle "
-"and see if there is any way we can escape."
+"What? Mal-Ravanal? I see... Gweddry, this Lich is too powerful for us to "
+"resist. We must try to escape. I think there is a tunnel somewhere in the "
+"castle cellar."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:167
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:157
 msgid ""
 "Aha! We can escape from here now! I have found a trapdoor next to the castle!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:186
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:176
 msgid "Follow me, men! Through the trapdoor!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:201
+#: data/scenarios/Eastern_Invasion/The_Outpost.cfg:191
 msgid ""
 "Hurry! Before long enemy reinforcements will arrive, and we will all die! "
 "Come to the trapdoor!"
@@ -1779,67 +1835,135 @@ msgstr ""
 msgid "The Council"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:69
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:21
 msgid ""
-"This is a hopeless battle. We don't have any way to defeat these hordes."
+"(sigh) Yes, the prophecy. I know of what the lich spoke. It all started in "
+"the reign of Haldric VII..."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:74
-msgid "No, I think there is one solution."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:79
-msgid "What exactly would that be?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:84
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:26
 msgid ""
-"Well, let me explain. Originally, when we were in out outpost, the undead "
-"came during the night and attacked us. The leader of the undead army way "
-"with them."
+"The greatest seer in the land, x1x, foresaw that some day, some day soon, a "
+"great evil would spread over the land. The king, naturally, was worried."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:89
-msgid "What significance does that have?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:94
-msgid "If you cut off the head, the body will die."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:99
-msgid "I see. Who is the enemy?"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:104
-msgid "A lich named Mal-Ravanal."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:109
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:31
 msgid ""
-"But we still don't have any way to win. We won't ever be able to get close "
-"to Mal-Ravanal."
+"The seer told him that the only way to stop the evil was to appoint a mage, "
+"versed well in combat with the spirits of darkness, to be the king's advisor."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:36
+msgid ""
+"In all the land, there were two mages of light that clearly stood out from "
+"the rest. A mage from the East named x2x, and myself."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:41
+msgid ""
+"The King, wishing to choose a good advisor, sent us both before x1x. Then he "
+"conversed with the seer privately. None know what was said, but when he came "
+"out he announced that the seer was dead, and he had chosen me as his new "
+"advisor."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:46
+msgid ""
+"x2x took this quietly enough, we all thought, but now I think that this was "
+"when he began his fall. He went deep into conversation with the spirits of "
+"darkness, hoping to discover their weaknesses, but it was they who found his."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:51
+msgid ""
+"In time, as all of the mages of death eventually do, he took his own life "
+"and reformed himself as a lich, one of the most powerful ones ever seen."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:56
+msgid ""
+"One day, he disguised himself and came to the castle, where I was living. He "
+"demanded to see me, and the guards let him in, for then he was still a "
+"respected member of the court. When I came out, he revealed himself and "
+"challenged me to a duel."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:61
+msgid ""
+"The guards, surprised by this sudden revelation, advanced to attack him. "
+"However, as he was now skilled in the magical art of teleportation, he "
+"simply vanished. And has not been seen since."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:110
+msgid ""
+"Not been seen, that is, until the day when he attacked Gweddry and me in "
+"that outpost on the Eastern border. This is the lich we are facing, a lich "
+"who has renamed himself Mal-Ravanal, as he revealed on that day."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:114
-msgid ""
-"Actually, i think we will. He is very arrogant. We might be able to convince "
-"him to expose himself. Also, i don't think he knows that we know who he is. "
-"We might be able to use this against him."
+msgid "So what should we do now?"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:119
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:118
 msgid ""
-"Very well. I think we might have a way to defeat this enemy. We don't have a "
-"large chance of killing him, but we might be able to."
+"We must fight, obviously. Surely the might of Wesnoth can triumph over a "
+"mere Lich!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:131
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:122
+msgid ""
+"I can tell by your words that you have not seen the hordes for yourself. It "
+"is like all of the dead warriors from all the ages have come back to attack "
+"us. There is no end to the columns of marching skeletons, the wailing "
+"ghosts, the infernal bats, led by the foul necromancers who raised them."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:126
+msgid "But still, it's not like you have a better plan!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:130
+msgid "Thats why we're at this council..."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:134
+msgid ""
+"Anyway, we already know we cannot defeat the hordes of the enemy head-on in "
+"battle. So it seems that the only path to victory is to destroy the head of "
+"these necromancers, the lich Mal-Ravanal."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:138
+msgid "But as yet we have no idea how to do it!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:142
+msgid ""
+"Well, we do know that he is very arrogant, and can be easily tricked. That "
+"is how he fell in the first place."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:146
+msgid ""
+"So maybe we can trick him into exposing himself to us? Dacyn, does he know "
+"we know who he is?"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:150
+msgid ""
+"No, I don't think so. I am the only person alive who would recognize the "
+"name Mal-Ravanal, and if he had known I was there when he attacked, he would "
+"have pursued us much more vigorously."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:162
 msgid "Sire, the undead armies are attacking!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:136
-msgid "Meeting adjourned. Time to fight."
+#: data/scenarios/Eastern_Invasion/Throne_Room.cfg:167
+msgid "Well, that will have to be the end of our council. Let us fight!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:3
@@ -1890,7 +2014,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:130
 msgid ""
-"These orcs will die. But so will you, human. You have tresspassed on Elvish "
+"These orcs will die. But so will you, human. You have trespassed on Elvish "
 "land."
 msgstr ""
 
@@ -1969,7 +2093,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:107
 msgid ""
-"No, I think we should go straight through and try to warn the king as "
+"No, I think we should go straight through and try to get to the king as "
 "quickly as possible. The undead hordes can't be that large, and there are "
 "orcs in the northlands."
 msgstr ""
@@ -2171,7 +2295,7 @@ msgid "We have escaped from those dark tunnels! But where are we now?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:108
-msgid "Oh no! We are in the middle of enemy territory!"
+msgid "This is bad. We are in the middle of enemy territory!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:113
@@ -2201,7 +2325,8 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:138
 msgid ""
 "If we kill Mal-Skraat, we will have opened a way to enter Wesnoth, but if we "
-"kill Mal-Kallat, we will be able to penetrate further into Undead lands."
+"kill Mal-Kallat, we will be able to penetrate further into Undead lands. I "
+"don't know how far we will get, though."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Unexpected_Appearance.cfg:150
@@ -2334,8 +2459,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:418
 msgid ""
-"Well, you have defeated some of my captains. Good job. But that was only a "
-"small fraction of my horde."
+"He says: Well, you have defeated some of my captains. Good job. But that was "
+"only a small fraction of my horde."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:423
@@ -2344,12 +2469,14 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:428
 msgid ""
-"Well, it would be very easy for me to defeat you. But I don't think it would "
-"do justice to my power."
+"He says: Well, it would be very easy for me to defeat you. But I don't think "
+"it would do justice to my power."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:433
-msgid "We don't care about honoring your power. Bring it on!"
+msgid ""
+"We don't care about honoring your power. Attack us with all your might, we "
+"don't care!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:438
@@ -2365,8 +2492,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:448
 msgid ""
-"Yes, you, a coward. You claim to have defeated my lord's captains, but it "
-"was really your hordes, not you."
+"Yes, you, a coward. He says: You claim to have defeated my lord's captains, "
+"but it was really your hordes, not you."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:453
@@ -2385,8 +2512,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:468
 msgid ""
-"SHUT UP! I doubt Gweddry could even last two seconds in actual combat. And "
-"I'll prove it. I challenge you, Gweddry, to a duel."
+"SHUT UP! He says: I doubt Gweddry could even last two seconds in actual "
+"combat. And I'll prove it. I challenge you, Gweddry, to a duel."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:473
@@ -2396,20 +2523,20 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:478
 msgid ""
 "That only proves you are a coward. Anyway, who said anything about one-on-"
-"one combat? I said a duel, seven-on-seven. Pick your six best slaves and I "
+"one combat? He said: a duel, seven-on-seven. Pick your six best slaves and I "
 "will pick my six best minions."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:483
 msgid ""
-"That is a very interesting notion of a duel. Gweddry, I suggest you accept, "
-"since he keeps calling you a coward."
+"That is a very interesting notion of a duel. Gweddry, I don't think you "
+"should accept. He will bring more than seven undead to the 'duel'."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:488
 msgid ""
-"No, don't accept. It is obviously a trick- he will bring many more than six "
-"people. We must win this battle on our own terms."
+"I think you should accept. This at least guarantees a somewhat fair fight, "
+"and otherwise we will have to face the whole undead army."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Weldyn_Attack.cfg:493
@@ -2646,7 +2773,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/A_Choice_Must_Be_Made.cfg:229
 msgid ""
-"That we will, Princess. Even thought you are the daughter of the Queen, our "
+"That we will, Princess. Even though you are the daughter of the Queen, our "
 "enemy, we shall not harm you on this encounter, for you have helped us."
 msgstr ""
 
@@ -2655,6 +2782,94 @@ msgid ""
 "So, we must choose. To the north past the Orcs, where lie the ancient snow "
 "plains of the Elves, or to the south, beyond the armies of the Walking Dead "
 "where the dreaded swamps await."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:3 src/game.cpp:576
+msgid "The Battle for Wesnoth"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:11
+msgid ""
+"Here we overlook the city of Weldyn. The great city. The ancient city. The "
+"city of evil. The city of good. The city of men."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:15
+msgid ""
+"I have not looked upon this city for seventeen years. Seventeen years ago, "
+"when I should have been at the height of my power. But my strength failed "
+"me. I failed, and I cannot atone for it."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:19
+msgid ""
+"The battle had been long and hard. We had been defeated. Eldred was slain, "
+"but I knew that Asheviere's wrath would be great. That many innocents would "
+"be slain. I had to save the monarchy. I had to save the princes. I made "
+"haste to Weldyn, before the guards of Asheviere could get there, to carry "
+"out their evil orders."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:23
+msgid ""
+"But I failed. I was too late. I entered the chambers of the youngest prince, "
+"prince Konrad, just as one of the evil ones ran him through. All was lost. "
+"The heirs were slain. Only Asheviere and her daughter had any claim to the "
+"throne."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:27
+msgid ""
+"Of course, you are surprised by this, but it is the truth. In haste, I "
+"vanquished the evil ones who had committed this foul deed. Then I took the "
+"little prince's broken body, and away I rode. Far away, to the land of the "
+"Elves."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:31
+msgid ""
+"By strange and mysterious fortune, the Elf Lady Parandra had come across a "
+"human child. She knew not where he had come from, only that the Orcs would "
+"have eaten him if it weren't for her intervention. The Elves felt that great "
+"fortune smiled upon this man-child. Perhaps that is why this most truthful "
+"of peoples agreed to my plan."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:35
+msgid ""
+"After burying the little prince, we agreed never to speak of him again. "
+"Instead, this orphan child we would call Konrad, and he would be brought up "
+"to be king. I would say that I had slain the guards before they had carried "
+"out their evil deed, instead of after. No-one would ever have to know. And "
+"no-one did know for certain, until now."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:39
+msgid ""
+"I had thought that we could one day make you king, Konrad. But now I see "
+"that fate has made a different choice. That despite all of Asheviere's evil, "
+"this Li'sar is fit for the throne. She is the rightful queen. From a long "
+"line of kings, stretching all the way back to the seafarers of old from the "
+"west."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:43
+msgid ""
+"Now, let us not tarry here any longer! The dawn breaks! The time has come "
+"for the heir to the throne to claim it!"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Battle_for_Wesnoth.cfg:65
+msgid ""
+"\n"
+"Victory:\n"
+"@Defeat Asheviere\n"
+"Defeat:\n"
+"#Death of Konrad\n"
+"#Death of Delfador\n"
+"#Death of Li'sar\n"
+"#Death of Kalenz\n"
+"#Turns run out"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Bay_of_Pearls.cfg:3
@@ -2921,7 +3136,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:108
-msgid "Defaldor, some Orcs are following us! We must make haste!"
+msgid "Delfador, some Orcs are following us! We must make haste!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Blackwater_Port.cfg:113
@@ -3258,7 +3473,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:110
 msgid ""
-"How quickly do the race of men mature! Only fourteen winters have passed "
+"How quickly do the race of men mature! Only seventeen winters have passed "
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A brave "
 "warrior stands before me!"
 msgstr ""
@@ -3659,6 +3874,48 @@ msgstr ""
 msgid "There can be no looking back. We must go quickly!"
 msgstr ""
 
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:3
+#, fuzzy
+msgid "Epilogue"
+msgstr "rutto"
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:10
+msgid ""
+"And so the Dark Queen's reign was ended, and Li'sar, daughter of Haldric was "
+"crowned Queen of Wesnoth, and the holder of the Scepter of Fire, which she "
+"would pass to all her successors."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:14
+msgid "Her reign was long, and she undid the evil deeds of her mother."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:18
+msgid ""
+"Konrad became a noble in Li'sar's court. He married Li'sar, and together "
+"they had two sons and a daughter."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:22
+msgid ""
+"The bones of the young prince Konrad were retrieved from the Elves, and "
+"buried in the Royal Crypt in Weldyn, which Konrad visited to pay homage "
+"every week."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:26
+msgid ""
+"Delfador became Li'sar's High Council, advising her in the most important "
+"matters of state. He lived until a ripe old age, and was given a Royal "
+"Funeral, after which he was buried in the Royal Crypt in Weldyn."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Epilogue.cfg:30
+msgid ""
+"Kalenz returned to his home in the North, and never returned to the land of "
+"men."
+msgstr ""
+
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:3
 msgid "The Ford of Abez"
 msgstr ""
@@ -4049,7 +4306,7 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:120
 msgid ""
-"What do these intruders want? We did not invite them here, that is for sure."
+"What do these intruders want? We did not invite them here, that is certain."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:124
@@ -4059,69 +4316,111 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:128
-msgid "We will not join you."
+msgid "We will not join you. You who are led by these youths and this old man."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:132
 msgid ""
-"Wait. We may join them. But only if they can prove they are worthy to have "
-"us fight with them."
+"You are for us or against us. If you do not join us to overthrow the evil "
+"Queen, we will strip you of your power, once the throne is rightfully "
+"reclaimed."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:136
 msgid ""
-"Yes. We will not join you unless you can prove yourself worthy by defeating "
-"us in battle!"
+"Hah! You think you can sieze the throne? Defeat us in battle and we will "
+"join you, or leave now and never return!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:140
-msgid "Very well."
+msgid "Very well. We will fight you."
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:144
-msgid ""
-"Remember, this is a fight to the death. If you cannot defeat us, you are "
-"unworthy, and we shall slay you for that."
+msgid "Fools! We will run you down like dogs!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:156
-msgid ""
-"Stop! Very well, you have defeated me, and proved yourself worthy for us to "
-"help you. I will join you in fighting these foes of yours."
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:148
+msgid "There is no turning back for you now. This is a fight to the death!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:160
 msgid ""
-"Thank you. We will now go onward, into the heart of Wesnoth, to defeat "
-"Ashievere, my evil mother."
+"Stop! I cannot believe this! You have defeated us! Indeed, you are worthy, "
+"worthy even to claim the throne. The clans will help you. We will fight with "
+"you against the Queen."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:164
+msgid "So you admit defeat! You will serve me in fighting the evil queen?"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:168
+msgid "We will serve you, my lord. You will make a worthy king."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:172
+msgid "I think you are mistaken! You will help me be queen!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:176
+msgid "Who then is your leader? Who do we serve?"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:180
+msgid ""
+"You will serve us. You will protect our flanks while we make way straight "
+"for the queen. With you on either flank, we can surely overcome her."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:184
+msgid "Delfador, don't you think it is time we settled this?"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:188
+msgid ""
+"Yes, it is time. It is time for the truth to be told. I had hoped to take "
+"this secret to my grave, but it isn't to be. You Elves live too long, and "
+"though I have tried hard to understand, your wisdom is foreign to me."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:192
+msgid "Secret? What secret Delfador? What are you talking about?"
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:196
+msgid ""
+"We should not speak of it now. Instead come with me, Konrad and Li'sar, to "
+"the top of mount Elnar. To look at Weldyn. To make plans for the battle, and "
+"to talk."
+msgstr ""
+
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:212
 msgid "You can defeat me, but more will take my place!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:185
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:221
 msgid "See, you cannot defeat me. There are too many in my clan."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:197
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:233
 msgid "Argh! This is how I die? Well, it was for the glory of the Clan."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:205
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:241
 msgid "The clan rises. The more of us you kill, the stronger we get!"
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:217
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:253
 msgid ""
 "Although I die, it is for the Clan. You shall be defeated, and I will be "
 "right in saying you are no match for the Clan's might."
 msgstr ""
 
-#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:226
+#: data/scenarios/Heir_To_The_Throne/Home_Clan.cfg:262
 msgid ""
-"Well said, brother. The warrior of the Clan hear you, are come to fight with "
-"us!"
+"Well said, brother. The warriors of the Clan hear you, and are come to fight "
+"with us!"
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Home_North_Elves.cfg:3
@@ -6660,128 +6959,133 @@ msgstr ""
 msgid "Toward Mountains of Haag"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:27
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:26
 msgid ""
 "\n"
 "Victory:\n"
 "@Move Kapou'e to the end of the mountains\n"
 "Defeat:\n"
 "#Death of Kapou'e\n"
-"#Death of Grüü\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Victory:\n"
+"@Defeat Albert and his troops\n"
+"Defeat:\n"
+"#Death of Kapou'e\n"
+"#Turns run out"
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:104
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:103
 msgid ""
 "We have nearly crossed the mountains.  I feel the lands of the free tribes "
 "are near now.  But beware, there are dwarves and wild trolls around.  Hurry "
 "up!  I can see the sign post that indicates their land."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:109
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:108
 msgid "What are these orcs doing here?  They should be too tired to live."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:123
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:122
 msgid ""
 "I've never pushed so far, we are crossing the border of the Black Eye lands."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:161
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:160
 msgid "Look!  Dwarves are fighting against orcs!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:166
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:165
 msgid "Father, we should help them.  Orcs are our allies."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:171
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:170
 msgid ""
 "I don't know if we should do that.  Orcs have been our allies in the past, "
 "but they have always treated us as fools."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:176
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:175
 msgid ""
 "But Father, we don't know what they are seeking there, maybe this is a good "
 "occasion to get rid of these dwarves."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:181
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:180
 msgid ""
 "You are right, my son.  We will help our orcish friends.  But take care of "
 "you ... I would be desperate if something would happen to you."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:193
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:192
 msgid "Argh!  I'm done.  My people is dommed!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:208
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:207
 msgid "Father!  Oh no!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:213
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:212
 msgid "Filthy dwarves!  Now I'm to kill you to the last!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:225
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:224
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:100
 #: data/scenarios/Son_Of_The_Black_Eye/deaths.cfg:113
 msgid "Oh no, I'm defeated."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:235
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:234
 msgid ""
 "My son!  I should have never brought him to this fight.  Now we are to "
 "return to our caverns, and we will never go back."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:245
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:244
 msgid "Our troll friends are over.  Without them there is no hope."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:260
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:259
 msgid "Argh!  I die!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:287
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:315
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:286
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:314
 msgid ""
 "We've succeeded!  We've passed through the Mountains of Haag!  Look at these "
 "green hills!  The land of the free tribes is near now.  I can see the walls "
 "of Barag-Gor in the distance."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:292
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:291
 msgid ""
 "Blemaker, many thanks for your help in this fight.  Would you like to join "
 "us in our journey with your son?  Your help would be very appreciated!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:298
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:297
 msgid "Father, I'd like to join them.  Would you mind it?"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:303
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:302
 msgid ""
 "My son, you're old enough to discover the world.  Me, I have to stay here.  "
 "But take care, there are plenty of creatures that seek our end, like elves "
 "or humans.  They are as clever as merciless."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:308
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:307
 msgid "Thanks, father.  Don't worry, I'll take care of myself."
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:320
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:319
 msgid ""
 "Grüü, many thanks for your help in this fight.  I'm sorry for your father.  "
 "Would you like to join us in our journey?  Your help would be very "
 "appreciated!"
 msgstr ""
 
-#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:325
+#: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:324
 msgid ""
 "My father would have come to help you.  I would insult his memory not to "
 "help you.  I come!"
@@ -6843,6 +7147,8 @@ msgid ""
 "By nightfall his troops reached a mountainous territory, under the authority "
 "of orcish leader Kapou'e, the son of the Black Eye."
 msgstr ""
+"By nightfall his troops reached a mountainous territory, under the authority "
+"of orcish ruler Kapou'e, the son of the Black Eye."
 
 #: data/scenarios/Son_Of_The_Black_Eye/utils.cfg:192
 #: data/units/Pirate_Galleon.cfg:49
@@ -7004,6 +7310,9 @@ msgid ""
 "by Leonard as he reentered Wesnothian territory. The general of several "
 "outlying areas, his troops were many but untrained."
 msgstr ""
+"Entering the edges of Wesnothian territories again, Gwiti's march was halted "
+"by Leonard. The general of several outlying areas, his troops were many but "
+"untrained."
 
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:85
 msgid "I see that your puny kingdom marshalls its troops at last."
@@ -7027,6 +7336,9 @@ msgid ""
 "to the undead: Lord Aretu. Gwiti knew that even if he defeated Leonard, his "
 "best hope was now to flee into the mountains."
 msgstr ""
+"In truth, Leonards army was unprepared and under-equipped, and he had "
+"neglected to send word. Luckily, behind him came one whose name was a bane "
+"to the undead: Lord Aretu."
 
 #: data/scenarios/The_Dark_Hordes/Confrontation.cfg:105
 msgid "I shall slay you myself!"
@@ -7405,6 +7717,9 @@ msgid ""
 "skulls, as is their custom. But one of these is the Skull of Agarash - Take "
 "it and your power will grow greater by far."
 msgstr ""
+"Do you see the three orc clans of this land? Their banners are topped with "
+"skulls, as is their custom. But one of these is the Skull of Agarash - which "
+"once was mine. Take it and your power will grow greater by far."
 
 #: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:173
 msgid "Oh, no! The undead hordes have taken my banner!"
@@ -10051,7 +10366,7 @@ msgstr ""
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:459
 msgid "No!"
-msgstr ""
+msgstr "Ei!"
 
 #: data/scenarios/The_Rise_of_Wesnoth/The_Dragon.cfg:474
 msgid "We've slain the Dragon: "
@@ -11057,7 +11372,7 @@ msgid ""
 "legions of the walking dead. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:20
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:19
 msgid ""
 "After a time of great struggle a peace was reached. We came to dominate most "
 "of the Isle, with the Wesfolk pushed onto the most marginal of lands. In "
@@ -11065,7 +11380,7 @@ msgid ""
 "we gleaned our first shards of knowledge about magic."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:29
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:28
 msgid ""
 "Thus history continued apace for several centuries. You must recall that the "
 "route from the Western lands to our Isle was perilous at the best of times. "
@@ -11073,7 +11388,7 @@ msgid ""
 "Isle could never be maintained."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:38
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:37
 msgid ""
 "Things only got worse when looking to the East. A strong, cold, ocean "
 "current swept down from the North in the Eastern ocean, pushing all ships "
@@ -11081,7 +11396,7 @@ msgid ""
 "nothing but open ocean, and vile sea monsters. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:51
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:50
 msgid ""
 "Over time our skills as navigators grew. Then, one day, the Crown Prince of "
 "Southbay returned home from a long voyage with a fabulous tale. He said that "
@@ -11090,7 +11405,7 @@ msgid ""
 "Southern pull of the ocean."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:60
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:59
 msgid ""
 "It wasn't long after he returned that the very Crown Prince who discovered "
 "the land to the East fell ill and died, under mysterious circumstances. His "
@@ -11098,17 +11413,17 @@ msgid ""
 "of distraction with the poor Wesfolk kingdoms, and their Lich-Lords."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:65
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:64
 msgid ""
 "The new Crown Prince departed, with the largest army ever assembled on the "
 "Isle to make war with the Wesfolk. This where our story begins. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:70
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:69
 msgid "With the plight of a different Prince on the same Isle. . ."
 msgstr ""
 
-#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:75
+#: data/scenarios/The_Rise_of_Wesnoth/trow-intro.cfg:74
 msgid ""
 "For this is the story of Haldric the First, and the Rise of Wesnoth. . ."
 msgstr ""
@@ -11221,7 +11536,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 msgid "Random map"
-msgstr ""
+msgstr "Satunnaisesti luotu kartta"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -11241,41 +11556,41 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Punainen tekee maalin!  Tilanne: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:247
 #: data/scenarios/multiplayer/Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Sininen tekee maalin!  Tilanne: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Pitäisikö minun antaa pallo hänelle: $passto.type ($xloc,$yloc)"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
 msgid "Yes!"
-msgstr ""
+msgstr "Kyllä!"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
-#: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial1.cfg:292
+#: data/scenarios/tutorial/tutorial2.cfg:279 src/show_dialog.cpp:450
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:661
 msgid "Blue team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Sininen joukkue voitti!  Tilanne: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:673
 msgid "Red team wins! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Punainen joukkue voitti!  Tilanne: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:685
 msgid "Draw! Final score: $redscore-$bluescore"
-msgstr ""
+msgstr "Tasapeli!  Tilanne: $redscore-$bluescore"
 
 #: data/scenarios/multiplayer/WeslinBridge.cfg:3
 msgid "Battle for Weslin Bridge"
@@ -11317,13 +11632,13 @@ msgstr ""
 msgid "King of the Hill"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:65
+#: data/scenarios/tutorial/tutorial1.cfg:67
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:69
+#: data/scenarios/tutorial/tutorial1.cfg:71
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -11331,126 +11646,118 @@ msgid ""
 "connected to the keep your leader is on."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:80
-msgid ""
-"@Skills covered:\n"
-"Recruiting units\n"
-"Moving units\n"
-"Attacking enemy units\n"
-"Gaining experience\n"
-"Winning scenarios\n"
-"@Objectives:\n"
-"@Victory:\n"
-"Defeat Merle"
-msgstr ""
-
-#: data/scenarios/tutorial/tutorial1.cfg:85
+#: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr ""
+msgstr "Hyvä! Värväsit juuri Elvish Fighter -yksikön."
 
-#: data/scenarios/tutorial/tutorial1.cfg:98
+#: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
 "Since units cannot move on the turn they are recruited, you must end your "
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:104
+#: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
-msgstr ""
+msgstr "Olet onnistuneesti lopettanut vuorosi."
 
-#: data/scenarios/tutorial/tutorial1.cfg:115
+#: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
 "Your next task is to move your Elvish Fighter. To move a unit, first select "
-"it, then select his destination. In this case, his destination is the "
-"signpost next to the Elvish Shaman."
+"it, then select his destination. In this case, his destination is the forest "
+"next to the Elvish Shaman, Merle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:141
+#: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
-"Excellent! You have succesfully moved your Elvish Fighter. However, since he "
-"moved next to an enemy unit, he has lost all his movement for this turn; "
+"Excellent! You have successfully moved your Elvish Fighter. However, since "
+"he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:153
+#: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
 "Now, you need to attack with your fighter. To attack, first select a unit, "
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:170
+#: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
-msgstr ""
+msgstr "Olet onnistuneesti hyökännyt Merleä vastaan."
 
-#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
-msgstr ""
+msgstr "Vuoron loppu. Odota että Merle hyökkää."
 
-#: data/scenarios/tutorial/tutorial1.cfg:188
+#: data/scenarios/tutorial/tutorial1.cfg:180
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:199
+#: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
-msgstr ""
+msgstr "Siirrä taistelijasi kylään."
 
-#: data/scenarios/tutorial/tutorial1.cfg:208
+#: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
-msgstr ""
+msgstr "Kylät parantavat vierailevia yksiköitä."
 
-#: data/scenarios/tutorial/tutorial1.cfg:219
+#: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
-"Now, you must defeat Merle by reducing him to 0 HP or lower. Just attack "
+"Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:234
-#: data/scenarios/tutorial/tutorial2.cfg:176
+#: data/scenarios/tutorial/tutorial1.cfg:248
+#: data/scenarios/tutorial/tutorial2.cfg:233
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
+"Valitettavasti sinä hävisit koska johtajasi voitettiin. Toivottavasti olet "
+"kuitenkin oppinut jotain opetuksestani."
 
-#: data/scenarios/tutorial/tutorial1.cfg:241
-#: data/scenarios/tutorial/tutorial2.cfg:183
+#: data/scenarios/tutorial/tutorial1.cfg:255
+#: data/scenarios/tutorial/tutorial2.cfg:240
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
+"Ikävä kyllä, sinä hävisit koska aika loppui kesken. Toivottavasti olet "
+"kuitenkin oppinut jotain opetuksestani."
 
-#: data/scenarios/tutorial/tutorial1.cfg:251
+#: data/scenarios/tutorial/tutorial1.cfg:265
 msgid "You have successfully completed the first training scenario."
 msgstr ""
+"Olet onnistuneesti suorittanut ensimmäisen harjoitteluskenaarion loppuun."
 
-#: data/scenarios/tutorial/tutorial1.cfg:262
-#: data/scenarios/tutorial/tutorial2.cfg:204
+#: data/scenarios/tutorial/tutorial1.cfg:276
+#: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:449
+#: data/scenarios/tutorial/tutorial1.cfg:278
+#: data/scenarios/tutorial/tutorial2.cfg:263 src/show_dialog.cpp:449
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
-#: data/scenarios/tutorial/tutorial1.cfg:283
+#: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:58
+#: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:62
+#: data/scenarios/tutorial/tutorial2.cfg:64
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -11459,7 +11766,7 @@ msgid ""
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:75
+#: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
 "@Skills covered:\n"
 "Recalling\n"
@@ -11467,6 +11774,8 @@ msgid ""
 "Gold\n"
 "Time of day\n"
 "Terrains\n"
+"Resistance\n"
+"Specialties\n"
 "Objects\n"
 "Playing Wesnoth\n"
 "@Objectives\n"
@@ -11474,132 +11783,201 @@ msgid ""
 "Defeat Delfador"
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:80
+#: data/scenarios/tutorial/tutorial2.cfg:86
+msgid "You have successfully recalled your Elvish Fighter."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
-"assigned two traits."
+"assigned traits."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:98
+#: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
 "have less than 0 gold, you cannot recruit or recall."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:112
+#: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
+"Aurinko laskee. Päivän ja yön vaihtelu vaikuttaa miten paljon eri yksiköt "
+"tekevät toisilleen vahinkoa."
 
-#: data/scenarios/tutorial/tutorial2.cfg:126
+#: data/scenarios/tutorial/tutorial2.cfg:143
+msgid "Each hex has a terrain, which gives the hex distinctive properties."
+msgstr ""
+"Jokaisella heksaruudulla on maastotyyppi, mikä antaa sille tiettyjä "
+"ominaisuuksia."
+
+#: data/scenarios/tutorial/tutorial2.cfg:157
 msgid ""
-"In Wesnoth, each hex has a terrain, which gives the hex distinctive "
-"properties."
+"Each attack has a damage type which affects how much damage different units "
+"take from that attack."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:148
+#: data/scenarios/tutorial/tutorial2.cfg:171
+msgid ""
+"Many units have a specialty which changes the rules of play in some way."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
 "Some objects change the statistics of the unit that triggered them. One of "
 "your units found a potion which will make him do more damage on his attack. "
 "To see his new combat statistics, look at the Status Table."
 msgstr ""
 
-#: data/scenarios/tutorial/tutorial2.cfg:193
+#: data/scenarios/tutorial/tutorial2.cfg:223
+msgid ""
+"Remember to try to prevent the enemy from capturing villages, and to "
+"recapture the ones that they already have. This will cut off their gold "
+"supply and make them unable to recruit."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:250
 msgid ""
 "Congratulations! You have defeated me, and completed the second and final "
 "training scenario. Next, you may want to begin a campaign, or play "
 "multiplayer."
 msgstr ""
+"Onneksi olkoon! Olet voittanut minut, ja samalla suoritit loppuun toisen ja "
+"viimeisen harjoitteluskenaarion. Seuraavaksi voit haluta aloittaa kampanjan, "
+"tai pelata moninpelejä."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
+msgstr "Se oli hyvin selitetty! Mutta.."
+
+#: data/scenarios/tutorial/utils.cfg:13
+msgid "{END_MESSAGE}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:21
+msgid "{QUESTION}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:25
+msgid "{ANSWER}"
+msgstr ""
+
+#: data/scenarios/tutorial/utils.cfg:44
+msgid ""
+"@Skills covered:\n"
+"Recruiting units\n"
+"Moving units\n"
+"Attacking enemy units\n"
+"Gaining experience\n"
+"Winning scenarios\n"
+"@Current objective:\n"
+"{OBJECTIVE}"
 msgstr ""
 
 #: data/schedules.cfg:4
 msgid "Dawn"
-msgstr ""
+msgstr "Auringonnousu"
 
 #: data/schedules.cfg:11 data/schedules.cfg:22 data/schedules.cfg:28
 msgid "Morning"
-msgstr ""
+msgstr "Aamupäivä"
 
 #: data/schedules.cfg:37 data/schedules.cfg:43 data/schedules.cfg:59
 msgid "Afternoon"
-msgstr ""
+msgstr "Iltapäivä"
 
 #: data/schedules.cfg:52 data/schedules.cfg:79 data/schedules.cfg:99
 msgid "Dusk"
-msgstr ""
+msgstr "Auringonlasku"
 
 #: data/schedules.cfg:70
 msgid "First Watch"
-msgstr ""
+msgstr "Ilta"
 
 #: data/schedules.cfg:90
 msgid "Second Watch"
-msgstr ""
+msgstr "Yö"
 
 #: data/schedules.cfg:110 data/schedules.cfg:116
 msgid "Underground"
-msgstr ""
+msgstr "Maan alla"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 msgid "Menu"
-msgstr ""
+msgstr "Valikko"
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
 msgid "Actions"
-msgstr ""
+msgstr "Toiminnot"
 
 #: data/themes/default.cfg:79 data/themes/default.cfg:415 src/hotkeys.cpp:137
 msgid "End Turn"
+msgstr "Lopeta vuoro"
+
+#: data/themes/default.cfg:126 data/themes/default.cfg:462
+msgid "hp"
+msgstr ""
+
+#: data/themes/default.cfg:133 data/themes/default.cfg:469
+msgid "xp"
 msgstr ""
 
 #: data/themes/default.cfg:285 data/themes/default.cfg:623
 msgid "statuspanel^level"
-msgstr ""
+msgstr "kokemustaso"
 
 #: data/themes/default.cfg:317 data/themes/default.cfg:655
 msgid "statuspanel^movement"
-msgstr ""
+msgstr "liikkuminen"
 
-#: data/translations/english.cfg:5
+#: data/translations/english.cfg:2
 msgid "Easy"
-msgstr ""
+msgstr "Helppo"
 
-#: data/translations/english.cfg:6
+#: data/translations/english.cfg:3
 msgid "Medium"
-msgstr ""
+msgstr "Normaali"
 
-#: data/translations/english.cfg:7
+#: data/translations/english.cfg:4
 msgid "Hard"
-msgstr ""
+msgstr "Vaikea"
 
-#: data/translations/english.cfg:12
+#: data/translations/english.cfg:9
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: -25% Damage"
 msgstr ""
+"Lainkuuliaiset yksiköt taistelevat parhaiten päivällä, ja huonoiten yöllä.\n"
+"\n"
+"Päivä: +25% vahinkoon\n"
+"Yö: -25% vahinkoon"
 
-#: data/translations/english.cfg:13
+#: data/translations/english.cfg:10
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"Neutraaleihin yksiköihin ei päivän ja yön vaihtelut vaikuta, vaan ne "
+"taistelevat yhtä hyvin päivisin ja öisin."
 
-#: data/translations/english.cfg:17
+#: data/translations/english.cfg:14
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
 "Day: -25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
+"Kaoottiset yksiköt taistelevat parhaisen öisin, ja huonoimmin öisin.\n"
+"\n"
+"Päivä: -25% vahinkoon\n"
+"Yö: +25% vahinkoon"
 
-#: data/translations/english.cfg:24
+#: data/translations/english.cfg:21
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of the "
@@ -11610,8 +11988,15 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Parannus:\n"
+"Yksikkö voi parantaa viereiset ystävälliset yksiköt vuoron alussa.\n"
+"\n"
+"Parannettu yksikkö saa 4 HP vuorossa.\n"
+"Parantaja voi parantaa maksimissaan 8 HP vuorossa.\n"
+"Parantaja ei voi poistaa myrkkyä, vaan myrkytetty yksikkö täytyy lääkitä "
+"kylässä tai toisella yksiköllä joka osaa lääkintäkyvyn."
 
-#: data/translations/english.cfg:32
+#: data/translations/english.cfg:29
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -11624,14 +12009,26 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Lääkintä:\n"
+"Tämä yksikkö käyttää yrttilääkkeitä ja taikuutta parantaakseen yksiköt "
+"nopeammin kuin normaalisti olisi taistelukentällä mahdollista.\n"
+"\n"
+"Tämä yksikkö voi lääkitä kaikki viereiset ystävälliset yksiköt vuoron "
+"alussa.\n"
+"Lääkitty yksikkö saa maksimissaan 8 HP vuorossa.\n"
+"Lääkitsijä voi lääkitä maksimissaan 18 HP vuorossa.\n"
+"Lääkitsijä voi poistaa myrkytetystä yksiköstä myrkyn, mutta se yksikkö ei "
+"sillä vuorolla saa muuta parannusta."
 
-#: data/translations/english.cfg:35
+#: data/translations/english.cfg:32
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
 msgstr ""
+"Kaukosiirto:\n"
+"Tämä yksikkö voi kaukosiirtyä välittömästi kahden ystävällisen kylän välillä."
 
-#: data/translations/english.cfg:40
+#: data/translations/english.cfg:37
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -11639,8 +12036,14 @@ msgid ""
 "\n"
 "Adjacent friendly units of lower level will do more damage in battle."
 msgstr ""
+"Johtaminen:\n"
+"Tämä yksikkö voi johtaa viereisiä ystävällisiä yksiköitä, jolloin ne "
+"taistelevat paremmin.\n"
+"\n"
+"Alempitasoiset viereiset ystävälliset yksiköt tekevät enemmän vahinkoa "
+"taistelussa."
 
-#: data/translations/english.cfg:45
+#: data/translations/english.cfg:42
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -11649,8 +12052,13 @@ msgid ""
 "any turn immediately after this unit has attacked, or if there are enemy "
 "units next to this unit."
 msgstr ""
+"Väijytys:\n"
+"Tämä yksikkö voi piiloutua metsään jolloin viholliset eivät huomaa sitä.\n"
+"\n"
+"Vihollisyksiköt eivät näe eivätkä voi hyökätä tätä yksikköä kohti, jos tämä "
+"yksikkö on metsässä, eikä hyökännyt edellisellä vuorolla."
 
-#: data/translations/english.cfg:50
+#: data/translations/english.cfg:47
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -11659,489 +12067,539 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Valaistus:\n"
+"Tämä yksikkö valaisee ympäröivän alueen, jolloin lainkuuliaiset yksiköt "
+"taistelevat paremmin, ja kaoottiset huonommin.\n"
+"\n"
+"Kaikki viereiset yksiköt taistelevat aivan kuin yö olisi iltahämärä, ja "
+"iltahämärä olisi päivä."
 
-#: data/translations/english.cfg:53
+#: data/translations/english.cfg:50
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
+"Kahakointi:\n"
+"Tämä yksikkö osaa liikkua nopeasti vihollisyksiköiden ohitse, eikä välitä "
+"vihollisen hallitsemista alueista."
 
-#: data/translations/english.cfg:55
+#: data/translations/english.cfg:52
 msgid "Never more than 1 upkeep"
-msgstr ""
+msgstr "Ylläpito ei koskaan enemmän kuin 1"
 
-#: data/translations/english.cfg:57
+#: data/translations/english.cfg:54
 msgid "This unit takes half normal damage when it did not initiate the attack."
 msgstr ""
+"Tämä yksikkö ottaa vain puolet vahingosta, mikäli se ei aloittanut "
+"hyökkäystä."
 
-#: data/translations/english.cfg:59
+#: data/translations/english.cfg:56
 msgid "minimum damage"
-msgstr ""
+msgstr "minimivahinko"
 
-#: data/translations/english.cfg:61
+#: data/translations/english.cfg:58
 msgid "Game"
-msgstr ""
+msgstr "Peli"
+
+#: data/translations/english.cfg:60
+msgid "Scenario"
+msgstr "Skenaario"
+
+#: data/translations/english.cfg:62
+msgid "Configure Sides:"
+msgstr "Muokkaa puolia:"
 
 #: data/translations/english.cfg:63
-msgid "Scenario"
-msgstr ""
+msgid "Choose Team Settings:"
+msgstr "Joukkueen asetukset:"
+
+#: data/translations/english.cfg:64
+msgid "Could not connect to the remote host"
+msgstr "Yhteyttä isäntäkoneeseen ei saatu"
 
 #: data/translations/english.cfg:65
-msgid "Configure Sides:"
-msgstr ""
+msgid "Waiting for players to connect"
+msgstr "Odotetaan pelaajien mukaantuloa"
 
 #: data/translations/english.cfg:66
-msgid "Choose Team Settings:"
-msgstr ""
+msgid "Filled"
+msgstr "Täytetty"
 
 #: data/translations/english.cfg:67
-msgid "Could not connect to the remote host"
-msgstr ""
+msgid "Available"
+msgstr "Vapaa"
 
 #: data/translations/english.cfg:68
-msgid "Waiting for players to connect"
-msgstr ""
-
-#: data/translations/english.cfg:69
-msgid "Filled"
-msgstr ""
+msgid "&misc/observer.png,Observer"
+msgstr "&misc/observer.png,Tarkkailija"
 
 #: data/translations/english.cfg:70
-msgid "Available"
-msgstr ""
+msgid "Describe Unit"
+msgstr "Kuvaile yksikköä"
 
-#: data/translations/english.cfg:71
-msgid "&misc/observer.png,Observer"
-msgstr ""
+#: data/translations/english.cfg:72
+msgid "Full Screen or Windowed?"
+msgstr "Koko ruudun kokoinen vai ikkunoitu?"
 
 #: data/translations/english.cfg:73
-msgid "Describe Unit"
-msgstr ""
+msgid "Display:"
+msgstr "Näyttö:"
 
-#: data/translations/english.cfg:75
-msgid "Full Screen or Windowed?"
-msgstr ""
+#: data/translations/english.cfg:74
+msgid "Windowed"
+msgstr "Ikkunoitu"
 
 #: data/translations/english.cfg:76
-msgid "Display:"
-msgstr ""
+msgid "Speed:"
+msgstr "Nopeus:"
 
 #: data/translations/english.cfg:77
-msgid "Windowed"
-msgstr ""
+msgid "Normal"
+msgstr "Normaali"
 
 #: data/translations/english.cfg:79
-msgid "Speed:"
-msgstr ""
+msgid "Sound Settings..."
+msgstr "Ääniasetukset..."
 
 #: data/translations/english.cfg:80
-msgid "Normal"
-msgstr ""
+msgid "Options"
+msgstr "Asetukset"
 
 #: data/translations/english.cfg:82
-msgid "Sound Settings..."
-msgstr ""
-
-#: data/translations/english.cfg:83
-msgid "Options"
-msgstr ""
-
-#: data/translations/english.cfg:85
 msgid "Choose Scenario"
-msgstr ""
+msgstr "Valitse skenaario"
 
-#: data/translations/english.cfg:87
+#: data/translations/english.cfg:84
 msgid "This terrain acts as $terrains for movement and defense purposes"
 msgstr ""
+"Tämä maasto käyttäytyy kuin $terrains, mitä tulee liikkumiseen ja "
+"puolustamiseen"
 
-#: data/translations/english.cfg:88
+#: data/translations/english.cfg:85
 msgid "The terrain with the best modifier is chosen automatically"
-msgstr ""
+msgstr "Maasto jolla on paras vaikutus valitaan automaattisesti"
 
-#: data/translations/english.cfg:89
+#: data/translations/english.cfg:86
 msgid "This terrain gives healing"
-msgstr ""
+msgstr "Tämä maasto parantaa yksiköitä"
 
-#: data/translations/english.cfg:90
+#: data/translations/english.cfg:87
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain"
 msgstr ""
+"Tämä maasto käyttäytyy kuten linnoitus, ts. voit värvätä yksiköitä kun "
+"johtajasi on tässä maastossa"
 
-#: data/translations/english.cfg:91
+#: data/translations/english.cfg:88
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain"
 msgstr ""
+"Tämä maasto käyttäytyy kuten linna, ts. voit värvätä yksiköitä tähän maastoon"
 
-#: data/translations/english.cfg:92 src/help.cpp:869
+#: data/translations/english.cfg:89 src/help.cpp:871
 msgid "or"
-msgstr ""
+msgstr "tai"
 
-#: data/translations/english.cfg:93
+#: data/translations/english.cfg:90
 msgid "Unit resistance table"
-msgstr ""
+msgstr "Yksikön vastustustaulukko"
 
-#: data/translations/english.cfg:95
+#: data/translations/english.cfg:92
 msgid "See Also..."
-msgstr ""
+msgstr "Katso myös..."
 
-#: data/translations/english.cfg:99
+#: data/translations/english.cfg:96
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target."
 msgstr ""
+"Puukotus:\n"
+"Tämä hyökkäys tekee kaksinkertaisen vahingon jos kohteen toisella puolella "
+"on ystävällinen yksikkö."
 
-#: data/translations/english.cfg:102
+#: data/translations/english.cfg:99
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
+"Rynnäkkö:\n"
+"Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta tämä yksikkö "
+"ottaa kaksinkertaisen vahingon kohteen vastahyökkäyksestä."
 
-#: data/translations/english.cfg:105
+#: data/translations/english.cfg:102
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
+"Energiaimu:\n"
+"Tämä yksikkö imee voimia elävistä yksiköistä, parantaen itseään puolella "
+"siitä vahingosta jonka tämä tekee."
 
-#: data/translations/english.cfg:108
+#: data/translations/english.cfg:105
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Maaginen:\n"
+"Tällä hyökkäyksellä on aina 70% mahdollisuus osua."
 
-#: data/translations/english.cfg:111
+#: data/translations/english.cfg:108
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Tarkka-ampuja:\n"
+"Hyökätessä, tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
 
-#: data/translations/english.cfg:114
+#: data/translations/english.cfg:111
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
+"Rutto:\n"
+"Mikäli tämä yksikkö tappaa elävän yksikön ja se ei ollut kylässä, se nousee "
+"kuolleista ja taistelee puolellasi."
 
-#: data/translations/english.cfg:117
+#: data/translations/english.cfg:114
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Myrkky:\n"
+"Tämä hyökkää myrkyttää kohteen. Myrkytetyt yksiköt menettävät 8 "
+"osumapistettä (HP) joka vuoro, kunnes ne parannetaan tai niillä on 1 "
+"osumapiste jäljellä"
 
-#: data/translations/english.cfg:120
+#: data/translations/english.cfg:117
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
+"Hidastus:\n"
+"Tämä hyökkäys hidastaa kohteen. Hidastetut yksiköt liikkuvat puolella "
+"normaali nopeudesta ja hyökkäävät taistelussa yhden kerran normaalia "
+"vähemmän."
 
-#: data/translations/english.cfg:123
+#: data/translations/english.cfg:120
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Kivetys:\n"
+"Tämä hyökkäys kivettää kohteen. Kivetetyt yksiköt eivät voi liikkua tai "
+"hyökätä."
 
-#: data/translations/english.cfg:126
+#: data/translations/english.cfg:123
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
+"Berserkki:\n"
+"Tämä hyökkäys pakottaa taistelemaan kunnes joko hyökkääjä tai puolustaja on "
+"kuollut."
 
-#: data/translations/english.cfg:129
+#: data/translations/english.cfg:126
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Ensi-Isku:\n"
+"Yksikkö iskee taistelussa aina ensin tällä hyökkäuksellä, myös puolustaessa."
+
+#: data/translations/english.cfg:128
+msgid "first strike"
+msgstr "ensi-isku"
 
 #: data/translations/english.cfg:131
-msgid "first strike"
-msgstr ""
+msgid "Elves"
+msgstr "Haltiat"
+
+#: data/translations/english.cfg:132
+msgid "Orcs"
+msgstr "Örkit"
+
+#: data/translations/english.cfg:133
+msgid "Humans"
+msgstr "Ihmiset"
 
 #: data/translations/english.cfg:134
-msgid "Elves"
-msgstr ""
-
-#: data/translations/english.cfg:135
-msgid "Orcs"
-msgstr ""
-
-#: data/translations/english.cfg:136
-msgid "Humans"
-msgstr ""
-
-#: data/translations/english.cfg:137
 msgid "Undead"
-msgstr ""
+msgstr "Epäkuolleet"
 
-#: data/translations/english.cfg:141
+#: data/translations/english.cfg:138
 msgid "Deep Water"
-msgstr ""
+msgstr "Syvä vesi"
+
+#: data/translations/english.cfg:139
+msgid "Shallow Water"
+msgstr "Matala vesi"
+
+#: data/translations/english.cfg:140
+msgid "Sand"
+msgstr "Hiekka"
+
+#: data/translations/english.cfg:141 data/translations/english.cfg:143
+#: data/translations/english.cfg:144 data/translations/english.cfg:145
+#: data/translations/english.cfg:146 data/translations/english.cfg:147
+msgid "Village"
+msgstr "Kylä"
 
 #: data/translations/english.cfg:142
-msgid "Shallow Water"
-msgstr ""
-
-#: data/translations/english.cfg:143
-msgid "Sand"
-msgstr ""
-
-#: data/translations/english.cfg:144 data/translations/english.cfg:146
-#: data/translations/english.cfg:147 data/translations/english.cfg:148
-#: data/translations/english.cfg:149 data/translations/english.cfg:150
-msgid "Village"
-msgstr ""
-
-#: data/translations/english.cfg:145
 msgid "Swamp"
-msgstr ""
+msgstr "Suo"
+
+#: data/translations/english.cfg:148
+msgid "Tundra"
+msgstr "Tundra"
+
+#: data/translations/english.cfg:149
+msgid "Ice"
+msgstr "Jäätä"
+
+#: data/translations/english.cfg:150
+msgid "Road"
+msgstr "Tie"
 
 #: data/translations/english.cfg:151
-msgid "Tundra"
-msgstr ""
+msgid "Dirt"
+msgstr "Soraa"
 
 #: data/translations/english.cfg:152
-msgid "Ice"
-msgstr ""
+msgid "Grassland"
+msgstr "Ruohikko"
 
 #: data/translations/english.cfg:153
-msgid "Road"
-msgstr ""
+msgid "Hills"
+msgstr "Kukkula"
 
 #: data/translations/english.cfg:154
-msgid "Dirt"
-msgstr ""
+msgid "Mountains"
+msgstr "Vuoristo"
 
 #: data/translations/english.cfg:155
-msgid "Grassland"
-msgstr ""
-
-#: data/translations/english.cfg:156
-msgid "Hills"
-msgstr ""
-
-#: data/translations/english.cfg:157
-msgid "Mountains"
-msgstr ""
-
-#: data/translations/english.cfg:158
 msgid "Forest"
-msgstr ""
+msgstr "Metsä"
 
-#: data/translations/english.cfg:159 data/translations/english.cfg:160
-#: data/translations/english.cfg:161
+#: data/translations/english.cfg:156 data/translations/english.cfg:157
+#: data/translations/english.cfg:158
 msgid "Bridge"
-msgstr ""
+msgstr "Silta"
+
+#: data/translations/english.cfg:159
+msgid "Castle"
+msgstr "Linna"
+
+#: data/translations/english.cfg:160
+msgid "Keep"
+msgstr "Linnoitus"
+
+#: data/translations/english.cfg:161
+msgid "Cave"
+msgstr "Luola"
 
 #: data/translations/english.cfg:162
-msgid "Castle"
-msgstr ""
+msgid "Cave Wall"
+msgstr "Luolan seinämä"
 
 #: data/translations/english.cfg:163
-msgid "Keep"
-msgstr ""
-
-#: data/translations/english.cfg:164
-msgid "Cave"
-msgstr ""
-
-#: data/translations/english.cfg:165
-msgid "Cave Wall"
-msgstr ""
+msgid "Encampment"
+msgstr "Leiri"
 
 #: data/translations/english.cfg:166
-msgid "Encampment"
-msgstr ""
-
-#: data/translations/english.cfg:169
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
 
-#: data/translations/english.cfg:170
+#: data/translations/english.cfg:167
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
-#: data/translations/english.cfg:171
+#: data/translations/english.cfg:168
 msgid "$name River,River $name"
 msgstr ""
 
-#: data/translations/english.cfg:172
+#: data/translations/english.cfg:169
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
-#: data/translations/english.cfg:173
+#: data/translations/english.cfg:170
 msgid "$name Lake"
 msgstr ""
 
-#: data/translations/english.cfg:174
+#: data/translations/english.cfg:171
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
-#: data/translations/english.cfg:175
+#: data/translations/english.cfg:172
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:176
+#: data/translations/english.cfg:173
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:177
+#: data/translations/english.cfg:174
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:178
+#: data/translations/english.cfg:175
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:179
+#: data/translations/english.cfg:176
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:180
+#: data/translations/english.cfg:177
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:184
+#: data/translations/english.cfg:181
 msgid "Choose a File to Save As"
-msgstr ""
+msgstr "Valitse mihin tiedostoon tallennetaan"
+
+#: data/translations/english.cfg:182
+msgid "The map already exists. Do you want to overwrite it?"
+msgstr "Kartta on jo olemassa. Haluatko kirjoittaa sen päälle?"
+
+#: data/translations/english.cfg:183
+msgid "Which Player?"
+msgstr "Kuka pelaaja?"
+
+#: data/translations/english.cfg:184
+msgid "Which player should start here?"
+msgstr "Kuka pelaajista aloittaa täältä?"
 
 #: data/translations/english.cfg:185
-msgid "The map already exists. Do you want to overwrite it?"
-msgstr ""
+msgid "Choose a Map to Load"
+msgstr "Valitse ladattava kartta"
 
 #: data/translations/english.cfg:186
-msgid "Which Player?"
-msgstr ""
+msgid "The file does not contain a valid map."
+msgstr "Tiedosto ei sisällä kelpaavaa karttaa."
 
 #: data/translations/english.cfg:187
-msgid "Which player should start here?"
-msgstr ""
+msgid "'$filename' does not exist or can not be read as a file."
+msgstr "'$filename' ei ole olemassa tai sitä ei voitu lukea tiedostona."
 
 #: data/translations/english.cfg:188
-msgid "Choose a Map to Load"
-msgstr ""
+msgid "Load failed: "
+msgstr "Avaus epäonnistui: "
 
 #: data/translations/english.cfg:189
-msgid "The file does not contain a valid map."
-msgstr ""
+msgid "You must have a hex selected on the board."
+msgstr "Sinulla täytyy olla jokin heksaruutu valittuna kartalta."
 
 #: data/translations/english.cfg:190
-msgid "'$filename' does not exist or can not be read as a file."
-msgstr ""
+msgid "Do you want to save the map before quitting?"
+msgstr "Haluatko tallentaa kartan ennenkuin lopetat?"
 
 #: data/translations/english.cfg:191
-msgid "Load failed: "
-msgstr ""
+msgid "Map saved."
+msgstr "Kartta tallennettiin"
 
 #: data/translations/english.cfg:192
-msgid "You must have a hex selected on the board."
-msgstr ""
+msgid "Could not save the map: $msg"
+msgstr "Karttaa ei voitu tallentaa: $msg"
 
 #: data/translations/english.cfg:193
-msgid "Do you want to save the map before quitting?"
-msgstr ""
+msgid "Player "
+msgstr "Pelaaja "
 
 #: data/translations/english.cfg:194
-msgid "Map saved."
-msgstr ""
+msgid "Your modifications to the map will be lost. Continue?"
+msgstr "Karttaan tehdyt muutokset menetetään. Haluatko jatkaa?"
 
 #: data/translations/english.cfg:195
-msgid "Could not save the map: $msg"
-msgstr ""
+msgid "Create New Map"
+msgstr "Uusi kartta"
 
 #: data/translations/english.cfg:196
-msgid "Player "
-msgstr ""
+msgid "Generate New Map"
+msgstr "Generoi uusi kartta"
 
 #: data/translations/english.cfg:197
-msgid "Your modifications to the map will be lost. Continue?"
-msgstr ""
+msgid "Generate Random Map"
+msgstr "Luo satunnainen kartta"
 
 #: data/translations/english.cfg:198
-msgid "Create New Map"
-msgstr ""
+msgid "Random Generator Settings"
+msgstr "Satunnaisgeneraattorin asetukset"
 
 #: data/translations/english.cfg:199
-msgid "Generate New Map"
-msgstr ""
+msgid "Map creation failed."
+msgstr "Kartan luonti epäonnistui."
 
-#: data/translations/english.cfg:200
-msgid "Generate Random Map"
-msgstr ""
+#: data/translations/english.cfg:200 src/hotkeys.cpp:164
+msgid "Resize Map"
+msgstr "Muuta kartan kokoa"
 
 #: data/translations/english.cfg:201
-msgid "Random Generator Settings"
-msgstr ""
+msgid "X-Axis"
+msgstr "X-akseli"
 
 #: data/translations/english.cfg:202
-msgid "Map creation failed."
-msgstr ""
+msgid "Y-Axis"
+msgstr "Y-akseli"
 
-#: data/translations/english.cfg:203 src/hotkeys.cpp:164
-msgid "Resize Map"
-msgstr ""
+#: data/translations/english.cfg:203
+msgid "Flip around (this may change the dimensions of the map):"
+msgstr "Käännä (saattaa muuttaa kartan kokoa)"
 
 #: data/translations/english.cfg:204
-msgid "X-Axis"
-msgstr ""
+msgid "Edit"
+msgstr "Muokkaa"
 
 #: data/translations/english.cfg:205
-msgid "Y-Axis"
-msgstr ""
+msgid "File"
+msgstr "Tiedosto"
 
 #: data/translations/english.cfg:206
-msgid "Flip around (this may change the dimensions of the map):"
-msgstr ""
-
-#: data/translations/english.cfg:207
-msgid "Edit"
-msgstr ""
-
-#: data/translations/english.cfg:208
-msgid "File"
-msgstr ""
-
-#: data/translations/english.cfg:209
 msgid "FG"
 msgstr ""
 
-#: data/translations/english.cfg:210
+#: data/translations/english.cfg:207
 msgid "BG"
 msgstr ""
 
-#: data/translations/english.cfg:212
+#: data/translations/english.cfg:209
 msgid "Next tip"
-msgstr ""
+msgstr "Seuraava vinkki"
 
-#: data/translations/english.cfg:213
+#: data/translations/english.cfg:210
 msgid "Tip of the Day"
-msgstr ""
+msgstr "Päivän vinkki"
 
-#: data/translations/english.cfg:214
+#: data/translations/english.cfg:211
 msgid "Do not show tips"
-msgstr ""
+msgstr "Älä näytä vinkkejä"
 
-#: data/translations/english.cfg:215
+#: data/translations/english.cfg:212
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
+"Lainkuuliaiset yksiköt taistelevat parhaiten päivisin, kaoottiset öisin, ja "
+"neutraaleihin yksiköihin ei päivän ja yön vaihtelut vaikuta."
 
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:213
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:214
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -12150,7 +12608,7 @@ msgid ""
 "types."
 msgstr ""
 
-#: data/translations/english.cfg:218
+#: data/translations/english.cfg:215
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected uni "
@@ -12158,7 +12616,7 @@ msgid ""
 "the screen."
 msgstr ""
 
-#: data/translations/english.cfg:219
+#: data/translations/english.cfg:216
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -12166,83 +12624,87 @@ msgid ""
 "the 'cure' ability."
 msgstr ""
 
-#: data/translations/english.cfg:220
+#: data/translations/english.cfg:217
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
 
-#: data/translations/english.cfg:221
+#: data/translations/english.cfg:218
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
 "turn."
 msgstr ""
 
-#: data/translations/english.cfg:222
+#: data/translations/english.cfg:219
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
 "a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:223
+#: data/translations/english.cfg:220
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
+"Kylässä oleva yksikkö parantuu, saaden takaisin 8 osumapistettä vuoronsa "
+"alussa. "
 
-#: data/translations/english.cfg:224
+#: data/translations/english.cfg:221
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
 
-#: data/translations/english.cfg:225
+#: data/translations/english.cfg:222
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
 
-#: data/translations/english.cfg:226
+#: data/translations/english.cfg:223
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 
-#: data/translations/english.cfg:227
+#: data/translations/english.cfg:224
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
 
-#: data/translations/english.cfg:228
+#: data/translations/english.cfg:225
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
+"Haltiat liikkuvat ja taistelevat hyvin metsissä. Kääpiöt puolestaan "
+"kukkuloilla ja vuorilla."
 
-#: data/translations/english.cfg:229
+#: data/translations/english.cfg:226
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 
-#: data/translations/english.cfg:230
+#: data/translations/english.cfg:227
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 
-#: data/translations/english.cfg:231
+#: data/translations/english.cfg:228
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
-#: data/translations/english.cfg:232
+#: data/translations/english.cfg:229
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -12250,7 +12712,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 
-#: data/translations/english.cfg:233
+#: data/translations/english.cfg:230
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -12258,75 +12720,93 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 
-#: data/translations/english.cfg:234
+#: data/translations/english.cfg:231
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
+"Luurangot ovat vastustuskykyisiä lävistäville ja teräaseilla tehdyille "
+"iskuille, mutta herkkiä murjoville iskuille, tulelle ja pyhille "
+"hyökkäyksille."
 
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:232
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
+"Yksiköt joilla on johtamiskyky auttavat viereisiä alemman kokemustason "
+"yksiköitä taistelemaan paremmin."
 
-#: data/translations/english.cfg:236
+#: data/translations/english.cfg:233
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
+"Yleisesti ottaen on parasta jos et jää miehittämättömän kylän viereen. "
+"Vihollisyksikkö voi miehittää kylän ja hyökätä ja silti nauttia kylän "
+"antamasta suojasta ja parannuksesta."
 
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:234
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:235
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
+"Siirrä vahingoittuneet yksiköt turvaan voimakkaampien yksiköiden "
+"rintamalinjan taakse."
 
-#: data/translations/english.cfg:239
+#: data/translations/english.cfg:236
 msgid "Read the hotkeys list in the preferences menu."
-msgstr ""
+msgstr "Lue pikanäppäinlista Asetukset-valikosta."
 
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:237
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
+"Voit peruuttaa yksikön liikkeen painamalla 'u', jos et hyökännyt tai "
+"löytänyt mitään lisäinformaatiota."
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:238
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
+"Viedessäsi hiiren kursorin vihollisyksikön päälle, näet kuinka pitkälle se "
+"voi liikkua."
 
-#: data/translations/english.cfg:242
+#: data/translations/english.cfg:239
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
+"Parantajat tuovat sinulle voiton vaikka eivät itse taistelisikaan - käytä "
+"niitä hyökkäävien yksiköiden tukemiseen."
 
-#: data/translations/english.cfg:243
+#: data/translations/english.cfg:240
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
 
-#: data/translations/english.cfg:244
+#: data/translations/english.cfg:241
 msgid "Holy attacks are very powerful against undead."
-msgstr ""
+msgstr "Pyhät hyökkäykset ovat erikoisen voimakkaita epäkuolleita vastaan."
 
-#: data/translations/english.cfg:245
+#: data/translations/english.cfg:242
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
+"Yksiköt paranevat kun ne nousevat kokemustason. Järkevästi käytettynä tämä "
+"voi johtaa voittoon."
 
-#: data/translations/english.cfg:246
+#: data/translations/english.cfg:243
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -12348,10 +12828,11 @@ msgstr ""
 #: data/units/Ancient_Lich.cfg:19 data/units/Demilich.cfg:18
 #: data/units/Ghost.cfg:19 data/units/Lich.cfg:19
 msgid "touch"
-msgstr ""
+msgstr "kosketus"
 
 #: data/units/Ancient_Lich.cfg:20 data/units/Ancient_Lich.cfg:33
 #: data/units/Cockatrice.cfg:22 data/units/Dark_Adept.cfg:23
+#: data/units/Dark_Queen.cfg:27 data/units/Dark_Queen.cfg:28
 #: data/units/Dark_Spirit.cfg:33 data/units/Deathmaster.cfg:36
 #: data/units/Demilich.cfg:19 data/units/Demilich.cfg:32
 #: data/units/Drake_Mage.cfg:64 data/units/Drake_Warmage.cfg:74
@@ -12359,7 +12840,7 @@ msgstr ""
 #: data/units/Lich.cfg:20 data/units/Lich.cfg:33 data/units/Necromancer.cfg:36
 #: data/units/Spectre.cfg:33 data/units/Wraith.cfg:33
 msgid "cold"
-msgstr ""
+msgstr "kylmä"
 
 #: data/units/Ancient_Lich.cfg:24 data/units/Blood_Bat.cfg:24
 #: data/units/Dark_Spirit.cfg:24 data/units/Demilich.cfg:23
@@ -12369,7 +12850,7 @@ msgstr ""
 #: data/units/Vampire_Bat.cfg:24 data/units/Vampire_Lady.cfg:25
 #: data/units/Vampire_Lady.cfg:38 data/units/Wraith.cfg:24
 msgid "drain"
-msgstr ""
+msgstr "energiaimu"
 
 #: data/units/Ancient_Lich.cfg:32 data/units/Deathmaster.cfg:35
 #: data/units/Demilich.cfg:31 data/units/Initiate.cfg:19
@@ -12379,22 +12860,22 @@ msgstr ""
 
 #: data/units/Ancient_Lich.cfg:34 data/units/Arch_Mage.cfg:42
 #: data/units/Arch_Mage.cfg:121 data/units/Dark_Adept.cfg:24
-#: data/units/Deathmaster.cfg:37 data/units/Demilich.cfg:33
-#: data/units/Drake_Mage.cfg:68 data/units/Drake_Warmage.cfg:78
-#: data/units/Dwarvish_Runemaster.cfg:43 data/units/Elder_Mage.cfg:41
-#: data/units/Elvish_Druid.cfg:63 data/units/Elvish_High_Lord.cfg:38
-#: data/units/Elvish_Lord.cfg:38 data/units/Elvish_Shyde.cfg:26
-#: data/units/Elvish_Shyde.cfg:72 data/units/Fireball.cfg:21
-#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:118
-#: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Mage.cfg:39
-#: data/units/Mage.cfg:106 data/units/Mage_of_Light.cfg:48
-#: data/units/Mage_of_Light.cfg:108 data/units/Necromancer.cfg:37
-#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:111
-#: data/units/Sea_Hag.cfg:31 data/units/Silver_Mage.cfg:44
-#: data/units/Silver_Mage.cfg:131 data/units/White_Mage.cfg:47
-#: data/units/White_Mage.cfg:106
+#: data/units/Dark_Queen.cfg:29 data/units/Deathmaster.cfg:37
+#: data/units/Demilich.cfg:33 data/units/Drake_Mage.cfg:68
+#: data/units/Drake_Warmage.cfg:78 data/units/Dwarvish_Runemaster.cfg:43
+#: data/units/Elder_Mage.cfg:41 data/units/Elvish_Druid.cfg:63
+#: data/units/Elvish_High_Lord.cfg:38 data/units/Elvish_Lord.cfg:38
+#: data/units/Elvish_Shyde.cfg:26 data/units/Elvish_Shyde.cfg:72
+#: data/units/Fireball.cfg:21 data/units/Great_Mage.cfg:42
+#: data/units/Great_Mage.cfg:118 data/units/Initiate.cfg:21
+#: data/units/Lich.cfg:34 data/units/Mage.cfg:39 data/units/Mage.cfg:106
+#: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
+#: data/units/Necromancer.cfg:37 data/units/Red_Mage.cfg:42
+#: data/units/Red_Mage.cfg:111 data/units/Sea_Hag.cfg:31
+#: data/units/Silver_Mage.cfg:44 data/units/Silver_Mage.cfg:131
+#: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
 msgid "magical"
-msgstr ""
+msgstr "maaginen"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -12408,23 +12889,24 @@ msgstr ""
 #: data/units/Ancient_Wose.cfg:17 data/units/Elder_Wose.cfg:18
 #: data/units/Wose.cfg:19
 msgid "crush"
-msgstr ""
+msgstr "murskaus"
 
 #: data/units/Ancient_Wose.cfg:18 data/units/Arch_Mage.cfg:24
 #: data/units/Arch_Mage.cfg:103 data/units/Bandit.cfg:20
 #: data/units/Bone_Shooter.cfg:25 data/units/Cave_Spider.cfg:29
-#: data/units/Cuttle_Fish.cfg:20 data/units/Deathmaster.cfg:20
-#: data/units/Drake_Beak.cfg:38 data/units/Drake_Mage.cfg:20
-#: data/units/Drake_Petit.cfg:38 data/units/Drake_Slasher.cfg:76
-#: data/units/Drake_Warmage.cfg:20 data/units/Drake_Worker.cfg:20
-#: data/units/Dwarvish_Dragonguard.cfg:29 data/units/Dwarvish_Fighter.cfg:44
-#: data/units/Dwarvish_Runemaster.cfg:21 data/units/Dwarvish_Steelclad.cfg:45
-#: data/units/Elder_Mage.cfg:23 data/units/Elder_Wose.cfg:19
-#: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Druid.cfg:42
-#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
-#: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
-#: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
-#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:17 data/units/Gate.cfg:24
+#: data/units/Cuttle_Fish.cfg:20 data/units/Dark_Queen.cfg:21
+#: data/units/Deathmaster.cfg:20 data/units/Drake_Beak.cfg:38
+#: data/units/Drake_Mage.cfg:20 data/units/Drake_Petit.cfg:38
+#: data/units/Drake_Slasher.cfg:76 data/units/Drake_Warmage.cfg:20
+#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:29
+#: data/units/Dwarvish_Fighter.cfg:44 data/units/Dwarvish_Runemaster.cfg:21
+#: data/units/Dwarvish_Steelclad.cfg:45 data/units/Elder_Mage.cfg:23
+#: data/units/Elder_Wose.cfg:19 data/units/Elvish_Druid.cfg:23
+#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shaman.cfg:25
+#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:25
+#: data/units/Elvish_Shyde.cfg:51 data/units/Fire_Dragon.cfg:41
+#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
+#: data/units/Galleon.cfg:17 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
@@ -12445,7 +12927,7 @@ msgstr ""
 #: data/units/Walking_Corpse.cfg:20 data/units/Warrior_King.cfg:23
 #: data/units/Wose.cfg:20 data/units/Yeti.cfg:34 data/units/Youth.cfg:22
 msgid "impact"
-msgstr ""
+msgstr "murjova isku"
 
 #: data/units/Arch_Mage.cfg:3 data/units/Arch_Mage.cfg:82
 msgid "Arch Mage"
@@ -12465,7 +12947,7 @@ msgstr ""
 #: data/units/Necromancer.cfg:19 data/units/Silver_Mage.cfg:25
 #: data/units/Silver_Mage.cfg:112
 msgid "staff"
-msgstr ""
+msgstr "sauva"
 
 #: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:118
 #: data/units/Elvish_High_Lord.cfg:36 data/units/Elvish_Lord.cfg:36
@@ -12473,7 +12955,7 @@ msgstr ""
 #: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:108
 #: data/units/Silver_Mage.cfg:41 data/units/Silver_Mage.cfg:128
 msgid "fireball"
-msgstr ""
+msgstr "tulipallo"
 
 #: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:119
 #: data/units/Drake_Burner.cfg:44 data/units/Drake_Fighter.cfg:44
@@ -12501,7 +12983,7 @@ msgstr ""
 #: data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
 #: data/units/Saurian_Warrior.cfg:16
 msgid "skirmisher"
-msgstr ""
+msgstr "kahakointi"
 
 #: data/units/Assassin.cfg:17
 msgid ""
@@ -12520,7 +13002,7 @@ msgstr ""
 #: data/units/Rogue.cfg:20 data/units/Thief.cfg:19 data/units/Trapper.cfg:24
 #: data/units/White_Mage.cfg:28 data/units/White_Mage.cfg:87
 msgid "dagger"
-msgstr ""
+msgstr "tikari"
 
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:48
 #: data/units/Battle_Princess.cfg:23 data/units/Blood_Bat.cfg:20
@@ -12583,16 +13065,16 @@ msgstr ""
 #: data/units/White_Mage.cfg:88 data/units/Wolf_Rider.cfg:21
 #: data/units/Wraith.cfg:20 data/units/Young_Ogre.cfg:19
 msgid "blade"
-msgstr ""
+msgstr "teräase"
 
 #: data/units/Assassin.cfg:25 data/units/Rogue.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:476
 msgid "backstab"
-msgstr ""
+msgstr "puukotus"
 
 #: data/units/Assassin.cfg:47 data/units/Rogue.cfg:38
 msgid "knife"
-msgstr ""
+msgstr "puukko"
 
 #: data/units/Assassin.cfg:50 data/units/Cave_Spider.cfg:24
 #: data/units/Cuttle_Fish.cfg:36 data/units/Direwolf_Rider.cfg:35
@@ -12600,7 +13082,7 @@ msgstr ""
 #: data/units/Goblin_Direwolver.cfg:37 data/units/Necrophage.cfg:24
 #: data/units/Orcish_Assassin.cfg:41 data/units/Orcish_Slayer.cfg:46
 msgid "poison"
-msgstr ""
+msgstr "myrkky"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -12620,7 +13102,7 @@ msgstr ""
 #: data/units/Outlaw_Queen.cfg:24 data/units/Shock_Trooper.cfg:19
 #: data/units/Troll_Warrior.cfg:19 data/units/Warrior_King.cfg:22
 msgid "mace"
-msgstr ""
+msgstr "helanuija"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
 msgid "Princess"
@@ -12668,7 +13150,7 @@ msgstr ""
 #: data/units/Scout.cfg:20 data/units/Sea_Orc.cfg:19
 #: data/units/Sergeant.cfg:21 data/units/Swordsman.cfg:19
 msgid "sword"
-msgstr ""
+msgstr "miekka"
 
 #: data/units/Blood_Bat.cfg:3
 msgid "Blood Bat"
@@ -12687,7 +13169,7 @@ msgstr ""
 #: data/units/Goblin_Knight.cfg:18 data/units/Sea_Serpent.cfg:18
 #: data/units/Vampire_Bat.cfg:19 data/units/Wolf_Rider.cfg:20
 msgid "fangs"
-msgstr ""
+msgstr "torahampaat"
 
 #: data/units/Bone_Shooter.cfg:3
 msgid "Bone Shooter"
@@ -12704,7 +13186,7 @@ msgstr ""
 #: data/units/Troll_Whelp.cfg:20 data/units/Walking_Corpse.cfg:19
 #: data/units/Yeti.cfg:33
 msgid "fist"
-msgstr ""
+msgstr "nyrkki"
 
 #: data/units/Bone_Shooter.cfg:37 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:38
@@ -12723,7 +13205,7 @@ msgstr ""
 #: data/units/Skeleton_Archer.cfg:40 data/units/Soul_Shooter.cfg:37
 #: data/units/Trapper.cfg:41
 msgid "bow"
-msgstr ""
+msgstr "jousi"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:38
 #: data/units/Cavalier.cfg:49 data/units/Chocobone.cfg:21
@@ -12771,7 +13253,7 @@ msgstr ""
 #: data/units/Vampire_Lady.cfg:34 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
 msgid "pierce"
-msgstr ""
+msgstr "lävistys"
 
 #: data/units/Bowman.cfg:3
 msgid "Bowman"
@@ -12796,7 +13278,7 @@ msgstr ""
 
 #: data/units/Cavalier.cfg:48 data/units/Dragoon.cfg:48
 msgid "pistol"
-msgstr ""
+msgstr "pistooli"
 
 #: data/units/Cavalryman.cfg:3
 msgid "Cavalryman"
@@ -12822,13 +13304,13 @@ msgstr ""
 
 #: data/units/Cave_Spider.cfg:28
 msgid "web"
-msgstr ""
+msgstr "verkko"
 
 #: data/units/Cave_Spider.cfg:38 data/units/Elvish_Druid.cfg:43
 #: data/units/Elvish_Shaman.cfg:45 data/units/Elvish_Shyde.cfg:52
 #: data/units/Goblin_Pillager.cfg:37
 msgid "slow"
-msgstr ""
+msgstr "hidas"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
@@ -12850,14 +13332,14 @@ msgstr ""
 #: data/units/Saurian_Warrior.cfg:35 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 msgid "spear"
-msgstr ""
+msgstr "keihäs"
 
 #: data/units/Chocobone.cfg:23 data/units/Grand_Knight.cfg:38
 #: data/units/Horseman.cfg:22 data/units/Knight.cfg:38
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:349
 #: src/actions.cpp:467
 msgid "charge"
-msgstr ""
+msgstr "rynnäkkö"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -12872,12 +13354,12 @@ msgstr ""
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
-msgstr ""
+msgstr "katse"
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:717 src/actions.cpp:857
 #: src/reports.cpp:122
 msgid "stone"
-msgstr ""
+msgstr "kivetys"
 
 #: data/units/Commander.cfg:3
 msgid "Commander"
@@ -12893,7 +13375,7 @@ msgstr ""
 #: data/units/Sergeant.cfg:17 data/units/Warrior_King.cfg:17
 #: src/actions.cpp:360 src/actions.cpp:496
 msgid "leadership"
-msgstr ""
+msgstr "johtaminen"
 
 #: data/units/Commander.cfg:20 data/units/Noble_Commander.cfg:19
 msgid ""
@@ -12917,11 +13399,11 @@ msgstr ""
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
-msgstr ""
+msgstr "lonkerot"
 
 #: data/units/Cuttle_Fish.cfg:26
 msgid "ink"
-msgstr ""
+msgstr "muste"
 
 #: data/units/Dark_Adept.cfg:3
 msgid "Dark Adept"
@@ -12935,7 +13417,23 @@ msgstr ""
 
 #: data/units/Dark_Adept.cfg:22 data/units/Necromancer.cfg:35
 msgid "chill wave"
+msgstr "kylmänaalto"
+
+#: data/units/Dark_Queen.cfg:3
+msgid "Dark Queen"
 msgstr ""
+
+#: data/units/Dark_Queen.cfg:15
+msgid ""
+"Asheviere, the evil queen mother has terrorized Wesnoth for many years. Her "
+"knowledge of magic makes her a worthy foe in combat, although her power is "
+"mostly derived from those she commands."
+msgstr ""
+
+#: data/units/Dark_Queen.cfg:20
+#, fuzzy
+msgid "scepter"
+msgstr "keihäs"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -12956,7 +13454,7 @@ msgstr ""
 #: data/units/Dark_Spirit.cfg:32 data/units/Ghost.cfg:31
 #: data/units/Spectre.cfg:32 data/units/Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "vaikerointi"
 
 #: data/units/Death_Knight.cfg:3
 msgid "Death Knight"
@@ -12971,14 +13469,14 @@ msgstr ""
 #: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:26
 #: data/units/Dwarvish_Steelclad.cfg:26
 msgid "battle axe"
-msgstr ""
+msgstr "taistelukirves"
 
 #: data/units/Death_Knight.cfg:36 data/units/Duelist.cfg:31
 #: data/units/General.cfg:44 data/units/Lieutenant.cfg:38
 #: data/units/Orcish_Crossbow.cfg:39 data/units/Orcish_Crossbowman.cfg:38
 #: data/units/Sergeant.cfg:38 data/units/Wall_Guard.cfg:35
 msgid "crossbow"
-msgstr ""
+msgstr "varsijousi"
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
@@ -13024,7 +13522,7 @@ msgstr ""
 #: data/units/Nightgaunt.cfg:20 data/units/Shadow.cfg:20
 #: data/units/Skeletal_Dragon.cfg:47 data/units/Sleeping_Gryphon.cfg:18
 msgid "claws"
-msgstr ""
+msgstr "kynnet"
 
 #: data/units/Dragoon.cfg:3
 msgid "Dragoon"
@@ -13048,7 +13546,7 @@ msgstr ""
 
 #: data/units/Drake_Beak.cfg:37 data/units/Drake_Petit.cfg:37
 msgid "beak"
-msgstr ""
+msgstr "nokka"
 
 #: data/units/Drake_Burner.cfg:3
 msgid "Drake Burner"
@@ -13067,7 +13565,7 @@ msgstr ""
 #: data/units/Drake_Warmage.cfg:41 data/units/Drake_Warrior.cfg:42
 #: data/units/Fire_Dragon.cfg:57
 msgid "fire breath"
-msgstr ""
+msgstr "tulihenkäys"
 
 #: data/units/Drake_Clasher.cfg:3
 msgid "Drake Clasher"
@@ -13103,7 +13601,7 @@ msgstr ""
 
 #: data/units/Drake_Mage.cfg:63 data/units/Drake_Warmage.cfg:73
 msgid "ice shot"
-msgstr ""
+msgstr "jääpiikki"
 
 #: data/units/Drake_Petit.cfg:3
 msgid "Drake Petit"
@@ -13150,7 +13648,7 @@ msgstr ""
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
-msgstr ""
+msgstr "pistomiekka"
 
 #: data/units/Dwarvish_Berserker.cfg:3
 msgid "Dwarvish Berserker"
@@ -13170,7 +13668,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:36
 msgid "berserk"
-msgstr ""
+msgstr "berserkki"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
 msgid "Dwarvish Dragonguard"
@@ -13203,11 +13701,11 @@ msgstr ""
 #: data/units/Dwarvish_Fighter.cfg:26 data/units/Revenant.cfg:23
 #: data/units/Skeleton.cfg:24
 msgid "axe"
-msgstr ""
+msgstr "kirves"
 
 #: data/units/Dwarvish_Fighter.cfg:43 data/units/Dwarvish_Steelclad.cfg:44
 msgid "hammer"
-msgstr ""
+msgstr "vasara"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
 msgid "Dwarvish Guardsman"
@@ -13216,7 +13714,7 @@ msgstr ""
 #: data/units/Dwarvish_Guardsman.cfg:29 data/units/Dwarvish_Stalwart.cfg:29
 #: src/actions.cpp:485
 msgid "steadfast"
-msgstr ""
+msgstr "vankkumaton"
 
 #: data/units/Dwarvish_Guardsman.cfg:35
 msgid ""
@@ -13238,7 +13736,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Lord.cfg:43
 msgid "hatchet"
-msgstr ""
+msgstr "piilukirves"
 
 #: data/units/Dwarvish_Runemaster.cfg:3
 msgid "Dwarvish Runemaster"
@@ -13254,7 +13752,7 @@ msgstr ""
 
 #: data/units/Dwarvish_Runemaster.cfg:20
 msgid "runic hammer"
-msgstr ""
+msgstr "riimuvasara"
 
 #: data/units/Dwarvish_Runemaster.cfg:37
 msgid "Lightning bolt"
@@ -13330,7 +13828,7 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:38
 msgid "lightning"
-msgstr ""
+msgstr "salama"
 
 #: data/units/Elder_Wose.cfg:3
 msgid "Elder Wose"
@@ -13347,7 +13845,7 @@ msgstr ""
 #: data/units/Elvish_Avenger.cfg:18 data/units/Elvish_Avenger.cfg:91
 #: data/units/Elvish_Ranger.cfg:17 data/units/Elvish_Ranger.cfg:94
 msgid "ambush"
-msgstr ""
+msgstr "väijytys"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -13378,7 +13876,7 @@ msgstr ""
 #: data/units/Elvish_Druid.cfg:18 data/units/Elvish_Shyde.cfg:19
 #: data/units/White_Mage.cfg:12 data/units/White_Mage.cfg:71
 msgid "cures"
-msgstr ""
+msgstr "lääkintä"
 
 #: data/units/Elvish_Druid.cfg:19
 msgid ""
@@ -13393,7 +13891,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:61 data/units/Elvish_Shyde.cfg:70
 msgid "thorns"
-msgstr ""
+msgstr "piikit"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -13445,13 +13943,13 @@ msgstr ""
 #: data/units/Elvish_Sharpshooter.cfg:38
 #: data/units/Elvish_Sharpshooter.cfg:117
 msgid "longbow"
-msgstr ""
+msgstr "pitkäjousi"
 
 #: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:117
 #: data/units/Elvish_Sharpshooter.cfg:40
 #: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:60
 msgid "marksman"
-msgstr ""
+msgstr "tarkka-ampuja"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -13506,7 +14004,7 @@ msgstr ""
 
 #: data/units/Elvish_Shaman.cfg:11 data/units/Paladin.cfg:20
 msgid "heals"
-msgstr ""
+msgstr "parannus"
 
 #: data/units/Elvish_Shaman.cfg:20
 msgid ""
@@ -13576,11 +14074,11 @@ msgstr ""
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
-msgstr ""
+msgstr "purema"
 
 #: data/units/Fire_Dragon.cfg:39
 msgid "tail"
-msgstr ""
+msgstr "häntä"
 
 #: data/units/Fireball.cfg:4
 msgid "Fireball"
@@ -13604,13 +14102,13 @@ msgstr ""
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
 #: data/units/Troll_Hero.cfg:20
 msgid "club"
-msgstr ""
+msgstr "puunuija"
 
 #: data/units/Footpad.cfg:37 data/units/Outlaw.cfg:38
 #: data/units/Outlaw.cfg:111 data/units/Outlaw_Princess.cfg:41
 #: data/units/Outlaw_Queen.cfg:42
 msgid "sling"
-msgstr ""
+msgstr "linko"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -13676,7 +14174,7 @@ msgstr ""
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
 msgid "boiling water"
-msgstr ""
+msgstr "kiehuva vesi"
 
 #: data/units/Giant_Scorpion.cfg:3
 msgid "Giant Scorpion"
@@ -13691,7 +14189,7 @@ msgstr ""
 
 #: data/units/Giant_Scorpion.cfg:19
 msgid "sting"
-msgstr ""
+msgstr "pistin"
 
 #: data/units/Giant_Scorpion.cfg:37
 msgid "pincers"
@@ -13719,11 +14217,11 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:19
 msgid "torch"
-msgstr ""
+msgstr "soihtu"
 
 #: data/units/Goblin_Pillager.cfg:35
 msgid "net"
-msgstr ""
+msgstr "verkko"
 
 #: data/units/Grand_Knight.cfg:3
 msgid "Grand Knight"
@@ -13738,7 +14236,7 @@ msgstr ""
 #: data/units/Grand_Knight.cfg:36 data/units/Knight.cfg:36
 #: data/units/Lancer.cfg:20 data/units/Paladin.cfg:41
 msgid "lance"
-msgstr ""
+msgstr "keihäs"
 
 #: data/units/Great_Mage.cfg:3 data/units/Great_Mage.cfg:79
 msgid "Great Mage"
@@ -13758,7 +14256,7 @@ msgstr ""
 #: data/units/Troll.cfg:7 data/units/Troll_Hero.cfg:7
 #: data/units/Troll_Warrior.cfg:6 data/units/Troll_Whelp.cfg:7
 msgid "regenerates"
-msgstr ""
+msgstr "regeneroi"
 
 #: data/units/Great_Troll.cfg:16
 msgid ""
@@ -13819,7 +14317,7 @@ msgstr ""
 #: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:41
 #: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
 msgid "firststrike"
-msgstr ""
+msgstr "ensi-isku"
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
@@ -13955,7 +14453,7 @@ msgstr ""
 
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 msgid "illuminates,cures"
-msgstr ""
+msgstr "valaistus,parannus"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -13971,13 +14469,13 @@ msgstr ""
 #: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
 #: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
 msgid "lightbeam"
-msgstr ""
+msgstr "valonsäde"
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
 #: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
 #: data/units/White_Mage.cfg:104
 msgid "holy"
-msgstr ""
+msgstr "pyhä"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -14003,7 +14501,7 @@ msgstr ""
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
 msgid "trident"
-msgstr ""
+msgstr "kolmikärki"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
@@ -14092,7 +14590,7 @@ msgstr ""
 
 #: data/units/Noble_Youth.cfg:20 data/units/Youth.cfg:20
 msgid "training sword"
-msgstr ""
+msgstr "harjoittelumiekka"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
@@ -14131,11 +14629,11 @@ msgstr ""
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
-msgstr ""
+msgstr "tikat"
 
 #: data/units/Orcish_Crossbow.cfg:21 data/units/Orcish_Crossbowman.cfg:19
 msgid "short sword"
-msgstr ""
+msgstr "lyhytmiekka"
 
 #: data/units/Orcish_Crossbowman.cfg:3
 msgid "Orcish Crossbowman"
@@ -14194,7 +14692,7 @@ msgstr ""
 #: data/units/Orcish_Shaman.cfg:25 data/units/Orcish_Shaman.cfg:68
 #: data/units/Orcish_Shaman.cfg:111 data/units/Vampire_Lady.cfg:33
 msgid "curse"
-msgstr ""
+msgstr "kirous"
 
 #: data/units/Orcish_Shaman.cfg:46
 msgid "Novice Orcish Shaman"
@@ -14353,7 +14851,7 @@ msgstr ""
 
 #: data/units/Pikeman.cfg:19
 msgid "pike"
-msgstr ""
+msgstr "peitsi"
 
 #: data/units/Pirate_Galleon.cfg:61 data/units/Transport_Galleon.cfg:15
 #: data/units/Watch_Tower.cfg:17
@@ -14444,7 +14942,7 @@ msgstr ""
 
 #: data/units/Sea_Hag.cfg:27
 msgid "water spray"
-msgstr ""
+msgstr "vesiryöppy"
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
@@ -14504,7 +15002,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:21 data/units/Silver_Mage.cfg:108
 msgid "teleport"
-msgstr ""
+msgstr "kaukosiirto"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:109
 msgid ""
@@ -14519,7 +15017,7 @@ msgstr ""
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
-msgstr ""
+msgstr "kita"
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
@@ -14577,7 +15075,7 @@ msgstr ""
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
-msgstr ""
+msgstr "rutto"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
@@ -14844,7 +15342,7 @@ msgstr ""
 
 #: data/units/Young_Ogre.cfg:18
 msgid "meat cleaver"
-msgstr ""
+msgstr "lihakirves"
 
 #: data/units/Youth.cfg:3
 msgid "Youth"
@@ -14856,111 +15354,113 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
-#: src/about.cpp:240 src/help.cpp:2364 src/show_dialog.cpp:469
+#: src/about.cpp:241 src/help.cpp:2369 src/show_dialog.cpp:469
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: src/actions.cpp:93
 msgid "You don't have a leader to recruit with."
-msgstr ""
+msgstr "Sinulla ei ole johtajaa joka voisi värvätä."
 
 #: src/actions.cpp:97
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
+"Sinulla täytyy olla johtaja linnakkeessa jos haluat värvätä tai kutsua "
+"yksikköjä."
 
 #: src/actions.cpp:114
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
+msgstr "Linnassa ei ole tyhjää tilaa johon värvätä."
 
 #: src/actions.cpp:202
 msgid "none"
-msgstr ""
+msgstr "ei mitään"
 
 #: src/actions.cpp:318 src/actions.cpp:435
 msgid "base damage"
-msgstr ""
+msgstr "perusvahinko"
 
 #: src/actions.cpp:328
 msgid "attacker resistance vs"
-msgstr ""
+msgstr "hyökkääjä vastustaa"
 
 #: src/actions.cpp:328
 msgid "attacker vulnerability vs"
-msgstr ""
+msgstr "hyökkääjä on haavoittuva"
 
 #: src/actions.cpp:388 src/actions.cpp:523
 msgid "total damage"
-msgstr ""
+msgstr "kokonaisvahinko"
 
 #: src/actions.cpp:445
 msgid "defender resistance vs"
-msgstr ""
+msgstr "puolustaja vastustaa"
 
 #: src/actions.cpp:445
 msgid "defender vulnerability vs"
-msgstr ""
+msgstr "puolustaja on haavoittuva"
 
 #: src/actions.cpp:703 src/actions.cpp:842 src/display.cpp:878
 #: src/reports.cpp:115
 msgid "poisoned"
-msgstr ""
+msgstr "myrkytetty"
 
 #: src/actions.cpp:708 src/actions.cpp:847 src/display.cpp:874
 #: src/reports.cpp:110
 msgid "slowed"
-msgstr ""
+msgstr "hidastettu"
 
 #: src/actions.cpp:1710
 msgid "Ambushed!"
-msgstr ""
+msgstr "Väijytys!"
 
 #: src/actions.cpp:1738
 msgid "Friendly unit sighted"
-msgstr ""
+msgstr "Ystävä nähty"
 
 #: src/actions.cpp:1740
 msgid "Enemy unit sighted!"
-msgstr ""
+msgstr "Vihollinen nähty!"
 
 #: src/actions.cpp:1745
 msgid "$friends Friendly units sighted"
-msgstr ""
+msgstr "$friends ystävää näköpiirissä"
 
 #: src/actions.cpp:1747
 msgid "$enemies Enemy units sighted!"
-msgstr ""
+msgstr "$enemies vihollista näköpiirissä!"
 
 #: src/actions.cpp:1751
 msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
+msgstr "Yksiköitä näköpiirissä! ($friends ystävällistä, $enemies vihollista)"
 
 #: src/actions.cpp:1772
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(paina $hotkey jatkaaksesi)"
 
 #: src/dialogs.cpp:87
 msgid "Advance Unit"
-msgstr ""
+msgstr "Ylennä yksikkö"
 
 #: src/dialogs.cpp:88
 msgid "What should our victorious unit become?"
-msgstr ""
+msgstr "Mikä voittoisasta yksiköstämme tulee?"
 
 #: src/dialogs.cpp:157
 msgid "No objectives available"
-msgstr ""
+msgstr "Ei tavoitteita"
 
 #: src/dialogs.cpp:177
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
+msgstr "Tallenne on jo olemassa. Haluatko kirjoittaa sen päälle ?"
 
 #: src/dialogs.cpp:206 src/dialogs.cpp:443
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Älä kysy uudelleen!"
 
 #: src/dialogs.cpp:208
 msgid "Do you really want to delete this game?"
-msgstr ""
+msgstr "Haluatko todellakin tuhota tämän pelin?"
 
 #: src/dialogs.cpp:347
 msgid "%a %b %d %H:%M %Y"
@@ -14970,51 +15470,53 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:921
+#: src/dialogs.cpp:365 src/game.cpp:919
 msgid "Campaign"
-msgstr ""
+msgstr "Kampanja"
 
-#: src/dialogs.cpp:367 src/game.cpp:968
+#: src/dialogs.cpp:367 src/game.cpp:966
 msgid "Multiplayer"
-msgstr ""
+msgstr "Moninpeli"
 
 #: src/dialogs.cpp:369
 msgid "Tutorial"
-msgstr ""
+msgstr "Harjoitus"
 
 #: src/dialogs.cpp:377
 msgid "replay"
-msgstr ""
+msgstr "uusinta"
 
 #: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
 msgid "Turn"
-msgstr ""
+msgstr "Vuoro"
 
 #: src/dialogs.cpp:381
 msgid "Scenario Start"
-msgstr ""
+msgstr "Skenaarion alku"
 
-#: src/dialogs.cpp:384 src/game.cpp:944
+#: src/dialogs.cpp:384 src/game.cpp:942
 msgid "Difficulty"
-msgstr ""
+msgstr "Vaikeustaso"
 
 #: src/dialogs.cpp:398
 msgid "No Saved Games"
-msgstr ""
+msgstr "Ei tallenettuja pelejä"
 
 #: src/dialogs.cpp:399
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
+"Yhtäkään tallennettua peliä ei löytynyt.(Peli tallennetaan automaattisesti "
+"kun olet suorittanut skenaarion loppuun)"
 
 #: src/dialogs.cpp:418
 msgid "Delete Save"
-msgstr ""
+msgstr "Tuhoa tallenne"
 
 #: src/dialogs.cpp:433
 msgid "Import Saved Games"
-msgstr ""
+msgstr "Tuo tallennetut pelit"
 
 #: src/dialogs.cpp:434
 msgid ""
@@ -15022,6 +15524,9 @@ msgid ""
 "Wesnoth. Would you like to update these to the latest version? This may take "
 "some time."
 msgstr ""
+"Tallennushakemisto sisältää tiedostoja jotka on luotu Battle for Wesnoth -"
+"pelin vanhalla versiolla. Haluatko päivittää nämä uusimpaan versioon? Tämä "
+"saattaa kestaa jonkun aikaa."
 
 #: src/dialogs.cpp:439
 msgid ""
@@ -15029,391 +15534,383 @@ msgid ""
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
+"Tallennushakemisto sisältää tiedostoja jotka eivät ilmeisesti ole tämän "
+"Battle for Wesnoth-pelin version luomia. Haluatko rekisteröidä nämä "
+"tiedostot tällä pelillä?"
 
 #: src/dialogs.cpp:509
 msgid "Show replay"
-msgstr ""
+msgstr "Näytä uusinta"
 
 #: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:82
 msgid "Load Game"
-msgstr ""
+msgstr "Avaa peli"
 
 #: src/dialogs.cpp:513
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Valitse avattava peli"
 
 #: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:443
 #: src/show_dialog.cpp:456
 msgid "Ok"
-msgstr ""
+msgstr "Hyväksy"
 
-#: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
+#: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:119
 #: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:457
 #: src/show_dialog.cpp:463
 msgid "Cancel"
-msgstr ""
+msgstr "Peruuta"
 
 #: src/dialogs.cpp:617 src/dialogs.cpp:626
 msgid "Profile"
-msgstr ""
+msgstr "Profiili"
 
-#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:562
+#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:564
 #: src/playturn.cpp:1712
 msgid "level"
-msgstr ""
+msgstr "taso"
 
-#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:616
+#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:618
 #: src/playturn.cpp:1876 src/unit.cpp:1028
 msgid "HP"
-msgstr ""
+msgstr "Kesto (HP)"
 
 #: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
 #: src/display.cpp:914 src/playturn.cpp:1714 src/playturn.cpp:1877
 #: src/unit.cpp:1087
 msgid "XP"
-msgstr ""
+msgstr "Kokemus (XP)"
 
-#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:617
+#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:619
 #: src/playturn.cpp:1878 src/unit.cpp:1064
 msgid "Moves"
-msgstr ""
+msgstr "Liikkuminen"
 
-#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:694
-#: src/playturn.cpp:618 src/reports.cpp:229
-msgid "melee"
-msgstr ""
-
-#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:694
+#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:696
 #: src/playturn.cpp:618 src/reports.cpp:230
+msgid "melee"
+msgstr "lähitaistelu"
+
+#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:696
+#: src/playturn.cpp:618 src/reports.cpp:231
 msgid "ranged"
-msgstr ""
+msgstr "etätaistelu"
 
 #: src/display.cpp:865
 msgid "healthy"
-msgstr ""
+msgstr "terve"
 
 #: src/display.cpp:870 src/reports.cpp:105
 msgid "invisible"
-msgstr ""
+msgstr "näkymätön"
 
-#: src/game.cpp:135
+#: src/game.cpp:136
 msgid "Do you want to save a replay of this scenario?"
-msgstr ""
+msgstr "Haluatko tallentaa uusinnan tästä skenaariosta?"
 
-#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1389
+#: src/game.cpp:137 src/game.cpp:199 src/playturn.cpp:1389
 msgid "Name:"
-msgstr ""
+msgstr "Nimi:"
 
-#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1400
+#: src/game.cpp:145 src/game.cpp:206 src/playturn.cpp:1400
 msgid "The game could not be saved"
-msgstr ""
+msgstr "Peliä ei voitu tallentaa"
 
-#: src/game.cpp:197
+#: src/game.cpp:198
 msgid "Do you want to save your game?"
-msgstr ""
+msgstr "Haluatko tallentaa pelisi?"
 
-#: src/game.cpp:573
-msgid "The Battle for Wesnoth"
-msgstr ""
-
-#: src/game.cpp:793 src/multiplayer_connect.cpp:104
+#: src/game.cpp:796 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
+"Tämä tallenne on pelin toisesta versiosta. Haluatko yrittää ladata sen?"
 
-#: src/game.cpp:804 src/game.cpp:809 src/game.cpp:814 src/playlevel.cpp:533
+#: src/game.cpp:807 src/game.cpp:812 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
-msgstr ""
+msgstr "Tiedosto jonka yritit avata on korruptoitunut"
 
-#: src/game.cpp:914
+#: src/game.cpp:912
 msgid "There are no campaigns available"
-msgstr ""
+msgstr "Yhtäkään kampanjaa ei ole saatavilla"
 
-#: src/game.cpp:922
+#: src/game.cpp:920
 msgid "Choose the campaign you want to play:"
-msgstr ""
+msgstr "Valitse pelattava kampanja:"
 
-#: src/game.cpp:945
+#: src/game.cpp:943
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Valitse vaikeustaso:"
 
-#: src/game.cpp:963
+#: src/game.cpp:961
 msgid "Join Official Server"
-msgstr ""
+msgstr "Ota yhteys viralliseen palvelimeen"
+
+#: src/game.cpp:961
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr "Kirjaudu Wesnothin viralliselle palvelimelle"
+
+#: src/game.cpp:962 src/multiplayer_lobby.cpp:157
+msgid "Join Game"
+msgstr "Liity peliin"
+
+#: src/game.cpp:962
+msgid "Join a server or hosted game"
+msgstr "Ota yhteys palvelimelle tai isännöityyn peliin"
 
 #: src/game.cpp:963
-msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
-
-#: src/game.cpp:964 src/multiplayer_lobby.cpp:157
-msgid "Join Game"
-msgstr ""
-
-#: src/game.cpp:964
-msgid "Join a server or hosted game"
-msgstr ""
-
-#: src/game.cpp:965
 msgid "Host Multiplayer Game"
-msgstr ""
+msgstr "Isännöi moninpeliä"
 
-#: src/game.cpp:965
+#: src/game.cpp:963
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Isännöi peli ilman palvelinta"
 
-#: src/game.cpp:968 src/multiplayer_client.cpp:267
+#: src/game.cpp:966 src/multiplayer_client.cpp:269
 msgid "Login"
-msgstr ""
+msgstr "Sisäänkirjautuminen"
 
-#: src/game.cpp:1048
+#: src/game.cpp:1046
 msgid "Language"
-msgstr ""
+msgstr "Kieli"
 
-#: src/game.cpp:1049
+#: src/game.cpp:1047
 msgid "Choose your preferred language"
-msgstr ""
+msgstr "Valitse haluamasi kieli"
 
-#: src/game.cpp:1096
-msgid "The End"
-msgstr ""
-
-#: src/game.cpp:1097
-msgid "You have reached the end of the currently playable levels"
-msgstr ""
-
-#: src/game.cpp:1127
+#: src/game.cpp:1129
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1129
+#: src/game.cpp:1131
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
-#: src/help.cpp:569
+#: src/help.cpp:571
 msgid "Advances to"
-msgstr ""
+msgstr "Kehittyy"
 
-#: src/help.cpp:595
+#: src/help.cpp:597
 msgid "Abilities"
-msgstr ""
+msgstr "Kyvyt"
 
-#: src/help.cpp:618
+#: src/help.cpp:620
 msgid "Alignment"
-msgstr ""
+msgstr "Ryhmitys"
 
-#: src/help.cpp:623
+#: src/help.cpp:625
 msgid "Required XP"
-msgstr ""
+msgstr "Vaadittu kokemus (XP)"
 
-#: src/help.cpp:633 src/reports.cpp:232
+#: src/help.cpp:635 src/reports.cpp:233
 msgid "attacks"
-msgstr ""
+msgstr "hyökkäystä"
 
-#: src/help.cpp:641 src/help.cpp:642 src/playturn.cpp:1875
+#: src/help.cpp:643 src/help.cpp:644 src/playturn.cpp:1875
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
-#: src/help.cpp:645 src/help.cpp:646 src/playturn.cpp:1874
+#: src/help.cpp:647 src/help.cpp:648 src/playturn.cpp:1874
 msgid "Type"
-msgstr ""
+msgstr "Tyyppi"
 
-#: src/help.cpp:649 src/help.cpp:650 src/unit_types.cpp:301
+#: src/help.cpp:651 src/help.cpp:652 src/unit_types.cpp:301
 msgid "Dmg"
-msgstr ""
+msgstr "Vahinko"
 
-#: src/help.cpp:653 src/help.cpp:654
+#: src/help.cpp:655 src/help.cpp:656
 msgid "Strikes"
-msgstr ""
+msgstr "Iskut"
 
-#: src/help.cpp:657 src/help.cpp:658
+#: src/help.cpp:659 src/help.cpp:660
 msgid "Range"
-msgstr ""
+msgstr "Matka"
 
-#: src/help.cpp:661 src/help.cpp:662
+#: src/help.cpp:663 src/help.cpp:664
 msgid "Special"
-msgstr ""
+msgstr "Erikois"
 
-#: src/help.cpp:718
+#: src/help.cpp:720
 msgid "Resistances"
-msgstr ""
+msgstr "Vastustukset"
 
-#: src/help.cpp:722 src/help.cpp:723
+#: src/help.cpp:724 src/help.cpp:725
 msgid "Attack Type"
-msgstr ""
+msgstr "Hyökkäystyyppi"
 
-#: src/help.cpp:726 src/help.cpp:727
+#: src/help.cpp:728 src/help.cpp:729
 msgid "Resistance"
-msgstr ""
+msgstr "Vastustus"
 
-#: src/help.cpp:758
+#: src/help.cpp:760
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Maaston vaikutus"
 
-#: src/help.cpp:762 src/help.cpp:763
+#: src/help.cpp:764 src/help.cpp:765
 msgid "Terrain"
-msgstr ""
+msgstr "Maasto"
 
-#: src/help.cpp:770 src/help.cpp:771
+#: src/help.cpp:772 src/help.cpp:773
 msgid "Defense"
-msgstr ""
+msgstr "Puolustus"
 
-#: src/help.cpp:1868
+#: src/help.cpp:1873
 msgid "< Back"
-msgstr ""
+msgstr "< Taaksepäin"
 
-#: src/help.cpp:1869
+#: src/help.cpp:1874
 msgid "Forward >"
-msgstr ""
+msgstr "Eteenpäin >"
 
-#: src/help.cpp:2367
+#: src/help.cpp:2372
 msgid "The Battle for Wesnoth Help"
-msgstr ""
+msgstr "Apua Battle for Wesnothiin"
 
 #: src/hotkeys.cpp:120
 msgid "Next unit"
-msgstr ""
+msgstr "Seuraava yksikkö"
 
 #: src/hotkeys.cpp:121
 msgid "End Unit Turn"
-msgstr ""
+msgstr "Lopeta yksikön vuoro"
 
 #: src/hotkeys.cpp:122 src/playturn.cpp:1458
 msgid "Leader"
-msgstr ""
+msgstr "Johtaja"
 
 #: src/hotkeys.cpp:123
 msgid "Undo"
-msgstr ""
+msgstr "Peruuta"
 
 #: src/hotkeys.cpp:124
 msgid "Redo"
-msgstr ""
+msgstr "Toista"
 
 #: src/hotkeys.cpp:125
 msgid "Zoom In"
-msgstr ""
+msgstr "Zoomaa sisään"
 
 #: src/hotkeys.cpp:126
 msgid "Zoom Out"
-msgstr ""
+msgstr "Zoomaa ulos"
 
 #: src/hotkeys.cpp:127
 msgid "Default Zoom"
-msgstr ""
+msgstr "Normaali zoomaus"
 
 #: src/hotkeys.cpp:128
 msgid "Fullscreen"
-msgstr ""
+msgstr "Ruudun kokoinen"
 
 #: src/hotkeys.cpp:129
 msgid "Accelerated"
-msgstr ""
+msgstr "Kiihdytetty"
 
 #: src/hotkeys.cpp:130
 msgid "Unit Description"
-msgstr ""
+msgstr "Yksikön kuvaus"
 
 #: src/hotkeys.cpp:131 src/playturn.cpp:1358
 msgid "Rename Unit"
-msgstr ""
+msgstr "Nimeä yksikkö"
 
 #: src/hotkeys.cpp:132
 msgid "Save Game"
-msgstr ""
+msgstr "Tallenna peli"
 
 #: src/hotkeys.cpp:134
 msgid "Recruit"
-msgstr ""
+msgstr "Värvää"
 
 #: src/hotkeys.cpp:135
 msgid "Repeat Recruit"
-msgstr ""
+msgstr "Toista värväys"
 
 #: src/hotkeys.cpp:136
 msgid "Recall"
-msgstr ""
+msgstr "Kutsu veteraaniyksikkö"
 
 #: src/hotkeys.cpp:138
 msgid "Toggle Grid"
-msgstr ""
+msgstr "Ruudukon näyttö"
 
 #: src/hotkeys.cpp:139
 msgid "Status Table"
-msgstr ""
+msgstr "Tilannetaulukko"
 
 #: src/hotkeys.cpp:140
 msgid "Mute"
-msgstr ""
+msgstr "Hiljennä äänet"
 
 #: src/hotkeys.cpp:141
 msgid "Speak"
-msgstr ""
+msgstr "Puhu"
 
 #: src/hotkeys.cpp:142
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Luo yksikkö (Debug!)"
 
 #: src/hotkeys.cpp:143
 msgid "Change Unit Side (Debug!)"
-msgstr ""
+msgstr "Muuta yksikön puolta (Debug!)"
 
 #: src/hotkeys.cpp:144 src/preferences.cpp:920
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: src/hotkeys.cpp:145
 msgid "Scenario Objectives"
-msgstr ""
+msgstr "Skenaarion tavoitteet"
 
 #: src/hotkeys.cpp:146 src/playturn.cpp:1927
 msgid "Unit List"
-msgstr ""
+msgstr "Yksikkölista"
 
 #: src/hotkeys.cpp:147 src/playturn.cpp:2015
 msgid "Statistics"
-msgstr ""
+msgstr "Tilastot"
 
 #: src/hotkeys.cpp:148
 msgid "Quit Game"
-msgstr ""
+msgstr "Poistu pelistä"
 
 #: src/hotkeys.cpp:149
 msgid "Set Label"
-msgstr ""
+msgstr "Aseta muistilappu"
 
 #: src/hotkeys.cpp:150
 msgid "Show Enemy Moves"
-msgstr ""
+msgstr "Näytä vihollisen liikkeet"
 
 #: src/hotkeys.cpp:151
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Vihollisen parhaat liikkeet"
 
 #: src/hotkeys.cpp:152
 msgid "Quit Editor"
-msgstr ""
+msgstr "Poistu"
 
 #: src/hotkeys.cpp:153
 msgid "New Map"
-msgstr ""
+msgstr "Uusi kartta"
 
 #: src/hotkeys.cpp:154
 msgid "Load Map"
-msgstr ""
+msgstr "Avaa kartta"
 
 #: src/hotkeys.cpp:155
 msgid "Save Map"
-msgstr ""
+msgstr "Tallenna kartta"
 
 #: src/hotkeys.cpp:156
 msgid "Save As"
-msgstr ""
+msgstr "Tallenna nimellä"
 
 #: src/hotkeys.cpp:157
 msgid "Set Player Start Position"
-msgstr ""
+msgstr "Aseta pelaajien aloituspisteet"
 
 #: src/hotkeys.cpp:158
 msgid "Flood Fill"
@@ -15421,107 +15918,111 @@ msgstr ""
 
 #: src/hotkeys.cpp:159
 msgid "Fill Selection"
-msgstr ""
+msgstr "Täytä valinta"
 
 #: src/hotkeys.cpp:160
 msgid "Cut"
-msgstr ""
+msgstr "Leikkaa"
 
 #: src/hotkeys.cpp:161
 msgid "Copy"
-msgstr ""
+msgstr "Kopioi"
 
 #: src/hotkeys.cpp:162
 msgid "Paste"
-msgstr ""
+msgstr "Liitä"
 
 #: src/hotkeys.cpp:163
 msgid "Revert from Disk"
-msgstr ""
+msgstr "Palauta levyltä"
 
 #: src/hotkeys.cpp:165
 msgid "Flip Map"
-msgstr ""
+msgstr "Käännä kartta"
 
 #: src/hotkeys.cpp:166
 msgid "Select All"
-msgstr ""
+msgstr "Valitse kaikki"
 
 #: src/hotkeys.cpp:167
 msgid "Draw Terrain"
-msgstr ""
+msgstr "Päivitä maasto"
 
 #: src/hotkeys.cpp:168
 msgid "Delay Shroud Updates"
-msgstr ""
+msgstr "Lykkää 'Shroud' -päivityksiä"
 
 #: src/hotkeys.cpp:169
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "Päivitä 'Shroud'"
 
 #: src/hotkeys.cpp:170
 msgid "Continue Move"
-msgstr ""
+msgstr "Jatka liikettä"
 
 #: src/hotkeys.cpp:171
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Etsi muistilappu tai yksikkö"
 
 #: src/hotkeys.cpp:172
 msgid "Speak to Ally"
-msgstr ""
+msgstr "Puhu ystävälle"
 
 #: src/hotkeys.cpp:173
 msgid "Speak to All"
-msgstr ""
+msgstr "Puhu kaikille"
 
 #: src/hotkeys.cpp:174 src/show_dialog.cpp:606
 msgid "Help"
-msgstr ""
+msgstr "Apua"
 
 #: src/hotkeys.cpp:175
 msgid "View Chat Log"
-msgstr ""
+msgstr "Katso jutteluloki"
 
 #: src/hotkeys.cpp:358 src/hotkeys.cpp:542
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Haluatko todellakin lopettaa?"
 
 #: src/intro.cpp:87
 msgid "Next"
-msgstr ""
+msgstr "Seuraava"
 
 #: src/intro.cpp:88
 msgid "Skip"
-msgstr ""
+msgstr "Ohita"
+
+#: src/intro.cpp:312
+msgid "The End"
+msgstr "Loppu"
 
 #: src/language.cpp:30
 msgid "System default language"
-msgstr ""
+msgstr "Järjestelmän oletuskieli"
 
 #: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
 msgid "Close Window"
-msgstr ""
+msgstr "Sulje ikkuna"
 
 #: src/mapgen_dialog.cpp:72
 msgid "Map Generator"
-msgstr ""
+msgstr "Kartan luonti"
 
 #: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:481
 msgid "Players"
-msgstr ""
+msgstr "Pelaajia"
 
 #: src/mapgen_dialog.cpp:78
 msgid "Width"
-msgstr ""
+msgstr "Leveys"
 
 #: src/mapgen_dialog.cpp:79
 msgid "Height"
-msgstr ""
+msgstr "Korkeus"
 
 #: src/mapgen_dialog.cpp:80
 msgid "Iterations"
-msgstr ""
+msgstr "Iteraatioita"
 
 #: src/mapgen_dialog.cpp:81
 msgid "Bump Size"
@@ -15529,43 +16030,43 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:82 src/playturn.cpp:1459
 msgid "Villages"
-msgstr ""
+msgstr "Kyliä"
 
 #: src/mapgen_dialog.cpp:83
 msgid "Landform"
-msgstr ""
+msgstr "Maan muoto"
 
 #: src/mapgen_dialog.cpp:182
 msgid "Roads Between Castles"
-msgstr ""
+msgstr "Tiet linnojen välillä"
 
 #: src/mapgen_dialog.cpp:245
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 ruutua"
 
 #: src/mapgen_dialog.cpp:250
 msgid "Coastal"
-msgstr ""
+msgstr "Rannikko"
 
 #: src/mapgen_dialog.cpp:250
 msgid "Inland"
-msgstr ""
+msgstr "Sisämaa"
 
 #: src/mapgen_dialog.cpp:250
 msgid "Island"
-msgstr ""
+msgstr "Saari"
 
 #: src/multiplayer.cpp:94
 msgid "The maximum turns the game will go for"
-msgstr ""
+msgstr "Kuinka monta vuoroa peli kestää"
 
 #: src/multiplayer.cpp:100
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Kuinka paljon tuloja kukin kylä tuottaa"
 
 #: src/multiplayer.cpp:106
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "Kokemus jonka yksikkö tarvitsee kehittyäkseen"
 
 #: src/multiplayer.cpp:108
 msgid "Fog Of War"
@@ -15574,6 +16075,8 @@ msgstr ""
 #: src/multiplayer.cpp:110
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Vihollisyksiköt ovat näkymättömissä kunnes jokin yksiköistäsi on tarpeeksi "
+"lähellä"
 
 #: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
 msgid "Shroud"
@@ -15581,225 +16084,237 @@ msgstr ""
 
 #: src/multiplayer.cpp:114
 msgid "The map is unknown until your units explore it"
-msgstr ""
+msgstr "Kartta on näkymättömissä kunnes yksikkösi tutkivat alueen"
 
-#: src/multiplayer.cpp:116 src/reports.cpp:374
+#: src/multiplayer.cpp:116 src/reports.cpp:375
 msgid "Observers"
-msgstr ""
+msgstr "Tarkkailijat"
 
 #: src/multiplayer.cpp:118
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Salli muiden käyttäjien tarkkailla pelin kulkua"
 
 #: src/multiplayer.cpp:123
 msgid "Regenerate"
-msgstr ""
+msgstr "Luo uusi"
 
 #: src/multiplayer.cpp:125
 msgid "Settings..."
-msgstr ""
+msgstr "Asetukset..."
 
 #: src/multiplayer.cpp:129
 msgid "Share View"
-msgstr ""
+msgstr "Jaa näkökenttä"
 
 #: src/multiplayer.cpp:130
 msgid "Share Maps"
-msgstr ""
+msgstr "Jaa kartat"
 
 #: src/multiplayer.cpp:131
 msgid "Share None"
-msgstr ""
+msgstr "Älä jaa mitään"
 
 #: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
 msgid "No multiplayer sides."
-msgstr ""
+msgstr "Ei moninpelin joukkueita"
 
 #: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
 msgid "Create Game"
-msgstr ""
+msgstr "Luo peli"
 
 #: src/multiplayer.cpp:174
 msgid "Name of game"
-msgstr ""
+msgstr "Pelin nimi"
 
 #: src/multiplayer.cpp:178
 msgid "$login's game"
-msgstr ""
+msgstr "$login:n peli"
 
 #: src/multiplayer.cpp:189
 msgid "Map to play"
-msgstr ""
+msgstr "Pelattava kartta"
 
 #: src/multiplayer.cpp:286
 msgid "Era"
-msgstr ""
+msgstr "Aika"
 
 #: src/multiplayer.cpp:348
 msgid "Unlimited"
-msgstr ""
+msgstr "Ei rajoitettu"
 
 #: src/multiplayer.cpp:352
 msgid "Turns"
-msgstr ""
+msgstr "Vuoroja"
 
 #: src/multiplayer.cpp:360
 msgid "Village Gold"
-msgstr ""
+msgstr "Kylän kulta"
 
 #: src/multiplayer.cpp:372
 msgid "Experience Requirements"
+msgstr "Vaadittu kokemus"
+
+#: src/multiplayer.cpp:497
+msgid ""
+"The game was unable to bind to the port needed to host games over the "
+"network. Network players will be unable to connect to this game"
 msgstr ""
 
-#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:283
+#: src/multiplayer.cpp:497
+msgid "Warning"
+msgstr "Varoitus"
+
+#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:285
 msgid "Connection timed out"
-msgstr ""
+msgstr "Yhteys aikakatkaistiin"
 
 #: src/multiplayer_client.cpp:59
 msgid "Receiving game list..."
-msgstr ""
+msgstr "Vastaanotetaan pelilistaa..."
 
-#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:378
+#: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
 #: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1458
 #: src/playturn.cpp:1463 src/playturn.cpp:1550
 msgid "Gold"
-msgstr ""
+msgstr "Kultaa"
 
-#: src/multiplayer_client.cpp:111
+#: src/multiplayer_client.cpp:113
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "Odotetaan pelin alkua..."
 
-#: src/multiplayer_client.cpp:219
+#: src/multiplayer_client.cpp:221
 msgid "Choose host to connect to"
-msgstr ""
+msgstr "Valitse isäntäkone johon yhdistetään"
 
-#: src/multiplayer_client.cpp:237
+#: src/multiplayer_client.cpp:239
 msgid "Connecting to remote host..."
-msgstr ""
+msgstr "Otetaan yhteys isäntäkoneeseen..."
 
-#: src/multiplayer_client.cpp:266
+#: src/multiplayer_client.cpp:268
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Tälle palvelimelle vaaditaan kirjautumista"
 
-#: src/multiplayer_client.cpp:346
+#: src/multiplayer_client.cpp:348
 msgid "Getting game data..."
-msgstr ""
+msgstr "Haetaan pelin tietoja..."
 
-#: src/multiplayer_client.cpp:397
+#: src/multiplayer_client.cpp:399
 msgid "There are no available sides in this game."
-msgstr ""
+msgstr "Tässä pelissä ei ole vapaita puolia."
 
-#: src/multiplayer_client.cpp:439
+#: src/multiplayer_client.cpp:441
 msgid "Choose your side:"
-msgstr ""
+msgstr "Valitse puolesi"
 
-#: src/multiplayer_client.cpp:464
+#: src/multiplayer_client.cpp:466
 msgid "The game has been cancelled"
-msgstr ""
+msgstr "Peli on peruutettu"
 
-#: src/multiplayer_client.cpp:468
+#: src/multiplayer_client.cpp:470
 msgid "The side you have chosen is no longer available"
-msgstr ""
+msgstr "Joukkue jonka valitsit ei ole enää käytettävissä"
 
-#: src/multiplayer_client.cpp:504
+#: src/multiplayer_client.cpp:506
 msgid "Show replay of game up to save point?"
-msgstr ""
+msgstr "Näytä pelin uusinta tallennuspisteeseen asti?"
 
 #: src/multiplayer_connect.cpp:48
 msgid " Computer vs Computer "
-msgstr ""
+msgstr " Tietokone vastaan Tietokone "
 
 #: src/multiplayer_connect.cpp:49
 msgid "I'm Ready"
-msgstr ""
+msgstr "Olen valmis"
 
 #: src/multiplayer_connect.cpp:97
 msgid "This is not a multiplayer save"
-msgstr ""
+msgstr "Tämä ei ole moninpelin tallenne"
 
 #: src/multiplayer_connect.cpp:237
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
 msgstr ""
+"Voitto\n"
+"@Lyö vihollisjohtaja(t)"
 
 #: src/multiplayer_connect.cpp:257
 msgid "Network Player"
-msgstr ""
+msgstr "Verkkopelaaja"
 
 #: src/multiplayer_connect.cpp:258
 msgid "Local Player"
-msgstr ""
+msgstr "Paikallinen pelaaja"
 
 #: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:467
 #: src/multiplayer_connect.cpp:581 src/multiplayer_connect.cpp:675
 msgid "Computer Player"
-msgstr ""
+msgstr "Tietokonepelaaja"
 
 #: src/multiplayer_connect.cpp:260
 msgid "Empty"
-msgstr ""
+msgstr "Tyhjä"
 
 #: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:368
 #: src/multiplayer_connect.cpp:371
 msgid "Team"
-msgstr ""
+msgstr "Joukkue"
 
 #: src/multiplayer_connect.cpp:296
 msgid "Red"
-msgstr ""
+msgstr "Punainen"
 
 #: src/multiplayer_connect.cpp:298
 msgid "Blue"
-msgstr ""
+msgstr "Sininen"
 
 #: src/multiplayer_connect.cpp:300
 msgid "Green"
-msgstr ""
+msgstr "Vihreä"
 
 #: src/multiplayer_connect.cpp:302
 msgid "Yellow"
-msgstr ""
+msgstr "Keltainen"
 
 #: src/multiplayer_connect.cpp:304
 msgid "Purple"
-msgstr ""
+msgstr "Purppura"
 
 #: src/multiplayer_connect.cpp:306
 msgid "Orange"
-msgstr ""
+msgstr "Oranssi"
 
 #: src/multiplayer_connect.cpp:308
 msgid "Grey"
-msgstr ""
+msgstr "Harmaa"
 
 #: src/multiplayer_connect.cpp:310
 msgid "White"
-msgstr ""
+msgstr "Valkoinen"
 
 #: src/multiplayer_connect.cpp:312
 msgid "Brown"
-msgstr ""
+msgstr "Ruskea"
 
 #: src/multiplayer_connect.cpp:357
 msgid "Game Lobby"
-msgstr ""
+msgstr "Pelin aula"
 
 #: src/multiplayer_connect.cpp:360 src/multiplayer_connect.cpp:362
 msgid "Player/Type"
-msgstr ""
+msgstr "Pelaaja/Tyyppi"
 
 #: src/multiplayer_connect.cpp:363 src/multiplayer_connect.cpp:366
 msgid "Race"
-msgstr ""
+msgstr "Rotu"
 
 #: src/multiplayer_connect.cpp:373 src/multiplayer_connect.cpp:376
 msgid "Color"
-msgstr ""
+msgstr "Väri"
 
 #: src/multiplayer_connect.cpp:530 src/multiplayer_connect.cpp:534
 msgid "Waiting for network players to join"
-msgstr ""
+msgstr "Odotetaan verkkopelaajien liittymistä"
 
 #: src/multiplayer_lobby.cpp:141
 msgid "1"
@@ -15807,299 +16322,311 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:141
 msgid "Vacant Slot"
-msgstr ""
+msgstr "Tyhjä paikka"
 
 #: src/multiplayer_lobby.cpp:141
 msgid "Vacant Slots"
-msgstr ""
+msgstr "Tyhjiä paikkoja"
 
 #: src/multiplayer_lobby.cpp:156
 msgid "Observe Game"
-msgstr ""
+msgstr "Tarkkaile peliä"
 
 #: src/multiplayer_lobby.cpp:159
 msgid "Quit"
-msgstr ""
+msgstr "Poistu"
 
 #: src/playlevel.cpp:672
 msgid "Game Over"
-msgstr ""
+msgstr "Peli loppui"
 
 #: src/playlevel.cpp:673
 msgid "The game is over."
-msgstr ""
+msgstr "Peli on ohitse."
 
 #: src/playlevel.cpp:686
 msgid "Defeat"
-msgstr ""
+msgstr "Tappio"
 
 #: src/playlevel.cpp:687
 msgid "You have been defeated!"
-msgstr ""
+msgstr "Sinä hävisit!"
 
 #: src/playlevel.cpp:719
 msgid "Victory"
-msgstr ""
+msgstr "Voitto"
 
 #: src/playlevel.cpp:720
 msgid "You have emerged victorious!"
-msgstr ""
+msgstr "Olet voittaja!"
 
 #: src/playlevel.cpp:722
 msgid "Remaining gold"
-msgstr ""
+msgstr "Jäljellä oleva kulta"
 
 #: src/playlevel.cpp:725
 msgid "Early finish bonus"
-msgstr ""
+msgstr "Aikaisen lopetuksen boonus"
 
 #: src/playlevel.cpp:727
 msgid "per turn"
-msgstr ""
+msgstr "vuorossa"
 
 #: src/playlevel.cpp:728
 msgid "Turns finished early"
-msgstr ""
+msgstr "Ajoissa lopetus (vuoroja)"
 
 #: src/playlevel.cpp:730
 msgid "Bonus"
-msgstr ""
+msgstr "Boonus"
 
 #: src/playlevel.cpp:737
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr ""
+msgstr "80% kullasta säilyy seuraavaan skenaarioon"
 
 #: src/playlevel.cpp:738
 msgid "Retained Gold"
-msgstr ""
+msgstr "Säilyvä kulta"
 
 #: src/playlevel.cpp:762
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
 #: src/playturn.cpp:78
 msgid "It is now your turn"
-msgstr ""
+msgstr "On sinun vuorosi"
 
 #: src/playturn.cpp:503
 msgid "Attacker"
-msgstr ""
+msgstr "Hyökkääjä"
 
 #: src/playturn.cpp:505
 msgid "Defender"
-msgstr ""
+msgstr "Puolustaja"
 
 #: src/playturn.cpp:529 src/playturn.cpp:652
 msgid "Damage Calculations"
-msgstr ""
+msgstr "Vahinkolaskelmat"
 
 #: src/playturn.cpp:618
 msgid "Melee"
-msgstr ""
+msgstr "Lähitaistelu"
 
-#: src/playturn.cpp:631 src/reports.cpp:209
+#: src/playturn.cpp:631 src/reports.cpp:210
 msgid "vs"
-msgstr ""
+msgstr "vastaan"
 
 #: src/playturn.cpp:664
 msgid "Attack Enemy"
-msgstr ""
+msgstr "Hyökkää vihollista"
 
 #: src/playturn.cpp:665
 msgid "Choose weapon"
-msgstr ""
+msgstr "Valitse ase"
 
 #: src/playturn.cpp:1145
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
+"Et ole vielä aloittanut vuoroasi.  Haluatko todellakin lopettaa tämän vuoron?"
 
 #: src/playturn.cpp:1154 src/playturn.cpp:1159
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
+"Jokin yksiköistäsi voi vielä liikkua. Haluatko todellakin lopettaa vuorosi?"
 
 #: src/playturn.cpp:1175
 msgid "Auto-Save"
-msgstr ""
+msgstr "Automaattinen tallennus"
 
 #: src/playturn.cpp:1177
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
+"Automaattinen tallennus epäonnistui. Yritä tallentaa peli manuaalisesti."
 
 #: src/playturn.cpp:1397
 msgid "The game has been saved"
-msgstr ""
+msgstr "Peli on tallennettu"
 
 #: src/playturn.cpp:1459
 msgid "Units"
-msgstr ""
+msgstr "Yksiköt"
 
 #: src/playturn.cpp:1460
 msgid "Income"
-msgstr ""
+msgstr "Tulot"
 
 #: src/playturn.cpp:1460
 msgid "Upkeep"
-msgstr ""
+msgstr "Ylläpito"
 
 #: src/playturn.cpp:1556
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Sinulla ei ole yksiköitä joita värvätä."
 
 #: src/playturn.cpp:1569
 msgid "Recruit unit"
-msgstr ""
+msgstr "Värvää yksikkö"
 
 #: src/playturn.cpp:1598
 msgid "You don't have enough gold to recruit that unit"
-msgstr ""
+msgstr "Sinulla ei ole tarpeeksi kultaa sen yksikön värväämiseen"
 
 #: src/playturn.cpp:1656
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Herrani, tämä yksikkö on veteraani! Haluatko todellakin vapauttaa $noun "
+"palveluksesta?"
 
 #: src/playturn.cpp:1658
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
+"Herrani, tämä yksikkö nousee kohta kokemustason! Haluatko todellakin "
+"vapauttaa $noun palveluksesta?"
 
 #: src/playturn.cpp:1663
 msgid "her"
-msgstr ""
+msgstr "hänet"
 
 #: src/playturn.cpp:1663
 msgid "him"
-msgstr ""
+msgstr "hänet"
 
 #: src/playturn.cpp:1696
 msgid "You are seperated from your soldiers and may not recall them"
-msgstr ""
+msgstr "Olet erossa sotilaistasi etkä voi kutsua heitä"
 
 #: src/playturn.cpp:1698
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
+"Sinulla ei ole veteraaneja edellisestä skenaariosta\n"
+"jotka voisit kutsua palvelukseen"
 
 #: src/playturn.cpp:1702
 msgid "You must have at least"
-msgstr ""
+msgstr "Sinulla täytyy olla vähintään"
 
 #: src/playturn.cpp:1704
 msgid "gold pieces to recall a unit"
-msgstr ""
+msgstr "kultapalaa voidaksesi kutsua yksikön takaisin"
 
 #: src/playturn.cpp:1727
 msgid "Dismiss Unit"
-msgstr ""
+msgstr "Vapauta yksikkö palveluksesta"
 
 #: src/playturn.cpp:1740
 msgid "Select unit"
-msgstr ""
+msgstr "Valitse yksikkö"
 
 #: src/playturn.cpp:1784
 msgid "Message"
-msgstr ""
+msgstr "Viesti"
 
 #: src/playturn.cpp:1784
 msgid "Send to allies only"
-msgstr ""
+msgstr "Lähetä vain ystäville"
 
 #: src/playturn.cpp:1879
 msgid "Location"
-msgstr ""
+msgstr "Kohde"
 
 #: src/playturn.cpp:1961 src/playturn.cpp:2021
 msgid "Recruits"
-msgstr ""
+msgstr "Värväyksiä"
 
 #: src/playturn.cpp:1967 src/playturn.cpp:2025
 msgid "Recalls"
-msgstr ""
+msgstr "Kutsuntoja"
 
 #: src/playturn.cpp:1973 src/playturn.cpp:2029
 msgid "Advancements"
-msgstr ""
+msgstr "Ylennyksiä"
 
 #: src/playturn.cpp:1979 src/playturn.cpp:2033
 msgid "Losses"
-msgstr ""
+msgstr "Häviöitä"
 
 #: src/playturn.cpp:1985 src/playturn.cpp:2037
 msgid "Kills"
-msgstr ""
+msgstr "Tappoja"
 
 #: src/playturn.cpp:1991
 msgid "Damage Inflicted"
-msgstr ""
+msgstr "Tehty vahinko"
 
 #: src/playturn.cpp:1997
 msgid "Damage Taken"
-msgstr ""
+msgstr "Otettu vahinko"
 
 #: src/playturn.cpp:2003
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Tehty vahinko (EV)"
 
 #: src/playturn.cpp:2010
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Otettu vahinko (EV)"
 
 #: src/playturn.cpp:2052
 msgid "Search"
-msgstr ""
+msgstr "Etsi"
 
 #: src/playturn.cpp:2062
 msgid "prompt^Command:"
-msgstr ""
+msgstr "Komento:"
 
 #: src/playturn.cpp:2073
 msgid "Chat Log"
-msgstr ""
+msgstr "Keskustelun loki"
 
 #: src/playturn.cpp:2138
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "Yksikköä tai muistilappua nimeltä '$search' ei löytynyt."
 
 #: src/playturn.cpp:2212
 msgid "Place Label"
-msgstr ""
+msgstr "Aseta muistilappu"
 
 #: src/playturn.cpp:2213
 msgid "Label"
-msgstr ""
+msgstr "Nimi"
 
 #: src/playturn.cpp:2376
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
+"Pelit eivät ole synkronoitu, ja ne lopetetaan. Haluatko tallentaa virhelokin "
+"pelistäsi?"
 
 #: src/playturn.cpp:2428
 msgid "Replace with AI"
-msgstr ""
+msgstr "Korvaa tietokoneella"
 
 #: src/playturn.cpp:2429
 msgid "Replace with local player"
-msgstr ""
+msgstr "Korvaa paikallisella pelaajalla"
 
 #: src/playturn.cpp:2430
 msgid "Abort game"
-msgstr ""
+msgstr "Keskeytä peli"
 
 #: src/playturn.cpp:2433
 msgid "Replace with "
-msgstr ""
+msgstr "Korvaa "
 
 #: src/playturn.cpp:2437
 msgid "has left the game. What do you want to do?"
-msgstr ""
+msgstr "on poistunut pelistä. Mitä haluat tehdä?"
 
 #: src/preferences.cpp:142 src/preferences.cpp:188
 msgid ""
@@ -16107,194 +16634,202 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
+"Näyttötarkkuutta ei voitu vaihtaa. Ikkunamanagerisi täytyy pystyä näyttämään "
+"16 bittiä per pikseli jotta peliä voidaan ajaa ikkunoituna. Näyttösi täytyy "
+"tukea 1024x768x16 -moodia, jotta peli voidaan ajaa koko ruudun kokoisena."
 
 #: src/preferences.cpp:360
 msgid "player"
-msgstr ""
+msgstr "pelaaja"
 
 #: src/preferences.cpp:637
 msgid "Full Screen"
-msgstr ""
+msgstr "Ruudun kokoinen"
 
 #: src/preferences.cpp:638
 msgid "Accelerated Speed"
-msgstr ""
+msgstr "Kiihdytetty nopeus"
 
 #: src/preferences.cpp:639
 msgid "Skip AI Moves"
-msgstr ""
+msgstr "Ohita tietokoneen liikkeet"
 
 #: src/preferences.cpp:640
 msgid "Show Grid"
-msgstr ""
+msgstr "Ruudukko"
 
 #: src/preferences.cpp:641
 msgid "Show Floating Labels"
-msgstr ""
+msgstr "Kelluvat lipukkeet"
 
 #: src/preferences.cpp:642
 msgid "Turn Dialog"
-msgstr ""
+msgstr "Vuoron dialogi"
 
 #: src/preferences.cpp:643
 msgid "Turn Bell"
-msgstr ""
+msgstr "Vuoron Äänimerkki"
 
 #: src/preferences.cpp:644
 msgid "Show Team Colors"
-msgstr ""
+msgstr "Joukkueen värit"
 
 #: src/preferences.cpp:645
 msgid "Show Color Cursors"
-msgstr ""
+msgstr "Värilliset kursorit"
 
 #: src/preferences.cpp:646
 msgid "Show Haloing Effects"
-msgstr ""
+msgstr "Näytä valokehä-efektit"
 
 #: src/preferences.cpp:647
 msgid "Video Mode"
-msgstr ""
+msgstr "Näyttötarkkuus"
 
 #: src/preferences.cpp:648
 msgid "Hotkeys"
-msgstr ""
+msgstr "Pikanäppäimet"
 
 #: src/preferences.cpp:649
 msgid "Adjust Gamma"
-msgstr ""
+msgstr "Muuta kirkkautta"
 
 #: src/preferences.cpp:650
 msgid "Music Volume:"
-msgstr ""
+msgstr "Musiikki:"
 
 #: src/preferences.cpp:650
 msgid "SFX Volume:"
-msgstr ""
+msgstr "Efektit:"
 
 #: src/preferences.cpp:651
 msgid "Gamma:"
-msgstr ""
+msgstr "Kirkkaus:"
 
 #: src/preferences.cpp:651
 msgid "Scroll Speed:"
-msgstr ""
+msgstr "Vieritysnopeus:"
 
 #: src/preferences.cpp:663
 msgid "Change the sound effects volume"
-msgstr ""
+msgstr "Muuta ääniefektien voimakkuutta"
 
 #: src/preferences.cpp:668
 msgid "Change the music volume"
-msgstr ""
+msgstr "Muuta musiikin voimakkuutta"
 
 #: src/preferences.cpp:673
 msgid "Change the speed of scrolling around the map"
-msgstr ""
+msgstr "Muuta kartan vieritysnopeutta"
 
 #: src/preferences.cpp:676 src/preferences.cpp:681
 msgid "Change the brightness of the display"
-msgstr ""
+msgstr "Vaihda näytön kirkkausasetuksia"
 
 #: src/preferences.cpp:684
 msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
+msgstr "Valitse onko peli koko ruudun kokoinen vai ikkunoitu"
 
 #: src/preferences.cpp:687
 msgid "Make units move and fight faster"
-msgstr ""
+msgstr "Yksiköt liikkuvat ja taistelevat nopeammin"
 
 #: src/preferences.cpp:690
 msgid "Do not animate AI units moving"
-msgstr ""
+msgstr "Älä animoi tietokoneen yksikköjen liikkeitä"
 
 #: src/preferences.cpp:693
 msgid "Overlay a grid onto the map"
-msgstr ""
+msgstr "Näytä ruudukko"
 
 #: src/preferences.cpp:696
 msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
+msgstr "Näytä yksikön yläpuolella sen saama vahinko"
 
 #: src/preferences.cpp:698
 msgid "Change the resolution the game runs at"
-msgstr ""
+msgstr "Vaihda näyttötarkkuutta"
 
 #: src/preferences.cpp:701
 msgid "Display a dialog at the beginning of your turn"
-msgstr ""
+msgstr "Näytä dialogi-ikkuna vuorosi alussa"
 
 #: src/preferences.cpp:704
 msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
+msgstr "Anna äänimerkki vuorosi alussa"
 
 #: src/preferences.cpp:707
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
+"Näytä yksikön alla värillinen kehä, joka osoittaa joukkueen johon se kuuluu"
 
 #: src/preferences.cpp:710
 msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
+msgstr "Värilliset hiiren kursorit (mahdollisesti hitaampi)"
 
 #: src/preferences.cpp:713
 msgid "Use graphical special effects (may be slower)"
-msgstr ""
+msgstr "Käytä graafisia erikoistehosteita (mahdollisesti hitaampi)"
 
 #: src/preferences.cpp:715
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Katso ja muokkaa pikanäppäimiä"
 
 #: src/preferences.cpp:908
 msgid "Prefs section^General"
-msgstr ""
+msgstr "Yleiset"
 
 #: src/preferences.cpp:909
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "Näyttö"
 
 #: src/preferences.cpp:910
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Äänet"
 
 #: src/preferences.cpp:966
 msgid "There are no alternative video modes available"
-msgstr ""
+msgstr "Vaihtoehtoisia näyttötarkkuuksia ei ole käytettävissä"
 
 #: src/preferences.cpp:996
 msgid "Choose Resolution"
-msgstr ""
+msgstr "Valitse näyttötarkkuus"
 
 #: src/preferences.cpp:1024
 msgid "Hotkey Settings"
-msgstr ""
+msgstr "Pikanäppäinten asetukset"
 
 #: src/preferences.cpp:1028 src/preferences.cpp:1086
 msgid "Press desired HotKey"
-msgstr ""
+msgstr "Paina valitsemaasi näppäintä"
 
 #: src/preferences.cpp:1047
 msgid "Change Hotkey"
-msgstr ""
+msgstr "Muuta"
 
 #: src/preferences.cpp:1050
 msgid "Save Hotkeys"
-msgstr ""
+msgstr "Tallenna"
 
 #: src/preferences.cpp:1119
 msgid "This HotKey is already in use."
-msgstr ""
+msgstr "Tämä pikanäppäin on jo käytössä."
 
 #: src/reports.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"Tämä yksikkö on näkymätön. Vihollisyksiköt eivät näe eivätkä voi hyökätä "
+"sitä kohti."
 
 #: src/reports.cpp:110
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"Tämä yksikkö on hidastettu. Se liikkuu puolella normaalinopeudesta ja "
+"hyökkää taistelussa kerran normaalia vähemmän."
 
 #: src/reports.cpp:115
 msgid ""
@@ -16305,120 +16840,130 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Tämä yksikkö on myrkytetty. Se menettää 8 HP joka vuoro kunnes se voi etsiä "
+"parannusta kylästä tai ystävälliseltä yksiköltä jolla on lääkintäkyky. \n"
+"Myrkky ei tapa yksikköä, vaan jättää jäljelle vähintään 1 HP."
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
+msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 
-#: src/reports.cpp:231
+#: src/reports.cpp:131 src/reports.cpp:142
+#, fuzzy
+msgid "_description"
+msgstr "Yksikön kuvaus"
+
+#: src/reports.cpp:232
 msgid "damage"
-msgstr ""
+msgstr "vahinkoa"
 
-#: src/reports.cpp:236
+#: src/reports.cpp:237
 msgid "hexes"
-msgstr ""
+msgstr "heksaruutua"
 
-#: src/reports.cpp:253
+#: src/reports.cpp:254
 msgid "Lawful units"
-msgstr ""
-
-#: src/reports.cpp:255
-msgid "Neutral units"
-msgstr ""
+msgstr "Lainkuuliaiset yksiköt"
 
 #: src/reports.cpp:256
+msgid "Neutral units"
+msgstr "Neutraalit yksiköt"
+
+#: src/reports.cpp:257
 msgid "Chaotic units"
-msgstr ""
+msgstr "Kaoottiset yksiköt"
 
-#: src/reports.cpp:310
+#: src/reports.cpp:311
 msgid "Owned"
-msgstr ""
+msgstr "Omia"
 
-#: src/reports.cpp:312
+#: src/reports.cpp:313
 msgid "Enemy"
-msgstr ""
+msgstr "Vihollisia"
 
-#: src/reports.cpp:314
+#: src/reports.cpp:315
 msgid "Allied"
-msgstr ""
+msgstr "Ystävällisiä"
 
 #: src/show_dialog.cpp:931
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: src/titlescreen.cpp:137
 msgid "Version"
-msgstr ""
+msgstr "versio"
 
 #: src/titlescreen.cpp:152
 msgid "TitleScreen button^Tutorial"
-msgstr ""
+msgstr "Harjoittelu"
 
 #: src/titlescreen.cpp:153
 msgid "TitleScreen button^Campaign"
-msgstr ""
+msgstr "Kampanja"
 
 #: src/titlescreen.cpp:154
 msgid "TitleScreen button^Multiplayer"
-msgstr ""
+msgstr "Moninpeli"
 
 #: src/titlescreen.cpp:155
 msgid "TitleScreen button^Load"
-msgstr ""
+msgstr "Lataa"
 
 #: src/titlescreen.cpp:156
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "Kieli"
 
 #: src/titlescreen.cpp:157
 msgid "TitleScreen button^Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: src/titlescreen.cpp:158
 msgid "TitleScreen button^About"
-msgstr ""
+msgstr "Tietoja"
 
 #: src/titlescreen.cpp:159
 msgid "TitleScreen button^Quit"
-msgstr ""
+msgstr "Lopeta"
 
 #: src/titlescreen.cpp:160
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Aloita harjoittelu tutustuaksesi peliin"
 
 #: src/titlescreen.cpp:161
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Aloita uusi yksinpelin kampanja"
 
 #: src/titlescreen.cpp:162
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Pelaa moninpeli (hotseat, LAN, tai Internet), tai yksi skenaario "
+"tietokonetta vastaan"
 
 #: src/titlescreen.cpp:163
 msgid "Load a single player saved game"
-msgstr ""
+msgstr "Lataa tallennettu yksinpeli"
 
 #: src/titlescreen.cpp:164
 msgid "Change the language"
-msgstr ""
+msgstr "Vaihda käytettävää kieltä"
 
 #: src/titlescreen.cpp:165
 msgid "Configure the game's settings"
-msgstr ""
+msgstr "Muokkaa pelin asetuksia"
 
 #: src/titlescreen.cpp:166
 msgid "View the credits"
-msgstr ""
+msgstr "Kenelle kuuluu kunnia tästä pelistä"
 
 #: src/titlescreen.cpp:167
 msgid "Quit the game"
-msgstr ""
+msgstr "Poistu pelistä"
 
 #: src/titlescreen.cpp:191
 msgid "More"
-msgstr ""
+msgstr "Lisää"
 
 #: src/titlescreen.cpp:197
 msgid "-- The Tome of Wesnoth"
@@ -16426,24 +16971,30 @@ msgstr ""
 
 #: src/unit_types.cpp:313
 msgid "strikes"
-msgstr ""
+msgstr "iskua"
 
 #: src/unit_types.cpp:862
-msgid "Chaotic"
-msgstr ""
+#, fuzzy
+msgid "chaotic"
+msgstr "Kaoottinen"
 
 #: src/unit_types.cpp:862
-msgid "Lawful"
-msgstr ""
+#, fuzzy
+msgid "lawful"
+msgstr "Lainkuuliainen"
 
 #: src/unit_types.cpp:862
-msgid "Neutral"
-msgstr ""
+#, fuzzy
+msgid "neutral"
+msgstr "Neutraali"
 
 #: src/widgets/file_chooser.cpp:30
 msgid "Delete File"
-msgstr ""
+msgstr "Tuhoa tiedosto"
 
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "Tiedoston tuhoaminen epäonnistui."
+
+#~ msgid "You have reached the end of the currently playable levels"
+#~ msgstr "Olet pelannut kaikki tällä hetkellä pelattavissa olevat tasot"
