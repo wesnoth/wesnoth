@@ -1200,6 +1200,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 	const int starting_moves = u.movement_left();
 	int moves_left = starting_moves;
 	bool seen_unit = false;
+	bool discovered_unit = false;
 	bool should_clear_stack = false;
 	std::vector<gamemap::location>::const_iterator step;
 	for(step = route.begin()+1; step != route.end(); ++step) {
@@ -1208,7 +1209,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		const unit_map::const_iterator enemy_unit = units.find(*step);
 			
 		const int mv = u.movement_cost(map,terrain);
-		if(seen_unit || mv > moves_left || enemy_unit != units.end() &&
+		if(discovered_unit || seen_unit || mv > moves_left || enemy_unit != units.end() &&
 		   teams[team_num].is_enemy(enemy_unit->second.side())) {
 			break;
 		} else {
@@ -1237,6 +1238,23 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				if(res) {
 					seen_unit = true;
 				}
+			}
+		}
+
+		//check if we have discovered an invisible enemy unit
+		gamemap::location adjacent[6];
+		get_adjacent_tiles(*step,adjacent);
+
+		for(int i = 0; i != 6; ++i) {
+			//check if we are checking ourselves
+			if(adjacent[i]==ui->first) continue;
+			const std::map<gamemap::location,unit>::const_iterator it =
+				units.find(adjacent[i]);
+			if(it != units.end() && teams[u.side()].is_enemy(it->second.side()) &&
+					it->second.invisible(map.underlying_terrain(map[it->first.x][it->first.y]),status.get_time_of_day().lawful_bonus,it->first,units,teams)) {
+				discovered_unit = true;
+				should_clear_stack = true;
+				break;
 			}
 		}
 	}
