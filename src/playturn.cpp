@@ -1382,7 +1382,10 @@ bool is_illegal_file_char(char c)
 void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)
 {
 	std::stringstream stream;
-	stream << state_of_game_.label << " " << _("Turn")
+
+	const std::string ellipsed_name = font::make_text_ellipsis(state_of_game_.label, 
+			font::SIZE_NORMAL, 200);
+	stream << ellipsed_name << " " << _("Turn")
 	       << " " << status_.turn();
 	std::string label = stream.str();
 	if(dialog_type == gui::NULL_DIALOG && message != "") {

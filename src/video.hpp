@@ -40,6 +40,9 @@ class CVideo {
 	int modePossible( int x, int y, int bits_per_pixel, int flags );
 	int setMode( int x, int y, int bits_per_pixel, int flags );
 
+	//did the mode change, since the last call to the modeChanged() method?
+	bool modeChanged();
+
 	int setGamma(float gamma);
 
 	//functions to get the dimensions of the current video-mode
@@ -74,23 +77,12 @@ class CVideo {
 
 private:
 
+	bool mode_changed_;
+
 	int bpp;	// Store real bits per pixel
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen;
-};
-
-//a structure which will detect if the resolution or fullscreen mode has changed
-struct video_change_detector {
-	video_change_detector(CVideo& video) : video_(video), full_(video.isFullScreen()), x_(video.getx()), y_(video.gety())
-	{}
-
-	bool changed() const { return full_ != video_.isFullScreen() || x_ != video_.getx() || y_ != video_.gety(); }
-
-private:
-	CVideo& video_;
-	bool full_;
-	int x_, y_;
 };
 
 #endif

@@ -42,8 +42,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 	std::cerr << "entered multiplayer lobby...\n";
 	const preferences::display_manager disp_manager(&disp);
 	const hotkey::basic_handler key_handler(&disp);
-	const video_change_detector disp_change_detector(disp.video());
 	const tooltips::manager tooltips_manager(disp);
+	disp.video().modeChanged(); // resets modeChanged value
 
 	CKey key;
 
@@ -378,7 +378,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				}
 			}
 
-			if(disp_change_detector.changed()) {
+			if(disp.video().modeChanged()) {
 				return CONTINUE;
 			}
 

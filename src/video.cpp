@@ -249,6 +249,7 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags )
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
+	mode_changed_ = true;
 
 	flags = get_flags(flags);
 	const int res = SDL_VideoModeOK( x, y, bits_per_pixel, flags );
@@ -263,6 +264,13 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
+}
+
+bool CVideo::modeChanged()
+{
+	bool ret = mode_changed_;
+	mode_changed_ = false;
+	return ret;
 }
 
 int CVideo::setGamma(float gamma)

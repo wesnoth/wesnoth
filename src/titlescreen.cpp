@@ -45,8 +45,6 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	LOG_DP << "logo size: " << logo->w << "," << logo->h << "\n";
 
-	const video_change_detector disp_change_detector(screen.video());
-
 	for(int x = 0; x != logo->w; ++x) {
 		SDL_Rect srcrect = {x,0,1,logo->h};
 		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
@@ -69,7 +67,7 @@ void fade_logo(display& screen, int xpos, int ypos)
 			SDL_Delay(10);
 
 			events::pump();
-			if(disp_change_detector.changed()) {
+			if(screen.video().modeChanged()) {
 				faded_in = true;
 				fade_logo(screen,xpos,ypos);
 				return;
@@ -132,12 +130,11 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	const preferences::display_manager disp_manager(&screen);
 	const hotkey::basic_handler key_handler(&screen);
 
-	const video_change_detector disp_change_detector(screen.video());
-
 	const font::floating_label_context label_manager;
 	
 	const surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
 	const surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
+	screen.video().modeChanged(); // resets modeChanged value
 
 	if(title_surface == NULL) {
 		ERR_DP << "Could not find title image\n";
@@ -282,7 +279,7 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 
 		//if the resolution has changed due to the user resizing the screen,
 		//or from changing between windowed and fullscreen
-		if(disp_change_detector.changed()) {
+		if(screen.video().modeChanged()) {
 			return TITLE_CONTINUE;
 		}
 
