@@ -77,7 +77,7 @@ std::string wchar_to_string(const wchar_t);
 
 
 // gettext-related declarations
-#include <clocale>
+#include <libintl.h>
 #define _(String) gettext(String)
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)
