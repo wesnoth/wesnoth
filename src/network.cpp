@@ -269,6 +269,7 @@ connection connect(const std::string& host, int port)
 	}
 
 	sockets.push_back(connect);
+	wassert(schemas.count(connect) == 0);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
 
 	return connect;
@@ -357,6 +358,7 @@ connection accept_connection()
 		}
 
 		sockets.push_back(connect);
+		wassert(schemas.count(connect) == 0);
 		schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
 		return connect;
 	}
