@@ -542,12 +542,24 @@ void config::read(const std::string& data,
 	}
 }
 
-void config::write_internal(std::stringstream& res) const
+namespace {
+	const std::string AttributeEquals = "=\"";
+	const std::string AttributePostfix = "\"\n";
+	const std::string ElementPrefix = "[";
+	const std::string ElementPostfix = "]\n";
+	const std::string EndElementPrefix = "[/";
+	const std::string EndElementPostfix = "]\n";
+	const std::string ConfigPostfix = "\n";
+}
+
+size_t config::write_size() const
 {
+	size_t res = 0;
 	for(std::map<std::string,std::string>::const_iterator i = values.begin();
 					i != values.end(); ++i) {
 		if(i->second.empty() == false) {
-			res << i->first << "=\"" << i->second << "\"\n";
+			res += i->first.size() + AttributeEquals.size() +
+			       i->second.size() + AttributePostfix.size();
 		}
 	}
 
@@ -556,23 +568,62 @@ void config::write_internal(std::stringstream& res) const
 		const std::vector<config*>& v = j->second;
 		for(std::vector<config*>::const_iterator it = v.begin();
 						it != v.end(); ++it) {
-			res << "[" << j->first << "]\n";
-			(*it)->write_internal(res);
-			res << "[/" << j->first << "]\n";
+			res += ElementPrefix.size() + j->first.size() + ElementPostfix.size() +
+			       (*it)->write_size() + EndElementPrefix.size() + j->first.size() + EndElementPostfix.size();
 		}
 	}
 
-	res << "\n";
+	res += ConfigPostfix.size();
+
+	return res;
+}
+
+std::string::iterator config::write_internal(std::string::iterator out) const
+{
+	for(std::map<std::string,std::string>::const_iterator i = values.begin();
+					i != values.end(); ++i) {
+		if(i->second.empty() == false) {
+			out = std::copy(i->first.begin(),i->first.end(),out);
+			out = std::copy(AttributeEquals.begin(),AttributeEquals.end(),out);
+			out = std::copy(i->second.begin(),i->second.end(),out);
+			out = std::copy(AttributePostfix.begin(),AttributePostfix.end(),out);
+		}
+	}
+
+	for(std::map<std::string,std::vector<config*> >::const_iterator j =
+					children.begin(); j != children.end(); ++j) {
+		const std::vector<config*>& v = j->second;
+		for(std::vector<config*>::const_iterator it = v.begin();
+		    it != v.end(); ++it) {
+			out = std::copy(ElementPrefix.begin(),ElementPrefix.end(),out);
+			out = std::copy(j->first.begin(),j->first.end(),out);
+			out = std::copy(ElementPostfix.begin(),ElementPostfix.end(),out);
+			out = (*it)->write_internal(out);
+			out = std::copy(EndElementPrefix.begin(),EndElementPrefix.end(),out);
+			out = std::copy(j->first.begin(),j->first.end(),out);
+			out = std::copy(EndElementPostfix.begin(),EndElementPostfix.end(),out);
+		}
+	}
+
+	out = std::copy(ConfigPostfix.begin(),ConfigPostfix.end(),out);
+	return out;
 }
 
 std::string config::write() const
 {
 	log_scope("config::write");
 
-	std::stringstream res;
-	write_internal(res);
+	std::string res;
 
-	return res.str();
+	res.resize(write_size());
+
+	const std::string::iterator i = write_internal(res.begin());
+	assert(i == res.end());
+	if(i != res.end()) {
+		std::cerr << "ERROR in size of config buffer: " << (i - res.begin()) << "/" << res.size() << "\n";
+	}
+
+	return res;
 }
 
 config::child_itors config::child_range(const std::string& key)

@@ -167,7 +167,8 @@ struct config
 	string_map values;
 
 private:
-	void write_internal(std::stringstream& str) const;
+	size_t write_size() const;
+	std::string::iterator write_internal(std::string::iterator out) const;
 
 	//a list of all children of this node.
 	child_map children;

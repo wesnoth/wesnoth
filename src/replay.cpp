@@ -105,11 +105,17 @@ bool replay::skipping() const
 	return skip_ != 0;
 }
 
-void replay::save_game(game_data& data, const std::string& label, const config& start_pos)
+void replay::save_game(game_data& data, const std::string& label, const config& start_pos,
+					   bool include_replay)
 {
 	log_scope("replay::save_game");
 	saveInfo_.starting_pos = start_pos;
-	saveInfo_.replay_data = cfg_;
+
+	if(include_replay)
+		saveInfo_.replay_data = cfg_;
+	else
+		saveInfo_.replay_data = config();
+
 	saveInfo_.label = label;
 
 	::save_game(saveInfo_);

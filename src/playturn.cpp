@@ -745,20 +745,15 @@ void turn_info::cycle_units()
 
 void turn_info::end_turn()
 {
-	std::cerr << "ending turn...\n";
 	if(browse_)
 		return;
 
 	end_turn_ = true;
 
-	std::cerr << "saving game...\n";
 	//auto-save
 	config start_pos;
-	std::cerr << "writing snapshot...\n";
 	write_game_snapshot(start_pos);
-	std::cerr << "doing save...\n";
 	recorder.save_game(gameinfo_,string_table["auto_save"],start_pos);
-	std::cerr << "end turn...\n";
 	recorder.end_turn();
 }
 
