@@ -38,6 +38,7 @@ our @wmlfiles = glob ("data/units/*.cfg");
 foreach my $wmlfile (@wmlfiles) {
   open (WML, $wmlfile) or die "cannot open $wmlfile";
   my ($id, $str);
+  my $readingattack = 0;
   while (<WML>) {
     if (m/id\s*=\s*(.*)/) {
       $id = $str = $1;
@@ -45,12 +46,22 @@ foreach my $wmlfile (@wmlfiles) {
       set($id,$str);
 #     } elsif (m,\[/.*\],) {
 #       $id = undef;
+    } elsif (m/\[attack\]/) {
+      $readingattack = 1;
     } elsif (m/unit_description\s*=\s*(?:_\s*)\"(.*)\"\s*$/) {
       # single-line
       if (defined $id) {
 	set($id . '_description',$1);
       } else {
 	print STDERR "No id for unit_description $1\n";
+      }
+    } elsif ($readingattack) {
+      if (m/name=(.*)/) {
+	set('weapon_name_' . $1, $1);
+      } elsif (m/type=(.*)/) {
+	set('weapon_type_' . $1, $1);
+      } elsif (m/special=(.*)/) {
+	set('weapon_special_' . $1, $1);
       }
     }
   }
