@@ -594,6 +594,8 @@ redo_turn:
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
 
+					gui.recalculate_minimap();
+					clear_shroud(gui,status,map,gameinfo,units,teams,player_number-1);
 					gui.invalidate_unit();
 					gui.invalidate_game_status();
 					gui.invalidate_all();
