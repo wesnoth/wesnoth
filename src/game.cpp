@@ -927,7 +927,7 @@ int play_game(int argc, char** argv)
 				config starting_pos;
 				if(recorder.at_end()) {
 					starting_pos = state.snapshot;
-					state.gold = -100000;
+                                        // state.gold = -100000;
 				} else {
 					starting_pos = state.starting_pos;
 				}

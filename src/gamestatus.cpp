@@ -192,14 +192,52 @@ bool gamestatus::next_turn()
 	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
+player_info read_player(const game_data& data, const config* cfg)
+{
+  player_info res;
+
+  res.gold = atoi((*cfg)["gold"].c_str());
+
+  const config::child_list& units = cfg->get_children("unit");
+  for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
+	res.available_units.push_back(unit(data,**i));
+  }
+
+  res.can_recruit.clear();
+
+  const std::string& can_recruit_str = (*cfg)["can_recruit"];
+  if(can_recruit_str != "") {
+	const std::vector<std::string> can_recruit = config::split(can_recruit_str);
+	std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
+  }
+
+  return res;
+}
+
 game_state read_game(const game_data& data, const config* cfg)
 {
 	log_scope("read_game");
 	game_state res;
 	res.label = (*cfg)["label"];
 	res.version = (*cfg)["version"];
-	res.gold = atoi((*cfg)["gold"].c_str());
 	res.scenario = (*cfg)["scenario"];
+
+	const config::child_list& players = cfg->get_children("player");
+
+	if(players.size()==0) {
+		std::cerr << "WARNING: no players found, old save file?" << std::endl;
+	} else {
+		for(config::child_list::const_iterator i = players.begin(); i != players.end(); ++i) {
+			std::string save_id=(**i)["save_id"];
+
+			if(save_id.empty()) {
+				std::cerr << "Corrupted player entry: NULL save_id" << std::endl;
+			} else {
+				player_info player=read_player(data, *i);
+				res.players.insert(std::pair<std::string, player_info>(save_id,player));
+			}
+		}
+	}
 
 	std::cerr << "scenario: '" << res.scenario << "'\n";
 
@@ -212,11 +250,6 @@ game_state read_game(const game_data& data, const config* cfg)
 	res.campaign_type = (*cfg)["campaign_type"];
 	if(res.campaign_type.empty())
 		res.campaign_type = "scenario";
-
-	const config::child_list& units = cfg->get_children("unit");
-	for(config::child_list::const_iterator i = units.begin(); i != units.end(); ++i) {
-		res.available_units.push_back(unit(data,**i));
-	}
 
 	const config* const vars = cfg->child("variables");
 	if(vars != NULL) {
@@ -244,14 +277,6 @@ game_state read_game(const game_data& data, const config* cfg)
 		res.starting_pos = *replay_start;
 	}
 
-	res.can_recruit.clear();
-
-	const std::string& can_recruit_str = (*cfg)["can_recruit"];
-	if(can_recruit_str != "") {
-		const std::vector<std::string> can_recruit = config::split(can_recruit_str);
-		std::copy(can_recruit.begin(),can_recruit.end(),std::inserter(res.can_recruit,res.can_recruit.end()));
-	}
-
 	if(cfg->child("statistics")) {
 		statistics::fresh_stats();
 		statistics::read_stats(*cfg->child("statistics"));
@@ -260,15 +285,37 @@ game_state read_game(const game_data& data, const config* cfg)
 	return res;
 }
 
+void write_player(const player_info& player, config& cfg)
+{
+	char buf[50];
+	sprintf(buf,"%d",player.gold);
+
+	cfg["gold"] = buf;
+
+	for(std::vector<unit>::const_iterator i = player.available_units.begin();
+	    i != player.available_units.end(); ++i) {
+		config new_cfg;
+		i->write(new_cfg);
+		cfg.add_child("unit",new_cfg);
+	}
+
+	std::stringstream can_recruit;
+	std::copy(player.can_recruit.begin(),player.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
+	std::string can_recruit_str = can_recruit.str();
+
+	//remove the trailing comma
+	if(can_recruit_str.empty() == false) {
+		can_recruit_str.resize(can_recruit_str.size()-1);
+	}
+
+	cfg["can_recruit"] = can_recruit_str;
+}
+
 void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 {
 	log_scope("write_game");
 	cfg["label"] = game.label;
 	cfg["version"] = game_config::version;
-
-	char buf[50];
-	sprintf(buf,"%d",game.gold);
-	cfg["gold"] = buf;
 
 	cfg["scenario"] = game.scenario;
 
@@ -280,11 +327,12 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 
 	cfg.add_child("variables",game.variables);
 
-	for(std::vector<unit>::const_iterator i = game.available_units.begin();
-	    i != game.available_units.end(); ++i) {
+	for(std::map<std::string, player_info>::const_iterator i=game.players.begin();
+	    i!=game.players.end(); ++i) {
 		config new_cfg;
-		i->write(new_cfg);
-		cfg.add_child("unit",new_cfg);
+		write_player(i->second, new_cfg);
+		new_cfg["save_id"]=i->first;
+		cfg.add_child("player", new_cfg);
 	}
 
 	if(mode == WRITE_FULL_GAME) {
@@ -296,16 +344,6 @@ void write_game(const game_state& game, config& cfg, WRITE_GAME_MODE mode)
 		cfg.add_child("replay_start",game.starting_pos);
 		cfg.add_child("statistics",statistics::write_stats());
 	}
-
-	std::stringstream can_recruit;
-	std::copy(game.can_recruit.begin(),game.can_recruit.end(),std::ostream_iterator<std::string>(can_recruit,","));
-	std::string can_recruit_str = can_recruit.str();
-
-	//remove the trailing comma
-	if(can_recruit_str.size() > 0)
-		can_recruit_str.resize(can_recruit_str.size()-1);
-
-	cfg["can_recruit"] = can_recruit_str;
 }
 
 //a structure for comparing to save_info objects based on their modified time.
@@ -482,11 +520,17 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	}
 
 	//find the first human leader so we can display their icon in the load menu
+
+	//ideally we should grab all leaders if there's more than 1
+	//human player?
 	std::string leader;
-	
-	for(std::vector<unit>::const_iterator u = state.available_units.begin(); u != state.available_units.end(); ++u) {
-		if(u->can_recruit()) {
-			leader = u->type().name();
+
+	for(std::map<std::string, player_info>::const_iterator p = state.players.begin();
+	    p!=state.players.end(); ++p) {
+		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
+			if(u->can_recruit()) {
+				leader = u->type().name();
+			}
 		}
 	}
 

@@ -7,6 +7,12 @@
 
 namespace {
 const std::string campaign_dir = get_user_data_dir() + "/data/campaigns";
+void setup_dirs()
+{
+	make_directory(get_user_data_dir() + "/data");
+	make_directory(campaign_dir);
+}
+
 }
 
 std::vector<std::string> available_campaigns()
@@ -125,6 +131,7 @@ void unarchive_dir(const std::string& path, const config& cfg)
 
 void unarchive_campaign(const config& cfg)
 {
+	setup_dirs();
 	unarchive_dir(campaign_dir,cfg);
 }
 

@@ -63,8 +63,15 @@ team::team_info::team_info(const config& cfg)
 	income = cfg["income"];
 	name = cfg["name"];
 	team_name = cfg["team_name"];
-	if(team_name.empty())
+	if(team_name.empty()) {
 		team_name = cfg["side"];
+	}
+
+	save_id = cfg["save_id"];
+	if(save_id.empty()) {
+		save_id = cfg["description"];
+	}
+
 	colour = lexical_cast_default<int>(cfg["colour"],-1);
 	if(colour == -1)
 		colour = lexical_cast_default<int>(cfg["side"],-1);
@@ -82,8 +89,7 @@ team::team_info::team_info(const config& cfg)
 	const std::string& enemies_list = cfg["enemy"];
 	if(!enemies_list.empty()) {
 		std::vector<std::string> venemies = config::split(enemies_list);
-		for(std::vector<std::string>::const_iterator i = venemies.begin();
-		    i != venemies.end(); ++i) {
+		for(std::vector<std::string>::const_iterator i = venemies.begin(); i != venemies.end(); ++i) {
 			enemies.push_back(atoi(i->c_str()));
 		}
 	}
@@ -188,6 +194,7 @@ void team::team_info::write(config& cfg) const
 	cfg["income"] = income;
 	cfg["name"] = name;
 	cfg["team_name"] = team_name;
+	cfg["save_id"] = save_id;
 	cfg["flag"] = flag;
 	cfg["description"] = description;
 
@@ -327,8 +334,7 @@ int team::gold() const
 
 int team::income() const
 {
-	return atoi(info_.income.c_str()) +
-	       villages_.size()*info_.income_per_village+game_config::base_income;
+	return atoi(info_.income.c_str()) + villages_.size()*info_.income_per_village+game_config::base_income;
 }
 
 void team::new_turn()
@@ -485,6 +491,11 @@ const std::string& team::team_name() const
 void team::change_team(const std::string& name)
 {
 	info_.team_name = name;
+}
+
+const std::string& team::save_id() const
+{
+	return info_.save_id;
 }
 
 const std::string& team::flag() const

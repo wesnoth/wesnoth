@@ -68,6 +68,7 @@ public:
 		std::vector<std::string> recruitment_pattern;
 		std::vector<int> enemies;
 		std::string team_name;
+		std::string save_id;
 
 		std::string flag;
 
@@ -113,6 +114,7 @@ public:
 	std::set<std::string>& recruits();
 	const std::vector<std::string>& recruitment_pattern() const;
 	const std::string& name() const;
+	const std::string& save_id() const;
 
 	bool is_enemy(int n) const {
 		const size_t index = size_t(n-1);
@@ -160,7 +162,7 @@ public:
 	bool fog_or_shroud() const { return uses_shroud() || uses_fog(); }
 	bool clear_shroud(int x, int y) { return shroud_.clear(x+1,y+1); }
 	void place_shroud(int x, int y) { shroud_.place(x+1,y+1); }
-	bool clear_fog(int x, int y)  { return fog_.clear(x+1,y+1); }
+	bool clear_fog(int x, int y) { return fog_.clear(x+1,y+1); }
 	void refog() { fog_.reset(); }
 	
 	bool knows_about_team(size_t index) const;

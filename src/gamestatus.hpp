@@ -114,24 +114,51 @@ private:
 	int numTurns_;
 };
 
+// Information on a particular player of the game.
+struct player_info
+{
+  player_info():gold(-1) {}
+
+  int gold; //amount of gold the player has saved
+  std::vector<unit> available_units; //units the player may recall
+
+  std::set<std::string> can_recruit; //units the player has the ability to recruit
+};
+
 //object which holds all the data needed to start a scenario.
 //i.e. this is the object serialized to disk when saving/loading a game.
 //is also the object which needs to be created to start a nwe game
 struct game_state
 {
-	game_state() : gold(-1), difficulty("NORMAL") {}
+	game_state() : difficulty("NORMAL") {}
 	std::string label; //name of the game (e.g. name of save file)
 	std::string version; //version game was created with.
 	std::string campaign_type; //type of the game - campaign, multiplayer etc
-	std::string scenario; //the scenario being played
-	int gold; //amount of gold the player has saved
-	std::vector<unit> available_units; //units the player may recall
-	config variables; //variables that have been set
-	std::string difficulty; //the difficulty level the game is being played on.
-
-	std::set<std::string> can_recruit; //units the player has the ability to recruit
 
 	std::string campaign_define; //if there is a define the campaign uses to customize data
+
+	std::string scenario; //the scenario being played
+
+	// information about campaign players who carry resources from
+	// previous levels, indexed by a string identifier (which is
+	// the leader name by default, but can be set with the "id"
+	// attribute of the "side" tag)
+	std::map<std::string, player_info> players;
+
+	// Return the Nth player, or NULL if no such player exists
+	player_info* get_player(std::string id) {
+	  std::map<std::string, player_info>::iterator found=players.find(id);
+
+	  if(found==players.end()) {
+	    std::cerr << "WARNING: player " << id << " does not exist." << std::endl;
+	    return NULL;
+	  } else {
+	    return &found->second;
+	  }
+	}
+
+	config variables; //variables that have been set
+	std::string difficulty; //the difficulty level the game is being played on.
 
 	//if the game is saved mid-level, we have a series of replay steps to
 	//take the game up to the position it was saved at.

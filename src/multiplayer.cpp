@@ -64,9 +64,12 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 {
 	std::cerr << "setup dialog ctor\n";
 
-	state_.available_units.clear();
+        for(std::map<std::string, player_info>::iterator i=state_.players.begin();
+            i!=state_.players.end(); ++i) {
+          i->second.available_units.clear();
+          i->second.can_recruit.clear();
+        }
 	state_.variables.clear();
-	state_.can_recruit.clear();
 
 	//build the list of scenarios to play
 	get_files_in_dir(get_user_data_dir() + "/editor/maps",&user_maps_,NULL,FILE_NAME_ONLY);

@@ -38,8 +38,7 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 	//an 'or' statement means that if the contained statements are true,
 	//then it automatically passes
 	const config::child_list& or_statements = cond.get_children("or");
-	for(config::child_list::const_iterator or_it = or_statements.begin();
-	    or_it != or_statements.end(); ++or_it) {
+	for(config::child_list::const_iterator or_it = or_statements.begin(); or_it != or_statements.end(); ++or_it) {
 		if(conditional_passed(units,**or_it)) {
 			return true;
 		}
@@ -49,8 +48,7 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 	//check for that.
 	const config::child_list& have_unit = cond.get_children("have_unit");
 
-	for(config::child_list::const_iterator u = have_unit.begin();
-	    u != have_unit.end(); ++u) {
+	for(config::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 
 		if(units == NULL)
 			return false;
@@ -70,8 +68,7 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
 	const config::child_list& variables = cond.get_children("variable");
-	for(config::child_list::const_iterator var = variables.begin();
-	    var != variables.end(); ++var) {
+	for(config::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
 		const config& values = **var;
 
 		const std::string& name = values["name"];
@@ -296,8 +293,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().insert(*i);
 			preferences::encountered_units().insert(*i);
-			if(index == 0) {
-				state_of_game->can_recruit.insert(*i);
+
+                        player_info *player=state_of_game->get_player((*teams)[index].save_id());
+                        if(player) {
+                                player->can_recruit.insert(*i);
 			}
 		}
 	}
@@ -313,8 +312,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::vector<std::string>& types = config::split(type);
 		for(std::vector<std::string>::const_iterator i = types.begin(); i != types.end(); ++i) {
 			(*teams)[index].recruits().erase(*i);
-			if(index == 0) {
-				state_of_game->can_recruit.erase(*i);
+
+                        player_info *player=state_of_game->get_player((*teams)[index].save_id());
+                        if(player) {
+                                player->can_recruit.erase(*i);
 			}
 		}
 	}
@@ -332,8 +333,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::set<std::string>& can_recruit = (*teams)[index].recruits();
 		can_recruit.clear();
 		std::copy(recruit.begin(),recruit.end(),std::inserter(can_recruit,can_recruit.end()));
-		if(index == 0) {
-			state_of_game->can_recruit = can_recruit;
+
+                player_info *player=state_of_game->get_player((*teams)[index].save_id());
+                if(player) {
+                        player->can_recruit = can_recruit;
 		}
 	}
 
@@ -612,12 +615,15 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//get a list of the types this unit can be
 		std::vector<std::string> types = config::split(cfg["type"]);
 
+                std::vector<std::string> sides = config::split(cfg["side"]);
+
 		//iterate over all the types, and for each type, try to find
 		//a unit that matches
 		std::vector<std::string>::iterator ti;
 		for(ti = types.begin(); ti != types.end(); ++ti) {
 			config item = cfg;
 			item["type"] = *ti;
+                        item["side"] = cfg["side"];
 			item["role"] = "";
 
 			std::map<gamemap::location,unit>::iterator itor;
@@ -631,19 +637,49 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			if(itor != units->end())
 				break;
 
-			std::vector<unit>::iterator ui;
-			//iterate over the units, and try to find one that matches
-			for(ui = state_of_game->available_units.begin();
-			    ui != state_of_game->available_units.end(); ++ui) {
-				if(game_events::unit_matches_filter(*ui,item)) {
-					ui->assign_role(cfg["role"]);
-					break;
-				}
+                        bool found = false;
+
+                        if(sides.empty() == false) {
+                          std::vector<std::string>::const_iterator si;
+                          for(si = sides.begin(); si != sides.end(); ++si) {
+                            int side_num = lexical_cast_default<int>(*si,1);
+
+                            player_info* player=state_of_game->get_player((*teams)[side_num-1].save_id());
+
+                            if(!player)
+                              continue;
+
+                            //iterate over the units, and try to find one that matches
+                            std::vector<unit>::iterator ui;
+                            for(ui = player->available_units.begin();
+                                ui != player->available_units.end(); ++ui) {
+                              if(game_events::unit_matches_filter(*ui, item)) {
+                                ui->assign_role(cfg["role"]);
+                                found=true;
+                                break;
+                              }
+                            }
+                          }
+                        } else {
+                          std::map<std::string, player_info>::iterator pi;
+                          for(pi=state_of_game->players.begin();
+                              pi!=state_of_game->players.end(); ++pi) {
+                            std::vector<unit>::iterator ui;
+                            //iterate over the units, and try to find one that matches
+                            for(ui = pi->second.available_units.begin();
+                                ui != pi->second.available_units.end(); ++ui) {
+                              if(game_events::unit_matches_filter(*ui, item)) {
+                                ui->assign_role(cfg["role"]);
+                                found=true;
+                                break;
+                              }
+                            }
+                          }
 			}
 
 			//if we found a unit, we don't have to keep going.
-			if(ui != state_of_game->available_units.end())
-				break;
+                        if(found)
+                          break;
 		}
 	}
 
@@ -728,21 +764,32 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			screen->invalidate(loc);
 		} else {
-			state_of_game->available_units.push_back(new_unit);
+                  player_info *player=state_of_game->get_player((*teams)[new_unit.side()-1].save_id());
+
+                  if(player) {
+                    player->available_units.push_back(new_unit);
+                  } else {
+                    std::cerr << "Cannot create unit: location is not on the map, and player " << new_unit.side() << " has no recall list." << std::endl;
+                  }
 		}
 	}
 
 	//if we should recall units that match a certain description
 	else if(cmd == "recall") {
-		std::vector<unit>& avail = state_of_game->available_units;
-		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
-			if(game_events::unit_matches_filter(*u,cfg)) {
-				gamemap::location loc(cfg);
-				recruit_unit(*game_map,1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
-				avail.erase(u);
-				break;
-			}
-		}
+          for(int index=0; index<teams->size(); ++index) {
+            player_info *player=state_of_game->get_player((*teams)[index].save_id());
+
+            std::vector<unit>& avail = player->available_units;
+
+            for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
+              if(game_events::unit_matches_filter(*u,cfg)) {
+                gamemap::location loc(cfg);
+                recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
+                avail.erase(u);
+                break;
+              }
+            }
+          }
 	}
 
 	else if(cmd == "object") {
@@ -974,7 +1021,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	}
 
 	else if(cmd == "kill") {
-
 		for(unit_map::iterator un = units->begin(); un != units->end();) {
 			if(game_events::unit_matches_filter(un,cfg)) {
 				if(cfg["animate"] == "yes") {
@@ -993,16 +1039,21 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		//if the filter doesn't contain positional information, then it may match
-		//units on the recall list.
+                //units on all recall lists.
 		if(cfg["x"].empty() && cfg["y"].empty()) {
-			std::vector<unit>& avail_units = state_of_game->available_units;
+                  std::map<std::string, player_info>& players=state_of_game->players;
+
+                  for(std::map<std::string, player_info>::iterator pi = players.begin();
+                      pi!=players.end(); ++pi) {
+                        std::vector<unit>& avail_units = pi->second.available_units;
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				if(game_events::unit_matches_filter(*j,cfg)) {
-					j = avail_units.erase(j);
-				} else {
-					++j;
-				}
+                          if(game_events::unit_matches_filter(*j, cfg)) {
+                            j = avail_units.erase(j);
+                          } else {
+                            ++j;
+                          }
 			}
+                  }
 		}
 	}
 
@@ -1043,24 +1094,29 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		if(filter["x"].empty() && filter["y"].empty()) {
-			std::vector<unit>& avail_units = state_of_game->available_units;
-			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				if(game_events::unit_matches_filter(*j,filter) == false) {
-					++j;
-					continue;
-				}
+                  std::map<std::string, player_info>& players = state_of_game->players;
+
+                  for(std::map<std::string, player_info>::iterator pi = players.begin();
+                      pi!=players.end(); ++pi) {
+                    std::vector<unit>& avail_units = pi->second.available_units;
+                    for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+                      if(game_events::unit_matches_filter(*j, filter) == false) {
+                        ++j;
+                        continue;
+                      }
 	
-				config& data = vars.add_child(variable);
-				j->write(data);
-				data["x"] = "recall";
-				data["y"] = "recall";
+                      config& data = vars.add_child(variable);
+                      j->write(data);
+                      data["x"] = "recall";
+                      data["y"] = "recall";
 	
-				if(kill_units) {
-					j = avail_units.erase(j);
-				} else {
-					++j;
-				}
-			}
+                      if(kill_units) {
+                        j = avail_units.erase(j);
+                      } else {
+                        ++j;
+                      }
+                    }
+                  }
 		}
 	}
 
@@ -1078,7 +1134,13 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				units->erase(loc);
 				units->insert(std::pair<gamemap::location,unit>(loc,u));
 			} else {
-				state_of_game->available_units.push_back(u);
+                          player_info *player=state_of_game->get_player((*teams)[u.side()-1].save_id());
+
+                          if(player) {
+                            player->available_units.push_back(u);
+                          } else {
+                            std::cerr << "Cannot unstore unit: no recall list for player " << u.side() << " and the map location is invalid." << std::endl;
+                          }
 			}
 		} catch(gamestatus::load_game_failed& e) {
 			std::cerr << "could not de-serialize unit: '" << e.message << "'\n";

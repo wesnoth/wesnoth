@@ -97,8 +97,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			gotos.push_back(ui->first);
 	}
 
-	for(std::vector<gamemap::location>::const_iterator g = gotos.begin();
-	    g != gotos.end(); ++g) {
+	for(std::vector<gamemap::location>::const_iterator g = gotos.begin(); g != gotos.end(); ++g) {
 		unit_map::const_iterator ui = units.find(*g);
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
@@ -426,16 +425,15 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			}
 		}
 	} else if(is_middle_click(event) && event.state == SDL_PRESSED) {
-	  // clicked on a hex on the minimap? then initiate minimap scrolling
-	  const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
-	  minimap_scrolling_ = false;
-	  if(loc.valid()) {
-	    minimap_scrolling_ = true;
-	    last_hex_ = loc;
-	    gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
-	    return;
-	  }
-	  else {
+		// clicked on a hex on the minimap? then initiate minimap scrolling
+		const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
+		minimap_scrolling_ = false;
+		if(loc.valid()) {
+			minimap_scrolling_ = true;
+			last_hex_ = loc;
+			gui_.scroll_to_tile(loc.x,loc.y,display::WARP,false);
+			return;
+		} else {
 		const SDL_Rect& rect = gui_.map_area();
 		const int centerx = (rect.x + rect.w)/2;
 		const int centery = (rect.y + rect.h)/2;
@@ -444,7 +442,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		const int ydisp = event.y - centery;
 
 		gui_.scroll(xdisp,ydisp);
-	  }
+		}
 	} else if(event.button == SDL_BUTTON_WHEELUP ||
 	          event.button == SDL_BUTTON_WHEELDOWN) {
 		const int speed = preferences::scroll_speed() *
@@ -545,8 +543,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command is cancelled
-	if(u != units_.end() && !browse_ &&
-	   selected_hex_ == hex && u->second.side() == team_num_) {
+	if(u != units_.end() && !browse_ && selected_hex_ == hex && u->second.side() == team_num_) {
 		u->second.set_goto(gamemap::location());
 	}
 
@@ -670,8 +667,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			u = units_.find(selected_hex_);
 			enemy = units_.find(hex);
 
-			if(u == units_.end() || enemy == units_.end() ||
-			   size_t(res) >= attacks.size()) {
+			if(u == units_.end() || enemy == units_.end() || size_t(res) >= attacks.size()) {
 				return;
 			}
 
@@ -683,8 +679,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			recorder.add_attack(selected_hex_,hex,res);
 
 			try {
-				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,
-				       status_,gameinfo_,true);
+				attack(gui_,map_,teams_,selected_hex_,hex,res,units_,status_,gameinfo_,true);
 			} catch(end_level_exception&) {
 				//if the level ends due to a unit being killed, still see if
 				//either the attacker or defender should advance
@@ -1056,10 +1051,7 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 
 bool turn_info::unit_in_cycle(unit_map::const_iterator it) const
 {
-	if(it->second.side() == team_num_ &&
-	   unit_can_move(it->first,units_,map_,teams_) &&
-	   it->second.user_end_turn() == false &&
-	   !gui_.fogged(it->first.x,it->first.y)) {
+	if(it->second.side() == team_num_ && unit_can_move(it->first,units_,map_,teams_) && it->second.user_end_turn() == false && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool is_enemy = current_team().is_enemy(int(gui_.viewing_team()+1));
 		return is_enemy == false || it->second.invisible(map_.underlying_terrain(it->first),status_.get_time_of_day().lawful_bonus,it->first,units_,teams_) == false;
 	}
@@ -1092,8 +1084,7 @@ void turn_info::cycle_units()
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
 		const bool ignore_zocs = it->second.type().is_skirmisher();
 		const bool teleport = it->second.type().teleports();
-		current_paths_ = paths(map_,status_,gameinfo_,units_,
-		               it->first,teams_,ignore_zocs,teleport,path_turns_);
+		current_paths_ = paths(map_,status_,gameinfo_,units_,it->first,teams_,ignore_zocs,teleport,path_turns_);
 		gui_.set_paths(&current_paths_);
 
 		gui_.scroll_to_tile(it->first.x,it->first.y,display::WARP);
@@ -1187,8 +1178,7 @@ void turn_info::end_unit_turn()
 		return;
 
 	const unit_map::iterator un = units_.find(selected_hex_);
-	if(un != units_.end() && un->second.side() == team_num_ &&
-	   un->second.movement_left() >= 0) {
+	if(un != units_.end() && un->second.side() == team_num_ && un->second.movement_left() >= 0) {
 		un->second.set_user_end_turn(!un->second.user_end_turn());
 		gui_.draw_tile(selected_hex_.x,selected_hex_.y);
 
@@ -1209,16 +1199,23 @@ void turn_info::undo()
 	const command_disabler disable_commands(&gui_);
 
 	undo_action& action = undo_stack_.back();
-	if (action.is_recall()) {
-		// Undo a recall action
-		team& current_team = teams_[team_num_-1];
-		const unit& un = units_.find(action.recall_loc)->second;
-		statistics::un_recall_unit(un);
-		current_team.spend_gold(-game_config::recall_cost);
-		std::vector<unit>& recall_list = state_of_game_.available_units;
-		recall_list.insert(recall_list.begin()+action.recall_pos,un);
-		units_.erase(action.recall_loc);
-		gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+	if(action.is_recall()) {
+		player_info *player=state_of_game_.get_player(teams_[team_num_-1].save_id());
+
+		if(!player) {
+			std::cerr << "WARNING: trying to undo a recall for side " << team_num_ << ", which has no recall list!" << std::endl;
+		} else {
+			// Undo a recall action
+			team& current_team = teams_[team_num_-1];
+			const unit& un = units_.find(action.recall_loc)->second;
+			statistics::un_recall_unit(un);
+			current_team.spend_gold(-game_config::recall_cost);
+
+			std::vector<unit>& recall_list = player->available_units;
+			recall_list.insert(recall_list.begin()+action.recall_pos,un);
+			units_.erase(action.recall_loc);
+			gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+		}
 	} else {
 		// Undo a move action
 		const int starting_moves = action.starting_moves;
@@ -1285,18 +1282,23 @@ void turn_info::redo()
 	gui_.set_route(NULL);
 
 	undo_action& action = redo_stack_.back();
-	if (action.is_recall()) {
-		// Redo recall
-		std::vector<unit>& recall_list = state_of_game_.available_units;
-		unit& un = recall_list[action.recall_pos];
-		recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
-		statistics::recall_unit(un);
-		team& current_team = teams_[team_num_-1];
-		current_team.spend_gold(game_config::recall_cost);
-		recall_list.erase(recall_list.begin()+action.recall_pos);
-		recorder.add_recall(action.recall_pos,action.recall_loc);
+	if(action.is_recall()) {
+		player_info *player=state_of_game_.get_player(teams_[team_num_-1].save_id());
+		if(!player) {
+			std::cerr << "WARNING: trying to redo a recall for side " << team_num_ << ", which has no recall list!" << std::endl;
+		} else {
+			// Redo recall
+			std::vector<unit>& recall_list = player->available_units;
+			unit& un = recall_list[action.recall_pos];
+			recruit_unit(map_,team_num_,units_,un,action.recall_loc,&gui_);
+			statistics::recall_unit(un);
+			team& current_team = teams_[team_num_-1];
+			current_team.spend_gold(game_config::recall_cost);
+			recall_list.erase(recall_list.begin()+action.recall_pos);
+			recorder.add_recall(action.recall_pos,action.recall_loc);
 
-		gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+			gui_.draw_tile(action.recall_loc.x,action.recall_loc.y);
+		}
 	} else {
 		// Redo movement action
 		const int starting_moves = action.starting_moves;
@@ -1488,8 +1490,7 @@ void turn_info::write_game_snapshot(config& start) const
 		sprintf(buf,"%d",side_num);
 		side["side"] = buf;
 
-		for(std::map<gamemap::location,unit>::const_iterator i = units_.begin();
-		    i != units_.end(); ++i) {
+		for(std::map<gamemap::location,unit>::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->second.side() == side_num) {
 				config& u = side.add_child("unit");
 				i->first.write(u);
@@ -1595,8 +1596,7 @@ void turn_info::recruit()
 	std::vector<std::string> item_keys;
 	std::vector<std::string> items;
 	const std::set<std::string>& recruits = current_team.recruits();
-	for(std::set<std::string>::const_iterator it =
-	    recruits.begin(); it != recruits.end(); ++it) {
+	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 		item_keys.push_back(*it);
 		const std::map<std::string,unit_type>::const_iterator
 				u_type = gameinfo_.unit_types.find(*it);
@@ -1749,8 +1749,14 @@ void turn_info::recall()
 	if(browse_)
 		return;
 
+	player_info *player = state_of_game_.get_player(teams_[team_num_-1].save_id());
+	if(!player) {
+		std::cerr << "WARNING: cannot recall a unit for side " << team_num_ << ", which has no recall list!" << std::endl;
+		return;
+	}
+
 	team& current_team = teams_[team_num_-1];
-	std::vector<unit>& recall_list = state_of_game_.available_units;
+	std::vector<unit>& recall_list = player->available_units;
 
 	//sort the available units into order by value
 	//so that the most valuable units are shown first
@@ -1881,8 +1887,7 @@ void turn_info::create_unit()
 {
 	std::vector<std::string> options;
 	std::vector<unit> unit_choices;
-	for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin();
-	    i != gameinfo_.unit_types.end(); ++i) {
+	for(game_data::unit_type_map::const_iterator i = gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 		options.push_back(i->first);
 		unit_choices.push_back(unit(&i->second,1,false));
 		unit_choices.back().new_turn();
@@ -2125,7 +2130,7 @@ void turn_info::search()
 
 void turn_info::user_command()
 {
-  create_textbox(floating_textbox::TEXTBOX_COMMAND,_("prompt^Command:"));
+	create_textbox(floating_textbox::TEXTBOX_COMMAND,_("prompt^Command:"));
 }
 
 void turn_info::show_help()

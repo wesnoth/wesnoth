@@ -89,8 +89,10 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 		load_game(*data_, game, *state_);
 
-		state_->available_units.clear();
-		state_->can_recruit.clear();
+		for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
+			i->second.available_units.clear();
+			i->second.can_recruit.clear();
+		}
 
 		if(state_->campaign_type != "multiplayer") {
 			gui::show_dialog(*disp_, NULL, "", 
@@ -112,8 +114,7 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 		level_ptr = &scenario_data;
 
 		//make all sides untaken
-		for(config::child_itors i = level_ptr->child_range("side");
-		    i.first != i.second; ++i.first) {
+		for(config::child_itors i = level_ptr->child_range("side"); i.first != i.second; ++i.first) {
 			(**i.first)["taken"] = "";
 
 			//tell clients not to change their race
@@ -155,7 +156,10 @@ int mp_connect::load_map(const std::string& era, config& scenario_data, int num_
 
 	level_ = level_ptr;
 	state_->label = level_->values["name"];
-	state_->gold = -10000;
+
+	for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
+		i->second.gold = -10000;
+	}
 
 	state_->scenario = scenario_data["id"];
 
@@ -271,8 +275,7 @@ void mp_connect::lists_init()
 
 	const config::child_list& possible_sides = era_cfg->get_children("multiplayer_side");
 
-	for(std::vector<config*>::const_iterator race = possible_sides.begin();
-	    race != possible_sides.end(); ++race) {
+	for(std::vector<config*>::const_iterator race = possible_sides.begin(); race != possible_sides.end(); ++race) {
 		player_races_.push_back((**race)["name"]);
 	}
 
@@ -777,7 +780,10 @@ void mp_connect::start_game()
 	//it was just there to tell clients about the replay data
 	level_->clear_children("replay");
 	std::vector<config*> story;
-	state_->can_recruit.clear();
+	for(std::map<std::string, player_info>::iterator i = state_->players.begin(); i != state_->players.end(); ++i) {
+		i->second.can_recruit.clear();
+	}
+
 	play_level(*data_, *cfg_, level_, disp_->video(), *state_, story);
 	recorder.clear();
 
@@ -801,8 +807,7 @@ void mp_connect::update_positions()
 
 void mp_connect::update_network()
 {
-	for(std::map<config*,network::connection>::const_iterator i = positions_.begin();
-	    i != positions_.end(); ++i) {
+	for(std::map<config*,network::connection>::const_iterator i = positions_.begin(); i != positions_.end(); ++i) {
 		if(!i->second) {
 			//We are waiting on someone
 			network::connection sock = network::accept_connection();
@@ -836,8 +841,7 @@ void mp_connect::update_network()
 		bool changes = false;
 
 		//a socket has disconnected. Remove its positions.
-		for(std::map<config*,network::connection>::iterator i = positions_.begin();
-		    i != positions_.end(); ++i) {
+		for(std::map<config*,network::connection>::iterator i = positions_.begin(); i != positions_.end(); ++i) {
 			if(i->second == e.socket) {
 				changes = true;
 				i->second = 0;

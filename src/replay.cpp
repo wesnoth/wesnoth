@@ -292,8 +292,7 @@ void replay::add_movement(const gamemap::location& a,const gamemap::location& b)
 	random_ = NULL;
 }
 
-void replay::add_attack(const gamemap::location& a, const gamemap::location& b,
-                        int weapon)
+void replay::add_attack(const gamemap::location& a, const gamemap::location& b, int weapon)
 {
 	add_pos("attack",a,b);
 	char buf[100];
@@ -540,8 +539,7 @@ bool replay::empty()
 
 void replay::add_config(const config& cfg, MARK_SENT mark)
 {
-	for(config::const_child_itors i = cfg.child_range("command");
-	    i.first != i.second; ++i.first) {
+	for(config::const_child_itors i = cfg.child_range("command"); i.first != i.second; ++i.first) {
 		config& cfg = cfg_.add_child("command",**i.first);
 		if(mark == MARK_AS_SENT) {
 			cfg["sent"] = "yes";
@@ -716,19 +714,23 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		}
 
 		else if((child = cfg->child("recall")) != NULL) {
-			std::sort(state_of_game.available_units.begin(),
-			          state_of_game.available_units.end(),
-			          compare_unit_values());
+			player_info *player=state_of_game.get_player(teams[team_num].save_id());
+			if(!player) {
+				std::cerr << "illegal recall\n";
+				throw replay::error();
+			}
+
+			std::sort(player->available_units.begin(),player->available_units.end(),compare_unit_values());
 
 			const std::string recall_num = (*child)["value"];
 			const int val = atoi(recall_num.c_str());
 
 			gamemap::location loc(*child);
 
-			if(val >= 0 && val < int(state_of_game.available_units.size())) {
-				statistics::recall_unit(state_of_game.available_units[val]);
-				recruit_unit(map,team_num,units,state_of_game.available_units[val],loc);
-				state_of_game.available_units.erase(state_of_game.available_units.begin()+val);
+			if(val >= 0 && val < int(player->available_units.size())) {
+				statistics::recall_unit(player->available_units[val]);
+				recruit_unit(map,team_num,units,player->available_units[val],loc);
+				player->available_units.erase(player->available_units.begin()+val);
 				current_team.spend_gold(game_config::recall_cost);
 			} else {
 				std::cerr << "illegal recall\n";

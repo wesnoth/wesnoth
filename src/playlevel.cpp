@@ -88,8 +88,7 @@ namespace {
 		std::set<int> placed;
 		std::set<gamemap::location> positions_taken;
 
-		for(std::vector<placing_info>::const_iterator i = placings.begin();
-		    i != placings.end() && placed.size() != sides.size(); ++i) {
+		for(std::vector<placing_info>::const_iterator i = placings.begin(); i != placings.end() && placed.size() != sides.size(); ++i) {
 			if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 				placed.insert(i->side);
 				positions_taken.insert(i->pos);
@@ -189,6 +188,24 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	std::cerr << (SDL_GetTicks() - ticks) << "\n";
 
 	for(config::child_list::const_iterator ui = unit_cfg.begin(); ui != unit_cfg.end(); ++ui) {
+		std::string save_id = (**ui)["save_id"];
+
+		if(save_id.empty()) {
+			save_id=(**ui)["description"];
+		}
+
+		player_info *player = NULL;
+
+		if((**ui)["controller"] == "human" ||
+		   (**ui)["controller"] == "network" ||
+		   (**ui)["persistent"] == "1") {
+			player = state_of_game.get_player(save_id);
+
+			if(!player && !save_id.empty()) {
+				player=&state_of_game.players[save_id];
+			}
+		}
+
 		std::cerr << "initializing team...\n";
 
 		if(first_human_team == -1 && (**ui)["controller"] == "human") {
@@ -202,8 +219,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		std::cerr << "found gold: '" << gold << "'\n";
 
 		int ngold = lexical_cast_default<int>(gold);
-		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold) {
-			ngold = state_of_game.gold;
+		if(player && player->gold >= ngold) {
+			ngold = player->gold;
 		}
 
 		std::cerr << "set gold to '" << ngold << "'\n";
@@ -216,12 +233,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 			//search the recall list for leader units, and if there is
 			//one, use it in place of the config-described unit
-			if(ui == unit_cfg.begin()) {
-				for(std::vector<unit>::iterator it = state_of_game.available_units.begin();
-					it != state_of_game.available_units.end(); ++it) {
+			if(player) {
+				for(std::vector<unit>::iterator it = player->available_units.begin(); it != player->available_units.end(); ++it) {
 					if(it->can_recruit()) {
 						new_unit = *it;
-						state_of_game.available_units.erase(it);
+						player->available_units.erase(it);
 						break;
 					}
 				}
@@ -253,19 +269,18 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		//if the game state specifies units that can be recruited for the player
 		//then add them
-		if(teams.size() == 1 && state_of_game.can_recruit.empty() == false) {
-			std::copy(state_of_game.can_recruit.begin(),state_of_game.can_recruit.end(),
-				std::inserter(teams.back().recruits(),teams.back().recruits().end()));
+		if(player && player->can_recruit.empty() == false) {
+			std::copy(player->can_recruit.begin(),player->can_recruit.end(),
+			std::inserter(teams.back().recruits(),teams.back().recruits().end()));
 		}
 		
-		if(teams.size() == 1) {
-			state_of_game.can_recruit = teams.back().recruits();
+		if(player) {
+			player->can_recruit = teams.back().recruits();
 		}
 		
 		//if there are additional starting units on this side
 		const config::child_list& starting_units = (*ui)->get_children("unit");
-		for(config::child_list::const_iterator su = starting_units.begin();
-		    su != starting_units.end(); ++su) {
+		for(config::child_list::const_iterator su = starting_units.begin(); su != starting_units.end(); ++su) {
 			unit new_unit(gameinfo,**su);
 
 			new_unit.set_side(lexical_cast_default<int>((**ui)["side"],1));
@@ -275,7 +290,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 			const gamemap::location loc(**su);
 			if(x.empty() || y.empty() || !map.on_board(loc)) {
-				state_of_game.available_units.push_back(new_unit);
+				if(player) {
+					player->available_units.push_back(new_unit);
+				}
 			} else {
 				units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
 				std::cerr << "inserting unit for side " << new_unit.side() << "\n";
@@ -312,9 +329,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	}
 
 	// Add all units that are recallable as encountred units.
-	for(std::vector<unit>::iterator help_recall_it = state_of_game.available_units.begin();
-		help_recall_it != state_of_game.available_units.end(); help_recall_it++) {
-		preferences::encountered_units().insert(help_recall_it->type().name());
+	for(std::map<std::string, player_info>::iterator pi = state_of_game.players.begin(); pi!=state_of_game.players.end(); ++pi) {
+		for(std::vector<unit>::iterator help_recall_it = pi->second.available_units.begin(); help_recall_it != pi->second.available_units.end(); help_recall_it++) {
+			preferences::encountered_units().insert(help_recall_it->type().name());
+		}
 	}
 
 	// Add all terrains on the map as encountered terrains.
@@ -360,8 +378,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	                                    state_of_game,status,gameinfo);
 
 	if(recorder.skipping() == false) {
-		for(std::vector<config*>::const_iterator story_i = story.begin();
-		    story_i != story.end(); ++story_i) {
+		for(std::vector<config*>::const_iterator story_i = story.begin(); story_i != story.end(); ++story_i) {
 			show_intro(gui,**story_i, *level);
 		}
 	}
@@ -463,8 +480,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 			std::cerr << "turn: " << turn++ << "\n";
 
-			for(std::vector<team>::iterator team_it = teams.begin()+first_player;
-			    team_it != teams.end(); ++team_it) {
+			for(std::vector<team>::iterator team_it = teams.begin()+first_player; team_it != teams.end(); ++team_it) {
 				log_scope("player turn");
 				player_number = (team_it - teams.begin()) + 1;
 
@@ -695,50 +711,76 @@ redo_turn:
 
 			//add all the units that survived the scenario
 			for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
-				if(un->second.side() == 1) {
+				player_info *player=state_of_game.get_player(teams[un->second.side()-1].save_id());
+
+				if(player) {
 					un->second.new_turn();
 					un->second.new_level();
-					state_of_game.available_units.push_back(un->second);
+					player->available_units.push_back(un->second);
 				}
 			}
 
 			//'continue' is like a victory, except it doesn't announce victory,
 			//and the player returns 100% of gold.
 			if(end_level.result == LEVEL_CONTINUE || end_level.result == LEVEL_CONTINUE_NO_SAVE) {
-				state_of_game.gold = teams[0].gold();
+				for(std::vector<team>::iterator i=teams.begin(); i!=teams.end(); ++i) {
+					player_info *player=state_of_game.get_player(i->save_id());
+					if(player) {
+						player->gold = i->gold();
+					}
+				}
+
 				return end_level.result == LEVEL_CONTINUE_NO_SAVE ? LEVEL_CONTINUE_NO_SAVE : VICTORY;
 			}
 
-			const int remaining_gold = teams[0].gold();
-			const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
-			const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
-			const int finishing_bonus = end_level.gold_bonus ?
-			              (finishing_bonus_per_turn * turns_left) : 0;
-			state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;
+
+			std::stringstream report;
+
+			for(std::vector<team>::iterator i=teams.begin(); i!=teams.end(); ++i) {
+				player_info *player=state_of_game.get_player(i->save_id());
+
+				const int remaining_gold = i->gold();
+				const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
+				const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
+				const int finishing_bonus = end_level.gold_bonus ?
+				             (finishing_bonus_per_turn * turns_left) : 0;
+
+				if(player) {
+					player->gold = ((remaining_gold+finishing_bonus)*80)/100;
+
+					if(state_of_game.players.size()>1) {
+						if(i!=teams.begin()) {
+							report << "\n";
+						}
+
+						report << i->save_id() << ": " << "\n";
+					}
+
+					report << _("Remaining gold") << ": "
+					       << remaining_gold << "\n";
+					if(end_level.gold_bonus) {
+						report << _("Early finish bonus") << ": "
+						       << finishing_bonus_per_turn
+						       << " " << _("per turn") << "\n"
+						       << _("Turns finished early") << ": "
+						       << turns_left << "\n"
+						       << _("Bonus") << ": "
+						       << finishing_bonus << "\n"
+						       << _("Gold") << ": "
+						       << (remaining_gold+finishing_bonus);
+					}
+
+					// xgettext:no-c-format
+					report << "\n" << _("80% of gold is retained for the next scenario") << "\n" << _("Retained Gold") << ": " << player->gold;
+				}
+			}
 
 			gui::show_dialog(gui,NULL,_("Victory"),
 			                 _("You have emerged victorious!"),gui::OK_ONLY);
-			std::stringstream report;
-			report << _("Remaining gold") << ": "
-			       << remaining_gold << "\n";
-			if(end_level.gold_bonus) {
-				report << _("Early finish bonus") << ": "
-				       << finishing_bonus_per_turn
-					   << " " << _("per turn") << "\n"
-				       << _("Turns finished early") << ": "
-				       << turns_left << "\n"
-				       << _("Bonus") << ": "
-					   << finishing_bonus << "\n"
-				       << _("Gold") << ": "
-					   << (remaining_gold+finishing_bonus);
+
+			if(state_of_game.players.size()>0) {
+				gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
 			}
-
-			// xgettext:no-c-format
-			report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
-				   << _("Retained Gold") << ": "
-				   << state_of_game.gold;
-
-			gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
 			return VICTORY;
 		}
 	} //end catch
