@@ -1208,10 +1208,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//the village will become neutral.
 		const size_t team_num = size_t(side-1);
 
-		const gamemap::location loc(cfg);
+		const std::vector<gamemap::location> locs(multiple_locs(cfg));
 
-		if(game_map->is_village(loc)) {
-			get_village(loc,*teams,team_num,*units);
+		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+			if(game_map->is_village(*i)) {
+				get_village(*i,*teams,team_num,*units);
+			}
 		}
 	}
 
