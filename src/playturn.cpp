@@ -1791,12 +1791,17 @@ void turn_info::do_recruit(const std::string& name)
 {
 	team& current_team = teams_[team_num_-1];
 
+	//search for the unit to be recruited in recruits
 	int recruit_num = 0;
 	const std::set<std::string>& recruits = current_team.recruits();
-	for(std::set<std::string>::const_iterator r = recruits.begin(); r != recruits.end(); ++r) {
-		if(name == *r)
-			break;
+	for(std::set<std::string>::const_iterator r = recruits.begin(); ; ++r) {
+		if (r == recruits.end()) {
+			return;
+		}
 
+		if (name == *r) {
+			break;
+		}
 		++recruit_num;
 	}
 
