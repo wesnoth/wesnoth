@@ -20,6 +20,8 @@ endif
 
 pkgdatadir=$(datadir)/@DATADIR@
 
+localedir=$(datadir)/locale
+
 #############################################################################
 #    Wesnoth                                                                #
 #############################################################################
@@ -297,7 +299,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/slider.hpp \
 			 widgets/widget.hpp
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\"
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -DLOCALEDIR=\"$(localedir)\"
 if GCC
     CXXFLAGS += -fno-omit-frame-pointer
 endif

@@ -28,6 +28,11 @@
 #include <clocale>
 #define _(STR) gettext(STR)
 
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#else
+# warning "This platform will need to define parameters like LOCALEDIR"
+#endif
 
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format

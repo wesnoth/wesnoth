@@ -1063,8 +1063,8 @@ int main(int argc, char** argv)
 {
 	// setup locale first so that early error messages can get localized
 	setlocale (LC_ALL, "");
-	bindtextdomain ("wesnoth", "/usr/share/locale");
-	textdomain ("wesnoth");
+	bindtextdomain (PACKAGE, LOCALEDIR);
+	textdomain (PACKAGE);
 
 	try {
 		std::cerr << "started game: " << SDL_GetTicks() << "\n";
