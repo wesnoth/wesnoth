@@ -65,10 +65,6 @@ unit::unit(const game_data& data, const config& cfg) : state_(STATE_NORMAL),
 
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 {
-	if(preferences::show_unit_genders() == false) {
-		gen = false;
-	}
-
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 	if(genders.empty() == false) {
 		return gen ? genders[get_random()%genders.size()] : genders.front();
@@ -621,7 +617,7 @@ void unit::read(const game_data& data, const config& cfg)
 
 	wassert(type_ != NULL);
 
-	const std::string& gender = preferences::show_unit_genders() ? cfg["gender"] : "";
+	const std::string& gender = cfg["gender"];
 	if(gender == "male") {
 		gender_ = unit_race::MALE;
 	} else if(gender == "female") {
