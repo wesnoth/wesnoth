@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-31 02:21+0200\n"
-"PO-Revision-Date: 2004-10-31 12:17+0100\n"
+"PO-Revision-Date: 2004-11-06 17:24+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Fertigkeiten"
 
 #: data/help.cfg:41
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Waffenspezilitäten"
 
 #: data/help.cfg:47
 msgid "Terrains"
@@ -71,6 +71,10 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Bestimmte Einheiten verfügen über Fertigkeiten, die entweder andere "
+"Einheiten direkt beeinflussen oder die Art der Interaktion mit anderen "
+"Einheiten verändern. Diese Fertigkeiten werden nach und nach unter dieser "
+"Kategorie erscheinen, sobald Ihr auf sie gestossen seid."
 
 #: data/help.cfg:62
 msgid ""
@@ -857,7 +861,7 @@ msgstr ""
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
-msgstr ""
+msgstr "Ring des Verlangsamens"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
@@ -865,7 +869,7 @@ msgstr ""
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
-msgstr ""
+msgstr "Stab der Geschwindigkeit"
 
 #: data/items.cfg:618
 msgid "This staff will grant the bearer swift movement."
@@ -1173,6 +1177,9 @@ msgid ""
 "Teams of 2 fight for control of the central bridge choke-point. Good for "
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
+"Zwei 2er Teams kämpfen um die Kontrolle der Brücke, die über den Weslinfluss "
+"führt. Geeignet für eine etwas längere Partie. Spieler 1 und 3, sowie 2 und "
+"4 sollten verbündet sein."
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -1306,15 +1313,14 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "Welche Arten von Einheiten sollte ich ausbilden?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
 "Ihr müsst sorgfältig die Fähigkeiten der Einheiten überprüfen, die links von "
-"der Einheiten-Auswahl-Box stehen, sowie die Kosten (nach dem Einheitennamen) "
-"der Einheit abwägen. Ihr werdet im Verlauf des Tutorials noch mehr darüber "
+"der Einheitenauswahlbox stehen, sowie die Kosten (nach dem Einheitennamen) "
+"der Einheit abwägen. Ihr werdet im Verlauf der Einführung noch mehr darüber "
 "erfahren."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
@@ -1743,7 +1749,6 @@ msgstr ""
 "das immer sagen?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -1752,14 +1757,13 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the level is over. Hopefully, it was a victory condition that was met."
 msgstr ""
-"Manchmal wird es aus dem Einführungsdialog nicht klar, wie man ein Szenario "
-"gewinnen kann. In einem solchen Fall müsst Ihr euch die Gewinnbedingungen "
-"anschauen, die nach dem Einführungsdialog erscheinen. Später könnt Ihr sie "
-"Euch anschauen, wenn ihr auf \"Missionsziele\" im Hauptmenü klickt. Die "
-"Missionsziele sind eine Liste von Bedingungen für Sieg und Niederlage, und "
-"wenn die Bedingungen für Sieg oder Niederlage zutreffen, ist das aktuelle "
-"Szenario vorüber. Dann war es hoffentlich eine Siegbedingung, die erfüllt "
-"wurde."
+"Manchmal ist aus dem Einführungsdialog nicht ganz ersichtlich, wie man ein "
+"bestimmtes Szenario gewinnen kann. In einem solchen Fall solltet Ihr euch "
+"die Missionsziele anschauen, die nach dem Einführungsdialog erscheinen. Ihr "
+"könnt Sie erneut anzeigen lassen, indem ihr »Missionsziele« aus dem "
+"Hauptmenü wählt. Die Missionsziele sind eine Liste von Bedingungen, die "
+"erfüllt oder verhindert werden müssen, um das Szenario erfolgreich zu "
+"beenden."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:254
 msgid "What happens when I win a scenario?"
@@ -2151,7 +2155,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "Wie beeinflussen Resistenzen den Angriffsschaden?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2164,9 +2167,10 @@ msgstr ""
 "und Heilig. Einheiten mit schwerer Rüstung haben eine hohe Resistenz gegen "
 "physische Arten (Klinge, Stich, Wucht), aber dafür eine geringere Resistenz "
 "gegen magischen Schaden (Feuer und Kälte). Alle lebenden Einheiten haben "
-"eine Resistenz gegen heiligen Schaden, wohingegen Untote dafür extrem "
-"anfällig sind. Um die Resistenzen einer Einheit einzusehen, rechtsklicke auf "
-"die Einheit, wähle die Einheitsbeschreibung und dann \"Resistenzen\"."
+"eine Resistenz gegen heiligen Schaden, wohingegen Untote extrem anfällig "
+"sind. Um die Resistenzen einer Einheit einzusehen, klickt mit der rechten "
+"Maustaste auf die Einheit, wählt die Einheitsbeschreibung aus und seht Euch "
+"den Bereich »Resistenztabelle« an."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
@@ -2582,7 +2586,6 @@ msgstr ""
 "Die Kampfkraft neutraler Einheiten ist unabhängig von den Lichtverhältnissen."
 
 #: data/translations/english.cfg:14
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
@@ -2590,7 +2593,7 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 "Lichtscheue Einheiten kämpfen am liebsten im Schutze der Dunkelheit, da sie "
-"tagsüber Chaotic units fight better at night, and worse at day.\n"
+"tagsüber durch die Sonne behindert werden.\n"
 "\n"
 "Tag: -25% Schaden\n"
 "Nacht: +25% Schaden"
@@ -2848,6 +2851,10 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Erstschlag:\n"
+"Durch unermüttliches Training im Schwertkampf, haben diese Krieger "
+"grundsätzlich die Initiative auf ihrer Seite, so dass sie selbst im "
+"Verteidigungsfall den ersten Schlag führen."
 
 #: data/translations/english.cfg:106
 msgid ""
@@ -2877,6 +2884,10 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Vergiften:\n"
+"Mit Gift bestrichene Waffen können bei einem Treffer das Ziel dauerhaft "
+"vergiften. Dadurch veliert das Opfer pro Runde 8 LP, bis es geheilt wird "
+"oder sein LP auf 1 reduziert wurde."
 
 #: data/translations/english.cfg:118
 msgid ""
@@ -2884,6 +2895,11 @@ msgid ""
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
+"Verlangsamen:\n"
+"Unsichtbare Fäden scheinen das Opfer zu behindern und festzuhalten. "
+"Verlangsamte Einheiten können sich nur mit der Hälfte ihrer BP fortbewegen "
+"und ihnen wird pro Waffe eine Attacke abgezogen. Die Verlangsamung hällt für "
+"eine Runde an."
 
 #: data/translations/english.cfg:121
 msgid ""
@@ -2968,11 +2984,11 @@ msgstr ""
 
 #: data/translations/english.cfg:144
 msgid "Next tip"
-msgstr ""
+msgstr "Nächste Tip"
 
 #: data/translations/english.cfg:145
 msgid "Tip of the Day"
-msgstr ""
+msgstr "Tip des Tages"
 
 #: data/translations/english.cfg:146
 msgid "Do not show tips"
@@ -3868,7 +3884,6 @@ msgid "Cavalryman"
 msgstr "Kavallerist"
 
 #: data/units/Cavalryman.cfg:25
-#, fuzzy
 msgid ""
 "The best riders in Wesnoth are recruited into the military to become "
 "Cavalrymen. A Cavalryman, strictly disciplined, does not charge across the "
@@ -3876,8 +3891,9 @@ msgid ""
 "position."
 msgstr ""
 "Nur die besten Reiter von Wesnoth werden in die Kavallerie aufgenommen. Die "
-"sehr disziplinierten Einheiten eignen sich bestens dazu Dörfer zu erobern "
-"und zu verteidigen."
+"sehr disziplinierten Einheiten stürmen nicht wild und ungestüm über das "
+"Schlachtfeld wie die Reiter, sondern legen mehr Wert darauf ihre Position zu "
+"halten."
 
 #: data/units/Cave_Spider.cfg:3
 msgid "Giant Spider"
@@ -5580,7 +5596,7 @@ msgstr "Magier des Lichtes"
 #: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
-msgstr ""
+msgstr "Lichtaura,Kurieren"
 
 #: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
 msgid ""
@@ -7122,7 +7138,7 @@ msgstr "+Deutsche Übersetzung"
 
 #: src/about.cpp:189
 msgid "+Greek Translation"
-msgstr "+Grichische Übersetzung"
+msgstr "+Griechische Übersetzung"
 
 #: src/about.cpp:194
 msgid "+Hungarian Translation"
@@ -7254,7 +7270,7 @@ msgstr "Einheiten gesichtet! ($friends verbündete, $enemies gegnerische)"
 
 #: src/actions.cpp:1808
 msgid "(press $hotkey to continue)"
-msgstr ""
+msgstr "(Drückt $hotkey um fortzufahren)"
 
 #: src/dialogs.cpp:90
 msgid "Advance Unit"
@@ -7266,7 +7282,7 @@ msgstr "Welchen Pfad soll diese Einheit beschreiten?"
 
 #: src/dialogs.cpp:160
 msgid "No objectives available"
-msgstr ""
+msgstr "Keine Missionsziele vorhanden"
 
 #: src/dialogs.cpp:177
 msgid "Save Game"
@@ -7408,7 +7424,7 @@ msgstr "Unsichtbar"
 
 #: src/font.cpp:171
 msgid "Vera.ttf"
-msgstr ""
+msgstr "Vera.ttf"
 
 #: src/game.cpp:138
 msgid "Do you want to save a replay of this scenario?"
@@ -7477,7 +7493,7 @@ msgstr "Server: "
 
 #: src/game.cpp:1017
 msgid "Could not connect to host."
-msgstr ""
+msgstr "Zum Gastgeber konnte keine Verbindung aufgebaut werden."
 
 #: src/game.cpp:1017 src/game.cpp:1032 src/game.cpp:1038 src/game.cpp:1071
 #: src/game.cpp:1100 src/game.cpp:1114 src/game.cpp:1116 src/game.cpp:1118
@@ -7500,14 +7516,12 @@ msgid ",Name,Version,Author,Downloads"
 msgstr ",Name,Version,Autor,Heruntergeladen"
 
 #: src/game.cpp:1063
-#, fuzzy
 msgid "Publish campaign: "
-msgstr "Elfenhauptmann"
+msgstr "Kampagne veröffentlichen:"
 
 #: src/game.cpp:1067
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Kampagnen herunterladen"
+msgstr "Kampagne löschen:"
 
 #: src/game.cpp:1071
 msgid "There are no campaigns available for download from this server."
@@ -7523,7 +7537,7 @@ msgstr "Kampagnen herunterladen"
 
 #: src/game.cpp:1094
 msgid "Downloading campaign..."
-msgstr ""
+msgstr "Herunterladen der Kampagne..."
 
 #: src/game.cpp:1112
 msgid "Campaign Installed"
@@ -7535,11 +7549,11 @@ msgstr "Die Kampagne wurde erfolgreich installiert."
 
 #: src/game.cpp:1114
 msgid "Network communication error."
-msgstr ""
+msgstr "Netzwerkverbindungsfehler"
 
 #: src/game.cpp:1116
 msgid "Remote host disconnected."
-msgstr ""
+msgstr "Der Gastgeber hat die Verbindung unterbrochen."
 
 #: src/game.cpp:1118
 msgid ""
@@ -7553,7 +7567,7 @@ msgstr ""
 
 #: src/game.cpp:1133 src/game.cpp:1170 src/game.cpp:1194
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "Der Server gab folgenden Fehler zurück: \""
 
 #: src/game.cpp:1136
 #, fuzzy
@@ -7595,7 +7609,7 @@ msgstr "Hotseat"
 
 #: src/game.cpp:1211
 msgid "Play a multiplayer game sharing the same machine"
-msgstr ""
+msgstr "Eine Mehrspielerpartie am selben Rechner spielen"
 
 #: src/game.cpp:1212
 msgid "Human vs AI"
@@ -7620,14 +7634,15 @@ msgstr "Wählt die gewünschte Sprache"
 #: src/game.cpp:1547
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
+"Die Videohardware konnte nicht initialisiert werden. Es wird beendet.\n"
 
 #: src/game.cpp:1549
 msgid "Could not initialize fonts. Exiting.\n"
-msgstr ""
+msgstr "Die Schriftarten konnten nicht initialsiert werden. Es wird beendet.\n"
 
 #: src/help.cpp:591
 msgid "Advances to"
-msgstr ""
+msgstr "Nächste Stufe:"
 
 #: src/help.cpp:631
 msgid "Alignment"
@@ -7694,29 +7709,25 @@ msgid "or"
 msgstr "oder"
 
 #: src/help.cpp:876
-#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 "Dieses Gelände verhält sich wie das Gelände $terrains was Bewegungskosten "
 "und Verteidigung angeht."
 
 #: src/help.cpp:878
-#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
 
 #: src/help.cpp:882
-#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
 "Dieses Gelände verhält sich wie das Gelände Bergfried. Wenn sich ein "
-"Herrführer auf einem Feld mit diesem Geländetyp befindet, können Einheiten "
-"ausgebildet werden."
+"Herrführer auf einem Feld mit diesem Geländetyp befindet, können in "
+"benachbarten Burgfeldern Einheiten ausgebildet werden."
 
 #: src/help.cpp:884
-#, fuzzy
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -7725,7 +7736,6 @@ msgstr ""
 "Geländetyp können somit Einheiten ausgebildet werden."
 
 #: src/help.cpp:886
-#, fuzzy
 msgid "This terrain gives healing."
 msgstr ""
 "Dieses Gelände stellt die Gesundheit von Einheiten, die sich auf diesem Feld "
@@ -7870,15 +7880,15 @@ msgstr "Einstellungen..."
 
 #: src/multiplayer.cpp:129
 msgid "Share View"
-msgstr ""
+msgstr "Ansicht teilen"
 
 #: src/multiplayer.cpp:130
 msgid "Share Maps"
-msgstr ""
+msgstr "Karten teilen"
 
 #: src/multiplayer.cpp:131
 msgid "Share None"
-msgstr ""
+msgstr "Nichts teilen"
 
 #: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:178
 msgid "No multiplayer sides."
@@ -7942,16 +7952,15 @@ msgstr "Gold"
 
 #: src/multiplayer_client.cpp:142
 msgid "Waiting for game to start..."
-msgstr ""
+msgstr "Warte auf Spielstart..."
 
 #: src/multiplayer_client.cpp:253
-#, fuzzy
 msgid "Connect to Host"
-msgstr "Mit Kampagnenserver verbinden"
+msgstr "Mit Gastgeber verbinden"
 
 #: src/multiplayer_client.cpp:255
 msgid "Choose host to connect to"
-msgstr ""
+msgstr "Wählt den Gastgeber, zu dem Ihr verbinden wollt"
 
 #: src/multiplayer_client.cpp:273
 msgid "Connecting to remote host..."
@@ -7959,7 +7968,7 @@ msgstr "Verbinde zum Server/Gastgeber..."
 
 #: src/multiplayer_client.cpp:302
 msgid "You must log in to this server"
-msgstr ""
+msgstr "Ih müsst Euch an diesem Server anmelden"
 
 #: src/multiplayer_client.cpp:382
 msgid "Getting game data..."
@@ -7987,7 +7996,7 @@ msgstr ""
 
 #: src/multiplayer_client.cpp:688 src/multiplayer_client.cpp:691
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/multiplayer_client.cpp:782
 msgid "Leader: "
@@ -8093,7 +8102,7 @@ msgstr "Farbe"
 
 #: src/multiplayer_connect.cpp:559 src/multiplayer_connect.cpp:563
 msgid "Waiting for network players to join"
-msgstr ""
+msgstr "Warte auf weitere Mitspieler..."
 
 #: src/multiplayer_lobby.cpp:145
 msgid "1"
@@ -8121,7 +8130,7 @@ msgstr "Spielende"
 
 #: src/playlevel.cpp:700
 msgid "The game is over."
-msgstr ""
+msgstr "Das Spiel ist vorbei."
 
 #: src/playlevel.cpp:713
 msgid "Defeat"
@@ -8174,6 +8183,8 @@ msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"Das Spiel kann nicht fortgesetzt werden, da ein Verbindungsfehler "
+"aufgetreten ist. Möchtet Ihr den Spielstand speichern?"
 
 #: src/playturn.cpp:78
 msgid "It is now your turn"
@@ -8217,10 +8228,12 @@ msgstr ""
 #: src/playturn.cpp:1135 src/playturn.cpp:1140
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
+"Einige Eurer Einheiten verfügen noch über Bewegungspunkte. Wollt Ihr Euren "
+"Zug wirklich schon beenden?"
 
 #: src/playturn.cpp:1156
 msgid "Auto-Save"
-msgstr ""
+msgstr "Autospeichern"
 
 #: src/playturn.cpp:1158
 msgid "Could not auto save the game. Please save the game manually."
@@ -8262,7 +8275,7 @@ msgstr "Ausgaben"
 
 #: src/playturn.cpp:1633
 msgid "You have no units available to recruit."
-msgstr ""
+msgstr "Es gibt keine Einheiten, die Ihr ausbilden könntet."
 
 #: src/playturn.cpp:1645
 msgid "Recruit"
@@ -8607,120 +8620,4 @@ msgstr "Datei löschen"
 
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
-msgstr ""
-
-#~ msgid "Game"
-#~ msgstr "Spiel"
-
-#~ msgid "Scenario"
-#~ msgstr "Szenario"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr ""
-#~ "Es konnte keine Verbindung mit dem entfernten Server/Gastgeber "
-#~ "hergestellt werden"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "&misc/observer.png,Beobachter"
-
-#~ msgid "Next unit"
-#~ msgstr "Nächste Einheit"
-
-#~ msgid "Undo"
-#~ msgstr "Rückgängig"
-
-#~ msgid "Redo"
-#~ msgstr "Wiederherstellen"
-
-#~ msgid "Zoom In"
-#~ msgstr "Vergrößern"
-
-#~ msgid "Zoom Out"
-#~ msgstr "Verkleinern"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Vollbild"
-
-#~ msgid "Unit Description"
-#~ msgstr "Einheitenbeschreibung"
-
-#~ msgid "Repeat Recruit"
-#~ msgstr "Ausbilden wiederholen"
-
-#~ msgid "Toggle Grid"
-#~ msgstr "Gitternetz einblenden"
-
-#~ msgid "Status Table"
-#~ msgstr "Spielübersicht"
-
-#~ msgid "Mute"
-#~ msgstr "Musik und Ton ausschalten"
-
-#~ msgid "Speak"
-#~ msgstr "Sprechen"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "Einheit erstellen (Debug!)"
-
-#~ msgid "Change Unit Side (Debug!)"
-#~ msgstr "Einheitenzugehörigkeit ändern (Debug!)"
-
-#~ msgid "Preferences"
-#~ msgstr "Einstellungen"
-
-#~ msgid "Scenario Objectives"
-#~ msgstr "Missionsziele"
-
-#~ msgid "Quit Game"
-#~ msgstr "Spiel beenden"
-
-#~ msgid "Set Label"
-#~ msgstr "Beschriftung erstellen"
-
-#~ msgid "Show Enemy Moves"
-#~ msgstr "Gegnerische Bewegungen anzeigen"
-
-#~ msgid "Best Possible Enemy Moves"
-#~ msgstr "Bestmögliche gegnerische Bewegungen"
-
-#~ msgid "Quit Editor"
-#~ msgstr "Editor beenden"
-
-#~ msgid "New Map"
-#~ msgstr "Neue Karte"
-
-#~ msgid "Load Map"
-#~ msgstr "Karte laden"
-
-#~ msgid "Save Map"
-#~ msgstr "Karte speichen"
-
-#~ msgid "Cut"
-#~ msgstr "Ausschneiden"
-
-#~ msgid "Copy"
-#~ msgstr "Kopieren"
-
-#~ msgid "Paste"
-#~ msgstr "Einfügen"
-
-#~ msgid "Update Shroud Now"
-#~ msgstr "Schleier jetzt aktualisieren"
-
-#~ msgid "Continue Move"
-#~ msgstr "Bewegung fortsetzen"
-
-#~ msgid "Find Label or Unit"
-#~ msgstr "Beschriftung oder Einheiten suchen"
-
-#~ msgid "Speak to Ally"
-#~ msgstr "Zu Verbündeten sprechen"
-
-#~ msgid "Speak to All"
-#~ msgstr "Zu allen sprechen"
-
-#~ msgid "View Chat Log"
-#~ msgstr "Gesprächsprotokoll anzeigen"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Möchtet Ihr das Spiel wirklich beenden?"
+msgstr "Das löschen der Datei ist fehlgeschlagen."
