@@ -58,6 +58,6 @@ public:
 #define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);
 #define log_scope2(a,b) lg::scope_logger scope_logging_object__(lg::a, b);
 
-#define LOG_HELPER(a, b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b)
+#define LOG_STREAM(a, b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b)
 
 #endif
