@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-29 09:34+0200\n"
-"PO-Revision-Date: 2005-03-09 11:48+0200\n"
+"PO-Revision-Date: 2005-03-29 11:57+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -13,9 +13,8 @@ msgstr ""
 "X-Poedit-Country: UNITED KINGDOM\n"
 
 #: data/fonts.cfg:4
-#, fuzzy
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
-msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf,sazanami-gothic.ttf"
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -80,7 +79,6 @@ msgid "Fundamentals of Gameplay"
 msgstr "Fundamentals of Gameplay"
 
 #: data/help.cfg:68
-#, fuzzy
 msgid ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
 "covers how to play and the basic mechanics behind the game. Keep in mind "
@@ -88,12 +86,9 @@ msgid ""
 "follow the links included."
 msgstr ""
 "This page outlines all you need to know to play Battle for Wesnoth. It "
-"covers how to play and the basic mechanics behind the game. For more "
-"information on conquering the game, you may wish to consult "
-"<ref>dst=basic_strategy text='Basic Strategy'</ref> and "
-"<ref>dst=multiplayer_strategy text='Multiplayer Strategy'</ref>. Keep in "
-"mind that this is just an outline - for special exceptions and situations, "
-"please follow the links included."
+"covers how to play and the basic mechanics behind the game. Keep in mind "
+"that this is just an outline - for special exceptions and situations, please "
+"follow the links included."
 
 #: data/help.cfg:70
 msgid ""
@@ -228,7 +223,6 @@ msgstr ""
 "the fastest route over this and subsequent turns."
 
 #: data/help.cfg:95
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -245,17 +239,16 @@ msgstr ""
 "\n"
 "\n"
 "Each unit has a certain number of movement points which are expended when "
-"moving into a new hex, depending on the <ref>dst=terrain text=Terrain</ref> "
-"of that particular hex. For instance, grassland nearly always costs 1 "
-"movement point to enter. Exactly how many movement points are spent entering "
-"a hex depends on the unit type - in forest, elvish units only spend 1 "
-"movement point, most human and orc units spend 2, while horsemen spend 3. "
-"You can learn how many movement points a unit requires to enter a certain "
-"terrain type by right-clicking on it, selecting Unit Description, and then "
-"look at <italic>text='Terrain Modifiers'</italic>."
+"moving into a new hex, depending on the Terrain of that particular hex. For "
+"instance, grassland nearly always costs 1 movement point to enter. Exactly "
+"how many movement points are spent entering a hex depends on the unit type - "
+"in forest, elvish units only spend 1 movement point, most human and orc "
+"units spend 2, while horsemen spend 3. You can learn how many movement "
+"points a unit requires to enter a certain terrain type by right-clicking on "
+"it, selecting Unit Description, and then look at <italic>text='Terrain "
+"Modifiers'</italic>."
 
 #: data/help.cfg:97
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -268,12 +261,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Another thing to keep in mind while moving is <ref>dst=zones_of_control "
-"text='Zones of Control'</ref>. Each unit generates a zone of control in the "
-"hexes immediately surrounding it, and any enemy unit entering those hexes "
-"immediately ends its movement. Learning how to use zones of control to your "
-"advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
-"text='Skirmishers'</ref> can ignore zones of control."
+"Another thing to keep in mind while moving is Zones of Control. Each unit "
+"generates a zone of control in the hexes immediately surrounding it, and any "
+"enemy unit entering those hexes immediately ends its movement. Learning how "
+"to use zones of control to your advantage is an important part of Wesnoth, "
+"as only <ref>dst=ability_skirmisher text='Skirmishers'</ref> can ignore "
+"zones of control."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -334,7 +327,6 @@ msgstr ""
 "<header>text='Chance to hit'</header>"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -349,15 +341,14 @@ msgstr ""
 "\n"
 "\n"
 "With two exceptions, the chance to hit a unit is based solely on its defence "
-"rating in the <ref>dst=terrain text=Terrain</ref> it is currently standing "
-"in. This may be found by right-clicking a unit, selecting Unit Description, "
-"and then look at <italic>text='Terrain Modifiers'</italic>. For instance, "
-"most elves have a defence rating of 70% in forest, meaning a unit attacking "
-"them has only a 30% chance of hitting them. Conversely, the elf's chance of "
-"hitting the attacker in return depends on what terrain the attacker is in."
+"rating in the Terrain it is currently standing in. This may be found by "
+"right-clicking a unit, selecting Unit Description, and then look at "
+"<italic>text='Terrain Modifiers'</italic>. For instance, elves have a "
+"defence rating of 70% in forest, meaning a unit attacking them has only a "
+"30% chance of hitting them. Conversely, the elf's chance of hitting the "
+"attacker in return depends on what terrain the attacker is in."
 
 #: data/help.cfg:112
-#, fuzzy
 msgid ""
 "\n"
 "There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
@@ -367,11 +358,11 @@ msgid ""
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
 "\n"
-"There are two exceptions to this rule: <ref>dst=magical_attacks "
-"text='Magical attacks'</ref> and <ref>dst=ability_marksman text=Marksmen</"
-"ref>. Magical attacks always have a 70% chance to hit, regardless of "
-"terrain, and, when used offensively, Marksmen always have at least a 60% "
-"chance to hit, regardless of terrain."
+"There are two exceptions to this rule: <ref>dst=weaponspecial_magical "
+"text='Magical attacks'</ref> and <ref>dst=weaponspecial_marksman "
+"text=Marksmen</ref>. Magical attacks always have a 70% chance to hit, "
+"regardless of terrain, and, when used offensively, Marksmen always have at "
+"least a 60% chance to hit, regardless of terrain."
 
 #: data/help.cfg:114
 msgid ""
@@ -404,7 +395,6 @@ msgstr ""
 "below."
 
 #: data/help.cfg:118
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -416,9 +406,9 @@ msgstr ""
 "\n"
 "\n"
 "A few units have special abilities which affect damage dealt in combat. The "
-"most common of these is <ref>dst=ability_charge text=Charge</ref>, which "
-"doubles the damage dealt by both attacker and defender when the unit with "
-"Charge attacks."
+"most common of these is <ref>dst=weaponspecial_charge text=Charge</ref>, "
+"which doubles the damage dealt by both attacker and defender when the unit "
+"with Charge attacks."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -584,7 +574,6 @@ msgstr ""
 "some cases, you will be given a choice of advancement options."
 
 #: data/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -594,7 +583,7 @@ msgstr ""
 "\n"
 "\n"
 "Keep in mind that while most units have three levels, not all do, and that "
-"occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
+"occasional units (such as <ref>dst=unit_Mage text=Mages</ref>) may have four."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -631,15 +620,14 @@ msgstr ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 
 #: data/help.cfg:174
-#, fuzzy
 msgid ""
 "\n"
 "<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
 "trolls) will automatically heal 8HP every turn."
 msgstr ""
 "\n"
-"<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
-"as trolls) will automatically heal 8HP every turn."
+"<ref>dst=ability_regenerates text=Regeneration</ref>: Certain units (such as "
+"trolls) will automatically heal 8HP every turn."
 
 #: data/help.cfg:175
 msgid ""
@@ -1253,16 +1241,16 @@ msgid "Charge"
 msgstr "Charge"
 
 #: data/scenarios/multiplayer/Clash.cfg:3
-#, fuzzy
 msgid "Clash"
-msgstr "Classic"
+msgstr "Clash"
 
 #: data/scenarios/multiplayer/Clash.cfg:5
-#, fuzzy
 msgid ""
 "Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
 "Recommended setting of 2 gold per village."
-msgstr "A duel map for super fast play. Recommended setting of 2g per village."
+msgstr ""
+"Small map for 2v2.   Teams should be player 1 and 3, vs player 2 and 4.  "
+"Recommended setting of 2 gold per village."
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1270,21 +1258,21 @@ msgstr "Forest of Fear"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:3
 msgid "Hexcake"
-msgstr ""
+msgstr "Hexcake"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
-msgstr ""
+msgstr "2 vs. 2 or 3 vs. 3 team game."
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:3
-#, fuzzy
 msgid "Icy Waters"
-msgstr "Holy Water"
+msgstr "Icy Waters"
 
 #: data/scenarios/multiplayer/IcyWaters.cfg:5
 msgid ""
 "Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 msgstr ""
+"Battle in and around the icy waters of this crucial harbor in North Wesnoth."
 
 #: data/scenarios/multiplayer/Random_Scenario.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario.cfg:16
@@ -1472,9 +1460,8 @@ msgid "King of the Hill"
 msgstr "King of the Hill"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:4
-#, fuzzy
 msgid "Basic Training"
-msgstr "+Basque Translation"
+msgstr "Basic Training"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:71
 msgid ""
@@ -1485,7 +1472,6 @@ msgstr ""
 "surely you can explain the art of combat to me..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:75
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1502,7 +1488,6 @@ msgid "Recruit a unit"
 msgstr "Recruit a unit"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
-#, fuzzy
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Excellent! You have recruited an Elvish Fighter."
 
@@ -1520,7 +1505,6 @@ msgid "How do I recruit units?"
 msgstr "How do I recruit units?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:91
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1561,7 +1545,6 @@ msgid "How should I choose what kind of units to recruit?"
 msgstr "How should I choose what kind of units to recruit?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:93
-#, fuzzy
 msgid ""
 "You have to carefully review their skills, which are displayed to the left "
 "of the unit selection box,  and cost, which is displayed after the name of "
@@ -1600,7 +1583,6 @@ msgid "End your turn"
 msgstr "End your turn"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:116
-#, fuzzy
 msgid "You have successfully ended your turn."
 msgstr "You have successfully ended your turn."
 
@@ -1653,7 +1635,6 @@ msgid "Move your Elvish Fighter next to Merle"
 msgstr "Move your Elvish Fighter next to Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:159
-#, fuzzy
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
@@ -1746,7 +1727,6 @@ msgid "Attack Merle"
 msgstr "Attack Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:194
-#, fuzzy
 msgid "You have successfully attacked Merle."
 msgstr "You have successfully attacked Merle."
 
@@ -1755,7 +1735,6 @@ msgid "Can Merle retaliate from my attack?"
 msgstr "Can Merle retaliate from my attack?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:199
-#, fuzzy
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
 "This means that after each blow from the attacker, the defender retaliates "
@@ -1780,7 +1759,7 @@ msgstr ""
 "melee attack. Most units have more powerful melee attacks than ranged "
 "attacks. Units with strong ranged attacks are useful in retaliation against "
 "melee oriented units. Some melee units without ranged attacks won't be able "
-"to retaliate at all. However ranged units cannot shoot across multiple "
+"to retaliate at all. However, ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:200
@@ -1826,15 +1805,14 @@ msgid "End your turn, and wait for Merle to attack you."
 msgstr "End your turn, and wait for Merle to attack you."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:216
-#, fuzzy
 msgid ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
 "Your fighter has survived Merle's attack. Whenever a unit survives a battle, "
-"it gets experience from the combat. Once a unit gains enough experience, it "
-"advances to the next level, and becomes more powerful."
+"it receives experience from the combat. Once a unit gains enough experience, "
+"it advances to the next level, and becomes more powerful."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:221
 msgid "What's experience?"
@@ -1859,7 +1837,6 @@ msgid "What happens when a unit advances?"
 msgstr "What happens when a unit advances?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:222
-#, fuzzy
 msgid ""
 "When a unit advances, it transforms into a different unit type. This unit "
 "type is dependent on what the unit was originally, but occasionally there "
@@ -1889,7 +1866,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "What happens when a unit moves onto a village?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:251
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1900,7 +1876,7 @@ msgid ""
 "benefit of villages, villages can be used in battle. Villages heal the units "
 "on them 8 HP per turn."
 msgstr ""
-"Whenever a unit moves onto a village, he flags the village for his side. "
+"Whenever a unit moves onto a village, it flags the village for its side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
 "a side give the side several benefits, including giving the side an extra "
 "gold coin every turn, and reducing the total upkeep cost of that side's "
@@ -1914,7 +1890,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "How do I heal when there aren't any villages nearby?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:252
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1924,11 +1899,11 @@ msgid ""
 "scenario all of your units are fully healed."
 msgstr ""
 "There are ways to heal even without villages. If a unit does not move or "
-"attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
-"him he cannot receive rest-heal. Also, there are some units which heal the "
-"units surrounding them. The Elvish Shaman is one such unit; units next to an "
-"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a scenario "
-"all your units are healed fully."
+"attack for 1 turn, it heals 2 HP from resting. However, if attacked by an "
+"enemy unit, it cannot receive rest-heal. Also, there are some units which "
+"heal the units surrounding them. The Elvish Shaman is one such unit; units "
+"next to an Elvish Shaman are healed 4 HP per turn. Finally, whenever you win "
+"a scenario all your units are healed fully."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:259
 msgid ""
@@ -1956,7 +1931,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:300
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:264
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
@@ -1966,7 +1940,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:308
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:272
-#, fuzzy
 msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
@@ -1975,7 +1948,6 @@ msgstr ""
 "gained wisdom from my teachings anyway."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:320
-#, fuzzy
 msgid "You have successfully completed the first training scenario."
 msgstr "You have successfully completed the first training scenario."
 
@@ -1989,7 +1961,6 @@ msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "How do I know how to complete a scenario? Will you always tell me?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:325
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -2000,8 +1971,8 @@ msgid ""
 msgstr ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialogue. In this case you need to look at the scenario objectives, which "
-"appear after the opening dialogue. It can also be accessed by clicking "
-"'Objectives' on the menu. The scenario objectives are a list of victory "
+"appear after the opening dialogue. The objectives can also be accessed by "
+"clicking 'Objectives' on the menu. The scenario objectives list victory "
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 
@@ -2025,7 +1996,6 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:333
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:284
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr "Do you want to review any of the skills learned in this scenario?"
 
@@ -2040,7 +2010,6 @@ msgid "I'm done reviewing skills!"
 msgstr "I'm done reviewing skills!"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:358
-#, fuzzy
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
 "over. We will now proceed to the next scenario, in which you will fight me "
@@ -2063,7 +2032,6 @@ msgstr ""
 "battle."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:50
-#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
@@ -2078,7 +2046,6 @@ msgstr ""
 "Elvish Fighters and Elvish Archers."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:69
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recalling\n"
@@ -2090,7 +2057,7 @@ msgid ""
 "Specialties\n"
 "Objects"
 msgstr ""
-"@Skills covered:\n"
+"Skills covered:\n"
 "Recalling\n"
 "Traits\n"
 "Gold\n"
@@ -2098,29 +2065,23 @@ msgstr ""
 "Terrains\n"
 "Resistance\n"
 "Specialities\n"
-"Objects\n"
-"Playing Wesnoth\n"
-"@Objectives\n"
-"@Victory\n"
-"Defeat Delfador"
+"Objects"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:71
-#, fuzzy
 msgid "Defeat Delfador"
-msgstr "Delfador"
+msgstr "Defeat Delfador"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:75
 #: data/scenarios/tutorial/utils.cfg:51
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Death of Konrad"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/utils.cfg:59
 msgid "Turns run out"
-msgstr ""
+msgstr "Turns run out"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:94
-#, fuzzy
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "You have successfully recalled your Elvish Fighter."
 
@@ -2132,7 +2093,6 @@ msgstr "You have successfully recalled your Elvish Fighter."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:179
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:233
-#, fuzzy
 msgid "En garde!"
 msgstr "En garde!"
 
@@ -2157,7 +2117,6 @@ msgid "How should I decide which units to recall?"
 msgstr "How should I decide which units to recall?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:100
-#, fuzzy
 msgid ""
 "You should usually recall units that have already advanced to the next "
 "level. However, you may also want to recall units that have high experience, "
@@ -2170,7 +2129,6 @@ msgstr ""
 "for the scenario you are in; for example in a forest scenario, recall elves."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:110
-#, fuzzy
 msgid ""
 "You may notice that your units have slightly different statistics than the "
 "statistics shown before you recruited them. This is because they have been "
@@ -2253,7 +2211,6 @@ msgid "How do I get gold?"
 msgstr "How do I get gold?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:134
-#, fuzzy
 msgid ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2321,7 +2278,6 @@ msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr "Each hex has a terrain, which gives the hex distinctive properties."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -2352,7 +2308,6 @@ msgid "How do I find out the properties of a specific terrain?"
 msgstr "How do I find out the properties of a specific terrain?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
-#, fuzzy
 msgid ""
 "To find out the properties of a terrain with respect to a specific unit, "
 "right-click on the unit, select Unit Description, then look at Terrain "
@@ -2401,7 +2356,6 @@ msgid "How does resistance affect attack damage?"
 msgstr "How does resistance affect attack damage?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:182
-#, fuzzy
 msgid ""
 "There are 6 different damage types: blade, pierce, impact, fire, cold, and "
 "holy. Heavily armored units have high resistance to the physical types: "
@@ -2526,7 +2480,6 @@ msgid "How long do these objects last?"
 msgstr "How long do these objects last?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:236
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
@@ -2546,7 +2499,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:319
 msgid "Next, you may want to begin a campaign, or play multiplayer."
-msgstr ""
+msgstr "Next, you may want to begin a campaign, or play multiplayer."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:324
 msgid "How do I play a campaign?"
@@ -2583,7 +2536,6 @@ msgid "That was explained well! But.."
 msgstr "That was explained well! But.."
 
 #: data/scenarios/tutorial/utils.cfg:44
-#, fuzzy
 msgid ""
 "Skills covered:\n"
 "Recruiting units\n"
@@ -2592,23 +2544,20 @@ msgid ""
 "Gaining experience\n"
 "Winning scenarios"
 msgstr ""
-"@Skills covered:\n"
+"Skills covered:\n"
 "Recruiting units\n"
 "Moving units\n"
 "Attacking enemy units\n"
 "Gaining experience\n"
-"Winning scenarios\n"
-"@Current objective:\n"
-"{OBJECTIVE}"
+"Winning scenarios"
 
 #: data/scenarios/tutorial/utils.cfg:45
 msgid "Current objective:"
-msgstr ""
+msgstr "Current objective:"
 
 #: data/scenarios/tutorial/utils.cfg:55
-#, fuzzy
 msgid "Death of Delfador"
-msgstr "Delfador"
+msgstr "Death of Delfador"
 
 #: data/schedules.cfg:123 data/schedules.cfg:130
 msgid "Underground"
@@ -2750,25 +2699,24 @@ msgid "Canyon"
 msgstr "Canyon"
 
 #: data/terrain.cfg:438
-#, fuzzy
 msgid "ruin"
-msgstr "drain"
+msgstr "ruin"
 
 #: data/terrain.cfg:448
 msgid "sunken ruin"
-msgstr ""
+msgstr "sunken ruin"
 
 #: data/terrain.cfg:459
 msgid "swamp ruin"
-msgstr ""
+msgstr "swamp ruin"
 
 #: data/terrain.cfg:470
 msgid "River Ford"
-msgstr ""
+msgstr "River Ford"
 
 #: data/terrain.cfg:480
 msgid "Lava"
-msgstr ""
+msgstr "Lava"
 
 #: data/themes/default.cfg:78
 msgid "Menu"
@@ -3113,18 +3061,16 @@ msgid "loyal"
 msgstr "loyal"
 
 #: data/traits.cfg:5
-#, fuzzy
 msgid "Zero upkeep"
-msgstr "upkeep"
+msgstr "Zero upkeep"
 
 #: data/traits.cfg:15
-#, fuzzy
 msgid "undead"
-msgstr "Undead"
+msgstr "undead"
 
 #: data/traits.cfg:16
 msgid "Immune to poison"
-msgstr ""
+msgstr "Immune to poison"
 
 #: data/traits.cfg:23
 msgid "strong"
@@ -3132,7 +3078,7 @@ msgstr "strong"
 
 #: data/traits.cfg:40
 msgid "dextrous"
-msgstr ""
+msgstr "dextrous"
 
 #: data/traits.cfg:52
 msgid "quick"
@@ -3429,15 +3375,14 @@ msgstr ""
 "of the target. (This doesn't work with allied units.)"
 
 #: data/translations/english.cfg:96
-#, fuzzy
 msgid ""
 "Berserk:\n"
 "When used offensively, this attack presses the engagement until one of the "
 "combatants is slain."
 msgstr ""
 "Berserk:\n"
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain."
+"When used offensively, this attack presses the engagement until one of the "
+"combatants is slain."
 
 #: data/translations/english.cfg:99
 msgid ""
@@ -4396,7 +4341,7 @@ msgstr "sceptre"
 
 #: data/units/Dark_Sorcerer.cfg:3
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "Dark Sorcerer"
 
 #: data/units/Dark_Sorcerer.cfg:16
 msgid ""
@@ -4405,6 +4350,10 @@ msgid ""
 "made them stronger, but not nearly as powerful as they would have been as "
 "Liches. Because they retain their humanity, they do not fear holy magic. "
 msgstr ""
+"Dark Sorcerers did not fully embrace the power of the undead by becoming "
+"undead themselves. Instead, their advanced studies of the dark arts have "
+"made them stronger, but not nearly as powerful as they would have been as "
+"Liches. Because they retain their humanity, they do not fear holy magic. "
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
@@ -4570,7 +4519,6 @@ msgid "Drake Clasher"
 msgstr "Drake Clasher"
 
 #: data/units/Drake_Clasher.cfg:18
-#, fuzzy
 msgid ""
 "With their stumpy vestigial wings and inability to use their great internal "
 "fire as a weapon some may think that these Drakes are disadvantaged; they "
@@ -4580,11 +4528,11 @@ msgid ""
 "The greatest Clashers can become Drake Gladiators or Slashers."
 msgstr ""
 "With their stumpy vestigial wings and inability to use their great internal "
-"fire as a weapon some may think that these Drakes are disadvantaged, but "
-"they would be mistaken. To compensate they have become great craftsmen that "
-"can fabricate weapons with emerald edges, and wear heavy armour. The "
-"Clashers' weapons of choice are the sword and spear, which they use to great "
-"effect. The greatest Clashers can become Drake Gladiators or Slashers."
+"fire as a weapon, some may think that these Drakes are disadvantaged; they "
+"would be mistaken. To compensate they have become great craftsmen that can "
+"fabricate weapons with emerald edges, and wear heavy armour. The Clashers' "
+"weapons of choice are the sword and spear, which they use to great effect. "
+"The greatest Clashers can become Drake Gladiators or Slashers."
 
 #: data/units/Drake_Fighter.cfg:4
 msgid "Drake Fighter"
@@ -7738,9 +7686,8 @@ msgid "+Catalan Translation"
 msgstr "+Catalan Translation"
 
 #: src/about.cpp:164
-#, fuzzy
 msgid "+Chinese Translation"
-msgstr "+Finnish Translation"
+msgstr "+Chinese Translation"
 
 #: src/about.cpp:168
 msgid "+Czech Translation"
@@ -7811,9 +7758,8 @@ msgid "+Slovak Translation"
 msgstr "+Slovak Translation"
 
 #: src/about.cpp:284
-#, fuzzy
 msgid "+Slovenian Translation"
-msgstr "+Slovak Translation"
+msgstr "+Slovenian Translation"
 
 #: src/about.cpp:288
 msgid "+Spanish Translation"
@@ -8084,7 +8030,7 @@ msgstr "invisible"
 
 #: src/filechooser.cpp:38
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src/filechooser.cpp:39 src/multiplayer_connect.cpp:492
 #: src/multiplayer_create.cpp:52 src/multiplayer_wait.cpp:148
@@ -8355,14 +8301,12 @@ msgid "Battle for Wesnoth"
 msgstr "Battle for Wesnoth"
 
 #: src/game_events.cpp:569
-#, fuzzy
 msgid "Victory:"
-msgstr "Victory"
+msgstr "Victory:"
 
 #: src/game_events.cpp:572
-#, fuzzy
 msgid "Defeat:"
-msgstr "Defeat"
+msgstr "Defeat:"
 
 #: src/help.cpp:1062
 msgid "Advances to: "
@@ -8490,7 +8434,7 @@ msgstr "System default language"
 
 #: src/leader_list.cpp:124 src/leader_list.cpp:130
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: src/mapgen_dialog.cpp:78
 msgid "Close Window"
@@ -8601,7 +8545,6 @@ msgid "Faction"
 msgstr "Faction"
 
 #: src/multiplayer_connect.cpp:487
-#, fuzzy
 msgid "Color"
 msgstr "Colour"
 
@@ -8795,7 +8738,7 @@ msgstr "Vacant Slots"
 
 #: src/multiplayer_lobby.cpp:128
 msgid "<no games open>"
-msgstr ""
+msgstr "<no games open>"
 
 #: src/multiplayer_ui.cpp:50
 msgid "Red"
@@ -8835,7 +8778,7 @@ msgstr "Brown"
 
 #: src/multiplayer_ui.cpp:68
 msgid "Invalid colour"
-msgstr ""
+msgstr "Invalid colour"
 
 #: src/multiplayer_wait.cpp:114
 msgid "Leader: "
@@ -8871,11 +8814,11 @@ msgstr "Choose your side:"
 
 #: src/multiplayer_wait.cpp:421
 msgid "("
-msgstr ""
+msgstr "("
 
 #: src/multiplayer_wait.cpp:421
 msgid ")"
-msgstr ""
+msgstr ")"
 
 #: src/multiplayer_wait.cpp:422 src/playturn.cpp:1783
 msgid "unit^Gold"
@@ -9186,11 +9129,11 @@ msgstr "Couldn't find label or unit containing the string '$search'."
 
 #: src/playturn.cpp:2417
 msgid "Saved Theme Preference: "
-msgstr ""
+msgstr "Saved Theme Preference: "
 
 #: src/playturn.cpp:2423
 msgid "New theme will take effect on next new or loaded game."
-msgstr ""
+msgstr "New theme will take effect on next new or loaded game."
 
 #: src/playturn.cpp:2506
 msgid "Place Label"
@@ -9310,69 +9253,67 @@ msgstr "Observers:"
 
 #: src/serialization/parser.cpp:119
 msgid "Unexpected characters at line start"
-msgstr ""
+msgstr "Unexpected characters at line start"
 
 #: src/serialization/parser.cpp:133
 msgid "Missing closing tag for tag $tag (file $file, line $line)"
-msgstr ""
+msgstr "Missing closing tag for tag $tag (file $file, line $line)"
 
 #: src/serialization/parser.cpp:134
 msgid "Missing closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Missing closing tag for tag $tag (line $line)"
 
 #: src/serialization/parser.cpp:149
 msgid "Unterminated [element] tag"
-msgstr ""
+msgstr "Unterminated [element] tag"
 
 #: src/serialization/parser.cpp:160 src/serialization/parser.cpp:198
-#, fuzzy
 msgid "Invalid tag name"
-msgstr "Invalid era selected"
+msgstr "Invalid tag name"
 
 #: src/serialization/parser.cpp:163
 msgid "Unterminated [+element] tag"
-msgstr ""
+msgstr "Unterminated [+element] tag"
 
 #: src/serialization/parser.cpp:180
 msgid "Invalid closing tag name"
-msgstr ""
+msgstr "Invalid closing tag name"
 
 #: src/serialization/parser.cpp:183
 msgid "Unterminated closing tag"
-msgstr ""
+msgstr "Unterminated closing tag"
 
 #: src/serialization/parser.cpp:185
 msgid "Unexpected closing tag"
-msgstr ""
+msgstr "Unexpected closing tag"
 
 #: src/serialization/parser.cpp:190
 msgid "Found invalid closing tag for tag $tag (file $file, line $line)"
-msgstr ""
+msgstr "Found invalid closing tag for tag $tag (file $file, line $line)"
 
 #: src/serialization/parser.cpp:191
 msgid "Found invalid closing tag for tag $tag (line $line)"
-msgstr ""
+msgstr "Found invalid closing tag for tag $tag (line $line)"
 
 #: src/serialization/parser.cpp:217 src/serialization/parser.cpp:229
-#, fuzzy
 msgid "Empty variable name"
-msgstr "Invalid era selected"
+msgstr "Empty variable name"
 
 #: src/serialization/parser.cpp:223
 msgid "Unexpected characters after variable name (expected , or =)"
-msgstr ""
+msgstr "Unexpected characters after variable name (expected , or =)"
 
 #: src/serialization/parser.cpp:251 src/serialization/parser.cpp:275
 msgid "Unterminated quoted string"
-msgstr ""
+msgstr "Unterminated quoted string"
 
 #: src/serialization/parser.cpp:320
 msgid "$error in file $file (line $line, column $column)"
-msgstr ""
+msgstr "$error in file $file (line $line, column $column)"
 
 #: src/serialization/parser.cpp:321
 msgid "$error (line $line, column $column)"
-msgstr ""
+msgstr "$error (line $line, column $column)"
 
 #: src/titlescreen.cpp:186
 msgid "TitleScreen button^Tutorial"
@@ -9461,177 +9402,3 @@ msgstr "lawful"
 #: src/unit_types.cpp:926
 msgid "neutral"
 msgstr "neutral"
-
-#, fuzzy
-#~ msgid "Next unit"
-#~ msgstr "Neutral units: "
-
-#, fuzzy
-#~ msgid "End Unit Turn"
-#~ msgstr "End Turn"
-
-#, fuzzy
-#~ msgid "Undo"
-#~ msgstr "Undead"
-
-#, fuzzy
-#~ msgid "Redo"
-#~ msgstr "Red"
-
-#, fuzzy
-#~ msgid "Default Zoom"
-#~ msgstr "Default"
-
-#, fuzzy
-#~ msgid "Unit Description"
-#~ msgstr "Giant Scorpion"
-
-#, fuzzy
-#~ msgid "Repeat Recruit"
-#~ msgstr "Recruit"
-
-#, fuzzy
-#~ msgid "Speak"
-#~ msgstr "Special"
-
-#, fuzzy
-#~ msgid "Preferences"
-#~ msgstr "Princess"
-
-#, fuzzy
-#~ msgid "Scenario Objectives"
-#~ msgstr "+Scenario Designers"
-
-#, fuzzy
-#~ msgid "Quit Game"
-#~ msgstr "Quit the game"
-
-#, fuzzy
-#~ msgid "Set Label"
-#~ msgstr "Place Label"
-
-#, fuzzy
-#~ msgid "Set Terrain"
-#~ msgstr "Terrain"
-
-#, fuzzy
-#~ msgid "New Map"
-#~ msgstr "User Map"
-
-#, fuzzy
-#~ msgid "Load Map"
-#~ msgstr "Load Game"
-
-#, fuzzy
-#~ msgid "Save Map"
-#~ msgstr "Share Maps"
-
-#, fuzzy
-#~ msgid "Save As"
-#~ msgstr "Saved"
-
-#, fuzzy
-#~ msgid "Flood Fill"
-#~ msgstr "blood kiss"
-
-#, fuzzy
-#~ msgid "Fill Selection"
-#~ msgstr "Skeleton"
-
-#, fuzzy
-#~ msgid "Paste"
-#~ msgstr "Castle"
-
-#, fuzzy
-#~ msgid "Resize Map"
-#~ msgstr "User Map"
-
-#, fuzzy
-#~ msgid "Select All"
-#~ msgstr "Select unit:"
-
-#, fuzzy
-#~ msgid "Draw Terrain"
-#~ msgstr "Terrain"
-
-#, fuzzy
-#~ msgid "Continue Move"
-#~ msgstr "Connect to Server"
-
-#, fuzzy
-#~ msgid "View Chat Log"
-#~ msgstr "Chat Log"
-
-#, fuzzy
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Do you really want to delete this game?"
-
-#, fuzzy
-#~ msgid "player"
-#~ msgstr "Players:"
-
-#, fuzzy
-#~ msgid "Show Grid"
-#~ msgstr "Show replay"
-
-#, fuzzy
-#~ msgid "Turn Dialog"
-#~ msgstr "Tutorial"
-
-#, fuzzy
-#~ msgid "Turn Bell"
-#~ msgstr "Turns: "
-
-#, fuzzy
-#~ msgid "Change the music volume"
-#~ msgstr "Change the language"
-
-#, fuzzy
-#~ msgid "Choose Resolution"
-#~ msgstr "Choose weapon:"
-
-#, fuzzy
-#~ msgid "Hotkey Settings"
-#~ msgstr "Settings..."
-
-#, fuzzy
-#~ msgid "Delete File"
-#~ msgstr "Delete Save"
-
-#, fuzzy
-#~ msgid "Move your fighter onto a village"
-#~ msgstr "Move your fighter onto a village."
-
-#, fuzzy
-#~ msgid ""
-#~ "Congratulations! By defeating me, you complete the second training "
-#~ "scenario."
-#~ msgstr "You have successfully completed the first training scenario."
-
-#~ msgid ""
-#~ "The rank of Commander is held by those who lead battle groups into "
-#~ "combat. Possessing leadership skills, they give lower-level units "
-#~ "improved performance in combat. Commanders are best skilled with the "
-#~ "sword, although they also carry a bow to use when necessary. If the "
-#~ "Commander is lost, so is the battle."
-#~ msgstr ""
-#~ "The rank of Commander is held by those who lead battle groups into "
-#~ "combat. Possessing leadership skills, they give lower-level units "
-#~ "improved performance in combat. Commanders are best skilled with the "
-#~ "sword, although they also carry a bow to use when necessary. If the "
-#~ "Commander is lost, so is the battle."
-
-#~ msgid "Konrad"
-#~ msgstr "Konrad"
-
-#~ msgid "Merle"
-#~ msgstr "Merle"
-
-#~ msgid ""
-#~ "Congratulations! You have defeated me, and completed the second and final "
-#~ "training scenario. Next, you may want to begin a campaign, or play "
-#~ "multiplayer."
-#~ msgstr ""
-#~ "Congratulations! You have defeated me, and completed the second and final "
-#~ "training scenario. Next, you may want to begin a campaign, or play "
-#~ "multiplayer."
