@@ -15,6 +15,7 @@
 
 #include "config.hpp"
 #include "display.hpp"
+#include "font.hpp"
 #include "gamestatus.hpp"
 #include "mapgen.hpp"
 #include "multiplayer_lobby.hpp"
@@ -35,7 +36,7 @@ struct network_game_manager {
 	~network_game_manager();
 };
 
-class multiplayer_game_setup_dialog : public lobby::dialog
+class multiplayer_game_setup_dialog : public lobby::dialog, public font::floating_label_context
 {
 public:
 	multiplayer_game_setup_dialog(display& disp, game_data& units_data,

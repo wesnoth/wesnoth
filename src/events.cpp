@@ -237,7 +237,12 @@ void pump()
 
 				break;
 			}
-			
+		
+			case SDL_MOUSEMOTION: {
+				raise_help_string_event(event.motion.x,event.motion.y);
+				break;
+			}
+
 			case SDL_MOUSEBUTTONDOWN: {
 				
 				if(event.button.button == SDL_BUTTON_LEFT) {
@@ -347,6 +352,18 @@ void raise_volatile_undraw_event()
 		//so we must use indexes instead of iterators here.
 		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
 			event_handlers[i1]->volatile_undraw();
+		}
+	}
+}
+
+void raise_help_string_event(int mousex, int mousey)
+{
+	if(event_contexts.empty() == false) {
+
+		const std::vector<handler*>& event_handlers = event_contexts.back().handlers;
+
+		for(size_t i1 = 0, i2 = event_handlers.size(); i1 != i2 && i1 < event_handlers.size(); ++i1) {
+			event_handlers[i1]->process_help_string(mousex,mousey);
 		}
 	}
 }

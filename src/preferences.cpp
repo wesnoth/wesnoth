@@ -567,75 +567,87 @@ void show_preferences_dialog(display& disp)
 	sound_slider.set_min(1);
 	sound_slider.set_max(100);
 	sound_slider.set_value(sound_volume());
+	sound_slider.set_help_string(string_table["help_string_sound_slider"]);
 
 	slider_rect.y = music_pos;
 	gui::slider music_slider(disp,slider_rect);
 	music_slider.set_min(1);
 	music_slider.set_max(100);
 	music_slider.set_value(music_volume());
+	music_slider.set_help_string(string_table["help_string_music_slider"]);
 
 	slider_rect.y = scroll_pos;
 	gui::slider scroll_slider(disp,slider_rect);
 	scroll_slider.set_min(1);
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(scroll_speed());
+	scroll_slider.set_help_string(string_table["help_string_scroll_slider"]);
 
 	slider_rect.y = gamma_pos;
 	gui::slider gamma_slider(disp,slider_rect);
 	gamma_slider.set_min(50);
 	gamma_slider.set_max(200);
 	gamma_slider.set_value(gamma());
+	gamma_slider.set_help_string(string_table["help_string_gamma_slider"]);
 
 	gui::button fullscreen_button(disp,string_table["full_screen"],
 	                              gui::button::TYPE_CHECK);
-
 	fullscreen_button.set_check(fullscreen());
-
 	fullscreen_button.set_location(slider_left,buttons_pos );
+	fullscreen_button.set_help_string(string_table["help_string_full_screen"]);
 
 	gui::button turbo_button(disp,string_table["speed_turbo"],gui::button::TYPE_CHECK);
 	turbo_button.set_check(turbo());
-
 	turbo_button.set_location(slider_left,buttons_pos  + 50);
+	turbo_button.set_help_string(string_table["help_string_accelerated_speed"]);
 
 	gui::button show_ai_moves_button(disp,string_table["skip_ai_moves"],gui::button::TYPE_CHECK);
 	show_ai_moves_button.set_check(!show_ai_moves());
 	show_ai_moves_button.set_location(slider_left,buttons_pos + 100);
+	show_ai_moves_button.set_help_string(string_table["help_string_skip_ai_moves"]);
 
 	gui::button grid_button(disp,string_table["grid_button"],gui::button::TYPE_CHECK);
 	grid_button.set_check(grid());
-
 	grid_button.set_location(slider_left,buttons_pos  + 150);
+	grid_button.set_help_string(string_table["help_string_show_grid"]);
 
 	gui::button floating_labels_button(disp,string_table["floating_labels_button"],gui::button::TYPE_CHECK);
 	floating_labels_button.set_check(show_floating_labels());
 	floating_labels_button.set_location(slider_left,buttons_pos + 200);
+	floating_labels_button.set_help_string(string_table["help_string_show_floating_labels"]);
 
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_location(slider_left,buttons_pos + 250);
+	resolution_button.set_help_string(string_table["help_string_video_mode"]);
 
 	gui::button turn_dialog_button(disp,string_table["turn_dialog_button"],gui::button::TYPE_CHECK);
 	turn_dialog_button.set_check(turn_dialog());
 	turn_dialog_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos);
+	turn_dialog_button.set_help_string(string_table["help_string_turn_dialog"]);
 
 	gui::button turn_bell_button(disp,string_table["turn_bell_button"],gui::button::TYPE_CHECK);
 	turn_bell_button.set_check(turn_bell());
 	turn_bell_button.set_location(slider_left+fullscreen_button.width()+100,buttons_pos + 50);
+	turn_bell_button.set_help_string(string_table["help_string_turn_bell"]);
 
 	gui::button side_colours_button(disp,string_table["show_side_colours"],gui::button::TYPE_CHECK);
 	side_colours_button.set_check(show_side_colours());
 	side_colours_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 100);
+	side_colours_button.set_help_string(string_table["help_string_show_team_colors"]);
 
 	gui::button colour_cursors_button(disp,string_table["show_colour_cursors"],gui::button::TYPE_CHECK);
 	colour_cursors_button.set_check(use_colour_cursors());
 	colour_cursors_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 150);
+	colour_cursors_button.set_help_string(string_table["help_string_show_color_cursors"]);
 
 	gui::button haloes_button(disp,string_table["show_haloes"],gui::button::TYPE_CHECK);
 	haloes_button.set_check(show_haloes());
 	haloes_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 200);
+	haloes_button.set_help_string(string_table["help_string_show_haloing"]);
 
 	gui::button hotkeys_button (disp,string_table["hotkeys_button"]);
 	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,buttons_pos + 250);
+	hotkeys_button.set_help_string(string_table["help_string_hotkeys"]);
 
 	bool redraw_all = true;
 
@@ -717,8 +729,8 @@ void show_preferences_dialog(display& disp)
 				//the underlying frame buffer is changing, so cancel
 				//the surface restorer restoring the frame buffer state
 				restorer.cancel();
+				break;
 			}
-			break;
 		}
 
 		if(turn_bell_button.process(mousex,mousey,left_button)) {

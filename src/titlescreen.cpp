@@ -115,6 +115,8 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	const hotkey::basic_handler key_handler(&screen);
 
 	const video_change_detector disp_change_detector(screen.video());
+
+	const font::floating_label_context label_manager;
 	
 	const scoped_sdl_surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));
 	const scoped_sdl_surface title_surface(scale_surface(title_surface_unscaled,screen.x(),screen.y()));
@@ -163,6 +165,8 @@ TITLE_RESULT show_title(display& screen, int* ntip)
 	for(b = 0; b != nbuttons; ++b) {
 		buttons.push_back(button(screen,string_table[button_labels[b]]));
 		buttons.back().set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
+		buttons.back().set_help_string(string_table["help_string_" + button_labels[b]]);
+		std::cerr << "set help string for '" << button_labels[b] << "' -> '" << string_table["help_string_" + button_labels[b]] << "'\n";
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 

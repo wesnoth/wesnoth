@@ -26,6 +26,7 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <stack>
 #include <string>
 
 namespace {
@@ -617,10 +618,10 @@ class floating_label
 public:
 	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
 		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, font::ALIGN align,
-		int border_size)
+		int border_size, bool scroll_with_map)
 		  : surf_(NULL), buf_(NULL), foreground_(NULL), text_(text), font_size_(font_size), colour_(colour), bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
 		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-			alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size)
+			alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size), scroll_(scroll_with_map)
 	{}
 
 	void move(double xmove, double ymove);
@@ -635,6 +636,8 @@ public:
 	const std::string& text() const;
 
 	void show(bool value);
+
+	bool scroll() const { return scroll_; }
 
 private:
 
@@ -652,13 +655,14 @@ private:
 	bool visible_;
 	font::ALIGN align_;
 	int border_;
+	bool scroll_;
 };
 
 typedef std::map<int,floating_label> label_map;
 label_map labels;
 int label_id = 1;
 
-bool hide_floating_labels = false;
+std::stack<std::set<int> > label_contexts;
 
 void floating_label::move(double xmove, double ymove)
 {
@@ -816,8 +820,12 @@ void floating_label::show(bool value) { visible_ = value; }
 namespace font {
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
 					   double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
-					   const SDL_Color* bg_colour, int border_size)
+					   const SDL_Color* bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode)
 {
+	if(label_contexts.empty()) {
+		return 0;
+	}
+
 	if(lifetime <= 0) {
 		lifetime = -1;
 	}
@@ -827,7 +835,8 @@ int add_floating_label(const std::string& text, int font_size, const SDL_Color& 
 		bg = *bg_colour;
 	}
 
-	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size)));
+	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size,scroll_mode == ANCHOR_LABEL_MAP)));
+	label_contexts.top().insert(label_id-1);
 	return label_id-1;
 }
 
@@ -839,10 +848,23 @@ void move_floating_label(int handle, double xmove, double ymove)
 	}
 }
 
+void scroll_floating_labels(double xmove, double ymove)
+{
+	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
+		if(i->second.scroll()) {
+			i->second.move(xmove,ymove);
+		}
+	}
+}
+
 void remove_floating_label(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
+		if(label_contexts.empty() == false) {
+			label_contexts.top().erase(i->first);
+		}
+
 		labels.erase(i);
 	}
 }
@@ -881,28 +903,24 @@ SDL_Rect get_floating_label_rect(int handle)
 	return empty_rect;
 }
 
-floating_label_manager::floating_label_manager()
-{
-}
-
-floating_label_manager::~floating_label_manager()
-{
-	labels.clear();
-}
-
-floating_label_hider::floating_label_hider() : old_(hide_floating_labels)
+floating_label_context::floating_label_context()
 {
 	SDL_Surface* const screen = SDL_GetVideoSurface();
 	if(screen != NULL) {
 		draw_floating_labels(screen);
 	}
 
-	hide_floating_labels = true;
+	label_contexts.push(std::set<int>());
 }
 
-floating_label_hider::~floating_label_hider()
+floating_label_context::~floating_label_context()
 {
-	hide_floating_labels = old_;
+	const std::set<int>& labels = label_contexts.top();
+	for(std::set<int>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+		remove_floating_label(*i);
+	}
+
+	label_contexts.pop();
 
 	SDL_Surface* const screen = SDL_GetVideoSurface();
 	if(screen != NULL) {
@@ -912,32 +930,40 @@ floating_label_hider::~floating_label_hider()
 
 void draw_floating_labels(SDL_Surface* screen)
 {
-	if(hide_floating_labels) {
+	if(label_contexts.empty()) {
 		return;
 	}
+
+	const std::set<int>& context = label_contexts.top();
 
 	//draw the labels in the order they were added, so later added labels (likely to be tooltips)
 	//are displayed over earlier added labels.
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		i->second.draw(screen);
+		if(context.count(i->first) > 0) {
+			i->second.draw(screen);
+		}
 	}
 }
 
 void undraw_floating_labels(SDL_Surface* screen)
 {
-	if(hide_floating_labels) {
+	if(label_contexts.empty()) {
 		return;
 	}
+
+	const std::set<int>& context = label_contexts.top();
 
 	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
 	//into the exact state it started in.
 	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		i->second.undraw(screen);
+		if(context.count(i->first) > 0) {
+			i->second.undraw(screen);
+		}
 	}
 
 	//remove expired labels
 	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(j->second.expired()) {
+		if(context.count(i->first) > 0 && j->second.expired()) {
 			labels.erase(j++);
 		} else {
 			j++;

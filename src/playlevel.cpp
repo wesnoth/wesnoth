@@ -295,7 +295,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 	std::cerr << "done initializing display... " << (SDL_GetTicks() - ticks) << "\n";
 
 	//object that will make sure that labels are removed at the end of the scenario
-	const font::floating_label_manager labels_manager;
+	const font::floating_label_context labels_manager;
 
 	const halo::manager halo_manager(gui);
 

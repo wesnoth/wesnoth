@@ -67,7 +67,8 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area()), builder_(built_terrains, map),
 					   first_turn_(true), in_game_(false), map_labels_(*this,map),
-					   tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0)
+					   tod_hex_mask1(NULL), tod_hex_mask2(NULL), diagnostic_label_(0),
+					   help_string_(0)
 {
 	if(non_interactive())
 		updatesLocked_++;
@@ -259,6 +260,7 @@ void display::scroll(int xmove, int ymove)
 	//only invalidate if we've actually moved
 	if(orig_x != xpos_ || orig_y != ypos_) {
 		map_labels_.scroll(orig_x - xpos_, orig_y - ypos_);
+		font::scroll_floating_labels(orig_x - xpos_, orig_y - ypos_);
 		invalidate_all();
 	}
 }
@@ -1951,7 +1953,7 @@ void display::float_label(const gamemap::location& loc, const std::string& text,
 
 	const SDL_Color colour = {red,green,blue,255};
 	font::add_floating_label(text,24,colour,get_location_x(loc)+zoom_/2,get_location_y(loc),
-	                         0,-2,60,screen_area());
+	                         0,-2,60,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
 }
 
 void display::draw_unit(int x, int y, SDL_Surface* image,
@@ -2226,6 +2228,30 @@ void display::begin_game()
 {
 	in_game_ = true;
 	create_buttons();
+}
+
+int display::set_help_string(const std::string& str)
+{
+	font::remove_floating_label(help_string_);
+
+	const SDL_Color colour = {0x0,0x00,0x00,0x77};
+	help_string_ = font::add_floating_label(str,18,font::NORMAL_COLOUR,x()/2,y(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,5);
+	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
+	font::move_floating_label(help_string_,0.0,-double(rect.h));
+	return help_string_;
+}
+
+void display::clear_help_string(int handle)
+{
+	if(handle == help_string_) {
+		font::remove_floating_label(handle);
+		help_string_ = 0;
+	}
+}
+
+void display::clear_all_help_strings()
+{
+	clear_help_string(help_string_);
 }
 
 void display::create_buttons()

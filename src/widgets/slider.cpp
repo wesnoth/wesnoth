@@ -151,7 +151,7 @@ void slider::process()
 
 	int new_value = value_;
 
-	if(dragging_) {
+	if(dragging_ || new_click && point_in_rect(mousex,mousey,rect)) {
 		int tmp = mousex - location().x;
 		if (tmp < 0)
 			tmp = 0;

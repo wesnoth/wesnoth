@@ -112,26 +112,17 @@ SDL_Rect draw_wrapped_text(display* gui, const SDL_Rect& area, int font_size,
 			     int x, int y, int max_width, SDL_Surface* bg = NULL);
 
 
-/// structure which manages floating labels. All floating labels on the screen
-/// will be removed when this object is destroyed
-struct floating_label_manager
+/// structure which will hide all current floating labels, and cause floating labels
+/// instantiated after it is created to be displayed
+struct floating_label_context
 {
-	floating_label_manager();
-	~floating_label_manager();
-};
-
-/// structure which will hide floating labels for its lifetime
-/// it will draw the floating labels in its constructor, and then
-/// undraw them in its destructor
-struct floating_label_hider
-{
-	floating_label_hider();
-	~floating_label_hider();
-private:
-	bool old_;
+	floating_label_context();
+	~floating_label_context();
 };
 
 enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
+
+enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 
 /// add a label floating on the screen above everything else.
 /// 'text': the text to display
@@ -145,10 +136,13 @@ enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
 /// @returns a handle to the label which can be used with other label functions
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
 					   double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN,
-					   const SDL_Color* bg_colour=NULL, int border_size=0);
+					   const SDL_Color* bg_colour=NULL, int border_size=0, LABEL_SCROLL_MODE scroll_mode=ANCHOR_LABEL_SCREEN);
 
 /// moves the floating label given by 'handle' by (xmove,ymove)
 void move_floating_label(int handle, double xmove, double ymove);
+
+/// moves all floating labels that have 'scroll_mode' set to ANCHOR_LABEL_MAP
+void scroll_floating_labels(double xmove, double ymove);
 
 /// removes the floating label given by 'handle' from the screen
 void remove_floating_label(int handle);

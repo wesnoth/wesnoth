@@ -38,7 +38,7 @@ extern const int ButtonVPadding;
 
 bool in_dialog();
 
-struct dialog_manager : private cursor::setter, private font::floating_label_hider, private halo::halo_hider {
+struct dialog_manager : private cursor::setter, private font::floating_label_context, private halo::halo_hider {
 	dialog_manager();
 	~dialog_manager();
 

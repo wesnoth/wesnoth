@@ -35,6 +35,8 @@ public:
 
 	virtual bool requires_event_focus() const { return false; }
 
+	virtual void process_help_string(int mousex, int mousey) {}
+
 protected:
 	handler();
 	virtual ~handler();
@@ -70,6 +72,7 @@ void raise_process_event();
 void raise_draw_event();
 void raise_volatile_draw_event();
 void raise_volatile_undraw_event();
+void raise_help_string_event(int mousex, int mousey);
 }
 
 #endif

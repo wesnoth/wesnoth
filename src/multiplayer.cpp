@@ -97,25 +97,31 @@ multiplayer_game_setup_dialog::multiplayer_game_setup_dialog(
 	turns_slider_->set_min(20);
 	turns_slider_->set_max(100);
 	turns_slider_->set_value(50);
+	turns_slider_->set_help_string(string_table["help_string_turns_slider"]);
 
 	village_gold_slider_.assign(new gui::slider(disp_,rect));
 	village_gold_slider_->set_min(1);
 	village_gold_slider_->set_max(5);
 	village_gold_slider_->set_value(1);
+	village_gold_slider_->set_help_string(string_table["help_string_village_gold_slider"]);
 
 	xp_modifier_slider_.assign(new gui::slider(disp_,rect));
 	xp_modifier_slider_->set_min(25);
 	xp_modifier_slider_->set_max(200);
 	xp_modifier_slider_->set_value(100);
+	xp_modifier_slider_->set_help_string(string_table["help_string_xp_modifier_slider"]);
 
 	fog_game_.assign(new gui::button(disp_,string_table["fog_of_war"],gui::button::TYPE_CHECK));
 	fog_game_->set_check(false);
+	fog_game_->set_help_string(string_table["help_string_fog_of_war"]);
 
 	shroud_game_.assign(new gui::button(disp_,string_table["shroud"],gui::button::TYPE_CHECK));
 	shroud_game_->set_check(false);
+	shroud_game_->set_help_string(string_table["help_string_shroud"]);
 
 	observers_game_.assign(new gui::button(disp_,string_table["observers"],gui::button::TYPE_CHECK));
 	observers_game_->set_check(true);
+	observers_game_->set_help_string(string_table["help_string_observers"]);
 
 	cancel_game_.assign(new gui::button(disp_,string_table["cancel_button"]));
 	launch_game_.assign(new gui::button(disp_,string_table["ok_button"]));

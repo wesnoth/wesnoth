@@ -8,18 +8,19 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o) :
-	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false), volatile_(o.volatile_)
+	disp_(o.disp_), rect_(o.rect_), focus_(o.focus_), dirty_(o.dirty_), hidden_(false), volatile_(o.volatile_),
+	help_string_(o.help_string_), help_text_(o.help_text_)
 {
 	bg_backup();
 }
 
 widget::widget(display& disp) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false), help_string_(0)
 {
 }
 
 widget::widget(display& disp, SDL_Rect& rect) :
-	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false)
+	disp_(&disp), rect_(EmptyRect), focus_(true), dirty_(true), hidden_(false), volatile_(false), help_string_(0)
 {
 	set_location(rect);
 	bg_backup();
@@ -180,6 +181,24 @@ void widget::volatile_undraw()
 	}
 
 	bg_restore();
+}
+
+void widget::set_help_string(const std::string& str)
+{
+	help_text_ = str;
+}
+
+void widget::process_help_string(int mousex, int mousey)
+{
+	if(point_in_rect(mousex,mousey,location())) {
+		if(help_string_ == 0 && help_text_ != "") {
+			std::cerr << "setting help string to '" << help_text_ << "'\n";
+			help_string_ = disp().set_help_string(help_text_);
+		}
+	} else if(help_string_ > 0) {
+		disp().clear_help_string(help_string_);
+		help_string_ = 0;
+	}
 }
 
 }

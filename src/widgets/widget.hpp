@@ -44,6 +44,10 @@ public:
 	void set_dirty(bool dirty=true);
 	const bool dirty() const;
 
+	void set_help_string(const std::string& str);
+
+	virtual void process_help_string(int mousex, int mousey);
+
 protected:
 	widget(const widget &o);
 	widget(display& disp);
@@ -69,6 +73,9 @@ private:
 	bool hidden_;
 
 	bool volatile_;
+
+	std::string help_text_;
+	int help_string_;
 };
 
 }
