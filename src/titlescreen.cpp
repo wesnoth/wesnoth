@@ -17,7 +17,7 @@
 #include "SDL_ttf.h"
 
 #define LOG_DP lg::info(lg::display)
-#define ERR_DP lg::info(lg::display)
+#define ERR_DP lg::err(lg::display)
 
 namespace {
 
