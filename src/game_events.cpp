@@ -447,6 +447,78 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			sprintf(buf,"%f",value);
 			state_of_game->variables[name] = buf;
 		}
+
+		// random generation works as follows:
+		// random=[comma delimited list]
+		// If the first element of the list looks like a number*, then we
+		// assume that we are supposed to generate an integer in a specified
+		// range, so the second element had better be a number, too. Otherwise,
+		// the elements are treated as strings and one is randomly chosen from
+		// the list. 
+		// * "looks like a number" means first char is a digit or "-".
+		const std::string& random = cfg["random"];
+		if(random.empty() == false) {
+			std::string random_value;
+			int pos = random.find(",");
+			if (pos != std::string::npos) {
+				const std::string first = random.substr(0, pos);
+				int tmp;
+
+				if (first.length() == 0 || 
+					(first[0] != '-' && isdigit(first[0]) == 0)) { 
+					// choose an element from the list
+					std::cerr << "random: string list provided... ";
+					std::vector<int> commas;
+					commas.push_back(-1);
+					commas.push_back(pos);
+					pos = random.find(",", pos+1);
+					while (pos != std::string::npos) {
+						commas.push_back(pos);
+						pos = random.find(",", pos+1);
+					}
+					commas.push_back(random.size());
+					tmp = rand() % (commas.size() - 1);
+					random_value = random.substr(commas[tmp]+1,
+											commas[tmp+1]-(commas[tmp]+1));
+				}
+				else {
+					// looks like we're supplied with a numerical range
+					std::cerr << "random: numerical range provided... ";
+					const std::string second = random.substr(pos+1,
+															 random.length());
+
+					std::stringstream ss(std::stringstream::in | 
+										 std::stringstream::out);
+					int low, high;
+					ss << first + " " + second;
+					ss >> low;
+					ss >> high;
+					ss.clear();
+
+					if (low > high) {
+						tmp = low;
+						low = high;
+						high = tmp;
+					}
+
+					if (low == high) {
+						ss << low;
+					}
+					else {
+						tmp = rand()%(high-low) + low;
+						ss << tmp;
+					}
+					ss >> random_value;
+				}
+			}
+			else {
+				// no comma found, so just set it to the supplied string
+				std::cerr << "random: only one value provided... ";
+				random_value = random;
+			}
+			std::cerr << "value chosen: '" << random_value << "'" << std::endl;
+			state_of_game->variables[name] = random_value;
+		}
 	}
 
 	//conditional statements
