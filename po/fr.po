@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-06-29 00:22+0200\n"
+"POT-Creation-Date: 2004-07-18 15:40+0200\n"
 "PO-Revision-Date: 2004-06-24 14:04+0200\n"
 "Last-Translator: Yann Dirson <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/about.cpp:229 src/help.cpp:2025 src/show_dialog.cpp:470
+#: src/about.cpp:232 src/help.cpp:2058 src/show_dialog.cpp:470
 msgid "Close"
 msgstr ""
 
@@ -146,11 +146,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:368 src/game.cpp:889 src/titlescreen.cpp:153
+#: src/dialogs.cpp:368 src/game.cpp:904 src/titlescreen.cpp:153
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:370 src/game.cpp:936 src/titlescreen.cpp:154
+#: src/dialogs.cpp:370 src/game.cpp:951 src/titlescreen.cpp:154
 msgid "Multiplayer"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:387 src/game.cpp:912
+#: src/dialogs.cpp:387 src/game.cpp:927
 msgid "Difficulty"
 msgstr ""
 
@@ -233,12 +233,12 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/dialogs.cpp:716 src/display.cpp:823 src/help.cpp:476
+#: src/dialogs.cpp:716 src/display.cpp:823 src/help.cpp:477
 #: src/playturn.cpp:1723
 msgid "level"
 msgstr ""
 
-#: src/dialogs.cpp:737 src/display.cpp:841 src/help.cpp:522
+#: src/dialogs.cpp:737 src/display.cpp:841 src/help.cpp:530
 #: src/playturn.cpp:1887 src/unit.cpp:986
 msgid "HP"
 msgstr ""
@@ -250,17 +250,17 @@ msgid "XP"
 msgstr ""
 
 #: src/dialogs.cpp:754 src/dialogs.cpp:867 src/display.cpp:857
-#: src/help.cpp:523 src/playturn.cpp:1889 src/unit.cpp:1022
+#: src/help.cpp:531 src/playturn.cpp:1889 src/unit.cpp:1022
 msgid "Moves"
 msgstr ""
 
-#: src/dialogs.cpp:771 src/display.cpp:874 src/help.cpp:564
-#: src/reports.cpp:229
+#: src/dialogs.cpp:771 src/display.cpp:874 src/help.cpp:572
+#: src/playturn.cpp:615 src/reports.cpp:229
 msgid "melee"
 msgstr ""
 
-#: src/dialogs.cpp:772 src/display.cpp:875 src/help.cpp:564
-#: src/reports.cpp:230
+#: src/dialogs.cpp:772 src/display.cpp:875 src/help.cpp:572
+#: src/playturn.cpp:615 src/reports.cpp:230
 msgid "ranged"
 msgstr ""
 
@@ -320,142 +320,142 @@ msgstr ""
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/game.cpp:541
+#: src/game.cpp:556
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:761 src/multiplayer_connect.cpp:104
+#: src/game.cpp:776 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:772 src/game.cpp:777 src/game.cpp:782 src/playlevel.cpp:487
+#: src/game.cpp:787 src/game.cpp:792 src/game.cpp:797 src/playlevel.cpp:487
 #: src/playlevel.cpp:700
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:882
+#: src/game.cpp:897
 msgid "There are no campaigns available"
 msgstr ""
 
-#: src/game.cpp:890
+#: src/game.cpp:905
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:913
+#: src/game.cpp:928
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:931
+#: src/game.cpp:946
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:931
+#: src/game.cpp:946
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:932 src/multiplayer_lobby.cpp:156
+#: src/game.cpp:947 src/multiplayer_lobby.cpp:156
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:932
+#: src/game.cpp:947
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:933
+#: src/game.cpp:948
 msgid "Host Multiplayer Game"
 msgstr ""
 
-#: src/game.cpp:933
+#: src/game.cpp:948
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:936 src/multiplayer_client.cpp:267
+#: src/game.cpp:951 src/multiplayer_client.cpp:267
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1016 src/titlescreen.cpp:156
+#: src/game.cpp:1031 src/titlescreen.cpp:156
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1017
+#: src/game.cpp:1032
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1064
+#: src/game.cpp:1079
 msgid "The End"
 msgstr ""
 
-#: src/game.cpp:1065
+#: src/game.cpp:1080
 msgid "You have reached the end of the currently playable levels"
 msgstr ""
 
-#: src/game.cpp:1092
+#: src/game.cpp:1107
 msgid "Could not initialize video. Exiting.\n"
 msgstr "Impossible d'initialiser l'affichage. Arrêt du programme.\n"
 
-#: src/game.cpp:1094
+#: src/game.cpp:1109
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr "Impossible d'initialiser les polices. Arrêt du programme.\n"
 
-#: src/help.cpp:483
+#: src/help.cpp:484
 msgid "Advances to"
 msgstr ""
 
-#: src/help.cpp:502
+#: src/help.cpp:510
 msgid "Abilities"
 msgstr ""
 
-#: src/help.cpp:524
+#: src/help.cpp:532
 msgid "alignment"
 msgstr ""
 
-#: src/help.cpp:528
+#: src/help.cpp:536
 msgid "Required XP"
 msgstr ""
 
-#: src/help.cpp:538 src/reports.cpp:232
+#: src/help.cpp:546 src/reports.cpp:232
 msgid "attacks"
 msgstr ""
 
-#: src/help.cpp:539 src/playturn.cpp:1886
+#: src/help.cpp:547 src/playturn.cpp:1886
 msgid "Name"
 msgstr ""
 
-#: src/help.cpp:540 src/playturn.cpp:1885
+#: src/help.cpp:548 src/playturn.cpp:1885
 msgid "Type"
 msgstr ""
 
-#: src/help.cpp:541 src/unit_types.cpp:295
+#: src/help.cpp:549 src/unit_types.cpp:295
 msgid "Dmg"
 msgstr ""
 
-#: src/help.cpp:542 src/unit_types.cpp:307
+#: src/help.cpp:550 src/unit_types.cpp:307
 msgid "strikes"
 msgstr ""
 
-#: src/help.cpp:543
+#: src/help.cpp:551
 msgid "Range"
 msgstr ""
 
-#: src/help.cpp:544
+#: src/help.cpp:552
 msgid "Special"
 msgstr ""
 
-#: src/help.cpp:584
+#: src/help.cpp:592
 msgid "Resistances"
 msgstr ""
 
-#: src/help.cpp:1555
+#: src/help.cpp:1583
 msgid "< Back"
 msgstr ""
 
-#: src/help.cpp:1556
+#: src/help.cpp:1584
 msgid "Forward >"
 msgstr ""
 
-#: src/help.cpp:2028
+#: src/help.cpp:2061
 msgid "The Battle for Wesnoth Help"
 msgstr ""
 
@@ -866,6 +866,10 @@ msgstr ""
 
 #: src/playturn.cpp:524 src/playturn.cpp:649
 msgid "Damage Calculations"
+msgstr ""
+
+#: src/playturn.cpp:615
+msgid "Melee"
 msgstr ""
 
 #: src/playturn.cpp:628 src/reports.cpp:209

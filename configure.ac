@@ -5,7 +5,7 @@
 #######################################################################
 
 AC_PREREQ([2.57])
-AC_INIT([Battle for Wesnoth], [0.7.12-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
+AC_INIT([Battle for Wesnoth], [0.8.1-CVS], [davidnwhite@optusnet.com.au], [wesnoth])
 
 AC_REVISION([$Revision$])
 
@@ -333,7 +333,9 @@ AC_CHECK_FUNCS([floor socket strtoul])
 
 AC_ARG_ENABLE([debug],
 	      [  --enable-debug        Enable debug in wesnoth],
-	      [CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"])
+	      [if test "x${enableval}" = "xyes" ; then
+                   CXXFLAGS="$CXXFLAGS -DDEBUG -ggdb3"
+	       fi])
 
 AC_ARG_ENABLE([static],
               [  --enable-static       Enable static building of wesnoth],

@@ -179,6 +179,8 @@ const char LARGE_TEXT='*', SMALL_TEXT='`', GOOD_TEXT='@', BAD_TEXT='#',
 
 namespace {
 
+static const size_t max_text_line_width = 4096;
+
 SDL_Rect text_size(TTF_Font* font, const std::string& str, const SDL_Color& colour, int style)
 {
 	const font_style_setter style_setter(font,style);
@@ -197,6 +199,14 @@ SDL_Surface* render_text_internal(TTF_Font* font,const std::string& str,
 						 const SDL_Color& colour, int style)
 {
 	const font_style_setter style_setter(font,style);
+
+	// Impose a maximal number of characters for a text line. Do now draw
+	// any text longer that that, to prevent a SDL buffer overflow
+	
+	const SDL_Rect r = text_size(font, str, colour, style);
+
+	if(r.w > max_text_line_width)
+		return NULL;
 
 	return TTF_RenderUTF8_Blended(font,str.c_str(),colour);
 

@@ -101,6 +101,7 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 void terrain_builder::rebuild_all() {
 	tile_map_.reset();
 	terrain_by_type_.clear();
+	terrain_by_type_border_.clear();
 	build_terrains();
 }
 
@@ -224,20 +225,6 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
-terrain_builder::building_rule terrain_builder::rule_from_terrain_template(const terrain_builder::building_rule&tpl, const gamemap::TERRAIN terrain)
-{
-	terrain_builder::building_rule ret = tpl;
-
-	std::string ter(1, terrain);
-	constraint_set::iterator cons;
-	for(cons = ret.constraints.begin(); cons != ret.constraints.end(); ++cons) {
-		replace_token(cons->second.terrain_types, "@", ter);
-	}
-	replace_token(ret, "@T", map_.get_terrain_info(terrain).default_image());
-
-	return ret;
-}
-
 void terrain_builder::add_images_from_config(imagelist& images, const config &cfg)
 {
 	const config::child_list& cimages = cfg.get_children("image");
@@ -264,14 +251,13 @@ void terrain_builder::add_constraints(std::map<gamemap::location, terrain_builde
 
 void terrain_builder::add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item)
 {
-	if(!cfg[item].empty())
-		list.push_back(cfg[item]);
-
-	const config::child_list& items = cfg.get_children(item);
-
-	for(config::child_list::const_iterator itor = items.begin(); itor != items.end(); ++itor) {
-		if(!(**itor)["name"].empty())
-			list.push_back((**itor)["name"]);
+	if(!cfg[item].empty()) {
+		std::vector<std::string> item_string = config::split(cfg[item]);
+		
+		for(std::vector<std::string>::const_iterator itor = item_string.begin();
+				itor != item_string.end(); ++itor) {
+			list.push_back(*itor);
+		}
 	}
 }
 
@@ -288,14 +274,12 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	add_images_from_config(constraint.images, cfg);
 }
 
-void terrain_builder::parse_mapstring(const std::string &mapstring, struct building_rule &br,
-				      anchormap& anchors)
+void terrain_builder::parse_mapstring(const std::string &mapstring,
+		struct building_rule &br, anchormap& anchors)
 {
 	int lineno = 0;
 	int x = 0;
 
-	// std::cerr << "Loading map \"" << mapstring << "\"\n";
-	
 	const std::vector<std::string> &lines = config::split(mapstring, '\n', 0);
 	std::vector<std::string>::const_iterator line = lines.begin();
 	
@@ -307,17 +291,15 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 	if(line == lines.end())
 		return;
 	
-	//If the strings starts with a space, the first line is an odd line, else it is an even one
+	//If the strings starts with a space, the first line is an odd line,
+	//else it is an even one
 	if((*line)[0] == ' ')
 		lineno = 1;
 
-	//std::cerr << "--- Begin map ---\n";
-	
 	for(; line != lines.end(); ++line) {
-		//cuts each line into chunks of 4 characters, ignoring the 2 first ones if the line is odd
+		//cuts each line into chunks of 4 characters, ignoring the 2
+		//first ones if the line is odd
 
-		//std::cerr << "Line is " << *line << "\n";
-		
 		x = 0;
 		std::string::size_type lpos = 0;
 		if(lineno % 2) {
@@ -329,11 +311,11 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			std::string types = line->substr(lpos, 4);
 			config::strip(types);
 			
-			//std::cerr << types << "/";
-			
-			//If there are numbers in the types string, consider it is an anchor
+			//If there are numbers in the types string, consider it
+			//is an anchor
 			if(types[0] == '.') {
-				// Dots are simple placeholders, which do not represent actual terrains.
+				// Dots are simple placeholders, which do not
+				// represent actual terrains.
 			} else if(types.find_first_of("0123456789") != std::string::npos) {
 				int anchor = atoi(types.c_str());
 				anchors.insert(std::pair<int, gamemap::location>(anchor, gamemap::location(x, lineno / 2)));
@@ -344,11 +326,8 @@ void terrain_builder::parse_mapstring(const std::string &mapstring, struct build
 			lpos += 4;
 			x += 2;
 		}
-		//std::cerr << "\n";
 		lineno++;
 	}
-	//std::cerr << "--- End map ---\n";
-
 }
 
 void terrain_builder::add_rotated_rules(building_ruleset& rules, const building_rule& tpl, const std::string &rotations)
@@ -444,18 +423,8 @@ void terrain_builder::parse_config(const config &cfg)
 
 		// Handles rotations
 		const std::string rotations = (**br)["rotations"];
-		const std::string terrains = (**br)["terrains"];
 
-		if(terrains.empty()) {
-			add_rotated_rules(building_rules_, pbr, rotations);
-		} else {
-			for(std::string::const_iterator terrain = terrains.begin();
-					terrain != terrains.end(); ++terrain) {
-
-				const building_rule r = rule_from_terrain_template(pbr, *terrain);
-				add_rotated_rules(building_rules_, r, rotations);
-			}
-		}
+		add_rotated_rules(building_rules_, pbr, rotations);
 
 	}
 

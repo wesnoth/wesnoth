@@ -73,6 +73,7 @@ std::vector<std::string> get_text() {
 	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Eli Dupree (Elvish Pillager)");
 	text.push_back("-   Gareth Miller (Gafgarion)");
+	text.push_back("-   Hogne Håskjold (frame)");
 	text.push_back("-   James Barton (Sangel)");
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
@@ -102,7 +103,6 @@ std::vector<std::string> get_text() {
  	text.push_back("+ ");
 
  	text.push_back("+Packagers");
- 	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Darryl Dixon");
  	text.push_back("-   Jay Hopping");
  	text.push_back("-   Marcin Konicki (ahwayakchih)");
@@ -111,7 +111,7 @@ std::vector<std::string> get_text() {
  	text.push_back("+ ");
 
  	text.push_back("+Miscellaneous");
- 	text.push_back("-   Jaramir");
+ 	text.push_back("-   Francesco Gigli (Jaramir)");
  	text.push_back("-   Jordà Polo (ettin)");
  	text.push_back("-   Tom Chance (telex4)");
  	text.push_back("+ ");
@@ -127,6 +127,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Catalan Translation");
  	text.push_back("-   Dan Rosàs Garcia (focks)");
+ 	text.push_back("-   Jordà Polo (ettin)");
  	text.push_back("+ ");
  
  	text.push_back("+Danish Translation");
@@ -157,6 +158,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Hungarian Translation");
  	text.push_back("-   Khiraly");
+ 	text.push_back("-   Széll Tamás (TomJoad)");
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
@@ -188,7 +190,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Spanish Translation");
  	text.push_back("-   Franciso Muñoz (fmunoz)");
- 	text.push_back("-   Jordà Polo (ettin)");
+ 	text.push_back("-   Gabriel Rodríguez (Chewie))");
  	text.push_back("-   Jose Gordillo (kilder)");
  	text.push_back("-   Jose Manuel Gomez (joseg)");
  	text.push_back("+ ");
@@ -199,6 +201,7 @@ std::vector<std::string> get_text() {
  	text.push_back("+ ");
  
   	text.push_back("+Contributors");
+ 	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   edge");
  	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
