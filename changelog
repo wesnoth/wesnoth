@@ -7,13 +7,17 @@ CVS HEAD:
    * french
  * implemented mid-scenario changing of some side detail
  * attack and defence weighting improvements
+ * made scrollbars faster by avoiding unnecessary redraws
  * fixed victory_when_enemies_defeated attribute wasn't serialized properly
  * fixed statistics showing incorrectly on all but scenario 1
  * fixed infliced damage labels being not always displayed
  * fixed strange name-endings in name generator
  * fixed bug where Scepter of Fire scenario is loaded instead of scenarios after the Scepter of Fire
+ * fixed networking bug
  * added fixes for OSX from Sithrandel
  * autotools signed char detection fix, now it uses C++ compiler
+ * minor modifications to slacknoth
+ * code cleanups
 
 Version 0.7.3:
  * added undoing recall
