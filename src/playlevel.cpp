@@ -119,6 +119,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		game_state& state_of_game,
 		const std::vector<config*>& story)
 {
+	//guarantee the cursor goes back to 'normal' at the end of the level
+	const cursor::setter cursor_setter(cursor::NORMAL);
+
 	const int ticks = SDL_GetTicks();
 	LOG_NG << "in play_level()...\n";
 
