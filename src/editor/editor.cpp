@@ -209,20 +209,19 @@ std::string map_editor::new_map_dialog(display& disp)
 		}
 
 		if(new_map_button.process(mousex,mousey,left_button)) {
-			if (!confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
-				return "";
+			if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
+				int i;
+				std::stringstream str;
+				std::stringstream map_str;
+				for (i = 0; i < width_slider.value(); i++) {
+					str << palette_.selected_terrain();
+				}
+				str << "\n";
+				for (i = 0; i < height_slider.value(); i++) {
+					map_str << str.str();
+				}
+				return map_str.str();
 			}
-			int i;
-			std::stringstream str;
-			std::stringstream map_str;
-			for (i = 0; i < width_slider.value(); i++) {
-				str << palette_.selected_terrain();
-			}
-			str << "\n";
-			for (i = 0; i < height_slider.value(); i++) {
-				map_str << str.str();
-			}
-			return map_str.str();
 		}
 		if(random_map_setting_button.process(mousex,mousey,left_button)) {
 			if (generator.get()->allow_user_config()) {
@@ -231,16 +230,15 @@ std::string map_editor::new_map_dialog(display& disp)
 		}
 
 		if(random_map_button.process(mousex,mousey,left_button)) {
-			if (!confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
-				return "";
+			if (confirm_modification_disposal(gui_, "The modification to the map will be discarded.  Continue?")) {
+				
+				const std::string map = generator.get()->create_map(std::vector<std::string>());
+				if (map == "") {
+					gui::show_dialog(gui_, NULL, "",
+									 "Creation failed.", gui::OK_ONLY);
+				}
+				return map;
 			}
-
-			const std::string map = generator.get()->create_map(std::vector<std::string>());
-			if (map == "") {
-				gui::show_dialog(gui_, NULL, "",
-						 "Creation failed.", gui::OK_ONLY);
-			}
-			return map;
 		}
 		map_width = width_slider.value();
 		map_height = height_slider.value();
