@@ -1,5 +1,6 @@
 CVS HEAD:
  * added new help strings
+ * made 'end turn for active unit' (pressing <space>) recoverable
  * tip of the day
  * load game
  * gamma correction
@@ -97,6 +98,7 @@ CVS HEAD:
    * fixed a problem where the selected terrain and brush size was not remembered through operations that affected the whole map, such as flip and resize
    * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
    * fixed editor handing different color depths incorrectly
+ * names for Nagas
  * added WML feature to append an element to another using [+element] syntax
  * made userdata/data/utils loaded in early in game.cfg to allow scenario designers to define utility files
  * fixed multiline text box not wrapping lines at word boundaries
@@ -108,6 +110,8 @@ CVS HEAD:
  * fixed terrain not updating correctly when dynamicly changed via the WML [terrain] event (#9237)
  * fixed the "random probability" in "terrain-graphics" rules not being random enough
  * fixed builder code failing when asked for hexed outside the map (#9168)
+ * fixed migration of haloes
+ * fixed crash when undoing moves
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
  * added support for different colour depths
