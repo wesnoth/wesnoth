@@ -1,5 +1,6 @@
 CVS HEAD:
  * added testing mode to move units on fog/shroud maps without updating the fog/shroud
+ * added leadership images for General, Elvish Captain and Lieutenant
  * new dialogs
  * scenario balancing for 'Heir to the Throne' campaign:
    * Test of the Clans
@@ -36,6 +37,8 @@ CVS HEAD:
  * fixed non-interactive mode not working with eras
  * fixed units moving slowly
  * fixed opening sequence in 'Isle of Anduin'
+ * fixed cycling units not showing attack options
+ * fixed units with drain not getting more than the max hitpoints
  * fixed "invalid font characters" for slovak translation by adding 'font=Bepa-Roman.ttf', translators should ensure this line is preserved when upgrading translations
  * fixed support for UTF-8 languages on text-boxes
  * fixed wesnoth.desktop (FreeDesktop shortcut definition file), which did contain invalid UTF-8 sequences
