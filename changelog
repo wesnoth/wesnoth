@@ -1,13 +1,15 @@
 CVS HEAD::
- * made it possible to recruit on any keep tile, not just a starting keeps
  * data compression for network games
  * tutorial objectives added
+ * more unit graphics and animations
+ * made it possible to recruit on any keep tile, not just a starting keeps
  * mountainfoot (Dwarves) forest movement ratio changed to 2 (faster) and village defense increased to 50
  * new units:
    * Outlaw
    * Bandit
  * AI improvements
    * retreating, re-grouping
+   * recognizing allies
    * attack selection improvements
    * grouping improvements
    * defending leader
@@ -16,9 +18,10 @@ CVS HEAD::
  * updated translations:
    * french
  * improved castle placement on random maps
- * missile images issues fixed for 'Arch Mage', Ghost, 'Sea Hag' and Wraith
  * fixed healing units that had full hitpoints (#7574)
- * attempt to fix bug with energy bars not displaying properly on OSX
+ * fixed problem where [hide_unit] still displays unit's hitpoint bar
+ * attempt to fix hitpoint bars not displaying properly on OSX
+ * relocated images under misc/: flamesword, holywater, sceptreoffire, staff
 
 Version 0.6.99.2:
  * nightstalk ability added
