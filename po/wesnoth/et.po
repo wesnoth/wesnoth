@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-26 17:03+0100\n"
-"PO-Revision-Date: 2005-02-22 19:52+0300\n"
+"POT-Creation-Date: 2005-02-26 17:05+0100\n"
+"PO-Revision-Date: 2005-02-27 15:46+0300\n"
 "Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:515 data/translations/english.cfg:61
 msgid "loyal"
@@ -75,6 +75,9 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Kindlatel üksustel on võimeid, mis otseselt mõjutavad teisi üksuseid või "
+"mõjutavad seda, kuidas üksus teiste üksustega läbi käib. Nende võimete kohta "
+"leiad selle teema alt infot, kui sa neid kohtad."
 
 #: data/help.cfg:62
 msgid ""
@@ -87,6 +90,14 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
+"\n"
+"\n"
+"Wesnothi Lahing on kordamööda käimisel põhinev fantaasia-strateegiamäng, "
+"mõneti ebatavaline kaasaegsete strateegiamängude hulgas. Samas kui teised "
+"mängud põhinevad keerukatel reeglitel ja mängu ülesehitusel, üritab Wesnothi "
+"Lahing reegleid teha võimalikult lihtsaks. See ei muuda veel mängu ennast "
+"lihtsaks - sellel baseerub rikkalik strateegia. Mängu aluste õppimine on "
+"lihtne, aga selle meisterlik valdamine on omaette kunsttükk."
 
 #: data/help.cfg:67
 msgid "Fundamentals of Gameplay"
@@ -174,6 +185,12 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Katsu arvestada sellega, et mitte ainult üksuste värbamine ja tagasi "
+"kutsumine ei kuluta kulda, raha kulub ka üksuste ülalpidamisele. Vaata "
+"peatükki <ref>dst=income_and_upkeep text='Sissetulek ja ülalpidamine'</ref>, "
+"et sellest rohkem teada saada."
 
 #: data/help.cfg:92 src/help.cpp:1196 src/help.cpp:1197
 msgid "Movement"
@@ -389,6 +406,9 @@ msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Hommik ja pärastlõuna lähevad arvesse kui päev, esimene ja teine vahtkond "
+"kui öö."
 
 #: data/help.cfg:151
 msgid ""
@@ -418,6 +438,10 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Kui mõlemad üksused jäävad lahingus ellu, siis nad saavad juurde sama palju "
+"kogemuspunkte kui mitmendal tasemel nende vastane oli. Kui üksus surmab oma "
+"vastase, siis juba rohkem: 4 punkti null-taseme üksuse eest, 8 esimese "
+"taseme eest, 16 teise taseme eest, 24 kolmanda taseme eest ja nii edasi."
 
 #: data/help.cfg:162
 msgid ""
@@ -428,6 +452,13 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Üksused vajavad edutamiseks kindla arvu kogemuspunkte (intelligentsed "
+"üksused vajavad 20% vähem). Kui nad suudavad vajalikud punktid koguda, siis "
+"edutatakse nad koheselt järgmisele tasemele, selle käigus ravitakse nad "
+"täiesti terveks. Mõnel juhul saad sa erinevate edutamisvariantide vahel "
+"valida."
 
 #: data/help.cfg:164
 msgid ""
@@ -728,6 +759,7 @@ msgstr ""
 #: data/items.cfg:416
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr ""
+"Mina ei oska selle asjaga midagi peale hakata! Las keegi teine võtab selle."
 
 #: data/items.cfg:451 data/scenarios/tutorial/Traits_and_Specialties.cfg:194
 msgid "Potion of Strength"
@@ -735,7 +767,7 @@ msgstr "Jõudu andev võlujook"
 
 #: data/items.cfg:454
 msgid "Strength is given to the drinker."
-msgstr ""
+msgstr "Jooja saab jõudu juurde."
 
 #: data/items.cfg:495
 msgid "Potion of Decay"
@@ -743,7 +775,7 @@ msgstr "Kõdundav võlujook"
 
 #: data/items.cfg:498
 msgid "This poor unit drank something really bad."
-msgstr ""
+msgstr "See vaene tegelane jõi midagi väga halba."
 
 #: data/items.cfg:533
 msgid "Ring of Regeneration"
@@ -751,11 +783,11 @@ msgstr "Taastumise Sõrmus"
 
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "See sõrmus tervendab natukene kandjat igal käigul."
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
-msgstr ""
+msgstr "Oskuste seadmine ebaõnnestus, vabandust."
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
@@ -763,7 +795,7 @@ msgstr "Aegluse Sõrmus"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
-msgstr ""
+msgstr "Selle sÃµrmuse kandja liikumine on aeglustatud."
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
@@ -775,15 +807,16 @@ msgstr "See sau annab kandjale väleda liikumise."
 
 #: data/items.cfg:619
 msgid "Only magical beings can wield such an object."
-msgstr ""
+msgstr "Ainult maagilised olendid saavad seda objekti kanda."
 
 #: data/items.cfg:653
 msgid "Storm Trident"
-msgstr ""
+msgstr "Tormikolmhark"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
+"Selle kolmhargiga saavad merimehed oma vastaste pihta elektrivälke lasta!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
@@ -791,7 +824,7 @@ msgstr "Ainult merineitsid saavad seda asja kasutada!"
 
 #: data/items.cfg:669
 msgid "storm trident"
-msgstr ""
+msgstr "tormikolmhark"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -799,7 +832,7 @@ msgstr "Leegitsev mõõk"
 
 #: data/items.cfg:711
 msgid "Only the leader of an army can wield this sword!"
-msgstr ""
+msgstr "Ainult väejuht võib seda mõõka kasutada!"
 
 #: data/items.cfg:723
 msgid "flaming sword"
@@ -815,12 +848,15 @@ msgid ""
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
+"Selle iidse valitsuskeppi sepistasid kääbused. Wesnothi kuninga sümbolina "
+"omab see valitsuskepp võimet kandja vaenlaste pihta tulepalle tulistada!"
 
 #: data/items.cfg:759
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
+"See on leegitsev valitsuskepp. Ainult tõeline troonipärija julgeb seda võtta!"
 
 #: data/items.cfg:812
 msgid "Zap~"
@@ -841,7 +877,7 @@ msgstr "Juhuslik"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Lojalistid"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
 msgid "Rebels"
@@ -849,12 +885,12 @@ msgstr "Mässajad"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Põhjamaalased"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
 msgid "Undead"
-msgstr ""
+msgstr "Kooljad"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
 msgid "Knalgan Alliance"
@@ -944,7 +980,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
-msgstr ""
+msgstr "Hoppingi lossi saar"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
 msgid ""
@@ -955,7 +991,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
-msgstr ""
+msgstr "Söösta lahingusse"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -1004,7 +1040,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
-msgstr ""
+msgstr "Wesbowl"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:6
 msgid ""
@@ -1123,15 +1159,13 @@ msgstr "Mäekuningas"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Isand"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Kaitsja"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1272,9 +1306,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Veel"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -1282,10 +1315,13 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
+"Suurepärane! Sa oled edukalt oma haldjasõdalast liigutanud. Aga et ta liikus "
+"vaenuliku üksuse mõjualasse, siis ta selle käigu jooksul enam liikuda ei "
+"saa. "
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid "How far can my Elvish Fighter move?"
-msgstr ""
+msgstr "Kui kaugele minu haldjasõdalane liikuda saab?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid ""
@@ -1316,7 +1352,7 @@ msgstr "Misasi see kontrollitud piirkond on?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr ""
+msgstr "Kuidas ma aru saan, kes on liitlased ja kes vaenlased?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid ""
@@ -1342,11 +1378,11 @@ msgstr "Ründa Merlet"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid "You have successfully attacked Merle."
-msgstr ""
+msgstr "Sa oled Merlet edukalt rünnanud."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid "Can Merle retaliate from my attack?"
-msgstr ""
+msgstr "Kas Merle saab mind vastu ka rünnata?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid ""
@@ -1401,6 +1437,9 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
+"Sinu võitleja elas Merle rünnaku üle. Kui üksus jääb lahingus ellu, siis ta "
+"saab kogemuspunkte. Kui üksus on piisavalt kogenud, siis ta edutatakse "
+"järgmisele tasemele ja ta muutub võimsamaks."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid "What's experience?"
@@ -1707,6 +1746,8 @@ msgid ""
 "The sun is setting over Wesnoth. The time of day affects how much damage "
 "units of different alignments can inflict upon each other."
 msgstr ""
+"Päike loojub Wesnothi kohal. Kellaaeg mõjutab seda kui palju erinevate "
+"meelelaadidega üksused üksteisele viga võivad teha."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
 msgid ""
@@ -1716,14 +1757,20 @@ msgid ""
 "25% less. At night it is reversed. During twilight, all units do their "
 "normal damage. Neutral units such as elves are unaffected by day and night."
 msgstr ""
+"Meelelaade on kolm: kuulekas, neutraalne ja kaootiline. Päev jagatakse "
+"samuti kolmeks osaks: päev, hämarik ja öö. Päevasel ajal teevad kuulekad "
+"üksused, näiteks inimesed, 25% rohkem kahju, samal ajal kui kaootilised "
+"teevad 25% vähem. Öösel on asjad täpselt vastupidi. Hämariku ajal teevad "
+"kõik üksused tavalist kahju. Neutraalseid üksuseid, näiteks haldjaid, päev "
+"ja öö üldse ei mõjuta."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:124
 msgid "What are the different alignments and times of day?"
-msgstr ""
+msgstr "Millised on erinevad meelelaadid ja kellaajad?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
 msgid "How do I know what time of day it is?"
-msgstr ""
+msgstr "Kuidas ma teada saan, mis kell parajasti on?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:125
 msgid ""
@@ -1804,7 +1851,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Millised on erinevad kahjutüübid?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 msgid ""
@@ -2602,6 +2649,8 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Maagiline:\n"
+"Sellel rünnakul on alati 70% tabamistõenäosus."
 
 #: data/translations/english.cfg:111
 msgid ""
@@ -2623,6 +2672,9 @@ msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
+"Mürk:\n"
+"See rünnak mürgitab ohvri. Mürgitatud üksused kaotavad iga käiguga 8 HP-d "
+"kuni nad terveks ravitakse või kuni nende elud kahanevad ühe HP-ni. "
 
 #: data/translations/english.cfg:120
 msgid ""
@@ -3302,7 +3354,7 @@ msgstr "võrk"
 #: data/units/Elvish_Sylph.cfg:53 data/units/Goblin_Pillager.cfg:37
 #: data/units/Merman_Entangler.cfg:29 data/units/Merman_Netcaster.cfg:29
 msgid "slow"
-msgstr "aglustus"
+msgstr "aeglustus"
 
 #: data/units/Chocobone.cfg:3
 msgid "Chocobone"
@@ -3342,7 +3394,7 @@ msgstr "oda"
 #: data/units/Lancer.cfg:22 data/units/Paladin.cfg:43 src/actions.cpp:361
 #: src/actions.cpp:461
 msgid "charge"
-msgstr ""
+msgstr "rünnak"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
@@ -3862,13 +3914,15 @@ msgstr "Välgunool"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "Kääbuste vahimees"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
+"Vapper torn-kilbiga  varustatud vahimees ei anna alla ka kõige võimsamate "
+"rünnakute surve all."
 
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
@@ -4157,7 +4211,7 @@ msgstr ""
 
 #: data/units/Elvish_Outrider.cfg:3
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "Haldjate teejuht"
 
 #: data/units/Elvish_Outrider.cfg:24
 msgid ""
@@ -4180,7 +4234,7 @@ msgstr ""
 
 #: data/units/Elvish_Ranger.cfg:79
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "Haldjate metsavaht"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4322,7 +4376,7 @@ msgstr "Tulepall"
 #: data/units/Fireball.cfg:16
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
-msgstr ""
+msgstr "Tulepall. Seda ei kasutata mitte millekski muuks kui 'Move_Unit_Fake'!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
@@ -4361,6 +4415,10 @@ msgid ""
 "The galleon is perfect for this purpose: it's fast and resilient, but not "
 "prepared to fight, and is able to adapt to many different tasks."
 msgstr ""
+"Isegi inimesed, kes õnnelikult oma kodudes elavad, vajavad mingil hetkel "
+"meretransporti, isegi kui nad lähevad ainult kalale või kauplema. Galeoon on "
+"nendeks otstarveteks ideaalne: see on kiire ja vastupidav ning kohandatav "
+"paljudeks otstarveteks, aga ta ei kõlba eriti võitlemiseks."
 
 #: data/units/Galleon.cfg:18
 msgid "dummy"
@@ -4401,6 +4459,10 @@ msgid ""
 "freedom of movement and protection from physical attacks, ghosts cannot "
 "easily cross running water."
 msgstr ""
+"Vaimud on sajandeid tagasi surnud sõdalaste hinged, kes suurtes piinades ja "
+"laipa maha jätmata. Kuigi nende kehatu kuju annab neile suure "
+"liikumisvabaduse ja kaitse füüsiliste rünnakute eest, ei saa vaimud kergesti "
+"ületada voolavat vett."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -4452,11 +4514,11 @@ msgstr "nõel"
 
 #: data/units/Giant_Scorpion.cfg:37
 msgid "pincers"
-msgstr ""
+msgstr "näpitsad"
 
 #: data/units/Goblin_Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "Vardasse ajav goblin"
 
 #: data/units/Goblin_Impaler.cfg:17
 msgid ""
@@ -4479,7 +4541,7 @@ msgstr ""
 
 #: data/units/Goblin_Pillager.cfg:3
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "Goblinite rüüstaja"
 
 #: data/units/Goblin_Pillager.cfg:16
 msgid ""
@@ -4498,7 +4560,7 @@ msgstr "võrk"
 
 #: data/units/Goblin_Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "Goblinite odamees"
 
 #: data/units/Goblin_Spearman.cfg:17
 msgid ""
@@ -4526,7 +4588,7 @@ msgstr "piik"
 
 #: data/units/Grand_Marshal.cfg:3
 msgid "Grand Marshal"
-msgstr ""
+msgstr "Suue väejuht"
 
 #: data/units/Grand_Marshal.cfg:21
 msgid ""
@@ -4572,6 +4634,9 @@ msgid ""
 "world. Since they are wary of other intelligent races, Gryphons should not "
 "be disturbed without a good reason."
 msgstr ""
+"Pooleldi lõvid, pooleldi linnud - need majesteetlikud olendid valitsevad "
+"maailma taevaid. Kuna nad suhtuvad teistesse intelligentsetesse rassidesse "
+"suure ettevaatusega ei tasu grifoone ilma hea põhjuseta segada."
 
 #: data/units/Gryphon_Master.cfg:3
 msgid "Gryphon Master"
@@ -4594,10 +4659,13 @@ msgid ""
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
 "these flying beasts."
 msgstr ""
+"Väga vähesed oskavad grifoonidega ringi käia. Neist, kellel see õnnestub, "
+"saavad grifooniratsanikud ja nad võivad uurida taevaseid maailmu nende "
+"lendavate elukate seljas."
 
 #: data/units/Halbardier.cfg:3
 msgid "Halberdier"
-msgstr ""
+msgstr "Hellebardiga sõdur"
 
 #: data/units/Halbardier.cfg:18
 msgid ""
@@ -4608,20 +4676,28 @@ msgid ""
 "can keep further than the end of their weapons, but find some difficulty in "
 "very close combat."
 msgstr ""
+"Hellebardid antakse kätte parimatele sõduritele. Nende relv, kuigi veidi "
+"aeglasem kui mõõk, omab tohutut löögijõudu. Tänu selle suurele pikkusele "
+"ründavad hellebardiga varustatud sõdurid alati võitluses esimesena, isegi "
+"ennast kaitstes. Nad saavad väga hästi hakkama vastastega, keda neil oma "
+"relva kaugema otsa juures õnnestub hoida, aga lähivõitlus võib neile "
+"valmistada kerget peavalu."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
-msgstr ""
+msgstr "hellebard"
 
 #: data/units/Heavy_Infantryman.cfg:3
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "Raskejalaväelane"
 
 #: data/units/Heavy_Infantryman.cfg:15
 msgid ""
 "Heavy Infantrymen are cloaked in iron, making them resilient to attack. A "
 "lack of speed is their only disadvantage."
 msgstr ""
+"Raskejalaväelased on kaetud rauaga ja seetõttu peavad rünnakutele hästi "
+"vastu. Nende ainus puudus on vähene kiirus."
 
 #: data/units/Horse_Lord.cfg:3
 msgid "Horse Lord"
@@ -4633,12 +4709,15 @@ msgid ""
 "their houses and are respected by all, friend or foe. Their sword can kill "
 "most ordinary enemies, and their morning star crushes those who are left."
 msgstr ""
+"Kõigist tasandiku meestest võimsaimad on hobuste isandad oma majade juhid ja "
+"neid austavad kõik, nii sõbrad kui vaenlased. Nende mõõk surmab lihtsamad "
+"vaenlased ja morgernstern lömastab ülejäänud."
 
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:46
 #: data/units/Mounted_Commander.cfg:46 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
 msgid "morning star"
-msgstr ""
+msgstr "morgernstern"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -4654,7 +4733,7 @@ msgstr ""
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
-msgstr ""
+msgstr "Noviits"
 
 #: data/units/Initiate.cfg:16
 msgid ""
@@ -4815,7 +4894,7 @@ msgstr "Valguse maag"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
-msgstr ""
+msgstr "Osav vibumees"
 
 #: data/units/Master_Bowman.cfg:17
 msgid ""
@@ -5251,7 +5330,7 @@ msgstr "needus"
 
 #: data/units/Orcish_Shaman.cfg:62
 msgid "Novice Orcish Shaman"
-msgstr ""
+msgstr "Noor mäekollide šamaan"
 
 #: data/units/Orcish_Shaman.cfg:75
 msgid ""
@@ -5266,7 +5345,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:121
 msgid "Old Orcish Shaman"
-msgstr ""
+msgstr "Vana mäekollide šamaan"
 
 #: data/units/Orcish_Shaman.cfg:134
 msgid ""
@@ -5567,7 +5646,7 @@ msgstr ""
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
 msgid "frost blast"
-msgstr ""
+msgstr "külmalöök"
 
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
@@ -5619,17 +5698,17 @@ msgstr ""
 
 #: data/units/Sea_Hag.cfg:6
 msgid "female^Sea Hag"
-msgstr ""
+msgstr "Meremoor"
 
 #: data/units/Sea_Hag.cfg:20
 msgid ""
 "Sea Hags are older and more experienced Nagas who have learned to control "
 "the water magic."
-msgstr ""
+msgstr "Meremoorid on veemaagiat valdavad vanad ja kogenud nagad."
 
 #: data/units/Sea_Orc.cfg:3
 msgid "Sea Orc"
-msgstr ""
+msgstr "Mere mäekoll"
 
 #: data/units/Sea_Orc.cfg:16
 msgid ""
@@ -5738,11 +5817,11 @@ msgstr ""
 
 #: data/units/Sleeping_Gryphon.cfg:3
 msgid "Sleeping Gryphon"
-msgstr ""
+msgstr "Magav grifoon"
 
 #: data/units/Sleeping_Gryphon.cfg:15
 msgid "Shhhh! The Gryphon is sleeping! You'd better not wake it up!"
-msgstr ""
+msgstr "Kuss! Grifoon magab! Ära teda parem üles aja!"
 
 #: data/units/Soul_Shooter.cfg:3
 msgid "Soul Shooter"
@@ -5759,21 +5838,23 @@ msgstr ""
 
 #: data/units/Soulless.cfg:3
 msgid "Soulless"
-msgstr ""
+msgstr "Hingetu"
 
 #: data/units/Soulless.cfg:16
 msgid ""
 "These animated walking corpses have become strong from long experience "
 "fighting the living."
 msgstr ""
+"Need kõndivad laibad on üsna tugevaks muutunud tänu pikale elusolenditega "
+"sõdimisele."
 
 #: data/units/Soulless.cfg:24 data/units/Walking_Corpse.cfg:24
 msgid "plague"
-msgstr ""
+msgstr "katk"
 
 #: data/units/Spearman.cfg:3
 msgid "Spearman"
-msgstr ""
+msgstr "Odamees"
 
 #: data/units/Spearman.cfg:16
 msgid ""
@@ -5861,7 +5942,7 @@ msgstr ""
 
 #: data/units/Triton.cfg:6
 msgid "Triton"
-msgstr ""
+msgstr "Triiton"
 
 #: data/units/Troll.cfg:3
 msgid "Troll"
@@ -6036,7 +6117,7 @@ msgstr ""
 
 #: data/units/Wraith.cfg:3
 msgid "Wraith"
-msgstr ""
+msgstr "Surnuvaim"
 
 #: data/units/Wraith.cfg:21
 msgid ""
@@ -6058,7 +6139,7 @@ msgstr ""
 
 #: data/units/Young_Ogre.cfg:3
 msgid "Young Ogre"
-msgstr ""
+msgstr "Noor sookoll"
 
 #: data/units/Young_Ogre.cfg:16
 msgid ""
@@ -6079,7 +6160,7 @@ msgstr ""
 
 #: src/about.cpp:46
 msgid "+Core Developers"
-msgstr ""
+msgstr "+Põhiarendajad"
 
 #: src/about.cpp:47
 msgid "-   Main Developer"
@@ -6087,7 +6168,7 @@ msgstr "- Pea-arendaja"
 
 #: src/about.cpp:50
 msgid "-   Artwork and graphics designer"
-msgstr "- Kunsti ja graafika kujundajad"
+msgstr "- Kunst ja graafika"
 
 #: src/about.cpp:54
 msgid "+Developers"
@@ -6099,7 +6180,7 @@ msgstr "+Üldotstarbelised administraatorid"
 
 #: src/about.cpp:76
 msgid "+Artwork and graphics designers"
-msgstr "+ Kunsti ja graafika kujundajad"
+msgstr "+ Kunst ja graafika"
 
 #: src/about.cpp:101
 msgid "+Music"
@@ -6107,11 +6188,11 @@ msgstr "+Muusika"
 
 #: src/about.cpp:108
 msgid "+Scenario Designers"
-msgstr "+Stsenaariumi disainerid"
+msgstr "+Stsenaariumite disainerid"
 
 #: src/about.cpp:118
 msgid "+Multiplayer Maps"
-msgstr "+Mitme mängija"
+msgstr "+Mitmemängija kaardid"
 
 #: src/about.cpp:123
 msgid "+Packagers"
@@ -6154,9 +6235,8 @@ msgid "+English (GB) Translation"
 msgstr "+ Inglise keelne (GB) tõlge"
 
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+ Venekeelne tõlge"
+msgstr "+ Eesti keelne tõlge"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -6531,15 +6611,15 @@ msgstr "Hangi veel kampaaniaid..."
 
 #: src/game.cpp:1019
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Lae uusi kampaaniad Internetist."
 
 #: src/game.cpp:1029
 msgid "Choose the campaign you want to play:"
-msgstr ""
+msgstr "Vali mängimiseks kampaania:"
 
 #: src/game.cpp:1059
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Vali raskusaste:"
 
 #: src/game.cpp:1084
 msgid "B"
@@ -6560,6 +6640,7 @@ msgstr "Ühenda serveriga"
 #: src/game.cpp:1115
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
+"Nüüd sa võtad ühendust kampaaniaserveriga, et kampaaniaid alla laadida."
 
 #: src/game.cpp:1116
 msgid "Server: "
@@ -6567,15 +6648,15 @@ msgstr "Server: "
 
 #: src/game.cpp:1128
 msgid "Could not connect to host."
-msgstr ""
+msgstr "Võõrustajaga ei õnnestu ühendust luua."
 
 #: src/game.cpp:1136
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Ootan serverilt vastust"
 
 #: src/game.cpp:1149
 msgid "Error communicating with the server."
-msgstr ""
+msgstr "Viga serveriga suhtlemisel."
 
 #: src/game.cpp:1155 src/help.cpp:1086 src/help.cpp:1087 src/playturn.cpp:2101
 msgid "Name"
@@ -6587,7 +6668,7 @@ msgstr "Autor"
 
 #: src/game.cpp:1158
 msgid "Downloads"
-msgstr ""
+msgstr "Alla laetavad failid"
 
 #: src/game.cpp:1159
 msgid "Size"
@@ -6603,7 +6684,7 @@ msgstr "Kustuta kampaania"
 
 #: src/game.cpp:1196
 msgid "There are no campaigns available for download from this server."
-msgstr ""
+msgstr "Sellel serveril ei ole alla laadimiseks kampaaniaid pakkuda."
 
 #: src/game.cpp:1200
 msgid "Choose the campaign to download."
@@ -6640,16 +6721,16 @@ msgstr "Teine pool katkestas ühenduse."
 #: src/game.cpp:1250
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
-msgstr ""
+msgstr "Kampaania installeerimiseks vajalike failide loomisel tekkis probleem."
 
 #: src/game.cpp:1262 src/game.cpp:1301 src/game.cpp:1326
 #: src/multiplayer.cpp:152 src/multiplayer_ui.cpp:28
 msgid "Connection timed out"
-msgstr ""
+msgstr "Ühendus aegus."
 
 #: src/game.cpp:1265 src/game.cpp:1303 src/game.cpp:1328
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "Server vastas veateatega: \""
 
 #: src/game.cpp:1269
 msgid "Terms"
@@ -6665,7 +6746,7 @@ msgstr "Ühendu ametliku serveriga"
 
 #: src/game.cpp:1344
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "Logi sisse ametlikku Wesnothi mitmemängija serverisse"
 
 #: src/game.cpp:1345 src/multiplayer_lobby.cpp:27
 msgid "Join Game"
@@ -6673,7 +6754,7 @@ msgstr "Liitu mänguga"
 
 #: src/game.cpp:1345
 msgid "Join a server or hosted game"
-msgstr ""
+msgstr "Liitu serveri või võõrustatud mänguga."
 
 #: src/game.cpp:1346
 msgid "Host Networked Game"
@@ -6681,7 +6762,7 @@ msgstr "Ole võrgumängu serveriks"
 
 #: src/game.cpp:1346
 msgid "Host a game without using a server"
-msgstr ""
+msgstr "Võõrusta mängu ilma ametlikku serverit kasutamata."
 
 #: src/game.cpp:1347
 msgid "Hotseat Game"
@@ -6689,7 +6770,7 @@ msgstr "Kohalik mäng"
 
 #: src/game.cpp:1347
 msgid "Play a multiplayer game sharing the same machine"
-msgstr ""
+msgstr "Mängige mitmekesi ühe arvuti taga"
 
 #: src/game.cpp:1348
 msgid "Human vs AI"
@@ -6720,7 +6801,6 @@ msgid "' (The game will now exit)"
 msgstr "'(Mäng läheb nüüd kinni)"
 
 #: src/game.cpp:1528
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Wesnothi Lahing"
 
@@ -6790,23 +6870,27 @@ msgstr "või"
 
 #: src/help.cpp:1306
 msgid "This terrain acts as $terrains for movement and defense purposes."
-msgstr ""
+msgstr "See maastik käitub liikumise ja katsmise suhtes nagu $terrains."
 
 #: src/help.cpp:1308
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr ""
+msgstr "Parimate omadustega maastik valitakse automaatselt."
 
 #: src/help.cpp:1312
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
+"See maastik käitub nagu pesa, see tähendab, et sa saad üksusi värvata, kui "
+"sinu juht asub seda tüüpi maastikulapil."
 
 #: src/help.cpp:1314
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
+"See maastik käitub nagu kindlus, see tähendab, et nendele maatükkidele saab "
+"värvata üksusi."
 
 #: src/help.cpp:1316
 msgid "This terrain gives healing."
@@ -6866,7 +6950,7 @@ msgstr "Kordusi"
 
 #: src/mapgen_dialog.cpp:86
 msgid "Bump Size"
-msgstr ""
+msgstr "Muhu suurus"
 
 #: src/mapgen_dialog.cpp:87 src/playturn.cpp:1668
 msgid "Villages"
@@ -6882,7 +6966,7 @@ msgstr "Lossidevahelised teed"
 
 #: src/mapgen_dialog.cpp:251
 msgid "/1000 tiles"
-msgstr ""
+msgstr "/1000 maatükki"
 
 #: src/mapgen_dialog.cpp:256
 msgid "Coastal"
@@ -6913,22 +6997,20 @@ msgid "You must log in to this server"
 msgstr "Sellesse serverisse peab sisse logima"
 
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Vaba koht"
+msgstr "(Vaba koht)"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anonüümne kohalik mängija"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
 msgstr "Arvuti mängija"
 
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Tühi koht)"
 
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
@@ -6939,7 +7021,6 @@ msgid "Unable to find a leader type for faction "
 msgstr ""
 
 #: src/multiplayer_connect.cpp:440
-#, fuzzy
 msgid "Team "
 msgstr "Meeskond"
 
@@ -6956,7 +7037,6 @@ msgid "Team"
 msgstr "Meeskond"
 
 #: src/multiplayer_connect.cpp:450
-#, fuzzy
 msgid "Colour"
 msgstr "Värv"
 
@@ -6966,7 +7046,6 @@ msgid "Gold"
 msgstr "Kuld"
 
 #: src/multiplayer_connect.cpp:453
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr "Arvuti vs Arvuti"
 
@@ -7004,9 +7083,8 @@ msgid "Empty"
 msgstr "Tühi"
 
 #: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:197
-#, fuzzy
 msgid "Era not available"
-msgstr "Eesmärke pole."
+msgstr "Ajastu pole saadaval."
 
 #: src/multiplayer_connect.cpp:819
 msgid "Red"
@@ -7050,7 +7128,7 @@ msgstr "See ei ole mitmemängija mängu salvestus"
 
 #: src/multiplayer_connect.cpp:917
 msgid "Cannot find era "
-msgstr ""
+msgstr "Ei leia ajastut"
 
 #: src/multiplayer_connect.cpp:935
 msgid ""
@@ -7061,22 +7139,18 @@ msgstr ""
 "@Alista vaenlaste juhid"
 
 #: src/multiplayer_connect.cpp:971
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Ootan võrgumängijate liitumist"
+msgstr "Ootan mängijate liitumist..."
 
 #: src/multiplayer_create.cpp:37
-#, fuzzy
 msgid "Name of game"
-msgstr "Mängu nimi:"
+msgstr "Mängu nimi"
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Era"
-msgstr "Ajastu:"
+msgstr "Ajastu"
 
 #: src/multiplayer_create.cpp:40
-#, fuzzy
 msgid "Map to play"
 msgstr "Mängu kaart:"
 
@@ -7090,7 +7164,7 @@ msgstr "Jälgijad"
 
 #: src/multiplayer_create.cpp:45
 msgid "OK"
-msgstr ""
+msgstr "Nõus"
 
 #: src/multiplayer_create.cpp:46
 msgid "Regenerate"
@@ -7102,19 +7176,21 @@ msgstr "Seaded..."
 
 #: src/multiplayer_create.cpp:76
 msgid "The maximum turns the game will go for"
-msgstr ""
+msgstr "Maksimaalne mängu kestvus käikudes"
 
 #: src/multiplayer_create.cpp:81
 msgid "The amount of income each village yields per turn"
-msgstr ""
+msgstr "Küla poolt antav sissetulek käigu kohta "
 
 #: src/multiplayer_create.cpp:86
 msgid "The amount of experience a unit needs to advance"
-msgstr ""
+msgstr "Üksuse edutamiseks vajalik kogemuspunktide arv."
 
 #: src/multiplayer_create.cpp:89
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
+"Vastase üksusi ei saa jälgida, enne kui nad jõuavad sinu üksuste "
+"nägemispiirkonda."
 
 #: src/multiplayer_create.cpp:92
 msgid "The map is unknown until your units explore it"
@@ -7122,7 +7198,7 @@ msgstr "See kaardi osa on tundmatu kuni sinu üksused selle läbi uurivad"
 
 #: src/multiplayer_create.cpp:95
 msgid "Allow users who are not playing to watch the game"
-msgstr ""
+msgstr "Luba kõigil mängijatel, kes ei mängi, mängu jälgida."
 
 #: src/multiplayer_create.cpp:99
 msgid "Share View"
@@ -7142,7 +7218,7 @@ msgstr "Ilma poolteta."
 
 #: src/multiplayer_create.cpp:114
 msgid "No eras found"
-msgstr ""
+msgstr "Ajajärke ei leitud"
 
 #: src/multiplayer_create.cpp:123
 msgid "$login's game"
@@ -7150,31 +7226,27 @@ msgstr "$login-i nimi"
 
 #: src/multiplayer_create.cpp:153
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Vigane ajajärk valitud"
 
 #: src/multiplayer_create.cpp:180
 msgid "You must enter a name."
 msgstr "Sa pead sisestama nime."
 
 #: src/multiplayer_create.cpp:189
-#, fuzzy
 msgid "Turns"
-msgstr "Käik"
+msgstr "Käike"
 
 #: src/multiplayer_create.cpp:191
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "piiramatu"
+msgstr "Piiramatud käigud"
 
 #: src/multiplayer_create.cpp:198
-#, fuzzy
 msgid "Village Gold"
-msgstr "Külade kuld:"
+msgstr "Külade kuld"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Experience Modifier"
-msgstr "Maastiku mõjutajad"
+msgstr "Kogemuspunktide modifikaator"
 
 #: src/multiplayer_create.cpp:367 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -7213,14 +7285,12 @@ msgid "Getting game data..."
 msgstr "Hangin mängu andmeid..."
 
 #: src/multiplayer_wait.cpp:175
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "Ilma poolteta."
+msgstr "Selles mängus ei ole mitme mängija pooli."
 
 #: src/multiplayer_wait.cpp:205
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Ilma poolteta."
+msgstr "Mitme mängija pooli ei leitud"
 
 #: src/multiplayer_wait.cpp:225
 msgid "Choose your side:"
@@ -7236,12 +7306,11 @@ msgstr "Fail, mida sa proovisid laadida, on vigane."
 
 #: src/playlevel.cpp:724
 msgid "Game Over"
-msgstr ""
+msgstr "Mäng läbi"
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Mäng on salvestatud"
+msgstr "Mäng on läbi."
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -7699,39 +7768,3 @@ msgstr "kuulekas"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "neutraalne"
-
-#~ msgid "Load Game..."
-#~ msgstr "Lae mäng..."
-
-#~ msgid "Ok"
-#~ msgstr "Olgu"
-
-#~ msgid "Turns: "
-#~ msgstr "Käike:"
-
-#~ msgid "Experience Requirements: "
-#~ msgstr "Elukogemuse nõuded:"
-
-#~ msgid "Players: "
-#~ msgstr "Mängijad:"
-
-#~ msgid "Warning"
-#~ msgstr "Hoiatus"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Võtan vastu mängude nimekirja..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Mäng on tühistatud"
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Näita mängu kordust kuni salvestamise hetkeni?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~ msgid "<no games open>"
-#~ msgstr "<Lahtiseid mänge pole>"
