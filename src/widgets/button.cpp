@@ -137,7 +137,10 @@ void button::draw()
 		             break;
 		case PRESSED: image = pressedImage_;
 		              offset = 1;
-					  break;
+			      break;
+		case UNINIT:
+		case NORMAL:
+		default: break;
 	}
 
 	const SDL_Rect clipArea = {0,0,1024,768};
