@@ -754,10 +754,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const unit_map::iterator u = units->find(loc);
 
-		if(u == units->end())
-			return rval;
-
-		if(filter == NULL || u->second.matches_filter(*filter)) {
+		if(u != units->end() && (filter == NULL || u->second.matches_filter(*filter))) {
 			const std::string& lang = string_table[id];
 			if(!lang.empty())
 				text = lang;
