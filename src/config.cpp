@@ -1176,6 +1176,92 @@ config::all_children_iterator config::ordered_end() const
 	return all_children_iterator(ordered_children.end());
 }
 
+config config::get_diff(const config& c) const
+{
+	config res;
+
+	config* inserts = NULL;
+
+	string_map::const_iterator i;
+	for(i = values.begin(); i != values.end(); ++i) {
+		const string_map::const_iterator j = c.values.find(i->first);
+		if(j == c.values.end() || i->second != j->second) {
+			if(inserts == NULL) {
+				inserts = &res.add_child("insert");
+			}
+
+			(*inserts)[i->first] = i->second;
+		}
+	}
+
+	config* deletes = NULL;
+
+	for(i = c.values.begin(); i != c.values.end(); ++i) {
+		if(values.count(i->first) == 0) {
+			if(deletes == NULL) {
+				deletes = &res.add_child("delete");
+			}
+
+			(*deletes)[i->first] = "x";
+		}
+	}
+
+
+
+	return res;
+}
+
+void config::apply_diff(const config& diff)
+{
+	const config* const inserts = diff.child("insert");
+	if(inserts != NULL) {
+		for(string_map::const_iterator i = inserts->values.begin(); i != inserts->values.end(); ++i) {
+			values[i->first] = i->second;
+		}
+	}
+
+	const config* const deletes = diff.child("delete");
+	if(deletes != NULL) {
+		for(string_map::const_iterator i = deletes->values.begin(); i != deletes->values.end(); ++i) {
+			values.erase(i->first);
+		}
+	}
+}
+
+bool operator==(const config& a, const config& b)
+{
+	if(a.values.size() != b.values.size()) {
+		return false;
+	}
+
+	for(string_map::const_iterator i = a.values.begin(); i != a.values.end(); ++i) {
+		const string_map::const_iterator j = b.values.find(i->first);
+		if(j == b.values.end() || i->second != j->second) {
+			return false;
+		}
+	}
+
+	config::all_children_iterator x = a.ordered_begin(), y = b.ordered_begin();
+	while(x != a.ordered_end() && y != b.ordered_end()) {
+		const std::pair<const std::string*,const config*> val1 = *x;
+		const std::pair<const std::string*,const config*> val2 = *y;
+
+		if(*val1.first != *val2.first || *val1.second != *val2.second) {
+			return false;
+		}
+
+		++x;
+		++y;
+	}
+
+	return x == a.ordered_end() && y == b.ordered_end();
+}
+
+bool operator!=(const config& a, const config& b)
+{
+	return !operator==(a,b);
+}
+
 //#define TEST_CONFIG
 
 #ifdef TEST_CONFIG

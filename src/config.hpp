@@ -195,6 +195,13 @@ struct config
 	all_children_iterator ordered_begin() const;
 	all_children_iterator ordered_end() const;
 
+	//a function to get the differences between this object, and 'c', as another config
+	//object. i.e. calling cfg2.apply_diff(cfg1.get_diff(cfg2)) will make cfg1 identical
+	//to cfg2.
+	config get_diff(const config& c) const;
+
+	void apply_diff(const config& diff);
+
 	//all the attributes of this node.
 	string_map values;
 
@@ -209,6 +216,9 @@ private:
 
 	std::vector<child_pos> ordered_children;
 };
+
+bool operator==(const config& a, const config& b);
+bool operator!=(const config& a, const config& b);
 
 struct config_has_value {
 	config_has_value(const std::string& name, const std::string& value)

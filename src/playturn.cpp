@@ -851,7 +851,25 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, i
 
 	std::vector<std::string> menu;
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		menu.push_back(translate_string("action_" + *i));
+		std::stringstream str;
+		str << translate_string("action_" + *i);
+
+		//see if this menu item has an associated hotkey
+		const hotkey::HOTKEY_COMMAND cmd = hotkey::string_to_command(*i);
+		
+		const std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
+		std::vector<hotkey::hotkey_item>::const_iterator hk;
+		for(hk = hotkeys.begin(); hk != hotkeys.end(); ++hk) {
+			if(hk->action == cmd) {
+				break;
+			}
+		}
+
+		if(hk != hotkeys.end()) {
+			str << "," << hotkey::get_hotkey_name(*hk);
+		}
+
+		menu.push_back(str.str());
 	}
 
 	static const std::string style = "menu2";
