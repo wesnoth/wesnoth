@@ -485,6 +485,7 @@ bool unit::matches_filter(const config& cfg) const
 	const std::string& role = cfg["role"];
 	const std::string& race = cfg["race"];
 	const std::string& gender = cfg["gender"];
+	const std::string& canrecruit = cfg["canrecruit"];
 
 	if(description.empty() == false && description != this->underlying_description()) {
 		return false;
@@ -563,6 +564,9 @@ bool unit::matches_filter(const config& cfg) const
 	if(role.empty() == false && role_ != role) {
 		return false;
 	}
+
+	if (canrecruit.empty() == false && (canrecruit == "1") != can_recruit())
+		return false;
 
 	//if there are [not] tags below this tag, it means that the filter
 	//should not match if what is in the [not] tag does match
