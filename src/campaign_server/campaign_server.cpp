@@ -90,8 +90,9 @@ void campaign_server::run()
 						network::send_data(construct_error("Campaign not found."),sock);
 					} else {
 						config cfg;
-						compression_schema schema;
-						read_compressed(cfg, read_file((*campaign)["filename"]),schema);
+						std::istream *stream = stream_file((*campaign)["filename"]);
+						read_compressed(cfg, *stream);
+						delete stream;
 						network::queue_data(cfg,sock);
 
 						const int downloads = lexical_cast_default<int>((*campaign)["downloads"],0)+1;

@@ -14,6 +14,7 @@
 #ifndef SERIALIZATION_BINARY_WML_HPP_INCLUDED
 #define SERIALIZATION_BINARY_WML_HPP_INCLUDED
 
+#include <iosfwd>
 #include <map>
 #include <string>
 
@@ -35,10 +36,10 @@ struct compression_schema
 //meaning that the entire schema won't have to be transmitted each time.
 
 std::string write_compressed(config const &cfg, compression_schema &schema);
-void read_compressed(config &cfg, std::string const &data, compression_schema &schema); //throws config::error
+void read_compressed(config &cfg, std::istream &in, compression_schema &schema); //throws config::error
 
 
 std::string write_compressed(config const &cfg);
-void read_compressed(config &cfg, std::string const &data);
+void read_compressed(config &cfg, std::istream &in);
 
 #endif

@@ -272,7 +272,9 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					compression_schema schema;
 
 					try {
-						read_compressed(cfg, read_file(fname), schema);
+						std::istream *stream = stream_file(fname);
+						read_compressed(cfg, *stream, schema);
+						delete stream;
 						return;
 					} catch(config::error&) {
 						std::cerr << "cache is corrupt. Loading from files\n";

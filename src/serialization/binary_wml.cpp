@@ -19,7 +19,8 @@
 #include "serialization/binary_wml.hpp"
 
 #include <algorithm>
-#include <ostream>
+#include <iostream>
+#include <sstream>
 
 #define ERR_CF lg::err(lg::config)
 
@@ -28,9 +29,9 @@ std::string write_compressed(config const &cfg) {
 	return write_compressed(cfg, schema);
 }
 
-void read_compressed(config &cfg, std::string const &data) {
+void read_compressed(config &cfg, std::istream &in) {
 	compression_schema schema;
-	read_compressed(cfg, data, schema);
+	read_compressed(cfg, in, schema);
 }
 
 //data compression. Compression is designed for network traffic.
@@ -122,15 +123,19 @@ static void compress_emit_word(std::string const &word, compression_schema &sche
 	}
 }
 
-typedef std::string::const_iterator scit;
-static scit compress_read_literal_word(scit i1, scit i2, std::string &res)
+static std::string compress_read_literal_word(std::istream &in)
 {
-	scit const end_word = std::find(i1, i2, 0);
-	if (end_word == i2)
-		throw config::error("Unexpected end of data in compressed config read\n");
-
-	res = std::string(i1, end_word);
-	return end_word;
+	std::stringstream stream;
+	for(;;) {
+		unsigned char c;
+		c = in.get();
+		if (in.fail())
+			throw config::error("Unexpected end of data in compressed config read\n");
+		if (c == 0)
+			break;
+		stream << c;
+	}
+	return stream.str();
 }
 
 static void write_compressed_internal(config const &cfg, compression_schema &schema, std::vector< char > &res, int level)
@@ -170,32 +175,31 @@ std::string write_compressed(config const &cfg, compression_schema &schema)
 	return s;
 }
 
-static scit read_compressed_internal(config &cfg, scit i1, scit i2, compression_schema &schema, int level)
+static void read_compressed_internal(config &cfg, std::istream &in, compression_schema &schema, int level)
 {
 	if (level >= max_recursion_levels)
 		throw config::error("Too many recursion levels in compressed config read\n");
 	
 	bool in_open_element = false;
-	while (i1 != i2) {
-		switch (*i1) {
+	for(;;) {
+		unsigned char const c = in.get();
+		if (in.fail())
+			return;
+		switch (c) {
 		case compress_open_element:
 			in_open_element = true;
 			break;
 		case compress_close_element:
-			return i1;
-		case compress_schema_item: {
-			std::string word;
-			i1 = compress_read_literal_word(i1 + 1, i2, word);
-			add_word_to_schema(word,schema);
+			return;
+		case compress_schema_item:
+			add_word_to_schema(compress_read_literal_word(in), schema);
 			break;
-		}
 
 		default: {
 			std::string word;
-			if (*i1 == compress_literal_word) {
-				i1 = compress_read_literal_word(i1 + 1, i2, word);
+			if (c == compress_literal_word) {
+				word = compress_read_literal_word(in);
 			} else {
-				const unsigned char c = *i1;
 				unsigned int code = c;
 
 				const compression_schema::char_word_map::const_iterator itor
@@ -211,27 +215,20 @@ static scit read_compressed_internal(config &cfg, scit i1, scit i2, compression_
 			if (in_open_element) {
 				in_open_element = false;
 				config &cfg2 = cfg.add_child(word);
-				i1 = read_compressed_internal(cfg2, i1 + 1, i2, schema, level + 1);
+				read_compressed_internal(cfg2, in, schema, level + 1);
 			} else {
 				//we have a name/value pair, the value is always a literal string
-				std::string value;
-				i1 = compress_read_literal_word(i1 + 1, i2, value);
+				std::string value = compress_read_literal_word(in);
 				cfg.values.insert(std::make_pair(word, value));
 			}
 		}
 
 		} //end switch
-
-		if(i1 == i2)
-			return i2;
-		++i1;
 	}
-
-	return i1;
 }
 
-void read_compressed(config &cfg, std::string const &data, compression_schema &schema)
+void read_compressed(config &cfg, std::istream &in, compression_schema &schema)
 {
 	cfg.clear();
-	read_compressed_internal(cfg, data.begin(), data.end(), schema, 0);
+	read_compressed_internal(cfg, in, schema, 0);
 }

@@ -520,7 +520,9 @@ connection receive_data(config& cfg, connection connection_num)
 	const schema_map::iterator schema = schemas.find(result);
 	wassert(schema != schemas.end());
 
-	read_compressed(cfg,std::string(buf.begin(),buf.end()),schema->second.incoming);
+	std::string buffer(buf.begin(), buf.end());
+	std::istringstream stream(buffer);
+	read_compressed(cfg, stream, schema->second.incoming);
 
 	return result;
 }
