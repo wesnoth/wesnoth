@@ -196,12 +196,23 @@ private:
 	void recalculate_starting_pos_labels();
 
 	/// Add an undo action to the undo stack. Resize the stack if it
-	/// gets larger than the maximum size.
+	/// gets larger than the maximum size. Add an operation to the
+	/// number done since save.
 	void add_undo_action(const map_undo_action &action);
 
 	/// Update the selection and highlightning of the hexes the mouse
 	/// currently is over.
 	void update_mouse_over_hexes(const gamemap::location mouse_over_hex);
+
+	/// Insert the currently selected locations in the clipboard.
+	void insert_selection_in_clipboard();
+
+	struct clipboard_item {
+		clipboard_item(int xo, int yo, gamemap::TERRAIN t) :
+			x_offset(xo), y_offset(yo), terrain(t) {}
+		int x_offset, y_offset;
+		gamemap::TERRAIN terrain;
+	};
 
 	display &gui_;
 	gamemap &map_;
@@ -230,6 +241,8 @@ private:
 	std::set<gamemap::location> mouse_over_hexes_;
 	std::set<gamemap::location> selected_hexes_;
 	bool add_selection_;
+	std::vector<clipboard_item> clipboard_;
+	gamemap::location clipboard_offset_loc_;
 };
 
 }

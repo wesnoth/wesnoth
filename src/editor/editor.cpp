@@ -42,6 +42,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <cmath>
 
 namespace {
 	const unsigned int undo_limit = 100;
@@ -60,6 +61,13 @@ namespace {
 		if (start_side != -1 && map.get_terrain(hex) != gamemap::KEEP) {
 			map.set_starting_position(start_side, gamemap::location());
 		}
+	}
+
+	double location_distance(const gamemap::location loc1, const gamemap::location loc2) {
+		const double xdiff = loc1.x - loc2.x;
+		const double ydiff = loc1.y - loc2.y;
+		const double dist = std::sqrt(xdiff * xdiff + ydiff * ydiff);
+		return dist;
 	}
 }
 
@@ -210,7 +218,6 @@ void map_editor::edit_flood_fill() {
 	flood_fill(map_, selected_hex_, palette_.selected_terrain(), &log);
 	std::vector<gamemap::location> to_invalidate;
 	map_undo_action action;
-	num_operations_since_save_++;
 	for (terrain_log::iterator it = log.begin(); it != log.end(); it++) {
 		to_invalidate.push_back((*it).first);
 		action.add((*it).second, palette_.selected_terrain(),
@@ -257,16 +264,63 @@ void map_editor::edit_fill_selection() {
 }
 
 void map_editor::edit_cut() {
-
+	clipboard_.clear();
+	insert_selection_in_clipboard();
+	edit_fill_selection();
 }
 
 void map_editor::edit_copy() {
-
+	clipboard_.clear();
+	insert_selection_in_clipboard();
 }
 
 void map_editor::edit_paste() {
-
+	map_undo_action undo_action;
+	std::vector<gamemap::location> filled;
+	gamemap::location start_hex = selected_hex_;
+	// The x coordinate may need to be adjusted because the same
+	// representation of the hexes may not look the same on the map, and
+	// we want to make sure it looks the same when pasted.
+	start_hex.x = start_hex.x % 2 == clipboard_offset_loc_.x % 2 ? start_hex.x : start_hex.x - 1;
+	for (std::vector<clipboard_item>::const_iterator it = clipboard_.begin();
+		 it != clipboard_.end(); it++) {
+		const gamemap::location target =
+			gamemap::location(start_hex.x + (*it).x_offset,
+							  start_hex.y + (*it).y_offset);
+		if (map_.on_board(target)) {
+			undo_action.add(map_.get_terrain(target), (*it).terrain, target);
+			map_.set_terrain(target, (*it).terrain);
+			filled.push_back(target);
+		}
+	}
+	invalidate_all_and_adjacent(filled);
+	add_undo_action(undo_action);
 }
+
+
+void map_editor::insert_selection_in_clipboard() {
+	if (selected_hexes_.empty()) {
+		return;
+	}
+	gamemap::location offset_hex = *(selected_hexes_.begin());
+	std::set<gamemap::location>::const_iterator it;
+	// Find the hex that is closest to the selected one, use this as the
+	// one to calculate the offset from.
+	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+		if (location_distance(selected_hex_, *it) <
+			location_distance(selected_hex_, offset_hex)) {
+			offset_hex = *it;
+		}
+	}
+	clipboard_offset_loc_ = offset_hex;
+	for (it = selected_hexes_.begin(); it != selected_hexes_.end(); it++) {
+		const int x_offset = (*it).x - offset_hex.x;
+		const int y_offset = (*it).y - offset_hex.y;
+		gamemap::TERRAIN terrain = map_.get_terrain(*it);
+		clipboard_.push_back(clipboard_item(x_offset, y_offset, terrain));
+	}
+}
+
 
 bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	switch (command) {
@@ -285,6 +339,9 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_LOAD_MAP:
 	case hotkey::HOTKEY_EDIT_FLOOD_FILL:
 	case hotkey::HOTKEY_EDIT_FILL_SELECTION:
+	case hotkey::HOTKEY_EDIT_COPY:
+	case hotkey::HOTKEY_EDIT_CUT:
+	case hotkey::HOTKEY_EDIT_PASTE:
 		return true;
 	default:
 		return false;
@@ -302,6 +359,7 @@ void map_editor::add_undo_action(const map_undo_action &action) {
 	if(undo_stack_.size() > undo_limit) {
 		undo_stack_.pop_front();
 	}
+	num_operations_since_save_++;
 }
 
 void map_editor::undo() {
@@ -428,7 +486,6 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 				else {
 					std::vector<gamemap::location> locs =
 						get_tiles(map_, hex, brush_.selected_brush_size());
-					++num_operations_since_save_;
 					redo_stack_.clear();
 					map_undo_action action;
 					std::vector<gamemap::location> to_invalidate;

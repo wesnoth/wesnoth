@@ -77,7 +77,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editfillselection",HOTKEY_EDIT_FILL_SELECTION));
 		m.insert(val("editcut",HOTKEY_EDIT_CUT));
 		m.insert(val("editcopy",HOTKEY_EDIT_COPY));
-		m.insert(val("editpsate",HOTKEY_EDIT_COPY));
+		m.insert(val("editpaste",HOTKEY_EDIT_PASTE));
 		m.insert(val("toggleshroud",HOTKEY_TOGGLE_SHROUD));
 		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 	}
