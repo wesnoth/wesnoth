@@ -879,6 +879,22 @@ void cut_word(std::string& line, std::string& word, int size, int max_width)
 	}
 }
 
+inline bool break_before(wchar_t ch)
+{
+	return ch == ' ' ||
+		(ch >= 0x3000 && ch < 0xa000) ||
+		(ch >= 0xf900 && ch < 0xfb00) ||
+		(ch >= 0xff00 && ch < 0xfff0);
+}
+
+inline bool break_after(wchar_t ch)
+{
+	return ch == ' ' ||
+		(ch >= 0x3000 && ch < 0xa000) ||
+		(ch >= 0xf900 && ch < 0xfb00) ||
+		(ch >= 0xff00 && ch < 0xfff0);
+}
+
 }
 
 std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int max_width, int max_height)
@@ -903,7 +919,13 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size, int
 				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
+					if(!current_word.empty() && break_before(*ch))
+						break;
 					current_word.append(ch.substr().first, ch.substr().second);
+					if(break_after(*ch)) {
+						++ch;
+						break;
+					}
 				}
 			}
 		}
