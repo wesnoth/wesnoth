@@ -19,6 +19,7 @@
 #include "SDL.h"
 
 #include <cstdlib>
+#include <iostream>
 #include <string>
 
 struct free_sdl_surface {
@@ -89,14 +90,17 @@ struct surface_lock
 			const int res = SDL_LockSurface(surface_);
 			if(res == 0) {
 				locked_ = true;
+				std::cerr << "locked surface\n";
 			}
 		}
 	}
 
 	~surface_lock()
 	{
-		if(locked_)
+		if(locked_) {
+			std::cerr << "unlocking surface\n";
 			SDL_UnlockSurface(surface_);
+		}
 	}
 
 	short* pixels() { return reinterpret_cast<short*>(surface_->pixels); }

@@ -52,8 +52,8 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 
 			const int dstpad = dstxpad*ydst;
 
-			srclock.pixels()[ydst*w + xdst + dstpad] =
-			             dstlock.pixels()[ysrcint*surface->w + xsrcint];
+			dstlock.pixels()[ydst*w + xdst + dstpad] =
+			             srclock.pixels()[ysrcint*surface->w + xsrcint];
 		}
 	}
 

@@ -358,6 +358,8 @@ void display::draw(bool update,bool force)
 					SDL_FreeSurface(image);
 					image = new_image;
 					sidebarScaling_ = static_cast<double>(image->h)/768.0;
+				} else {
+					std::cerr << "Could not scale image\n";
 				}
 			}
 
