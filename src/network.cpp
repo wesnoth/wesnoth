@@ -207,7 +207,8 @@ connection connect(const std::string& host, int port)
 
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
-		throw error("Could not connect to host");
+		throw error(hostname == NULL ? "Could not bind to port" :
+		                               "Could not connect to host");
 	} else {
 		//TODO: add code in here which sets the socket to non-blocking
 	}
