@@ -33,6 +33,7 @@
 #include "util.hpp"
 
 #include <cmath>
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -75,6 +76,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	if(preferences::turn_dialog()) {
 		gui::show_dialog(gui,NULL,"",_("It is now your turn"),gui::MESSAGE);
+	}
+
+	const std::string& turn_cmd = preferences::turn_cmd();
+	if(turn_cmd.empty() == false) {
+		system(turn_cmd.c_str());
 	}
 
 	turn_info turn_data(gameinfo,state_of_game,status,terrain_config,level,

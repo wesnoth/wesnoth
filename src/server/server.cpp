@@ -182,7 +182,7 @@ void server::process_command(const std::string& cmd)
 
 		std::cout << "---" << std::endl;
 	} else if(command == "metrics") {
-		std::cout << metrics_;
+		std::cout << metrics_ << std::endl;
 	} else if(command == "ban") {
 
 		if(i == cmd.end()) {
