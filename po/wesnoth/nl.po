@@ -1,14 +1,14 @@
 # Dutch translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
-# This file is distributed under the same license as the Battle for Wesnoth package.
-#
+# Copyright (C) 2005 Wesnoth development team This file is distributed under the same license as the Battle for Wesnoth package.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.12-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2005-02-21 17:03+0200\n"
-"Last-Translator: Pieter Vermeylen <pitoe@iname.com>\n"
+"PO-Revision-Date: 2005-03-10 22:46+0200\n"
+"Last-Translator: Onne <onne@grammex.com>\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -73,9 +73,11 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Sommige eenheden hebben vaardigheden die of direct invloed hebben op andere "
+"eenheden of invloed hebben op de interactie met andere eenheden. Elke "
+"vaardigheid wordt hier beschreven zodra je hem bent tegengekomen in het spel."
 
 #: data/help.cfg:62
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -86,7 +88,7 @@ msgid ""
 "simple rules arise a wealth of strategy, making the game easy to learn but a "
 "challenge to master."
 msgstr ""
-"<img>src=misc/logo.png align=middle box=no</img>\n"
+"\n"
 "\n"
 "Strijd om Wesnoth is een strategiespel in een magische wereld waar spelers "
 "om de beurt spelen. Strijd om Wesnoth is eerder een buitenbeentje in de "
@@ -110,6 +112,13 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"In dit hoofdstuk vind je alles wat je moet weten om Strijd om Wesnoth te "
+"spelen. De basisregels van het spel worden hierin uitgelegd. Als je meer "
+"wilt weten om het spel meester te worden bekijk dan <ref>dst=basic_strategy "
+"text='Basisstrategie'</ref> en <ref>dst=multiplayer_strategy "
+"text='Multiplayer-strategie'</ref>. Denk erom dat dit slechts een overzicht "
+"is; voor bijzonderheden en specifieke situaties kun je de aangegeven links "
+"volgen."
 
 #: data/help.cfg:70
 msgid ""
@@ -122,6 +131,16 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Het is handig te beginnen met het oefenspel (klik in het hoofdscherm op "
+"<italic>text=Oefenen</italic>). Je wordt dan begeleid in een eenvoudige "
+"veldtocht die je de basisregels van het spel leert. Als je dat hebt gedaan "
+"dan kun je de veldtocht genaamd \"De Kroonprins\" spelen; kies "
+"<italic>text='veldtocht'</italic> uit het hoofdscherm en dan "
+"<italic>text='DeÂ·Kroonprins'</italic>. Omdat Strijd om Wesnoth op sommige "
+"momenten behoorlijk moeilijk wordt, is het verstandig in het begin op het "
+"makkelijkste niveau te spelen."
 
 #: data/help.cfg:73
 msgid ""
@@ -129,6 +148,10 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Door tijdens het spel met de muis over de menubalk aan de rechterkant van "
+"het scherm te bewegen krijg je voor veel van de onderdelen een korte "
+"beschrijving. Dit is bijvoorbeeld erg handig wanneer je een bepaalde "
+"vaardigheid voor het eerst tegenkomt."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -145,6 +168,14 @@ msgid ""
 "cost. Click on a unit to see its statistics to the left, then press the "
 "recruit button to recruit it."
 msgstr ""
+"Aan het begin van een slag, en soms ook tijdens een slag, zul je troepen "
+"voor je leger moeten recruteren. Om te kunnen recruteren moet je leider "
+"(Konrad in \"De Kroonprins\") op het donjonvakje van een kasteel staan. Je "
+"kunt dan of uit het Acties-menu of na rechtsklikken op een kasteelvakje "
+"<italic>text='Recruteren'</italic> kiezen. Dit brengt een venster te "
+"voorschijn met een lijst van eenheden die je kunt recruteren en het aantal "
+"goudstukken dat elk van hen kost. Selecteer een eenheid om zijn gegevens te "
+"zien en klik vervolgens op 'Ok' om hem te recruteren."
 
 #: data/help.cfg:81
 msgid ""
@@ -155,6 +186,12 @@ msgid ""
 "keep. You may only recruit as many units as you have free hexes in your "
 "castle, and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Als je rechtsklikt op een kasteelvakje en recruteert dan wordt de nieuwe "
+"eenheid op dat vakje geplaatst. Anders wordt de eenheid ergens in het "
+"kasteel op een leeg vakje in de buurt van de donjon gezet. Je kunt eenheden "
+"recruteren zolang er vrije kasteelvakjes zijn en zolang je genoeg goud hebt."
 
 #: data/help.cfg:83
 msgid ""
@@ -163,6 +200,10 @@ msgid ""
 "Recruited units come with two random <ref>dst=traits text=Traits</ref> which "
 "modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Gerecruteerde eenheden hebben twee willekeurig gekozen <ref>dst=traits "
+"text=trekken</ref> die hun eigenschappen beÃ¯nvloeden."
 
 #: data/help.cfg:85
 msgid ""
@@ -173,6 +214,13 @@ msgid ""
 "standard 20 gold and presents you with a list of all surviving units from "
 "previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"In latere scenario's kun je behalve nieuwe troepen recruteren ook de nog "
+"levende troepen uit een vorig gevecht oproepen. Het enige verschil met "
+"recruteren is dat opgeroepen eenheden altijd 20 goudstukken kosten. De optie "
+"<italic>text='oproepen'</italic> uit het Acties-menu geeft je een lijst met "
+"eenheden uit de vorige scenario's."
 
 #: data/help.cfg:87
 msgid ""
@@ -182,6 +230,12 @@ msgid ""
 "require money to support. See <ref>dst=income_and_upkeep text='Income and "
 "Upkeep'</ref> for more information."
 msgstr ""
+"\n"
+"\n"
+"Denk erom dat troepen niet alleen goud kosten bij het recruteren en "
+"oproepen, maar ook onderhoudskosten met zich meebrengen. Zie "
+"<ref>dst=income_and_upkeep text='Inkomen en Onderhoudskosten'</ref> voor "
+"meer informatie."
 
 #: data/help.cfg:92 src/help.cpp:1196 src/help.cpp:1197
 msgid "Movement"
@@ -196,6 +250,13 @@ msgid ""
 "required to reach it, and clicking will cause the unit to move towards it by "
 "the fastest route over this and subsequent turns."
 msgstr ""
+"Het verplaatsen van troepen in Strijd om Wesnoth is eenvoudig. Klik op de "
+"eenheid die je wilt verplaatsen en dan op het vakje waar je hem heen wilt "
+"hebben. Wanneer je een eenheid selecteert zullen de vakjes waar hij nog deze "
+"beurt kan komen oplichten en de andere donker worden. Als je met de muis "
+"over een donker vakje beweegt krijg je te zien hoeveel beurten je nodig hebt "
+"om er te komen, en als je er op klikt zal de eenheid er automatisch "
+"heenbewegen in deze en de komende beurten."
 
 #: data/help.cfg:95
 msgid ""
@@ -211,6 +272,17 @@ msgid ""
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "look at <italic>text='Terrain Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Elke eenheid kan een bepaald aantal stappen doen per beurt. Die stappen "
+"worden verbruikt als de eenheid naar een ander vakje beweegt. Het aantal "
+"stappen dat nodig is hangt af van het <ref>dst=terrain text=Terrein</ref> in "
+"het doelvakje en het soort eenheid. Een eenheid die naar grasland beweegt "
+"bijvoorbeeld, heeft altijd 1 stap nodig en in het bos hebben elfen slechts 1 "
+"stap nodig, waar de meeste mensen en orks er 2 nodig hebben en ruiters zelfs "
+"3. Rechtsklik op een eenheid, kies Troepenbeschrijving en kijk onder "
+"<italic>text='Terreinspecificaties'</italic> om te zien hoeveel stappen de "
+"eenheid nodig heeft voor elk van de terreinsoorten."
 
 #: data/help.cfg:97
 msgid ""
@@ -223,6 +295,15 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"\n"
+"\n"
+"Iets anders waar je op moet letten bij het verplaatsen van eenheden is de "
+"<ref>dst=zones_of_control text='Controlezone'</ref>. Elke eenheid beheerst "
+"de vakjes direct om hem heen en een andere eenheid die deze zone betreedt "
+"kan die beurt niet verder lopen (maar nog wel aanvallen). De controlezone is "
+"een belangrijk aspect van Wesnoth, en het is handig te leren er mee om te "
+"gaan. Alleen  <ref>dst=ability_skirmish text='Warzaaiers'</ref> negeren de "
+"controlezones."
 
 #: data/help.cfg:102
 msgid "Combat"
@@ -237,6 +318,13 @@ msgid ""
 "Combat is relatively straightforward; the attacker and defender alternate "
 "attacks until each has used their allotted number of attacks."
 msgstr ""
+"Er worden twee soorten gevechten onderscheiden in Strijd om Wesnoth, "
+"gevechten op korte en op lange afstand. Beide vinden overigens plaats tussen "
+"eenheden op aangrenzende vakjes. Een gevecht op korte afstand betreft "
+"meestal wapens als zwaarden, bijlen en tanden, terwijl die op lange afstand "
+"meestal gevoerd worden met bogen, speren, vuurballen, en dergelijke. "
+"Gevechten zijn redelijk eenvoudig: aanvaller en verdediger wisselen hun "
+"slagen uit totdat beide eenheden door hun slagen heenzijn."
 
 #: data/help.cfg:105
 msgid ""
@@ -244,6 +332,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of attacks'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Volgorde en aantal slagen'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -255,6 +346,14 @@ msgid ""
 "attack may make 4 swings each dealing 5 damage, while an Orcish Grunt with 9-"
 "2 only gets 2 swings (but at 9 damage)."
 msgstr ""
+"\n"
+"\n"
+"De aanvaller deelt de eerste klap uit, vervolgens is de verdediger aan de "
+"beurt. De twee krijgen zo afwisselend de beurt totdat beide door hun slagen "
+"heen zijn. Het aantal slagen dat een eenheid krijgt verschilt; een "
+"Elfenstrijder met een 5-4 zwaard krijgt 4 slagen die elk 5 punten schade "
+"toebrengen, terwijl een Orkse Grunt met 9-2 maar twee slagen krijgt (met 9 "
+"punten schade per stuk)."
 
 #: data/help.cfg:109
 msgid ""
@@ -262,6 +361,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Kans om te raken'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -275,6 +377,17 @@ msgid ""
 "has only a 30% chance of hitting them. Conversely, the elf's chance of "
 "hitting the attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"De kans om een eenheid te raken hangt alleen af van het <ref>dst=terrain "
+"text=Terrein</ref> waarin de eenheid zich bevindt (met twee uitzonderingen). "
+"Je kunt dit bekijken als je rechtsklikt op een eenheid en dan "
+"<italic>text='Beschrijving'</italic> kiest. Onder "
+"<italic>text='Terreinspecificaties'</italic> staat het "
+"verdedigingspercentage van de betreffende eenheid. Een Elfenstrijder "
+"bijvoorbeeld heeft een verdediging van 60% in het bos, zodat een aanvaller "
+"40% kans heeft hem te raken. Omgekeerd hangt de kans dat de elfenstrijder "
+"zijn aanvaller raakt af van het terrein waarin de aanvaller zich bevindt."
 
 #: data/help.cfg:112
 msgid ""
@@ -285,6 +398,11 @@ msgid ""
 "terrain, and, when used offensively, Marksmen always have at least a 60% "
 "chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"De twee uitzenderingen op deze regel zijn <ref>dst=magical_attacks "
+"text='Magische aanvallen'</ref>, die altijd een raakkans van 70% hebben, en "
+"<ref>dst=ability_marksman text=Precisieschutters</ref>, die een raakkans van "
+"ten minste 60% hebben."
 
 #: data/help.cfg:114
 msgid ""
@@ -292,6 +410,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Schade</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -304,6 +425,14 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Elke rake klap brengt een bepaald aantal punten schade toe afhankelijk van "
+"het soort aanval. Een Elfenstrijder met een 5-4 zwaard veroorzaakt 5 punten "
+"schade per rake klap. Dat getal wordt in het algemeen door twee dingen "
+"beÃ¯nvloed: <ref>dst=damage_types_and_resistance text=Resistentie</ref> en "
+"<ref>dst=time_of_day text='De Tijd van de Dag'</ref>, die beide hieronder "
+"besproken worden."
 
 #: data/help.cfg:118
 msgid ""
@@ -314,6 +443,12 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Een aantal eenheden heeft bijzondere vaardigheden die de toegebrachte schade "
+"beÃ¯nvloeden. De meest voorkomende van deze is <ref>dst=ability_charge "
+"text=Stormloop</ref>, die de schade verdubbelt zowel voor de aanvaller als "
+"de verdediger, wanneer de eenheid met deze vaardigheid aanvalt."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
@@ -327,6 +462,12 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"In Wesnoth kunnen zes verschillende soorten schade toegebracht worden. Drie "
+"die meestal fysieke aanvallen betreffen: snij-, puntige en impactschade. En "
+"drie die meestal veroorzaakt worden door magische aanvallen: vuur-, koude-, "
+"en heilige schade. Verschillende eenheden kunnen in verschillende mate "
+"resistent zijn tegen deze soorten waardoor de hoeveelheid daadwerkelijk "
+"toegebrachte schade verandert."
 
 #: data/help.cfg:126
 msgid ""
@@ -338,6 +479,13 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Resistentie werkt erg eenvoudig: als een eenheid 40% resistentie heeft tegen "
+"een aanval, dan wordt 40% van de toegebrachte schade tenietgedaan. Het komt "
+"ook voor dat een eenheid juist erg kwetsbaar is voor een bepaald type "
+"aanval. Een resistentie van -100% betekent dat de toegebrachte schade van "
+"dat type verdubbeld wordt."
 
 #: data/help.cfg:128
 msgid ""
@@ -347,6 +495,11 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Skeletten bijvoorbeeld zijn uiterst resistent voor snij- en puntige schade, "
+"maar zijn gevoelig voor impact- en vuurschade, en zeer kwetsbaar voor "
+"heilige wapens."
 
 #: data/help.cfg:133
 msgid "Time of Day"
@@ -365,6 +518,12 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Een scenario in Wesnoth heeft meestal een cyclus van dag en nacht. De "
+"huidige tijd van de dag kun je zien vlak onder de mini-kaart rechts boven in "
+"het scherm.\n"
+"\n"
+"De gebruikelijke cyclus is:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -394,6 +553,8 @@ msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"Ochtend en Middag tellen als dag, Eerste en Tweede Wacht tellen als nacht."
 
 #: data/help.cfg:151
 msgid ""
@@ -405,12 +566,23 @@ msgid ""
 "Chaotic units get +25% damage at night, and -25% in daytime.\n"
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"\n"
+"\n"
+"De tijd van de dag heeft alsvolgt invloed:\n"
+"\n"
+"Rechtvaardige eenheden brengen overdag 25% meer schade toe, 's nachts 25% "
+"minder.\n"
+"Chaotische eenheden brengen 's nachts 25% meer schade toe, overdag 25% "
+"minder.\n"
+"Neutrale eenheden worden niet beÃ¯nvloed door dag en nacht."
 
 #: data/help.cfg:154
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Pas op, sommige scenario's vinden ondergronds plaats waar het altijd nacht "
+"is!"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
@@ -423,6 +595,11 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Wanneer beide eenheden een gevecht overleven verdienen ze een aantal "
+"ervaringspunten gelijk aan de rang van hun tegenstander. Als een eenheid een "
+"andere doodt dan krijgt hij veel meer ervaringspunten: 4 voor een "
+"tegenstander met rang 0, 8 voor een met rang 1, 16 voor een met rang 2, 24 "
+"voor een met rang 3, etc."
 
 #: data/help.cfg:162
 msgid ""
@@ -433,6 +610,13 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Elke eenheid heeft een zekere hoeveelheid ervaringspunten nodig om te "
+"promoveren (de trek \"Intelligent\" vermindert dit aantal met 20%). Wanneer "
+"dit aantal punten bereikt wordt promoveert de eenheid onmiddellijk waarbij "
+"hij volledig geneest van eventuele verwondingen. In sommige gevallen mag je "
+"een keuze maken voor de promotie."
 
 #: data/help.cfg:164
 msgid ""
@@ -441,6 +625,10 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
+"\n"
+"\n"
+"De meeste eenheden hebben drie rangen, sommige minder, en sommige meer "
+"(zoals <ref>dst=unit_mage text=MagiÃ«rs</ref>, die er vier hebben)."
 
 #: data/help.cfg:169
 msgid "Healing"
@@ -452,6 +640,10 @@ msgid ""
 "ways for your units to heal, all of which take place at the beginning of "
 "your turn, before you take action."
 msgstr ""
+"Het is onvermijdelijk dat eenheden verwondingen oplopen bij gevechten. Er "
+"zijn in Wesnoth verschillende manieren om die verwondingen te genezen die "
+"allemaal aan het begin van je beurt, dus voordat je iets doet, hun werking "
+"hebben."
 
 #: data/help.cfg:172
 msgid ""
@@ -460,12 +652,18 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Rust: Een eenheid die niet beweegt, niet aanvalt en niet aangevallen wordt "
+"zal 2HP genezen in de volgende beurt."
 
 #: data/help.cfg:173
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Dorpen: Een eenheid die een beurt begint in een dorp geneest 8HP."
 
 #: data/help.cfg:174
 msgid ""
@@ -473,6 +671,10 @@ msgid ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst=ability_regeneration text=Regeneratie</ref>: Een eenheid met de "
+"Regeneratie eigenschap (trollen bijvoorbeeld) geneest aan het begin van elke "
+"beurt 8HP."
 
 #: data/help.cfg:175
 msgid ""
@@ -482,6 +684,11 @@ msgid ""
 "turn, to a total maximum of 8 points healed, or prevent Poison from dealing "
 "damage."
 msgstr ""
+"\n"
+"Helers: Eenheden met de <ref>dst=ability_heals text=Heelt</ref> vaardigheid "
+"genezen alle niet-vijandelijke troepen direct naast hen voor 4HP elk, totaan "
+"een maximum van 8HP in totaal, of voorkomen dat vergiftigde eenheden te "
+"lijden hebben van het gif."
 
 #: data/help.cfg:177
 msgid ""
@@ -491,6 +698,12 @@ msgid ""
 "will heal all friendly units immediately beside them for 8HP each turn, to a "
 "total maximum of 18 points healed, or cure a unit of Poison."
 msgstr ""
+"\n"
+"\n"
+"Genezers: Eenheden met de <ref>dst=ability_cures text=Geneest</ref> "
+"vaardigheid genezen alle niet-vijandelijke eenheden die direct om hen "
+"heenstaan voor 8HP elk, met een maximum van 18HP, of verlossen een eenheid "
+"van zijn vergiftiging."
 
 #: data/help.cfg:179
 msgid ""
@@ -500,6 +713,11 @@ msgid ""
 "villages, regeneration, and healing/curing cannot combine with each other. "
 "Also, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"De verschillende vormen van genezing worden niet gecombineerd, behalve de "
+"2HP van uitrusten die bovenop een andere vorm van genezing kunnen komen. "
+"Tussen twee scenario's in genezen eenheden volledig."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
@@ -512,6 +730,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"Je kunt in Wesnoth niet volstaan met alleen recruteren en vechten. Je moet "
+"ook je goudvoorraad goed beheren, zeker wanneer je overgebleven goud mee "
+"kunt nemen naar een volgend scenario. Er zijn twee kanten aan het verhaal: "
+"Inkomen en Onderhoud."
 
 #: data/help.cfg:187
 msgid ""
@@ -522,6 +744,12 @@ msgid ""
 "Unfortunately, your Upkeep costs are subtracted from this income, as "
 "detailed below."
 msgstr ""
+"\n"
+"\n"
+"Inkomen is eenvoudig. Voor elk dorpje dat in jouw bezit is krijg je in "
+"principe 1 goudstuk per beurt. Dus als je tien dorpjes hebt zou je tien "
+"goudstukken per beurt krijgen. Daar worden echter de onderhoudskosten nog "
+"van afgetrokken."
 
 #: data/help.cfg:189
 msgid ""
@@ -534,6 +762,13 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold a turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"Elke eenheid vergt een aantal goudstukken voor onderhoud gelijk aan zijn "
+"rang. Je kunt zoveel rangen aan eenheden gratis onderhouden als je dorpen "
+"hebt; elke rang die daarboven komt kost een goudstuk per beurt. "
+"Bijvoorbeeld: Je hebt twaalf eenheden met rang 1 en tien dorpjes. Je moet "
+"dan twee goudstukken per beurt betalen aan onderhoud."
 
 #: data/help.cfg:191
 msgid ""
@@ -542,6 +777,10 @@ msgid ""
 "These costs are subtracted from your Income, so in the case of twelve levels "
 "of units and ten villages, your resultant Income would be 8 gold a turn."
 msgstr ""
+"\n"
+"\n"
+"De onderhoudskosten worden afgetrokken van je inkomen, zodat je in het "
+"voorbeeld een inkomen zou hebben van 8 goudstukken per beurt. "
 
 #: data/help.cfg:192
 msgid ""
@@ -552,6 +791,13 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
+"\n"
+"Er zijn twee uitzonderingen wat betreft de onderhoudskosten. Ten eerste "
+"kosten troepen met de trek Loyaal nooit meer dan 1 goudstuk per beurt, "
+"ongeacht hun rang. En ten tweede betaal je niets voor eenheden die je vanaf "
+"het begin van het scenario hebt (zoals Konrad en Delfador), of die zich "
+"tijdens het scenario bij je voegen (zoals de Ruiter in het tweede scenario "
+"van De Kroonprins)."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -565,6 +811,11 @@ msgid ""
 "everything you need to know to play the Heir to the Throne scenario. Have "
 "fun, and good luck!"
 msgstr ""
+"Hiermee zijn we aan het eind gekomen van de basics van Wesnoth. Je kunt nu "
+"verder lezen over Basisstrategie of je verdiepen in <ref>dst=traits "
+"text=Trekken</ref> en <ref>dst=abilities text=Vaardigheden</ref>, maar in "
+"principe weet je nu genoeg om De Kroonprins te spelen. Succes en veel "
+"plezier!"
 
 #: data/help.cfg:203 src/titlescreen.cpp:188
 msgid "About"
@@ -578,6 +829,11 @@ msgid ""
 "\n"
 "The currently available traits are the following."
 msgstr ""
+"De meeste eenheden hebben twee trekken, die hun eigenschappen een klein "
+"beetje veranderen. Ze worden willekeurig toegewezen aan de eenheid wanneer "
+"die gerecruteerd wordt.\n"
+"\n"
+"De volgende trekken komen voor in het spel."
 
 #: data/help.cfg:219
 msgid ""
@@ -594,6 +850,18 @@ msgid ""
 "units you may find yourself recalling units with more useful ''long-term'' "
 "traits."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Intelligent</header>\n"
+"\n"
+"Intelligente eenheden hebben 20% minder ervaring nodig om te promoveren.\n"
+"\n"
+"Intelligente eenheden zijn voornamelijk nuttig aan het begin van een "
+"veldtocht, omdat ze snel tot de zeer bruikbare eenheden van hogere rang "
+"promoveren. Later in de veldtocht zijn ze minder nuttig en als je genoeg "
+"eenheden van hogere rang hebt dan zul je vermoedelijk eenheden oproepen met "
+"nuttiger \"lange termijn\" trekken."
 
 #: data/help.cfg:226
 msgid ""
@@ -609,6 +877,16 @@ msgid ""
 "campaign. Once a unit begins to level up, however, it can save you "
 "considerable gold over the course of the campaign."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Loyaal</header>\n"
+"\n"
+"Loyale eenheden kosten altijd 1 goudstuk aan onderhoud ongeacht hun rang.\n"
+"\n"
+"Deze trek heeft geen invloed op een eenheid met rang 1, waardoor het in het "
+"begin van een spel een nutteloze eigenschap is. Wanneer de eenheid een "
+"hogere rang krijgt echter, kan het je behoorlijk wat geld besparen."
 
 #: data/help.cfg:233
 msgid ""
@@ -625,6 +903,19 @@ msgid ""
 "forces. Also, remember that Quick units aren't quite as tough as usual, and "
 "so aren't so good for holding positions."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Snel</header>\n"
+"\n"
+"Snelle eenheden kunnen 1 stap extra zetten per beurt, maar hebben 10% minder "
+"HP dan gewoonlijk.\n"
+"\n"
+"Snel is de meest opvallende trek, zeker bij de langzamere eenheden zoals "
+"trollen en zware infanterie. De mobiliteit in ruig terrein van een eenheid "
+"met deze trek kan veel hoger liggen dan normaal, denk daar aan als je je "
+"strijdkrachten inzet. Onthoud ook dat deze eenheden niet zo stevig gebouwd "
+"zijn en dus minder goed in staat zijn posities te behouden."
 
 #: data/help.cfg:240
 msgid ""
@@ -640,6 +931,16 @@ msgid ""
 "units than others. Resilient units are especially useful for holding ground "
 "against opponents."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Robust</header>\n"
+"\n"
+"Robuste eenheden hebben 7HP meer dan gebruikelijk.\n"
+"\n"
+"Robuste eenheden kunnen in elk stadium van het spel voor elk soort eenheid "
+"nuttig zijn, hoewel de ene eenheid er meer van profiteert dan de andere. "
+"Robuste eenheden zijn goed in staat posities te behouden."
 
 #: data/help.cfg:247
 msgid ""
@@ -656,6 +957,18 @@ msgid ""
 "be very useful when a tiny bit of extra damage is all that is needed to turn "
 "a damaging stroke into a killing blow."
 msgstr ""
+"\n"
+"\n"
+"\n"
+"<header>text=Sterk</header>\n"
+"\n"
+"Sterke eenheden brengen 1 punt meer schade toe in gevechten op korte afstand "
+"en hebben 2HP meer.\n"
+"\n"
+"Hoewel nuttige voor elke eenheid die op korte afstand vecht, is Sterk "
+"voornamelijk nuttig voor eenheden die veel slagen per aanval hebben zoals de "
+"Elfenvechter. Sterke eenheden kunnen erg nuttig zijn wanneer een extra "
+"puntje schade genoeg is om de fatale klap uit te delen."
 
 #: data/items.cfg:264
 msgid ""
@@ -810,28 +1123,25 @@ msgid "flaming sword"
 msgstr "vlammend zwaard"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
-msgstr "Scepter des Vuur"
+msgstr "Scepter des Vuurs"
 
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
 "De oude Scepter werd gesmeed door de dwergen. Hij is een symbool van het "
-"koningschap en heeft de kracht om vuurballen te vuren naar de vijanden van "
-"de drager."
+"koningschap en heeft de kracht om vuurballen te vuren naar vijanden van de "
+"drager."
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Dit is de Scepter des Vuurs. Alleen een opvolger van de troon durft de "
+"Dit is de Scepter des Vuurs. Alleen een erfgenaam van de troon durft de "
 "Scepter op te rapen!"
 
 #: data/items.cfg:812
@@ -848,22 +1158,20 @@ msgstr "Standaard"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305
-#, fuzzy
 msgid "Random"
-msgstr "Willekeurige kaart"
+msgstr "Willekeurig"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Loyalisten"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
-#, fuzzy
 msgid "Rebels"
-msgstr "Oproepingen"
+msgstr "Rebellen"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
-msgstr ""
+msgstr "Noorderlingen"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -871,14 +1179,12 @@ msgid "Undead"
 msgstr "Levende Doden"
 
 #: data/multiplayer.cfg:82 data/multiplayer.cfg:273
-#, fuzzy
 msgid "Knalgan Alliance"
-msgstr "&dwarf-lord.png,Knalga Alliantie"
+msgstr "Knalga Alliantie"
 
 #: data/multiplayer.cfg:95 data/multiplayer.cfg:184 data/multiplayer.cfg:286
-#, fuzzy
 msgid "Drakes"
-msgstr "Hemeldraak"
+msgstr "Draken"
 
 #: data/multiplayer.cfg:109
 msgid "Classic"
@@ -897,9 +1203,8 @@ msgid "Orcs"
 msgstr "Orks"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Kasteel der Dwergen"
+msgstr "Dwergen"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -914,20 +1219,19 @@ msgid "Great War"
 msgstr "Grote Oorlog"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Magiër des Licht"
+msgstr "Alliantie des Lichts"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Alliantie van de Duisternis"
+msgstr "Alliantie der Duisternis"
 
 #: data/scenario-test.cfg:38
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr ""
+"Je mag komen als je wilt, maar de leider wil alleen met Baldras spreken."
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
 msgid "An Island"
@@ -940,6 +1244,10 @@ msgid ""
 "East: Mixed snow plains, South-West: Mixed desert plains, South-East: "
 "Mountain dominated area."
 msgstr ""
+"Een kaart voor 4 spelers die geschikt is voor individueel en teamspel. "
+"Beheersing van het centrale eiland is cruciaal voor de overwinning. Noord-"
+"West: Bosrijk gebied, Noord-Oost: Sneeuwvlakten, Zuid-Westen: Gemengde "
+"woestijnvlaktes, Zuid-Oost: Bergrijk gebied."
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
@@ -949,10 +1257,12 @@ msgstr "Blitz"
 #: data/scenarios/multiplayer/Charge.cfg:9
 msgid "A duel map for super fast play. Recommended setting of 2g per village."
 msgstr ""
+"Een duelkaart voor een supersnel spel. Aanbevolen wordt 2 goud per dorp in "
+"te stellen."
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:2
 msgid "The Broken Bridge"
-msgstr ""
+msgstr "De Ingestorte Brug"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -960,6 +1270,8 @@ msgid ""
 "fast-paced, combat intensive, team-oriented games. Must be players 1,3 vs. "
 "2,4."
 msgstr ""
+"Een kleine kaart voor twee tegen twee spelers. Ideaal voor snelle, "
+"gevechtrijke teamspelen. De teams moeten spelers 1,3 tegen 2,4 zijn."
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:9
 msgid "Castle Hopping Isle"
@@ -971,11 +1283,13 @@ msgid ""
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
 "2, 4 for 2v2."
 msgstr ""
+"Veel dicht bij elkaar gelegen en strategisch geplaatste kastelen. Een kleine "
+"kaart voor snel spel. 2 goud per dorp aanbevolen en spelers 1,3 tegen 2,4 "
+"voor teamspel."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
-#, fuzzy
 msgid "Charge"
-msgstr "stormloop"
+msgstr "Stormloop"
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
@@ -997,6 +1311,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Een willekeurige kaart met voornamelijk zand. NB: willekeurige kaarten zijn "
+"vaak ongebalanceerd, maar als je de tijd neemt kun je ze net zolang "
+"genereren tot je een goede hebt."
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
@@ -1009,6 +1326,9 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"Een willekeurige kaart met voornamelijk moeras. NB: willekeurige kaarten "
+"zijn vaak ongebalanceerd, maar als je de tijd neemt kun je ze net zolang "
+"genereren tot je een goede hebt."
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -1021,6 +1341,9 @@ msgid ""
 "terrains.  Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"Een willekeurige kaart gesitueerd tussen winter en lente, met voornamelijk "
+"sneeuw. NB: willekeurige kaarten zijn vaak ongebalanceerd, maar als je de "
+"tijd neemt kun je ze net zolang genereren tot je een goede hebt."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
@@ -1033,6 +1356,10 @@ msgid ""
 "blunt weapons, and healers are on hand, so when units are killed, they "
 "return to that player's end zone with an injury."
 msgstr ""
+"Bij Wesbowl moeten de spelers hun bal naar de eindzone van de tegenstander "
+"krijgen. Ze kunnen elkaar echter ook aanvallen. Wesbowl word gespeeld met "
+"stompe wapens, en genezers zijn bij de hand, dus gedode eenheden worden weer "
+"op de startpositie teruggezet met een verwonding."
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -1100,6 +1427,8 @@ msgid ""
 "Teams of 2 fight for control of the central bridge choke-point. Good for "
 "medium-length games. Players 1 and 3 must be allied, as should 2 and 4."
 msgstr ""
+"In teams van twee wordt gevochten om de centraal gelegen brug. Geschikt voor "
+"middellange spellen. Teams moeten spelers 1,3 en 2,4 zijn."
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
@@ -1119,6 +1448,10 @@ msgid ""
 "pretty well balanced towards both sides.\n"
 "You can use it AI vs AI to see how well a faction fares against another."
 msgstr ""
+"Deze kaart is erg geschikt om twee legers uit te proberen, omdat hij "
+"redelijk goed gebalanceerd is.\n"
+"Je kunt twee AI spelers laten spelen om te zien hoe sterk twee rassen ten "
+"opzichte van elkaar zijn."
 
 #: data/scenarios/multiplayer/scenarios.cfg:110
 msgid "The Isle of Anduin"
@@ -1137,7 +1470,6 @@ msgid "The Valley of Death"
 msgstr "De Valei des Doods"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Woestenij der Dwergen"
 
@@ -1151,26 +1483,23 @@ msgstr "Koning van de Heuvel"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Heer"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Verdediger"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
 "I am here to learn how to fight in a battle. As an experienced elder mage, "
 "surely you can explain the art of combat to me..."
 msgstr ""
-"Ik ben hier om beter te leren vechten. Jij, als ervaren Oude Magiër kunt me "
+"Ik ben hier om beter te leren vechten. Jij, als ervaren Oude MagiÃ«r kunt me "
 "vast en zeker de oorlogskunde leren."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:53
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1211,6 +1540,11 @@ msgid ""
 "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
+"Om een eenheid te recruteren moet je rechtsklikken op een kasteelvakje en "
+"dan Recruteren selecteren. Je kunt ook de muis op het vakje zetten en Ctrl+R "
+"indrukken. Selecteer vervolgens het soort eenheid dat je wilt recruteren en "
+"klik op 'OK'. Gebruik Ctrl+Shift+R om een eenheid te recruteren van de "
+"laatst gerecruteerde soort."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid ""
@@ -1222,6 +1556,13 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
+"Een leider is een eenheid die kan recruteren. Dat betekent dat wanneer een "
+"leider in een donjon staat, hij eenheden kan recruteren op de overige "
+"kasteelvakjes. Leiders zijn meestal krachtige eenheden waarvan elke partij "
+"er Ã©Ã©n heeft. Meestal begin je met alleen een leider die in een donjon "
+"staat. Je kunt je leider snel selecteren door op 'l' te drukken. Als je "
+"leider sterft, heb je het spel verloren. In de meeste scenario's win je als "
+"je alle vijandelijke leiders hebt verslagen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid "What's a leader?"
@@ -1237,6 +1578,9 @@ msgid ""
 "of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Je moet de eigenschappen van de eenheden (aan de linker kant van het "
+"recruteringsvenster) en hun prijs (achter de naam van de eenheid) goed "
+"bekijken. Je zult gedurende dit oefenspel meer leren over deze eigenschappen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
 msgid "What happens when I recruit a unit?"
@@ -1248,6 +1592,9 @@ msgid ""
 "choice. It also receives two traits, which will be discussed later. It "
 "cannot move or attack until you end your turn."
 msgstr ""
+"Een gerecruteerde eenheid begint volledig gezond op het kasteelvakje dat je "
+"gekozen hebt. Hij krijgt twee willekeurige trekken, waarover later meer. Hij "
+"kan pas na het einde van je beurt aanvallen en bewegen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:78
 msgid ""
@@ -1256,20 +1603,20 @@ msgid ""
 "corner."
 msgstr ""
 "Omdat eenheden niet kunnen bewegen op de beurt wanneer ze gerecruteerd "
-"werden moet je je beurt beëindigen. Om dit te doen druk je op 'Volgende' "
+"werden moet je je beurt beÃ«indigen. Om dit te doen druk je op 'Volgende' "
 "onderaan rechts."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:80
 msgid "End your turn"
-msgstr "Beëindig je beurt"
+msgstr "BeÃ«indig je beurt"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
 msgid "You have successfully ended your turn."
-msgstr "Je hebt je beurt beëindigd."
+msgstr "Je hebt je beurt beÃ«indigd."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid "How do I end my turn?"
-msgstr "Hoe beëindig ik m'n beurt?"
+msgstr "Hoe beÃ«indig ik m'n beurt?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid ""
@@ -1277,10 +1624,13 @@ msgid ""
 "click and select End Turn, or select the End Turn button in the lower-right "
 "hand corner."
 msgstr ""
+"Je beurt kun je beÃ«indigen door 'Alt+E' in te drukken. Een andere manier is "
+"rechts te klikken en Volgende te kiezen, of met de knop 'Volgende' rechts "
+"onder in beeld."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
 msgid "What happens when I end my turn?"
-msgstr "wat gebeurt er wanneer ik m'n beurt beëindig?"
+msgstr "wat gebeurt er wanneer ik m'n beurt beÃ«indig?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
 msgid ""
@@ -1291,6 +1641,12 @@ msgid ""
 "current turn is displayed on the status bar next to the image of a flag. "
 "When this number exceeds the maximum number of turns, you lose the game."
 msgstr ""
+"Als je je beurt beÃ«indigt, komt de volgende partij aan de beurt en mag "
+"alleen die partij zetten doen, totdat ook hij zijn beurt beÃ«indigt. Nadat "
+"alle partijen hun beurt hebben beÃ«indigd, begint de volgende beurt. Alle "
+"eenheden krijgen dan hun bewegings mogelijkheden terug. Het beurtnummer "
+"wordt in de statusbalk weergegeven naast de afbeelding van een vlag. Wanneer "
+"dit nummer het maximum overschrijdt verlies je het spel."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:96
 msgid ""
@@ -1308,9 +1664,8 @@ msgstr "Positioneer je Elfenstrijder naast Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Meer"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -1318,6 +1673,9 @@ msgid ""
 "he moved next to an enemy unit, he has lost all his movement for this turn; "
 "this is called the 'zone of control'."
 msgstr ""
+"Uitstekend! Je hebt je Elfenstrijder verplaatst. Omdat hij echter naast een "
+"vijandelijke eenheid is terechtgekomen kan hij niet verder bewegen; dit "
+"effect heet de controlezone."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid "How far can my Elvish Fighter move?"
@@ -1336,6 +1694,16 @@ msgid ""
 "that space every turn. If you accidentally set a unit on a course, select it "
 "twice to remove the course."
 msgstr ""
+"Je Elfenstrijder begint zijn beurt met een bepaald aantal stappen. Dit is "
+"zijn snelheid. Wanneer de Elfenstrijder een afstand aflegt kost elk vakje "
+"waar hij doorheen beweegt hem stappen, inclusief het doelvakje. Als je je "
+"Elfenvechter selecteerd zullen alle vakjes die hij deze beurt niet kan "
+"bereiken verduisterd worden. Als het doelvakje zo ver is dat de strijder er "
+"niet in Ã©Ã©n beurt kan komen, dan verschijnt er een nummer dat aangeeft "
+"hoeveel beurten het hem zal kosten. Wanneer je op zo'n vakje klikt zal de "
+"eenheid in deze en komende beurten automatisch steeds zo ver mogelijk "
+"richting dat vakje bewegen. Als je dat per ongeluk doet moet je twee keer op "
+"de eenheid klikken om deze automatische piloot uit te schakelen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:126
 msgid ""
@@ -1345,6 +1713,11 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
+"De controlezone van een eenheid bestaat uit alle aan hem grenzende vakjes. "
+"Eenheden van de tegenstander kunnen niet door deze zone heenlopen; ze kunnen "
+"er wel inlopen. Als ze dat doen, kunnen ze die beurt niet meer bewegen. De "
+"controlezone kun je gebruiken om zwakke en gewonde eenheden af te schermen "
+"van de vijand."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:126
 msgid "What's the zone of control?"
@@ -1364,6 +1737,13 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
+"Het groene balkje naast een eenheid is zijn gezondsheidsbalk. Boven dat "
+"balkje staat een groen, geel of rood energiebolletje. Groen geeft aan dat "
+"een eenheid nog niet bewogen heeft, geel dat hij wel bewogen heeft maar nog "
+"verder kan en rood dat hij niet meer mag bewegen. Vijandelijke eenheden "
+"hebben geen bolletje en geallieerde eenheden hebben een blauw bolletje. "
+"Buiten dat zorgt de optie 'Toon Teamkleuren' in Opties er voor dat een "
+"cirkel onder elke eenheid wordt getekend in de kleur van zijn team."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:133
 msgid ""
@@ -1371,6 +1751,10 @@ msgid ""
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
+"Nu moet je aanvallen met je strijder. Om aan te vallen selecteer je eerst de "
+"eenheid en dan zijn doelwit, dat naast de aanvallende eenheid moet staan. Je "
+"krijgt dan een venster met aanvalsmogelijkheden, waarin je moet kiezen welke "
+"aanval je wilt gebruiken."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
 msgid "Attack Merle"
@@ -1399,6 +1783,19 @@ msgid ""
 "to retaliate at all. However ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
+"Wanneer een eenheid aangevallen wordt, zal hij terugslaan met een van zijn "
+"eigen wapens. Dat wil zeggen, na elke klap van de aanvaller volgt een klap "
+"van de verdediger. Dit gaat zo door totdat een van beide partijen door zijn "
+"slagen heen is, waarna de andere eenheid doorgaat met klappen uitdelen "
+"totdat ook zijn slagen op zijn. Een verdediger kan echter alleen verdedigen "
+"met een wapen voor dezelfde afstand als dat van het wapen van de aanvaller. "
+"Oftewel: bij een aanval of afstand wordt ook op afstand verdedigd en een bij "
+"aanval dichtbij wordt ook dichtbij verdedigd. De meeste eenheden hebben "
+"sterkere aanvallen op korte afstand dan op lange afstand. Eenheden met een "
+"sterke aanval op afstand zijn goed bruikbaar tegen eenheden die voornamelijk "
+"dichbij vechten. Sommige eenheden zijn helemaal niet in staat zich daartegen "
+"te verdedigen. Een aanval op afstand vind echter nooit plaats over meerdere "
+"vakjes - een onderscheidende eigenschap van Wesnoth."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid ""
@@ -1411,6 +1808,14 @@ msgid ""
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
 msgstr ""
+"Elke aanval brengt een bepaalde hoeveelheid schade toe per rake klap, en kan "
+"een bepaald aantal keren per beurt gebruikt worden. Deze twee getallen, de "
+"schade van de aanval en het aantal slagen, worden in die volgorde "
+"weergegeven onder de naam van de aanval in de statustabel van de eenheid en "
+"ernaast in het venster met aanvalsmogelijkheden. Om de maximale schade te "
+"berekenen die een eenheid kan toebrengen vermenigvuldig je de schade met het "
+"aantal slagen; als bijvoorbeeld een bliksem-aanval 14 schade doet per slag "
+"en 4 slagen heeft, dan kan het maximaal 56 schade toebrengen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid "How can you tell how powerful a unit's attacks are?"
@@ -1422,6 +1827,9 @@ msgid ""
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
 msgstr ""
+"Eenheden kunnen een klap ontwijken. De kans dat je een eenheid raakt is "
+"gebaseerd op zijn verdedigingspercentage. Die raakkans staat in het venster "
+"met aanvalsmogelijkheden na de schade en aantal slagen."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:156
 msgid "Will my fighter hit every time when he attacks?"
@@ -1429,7 +1837,7 @@ msgstr "Zal mijn strijder raak slaan telkens hij aanvalt?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:162
 msgid "End your turn, and wait for Merle to attack you."
-msgstr "Beëindig je beurt en wacht totdat Merle je aanvalt."
+msgstr "BeÃ«indig je beurt en wacht totdat Merle je aanvalt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1437,6 +1845,9 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
+"Je strijder heeft Merles aanval overleeft. Elke eenheid die een gevecht "
+"overleeft krijgt ervaring. Wanneer een eenheid ervaren genoeg is promoveert "
+"hij en wordt daarmee sterker."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid "What's experience?"
@@ -1450,6 +1861,11 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
+"Als een eenheid een andere eenheid bevecht verdient het een aantal "
+"ervaringspunten, aangegeven met XP, gelijk aan de rang van de tegenstander. "
+"De rang geeft gewoonlijk de sterkte van een eenheid weer. Veel meer ervaring "
+"kan worden verkregen door een vijand te verslaan. Een gedode vijand levert 8 "
+"maal zijn rang aan XP op."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid "What happens when a unit advances?"
@@ -1464,6 +1880,13 @@ msgid ""
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
 msgstr ""
+"Als een eenheid promoveert, verandert hij in een ander soort eenheid. Het "
+"soort eenheid is wel afhankelijk van wat hij eerst was, en soms is er een "
+"keuze mogelijk. Gepromoveerde eenheden zijn meestal sterker en hebben een "
+"rang die 1 hoger is dan die van de originele eenheid. Bovendien zal een "
+"promoverende eenheid volledig genezen en ontdaan worden van nadelige "
+"effecten die het heeft opgelopen in het gevecht; dit wordt promotiegenezing "
+"genoemt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:179
 #: data/scenarios/tutorial/Basic_Training.cfg:181
@@ -1479,7 +1902,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "Wat gebeurt er wanneer een eenheid een dorp inneemt?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1512,6 +1934,12 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
 "scenario all of your units are fully healed."
 msgstr ""
+"Er zijn manieren om te genezen zonder dorpen. Een eenheid die een beurt niet "
+"beweegt of aanvalt geneest door de rust 2HP. Hij mag dan ook niet "
+"aangevallen worden. Daarnaast zijn er eenheden die eenheden die direct naast "
+"hen staan genezen, zoals bijvoorbeeld de Elfenshamaan; alle eenheden die "
+"naast een Elfenshamaan staan genezen 4HP per beurt. En ten slotte worden aan "
+"het einde van een scenario alle eenheden volledig gezond."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:203
 msgid ""
@@ -1532,6 +1960,10 @@ msgid ""
 "you lose. In order to continue the tutorial, I will have to teleport you "
 "back onto your keep."
 msgstr ""
+"Oeps! Je hebt je leider van de donjon afbewogen. Als je leider niet op een "
+"donjon staat kun je geen troepen recruteren. En als je leider sterft dan heb "
+"je het spel verloren. Om het oefenspel voort te zetten zal ik je terug "
+"moeten teleporteren naar de donjon."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:236
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:224
@@ -1539,6 +1971,8 @@ msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
+"Helaas! Je hebt verloren omdat je leider verslagen is. Hopelijk heb je toch "
+"wat van mijn lessen opgestoken."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:243
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:231
@@ -1546,10 +1980,12 @@ msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
+"Helaas! Je hebt verloren omdat je tijd op is. Hopelijk heb je toch wat van "
+"mijn lessen opgestoken."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "You have successfully completed the first training scenario."
-msgstr "Je hebt het eerste trainingscenario met succes beëindigd."
+msgstr "Je hebt het eerste trainingscenario met succes beÃ«indigd."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:255
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
@@ -1570,6 +2006,13 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
+"Wanneer uit de dialoog niet duidelijk wordt hoe je het scenario kunt winnen "
+"dan kun je dat zien in het venster met scenariodoelen dat verschijnt na de "
+"begindialoog. Je kunt dat venster ook oproepen door in het menu op "
+"'Scenariodoel' te klikken. De scenariodoelen zijn een lijst van voorwaarden "
+"voor de overwinning en voorwaarden voor verlies. Wanneer aan een van de "
+"voorwaarden is voldaan is het spel afgelopen; en hopelijk was het dan een "
+"voorwaarde die tot de overwinning leidt."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:258
 msgid "What happens when I win a scenario?"
@@ -1583,12 +2026,17 @@ msgid ""
 "immediately after you win. However between scenarios, 20% of your gold is "
 "lost."
 msgstr ""
+"Als je een scenario wint genezen al je eenheden volledig van hun "
+"verwondingen en hoef je geen onderhoudskosten meer voor ze te betalen voor "
+"de resterende beurten. Als je leger in het gebied blijft na de overwinning "
+"geven alle dorpen zich aan je over. Tussen twee scenario's in verlies je "
+"echter 20% van je goud."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "Wil je een vaardigheid die je op dit niveau hebt geleerd nakijken?"
+msgstr ""
+"Wil je een vaardigheid die je tijdens dit scenario hebt geleerd nakijken?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -1606,6 +2054,9 @@ msgid ""
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
+"Je hebt je eerste scenario uitgespeeld, maar je training is nog niet "
+"voorbij. We zullen doorgaan naar het volgende scenario, waarin we elkaar in "
+"een schijngevecht zullen bestrijden."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
@@ -1627,6 +2078,11 @@ msgid ""
 "Recall, select your fighter, then select 'OK'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
+"Je kunt de meeste scenario's winnen door eenvoudigweg alle vijandelijke "
+"leiders te verslaan. Deze kun je winnen door mij te verslaan. Je strijder "
+"uit het vorige scenario kan je helpen. Roep hem op door rechts te klikken op "
+"een kasteelvakje, Oproepen te kiezen, je strijder te selecteren en op 'OK' "
+"te drukken. Je moet ook Elfenstrijders en Elfenschutters recruteren."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:66
 msgid ""
@@ -1657,7 +2113,6 @@ msgstr "Je hebt met succes je elfenstrijder opgeroepen."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
-#, fuzzy
 msgid "En garde!"
 msgstr "En garde!"
 
@@ -1844,7 +2299,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:152
 msgid "How does resistance affect attack damage?"
-msgstr "Hoe beïnvloed resistentie de aanvalsschade?"
+msgstr "Hoe beÃ¯nvloed resistentie de aanvalsschade?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:153
 msgid ""
@@ -1943,13 +2398,12 @@ msgid "How long do these objects last?"
 msgstr "Hoe lang blijft de werken van deze objecten geldig?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
-#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
-"De meeste objecten zijn permanente veranderingen voor de eenheid die het "
-"object ontvangt. Slechts enkele zoals wijwater gaan maar een scenario mee."
+"De meeste voorwerpen veranderen de drager van het voorwerp permanent. "
+"Slechts enkele zoals wijwater gaan maar Ã©Ã©n scenario mee."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:214
 msgid ""
@@ -2064,62 +2518,56 @@ msgid "Savanna"
 msgstr ""
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Dorp"
+msgstr "Woestijndorp"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Tropisch Woud Dorp"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Oase"
 
 #: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Sneeuw"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Dorp"
+msgstr "Noorderdorp"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Heuvels"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
-msgstr "Besneeuwde heuvels"
+msgstr "Besneeuwde Heuvels"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Verwijder Bestand"
+msgstr "Woestijnbergen"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Bergen"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Bergen"
+msgstr "Woestijnbergen"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Bos"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Besneeuwd bos"
+msgstr "Besneeuwd Bos"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Tropisch Woud"
 
 #: data/terrain.cfg:344
 msgid "Cave wall"
@@ -2203,7 +2651,7 @@ msgstr ""
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
-msgstr ""
+msgstr "Volgende"
 
 #: data/tips.cfg:1
 msgid ""
@@ -2211,7 +2659,7 @@ msgid ""
 "Neutral units are unaffected by day and night."
 msgstr ""
 "Rechtvaardige troepen vechten beter overdag, en chaotische beter 's nachts. "
-"Neutrale eenheden worden niet door het daglicht beïnvloed."
+"Neutrale eenheden worden niet door het daglicht beÃ¯nvloed."
 
 #: data/tips.cfg:2
 msgid ""
@@ -2267,7 +2715,6 @@ msgstr ""
 "ervaren leger opbouwen."
 
 #: data/tips.cfg:7
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -2276,10 +2723,9 @@ msgid ""
 msgstr ""
 "Alle eenheden hebben een controlezone in elk van de velden naast hen. Indien "
 "een eenheid in de controlezone van een vijand beweegt kan de eenheid niet "
-"verder bewegen die beurt."
+"verder bewegen die beurt. Warzaaiers kunnen de controlezones ontwijken."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2288,7 +2734,8 @@ msgid ""
 msgstr ""
 "De kans om een eenheid te raken hangt normaal gezien af van het terrein "
 "waarop de vijandige eenheid zich bevind, maar magische aanvallen hebben "
-"altijd 70% kans om te raken en precisieschutters 60%. "
+"altijd 70% kans om te raken, zowel be het verdedigen als bij het aanvallen; "
+"precisieschutters hebben altijd 60%.kans om te raken wanneer ze aanvallen."
 
 #: data/tips.cfg:9
 msgid ""
@@ -2514,7 +2961,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"Neutrale eenheden worden niet beïnvloed door het daglicht en vechten even "
+"Neutrale eenheden worden niet beÃ¯nvloed door het daglicht en vechten even "
 "goed 's nachts als overdag."
 
 #: data/translations/english.cfg:14
@@ -2628,7 +3075,6 @@ msgid "illuminates"
 msgstr "verlicht"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -2641,7 +3087,7 @@ msgid ""
 msgstr ""
 "Aanvoerder:\n"
 "Deze eenheid kan omringende bevriende troepen van lagere rang aanvoeren in "
-"de strijd en hun schade vehogen."
+"de strijd en hun schade vehogen (+25% van het verschil in rang)."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -2667,7 +3113,6 @@ msgstr ""
 " Nooit meer dan 1 onderhoudskost"
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2739,14 +3184,14 @@ msgid "steadfast"
 msgstr "standvastig"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Teleportatie:\n"
-"Deze eenheid kan teleporteren tussen twee bevriende dorpen."
+"Deze eenheid kan teleporteren tussen twee bevriende dorpen en gebruikt "
+"daarvoor slechts een van zijn stappen."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -2754,7 +3199,6 @@ msgid "teleport"
 msgstr "teleportatie"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
@@ -2762,7 +3206,8 @@ msgid ""
 msgstr ""
 "Ruggesteek:\n"
 "Deze aanval verdubbelt de schade indien een bevriende eenheid zich aan de "
-"tegenovergestelde kant van het doelwit bevindt."
+"tegenovergestelde kant van het doelwit bevindt. (Dit werkt niet met eenheden "
+"die tot je alliantie behoren)"
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -2837,7 +3282,6 @@ msgstr ""
 "HP totdat ze worden genezen of totdat ze slechts 1 HP hebben."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -2924,7 +3368,7 @@ msgid ""
 "where they stand. Should you ever come across one of these, flee fast and "
 "far, for they move faster than most undead."
 msgstr ""
-"Het hoogste wat een magiër van de ondoden kan bereiken. De Oude Lich brengt "
+"Het hoogste wat een magiÃ«r van de ondoden kan bereiken. De Oude Lich brengt "
 "een koude angst in de harten van die die hem zien. Niet alleen is zijn "
 "aanraking er een van dood, zijn spreuken zijn krachtig genoeg om zelfs de "
 "dapperste mannen aan de grond te nagelen."
@@ -3076,17 +3520,17 @@ msgstr "impact"
 
 #: data/units/Arch_Mage.cfg:3
 msgid "Arch Mage"
-msgstr "Oppermagiër"
+msgstr "OppermagiÃ«r"
 
 #: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:113
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 msgstr ""
-"De Oppermagiër is een leider onder de magiërs. Hij kan enorme vuurballen "
-"naar de vijand gooien. De Oppermagiër kan zichzelf teleporteren van elk dorp "
-"naar elk andere bevriende dorp, zich zelf in een ogenblik van plaats naar "
-"plaats bewegend."
+"De OppermagiÃ«r is een leider onder de magiÃ«rs. Hij kan enorme vuurballen "
+"naar de vijand gooien. De OppermagiÃ«r kan zichzelf teleporteren van elk "
+"dorp naar elk andere bevriende dorp, zich zelf in een ogenblik van plaats "
+"naar plaats bewegend."
 
 #: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:116
 #: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:23
@@ -3134,7 +3578,7 @@ msgstr "vuur"
 
 #: data/units/Arch_Mage.cfg:96
 msgid "female^Arch Mage"
-msgstr "Oppermagiër"
+msgstr "OppermagiÃ«r"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3251,9 +3695,8 @@ msgid "poison"
 msgstr "gif"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
-msgstr "Sluipmoordenaar"
+msgstr "Kunoichi"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -3285,7 +3728,6 @@ msgid "leadership,skirmisher"
 msgstr "aanvoerder,warzaaier"
 
 #: data/units/Battle_Princess.cfg:20
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3400,9 +3842,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
-msgstr "staf"
+msgstr "steek"
 
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
@@ -3650,7 +4091,6 @@ msgid "Cuttle Fish"
 msgstr "Kraken"
 
 #: data/units/Cuttle_Fish.cfg:16
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -3659,7 +4099,7 @@ msgid ""
 msgstr ""
 "De Kraken zijn gigantische creaturen van de zee. Ze kunnen een vijand met "
 "hun sterke tentakels grijpen, of een giftige zwarte inkt spuwen vanop "
-"aftstand. De beste manier om een ontmoeting met deze monsters te vermijden "
+"aftstand. De beste manier om een ontmoeting met deze monsters te overleven "
 "is aan wal te blijven."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
@@ -3749,9 +4189,8 @@ msgid "battle axe"
 msgstr "strijdbijl"
 
 #: data/units/Deathblade.cfg:4
-#, fuzzy
 msgid "Deathblade"
-msgstr "snij"
+msgstr "Doodskling"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -3788,7 +4227,7 @@ msgid ""
 "becoming undead themselves. With time, they may become fully undead, and "
 "feared by all alike."
 msgstr ""
-"Deze magiërs betalen een hoge prijs voor hun spelletjes met de duistere "
+"Deze magiÃ«rs betalen een hoge prijs voor hun spelletjes met de duistere "
 "machten. Demusteken verliezen hun lichaam langzaam maar zeker en veranderen "
 "in levende doden. Nadat hun transformatie is voltrokken zijn ze de "
 "reincarnatie van de vrees!"
@@ -4070,7 +4509,6 @@ msgid "Dwarvish Dragonguard"
 msgstr "Draakwachter"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
-#, fuzzy
 msgid ""
 "The guardians of the great dwarvish cities, they blast at their enemies "
 "using fire from what are called dragonstaves. They are the chief possessors "
@@ -4125,7 +4563,7 @@ msgid ""
 "Their fine armor is made of the strong alloys crafted by their kin."
 msgstr ""
 "De dwergheren zijn de heersers over bergachtige rijken. Hun kunde met het "
-"strijdbijl is ongeëvenaard. Maar ook vanop afstand zijn de dwergheren niet "
+"strijdbijl is ongeÃ«venaard. Maar ook vanop afstand zijn de dwergheren niet "
 "te onderschatten: hun werpbijl mist zelden doel."
 
 #: data/units/Dwarvish_Lord.cfg:60
@@ -4186,7 +4624,7 @@ msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
 msgstr ""
-"Meer ervaren bergstrijders dragen een zware maliënkolder en een harnas met "
+"Meer ervaren bergstrijders dragen een zware maliÃ«nkolder en een harnas met "
 "stalen massief stalen platen, hun naam hebben ze niet gestolen."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
@@ -4241,7 +4679,7 @@ msgstr ""
 
 #: data/units/Elder_Mage.cfg:3
 msgid "Elder Mage"
-msgstr "Oude Magiër"
+msgstr "Oude MagiÃ«r"
 
 #: data/units/Elder_Mage.cfg:21
 msgid ""
@@ -4249,8 +4687,8 @@ msgid ""
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
-"De Oude Magiër was ooit een Meester Magiër maar over de jaren is zijn kracht "
-"misschien verminderd, maar zeker niet minder dodelijk geworden. De "
+"De Oude MagiÃ«r was ooit een Meester MagiÃ«r maar over de jaren is zijn "
+"kracht misschien verminderd, maar zeker niet minder dodelijk geworden. De "
 "bliksemschichten die deze tovenaars gebruiken worden terecht door iedereen "
 "gevreesd."
 
@@ -4331,7 +4769,7 @@ msgstr ""
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "female^Elvish Druid"
-msgstr "Elfendruïde"
+msgstr "ElfendruÃ¯de"
 
 #: data/units/Elvish_Druid.cfg:20
 msgid ""
@@ -4339,7 +4777,7 @@ msgid ""
 "unwary opponents, they also use the herbs of the forest to heal allies. "
 "Druids are excellent supporting units in any Elvish army."
 msgstr ""
-"De Elfendruïde is een meester in het bos. Snel in het omwortelen van "
+"De ElfendruÃ¯de is een meester in het bos. Snel in het omwortelen van "
 "vijanden en in het genezen van bondgenoten is ze de ideale ondersteuning "
 "voor elk elfenleger."
 
@@ -4370,7 +4808,7 @@ msgstr "omwortel"
 #: data/units/Elvish_Enchantress.cfg:117 data/units/Elvish_Sorceress.cfg:117
 #: data/units/Elvish_Sylph.cfg:83
 msgid "fey gale"
-msgstr ""
+msgstr "feeÃ«nstorm"
 
 #: data/units/Elvish_Fighter.cfg:3
 msgid "Elvish Fighter"
@@ -4391,7 +4829,6 @@ msgid "Elvish Hero"
 msgstr "Elfenheld"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
@@ -4581,12 +5018,12 @@ msgid ""
 "capable of gliding unencumbered through the Elven forests."
 msgstr ""
 "Vrouwelijke elfen die zichzelf helemaal aan de natuur wijden veranderen "
-"langzaam in feeën. Doorzichtige vleugels ontwikkelen zich en ze veranderen "
+"langzaam in feeÃ«n. Doorzichtige vleugels ontwikkelen zich en ze veranderen "
 "in mooie scheppingen die ongestoord door het woud zweven."
 
 #: data/units/Elvish_Shyde.cfg:24 data/units/Elvish_Sylph.cfg:24
 msgid "faerie touch"
-msgstr "feeënstreel"
+msgstr "feeÃ«nstreel"
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "female^Elvish Sorceress"
@@ -4699,7 +5136,6 @@ msgid "sling"
 msgstr "slinger"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
 msgstr "Voetscout"
 
@@ -4744,14 +5180,13 @@ msgid ""
 msgstr ""
 "De generalen zijn verantwoordelijk voor de bescherming van grote delen uit "
 "het rijk der mensen. Generalen kunnen de aanval van eenheden van lagere rang "
-"coördineren en daardoor efficiënter maken."
+"coÃ¶rdineren en daardoor efficiÃ«nter maken."
 
 #: data/units/Ghost.cfg:3
 msgid "Ghost"
 msgstr "Spook"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
@@ -4760,7 +5195,8 @@ msgid ""
 msgstr ""
 "Spoken zijn de zielen van strijders die eeuwen geleden in pijn en angst "
 "stierven zonder een lichaam achter te laten. Niet gehinderd door een lichaam "
-"kunnen deze levende doden naar hun slachtoffers toevliegen."
+"kunnen deze levende doden naar hun slachtoffers toevliegen, maar van "
+"stromend water houden ze niet."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -4911,19 +5347,19 @@ msgstr ""
 
 #: data/units/Great_Mage.cfg:3
 msgid "Great Mage"
-msgstr "Meester Magiër"
+msgstr "Meester MagiÃ«r"
 
 #: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:113
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 msgstr ""
-"De Meester Magiër is een te vrezen vijand. Hij is zelfs machtiger dan de "
-"Oppermagiër. "
+"De Meester MagiÃ«r is een te vrezen vijand. Hij is zelfs machtiger dan de "
+"OppermagiÃ«r. "
 
 #: data/units/Great_Mage.cfg:96
 msgid "female^Great Mage"
-msgstr "Meester Magiër"
+msgstr "Meester MagiÃ«r"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -4979,12 +5415,10 @@ msgstr ""
 "berijden ontdekken de wereld van de hemel."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Hellebaardier"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -4994,7 +5428,9 @@ msgid ""
 "very close combat."
 msgstr ""
 "De beste soldaten worden geselecteerd om hellebaardiers te worden. Ook al is "
-"de hellebaard trager dan het zwaard, de schade die het aanricht is dodelijk."
+"de hellebaard trager dan het zwaard, de schade die het aanricht is dodelijk. "
+"Hellebaardiers zijn altijd de eersten om een slag toe te dienen, zowel bij "
+"aanval als bij  verdediging."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
@@ -5013,7 +5449,6 @@ msgstr ""
 "traag.."
 
 #: data/units/Horse_Lord.cfg:3
-#, fuzzy
 msgid "Horse Lord"
 msgstr "Heer van Adel"
 
@@ -5027,9 +5462,8 @@ msgstr ""
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:46
 #: data/units/Mounted_Commander.cfg:46 data/units/Mounted_Fighter.cfg:43
 #: data/units/Mounted_Warrior.cfg:43
-#, fuzzy
 msgid "morning star"
-msgstr "Voormiddag"
+msgstr "morgenster"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -5076,12 +5510,10 @@ msgstr ""
 "ze niet zo traag zouden zijn, heersten ze beslist over het hele continent."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Cavalerie"
+msgstr "Speerman"
 
 #: data/units/Javelineer.cfg:16
-#, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
 "recruits.  Dangerous in melee, they have also developed their skill at "
@@ -5136,7 +5568,7 @@ msgid ""
 "the life from their opponents with a single touch, and to cast powerful cold "
 "spells."
 msgstr ""
-"De lich is een magiër die zich volledig aan de duistere machten heeft "
+"De lich is een magiÃ«r die zich volledig aan de duistere machten heeft "
 "overgegeven. Om de levende doden te controleren heeft de lich zijn eigen "
 "lichaam opgeofferd. Hierdoor kan hij het leven uit zijn vijanden zuigen door "
 "een eenvoudige aanraking en uitermate sterke spreuken uitspreken."
@@ -5152,7 +5584,7 @@ msgid ""
 "those of lower rank around them."
 msgstr ""
 "De lieutenant leidt met zwaard en kruisboog kleine groepen soldaten en "
-"coördineert de aanvallen zodat de eenheden van ondergeschikte rang meer "
+"coÃ¶rdineert de aanvallen zodat de eenheden van ondergeschikte rang meer "
 "schade aanrichten."
 
 #: data/units/Longbowman.cfg:3
@@ -5186,7 +5618,7 @@ msgstr ""
 
 #: data/units/Mage.cfg:3
 msgid "Mage"
-msgstr "Magiër"
+msgstr "MagiÃ«r"
 
 #: data/units/Mage.cfg:17 data/units/Mage.cfg:94
 msgid ""
@@ -5195,10 +5627,10 @@ msgid ""
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
-"De Magiër is zwak maar toch sterk. Zij bewegen langzaam en verdedigen zich "
+"De MagiÃ«r is zwak maar toch sterk. Zij bewegen langzaam en verdedigen zich "
 "slecht maar hun magische aanvallen treffen bijna altijd doel..\n"
 "\n"
-"De magiërs zijn daarom ideaal om vijanden uit beschut terrein te verjagen."
+"De magiÃ«rs zijn daarom ideaal om vijanden uit beschut terrein te verjagen."
 
 #: data/units/Mage.cfg:41 data/units/Mage.cfg:118
 #: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:222
@@ -5207,11 +5639,11 @@ msgstr "projectiel"
 
 #: data/units/Mage.cfg:80
 msgid "female^Mage"
-msgstr "Magiër"
+msgstr "MagiÃ«r"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
-msgstr "Magiër des Licht"
+msgstr "MagiÃ«r des Licht"
 
 #: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:8
@@ -5228,13 +5660,13 @@ msgid ""
 "night. Like the White Mages, the Mages of Light also cure adjacent friendly "
 "units."
 msgstr ""
-"De Magiër des Licht is een ongelooflijk belangrijke bondgenoot voor alle "
-"rechtvaardige troepen. De illuminerende krachten van deze magiërs zijn zo "
+"De MagiÃ«r des Licht is een ongelooflijk belangrijke bondgenoot voor alle "
+"rechtvaardige troepen. De illuminerende krachten van deze magiÃ«rs zijn zo "
 "groot dat de hen omringende troepen nooit nacht ervaren.\n"
 "\n"
-"Wanneer een eenheid naast een Magiër des Licht vecht, zal het bij valavond "
+"Wanneer een eenheid naast een MagiÃ«r des Licht vecht, zal het bij valavond "
 "noch vechten alsof het dag was en 's nachts alsof het valavond was.  De "
-"Magiër des Licht geneest tevens bevriende eenheden."
+"MagiÃ«r des Licht geneest tevens bevriende eenheden."
 
 #: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:118
 #: data/units/Mermaid_Diviner.cfg:38 data/units/Mermaid_Priestess.cfg:36
@@ -5251,7 +5683,7 @@ msgstr "heilig"
 
 #: data/units/Mage_of_Light.cfg:78
 msgid "female^Mage of Light"
-msgstr "Magiër des Licht"
+msgstr "MagiÃ«r des Licht"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5321,12 +5753,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "vuur"
+msgstr "Sirene"
 
 #: data/units/Mermaid_Siren.cfg:25
-#, fuzzy
 msgid "naiad touch"
 msgstr "naiastreel"
 
@@ -5387,7 +5817,7 @@ msgid ""
 "easily defeat any enemy foolish enough to wander into their preferred "
 "environment."
 msgstr ""
-"Tritons zijn de heersers over de zeeën. Bekwaam in het gebruik van hun "
+"Tritons zijn de heersers over de zeeÃ«n. Bekwaam in het gebruik van hun "
 "drietand verslaan ze elke vijand die dom genoeg is om in hun favoriete "
 "milieu te komen."
 
@@ -5402,9 +5832,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Captain.cfg:6
-#, fuzzy
 msgid "Mounted Captain"
-msgstr "Bergen"
+msgstr "Bereden Kapitein"
 
 #: data/units/Mounted_Captain.cfg:20 data/units/Mounted_Fighter.cfg:17
 msgid ""
@@ -5415,9 +5844,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Commander.cfg:6
-#, fuzzy
 msgid "Mounted Commander"
-msgstr "Adelijke Aanvoerder"
+msgstr "Bereden Aanvoerder"
 
 #: data/units/Mounted_Commander.cfg:20
 msgid ""
@@ -5428,14 +5856,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Adelijke Strijder"
+msgstr "Bereden Vechter"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Meerman Strijder"
+msgstr "Bereden Strijder"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -5456,9 +5882,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:3
-#, fuzzy
 msgid "Naga Fighter"
-msgstr "Vechter"
+msgstr "Naga Vechter"
 
 #: data/units/Naga-Fighter.cfg:17 data/units/Naga-Fighter.cfg:52
 msgid ""
@@ -5470,9 +5895,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Fighter.cfg:38
-#, fuzzy
 msgid "Nagini Fighter"
-msgstr "Meerman Vechter"
+msgstr "Nagini Vechter"
 
 #: data/units/Naga-Myrmidon.cfg:3
 msgid "Naga Myrmidon"
@@ -5501,9 +5925,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:3
-#, fuzzy
 msgid "Naga Warrior"
-msgstr "Saurian Strijder"
+msgstr "Naga Strijder"
 
 #: data/units/Naga-Warrior.cfg:21 data/units/Naga-Warrior.cfg:60
 msgid ""
@@ -5516,9 +5939,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Naga-Warrior.cfg:42
-#, fuzzy
 msgid "Nagini Warrior"
-msgstr "Saurian Strijder"
+msgstr "Nagini Strijder"
 
 #: data/units/Naga.cfg:6
 msgid "female^Naga"
@@ -5529,8 +5951,8 @@ msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
-"De naga, zoals de meermannen, zijn bewoners van de zeeën. Ze zijn kleiner en "
-"gekwiekster dan de meermannen maar zijn even onhandig op het droge."
+"De naga, zoals de meermannen, zijn bewoners van de zeeÃ«n. Ze zijn kleiner "
+"en gekwiekster dan de meermannen maar zijn even onhandig op het droge."
 
 #: data/units/Necromancer.cfg:3
 msgid "Necromancer"
@@ -5542,10 +5964,10 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Een necromancer is een magiër die besloten heeft het pad van de zwarte magie "
-"te bewandelen. Door uit de duistere machten te tappen kan hij spreuken over "
-"zijn vijanden uitspreken en zo het leven uit hun wegzuigen.. en zichzelf "
-"sterken."
+"Een necromancer is een magiÃ«r die besloten heeft het pad van de zwarte "
+"magie te bewandelen. Door uit de duistere machten te tappen kan hij spreuken "
+"over zijn vijanden uitspreken en zo het leven uit hun wegzuigen.. en "
+"zichzelf sterken."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
@@ -5622,12 +6044,11 @@ msgid ""
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Ogres zijn grote domme humanoïde schepsels die normaal gezien alleen in de "
+"Ogres zijn grote domme humanoÃ¯de schepsels die normaal gezien alleen in de "
 "wildernis leven. Ze zijn dan wel niet de snelste of de slimste, maar hun "
 "kracht valt niet te onderschatten."
 
 #: data/units/Ogre.cfg:19 data/units/Young_Ogre.cfg:19
-#, fuzzy
 msgid "cleaver"
 msgstr "vlees doorkluwer"
 
@@ -5670,7 +6091,6 @@ msgid "Orcish Crossbowman"
 msgstr "Orkse Kruisschutter"
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
@@ -5745,7 +6165,6 @@ msgid "Novice Orcish Shaman"
 msgstr "Jonge Orkse Shamaan"
 
 #: data/units/Orcish_Shaman.cfg:75
-#, fuzzy
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -5935,7 +6354,6 @@ msgid "Pikeman"
 msgstr "Piekenier"
 
 #: data/units/Pikeman.cfg:19
-#, fuzzy
 msgid ""
 "Pikemen are more experienced soldiers who have changed their spears for long "
 "pikes. Because of the length of their weapons, they always strike first in "
@@ -5995,7 +6413,7 @@ msgstr ""
 
 #: data/units/Red_Mage.cfg:3
 msgid "Red Mage"
-msgstr "Rode Magiër"
+msgstr "Rode MagiÃ«r"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:113
 msgid ""
@@ -6003,13 +6421,13 @@ msgid ""
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
-"De rode magiër valt aan met grote vuurballen die bijna altijd doel treffen. "
+"De rode magiÃ«r valt aan met grote vuurballen die bijna altijd doel treffen. "
 "Ze zijn sterk zoveel overdag al 's nachts en zijn waardevol in bijna elke "
 "situatie."
 
 #: data/units/Red_Mage.cfg:96
 msgid "female^Red Mage"
-msgstr "Rode Magiër"
+msgstr "Rode MagiÃ«r"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6042,9 +6460,8 @@ msgstr ""
 "bevriende eenheid de vijand langsvoor afleidt."
 
 #: data/units/Rogue.cfg:63
-#, fuzzy
 msgid "female^Rogue"
-msgstr "Magiër"
+msgstr "Schurk"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -6069,9 +6486,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Ambusher.cfg:4
-#, fuzzy
 msgid "Saurian Ambusher"
-msgstr "Meerman IJstovenaar"
+msgstr "Saurian Sluiper"
 
 #: data/units/Saurian_Ambusher.cfg:17
 msgid ""
@@ -6083,9 +6499,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Flanker.cfg:4
-#, fuzzy
 msgid "Saurian Flanker"
-msgstr "Meerman IJstovenaar"
+msgstr "Saurian Flankeerder"
 
 #: data/units/Saurian_Flanker.cfg:18
 msgid ""
@@ -6114,9 +6529,8 @@ msgid "frost blast"
 msgstr "noorderwind"
 
 #: data/units/Saurian_Skirmisher.cfg:4
-#, fuzzy
 msgid "Saurian Skirmisher"
-msgstr "Saurian Bedwelmer"
+msgstr "Saurian Warzaaier"
 
 #: data/units/Saurian_Skirmisher.cfg:17
 msgid ""
@@ -6186,7 +6600,7 @@ msgid ""
 "their lack of a ranged attack and poor defence on land do represent "
 "strategic weaknesses."
 msgstr ""
-"De Overheersing der Zeeën! Een grote stap voor de goblins, die normaal "
+"De Overheersing der ZeeÃ«n! Een grote stap voor de goblins, die normaal "
 "gezien liever met beide voeten op vaste grond blijven. Zee orks zijn sterke "
 "strijders te water, maar ze missen een afstandsaanval en zijn kwetsbaar op "
 "het land."
@@ -6246,7 +6660,7 @@ msgstr ""
 
 #: data/units/Silver_Mage.cfg:3
 msgid "Silver Mage"
-msgstr "Zilveren Magiër"
+msgstr "Zilveren MagiÃ«r"
 
 #: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:151
 msgid ""
@@ -6254,13 +6668,13 @@ msgid ""
 "teleport from any friendly village to another, translating themselves in an "
 "instant. They are also highly resistant to most forms of magical attack."
 msgstr ""
-"Zilveren Magiërs zijn de snelste en handigste van alle magiërs. Ze kunnen "
+"Zilveren MagiÃ«rs zijn de snelste en handigste van alle magiÃ«rs. Ze kunnen "
 "van een bevriend dorp naar een ander bevriend dorp teleporteren. Tevens zijn "
 "ze resistent tegen de meeste vormen van magie."
 
 #: data/units/Silver_Mage.cfg:132
 msgid "female^Silver Mage"
-msgstr "Zilveren Magiër"
+msgstr "Zilveren MagiÃ«r"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -6349,18 +6763,16 @@ msgid "Spearman"
 msgstr "Speerman"
 
 #: data/units/Spearman.cfg:16
-#, fuzzy
 msgid ""
 "Spearmen are the core of the human armies. These young soldiers are given "
 "basic training and put in the front lines to do the bulk of the fighting. "
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"De speerman vormt evenals de zwaardvechter de basis van het mensenleger. "
-"Deze jonge soldaten krijgen een basistraining en doen het meeste van het "
-"vechten aan het front. Omwille van de lengte van hun speer krijgen de "
-"speermannen altijd het eerste woord in een gevecht, zelfs wanneer ze "
-"verdedigen."
+"De speerman vormt de basis van het mensenleger. Deze jonge soldaten krijgen "
+"een basistraining en doen het meeste van het vechten aan het front. Omwille "
+"van de lengte van hun speer krijgen de speermannen altijd het eerste woord "
+"in een gevecht, zelfs wanneer ze verdedigen."
 
 #: data/units/Spectre.cfg:3
 msgid "Spectre"
@@ -6416,12 +6828,11 @@ msgstr ""
 "Dieven zijn snel en handig, daardoor zijn ze moeilijk te raken en ze "
 "schrikken er niet voor terug hun vijand ook in de rug aan te vallen. Een "
 "dief is twee keer zo dodelijk wanneer de vijand tussen hem en een bondgenoot "
-"staat. Dieven werken efficiënter 's nachts dan overdag."
+"staat. Dieven werken efficiÃ«nter 's nachts dan overdag."
 
 #: data/units/Thief.cfg:40
-#, fuzzy
 msgid "female^Thief"
-msgstr "Magiër"
+msgstr "Dievegge"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -6548,7 +6959,6 @@ msgid "female^Vampire Lady"
 msgstr "Vampier-Jonkvrouw"
 
 #: data/units/Vampire_Lady.cfg:17
-#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
@@ -6607,7 +7017,7 @@ msgid ""
 msgstr ""
 "Als de leiders van de mensen koninkrijken zijn de koningen verantwoordelijk "
 "voor het regeren over en het beschermen van hun onderdanen. Koningen kunnen "
-"de aanvallen van rang 1 en 2 eenheden coördineren waardoor deze zwaardere "
+"de aanvallen van rang 1 en 2 eenheden coÃ¶rdineren waardoor deze zwaardere "
 "klappen uitdelen."
 
 #: data/units/Watch_Tower.cfg:3
@@ -6624,7 +7034,7 @@ msgstr ""
 
 #: data/units/White_Mage.cfg:3
 msgid "White Mage"
-msgstr "Witte Magiër"
+msgstr "Witte MagiÃ«r"
 
 #: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
 msgid ""
@@ -6633,15 +7043,15 @@ msgid ""
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam"
 msgstr ""
-"De witte magiër is zwak in lijf aan lijf gevechten, maar hij is een meester "
-"in het genezen. Eenheden die een witte magiër omringen worden genezen alsof "
+"De witte magiÃ«r is zwak in lijf aan lijf gevechten, maar hij is een meester "
+"in het genezen. Eenheden die een witte magiÃ«r omringen worden genezen alsof "
 "ze in een dorpje uitrustten. Verder is deze aanbidder van het licht "
 "uitermate dodelijk voor levende doden. De door hem opgeroepen lichtstraal "
 "betekent eeuwige rust voor de levende dode"
 
 #: data/units/White_Mage.cfg:77
 msgid "female^White Mage"
-msgstr "Witte Magiër"
+msgstr "Witte MagiÃ«r"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -6763,9 +7173,8 @@ msgid "+Scenario Designers"
 msgstr "+Scenario Ontwerpers"
 
 #: src/about.cpp:118
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Multiplayer"
+msgstr "+Multiplayer Kaarten"
 
 #: src/about.cpp:123
 msgid "+Packagers"
@@ -6776,7 +7185,6 @@ msgid "+Miscellaneous"
 msgstr "+Allerlei"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
 msgstr "+Internationaliseringsmanager"
 
@@ -6785,9 +7193,8 @@ msgid "+Basque Translation"
 msgstr "+Baskische Vertaling"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Hongaarse Vertaling"
+msgstr "+Bulgaarse Vertaling"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -6806,14 +7213,12 @@ msgid "+Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
 #: src/about.cpp:182
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Deense Vertaling"
+msgstr "+Engelse (GB) Vertaling"
 
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Hongaarse Vertaling"
+msgstr "+Estse Vertaling"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -6840,9 +7245,8 @@ msgid "+Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
 #: src/about.cpp:241
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "Catalaanse Vertaling"
+msgstr "+Latijnse Vertaling"
 
 #: src/about.cpp:245
 msgid "+Norwegian Translation"
@@ -6854,12 +7258,11 @@ msgstr "+Poolse Vertaling"
 
 #: src/about.cpp:259
 msgid "+Portuguese (Brazil) Translation"
-msgstr "+Portugese (Brazilië) Vertaling"
+msgstr "+Portugese (BraziliÃ«) Vertaling"
 
 #: src/about.cpp:268
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Hongaarse Vertaling"
+msgstr "+Russische Vertaling"
 
 #: src/about.cpp:274
 msgid "+Slovak Translation"
@@ -6878,7 +7281,6 @@ msgid "+Contributors"
 msgstr "+Bijdragers"
 
 #: src/about.cpp:297
-#, fuzzy
 msgid "+Bots"
 msgstr "+Bots"
 
@@ -7046,14 +7448,12 @@ msgid "Scenario Start"
 msgstr "Scenario Start"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Moeilijkheidsgraad"
+msgstr "Moeilijkheidsgraad:"
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Versie"
+msgstr "Versie:"
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -7065,7 +7465,7 @@ msgid ""
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
 "Er zijn geen opgeslagen spellen beschikbaar om te laden.\n"
-"(Spellen worden automatisch opgeslagen wanneer je een beurt beëindigt)"
+"(Spellen worden automatisch opgeslagen wanneer je een beurt beÃ«indigt)"
 
 #: src/dialogs.cpp:421
 msgid "Delete Save"
@@ -7114,20 +7514,17 @@ msgid "level"
 msgstr "rang"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "HP"
+msgstr "HP: "
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "XP"
+msgstr "XP: "
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Stappen"
+msgstr "Stappen: "
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -7154,19 +7551,16 @@ msgid "The game could not be saved"
 msgstr "Het spel kon niet worden opgeslagen"
 
 #: src/game.cpp:168 src/game.cpp:908 src/game.cpp:1322
-#, fuzzy
 msgid "The game could not be loaded: "
-msgstr "Het spel kon niet worden opgeslagen"
+msgstr "Het spel kon niet worden geladen: "
 
 #: src/game.cpp:171 src/game.cpp:910 src/game.cpp:1324
-#, fuzzy
 msgid "Error while playing the game: "
-msgstr "Bestand I/O fout."
+msgstr "Fout tijdens spelen van het spel: "
 
 #: src/game.cpp:174 src/game.cpp:1336
-#, fuzzy
 msgid "The game map could not be loaded: "
-msgstr "Het spel kon niet worden opgeslagen"
+msgstr "De kaart kon niet worden geladen: "
 
 #: src/game.cpp:195
 msgid "Do you want to save your game?"
@@ -7189,22 +7583,20 @@ msgstr ""
 "proberen het te laden?"
 
 #: src/game.cpp:848 src/game.cpp:851
-#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
-msgstr "Het bestand dat je hebt proberen laden is corrupt"
+msgstr "Het bestand dat je hebt proberen laden is corrupt: '"
 
 #: src/game.cpp:854
 msgid "File I/O Error while reading the game"
 msgstr "Bestand I/O fout."
 
 #: src/game.cpp:959
-#, fuzzy
 msgid "Get More Campaigns..."
-msgstr ",Haal meer veldtochten..."
+msgstr "Haal meer veldtochten..."
 
 #: src/game.cpp:960
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Download meer veldtochen van een server op het internet."
 
 #: src/game.cpp:970
 msgid "Choose the campaign you want to play:"
@@ -7219,9 +7611,8 @@ msgid "Select difficulty level:"
 msgstr "Kies de moeilijkheidsgraad:"
 
 #: src/game.cpp:1025
-#, fuzzy
 msgid "B"
-msgstr "KB"
+msgstr "B"
 
 #: src/game.cpp:1028
 msgid "KB"
@@ -7229,7 +7620,7 @@ msgstr "KB"
 
 #: src/game.cpp:1031
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: src/game.cpp:1055
 msgid "Connect to Server"
@@ -7265,18 +7656,16 @@ msgid "Version"
 msgstr "Versie"
 
 #: src/game.cpp:1098
-#, fuzzy
 msgid "Author"
-msgstr "doornen"
+msgstr "Auteur"
 
 #: src/game.cpp:1099
 msgid "Downloads"
 msgstr ""
 
 #: src/game.cpp:1100
-#, fuzzy
 msgid "Size"
-msgstr "Landmassa Grootte"
+msgstr "Grootte"
 
 #: src/game.cpp:1129
 msgid "Publish campaign: "
@@ -7304,15 +7693,15 @@ msgstr "Veldtocht aan het downloaden..."
 
 #: src/game.cpp:1174
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Kan het bestandsysteem niet opnieuw scannen"
 
 #: src/game.cpp:1185
 msgid "Campaign Installed"
-msgstr "Veldtocht geïnstalleerd."
+msgstr "Veldtocht geÃ¯nstalleerd."
 
 #: src/game.cpp:1185
 msgid "The campaign has been installed."
-msgstr "De veldtocht werd geïnstalleerd."
+msgstr "De veldtocht werd geÃ¯nstalleerd."
 
 #: src/game.cpp:1187
 msgid "Network communication error."
@@ -7336,7 +7725,7 @@ msgstr "Connectie timed out"
 
 #: src/game.cpp:1206 src/game.cpp:1244 src/game.cpp:1269
 msgid "The server responded with an error: \""
-msgstr ""
+msgstr "De server antwoordde met een fout: \""
 
 #: src/game.cpp:1210
 msgid "Terms"
@@ -7348,11 +7737,11 @@ msgstr "Antwoord"
 
 #: src/game.cpp:1285
 msgid "Join Official Server"
-msgstr "Log in op de Officiële Server"
+msgstr "Log in op de OfficiÃ«le Server"
 
 #: src/game.cpp:1285
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Log in op de officiële Wesnoth multiplayer server"
+msgstr "Log in op de officiÃ«le Wesnoth multiplayer server"
 
 #: src/game.cpp:1286 src/multiplayer_lobby.cpp:27
 msgid "Join Game"
@@ -7387,16 +7776,14 @@ msgid "Play a game against AI opponents"
 msgstr ""
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Login"
+msgstr "Login: "
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Taal"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
 msgstr "Kies de taal:"
 
@@ -7405,34 +7792,28 @@ msgid "Error loading game configuration files: '"
 msgstr ""
 
 #: src/game.cpp:1403
-#, fuzzy
 msgid "' (The game will now exit)"
-msgstr "Het spel is over."
+msgstr "' (Het spel wordt nu gesloten)"
 
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Promoveert tot"
+msgstr "Promoveert tot: "
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Vaardigheden"
+msgstr "Vaardigheden: "
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Alliantie"
+msgstr "Alliantie: "
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "Benodigde XP"
+msgstr "Benodigde XP: "
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -7487,18 +7868,15 @@ msgid "or"
 msgstr "of"
 
 #: src/help.cpp:1306
-#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
 "Dit terrein gedraagt zich als $terrains voor verplaatsing en verdedeging."
 
 #: src/help.cpp:1308
-#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
 msgstr "Het terrein met de beste verdediging wordt automatisch gekozen."
 
 #: src/help.cpp:1312
-#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
@@ -7507,7 +7885,6 @@ msgstr ""
 "leider wanneer je je op dit terrein bevindt."
 
 #: src/help.cpp:1314
-#, fuzzy
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
@@ -7516,7 +7893,6 @@ msgstr ""
 "terrein recruteren."
 
 #: src/help.cpp:1316
-#, fuzzy
 msgid "This terrain gives healing."
 msgstr "Dit terrein geneest."
 
@@ -7557,39 +7933,32 @@ msgid "Map Generator"
 msgstr "Mapgenerator"
 
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
-msgstr "Spelers"
+msgstr "Spelers:"
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Breedte"
+msgstr "Breedte:"
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Hoogte"
+msgstr "Hoogte:"
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Herhalingen"
+msgstr "Iteraties:"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Landmassa Grootte"
+msgstr "Landmassa Grootte:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
-msgstr "Dorpen"
+msgstr "Dorpen:"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Landform:"
-msgstr "Landsoort"
+msgstr "Landsoort:"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -7616,9 +7985,8 @@ msgid "Connect to Host"
 msgstr "Verbind met Server"
 
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Kies host om mee te verbinden"
+msgstr "Kies host om mee te verbinden: "
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -7629,22 +7997,20 @@ msgid "You must log in to this server"
 msgstr "Je moet op deze server inloggen"
 
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Vrije Plaats"
+msgstr "(Vrije plaats)"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Anonieme lokale speler"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
-msgstr "Computer Speler"
+msgstr "Computer speler"
 
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Vacante plaats)"
 
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
@@ -7667,7 +8033,6 @@ msgid "Faction"
 msgstr "Factie"
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Kleur"
 
@@ -7676,7 +8041,6 @@ msgid "Gold"
 msgstr "Goud"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
 msgstr "Computer vs Computer"
 
@@ -7691,7 +8055,7 @@ msgstr "Annuleer"
 
 #: src/multiplayer_connect.cpp:472
 msgid "The scenario is invalid because it has no sides."
-msgstr ""
+msgstr "Dit scenario is ongeldig vermits het geen kanten bevat"
 
 #: src/multiplayer_connect.cpp:759
 msgid "Game Lobby"
@@ -7714,9 +8078,8 @@ msgid "Empty"
 msgstr "Leeg"
 
 #: src/multiplayer_connect.cpp:786
-#, fuzzy
 msgid "Era not available: "
-msgstr "Geen doel beschikbaar."
+msgstr "Tijdperk niet beschikbaar."
 
 #: src/multiplayer_connect.cpp:821
 msgid "Red"
@@ -7760,7 +8123,7 @@ msgstr "Dit is geen multiplayer opgeslagen spel."
 
 #: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "Kan tijdperk $era niet vinden"
 
 #: src/multiplayer_connect.cpp:939
 msgid ""
@@ -7771,24 +8134,20 @@ msgstr ""
 "@Versla vijandige leider(s)"
 
 #: src/multiplayer_connect.cpp:975
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "Aan het wachten op netwerkspelers"
+msgstr "Aan het wachten op netwerkspelers..."
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
-msgstr "Naam van het spel"
+msgstr "Naam van het spel:"
 
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
-msgstr "Tijdperk"
+msgstr "Tijdperk:"
 
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
-msgstr "Kaart om te spelen"
+msgstr "Kaart om te spelen:"
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
@@ -7800,7 +8159,7 @@ msgstr "Observeerders"
 
 #: src/multiplayer_create.cpp:47
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:48
 msgid "Regenerate"
@@ -7854,7 +8213,7 @@ msgstr "Geen multiplayer kanten."
 
 #: src/multiplayer_create.cpp:116
 msgid "No eras found"
-msgstr ""
+msgstr "Geen tijdperken gevonden"
 
 #: src/multiplayer_create.cpp:125
 msgid "$login's game"
@@ -7862,36 +8221,31 @@ msgstr "$login's spel"
 
 #: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Ongeldig tijdperk geselecteerd"
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
-msgstr ""
+msgstr "Je moet een naam opgeven."
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "Turns: "
-msgstr "Beurten"
+msgstr "Beurten: "
 
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
 msgstr "Oneindig"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Dorpsgoud"
+msgstr "Dorpsgoud: "
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Terreinspecificaties"
+msgstr "XP:"
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Players: "
-msgstr "Spelers"
+msgstr "Spelers: "
 
 #: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -7930,26 +8284,22 @@ msgid "Getting game data..."
 msgstr "Bezig met ophalen data..."
 
 #: src/multiplayer_wait.cpp:177
-#, fuzzy
 msgid "No multiplayer sides available in this game"
 msgstr "Er zijn geen beschikbare kanten in dit spel."
 
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "Era not available"
-msgstr "Geen doel beschikbaar."
+msgstr "Tijdperk niet beschikbaar."
 
 #: src/multiplayer_wait.cpp:207
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "Geen multiplayer kanten."
+msgstr "Er werden geen multiplayer kanten gevonden"
 
 #: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
 msgstr "Kies je kant:"
 
 #: src/multiplayer_wait.cpp:397 src/playturn.cpp:1764
-#, fuzzy
 msgid "unit^Gold"
 msgstr "Goud"
 
@@ -7959,12 +8309,11 @@ msgstr "Het bestand dat je hebt proberen laden is corrupt"
 
 #: src/playlevel.cpp:724
 msgid "Game Over"
-msgstr ""
+msgstr "Game Over"
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "The game is over."
-msgstr "Het spel werd opgeslagen"
+msgstr "Het spel is over."
 
 #: src/playlevel.cpp:738
 msgid "Defeat"
@@ -7975,33 +8324,28 @@ msgid "You have been defeated!"
 msgstr "Je bent verslagen."
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Resterend goud"
+msgstr "Resterend goud: "
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Vroeg geëindigd bonus"
+msgstr "Vroeg geÃ«indigd bonus: "
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "per beurt"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Beurten te vroeg geëindigd"
+msgstr "Beurten te vroeg geÃ«indigd: "
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonus"
+msgstr "Bonus: "
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Goud"
+msgstr "Goud: "
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -8009,9 +8353,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "80% van het goud wordt behouden voor het volgende scenario"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Behouden Goud"
+msgstr "Behouden Goud: "
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -8022,9 +8365,8 @@ msgid "You have emerged victorious!"
 msgstr "Je hebt de overwinning behaald!"
 
 #: src/playlevel.cpp:833
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Scenario Start"
+msgstr "Scenario Rapport"
 
 #: src/playlevel.cpp:854
 msgid ""
@@ -8059,18 +8401,17 @@ msgid "Attack Enemy"
 msgstr "Val Vijand Aan"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Kies wapen"
+msgstr "Kies wapen: "
 
 #: src/playturn.cpp:1250
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "Je bent je beurt nog niet begonnen. Wil je ze echt al beëindigen."
+msgstr "Je bent je beurt nog niet begonnen. Wil je ze echt al beÃ«indigen."
 
 #: src/playturn.cpp:1259 src/playturn.cpp:1264
 msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beëindigen"
+msgstr "Sommige eenheden kunnen nog bewegen. Wil je echt je beurt beÃ«indigen"
 
 #: src/playturn.cpp:1279
 msgid "Auto-Save"
@@ -8130,9 +8471,8 @@ msgid "Recruit"
 msgstr "Recruteren"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Selecteer eenheid"
+msgstr "Selecteer eenheid:"
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -8178,9 +8518,8 @@ msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Je moet tenminste $cost goudstukken hebben om een eenheid op te roepen"
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "rang"
+msgstr "rang: "
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -8191,9 +8530,8 @@ msgid "Recall"
 msgstr "Oproepen"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Bericht"
+msgstr "Bericht:"
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -8272,9 +8610,8 @@ msgid "Place Label"
 msgstr "Plaats Label"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Label"
+msgstr "Label:"
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -8311,9 +8648,8 @@ msgstr ""
 "vijandige eenheden."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "onzichtbaar"
+msgstr "onzichtbaar: "
 
 #: src/reports.cpp:111
 msgid ""
@@ -8324,9 +8660,8 @@ msgstr ""
 "aanval minder dan normaal."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "vertraagd"
+msgstr "vertraagd: "
 
 #: src/reports.cpp:116
 msgid ""
@@ -8342,37 +8677,32 @@ msgstr ""
 "vaardigheid."
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "vergiftigd"
+msgstr "vergiftigd: "
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Deze eenheid is in steen veranderd. Het kan bewegen noch aanvallen."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "steen"
+msgstr "steen: "
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "schade"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Rechtvaardige eenheden"
+msgstr "Rechtvaardige eenheden: "
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Neutrale eenheden"
+msgstr "Neutrale eenheden: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Chaotische eenheden"
+msgstr "Chaotische eenheden: "
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -8387,9 +8717,8 @@ msgid "Allied village"
 msgstr "Geallieerd Dorp"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Observeerders"
+msgstr "Toeschouwers:"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
@@ -8477,54 +8806,3 @@ msgstr "rechtvaardig"
 #: src/unit_types.cpp:902
 msgid "neutral"
 msgstr "neutraal"
-
-#~ msgid "Players"
-#~ msgstr "Spelers"
-
-#, fuzzy
-#~ msgid "Team "
-#~ msgstr "Team"
-
-#, fuzzy
-#~ msgid "Turns"
-#~ msgstr "Beurt"
-
-#, fuzzy
-#~ msgid "Load Game..."
-#~ msgstr "Laad Spel"
-
-#~ msgid "Ok"
-#~ msgstr "Ok"
-
-#, fuzzy
-#~ msgid "Experience Requirements: "
-#~ msgstr "Promotiecriteria"
-
-#~ msgid ""
-#~ "The game was unable to bind to the port needed to host games over the "
-#~ "network. Network players will be unable to connect to this game"
-#~ msgstr ""
-#~ "Het spel kon niet met de poort binden die nodig is om spellen te hosten "
-#~ "over een netwerk. Netwerkspelers zullen niet kunnen connecteren met het "
-#~ "spel."
-
-#~ msgid "Warning"
-#~ msgstr "Opgelet"
-
-#~ msgid "Receiving game list..."
-#~ msgstr "Bezig spellijst op te halen..."
-
-#~ msgid "The game has been cancelled"
-#~ msgstr "Het spel werd geannuleerd"
-
-#~ msgid "The side you have chosen is no longer available"
-#~ msgstr "De kant die je gekozen hebt is niet langer beschikbaar"
-
-#~ msgid "Show replay of game up to save point?"
-#~ msgstr "Toon opgenomen spel tot het moment van opslaan?"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#~ msgid "1"
-#~ msgstr "1"
