@@ -1239,29 +1239,32 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	if(handler.disabled())
 		return false;
 
-	std::map<gamemap::location,unit>::iterator unit1 = units->find(ev.loc1);
-	std::map<gamemap::location,unit>::iterator unit2 = units->find(ev.loc2);
+	unit_map::iterator unit1 = units->find(ev.loc1);
+	unit_map::iterator unit2 = units->find(ev.loc2);
 
 	const config::child_list& first_filters = handler.first_arg_filters();
 	for(config::child_list::const_iterator ffi = first_filters.begin();
 	    ffi != first_filters.end(); ++ffi) {
 
-			if(!game_events::unit_matches_filter(unit1,**ffi))
-				return false;
+		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,**ffi)) {
+			return false;
+		}
 	}
 
 	const config::child_list& second_filters = handler.second_arg_filters();
 	for(config::child_list::const_iterator sfi = second_filters.begin();
 	    sfi != second_filters.end(); ++sfi) {
-		if(!game_events::unit_matches_filter(unit2,**sfi))
+		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,**sfi)) {
 			return false;
+		}
 	}
 
 	//the event hasn't been filtered out, so execute the handler
 	handler.handle_event(ev);
 
-	if(handler.first_time_only())
+	if(handler.first_time_only()) {
 		handler.disable();
+	}
 
 	return true;
 }
