@@ -97,7 +97,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
 					   invalidateGameStatus_(true), panelsDrawn_(false),
-					   currentTeam_(0), activeTeam_(0), updatesLocked_(0),
+					   currentTeam_(0), activeTeam_(0), hideEnergy_(false), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
 					   theme_(theme_cfg,screen_area())
 {
@@ -156,10 +156,11 @@ void display::adjust_colours(int r, int g, int b)
 	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
-gamemap::location display::hide_unit(const gamemap::location& loc)
+gamemap::location display::hide_unit(const gamemap::location& loc, bool hide_energy)
 {
 	const gamemap::location res = hiddenUnit_;
 	hiddenUnit_ = loc;
+	hideEnergy_ = hide_energy;
 	return res;
 }
 
@@ -1155,7 +1156,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	//see if there is a unit on this tile
 	const unit_map::const_iterator it = units_.find(gamemap::location(x,y));
-	if(it != units_.end()) {
+	if(it != units_.end() && (loc != hiddenUnit_ || !hideEnergy_)) {
 		if(unit_image == NULL)
 			unit_image.assign(image::get_image(it->second.image(),it->second.stone() ? image::GREYED : image::SCALED));
 
@@ -1188,6 +1189,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		}
 
 		energy_image.assign(image::get_image(*energy_file,image::SCALED,image::NO_ADJUST_COLOUR));
+
 		if(energy_image.get() == NULL) {
 			std::cerr << "failed to get energy image: '" << *energy_file << "'\n";
 			return;

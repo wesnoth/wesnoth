@@ -25,11 +25,14 @@
 
 #include <iostream>
 
-ai::ai(display& disp, const gamemap& map, const game_data& gameinfo,
-	   std::map<gamemap::location,unit>& units,
-	   std::vector<team>& teams, int team_num, const gamestatus& state)
-	   : disp_(disp), map_(map), gameinfo_(gameinfo), units_(units),
-	     teams_(teams), team_num_(team_num), state_(state),
+ai_interface* create_ai(const std::string& name, ai_interface::info& info)
+{
+	return new ai(info);
+}
+
+ai::ai(ai_interface::info& info)
+	   : ai_interface(info), disp_(info.disp), map_(info.map), gameinfo_(info.gameinfo), units_(info.units),
+	     teams_(info.teams), team_num_(info.team_num), state_(info.state),
 		 consider_combat_(true)
 {}
 
@@ -88,27 +91,27 @@ bool ai::recruit(const std::string& usage)
 	return false;
 }
 
-team& ai::current_team()
+team& ai_interface::current_team()
 {
-	return teams_[team_num_-1];
+	return info_.teams[info_.team_num-1];
 }
 
-const team& ai::current_team() const
+const team& ai_interface::current_team() const
 {
-	return teams_[team_num_-1];
+	return info_.teams[info_.team_num-1];
 }
 
 
-void ai::move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves)
+void ai_interface::move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves)
 {
-	assert(units_.find(to) == units_.end() || from == to);
+	assert(info_.units.find(to) == info_.units.end() || from == to);
 
-	disp_.select_hex(from);
-	disp_.update_display();
+	info_.disp.select_hex(from);
+	info_.disp.update_display();
 
 	log_scope("move_unit");
-	unit_map::iterator u_it = units_.find(from);
-	if(u_it == units_.end()) {
+	unit_map::iterator u_it = info_.units.find(from);
+	if(u_it == info_.units.end()) {
 		std::cout << "Could not find unit at " << from.x << ", "
 		          << from.y << "\n";
 		assert(false);
@@ -119,16 +122,16 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 
 	const bool ignore_zocs = u_it->second.type().is_skirmisher();
 	const bool teleport = u_it->second.type().teleports();
-	paths current_paths = paths(map_,state_,gameinfo_,units_,from,teams_,ignore_zocs,teleport);
-	paths_wiper wiper(disp_);
+	paths current_paths = paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
+	paths_wiper wiper(info_.disp);
 
-	if(!disp_.fogged(from.x,from.y))
-		disp_.set_paths(&current_paths);
+	if(!info_.disp.fogged(from.x,from.y))
+		info_.disp.set_paths(&current_paths);
 
-	disp_.scroll_to_tiles(from.x,from.y,to.x,to.y);
+	info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
 
 	unit current_unit = u_it->second;
-	units_.erase(u_it);
+	info_.units.erase(u_it);
 
 	const std::map<location,paths>::iterator p_it = possible_moves.find(from);
 
@@ -144,33 +147,33 @@ void ai::move_unit(const location& from, const location& to, std::map<location,p
 		if(rt != p.routes.end()) {
 			std::vector<location> steps = rt->second.steps;
 			steps.push_back(to); //add the destination to the steps
-			disp_.move_unit(steps,current_unit);
+			info_.disp.move_unit(steps,current_unit);
 		}
 	}
 
 	current_unit.set_movement(0);
-	units_.insert(std::pair<location,unit>(to,current_unit));
-	if(map_.underlying_terrain(map_[to.x][to.y]) == gamemap::TOWER)
-		get_tower(to,teams_,team_num_-1,units_);
+	info_.units.insert(std::pair<location,unit>(to,current_unit));
+	if(info_.map.underlying_terrain(info_.map[to.x][to.y]) == gamemap::TOWER)
+		get_tower(to,info_.teams,info_.team_num-1,info_.units);
 
-	disp_.draw_tile(to.x,to.y);
-	disp_.draw();
+	info_.disp.draw_tile(to.x,to.y);
+	info_.disp.draw();
 
 	game_events::fire("moveto",to);
 
-	if((teams_.front().uses_fog() || teams_.front().uses_shroud()) && !teams_.front().fogged(to.x,to.y)) {
+	if((info_.teams.front().uses_fog() || info_.teams.front().uses_shroud()) && !info_.teams.front().fogged(to.x,to.y)) {
 		game_events::fire("sighted",to);
 	}
 }
 
-void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
+void ai_interface::calculate_possible_moves(std::map<location,paths>& res, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement)
 {
-	for(std::map<gamemap::location,unit>::iterator un_it = units_.begin(); un_it != units_.end(); ++un_it) {
+	for(std::map<gamemap::location,unit>::iterator un_it = info_.units.begin(); un_it != info_.units.end(); ++un_it) {
 		//if we are looking for the movement of enemies, then this unit must be an enemy unit
 		//if we are looking for movement of our own units, it must be on our side.
 		//if we are assuming full movement, then it may be a unit on our side, or allied
 		if(enemy && current_team().is_enemy(un_it->second.side()) == false ||
-		   !enemy && !assume_full_movement && un_it->second.side() != team_num_ ||
+		   !enemy && !assume_full_movement && un_it->second.side() != info_.team_num ||
 		   !enemy && assume_full_movement && current_team().is_enemy(un_it->second.side())) {
 			continue;
 		}
@@ -192,8 +195,8 @@ void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcds
 		const bool ignore_zocs = un_it->second.type().is_skirmisher();
 		const bool teleports = un_it->second.type().teleports();
 		res.insert(std::pair<gamemap::location,paths>(
-		                un_it->first,paths(map_,state_,gameinfo_,units_,
-		                un_it->first,teams_,ignore_zocs,teleports)));
+		                un_it->first,paths(info_.map,info_.state,info_.gameinfo,info_.units,
+		                un_it->first,info_.teams,ignore_zocs,teleports)));
 	}
 
 	for(std::map<location,paths>::iterator m = res.begin(); m != res.end(); ++m) {
@@ -202,12 +205,18 @@ void ai::calculate_possible_moves(std::map<location,paths>& res, move_map& srcds
 			const location& src = m->first;
 			const location& dst = rtit->first;
 
-			if(src != dst && units_.find(dst) == units_.end()) {
+			if(src != dst && info_.units.find(dst) == info_.units.end()) {
 				srcdst.insert(std::pair<location,location>(src,dst));
 				dstsrc.insert(std::pair<location,location>(dst,src));
 			}
 		}
 	}
+}
+
+void ai::play_turn()
+{
+	consider_combat_ = true;
+	do_move();
 }
 
 void ai::do_move()
@@ -325,7 +334,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 		move_unit(from,to,possible_moves);
 
-		do_attack(to,target_loc,weapon);
+		attack_enemy(to,target_loc,weapon);
 
 		//if this is the only unit in the planned attack, and the target
 		//is still alive, then also summon reinforcements
@@ -357,14 +366,14 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 	}
 }
 
-void ai::do_attack(const location& u, const location& target, int weapon)
+void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
 	recorder.add_attack(u,target,weapon);
 
 	game_events::fire("attack",u,target);
-	if(units_.count(u) && units_.count(target)) {
-		attack(disp_,map_,teams_,u,target,weapon,units_,state_,gameinfo_,false);
-		check_victory(units_,teams_);
+	if(info_.units.count(u) && info_.units.count(target)) {
+		attack(info_.disp,info_.map,info_.teams,u,target,weapon,info_.units,info_.state,info_.gameinfo,false);
+		check_victory(info_.units,info_.teams);
 	}
 }
 
@@ -708,7 +717,7 @@ void ai::leader_attack()
 	}
 
 	if(choice.valid()) {
-		do_attack(leader->first,choice,weapon);
+		attack_enemy(leader->first,choice,weapon);
 	}
 
 	std::cerr << "end leader attack analysis...\n";

@@ -67,7 +67,8 @@ public:
 	//function to make it so a unit is 'hidden' - not displayed
 	//when the tile it is on is drawn. Only one unit may be hidden
 	//at a time. The previously hidden unit will be returned.
-	gamemap::location hide_unit(const gamemap::location& loc);
+	//'hide_energy' determines whether the unit's energy bar should be hidden too.
+	gamemap::location hide_unit(const gamemap::location& loc, bool hide_energy=false);
 
 	//function which given rgb values, will return the equivalent pixel
 	//for the frame buffer surface.
@@ -370,6 +371,7 @@ private:
 	//used to store a unit that is not drawn, because it's currently
 	//being moved or otherwise changed
 	gamemap::location hiddenUnit_;
+	bool hideEnergy_;
 
 	//used to store any unit that is currently being hit
 	gamemap::location hitUnit_;

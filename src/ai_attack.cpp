@@ -290,11 +290,13 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			unit_map::const_iterator att = units.find(movements[i].first);
 			double cost = att->second.type().cost();
 
+			const bool on_village = map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER;
+
 			//up to double the value of a unit based on experience
 			cost += (double(att->second.experience())/
 			         double(att->second.max_experience()))*cost;
 
-			terrain_quality += (double(stat.chance_to_hit_attacker)/100.0)*cost;
+			terrain_quality += (double(stat.chance_to_hit_attacker)/100.0)*cost * (on_village ? 0.5 : 1.0);
 			resources_used += cost;
 
 			while(attacks || defends) {
@@ -360,7 +362,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			}
 			
 			//if the attacker moved onto a village, reward it for doing so
-			else if(map.underlying_terrain(map[movements[i].second.x][movements[i].second.y]) == gamemap::TOWER) {
+			else if(on_village) {
 				atthp += game_config::heal_amount*2; //double reward to emphasize getting onto villages
 			}
 
@@ -526,7 +528,7 @@ double ai::power_projection(const gamemap::location& loc, const move_map& srcdst
 				}
 
 				const bool village = map_.underlying_terrain(terrain) == gamemap::TOWER;
-				const double village_bonus = (use_terrain && village) ? 1.5 : 1.0;
+				const double village_bonus = (use_terrain && village) ? 2.0 : 1.0;
 
 				const double defense = use_terrain ? double(100 - un.defense_modifier(map_,terrain))/100.0 : 0.5;
 				const double rating = village_bonus*hp*defense*double(most_damage);

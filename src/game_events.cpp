@@ -504,7 +504,7 @@ void event_handler::handle_event_command(const queued_event& event_info, const s
 	//hiding units
 	else if(cmd == "hide_unit") {
 		const gamemap::location loc(cfg);
-		screen->hide_unit(loc);
+		screen->hide_unit(loc,true);
 		screen->draw_tile(loc.x,loc.y);
 	}
 

@@ -22,23 +22,59 @@
 
 #include <map>
 
-class ai {
+class ai_interface {
 public:
 
 	typedef gamemap::location location;
 	typedef std::multimap<location,location> move_map;
 
-	ai(display& disp, const gamemap& map, const game_data& gameinfo,
-	   std::map<gamemap::location,unit>& units,
-	   std::vector<team>& teams, int team_num, const gamestatus& state);
+	struct info {
+		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
+			std::vector<team>& teams, int team_num, const gamestatus& state)
+			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
+			  team_num(team_num), state(state)
+		{}
+		display& disp;
+		const gamemap& map;
+		const game_data& gameinfo;
+		unit_map& units;
+		std::vector<team>& teams;
+		int team_num;
+		const gamestatus& state;
+	};
 
-	void do_move();
+	ai_interface(info& arg) : info_(arg) {}
+
+	virtual void play_turn() = 0;
 
 	team& current_team();
 	const team& current_team() const;
 
+protected:
+	void attack_enemy(const location& u, const location& target, int weapon);
+	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
+
+	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
+
+	info& get_info() { return info_; }
+	const info& get_info() const { return info_; }
+
 private:
-	void do_attack(const location& u, const location& target, int weapon);
+	info info_;
+};
+
+ai_interface* create_ai(const std::string& name, ai_interface::info& info);
+
+class ai : public ai_interface {
+public:
+
+	ai(ai_interface::info& info);
+
+	void play_turn();
+
+private:
+
+	void do_move();
 
 	bool do_combat(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 	bool get_villages(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader);
@@ -55,9 +91,6 @@ private:
 	void leader_attack();
 
 	bool recruit(const std::string& usage);
-	void move_unit(const location& from, const location& to, std::map<location,paths>& possible_moves);
-
-	void calculate_possible_moves(std::map<location,paths>& moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
 
 	struct attack_analysis
 	{
