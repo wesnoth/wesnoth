@@ -27,7 +27,7 @@ namespace {
 namespace gui {
 
 file_chooser::file_chooser(display &disp, std::string start_file) 
-	: widget(disp), disp_(disp), delete_button_(disp, translate_string("delete_file")),
+  : widget(disp), disp_(disp), delete_button_(disp, _("Delete File")),
 	  path_delim_('/'), current_dir_(get_path(start_file)),
 	  chosen_file_(start_file), file_list_(disp, files_in_current_dir_, false),
 	  filename_textbox_(disp, 100, start_file, true), choice_made_(false),
@@ -170,7 +170,7 @@ void file_chooser::process() {
 	if (delete_button_.pressed()) {
 		const int ret = remove(get_current_file().c_str());
 		if (ret == -1) {
-			show_dialog(disp_, NULL, "", translate_string("delete_failed"), OK_ONLY);
+			show_dialog(disp_, NULL, "", _("Deletion of the file failed."), OK_ONLY);
 		}
 		else {
 			update_file_lists();
