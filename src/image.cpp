@@ -24,16 +24,16 @@ typedef std::pair<image::locator::value, int> locator_finder_pair;
 locator_finder_t locator_finder;
 
 // Definition of all image maps
-image::cache images_,scaled_images_,unmasked_images_,greyed_images_;
-image::cache brightened_images_,semi_brightened_images_;
+image::image_cache images_,scaled_images_,unmasked_images_,greyed_images_;
+image::image_cache brightened_images_,semi_brightened_images_;
+
+image::locator_cache alternative_images_;
 
 // const int cache_version_ = 0;
 
 std::map<image::locator,bool> image_existance_map;
 
 std::map<surface, surface> reversed_images_;
-
-std::map<image::locator, image::locator> alternative_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
@@ -48,29 +48,30 @@ int zoom = tile_size;
 //still freed, of course.) I do not think it is a problem, as the number of
 //different surfaces the program may lookup has an upper limit, so its
 //memory usage won't grow indefinitely over time
-void reset_image_cache(image::cache& cache)
+template<typename T>
+void reset_cache(std::vector<image::cache_item<T> >& cache)
 {
-	image::cache::iterator beg = cache.begin();
-	image::cache::iterator end = cache.end();
+	typename std::vector<image::cache_item<T> >::iterator beg = cache.begin();
+	typename std::vector<image::cache_item<T> >::iterator end = cache.end();
 
 	for(; beg != end; ++beg) {
 		beg->loaded = false;
-		beg->image = surface(NULL);
+		beg->item = T();
 	}
 }
-
 }
 
 namespace image {
 
 void flush_cache()
 {
-	reset_image_cache(images_);
-	reset_image_cache(scaled_images_);
-	reset_image_cache(unmasked_images_);
-	reset_image_cache(greyed_images_);
-	reset_image_cache(brightened_images_);
-	reset_image_cache(semi_brightened_images_);
+	reset_cache(images_);
+	reset_cache(scaled_images_);
+	reset_cache(unmasked_images_);
+	reset_cache(greyed_images_);
+	reset_cache(brightened_images_);
+	reset_cache(semi_brightened_images_);
+	reset_cache(alternative_images_);
 	mini_terrain_cache.clear();
 	reversed_images_.clear();
 }
@@ -85,12 +86,14 @@ void locator::init_index()
 		index_ = last_index_++;
 		locator_finder.insert(locator_finder_pair(val_, index_));
 
-		images_.push_back(cache_item());
-		scaled_images_.push_back(cache_item());
-		unmasked_images_.push_back(cache_item());
-		greyed_images_.push_back(cache_item());
-		brightened_images_.push_back(cache_item());
-		semi_brightened_images_.push_back(cache_item());
+		images_.push_back(cache_item<surface>());
+		scaled_images_.push_back(cache_item<surface>());
+		unmasked_images_.push_back(cache_item<surface>());
+		greyed_images_.push_back(cache_item<surface>());
+		brightened_images_.push_back(cache_item<surface>());
+		semi_brightened_images_.push_back(cache_item<surface>());
+
+		alternative_images_.push_back(cache_item<locator>());
 	} else {
 		index_ = i->second;
 	}
@@ -236,28 +239,31 @@ surface locator::load_from_disk() const
 	assert(false);
 }
 
-bool locator::in_cache(const cache& cache) const
+template<typename T>
+bool locator::in_cache(const std::vector<cache_item<T> >& cache) const
 {
 	if(index_ == -1)
-		return surface(NULL);
+		return false;
 
 	return cache[index_].loaded;
 }
 
-surface locator::locate_in_cache(const cache& cache) const
+template<typename T>
+T locator::locate_in_cache(const std::vector<cache_item<T> >& cache) const
 {
 	if(index_ == -1)
-		return surface(NULL);
+		return T();
 
-	return cache[index_].image;
+	return cache[index_].item;
 }
 
-void locator::add_to_cache(cache& cache, const surface& image) const
+template<typename T>
+void locator::add_to_cache(std::vector<cache_item<T> >& cache, const T& item) const
 {
 	if(index_ == -1)
 		return;
 
-	cache[index_] = cache_item(image);
+	cache[index_] = cache_item<T>(item);
 }
 
 manager::manager() {}
@@ -289,10 +295,11 @@ void set_colour_adjustment(int r, int g, int b)
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
-		reset_image_cache(scaled_images_);
-		reset_image_cache(greyed_images_);
-		reset_image_cache(brightened_images_);
-		reset_image_cache(semi_brightened_images_);
+		reset_cache(scaled_images_);
+		reset_cache(greyed_images_);
+		reset_cache(brightened_images_);
+		reset_cache(semi_brightened_images_);
+		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
 }
@@ -318,10 +325,11 @@ void set_image_mask(const std::string& image)
 {
 	if(image_mask != image) {
 		image_mask = image;
-		reset_image_cache(scaled_images_);
-		reset_image_cache(greyed_images_);
-		reset_image_cache(brightened_images_);
-		reset_image_cache(semi_brightened_images_);
+		reset_cache(scaled_images_);
+		reset_cache(greyed_images_);
+		reset_cache(brightened_images_);
+		reset_cache(semi_brightened_images_);
+		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
 
@@ -331,11 +339,12 @@ void set_zoom(int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;
-		reset_image_cache(scaled_images_);
-		reset_image_cache(greyed_images_);
-		reset_image_cache(brightened_images_);
-		reset_image_cache(semi_brightened_images_);
-		reset_image_cache(unmasked_images_);
+		reset_cache(scaled_images_);
+		reset_cache(greyed_images_);
+		reset_cache(brightened_images_);
+		reset_cache(semi_brightened_images_);
+		reset_cache(unmasked_images_);
+		reset_cache(alternative_images_);
 		reversed_images_.clear();
 	}
 }
@@ -393,7 +402,7 @@ surface get_semi_brightened(const locator i_locator, COLOUR_ADJUSTMENT adj)
 surface get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUSTMENT adj)
 {
 	surface res(NULL);
-	cache *imap;
+	image_cache *imap;
 
 	if(i_locator.is_void())
 		return surface(NULL);
@@ -500,14 +509,37 @@ surface reverse_image(const surface& surf)
 	return rev;
 }
 
-image::locator get_alternative(const image::locator &i_locator, const std::string &alt)
+locator get_alternative(const image::locator &i_locator, const std::string &alt)
 {
-	const std::map<locator,locator>::iterator itor = alternative_images_.find(i_locator);
+	if(i_locator.is_void())
+		return locator();
 
-	if(itor != alternative_images_.end())
-		return itor->second;
+	if(i_locator.in_cache(alternative_images_))
+		return i_locator.locate_in_cache(alternative_images_);
 
+	const std::string &name = i_locator.get_filename();
+	const std::string::size_type pos = name.rfind('.');
+	const std::string alternative = (pos != 0 ? name.substr(0, pos) : "") +
+		alt + (pos != std::string::npos ? name.substr(pos) : "");
+	locator res;
+
+	switch (i_locator.get_type()) {
+	case locator::FILE:
+		res = locator(alternative);
+		break;
+	case locator::SUB_FILE:
+		res = locator(alternative, i_locator.get_loc());
+		break;
+	default:
+		assert(false);
+	}
+	
+	i_locator.add_to_cache(alternative_images_, res);
+
+	return res;
 }
+
+
 
 void register_image(const image::locator& id, const surface& surf)
 {

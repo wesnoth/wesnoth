@@ -1660,8 +1660,9 @@ surface display::get_terrain(const image::locator& image, image::TYPE image_type
 
 	//see if there is a time-of-day specific version of this image
 	if(search_tod) {
-		image::locator tod_image = image;
+		// image::locator tod_image = image;
 		// tod_image.filename = image.filename + "-" + tod.id + ".png";
+		const image::locator& tod_image = image::get_alternative(image, "-" + tod.id);
 		im = image::get_image(tod_image,image_type);
 
 		if(im != NULL) {
