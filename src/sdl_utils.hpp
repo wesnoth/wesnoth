@@ -160,6 +160,11 @@ struct shared_sdl_surface
 
 	SDL_Surface* operator->() const { return surface_.get(); }
 
+	void assign(const shared_sdl_surface& o)
+	{
+		operator=(o);
+	}
+
 	void assign(SDL_Surface* surf) { surface_.assign(surf); }
 
 private:

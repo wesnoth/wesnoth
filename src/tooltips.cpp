@@ -34,8 +34,10 @@ struct tooltip
 static const int font_size = 12;
 
 std::vector<tooltip> tips;
+std::vector<tooltip>::const_iterator current_tooltip = tips.end();
 
-std::string current_message;
+int tooltip_handle = 0;
+
 SDL_Rect current_rect;
 SDL_Surface* current_background = NULL;
 
@@ -47,81 +49,38 @@ SDL_Rect get_text_size(const std::string& msg)
 
 void clear_tooltip()
 {
-	if(current_background == NULL)
-		return;
-
-	SDL_BlitSurface(current_background,NULL,video_->getSurface(),&current_rect);
-	SDL_FreeSurface(current_background);
-	current_background = NULL;
-
-	update_rect(current_rect);
-}
-
-void draw_tooltip()
-{
-	if(current_background != NULL)
-		clear_tooltip();
-
-	SDL_Surface* screen = video_->getSurface();
-
-	current_background = get_surface_portion(screen,current_rect);
-	if(current_background == NULL)
-		return;
-
-	gui::draw_solid_tinted_rectangle(current_rect.x,current_rect.y,
-	                                 current_rect.w,current_rect.h,
-	                                 0,0,0,0.6,screen);
-
-/*
-	gui::draw_solid_tinted_rectangle(current_rect.x,current_rect.y,
-	                                 current_rect.w,current_rect.h,
-	                                 180,180,0,1.0,screen);
-	gui::draw_rectangle(current_rect.x,current_rect.y,
-	                    current_rect.w-1,current_rect.h-1,0,screen);
-*/
-	SDL_Rect text_area = get_text_size(current_message);
-	text_area.x = current_rect.x + current_rect.w/2 - text_area.w/2;
-	text_area.y = current_rect.y + current_rect.h/2 - text_area.h/2;
-
-	font::draw_text(display_,text_area,font_size,font::NORMAL_COLOUR,
-	                current_message,text_area.x,text_area.y);
-
-	update_rect(current_rect);
+	if(tooltip_handle != 0) {
+		font::remove_floating_label(tooltip_handle);
+		tooltip_handle = 0;
+	}
 }
 
 void show_tooltip(const tooltip& tip)
 {
 	clear_tooltip();
 
-	const size_t xpadding = 10;
-	const size_t ypadding = 10;
+	const SDL_Color bgcolour = {0,0,0,128};
+	SDL_Rect area = display_->screen_area();
+	tooltip_handle = font::add_floating_label(tip.message,font_size,font::NORMAL_COLOUR,
+	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,10);
 
-	SDL_Rect area = get_text_size(tip.message);
-	area.w += xpadding;
-	area.h += ypadding;
+	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
 
 	//see if there is enough room to fit it above the tip area
-	if(tip.rect.y > area.h)
-		area.y = tip.rect.y - area.h;
-	else if(tip.rect.y+tip.rect.h+area.h+1 < display_->y())
-		area.y = tip.rect.y + tip.rect.h;
-	else
-		return;
+	if(tip.rect.y > rect.h) {
+		rect.y = tip.rect.y - rect.h;
+	} else {
+		rect.y = tip.rect.y + tip.rect.h;
+	}
 
-	if(area.w >= display_->x())
-		return;
+	rect.x = tip.rect.x;
+	if(rect.x < 0) {
+		rect.x = 0;
+	} else if(rect.x + rect.w > area.w) {
+		rect.x = area.w - rect.w;
+	}
 
-	if(area.w/2 >= tip.rect.x + tip.rect.w/2)
-		area.x = 1;
-	else
-		area.x = tip.rect.x + tip.rect.w/2 - area.w/2;
-
-	if(area.x + area.w >= display_->x())
-		area.x = display_->x() - area.w - 1;
-
-	current_rect = area;
-	current_message = tip.message;
-	draw_tooltip();
+	font::move_floating_label(tooltip_handle,rect.x,rect.y);
 }
 
 }
@@ -145,7 +104,7 @@ void clear_tooltips()
 {
 	clear_tooltip();
 	tips.clear();
-	current_message = "";
+	current_tooltip = tips.end();
 }
 
 void clear_tooltips(const SDL_Rect& rect)
@@ -154,12 +113,11 @@ void clear_tooltips(const SDL_Rect& rect)
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
 		if(rectangles_overlap(i->rect,rect)) {
 			i = tips.erase(i);
+			current_tooltip = tips.end();
 		} else {
 			++i;
 		}
 	}
-
-	current_message = "";
 }
 
 void add_tooltip(const SDL_Rect& rect, const std::string& message)
@@ -172,6 +130,7 @@ void add_tooltip(const SDL_Rect& rect, const std::string& message)
 	}
 
 	tips.push_back(tooltip(rect,message));
+	current_tooltip = tips.end();
 }
 
 void process(int mousex, int mousey, bool lbutton)
@@ -179,12 +138,17 @@ void process(int mousex, int mousey, bool lbutton)
 	for(std::vector<tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(mousex > i->rect.x && mousey > i->rect.y &&
 		   mousex < i->rect.x + i->rect.w && mousey < i->rect.y + i->rect.h) {
-			show_tooltip(*i);
+			if(current_tooltip != i) {
+				show_tooltip(*i);
+				current_tooltip = i;
+			}
+
 			return;
 		}
 	}
 
 	clear_tooltip();
+	current_tooltip = tips.end();
 }
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,

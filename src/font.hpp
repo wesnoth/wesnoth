@@ -129,10 +129,11 @@ enum ALIGN { LEFT_ALIGN, CENTER_ALIGN, RIGHT_ALIGN };
 ///
 /// @returns a handle to the label which can be used with other label functions
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN);
+					   double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN alignment=CENTER_ALIGN,
+					   const SDL_Color* bg_colour=NULL, int border_size=0);
 
 /// moves the floating label given by 'handle' by (xmove,ymove)
-void move_floating_label(int handle, int xmove, int ymove);
+void move_floating_label(int handle, double xmove, double ymove);
 
 /// removes the floating label given by 'handle' from the screen
 void remove_floating_label(int handle);
@@ -141,6 +142,8 @@ void remove_floating_label(int handle);
 void show_floating_label(int handle, bool show);
 
 const std::string& get_floating_label_text(int handle);
+
+SDL_Rect get_floating_label_rect(int handle);
 
 void draw_floating_labels(SDL_Surface* screen);
 void undraw_floating_labels(SDL_Surface* screen);

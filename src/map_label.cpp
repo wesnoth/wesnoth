@@ -93,7 +93,7 @@ void map_labels::clear()
 void map_labels::scroll(double xmove, double ymove)
 {
 	for(label_map::const_iterator i = labels_.begin(); i != labels_.end(); ++i) {
-		font::move_floating_label(i->second,int(xmove),int(ymove));
+		font::move_floating_label(i->second,xmove,ymove);
 	}
 }
 

@@ -950,6 +950,17 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		for(c = castles.begin(); c != castles.end(); ++c) {
 			const std::set<gamemap::location>& locs = build_island_for_castle(terrain_tester,*c);
 
+			//there should be a high chance of castles placed on invalid terrain getting
+			//villages near them, since they are likely on bad terrain, and should get
+			//some compensation
+			const config* const village_info = cfg.find_child("village","terrain",flatland);
+			int village_chance = 0;
+			std::string village;
+			if(village_info != NULL) {
+				village_chance = atoi((*village_info)["chance"].c_str())/10;
+				village = (*village_info)["convert_to"];
+			}
+
 			for(std::set<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
 				const int x = i->x;
 				const int y = i->y;
@@ -959,6 +970,10 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 
 				terrain[x][y] = flatland[0];
+
+				if((rand()%100) < village_chance && village != "") {
+					terrain[x][y] = village[0];
+				}
 			}
 		}
 

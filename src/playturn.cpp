@@ -1762,7 +1762,7 @@ void turn_info::speak()
 		}
 
 		recorder.speak(cfg);
-		gui_.add_chat_message(leader->second.description(),message,
+		gui_.add_chat_message(leader->second.description(),leader->second.side(),message,
 			                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);
 	}
 }

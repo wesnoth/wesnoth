@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "tooltips.hpp"
+#include "util.hpp"
 
 #include <cstdio>
 #include <iostream>
@@ -469,17 +470,20 @@ namespace {
 class floating_label
 {
 public:
-	floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-		int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, font::ALIGN align)
-		  : surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour), xpos_(xpos), ypos_(ypos),
+	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
+		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, font::ALIGN align,
+		int border_size)
+		  : surf_(NULL), buf_(NULL), foreground_(NULL), text_(text), font_size_(font_size), colour_(colour), bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
 		    xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-			alpha_change_(-255/lifetime), visible_(true), align_(align)
+			alpha_change_(-255/lifetime), visible_(true), align_(align), border_(border_size)
 	{}
 
-	void move(int xmove, int ymove);
+	void move(double xmove, double ymove);
 
 	void draw(SDL_Surface* screen);
 	void undraw(SDL_Surface* screen);
+
+	SDL_Surface* create_surface();
 
 	bool expired() const;
 
@@ -491,25 +495,27 @@ private:
 
 	int xpos(size_t width) const;
 
-	shared_sdl_surface surf_, buf_;
+	shared_sdl_surface surf_, buf_, foreground_;
 	std::string text_;
 	int font_size_;
-	SDL_Color colour_;
-	int xpos_, ypos_, xmove_, ymove_;
+	SDL_Color colour_, bgcolour_;
+	int bgalpha_;
+	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;
 	SDL_Rect clip_rect_;
 	int alpha_change_;
 	bool visible_;
 	font::ALIGN align_;
+	int border_;
 };
 
 typedef std::map<int,floating_label> label_map;
 label_map labels;
-int label_id = 0;
+int label_id = 1;
 
 bool hide_floating_labels = false;
 
-void floating_label::move(int xmove, int ymove)
+void floating_label::move(double xmove, double ymove)
 {
 	xpos_ += xmove;
 	ypos_ += ymove;
@@ -519,12 +525,82 @@ int floating_label::xpos(size_t width) const
 {
 	int xpos = xpos_;
 	if(align_ == font::CENTER_ALIGN) {
-		xpos -= surf_->w/2;
+		xpos -= width/2;
 	} else if(align_ == font::RIGHT_ALIGN) {
-		xpos -= surf_->w;
+		xpos -= width;
 	}
 
 	return xpos;
+}
+
+SDL_Surface* floating_label::create_surface()
+{
+	if(surf_ == NULL) {
+		std::cerr << "creating surface...\n";
+		TTF_Font* const font = get_font(font_size_);
+		if(font == NULL) {
+			return NULL;
+		}
+
+		const std::vector<std::string> lines = config::split(text_,'\n');
+		std::vector<shared_sdl_surface> surfaces;
+		for(std::vector<std::string>::const_iterator ln = lines.begin(); ln != lines.end(); ++ln) {
+			surfaces.push_back(shared_sdl_surface(font::render_text(font,*ln,colour_)));
+		}
+
+		if(surfaces.empty()) {
+			return NULL;
+		} else if(surfaces.size() == 1) {
+			surf_.assign(surfaces.front());
+		} else {
+			size_t width = 0, height = 0;
+			std::vector<shared_sdl_surface>::const_iterator i;
+			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
+				width = maximum<size_t>((*i)->w,width);
+				height += (*i)->h;
+			}
+
+			const SDL_PixelFormat* const format = surfaces.front()->format;
+			surf_.assign(SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,
+				                              format->BitsPerPixel,format->Rmask,format->Gmask,
+											  format->Bmask,format->Amask));
+
+			size_t ypos = 0;
+			for(i = surfaces.begin(); i != surfaces.end(); ++i) {
+				SDL_SetAlpha(*i,0,0);
+				SDL_Rect dstrect = {0,ypos,(*i)->w,(*i)->h};
+				SDL_BlitSurface(*i,NULL,surf_,&dstrect);
+				ypos += (*i)->h;
+			}
+		}
+
+		if(surf_ == NULL) {
+			return NULL;
+		}
+
+		//if the surface has to be created onto some kind of background, then do that here
+		if(bgalpha_ != 0) {
+			std::cerr << "creating bg...\n";
+			shared_sdl_surface tmp(SDL_CreateRGBSurface(SDL_SWSURFACE,surf_->w+border_*2,surf_->h+border_*2,surf_->format->BitsPerPixel,
+		                            surf_->format->Rmask,surf_->format->Gmask,surf_->format->Bmask,surf_->format->Amask));
+			if(tmp == NULL) {
+				return NULL;
+			}
+
+			SDL_FillRect(tmp,NULL,SDL_MapRGB(tmp.get()->format,bgcolour_.r,bgcolour_.g,bgcolour_.b));
+			if(bgalpha_ != 255) {
+				tmp.assign(adjust_surface_alpha_add(tmp.get(),bgalpha_ - 255));
+				if(tmp == NULL) {
+					return NULL;
+				}
+			}
+
+			foreground_.assign(surf_);
+			surf_.assign(tmp);
+		}
+	}
+
+	return surf_;
 }
 
 void floating_label::draw(SDL_Surface* screen)
@@ -534,16 +610,9 @@ void floating_label::draw(SDL_Surface* screen)
 		return;
 	}
 
+	create_surface();
 	if(surf_ == NULL) {
-		TTF_Font* const font = get_font(font_size_);
-		if(font == NULL) {
-			return;
-		}
-
-		surf_.assign(font::render_text(font,text_,colour_));
-		if(surf_ == NULL) {
-			return;
-		}
+		return;
 	}
 
 	if(buf_ == NULL) {
@@ -560,9 +629,19 @@ void floating_label::draw(SDL_Surface* screen)
 
 	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
+	std::cerr << "blit a\n";
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
+	std::cerr << "blit b\n";
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
+
+	if(foreground_ != NULL) {
+		SDL_Rect rect = {xpos(surf_->w)+border_,ypos_+border_,foreground_->w,foreground_->h};
+		SDL_BlitSurface(foreground_,NULL,screen,&rect);
+	}
+
+	std::cerr << "update\n";
 	update_rect(rect);
+	std::cerr << "done\n";
 }
 
 void floating_label::undraw(SDL_Surface* screen)
@@ -571,11 +650,15 @@ void floating_label::undraw(SDL_Surface* screen)
 		return;
 	}
 
+	std::cerr << "undraw....\n";
+
 	SDL_Rect rect = {xpos(surf_->w),ypos_,surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 
 	update_rect(rect);
+
+	std::cerr << "done undraw\n";
 
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
@@ -596,17 +679,23 @@ void floating_label::show(bool value) { visible_ = value; }
 
 namespace font {
 int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-					   int xpos, int ypos, int xmove, int ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align)
+					   double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
+					   const SDL_Color* bg_colour, int border_size)
 {
 	if(lifetime <= 0) {
 		lifetime = -1;
 	}
 
-	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,xpos,ypos,xmove,ymove,lifetime,clip_rect,align)));
+	SDL_Color bg = {0,0,0,0};
+	if(bg_colour != NULL) {
+		bg = *bg_colour;
+	}
+
+	labels.insert(std::pair<int,floating_label>(label_id++,floating_label(text,font_size,colour,bg,xpos,ypos,xmove,ymove,lifetime,clip_rect,align,border_size)));
 	return label_id-1;
 }
 
-void move_floating_label(int handle, int xmove, int ymove)
+void move_floating_label(int handle, double xmove, double ymove)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
@@ -639,6 +728,21 @@ const std::string& get_floating_label_text(int handle)
 		static const std::string empty_str;
 		return empty_str;
 	}
+}
+
+SDL_Rect get_floating_label_rect(int handle)
+{
+	static const SDL_Rect empty_rect = {0,0,0,0};
+	const label_map::iterator i = labels.find(handle);
+	if(i != labels.end()) {
+		const SDL_Surface* const surf = i->second.create_surface();
+		if(surf != NULL) {
+			SDL_Rect rect = {0,0,surf->w,surf->h};
+			return rect;
+		}
+	}
+
+	return empty_rect;
 }
 
 floating_label_manager::floating_label_manager()

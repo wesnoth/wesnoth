@@ -291,7 +291,7 @@ public:
 	const map_labels& labels() const { return map_labels_; }
 
 	enum MESSAGE_TYPE { MESSAGE_PUBLIC, MESSAGE_PRIVATE };
-	void add_chat_message(const std::string& speaker, const std::string& msg, MESSAGE_TYPE type);
+	void add_chat_message(const std::string& speaker, int side, const std::string& msg, MESSAGE_TYPE type);
 
 private:
 	display(const display&);
@@ -424,9 +424,10 @@ private:
 
 	struct chat_message
 	{
-		chat_message(int h) : handle(h), created_at(SDL_GetTicks())
+		chat_message(int speaker, int h) : speaker_handle(speaker), handle(h), created_at(SDL_GetTicks())
 		{}
 
+		int speaker_handle;
 		int handle;
 		int created_at;
 	};

@@ -25,6 +25,7 @@
 #include "show_dialog.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
+#include "util.hpp"
 
 #include <cstdio>
 #include <cstdlib>
@@ -785,7 +786,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 					sound::play_sound("bell.wav");
 				}
 
-				disp.add_chat_message((*child)["description"],(*child)["message"],
+				const int side = lexical_cast_default<int>((*child)["side"].c_str());
+				disp.add_chat_message((*child)["description"],side,(*child)["message"],
 				                      team_name == "" ? display::MESSAGE_PUBLIC : display::MESSAGE_PRIVATE);
 			}
 		} else if((child = cfg->child("label")) != NULL) {

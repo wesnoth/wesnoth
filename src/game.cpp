@@ -113,10 +113,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 				std::string label = state.label + " replay";
 
-				bool retry;
+				bool retry = true;
 
-				do {
-					retry=false;
+				while(retry) {
+					retry = false;
 
 					const int should_save = dialogs::get_save_name(disp,
 												string_table["save_replay_message"],
@@ -124,15 +124,15 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 												&label);
 					if(should_save == 0) {
 						try {
-							config snapshot, starting_pos;
+							config snapshot;
 
 							recorder.save_game(units_data,label,snapshot,starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
 							gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
-							retry=true;
+							retry = true;
 						};
 					}
-				} while(retry);
+				}
 
 				state.scenario = orig_scenario;
 			}
@@ -168,10 +168,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 		if(scenario != NULL) {
 			state.label = translate_string_default((*scenario)["id"],(*scenario)["name"]);
 
-			bool retry;
+			bool retry = true;
 
-			do {
-				retry=false;
+			while(retry) {
+				retry = false;
 
 				const int should_save = dialogs::get_save_name(disp,
 													string_table["save_game_message"],
@@ -183,10 +183,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 						save_game(state);
 					} catch(gamestatus::save_game_failed& e) {
 						gui::show_dialog(disp,NULL,"",string_table["save_game_failed"],gui::MESSAGE);
-						retry=true;
+						retry = true;
 					};
 				}
-			} while(retry);
+			}
 		}
 	}
 
