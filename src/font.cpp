@@ -253,7 +253,11 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 	for(;;) {
 		if(i1 != i2) {
 			if(use_markup == USE_MARKUP) {
-				if(*i1 == BAD_TEXT) {
+				if(*i1 == '\\') {
+					// this must either be a quoted special character or a
+					// quoted backslash - either way, remove leading backslash
+					++i1;
+				} else if(*i1 == BAD_TEXT) {
 					col = BAD_COLOUR;
 					++i1;
 					continue;
@@ -288,7 +292,10 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 			}
 
 			if(i1 != i2) {
-				const std::string new_string(i1,i2);
+				std::string new_string(i1,i2);
+
+				config::unescape(new_string);
+
 				const SDL_Rect rect =
 				    draw_text_line(gui,area,sz,col,new_string,x,y,bg,
 				                   use_tooltips);
