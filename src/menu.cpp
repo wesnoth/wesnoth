@@ -40,10 +40,6 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp)
 	draw_rectangle(x-border_size,y-border_size,w+border_size,h+border_size,
 	               border_colour,scr);
 	draw_rectangle(x,y,w+border_size,h+border_size,border_colour,scr);
-
-	SDL_Rect update = {x-border_size,y-border_size,
-	                   w+border_size*2+1,h+border_size*2+1};
-	disp.update_rect(update);
 }
 
 void draw_rectangle(int x, int y, int w, int h, short colour,
@@ -190,7 +186,7 @@ class menu
 		for(size_t i = 0; i != items_.size(); ++i)
 			draw_item(i);
 
-		display_->video().update(x_,y_,width(),height());
+		display_->video().flip();
 	}
 
 	int hit(int x, int y) const {
@@ -677,7 +673,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 						xloc + left_padding,text_widget_y);
 	}
 
-	screen.update(0,0,scr->w,scr->h);
+	screen.flip();
 
 	CKey key;
 
@@ -731,12 +727,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 				SDL_Surface* const screen = disp.video().getSurface();
 				if(unit_details_rect.w > 0) {
 					SDL_FillRect(screen,&unit_details_rect,0);
-					disp.update_rect(unit_details_rect);
 				}
 
 				if(unit_profile_rect.w > 0) {
 					SDL_FillRect(screen,&unit_profile_rect,0);
-					disp.update_rect(unit_profile_rect);
 				}
 
 				disp.draw_unit_details(unitx+left_padding,
@@ -861,7 +855,7 @@ TITLE_RESULT show_title(display& screen)
 	multi_button.draw();
 	quit_button.draw();
 	language_button.draw();
-	screen.video().update(0,0,screen.x(),screen.y());
+	screen.video().flip();
 
 	CKey key;
 

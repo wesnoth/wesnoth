@@ -95,7 +95,6 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 
 	short* const pixels = reinterpret_cast<short*>(disp->pixels);
 	std::fill(pixels,pixels+length,0);
-	update_whole_screen();
 }
 
 void clear_surfaces(std::map<std::string,SDL_Surface*>& surfaces)
@@ -370,7 +369,6 @@ void display::draw(bool update,bool force)
 			if(dstrect.x + dstrect.w <= this->x() &&
 			   dstrect.y + dstrect.h <= this->y()) {
 				SDL_BlitSurface(image,NULL,screen,&dstrect);
-				update_rect(dstrect);
 			} else {
 				std::cout << (dstrect.x+dstrect.w) << " > " << this->x() << " or " << (dstrect.y + dstrect.h) << " > " << this->y() << "\n";
 			}
@@ -423,12 +421,7 @@ void display::update_display()
 	if(updatesLocked_ > 0)
 		return;
 
-	for(std::vector<SDL_Rect>::const_iterator i = updateRects_.begin();
-	    i != updateRects_.end(); ++i) {
-		screen_.update(i->x,i->y,i->w,i->h);
-	}
-
-	updateRects_.clear();
+	screen_.flip();
 }
 
 void display::draw_sidebar()
@@ -479,12 +472,6 @@ void display::draw_game_status(int x, int y)
 		if(tod_surface != NULL) {
 			//hardcoded values as to where the time of day image appears
 			blit_surface(mapx() + 21,int(196*sidebarScaling_),tod_surface);
-			SDL_Rect update_area;
-			update_area.x = mapx() + 21;
-			update_area.y = int(196*sidebarScaling_);
-			update_area.w = tod_surface->w;
-			update_area.h = tod_surface->h;
-			update_rect(update_area);
 		}
 	}
 
@@ -498,7 +485,6 @@ void display::draw_game_status(int x, int y)
 		SDL_Rect srcrect = gameStatusRect_;
 		srcrect.x -= mapx();
 		SDL_BlitSurface(background,&srcrect,screen,&gameStatusRect_);
-		update_rect(gameStatusRect_);
 	}
 
 	int nunits = 0;
@@ -558,8 +544,6 @@ void display::draw_game_status(int x, int y)
 
 	gameStatusRect_ = font::draw_text(this,clipRect,14,font::NORMAL_COLOUR,
 	                                  details.str(),x,y);
-
-	update_rect(gameStatusRect_);
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
@@ -581,14 +565,12 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		SDL_Rect srcrect = description_rect;
 		srcrect.x -= mapx();
 		SDL_BlitSurface(background,&srcrect,screen,&description_rect);
-		update_rect(description_rect);
 	}
 
 	if(profile_rect.w > 0 && profile_rect.x >= mapx() && background != NULL) {
 		SDL_Rect srcrect = profile_rect;
 		srcrect.x -= this->mapx();
 		SDL_BlitSurface(background,&srcrect,screen,&profile_rect);
-		update_rect(profile_rect);
 	}
 
 	std::string status = string_table["healthy"];
@@ -650,8 +632,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	    font::draw_text(this,clipRect,14,font::NORMAL_COLOUR,
 	                    details.str(),x,y);
 
-	update_rect(description_rect);
-
 	y += description_rect.h;
 
 	SDL_Surface* const profile = getImage(u.type().image_profile(),UNSCALED);
@@ -665,8 +645,6 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	profile_rect.y = y;
 	profile_rect.w = profile->w;
 	profile_rect.h = profile->h;
-
-	update_rect(profile_rect);
 }
 
 SDL_Rect display::get_minimap_location(int x, int y, int w, int h)
@@ -782,8 +760,6 @@ void display::draw_minimap(int x, int y, int w, int h)
 		*side = boxcolour;
 		side[wbox] = boxcolour;
 	}
-
-	update_rect(minimap_location);
 }
 
 void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
@@ -826,7 +802,6 @@ void display::draw_terrain_palette(int x, int y, gamemap::TERRAIN selected)
 	}
 
 	invalid_rect.h = y - invalid_rect.y;
-	update_rect(invalid_rect);
 }
 
 gamemap::TERRAIN display::get_terrain_on(int palx, int paly, int x, int y)
@@ -878,32 +853,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	const int ne_ypos = (int)get_location_y(ne_loc);
 	const int se_xpos = (int)get_location_x(se_loc);
 	const int se_ypos = (int)get_location_y(se_loc);
-
-	//mark the rectangle for updating
-	{
-		SDL_Rect update_rect;
-		if(xpos >= 0)
-			update_rect.x = xpos;
-		else
-			update_rect.x = 0;
-
-		if(ypos >= 0)
-			update_rect.y = ypos;
-		else
-			update_rect.y = 0;
-
-		if(xend > mapx())
-			update_rect.w = mapx() - update_rect.x;
-		else
-			update_rect.w = xend - update_rect.x;
-
-		if(yend > this->y())
-			update_rect.h = this->y() - update_rect.y;
-		else
-			update_rect.h = yend - update_rect.y;
-
-		this->update_rect(update_rect);
-	}
 
 	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
 
@@ -2172,7 +2121,6 @@ void display::invalidate_all()
 {
 	invalidateAll_ = true;
 	invalidated_.clear();
-	update_map_area();
 }
 
 void display::invalidate_unit()
@@ -2201,80 +2149,6 @@ void display::add_overlay(const gamemap::location& loc, const std::string& img)
 void display::remove_overlay(const gamemap::location& loc)
 {
 	overlays_.erase(loc);
-}
-
-void display::update_whole_screen()
-{
-	SDL_Rect rect;
-	rect.x = 0;
-	rect.y = 0;
-	rect.w = x();
-	rect.h = y();
-	update_rect(rect);
-}
-
-void display::update_map_area()
-{
-	SDL_Rect rect;
-	rect.x = 0;
-	rect.y = 0;
-	rect.w = mapx();
-	rect.h = y();
-	update_rect(rect);
-}
-
-void display::update_side_bar()
-{
-	SDL_Rect rect;
-	rect.x = mapx();
-	rect.y = 0;
-	rect.w = x() - mapx();
-	rect.h = y();
-	update_rect(rect);
-}
-
-struct inside_rect {
-
-	inside_rect(const SDL_Rect& a) : a(a)
-	{}
-
-	bool operator()(const SDL_Rect& b) const
-	{
-		if(a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h)
-			return true;
-		else
-			return false;
-	}
-
-private:
-	SDL_Rect a;
-};
-
-struct outside_rect {
-
-	outside_rect(const SDL_Rect& b) : b(b)
-	{}
-
-	bool operator()(const SDL_Rect& a) const
-	{
-		if(a.x <= b.x && a.y <= b.y && a.x+a.w >= b.x+b.w && a.y+a.h >= b.y+b.h)
-			return true;
-		else
-			return false;
-	}
-
-private:
-	SDL_Rect b;
-};
-
-void display::update_rect(const SDL_Rect& rect)
-{
-	std::remove_if(updateRects_.begin(),updateRects_.end(),inside_rect(rect));
-	if(std::find_if(updateRects_.begin(),updateRects_.end(),outside_rect(rect))
-	   != updateRects_.end())
-		return;
-
-	updateRects_.push_back(rect);
 }
 
 void display::set_team(int team)

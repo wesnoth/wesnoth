@@ -43,15 +43,10 @@ class CVideo {
 	void lock();
 	void unlock();
 	int mustLock();
-	void setPixel( int x, int y, int r, int g, int b );
-	void setPixel( int x, int y, int pixel );
-	int convertColour(int r, int g, int b);
-	void update( int x, int y, int w, int h );
-	void update( SDL_Rect* area );
+
+	void flip();
 
 	SDL_Surface* getSurface( void );
-
-	int drawText(int x, int y, int pixel, int bg, const char* text,int size=1);
 
 	bool isFullScreen() const;
 
@@ -59,10 +54,8 @@ class CVideo {
 
      private:
 
-	void drawChar(int x, int y, int pixel, int bg, char c, int size=1);
-
 	SDL_Surface* frameBuffer;
-	SDL_Surface* backBuffer;
+//	SDL_Surface* backBuffer;
 	char text_[256*8];
 };
 

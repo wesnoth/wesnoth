@@ -65,7 +65,6 @@ void slider::draw()
 
 	SDL_Rect slider = slider_area();
 	disp_.blit_surface(slider.x,slider.y,image);
-	disp_.update_rect(area_);
 }
 
 double slider::process(int mousex, int mousey, bool button)
@@ -76,7 +75,6 @@ double slider::process(int mousex, int mousey, bool button)
 	bool should_draw = !drawn_;
 
 	const SDL_Rect& hit_area = slider_area();
-	//std::cerr << mousex << ", " << mousey << ": " << hit_area.x << "-" << (hit_area.x+hit_area.w) << "," << hit_area.y << "-" << (hit_area.y+hit_area.h) << "\n";
 	const bool on = mousex > hit_area.x && mousex <= hit_area.x+hit_area.w &&
 	                mousey > hit_area.y && mousey <= hit_area.y+hit_area.h;
 

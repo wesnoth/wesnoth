@@ -64,6 +64,7 @@ namespace {
 
 	unsigned int get_flags(unsigned int flags)
 	{
+		flags |= SDL_HWSURFACE | SDL_DOUBLEBUF;
 		if((flags&SDL_FULLSCREEN) == 0)
 			flags |= SDL_RESIZABLE;
 
@@ -71,7 +72,7 @@ namespace {
 	}
 }
 
-CVideo::CVideo(const char* text) : frameBuffer(NULL), backBuffer(NULL)
+CVideo::CVideo(const char* text) : frameBuffer(NULL)
 {
 	const int res =
 	       SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
@@ -87,7 +88,7 @@ CVideo::CVideo(const char* text) : frameBuffer(NULL), backBuffer(NULL)
 }
 
 CVideo::CVideo( int x, int y, int bits_per_pixel, int flags, const char* text )
-		 : frameBuffer(NULL), backBuffer(NULL)
+		 : frameBuffer(NULL)
 {
 	const int res = SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE);
 	if(res < 0) {
@@ -103,7 +104,6 @@ CVideo::CVideo( int x, int y, int bits_per_pixel, int flags, const char* text )
 
 CVideo::~CVideo()
 {
-	SDL_FreeSurface( backBuffer );
 	SDL_Quit();
 }
 
@@ -124,215 +124,75 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 
 	if( frameBuffer != NULL ) {
-		if(backBuffer != NULL)
-			SDL_FreeSurface(backBuffer);
-
-		backBuffer = SDL_ConvertSurface( frameBuffer,
-		                                 frameBuffer->format, 0 );
-		if( backBuffer == NULL )
-			fprintf( stderr, "out of memory\n" );
 		return bits_per_pixel;
 	} else	return 0;
 }
 
 int CVideo::getx() const
 {
-	return backBuffer->w;
+	return frameBuffer->w;
 }
 
 int CVideo::gety() const
 {
-	return backBuffer->h;
+	return frameBuffer->h;
 }
 
 int CVideo::getBitsPerPixel()
 {
-	return backBuffer->format->BitsPerPixel;
+	return frameBuffer->format->BitsPerPixel;
 }
 
 int CVideo::getBytesPerPixel()
 {
-	return backBuffer->format->BytesPerPixel;
+	return frameBuffer->format->BytesPerPixel;
 }
 
 int CVideo::getRedMask()
 {
-	return backBuffer->format->Rmask;
+	return frameBuffer->format->Rmask;
 }
 
 int CVideo::getGreenMask()
 {
-	return backBuffer->format->Gmask;
+	return frameBuffer->format->Gmask;
 }
 
 int CVideo::getBlueMask()
 {
-	return backBuffer->format->Bmask;
+	return frameBuffer->format->Bmask;
 }
 
 void* CVideo::getAddress()
 {
-	return backBuffer->pixels;
+	return frameBuffer->pixels;
+}
+
+void CVideo::flip()
+{
+	::SDL_Flip(frameBuffer);
 }
 
 void CVideo::lock()
 {
-	if( SDL_MUSTLOCK(backBuffer) )
-		SDL_LockSurface( backBuffer );
+	if( SDL_MUSTLOCK(frameBuffer) )
+		SDL_LockSurface( frameBuffer );
 }
 
 void CVideo::unlock()
 {
-	if( SDL_MUSTLOCK(backBuffer) )
-		SDL_UnlockSurface( backBuffer );
+	if( SDL_MUSTLOCK(frameBuffer) )
+		SDL_UnlockSurface( frameBuffer );
 }
 
 int CVideo::mustLock()
 {
-	return SDL_MUSTLOCK(backBuffer);
-}
-
-void CVideo::setPixel( int x, int y, int r, int g, int b )
-{
-	int pixel = ((r<<(backBuffer->format->Rshift-backBuffer->format->Rloss))
-	              & backBuffer->format->Rmask)+
-	            ((g<<(backBuffer->format->Gshift-backBuffer->format->Gloss))
-		      & backBuffer->format->Gmask)+
-		    ((b>>(backBuffer->format->Bloss-backBuffer->format->Bshift))
-		      & backBuffer->format->Bmask);
-
-	setPixel( x, y, pixel );
-}
-
-int CVideo::convertColour(int r, int g, int b)
-{
-	return ((r<<(backBuffer->format->Rshift-backBuffer->format->Rloss))
-	              & backBuffer->format->Rmask)+
-	            ((g<<(backBuffer->format->Gshift-backBuffer->format->Gloss))
-		      & backBuffer->format->Gmask)+
-		    ((b>>(backBuffer->format->Bloss-backBuffer->format->Bshift))
-		      & backBuffer->format->Bmask);
-}
-
-void CVideo::setPixel( int x, int y, int p )
-{
-	static int pixel;
-	static char* p1 = ((char*)&pixel);
-	static char* p2 = ((char*)&pixel)+1;
-	static char* p3 = ((char*)&pixel)+2;
-	static short* sp = ((short*)&pixel);
-	pixel = p;
-
-	if( x < 0 || x >= backBuffer->w || y < 0 || y >= backBuffer->h )
-		return;
-
-	switch( backBuffer->format->BytesPerPixel ) {
-		case 1:
-			*((char*)backBuffer->pixels+y*backBuffer->w+x) = *p1;
-			break;
-		case 2:
-			*((short*)backBuffer->pixels+y*backBuffer->w+x) = *sp;
-			break;
-		case 3:
-			*((char*)backBuffer->pixels+y*backBuffer->w*3+x*3)
-			                    = *p1;
-			*((char*)backBuffer->pixels+y*backBuffer->w*3+x*3+1)
-			                    = *p2;
-			*((char*)backBuffer->pixels+y*backBuffer->w*3+x*3+2)
-			                    = *p3;
-			break;
-		case 4:
-			*((int*)backBuffer->pixels+y*backBuffer->w+x) = pixel;
-			break;
-		default:
-			fprintf( stderr, "Unknown colour depth\n" );
-	}
-}
-
-void CVideo::update( int x, int y, int w, int h )
-{
-	if( w == 0 || h == 0 )
-		return;
-
-	if( x < 0 ) {
-		w += x;
-		x = 0;
-	}
-
-	if( y < 0 ) {
-		h += y;
-		y = 0;
-	}
-
-	if( x+w > frameBuffer->w )
-		w = frameBuffer->w - x;
-
-	if( y+h > frameBuffer->h )
-		h = frameBuffer->h - y;
-
-	SDL_Rect rect = {x,y,w,h};
-	SDL_BlitSurface( backBuffer, &rect, frameBuffer, &rect );
-	SDL_UpdateRect( frameBuffer, x, y, w, h );
-}
-
-void CVideo::update( SDL_Rect* rect )
-{
-	SDL_BlitSurface( backBuffer, rect, frameBuffer, rect );
-	SDL_UpdateRect( frameBuffer, rect->x, rect->y, rect->w, rect->h );
+	return SDL_MUSTLOCK(frameBuffer);
 }
 
 SDL_Surface* CVideo::getSurface( void )
 {
-	return backBuffer;
-}
-
-void CVideo::drawChar(int x, int y, int pixel, int bg, char c, int sz)
-{
-	const char* const data = text_ + c*8;
-	for(int i = 0; i != 8*sz; ++i) {
-		if(y+i >= backBuffer->h)
-			return;
-
-		for(int j = 0; j != 8*sz; ++j) {
-			if(x+j >= backBuffer->w)
-				break;
-
-			if(data[i/sz] & (128 >> (j/sz))) {
-				setPixel(x+j,y+i,pixel);
-			} else {
-				if(bg != pixel)
-					setPixel(x+j,y+i,bg);
-			}
-		}
-	}
-}
-
-int CVideo::drawText(int x, int y, int pixel, int bg, const char* text, int sz)
-{
-	const int good_colour = 0x0F00;
-	const int bad_colour = 0xF000;
-	int colour = pixel;
-	const int startx = x;
-	const int starty = y;
-	while(*text) {
-		if(*text == '@') {
-			colour = good_colour;
-		} else if(*text == '#') {
-			colour = bad_colour;
-		} else if(*text == '\n') {
-			colour = pixel;
-			y += 8*sz;
-			x = startx;
-		} else {
-			drawChar(x,y,colour,bg == pixel ? colour : bg,*text,sz);
-			x += 8*sz;
-		}
-		++text;
-	}
-
-	y += 8*sz;
-
-	return y - starty;
+	return frameBuffer;
 }
 
 bool CVideo::isFullScreen() const { return fullScreen; }

@@ -103,7 +103,7 @@ void textbox::draw() const
 			draw_cursor(pos-1);
 	}
 
-	disp_.video().update(x_,y_,width(),height());
+	disp_.video().flip();
 }
 
 void textbox::process()

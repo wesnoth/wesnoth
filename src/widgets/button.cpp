@@ -153,7 +153,7 @@ void button::draw()
 	font::draw_text(display_,clipArea,font_size,
 					font::NORMAL_COLOUR,label_,textx,texty);
 
-	display_->video().update(x_,y_,width(),height());
+	display_->video().flip();
 }
 
 bool button::hit(int x, int y) const

@@ -98,7 +98,6 @@ public:
 	        const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect);
 
 	void update_display();
-	void update_rect(const SDL_Rect& rect);
 
 	void draw_terrain_palette(int x, int y, gamemap::TERRAIN selected);
 	gamemap::TERRAIN get_terrain_on(int palx, int paly, int x, int y);
@@ -197,11 +196,6 @@ private:
 	bool invalidateGameStatus_;
 
 	std::multimap<gamemap::location,std::string> overlays_;
-
-	void update_whole_screen();
-	void update_map_area();
-	void update_side_bar();
-	std::vector<SDL_Rect> updateRects_;
 
 	bool sideBarBgDrawn_;
 	int lastTimeOfDay_;

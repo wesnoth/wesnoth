@@ -96,7 +96,7 @@ void show_intro(display& screen, config& data)
 		                textx,texty);
 		next_button.draw();
 		skip_button.draw();
-		screen.video().update(0,0,screen.x(),screen.y());
+		screen.video().flip();
 
 		const std::string& delay = (*i)->values["delay"];
 		const int ndelay = atoi(delay.c_str());
@@ -173,7 +173,7 @@ void show_map_scene(display& screen, config& data)
 
 	const std::string& scenario = scenario_name.empty() ? data.values["name"] :
 	                                                      scenario_name;
-	screen.video().update(0,0,screen.x(),screen.y());
+	screen.video().flip();
 
 	CKey key;
 
@@ -210,12 +210,14 @@ void show_map_scene(display& screen, config& data)
 
 		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 
-		for(int i = 0; i != 10; ++i) {
+		for(int i = 0; i != 50; ++i) {
 			if(key[KEY_ESCAPE]) {
 				break;
 			}
 
-			SDL_Delay(50);
+			SDL_Delay(10);
+
+			pump_events();
 
 			int a, b;
 			const int mouse_flags = SDL_GetMouseState(&a,&b);
@@ -228,8 +230,7 @@ void show_map_scene(display& screen, config& data)
 			break;
 		}
 
-		screen.video().update(0,0,screen.x(),screen.y());
-		pump_events();
+		screen.video().flip();
 	}
 
 	if(!key[KEY_ESCAPE]) {
@@ -243,7 +244,7 @@ void show_map_scene(display& screen, config& data)
 		            dstrect.x,dstrect.y - scenario_size.h - 4);
 
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
-	screen.video().update(0,0,screen.x(),screen.y());
+	screen.video().flip();
 
 	bool last_state = true;
 	for(;;) {
