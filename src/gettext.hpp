@@ -5,6 +5,8 @@
 
 // gettext-related declarations
 #include <libintl.h>
+
+const char* egettext (const char*);
 const char* sgettext (const char*);
 const char* dsgettext (const char * domainname, const char *msgid);
 std::string vgettext (const char*,const string_map&);

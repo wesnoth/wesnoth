@@ -4,6 +4,11 @@
 
 #include <cstring>
 
+char const *egettext(char const *msgid)
+{
+	return msgid[0] == '\0' ? msgid : gettext(msgid);
+}
+
 const char* sgettext (const char *msgid)
 {
 	const char *msgval = gettext (msgid);
