@@ -22,6 +22,7 @@
 #include "widgets/widget.hpp"
 
 #include <set>
+#include <queue>
 #include <map>
 #include <list>
 
@@ -172,6 +173,7 @@ private:
 	topic const *chosen_topic_;
 	int internal_width_;
 	visible_item selected_item_;
+	bool clicked_;
 };
 
 /// Thrown when the help system fails to parse something.
@@ -355,11 +357,24 @@ public:
 	void show_topic(const std::string &topic_id);
 
 private:
+	/// Update the current cursor, set it to the reference cursor if
+	/// mousex, mousey is over a cross-reference, otherwise, set it to
+	/// the normal cursor.
+	void update_cursor();
 	void handle_event(const SDL_Event &event);
+	void show_topic(const topic &t, bool save_in_history=true);
+	/// Move in the topic history. Pop an element from from and insert
+	/// it in to. Pop at the fronts if the maximum number of elements is
+	/// exceeded.
+	void move_in_history(std::deque<const topic *> &from, std::deque<const topic *> &to);
 	display &disp_;
 	help_menu menu_;
 	help_text_area text_area_;
 	const section &toplevel_;
+	bool ref_cursor_; // If the cursor currently is the hyperlink cursor.
+	std::deque<const topic *> back_topics_, forward_topics_;
+	gui::button back_button_, forward_button_;
+	topic const *shown_topic_;
 };
 
 /// Parse a help config, return the top level section. Return an empty

@@ -12,6 +12,7 @@
 
 #include "help.hpp"
 
+#include "cursor.hpp"
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"
@@ -38,9 +39,12 @@ namespace {
 	const int title_size = 18;
 	const int title2_size = 15;
 	const int normal_font_size = 12;
+	const unsigned max_history = 100;
 	const std::string topic_img = "help/topic.png";
 	const std::string closed_section_img = "help/closed_section.png";
 	const std::string open_section_img = "help/open_section.png";
+	// The topic to open by default when opening the help dialog.
+	const std::string default_show_topic = "introduction"; 
 	
 	/// Return true if the id is valid for user defined topics and
 	/// sections. Some IDs are special, such as toplevel and may not be
@@ -184,7 +188,8 @@ void section::clear() {
 
 help_menu::help_menu(display& disp, const section &toplevel, int max_height)
 	: menu(disp, empty_string_vector, false, max_height), disp_(disp),
-	  toplevel_(toplevel), chosen_topic_(NULL), internal_width_(0), selected_item_(&toplevel, "") {
+	  toplevel_(toplevel), chosen_topic_(NULL), internal_width_(0), selected_item_(&toplevel, ""),
+	  clicked_(false) {
 	bg_backup();
 	update_visible_items(toplevel_);
 	display_visible_items();
@@ -268,6 +273,12 @@ void help_menu::handle_event(const SDL_Event &event) {
 	// Only handle events if we have focus, that is, the mouse is within
 	// the menu.
 	if (point_in_rect(mousex, mousey, get_rect())) {
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			SDL_MouseButtonEvent mouse_event = event.button;
+			if (mouse_event.button == SDL_BUTTON_LEFT) {
+				clicked_ = true;
+			}
+		}
 		menu::handle_event(event);
 	}
 }
@@ -310,6 +321,10 @@ bool help_menu::select_topic_internal(const topic &t, const section &sec) {
 }
 
 void help_menu::select_topic(const topic &t) {
+	if (chosen_topic_ != NULL && *chosen_topic_ == t) {
+		// The requested toic is already selected.
+		return;
+	}
 	if (select_topic_internal(t, toplevel_)) {
 		update_visible_items(toplevel_);
 		for (std::vector<visible_item>::const_iterator it = visible_items_.begin();
@@ -329,18 +344,19 @@ int help_menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	if (!visible_items_.empty() && selection() >= 0
 		&& (unsigned)selection() < visible_items_.size()) {
 		selected_item_ = visible_items_[selection()];
-		if (double_clicked()) {
-			if (selected_item_.sec != NULL) {
-				// Open or close a section if it is double clicked.
-				expanded(*selected_item_.sec) ? contract(*selected_item_.sec)
-					: expand(*selected_item_.sec);
-				update_visible_items(toplevel_);
-				display_visible_items();
-			}
-			else if (selected_item_.t != NULL) {
-				/// Choose a topic if it is double clicked.
-				chosen_topic_ = selected_item_.t;
-			}
+ 		if (clicked_) {
+			clicked_ = false;
+ 			if (selected_item_.sec != NULL) {
+ 				// Open or close a section if it is double clicked.
+ 				expanded(*selected_item_.sec) ? contract(*selected_item_.sec)
+ 					: expand(*selected_item_.sec);
+ 				update_visible_items(toplevel_);
+ 				display_visible_items();
+ 			}
+ 			else if (selected_item_.t != NULL) {
+ 				/// Choose a topic if it is double clicked.
+ 				chosen_topic_ = selected_item_.t;
+ 			}
 		}
 	}
 	return res;
@@ -663,11 +679,12 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
 		std::string first_part = parts.front();
+		
 		int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
 		state |= bold ? TTF_STYLE_BOLD : 0;
 		state |= italic ? TTF_STYLE_ITALIC : 0;
-		shared_sdl_surface surf(font::get_rendered_text(first_part, font_size,
-														font::NORMAL_COLOUR, state));
+		const SDL_Color color = ref_dst == "" ? font::NORMAL_COLOUR : font::YELLOW_COLOUR;
+		shared_sdl_surface surf(font::get_rendered_text(first_part, font_size, color, state));
 		add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
 		if (parts.size() > 1) {
 			// Parts remain, remove the first part from the string and
@@ -971,7 +988,10 @@ std::string help_text_area::ref_at(const int x, const int y) {
 
 help_browser::help_browser(display &disp, section &toplevel)
 	: gui::widget(disp), disp_(disp), menu_(disp, toplevel),
-	  text_area_(disp, toplevel), toplevel_(toplevel) {
+	  text_area_(disp, toplevel), toplevel_(toplevel), ref_cursor_(false),
+	  back_button_(disp, translate_string("help_back"), gui::button::TYPE_PRESS),
+	  forward_button_(disp, translate_string("help_forward"), gui::button::TYPE_PRESS),
+	  shown_topic_(NULL) {
 	// Set sizes to some default values.
 	set_location(1, 1);
 	set_width(400);
@@ -979,16 +999,24 @@ help_browser::help_browser(display &disp, section &toplevel)
 }
 
 void help_browser::adjust_layout() {
+	const int menu_buttons_padding = 10;
 	const int menu_y = location().y;
 	const int menu_x = location().x;
 	const int menu_w = 250;
-	const int menu_h = height();
+	const int menu_h = height() - back_button_.height() - menu_buttons_padding;
 	
 	const int menu_text_area_padding = 10;
 	const int text_area_y = location().y;
 	const int text_area_x = menu_x + menu_w + menu_text_area_padding;
 	const int text_area_w = width() - menu_w - menu_text_area_padding;
 	const int text_area_h = height();
+
+	const int button_border_padding = 0;
+	const int button_button_padding = 10;
+	const int back_button_x = location().x + button_border_padding;
+	const int back_button_y = menu_y + menu_h + menu_buttons_padding;
+	const int forward_button_x = back_button_x + back_button_.width() + button_button_padding;
+	const int forward_button_y = back_button_y;
 
 	menu_.set_width(menu_w);
 	menu_.set_loc(menu_x, menu_y);
@@ -999,12 +1027,18 @@ void help_browser::adjust_layout() {
 	text_area_.set_width(text_area_w);
 	text_area_.set_height(text_area_h);
 
+	back_button_.set_location(back_button_x, back_button_y);
+	forward_button_.set_location(forward_button_x, forward_button_y);
+
 	set_dirty(true);
 }
 
 void help_browser::set_dirty(bool dirty) {
 	widget::set_dirty(dirty);
 	if (dirty) {
+		update_cursor();
+		forward_button_.set_dirty();
+		back_button_.set_dirty();
 		menu_.set_dirty();
 		text_area_.set_dirty(true);
 	}
@@ -1047,36 +1081,77 @@ void help_browser::process() {
 		menu_.process(mousex, mousey, new_left_button, new_up_arrow,
 					  new_down_arrow, new_page_up, new_page_down, -1);
 		const topic *chosen_topic = menu_.chosen_topic();
-		if (chosen_topic != NULL) {
-			/// A topic has been chosen in the menu, display it.
-			text_area_.show_topic(*chosen_topic);
+		if (chosen_topic != NULL && chosen_topic != shown_topic_) {
+			/// A new topic has been chosen in the menu, display it.
+			show_topic(*chosen_topic);
 		}
+	}
+	if (back_button_.pressed()) {
+		move_in_history(back_topics_, forward_topics_);
+	}
+	if (forward_button_.pressed()) {
+		move_in_history(forward_topics_, back_topics_);
+	}
+	back_button_.hide(back_topics_.empty());
+	forward_button_.hide(forward_topics_.empty());
+}
+
+void help_browser::move_in_history(std::deque<const topic *> &from,
+								   std::deque<const topic *> &to) {
+	if (!from.empty()) {
+		const topic *to_show = from.back();
+		from.pop_back();
+		if (shown_topic_ != NULL) {
+			if (to.size() > max_history) {
+				to.pop_front();
+			}
+			to.push_back(shown_topic_);
+		}
+		show_topic(*to_show, false);
 	}
 }
 
+
 void help_browser::handle_event(const SDL_Event &event) {
-	switch (event.type) {
-	case SDL_MOUSEBUTTONDOWN:
-		SDL_MouseButtonEvent mouse_event = event.button;
+	SDL_MouseButtonEvent mouse_event = event.button;
+	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		if (mouse_event.button == SDL_BUTTON_LEFT) {
-			const int x = mouse_event.x;
-			const int y = mouse_event.y;
 			// Did the user click a cross-reference?
-			const std::string ref = text_area_.ref_at(x, y);
+			const int mousex = mouse_event.x;
+			const int mousey = mouse_event.y;
+			const std::string ref = text_area_.ref_at(mousex, mousey);
 			if (ref != "") {
 				const topic *t = find_topic(toplevel_, ref);
 				if (t == NULL) {
 					std::stringstream msg;
 					msg << "Reference to unknown topic: '" << ref << "'.";
 					gui::show_dialog(disp_, NULL, "", msg.str(), gui::OK_ONLY);
+					update_cursor();
 				}
 				else {
-					menu_.select_topic(*t);
-					text_area_.show_topic(*t);
+					show_topic(*t);
+					update_cursor();
 				}
 			}
 		}
 	}	
+	else if (event.type == SDL_MOUSEMOTION) {
+		update_cursor();
+	}
+}
+
+void help_browser::update_cursor() {
+	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	const std::string ref = text_area_.ref_at(mousex, mousey);
+	if (ref != "" && !ref_cursor_) {
+		cursor::set(cursor::HYPERLINK);
+		ref_cursor_ = true;
+	}
+	else if (ref == "" && ref_cursor_) {
+		cursor::set(cursor::NORMAL);
+		ref_cursor_ = false;
+	}
 }
 
 
@@ -1099,13 +1174,28 @@ const topic *find_topic(const section &sec, const std::string &id) {
 void help_browser::show_topic(const std::string &topic_id) {
 	const topic *t = find_topic(toplevel_, topic_id);
 	if (t != NULL) {
-		text_area_.show_topic(*t);
-		menu_.select_topic(*t);
+		show_topic(*t);
 	}
 	else {
 		std::cerr << "Help browser tried to show topic with id '" << topic_id
 				  << "' but that topic could not be found." << std::endl;
 	}
+}
+
+void help_browser::show_topic(const topic &t, bool save_in_history) {
+	if (save_in_history) {
+		forward_topics_.clear();
+		if (shown_topic_ != NULL) {
+			if (back_topics_.size() > max_history) {
+				back_topics_.pop_front();
+			}
+			back_topics_.push_back(shown_topic_);
+		}
+	}
+	shown_topic_ = &t;
+	text_area_.show_topic(t);
+	menu_.select_topic(t);
+	update_cursor();
 }
 
 std::vector<std::string> parse_text(const std::string &text) {
@@ -1306,6 +1396,9 @@ void show_help(display &disp, std::string show_topic, int xloc, int yloc) {
 		hb.set_height(height - top_padding - bot_padding);
 		if (show_topic != "") {
 			hb.show_topic(show_topic);
+		}
+		else {
+			hb.show_topic(default_show_topic);
 		}
 		hb.set_dirty(true);
 		events::raise_draw_event();
