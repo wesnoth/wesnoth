@@ -1106,7 +1106,7 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& route,
-                 replay* move_recorder, undo_list* undo_stack)
+                 replay* move_recorder, undo_list* undo_stack, gamemap::location *next_unit)
 {
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
@@ -1183,6 +1183,9 @@ size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
 	}
 
 	assert(steps.size() <= route.size());
+
+	if (next_unit != NULL )
+		*next_unit = steps.back();
 
 	//if we can't get all the way there and have to set a go-to,
 	//unless we stop early because of sighting a unit

@@ -174,7 +174,8 @@ typedef std::deque<undo_action> undo_list;
 size_t move_unit(display* disp, const game_data& gamedata, const gamemap& map,
                  unit_map& units, std::vector<team>& teams,
                  const std::vector<gamemap::location>& steps,
-                 replay* move_recorder, undo_list* undos);
+                 replay* move_recorder, undo_list* undos,
+		 gamemap::location *next_unit = NULL);
 
 //function which will clear shroud away for the given 0-based team based on
 //current unit positions. Returns true if some shroud is actually cleared away.

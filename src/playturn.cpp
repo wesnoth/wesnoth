@@ -542,7 +542,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 
 		const size_t moves = move_unit(&gui_,gameinfo_,map_,units_,teams_,
-		                   current_route_.steps,&recorder,&undo_stack_);
+		                   current_route_.steps,&recorder,&undo_stack_, &next_unit_);
 
 		gui_.invalidate_game_status();
 
@@ -597,6 +597,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			const bool teleport = it->second.type().teleports();
 			current_paths_ = paths(map_,gameinfo_,units_,hex,teams_,
 			                   ignore_zocs,teleport,path_turns_);
+
+			next_unit_ = it->first;
 
 			show_attack_options(it);
 
@@ -738,13 +740,22 @@ void turn_info::show_menu(const std::vector<std::string>& items_arg)
 
 void turn_info::cycle_units()
 {
+
 	unit_map::const_iterator it = units_.find(next_unit_);
+	unit_map::const_iterator yellow_it = units_.end();
 	if(it != units_.end()) {
 		for(++it; it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
 			   !gui_.fogged(it->first.x,it->first.y)) {
-				break;
+				if (it->second.movement_left() !=
+				    it->second.total_movement()) {
+					if (yellow_it == units_.end()) {
+						yellow_it = it;
+					}
+				}
+				else
+					break;
 			}
 		}
 	}
@@ -754,9 +765,20 @@ void turn_info::cycle_units()
 			if(it->second.side() == team_num_ &&
 			   unit_can_move(it->first,units_,map_,teams_) &&
 			   !gui_.fogged(it->first.x,it->first.y)) {
-				break;
+				if (it->second.movement_left() !=
+				    it->second.total_movement()) {
+					if (yellow_it == units_.end()) {
+						yellow_it = it;
+					}
+				}
+				else
+					break;
 			}
 		}
+	}
+
+	if (it == units_.end()) {
+		it = yellow_it;
 	}
 
 	if(it != units_.end() && !gui_.fogged(it->first.x,it->first.y)) {
@@ -775,7 +797,7 @@ void turn_info::cycle_units()
 		gui_.select_hex(selected_hex_);
 		current_route_.steps.clear();
 		gui_.set_route(NULL);
-	} else
+	} else 
 		next_unit_ = gamemap::location();
 }
 
