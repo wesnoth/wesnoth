@@ -14,19 +14,32 @@ finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -prin
 	 $(findmoredata) )
 findnoinst=(cd $(top_srcdir) && find utils -name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
+w_preparefileinstall = if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  case $$p in \
+	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+	    *) f=$$p;; \
+	  esac;
+
 install-data-local:
 	@$(NORMAL_INSTALL)
 	test -z "$(pkgdatadir)" || $(mkdir_p) "$(DESTDIR)$(pkgdatadir)"
 	srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	( $(finddata) ) | while read p; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  case $$p in \
-	    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-	    *) f=$$p;; \
-	  esac; \
+	  $(w_preparefileinstall) \
 	  echo " $(install_sh_DATA) '$$d$$p' '$(DESTDIR)$(pkgdatadir)/$$f'"; \
 	  $(install_sh_DATA) "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
 	done
+if TINYGUI
+	(cd $(top_srcdir) && find images/portraits $(findfilterflags) -o -print) | while read p; do \
+	  $(w_preparefileinstall) \
+	  convert -size 80x80 -resize 80x80 "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
+	(cd $(top_srcdir) && find images/maps images/campaigns/*/maps images/campaigns/*/story $(findfilterflags) -o -print) | while read p; do \
+	  $(w_preparefileinstall) \
+	  convert -size 240x180 -resize 240x180 "$$d$$p" "$(DESTDIR)$(pkgdatadir)/$$f"; \
+	done
+endif
+
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
