@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-02 21:19+0100\n"
+"POT-Creation-Date: 2005-02-08 23:15+0100\n"
 "PO-Revision-Date: 2004-09-28 11:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  David Martínez Moreno <ender@debian.org>\n"
@@ -21,11 +21,11 @@ msgid "The Eastern Invasion"
 msgstr "La invasión del este"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
-msgid "Spearman"
+msgid "(easiest)"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:10
-msgid "(easiest)"
+msgid "Spearman"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:11
@@ -33,11 +33,11 @@ msgid "Swordsman"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "Royal Guard"
+msgid "(hardest)"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
+msgid "Royal Guard"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
@@ -220,8 +220,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:549
 msgid ""
-"So, they must have captured $R2.user_description... Well, follow me. We have "
-"to get out of this dungeon."
+"So, they must have captured $R2.user_description ... Well, follow me. We "
+"have to get out of this dungeon."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:559
@@ -259,7 +259,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:661
-msgid "Huh! A guard. Lets see how quickly we can kill it."
+msgid "Huh! A guard. Let's see how quickly we can kill it."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:686
@@ -309,7 +309,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:860
 msgid ""
-"Good! We have escaped these accursed caves! Lets get out of these mountains "
+"Good! We have escaped these accursed caves! Let's get out of these mountains "
 "as quickly as possible!"
 msgstr ""
 
@@ -322,6 +322,7 @@ msgid "The Crossing"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:24
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -331,6 +332,13 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Escapa de las prisiones orcas\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec"
 
 #: data/scenarios/Eastern_Invasion/Crossing.cfg:93
 msgid ""
@@ -398,6 +406,7 @@ msgid "An Elven Alliance"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:24
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -407,6 +416,14 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Volas"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Derrotar a Khrakrahs, el Dragon esquelético\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
+"#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/Elven_Alliance.cfg:86
 msgid "Greetings, travelers! Welcome to my realm."
@@ -589,7 +606,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid ""
-"Well, I see those arcs are chasin' you, and if I blow up the bridge, they "
+"Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
 "can't get across. It'll help you escape."
 msgstr ""
 
@@ -607,8 +624,8 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
 msgid ""
-"Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. Thats where my "
-"eq'pment is."
+"Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. That's where "
+"my eq'pment is."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Evacuation.cfg:150
@@ -679,6 +696,7 @@ msgid "Lake Vrug"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:26
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -688,6 +706,13 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Llegar al final del túnel\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/Lake_Vrug.cfg:91
 msgid "The trail stops soon. Look at this- mountains block our path."
@@ -731,6 +756,7 @@ msgid "Mal-Ravanals Capital"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:26
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -739,6 +765,12 @@ msgid ""
 "#Death of Gweddry\n"
 "#Death of Dacyn"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Derrota de uno de los nigromantes\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/Mal-Ravanals_Capital.cfg:113
 msgid "We have come all the way to Mal-Ravanal's Capital!"
@@ -796,8 +828,9 @@ msgid "You dare to attack ME?!? Go back to your master!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:4
+#, fuzzy
 msgid "Northern Outpost"
-msgstr ""
+msgstr "El puesto avanzado"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:26
 #, fuzzy
@@ -873,7 +906,8 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:241
-msgid "Thats the bandit leader! Kill him, and we will have fufilled our duty!"
+msgid ""
+"That's the bandit leader! Kill him, and we will have fulfilled our duty!"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:254
@@ -888,7 +922,7 @@ msgstr ""
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:269
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:312
 msgid ""
-"I have fufilled me duty to the villages. Now I suppose I can join you in "
+"I have fulfilled my duty to the villages. Now I suppose I can join you in "
 "your quest."
 msgstr ""
 
@@ -897,7 +931,7 @@ msgstr ""
 msgid ""
 "Good job! Now, we should move onward, north. The undead scout has warned us; "
 "we must get far away from these lands. I think we should go north, and try "
-"to reach Weldyn from a different route."
+"to reach Weldyn by a different route."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:306
@@ -909,6 +943,7 @@ msgid "Training the Ogres"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:27
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -918,6 +953,13 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Escapa de las prisiones orcas\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec"
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:84
 msgid ""
@@ -957,6 +999,7 @@ msgid "Weldyn Besieged"
 msgstr "Weldyn es asediada"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:26
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -968,6 +1011,14 @@ msgid ""
 "#Death of Sudoc\n"
 "#Letting any enemy unit onto your keep"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Llevar a Gweddry a Weldyn\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
+"#Muerte de Konrad II"
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:125
 msgid ""
@@ -987,8 +1038,9 @@ msgid "How did you know...?"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:159
+#, fuzzy
 msgid "Kill the king!"
-msgstr ""
+msgstr "Matadlos."
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:163
 msgid "They killed Konrad... now, even if we save Weldyn, Wesnoth has fallen."
@@ -1218,8 +1270,9 @@ msgstr ""
 "¡Rápido! ¡Si llegan más refuerzos enemigos, moriremos! ¡A la trampilla!"
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:4
+#, fuzzy
 msgid "The Council"
-msgstr ""
+msgstr "La ciudad"
 
 #: data/scenarios/Eastern_Invasion/Throne_Room.cfg:22
 msgid ""
@@ -1424,6 +1477,7 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:157
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1433,6 +1487,13 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Escapa de las prisiones orcas\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec"
 
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:167
 msgid "Argh! I'm dead! Well, dwarves are still the best!"
@@ -1451,6 +1512,7 @@ msgid "Two Paths"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:24
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1461,6 +1523,14 @@ msgid ""
 "#Death of Owaec\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Derrotar a Khrakrahs, el Dragon esquelético\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
+"#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/Two_Paths.cfg:93
 msgid "Look! The road splits here. Which way shall we go?"
@@ -1525,6 +1595,7 @@ msgid "The Undead Border Patrol"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:23
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1534,6 +1605,13 @@ msgid ""
 "#Death of Dacyn\n"
 "#Turns run out"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Llegar al final del túnel\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Fin de los turnos"
 
 #: data/scenarios/Eastern_Invasion/Undead_Border_Patrol.cfg:80
 msgid ""
@@ -1619,6 +1697,7 @@ msgid "Undead Crossing"
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:24
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -1628,6 +1707,14 @@ msgid ""
 "#Death of Dacyn\n"
 "#Death of Owaec"
 msgstr ""
+"\n"
+"Victoria:\n"
+"@Llevar a Gweddry a Weldyn\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
+"#Muerte de Konrad II"
 
 #: data/scenarios/Eastern_Invasion/Undead_Crossing.cfg:68
 msgid ""

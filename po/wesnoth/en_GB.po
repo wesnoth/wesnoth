@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.10+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-07 12:10+0100\n"
+"POT-Creation-Date: 2005-02-08 23:04+0100\n"
 "PO-Revision-Date: 2005-02-08 23:24+0200\n"
 "Last-Translator: ott <ott@gaon.net>\n"
 "Language-Team: none\n"
@@ -1094,13 +1094,15 @@ msgid "flaming sword"
 msgstr "flaming sword"
 
 #: data/items.cfg:755
-msgid "Sceptre of Fire"
+#, fuzzy
+msgid "Scepter of Fire"
 msgstr "Sceptre of Fire"
 
 #: data/items.cfg:758
+#, fuzzy
 msgid ""
-"This ancient Sceptre was forged by the Dwarves. A symbol of the kingship of "
-"Wesnoth, the Sceptre has the power to shoot fireballs at enemies of the "
+"This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
+"Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
 "bearer!"
 msgstr ""
 "This ancient Sceptre was forged by the Dwarves. A symbol of the kingship of "
@@ -1108,8 +1110,9 @@ msgstr ""
 "bearer!"
 
 #: data/items.cfg:759
+#, fuzzy
 msgid ""
-"This is the Sceptre of Fire. Only a true successor to the throne can "
+"This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
 "This is the Sceptre of Fire. Only a true successor to the throne can "
@@ -1461,10 +1464,11 @@ msgstr ""
 "surely you can explain the art of combat to me..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:51
+#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
-"select Recruit, and select 'Ok'. You can only recruit units on castle tiles "
+"select Recruit, and select 'OK'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
@@ -1494,11 +1498,12 @@ msgid "How do I recruit units?"
 msgstr "How do I recruit units?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:63
+#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
 "tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
-"recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
+"recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
 "To recruit a unit, right click on the castle tile on which you wish to "
@@ -1842,12 +1847,9 @@ msgstr ""
 "been cast on it are removed. This is known as 'advance-heal'."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
+#: data/scenarios/tutorial/Basic_Training.cfg:177
 msgid "Move your fighter onto a village."
 msgstr "Move your fighter onto a village."
-
-#: data/scenarios/tutorial/Basic_Training.cfg:177
-msgid "Move your fighter onto a village"
-msgstr "Move your fighter onto a village"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:188
 msgid "Villages heal the units on them."
@@ -1858,10 +1860,11 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "What happens when a unit moves onto a village?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
+#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
-"a side give the side several benefits, including giving the side a extra "
+"a side give the side several benefits, including giving the side an extra "
 "gold coin every turn, and reducing the total upkeep cost of that side's "
 "units by one. The total number of villages you control is also displayed on "
 "the status bar after the picture of a house. In addition to the economic "
@@ -1882,13 +1885,14 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "How do I heal when there aren't any villages nearby?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:193
+#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
 "him he cannot receive rest-heal. Also, there are some units which heal the "
 "units surrounding them. The Elvish Shaman is one such unit; units next to an "
-"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
-"all your units are healed fully."
+"Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
+"scenario all of your units are fully healed."
 msgstr ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1953,13 +1957,14 @@ msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "How do I know how to complete a scenario? Will you always tell me?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
+#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
 "appear after the opening dialog. It can also be accessed by clicking "
 "'Objectives' on the menu. The scenario objectives are a list of victory "
 "conditions and defeat conditions, and when any of the conditions are met, "
-"the level is over. Hopefully, it was a victory condition that was met."
+"the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialogue. In this case you need to look at the scenario objectives, which "
@@ -1988,7 +1993,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
-msgid "Do you want to review any of the skills learned on this level?"
+#, fuzzy
+msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr "Do you want to review any of the skills learned at this stage?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
@@ -2025,11 +2031,12 @@ msgstr ""
 "battle."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
+#, fuzzy
 msgid ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
 "scenario by defeating me. Your fighter from the previous scenario can help "
 "you in this battle. To recall him, right-click on a castle tile, select "
-"Recall, select your fighter, then select 'Ok'. You should also recruit "
+"Recall, select your fighter, then select 'OK'. You should also recruit "
 "Elvish Fighters and Elvish Archers."
 msgstr ""
 "You can win most scenarios simply by defeating all enemy leaders. Win this "
@@ -2080,7 +2087,8 @@ msgstr "You have successfully recalled your Elvish Fighter."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
-msgid "En guarde!"
+#, fuzzy
+msgid "En garde!"
 msgstr "En garde!"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
@@ -2198,13 +2206,14 @@ msgid "How do I get gold?"
 msgstr "How do I get gold?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:109
+#, fuzzy
 msgid ""
-"You begin each level with a percentage of gold from the previous level. If "
-"this is less than 100 gold, you begin with 100 gold instead. The amount of "
-"gold you have is displayed on the status bar after the picture of gold. "
-"After the start of a scenario, you receive 2 gold every turn. Since you "
-"usually need more gold than that, you should flag villages, which give you 1 "
-"gold per turn."
+"You begin each scenario with a percentage of gold from the previous "
+"scenario. If this is less than 100 gold, you begin with 100 gold instead. "
+"The amount of gold you have is displayed on the status bar after the picture "
+"of gold. After the start of a scenario, you receive 2 gold every turn. Since "
+"you usually need more gold than that, you should flag villages, which give "
+"you 1 gold per turn."
 msgstr ""
 "You begin each scenario with a percentage of gold from the previous "
 "scenario. If this is less than 100 gold, you begin with 100 gold instead. "
@@ -2467,9 +2476,10 @@ msgid "How long do these objects last?"
 msgstr "How long do these objects last?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:198
+#, fuzzy
 msgid ""
 "Most objects are permanent changes to the unit that receives them. However a "
-"few objects, such as holy water, last only until the remainder of the level."
+"few objects, such as holy water, last only until the end of the scenario."
 msgstr ""
 "Most objects are permanent changes to the unit that receives them. However a "
 "few objects, such as holy water, last only until the remainder of the "
@@ -3120,8 +3130,8 @@ msgstr ""
 
 #: data/translations/english.cfg:33 data/units/Elvish_Druid.cfg:19
 #: data/units/Elvish_Shyde.cfg:19 data/units/Mermaid_Priestess.cfg:7
-#: data/units/Saurian_Soothsayer.cfg:20 data/units/White_Mage.cfg:12
-#: data/units/White_Mage.cfg:71
+#: data/units/Saurian_Soothsayer.cfg:20 data/units/White_Mage.cfg:13
+#: data/units/White_Mage.cfg:84
 msgid "cures"
 msgstr "cures"
 
@@ -3296,7 +3306,7 @@ msgstr ""
 "moves."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
-#: data/units/Silver_Mage.cfg:161
+#: data/units/Silver_Mage.cfg:150
 msgid "teleport"
 msgstr "teleport"
 
@@ -3516,8 +3526,8 @@ msgstr "drain"
 msgid "magic"
 msgstr "magic"
 
-#: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:42
-#: data/units/Arch_Mage.cfg:122 data/units/Battle_Princess.cfg:80
+#: data/units/Ancient_Lich.cfg:37 data/units/Arch_Mage.cfg:47
+#: data/units/Arch_Mage.cfg:140 data/units/Battle_Princess.cfg:80
 #: data/units/Commander.cfg:123 data/units/Dark_Adept.cfg:24
 #: data/units/Dark_Queen.cfg:31 data/units/Deathmaster.cfg:42
 #: data/units/Demilich.cfg:34 data/units/Dwarvish_Runemaster.cfg:43
@@ -3527,19 +3537,19 @@ msgstr "magic"
 #: data/units/Elvish_Shyde.cfg:73 data/units/Elvish_Sorceress.cfg:122
 #: data/units/Elvish_Sylph.cfg:26 data/units/Elvish_Sylph.cfg:85
 #: data/units/Fighter.cfg:86 data/units/Fireball.cfg:21
-#: data/units/Great_Mage.cfg:42 data/units/Great_Mage.cfg:119
+#: data/units/Great_Mage.cfg:47 data/units/Great_Mage.cfg:140
 #: data/units/Initiate.cfg:21 data/units/Lich.cfg:34 data/units/Lord.cfg:117
-#: data/units/Mage.cfg:39 data/units/Mage.cfg:106
-#: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
+#: data/units/Mage.cfg:44 data/units/Mage.cfg:121
+#: data/units/Mage_of_Light.cfg:49 data/units/Mage_of_Light.cfg:121
 #: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:37
 #: data/units/Mermaid_Initiate.cfg:37 data/units/Mermaid_Priestess.cfg:35
 #: data/units/Mermaid_Siren.cfg:28 data/units/Mermaid_Siren.cfg:71
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
-#: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:112
+#: data/units/Red_Mage.cfg:47 data/units/Red_Mage.cfg:140
 #: data/units/Saurian_Icecaster.cfg:42 data/units/Saurian_Soothsayer.cfg:41
 #: data/units/Saurian_Tribalist.cfg:41 data/units/Sea_Hag.cfg:31
-#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:184
-#: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
+#: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:225
+#: data/units/White_Mage.cfg:48 data/units/White_Mage.cfg:119
 msgid "magical"
 msgstr "magical"
 
@@ -3580,7 +3590,7 @@ msgid "crush"
 msgstr "crush"
 
 #: data/units/Ancient_Wose.cfg:20 data/units/Arch_Mage.cfg:24
-#: data/units/Arch_Mage.cfg:104 data/units/Bandit.cfg:20
+#: data/units/Arch_Mage.cfg:117 data/units/Bandit.cfg:20
 #: data/units/Cave_Spider.cfg:29 data/units/Cuttle_Fish.cfg:20
 #: data/units/Dark_Queen.cfg:23 data/units/Deathmaster.cfg:20
 #: data/units/Drake_Gladiator.cfg:58 data/units/Drake_Glider.cfg:23
@@ -3600,10 +3610,11 @@ msgstr "crush"
 #: data/units/Galleon.cfg:19 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:36
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
-#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:101
+#: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:117
 #: data/units/Great_Troll.cfg:21 data/units/Heavy_Infantryman.cfg:20
 #: data/units/Horse_Lord.cfg:44 data/units/Iron_Mauler.cfg:20
-#: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
+#: data/units/Mage.cfg:21 data/units/Mage.cfg:98
+#: data/units/Mage_of_Light.cfg:31 data/units/Mage_of_Light.cfg:103
 #: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:21
 #: data/units/Mermaid_Enchantress.cfg:35 data/units/Mermaid_Initiate.cfg:21
 #: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:25
@@ -3617,17 +3628,19 @@ msgstr "crush"
 #: data/units/Outlaw.cfg:21 data/units/Outlaw.cfg:39 data/units/Outlaw.cfg:94
 #: data/units/Outlaw.cfg:112 data/units/Outlaw_Princess.cfg:27
 #: data/units/Outlaw_Princess.cfg:45 data/units/Outlaw_Queen.cfg:28
-#: data/units/Outlaw_Queen.cfg:46 data/units/Saurian_Icecaster.cfg:23
+#: data/units/Outlaw_Queen.cfg:46 data/units/Red_Mage.cfg:24
+#: data/units/Red_Mage.cfg:117 data/units/Saurian_Icecaster.cfg:23
 #: data/units/Saurian_Soothsayer.cfg:23 data/units/Saurian_Tribalist.cfg:23
 #: data/units/Sea_Hag.cfg:29 data/units/Shock_Trooper.cfg:20
-#: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:166
+#: data/units/Silver_Mage.cfg:78 data/units/Silver_Mage.cfg:207
 #: data/units/Skeleton_Archer.cfg:25 data/units/Soulless.cfg:20
 #: data/units/Tentacle.cfg:22 data/units/Thug.cfg:20 data/units/Troll.cfg:21
 #: data/units/Troll_Hero.cfg:21 data/units/Troll_Rocklobber.cfg:21
 #: data/units/Troll_Rocklobber.cfg:39 data/units/Troll_Warrior.cfg:21
 #: data/units/Troll_Whelp.cfg:21 data/units/Walking_Corpse.cfg:20
-#: data/units/Warrior_King.cfg:26 data/units/Wose.cfg:20
-#: data/units/Yeti.cfg:34 data/units/Youth.cfg:22
+#: data/units/Warrior_King.cfg:26 data/units/White_Mage.cfg:30
+#: data/units/White_Mage.cfg:101 data/units/Wose.cfg:20 data/units/Yeti.cfg:34
+#: data/units/Youth.cfg:22
 msgid "impact"
 msgstr "impact"
 
@@ -3635,7 +3648,7 @@ msgstr "impact"
 msgid "Arch Mage"
 msgstr "Arch Mage"
 
-#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:100
+#: data/units/Arch_Mage.cfg:20 data/units/Arch_Mage.cfg:113
 msgid ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
@@ -3643,30 +3656,32 @@ msgstr ""
 "Leaders among the mages, the Arch Mages hurl huge balls of fire at their "
 "enemies."
 
-#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:103
+#: data/units/Arch_Mage.cfg:23 data/units/Arch_Mage.cfg:116
 #: data/units/Deathmaster.cfg:19 data/units/Elder_Mage.cfg:22
 #: data/units/Elvish_Druid.cfg:23 data/units/Elvish_Enchantress.cfg:25
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
-#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:100
+#: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:116
+#: data/units/Mage.cfg:20 data/units/Mage.cfg:97
 #: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:20
 #: data/units/Mermaid_Initiate.cfg:20 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Orcish_Shaman.cfg:19
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
+#: data/units/Red_Mage.cfg:23 data/units/Red_Mage.cfg:116
 #: data/units/Saurian_Icecaster.cfg:22 data/units/Saurian_Soothsayer.cfg:22
 #: data/units/Saurian_Tribalist.cfg:22 data/units/Silver_Mage.cfg:77
-#: data/units/Silver_Mage.cfg:165
+#: data/units/Silver_Mage.cfg:206 data/units/White_Mage.cfg:29
+#: data/units/White_Mage.cfg:100
 msgid "staff"
 msgstr "staff"
 
-#: data/units/Arch_Mage.cfg:39 data/units/Arch_Mage.cfg:119
+#: data/units/Arch_Mage.cfg:44 data/units/Arch_Mage.cfg:137
 #: data/units/Elvish_High_Lord.cfg:42 data/units/Elvish_Lord.cfg:36
-#: data/units/Great_Mage.cfg:39 data/units/Great_Mage.cfg:116
-#: data/units/Red_Mage.cfg:39 data/units/Red_Mage.cfg:109
-#: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:181
+#: data/units/Great_Mage.cfg:44 data/units/Great_Mage.cfg:137
+#: data/units/Red_Mage.cfg:44 data/units/Red_Mage.cfg:137
 msgid "fireball"
 msgstr "fireball"
 
-#: data/units/Arch_Mage.cfg:40 data/units/Arch_Mage.cfg:120
+#: data/units/Arch_Mage.cfg:45 data/units/Arch_Mage.cfg:138
 #: data/units/Battle_Princess.cfg:78 data/units/Commander.cfg:121
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:46
 #: data/units/Drake_Fire.cfg:44 data/units/Drake_Flameheart.cfg:49
@@ -3677,15 +3692,15 @@ msgstr "fireball"
 #: data/units/Elvish_Lord.cfg:37 data/units/Fighter.cfg:84
 #: data/units/Fire_Dragon.cfg:60 data/units/Fireball.cfg:18
 #: data/units/Fireball.cfg:19 data/units/Goblin_Pillager.cfg:20
-#: data/units/Great_Mage.cfg:40 data/units/Great_Mage.cfg:117
-#: data/units/Lord.cfg:115 data/units/Mage.cfg:37 data/units/Mage.cfg:104
-#: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:40
-#: data/units/Red_Mage.cfg:110 data/units/Silver_Mage.cfg:94
-#: data/units/Silver_Mage.cfg:182
+#: data/units/Great_Mage.cfg:45 data/units/Great_Mage.cfg:138
+#: data/units/Lord.cfg:115 data/units/Mage.cfg:42 data/units/Mage.cfg:119
+#: data/units/Princess.cfg:78 data/units/Red_Mage.cfg:45
+#: data/units/Red_Mage.cfg:138 data/units/Silver_Mage.cfg:94
+#: data/units/Silver_Mage.cfg:223
 msgid "fire"
 msgstr "fire"
 
-#: data/units/Arch_Mage.cfg:83
+#: data/units/Arch_Mage.cfg:96
 msgid "female^Arch Mage"
 msgstr "female^Arch Mage"
 
@@ -3705,13 +3720,10 @@ msgstr ""
 
 #: data/units/Assassin.cfg:21 data/units/Assassin.cfg:100
 #: data/units/Dwarvish_Thunderer.cfg:20
-#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
-#: data/units/Mage.cfg:87 data/units/Orcish_Archer.cfg:20
+#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Orcish_Archer.cfg:20
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Slayer.cfg:19
-#: data/units/Poacher.cfg:24 data/units/Red_Mage.cfg:23
-#: data/units/Red_Mage.cfg:93 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
+#: data/units/Poacher.cfg:24 data/units/Rogue.cfg:21 data/units/Rogue.cfg:81
 #: data/units/Thief.cfg:20 data/units/Thief.cfg:57 data/units/Trapper.cfg:24
-#: data/units/White_Mage.cfg:28 data/units/White_Mage.cfg:87
 msgid "dagger"
 msgstr "dagger"
 
@@ -3754,37 +3766,34 @@ msgstr "dagger"
 #: data/units/Gryphon_Rider.cfg:20 data/units/Halbardier.cfg:40
 #: data/units/Horse_Lord.cfg:22 data/units/Knight.cfg:21
 #: data/units/Lieutenant.cfg:25 data/units/Longbowman.cfg:22
-#: data/units/Lord.cfg:23 data/units/Lord.cfg:98 data/units/Mage.cfg:21
-#: data/units/Mage.cfg:88 data/units/Master_Bowman.cfg:21
-#: data/units/Merman_Triton.cfg:35 data/units/Mounted_Captain.cfg:25
-#: data/units/Mounted_Commander.cfg:25 data/units/Mounted_Fighter.cfg:22
-#: data/units/Mounted_Warrior.cfg:22 data/units/Naga-Fighter.cfg:21
-#: data/units/Naga-Fighter.cfg:52 data/units/Naga-Myrmidon.cfg:25
-#: data/units/Naga-Myrmidon.cfg:60 data/units/Naga-Warrior.cfg:25
-#: data/units/Naga-Warrior.cfg:60 data/units/Necrophage.cfg:20
-#: data/units/Nightgaunt.cfg:21 data/units/Noble_Commander.cfg:27
-#: data/units/Noble_Fighter.cfg:24 data/units/Noble_Lord.cfg:26
-#: data/units/Ogre.cfg:20 data/units/Orcish_Archer.cfg:21
-#: data/units/Orcish_Assassin.cfg:20 data/units/Orcish_Assassin.cfg:37
-#: data/units/Orcish_Crossbowman.cfg:20 data/units/Orcish_Grunt.cfg:20
-#: data/units/Orcish_Leader.cfg:22 data/units/Orcish_Ruler.cfg:22
-#: data/units/Orcish_Slayer.cfg:20 data/units/Orcish_Slayer.cfg:42
-#: data/units/Orcish_Sovereign.cfg:22 data/units/Orcish_Warlord.cfg:20
-#: data/units/Orcish_Warrior.cfg:20 data/units/Poacher.cfg:25
-#: data/units/Princess.cfg:24 data/units/Princess.cfg:62
-#: data/units/Red_Mage.cfg:24 data/units/Red_Mage.cfg:94
-#: data/units/Revenant.cfg:25 data/units/Rogue.cfg:22 data/units/Rogue.cfg:40
-#: data/units/Rogue.cfg:82 data/units/Rogue.cfg:100
-#: data/units/Royal_Guard.cfg:24 data/units/Sea_Orc.cfg:20
-#: data/units/Sergeant.cfg:25 data/units/Shadow.cfg:21
-#: data/units/Skeletal_Dragon.cfg:29 data/units/Skeletal_Dragon.cfg:48
-#: data/units/Skeleton.cfg:25 data/units/Sleeping_Gryphon.cfg:19
-#: data/units/Spectre.cfg:25 data/units/Swordsman.cfg:24
-#: data/units/Thief.cfg:21 data/units/Thief.cfg:58 data/units/Trapper.cfg:25
-#: data/units/Vampire_Bat.cfg:20 data/units/Vampire_Lady.cfg:21
-#: data/units/White_Mage.cfg:29 data/units/White_Mage.cfg:88
-#: data/units/Wolf_Rider.cfg:21 data/units/Wraith.cfg:25
-#: data/units/Young_Ogre.cfg:20
+#: data/units/Lord.cfg:23 data/units/Lord.cfg:98
+#: data/units/Master_Bowman.cfg:21 data/units/Merman_Triton.cfg:35
+#: data/units/Mounted_Captain.cfg:25 data/units/Mounted_Commander.cfg:25
+#: data/units/Mounted_Fighter.cfg:22 data/units/Mounted_Warrior.cfg:22
+#: data/units/Naga-Fighter.cfg:21 data/units/Naga-Fighter.cfg:52
+#: data/units/Naga-Myrmidon.cfg:25 data/units/Naga-Myrmidon.cfg:60
+#: data/units/Naga-Warrior.cfg:25 data/units/Naga-Warrior.cfg:60
+#: data/units/Necrophage.cfg:20 data/units/Nightgaunt.cfg:21
+#: data/units/Noble_Commander.cfg:27 data/units/Noble_Fighter.cfg:24
+#: data/units/Noble_Lord.cfg:26 data/units/Ogre.cfg:20
+#: data/units/Orcish_Archer.cfg:21 data/units/Orcish_Assassin.cfg:20
+#: data/units/Orcish_Assassin.cfg:37 data/units/Orcish_Crossbowman.cfg:20
+#: data/units/Orcish_Grunt.cfg:20 data/units/Orcish_Leader.cfg:22
+#: data/units/Orcish_Ruler.cfg:22 data/units/Orcish_Slayer.cfg:20
+#: data/units/Orcish_Slayer.cfg:42 data/units/Orcish_Sovereign.cfg:22
+#: data/units/Orcish_Warlord.cfg:20 data/units/Orcish_Warrior.cfg:20
+#: data/units/Poacher.cfg:25 data/units/Princess.cfg:24
+#: data/units/Princess.cfg:62 data/units/Revenant.cfg:25
+#: data/units/Rogue.cfg:22 data/units/Rogue.cfg:40 data/units/Rogue.cfg:82
+#: data/units/Rogue.cfg:100 data/units/Royal_Guard.cfg:24
+#: data/units/Sea_Orc.cfg:20 data/units/Sergeant.cfg:25
+#: data/units/Shadow.cfg:21 data/units/Skeletal_Dragon.cfg:29
+#: data/units/Skeletal_Dragon.cfg:48 data/units/Skeleton.cfg:25
+#: data/units/Sleeping_Gryphon.cfg:19 data/units/Spectre.cfg:25
+#: data/units/Swordsman.cfg:24 data/units/Thief.cfg:21 data/units/Thief.cfg:58
+#: data/units/Trapper.cfg:25 data/units/Vampire_Bat.cfg:20
+#: data/units/Vampire_Lady.cfg:21 data/units/Wolf_Rider.cfg:21
+#: data/units/Wraith.cfg:25 data/units/Young_Ogre.cfg:20
 msgid "blade"
 msgstr "blade"
 
@@ -3828,8 +3837,8 @@ msgstr ""
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantryman.cfg:19
-#: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:29
-#: data/units/Mage_of_Light.cfg:89 data/units/Outlaw.cfg:20
+#: data/units/Iron_Mauler.cfg:19 data/units/Mage_of_Light.cfg:30
+#: data/units/Mage_of_Light.cfg:102 data/units/Outlaw.cfg:20
 #: data/units/Outlaw.cfg:93 data/units/Outlaw_Princess.cfg:26
 #: data/units/Outlaw_Queen.cfg:27 data/units/Shock_Trooper.cfg:19
 #: data/units/Troll_Warrior.cfg:20 data/units/Warrior_King.cfg:25
@@ -4230,10 +4239,12 @@ msgid "Cuttle Fish"
 msgstr "Cuttle Fish"
 
 #: data/units/Cuttle_Fish.cfg:16
+#, fuzzy
 msgid ""
-"Cuttle Fish are giantic creatures of the seas. They can grab their opponents "
-"with strong tentacles, or spit a poisonous black ink from a distance. The "
-"best way to survive an encounter with these monsters is to remain ashore."
+"Cuttle Fish are gigantic creatures of the seas. They can grab their "
+"opponents with strong tentacles, or spit a poisonous black ink from a "
+"distance. The best way to survive an encounter with these monsters is to "
+"remain ashore."
 msgstr ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
@@ -4558,10 +4569,11 @@ msgid "Drake Glider"
 msgstr "Drake Glider"
 
 #: data/units/Drake_Glider.cfg:19
+#, fuzzy
 msgid ""
 "Drake Gliders wear as little armour as possible so they can quickly escape "
 "their foes when they leave their caves. These Drakes are competent fighters, "
-"possesing the internal fire common to many of their kin. Gliders can also "
+"possessing the internal fire common to many of their kin. Gliders can also "
 "effectively use their speed to viciously slam their opponents into "
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
@@ -4708,9 +4720,10 @@ msgid "Dwarvish Dragonguard"
 msgstr "Dwarvish Dragonguard"
 
 #: data/units/Dwarvish_Dragonguard.cfg:16
+#, fuzzy
 msgid ""
 "The guardians of the great dwarvish cities, they blast at their enemies "
-"using fire from what are called dragonstaffs. They are the chief possessors "
+"using fire from what are called dragonstaves. They are the chief possessors "
 "of arcane Dwarvish technology."
 msgstr ""
 "The guardians of the great dwarvish cities, they blast at their enemies "
@@ -4748,8 +4761,9 @@ msgid "Dwarvish Guardsman"
 msgstr "Dwarvish Guardsman"
 
 #: data/units/Dwarvish_Guardsman.cfg:21
+#, fuzzy
 msgid ""
-"The most resiliant dwarves sometimes join the Dwarvish army as Guardsman. "
+"The most resilient dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
 "alot of damage, and hurling their heavy spears into the enemy."
 msgstr ""
@@ -5627,7 +5641,7 @@ msgstr ""
 msgid "Great Mage"
 msgstr "Great Mage"
 
-#: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:97
+#: data/units/Great_Mage.cfg:20 data/units/Great_Mage.cfg:113
 msgid ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
@@ -5635,7 +5649,7 @@ msgstr ""
 "Great Mages are awesome and fearsome enemies, exceeding even the Arch Mages "
 "in power."
 
-#: data/units/Great_Mage.cfg:80
+#: data/units/Great_Mage.cfg:96
 msgid "female^Great Mage"
 msgstr "female^Great Mage"
 
@@ -5905,7 +5919,7 @@ msgstr ""
 msgid "Mage"
 msgstr "Mage"
 
-#: data/units/Mage.cfg:17 data/units/Mage.cfg:84
+#: data/units/Mage.cfg:17 data/units/Mage.cfg:94
 msgid ""
 "Mages are both weak and powerful. Moving slowly, and with poor defensive "
 "skills, Mages attack with magical missiles that always have a high chance of "
@@ -5917,11 +5931,12 @@ msgstr ""
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 
-#: data/units/Mage.cfg:36 data/units/Mage.cfg:103
+#: data/units/Mage.cfg:41 data/units/Mage.cfg:118
+#: data/units/Silver_Mage.cfg:93 data/units/Silver_Mage.cfg:222
 msgid "missile"
 msgstr "missile"
 
-#: data/units/Mage.cfg:70
+#: data/units/Mage.cfg:80
 msgid "female^Mage"
 msgstr "female^Mage"
 
@@ -5929,12 +5944,12 @@ msgstr "female^Mage"
 msgid "Mage of Light"
 msgstr "Mage of Light"
 
-#: data/units/Mage_of_Light.cfg:13 data/units/Mage_of_Light.cfg:73
+#: data/units/Mage_of_Light.cfg:14 data/units/Mage_of_Light.cfg:86
 #: data/units/Mermaid_Diviner.cfg:8
 msgid "illuminates,cures"
 msgstr "illuminates,cures"
 
-#: data/units/Mage_of_Light.cfg:26 data/units/Mage_of_Light.cfg:86
+#: data/units/Mage_of_Light.cfg:27 data/units/Mage_of_Light.cfg:99
 msgid ""
 "Mages of Light are awesome allies of all lawful combatants, and fearsome "
 "foes to the forces of chaos. These Mages' powers of illumination are so "
@@ -5952,20 +5967,20 @@ msgstr ""
 "night. Like the White Mages, the Mages of Light also cure adjacent friendly "
 "units."
 
-#: data/units/Mage_of_Light.cfg:45 data/units/Mage_of_Light.cfg:105
+#: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:118
 #: data/units/Mermaid_Diviner.cfg:34 data/units/Mermaid_Priestess.cfg:32
-#: data/units/White_Mage.cfg:44 data/units/White_Mage.cfg:103
+#: data/units/White_Mage.cfg:45 data/units/White_Mage.cfg:116
 msgid "lightbeam"
 msgstr "lightbeam"
 
-#: data/units/Mage_of_Light.cfg:46 data/units/Mage_of_Light.cfg:106
+#: data/units/Mage_of_Light.cfg:47 data/units/Mage_of_Light.cfg:119
 #: data/units/Mermaid_Diviner.cfg:35 data/units/Mermaid_Priestess.cfg:33
-#: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:45
-#: data/units/White_Mage.cfg:104
+#: data/units/Paladin.cfg:26 data/units/White_Mage.cfg:46
+#: data/units/White_Mage.cfg:117
 msgid "holy"
 msgstr "holy"
 
-#: data/units/Mage_of_Light.cfg:66
+#: data/units/Mage_of_Light.cfg:78
 msgid "female^Mage of Light"
 msgstr "female^Mage of Light"
 
@@ -6426,10 +6441,11 @@ msgid "Orcish Crossbowman"
 msgstr "Orcish Crossbowman"
 
 #: data/units/Orcish_Crossbowman.cfg:16
+#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
-"Marksmen in long-range combat, they are sturdier and can handle theselves a "
+"Marksmen in long-range combat, they are sturdier and can handle themselves a "
 "little better than the Elves in close combat."
 msgstr ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
@@ -6720,8 +6736,9 @@ msgid "Pirate Galleon"
 msgstr "Pirate Galleon"
 
 #: data/units/Pirate_Galleon.cfg:14
+#, fuzzy
 msgid ""
-"Pirate galleons are to transport ships what wolves are to sheeps. Ships full "
+"Pirate galleons are to transport ships what wolves are to sheep. Ships full "
 "of goods shouldn't be lonely, far away from any land, better to help them to "
 "avoid it being sunk from overloading..."
 msgstr ""
@@ -6764,7 +6781,7 @@ msgstr ""
 msgid "Red Mage"
 msgstr "Red Mage"
 
-#: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:90
+#: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:113
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
@@ -6774,7 +6791,7 @@ msgstr ""
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 
-#: data/units/Red_Mage.cfg:73
+#: data/units/Red_Mage.cfg:96
 msgid "female^Red Mage"
 msgstr "female^Red Mage"
 
@@ -6900,10 +6917,11 @@ msgid "Saurian Skirmisher"
 msgstr "Saurian Skirmisher"
 
 #: data/units/Saurian_Skirmisher.cfg:17
+#, fuzzy
 msgid ""
-"Saurians Skirmishers are skilled in the use of the spear. Despite their "
+"Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
-"valued as scouts as the can navigate through rough terrain and around "
+"valued as scouts as they can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
@@ -6916,10 +6934,11 @@ msgid "Saurian Soothsayer"
 msgstr "Saurian Soothsayer"
 
 #: data/units/Saurian_Soothsayer.cfg:18
+#, fuzzy
 msgid ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
-"aide to their friends regardless of terrain or opposition. In addition to "
-"cure their allies they possess knowledge of cold magic."
+"aid to their friends regardless of terrain or opposition. In addition to "
+"curing their allies they possess knowledge of cold magic."
 msgstr ""
 "Saurian Soothsayers are highly valued as healers because they can provide "
 "aid to their friends regardless of terrain or opposition. In addition to "
@@ -6930,9 +6949,10 @@ msgid "Saurian Tribalist"
 msgstr "Saurian Tribalist"
 
 #: data/units/Saurian_Tribalist.cfg:18
+#, fuzzy
 msgid ""
 "Despite their lethargic cold blooded heritage, and their relative frailty, "
-"Saurian Tribalists are valued as healers because they can provide aide to "
+"Saurian Tribalists are valued as healers because they can provide aid to "
 "their allies regardless of terrain or opposition. In addition to healing "
 "they possess knowledge of cold magic."
 msgstr ""
@@ -7045,7 +7065,7 @@ msgstr ""
 msgid "Silver Mage"
 msgstr "Silver Mage"
 
-#: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:162
+#: data/units/Silver_Mage.cfg:22 data/units/Silver_Mage.cfg:151
 msgid ""
 "Silver Mages are the most deft of foot and elusive of all mages. They can "
 "teleport from any friendly village to another, translating themselves in an "
@@ -7055,7 +7075,7 @@ msgstr ""
 "teleport from any friendly village to another, translating themselves in an "
 "instant. They are also highly resistant to most forms of magical attack."
 
-#: data/units/Silver_Mage.cfg:143
+#: data/units/Silver_Mage.cfg:132
 msgid "female^Silver Mage"
 msgstr "female^Silver Mage"
 
@@ -7350,8 +7370,9 @@ msgid "female^Vampire Lady"
 msgstr "female^Vampire Lady"
 
 #: data/units/Vampire_Lady.cfg:17
+#, fuzzy
 msgid ""
-"Cold and beautiful, she maintains her eternal youthful appeareance drinking "
+"Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
@@ -7427,7 +7448,7 @@ msgstr ""
 msgid "White Mage"
 msgstr "White Mage"
 
-#: data/units/White_Mage.cfg:25 data/units/White_Mage.cfg:84
+#: data/units/White_Mage.cfg:26 data/units/White_Mage.cfg:97
 msgid ""
 "White Mages are weak in combat, but expert in the ways of healing. Units "
 "placed adjacent to a White Mage will heal as though they were resting in a "
@@ -7439,7 +7460,7 @@ msgstr ""
 "village. White Mages are potent in battle against the undead, which suffer "
 "high damage from their light beam."
 
-#: data/units/White_Mage.cfg:65
+#: data/units/White_Mage.cfg:77
 msgid "female^White Mage"
 msgstr "female^White Mage"
 
@@ -8281,7 +8302,7 @@ msgstr "Skip"
 msgid "The End"
 msgstr "The End"
 
-#: src/language.cpp:34 src/language.cpp:151
+#: src/language.cpp:34 src/language.cpp:152
 msgid "System default language"
 msgstr "System default language"
 
@@ -9132,3 +9153,6 @@ msgstr "Delete File"
 #: src/widgets/file_chooser.cpp:126
 msgid "Deletion of the file failed."
 msgstr "Deletion of the file failed."
+
+#~ msgid "Move your fighter onto a village"
+#~ msgstr "Move your fighter onto a village"
