@@ -73,6 +73,7 @@ std::vector<std::string> get_text() {
 	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Eli Dupree (Elvish Pillager)");
 	text.push_back("-   Gareth Miller (Gafgarion)");
+	text.push_back("-   Hogne HÃ¥skjold (frame)");
 	text.push_back("-   James Barton (Sangel)");
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
@@ -157,7 +158,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Hungarian Translation");
  	text.push_back("-   Khiraly");
- 	text.push_back("-   Széll Tamás (TomJoad)");
+ 	text.push_back("-   Szï¿½l Tamï¿½ (TomJoad)");
  	text.push_back("+ ");
  
  	text.push_back("+Italian Translation");
@@ -189,7 +190,7 @@ std::vector<std::string> get_text() {
  
  	text.push_back("+Spanish Translation");
  	text.push_back("-   Franciso MuÃ±oz (fmunoz)");
- 	text.push_back("-   Gabriel Rodríguez (Chewie))");
+ 	text.push_back("-   Gabriel Rodrï¿½uez (Chewie))");
  	text.push_back("-   Jose Gordillo (kilder)");
  	text.push_back("-   Jose Manuel Gomez (joseg)");
  	text.push_back("+ ");
