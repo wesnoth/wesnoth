@@ -559,7 +559,7 @@ double ai::attack_analysis::rating(double aggression, ai& ai_obj) const
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.current_team().caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/maximum<double>(0.01,support);
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
-			<< vulnerability << "/" << support << " = " << (vulnerability/support) << "\n";
+			<< vulnerability << "/" << support << " = " << (vulnerability/maximum<double>(support,0.1)) << "\n";
 		if(uses_leader) {
 			ai_obj.log_message("attack option has value " + str_cast(value) + " with exposure " + str_cast(exposure) + ": " + str_cast(vulnerability) + "/" + str_cast(support));
 		}
