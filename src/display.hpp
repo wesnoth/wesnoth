@@ -14,7 +14,7 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
-#include "gamestatus.hpp"
+class gamestatus;
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"

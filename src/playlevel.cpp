@@ -18,6 +18,8 @@
 #include "dialogs.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
+#include "game_errors.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "game_events.hpp"
 #include "halo.hpp"
@@ -284,11 +286,11 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 			}
 
 			if(map.empty()) {
-				throw gamestatus::load_game_failed("Map not found");
+				throw game::load_game_failed("Map not found");
 			}
 
 			if(!start_pos.valid() && new_unit.side() == 1) {
-				throw gamestatus::load_game_failed("No starting position for side 1");
+				throw game::load_game_failed("No starting position for side 1");
 			}
 
 			if(start_pos.valid()) {

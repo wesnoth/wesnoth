@@ -15,6 +15,7 @@
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "game_errors.hpp"
 #include "gamestatus.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -426,7 +427,7 @@ void read_save_file(const std::string& name, config& cfg)
 
 	if(cfg.empty()) {
 		std::cerr << "Could not parse file data into config\n";
-		throw gamestatus::load_game_failed();
+		throw game::load_game_failed();
 	}
 }
 
@@ -440,7 +441,7 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 	state = read_game(data,&cfg);
 }
 
-//throws gamestatus::save_game_failed
+//throws game::save_game_failed
 void save_game(const game_state& state)
 {
 	log_scope("save_game");
@@ -464,7 +465,7 @@ void save_game(const game_state& state)
 		write_save_index();
 
 	} catch(io_exception& e) {
-		throw gamestatus::save_game_failed(e.what());
+		throw game::save_game_failed(e.what());
 	}
 }
 

@@ -15,6 +15,7 @@
 
 #include "ai.hpp"
 #include "display.hpp"
+#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "image.hpp"
 #include "language.hpp"
@@ -1283,7 +1284,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 						<< " and the map location is invalid.\n";
 				}
 			}
-		} catch(gamestatus::load_game_failed& e) {
+		} catch(game::load_game_failed& e) {
 			ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
 		}
 	}

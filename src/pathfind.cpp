@@ -13,12 +13,14 @@ See the COPYING file for more details.
 
 #include "global.hpp"
 
+#include "astarnode.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
-#include "astarnode.hpp"
 #include "wassert.hpp"
+
+class gamestatus;
 
 #include <cmath>
 #include <iostream>

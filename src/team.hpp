@@ -16,6 +16,8 @@
 #include "config.hpp"
 #include "map.hpp"
 
+struct time_of_day;
+
 #include <set>
 #include <string>
 #include <vector>
@@ -234,8 +236,8 @@ struct teams_manager {
 
 bool is_observer();
 
-//function which will validate a side. Throws gamestatus::game_error
+//function which will validate a side. Throws game::game_error
 //if the side is invalid
-void validate_side(int side); //throw gamestatus::game_error
+void validate_side(int side); //throw game::game_error
 
 #endif

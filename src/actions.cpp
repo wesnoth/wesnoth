@@ -17,6 +17,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
+#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -1278,7 +1279,7 @@ unit get_advanced_unit(const game_data& info,
 	if(new_type != info.unit_types.end() && un != units.end()) {
 		return unit(&(new_type->second),un->second);
 	} else {
-		throw gamestatus::game_error("Could not find the unit being advanced"
+		throw game::game_error("Could not find the unit being advanced"
 		                             " to: " + advance_to);
 	}
 }

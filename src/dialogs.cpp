@@ -18,6 +18,7 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
 #include "language.hpp"
@@ -482,7 +483,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 			} catch(config::error&) {
 				summary["corrupt"] = "yes";
 				ERR_G << "save '" << games[*s].name << "' could not be loaded (config parse error)\n";
-			} catch(gamestatus::load_game_failed&) {
+			} catch(game::load_game_failed&) {
 				summary["corrupt"] = "yes";
 				ERR_G << "save '" << games[*s].name << "' could not be loaded (load_game_failed exception)\n";
 			}

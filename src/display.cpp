@@ -18,6 +18,7 @@
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "hotkeys.hpp"

@@ -16,6 +16,7 @@
 #include "actions.hpp"
 #include "dialogs.hpp"
 #include "events.hpp"
+#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "help.hpp"
@@ -1288,7 +1289,7 @@ void turn_info::end_turn()
 	write_game_snapshot(snapshot);
 	try {
 		recorder.save_game(_("Auto-Save"), snapshot, state_of_game_.starting_pos);
-	} catch(gamestatus::save_game_failed&) {
+	} catch(game::save_game_failed&) {
 		gui::show_dialog(gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
 	}
@@ -1507,7 +1508,7 @@ void turn_info::load_game()
 	bool show_replay = false;
 	const std::string game = dialogs::load_game_dialog(gui_,terrain_config_,gameinfo_,&show_replay);
 	if(game != "") {
-		throw gamestatus::load_game_exception(game,show_replay);
+		throw game::load_game_exception(game,show_replay);
 	}
 }
 
@@ -1551,7 +1552,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 			if(dialog_type != gui::NULL_DIALOG) {
 				gui::show_dialog(gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 			}
-		} catch(gamestatus::save_game_failed&) {
+		} catch(game::save_game_failed&) {
 			gui::show_dialog(gui_,NULL,_("Error"),_("The game could not be saved"),gui::MESSAGE);
 			//do not bother retrying, since the user can just try to save the game again
 		};

@@ -14,7 +14,7 @@
 #include "global.hpp"
 
 #include "game_config.hpp"
-#include "gamestatus.hpp"
+#include "game_errors.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
@@ -601,7 +601,7 @@ void unit::read(const game_data& data, const config& cfg)
 	if(i != data.unit_types.end())
 		type_ = &i->second;
 	else
-		throw gamestatus::load_game_failed("Unit not found: '" + cfg["type"] + "'");
+		throw game::load_game_failed("Unit not found: '" + cfg["type"] + "'");
 
 	wassert(type_ != NULL);
 

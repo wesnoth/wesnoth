@@ -15,9 +15,9 @@
 
 class config;
 class CVideo;
+struct game_state;
 
 #include "game_config.hpp"
-#include "gamestatus.hpp"
 #include "unit_types.hpp"
 
 #include <vector>

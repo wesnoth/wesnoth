@@ -19,7 +19,6 @@
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../game_config.hpp"
-#include "../gamestatus.hpp"
 #include "../gettext.hpp"
 #include "../key.hpp"
 #include "../widgets/menu.hpp"

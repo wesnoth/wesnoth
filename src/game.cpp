@@ -26,6 +26,7 @@
 #include "filesystem.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "game_errors.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
@@ -147,7 +148,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 							config snapshot;
 
 							recorder.save_game(label, snapshot, state.starting_pos);
-						} catch(gamestatus::save_game_failed&) {
+						} catch(game::save_game_failed&) {
 							gui::show_error_message(disp, _("The game could not be saved"));
 							retry = true;
 						};
@@ -169,10 +170,10 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			if(res != VICTORY) {
 				return res;
 			}
-		} catch(gamestatus::load_game_failed& e) {
+		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp, _("The game could not be loaded: ") + e.message);
 			return QUIT;
-		} catch(gamestatus::game_error& e) {
+		} catch(game::game_error& e) {
 			gui::show_error_message(disp, _("Error while playing the game: ") + e.message);
 			return QUIT;
 		} catch(gamemap::incorrect_format_exception& e) {
@@ -204,7 +205,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 				if(should_save == 0) {
 					try {
 						save_game(state);
-					} catch(gamestatus::save_game_failed&) {
+					} catch(game::save_game_failed&) {
 						gui::show_error_message(disp, _("The game could not be saved"));
 						retry = true;
 					}
@@ -788,9 +789,9 @@ bool game_controller::play_multiplayer_mode()
 
    	try {
    		play_level(units_data_,game_config_,&level,video_,state_,story);
-   	} catch(gamestatus::error& e) {
+   	} catch(game::error& e) {
    		std::cerr << "caught error: '" << e.message << "'\n";
-   	} catch(gamestatus::load_game_exception& e) {
+   	} catch(game::load_game_exception& e) {
    		//the user's trying to load a game, so go into the normal title screen loop and load one
    		loaded_game_ = e.game;
    		loaded_game_show_replay_ = e.show_replay;
@@ -853,7 +854,7 @@ bool game_controller::load_game()
 			}
 		}
 
-	} catch(gamestatus::error& e) {
+	} catch(game::error& e) {
 		gui::show_error_message(disp(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		return false;
 	} catch(config::error& e) {
@@ -913,11 +914,11 @@ bool game_controller::load_game()
 		try {
 			play_level(units_data_,game_config_,&starting_pos,video_,state_,story);
 			recorder.clear();
-		} catch(gamestatus::load_game_failed& e) {
+		} catch(game::load_game_failed& e) {
 			gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
-		} catch(gamestatus::game_error& e) {
+		} catch(game::game_error& e) {
 			gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
-		} catch(gamestatus::load_game_exception& e) {
+		} catch(game::load_game_exception& e) {
 			//this will make it so next time through the title screen loop, this game is loaded
 			loaded_game_ = e.game;
 			loaded_game_show_replay_ = e.show_replay;
@@ -1327,9 +1328,9 @@ bool game_controller::play_multiplayer()
 
 			mp::start_client(disp(), game_config_, units_data_, host);
 		}
-	} catch(gamestatus::load_game_failed& e) {
+	} catch(game::load_game_failed& e) {
 		gui::show_error_message(disp(), _("The game could not be loaded: ") + e.message);
-	} catch(gamestatus::game_error& e) {
+	} catch(game::game_error& e) {
 		gui::show_error_message(disp(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
 		std::cerr << "caught network error...\n";
@@ -1343,7 +1344,7 @@ bool game_controller::play_multiplayer()
 		}
 	} catch(gamemap::incorrect_format_exception& e) {
 		gui::show_error_message(disp(), std::string(_("The game map could not be loaded: ")) + e.msg_);
-	} catch(gamestatus::load_game_exception& e) {
+	} catch(game::load_game_exception& e) {
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;
 		loaded_game_show_replay_ = e.show_replay;
@@ -1436,7 +1437,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 			the_end(disp().video());
 			about::show_about(disp().video());
 		}
-	} catch(gamestatus::load_game_exception& e) {
+	} catch(game::load_game_exception& e) {
 
 		//this will make it so next time through the title screen loop, this game is loaded
 		loaded_game_ = e.game;

@@ -15,7 +15,7 @@
 
 #include "game_config.hpp"
 #include "game_events.hpp"
-#include "gamestatus.hpp"
+#include "game_errors.hpp"
 #include "log.hpp"
 #include "network.hpp"
 #include "team.hpp"
@@ -718,7 +718,7 @@ void validate_side(int side)
 	}
 
 	if(side < 1 || side > int(teams->size())) {
-		throw gamestatus::game_error("invalid side found in unit definition");
+		throw game::game_error("invalid side found in unit definition");
 	}
 }
 

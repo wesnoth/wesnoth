@@ -13,13 +13,13 @@
 #ifndef PLAYTURN_HPP_INCLUDED
 #define PLAYTURN_HPP_INCLUDED
 
-class gamestatus;
 class replay_network_sender;
 
 #include "actions.hpp"
 #include "config.hpp"
 #include "display.hpp"
 #include "events.hpp"
+#include "gamestatus.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
 #include "scoped_resource.hpp"

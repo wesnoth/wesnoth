@@ -14,7 +14,6 @@
 #include "global.hpp"
 
 #include "game_config.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "unit_types.hpp"

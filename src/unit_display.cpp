@@ -4,6 +4,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
+#include "gamestatus.hpp"
 #include "halo.hpp"
 #include "image.hpp"
 #include "log.hpp"

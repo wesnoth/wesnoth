@@ -17,6 +17,7 @@
 #include "../filesystem.hpp"
 #include "../font.hpp"
 #include "../game_config.hpp"
+#include "../gamestatus.hpp"
 #include "../gettext.hpp"
 #include "../image.hpp"
 #include "../language.hpp"

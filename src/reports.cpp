@@ -3,6 +3,7 @@
 #include "actions.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "reports.hpp"

@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "gamestatus.hpp"
+class gamestatus;
+
 #include "map.hpp"
 #include "team.hpp"
 #include "unit.hpp"
