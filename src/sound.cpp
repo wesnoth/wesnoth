@@ -133,7 +133,20 @@ void play_sound(const std::string& file)
 
 	std::map<std::string,Mix_Chunk*>::const_iterator itor = sound_cache.find(file);
 	if(itor == sound_cache.end()) {
+#ifdef USE_ZIPIOS
+		std::string s = read_file("sounds/" + file);
+		if (s.empty()) {
+			return;
+		}
 
+		SDL_RWops* ops = SDL_RWFromMem((void*)s.c_str(), s.size());
+		Mix_Chunk* const sfx = Mix_LoadWAV_RW(ops,0);
+		if(sfx == NULL) {
+			std::cerr << "Could not load sound file '" << file << "': "
+			          << SDL_GetError() << "\n";
+			return;
+		}
+#else
 		const std::string& filename = get_binary_file_location("sounds",file);
 
 		if(filename.empty()) {
@@ -146,6 +159,7 @@ void play_sound(const std::string& file)
 			          << SDL_GetError() << "\n";
 			return;
 		}
+#endif
 
 		itor = sound_cache.insert(std::pair<std::string,Mix_Chunk*>(file,sfx)).first;
 	}
