@@ -1379,7 +1379,6 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 	else {
 		std::vector<std::string> parts = split_in_width(text, font_size, remaining_width);
 		std::string first_part = parts.front();
-		
 		int state = ref_dst == "" ? 0 : TTF_STYLE_UNDERLINE;
 		state |= bold ? TTF_STYLE_BOLD : 0;
 		state |= italic ? TTF_STYLE_ITALIC : 0;
@@ -1392,18 +1391,29 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 			// add the remaining parts.
 			std::string s = text;
 			s.erase(0, first_part.size());
-			const std::string first_word_before = get_first_word(s) + " ";
-			s = remove_first_space(s);
-			const std::string first_word_after = get_first_word(s);
-
+			if (s.length() < 1) {
+				return;
+			}
+			const std::string first_word_before = get_first_word(s);
+			const std::string first_word_after = get_first_word(remove_first_space(s));
+			//std::cout << "before: '" << first_word_before << "'\n"
+			//		  << "after: '" << first_word_after << "'\n"
+			//		  << "before linewidth: " << font::line_width(first_word_before, font_size)
+			//		  << "\nafter linewidth: " << font::line_width(first_word_after, font_size)
+			//		  << "\nremaining width: " << get_remaining_width() << std::endl;
 			if (get_remaining_width() >= font::line_width(first_word_after, font_size)
 				&& get_remaining_width() < font::line_width(first_word_before, font_size)) {
 				// If the removal of the space made this word fit, we
 				// must move down a line, otherwise it will be drawn
 				// without a space at the end of the line.
+				s = remove_first_space(s);
 				down_one_line();
 			}
+			else if (!(font::line_width(first_word_before, font_size) < get_remaining_width())) {
+				s = remove_first_space(s);
+			}
 			add_text_item(s, ref_dst, _font_size, bold, italic, text_color);
+				
 		}
 	}
 }
@@ -2115,12 +2125,18 @@ std::string escape(const std::string &s) {
 }
 		
 std::string get_first_word(const std::string &s) {
+	if (s == "") {
+		return s;
+	}
 	size_t first_word_start = s.find_first_not_of(" ");
 	if (first_word_start == std::string::npos) {
 		first_word_start = 0;
 	}
 	size_t first_word_end = s.find_first_of(" \n", first_word_start);
-	if (first_word_end == std::string::npos) {
+	if (first_word_end == std::string::npos || first_word_end == first_word_start) {
+		// Either this word contains no spaces/newlines, or it consists
+		// of only spaces and newlines. In either case, use the whole
+		// chunk as a word.
 		first_word_end = s.size();
 	}
 	const std::string first_word = s.substr(0, first_word_end);
