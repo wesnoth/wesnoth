@@ -332,7 +332,7 @@ SDL_Surface* get_image(const image::locator& i_locator, TYPE type, COLOUR_ADJUST
 				const scoped_sdl_surface scoped_surface(result);
 				result = adjust_surface_colour(scaled_surf,red_adjust,green_adjust,blue_adjust);
 			} else {
-				result = clone_surface(scaled_surf);
+				result = create_optimized_surface(scaled_surf);
 			}
 
 			if(result == NULL) {
@@ -518,7 +518,7 @@ SDL_Surface* getMinimap(int w, int h, const gamemap& map,
 				assert(surf != NULL);
 				
 				SDL_Rect maprect = {x*scale*3/4,y*scale + (is_odd(x) ? scale/2 : 0),0,0};
-				sdl_safe_blit(surf, NULL, minimap, &maprect);
+				SDL_BlitSurface(surf, NULL, minimap, &maprect);
 			}
 		}
 	}

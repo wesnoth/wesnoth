@@ -69,6 +69,7 @@ private:
 	SDL_Rect rect_;
 	bool focus_;		// Should user input be ignored?
 	bool dirty_;		// Does the widget need drawn?
+	mutable bool needs_restore_; //have we drawn ourselves, so that if moved, we need to restore the background?
 
 	bool hidden_;
 

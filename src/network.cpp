@@ -487,7 +487,7 @@ void set_default_send_size(size_t max_size)
 	default_max_send_size = max_size;
 }
 
-void send_data(const config& cfg, connection connection_num, size_t max_size)
+void send_data(const config& cfg, connection connection_num, size_t max_size, SEND_TYPE mode)
 {
 	if(cfg.empty()) {
 		return;
@@ -533,7 +533,7 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 
 	//if the data is less than our maximum chunk, and there is no data queued to send
 	//to this host, then send all data now
-	if((max_size == 0 || value.size()+1 <= max_size) && send_queue.count(connection_num) == 0) {
+	if(mode == SEND_DATA && (max_size == 0 || value.size()+1 <= max_size) && send_queue.count(connection_num) == 0) {
 		std::cerr << "sending " << (value.size()+1) << " bytes\n";
 		const int res = SDLNet_TCP_Send(get_socket(connection_num),
 		                                const_cast<char*>(value.c_str()),
@@ -553,8 +553,15 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 		std::copy(value.begin(),value.end(),itor->second.buf.begin());
 		itor->second.buf.back() = 0;
 
-		process_send_queue(connection_num,max_size);
+		if(mode == SEND_DATA) {
+			process_send_queue(connection_num,max_size);
+		}
 	}
+}
+
+void queue_data(const config& cfg, connection connection_num)
+{
+	send_data(cfg,connection_num,0,QUEUE_ONLY);
 }
 
 void process_send_queue(connection connection_num, size_t max_size)
@@ -594,6 +601,8 @@ void process_send_queue(connection connection_num, size_t max_size)
 			std::cerr << "sending data failed: " << res << "/" << bytes_to_send << "\n";
 			throw error("Sending queued data failed",connection_num);
 		}
+
+		std::cerr << "sent.\n";
 
 		upto += bytes_to_send;
 

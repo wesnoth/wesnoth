@@ -27,9 +27,9 @@
 #include <sstream>
 
 namespace {
-	const std::string ModificationTypes[] = { "object", "trait" };
-	const int NumModificationTypes = sizeof(ModificationTypes)/
-	                                 sizeof(*ModificationTypes);
+	const std::string ModificationTypes[] = { "object", "trait", "advance" };
+	const size_t NumModificationTypes = sizeof(ModificationTypes)/
+	                                    sizeof(*ModificationTypes);
 }
 
 bool compare_unit_values::operator()(const unit& a, const unit& b) const
@@ -349,14 +349,12 @@ int unit::max_experience() const
 bool unit::get_experience(int xp)
 {
 	experience_ += xp;
-	if(experience_ > max_experience())
-		experience_ = max_experience();
 	return advances();
 }
 
 bool unit::advances() const
 {
-	return experience_ >= max_experience() && !type().advances_to().empty();
+	return experience_ >= max_experience() && can_advance();
 }
 
 bool unit::gets_hit(int damage)
@@ -801,15 +799,24 @@ const std::string& unit::image() const
 	switch(state_) {
 		case STATE_NORMAL: return type_->image();
 		case STATE_DEFENDING_LONG:
-		           return type_->image_defensive(attack_type::LONG_RANGE);
-		case STATE_DEFENDING_SHORT:
-		           return type_->image_defensive(attack_type::SHORT_RANGE);
+		case STATE_DEFENDING_SHORT: {
+			const attack_type::RANGE range = (state_ == STATE_DEFENDING_LONG) ? attack_type::LONG_RANGE : attack_type::SHORT_RANGE;
+			const unit_animation* const anim = type_->defend_animation(getsHit_,range);
+			if(anim != NULL) {
+				const std::string* img = anim->get_frame(attackingMilliseconds_);
+				if(img != NULL) {
+					return *img;
+				}
+			}
+
+			return type_->image_defensive(range);
+		}
 		case STATE_ATTACKING: {
 			if(attackType_ == NULL)
 				return type_->image();
 
 			const std::string* const img =
-			          attackType_->get_frame(attackingMilliseconds_);
+			          attackType_->animation().get_frame(attackingMilliseconds_);
 
 			if(img == NULL)
 				return type_->image_fighting(attackType_->range());
@@ -825,10 +832,12 @@ const std::string& unit::image() const
 	}
 }
 
-void unit::set_defending(bool newval, attack_type::RANGE range)
+void unit::set_defending(bool newval, bool hits, int ms, attack_type::RANGE range)
 {
 	state_ = newval ? (range == attack_type::LONG_RANGE ? STATE_DEFENDING_LONG :
 	                   STATE_DEFENDING_SHORT): STATE_NORMAL;
+	attackingMilliseconds_ = ms;
+	getsHit_ = hits;
 }
 
 void unit::set_attacking(bool newval, const attack_type* type, int ms)
@@ -883,6 +892,37 @@ void unit::set_goto(const gamemap::location& new_goto)
 	goto_ = new_goto;
 }
 
+bool unit::can_advance() const
+{
+	return type().can_advance() || get_modification_advances().empty() == false;
+}
+
+config::child_list unit::get_modification_advances() const
+{
+	config::child_list res;
+	const config::child_list& advances = type().modification_advancements();
+	for(config::child_list::const_iterator i = advances.begin(); i != advances.end(); ++i) {
+		if(modification_count("advance",(**i)["id"]) < lexical_cast_default<size_t>((**i)["max_times"],1)) {
+			res.push_back(*i);
+		}
+	}
+
+	return res;
+}
+
+size_t unit::modification_count(const std::string& type, const std::string& id) const
+{
+	size_t res = 0;
+	const config::child_list& items = modifications_.get_children(type);
+	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
+		if((**i)["id"] == id) {
+			++res;
+		}
+	}
+
+	return res;
+}
+
 void unit::add_modification(const std::string& type,
                             const config& mod, bool no_add)
 {
@@ -894,6 +934,15 @@ void unit::add_modification(const std::string& type,
 
 	for(config::const_child_itors i = mod.child_range("effect");
 	    i.first != i.second; ++i.first) {
+
+		//see if the effect only applies to certain unit types
+		const std::string& type_filter = (**i.first)["unit_type"];
+		if(type_filter.empty() == false) {
+			const std::vector<std::string>& types = config::split(type_filter);
+			if(std::find(types.begin(),types.end(),this->type().name()) == types.end()) {
+				continue;
+			}
+		}
 
 		std::stringstream description;
 

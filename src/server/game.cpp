@@ -134,7 +134,7 @@ bool game::take_side(network::connection player, const config& cfg)
 					config& reassign = response.add_child("reassign_side");
 					reassign["from"] = cfg["side"];
 					reassign["to"] = new_cfg["side"];
-					network::send_data(response,player);
+					network::queue_data(response,player);
 				}
 
 				return res;
@@ -147,7 +147,7 @@ bool game::take_side(network::connection player, const config& cfg)
 
 	//send host notification of taking this side
 	if(players_.empty() == false) {
-		network::send_data(cfg,players_.front());
+		network::queue_data(cfg,players_.front());
 	}
 
 	return true;
@@ -236,7 +236,7 @@ void game::add_player(network::connection player)
 		//tell this player that the game has started
 		config cfg;
 		cfg.add_child("start_game");
-		network::send_data(cfg,player);
+		network::queue_data(cfg,player);
 	}
 
 	//if the player is already in the game, don't add them.
@@ -249,7 +249,7 @@ void game::add_player(network::connection player)
 	send_user_list();
 
 	//send the player the history of the game to-date
-	network::send_data(history_,player);
+	network::queue_data(history_,player);
 }
 
 void game::remove_player(network::connection player)
@@ -266,7 +266,7 @@ void game::remove_player(network::connection player)
 		if(players_.empty() == false) {
 			config drop;
 			drop["side_drop"] = side->second;
-			network::send_data(drop,players_.front());
+			network::queue_data(drop,players_.front());
 		}
 
 		sides_taken_.erase(side->second);
@@ -319,7 +319,7 @@ void game::send_data(const config& data, network::connection exclude)
 	for(std::vector<network::connection>::const_iterator
 	    i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && (allow_observers_ || sides_.count(*i) == 1)) {
-			network::send_data(data,*i);
+			network::queue_data(data,*i);
 		}
 	}
 }
@@ -354,7 +354,7 @@ void game::send_data_team(const config& data, const std::string& team, network::
 {
 	for(std::vector<network::connection>::const_iterator i = players_.begin(); i != players_.end(); ++i) {
 		if(*i != exclude && player_on_team(team,*i)) {
-			network::send_data(data,*i);
+			network::queue_data(data,*i);
 		}
 	}
 }

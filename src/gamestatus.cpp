@@ -512,6 +512,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	}
 
 	out["leader"] = leader;
+	out["map_data"] = "";
 
 	if(!shrouded) {
 		if(has_snapshot) {

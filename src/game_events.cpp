@@ -739,7 +739,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		gamemap::location loc;
 		bool remove_overlay = false;
 		if(filter != NULL) {
-			loc = gamemap::location(*filter);
+			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
+				if(game_events::unit_matches_filter(u,*filter)) {
+					loc = u->first;
+					break;
+				}
+			}
 		}
 
 		if(loc.valid() == false) {
@@ -749,10 +754,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		const unit_map::iterator u = units->find(loc);
 
-		if(u == units->end())
-			return rval;
-
-		if(filter == NULL || u->second.matches_filter(*filter)) {
+		if(u != units->end() && (filter == NULL || u->second.matches_filter(*filter))) {
 			const std::string& lang = string_table[id];
 			if(!lang.empty())
 				text = lang;

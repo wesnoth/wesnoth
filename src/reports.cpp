@@ -153,7 +153,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 		break;
 	case UNIT_XP:
-		if(u->second.type().advances_to().empty()) {
+		if(u->second.can_advance() == false) {
 			str << u->second.experience() << "/-";
 		} else {
 			//if killing a unit of the same level as us lets us advance, display in 'good' colour

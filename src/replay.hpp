@@ -56,6 +56,7 @@ public:
 	void end_turn();
 
 	void speak(const config& cfg);
+	std::string build_chat_log(const std::string& team) const;
 
 	//get data range will get a range of moves from the replay system.
 	//if data_type is 'ALL_DATA' then it will return all data in this range

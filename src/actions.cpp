@@ -1443,6 +1443,7 @@ bool clear_shroud_unit(const gamemap& map,
 
 	for(std::vector<gamemap::location>::const_iterator it =
 	    cleared_locations.begin(); it != cleared_locations.end(); ++it) {
+
 		if(units.count(*it)) {
 			if(seen_units == NULL || known_units == NULL) {
 				static const std::string sighted("sighted");
@@ -1755,6 +1756,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		disp->draw();
 		disp->recalculate_minimap();
+	}
+
+	for(std::set<gamemap::location>::const_iterator seen = seen_units.begin(); seen != seen_units.end(); ++seen) {
+		game_events::fire("sighted",*seen,steps.back());
 	}
 
 	assert(steps.size() <= route.size());

@@ -116,7 +116,7 @@ struct font_style_setter
 		//SDL_ttf to segfault. We work around this here by disallowing combinations
 		//of styles
 		if((style&TTF_STYLE_UNDERLINE) != 0) {
-			style = TTF_STYLE_UNDERLINE;
+			style = TTF_STYLE_NORMAL; //TTF_STYLE_UNDERLINE;
 		} else if((style&TTF_STYLE_BOLD) != 0) {
 			style = TTF_STYLE_BOLD;
 		} else if((style&TTF_STYLE_ITALIC) != 0) {
@@ -368,7 +368,7 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
-		sdl_safe_blit(surface,&src,gui_surface,&dest);
+		SDL_BlitSurface(surface,&src,gui_surface,&dest);
 	}
 
 	if(use_tooltips) {

@@ -112,7 +112,7 @@ public:
 	//(could be in the middle of an attack etc)
 	const std::string& image() const;
 
-	void set_defending(bool newval,
+	void set_defending(bool newval, bool hits=false, int ms=0,
 	                   attack_type::RANGE range=attack_type::LONG_RANGE);
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
@@ -134,6 +134,11 @@ public:
 
 	bool is_flying() const;
 
+	bool can_advance() const;
+	config::child_list get_modification_advances() const;
+
+	size_t modification_count(const std::string& type, const std::string& id) const;
+
 	void add_modification(const std::string& type, const config& modification,
 	                      bool no_add=false);
 
@@ -150,6 +155,7 @@ private:
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;
+	bool getsHit_;
 
 	int hitpoints_;
 	int maxHitpoints_, backupMaxHitpoints_;

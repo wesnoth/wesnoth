@@ -343,9 +343,16 @@ void mp_connect::set_area(const SDL_Rect& rect)
 	// Wait to players, Configure players
 	//gui::draw_dialog_background(left, right, width, height, *disp_, "menu");
 
+	gui::button* left_button = &launch_;
+	gui::button* right_button = &cancel_;
+
+#ifdef OK_BUTTON_ON_RIGHT
+	std::swap(left_button,right_button);
+#endif
+
 	//Buttons
-	cancel_.set_location(right - cancel_.width() - gui::ButtonHPadding,bottom-cancel_.height()-gui::ButtonVPadding);
-	launch_.set_location(right - cancel_.width() - launch_.width() - gui::ButtonHPadding*2,bottom-launch_.height()-gui::ButtonVPadding);
+	right_button->set_location(right - right_button->width() - gui::ButtonHPadding,bottom-right_button->height()-gui::ButtonVPadding);
+	left_button->set_location(right - right_button->width() - left_button->width() - gui::ButtonHPadding*2,bottom-left_button->height()-gui::ButtonVPadding);
 	
 	ai_.set_location(left+30,bottom-60);
 
@@ -589,10 +596,10 @@ lobby::RESULT mp_connect::process()
 				side["description"] = preferences::login();
 				for(size_t m = 0; m != combos_type_.size(); ++m) {
 					if(m != n) {
-						if(combos_type_[m].selected() == 4){
-							combos_type_[m].set_selected(0);
+						if(combos_type_[m].selected() == 5){
+							combos_type_[m].set_selected(2);
 							config& si = **(sides.first+m);
-							si["controller"] = "network";
+							si["controller"] = "ai";
 							si["description"] = "";
 						}
 					}

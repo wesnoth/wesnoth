@@ -472,6 +472,9 @@ int play_game(int argc, char** argv)
 	}
 
 	const cursor::manager cursor_manager;
+#ifdef _X11
+	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
+#endif
 
 	std::cerr << "initialized gui\n";
 	std::cerr << (SDL_GetTicks() - start_ticks) << "\n";

@@ -59,7 +59,7 @@ private:
 
 	int text_pos_;
 	int cursor_pos_;
-	std::vector<int> char_pos_;
+	std::vector<int> char_x_, char_y_;
 
 	bool editable_;
 
@@ -79,6 +79,8 @@ private:
 	bool scroll_bottom_;
 
 	bool wrap_;
+
+	size_t line_height_, yscroll_;
 
 	void handle_event(const SDL_Event& event);
 
