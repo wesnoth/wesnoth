@@ -36,7 +36,6 @@ namespace {
 language_def known_languages[] = {
 	language_def("", N_("System default language")),
 	language_def("bg_BG", "Български (Bulgarski)"),
-	language_def("es_ES", "Castellano"),
 	language_def("ca_ES", "Català"),
 	language_def("cs_CZ", "Čeština"),
 	language_def("da_DK", "Dansk"),
@@ -45,6 +44,7 @@ language_def known_languages[] = {
 	language_def("et_EE", "Eesti"),
 	language_def("en_GB", "English (GB)"),
 	language_def("C",     "English (US)"),
+	language_def("es_ES", "Español"),
 	language_def("eu_ES", "Euskera"),
 	language_def("fr_FR", "Français"),
 	language_def("it_IT", "Italiano"),
