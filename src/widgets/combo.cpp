@@ -45,6 +45,7 @@ bool combo::changed()
 void combo::set_items(const std::vector<std::string>& items)
 {
 	items_ = items;
+	selected_ = -1;
 }
 
 void combo::set_selected(int val)
