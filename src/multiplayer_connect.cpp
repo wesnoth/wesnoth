@@ -46,7 +46,6 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	cfg_(cfg),
 
 	index_(index),
-	controller_(parent_->default_controller_),
 
 	player_number_(parent.disp(), lexical_cast_default<std::string>(index+1, ""),
 			font::SIZE_XLARGE, font::GOOD_COLOUR),
@@ -64,6 +63,17 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	enabled_(!parent_->params_.saved_game),
 	changed_(false)
 {
+	if(enabled_) {
+		controller_ = parent_->default_controller_;
+	} else {
+		for(size_t i = CNTR_NETWORK; i != CNTR_LAST; ++i) {
+			if(cfg_["controller"] == controller_names[i]) {
+				controller_ = (mp::controller)i;
+				break;
+			}
+		}
+	}
+	
 	SDL_Rect r;
 	r.w = 120;
 	r.h = 16;
