@@ -135,10 +135,12 @@ void set_colour_adjustment(int r, int g, int b)
 
 void set_zoom(double amount)
 {
-	zoom = amount;
-	clear_surfaces(scaledImages_);
-	clear_surfaces(greyedImages_);
-	clear_surfaces(brightenedImages_);
+	if(amount != zoom) {
+		zoom = amount;
+		clear_surfaces(scaledImages_);
+		clear_surfaces(greyedImages_);
+		clear_surfaces(brightenedImages_);
+	}
 }
 
 SDL_Surface* get_image(const std::string& filename,TYPE type)

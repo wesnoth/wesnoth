@@ -106,6 +106,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        turbo_(false), grid_(false), sidebarScaling_(1.0)
 {
 	new_turn();
+	image::set_zoom(zoom_);
 
 	gameStatusRect_.w = 0;
 	unitDescriptionRect_.w = 0;
@@ -370,6 +371,8 @@ void display::bounds_check_position()
 
 	if(zoom_ > max_zoom)
 		zoom_ = max_zoom;
+
+	image::set_zoom(zoom_);
 
 	const double xend = zoom_*map_.x()*0.75 + zoom_*0.25;
 	const double yend = zoom_*map_.y() + zoom_/2.0;
