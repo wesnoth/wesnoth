@@ -113,6 +113,10 @@ SOURCE=.\src\ai_move.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\astarnode.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\builder.cpp
 # End Source File
 # Begin Source File
@@ -429,6 +433,10 @@ SOURCE=.\src\array.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\astarnode.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\builder.hpp
 # End Source File
 # Begin Source File
@@ -614,6 +622,10 @@ SOURCE=.\src\editor\scenario_editor.hpp
 # Begin Source File
 
 SOURCE=.\src\scoped_resource.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\widgets\scrollarea.hpp
 # End Source File
 # Begin Source File
 
