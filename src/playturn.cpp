@@ -1165,7 +1165,7 @@ void turn_info::end_turn()
 	write_game_snapshot(snapshot);
 	try {
 		config starting_pos;
-		recorder.save_game(gameinfo_,string_table["auto_save"],snapshot,starting_pos,false);
+		recorder.save_game(gameinfo_,string_table["auto_save"],snapshot,state_of_game_.starting_pos);
 	} catch(gamestatus::save_game_failed& e) {
 		gui::show_dialog(gui_,NULL,"",string_table["auto_save_game_failed"],gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
