@@ -536,39 +536,42 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		std::cout << "move: " << move.first.x << ", " << move.first.y << " - " << move.second.x << ", " << move.second.y << "\n";
 
-		std::cout << "calling move_unit\n";
-		move_unit(gameinfo,disp,map,units,move.first,move.second,
-		          possible_moves,teams,team_num);
-		std::cout << "end move_unit\n";
-
 		//search to see if there are any enemy units next
-		//to the tile which really should be attacked
+		//to the tile which really should be attacked once the move is done
 		gamemap::location adj[6];
 		get_adjacent_tiles(move.second,adj);
+		battle_stats bat_stats;
+		gamemap::location target;
+		int weapon = -1;
 		for(int n = 0; n != 6; ++n) {
 			const unit_map::iterator enemy = units.find(adj[n]);
 			if(enemy != units.end() &&
 			   current_team.is_enemy(enemy->second.side())) {
-				battle_stats stats;
-				const int weapon = choose_weapon(map,units,state,gameinfo,
-				                            move.second,adj[n],stats,
-				                            map[move.second.x][move.second.y]);
-				assert(weapon != -1);
-
-				const location attacker = move.second;
-				const location defender = adj[n];
-				
-				recorder.add_attack(attacker,defender,weapon);
-
-				game_events::fire("attack",attacker,defender);
-				if(units.count(attacker) && units.count(defender)) {
-					attack(disp,map,attacker,defender,weapon,units,state,
-					       gameinfo,false);
-					check_victory(units,teams);
-				}
-
+				target = adj[n];
+				weapon = choose_weapon(map,units,state,gameinfo,move.first,
+				                       target,bat_stats,
+				                       map[move.second.x][move.second.y]);
 				break;
 			}
+		}
+
+		move_unit(gameinfo,disp,map,units,move.first,move.second,
+		          possible_moves,teams,team_num);
+
+		//if we're going to attack someone
+		if(weapon != -1) {
+
+			const location& attacker = move.second;
+				
+			recorder.add_attack(attacker,target,weapon);
+
+			game_events::fire("attack",attacker,target);
+			if(units.count(attacker) && units.count(target)) {
+				attack(disp,map,attacker,target,weapon,units,state,
+				       gameinfo,false);
+				check_victory(units,teams);
+			}
+			
 		}
 
 		//don't allow any other units to move onto the tile our unit

@@ -175,6 +175,8 @@ int choose_weapon(const gamemap& map, std::map<location,unit>& units,
 		cur_stats = cache_itor->stats;
 
 		if(!(size_t(cache_itor->weapon) < itor->second.attacks().size())) {
+			std::cerr << "cached illegal weapon: " << cache_itor->weapon
+			          << "/" << itor->second.attacks().size() << "\n";
 		}
 
 		assert(size_t(cache_itor->weapon) < itor->second.attacks().size());
