@@ -519,6 +519,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		u = units_.end();
 	}
 
+	std::cerr << "best unit: " << (best->first.x+1) << "," << (best->first.y+1) << "\n";
+
 	assert(best_target >= targets.begin() && best_target < targets.end());
 
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
@@ -610,7 +612,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 				AI_LOG("group didn't move " + str_cast(group.size()));
 
 				//the group didn't move, so end the first unit in the group's turn, to prevent an infinite loop
-				return std::pair<location,location>(*group.begin(),*group.begin());
+				return std::pair<location,location>(best->first,best->first);
 
 			}
 		} else {
