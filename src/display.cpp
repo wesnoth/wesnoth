@@ -401,6 +401,9 @@ double display::zoom(int amount)
 	map_labels_.recalculate_labels();
 	invalidate_all();
 
+	// Forces a redraw after zooming. This prevents some graphic glitches from occuring.
+	draw();
+
 	return double(zoom_)/double(DefaultZoom);
 }
 
