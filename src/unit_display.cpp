@@ -1,6 +1,7 @@
 #include "actions.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
+#include "halo.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
