@@ -16,6 +16,19 @@
 #include "util.hpp"
 #include "log.hpp"
 
+void terrain_builder::tile::clear() 
+{
+	flags.clear();
+	images_foreground.clear();
+	images_background.clear();
+}
+
+void terrain_builder::tilemap::reset()
+{
+	for(std::vector<tile>::iterator it = map_.begin(); it != map_.end(); ++it)
+		it->clear();
+}
+
 terrain_builder::terrain_builder(const config& cfg, const gamemap& gmap) :
 	map_(gmap), tile_map_(gmap.x(), gmap.y())
 {
@@ -41,7 +54,7 @@ const std::vector<image::locator> *terrain_builder::get_terrain_at(const gamemap
 
 void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 {
-	tile_map_.clear();
+	tile_map_.reset();
 	terrain_by_type_.clear();
 	
 	// For now, rebuild the whole map on each rebuilt_terrain. This is highly slow and

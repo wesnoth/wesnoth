@@ -68,6 +68,8 @@ private:
 		std::set<std::string> flags;
 		std::vector<image::locator> images_foreground;
 		std::vector<image::locator> images_background;
+
+		void clear();
 	};
 
 	struct tilemap
@@ -76,7 +78,7 @@ private:
 
 		tile &operator[](const gamemap::location &loc) { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
 		const tile &operator[] (const gamemap::location &loc) const { return map_[(loc.x+1) + (loc.y+1)*(x_+2)]; }
-		void clear() { map_.clear(); }
+		void reset();
 		
 		std::vector<tile> map_;
 		int x_;
