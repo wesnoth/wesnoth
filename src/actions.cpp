@@ -1620,7 +1620,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
 
 			std::cerr << "formatting string...\n";
-			const std::string message = format_string(msg_id,symbols);
+			const std::string message = config::interpolate_variables_into_string(msg_id,symbols);
 
 			std::cerr << "displaying label...\n";
 			font::add_floating_label(message,24,font::BAD_COLOUR,

@@ -326,10 +326,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	int turn = 1;
 	std::cerr << "starting main loop\n";
-	for(bool first_time = true; true; first_time = false, first_player = 0) {
-		int player_number = 0;
 
-		try {
+	int player_number = 0;
+
+	try {
+		for(bool first_time = true; true; first_time = false, first_player = 0) {
+			player_number = 0;
 
 			if(first_time) {
 				const hotkey::basic_handler key_events_handler(&gui);
@@ -505,11 +507,11 @@ redo_turn:
 				game_events::pump();
 
 				check_victory(units,teams);
-
 			}
 
 			//time has run out
 			if(!status.next_turn()) {
+			
 				if(non_interactive()) {
 					std::cout << "time over (draw)\n";
 				}
@@ -530,100 +532,99 @@ redo_turn:
 				game_events::fire("turn " + turn_num);
 				game_events::fire("new turn");
 			}
+		} //end for loop
 
-		} catch(end_level_exception& end_level) {
+	} catch(end_level_exception& end_level) {
 
-			if(end_level.result == QUIT || end_level.result == REPLAY) {
-				return end_level.result;
-			} else if(end_level.result == DEFEAT) {
-				try {
-					game_events::fire("defeat");
-				} catch(end_level_exception&) {
+		if(end_level.result == QUIT || end_level.result == REPLAY) {
+			return end_level.result;
+		} else if(end_level.result == DEFEAT) {
+			try {
+				game_events::fire("defeat");
+			} catch(end_level_exception&) {
+			}
+
+			gui::show_dialog(gui,NULL,
+			                 string_table["defeat_heading"],
+			                 string_table["defeat_message"],
+			                 gui::OK_ONLY);
+			return DEFEAT;
+		} else if(end_level.result == VICTORY || end_level.result == CONTINUE) {
+			try {
+				game_events::fire("victory");
+			} catch(end_level_exception&) {
+			}
+
+			//add all the units that survived the scenario
+			for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
+				if(un->second.side() == 1) {
+					un->second.new_turn();
+					un->second.new_level();
+					state_of_game.available_units.push_back(un->second);
 				}
+			}
 
-				gui::show_dialog(gui,NULL,
-				                 string_table["defeat_heading"],
-				                 string_table["defeat_message"],
-				                 gui::OK_ONLY);
-				return DEFEAT;
-			} else if(end_level.result == VICTORY || end_level.result == CONTINUE) {
-				try {
-					game_events::fire("victory");
-				} catch(end_level_exception&) {
-				}
-
-				//add all the units that survived the scenario
-				for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
-					if(un->second.side() == 1) {
-						un->second.new_turn();
-						un->second.new_level();
-						state_of_game.available_units.push_back(un->second);
-					}
-				}
-
-				//'continue' is like a victory, except it doesn't announce victory,
-				//and the player returns 100% of gold.
-				if(end_level.result == CONTINUE) {
-					state_of_game.gold = teams[0].gold();
-					return VICTORY;
-				}
-
-				if((*level)["disallow_recall"] == "yes") {
-					return VICTORY;
-				}
-
-				const int remaining_gold = teams[0].gold();
-				const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
-				const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
-				const int finishing_bonus = end_level.gold_bonus ?
-				              (finishing_bonus_per_turn * turns_left) : 0;
-				state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;
-
-				gui::show_dialog(gui,NULL,string_table["victory_heading"],
-				                 string_table["victory_message"],gui::OK_ONLY);
-				std::stringstream report;
-				report << string_table["remaining_gold"] << ": "
-				       << remaining_gold << "\n";
-				if(end_level.gold_bonus) {
-					report << string_table["early_finish_bonus"] << ": "
-					       << finishing_bonus_per_turn
-						   << " " << string_table["per_turn"] << "\n"
-					       << string_table["turns_finished_early"] << ": "
-					       << turns_left << "\n"
-					       << string_table["bonus"] << ": "
-						   << finishing_bonus << "\n"
-					       << string_table["gold"] << ": "
-						   << (remaining_gold+finishing_bonus);
-				}
-
-				report << "\n" << string_table["fifty_percent"] << "\n"
-					   << string_table["retained_gold"] << ": "
-					   << state_of_game.gold;
-
-				gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
+			//'continue' is like a victory, except it doesn't announce victory,
+			//and the player returns 100% of gold.
+			if(end_level.result == CONTINUE) {
+				state_of_game.gold = teams[0].gold();
 				return VICTORY;
 			}
-		} //end catch
-		catch(replay::error& e) {
-			std::cerr << "caught replay::error\n";
-			gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],
-			                 gui::OK_ONLY);
-			return QUIT;
-		}
-		catch(network::error& e) {
-			if(e.socket) {
-				e.disconnect();
+
+			if((*level)["disallow_recall"] == "yes") {
+				return VICTORY;
 			}
 
-			turn_info turn_data(gameinfo,state_of_game,status,
-						        game_config,level,key,gui,
-						        map,teams,player_number,units,true);
+			const int remaining_gold = teams[0].gold();
+			const int finishing_bonus_per_turn = map.villages().size()*game_config::village_income + game_config::base_income;
+			const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
+			const int finishing_bonus = end_level.gold_bonus ?
+			              (finishing_bonus_per_turn * turns_left) : 0;
+			state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;
 
-			turn_data.save_game(string_table["save_game_error"]);
-			throw network::error();
+			gui::show_dialog(gui,NULL,string_table["victory_heading"],
+			                 string_table["victory_message"],gui::OK_ONLY);
+			std::stringstream report;
+			report << string_table["remaining_gold"] << ": "
+			       << remaining_gold << "\n";
+			if(end_level.gold_bonus) {
+				report << string_table["early_finish_bonus"] << ": "
+				       << finishing_bonus_per_turn
+					   << " " << string_table["per_turn"] << "\n"
+				       << string_table["turns_finished_early"] << ": "
+				       << turns_left << "\n"
+				       << string_table["bonus"] << ": "
+					   << finishing_bonus << "\n"
+				       << string_table["gold"] << ": "
+					   << (remaining_gold+finishing_bonus);
+			}
+
+			report << "\n" << string_table["fifty_percent"] << "\n"
+				   << string_table["retained_gold"] << ": "
+				   << state_of_game.gold;
+
+			gui::show_dialog(gui,NULL,"",report.str(),gui::OK_ONLY);
+			return VICTORY;
+		}
+	} //end catch
+	catch(replay::error& e) {
+		std::cerr << "caught replay::error\n";
+		gui::show_dialog(gui,NULL,"",string_table["bad_save_message"],
+		                 gui::OK_ONLY);
+		return QUIT;
+	}
+	catch(network::error& e) {
+		if(e.socket) {
+			e.disconnect();
 		}
 
-	} //end for(;;)
+		turn_info turn_data(gameinfo,state_of_game,status,
+					        game_config,level,key,gui,
+					        map,teams,player_number,units,true);
+
+		turn_data.save_game(string_table["save_game_error"]);
+		throw network::error();
+	}
 
 	return QUIT;
 }

@@ -1634,19 +1634,15 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//about it
 		std::string message = "";
 		if(u.type().level() > 1) {
-			message = string_table["really_delete_veteran_unit"];
+			message = "really_delete_veteran_unit";
 		} else if(u.experience() > u.max_experience()/2) {
-			message = string_table["really_delete_xp_unit"];
+			message = "really_delete_xp_unit";
 		}
 
 		if(message != "") {
-			const std::string replace_str("$noun");
-			const std::string::iterator itor = std::search(message.begin(),message.end(),replace_str.begin(),replace_str.end());
-			if(itor != message.end()) {
-				const std::string::size_type index = itor - message.begin();
-				message.erase(itor,itor+replace_str.size());
-				message.insert(index,string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"]);
-			}
+			string_map symbols;
+			symbols["noun"] = string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"];
+			message = config::interpolate_variables_into_string(message,symbols);
 
 			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
 			if(res != 0) {

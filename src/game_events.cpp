@@ -442,12 +442,12 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//setting a variable
 	else if(cmd == "set_variable") {
 		const std::string& name = cfg["name"];
-		const std::string& value = cfg["value"];
+		const std::string& value = config::interpolate_variables_into_string(cfg["value"],state_of_game->variables);
 		if(value.empty() == false) {
 			state_of_game->variables[name] = value;
 		}
 
-		const std::string& add = cfg["add"];
+		const std::string& add = config::interpolate_variables_into_string(cfg["add"],state_of_game->variables);;
 		if(add.empty() == false) {
 			double value = atof(state_of_game->variables[name].c_str());
 			value += atof(add.c_str());
@@ -456,7 +456,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			state_of_game->variables[name] = buf;
 		}
 
-		const std::string& multiply = cfg["multiply"];
+		const std::string& multiply = config::interpolate_variables_into_string(cfg["multiply"],state_of_game->variables);;
 		if(multiply.empty() == false) {
 			double value = atof(state_of_game->variables[name].c_str());
 			value *= atof(multiply.c_str());
@@ -470,7 +470,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		// Each element in the list will be considered a separate choice, 
 		// unless it contains "..". In this case, it must be a numerical
 		// range. (i.e. -1..-10, 0..100, -10..10, etc)
-		const std::string& random = cfg["random"];
+		const std::string& random = config::interpolate_variables_into_string(cfg["random"],state_of_game->variables);;
 		if(random.empty() == false) {
 			std::string random_value, word;
 			std::vector<std::string> words;
@@ -819,11 +819,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& lang_message = string_table[id];
 		int option_chosen = -1;
 		
-		//if we're not replaying, or if there is no choice to be made, show
-		//the dialog.
+		//if we're not replaying, or if we are replaying and there is no choice
+		//to be made, show the dialog.
 		if(recorder.at_end() || options.empty()) {
-			option_chosen = gui::show_dialog(*screen,surface,caption,
-		                        lang_message.empty() ? cfg["message"] : lang_message,
+			const std::string msg = config::interpolate_variables_into_string(lang_message.empty() ? cfg["message"] : lang_message,state_of_game->variables);
+			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
 

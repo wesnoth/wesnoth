@@ -40,11 +40,6 @@ const std::string& translate_string(const std::string& str);
 //and otherwise returns default_val
 const std::string& translate_string_default(const std::string& key, const std::string& default_val);
 
-//a function which can take an id to a string in the string table, and a
-//map of key/value pairs. Any token in the string of the form %identifier
-//will be substituted with m["identifier"]
-std::string format_string(const std::string& key, const string_map& m);
-
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
 std::vector<std::string> get_languages();

@@ -279,12 +279,31 @@ const std::string& unit_movement_type::name() const
 		return res;
 }
 
-int unit_movement_type::movement_cost(const gamemap& map,
-                                      gamemap::TERRAIN terrain) const
+int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrain,int recurse_count) const
 {
 	const std::map<gamemap::TERRAIN,int>::const_iterator i = moveCosts_.find(terrain);
 	if(i != moveCosts_.end()) {
 		return i->second;
+	}
+
+	//if this is an alias, then select the best of all underlying terrains
+	const std::string& underlying = map.underlying_terrain(terrain);
+	if(underlying.size() != 1 || underlying[0] != terrain) {
+		if(recurse_count >= 100) {
+			return 100;
+		}
+
+		int min_value = 100;
+		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			const int value = movement_cost(map,*i,recurse_count+1);
+			if(value < min_value) {
+				min_value = value;
+			}
+		}
+
+		moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,min_value));
+
+		return min_value;
 	}
 
 	const config* movement_costs = cfg_.child("movement costs");
@@ -293,40 +312,58 @@ int unit_movement_type::movement_cost(const gamemap& map,
 
 	if(movement_costs != NULL) {
 		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
-		for(std::vector<std::string>::const_iterator i = names.begin(); i != names.end(); ++i) {
-			const std::string& val = (*movement_costs)[*i];
+		if(names.size() != 1) {
+			std::cerr << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+			return 100;
+		}
 
-			if(val != "") {
-				const int value = atoi(val.c_str());
-				if(res == -1 || value < res) {
-					res = value;
-				}
-			}
+		const std::string& name = names.front();
+
+		const std::string& val = (*movement_costs)[name];
+
+		if(val != "") {
+			res = atoi(val.c_str());
 		}
 	}
 
-	if(parent_ != NULL) {
-		const int value = parent_->movement_cost(map,terrain);
-		if(res == -1 || value < res) {
-			res = value;
-		}
+	if(res <= 0 && parent_ != NULL) {
+		res = parent_->movement_cost(map,terrain);
 	}
 
-	if(res <= 0)
+	if(res <= 0) {
 		res = 100;
+	}
 
 	moveCosts_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 
 	return res;
 }
 
-int unit_movement_type::defense_modifier(const gamemap& map,
-                                         gamemap::TERRAIN terrain) const
+int unit_movement_type::defense_modifier(const gamemap& map,gamemap::TERRAIN terrain, int recurse_count) const
 {
-	const std::map<gamemap::TERRAIN,int>::const_iterator i =
-	                                      defenseMods_.find(terrain);
+	const std::map<gamemap::TERRAIN,int>::const_iterator i = defenseMods_.find(terrain);
 	if(i != defenseMods_.end()) {
 		return i->second;
+	}
+
+	//if this is an alias, then select the best of all underlying terrains
+	const std::string& underlying = map.underlying_terrain(terrain);
+	if(underlying.size() != 1 || underlying[0] != terrain) {
+		if(recurse_count >= 100) {
+			return 100;
+		}
+
+		int min_value = 100;
+		for(std::string::const_iterator i = underlying.begin(); i != underlying.end(); ++i) {
+			const int value = defense_modifier(map,*i,recurse_count+1);
+			if(value < min_value) {
+				min_value = value;
+			}
+		}
+
+		defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,min_value));
+
+		return min_value;
 	}
 
 	int res = -1;
@@ -335,27 +372,26 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 	if(defense != NULL) {
 		const std::vector<std::string> names = map.underlying_terrain_name(terrain);
-		for(std::vector<std::string>::const_iterator i = names.begin(); i != names.end(); ++i) {
-			const std::string& val = (*defense)[*i];
+		if(names.size() != 1) {
+			std::cerr << "terrain '" << terrain << "' has " << names.size() << " underlying names - 0 expected\n";
+			return 100;
+		}
 
-			if(val != "") {
-				const int value = atoi(val.c_str());
-				if(res == -1 || value < res) {
-					res = value;
-				}
-			}
+		const std::string& name = names.front();
+		const std::string& val = (*defense)[name];
+
+		if(val != "") {
+			res = atoi(val.c_str());
 		}
 	}
 
-	if(parent_ != NULL) {
-		const int value = parent_->defense_modifier(map,terrain);
-		if(res == -1 || value < res) {
-			res = value;
-		}
+	if(res <= 0 && parent_ != NULL) {
+		res = parent_->defense_modifier(map,terrain);
 	}
 
-	if(res < 0)
+	if(res <= 0) {
 		res = 50;
+	}
 
 	defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 

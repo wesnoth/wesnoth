@@ -1204,6 +1204,44 @@ bool config::has_value(const std::string& values, const std::string& val)
 	return std::count(vals.begin(),vals.end(),val) > 0;
 }
 
+namespace {
+
+bool not_id(char c)
+{
+	return !isalpha(c);
+}
+
+void do_interpolation(std::string& res, size_t npos, const string_map& m)
+{
+	const std::string::iterator i = std::find(res.begin()+npos,res.end(),'$');
+	if(i == res.end() || i+1 == res.end()) {
+		return;
+	}
+
+	npos = i - res.begin() + 1;
+
+	const std::string::iterator end = std::find_if(i+1,res.end(),not_id);
+
+	const std::string key(i+1,end);
+	res.erase(i,end);
+
+	const string_map::const_iterator itor = m.find(key);
+	if(itor != m.end()) {
+		res.insert(npos-1,itor->second);
+	}
+
+	do_interpolation(res,npos,m);
+}
+
+}
+
+std::string config::interpolate_variables_into_string(const std::string& str, const string_map& symbols)
+{
+	std::string res = str;
+	do_interpolation(res,0,symbols);
+	return res;
+}
+
 void config::clear()
 {
 	for(std::map<std::string,std::vector<config*> >::iterator i =

@@ -159,6 +159,8 @@ struct config
 	static std::string& strip(std::string& str);
 	static bool has_value(const std::string& values, const std::string& val);
 
+	static std::string interpolate_variables_into_string(const std::string& str, const string_map& symbols);
+
 	void clear();
 	bool empty() const;
 
@@ -230,6 +232,22 @@ struct config_has_value {
 
 private:
 	const std::string name_, value_;
+};
+
+//an object which wraps around a config object and interpolates
+//variables into all strings it returns
+struct config_interpolater {
+	config_interpolater(const config& cfg, const string_map& m) : cfg_(cfg), map_(m)
+	{}
+
+	std::string operator[](const std::string& str) const
+	{
+		return config::interpolate_variables_into_string(cfg_[str],map_);
+	}
+
+private:
+	const config& cfg_;
+	const string_map& map_;
 };
 
 #endif
