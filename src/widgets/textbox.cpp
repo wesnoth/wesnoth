@@ -51,6 +51,8 @@ void textbox::set_text(std::string text)
 {
 	text_ = string_to_wstring(text);
 	cursor_ = text_.size();
+	selstart_ = -1;
+	selend_ = -1;
 	set_dirty(true);
 	update_text_cache(true);
 }
@@ -61,6 +63,8 @@ void textbox::clear()
 	cursor_ = 0;
 	cursor_pos_ = 0;
 	text_pos_ = 0;
+	selstart_ = -1;
+	selend_ = -1;
 	set_dirty(true);
 	update_text_cache(true);
 }
