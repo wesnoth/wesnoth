@@ -124,6 +124,7 @@ bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
+SDL_Color inverse(const SDL_Color& colour);
 
 class config; // no need to include config.hpp
 

@@ -850,6 +850,14 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b) {
 	return !operator==(a,b);
 }
 
+SDL_Color inverse(const SDL_Color& colour) {
+	SDL_Color inverse;
+	inverse.r = 255 - colour.r;
+	inverse.g = 255 - colour.g;
+	inverse.b = 255 - colour.b;
+	return inverse;
+}
+
 void pixel_data::read(const config& cfg) {
 	const std::string& red = cfg["red"];
 	const std::string& green = cfg["green"];
