@@ -544,30 +544,27 @@ void terrain_builder::add_constraints(
 
 }
 
-void terrain_builder::add_constraint_item(std::vector<std::string> &list, const config& cfg, const std::string &item)
-{
-	if(!cfg[item].empty()) {
-		std::vector<std::string> item_string = utils::split(cfg[item]);
-		
-		for(std::vector<std::string>::const_iterator itor = item_string.begin();
-				itor != item_string.end(); ++itor) {
-			list.push_back(*itor);
-		}
-	}
-}
-
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints, const gamemap::location& loc, const config& cfg, const config& global_images)
 {
 	add_constraints(constraints, loc, cfg["type"], global_images);
 
 	terrain_constraint& constraint = constraints[loc];
-	
-	add_constraint_item(constraint.set_flag, cfg, "set_flag");
-	add_constraint_item(constraint.has_flag, cfg, "has_flag");
-	add_constraint_item(constraint.no_flag, cfg, "no_flag");
+
+	std::vector<std::string> item_string = utils::split(cfg["set_flag"]);
+	constraint.set_flag.insert(constraint.set_flag.end(),
+			item_string.begin(), item_string.end());
+
+	item_string = utils::split(cfg["has_flag"]);
+	constraint.has_flag.insert(constraint.has_flag.end(),
+			item_string.begin(), item_string.end());
+
+	item_string = utils::split(cfg["no_flag"]);
+	constraint.no_flag.insert(constraint.no_flag.end(),
+			item_string.begin(), item_string.end());
 
 	add_images_from_config(constraint.images, cfg, false);
 }
+
 
 void terrain_builder::parse_mapstring(const std::string &mapstring,
 		struct building_rule &br, anchormap& anchors,
@@ -679,8 +676,9 @@ void terrain_builder::parse_config(const config &cfg)
 		config::child_list tcs((*br)->get_children("tile"));
 		
 		for(config::child_list::const_iterator tc = tcs.begin(); tc != tcs.end(); tc++) {
-			//Adds the terrain constraint to the current built terrain's list of terrain 
-			//constraints, if it does not exist.
+			//Adds the terrain constraint to the current built
+			//terrain's list of terrain constraints, if it does not
+			//exist.
 			gamemap::location loc;
 			if((**tc)["x"].size()) {
 				loc.x = atoi((**tc)["x"].c_str());
@@ -861,10 +859,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		tile& btile = tile_map_[tloc];
 
-		//std::multimap<int, std::string>::const_iterator img;
-
 		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
-			//animated<image::locator> th(img->second, locator_string_initializer());
 
 			if(img->position == rule_image::HORIZONTAL) {
 				btile.horizontal_images.insert(std::pair<int, const rule_image*>(
