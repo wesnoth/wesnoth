@@ -1662,6 +1662,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	const int missile_impact = -first_missile;
 
 	const int time_resolution = 20;
+	const int acceleration = turbo() ? 5:1;
 
 	const std::vector<attack_type::sfx>& sounds = attack.sound_effects();
 	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
@@ -1685,13 +1686,13 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 	         (a.x == b.x) ? attack_type::VERTICAL:attack_type::DIAGONAL;
 
 	bool dead = false;
-	const int drain_speed = 1;
+	const int drain_speed = 1*acceleration;
 
 	int flash_num = 0;
 
 	int ticks = SDL_GetTicks();
 
-	for(int i = begin_at; i < end_at; i += time_resolution) {
+	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		check_keys(*this);
 
 		//this is a while instead of an if, because there might be multiple
@@ -1722,7 +1723,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		double defensive_alpha = 1.0;
 
 		if(damage > 0 && i >= missile_impact) {
-			if(def->second.gets_hit(drain_speed)) {
+			if(def->second.gets_hit(minimum(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {
@@ -1774,7 +1775,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		}
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !turbo() && !hide)
+		if(wait_time > 0 && !hide)
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
@@ -1848,6 +1849,7 @@ bool display::unit_attack(const gamemap::location& a,
 	std::vector<attack_type::sfx>::const_iterator sfx_it = sounds.begin();
 
 	const int time_resolution = 20;
+	const int acceleration = turbo() ? 5 : 1;
 
 	def->second.set_defending(true,attack_type::SHORT_RANGE);
 
@@ -1865,7 +1867,7 @@ bool display::unit_attack(const gamemap::location& a,
 	get_adjacent_tiles(b,update_tiles);
 
 	bool dead = false;
-	const int drain_speed = 1;
+	const int drain_speed = 1*acceleration;
 
 	int flash_num = 0;
 
@@ -1873,7 +1875,7 @@ bool display::unit_attack(const gamemap::location& a,
 
 	hiddenUnit_ = a;
 
-	for(int i = begin_at; i < end_at; i += time_resolution) {
+	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		check_keys(*this);
 
 		//this is a while instead of an if, because there might be multiple
@@ -1895,7 +1897,7 @@ bool display::unit_attack(const gamemap::location& a,
 		double defender_alpha = 1.0;
 
 		if(damage > 0 && i >= 0) {
-			if(def->second.gets_hit(drain_speed)) {
+			if(def->second.gets_hit(minimum(drain_speed,damage))) {
 				dead = true;
 				damage = 0;
 			} else {
@@ -1933,7 +1935,7 @@ bool display::unit_attack(const gamemap::location& a,
 			draw_unit(posx,posy,image,attacker.facing_left());
 
 		const int wait_time = ticks + time_resolution - SDL_GetTicks();
-		if(wait_time > 0 && !turbo() && !hide)
+		if(wait_time > 0 && !hide)
 			SDL_Delay(wait_time);
 
 		ticks = SDL_GetTicks();
@@ -1973,7 +1975,7 @@ void display::move_unit_between(const gamemap::location& a,
 	const double xstep = (xdst - xsrc)/nsteps;
 	const double ystep = (ydst - ysrc)/nsteps;
 
-	const int time_between_frames = 10;
+	const int time_between_frames = turbo() ? 2 : 10;
 	int ticks = SDL_GetTicks();
 
 	int skips = 0;
