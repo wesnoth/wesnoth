@@ -34,19 +34,35 @@ std::vector<std::string> get_languages(config& cfg)
 	return res;
 }
 
-bool set_language(const std::string& locale, config& cfg)
+namespace {
+bool internal_set_language(const std::string& locale, config& cfg)
 {
 	const std::vector<config*>& lang = cfg.children["language"];
 	for(std::vector<config*>::const_iterator i = lang.begin();
 	    i != lang.end(); ++i) {
 		if((*i)->values["id"] == locale || (*i)->values["language"] == locale) {
-			string_table = (*i)->values;
+
+			for(std::map<std::string,std::string>::const_iterator j =
+			    (*i)->values.begin(); j != (*i)->values.end(); ++j) {
+				string_table[j->first] = j->second;
+			}
+
 			add_hotkeys(**i);
 			return true;
 		}
 	}
 
 	return false;
+}
+}
+
+bool set_language(const std::string& locale, config& cfg)
+{
+	string_table.clear();
+
+	//default to English locale first, then set desired locale
+	internal_set_language("en",cfg);
+	return internal_set_language(locale,cfg);
 }
 
 std::string get_locale()
