@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-14 09:27+0100\n"
-"PO-Revision-Date: 2004-12-21 14:34+0100\n"
+"PO-Revision-Date: 2005-02-20 12:05+0100\n"
 "Last-Translator: Automatically generated <tomi@digiflex.hu>\n"
 "Language-Team: none <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -71,6 +71,9 @@ msgid ""
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
 msgstr ""
+"Egyes·egységek·közvetlen·hatással·lehetnek·más·egységekre,"
+"·de·legalábbis·befolyásolhatják·tetteiket."
+"·Ezen·képességek·listáját·láthatod·alább."
 
 #: data/help.cfg:62
 msgid ""
@@ -106,6 +109,12 @@ msgid ""
 "mind that this is just an outline - for special exceptions and situations, "
 "please follow the links included."
 msgstr ""
+"Ezen·oldal·körvonalazza,·hogy·is·kell·játszani·e·játékot,"
+"·s·megmutatja·a·játék·mozgatórugóit."
+"·Ha·további·kérdésied·volnának·kattints·a··<ref>dst=basic_strategy·text='Alap·taktika'</"
+"ref>·and·<ref>dst=multiplayer_strategy·text='Többjátékos·stratégia'</ref>."
+"·Ne·feledd:·ez·csak·egy·vázlat -kölünleges tippekre a linkeket követve "
+"találhatsz."
 
 #: data/help.cfg:70
 msgid ""
@@ -118,6 +127,14 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As Battle for Wesnoth can "
 "be quite challenging, you may wish to start on <italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"Kezdésképpen, legjobb a főmenü <italic>text=Gyakorlás</italic> pontjára "
+"kattintani. Ez az interaktív hadgyakorlatot indít el, amelyben megtanulhatod "
+"a Wesnoth alapjait. Ezután ajánlatos A Trónörökös hadjárattal kezdeni - "
+"kattints a <italic>text=Hadjárat</italic>ra·majd·<italic>text='A "
+"Trónörökös'</italic>re. Mivel a Harc Wesnoth-ért játszása nagy kihívást "
+"jelenthet, érdemes lesz <italic>text=könnyű</italic> fokozaton kezdened."
 
 #: data/help.cfg:73
 msgid ""
@@ -125,6 +142,9 @@ msgid ""
 "bar to the right, a brief description will pop up explaining that item. This "
 "is especially useful when you encounter new abilities for the first time."
 msgstr ""
+"Játék közben ne felejtsd el, hogy a jobb oldali panel sok része fölé húzva "
+"az egeret, egy rövid leírás jelenik meg az adott pontról. Ez kifejezetten "
+"hasznos új képességek megismerésekor."
 
 #: data/help.cfg:78
 msgid "Recruiting and Recalling"
@@ -288,6 +308,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Sebzés</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -300,6 +323,14 @@ msgid ""
 "<ref>dst=time_of_day text='Time of Day'</ref>, both of which are explained "
 "below."
 msgstr ""
+"\n"
+"\n"
+"Minden·ütés,·amely·célba·talál,·a·támadás·típusától·függően,"
+"·a·egyalapértékkel·sebez.·Például,·ha·egy·Tünde·Harcos·egy·5-"
+"4·értékű·karddal·támad,akkor·a·sebzés·alapértéke·5·lesz."
+"·Ezt·általában·két·dolog·módosítja:·az·<ref>dst=damage_types_and_resistance "
+"text=Ellenállás</ref> és·a·<ref>dst=time_of_day text='Napszak'</ref>, "
+"mindkettőt·lentebbkifejtjük."
 
 #: data/help.cfg:118
 msgid ""
@@ -310,10 +341,17 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"Néhány·egységnek·speciális·képességei·vannak,"
+"·amelyek·befolyásoljáka·harcban·okozott·sebzést."
+"·A·legközönségesebb·ezek·közül·a·<ref>dst=ability_charge·text=Roham</ref>,"
+"amely·megduplázza·a·sebzést·mind·a·támadónál,·mind·a·megtámadottnál,"
+"amikor·a·Rohamra·képes·egység·támad."
 
 #: data/help.cfg:123
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Sebzéstípusok·és·Ellenállás"
 
 #: data/help.cfg:124
 msgid ""
@@ -323,6 +361,11 @@ msgid ""
 "and Holy attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
+"A·Wesnothban·a·sebzésnek·három·típusa·van,"
+"·amelyeket·általában·fizikaitámadásoknak·neveznek:·Penge,"
+"·Páncéltörés·és·Ütés.·Valamint·háromtovábbi·mágikusnak·nevezett·sebzéstípus:"
+"·Tűz,·Jég·és·Szentség.·A·különbözőegységeknek·lehet·ellenálló·képességük,"
+"·ami·módosítja·a·sebzést·amegfelelő·támadási·típusok·esetén."
 
 #: data/help.cfg:126
 msgid ""
@@ -334,6 +377,13 @@ msgid ""
 "resistance against a damage type, it will suffer 100% more damage when hit "
 "by that type."
 msgstr ""
+"\n"
+"\n"
+"Az·Ellenállások·nagyon·egyszerűen·működnek:"
+"·Ha·egy·egységnek·egy·sebzéstípus·ellen40%-os·ellenállása·van,·akkor·40·%-"
+"kal·kisebb·sebzést·fog·elszenvedni,·ha·eltaláljákezzel·a·sebzéstípussal."
+"·Lehetséges,·hogy·egy·egységnek-100%·az·ellenállása·egy·támadástípusnál,"
+"·így·ekkor·100%-kal·több·sebzéstfog·elszenvedni·egy·ilyen·típusú·találatnál."
 
 #: data/help.cfg:128
 msgid ""
@@ -343,10 +393,15 @@ msgid ""
 "are vulnerable to Impact and Fire damage, and extremely vulnerable to Holy "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Például·a·Csontvázaknak·nagy·az·ellenállása·a·Penge·és·a·Páncéltöréssebzéseknél,"
+"·de·sebezhető·Ütés·és·Tűz·sebzéstípussal,"
+"·és·rendkívülimódon·Szentség·támadásokkal."
 
 #: data/help.cfg:133
 msgid "Time of Day"
-msgstr ""
+msgstr "Napszak"
 
 #: data/help.cfg:138 data/schedules.cfg:5
 msgid "Dawn"
@@ -361,6 +416,11 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"A·Wesnoth·játékban·általában·szabályszerű·ciklusokban·változnak·a·nappalok·ésaz·éjszakák."
+"·Az·aktuális·napszakot·a·kis·térkép·alatt·tekinthetjük·meg·a·jobbfelső·sarokban.\n"
+"\n"
+"A·szokásos·nap/éjszaka·ciklus·a·következő:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -390,6 +450,9 @@ msgid ""
 "\n"
 "Morning and Afternoon count as day, First and Second Watch count as night."
 msgstr ""
+"\n"
+"A·Reggel·és·a·Délután·nappalnak·számít,"
+"·míg·az·Éjszaka·Első·és·Második·Fele·éjszakának·számít."
 
 #: data/help.cfg:151
 msgid ""
@@ -401,16 +464,25 @@ msgid ""
 "Chaotic units get +25% damage at night, and -25% in daytime.\n"
 "Neutral units are unaffected by the time of day."
 msgstr ""
+"\n"
+"\n"
+"A·napszakok·bizonyos·egységek·sebzését·befolyásolják·a·következők·szerint·-\n"
+"\n"
+"Az·igazságos·egységek·+25%·sebzést·kapnak·nappal·és·-25%·sebzést·éjszaka.\n"
+"A·törvénytelen·egységek·+25%·sebzést·kapnak·éjjel·és·-25%-ot·nappal.\n"
+"A·semleges·egységekre·nem·hatnak·a·különböző·napszakok."
 
 #: data/help.cfg:154
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Emlékezz·rá,·hogy·némely·pályákon·előfordulnak·olyan·földalatti·részek,"
+"ahol·örökké·éjszaka·van!"
 
 #: data/help.cfg:159
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Tapasztalat·és·Szintlépés"
 
 #: data/help.cfg:160
 msgid ""
@@ -419,6 +491,11 @@ msgid ""
 "combat, however, it gains much more experience - 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Ha·mind·a·támadó,·mind·a·védekező·egység·túléli·a·küzdelmet,"
+"·akkor·a·tapasztalati·pontjukannyival·növekszik,"
+"·amennyi·az·ellenfél·egység·szintje·volt.·Ha·egy·egységmegöl·egy·másikat,"
+"·akkor·több·TP-ot·kap·-·4-et·egy·0.·szintűért,·8-at·egy·1.szintűért,·16-"
+"ot·egy·2.·szintűért,·24-et·egy·3.·szintűért,·és·így·tovább."
 
 #: data/help.cfg:162
 msgid ""
@@ -429,6 +506,13 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Az·egységeknek·egy·bizonyos·tapasztalatra·van·szükségük·a·szintlépéshez(20·%-"
+"kal·kevesebb·szükséges·az·Intelligens·jellemvonással·rendelkező·egységeknek)."
+"Ha·elérik·ezt·a·TP·számot,·akkor·a·következő·szintre·lépnek,·és·ÉP-"
+"juk·újra·maximális·lesz.Néhány·esetben·kiválaszthatjuk,"
+"·mivé·fejlődjön·az·egység."
 
 #: data/help.cfg:164
 msgid ""
@@ -437,10 +521,16 @@ msgid ""
 "Keep in mind that while most units have three levels, not all do, and that "
 "occasional units (such as <ref>dst=unit_mage text=Mages</ref>) may have four."
 msgstr ""
+"\n"
+"\n"
+"Ne·felejtsd·el,"
+"·hogy·amíg·a·legtöbb·egységnek·csak·három·lehetségesfejlődési·szintje·van,"
+"·addig·némelyeknek·(mint·például·a·<ref>dst=unit_mage·text=Mágusoknak</ref>)"
+"·négy·is·lehet."
 
 #: data/help.cfg:169
 msgid "Healing"
-msgstr ""
+msgstr "Gyógyulás"
 
 #: data/help.cfg:170
 msgid ""
@@ -448,6 +538,9 @@ msgid ""
 "ways for your units to heal, all of which take place at the beginning of "
 "your turn, before you take action."
 msgstr ""
+"A·harcban·az·egységeid·szükségszerűen·sebzést·fognak·kapni."
+"·A·Wesnothbanaz·egységek·különböző·módokon·gyógyíthatóak,"
+"·amelyekre·mindig·a·körök·elejénkerül·sor,·mielőtt·játszani·kezdenél."
 
 #: data/help.cfg:172
 msgid ""
@@ -456,12 +549,18 @@ msgid ""
 "Resting: A unit which neither moves, attacks, nor is attacked will heal 2HP "
 "in its next turn."
 msgstr ""
+"\n"
+"\n"
+"Nyugalmi·helyzet:·Ha·egy·egység·nem·mozog·és·nem·harcol·(őt·se·támadják)"
+"·egy·körben,·akkor·a·következő·körben·2·ÉP-t·fog·kapni."
 
 #: data/help.cfg:173
 msgid ""
 "\n"
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
+"\n"
+"Falvak:·Egy·egység,·amely·az·új·kört·egy·városban·kezdi,·8·ÉP-t·gyógyul."
 
 #: data/help.cfg:174
 msgid ""
@@ -469,6 +568,9 @@ msgid ""
 "<ref>dst=ability_regeneration text=Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst=ability_regeneration·text=Regeneráció</ref>:·Bizonyos·egységek,"
+"(mint·a·Trollok)·minden·körben·automatikusan·8·ÉP-t·gyógyulnak."
 
 #: data/help.cfg:175
 msgid ""
@@ -478,6 +580,12 @@ msgid ""
 "turn, to a total maximum of 8 points healed, or prevent Poison from dealing "
 "damage."
 msgstr ""
+"\n"
+"Csillapító·egységek:·A·<ref>dst=ability_heals·text=Csillapítás</"
+"ref>·képességévelrendelkező·egységek·minden,"
+"·a·közvetlen·közelükben·tartózkodó·baráti·egységetgyógyítani·fognak·4·ÉP-"
+"al·körönként·(de·maximum·összesen·8·ÉP·osztható·szét),"
+"·vagyakadályozni·fogják·a·Mérgezés·sebzését."
 
 #: data/help.cfg:177
 msgid ""
@@ -487,6 +595,13 @@ msgid ""
 "will heal all friendly units immediately beside them for 8HP each turn, to a "
 "total maximum of 18 points healed, or cure a unit of Poison."
 msgstr ""
+"\n"
+"\n"
+"Gyógyító·egységek:·A·<ref>dst=ability_cures·text=Gyógyítás</"
+"ref>·képességévelrendelkező·egységek·minden,"
+"·a·közvetlen·közelükben·tartózkodó·baráti·egységetgyógyítani·fognak·8·ÉP-"
+"al·körönként·(maximum·összesen·18·ÉP·osztható·szét)"
+"·vagyakadályozni·fogják·a·Mérgek·sebzését."
 
 #: data/help.cfg:179
 msgid ""
@@ -496,10 +611,17 @@ msgid ""
 "villages, regeneration, and healing/curing cannot combine with each other. "
 "Also, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Ne·felejtsd·el,"
+"·hogy·amíg·a·Nyugalmi·helyzet·összevonható·a·gyógyítás·egyébformáival,"
+"·addig·a·falvak,·a·regeneráció·és·a·csillapítás/"
+"gyógyítás·mással·nemkombinálhatóak."
+"·Természetesen·két·pálya·között·az·egységek·teljesen·regenerálódnak."
 
 #: data/help.cfg:184
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Bevétel·és·Fenntartás"
 
 #: data/help.cfg:185
 msgid ""
@@ -508,6 +630,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
+"A·Wesnoth·nem·egyszerűen·az·egységek·toborzásáról·és·a·harcról·szól."
+"Figyelned·kell·az·aranyadra,·különösen·a·hadjáratoknál,"
+"·ahola·maradék·aranyadat·tovább·viheted·a·következő·pályára."
+"·PénzügyeidetBevételek·és·Fenntartási·költségek·alapján·kezeled."
 
 #: data/help.cfg:187
 msgid ""
@@ -518,6 +644,12 @@ msgid ""
 "Unfortunately, your Upkeep costs are subtracted from this income, as "
 "detailed below."
 msgstr ""
+"\n"
+"\n"
+"A·Bevételek·nagyon·egyszerűek.·Minden·faluért,·ami·hozzád·tartozik,"
+"·egy·aranyatfogsz·kapni·körönként.·Így,·ha·tíz·faluval·rendelkezel,"
+"·akkor·tíz·aranyat·kapsznormál·esetben."
+"·Azonban·a·Fenntartási·költségek·csökkentik·ezt,·amelyről·lentebb·olvashatsz."
 
 #: data/help.cfg:189
 msgid ""
@@ -530,6 +662,16 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold a turn in upkeep."
 msgstr ""
+"\n"
+"\n"
+"A·Fenntartások·se·bonyolultak."
+"·Minden·egység·a·szintjének·megfelelő·mennyiségű·aranybakerül."
+"·Összesen·annyi·szintnyi·egységet·tudsz·ingyen·fenntartani,"
+"·ahány·falvat·birtokolsz.·Mindazonáltal,"
+"·ha·az·egységeid·szintjeinek·összege·meghaladja·a·falvak·számát,"
+"·akkora·különbség·erejéig·egy·aranyat·kell·fizetned·körönként.Például,"
+"·ha·12·első·szintű·egységed·van·és·tíz·falvad,"
+"·akkor·2·aranyat·kellfizetned·körönként·kiadásként."
 
 #: data/help.cfg:191
 msgid ""
@@ -538,6 +680,10 @@ msgid ""
 "These costs are subtracted from your Income, so in the case of twelve levels "
 "of units and ten villages, your resultant Income would be 8 gold a turn."
 msgstr ""
+"\n"
+"\n"
+"Ezek·a·költségek·levonódnak·a·Bevételeidből,"
+"·így·tizenkét·első·szintű·egység·éstíz·város·esetén·a·Bevételeid·maradéka·8·arany·lesz·körönként."
 
 #: data/help.cfg:192
 msgid ""
@@ -548,6 +694,15 @@ msgid ""
 "Delfador), or units who join you during a scenario (such as the Horseman in "
 "the second level of Heir to the Throne) will never charge any upkeep."
 msgstr ""
+"\n"
+"Két·fő·kivétel·van·a·Fenntartási·költségek·alól.·Az·első·esetben,"
+"·azon·egységek,"
+"·amelyek·rendelkezneka·Hűség·jellemvonással·csak·1·aranyba·kerülnek·körönként,"
+"·attól·függetlenül,hogy·hányadik·szintűek.·A·második·esetben,"
+"·azok·az·egységek,·amelyeka·pálya·legelején·is·megvannak·"
+"(mint·például·Konrad·vagy·Delfador),·vagy·az·olyanegységek,"
+"·amelyek·a·pályán·csatlakoznak·hozzánk·"
+"(mint·például·a·Lovas·a·másodikpályán),·sohasem·fognak·költséggel·járni."
 
 #: data/help.cfg:197
 msgid "Wrap Up"
@@ -804,12 +959,10 @@ msgid "flaming sword"
 msgstr "lángoló kard"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Tűz Jogara"
 
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -819,12 +972,11 @@ msgstr ""
 "jogar hatalmával a használója tűzlabdákat dobhat ellenfeleire."
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Ez a Tűz Jogara. Csak a trónnak valódi várományosa vetemedhet az elvételére!"
+"Ez a Tűz Jogara. Csak a trón valódi várományosa vetemedhet az elvételére!"
 
 #: data/items.cfg:812
 msgid "Zap~"
@@ -1114,7 +1266,6 @@ msgid "The Valley of Death"
 msgstr "A halál völgye"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Törp pusztaság"
 
@@ -1520,9 +1671,8 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:260
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:250
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "El kívánod menteni a pálya visszajátszását?"
+msgstr "Szeretnéd a pályán tanultak valamelyikét újra megnézni?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:262
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
@@ -1589,7 +1739,6 @@ msgstr ""
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:148
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:162
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:195
-#, fuzzy
 msgid "En garde!"
 msgstr "Fegyverbe!"
 
@@ -1988,9 +2137,8 @@ msgid "Savanna"
 msgstr ""
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Falu"
+msgstr "Sivatagi falu"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
@@ -2005,41 +2153,36 @@ msgid "Snow"
 msgstr "Hó"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Falu"
+msgstr "Hófödte falu"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Dombság"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
 msgstr "Hófödte dombság"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Fájl törlése"
+msgstr "Sivatagi dombság"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Hegyvidék"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Hegyvidék"
+msgstr "Sivatagi hegyvidék"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Erdőség"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
-msgstr "Havas erdő"
+msgstr "Hófödte erdő"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
@@ -3188,9 +3331,8 @@ msgid "poison"
 msgstr "mérgezés"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
-msgstr "Orgyilkos"
+msgstr "Orgyilkosnő"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -3786,7 +3928,6 @@ msgstr ""
 #: data/units/Drake_Flare.cfg:42 data/units/Drake_Glider.cfg:45
 #: data/units/Drake_Inferno.cfg:42 data/units/Drake_Sky.cfg:49
 #: data/units/Drake_Warrior.cfg:44 data/units/Fire_Dragon.cfg:58
-#, fuzzy
 msgid "fire breath"
 msgstr "tűzokádás"
 
@@ -3906,7 +4047,6 @@ msgid "Sky Drake"
 msgstr "Égperzsekény"
 
 #: data/units/Drake_Slasher.cfg:4
-#, fuzzy
 msgid "Drake Slasher"
 msgstr "Perzsekény vagdalkozó"
 
@@ -4001,7 +4141,6 @@ msgid "berserk"
 msgstr "dühöngés"
 
 #: data/units/Dwarvish_Dragonguard.cfg:3
-#, fuzzy
 msgid "Dwarvish Dragonguard"
 msgstr "Törp sárkányőrző"
 
@@ -4650,7 +4789,6 @@ msgid "sling"
 msgstr "parittya"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
 msgstr "Útonálló"
 
@@ -6656,9 +6794,8 @@ msgid "+Basque Translation"
 msgstr "+Baszk Fordítás"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Magyar Fordítás"
+msgstr "+Bolgár Fordítás"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -6677,9 +6814,8 @@ msgid "+Dutch Translation"
 msgstr "+Holland Fordítás"
 
 #: src/about.cpp:182
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Lengyel Fordítás"
+msgstr "+Angol (NB) Fordítás"
 
 #: src/about.cpp:186
 msgid "+Finnish Translation"
@@ -6706,9 +6842,8 @@ msgid "+Italian Translation"
 msgstr "+Olasz Fordítás"
 
 #: src/about.cpp:237
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Katalán Fordítás"
+msgstr "+Latin Fordítás"
 
 #: src/about.cpp:241
 msgid "+Norwegian Translation"
@@ -7233,7 +7368,7 @@ msgstr "' (A játék most ki fog lépni)"
 
 #: src/help.cpp:1022
 msgid "Advances to"
-msgstr "Szintlépés után:"
+msgstr "Szintlépés után"
 
 #: src/help.cpp:1062
 msgid "Alignment"
@@ -7277,7 +7412,7 @@ msgstr "Támadás típusa"
 
 #: src/help.cpp:1158 src/help.cpp:1159
 msgid "Resistance"
-msgstr "Elleneállás"
+msgstr "Ellenállás"
 
 #: src/help.cpp:1186
 msgid "Terrain Modifiers"
@@ -7408,9 +7543,8 @@ msgid "Island"
 msgstr "Sziget"
 
 #: src/multiplayer.cpp:89
-#, fuzzy
 msgid "Load Game..."
-msgstr "Betölt"
+msgstr "Játék betöltése..."
 
 #: src/multiplayer.cpp:99
 msgid "The maximum turns the game will go for"
@@ -7482,52 +7616,44 @@ msgid "Create Game"
 msgstr "Játék készítése"
 
 #: src/multiplayer.cpp:181
-#, fuzzy
 msgid "Name of game:"
-msgstr "Játék neve"
+msgstr "Játék neve:"
 
 #: src/multiplayer.cpp:184
 msgid "$login's game"
 msgstr "$login játéka"
 
 #: src/multiplayer.cpp:195
-#, fuzzy
 msgid "Map to play:"
-msgstr "Pálya a játékhoz"
+msgstr "Pálya a játékhoz:"
 
 #: src/multiplayer.cpp:291
-#, fuzzy
 msgid "Era:"
-msgstr "Éra"
+msgstr "Éra:"
 
 #: src/multiplayer.cpp:349
 msgid "You must enter a name."
 msgstr "Meg kell adnod egy nevet."
 
 #: src/multiplayer.cpp:363
-#, fuzzy
 msgid "Turns: "
-msgstr "Kör"
+msgstr "Kör:"
 
 #: src/multiplayer.cpp:367
-#, fuzzy
 msgid "unlimited"
-msgstr "Korlátlan"
+msgstr "korlátlan"
 
 #: src/multiplayer.cpp:380
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Falu arany"
+msgstr "Falu arany:"
 
 #: src/multiplayer.cpp:393
-#, fuzzy
 msgid "Experience Requirements: "
-msgstr "Tapasztalati követelmények"
+msgstr "Tapasztalati követelmények:"
 
 #: src/multiplayer.cpp:452 src/multiplayer.cpp:514
-#, fuzzy
 msgid "Players: "
-msgstr "Játékosok"
+msgstr "Játékosok:"
 
 #: src/multiplayer.cpp:532
 msgid ""
@@ -7783,9 +7909,8 @@ msgid "You have emerged victorious!"
 msgstr "Győztél!"
 
 #: src/playlevel.cpp:834
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Pálya Indítás"
+msgstr "Pályavégi jelentés"
 
 #: src/playlevel.cpp:855
 msgid ""
