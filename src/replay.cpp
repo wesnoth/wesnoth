@@ -590,26 +590,34 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if we are expecting promotions here
 		if(advancing_units.empty() == false) {
-			if(cfg == NULL || (child = cfg->child("choose")) == NULL) {
+			if(cfg == NULL) {
 				std::cerr << "promotion expected, but none found\n";
 				throw replay::error();
 			}
 
-			const int val = lexical_cast_default<int>((*child)["value"]);
+			//if there is a promotion, we process it and go onto the next command
+			//but if this isn't a promotion, we just keep waiting for the promotion
+			//command -- it may have been mixed up with other commands such as messages
+			if((child = cfg->child("choose")) != NULL) {
 
-			const bool res = dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
+				const int val = lexical_cast_default<int>((*child)["value"]);
 
-			advancing_units.pop_front();
+				const bool res = dialogs::animate_unit_advancement(gameinfo,units,advancing_units.front(),disp,val);
 
-			//if there are no more advancing units, then we check for victory,
-			//in case the battle that led to advancement caused the end of scenario
-			if(advancing_units.empty()) {
-				check_victory(units,teams);
+				advancing_units.pop_front();
+
+				//if there are no more advancing units, then we check for victory,
+				//in case the battle that led to advancement caused the end of scenario
+				if(advancing_units.empty()) {
+					check_victory(units,teams);
+				}
+
+				continue;
 			}
 		}
 
 		//if there is nothing more in the records
-		else if(cfg == NULL) {
+		if(cfg == NULL) {
 			replayer.set_skip(0);
 			return false;
 		}

@@ -118,7 +118,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 
 		util::scoped_resource<int,halo::remover> halo_effect(0);
 		if(halo.empty() == false && !disp.fogged(b.x,b.y)) {
-			halo_effect.assign(halo::add(xpos+disp.hex_width()/2,ypos+disp.hex_size()/2,halo));
+			halo_effect.assign(halo::add(xpos+disp.hex_size()/2,ypos+disp.hex_size()/2,halo));
 		}
 
 		const int new_ticks = SDL_GetTicks();
@@ -298,7 +298,10 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 			unit_halo_y = new_halo_y;
 
 			if(unit_halo_image != NULL && !disp.fogged(a.x,a.y)) {
-				unit_halo_effect.assign(halo::add(disp.get_location_x(a)+disp.hex_width()/2 + unit_halo_x*disp.zoom(),disp.get_location_y(a)+disp.hex_size()/2 + unit_halo_y*disp.zoom(),*unit_halo_image));
+				const int halo_xpos = disp.get_location_x(a)+disp.hex_size()/2 + unit_halo_x*disp.zoom();
+				const int halo_ypos = disp.get_location_y(a)+disp.hex_size()/2 + unit_halo_y*disp.zoom();
+
+				unit_halo_effect.assign(halo::add(halo_xpos,halo_ypos,*unit_halo_image));
 			} else {
 				unit_halo_effect.assign(0);
 			}
@@ -390,7 +393,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 				disp.draw_unit(xpos,ypos,img,vflip);
 			}
 
-			const int halo_xpos = xpos+disp.hex_width()/2;
+			const int halo_xpos = xpos+disp.hex_size()/2;
 			const int halo_ypos = ypos+disp.hex_size()/2;
 
 			if(missile_halo_image != new_halo || missile_halo_x != new_halo_x || missile_halo_y != new_halo_y) {
@@ -656,7 +659,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 		const int posx = int(pos*xsrc + (1.0-pos)*xdst) + xoffset;
 		const int posy = int(pos*ysrc + (1.0-pos)*ydst);
 
-		const int halo_xpos = posx+disp.hex_width()/2;
+		const int halo_xpos = posx+disp.hex_size()/2;
 		const int halo_ypos = posy+disp.hex_size()/2;
 
 		if(new_halo_image != halo_image || new_halo_x != halo_x || new_halo_y != halo_y) {

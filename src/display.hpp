@@ -89,6 +89,8 @@ public:
 	//(from top tip to bottom tip or left edge to right edge)
 	int hex_size() const;
 
+	//function which returns the width of a pixel, up to where the next hex starts
+	//(i.e. not entirely from tip to tip -- use hex_size() to get the distance from tip to tip)
 	int hex_width() const;
 
 	enum SCROLL_TYPE { SCROLL, WARP };
