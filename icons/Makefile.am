@@ -1,3 +1,5 @@
+EXTRA_DIST = wesnoth.desktop
+
 if GNOME1
 gnome1desktopdir = @GNOME1_DESKTOP@
 dist_gnome1desktop_DATA = wesnoth.desktop
@@ -7,7 +9,7 @@ endif
 
 if GNOME2
 gnome2desktopdir = $(datadir)/applications
-dist_gnome2desktop_DATA = 
+dist_gnome2desktop_DATA = wesnoth.desktop 
 gnome2icondir = $(datadir)/icons
 gnome2icon_DATA = ../images/wesnoth-icon.png
 endif
