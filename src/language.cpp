@@ -117,6 +117,8 @@ char* wesnoth_setlocale(int category, const char *locale)
 #ifdef __APPLE__
 	if(setenv ("LANGUAGE", locale, 1) == -1)
 		std::cerr << "setenv LANGUAGE failed: " << strerror(errno);
+	if(setenv ("LC_ALL", locale, 1) == -1)
+		std::cerr << "setenv LC_ALL failed: " << strerror(errno);
 #endif 
 
 	char* res = setlocale (category, locale);
