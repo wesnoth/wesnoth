@@ -75,7 +75,6 @@ void show_about(display& disp)
  	text.push_back("+Developers");
  	text.push_back("-   Alfredo Beaumont (ziberpunk)");
  	text.push_back("-   Cyril Bouthors (CyrilB)");
- 	text.push_back("-   Guillaume Duwelz-Rebert");
  	text.push_back("-   Isaac Clerencia");
  	text.push_back("-   J.R. Blain (Cowboy)");
  	text.push_back("-   Justin Zaun (jzaun)");
