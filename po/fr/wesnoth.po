@@ -1386,9 +1386,8 @@ msgstr "Vous avez attaqué Merle avec succès."
 
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid "Can Merle retaliate from my attack?"
-msgstr "Est-ce que Merle peut répliquer à mon attaque ?"
+msgstr "Est-ce que Merle peut riposter à mon attaque ?"
 
-# XXX répliquer vs contre-attaquer ?
 #: data/scenarios/tutorial/tutorial1.cfg:166
 msgid ""
 "Whenever a unit is attacked, it retaliates with one of their own weapons. "
@@ -1404,18 +1403,18 @@ msgid ""
 "shoot across multiple hexes; this is one of the distinctive features of "
 "Wesnoth."
 msgstr ""
-"Lorsque qu'une unité est attaquée, elle réplique avec l'une de ses propres "
-"armes. Cela signifie qu'après chaque coup de l'attaquant, le défenseur "
-"réplique avec un coup. Cela continue jusqu'à ce qu'un côté n'ait plus de "
-"coups à donner, auquel cas l'autre unité termine avec ses coups restants. "
-"Cependant une unité ne peut répliquer qu'avec une arme de même portée que "
-"celle utilisée pour l'attaque. Cela signifie qu'une attaque à distance ne "
-"sera contrée que par une attaque à distance et qu'une attaque de mêlée que "
-"par une attaque de mêlée. La majorité des unités ont des attaques de mêlée "
-"plus puissantes qu'à distance, aussi les unités avec des attaques à distance "
-"sont utiles contre elles puisque la réplique sera moins puissante; souvent "
-"il n'y a même pas de réplique. Cependant les unités à distance ne peuvent "
-"pas tirer à travers plusieurs hexagones; c'est une particularité de Wesnoth."
+"Lorsque qu'une unité est attaquée, elle riposte avec l'une de ses armes. "
+"Ainsi après chaque coup de l'attaquant, le défenseur riposte par un coup. "
+"Les coups s'alternent, avec éventuellement une série finale si l'un des "
+"camps dispose de plus d'attaques. Une unité ne peut riposter qu'avec une "
+"arme de même portée que celle utilisée pour l'attaque. Ainsi une attaque à "
+"distance ne sera contrée que par une attaque à distance et c'est pareil pour "
+"une attaque de mêlée. La plupart des unités ont des attaques de mêlée plus "
+"puissantes que celles à distance, aussi les unités avec des attaques à "
+"distance puissantes sont-elles appropriées dans ce cas puisqu'il n'y aura "
+"souvent pas ou peu de riposte. Cependant les unités à distance ne peuvent "
+"pas tirer à plusieurs hexagones de distance; c'est une particularité de "
+"Wesnoth."
 
 #: data/scenarios/tutorial/tutorial1.cfg:167
 msgid ""
@@ -1950,7 +1949,6 @@ msgstr ""
 "Chaque case a un terrain, lequel donne à la case des propriétés distinctes."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
-#, fuzzy
 msgid ""
 "Two terrains have properties which have already been described; namely "
 "villages and castle. However the properties of most terrains are more "
@@ -1962,14 +1960,14 @@ msgid ""
 "For example; elves have 70% defense on grass, and are therefore hit 30% of "
 "the time."
 msgstr ""
-"Deux terrains ont des propriétés qui ont déjà été présentées ; le village et "
-"le château. Cependant les propriétés de la plupart des terrains sont plus "
-"subtiles et consistent en des avantages ou désavantages pour des unités "
-"différentes. La première propriété d'un terrain est le nombre de points de "
-"mouvement dépensés par une unité pour y pénètrer. La seconde est la défense "
-"que le terrain procure à l'unité qui y est présente. C'est un pourcentage "
-"qui détermine la probabilité pour l'unité d'être touchée. Par exemple les "
-"elfes ont 70% de défense en forêt et ne sont ainsi touchés que 30% du temps."
+"Les propriétés du village et du château ont déjà été présentées. "
+"Mais la majorité des terrains ont des propriétés plus subtiles qui "
+"consistent en des bonus ou malus selon les unités. La première propriété "
+"d'un terrain est son coût en point de mouvement pour y pénétrer. La "
+"seconde est la défense que procure le terrain à l'unité. C'est un "
+"pourcentage qui représente la probabilité de ne pas être touché. Par "
+"exemple, les elfes ont 70% de défense en forêt et ne sont donc touchés que "
+"30% du temps."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
 msgid "What are the different properties that terrains have?"
@@ -6478,9 +6476,8 @@ msgid "+Polish Translation"
 msgstr "+Traduction polonaise"
 
 #: src/about.cpp:205
-#, fuzzy
 msgid "+Portuguese Translation"
-msgstr "+Traduction portugaise (brésilienne)"
+msgstr "+Traduction portugaise"
 
 #: src/about.cpp:210
 msgid "+Slovak Translation"
@@ -6796,7 +6793,7 @@ msgstr "Le fichier sauvegardé est corrompu"
 
 #: src/game.cpp:984
 msgid " ,Get More Campaigns..."
-msgstr ""
+msgstr " ,Récupérer d'autres campagnes..."
 
 #retour à la ligne nécessaire
 #: src/game.cpp:990
@@ -7776,7 +7773,6 @@ msgid "him"
 msgstr "lui"
 
 #: src/playturn.cpp:1768
-#, fuzzy
 msgid "You are seperated from your soldiers and may not recall them"
 msgstr "Vous êtes séparés de vos soldats et ne pouvez les rappeler"
 
@@ -8063,15 +8059,15 @@ msgstr "attaques"
 
 #: src/unit_types.cpp:886
 msgid "chaotic"
-msgstr "Chaotique"
+msgstr "chaotique"
 
 #: src/unit_types.cpp:886
 msgid "lawful"
-msgstr "Juste"
+msgstr "loyal"
 
 #: src/unit_types.cpp:886
 msgid "neutral"
-msgstr "Neutre"
+msgstr "neutre"
 
 #: src/widgets/file_chooser.cpp:30
 msgid "Delete File"
