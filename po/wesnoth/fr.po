@@ -3787,13 +3787,16 @@ msgstr "enchantée"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
-msgstr "Wose vénérable"
+msgstr "Wose ancien"
 
 #: data/units/Ancient_Wose.cfg:7 data/units/Elder_Wose.cfg:7
 #: data/units/Wose.cfg:7
 msgid "ambush,regenerates"
 msgstr "embuscade,régénération"
 
+# like sticks and feathers ???
+# stewardship ???
+# desecration ???
 #: data/units/Ancient_Wose.cfg:16
 msgid ""
 "Terrible and awe-inspiring, the most ancient of woses grow to a tremendous "
@@ -3806,6 +3809,14 @@ msgid ""
 "which is often the only thing which could incur the wrath of these otherwise "
 "kind and curious beings."
 msgstr ""
+"Terrible et intimidants, les woses les plus anciens ont acquit une taille "
+"énorme.  Ils apparaissent rarement en dehors des légendes, où l'on dit qu'ils "
+"posséder une force immense, écrasant les plus grand des rochers en fine poudre, "
+"comme si toute l'énergie qu'un arbre utilise pour se développer et fendre la "
+"pierre année après année était appliquée en un instant. Ces mêmes légendes "
+"parlent de leur relation aux forêts de ce monde, dont la destruction est "
+"souvent la seule chose qui pourrait provoquer la colère ces derniers. "
+"Autrement, ce sont des êtres aimables et curieux."
 
 #: data/units/Ancient_Wose.cfg:19 data/units/Elder_Wose.cfg:19
 #: data/units/Wose.cfg:19
@@ -4879,12 +4890,17 @@ msgstr ""
 msgid "Sky Drake"
 msgstr "Drake du firmament"
 
+# swiftly swoop ???
 #: data/units/Drake_Sky.cfg:18
 msgid ""
 "Sky drakes are truly the kings of the sky. Using their momentum and fire "
 "breath as weapons these drakes are the bane of many. They can swiftly swoop "
 "down on prey, and are usually long gone before anyone can stop them."
 msgstr ""
+"Les drakes du firmament sont réellement les rois du ciel. Utilisant leur élan "
+"et leur souffle ardent, ces drakes sont le fléau de beaucoup. Il fondent "
+"rapidement sur leur proies et disparaissent bien avant que quiconque puisse "
+"les arrêter."
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4926,12 +4942,11 @@ msgstr ""
 "mais ils sont également capable de souffler le feu légendaire de leurs "
 "ancêtres."
 
-# TODO: traduire Draug ?
 #: data/units/Draug.cfg:3
 msgid "Draug"
 msgstr "Draug"
 
-# Oh bon sang, il y a des mots que je trouve pas dans mon dico !
+# Traduction libre, j'ai pas tout compris à la VO
 #: data/units/Draug.cfg:16
 msgid ""
 "Towering remains of what once were legendary warriors, the Draug strike fear "
@@ -4941,6 +4956,11 @@ msgid ""
 "bought only by strength of arms.  The memory of their enemy, and the purpose "
 "of their struggle have long faded into oblivion."
 msgstr ""
+"Restes de ce qui était autrefois des guerriers légendaires, les Draugs "
+"frappent terreurs les cœurs de ceux qui s'opposent à eux. Ils ne sont pas "
+"animés pas la méchanceté mais sont contraints, dans leur non-vie, à reproduire "
+"pour l'éternité les grandes batailles de leur mémoire, combattant désespérément "
+"sans même se souvenir du nom de leur ennemis ni du but de leur lutte."
 
 #: data/units/Draug.cfg:24 data/units/Dwarvish_Fighter.cfg:22
 #: data/units/Revenant.cfg:24 data/units/Skeleton.cfg:24
@@ -5100,7 +5120,7 @@ msgid ""
 "The Sentinel, with his tower shield and great courage, refuses to yield "
 "under even the strongest of enemy attacks."
 msgstr ""
-"La sentinelle, avec son pavoi et son grand courage, refuse de se rendre même "
+"La sentinelle, avec son pavois et son grand courage, refuse de se rendre même "
 "face à l'attaque ennemie la plus puissante."
 
 # XXX Nain indéfectible plutôt? Ou autre...
@@ -5363,7 +5383,6 @@ msgid "Elvish Hero"
 msgstr "Héros elfe"
 
 #: data/units/Elvish_Hero.cfg:19
-#, fuzzy
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
 "honed their combat skills to a frightening level. Elvish Heroes prefer "
@@ -5547,9 +5566,10 @@ msgstr ""
 "le nombre de fois qu'ils peuvent attaquer de un. Les prêtresses possèdent "
 "également des capacités curatives basiques."
 
+# Archer d'élite -> franc-tireur
 #: data/units/Elvish_Sharpshooter.cfg:3
 msgid "Elvish Sharpshooter"
-msgstr "Archer d'élite elfe"
+msgstr "Franc-tireur elfe"
 
 #: data/units/Elvish_Sharpshooter.cfg:19
 #: data/units/Elvish_Sharpshooter.cfg:113
@@ -5559,14 +5579,14 @@ msgid ""
 "when firing very quickly. Sharpshooters are excellent at picking off "
 "entrenched enemies."
 msgstr ""
-"Le meilleur des archers d'élite de tout Wesnoth, les Archers d'élite elfes "
+"Le meilleur des archers d'élite de tout Wesnoth, les franc-tireurs elfes "
 "sont incroyablement précis ; il est garanti qu'ils ont 60% de changes de "
-"toucher, même en tirant très rapidement. Les Archers d'élite elfes sont "
+"toucher, même en tirant très rapidement. Les franc-tireurs elfes sont "
 "excellents pour éliminer des ennemis retranchés."
 
 #: data/units/Elvish_Sharpshooter.cfg:97
 msgid "female^Elvish Sharpshooter"
-msgstr "Archère d'élite elfe"
+msgstr "Franc-tireur elfe"
 
 #: data/units/Elvish_Shyde.cfg:3
 msgid "female^Elvish Shyde"
@@ -5743,9 +5763,10 @@ msgstr "arme factice"
 msgid "Gate"
 msgstr "Porte"
 
+# Pas sûr du sens
 #: data/units/Gate.cfg:18
 msgid "The door will not open for any who are not allied with it."
-msgstr ""
+msgstr "La porte ne s'ouvrira pas pour quiconque n'est pas allié avec elle"
 
 #: data/units/Gate.cfg:20
 msgid "bump"
@@ -6553,6 +6574,12 @@ msgid ""
 "breathe water leaves them in trepidation of the abyss.  They are small, and "
 "somewhat frail in form, but often much more nimble than their opponents."
 msgstr ""
+"Les nagas appartiennent à l'une des quelques races capables de se mouvoir de "
+"façon significative dans l'eau, leur donnant accès à un monde entièrement "
+"interdit aux habitants des terres. Toujours est-il qu'elles ne sont pas de "
+"vraies créatures des profondeurs et sont incapable de respirer sous l'eau. "
+"Elles sont petites et quelque peu frêles, mais souvent beaucoup plus agiles "
+"que leurs adversaires."
 
 #: data/units/Naga-Fighter.cfg:38
 msgid "Nagini Fighter"
@@ -6570,6 +6597,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Les plus expérimentés des sabreurs naga se lancent dans la caste des "
+"myrmidons, les maîtres des sabres doubles. Ils frappent aussi rapidement que "
+"les serpents auxquels ils ressemblent et esquivent les attaques par de "
+"gracieuses danses. Ils sont non seulement des adversaires efficaces sur terrain "
+"ouvert, mais leur capacité de natation leur permet une mobilité mortelle."
 
 #: data/units/Naga-Myrmidon.cfg:42
 msgid "Nagini Myrmidon"
@@ -6583,6 +6615,11 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
+"Les plus expérimentés des sabreurs naga se lancent dans la caste des "
+"myrmidons, les maîtres des sabres doubles. Ils frappent aussi rapidement que "
+"les serpents auxquels ils ressemblent et esquivent les attaques par de "
+"gracieuses danses. Ils sont non seulement des adversaires efficaces sur terrain "
+"ouvert, mais leur capacité de natation leur permet une mobilité mortelle."
 
 #: data/units/Naga-Warrior.cfg:3
 msgid "Naga Warrior"
@@ -6597,6 +6634,13 @@ msgid ""
 "dodge from blows.  This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
+"La plupart des jeunes guerriers nagas rêvent du jour où elles mériteront leur "
+"deuxième lame. Leur pratique martial utilisant des sabres doubles est "
+"complètement différente de celle des orcs et des autres races, parce que eux "
+"ont commencé à apprendre l'art d'employer leur forme serpentine pour une "
+"meilleure efficacité, se tordant et se tournant pour esquiver les coups. Ceci "
+"les rend efficaces sur terre, mais le frottement de l'eau limite "
+"considérablement leurs capacités."
 
 #: data/units/Naga-Warrior.cfg:42
 msgid "Nagini Warrior"
@@ -7176,16 +7220,15 @@ msgid ""
 msgstr ""
 "Les sauriens sont habiles au maniement de la lance. En dépit de leur nature "
 "léthargique due à leur sang froid, et de leur relative fragilité, ils sont "
-"très efficaces en tant qu'éclaireurs, et peuvent naviguer à travers les "
+"très efficaces en tant qu'éclaireurs, et peuvent évoluer à travers les "
 "terrains accidentés aussi bien qu'autour des ennemis. Les meilleurs des "
 "sauriens deviennent des guerriers sauriens."
 
 #: data/units/Saurian_Ambusher.cfg:4
 msgid "Saurian Ambusher"
-msgstr ""
+msgstr "Accrocheur saurien"
 
 #: data/units/Saurian_Ambusher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Ambushers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7193,19 +7236,19 @@ msgid ""
 "opponents. Saurian Ambushers possess the strength to take full advantage of "
 "this fact. The best Ambushers go on to become Saurian Flankers"
 msgstr ""
-"Les sauriens sont extrêmement habiles au maniement de la lance. En dépit de "
-"leur nature léthargique due à leur sang froid, et de leur relative "
+"Les accrocheurs sauriens sont extrêmement habiles au maniement de la lance. "
+"En dépit de leur nature léthargique due à leur sang froid, et de leur relative "
 "fragilité, ils sont très efficaces en tant qu'éclaireurs, et peuvent "
-"naviguer à travers les terrains accidentés aussi bien qu'autour des ennemis. "
-"Les guerriers sauriens possèdent la force pour pleinement tourner cette "
-"capacité à leur avantage."
+"évoluer à travers les terrains accidentés aussi bien qu'autour des ennemis. "
+"Les accrocheurs sauriens possèdent la force pour pleinement tourner cette "
+"capacité à leur avantage. Les meilleurs accrocheurs deviennent des commandos "
+"sauriens"
 
 #: data/units/Saurian_Flanker.cfg:4
 msgid "Saurian Flanker"
-msgstr ""
+msgstr "Commando saurien"
 
 #: data/units/Saurian_Flanker.cfg:18
-#, fuzzy
 msgid ""
 "Saurian Flankers are highly skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
@@ -7213,10 +7256,10 @@ msgid ""
 "opponents. Saurian Flankers possess the strength to take full advantage of "
 "this fact."
 msgstr ""
-"Les sauriens sont extrêmement habiles au maniement de la lance. En dépit de "
-"leur nature léthargique due à leur sang froid, et de leur relative "
+"Les commandos sauriens sont extrêmement habiles au maniement de la lance. En "
+"dépit de leur nature léthargique due à leur sang froid, et de leur relative "
 "fragilité, ils sont très efficaces en tant qu'éclaireurs, et peuvent "
-"naviguer à travers les terrains accidentés aussi bien qu'autour des ennemis. "
+"évoluer à travers les terrains accidentés aussi bien qu'autour des ennemis. "
 "Les guerriers sauriens possèdent la force pour pleinement tourner cette "
 "capacité à leur avantage."
 
@@ -7241,23 +7284,23 @@ msgstr ""
 msgid "frost blast"
 msgstr "rafale de froid"
 
+# J'ai trouvé « escarmoucheur » dans le dico de l'académie française :)
 #: data/units/Saurian_Skirmisher.cfg:4
 msgid "Saurian Skirmisher"
-msgstr ""
+msgstr "Escarmoucheur saurien"
 
 #: data/units/Saurian_Skirmisher.cfg:17
-#, fuzzy
 msgid ""
 "Saurian Skirmishers are skilled in the use of the spear. Despite their "
 "lethargic cold blooded heritage, and their relative frailty, they are highly "
 "valued as scouts as they can navigate through rough terrain and around "
 "opponents. The best Skirmishers go on to become Saurian Ambushers."
 msgstr ""
-"Les sauriens sont habiles au maniement de la lance. En dépit de leur nature "
-"léthargique due à leur sang froid et de leur relative fragilité, ils sont "
-"très efficaces en tant qu'éclaireurs, et peuvent naviguer à travers les "
+"Les escarmoucheurs sauriens sont habiles au maniement de la lance. En dépit de "
+"leur nature léthargique due à leur sang froid et de leur relative fragilité, "
+"ils sont très efficaces en tant qu'éclaireurs, et peuvent évoluer à travers les "
 "terrains accidentés aussi bien qu'autour des ennemis. Les meilleurs des "
-"sauriens deviennent des guerriers sauriens."
+"escarmoucheurs sauriens deviennent des accrocheurs sauriens."
 
 #: data/units/Saurian_Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
@@ -8186,7 +8229,6 @@ msgid "Overwrite?"
 msgstr "Écraser ?"
 
 #: src/dialogs.cpp:185
-#, fuzzy
 msgid "Save already exists. Do you want to overwrite it ?"
 msgstr "Ce fichier existe déjà. Voulez-vous l'écraser ?"
 
@@ -8236,14 +8278,12 @@ msgid "Scenario Start"
 msgstr "Début du scénario"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Difficulté"
+msgstr "Difficulté : "
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Version"
+msgstr "Version : "
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -8493,7 +8533,7 @@ msgstr "Téléchargement de la campagne en cours..."
 
 #: src/game.cpp:1183
 msgid "Cannot rescan the filesystem"
-msgstr ""
+msgstr "Impossible de rescanner le système de fichier"
 
 #: src/game.cpp:1194
 msgid "Campaign Installed"
@@ -8947,7 +8987,7 @@ msgstr "Observateurs"
 
 #: src/multiplayer_create.cpp:53
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: src/multiplayer_create.cpp:54
 msgid "Regenerate"
@@ -9001,7 +9041,7 @@ msgstr "Aucun camp multi-joueurs."
 
 #: src/multiplayer_create.cpp:122
 msgid "No eras found"
-msgstr ""
+msgstr "Aucune ère trouvée"
 
 #: src/multiplayer_create.cpp:131
 msgid "$login's game"
@@ -9009,7 +9049,7 @@ msgstr "Jeu de $login"
 
 #: src/multiplayer_create.cpp:161
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Ère invalide sélectionnée"
 
 #: src/multiplayer_create.cpp:192
 msgid "You must enter a name."

@@ -664,7 +664,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			if(u_type->second.cost() > current_team.gold()) {
-				ERR_NW << "unit '" << u_type->second.name() << "' is too expensive to recruit: "
+				ERR_NW << "unit '" << u_type->second.id() << "' is too expensive to recruit: "
 				       << u_type->second.cost() << "/" << current_team.gold() << "\n";
 				if (!game_config::ignore_replay_errors) throw replay::error();
 			}

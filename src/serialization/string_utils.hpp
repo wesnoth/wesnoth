@@ -20,6 +20,16 @@
 #include <vector>
 #include "SDL_types.h"
 
+class t_string;
+
+class variable_set
+{
+public:
+	virtual ~variable_set();
+
+	virtual const t_string& get_variable(const std::string& id) = 0;
+};
+
 //the type we use to represent Unicode strings.
 typedef std::vector<wchar_t> wide_string;
 //if we append a 0 to that one we can pass it to SDL_ttf
@@ -48,11 +58,12 @@ std::string &unescape(std::string &str);
 std::string &strip(std::string &str);
 bool has_value(std::string const &values, std::string const &val);
 
-typedef std::map< std::string, std::string > string_map;
+typedef std::map< std::string, t_string > string_map;
 // function which will interpolate variables, starting with '$' in the string 'str' with
 // the equivalent symbols in the given symbol table. If 'symbols' is NULL, then game event
 // variables will be used instead
-std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols = NULL);
+std::string interpolate_variables_into_string(std::string const &str, string_map const *symbols);
+std::string interpolate_variables_into_string(std::string const &str, variable_set& variables);
 
 //functions for converting Unicode wide-char strings to UTF-8 encoded
 //strings, back and forth

@@ -777,7 +777,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 
 	const config::child_list& items = cfg.get_children("binary_path");
 	for(config::child_list::const_iterator i = items.begin(); i != items.end(); ++i) {
-		const std::string path = (**i)["path"] + "/";
+		const std::string path = (**i)["path"].str() + "/";
 		if(binary_paths.count(path) == 0) {
 			binary_paths.insert(path);
 			paths_.push_back(path);

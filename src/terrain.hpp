@@ -14,6 +14,7 @@
 #define TERRAIN_H_INCLUDED
 
 class config;
+#include "tstring.hpp"
 
 #include <map>
 #include <string>
@@ -26,7 +27,7 @@ public:
 	terrain_type(const config& cfg);
 
 	const std::string& symbol_image() const;
-	const std::string& name() const;
+	const t_string& name() const;
 	const std::string& id() const;
 
 	//the character representing this terrain
@@ -49,7 +50,7 @@ public:
 private:
 	std::string symbol_image_;
 	std::string id_;
-	std::string name_;
+	t_string name_;
 
 	//the 'letter' is the letter that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'

@@ -59,7 +59,7 @@ void show_intro(display &disp, const config& data, const config& level)
 			showing = show_intro_part(disp, (*item.second), scenario);
 		} else if(*item.first == "if") {
 			const std::string type = game_events::conditional_passed(
-				NULL, *item.second) ? "then":"else";
+				NULL, item.second) ? "then":"else";
 			const config* const thens = (*item.second).child(type);
 			if(thens == NULL) {
 				std::cerr << "no intro story this way...\n";

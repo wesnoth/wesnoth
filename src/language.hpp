@@ -20,6 +20,8 @@
 
 //this module controls internationalization.
 
+class t_string;
+
 struct language_def
 {
 	language_def() {}
@@ -35,8 +37,8 @@ bool languagedef_lessthan_p (const language_def& def1, const language_def& def2)
 
 struct symbol_table
 {
-	const std::string& operator[](const std::string& key) const;
-	const std::string& operator[](const char* key) const;
+	const t_string& operator[](const std::string& key) const;
+	const t_string& operator[](const char* key) const;
 };
 
 //table of strings which are displayed to the user. Maps ids -> text.

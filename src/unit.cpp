@@ -44,8 +44,8 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 	const int lvla = a.type().level();
 	const int lvlb = b.type().level();
 
-	const std::string& namea = a.type().name();
-	const std::string& nameb = b.type().name();
+	const std::string& namea = a.type().id();
+	const std::string& nameb = b.type().id();
 
 	const int xpa = a.max_experience() - a.experience();
 	const int xpb = b.max_experience() - b.experience();
@@ -481,7 +481,7 @@ bool unit::matches_filter(const config& cfg) const
 		return false;
 	}
 
-	const std::string& this_type = this->type().name();
+	const std::string& this_type = this->type().id();
 
 	//the type could be a comma-seperated list of types
 	if(type.empty() == false && type != this_type) {
@@ -642,7 +642,7 @@ void unit::read(const game_data& data, const config& cfg)
 	custom_unit_description_ = cfg["unit_description"];
 
 	traitsDescription_ = cfg["traits_description"];
-	const std::map<std::string,std::string>::const_iterator recruit_itor = cfg.values.find("canrecruit");
+	const string_map::const_iterator recruit_itor = cfg.values.find("canrecruit");
 	if(recruit_itor != cfg.values.end() && recruit_itor->second == "1") {
 		recruit_ = true;
 	}
@@ -721,7 +721,7 @@ void unit::read(const game_data& data, const config& cfg)
 
 void unit::write(config& cfg) const
 {
-	cfg["type"] = type_->name();
+	cfg["type"] = type_->id();
 
 	std::stringstream hp;
 	hp << hitpoints_;
@@ -991,7 +991,7 @@ void unit::add_modification(const std::string& type,
 		const std::string& type_filter = (**i.first)["unit_type"];
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = utils::split(type_filter);
-			if(std::find(types.begin(),types.end(),this->type().name()) == types.end()) {
+			if(std::find(types.begin(),types.end(),this->type().id()) == types.end()) {
 				continue;
 			}
 		}
@@ -1147,7 +1147,7 @@ void unit::add_modification(const std::string& type,
 
 	description << "\n";
 
-	modificationDescriptions_[type] += description.str();
+	modificationDescriptions_[type] = modificationDescriptions_[type].str() + description.str();
 }
 
 void unit::reset_modifications()

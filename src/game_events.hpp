@@ -14,13 +14,18 @@
 #define GAME_EVENTS_H_INCLUDED
 
 class config;
+class t_string;
 class display;
+
 #include "gamestatus.hpp"
 #include "map.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "variable.hpp"
 
+#include <vector>
 #include <map>
+
 
 //this file defines the game's events mechanism. Events might be units
 //moving or fighting, or when victory or defeat occurs. A scenario's
@@ -46,13 +51,15 @@ struct manager {
 			std::map<gamemap::location,unit>& units, std::vector<team>& teams,
 			game_state& state_of_game, gamestatus& status, const game_data& data);
 	~manager();
+
+	variable::manager variable_manager;
 };
 
 void write_events(config& cfg);
 
-bool unit_matches_filter(const unit& u, const config& filter);
-bool unit_matches_filter(unit_map::const_iterator itor, const config& filter);
-bool unit_matches_filter(const unit& u, const config& filter);
+bool unit_matches_filter(const unit& u, const vconfig filter);
+bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter);
+bool unit_matches_filter(const unit& u, const vconfig filter);
 
 //function to fire an event. Events may have up to two arguments, both of
 //which must be locations.
@@ -61,7 +68,7 @@ bool fire(const std::string& event,
           const gamemap::location& loc2=gamemap::location::null_location);
 
 bool conditional_passed(const std::map<gamemap::location,unit>* units,
-                        const config& cond);
+                        const vconfig cond);
 bool pump();
 
 }

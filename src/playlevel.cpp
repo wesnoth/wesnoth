@@ -41,7 +41,6 @@
 #include "tooltips.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "variable.hpp"
 #include "video.hpp"
 
 #include <iostream>
@@ -357,14 +356,14 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 	// system.
 	for (unit_map::const_iterator help_unit_it = units.begin();
 		 help_unit_it != units.end(); help_unit_it++) {
-		const std::string name = help_unit_it->second.type().name();
+		const std::string name = help_unit_it->second.type().id();
 		preferences::encountered_units().insert(name);
 	}
 
 	// Add all units that are recallable as encountred units.
 	for(std::map<std::string, player_info>::iterator pi = state_of_game.players.begin(); pi!=state_of_game.players.end(); ++pi) {
 		for(std::vector<unit>::iterator help_recall_it = pi->second.available_units.begin(); help_recall_it != pi->second.available_units.end(); help_recall_it++) {
-			preferences::encountered_units().insert(help_recall_it->type().name());
+			preferences::encountered_units().insert(help_recall_it->type().id());
 		}
 	}
 
@@ -510,7 +509,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 				events::raise_draw_event();
 				if(!loading_game) {
 					game_events::fire("start");
-					game_events::set_variable("turn_number", "1");
+					state_of_game.set_variable("turn_number", "1");
 				}
 				gui.draw();
 
@@ -542,7 +541,7 @@ LEVEL_RESULT play_level(const game_data& gameinfo, const config& game_config,
 
 				std::stringstream player_number_str;
 				player_number_str << player_number;
-				game_events::set_variable("side_number",player_number_str.str());
+				state_of_game.set_variable("side_number",player_number_str.str());
 
 				//fire side turn event only if real side change occurs not counting changes from void to a side
 				if (team_it != teams.begin()+first_player || !first_time) {
@@ -729,7 +728,7 @@ redo_turn:
 				LOG_NG << "turn event..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui.video(),recorder.skipping());
 				const std::string turn_num = event_stream.str();
-				game_events::set_variable("turn_number",turn_num);
+				state_of_game.set_variable("turn_number",turn_num);
 				game_events::fire("turn " + turn_num);
 				game_events::fire("new turn");
 			}

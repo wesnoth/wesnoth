@@ -525,7 +525,7 @@ const std::string& team::save_id() const
 	return info_.save_id;
 }
 
-void team::set_objectives(const std::string& new_objectives, bool silently)
+void team::set_objectives(const t_string& new_objectives, bool silently)
 {
 	info_.objectives = new_objectives;
 	if(!silently)
@@ -537,7 +537,7 @@ void team::reset_objectives_changed()
 	info_.objectives_changed = false;
 }
 
-const std::string& team::objectives() const
+const t_string& team::objectives() const
 {
 	return info_.objectives;
 }

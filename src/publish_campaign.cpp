@@ -131,12 +131,12 @@ namespace {
 
 void unarchive_file(const std::string& path, const config& cfg)
 {
-	write_file(path + '/' + cfg["name"],unencode_binary(cfg["contents"]));
+	write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
 void unarchive_dir(const std::string& path, const config& cfg)
 {
-	const std::string dir = path + '/' + cfg["name"];
+	const std::string dir = path + '/' + cfg["name"].str();
 	make_directory(dir);
 
 	const config::child_list& dirs = cfg.get_children("dir");

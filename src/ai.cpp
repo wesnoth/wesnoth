@@ -224,7 +224,7 @@ bool ai::recruit_usage(const std::string& usage)
 	for(std::map<std::string,unit_type>::const_iterator i =
 	    gameinfo_.unit_types.begin(); i != gameinfo_.unit_types.end(); ++i) {
 
-		const std::string& name = i->second.name();
+		const std::string& name = i->second.id();
 
 		if(i->second.usage() == usage && recruits.count(name)
 		   && current_team().gold() - i->second.cost() > min_gold
@@ -726,7 +726,7 @@ void ai::find_threats()
 	for(config::child_list::const_iterator j = protected_units.begin(); j != protected_units.end(); ++j) {
 
 		for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-			if(game_events::unit_matches_filter(u,**j)) {
+			if(game_events::unit_matches_filter(u, *j)) {
 				items.push_back(protected_item(lexical_cast_default<double>((**j)["value"],1.0),lexical_cast_default<int>((**j)["radius"],20),u->first));
 			}
 		}
@@ -1269,7 +1269,7 @@ bool ai::retreat_units(std::map<gamemap::location,paths>& possible_moves, const 
 				}
 
 				if(best_pos.valid()) {
-					LOG_AI << "retreating '" << i->second.type().name() << "' " << i->first.x << ","
+					LOG_AI << "retreating '" << i->second.type().id() << "' " << i->first.x << ","
 						<< i->first.y << " -> " << best_pos.x << "," << best_pos.y << "\n";
 					move_unit(i->first,best_pos,possible_moves);
 					return true;
@@ -1377,7 +1377,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 
 	defense /= weighting_sum;
 
-	LOG_AI << "average defense of '" << a.name() << "': " << defense << "\n";
+	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
 	int sum = 0, weight_sum = 0;
 
@@ -1405,7 +1405,7 @@ int ai::compare_unit_types(const unit_type& a, const unit_type& b) const
 	const int a_effectiveness_vs_b = average_resistance_against(b,a);
 	const int b_effectiveness_vs_a = average_resistance_against(a,b);
 
-	LOG_AI << "comparison of '" << a.name() << " vs " << b.name() << ": "
+	LOG_AI << "comparison of '" << a.id() << " vs " << b.id() << ": "
 	          << a_effectiveness_vs_b << " - " << b_effectiveness_vs_a << " = "
 			  << (a_effectiveness_vs_b - b_effectiveness_vs_a) << "\n";
 	return a_effectiveness_vs_b - b_effectiveness_vs_a;

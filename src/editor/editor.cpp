@@ -536,7 +536,7 @@ std::string map_editor::load_map(const std::string filename) {
 	bool load_successful = true;
 	std::string msg;
 	std::string new_map;
-	string_map symbols;
+	utils::string_map symbols;
 	symbols["filename"] = filename;
 	if (!file_exists(filename) || is_directory(filename)) {
 		load_successful = false;
@@ -1031,7 +1031,7 @@ bool map_editor::save_map(const std::string fn, const bool display_confirmation)
 		}
 	}
 	catch (io_exception& e) {
-		string_map symbols;
+		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg",symbols);
 		gui::show_dialog(gui_, NULL, "", msg, gui::OK_ONLY);

@@ -174,7 +174,7 @@ attack_type::attack_type(const config& cfg)
 	  defense_weight_ = 1.0;
 }
 
-const std::string& attack_type::name() const
+const t_string& attack_type::name() const
 {
 	return name_;
 }
@@ -244,7 +244,7 @@ const unit_animation& attack_type::animation(const gamemap::location::DIRECTION 
 bool attack_type::matches_filter(const config& cfg) const
 {
 	const std::string& filter_range = cfg["range"];
-	const std::string& filter_name = cfg["name"];
+	const t_string& filter_name = cfg["name"];
 	const std::string& filter_type = cfg["type"];
 	const std::string& filter_special = cfg["special"];
 
@@ -336,9 +336,9 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
              : cfg_(cfg), parent_(parent)
 {}
 
-const std::string& unit_movement_type::name() const
+const t_string& unit_movement_type::name() const
 {
-	const std::string& res = cfg_["name"];
+	const t_string& res = cfg_["name"];
 	if(res == "" && parent_ != NULL)
 		return parent_->name();
 	else
@@ -374,7 +374,7 @@ int unit_movement_type::movement_cost(const gamemap& map,gamemap::TERRAIN terrai
 		return min_value;
 	}
 
-	const config* movement_costs = cfg_.child("movement costs");
+	const config* movement_costs = cfg_.child("movement_costs");
 
 	int res = -1;
 
@@ -630,7 +630,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	else if(align == "neutral")
 		alignment_ = NEUTRAL;
 	else {
-		LOG_STREAM(err, config) << "Invalid alignment found for " << name() << ": '" << align << "'\n";
+		LOG_STREAM(err, config) << "Invalid alignment found for " << id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
 	}
 
@@ -711,21 +711,23 @@ const std::string& unit_type::id() const
 			id_ = cfg_["name"];
 		}
 
-		id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
+		//id_.erase(std::remove(id_.begin(),id_.end(),' '),id_.end());
 	}
 
 	return id_;
 }
 
-std::string unit_type::language_name() const
+const t_string& unit_type::language_name() const
 {
 	return cfg_["name"];
 }
 
+#if 0
 const std::string& unit_type::name() const
 {
 	return cfg_["id"];
 }
+#endif
 
 const std::string& unit_type::image() const
 {
@@ -1160,7 +1162,7 @@ void game_data::set_config(const config& cfg)
 	for(config::const_child_itors j = cfg.child_range("unit");
 	    j.first != j.second; ++j.first) {
 		const unit_type u_type(**j.first,movement_types,races,unit_traits);
-		unit_types.insert(std::pair<std::string,unit_type>(u_type.name(),u_type));
+		unit_types.insert(std::pair<std::string,unit_type>(u_type.id(),u_type));
 	}
 }
 

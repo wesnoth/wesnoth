@@ -59,7 +59,7 @@ void advance_unit(const game_data& info,
 	if(u == units.end() || u->second.advances() == false)
 		return;
 
-	LOG_DP << "advance_unit: " << u->second.type().name() << "\n";
+	LOG_DP << "advance_unit: " << u->second.type().id() << "\n";
 
 	const std::vector<std::string>& options = u->second.type().advances_to();
 
@@ -75,10 +75,10 @@ void advance_unit(const game_data& info,
 	const config::child_list& mod_options = u->second.get_modification_advances();
 
 	for(config::child_list::const_iterator mod = mod_options.begin(); mod != mod_options.end(); ++mod) {
-		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().name()));
+		sample_units.push_back(::get_advanced_unit(info,units,loc,u->second.type().id()));
 		sample_units.back().add_modification("advance",**mod);
 		const unit_type& type = sample_units.back().type();
-		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"]);
+		lang_options.push_back(IMAGE_PREFIX + type.image() + COLUMN_SEPARATOR + (**mod)["description"].str());
 	}
 
 	LOG_DP << "options: " << options.size() << "\n";
@@ -136,7 +136,7 @@ bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::lo
 		}
 	}
 
-	const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().name();
+	const std::string& chosen_unit = choice < options.size() ? options[choice] : u->second.type().id();
 	::advance_unit(info,units,loc,chosen_unit);
 
 	u = units.find(loc);

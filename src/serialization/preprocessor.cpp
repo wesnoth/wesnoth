@@ -333,6 +333,24 @@ static void internal_preprocess_data(std::istream &data_in,
 					break;
 			}
 
+			static const std::string hash_textdomain("#textdomain");
+			//if we find a #textdomain directive, pass it untouched
+			if(size_t(data.end() - i) > hash_textdomain.size() &&
+					std::equal(hash_textdomain.begin(),hash_textdomain.end(),i)) {
+
+				i += hash_textdomain.size();
+				while(i != data.end() && utils::portable_isspace(*i))
+					++i;
+
+				const std::string::const_iterator end = std::find_if(i, data.end(),
+						utils::portable_isspace);
+				if(end == data.end())
+					break;
+				const std::string symbol(i,end);
+				//put the textdomain to the output stream
+				out << hash_textdomain << " " << symbol;
+			}
+
 			i = std::find_if(i, data.end(), utils::isnewline);
 
 			if(i == data.end())

@@ -2,6 +2,7 @@
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,16 +21,20 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "log.hpp"
-#include "variable.hpp"
+#include "gamestatus.hpp"
 #include "SDL_types.h"
 
 #define ERR_GENERAL LOG_STREAM(err, general)
+
+variable_set::~variable_set()
+{
+}
 
 namespace {
 
 bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
-void do_interpolation(std::string &res, const utils::string_map* m)
+void do_interpolation(std::string &res, variable_set& set)
 {
 	//this needs to be able to store negative numbers to check for the while's condition
 	//(which is only false when the previous '$' was at index 0)
@@ -106,15 +111,7 @@ void do_interpolation(std::string &res, const utils::string_map* m)
 		//Replace = remove original, and then insert new value, if any.
 		res.erase(var_begin, var_end);
 
-		if(m != NULL) {
-			const utils::string_map::const_iterator itor = m->find(var_name);
-			if (itor != m->end()) {
-				res.insert(var_begin_loc,itor->second);
-			}
-		}
-		else {
-			res.insert(var_begin_loc, game_events::get_variable_const(var_name));
-		}
+		res.insert(var_begin_loc, set.get_variable(var_name));
 	}
 	
 	//Remove any remaining '|', which are used to separate variable names,
@@ -198,10 +195,40 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 	return res;
 }
 
+class string_map_variable_set : public variable_set
+{
+public:
+	string_map_variable_set(const string_map& map) : map_(map) {};
+	
+	virtual const t_string& get_variable(const std::string& key)
+	{
+		static const t_string empty_string = "";
+
+		string_map::const_iterator itor = map_.find(key);
+		if(itor == map_.end()) {
+			return empty_string;
+		} else {
+			return itor->second;
+		}
+	};
+private:
+	const string_map& map_;
+
+};
+
 std::string interpolate_variables_into_string(const std::string &str, const string_map *symbols)
 {
 	std::string res = str;
-	do_interpolation(res, symbols);
+	string_map_variable_set set(*symbols);
+	do_interpolation(res, set);
+
+	return res;
+}
+
+std::string interpolate_variables_into_string(const std::string &str, variable_set& variables)
+{
+	std::string res = str;
+	do_interpolation(res, variables);
 
 	return res;
 }

@@ -16,6 +16,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "tstring.hpp"
 
 //This module defines the interface to Wesnoth Markup Language (WML).
 //WML is a simple hierarchical text-based file format. The format
@@ -25,7 +26,9 @@
 //sent across the network in this format. It is thus used extensively
 //throughout the game.
 
-typedef std::map<std::string,std::string> string_map;
+class t_string;
+
+typedef std::map<std::string,t_string> string_map;
 
 //a config object defines a single node in a WML file, with access to
 //child nodes.
@@ -60,15 +63,15 @@ public:
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string& key, const config& val, size_t index);
-	std::string& operator[](const std::string& key);
-	const std::string& operator[](const std::string& key) const;
+	t_string& operator[](const std::string& key);
+	const t_string& operator[](const std::string& key) const;
 
-	const std::string& get_attribute(const std::string& key) const;
+	const t_string& get_attribute(const std::string& key) const;
 
 	config* find_child(const std::string& key, const std::string& name,
-	                   const std::string& value);
+	                   const t_string& value);
 	const config* find_child(const std::string& key, const std::string& name,
-	                         const std::string& value) const;
+	                         const t_string& value) const;
 
 	void clear_children(const std::string& key);
 	void remove_child(const std::string& key, size_t index);

@@ -84,13 +84,13 @@ bool language_def::operator== (const language_def& a)
 
 symbol_table string_table;
 
-const std::string& symbol_table::operator[](const std::string& key) const
+const t_string& symbol_table::operator[](const std::string& key) const
 {
 	const string_map::const_iterator i = strings_.find(key);
 	if(i != strings_.end()) {
 		return i->second;
 	} else {
-		static std::string empty_string;
+		static t_string empty_string;
 		// Let's do it the painful way (untlb means untranslatABLE).
 		// It will cause problem if somebody stores more than one reference at once
 		// but I don't really care since this path is an error path and it should
@@ -100,7 +100,7 @@ const std::string& symbol_table::operator[](const std::string& key) const
 	}
 }
 
-const std::string& symbol_table::operator[](const char* key) const
+const t_string& symbol_table::operator[](const char* key) const
 {
 	return (*this)[std::string(key)];
 }

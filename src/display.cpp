@@ -603,12 +603,14 @@ void draw_panel(CVideo& video, const theme::panel& panel, std::vector<gui::butto
 
 	const SDL_Rect screen = screen_area();
 	SDL_Rect& loc = panel.location(screen);
-	if(surf->w != loc.w || surf->h != loc.h) {
-		surf.assign(scale_surface(surf,loc.w,loc.h));
-	}
+	if(!surf.null()) {
+		if(surf->w != loc.w || surf->h != loc.h) {
+			surf.assign(scale_surface(surf,loc.w,loc.h));
+		}
 
-	video.blit_surface(loc.x,loc.y,surf);
-	update_rect(loc);
+		video.blit_surface(loc.x,loc.y,surf);
+		update_rect(loc);
+	}
 
 	for(std::vector<gui::button>::iterator b = buttons.begin(); b != buttons.end(); ++b) {
 		if(rects_overlap(b->location(),loc)) {
@@ -627,11 +629,13 @@ void draw_label(CVideo& video, surface target, const theme::label& label)
 	
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon,image::UNSCALED));
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(scale_surface(surf,loc.w,loc.h));
-		}
+		if(!surf.null()) {
+			if(surf->w != loc.w || surf->h != loc.h) {
+				surf.assign(scale_surface(surf,loc.w,loc.h));
+			}
 
-		SDL_BlitSurface(surf,NULL,target,&loc);
+			SDL_BlitSurface(surf,NULL,target,&loc);
+		}
 
 		if(text.empty() == false) {
 			tooltips::add_tooltip(loc,text);
@@ -1048,7 +1052,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	for(std::vector<attack_type>::const_iterator at_it = attacks.begin();
 	    at_it != attacks.end(); ++at_it) {
 
-		const std::string& lang_weapon = at_it->name();
+		const t_string& lang_weapon = at_it->name();
 		const std::string& lang_type = at_it->type();
 		const std::string& lang_special = at_it->special();
 		details << "\n"

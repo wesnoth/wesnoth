@@ -1897,7 +1897,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		}
 
 		if(message != "") {
-			string_map symbols;
+			utils::string_map symbols;
 			symbols["noun"] = (u.gender() == unit_race::MALE ? _("him") : _("her"));
 			message = utils::interpolate_variables_into_string(message, &symbols);
 
@@ -1945,7 +1945,7 @@ void turn_info::recall()
 (You must have veteran survivors from a previous scenario)"));
 	} else if(current_team.gold() < game_config::recall_cost) {
 		std::stringstream msg;
-		string_map i18n_symbols;
+		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = lexical_cast<std::string>(game_config::recall_cost);
 		msg << vgettext("You must have at least $cost gold pieces to recall a unit", i18n_symbols);
 		gui::show_dialog(gui_,NULL,"",msg.str());
@@ -2380,7 +2380,7 @@ void turn_info::do_search(const std::string& new_search)
 	} else {
 		last_search_hit_ = gamemap::location();
 		//Not found, inform the player
-		string_map symbols;
+		utils::string_map symbols;
 		symbols["search"] = last_search_;
 		const std::string msg = utils::interpolate_variables_into_string(
 			_("Couldn't find label or unit containing the string '$search'."),&symbols);

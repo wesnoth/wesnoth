@@ -299,13 +299,13 @@ config connect::side::get_config() const
 			break;
 		case CNTR_LOCAL:
 			if(enabled_ && cfg_["save_id"].empty()) {
-				res["save_id"] = "local" + res["side"];
+				res["save_id"] = "local" + res["side"].str();
 			}
 			res["user_description"] =  _("Anonymous local player");
 			break;
 		case CNTR_COMPUTER:
 			if(enabled_ && cfg_["save_id"].empty()) {
-				res["save_id"] = "ai" + res["side"];
+				res["save_id"] = "ai" + res["side"].str();
 			}
 			res["user_description"] = _("Computer player");
 			break;
@@ -458,7 +458,7 @@ void connect::side::resolve_random()
 			const int lchoice = rand() % types.size();
 			leader_ = types[lchoice];
 		} else {
-			string_map i18n_symbols;
+			utils::string_map i18n_symbols;
 			i18n_symbols["faction"] = fact["name"];
 			throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
 		}
@@ -838,14 +838,14 @@ void connect::lists_init()
 	config::child_iterator sd;
 	for(sd = sides.first; sd != sides.second; ++sd) {
 		const int side_num = sd - sides.first + 1;
-		std::string& team_name = (**sd)["team_name"];
+		t_string& team_name = (**sd)["team_name"];
 		if(team_name.empty()) {
 			team_name = lexical_cast<std::string>(side_num);
 		}
 		std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(), team_names_.end(), team_name);
 		if(itor == team_names_.end()) {
 			team_names_.push_back(team_name);
-			player_teams_.push_back(team_prefix_ + team_name);
+			player_teams_.push_back(team_prefix_ + team_name.str());
 		}
 	}
 
@@ -938,7 +938,7 @@ void connect::load_game()
 	// Initialize the list of sides available for the current era.
 	const config* const era_cfg = game_config().find_child("era","id",era_);
 	if(era_cfg == NULL) {
-		string_map i18n_symbols;
+		utils::string_map i18n_symbols;
 		i18n_symbols["era"] = era_;
 		throw config::error(vgettext("Cannot find era $era", i18n_symbols));
 	}

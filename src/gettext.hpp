@@ -4,14 +4,15 @@
 // gettext-related declarations
 
 #include "config.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <libintl.h>
 #include <string>
 
-const char* egettext (const char*);
-const char* sgettext (const char*);
-const char* dsgettext (const char * domainname, const char *msgid);
-std::string vgettext (const char*,const string_map&);
+const char* egettext(const char*);
+const char* sgettext(const char*);
+const char* dsgettext(const char * domainname, const char *msgid);
+std::string vgettext(const char*, const utils::string_map&);
 
 #ifdef GETTEXT_DOMAIN
 # define _(String) dgettext(GETTEXT_DOMAIN,String)

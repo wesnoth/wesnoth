@@ -126,7 +126,7 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	if (size_t(preferences::era()) < eras.size())
 		era_combo_.set_selected(preferences::era());
 
-	string_map i18n_symbols;
+	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	name_entry_.set_text(vgettext("$login's game", i18n_symbols));
 
@@ -243,7 +243,7 @@ void create::process_event()
 
 				parameters_.scenario_data = *levels[index];
 
-				std::string& map_data = parameters_.scenario_data["map_data"];
+				t_string& map_data = parameters_.scenario_data["map_data"];
 				if(map_data == "" && parameters_.scenario_data["map"] != "") {
 					map_data = read_map(parameters_.scenario_data["map"]);
 				}

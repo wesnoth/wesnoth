@@ -32,7 +32,7 @@ struct time_of_day
 
 	//the image to be displayed in the game status.
 	std::string image;
-	std::string name;
+	t_string name;
 	std::string id;
 
 	//the image that is to be laid over all images while it's this
@@ -93,7 +93,7 @@ struct player_info
 //object which holds all the data needed to start a scenario.
 //i.e. this is the object serialized to disk when saving/loading a game.
 //is also the object which needs to be created to start a new game
-struct game_state
+struct game_state : public variable_set
 {
 	game_state() : difficulty("NORMAL") {}
 	std::string label; //name of the game (e.g. name of save file)
@@ -114,6 +114,12 @@ struct game_state
 	player_info* get_player(const std::string& id);
 
 	config variables; //variables that have been set
+
+	//Variable access
+	virtual t_string& get_variable(const std::string& varname);
+	config& get_variable_cfg(const std::string& varname);
+	void set_variable(const std::string& varname, const t_string& value);
+
 	std::string difficulty; //the difficulty level the game is being played on.
 
 	//if the game is saved mid-level, we have a series of replay steps to
@@ -131,6 +137,10 @@ struct game_state
 	//the snapshot of the game's current contents. i.e. unless the player selects
 	//to view a replay, the game's settings are read in from this object
 	config snapshot;
+
+private:
+	void get_variable_internal(const std::string& key, config& cfg,
+			t_string** varout, config** cfgout);
 };
 
 struct save_info {

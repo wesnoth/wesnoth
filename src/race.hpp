@@ -18,7 +18,7 @@ public:
 	unit_race();
 	unit_race(const config& cfg);
 
-	const std::string& name() const;
+	const t_string& name() const;
 
 	std::string generate_name(GENDER gender) const;
 
@@ -30,7 +30,7 @@ public:
 	bool not_living() const;
 
 private:
-	std::string name_;
+	t_string name_;
 	int ntraits_;
 	std::vector<std::string> names_[NUM_GENDERS];
 	markov_prefix_map next_[NUM_GENDERS];

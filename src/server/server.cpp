@@ -56,10 +56,12 @@ config construct_server_message(const std::string& message, const game& g)
 	return turn;
 }
 
-void truncate_message(std::string& str)
+void truncate_message(t_string& str)
 {
 	const size_t max_message_length = 240;
-	str.resize(minimum<size_t>(str.size(),max_message_length));
+	std::string newstr = str.str();
+	newstr.resize(minimum<size_t>(str.size(),max_message_length));
+	str = newstr;
 }
 
 }

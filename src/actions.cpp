@@ -525,7 +525,7 @@ battle_stats evaluate_battle_stats(const gamemap& map,
 static std::string unit_dump(std::pair< gamemap::location, unit > const &u)
 {
 	std::stringstream s;
-	s << u.second.type().name() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
+	s << u.second.type().id() << " (" << u.first.x + 1 << ',' << u.first.y + 1 << ')';
 	return s.str();
 }
 
@@ -1295,8 +1295,9 @@ void advance_unit(const game_data& info,
 	const unit& new_unit = get_advanced_unit(info,units,loc,advance_to);
 
 	statistics::advance_unit(new_unit);
-	preferences::encountered_units().insert(new_unit.type().name());
-	LOG_STREAM(info, config) << "Added '" << new_unit.type().name() << "' to encountered units\n";
+
+	preferences::encountered_units().insert(new_unit.type().id());
+	LOG_STREAM(info, config) << "Added '" << new_unit.type().id() << "' to encountered units\n";
 
 	units.erase(loc);
 	units.insert(std::pair<gamemap::location,unit>(loc,new_unit));
@@ -1751,7 +1752,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 				msg_id = N_("Units sighted! ($friends friendly, $enemies enemy)");
 			}
 
-			string_map symbols;
+			utils::string_map symbols;
 			symbols["friends"] = lexical_cast<std::string>(nfriends);
 			symbols["enemies"] = lexical_cast<std::string>(nenemies);
 

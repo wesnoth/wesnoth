@@ -356,7 +356,7 @@ const std::string& official_network_host()
 
 const std::string& network_host()
 {
-	std::string& res = prefs["host"];
+	t_string& res = prefs["host"];
 	if(res.empty())
 		res = WESNOTH_DEFAULT_SERVER;
 
@@ -370,7 +370,7 @@ void set_network_host(const std::string& host)
 
 const std::string& login()
 {
-	std::string& res = prefs["login"];
+	t_string& res = prefs["login"];
 	if(res.empty()) {
 		char* const login = getenv("USER");
 		if(login != NULL) {
@@ -644,7 +644,7 @@ const std::string& theme()
 		return null_theme;
 	}
 
-	std::string& res = prefs["theme"];
+	t_string& res = prefs["theme"];
 	if(res.empty()) {
 		res = "Default";
 	}

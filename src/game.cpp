@@ -1133,11 +1133,11 @@ void game_controller::download_campaigns()
 				std::replace(title.begin(),title.end(),'_',' ');
 			}
 			
-			options.push_back(IMAGE_PREFIX + (**i)["icon"] + COLUMN_SEPARATOR +
+			options.push_back(IMAGE_PREFIX + (**i)["icon"].str() + COLUMN_SEPARATOR +
 			                  title + COLUMN_SEPARATOR +
-			                  (**i)["version"] + COLUMN_SEPARATOR +
-			                  (**i)["author"] + COLUMN_SEPARATOR +
-			                  (**i)["downloads"] + COLUMN_SEPARATOR +
+			                  (**i)["version"].str() + COLUMN_SEPARATOR +
+			                  (**i)["author"].str() + COLUMN_SEPARATOR +
+			                  (**i)["downloads"].str() + COLUMN_SEPARATOR +
 			                  format_file_size((**i)["size"]));
 		}
 
@@ -1220,7 +1220,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		return;
 	} else if(data.child("error")) {
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"] + '"');
+		                        (*data.child("error"))["message"].str() + '"');
 		return;
 	} else if(data.child("message")) {
 		const int res = gui::show_dialog(disp(),NULL,_("Terms"),(*data.child("message"))["message"],gui::OK_CANCEL);
@@ -1232,7 +1232,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 	config cfg;
 	get_campaign_info(campaign,cfg);
 
-	std::string& passphrase = cfg["passphrase"];
+	std::string passphrase = cfg["passphrase"];
 	if(passphrase.empty()) {
 		passphrase.resize(8);
 		for(size_t n = 0; n != 8; ++n) {
@@ -1241,6 +1241,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 
 		set_campaign_info(campaign,cfg);
 	}
+	cfg["passphrase"] = passphrase;
 
 	cfg["name"] = campaign;
 
@@ -1258,7 +1259,7 @@ void game_controller::upload_campaign(const std::string& campaign, network::conn
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"] + '"');
+		                        (*data.child("error"))["message"].str() + '"');
 	} else if(data.child("message")) {
 		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
@@ -1283,7 +1284,7 @@ void game_controller::delete_campaign(const std::string& campaign, network::conn
 		gui::show_error_message(disp(), _("Connection timed out"));
 	} else if(data.child("error")) {
 		gui::show_error_message(disp(), _("The server responded with an error: \"") +
-		                        (*data.child("error"))["message"] + '"');
+		                        (*data.child("error"))["message"].str() + '"');
 	} else if(data.child("message")) {
 		gui::show_dialog(disp(),NULL,_("Response"),(*data.child("message"))["message"],gui::OK_ONLY);
 	}
@@ -1580,6 +1581,13 @@ int play_game(int argc, char** argv)
 	textdomain (PACKAGE);
 
 	bool res;
+
+	res = font::load_font_config();
+	if(res == false) {
+		std::cerr << "could not initialize fonts\n";
+		return 0;
+	}
+
 #ifdef WIN32
 	res = game.init_config();
 	if(res == false) {
@@ -1609,12 +1617,6 @@ int play_game(int argc, char** argv)
 		return 0;
 	}
 #endif
-
-	res = font::load_font_config();
-	if(res == false) {
-		std::cerr << "could not initialize fonts\n";
-		return 0;
-	}
 
 	const cursor::manager cursor_manager;
 #if defined(_X11) && !defined(__APPLE__)

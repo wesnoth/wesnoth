@@ -410,7 +410,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//guardian units stay put
 	if(u->second.is_guardian()) {
-		LOG_AI << u->second.type().name() << " is guardian, staying still\n";
+		LOG_AI << u->second.type().id() << " is guardian, staying still\n";
 		return std::pair<location,location>(u->first,u->first);
 	}
 

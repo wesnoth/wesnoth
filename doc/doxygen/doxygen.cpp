@@ -188,12 +188,12 @@ images come in a number of varieties:
 */
 
 // ===========================================================================
-//	namespace lobby
+//	namespace mp
 // ===========================================================================
 
 /**
 
-\namespace lobby Multiplayer meeting place and game creation.
+\namespace mp Multiplayer meeting place and game creation.
 
 This module controls the multiplayer lobby. The lobby is a section on the server which
 allows players to chat, create games, and join games.

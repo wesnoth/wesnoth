@@ -77,7 +77,7 @@ public:
 
 		std::string description;
 
-		std::string objectives; /** < Team's objectives for the current level. */
+		t_string objectives; /** < Team's objectives for the current level. */
 
 		/** Set to true when the objectives for this time changes.
 		 * Reset to false when the objectives for this team have been
@@ -127,10 +127,10 @@ public:
 	const std::string& name() const;
 	const std::string& save_id() const;
 
-	void set_objectives(const std::string& new_objectives, bool silently=false);
+	void set_objectives(const t_string& new_objectives, bool silently=false);
 	void reset_objectives_changed();
 
-	const std::string& objectives() const;
+	const t_string& objectives() const;
 	bool objectives_changed() const;
 
 	bool is_enemy(int n) const {

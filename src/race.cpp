@@ -114,7 +114,7 @@ unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg[
 	next_[FEMALE] = markov_prefixes(names_[FEMALE],chain_size_);
 }
 
-const std::string& unit_race::name() const { return name_; }
+const t_string& unit_race::name() const { return name_; }
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {

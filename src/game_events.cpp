@@ -27,9 +27,9 @@
 #include "sound.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"
-#include "variable.hpp"
 #include "wassert.hpp"
 #include "gettext.hpp"
+#include "variable.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <cstdlib>
@@ -44,32 +44,45 @@
 #define ERR_NG LOG_STREAM(err, engine)
 #define LOG_DP LOG_STREAM(info, display)
 
+namespace {
+
+display* screen = NULL;
+gamemap* game_map = NULL;
+std::map<gamemap::location,unit>* units = NULL;
+std::vector<team>* teams = NULL;
+game_state* state_of_game = NULL;
+const game_data* game_data_ptr = NULL;
+gamestatus* status_ptr = NULL;
+
+} //end anonymous namespace
+
 namespace game_events {
 
 bool conditional_passed(const std::map<gamemap::location,unit>* units,
-                        const config& cond)
+                        const vconfig cond)
 {
 	//an 'or' statement means that if the contained statements are true,
 	//then it automatically passes
-	const config::child_list& or_statements = cond.get_children("or");
-	for(config::child_list::const_iterator or_it = or_statements.begin(); or_it != or_statements.end(); ++or_it) {
-		if(conditional_passed(units,**or_it)) {
+	const vconfig::child_list& or_statements = cond.get_children("or");
+	for(vconfig::child_list::const_iterator or_it = or_statements.begin(); 
+			or_it != or_statements.end(); ++or_it) {
+		if(conditional_passed(units,*or_it)) {
 			return true;
 		}
 	}
 
 	//if the if statement requires we have a certain unit, then
 	//check for that.
-	const config::child_list& have_unit = cond.get_children("have_unit");
+	const vconfig::child_list& have_unit = cond.get_children("have_unit");
 
-	for(config::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
+	for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 
 		if(units == NULL)
 			return false;
 
 		std::map<gamemap::location,unit>::const_iterator itor;
 		for(itor = units->begin(); itor != units->end(); ++itor) {
-			if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, **u)) {
+			if(itor->second.hitpoints() > 0 && game_events::unit_matches_filter(itor, *u)) {
 				break;
 			}
 		}
@@ -81,12 +94,13 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 
 	//check against each variable statement to see if the variable
 	//matches the conditions or not
-	const config::child_list& variables = cond.get_children("variable");
-	for(config::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
-		const config& values = **var;
+	const vconfig::child_list& variables = cond.get_children("variable");
+	for(vconfig::child_list::const_iterator var = variables.begin(); var != variables.end(); ++var) {
+		const vconfig& values = *var;
 
 		const std::string& name = values["name"];
-		const std::string& value = game_events::get_variable(name);
+		wassert(state_of_game != NULL);
+		const std::string& value = state_of_game->get_variable(name);
 
 		const double num_value = atof(value.c_str());
 
@@ -138,13 +152,6 @@ bool conditional_passed(const std::map<gamemap::location,unit>* units,
 
 namespace {
 
-display* screen = NULL;
-gamemap* game_map = NULL;
-std::map<gamemap::location,unit>* units = NULL;
-std::vector<team>* teams = NULL;
-game_state* state_of_game = NULL;
-const game_data* game_data_ptr = NULL;
-gamestatus* status_ptr = NULL;
 std::set<std::string> used_items;
 
 const size_t MaxLoop = 1024;
@@ -166,17 +173,19 @@ std::deque<queued_event> events_queue;
 class event_handler
 {
 public:
-	event_handler(const config* cfg) : name_((*cfg)["name"]),
-	                 first_time_only_((*cfg)["first_time_only"] != "no"),
-					 disabled_(false),
-	                 cfg_(cfg)
+	event_handler(const config& cfg) : 
+		name_(cfg["name"]),
+		first_time_only_(cfg["first_time_only"] != "no"),
+		disabled_(false),
+		cfg_(&cfg)
 	{}
 
-	void write(config& cfg) const {
-		if(cfg_ == NULL || disabled_)
+	void write(config& cfg) const
+	{
+		if(disabled_)
 			return;
 
-		cfg = *cfg_;
+		cfg = cfg_.get_config();
 	}
 
 	const std::string& name() const { return name_; }
@@ -186,26 +195,37 @@ public:
 	void disable() { disabled_ = true; }
 	bool disabled() const { return disabled_; }
 
-	const config::child_list& first_arg_filters() {
-		return cfg_->get_children("filter");
+	const vconfig::child_list first_arg_filters()
+	{
+		return cfg_.get_children("filter");
 	}
 
-	const config::child_list& second_arg_filters() {
-		return cfg_->get_children("filter_second");
+	const vconfig::child_list second_arg_filters() 
+	{
+		return cfg_.get_children("filter_second");
 	}
 
-	bool handle_event(const queued_event& event_info, const config* cfg=NULL);
+	bool handle_event(const queued_event& event_info, 
+			const vconfig cfg = vconfig());
 
 private:
-	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg, bool& mutated);
+	bool handle_event_command(const queued_event& event_info, const std::string& cmd, const vconfig cfg, bool& mutated);
 
 	std::string name_;
 	bool first_time_only_;
 	bool disabled_;
-	const config* cfg_;
+	vconfig cfg_;
 };
 
-std::vector<gamemap::location> multiple_locs(const config& cfg)
+gamemap::location cfg_to_loc(const vconfig cfg)
+{
+	int x = lexical_cast_default(cfg["x"], 0) - 1;
+	int y = lexical_cast_default(cfg["y"], 0) - 1;
+
+	return gamemap::location(x, y);
+}
+
+std::vector<gamemap::location> multiple_locs(const vconfig cfg)
 {
 	return parse_location_range(cfg["x"],cfg["y"]);
 }
@@ -214,7 +234,8 @@ std::multimap<std::string,event_handler> events_map;
 
 //this function handles all the different types of actions that can be triggered
 //by an event.
-bool event_handler::handle_event_command(const queued_event& event_info, const std::string& cmd, const config& cfg, bool& mutated)
+bool event_handler::handle_event_command(const queued_event& event_info, 
+		const std::string& cmd, const vconfig cfg, bool& mutated)
 {
 	log_scope2(engine, "handle_event_command");
 	LOG_NG << "handling command: '" << cmd << "'\n";
@@ -222,7 +243,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	bool rval = true;
 	//sub commands that need to be handled in a guaranteed ordering
 	if(cmd == "command") {
-		handle_event(event_info,&cfg);
+		handle_event(event_info, cfg);
 	}
 
 	//allow undo sets the flag saying whether the event has mutated the game to false
@@ -255,17 +276,17 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		unit_map::iterator u = units->find(event_info.loc1);
 
 		//search for a valid unit filter, and if we have one, look for the matching unit
-		const config* const filter = cfg.child("filter");
-		if(filter != NULL) {	
+		const vconfig filter = cfg.child("filter");
+		if(!filter.null()) {	
 			for(u = units->begin(); u != units->end(); ++u){
-				if(game_events::unit_matches_filter(u,*filter))
+				if(game_events::unit_matches_filter(u, filter))
 					break;
 			}
 		}
 
 		//we have found a unit that matches the filter
 		if(u != units->end()) {
-			const gamemap::location dst(cfg);
+			const gamemap::location dst = cfg_to_loc(cfg);
 			if(game_map->on_board(dst)) {
 				const gamemap::location vacant_dst = find_vacant_tile(*game_map,*units,dst);
 				if(game_map->on_board(vacant_dst)) {
@@ -290,9 +311,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//remove units from being turned to stone
 	else if(cmd == "unstone") {
-		const config* const filter = cfg.child("filter");
+		const vconfig filter = cfg.child("filter");
 		for(unit_map::iterator i = units->begin(); i != units->end(); ++i) {
-			if(i->second.stone() && (filter == NULL || game_events::unit_matches_filter(i,*filter))) {
+			if(i->second.stone() && (!filter.null() || game_events::unit_matches_filter(i, filter))) {
 				i->second.remove_flag("stone");
 			}
 		}
@@ -451,7 +472,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(team_index < teams->size()) {
 			char value[50];
 			sprintf(value,"%d",(*teams)[team_index].gold());
-			game_events::set_variable(var_name,value);
+			wassert(state_of_game != NULL);
+			state_of_game->set_variable(var_name,value);
 		}
 	}
 
@@ -533,7 +555,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string win_str = "@";
 		const std::string lose_str = "#";
 
-		const std::string& summary = cfg["summary"];
+		const t_string& summary = cfg["summary"];
 		const size_t side = lexical_cast_default<size_t>(cfg["side"], 0);
 		bool silent = cfg["silent"] == "yes";
 
@@ -542,80 +564,83 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			return rval;
 		}
 
-		std::string win_string = cfg["victory_string"];
+		t_string win_string = cfg["victory_string"];
 		if(win_string.empty()) 
 			win_string = _("Victory:");
-		std::string lose_string = cfg["defeat_string"];
+		t_string lose_string = cfg["defeat_string"];
 		if(lose_string.empty())
 			lose_string = _("Defeat:");
 
-		std::string win_objectives;
-		std::string lose_objectives;
+		t_string win_objectives;
+		t_string lose_objectives;
 
-		const config::child_list& objectives = cfg.get_children("objective");
-		for(config::child_list::const_iterator obj_it = objectives.begin(); 
+		const vconfig::child_list objectives = cfg.get_children("objective");
+		for(vconfig::child_list::const_iterator obj_it = objectives.begin(); 
 				obj_it != objectives.end(); ++obj_it) {
 
-			const std::string& description = (**obj_it)["description"];
-			const std::string& condition = (**obj_it)["condition"];
+			const t_string description = (*obj_it)["description"];
+			const std::string& condition = (*obj_it)["condition"];
 			LOG_NG << condition << " objective: " << description << "\n";
 			if(condition == "win") {
-				win_objectives.append("\n");
-				win_objectives.append(win_str);
-				win_objectives.append(description);
+				win_objectives += "\n";
+				win_objectives += win_str;
+				win_objectives += description;
 			} else if(condition == "lose") {
-				lose_objectives.append("\n");
-				lose_objectives.append(lose_str);
-				lose_objectives.append(description);
+				lose_objectives += "\n";
+				lose_objectives += lose_str;
+				lose_objectives += description;
 			} else {
 				ERR_NG << "unknown condition '" << condition << "', ignoring\n";
 			}
 		}
 
-		std::stringstream objs;
+		t_string objs;
 		if(!summary.empty())
-			objs << "*" << summary << "\n";
+			objs += "*" + summary + "\n";
 		if(!win_objectives.empty()) {
-			objs << win_string << "\n";
-			objs << win_objectives << "\n";
+			objs += win_string + "\n";
+			objs += win_objectives + "\n";
 		}
 		if(!lose_objectives.empty()) {
-			objs << lose_string << "\n";
-			objs << lose_objectives << "\n";
+			objs += lose_string + "\n";
+			objs += lose_objectives + "\n";
 		}
 
 		if(side == 0) {
 			for(std::vector<team>::iterator itor = teams->begin();
 					itor != teams->end(); ++itor) {
 
-				itor->set_objectives(objs.str(), silent);
+				itor->set_objectives(objs, silent);
 			}
 		} else {
-			(*teams)[side - 1].set_objectives(objs.str(), silent);
+			(*teams)[side - 1].set_objectives(objs, silent);
 		}
 	}
 
 
 	//setting a variable
 	else if(cmd == "set_variable") {
+		wassert(state_of_game != NULL);
+
 		const std::string& name = utils::interpolate_variables_into_string(
-			cfg.get_attribute("name"));
-		std::string& var = game_events::get_variable(name);
-		const std::string& value = cfg["value"];
+			cfg.get_attribute("name"), *state_of_game);
+		t_string& var = state_of_game->get_variable(name);
+
+		const t_string& value = cfg["value"];
 		if(value.empty() == false) {
 			var = value;
 		}
 
 		const std::string& format = utils::interpolate_variables_into_string(
-			cfg.get_attribute("format"));
+			cfg.get_attribute("format"), *state_of_game);
 		if(format.empty() == false) {
 			var = format;
 		}
 
 		const std::string& to_variable = utils::interpolate_variables_into_string(
-			cfg.get_attribute("to_variable"));
+			cfg.get_attribute("to_variable"), *state_of_game);
 		if(to_variable.empty() == false) {
-			var = game_events::get_variable(to_variable);
+			var = state_of_game->get_variable(to_variable);
 		}
 
 		const std::string& add = cfg["add"];
@@ -725,10 +750,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 			//if the if statement passed, then execute all 'then' statements,
 			//otherwise execute 'else' statements
-			const config::child_list& commands = cfg.get_children(type);
-			for(config::child_list::const_iterator cmd = commands.begin();
+			const vconfig::child_list commands = cfg.get_children(type);
+			for(vconfig::child_list::const_iterator cmd = commands.begin();
 			    cmd != commands.end(); ++cmd) {
-				handle_event(event_info,*cmd);
+				handle_event(event_info, *cmd);
 			}
 		}
 	}
@@ -744,14 +769,15 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//a unit that matches
 		std::vector<std::string>::iterator ti;
 		for(ti = types.begin(); ti != types.end(); ++ti) {
-			config item = cfg;
+			config item = cfg.get_config();
 			item["type"] = *ti;
                         item["side"] = cfg["side"];
 			item["role"] = "";
+			vconfig filter(&item);
 
 			std::map<gamemap::location,unit>::iterator itor;
 			for(itor = units->begin(); itor != units->end(); ++itor) {
-				if(game_events::unit_matches_filter(itor,item)) {
+				if(game_events::unit_matches_filter(itor, filter)) {
 					itor->second.assign_role(cfg["role"]);
 					break;
 				}
@@ -762,52 +788,52 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
                         bool found = false;
 
-                        if(sides.empty() == false) {
-                          std::vector<std::string>::const_iterator si;
-                          for(si = sides.begin(); si != sides.end(); ++si) {
-                            int side_num = lexical_cast_default<int>(*si,1);
+			if(sides.empty() == false) {
+				std::vector<std::string>::const_iterator si;
+				for(si = sides.begin(); si != sides.end(); ++si) {
+					int side_num = lexical_cast_default<int>(*si,1);
 
-                            player_info* player=state_of_game->get_player((*teams)[side_num-1].save_id());
+					player_info* player=state_of_game->get_player((*teams)[side_num-1].save_id());
 
-                            if(!player)
-                              continue;
+					if(!player)
+						continue;
 
-                            //iterate over the units, and try to find one that matches
-                            std::vector<unit>::iterator ui;
-                            for(ui = player->available_units.begin();
-                                ui != player->available_units.end(); ++ui) {
-                              if(game_events::unit_matches_filter(*ui, item)) {
-                                ui->assign_role(cfg["role"]);
-                                found=true;
-                                break;
-                              }
-                            }
-                          }
-                        } else {
-                          std::map<std::string, player_info>::iterator pi;
-                          for(pi=state_of_game->players.begin();
-                              pi!=state_of_game->players.end(); ++pi) {
-                            std::vector<unit>::iterator ui;
-                            //iterate over the units, and try to find one that matches
-                            for(ui = pi->second.available_units.begin();
-                                ui != pi->second.available_units.end(); ++ui) {
-                              if(game_events::unit_matches_filter(*ui, item)) {
-                                ui->assign_role(cfg["role"]);
-                                found=true;
-                                break;
-                              }
-                            }
-                          }
+					//iterate over the units, and try to find one that matches
+					std::vector<unit>::iterator ui;
+					for(ui = player->available_units.begin();
+							ui != player->available_units.end(); ++ui) {
+						if(game_events::unit_matches_filter(*ui, filter)) {
+							ui->assign_role(cfg["role"]);
+							found=true;
+							break;
+						}
+					}
+				}
+			} else {
+				std::map<std::string, player_info>::iterator pi;
+				for(pi=state_of_game->players.begin();
+						pi!=state_of_game->players.end(); ++pi) {
+					std::vector<unit>::iterator ui;
+					//iterate over the units, and try to find one that matches
+					for(ui = pi->second.available_units.begin();
+							ui != pi->second.available_units.end(); ++ui) {
+						if(game_events::unit_matches_filter(*ui, filter)) {
+							ui->assign_role(cfg["role"]);
+							found=true;
+							break;
+						}
+					}
+				}
 			}
 
 			//if we found a unit, we don't have to keep going.
                         if(found)
-                          break;
+				break;
 		}
 	}
 
 	else if(cmd == "removeitem") {
-		gamemap::location loc(cfg);
+		gamemap::location loc = cfg_to_loc(cfg);
 		if(!loc.valid()) {
 			loc = event_info.loc1;
 		}
@@ -835,7 +861,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//hiding units
 	else if(cmd == "hide_unit") {
-		const gamemap::location loc(cfg);
+		const gamemap::location loc = cfg_to_loc(cfg);
 		screen->hide_unit(loc,true);
 		screen->draw_tile(loc.x,loc.y);
 	}
@@ -847,7 +873,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//adding new items
 	else if(cmd == "item") {
-		gamemap::location loc(cfg);
+		gamemap::location loc = cfg_to_loc(cfg);
 		const std::string& img = cfg["image"];
 		const std::string& halo = cfg["halo"];
 		if(!img.empty() || !halo.empty()) {
@@ -874,7 +900,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//creating a mask of the terrain
 	else if(cmd == "terrain_mask") {
-		gamemap::location loc(cfg);
+		gamemap::location loc = cfg_to_loc(cfg);
 		if(loc.x == -1) {
 			loc.x = 0;
 		}
@@ -892,7 +918,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			return rval;
 		}
 
-		game_map->overlay(mask,cfg,loc.x,loc.y);
+		game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y);
 		screen->recalculate_minimap();
 		screen->invalidate_all();
 		screen->rebuild_all();
@@ -900,9 +926,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
-		unit new_unit(*game_data_ptr,cfg);
-		preferences::encountered_units().insert(new_unit.type().name());
-		gamemap::location loc(cfg);
+		unit new_unit(*game_data_ptr, cfg.get_parsed_config());
+		preferences::encountered_units().insert(new_unit.type().id());
+		gamemap::location loc = cfg_to_loc(cfg);
 
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
@@ -947,7 +973,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 				LOG_NG << "checking unit against filter...\n";
 				if(game_events::unit_matches_filter(*u,cfg)) {
-					gamemap::location loc(cfg);
+					gamemap::location loc = cfg_to_loc(cfg);
 					recruit_unit(*game_map,index+1,*units,*u,loc,cfg["show"] == "no" ? NULL : screen,false,true);
 					avail.erase(u);
 					break;
@@ -955,7 +981,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			}
 		}
 	} else if(cmd == "object") {
-		const config* filter = cfg.child("filter");
+		const vconfig filter = cfg.child("filter");
 
 		const std::string& id = cfg["id"];
 
@@ -969,9 +995,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		std::string text;
 
 		gamemap::location loc;
-		if(filter != NULL) {
+		if(!filter.null()) {
 			for(unit_map::const_iterator u = units->begin(); u != units->end(); ++u) {
-				if(game_events::unit_matches_filter(u,*filter)) {
+				if(game_events::unit_matches_filter(u, filter)) {
 					loc = u->first;
 					break;
 				}
@@ -986,10 +1012,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		std::string command_type = "then";
 
-		if(u != units->end() && (filter == NULL || game_events::unit_matches_filter(u,*filter))) {
+		if(u != units->end() && (filter.null() || game_events::unit_matches_filter(u, filter))) {
 			text = cfg["description"];
 
-			u->second.add_modification("object",cfg);
+			u->second.add_modification("object", cfg.get_parsed_config());
 
 			screen->select_hex(event_info.loc1);
 			screen->invalidate_unit();
@@ -1015,10 +1041,10 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			gui::show_dialog(*screen,surface,caption,text);
 		}
 
-		const config::child_list& commands = cfg.get_children(command_type);
-		for(config::child_list::const_iterator cmd = commands.begin();
+		const vconfig::child_list commands = cfg.get_children(command_type);
+		for(vconfig::child_list::const_iterator cmd = commands.begin();
 		    cmd != commands.end(); ++cmd) {
-			handle_event(event_info,*cmd);
+			handle_event(event_info, *cmd);
 		}
 	}
 
@@ -1095,14 +1121,14 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		std::vector<std::string> options;
-		std::vector<config::const_child_itors> option_events;
+		std::vector<vconfig::child_list> option_events;
 
-		const config::child_list& menu_items = cfg.get_children("option");
-		for(config::child_list::const_iterator mi = menu_items.begin();
-		    mi != menu_items.end(); ++mi) {
-			config const &cfg_mi = **mi;
-			options.push_back(cfg_mi["message"]);
-			option_events.push_back(cfg_mi.child_range("command"));
+		const vconfig::child_list menu_items = cfg.get_children("option");
+		for(vconfig::child_list::const_iterator mi = menu_items.begin();
+				mi != menu_items.end(); ++mi) {
+
+			options.push_back((*mi)["message"]);
+			option_events.push_back((*mi).get_children("command"));
 		}
 
 		surface surface(NULL);
@@ -1117,7 +1143,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
-			const std::string msg = utils::interpolate_variables_into_string(cfg["message"]);
+			const std::string msg = utils::interpolate_variables_into_string(cfg["message"], *state_of_game);
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
@@ -1153,9 +1179,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		if(options.empty() == false) {
 			wassert(size_t(option_chosen) < menu_items.size());
 			
-			for(config::const_child_itors events = option_events[option_chosen];
-			    events.first != events.second; ++events.first) {
-				handle_event(event_info,*events.first);
+			vconfig::child_list events = option_events[option_chosen];
+			for(vconfig::child_list::const_iterator itor = events.begin();
+					itor != events.end(); ++itor) {
+
+				handle_event(event_info, *itor);
 			}
 		}
 	}
@@ -1205,15 +1233,16 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//adding of new events
 	else if(cmd == "event") {
-		event_handler new_handler(&cfg);
+		event_handler new_handler(cfg.get_config());
 		events_map.insert(std::pair<std::string,event_handler>(new_handler.name(),new_handler));
 	}
 
 	//unit serialization to and from variables
 	else if(cmd == "store_unit") {
 		const config empty_filter;
-		const config* filter_ptr = cfg.child("filter");
-		const config& filter = filter_ptr != NULL ? *filter_ptr : empty_filter;
+		vconfig filter = cfg.child("filter");
+		if(filter.null())
+			filter = &empty_filter;
 
 		const std::string& variable = cfg["variable"];
 
@@ -1240,35 +1269,37 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 
 		if(filter["x"].empty() && filter["y"].empty()) {
-                  std::map<std::string, player_info>& players = state_of_game->players;
+			std::map<std::string, player_info>& players = state_of_game->players;
 
-                  for(std::map<std::string, player_info>::iterator pi = players.begin();
-                      pi!=players.end(); ++pi) {
-                    std::vector<unit>& avail_units = pi->second.available_units;
-                    for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-                      if(game_events::unit_matches_filter(*j, filter) == false) {
-                        ++j;
-                        continue;
-                      }
-	
-                      config& data = vars.add_child(variable);
-                      j->write(data);
-                      data["x"] = "recall";
-                      data["y"] = "recall";
-	
-                      if(kill_units) {
-                        j = avail_units.erase(j);
-                      } else {
-                        ++j;
-                      }
-                    }
-                  }
+			for(std::map<std::string, player_info>::iterator pi = players.begin();
+					pi!=players.end(); ++pi) {
+				std::vector<unit>& avail_units = pi->second.available_units;
+				for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+					if(game_events::unit_matches_filter(*j, filter) == false) {
+						++j;
+						continue;
+					}
+
+					config& data = vars.add_child(variable);
+					j->write(data);
+					data["x"] = "recall";
+					data["y"] = "recall";
+
+					if(kill_units) {
+						j = avail_units.erase(j);
+					} else {
+						++j;
+					}
+				}
+			}
 		}
 	}
 
 	else if(cmd == "unstore_unit") {
-		const config& var = game_events::get_variable_cfg(
-			utils::interpolate_variables_into_string(cfg.get_attribute("variable")));
+		wassert(state_of_game != NULL);
+		const config& var = state_of_game->get_variable_cfg(
+			utils::interpolate_variables_into_string(cfg.get_attribute("variable"),
+				*state_of_game));
 
 		try {
 			const unit u(*game_data_ptr,var);
@@ -1298,16 +1329,17 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "store_starting_location") {
 		const int side = lexical_cast_default<int>(cfg["side"]);
 		const gamemap::location& loc = game_map->starting_position(side);
-		static const std::string default_store = "location";
-		const std::string& store = cfg["variable"].empty() ? default_store : cfg["variable"];
-		loc.write(game_events::get_variable_cfg(store));
+		static const t_string default_store = "location";
+		const t_string& store = cfg["variable"].empty() ? default_store : cfg["variable"];
+		wassert(state_of_game != NULL);
+		loc.write(state_of_game->get_variable_cfg(store));
 	}
 
 	else if(cmd == "store_locations") {
 		log_scope("store_locations");
 		const std::string& variable = cfg["variable"];
 		const std::string& terrain = cfg["terrain"];
-		const config* const unit_filter = cfg.child("filter");
+		const vconfig unit_filter = cfg.child("filter");
 
 		state_of_game->variables.clear_children(variable);
 
@@ -1327,9 +1359,9 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				if(std::find(terrain.begin(), terrain.end(), c) == terrain.end())
 					continue;
 			}
-			if (unit_filter != NULL) {
+			if (!unit_filter.null()) {
 				const unit_map::const_iterator u = units->find(*j);
-				if (u == units->end() || !game_events::unit_matches_filter(u, *unit_filter))
+				if (u == units->end() || !game_events::unit_matches_filter(u, unit_filter))
 					continue;
 			}
 			j->write(state_of_game->variables.add_child(variable));
@@ -1390,16 +1422,19 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	return rval;
 }
 
-bool event_handler::handle_event(const queued_event& event_info, const config* cfg)
+bool event_handler::handle_event(const queued_event& event_info, const vconfig conf)
 {
-	if(cfg == NULL)
+	vconfig cfg = conf;
+
+	if(cfg.null())
 		cfg = cfg_;
 
 	bool mutated = true;
 
 	bool skip_messages = false;
-	for(config::all_children_iterator i = cfg->ordered_begin();
-		i != cfg->ordered_end(); ++i) {
+	for(config::all_children_iterator i = cfg.get_config().ordered_begin();
+			i != cfg.get_config().ordered_end(); ++i) {
+
 		const std::pair<const std::string*,const config*> item = *i;
 
 		// If the user pressed escape, we skip any message that doesn't 
@@ -1410,7 +1445,7 @@ bool event_handler::handle_event(const queued_event& event_info, const config* c
 			}
 		}
 
-		if (!handle_event_command(event_info,*item.first,*item.second,mutated))  {
+		if (!handle_event_command(event_info, *item.first, vconfig(item.second), mutated)) {
 			skip_messages = true;
 		}
 		else { 
@@ -1480,7 +1515,7 @@ bool filter_loc_impl(const gamemap::location& loc, const std::string& xloc,
 	return true;
 }
 
-bool filter_loc(const gamemap::location& loc, const config& cfg)
+bool filter_loc(const gamemap::location& loc, const vconfig cfg)
 {
 	const std::string& xloc = cfg["x"];
 	const std::string& yloc = cfg["y"];
@@ -1496,19 +1531,19 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
 
-	const config::child_list& first_filters = handler.first_arg_filters();
-	for(config::child_list::const_iterator ffi = first_filters.begin();
+	const vconfig::child_list first_filters = handler.first_arg_filters();
+	for(vconfig::child_list::const_iterator ffi = first_filters.begin();
 	    ffi != first_filters.end(); ++ffi) {
 
-		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,**ffi)) {
+		if(unit1 == units->end() || !game_events::unit_matches_filter(unit1,*ffi)) {
 			return false;
 		}
 	}
 
-	const config::child_list& second_filters = handler.second_arg_filters();
-	for(config::child_list::const_iterator sfi = second_filters.begin();
+	const vconfig::child_list second_filters = handler.second_arg_filters();
+	for(vconfig::child_list::const_iterator sfi = second_filters.begin();
 	    sfi != second_filters.end(); ++sfi) {
-		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,**sfi)) {
+		if(unit2 == units->end() || !game_events::unit_matches_filter(unit2,*sfi)) {
 			return false;
 		}
 	}
@@ -1523,82 +1558,17 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	return res;
 }
 
-void get_variable_internal(const std::string& key, config& cfg,
-						   std::string** varout, config** cfgout)
-{
-	//we get the variable from the [variables] section of the game state. Variables may
-	//be in the format 
-	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
-	if(itor != key.end()) {
-		std::string element(key.begin(),itor);
-		const std::string sub_key(itor+1,key.end());
-
-		size_t index = 0;
-		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
-		const bool explicit_index = index_start != element.end();
-
-		if(explicit_index) {
-			const std::string::iterator index_end = std::find(index_start,element.end(),']');
-			const std::string index_str(index_start+1,index_end);
-			index = size_t(atoi(index_str.c_str()));
-			if(index > MaxLoop) {
-				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
-				       << ", truncated\n";
-				index = MaxLoop;
-			}
-
-			element = std::string(element.begin(),index_start);
-		}
-
-		const config::child_list& items = cfg.get_children(element);
-
-		//special case -- '.length' on an array returns the size of the array
-		if(explicit_index == false && sub_key == "length") {
-			if(items.empty()) {
-				if(varout != NULL) {
-					static std::string zero_str;
-					zero_str = "0";
-					*varout = &zero_str;
-				}
-			} else {
-				char buf[50];
-				sprintf(buf,"%d",minimum<int>(MaxLoop,int(items.size())));
-				((*items.back())["__length"] = buf);
-				if(varout != NULL) {
-					*varout = &(*items.back())["__length"];
-				}
-			}
-
-			return;
-		}
-		
-		while(cfg.get_children(element).size() <= index) {
-			cfg.add_child(element);
-		}
-
-		if(cfgout != NULL) {
-			*cfgout = cfg.get_children(element)[index];
-		}
-		
-		get_variable_internal(sub_key,*cfg.get_children(element)[index],varout,cfgout);
-	} else {
-		if(varout != NULL) {
-			*varout = &cfg[key];
-		}
-	}
-}
-
 } //end anonymous namespace
 
 namespace game_events {
 
-bool unit_matches_filter(const unit& u, const config& filter)
+bool unit_matches_filter(const unit& u, const vconfig filter)
 {
-	const bool res = u.matches_filter(filter);
+	const bool res = u.matches_filter(filter.get_parsed_config());
 	if(res == true) {
-		const config::child_list& nots = filter.get_children("not");
-		for(config::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-			if(unit_matches_filter(u,**i)) {
+		const vconfig::child_list& nots = filter.get_children("not");
+		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+			if(unit_matches_filter(u,*i)) {
 				return false;
 			}
 		}
@@ -1607,71 +1577,34 @@ bool unit_matches_filter(const unit& u, const config& filter)
 	return res;
 }
 
-bool unit_matches_filter(unit_map::const_iterator itor, const config& filter)
+bool unit_matches_filter(unit_map::const_iterator itor, const vconfig filter)
 {
-	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter);
+	const bool res = filter_loc(itor->first,filter) && itor->second.matches_filter(filter.get_parsed_config());
 	if(res == true) {
-		const config::child_list& nots = filter.get_children("not");
-		for(config::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
-			if(unit_matches_filter(itor,**i)) {
+		const vconfig::child_list& nots = filter.get_children("not");
+		for(vconfig::child_list::const_iterator i = nots.begin(); i != nots.end(); ++i) {
+			if(unit_matches_filter(itor,*i)) {
 				return false;
 			}
 		}
 	}
 
 	return res;
-}
-
-std::string& get_variable(const std::string& key)
-{
-	if(state_of_game != NULL) {
-		std::string* res = NULL;
-		get_variable_internal(key,state_of_game->variables,&res,NULL);
-		if(res != NULL) {
-			return *res;
-		}
-	}
-	
-	static std::string empty_string;
-	return empty_string;
-}
-
-const std::string& get_variable_const(const std::string& key)
-{
-	return get_variable(key);
-}
-
-config& get_variable_cfg(const std::string& key)
-{
-	if(state_of_game != NULL) {
-		config* res = NULL;
-		get_variable_internal(key + ".",state_of_game->variables,NULL,&res);
-		if(res != NULL) {
-			return *res;
-		}
-	}
-
-	static config empty_cfg;
-	return empty_cfg;
-}
-
-void set_variable(const std::string& key, const std::string& value)
-{
-	state_of_game->variables[key] = value;
 }
 
 manager::manager(const config& cfg, display& gui_, gamemap& map_,
                  std::map<gamemap::location,unit>& units_,
                  std::vector<team>& teams_,
                  game_state& state_of_game_, gamestatus& status,
-		 const game_data& game_data_)
+		 const game_data& game_data_) :
+	variable_manager(&state_of_game_)
 {
 	const config::child_list& events_list = cfg.get_children("event");
 	for(config::child_list::const_iterator i = events_list.begin();
 	    i != events_list.end(); ++i) {
-		event_handler new_handler(*i);
+		event_handler new_handler(**i);
 		events_map.insert(std::pair<std::string,event_handler>(
-		                                   new_handler.name(), new_handler));
+					new_handler.name(), new_handler));
 	}
 
 	teams = &teams_;

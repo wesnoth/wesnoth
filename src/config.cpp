@@ -20,6 +20,10 @@
 #include "log.hpp"
 #include "variable.hpp"
 #include "wassert.hpp"
+#include "gettext.hpp"
+#include "util.hpp"
+
+#include <iostream>
 
 #define ERR_CF LOG_STREAM(err, config)
 
@@ -204,13 +208,15 @@ void config::remove_child(const std::string& key, size_t index)
 	delete res;
 }
 
-std::string& config::operator[](const std::string& key)
+t_string& config::operator[](const std::string& key)
 {
 	return values[key];
 }
 
-const std::string& config::operator[](const std::string& key) const
+const t_string& config::operator[](const std::string& key) const
 {
+	return get_attribute(key);
+#if 0
 	const std::string& str = get_attribute(key);
 	//see if the value is a variable
 	if (!str.empty() && str[0] == '$') {
@@ -218,15 +224,16 @@ const std::string& config::operator[](const std::string& key) const
 	} else {
 		return str;
 	}
+#endif
 }
 
-const std::string& config::get_attribute(const std::string& key) const
+const t_string& config::get_attribute(const std::string& key) const
 {
 	const string_map::const_iterator i = values.find(key);
 	if(i != values.end()) {
 		return i->second;
 	} else {
-		static const std::string empty_string;
+		static const t_string empty_string;
 		return empty_string;
 	}
 }
@@ -248,7 +255,7 @@ private:
 
 config* config::find_child(const std::string& key,
                            const std::string& name,
-                           const std::string& value)
+                           const t_string& value)
 {
 	const child_map::iterator i = children.find(key);
 	if(i == children.end())
@@ -265,7 +272,7 @@ config* config::find_child(const std::string& key,
 
 const config* config::find_child(const std::string& key,
                                  const std::string& name,
-                                 const std::string& value) const
+                                 const t_string& value) const
 {
 	const child_map::const_iterator i = children.find(key);
 	if(i == children.end())
@@ -468,7 +475,7 @@ void config::apply_diff(const config& diff)
 	const child_list& child_changes = diff.get_children("change_child");
 	child_list::const_iterator i;
 	for(i = child_changes.begin(); i != child_changes.end(); ++i) {
-		const size_t index = atoi((**i)["index"].c_str());
+		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
 
@@ -487,7 +494,7 @@ void config::apply_diff(const config& diff)
 
 	const child_list& child_inserts = diff.get_children("insert_child");
 	for(i = child_inserts.begin(); i != child_inserts.end(); ++i) {
-		const size_t index = atoi((**i)["index"].c_str());
+		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
 			add_child_at(*item.first,*item.second,index);
@@ -496,7 +503,7 @@ void config::apply_diff(const config& diff)
 
 	const child_list& child_deletes = diff.get_children("delete_child");
 	for(i = child_deletes.begin(); i != child_deletes.end(); ++i) {
-		const size_t index = atoi((**i)["index"].c_str());
+		const size_t index = lexical_cast<size_t>((**i)["index"].str());
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
 

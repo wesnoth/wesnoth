@@ -131,7 +131,7 @@ static void write_compressed_internal(std::ostream &out, config const &cfg, comp
 			compress_emit_word(out, i->first, schema);
 
 			//output the value, with no compression
-			compress_output_literal_word(out, i->second);
+			compress_output_literal_word(out, i->second.value());
 		}
 	}
 
@@ -196,7 +196,8 @@ static void read_compressed_internal(config &cfg, std::istream &in, compression_
 			} else {
 				//we have a name/value pair, the value is always a literal string
 				std::string value = compress_read_literal_word(in);
-				cfg.values.insert(std::make_pair(word, value));
+				t_string t_value = t_string::from_serialized(value);
+				cfg.values.insert(std::make_pair(word, t_value));
 			}
 		}
 

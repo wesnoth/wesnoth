@@ -98,9 +98,11 @@ wesnoth_SOURCES = \
 	thread.cpp \
 	titlescreen.cpp \
 	tooltips.cpp \
+	tstring.cpp \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	variable.cpp \
 	video.cpp \
 	wassert.cpp \
 	serialization/binary_or_text.cpp \
@@ -108,6 +110,7 @@ wesnoth_SOURCES = \
 	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	widgets/button.cpp \
 	widgets/combo.cpp \
 	widgets/label.cpp \
@@ -188,6 +191,7 @@ wesnoth_SOURCES = \
 	thread.hpp \
 	titlescreen.hpp \
 	tooltips.hpp \
+	tstring.hpp \
 	unit.hpp \
 	unit_display.hpp \
 	unit_types.hpp \
@@ -200,6 +204,7 @@ wesnoth_SOURCES = \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
+	serialization/tokenizer.hpp \
 	widgets/button.hpp \
 	widgets/combo.hpp \
 	widgets/label.hpp \
@@ -278,15 +283,18 @@ wesnoth_editor_SOURCES = \
 	thread.cpp \
 	theme.cpp \
 	tooltips.cpp \
+	tstring.cpp \
 	unit.cpp \
 	unit_display.cpp \
 	unit_types.cpp \
+	variable.cpp \
 	video.cpp \
 	serialization/binary_or_text.cpp \
 	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	widgets/button.cpp \
 	widgets/file_chooser.cpp \
 	widgets/label.cpp \
@@ -359,15 +367,18 @@ wesnoth_editor_SOURCES = \
 	theme.hpp \
 	thread.hpp \
 	tooltips.hpp \
+	tstring.hpp \
 	unit.hpp \
 	unit_display.hpp \
 	unit_types.hpp \
+	variable.hpp \
 	video.hpp \
 	serialization/binary_or_text.hpp \
 	serialization/binary_wml.hpp \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
+	serialization/tokenizer.hpp \
 	widgets/button.hpp \
 	widgets/file_chooser.hpp \
 	widgets/label.hpp \
@@ -401,6 +412,7 @@ wesnothd_SOURCES = \
 	network.cpp \
 	network_worker.cpp \
 	thread.cpp \
+	tstring.cpp \
 	serialization/binary_wml.cpp \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
@@ -417,6 +429,7 @@ wesnothd_SOURCES = \
 	network.hpp \
 	network_worker.hpp \
 	thread.hpp \
+	tstring.hpp \
 	serialization/binary_wml.hpp \
 	serialization/string_utils.hpp \
 	zipios++/xcoll.hpp
@@ -439,9 +452,11 @@ campaignd_SOURCES = \
 	network_worker.cpp \
 	publish_campaign.cpp \
 	thread.cpp \
+	tstring.cpp \
 	serialization/binary_wml.cpp \
 	serialization/parser.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
 	variable.hpp \
 	config.hpp \
@@ -456,7 +471,9 @@ campaignd_SOURCES = \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
+	serialization/tokenizer.hpp \
 	thread.hpp \
+	tstring.hpp \
 	zipios++/xcoll.hpp
 
 campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
@@ -477,9 +494,11 @@ exploder_SOURCES = \
 	game_config.cpp \
 	sdl_utils.cpp \
 	log.cpp \
+	tstring.cpp \
 	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
 	variable.hpp \
 	tools/exploder_composer.hpp \
@@ -488,7 +507,9 @@ exploder_SOURCES = \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
+	serialization/tokenizer.hpp \
 	zipios++/xcoll.hpp \
+	tstring.hpp \
 	gettext.cpp
 
 cutter_SOURCES = \
@@ -502,9 +523,11 @@ cutter_SOURCES = \
 	game_config.cpp \
 	sdl_utils.cpp \
 	log.cpp \
+	tstring.cpp \
 	serialization/parser.cpp \
 	serialization/preprocessor.cpp \
 	serialization/string_utils.cpp \
+	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
 	variable.hpp \
 	tools/exploder_composer.hpp \
@@ -513,7 +536,9 @@ cutter_SOURCES = \
 	serialization/parser.hpp \
 	serialization/preprocessor.hpp \
 	serialization/string_utils.hpp \
+	serialization/tokenizer.hpp \
 	zipios++/xcoll.hpp \
+	tstring.hpp \
 	gettext.cpp
 
 exploder_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
@@ -531,6 +556,7 @@ wesnoth_zip_SOURCES = \
 	gettext.cpp \
 	log.cpp \
 	network.cpp \
+	tstring.cpp \
 	variable.hpp \
 	config.hpp \
 	gettext.hpp \
@@ -538,6 +564,7 @@ wesnoth_zip_SOURCES = \
 	game_config.hpp \
 	log.hpp \
 	network.hpp \
+	tstring.hpp \
 	server/variable.cpp \
 	wesconfig.h
 

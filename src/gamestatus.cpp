@@ -33,6 +33,10 @@
 #include <iterator>
 #include <sstream>
 
+#define LOG_NG lg::info(lg::engine)
+#define WRN_NG lg::warn(lg::engine)
+#define ERR_NG lg::err(lg::engine)
+
 player_info* game_state::get_player(const std::string& id) {
 	std::map< std::string, player_info >::iterator found = players.find(id);
 	if (found == players.end()) {
@@ -556,7 +560,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	if(has_snapshot) {
 		out["turn"] = state.snapshot["turn_at"];
 		if(state.snapshot["turns"] != "-1") {
-			out["turn"] += "/" + state.snapshot["turns"];
+			out["turn"] = out["turn"].str() + "/" + state.snapshot["turns"].str();
 		}
 	}
 
@@ -570,7 +574,7 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 	    p!=state.players.end(); ++p) {
 		for(std::vector<unit>::const_iterator u = p->second.available_units.begin(); u != p->second.available_units.end(); ++u) {
 			if(u->can_recruit()) {
-				leader = u->type().name();
+				leader = u->type().id();
 			}
 		}
 	}
@@ -615,3 +619,103 @@ void extract_summary_data_from_save(const game_state& state, config& out)
 		}
 	}
 }
+
+namespace {
+const size_t MaxLoop = 1024;
+}
+
+void game_state::get_variable_internal(const std::string& key, config& cfg,
+		t_string** varout, config** cfgout)
+{
+	//we get the variable from the [variables] section of the game state. Variables may
+	//be in the format 
+	const std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
+	if(itor != key.end()) {
+		std::string element(key.begin(),itor);
+		const std::string sub_key(itor+1,key.end());
+
+		size_t index = 0;
+		const std::string::iterator index_start = std::find(element.begin(),element.end(),'[');
+		const bool explicit_index = index_start != element.end();
+
+		if(explicit_index) {
+			const std::string::iterator index_end = std::find(index_start,element.end(),']');
+			const std::string index_str(index_start+1,index_end);
+			index = size_t(atoi(index_str.c_str()));
+			if(index > MaxLoop) {
+				LOG_NG << "get_variable_internal: index greater than " << MaxLoop
+				       << ", truncated\n";
+				index = MaxLoop;
+			}
+
+			element = std::string(element.begin(),index_start);
+		}
+
+		const config::child_list& items = cfg.get_children(element);
+
+		//special case -- '.length' on an array returns the size of the array
+		if(explicit_index == false && sub_key == "length") {
+			if(items.empty()) {
+				if(varout != NULL) {
+					static t_string zero_str = "0";
+					*varout = &zero_str;
+				}
+			} else {
+				int size = minimum<int>(MaxLoop,int(items.size()));
+				(*items.back())["__length"] = lexical_cast<std::string>(size);
+
+				if(varout != NULL) {
+					*varout = &(*items.back())["__length"];
+				}
+			}
+
+			return;
+		}
+		
+		while(cfg.get_children(element).size() <= index) {
+			cfg.add_child(element);
+		}
+
+		if(cfgout != NULL) {
+			*cfgout = cfg.get_children(element)[index];
+		}
+		
+		get_variable_internal(sub_key,*cfg.get_children(element)[index],varout,cfgout);
+	} else {
+		if(varout != NULL) {
+			*varout = &cfg[key];
+		}
+	}
+}
+
+t_string& game_state::get_variable(const std::string& key)
+{
+	t_string* res = NULL;
+	get_variable_internal(key, variables, &res, NULL);
+	if(res != NULL) {
+		return *res;
+	}
+	
+	static t_string empty_string;
+	return empty_string;
+}
+
+config& game_state::get_variable_cfg(const std::string& key)
+{
+	config* res = NULL;
+	get_variable_internal(key + ".", variables, NULL, &res);
+
+	if(res != NULL) {
+		return *res;
+	}
+
+	static config empty_cfg;
+	return empty_cfg;
+}
+
+void game_state::set_variable(const std::string& key, const t_string& value)
+{
+	variables[key] = value;
+}
+
+

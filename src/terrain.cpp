@@ -12,7 +12,7 @@
 */
 
 #include "global.hpp"
-
+#include "tstring.hpp"
 #include "config.hpp"
 #include "terrain.hpp"
 
@@ -62,7 +62,7 @@ const std::string& terrain_type::symbol_image() const
 	return symbol_image_;
 }
 
-const std::string& terrain_type::name() const
+const t_string& terrain_type::name() const
 {
 	return name_;
 }

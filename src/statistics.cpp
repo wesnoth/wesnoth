@@ -253,7 +253,7 @@ scenario_context::~scenario_context()
 }
 
 attack_context::attack_context(const unit& a, const unit& d, const battle_stats& stats)
-   : attacker_type(a.type().name()), defender_type(d.type().name()),
+   : attacker_type(a.type().id()), defender_type(d.type().id()),
      bat_stats(stats), attacker_side(a.side()), defender_side(d.side())
 {
 }
@@ -327,7 +327,7 @@ void recruit_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recruits[u.type().name()]++;
+	s.recruits[u.type().id()]++;
 	s.recruit_cost += u.type().cost();
 }
 
@@ -337,7 +337,7 @@ void recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.type().name()]++;
+	s.recalls[u.type().id()]++;
 	s.recall_cost += u.type().cost();
 }
 
@@ -347,7 +347,7 @@ void un_recall_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.recalls[u.type().name()]--;
+	s.recalls[u.type().id()]--;
 	s.recall_cost -= u.type().cost();
 }
 
@@ -357,7 +357,7 @@ void advance_unit(const unit& u)
 		return;
 
 	stats& s = get_stats(u.side());
-	s.advanced_to[u.type().name()]++;
+	s.advanced_to[u.type().id()]++;
 }
 
 std::vector<std::string> get_categories()

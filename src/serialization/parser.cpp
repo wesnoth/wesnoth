@@ -2,6 +2,7 @@
 /*
    Copyright (C) 2003 by David White <davidnwhite@optusnet.com.au>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +27,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/tokenizer.hpp"
 
 #include <sstream>
 #include <stack>
@@ -34,7 +36,7 @@
 #define WRN_CF LOG_STREAM(warn, config)
 #define LOG_CF LOG_STREAM(info, config)
 
-static const int max_recursion_levels = 100;
+static const size_t max_recursion_levels = 100;
 
 line_source get_line_source(std::vector< line_source > const &line_src, int line)
 {
@@ -50,301 +52,282 @@ line_source get_line_source(std::vector< line_source > const &line_src, int line
 	return res;
 }
 
-void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources)
+namespace {
+
+class parser
 {
-	std::string data_str;
-	{
-		//temporary, only here to accomodate the old parser
-		std::stringstream tmp_in;
-		tmp_in << data_in.rdbuf();
-		data_str = tmp_in.str();
-	}
-	std::string const &data = data_str;
+public:
+	parser(config& cfg, std::istream& in, std::vector<line_source> const* line_sources);
+	void operator() ();
 
-	cfg.clear();
+private:
+	void parse_element();
+	void parse_variable();
+	void parse_directive();
+	std::string lineno_string(utils::string_map& map, size_t lineno,
+			const std::string& string1, const std::string& string2);
+	void error(const std::string& message);
 
-	std::stack< std::string > element_names;
-	std::stack< int > element_locs;
-	std::stack< config * > elements;
-	std::stack< std::map< std::string, config * > > last_element; //allows [+element] syntax
-	std::stack< std::string > textdomains;
-	std::string current_textdomain = PACKAGE;
-	std::string current_textdomain_location = "";
-	elements.push(&cfg);
-	element_names.push("");
-	element_locs.push(0);
-	last_element.push(std::map< std::string, config * >());
+	config& cfg_;
+	tokenizer tok_;
+	std::vector<line_source> const* line_sources;
 
-	enum { ELEMENT_NAME, IN_ELEMENT, VARIABLE_NAME, VALUE }
-	state = IN_ELEMENT;
-	std::string var;
+	struct element {
+		element(config* cfg, const std::string& name, size_t start_line, const std::string& textdomain) :
+			cfg(cfg), name(name), textdomain(textdomain), start_line(start_line){};
 
-	std::vector< std::pair< std::string, bool > > stored_values;
-	std::string value;
+		config* cfg;
+		std::string name;
 
-	bool in_quotes = false, has_quotes = false, in_comment = false, escape_next = false,
-	     translatable = false, expecting_value = false;
+		std::map<std::string, config*> last_element_map;
+		std::string textdomain;
+		size_t start_line;
+	};
 
-	int line = 0;
+	std::stack<element> elements;
 
-	for(std::string::const_iterator i = data.begin(), i_end = data.end(); i != i_end; ++i) {
-		const char c = *i;
-		if (c == '\r') //ignore any DOS-style newlines
+	std::string current_textdomain_location;
+};
+
+parser::parser(config &cfg, std::istream &in, std::vector<line_source> const *line_sources) :
+	cfg_(cfg),
+	tok_(in),
+	line_sources(line_sources),
+	current_textdomain_location("")
+{
+}
+
+void parser::operator()()
+{
+	cfg_.clear();
+	elements.push(element(&cfg_, "", 0, PACKAGE));
+	tok_.textdomain() = PACKAGE;
+
+	do {
+		tok_.next_token();
+
+		switch(tok_.current_token().type) {
+		case token::LF:
 			continue;
-
-		if (c == '\n') {
-			in_comment = false;
-			++line;
+		case '[':
+			parse_element();
+			break;
+		case token::STRING:
+			parse_variable();
+			break;
+		default:
+			error(_("Unexpected characters at line start"));
+			break;
+		case token::END:
+			break;
 		}
+	} while (tok_.current_token().type != token::END);
 
-		if (*i == '#' && !in_quotes) {
-			in_comment = true;
-		}
+	// The main element should be there. If it is not, this is a parser error.
+	wassert(!elements.empty());
 
-		if (in_comment) {
-			continue;
-		}
-
-		switch(state) {
-			case ELEMENT_NAME:
-				if(c == ']') {
-					if(value == "end" || value.empty() == false && value[0] == '/') {
-						wassert(!elements.empty());
-
-						if(value[0] == '/' &&
-						   std::string("/" + element_names.top()) != value) {
-							std::stringstream err;
-
-							if(line_sources != NULL) {
-								const line_source src = get_line_source(*line_sources,line);
-
-								err << src.file << " " << src.fileline << ": ";
-							} else {
-								err << "line " << line << ": ";
-							}
-
-							err << "Found illegal end tag: '" << value
-							    << "', at end of '"
-							    << element_names.top() << "'";
-
-							throw config::error(err.str());
-						}
-
-						const std::string name = element_names.top();
-						config* const element = elements.top();
-
-						elements.pop();
-						element_names.pop();
-						element_locs.pop();
-						last_element.pop();
-
-						if(elements.empty()) {
-							std::stringstream err;
-
-							if(line_sources != NULL) {
-								const line_source src =
-								        get_line_source(*line_sources,line);
-
-								err << src.file << " " << src.fileline << ": ";
-							}
-
-							err << "Unexpected terminating tag\n";
-							throw config::error(err.str());
-							return;
-						}
-
-						last_element.top()[name] = element;
-
-						if(element->values.count("textdomain") != 0){
-							current_textdomain = textdomains.top();
-							textdomains.pop();
-						}
-						current_textdomain_location = "";
-
-						state = IN_ELEMENT;
-
-						break;
-					}
-
-					//any elements with a + sign prefix, like [+element] mean
-					//that they are appending to the previous element with the same
-					//name, if there is one
-					if(value.empty() == false && value[0] == '+') {
-						value.erase(value.begin(),value.begin()+1);
-						const std::map<std::string,config*>::iterator itor = last_element.top().find(value);
-						if(itor != last_element.top().end()) {
-							elements.push(itor->second);
-							element_names.push(value);
-							element_locs.push(line);
-							last_element.push(std::map<std::string,config*>());
-							state = IN_ELEMENT;
-							value = "";
-							break;
-						}
-					}
-
-					elements.push(&elements.top()->add_child(value));
-					element_names.push(value);
-					element_locs.push(line);
-					last_element.push(std::map<std::string,config*>());
-
-					state = IN_ELEMENT;
-					value = "";
-				} else {
-					value.resize(value.size()+1);
-					value[value.size()-1] = c;
-				}
-
-				break;
-
-			case IN_ELEMENT:
-				if(c == '[') {
-					state = ELEMENT_NAME;
-					value = "";
-				} else if (!utils::portable_isspace(c)) {
-					value.resize(1);
-					value[0] = c;
-					state = VARIABLE_NAME;
-				}
-
-				break;
-
-			case VARIABLE_NAME:
-				if(c == '=') {
-					state = VALUE;
-					var = value;
-					value = "";
-				} else {
-					value.resize(value.size()+1);
-					value[value.size()-1] = c;
-				}
-
-				break;
-
-			case VALUE:
-				if(c == '[' && in_quotes) {
-					if(line_sources != NULL) {
-						const line_source src = get_line_source(*line_sources,line);
-						WRN_CF << src.file << " " << src.fileline << ": ";
-					} else {
-						WRN_CF << "line " << line << ": ";
-					}
-
-					WRN_CF << "square bracket found in string. Is this a run-away string?\n";
-				}
-				
-				if(in_quotes && c == '"' && (i+1) != data.end() && *(i+1) == '"') {
-					push_back(value, c);
-					++i; // skip the next double-quote
-				} else if(c == '"') {
-					expecting_value = false;
-					in_quotes = !in_quotes;
-					has_quotes = true;
-
-					//if we have an underscore outside of quotes in front, then
-					//we strip it away, since it simply indicates that this value is translatable.
-					if(value.empty() == false && std::count(value.begin(),value.end(),'_') == 1) {
-						std::string val = value;
-						if (utils::strip(val) == "_") {
-							value = "";
-							translatable = true;
-						}
-					}
-				} else if(c == '+' && has_quotes && !in_quotes) {
-					stored_values.push_back(std::make_pair(value,translatable));
-					value = "";
-					translatable = false;
-					expecting_value = true;
-				} else if(c == '\n' && !in_quotes && expecting_value) {
-					//do nothing...just ignore
-				} else if(c == '\n' && !in_quotes) {
-
-					stored_values.push_back(std::make_pair(value,translatable));
-					value = "";
-					for(std::vector<std::pair<std::string,bool> >::const_iterator i = stored_values.begin(); i != stored_values.end(); ++i) {
-						if(i->second) {
-							value += dsgettext(current_textdomain.c_str(),i->first.c_str());
-						} else {
-							value += i->first;
-						}
-					}
-
-					stored_values.clear();
-
-					//see if this is a CSV list=CSV list style assignment (e.g. x,y=5,8)
-					std::vector<std::string> vars, values;
-					if(std::count(var.begin(),var.end(),',') > 0) {
-						vars = utils::split(var);
-						values = utils::split(value);
-					} else {
-						vars.push_back(var);
-						values.push_back(value);
-						if (var == "textdomain") {
-							textdomains.push(current_textdomain);
-							current_textdomain = value;
-							bindtextdomain(current_textdomain.c_str(),
-								       current_textdomain_location.empty() ?
-								       get_intl_dir().c_str() :
-								       current_textdomain_location.c_str());
-							bind_textdomain_codeset (current_textdomain.c_str(), "UTF-8");
-						} else if (var == "translations") {
-							const std::string& location = get_binary_file_location(value, ".");
-							current_textdomain_location = location;
-						}
-					}
-
-					//iterate over the names and values, assigning each to its corresponding
-					//element. If there are more names than values, than remaining names get
-					//assigned to the last value. If there are more values than names, then
-					//all the last values get concatenated onto the last name
-					if(vars.empty() == false) {
-						for(size_t n = 0; n != maximum<size_t>(vars.size(),values.size()); ++n) {
-							std::string value;
-							if(n < values.size()) {
-								value = values[n];
-							} else if(values.empty() == false) {
-								value = values.back();
-							}
-
-							if(has_quotes == false) {
-								utils::strip(value);
-							}
-
-							if(n < vars.size()) {
-								elements.top()->values[vars[n]] = value;
-							} else {
-								elements.top()->values[vars.back()] += "," + value;
-							}
-						}
-					}
-
-					state = IN_ELEMENT;
-					var = "";
-					value = "";
-					has_quotes = false;
-					escape_next = false;
-					translatable = false;
-				} else if(in_quotes || !has_quotes) {
-					expecting_value = false;
-					push_back(value, c);
-				} else if(expecting_value) {
-					// after a +, emulate !has_quotes so we can see any _ when we encounter a " later
-					push_back(value, c);
-				}
-
-				break;
-		}
-	}
-
-	const std::string top = element_names.top();
-	element_names.pop();
-	if(!element_names.empty()) {
-		throw config::error("Configuration not terminated: no closing tag to '" + top + "' (line " + str_cast(element_locs.top()) + ")");
+	if(elements.size() != 1) {
+		utils::string_map i18n_symbols;
+		i18n_symbols["tag"] = elements.top().name;
+		error(lineno_string(i18n_symbols, elements.top().start_line,
+				N_("Missing closing tag for tag $tag (file $file, line $line)"),
+				N_("Missing closing tag for tag $tag (line $line)")));
 	}
 }
 
-static char const *AttributeEquals = "=\"";
-static char const *AttributePostfix = "\"\n";
+void parser::parse_element() 
+{
+	tok_.next_token();
+	std::string elname;
+	config* current_element = NULL;
+	std::map<std::string, config*>::const_iterator last_element_itor;
+
+	switch(tok_.current_token().type) {
+	case token::STRING: // [element]
+		elname = tok_.current_token().value;
+		if (tok_.next_token().type != ']')
+			error(_("Unterminated [element] tag"));
+
+		// Add the element
+		current_element = &(elements.top().cfg->add_child(elname));
+		elements.top().last_element_map[elname] = current_element;
+		elements.top().textdomain = tok_.textdomain();
+		elements.push(element(current_element, elname, tok_.get_line(), elements.top().textdomain));
+		break;
+
+	case '+': // [+element]
+		if (tok_.next_token().type != token::STRING)
+			error(_("Invalid tag name"));
+		elname = tok_.current_token().value;
+		if (tok_.next_token().type != ']')
+			error(_("Unterminated [+element] tag"));
+
+		// Find the last child of the current element whose name is
+		// element
+		last_element_itor = elements.top().last_element_map.find(elname);
+		if(last_element_itor == elements.top().last_element_map.end()) {
+			current_element = &elements.top().cfg->add_child(elname);
+		} else {
+			current_element = last_element_itor->second;
+		}
+		elements.top().last_element_map[elname] = current_element;
+		elements.top().textdomain = tok_.textdomain();
+		elements.push(element(current_element, elname, tok_.get_line(), elements.top().textdomain));
+		break;
+
+	case '/': // [/element]
+		if(tok_.next_token().type != token::STRING)
+			error(_("Invalid closing tag name"));
+		elname = tok_.current_token().value;
+		if(tok_.next_token().type != ']')
+			error(_("Unterminated closing tag"));
+		if(elements.size() <= 1)
+			error(_("Unexpected closing tag"));
+		if(elname != elements.top().name) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["tag"] = elements.top().name;
+			error(lineno_string(i18n_symbols, elements.top().start_line,
+					N_("Found invalid closing tag for tag $tag (file $file, line $line)"),
+					N_("Found invalid closing tag for tag $tag (line $line)")));
+		}
+
+		elements.pop();
+		tok_.textdomain() = elements.top().textdomain;
+		break;
+	default:
+		error(_("Invalid tag name"));
+	}
+}
+
+void parser::parse_variable()
+{
+	config& cfg = *elements.top().cfg;
+	std::vector<std::string> variables;
+	variables.push_back(tok_.current_token().value);
+	tok_.next_token();
+
+	while (tok_.current_token().type != '=') {
+		if (tok_.current_token().type != ',')
+			error(_("Unexpected characters after variable name (expected , or =)"));
+		tok_.next_token();
+		if (tok_.current_token().type != token::STRING)
+			error(_("Invalid variable name"));
+		variables.push_back(tok_.current_token().value);
+		tok_.next_token();
+	}
+
+	std::vector<std::string>::const_iterator curvar = variables.begin(); 
+
+	bool ignore_next_newlines = false;
+	while(1) {
+		tok_.next_token();
+		wassert(curvar != variables.end());
+
+		switch (tok_.current_token().type) {
+		case ',':
+			if ((curvar+1) != variables.end()) {
+				curvar++;
+				continue;
+			} else {
+				cfg[*curvar] += ",";
+			}
+			break;
+		case '_':
+			tok_.next_token();
+			switch (tok_.current_token().type) {
+			case token::UNTERMINATED_QSTRING:
+				error(_("Unterminated quoted string"));
+				break;
+			case token::QSTRING:
+				cfg[*curvar] += t_string(tok_.current_token().value, tok_.textdomain());
+				break;
+			default:
+				cfg[*curvar] += "_";
+				cfg[*curvar] += tok_.current_token().value;
+				break;
+			case token::END:
+			case token::LF:
+				return;
+			}
+			break;
+		case '+':
+			// Ignore this
+			break;
+		default:
+			cfg[*curvar] += tok_.current_token().leading_spaces + tok_.current_token().value;
+			break;
+		case token::QSTRING:
+			cfg[*curvar] += tok_.current_token().value;
+			break;
+		case token::UNTERMINATED_QSTRING:
+			error(_("Unterminated quoted string"));
+			break;
+		case token::LF:
+			if(!ignore_next_newlines)
+				return;
+			break;
+		case token::END:
+			return;
+		}
+
+		if (tok_.current_token().type == '+') {
+			ignore_next_newlines = true;
+		} else if (tok_.current_token().type != token::LF) {
+			ignore_next_newlines = false;
+		}
+	}
+}
+
+std::string parser::lineno_string(utils::string_map& i18n_symbols, size_t lineno,
+			const std::string& string1, const std::string& string2)
+{
+	std::string res;
+
+	if(line_sources != NULL) {
+		const line_source src = get_line_source(*line_sources, lineno);
+		i18n_symbols["file"] = lexical_cast<std::string>(src.file);
+		i18n_symbols["line"] = lexical_cast<std::string>(src.fileline);
+		i18n_symbols["column"] = lexical_cast<std::string>(tok_.get_column());
+
+		res = vgettext(string1.c_str(), i18n_symbols);
+	} else {
+		i18n_symbols["line"] = lexical_cast<std::string>(lineno);
+		i18n_symbols["column"] = lexical_cast<std::string>(tok_.get_column());
+
+		res = vgettext(string2.c_str(), i18n_symbols);
+	}
+	return res;
+}
+
+void parser::error(const std::string& error_type)
+{
+	utils::string_map i18n_symbols;
+	i18n_symbols["error"] = error_type;
+
+	throw config::error(lineno_string(i18n_symbols, tok_.get_line(), 
+				N_("$error in file $file (line $line, column $column)"),
+				N_("$error (line $line, column $column)")));
+}
+
+} // end anon namespace
+
+void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources)
+{
+	parser(cfg, data_in, line_sources)();
+}
+
+static char const *AttributeEquals = "=";
+
+static char const *TranslatableAttributePrefix = "_ \"";
+static char const *AttributePrefix = "\"";
+static char const *AttributePostfix = "\"";
+
+static char const* AttributeContPostfix = " + \n";
+static char const* AttributeEndPostfix = "\n";
+
+static char const* TextdomainPrefix = "#textdomain ";
+static char const* TextdomainPostfix = "\n";
+
 static char const *ElementPrefix = "[";
 static char const *ElementPostfix = "]\n";
 static char const *EndElementPrefix = "[/";
@@ -360,16 +343,57 @@ static std::string escaped_string(const std::string& value) {
 	return std::string(res.begin(), res.end());
 }
 
-static void write_internal(config const &cfg, std::ostream &out, size_t tab = 0)
+static void write_internal(config const &cfg, std::ostream &out, std::string textdomain, size_t tab = 0)
 {
 	if (tab > max_recursion_levels)
 		return;
 
 	for(string_map::const_iterator i = cfg.values.begin(), i_end = cfg.values.end(); i != i_end; ++i) {
 		if (!i->second.empty()) {
-			out << std::string(tab, '\t')
-			    << i->first << AttributeEquals << escaped_string(i->second)
-			    << AttributePostfix;
+			bool first = true;
+
+			for(t_string::walker w(i->second); !w.eos(); w.next()) {
+				std::string part(w.begin(), w.end());
+
+				if(w.translatable()) {
+					if(w.textdomain() != textdomain) {
+						out << TextdomainPrefix 
+							<< w.textdomain() 
+							<< TextdomainPostfix;
+						textdomain = w.textdomain();
+					}
+
+					if(first) {
+						out << std::string(tab, '\t') 
+							<< i->first 
+							<< AttributeEquals;
+					}
+
+					out << TranslatableAttributePrefix 
+						<< escaped_string(part)
+						<< AttributePostfix;
+
+				} else {
+					if(first) {
+						out << std::string(tab, '\t') 
+							<< i->first 
+							<< AttributeEquals;
+					}
+
+					out << AttributePrefix 
+						<< escaped_string(part)
+						<< AttributePostfix;
+				}
+
+				if(w.last()) {
+					out << AttributeEndPostfix;
+				} else {
+					out << AttributeContPostfix;
+					out << std::string(tab+1, '\t');
+				}
+				
+				first = false;
+			}
 		}
 	}
 
@@ -380,7 +404,7 @@ static void write_internal(config const &cfg, std::ostream &out, size_t tab = 0)
 
 		out << std::string(tab, '\t')
 		    << ElementPrefix << name << ElementPostfix;
-		write_internal(cfg, out, tab + 1);
+		write_internal(cfg, out, textdomain, tab + 1);
 		out << std::string(tab, '\t')
 		    << EndElementPrefix << name << EndElementPostfix;
 	}
@@ -388,5 +412,5 @@ static void write_internal(config const &cfg, std::ostream &out, size_t tab = 0)
 
 void write(std::ostream &out, config const &cfg)
 {
-	write_internal(cfg, out);
+	write_internal(cfg, out, PACKAGE);
 }

@@ -490,10 +490,11 @@ gamemap::location place_village(const std::vector<std::vector<gamemap::TERRAIN> 
 	return best_loc;
 }
 
-std::string generate_name(const unit_race& name_generator, const std::string& id, std::string* base_name=NULL,
-						  std::map<std::string,std::string>* additional_symbols=NULL)
+std::string generate_name(const unit_race& name_generator, const std::string& id, 
+		std::string* base_name=NULL,
+		utils::string_map* additional_symbols=NULL)
 {
-	const std::vector<std::string>& options = utils::split(string_table[id]);
+	const std::vector<std::string>& options = utils::split(string_table[id].str());
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
 		LOG_NG << "calling name generator...\n";
@@ -504,7 +505,7 @@ std::string generate_name(const unit_race& name_generator, const std::string& id
 		}
 
 		LOG_NG << "assigned base name..\n";
-		std::map<std::string,std::string> table;
+		utils::string_map  table;
 		if(additional_symbols == NULL) {
 			additional_symbols = &table;
 		}
@@ -1094,7 +1095,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 								size_t field_count = 0, forest_count = 0, mountain_count = 0, hill_count = 0;
 
-								std::map<std::string,std::string> symbols;
+								utils::string_map symbols;
 
 								size_t n;
 								for(n = 0; n != 6; ++n) {

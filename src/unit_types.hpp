@@ -79,7 +79,7 @@ public:
 	enum RANGE { SHORT_RANGE, LONG_RANGE };
 
 	attack_type(const config& cfg);
-	const std::string& name() const;
+	const t_string& name() const;
 	const std::string& type() const;
 	const std::string& special() const;
 	const std::string& icon() const;
@@ -102,7 +102,7 @@ public:
 private:
 	std::vector<unit_animation> animation_;
 	std::vector<unit_animation> direction_animation_[6];
-	std::string name_;
+	t_string name_;
 	std::string type_;
 	std::string special_;
 	std::string icon_;
@@ -129,7 +129,7 @@ public:
 	//for at least as long as the class instance
 	unit_movement_type(const config& cfg, const unit_movement_type* parent=NULL);
 
-	const std::string& name() const;
+	const t_string& name() const;
 	int movement_cost(const gamemap& map, gamemap::TERRAIN terrain, int recurse_count=0) const;
 	int defense_modifier(const gamemap& map, gamemap::TERRAIN terrain, int recurse_count=0) const;
 	int damage_against(const attack_type& attack) const;
@@ -171,11 +171,13 @@ public:
 	std::string generate_description() const;
 
 	//the name of the unit in the current language setting
-	std::string language_name() const;
+	const t_string& language_name() const;
 
-	//unique identifier that doesn't have any whitespace
 	const std::string& id() const;
-	const std::string& name() const;
+	//Disabling this one for consistency with other similar structures,
+	//where name() is always the user-visible, translated, name.
+	//language_name should eventually be renamed name()
+	// const std::string& name() const;
 	const std::string& image() const;
 	const std::string& image_halo() const;
 	const std::string& image_moving() const;
