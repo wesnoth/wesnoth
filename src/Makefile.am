@@ -124,9 +124,7 @@ wesnoth_SOURCES = \
 	actions.hpp \
 	ai.hpp \
 	ai2.hpp \
-	ai_attack.hpp \
 	ai_interface.hpp \
-	ai_move.hpp \
 	animated.hpp \
 	array.hpp \
 	astarnode.hpp \
@@ -306,8 +304,6 @@ wesnoth_editor_SOURCES = \
 	about.hpp \
 	actions.hpp \
 	ai.hpp \
-	ai_attack.hpp \
-	ai_move.hpp \
 	animated.hpp \
 	array.hpp \
 	astarnode.hpp \

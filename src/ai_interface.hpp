@@ -13,8 +13,9 @@
 #ifndef AI_INTERFACE_HPP_INCLUDED
 #define AI_INTERFACE_HPP_INCLUDED
 
-#include "display.hpp"
-#include "map.hpp"
+class display;
+class gamemap;
+#include "pathfind.hpp"
 #include "unit.hpp"
 
 class ai_interface {

@@ -14,7 +14,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
-#include "ai_attack.hpp"
+#include "ai.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"

@@ -17,8 +17,6 @@
 #include "ai.hpp"
 #include "ai2.hpp"
 //#include "advanced_ai.hpp"
-#include "ai_attack.hpp"
-#include "ai_move.hpp"
 #include "dialogs.hpp"
 #include "game_config.hpp"
 #include "game_events.hpp"
