@@ -938,16 +938,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			sound::play_sound(sfx);
 		}
 
-		const std::string& id = cfg["id"];
-
 		std::string image = cfg["image"];
-		std::string caption;
-
-		const std::string& lang_caption = string_table[id + "_caption"];
-		if(!lang_caption.empty())
-			caption = lang_caption;
-		else
-			caption = cfg["caption"];
+		std::string caption = cfg["caption"];
 
 		if(speaker != units->end()) {
 			LOG_DP << "scrolling to speaker..\n";
@@ -983,7 +975,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			surface.assign(image::get_image(image,image::UNSCALED));
 		}
 
-		const std::string& lang_message = string_table[id];
 		int option_chosen = -1;
 
 		LOG_DP << "showing dialog...\n";
@@ -991,7 +982,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
 		if(get_replay_source().at_end() || options.empty()) {
-			const std::string msg = config::interpolate_variables_into_string(lang_message.empty() ? cfg["message"] : lang_message);
+			const std::string msg = config::interpolate_variables_into_string(cfg["message"]);
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
 		                        options.empty() ? NULL : &options);
