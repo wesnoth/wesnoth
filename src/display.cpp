@@ -964,7 +964,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 		} else {
 			if(unit_move == unit_total_move) {
 				energy_file = "unmoved-energy.png";
-			} else if(unit_move > 0) {
+			} else if(unit_can_move(loc,units_,map_,teams_)) {
 				energy_file = "partmoved-energy.png";
 			} else {
 				energy_file = "moved-energy.png";

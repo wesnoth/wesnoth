@@ -116,4 +116,7 @@ size_t move_unit(display* disp, const gamemap& map,
 bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team);
 
+bool unit_can_move(const gamemap::location& loc, const unit_map& units,
+                   const gamemap& map, const std::vector<team>& teams);
+
 #endif

@@ -943,3 +943,34 @@ bool clear_shroud(display& disp, const gamemap& map, const game_data& gamedata,
 
 	return true;
 }
+
+bool unit_can_move(const gamemap::location& loc, const unit_map& units,
+                   const gamemap& map, const std::vector<team>& teams)
+{
+	const unit_map::const_iterator u_it = units.find(loc);
+	assert(u_it != units.end());
+	
+	const unit& u = u_it->second;
+	const team& current_team = teams[u.side()-1];
+
+	if(!u.can_attack())
+		return false;
+
+	gamemap::location locs[6];
+	get_adjacent_tiles(loc,locs);
+	for(int n = 0; n != 6; ++n) {
+		if(map.on_board(locs[n])) {
+			const unit_map::const_iterator i = units.find(locs[n]);
+			if(i != units.end()) {
+				if(current_team.is_enemy(i->second.side())) {
+					return true;
+				}
+			} else if(u.movement_cost(map,map[locs[n].x][locs[n].y]) <=
+			          u.movement_left()) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
