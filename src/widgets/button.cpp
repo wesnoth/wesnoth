@@ -30,7 +30,7 @@ const int vertical_padding = font::SIZE_SMALL / 2;
 button::button(display& disp, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing) :
                           widget(disp), label_(label), display_(&disp),
-						  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
+			  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
                           button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false)
 {
 	set_label(label);
@@ -72,15 +72,21 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);
 
+#ifdef USE_TINY_GUI
+	set_height(textRect_.h+vertical_padding);
+#else
 	set_height(maximum(textRect_.h+vertical_padding,button_image->h));
-
+#endif
 	if(type == TYPE_PRESS) {
+#ifdef USE_TINY_GUI
+		set_width(textRect_.w + horizontal_padding);
+#else
 		if(spacing == MINIMUM_SPACE) {
 			set_width(textRect_.w + horizontal_padding);
 		} else {
 			set_width(maximum(textRect_.w+horizontal_padding,button_image->w));
 		}
-
+#endif
 		image_.assign(scale_surface(button_image,location().w,location().h));
 		pressedImage_.assign(scale_surface(pressed_image,location().w,location().h));
 		activeImage_.assign(scale_surface(active_image,location().w,location().h));
