@@ -294,19 +294,21 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
     
 		const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
 		                                    gui::OK_CANCEL,&choices);
-		if(choice_map.count(choice) == 0) {
+		if(choice != 0 && choice_map.count(choice) == 0) {
 			continue;
 		}
     
-		const int team_num = choice_map[choice];
 		const bool observer = choice == 0;
 
-		assert(team_num >= 1 && team_num <= race_names.size());
-		const std::string& default_race = race_names[team_num-1];
-		const bool allow_changes = changes_allowed[team_num-1];
+		const int team_num = observer ? -1 : choice_map[choice];
     
 		//send our choice of team to the server
 		if(!observer) {
+
+			assert(team_num >= 1 && team_num <= race_names.size());
+			const std::string& default_race = race_names[team_num-1];
+			const bool allow_changes = changes_allowed[team_num-1];
+
 
 			config response;
 			std::stringstream stream;
