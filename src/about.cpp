@@ -177,6 +177,7 @@ std::vector<std::string> get_text() {
 
 		"_" N_("+Dutch Translation"),
 		"-   Lala",
+		"-   Maarten Albrecht",
 		"-   Pieter Vermeylen (Onne)",
 		"+ ",
 
