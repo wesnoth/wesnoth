@@ -4,6 +4,7 @@
 #include "SDL_net.h"
 
 #include <algorithm>
+#include <cassert>
 #include <vector>
 
 namespace {
