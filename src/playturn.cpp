@@ -1938,8 +1938,8 @@ void turn_info::recall()
 			option << IMAGE_PREFIX << u->type().image() << COLUMN_SEPARATOR
 			       << u->type().language_name() << COLUMN_SEPARATOR
 			       << description << COLUMN_SEPARATOR
-			       << _("level") << ": " << u->type().level() << COLUMN_SEPARATOR
-			       << _("XP") << ": " << u->experience() << "/";
+			       << _("level: ") << u->type().level() << COLUMN_SEPARATOR
+			       << _("XP: ") << u->experience() << "/";
 
 			if(u->can_advance() == false) {
 				option << "-";

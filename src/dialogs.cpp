@@ -381,9 +381,9 @@ void save_preview_pane::draw_contents()
 			str << _("Scenario Start");
 		}
 
-		str << "\n" << _("Difficulty") << ": " << string_table[summary["difficulty"]];
+		str << "\n" << _("Difficulty: ") << string_table[summary["difficulty"]];
 		if(!summary["version"].empty()) {
-			str << "\n" << _("Version") << ": " << summary["version"];
+			str << "\n" << _("Version: ") << summary["version"];
 		}
 	}
 
@@ -660,11 +660,11 @@ void unit_preview_pane::draw_contents()
 	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
 		details << font::GOOD_TEXT;
 
-	details << _("HP") << ": " << u.hitpoints()
+	details << _("HP: ") << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
 	if(u.can_advance() == false) {
-		details << _("XP") << ": " << u.experience() << "/-";
+		details << _("XP: ") << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,
 		//then display in green
@@ -672,12 +672,12 @@ void unit_preview_pane::draw_contents()
 			details << font::GOOD_TEXT;
 		}
 
-		details << _("XP") << ": " << u.experience() << "/" << u.max_experience();
+		details << _("XP: ") << u.experience() << "/" << u.max_experience();
 	}
 	
 	if(weapons_) {
 		details << "\n"
-				<< _("Moves") << ": " << u.movement_left() << "/"
+				<< _("Moves: ") << u.movement_left() << "/"
 				<< u.total_movement()
 				<< "\n";
 

@@ -969,11 +969,11 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
 		details << font::GOOD_TEXT;
 
-	details << _("HP") << ": " << u.hitpoints()
+	details << _("HP: ") << u.hitpoints()
 			<< "/" << u.max_hitpoints() << "\n";
 	
 	if(u.can_advance() == false) {
-		details << _("XP") << ": " << u.experience() << "/-";
+		details << _("XP: ") << u.experience() << "/-";
 	} else {
 		//if killing a unit the same level as us would level us up,
 		//then display in green
@@ -981,11 +981,11 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 			details << font::GOOD_TEXT;
 		}
 
-		details << _("XP") << ": " << u.experience() << "/" << u.max_experience();
+		details << _("XP: ") << u.experience() << "/" << u.max_experience();
 	}
 	
 	details << "\n"
-			<< _("Moves") << ": " << u.movement_left() << "/"
+			<< _("Moves: ") << u.movement_left() << "/"
 			<< u.total_movement()
 			<< "\n";
 

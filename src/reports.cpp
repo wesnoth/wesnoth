@@ -103,24 +103,24 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
 			unit_status << "misc/invisible.png";
-			tooltip << _("invisible") << ": " << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
+			tooltip << _("invisible: ") << _("This unit is invisible. It cannot be seen or attacked by enemy units.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("slowed")) {
 			unit_status << "misc/slowed.png";
-			tooltip << _("slowed") << ": " << _("This unit has been slowed. It moves at half normal speed and receives one less attack than normal in combat.");
+			tooltip << _("slowed: ") << _("This unit has been slowed. It moves at half normal speed and receives one less attack than normal in combat.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("poisoned")) {
 			unit_status << "misc/poisoned.png";
-			tooltip << _("poisoned") << ": " << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
+			tooltip << _("poisoned: ") << _("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\
 \n\
 Units cannot be killed by poison alone. The poison will not reduce it below 1 HP.");
 			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("stone")) {
 			unit_status << "misc/stone.png";
-			tooltip << _("stone") << ": " << _("This unit has been turned to stone. It may not move or attack.");
+			tooltip << _("stone: ") << _("This unit has been turned to stone. It may not move or attack.");
 			res.add_image(unit_status,tooltip);
 		}
 
@@ -248,10 +248,10 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 		std::stringstream tooltip;
 		
 		tooltip << tod.name << "\n"
-		        << _("Lawful units") << ": "
+		        << _("Lawful units: ")
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
-				<< _("Neutral units") << ": " << "0%\n"
-				<< _("Chaotic units") << ": "
+				<< _("Neutral units: ") << "0%\n"
+				<< _("Chaotic units: ")
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
 		
 		return report("",tod.image,tooltip.str());

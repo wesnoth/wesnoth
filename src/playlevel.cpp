@@ -805,23 +805,23 @@ redo_turn:
 						report << font::BOLD_TEXT << i->save_id() << "\n";
 					}
 
-					report << _("Remaining gold") << ": "
+					report << _("Remaining gold: ")
 					       << remaining_gold << "\n";
 					if(end_level.gold_bonus) {
-						report << _("Early finish bonus") << ": "
+						report << _("Early finish bonus: ")
 						       << finishing_bonus_per_turn
 						       << " " << _("per turn") << "\n"
-						       << _("Turns finished early") << ": "
+						       << _("Turns finished early: ")
 						       << turns_left << "\n"
-						       << _("Bonus") << ": "
+						       << _("Bonus: ")
 						       << finishing_bonus << "\n"
-						       << _("Gold") << ": "
+						       << _("Gold: ")
 						       << (remaining_gold+finishing_bonus);
 					}
 
 					// xgettext:no-c-format
 					report << "\n" << _("80% of gold is retained for the next scenario") << "\n"
-					       << _("Retained Gold") << ": " << player->gold;
+					       << _("Retained Gold: ") << player->gold;
 				}
 			}
 

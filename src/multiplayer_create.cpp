@@ -192,7 +192,7 @@ void create::process_event()
 
 	std::stringstream buf;
 	if(cur_turns < 100) {
-		buf << _("Turns") << ": " << cur_turns;
+		buf << _("Turns: ") << cur_turns;
 	} else {
 		buf << _("Unlimited Turns");
 	}
@@ -201,13 +201,13 @@ void create::process_event()
 	//Villages can produce between 1 and 10 gold a turn
 	const int village_gold = village_gold_slider_.value();
 	buf.str("");
-	buf << _("Village Gold") << ": " << village_gold;
+	buf << _("Village Gold: ") << village_gold;
 	village_gold_label_.set_text(buf.str());
 
 	//experience modifier
 	const int xpmod = xp_modifier_slider_.value();
 	buf.str("");
-	buf << _("Experience Modifier") << ": " << xpmod << "%";
+	buf << _("Experience Modifier: ") << xpmod << "%";
 	xp_modifier_label_.set_text(buf.str());
 
 	bool map_changed = map_selection_ != maps_menu_.selection();
@@ -310,7 +310,7 @@ void create::process_event()
 		}
 		const int nsides = parameters_.scenario_data.get_children("side").size();
 		std::stringstream players;
-		players << _("Players") << ": " << nsides;
+		players << _("Players: ") << nsides;
 		num_players_label_.set_text(players.str());
 	}
 }

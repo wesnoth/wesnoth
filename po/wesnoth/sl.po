@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: smart-sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-26 17:03+0100\n"
+"POT-Creation-Date: 2005-02-27 16:38+0100\n"
 "PO-Revision-Date: 2004-10-17 20:24+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team:  <en@li.org>\n"
@@ -24,23 +24,23 @@ msgstr ""
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 msgstr ""
 
-#: data/game.cfg:515 data/translations/english.cfg:61
+#: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
 msgstr "zvest"
 
-#: data/game.cfg:523
+#: data/game.cfg:522
 msgid "strong"
 msgstr "močan"
 
-#: data/game.cfg:538
+#: data/game.cfg:537
 msgid "quick"
 msgstr "hiter"
 
-#: data/game.cfg:552
+#: data/game.cfg:551
 msgid "intelligent"
 msgstr "pameten"
 
-#: data/game.cfg:561
+#: data/game.cfg:560
 msgid "resilient"
 msgstr "odporen"
 
@@ -60,7 +60,7 @@ msgstr "Lastnosti"
 msgid "Units"
 msgstr "Enote"
 
-#: data/help.cfg:34 src/help.cpp:1045
+#: data/help.cfg:34
 msgid "Abilities"
 msgstr "Sposobnosti"
 
@@ -1935,7 +1935,7 @@ msgstr ""
 msgid "Underground"
 msgstr "Podzemlje"
 
-#: data/terrain.cfg:7 src/multiplayer_create.cpp:42
+#: data/terrain.cfg:7 src/multiplayer_create.cpp:44
 #: src/multiplayer_lobby.cpp:100
 msgid "Shroud"
 msgstr "Koprena"
@@ -2084,14 +2084,11 @@ msgstr "Dejanja"
 msgid "End Turn"
 msgstr "Končaj potezo"
 
-#: data/themes/default.cfg:167 src/dialogs.cpp:663 src/display.cpp:972
-#: src/help.cpp:1062 src/playturn.cpp:2102 src/unit.cpp:1056
+#: data/themes/default.cfg:167 src/playturn.cpp:2102 src/unit.cpp:1056
 msgid "HP"
 msgstr "HP"
 
-#: data/themes/default.cfg:176 src/dialogs.cpp:667 src/dialogs.cpp:675
-#: src/display.cpp:976 src/display.cpp:984 src/playturn.cpp:1942
-#: src/playturn.cpp:2103 src/unit.cpp:1115
+#: data/themes/default.cfg:176 src/playturn.cpp:2103 src/unit.cpp:1115
 msgid "XP"
 msgstr "XP"
 
@@ -2381,8 +2378,8 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:23 data/units/Elvish_Avenger.cfg:18
-#: data/units/Elvish_Avenger.cfg:91 data/units/Elvish_Ranger.cfg:17
-#: data/units/Elvish_Ranger.cfg:94
+#: data/units/Elvish_Avenger.cfg:106 data/units/Elvish_Ranger.cfg:19
+#: data/units/Elvish_Ranger.cfg:109
 msgid "ambush"
 msgstr "zaseda"
 
@@ -2931,15 +2928,15 @@ msgstr ""
 #: data/units/Dwarvish_Thunderguard.cfg:21
 #: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:23
 #: data/units/Elvish_Archer.cfg:102 data/units/Elvish_Avenger.cfg:24
-#: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:25
+#: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:25
 #: data/units/Elvish_Champion.cfg:23 data/units/Elvish_Fighter.cfg:25
 #: data/units/Elvish_Hero.cfg:23 data/units/Elvish_High_Lord.cfg:22
-#: data/units/Elvish_Lord.cfg:21 data/units/Elvish_Marksman.cfg:22
-#: data/units/Elvish_Marksman.cfg:99 data/units/Elvish_Marshal.cfg:26
-#: data/units/Elvish_Outrider.cfg:28 data/units/Elvish_Ranger.cfg:22
-#: data/units/Elvish_Ranger.cfg:99 data/units/Elvish_Rider.cfg:32
-#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:22
-#: data/units/Elvish_Sharpshooter.cfg:101 data/units/Fencer.cfg:21
+#: data/units/Elvish_Lord.cfg:21 data/units/Elvish_Marksman.cfg:23
+#: data/units/Elvish_Marksman.cfg:116 data/units/Elvish_Marshal.cfg:26
+#: data/units/Elvish_Outrider.cfg:28 data/units/Elvish_Ranger.cfg:24
+#: data/units/Elvish_Ranger.cfg:114 data/units/Elvish_Rider.cfg:32
+#: data/units/Elvish_Scout.cfg:33 data/units/Elvish_Sharpshooter.cfg:23
+#: data/units/Elvish_Sharpshooter.cfg:117 data/units/Fencer.cfg:21
 #: data/units/Fighter.cfg:21 data/units/Fighter.cfg:62
 #: data/units/Fire_Dragon.cfg:23 data/units/General.cfg:29
 #: data/units/Ghoul.cfg:20 data/units/Goblin_Knight.cfg:20
@@ -3049,15 +3046,15 @@ msgstr ""
 #: data/units/Drake_Gladiator.cfg:25 data/units/Drake_Slasher.cfg:21
 #: data/units/Drake_Warrior.cfg:21 data/units/Elvish_Archer.cfg:22
 #: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:23
-#: data/units/Elvish_Avenger.cfg:96 data/units/Elvish_Captain.cfg:24
+#: data/units/Elvish_Avenger.cfg:111 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
 #: data/units/Elvish_Hero.cfg:22 data/units/Elvish_High_Lord.cfg:21
-#: data/units/Elvish_Lord.cfg:20 data/units/Elvish_Marksman.cfg:21
-#: data/units/Elvish_Marksman.cfg:98 data/units/Elvish_Marshal.cfg:25
-#: data/units/Elvish_Outrider.cfg:27 data/units/Elvish_Ranger.cfg:21
-#: data/units/Elvish_Ranger.cfg:98 data/units/Elvish_Rider.cfg:31
-#: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:21
-#: data/units/Elvish_Sharpshooter.cfg:100 data/units/Fighter.cfg:20
+#: data/units/Elvish_Lord.cfg:20 data/units/Elvish_Marksman.cfg:22
+#: data/units/Elvish_Marksman.cfg:115 data/units/Elvish_Marshal.cfg:25
+#: data/units/Elvish_Outrider.cfg:27 data/units/Elvish_Ranger.cfg:23
+#: data/units/Elvish_Ranger.cfg:113 data/units/Elvish_Rider.cfg:31
+#: data/units/Elvish_Scout.cfg:32 data/units/Elvish_Sharpshooter.cfg:22
+#: data/units/Elvish_Sharpshooter.cfg:116 data/units/Fighter.cfg:20
 #: data/units/Fighter.cfg:61 data/units/General.cfg:28
 #: data/units/Grand_Knight.cfg:19 data/units/Grand_Marshal.cfg:24
 #: data/units/Horse_Lord.cfg:21 data/units/Knight.cfg:20
@@ -3138,11 +3135,11 @@ msgstr ""
 #: data/units/Bone_Shooter.cfg:38 data/units/Bowman.cfg:37
 #: data/units/Commander.cfg:45 data/units/Elvish_Archer.cfg:39
 #: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:39
-#: data/units/Elvish_Avenger.cfg:112 data/units/Elvish_Captain.cfg:40
+#: data/units/Elvish_Avenger.cfg:127 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Fighter.cfg:41
 #: data/units/Elvish_Hero.cfg:41 data/units/Elvish_Marshal.cfg:41
-#: data/units/Elvish_Outrider.cfg:43 data/units/Elvish_Ranger.cfg:38
-#: data/units/Elvish_Ranger.cfg:115 data/units/Elvish_Rider.cfg:52
+#: data/units/Elvish_Outrider.cfg:43 data/units/Elvish_Ranger.cfg:40
+#: data/units/Elvish_Ranger.cfg:130 data/units/Elvish_Rider.cfg:52
 #: data/units/Elvish_Scout.cfg:53 data/units/Longbowman.cfg:38
 #: data/units/Lord.cfg:39 data/units/Master_Bowman.cfg:32
 #: data/units/Noble_Commander.cfg:44 data/units/Noble_Lord.cfg:43
@@ -3166,15 +3163,15 @@ msgstr "lok"
 #: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
 #: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:40
 #: data/units/Elvish_Archer.cfg:119 data/units/Elvish_Avenger.cfg:40
-#: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:41
+#: data/units/Elvish_Avenger.cfg:128 data/units/Elvish_Captain.cfg:41
 #: data/units/Elvish_Champion.cfg:42 data/units/Elvish_Druid.cfg:64
 #: data/units/Elvish_Fighter.cfg:42 data/units/Elvish_Hero.cfg:42
-#: data/units/Elvish_Marksman.cfg:38 data/units/Elvish_Marksman.cfg:115
+#: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:132
 #: data/units/Elvish_Marshal.cfg:42 data/units/Elvish_Outrider.cfg:44
-#: data/units/Elvish_Ranger.cfg:39 data/units/Elvish_Ranger.cfg:116
+#: data/units/Elvish_Ranger.cfg:41 data/units/Elvish_Ranger.cfg:131
 #: data/units/Elvish_Rider.cfg:53 data/units/Elvish_Scout.cfg:54
-#: data/units/Elvish_Sharpshooter.cfg:39
-#: data/units/Elvish_Sharpshooter.cfg:118 data/units/Elvish_Shyde.cfg:72
+#: data/units/Elvish_Sharpshooter.cfg:40
+#: data/units/Elvish_Sharpshooter.cfg:134 data/units/Elvish_Shyde.cfg:72
 #: data/units/General.cfg:52 data/units/Giant_Scorpion.cfg:20
 #: data/units/Goblin_Impaler.cfg:21 data/units/Goblin_Impaler.cfg:40
 #: data/units/Goblin_Spearman.cfg:21 data/units/Goblin_Spearman.cfg:34
@@ -3338,7 +3335,6 @@ msgid "gaze"
 msgstr ""
 
 #: data/units/Cockatrice.cfg:26 src/actions.cpp:711 src/actions.cpp:857
-#: src/reports.cpp:123
 msgid "stone"
 msgstr "kamen"
 
@@ -3950,7 +3946,7 @@ msgstr "Vilinska lokostrelka"
 msgid "Elvish Avenger"
 msgstr "Vilinski maščevalec"
 
-#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:93
+#: data/units/Elvish_Avenger.cfg:20 data/units/Elvish_Avenger.cfg:108
 msgid ""
 "Elvish Avengers are extremely skillful and extremely quick, powerful in all "
 "forms of combat. Avengers are considered the best of all woodsmen in "
@@ -3958,7 +3954,7 @@ msgid ""
 "seen in the woods until just after they have attacked."
 msgstr ""
 
-#: data/units/Elvish_Avenger.cfg:76
+#: data/units/Elvish_Avenger.cfg:91
 msgid "female^Elvish Avenger"
 msgstr "Vilinska maščevalka"
 
@@ -4042,7 +4038,7 @@ msgstr "Vilisnki junak"
 #: data/units/Elvish_Hero.cfg:19
 msgid ""
 "Elvish Heroes focus on individual performance on the battlefield, having "
-"tweaked their combat skills to the very maximum. Elvish Heroes prefer "
+"honed their combat skills to a frightening level. Elvish Heroes prefer "
 "fighting at close range with the sword, but are also skilled at the bow."
 msgstr ""
 
@@ -4087,7 +4083,7 @@ msgstr ""
 msgid "Elvish Marksman"
 msgstr ""
 
-#: data/units/Elvish_Marksman.cfg:18 data/units/Elvish_Marksman.cfg:95
+#: data/units/Elvish_Marksman.cfg:19 data/units/Elvish_Marksman.cfg:112
 msgid ""
 "Elvish Marksman are expert in use of the bow. Their skill guarantees them a "
 "60% chance to hit enemies, even those hidden in difficult terrain. This "
@@ -4095,19 +4091,19 @@ msgid ""
 "and lesser speed."
 msgstr ""
 
-#: data/units/Elvish_Marksman.cfg:37 data/units/Elvish_Marksman.cfg:114
-#: data/units/Elvish_Sharpshooter.cfg:38
-#: data/units/Elvish_Sharpshooter.cfg:117
+#: data/units/Elvish_Marksman.cfg:38 data/units/Elvish_Marksman.cfg:131
+#: data/units/Elvish_Sharpshooter.cfg:39
+#: data/units/Elvish_Sharpshooter.cfg:133
 msgid "longbow"
 msgstr ""
 
-#: data/units/Elvish_Marksman.cfg:39 data/units/Elvish_Marksman.cfg:116
-#: data/units/Elvish_Sharpshooter.cfg:40
-#: data/units/Elvish_Sharpshooter.cfg:119 data/units/Fire_Dragon.cfg:61
+#: data/units/Elvish_Marksman.cfg:40 data/units/Elvish_Marksman.cfg:133
+#: data/units/Elvish_Sharpshooter.cfg:41
+#: data/units/Elvish_Sharpshooter.cfg:135 data/units/Fire_Dragon.cfg:61
 msgid "marksman"
 msgstr ""
 
-#: data/units/Elvish_Marksman.cfg:80
+#: data/units/Elvish_Marksman.cfg:96
 msgid "female^Elvish Marksman"
 msgstr ""
 
@@ -4138,7 +4134,7 @@ msgstr ""
 msgid "Elvish Ranger"
 msgstr ""
 
-#: data/units/Elvish_Ranger.cfg:18 data/units/Elvish_Ranger.cfg:95
+#: data/units/Elvish_Ranger.cfg:20 data/units/Elvish_Ranger.cfg:110
 msgid ""
 "Elvish Rangers are quick and powerful. Skilled in both short- and long-range "
 "combat, Rangers are truly all-round fighters. The best of all woodsmen, "
@@ -4146,7 +4142,7 @@ msgid ""
 "just made an attack, or there are enemies adjacent to them."
 msgstr ""
 
-#: data/units/Elvish_Ranger.cfg:79
+#: data/units/Elvish_Ranger.cfg:92
 msgid "female^Elvish Ranger"
 msgstr ""
 
@@ -4185,7 +4181,8 @@ msgstr ""
 msgid "Elvish Sharpshooter"
 msgstr ""
 
-#: data/units/Elvish_Sharpshooter.cfg:18 data/units/Elvish_Sharpshooter.cfg:97
+#: data/units/Elvish_Sharpshooter.cfg:19
+#: data/units/Elvish_Sharpshooter.cfg:113
 msgid ""
 "The most elite archers in all of Wesnoth, Elvish Sharpshooters are "
 "incredibly accurate, guaranteed a 60% chance to hit when attacking, even "
@@ -4193,7 +4190,7 @@ msgid ""
 "entrenched enemies."
 msgstr ""
 
-#: data/units/Elvish_Sharpshooter.cfg:82
+#: data/units/Elvish_Sharpshooter.cfg:97
 msgid "female^Elvish Sharpshooter"
 msgstr ""
 
@@ -6238,12 +6235,10 @@ msgid "defender vulnerability vs"
 msgstr ""
 
 #: src/actions.cpp:697 src/actions.cpp:842 src/display.cpp:948
-#: src/reports.cpp:116
 msgid "poisoned"
 msgstr ""
 
 #: src/actions.cpp:702 src/actions.cpp:847 src/display.cpp:944
-#: src/reports.cpp:111
 msgid "slowed"
 msgstr ""
 
@@ -6315,11 +6310,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:1028
+#: src/dialogs.cpp:365 src/game.cpp:969
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:1351
+#: src/dialogs.cpp:367 src/game.cpp:1292
 msgid "Multiplayer"
 msgstr "Večigralnost"
 
@@ -6339,12 +6334,14 @@ msgstr "Poteza"
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:1058
-msgid "Difficulty"
+#: src/dialogs.cpp:384
+#, fuzzy
+msgid "Difficulty: "
 msgstr "Težavnost"
 
-#: src/dialogs.cpp:386 src/game.cpp:1156 src/titlescreen.cpp:165
-msgid "Version"
+#: src/dialogs.cpp:386
+#, fuzzy
+msgid "Version: "
 msgstr "Različica"
 
 #: src/dialogs.cpp:401
@@ -6383,7 +6380,7 @@ msgstr ""
 msgid "Show replay"
 msgstr ""
 
-#: src/dialogs.cpp:515 src/multiplayer_create.cpp:65
+#: src/dialogs.cpp:515 src/multiplayer_create.cpp:67
 msgid "Load Game"
 msgstr "Naloži igro"
 
@@ -6396,24 +6393,34 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/dialogs.cpp:642 src/display.cpp:954 src/help.cpp:1017
-#: src/playturn.cpp:1941
 msgid "level"
 msgstr "stopnja"
 
+#: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
+#, fuzzy
+msgid "HP: "
+msgstr "HP"
+
+#: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
+#: src/display.cpp:984 src/playturn.cpp:1942
+#, fuzzy
+msgid "XP: "
+msgstr "XP"
+
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#: src/playturn.cpp:2105 src/unit.cpp:1092
-msgid "Moves"
+#, fuzzy
+msgid "Moves: "
 msgstr "Premiki"
 
 #: src/display.cpp:935
 msgid "healthy"
 msgstr ""
 
-#: src/display.cpp:940 src/reports.cpp:106
+#: src/display.cpp:940
 msgid "invisible"
 msgstr "neviden"
 
-#: src/font.cpp:266
+#: src/font.cpp:264
 msgid "Vera.ttf"
 msgstr ""
 
@@ -6429,16 +6436,16 @@ msgstr "Ime:"
 msgid "The game could not be saved"
 msgstr ""
 
-#: src/game.cpp:168 src/game.cpp:967 src/game.cpp:1381
+#: src/game.cpp:168 src/game.cpp:908 src/game.cpp:1322
 #, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Igra je bila shranjena"
 
-#: src/game.cpp:171 src/game.cpp:969 src/game.cpp:1383
+#: src/game.cpp:171 src/game.cpp:910 src/game.cpp:1324
 msgid "Error while playing the game: "
 msgstr ""
 
-#: src/game.cpp:174 src/game.cpp:1395
+#: src/game.cpp:174 src/game.cpp:1336
 msgid "The game map could not be loaded: "
 msgstr ""
 
@@ -6450,235 +6457,251 @@ msgstr ""
 msgid "Unknown scenario: '"
 msgstr ""
 
-#: src/game.cpp:613
+#: src/game.cpp:612
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:899 src/multiplayer_connect.cpp:875
+#: src/game.cpp:840 src/multiplayer_connect.cpp:875
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:907 src/game.cpp:910
+#: src/game.cpp:848 src/game.cpp:851
 msgid "The file you have tried to load is corrupt: '"
 msgstr ""
 
-#: src/game.cpp:913
+#: src/game.cpp:854
 msgid "File I/O Error while reading the game"
 msgstr ""
 
-#: src/game.cpp:1018
+#: src/game.cpp:959
 msgid "Get More Campaigns..."
 msgstr ""
 
-#: src/game.cpp:1019
+#: src/game.cpp:960
 msgid "Download more campaigns from a server on Internet."
 msgstr ""
 
-#: src/game.cpp:1029
+#: src/game.cpp:970
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:1059
+#: src/game.cpp:999
+msgid "Difficulty"
+msgstr "Težavnost"
+
+#: src/game.cpp:1000
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:1084
+#: src/game.cpp:1025
 #, fuzzy
 msgid "B"
 msgstr "KB"
 
-#: src/game.cpp:1087
+#: src/game.cpp:1028
 msgid "KB"
 msgstr "KB"
 
-#: src/game.cpp:1090
+#: src/game.cpp:1031
 msgid "MB"
 msgstr ""
 
-#: src/game.cpp:1114
+#: src/game.cpp:1055
 msgid "Connect to Server"
 msgstr "Poveži se s strežnikom"
 
-#: src/game.cpp:1115
+#: src/game.cpp:1056
 msgid "You will now connect to a campaign server to download campaigns."
 msgstr ""
 
-#: src/game.cpp:1116
+#: src/game.cpp:1057
 msgid "Server: "
 msgstr "Strežnik: "
 
-#: src/game.cpp:1128
+#: src/game.cpp:1069
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/game.cpp:1136
+#: src/game.cpp:1077
 msgid "Awaiting response from server"
 msgstr ""
 
-#: src/game.cpp:1149
+#: src/game.cpp:1090
 msgid "Error communicating with the server."
 msgstr ""
 
-#: src/game.cpp:1155 src/help.cpp:1086 src/help.cpp:1087 src/playturn.cpp:2101
+#: src/game.cpp:1096 src/help.cpp:1086 src/help.cpp:1087 src/playturn.cpp:2101
 msgid "Name"
 msgstr "Ime"
 
-#: src/game.cpp:1157
+#: src/game.cpp:1097 src/titlescreen.cpp:165
+msgid "Version"
+msgstr "Različica"
+
+#: src/game.cpp:1098
 msgid "Author"
 msgstr ""
 
-#: src/game.cpp:1158
+#: src/game.cpp:1099
 msgid "Downloads"
 msgstr ""
 
-#: src/game.cpp:1159
+#: src/game.cpp:1100
 #, fuzzy
 msgid "Size"
 msgstr "ognjen"
 
-#: src/game.cpp:1188
+#: src/game.cpp:1129
 msgid "Publish campaign: "
 msgstr ""
 
-#: src/game.cpp:1192
+#: src/game.cpp:1133
 msgid "Delete campaign: "
 msgstr ""
 
-#: src/game.cpp:1196
+#: src/game.cpp:1137
 msgid "There are no campaigns available for download from this server."
 msgstr ""
 
-#: src/game.cpp:1200
+#: src/game.cpp:1141
 msgid "Choose the campaign to download."
 msgstr ""
 
-#: src/game.cpp:1200
+#: src/game.cpp:1141
 msgid "Get Campaign"
 msgstr ""
 
-#: src/game.cpp:1219
+#: src/game.cpp:1160
 msgid "Downloading campaign..."
 msgstr ""
 
-#: src/game.cpp:1233
+#: src/game.cpp:1174
 msgid "Cannot rescan the filesystem"
 msgstr ""
 
-#: src/game.cpp:1244
+#: src/game.cpp:1185
 msgid "Campaign Installed"
 msgstr ""
 
-#: src/game.cpp:1244
+#: src/game.cpp:1185
 msgid "The campaign has been installed."
 msgstr ""
 
-#: src/game.cpp:1246
+#: src/game.cpp:1187
 msgid "Network communication error."
 msgstr ""
 
-#: src/game.cpp:1248
+#: src/game.cpp:1189
 msgid "Remote host disconnected."
 msgstr ""
 
-#: src/game.cpp:1250
+#: src/game.cpp:1191
 msgid ""
 "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
-#: src/game.cpp:1262 src/game.cpp:1301 src/game.cpp:1326
-#: src/multiplayer.cpp:152 src/multiplayer_ui.cpp:28
+#: src/game.cpp:1203 src/game.cpp:1242 src/game.cpp:1267
+#: src/multiplayer.cpp:153 src/multiplayer_ui.cpp:28
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
-#: src/game.cpp:1265 src/game.cpp:1303 src/game.cpp:1328
+#: src/game.cpp:1206 src/game.cpp:1244 src/game.cpp:1269
 msgid "The server responded with an error: \""
 msgstr ""
 
-#: src/game.cpp:1269
+#: src/game.cpp:1210
 msgid "Terms"
 msgstr "Pogoji"
 
-#: src/game.cpp:1306 src/game.cpp:1331
+#: src/game.cpp:1247 src/game.cpp:1272
 msgid "Response"
 msgstr "Odziv"
 
-#: src/game.cpp:1344
+#: src/game.cpp:1285
 msgid "Join Official Server"
 msgstr "Poveži se z uradnim strežnikom"
 
-#: src/game.cpp:1344
+#: src/game.cpp:1285
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr "Poveži se z uradnim večigralskim Wesnoth strežnikom"
 
-#: src/game.cpp:1345 src/multiplayer_lobby.cpp:27
+#: src/game.cpp:1286 src/multiplayer_lobby.cpp:27
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
-#: src/game.cpp:1345
+#: src/game.cpp:1286
 msgid "Join a server or hosted game"
 msgstr "Pridruži se strežniku ali gostovani igri"
 
-#: src/game.cpp:1346
+#: src/game.cpp:1287
 msgid "Host Networked Game"
 msgstr "Gostuj mrežno igro"
 
-#: src/game.cpp:1346
+#: src/game.cpp:1287
 msgid "Host a game without using a server"
 msgstr "Gostuj igro brez uporabe strežnika"
 
-#: src/game.cpp:1347
+#: src/game.cpp:1288
 msgid "Hotseat Game"
 msgstr "\"Vroči stol\" igra"
 
-#: src/game.cpp:1347
+#: src/game.cpp:1288
 msgid "Play a multiplayer game sharing the same machine"
 msgstr "Večigralska igra na istem računalniku"
 
-#: src/game.cpp:1348
+#: src/game.cpp:1289
 msgid "Human vs AI"
 msgstr "Človek proti UI"
 
-#: src/game.cpp:1348
+#: src/game.cpp:1289
 msgid "Play a game against AI opponents"
 msgstr "Igra proti UI"
 
-#: src/game.cpp:1351 src/multiplayer.cpp:136
+#: src/game.cpp:1292 src/multiplayer.cpp:137
 msgid "Login"
 msgstr "Prijava"
 
-#: src/game.cpp:1421
+#: src/game.cpp:1362
 msgid "Language"
 msgstr "Jezik"
 
-#: src/game.cpp:1422
+#: src/game.cpp:1363
 msgid "Choose your preferred language"
 msgstr "Izberite vam priljubljen jezik"
 
-#: src/game.cpp:1460
+#: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
 msgstr ""
 
-#: src/game.cpp:1461
+#: src/game.cpp:1403
 msgid "' (The game will now exit)"
 msgstr ""
 
-#: src/game.cpp:1528
+#: src/game.cpp:1470
 #, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "Pomoč za The Battle for Wesnoth "
 
 #: src/help.cpp:1024
-msgid "Advances to"
+#, fuzzy
+msgid "Advances to: "
 msgstr "Napreduje v"
 
+#: src/help.cpp:1045
+#, fuzzy
+msgid "Abilities: "
+msgstr "Sposobnosti"
+
 #: src/help.cpp:1064
-msgid "Alignment"
+#, fuzzy
+msgid "Alignment: "
 msgstr "Poravnava"
 
 #: src/help.cpp:1068
-msgid "Required XP"
+#, fuzzy
+msgid "Required XP: "
 msgstr "Potrebni XP"
 
 #: src/help.cpp:1079 src/reports.cpp:234
@@ -6793,7 +6816,7 @@ msgstr "Zapri okno"
 msgid "Map Generator"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:82 src/multiplayer_create.cpp:307
+#: src/mapgen_dialog.cpp:82
 msgid "Players"
 msgstr "Igralci"
 
@@ -6841,19 +6864,19 @@ msgstr ""
 msgid "Island"
 msgstr ""
 
-#: src/multiplayer.cpp:84
+#: src/multiplayer.cpp:85
 msgid "Connect to Host"
 msgstr ""
 
-#: src/multiplayer.cpp:86
+#: src/multiplayer.cpp:87
 msgid "Choose host to connect to"
 msgstr ""
 
-#: src/multiplayer.cpp:111
+#: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
 msgstr ""
 
-#: src/multiplayer.cpp:135
+#: src/multiplayer.cpp:136
 msgid "You must log in to this server"
 msgstr ""
 
@@ -6882,9 +6905,8 @@ msgstr ""
 msgid "Unable to find a leader type for faction "
 msgstr ""
 
-#: src/multiplayer_connect.cpp:440
-#, fuzzy
-msgid "Team "
+#: src/multiplayer_connect.cpp:440 src/multiplayer_connect.cpp:449
+msgid "Team"
 msgstr "Skupina"
 
 #: src/multiplayer_connect.cpp:447
@@ -6895,17 +6917,12 @@ msgstr ""
 msgid "Faction"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:449
-msgid "Team"
-msgstr "Skupina"
-
 #: src/multiplayer_connect.cpp:450
 #, fuzzy
 msgid "Colour"
 msgstr "Barva"
 
-#: src/multiplayer_connect.cpp:451 src/playlevel.cpp:818 src/playturn.cpp:1667
-#: src/playturn.cpp:1674
+#: src/multiplayer_connect.cpp:451 src/playturn.cpp:1667 src/playturn.cpp:1674
 msgid "Gold"
 msgstr "Zlato"
 
@@ -6918,8 +6935,8 @@ msgstr "Računalniški igralec"
 msgid "I'm Ready"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:44
-#: src/multiplayer_wait.cpp:142
+#: src/multiplayer_connect.cpp:455 src/multiplayer_create.cpp:46
+#: src/multiplayer_wait.cpp:144
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -6947,7 +6964,7 @@ msgstr "Računalniški igralec"
 msgid "Empty"
 msgstr "Prazno"
 
-#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:197
+#: src/multiplayer_connect.cpp:784 src/multiplayer_wait.cpp:199
 msgid "Era not available"
 msgstr ""
 
@@ -7005,116 +7022,121 @@ msgstr ""
 msgid "Waiting for players to join..."
 msgstr ""
 
-#: src/multiplayer_create.cpp:37
+#: src/multiplayer_create.cpp:39
 #, fuzzy
 msgid "Name of game"
 msgstr "Ime igre"
 
-#: src/multiplayer_create.cpp:39
+#: src/multiplayer_create.cpp:41
 msgid "Era"
 msgstr ""
 
-#: src/multiplayer_create.cpp:40
+#: src/multiplayer_create.cpp:42
 msgid "Map to play"
 msgstr ""
 
-#: src/multiplayer_create.cpp:41
+#: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
 msgstr ""
 
-#: src/multiplayer_create.cpp:43 src/reports.cpp:372
+#: src/multiplayer_create.cpp:45 src/reports.cpp:372
 msgid "Observers"
 msgstr ""
 
-#: src/multiplayer_create.cpp:45
+#: src/multiplayer_create.cpp:47
 msgid "OK"
 msgstr ""
 
-#: src/multiplayer_create.cpp:46
+#: src/multiplayer_create.cpp:48
 msgid "Regenerate"
 msgstr ""
 
-#: src/multiplayer_create.cpp:47
+#: src/multiplayer_create.cpp:49
 msgid "Settings..."
 msgstr "Nastavitve..."
 
-#: src/multiplayer_create.cpp:76
+#: src/multiplayer_create.cpp:78
 msgid "The maximum turns the game will go for"
 msgstr ""
 
-#: src/multiplayer_create.cpp:81
+#: src/multiplayer_create.cpp:83
 msgid "The amount of income each village yields per turn"
 msgstr ""
 
-#: src/multiplayer_create.cpp:86
+#: src/multiplayer_create.cpp:88
 msgid "The amount of experience a unit needs to advance"
 msgstr ""
 
-#: src/multiplayer_create.cpp:89
+#: src/multiplayer_create.cpp:91
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 
-#: src/multiplayer_create.cpp:92
+#: src/multiplayer_create.cpp:94
 msgid "The map is unknown until your units explore it"
 msgstr ""
 
-#: src/multiplayer_create.cpp:95
+#: src/multiplayer_create.cpp:97
 msgid "Allow users who are not playing to watch the game"
 msgstr ""
 
-#: src/multiplayer_create.cpp:99
+#: src/multiplayer_create.cpp:101
 msgid "Share View"
 msgstr ""
 
-#: src/multiplayer_create.cpp:100
+#: src/multiplayer_create.cpp:102
 msgid "Share Maps"
 msgstr ""
 
-#: src/multiplayer_create.cpp:101
+#: src/multiplayer_create.cpp:103
 msgid "Share None"
 msgstr ""
 
-#: src/multiplayer_create.cpp:112
+#: src/multiplayer_create.cpp:114
 msgid "No multiplayer sides."
 msgstr ""
 
-#: src/multiplayer_create.cpp:114
+#: src/multiplayer_create.cpp:116
 msgid "No eras found"
 msgstr ""
 
-#: src/multiplayer_create.cpp:123
+#: src/multiplayer_create.cpp:125
 msgid "$login's game"
 msgstr ""
 
-#: src/multiplayer_create.cpp:153
+#: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
 msgstr ""
 
-#: src/multiplayer_create.cpp:180
+#: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
 msgstr ""
 
-#: src/multiplayer_create.cpp:189
+#: src/multiplayer_create.cpp:195
 #, fuzzy
-msgid "Turns"
+msgid "Turns: "
 msgstr "Poteza"
 
-#: src/multiplayer_create.cpp:191
+#: src/multiplayer_create.cpp:197
 #, fuzzy
 msgid "Unlimited Turns"
 msgstr "Neomejeno"
 
-#: src/multiplayer_create.cpp:198
-#, fuzzy
-msgid "Village Gold"
-msgstr "Vas"
-
 #: src/multiplayer_create.cpp:204
 #, fuzzy
-msgid "Experience Modifier"
+msgid "Village Gold: "
+msgstr "Vas"
+
+#: src/multiplayer_create.cpp:210
+#, fuzzy
+msgid "Experience Modifier: "
 msgstr "Terenski prikrojevalci"
 
-#: src/multiplayer_create.cpp:367 src/multiplayer_lobby.cpp:28
+#: src/multiplayer_create.cpp:313
+#, fuzzy
+msgid "Players: "
+msgstr "Igralci"
+
+#: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
 msgstr "Ustvari igro"
 
@@ -7134,35 +7156,35 @@ msgstr ""
 msgid "Vacant Slots"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:108
+#: src/multiplayer_wait.cpp:110
 msgid "Leader: "
 msgstr "Vodja: "
 
-#: src/multiplayer_wait.cpp:110
+#: src/multiplayer_wait.cpp:112
 msgid "Recruits: "
 msgstr ""
 
-#: src/multiplayer_wait.cpp:143
+#: src/multiplayer_wait.cpp:145
 msgid "Waiting for game to start..."
 msgstr ""
 
-#: src/multiplayer_wait.cpp:162
+#: src/multiplayer_wait.cpp:164
 msgid "Getting game data..."
 msgstr ""
 
-#: src/multiplayer_wait.cpp:175
+#: src/multiplayer_wait.cpp:177
 msgid "No multiplayer sides available in this game"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:205
+#: src/multiplayer_wait.cpp:207
 msgid "No multiplayer sides found"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:225
+#: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
 msgstr ""
 
-#: src/multiplayer_wait.cpp:393 src/playturn.cpp:1764
+#: src/multiplayer_wait.cpp:397 src/playturn.cpp:1764
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Zlato"
@@ -7189,11 +7211,12 @@ msgid "You have been defeated!"
 msgstr ""
 
 #: src/playlevel.cpp:808
-msgid "Remaining gold"
+#, fuzzy
+msgid "Remaining gold: "
 msgstr "Preostalo zlato"
 
 #: src/playlevel.cpp:811
-msgid "Early finish bonus"
+msgid "Early finish bonus: "
 msgstr ""
 
 #: src/playlevel.cpp:813
@@ -7201,12 +7224,18 @@ msgid "per turn"
 msgstr "na potezo"
 
 #: src/playlevel.cpp:814
-msgid "Turns finished early"
+msgid "Turns finished early: "
 msgstr ""
 
 #: src/playlevel.cpp:816
-msgid "Bonus"
+#, fuzzy
+msgid "Bonus: "
 msgstr "Bonus"
+
+#: src/playlevel.cpp:818
+#, fuzzy
+msgid "Gold: "
+msgstr "Zlato"
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -7214,7 +7243,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr ""
 
 #: src/playlevel.cpp:824
-msgid "Retained Gold"
+#, fuzzy
+msgid "Retained Gold: "
 msgstr "Ohranjeno zlato"
 
 #: src/playlevel.cpp:829
@@ -7371,6 +7401,11 @@ msgstr ""
 msgid "You must have at least $cost gold pieces to recall a unit"
 msgstr "Za priklic enote potrebujete vsaj $cost zlata"
 
+#: src/playturn.cpp:1941
+#, fuzzy
+msgid "level: "
+msgstr "stopnja"
+
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
@@ -7386,6 +7421,10 @@ msgstr "Sporočilo"
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
 msgstr "Pošlji samo zaveznikom"
+
+#: src/playturn.cpp:2105 src/unit.cpp:1092
+msgid "Moves"
+msgstr "Premiki"
 
 #: src/playturn.cpp:2106
 msgid "Location"
@@ -7491,6 +7530,11 @@ msgstr "je zapustil igro. Kaj boste storili?"
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
+#: src/reports.cpp:106
+#, fuzzy
+msgid "invisible: "
+msgstr "neviden"
+
 #: src/reports.cpp:111
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
@@ -7498,6 +7542,11 @@ msgid ""
 msgstr ""
 "Ta enota je upočasnjena. Premika se pri polovični hitrosti in ima en napad "
 "manj."
+
+#: src/reports.cpp:111
+#, fuzzy
+msgid "slowed: "
+msgstr "upočasni"
 
 #: src/reports.cpp:116
 msgid ""
@@ -7514,24 +7563,36 @@ msgstr ""
 "\n"
 "Sam strup enote ne more ubiti - ne more je poškodovati pod 1 HP."
 
+#: src/reports.cpp:116
+msgid "poisoned: "
+msgstr ""
+
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
+
+#: src/reports.cpp:123
+#, fuzzy
+msgid "stone: "
+msgstr "kamen"
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "škoda"
 
 #: src/reports.cpp:251
-msgid "Lawful units"
+#, fuzzy
+msgid "Lawful units: "
 msgstr "Zakonite enote"
 
 #: src/reports.cpp:253
-msgid "Neutral units"
+#, fuzzy
+msgid "Neutral units: "
 msgstr "Nevtralne enote"
 
 #: src/reports.cpp:254
-msgid "Chaotic units"
+#, fuzzy
+msgid "Chaotic units: "
 msgstr "Kaotične enote"
 
 #: src/reports.cpp:308
@@ -7635,19 +7696,19 @@ msgid "neutral"
 msgstr "nevtralen"
 
 #, fuzzy
+#~ msgid "Team "
+#~ msgstr "Skupina"
+
+#, fuzzy
+#~ msgid "Turns"
+#~ msgstr "Poteza"
+
+#, fuzzy
 #~ msgid "Load Game..."
 #~ msgstr "Naloži igro"
 
 #~ msgid "Ok"
 #~ msgstr "V redu"
-
-#, fuzzy
-#~ msgid "Turns: "
-#~ msgstr "Poteza"
-
-#, fuzzy
-#~ msgid "Players: "
-#~ msgstr "Igralci"
 
 #~ msgid "Warning"
 #~ msgstr "Opozorilo"

@@ -1021,7 +1021,7 @@ public:
 		// to the topics containing information about those units.
 		std::vector<std::string> next_units = type_.advances_to();
 		if (!next_units.empty()) {
-			ss << _("Advances to") << ": ";
+			ss << _("Advances to: ");
 			for (std::vector<std::string>::const_iterator advance_it = next_units.begin(),
 				 advance_end = next_units.end();
 				 advance_it != advance_end; ++advance_it) {
@@ -1042,7 +1042,7 @@ public:
 		// Print the abilities the units has, cross-reference them
 		// to their respective topics.
 		if (!type_.abilities().empty()) {
-			ss << _("Abilities") << ": ";
+			ss << _("Abilities: ");
 			for(std::vector<std::string>::const_iterator ability_it = type_.abilities().begin(),
 				 ability_end = type_.abilities().end();
 				 ability_it != ability_end; ++ability_it) {
@@ -1059,13 +1059,13 @@ public:
 		if (!next_units.empty() || !type_.abilities().empty())
 			ss << "\n";
 		// Print some basic information such as HP and movement points.
-		ss << _("HP") << ": " << type_.hitpoints() << jump(30)
-		   << _("Moves") << ": " << type_.movement() << jump(30)
-		   << _("Alignment") << ": "
+		ss << _("HP: ") << type_.hitpoints() << jump(30)
+		   << _("Moves: ") << type_.movement() << jump(30)
+		   << _("Alignment: ")
 		   << type_.alignment_description(type_.alignment())
 		   << jump(30);
 		if (type_.can_advance())
-			ss << _("Required XP") << ": " << type_.experience_needed();
+			ss << _("Required XP: ") << type_.experience_needed();
 
 		// Print the detailed description about the unit.
 		ss << "\n\n" << detailed_description;
