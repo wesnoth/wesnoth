@@ -96,6 +96,8 @@ int connection_acceptor::do_action()
 		sock = network::receive_data(cfg);
 	} catch(network::error& e) {
 
+		std::cerr << "caught networking error. we are " << (network::is_server() ? "" : "NOT") << " a server\n";
+
 		sock = 0;
 
 		//if the problem isn't related to any specific connection,
@@ -103,7 +105,8 @@ int connection_acceptor::do_action()
 		//likewise if we are not a server, we cannot afford any connection
 		//to go down, so also re-throw the error
 		if(!e.socket || !network::is_server()) {
-			throw e;
+			e.disconnect();
+			throw network::error(e.message);
 		}
 
 		bool changes = false;

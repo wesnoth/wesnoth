@@ -31,7 +31,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 {
 	unit_map::const_iterator u = units.end();
 	
-	if(type >= UNIT_REPORTS_BEGIN && type < UNIT_REPORTS_END) {
+	if(int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) {
 		u = units.find(mouseover);
 		if(u == units.end()) {
 			u = units.find(loc);

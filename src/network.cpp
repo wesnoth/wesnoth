@@ -192,7 +192,9 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 				char num_buf[4];
 				size_t len = SDLNet_TCP_Recv(*i,num_buf,4);
 
-				if(len != 4) {
+				if(len == 0) {
+					throw error("Remote host disconnected",*i);
+				} else if(len != 4) {
 					std::cerr << "received bad packet length: " << len << "/4\n";
 					throw error(std::string("network error receiving length data: ") + SDLNet_GetError(),*i);
 				}
@@ -238,7 +240,6 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 		}
 	}
 
-	assert(false);
 	return 0;
 }
 
