@@ -795,7 +795,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return true;
 
 	case hotkey::HOTKEY_SPEAK:
-		return network::nconnections() > 0;
+		return network::nconnections() > 0 && !is_observer();
 
 	case hotkey::HOTKEY_REDO:
 		return !browse_ && !redo_stack_.empty();

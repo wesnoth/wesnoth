@@ -179,21 +179,6 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 	}
 
 	config::child_iterator sd;
-	if(save_ == true) {
-		bool found = false;
-		for(sd = sides.first; sd != sides.second; ++sd) {
-			if ((**sd)["description"] == preferences::login())
-				found = true;
-		}
-		if (found == false) {
-			gui::show_dialog(*disp_, NULL, "", 
-					 string_table["error_not_part_of_game"],
-					 gui::OK_ONLY);
-			status_ = -1;
-			return status_;
-		}
-	}
-
 
 	bool first = true;
 	for(sd = sides.first; sd != sides.second; ++sd) {

@@ -558,3 +558,18 @@ const std::set<gamemap::location> vacant_towers(const std::set<gamemap::location
 
 	return res;
 }
+
+bool is_observer()
+{
+	if(teams == NULL) {
+		return true;
+	}
+
+	for(std::vector<team>::const_iterator i = teams->begin(); i != teams->end(); ++i) {
+		if(i->is_human()) {
+			return false;
+		}
+	}
+
+	return true;
+}

@@ -87,10 +87,11 @@ TTF_Font* get_font(int size)
 
 void clear_fonts()
 {
-	for(std::map<int,TTF_Font*>::iterator i = font_table.begin();
-	    i != font_table.end(); ++i) {
+	for(std::map<int,TTF_Font*>::iterator i = font_table.begin(); i != font_table.end(); ++i) {
 		TTF_CloseFont(i->second);
 	}
+
+	font_table.clear();
 }
 
 }
