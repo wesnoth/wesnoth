@@ -510,7 +510,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	//   [/objective]
 	//   [objective]
 	//     description="Death of Konrad"
-	//     condition=loss
+	//     condition=lose
 	//   [/objective]
 	// [/objectives]
 	// [/event]
@@ -562,7 +562,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				win_objectives.append("\n");
 				win_objectives.append(win_str);
 				win_objectives.append(description);
-			} else if(condition == "loss") {
+			} else if(condition == "lose") {
 				lose_objectives.append("\n");
 				lose_objectives.append(lose_str);
 				lose_objectives.append(description);
