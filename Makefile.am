@@ -5,12 +5,12 @@ pkgdatadir=$(datadir)/@DATADIR@
 findfilterflags=-name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d
 
 if LITE
-findmoredata=;find images $(extrawesnothdatadirs) $(findfilterflags) -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -print
+findmoredata=;find images $(findfilterflags) -o -path "images/misc/tutorial*" -o -path "images/misc/story*" -o -print
 else
-findmoredata=;find images music $(extrawesnothdatadirs) $(findfilterflags) -o -print
+findmoredata=;find images music $(findfilterflags) -o -print
 endif
 
-finddata=(cd $(top_srcdir) && find data fonts sounds $(extrawesnothdatadirs) $(findfilterflags) -o -print \
+finddata=(cd $(top_srcdir) && find data fonts sounds $(findfilterflags) -o -print \
 	 $(findmoredata) )
 findnoinst=(cd $(top_srcdir) && find utils -name CVS -prune -o -name ".cvs*" -o -name ".\#*" -o -type d -o -print && find MANUAL*)
 
