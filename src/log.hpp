@@ -35,7 +35,8 @@ class logger {
 	int severity_;
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
-	std::ostream &operator()(log_domain const &domain, bool show_names = true);
+	std::ostream &operator()(log_domain const &domain, bool show_names = true) const;
+	bool dont_log(log_domain const &domain) const;
 };
 
 extern logger err, warn, info;
@@ -49,12 +50,14 @@ class scope_logger
 public:
 	scope_logger(log_domain const &domain, std::string const &str);
 	~scope_logger();
-	void do_indent();
+	void do_indent() const;
 };
 
 } // namespace lg
 
 #define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);
 #define log_scope2(a,b) lg::scope_logger scope_logging_object__(lg::a, b);
+
+#define LOG_HELPER(a, b) if (lg::a.dont_log(lg::b)) ; else lg::a(lg::b)
 
 #endif

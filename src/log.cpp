@@ -72,7 +72,14 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	return true;
 }
 
-std::ostream &logger::operator()(log_domain const &domain, bool show_names)
+
+bool logger::dont_log(log_domain const &domain) const
+{
+	logd const &d = log_domains[domain.domain_];
+	return severity_ > d.severity_;
+}
+
+std::ostream &logger::operator()(log_domain const &domain, bool show_names) const
 {
 	logd const &d = log_domains[domain.domain_];
 	if (severity_ > d.severity_)
@@ -100,7 +107,7 @@ scope_logger::~scope_logger()
 	output_ << "END: " << str_ << " (took " << ticks << "ms)\n";
 }
 
-void scope_logger::do_indent()
+void scope_logger::do_indent() const
 {
 	for(int i = 0; i != indent; ++i)
 		output_ << "  ";
