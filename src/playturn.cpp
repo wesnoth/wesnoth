@@ -28,6 +28,20 @@
 #include <sstream>
 #include <string>
 
+namespace {
+
+int get_turns_movement(CKey& key)
+{
+	for(char c = '1'; c != '7'; ++c) {
+		if(key[c])
+			return c - '1';
+	}
+
+	return 0;
+}
+
+}
+
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
@@ -44,19 +58,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 	team& current_team = teams[team_num-1];
 
-	gamemap::location next_unit;
-
-	bool left_button = false, right_button = false;
-
 	const paths_wiper wiper(gui);
-	paths current_paths;
-	paths::route current_route;
-	bool enemy_paths = false;
 
-	gamemap::location last_hex;
-	gamemap::location selected_hex;
-
-	undo_list undo_stack, redo_stack;
+	turn_info turn_data;
 
 	//execute gotos - first collect gotos in a list
 	std::vector<gamemap::location> gotos;
@@ -90,10 +94,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		assert(route.steps.front() == *g);
 
 		gui.set_route(&route);
-		const size_t moves =
-		    move_unit(&gui,map,units,teams,route.steps,&recorder,&undo_stack);
+		const size_t moves = move_unit(&gui,map,units,teams,route.steps,
+		                               &recorder,&turn_data.undo_stack);
 		if(moves > 0) {
-			redo_stack.clear();
+			turn_data.redo_stack.clear();
 		}
 	}
 
@@ -102,10 +106,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	for(;;) {
 		const bool res = turn_slice(gameinfo,state_of_game,status,
 		                            terrain_config,level,video,key,gui,map,
-		                            teams,team_num,units,left_button,
-		                            right_button,next_unit,current_paths,
-		                            current_route,enemy_paths,last_hex,
-		                            selected_hex,undo_stack,redo_stack,false);
+		                            teams,team_num,units,turn_data,false);
 		if(res) {
 			break;
 		}
@@ -116,13 +117,19 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
                 gamestatus& status, config& terrain_config, config* level,
                 CVideo& video, CKey& key, display& gui, gamemap& map,
                 std::vector<team>& teams, int team_num,
-                std::map<gamemap::location,unit>& units,
-                bool& left_button, bool& right_button,
-                gamemap::location& next_unit, paths& current_paths,
-                paths::route& current_route, bool& enemy_paths,
-                gamemap::location& last_hex, gamemap::location& selected_hex,
-                undo_list& undo_stack, undo_list& redo_stack, bool browse)
+                unit_map& units, turn_info& turn_data, bool browse)
 {
+	bool& left_button = turn_data.left_button;
+	bool& right_button = turn_data.right_button;
+	gamemap::location& next_unit = turn_data.next_unit;
+	paths& current_paths = turn_data.current_paths;
+	paths::route& current_route = turn_data.current_route;
+	bool& enemy_paths = turn_data.enemy_paths;
+	gamemap::location& last_hex = turn_data.last_hex;
+	gamemap::location& selected_hex = turn_data.selected_hex;
+	undo_list& undo_stack = turn_data.undo_stack;
+	undo_list& redo_stack = turn_data.redo_stack;
+
 	team& current_team = teams[team_num-1];
 
 	int mousex, mousey;
@@ -131,6 +138,31 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 	const bool new_right_button = mouse_flags & SDL_BUTTON_RMASK;
 
 	gamemap::location new_hex = gui.hex_clicked_on(mousex,mousey);
+
+	//if the player has pressed a number, we want to show how far
+	//the selected unit could get in that many turns
+	const int new_path_turns = get_turns_movement(key);
+	if(new_path_turns != turn_data.path_turns) {
+		turn_data.path_turns = new_path_turns;
+
+		unit_map::iterator u = units.find(selected_hex);
+		if(u == units.end()) {
+			u = units.find(last_hex);
+			if(u != units.end() && u->second.side() == team_num) {
+				u = units.end();
+			}
+		} else if(u->second.side() != team_num) {
+			u = units.end();
+		}
+
+		if(u != units.end()) {
+			const bool ignore_zocs = u->second.type().is_skirmisher();
+			const bool teleport = u->second.type().teleports();
+			current_paths = paths(map,gameinfo,units,u->first,teams,
+			                      ignore_zocs,teleport,turn_data.path_turns);
+			gui.set_paths(&current_paths);
+		}
+	}
 
 	if(new_hex.valid() == false) {
 		current_route.steps.clear();
@@ -189,7 +221,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 			const unit_movement_resetter move_change(u->second);
 
 			current_paths = paths(map,gameinfo,units,new_hex,teams,
-			                      ignore_zocs,teleport);
+			                      ignore_zocs,teleport,turn_data.path_turns);
 			gui.set_paths(&current_paths);
 			enemy_paths = true;
 		}
@@ -391,7 +423,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 				const bool ignore_zocs = it->second.type().is_skirmisher();
 				const bool teleport = it->second.type().teleports();
 				current_paths = paths(map,gameinfo,units,hex,teams,
-				                      ignore_zocs,teleport);
+				                   ignore_zocs,teleport,turn_data.path_turns);
 				gui.set_paths(&current_paths);
 
 				unit u = it->second;
@@ -888,7 +920,7 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 			      it->second.type().is_skirmisher();
 			const bool teleport = it->second.type().teleports();
 			current_paths = paths(map,gameinfo,units,
-			                 it->first,teams,ignore_zocs,teleport);
+			      it->first,teams,ignore_zocs,teleport,turn_data.path_turns);
 			gui.set_paths(&current_paths);
 
 			gui.scroll_to_tile(it->first.x,it->first.y,

@@ -217,13 +217,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				} else if(!replaying && team_it->is_network()) {
 					config cfg;
 	
-					bool left_button = false, right_button = false;
-					gamemap::location next_unit;
-					paths current_paths;
-					paths::route current_route;
-					bool enemy_paths = false;
-					gamemap::location last_hex, selected_hex;
-					undo_list undo_stack, redo_stack;
+					turn_info turn_data;
 
 					for(;;) {
 						network::connection res = network::receive_data(cfg);
@@ -233,10 +227,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 						turn_slice(gameinfo,state_of_game,status,terrain_config,
 						          level,video,key,gui,map,teams,player_number,
-						          units,left_button,right_button,next_unit,
-						          current_paths,current_route,enemy_paths,
-						          last_hex,selected_hex,undo_stack,redo_stack,
-						          true);
+						          units,turn_data,true);
 					}
 
 					std::cerr << "replay: '" << cfg.children["turn"].front()->write() << "'\n";

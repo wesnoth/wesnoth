@@ -133,7 +133,7 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 				 int move_left,
 				 std::map<gamemap::location,paths::route>& routes,
 				 std::vector<team>& teams,
-				 bool ignore_zocs, bool allow_teleport)
+				 bool ignore_zocs, bool allow_teleport, int turns_left)
 {
 	team& current_team = teams[u.side()-1];
 
@@ -177,13 +177,24 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 
 		//find the movement cost of this type onto the terrain
 		const int move_cost = u.movement_cost(map,terrain);
-		if(move_cost <= move_left) {
+		if(move_cost <= move_left ||
+		   turns_left > 0 && move_cost <= u.total_movement()) {
+			int new_move_left = move_left - move_cost;
+			int new_turns_left = turns_left;
+			if(new_move_left < 0) {
+				--new_turns_left;
+				new_move_left = u.total_movement() - move_cost;
+			}
+
+			const int total_movement = new_turns_left*u.total_movement() +
+			                           new_move_left;
+
 			const std::map<gamemap::location,paths::route>::const_iterator
 					rtit = routes.find(currentloc);
 
 			//if a better route to that tile has already been found
 			if(rtit != routes.end() &&
-			   rtit->second.move_left >= move_left - move_cost)
+			   rtit->second.move_left >= total_movement)
 				continue;
 
 			const bool zoc = enemy_zoc(map,units,currentloc,
@@ -191,13 +202,16 @@ void find_routes(const gamemap& map, const game_data& gamedata,
 			                 !ignore_zocs;
 			paths::route new_route = routes[loc];
 			new_route.steps.push_back(loc);
-			new_route.move_left = zoc ? 0 : move_left - move_cost;
+
+			const int zoc_move_left = zoc ? 0 : new_move_left;
+			new_route.move_left = u.total_movement() * new_turns_left +
+			                      zoc_move_left;
 			routes[currentloc] = new_route;
 
 			if(new_route.move_left > 0) {
 				find_routes(map,gamedata,units,u,currentloc,
-				            new_route.move_left,routes,teams,ignore_zocs,
-							allow_teleport);
+				            zoc_move_left,routes,teams,ignore_zocs,
+							allow_teleport,new_turns_left);
 			}
 		}
 	}
@@ -209,7 +223,7 @@ paths::paths(const gamemap& map, const game_data& gamedata,
              const std::map<gamemap::location,unit>& units,
              const gamemap::location& loc,
 			 std::vector<team>& teams,
-			 bool ignore_zocs, bool allow_teleport)
+			 bool ignore_zocs, bool allow_teleport, int additional_turns)
 {
 	const std::map<gamemap::location,unit>::const_iterator i = units.find(loc);
 	if(i == units.end()) {
@@ -220,7 +234,7 @@ paths::paths(const gamemap& map, const game_data& gamedata,
 	routes[loc].move_left = i->second.movement_left();
 	find_routes(map,gamedata,units,i->second,loc,
 	            i->second.movement_left(),routes,teams,
-				ignore_zocs,allow_teleport);
+				ignore_zocs,allow_teleport,additional_turns);
 
 	if(i->second.can_attack()) {
 		gamemap::location adjacent[6];

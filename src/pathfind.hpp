@@ -42,7 +42,7 @@ struct paths
 	paths(const gamemap& map, const game_data& gamedata,
 	      const std::map<gamemap::location,unit>& units,
 	      const gamemap::location& loc, std::vector<team>& teams,
-		  bool ignore_zocs, bool allow_teleport);
+		  bool ignore_zocs, bool allow_teleport, int additional_turns=0);
 
 	struct route
 	{

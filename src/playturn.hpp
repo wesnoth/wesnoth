@@ -43,24 +43,34 @@ private:
 	display& gui_;
 };
 
+struct turn_info {
+	turn_info() : left_button(false), right_button(false), enemy_paths(false),
+	              path_turns(0)
+	{}
+
+	bool left_button, right_button;
+	gamemap::location next_unit;
+	paths current_paths;
+	paths::route current_route;
+	bool enemy_paths;
+	gamemap::location last_hex;
+	gamemap::location selected_hex;
+	undo_list undo_stack;
+	undo_list redo_stack;
+	int path_turns;
+};
+
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, config& terrain_config, config* level,
 			   CVideo& video, CKey& key, display& gui,
                game_events::manager& events_manager, gamemap& map,
-			   std::vector<team>& teams, int team_num,
-			   std::map<gamemap::location,unit>& units);
+			   std::vector<team>& teams, int team_num, unit_map& units);
 
 bool turn_slice(game_data& gameinfo, game_state& state_of_game,
                 gamestatus& status, config& terrain_config, config* level,
                 CVideo& video, CKey& key, display& gui, gamemap& map,
                 std::vector<team>& teams, int team_num,
-                std::map<gamemap::location,unit>& units,
-                bool& left_button, bool& right_button,
-                gamemap::location& next_unit, paths& current_paths,
-                paths::route& current_route, bool& enemy_paths,
-                gamemap::location& last_hex, gamemap::location& selected_hex,
-                undo_list& undo_stack, undo_list& redo_stack,
-                bool browse_only);
+                unit_map& units, turn_info& turn_data, bool browse_only);
                 
 
 #endif
