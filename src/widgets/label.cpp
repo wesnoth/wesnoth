@@ -16,7 +16,7 @@
 
 namespace gui {
 
-label::label(display& d, const std::string& text, int size, const SDL_Colour& colour) : widget(d), text_(text), size_(size), colour_(colour)
+label::label(display& d, const std::string& text, int size, const SDL_Color& colour) : widget(d), text_(text), size_(size), colour_(colour)
 {
 	update_label_size();
 }
@@ -50,14 +50,14 @@ int label::get_size() const
 	return size_;
 }
 
-const SDL_Colour& label::set_colour(const SDL_Colour& colour)
+const SDL_Color& label::set_colour(const SDL_Color& colour)
 {
 	colour_ = colour;
 	set_dirty();
 	return colour_;
 }
 
-const SDL_Colour& label::get_colour() const
+const SDL_Color& label::get_colour() const
 {
 	return colour_;
 }

@@ -24,15 +24,15 @@ class label : public widget
 {
 public:
 	label(display& d, const std::string& text, int size=font::SIZE_NORMAL, 
-			const SDL_Colour& colour=font::NORMAL_COLOUR);
+			const SDL_Color& colour=font::NORMAL_COLOUR);
 	const std::string& set_text(const std::string& text);
 	const std::string& get_text() const;
 
 	int set_size(int size);
 	int get_size() const;
 
-	const SDL_Colour& set_colour(const SDL_Colour& colour);
-	const SDL_Colour& get_colour() const;
+	const SDL_Color& set_colour(const SDL_Color& colour);
+	const SDL_Color& get_colour() const;
 
 	virtual void draw_contents();
 	virtual void set_location(const SDL_Rect& rect);
@@ -43,7 +43,7 @@ private:
 
 	std::string text_;
 	int size_;
-	SDL_Colour colour_;
+	SDL_Color colour_;
 };
 
 }
