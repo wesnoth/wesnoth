@@ -907,7 +907,7 @@ void unit::add_modification(const std::string& type,
 	    i.first != i.second; ++i.first) {
 
 		//see if the effect only applies to certain unit types
-		const std::string& type_filter = (**i.first)["type"];
+		const std::string& type_filter = (**i.first)["unit_type"];
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = config::split(type_filter);
 			if(std::find(types.begin(),types.end(),this->type().name()) == types.end()) {
