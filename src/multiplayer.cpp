@@ -187,6 +187,8 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
 
+		name_entry.process();
+
 		maps_menu.process(mousex,mousey,left_button,
 		                  key[SDLK_UP],key[SDLK_DOWN],
 		                  key[SDLK_PAGEUP],key[SDLK_PAGEDOWN]);

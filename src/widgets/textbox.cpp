@@ -25,7 +25,7 @@ const int font_size = 16;
 
 textbox::textbox(display& d, int width, const std::string& text)
            : widget(d), text_(text), firstOnScreen_(0),
-             cursor_(text.size())
+             cursor_(text.size()), show_cursor_(true)
 {
 	static const SDL_Rect area = d.screen_area();
 	const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
@@ -42,6 +42,7 @@ void textbox::set_text(std::string text)
 {
 	text_ = text;
 	cursor_ = text_.size();
+	set_dirty(true);
 }
 
 void textbox::clear()
@@ -49,22 +50,21 @@ void textbox::clear()
 	text_ = "";
 	cursor_ = 0;
 	firstOnScreen_ = 0;
+	set_dirty(true);
 }
 
 void textbox::draw_cursor(int pos, display &disp) const
 {
-	const bool show_cursor = (SDL_GetTicks()%1000) > 500;
-
-	if(show_cursor) {
+	if(show_cursor_) {
 		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
 		SDL_Surface* const frame_buffer = disp.video().getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
 
-void textbox::draw() const
+void textbox::draw()
 {
-	if(location().x == 0)
+	if(location().x == 0 || !dirty())
 		return;
 
 	bg_restore();
@@ -72,7 +72,7 @@ void textbox::draw() const
 	gui::draw_solid_tinted_rectangle(location().x,location().y,location().w,location().h,0,0,0,
 	                          focus() ? 0.2 : 0.4, disp().video().getSurface());
 
-	if(cursor_ == 0)
+	if (cursor_ == 0)
 		draw_cursor(0, disp());
 
 	int pos = 1;
@@ -98,11 +98,23 @@ void textbox::draw() const
 
 		pos += area.w;
 
-		if(cursor_ == i+1)
-			draw_cursor(pos-1, disp());
 	}
 
+	draw_cursor(pos-1, disp());
+
+	set_dirty(false);
 	update_rect(location());
+}
+
+void textbox::process()
+{
+	//Blink the cursor
+	bool old_cursor = show_cursor_;
+	show_cursor_ = (SDL_GetTicks()%1000) > 500;
+	if (old_cursor != show_cursor_)
+		set_dirty(true);
+
+	draw();
 }
 
 void textbox::handle_event(const SDL_Event& event)
@@ -113,8 +125,11 @@ void textbox::handle_event(const SDL_Event& event)
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 
-	if(event.type != SDL_KEYDOWN || !focus())
+	if(event.type != SDL_KEYDOWN || focus() != true)
+	{
+		draw();
 		return;
+	}
 
 	const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 	
@@ -153,7 +168,7 @@ void textbox::handle_event(const SDL_Event& event)
 		++cursor_;
 	}
 
-	update();
+	set_dirty(true);
 }
 
 }

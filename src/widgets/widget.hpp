@@ -26,7 +26,8 @@ protected:
 	virtual ~widget() {}
 
 	void bg_restore() const;
-	void update() const;
+	void set_dirty(bool dirty);
+	const bool dirty() const;
 
 	display& disp() const { return disp_; }
 
@@ -34,7 +35,8 @@ private:
 	mutable display& disp_;
 	mutable surface_restorer restorer_;
 	SDL_Rect rect_;
-	bool focus_;
+	bool focus_;		// Should user input be ignored?
+	bool dirty_;		// Does the widget need drawn?
 
 	void bg_backup();
 	
