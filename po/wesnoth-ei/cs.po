@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-10-17 14:44+0200\n"
+"POT-Creation-Date: 2004-10-28 23:58+0200\n"
 "PO-Revision-Date: 2004-09-28 19:50+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -299,21 +299,18 @@ msgstr "Á! Ale co, aspoň mé ohromné hordy vás zničí!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:810
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:393
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:235
 msgid "Holy Water"
 msgstr "Svěcená voda"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:813
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:396
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Tato voda posvětí zbraně po celý zbytek života."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:814
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:397
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:239
 msgid "I am not suited to using this item! Let another take it."
 msgstr "Nedokáži použít tento předmět! Ať jej vezme někdo jiný."
@@ -914,13 +911,12 @@ msgstr "Opovažuješ se zaútočit na MNE?! Vrať se ke svému pánu!"
 msgid "Northern Outpost"
 msgstr "Severní výspa"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:28
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:26
+#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
-"@Find the thieves in the villages\n"
-"@Kill the thieves and any other bandits that attack\n"
-"@Reach the signpost near Owaec\n"
+"@Find the outlaw leader in the villages and kill him\n"
 "Defeat:\n"
 "#Death of Gweddry\n"
 "#Death of Dacyn\n"
@@ -928,19 +924,17 @@ msgid ""
 msgstr ""
 "\n"
 "Úkol:\n"
-"@Najdi zloděje ve vesnicích\n"
-"@Zabij zloděje a ostatní útočící bandity\n"
-"@Dojdi na značku poblíž Owaeca\n"
+"@Zabij nepřátelského licha\n"
 "Porážka:\n"
 "#Smrt Gweddryho\n"
 "#Smrt Dacyna\n"
 "#Smrt Owaeca"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:150
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:111
 msgid "Hail, Gweddry!"
 msgstr "Sláva! Gweddry!"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:155
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:116
 msgid ""
 "Hello. We have been forced from our positions. Do you think you can help us "
 "regain our outpost?"
@@ -948,110 +942,71 @@ msgstr ""
 "Nazdar. Byli jsme vytlačeni z našich posic. Myslíš, že nám můžeš pomoci "
 "získat zpět naši základnu?"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:160
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:121
 msgid ""
-"I am not sure. There are bandits in this country, and it is they who rule "
-"this land, not the king. My men are afraid of them, and refuse to come out "
-"and fight. As you see, though I have many men, they stay penned up in the "
-"keep. The thieves hide in the villages when we come out in groups, and pick "
-"us off when we separate."
+"I am not sure. There are bandits in this country, and I have been told that "
+"it is my duty to defeat them, and protect the local villages. Whenever I "
+"send out troops to defeat them, they end up being slaughtered before they "
+"get aid, and the bandits retreat into the villages. I cannot find a way to "
+"defeat them."
 msgstr ""
-"Nejsem si jist. V této zemi jsou loupeživí lotři. To oni, nikoli král, zemi "
-"vládnou. Mí muži se jich bojí a odmítají vyjít ven a bojovat. Jak vidíš, "
-"ačkoli mám mnoho mužů, zůstávají zavření v pevnosti. Zloději se skrývají ve "
-"vesnicích, vycházíme-li ven ve větších skupinách, a odstřelují nás, vyjdeme-"
-"li ven samostatně."
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:165
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:126
 msgid ""
-"Gweddry, I don't think we should try to regain our outpost. We need to go "
-"directly to the king. We will see if we can get across to where you are "
-"without thieves killing us. Also, we will try to go to the villages and "
-"drive the thieves out. Onward, men!"
+"I think I may be able to help you. I am a mage; I believe I will be able to "
+"cast a spell that will reveal them if you enter the villages. However, I "
+"won't be able to help you in battle."
 msgstr ""
-"Geddry, nemyslím, že bychom se měli pokoušet znovu dobýt naše posice. Musíme "
-"jít přímo ke králi. Uvidíme, zda k tobě dokážeme projít, aniž nás ti zloději "
-"pozabíjejí. Také se pokusíme projít vesnice a vyhnat zloděje ven. Kupředu, "
-"muži!"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:210
-msgid "We have defeated these bandits. Dacyn, where should we go now?"
-msgstr "Zničili jsme ty lotry! Co budeme nyní dělat, Dacyne?"
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:131
+msgid "It is time to drive out some bandits. Dacyn, go cast your spell!"
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:215
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:136
 msgid ""
-"Well, our outpost has been overrun by undead, and we can't go back there "
-"safely. What about yours, Owaec? Have you encountered them?"
+"I believe there is a leader behind these outlaws; kill him, and we will have "
+"defeated these bandits."
 msgstr ""
-"Nuže, naši základnu zaplavili nemrtví a nemůžeme se tam bezpečně vrátit. A "
-"co vaše, Owaecu? Setkali jste se s nějakými?"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:220
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:141
+msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:195
+msgid "They're here!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:201
+msgid "No outlaws in this village."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:232
 msgid ""
-"No, I haven't seen any undead yet. However, if you say more undead are "
-"coming, I believe you. I don't think me and my men could fight against them, "
-"so we will come with you."
+"So, you have found my hiding place. Very well, I guess I will have to kill "
+"you!"
 msgstr ""
-"Ne, nemrtvé jsme tu zatím neviděli. Ale věřím ti, když říkáš, že přicházejí. "
-"Nemyslím, že bychom já a mí muži s nimi byli schopni bojovat, půjdeme proto "
-"s tebou."
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:225
-msgid ""
-"Very well. We are going north right now, because there are too many undead "
-"to the east and they have already passed us in the west and south."
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:236
+msgid "Thats the bandit leader! Kill him, and we will have fufilled our duty!"
 msgstr ""
-"Dobrá, tedy. Půjdeme teď na sever, protože na východě je příliš mnoho "
-"nemrtvých a už kolem nás prošli i na jih a na západ."
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:248
-msgid "Hahaha! I have found you, pesky humans! Prepare to die!"
-msgstr "Hahaha! Našel jsem vás, hnusní lidi. Připravte se na smrt!"
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:249
+#, fuzzy
+msgid "You have defeated me! I can terrorize the villagers no more..."
+msgstr "Ne! Porazili jste mě, a můžete opět vstoupit do Wesnothu."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:253
 msgid ""
-"Oh no! The undead have come, and we have not had time to prepare for them! "
-"We will all die now!"
+"I have fufilled me duty to the villages. Now I suppose I can join you in "
+"your quest."
 msgstr ""
-"Ach ne! Přišli nemrtví, a my jsme neměli čas se na ně připravit. Všichni "
-"tady chcípneme!"
 
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:348
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:349
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:350
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:351
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:352
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:353
+#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:261
 msgid ""
-"You have gotten rid of some of these bandits, but I fear many still remain. "
-"Keep searching."
+"Good job! Now, we should move onward, north. The undead scout has warned us; "
+"we must get far away from these lands. I think we should go north, and try "
+"to reach Weldyn from a different route."
 msgstr ""
-"Zbavil ses některých banditů, ale bojím se, že stále ještě mnoho zůstává. "
-"Pokračuj v hledání."
-
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:356
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:357
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:358
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:359
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:360
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:361
-msgid ""
-"Good work so far. I suspect we have significantly weakened the bandit's "
-"number."
-msgstr "Dorbá práce, prozatím. Tuším, že jsme značně oslabili počty banditů."
-
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:364
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:365
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:366
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:367
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:368
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:369
-#: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:370
-msgid ""
-"I think you have killed most of them. I hope those that are left don't kill "
-"us."
-msgstr ""
-"Myslím, žes už jich zabil většinu. Doufám, že ti, jež zůstali, nezabijí nás."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
 msgid "Training the Ogres"
@@ -2311,6 +2266,107 @@ msgid ""
 msgstr ""
 "Potom, za svítání dne přesně rok po prvním útoku, probudil Gweddryho a jeho "
 "muže vyděšený křik noční hlídky..."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Find the thieves in the villages\n"
+#~ "@Kill the thieves and any other bandits that attack\n"
+#~ "@Reach the signpost near Owaec\n"
+#~ "Defeat:\n"
+#~ "#Death of Gweddry\n"
+#~ "#Death of Dacyn\n"
+#~ "#Death of Owaec"
+#~ msgstr ""
+#~ "\n"
+#~ "Úkol:\n"
+#~ "@Najdi zloděje ve vesnicích\n"
+#~ "@Zabij zloděje a ostatní útočící bandity\n"
+#~ "@Dojdi na značku poblíž Owaeca\n"
+#~ "Porážka:\n"
+#~ "#Smrt Gweddryho\n"
+#~ "#Smrt Dacyna\n"
+#~ "#Smrt Owaeca"
+
+#~ msgid ""
+#~ "I am not sure. There are bandits in this country, and it is they who rule "
+#~ "this land, not the king. My men are afraid of them, and refuse to come "
+#~ "out and fight. As you see, though I have many men, they stay penned up in "
+#~ "the keep. The thieves hide in the villages when we come out in groups, "
+#~ "and pick us off when we separate."
+#~ msgstr ""
+#~ "Nejsem si jist. V této zemi jsou loupeživí lotři. To oni, nikoli král, "
+#~ "zemi vládnou. Mí muži se jich bojí a odmítají vyjít ven a bojovat. Jak "
+#~ "vidíš, ačkoli mám mnoho mužů, zůstávají zavření v pevnosti. Zloději se "
+#~ "skrývají ve vesnicích, vycházíme-li ven ve větších skupinách, a "
+#~ "odstřelují nás, vyjdeme-li ven samostatně."
+
+#~ msgid ""
+#~ "Gweddry, I don't think we should try to regain our outpost. We need to go "
+#~ "directly to the king. We will see if we can get across to where you are "
+#~ "without thieves killing us. Also, we will try to go to the villages and "
+#~ "drive the thieves out. Onward, men!"
+#~ msgstr ""
+#~ "Geddry, nemyslím, že bychom se měli pokoušet znovu dobýt naše posice. "
+#~ "Musíme jít přímo ke králi. Uvidíme, zda k tobě dokážeme projít, aniž nás "
+#~ "ti zloději pozabíjejí. Také se pokusíme projít vesnice a vyhnat zloděje "
+#~ "ven. Kupředu, muži!"
+
+#~ msgid "We have defeated these bandits. Dacyn, where should we go now?"
+#~ msgstr "Zničili jsme ty lotry! Co budeme nyní dělat, Dacyne?"
+
+#~ msgid ""
+#~ "Well, our outpost has been overrun by undead, and we can't go back there "
+#~ "safely. What about yours, Owaec? Have you encountered them?"
+#~ msgstr ""
+#~ "Nuže, naši základnu zaplavili nemrtví a nemůžeme se tam bezpečně vrátit. "
+#~ "A co vaše, Owaecu? Setkali jste se s nějakými?"
+
+#~ msgid ""
+#~ "No, I haven't seen any undead yet. However, if you say more undead are "
+#~ "coming, I believe you. I don't think me and my men could fight against "
+#~ "them, so we will come with you."
+#~ msgstr ""
+#~ "Ne, nemrtvé jsme tu zatím neviděli. Ale věřím ti, když říkáš, že "
+#~ "přicházejí. Nemyslím, že bychom já a mí muži s nimi byli schopni bojovat, "
+#~ "půjdeme proto s tebou."
+
+#~ msgid ""
+#~ "Very well. We are going north right now, because there are too many "
+#~ "undead to the east and they have already passed us in the west and south."
+#~ msgstr ""
+#~ "Dobrá, tedy. Půjdeme teď na sever, protože na východě je příliš mnoho "
+#~ "nemrtvých a už kolem nás prošli i na jih a na západ."
+
+#~ msgid "Hahaha! I have found you, pesky humans! Prepare to die!"
+#~ msgstr "Hahaha! Našel jsem vás, hnusní lidi. Připravte se na smrt!"
+
+#~ msgid ""
+#~ "Oh no! The undead have come, and we have not had time to prepare for "
+#~ "them! We will all die now!"
+#~ msgstr ""
+#~ "Ach ne! Přišli nemrtví, a my jsme neměli čas se na ně připravit. Všichni "
+#~ "tady chcípneme!"
+
+#~ msgid ""
+#~ "You have gotten rid of some of these bandits, but I fear many still "
+#~ "remain. Keep searching."
+#~ msgstr ""
+#~ "Zbavil ses některých banditů, ale bojím se, že stále ještě mnoho zůstává. "
+#~ "Pokračuj v hledání."
+
+#~ msgid ""
+#~ "Good work so far. I suspect we have significantly weakened the bandit's "
+#~ "number."
+#~ msgstr ""
+#~ "Dorbá práce, prozatím. Tuším, že jsme značně oslabili počty banditů."
+
+#~ msgid ""
+#~ "I think you have killed most of them. I hope those that are left don't "
+#~ "kill us."
+#~ msgstr ""
+#~ "Myslím, žes už jich zabil většinu. Doufám, že ti, jež zůstali, nezabijí "
+#~ "nás."
 
 #~ msgid ""
 #~ "I will hold my gate. With my quick and skillful warriors I can resist the "
