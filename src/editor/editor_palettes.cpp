@@ -16,7 +16,6 @@
 #include "editor_palettes.hpp"
 #include "editor_layout.hpp"
 #include "../sdl_utils.hpp"
-#include "../show_dialog.hpp"
 #include "../image.hpp"
 #include "../reports.hpp"
 #include "../gettext.hpp"
@@ -290,7 +289,7 @@ void terrain_palette::draw(bool force) {
 		else {
 			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		}
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
+		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		if (counter_from_zero % 2 != 0)
 			y += size_specs_.terrain_space;
 	}
@@ -422,7 +421,7 @@ void brush_bar::draw(bool force) {
 		const Uint32 color = (unsigned)i == selected_brush_size() ? 
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
-		gui::draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
+		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		x += image->w;
 	}
 	update_rect(loc);

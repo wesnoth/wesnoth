@@ -18,7 +18,7 @@
 #include "../font.hpp"
 #include "../language.hpp"
 #include "../log.hpp"
-#include "../show_dialog.hpp"
+#include "../sdl_utils.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "SDL.h"
@@ -123,8 +123,8 @@ void textbox::draw_contents()
 	SDL_Rect const &loc = inner_location();
 
 	surface surf = video().getSurface();
-	gui::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
-	                          focus() ? alpha_focus_ : alpha_, surf);
+	draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
+				    focus() ? alpha_focus_ : alpha_, surf);
 	
 	SDL_Rect src;
 

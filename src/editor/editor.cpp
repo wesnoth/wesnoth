@@ -1148,8 +1148,8 @@ void map_editor::update_l_button_palette() {
 			else {
 				color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 			}
-			gui::draw_rectangle(draw_rect.x, draw_rect.y, draw_rect.w, draw_rect.h,
-								color, gui_.video().getSurface());
+			draw_rectangle(draw_rect.x, draw_rect.y, draw_rect.w, draw_rect.h,
+				       color, gui_.video().getSurface());
 			update_rect(draw_rect);
 		}
 	}

@@ -5,7 +5,6 @@
 #include "../font.hpp"
 #include "../image.hpp"
 #include "../sdl_utils.hpp"
-#include "../show_dialog.hpp"
 #include "../util.hpp"
 #include "../video.hpp"
 #include "../wml_separators.hpp"
@@ -394,10 +393,10 @@ void menu::draw_item(int item)
 	}
 
 	clear_item(item);
-	gui::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
-	                                 item == selected_ ? 150:0,0,0,
-	                                 item == selected_ ? 0.6 : 0.2,
-	                                 video().getSurface());
+	draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
+				    item == selected_ ? 150:0,0,0,
+				    item == selected_ ? 0.6 : 0.2,
+				    video().getSurface());
 
 	SDL_Rect const &area = screen_area();
 	//SDL_Rect area = { 0, 0, rect.w, rect.h };

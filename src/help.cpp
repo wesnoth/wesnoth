@@ -23,6 +23,7 @@
 #include "image.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
+#include "sdl_utils.hpp"
 #include "show_dialog.hpp"
 #include "unit.hpp"
 #include "util.hpp"
@@ -2076,7 +2077,7 @@ void help_text_area::draw_contents() {
 			dst.y += loc.y;
 			if (it->box) {
 				for (int i = 0; i < box_width; i++) {
-					gui::draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
+					draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
 					                    0, screen);
 					dst.x++;
 					dst.y++;

@@ -20,7 +20,7 @@
 #include "image.hpp"
 #include "intro.hpp"
 #include "key.hpp"
-#include "show_dialog.hpp"
+#include "sdl_utils.hpp"
 #include "sound.hpp"
 #include "util.hpp"
 #include "video.hpp"
@@ -89,7 +89,7 @@ bool show_intro_part(CVideo &video, const config& part,
 	gui::button next_button(video,_("Next") + std::string(">>>"));
 	gui::button skip_button(video,_("Skip"));
 
-	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
+	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 			0,0,0,1.0,video.getSurface());
 
 
@@ -296,7 +296,7 @@ bool show_intro_part(CVideo &video, const config& part,
 			SDL_Delay(20);
 	}
 	
-	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,0,0,0,1.0,
+	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,0,0,0,1.0,
                                      video.getSurface());
 
 	return true;

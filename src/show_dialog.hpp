@@ -50,12 +50,6 @@ void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::str
 
 void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
-
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-                                 int r, int g, int b,
-								 double alpha, surface target);
-
 //given the location of a dialog, will draw its title.
 //Returns the area the title takes up
 SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text);

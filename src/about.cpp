@@ -19,7 +19,6 @@
 #include "image.hpp"
 #include "key.hpp"
 #include "display.hpp"
-#include "show_dialog.hpp"
 #include "sdl_utils.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -325,7 +324,7 @@ void show_about(CVideo &video)
 	const surface_restorer restorer(&video, rect);
 
 	// Clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
+	draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
 	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
 

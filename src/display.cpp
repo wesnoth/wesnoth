@@ -27,7 +27,6 @@
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
-#include "show_dialog.hpp"
 #include "sound.hpp"
 #include "team.hpp"
 #include "tooltips.hpp"
@@ -1089,7 +1088,7 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const Uint32 boxcolour = SDL_MapRGB(surf->format,0xFF,0xFF,0xFF);
 	const surface screen(screen_.getSurface());
 
-	gui::draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
+	draw_rectangle(x+xbox,y+ybox,wbox,hbox,boxcolour,screen);
 
 	update_rect(minimap_location);
 }
