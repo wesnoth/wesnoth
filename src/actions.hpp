@@ -196,6 +196,11 @@ bool clear_shroud(display& disp, const gamestatus& status,
 		            const gamemap& map, const game_data& gamedata,
                   const unit_map& units, std::vector<team>& teams, int team);
 
+//function to apply pending shroud changes in the undo stack.
+//it needs tons of parameters because it calls clear_shroud(...) (see above)
+void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
+	const game_data& gamedata, const unit_map& units, std::vector<team>& teams, int team);
+
 //will return true iff the unit at 'loc' has any possible moves it can do
 //(including attacking etc).
 bool unit_can_move(const gamemap::location& loc, const unit_map& units,

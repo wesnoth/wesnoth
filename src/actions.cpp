@@ -1430,9 +1430,12 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	const bool skirmisher = u.type().is_skirmisher();
 
+	const bool check_shroud = teams[team_num].auto_shroud_updates() &&
+		(teams[team_num].uses_shroud() || teams[team_num].uses_fog());
+	
 	//if we use shroud/fog of war, count out the units we can currently see
 	std::set<gamemap::location> known_units;
-	if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
+	if(check_shroud) {
 		for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 			if(teams[team_num].fogged(u->first.x,u->first.y) == false) {
 				known_units.insert(u->first);
@@ -1466,8 +1469,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 		//if we use fog or shroud, see if we have sighted an enemy unit, in
 		//which case we should stop immediately.
-		if(teams[team_num].uses_shroud() || teams[team_num].uses_fog()) {
-
+		if(check_shroud) {
 			if(units.count(*step) == 0 && !map.is_village(*step)) {
 				std::cerr << "checking for units from " << (step->x+1) << "," << (step->y+1) << "\n";
 
@@ -1553,6 +1555,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
 
 	if(undo_stack != NULL) {
 		if(event_mutated || should_clear_stack) {
+			apply_shroud_changes(*undo_stack,disp,status,map,gamedata,units,teams,team_num);
 			undo_stack->clear();
 		} else {
 			undo_stack->push_back(undo_action(steps,starting_moves,orig_village_owner));
@@ -1670,4 +1673,43 @@ bool unit_can_move(const gamemap::location& loc, const unit_map& units,
 	}
 
 	return false;
+}
+
+void apply_shroud_changes(undo_list& undos, display* disp, const gamestatus& status, const gamemap& map,
+	const game_data& gamedata, const unit_map& units, std::vector<team>& teams, int team)
+{
+	// No need to do this if the team isn't using fog or shroud.
+	if(!teams[team].uses_shroud() && !teams[team].uses_fog())
+		return;
+	/*
+		This function works thusly:
+		1. run through the list of undo_actions
+		2. for each one, play back the unit's move
+		3. for each location along the route, clear any "shrouded" squares that the unit can see
+		4. clear the undo_list
+		5. call clear_shroud to update the fog of war for each unit.
+		6. fix up associated display stuff (done in a similar way to turn_info::undo())
+	*/
+	for(undo_list::const_iterator un = undos.begin(); un != undos.end(); ++un) {
+		if(un->is_recall()) continue;
+		unit_map::const_iterator ui = units.find(un->route.back());
+		unit_map um;
+		assert(ui != units.end());
+		std::vector<gamemap::location>::const_iterator step;
+		for(step = un->route.begin(); step != un->route.end(); ++step) {
+			um.insert(std::pair<gamemap::location,unit>(*step,ui->second));
+			clear_shroud_unit(map,status,gamedata,um,*step,teams,team,NULL,NULL);
+			um.erase(*step);
+		}
+	}
+	if(disp != NULL) {
+		disp->invalidate_unit();
+		disp->invalidate_game_status();
+		clear_shroud(*disp,status,map,gamedata,units,teams,team);
+		disp->recalculate_minimap();
+		disp->set_paths(NULL);
+		disp->set_route(NULL);
+	} else {
+		recalculate_fog(map,status,gamedata,units,teams,team);
+	}
 }

@@ -108,6 +108,8 @@ private:
 	void show_statistics();
 	void label_terrain();
 	void show_enemy_moves(bool ignore_units);
+	void toggle_shroud_updates();
+	void update_shroud_now();
 
 	void do_recruit(const std::string& name);
 
@@ -119,6 +121,9 @@ private:
 	void show_menu(const std::vector<std::string>& items, int xloc, int yloc, bool context_menu);
 
 	void show_attack_options(unit_map::const_iterator u);
+
+	bool clear_shroud();
+	void clear_undo_stack();
 
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const;

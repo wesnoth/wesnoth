@@ -120,6 +120,9 @@ public:
 	bool clear_fog(size_t x, size_t y);
 	void refog();
 
+	bool auto_shroud_updates() const { return auto_shroud_updates_; }
+	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
+	
 	const std::string& music() const;
 
 	static int nteams();
@@ -130,6 +133,8 @@ private:
 
 	typedef std::vector<std::vector<bool> > shroud_map;
 	shroud_map shroud_, fog_;
+
+	bool auto_shroud_updates_;
 
 	team_info info_;
 };

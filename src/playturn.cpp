@@ -675,7 +675,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			res = attacks_in_range[res];
 
 			u->second.set_goto(gamemap::location());
-			undo_stack_.clear();
+			clear_undo_stack();
 			redo_stack_.clear();
 
 			current_paths_ = paths();
@@ -771,9 +771,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 				gui_.set_paths(&current_paths_);
 			}
 
-			if(clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1)) {
-				undo_stack_.clear();
-			}
+			if(clear_shroud()) clear_undo_stack();
 		}
 	} else {
 		gui_.set_paths(NULL);
@@ -892,6 +890,11 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 		return !browse_ && !redo_stack_.empty();
 	case hotkey::HOTKEY_UNDO:
 		return !browse_ && !undo_stack_.empty();
+
+	case hotkey::HOTKEY_TOGGLE_SHROUD:
+		return !browse_ && (teams_[team_num_-1].uses_fog() || teams_[team_num_-1].uses_shroud());
+	case hotkey::HOTKEY_UPDATE_SHROUD:
+		return !browse_ && !teams_[team_num_-1].auto_shroud_updates();
 
 	//commands we can only do if we are actually playing, not just viewing
 	case hotkey::HOTKEY_END_UNIT_TURN:
@@ -1070,6 +1073,8 @@ void turn_info::end_turn()
 		}
 	}
 
+	//force any pending fog updates
+	clear_undo_stack();
 	end_turn_ = true;
 
 	//auto-save
@@ -1089,7 +1094,7 @@ void turn_info::goto_leader()
 {
 	const unit_map::const_iterator i = team_leader(team_num_,units_);
 	if(i != units_.end()) {
-		clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+		clear_shroud();
 		gui_.scroll_to_tile(i->first.x,i->first.y,display::WARP);
 	}
 }
@@ -1174,7 +1179,7 @@ void turn_info::undo()
 
 	recorder.undo();
 
-	const bool shroud_cleared = clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+	const bool shroud_cleared = clear_shroud();
 
 	if(shroud_cleared) {
 		gui_.recalculate_minimap();
@@ -1588,10 +1593,10 @@ void turn_info::do_recruit(const std::string& name)
 			gui::show_dialog(gui_,NULL,"",msg,gui::OK_ONLY);
 		}
 
-		undo_stack_.clear();
+		clear_undo_stack();
 		redo_stack_.clear();
 
-		clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+		clear_shroud();
 
 		gui_.recalculate_minimap();
 		gui_.invalidate_game_status();
@@ -1995,6 +2000,29 @@ void turn_info::show_enemy_moves(bool ignore_units)
 	
 	gui_.set_paths(&all_paths_);
 }
+
+void turn_info::toggle_shroud_updates() {
+	bool auto_shroud = teams_[team_num_-1].auto_shroud_updates();
+	// If we're turning automatic shroud updates on, then commit all moves
+	if(auto_shroud == false) update_shroud_now();
+	teams_[team_num_-1].set_auto_shroud_updates(!auto_shroud);
+}
+
+void turn_info::update_shroud_now() {
+	clear_undo_stack();
+}
+
+bool turn_info::clear_shroud() {
+	return teams_[team_num_-1].auto_shroud_updates() && 
+		::clear_shroud(gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+}
+
+void turn_info::clear_undo_stack() {
+	if (teams_[team_num_-1].auto_shroud_updates() == false)
+		apply_shroud_changes(undo_stack_,&gui_,status_,map_,gameinfo_,units_,teams_,team_num_-1);
+	undo_stack_.clear();
+}
+
 
 unit_map::iterator turn_info::current_unit()
 {

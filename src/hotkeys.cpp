@@ -73,6 +73,8 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("editsavemap",HOTKEY_EDIT_SAVE_MAP));
 		m.insert(val("editsaveas",HOTKEY_EDIT_SAVE_AS));
 		m.insert(val("editsetstartpos",HOTKEY_EDIT_SET_START_POS));
+		m.insert(val("toggleshroud",HOTKEY_TOGGLE_SHROUD));
+		m.insert(val("updateshroud",HOTKEY_UPDATE_SHROUD));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);
@@ -372,6 +374,12 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_BEST_ENEMY_MOVES:
 			if(executor)
 				executor->show_enemy_moves(true);
+			break;
+		case HOTKEY_TOGGLE_SHROUD:
+			if(executor) executor->toggle_shroud_updates();
+			break;
+		case HOTKEY_UPDATE_SHROUD:
+			if(executor) executor->update_shroud_now();
 			break;
 		case HOTKEY_QUIT_GAME: {
 			const int res = gui::show_dialog(disp,NULL,"",string_table["quit_message"],gui::YES_NO);
