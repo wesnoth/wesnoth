@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "events.hpp"
 #include "font.hpp"
 #include "language.hpp"

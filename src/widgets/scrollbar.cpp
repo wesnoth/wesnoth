@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "../global.hpp"
+
 #include "scrollbar.hpp"
 #include "../display.hpp"
 #include "../image.hpp"

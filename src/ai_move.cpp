@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "ai_move.hpp"
 #include "display.hpp"
 #include "game_config.hpp"

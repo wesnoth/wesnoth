@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "progressbar.hpp"
 
 #include "../display.hpp"

@@ -11,10 +11,7 @@
    See the COPYING file for more details.
 */
 
-//disable the very annoying VC++ warning 4786
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
+#include "global.hpp"
 
 //include files for opendir(3), readdir(3), etc. These files may vary
 //from platform to platform, since these functions are NOT ANSI-conforming

@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "config.hpp"
@@ -294,10 +296,10 @@ hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl, bool alt, bool cmd, 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event, bool mods)
 {
 	return get_hotkey(event.keysym.sym, 
-			event.keysym.mod & KMOD_SHIFT, 
-			event.keysym.mod & KMOD_CTRL, 
-			event.keysym.mod & KMOD_ALT, 
-			event.keysym.mod & KMOD_LMETA, 
+			(event.keysym.mod & KMOD_SHIFT) != 0, 
+			(event.keysym.mod & KMOD_CTRL) != 0, 
+			(event.keysym.mod & KMOD_ALT) != 0, 
+			(event.keysym.mod & KMOD_LMETA) != 0, 
 			mods);
 }
 

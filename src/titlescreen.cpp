@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "config.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
@@ -124,6 +126,7 @@ const config get_tips_of_day()
 	try {
 		cfg.read(preprocess_file("data/tips.cfg"));
 	} catch(config::error& e) {
+		e;
 		std::cerr << "Could not read tips.cfg\n";
 	}
 
@@ -258,7 +261,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 	CKey key;
 
-	bool last_escape = key[SDLK_ESCAPE];
+	bool last_escape = key[SDLK_ESCAPE] != 0;
 
 	update_whole_screen();
 
@@ -287,7 +290,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 		if(!last_escape && key[SDLK_ESCAPE])
 			return QUIT_GAME;
 
-		last_escape = key[SDLK_ESCAPE];
+		last_escape = key[SDLK_ESCAPE] != 0;
 
 		events::pump();
 

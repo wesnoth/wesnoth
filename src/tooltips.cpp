@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "font.hpp"
 #include "show_dialog.hpp"
 #include "tooltips.hpp"

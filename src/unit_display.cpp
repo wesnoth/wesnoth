@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
@@ -612,8 +614,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	if(!hide) {
 		int xloc = disp.get_location_x(a);
 		int yloc = disp.get_location_y(a);
-
-		SDL_Rect area = disp.map_area();
 
 		//we try to scroll the map if the unit is at the edge.
 		//keep track of the old position, and if the map moves at all,

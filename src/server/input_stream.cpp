@@ -1,5 +1,7 @@
 #include "input_stream.hpp"
 
+#ifndef _WIN32
+
 #include <algorithm>
 #include <iostream>
 #include <fcntl.h>
@@ -7,8 +9,11 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#endif
+
 input_stream::input_stream(const std::string& path) : fd_(-1), path_(path)
 {
+#ifndef _WIN32
 	if(path == "") {
 		return;
 	}
@@ -25,18 +30,22 @@ input_stream::input_stream(const std::string& path) : fd_(-1), path_(path)
 	} else {
 		std::cerr << "opened fifo at '" << path << "'. Server commands may be written to this file.\n";
 	}
+#endif
 }
 
 input_stream::~input_stream()
 {
+#ifndef _WIN32
 	if(fd_ != -1) {
 		close(fd_);
 		unlink(path_.c_str());
 	}
+#endif
 }
 
 bool input_stream::read_line(std::string& str)
 {
+#ifndef _WIN32
 	if(fd_ == -1) {
 		return false;
 	}
@@ -56,4 +65,7 @@ bool input_stream::read_line(std::string& str)
 	} else {
 		return false;
 	}
+#else
+	return false;
+#endif
 }

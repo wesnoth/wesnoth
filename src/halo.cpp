@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "halo.hpp"
 #include "image.hpp"
 #include "preferences.hpp"

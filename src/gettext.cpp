@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "gettext.hpp"
 
 #include <cstring>

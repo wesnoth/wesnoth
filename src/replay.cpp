@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "ai_interface.hpp"
 #include "dialogs.hpp"

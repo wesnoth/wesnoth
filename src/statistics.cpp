@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "statistics.hpp"
 #include "util.hpp"
 

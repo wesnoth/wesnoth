@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"

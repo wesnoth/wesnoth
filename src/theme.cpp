@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "font.hpp"
 #include "language.hpp"
 #include "log.hpp"

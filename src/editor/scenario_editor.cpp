@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "scenario_editor.hpp"
 
 scenario_editor::scenario_editor(game_data& gameinfo, const config& game_config, CVideo& video)

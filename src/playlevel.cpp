@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "cursor.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
@@ -554,6 +556,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 						replaying = do_replay(gui,map,gameinfo,units,teams,
 						                      player_number,status,state_of_game);
 					} catch(replay::error& e) {
+						e;
 						std::cerr << "caught replay::error\n";
 						gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),gui::OK_ONLY);
 
@@ -806,6 +809,7 @@ redo_turn:
 		}
 	} //end catch
 	catch(replay::error& e) {
+		e;
 		std::cerr << "caught replay::error\n";
 		gui::show_dialog(gui,NULL,"",_("The file you have tried to load is corrupt"),
 		                 gui::OK_ONLY);

@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "cursor.hpp"
@@ -1049,15 +1051,15 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			restorer.restore();
 			disp.update_display();
 
-			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, mod & KMOD_SHIFT, 
-					mod & KMOD_CTRL, mod & KMOD_ALT, mod & KMOD_LMETA);
+			const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(key, (mod & KMOD_SHIFT) != 0, 
+					(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 
 			if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 				gui::show_dialog(disp,NULL,"",_("This HotKey is already in use."),gui::MESSAGE);
 			} else {
-				newhk.set_key(key, mod & KMOD_SHIFT, 
-						mod & KMOD_CTRL, mod & KMOD_ALT, mod & KMOD_LMETA);
+				newhk.set_key(key, (mod & KMOD_SHIFT) != 0, 
+						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
 				menu_.change_item(menu_.selection(), 2, newhk.get_name());
 			};

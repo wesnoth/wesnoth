@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "clipboard.hpp"
 
 #if defined(_X11) && !defined(__APPLE__)

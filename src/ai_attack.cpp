@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "ai_attack.hpp"
 #include "game_config.hpp"

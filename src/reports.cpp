@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "font.hpp"
 #include "game_config.hpp"

@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "game.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"

@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "gamestatus.hpp"
@@ -467,6 +470,7 @@ config& save_index()
 		} catch(io_exception& e) {
 			std::cerr << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error& e) {
+			e;
 			std::cerr << "error parsing save index config file\n";
 			save_index_cfg.clear();
 		}

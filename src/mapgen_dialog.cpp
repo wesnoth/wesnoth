@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "mapgen_dialog.hpp"
 
 #include "events.hpp"

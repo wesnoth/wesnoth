@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "image.hpp"

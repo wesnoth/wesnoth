@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "pathutils.hpp"
 #include "util.hpp"
 

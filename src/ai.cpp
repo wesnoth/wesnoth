@@ -10,8 +10,12 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "actions.hpp"
 #include "ai.hpp"
+#include "ai2.hpp"
 #include "ai_attack.hpp"
 #include "ai_move.hpp"
 #include "dialogs.hpp"
@@ -187,6 +191,8 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 		return new sample_ai(info);
 	else if(name == "idle_ai")
 		return new idle_ai(info);
+	else if(name == "ai2")
+		return new ai2(info);
 	else if(name != "")
 		lg::err(lg::ai) << "AI not found: '" << name << "'\n";
 

@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "thread.hpp"
 
 namespace threading {

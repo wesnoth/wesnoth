@@ -43,7 +43,7 @@ public:
 	/// \param callback a callback interface for warning that the grip has been moved
 	scrollpane(display &d);
 
-	void add_widget(widget* w, int x, int x, int z_order = 0);
+	void add_widget(widget* w, int x, int y, int z_order = 0);
 	void remove_widget(widget* w);
 	void clear();
 

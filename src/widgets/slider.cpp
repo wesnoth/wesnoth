@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "../global.hpp"
+
 #include "slider.hpp"
 #include "../display.hpp"
 #include "../image.hpp"

@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "../global.hpp"
+
 #include "combo.hpp"
 #include "button.hpp"
 #include "../show_dialog.hpp"

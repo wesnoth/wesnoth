@@ -11,10 +11,7 @@
    See the COPYING file for more details.
 */
 
-//disable the very annoying VC++ warning 4786
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
+#include "global.hpp"
 
 #include "SDL.h"
 
@@ -144,6 +141,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 							recorder.save_game(units_data,label,snapshot,state.starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
+							e;
 							gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
 							retry = true;
 						};
@@ -205,6 +203,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 					try {
 						save_game(state);
 					} catch(gamestatus::save_game_failed& e) {
+						e;
 						gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);
 						retry = true;
 					}
@@ -297,6 +296,7 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 					std::cerr << "wrote checksum: '" << checksum_cfg.write() << "'\n";
 					write_file(fname_checksum,checksum_cfg.write());
 				} catch(io_exception& e) {
+					e;
 					std::cerr << "could not write to cache '" << fname << "'\n";
 				}
 
@@ -834,6 +834,7 @@ bool game_controller::load_game()
 		    gui::OK_ONLY);
 		return false;
 	} catch(io_exception& e) {
+		e;
 		gui::show_dialog(disp(),NULL,"",_("File I/O Error while reading the game"),gui::OK_ONLY);
 		return false;
 	}
@@ -1131,10 +1132,13 @@ void game_controller::download_campaigns()
 
 		gui::show_dialog(disp(),NULL,_("Campaign Installed"),_("The campaign has been installed."),gui::OK_ONLY);
 	} catch(config::error& e) {
+		e;
 		gui::show_dialog(disp(),NULL,_("Error"),_("Network communication error."),gui::OK_ONLY);
 	} catch(network::error& e) {
+		e;
 		gui::show_dialog(disp(),NULL,_("Error"),_("Remote host disconnected."),gui::OK_ONLY);
 	} catch(io_exception& e) {
+		e;
 		gui::show_dialog(disp(),NULL,_("Error"),_("There was a problem creating the files necessary to install this campaign."),gui::OK_ONLY);
 	}
 }

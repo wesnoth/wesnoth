@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "cursor.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
@@ -172,8 +174,7 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	                        _("Name of game") + std::string(":"),xpos,ypos).h + border_size;
 	string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
-	name_entry_.assign(new gui::textbox(disp_,width-20,
-		vgettext("$login's game", i18n_symbols)));
+	name_entry_.assign(new gui::textbox(disp_,width-20,vgettext("$login's game", i18n_symbols)));
 	name_entry_->set_location(xpos,ypos);
 	name_entry_->set_dirty();
 

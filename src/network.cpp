@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "log.hpp"
 #include "network.hpp"
 #include "network_worker.hpp"
@@ -218,7 +220,7 @@ server_manager::~server_manager()
 
 bool server_manager::is_running() const
 {
-	return static_cast<bool>(server_socket);
+	return server_socket != NULL;
 }
 
 size_t nconnections()

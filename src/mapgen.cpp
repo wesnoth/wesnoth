@@ -1,7 +1,4 @@
-//disable the very annoying VC++ warning 4786
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
+#include "global.hpp"
 
 #include <algorithm>
 #include <cctype>

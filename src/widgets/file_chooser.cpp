@@ -10,6 +10,8 @@
    See the COPYING file for more details.
 */
 
+#include "../global.hpp"
+
 #include "../font.hpp"
 #include "../events.hpp"
 #include "../language.hpp"
@@ -124,6 +126,8 @@ void file_chooser::draw_contents() {
 void file_chooser::process() {
 	CKey key;
 	int mousex, mousey;
+	SDL_GetMouseState(&mousex,&mousey);
+	
 	// The menu does not implement focus functionality, so we fake
 	// it. We give the file list focus whenever the filename textbox
 	// does not have focus. Inflexible but easy solution.

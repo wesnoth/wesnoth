@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "events.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"
@@ -306,7 +308,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			}
 
 			const bool enter = key[SDLK_RETURN] && !old_enter;
-			old_enter = key[SDLK_RETURN];
+			old_enter = key[SDLK_RETURN] != 0;
 			if(enter && message_entry.text().empty() == false) {
 				const std::string& text = message_entry.text();
 
@@ -337,7 +339,7 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				return QUIT;
 			}
 
-			last_escape = bool(key[SDLK_ESCAPE]);
+			last_escape = key[SDLK_ESCAPE] != 0;
 
 			events::raise_process_event();
 			events::raise_draw_event();

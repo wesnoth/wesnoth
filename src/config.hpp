@@ -13,11 +13,6 @@
 #ifndef CONFIG_HPP_INCLUDED
 #define CONFIG_HPP_INCLUDED
 
-//disable the very annoying VC++ warning 4786
-#ifdef WIN32
-#pragma warning(disable:4786)
-#endif
-
 #include <cassert>
 #include <map>
 #include <sstream>

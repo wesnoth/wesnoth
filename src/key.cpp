@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "key.hpp"
 
 #define KEY_TEST 0

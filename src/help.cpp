@@ -10,6 +10,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "about.hpp"
 #include "cursor.hpp"
 #include "events.hpp"

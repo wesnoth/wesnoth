@@ -15,10 +15,10 @@
 #include <string>
 #include <vector>
 
-struct config;
-struct display;
+class config;
+class display;
 struct game_data;
-struct gamemap;
+class gamemap;
 
 namespace help {
 

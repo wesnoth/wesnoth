@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "widget.hpp"
 #include "../display.hpp"
 

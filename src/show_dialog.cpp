@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "config.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
@@ -744,16 +746,16 @@ int show_dialog(display& disp, surface image,
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 
-		const bool new_right_button = mouse_flags&SDL_BUTTON_RMASK;
-		const bool new_left_button = mouse_flags&SDL_BUTTON_LMASK;
+		const bool new_right_button = (mouse_flags&SDL_BUTTON_RMASK) != 0;
+		const bool new_left_button = (mouse_flags&SDL_BUTTON_LMASK) != 0;
 		const bool new_key_down = key[SDLK_SPACE] || key[SDLK_RETURN] ||
 		                          key[SDLK_ESCAPE];
 
-		const bool new_up_arrow = key[SDLK_UP];
-		const bool new_down_arrow = key[SDLK_DOWN];
+		const bool new_up_arrow = key[SDLK_UP] != 0;
+		const bool new_down_arrow = key[SDLK_DOWN] != 0;
 
-		const bool new_page_up = key[SDLK_PAGEUP];
-		const bool new_page_down = key[SDLK_PAGEDOWN];
+		const bool new_page_up = key[SDLK_PAGEUP] != 0;
+		const bool new_page_down = key[SDLK_PAGEDOWN] != 0;
 
 		if((!key_down && key[SDLK_RETURN] || menu_.double_clicked()) &&
 		   (type == YES_NO || type == OK_CANCEL || type == OK_ONLY || type == CLOSE_ONLY)) {

@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include "global.hpp"
+
 #include "config.hpp"
 #include "font.hpp"
 #include "language.hpp"
