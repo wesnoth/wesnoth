@@ -48,16 +48,18 @@ If you want to build wesnoth_editor too add the --enable-editor
 configure option.
 
 In case you want wesnothd to be built you should add:
---enable-server --localstatedir=/var/run --with-server-uid=user
+--enable-server --localstatedir=/var --with-server-uid=user
 --with-server-gid=group
 
-localstatedir is the location where a wesnothd subdirectory will be
+$localstatedir/run is the location where a wesnothd subdirectory will be
 created owned by user:group. This is relevant if you want to be able 
 to communicate with wesnothd through a fifo file named socket.
 You have to run wesnothd with the user specified while configuring in 
 order for it to work.
 You most likely want to change the default localstatedir since it will
 probably default to PREFIX/var.
+You can also specify the fifodir directly by using --with-fifodir
+This way localstatedir won't be used.
 
 Rebuilding:
 
