@@ -527,9 +527,9 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 			}
 
 			const int recruit_res =
-			gui::show_dialog(gui,NULL,"",
-							 string_table["recruit_unit"] + ":\n",
-			                 gui::OK_CANCEL,&items,&sample_units);
+			      gui::show_dialog(gui,NULL,"",
+			                       string_table["recruit_unit"] + ":\n",
+			                       gui::OK_CANCEL,&items,&sample_units);
 			if(recruit_res != -1) {
 				const std::string& name = item_keys[recruit_res];
 				const std::map<std::string,unit_type>::const_iterator
@@ -541,17 +541,17 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 					     string_table["not_enough_gold_to_recruit"],
 						 gui::OK_ONLY);
 				} else {
-					recorder.add_recruit(recruit_res,last_hex);
-
 					//create a unit with traits
+					recorder.add_recruit(recruit_res,last_hex);
 					unit new_unit(&(u_type->second),team_num,true);
 					const std::string& msg =
-					    recruit_unit(map,team_num,units,new_unit,
-					                 last_hex,&gui);
-					if(msg.empty())
+					   recruit_unit(map,team_num,units,new_unit,last_hex,&gui);
+					if(msg.empty()) {
 						current_team.spend_gold(u_type->second.cost());
-					else
+					} else {
+						recorder.undo();
 						gui::show_dialog(gui,NULL,"",msg,gui::OK_ONLY);
+					}
 
 					undo_stack.clear();
 					redo_stack.clear();

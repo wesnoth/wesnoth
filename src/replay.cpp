@@ -31,6 +31,33 @@
 
 replay recorder;
 
+namespace {
+
+replay* random_generator = &recorder;
+
+struct set_random_generator {
+
+	set_random_generator(replay* r) : old_(random_generator)
+	{
+		random_generator = r;
+	}
+
+	~set_random_generator()
+	{
+		random_generator = old_;
+	}
+
+private:
+	replay* old_;
+};
+
+}
+
+int get_random()
+{
+	return random_generator->get_random();
+}
+
 replay::replay() : pos_(0), current_(NULL), skip_(0)
 {}
 
@@ -291,9 +318,12 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
 			   game_state& state_of_game, replay* obj)
 {
-	replay& recorder = obj != NULL ? *obj : recorder;
+	log_scope("do replay");
+	replay& replayer = (obj != NULL) ? *obj : recorder;
 
-	update_locker lock_update(disp,recorder.skipping());
+	const set_random_generator generator_setter(&replayer);
+
+	update_locker lock_update(disp,replayer.skipping());
 
 	//a list of units that have promoted from the last attack
 	std::deque<gamemap::location> advancing_units;
@@ -301,7 +331,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 	team& current_team = teams[team_num-1];
 
 	for(;;) {
-		config* const cfg = recorder.get_next_action();
+		config* const cfg = replayer.get_next_action();
 
 		std::map<std::string,std::vector<config*> >::iterator it;
 
@@ -334,13 +364,13 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 		//if there is nothing more in the records
 		else if(cfg == NULL) {
-			recorder.set_skip(0);
+			replayer.set_skip(0);
 			return false;
 		}
 
 		//if there is an end turn directive
 		else if(cfg->children.find("end_turn") != cfg->children.end()) {
-			recorder.next_skip();
+			replayer.next_skip();
 			return true;
 		}
 
@@ -356,11 +386,18 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			std::advance(itor,val);
 			const std::map<std::string,unit_type>::const_iterator u_type =
 			                               gameinfo.unit_types.find(*itor);
-			if(u_type == gameinfo.unit_types.end())
+			if(u_type == gameinfo.unit_types.end()) {
+				std::cerr << "recruiting illegal unit\n";
 				throw replay::error();
+			}
 
 			unit new_unit(&(u_type->second),team_num,true);
-			recruit_unit(map,team_num,units,new_unit,loc);
+			const std::string& res =
+			              recruit_unit(map,team_num,units,new_unit,loc);
+			if(!res.empty()) {
+				std::cerr << "cannot recruit unit: " << res << "\n";
+				throw replay::error();
+			}
 
 			current_team.spend_gold(u_type->second.cost());
 		}
@@ -408,7 +445,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			paths paths_list(map,gameinfo,units,src,teams,ignore_zocs,teleport);
 			paths_wiper wiper(disp);
 
-			if(!recorder.skipping()) {
+			if(!replayer.skipping()) {
 				disp.set_paths(&paths_list);
 
 				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
@@ -426,7 +463,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
-			if(!recorder.skipping())
+			if(!replayer.skipping())
 				disp.move_unit(rt->second.steps,current_unit);
 
 			current_unit.set_movement(rt->second.move_left);
@@ -436,7 +473,7 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				get_tower(dst,teams,team_num-1);
 			}
 
-			if(!recorder.skipping()) {
+			if(!replayer.skipping()) {
 				disp.draw_tile(dst.x,dst.y);
 				disp.update_display();
 			}

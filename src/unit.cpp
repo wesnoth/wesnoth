@@ -71,7 +71,7 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 	if(use_traits && traits.size() >= num_traits) {
 		std::set<int> chosen_traits;
 		for(size_t i = 0; i != num_traits; ++i) {
-			int num = recorder.get_random()%(traits.size()-i);
+			int num = get_random()%(traits.size()-i);
 			while(chosen_traits.count(num)) {
 				++num;
 			}

@@ -17,6 +17,8 @@
 #include "display.hpp"
 #include "map.hpp"
 
+int get_random();
+
 class replay
 {
 public:
