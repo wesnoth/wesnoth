@@ -1,12 +1,24 @@
 CVS HEAD:
  * new campaign: The Rise of Wesnoth (17 fully playable scenarios)
  * user interface improvements:
+   * new ellipses to indicate unit selection
    * tweaked theme
    * tweaked change video mode dialog
    * return can be used to navigate through help topics and sections in help browser
    * a box is drawn around images in help browser
  * speed scaling for different types of terrains
- * new and improved graphics: lighthouse, signpost, mountains, grassland, attack icons and frames, maps, castle, units, shroud, fog of war, flags
+ * new and improved graphics: 
+   * lighthouse
+   * signpost
+   * maps
+   * flags
+   * mountains
+   * grassland
+   * desert
+   * castle
+   * shroud
+   * fog of war
+   * attack icons and frames
  * new musics: main menu
  * new scenarios for 'The Eastern Invasion' campaign:
    * Evacuation
@@ -31,6 +43,7 @@ CVS HEAD:
    * Tribal Warfare
    * The Outpost
  * gave names to Trolls
+ * gender support for units
  * increased hitpoints and required XP for Drake Warrior
  * new units
    * Drake Flameheart
@@ -50,7 +63,7 @@ CVS HEAD:
    * disabled observers from setting labels
    * playername checks, stripping spaces at the end of name
    * limited maximum lenght of observer messages
-   * added server commands: msg, kick, ban, unban, status
+   * added server commands: msg, kick, ban, unban, status, metrics
  * language fixes and polishing (english)
  * updated translations:
    * catalan
