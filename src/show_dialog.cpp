@@ -940,7 +940,7 @@ int dialog_action_receive_network::do_action()
 		return CONNECTION_CONTINUING;
 	} else
 		return CONTINUE_DIALOG;
-};
+}
 
 network::connection dialog_action_receive_network::result() const
 {

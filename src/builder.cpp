@@ -54,12 +54,12 @@ const int terrain_builder::rule_image::UNITPOS = 36 + 18;
 terrain_builder::rule_image::rule_image(int layer, bool global_image) : 
 	position(HORIZONTAL), layer(layer),
 	basex(0), basey(0), global_image(global_image)
-{};
+{}
 
 terrain_builder::rule_image::rule_image(int x, int y, bool global_image) : 
 	position(VERTICAL), layer(0),
 	basex(x), basey(y), global_image(global_image)
-{};
+{}
 
 terrain_builder::tile::tile() : last_tod("invalid_tod")
 {

@@ -66,7 +66,7 @@ public:
 
 	/// Update the size of this widget. Use if the size_specs have
 	/// changed.
-	void terrain_palette::adjust_size();
+	void adjust_size();
 
 private:
 	void draw_old(bool);

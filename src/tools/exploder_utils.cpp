@@ -206,7 +206,7 @@ void save_image(surface surf, const std::string &filename)
 			PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
 
 	//puts the actual image data in the row_pointers array
-	png_byte *row_pointers[surf->h];
+	png_byte **row_pointers = new png_byte *[surf->h];
 	surface_lock lock(surf);
 	
 	//converts the data to the RGBA format. We cannot pass SDL data
@@ -237,5 +237,6 @@ void save_image(surface surf, const std::string &filename)
 	//cleans everything
 	png_write_end(png_ptr, info_ptr);
 	png_destroy_write_struct(&png_ptr, &info_ptr);
+	delete row_pointers;
 }
 
