@@ -1765,7 +1765,7 @@ void turn_info::recall()
 	gui_.draw(); //clear the old menu
 
 	if((*level_)["disallow_recall"] == "yes") {
-		gui::show_dialog(gui_,NULL,"",_("You are seperated from your soldiers and may not recall them"));
+		gui::show_dialog(gui_,NULL,"",_("You are separated from your soldiers and may not recall them"));
 	} else if(recall_list.empty()) {
 		gui::show_dialog(gui_,NULL,"",_("There are no troops available to recall\n\
 (You must have veteran survivors from a previous scenario)"));
