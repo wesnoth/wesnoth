@@ -239,13 +239,9 @@ bool is_directory_internal(const std::string& fname)
 	}
 
 #else
-	DIR* const dir = opendir(fname.c_str());
-	if(dir != NULL) {
-		closedir(dir);
-		return true;
-	} else {
-		return false;
-	}
+	struct stat dir_stat;
+	::stat(fname.c_str(), &dir_stat);
+	return S_ISDIR(dir_stat.st_mode);
 #endif
 }
 
