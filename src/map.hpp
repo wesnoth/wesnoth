@@ -111,6 +111,9 @@ public:
 
 	std::string write() const;
 
+	//overlays another map onto this one at the given position.
+	void overlay(const gamemap& m, const config& rules, int x=0, int y=0);
+
 	//dimensions of the map.
 	int x() const;
 	int y() const;

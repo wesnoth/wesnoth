@@ -771,6 +771,32 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		screen->rebuild_all();
 	}
 
+	//creating a mask of the terrain
+	else if(cmd == "terrain_mask") {
+		gamemap::location loc(cfg);
+		if(loc.x == -1) {
+			loc.x = 0;
+		}
+
+		if(loc.y == -1) {
+			loc.y = 0;
+		}
+
+		gamemap mask(*game_map);
+
+		try {
+			mask.read(cfg["mask"]);
+		} catch(gamemap::incorrect_format_exception&) {
+			ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
+			return rval;
+		}
+
+		game_map->overlay(mask,cfg,loc.x,loc.y);
+		screen->recalculate_minimap();
+		screen->invalidate_all();
+		screen->rebuild_all();
+	}
+
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
 		unit new_unit(*game_data_ptr,cfg);

@@ -199,8 +199,14 @@ void gamemap::read(const std::string& data)
 	villages_.clear();
 	std::fill(startingPositions_,startingPositions_+sizeof(startingPositions_)/sizeof(*startingPositions_),location());
 
+	//ignore leading newlines
+	std::string::const_iterator i = data.begin();
+	while(i != data.end() && (*i == '\r' || *i == '\n')) {
+		++i;
+	}
+
 	size_t x = 0, y = 0;
-	for(std::string::const_iterator i = data.begin(); i != data.end(); ++i) {
+	for(; i != data.end(); ++i) {
 		char c = *i;
 		if(c == '\r') {
 			continue;
@@ -265,6 +271,73 @@ std::string gamemap::write() const
 	}
 
 	return str.str();
+}
+
+void gamemap::overlay(const gamemap& m, const config& rules_cfg, const int xpos, const int ypos)
+{
+	const config::child_list& rules = rules_cfg.get_children("rule");
+
+	const int xend = minimum<int>(xpos+m.x(),x());
+	const int yend = minimum<int>(ypos+m.y(),y());
+	for(int x = xpos; x < xend; ++x) {
+		for(int y = ypos; y < yend; ++y) {
+			const TERRAIN t = m[x-xpos][y-ypos];
+			const TERRAIN current = (*this)[x][y];
+
+			if(t == FOGGED || t == VOID_TERRAIN) {
+				continue;
+			}
+
+			//see if there is a matching rule
+			config::child_list::const_iterator rule = rules.begin();
+			for( ; rule != rules.end(); ++rule) {
+				static const std::string src_key = "old", src_not_key = "old_not",
+				                         dst_key = "new", dst_not_key = "new_not";
+				const config& cfg = **rule;
+				const std::string& src = cfg[src_key];
+				if(src != "" && std::find(src.begin(),src.end(),current) == src.end()) {
+					continue;
+				}
+
+				const std::string& src_not = cfg[src_not_key];
+				if(src_not != "" && std::find(src_not.begin(),src_not.end(),current) != src_not.end()) {
+					continue;
+				}
+
+				const std::string& dst = cfg[dst_key];
+				if(dst != "" && std::find(dst.begin(),dst.end(),t) == dst.end()) {
+					continue;
+				}
+
+				const std::string& dst_not = cfg[dst_not_key];
+				if(dst_not != "" && std::find(dst_not.begin(),dst_not.end(),t) != dst_not.end()) {
+					continue;
+				}
+
+				break;
+			}
+
+
+			if(rule != rules.end()) {
+				const config& cfg = **rule;
+				const std::string& terrain = cfg["terrain"];
+				if(terrain != "") {
+					set_terrain(location(x,y),terrain[0]);
+				} else if(cfg["use_old"] != "yes") {
+					set_terrain(location(x,y),t);
+				}
+			} else {
+				set_terrain(location(x,y),t);
+			}
+		}
+	}
+
+	for(const location* pos = m.startingPositions_; pos != m.startingPositions_ + sizeof(m.startingPositions_)/sizeof(*m.startingPositions_); ++pos) {
+		if(pos->valid()) {
+			startingPositions_[pos - m.startingPositions_] = *pos;
+		}
+	}
+	
 }
 
 int gamemap::x() const { return tiles_.size(); }
@@ -381,6 +454,15 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 {
 	if(!on_board(loc))
 		return;
+
+	const bool old_village = is_village(loc);
+	const bool new_village = is_village(ter);
+
+	if(old_village && !new_village) {
+		villages_.erase(std::remove(villages_.begin(),villages_.end(),loc),villages_.end());
+	} else if(!old_village && new_village) {
+		villages_.push_back(loc);
+	}
 
 	tiles_[loc.x][loc.y] = ter;
 
