@@ -40,7 +40,7 @@ language_def known_languages[] = {
 	language_def("el_GR", "Ελληνικά (Ellinika)"),
 	language_def("et_EE", "Eesti"),
 	language_def("en_GB", "English (GB)"),
-	language_def("C",     "English (hm... nearly US)"),
+	language_def("C",     "English (US)"),
 	language_def("eu_ES", "Euskera"),
 	language_def("fr_FR", "Français"),
 	language_def("it_IT", "Italiano"),
