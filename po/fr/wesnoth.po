@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.7.11-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-04 11:52+0200\n"
+"POT-Creation-Date: 2004-09-05 18:26+0200\n"
 "PO-Revision-Date: 2004-09-05 19:06+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
@@ -1073,8 +1073,8 @@ msgstr ""
 "@Mettez n'importe quelle balle dans le but adverse plus souvent que votre "
 "adversaire dans la votre\n"
 "Defaite:\n"
-"#Votre adversaire ammène la balle dans votre but plus souvent que vous "
-"dans le sien"
+"#Votre adversaire ammène la balle dans votre but plus souvent que vous dans "
+"le sien"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
@@ -1180,9 +1180,77 @@ msgstr ""
 "pouvez recruter que dans un château et seulement si le chef est dans le "
 "donjon."
 
+#: data/scenarios/tutorial/tutorial1.cfg:73
+#, fuzzy
+msgid "Recruit a unit"
+msgstr "Recruter une unité"
+
 #: data/scenarios/tutorial/tutorial1.cfg:79
 msgid "Excellent! You have recruited an Elvish Fighter."
 msgstr "Excellent ! Vous venez de recruter un guerrier elfe."
+
+#: data/scenarios/tutorial/tutorial1.cfg:81
+#: data/scenarios/tutorial/tutorial1.cfg:101
+#: data/scenarios/tutorial/tutorial1.cfg:136
+#: data/scenarios/tutorial/tutorial1.cfg:164
+#: data/scenarios/tutorial/tutorial1.cfg:182
+#: data/scenarios/tutorial/tutorial1.cfg:206
+#, fuzzy
+msgid "What do I do next?"
+msgstr "Que voulez-vous dire ?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+#, fuzzy
+msgid "How do I recruit units?"
+msgstr "Recruter une unité"
+
+#: data/scenarios/tutorial/tutorial1.cfg:83
+msgid ""
+"To recruit a unit, right click on the castle tile on which you wish to "
+"recruit the unit. Then select Recruit, or just hold your cursor over the "
+"tile and press 'Ctrl-R'. Next, select the type of unit that you want to "
+"recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
+"Shift-R' to re-recruit the last type of unit you recruited."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+msgid ""
+"A leader is a unit that can recruit. This means that when the leader is on a "
+"keep, he can recruit units on the surrounding castle tiles. Leaders are "
+"usually powerful units that each side only controls one of. Also, your "
+"leader is usually the first unit that your side controls, and starts on a "
+"keep. You can select your leader quickly by pressing 'l'. If your leader "
+"dies, you lose the game. You can win most scenarios by defeating all enemy "
+"leaders."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:84
+#, fuzzy
+msgid "What's a leader?"
+msgstr "Que s'est-il donc passé ici ?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid "How should I choose what kind of units to recruit?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:85
+msgid ""
+"You have to carefully review their skills, which are displayed to the left "
+"of the unit selection box,  and cost, which is displayed after the name of "
+"the unit. You will learn more about these statistics throughout the tutorial."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+#, fuzzy
+msgid "What happens when I recruit a unit?"
+msgstr "Que s'est-il donc passé ici ?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:86
+msgid ""
+"When you recruit a unit, it appears at full health on a castle tile of your "
+"choice. It also receives two traits, which will be discussed later. It "
+"cannot move or attack until you end your turn."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:92
 msgid ""
@@ -1194,9 +1262,44 @@ msgstr ""
 "recrutées, vous devez terminer votre tour. Pour cela, cliquez sur le bouton "
 "« Fin du tour » situé en bas à droite."
 
+#: data/scenarios/tutorial/tutorial1.cfg:94
+#, fuzzy
+msgid "End your turn"
+msgstr "À vous de jouer"
+
 #: data/scenarios/tutorial/tutorial1.cfg:99
 msgid "You have successfully ended your turn."
 msgstr "Vous avez terminé votre tour avec succès."
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+msgid "How do I end my turn?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:103
+#, fuzzy
+msgid ""
+"One way to end your turn is to press 'Alt-E'. Alternatively, you can right-"
+"click and select End Turn, or select the End Turn button in the lower-right "
+"hand corner."
+msgstr ""
+"Comme les unités ne peuvent pas se déplacer pendant le tour où elle sont "
+"recrutées, vous devez terminer votre tour. Pour cela, cliquez sur le bouton "
+"« Fin du tour » situé en bas à droite."
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+#, fuzzy
+msgid "What happens when I end my turn?"
+msgstr "Que s'est-il donc passé ici ?"
+
+#: data/scenarios/tutorial/tutorial1.cfg:104
+msgid ""
+"When you end your turn, it becomes another side's turn and only that side "
+"has the right to move, until that side ends its turn. After all sides end "
+"their turns, the next turn begins. This has various effects, including "
+"causing all units to regain their full movement potential. The number of the "
+"current turn is displayed on the status bar next to the image of a flag. "
+"When this number exceeds the maximum number of turns, you lose the game."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:110
 msgid ""
@@ -1208,6 +1311,11 @@ msgstr ""
 "une unité, sélectionnez-la puis sélectionnez sa destination. Ici, sa "
 "destination est le panneau à coté de la chamane elfe, Merle."
 
+#: data/scenarios/tutorial/tutorial1.cfg:112
+#, fuzzy
+msgid "Move your Elvish Fighter next to Merle"
+msgstr "Déplacez votre guerrier dans un village."
+
 #: data/scenarios/tutorial/tutorial1.cfg:134
 msgid ""
 "Excellent! You have successfully moved your Elvish Fighter. However, since "
@@ -1217,6 +1325,52 @@ msgstr ""
 "Excellent ! Vous avez déplacé votre guerrier elfe avec succès. Cependant, "
 "comme il s'est déplacé à coté d'une unité ennemie, il a perdu tout son "
 "mouvement pour ce tour : ceci est appelé la « zone de contrôle »."
+
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid "How far can my Elvish Fighter move?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:138
+msgid ""
+"Your Elvish Fighter begins with a certain number of move points each turn; "
+"this is called his speed. When your Elvish Fighter moves along a path, each "
+"hex he goes through costs him move points; this includes his destination. "
+"When you select your Elvish Fighter, all hexes he can't move onto within one "
+"turn will be shaded. If the destination is far enough away that he needs "
+"more than one turn to reach it, a number will appear showing how many turns "
+"it will take him. Clicking on a far-away space will set the unit on a course "
+"for that space, which means it automatically moves as far as it can towards "
+"that space every turn. If you accidentally set a unit on a course, select it "
+"twice to remove the course."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid ""
+"A unit's zone of control is the location consisting of all hexes the unit is "
+"adjacent to. Units cannot move through opponent's zones of control; they can "
+"only move into it. When they do this, they lose all of their remaining "
+"movement. Zones of control can be used to block enemies from reaching your "
+"weak and wounded units."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:139
+msgid "What's the zone of control?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid "How do I tell who is allied and who is an enemy?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:140
+msgid ""
+"Units you control have a green, yellow, or red energy circle above their "
+"health bar, the green vertical bar next to them. Units with full movement "
+"have green: ones with some movement yellow, ones with no movement red. Units "
+"controlled by the enemy do not have an energy circle. Allied units you do "
+"not control, like me, have a blue energy circle. Also, the option 'Show Team "
+"Colors', in Preferences, causes the color of a unit's controller is "
+"displayed as a disc below the unit."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:146
 msgid ""
@@ -1229,9 +1383,61 @@ msgstr ""
 "de l'unité attaquante. Vous verrez ensuite la boîte d'option d'attaques dans "
 "laquelle il vous faudra choisir l'attaque à utiliser."
 
+#: data/scenarios/tutorial/tutorial1.cfg:148
+#, fuzzy
+msgid "Attack Merle"
+msgstr "Attaquant"
+
 #: data/scenarios/tutorial/tutorial1.cfg:162
 msgid "You have successfully attacked Merle."
 msgstr "Vous avez attaqué Merle avec succès."
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid "Can Merle retaliate from my attack?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:166
+msgid ""
+"Whenever a unit is attacked, it retaliates with one of their own weapons. "
+"This means that after each blow from the attacker, the defender retaliates "
+"with one blow. This continues until one side runs out of blows, in which "
+"case the other unit continues attacking until its blows are depleted as "
+"well. However, any unit can only retaliate by using a weapon of the same "
+"range as the one used to attack. This means that a ranged attack can only be "
+"countered by a ranged attack and a melee attack can only be countered by a "
+"melee attack. Most units have more powerful melee attacks than ranged, so "
+"units with ranged attacks are useful in that retaliation against them is "
+"less powerful; often there is no retaliation. However ranged units cannot "
+"shoot across multiple hexes; this is one of the distinctive features of "
+"Wesnoth."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid ""
+"Every attack does a certain amount of damage per hit, and can be used a "
+"certain number of times per battle. These numbers, called the attack's "
+"damage and strike numbers, are displayed in order under the name of the "
+"attack on the unit's status table and next to it on the attack options menu. "
+"To quickly find the maximum damage an attack can inflict, multiply the "
+"damage by the number of strikes. For example, my lightning attack does 14 "
+"damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
+"combat."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:167
+msgid "How can you tell how powerful a unit's attacks are?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid ""
+"Units have the ability to block blows. The chance that a unit has to hit is "
+"based on the defender's skill at defending blows, and is listed on the "
+"attack options menu after the damage and strike numbers for the bow attack."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:168
+msgid "Will my fighter hit every time when he attacks?"
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:174
 msgid "End your turn, and wait for Merle to attack you."
@@ -1248,13 +1454,75 @@ msgstr ""
 "assez d'expérience, elle progresse vers le niveau suivant et devient plus "
 "puissante."
 
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid "What's experience?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:184
+msgid ""
+"When a unit fights another unit, it gains experience, denoted 'XP', from the "
+"combat. The amount of experience gained is equal to the opponent's level, "
+"which is usually a representation of that unit's power. However, much more "
+"experience is gained from defeating an enemy unit. The amount of XP gained "
+"from killing an enemy is equal to 8 times the enemy's level."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid "What happens when a unit advances?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:185
+msgid ""
+"When a unit advances, it transforms into a different unit type. This unit "
+"type is dependent on what the unit was originally, but occasionally there "
+"will be more than one choice of what to advance into. Advanced units are "
+"usually more powerful and 1 level higher than they were originally. Also, "
+"when a unit advances, it is healed completely and any handicaps that have "
+"been cast on it are removed. This is known as 'advance-heal'."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:191
 msgid "Move your fighter onto a village."
+msgstr "Déplacez votre guerrier dans un village."
+
+#: data/scenarios/tutorial/tutorial1.cfg:193
+#, fuzzy
+msgid "Move your fighter onto a village"
 msgstr "Déplacez votre guerrier dans un village."
 
 #: data/scenarios/tutorial/tutorial1.cfg:204
 msgid "Villages heal the units on them."
 msgstr "Les villages soignent les unité qui sont dessus."
+
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid "What happens when a unit moves onto a village?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:208
+msgid ""
+"Whenever a unit moves onto a village, he flags the village for his side. "
+"This action takes all of the unit's remaining movement. Villages flagged for "
+"a side give the side several benefits, including giving the side a extra "
+"gold coin every turn, and reducing the total upkeep cost of that side's "
+"units by one. The total number of villages you control is also displayed on "
+"the status bar after the picture of a house. In addition to the economic "
+"benefit of villages, villages can be used in battle. Villages heal the units "
+"on them 8 HP per turn."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid "How do I heal when there aren't any villages nearby?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:209
+msgid ""
+"There are ways to heal even without villages. If a unit does not move or "
+"attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
+"him he cannot receive rest-heal. Also, there are some units which heal the "
+"units surrounding them. The Elvish Shaman is one such unit; units next to an "
+"Elvish Shaman are healed 4 HP per turn. Finally, whenever you win a level "
+"all your units are healed fully."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:215
 msgid ""
@@ -1263,6 +1531,19 @@ msgid ""
 msgstr ""
 "Maintenant, vous devez vaincre Merle en réduisant ses points de vie à 0 ou "
 "moins. Attaquez simplement de façon répétée."
+
+#: data/scenarios/tutorial/tutorial1.cfg:217
+#, fuzzy
+msgid "Defeat Merle"
+msgstr "Défaite"
+
+#: data/scenarios/tutorial/tutorial1.cfg:232
+msgid ""
+"Oops! You moved your leader off of the keep. Remember, when your leader is "
+"not on a keep, you cannot recruit. Also remember that if your leader dies, "
+"you lose. In order to continue the tutorial, I will have to teleport you "
+"back onto your keep."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:248
 #: data/scenarios/tutorial/tutorial2.cfg:233
@@ -1286,6 +1567,38 @@ msgstr ""
 msgid "You have successfully completed the first training scenario."
 msgstr "Vous avez terminé avec succès le premier scénario d'entraînement."
 
+#: data/scenarios/tutorial/tutorial1.cfg:267
+#: data/scenarios/tutorial/tutorial2.cfg:252
+msgid "Hooray!"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid "How do I know how to complete a scenario? Will you always tell me?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:269
+msgid ""
+"Sometimes it is not clear how to win a scenario just by listening to the "
+"dialog. In this case you need to look at the scenario objectives, which "
+"appear after the opening dialog. It can also be accessed by clicking "
+"'Objectives' on the menu. The scenario objectives are a list of victory "
+"conditions and defeat conditions, and if any of the conditions are met, the "
+"level is over. Hopefully, it was a victory condition that was met."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid "What happens when I win a scenario?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial1.cfg:270
+msgid ""
+"When you win a scenario, all of your units survive and are revived to full "
+"health, and you do not have to pay them for the remaining turns. Also, if "
+"your army remains in the area after you win, all villages surrender to you "
+"immediately after you win. However between scenarios, 20% of your gold is "
+"lost."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:276
 #: data/scenarios/tutorial/tutorial2.cfg:261
 msgid "Do you want to review any of the skills learned on this level?"
@@ -1297,6 +1610,11 @@ msgstr ""
 msgid "Yes"
 msgstr "Oui"
 
+#: data/scenarios/tutorial/tutorial1.cfg:280
+#: data/scenarios/tutorial/tutorial2.cfg:265
+msgid "I'm done reviewing skills!"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial1.cfg:297
 msgid ""
 "Although you have completed your first scenario, your training is not yet "
@@ -1306,6 +1624,10 @@ msgstr ""
 "Bien que vous avez terminé votre premier scénario, votre entraînement n'est "
 "pas encore arrivé à son terme. Nous allons maintenant passer au scénario "
 "suivant dans lequel vous devrez me combattre dans un simulacre de bataille."
+
+#: data/scenarios/tutorial/tutorial2.cfg:3
+msgid "Traits and Specialties"
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:60
 msgid ""
@@ -1327,8 +1649,8 @@ msgstr ""
 "ennemis. Gagnez ce scénario en me vainquant. Votre guerrier du précédent "
 "scénario peut vous aider dans cette bataille. Pour le rappeler, cliquez avec "
 "le bouton droit sur une case du château, sélectionnez « rappeler », "
-"sélectionnez votre guerrier, puis sélectionnez « Ok ». Vous devriez également "
-"recruter des guerriers et des archers elfes."
+"sélectionnez votre guerrier, puis sélectionnez « Ok ». Vous devriez "
+"également recruter des guerriers et des archers elfes."
 
 #: data/scenarios/tutorial/tutorial2.cfg:79
 msgid ""
@@ -1364,6 +1686,43 @@ msgstr ""
 msgid "You have successfully recalled your Elvish Fighter."
 msgstr "Vous avez rappelé votre guerrier elfe avec succès."
 
+#: data/scenarios/tutorial/tutorial2.cfg:88
+#: data/scenarios/tutorial/tutorial2.cfg:102
+#: data/scenarios/tutorial/tutorial2.cfg:117
+#: data/scenarios/tutorial/tutorial2.cfg:131
+#: data/scenarios/tutorial/tutorial2.cfg:145
+#: data/scenarios/tutorial/tutorial2.cfg:159
+#: data/scenarios/tutorial/tutorial2.cfg:173
+#: data/scenarios/tutorial/tutorial2.cfg:206
+#, fuzzy
+msgid "En guarde!"
+msgstr "En garde !"
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+msgid ""
+"First, you must pay 20 pieces of gold for each unit you recall, regardless "
+"of the type of unit. Other than that, recalled units are basically like "
+"recruited units, except that instead of a new unit appearing, a unit from a "
+"previous scenario will appear."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:90
+#, fuzzy
+msgid "What happens when I recall a unit?"
+msgstr "Que s'est-il donc passé ici ?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid "How should I decide which units to recall?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:91
+msgid ""
+"You should usually recall units that have already advanced to the next "
+"level. However, you may also want to recall units that have high experience, "
+"and are thus likely to advance. You should recall units that will be useful "
+"for the scenario you are in; for example in a forest scenario, recall elves."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:100
 msgid ""
 "You may notice that your units have slightly different statistics than the "
@@ -1374,6 +1733,33 @@ msgstr ""
 "différentes par rapport à celles affichées avant que vous ne les recrutiez. "
 "Ceci arrive parce que des caractéristiques leurs ont étés affectées."
 
+#: data/scenarios/tutorial/tutorial2.cfg:104
+msgid ""
+"The function of traits is add variety by making units of the same type "
+"different from each other. This is done by randomly assigning each unit "
+"traits when they are recruited. The traits that a unit has are displayed on "
+"the Status Table, and the function of a specific trait can be found by "
+"putting your cursor over that trait."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:104
+#, fuzzy
+msgid "What do traits do?"
+msgstr "Qu'est-ce que c'est ?"
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid ""
+"There are five distinct traits, which have effects ranging from increasing a "
+"unit's hit points to decreasing the amount of XP required to advance. "
+"However all traits are designed to improve unit's power; there are no "
+"'negative' traits. Most units have an equal chance to get any two different "
+"traits when they are recruited."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:105
+msgid "What kind of traits can my units get?"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:115
 msgid ""
 "When you recruit and recall units, you lose gold. If this would cause you to "
@@ -1382,6 +1768,36 @@ msgstr ""
 "Quand vous recrutez ou rappelez des unités, vous perdez de l'or. Si ceci  "
 "vous amène a avoir moins de 0 pièces d'or, vous ne pourrez pas recruter ou "
 "rappeler."
+
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid "How much gold do my units cost?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:119
+msgid ""
+"You need to pay each unit you recruit or recall gold when you recruit it. "
+"The cost of recruiting a unit is displayed under the unit's name. The cost "
+"of recalling a unit is always 20 gold. A unit also costs gold for each turn "
+"it is under your control. This cost, called 'upkeep', is equal to the level "
+"of the unit. However, units you do not recruit or recall such as your leader "
+"do not cost any gold at all. The total upkeep cost of your units is "
+"displayed on the status bar at the top after a picture of gold and then a "
+"red arrow."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid "How do I get gold?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:120
+msgid ""
+"You begin each level with a percentage of gold from the previous level. If "
+"this is less than 100 gold, you begin with 100 gold instead. The amount of "
+"gold you have is displayed on the status bar after the picture of gold. "
+"After the start of a scenario, you receive 2 gold every turn. Since you "
+"usually need more gold than that, you should flag villages, which give you 1 "
+"gold per turn."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:129
 msgid ""
@@ -1392,10 +1808,69 @@ msgstr ""
 "de dégâts que les unités d'alignement différent peuvent s'infliger entre "
 "elles."
 
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid ""
+"There are 3 alignments: Lawful, Neutral, and Chaotic. There are also 3 times "
+"of day: day, twilight, and night. During day, units of the alignment Lawful, "
+"such as humans, do 25% more damage, while Chaotic units such as undead do "
+"25% less. At night it is reversed. During twilight, all units do their "
+"normal damage. Neutral units such as elves are unaffected by day and night."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:133
+msgid "What are the different alignments and times of day?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid "How do I know what time of day it is?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:134
+msgid ""
+"The times of day usually progress in a sequence: dawn- identical to "
+"twilight, morning- day, evening- day, dusk- twilight, first-watch- night, "
+"second-watch- night, then repeat. This is represented by the sun and moon "
+"which each rise in the east and set in the west. However some scenarios have "
+"a different sequence, such as underground where it is perpetually night. You "
+"can find out the current time of day by looking at the Status Table."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:143
 msgid "Each hex has a terrain, which gives the hex distinctive properties."
 msgstr ""
 "Chaque case a un terrain, lequel donne à la case des propriétés distinctes."
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid ""
+"Two terrains have properties which have already been described; namely "
+"villages and castle. However the properties of most terrains are more "
+"subtle, and have to do with the advantages and disadvantages different units "
+"have when they move onto them. The first property of a terrain is the number "
+"of move points it takes each unit to move through the hex. The second "
+"property is the defense that the terrain gives units standing on it. This is "
+"a percentage which determines the unit's chance to be hit on that terrain. "
+"For example; elves have 70% defense on grass, and are therefore hit 30% of "
+"the time."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:147
+msgid "What are the different properties that terrains have?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid "How do I find out the properties of a specific terrain?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:148
+msgid ""
+"To find out the properties of a terrain with respect to a specific unit, "
+"right-click on the unit, select Unit Description, then select Terrain "
+"Modifiers. To find out which terrain is on a particular hex, move your "
+"cursor over that hex and look in the upper-right hand corner of the screen. "
+"This will display, in order, the name of the terrain, then the coordinates "
+"of the hex, then the selected unit's defense, then the number of move points "
+"it will cost the selected unit to move through that hex."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:157
 msgid ""
@@ -1405,12 +1880,89 @@ msgstr ""
 "Chaque attaque possède un type de dommage qui affecte la quantité de dégâts "
 "que peuvent s'infliger les unités entre elles."
 
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid ""
+"Each unit has a certain resistance against each attack type. This resistance "
+"is a percentage which is subtracted from the damage of opponent's weapons of "
+"that type. For example, if an Elvish Scout is attacked by an Elvish Archer, "
+"the archer does 20% more damage than normal, since Elvish Scouts have -20% "
+"resistance to pierce. This bonus/penalty is calculated additively with other "
+"bonuses/penalties like time of day, so two -50% penalties would add up to -"
+"100%."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:161
+msgid "How does resistance affect attack damage?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid ""
+"There are 6 different damage types: blade, pierce, impact, fire, cold, and "
+"holy. Heavily armored units have high resistance to the physical types: "
+"blade, pierce, and impact, but low resistance to the magical types: fire and "
+"cold. All living units have resistance to holy while undead are extremely "
+"weak to it. To find out a specific unit's resistance, right-click on the "
+"unit, select Unit Description, then select Resistance."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:162
+msgid "What are the different damage types?"
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:171
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 "De nombreuses unités possèdent une spécialité qui modifie d'une certaine "
 "façon les règles du jeu."
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid ""
+"Each specialty does something different; that's the whole point of a "
+"specialty. To find a description of a unit's specialty, put your cursor over "
+"the name of the specialty."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:175
+msgid "What do specialties do?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid ""
+"The specialties a unit gets are determined by the unit type; for example all "
+"generals have the specialty leadership. There are two kinds of specialties: "
+"abilities, and attack specials. Abilities apply to units while attack "
+"specials only apply to one of the unit's attacks."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:176
+msgid "Which units get specialties?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid ""
+"There are many different specialties, and learning about them is one of the "
+"interesting parts of playing Wesnoth. The two most common specialties are "
+"called 'magical' and 'leadership'. Magical attacks have a 70% chance of "
+"hitting enemies regardless of what terrain they are on. Units do more damage "
+"while next to a unit of higher level with leadership."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:177
+msgid "What kinds of specialties can my units get?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid "How do I use specialties?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:178
+msgid ""
+"To use a specialty, you just have to move and/or attack with your units in a "
+"way which triggers the specialty. For example, in order to use leadership, "
+"you must move a unit with leadership next to another unit, then attack with "
+"the other unit."
+msgstr ""
 
 #: data/scenarios/tutorial/tutorial2.cfg:195
 msgid ""
@@ -1423,15 +1975,41 @@ msgstr ""
 "sur ses attaques. Pour voir ses nouvelles statistiques de combat, regardez "
 "la table des statuts."
 
+#: data/scenarios/tutorial/tutorial2.cfg:202
+msgid "This potion increases the damage of all the drinker's attacks by four."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid ""
+"The objects you encounter are put in by the scenario designer, so they vary "
+"from campaign to campaign. In Heir to the Throne, most objects give the unit "
+"who picks them up a new weapon. However there are usually not that many "
+"objects in a campaign."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:208
+msgid "What kind of objects am I likely to encounter?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid "How long do these objects last?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:209
+msgid ""
+"Most objects are permanent changes to the unit that receives them. However a "
+"few objects, such as holy water, last only until the remainder of the level."
+msgstr ""
+
 #: data/scenarios/tutorial/tutorial2.cfg:223
 msgid ""
 "Remember to try to prevent the enemy from capturing villages, and to "
 "recapture the ones that they already have. This will cut off their gold "
 "supply and make them unable to recruit."
 msgstr ""
-"Il est important d'empêcher l'ennemi de capturer des village et d'essayer "
-"de recapturer ceux qu'ils ont déjà. De cette façon cela réduira leur "
-"quantité d'or et les rendra incapable de recruter."
+"Il est important d'empêcher l'ennemi de capturer des village et d'essayer de "
+"recapturer ceux qu'ils ont déjà. De cette façon cela réduira leur quantité "
+"d'or et les rendra incapable de recruter."
 
 #: data/scenarios/tutorial/tutorial2.cfg:250
 msgid ""
@@ -1443,22 +2021,33 @@ msgstr ""
 "d'entraînement. Après cela, vous pouvez vouloir commencer une campagne ou "
 "jouer en multi-joueur."
 
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid "How do I play a campaign?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:254
+msgid ""
+"To begin a campaign, run Wesnoth, select 'Campaign', select which campaign "
+"to play, then select Easy, Normal, or Hard. Heir to the Throne is the "
+"suggested for newcomers to Wesnoth."
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid "How do I play multiplayer?"
+msgstr ""
+
+#: data/scenarios/tutorial/tutorial2.cfg:255
+msgid ""
+"To play Wesnoth against other people, select 'Multiplayer'. If you have the "
+"latest development version of Wesnoth, select 'Join Official Server'. "
+"However, if you have version 1.0, select 'Join Game', then type in 'server."
+"wesnoth.org'. This will connect you to the official Wesnoth server, where "
+"you can join a game by selecting it, then selecting 'Join Game'."
+msgstr ""
+
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
 msgstr "C'était bien expliqué ! Mais..."
-
-# à quoi correspondent ces trois chaînes ?
-#: data/scenarios/tutorial/utils.cfg:13
-msgid "{END_MESSAGE}"
-msgstr "{END_MESSAGE}"
-
-#: data/scenarios/tutorial/utils.cfg:21
-msgid "{QUESTION}"
-msgstr "{QUESTION}"
-
-#: data/scenarios/tutorial/utils.cfg:25
-msgid "{ANSWER}"
-msgstr "{ANSWER}"
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -2553,8 +3142,8 @@ msgstr "Assassin"
 # FIXME: Skirmisher = tirailleur??
 #: data/units/Assassin.cfg:16 data/units/Duelist.cfg:16
 #: data/units/Fencer.cfg:16 data/units/Outlaw_Princess.cfg:17
-#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:16
-#: data/units/Saurian_Warrior.cfg:16
+#: data/units/Rogue.cfg:16 data/units/Saurian.cfg:17
+#: data/units/Saurian_Warrior.cfg:17
 msgid "skirmisher"
 msgstr "tirailleur"
 
@@ -2761,11 +3350,11 @@ msgid ""
 "began the battle! Such is their fury that the fur of these undead flying "
 "beasts is tainted red with the blood of their victims."
 msgstr ""
-"Les chauve-souris sanglantes sont rapides et peuvent drainer le sang de "
-"ceux qu'elles attaquent, se soignant en cela, jusqu'à devenir plus fortes "
-"que lorsqu'elles ont commencé le combat ! Leur furie est telle que la "
-"fourrure de ces bêtes volantes mort-vivantes est teintée du rouge du sang de "
-"leurs victimes."
+"Les chauve-souris sanglantes sont rapides et peuvent drainer le sang de ceux "
+"qu'elles attaquent, se soignant en cela, jusqu'à devenir plus fortes que "
+"lorsqu'elles ont commencé le combat ! Leur furie est telle que la fourrure "
+"de ces bêtes volantes mort-vivantes est teintée du rouge du sang de leurs "
+"victimes."
 
 #: data/units/Blood_Bat.cfg:19 data/units/Cave_Spider.cfg:19
 #: data/units/Direwolf_Rider.cfg:18 data/units/Goblin_Direwolver.cfg:20
@@ -2846,10 +3435,10 @@ msgstr "arc"
 #: data/units/Orcish_Shaman.cfg:69 data/units/Orcish_Shaman.cfg:112
 #: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
-#: data/units/Peasant.cfg:35 data/units/Pikeman.cfg:20
+#: data/units/Peasant.cfg:34 data/units/Pikeman.cfg:20
 #: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
-#: data/units/Saurian.cfg:20 data/units/Saurian.cfg:37
-#: data/units/Saurian_Warrior.cfg:20 data/units/Saurian_Warrior.cfg:37
+#: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
+#: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
 #: data/units/Sea_Hag.cfg:21 data/units/Sea_Serpent.cfg:20
 #: data/units/Sergeant.cfg:39 data/units/Skeleton_Archer.cfg:41
 #: data/units/Soul_Shooter.cfg:38 data/units/Spearman.cfg:20
@@ -2952,9 +3541,9 @@ msgstr ""
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
 #: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Guardsman.cfg:52
 #: data/units/Dwarvish_Stalwart.cfg:38 data/units/Dwarvish_Stalwart.cfg:52
-#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:18
-#: data/units/Saurian.cfg:35 data/units/Saurian_Warrior.cfg:18
-#: data/units/Saurian_Warrior.cfg:35 data/units/Spearman.cfg:19
+#: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
+#: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
+#: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
 #: data/units/Spearman.cfg:32
 msgid "spear"
 msgstr "lance"
@@ -2977,8 +3566,8 @@ msgid ""
 "them into stone!"
 msgstr ""
 "À première vue, ces créatures mystiques ressemblant à des serpents semblent "
-"faibles, mais il ne faut pas se fier à leur apparence car d'un simple regard, "
-"les cockatrices peuvent changer en pierre tout ennemi !"
+"faibles, mais il ne faut pas se fier à leur apparence car d'un simple "
+"regard, les cockatrices peuvent changer en pierre tout ennemi !"
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
@@ -3015,12 +3604,12 @@ msgid ""
 "although they also carry a bow to use when necessary. If the Commander is "
 "lost, so is the battle."
 msgstr ""
-"Le grade de commandant est porté par ceux qui dirigent les groupes de soldats "
-"dans les batailles. Grâce à leur talents de commandement, ils permettent aux "
-"unités adjacentes de plus faible niveau d'améliorer leur performances au "
-"combat. Les commandants sont habiles à l'épée bien qu'ils puissent également "
-"manier l'arc en cas de nécessité. Si le commandant est perdu, il en est de "
-"même pour la bataille."
+"Le grade de commandant est porté par ceux qui dirigent les groupes de "
+"soldats dans les batailles. Grâce à leur talents de commandement, ils "
+"permettent aux unités adjacentes de plus faible niveau d'améliorer leur "
+"performances au combat. Les commandants sont habiles à l'épée bien qu'ils "
+"puissent également manier l'arc en cas de nécessité. Si le commandant est "
+"perdu, il en est de même pour la bataille."
 
 #: data/units/Cuttle_Fish.cfg:3
 msgid "Cuttle Fish"
@@ -3033,9 +3622,9 @@ msgid ""
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
 "Les calamars sont de gigantesques créatures des mers. Ils peuvent saisir "
-"leurs adversaires avec leurs puissants tentacules ou cracher une encre "
-"noire toxique à distance. La meilleure manière de survivre à une rencontre "
-"avec ces monstres est de rester à terre."
+"leurs adversaires avec leurs puissants tentacules ou cracher une encre noire "
+"toxique à distance. La meilleure manière de survivre à une rencontre avec "
+"ces monstres est de rester à terre."
 
 #: data/units/Cuttle_Fish.cfg:19 data/units/Tentacle.cfg:20
 msgid "tentacle"
@@ -3210,8 +3799,8 @@ msgid ""
 "Smaller than most Drakes, the Beaks are therefore more agile and can fight "
 "even when flying."
 msgstr ""
-"Plus petit que la plupart des drakes, les becs sont toutefois plus "
-"agiles et peuvent se battre en volant."
+"Plus petit que la plupart des drakes, les becs sont toutefois plus agiles et "
+"peuvent se battre en volant."
 
 #: data/units/Drake_Beak.cfg:37 data/units/Drake_Petit.cfg:37
 msgid "beak"
@@ -3227,9 +3816,10 @@ msgid ""
 "possess the fire-breathing abilities of their remote ancestors. Enemies are "
 "well advised to keep their distance."
 msgstr ""
-"Non seulement les drakes ardents manient leurs griffes de façon mortelle mais "
-"ils sont également capables de souffler le feu légendaire de leurs lointains "
-"ancêtres. Leurs adversaires seront bien avisés de garder leurs distances."
+"Non seulement les drakes ardents manient leurs griffes de façon mortelle "
+"mais ils sont également capables de souffler le feu légendaire de leurs "
+"lointains ancêtres. Leurs adversaires seront bien avisés de garder leurs "
+"distances."
 
 #: data/units/Drake_Burner.cfg:42 data/units/Drake_Fighter.cfg:42
 #: data/units/Drake_Fire.cfg:41 data/units/Drake_Flameheart.cfg:58
@@ -3291,7 +3881,8 @@ msgstr "Esclave drake"
 
 #: data/units/Drake_Slave.cfg:16
 msgid "Drake Slaves are servile members of this reptilian race."
-msgstr "Les esclaves drakes sont les membres asservis de cette race reptilienne."
+msgstr ""
+"Les esclaves drakes sont les membres asservis de cette race reptilienne."
 
 #: data/units/Drake_Warmage.cfg:3
 msgid "Drake Warmage"
@@ -3365,9 +3956,9 @@ msgid ""
 "using fire from what are called dragonstaffs. They are the chief possessors "
 "of arcane Dwarvish technology."
 msgstr ""
-"Gardiens des grandes cités naines, ils carbonisent leurs ennemis en "
-"faisant feu de ce qu'ils appellent des bâtons de dragon. Ils sont "
-"également les gardiens des arcanes de la technologies naine."
+"Gardiens des grandes cités naines, ils carbonisent leurs ennemis en faisant "
+"feu de ce qu'ils appellent des bâtons de dragon. Ils sont également les "
+"gardiens des arcanes de la technologies naine."
 
 #: data/units/Dwarvish_Dragonguard.cfg:28
 #: data/units/Dwarvish_Dragonguard.cfg:46
@@ -3431,8 +4022,8 @@ msgid ""
 msgstr ""
 "Les seigneurs nains sont le rois sous les montagnes. Leur habileté à la "
 "hache de bataille est inégalée et ils peuvent même frapper des ennemis "
-"distants. Leurs précieuses armures sont faites des plus résistants "
-"alliages forgés par les leurs."
+"distants. Leurs précieuses armures sont faites des plus résistants alliages "
+"forgés par les leurs."
 
 #: data/units/Dwarvish_Lord.cfg:43
 msgid "hatchet"
@@ -3582,8 +4173,8 @@ msgid ""
 msgstr ""
 "Habiles dans le commandement de soldats, les capitaines elfes apportent un "
 "bonus à toutes les unités de niveau 1 sur les cases adjacentes. Les "
-"capitaines elfes sont aussi habiles en combat au corps-à-corps qu'en combat à "
-"distance."
+"capitaines elfes sont aussi habiles en combat au corps-à-corps qu'en combat "
+"à distance."
 
 #: data/units/Elvish_Champion.cfg:3
 msgid "Elvish Champion"
@@ -3596,9 +4187,9 @@ msgid ""
 "the bow, able to inflict damage on their enemies from both near and far."
 msgstr ""
 "Les champions elfes sont de formidables maîtres épéistes capables d'infliger "
-"d'importants dégâts en corps-à-corps. Combattants d'élite, ils sont également "
-"adeptes de l'arc et peuvent infliger des dégâts dans les rangs ennemis "
-"aussi bien de près que de loin."
+"d'importants dégâts en corps-à-corps. Combattants d'élite, ils sont "
+"également adeptes de l'arc et peuvent infliger des dégâts dans les rangs "
+"ennemis aussi bien de près que de loin."
 
 #: data/units/Elvish_Druid.cfg:3
 msgid "Elvish Druid"
@@ -3680,8 +4271,8 @@ msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
-"Les seigneurs elfes sont redoutables en combat, aussi bien à l'épée en combat "
-"rapproché, qu'à distance avec leurs boules de feu dévastatrices."
+"Les seigneurs elfes sont redoutables en combat, aussi bien à l'épée en "
+"combat rapproché, qu'à distance avec leurs boules de feu dévastatrices."
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
 msgid "Elvish Marksman"
@@ -3818,10 +4409,10 @@ msgid ""
 "are skirmishers, and so can move right past enemy units."
 msgstr ""
 "Les escrimeurs sont entraînés au maniement de l'épée. Bien que leur rapière "
-"soit une arme légère, ils peuvent s'en servir d'une façon mortelle. Utilisant "
-"également une dague dans leur main libre, ils peuvent parer les attaques "
-"efficacement. Habiles à l'escarmouche, ils peuvent aisément traverser les "
-"lignes ennemies."
+"soit une arme légère, ils peuvent s'en servir d'une façon mortelle. "
+"Utilisant également une dague dans leur main libre, ils peuvent parer les "
+"attaques efficacement. Habiles à l'escarmouche, ils peuvent aisément "
+"traverser les lignes ennemies."
 
 #: data/units/Fighter.cfg:3 data/units/Fighter.cfg:44
 msgid "Fighter"
@@ -3840,7 +4431,7 @@ msgstr ""
 msgid "Fire Dragon"
 msgstr "Dragon de feu"
 
-#TODO: underlings ?
+# TODO: underlings ?
 #: data/units/Fire_Dragon.cfg:17
 msgid ""
 "Long lived and terrifying, the fire dragon is a member of the dragon family "
@@ -3850,11 +4441,11 @@ msgid ""
 "they help lead to victory."
 msgstr ""
 "Séculaire et terrifiant, le dragon de feu et un membre de la famille des "
-"dragons qui a la capacité de cracher des flammes. D'ailleurs, il n'hésite pas "
-"à faire bon usage de son souffle ardent. Il possède également une morsure "
-"puissante et peut écraser ses adversaires avec sa queue. Les dragons de feu "
-"sont adroits et cruels, et n'hésitent pas à faire appel à des sous-fifres "
-"qu'ils mènent vers la victoire."
+"dragons qui a la capacité de cracher des flammes. D'ailleurs, il n'hésite "
+"pas à faire bon usage de son souffle ardent. Il possède également une "
+"morsure puissante et peut écraser ses adversaires avec sa queue. Les dragons "
+"de feu sont adroits et cruels, et n'hésitent pas à faire appel à des sous-"
+"fifres qu'ils mènent vers la victoire."
 
 #: data/units/Fire_Dragon.cfg:21
 msgid "bite"
@@ -3872,8 +4463,8 @@ msgstr "Boule de feu"
 msgid ""
 "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
-"Une boule de feu. Elle ne doit pas être utilisée pour d'autres usages "
-"qu'un [move_unit_fake]!"
+"Une boule de feu. Elle ne doit pas être utilisée pour d'autres usages qu'un "
+"[move_unit_fake]!"
 
 #: data/units/Footpad.cfg:3
 msgid "Footpad"
@@ -3925,8 +4516,8 @@ msgid ""
 "coordinate the attacks of level 1 and 2 units, thereby increasing their "
 "fighting efficiency."
 msgstr ""
-"En tant que chefs des armées humaines, les généraux sont responsables de "
-"la protection de vastes et importantes parties du royaume des humains. Les "
+"En tant que chefs des armées humaines, les généraux sont responsables de la "
+"protection de vastes et importantes parties du royaume des humains. Les "
 "généraux peuvent coordonner les attaques d'unités de niveau 1 et 2, "
 "augmentant ainsi leur efficacité au combat."
 
@@ -3972,8 +4563,8 @@ msgid ""
 "constructs of soil and water. They attack by spraying boiling water on their "
 "foes, or with fists of mud."
 msgstr ""
-"Les golems de boue démesurés sont des créatures magiques construites à partie "
-"de terre et d'eau. Ils attaquent en projetant de l'eau bouillante sur "
+"Les golems de boue démesurés sont des créatures magiques construites à "
+"partie de terre et d'eau. Ils attaquent en projetant de l'eau bouillante sur "
 "leurs ennemis ou à l'aide de leurs poings argileux."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
@@ -4140,9 +4731,9 @@ msgid ""
 "when defending."
 msgstr ""
 "Les meilleurs parmi les épéistes sont choisi pour devenir des hallebardiers. "
-"Certes un peu plus lentes que les épées, leurs armes peuvent donner des coups "
-"mortels et, grâce à leur allonge, accordent aux hallebardiers le premier "
-"coup lors des combats, même lorsqu'ils se défendent."
+"Certes un peu plus lentes que les épées, leurs armes peuvent donner des "
+"coups mortels et, grâce à leur allonge, accordent aux hallebardiers le "
+"premier coup lors des combats, même lorsqu'ils se défendent."
 
 #: data/units/Halbardier.cfg:18 data/units/Halbardier.cfg:36
 msgid "halberd"
@@ -4178,10 +4769,9 @@ msgid ""
 msgstr ""
 "Entraînés depuis leur enfance à monter et à suivre un code d'honneur strict, "
 "les écuyers sont à la fois rapides et puissants en attaque. En chargeant "
-"leurs ennemis, ils infligent deux fois plus de dégâts, reçoivent "
-"également le double de dommages s'il sont contrés. Ceux qui se "
-"révoltent contre la tyrannie d'Ashievere utilisent souvent des écuyers "
-"contre elle."
+"leurs ennemis, ils infligent deux fois plus de dégâts, reçoivent également "
+"le double de dommages s'il sont contrés. Ceux qui se révoltent contre la "
+"tyrannie d'Ashievere utilisent souvent des écuyers contre elle."
 
 #: data/units/Initiate.cfg:3
 msgid "Initiate"
@@ -4253,11 +4843,11 @@ msgid ""
 "the life from their opponents with a single touch, and to cast powerful cold "
 "spells."
 msgstr ""
-"Les liches sont des mages qui se sont entièrement tournés vers la magie noire. "
-"Pour prendre le contrôle des mort-vivants, les liches ont renoncé à leurs "
-"propre corps, devenant elles-mêmes des morts-vivants. Ceci leur octroie la "
-"capacité de drainer la vie de leurs adversaires par simple contact et de lancer "
-"de puissants sorts de froid."
+"Les liches sont des mages qui se sont entièrement tournés vers la magie "
+"noire. Pour prendre le contrôle des mort-vivants, les liches ont renoncé à "
+"leurs propre corps, devenant elles-mêmes des morts-vivants. Ceci leur "
+"octroie la capacité de drainer la vie de leurs adversaires par simple "
+"contact et de lancer de puissants sorts de froid."
 
 #: data/units/Lieutenant.cfg:3
 msgid "Lieutenant"
@@ -4313,11 +4903,11 @@ msgid ""
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
-"Les mages sont faibles mais cependant puissants. Se déplaçant lentement et se "
-"défendant faiblement, les mages attaquent avec des projectiles magiques ayant "
-"de très grandes chances d'atteindre leur cible. Pour cette raison, les mages "
-"sont d'excellents choix pour forcer l'ennemi à sortir de sa cachette en "
-"terrain difficile."
+"Les mages sont faibles mais cependant puissants. Se déplaçant lentement et "
+"se défendant faiblement, les mages attaquent avec des projectiles magiques "
+"ayant de très grandes chances d'atteindre leur cible. Pour cette raison, les "
+"mages sont d'excellents choix pour forcer l'ennemi à sortir de sa cachette "
+"en terrain difficile."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
 msgid "missile"
@@ -4383,8 +4973,8 @@ msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
-"Habiles créatures des mers, les ondins sont forts et rapides dans tout milieu "
-"aquatique mais se meuvent difficilement sur la terre ferme."
+"Habiles créatures des mers, les ondins sont forts et rapides dans tout "
+"milieu aquatique mais se meuvent difficilement sur la terre ferme."
 
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
 #: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:19
@@ -4400,9 +4990,8 @@ msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
-"Les golems de boue sont des créatures magiques construites à partie de "
-"terre et d'eau. Ils attaquent en projetant de l'eau bouillante sur "
-"leurs ennemis."
+"Les golems de boue sont des créatures magiques construites à partie de terre "
+"et d'eau. Ils attaquent en projetant de l'eau bouillante sur leurs ennemis."
 
 #: data/units/Naga.cfg:3
 msgid "Naga"
@@ -4824,8 +5413,9 @@ msgstr ""
 "obstinément leur maisons. Malgré tout, si vous lancez des paysans à vos "
 "ennemis c'est que vous n'êtes clairement pas en position de force."
 
-#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:34
-msgid "Pitch Fork"
+#: data/units/Peasant.cfg:20 data/units/Peasant.cfg:33
+#, fuzzy
+msgid "pitchfork"
 msgstr "Fourche"
 
 #: data/units/Pikeman.cfg:3
@@ -5179,8 +5769,8 @@ msgid ""
 "basic training and put in the front lines to do the bulk of the fighting."
 msgstr ""
 "L'épéiste forme la base des armées humaines. Ces jeunes soldats sont formés "
-"aux rudiments du combat et envoyés en premières lignes pour former le "
-"gros des troupes."
+"aux rudiments du combat et envoyés en premières lignes pour former le gros "
+"des troupes."
 
 #: data/units/Tentacle.cfg:3
 msgid "Tentacle of the Deep"
@@ -5373,11 +5963,11 @@ msgid ""
 "are mounted on high walls, they cannot move anywhere except on walls and the "
 "roofs of castles."
 msgstr ""
-"Gardiens de Weldyn, la capitale, le guet patrouille sur les remparts de "
-"la ville. Avec leur arbalètes, les guetteurs tirent sur leur ennemis "
-"sans que ceux-ci puisse riposter, même avec une attaque à distance. Parce "
-"qu'ils sont perchés sur les remparts, ils ne peuvent pas se déplacer, sauf "
-"sur les murs et dans le château."
+"Gardiens de Weldyn, la capitale, le guet patrouille sur les remparts de la "
+"ville. Avec leur arbalètes, les guetteurs tirent sur leur ennemis sans que "
+"ceux-ci puisse riposter, même avec une attaque à distance. Parce qu'ils sont "
+"perchés sur les remparts, ils ne peuvent pas se déplacer, sauf sur les murs "
+"et dans le château."
 
 #: data/units/Warrior_King.cfg:3
 msgid "Warrior King"
@@ -7130,6 +7720,16 @@ msgstr "Supprimer le fichier"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "La suppression du fichier a échoué."
+
+# à quoi correspondent ces trois chaînes ?
+#~ msgid "{END_MESSAGE}"
+#~ msgstr "{END_MESSAGE}"
+
+#~ msgid "{QUESTION}"
+#~ msgstr "{QUESTION}"
+
+#~ msgid "{ANSWER}"
+#~ msgstr "{ANSWER}"
 
 #~ msgid "Approaching Weldyn"
 #~ msgstr "L'approche de Weldyn"
@@ -9541,9 +10141,6 @@ msgstr "La suppression du fichier a échoué."
 #~ msgid "Ruaarrrrrrrr!"
 #~ msgstr "Roaarrrrrrrr !"
 
-#~ msgid "What is that?"
-#~ msgstr "Qu'est-ce que c'est ?"
-
 #~ msgid ""
 #~ "Creatures of the deep are upon us! This may be very dangerous. Be quick! "
 #~ "We must get to the other side with all haste!"
@@ -9645,9 +10242,6 @@ msgstr "La suppression du fichier a échoué."
 
 #~ msgid "That foolish boy killed himself."
 #~ msgstr "Ce stupide garçon provoqua lui-même sa mort."
-
-#~ msgid "What do you mean?"
-#~ msgstr "Que voulez-vous dire ?"
 
 #~ msgid ""
 #~ "I mustered men to fight against the traitor-king, and of course Asheviere "
@@ -9849,9 +10443,6 @@ msgstr "La suppression du fichier a échoué."
 #~ msgid "I am not sure of the way. Let me think for a moment."
 #~ msgstr ""
 #~ "Je ne suis pas sûr du chemin à prendre. Laissez-moi réfléchir un moment."
-
-#~ msgid "En garde!"
-#~ msgstr "En garde !"
 
 #~ msgid "What in the world are you doing here?"
 #~ msgstr "Que faites-vous donc ici ?"
@@ -11942,9 +12533,6 @@ msgstr "La suppression du fichier a échoué."
 #~ msgstr ""
 #~ "Non ! Delfador a été changé en pierre ! Sans lui nous n'avons aucune "
 #~ "chance de contrer le pouvoir du sorcier. Tout est perdu !"
-
-#~ msgid "What happened there?"
-#~ msgstr "Que s'est-il donc passé ici ?"
 
 #~ msgid ""
 #~ "These Cockatrices will turn all our troops to stone, as they have the "
