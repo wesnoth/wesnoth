@@ -44,6 +44,7 @@ wesnoth_SOURCES = about.cpp \
 		  log.cpp \
 		  map.cpp \
 		  mapgen.cpp \
+		  mapgen_dialog.cpp \
 		  mouse.cpp \
 		  multiplayer.cpp \
 		  multiplayer_client.cpp \
@@ -96,6 +97,7 @@ wesnoth_SOURCES = about.cpp \
 		  log.hpp \
 		  map.hpp \
 		  mapgen.hpp \
+		  mapgen_dialog.hpp \
 		  mouse.hpp \
 		  multiplayer.hpp \
 		  multiplayer_client.hpp \

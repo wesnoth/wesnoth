@@ -38,21 +38,9 @@ public:
 
 map_generator* get_map_generator(const std::string& name);
 
-class default_map_generator : public map_generator
-{
-public:
-	default_map_generator(const config& game_config);
-
-	bool allow_user_config() const;
-	void user_config(display& disp);
-
-	std::string name() const;
-
-	std::string create_map(const std::vector<std::string>& args) const;
-
-private:
-	size_t width_, height_, iterations_, hill_size_, max_lakes_, nvillages_, nplayers_;
-	const config* cfg_;
-};
+std::string default_generate_map(size_t width, size_t height,
+                                 size_t iterations, size_t hill_size,
+						         size_t max_lakes, size_t nvillages, size_t nplayers,
+						         const config& cfg);
 
 #endif
