@@ -28,7 +28,7 @@ sub set($$) {
     return;
   }
   $english{$id}=$str;
-  print STDERR "$id=$str\n";
+#  print STDERR "$id=$str\n";
 }
 
 # get ids from unit files
@@ -62,16 +62,19 @@ our %suffix = (
 	      );
 
 # get ids from other wml files
-@wmlfiles = glob ("data/*.cfg data/scenarios/*/*.cfg");
+@wmlfiles = (qw(data/game.cfg data/help.cfg data/items.cfg data/multiplayer.cfg
+		data/schedules.cfg data/tutorial.cfg data/tutorial2.cfg),
+	     glob ("data/scenarios/*/*.cfg"));
 foreach my $wmlfile (@wmlfiles) {
   open (WML, $wmlfile) or die "cannot open $wmlfile";
   print STDERR " Processing $wmlfile\n";
-  my ($id, $str, $key, $value,$strtype);
+  my $id = 'no_id';
+  my ($str, $key, $value,$strtype);
   while (<WML>) {
 #    print STDERR $_;
     if (m/id\s*=\s*(.*)/) {
       $id = $1;
-      print STDERR "--> $id\n";
+#      print STDERR "--> $id\n";
 #     } elsif (m,\[/.*\],) {
 #       $id = undef;
     } elsif (m/(difficulty\_descriptions|cannot\_use\_message|objectives)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
@@ -130,7 +133,7 @@ foreach my $wmlfile (@wmlfiles) {
   close WML;
 }
 
-exit; # this is for debug only :)
+#exit; # this is for debug only :)
 
 # reverse the hash to use the strings to find the id
 foreach my $key (keys %english) {
@@ -191,12 +194,12 @@ sub processentry {
 	$output = raw2postring($trans);
 	$touched = 1;
       } else {
-	# printf STDERR "WARNING: no translation found for $id - setting to empty\n";
+	# print STDERR "WARNING: no translation found for $id - setting to empty\n";
 	$output = raw2postring("");
       }
     } else {
       # this usually denotes limitations in this script
-      printf STDERR "WARNING: no id found (setting translation to empty) for $curid\n";
+      print STDERR "WARNING: no id found (setting translation to empty) for $curid\n";
       $output = raw2postring("");
     }
   } else {
