@@ -131,21 +131,23 @@ void get_files_in_dir(const std::string& directory,
 
 		const std::string name((directory + "/") + entry->d_name);
 
-		//try to open it as a directory to test if it is a directory
-		DIR* const temp_dir = opendir(name.c_str());
-		if(temp_dir != NULL) {
-			closedir(temp_dir);
-			if(dirs != NULL) {
-				if(mode == ENTIRE_FILE_PATH)
-					dirs->push_back(name);
-				else
-					dirs->push_back(entry->d_name);
+		struct stat st;
+		if (::stat(name.c_str(), &st) != -1) {
+			if (S_ISREG(st.st_mode)) {
+				if (files != NULL) {
+					if (mode == ENTIRE_FILE_PATH)
+						files->push_back(name);
+					else
+						files->push_back(entry->d_name);
+				}
+			} else if (S_ISDIR(st.st_mode)) {
+				if (dirs != NULL) {
+					if (mode == ENTIRE_FILE_PATH)
+						dirs->push_back(name);
+					else
+						dirs->push_back(entry->d_name);
+				}
 			}
-		} else if(files != NULL) {
-			if(mode == ENTIRE_FILE_PATH)
-				files->push_back(name);
-			else
-				files->push_back(entry->d_name);
 		}
 	}
 
