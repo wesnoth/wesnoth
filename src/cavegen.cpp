@@ -212,6 +212,12 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 		const std::string& key = *(*i1).first;
 		config cfg = *(*i1).second;
 		config* const filter = cfg.child("filter");
+		config* const object = cfg.child("object");
+		config* object_filter = NULL;
+		if(object != NULL) {
+			object_filter = object->child("filter");
+		}
+
 		if(cfg["same_location_as_previous"] != "yes") {
 			index = rand()%c.locs.size();
 		}
@@ -226,10 +232,18 @@ void cave_map_generator::place_items(const chamber& c, config::all_children_iter
 			(*filter)["x"] = buf;
 		}
 
+		if(object_filter != NULL) {
+			(*object_filter)["x"] = buf;
+		}
+
 		sprintf(buf,"%d",loc->y+1);
 		cfg.values["y"] = buf;
 		if(filter != NULL) {
 			(*filter)["y"] = buf;
+		}
+
+		if(object_filter != NULL) {
+			(*object_filter)["y"] = buf;
 		}
 
 		//if this is a side, place a castle for the side

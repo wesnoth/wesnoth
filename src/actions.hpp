@@ -58,6 +58,7 @@ struct battle_stats
 	int ndefends, nattacks;
 	int attack_with, defend_with;
 	bool attacker_plague, defender_plague;
+	bool attacker_slows, defender_slows;
 	std::vector<std::string> attack_calculations, defend_calculations;
 	bool to_the_death, defender_strikes_first;
 };

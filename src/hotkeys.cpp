@@ -61,6 +61,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("mute",HOTKEY_MUTE));
 		m.insert(val("speak",HOTKEY_SPEAK));
 		m.insert(val("createunit",HOTKEY_CREATE_UNIT));
+		m.insert(val("changeside",HOTKEY_CHANGE_UNIT_SIDE));
 		m.insert(val("preferences",HOTKEY_PREFERENCES));
 		m.insert(val("objectives",HOTKEY_OBJECTIVES));
 		m.insert(val("unitlist",HOTKEY_UNIT_LIST));
@@ -430,6 +431,10 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 		case HOTKEY_CREATE_UNIT:
 			if(executor)
 				executor->create_unit();
+			break;
+		case HOTKEY_CHANGE_UNIT_SIDE:
+			if(executor)
+				executor->change_unit_side();
 			break;
 		case HOTKEY_PREFERENCES:
 			if(executor)

@@ -23,6 +23,23 @@ AM_GNU_GETTEXT
 
 AC_PROG_CXX
 AC_PROG_CC
+have_libx11='no'
+if test "$with_x" != 'no'; then
+
+dnl Locate X include files and libraries
+   AC_PATH_XTRA
+   NEW_LIBS="$X_LIBS -lX11"
+
+   AC_CHECK_LIB(X11, XOpenDisplay, have_libx11='yes',have_libx11='no',$X_LIBS)
+   if test "$have_libx11" != 'no'; then
+     AC_DEFINE(HAVE_LIBX11,,Define if you have X11 libraries)
+     X_LIBS="$NEW_LIBS"
+     CPPFLAGS="$X_CFLAGS $CPPFLAGS"
+     LIBS="$X_LIBS $LIBS"
+   fi
+fi
+
+AM_CONDITIONAL([X11], [test "$have_libx11" = 'yes'])
 
 # SDL_CONFIG
 
@@ -383,7 +400,6 @@ AM_CONDITIONAL([GNOME1], [test x$gnome = xyes && test x$gnome1found = xyes])
 AM_CONDITIONAL([GNOME2], [test x$gnome = xyes && test x$gnome1found = xno])
 AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([WZIP], [test x$wzip = xyes])
-AM_CONDITIONAL([X11], [false])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 
 #######################################################################

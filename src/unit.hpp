@@ -53,6 +53,7 @@ public:
 	bool get_experience(int xp);
 	bool advances() const;
 	int side() const;
+	void set_side(int new_side);
 	double alpha() const;
 	void make_recruiter();
 	bool can_recruit() const;

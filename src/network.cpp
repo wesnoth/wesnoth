@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cerrno>
 #include <queue>
 #include <iostream>
 #include <set>
@@ -20,11 +21,10 @@ namespace {
 //the same, so it's all seamless to the user
 struct connection_details {
 	connection_details(TCPsocket sock, const std::string& host, int port)
-		: sock(sock), disconnected_at(0), host(host), port(port), remote_handle(0)
+		: sock(sock), host(host), port(port), remote_handle(0)
 	{}
 
 	TCPsocket sock;
-	int disconnected_at;
 	std::string host;
 	int port;
 
@@ -193,6 +193,8 @@ connection connect(const std::string& host, int port)
 	TCPsocket sock = SDLNet_TCP_Open(&ip);
 	if(!sock) {
 		throw error("Could not connect to host");
+	} else {
+		//TODO: add code in here which sets the socket to non-blocking
 	}
 
 	//if this is a server socket
@@ -531,31 +533,15 @@ void send_data(const config& cfg, connection connection_num, size_t max_size, SE
 	SDLNet_Write32(value.size()+1-4,buf);
 	std::copy(buf,buf+4,value.begin());
 
-	//if the data is less than our maximum chunk, and there is no data queued to send
-	//to this host, then send all data now
-	if(mode == SEND_DATA && (max_size == 0 || value.size()+1 <= max_size) && send_queue.count(connection_num) == 0) {
-		std::cerr << "sending " << (value.size()+1) << " bytes\n";
-		const int res = SDLNet_TCP_Send(get_socket(connection_num),
-		                                const_cast<char*>(value.c_str()),
-		                                value.size()+1);
+	//place the data in the send queue
+	const send_queue_map::iterator itor = send_queue.insert(std::pair<network::connection,partial_buffer>(connection_num,partial_buffer()));
 
-		if(res != int(value.size()+1)) {
-			std::cerr << "sending data failed: " << res << "/" << value.size() << "\n";
-			throw error("Could not send data over socket",connection_num);
-		}
-	} else {
-		std::cerr << "cannot send all " << (value.size()+1) << " bytes at once. Placing in send queue.\n";
-		//place the data in the send queue
-		const send_queue_map::iterator itor =
-		     send_queue.insert(std::pair<network::connection,partial_buffer>(connection_num,partial_buffer()));
+	itor->second.buf.resize(value.size()+1);
+	std::copy(value.begin(),value.end(),itor->second.buf.begin());
+	itor->second.buf.back() = 0;
 
-		itor->second.buf.resize(value.size()+1);
-		std::copy(value.begin(),value.end(),itor->second.buf.begin());
-		itor->second.buf.back() = 0;
-
-		if(mode == SEND_DATA) {
-			process_send_queue(connection_num,max_size);
-		}
+	if(mode == SEND_DATA) {
+		process_send_queue(connection_num,max_size);
 	}
 }
 
@@ -597,14 +583,14 @@ void process_send_queue(connection connection_num, size_t max_size)
 		std::cerr << "sending " << bytes_to_send << " from send queue\n";
 
 		const int res = SDLNet_TCP_Send(sock,&buf[upto],bytes_to_send);
-		if(res != int(bytes_to_send)) {
+		if(res < 0 || res != int(bytes_to_send) && errno != EAGAIN) {
 			std::cerr << "sending data failed: " << res << "/" << bytes_to_send << "\n";
 			throw error("Sending queued data failed",connection_num);
 		}
 
 		std::cerr << "sent.\n";
 
-		upto += bytes_to_send;
+		upto += res;
 
 		//if we've now sent the entire item, erase it from the send queue
 		if(upto == buf.size()) {

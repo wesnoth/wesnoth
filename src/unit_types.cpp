@@ -146,6 +146,7 @@ attack_type::attack_type(const config& cfg) : animation_(cfg)
 	type_ = cfg["type"];
 	special_ = cfg["special"];
 	backstab_ = special_ == "backstab";
+	slow_ = special_ == "slow";
 	icon_ = cfg["icon"];
 	if(icon_.empty())
 		icon_ = "attacks/" + name_ + ".png";
@@ -216,6 +217,11 @@ double attack_type::defense_weight() const
 bool attack_type::backstab() const
 {
 	return backstab_;
+}
+
+bool attack_type::slow() const
+{
+	return slow_;
 }
 
 bool attack_type::matches_filter(const config& cfg) const

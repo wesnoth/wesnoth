@@ -982,6 +982,7 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 
 	//commands we can only do if in debug mode
 	case hotkey::HOTKEY_CREATE_UNIT:
+	case hotkey::HOTKEY_CHANGE_UNIT_SIDE:
 		return !commands_disabled && game_config::debug && map_.on_board(last_hex_);
 
 	default:
@@ -1849,6 +1850,22 @@ void turn_info::create_unit()
 		gui_.invalidate(last_hex_);
 		gui_.invalidate_unit();
 	}
+}
+
+void turn_info::change_unit_side()
+{
+	const unit_map::iterator i = units_.find(last_hex_);
+	if(i == units_.end()) {
+		return;
+	}
+
+	int side = i->second.side();
+	++side;
+	if(side > team::nteams()) {
+		side = 1;
+	}
+
+	i->second.set_side(side);
 }
 
 void turn_info::preferences()

@@ -1426,7 +1426,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		for(std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 			overlays.first != overlays.second; ++overlays.first) {
 
-			scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second));
+			scoped_sdl_surface overlay_surface(image::get_image(overlays.first->second,image_type));
 			
 			//note that dstrect can be changed by SDL_BlitSurface and so a
 			//new instance should be initialized to pass to each call to
