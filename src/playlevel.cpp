@@ -158,6 +158,18 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
 
+				if(!first_time) {
+					team_it->new_turn();
+
+					//if the expense is less than the number of villages owned,
+					//then we don't have to pay anything at all
+					const int expense = team_upkeep(units,player_number) -
+										team_it->towers().size();
+					if(expense > 0) {
+						team_it->spend_gold(expense);
+					}
+				}
+
 				gui.set_playing_team(size_t(player_number-1));
 
 				clear_shroud(gui,map,gameinfo,units,teams,player_number-1);
@@ -308,20 +320,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			for(unit_map::iterator i = units.begin();
 			    i != units.end(); ++i) {
 				i->second.new_turn();
-			}
-
-			int team_num = 1;
-			for(std::vector<team>::iterator it = teams.begin();
-			    it != teams.end(); ++it, ++team_num) {
-				it->new_turn();
-
-				//if the expense is less than the number of villages owned,
-				//then we don't have to pay anything at all
-				const int expense = team_upkeep(units,team_num) -
-				                    it->towers().size();
-				if(expense > 0) {
-					it->spend_gold(expense);
-				}
 			}
 
 		} catch(end_level_exception& end_level) {
