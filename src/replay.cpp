@@ -262,6 +262,8 @@ void replay::add_recruit(int value, const gamemap::location& loc)
 	val["y"] = buf;
 
 	cmd->add_child("recruit",val);
+
+	random_ = cmd;
 }
 
 void replay::add_recall(int value, const gamemap::location& loc)
@@ -739,11 +741,10 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			unit current_unit = u->second;
-			units.erase(u);
 
-			std::map<gamemap::location,paths::route>::iterator rt =
-			                             paths_list.routes.find(dst);
+			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
 			if(rt == paths_list.routes.end()) {
+
 				for(rt = paths_list.routes.begin(); rt != paths_list.routes.end(); ++rt) {
 					std::cerr << "can get to: " << (rt->first.x+1) << "," << (rt->first.y+1) << "\n";
 				}
@@ -756,6 +757,8 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			}
 
 			rt->second.steps.push_back(dst);
+
+			units.erase(u);
 
 			if(!replayer.skipping()) {
 				unit_display::move_unit(disp,map,rt->second.steps,current_unit);
