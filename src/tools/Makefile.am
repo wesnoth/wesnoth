@@ -65,7 +65,7 @@ exploder_SOURCES = exploder.cpp \
 		   ../sdl_utils.cpp \
 		   ../log.cpp
 
-cutter_SOURCES = cutter.cpp \
+ cutter_SOURCES = cutter.cpp \
 		   exploder_utils.cpp \
 		   exploder_cutter.cpp \
 		   ../server/variable.cpp \

@@ -178,7 +178,7 @@ private:
 	topic const *chosen_topic_;
 	int internal_width_;
 	visible_item selected_item_;
-	bool clicked_;
+	bool selected_;
 };
 
 /// Thrown when the help system fails to parse something.
@@ -225,13 +225,14 @@ private:
 
 		item(shared_sdl_surface surface, int x, int y, const std::string text="",
 			 const std::string reference_to="", bool floating=false,
-			 ALIGNMENT alignment=HERE);
+			 bool box=false, ALIGNMENT alignment=HERE);
 
 		item(shared_sdl_surface surface, int x, int y,
-			 bool floating, ALIGNMENT=HERE);
+			 bool floating, bool box=false, ALIGNMENT=HERE);
 
 		/// Relative coordinates of this item.
 		SDL_Rect rect;
+
 		shared_sdl_surface surf;
 
 		// If this item contains text, this will contain that text.
@@ -244,6 +245,7 @@ private:
 		// If this item is floating, that is, if things should be filled
 		// around it.
 		bool floating;
+		bool box;
 		ALIGNMENT align;
 	};
 	
@@ -294,7 +296,8 @@ private:
 					   SDL_Color color=font::NORMAL_COLOUR);
 
 	/// Add an image item with the specified attributes.
-	void add_img_item(const std::string path, const std::string alignment, const bool floating);
+	void add_img_item(const std::string path, const std::string alignment, const bool floating,
+					  const bool box);
 
 	/// Move the current input point to the next line.
 	void down_one_line();
