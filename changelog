@@ -5,6 +5,8 @@ CVS HEAD:
  * added berserk attack ability and gave it to Dwarvish Berserker
  * Dark Adept ranged attack made stronger and cold resistance improved
  * Footpad made a bit easier to advance, faster movement, melee and ranged attack made stronger
+ * Outlaw given faster movement
+ * Orcish Rules attack changed to sword, race changed to orc
  * new units:
    * Iron Mauler
    * Soulless
@@ -18,7 +20,10 @@ CVS HEAD:
    * Silent Forest
  * multiplayer enhancements:
    * added "private" messaging between allies
+   * improvements to chat system
  * language fixes and polishing (english)
+ * new translations:
+   * catalan
  * added treefolk movetype
  * added terrain multiple aliases
  * allow multiple sides (comma separared) to be specified in unit filters
@@ -29,8 +34,12 @@ CVS HEAD:
  * fixed bug where if the host changed their name, it would show that name to users connecting to the game
  * fixed bug in lobby where top-left of screen would not be drawn properly
  * fixed bug with AI not getting villages
+ * fixed some compiler warnings
+ * fixed Dwarvish Berserker and Yeti using blunt attack type, which does not exist 
+ * fixed bugs with tooltips
  * minor autotools fixes
  * slacknoth improvements
+ * added recovering connections framework to network protocol
 
 Version 0.7.2:
  * show possible enemy moves view (context menu -> show possible enemy moves)
