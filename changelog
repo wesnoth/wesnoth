@@ -13,7 +13,7 @@ CVS HEAD:
    * The Skull of Agarash
    * Underground Pool
  * new scenarios for 'The Eastern Invasion' campaign:
-   * The Drowned Plains
+   * The Drowned Plains (replaces 'Peasant Revolt')
  * scenario balancing for 'The Eastern Invasion' campaign:
    * Captured
    * Evacuation
@@ -27,14 +27,16 @@ CVS HEAD:
  * replaced Duelist's pistol with crossbow
  * more female units
  * unit balancing: 
+   * Bone Shooter: reduced experience required to level
    * Dwarvish Fighter: gave hammer attack
    * Dwarvish Steelclad: gave hammer attack, increased experience required to level
-   * Bone Shooter: reduced experience required to level
+   * Elvish Lord: changed to 2nd level unit, reduced hitpoints, reduced cost, reduced melee and ranged damages, advances to Elvish High Lord
    * Soul Shooter: increased ranged damage
    * Woses: reduced cold resistance
  * new units
    * Dwarvish Guardsman
    * Dwarvish Stalwart
+   * Elvish High Lord
  * language fixes and polishing (english)
  * switched to using gettext, following languages have been converted:
    * catalan
@@ -86,6 +88,8 @@ CVS HEAD:
  * multiplayer file hierarchy cleanup
  * new file hierarchy for portraits
  * changed building static binary to use libtool when available
+ * applied BeOS clipboard support patch
+ * applied BeOS native settings path support patch
 
 Version 0.8.2:
  * new and improved graphics: 
