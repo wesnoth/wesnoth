@@ -1,4 +1,7 @@
 CVS HEAD:
+ * campaignd stores size of campaigns
+ * user interface improvements:
+   * consistently compute minimum allowed zoom value according to screen size
  * graphics improvements: 
    * Lord Typhon, Jevyan
    * hotseat and vs AI multiplayer icons
@@ -8,9 +11,13 @@ CVS HEAD:
    * Rough Landing
    * Return of the Fleet
  * language fixes and polishing (english)
+ * revised MANUAL
+   * english
+   * swedish
  * updated translations:
    * french
    * german
+   * italian
    * portuguese
    * swedish
  * fixed translations being searched for in installdir when running in builddir
@@ -21,6 +28,7 @@ CVS HEAD:
  * fixed multiplayer setup screen being broken on low resolutions
  * fixed resizing multiplayer lobby creating some graphic glitches
  * fixed background refreshing of campaign selection dialog
+ * improved 320x240 resolution support
  * support for unrenamable units
  * rewrote hotkeys code
  * rewrote widgets code
