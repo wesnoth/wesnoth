@@ -697,12 +697,12 @@ static Uint16 *UTF8_to_UNICODE(Uint16 *unicode, const char *utf8, int len)
 			ch |=  (Uint16)(utf8[++i]&0x3F);
 		} else
 		if ( ch >= 0xE0 ) {
-			ch  =  (Uint16)(utf8[i]&0x3F) << 12;
+			ch  =  (Uint16)(utf8[i]&0x0F) << 12;
 			ch |=  (Uint16)(utf8[++i]&0x3F) << 6;
 			ch |=  (Uint16)(utf8[++i]&0x3F);
 		} else
 		if ( ch >= 0xC0 ) {
-			ch  =  (Uint16)(utf8[i]&0x3F) << 6;
+			ch  =  (Uint16)(utf8[i]&0x1F) << 6;
 			ch |=  (Uint16)(utf8[++i]&0x3F);
 		}
 		unicode[j] = ch;
