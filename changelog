@@ -11,6 +11,8 @@ CVS HEAD:
  * more unit graphics, animations and sounds
  * healers can heal allies.
  * undeads can not be drained anymore
+ * new units:
+   * Shadow
  * dart damage type changed from pierce to blade, this affects 'Orcish Assassin' and 'Orcish Slayer'
  * fixed description for 'Wolf Rider'
  * changed 'Evil Necromancer' advanceto 'Lich'
@@ -81,9 +83,13 @@ CVS HEAD:
  * implemented new widget system with sample: textbox
  * borders of game field show dummy terrain instead of black areas
  * made images use proper transparency, instead of using black as transperant colour
+ * pressing space really ends turn for a unit (#7311)
+ * fixed pressing 'n' (next unit) returning to same unit (#7308)
  * fixed player being able to see enemy unit list on enemy turn (#7312)
  * fixed unit list not showing data in correct columns for units without name (#7313)
  * disabled observers using the in-game speak (#7156)
+ * seeing new areas when there is FoW now really prevents undo (#7177)
+ * FoW dies when unit dies, FoW is recalculated when unit dies in combat (#7114)
  * fixed client-hosted multiplayer bug where more than two player games were not possible
  * fixed some multiplayer saving/loading bugs
  * fixed some bugs with loading replays
@@ -101,6 +107,7 @@ CVS HEAD:
  * fixed bug where an invalid side specification for a unit could crash the game
  * fixed problem in Ford of Abez with monsters attacking Li'sar
  * music on intro now has less interference
+ * fixed Wraith appearing squashed in the panel (#7185)
  * fixed WML parser bugs
  * fixed misspelled 'The Siege of Elensefar' scenario filename 
  * many network and wesnothd code fixes and changes to make it a bit more stable
