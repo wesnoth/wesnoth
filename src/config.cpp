@@ -157,8 +157,6 @@ void internal_preprocess_file(const std::string& fname,
 
 				std::string str = val.value;
 
-				std::cerr << "symbol '" << symbol << "' called with arguments: ";
-
 				//substitute in given arguments
 				for(size_t n = 0; n != val.arguments.size(); ++n) {
 					const std::string& replace_with = (n < items.size()) ? items[n] : "";
@@ -179,11 +177,7 @@ void internal_preprocess_file(const std::string& fname,
 
 						pos = new_pos;
 					}
-
-					std::cerr << "'" << item << "' -> '" << replace_with << "' (substituted " << subs << " times), ";
 				}
-
-				std::cerr << "\n";
 
 				res.insert(res.end(),str.begin(),str.end());
 				line += std::count(str.begin(),str.end(),'\n');
@@ -665,7 +659,9 @@ std::vector<std::string> config::split(const std::string& val, char c)
 }
 
 namespace {
-bool notspace(char c) { return !isspace(c); }
+//make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
+//all consider these differently.
+bool notspace(char c) { return c == '\r' || c == '\n' || !isspace(c); }
 }
 
 std::string& config::strip(std::string& str)
