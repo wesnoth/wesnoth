@@ -491,6 +491,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 			}
 		}
 
+		if(!key_down && key[KEY_ESCAPE] && type == MESSAGE) {
+			return -1;
+		}
+
 		if(menu_.selection() != cur_selection || first_time) {
 			cur_selection = menu_.selection();
 
@@ -645,6 +649,8 @@ TITLE_RESULT show_title(display& screen)
 
 	CKey key;
 
+	bool last_escape = key[KEY_ESCAPE];
+
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -671,8 +677,10 @@ TITLE_RESULT show_title(display& screen)
 		if(quit_button.process(mousex,mousey,left_button))
 			return QUIT_GAME;
 
-		if(key[KEY_ESCAPE])
+		if(!last_escape && key[KEY_ESCAPE])
 			return QUIT_GAME;
+
+		last_escape = key[KEY_ESCAPE];
 
 		screen.video().flip();
 
