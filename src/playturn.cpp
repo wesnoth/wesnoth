@@ -624,11 +624,13 @@ bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_TOGGLE_GRID:
 	case hotkey::HOTKEY_STATUS_TABLE:
 	case hotkey::HOTKEY_MUTE:
-	case hotkey::HOTKEY_SPEAK:
 	case hotkey::HOTKEY_PREFERENCES:
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
 		return true;
+
+	case hotkey::HOTKEY_SPEAK:
+		return network::nconnections() > 0;
 
 	case hotkey::HOTKEY_REDO:
 		return !browse_ && !redo_stack_.empty();
