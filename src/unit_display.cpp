@@ -10,6 +10,8 @@
 #include "unit_display.hpp"
 #include "util.hpp"
 
+#define LOG_DP lg::info(lg::display)
+
 namespace
 {
 
@@ -57,7 +59,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 	const double src_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(src_terrain).unit_submerge();
 	const double dst_submerge = u.is_flying() ? 0.0 : map.get_terrain_info(dst_terrain).unit_submerge();
 
-	std::cerr << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
+	LOG_DP << "submerge: " << src_submerge << " -> " << dst_submerge << "\n";
 
 	const gamemap::TERRAIN terrain = map.get_terrain(b);
 	const int nsteps = disp.turbo() ? 3 : 10*u.movement_cost(map,terrain);
@@ -87,7 +89,7 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 		}
 
 		if(image == NULL) {
-			std::cerr << "failed to get image " << u.type().image_moving() << "\n";
+			lg::err(lg::display) << "failed to get image " << u.type().image_moving() << "\n";
 			return;
 		}
 
@@ -329,7 +331,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		const unit_animation::frame& unit_frame = attack_anim.get_current_frame(unit_animation::UNIT_FRAME);
 
-		//std::cerr << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
+		LOG_DP << "Animation time :" << animation_time << ", image " << unit_frame.image << "\n";
 		int new_halo_x = unit_frame.halo_x;
 		int new_halo_y = unit_frame.halo_y;
 		const std::string* unit_image = &unit_frame.image;
@@ -375,7 +377,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		Uint32 defensive_colour = 0;
 		double defensive_alpha = 1.0;
 
-		//std::cerr << "Waiting for missile impact at " << missile_impact << "\n";
+		LOG_DP << "Waiting for missile impact at " << missile_impact << "\n";
 		if(damage > 0 && animation_time >= missile_impact) {
 			if(def->second.gets_hit(minimum<int>(drain_speed,damage))) {
 				dead = true;
@@ -405,7 +407,8 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		if(animation_time >= 0 && animation_time < real_last_missile && !hide) {
 			const unit_animation::frame& missile_frame = attack_anim.get_current_frame(unit_animation::MISSILE_FRAME);
-			//std::cerr << "Missile: animation time :" << animation_time << ", image " << missile_frame.image << ", halo: " << missile_frame.halo << "\n";
+			LOG_DP << "Missile: animation time :" << animation_time << ", image "
+				<< missile_frame.image << ", halo: " << missile_frame.halo << "\n";
 
 			new_halo_x = missile_frame.halo_x;
 			new_halo_y = missile_frame.halo_y;
@@ -598,7 +601,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 	const gamemap::location leader_loc = under_leadership(units,a);
 	unit_map::iterator leader = units.end();
 	if(leader_loc.valid()){
-		std::cerr << "found leader at " << (leader_loc.x+1) << "," << (leader_loc.y+1) << "\n";
+		LOG_DP << "found leader at " << (leader_loc.x+1) << "," << (leader_loc.y+1) << "\n";
 		leader = units.find(leader_loc);
 		assert(leader != units.end());
 		leader->second.set_leading(true);
