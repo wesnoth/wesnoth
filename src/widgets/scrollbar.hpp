@@ -21,11 +21,7 @@
 
 namespace gui {
 
-class scrollable
-{
-public:
-	virtual void scroll(int pos) = 0;
-};
+class scrollarea;
 
 class scrollbar : public widget
 {
@@ -34,7 +30,7 @@ public:
 	/// \param d the display object
 	/// \param pane the widget where wheel events take place
 	/// \param callback a callback interface for warning that the grip has been moved
-	scrollbar(display &d, widget const &pane, scrollable *callback);
+	scrollbar(display &d);
 
 	virtual void set_location(SDL_Rect const &rect);
 	using widget::set_location;
@@ -68,10 +64,8 @@ protected:
 private:
 	SDL_Rect grip_area() const;
 	SDL_Rect groove_area() const;
-	widget const &pane_;
 	surface mid_scaled_, groove_scaled_;
 
-	scrollable* callback_;
 	button uparrow_, downarrow_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
@@ -80,6 +74,8 @@ private:
 	int minimum_grip_height_, mousey_on_grip_;
 	// Relative data
 	int grip_position_, old_position_, grip_height_, full_height_;
+
+	friend class scrollarea;
 };
 
 }

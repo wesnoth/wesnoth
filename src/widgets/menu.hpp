@@ -8,14 +8,13 @@
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
 
-#include "scrollbar.hpp"
-#include "button.hpp"
+#include "scrollarea.hpp"
 
 #include "SDL.h"
 
 namespace gui {
 
-class menu : public widget, public scrollable
+class menu : public scrollarea
 {
 public:
 	menu(display& disp, const std::vector<std::string>& items,
@@ -54,11 +53,9 @@ public:
 	enum { HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*' };
 	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be something else to be settable from WML.
 
-	virtual void set_location(const SDL_Rect& rect);
-	using widget::set_location;
-
 protected:
 	void handle_event(const SDL_Event& event);
+	void set_inner_location(const SDL_Rect& rect);
 
 private:
 	size_t max_items_onscreen() const;
@@ -68,8 +65,6 @@ private:
 
 	void adjust_viewport_to_selection();
 	void key_press(SDLKey key);
-
-	bool show_scrollbar() const;
 
 	std::vector<std::vector<std::string> > items_, help_;
 
@@ -100,7 +95,6 @@ private:
 
 	mutable std::map<int,SDL_Rect> itemRects_;
 
-	SDL_Rect get_list_rect() const;
 	SDL_Rect get_item_rect(int item) const;
 	size_t get_item_height_internal(int item) const;
 	size_t get_item_height(int item) const;
@@ -110,7 +104,6 @@ private:
 	int items_height() const;
 
 	void update_scrollbar_grip_height();
-	gui::scrollbar scrollbar_;
 
 	///variable which determines whether a numeric keypress should
 	///select an item on the dialog

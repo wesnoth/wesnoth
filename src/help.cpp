@@ -224,7 +224,7 @@ struct parse_error {
 };
 
 /// The area where the content is shown in the help browser.
-class help_text_area : public gui::widget, public gui::scrollable {
+class help_text_area : public gui::scrollarea {
 public:
 	help_text_area(display &disp, const section &toplevel);
 	/// Display the topic.
@@ -235,13 +235,9 @@ public:
 	/// empty string.
 	std::string ref_at(const int x, const int y);
 
-	/// Return the width of the area where text fit.
-	int text_width() const;
-
-	void scroll(int pos);
-
-	virtual void set_location(const SDL_Rect& rect);
-	using gui::widget::set_location;
+protected:
+	virtual void scroll(int pos);
+	virtual void set_inner_location(const SDL_Rect& rect);
 
 private:
 	enum ALIGNMENT {LEFT, MIDDLE, RIGHT, HERE};
@@ -358,7 +354,6 @@ private:
 	std::pair<int, int> curr_loc_;
 	const unsigned min_row_height_;
 	unsigned curr_row_height_;
-	gui::scrollbar scrollbar_;
 	/// The height of all items in total.
 	int contents_height_;
 };
@@ -1612,25 +1607,17 @@ bool help_menu::visible_item::operator==(const visible_item &vis_item) const {
 }
 
 help_text_area::help_text_area(display &disp, const section &toplevel)
-	: gui::widget(disp), toplevel_(toplevel), shown_topic_(NULL),
+	: gui::scrollarea(disp), toplevel_(toplevel), shown_topic_(NULL),
 	  title_spacing_(16), curr_loc_(0, 0),
 	  min_row_height_(font::get_max_height(normal_font_size)), curr_row_height_(min_row_height_),
-	  scrollbar_(disp, *this, this), contents_height_(0)
+	  contents_height_(0)
 {}
 
-void help_text_area::set_location(SDL_Rect const &rect) {
-	widget::set_location(rect);
-	SDL_Rect r = rect;
-	int w = scrollbar_.width();
-	r.w -= w;
-	register_rectangle(r);
-	r.x += r.w;
-	r.w = w;
-	scrollbar_.set_location(r);
+void help_text_area::set_inner_location(SDL_Rect const &rect) {
+	register_rectangle(rect);
 }
 
 void help_text_area::show_topic(const topic &t) {
-	bg_restore();
 	shown_topic_ = &t;
 	set_items(t.text, t.title);
 	set_dirty(true);
@@ -1666,7 +1653,7 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
 	const std::string show_title =
-		font::make_text_ellipsis(shown_topic_->title, title_size, text_width());
+		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
 	surface surf(font::get_rendered_text(show_title, title_size,
 					     font::NORMAL_COLOUR, TTF_STYLE_BOLD));
 	if (surf != NULL) {
@@ -1723,9 +1710,8 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 	}
 	down_one_line(); // End the last line.
 	int h = height();
-	scrollbar_.set_full_size(contents_height_);
-	scrollbar_.set_shown_size(h);
-	scrollbar_.hide(h >= contents_height_);
+	set_full_size(contents_height_);
+	set_shown_size(h);
 }
 
 void help_text_area::handle_ref_cfg(const config &cfg) {
@@ -1842,10 +1828,6 @@ void help_text_area::handle_format_cfg(const config &cfg) {
 	add_text_item(text, "", font_size, bold, italic, color);
 }
 
-int help_text_area::text_width() const {
-	return width() - scrollbar_.width();
-}
-
 void help_text_area::add_text_item(const std::string text, const std::string ref_dst,
 								   int _font_size, bool bold, bool italic,
 								   SDL_Color text_color) {
@@ -1933,6 +1915,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 	const int width = surf->w + (box ? box_width * 2 : 0);
 	int xpos;
 	int ypos = curr_loc_.second;
+	int text_width = inner_location().w;
 	switch (align) {
 	case HERE:
 		xpos = curr_loc_.first;
@@ -1941,14 +1924,14 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 		xpos = 0;
 		break;
 	case MIDDLE:
-		xpos = text_width() / 2 - width / 2 - (box ? box_width : 0);
+		xpos = text_width / 2 - width / 2 - (box ? box_width : 0);
 		break;
 	case RIGHT:
-		xpos = text_width() - width - (box ? box_width * 2 : 0);
+		xpos = text_width - width - (box ? box_width * 2 : 0);
 		break;
 	}
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& (xpos < curr_loc_.first || xpos + width > text_width())) {
+		&& (xpos < curr_loc_.first || xpos + width > text_width)) {
 		down_one_line();
 		add_img_item(path, alignment, floating, box);
 	}
@@ -1991,16 +1974,16 @@ int help_text_area::get_min_x(const int y, const int height) {
 }
 
 int help_text_area::get_max_x(const int y, const int height) {
-	int max_x = text_width();
+	int text_width = inner_location().w;
+	int max_x = text_width;
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
 				if (itm.align == RIGHT) {
-					max_x = minimum<int>(max_x, text_width() - itm.rect.w - 5);
-				}
-				if (itm.align == MIDDLE) {
-					max_x = minimum<int>(max_x, text_width() / 2 - itm.rect.w / 2 - 5);
+					max_x = minimum<int>(max_x, text_width - itm.rect.w - 5);
+				} else if (itm.align == MIDDLE) {
+					max_x = minimum<int>(max_x, text_width / 2 - itm.rect.w / 2 - 5);
 				}
 			}
 		}
@@ -2064,14 +2047,13 @@ int help_text_area::get_remaining_width() {
 }
 
 void help_text_area::draw_contents() {
-	SDL_Rect const &loc = location();
-	SDL_Rect clip_rect = { loc.x, loc.y, text_width(), loc.h };
-	bg_restore(clip_rect);
+	SDL_Rect const &loc = inner_location();
+	bg_restore();
 	surface const screen = disp().video().getSurface();
-	clip_rect_setter clip_rect_set(screen, clip_rect);
+	clip_rect_setter clip_rect_set(screen, loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
-		dst.y -= scrollbar_.get_position();
+		dst.y -= get_position();
 		if (dst.y < (int)loc.h && dst.y + it->rect.h > 0) {
 			dst.x += loc.x;
 			dst.y += loc.y;
@@ -2086,7 +2068,7 @@ void help_text_area::draw_contents() {
 			SDL_BlitSurface(it->surf, NULL, screen, &dst);
 		}
 	}
-	update_rect(clip_rect);
+	update_rect(loc);
 }
 
 void help_text_area::scroll(int) {
@@ -2104,7 +2086,7 @@ std::string help_text_area::ref_at(const int x, const int y) {
 	const int local_x = x - location().x;
 	const int local_y = y - location().y;
 	if (local_y < (int)height() && local_y > 0) {
-		const int cmp_y = local_y + scrollbar_.get_position();
+		const int cmp_y = local_y + get_position();
 		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));
 		if (it != items_.end()) {

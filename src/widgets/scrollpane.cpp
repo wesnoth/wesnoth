@@ -31,7 +31,7 @@ private:
 
 namespace gui {
 
-scrollpane::scrollpane(display& d) : widget(d), border_(5), scrollbar_(d, *this, this)
+scrollpane::scrollpane(display& d) : scrollarea(d), border_(5)
 {
 	content_pos_.x = 0;
 	content_pos_.y = 0;
@@ -75,26 +75,11 @@ void scrollpane::remove_widget(widget* w)
 	update_content_size();
 }
 
-void scrollpane::set_location(const SDL_Rect& rect)
+void scrollpane::set_inner_location(const SDL_Rect& rect)
 {
-	widget::set_location(rect);
-	SDL_Rect bar_rect = rect;
-
-	bar_rect.x = rect.x + rect.w - scrollbar_.width();
-	bar_rect.y = rect.y;
-	bar_rect.w = scrollbar_.width();
-	bar_rect.h = rect.h;
-	scrollbar_.set_location(bar_rect);
-
 	for(widget_map::iterator itor = content_.begin(); itor != content_.end(); ++itor) {
 		itor->second.w->set_clip_rect(client_area());
 	}
-}
-
-void scrollpane::hide(bool value)
-{
-	widget::hide(value);
-	scrollbar_.hide(value);
 }
 
 void scrollpane::draw()
@@ -149,14 +134,6 @@ SDL_Rect scrollpane::client_area() const
 	return res;
 }
 
-bool scrollpane::show_scrollbar() const
-{
-	if (content_pos_.h > client_area().h)
-		return true;
-
-	return false;
-}
-
 void scrollpane::update_content_size()
 {
 	int maxx = 0;
@@ -174,14 +151,8 @@ void scrollpane::update_content_size()
 	content_pos_.w = maxx;
 	content_pos_.h = maxy;
 
-	if(client_area().h < maxy) {
-		scrollbar_.hide(false);
-	} else {
-		scrollbar_.hide();
-	}
-
-	scrollbar_.set_full_size(maxy);
-	scrollbar_.set_shown_size(client_area().h);
+	set_full_size(maxy);
+	set_shown_size(client_area().h);
 
 	set_dirty();
 }

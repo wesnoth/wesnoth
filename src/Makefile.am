@@ -97,6 +97,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/label.cpp \
 		  widgets/menu.cpp \
 		  widgets/progressbar.cpp \
+		  widgets/scrollarea.cpp \
 		  widgets/scrollbar.cpp \
 		  widgets/scrollpane.cpp \
 		  widgets/slider.cpp \
@@ -251,6 +252,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 widgets/menu.cpp \
 			 widgets/progressbar.cpp \
 			 widgets/textbox.cpp \
+			 widgets/scrollarea.cpp \
 			 widgets/scrollbar.cpp \
 			 widgets/slider.cpp \
 			 widgets/widget.cpp \

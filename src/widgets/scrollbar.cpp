@@ -36,11 +36,11 @@ namespace {
 
 namespace gui {
 
-scrollbar::scrollbar(display& d, widget const &pane, scrollable* callback)
-	: widget(d), pane_(pane), mid_scaled_(NULL), groove_scaled_(NULL), callback_(callback),
+scrollbar::scrollbar(display &d)
+	: widget(d), mid_scaled_(NULL), groove_scaled_(NULL),
 	  uparrow_(d, "", button::TYPE_TURBO, "uparrow-button"),
 	  downarrow_(d, "", button::TYPE_TURBO, "downarrow-button"),
-	  state_(NORMAL), grip_position_(0), old_position_(0), grip_height_(0), full_height_(0)
+	  state_(NORMAL), grip_position_(0), grip_height_(0), full_height_(0)
 {
 	static const surface img(image::get_image(scrollbar_mid, image::UNSCALED));
 	
@@ -131,12 +131,6 @@ void scrollbar::process_event()
 		move_position(-1);
 	if (downarrow_.pressed())
 		move_position(1);
-
-	if (grip_position_ == old_position_)
-		return;
-	old_position_ = grip_position_;
-	if (callback_)
-		callback_->scroll(grip_position_);
 }
 
 SDL_Rect scrollbar::groove_area() const
@@ -226,7 +220,7 @@ void scrollbar::draw_contents()
 	disp().blit_surface(grip.x, grip.y + top_img->h + mid_height, bottom_img);
 
 	update_rect(groove);
-}	
+}
 
 void scrollbar::handle_event(const SDL_Event& event)
 {
@@ -250,10 +244,9 @@ void scrollbar::handle_event(const SDL_Event& event)
 		SDL_MouseButtonEvent const &e = event.button;
 		bool on_grip = point_in_rect(e.x, e.y, grip);
 		bool on_groove = point_in_rect(e.x, e.y, groove);
-		bool on_scrollable = point_in_rect(e.x, e.y, pane_.location()) || on_groove;
-		if (on_scrollable && e.button == SDL_BUTTON_WHEELDOWN) {
+		if (on_groove && e.button == SDL_BUTTON_WHEELDOWN) {
 			move_position(1);
-		} else if (on_scrollable && e.button == SDL_BUTTON_WHEELUP) {
+		} else if (on_groove && e.button == SDL_BUTTON_WHEELUP) {
 			move_position(-1);
 		} else if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;

@@ -19,15 +19,13 @@
 #include "../language.hpp"
 #include "../sdl_utils.hpp"
 
-#include "button.hpp"
-#include "scrollbar.hpp"
-#include "widget.hpp"
+#include "scrollarea.hpp"
 
 #include "SDL.h"
 
 namespace gui {
 
-class textbox : public widget, public scrollable
+class textbox : public scrollarea
 {
 public:
 	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256);
@@ -45,14 +43,13 @@ public:
 
 	void set_wrap(bool val);
 
-	void draw_contents();
-	virtual void set_location(SDL_Rect const &);
-	using widget::set_location;
+protected:
+	virtual void draw_contents();
+	virtual void set_inner_location(SDL_Rect const &);
+	virtual void scroll(int pos);
 
 private:
 	size_t max_size_;
-
-	void scroll(int pos);
 
 	wide_string text_;
 	
@@ -75,11 +72,6 @@ private:
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
 	surface text_image_;
-
-	//variable used for multi-line textboxes which support scrolling
-	scrollbar scrollbar_;
-
-	bool scroll_bottom_;
 
 	bool wrap_;
 
