@@ -325,7 +325,7 @@ void help_menu::select_topic(const topic &t) {
 	
 int help_menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 					   bool page_up, bool page_down, int select_item) {
-	int res = gui::menu::process(x, y, button, up_arrow, down_arrow, page_up, page_down, select_item);
+	int res = menu::process(x, y, button, up_arrow, down_arrow, page_up, page_down, select_item);
 	if (!visible_items_.empty() && selection() >= 0
 		&& (unsigned)selection() < visible_items_.size()) {
 		selected_item_ = visible_items_[selection()];
@@ -739,7 +739,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 int help_text_area::get_y_for_floating_img(const int width, const int x, const int desired_y) {
 	int min_y = desired_y;
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
-		const item &itm(*it);
+		const item& itm = *it;
 		if (itm.floating) {
 			if ((itm.rect.x + itm.surf->w > x && itm.rect.x < x + width)
 				|| (itm.rect.x > x && itm.rect.x < x + width)) {
@@ -753,7 +753,7 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 int help_text_area::get_min_x(const int y, const int height) {
 	int min_x = 0;
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
-		const item &itm(*it);
+		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y && itm.align == LEFT) {
 				min_x = maximum<int>(min_x, itm.surf->w);
@@ -766,7 +766,7 @@ int help_text_area::get_min_x(const int y, const int height) {
 int help_text_area::get_max_x(const int y, const int height) {
 	int max_x = text_width();
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
-		const item &itm(*it);
+		const item& itm = *it;
 		if (itm.floating) {
 			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y) {
 				if (itm.align == RIGHT) {
