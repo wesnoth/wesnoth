@@ -522,12 +522,45 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 	}
 }
 
+namespace {
+replay* replay_src = NULL;
+
+struct replay_source_manager
+{
+	replay_source_manager(replay* o) : old_(replay_src)
+	{
+		replay_src = o;
+	}
+
+	~replay_source_manager()
+	{
+		replay_src = old_;
+	}
+
+private:
+	replay* const old_;
+};
+
+}
+
+replay& get_replay_source()
+{
+	if(replay_src != NULL) {
+		return *replay_src;
+	} else {
+		return recorder;
+	}
+}
+
 bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
                unit_map& units,
 			   std::vector<team>& teams, int team_num, const gamestatus& state,
 			   game_state& state_of_game, replay* obj)
 {
 	log_scope("do replay");
+
+	const replay_source_manager replay_manager(obj);
+
 	replay& replayer = (obj != NULL) ? *obj : recorder;
 
 	clear_shroud(disp,state,map,gameinfo,units,teams,team_num-1);

@@ -111,6 +111,8 @@ private:
 	int skip_;
 };
 
+replay& get_replay_source();
+
 extern replay recorder;
 
 //replays up to one turn from the recorder object

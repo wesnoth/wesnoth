@@ -1256,6 +1256,16 @@ void display::draw_unit_on_tile(int x, int y, SDL_Surface* unit_image_override,
 			SDL_FillRect(dst,&filled_xp_area,xp_colour);
 		}
 	}
+
+	const std::vector<std::string>& overlays = it->second.overlays();
+	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
+		const scoped_sdl_surface img(image::get_image(*ov));
+		std::cerr << "drawing overlay: '" << *ov << "'\n";
+		if(img.get() != NULL) {
+			std::cerr << "AA\n";
+			draw_unit(xpos,ypos,img);
+		}
+	}
 }
 
 void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type)
@@ -1416,16 +1426,6 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		if(img != NULL) {
 			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 			SDL_BlitSurface(img,NULL,dst,&dstrect);
-		}
-	}
-
-	const std::vector<std::string>& overlays = un->second.overlays();
-	for(std::vector<std::string>::const_iterator ov = overlays.begin(); ov != overlays.end(); ++ov) {
-		const scoped_sdl_surface img(image::get_image(*ov));
-		std::cerr << "drawing overlay: '" << *ov << "'\n";
-		if(img.get() != NULL) {
-			std::cerr << "AA\n";
-			draw_unit(xpos,ypos,img);
 		}
 	}
 

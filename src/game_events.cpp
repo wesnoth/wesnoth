@@ -862,7 +862,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		
 		//if we're not replaying, or if we are replaying and there is no choice
 		//to be made, show the dialog.
-		if(recorder.at_end() || options.empty()) {
+		if(get_replay_source().at_end() || options.empty()) {
 			const std::string msg = config::interpolate_variables_into_string(lang_message.empty() ? cfg["message"] : lang_message);
 			option_chosen = gui::show_dialog(*screen,surface,caption,msg,
 		                        options.empty() ? gui::MESSAGE : gui::OK_ONLY,
@@ -879,7 +879,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		//otherwise if a choice has to be made, get it from the replay data
 		else {
-			const config* const action = recorder.get_next_action();
+			const config* const action = get_replay_source().get_next_action();
 			if(action == NULL || action->get_children("choose").empty()) {
 				std::cerr << "choice expected but none found\n";
 				throw replay::error();

@@ -1596,6 +1596,10 @@ size_t move_unit(display* disp, const game_data& gamedata,
 		}
 	}
 
+	if(move_recorder != NULL) {
+		move_recorder->add_movement(steps.front(),steps.back());
+	}
+
 	const bool event_mutated = game_events::fire("moveto",steps.back());
 
 	if(undo_stack != NULL) {
@@ -1606,9 +1610,6 @@ size_t move_unit(display* disp, const game_data& gamedata,
 			undo_stack->push_back(undo_action(u,steps,starting_moves,orig_village_owner));
 		}
 	}
-
-	if(move_recorder != NULL)
-		move_recorder->add_movement(steps.front(),steps.back());
 
 	if(disp != NULL) {
 		disp->set_route(NULL);
