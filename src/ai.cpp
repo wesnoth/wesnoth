@@ -27,6 +27,11 @@
 
 ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 {
+	//to add an AI of your own, put
+	//if(name == "my_ai")
+	//	return new my_ai(info);
+	//at the top of this function
+
 	return new ai(info);
 }
 

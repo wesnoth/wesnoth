@@ -89,6 +89,13 @@ team::team_info::team_info(const config& cfg)
 	else
 		controller = AI;
 
+	ai_algorithm = cfg["ai_algorithm"];
+
+	const config* const ai_parameters = cfg.child("ai");
+	if(ai_parameters != NULL) {
+		ai_params = *ai_parameters;
+	}
+
 	const std::string& scouts_val = cfg["villages_per_scout"];
 	if(scouts_val.empty()) {
 		villages_per_scout = 8;
@@ -395,6 +402,16 @@ void team::make_human()
 void team::make_ai()
 {
 	info_.controller = team_info::AI;
+}
+
+const std::string& team::ai_algorithm() const
+{
+	return info_.ai_algorithm;
+}
+
+const config& team::ai_parameters() const
+{
+	return info_.ai_params;
 }
 
 void team::make_network()

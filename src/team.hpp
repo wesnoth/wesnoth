@@ -51,6 +51,8 @@ public:
 
 		enum CONTROLLER { HUMAN, AI, NETWORK };
 		CONTROLLER controller;
+		std::string ai_algorithm;
+		config ai_params;
 
 		int villages_per_scout;
 		double leader_value, village_value;
@@ -95,6 +97,9 @@ public:
 	void make_network();
 	void make_ai();
 
+	const std::string& ai_algorithm() const;
+	const config& ai_parameters() const;
+
 	double leader_value() const;
 	double village_value() const;
 
@@ -114,6 +119,7 @@ public:
 	const std::string& music() const;
 
 	static int nteams();
+
 private:
 	int gold_;
 	std::set<gamemap::location> towers_;

@@ -403,7 +403,7 @@ redo_turn:
 					update_locker lock(gui,!preferences::show_ai_moves());
 
 					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status);
-					util::scoped_ptr<ai_interface> ai_obj(create_ai("",ai_info));
+					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
 
 					if(network::nconnections() > 0) {
