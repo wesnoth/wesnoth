@@ -210,7 +210,6 @@ connection connect(const std::string& host, int port)
 		throw network::error("Could not add socket to socket set");
 	}
 
-	assert(sock != server_socket);
 	sockets.push_back(connect);
 	schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
 
@@ -294,7 +293,6 @@ connection accept_connection()
 			throw network::error("Could not send initial handshake");
 		}
 
-		assert(sock != server_socket);
 		sockets.push_back(connect);
 		schemas.insert(std::pair<network::connection,schema_pair>(connect,schema_pair()));
 		return connect;
@@ -488,14 +486,11 @@ void send_data(const config& cfg, connection connection_num, size_t max_size)
 		    i != sockets.end(); ++i) {
 			std::cerr << "server socket: " << server_socket << "\n";
 			std::cerr << "current socket: " << *i << "\n";
-			assert(*i && *i != server_socket);
 			send_data(cfg,*i);
 		}
 
 		return;
 	}
-
-	assert(connection_num != server_socket);
 
 	const schema_map::iterator schema = schemas.find(connection_num);
 	assert(schema != schemas.end());
@@ -597,7 +592,6 @@ void send_data_all_except(const config& cfg, connection connection_num, size_t m
 			continue;
 		}
 
-		assert(*i && *i != server_socket);
 		send_data(cfg,*i,max_size);
 	}
 }
