@@ -173,13 +173,6 @@ void default_map_generator::user_config(display& disp)
 			break;
 		}
 
-		players_slider.process();
-		width_slider.process();
-		height_slider.process();
-		iterations_slider.process();
-		hillsize_slider.process();
-		villages_slider.process();
-
 		nplayers_ = players_slider.value();
 		width_ = width_slider.value();
 		height_ = height_slider.value();
@@ -187,36 +180,46 @@ void default_map_generator::user_config(display& disp)
 		hill_size_ = hillsize_slider.value();
 		nvillages_ = villages_slider.value();
 
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+		gui::draw_dialog_frame(xpos,ypos,width,height,disp);
 
-			title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-	                       string_table["map_generator"],xpos+(width-title_rect.w)/2,ypos+10);
+		players_slider.process();
+		width_slider.process();
+		height_slider.process();
+		iterations_slider.process();
+		hillsize_slider.process();
+		villages_slider.process();
 
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
+		events::raise_process_event();
+		events::raise_draw_event();
 
-			std::stringstream players_str;
-			players_str << nplayers_;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_str.str(),
-			                slider_right+horz_margin,players_rect.y);
+		title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+                       string_table["map_generator"],xpos+(width-title_rect.w)/2,ypos+10);
 
-			std::stringstream width_str;
-			width_str << width_;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
-			                slider_right+horz_margin,width_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
 
-			std::stringstream height_str;
-			height_str << height_;
-			font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
-			                slider_right+horz_margin,height_rect.y);
+		std::stringstream players_str;
+		players_str << nplayers_;
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,players_str.str(),
+		                slider_right+horz_margin,players_rect.y);
 
-			close_button.draw();
+		std::stringstream width_str;
+		width_str << width_;
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+		                slider_right+horz_margin,width_rect.y);
 
-			update_rect(xpos,ypos,width,height);
+		std::stringstream height_str;
+		height_str << height_;
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+		                slider_right+horz_margin,height_rect.y);
+
+		close_button.draw();
+
+		update_rect(xpos,ypos,width,height);
 
 		disp.update_display();
 		SDL_Delay(10);

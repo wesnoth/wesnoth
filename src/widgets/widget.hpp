@@ -24,7 +24,7 @@ protected:
 	widget(const widget &o);
 	widget(display& disp);
 	widget(display& disp, SDL_Rect& rect);
-	virtual ~widget() {}
+	virtual ~widget() { restorer_.cancel(); }
 
 	widget& operator=(const widget& o);
 

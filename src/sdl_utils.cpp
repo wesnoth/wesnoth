@@ -640,7 +640,8 @@ namespace {
 }
 
 surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)
-{}
+{
+}
 
 surface_restorer::surface_restorer(CVideo* target, const SDL_Rect& rect)
 : target_(target), rect_(rect), surface_(NULL)
