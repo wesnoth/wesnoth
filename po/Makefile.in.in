@@ -8,8 +8,11 @@
 # Please note that the actual code of GNU gettext is covered by the GNU
 # General Public License and is *not* in the public domain.
 #
-# Origin: gettext-0.14
-# Modified to support WML files
+# Origin: gettext-0.14.1-5
+# Modified by Yann Dirson for Battle for Wesnoth, for:
+# - WML files support
+# - multiple domains support
+# - proper behaviour when msgfmt is missing
 
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -74,7 +77,8 @@ $(GMOFILES): %.gmo:
 .po.gmo:
 	@test "$(srcdir)" = . && cdcmd="" || cdcmd="cd $(srcdir) && "; \
 	echo "$${cdcmd}rm -f $@ && $(GMSGFMT) -c --statistics -o $@ $<"; \
-	cd $(srcdir) && rm -f $@ && $(GMSGFMT) -c --statistics -o $@.tmp $< && mv $@.tmp $@
+	cd $(srcdir) && rm -f $@ && $(GMSGFMT) -c --statistics -o $@.tmp $< && \
+	  if test -e $@.tmp; then mv $@.tmp $@; fi
 
 .sin.sed:
 	sed -e '/^#/d' $< > t-$@
