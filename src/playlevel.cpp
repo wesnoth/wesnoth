@@ -139,11 +139,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 		if(gold.empty())
 			gold = "100";
 
+		std::cerr << "found gold: '" << gold << "'\n";
+
 		int ngold = ::atoi(gold.c_str());
 		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold &&
 		   (*level)["disallow_recall"] != "yes") {
 			ngold = state_of_game.gold;
 		}
+
+		std::cerr << "set gold to '" << ngold << "'\n";
 
 		//if this side tag describes the leader of the side
 		if((**ui)["no_leader"] != "yes") {
@@ -273,6 +277,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 	int turn = 1;
 	std::cout << "starting main loop\n";
 	for(bool first_time = true; true; first_time = false, first_player = 0) {
+		int player_number = 0;
+
 		try {
 
 			if(first_time) {
@@ -293,7 +299,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
 			for(std::vector<team>::iterator team_it = teams.begin()+first_player;
 			    team_it != teams.end(); ++team_it) {
 				log_scope("player turn");
-				const int player_number = (team_it - teams.begin()) + 1;
+				player_number = (team_it - teams.begin()) + 1;
 
 				//if a side is dead, don't do their turn
 				if(team_units(units,player_number) == 0)
@@ -475,15 +481,7 @@ redo_turn:
 							turn_end = do_replay(gui,map,gameinfo,units,teams,
 							   player_number,status,state_of_game,&replay_obj);
 						} catch(replay::error&) {
-							std::string output = "errorlog";
-							const int res = gui::show_dialog(gui,NULL,"",
-							               string_table["network_sync_error"],
-							               gui::YES_NO,NULL,NULL,"",&output);
-							if(res == 0 && output.empty() == false) {
-								recorder.mark_current();
-								config starting_pos;
-								recorder.save_game(gameinfo,output,starting_pos);
-							}
+							turn_data.save_game(string_table["network_sync_error"]);
 
 							return QUIT;
 						}
@@ -603,15 +601,11 @@ redo_turn:
 				e.disconnect();
 			}
 
-			std::string label = string_table["multiplayer_save_name"];
-			const int res = gui::show_dialog(gui,NULL,"",
-			                 string_table["save_game_error"],
-			                 gui::OK_CANCEL,NULL,NULL,
-			                 string_table["save_game_label"],&label);
-			if(res == 0) {
-				config starting_pos;
-				recorder.save_game(gameinfo,label,starting_pos);
-			}
+			turn_info turn_data(gameinfo,state_of_game,status,
+						        game_config,level,key,gui,
+						        map,teams,player_number,units,true);
+
+			turn_data.save_game(string_table["save_game_error"]);
 
 			return QUIT;
 		}

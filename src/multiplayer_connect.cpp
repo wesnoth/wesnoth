@@ -94,6 +94,10 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 
 		load_game(*data_, game, *state_);
 
+		state_->gold = -10000;
+		state_->available_units.clear();
+		state_->can_recruit.clear();
+
 		if(state_->campaign_type != "multiplayer") {
 			gui::show_dialog(*disp_, NULL, "", 
 					 string_table["not_multiplayer_save_message"],

@@ -1027,12 +1027,17 @@ void turn_info::rename_unit()
 
 void turn_info::save_game()
 {
+	save_game("");
+}
+
+void turn_info::save_game(const std::string& message)
+{
 	std::stringstream stream;
 	stream << state_of_game_.label << " " << string_table["turn"]
 	       << " " << status_.turn();
 	std::string label = stream.str();
 
-	const int res = dialogs::get_save_name(gui_,"",string_table["save_game_label"],&label,gui::OK_CANCEL);
+	const int res = dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,gui::OK_CANCEL);
 
 	if(res == 0) {
 		config start;

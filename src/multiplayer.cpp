@@ -52,6 +52,10 @@ network_game_manager::~network_game_manager()
 int play_multiplayer(display& disp, game_data& units_data, config cfg,
                       game_state& state, bool server)
 {
+	state.available_units.clear();
+	state.variables.clear();
+	state.can_recruit.clear();
+
 	SDL_Rect rect;
 	char buf[100];
 	log_scope("play multiplayer");

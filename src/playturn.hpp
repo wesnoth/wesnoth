@@ -71,6 +71,8 @@ public:
 
 	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
 
+	void save_game(const std::string& message);
+
 private:
 
 	void write_game_snapshot(config& cfg) const;
