@@ -1204,7 +1204,7 @@ bool game_controller::play_multiplayer()
 	state_.campaign_define = "MULTIPLAYER";
 
 	std::vector<std::string> host_or_join;
-	const std::string sep(1,gui::menu::HELP_STRING_SEPERATOR);
+	const std::string sep(1,gui::menu::HELP_STRING_SEPARATOR);
 	host_or_join.push_back(std::string("&icons/icon-server.png,") + _("Join Official Server") + sep + _("Log on to the official Wesnoth multiplayer server"));
 	host_or_join.push_back(std::string("&icons/icon-serverother.png,") + _("Join Game") + sep + _("Join a server or hosted game"));
 	host_or_join.push_back(std::string("&icons/icon-hostgame.png,") + _("Host Networked Game") + sep + _("Host a game without using a server"));

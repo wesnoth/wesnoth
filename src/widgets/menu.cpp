@@ -66,10 +66,10 @@ void menu::create_help_strings()
 	for(std::vector<std::vector<std::string> >::iterator i = items_.begin(); i != items_.end(); ++i) {
 		help_.resize(help_.size()+1);
 		for(std::vector<std::string>::iterator j = i->begin(); j != i->end(); ++j) {
-			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPERATOR)) == j->end()) {
+			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
 				help_.back().push_back("");
 			} else {
-				const std::vector<std::string>& items = config::split(*j,HELP_STRING_SEPERATOR,0);
+				const std::vector<std::string>& items = config::split(*j,HELP_STRING_SEPARATOR,0);
 				if(items.size() >= 2) {
 					*j = items.front();
 					help_.back().push_back(items.back());
@@ -499,7 +499,7 @@ namespace {
 
 	SDL_Rect item_size(const std::string& item) {
 		SDL_Rect res = {0,0,0,0};
-		std::vector<std::string> img_text_items = config::split(item, menu::IMG_TEXT_SEPERATOR);
+		std::vector<std::string> img_text_items = config::split(item, menu::IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			if (res.w > 0 || res.h > 0) {
@@ -583,7 +583,7 @@ void menu::draw_item(int item)
 	for(size_t i = 0; i != items_[item].size(); ++i) {
 		const int last_x = xpos;
 		std::string str = items_[item][i];
-		std::vector<std::string> img_text_items = config::split(str, IMG_TEXT_SEPERATOR);
+		std::vector<std::string> img_text_items = config::split(str, IMG_TEXT_SEPARATOR);
 		for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 			 it != img_text_items.end(); it++) {
 			str = *it;

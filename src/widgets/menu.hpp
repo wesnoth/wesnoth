@@ -66,8 +66,8 @@ public:
 	void scroll(int pos);
 
 	void set_dirty() { drawn_ = false; }
-	enum { HELP_STRING_SEPERATOR = '|', DEFAULT_ITEM = '*' };
-	enum { IMG_TEXT_SEPERATOR = 1 }; // Re-evaluate if this should be
+	enum { HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*' };
+	enum { IMG_TEXT_SEPARATOR = 1 }; // Re-evaluate if this should be
 									 // something else to be settable
 									 // from WML.
 
