@@ -13,17 +13,17 @@
 
 #include "editor.hpp"
 #include "../config.hpp"
-#include "../game_config.hpp"
-#include "../gettext.hpp"
+#include "../cursor.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
+#include "../game_config.hpp"
+#include "../gettext.hpp"
 #include "../image.hpp"
+#include "../language.hpp"
 #include "../map.hpp"
+#include "../preferences.hpp"
 #include "../team.hpp"
 #include "../util.hpp"
-#include "../preferences.hpp"
-#include "../language.hpp"
-#include "../cursor.hpp"
 #include "../wesconfig.h"
 
 #include <cctype>
@@ -236,7 +236,6 @@ int main(int argc, char** argv)
 			std::cerr << "creating map...\n";
 			gamemap map(cfg, mapdata);
 
-			std::cerr << "Using theme cfg: " << std::endl << theme_cfg->write() << std::endl;
 			const config dummy_cfg("");
 			display gui(units, video, map, status, teams,
 				    *theme_cfg, cfg, dummy_cfg);
