@@ -594,6 +594,26 @@ const std::string& unit_type::image_defensive(attack_type::RANGE range) const
 		return val;
 }
 
+const std::string& unit_type::image_leading() const
+{
+	const std::string& val = cfg_["image_leading"];
+	if(val.empty()) {
+		return image();
+	} else {
+		return val;
+	}
+}
+
+const std::string& unit_type::image_healing() const
+{
+	const std::string& val = cfg_["image_healing"];
+	if(val.empty()) {
+		return image();
+	} else {
+		return val;
+	}
+}
+
 const std::string& unit_type::image_profile() const
 {
 	const std::string& val = cfg_["profile"];

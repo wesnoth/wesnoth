@@ -754,6 +754,11 @@ const std::string& unit::image() const
 			else
 				return *img;
 		}
+		case STATE_HEALING:
+			return type_->image_healing();
+		case STATE_LEADING:
+			return type_->image_leading();
+
 		default: return type_->image();
 	}
 }
@@ -769,6 +774,16 @@ void unit::set_attacking(bool newval, const attack_type* type, int ms)
 	state_ = newval ? STATE_ATTACKING : STATE_NORMAL;
 	attackType_ = type;
 	attackingMilliseconds_ = ms;
+}
+
+void unit::set_leading(bool newval)
+{
+	state_ = newval ? STATE_LEADING : STATE_NORMAL;
+}
+
+void unit::set_healing(bool newval)
+{
+	state_ = newval ? STATE_HEALING : STATE_NORMAL;
 }
 
 bool unit::facing_left() const

@@ -107,12 +107,9 @@ void get_village(const gamemap::location& loc, std::vector<team>& teams,
 
 //given the 1-based side, will find the leader of that side,
 //and return an iterator to the leader
-std::map<gamemap::location,unit>::iterator
-   find_leader(std::map<gamemap::location,unit>& units, int side);
+unit_map::iterator find_leader(unit_map& units, int side);
 
-std::map<gamemap::location,unit>::const_iterator
-   find_leader(const std::map<gamemap::location,unit>& units, int side);
-
+unit_map::const_iterator find_leader(const unit_map& units, int side);
 
 //calculates healing for all units for the given side. Should be called
 //at the beginning of a side's turn.
@@ -135,10 +132,12 @@ void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
                   gamemap::location loc, const std::string& advance_to);
 
-//function which returns true iff the unit at loc is currently affected
-//by leadership. (i.e. has a higher-level 'leadership' unit next to it)
-bool under_leadership(const std::map<gamemap::location,unit>& units,
-                      const gamemap::location& loc);
+//function which tests if the unit at loc is currently affected
+//by leadership. (i.e. has a higher-level 'leadership' unit next to it).
+//if it does, then the location of the leader unit will be returned, otherwise
+//gamemap::location::null_location will be returned
+gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
+                                   const gamemap::location& loc);
 
 //checks to see if a side has won, and will throw an end_level_exception
 //if one has. Will also remove control of villages from sides  with dead leaders

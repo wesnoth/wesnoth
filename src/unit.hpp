@@ -108,6 +108,9 @@ public:
 	                   attack_type::RANGE range=attack_type::LONG_RANGE);
 	void set_attacking(bool newval, const attack_type* type=NULL, int ms=0);
 
+	void set_leading(bool newval);
+	void set_healing(bool newval);
+
 	bool facing_left() const;
 	void set_facing_left(bool newval);
 
@@ -132,7 +135,7 @@ private:
 	const unit_type* type_;
 
 	enum STATE { STATE_NORMAL, STATE_ATTACKING,
-	             STATE_DEFENDING_LONG, STATE_DEFENDING_SHORT };
+	             STATE_DEFENDING_LONG, STATE_DEFENDING_SHORT, STATE_LEADING, STATE_HEALING};
 	STATE state_;
 	const attack_type* attackType_;
 	int attackingMilliseconds_;

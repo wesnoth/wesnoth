@@ -133,28 +133,28 @@ std::string recruit_unit(const gamemap& map, int side,
 	return std::string();
 }
 
-bool under_leadership(const std::map<gamemap::location,unit>& units,
-                      const gamemap::location& loc)
+gamemap::location under_leadership(const std::map<gamemap::location,unit>& units,
+                                   const gamemap::location& loc)
 {
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	const std::map<gamemap::location,unit>::const_iterator un =
-	     units.find(loc);
-	if(un == units.end())
-		return false;
+	const unit_map::const_iterator un = units.find(loc);
+	if(un == units.end()) {
+		return gamemap::location::null_location;
+	}
 
 	const int side = un->second.side();
 	const int level = un->second.type().level();
 
 	for(int i = 0; i != 6; ++i) {
-		const std::map<gamemap::location,unit>::const_iterator it =
-		     units.find(adjacent[i]);
+		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if(it != units.end() && it->second.side() == side &&
-		   it->second.type().is_leader() && it->second.type().level() > level)
-			return true;
+			it->second.type().is_leader() && it->second.type().level() > level) {
+			return adjacent[i];
+		}
 	}
 
-	return false;
+	return gamemap::location::null_location;
 }
 
 battle_stats evaluate_battle_stats(
@@ -324,7 +324,7 @@ battle_stats evaluate_battle_stats(
 			}
 		}
 
-		if(under_leadership(units,defender)) {
+		if(under_leadership(units,defender).valid()) {
 			percent += 25;
 
 			if(include_strings) {
@@ -446,7 +446,7 @@ battle_stats evaluate_battle_stats(
 		}
 	}
 
-	if(under_leadership(units,attacker)) {
+	if(under_leadership(units,attacker).valid()) {
 		percent += 25;
 		
 		if(include_strings) {
@@ -867,11 +867,9 @@ void get_village(const gamemap::location& loc, std::vector<team>& teams,
 	}
 }
 
-std::map<gamemap::location,unit>::iterator
-   find_leader(std::map<gamemap::location,unit>& units, int side)
+unit_map::iterator find_leader(unit_map& units, int side)
 {
-	for(std::map<gamemap::location,unit>::iterator i = units.begin();
-	    i != units.end(); ++i) {
+	for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == side && i->second.can_recruit())
 			return i;
 	}
@@ -879,11 +877,9 @@ std::map<gamemap::location,unit>::iterator
 	return units.end();
 }
 
-std::map<gamemap::location,unit>::const_iterator
-   find_leader(const std::map<gamemap::location,unit>& units, int side)
+unit_map::const_iterator find_leader(const unit_map& units, int side)
 {
-	for(std::map<gamemap::location,unit>::const_iterator i = units.begin();
-	    i != units.end(); ++i) {
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 		if(i->second.side() == side && i->second.can_recruit())
 			return i;
 	}
@@ -947,6 +943,9 @@ void calculate_healing(display& disp, const gamemap& map,
 {
 	std::map<gamemap::location,int> healed_units, max_healing;
 
+	//a map of healed units to their healers
+	std::multimap<gamemap::location,gamemap::location> healers;
+
 	std::map<gamemap::location,unit>::iterator i;
 	int amount_healed;
 	for(i = units.begin(); i != units.end(); ++i) {
@@ -974,6 +973,8 @@ void calculate_healing(display& disp, const gamemap& map,
 				if(will_heal(adjacent[j],i->second.side(),teams,units)) {
 					const unit_map::const_iterator healer = units.find(adjacent[j]);
 					max_heal = maximum(max_heal,healer->second.type().max_unit_healing());
+
+					healers.insert(std::pair<gamemap::location,gamemap::location>(i->first,adjacent[j]));
 				}
 			}
 
@@ -1071,10 +1072,23 @@ void calculate_healing(display& disp, const gamemap& map,
 
 		unit& u = units.find(loc)->second;
 
+		typedef std::multimap<gamemap::location,gamemap::location>::const_iterator healer_itor;
+		const std::pair<healer_itor,healer_itor> healer_itors = healers.equal_range(loc);
+
 		if(show_healing) {
 			disp.scroll_to_tile(loc.x,loc.y,display::WARP);
 			disp.select_hex(loc);
 			disp.update_display();
+
+			//iterate over any units that are healing this unit, and make them
+			//enter their healing frame
+			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
+				assert(units.count(i->second));
+				unit& healer = units.find(i->second)->second;
+				healer.set_healing(true);
+
+				disp.draw_tile(i->second.x,i->second.y);
+			}
 		}
 
 		const int DelayAmount = 50;
@@ -1145,6 +1159,14 @@ void calculate_healing(display& disp, const gamemap& map,
 		}
 
 		if(show_healing) {
+			for(healer_itor i = healer_itors.first; i != healer_itors.second; ++i) {
+				assert(units.count(i->second));
+				unit& healer = units.find(i->second)->second;
+				healer.set_healing(false);
+
+				disp.draw_tile(i->second.x,i->second.y);
+			}
+			
 			disp.draw_tile(loc.x,loc.y);
 			disp.update_display();
 		}

@@ -1,3 +1,4 @@
+#include "actions.hpp"
 #include "events.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
@@ -196,6 +197,14 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	def->second.set_defending(true,attack_type::LONG_RANGE);
 
+	const gamemap::location leader_loc = under_leadership(units,a);
+	unit_map::iterator leader = units.end();
+	if(leader_loc.valid()) {
+		leader = units.find(leader_loc);
+		assert(leader != units.end());
+		leader->second.set_leading(true);
+	}
+
 	//the missile frames are based around the time when the missile impacts.
 	//the 'real' frames are based around the time when the missile launches.
 	const int first_missile = minimum<int>(-100,attack.get_first_frame(attack_type::MISSILE_FRAME));
@@ -240,7 +249,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	int ticks = SDL_GetTicks();
 
 	bool shown_label = false;
-
+	
 	for(int i = begin_at; i < end_at; i += time_resolution*acceleration) {
 		events::pump();
 
@@ -302,6 +311,9 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 		}
 
 		disp.draw_tile(b.x,b.y,NULL,defensive_alpha,defensive_colour);
+		if(leader_loc.valid()) {
+			disp.draw_tile(leader_loc.x,leader_loc.y);
+		}
 
 		if(i >= 0 && i < real_last_missile && !hide) {
 			const int missile_frame = i + first_missile;
@@ -348,8 +360,16 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 	def->second.set_defending(false);
 
+	if(leader_loc.valid()){
+		leader->second.set_leading(false);
+	}
+
 	disp.draw_tile(a.x,a.y);
 	disp.draw_tile(b.x,b.y);
+
+	if(leader_loc.valid()){
+		disp.draw_tile(leader_loc.x,leader_loc.y);
+	}
 
 	if(dead) {
 		unit_die(disp,def->first,def->second);
@@ -436,6 +456,15 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	def->second.set_defending(true,attack_type::SHORT_RANGE);
 
+	const gamemap::location leader_loc = under_leadership(units,a);
+	unit_map::iterator leader = units.end();
+	if(leader_loc.valid()){
+		std::cerr << "found leader at " << (leader_loc.x+1) << "," << (leader_loc.y+1) << "\n";
+		leader = units.find(leader_loc);
+		assert(leader != units.end());
+		leader->second.set_leading(true);
+	}
+
 	const int begin_at = minimum<int>(-200,attack.get_first_frame());
 	const int end_at = maximum<int>((damage+1)*time_resolution,
 	                                       maximum<int>(200,attack.get_last_frame()));
@@ -515,7 +544,11 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 			++flash_num;
 		}
 
+
 		disp.draw_tile(b.x,b.y,NULL,defender_alpha,defender_colour);
+		if(leader_loc.valid()) {
+			disp.draw_tile(leader_loc.x,leader_loc.y);
+		}
 
 		int xoffset = 0;
 		const std::string* unit_image = attack.get_frame(i,&xoffset);
@@ -558,8 +591,15 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	def->second.set_defending(false);
 
+	if(leader_loc.valid()){
+		leader->second.set_leading(false);
+	}
+
 	disp.draw_tile(a.x,a.y);
 	disp.draw_tile(b.x,b.y);
+	if(leader_loc.valid()) {
+		disp.draw_tile(leader_loc.x,leader_loc.y);
+	}
 
 	if(dead) {
 		unit_display::unit_die(disp,def->first,def->second);
