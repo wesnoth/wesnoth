@@ -870,10 +870,10 @@ int main(int argc, char** argv)
 
 	network::set_default_send_size(4096);
 
-#ifndef LOCALSTATEDIR
-# define LOCALSTATEDIR "/var/run"
+#ifndef FIFODIR
+# define FIFODIR "/var/run/wesnothd"
 #endif
-	std::string fifo_path = std::string(LOCALSTATEDIR) + "/wesnothd/socket";
+	std::string fifo_path = std::string(FIFODIR) + "/socket";
 
 	for(int arg = 1; arg != argc; ++arg) {
 		const std::string val(argv[arg]);
