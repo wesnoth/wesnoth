@@ -955,10 +955,10 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image,
 	}
 
 	if(xend >= mapx())
-		xend = mapx()-1;
+		xend = mapx();
 
 	if(yend >= this->y())
-		yend = this->y()-1;
+		yend = this->y();
 
 	if(xend < xpos || yend < ypos)
 		return;
