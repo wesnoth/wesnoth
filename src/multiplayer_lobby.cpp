@@ -178,6 +178,9 @@ RESULT enter(display& disp, config& game_data)
 				if(data.child("gamelist")) {
 					game_data = data;
 					break;
+				} else if(data.child("gamelist_diff")) {
+					game_data.apply_diff(*data.child("gamelist_diff"));
+					break;
 				} else if(data.child("error")) {
 					throw network::error((*data.child("error"))["message"]);
 				} else if(data.child("message")) {

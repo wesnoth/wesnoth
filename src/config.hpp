@@ -200,7 +200,7 @@ struct config
 	//to cfg2.
 	config get_diff(const config& c) const;
 
-	void apply_diff(const config& diff);
+	void apply_diff(const config& diff); //throw error
 
 	//all the attributes of this node.
 	string_map values;

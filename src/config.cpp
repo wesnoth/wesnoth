@@ -1323,12 +1323,12 @@ void config::apply_diff(const config& diff)
 		for(all_children_iterator j = (*i)->ordered_begin(); j != (*i)->ordered_end(); ++j) {
 			const std::pair<const std::string*,const config*> item = *j;
 
-			const child_map::iterator itor = children.find(*item.first);
-			if(itor == children.end() || index > itor->second.size()) {
+			child_list& v = children[*item.first];
+			if(index > v.size()) {
 				throw error("error in diff: could not find element '" + *item.first + "'");
 			}
 
-			itor->second.insert(itor->second.begin()+index,new config(*item.second));
+			v.insert(v.begin()+index,new config(*item.second));
 		}
 	}
 

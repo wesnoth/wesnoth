@@ -498,10 +498,14 @@ int mp_connect::gui_do()
 	int new_playergold = -1;
 	int cur_playergold = -1;
 
+	config orig_level = *level_;
+
 	for(;;) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
 		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+		bool level_changed = false;
 
 		for(size_t n = 0; n != combos_team_.size(); ++n) {
 			config& side = **(sides.first+n);
@@ -540,7 +544,8 @@ int mp_connect::gui_do()
 					side["controller"] = "network";
 					side["description"] = "";
 				}
-				network::send_data(*level_);
+
+				level_changed = true;
 			}
 
 			//Player race
@@ -553,7 +558,7 @@ int mp_connect::gui_do()
 				for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
 					side[i->first] = i->second;
 				}
-				network::send_data(*level_);
+				level_changed = true;
 			}
 
 			//Player team
@@ -561,11 +566,11 @@ int mp_connect::gui_do()
 				std::stringstream str;
 				str << (combos_team_[n].selected()+1);
 				side["team_name"] = str.str();
-				network::send_data(*level_);
+				level_changed = true;
 			}
 
 			if(combos_color_[n].process(mousex, mousey, left_button)) {
-				network::send_data(*level_);
+				level_changed = true;
 			}
 
 			sliders_gold_[n].process();
@@ -586,7 +591,7 @@ int mp_connect::gui_do()
 					                (*sides.first[n])["gold"],
 							rect.x, rect.y);
 					update_rect(rect);
-					network::send_data(*level_);
+					level_changed = true;
 				}
 			}
 		}
@@ -608,7 +613,7 @@ int mp_connect::gui_do()
 				si["description"] = string_table["ai_controlled"];
 				combos_type_[m].set_selected(2);
 			}
-			network::send_data(*level_);
+			level_changed = true;
 		}
 
 		launch_.enable(full_);
@@ -649,6 +654,15 @@ int mp_connect::gui_do()
 
 			status_ = 0;
 			return status_;
+		}
+
+		if(level_changed) {
+			config diff;
+			diff.add_child("scenario_diff",level_->get_diff(orig_level));
+
+			network::send_data(diff);
+
+			orig_level = *level_;
 		}
 
 		gui_update();

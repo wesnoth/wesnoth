@@ -36,6 +36,9 @@ private:
 	config login_response_;
 
 	config initial_response_;
+	config old_initial_response_;
+
+	config sync_initial_response();
 
 	typedef std::map<network::connection,player> player_map;
 	player_map players_;
@@ -51,9 +54,18 @@ server::server(int port) : net_manager_(), server_(port)
 	login_response_["version"] = game_config::version;
 }
 
+config server::sync_initial_response()
+{
+	config res;
+	res.add_child("gamelist_diff",initial_response_.get_diff(old_initial_response_));
+	old_initial_response_ = initial_response_;
+	return res;
+}
+
 void server::run()
 {
 	config& gamelist = initial_response_.add_child("gamelist");
+	old_initial_response_ = initial_response_;
 
 	for(;;) {
 		try {
@@ -110,10 +122,11 @@ void server::run()
 					not_logged_in_.remove_player(sock);
 					lobby_players_.add_player(sock);
 
-					//currently update user list to all players who are in lobby
-					//(later may optimize to only send new login information
-					//to all but the new player)
-					lobby_players_.send_data(initial_response_);
+					//send the new player the entire list of games and players
+					network::send_data(initial_response_,sock);
+
+					//send other players in the lobby the update that the player has joined
+					lobby_players_.send_data(sync_initial_response(),sock);
 
 				} else if(lobby_players_.is_member(sock)) {
 					const config* const create_game = data.child("create_game");
@@ -178,8 +191,14 @@ void server::run()
 						continue;
 					}
 
+					//if this is data describing changes to a game.
+					if(data.child("scenario_diff")) {
+						g->level().apply_diff(*data.child("scenario_diff"));
+						g->send_data(data,sock);
+					}
+
 					//if this is data describing the level for a game
-					if(data.child("side") != NULL) {
+					else if(data.child("side") != NULL) {
 
 						const bool is_init = g->level_init();
 
@@ -193,8 +212,8 @@ void server::run()
 							config& desc = gamelist.add_child("game",g->level());
 							g->set_description(&desc);
 
-							//send all players in the lobby the list of games
-							lobby_players_.send_data(initial_response_);
+							//send all players in the lobby the update to the list of games
+							lobby_players_.send_data(sync_initial_response());
 						}
 
 						//record the new level data, and send to all players
@@ -224,8 +243,6 @@ void server::run()
 						g->start_game();
 					} else if(data.child("leave_game")) {
 						const bool needed = g->is_needed(sock);
-						g->remove_player(sock);
-						lobby_players_.add_player(sock);
 
 						if(needed) {
 
@@ -245,17 +262,27 @@ void server::run()
 								delete gamelist->remove_child("game",desc - vg.first);
 							}
 
+							//update the state of the lobby to players in it.
+							//We have to sync the state of the lobby because we can
+							//send it to the players leaving the game
+							lobby_players_.send_data(sync_initial_response());
+
 							//put the players back in the lobby and send
 							//them the game list and user list again
 							g->send_data(initial_response_);
 							lobby_players_.add_players(*g);
 							games_.erase(g);
-						}
 
-						std::cerr << "sending quitting player game list: " << initial_response_.get_children("user").size() << "\n";
-						std::cerr << initial_response_.write() << "\n";
-						//send the player who has quit the new game list
-						network::send_data(initial_response_,sock);
+							//now sync players in the lobby again, to remove the game
+							lobby_players_.send_data(sync_initial_response());
+						} else {
+
+							g->remove_player(sock);
+							lobby_players_.add_player(sock);
+
+							//send the player who has quit the game list
+							network::send_data(initial_response_,sock);
+						}
 
 						continue;
 					} else if(data["side_secured"].empty() == false) {
@@ -307,7 +334,7 @@ void server::run()
 
 				//send all players the information that a player has logged
 				//out of the system
-				lobby_players_.send_data(initial_response_);
+				lobby_players_.send_data(sync_initial_response());
 
 				std::cerr << "done closing socket...\n";
 			}

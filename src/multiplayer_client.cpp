@@ -134,6 +134,9 @@ public:
 				return START_GAME;
 			} else if(reply.child("leave_game")) {
 				return GAME_CANCELLED;
+			} else if(reply.child("scenario_diff")) {
+				std::cerr << "received diff for scenario....applying...\n";
+				sides_.apply_diff(*reply.child("scenario_diff"));
 			} else {
 				sides_ = reply;
 				std::cerr << "got some sides. Current number of sides = " << sides_.get_children("side").size() << "," << reply.get_children("side").size() << "\n";
