@@ -12,17 +12,24 @@
 
 use strict;
 
+## process wml files
+
 require "utils/wmltrans.pm";
 
+# get some id->english from english.cfg
 our ($wmlfile, $pofile) = @ARGV;
 our %english = readwml ('data/translations/english.cfg');
 our %revenglish;
 
+# reverse the hash to use the strings to find the id
 foreach my $key (keys %english) {
   $revenglish{$english{$key}} = $key;
 }
 
+# get translations from wml file
 our %lang = readwml ($wmlfile);
+
+## process pofile, filling holes when we can
 
 open (POFILE, $pofile) or die "cannot open $pofile";
 
@@ -56,6 +63,8 @@ if (defined $curid and defined $curmsg) {
 }
 
 
+## Below is utility functions only - end of processing
+
 sub processentry {
   my ($curid, $curmsg) = @_;
   my $output;
@@ -75,6 +84,7 @@ sub processentry {
 	$output = raw2postring("");
       }
     } else {
+      # this usually denotes limitations in this script
       printf STDERR "WARNING: no id found (setting translation to empty) for $curid\n";
       $output = raw2postring("");
     }
