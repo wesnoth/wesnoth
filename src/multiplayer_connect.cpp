@@ -46,7 +46,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
-	    ai_(gui::button(disp, " Computer vs Computer ")),
+	    ai_(gui::button(disp, string_table["ai_players"])),
 	    width_(630), height_(290), full_(false)
 {
 	// Send Initial information
