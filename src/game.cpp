@@ -225,88 +225,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 
 namespace {
 
-//this function reads the game configuration, searching for valid cached copies first
-void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache)
-{
-	log_scope("read_game_cfg");
-
-	if(defines.size() < 4) {
-		bool is_valid = true;
-		std::stringstream str;
-		str << "-v" << game_config::version;
-		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
-			if(i->second.value != "" || i->second.arguments.empty() == false) {
-				is_valid = false;
-				break;
-			}
-
-			str << "-" << i->first;
-		}
-		std::string localename = get_locale().localename;
-		str << "-lang_" << (localename.empty() ? "default" : localename);
-
-		if(is_valid) {
-			const std::string& cache = get_cache_dir();
-			if(cache != "") {
-				const std::string fname = cache + "/game.cfg-cache" + str.str();
-				const std::string fname_checksum = fname + ".checksum";
-
-				file_tree_checksum dir_checksum;
-				
-				if(use_cache) {
-					try {
-						if(file_exists(fname_checksum)) {
-							config checksum_cfg;
-							scoped_istream stream = istream_file(fname_checksum);
-							read(checksum_cfg, *stream);
-							dir_checksum = file_tree_checksum(checksum_cfg);
-						}
-					} catch(config::error&) {
-						std::cerr << "cache checksum is corrupt\n";
-					} catch(io_exception&) {
-						std::cerr << "error reading cache checksum\n";
-					}
-				}
-
-				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
-					std::cerr << "found valid cache at '" << fname << "' using it\n";
-					log_scope("read cache");
-					try {
-						scoped_istream stream = istream_file(fname);
-						read_compressed(cfg, *stream);
-						return;
-					} catch(config::error&) {
-						std::cerr << "cache is corrupt. Loading from files\n";
-					} catch(io_exception&) {
-						std::cerr << "error reading cache. Loading from files\n";
-					}
-				}
-
-				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
-				
-				//read the file and then write to the cache
-				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
-				read(cfg, *stream, &line_src);
-				try {
-					scoped_ostream cache = ostream_file(fname);
-					write_compressed(*cache, cfg);
-					config checksum_cfg;
-					data_tree_checksum().write(checksum_cfg);
-					scoped_ostream checksum = ostream_file(fname_checksum);
-					write(*checksum, checksum_cfg);
-				} catch(io_exception&) {
-					std::cerr << "could not write to cache '" << fname << "'\n";
-				}
-
-				return;
-			}
-		}
-	}
-
-	std::cerr << "caching cannot be done. Reading file\n";
-	scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
-	read(cfg, *stream, &line_src);
-}
 
 bool less_campaigns_rank(const config* a, const config* b) {
 	return lexical_cast_default<int>((*a)["rank"],1000) <
@@ -341,6 +259,7 @@ private:
 	game_controller(const game_controller&);
 	void operator=(const game_controller&);
 
+	void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache);
 	void refresh_game_cfg();
 
 	void download_campaigns();
@@ -1394,6 +1313,97 @@ bool game_controller::change_language()
 	hotkey::load_descriptions();
 
 	return false;
+}
+
+//this function reads the game configuration, searching for valid cached copies first
+void game_controller::read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, config& cfg, bool use_cache)
+{
+	log_scope("read_game_cfg");
+
+	if(defines.size() < 4) {
+		bool is_valid = true;
+		std::stringstream str;
+		str << "-v" << game_config::version;
+		for(preproc_map::const_iterator i = defines.begin(); i != defines.end(); ++i) {
+			if(i->second.value != "" || i->second.arguments.empty() == false) {
+				is_valid = false;
+				break;
+			}
+
+			str << "-" << i->first;
+		}
+		std::string localename = get_locale().localename;
+		str << "-lang_" << (localename.empty() ? "default" : localename);
+
+		if(is_valid) {
+			const std::string& cache = get_cache_dir();
+			if(cache != "") {
+				const std::string fname = cache + "/game.cfg-cache" + str.str();
+				const std::string fname_checksum = fname + ".checksum";
+
+				file_tree_checksum dir_checksum;
+				
+				if(use_cache) {
+					try {
+						if(file_exists(fname_checksum)) {
+							config checksum_cfg;
+							scoped_istream stream = istream_file(fname_checksum);
+							read(checksum_cfg, *stream);
+							dir_checksum = file_tree_checksum(checksum_cfg);
+						}
+					} catch(config::error&) {
+						std::cerr << "cache checksum is corrupt\n";
+					} catch(io_exception&) {
+						std::cerr << "error reading cache checksum\n";
+					}
+				}
+
+				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
+					std::cerr << "found valid cache at '" << fname << "' using it\n";
+					log_scope("read cache");
+					try {
+						scoped_istream stream = istream_file(fname);
+						read_compressed(cfg, *stream);
+						return;
+					} catch(config::error&) {
+						std::cerr << "cache is corrupt. Loading from files\n";
+					} catch(io_exception&) {
+						std::cerr << "error reading cache. Loading from files\n";
+					}
+				}
+
+				std::cerr << "no valid cache found. Writing cache to '" << fname << "'\n";
+				
+				//read the file and then write to the cache
+				scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
+
+				std::string error_log;
+				read(cfg, *stream, &line_src, &error_log);
+				if(!error_log.empty()) {
+					gui::show_error_message(disp(), 
+							_("Error loading game configuration files: '") +
+							error_log);
+
+				}
+				try {
+					scoped_ostream cache = ostream_file(fname);
+					write_compressed(*cache, cfg);
+					config checksum_cfg;
+					data_tree_checksum().write(checksum_cfg);
+					scoped_ostream checksum = ostream_file(fname_checksum);
+					write(*checksum, checksum_cfg);
+				} catch(io_exception&) {
+					std::cerr << "could not write to cache '" << fname << "'\n";
+				}
+
+				return;
+			}
+		}
+	}
+
+	std::cerr << "caching cannot be done. Reading file\n";
+	scoped_istream stream = preprocess_file("data/game.cfg", &defines, &line_src);
+	read(cfg, *stream, &line_src);
 }
 
 void game_controller::refresh_game_cfg()

@@ -58,7 +58,7 @@ class parser
 {
 public:
 	parser(config& cfg, std::istream& in, std::vector<line_source> const* line_sources);
-	void operator() ();
+	void operator() (std::string* error_log=NULL);
 
 private:
 	void parse_element();
@@ -97,29 +97,42 @@ parser::parser(config &cfg, std::istream &in, std::vector<line_source> const *li
 {
 }
 
-void parser::operator()()
+void parser::operator()(std::string* error_log)
 {
 	cfg_.clear();
 	elements.push(element(&cfg_, "", 0, PACKAGE));
 	tok_.textdomain() = PACKAGE;
 
 	do {
-		tok_.next_token();
+		try {
+			tok_.next_token();
 
-		switch(tok_.current_token().type) {
-		case token::LF:
-			continue;
-		case '[':
-			parse_element();
-			break;
-		case token::STRING:
-			parse_variable();
-			break;
-		default:
-			error(_("Unexpected characters at line start"));
-			break;
-		case token::END:
-			break;
+			switch(tok_.current_token().type) {
+			case token::LF:
+				continue;
+			case '[':
+				parse_element();
+				break;
+			case token::STRING:
+				parse_variable();
+				break;
+			default:
+				error(_("Unexpected characters at line start"));
+				break;
+			case token::END:
+				break;
+			}
+		} catch(config::error& e) {
+			if(error_log == NULL)
+				throw;
+			
+			// On error, dump tokens to the next LF
+			while(tok_.current_token().type != token::LF &&
+					tok_.current_token().type != token::END) {
+				tok_.next_token();
+			}
+
+			*error_log += e.message + '\n';
 		}
 	} while (tok_.current_token().type != token::END);
 
@@ -323,9 +336,10 @@ void parser::error(const std::string& error_type)
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources)
+void read(config &cfg, std::istream &data_in, std::vector< line_source > const *line_sources,
+		std::string* error_log)
 {
-	parser(cfg, data_in, line_sources)();
+	parser(cfg, data_in, line_sources)(error_log);
 }
 
 static char const *AttributeEquals = "=";
