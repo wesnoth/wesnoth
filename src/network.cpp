@@ -402,11 +402,18 @@ connection receive_data(config& cfg, connection connection_num, int timeout)
 
 				if(len > 10000000) {
 					std::cerr << "bad length in network packet. Throwing error\n";
-					throw error(std::string("network error: bad length data"),*i);
+					throw error("network error: bad length data",*i);
 				}
 
 				part_received = received_data.insert(std::pair<connection,partial_buffer>(*i,partial_buffer())).first;
 				part_received->second.buf.resize(len);
+
+				//make sure that this connection still has data
+				const int res = SDLNet_CheckSockets(socket_set,timeout);
+				if(res <= 0 || !SDLNet_SocketReady(sock)) {
+					std::cerr << "packet has no data after length. Throwing error\n";
+					throw error("network error: received wrong number of bytes: 0",*i);
+				}
 			}
 
 			current_connection = part_received;
