@@ -4,15 +4,15 @@ if SERVER
 SUBDIRS += server
 endif
 
+bin_PROGRAMS = wesnoth
+
 if CAMPAIGNSERVER
-SUBDIRS += campaign_server
+bin_PROGRAMS += campaignd
 endif
 
 if TOOLS
-SUBDIRS += tools
+bin_PROGRAMS += exploder cutter
 endif
-
-bin_PROGRAMS = wesnoth
 
 if EDITOR
 bin_PROGRAMS += wesnoth_editor
@@ -351,6 +351,94 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 sdl_ttf/SDL_ttf.h \
 			 wesconfig.h
 
+#############################################################################
+#    Campaign Server                                                        #
+#############################################################################
+
+campaignd_SOURCES = \
+	campaign_server/campaign_server.cpp \
+	server/variable.cpp \
+	config.cpp \
+	filesystem.cpp \
+	game_config.cpp \
+	gettext.cpp \
+	log.cpp \
+	network.cpp \
+	network_worker.cpp \
+	publish_campaign.cpp \
+	thread.cpp \
+	serialization/preprocessor.cpp \
+	serialization/string_utils.cpp \
+	zipios++/xcoll.cpp \
+	game_events.hpp \
+	config.hpp \
+	filesystem.hpp \
+	game_config.hpp \
+	gettext.hpp \
+	log.hpp \
+	network.hpp \
+	network_worker.hpp \
+	publish_campaign.hpp \
+	serialization/preprocessor.hpp \
+	serialization/string_utils.hpp \
+	thread.hpp \
+	zipios++/xcoll.hpp
+
+campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+
+#############################################################################
+#    Castle building helpers                                                #
+#############################################################################
+
+exploder_SOURCES = \
+	tools/exploder.cpp \
+	tools/exploder_utils.cpp \
+	tools/exploder_cutter.cpp \
+	tools/exploder_composer.cpp \
+	server/variable.cpp \
+	tools/dummy_video.cpp \
+	config.cpp \
+	filesystem.cpp \
+	game_config.cpp \
+	sdl_utils.cpp \
+	log.cpp \
+	serialization/preprocessor.cpp \
+	serialization/string_utils.cpp \
+	zipios++/xcoll.cpp \
+	tools/exploder_composer.hpp \
+	tools/exploder_cutter.hpp \
+	tools/exploder_utils.hpp \
+	serialization/preprocessor.hpp \
+	serialization/string_utils.hpp \
+	zipios++/xcoll.hpp \
+	gettext.cpp
+
+cutter_SOURCES = \
+	tools/cutter.cpp \
+	tools/exploder_utils.cpp \
+	tools/exploder_cutter.cpp \
+	server/variable.cpp \
+	tools/dummy_video.cpp \
+	config.cpp \
+	filesystem.cpp \
+	game_config.cpp \
+	sdl_utils.cpp \
+	log.cpp \
+	serialization/preprocessor.cpp \
+	serialization/string_utils.cpp \
+	zipios++/xcoll.cpp \
+	tools/exploder_composer.hpp \
+	tools/exploder_cutter.hpp \
+	tools/exploder_utils.hpp \
+	serialization/preprocessor.hpp \
+	serialization/string_utils.hpp \
+	zipios++/xcoll.hpp \
+	gettext.cpp
+
+
+exploder_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+cutter_LDADD = @SDL_IMAGE_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+
 AM_CXXFLAGS = -I sdl_ttf -I../intl -I$(top_srcdir)/intl @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" \
 	-DLOCALEDIR=\"$(LOCALEDIR)\" -DHAS_RELATIVE_LOCALEDIR=$(HAS_RELATIVE_LOCALEDIR)
 
@@ -369,8 +457,11 @@ endif
 CXXLD = $(LDPREFIX) $(CXX)
 
 
-LIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
+THELIBS = $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBZIPIOS) $(FREETYPE_LIBS) $(LIBINTL)
+
+wesnoth_LDADD = $(THELIBS)
+wesnoth_editor_LDADD = $(THELIBS)
 
 if STATIC
 LDFLAGS += -all-static

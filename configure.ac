@@ -718,8 +718,6 @@ AC_CONFIG_FILES([Makefile
 		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile
-		 src/campaign_server/Makefile
-		 src/tools/Makefile
 		 src/zip/Makefile
 		 doc/Makefile
 		 doc/man/Makefile])
