@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-12-30 13:03+0100\n"
-"PO-Revision-Date: 2005-01-04 01:17+0100\n"
+"PO-Revision-Date: 2005-01-04 02:16+0100\n"
 "Last-Translator: Alfredo Beaumont Sainz <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team:  Basque\n"
 "MIME-Version: 1.0\n"
@@ -32,9 +32,7 @@ msgstr "azkarra"
 msgid "intelligent"
 msgstr "adimendun"
 
-#: data/game.cfg:560
-msgid "resilient"
-msgstr ""
+#: data/game.cfg:560 msgid "resilient" msgstr ""
 
 #: data/help.cfg:10 data/help.cfg:53 data/help.cfg:59
 msgid "Introduction"
@@ -54,11 +52,11 @@ msgstr "Unitateak"
 
 #: data/help.cfg:34 src/help.cpp:1043
 msgid "Abilities"
-msgstr ""
+msgstr "Trebetasunak"
 
 #: data/help.cfg:41
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Armen berezitasunak"
 
 #: data/help.cfg:47
 msgid "Terrains"
@@ -69,7 +67,7 @@ msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
 "will be listed under this topic as you encounter them."
-msgstr ""
+msgstr "Zenbait unitatek beste unitateetan eragin zuzena duten trebetasunak, edo unitate honen eta beste unitateen harteko elkarekintza inpaktua duen trebetasunak dauka. Trebetasun hauek gai honen barruan zerrendatuko dira aurkitzen dituzunean."
 
 #: data/help.cfg:62
 msgid ""
@@ -230,7 +228,7 @@ msgid ""
 "\n"
 "\n"
 "<header>text='Order and number of attacks'</header>"
-msgstr ""
+msgstr "<header>text='Eraso ordena eta kopurua'</header>"
 
 #: data/help.cfg:107
 msgid ""
@@ -248,7 +246,7 @@ msgid ""
 "\n"
 "\n"
 "<header>text='Chance to hit'</header>"
-msgstr ""
+msgstr "<header>text='Kolpeatzeko aukera'</header>"
 
 #: data/help.cfg:111
 msgid ""
@@ -278,7 +276,7 @@ msgid ""
 "\n"
 "\n"
 "<header>text=Damage</header>"
-msgstr ""
+msgstr "\n\n<header>text=Kaltea</header>"
 
 #: data/help.cfg:116
 msgid ""
@@ -341,7 +339,7 @@ msgstr "Eguneko Ordua"
 
 #: data/help.cfg:138 data/schedules.cfg:5
 msgid "Dawn"
-msgstr ""
+msgstr "Egunsentia"
 
 #: data/help.cfg:138
 msgid ""
@@ -352,6 +350,10 @@ msgid ""
 "The usual day/night cycle runs:\n"
 "\n"
 msgstr ""
+"Wesnoth jokuak normalean egun eta gau arteko ziklo erregularrean ematen dira. Uneko denbora goi-eskubiko minimapa azpian ikus daiteke.\n"
+"\n"
+"Egun/gau ziklo normala honela izaten da:\n"
+"\n"
 
 #: data/help.cfg:139 data/schedules.cfg:13 data/schedules.cfg:25
 #: data/schedules.cfg:32
@@ -554,7 +556,7 @@ msgstr ""
 
 #: data/help.cfg:203 src/titlescreen.cpp:188
 msgid "About"
-msgstr ""
+msgstr "Honi buruz"
 
 #: data/help.cfg:212
 msgid ""
@@ -739,7 +741,7 @@ msgstr "Eraztunak hau daraman unitatea pixkat sendatzen du txandaro."
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
-msgstr ""
+msgstr "Ezin daiteke trebetasunik ezarri oraindik, barkatu"
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
@@ -763,7 +765,7 @@ msgstr ""
 
 #: data/items.cfg:653
 msgid "Storm Trident"
-msgstr ""
+msgstr "Ekaitzetako hiruhortz"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
@@ -775,7 +777,7 @@ msgstr ""
 
 #: data/items.cfg:669
 msgid "storm trident"
-msgstr ""
+msgstr "ekaitz hiruhortz"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -816,7 +818,7 @@ msgstr ""
 
 #: data/multiplayer.cfg:20
 msgid "Default"
-msgstr ""
+msgstr "Lehenetsia"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
 #: data/multiplayer.cfg:305 src/multiplayer_client.cpp:666
@@ -825,11 +827,11 @@ msgstr "Ausazkoa"
 
 #: data/multiplayer.cfg:30 data/multiplayer.cfg:221
 msgid "Loyalists"
-msgstr ""
+msgstr "Leialak"
 
 #: data/multiplayer.cfg:43 data/multiplayer.cfg:234
 msgid "Rebels"
-msgstr ""
+msgstr "Errebeldeak"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
 msgid "Northerners"
@@ -1008,21 +1010,26 @@ msgid ""
 "#Opponent moves the balls to your endzone more times than you move them to "
 "theirs"
 msgstr ""
+"\n"
+"Garaipena:\n"
+"@Mugitu edozein pilota zure arerioaren zonaldearen bukaeraraino hark zure zonaldera mugitzen duen baino gehiagotan\n"
+"Porrota:\n"
+"#Arerioak pilotak zure zonaldera mugitzen ditu zuk bere zonaldera mugitzen dituzun baino gehiagotan"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
 msgid "Red scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Tantoa gorrientzarako! Uneko puntuaketa $redscore-$bluescore da"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:247
 #: data/scenarios/multiplayer/Wesbowl.cfg:524
 msgid "Blue scores! Current score is $redscore-$bluescore"
-msgstr ""
+msgstr "Tantoa urdinentzako! Uneko puntuaketa $redscore-$bluescore da"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:337
 #: data/scenarios/multiplayer/Wesbowl.cfg:614
 msgid "Should I pass the ball to $passto.type ($xloc,$yloc)?"
-msgstr ""
+msgstr "Pilota $passto.type -ri ($xlock, $yloc) pasatu beharko nioke?"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:339
 #: data/scenarios/multiplayer/Wesbowl.cfg:616
@@ -1061,7 +1068,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/battleworld.cfg:7
 msgid "Battle World"
-msgstr ""
+msgstr "Mundu borroka"
 
 #: data/scenarios/multiplayer/castles.cfg:7
 msgid "Siege Castles"
@@ -1666,7 +1673,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid "How much gold do my units cost?"
-msgstr ""
+msgstr "Zenbat urre kostatzen dute nire unitateak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:108
 msgid ""
@@ -1782,7 +1789,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 msgid "How does resistance affect attack damage?"
-msgstr ""
+msgstr "Zer eragina du erresitentzia erasoen kaltean?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid ""
@@ -1796,12 +1803,12 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:151
 msgid "What are the different damage types?"
-msgstr ""
+msgstr "Zeintzuk dira kalte mota ezberdinak"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
 msgid ""
 "Many units have a specialty which changes the rules of play in some way."
-msgstr ""
+msgstr "Unitate askok jokuaren arauak nolabait aldatzen dituen berezitasun bat daukate"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid ""
@@ -1812,7 +1819,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 msgid "What do specialties do?"
-msgstr ""
+msgstr "Zer egiten dute berezitasunak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid ""
@@ -1824,7 +1831,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:165
 msgid "Which units get specialties?"
-msgstr ""
+msgstr "Zein unitatek izaten dituzte berezitasunak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid ""
@@ -1837,11 +1844,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:166
 msgid "What kinds of specialties can my units get?"
-msgstr ""
+msgstr "Zer berezitasun mota izan ditzakete nire unitateek?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid "How do I use specialties?"
-msgstr ""
+msgstr "Nola erabiltzen ditut berezitasunak?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:167
 msgid ""
