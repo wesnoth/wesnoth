@@ -1924,6 +1924,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 		xpos = curr_loc_.first;
 		break;
 	case LEFT:
+	default:
 		xpos = 0;
 		break;
 	case MIDDLE:
