@@ -378,6 +378,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 	const gamemap::location& loc = gui_.minimap_location_on(event.x,event.y);
 	if(loc.valid()) {
 		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
+		return;
 	}
 
 	gamemap::location hex = gui_.hex_clicked_on(event.x,event.y);
