@@ -26,6 +26,7 @@ namespace game_config
 	extern int healer_heals_per_turn;
 	extern int cure_amount;
 	extern int curer_heals_per_turn;
+	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
 	extern const std::string version;

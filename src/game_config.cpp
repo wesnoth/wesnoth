@@ -22,6 +22,7 @@ namespace game_config
 	int healer_heals_per_turn = 8;
 	int cure_amount = 8;
 	int curer_heals_per_turn = 18;
+	int rest_heal_amount= 1;
 	int recall_cost = 20;
 	int kill_experience = 8;
 	const std::string version = "0.6.99.3-CVS";
@@ -66,6 +67,7 @@ namespace game_config
 		healer_heals_per_turn = atoi(v["healer_heals_per_turn"].c_str());
 		cure_amount = atoi(v["cure_amount"].c_str());
 		curer_heals_per_turn = atoi(v["curer_heals_per_turn"].c_str());
+		rest_heal_amount = atoi(v["rest_heal_amount"].c_str());
 		recall_cost = atoi(v["recall_cost"].c_str());
 		kill_experience = atoi(v["kill_experience"].c_str());
 
