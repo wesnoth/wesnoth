@@ -283,6 +283,10 @@ help_manager::~help_manager() {
 	map = NULL;
 	toplevel.clear();
 	hidden_sections.clear();
+    // These last numbers must be reset so that the content is regenreated.
+    // Upon next start.
+	last_num_encountered_units = -1;
+	last_num_encountered_terrains = -1;
 }
 
 bool section_is_referenced(const std::string &section_id, const config &cfg) {
