@@ -575,8 +575,9 @@ void attack(display& gui, const gamemap& map,
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
 
-	assert(a != units.end());
-	assert(d != units.end());
+	if(a == units.end() || d == units.end()) {
+		return;
+	}
 
 	int attackerxp = d->second.type().level();
 	int defenderxp = a->second.type().level();
