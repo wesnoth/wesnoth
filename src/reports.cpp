@@ -11,7 +11,7 @@ namespace {
 		"unit_traits","unit_status","unit_alignment","unit_abilities","unit_hp","unit_xp",
 		"unit_moves","unit_weapons","unit_image","unit_profile","time_of_day",
 		"turn","gold","villages","num_units","upkeep", "expenses",
-		"income", "terrain", "position" };
+		"income", "terrain", "position", "side_playing" };
 }
 
 namespace reports {
@@ -25,7 +25,7 @@ const std::string& report_name(TYPE type)
 }
 
 report generate_report(TYPE type, const gamemap& map, const unit_map& units,
-                       const team& current_team, int current_side,
+                       const team& current_team, int current_side, int playing_side,
 					   const gamemap::location& loc, const gamemap::location& mouseover,
 					   const gamestatus& status, const std::string* format_string)
 {
@@ -240,6 +240,12 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		}
 
 		break;	
+	}
+
+	case SIDE_PLAYING: {
+		char buf[50];
+		sprintf(buf,"terrain/flag-team%d.png",playing_side);
+		return report("",buf);
 	}
 
 	}

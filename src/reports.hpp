@@ -16,7 +16,7 @@ namespace reports {
 	            UNIT_ALIGNMENT, UNIT_ABILITIES, UNIT_HP, UNIT_XP, UNIT_MOVES, UNIT_WEAPONS,
 				UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 				TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES, INCOME, TERRAIN, POSITION,
-	            NUM_REPORTS};
+				SIDE_PLAYING, NUM_REPORTS};
 
 	enum { UNIT_REPORTS_BEGIN=UNIT_DESCRIPTION, UNIT_REPORTS_END=UNIT_PROFILE+1 };
 	enum { STATUS_REPORTS_BEGIN=TIME_OF_DAY, STATUS_REPORTS_END=NUM_REPORTS};
@@ -34,7 +34,7 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type, const gamemap& map, const unit_map& units,
-		                   const team& current_team, int current_side,
+		                   const team& current_team, int current_side, int active_side,
 						   const gamemap::location& loc, const gamemap::location& mouseover,
 						   const gamestatus& status, const std::string* format_string=NULL);
 }

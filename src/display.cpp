@@ -602,113 +602,7 @@ void display::draw_game_status(int x, int y)
 
 	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
 		draw_report(reports::TYPE(r));
-	}
-	
-/*
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = this->x() - x;
-
-	const time_of_day& tod = timeofday_at(status_,units_,mouseoverHex_);
-
-	const scoped_sdl_surface tod_surface(image::get_image(tod.image,image::UNSCALED));
-
-	if(tod_surface != NULL) {
-		//hardcoded values as to where the time of day image appears
-		blit_surface(mapx() + TimeOfDay_x,TimeOfDay_y,tod_surface);
-		update_rect(mapx() + TimeOfDay_x,TimeOfDay_y,tod_surface->w,tod_surface->h);
-	}
-
-	if(gameStatusRect_.w > 0) {
-		SDL_Surface* const screen = screen_.getSurface();
-		const scoped_sdl_surface background(image::get_image(game_config::rightside_image,image::UNSCALED));
-
-		if(background == NULL)
-			return;
-
-		SDL_Rect srcrect = gameStatusRect_;
-		srcrect.x -= mapx();
-		SDL_BlitSurface(background,&srcrect,screen,&gameStatusRect_);
-		update_rect(gameStatusRect_);
-	}
-
-	std::stringstream details;
-
-	if(team_valid()) {
-		const team_data data = calculate_team_data(teams_[currentTeam_],
-		                                           currentTeam_+1,units_);
-
-		details << char(activeTeam_+1) << string_table["turn"] << ": "
-		        << status_.turn() << "/" << status_.number_of_turns() << "\n"
-		        << string_table["gold"] << ": " << data.gold << "\n"
-				<< string_table["villages"] << ": " << data.villages << "\n"
-				<< string_table["units"] << ": " << data.units << "\n"
-		        << string_table["upkeep"] << ": " << data.upkeep << "\n"
-				<< string_table["income"] << ": " << data.net_income << "\n";
-	}
-
-	if(map_.on_board(mouseoverHex_) && !shrouded(mouseoverHex_.x,mouseoverHex_.y)) {
-		const gamemap::TERRAIN terrain = map_[mouseoverHex_.x][mouseoverHex_.y];
-		std::string name = map_.terrain_name(terrain);
-		std::string underlying_name = map_.underlying_terrain_name(terrain);
-
-		if(terrain == gamemap::CASTLE &&
-		   map_.is_starting_position(mouseoverHex_) != -1) {
-			name = "keep";
-		}
-
-		const std::string& lang_name = string_table[name];
-		const std::string& underlying_lang_name = string_table[underlying_name];
-
-		const std::string& name1 = lang_name.empty() ? name : lang_name;
-		const std::string& name2 = underlying_lang_name.empty() ?
-		                              underlying_name : underlying_lang_name;
-
-		if(name1 != name2)
-			details << name1 << " (" << name2 << ")\n";
-		else
-			details << name1 << "\n";
-
-		const int xhex = mouseoverHex_.x + 1;
-		const int yhex = mouseoverHex_.y + 1;
-
-		details << xhex << ", " << yhex;
-
-		//we display the unit the mouse is over if it is over a unit
-		//otherwise we display the unit that is selected
-		std::map<gamemap::location,unit>::const_iterator unit_selected
-		                                = units_.find(mouseoverHex_);
-		if(unit_selected == units_.end()) {
-			unit_selected = units_.find(selectedHex_);
-		}
-
-		if(unit_selected != units_.end() && map_.on_board(mouseoverHex_)) {
-			const gamemap::TERRAIN terrain = map_[mouseoverHex_.x][mouseoverHex_.y];
-
-			const unit& u = unit_selected->second;
-			const int move_cost = u.movement_cost(map_,terrain);
-			const int defense = 100 - u.defense_modifier(map_,terrain);
-
-			if(move_cost > 10) {
-				details << " (-)";
-			} else {
-				details << " (" << defense << "%," << move_cost << ")";
-			}
-		}
-
-		details << "\n";
-
-	} else {
-		details << "\n";
-	}
-
-	SDL_Rect clipRect = screen_area();
-
-	gameStatusRect_ = font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
-	                                  details.str(),x,y);
-	update_rect(gameStatusRect_);
-*/
+	}	
 }
 
 void display::draw_report(reports::TYPE report_num)
@@ -718,8 +612,10 @@ void display::draw_report(reports::TYPE report_num)
 
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
+
 		const reports::report& report = reports::generate_report(report_num,map_,units_,
-		                                                         teams_[viewing_team()],currentTeam_+1,
+		                                                         teams_[viewing_team()],
+																 currentTeam_+1,activeTeam_+1,
 																 selectedHex_,mouseoverHex_,status_);
 
 		SDL_Rect& rect = reportRects_[report_num];
@@ -784,6 +680,11 @@ void display::draw_report(reports::TYPE report_num)
 		if(report.image.empty() == false) {
 
 			scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
+			if(img == NULL) {
+				std::cerr << "could not find image for report: '" << report.image << "'\n";
+				return;
+			}
+
 			SDL_Rect visible_area = get_non_transperant_portion(img);
 			if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
 				if(visible_area.w == 0 || visible_area.h == 0) {
