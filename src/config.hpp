@@ -119,13 +119,8 @@ struct config
 	const config* find_child(const std::string& key, const std::string& name,
 	                         const std::string& value) const;
 
-	void clear_children(const std::string& key) { children.erase(key); }
-	void remove_child(const std::string& key, size_t index) {
-		child_list& v = children[key];
-		assert(index < v.size());
-		v.erase(v.begin()+index);
-		ordered_children.erase(ordered_children.end());
-	}
+	void clear_children(const std::string& key);
+	void remove_child(const std::string& key, size_t index);
 
 	static std::vector<std::string> split(const std::string& val, char c=',');
 	static std::string& strip(std::string& str);
@@ -142,6 +137,9 @@ struct config
 		child_pos(child_map::const_iterator p, size_t i) : pos(p), index(i) {}
 		child_map::const_iterator pos;
 		size_t index;
+
+		bool operator==(const child_pos& o) const { return pos == o.pos && index == o.index; }
+		bool operator!=(const child_pos& o) const { return !operator==(o); }
 	};
 
 	struct all_children_iterator {

@@ -679,6 +679,32 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
+struct remove_ordered {
+	remove_ordered(const std::string& key) : key_(key) {}
+
+	bool operator()(const config::child_pos& pos) const { return pos.pos->first == key_; }
+private:
+	std::string key_;
+};
+
+void config::clear_children(const std::string& key)
+{
+	ordered_children.erase(std::remove_if(ordered_children.begin(),ordered_children.end(),remove_ordered(key)),ordered_children.end());
+	children.erase(key);
+}
+
+void config::remove_child(const std::string& key, size_t index)
+{
+	//remove from the ordering
+	const child_pos pos(children.find(key),index);
+	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
+
+	//remove from the child map
+	child_list& v = children[key];
+	assert(index < v.size());
+	v.erase(v.begin()+index);
+}
+
 std::string& config::operator[](const std::string& key)
 {
 	return values[key];
