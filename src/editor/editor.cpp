@@ -46,6 +46,7 @@
 #include <cmath>
 
 namespace {
+	const int num_players = 10;
 	// Milliseconds to sleep in every iteration of the main loop.
 	const unsigned int sdl_delay = 20;
 	const std::string prefs_filename = get_dir(get_user_data_dir() + "/editor")
@@ -182,6 +183,13 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 						l_button_func_ = REMOVE_SELECTION;
 					}
 				}
+				else if (key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
+					const gamemap::TERRAIN terrain = map_.get_terrain(selected_hex_);
+					if(palette_.selected_terrain() != terrain) {
+						palette_.select_terrain(terrain);
+					}
+					l_button_func_ = NONE;
+				}
 				else if (selected_hexes_.find(hex_clicked) != selected_hexes_.end()) {
 					l_button_func_ = MOVE_SELECTION;
 					selection_move_start_ = hex_clicked;
@@ -269,23 +277,17 @@ void map_editor::edit_save_as() {
 }
 
 void map_editor::edit_set_start_pos() {
-	std::string player = "1";
+	std::vector<std::string> players;
+	for (int i = 0; i < num_players; i++) {
+		std::stringstream str;
+		str << "Player " << i;
+		players.push_back(str.str());
+	}
 	const int res = gui::show_dialog(gui_, NULL, "Which Player?",
 									 "Which player should start here?",
-									 gui::OK_CANCEL, NULL, NULL, "", &player);
-	if (player != "" && res == 0) {
-		int int_player;
-		bool invalid_number = player.size() > 1;
-		std::stringstream str(player);
-		str >> int_player;
-		invalid_number = invalid_number ? true : int_player < 0 || int_player > 9;
-		if (invalid_number) { 
-			gui::show_dialog(gui_, NULL, "",
-							 "You must enter a number between 0 and 9.", gui::OK_ONLY);
-		}
-		else {
-			set_starting_position(int_player, selected_hex_);
-		}
+									 gui::OK_CANCEL, &players);
+	if (res >= 0) {
+		set_starting_position(res, selected_hex_);
 	}
 }
 
@@ -733,36 +735,27 @@ void map_editor::left_button_down(const int mousex, const int mousey) {
 	else if (l_button_func_ == DRAW_TERRAIN) {
 		if(map_.on_board(hex)) {
 			const gamemap::TERRAIN terrain = map_[hex.x][hex.y];
-			if(key_[SDLK_RCTRL] || key_[SDLK_LCTRL]) {
+			// optimize for common case
+			if(brush_.selected_brush_size() == 1) {
 				if(palette_.selected_terrain() != terrain) {
-					palette_.select_terrain(terrain);
+					draw_terrain(palette_.selected_terrain(), hex);
 				}
 			}
-			else {
-				// optimize for common case
-				if(brush_.selected_brush_size() == 1) {
-					if(palette_.selected_terrain() != terrain) {
-						draw_terrain(palette_.selected_terrain(), hex);
-					}
+			std::vector<gamemap::location> locs =
+				get_tiles(map_, hex, brush_.selected_brush_size());
+			map_undo_action action;
+			std::vector<gamemap::location> to_invalidate;
+			for(std::vector<gamemap::location>::const_iterator it = locs.begin();
+				it != locs.end(); ++it) {
+				if(palette_.selected_terrain() != map_[it->x][it->y]) {
+					to_invalidate.push_back(*it);
+					action.add_terrain(map_[it->x][it->y], palette_.selected_terrain(), *it);
+					map_.set_terrain(*it, palette_.selected_terrain());
 				}
-				else {
-					std::vector<gamemap::location> locs =
-						get_tiles(map_, hex, brush_.selected_brush_size());
-					map_undo_action action;
-					std::vector<gamemap::location> to_invalidate;
-					for(std::vector<gamemap::location>::const_iterator it = locs.begin();
-					    it != locs.end(); ++it) {
-						if(palette_.selected_terrain() != map_[it->x][it->y]) {
-							to_invalidate.push_back(*it);
-							action.add_terrain(map_[it->x][it->y], palette_.selected_terrain(), *it);
-							map_.set_terrain(*it, palette_.selected_terrain());
-						}
-					}
-					if (!to_invalidate.empty()) {
-						terrain_changed(to_invalidate, action);
-						save_undo_action(action);
-					}
-				}
+			}
+			if (!to_invalidate.empty()) {
+				terrain_changed(to_invalidate, action);
+				save_undo_action(action);
 			}
 		}
 	}
