@@ -68,7 +68,40 @@ int connection_acceptor::do_action()
 	}
 
 	config cfg;
-	sock = network::receive_data(cfg);
+
+	try {
+		sock = network::receive_data(cfg);
+	} catch(network::error& e) {
+
+		sock = 0;
+
+		//if the problem isn't related to any specific connection
+		if(!e.socket) {
+			throw e;
+		}
+
+		bool changes = false;
+
+		//a socket has disconnected. Remove its positions.
+		for(positions_map::iterator i = positions_.begin();
+		    i != positions_.end(); ) {
+			if(i->second == e.socket) {
+				changes = true;
+				i->second = 0;
+				i->first.values.erase("taken");
+			}
+		}
+
+		//now disconnect the socket
+		e.disconnect();
+
+		//if there have been changes to the positions taken,
+		//then notify other players
+		if(changes) {
+			network::send_data(players_);
+		}
+	}
+
 	if(sock) {
 		const int side_taken = atoi(cfg.values["side"].c_str())-1;
 		if(side_taken >= 0 && side_taken < int(sides_.size())) {
