@@ -730,12 +730,13 @@ void calculate_healing(display& disp, const gamemap& map,
 		//the unit heals if it's on this side, and it's on a tower or
 		//it has regeneration, and it is wounded
 		if(i->second.side() == side) {
-			if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
-		    i->second.type().regenerates()) &&
-		    i->second.hitpoints() < i->second.max_hitpoints()) {
+			if(i->second.hitpoints() < i->second.max_hitpoints()){
+				if((map.underlying_terrain(map[i->first.x][i->first.y]) == gamemap::TOWER ||
+				 i->second.type().regenerates())) {
 				amount_healed = game_config::cure_amount;
-			} else if(i->second.is_resting()){
-				amount_healed = game_config::rest_heal_amount;
+				} else if(i->second.is_resting()){
+					amount_healed = game_config::rest_heal_amount;
+				}
 			}
 			i->second.set_resting(true);
 			if(amount_healed != 0)
