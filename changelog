@@ -1,70 +1,34 @@
-CVS HEAD:
+Version 0.8.9:
  * new translations:
    * bulgarian
    * latin
- * updated translations:
-   * basque  
-   * catalan
-   * french
-   * german
-   * hungarian
-   * italian
-   * polish
-   * slovak
-   * spanish
-   * swedish
-   * russian
- * Added missing animations for:
-   * Mermaid Initiate
-   * Mermaid Enchantress
-   * Mermaid Siren
+ * updated most translations
+ * added missing animations for:
+   * Mermaid Initiate, Mermaid Enchantress and Mermaid Siren
    * Ancient Wose
-   * Goblin Direwolf Rider
-   * Goblin Knight
-   * Skeleton Archer
+   * Goblin Direwolf Rider and Goblin Knight
    * Gryphon
-   * Revenant
-   * Troll Warrior
-   * Troll Hero
-   * Great Troll
-   * Grand Knight
-   * Death Knight
-   * Lord
-   * Master Bowman
- * Overhauled Graphics for:
-   * Footpad
-   * Outlaw
-   * Thief
-   * Rogue
-   * Orcish Shamans
-   * Elvish Lord
-   * Elvish High Lord
- * Added female versions of the following units:
-   * Footpad
-   * Thief
-   * Rogue
-   * Assassin
- * Added new tiles:
-   * Desert
-   * Desert hills
-   * Desert mountain
-   * Desert villages (adobe and tent)
-   * Desert road
-   * Desert oasis
-   * Savanna
-   * Tropical forest
-   * Tropical forest village
- * Added icon for petrified units
- * take advantage of libzipios++ if available, to read cfg files, maps,
-   images, sound effects, and fonts from zip files.  Call "make	zip-install"
-   to install data zipped.
+   * Skeleton Archer, Revenant and Death Knight
+   * Troll Warrior, Troll Hero and Great Troll
+   * Grand Knight, Lord and Master Bowman
+ * overhauled Graphics for:
+   * Footpad, Outlaw, Thief and Rogue
+   * Orcish Shamans, Elvish Lord and Elvish High Lord
+ * new female units for:
+   * Footpad, Thief, Rogue and Assassin
+ * added new tiles:
+   * Desert, desert hills, desert mountain, desert villages (adobe and tent),
+     desert road, desert oasis, savanna, tropical forest,
+     tropical forest village
+ * added icon for petrified units
  * downloaded campaigns no longer require a restart to be able to play them
  * new units:
    * Javelineer
  * unit balancing:
    * Naga fighter: increased hitpoints from 27 to 30
    * Merman Hoplite: increased resistances and damage
-   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks, increased damage, removed special resistances
+   * Mermaid Initiate/Enchantress/Siren: reduced number of attacks,
+     increased damage, removed special resistances
    * Mermaid Initiate: increased experience needed to level, other minor tweaks
    * Swordsman: increase resistance to pierce and impact
    * Royal guard: increase resistance to pierce and impact
@@ -79,8 +43,7 @@ CVS HEAD:
    * Tentacle of the Deep: Change movement type to 'float'
    * Flying creatures can now cross canyons
  * Scenario revisions in Heir to the Throne:
-   * fixed typo in HttT's Mountain Pass
-   * fixed misspelled description in 'Return to Wesnoth'
+   * language fixes and polishing (English)
    * Blackwater Port- Make the port look like more of a port, other minor 
      changes that mute each other out
    * The Isle of Anduin- Extend shallow water around the Isle, remove the 
@@ -117,9 +80,12 @@ CVS HEAD:
      code
  * added a "droid" game command, and allow for computer player to do a campaign
  * added a "canrecruit" filter
- * updated unix manpages
+ * updated manpages and added support for translating them
  * "," is no longer the column separator, it does not have to be escaped
    anymore in some translations, "=" is the new separator (#10368)
+ * take advantage of libzipios++ if available, to read cfg files, maps,
+   images, sound effects, and fonts from zip files.  Call "make	zip-install"
+   to install data zipped.
  * clarify some ability descriptions
  * remove drain allowing to go past maximum hp
  * remove long-range attacks
