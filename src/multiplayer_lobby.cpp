@@ -86,6 +86,8 @@ RESULT enter(display& disp, config& game_data)
 		gui::menu users_menu(disp,users);
 		users_menu.set_loc(disp.x()-border-users_menu.width(),border);
 
+		bool old_enter = true;
+
 		for(;;) {
 			int mousex, mousey;
 			const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -133,7 +135,9 @@ RESULT enter(display& disp, config& game_data)
 				break;
 			}
 
-			if(send_message.process(mousex,mousey,left_button)) {
+			const bool enter = key[KEY_ENTER] && !old_enter;
+			old_enter = key[KEY_ENTER];
+			if(enter || send_message.process(mousex,mousey,left_button)) {
 				config msg;
 				config& child = msg.add_child("message");
 				child["message"] = message_entry.text();
@@ -141,7 +145,7 @@ RESULT enter(display& disp, config& game_data)
 				message_entry.clear();
 			}
 
-			if(quit_game.process(mousex,mousey,left_button)) {
+			if(key[KEY_ESCAPE] || quit_game.process(mousex,mousey,left_button)){
 				return QUIT;
 			}
 
