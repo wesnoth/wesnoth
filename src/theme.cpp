@@ -284,13 +284,13 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	const config::child_list& menu_list = cfg.get_children("menu");
 	for(config::child_list::const_iterator m = menu_list.begin(); m != menu_list.end(); ++m) {
 		const menu new_menu(**m);
-		std::cerr << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		//std::cerr << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else
 			menus_.push_back(new_menu);
 
-		std::cerr << "done adding menu...\n";
+		//std::cerr << "done adding menu...\n";
 	}
 
 	return result;
