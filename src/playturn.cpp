@@ -1423,6 +1423,7 @@ void turn_info::write_game_snapshot(config& start) const
 	start["objectives"] = (*level_)["objectives"];
 	start["next_scenario"] = (*level_)["next_scenario"];
 	start["music"] = (*level_)["music"];
+	start["experience_modifier"] = (*level_)["experience_modifier"];
 
 	//write out the current state of the map
 	start["map_data"] = map_.write();
