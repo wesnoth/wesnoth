@@ -124,7 +124,7 @@ void default_map_generator::user_config(display& disp)
 	gui::slider players_slider(disp,slider_rect);
 	players_slider.set_min(2);
 	players_slider.set_max(max_players);
-	if (players_slider.value() < 2 || players_slider.value() > 8) players_slider.set_value(2);
+	players_slider.set_value(nplayers_);
 
 	const int min_width = 20;
 	const int max_width = 200;
