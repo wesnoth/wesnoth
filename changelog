@@ -1,6 +1,7 @@
 CVS HEAD:
  * trained AI to take advantage of backstab
  * added and improved unit images and castle images
+ * improved AI recruiting, decisions are now based on terrain and enemy unit structure
  * reduced Dwarvish Fighter hitpoints to 36
  * reduced Dwarvish Lord hitpoints to 75 and changed ranged attack to 10-2
  * increased Dwarvish Steelclad hitpoints to 50 and melee attack to 11-3
@@ -17,6 +18,7 @@ CVS HEAD:
    * Desert of Death
  * made scrollbars faster by avoiding unnecessary redraws
  * added HOME and END keys support in textboxes
+ * added selecting text on textboxes using keyboard or mouse 
  * implemented mid-scenario changing of some side detail(s)
  * attack and defence weighting improvements
  * improved macros handling arguments with space
@@ -29,6 +31,7 @@ CVS HEAD:
  * fixed infliced damage labels being not always displayed
  * fixed strange name-endings in name generator
  * fixed bug where Scepter of Fire scenario is loaded instead of scenarios after the Scepter of Fire
+ * fixed Scepter of Fire being winnable by killing all enemies, now you need to get the scepter.
  * fixed messages and options not found by make_translation (#7415)
  * fixed keeps located on the border of the screen having broken graphics
  * fixed bug in Desert of Death scenario
@@ -41,6 +44,7 @@ CVS HEAD:
  * added fixes for OSX from Sithrandel
  * added configure --enable-lite
  * minor modifications to slacknoth
+ * reverted editor indentation to BSD style
  * added checking of return values in constructors
  * code refactoring: simplified the 'display' module
  * code cleanups
