@@ -33,13 +33,18 @@ void report::add_text(std::stringstream& text, std::stringstream& tooltip) {
 }
 
 void report::add_text(const std::string& text, const std::string& tooltip) {
-	this->text.push_back(text);
-	this->tooltip.push_back(tooltip);
+	this->push_back(element(text,"",tooltip));
 }
 
-void report::set_tooltip(const std::string& tooltip) {
-	this->tooltip.clear();
-	this->tooltip.push_back(tooltip);
+void report::add_image(std::stringstream& image, std::stringstream& tooltip) {
+	add_image(image.str(), tooltip.str());
+	// Clear the streams
+	image.str("");
+	tooltip.str("");
+}
+
+void report::add_image(const std::string& image, const std::string& tooltip) {
+	this->push_back(element("",image,tooltip));
 }
 
 report generate_report(TYPE type, const gamemap& map, const unit_map& units,
@@ -79,55 +84,47 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	switch(type) {
 	case UNIT_DESCRIPTION:
 		return report(u->second.description());
-	case UNIT_TYPE: {
-		report res(u->second.type().language_name());
-		res.set_tooltip(u->second.type().unit_description());
-		return res;
-	}
+	case UNIT_TYPE:
+		return report(u->second.type().language_name(),"",u->second.type().unit_description());
 	case UNIT_LEVEL:
 		str << u->second.type().level();
 		break;
-	case UNIT_TRAITS: {
-		report res(u->second.traits_description());
-		res.set_tooltip(u->second.modification_description("trait"));
-		return res;
-	}
+	case UNIT_TRAITS:
+		return report(u->second.traits_description(),"",u->second.modification_description("trait"));
 	case UNIT_STATUS: {
 		std::stringstream unit_status;
 		std::stringstream tooltip;
+		report res;
 
 		if(map.on_board(loc) && u->second.invisible(map.underlying_terrain(map[loc.x][loc.y]),status.get_time_of_day().lawful_bonus,loc,units,teams)) {
-			unit_status << "misc/invisible.png,";
-			tooltip << string_table["invisible"] << ": " << 
-				string_table["invisible_description"] << ";";
+			unit_status << "misc/invisible.png";
+			tooltip << string_table["invisible"] << ": " << string_table["invisible_description"];
+			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("slowed")) {
-			unit_status << "misc/slowed.png,";
-			tooltip << string_table["slowed"] << ": " << 
-				string_table["slowed_description"] << ";";
+			unit_status << "misc/slowed.png";
+			tooltip << string_table["slowed"] << ": " << string_table["slowed_description"];
+			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("poisoned")) {
-			unit_status << "misc/poisoned.png,";
-			tooltip << string_table["poisoned"] << ": " << 
-				string_table["poisoned_description"] << ";";
+			unit_status << "misc/poisoned.png";
+			tooltip << string_table["poisoned"] << ": " << string_table["poisoned_description"];
+			res.add_image(unit_status,tooltip);
 		}
 		if(u->second.has_flag("stone")) {
-			unit_status << "misc/stone.png,";
-			tooltip << string_table["stone"] << ": " << 
-				string_table["stone_description"] << ";";
+			unit_status << "misc/stone.png";
+			tooltip << string_table["stone"] << ": " << string_table["stone_description"];
+			res.add_image(unit_status,tooltip);
 		}
 
-		report res("",unit_status.str());
-		res.set_tooltip(tooltip.str());
 		return res;
 	}
 	case UNIT_ALIGNMENT: {
 		const std::string& align = unit_type::alignment_description(u->second.type().alignment());
-		report res(translate_string(align));
-		res.set_tooltip(string_table[align + "_description"]);
-		return res;
+		return report(translate_string(align),"",string_table[align + "_description"]);
 	}
 	case UNIT_ABILITIES: {
+		report res;
 		std::stringstream tooltip;
 		const std::vector<std::string>& abilities = u->second.type().abilities();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
@@ -135,11 +132,10 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			if(i+1 != abilities.end())
 				str << ",";
 
-			tooltip << string_table[*i + "_description"] << "\n\n";
+			tooltip << string_table[*i + "_description"];
+			res.add_text(str,tooltip);
 		}
 
-		report res(str.str());
-		res.set_tooltip(tooltip.str());
 		return res;
 	}
 	case UNIT_HP:
@@ -181,11 +177,11 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			
 			str << (lang_weapon.empty() ? at_it->name():lang_weapon) << " ("
 				<< (lang_type.empty() ? at_it->type():lang_type) << ")\n";
-			res.add_text(str, tooltip);
+			res.add_text(str,tooltip);
 			
 			str << (lang_special.empty() ? at_it->special():lang_special) << "\n";
 			tooltip << string_table["weapon_special_" + at_it->special() + "_description"];
-			res.add_text(str, tooltip);
+			res.add_text(str,tooltip);
 			
 			str << at_it->damage() << "-" << at_it->num_attacks() << " -- "
 		        << (at_it->range() == attack_type::SHORT_RANGE ?
@@ -199,18 +195,17 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 				tooltip << ", " << at_it->hexes() << " " << string_table["hexes"];
 			}
 			str << "\n";
-			res.add_text(str, tooltip);
+			res.add_text(str,tooltip);
 		}
 
 		return res;
 	}
 	case UNIT_IMAGE:
-		return report("",u->second.type().image());
+		return report("",u->second.type().image(),"");
 	case UNIT_PROFILE:
-		return report("",u->second.type().image_profile());
+		return report("",u->second.type().image_profile(),"");
 	case TIME_OF_DAY: {
 		const time_of_day& tod = timeofday_at(status,units,mouseover);
-		report res("",tod.image);
 		std::stringstream tooltip;
 		
 		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
@@ -219,8 +214,8 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
 				<< translate_string("chaotic") << " " << string_table["units"] << ": "
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
-		res.set_tooltip(tooltip.str());
-		return res;
+		
+		return report("",tod.image,tooltip.str());
 	}
 	case TURN:
 		str << status.turn() << "/" << status.number_of_turns() << "\n";
@@ -295,7 +290,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 	case SIDE_PLAYING: {
 		char buf[50];
 		sprintf(buf,"terrain/flag-team%d.png",playing_side);
-		return report("",buf);
+		return report("",buf,"");
 	}
 
 	case OBSERVERS: {
@@ -307,9 +302,7 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 			str << *i << "\n";
 		}
 
-		report res("",game_config::observer_image);
-		res.set_tooltip(str.str());
-		return res;
+		return report("",game_config::observer_image,str.str());
 	}
 
 	}

@@ -674,7 +674,7 @@ void display::draw_report(reports::TYPE report_num)
 	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
 	if(item != NULL) {
 
-		const reports::report& report = reports::generate_report(report_num,map_,
+		reports::report report = reports::generate_report(report_num,map_,
 				units_, teams_,
 		      teams_[viewing_team()],
 				currentTeam_+1,activeTeam_+1,
@@ -705,7 +705,7 @@ void display::draw_report(reports::TYPE report_num)
 			//if the rectangle is present, and we are blitting text, then
 			//we need to backup the surface. (Images generally won't need backing
 			//up unless they are transperant, but that is done later)
-			if(rect.w > 0 && rect.h > 0 && report.text.empty() == false) {
+			if(rect.w > 0 && rect.h > 0) {
 				surf.assign(get_surface_portion(screen_.getSurface(),rect));
 				if(reportSurfaces_[report_num] == NULL) {
 					std::cerr << "Could not backup background for report!\n";
@@ -719,109 +719,60 @@ void display::draw_report(reports::TYPE report_num)
 
 		SDL_Rect area = rect;
 
-		// Code for handling a report with multiple tooltips in different areas of the text
-		// XXX figure out if prefix/postfix makes sense for these reports, and if so how 
-		// should we support it?
-		if(report.text.size() > 1) {
 			int x = rect.x, y = rect.y;
-			for(size_t i = 0; i < report.text.size(); ++i) {
-				std::string text = report.text[i];
-				std::string tooltip = (i < report.tooltip.size() ? report.tooltip[i] : "");
-				
-				area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,text,x,y);
-				if(text != "" && *(text.end()-1) == '\n') {
-					x = area.x;
-					y = area.y + area.h;
-				} else {
-					x = area.x + area.w;
-					y = area.y;
-				}
-				if(tooltip.empty() == false) {
-					tooltips::add_tooltip(area,tooltip);
-				}
-			}
-			// Skip single-tooltip report code and image drawing code
-			return;
-		}
-
-		std::string text = report.text.size() ? report.text[0] : "";
-		std::string tooltip = report.tooltip.size() ? report.tooltip[0] : "";
-		
-		if(text.empty() == false) {
+		if(!report.empty()) {
+			// Add prefix, postfix elements. Make sure that they get the same tooltip as the guys
+			// around them.
 			std::string str = item->prefix();
-
-			int nchop;
-
-			//if there are formatting directives on the front of the report,
-			//move them to the front of the string
-			for(nchop = 0; nchop != text.size() && font::is_format_char(text[nchop]); ++nchop) {
-				str.insert(str.begin(),text[nchop]);
+			if(str.empty() == false) {
+				report.insert(report.begin(), reports::element(str,"",report.begin()->tooltip));
+				}
+			str = item->postfix();
+			if(str.empty() == false) {
+				report.push_back(reports::element(str,"",report.end()->tooltip));
 			}
 
-			str += text.substr(nchop) + item->postfix();
-
-			area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
-		}
-
-		if(tooltip.empty() == false) {
-			tooltips::add_tooltip(area,tooltip);
-		}
-
-		if(report.image.empty() == false) {
-
-			//check if it's a table of images or a standalone image
-			if((report.image.find_first_of(",") == -1) &&
-					(report.image.find_first_of(";") == -1)) {
-				scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
-				if(img == NULL) {
-					std::cerr << "could not find image for report: '" << report.image << "'\n";
-					return;
-				}
-				draw_image_for_report(img,surf,rect);
+			// Loop through and display each report element
+			size_t tallest = 0;
+			for(reports::report::iterator i = report.begin(); i != report.end(); ++i) {
+				if(i->text.empty() == false) {
+					// Draw a text element
+					area = font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,i->text,x,y);
+					if(area.h > tallest) tallest = area.h;
+					if(i->text[i->text.size() - 1] == '\n') {
+						x = rect.x;
+						y += tallest;
+						tallest = 0;
 			} else {
-				//draw a table of images...
-
-				//first back up the current area for later restoration
-				surf.assign(get_surface_portion(screen_.getSurface(),rect));
-
-				//each image may have a seperate tooltip, so seperate the tooltips
-				tooltips::clear_tooltips(rect);
-
-				int x = rect.x, y = rect.y;
-				const std::vector<std::string> rows = config::split(report.image,';');
-				const std::vector<std::string> tooltip_rows = config::split(tooltip,';');
-				std::vector<std::string>::const_iterator current_tooltip = tooltip_rows.begin();
-				for(std::vector<std::string>::const_iterator row = rows.begin(); row != rows.end(); ++row) {
-
-					size_t tallest_image = 0;
-
-					std::vector<std::string> cols = config::split(*row);
-					for(std::vector<std::string>::const_iterator col = cols.begin(); col != cols.end(); ++col) {
-						SDL_Rect clip_rect = rect;
-						scoped_sdl_surface image(image::get_image(*col,image::UNSCALED));
-						if(image == NULL) {
-							std::cerr << "could not find image for report: '" << *col << "'\n";
-							return;
-						}
-
-						blit_surface(x,y,image,NULL,&clip_rect);
-						if(image->h > tallest_image)
-							tallest_image = image->h;
-
-						SDL_Rect tooltip_rect = {x,y,image->w,image->h};
-						if(current_tooltip != tooltip_rows.end()) {
-							if(*current_tooltip != "") {
-								tooltips::add_tooltip(tooltip_rect,*current_tooltip);
-							}
-
-							++current_tooltip;
-						}
-
-						x += image->w;
+						x += area.w;
 					}
+				} else if(i->image.empty() == false) {
+				//first back up the current area for later restoration
+					//surf.assign(get_surface_portion(screen_.getSurface(),rect));
 
-					x = rect.x;
-					y += tallest_image;
+					// Draw an image element
+					scoped_sdl_surface img(image::get_image(i->image,image::UNSCALED));
+
+					if(img == NULL) {
+						std::cerr << "could not find image for report: '" << i->image << "'\n";
+						continue;
+						}
+
+					area.x = x;
+					area.y = y;
+					area.w = minimum<int>(rect.w + rect.x - x, img->w);
+					area.h = minimum<int>(rect.h + rect.y - y, img->h);
+					draw_image_for_report(img,surf,area);
+
+					if(area.h > tallest) tallest = area.h;
+					x += area.w;
+
+				} else {
+					// No text or image, skip this element
+					continue;
+					}
+				if(i->tooltip.empty() == false) {
+					tooltips::add_tooltip(area,i->tooltip);
 				}
 			}
 		}
