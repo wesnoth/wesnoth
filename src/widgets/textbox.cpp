@@ -338,12 +338,13 @@ void textbox::handle_event(const SDL_Event& event)
 		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
 		const size_t end = maximum<size_t>(size_t(selstart_),size_t(selend_));
 
-		std::string selection(end - beg,'x');
-		std::copy(text_.begin()+beg,text_.begin()+end,selection.begin());
-		copy_to_clipboard(selection);
+		wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
+		std::string s = wstring_to_string(ws);
+		copy_to_clipboard(s);
 		return;
 	}
 
+#if 0
 	//if the user presses ctrl+v to paste text into the textbox
 	if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_v && (event.key.keysym.mod&KMOD_CTRL) != 0 && editable() && focus()) {
 		const size_t beg = minimum<size_t>(size_t(selstart_),size_t(selend_));
@@ -365,6 +366,7 @@ void textbox::handle_event(const SDL_Event& event)
 
 		return;
 	}
+#endif
 
 	int mousex, mousey;
 	const Uint8 mousebuttons = SDL_GetMouseState(&mousex,&mousey);
@@ -485,13 +487,26 @@ void textbox::handle_event(const SDL_Event& event)
 		if(character != 0)
 			std::cerr << "Char: " << character << ", c = " << c << "\n";
 	
-		if(character >= 32 && character != 127) {
-			changed = true;
-			if(is_selection()) 
-				erase_selection();
+		if(event.key.keysym.mod & KMOD_CTRL) {
+			if(c == SDLK_v) {
+				changed = true;
+				if(is_selection())
+					erase_selection();
 
-			text_.insert(text_.begin()+cursor_,character);
-			++cursor_;		
+				wide_string s = string_to_wstring(copy_from_clipboard());
+
+				text_.insert(text_.begin()+cursor_, s.begin(), s.end());
+				cursor_ += s.size();
+			}
+		} else {
+			if(character >= 32 && character != 127) {
+				changed = true;
+				if(is_selection()) 
+					erase_selection();
+
+				text_.insert(text_.begin()+cursor_,character);
+				++cursor_;		
+			}
 		}
 	}
 

@@ -1,3 +1,4 @@
+#include "clipboard.hpp"
 #include "cursor.hpp"
 #include "events.hpp"
 #include "mouse.hpp"
@@ -279,6 +280,14 @@ void pump()
 
 				break;
 			}
+                        
+#ifdef _X11
+			case SDL_SYSWMEVENT: {
+				//clipboard support for X11
+				handle_system_event(event);
+				break;
+			}
+#endif
 
 			case SDL_QUIT: {
 				throw CVideo::quit();
