@@ -10,13 +10,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-16 14:31+0200\n"
+"POT-Creation-Date: 2004-09-18 10:04+0200\n"
 "PO-Revision-Date: 2004-09-16 22:50+0200\n"
 "Last-Translator: Wesnoth French Translation Team <wesnoth@ml.free.fr>\n"
 "Language-Team: Language fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: data/game.cfg:319
 msgid "loyal"
@@ -1835,10 +1835,10 @@ msgstr ""
 "le château. Cependant les propriétés de la plupart des terrains sont plus "
 "subtiles et consistent en des avantages ou désavantages pour des unités "
 "différentes. La première propriété d'un terrain est le nombre de points de "
-"mouvement dépensés par une unité pour y pénètrer. La seconde est la défense que le "
-"terrain procure à l'unité qui y est présente. C'est un pourcentage qui "
-"détermine la probabilité pour l'unité d'être touchée. Par exemple les elfes "
-"ont 70% de défense en forêt et ne sont ainsi touchés que 30% du temps."
+"mouvement dépensés par une unité pour y pénètrer. La seconde est la défense "
+"que le terrain procure à l'unité qui y est présente. C'est un pourcentage "
+"qui détermine la probabilité pour l'unité d'être touchée. Par exemple les "
+"elfes ont 70% de défense en forêt et ne sont ainsi touchés que 30% du temps."
 
 #: data/scenarios/tutorial/tutorial2.cfg:147
 msgid "What are the different properties that terrains have?"
@@ -2766,8 +2766,8 @@ msgstr ""
 "Il existe six sortes d'attaques : le transpercement, les lames, les impact, "
 "le feu, le froid et les attaques sacrées. Les unités résistent plus ou moins "
 "bien au différent type d'attaques. Choisissez 'Description de l'unité' -> "
-"'Résistance' pour voir la résistance d'une unité face aux différents type "
-"d'attaques."
+"'Résistance' pour voir la résistance d'une unité face aux différents types "
+"d'attaque."
 
 #: data/translations/english.cfg:185
 msgid ""
@@ -2791,7 +2791,7 @@ msgstr ""
 "Les unités empoisonnées perdent 8 points de vie par tour, mais elles ne "
 "mourront pas de l'effet du poison : le poison ne réduit jamais les points de "
 "vie en dessous de 1. Les unités empoisonnées peuvent être guéries en les "
-"plaçant dans un village ou à coté d'une unité ayant l'habilité «traitement»."
+"plaçant dans un village ou à côté d'une unité ayant la compétence «traitement»."
 
 #: data/translations/english.cfg:187
 msgid ""
@@ -2883,7 +2883,7 @@ msgid ""
 "troops, wait for better conditions and then attack."
 msgstr ""
 "La patience est souvent primordiale. Plutôt que d'attaquer dans de mauvaises "
-"conditions ou avec peu de troupes, attendez pour de meilleures conditions et "
+"conditions ou avec peu de troupes, attendez que la situation s'améliore et "
 "alors seulement attaquez."
 
 #: data/translations/english.cfg:197
@@ -2912,7 +2912,8 @@ msgstr ""
 "Dans la plupart des campagnes vous recevrez un bonus d'or si vous finissez "
 "plus tôt, dépendant du nombre de villages sur la carte et du nombre de tours "
 "d'avance que vous avez. Vous gagnerez toujours plus d'or ainsi qu'en "
-"capturant tous les villages et en attendant la fin du nombre de tour maximum."
+"capturant tous les villages et en attendant jusqu'à ce que tous les tours "
+"se soient écoulés."
 
 #: data/translations/english.cfg:200
 msgid ""
@@ -2921,8 +2922,8 @@ msgid ""
 "recruit from there. Also, some of your allies may be willing to make room "
 "for you on their keep so you can recruit there."
 msgstr ""
-"Votre général peut recruter et rappeler des unités depuis n'importe quel "
-"donjon dans un château, pas seulement depuis le donjon de départ. Vous "
+"Votre général peut recruter et rappeler des unités depuis le donjon de "
+"n'importe quel château, pas seulement depuis son donjon de départ. Vous "
 "pouvez capturer le donjon d'un ennemi et recruter depuis celui-ci. Certains "
 "de vos alliés peuvent aussi vous faire de la place dans leur donjon afin que "
 "vous puissiez recruter de là."
@@ -2949,7 +2950,7 @@ msgid ""
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
-"Généralement, évitez de vous déplacer à coté d'un village innocupé. Une "
+"Généralement, évitez de vous déplacer à coté d'un village inoccupé. Une "
 "unité ennemie pourrait se déplacer dans ce village et vous attaquer, en "
 "profitant de la défense et des capacités de guérison du village."
 
@@ -3004,7 +3005,8 @@ msgid ""
 msgstr ""
 "La capacité d'attaque «lenteur» fait que les unités ennemies se déplaçent "
 "moins vite, mais aussi qu'elles perdent une attaque. Elle est donc très "
-"efficace contre les unités qui ont un petit nombre d'attaque très puissantes."
+"efficace contre les unités qui ont des attaques très puissantes mais en "
+"petit nombre."
 
 #: data/translations/english.cfg:211
 msgid "Holy attacks are very powerful against undead."
@@ -3039,7 +3041,7 @@ msgid ""
 "far, for they move faster than most undead."
 msgstr ""
 "Formes suprêmes que les mages noirs peuvent atteindre, les anciennes liches "
-"frappent de terreur les cœurs de ceux qui les voient. Leurs toucher sème la "
+"frappent de terreur les cœurs de ceux qui les voient. Leur toucher sème la "
 "mort et leurs sorts sont suffisamment puissants pour stopper net même les "
 "plus braves. Si un jour vous croisez le chemin de l'une d'elles, fuyez "
 "rapidement et loin car elles se déplacent bien mieux que la plupart des "
@@ -3504,7 +3506,7 @@ msgstr "arc"
 #: data/units/Orcish_Sovereign.cfg:43 data/units/Orcish_Warlord.cfg:30
 #: data/units/Paladin.cfg:42 data/units/Peasant.cfg:21
 #: data/units/Peasant.cfg:34 data/units/Pikeman.cfg:20
-#: data/units/Pirate_Galleon.cfg:62 data/units/Poacher.cfg:42
+#: data/units/Pirate_Galleon.cfg:16 data/units/Poacher.cfg:42
 #: data/units/Saurian.cfg:21 data/units/Saurian.cfg:38
 #: data/units/Saurian_Warrior.cfg:21 data/units/Saurian_Warrior.cfg:38
 #: data/units/Sea_Hag.cfg:21 data/units/Sea_Serpent.cfg:20
@@ -5580,11 +5582,11 @@ msgstr ""
 msgid "pike"
 msgstr "pique"
 
-#: data/units/Pirate_Galleon.cfg:49
+#: data/units/Pirate_Galleon.cfg:3
 msgid "Pirate Galleon"
 msgstr "Galion pirate"
 
-#: data/units/Pirate_Galleon.cfg:61 data/units/Transport_Galleon.cfg:15
+#: data/units/Pirate_Galleon.cfg:15 data/units/Transport_Galleon.cfg:15
 #: data/units/Watch_Tower.cfg:17
 msgid "ballista"
 msgstr "baliste"
