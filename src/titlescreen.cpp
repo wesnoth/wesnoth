@@ -41,6 +41,8 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 	std::cerr << "logo size: " << logo->w << "," << logo->h << "\n";
 
+	const video_change_detector disp_change_detector(screen.video());
+
 	for(int x = 0; x != logo->w; ++x) {
 		SDL_Rect srcrect = {x,0,1,logo->h};
 		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
@@ -63,7 +65,13 @@ void fade_logo(display& screen, int xpos, int ypos)
 			SDL_Delay(10);
 
 			events::pump();
+			if(disp_change_detector.changed()) {
+				faded_in = true;
+				fade_logo(screen,xpos,ypos);
+				return;
+			}
 		}
+
 	}
 
 	std::cerr << "logo faded in\n";
