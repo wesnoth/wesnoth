@@ -1594,7 +1594,7 @@ config config::get_diff(const config& c) const
 				else if(b.size() - bi < a.size() - ai) {
 					config& new_insert = res.add_child("insert_child");
 					char buf[50];
-					sprintf(buf,"%d",ai);
+					sprintf(buf,"%lu",ai);
 					new_insert.values["index"] = buf;
 					new_insert.add_child(*itor,*a[ai]);
 
