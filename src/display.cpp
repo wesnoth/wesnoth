@@ -365,52 +365,22 @@ int display::hex_width() const
 
 double display::zoom(int amount)
 {
-	if(amount == 0 || !team_valid()) {
-		return double(zoom_)/double(DefaultZoom);
-	}
+	int new_zoom = zoom_ + amount;
+	if (amount != 0 && team_valid() && new_zoom >= MinZoom(map_, map_area()) && new_zoom <= MaxZoom) {
+		SDL_Rect const &area = map_area();
+		xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
+		ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+		zoom_ = new_zoom;
+		bounds_check_position();
 
-	const int orig_xpos = xpos_;
-	const int orig_ypos = ypos_;
-
-	xpos_ /= zoom_;
-	ypos_ /= zoom_;
-
-	const int orig_zoom = zoom_;
-
-	zoom_ += amount;
-	if(zoom_ < MinZoom(map_,map_area()) || zoom_ > MaxZoom) {
-		zoom_ = orig_zoom;
-		xpos_ = orig_xpos;
-		ypos_ = orig_ypos;
-		return double(zoom_)/double(DefaultZoom);
-	}
-
-	xpos_ *= zoom_;
-	ypos_ *= zoom_;
-
-	xpos_ += amount*2;
-	ypos_ += amount*2;
-
-	const int prev_zoom = zoom_;
-
-	bounds_check_position();
-
-	if(zoom_ != prev_zoom) {
-		xpos_ = orig_xpos;
-		ypos_ = orig_ypos;
-		zoom_ = orig_zoom;
+		energy_bar_rects_.clear();
 		image::set_zoom(zoom_);
-		return double(zoom_)/double(DefaultZoom);
+		map_labels_.recalculate_labels();
+		invalidate_all();
+
+		// Forces a redraw after zooming. This prevents some graphic glitches from occuring.
+		draw();
 	}
-
-	energy_bar_rects_.clear();
-
-	image::set_zoom(zoom_);
-	map_labels_.recalculate_labels();
-	invalidate_all();
-
-	// Forces a redraw after zooming. This prevents some graphic glitches from occuring.
-	draw();
 
 	return double(zoom_)/double(DefaultZoom);
 }
