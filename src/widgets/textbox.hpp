@@ -14,8 +14,6 @@
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
-class display;
-
 #include "../serialization/string_utils.hpp"
 #include "../sdl_utils.hpp"
 
@@ -28,7 +26,7 @@ namespace gui {
 class textbox : public scrollarea
 {
 public:
-	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2);
+	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2);
 
 	const std::string text() const;
 	void set_text(const std::string& text);

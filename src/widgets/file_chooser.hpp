@@ -93,6 +93,7 @@ private:
 	label current_path_label_;
 	bool choice_made_;
 	int last_selection_;
+	display& disp_;
 };
 
 }

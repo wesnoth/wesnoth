@@ -2,8 +2,8 @@
 
 #include "menu.hpp"
 
-#include "../display.hpp"
 #include "../font.hpp"
+#include "../image.hpp"
 #include "../sdl_utils.hpp"
 #include "../show_dialog.hpp"
 #include "../util.hpp"
@@ -20,9 +20,9 @@ const size_t menu_cell_padding = font::SIZE_NORMAL * 3/5;
 
 namespace gui {
 
-menu::menu(display& disp, const std::vector<std::string>& items,
+menu::menu(CVideo& video, const std::vector<std::string>& items,
            bool click_selects, int max_height, int max_width)
-        : scrollarea(disp),
+        : scrollarea(video),
           max_height_(max_height), max_width_(max_width), max_items_(-1), item_height_(-1),
 	  cur_help_(-1,-1), help_string_(-1),
 	  selected_(0), click_selects_(click_selects),

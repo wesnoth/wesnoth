@@ -317,27 +317,27 @@ std::vector<std::string> get_text() {
 	return res;
 }
 
-void show_about(display& disp)
+void show_about(CVideo &video)
 {
 	std::vector<std::string> text = get_text();
-	SDL_Rect rect = {0, 0, disp.x(), disp.y()};
+	SDL_Rect rect = {0, 0, video.getx(), video.gety()};
 
-	const surface_restorer restorer(&disp.video(), rect);
+	const surface_restorer restorer(&video, rect);
 
 	// Clear the screen
-	gui::draw_solid_tinted_rectangle(0,0,disp.x()-1,disp.y()-1,
-	                                 0,0,0,1.0,disp.video().getSurface());
+	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
+	                                 0,0,0,1.0,video.getSurface());
 	update_whole_screen();
 
 	const surface map_image(image::get_image(game_config::map_image,image::UNSCALED));
 	SDL_Rect map_rect;
-	map_rect.x = disp.x()/2 - map_image->w/2;
-	map_rect.y = disp.y()/2 - map_image->h/2;
+	map_rect.x = video.getx()/2 - map_image->w/2;
+	map_rect.y = video.gety()/2 - map_image->h/2;
 	map_rect.w = map_image->w;
 	map_rect.h = map_image->h;
 
-	gui::button close(disp,_("Close"));
-	close.set_location((disp.x()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
+	gui::button close(video,_("Close"));
+	close.set_location((video.getx()/2)-(close.width()/2), map_rect.y+map_rect.h+15);
 
 
 	//substitute in the correct control characters for '+' and '-'
@@ -373,7 +373,7 @@ void show_about(display& disp)
 
 	do {
 		// draw map to screen, thus erasing all text
-		SDL_BlitSurface(map_image,&middle_src,disp.video().getSurface(),&middle_dest);
+		SDL_BlitSurface(map_image,&middle_src,video.getSurface(),&middle_dest);
 
 		// draw one screen full of text
 		const int line_spacing = 5;
@@ -382,7 +382,7 @@ void show_about(display& disp)
 		int cur_line = 0;
 
 		do {
-			SDL_Rect tr = font::draw_text(&disp.video(),screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
+			SDL_Rect tr = font::draw_text(&video,screen_area(),font::SIZE_XLARGE,font::BLACK_COLOUR,
 					              text[line], map_rect.x + map_rect.w / 8,y);
 			if(is_new_line) {
 				is_new_line = false;
@@ -410,8 +410,8 @@ void show_about(display& disp)
 		// mask off the upper and lower half of the map,
 		// so text will scroll into view rather than
 		// suddenly appearing out of nowhere
-		SDL_BlitSurface(map_image,&upper_src,disp.video().getSurface(),&upper_dest);
-		SDL_BlitSurface(map_image,&lower_src,disp.video().getSurface(),&lower_dest);
+		SDL_BlitSurface(map_image,&upper_src,video.getSurface(),&upper_dest);
+		SDL_BlitSurface(map_image,&lower_src,video.getSurface(),&lower_dest);
 
 		// handle events
 		events::pump();
@@ -420,7 +420,7 @@ void show_about(display& disp)
 
 		// update screen and wait, so the text does not scroll too fast
 		update_rect(map_rect);
-		disp.video().flip();
+		video.flip();
 		SDL_Delay(20);
 
 	} while(!close.pressed());

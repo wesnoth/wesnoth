@@ -1,7 +1,6 @@
 #include "../global.hpp"
 
 #include "widget.hpp"
-#include "../display.hpp"
 #include "../video.hpp"
 
 namespace {
@@ -11,15 +10,15 @@ namespace {
 namespace gui {
 
 widget::widget(const widget &o)
-	: events::handler(), disp_(o.disp_), restorer_(o.restorer_), rect_(o.rect_),
+	: events::handler(), video_(o.video_), restorer_(o.restorer_), rect_(o.rect_),
 	  focus_(o.focus_), needs_restore_(o.needs_restore_),
 	  state_(o.state_), clip_(o.clip_), clip_rect_(o.clip_rect_), volatile_(o.volatile_),
 	  help_text_(o.help_text_), help_string_(o.help_string_)
 {
 }
 
-widget::widget(display& disp)
-	: disp_(&disp), rect_(EmptyRect), focus_(true), needs_restore_(false),
+widget::widget(CVideo& video)
+	: video_(&video), rect_(EmptyRect), focus_(true), needs_restore_(false),
 	  state_(UNINIT), clip_(false), volatile_(false), help_string_(0)
 {
 }
@@ -28,11 +27,6 @@ widget::~widget()
 {
 	bg_cancel();
 }
-
-// FIXME: we should move this into the header so that it can be
-// inlined, but that would currently create a
-// widget->display->button->widget include cycle
-CVideo& widget::video() const { return (disp_->video()); }
 
 void widget::bg_cancel()
 {

@@ -805,29 +805,30 @@ private:
 
 	enum TAB { GENERAL_TAB, DISPLAY_TAB, SOUND_TAB };
 	TAB tab_;
+	display &disp_;
 };
 
 preferences_dialog::preferences_dialog(display& disp)
-	: gui::preview_pane(disp),
-	  music_slider_(disp), sound_slider_(disp),
-	  scroll_slider_(disp), gamma_slider_(disp),
-	  fullscreen_button_(disp, _("Full Screen"), gui::button::TYPE_CHECK),
-	  turbo_button_(disp, _("Accelerated Speed"), gui::button::TYPE_CHECK),
-	  show_ai_moves_button_(disp, _("Skip AI Moves"), gui::button::TYPE_CHECK),
-	  show_grid_button_(disp, _("Show Grid"), gui::button::TYPE_CHECK),
-	  show_floating_labels_button_(disp, _("Show Floating Labels"), gui::button::TYPE_CHECK),
-	  turn_dialog_button_(disp, _("Turn Dialog"), gui::button::TYPE_CHECK),
-	  turn_bell_button_(disp, _("Turn Bell"), gui::button::TYPE_CHECK),
-	  show_team_colours_button_(disp, _("Show Team Colors"), gui::button::TYPE_CHECK),
-	  show_colour_cursors_button_(disp, _("Show Color Cursors"), gui::button::TYPE_CHECK),
-	  show_haloing_button_(disp, _("Show Haloing Effects"), gui::button::TYPE_CHECK),
-	  video_mode_button_(disp, _("Video Mode")),
-	  hotkeys_button_(disp, _("Hotkeys")),
-	  gamma_button_(disp, _("Adjust Gamma"), gui::button::TYPE_CHECK),
-	  flip_time_button_(disp, _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
-	  music_label_(disp, _("Music Volume:")), sound_label_(disp, _("SFX Volume:")),
-	  scroll_label_(disp, _("Scroll Speed:")), gamma_label_(disp, _("Gamma:")),
-	  slider_label_width_(0), tab_(GENERAL_TAB)
+	: gui::preview_pane(disp.video()),
+	  music_slider_(disp.video()), sound_slider_(disp.video()),
+	  scroll_slider_(disp.video()), gamma_slider_(disp.video()),
+	  fullscreen_button_(disp.video(), _("Full Screen"), gui::button::TYPE_CHECK),
+	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
+	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
+	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
+	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
+	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
+	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
+	  show_team_colours_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
+	  show_colour_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
+	  show_haloing_button_(disp.video(), _("Show Haloing Effects"), gui::button::TYPE_CHECK),
+	  video_mode_button_(disp.video(), _("Video Mode")),
+	  hotkeys_button_(disp.video(), _("Hotkeys")),
+	  gamma_button_(disp.video(), _("Adjust Gamma"), gui::button::TYPE_CHECK),
+	  flip_time_button_(disp.video(), _("Reverse Time Graphics"), gui::button::TYPE_CHECK),
+	  music_label_(disp.video(), _("Music Volume:")), sound_label_(disp.video(), _("SFX Volume:")),
+	  scroll_label_(disp.video(), _("Scroll Speed:")), gamma_label_(disp.video(), _("Gamma:")),
+	  slider_label_width_(0), tab_(GENERAL_TAB), disp_(disp)
 {
 	set_measurements(400, 400);
 
@@ -969,7 +970,7 @@ void preferences_dialog::process_event()
 	if (show_team_colours_button_.pressed())
 		set_show_side_colours(show_team_colours_button_.checked());
 	if (hotkeys_button_.pressed())
-		show_hotkeys_dialog(disp());
+		show_hotkeys_dialog(disp_);
 	if (show_colour_cursors_button_.pressed())
 		set_colour_cursors(show_colour_cursors_button_.checked());
 	if (show_haloing_button_.pressed())
@@ -1141,12 +1142,12 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int width = 600;
 	const int height = 500;
 
-	gui::button close_button (disp, _("Close Window"));
+	gui::button close_button (disp.video(), _("Close Window"));
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;	
-	gui::draw_dialog(xpos,ypos,width,height,disp,_("Hotkey Settings"),NULL,&buttons,&restorer);
+	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Hotkey Settings"),NULL,&buttons,&restorer);
 	
 	SDL_Rect clip_rect = { 0, 0, disp.x (), disp.y () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_PLUS,
@@ -1167,14 +1168,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		menu_items.push_back (str.str ());
 	}
 
-	gui::menu menu_(disp, menu_items, false, height);
+	gui::menu menu_(disp.video(), menu_items, false, height);
 	menu_.set_width(400);	
 	menu_.set_location(xpos + 20, ypos);
 	
-	gui::button change_button (disp, _("Change Hotkey"));
+	gui::button change_button (disp.video(), _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () -30,ypos + 80);
 
-	gui::button save_button (disp, _("Save Hotkeys"));
+	gui::button save_button (disp.video(), _("Save Hotkeys"));
 	save_button.set_location(xpos + width - save_button.width () - 30,ypos + 130);
 
 	for(;;) {
@@ -1192,7 +1193,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 		 	gui::draw_dialog_frame (centerx-text_size.w/2 - 20, 
 									centery-text_size.h/2 - 6,
 									text_size.w+40,
-									text_size.h+12,disp);
+									text_size.h+12,disp.video());
 			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
 				 _("Press desired HotKey"),centerx-text_size.w/2-10,
 				 centery-text_size.h/2-3);

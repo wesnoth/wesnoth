@@ -19,7 +19,7 @@
 
 namespace gui {
 
-label::label(display& d, const std::string& text, int size, const SDL_Color& colour) : widget(d), text_(text), size_(size), colour_(colour)
+label::label(CVideo& video, const std::string& text, int size, const SDL_Color& colour) : widget(video), text_(text), size_(size), colour_(colour)
 {
 	update_label_size();
 }

@@ -13,8 +13,6 @@
 
 #include "../global.hpp"
 
-class display;
-
 #include "scrollarea.hpp"
 
 #include <algorithm>
@@ -22,8 +20,8 @@ class display;
 
 namespace gui {
 
-scrollarea::scrollarea(display &d)
-	: widget(d), scrollbar_(d),
+scrollarea::scrollarea(CVideo &video)
+	: widget(video), scrollbar_(video),
 	  old_position_(0), recursive_(false), shown_scrollbar_(false)
 {
 }

@@ -31,8 +31,8 @@ namespace gui {
 
 const int font_size = font::SIZE_PLUS;
 
-textbox::textbox(display& d, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus)
-	   : scrollarea(d), max_size_(max_size), text_(utils::string_to_wstring(text)),
+textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus)
+	   : scrollarea(video), max_size_(max_size), text_(utils::string_to_wstring(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),

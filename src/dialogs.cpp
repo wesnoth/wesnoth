@@ -251,9 +251,9 @@ static const int save_preview_border = 10;
 class save_preview_pane : public gui::preview_pane
 {
 public:
-	save_preview_pane(display& disp, const config& game_config, gamemap* map, const game_data& data,
+	save_preview_pane(CVideo &video, const config& game_config, gamemap* map, const game_data& data,
 	                  const std::vector<save_info>& info, const std::vector<config*>& summaries)
-		: gui::preview_pane(disp), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
+		: gui::preview_pane(video), game_config_(&game_config), map_(map), data_(&data), info_(&info), summaries_(&summaries), index_(0)
 	{
 		set_measurements(200, 400);
 	}
@@ -284,7 +284,7 @@ void save_preview_pane::draw_contents()
 
 	const config& summary = *(*summaries_)[index_];
 
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + save_preview_border, loc.y + save_preview_border,
@@ -390,7 +390,7 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-	font::draw_text(&disp().video(), area, font::SIZE_SMALL, font::NORMAL_COLOUR, str.str(), area.x, ypos, true);
+	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOUR, str.str(), area.x, ypos, true);
 }
 
 } //end anon namespace
@@ -460,7 +460,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	const events::event_context context;
 
 	if(generate_summaries) {
-		gui::progress_bar bar(disp);
+		gui::progress_bar bar(disp.video());
 		const SDL_Rect bar_area = {disp.x()/2 - 100, disp.y()/2 - 20, 200, 40};
 		bar.set_location(bar_area);
 
@@ -505,7 +505,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 	gamemap map_obj(game_config,"");
 
 	std::vector<gui::preview_pane*> preview_panes;
-	save_preview_pane save_preview(disp,game_config,&map_obj,data,games,summaries);
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj,data,games,summaries);
 	preview_panes.push_back(&save_preview);
 
 	//create an option for whether the replay should be shown or not
@@ -551,9 +551,10 @@ namespace {
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
-										  map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
-										  weapons_(type == SHOW_ALL)
+				    : gui::preview_pane(disp.video()), disp_(disp),
+				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
+				      map_(map), units_(&unit_store_), index_(0), left_(on_left_side),
+				      weapons_(type == SHOW_ALL)
 {
 	unsigned w = font::relative_size(weapons_ ? 200 : 190);
 	unsigned h = font::relative_size(weapons_ ? 370 : 140);
@@ -562,9 +563,10 @@ unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const un
 }
 
 unit_preview_pane::unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type, bool on_left_side)
-                                        : gui::preview_pane(disp), details_button_(disp,_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
-										  map_(map), units_(&units), index_(0), left_(on_left_side),
-										  weapons_(type == SHOW_ALL)
+                                    : gui::preview_pane(disp.video()), disp_(disp),
+				      details_button_(disp.video(),_("Profile"),gui::button::TYPE_PRESS,"lite_small",gui::button::MINIMUM_SPACE),
+				      map_(map), units_(&units), index_(0), left_(on_left_side),
+				      weapons_(type == SHOW_ALL)
 {
 	set_measurements(font::relative_size(200), font::relative_size(370));
 }
@@ -601,7 +603,7 @@ void unit_preview_pane::draw_contents()
 
 	const bool right_align = left_side();
 
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + unit_preview_border, loc.y + unit_preview_border,
@@ -637,7 +639,7 @@ void unit_preview_pane::draw_contents()
 		desc << font::NORMAL_TEXT << u.description();
 		const std::string description = desc.str();
 		description_rect = font::text_area(description,font::SIZE_NORMAL);
-		description_rect = font::draw_text(&disp().video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
+		description_rect = font::draw_text(&video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,desc.str(),right_align ? image_rect.x : image_rect.x + image_rect.w - description_rect.w,image_rect.y+image_rect.h+details_button_.location().h);
 	}
 
 	std::stringstream details;
@@ -716,7 +718,7 @@ void unit_preview_pane::draw_contents()
 			xpos = cur_area.x + cur_area.w - line_area.w;
 		}
 
-		cur_area = font::draw_text(&disp().video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
+		cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,cur_area.y);
 		cur_area.y += cur_area.h;
 	}
 }
@@ -725,11 +727,11 @@ void unit_preview_pane::process_event()
 {
 	if(map_ != NULL && details_button_.pressed() && index_ >= 0 && index_ < int(units_->size())) {
 
-		show_unit_description(disp(), (*units_)[index_]);
+		show_unit_description(disp_, (*units_)[index_]);
 	}
 }
 
-void show_unit_description(display& disp, const unit& u)
+void show_unit_description(display &disp, const unit& u)
 {
 	help::show_help(disp,"unit_" + u.type().id());
 }
@@ -739,7 +741,7 @@ namespace {
 	static const int campaign_preview_border = 10;
 }
 
-campaign_preview_pane::campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(disp),descriptions_(desc),index_(0)
+campaign_preview_pane::campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* desc) : gui::preview_pane(video),descriptions_(desc),index_(0)
 {
 	set_measurements(350, 400);
 }
@@ -771,7 +773,7 @@ void campaign_preview_pane::draw_contents()
 	/* background frame */
 	static const std::string default_style("mainmenu");
 	const std::string* style = &default_style;
-	gui::draw_dialog_frame(area.x,area.y,area.w,area.h,disp(),style);
+	gui::draw_dialog_frame(area.x,area.y,area.w,area.h,video(),style);
 
 	/* description text */
 	const std::string& desc_text = font::word_wrap_text((*descriptions_)[index_].first,font::SIZE_SMALL,area.w-2*campaign_preview_border);
@@ -779,7 +781,7 @@ void campaign_preview_pane::draw_contents()
 	SDL_Rect txt_area = { area.x+campaign_preview_border,area.y,0,0 };
 
 	for(std::vector<std::string>::const_iterator line = lines.begin(); line != lines.end(); ++line) {
-	  txt_area = font::draw_text(&disp().video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
+	  txt_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,txt_area.x,txt_area.y);
 		txt_area.y += txt_area.h;
 	}
 
@@ -799,7 +801,7 @@ void campaign_preview_pane::draw_contents()
 		dst_rect.x = area.x+(area.w-src_rect.w)/2;
 		dst_rect.y = txt_area.y+(max_height-src_rect.h)/2;
 
-		SDL_BlitSurface(img,&src_rect,disp().video().getSurface(),&dst_rect);
+		SDL_BlitSurface(img,&src_rect,video().getSurface(),&dst_rect);
 
 	}
 }

@@ -68,7 +68,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
 	surface_restorer restorer(&disp.video(),dialog_rect);
 
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
 
 	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Create New Map"),0,0);
@@ -90,10 +90,10 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button new_map_button(disp, _("Generate New Map"));
-	gui::button random_map_button(disp, _("Generate Random Map"));
-	gui::button random_map_setting_button(disp, _("Random Generator Settings"));
-	gui::button cancel_button(disp, _("Cancel"));
+	gui::button new_map_button(disp.video(), _("Generate New Map"));
+	gui::button random_map_button(disp.video(), _("Generate Random Map"));
+	gui::button random_map_setting_button(disp.video(), _("Random Generator Settings"));
+	gui::button cancel_button(disp.video(), _("Cancel"));
 
 	new_map_button.set_location(xpos + horz_margin,height_rect.y + height_rect.h + vertical_margin);
 	random_map_button.set_location(xpos + horz_margin,ypos + height - random_map_button.height()-14*2-vertical_margin);
@@ -110,14 +110,14 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
 
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp);
+	gui::slider width_slider(disp.video());
 	width_slider.set_location(slider_rect);
 	width_slider.set_min(map_min_width);
 	width_slider.set_max(map_max_width);
 	width_slider.set_value(map_width);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp);
+	gui::slider height_slider(disp.video());
 	height_slider.set_location(slider_rect);
 	height_slider.set_min(map_min_height);
 	height_slider.set_max(map_max_height);
@@ -190,7 +190,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 		if (draw) {
 			map_width = width_slider.value();
 			map_height = height_slider.value();
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
 			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Create New Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);
@@ -244,13 +244,13 @@ void preferences_dialog(display &disp, config &prefs) {
 
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 
-	gui::button close_button(disp,_("Close Window"));
+	gui::button close_button(disp.video(),_("Close Window"));
 
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
 	surface_restorer restorer;
-	gui::draw_dialog(xpos,ypos,width,height,disp,_("Preferences"),NULL,&buttons,&restorer);
+	gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Preferences"),NULL,&buttons,&restorer);
 
 	const std::string& scroll_label = _("Scroll Speed:");
 
@@ -273,30 +273,30 @@ void preferences_dialog(display &disp, config &prefs) {
 	SDL_Rect slider_rect = { slider_left, scroll_pos, slider_right - slider_left, 10  };
 
 	slider_rect.y = scroll_pos;
-	gui::slider scroll_slider(disp);
+	gui::slider scroll_slider(disp.video());
 	scroll_slider.set_location(slider_rect);
 	scroll_slider.set_min(1);
 	scroll_slider.set_max(100);
 	scroll_slider.set_value(preferences::scroll_speed());
 
-	gui::button fullscreen_button(disp,_("Full Screen"),
+	gui::button fullscreen_button(disp.video(),_("Full Screen"),
 	                              gui::button::TYPE_CHECK);
 
 	fullscreen_button.set_check(preferences::fullscreen());
 
 	fullscreen_button.set_location(slider_left,scroll_pos + 80);
 
-	gui::button grid_button(disp,_("Show Grid"),
+	gui::button grid_button(disp.video(),_("Show Grid"),
 	                        gui::button::TYPE_CHECK);
 	grid_button.set_check(preferences::grid());
 
 	grid_button.set_location(slider_left + fullscreen_button.width() + 100,
 							 scroll_pos + 80);
 
-	gui::button resolution_button(disp,_("Video Mode"));
+	gui::button resolution_button(disp.video(),_("Video Mode"));
 	resolution_button.set_location(slider_left,scroll_pos + 80 + 50);
 
-	gui::button hotkeys_button (disp,_("Hotkeys"));
+	gui::button hotkeys_button (disp.video(),_("Hotkeys"));
 	hotkeys_button.set_location(slider_left + fullscreen_button.width() + 100,
 								scroll_pos + 80 + 50);
 
@@ -317,7 +317,7 @@ void preferences_dialog(display &disp, config &prefs) {
 
 		if(redraw_all) {
 			restorer.cancel();
-			gui::draw_dialog(xpos,ypos,width,height,disp,_("Preferences"),NULL,&buttons,&restorer);
+			gui::draw_dialog(xpos,ypos,width,height,disp.video(),_("Preferences"),NULL,&buttons,&restorer);
 			fullscreen_button.set_dirty();
 			close_button.set_dirty();
 			resolution_button.set_dirty();
@@ -382,7 +382,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
 	surface_restorer restorer(&disp.video(),dialog_rect);
 
-	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
 
 	SDL_Rect title_rect = font::draw_text(NULL,screen_area(),24,font::NORMAL_COLOUR,
 					      _("Resize Map"),0,0);
@@ -404,8 +404,8 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	width_rect.y = ypos + title_rect.h + vertical_margin*2;
 	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
 
-	gui::button cancel_button(disp, _("Cancel"));
-	gui::button ok_button(disp, _("Ok"));
+	gui::button cancel_button(disp.video(), _("Cancel"));
+	gui::button ok_button(disp.video(), _("Ok"));
 
 	cancel_button.set_location(xpos + width - cancel_button.width() - horz_margin,
 	                           ypos + height - cancel_button.height()-14);
@@ -420,14 +420,14 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
 
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp);
+	gui::slider width_slider(disp.video());
 	width_slider.set_location(slider_rect);
 	width_slider.set_min(map_min_width);
 	width_slider.set_max(map_max_width);
 	width_slider.set_value(map_width);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp);
+	gui::slider height_slider(disp.video());
 	height_slider.set_location(slider_rect);
 	height_slider.set_min(map_min_height);
 	height_slider.set_max(map_max_height);
@@ -443,7 +443,7 @@ resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 		if (draw) {
 			map_width = width_slider.value();
 			map_height = height_slider.value();
-			gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+			gui::draw_dialog_frame(xpos,ypos,width,height,disp.video());
 			title_rect = font::draw_text(&disp.video(),screen_area(),24,font::NORMAL_COLOUR,
 										 _("Resize Map"),
 										 xpos+(width-title_rect.w)/2,ypos+10);

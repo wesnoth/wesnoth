@@ -2710,7 +2710,7 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 	textbox_.mode = mode;
 
 	if(check_label != "") {
-		textbox_.check.assign(new gui::button(gui_,check_label,gui::button::TYPE_CHECK));
+		textbox_.check.assign(new gui::button(gui_.video(),check_label,gui::button::TYPE_CHECK));
 		textbox_.check->set_check(checked);
 	}
 
@@ -2733,7 +2733,7 @@ void turn_info::create_textbox(floating_textbox::MODE mode, const std::string& l
 		return;
 	}
 
-	textbox_.box.assign(new gui::textbox(gui_,textbox_width,"",true,256,0.8,0.6));
+	textbox_.box.assign(new gui::textbox(gui_.video(),textbox_width,"",true,256,0.8,0.6));
 	textbox_.box->set_volatile(true);
 	textbox_.box->set_location(area.x + label_area.w + border_size*2,ypos);
 

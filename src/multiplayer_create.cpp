@@ -35,27 +35,27 @@ create::create(display& disp, const config &cfg, chat& c, config& gamelist) :
 	tooltip_manager_(disp.video()),
 	map_selection_(-1),
 
-	maps_menu_(disp, std::vector<std::string>()),
-	turns_slider_(disp),
-	turns_label_(disp, "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	village_gold_slider_(disp),
-	village_gold_label_(disp, "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	xp_modifier_slider_(disp),
-	xp_modifier_label_(disp, "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	name_entry_label_(disp, _("Name of game:"), font::SIZE_SMALL, font::GOOD_COLOUR),
-	num_players_label_(disp, "", font::SIZE_SMALL, font::GOOD_COLOUR),
-	era_label_(disp, _("Era:"), font::SIZE_SMALL, font::GOOD_COLOUR),
-	map_label_(disp, _("Map to play:"), font::SIZE_SMALL, font::GOOD_COLOUR),
-	fog_game_(disp, _("Fog Of War"), gui::button::TYPE_CHECK),
-	shroud_game_(disp, _("Shroud"), gui::button::TYPE_CHECK),
-	observers_game_(disp, _("Observers"), gui::button::TYPE_CHECK),
-	cancel_game_(disp, _("Cancel")),
-	launch_game_(disp, _("OK")),
-	regenerate_map_(disp, _("Regenerate")),
-	generator_settings_(disp, _("Settings...")),
+	maps_menu_(disp.video(), std::vector<std::string>()),
+	turns_slider_(disp.video()),
+	turns_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	village_gold_slider_(disp.video()),
+	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	xp_modifier_slider_(disp.video()),
+	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_SMALL, font::GOOD_COLOUR),
+	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::GOOD_COLOUR),
+	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::GOOD_COLOUR),
+	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::GOOD_COLOUR),
+	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
+	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
+	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
+	cancel_game_(disp.video(), _("Cancel")),
+	launch_game_(disp.video(), _("OK")),
+	regenerate_map_(disp.video(), _("Regenerate")),
+	generator_settings_(disp.video(), _("Settings...")),
 	era_combo_(disp, std::vector<std::string>()),
 	vision_combo_(disp, std::vector<std::string>()),
-	name_entry_(disp, 32),
+	name_entry_(disp.video(), 32),
 	minimap_restorer_(NULL),
 	minimap_rect_(null_rect),
 	generator_(NULL)
@@ -189,7 +189,7 @@ void create::process_event()
 			set_result(CREATE);
 			return;
 		} else {
-			gui::show_dialog(disp(), NULL, "", _("You must enter a name."), gui::OK_ONLY);
+			gui::show_dialog(disp_, NULL, "", _("You must enter a name."), gui::OK_ONLY);
 		}
 	}
 
@@ -267,7 +267,7 @@ void create::process_event()
 	}
 
 	if(generator_ != NULL && generator_->allow_user_config() && generator_settings_.pressed()) {
-		generator_->user_config(disp());
+		generator_->user_config(disp_);
 		map_changed = true;
 	}
 
@@ -311,7 +311,7 @@ void create::process_event()
 		const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
 		if(mini != NULL) {
 			SDL_Rect rect = minimap_rect_;
-			SDL_BlitSurface(mini, NULL, disp().video().getSurface(), &rect);
+			SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
 			update_rect(rect);
 		}
 		const int nsides = parameters_.scenario_data.get_children("side").size();
@@ -353,14 +353,14 @@ void create::hide_children(bool hide)
 	if (hide) {
 		minimap_restorer_.assign(NULL);
 	} else {
-		minimap_restorer_.assign(new surface_restorer(&disp().video(), minimap_rect_));
+		minimap_restorer_.assign(new surface_restorer(&video(), minimap_rect_));
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
 		gamemap map(game_config(), map_data);
 		const surface mini(image::getMinimap(minimap_rect_.w,minimap_rect_.h,map,0));
 		if(mini != NULL) {
 			SDL_Rect rect = minimap_rect_;
-			SDL_BlitSurface(mini, NULL, disp().video().getSurface(), &rect);
+			SDL_BlitSurface(mini, NULL, video().getSurface(), &rect);
 			update_rect(rect);
 		}
 	}
@@ -376,7 +376,7 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos = ca.y;
 
 	// Dialog title
-	ypos += gui::draw_dialog_title(xpos, ypos, &disp().video(), _("Create Game")).h + border_size;
+	ypos += gui::draw_dialog_title(xpos, ypos, &video(), _("Create Game")).h + border_size;
 
 	// Name Entry
 	name_entry_label_.set_location(xpos, ypos);

@@ -15,8 +15,9 @@
 
 #include "SDL.h"
 
-#include "button.hpp"
 class display;
+
+#include "button.hpp"
 
 namespace gui {
 
@@ -38,6 +39,7 @@ private:
 	void set_selected_internal(int val);
 	std::vector<std::string> items_;
 	int selected_, oldSelected_;
+	display* disp_;
 }; //end class combo
 
 }

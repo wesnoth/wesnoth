@@ -35,12 +35,12 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 		yloc = scr->h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button ok_button_(disp, _("Ok"));
-	gui::button cancel_button_(disp, _("Cancel"));
+	gui::button ok_button_(disp.video(), _("Ok"));
+	gui::button cancel_button_(disp.video(), _("Cancel"));
 	buttons_ptr.push_back(&ok_button_);
 	buttons_ptr.push_back(&cancel_button_);
 	surface_restorer restorer;
-	gui::draw_dialog(xloc, yloc, width, height, disp, title, NULL, &buttons_ptr, &restorer);
+	gui::draw_dialog(xloc, yloc, width, height, disp.video(), title, NULL, &buttons_ptr, &restorer);
 
 	gui::file_chooser fc(disp, filename);
 	fc.set_location(xloc + left_padding, yloc + top_padding);

@@ -14,7 +14,6 @@
 #include "../global.hpp"
 
 #include "button.hpp"
-#include "../display.hpp"
 #include "../font.hpp"
 #include "../image.hpp"
 #include "../log.hpp"
@@ -30,9 +29,9 @@ const int horizontal_padding = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 const int vertical_padding = font::SIZE_SMALL / 2;
 
-button::button(display& disp, const std::string& label, button::TYPE type,
+button::button(CVideo& video, const std::string& label, button::TYPE type,
                std::string button_image_name, SPACE_CONSUMPTION spacing)
-	: widget(disp), label_(label),
+	: widget(video), label_(label),
 	  image_(NULL), pressedImage_(NULL), activeImage_(NULL), pressedActiveImage_(NULL),
 	  button_(true), state_(NORMAL), type_(type), enabled_(true), pressed_(false)
 {
@@ -69,8 +68,8 @@ button::button(display& disp, const std::string& label, button::TYPE type,
 
 	textRect_.x = 0;
 	textRect_.y = 0;
-	textRect_.w = video().getx();
-	textRect_.h = video().gety();
+	textRect_.w = video.getx();
+	textRect_.h = video.gety();
 
 	textRect_ = font::draw_text(NULL,textRect_,font_size,
 	                            font::BUTTON_COLOUR,label_,0,0);

@@ -15,7 +15,7 @@
 #define SHOW_DIALOG_HPP_INCLUDED
 
 class config;
-class display;
+class CVideo;
 
 #include "cursor.hpp"
 #include "font.hpp"
@@ -46,9 +46,9 @@ private:
 	bool reset_to;
 };
 
-void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
+void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style=NULL, surface_restorer* restorer=NULL);
 
-void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& dialog_style);
+void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& dialog_style);
 
 void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
 
@@ -69,7 +69,7 @@ SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text);
 //below the client area.
 //if 'restorer' is present, it will be set to a restorer that will reset the screen area
 //to its original state after the dialog is drawn.
-void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
+void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
                  const std::string* dialog_style=NULL, std::vector<button*>* buttons=NULL,
                  surface_restorer* restorer=NULL, button* help_button=NULL);
 
@@ -116,7 +116,7 @@ struct check_item {
 //by 'show_dialog' and shows information about the selection.
 class preview_pane : public widget {
 public:
-	preview_pane(display& disp) : widget(disp) {}
+	preview_pane(CVideo &video) : widget(video) {}
 	virtual ~preview_pane() { tooltips::clear_tooltips(location()); }
 
 	virtual bool show_above() const { return false; }
@@ -130,7 +130,7 @@ size_t text_to_lines(std::string& text, size_t max_length);
 //if a menu is given, then returns -1 if the dialog was cancelled, and the
 //index of the selection otherwise. If no menu is given, returns the index
 //of the button that was pressed
-int show_dialog(display& screen, surface image,
+int show_dialog(display &screen, surface image,
 				const std::string& caption, const std::string& message,
 				DIALOG_TYPE type=MESSAGE,
 				const std::vector<std::string>* menu_items=NULL,
@@ -145,11 +145,11 @@ int show_dialog(display& screen, surface image,
 				const std::string& help_topic=""
 			 );
 
-void show_error_message(display &screen, std::string const &message);
+void show_error_message(display &disp, std::string const &message);
 
 network::connection network_data_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 
-void check_quit(display& screen);
+void check_quit(CVideo &video);
 
 }
 

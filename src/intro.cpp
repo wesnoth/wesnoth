@@ -36,7 +36,7 @@ namespace {
 	const int min_room_at_bottom = 150;
 }
 
-bool show_intro_part(display& screen, const config& part,
+bool show_intro_part(CVideo &video, const config& part,
 		const std::string& scenario);
 
 void show_intro(display& screen, const config& data, const config& level)
@@ -56,7 +56,7 @@ void show_intro(display& screen, const config& data, const config& level)
 		std::pair<const std::string*, const config*> item = *i;
 
 		if(*item.first == "part") {
-			showing = show_intro_part(screen, (*item.second), scenario);
+			showing = show_intro_part(screen.video(), (*item.second), scenario);
 		} else if(*item.first == "if") {
 			const std::string type = game_events::conditional_passed(
 				NULL, *item.second) ? "then":"else";
@@ -73,7 +73,7 @@ void show_intro(display& screen, const config& data, const config& level)
 	std::cerr << "intro sequence finished...\n";
 }
 
-bool show_intro_part(display& screen, const config& part,
+bool show_intro_part(CVideo &video, const config& part,
 		const std::string& scenario)
 {
 	std::cerr << "showing intro part\n";
@@ -87,11 +87,11 @@ bool show_intro_part(display& screen, const config& part,
 
 	CKey key;
 
-	gui::button next_button(screen,_("Next") + std::string(">>>"));
-	gui::button skip_button(screen,_("Skip"));
+	gui::button next_button(video,_("Next") + std::string(">>>"));
+	gui::button skip_button(video,_("Skip"));
 
-	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,
-			0,0,0,1.0,screen.video().getSurface());
+	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,
+			0,0,0,1.0,video.getSurface());
 
 
 	const std::string& background_name = part["background"];
@@ -108,20 +108,20 @@ bool show_intro_part(display& screen, const config& part,
 	SDL_Rect dstrect;
 
 	if(!background.null()) {
-		dstrect.x = screen.x()/2 - background->w/2;
-		dstrect.y = screen.y()/2 - background->h/2;
+		dstrect.x = video.getx()/2 - background->w/2;
+		dstrect.y = video.gety()/2 - background->h/2;
 		dstrect.w = background->w;
 		dstrect.h = background->h;
 
-		if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
-			dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
+		if(dstrect.y + dstrect.h > video.gety() - min_room_at_bottom) {
+			dstrect.y = maximum<int>(0,video.gety() - dstrect.h - min_room_at_bottom);
 		}
 
-		SDL_BlitSurface(background,NULL,screen.video().getSurface(),&dstrect);
+		SDL_BlitSurface(background,NULL,video.getSurface(),&dstrect);
 
 #ifdef USE_TINY_GUI
 		textx = 10;
-		int xbuttons = screen.x() - 50;
+		int xbuttons = video.getx() - 50;
 #else
 		textx = dstrect.x;
 		int xbuttons = dstrect.x+dstrect.w-40;
@@ -131,21 +131,21 @@ bool show_intro_part(display& screen, const config& part,
 		next_button.set_location(xbuttons,dstrect.y+dstrect.h+20);
 		skip_button.set_location(xbuttons,dstrect.y+dstrect.h+70);
 	} else {
-		next_button.set_location(screen.x()-200,screen.y()-150);
-		skip_button.set_location(screen.x()-200,screen.y()-100);
+		next_button.set_location(video.getx()-200,video.gety()-150);
+		skip_button.set_location(video.getx()-200,video.gety()-100);
 	}
 
 	//draw title if needed
 	if(show_title) {
-		const SDL_Rect area = {0,0,screen.x(),screen.y()};
+		const SDL_Rect area = {0,0,video.getx(),video.gety()};
 		const SDL_Rect scenario_size =
 		      font::draw_text(NULL,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,0,0);
-		update_rect(font::draw_text(&screen.video(),area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
+		update_rect(font::draw_text(&video,area,font::SIZE_XLARGE,font::NORMAL_COLOUR,scenario,
 					    dstrect.x,dstrect.y - scenario_size.h - 4));
 	}
 
 	update_whole_screen();
-	screen.video().flip();
+	video.flip();
 
 	if(!background.null()) {
 		//draw images
@@ -178,7 +178,7 @@ bool show_intro_part(display& screen, const config& part,
 			image_rect.w = img->w;
 			image_rect.h = img->h;
 
-			SDL_BlitSurface(img,NULL,screen.video().getSurface(),&image_rect);
+			SDL_BlitSurface(img,NULL,video.getSurface(),&image_rect);
 
 			update_rect(image_rect);
 
@@ -203,7 +203,7 @@ bool show_intro_part(display& screen, const config& part,
 						continue;
 					}
 
-					screen.video().flip();
+					video.flip();
 				}
 			}
 
@@ -257,7 +257,7 @@ bool show_intro_part(display& screen, const config& part,
 			// FIXME: this is broken: it does not take kerning into account.
 			std::string tmp;
 			tmp.append(itor.substr().first, itor.substr().second);
-			const SDL_Rect rect = font::draw_text(&screen.video(),
+			const SDL_Rect rect = font::draw_text(&video,
 					screen_area(),font::SIZE_PLUS,
 					font::NORMAL_COLOUR,tmp,xpos,ypos,
 					false);
@@ -291,25 +291,25 @@ bool show_intro_part(display& screen, const config& part,
 		events::pump();
 		events::raise_process_event();
 		events::raise_draw_event();
-		screen.video().flip();
+		video.flip();
 
 		if(!skip || itor == utils::utf8_iterator::end(story))
 			SDL_Delay(20);
 	}
 	
-	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
-                                     screen.video().getSurface());
+	gui::draw_solid_tinted_rectangle(0,0,video.getx()-1,video.gety()-1,0,0,0,1.0,
+                                     video.getSurface());
 
 	return true;
 }
 
-void the_end(CVideo& screen)
+void the_end(CVideo& video)
 {
 	SDL_Rect area = screen_area();
-	SDL_FillRect(screen.getSurface(),&area,0);
+	SDL_FillRect(video.getSurface(),&area,0);
 
 	update_whole_screen();
-	screen.flip();
+	video.flip();
 
 	const std::string text = _("The End");
 	const size_t font_size = font::SIZE_XLARGE;
@@ -320,11 +320,11 @@ void the_end(CVideo& screen)
 
 	for(size_t n = 0; n < 255; n += 5) {
 		const SDL_Color col = {n,n,n,n};
-		font::draw_text(&screen,area,font_size,col,text,area.x,area.y);
+		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
-		screen.flip();
+		video.flip();
 
-		SDL_FillRect(screen.getSurface(),&area,0);
+		SDL_FillRect(video.getSurface(),&area,0);
 
 		SDL_Delay(10);
 	}

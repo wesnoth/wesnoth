@@ -40,7 +40,7 @@ public:
 	/// \param d the display object
 	/// \param pane the widget where wheel events take place
 	/// \param callback a callback interface for warning that the grip has been moved
-	scrollpane(display &d);
+	scrollpane(CVideo &video);
 
 	virtual void set_location(SDL_Rect const &rect);
 

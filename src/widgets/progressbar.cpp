@@ -8,7 +8,7 @@
 
 namespace gui {
 
-progress_bar::progress_bar(display& disp) : widget(disp), progress_(0)
+progress_bar::progress_bar(CVideo& video) : widget(video), progress_(0)
 {}
 
 void progress_bar::set_progress_percent(int progress)

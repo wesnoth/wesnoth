@@ -31,7 +31,7 @@ public:
 	/// \param d the display object
 	/// \param pane the widget where wheel events take place
 	/// \param callback a callback interface for warning that the grip has been moved
-	scrollbar(display &d);
+	scrollbar(CVideo &video);
 
 	virtual void hide(bool value = true);
 

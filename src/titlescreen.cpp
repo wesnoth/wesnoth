@@ -213,21 +213,21 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
-		buttons.push_back(button(screen,sgettext(button_labels[b])));
+		buttons.push_back(button(screen.video(),sgettext(button_labels[b])));
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2};
 	std::string style = "mainmenu";
-	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen,&style);
+	draw_dialog_frame(main_dialog_area.x,main_dialog_area.y,main_dialog_area.w,main_dialog_area.h,screen.video(),&style);
 
 	for(b = 0; b != nbuttons; ++b) {
 		buttons[b].set_width(max_width);
 		buttons[b].set_location(menu_xbase + b*menu_xincr, menu_ybase + b*menu_yincr);
 	}
 
-	gui::button next_tip_button(screen,_("More"),button::TYPE_PRESS,"lite_small");
+	gui::button next_tip_button(screen.video(),_("More"),button::TYPE_PRESS,"lite_small");
 
 	if(tips_of_day.empty()) {
 		tips_of_day = get_tips_of_day();
@@ -253,7 +253,7 @@ TITLE_RESULT show_title(display& screen, config& tips_of_day, int* ntip)
 
 		next_tip_button.set_location(area.x+area.w-next_tip_button.location().w - pad,area.y+area.h - pad - next_tip_button.location().h);
 
-		draw_dialog_frame(area.x,area.y,area.w,area.h,screen,&style);
+		draw_dialog_frame(area.x,area.y,area.w,area.h,screen.video(),&style);
 
 		font::draw_text(&screen.video(),area,font::SIZE_NORMAL,font::NORMAL_COLOUR,tip_of_day,area.x+pad,area.y+pad);
 		font::draw_text(&screen.video(), area, font::SIZE_NORMAL, font::NORMAL_COLOUR,

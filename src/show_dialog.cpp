@@ -24,6 +24,7 @@
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
+#include "key.hpp"
 #include "log.hpp"
 #include "playlevel.hpp"
 #include "show_dialog.hpp"
@@ -86,7 +87,7 @@ dialog_manager::~dialog_manager()
 	SDL_PushEvent(&pb_event);
 }
 
-void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::string* dialog_style, surface_restorer* restorer)
+void draw_dialog_frame(int x, int y, int w, int h, CVideo &video, const std::string* dialog_style, surface_restorer* restorer)
 {
 	if(dialog_style == NULL) {
 		static const std::string default_style("menu");
@@ -102,13 +103,13 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 
 	if(have_border && restorer != NULL) {
 		const SDL_Rect rect = {x-top->h,y-left->w,w+left->w+right->w,h+top->h+bot->h};
-		*restorer = surface_restorer(&disp.video(),rect);
+		*restorer = surface_restorer(&video,rect);
 	} else if(restorer != NULL) {
 		const SDL_Rect rect = {x,y,w,h};
-		*restorer = surface_restorer(&disp.video(),rect);
+		*restorer = surface_restorer(&video,rect);
 	}
 
-	draw_dialog_background(x,y,w,h,disp,*dialog_style);
+	draw_dialog_background(x,y,w,h,video,*dialog_style);
 
 	if(have_border == false) {
 		return;
@@ -117,25 +118,25 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 	surface top_image(scale_surface(top,w,top->h));
 
 	if(top_image != NULL) {
-		disp.video().blit_surface(x,y-top->h,top_image);
+		video.blit_surface(x,y-top->h,top_image);
 	}
 
 	surface bot_image(scale_surface(bot,w,bot->h));
 
 	if(bot_image != NULL) {
-		disp.video().blit_surface(x,y+h,bot_image);
+		video.blit_surface(x,y+h,bot_image);
 	}
 
 	surface left_image(scale_surface(left,left->w,h));
 
 	if(left_image != NULL) {
-		disp.video().blit_surface(x-left->w,y,left_image);
+		video.blit_surface(x-left->w,y,left_image);
 	}
 
 	surface right_image(scale_surface(right,right->w,h));
 
 	if(right_image != NULL) {
-		disp.video().blit_surface(x+w,y,right_image);
+		video.blit_surface(x+w,y,right_image);
 	}
 
 	update_rect(x-left->w,y-top->h,w+left->w+right->w,h+top->h+bot->h);
@@ -148,13 +149,13 @@ void draw_dialog_frame(int x, int y, int w, int h, display& disp, const std::str
 		return;
 	}
 
-	disp.video().blit_surface(x-top_left->w,y-top_left->h,top_left);
-	disp.video().blit_surface(x-bot_left->w,y+h,bot_left);
-	disp.video().blit_surface(x+w,y-top_right->h,top_right);
-	disp.video().blit_surface(x+w,y+h,bot_right);
+	video.blit_surface(x-top_left->w,y-top_left->h,top_left);
+	video.blit_surface(x-bot_left->w,y+h,bot_left);
+	video.blit_surface(x+w,y-top_right->h,top_right);
+	video.blit_surface(x+w,y+h,bot_right);
 }
 
-void draw_dialog_background(int x, int y, int w, int h, display& disp, const std::string& style)
+void draw_dialog_background(int x, int y, int w, int h, CVideo &video, const std::string& style)
 {
 	const std::string menu_background = "misc/" + style + "-background.png";
 
@@ -164,7 +165,7 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 		return;
 	}
 
-	const SDL_Rect& screen_bounds = disp.screen_area();
+	const SDL_Rect& screen_bounds = screen_area();
 	if(x < 0) {
 		w += x;
 		x = 0;
@@ -199,23 +200,21 @@ void draw_dialog_background(int x, int y, int w, int h, display& disp, const std
 			SDL_Rect dst = src;
 			dst.x = x + i;
 			dst.y = y + j;
-			SDL_BlitSurface(bg,&src,disp.video().getSurface(),&dst);
+			SDL_BlitSurface(bg,&src,video.getSurface(),&dst);
 		}
 	}
 }
 
-SDL_Rect draw_dialog_title(int x, int y, CVideo* disp, const std::string& text)
+SDL_Rect draw_dialog_title(int x, int y, CVideo* video, const std::string& text)
 {
 	SDL_Rect rect = {0,0,10000,10000};
-	if(disp != NULL) {
-		rect = screen_area();
-	}
+	rect = screen_area();
 
-	return font::draw_text(disp, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
+	return font::draw_text(video, rect, font::SIZE_LARGE, font::TITLE_COLOUR,
 	                       text, x, y + 5, false, TTF_STYLE_BOLD);
 }
 
-void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& title,
+void draw_dialog(int x, int y, int w, int h, CVideo &video, const std::string& title,
 				 const std::string* style, std::vector<button*>* buttons,
 				 surface_restorer* restorer, button* help_button)
 {
@@ -254,10 +253,10 @@ void draw_dialog(int x, int y, int w, int h, display& disp, const std::string& t
 
 	buttons_area.x += xpos + width;
 
-	draw_dialog_frame(xpos,ypos,width,height,disp,style,restorer);
+	draw_dialog_frame(xpos,ypos,width,height,video,style,restorer);
 
 	if (!title.empty()) {
-	  draw_dialog_title(x + border_size, y - title_area.h, &disp.video(), title);
+		draw_dialog_title(x + border_size, y - title_area.h, &video, title);
 	}
 
 	if(buttons != NULL) {
@@ -435,7 +434,7 @@ int show_dialog(display& disp, surface image,
 	const bool editable_textbox = use_textbox && std::find(text_widget_text->begin(),text_widget_text->end(),'\n') == text_widget_text->end();
 	static const std::string default_text_string = "";
 	const unsigned int text_box_width = 350;
-	textbox text_widget(disp,text_box_width,
+	textbox text_widget(screen,text_box_width,
 	                    use_textbox ? *text_widget_text : default_text_string, editable_textbox, text_widget_max_chars);
 
 	int text_widget_width = 0;
@@ -446,13 +445,13 @@ int show_dialog(display& disp, surface image,
 
 		const SDL_Rect& area = font::text_area(*text_widget_text,message_font_size);
 
-		text_widget.set_width(minimum<size_t>(disp.x()/2,maximum<size_t>(area.w,text_widget.location().w)));
-		text_widget.set_height(minimum<size_t>(disp.y()/2,maximum<size_t>(area.h,text_widget.location().h)));
+		text_widget.set_width(minimum<size_t>(screen.getx()/2,maximum<size_t>(area.w,text_widget.location().w)));
+		text_widget.set_height(minimum<size_t>(screen.gety()/2,maximum<size_t>(area.h,text_widget.location().h)));
 		text_widget_width = font::text_area(text_widget_label,message_font_size).w + text_widget.location().w;;
 		text_widget_height = text_widget.location().h + message_font_size;
 	}
 
-	menu menu_(disp,menu_items,type == MESSAGE);
+	menu menu_(screen,menu_items,type == MESSAGE);
 
 	menu_.set_numeric_keypress_selection(use_textbox == false);
 
@@ -520,7 +519,7 @@ int show_dialog(display& disp, surface image,
 	if(button_list != NULL) {
 		try {
 			while((*button_list)[0] != '\0') {
-				buttons.push_back(button(disp,gettext(*button_list)));
+				buttons.push_back(button(screen,gettext(*button_list)));
 
 				++button_list;
 			}
@@ -537,7 +536,7 @@ int show_dialog(display& disp, surface image,
 	std::vector<button> check_buttons;
 	if(options != NULL) {
 		for(std::vector<check_item>::const_iterator i = options->begin(); i != options->end(); ++i) {
-			button check_button(disp,i->label,button::TYPE_CHECK);
+			button check_button(screen,i->label,button::TYPE_CHECK);
 			check_button_height += check_button.height() + button_height_padding;
 			check_button_width = maximum<int>(check_button.width(),check_button_width);
 
@@ -547,7 +546,7 @@ int show_dialog(display& disp, surface image,
 
 	if(action_buttons != NULL) {
 		for(std::vector<dialog_button>::const_iterator i = action_buttons->begin(); i != action_buttons->end(); ++i) {
-			button new_button(disp,i->label);
+			button new_button(screen,i->label);
 			check_button_height += new_button.height() + button_height_padding;
 			check_button_width = maximum<int>(new_button.width(),check_button_width);
 
@@ -648,10 +647,10 @@ int show_dialog(display& disp, surface image,
 
 	surface_restorer restorer;
 
-	button help_button(disp,_("Help"));
+	button help_button(screen,_("Help"));
 
 	const std::string& title = image == NULL ? caption : "";
-	draw_dialog(xframe,yframe,frame_width,frame_height,disp,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
+	draw_dialog(xframe,yframe,frame_width,frame_height,screen,title,dialog_style,&buttons_ptr,&restorer,help_topic.empty() ? NULL : &help_button);
 
 	//calculate the positions of the preview panes to the sides of the dialog
 	if(preview_panes != NULL) {
@@ -696,7 +695,7 @@ int show_dialog(display& disp, surface image,
 		                         text_widget_width - text_widget.location().w,
 		                         text_widget_y_unpadded);
 		events::raise_draw_event();
-		font::draw_text(&disp.video(), clipRect, message_font_size,
+		font::draw_text(&screen, clipRect, message_font_size,
 		                font::NORMAL_COLOUR, text_widget_label,
 						xloc + left_padding,text_widget_y_unpadded);
 	}
@@ -711,15 +710,15 @@ int show_dialog(display& disp, surface image,
 		const int x = xloc + left_padding;
 		const int y = yloc + top_padding;
 
-		disp.video().blit_surface(x,y,image);
+		screen.blit_surface(x,y,image);
 
-		font::draw_text(&disp.video(), clipRect, caption_font_size,
+		font::draw_text(&screen, clipRect, caption_font_size,
 		                font::NORMAL_COLOUR, caption,
 		                xloc+image_width+left_padding+image_h_padding,
 		                yloc+top_padding);
 	}
 
-	font::draw_text(&disp.video(), clipRect, message_font_size,
+	font::draw_text(&screen, clipRect, message_font_size,
 	                font::NORMAL_COLOUR, message,
 	                xloc+image_width+left_padding+image_h_padding,
 	                yloc+top_padding+caption_size.h);
@@ -895,7 +894,7 @@ int show_dialog(display& disp, surface image,
 			}
 		}
 
-		disp.video().flip();
+		screen.flip();
 		SDL_Delay(10);
 
 		if(action != NULL) {

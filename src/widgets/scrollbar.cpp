@@ -15,7 +15,6 @@
 #include "../global.hpp"
 
 #include "scrollbar.hpp"
-#include "../display.hpp"
 #include "../image.hpp"
 #include "../video.hpp"
 
@@ -39,10 +38,10 @@ namespace {
 
 namespace gui {
 
-scrollbar::scrollbar(display &d)
-	: widget(d), mid_scaled_(NULL), groove_scaled_(NULL),
-	  uparrow_(d, "", button::TYPE_TURBO, "uparrow-button"),
-	  downarrow_(d, "", button::TYPE_TURBO, "downarrow-button"),
+scrollbar::scrollbar(CVideo &video)
+	: widget(video), mid_scaled_(NULL), groove_scaled_(NULL),
+	  uparrow_(video, "", button::TYPE_TURBO, "uparrow-button"),
+	  downarrow_(video, "", button::TYPE_TURBO, "downarrow-button"),
 	  state_(NORMAL),
 	  grip_position_(0), grip_height_(0), full_height_(0), scroll_rate_(1)
 {

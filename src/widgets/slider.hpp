@@ -26,7 +26,7 @@ namespace gui {
 class slider : public widget
 {
 public:
-	slider(display& d);
+	slider(CVideo &video);
 
 	void set_min(int value);
 	void set_max(int value);

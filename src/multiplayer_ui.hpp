@@ -13,13 +13,15 @@
 #ifndef MULTIPLAYER_UI_HPP_INCLUDED
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
-#include "widgets/textbox.hpp"
+class display;
+
+#include "config.hpp"
+#include "hotkeys.hpp"
+#include "network.hpp"
+#include "preferences.hpp"
 #include "widgets/button.hpp"
 #include "widgets/menu.hpp"
-#include "network.hpp"
-#include "config.hpp"
-#include "preferences.hpp"
-#include "hotkeys.hpp"
+#include "widgets/textbox.hpp"
 
 #include <deque>
 #include <string>
@@ -84,6 +86,9 @@ protected:
 	int yscale(int y) const;
 
 	SDL_Rect client_area() const;
+
+	display& disp_;
+	display& disp() { return disp_; };
 
 	// Returns the main game config, as defined by loading the preprocessed
 	// WML files. Children of this class may need this to obtain, for

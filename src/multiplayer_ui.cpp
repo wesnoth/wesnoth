@@ -91,7 +91,8 @@ std::string chat::format_message(const msg& message)
 }
 
 ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
-	gui::widget(disp),
+	gui::widget(disp.video()),
+	disp_(disp),
 
 	hotkey_handler_(&disp),
 	disp_manager_(&disp),
@@ -100,9 +101,9 @@ ui::ui(display& disp, const config& cfg, chat& c, config& gamelist) :
 	chat_(c),
 	gamelist_(gamelist),
 
-	chat_textbox_(disp, 100, "", false),
-	entry_textbox_(disp, 100),
-	users_menu_(disp, std::vector<std::string>()),
+	chat_textbox_(disp.video(), 100, "", false),
+	entry_textbox_(disp.video(), 100),
+	users_menu_(disp.video(), std::vector<std::string>()),
 
 	result_(CONTINUE)
 {
@@ -176,10 +177,10 @@ void ui::draw_contents()
 	hide_children();
 
 	surface background(image::get_image("misc/lobby.png",image::UNSCALED));
-	background = scale_surface(background, disp().x(), disp().y());
+	background = scale_surface(background, video().getx(), video().gety());
 	if(background == NULL) 
 		return;
-	SDL_BlitSurface(background, NULL, disp().video().getSurface(), NULL);
+	SDL_BlitSurface(background, NULL, video().getSurface(), NULL);
 	update_whole_screen();
 
 	hide_children(false);

@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 
-class display;
 
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
@@ -18,7 +17,7 @@ namespace gui {
 class menu : public scrollarea
 {
 public:
-	menu(display& disp, const std::vector<std::string>& items,
+	menu(CVideo& video, const std::vector<std::string>& items,
 	     bool click_selects=false, int max_height=-1, int max_width=-1);
 
 	int selection() const;

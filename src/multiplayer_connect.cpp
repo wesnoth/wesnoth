@@ -47,16 +47,16 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	index_(index),
 
-	player_number_(parent.disp(), lexical_cast_default<std::string>(index+1, ""),
+	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
 			font::SIZE_XLARGE, font::GOOD_COLOUR),
 	combo_controller_(parent.disp(), parent.player_types_),
-	orig_controller_(parent.disp(), cfg["description"], font::SIZE_SMALL), 
+	orig_controller_(parent.video(), cfg["description"], font::SIZE_SMALL), 
 	combo_faction_(parent.disp(), parent.player_factions_),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
 	combo_colour_(parent.disp(), parent.player_colours_),
-	slider_gold_(parent.disp()),
-	label_gold_(parent.disp(), "100", font::SIZE_NORMAL, font::GOOD_COLOUR),
+	slider_gold_(parent.video()),
+	label_gold_(parent.video(), "100", font::SIZE_NORMAL, font::GOOD_COLOUR),
 
 	llm_(parent.era_sides_, &parent.game_data_, &combo_leader_),
 
@@ -454,20 +454,20 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	team_prefix_(std::string(_("Team")) + " "),
 
-	waiting_label_(disp, ""),
+	waiting_label_(video(), ""),
 	message_full_(false),
 	default_controller_(default_controller),
 
-	scroll_pane_(disp),
-	type_title_label_(disp, _("Player/Type"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	faction_title_label_(disp, _("Faction"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	team_title_label_(disp, _("Team"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	colour_title_label_(disp, _("Color"), font::SIZE_NORMAL, font::GOOD_COLOUR),
-	gold_title_label_(disp, _("Gold"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	scroll_pane_(video()),
+	type_title_label_(video(), _("Player/Type"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	faction_title_label_(video(), _("Faction"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	team_title_label_(video(), _("Team"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	colour_title_label_(video(), _("Color"), font::SIZE_NORMAL, font::GOOD_COLOUR),
+	gold_title_label_(video(), _("Gold"), font::SIZE_NORMAL, font::GOOD_COLOUR),
 
-	ai_(disp, _("Computer vs Computer")),
-	launch_(disp, _("I'm Ready")),
-	cancel_(disp, _("Cancel"))
+	ai_(video(), _("Computer vs Computer")),
+	launch_(video(), _("I'm Ready")),
+	cancel_(video(), _("Cancel"))
 {
 	// Send Initial information
 	config response;

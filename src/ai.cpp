@@ -27,7 +27,6 @@
 #include "playturn.hpp"
 #include "preferences.hpp"
 #include "replay.hpp"
-#include "show_dialog.hpp"
 #include "statistics.hpp"
 #include "unit_display.hpp"
 #include "util.hpp"

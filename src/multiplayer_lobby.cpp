@@ -24,11 +24,11 @@ namespace mp {
 lobby::lobby(display& disp, const config& cfg, chat& c, config& gamelist) :
 	mp::ui(disp, cfg, c, gamelist),
 
-	observe_game_(disp, _("Observe Game")),
-	join_game_(disp, _("Join Game")),
-	create_game_(disp, _("Create Game")),
-	quit_game_(disp, _("Quit")),
-	games_menu_(disp, std::vector<std::string>()),
+	observe_game_(disp.video(), _("Observe Game")),
+	join_game_(disp.video(), _("Join Game")),
+	create_game_(disp.video(), _("Create Game")),
+	quit_game_(disp.video(), _("Quit")),
+	games_menu_(disp.video(), std::vector<std::string>()),
 	current_game_(0)
 {
 	gamelist_updated();

@@ -14,8 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-class display;
-
+#include "../display.hpp"
 #include "../events.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
@@ -35,12 +34,13 @@ namespace {
 namespace gui {
 
 file_chooser::file_chooser(display &disp, std::string start_file) 
-	: widget(disp), delete_button_(disp, _("Delete File")),
+	: widget(disp.video()), delete_button_(disp.video(), _("Delete File")),
 	  path_delim_('/'), current_dir_(get_path(start_file)),
-	  chosen_file_(start_file), file_list_(disp, files_in_current_dir_, false),
-	  filename_textbox_(disp, 100, start_file, true),
-	  current_path_label_(disp, current_dir_), choice_made_(false),
-	  last_selection_(-1) {
+	  chosen_file_(start_file), file_list_(disp.video(), files_in_current_dir_, false),
+	  filename_textbox_(disp.video(), 100, start_file, true),
+	  current_path_label_(disp.video(), current_dir_), choice_made_(false),
+	  last_selection_(-1), disp_(disp)
+{
 	// If the start file is not a file or directory, use the root.
 	if(!file_exists(chosen_file_) && !is_directory(chosen_file_)
 	   || !is_directory(current_dir_)) {
@@ -128,7 +128,7 @@ void file_chooser::process_event() {
 	if (delete_button_.pressed()) {
 		const int ret = remove(get_current_file().c_str());
 		if (ret == -1) {
-			show_dialog(disp(), NULL, "", _("Deletion of the file failed."), OK_ONLY);
+			show_dialog(disp_, NULL, "", _("Deletion of the file failed."), OK_ONLY);
 		}
 		else {
 			update_file_lists();

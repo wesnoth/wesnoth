@@ -966,7 +966,7 @@ bool game_controller::new_campaign()
 
 	int res = 0;
 
-	dialogs::campaign_preview_pane campaign_preview(disp(),&campaign_desc);
+	dialogs::campaign_preview_pane campaign_preview(disp().video(),&campaign_desc);
 	std::vector<gui::preview_pane*> preview_panes;
 	preview_panes.push_back(&campaign_preview);
 
@@ -1430,7 +1430,7 @@ void game_controller::play_game(RELOAD_GAME_DATA reload)
 		const LEVEL_RESULT result = ::play_game(disp(),state_,game_config_,units_data_,video_);
 		if(result == VICTORY) {
 			the_end(disp().video());
-			about::show_about(disp());
+			about::show_about(disp().video());
 		}
 	} catch(gamestatus::load_game_exception& e) {
 
@@ -1672,7 +1672,7 @@ int play_game(int argc, char** argv)
 			game.disp().redraw_everything();
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
-			about::show_about(game.disp());
+			about::show_about(game.disp().video());
 			continue;
 		}
 		

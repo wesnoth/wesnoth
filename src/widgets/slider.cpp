@@ -14,7 +14,6 @@
 #include "../global.hpp"
 
 #include "slider.hpp"
-#include "../display.hpp"
 #include "../image.hpp"
 #include "../video.hpp"
 
@@ -28,8 +27,8 @@ namespace {
 
 namespace gui {
 
-slider::slider(display& d)
-	: widget(d), image_(image::get_image(slider_image, image::UNSCALED)),
+slider::slider(CVideo &video)
+	: widget(video), image_(image::get_image(slider_image, image::UNSCALED)),
 	  highlightedImage_(image::get_image(selected_image, image::UNSCALED)),
 	  min_(-100000), max_(100000), value_(0), 
 	  increment_(1), state_(NORMAL)

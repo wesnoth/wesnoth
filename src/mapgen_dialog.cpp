@@ -66,20 +66,22 @@ void default_map_generator::user_config(display& disp)
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
+	CVideo& screen = disp.video();
+
 	const int width = 600;
 	const int height = 400;
-	const int xpos = disp.x()/2 - width/2;
-	int ypos = disp.y()/2 - height/2;
+	const int xpos = screen.getx()/2 - width/2;
+	int ypos = screen.gety()/2 - height/2;
 
 	surface_restorer restorer;
 
-	gui::button close_button(disp,_("Close Window"));
+	gui::button close_button(screen,_("Close Window"));
 	std::vector<gui::button*> buttons(1,&close_button);
 
-	gui::draw_dialog(xpos,ypos,width,height,disp,_("Map Generator"),NULL,&buttons,&restorer);
+	gui::draw_dialog(xpos,ypos,width,height,screen,_("Map Generator"),NULL,&buttons,&restorer);
 
 	SDL_Rect dialog_rect = {xpos,ypos,width,height};
-	surface_restorer dialog_restorer(&disp.video(),dialog_rect);
+	surface_restorer dialog_restorer(&screen,dialog_rect);
 
 	const std::string& players_label = _("Players:");
 	const std::string& width_label = _("Width:");
@@ -126,7 +128,7 @@ void default_map_generator::user_config(display& disp)
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - horz_margin - right_space;
 	SDL_Rect slider_rect = { slider_left,players_rect.y,slider_right-slider_left,players_rect.h};
-	gui::slider players_slider(disp);
+	gui::slider players_slider(screen);
 	players_slider.set_location(slider_rect);
 	players_slider.set_min(2);
 	players_slider.set_max(max_players);
@@ -138,14 +140,14 @@ void default_map_generator::user_config(display& disp)
 	const int extra_size_per_player = 2;
 	
 	slider_rect.y = width_rect.y;
-	gui::slider width_slider(disp);
+	gui::slider width_slider(screen);
 	width_slider.set_location(slider_rect);
 	width_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	width_slider.set_max(max_width);
 	width_slider.set_value(width_);
 
 	slider_rect.y = height_rect.y;
-	gui::slider height_slider(disp);
+	gui::slider height_slider(screen);
 	height_slider.set_location(slider_rect);
 	height_slider.set_min(min_width+(players_slider.value()-2)*extra_size_per_player);
 	height_slider.set_max(max_height);
@@ -155,7 +157,7 @@ void default_map_generator::user_config(display& disp)
 	const int max_iterations = 3000;
 
 	slider_rect.y = iterations_rect.y;
-	gui::slider iterations_slider(disp);
+	gui::slider iterations_slider(screen);
 	iterations_slider.set_location(slider_rect);
 	iterations_slider.set_min(min_iterations);
 	iterations_slider.set_max(max_iterations);
@@ -165,7 +167,7 @@ void default_map_generator::user_config(display& disp)
 	const int max_hillsize = 50;
 
 	slider_rect.y = hillsize_rect.y;
-	gui::slider hillsize_slider(disp);
+	gui::slider hillsize_slider(screen);
 	hillsize_slider.set_location(slider_rect);
 	hillsize_slider.set_min(min_hillsize);
 	hillsize_slider.set_max(max_hillsize);
@@ -175,7 +177,7 @@ void default_map_generator::user_config(display& disp)
 	const int max_villages = 50;
 
 	slider_rect.y = villages_rect.y;
-	gui::slider villages_slider(disp);
+	gui::slider villages_slider(screen);
 	villages_slider.set_location(slider_rect);
 	villages_slider.set_min(min_villages);
 	villages_slider.set_max(max_villages);
@@ -184,7 +186,7 @@ void default_map_generator::user_config(display& disp)
 	const int min_landform = 0;
 	const int max_landform = int(max_island);
 	slider_rect.y = landform_rect.y;
-	gui::slider landform_slider(disp);
+	gui::slider landform_slider(screen);
 	landform_slider.set_location(slider_rect);
 	landform_slider.set_min(min_landform);
 	landform_slider.set_max(max_landform);
@@ -193,7 +195,7 @@ void default_map_generator::user_config(display& disp)
 	SDL_Rect link_rect = slider_rect;
 	link_rect.y = link_rect.y + link_rect.h + vertical_margin;
 
-	gui::button link_castles(disp,_("Roads Between Castles"),gui::button::TYPE_CHECK);
+	gui::button link_castles(screen,_("Roads Between Castles"),gui::button::TYPE_CHECK);
 	link_castles.set_check(link_castles_);
 	link_castles.set_location(link_rect);
 
@@ -226,37 +228,37 @@ void default_map_generator::user_config(display& disp)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
 
 		std::stringstream players_str;
 		players_str << nplayers_;
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_str.str(),
 		                slider_right+horz_margin,players_rect.y);
 
 		std::stringstream width_str;
 		width_str << width_;
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_str.str(),
 		                slider_right+horz_margin,width_rect.y);
 
 		std::stringstream height_str;
 		height_str << height_;
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_str.str(),
 		                slider_right+horz_margin,height_rect.y);
 		
 		std::stringstream villages_str;
 		villages_str << nvillages_ << _("/1000 tiles");
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
 		std::stringstream landform_str;
 		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
-		font::draw_text(&disp.video(),screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 
 		update_rect(xpos,ypos,width,height);

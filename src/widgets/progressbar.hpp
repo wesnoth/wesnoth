@@ -8,7 +8,7 @@ namespace gui {
 class progress_bar : public widget
 {
 public:
-	progress_bar(display& disp);
+	progress_bar(CVideo& video);
 
 	void set_progress_percent(int progress);
 

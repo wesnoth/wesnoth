@@ -15,6 +15,7 @@
 
 #include "combo.hpp"
 #include "button.hpp"
+#include "../display.hpp"
 #include "../show_dialog.hpp"
 #include "../video.hpp"
 
@@ -25,8 +26,8 @@ const int horizontal_padding = 10;
 const int vertical_padding = 10;
 
 combo::combo(display& disp, const std::vector<std::string>& items)
-	: button(disp, items.empty() ? "" : items[0]),
-	  items_(items), selected_(0), oldSelected_(0)
+	: button(disp.video(), items.empty() ? "" : items[0]),
+	  items_(items), selected_(0), oldSelected_(0), disp_(&disp)
 {
 }
 
@@ -76,7 +77,7 @@ void combo::process_event()
 	if (!pressed())
 		return;
 	SDL_Rect const &loc = location();
-	set_selected_internal(gui::show_dialog(disp(), NULL, "", "", gui::MESSAGE, &items_,
+	set_selected_internal(gui::show_dialog(*disp_, NULL, "", "", gui::MESSAGE, &items_,
 	                                       NULL, "", NULL, -1, NULL, NULL, loc.x, loc.y + loc.h));
 }
 

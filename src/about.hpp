@@ -14,7 +14,7 @@
 #ifndef ABOUT_H_INCLUDED
 #define ABOUT_H_INCLUDED
 
-class display;
+class CVideo;
 
 #include <vector>
 #include <string>
@@ -22,7 +22,7 @@ class display;
 namespace about
 {
 
-void show_about(display& disp);
+void show_about(CVideo &video);
 std::vector<std::string> get_text();
 
 }

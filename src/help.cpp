@@ -161,7 +161,7 @@ struct create_section {
 /// navigated through and chosen.
 class help_menu : public gui::menu {
 public:
-	help_menu(display& disp, const section &toplevel, int max_height=-1);
+	help_menu(CVideo &video, const section &toplevel, int max_height=-1);
 	int process();
 
 	/// Make the topic the currently selected one, and expand all
@@ -235,7 +235,7 @@ struct parse_error {
 /// The area where the content is shown in the help browser.
 class help_text_area : public gui::scrollarea {
 public:
-	help_text_area(display &disp, const section &toplevel);
+	help_text_area(CVideo &video, const section &toplevel);
 	/// Display the topic.
 	void show_topic(const topic &t);
 
@@ -1450,8 +1450,8 @@ void section::clear() {
 	sections.clear();
 }
 
-help_menu::help_menu(display &disp, section const &toplevel, int max_height)
-	: gui::menu(disp, empty_string_vector, false, max_height),
+help_menu::help_menu(CVideo &video, section const &toplevel, int max_height)
+	: gui::menu(video, empty_string_vector, false, max_height),
 	  toplevel_(toplevel), chosen_topic_(NULL), selected_item_(&toplevel, "") {
 	update_visible_items(toplevel_);
 	display_visible_items();
@@ -1609,8 +1609,8 @@ bool help_menu::visible_item::operator==(const visible_item &vis_item) const {
 	return t == vis_item.t && sec == vis_item.sec;
 }
 
-help_text_area::help_text_area(display &disp, const section &toplevel)
-	: gui::scrollarea(disp), toplevel_(toplevel), shown_topic_(NULL),
+help_text_area::help_text_area(CVideo &video, const section &toplevel)
+	: gui::scrollarea(video), toplevel_(toplevel), shown_topic_(NULL),
 	  title_spacing_(16), curr_loc_(0, 0),
 	  min_row_height_(font::get_max_height(normal_font_size)), curr_row_height_(min_row_height_),
 	  contents_height_(0)
@@ -2066,7 +2066,7 @@ int help_text_area::get_remaining_width() {
 void help_text_area::draw_contents() {
 	SDL_Rect const &loc = inner_location();
 	bg_restore();
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 	clip_rect_setter clip_rect_set(screen, loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
 		SDL_Rect dst = it->rect;
@@ -2118,10 +2118,10 @@ std::string help_text_area::ref_at(const int x, const int y) {
 
 
 help_browser::help_browser(display &disp, const section &toplevel)
-	: gui::widget(disp), disp_(disp), menu_(disp, toplevel),
-	  text_area_(disp, toplevel), toplevel_(toplevel), ref_cursor_(false),
-	  back_button_(disp, _("< Back"), gui::button::TYPE_PRESS),
-	  forward_button_(disp, _("Forward >"), gui::button::TYPE_PRESS),
+	: gui::widget(disp.video()), disp_(disp), menu_(disp.video(), toplevel),
+	  text_area_(disp.video(), toplevel), toplevel_(toplevel), ref_cursor_(false),
+	  back_button_(disp.video(), _("< Back"), gui::button::TYPE_PRESS),
+	  forward_button_(disp.video(), _("Forward >"), gui::button::TYPE_PRESS),
 	  shown_topic_(NULL) {
 	// Hide the buttons at first since we do not have any forward or
 	// back topics at this point. They will be unhidden when history
@@ -2581,10 +2581,10 @@ void show_help(display &disp, const section &toplevel_sec, const std::string sho
 		yloc = scr->h / 2 - height / 2; 
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(disp, _("Close"));
+	gui::button close_button_(disp.video(), _("Close"));
 	buttons_ptr.push_back(&close_button_);
 	surface_restorer restorer;
-	gui::draw_dialog(xloc, yloc, width, height, disp, _("The Battle for Wesnoth Help"),
+	gui::draw_dialog(xloc, yloc, width, height, disp.video(), _("The Battle for Wesnoth Help"),
 					 NULL, &buttons_ptr, &restorer);
 
 	if (preferences::encountered_units().size() != last_num_encountered_units

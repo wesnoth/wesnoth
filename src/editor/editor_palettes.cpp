@@ -34,9 +34,9 @@ bool is_invalid_terrain(char c) {
 
 terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 const gamemap &map)
-	: gui::widget(gui), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
-	  top_button_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
-	  bot_button_(gui, "", gui::button::TYPE_PRESS, "downarrow-button") {
+	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), tstart_(0), map_(map),
+	  top_button_(gui.video(), "", gui::button::TYPE_PRESS, "uparrow-button"),
+	  bot_button_(gui.video(), "", gui::button::TYPE_PRESS, "downarrow-button") {
 	terrains_ = map_.get_terrain_list();
 	terrains_.erase(std::remove_if(terrains_.begin(), terrains_.end(), is_invalid_terrain),
 					terrains_.end());
@@ -330,7 +330,7 @@ void terrain_palette::update_report() {
 // }
 
 brush_bar::brush_bar(display &gui, const size_specs &sizes)
-	: gui::widget(gui), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
+	: gui::widget(gui.video()), size_specs_(sizes), gui_(gui), selected_(0), total_brush_(3),
 	  size_(30) {
 	adjust_size();
 }

@@ -23,8 +23,6 @@
 #include <vector>
 #include <string>
 
-class display;
-
 namespace gui {
 
 class button : public widget
@@ -36,7 +34,7 @@ public:
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
-	button(display& disp, const std::string& label, TYPE type=TYPE_PRESS,
+	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE);
 
 	virtual ~button() {}

@@ -37,7 +37,7 @@ namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
 		const config::child_list& side_list) :
-	gui::preview_pane(disp),
+	gui::preview_pane(disp.video()),
 	side_list_(side_list),
 	leader_combo_(disp, std::vector<std::string>()), 
 	leaders_(side_list, data, &leader_combo_),
@@ -57,7 +57,7 @@ void wait::leader_preview_pane::draw_contents()
 {
 	bg_restore();
 
-	surface const screen = disp().video().getSurface();
+	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = { loc.x + leader_pane_border, loc.y + leader_pane_border,
@@ -108,10 +108,10 @@ void wait::leader_preview_pane::draw_contents()
 			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
 		}
 
-		font::draw_text(&disp().video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
-		const SDL_Rect leader_rect = font::draw_text(&disp().video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 80, area.y + 30);
+		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Leader: "),area.x, area.y + 80);
-		font::draw_wrapped_text(&disp().video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
 				_("Recruits: ") + recruit_string.str(),area.x, area.y + 102,
 				area.w);
 
@@ -144,9 +144,9 @@ std::string wait::leader_preview_pane::get_selected_leader()
 wait::wait(display& disp, const config& cfg, const game_data& data, mp::chat& c, config& gamelist) :
 	ui(disp, cfg, c, gamelist),
 
-	cancel_button_(disp, _("Cancel")),
-	start_label_(disp, _("Waiting for game to start...")),
-	game_menu_(disp, std::vector<std::string>()),
+	cancel_button_(disp.video(), _("Cancel")),
+	start_label_(disp.video(), _("Waiting for game to start...")),
+	game_menu_(disp.video(), std::vector<std::string>()),
 
 	game_data_(data),
 	stop_updates_(false)

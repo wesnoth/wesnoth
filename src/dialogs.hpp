@@ -65,8 +65,8 @@ class unit_preview_pane : public gui::preview_pane
 public:
 	enum TYPE { SHOW_ALL, SHOW_BASIC };
 
-	unit_preview_pane(display& disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
-	unit_preview_pane(display& disp, const gamemap* map, const std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(display &disp, const gamemap* map, const unit& u, TYPE type=SHOW_ALL, bool left_side=true);
+	unit_preview_pane(display &disp, const gamemap* map, const std::vector<unit>& units, TYPE type=SHOW_ALL, bool left_side=true);
 
 	bool show_above() const;
 	bool left_side() const;
@@ -83,15 +83,16 @@ private:
 	int index_;
 	bool left_;
 	bool weapons_;
+	display& disp_;
 };
 
-void show_unit_description(display& disp, const unit& u);
+void show_unit_description(display &disp, const unit& u);
 
 
 class campaign_preview_pane : public gui::preview_pane
 {
 public:
-	campaign_preview_pane(display& disp,std::vector<std::pair<std::string,std::string> >* descriptions);
+	campaign_preview_pane(CVideo &video,std::vector<std::pair<std::string,std::string> >* descriptions);
 
 	bool show_above() const;
 	bool left_side() const;

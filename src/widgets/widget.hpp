@@ -10,7 +10,6 @@
 #include <vector>
 
 class CVideo;
-class display;
 
 namespace gui {
 
@@ -54,7 +53,7 @@ public:
 
 protected:
 	widget(widget const &o);
-	widget(display& disp);
+	widget(CVideo& video);
 	virtual ~widget();
 
 	// During each relocation, this function should be called to register
@@ -65,8 +64,7 @@ protected:
 	void bg_update();
 	void bg_cancel();
 
-	display& disp() const { return *disp_; }
-	CVideo& video() const;
+	CVideo& video() const { return *video_; };
 
 	virtual void handle_event(SDL_Event const &event) {}
 
@@ -78,7 +76,7 @@ private:
 	void volatile_draw();
 	void volatile_undraw();
 
-	display* disp_;
+	CVideo* video_;
 	std::vector< surface_restorer > restorer_;
 	SDL_Rect rect_;
 	bool focus_;		// Should user input be ignored?
