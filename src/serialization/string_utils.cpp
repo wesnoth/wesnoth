@@ -327,10 +327,6 @@ int byte_size_from_utf8_first(unsigned char ch)
 	return count;
 }
 
-utf8_iterator::utf8_iterator() :
-	current_char(0)
-{
-}
 utf8_iterator::utf8_iterator(const std::string& str)
 {
 	current_substr.first = str.begin();
@@ -338,25 +334,24 @@ utf8_iterator::utf8_iterator(const std::string& str)
 	update();
 }
 
-utf8_iterator::utf8_iterator(std::string::const_iterator beg, std::string::const_iterator end) 
+utf8_iterator::utf8_iterator(std::string::const_iterator const &beg, std::string::const_iterator const &end)
 {
 	current_substr.first = beg;
 	string_end = end;
 	update();
 }
 
-utf8_iterator utf8_iterator::end(const std::string& str)
+utf8_iterator utf8_iterator::begin(std::string const &str)
 {
-	utf8_iterator res;
-
-	res.current_char = 0;
-	res.current_substr.first = str.end();
-	res.string_end = str.end();
-
-	return res;
+	return utf8_iterator(str.begin(), str.end());
 }
 
-bool utf8_iterator::operator==(const utf8_iterator& a)
+utf8_iterator utf8_iterator::end(const std::string& str)
+{
+	return utf8_iterator(str.end(), str.end());
+}
+
+bool utf8_iterator::operator==(const utf8_iterator& a) const
 {
 	return current_substr.first == a.current_substr.first;
 }
@@ -365,16 +360,15 @@ utf8_iterator& utf8_iterator::operator++()
 {
 	current_substr.first = current_substr.second;
 	update();
-
 	return *this;
 }
 
-wchar_t utf8_iterator::operator*()
+wchar_t utf8_iterator::operator*() const
 {
 	return current_char;
 }
 
-const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_iterator::substr()
+const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_iterator::substr() const
 {
 	return current_substr;
 }

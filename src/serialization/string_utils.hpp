@@ -68,17 +68,17 @@ public:
 	typedef wchar_t* pointer;
 	typedef wchar_t& reference;
 
-	utf8_iterator();
 	utf8_iterator(const std::string& str);
-	utf8_iterator(std::string::const_iterator begin, std::string::const_iterator end);
+	utf8_iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
 
+	static utf8_iterator begin(const std::string& str);
 	static utf8_iterator end(const std::string& str);
 
-	bool operator==(const utf8_iterator& a);
-	bool operator!=(const utf8_iterator& a) { return ! (*this == a); }
+	bool operator==(const utf8_iterator& a) const;
+	bool operator!=(const utf8_iterator& a) const { return ! (*this == a); }
 	utf8_iterator& operator++();
-	wchar_t operator*();
-	const std::pair<std::string::const_iterator, std::string::const_iterator>& substr();
+	wchar_t operator*() const;
+	const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
 private:
 	void update();
 

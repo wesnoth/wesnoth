@@ -98,13 +98,16 @@ std::vector<subset_id> font_map;
 std::vector<text_chunk> split_text(std::string const & utf8_text) {
 	text_chunk current_chunk(0);
 	std::vector<text_chunk> chunks;
-	
+
+	if (utf8_text.empty())
+		return chunks;
+
 	try {
 		utils::utf8_iterator ch(utf8_text);
 		if(*ch < font_map.size() && font_map[*ch] >= 0) {
 			current_chunk.subset = font_map[*ch];
 		}
-		for(; ch != utils::utf8_iterator::end(utf8_text); ++ch) {
+		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch) {
 			if(*ch < font_map.size() && font_map[*ch] >= 0 && font_map[*ch] != current_chunk.subset) {
 				//null-terminate ucs2_text so we can pass it to SDL_ttf later
 				current_chunk.ucs2_text.push_back(0);
