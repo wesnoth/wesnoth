@@ -565,9 +565,18 @@ void team::refog()
 
 bool team::knows_about_team(size_t index) const
 {
-	if(this == &((*teams)[index])) return true;
-	bool shroud = !uses_shroud() || (*teams)[index].uses_shroud() && (*teams)[index].share_maps();
-	bool fog = !uses_fog() || (*teams)[index].uses_fog() && (*teams)[index].share_vision();	
+	const team& t = (*teams)[index];
+	//We know about our team
+	if(this == &t) return true;
+	/*
+	We ask two questions to determine if we know this team:
+	1) can we see this team through the shroud?
+	2) can we see this team through the fog?
+	If both answers are "yes" then we know about this team.
+	If we aren't using fog or shroud, the answer to that question is automatically
+	*/
+	bool shroud = !uses_shroud() || !is_enemy(index+1) && t.uses_shroud() && t.share_maps();
+	bool fog = !uses_fog() || !is_enemy(index+1) && t.uses_fog() && t.share_vision();
 	return shroud && fog;
 }
 
