@@ -51,6 +51,7 @@ std::string new_map_dialog(display& disp, gamemap::TERRAIN fill_terrain,
 {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
+	const gui::dialog_manager dialog_mgr;
 
 	int map_width(40), map_height(40);
 	const int width = 600;
@@ -388,6 +389,7 @@ std::pair<unsigned, unsigned>
 resize_dialog(display &disp, const unsigned curr_w, const unsigned curr_h) {
 	const events::resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
+	const gui::dialog_manager dialog_mgr;
 
 	int map_width(curr_w), map_height(curr_h);
 	const int width = 600;
