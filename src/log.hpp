@@ -13,56 +13,47 @@
 #ifndef LOG_HPP_INCLUDED
 #define LOG_HPP_INCLUDED
 
-#define LOG_DATA
-
-#ifdef LOG_DATA
-
-#include <iostream>
+#include <iosfwd>
 #include <string>
 
-#include "SDL.h"
+namespace lg {
 
-struct scope_logger
-{
-	scope_logger(const std::string& str) : ticks_(SDL_GetTicks()), str_(str) {
-		do_indent();
-		std::cerr << "BEGIN: " << str_ << "\n";
-		do_indent();
-		++indent;
-	}
+class logger;
 
-	~scope_logger() {
-		const int ticks = SDL_GetTicks() - ticks_;
-		--indent;
-		do_indent();
-		do_indent();
-		std::cerr << "END: " << str_ << " (took " << ticks << "ms)\n";
-	}
-
-	void do_indent()
-	{
-		for(int i = 0; i != indent; ++i)
-			std::cerr << "  ";
-	}
-
-private:
-	int ticks_;
-	std::string str_;
-	static int indent;
+class log_domain {
+	int domain_;
+public:
+	log_domain(char const *name);
+	friend class logger;
 };
 
-#define log_data0(a) std::cerr << a << "\n";
-#define log_data1(a,b) std::cerr << a << " info: " << b << "\n";
-#define log_data2(a,b,c) std::cerr << a << " info: " << b << ", " << c << "\n";
+bool set_log_domain_severity(std::string const &name, int severity);
 
-#define log_scope(a) scope_logger scope_logging_object__(a);
+class logger {
+	char const *name_;
+	int severity_;
+public:
+	logger(char const *name, int severity): name_(name), severity_(severity) {}
+	std::ostream &operator()(log_domain const &domain, bool show_names = true);
+};
 
-#else
-#define log_data0(a)
-#define log_data1(a,b)
-#define log_data2(a,b,c)
+extern logger err, warn, info;
+extern log_domain general;
 
-#define log_scope(a)
-#endif
+class scope_logger
+{
+	int ticks_;
+	std::string str_;
+	std::ostream &output_;
+public:
+	scope_logger(log_domain const &domain, std::string const &str);
+	~scope_logger();
+	void do_indent();
+};
+
+} // namespace lg
+
+#define log_scope(a) lg::scope_logger scope_logging_object__(lg::general, a);
+#define log_scope2(a,b) lg::scope_logger scope_logging_object__(lg::a, b);
 
 #endif
