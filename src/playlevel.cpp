@@ -325,7 +325,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		LOG_NG << "Adding recruitable units: \n";
 		for (std::set<std::string>::const_iterator it = recruitable.begin();
 			 it != recruitable.end(); it++) {
-			std::cout << *it << std::endl;
+			LOG_NG << *it << std::endl;
 		}
 		LOG_NG << "Added all recruitable units\n";
 		std::copy(recruitable.begin(), recruitable.end(), 
