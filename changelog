@@ -1,15 +1,15 @@
-CVS HEAD::
+Version 0.6.99.3:
  * data compression for network games
  * tutorial objectives added
  * more unit graphics and animations
  * made it possible to recruit on any keep tile, not just a starting keeps
  * added orcishfoot (orcs, goblins) and changed orcish units previously using smallfoot to use it, "orcs" are now faster on hills and mountains
- * mountainfoot (dwarves) made a bit less slow on forest
+ * mountainfoot (dwarves) made a bit faster on forest
  * mountainfoot village and castle defense increased
  * undeadfoot (undead) made faster on swamp
  * undeadfoot swamp defense increased 
  * undeadfoot can now move on mountain, though very slow
- * woodland (elves) made a bit less slow on mountains
+ * woodland (elves) made a bit faster on mountains
  * new units:
    * Outlaw
    * Bandit
@@ -24,12 +24,16 @@ CVS HEAD::
  * updated translations:
    * french
  * improved castle placement on random maps
+ * added 'new turn' event
+ * added 'side turn' event
  * fixed healing units that had full hitpoints (#7574)
  * fixed problem where [hide_unit] still displays unit's hitpoint bar
  * fixed unit names being different in networked multiplayer games
  * fixed bug where temporary items were lost on level up or when saving and reloading the game
- * attempt to fix hitpoint bars not displaying properly on OSX
- * attempt to fix crash wit too-large dialogs
+ * fixed bug which caused dialogs that extended past screen boundaries to crash program
+ * fixed bug where unterminated #define would crash the game
+ * fixed "Two Delfadors" bug
+ * attempt to fix hitpoint bars not displaying properly on Mac OS X
  * relocated images under misc/: flamesword, holywater, sceptreoffire, staff
 
 Version 0.6.99.2:
