@@ -141,15 +141,13 @@ int play_game(int argc, char** argv)
 	defines_map["NORMAL"] = "";
 	std::vector<line_source> line_src;
 
-	const std::string& game_cfg = preprocess_file("data/game.cfg",&defines_map,
+	std::string game_cfg = preprocess_file("data/game.cfg",&defines_map,
 	                                              &line_src);
 
 	config game_config(game_cfg,&line_src);
 
-	for(std::vector<line_source>::const_iterator ls = line_src.begin();
-	    ls != line_src.end(); ++ls) {
-		std::cerr << ls->linenum << ": " << ls->file << " " << ls->fileline << "\n";
-	}
+	//clear game_cfg so it doesn't take up memory
+	std::string().swap(game_cfg);
 
 	const std::vector<config*>& units = game_config.children["units"];
 	if(units.empty()) {
@@ -190,6 +188,8 @@ int play_game(int argc, char** argv)
 	std::cerr << "checking mode possible...\n";
 	const int bpp = video.modePossible(resolution.first,resolution.second,
 	                                   16,video_flags);
+
+	std::cerr << bpp << "\n";
 
 	if(bpp == 0) {
 		std::cerr << "The required video mode, " << resolution.first

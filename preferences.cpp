@@ -93,8 +93,8 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find("yresolution");
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		return std::pair<int,int>(atoi(x->second.c_str()),
-		                          atoi(y->second.c_str()));
+		return std::pair<int,int>(maximum(atoi(x->second.c_str()),1024),
+		                          maximum(atoi(y->second.c_str()),768));
 	} else {
 		return std::pair<int,int>(1024,768);
 	}
