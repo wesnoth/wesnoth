@@ -225,6 +225,9 @@ void unit_die(display& disp, const gamemap::location& loc, const unit& u)
 
 		disp.update_display();
 	}
+
+	disp.draw_tile(loc.x,loc.y,NULL,0.0);
+	disp.update_display();
 }
 
 namespace {
