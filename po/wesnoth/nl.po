@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-15 20:43+0100\n"
+"POT-Creation-Date: 2005-01-21 00:15+0100\n"
 "PO-Revision-Date: 2004-10-19 20:28-0000\n"
 "Last-Translator: Pieter Vermeylen <pitoe@iname.com>\n"
 "Language-Team: none\n"
@@ -45,7 +45,7 @@ msgstr "Inleiding"
 msgid "Gameplay"
 msgstr "Gameplay"
 
-#: data/help.cfg:22 data/help.cfg:209
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2096
 msgid "Traits"
 msgstr "Trekken"
 
@@ -842,7 +842,7 @@ msgid "Default"
 msgstr "Standaard"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
-#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:667
+#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:673
 #, fuzzy
 msgid "Random"
 msgstr "Willekeurige kaart"
@@ -2003,10 +2003,9 @@ msgstr "Diep Water"
 msgid "Shallow Water"
 msgstr "Ondiep Water"
 
-#: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:139
-#: data/terrain.cfg:148 data/terrain.cfg:159 data/terrain.cfg:170
-#: data/terrain.cfg:183 data/terrain.cfg:194 data/terrain.cfg:213
-#: data/terrain.cfg:278 src/reports.cpp:306
+#: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:164
+#: data/terrain.cfg:173 data/terrain.cfg:184 data/terrain.cfg:195
+#: data/terrain.cfg:208 data/terrain.cfg:359 src/reports.cpp:306
 msgid "Village"
 msgstr "Dorp"
 
@@ -2022,66 +2021,107 @@ msgstr "IJs"
 msgid "Bridge"
 msgstr "Brug"
 
-#: data/terrain.cfg:105
+#: data/terrain.cfg:106 data/terrain.cfg:115
 msgid "Sand"
 msgstr "Zand"
 
-#: data/terrain.cfg:114
+#: data/terrain.cfg:123 data/terrain.cfg:131
 msgid "Road"
 msgstr "Weg"
 
-#: data/terrain.cfg:122
+#: data/terrain.cfg:139
 msgid "Dirt"
 msgstr "Vuil"
 
-#: data/terrain.cfg:132
+#: data/terrain.cfg:149
 msgid "Grassland"
 msgstr "Grasland"
 
-#: data/terrain.cfg:205
+#: data/terrain.cfg:156
+msgid "Savanna"
+msgstr ""
+
+#: data/terrain.cfg:218 data/terrain.cfg:229
+#, fuzzy
+msgid "Desert Village"
+msgstr "Dorp"
+
+#: data/terrain.cfg:240
+msgid "Tropical Forest Village"
+msgstr ""
+
+#: data/terrain.cfg:251
+msgid "Oasis"
+msgstr ""
+
+#: data/terrain.cfg:262
 #, fuzzy
 msgid "Snow"
 msgstr "Shaduw"
 
-#: data/terrain.cfg:224 data/terrain.cfg:231
+#: data/terrain.cfg:270
+#, fuzzy
+msgid "Snow Village"
+msgstr "Dorp"
+
+#: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Heuvels"
 
-#: data/terrain.cfg:240
+#: data/terrain.cfg:288 data/terrain.cfg:297
+#, fuzzy
+msgid "Desert Hills"
+msgstr "Verwijder Bestand"
+
+#: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Bergen"
 
-#: data/terrain.cfg:247 data/terrain.cfg:255
+#: data/terrain.cfg:312
+#, fuzzy
+msgid "Desert Mountains"
+msgstr "Bergen"
+
+#: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Bos"
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:328
+#, fuzzy
+msgid "Snow Forest"
+msgstr "Bos"
+
+#: data/terrain.cfg:336
+msgid "Tropical Forest"
+msgstr ""
+
+#: data/terrain.cfg:344
 #, fuzzy
 msgid "Cave wall"
 msgstr "Grotwand"
 
-#: data/terrain.cfg:271
+#: data/terrain.cfg:352
 msgid "Cave"
 msgstr "Grot"
 
-#: data/terrain.cfg:288 data/terrain.cfg:348
+#: data/terrain.cfg:369 data/terrain.cfg:429
 msgid "Castle"
 msgstr "Kasteel"
 
-#: data/terrain.cfg:297
+#: data/terrain.cfg:378
 msgid "Encampment"
 msgstr "Kamp"
 
-#: data/terrain.cfg:307
+#: data/terrain.cfg:388
 #, fuzzy
 msgid "Dwarven castle"
 msgstr "Woestenij der Dwergen"
 
-#: data/terrain.cfg:317
+#: data/terrain.cfg:398
 msgid "Keep"
 msgstr "Donjon"
 
-#: data/terrain.cfg:337
+#: data/terrain.cfg:418
 #, fuzzy
 msgid "Canyon"
 msgstr "geen"
@@ -2917,7 +2957,7 @@ msgstr "magie"
 #: data/units/Mage.cfg:39 data/units/Mage.cfg:106
 #: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
 #: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:35
-#: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:35
+#: data/units/Mermaid_Initiate.cfg:37 data/units/Mermaid_Priestess.cfg:35
 #: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:37
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
 #: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:112
@@ -2981,8 +3021,8 @@ msgstr "verpletter"
 #: data/units/Horse_Lord.cfg:44 data/units/Iron_Mauler.cfg:20
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
 #: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:24
-#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:24
-#: data/units/Mermaid_Initiate.cfg:33 data/units/Mermaid_Priestess.cfg:25
+#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:21
+#: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:25
 #: data/units/Mermaid_Siren.cfg:24 data/units/Mermaid_Siren.cfg:35
 #: data/units/Merman_Entangler.cfg:27 data/units/Merman_Netcaster.cfg:27
 #: data/units/Mounted_Captain.cfg:47 data/units/Mounted_Commander.cfg:47
@@ -3027,7 +3067,7 @@ msgstr ""
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
 #: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:100
 #: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:23
-#: data/units/Mermaid_Initiate.cfg:23 data/units/Mermaid_Priestess.cfg:24
+#: data/units/Mermaid_Initiate.cfg:20 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Orcish_Shaman.cfg:19
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
 #: data/units/Saurian_Icecaster.cfg:22 data/units/Saurian_Soothsayer.cfg:22
@@ -3392,7 +3432,7 @@ msgstr "boog"
 #: data/units/Knight.cfg:37 data/units/Lancer.cfg:21
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:33
-#: data/units/Merman.cfg:20 data/units/Merman_Entangler.cfg:19
+#: data/units/Merman.cfg:23 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:19 data/units/Merman_Hunter.cfg:27
 #: data/units/Merman_Javelineer.cfg:19 data/units/Merman_Javelineer.cfg:27
@@ -3417,7 +3457,7 @@ msgstr "boog"
 #: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:26
 #: data/units/Soul_Shooter.cfg:39 data/units/Spearman.cfg:20
 #: data/units/Spearman.cfg:34 data/units/Transport_Galleon.cfg:17
-#: data/units/Trapper.cfg:42 data/units/Triton.cfg:23
+#: data/units/Trapper.cfg:42 data/units/Triton.cfg:26
 #: data/units/Vampire_Lady.cfg:35 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
 msgid "pierce"
@@ -4686,11 +4726,12 @@ msgid "Ghost"
 msgstr "Spook"
 
 #: data/units/Ghost.cfg:16
+#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
-"leaving a corpse behind. Not limited by physical bodies, these undead can "
-"fly swiftly towards their victims. Even as its ectoplasm matter can cross "
-"physical things it does not too fast nor too deeply."
+"leaving a corpse behind. Although their non-corporeal form allows them great "
+"freedom of movement and protection from physical attacks, ghosts cannot "
+"easily cross running water."
 msgstr ""
 "Spoken zijn de zielen van strijders die eeuwen geleden in pijn en angst "
 "stierven zonder een lichaam achter te laten. Niet gehinderd door een lichaam "
@@ -5218,7 +5259,7 @@ msgid "female^Mermaid Enchantress"
 msgstr "Tovenares"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
-#: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
+#: data/units/Merman.cfg:19 data/units/Merman_Entangler.cfg:15
 #: data/units/Merman_Fighter.cfg:19 data/units/Merman_Hunter.cfg:15
 #: data/units/Merman_Javelineer.cfg:15 data/units/Merman_Netcaster.cfg:15
 #: data/units/Merman_Spearman.cfg:15
@@ -5229,7 +5270,7 @@ msgstr ""
 "De meermannen, die handige schepsels van de zee zijn snel en krachtig in "
 "elke aquatische omgeving maar kunnen amper bewegen op het land."
 
-#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:31
+#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
 #: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
 msgid "water spray"
 msgstr "waterstraal"
@@ -5238,7 +5279,7 @@ msgstr "waterstraal"
 msgid "female^Mermaid Initiate"
 msgstr ""
 
-#: data/units/Mermaid_Initiate.cfg:20
+#: data/units/Mermaid_Initiate.cfg:17
 msgid ""
 "Young Mermaids are often initiated in the water magics of their people.  "
 "Despite their frailty, this makes them formidable opponents, as they can "
@@ -5266,14 +5307,14 @@ msgstr "vuur"
 msgid "naiad touch"
 msgstr "feeënstreel"
 
-#: data/units/Merman.cfg:3
+#: data/units/Merman.cfg:6
 msgid "Merman"
 msgstr "Meerman"
 
-#: data/units/Merman.cfg:19 data/units/Merman_Fighter.cfg:22
+#: data/units/Merman.cfg:22 data/units/Merman_Fighter.cfg:22
 #: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Triton.cfg:22
 #: data/units/Merman_Triton.cfg:34 data/units/Merman_Warrior.cfg:22
-#: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:22
+#: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:25
 msgid "trident"
 msgstr "drietand"
 
@@ -5324,7 +5365,7 @@ msgstr "Speerman"
 msgid "Merman Triton"
 msgstr "+Duitse Vertaling"
 
-#: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
+#: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:22
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
@@ -6407,7 +6448,7 @@ msgstr ""
 "Valzetters voorzien bandieten en briganten van voedsel. Hun jachtervaring "
 "maakt hen vooral 's nachts en in bossen en moerassen waardevol."
 
-#: data/units/Triton.cfg:3
+#: data/units/Triton.cfg:6
 msgid "Triton"
 msgstr "Triton"
 
@@ -6737,90 +6778,95 @@ msgstr "+Internationaliseringsmanager"
 msgid "+Basque Translation"
 msgstr "+Baskische Vertaling"
 
-#: src/about.cpp:150
+#: src/about.cpp:151
 #, fuzzy
 msgid "+Bulgarian Translation"
 msgstr "+Hongaarse Vertaling"
 
-#: src/about.cpp:154
+#: src/about.cpp:155
 msgid "+Catalan Translation"
 msgstr "Catalaanse Vertaling"
 
-#: src/about.cpp:161
+#: src/about.cpp:163
 msgid "+Czech Translation"
 msgstr "+Tchechische Vertaling"
 
-#: src/about.cpp:170
+#: src/about.cpp:172
 msgid "+Danish Translation"
 msgstr "+Deense Vertaling"
 
-#: src/about.cpp:175
+#: src/about.cpp:177
 msgid "+Dutch Translation"
 msgstr "+Nederlandse Vertaling"
 
-#: src/about.cpp:180
+#: src/about.cpp:182
 msgid "+Finnish Translation"
 msgstr "+Finse Vertaling"
 
-#: src/about.cpp:184
+#: src/about.cpp:186
 msgid "+French Translation"
 msgstr "+Franse Vertaling"
 
-#: src/about.cpp:196
+#: src/about.cpp:198
 msgid "+German Translation"
 msgstr "+Duitse Vertaling"
 
-#: src/about.cpp:207
+#: src/about.cpp:209
 msgid "+Greek Translation"
 msgstr "+Griekse Vertaling"
 
-#: src/about.cpp:212
+#: src/about.cpp:214
 msgid "+Hungarian Translation"
 msgstr "+Hongaarse Vertaling"
 
-#: src/about.cpp:221
+#: src/about.cpp:223
 msgid "+Italian Translation"
 msgstr "+Italiaanse Vertaling"
 
-#: src/about.cpp:230
+#: src/about.cpp:232
+#, fuzzy
+msgid "+Latin Translation"
+msgstr "Catalaanse Vertaling"
+
+#: src/about.cpp:236
 msgid "+Norwegian Translation"
 msgstr "+Noorse Vertaling"
 
-#: src/about.cpp:236
+#: src/about.cpp:242
 msgid "+Polish Translation"
 msgstr "+Poolse Vertaling"
 
-#: src/about.cpp:242
+#: src/about.cpp:248
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugese (Brazilië) Vertaling"
 
-#: src/about.cpp:250
+#: src/about.cpp:256
 #, fuzzy
 msgid "+Russian Translation"
 msgstr "+Hongaarse Vertaling"
 
-#: src/about.cpp:256
+#: src/about.cpp:262
 msgid "+Slovak Translation"
 msgstr "+Slovaakse Vertaling"
 
-#: src/about.cpp:260
+#: src/about.cpp:266
 msgid "+Spanish Translation"
 msgstr "+Spaanse Vertaling"
 
-#: src/about.cpp:268
+#: src/about.cpp:274
 msgid "+Swedish Translation"
 msgstr "+Zweedse Vertaling"
 
-#: src/about.cpp:275
+#: src/about.cpp:281
 msgid "+Contributors"
 msgstr "+Bijdragers"
 
-#: src/about.cpp:279
+#: src/about.cpp:285
 #, fuzzy
 msgid "+Bots"
 msgstr "+Bots"
 
-#: src/about.cpp:315 src/help.cpp:2568 src/show_dialog.cpp:509
+#: src/about.cpp:321 src/help.cpp:2568 src/show_dialog.cpp:509
 msgid "Close"
 msgstr "Sluit"
 
@@ -7053,7 +7099,7 @@ msgid "level"
 msgstr "rang"
 
 #: src/dialogs.cpp:678 src/display.cpp:962 src/help.cpp:1061
-#: src/playturn.cpp:2096 src/unit.cpp:1094
+#: src/playturn.cpp:2097 src/unit.cpp:1094
 msgid "Moves"
 msgstr "Stappen"
 
@@ -7107,7 +7153,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Strijd om Wesnoth"
 
-#: src/game.cpp:826 src/multiplayer_connect.cpp:103
+#: src/game.cpp:826 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7245,7 +7291,7 @@ msgstr ""
 "veldtocht."
 
 #: src/game.cpp:1160 src/game.cpp:1199 src/game.cpp:1224
-#: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:322
+#: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr "Connectie timed out"
 
@@ -7301,7 +7347,7 @@ msgstr "Mens vs AI"
 msgid "Play a game against AI opponents"
 msgstr ""
 
-#: src/game.cpp:1249 src/multiplayer_client.cpp:306
+#: src/game.cpp:1249 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr "Login"
 
@@ -7444,7 +7490,7 @@ msgstr "Overslaan"
 msgid "The End"
 msgstr "Einde"
 
-#: src/language.cpp:34 src/language.cpp:150
+#: src/language.cpp:34 src/language.cpp:151
 msgid "System default language"
 msgstr "Standaardtaal Systeem"
 
@@ -7543,8 +7589,8 @@ msgstr "Observeerders"
 msgid "Allow users who are not playing to watch the game"
 msgstr "Sta spelers die het spel niet spelen toe om het spel te bekijken."
 
-#: src/multiplayer.cpp:126 src/multiplayer_client.cpp:154
-#: src/multiplayer_connect.cpp:51 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
+#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:497
 #: src/show_dialog.cpp:503
 msgid "Cancel"
 msgstr "Annuleer"
@@ -7573,7 +7619,7 @@ msgstr "Deel Kaarten"
 msgid "Share None"
 msgstr "Deel Niets"
 
-#: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:181
+#: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:186
 msgid "No multiplayer sides."
 msgstr "Geen multiplayer kanten."
 
@@ -7645,85 +7691,85 @@ msgstr "Opgelet"
 msgid "Receiving game list..."
 msgstr "Bezig spellijst op te halen..."
 
-#: src/multiplayer_client.cpp:129 src/playturn.cpp:1761
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1761
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Goud"
 
-#: src/multiplayer_client.cpp:148
+#: src/multiplayer_client.cpp:154
 msgid "Waiting for game to start..."
 msgstr "Aan het wachten op de start van het spel..."
 
-#: src/multiplayer_client.cpp:256
+#: src/multiplayer_client.cpp:261
 msgid "Connect to Host"
 msgstr "Verbind met Server"
 
-#: src/multiplayer_client.cpp:258
+#: src/multiplayer_client.cpp:263
 msgid "Choose host to connect to"
 msgstr "Kies host om mee te verbinden"
 
-#: src/multiplayer_client.cpp:276
+#: src/multiplayer_client.cpp:281
 msgid "Connecting to remote host..."
 msgstr "Bezig met verbinding maken met remote host..."
 
-#: src/multiplayer_client.cpp:305
+#: src/multiplayer_client.cpp:310
 msgid "You must log in to this server"
 msgstr "Je moet op deze server inloggen"
 
-#: src/multiplayer_client.cpp:385
+#: src/multiplayer_client.cpp:390
 msgid "Getting game data..."
 msgstr "Bezig met ophalen data..."
 
-#: src/multiplayer_client.cpp:437
+#: src/multiplayer_client.cpp:442
 msgid "There are no available sides in this game."
 msgstr "Er zijn geen beschikbare kanten in dit spel."
 
-#: src/multiplayer_client.cpp:485
+#: src/multiplayer_client.cpp:490
 msgid "Choose your side:"
 msgstr "Kies je kant:"
 
-#: src/multiplayer_client.cpp:516
+#: src/multiplayer_client.cpp:522
 msgid "The game has been cancelled"
 msgstr "Het spel werd geannuleerd"
 
-#: src/multiplayer_client.cpp:520
+#: src/multiplayer_client.cpp:526
 msgid "The side you have chosen is no longer available"
 msgstr "De kant die je gekozen hebt is niet langer beschikbaar"
 
-#: src/multiplayer_client.cpp:556
+#: src/multiplayer_client.cpp:562
 msgid "Show replay of game up to save point?"
 msgstr "Toon opgenomen spel tot het moment van opslaan?"
 
-#: src/multiplayer_client.cpp:692 src/multiplayer_client.cpp:695
+#: src/multiplayer_client.cpp:700 src/multiplayer_client.cpp:703
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:779
+#: src/multiplayer_client.cpp:788
 msgid "Leader: "
 msgstr "Leider:"
 
-#: src/multiplayer_client.cpp:781
+#: src/multiplayer_client.cpp:790
 msgid "Recruits: "
 msgstr "Rekruten:"
 
-#: src/multiplayer_connect.cpp:49
+#: src/multiplayer_connect.cpp:54
 msgid " Computer vs Computer "
 msgstr "Computer vs Computer"
 
-#: src/multiplayer_connect.cpp:50
+#: src/multiplayer_connect.cpp:55
 msgid "I'm Ready"
 msgstr "Klaar!"
 
-#: src/multiplayer_connect.cpp:54 src/multiplayer_connect.cpp:393
-#: src/multiplayer_connect.cpp:396
+#: src/multiplayer_connect.cpp:59 src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:405
 msgid "Team"
 msgstr "Team"
 
-#: src/multiplayer_connect.cpp:96
+#: src/multiplayer_connect.cpp:101
 msgid "This is not a multiplayer save"
 msgstr "Dit is geen multiplayer opgeslagen spel."
 
-#: src/multiplayer_connect.cpp:246
+#: src/multiplayer_connect.cpp:254
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -7731,81 +7777,81 @@ msgstr ""
 "Overwinning\n"
 "@Veslag vijandige leider(s)"
 
-#: src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:274
 msgid "Network Player"
 msgstr "Netwerk Speler"
 
-#: src/multiplayer_connect.cpp:267
+#: src/multiplayer_connect.cpp:275
 msgid "Local Player"
 msgstr "Lokale Speler"
 
-#: src/multiplayer_connect.cpp:268 src/multiplayer_connect.cpp:546
-#: src/multiplayer_connect.cpp:640 src/multiplayer_connect.cpp:737
+#: src/multiplayer_connect.cpp:276 src/multiplayer_connect.cpp:554
+#: src/multiplayer_connect.cpp:648 src/multiplayer_connect.cpp:742
 msgid "Computer Player"
 msgstr "Computer Speler"
 
-#: src/multiplayer_connect.cpp:269
+#: src/multiplayer_connect.cpp:277
 msgid "Empty"
 msgstr "Leeg"
 
-#: src/multiplayer_connect.cpp:316
+#: src/multiplayer_connect.cpp:325
 msgid "Red"
 msgstr "Rood"
 
-#: src/multiplayer_connect.cpp:318
+#: src/multiplayer_connect.cpp:327
 msgid "Blue"
 msgstr "Blauw"
 
-#: src/multiplayer_connect.cpp:320
+#: src/multiplayer_connect.cpp:329
 msgid "Green"
 msgstr "Groen"
 
-#: src/multiplayer_connect.cpp:322
+#: src/multiplayer_connect.cpp:331
 msgid "Yellow"
 msgstr "Geel"
 
-#: src/multiplayer_connect.cpp:324
+#: src/multiplayer_connect.cpp:333
 msgid "Purple"
 msgstr "Paars"
 
-#: src/multiplayer_connect.cpp:326
+#: src/multiplayer_connect.cpp:335
 msgid "Orange"
 msgstr "Oranje"
 
-#: src/multiplayer_connect.cpp:328
+#: src/multiplayer_connect.cpp:337
 msgid "Grey"
 msgstr "Grijs"
 
-#: src/multiplayer_connect.cpp:330
+#: src/multiplayer_connect.cpp:339
 msgid "White"
 msgstr "Wit"
 
-#: src/multiplayer_connect.cpp:332
+#: src/multiplayer_connect.cpp:341
 msgid "Brown"
 msgstr "Bruin"
 
-#: src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:391
 msgid "Game Lobby"
 msgstr "Spel Lobby"
 
-#: src/multiplayer_connect.cpp:385 src/multiplayer_connect.cpp:387
+#: src/multiplayer_connect.cpp:394 src/multiplayer_connect.cpp:396
 msgid "Player/Type"
 msgstr "Spele/Type"
 
-#: src/multiplayer_connect.cpp:388 src/multiplayer_connect.cpp:391
+#: src/multiplayer_connect.cpp:397 src/multiplayer_connect.cpp:400
 msgid "Faction"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:398 src/multiplayer_connect.cpp:401
+#: src/multiplayer_connect.cpp:407 src/multiplayer_connect.cpp:410
 msgid "Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:403 src/multiplayer_connect.cpp:405
+#: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
 #: src/playlevel.cpp:798 src/playturn.cpp:1664 src/playturn.cpp:1671
 msgid "Gold"
 msgstr "Goud"
 
-#: src/multiplayer_connect.cpp:599
+#: src/multiplayer_connect.cpp:607
 msgid "Waiting for network players to join"
 msgstr "Aan het wachten op netwerkspelers"
 
@@ -8051,79 +8097,79 @@ msgstr "Bericht"
 msgid "Send to allies only"
 msgstr "Stuur alleen naar bondgenoten"
 
-#: src/playturn.cpp:2097
+#: src/playturn.cpp:2098
 msgid "Location"
 msgstr "Locatie"
 
-#: src/playturn.cpp:2144
+#: src/playturn.cpp:2146
 msgid "Unit List"
 msgstr "Troepenlijst"
 
-#: src/playturn.cpp:2179 src/playturn.cpp:2241
+#: src/playturn.cpp:2181 src/playturn.cpp:2243
 msgid "Recruits"
 msgstr "Recruteringen"
 
-#: src/playturn.cpp:2185 src/playturn.cpp:2245
+#: src/playturn.cpp:2187 src/playturn.cpp:2247
 msgid "Recalls"
 msgstr "Oproepingen"
 
-#: src/playturn.cpp:2191 src/playturn.cpp:2249
+#: src/playturn.cpp:2193 src/playturn.cpp:2251
 msgid "Advancements"
 msgstr "Promoties"
 
-#: src/playturn.cpp:2197 src/playturn.cpp:2253
+#: src/playturn.cpp:2199 src/playturn.cpp:2255
 msgid "Losses"
 msgstr "Verliezen"
 
-#: src/playturn.cpp:2203 src/playturn.cpp:2257
+#: src/playturn.cpp:2205 src/playturn.cpp:2259
 msgid "Kills"
 msgstr "Gedoodden"
 
-#: src/playturn.cpp:2209
+#: src/playturn.cpp:2211
 msgid "Damage Inflicted"
 msgstr "Toegebrachte Schade"
 
-#: src/playturn.cpp:2215
+#: src/playturn.cpp:2217
 msgid "Damage Taken"
 msgstr "Ontvangen Schade"
 
-#: src/playturn.cpp:2221
+#: src/playturn.cpp:2223
 msgid "Damage Inflicted (EV)"
 msgstr "Toegebrachte Schade (EV)"
 
-#: src/playturn.cpp:2228
+#: src/playturn.cpp:2230
 msgid "Damage Taken (EV)"
 msgstr "Ontvangen Schade (EV)"
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2236
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: src/playturn.cpp:2271
+#: src/playturn.cpp:2273
 msgid "Search"
 msgstr "Zoek"
 
-#: src/playturn.cpp:2281
+#: src/playturn.cpp:2283
 msgid "prompt^Command:"
 msgstr "Commando:"
 
-#: src/playturn.cpp:2292
+#: src/playturn.cpp:2294
 msgid "Chat Log"
 msgstr "Chat Log"
 
-#: src/playturn.cpp:2357
+#: src/playturn.cpp:2359
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Kon geen label of eenheid vinden met '$search'."
 
-#: src/playturn.cpp:2438
+#: src/playturn.cpp:2440
 msgid "Place Label"
 msgstr "Plaats Label"
 
-#: src/playturn.cpp:2439
+#: src/playturn.cpp:2441
 msgid "Label"
 msgstr "Label"
 
-#: src/playturn.cpp:2571
+#: src/playturn.cpp:2573
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
@@ -8131,23 +8177,23 @@ msgstr ""
 "De spellen verlopen niet meer synchroon en zullen moeten afsluiten. Wil je "
 "een error log opslaan van dit spel?"
 
-#: src/playturn.cpp:2623
+#: src/playturn.cpp:2625
 msgid "Replace with AI"
 msgstr "Vervang door AI"
 
-#: src/playturn.cpp:2624
+#: src/playturn.cpp:2626
 msgid "Replace with local player"
 msgstr "Vervang door lokale speler"
 
-#: src/playturn.cpp:2625
+#: src/playturn.cpp:2627
 msgid "Abort game"
 msgstr "Stop spel"
 
-#: src/playturn.cpp:2628
+#: src/playturn.cpp:2630
 msgid "Replace with "
 msgstr "Vervang door"
 
-#: src/playturn.cpp:2632
+#: src/playturn.cpp:2634
 msgid "has left the game. What do you want to do?"
 msgstr "heeft het spel verlaten. Wat wil je doen?"
 
@@ -8277,11 +8323,11 @@ msgstr "Over de makers van Wesnoth"
 msgid "Quit the game"
 msgstr "Verlaat het spel"
 
-#: src/titlescreen.cpp:225
+#: src/titlescreen.cpp:228
 msgid "More"
 msgstr "Meer"
 
-#: src/titlescreen.cpp:235
+#: src/titlescreen.cpp:238
 msgid "-- The Tome of Wesnoth"
 msgstr "-- De Geschriften van Wesnoth"
 

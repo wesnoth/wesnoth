@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-01-15 20:43+0100\n"
+"POT-Creation-Date: 2005-01-21 00:15+0100\n"
 "PO-Revision-Date: 2005-01-07 23:01+0100\n"
 "Last-Translator: Viliam Búr <bur@fantastika.sk>\n"
 "Language-Team: none\n"
@@ -46,7 +46,7 @@ msgstr "Úvod"
 msgid "Gameplay"
 msgstr "Hra"
 
-#: data/help.cfg:22 data/help.cfg:209
+#: data/help.cfg:22 data/help.cfg:209 src/playturn.cpp:2096
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -844,7 +844,7 @@ msgid "Default"
 msgstr "Štandardná"
 
 #: data/multiplayer.cfg:24 data/multiplayer.cfg:113 data/multiplayer.cfg:215
-#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:667
+#: data/multiplayer.cfg:305 src/multiplayer_client.cpp:673
 #, fuzzy
 msgid "Random"
 msgstr "Náhodná mapa"
@@ -2271,10 +2271,9 @@ msgstr "Hlboká voda"
 msgid "Shallow Water"
 msgstr "Plytká voda"
 
-#: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:139
-#: data/terrain.cfg:148 data/terrain.cfg:159 data/terrain.cfg:170
-#: data/terrain.cfg:183 data/terrain.cfg:194 data/terrain.cfg:213
-#: data/terrain.cfg:278 src/reports.cpp:306
+#: data/terrain.cfg:39 data/terrain.cfg:60 data/terrain.cfg:164
+#: data/terrain.cfg:173 data/terrain.cfg:184 data/terrain.cfg:195
+#: data/terrain.cfg:208 data/terrain.cfg:359 src/reports.cpp:306
 msgid "Village"
 msgstr "Dedina"
 
@@ -2290,63 +2289,104 @@ msgstr "Ľad"
 msgid "Bridge"
 msgstr "Most"
 
-#: data/terrain.cfg:105
+#: data/terrain.cfg:106 data/terrain.cfg:115
 msgid "Sand"
 msgstr "Piesok"
 
-#: data/terrain.cfg:114
+#: data/terrain.cfg:123 data/terrain.cfg:131
 msgid "Road"
 msgstr "Cesta"
 
-#: data/terrain.cfg:122
+#: data/terrain.cfg:139
 msgid "Dirt"
 msgstr "Prach"
 
-#: data/terrain.cfg:132
+#: data/terrain.cfg:149
 msgid "Grassland"
 msgstr "Lúka"
 
-#: data/terrain.cfg:205
+#: data/terrain.cfg:156
+msgid "Savanna"
+msgstr ""
+
+#: data/terrain.cfg:218 data/terrain.cfg:229
+#, fuzzy
+msgid "Desert Village"
+msgstr "Dedina"
+
+#: data/terrain.cfg:240
+msgid "Tropical Forest Village"
+msgstr ""
+
+#: data/terrain.cfg:251
+msgid "Oasis"
+msgstr ""
+
+#: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Sneh"
 
-#: data/terrain.cfg:224 data/terrain.cfg:231
+#: data/terrain.cfg:270
+#, fuzzy
+msgid "Snow Village"
+msgstr "Dedina"
+
+#: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Kopce"
 
-#: data/terrain.cfg:240
+#: data/terrain.cfg:288 data/terrain.cfg:297
+#, fuzzy
+msgid "Desert Hills"
+msgstr "Vymaž súbor"
+
+#: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Hory"
 
-#: data/terrain.cfg:247 data/terrain.cfg:255
+#: data/terrain.cfg:312
+#, fuzzy
+msgid "Desert Mountains"
+msgstr "Hory"
+
+#: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Les"
 
-#: data/terrain.cfg:263
+#: data/terrain.cfg:328
+#, fuzzy
+msgid "Snow Forest"
+msgstr "Les"
+
+#: data/terrain.cfg:336
+msgid "Tropical Forest"
+msgstr ""
+
+#: data/terrain.cfg:344
 msgid "Cave wall"
 msgstr "Stena jaskyne"
 
-#: data/terrain.cfg:271
+#: data/terrain.cfg:352
 msgid "Cave"
 msgstr "Jaskyňa"
 
-#: data/terrain.cfg:288 data/terrain.cfg:348
+#: data/terrain.cfg:369 data/terrain.cfg:429
 msgid "Castle"
 msgstr "Hrad"
 
-#: data/terrain.cfg:297
+#: data/terrain.cfg:378
 msgid "Encampment"
 msgstr "Táborisko"
 
-#: data/terrain.cfg:307
+#: data/terrain.cfg:388
 msgid "Dwarven castle"
 msgstr "Trpasličí hrad"
 
-#: data/terrain.cfg:317
+#: data/terrain.cfg:398
 msgid "Keep"
 msgstr "Pevnosť"
 
-#: data/terrain.cfg:337
+#: data/terrain.cfg:418
 msgid "Canyon"
 msgstr "Kaňon"
 
@@ -3196,7 +3236,7 @@ msgstr "mágia"
 #: data/units/Mage.cfg:39 data/units/Mage.cfg:106
 #: data/units/Mage_of_Light.cfg:48 data/units/Mage_of_Light.cfg:108
 #: data/units/Mermaid_Diviner.cfg:37 data/units/Mermaid_Enchantress.cfg:35
-#: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:35
+#: data/units/Mermaid_Initiate.cfg:37 data/units/Mermaid_Priestess.cfg:35
 #: data/units/Mermaid_Siren.cfg:26 data/units/Mermaid_Siren.cfg:37
 #: data/units/Necromancer.cfg:37 data/units/Princess.cfg:80
 #: data/units/Red_Mage.cfg:42 data/units/Red_Mage.cfg:112
@@ -3260,8 +3300,8 @@ msgstr "drvenie"
 #: data/units/Horse_Lord.cfg:44 data/units/Iron_Mauler.cfg:20
 #: data/units/Mage_of_Light.cfg:30 data/units/Mage_of_Light.cfg:90
 #: data/units/Mermaid_Diviner.cfg:27 data/units/Mermaid_Enchantress.cfg:24
-#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:24
-#: data/units/Mermaid_Initiate.cfg:33 data/units/Mermaid_Priestess.cfg:25
+#: data/units/Mermaid_Enchantress.cfg:33 data/units/Mermaid_Initiate.cfg:21
+#: data/units/Mermaid_Initiate.cfg:35 data/units/Mermaid_Priestess.cfg:25
 #: data/units/Mermaid_Siren.cfg:24 data/units/Mermaid_Siren.cfg:35
 #: data/units/Merman_Entangler.cfg:27 data/units/Merman_Netcaster.cfg:27
 #: data/units/Mounted_Captain.cfg:47 data/units/Mounted_Commander.cfg:47
@@ -3302,7 +3342,7 @@ msgstr "Archmág je vládcom medzi mágmi. Na svojich súperov metá plamenné g
 #: data/units/Elvish_Shaman.cfg:24 data/units/Elvish_Sorceress.cfg:25
 #: data/units/Great_Mage.cfg:23 data/units/Great_Mage.cfg:100
 #: data/units/Mermaid_Diviner.cfg:26 data/units/Mermaid_Enchantress.cfg:23
-#: data/units/Mermaid_Initiate.cfg:23 data/units/Mermaid_Priestess.cfg:24
+#: data/units/Mermaid_Initiate.cfg:20 data/units/Mermaid_Priestess.cfg:24
 #: data/units/Necromancer.cfg:19 data/units/Orcish_Shaman.cfg:19
 #: data/units/Orcish_Shaman.cfg:78 data/units/Orcish_Shaman.cfg:137
 #: data/units/Saurian_Icecaster.cfg:22 data/units/Saurian_Soothsayer.cfg:22
@@ -3663,7 +3703,7 @@ msgstr "luk"
 #: data/units/Knight.cfg:37 data/units/Lancer.cfg:21
 #: data/units/Lieutenant.cfg:42 data/units/Longbowman.cfg:39
 #: data/units/Lord.cfg:40 data/units/Master_Bowman.cfg:33
-#: data/units/Merman.cfg:20 data/units/Merman_Entangler.cfg:19
+#: data/units/Merman.cfg:23 data/units/Merman_Entangler.cfg:19
 #: data/units/Merman_Fighter.cfg:23 data/units/Merman_Hoplite.cfg:36
 #: data/units/Merman_Hunter.cfg:19 data/units/Merman_Hunter.cfg:27
 #: data/units/Merman_Javelineer.cfg:19 data/units/Merman_Javelineer.cfg:27
@@ -3688,7 +3728,7 @@ msgstr "luk"
 #: data/units/Skeleton_Archer.cfg:42 data/units/Soul_Shooter.cfg:26
 #: data/units/Soul_Shooter.cfg:39 data/units/Spearman.cfg:20
 #: data/units/Spearman.cfg:34 data/units/Transport_Galleon.cfg:17
-#: data/units/Trapper.cfg:42 data/units/Triton.cfg:23
+#: data/units/Trapper.cfg:42 data/units/Triton.cfg:26
 #: data/units/Vampire_Lady.cfg:35 data/units/Wall_Guard.cfg:36
 #: data/units/Watch_Tower.cfg:18
 msgid "pierce"
@@ -5063,11 +5103,12 @@ msgid "Ghost"
 msgstr "Duch"
 
 #: data/units/Ghost.cfg:16
+#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
-"leaving a corpse behind. Not limited by physical bodies, these undead can "
-"fly swiftly towards their victims. Even as its ectoplasm matter can cross "
-"physical things it does not too fast nor too deeply."
+"leaving a corpse behind. Although their non-corporeal form allows them great "
+"freedom of movement and protection from physical attacks, ghosts cannot "
+"easily cross running water."
 msgstr ""
 "Duchovia sú duše bojovníkov, ktorí zomreli v agónii pred stáročiami a ich "
 "telesné pozostatky už zanikli. Keďže ich telo už neobmedzuje, títo nemŕtvi "
@@ -5608,7 +5649,7 @@ msgid "female^Mermaid Enchantress"
 msgstr "Morská zaklínačka"
 
 #: data/units/Mermaid_Enchantress.cfg:20 data/units/Mermaid_Siren.cfg:20
-#: data/units/Merman.cfg:16 data/units/Merman_Entangler.cfg:15
+#: data/units/Merman.cfg:19 data/units/Merman_Entangler.cfg:15
 #: data/units/Merman_Fighter.cfg:19 data/units/Merman_Hunter.cfg:15
 #: data/units/Merman_Javelineer.cfg:15 data/units/Merman_Netcaster.cfg:15
 #: data/units/Merman_Spearman.cfg:15
@@ -5619,7 +5660,7 @@ msgstr ""
 "Morský muž je mocným obyvateľom morí, je síce obojživelník, ale na zemi má "
 "ťažkosti."
 
-#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:31
+#: data/units/Mermaid_Enchantress.cfg:31 data/units/Mermaid_Initiate.cfg:33
 #: data/units/Mermaid_Siren.cfg:33 data/units/Sea_Hag.cfg:27
 msgid "water spray"
 msgstr "spŕška vody"
@@ -5628,7 +5669,7 @@ msgstr "spŕška vody"
 msgid "female^Mermaid Initiate"
 msgstr "Morská novicka"
 
-#: data/units/Mermaid_Initiate.cfg:20
+#: data/units/Mermaid_Initiate.cfg:17
 msgid ""
 "Young Mermaids are often initiated in the water magics of their people.  "
 "Despite their frailty, this makes them formidable opponents, as they can "
@@ -5660,14 +5701,14 @@ msgstr "Siréna"
 msgid "naiad touch"
 msgstr "dotyk najády"
 
-#: data/units/Merman.cfg:3
+#: data/units/Merman.cfg:6
 msgid "Merman"
 msgstr "Morský muž"
 
-#: data/units/Merman.cfg:19 data/units/Merman_Fighter.cfg:22
+#: data/units/Merman.cfg:22 data/units/Merman_Fighter.cfg:22
 #: data/units/Merman_Hoplite.cfg:35 data/units/Merman_Triton.cfg:22
 #: data/units/Merman_Triton.cfg:34 data/units/Merman_Warrior.cfg:22
-#: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:22
+#: data/units/Naga.cfg:20 data/units/Sea_Hag.cfg:20 data/units/Triton.cfg:25
 msgid "trident"
 msgstr "trojzubec"
 
@@ -5715,7 +5756,7 @@ msgstr "Morský oštepník"
 msgid "Merman Triton"
 msgstr "Triton"
 
-#: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:19
+#: data/units/Merman_Triton.cfg:19 data/units/Triton.cfg:22
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
@@ -6823,7 +6864,7 @@ msgstr ""
 "Lovci zvyčajne dodávajú potravu banditom a zbojníkom. Ich lovecké schopnosti "
 "ich robia cennými v noci, takisto aj v lesoch a močiaroch."
 
-#: data/units/Triton.cfg:3
+#: data/units/Triton.cfg:6
 msgid "Triton"
 msgstr "Triton"
 
@@ -7146,90 +7187,95 @@ msgstr "+Manažér prekladu"
 msgid "+Basque Translation"
 msgstr "+Baskický preklad"
 
-#: src/about.cpp:150
+#: src/about.cpp:151
 #, fuzzy
 msgid "+Bulgarian Translation"
 msgstr "+Maďarský preklad"
 
-#: src/about.cpp:154
+#: src/about.cpp:155
 msgid "+Catalan Translation"
 msgstr "+Katalánsky preklad"
 
-#: src/about.cpp:161
+#: src/about.cpp:163
 msgid "+Czech Translation"
 msgstr "+Český preklad"
 
-#: src/about.cpp:170
+#: src/about.cpp:172
 msgid "+Danish Translation"
 msgstr "+Dánsky preklad"
 
-#: src/about.cpp:175
+#: src/about.cpp:177
 msgid "+Dutch Translation"
 msgstr "+Nizozemský preklad"
 
-#: src/about.cpp:180
+#: src/about.cpp:182
 msgid "+Finnish Translation"
 msgstr "+Fínsky preklad"
 
-#: src/about.cpp:184
+#: src/about.cpp:186
 msgid "+French Translation"
 msgstr "+Francúzsky preklad"
 
-#: src/about.cpp:196
+#: src/about.cpp:198
 msgid "+German Translation"
 msgstr "+Nemecký preklad"
 
-#: src/about.cpp:207
+#: src/about.cpp:209
 msgid "+Greek Translation"
 msgstr "+Grécky preklad"
 
-#: src/about.cpp:212
+#: src/about.cpp:214
 msgid "+Hungarian Translation"
 msgstr "+Maďarský preklad"
 
-#: src/about.cpp:221
+#: src/about.cpp:223
 msgid "+Italian Translation"
 msgstr "+Taliansky preklad"
 
-#: src/about.cpp:230
+#: src/about.cpp:232
+#, fuzzy
+msgid "+Latin Translation"
+msgstr "+Katalánsky preklad"
+
+#: src/about.cpp:236
 msgid "+Norwegian Translation"
 msgstr "+Nórsky preklad"
 
-#: src/about.cpp:236
+#: src/about.cpp:242
 msgid "+Polish Translation"
 msgstr "+Poľský preklad"
 
-#: src/about.cpp:242
+#: src/about.cpp:248
 msgid "+Portuguese (Brazil) Translation"
 msgstr "+Portugalský preklad (Brazília)"
 
-#: src/about.cpp:250
+#: src/about.cpp:256
 #, fuzzy
 msgid "+Russian Translation"
 msgstr "+Maďarský preklad"
 
-#: src/about.cpp:256
+#: src/about.cpp:262
 msgid "+Slovak Translation"
 msgstr "+Slovenský preklad"
 
-#: src/about.cpp:260
+#: src/about.cpp:266
 msgid "+Spanish Translation"
 msgstr "+Španielsky preklad"
 
-#: src/about.cpp:268
+#: src/about.cpp:274
 msgid "+Swedish Translation"
 msgstr "+Švédsky preklad"
 
-#: src/about.cpp:275
+#: src/about.cpp:281
 msgid "+Contributors"
 msgstr "+Prispievatelia"
 
-#: src/about.cpp:279
+#: src/about.cpp:285
 #, fuzzy
 msgid "+Bots"
 msgstr "+ Roboti"
 
-#: src/about.cpp:315 src/help.cpp:2568 src/show_dialog.cpp:509
+#: src/about.cpp:321 src/help.cpp:2568 src/show_dialog.cpp:509
 msgid "Close"
 msgstr "Zavri"
 
@@ -7464,7 +7510,7 @@ msgid "level"
 msgstr "Úroveň"
 
 #: src/dialogs.cpp:678 src/display.cpp:962 src/help.cpp:1061
-#: src/playturn.cpp:2096 src/unit.cpp:1094
+#: src/playturn.cpp:2097 src/unit.cpp:1094
 msgid "Moves"
 msgstr "Ťahy"
 
@@ -7519,7 +7565,7 @@ msgstr ""
 msgid "The Battle for Wesnoth"
 msgstr "Bitka o Wesnoth"
 
-#: src/game.cpp:826 src/multiplayer_connect.cpp:103
+#: src/game.cpp:826 src/multiplayer_connect.cpp:108
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -7651,7 +7697,7 @@ msgid ""
 msgstr "Nastala chyba pri vytváraní inštalačných súborov tejto výpravy."
 
 #: src/game.cpp:1160 src/game.cpp:1199 src/game.cpp:1224
-#: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:322
+#: src/multiplayer_client.cpp:50 src/multiplayer_client.cpp:327
 msgid "Connection timed out"
 msgstr "Čas na pripojenie vypršal"
 
@@ -7707,7 +7753,7 @@ msgstr "Človek proti počítaču"
 msgid "Play a game against AI opponents"
 msgstr "Hraj zápas proti počítačovým súperom"
 
-#: src/game.cpp:1249 src/multiplayer_client.cpp:306
+#: src/game.cpp:1249 src/multiplayer_client.cpp:311
 msgid "Login"
 msgstr "Prihlásenie"
 
@@ -7842,7 +7888,7 @@ msgstr "Preskoč"
 msgid "The End"
 msgstr "Koniec"
 
-#: src/language.cpp:34 src/language.cpp:150
+#: src/language.cpp:34 src/language.cpp:151
 msgid "System default language"
 msgstr "Štandardný jazyk systému"
 
@@ -7939,8 +7985,8 @@ msgstr "Diváci"
 msgid "Allow users who are not playing to watch the game"
 msgstr "Umožni divákom sledovať hru"
 
-#: src/multiplayer.cpp:126 src/multiplayer_client.cpp:154
-#: src/multiplayer_connect.cpp:51 src/show_dialog.cpp:497
+#: src/multiplayer.cpp:126 src/multiplayer_client.cpp:150
+#: src/multiplayer_connect.cpp:56 src/show_dialog.cpp:497
 #: src/show_dialog.cpp:503
 msgid "Cancel"
 msgstr "Storno"
@@ -7969,7 +8015,7 @@ msgstr "Spoločná mapa"
 msgid "Share None"
 msgstr "Nič spoločné"
 
-#: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:181
+#: src/multiplayer.cpp:148 src/multiplayer_connect.cpp:186
 msgid "No multiplayer sides."
 msgstr "Sieťová hra nemá určené strany."
 
@@ -8041,85 +8087,85 @@ msgstr "Upozornenie"
 msgid "Receiving game list..."
 msgstr "Zisťujem zoznam hier..."
 
-#: src/multiplayer_client.cpp:129 src/playturn.cpp:1761
+#: src/multiplayer_client.cpp:132 src/playturn.cpp:1761
 #, fuzzy
 msgid "unit^Gold"
 msgstr "Zlato"
 
-#: src/multiplayer_client.cpp:148
+#: src/multiplayer_client.cpp:154
 msgid "Waiting for game to start..."
 msgstr "Čakám, kým začne hra..."
 
-#: src/multiplayer_client.cpp:256
+#: src/multiplayer_client.cpp:261
 msgid "Connect to Host"
 msgstr "Pripoj sa na server"
 
-#: src/multiplayer_client.cpp:258
+#: src/multiplayer_client.cpp:263
 msgid "Choose host to connect to"
 msgstr "Vyber si herný server, na ktorý sa pripojíš"
 
-#: src/multiplayer_client.cpp:276
+#: src/multiplayer_client.cpp:281
 msgid "Connecting to remote host..."
 msgstr "Pripájam sa na server hry..."
 
-#: src/multiplayer_client.cpp:305
+#: src/multiplayer_client.cpp:310
 msgid "You must log in to this server"
 msgstr "Na tento server sa musíš prihlásiť"
 
-#: src/multiplayer_client.cpp:385
+#: src/multiplayer_client.cpp:390
 msgid "Getting game data..."
 msgstr "Zisťujem herné údaje..."
 
-#: src/multiplayer_client.cpp:437
+#: src/multiplayer_client.cpp:442
 msgid "There are no available sides in this game."
 msgstr "V tejto hre už žiadna strana nie je voľná."
 
-#: src/multiplayer_client.cpp:485
+#: src/multiplayer_client.cpp:490
 msgid "Choose your side:"
 msgstr "Vyber si stranu:"
 
-#: src/multiplayer_client.cpp:516
+#: src/multiplayer_client.cpp:522
 msgid "The game has been cancelled"
 msgstr "Hra bola zrušená"
 
-#: src/multiplayer_client.cpp:520
+#: src/multiplayer_client.cpp:526
 msgid "The side you have chosen is no longer available"
 msgstr "Zvolená strana už nie je voľná"
 
-#: src/multiplayer_client.cpp:556
+#: src/multiplayer_client.cpp:562
 msgid "Show replay of game up to save point?"
 msgstr "Zobraziť záznam hry až do okamihu uloženia?"
 
-#: src/multiplayer_client.cpp:692 src/multiplayer_client.cpp:695
+#: src/multiplayer_client.cpp:700 src/multiplayer_client.cpp:703
 msgid "?"
 msgstr "?"
 
-#: src/multiplayer_client.cpp:779
+#: src/multiplayer_client.cpp:788
 msgid "Leader: "
 msgstr "Veliteľ:"
 
-#: src/multiplayer_client.cpp:781
+#: src/multiplayer_client.cpp:790
 msgid "Recruits: "
 msgstr "Naverbovaných:"
 
-#: src/multiplayer_connect.cpp:49
+#: src/multiplayer_connect.cpp:54
 msgid " Computer vs Computer "
 msgstr " Počítač proti počítaču "
 
-#: src/multiplayer_connect.cpp:50
+#: src/multiplayer_connect.cpp:55
 msgid "I'm Ready"
 msgstr "Som pripravený"
 
-#: src/multiplayer_connect.cpp:54 src/multiplayer_connect.cpp:393
-#: src/multiplayer_connect.cpp:396
+#: src/multiplayer_connect.cpp:59 src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:405
 msgid "Team"
 msgstr "Tím"
 
-#: src/multiplayer_connect.cpp:96
+#: src/multiplayer_connect.cpp:101
 msgid "This is not a multiplayer save"
 msgstr "Toto nie je uložená sieťová hra"
 
-#: src/multiplayer_connect.cpp:246
+#: src/multiplayer_connect.cpp:254
 msgid ""
 "Victory\n"
 "@Defeat enemy leader(s)"
@@ -8127,81 +8173,81 @@ msgstr ""
 "Vyhráš, ak:\n"
 "@Porazíš ostatných veliteľov"
 
-#: src/multiplayer_connect.cpp:266
+#: src/multiplayer_connect.cpp:274
 msgid "Network Player"
 msgstr "Sieťový hráč"
 
-#: src/multiplayer_connect.cpp:267
+#: src/multiplayer_connect.cpp:275
 msgid "Local Player"
 msgstr "Človek"
 
-#: src/multiplayer_connect.cpp:268 src/multiplayer_connect.cpp:546
-#: src/multiplayer_connect.cpp:640 src/multiplayer_connect.cpp:737
+#: src/multiplayer_connect.cpp:276 src/multiplayer_connect.cpp:554
+#: src/multiplayer_connect.cpp:648 src/multiplayer_connect.cpp:742
 msgid "Computer Player"
 msgstr "Počítač"
 
-#: src/multiplayer_connect.cpp:269
+#: src/multiplayer_connect.cpp:277
 msgid "Empty"
 msgstr "Nič"
 
-#: src/multiplayer_connect.cpp:316
+#: src/multiplayer_connect.cpp:325
 msgid "Red"
 msgstr "Červený"
 
-#: src/multiplayer_connect.cpp:318
+#: src/multiplayer_connect.cpp:327
 msgid "Blue"
 msgstr "Modrý"
 
-#: src/multiplayer_connect.cpp:320
+#: src/multiplayer_connect.cpp:329
 msgid "Green"
 msgstr "Zelený"
 
-#: src/multiplayer_connect.cpp:322
+#: src/multiplayer_connect.cpp:331
 msgid "Yellow"
 msgstr "Žltý"
 
-#: src/multiplayer_connect.cpp:324
+#: src/multiplayer_connect.cpp:333
 msgid "Purple"
 msgstr "Purpurový"
 
-#: src/multiplayer_connect.cpp:326
+#: src/multiplayer_connect.cpp:335
 msgid "Orange"
 msgstr "Oranžový"
 
-#: src/multiplayer_connect.cpp:328
+#: src/multiplayer_connect.cpp:337
 msgid "Grey"
 msgstr "Sivý"
 
-#: src/multiplayer_connect.cpp:330
+#: src/multiplayer_connect.cpp:339
 msgid "White"
 msgstr "Biely"
 
-#: src/multiplayer_connect.cpp:332
+#: src/multiplayer_connect.cpp:341
 msgid "Brown"
 msgstr "Hnedý"
 
-#: src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:391
 msgid "Game Lobby"
 msgstr "Čakáreň"
 
-#: src/multiplayer_connect.cpp:385 src/multiplayer_connect.cpp:387
+#: src/multiplayer_connect.cpp:394 src/multiplayer_connect.cpp:396
 msgid "Player/Type"
 msgstr "Typ hráča"
 
-#: src/multiplayer_connect.cpp:388 src/multiplayer_connect.cpp:391
+#: src/multiplayer_connect.cpp:397 src/multiplayer_connect.cpp:400
 msgid "Faction"
 msgstr "Frakcia"
 
-#: src/multiplayer_connect.cpp:398 src/multiplayer_connect.cpp:401
+#: src/multiplayer_connect.cpp:407 src/multiplayer_connect.cpp:410
 msgid "Color"
 msgstr "Farba"
 
-#: src/multiplayer_connect.cpp:403 src/multiplayer_connect.cpp:405
+#: src/multiplayer_connect.cpp:412 src/multiplayer_connect.cpp:414
 #: src/playlevel.cpp:798 src/playturn.cpp:1664 src/playturn.cpp:1671
 msgid "Gold"
 msgstr "Zlato"
 
-#: src/multiplayer_connect.cpp:599
+#: src/multiplayer_connect.cpp:607
 msgid "Waiting for network players to join"
 msgstr "Čakám, kým sa pripoja sieťoví hráči"
 
@@ -8445,101 +8491,101 @@ msgstr "Správa"
 msgid "Send to allies only"
 msgstr "Pošli iba spojencom"
 
-#: src/playturn.cpp:2097
+#: src/playturn.cpp:2098
 msgid "Location"
 msgstr "Poloha"
 
-#: src/playturn.cpp:2144
+#: src/playturn.cpp:2146
 msgid "Unit List"
 msgstr "Zoznam jednotiek"
 
-#: src/playturn.cpp:2179 src/playturn.cpp:2241
+#: src/playturn.cpp:2181 src/playturn.cpp:2243
 msgid "Recruits"
 msgstr "Naverbovaných"
 
-#: src/playturn.cpp:2185 src/playturn.cpp:2245
+#: src/playturn.cpp:2187 src/playturn.cpp:2247
 msgid "Recalls"
 msgstr "Privolaných"
 
-#: src/playturn.cpp:2191 src/playturn.cpp:2249
+#: src/playturn.cpp:2193 src/playturn.cpp:2251
 msgid "Advancements"
 msgstr "Povýšených"
 
-#: src/playturn.cpp:2197 src/playturn.cpp:2253
+#: src/playturn.cpp:2199 src/playturn.cpp:2255
 msgid "Losses"
 msgstr "Padlých"
 
-#: src/playturn.cpp:2203 src/playturn.cpp:2257
+#: src/playturn.cpp:2205 src/playturn.cpp:2259
 msgid "Kills"
 msgstr "Zabitých"
 
-#: src/playturn.cpp:2209
+#: src/playturn.cpp:2211
 msgid "Damage Inflicted"
 msgstr "Spôsobené zranenie"
 
-#: src/playturn.cpp:2215
+#: src/playturn.cpp:2217
 msgid "Damage Taken"
 msgstr "Utŕžené zranenie"
 
-#: src/playturn.cpp:2221
+#: src/playturn.cpp:2223
 msgid "Damage Inflicted (EV)"
 msgstr "Spôsobené zranenie (odhad)"
 
-#: src/playturn.cpp:2228
+#: src/playturn.cpp:2230
 msgid "Damage Taken (EV)"
 msgstr "Utŕžené zranenie (odhad)"
 
-#: src/playturn.cpp:2234
+#: src/playturn.cpp:2236
 msgid "Statistics"
 msgstr "Štatistika"
 
-#: src/playturn.cpp:2271
+#: src/playturn.cpp:2273
 msgid "Search"
 msgstr "Hľadaj"
 
-#: src/playturn.cpp:2281
+#: src/playturn.cpp:2283
 msgid "prompt^Command:"
 msgstr "Príkaz:"
 
-#: src/playturn.cpp:2292
+#: src/playturn.cpp:2294
 msgid "Chat Log"
 msgstr "Záznam rozhovoru"
 
-#: src/playturn.cpp:2357
+#: src/playturn.cpp:2359
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Neviem nájsť značku ani jednotku, ktorá má v názve '$search'."
 
-#: src/playturn.cpp:2438
+#: src/playturn.cpp:2440
 msgid "Place Label"
 msgstr "Umiestni značku"
 
-#: src/playturn.cpp:2439
+#: src/playturn.cpp:2441
 msgid "Label"
 msgstr "Značka"
 
-#: src/playturn.cpp:2571
+#: src/playturn.cpp:2573
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr "Hry sa rozladili a treba ich ukončiť. Mám uložiť chybovú správu z hry?"
 
-#: src/playturn.cpp:2623
+#: src/playturn.cpp:2625
 msgid "Replace with AI"
 msgstr "Nahraď počítačom"
 
-#: src/playturn.cpp:2624
+#: src/playturn.cpp:2626
 msgid "Replace with local player"
 msgstr "Nahraď iným hráčom"
 
-#: src/playturn.cpp:2625
+#: src/playturn.cpp:2627
 msgid "Abort game"
 msgstr "Zruš hru"
 
-#: src/playturn.cpp:2628
+#: src/playturn.cpp:2630
 msgid "Replace with "
 msgstr "Nahradiť "
 
-#: src/playturn.cpp:2632
+#: src/playturn.cpp:2634
 msgid "has left the game. What do you want to do?"
 msgstr "opustil hru. Čo chceš urobiť?"
 
@@ -8671,11 +8717,11 @@ msgstr "Zobraz informácie o autoroch hry"
 msgid "Quit the game"
 msgstr "Ukonči hru"
 
-#: src/titlescreen.cpp:225
+#: src/titlescreen.cpp:228
 msgid "More"
 msgstr "Ďalej"
 
-#: src/titlescreen.cpp:235
+#: src/titlescreen.cpp:238
 msgid "-- The Tome of Wesnoth"
 msgstr "-- Kniha o Wesnothe"
 
