@@ -47,6 +47,7 @@ wesnoth_SOURCES = about.cpp \
 		  mouse.cpp \
 		  multiplayer.cpp \
 		  multiplayer_client.cpp \
+		  multiplayer_connect.cpp \
 		  multiplayer_lobby.cpp \
 		  network.cpp \
 		  pathfind.cpp \
@@ -98,6 +99,7 @@ wesnoth_SOURCES = about.cpp \
 		  mouse.hpp \
 		  multiplayer.hpp \
 		  multiplayer_client.hpp \
+		  multiplayer_connect.hpp \
 		  multiplayer_lobby.hpp \
 		  network.hpp \
 		  pathfind.hpp \

@@ -18,6 +18,7 @@
 #include "image.hpp"
 #include "mapgen.hpp"
 #include "multiplayer.hpp"
+#include "multiplayer_connect.hpp"
 #include "multiplayer_client.hpp"
 #include "network.hpp"
 #include "playlevel.hpp"
@@ -387,444 +388,42 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 
 		if(launch_game.process(mousex,mousey,left_button)) {
 			if(name_entry.text().empty() == false) {
+				//Connector
+				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
-				// Send Initial information
-				config response;
-				config& create_game = response.add_child("create_game");
-				create_game["name"] = name_entry.text();
-				network::send_data(response);
-
-				// Setup the game
-				int res = maps_menu.selection();
-
-				if(res == -1)
-					break;
-
-				bool show_replay = false;
-
-				//if we're loading a saved game
-				config loaded_level;
-				bool loading = false;
-				if(size_t(res) == options.size()-1) {
-					loading = true;
-					const std::string game = dialogs::load_game_dialog(disp,&show_replay);
-					if(game == "")
-						break;
-
-					load_game(units_data,game,state);
-
-					if(state.campaign_type != "multiplayer") {
-						gui::show_dialog(disp,NULL,"",string_table["not_multiplayer_save_message"],gui::OK_ONLY);
-						break;
-					}
-
-					if(state.version != game_config::version) {
-						const int res = gui::show_dialog(disp,NULL,"",string_table["version_save_message"],gui::YES_NO);
-						if(res == 1)
-							break;
-					}
-
-					loaded_level = state.starting_pos;
-					level_ptr = &loaded_level;
-
-					//make all sides untaken
-					for(config::child_itors i = level_ptr->child_range("side");
-					    i.first != i.second; ++i.first) {
-						(**i.first)["taken"] = "";
-
-						//tell clients not to change their race
-						(**i.first)["allow_changes"] = "no";
-					}
-
-					recorder = replay(state.replay_data);
-
-					//if this is a snapshot save, we don't want to use the replay data
-					if(loaded_level["snapshot"] == "yes")
-						recorder.set_to_end();
-
-					//add the replay data under the level data so clients can
-					//receive it
-					level_ptr->clear_children("replay");
-					level_ptr->add_child("replay") = state.replay_data;
-
-				} else { //creating a new game
-					level_ptr = levels[res];
-
-					//set the number of turns here
-					std::stringstream turns;
-					turns << cur_turns;
-					(*level_ptr)["turns"] = turns.str();
-				}
-
-				assert(level_ptr != NULL);
-
-				config& level = *level_ptr;
-				state.label = level.values["name"];
-
-				state.scenario = res_to_id[res];
-
-				const config::child_itors sides = level.child_range("side");
-
-				const config::child_list& possible_sides = cfg.get_children("multiplayer_side");
-				if(sides.first == sides.second || possible_sides.empty()) {
-					std::cerr << "no multiplayer sides found\n";
+				connector.load_map(maps_menu.selection(), cur_turns, cur_villagegold, fog_game.checked(), shroud_game.checked());
+				if (connector.gui_do() == 1)
+				{
+				const network::manager net_manager;
+				const network::server_manager server_man(15000,server);
+	
+				config level = connector.get_level();
+				const bool network_state = accept_network_connections(disp,level);
+				if(network_state == false)
 					return -1;
-				}
 
-				config::child_iterator sd;
-				for(sd = sides.first; sd != sides.second; ++sd) {
-
-					if(!loading)
-					{
-						std::stringstream village_gold;
-						village_gold << cur_villagegold;
-						(**sd)["village_gold"] = village_gold.str();
-					}
-
-					if((**sd)["fog"].empty())
-						(**sd)["fog"] = fog_game.checked() ? "yes" : "no";
-
-					if((**sd)["shroud"].empty())
-						(**sd)["shroud"] = shroud_game.checked() ? "yes" : "no";
-
-					if((**sd)["name"].empty())
-						(**sd)["name"] = (*possible_sides.front())["name"];
-
-					if((**sd)["type"].empty())
-						(**sd)["type"] = (*possible_sides.front())["type"];
-
-					if((**sd)["recruit"].empty())
-						(**sd)["recruit"] = (*possible_sides.front())["recruit"];
-
-					if((**sd)["music"].empty())
-						(**sd)["music"] = (*possible_sides.front())["music"];
-
-					if((**sd)["recruitment_pattern"].empty())
-						(**sd)["recruitment_pattern"] =
-					        possible_sides.front()->values["recruitment_pattern"];
-
-					if((**sd)["description"].empty())
-						(**sd)["description"] = preferences::login();
-				}
+				state.starting_pos = level;
 	
-				// Wait to players, Configure players
-				gui::draw_dialog_frame((disp.x()-width)/2, (disp.y()-height)/2,
-						       width+30, height, disp);
+				recorder.set_save_info(state);
 
-				//Buttons
-				gui::button launch2_game(disp,string_table["im_ready"]);
-				gui::button cancel2_game(disp,string_table["cancel"]);
-				launch2_game.set_xy((disp.x()/2)-launch2_game.width()/2-100,(disp.y()-height)/2+height-29);
-				cancel2_game.set_xy((disp.x()/2)-launch2_game.width()/2+100,(disp.y()-height)/2+height-29);
-
-				//Title and labels
-				SDL_Rect labelr;
-				font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
-				                string_table["game_lobby"],-1,(disp.y()-height)/2+5);
-				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
-				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						string_table["player_type"],0,0);
-				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                string_table["player_type"],((disp.x()-width)/2+30)+(launch2_game.width()/2)-(labelr.w/2),
-						(disp.y()-height)/2+35);
-				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
-				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						string_table["race"],0,0);
-				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                string_table["race"],((disp.x()-width)/2+145)+(launch2_game.width()/2)-(labelr.w/2),
-						(disp.y()-height)/2+35);
-				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
-				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						string_table["team"],0,0);
-				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                string_table["team"],((disp.x()-width)/2+260)+(launch2_game.width()/2)-(labelr.w/2),
-						(disp.y()-height)/2+35);
-				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
-				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						string_table["color"],0,0);
-				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                string_table["color"],((disp.x()-width)/2+375)+(launch2_game.width()/2)-(labelr.w/2),
-						(disp.y()-height)/2+35);
-				labelr.x=0; labelr.y=0; labelr.w=disp.x(); labelr.h=disp.y();
-				labelr = font::draw_text(NULL,labelr,14,font::GOOD_COLOUR,
-						string_table["gold"],0,0);
-				font::draw_text(&disp,disp.screen_area(),14,font::GOOD_COLOUR,
-				                string_table["gold"],((disp.x()-width)/2+480)+(launch2_game.width()/2)-(labelr.w/2),
-						(disp.y()-height)/2+35);
-
-				//Options
-				std::vector<std::string> player_type;
-				player_type.push_back(preferences::login());
-				player_type.push_back(string_table["network_controlled"]);
-				player_type.push_back(string_table["ai_controlled"]);
-				player_type.push_back(string_table["human_controlled"]);
-
-				//player_race is a list of the names of possible races in the current locale.
-				//internal_player_race is a list of the internally used races that have
-				//to be saved to work properly.
-				std::vector<std::string> player_race, internal_player_race;
-
-				for(std::vector<config*>::const_iterator race = possible_sides.begin(); race != possible_sides.end(); ++race) {
-					internal_player_race.push_back((**race)["name"]);
-					player_race.push_back(translate_string((**race)["name"]));
-				}
-
-				std::vector<std::string> player_team;
-				
-				for(sd = sides.first; sd != sides.second; ++sd) {
-					const int team_num = sd - sides.first;
-
-					std::stringstream str;
-					str << string_table["team"] << " " << team_num+1;
-					player_team.push_back(str.str());
-				}
-
-				std::vector<std::string> player_color;
-				player_color.push_back(string_table["red"]);
-				player_color.push_back(string_table["blue"]);
-				player_color.push_back(string_table["green"]);
-				player_color.push_back(string_table["yellow"]);
-				player_color.push_back(string_table["pink"]);
-				player_color.push_back(string_table["purple"]);
-
-				//Players
-				std::vector<std::string> sides_list;
-				std::vector<gui::combo> combo_type;
-				std::vector<gui::combo> combo_race;
-				std::vector<gui::combo> combo_team;
-				std::vector<gui::combo> combo_color;
-				std::vector<gui::slider> slider_gold;
-
-				for(sd = sides.first; sd != sides.second; ++sd) {
-					const int side_num = sd - sides.first;
-
-					font::draw_text(&disp,disp.screen_area(),24,font::GOOD_COLOUR,
-					                (*sd)->values["side"],(disp.x()-width)/2+10,
-							(disp.y()-height)/2+53+(30*side_num));
-					combo_type.push_back(gui::combo(disp,player_type));
-					combo_type.back().set_xy((disp.x()-width)/2+30,
-							(disp.y()-height)/2+55+(30*side_num));
-
-					if(loading) {
-						if((**sd)["controller"] == "network") {
-							if((**sd)["description"] == "") {
-								combo_type.back().set_selected(1);
-							}else{
-								player_type.push_back((**sd)["description"]);
-								combo_type.back().set_items(player_type);
-								combo_type.back().set_selected(player_type.size());
-							}
-						}else if((**sd)["controller"] == "human") {
-							if((**sd)["description"] == preferences::login())
-							{
-								combo_type.back().set_selected(0);
-							}else{
-								combo_type.back().set_selected(3);
-							}
-						}else if((**sd)["controller"] == "ai") {
-							combo_type.back().set_selected(2);
-						}
+				//see if we should show the replay of the game so far
+				if(!recorder.empty()) {
+					if(false) {
+						recorder.set_skip(0);
 					} else {
-						if(side_num > 0) {
-							(**sd)["controller"] = "network";
-							(**sd)["description"] = "";
-							combo_type.back().set_selected(1);
-						} else {
-							(**sd)["controller"] = "human";
-							(**sd)["description"] = preferences::login();
-						}
+						std::cerr << "skipping...\n";
+						recorder.set_skip(-1);
 					}
-
-					combo_race.push_back(gui::combo(disp,player_race));
-					combo_race.back().set_xy((disp.x()-width)/2+145,
-							(disp.y()-height)/2+55+(30*side_num));
-
-					//if the race is specified in the configuration, set it
-					//to the default of the combo box
-					const std::string& race_name = (**sd)["name"];
-					if(race_name != "") {
-						const size_t race_pos = std::find(
-						                              internal_player_race.begin(),
-													  internal_player_race.end(),
-													  race_name) -
-													  internal_player_race.begin();
-						if(race_pos != internal_player_race.size())
-							combo_race.back().set_selected(race_pos);
-					}
-
-					combo_team.push_back(gui::combo(disp,player_team));
-					combo_team.back().set_xy((disp.x()-width)/2+260,
-							(disp.y()-height)/2+55+(30*side_num));
-					combo_team.back().set_selected(side_num);
-
-					combo_color.push_back(gui::combo(disp,player_color));
-					combo_color.back().set_xy((disp.x()-width)/2+375,
-							(disp.y()-height)/2+55+(30*side_num));
-					combo_color.back().set_selected(side_num);
-
-					//Player Gold
-					rect.x = (disp.x()-width)/2+490;
-					rect.y = (disp.y()-height)/2+55+(30*side_num);
-					rect.w = launch2_game.width()-5;
-					rect.h = launch2_game.height();
-					int intgold;
-					if(loading) {
-						intgold = atoi ((**sd)["gold"].c_str());
-					} else {
-						intgold = 100;
-						(**sd)["gold"] = "100";
-					}
-					slider_gold.push_back(gui::slider(disp,rect,0.0+((intgold-20.0)/979.0)));
-					rect.w = 30;
-					rect.x = (disp.x()-width)/2+603;
-					village_bg=get_surface_portion(disp.video().getSurface(), rect);
-					font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-						                (**sd)["gold"],rect.x,rect.y);
 				}
 
-				update_whole_screen();
-
-				for(;;) {
-					const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-					const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
-
-					for(size_t n = 0; n != combo_type.size(); ++n) {
-						//FIXME: the locals player should not be able to
-						//	 change the combo_type of another network
-						//	 player that has already joined the game.
-
-						config& side = **(sides.first+n);
-
-						if(side["allow_changes"] != "no"){
-						if(combo_type[n].process(mousex,mousey,left_button)) {
-							if(combo_type[n].selected() == 0) {
-								side["controller"] = "human";
-								side["description"] = preferences::login();
-								for(size_t m = 0; m != combo_type.size(); ++m) {
-									if(m != n) {
-										if(combo_type[m].selected() == 0){
-											combo_type[m].set_selected(1);
-											config& si = **(sides.first+m);
-											si["controller"] = "network";
-											si["description"] = "";
-										}
-									}
-								}
-							}else if(combo_type[n].selected() == 1){
-								side["controller"] = "network";
-								side["description"] = "";
-							}else if(combo_type[n].selected() == 2){
-								side["controller"] = "ai";
-								side["description"] = string_table["ai_controlled"];
-							}else if(combo_type[n].selected() == 3){
-								side["controller"] = "human";
-								side["description"] = "";
-							}else {
-								side["controller"] = "network";
-								side["description"] = "";
-							}
-						}
-						}else{
-							combo_type[n].draw();
-						}
-						
-						if(side["allow_changes"] != "no"){
-						if(combo_race[n].process(mousex,mousey,left_button))
-						{
-							const string_map& values = possible_sides[combo_race[n].selected()]->values;
-
-							for(string_map::const_iterator i = values.begin(); i != values.end(); ++i) {
-								side[i->first] = i->second;
-							}
-						}
-						}else{
-							combo_race[n].draw();
-						}
-						
-						if(combo_team[n].process(mousex,mousey,left_button))
-						{
-							const size_t nsides = sides.second - sides.first;
-							for(size_t t = 0; t != nsides; ++t) {
-								std::stringstream myenemy;
-								for(size_t m = 0; m != nsides; ++m) {
-									if(combo_team[m].selected() != combo_team[t].selected()) {
-										myenemy << (*sides.first[m])["side"];
-										if(m != nsides-1)
-											myenemy << ",";
-									}
-								}
-								myenemy << "\n";
-								(*sides.first[t])["enemy"] = myenemy.str();
-							}
-						}
-
-						combo_color[n].process(mousex,mousey,left_button);
-						
-						if(side["allow_changes"] != "no"){
-						int check_playergold = 20+int(979*slider_gold[n].process(mousex,mousey,left_button));
-						if(abs(check_playergold) == check_playergold)
-							new_playergold=check_playergold;
-						if(new_playergold != cur_playergold) {
-							cur_playergold = new_playergold;
-							std::stringstream playergold;
-							playergold << cur_playergold;
-							(*sides.first[n])["gold"] = playergold.str();
-							rect.x = (disp.x()-width)/2+603;
-							rect.y = (disp.y()-height)/2+55+(30*n);
-							rect.w = 30;
-							rect.h = launch2_game.height();
-							SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &rect);
-							font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
-							                (*sides.first[n])["gold"],rect.x,rect.y);
-							update_rect(rect);
-						}
-						}else{
-							slider_gold[n].draw();
-						}
-					}
-
-					if(launch2_game.process(mousex,mousey,left_button))
-					{
-						const network::manager net_manager;
-						const network::server_manager server_man(15000,server);
-	
-						const bool network_state = accept_network_connections(disp,level);
-						if(network_state == false)
-							return -1;
-
-						state.starting_pos = level;
-	
-						recorder.set_save_info(state);
-
-						//see if we should show the replay of the game so far
-						if(!recorder.empty()) {
-							if(show_replay) {
-								recorder.set_skip(0);
-							} else {
-								std::cerr << "skipping...\n";
-								recorder.set_skip(-1);
-							}
-						}
-
-						//any replay data isn't meant to hang around under the level,
-						//it was just there to tell clients about the replay data
-						level.clear_children("replay");
-
-						std::vector<config*> story;
-						play_level(units_data,cfg,&level,disp.video(),state,story);
-						recorder.clear();
-						return -1;
-					}
-
-					if(cancel2_game.process(mousex,mousey,left_button))
-					{
-						return -1;
-					}
-
-					events::pump();
-					disp.video().flip();
-					SDL_Delay(20);
+				//any replay data isn't meant to hang around under the level,
+				//it was just there to tell clients about the replay data
+				level.clear_children("replay");
+				std::vector<config*> story;
+				play_level(units_data,cfg,&level,disp.video(),state,story);
+				recorder.clear();
 				}
+				return -1;
 			} else {
 				rect.x=(disp.x()-width)/2;
 				rect.y=(disp.y()-height)/2;
