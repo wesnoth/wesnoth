@@ -1571,18 +1571,40 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 	// If the current tile is a castle tile, or if any adjacent tile is, this tile will have
 	// some castle-wall adjustable decorations.
 	// For now, the type of tiles (castle, !castle) is built-in.
+	// For now, the type of tiles (castle, !castle) is built-in.
 
 	gamemap::location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	
-	char angle_type;
+	signed char angle_type;
 	bool ti, tj, to;
-
 	// TODO: change this to something like map_.is_castle(blah) to support
 	// keeps, elven/orcish castles, etc.
 	gamemap::TERRAIN terrain = gamemap::CASTLE;
 	to = map_.is_built(loc);
 
+ 	// Adjacent terrains use 6 directions. From direction 0 to direction 5, these are
+ 	// n, ne, se, s, sw, nw . To build castles, we will introduce corners. From corner
+ 	// 0 to corner 5, those are ne, e, se, sw, w, nw ; corner i is the angle between
+ 	// side i and side (i+1) (modulus 6).
+ 	// On each corner, the boundary between a castle-tile and a non-castle tile may be
+ 	// of 6 different types, each one corresponding to a corner. Those are shown below:
+ 	//     0 (ne)   1 (e)   2 (se)   3 (sw)   4 (w)  5 (nw)
+ 	//     _        \       _/       \_       /      _
+ 	//      \       /                         \     /
+ 	// Additionaly, each angle may be a convex (-i), or a concave (-e) angle.
+ 	// Castles are built for angles. Castle tiles names start with castle-<angle>-<conc>-
+ 	// to represent the angle they are on.
+ 	// Finally, each angle is composed of 3 tiles. Those are named according to the corner
+ 	// this angle would be on, for this tile. That is:
+ 	//
+ 	// (even angles) (odd angles)
+ 	//  se  /            \  sw
+ 	//  ___/ w        e   \___
+    //     \              /
+    //  ne  \            /  ne
+ 	//
+ 	// Castle tiles complete names are: castle-<angle>-<conc>-<tile>.png
 	for(int i = 0; i != 6; ++i) {
 		int j = i+1;
 		if(j == 6)
@@ -1590,9 +1612,17 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 		
 		ti = map_.is_built(adjacent[i]);
 		tj = map_.is_built(adjacent[j]);
-		
-		int ncastles = (to?1:0) + (ti?1:0) + (tj?1:0);
-		
+
+ 		// Determine the angle type, according to the built adjacent tiles. 
+ 		// (This is the tricky part).
+ 		// If one of the three tiles is different, the direction at which the current corner
+ 		// is, relatively to this different tile, is the angle direction. If the different tile
+ 		// is the current tile, the angle direction is the direction corresponding to the current
+ 		// corner. If the different tile is the first of the adjacent tiles, the angle direction 
+ 		// is "the direction corresponding to the current corner, according to the first adjacent
+ 		// tile", which is the direction corresponding to the current corner, rotated 2pi/3 (pheeew).
+ 		// Hence the modulus. QED. (the same for the other adjacent tile)
+ 		// (trust me, it is way more easy to understand when drawn :) )
 		if ((ti != to) && (tj != to)) {
 			angle_type = i;
 		} else if ((ti == to) && (tj != to)) {
@@ -1607,15 +1637,22 @@ std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TY
 			continue;
 		}
 
+ 		// Count the number of built tiles between the current tile, and the two
+ 		// tiles adjacent to the current corner. If only on of those tiles is built,
+ 		// the angle is convex. If two are built, the angle is concave. If 0 or 3 are 
+ 		// built, there is no wall there.
+		int ncastles = (to?1:0) + (ti?1:0) + (tj?1:0);
+
 		const bool angle_northern = angle_is_northern(i);
 		if(angle_northern && terrain_type == ADJACENT_FOREGROUND ||
 			!angle_northern && terrain_type == ADJACENT_BACKGROUND) {
 			continue;
 		}
 
+		static const std::string exterior = "-e", interior = "-i";
 		std::ostringstream stream;
 		stream << get_angle_direction(angle_type) << 
-			(ncastles == 2? "-e" : "-i") << get_angle_direction(i);
+			(ncastles == 2? exterior : interior) << get_angle_direction(i);
 		const shared_sdl_surface surface(getTerrain(terrain,
 							    image_type,x,y,stream.str()));
 		if(surface != NULL)
