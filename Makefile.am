@@ -1,5 +1,5 @@
 ISUBDIRS = icons
-SUBDIRS = intl po m4 src $(ISUBDIRS)
+SUBDIRS = intl po m4 src doc $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
 bin_SCRIPTS = utils/wmlxgettext
@@ -62,12 +62,9 @@ dist-hook:
 	( $(finddata); $(findnoinst) ) | (cd $(top_srcdir) && tar cf - -T -) | (cd $(distdir) && tar xf -)
 
 dist_noinst_DATA = copyright changelog wesnoth.dsp wesnoth.dsw
-dist_man6_MANS = doc/man/wesnoth.6 doc/man/wesnothd.6 doc/man/wesnoth_editor.6
 
 uninstall-hook:
 	if test -d $(pkgdatadir) ; then rm -r $(pkgdatadir) ; fi
-	if test -d $(mandir)/man6 ; then echo `rmdir $(mandir)/man6` ; fi
-	if test -d $(mandir); then echo `rmdir $(mandir)` ; fi
 	if test -d $(bindir) ; then echo `rmdir $(bindir)` ; fi
 	if test -d $(datadir) ; then echo `rmdir $(datadir)` ; fi
 	if test -d $(prefix) ; then echo `rmdir $(prefix)` ; fi

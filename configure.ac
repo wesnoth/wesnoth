@@ -721,6 +721,8 @@ AC_CONFIG_FILES([Makefile
 		 src/server/Makefile
 		 src/campaign_server/Makefile
 		 src/tools/Makefile
-		 src/zip/Makefile])
+		 src/zip/Makefile
+		 doc/Makefile
+		 doc/man/Makefile])
 
 AC_OUTPUT
