@@ -2669,7 +2669,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
 						teams_[side].make_network();
-						change_side_controller(cfg["side_drop"], observers[index]);
+						change_side_controller(cfg["side_drop"], observers[index], true /*is orphaned side*/);
 					} else {
 						teams_[side].make_ai();
 					}

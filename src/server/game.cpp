@@ -254,6 +254,7 @@ bool game::describe_slots()
 
 	if(buf != (*description())["slots"]) {
 		description()->values["slots"] = buf;
+		description()->values["observer"] = level_["observer"];
 		return true;
 	} else {
 		return false;
@@ -334,6 +335,10 @@ void game::add_player(network::connection player)
 {
 	//if the game has already started, we add the player as an observer
 	if(started_) {
+		if(!allow_observers_) {
+			return;
+		}
+
 		const player_map::const_iterator info = player_info_->find(player);
 		if(info != player_info_->end()) {
 			config observer_join;
