@@ -14,6 +14,12 @@ DSTDOMAIN=$2
 shift
 shift
 
+if ! [ -r po/$DSTDOMAIN/Makefile ]
+then
+    echo "Source not configured in po/$DSTDOMAIN"
+    exit 1
+fi
+
 if [ $# = 0 ]
 then
     set -- `cat po/$SRCDOMAIN/LINGUAS`
@@ -23,7 +29,7 @@ tmp=`tempfile`
 for LANG in "$@"
 do
     # merge the 2 files
-    msgcat -F po/$DSTDOMAIN/$LANG.po po/$SRCDOMAIN/$LANG.po >$tmp
+    msgcat --use-first -F po/$DSTDOMAIN/$LANG.po po/$SRCDOMAIN/$LANG.po >$tmp
     mv po/$DSTDOMAIN/$LANG.po po/$DSTDOMAIN/$LANG.po.bak
     mv $tmp po/$DSTDOMAIN/$LANG.po
 
