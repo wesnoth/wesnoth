@@ -1381,7 +1381,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	if(show_unit_colour && unit_image != NULL) {
 		const SDL_Color& col = font::get_side_colour(it->second.side());
-		const short colour = SDL_MapRGB(dst->format,colour.r,colour.g,colour.b);
+		const short colour = SDL_MapRGB(dst->format,col.r,col.g,col.b);
 		SDL_Rect clip = {xpos,ypos,xend-xpos,yend-ypos};
 
 		draw_ellipse(dst,colour,clip,xpos-xsrc+zoom_/4,ypos-ysrc + zoom_*0.66,zoom_*0.6,zoom_/8,unit_image);
