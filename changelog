@@ -1,14 +1,31 @@
 CVS HEAD:
+ * changed experience gauge, it is now shown next to hitpoints bar
  * improved and added new Li'Sar character portraits
- * search can now be used for coordinates also: /30,15
+ * new fog and shroud images
+ * improved old and added new units images
+ * search now works with coordinates, use it like this: /30,15
+ * scenario balancing for 'Son of the Black Eye' campaign:
+   * Shan Taum the Smug
+ * multiplayer improvements
+   * alt-m to chat public
+   * shift-m to chat with allies
  * editor improvements:
    * added flipping
    * random map generator settings are now saved through generations
    * fixed labels on map being visible through certain dialogs
  * translation updates:
+   * french
    * spanish
+ * AI improvements
+   * improved grouping
+   * made grouping behaviour configurable
+   * added defensive grouping
  * fixed crash when generating a map with 0 villages
-
+ * fixed map (shroud) and statistics sharing not working between allies
+ * weslang, to help translation updates
+ * small changes to package description in Slacknoth
+ * changed default debugging options in KDevelop
+ * code refactoring
 
 Version 0.7.7:
  * added 'search' action which goes through labels and unit names, hotkey is '/'
