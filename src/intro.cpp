@@ -95,12 +95,12 @@ bool show_intro_part(display& screen, const config& part,
 			0,0,0,1.0,screen.video().getSurface());
 
 
-	const std::string& image_name = part["background"];
+	const std::string& background_name = part["background"];
 	const bool show_title = (part["show_title"] == "yes");
 
-	surface image(NULL);
-	if(image_name.empty() == false) {
-		image.assign(image::get_image(image_name,image::UNSCALED));
+	surface background(NULL);
+	if(background_name.empty() == false) {
+		background.assign(image::get_image(background_name,image::UNSCALED));
 	}
 
 	int textx = 200;
@@ -108,17 +108,17 @@ bool show_intro_part(display& screen, const config& part,
 
 	SDL_Rect dstrect;
 
-	if(image != NULL) {
-		dstrect.x = screen.x()/2 - image->w/2;
-		dstrect.y = screen.y()/2 - image->h/2;
-		dstrect.w = image->w;
-		dstrect.h = image->h;
+	if(!background.null()) {
+		dstrect.x = screen.x()/2 - background->w/2;
+		dstrect.y = screen.y()/2 - background->h/2;
+		dstrect.w = background->w;
+		dstrect.h = background->h;
 
 		if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
 			dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
 		}
 
-		SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
+		SDL_BlitSurface(background,NULL,screen.video().getSurface(),&dstrect);
 
 		textx = dstrect.x;
 		texty = dstrect.y + dstrect.h + 10;
@@ -144,65 +144,68 @@ bool show_intro_part(display& screen, const config& part,
 	update_whole_screen();
 	screen.video().flip();
 
-	//draw images
-	const config::child_list& images = part.get_children("image");
+	if(!background.null()) {
+		//draw images
+		const config::child_list& images = part.get_children("image");
 
-	bool pass = false;
+		bool pass = false;
 
-	for(std::vector<config*>::const_iterator i = images.begin(); i != images.end(); ++i){
-		const std::string& xloc = (**i)["x"];
-		const std::string& yloc = (**i)["y"];
-		const std::string& image_name = (**i)["file"];
-		const std::string& delay_str = (**i)["delay"];
-		const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
-		const int x = atoi(xloc.c_str());
-		const int y = atoi(yloc.c_str());
-		if(x < 0 || x >= image->w || y < 0 || y >= image->w)
-			continue;
+		for(std::vector<config*>::const_iterator i = images.begin(); i != images.end(); ++i){
+			const std::string& xloc = (**i)["x"];
+			const std::string& yloc = (**i)["y"];
+			const std::string& image_name = (**i)["file"];
+			const std::string& delay_str = (**i)["delay"];
+			const int delay = (delay_str == "") ? 0: atoi(delay_str.c_str());
+			const int x = atoi(xloc.c_str());
+			const int y = atoi(yloc.c_str());
 
-		if(image_name == "") continue;
-		surface img(image::get_image(image_name,image::UNSCALED));
-		if(img.null()) continue;
+			if(x < 0 || x >= background->w || y < 0 || y >= background->h)
+				continue;
 
-		SDL_Rect image_rect;
-		image_rect.x = x + dstrect.x;
-		image_rect.y = y + dstrect.y;
-		image_rect.w = img->w;
-		image_rect.h = img->h;
+			if(image_name == "") continue;
+			surface img(image::get_image(image_name,image::UNSCALED));
+			if(img.null()) continue;
 
-		SDL_BlitSurface(img,NULL,screen.video().getSurface(),&image_rect);
+			SDL_Rect image_rect;
+			image_rect.x = x + dstrect.x;
+			image_rect.y = y + dstrect.y;
+			image_rect.w = img->w;
+			image_rect.h = img->h;
 
-		update_rect(image_rect);
+			SDL_BlitSurface(img,NULL,screen.video().getSurface(),&image_rect);
 
-		if(pass == false) {
-			for(int i = 0; i != 50; ++i) {
-				if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
-					std::cerr << "escape pressed..\n";
-					return false;
+			update_rect(image_rect);
+
+			if(pass == false) {
+				for(int i = 0; i != 50; ++i) {
+					if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
+						std::cerr << "escape pressed..\n";
+						return false;
+					}
+
+					SDL_Delay(delay/50);
+
+					events::pump();
+					events::raise_process_event();
+					events::raise_draw_event();
+
+					int a, b;
+					const int mouse_flags = SDL_GetMouseState(&a,&b);
+					if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
+						std::cerr << "key pressed..\n";
+						pass = true;
+						continue;
+					}
+
+					screen.video().flip();
 				}
-
-				SDL_Delay(delay/50);
-
-				events::pump();
-				events::raise_process_event();
-				events::raise_draw_event();
-
-				int a, b;
-				const int mouse_flags = SDL_GetMouseState(&a,&b);
-				if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
-					std::cerr << "key pressed..\n";
-					pass = true;
-					continue;
-				}
-
-				screen.video().flip();
 			}
-		}
 
-		if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
-			std::cerr << "escape pressed..\n";
-			pass = true;
-			continue;
+			if(key[SDLK_ESCAPE] || next_button.pressed() || skip_button.pressed()) {
+				std::cerr << "escape pressed..\n";
+				pass = true;
+				continue;
+			}
 		}
 	}
 

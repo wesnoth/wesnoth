@@ -147,8 +147,23 @@ void move_unit_between(display& disp, const gamemap& map, const gamemap::locatio
 namespace unit_display
 {
 
-void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u)
+bool unit_visible_on_path(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const time_of_day& tod, const unit_map& units, const std::vector<team>& teams)
 {
+	for(size_t i = 0; i+1 < path.size(); ++i) {
+		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+	             u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
+		         u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+		if(!invisible) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::location>& path, unit& u, const time_of_day& tod, const unit_map& units, const std::vector<team>& teams)
+{
+	bool previous_visible = false;
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 		if(path[i+1].x > path[i].x) {
 			u.set_facing_left(true);
@@ -158,7 +173,16 @@ void move_unit(display& disp, const gamemap& map, const std::vector<gamemap::loc
 
 		disp.remove_footstep(path[i]);
 
-		move_unit_between(disp,map,path[i],path[i+1],u);
+		const bool invisible = teams[u.side()-1].is_enemy(int(disp.viewing_team()+1)) &&
+	             u.invisible(map.underlying_terrain(path[i]),tod.lawful_bonus,path[i],units,teams) &&
+		         u.invisible(map.underlying_terrain(path[i+1]),tod.lawful_bonus,path[i+1],units,teams);
+
+		if(!invisible) {
+			move_unit_between(disp,map,path[i],path[i+1],u);
+			previous_visible = true;
+		} else if(previous_visible) {
+			disp.draw_tile(path[i].x,path[i].y);
+		}
 	}
 
 	//make sure the entire path is cleaned properly

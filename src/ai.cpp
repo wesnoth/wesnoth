@@ -222,13 +222,6 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	paths current_paths(info_.map,info_.state,info_.gameinfo,info_.units,from,info_.teams,ignore_zocs,teleport);
 	paths_wiper wiper(info_.disp);
 
-	if(show_move) {
-		if(!info_.disp.fogged(from.x,from.y))
-			info_.disp.set_paths(&current_paths);
-
-		info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
-	}
-
 	unit current_unit = u_it->second;
 	info_.units.erase(u_it);
 
@@ -275,8 +268,14 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 
 			steps.push_back(to); //add the destination to the steps
 
-			if(show_move) {
-				unit_display::move_unit(info_.disp,info_.map,steps,current_unit);
+			if(show_move && unit_display::unit_visible_on_path(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams)) {
+
+				if(!info_.disp.fogged(from.x,from.y)) {
+					info_.disp.set_paths(&current_paths);
+				}
+
+				info_.disp.scroll_to_tiles(from.x,from.y,to.x,to.y);
+				unit_display::move_unit(info_.disp,info_.map,steps,current_unit,info_.state.get_time_of_day(),info_.units,info_.teams);
 			}
 		}
 	}

@@ -5,9 +5,10 @@
 #include <string>
 #include <vector>
 
+#include "language.hpp"
 #include "config.hpp"
 
-typedef std::map<std::string,std::vector<char> > markov_prefix_map;
+typedef std::map<wide_string, std::vector<wchar_t> > markov_prefix_map;
 
 class unit_race
 {

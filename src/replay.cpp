@@ -765,12 +765,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 			paths paths_list(map,state,gameinfo,units,src,teams,ignore_zocs,teleport);
 			paths_wiper wiper(disp);
 
-			if(!replayer.skipping()) {
-				disp.set_paths(&paths_list);
-
-				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
-			}
-
 			unit current_unit = u->second;
 
 			std::map<gamemap::location,paths::route>::iterator rt = paths_list.routes.find(dst);
@@ -789,10 +783,16 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 
 			rt->second.steps.push_back(dst);
 
+			if(!replayer.skipping() && unit_display::unit_visible_on_path(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams)) {
+				disp.set_paths(&paths_list);
+
+				disp.scroll_to_tiles(src.x,src.y,dst.x,dst.y);
+			}
+
 			units.erase(u);
 
 			if(!replayer.skipping()) {
-				unit_display::move_unit(disp,map,rt->second.steps,current_unit);
+				unit_display::move_unit(disp,map,rt->second.steps,current_unit,state.get_time_of_day(),units,teams);
 			}
 
 			current_unit.set_movement(rt->second.move_left);

@@ -66,6 +66,7 @@ namespace image {
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
+		bool operator!=(const locator &a) const { return index_ != a.index_; }
 		bool operator<(const locator &a) const { return index_ < a.index_; }
 
 		const std::string &get_filename() const { return val_.filename_; }

@@ -38,7 +38,7 @@ namespace sound {
 
 manager::manager()
 {
-	const int res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,1024);
+	const int res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY,MIX_DEFAULT_FORMAT,2,4096);
 	if(res >= 0) {
 		mix_ok = true;
 		Mix_AllocateChannels(16);

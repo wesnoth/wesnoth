@@ -444,7 +444,7 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 				                                 atoi(yvals[i].c_str())-1));
 			}
 
-			unit_display::move_unit(*screen,*game_map,path,dummy_unit);
+			unit_display::move_unit(*screen,*game_map,path,dummy_unit,status_ptr->get_time_of_day(),*units,*teams);
 		}
 	}
 
@@ -832,14 +832,18 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			}
 		}
 	
-		if(speaker == units->end()) {
+		if(speaker == units->end() && cfg["speaker"] != "narrator") {
 			//no matching unit found, so the dialog can't come up
 			//continue onto the next message
 			std::cerr << "cannot show message\n";
 			return rval;
 		}
 
-		std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
+		if(speaker != units->end()) {
+			std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
+		} else {
+			std::cerr << "no speaker\n";
+		}
 
 		const std::string& sfx = cfg["sound"];
 		if(sfx != "") {

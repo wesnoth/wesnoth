@@ -36,7 +36,7 @@ bool operator<(const line_source& a, const line_source& b)
 
 namespace {
 
-int max_recursion_levels = 100;
+const int max_recursion_levels = 100;
 
 bool isnewline(char c)
 {
@@ -721,7 +721,7 @@ void config::read(const std::string& data,
 					}
 				} else if(c == '\n' && !in_quotes) {
 
-					//see if this is a CVS list=CVS list style assignment (e.g. x,y=5,8)
+					//see if this is a CSV list=CSV list style assignment (e.g. x,y=5,8)
 					std::vector<std::string> vars, values;
 					if(std::count(var.begin(),var.end(),',') > 0) {
 						vars = config::split(var);
@@ -915,6 +915,7 @@ namespace {
 	                   compress_schema_item = 2, compress_literal_word = 3,
 	                   compress_first_word = 4, compress_end_words = 256;
 	const size_t compress_max_words = compress_end_words - compress_first_word;
+	const size_t max_schema_item_length = 20;
 
 	void compress_output_literal_word(const std::string& word, std::vector<char>& output)
 	{
@@ -925,6 +926,10 @@ namespace {
 
 	compression_schema::word_char_map::const_iterator add_word_to_schema(const std::string& word, compression_schema& schema)
 	{
+		if(word.size() > max_schema_item_length) {
+			throw config::error("Schema item is too long");
+		}
+
 		unsigned int c = compress_first_word + schema.word_to_char.size();
 
 		schema.char_to_word.insert(std::pair<unsigned int,std::string>(c,word));
@@ -933,6 +938,10 @@ namespace {
 
 	compression_schema::word_char_map::const_iterator get_word_in_schema(const std::string& word, compression_schema& schema, std::vector<char>& output)
 	{
+		if(word.size() > max_schema_item_length) {
+			return schema.word_to_char.end();
+		}
+
 		//see if this word is already in the schema
 		const compression_schema::word_char_map::const_iterator w = schema.word_to_char.find(word);
 		if(w != schema.word_to_char.end()) {

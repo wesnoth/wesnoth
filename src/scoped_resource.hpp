@@ -15,11 +15,6 @@
 
 #include <cstdio> //for FILE
 
-/**
-* The util namespace should take all classes which are of a generic type,
-* used to perform common tasks which are not BibleTime-specific. See
-* @ref scoped_resource for an example.
-*/
 namespace util
 {
 /**

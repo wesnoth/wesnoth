@@ -1234,7 +1234,7 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		const bool near_advance = u.max_experience() - u.experience() <= game_config::kill_experience*level;
 		const SDL_Color colour = near_advance ? near_advance_colour : normal_colour;
 
-		draw_bar("enemy-energy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
+		draw_bar("misc/bar-energy-enemy.png",xpos+5,ypos,u.max_experience()/(level*2),filled,colour,bar_alpha);
 	}
 
 	const std::vector<std::string>& overlays = it->second.overlays();
@@ -1251,7 +1251,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos, size_t heig
 	filled = minimum<double>(maximum<double>(filled,0.0),1.0);
 
 	surface surf(image::get_image(image,image::SCALED,image::NO_ADJUST_COLOUR));
-	surface unmoved_surf(image::get_image("unmoved-energy.png",image::SCALED,image::NO_ADJUST_COLOUR));
+	surface unmoved_surf(image::get_image("misc/bar-energy-unmoved.png",image::SCALED,image::NO_ADJUST_COLOUR));
 	if(surf == NULL || unmoved_surf == NULL) {
 		return;
 	}

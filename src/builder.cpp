@@ -155,6 +155,9 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const gamemap:
 
 bool terrain_builder::update_animation(const gamemap::location &loc)
 {
+	if(!tile_map_.on_map(loc))
+		return false;
+
 	imagelist& bg = tile_map_[loc].images_background;
 	imagelist& fg = tile_map_[loc].images_foreground;
 	bool changed = false;
@@ -188,7 +191,8 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 	}
 }
 
-void terrain_builder::rebuild_all() {
+void terrain_builder::rebuild_all()
+{
 	tile_map_.reset();
 	terrain_by_type_.clear();
 	terrain_by_type_border_.clear();

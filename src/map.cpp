@@ -392,6 +392,12 @@ void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 		return;
 
 	tiles_[loc.x][loc.y] = ter;
+
+	location adj[6];
+	get_adjacent_tiles(loc,adj);
+
+	for(int i = 0; i < 6; ++i) 
+		remove_from_border_cache(adj[i]);
 }
 
 std::vector<gamemap::location> parse_location_range(const std::string& x, const std::string& y)
