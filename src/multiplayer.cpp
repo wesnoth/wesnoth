@@ -172,7 +172,10 @@ void multiplayer_game_setup_dialog::set_area(const SDL_Rect& area)
 	//Name Entry
 	ypos += font::draw_text(&disp_,disp_.screen_area(),12,font::GOOD_COLOUR,
 	                        _("Name of game") + std::string(":"),xpos,ypos).h + border_size;
-	name_entry_.assign(new gui::textbox(disp_,width-20,sgettext("game name prefix^") + preferences::login() + sgettext("game name suffix^'s game")));
+	string_map i18n_symbols;
+	i18n_symbols["login"] = preferences::login();
+	name_entry_.assign(new gui::textbox(disp_,width-20,
+		vgettext("$login's game", i18n_symbols)));
 	name_entry_->set_location(xpos,ypos);
 	name_entry_->set_dirty();
 

@@ -14,3 +14,11 @@ const char* sgettext (const char *msgid)
 	}
 	return msgval;
 }
+
+const char* vgettext (const char *msgid, const string_map& symbols)
+{
+	const std::string orig(gettext(msgid));
+	const std::string msg = config::interpolate_variables_into_string(orig,
+			&symbols);
+	return msg.c_str();
+}
