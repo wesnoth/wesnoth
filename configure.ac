@@ -134,7 +134,7 @@ AC_ARG_ENABLE([server],
 AC_ARG_WITH([fifodir],
 	         AS_HELP_STRING([--with-fifodir], [directory for the wesnothd fifo socket file]),
 	      [fifodir=$withval],
-	      [fifodir=$localstatedir/run/wesnotd])
+	      [fifodir=$localstatedir/run/wesnothd])
 AC_SUBST([fifodir])
 
 AC_ARG_WITH([server-uid],
