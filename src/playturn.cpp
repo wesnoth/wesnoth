@@ -49,6 +49,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 	log_scope("player turn");
 
 	gui.set_team(team_num-1);
+	gui.recalculate_minimap();
 	gui.invalidate_all();
 	gui.draw();
 	gui.update_display();
@@ -318,6 +319,14 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 		} else {
 			show_menu();
 		}
+	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_PRESSED) {
+		const int centerx = gui_.mapx()/2;
+		const int centery = gui_.y()/2;
+
+		const int xdisp = event.x - centerx;
+		const int ydisp = event.y - centery;
+
+		gui_.scroll(xdisp,ydisp);
 	} else if(event.button == SDL_BUTTON_WHEELUP ||
 	          event.button == SDL_BUTTON_WHEELDOWN) {
 		const double speed = preferences::scroll_speed() *
