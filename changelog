@@ -33,6 +33,9 @@ CVS HEAD:
  * when using zipios, ignore {~...} clauses, and handle {@...} as if there
    was no '@', fixing the double appearance of user campaigns in the
    campaign listing
+ * when displaying text strings, select the correct font to display glyphs
+   which are not displayable with the current font.
+ * slight cleanup of the terrain graphics code
 
 Version 0.8.11:
  * new translation:
