@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-19 20:56+0200\n"
+"POT-Creation-Date: 2004-08-19 22:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/game.cfg:257 data/translations/english.cfg:13
+#: data/game.cfg:257
 msgid "Heir to the Throne"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgid ""
 "champion.png,Champion,(hardest)"
 msgstr ""
 
-#: data/game.cfg:267 data/translations/english.cfg:14
+#: data/game.cfg:267
 msgid "The Dark Hordes"
 msgstr ""
 
@@ -10764,8 +10764,7 @@ msgstr ""
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 data/translations/english.cfg:139
-#: src/show_dialog.cpp:451
+#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:451
 msgid "No"
 msgstr ""
 
@@ -10937,7 +10936,7 @@ msgid "Do you want to review any of the skills learned on this level?"
 msgstr ""
 
 #: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 data/translations/english.cfg:138
+#: data/scenarios/tutorial/tutorial2.cfg:206
 msgid "Yes"
 msgstr ""
 
@@ -11050,17 +11049,14 @@ msgid "Underground"
 msgstr ""
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
-#: data/translations/english.cfg:133
 msgid "Menu"
 msgstr ""
 
 #: data/themes/default.cfg:32 data/themes/default.cfg:368
-#: data/translations/english.cfg:135
 msgid "Actions"
 msgstr ""
 
-#: data/themes/default.cfg:79 data/themes/default.cfg:415
-#: data/translations/english.cfg:336 src/hotkeys.cpp:137
+#: data/themes/default.cfg:79 data/themes/default.cfg:415 src/hotkeys.cpp:137
 msgid "End Turn"
 msgstr ""
 
@@ -11072,64 +11068,23 @@ msgstr ""
 msgid "statuspanel|movement"
 msgstr ""
 
-#: data/translations/english.cfg:5 src/game.cpp:573
-msgid "The Battle for Wesnoth"
-msgstr ""
-
-#: data/translations/english.cfg:6 src/titlescreen.cpp:137
-msgid "Version"
-msgstr ""
-
-#: data/translations/english.cfg:8 src/dialogs.cpp:349
-msgid "%a %b %d %H:%M %Y"
-msgstr ""
-
-#: data/translations/english.cfg:10
+#: data/translations/english.cfg:5
 msgid "game prefix|"
 msgstr ""
 
-#: data/translations/english.cfg:11 src/multiplayer.cpp:175
-msgid "'s game"
-msgstr ""
-
-#: data/translations/english.cfg:16 src/game.cpp:914
-msgid "There are no campaigns available"
-msgstr ""
-
-#: data/translations/english.cfg:18 data/translations/english.cfg:172
-#: src/dialogs.cpp:367 src/game.cpp:921 src/titlescreen.cpp:153
-msgid "Campaign"
-msgstr ""
-
-#: data/translations/english.cfg:19 src/game.cpp:922
-msgid "Choose the campaign you want to play:"
-msgstr ""
-
-#: data/translations/english.cfg:21 src/dialogs.cpp:386 src/game.cpp:944
-msgid "Difficulty"
-msgstr ""
-
-#: data/translations/english.cfg:22 src/game.cpp:945
-msgid "Select difficulty level:"
-msgstr ""
-
-#: data/translations/english.cfg:23
+#: data/translations/english.cfg:8
 msgid "Easy"
 msgstr ""
 
-#: data/translations/english.cfg:24
+#: data/translations/english.cfg:9
 msgid "Medium"
 msgstr ""
 
-#: data/translations/english.cfg:25
+#: data/translations/english.cfg:10
 msgid "Hard"
 msgstr ""
 
-#: data/translations/english.cfg:27 src/dialogs.cpp:361
-msgid "#(Invalid)"
-msgstr ""
-
-#: data/translations/english.cfg:32
+#: data/translations/english.cfg:15
 msgid ""
 "Lawful units fight better at day, and worse at night.\n"
 "\n"
@@ -11137,13 +11092,13 @@ msgid ""
 "Night: -25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:33
+#: data/translations/english.cfg:16
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
 
-#: data/translations/english.cfg:37
+#: data/translations/english.cfg:20
 msgid ""
 "Chaotic units fight better at night, and worse at day.\n"
 "\n"
@@ -11151,31 +11106,7 @@ msgid ""
 "Night: +25% Damage"
 msgstr ""
 
-#: data/translations/english.cfg:39 src/reports.cpp:122
-msgid "This unit has been turned to stone. It may not move or attack."
-msgstr ""
-
-#: data/translations/english.cfg:40 src/reports.cpp:105
-msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
-
-#: data/translations/english.cfg:41 src/reports.cpp:110
-msgid ""
-"This unit has been slowed. It moves at half normal speed and receives one "
-"less attack than normal in combat."
-msgstr ""
-
-#: data/translations/english.cfg:44 src/reports.cpp:115
-msgid ""
-"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
-"to the poison in a village or from a friendly unit with the 'cures' "
-"ability.\n"
-"\n"
-"Units cannot be killed by poison alone. The poison will not reduce it below "
-"1 HP."
-msgstr ""
-
-#: data/translations/english.cfg:51
+#: data/translations/english.cfg:27
 msgid ""
 "Heals:\n"
 "Allows the unit to heal adjacent friendly units at the beginning of the "
@@ -11187,7 +11118,7 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 
-#: data/translations/english.cfg:59
+#: data/translations/english.cfg:35
 msgid ""
 "Cures:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -11201,13 +11132,13 @@ msgid ""
 "additional healing on the turn it is cured of the poison."
 msgstr ""
 
-#: data/translations/english.cfg:62
+#: data/translations/english.cfg:38
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
 msgstr ""
 
-#: data/translations/english.cfg:67
+#: data/translations/english.cfg:43
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -11216,7 +11147,7 @@ msgid ""
 "Adjacent friendly units of lower level will do more damage in battle."
 msgstr ""
 
-#: data/translations/english.cfg:72
+#: data/translations/english.cfg:48
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -11226,7 +11157,7 @@ msgid ""
 "units next to this unit."
 msgstr ""
 
-#: data/translations/english.cfg:77
+#: data/translations/english.cfg:53
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -11236,1768 +11167,488 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 
-#: data/translations/english.cfg:80
+#: data/translations/english.cfg:56
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
 
-#: data/translations/english.cfg:82
+#: data/translations/english.cfg:58
 msgid "Never more than 1 upkeep"
 msgstr ""
 
-#: data/translations/english.cfg:84 src/actions.cpp:93
-msgid "You don't have a leader to recruit with."
-msgstr ""
-
-#: data/translations/english.cfg:85 src/actions.cpp:97
-msgid "You must have your leader on a keep to recruit or recall units."
-msgstr ""
-
-#: data/translations/english.cfg:86 src/actions.cpp:114
-msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr ""
-
-#: data/translations/english.cfg:87 src/playturn.cpp:1555
-msgid "You have no units available to recruit."
-msgstr ""
-
-#: data/translations/english.cfg:89 src/playturn.cpp:79
-msgid "It is now your turn"
-msgstr ""
-
-#: data/translations/english.cfg:91 src/hotkeys.cpp:122 src/playturn.cpp:1457
-msgid "Leader"
-msgstr ""
-
-#: data/translations/english.cfg:93 src/playturn.cpp:1726
-msgid "Dismiss Unit"
-msgstr ""
-
-#: data/translations/english.cfg:94 src/dialogs.cpp:420
-msgid "Delete Save"
-msgstr ""
-
-#: data/translations/english.cfg:95
+#: data/translations/english.cfg:60
 msgid "Delete File"
 msgstr ""
 
-#: data/translations/english.cfg:96
+#: data/translations/english.cfg:61
 msgid "Deletion of the file failed."
 msgstr ""
 
-#: data/translations/english.cfg:98 src/dialogs.cpp:208
-msgid "Do you really want to delete this game?"
-msgstr ""
-
-#: data/translations/english.cfg:99 src/dialogs.cpp:206 src/dialogs.cpp:445
-msgid "Don't ask me again!"
-msgstr ""
-
-#: data/translations/english.cfg:100 src/playturn.cpp:1655
-msgid ""
-"My lord, this unit is an experienced one, having advanced levels! Do you "
-"really want to dismiss $noun?"
-msgstr ""
-
-#: data/translations/english.cfg:101 src/playturn.cpp:1657
-msgid ""
-"My lord, this unit is close to advancing a level! Do you really want to "
-"dismiss $noun?"
-msgstr ""
-
-#: data/translations/english.cfg:102 src/playturn.cpp:1662
-msgid "him"
-msgstr ""
-
-#: data/translations/english.cfg:103 src/playturn.cpp:1662
-msgid "her"
-msgstr ""
-
-#: data/translations/english.cfg:106 src/actions.cpp:317 src/actions.cpp:434
-msgid "base damage"
-msgstr ""
-
-#: data/translations/english.cfg:107 src/actions.cpp:387 src/actions.cpp:513
-msgid "total damage"
-msgstr ""
-
-#: data/translations/english.cfg:108
+#: data/translations/english.cfg:63
 msgid "minimum damage"
 msgstr ""
 
-#: data/translations/english.cfg:109 src/playturn.cpp:525 src/playturn.cpp:650
-msgid "Damage Calculations"
-msgstr ""
-
-#: data/translations/english.cfg:110 src/playturn.cpp:499
-msgid "Attacker"
-msgstr ""
-
-#: data/translations/english.cfg:111 src/playturn.cpp:501
-msgid "Defender"
-msgstr ""
-
-#: data/translations/english.cfg:112 src/actions.cpp:327
-msgid "attacker resistance vs"
-msgstr ""
-
-#: data/translations/english.cfg:113 src/actions.cpp:444
-msgid "defender resistance vs"
-msgstr ""
-
-#: data/translations/english.cfg:114 src/actions.cpp:327
-msgid "attacker vulnerability vs"
-msgstr ""
-
-#: data/translations/english.cfg:115 src/actions.cpp:444
-msgid "defender vulnerability vs"
-msgstr ""
-
-#: data/translations/english.cfg:116 src/playturn.cpp:1960
-#: src/playturn.cpp:1994
-msgid "Recruits"
-msgstr ""
-
-#: data/translations/english.cfg:117 src/playturn.cpp:1966
-#: src/playturn.cpp:1998
-msgid "Recalls"
-msgstr ""
-
-#: data/translations/english.cfg:118 src/playturn.cpp:1972
-#: src/playturn.cpp:2002
-msgid "Advancements"
-msgstr ""
-
-#: data/translations/english.cfg:119 src/playturn.cpp:1978
-#: src/playturn.cpp:2006
-msgid "Losses"
-msgstr ""
-
-#: data/translations/english.cfg:120 src/playturn.cpp:1984
-#: src/playturn.cpp:2010
-msgid "Kills"
-msgstr ""
-
-#: data/translations/english.cfg:123 src/playturn.cpp:2151
-msgid "Place Label"
-msgstr ""
-
-#: data/translations/english.cfg:124 src/playturn.cpp:2152
-msgid "Label"
-msgstr ""
-
-#: data/translations/english.cfg:127 src/hotkeys.cpp:171
-msgid "Find Label or Unit"
-msgstr ""
-
-#: data/translations/english.cfg:128 src/playturn.cpp:2025
-msgid "Search"
-msgstr ""
-
-#: data/translations/english.cfg:129 src/playturn.cpp:2111
-msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
-
-#: data/translations/english.cfg:130
-msgid "Command"
-msgstr ""
-
-#: data/translations/english.cfg:134
+#: data/translations/english.cfg:65
 msgid "Game"
 msgstr ""
 
-#: data/translations/english.cfg:136 src/dialogs.cpp:569
-#: src/multiplayer.cpp:121 src/show_dialog.cpp:444 src/show_dialog.cpp:457
-msgid "Ok"
-msgstr ""
-
-#: data/translations/english.cfg:137 data/translations/english.cfg:428
-#: src/dialogs.cpp:570 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
-#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
-#: src/show_dialog.cpp:464
-msgid "Cancel"
-msgstr ""
-
-#: data/translations/english.cfg:140 src/titlescreen.cpp:158
-msgid "About"
-msgstr ""
-
-#: data/translations/english.cfg:141 src/about.cpp:240 src/help.cpp:2364
-#: src/show_dialog.cpp:470
-msgid "Close"
-msgstr ""
-
-#: data/translations/english.cfg:143 src/intro.cpp:87
-msgid "Next"
-msgstr ""
-
-#: data/translations/english.cfg:144 src/intro.cpp:88
-msgid "Skip"
-msgstr ""
-
-#: data/translations/english.cfg:146 src/preferences.cpp:632
-msgid "Turn Dialog"
-msgstr ""
-
-#: data/translations/english.cfg:147 src/preferences.cpp:633
-msgid "Turn Bell"
-msgstr ""
-
-#: data/translations/english.cfg:148 src/preferences.cpp:634
-msgid "Show Team Colors"
-msgstr ""
-
-#: data/translations/english.cfg:149 src/preferences.cpp:635
-msgid "Show Color Cursors"
-msgstr ""
-
-#: data/translations/english.cfg:150 src/preferences.cpp:636
-msgid "Show Haloing Effects"
-msgstr ""
-
-#: data/translations/english.cfg:152 src/help.cpp:617
-msgid "Alignment"
-msgstr ""
-
-#: data/translations/english.cfg:153
-msgid "Lawful"
-msgstr ""
-
-#: data/translations/english.cfg:154 data/translations/english.cfg:650
-msgid "Neutral"
-msgstr ""
-
-#: data/translations/english.cfg:155
-msgid "Chaotic"
-msgstr ""
-
-#: data/translations/english.cfg:157 src/reports.cpp:253
-msgid "Lawful units"
-msgstr ""
-
-#: data/translations/english.cfg:158 src/reports.cpp:255
-msgid "Neutral units"
-msgstr ""
-
-#: data/translations/english.cfg:159 src/reports.cpp:256
-msgid "Chaotic units"
-msgstr ""
-
-#: data/translations/english.cfg:161 src/playturn.cpp:1174
-msgid "Auto-Save"
-msgstr ""
-
-#: data/translations/english.cfg:162 src/game.cpp:134
-msgid "Do you want to save a replay of this scenario?"
-msgstr ""
-
-#: data/translations/english.cfg:163 src/game.cpp:196
-msgid "Do you want to save your game?"
-msgstr ""
-
-#: data/translations/english.cfg:164 src/game.cpp:135 src/game.cpp:197
-#: src/playturn.cpp:1388
-msgid "Name:"
-msgstr ""
-
-#: data/translations/english.cfg:165 src/playturn.cpp:1396
-msgid "The game has been saved"
-msgstr ""
-
-#: data/translations/english.cfg:166 src/dialogs.cpp:177
-msgid "Save already exists. Do you want to overwrite it ?"
-msgstr ""
-
-#: data/translations/english.cfg:167 src/game.cpp:143 src/game.cpp:204
-#: src/playturn.cpp:1399
-msgid "The game could not be saved"
-msgstr ""
-
-#: data/translations/english.cfg:168 src/playturn.cpp:1176
-msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
-
-#: data/translations/english.cfg:169
+#: data/translations/english.cfg:67
 msgid "Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:170 data/translations/english.cfg:305
-#: src/dialogs.cpp:381 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1381
-msgid "Turn"
-msgstr ""
-
-#: data/translations/english.cfg:171 src/dialogs.cpp:371
-#: src/titlescreen.cpp:152
-msgid "Tutorial"
-msgstr ""
-
-#: data/translations/english.cfg:173 src/titlescreen.cpp:155
-msgid "Load"
-msgstr ""
-
-#: data/translations/english.cfg:174 src/dialogs.cpp:369 src/game.cpp:968
-#: src/titlescreen.cpp:154
-msgid "Multiplayer"
-msgstr ""
-
-#: data/translations/english.cfg:175 src/multiplayer_lobby.cpp:159
-#: src/titlescreen.cpp:159
-msgid "Quit"
-msgstr ""
-
-#: data/translations/english.cfg:176 src/hotkeys.cpp:148
-msgid "Quit Game"
-msgstr ""
-
-#: data/translations/english.cfg:177 src/game.cpp:1048 src/titlescreen.cpp:156
-msgid "Language"
-msgstr ""
-
-#: data/translations/english.cfg:178 src/dialogs.cpp:383
-msgid "Scenario Start"
-msgstr ""
-
-#: data/translations/english.cfg:180 src/game.cpp:1049
-msgid "Choose your preferred language"
-msgstr ""
-
-#: data/translations/english.cfg:182 src/titlescreen.cpp:160
-msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
-
-#: data/translations/english.cfg:183 src/titlescreen.cpp:161
-msgid "Start a new single player campaign"
-msgstr ""
-
-#: data/translations/english.cfg:184 src/titlescreen.cpp:163
-msgid "Load a single player saved game"
-msgstr ""
-
-#: data/translations/english.cfg:185 src/titlescreen.cpp:162
-msgid ""
-"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
-"the AI"
-msgstr ""
-
-#: data/translations/english.cfg:186 src/titlescreen.cpp:167
-msgid "Quit the game"
-msgstr ""
-
-#: data/translations/english.cfg:187 src/titlescreen.cpp:164
-msgid "Change the language"
-msgstr ""
-
-#: data/translations/english.cfg:188 src/titlescreen.cpp:166
-msgid "View the credits"
-msgstr ""
-
-#: data/translations/english.cfg:189 src/titlescreen.cpp:165
-msgid "Configure the game's settings"
-msgstr ""
-
-#: data/translations/english.cfg:191 src/preferences.cpp:658
-msgid "Change the music volume"
-msgstr ""
-
-#: data/translations/english.cfg:192 src/preferences.cpp:653
-msgid "Change the sound effects volume"
-msgstr ""
-
-#: data/translations/english.cfg:193 src/preferences.cpp:663
-msgid "Change the speed of scrolling around the map"
-msgstr ""
-
-#: data/translations/english.cfg:194 src/preferences.cpp:666
-#: src/preferences.cpp:671
-msgid "Change the brightness of the display"
-msgstr ""
-
-#: data/translations/english.cfg:196 src/preferences.cpp:674
-msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
-
-#: data/translations/english.cfg:197 src/preferences.cpp:677
-msgid "Make units move and fight faster"
-msgstr ""
-
-#: data/translations/english.cfg:198 src/preferences.cpp:680
-msgid "Do not animate AI units moving"
-msgstr ""
-
-#: data/translations/english.cfg:199 src/preferences.cpp:683
-msgid "Overlay a grid onto the map"
-msgstr ""
-
-#: data/translations/english.cfg:200 src/preferences.cpp:686
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-
-#: data/translations/english.cfg:201 src/preferences.cpp:691
-msgid "Display a dialog at the beginning of your turn"
-msgstr ""
-
-#: data/translations/english.cfg:202 src/preferences.cpp:694
-msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
-
-#: data/translations/english.cfg:203 src/preferences.cpp:697
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-
-#: data/translations/english.cfg:204 src/preferences.cpp:700
-msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
-
-#: data/translations/english.cfg:205 src/preferences.cpp:703
-msgid "Use graphical special effects (may be slower)"
-msgstr ""
-
-#: data/translations/english.cfg:206 src/preferences.cpp:688
-msgid "Change the resolution the game runs at"
-msgstr ""
-
-#: data/translations/english.cfg:207 src/preferences.cpp:705
-msgid "View and configure keyboard shortcuts"
-msgstr ""
-
-#: data/translations/english.cfg:209 src/multiplayer.cpp:94
-msgid "The maximum turns the game will go for"
-msgstr ""
-
-#: data/translations/english.cfg:210 src/multiplayer.cpp:100
-msgid "The amount of income each village yields per turn"
-msgstr ""
-
-#: data/translations/english.cfg:211 src/multiplayer.cpp:106
-msgid "The amount of experience a unit needs to advance"
-msgstr ""
-
-#: data/translations/english.cfg:212 src/multiplayer.cpp:110
-msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr ""
-
-#: data/translations/english.cfg:213 src/multiplayer.cpp:114
-msgid "The map is unknown until your units explore it"
-msgstr ""
-
-#: data/translations/english.cfg:214 src/multiplayer.cpp:118
-msgid "Allow users who are not playing to watch the game"
-msgstr ""
-
-#: data/translations/english.cfg:216
+#: data/translations/english.cfg:69
 msgid "Configure Sides:"
 msgstr ""
 
-#: data/translations/english.cfg:217
+#: data/translations/english.cfg:70
 msgid "Choose Team Settings:"
 msgstr ""
 
-#: data/translations/english.cfg:218 src/multiplayer_client.cpp:439
-msgid "Choose your side:"
-msgstr ""
-
-#: data/translations/english.cfg:219 src/multiplayer_client.cpp:397
-msgid "There are no available sides in this game."
-msgstr ""
-
-#: data/translations/english.cfg:220
-msgid "Start Game!"
-msgstr ""
-
-#: data/translations/english.cfg:221 src/multiplayer_client.cpp:464
-msgid "The game has been cancelled"
-msgstr ""
-
-#: data/translations/english.cfg:222 src/multiplayer_client.cpp:468
-msgid "The side you have chosen is no longer available"
-msgstr ""
-
-#: data/translations/english.cfg:223 src/multiplayer_client.cpp:111
-msgid "Waiting for game to start..."
-msgstr ""
-
-#: data/translations/english.cfg:224 src/multiplayer_connect.cpp:538
-#: src/multiplayer_connect.cpp:542
-msgid "Waiting for network players to join"
-msgstr ""
-
-#: data/translations/english.cfg:225 src/multiplayer_client.cpp:346
-msgid "Getting game data..."
-msgstr ""
-
-#: data/translations/english.cfg:226 src/multiplayer_client.cpp:59
-msgid "Receiving game list..."
-msgstr ""
-
-#: data/translations/english.cfg:227 src/multiplayer_client.cpp:237
-msgid "Connecting to remote host..."
-msgstr ""
-
-#: data/translations/english.cfg:228 src/show_dialog.cpp:941
-msgid "KB"
-msgstr ""
-
-#: data/translations/english.cfg:230 src/multiplayer_connect.cpp:258
-msgid "Local Player"
-msgstr ""
-
-#: data/translations/english.cfg:231 src/multiplayer_connect.cpp:259
-#: src/multiplayer_connect.cpp:475 src/multiplayer_connect.cpp:589
-#: src/multiplayer_connect.cpp:683
-msgid "Computer Player"
-msgstr ""
-
-#: data/translations/english.cfg:232 src/multiplayer_connect.cpp:257
-msgid "Network Player"
-msgstr ""
-
-#: data/translations/english.cfg:233 src/multiplayer_connect.cpp:260
-msgid "Empty"
-msgstr ""
-
-#: data/translations/english.cfg:234 src/multiplayer_client.cpp:219
-msgid "Choose host to connect to"
-msgstr ""
-
-#: data/translations/english.cfg:235
+#: data/translations/english.cfg:71
 msgid "Could not connect to the remote host"
 msgstr ""
 
-#: data/translations/english.cfg:236 src/multiplayer_client.cpp:42
-#: src/multiplayer_client.cpp:283
-msgid "Connection timed out"
-msgstr ""
-
-#: data/translations/english.cfg:237
+#: data/translations/english.cfg:72
 msgid "Waiting for players to connect"
 msgstr ""
 
-#: data/translations/english.cfg:238
+#: data/translations/english.cfg:73
 msgid "Filled"
 msgstr ""
 
-#: data/translations/english.cfg:239 data/translations/english.cfg:288
-msgid "multiplayer save"
-msgstr ""
-
-#: data/translations/english.cfg:240
+#: data/translations/english.cfg:74
 msgid "Available"
 msgstr ""
 
-#: data/translations/english.cfg:241
+#: data/translations/english.cfg:75
 msgid "&misc/observer.png,Observer"
 msgstr ""
 
-#: data/translations/english.cfg:242 src/preferences.cpp:360
-msgid "player"
-msgstr ""
-
-#: data/translations/english.cfg:243 src/multiplayer_lobby.cpp:141
-msgid "Vacant Slot"
-msgstr ""
-
-#: data/translations/english.cfg:244 src/multiplayer_lobby.cpp:141
-msgid "Vacant Slots"
-msgstr ""
-
-#: data/translations/english.cfg:246 src/game.cpp:965
-msgid "Host Multiplayer Game"
-msgstr ""
-
-#: data/translations/english.cfg:247 src/game.cpp:963
-msgid "Join Official Server"
-msgstr ""
-
-#: data/translations/english.cfg:248 src/game.cpp:964
-#: src/multiplayer_lobby.cpp:157
-msgid "Join Game"
-msgstr ""
-
-#: data/translations/english.cfg:249 src/multiplayer_lobby.cpp:156
-msgid "Observe Game"
-msgstr ""
-
-#: data/translations/english.cfg:250 data/translations/english.cfg:278
-#: src/dialogs.cpp:514 src/hotkeys.cpp:133 src/multiplayer.cpp:82
-msgid "Load Game"
-msgstr ""
-
-#: data/translations/english.cfg:251 src/multiplayer.cpp:170
-#: src/multiplayer_lobby.cpp:158
-msgid "Create Game"
-msgstr ""
-
-#: data/translations/english.cfg:252 src/multiplayer.cpp:174
-msgid "Name of game"
-msgstr ""
-
-#: data/translations/english.cfg:253 src/multiplayer.cpp:186
-msgid "Map to play"
-msgstr ""
-
-#: data/translations/english.cfg:254 src/multiplayer.cpp:357
-msgid "Village Gold"
-msgstr ""
-
-#: data/translations/english.cfg:255 src/multiplayer.cpp:369
-msgid "Experience Requirements"
-msgstr ""
-
-#: data/translations/english.cfg:256 src/multiplayer.cpp:349
-msgid "Turns"
-msgstr ""
-
-#: data/translations/english.cfg:257 src/multiplayer.cpp:345
-msgid "Unlimited"
-msgstr ""
-
-#: data/translations/english.cfg:259 src/game.cpp:963
-msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
-
-#: data/translations/english.cfg:260 src/game.cpp:964
-msgid "Join a server or hosted game"
-msgstr ""
-
-#: data/translations/english.cfg:261 src/game.cpp:965
-msgid "Host a game without using a server"
-msgstr ""
-
-#: data/translations/english.cfg:263 src/game.cpp:968
-#: src/multiplayer_client.cpp:267
-msgid "Login"
-msgstr ""
-
-#: data/translations/english.cfg:264 src/multiplayer_client.cpp:266
-msgid "You must log in to this server"
-msgstr ""
-
-#: data/translations/english.cfg:266 src/hotkeys.cpp:358 src/hotkeys.cpp:542
-msgid "Do you really want to quit?"
-msgstr ""
-
-#: data/translations/english.cfg:267 src/playturn.cpp:1153
-#: src/playturn.cpp:1158
-msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
-
-#: data/translations/english.cfg:268 src/playturn.cpp:1144
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
-msgstr ""
-
-#: data/translations/english.cfg:270 src/dialogs.cpp:86
-msgid "Advance Unit"
-msgstr ""
-
-#: data/translations/english.cfg:271 src/dialogs.cpp:87
-msgid "What should our victorious unit become?"
-msgstr ""
-
-#: data/translations/english.cfg:272 src/game.cpp:793
-#: src/multiplayer_connect.cpp:104
-msgid ""
-"This save is from a different version of the game. Do you want to try to "
-"load it?"
-msgstr ""
-
-#: data/translations/english.cfg:273 src/game.cpp:804 src/game.cpp:809
-#: src/game.cpp:814 src/playlevel.cpp:536 src/playlevel.cpp:750
-msgid "The file you have tried to load is corrupt"
-msgstr ""
-
-#: data/translations/english.cfg:274 src/multiplayer_connect.cpp:97
-msgid "This is not a multiplayer save"
-msgstr ""
-
-#: data/translations/english.cfg:275 src/dialogs.cpp:400
-msgid "No Saved Games"
-msgstr ""
-
-#: data/translations/english.cfg:277 src/dialogs.cpp:401
-msgid ""
-"There are no saved games to load.\n"
-"(Games are saved automatically when you complete a scenario)"
-msgstr ""
-
-#: data/translations/english.cfg:279 src/dialogs.cpp:515
-msgid "Choose the game to load"
-msgstr ""
-
-#: data/translations/english.cfg:280 src/multiplayer_client.cpp:504
-msgid "Show replay of game up to save point?"
-msgstr ""
-
-#: data/translations/english.cfg:281 src/dialogs.cpp:511
-msgid "Show replay"
-msgstr ""
-
-#: data/translations/english.cfg:282 src/playturn.cpp:2350
-msgid "has left the game. What do you want to do?"
-msgstr ""
-
-#: data/translations/english.cfg:283 src/playturn.cpp:2346
-msgid "Replace with AI"
-msgstr ""
-
-#: data/translations/english.cfg:284 src/playturn.cpp:2347
-msgid "Replace with local player"
-msgstr ""
-
-#: data/translations/english.cfg:285 src/playturn.cpp:2348
-msgid "Abort game"
-msgstr ""
-
-#: data/translations/english.cfg:286 src/playlevel.cpp:765
-msgid ""
-"A network disconnection has occured, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-
-#: data/translations/english.cfg:287 src/playturn.cpp:2315
-msgid ""
-"The games are out of sync and will have to exit. Do you want to save an "
-"error log of your game?"
-msgstr ""
-
-#: data/translations/english.cfg:289 src/game.cpp:1096
-msgid "The End"
-msgstr ""
-
-#: data/translations/english.cfg:290 src/game.cpp:1097
-msgid "You have reached the end of the currently playable levels"
-msgstr ""
-
-#: data/translations/english.cfg:291 src/playlevel.cpp:689
-msgid "Defeat"
-msgstr ""
-
-#: data/translations/english.cfg:292 src/playlevel.cpp:690
-msgid "You have been defeated!"
-msgstr ""
-
-#: data/translations/english.cfg:293 src/playlevel.cpp:722
-msgid "Victory"
-msgstr ""
-
-#: data/translations/english.cfg:294 src/playlevel.cpp:723
-msgid "You have emerged victorious!"
-msgstr ""
-
-#: data/translations/english.cfg:295 src/playlevel.cpp:675
-msgid "Game Over"
-msgstr ""
-
-#: data/translations/english.cfg:296 src/playlevel.cpp:676
-msgid "The game is over."
-msgstr ""
-
-#: data/translations/english.cfg:297 src/playlevel.cpp:725
-msgid "Remaining gold"
-msgstr ""
-
-#: data/translations/english.cfg:298 src/playlevel.cpp:728
-msgid "Early finish bonus"
-msgstr ""
-
-#: data/translations/english.cfg:299 src/playlevel.cpp:730
-msgid "per turn"
-msgstr ""
-
-#: data/translations/english.cfg:300 src/playlevel.cpp:731
-msgid "Turns finished early"
-msgstr ""
-
-#: data/translations/english.cfg:301 src/playlevel.cpp:741
-msgid "Retained Gold"
-msgstr ""
-
-#: data/translations/english.cfg:302 src/playlevel.cpp:740
-#, no-c-format
-msgid "80% of gold is retained for the next scenario"
-msgstr ""
-
-#: data/translations/english.cfg:303 src/playlevel.cpp:733
-msgid "Bonus"
-msgstr ""
-
-#: data/translations/english.cfg:304 src/multiplayer_client.cpp:93
-#: src/multiplayer_connect.cpp:382 src/multiplayer_connect.cpp:384
-#: src/playlevel.cpp:735 src/playturn.cpp:1457 src/playturn.cpp:1462
-#: src/playturn.cpp:1549
-msgid "Gold"
-msgstr ""
-
-#: data/translations/english.cfg:306 data/translations/english.cfg:352
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1458
-msgid "Villages"
-msgstr ""
-
-#: data/translations/english.cfg:307 src/playturn.cpp:1458
-msgid "Units"
-msgstr ""
-
-#: data/translations/english.cfg:308 src/playturn.cpp:1459
-msgid "Upkeep"
-msgstr ""
-
-#: data/translations/english.cfg:309 src/playturn.cpp:1459
-msgid "Income"
-msgstr ""
-
-#: data/translations/english.cfg:311 src/help.cpp:638 src/help.cpp:639
-#: src/playturn.cpp:1874
-msgid "Name"
-msgstr ""
-
-#: data/translations/english.cfg:312 src/help.cpp:642 src/help.cpp:643
-#: src/playturn.cpp:1873
-msgid "Type"
-msgstr ""
-
-#: data/translations/english.cfg:313 src/dialogs.cpp:736 src/display.cpp:901
-#: src/help.cpp:615 src/playturn.cpp:1875 src/unit.cpp:1028
-msgid "HP"
-msgstr ""
-
-#: data/translations/english.cfg:314 src/dialogs.cpp:740 src/dialogs.cpp:748
-#: src/display.cpp:905 src/display.cpp:913 src/playturn.cpp:1713
-#: src/playturn.cpp:1876 src/unit.cpp:1087
-msgid "XP"
-msgstr ""
-
-#: data/translations/english.cfg:315 data/translations/english.cfg:437
-#: src/dialogs.cpp:753 src/display.cpp:917 src/help.cpp:616
-#: src/playturn.cpp:1877 src/unit.cpp:1064
-msgid "Moves"
-msgstr ""
-
-#: data/translations/english.cfg:316 src/playturn.cpp:1878
-msgid "Location"
-msgstr ""
-
-#: data/translations/english.cfg:317 src/dialogs.cpp:715 src/display.cpp:883
-#: src/help.cpp:561 src/playturn.cpp:1711
-msgid "level"
-msgstr ""
-
-#: data/translations/english.cfg:318 src/help.cpp:622
-msgid "Required XP"
-msgstr ""
-
-#: data/translations/english.cfg:319 src/help.cpp:646 src/help.cpp:647
-#: src/unit_types.cpp:301
-msgid "Dmg"
-msgstr ""
-
-#: data/translations/english.cfg:320 src/unit_types.cpp:313
-msgid "strikes"
-msgstr ""
-
-#: data/translations/english.cfg:321 src/help.cpp:568
-msgid "Advances to"
-msgstr ""
-
-#: data/translations/english.cfg:322 src/help.cpp:594
-msgid "Abilities"
-msgstr ""
-
-#: data/translations/english.cfg:324 src/playturn.cpp:1783
-msgid "Message"
-msgstr ""
-
-#: data/translations/english.cfg:325
+#: data/translations/english.cfg:77
 msgid "Describe Unit"
 msgstr ""
 
-#: data/translations/english.cfg:326 src/hotkeys.cpp:131 src/playturn.cpp:1357
-msgid "Rename Unit"
-msgstr ""
-
-#: data/translations/english.cfg:327 src/hotkeys.cpp:145
-msgid "Scenario Objectives"
-msgstr ""
-
-#: data/translations/english.cfg:329 src/multiplayer_connect.cpp:237
-msgid ""
-"Victory\n"
-"@Defeat enemy leader(s)"
-msgstr ""
-
-#: data/translations/english.cfg:330 src/hotkeys.cpp:134
-msgid "Recruit"
-msgstr ""
-
-#: data/translations/english.cfg:331 src/hotkeys.cpp:136
-msgid "Recall"
-msgstr ""
-
-#: data/translations/english.cfg:332 src/playturn.cpp:1695
-msgid "You are seperated from your soldiers and may not recall them"
-msgstr ""
-
-#: data/translations/english.cfg:333 src/hotkeys.cpp:146 src/playturn.cpp:1926
-msgid "Unit List"
-msgstr ""
-
-#: data/translations/english.cfg:334 src/hotkeys.cpp:139
-msgid "Status Table"
-msgstr ""
-
-#: data/translations/english.cfg:335 src/hotkeys.cpp:132
-msgid "Save Game"
-msgstr ""
-
-#: data/translations/english.cfg:338
+#: data/translations/english.cfg:79
 msgid "Full Screen or Windowed?"
 msgstr ""
 
-#: data/translations/english.cfg:339 src/preferences.cpp:987
-msgid "Choose Resolution"
-msgstr ""
-
-#: data/translations/english.cfg:340 src/preferences.cpp:637
-msgid "Video Mode"
-msgstr ""
-
-#: data/translations/english.cfg:341 src/preferences.cpp:956
-msgid "There are no alternative video modes available"
-msgstr ""
-
-#: data/translations/english.cfg:342 src/preferences.cpp:142
-#: src/preferences.cpp:188
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-
-#: data/translations/english.cfg:343
+#: data/translations/english.cfg:80
 msgid "Display:"
 msgstr ""
 
-#: data/translations/english.cfg:344 src/preferences.cpp:627
-msgid "Full Screen"
-msgstr ""
-
-#: data/translations/english.cfg:345
+#: data/translations/english.cfg:81
 msgid "Windowed"
 msgstr ""
 
-#: data/translations/english.cfg:347 src/mapgen_dialog.cpp:72
-msgid "Map Generator"
-msgstr ""
-
-#: data/translations/english.cfg:348 src/multiplayer.cpp:123
-msgid "Regenerate"
-msgstr ""
-
-#: data/translations/english.cfg:349 src/multiplayer.cpp:125
-msgid "Settings..."
-msgstr ""
-
-#: data/translations/english.cfg:350 src/mapgen_dialog.cpp:80
-msgid "Iterations"
-msgstr ""
-
-#: data/translations/english.cfg:351 src/mapgen_dialog.cpp:81
-msgid "Bump Size"
-msgstr ""
-
-#: data/translations/english.cfg:353 src/mapgen_dialog.cpp:246
-msgid "/1000 tiles"
-msgstr ""
-
-#: data/translations/english.cfg:354 src/mapgen_dialog.cpp:83
-msgid "Landform"
-msgstr ""
-
-#: data/translations/english.cfg:355 src/mapgen_dialog.cpp:251
-msgid "Inland"
-msgstr ""
-
-#: data/translations/english.cfg:356 src/mapgen_dialog.cpp:251
-msgid "Coastal"
-msgstr ""
-
-#: data/translations/english.cfg:357 src/mapgen_dialog.cpp:251
-msgid "Island"
-msgstr ""
-
-#: data/translations/english.cfg:358 src/mapgen_dialog.cpp:183
-msgid "Roads Between Castles"
-msgstr ""
-
-#: data/translations/english.cfg:360 src/mapgen_dialog.cpp:77
-#: src/multiplayer.cpp:478
-msgid "Players"
-msgstr ""
-
-#: data/translations/english.cfg:361 src/mapgen_dialog.cpp:78
-msgid "Width"
-msgstr ""
-
-#: data/translations/english.cfg:362 src/mapgen_dialog.cpp:79
-msgid "Height"
-msgstr ""
-
-#: data/translations/english.cfg:364 src/preferences.cpp:638
-msgid "Hotkeys"
-msgstr ""
-
-#: data/translations/english.cfg:365 src/preferences.cpp:1041
-msgid "Save Hotkeys"
-msgstr ""
-
-#: data/translations/english.cfg:366 src/preferences.cpp:1038
-msgid "Change Hotkey"
-msgstr ""
-
-#: data/translations/english.cfg:367 src/preferences.cpp:1015
-msgid "Hotkey Settings"
-msgstr ""
-
-#: data/translations/english.cfg:368 src/preferences.cpp:1019
-#: src/preferences.cpp:1077
-msgid "Press desired HotKey"
-msgstr ""
-
-#: data/translations/english.cfg:369 src/preferences.cpp:1110
-msgid "This HotKey is already in use."
-msgstr ""
-
-#: data/translations/english.cfg:371 src/dialogs.cpp:619 src/dialogs.cpp:628
-msgid "Profile"
-msgstr ""
-
-#: data/translations/english.cfg:373 src/playturn.cpp:1783
-msgid "Send to allies only"
-msgstr ""
-
-#: data/translations/english.cfg:374 src/playturn.cpp:2046
-msgid "Chat Log"
-msgstr ""
-
-#: data/translations/english.cfg:376
+#: data/translations/english.cfg:83
 msgid "Speed:"
 msgstr ""
 
-#: data/translations/english.cfg:377
+#: data/translations/english.cfg:84
 msgid "Normal"
 msgstr ""
 
-#: data/translations/english.cfg:378 src/preferences.cpp:628
-msgid "Accelerated Speed"
-msgstr ""
-
-#: data/translations/english.cfg:379 src/preferences.cpp:629
-msgid "Skip AI Moves"
-msgstr ""
-
-#: data/translations/english.cfg:381 src/preferences.cpp:630
-msgid "Show Grid"
-msgstr ""
-
-#: data/translations/english.cfg:382 src/preferences.cpp:631
-msgid "Show Floating Labels"
-msgstr ""
-
-#: data/translations/english.cfg:384
+#: data/translations/english.cfg:86
 msgid "Sound Settings..."
 msgstr ""
 
-#: data/translations/english.cfg:385 src/preferences.cpp:640
-msgid "SFX Volume:"
-msgstr ""
-
-#: data/translations/english.cfg:386 src/preferences.cpp:640
-msgid "Music Volume:"
-msgstr ""
-
-#: data/translations/english.cfg:387 src/preferences.cpp:641
-msgid "Scroll Speed:"
-msgstr ""
-
-#: data/translations/english.cfg:388 src/preferences.cpp:641
-msgid "Gamma:"
-msgstr ""
-
-#: data/translations/english.cfg:389 src/preferences.cpp:639
-msgid "Adjust Gamma"
-msgstr ""
-
-#: data/translations/english.cfg:391 src/playturn.cpp:663
-msgid "Choose weapon"
-msgstr ""
-
-#: data/translations/english.cfg:392
+#: data/translations/english.cfg:87
 msgid "Options"
 msgstr ""
 
-#: data/translations/english.cfg:393 src/hotkeys.cpp:144
-#: src/preferences.cpp:910 src/titlescreen.cpp:157
-msgid "Preferences"
-msgstr ""
-
-#: data/translations/english.cfg:394 data/units/General.cfg:3
-#: src/preferences.cpp:898
-msgid "General"
-msgstr ""
-
-#: data/translations/english.cfg:395 src/preferences.cpp:899
-msgid "Display"
-msgstr ""
-
-#: data/translations/english.cfg:396 src/preferences.cpp:900
-msgid "Sound"
-msgstr ""
-
-#: data/translations/english.cfg:398 src/actions.cpp:202
-msgid "none"
-msgstr ""
-
-#: data/translations/english.cfg:400
+#: data/translations/english.cfg:89
 msgid "Choose Scenario"
 msgstr ""
 
-#: data/translations/english.cfg:402 src/dialogs.cpp:156
-msgid "No objectives available"
-msgstr ""
-
-#: data/translations/english.cfg:405 src/playturn.cpp:1697
-msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
-msgstr ""
-
-#: data/translations/english.cfg:407 src/playturn.cpp:1701
-msgid "You must have at least"
-msgstr ""
-
-#: data/translations/english.cfg:408 src/playturn.cpp:1703
-msgid "gold pieces to recall a unit"
-msgstr ""
-
-#: data/translations/english.cfg:410 src/playturn.cpp:1739
-msgid "Select unit"
-msgstr ""
-
-#: data/translations/english.cfg:411 src/playturn.cpp:1568
-msgid "Recruit unit"
-msgstr ""
-
-#: data/translations/english.cfg:413 src/playturn.cpp:1597
-msgid "You don't have enough gold to recruit that unit"
-msgstr ""
-
-#: data/translations/english.cfg:415 src/display.cpp:864
-msgid "healthy"
-msgstr ""
-
-#: data/translations/english.cfg:416 src/display.cpp:869 src/reports.cpp:105
-msgid "invisible"
-msgstr ""
-
-#: data/translations/english.cfg:417 src/actions.cpp:689 src/actions.cpp:825
-#: src/display.cpp:873 src/reports.cpp:110
-msgid "slowed"
-msgstr ""
-
-#: data/translations/english.cfg:418 src/actions.cpp:684 src/actions.cpp:820
-#: src/display.cpp:877 src/reports.cpp:115
-msgid "poisoned"
-msgstr ""
-
-#: data/translations/english.cfg:419 data/units/Cockatrice.cfg:26
-#: src/actions.cpp:705 src/actions.cpp:842 src/reports.cpp:122
-msgid "stone"
-msgstr ""
-
-#: data/translations/english.cfg:421 src/help.cpp:658 src/help.cpp:659
-msgid "Special"
-msgstr ""
-
-#: data/translations/english.cfg:422 src/help.cpp:654 src/help.cpp:655
-msgid "Range"
-msgstr ""
-
-#: data/translations/english.cfg:423 src/dialogs.cpp:770 src/display.cpp:934
-#: src/help.cpp:691 src/playturn.cpp:616 src/reports.cpp:229
-msgid "melee"
-msgstr ""
-
-#: data/translations/english.cfg:424 src/dialogs.cpp:771 src/display.cpp:935
-#: src/help.cpp:691 src/playturn.cpp:616 src/reports.cpp:230
-msgid "ranged"
-msgstr ""
-
-#: data/translations/english.cfg:426 src/playturn.cpp:629 src/reports.cpp:209
-msgid "vs"
-msgstr ""
-
-#: data/translations/english.cfg:430 src/help.cpp:755
-msgid "Terrain Modifiers"
-msgstr ""
-
-#: data/translations/english.cfg:431
+#: data/translations/english.cfg:91
 msgid "This terrain acts as $terrains for movement and defense purposes"
 msgstr ""
 
-#: data/translations/english.cfg:432
+#: data/translations/english.cfg:92
 msgid "The terrain with the best modifier is chosen automatically"
 msgstr ""
 
-#: data/translations/english.cfg:433
+#: data/translations/english.cfg:93
 msgid "This terrain gives healing"
 msgstr ""
 
-#: data/translations/english.cfg:434
+#: data/translations/english.cfg:94
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:435
+#: data/translations/english.cfg:95
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain"
 msgstr ""
 
-#: data/translations/english.cfg:436
+#: data/translations/english.cfg:96
 msgid "or"
 msgstr ""
 
-#: data/translations/english.cfg:438 src/help.cpp:767 src/help.cpp:768
-msgid "Defense"
-msgstr ""
-
-#: data/translations/english.cfg:440 src/help.cpp:715
-msgid "Resistances"
-msgstr ""
-
-#: data/translations/english.cfg:441 src/help.cpp:723 src/help.cpp:724
-msgid "Resistance"
-msgstr ""
-
-#: data/translations/english.cfg:442
+#: data/translations/english.cfg:97
 msgid "Unit resistance table"
 msgstr ""
 
-#: data/translations/english.cfg:443 src/mapgen_dialog.cpp:69
-#: src/preferences.cpp:1010
-msgid "Close Window"
-msgstr ""
-
-#: data/translations/english.cfg:445
+#: data/translations/english.cfg:99
 msgid "See Also..."
 msgstr ""
 
-#: data/translations/english.cfg:447 src/help.cpp:719 src/help.cpp:720
-msgid "Attack Type"
-msgstr ""
-
-#: data/translations/english.cfg:449 src/playturn.cpp:662
-msgid "Attack Enemy"
-msgstr ""
-
-#: data/translations/english.cfg:451 src/help.cpp:632 src/reports.cpp:232
-msgid "attacks"
-msgstr ""
-
-#: data/translations/english.cfg:452 src/reports.cpp:231
-msgid "damage"
-msgstr ""
-
-#: data/translations/english.cfg:453 src/reports.cpp:236
-msgid "hexes"
-msgstr ""
-
-#: data/translations/english.cfg:456 src/actions.cpp:1691
-msgid "Ambushed!"
-msgstr ""
-
-#: data/translations/english.cfg:457 src/actions.cpp:1721
-msgid "Enemy unit sighted!"
-msgstr ""
-
-#: data/translations/english.cfg:458 src/actions.cpp:1719
-msgid "Friendly unit sighted"
-msgstr ""
-
-#: data/translations/english.cfg:459 src/actions.cpp:1728
-msgid "$enemies Enemy units sighted!"
-msgstr ""
-
-#: data/translations/english.cfg:460 src/actions.cpp:1726
-msgid "$friends Friendly units sighted"
-msgstr ""
-
-#: data/translations/english.cfg:461 src/actions.cpp:1732
-msgid "Units sighted! ($friends friendly, $enemies enemy)"
-msgstr ""
-
-#: data/translations/english.cfg:462 src/actions.cpp:1753
-msgid "(press $hotkey to continue)"
-msgstr ""
-
-#: data/translations/english.cfg:466
+#: data/translations/english.cfg:103
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target."
 msgstr ""
 
-#: data/translations/english.cfg:469
+#: data/translations/english.cfg:106
 msgid ""
 "Charge:\n"
 "This attack deals double damage to the target. It also causes this unit to "
 "take double damage from the target's counterattack."
 msgstr ""
 
-#: data/translations/english.cfg:472
+#: data/translations/english.cfg:109
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
 
-#: data/translations/english.cfg:475
+#: data/translations/english.cfg:112
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:478
+#: data/translations/english.cfg:115
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:481
+#: data/translations/english.cfg:118
 msgid ""
 "Plague:\n"
 "If this unit kills a living target and that unit was not stationed in a "
 "village, the dead target's corpse will rise up and fight for you."
 msgstr ""
 
-#: data/translations/english.cfg:484
+#: data/translations/english.cfg:121
 msgid ""
 "Poison:\n"
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP."
 msgstr ""
 
-#: data/translations/english.cfg:487
+#: data/translations/english.cfg:124
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
 "receive one less attack than normal in combat for the duration of one turn."
 msgstr ""
 
-#: data/translations/english.cfg:490
+#: data/translations/english.cfg:127
 msgid ""
 "Stone:\n"
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
 
-#: data/translations/english.cfg:493
+#: data/translations/english.cfg:130
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain."
 msgstr ""
 
-#: data/translations/english.cfg:496
+#: data/translations/english.cfg:133
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 
-#: data/translations/english.cfg:498 data/units/Halbardier.cfg:31
+#: data/translations/english.cfg:135
 msgid "first strike"
 msgstr ""
 
-#: data/translations/english.cfg:501 src/multiplayer_connect.cpp:361
-msgid "Game Lobby"
-msgstr ""
-
-#: data/translations/english.cfg:502 src/multiplayer.cpp:112
-#: src/multiplayer_lobby.cpp:127
-msgid "Shroud"
-msgstr ""
-
-#: data/translations/english.cfg:503 src/multiplayer.cpp:108
-msgid "Fog Of War"
-msgstr ""
-
-#: data/translations/english.cfg:504 src/multiplayer.cpp:116
-#: src/reports.cpp:376
-msgid "Observers"
-msgstr ""
-
-#: data/translations/english.cfg:505 src/multiplayer_connect.cpp:48
-msgid "I'm Ready"
-msgstr ""
-
-#: data/translations/english.cfg:506 src/multiplayer_connect.cpp:364
-#: src/multiplayer_connect.cpp:366
-msgid "Player/Type"
-msgstr ""
-
-#: data/translations/english.cfg:507 src/multiplayer_connect.cpp:50
-msgid " Computer vs Computer "
-msgstr ""
-
-#: data/translations/english.cfg:508 src/multiplayer_connect.cpp:367
-#: src/multiplayer_connect.cpp:370
-msgid "Race"
-msgstr ""
-
-#: data/translations/english.cfg:509 src/multiplayer_connect.cpp:288
-#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:375
-msgid "Team"
-msgstr ""
-
-#: data/translations/english.cfg:510 src/multiplayer_connect.cpp:377
-#: src/multiplayer_connect.cpp:380
-msgid "Color"
-msgstr ""
-
-#: data/translations/english.cfg:511 src/multiplayer.cpp:142
-#: src/multiplayer_connect.cpp:177
-msgid "No multiplayer sides."
-msgstr ""
-
-#: data/translations/english.cfg:512 src/multiplayer.cpp:129
-msgid "Share View"
-msgstr ""
-
-#: data/translations/english.cfg:513 src/multiplayer.cpp:130
-msgid "Share Maps"
-msgstr ""
-
-#: data/translations/english.cfg:514 src/multiplayer.cpp:131
-msgid "Share None"
-msgstr ""
-
-#: data/translations/english.cfg:517
+#: data/translations/english.cfg:138
 msgid "Elves"
 msgstr ""
 
-#: data/translations/english.cfg:518
+#: data/translations/english.cfg:139
 msgid "Orcs"
 msgstr ""
 
-#: data/translations/english.cfg:519
+#: data/translations/english.cfg:140
 msgid "Humans"
 msgstr ""
 
-#: data/translations/english.cfg:520
+#: data/translations/english.cfg:141
 msgid "Undead"
 msgstr ""
 
-#: data/translations/english.cfg:523 src/multiplayer_connect.cpp:295
-msgid "Red"
-msgstr ""
-
-#: data/translations/english.cfg:524 src/multiplayer_connect.cpp:297
-msgid "Blue"
-msgstr ""
-
-#: data/translations/english.cfg:525 src/multiplayer_connect.cpp:299
-msgid "Green"
-msgstr ""
-
-#: data/translations/english.cfg:526 src/multiplayer_connect.cpp:301
-msgid "Yellow"
-msgstr ""
-
-#: data/translations/english.cfg:527 src/multiplayer_connect.cpp:303
-msgid "Purple"
-msgstr ""
-
-#: data/translations/english.cfg:528 src/multiplayer_connect.cpp:305
-msgid "Orange"
-msgstr ""
-
-#: data/translations/english.cfg:529 src/multiplayer_connect.cpp:307
-msgid "Grey"
-msgstr ""
-
-#: data/translations/english.cfg:530 src/multiplayer_connect.cpp:309
-msgid "White"
-msgstr ""
-
-#: data/translations/english.cfg:531 src/multiplayer_connect.cpp:311
-msgid "Brown"
-msgstr ""
-
-#: data/translations/english.cfg:534 src/help.cpp:759 src/help.cpp:760
-msgid "Terrain"
-msgstr ""
-
-#: data/translations/english.cfg:535
+#: data/translations/english.cfg:145
 msgid "Deep Water"
 msgstr ""
 
-#: data/translations/english.cfg:536
+#: data/translations/english.cfg:146
 msgid "Shallow Water"
 msgstr ""
 
-#: data/translations/english.cfg:537
+#: data/translations/english.cfg:147
 msgid "Sand"
 msgstr ""
 
-#: data/translations/english.cfg:538 data/translations/english.cfg:540
-#: data/translations/english.cfg:541 data/translations/english.cfg:542
-#: data/translations/english.cfg:543 data/translations/english.cfg:544
+#: data/translations/english.cfg:148 data/translations/english.cfg:150
+#: data/translations/english.cfg:151 data/translations/english.cfg:152
+#: data/translations/english.cfg:153 data/translations/english.cfg:154
 msgid "Village"
 msgstr ""
 
-#: data/translations/english.cfg:539
+#: data/translations/english.cfg:149
 msgid "Swamp"
 msgstr ""
 
-#: data/translations/english.cfg:545
+#: data/translations/english.cfg:155
 msgid "Tundra"
 msgstr ""
 
-#: data/translations/english.cfg:546
+#: data/translations/english.cfg:156
 msgid "Ice"
 msgstr ""
 
-#: data/translations/english.cfg:547
+#: data/translations/english.cfg:157
 msgid "Road"
 msgstr ""
 
-#: data/translations/english.cfg:548
+#: data/translations/english.cfg:158
 msgid "Dirt"
 msgstr ""
 
-#: data/translations/english.cfg:549
+#: data/translations/english.cfg:159
 msgid "Grassland"
 msgstr ""
 
-#: data/translations/english.cfg:550
+#: data/translations/english.cfg:160
 msgid "Hills"
 msgstr ""
 
-#: data/translations/english.cfg:551
+#: data/translations/english.cfg:161
 msgid "Mountains"
 msgstr ""
 
-#: data/translations/english.cfg:552
+#: data/translations/english.cfg:162
 msgid "Forest"
 msgstr ""
 
-#: data/translations/english.cfg:553 data/translations/english.cfg:554
-#: data/translations/english.cfg:555
+#: data/translations/english.cfg:163 data/translations/english.cfg:164
+#: data/translations/english.cfg:165
 msgid "Bridge"
 msgstr ""
 
-#: data/translations/english.cfg:556
+#: data/translations/english.cfg:166
 msgid "Castle"
 msgstr ""
 
-#: data/translations/english.cfg:557
+#: data/translations/english.cfg:167
 msgid "Keep"
 msgstr ""
 
-#: data/translations/english.cfg:558
+#: data/translations/english.cfg:168
 msgid "Cave"
 msgstr ""
 
-#: data/translations/english.cfg:559
+#: data/translations/english.cfg:169
 msgid "Cave Wall"
 msgstr ""
 
-#: data/translations/english.cfg:562
+#: data/translations/english.cfg:172
 msgid "$name's Bridge,$name's Crossing"
 msgstr ""
 
-#: data/translations/english.cfg:563
+#: data/translations/english.cfg:173
 msgid "$name's Highway,$name's Pass,Path of $name"
 msgstr ""
 
-#: data/translations/english.cfg:564
+#: data/translations/english.cfg:174
 msgid "$name River,River $name"
 msgstr ""
 
-#: data/translations/english.cfg:565
+#: data/translations/english.cfg:175
 msgid "$name Forest,$name's Forest"
 msgstr ""
 
-#: data/translations/english.cfg:566
+#: data/translations/english.cfg:176
 msgid "$name Lake"
 msgstr ""
 
-#: data/translations/english.cfg:567
+#: data/translations/english.cfg:177
 msgid "$name|bury,$name|ham,$name|ton"
 msgstr ""
 
-#: data/translations/english.cfg:568
+#: data/translations/english.cfg:178
 msgid "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross"
 msgstr ""
 
-#: data/translations/english.cfg:569
+#: data/translations/english.cfg:179
 msgid "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge"
 msgstr ""
 
-#: data/translations/english.cfg:570
+#: data/translations/english.cfg:180
 msgid "$name|ham,$name|ton,$name|field"
 msgstr ""
 
-#: data/translations/english.cfg:571
+#: data/translations/english.cfg:181
 msgid "$name|ham,$name|ton,$name|wood,$name Forest"
 msgstr ""
 
-#: data/translations/english.cfg:572
+#: data/translations/english.cfg:182
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
-#: data/translations/english.cfg:573
+#: data/translations/english.cfg:183
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
-#: data/translations/english.cfg:576 data/units/Princess.cfg:3
-msgid "Princess"
-msgstr ""
-
-#: data/translations/english.cfg:580
+#: data/translations/english.cfg:187
 msgid "Choose a File to Save As"
 msgstr ""
 
-#: data/translations/english.cfg:581
+#: data/translations/english.cfg:188
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: data/translations/english.cfg:582
+#: data/translations/english.cfg:189
 msgid "Which Player?"
 msgstr ""
 
-#: data/translations/english.cfg:583
+#: data/translations/english.cfg:190
 msgid "Which player should start here?"
 msgstr ""
 
-#: data/translations/english.cfg:584
+#: data/translations/english.cfg:191
 msgid "Choose a Map to Load"
 msgstr ""
 
-#: data/translations/english.cfg:585
+#: data/translations/english.cfg:192
 msgid "The file does not contain a valid map."
 msgstr ""
 
-#: data/translations/english.cfg:586
+#: data/translations/english.cfg:193
 msgid "'$filename' does not exist or can not be read as a file."
 msgstr ""
 
-#: data/translations/english.cfg:587
+#: data/translations/english.cfg:194
 msgid "Load failed: "
 msgstr ""
 
-#: data/translations/english.cfg:588
+#: data/translations/english.cfg:195
 msgid "You must have a hex selected on the board."
 msgstr ""
 
-#: data/translations/english.cfg:589
+#: data/translations/english.cfg:196
 msgid "Do you want to save the map before quitting?"
 msgstr ""
 
-#: data/translations/english.cfg:590
+#: data/translations/english.cfg:197
 msgid "Map saved."
 msgstr ""
 
-#: data/translations/english.cfg:591
+#: data/translations/english.cfg:198
 msgid "Could not save the map: $msg"
 msgstr ""
 
-#: data/translations/english.cfg:592
+#: data/translations/english.cfg:199
 msgid "Player "
 msgstr ""
 
-#: data/translations/english.cfg:593
+#: data/translations/english.cfg:200
 msgid "Your modifications to the map will be lost. Continue?"
 msgstr ""
 
-#: data/translations/english.cfg:594 data/translations/english.cfg:595
+#: data/translations/english.cfg:201
 msgid "Create New Map"
 msgstr ""
 
-#: data/translations/english.cfg:596
+#: data/translations/english.cfg:202
+msgid "Generate New Map"
+msgstr ""
+
+#: data/translations/english.cfg:203
 msgid "Generate Random Map"
 msgstr ""
 
-#: data/translations/english.cfg:597
+#: data/translations/english.cfg:204
 msgid "Random Generator Settings"
 msgstr ""
 
-#: data/translations/english.cfg:598
+#: data/translations/english.cfg:205
 msgid "Map creation failed."
 msgstr ""
 
-#: data/translations/english.cfg:599 src/hotkeys.cpp:164
+#: data/translations/english.cfg:206 src/hotkeys.cpp:164
 msgid "Resize Map"
 msgstr ""
 
-#: data/translations/english.cfg:600
+#: data/translations/english.cfg:207
 msgid "X-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:601
+#: data/translations/english.cfg:208
 msgid "Y-Axis"
 msgstr ""
 
-#: data/translations/english.cfg:602
+#: data/translations/english.cfg:209
 msgid "Flip around (this may change the dimensions of the map):"
 msgstr ""
 
-#: data/translations/english.cfg:603
+#: data/translations/english.cfg:210
 msgid "Edit"
 msgstr ""
 
-#: data/translations/english.cfg:604
+#: data/translations/english.cfg:211
 msgid "File"
 msgstr ""
 
-#: data/translations/english.cfg:605
+#: data/translations/english.cfg:212
 msgid "FG"
 msgstr ""
 
-#: data/translations/english.cfg:606
+#: data/translations/english.cfg:213
 msgid "BG"
 msgstr ""
 
-#: data/translations/english.cfg:608
+#: data/translations/english.cfg:215
 msgid "Next tip"
 msgstr ""
 
-#: data/translations/english.cfg:609
+#: data/translations/english.cfg:216
 msgid "Tip of the Day"
 msgstr ""
 
-#: data/translations/english.cfg:610
+#: data/translations/english.cfg:217
 msgid "Do not show tips"
 msgstr ""
 
-#: data/translations/english.cfg:611
+#: data/translations/english.cfg:218
 msgid ""
 "Lawful units fight better at day, and chaotic units fight better at night. "
 "Neutral units are unaffected by day and night."
 msgstr ""
 
-#: data/translations/english.cfg:612
+#: data/translations/english.cfg:219
 msgid ""
 "In a campaign, you can use veteran units from previous scenarios by using "
 "the 'recall' option."
 msgstr ""
 
-#: data/translations/english.cfg:613
+#: data/translations/english.cfg:220
 msgid ""
 "There are six types of attacks: pierce, blade, impact, fire, cold, and holy. "
 "Different units have weaknesses against different types of attacks. Right-"
@@ -13006,7 +11657,7 @@ msgid ""
 "types."
 msgstr ""
 
-#: data/translations/english.cfg:614
+#: data/translations/english.cfg:221
 msgid ""
 "The terrain your units are on determines the chance your opponents have of "
 "hitting them in battle. The defensive rating for the currently selected uni "
@@ -13014,7 +11665,7 @@ msgid ""
 "the screen."
 msgstr ""
 
-#: data/translations/english.cfg:615
+#: data/translations/english.cfg:222
 msgid ""
 "Poisoned units lose 8 hitpoints every turn, but they will not die from "
 "poison: poison will never reduce them below 1 hitpoint. Poisoned units can "
@@ -13022,83 +11673,83 @@ msgid ""
 "the 'cure' ability."
 msgstr ""
 
-#: data/translations/english.cfg:616
+#: data/translations/english.cfg:223
 msgid ""
 "You can use units from a previous scenario by selecting 'Recall' by the game "
 "menu. By recalling the same units over and over, you can build up a powerful "
 "and experienced army."
 msgstr ""
 
-#: data/translations/english.cfg:617
+#: data/translations/english.cfg:224
 msgid ""
 "All units have a Zone of Control in each of the hexes next to them. If a "
 "unit moves into an enemy's Zone of Control, it may not move any further that "
 "turn."
 msgstr ""
 
-#: data/translations/english.cfg:618
+#: data/translations/english.cfg:225
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks always have "
 "a 70% chance to hit, and marksman attacks have at least 60% chance to hit."
 msgstr ""
 
-#: data/translations/english.cfg:619
+#: data/translations/english.cfg:226
 msgid ""
 "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
-#: data/translations/english.cfg:620
+#: data/translations/english.cfg:227
 msgid ""
 "Units that do not move or attack during their turn rest, and will recover 2 "
 "hitpoints at the beginning of their next turn."
 msgstr ""
 
-#: data/translations/english.cfg:621
+#: data/translations/english.cfg:228
 msgid ""
 "Most foot units defend better in villages and castles than in most other "
 "terrain, while most mounted units don't get any defensive advantage in "
 "villages and castles."
 msgstr ""
 
-#: data/translations/english.cfg:622
+#: data/translations/english.cfg:229
 msgid ""
 "Horse based units are generally resistant to attacks with bladed or impact "
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
 
-#: data/translations/english.cfg:623
+#: data/translations/english.cfg:230
 msgid ""
 "Inflicting the killing blow on an enemy unit is the best way to gain "
 "experience. Units killing an enemy will gain 8 experience for every level of "
 "the unit they kill."
 msgstr ""
 
-#: data/translations/english.cfg:624
+#: data/translations/english.cfg:231
 msgid ""
 "Elvish units move and fight very well in forest. Dwarvish units move and "
 "fight very well in hills and mountains."
 msgstr ""
 
-#: data/translations/english.cfg:625
+#: data/translations/english.cfg:232
 msgid ""
 "Patience is often key. Rather than attacking in bad conditions, or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
 
-#: data/translations/english.cfg:626
+#: data/translations/english.cfg:233
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
 
-#: data/translations/english.cfg:627
+#: data/translations/english.cfg:234
 msgid ""
 "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
-#: data/translations/english.cfg:628
+#: data/translations/english.cfg:235
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map, and the number of turns you "
@@ -13106,7 +11757,7 @@ msgid ""
 "villages and waiting for turns to run out."
 msgstr ""
 
-#: data/translations/english.cfg:629
+#: data/translations/english.cfg:236
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -13114,128 +11765,78 @@ msgid ""
 "for you on their keep so you can recruit there."
 msgstr ""
 
-#: data/translations/english.cfg:630
+#: data/translations/english.cfg:237
 msgid ""
 "Skeletons are resistant to piercing and bladed attacks, but vulnerable to "
 "impact, fire, and holy attacks."
 msgstr ""
 
-#: data/translations/english.cfg:631
+#: data/translations/english.cfg:238
 msgid ""
 "Units with leadership ability make lower level adjacent units on the same "
 "side fight better."
 msgstr ""
 
-#: data/translations/english.cfg:632
+#: data/translations/english.cfg:239
 msgid ""
 "Generally avoid moving next to an unoccupied village. An enemy unit may move "
 "onto the village and attack you, while enjoying the defense and healing of "
 "the village."
 msgstr ""
 
-#: data/translations/english.cfg:633
+#: data/translations/english.cfg:240
 msgid ""
 "Holding the mouse cursor on an ability or trait shows a description of that "
 "ability or trait."
 msgstr ""
 
-#: data/translations/english.cfg:634
+#: data/translations/english.cfg:241
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 
-#: data/translations/english.cfg:635
+#: data/translations/english.cfg:242
 msgid "Read the hotkeys list in the preferences menu."
 msgstr ""
 
-#: data/translations/english.cfg:636
+#: data/translations/english.cfg:243
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
 msgstr ""
 
-#: data/translations/english.cfg:637
+#: data/translations/english.cfg:244
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
 
-#: data/translations/english.cfg:638
+#: data/translations/english.cfg:245
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
 
-#: data/translations/english.cfg:639
+#: data/translations/english.cfg:246
 msgid ""
 "The 'slow' attack ability makes enemy units move slower, but it also gives "
 "them one less attack than they would normally have. It is thus very "
 "effective against units that have a few powerful attacks."
 msgstr ""
 
-#: data/translations/english.cfg:640
+#: data/translations/english.cfg:247
 msgid "Holy attacks are very powerful against undead."
 msgstr ""
 
-#: data/translations/english.cfg:641
+#: data/translations/english.cfg:248
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
 
-#: data/translations/english.cfg:642
+#: data/translations/english.cfg:249
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
-msgstr ""
-
-#: data/translations/english.cfg:644 src/titlescreen.cpp:197
-msgid "-- The Tome of Wesnoth"
-msgstr ""
-
-#: data/translations/english.cfg:645 src/titlescreen.cpp:191
-msgid "More"
-msgstr ""
-
-#: data/translations/english.cfg:647 src/reports.cpp:312
-msgid "Enemy"
-msgstr ""
-
-#: data/translations/english.cfg:648 src/reports.cpp:314
-msgid "Allied"
-msgstr ""
-
-#: data/translations/english.cfg:649 src/reports.cpp:310
-msgid "Owned"
-msgstr ""
-
-#: data/translations/english.cfg:652 src/help.cpp:2367
-msgid "The Battle for Wesnoth Help"
-msgstr ""
-
-#: data/translations/english.cfg:653 src/help.cpp:1868
-msgid "< Back"
-msgstr ""
-
-#: data/translations/english.cfg:654 src/help.cpp:1869
-msgid "Forward >"
-msgstr ""
-
-#: data/translations/english.cfg:655 src/dialogs.cpp:435
-msgid "Import Saved Games"
-msgstr ""
-
-#: data/translations/english.cfg:656 src/dialogs.cpp:436
-msgid ""
-"Your saves directory contains some files from an old version of Battle for "
-"Wesnoth. Would you like to update these to the latest version? This may take "
-"some time."
-msgstr ""
-
-#: data/translations/english.cfg:657 src/dialogs.cpp:441
-msgid ""
-"Your saves directory contains some files that don't appear to have been "
-"generated by this version of Battle for Wesnoth. Would you like to register "
-"these files with the game?"
 msgstr ""
 
 #: data/units/Ancient_Lich.cfg:3
@@ -13523,8 +12124,8 @@ msgstr ""
 msgid "mace"
 msgstr ""
 
-#: data/units/Battle_Princess.cfg:3
-msgid "Battle Princess"
+#: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
+msgid "Princess"
 msgstr ""
 
 #: data/units/Battle_Princess.cfg:17
@@ -13773,6 +12374,11 @@ msgstr ""
 
 #: data/units/Cockatrice.cfg:21
 msgid "gaze"
+msgstr ""
+
+#: data/units/Cockatrice.cfg:26 src/actions.cpp:705 src/actions.cpp:842
+#: src/reports.cpp:122
+msgid "stone"
 msgstr ""
 
 #: data/units/Commander.cfg:3
@@ -14521,6 +13127,10 @@ msgstr ""
 msgid "bump"
 msgstr ""
 
+#: data/units/General.cfg:3 src/preferences.cpp:898
+msgid "General"
+msgstr ""
+
 #: data/units/General.cfg:18
 msgid ""
 "As the great leaders of the human armies, Generals are responsible for the "
@@ -14716,8 +13326,8 @@ msgstr ""
 msgid "halberd"
 msgstr ""
 
-#: data/units/Halbardier.cfg:23 data/units/Pikeman.cfg:24
-#: data/units/Spearman.cfg:24
+#: data/units/Halbardier.cfg:23 data/units/Halbardier.cfg:31
+#: data/units/Pikeman.cfg:24 data/units/Spearman.cfg:24
 msgid "firststrike"
 msgstr ""
 
@@ -15771,8 +14381,331 @@ msgid ""
 "Lord -- to join the elite of human fighters."
 msgstr ""
 
+#: src/about.cpp:240 src/help.cpp:2364 src/show_dialog.cpp:470
+msgid "Close"
+msgstr ""
+
+#: src/actions.cpp:93
+msgid "You don't have a leader to recruit with."
+msgstr ""
+
+#: src/actions.cpp:97
+msgid "You must have your leader on a keep to recruit or recall units."
+msgstr ""
+
+#: src/actions.cpp:114
+msgid "There are no vacant castle tiles in which to recruit a unit."
+msgstr ""
+
+#: src/actions.cpp:202
+msgid "none"
+msgstr ""
+
+#: src/actions.cpp:317 src/actions.cpp:434
+msgid "base damage"
+msgstr ""
+
+#: src/actions.cpp:327
+msgid "attacker resistance vs"
+msgstr ""
+
+#: src/actions.cpp:327
+msgid "attacker vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:387 src/actions.cpp:513
+msgid "total damage"
+msgstr ""
+
+#: src/actions.cpp:444
+msgid "defender resistance vs"
+msgstr ""
+
+#: src/actions.cpp:444
+msgid "defender vulnerability vs"
+msgstr ""
+
+#: src/actions.cpp:684 src/actions.cpp:820 src/display.cpp:877
+#: src/reports.cpp:115
+msgid "poisoned"
+msgstr ""
+
+#: src/actions.cpp:689 src/actions.cpp:825 src/display.cpp:873
+#: src/reports.cpp:110
+msgid "slowed"
+msgstr ""
+
+#: src/actions.cpp:1691
+msgid "Ambushed!"
+msgstr ""
+
+#: src/actions.cpp:1719
+msgid "Friendly unit sighted"
+msgstr ""
+
+#: src/actions.cpp:1721
+msgid "Enemy unit sighted!"
+msgstr ""
+
+#: src/actions.cpp:1726
+msgid "$friends Friendly units sighted"
+msgstr ""
+
+#: src/actions.cpp:1728
+msgid "$enemies Enemy units sighted!"
+msgstr ""
+
+#: src/actions.cpp:1732
+msgid "Units sighted! ($friends friendly, $enemies enemy)"
+msgstr ""
+
+#: src/actions.cpp:1753
+msgid "(press $hotkey to continue)"
+msgstr ""
+
+#: src/dialogs.cpp:86
+msgid "Advance Unit"
+msgstr ""
+
+#: src/dialogs.cpp:87
+msgid "What should our victorious unit become?"
+msgstr ""
+
+#: src/dialogs.cpp:156
+msgid "No objectives available"
+msgstr ""
+
+#: src/dialogs.cpp:177
+msgid "Save already exists. Do you want to overwrite it ?"
+msgstr ""
+
+#: src/dialogs.cpp:206 src/dialogs.cpp:445
+msgid "Don't ask me again!"
+msgstr ""
+
+#: src/dialogs.cpp:208
+msgid "Do you really want to delete this game?"
+msgstr ""
+
+#: src/dialogs.cpp:349
+msgid "%a %b %d %H:%M %Y"
+msgstr ""
+
+#: src/dialogs.cpp:361
+msgid "#(Invalid)"
+msgstr ""
+
+#: src/dialogs.cpp:367 src/game.cpp:921
+msgid "Campaign"
+msgstr ""
+
+#: src/dialogs.cpp:369 src/game.cpp:968
+msgid "Multiplayer"
+msgstr ""
+
+#: src/dialogs.cpp:371
+msgid "Tutorial"
+msgstr ""
+
 #: src/dialogs.cpp:379
 msgid "replay"
+msgstr ""
+
+#: src/dialogs.cpp:381 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1381
+msgid "Turn"
+msgstr ""
+
+#: src/dialogs.cpp:383
+msgid "Scenario Start"
+msgstr ""
+
+#: src/dialogs.cpp:386 src/game.cpp:944
+msgid "Difficulty"
+msgstr ""
+
+#: src/dialogs.cpp:400
+msgid "No Saved Games"
+msgstr ""
+
+#: src/dialogs.cpp:401
+msgid ""
+"There are no saved games to load.\n"
+"(Games are saved automatically when you complete a scenario)"
+msgstr ""
+
+#: src/dialogs.cpp:420
+msgid "Delete Save"
+msgstr ""
+
+#: src/dialogs.cpp:435
+msgid "Import Saved Games"
+msgstr ""
+
+#: src/dialogs.cpp:436
+msgid ""
+"Your saves directory contains some files from an old version of Battle for "
+"Wesnoth. Would you like to update these to the latest version? This may take "
+"some time."
+msgstr ""
+
+#: src/dialogs.cpp:441
+msgid ""
+"Your saves directory contains some files that don't appear to have been "
+"generated by this version of Battle for Wesnoth. Would you like to register "
+"these files with the game?"
+msgstr ""
+
+#: src/dialogs.cpp:511
+msgid "Show replay"
+msgstr ""
+
+#: src/dialogs.cpp:514 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+msgid "Load Game"
+msgstr ""
+
+#: src/dialogs.cpp:515
+msgid "Choose the game to load"
+msgstr ""
+
+#: src/dialogs.cpp:569 src/multiplayer.cpp:121 src/show_dialog.cpp:444
+#: src/show_dialog.cpp:457
+msgid "Ok"
+msgstr ""
+
+#: src/dialogs.cpp:570 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
+#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
+#: src/show_dialog.cpp:464
+msgid "Cancel"
+msgstr ""
+
+#: src/dialogs.cpp:619 src/dialogs.cpp:628
+msgid "Profile"
+msgstr ""
+
+#: src/dialogs.cpp:715 src/display.cpp:883 src/help.cpp:561
+#: src/playturn.cpp:1711
+msgid "level"
+msgstr ""
+
+#: src/dialogs.cpp:736 src/display.cpp:901 src/help.cpp:615
+#: src/playturn.cpp:1875 src/unit.cpp:1028
+msgid "HP"
+msgstr ""
+
+#: src/dialogs.cpp:740 src/dialogs.cpp:748 src/display.cpp:905
+#: src/display.cpp:913 src/playturn.cpp:1713 src/playturn.cpp:1876
+#: src/unit.cpp:1087
+msgid "XP"
+msgstr ""
+
+#: src/dialogs.cpp:753 src/display.cpp:917 src/help.cpp:616
+#: src/playturn.cpp:1877 src/unit.cpp:1064
+msgid "Moves"
+msgstr ""
+
+#: src/dialogs.cpp:770 src/display.cpp:934 src/help.cpp:691
+#: src/playturn.cpp:616 src/reports.cpp:229
+msgid "melee"
+msgstr ""
+
+#: src/dialogs.cpp:771 src/display.cpp:935 src/help.cpp:691
+#: src/playturn.cpp:616 src/reports.cpp:230
+msgid "ranged"
+msgstr ""
+
+#: src/display.cpp:864
+msgid "healthy"
+msgstr ""
+
+#: src/display.cpp:869 src/reports.cpp:105
+msgid "invisible"
+msgstr ""
+
+#: src/game.cpp:134
+msgid "Do you want to save a replay of this scenario?"
+msgstr ""
+
+#: src/game.cpp:135 src/game.cpp:197 src/playturn.cpp:1388
+msgid "Name:"
+msgstr ""
+
+#: src/game.cpp:143 src/game.cpp:204 src/playturn.cpp:1399
+msgid "The game could not be saved"
+msgstr ""
+
+#: src/game.cpp:196
+msgid "Do you want to save your game?"
+msgstr ""
+
+#: src/game.cpp:573
+msgid "The Battle for Wesnoth"
+msgstr ""
+
+#: src/game.cpp:793 src/multiplayer_connect.cpp:104
+msgid ""
+"This save is from a different version of the game. Do you want to try to "
+"load it?"
+msgstr ""
+
+#: src/game.cpp:804 src/game.cpp:809 src/game.cpp:814 src/playlevel.cpp:536
+#: src/playlevel.cpp:750
+msgid "The file you have tried to load is corrupt"
+msgstr ""
+
+#: src/game.cpp:914
+msgid "There are no campaigns available"
+msgstr ""
+
+#: src/game.cpp:922
+msgid "Choose the campaign you want to play:"
+msgstr ""
+
+#: src/game.cpp:945
+msgid "Select difficulty level:"
+msgstr ""
+
+#: src/game.cpp:963
+msgid "Join Official Server"
+msgstr ""
+
+#: src/game.cpp:963
+msgid "Log on to the official Wesnoth multiplayer server"
+msgstr ""
+
+#: src/game.cpp:964 src/multiplayer_lobby.cpp:157
+msgid "Join Game"
+msgstr ""
+
+#: src/game.cpp:964
+msgid "Join a server or hosted game"
+msgstr ""
+
+#: src/game.cpp:965
+msgid "Host Multiplayer Game"
+msgstr ""
+
+#: src/game.cpp:965
+msgid "Host a game without using a server"
+msgstr ""
+
+#: src/game.cpp:968 src/multiplayer_client.cpp:267
+msgid "Login"
+msgstr ""
+
+#: src/game.cpp:1048
+msgid "Language"
+msgstr ""
+
+#: src/game.cpp:1049
+msgid "Choose your preferred language"
+msgstr ""
+
+#: src/game.cpp:1096
+msgid "The End"
+msgstr ""
+
+#: src/game.cpp:1097
+msgid "You have reached the end of the currently playable levels"
 msgstr ""
 
 #: src/game.cpp:1125
@@ -15783,8 +14716,84 @@ msgstr ""
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
+#: src/help.cpp:568
+msgid "Advances to"
+msgstr ""
+
+#: src/help.cpp:594
+msgid "Abilities"
+msgstr ""
+
+#: src/help.cpp:617
+msgid "Alignment"
+msgstr ""
+
+#: src/help.cpp:622
+msgid "Required XP"
+msgstr ""
+
+#: src/help.cpp:632 src/reports.cpp:232
+msgid "attacks"
+msgstr ""
+
+#: src/help.cpp:638 src/help.cpp:639 src/playturn.cpp:1874
+msgid "Name"
+msgstr ""
+
+#: src/help.cpp:642 src/help.cpp:643 src/playturn.cpp:1873
+msgid "Type"
+msgstr ""
+
+#: src/help.cpp:646 src/help.cpp:647 src/unit_types.cpp:301
+msgid "Dmg"
+msgstr ""
+
 #: src/help.cpp:650 src/help.cpp:651
 msgid "Strikes"
+msgstr ""
+
+#: src/help.cpp:654 src/help.cpp:655
+msgid "Range"
+msgstr ""
+
+#: src/help.cpp:658 src/help.cpp:659
+msgid "Special"
+msgstr ""
+
+#: src/help.cpp:715
+msgid "Resistances"
+msgstr ""
+
+#: src/help.cpp:719 src/help.cpp:720
+msgid "Attack Type"
+msgstr ""
+
+#: src/help.cpp:723 src/help.cpp:724
+msgid "Resistance"
+msgstr ""
+
+#: src/help.cpp:755
+msgid "Terrain Modifiers"
+msgstr ""
+
+#: src/help.cpp:759 src/help.cpp:760
+msgid "Terrain"
+msgstr ""
+
+#: src/help.cpp:767 src/help.cpp:768
+msgid "Defense"
+msgstr ""
+
+#: src/help.cpp:1868
+msgid "< Back"
+msgstr ""
+
+#: src/help.cpp:1869
+msgid "Forward >"
+msgstr ""
+
+#: src/help.cpp:2367
+msgid "The Battle for Wesnoth Help"
 msgstr ""
 
 #: src/hotkeys.cpp:120
@@ -15793,6 +14802,10 @@ msgstr ""
 
 #: src/hotkeys.cpp:121
 msgid "End Unit Turn"
+msgstr ""
+
+#: src/hotkeys.cpp:122 src/playturn.cpp:1457
+msgid "Leader"
 msgstr ""
 
 #: src/hotkeys.cpp:123
@@ -15827,12 +14840,32 @@ msgstr ""
 msgid "Unit Description"
 msgstr ""
 
+#: src/hotkeys.cpp:131 src/playturn.cpp:1357
+msgid "Rename Unit"
+msgstr ""
+
+#: src/hotkeys.cpp:132
+msgid "Save Game"
+msgstr ""
+
+#: src/hotkeys.cpp:134
+msgid "Recruit"
+msgstr ""
+
 #: src/hotkeys.cpp:135
 msgid "Repeat Recruit"
 msgstr ""
 
+#: src/hotkeys.cpp:136
+msgid "Recall"
+msgstr ""
+
 #: src/hotkeys.cpp:138
 msgid "Toggle Grid"
+msgstr ""
+
+#: src/hotkeys.cpp:139
+msgid "Status Table"
 msgstr ""
 
 #: src/hotkeys.cpp:140
@@ -15851,8 +14884,24 @@ msgstr ""
 msgid "Change Unit Side (Debug!)"
 msgstr ""
 
+#: src/hotkeys.cpp:144 src/preferences.cpp:910
+msgid "Preferences"
+msgstr ""
+
+#: src/hotkeys.cpp:145
+msgid "Scenario Objectives"
+msgstr ""
+
+#: src/hotkeys.cpp:146 src/playturn.cpp:1926
+msgid "Unit List"
+msgstr ""
+
 #: src/hotkeys.cpp:147 src/playturn.cpp:1988
 msgid "Statistics"
+msgstr ""
+
+#: src/hotkeys.cpp:148
+msgid "Quit Game"
 msgstr ""
 
 #: src/hotkeys.cpp:149
@@ -15939,6 +14988,10 @@ msgstr ""
 msgid "Continue Move"
 msgstr ""
 
+#: src/hotkeys.cpp:171
+msgid "Find Label or Unit"
+msgstr ""
+
 #: src/hotkeys.cpp:172
 msgid "Speak to Ally"
 msgstr ""
@@ -15955,38 +15008,939 @@ msgstr ""
 msgid "View Chat Log"
 msgstr ""
 
+#: src/hotkeys.cpp:358 src/hotkeys.cpp:542
+msgid "Do you really want to quit?"
+msgstr ""
+
+#: src/intro.cpp:87
+msgid "Next"
+msgstr ""
+
+#: src/intro.cpp:88
+msgid "Skip"
+msgstr ""
+
 #: src/language.cpp:30
 msgid "System default language"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1010
+msgid "Close Window"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:72
+msgid "Map Generator"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:478
+msgid "Players"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:78
+msgid "Width"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:79
+msgid "Height"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:80
+msgid "Iterations"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:81
+msgid "Bump Size"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1458
+msgid "Villages"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:83
+msgid "Landform"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:183
+msgid "Roads Between Castles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:246
+msgid "/1000 tiles"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Coastal"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Inland"
+msgstr ""
+
+#: src/mapgen_dialog.cpp:251
+msgid "Island"
+msgstr ""
+
+#: src/multiplayer.cpp:94
+msgid "The maximum turns the game will go for"
+msgstr ""
+
+#: src/multiplayer.cpp:100
+msgid "The amount of income each village yields per turn"
+msgstr ""
+
+#: src/multiplayer.cpp:106
+msgid "The amount of experience a unit needs to advance"
+msgstr ""
+
+#: src/multiplayer.cpp:108
+msgid "Fog Of War"
+msgstr ""
+
+#: src/multiplayer.cpp:110
+msgid "Enemy units cannot be seen unless they are in range of your units"
+msgstr ""
+
+#: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
+msgid "Shroud"
+msgstr ""
+
+#: src/multiplayer.cpp:114
+msgid "The map is unknown until your units explore it"
+msgstr ""
+
+#: src/multiplayer.cpp:116 src/reports.cpp:376
+msgid "Observers"
+msgstr ""
+
+#: src/multiplayer.cpp:118
+msgid "Allow users who are not playing to watch the game"
+msgstr ""
+
+#: src/multiplayer.cpp:123
+msgid "Regenerate"
+msgstr ""
+
+#: src/multiplayer.cpp:125
+msgid "Settings..."
+msgstr ""
+
+#: src/multiplayer.cpp:129
+msgid "Share View"
+msgstr ""
+
+#: src/multiplayer.cpp:130
+msgid "Share Maps"
+msgstr ""
+
+#: src/multiplayer.cpp:131
+msgid "Share None"
+msgstr ""
+
+#: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
+msgid "No multiplayer sides."
+msgstr ""
+
+#: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
+msgid "Create Game"
+msgstr ""
+
+#: src/multiplayer.cpp:174
+msgid "Name of game"
+msgstr ""
+
+#: src/multiplayer.cpp:175
+msgid "'s game"
+msgstr ""
+
+#: src/multiplayer.cpp:186
+msgid "Map to play"
 msgstr ""
 
 #: src/multiplayer.cpp:283
 msgid "Era"
 msgstr ""
 
+#: src/multiplayer.cpp:345
+msgid "Unlimited"
+msgstr ""
+
+#: src/multiplayer.cpp:349
+msgid "Turns"
+msgstr ""
+
+#: src/multiplayer.cpp:357
+msgid "Village Gold"
+msgstr ""
+
+#: src/multiplayer.cpp:369
+msgid "Experience Requirements"
+msgstr ""
+
+#: src/multiplayer_client.cpp:42 src/multiplayer_client.cpp:283
+msgid "Connection timed out"
+msgstr ""
+
+#: src/multiplayer_client.cpp:59
+msgid "Receiving game list..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:735 src/playturn.cpp:1457
+#: src/playturn.cpp:1462 src/playturn.cpp:1549
+msgid "Gold"
+msgstr ""
+
+#: src/multiplayer_client.cpp:111
+msgid "Waiting for game to start..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:219
+msgid "Choose host to connect to"
+msgstr ""
+
+#: src/multiplayer_client.cpp:237
+msgid "Connecting to remote host..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:266
+msgid "You must log in to this server"
+msgstr ""
+
+#: src/multiplayer_client.cpp:346
+msgid "Getting game data..."
+msgstr ""
+
+#: src/multiplayer_client.cpp:397
+msgid "There are no available sides in this game."
+msgstr ""
+
+#: src/multiplayer_client.cpp:439
+msgid "Choose your side:"
+msgstr ""
+
+#: src/multiplayer_client.cpp:464
+msgid "The game has been cancelled"
+msgstr ""
+
+#: src/multiplayer_client.cpp:468
+msgid "The side you have chosen is no longer available"
+msgstr ""
+
+#: src/multiplayer_client.cpp:504
+msgid "Show replay of game up to save point?"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:48
+msgid "I'm Ready"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:50
+msgid " Computer vs Computer "
+msgstr ""
+
+#: src/multiplayer_connect.cpp:97
+msgid "This is not a multiplayer save"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:237
+msgid ""
+"Victory\n"
+"@Defeat enemy leader(s)"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:257
+msgid "Network Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:258
+msgid "Local Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
+#: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
+msgid "Computer Player"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:260
+msgid "Empty"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:375
+msgid "Team"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:295
+msgid "Red"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:297
+msgid "Blue"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:299
+msgid "Green"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:301
+msgid "Yellow"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:303
+msgid "Purple"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:305
+msgid "Orange"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:307
+msgid "Grey"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:309
+msgid "White"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:311
+msgid "Brown"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:361
+msgid "Game Lobby"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
+msgid "Player/Type"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
+msgid "Race"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
+msgid "Color"
+msgstr ""
+
+#: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
+msgid "Waiting for network players to join"
+msgstr ""
+
 #: src/multiplayer_lobby.cpp:141
 msgid "1"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:141
+msgid "Vacant Slot"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:141
+msgid "Vacant Slots"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:156
+msgid "Observe Game"
+msgstr ""
+
+#: src/multiplayer_lobby.cpp:159
+msgid "Quit"
+msgstr ""
+
+#: src/playlevel.cpp:675
+msgid "Game Over"
+msgstr ""
+
+#: src/playlevel.cpp:676
+msgid "The game is over."
+msgstr ""
+
+#: src/playlevel.cpp:689
+msgid "Defeat"
+msgstr ""
+
+#: src/playlevel.cpp:690
+msgid "You have been defeated!"
+msgstr ""
+
+#: src/playlevel.cpp:722
+msgid "Victory"
+msgstr ""
+
+#: src/playlevel.cpp:723
+msgid "You have emerged victorious!"
+msgstr ""
+
+#: src/playlevel.cpp:725
+msgid "Remaining gold"
+msgstr ""
+
+#: src/playlevel.cpp:728
+msgid "Early finish bonus"
+msgstr ""
+
+#: src/playlevel.cpp:730
+msgid "per turn"
+msgstr ""
+
+#: src/playlevel.cpp:731
+msgid "Turns finished early"
+msgstr ""
+
+#: src/playlevel.cpp:733
+msgid "Bonus"
+msgstr ""
+
+#: src/playlevel.cpp:740
+#, no-c-format
+msgid "80% of gold is retained for the next scenario"
+msgstr ""
+
+#: src/playlevel.cpp:741
+msgid "Retained Gold"
+msgstr ""
+
+#: src/playlevel.cpp:765
+msgid ""
+"A network disconnection has occured, and the game cannot continue. Do you "
+"want to save the game?"
+msgstr ""
+
+#: src/playturn.cpp:79
+msgid "It is now your turn"
+msgstr ""
+
+#: src/playturn.cpp:499
+msgid "Attacker"
+msgstr ""
+
+#: src/playturn.cpp:501
+msgid "Defender"
+msgstr ""
+
+#: src/playturn.cpp:525 src/playturn.cpp:650
+msgid "Damage Calculations"
 msgstr ""
 
 #: src/playturn.cpp:616
 msgid "Melee"
 msgstr ""
 
+#: src/playturn.cpp:629 src/reports.cpp:209
+msgid "vs"
+msgstr ""
+
+#: src/playturn.cpp:662
+msgid "Attack Enemy"
+msgstr ""
+
+#: src/playturn.cpp:663
+msgid "Choose weapon"
+msgstr ""
+
+#: src/playturn.cpp:1144
+msgid ""
+"You have not started your turn yet.  Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1153 src/playturn.cpp:1158
+msgid "Some units have movement left. Do you really want to end your turn?"
+msgstr ""
+
+#: src/playturn.cpp:1174
+msgid "Auto-Save"
+msgstr ""
+
+#: src/playturn.cpp:1176
+msgid "Could not auto save the game. Please save the game manually."
+msgstr ""
+
+#: src/playturn.cpp:1396
+msgid "The game has been saved"
+msgstr ""
+
+#: src/playturn.cpp:1458
+msgid "Units"
+msgstr ""
+
+#: src/playturn.cpp:1459
+msgid "Income"
+msgstr ""
+
+#: src/playturn.cpp:1459
+msgid "Upkeep"
+msgstr ""
+
+#: src/playturn.cpp:1555
+msgid "You have no units available to recruit."
+msgstr ""
+
+#: src/playturn.cpp:1568
+msgid "Recruit unit"
+msgstr ""
+
+#: src/playturn.cpp:1597
+msgid "You don't have enough gold to recruit that unit"
+msgstr ""
+
+#: src/playturn.cpp:1655
+msgid ""
+"My lord, this unit is an experienced one, having advanced levels! Do you "
+"really want to dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1657
+msgid ""
+"My lord, this unit is close to advancing a level! Do you really want to "
+"dismiss $noun?"
+msgstr ""
+
+#: src/playturn.cpp:1662
+msgid "her"
+msgstr ""
+
+#: src/playturn.cpp:1662
+msgid "him"
+msgstr ""
+
+#: src/playturn.cpp:1695
+msgid "You are seperated from your soldiers and may not recall them"
+msgstr ""
+
+#: src/playturn.cpp:1697
+msgid ""
+"There are no troops available to recall\n"
+"(You must have veteran survivors from a previous scenario)"
+msgstr ""
+
+#: src/playturn.cpp:1701
+msgid "You must have at least"
+msgstr ""
+
+#: src/playturn.cpp:1703
+msgid "gold pieces to recall a unit"
+msgstr ""
+
+#: src/playturn.cpp:1726
+msgid "Dismiss Unit"
+msgstr ""
+
+#: src/playturn.cpp:1739
+msgid "Select unit"
+msgstr ""
+
+#: src/playturn.cpp:1783
+msgid "Message"
+msgstr ""
+
+#: src/playturn.cpp:1783
+msgid "Send to allies only"
+msgstr ""
+
+#: src/playturn.cpp:1878
+msgid "Location"
+msgstr ""
+
+#: src/playturn.cpp:1960 src/playturn.cpp:1994
+msgid "Recruits"
+msgstr ""
+
+#: src/playturn.cpp:1966 src/playturn.cpp:1998
+msgid "Recalls"
+msgstr ""
+
+#: src/playturn.cpp:1972 src/playturn.cpp:2002
+msgid "Advancements"
+msgstr ""
+
+#: src/playturn.cpp:1978 src/playturn.cpp:2006
+msgid "Losses"
+msgstr ""
+
+#: src/playturn.cpp:1984 src/playturn.cpp:2010
+msgid "Kills"
+msgstr ""
+
+#: src/playturn.cpp:2025
+msgid "Search"
+msgstr ""
+
 #: src/playturn.cpp:2035
 msgid "prompt|Command:"
+msgstr ""
+
+#: src/playturn.cpp:2046
+msgid "Chat Log"
+msgstr ""
+
+#: src/playturn.cpp:2111
+msgid "Couldn't find label or unit containing the string '$search'."
+msgstr ""
+
+#: src/playturn.cpp:2151
+msgid "Place Label"
+msgstr ""
+
+#: src/playturn.cpp:2152
+msgid "Label"
+msgstr ""
+
+#: src/playturn.cpp:2315
+msgid ""
+"The games are out of sync and will have to exit. Do you want to save an "
+"error log of your game?"
+msgstr ""
+
+#: src/playturn.cpp:2346
+msgid "Replace with AI"
+msgstr ""
+
+#: src/playturn.cpp:2347
+msgid "Replace with local player"
+msgstr ""
+
+#: src/playturn.cpp:2348
+msgid "Abort game"
+msgstr ""
+
+#: src/playturn.cpp:2350
+msgid "has left the game. What do you want to do?"
+msgstr ""
+
+#: src/preferences.cpp:142 src/preferences.cpp:188
+msgid ""
+"The video mode could not be changed. Your window manager must be set to 16 "
+"bits per pixel to run the game in windowed mode. Your display must support "
+"1024x768x16 to run the game full screen."
+msgstr ""
+
+#: src/preferences.cpp:360
+msgid "player"
+msgstr ""
+
+#: src/preferences.cpp:627
+msgid "Full Screen"
+msgstr ""
+
+#: src/preferences.cpp:628
+msgid "Accelerated Speed"
+msgstr ""
+
+#: src/preferences.cpp:629
+msgid "Skip AI Moves"
+msgstr ""
+
+#: src/preferences.cpp:630
+msgid "Show Grid"
+msgstr ""
+
+#: src/preferences.cpp:631
+msgid "Show Floating Labels"
+msgstr ""
+
+#: src/preferences.cpp:632
+msgid "Turn Dialog"
+msgstr ""
+
+#: src/preferences.cpp:633
+msgid "Turn Bell"
+msgstr ""
+
+#: src/preferences.cpp:634
+msgid "Show Team Colors"
+msgstr ""
+
+#: src/preferences.cpp:635
+msgid "Show Color Cursors"
+msgstr ""
+
+#: src/preferences.cpp:636
+msgid "Show Haloing Effects"
+msgstr ""
+
+#: src/preferences.cpp:637
+msgid "Video Mode"
+msgstr ""
+
+#: src/preferences.cpp:638
+msgid "Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:639
+msgid "Adjust Gamma"
+msgstr ""
+
+#: src/preferences.cpp:640
+msgid "Music Volume:"
+msgstr ""
+
+#: src/preferences.cpp:640
+msgid "SFX Volume:"
+msgstr ""
+
+#: src/preferences.cpp:641
+msgid "Gamma:"
+msgstr ""
+
+#: src/preferences.cpp:641
+msgid "Scroll Speed:"
+msgstr ""
+
+#: src/preferences.cpp:653
+msgid "Change the sound effects volume"
+msgstr ""
+
+#: src/preferences.cpp:658
+msgid "Change the music volume"
+msgstr ""
+
+#: src/preferences.cpp:663
+msgid "Change the speed of scrolling around the map"
+msgstr ""
+
+#: src/preferences.cpp:666 src/preferences.cpp:671
+msgid "Change the brightness of the display"
+msgstr ""
+
+#: src/preferences.cpp:674
+msgid "Choose whether the game should run full screen or in a window"
+msgstr ""
+
+#: src/preferences.cpp:677
+msgid "Make units move and fight faster"
+msgstr ""
+
+#: src/preferences.cpp:680
+msgid "Do not animate AI units moving"
+msgstr ""
+
+#: src/preferences.cpp:683
+msgid "Overlay a grid onto the map"
+msgstr ""
+
+#: src/preferences.cpp:686
+msgid "Show text above a unit when it is hit to display damage inflicted"
+msgstr ""
+
+#: src/preferences.cpp:688
+msgid "Change the resolution the game runs at"
+msgstr ""
+
+#: src/preferences.cpp:691
+msgid "Display a dialog at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:694
+msgid "Play a bell sound at the beginning of your turn"
+msgstr ""
+
+#: src/preferences.cpp:697
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+
+#: src/preferences.cpp:700
+msgid "Use colored mouse cursors (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:703
+msgid "Use graphical special effects (may be slower)"
+msgstr ""
+
+#: src/preferences.cpp:705
+msgid "View and configure keyboard shortcuts"
+msgstr ""
+
+#: src/preferences.cpp:899
+msgid "Display"
+msgstr ""
+
+#: src/preferences.cpp:900
+msgid "Sound"
+msgstr ""
+
+#: src/preferences.cpp:956
+msgid "There are no alternative video modes available"
+msgstr ""
+
+#: src/preferences.cpp:987
+msgid "Choose Resolution"
+msgstr ""
+
+#: src/preferences.cpp:1015
+msgid "Hotkey Settings"
+msgstr ""
+
+#: src/preferences.cpp:1019 src/preferences.cpp:1077
+msgid "Press desired HotKey"
+msgstr ""
+
+#: src/preferences.cpp:1038
+msgid "Change Hotkey"
+msgstr ""
+
+#: src/preferences.cpp:1041
+msgid "Save Hotkeys"
+msgstr ""
+
+#: src/preferences.cpp:1110
+msgid "This HotKey is already in use."
+msgstr ""
+
+#: src/reports.cpp:105
+msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
+msgstr ""
+
+#: src/reports.cpp:110
+msgid ""
+"This unit has been slowed. It moves at half normal speed and receives one "
+"less attack than normal in combat."
+msgstr ""
+
+#: src/reports.cpp:115
+msgid ""
+"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
+"to the poison in a village or from a friendly unit with the 'cures' "
+"ability.\n"
+"\n"
+"Units cannot be killed by poison alone. The poison will not reduce it below "
+"1 HP."
+msgstr ""
+
+#: src/reports.cpp:122
+msgid "This unit has been turned to stone. It may not move or attack."
+msgstr ""
+
+#: src/reports.cpp:231
+msgid "damage"
+msgstr ""
+
+#: src/reports.cpp:236
+msgid "hexes"
+msgstr ""
+
+#: src/reports.cpp:253
+msgid "Lawful units"
+msgstr ""
+
+#: src/reports.cpp:255
+msgid "Neutral units"
+msgstr ""
+
+#: src/reports.cpp:256
+msgid "Chaotic units"
+msgstr ""
+
+#: src/reports.cpp:310
+msgid "Owned"
+msgstr ""
+
+#: src/reports.cpp:312
+msgid "Enemy"
+msgstr ""
+
+#: src/reports.cpp:314
+msgid "Allied"
 msgstr ""
 
 #: src/show_dialog.cpp:450
 msgid "yes"
 msgstr ""
 
-#: src/unit_types.cpp:856
-msgid "chaotic"
+#: src/show_dialog.cpp:941
+msgid "KB"
+msgstr ""
+
+#: src/titlescreen.cpp:137
+msgid "Version"
+msgstr ""
+
+#: src/titlescreen.cpp:152
+msgid "TitleScreen button|Tutorial"
+msgstr ""
+
+#: src/titlescreen.cpp:153
+msgid "TitleScreen button|Campaign"
+msgstr ""
+
+#: src/titlescreen.cpp:154
+msgid "TitleScreen button|Multiplayer"
+msgstr ""
+
+#: src/titlescreen.cpp:155
+msgid "TitleScreen button|Load"
+msgstr ""
+
+#: src/titlescreen.cpp:156
+msgid "TitleScreen button|Language"
+msgstr ""
+
+#: src/titlescreen.cpp:157
+msgid "TitleScreen button|Preferences"
+msgstr ""
+
+#: src/titlescreen.cpp:158
+msgid "TitleScreen button|About"
+msgstr ""
+
+#: src/titlescreen.cpp:159
+msgid "TitleScreen button|Quit"
+msgstr ""
+
+#: src/titlescreen.cpp:160
+msgid "Start a tutorial to familiarize yourself with the game"
+msgstr ""
+
+#: src/titlescreen.cpp:161
+msgid "Start a new single player campaign"
+msgstr ""
+
+#: src/titlescreen.cpp:162
+msgid ""
+"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
+"the AI"
+msgstr ""
+
+#: src/titlescreen.cpp:163
+msgid "Load a single player saved game"
+msgstr ""
+
+#: src/titlescreen.cpp:164
+msgid "Change the language"
+msgstr ""
+
+#: src/titlescreen.cpp:165
+msgid "Configure the game's settings"
+msgstr ""
+
+#: src/titlescreen.cpp:166
+msgid "View the credits"
+msgstr ""
+
+#: src/titlescreen.cpp:167
+msgid "Quit the game"
+msgstr ""
+
+#: src/titlescreen.cpp:191
+msgid "More"
+msgstr ""
+
+#: src/titlescreen.cpp:197
+msgid "-- The Tome of Wesnoth"
+msgstr ""
+
+#: src/unit_types.cpp:313
+msgid "strikes"
 msgstr ""
 
 #: src/unit_types.cpp:856
-msgid "lawful"
+msgid "Chaotic"
 msgstr ""
 
 #: src/unit_types.cpp:856
-msgid "neutral"
+msgid "Lawful"
+msgstr ""
+
+#: src/unit_types.cpp:856
+msgid "Neutral"
 msgstr ""
