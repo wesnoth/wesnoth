@@ -121,6 +121,8 @@ void button::enable(bool new_val)
 {
 	if (enabled_ != new_val) {
 		enabled_ = new_val;
+		state_ = NORMAL;
+		pressed_ = false;
 		set_dirty();
 	}
 }
