@@ -523,8 +523,10 @@ void config::read(const std::string& data,
 
 	std::stack<std::string> element_names;
 	std::stack<config*> elements;
+	std::stack<std::map<std::string,config*> > last_element; //allows [+element] syntax
 	elements.push(this);
 	element_names.push("");
+	last_element.push(std::map<std::string,config*>());
 
 	enum { ELEMENT_NAME, IN_ELEMENT, VARIABLE_NAME, VALUE }
 	state = IN_ELEMENT;
@@ -556,7 +558,7 @@ void config::read(const std::string& data,
 		switch(state) {
 			case ELEMENT_NAME:
 				if(c == ']') {
-					if(value == "end" || !value.empty() && value[0] == '/') {
+					if(value == "end" || value.empty() == false && value[0] == '/') {
 						assert(!elements.empty());
 
 						if(value[0] == '/' &&
@@ -578,8 +580,12 @@ void config::read(const std::string& data,
 							throw error(err.str());
 						}
 
+						const std::string name = element_names.top();
+						config* const element = elements.top();
+
 						elements.pop();
 						element_names.pop();
+						last_element.pop();
 
 						if(elements.empty()) {
 							std::stringstream err;
@@ -596,14 +602,33 @@ void config::read(const std::string& data,
 							return;
 						}
 
+						last_element.top()[name] = element;
 
 						state = IN_ELEMENT;
 
 						break;
 					}
 
+					//any elements with a + sign prefix, like [+element] mean
+					//that they are appending to the previous element with the same
+					//name, if there is one
+					if(value.empty() == false && value[0] == '+') {
+						value.erase(value.begin(),value.begin()+1);
+						const std::map<std::string,config*>::iterator itor = last_element.top().find(value);
+						if(itor != last_element.top().end()) {
+							elements.push(itor->second);
+							element_names.push(value);
+							last_element.push(std::map<std::string,config*>());
+							state = IN_ELEMENT;
+							value = "";
+							break;
+						}
+					}
+
 					elements.push(&elements.top()->add_child(value));
 					element_names.push(value);
+					last_element.push(std::map<std::string,config*>());
+
 					state = IN_ELEMENT;
 					value = "";
 				} else {
