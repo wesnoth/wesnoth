@@ -412,18 +412,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 				}
 
 				else if(result == string_table["scenario_objectives"]) {
-					static const std::string no_objectives(
-					                           string_table["no_objectives"]);
-					const std::string& id = level->values["id"];
-					const std::string& lang_objectives =
-					                        string_table[id + "_objectives"];
-
-					const std::string& objectives = lang_objectives.empty() ?
-					        level->values["objectives"] : lang_objectives;
-					gui::show_dialog(
-					    gui, NULL, "",
-						objectives.empty() ? no_objectives : objectives,
-						gui::OK_ONLY);
+					dialogs::show_objectives(gui,*level);
 				}
 
 				else if(result == string_table["recall"]) {

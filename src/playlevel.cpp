@@ -154,9 +154,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 					if(first_time && team_it == teams.begin() &&
 					   level->values["objectives"].empty() == false) {
-						gui::show_dialog(gui,NULL,"",
-						     "+" + level->values["name"] + "\n" +
-						           level->values["objectives"]);
+						dialogs::show_objectives(gui,*level);
 					}
 
 					play_turn(gameinfo,state_of_game,status,terrain_config,

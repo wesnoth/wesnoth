@@ -23,6 +23,8 @@ void advance_unit(const game_data& info,
                   std::map<gamemap::location,unit>& units,
 				  const gamemap::location& loc,
 				  display& gui, bool random_choice=false);
+
+void show_objectives(display& disp, config& level_info);
 }
 
 #endif

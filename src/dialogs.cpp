@@ -10,6 +10,7 @@
 
    See the COPYING file for more details.
 */
+
 #include "dialogs.hpp"
 #include "language.hpp"
 #include "replay.hpp"
@@ -78,6 +79,19 @@ void advance_unit(const game_data& info,
 
 	gui.invalidate_all();
 	gui.draw();
+}
+
+void show_objectives(display& disp, config& level_info)
+{
+	static const std::string no_objectives(string_table["no_objectives"]);
+	const std::string& id = level_info.values["id"];
+	const std::string& lang_objectives = string_table[id + "_objectives"];
+
+	const std::string& objectives = lang_objectives.empty() ?
+	        level_info.values["objectives"] : lang_objectives;
+	gui::show_dialog(disp, NULL, "",
+	            objectives.empty() ? no_objectives : objectives, gui::OK_ONLY);
+
 }
 
 } //end namespace dialogs
