@@ -35,9 +35,9 @@ public:
 	///that an AI might need access to in order to make and implement its decisions
 	struct info {
 		info(display& disp, const gamemap& map, const game_data& gameinfo, unit_map& units,
-			std::vector<team>& teams, int team_num, const gamestatus& state)
+			std::vector<team>& teams, int team_num, const gamestatus& state, class turn_info& turn_data)
 			: disp(disp), map(map), gameinfo(gameinfo), units(units), teams(teams),
-			  team_num(team_num), state(state)
+			  team_num(team_num), state(state), turn_data_(turn_data)
 		{}
 
 		///the display object, used to draw the moves the AI makes.
@@ -61,11 +61,15 @@ public:
 
 		///information about what turn it is, and what time of day
 		const gamestatus& state;
+
+		///the object that allows the player to interact with the game.
+		///should not be used outside of ai_interface
+		class turn_info& turn_data_;
 	};
 
 	///the constructor. All derived classes should take an argument of type info& which
 	///they should pass to this constructor
-	ai_interface(info& arg) : info_(arg) {}
+	ai_interface(info& arg) : info_(arg), last_interact_(0) {}
 	virtual ~ai_interface() {}
 
 	///the function that is called when the AI must play its turn. Derived classes should
@@ -118,8 +122,14 @@ protected:
 	info& get_info() { return info_; }
 	const info& get_info() const { return info_; }
 
+	///function which should be called frequently to allow the user to interact with
+	///the interface. This function will make sure that interaction doesn't occur
+	///too often, so there is no problem with calling it very regularly
+	void user_interact();
+
 private:
 	info info_;
+	int last_interact_;
 };
 
 ///this function is used to create a new AI object with the specified algorithm name

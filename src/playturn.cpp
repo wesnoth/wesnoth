@@ -38,8 +38,15 @@ namespace {
 	int commands_disabled = 0;
 }
 
-command_disabler::command_disabler() { ++commands_disabled; }
-command_disabler::~command_disabler() { --commands_disabled; }
+command_disabler::command_disabler(display* disp) : hotkey::basic_handler(disp)
+{
+	++commands_disabled;
+}
+
+command_disabler::~command_disabler()
+{
+	--commands_disabled;
+}
 
 void play_turn(game_data& gameinfo, game_state& state_of_game,
                gamestatus& status, const config& terrain_config, config* level,
@@ -1040,7 +1047,7 @@ void turn_info::undo()
 	if(undo_stack_.empty())
 		return;
 
-	const command_disabler disable_commands;
+	const command_disabler disable_commands(&gui_);
 
 	const int starting_moves = undo_stack_.back().starting_moves;
 	std::vector<gamemap::location> route = undo_stack_.back().route;
@@ -1093,7 +1100,7 @@ void turn_info::redo()
 	if(redo_stack_.empty())
 		return;
 
-	const command_disabler disable_commands;
+	const command_disabler disable_commands(&gui_);
 
 	//clear routes, selected hex, etc
 	gui_.set_paths(NULL);

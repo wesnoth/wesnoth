@@ -338,17 +338,20 @@ void show_map_scene(display& screen, config& data)
 			if(key[SDLK_RETURN] || key[SDLK_SPACE] || mouse_flags) {
 				break;
 			}
+
+			screen.video().flip();
 		}
 
 		if(key[SDLK_ESCAPE]) {
 			break;
 		}
-
-		screen.video().flip();
 	}
 
 	if(!key[SDLK_ESCAPE]) {
-		SDL_Delay(500);
+		for(int i = 0; i != 50; ++i) {
+			SDL_Delay(10);
+			screen.video().flip();
+		}
 	}
 
 	static const SDL_Rect area = {0,0,screen.x(),screen.y()};
@@ -374,6 +377,7 @@ void show_map_scene(display& screen, config& data)
 
 		SDL_Delay(20);
 		events::pump();
+		screen.video().flip();
 	}
 
 	//clear the screen

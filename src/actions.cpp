@@ -498,7 +498,7 @@ void attack(display& gui, const gamemap& map,
 			const game_data& info, bool player_is_attacker)
 {
 	//stop the user from issuing any commands while the units are fighting
-	const command_disabler disable_commands;
+	const command_disabler disable_commands(&gui);
 
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
@@ -1403,7 +1403,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  replay* move_recorder, undo_list* undo_stack, gamemap::location *next_unit)
 {
 	//stop the user from issuing any commands while the unit is moving
-	const command_disabler disable_commands;
+	const command_disabler disable_commands(disp);
 
 	assert(!route.empty());
 

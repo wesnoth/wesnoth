@@ -13,7 +13,6 @@
 
 #include "actions.hpp"
 #include "ai_attack.hpp"
-#include "events.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
 #include "pathfind.hpp"
@@ -38,10 +37,11 @@ void ai::do_attack_analysis(
 					 attack_analysis& cur_analysis
 	                )
 {
+	//this function is called fairly frequently, so interact with the user here.
+	user_interact();
+
 	if(cur_analysis.movements.size() >= 4)
 		return;
-
-	events::pump();
 
 	static double best_results[6];
 	if(result.empty()) {

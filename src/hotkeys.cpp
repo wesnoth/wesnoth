@@ -167,12 +167,12 @@ void change_hotkey(hotkey_item& item)
 	}
 }
 	
-basic_handler::basic_handler(display& disp) : disp_(disp) {}
+basic_handler::basic_handler(display* disp) : disp_(disp) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
 {
-	if(event.type == SDL_KEYDOWN && !gui::in_dialog()) {
-		key_event(disp_,event.key,NULL);
+	if(event.type == SDL_KEYDOWN && !gui::in_dialog() && disp_ != NULL) {
+		key_event(*disp_,event.key,NULL);
 	}
 }
 

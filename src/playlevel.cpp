@@ -322,7 +322,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		try {
 
 			if(first_time) {
-				const hotkey::basic_handler key_events_handler(gui);
+				const hotkey::basic_handler key_events_handler(&gui);
 
 				std::cerr << "first_time..." << (recorder.skipping() ? "skipping" : "no skip") << "\n";
 				update_locker lock_display(gui,recorder.skipping());
@@ -383,12 +383,12 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				const unit_map::iterator leader = find_leader(units,player_number);
 
 				if(leader != units.end() && !recorder.skipping()) {
-					const hotkey::basic_handler key_events_handler(gui);
+					const hotkey::basic_handler key_events_handler(&gui);
 					gui.scroll_to_tile(leader->first.x,leader->first.y);
 				}
 
 				if(replaying) {
-					const hotkey::basic_handler key_events_handler(gui);
+					const hotkey::basic_handler key_events_handler(&gui);
 					std::cerr << "doing replay " << player_number << "\n";
 					try {
 						replaying = do_replay(gui,map,gameinfo,units,teams,
@@ -431,14 +431,17 @@ redo_turn:
 					std::cerr << "is ai...\n";
 					gui.recalculate_minimap();
 
-					const hotkey::basic_handler key_events_handler(gui);
 					const cursor::setter cursor_setter(cursor::WAIT);
 
 					const int start_command = recorder.ncommands();
 
 					update_locker lock(gui,!preferences::show_ai_moves());
 
-					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status);
+					turn_info turn_data(gameinfo,state_of_game,status,
+						                    game_config,level,key,gui,
+						                    map,teams,player_number,units,true);
+
+					ai_interface::info ai_info(gui,map,gameinfo,units,teams,player_number,status,turn_data);
 					util::scoped_ptr<ai_interface> ai_obj(create_ai(team_it->ai_algorithm(),ai_info));
 					ai_obj->play_turn();
 

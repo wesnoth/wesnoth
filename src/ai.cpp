@@ -114,6 +114,22 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	}
 }
 
+void ai_interface::user_interact()
+{
+	const int interact_time = 30;
+	const int time_since_interact = SDL_GetTicks() - last_interact_;
+	if(time_since_interact < interact_time) {
+		return;
+	}
+
+	const int ncommand = recorder.ncommands();
+	info_.turn_data_.turn_slice();
+	info_.turn_data_.send_data(ncommand);
+	info_.disp.draw();
+
+	last_interact_ = SDL_GetTicks();
+}
+
 team& ai_interface::current_team()
 {
 	return info_.teams[info_.team_num-1];
@@ -127,6 +143,9 @@ const team& ai_interface::current_team() const
 
 gamemap::location ai_interface::move_unit(location from, location to, std::map<location,paths>& possible_moves)
 {
+	//stop the user from issuing any commands while the unit is moving
+	const command_disabler disable_commands(&info_.disp);
+
 	assert(info_.units.find(to) == info_.units.end() || from == to);
 
 	info_.disp.select_hex(from);
@@ -307,6 +326,8 @@ void ai::do_move()
 {
 	log_scope("doing ai move");
 
+	user_interact();
+
 	typedef paths::route route;
 
 	typedef std::map<location,paths> moves_map;
@@ -458,6 +479,9 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 
 void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
+	//stop the user from issuing any commands while the unit is attacking
+	const command_disabler disable_commands(&info_.disp);
+
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.stone()) {
 			std::cerr << "ERROR: attempt to attack unit that is turned to stone\n";

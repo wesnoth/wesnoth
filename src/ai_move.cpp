@@ -193,6 +193,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 {
 	log_scope("choosing move");
 
+	user_interact();
+
 	std::vector<target>::const_iterator ittg;
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
 		assert(map_.on_board(ittg->loc));
@@ -227,6 +229,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	//choose the best target for that unit
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
+		user_interact();
+
 		assert(map_.on_board(tg->loc));
 		const paths::route cur_route = a_star_search(u->first,tg->loc,
 		                       minimum(tg->value/best_rating,500.0),cost_calc);
@@ -252,6 +256,8 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 		   u->second.movement_left() <= 0 || u->second.is_guardian()) {
 			continue;
 		}
+
+		user_interact();
 
 		const move_cost_calculator calc(u->second,map_,gameinfo_,units_,u->first,dstsrc);
 		const paths::route cur_route = a_star_search(u->first,best_target->loc,
