@@ -1794,9 +1794,13 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 void display::float_label(const gamemap::location& loc, const std::string& text,
 						  int red, int green, int blue)
 {
+	if(preferences::show_floating_labels() == false) {
+		return;
+	}
+
 	const SDL_Color colour = {red,green,blue,255};
-	font::add_floating_label(text,20,colour,get_location_x(loc)+zoom_*0.5,get_location_y(loc),
-	                         0,-3,40,screen_area());
+	font::add_floating_label(text,24,colour,get_location_x(loc)+zoom_*0.5,get_location_y(loc),
+	                         0,-2,60,screen_area());
 }
 
 bool display::unit_attack_ranged(const gamemap::location& a,

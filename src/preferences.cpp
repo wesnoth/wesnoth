@@ -411,6 +411,16 @@ void set_colour_cursors(bool value)
 	cursor::use_colour(value);
 }
 
+bool show_floating_labels()
+{
+	return prefs["floating_labels"] != "no";
+}
+
+void set_show_floating_labels(bool value)
+{
+	prefs["floating_labels"] = value ? "yes" : "no";
+}
+
 void show_preferences_dialog(display& disp)
 {
 	const events::resize_lock prevent_resizing;
@@ -516,6 +526,12 @@ void show_preferences_dialog(display& disp)
 	grid_button.set_x(slider_left);
 	grid_button.set_y(sound_pos + 80 + 100);
 
+	gui::button floating_labels_button(disp,string_table["floating_labels_button"],
+	                                   gui::button::TYPE_CHECK);
+	floating_labels_button.set_check(show_floating_labels());
+	floating_labels_button.set_x(slider_left);
+	floating_labels_button.set_y(sound_pos + 80 + 150);
+
 	gui::button resolution_button(disp,string_table["video_mode"]);
 	resolution_button.set_x(slider_left);
 	resolution_button.set_y(sound_pos + 80 + 200);
@@ -573,6 +589,7 @@ void show_preferences_dialog(display& disp)
 			fullscreen_button.draw();
 			turbo_button.draw();
 			grid_button.draw();
+			floating_labels_button.draw();
 			close_button.draw();
 			resolution_button.draw();
 			turn_dialog_button.draw();
@@ -605,6 +622,10 @@ void show_preferences_dialog(display& disp)
 
 		if(grid_button.process(mousex,mousey,left_button)) {
 			set_grid(grid_button.checked());
+		}
+
+		if(floating_labels_button.process(mousex,mousey,left_button)) {
+			set_show_floating_labels(floating_labels_button.checked());
 		}
 
 		if(resolution_button.process(mousex,mousey,left_button)) {

@@ -85,6 +85,9 @@ namespace preferences {
 	bool use_colour_cursors();
 	void set_colour_cursors(bool value);
 
+	bool show_floating_labels();
+	void set_show_floating_labels(bool value);
+
 	std::string client_type();
 
 	void set_theme(const std::string& theme);

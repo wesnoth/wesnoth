@@ -627,28 +627,34 @@ void attack(display& gui, const gamemap& map,
 				if(stats.attack_special == poison_string &&
 				   d->second.has_flag("poisoned") == false &&
 				   !d->second.type().not_living()) {
+					gui.float_label(d->first,translate_string("poisoned"),255,0,0);
 					d->second.set_flag("poisoned");
 				}
 
 				static const std::string slow_string("slow");
 				if(stats.attack_special == slow_string &&
 				   d->second.has_flag("slowed") == false) {
+					gui.float_label(d->first,translate_string("slowed"),255,0,0);
 					d->second.set_flag("slowed");
 					if(stats.ndefends > 1)
 						--stats.ndefends;
 				}
 
 				if(stats.amount_attacker_drains > 0) {
+					char buf[50];
+					sprintf(buf,"%d",stats.amount_attacker_drains);
+					gui.float_label(a->first,buf,0,255,0);
 					a->second.gets_hit(-stats.amount_attacker_drains);
 				}
 
 				//if the defender is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if(stats.attack_special == stone_string) {
-					d->second.set_flag("stone");
+					gui.float_label(d->first,translate_string("stone"),255,0,0);
+					d->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
-					game_events::fire("stone",d->first,a->first);
+					game_events::fire(stone_string,d->first,a->first);
 				}
 			}
 
@@ -756,28 +762,35 @@ void attack(display& gui, const gamemap& map,
 				if(stats.defend_special == poison_string &&
 				   a->second.has_flag("poisoned") == false &&
 				   !a->second.type().not_living()) {
+					gui.float_label(a->first,translate_string("poisoned"),255,0,0);
 					a->second.set_flag("poisoned");
 				}
 
 				static const std::string slow_string("slow");
 				if(stats.defend_special == slow_string &&
 				   a->second.has_flag("slowed") == false) {
+					gui.float_label(a->first,translate_string("slowed"),255,0,0);
 					a->second.set_flag("slowed");
 					if(stats.nattacks > 1)
 						--stats.nattacks;
 				}
 
 				if(stats.amount_defender_drains > 0) {
+					char buf[50];
+					sprintf(buf,"%d",stats.amount_defender_drains);
+					gui.float_label(d->first,buf,0,255,0);
+
 					d->second.gets_hit(-stats.amount_defender_drains);
 				}
 
 				//if the attacker is turned to stone, the fight stops immediately
 				static const std::string stone_string("stone");
 				if(stats.defend_special == stone_string) {
-					a->second.set_flag("stone");
+					gui.float_label(a->first,translate_string("stone"),255,0,0);
+					a->second.set_flag(stone_string);
 					stats.ndefends = 0;
 					stats.nattacks = 0;
-					game_events::fire("stone",a->first,d->first);
+					game_events::fire(stone_string,a->first,d->first);
 				}
 			}
 
