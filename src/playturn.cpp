@@ -785,9 +785,24 @@ void turn_info::end_turn()
 		return;
 
 	// Ask for confirmation if units still have movement left
-	if(preferences::confirm_end_turn()) {
+	if(preferences::yellow_confirm()) {
 		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
 			if(un->second.side() == team_num_ && 
+					unit_can_move(un->first,units_,map_,teams_)) {
+				const int res = gui::show_dialog(gui_,NULL,"",
+						string_table["end_turn_message"],
+						gui::YES_NO);
+				if (res != 0) {
+					return;
+				} else {
+					break;
+				}
+			}
+		}
+	} else if (preferences::green_confirm()) {
+		for(unit_map::const_iterator un = units_.begin(); un != units_.end(); ++un) {
+			if(un->second.side() == team_num_ && 
+					un->second.movement_left() == un->second.total_movement() &&
 					unit_can_move(un->first,units_,map_,teams_)) {
 				const int res = gui::show_dialog(gui_,NULL,"",
 						string_table["end_turn_message"],

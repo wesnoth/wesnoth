@@ -814,9 +814,18 @@ void show_hotkeys_dialog (display & disp)
 
 }
 
-bool confirm_end_turn()
+bool green_confirm()
 {
-	return prefs["confirm_end_turn"] == "yes";
+	std::string confirmation = prefs["confirm_end_turn"];
+
+	if (confirmation == "green" || confirmation == "yes")
+		return true;
+	return false;
+}
+
+bool yellow_confirm()
+{
+	return prefs["confirm_end_turn"] == "yellow";
 }
 
 }

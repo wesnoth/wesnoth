@@ -89,7 +89,9 @@ namespace preferences {
 	bool show_video_mode_dialog(display& disp);
 	void show_hotkeys_dialog (display & disp);
 
-	bool confirm_end_turn();
+	// Ask for end turn confirmation
+	bool yellow_confirm();
+	bool green_confirm();
 }
 
 #endif
