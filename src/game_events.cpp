@@ -619,7 +619,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 	else if(cmd == "unit_overlay") {
 		for(std::map<gamemap::location,unit>::iterator itor = units->begin(); itor != units->end(); ++itor) {
 			if(game_events::unit_matches_filter(itor,cfg)) {
-				std::cerr << "adding overlay '" << cfg["image"] << "' to '" << itor->second.description() << "'\n";
 				itor->second.add_overlay(cfg["image"]);
 				break;
 			}

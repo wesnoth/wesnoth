@@ -64,7 +64,7 @@ void terrain_palette::adjust_size() {
 	const unsigned terrains_fitting =
 		(unsigned)(space_for_terrains / size_specs_.terrain_space) * 2;
 	const unsigned total_terrains = num_terrains();
-	nterrains_ = minimum(terrains_fitting, total_terrains);
+	nterrains_ = minimum<int>(terrains_fitting, total_terrains);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / 2) * size_specs_.terrain_space +
 		button_palette_padding * 2 + button_height;
 	top_button_.set_location(button_x_, top_button_y_);

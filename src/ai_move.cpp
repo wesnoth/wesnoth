@@ -99,26 +99,30 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 	std::vector<target> targets;
 
-	//if enemy units are in range of the leader, then we rally to the leader's defense
+	//if enemy units are in range of the leader, then we target the enemies who are in range.
 	if(has_leader) {
 		const double threat = power_projection(leader->first,enemy_srcdst,enemy_dstsrc);
 		if(threat > 0.0) {
-			//find the specific tiles the enemy can reach, and set them as targets
-			std::vector<gamemap::location> threatened_tiles;
+			//find the location of enemy threats
+			std::set<gamemap::location> threats;
+
 			gamemap::location adj[6];
 			get_adjacent_tiles(leader->first,adj);
 			for(size_t n = 0; n != 6; ++n) {
-				if(enemy_dstsrc.count(adj[n]) > 0) {
-					threatened_tiles.push_back(adj[n]);
+				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj[n]);
+				while(itors.first != itors.second) {
+					if(units_.count(itors.first->second)) {
+						threats.insert(itors.first->second);
+					}
+
+					++itors.first;
 				}
 			}
 
-			assert(threatened_tiles.size() > 0);
+			assert(threats.empty() == false);
 
-			//divide the threat into the tiles the enemy can reach, and try to
-			//get units to reach those tiles
-			const double value = threat/double(threatened_tiles.size());
-			for(std::vector<gamemap::location>::const_iterator i = threatened_tiles.begin(); i != threatened_tiles.end(); ++i) {
+			const double value = threat/double(threats.size());
+			for(std::set<gamemap::location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				targets.push_back(target(*i,value));
 			}
 		}

@@ -99,7 +99,7 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 		turn_data.move_unit_to_loc(ui,ui->second.get_goto(),false);
 	}
 	
-	turn_data.start_interative_turn();
+	turn_data.start_interactive_turn();
 
 	while(!turn_data.turn_over()) {
 
@@ -122,6 +122,11 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 		start_command = turn_data.send_data(start_command);
 	}
+
+	//send one more time to make sure network is up-to-date.
+	start_command = turn_data.send_data(start_command);
+
+	assert(start_command == recorder.ncommands());
 }
 
 turn_info::turn_info(game_data& gameinfo, game_state& state_of_game,
@@ -184,6 +189,8 @@ int turn_info::send_data(int first_command)
 		config cfg;
 		const config& obj = cfg.add_child("turn",recorder.get_data_range(first_command,recorder.ncommands()));
 
+		std::cerr << "sending commands " << first_command << "-" << recorder.ncommands() << ": '"
+			      << obj.write() << "'\n";
 		if(obj.empty() == false) {
 			network::send_data(cfg);
 		}
@@ -888,7 +895,7 @@ void turn_info::move_unit_to_loc(const unit_map::const_iterator& ui, const gamem
 	gui_.invalidate_game_status();
 }
 
-void turn_info::start_interative_turn() {
+void turn_info::start_interactive_turn() {
 	std::cerr << "done gotos\n";
 	start_ncmd_ = recorder.ncommands();
 }
@@ -1873,6 +1880,7 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 		cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
 	}
 
+	std::cerr << "logging speech: '" << cfg.write() << "'\n";
 	recorder.speak(cfg);
 	gui_.add_chat_message(cfg["description"],side,message,
 		                  private_message ? display::MESSAGE_PRIVATE : display::MESSAGE_PUBLIC);

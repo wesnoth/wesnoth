@@ -325,6 +325,18 @@ protected:
 
 	virtual bool recruit_usage(const std::string& usage);
 
+	//function which will calculate which movements should be made to get an optimal number of villages
+	std::vector<std::pair<gamemap::location,gamemap::location> > get_village_combinations(std::map<gamemap::location,paths>& possible_moves, const move_map& srcdst, const move_map& dstsrc,
+																						  const move_map& enemy_srcdst, const move_map& enemy_dstsrc, unit_map::const_iterator leader,
+																						  std::set<location>& taken_villages, std::set<location>& moved_units,
+																						  const std::vector<std::pair<gamemap::location,gamemap::location> >& village_moves,
+																						  std::vector<std::pair<gamemap::location,gamemap::location> >::const_iterator start_at);
+
+
+	//our own version of 'move_unit'. It is like the version in ai_interface, however if it is the leader
+	//moving, it will first attempt recruitment.
+	location move_unit(location from, location to, std::map<location,paths>& possible_moves);
+
 	struct attack_analysis
 	{
 		void analyze(const gamemap& map, std::map<location,unit>& units,

@@ -781,9 +781,7 @@ void floating_label::draw(SDL_Surface* screen)
 
 	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
 	const clip_rect_setter clip_setter(screen,clip_rect_);
-	std::cerr << "blit a\n";
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
-	std::cerr << "blit b\n";
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
 
 	if(foreground_ != NULL) {

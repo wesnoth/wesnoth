@@ -112,8 +112,9 @@ void ai::do_attack_analysis(
 
 			//check to see whether this move would be a backstab
 			int backstab_bonus = 1;
+			double surround_bonus = 1.0;
 
-			if(backstab && tiles[(j+3)%6] != current_unit) {
+			if(tiles[(j+3)%6] != current_unit) {
 				const unit_map::const_iterator itor = units_.find(tiles[(j+3)%6]);
 
 				//note that we *could* also check if a unit plans to move there before we're
@@ -122,8 +123,14 @@ void ai::do_attack_analysis(
 				//make our analysis look *worse* instead of better.
 				//so we only check for 'concrete' backstab opportunities.
 				if(itor != units_.end() && itor->second.side() == unit_itor->second.side()) {
-					backstab_bonus = 2;
+					if(backstab) {
+						backstab_bonus = 2;
+					}
+
+					surround_bonus = 1.2;
 				}
+
+
 			}
 
 			//see if this position is the best rated we've seen so far
@@ -142,14 +149,14 @@ void ai::do_attack_analysis(
 
 			//if this is a position with equal defense to another position, but more vulnerability
 			//then we don't want to use it
-			if(cur_position >= 0 && rating == best_rating && vulnerability - support >= best_vulnerability - best_support) {
+			if(cur_position >= 0 && rating == best_rating && vulnerability/surround_bonus - support*surround_bonus >= best_vulnerability - best_support) {
 				continue;
 			}
 
 			cur_position = j;
 			best_rating = rating;
-			best_vulnerability = vulnerability;
-			best_support = support;
+			best_vulnerability = vulnerability/surround_bonus;
+			best_support = support*surround_bonus;
 		}
 			
 		if(cur_position != -1) {
@@ -425,17 +432,17 @@ void ai::attack_analysis::analyze(const gamemap& map,
 			
 			//if the attacker moved onto a village, reward it for doing so
 			else if(on_village) {
-				atthp += game_config::heal_amount*2; //double reward to emphasize getting onto villages
+				atthp += game_config::cure_amount*2; //double reward to emphasize getting onto villages
 			}
 
-			defenderxp += (atthp == 0 ? 8:1)*att->second.type().level();
+			defenderxp += (atthp == 0 ? game_config::kill_experience:1)*att->second.type().level();
 
 			avg_damage_taken += hitpoints[i] - atthp;
 		}
 
 		//penalty for allowing advancement is a 'negative' kill, and
 		//defender's hitpoints get restored to maximum
-		if(defend_it->second.experience() < defend_it->second.max_experience()&&
+		if(defend_it->second.experience() < defend_it->second.max_experience() &&
 		   defend_it->second.experience() + defenderxp >=
 		   defend_it->second.max_experience()) {
 			chance_to_kill -= 1.0;
@@ -443,7 +450,7 @@ void ai::attack_analysis::analyze(const gamemap& map,
 		} else if(defhp == 0) {
 			chance_to_kill += 1.0;
 		} else if(map.is_village(defend_it->first)) {
-			defhp += game_config::heal_amount;
+			defhp += game_config::cure_amount;
 			if(defhp > target_hp)
 				defhp = target_hp;
 		}

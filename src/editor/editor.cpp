@@ -113,7 +113,7 @@ map_editor::~map_editor() {
 	try {
 		write_file(prefs_filename, prefs_.write());
 	}
-	catch (io_exception e) {
+	catch (io_exception& e) {
 		std::cerr << "Error when writing to " << prefs_filename << ": "
 				  << e.what() << std::endl;
 	}
