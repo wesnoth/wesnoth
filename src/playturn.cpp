@@ -301,10 +301,10 @@ void play_turn(game_data& gameinfo, game_state& state_of_game,
 
 			//otherwise we're trying to move to a hex
 			else if(selected_hex.valid() && selected_hex != hex &&
-				     enemy == units.end() && !current_route.steps.empty()) {
-				const size_t moves =
-				        move_unit(&gui,map,units,teams,current_route.steps,
-				                  &recorder,&undo_stack);
+				     enemy == units.end() && !current_route.steps.empty() &&
+				     current_route.steps.front() == selected_hex) {
+				const size_t moves = move_unit(&gui,map,units,teams,
+				                   current_route.steps,&recorder,&undo_stack);
 				redo_stack.clear();
 
 				selected_hex = gamemap::location();
