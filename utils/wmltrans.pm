@@ -8,7 +8,7 @@ sub readwml {
 
   while (<TRANS>) {
     next if m/^\s*\#/ and !defined $key;
-    if (m/(\S+)\s*=\s*(?:_\s*)?\"(.*)\"\s*$/) {
+    if (m/(\S+)\s*=\s*(?:_\s*)?\"(.*)\"\s*(?:\#.*)?$/) {
       # single-line
       die "nested key" if defined $key;
 
@@ -21,7 +21,7 @@ sub readwml {
       $key = $1;
       $trans{$key} = $2 . "\n";
 
-    } elsif (m/(.*)\"\s*$/) {
+    } elsif (m/(.*)\"\s*(?:\#.*)?$/) {
       # end of multi-line
       die "end of string without a key" unless defined $key;
 
