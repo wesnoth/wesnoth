@@ -1574,7 +1574,7 @@ std::vector<std::string> display::get_fog_shroud_graphics(const gamemap::locatio
 	bool transition_done[6];
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
-	static const int terrain_types[] = { gamemap::VOID_TERRAIN, gamemap::FOGGED, 0 };
+	static const int terrain_types[] = { gamemap::FOGGED, gamemap::VOID_TERRAIN, 0 };
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i].x,adjacent[i].y))
