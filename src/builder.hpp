@@ -14,7 +14,7 @@
 #define BUILDER_H_INCLUDED
 
 class config;
-class image::locator;
+#include "image.hpp"
 #include "map.hpp"
 #include "animated.hpp"
 #include "SDL.h"

@@ -14,8 +14,9 @@
 #include "global.hpp"
 
 #include "array.hpp"
-#include "display.hpp"
+#include "builder.hpp"
 #include "log.hpp"
+#include "pathutils.hpp"
 #include "terrain.hpp"
 #include "util.hpp"
 #include "wassert.hpp"
