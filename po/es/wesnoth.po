@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-05 19:02+0200\n"
+"POT-Creation-Date: 2004-09-05 18:26+0200\n"
 "PO-Revision-Date: 2004-09-08 17:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  none\n"
@@ -272,6 +272,34 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
+"El movimiento en La Batalla por Wesnoth es simple: basta con que seleccione "
+"con el ratón la unidad que desea mover, y a continuación el hexágono donde "
+"desea que se mueva. Cuando está seleccionada una unidad, se iluminan todos "
+"los hexágonos a los que puede moverse, y se oscurecen aquellos a los que no. "
+"Al llevar el ratón a uno de los hexágonos oscuros, aparecerá el número de "
+"turnos que la unidad necesitará para llegar hasta allí, y si pincha en él "
+"hará que la unidad se mueva hacia allá por el camino más rápido durante el "
+"turno en curso y los siguientes.\n"
+"\n"
+"Cada unidad tiene un determinado número de puntos de movimiento, que gasta "
+"cuando se mueve hacia otro hexágono. La cantidad depende del "
+"<ref>dst=terrain text=terreno</ref> que haya en esa casilla. Por ejemplo, la "
+"pradera casi siempre tiene un coste de 1 punto de movimiento. Dependiendo "
+"del tipo de unidad, el coste será distinto: en bosques, por ejemplo, las "
+"unidades de elfos sólo gastan 1 punto de movimiento, la mayoría de las "
+"unidades de humanos y orcos gastan 2, y las tropas a caballo gastan 3. Puede "
+"conocer cuántos puntos le cuesta a una unidad entrar en un determinado tipo "
+"de terreno pinchando sobre ella con el botón derecho, seleccionando "
+"«Descripción de unidad», y después <italic>text='Modificadores por terreno'</"
+"italic>.\n"
+"\n"
+"Otra cosa que hay que tener presente durante el movimiento son las "
+"<ref>dst=zones_of_control text='zonas de control'</ref>. Cada unidad genera "
+"una zona de control en los 6 hexágonos que la rodean, y cualquier unidad "
+"enemiga que entre en esos hexágonos terminará inmediatamente su movimiento. "
+"Es importante que aprenda a utilizar las zonas de control en Wesnoth, ya que "
+"las únicas unidades que pueden ignorarlas son aquellas con la habilidad "
+"<ref>dst=ability_skirmish text='hostigador'</ref>."
 
 #: data/help.cfg:95
 msgid "Combat"
@@ -3426,18 +3454,16 @@ msgid "claws"
 msgstr "garras"
 
 #: data/units/Dragoon.cfg:3
-#, fuzzy
 msgid "Dragoon"
-msgstr "Dragones"
+msgstr "Dragón"
 
 #: data/units/Dragoon.cfg:24
-#, fuzzy
 msgid ""
 "Riding fast horses and armed with sword and magical pistol artifacts, "
 "Dragoons make versatile troops."
 msgstr ""
-"Montados en veloces caballos y armados con espada y pistolas primitivas, los "
-"Dragones son unas tropas muy versátiles."
+"Montados en veloces caballos y armados con espada y pistolas mágicas, los "
+"dragones son unas tropas muy versátiles."
 
 #: data/units/Drake_Beak.cfg:3
 msgid "Drake Beak"
@@ -3603,19 +3629,17 @@ msgid "dragonstaff"
 msgstr "dragonera"
 
 #: data/units/Dwarvish_Fighter.cfg:3
-#, fuzzy
 msgid "Dwarvish Fighter"
-msgstr "Guerrero enano"
+msgstr "Luchador enano"
 
 #: data/units/Dwarvish_Fighter.cfg:16
-#, fuzzy
 msgid ""
 "Dwarvish Fighters wield mighty battle axes and hammers, which make them "
 "feared opponents in close range combat. They are excellent in mountainous "
 "terrain or underground. Though not swift, their power and endurance more "
 "than compensate."
 msgstr ""
-"Los Guerreros enanos son excelentes en terrenos subterráneos y montañosos. "
+"Los luchadores enanos son excelentes en terrenos subterráneos y montañosos. "
 "Diestros en el combate cuerpo a cuerpo, el poder de sus hachas de batalla "
 "los hace unos enemigos temibles. Su fuerza y resistencia compensa su "
 "lentitud."
@@ -3630,9 +3654,8 @@ msgid "hammer"
 msgstr "martillo"
 
 #: data/units/Dwarvish_Guardsman.cfg:3
-#, fuzzy
 msgid "Dwarvish Guardsman"
-msgstr "Señor Enano"
+msgstr "Guardia enano"
 
 #: data/units/Dwarvish_Guardsman.cfg:29 data/units/Dwarvish_Stalwart.cfg:29
 #: src/actions.cpp:496
@@ -3714,21 +3737,19 @@ msgstr ""
 "de placas, por lo que se los conoce por el nombre de «guardianes de acero»."
 
 #: data/units/Dwarvish_Thunderer.cfg:3
-#, fuzzy
 msgid "Dwarvish Thunderer"
 msgstr "Mosquetero Enano"
 
 #: data/units/Dwarvish_Thunderer.cfg:16
-#, fuzzy
 msgid ""
 "Dwarvish Thunderers provide much needed ranged support to the mighty, yet "
 "slow, close-range fighters of the Dwarvish armies. Their mysterious weapons "
 "are slower, cruder and noisier than the elegant and swift elvish bows, but "
 "their impact is unmatched."
 msgstr ""
-"Los Mosqueteros Enanos cubren al ejército enano con un apoyo de largo "
-"alcance muy necesitado por sus potentes pero lentos Guerreros. Sus mosquetes "
-"son más lentos, más bastos y más ruidosos que los elegantes y rápidos arcos "
+"Los mosqueteros enanos cubren al ejército enano con un apoyo de largo "
+"alcance necesario para complementar a sus poderosos pero lentos luchadores cuerpo a cuerpo. Sus atronadoras "
+"son más lentas, más bastas y más ruidosas que los elegantes y rápidos arcos "
 "élficos, pero su potencia de fuego y de ataque es insuperable."
 
 #: data/units/Dwarvish_Thunderer.cfg:48
@@ -3736,12 +3757,10 @@ msgid "thunderstick"
 msgstr "atronadora"
 
 #: data/units/Dwarvish_Thunderguard.cfg:3
-#, fuzzy
 msgid "Dwarvish Thunderguard"
-msgstr "Guardián del Trueno"
+msgstr "Guardián del Trueno enano"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
-#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
@@ -3749,9 +3768,9 @@ msgid ""
 "more deadly. "
 msgstr ""
 "Los afamados Guardianes del Trueno manejan unos misteriosos y temidos "
-"artefactos forjados por los Maestros de Armas Enanos, expertos en arcanas "
+"artefactos forjados por los maestros de armas enanos, expertos en arcanas "
 "tecnologías. Aunque no son más rápidos que los mosqueteros enanos, su ataque "
-"es mucho más poderoso. "
+"es mucho más poderoso."
 
 #: data/units/Dwarvish_Thunderguard.cfg:54
 msgid "dragonstick"
@@ -3762,18 +3781,16 @@ msgid "Dwarvish Ulfserker"
 msgstr ""
 
 #: data/units/Elder_Mage.cfg:3
-#, fuzzy
 msgid "Elder Mage"
 msgstr "Mago Anciano"
 
 #: data/units/Elder_Mage.cfg:20
-#, fuzzy
 msgid ""
 "Once great, Elder Mages have seen their power a little diminished from "
 "wearying years of battle. Nevertheless they remain feared on the battlefield "
 "on account of their powerful lightning bolts."
 msgstr ""
-"El que una vez fue Gran Mago, aún conserva gran parte de sus poderes, pero "
+"El que una vez fue un gran mago, aún conserva gran parte de sus poderes, pero "
 "han disminuido ligeramente durante todos estos años de experiencia. Usando "
 "potentes relámpagos, el Mago Anciano es temido en el campo de batalla por "
 "todos sus enemigos."
@@ -3994,13 +4011,12 @@ msgid "heals"
 msgstr "sana"
 
 #: data/units/Elvish_Shaman.cfg:20
-#, fuzzy
 msgid ""
 "Elvish Shamans focus on less violent ways to hinder the enemy. Their "
 "entangling attack slows enemies down and reduces by one the number of times "
 "they may attack. Shamans also possess basic healing abilities."
 msgstr ""
-"El Chamán Elfo se especializa en formas menos violentas de detener al "
+"El chamán elfo se especializa en formas menos violentas de detener al "
 "enemigo. Su ataque enredador ralentiza y reduce el número de ataques de sus "
 "enemigos. También posee habilidades de curación básicas."
 
@@ -4009,9 +4025,8 @@ msgid "entangle"
 msgstr "enredar"
 
 #: data/units/Elvish_Sharpshooter.cfg:3 data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "Elvish Sharpshooter"
-msgstr "Saetero Elfo"
+msgstr "Saetero elfo"
 
 #: data/units/Elvish_Shyde.cfg:3
 #, fuzzy
@@ -4108,12 +4123,11 @@ msgid "Footpad"
 msgstr "Salteador"
 
 #: data/units/Footpad.cfg:16
-#, fuzzy
 msgid ""
 "The scruffy-haired Footpads are used by bandit gangs to scout ahead for "
 "places and people to rob."
 msgstr ""
-"Las bandas de ladrones usan a los casi salvajes Salteadores para explorar y "
+"Las bandas de ladrones usan a los poco civilizados salteadores para explorar los alrededores y "
 "buscar gente a la que robar."
 
 #: data/units/Footpad.cfg:19 data/units/Thug.cfg:19 data/units/Troll.cfg:20
@@ -4530,24 +4544,20 @@ msgid "Mage"
 msgstr "Mago"
 
 #: data/units/Mage.cfg:17 data/units/Mage.cfg:84
-#, fuzzy
 msgid ""
 "Mages are both weak and powerful. Moving slowly, and with poor defensive "
 "skills, Mages attack with magical missiles that always have a high chance of "
 "hitting their target. For this reason, Mages are an excellent choice for "
 "flushing out enemies hiding in difficult terrain."
 msgstr ""
-"El Mago es débil pero potente. Se mueve lentamente y es vulnerable "
-"defensivamente, pero ataca con energías mágicas las cuales siempre tienen "
-"una alta probabilidad de acertar a sus enemigos.\n"
-"\n"
-"Por esta razón, el Mago es una excelente elección para hacer salir a "
-"enemigos defendiendo terrenos favorables."
+"El mago es débil pero potente. Se mueve lentamente y es vulnerable "
+"a los ataques enemigos, pero ataca con proyectiles mágicos que tienen "
+"una alta probabilidad de acertar a sus enemigos.Por esta razón, el Mago es una excelente elección para hacer salir a "
+"enemigos que se esconden en terrenos favorables a ataques convencionales."
 
 #: data/units/Mage.cfg:36 data/units/Mage.cfg:103
-#, fuzzy
 msgid "missile"
-msgstr "misil"
+msgstr "proyectil"
 
 #: data/units/Mage_of_Light.cfg:3 data/units/Mage_of_Light.cfg:66
 msgid "Mage of Light"
@@ -4644,15 +4654,14 @@ msgid "Necromancer"
 msgstr "Nigromante"
 
 #: data/units/Necromancer.cfg:16
-#, fuzzy
 msgid ""
 "Necromancer are Mages that have decided to follow the paths of the dark "
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Un Nigromante es un mago que ha decidido seguir los caminos de las Artes "
-"Oscuras. Entrando en los poderes de los no muertos, el Nigromante es capaz "
-"de lanzar hechizos que drenan la vitalidad de sus enemigos y se la dan a él."
+"Un Nigromante es un mago que ha decidido seguir los caminos de las artes "
+"oscuras. Usando los poderes de los no muertos, el nigromante es capaz "
+"de lanzar hechizos que drenan la fuerza vital de sus enemigos y se la dan a él."
 
 #: data/units/Necrophage.cfg:3
 msgid "Necrophage"
@@ -4665,21 +4674,19 @@ msgid ""
 msgstr ""
 
 #: data/units/Nightgaunt.cfg:3
-#, fuzzy
 msgid "Nightgaunt"
 msgstr "Pesadilla"
 
 #: data/units/Nightgaunt.cfg:16
-#, fuzzy
 msgid ""
 "Nightgaunts haunt the night, keeping their ugly faces behind masks in an "
 "effort to hide their souls of pure evil. These despicable creatures are able "
 "to hide at night, leaving no trace of their presence."
 msgstr ""
-"Las Pesadillas se mueven por la noche, y están tan compenetradas con ella "
+"Las pesadillas se mueven por la noche, y están tan compenetradas con ella "
 "que son capaces de esconderse en ella sin dejar rastro de su presencia. "
-"Esconden sus caras para evitar que sus desdichados enemigos puedan ver la "
-"pura maldad de la que están hechas sus almas."
+"Esconden sus caras tras máscaras para evitar que sus desdichados enemigos puedan ver la "
+"maldad pura de la que están hechas sus almas."
 
 #: data/units/Nightgaunt.cfg:18 data/units/Shadow.cfg:16
 msgid "nightstalk"
@@ -4691,22 +4698,21 @@ msgstr "Comandante noble"
 
 #: data/units/Noble_Fighter.cfg:3
 msgid "Noble Fighter"
-msgstr "Guerrero noble"
+msgstr "Luchador noble"
 
 #: data/units/Noble_Fighter.cfg:17
-#, fuzzy
 msgid ""
 "Young and brash, Fighters fight with a sword, and are vulnerable to ranged "
 "attacks from enemies. However they have the potential to become great "
 "Commanders one day."
 msgstr ""
-"El Guerrero es hábil en el uso de la espada. Joven e inexperto, es "
+"Este luchador es hábil en el uso de la espada. Joven e inexperto, es "
 "vulnerable a los ataques enemigos. Sin embargo, tiene el potencial para "
 "convertirse en un gran guerrero algún día."
 
 #: data/units/Noble_Lord.cfg:3
 msgid "Noble Lord"
-msgstr ""
+msgstr "Señor noble"
 
 #: data/units/Noble_Youth.cfg:3
 msgid "Noble Youth"
@@ -4720,58 +4726,52 @@ msgstr ""
 
 #: data/units/Noble_Youth.cfg:20 data/units/Youth.cfg:20
 msgid "training sword"
-msgstr ""
+msgstr "espada de entrenamiento"
 
 #: data/units/Ogre.cfg:3
 msgid "Ogre"
 msgstr "Ogro"
 
 #: data/units/Ogre.cfg:15
-#, fuzzy
 msgid ""
 "Ogres are stupid giant humanoids that usually live alone in the wilderness. "
 "While they can be easily outrun or outsmarted, their strength is not to be "
 "underestimated."
 msgstr ""
-"Los Ogros son gigantes, estúpidos humanoides que normalmente viven solos en "
-"lugares salvajes. Aunque pueden ser fácilmente confundidos o evitados, su "
-"fuerza no debe subestimarse."
+"Los Ogros son humanoides gigantes bastante estúpidos que normalmente viven solos en "
+"lugares alejados de la civilización. Aunque se les puede dar esquinazo o engañar fácilmente, "
+"no debe subestimarse su fuerza."
 
 #: data/units/Orcish_Archer.cfg:3
-#, fuzzy
 msgid "Orcish Archer"
-msgstr "Arquero Orco"
+msgstr "Arquero orco"
 
 #: data/units/Orcish_Archer.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Archers are considered by many of their fellow orcs to be a lesser "
 "caste of warrior, for attacking their enemies from a distance. However, "
 "since most orcs won't learn how to handle a bow, he is an indispensable part "
 "of the orcish army."
 msgstr ""
-"El Arquero suele ser considerado por muchos Orcos como una casta inferior de "
+"Un arquero suele ser considerado por muchos orcos como una casta inferior de "
 "guerrero, por atacar a los enemigos a distancia. Sin embargo, como la "
-"mayoría de Orcos son incapaces de usar el arco, él es indispensable para el "
-"ejército Orco."
+"mayoría de orcos son incapaces de usar el arco, él es indispensable para el "
+"ejército orco."
 
 #: data/units/Orcish_Assassin.cfg:3
-#, fuzzy
 msgid "Orcish Assassin"
-msgstr "Asesino Orco"
+msgstr "Asesino orco"
 
 #: data/units/Orcish_Assassin.cfg:16
-#, fuzzy
 msgid ""
 "While not so strong in combat, Orcish Assassins are fast and can defend "
 "themselves well over different kinds of terrain. These Assassins use "
 "poisoned darts, and victims of this poison will continually take damage "
 "until they can be cured in town or by a healer."
 msgstr ""
-"Aunque no sea tan fuerte en el cuerpo a cuerpo, el Asesino es rápido, capaz "
-"de defenderse en diversos terrenos y envenena sus dardos. Una víctima herida "
-"por el veneno sufrirá daños hasta que pueda detenerse en una aldea para "
-"curarse."
+"Aunque no sea tan fuerte en el cuerpo a cuerpo, un asesino orco es rápido y capaz "
+"de defenderse en diversos terrenos, además de envenenar sus dardos. Una víctima herida "
+"por el veneno sufrirá daño hasta que un sanador o una parada en una aldea lo curen."
 
 #: data/units/Orcish_Assassin.cfg:36 data/units/Orcish_Slayer.cfg:41
 msgid "darts"
@@ -4782,42 +4782,37 @@ msgid "short sword"
 msgstr "espada corta"
 
 #: data/units/Orcish_Crossbowman.cfg:3
-#, fuzzy
 msgid "Orcish Crossbowman"
-msgstr "Ballestero Orco"
+msgstr "Ballestero orco"
 
 #: data/units/Orcish_Crossbowman.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Crossbowmen try to compensate for their lack of skill with the raw "
 "power of their weapon. While they are not as effective as the Elvish "
 "Marksmen in long-range combat, they are sturdier and can handle theselves a "
 "little better than the Elves in close combat."
 msgstr ""
-"El Ballestero Orco intenta compensar su torpeza con la fuerza de su arma. "
-"Aunque no es tan efectivo como un tirador élfico, es más resistente y puede "
-"defenderse algo mejor en el cuerpo a cuerpo."
+"Un ballestero orco intenta compensar su torpeza con la fuerza de su arma. "
+"Aunque no es tan efectivo como un tirador élfico a larga distancia, es más resistente y puede "
+"defenderse algo mejor en el cuerpo a cuerpo que los elfos."
 
 #: data/units/Orcish_Grunt.cfg:3
-#, fuzzy
 msgid "Orcish Grunt"
 msgstr "Orco"
 
 #: data/units/Orcish_Grunt.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Un Orco poco entrenado forma la base de los ejércitos Orcos. Aunque es más "
-"lento que cualquier humano o elfo, puede atacar mucho más fuertemente, y "
-"puede sufrir más daños antes de sucumbir."
+"Los orcos poco entrenado forma la base de los ejércitos Orcos. Aunque son más "
+"lentos que cualquier humano o elfo, pueden atacar mucho más fuertemente, y "
+"sufrir más daños antes de sucumbir."
 
 #: data/units/Orcish_Leader.cfg:3
-#, fuzzy
 msgid "Orcish Leader"
-msgstr "Matador Orco"
+msgstr "Líder Orco"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -4829,17 +4824,14 @@ msgid ""
 msgstr ""
 
 #: data/units/Orcish_Ruler.cfg:3
-#, fuzzy
 msgid "Orcish Ruler"
-msgstr "Caudillo Orco"
+msgstr "Caudillo orco"
 
 #: data/units/Orcish_Shaman.cfg:3
-#, fuzzy
 msgid "Orcish Shaman"
-msgstr "Chamán Orco"
+msgstr "Chamán orco"
 
 #: data/units/Orcish_Shaman.cfg:15
-#, fuzzy
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4849,10 +4841,10 @@ msgid ""
 "draining their life."
 msgstr ""
 "Los chamanes orcos son los guardianes de la magia orca. Respetados entre las "
-"tribus, ellos componen el Consejo Orco, el cual toma las decisiones "
-"importantes que afectan a toda la comunidad y hace de árbitro en los "
+"tribus, son ellos los que componen el Consejo orco, responsable de tomar decisiones "
+"importantes que afectan a toda la comunidad y hacer de árbitro en los "
 "conflictos entre tribus, que por otro lado son normales en esta raza. Aunque "
-"físicamente débiles (para un Orco), los chamanes son relativamente buenos "
+"físicamente débiles (para los estándares orcos), los chamanes son relativamente buenos "
 "magos y pueden maldecir a sus enemigos, drenándoles la vida."
 
 #: data/units/Orcish_Shaman.cfg:25 data/units/Orcish_Shaman.cfg:68
@@ -4861,12 +4853,10 @@ msgid "curse"
 msgstr "maldición"
 
 #: data/units/Orcish_Shaman.cfg:46
-#, fuzzy
 msgid "Novice Orcish Shaman"
-msgstr "Chamán Novicio Orco"
+msgstr "Chamán orco novato"
 
 #: data/units/Orcish_Shaman.cfg:58
-#, fuzzy
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4876,22 +4866,20 @@ msgid ""
 "draining their life. Novices Shamans are still young and vigorous, but their "
 "spell-casting ability still needs improvement."
 msgstr ""
-"Los chamanes orcos son lo guardianes de la magia orca. Respetados entre las "
-"tribus, ellos componen el Consejo Orco, el cual toma las decisiones "
-"importantes que afectan a toda la comunidad y hace de árbitro en los "
-"conflictos entre tribus que por otro lado son normales en esta raza. Aunque "
-"físicamente débiles (para un Orco), los chamanes son relativamente buenos "
-"magos y pueden maldecir a sus enemigos, drenándoles la vida. Los Chamanes "
-"Novicios aún son jóvenes y vigorosos, pero su habilidad para usar la magia "
-"aún necesita mejorar."
+"Los chamanes orcos son los guardianes de la magia orca. Respetados entre las "
+"tribus, son ellos los que componen el Consejo orco, responsable de tomar decisiones "
+"importantes que afectan a toda la comunidad y hacer de árbitro en los "
+"conflictos entre tribus, que por otro lado son normales en esta raza. Aunque "
+"físicamente débiles (para los estándares orcos), los chamanes son relativamente buenos "
+"magos y pueden maldecir a sus enemigos, drenándoles la vida. Los chamanes "
+"novatos aún son jóvenes y vigorosos, pero su habilidad para usar la magia "
+"todavía necesita mejorar."
 
 #: data/units/Orcish_Shaman.cfg:89
-#, fuzzy
 msgid "Old Orcish Shaman"
-msgstr "Anciano Chamán Orco"
+msgstr "Chamán orco anciano"
 
 #: data/units/Orcish_Shaman.cfg:101
-#, fuzzy
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
@@ -4901,13 +4889,13 @@ msgid ""
 "draining their life. Old Orcish Shamans are shamans that have mastered "
 "magic, although their physical strength has declined with age."
 msgstr ""
-"Los chamanes orcos son lo guardianes de la magia orca. Respetados entre las "
-"tribus, ellos componen el Consejo Orco, el cual toma las decisiones "
-"importantes que afectan a toda la comunidad y hace de arbitro en los "
-"conflictos entre tribus que por otro lado son normales en esta raza tan . "
-"Aunque físicamente débiles (para un Orco), los chamanes son relativamente "
-"buenos magos y pueden maldecir a sus enemigos, drenándoles la vida. Los "
-"Viejos Chamanes han conseguido dominar la magia, aunque su fuerza se ha "
+"Los chamanes orcos son los guardianes de la magia orca. Respetados entre las "
+"tribus, son ellos los que componen el Consejo orco, responsable de tomar decisiones "
+"importantes que afectan a toda la comunidad y hacer de árbitro en los "
+"conflictos entre tribus, que por otro lado son normales en esta raza. Aunque "
+"físicamente débiles (para los estándares orcos), los chamanes son relativamente buenos "
+"magos y pueden maldecir a sus enemigos, drenándoles la vida. Los chamanes "
+"ancianos han conseguido dominar la magia, aunque su fuerza se ha "
 "perdido un poco con la edad."
 
 #: data/units/Orcish_Slayer.cfg:3
@@ -5068,21 +5056,18 @@ msgid "ballista"
 msgstr "balista"
 
 #: data/units/Poacher.cfg:3
-#, fuzzy
 msgid "Poacher"
-msgstr "Furtivo"
+msgstr "Cazador furtivo"
 
 #: data/units/Poacher.cfg:16
-#, fuzzy
 msgid ""
 "Poachers rely on their hunting experience and are most valuable at night and "
 "in forests and swamps."
 msgstr ""
 "Los cazadores furtivos confían en su experiencia en la caza y son más "
-"valiosos en los bosques y los pantanos."
+"valiosos en bosques y pantanos, y por la noche."
 
 #: data/units/Princess.cfg:19 data/units/Princess.cfg:57
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -5090,11 +5075,11 @@ msgid ""
 "fight better due to her presence. The Princess is also nimble and dextrous, "
 "having skills like that of a thief."
 msgstr ""
-"Una noble de nacimiento, la Princesa ha aprendido a luchar con los más "
+"Noble de nacimiento, la princesa ha aprendido a luchar con los más "
 "grandes generales y ha aprendido estrategia con los más grandes sabios, "
 "convirtiéndola tanto en una gran combatiente como en una gran líder. Las "
 "unidades de nivel más bajo que la rodeen lucharán mejor gracias a su "
-"presencia. La Princesa es además ágil y diestra, teniendo habilidades casi "
+"presencia. La princesa es además ágil y diestra, teniendo habilidades casi "
 "de ladrón."
 
 #: data/units/Red_Mage.cfg:3 data/units/Red_Mage.cfg:72
@@ -5102,15 +5087,13 @@ msgid "Red Mage"
 msgstr "Mago Rojo"
 
 #: data/units/Red_Mage.cfg:20 data/units/Red_Mage.cfg:89
-#, fuzzy
 msgid ""
 "Red Mages attack with powerful magic fireballs that are guaranteed a good "
 "chance of hitting. Deft of foot, and skilled fighters both day and night, "
 "Red Mages are therefore valuable in almost all situations."
 msgstr ""
-"El Mago Rojo usa potentes bolas de fuego que tienen altas posibilidades de "
-"impactar. Bueno tanto de día como de noche, y rápido en la marcha, el Mago "
-"Rojo es valioso en casi cualquier situación"
+"El Mago Rojo usa potentes bolas de fuego que suelen impactar casi siempre. Bueno tanto de día como de noche, y rápido en la marcha, el Mago "
+"Rojo es valioso en casi cualquier situación."
 
 #: data/units/Revenant.cfg:3
 #, fuzzy
@@ -5133,7 +5116,6 @@ msgid "Rogue"
 msgstr "Pícaro"
 
 #: data/units/Rogue.cfg:17
-#, fuzzy
 msgid ""
 "Rogues are masters of agility and can move right past an enemy, ignoring any "
 "zones of control. Master thieves, they too have the backstab ability, which "
@@ -6103,8 +6085,8 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:535
-#: src/playlevel.cpp:749
+#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
+#: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr "El fichero que ha intentado cargar está corrompido."
 
@@ -6222,7 +6204,7 @@ msgstr "Resistencia"
 
 #: src/help.cpp:763
 msgid "Terrain Modifiers"
-msgstr "Modificadores de terreno"
+msgstr "Modificadores por terreno"
 
 #: src/help.cpp:767 src/help.cpp:768
 msgid "Terrain"
@@ -6667,7 +6649,7 @@ msgid "Receiving game list..."
 msgstr "Recibiendo lista de partidas..."
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:734 src/playturn.cpp:1484
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1484
 #: src/playturn.cpp:1489 src/playturn.cpp:1576
 msgid "Gold"
 msgstr "Oro"
@@ -6830,60 +6812,60 @@ msgstr "Observar juego"
 msgid "Quit"
 msgstr "Salir"
 
-#: src/playlevel.cpp:674
+#: src/playlevel.cpp:672
 msgid "Game Over"
 msgstr "Fin del juego"
 
-#: src/playlevel.cpp:675
+#: src/playlevel.cpp:673
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playlevel.cpp:688
+#: src/playlevel.cpp:686
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playlevel.cpp:689
+#: src/playlevel.cpp:687
 msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
-#: src/playlevel.cpp:721
+#: src/playlevel.cpp:719
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:720
 msgid "You have emerged victorious!"
 msgstr "¡Has vencido!"
 
-#: src/playlevel.cpp:724
+#: src/playlevel.cpp:722
 msgid "Remaining gold"
 msgstr "Oro restante"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:725
 msgid "Early finish bonus"
 msgstr "Bonificación por rapidez"
 
-#: src/playlevel.cpp:729
+#: src/playlevel.cpp:727
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:728
 msgid "Turns finished early"
 msgstr "Turnos finalizados pronto"
 
-#: src/playlevel.cpp:732
+#: src/playlevel.cpp:730
 msgid "Bonus"
 msgstr "Bonificación"
 
-#: src/playlevel.cpp:739
+#: src/playlevel.cpp:737
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% del oro se conserva para el siguiente escenario"
 
-#: src/playlevel.cpp:740
+#: src/playlevel.cpp:738
 msgid "Retained Gold"
 msgstr "Oro conservado"
 
-#: src/playlevel.cpp:764
+#: src/playlevel.cpp:762
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
