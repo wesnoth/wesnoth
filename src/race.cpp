@@ -95,12 +95,13 @@ wide_string markov_generate_name(const markov_prefix_map& prefixes, size_t chain
 
 }
 
-unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false), traits_(&empty_traits)
+unit_race::unit_race() : ntraits_(0), chain_size_(0), not_living_(false), traits_(&empty_traits), global_traits_(true)
 {
 }
 
 unit_race::unit_race(const config& cfg) : name_(cfg["name"]), ntraits_(atoi(cfg["num_traits"].c_str())),
-                                          not_living_(cfg["not_living"] == "yes"), traits_(&cfg.get_children("trait"))
+                                          not_living_(cfg["not_living"] == "yes"),
+										  traits_(&cfg.get_children("trait")), global_traits_(cfg["ignore_global_traits"] != "yes")
 {
 	names_[MALE] = utils::split(cfg["male_names"]);
 	names_[FEMALE] = utils::split(cfg["female_names"]);
@@ -118,6 +119,11 @@ const std::string& unit_race::name() const { return name_; }
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
 	return utils::wstring_to_string(markov_generate_name(next_[gender],chain_size_,12));
+}
+
+bool unit_race::uses_global_traits() const
+{
+	return global_traits_;
 }
 
 const config::child_list& unit_race::additional_traits() const
