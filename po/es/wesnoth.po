@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-04 22:39+0200\n"
-"PO-Revision-Date: 2004-09-28 11:30+0200\n"
+"PO-Revision-Date: 2004-10-05 17:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,6 @@ msgid "Movement"
 msgstr "Movimiento"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -231,8 +230,8 @@ msgstr ""
 "unidades de humanos y orcos gastan 2, y las tropas a caballo gastan 3. Puede "
 "conocer cuántos puntos le cuesta a una unidad entrar en un determinado tipo "
 "de terreno pinchando sobre ella con el botón derecho, seleccionando "
-"«Descripción de unidad», y después <italic>text='Modificadores por terreno'</"
-"italic>.\n"
+"«Descripción de unidad», y después mirando en <italic>text='Modificadores "
+"por terreno'</italic>.\n"
 "\n"
 "Otra cosa que hay que tener presente durante el movimiento son las "
 "<ref>dst=zones_of_control text='zonas de control'</ref>. Cada unidad genera "
@@ -247,7 +246,6 @@ msgid "Combat"
 msgstr "Combate"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -316,23 +314,24 @@ msgstr ""
 "está basada de forma única en el valor de defensa del <ref>dst=terrain "
 "text=terreno</ref> en el que está. Puede hallarse este valor si se pincha "
 "con el botón derecho una unidad, se selecciona «Descripción de unidad» y "
-"después <italic>text='Modificadores por terreno'</italic>. Por ejemplo, los "
-"elfos tienen un valor de defensa en bosques de un 70%, lo cual significa que "
-"una unidad que los ataque sólo tiene una probabilidad de un 30% de acertar "
-"su ataque. Asimismo, la probabilidad del elfo de acertar vendrá dada por el "
-"tipo de terreno en que esté su atacante. Hay dos excepciones a esta regla: "
-"los <ref>dst=magical_attacks text='ataques mágicos'</ref> y la habilidad de "
-"<ref>dst=ability_marksman text=tirador</ref>. Los ataques mágicos siempre "
-"tienen un 70% de probabilidades de impactar, sin importar el terreno, y los "
-"«tiradores» siempre tienen por lo menos un 60% de posibilidades de acierto, "
-"independendientemente del terreno.\n"
+"allí se mira en <italic>text='Modificadores por terreno'</italic>. Por "
+"ejemplo, los elfos tienen un valor de defensa en bosques de un 70%, lo cual "
+"significa que una unidad que los ataque sólo tiene una probabilidad de un "
+"30% de acertar su ataque. Asimismo, la probabilidad del elfo de acertar "
+"vendrá dada por el tipo de terreno en que esté su atacante. Hay dos "
+"excepciones a esta regla: los <ref>dst=magical_attacks text='ataques "
+"mágicos'</ref> y la habilidad de <ref>dst=ability_marksman text=tirador</"
+"ref>. Los ataques mágicos siempre tienen un 70% de probabilidades de "
+"impactar, sin importar el terreno, y los «tiradores» siempre tienen por lo "
+"menos un 60% de posibilidades de acierto, independendientemente del "
+"terreno.\n"
 "\n"
 "<header>text=Daño</header>\n"
 "\n"
 "Cada ataque que acierte causa una cantidad de daño básica que depende del "
 "tipo de ataque. Por ejemplo, un luchador elfo con un ataque de espada 5-4 "
 "causa un daño básico de 5. Este valor se modifica normalmente de acuerdo a "
-"dos factores: <ref>dst=damage_type_and_resistance text=resistencia</ref> y "
+"dos factores: <ref>dst=damage_types_and_resistance text=resistencia</ref> y "
 "la <ref>dst=time_of_day text='hora del día'</ref>, las cuales se explican "
 "más abajo.\n"
 "\n"
@@ -584,9 +583,8 @@ msgstr ""
 "el escenario del «Heredero al trono». ¡Diviértase, y buena suerte!"
 
 #: data/help.cfg:197
-#, fuzzy
 msgid "About"
-msgstr "Joven"
+msgstr "Acerca de"
 
 #: data/help.cfg:242
 msgid ""
@@ -884,9 +882,8 @@ msgid "&dwarf-warrior.png,Dwarves"
 msgstr "&dwarf-warrior.png,Enanos"
 
 #: data/multiplayer.cfg:180
-#, fuzzy
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr "Saurio guerrero"
+msgstr "&saurian-soothsayer.png,Saurio"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -3268,7 +3265,6 @@ msgid "sword"
 msgstr "espada"
 
 #: data/units/Battle_Princess.cfg:57
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3791,7 +3787,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
-msgstr ""
+msgstr "cimitarra"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
@@ -3820,9 +3816,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Flare.cfg:4
-#, fuzzy
 msgid "Drake Flare"
-msgstr "Esclavo draco"
+msgstr "Fulgor draco"
 
 #: data/units/Drake_Flare.cfg:20
 msgid ""
@@ -3831,6 +3826,10 @@ msgid ""
 "broader asperations. They are skilled with swords, and they aspire to be the "
 "greatest of their kind."
 msgstr ""
+"Los fulgores dracos aspiran a ser líderes de los suyos. Aunque su manejo de "
+"su fuego interno no es tan bueno como en algunos de su raza, estos dracos "
+"tienen aspiraciones más elevadas. Saben utilizar espadas, y aspiran a ser "
+"los más grandes de entre los dracos.."
 
 #: data/units/Drake_Gladiator.cfg:4
 msgid "Drake Gladiator"
@@ -3846,9 +3845,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
-#, fuzzy
 msgid "Drake Glider"
-msgstr "Luchador draco"
+msgstr "Planeador draco"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -3859,16 +3857,21 @@ msgid ""
 "submission. The best gliders can look forward to being accepted into the "
 "ranks of the high flying Sky Drakes."
 msgstr ""
+"Los planeadores dracos llevan lo menos posible de armadura para poder "
+"escapar rápidamente de sus enemigos cuando entran en sus cavernas. Estos "
+"dracos son guerreros competentes, que además poseen el fuego interno propio "
+"de muchos de su raza. Los planeadores también usan de forma muy efectiva su "
+"velocidad para golpear desde arriba una y otra vez a sus oponentes hasta que "
+"caen. Los mejores planeadores pueden intentar ingresar en las filas de los "
+"dracos celestes."
 
 #: data/units/Drake_Glider.cfg:22 data/units/Drake_Sky.cfg:26
-#, fuzzy
 msgid "slam"
-msgstr "Isla"
+msgstr "caída"
 
 #: data/units/Drake_Inferno.cfg:4
-#, fuzzy
 msgid "Inferno Drake"
-msgstr "Draco de fuego"
+msgstr "Draco infernal"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -3880,9 +3883,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
-#, fuzzy
 msgid "Sky Drake"
-msgstr "Draco de fuego"
+msgstr "Draco celeste"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4055,9 +4057,8 @@ msgid "Lightning bolt"
 msgstr "Relámpago"
 
 #: data/units/Dwarvish_Sentinel.cfg:3
-#, fuzzy
 msgid "Dwarvish Sentinel"
-msgstr "Guardián de Acero"
+msgstr "Centinela enano"
 
 #: data/units/Dwarvish_Sentinel.cfg:23
 msgid ""
@@ -4066,9 +4067,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Dwarvish_Stalwart.cfg:3
-#, fuzzy
 msgid "Dwarvish Stalwart"
-msgstr "Guardián de Acero"
+msgstr "Fornido enano"
 
 #: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
@@ -4076,10 +4076,13 @@ msgid ""
 "armor from the ruins of their enemies. While slow, they are the feared for "
 "their resilience and strength."
 msgstr ""
+"Los «fornidos», tras años de batalla, han ido haciéndose nuevos escudos y "
+"armaduras muy resistentes a partir de los restos de sus enemigos. Aunque son "
+"lentos, también son temidos por su resistencia y fuerza."
 
 #: data/units/Dwarvish_Steelclad.cfg:3
 msgid "Dwarvish Steelclad"
-msgstr "Guardián de Acero"
+msgstr "Guardián de Acero enano"
 
 #: data/units/Dwarvish_Steelclad.cfg:21
 msgid ""
@@ -4314,17 +4317,16 @@ msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
-"El Señor Elfo es temible en combate, tanto con la espada a corta distancia, "
-"como con sus devastadoras bolas de fuego desde lejos."
+"El Alto Señor elfo es temible en combate, tanto con la espada a corta "
+"distancia, como con sus devastadoras bolas de fuego desde lejos."
 
 #: data/units/Elvish_Lady.cfg:4
 msgid "Elvish Lady"
 msgstr "Dama elfa"
 
 #: data/units/Elvish_Lady.cfg:17
-#, fuzzy
 msgid "shove"
-msgstr "Movimientos"
+msgstr "empujón"
 
 #: data/units/Elvish_Lord.cfg:3
 msgid "Elvish Lord"
@@ -4335,7 +4337,7 @@ msgid ""
 "Elvish Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
 msgstr ""
-"El Señor Elfo es temible en combate, tanto con la espada a corta distancia, "
+"El Señor elfo es temible en combate, tanto con la espada a corta distancia, "
 "como con sus devastadoras bolas de fuego desde lejos."
 
 #: data/units/Elvish_Marksman.cfg:3 data/units/Elvish_Marksman.cfg:80
@@ -5670,9 +5672,8 @@ msgid "frost blast"
 msgstr "golpe de escarcha"
 
 #: data/units/Saurian_Soothsayer.cfg:4
-#, fuzzy
 msgid "Saurian Soothsayer"
-msgstr "Saurio guerrero"
+msgstr "Saurio vidente"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -6743,9 +6744,8 @@ msgid "Publish campaign: "
 msgstr "Publicar campaña: "
 
 #: src/game.cpp:1045
-#, fuzzy
 msgid "Delete campaign: "
-msgstr "Obtener campaña"
+msgstr "Borrar campaña"
 
 #: src/game.cpp:1049
 msgid "There are no campaigns available for download from this server."
@@ -8303,67 +8303,8 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "They are retreating at last!"
 #~ msgstr "¡Por fin se retiran!"
 
-#~ msgid ""
-#~ "We're not out of the woods yet.  I can see that more are pouring from the "
-#~ "forest.  We are not in safety."
-#~ msgstr ""
-#~ "Aún no estamos fuera del bosque, puedo ver más elfos surgir del bosque. "
-#~ "No estamos seguros."
-
-#~ msgid ""
-#~ "You are right, we have to go to a safer place.  You have helped us.  "
-#~ "Would you help us again and escort us to the Harbour of Tirigaz?"
-#~ msgstr ""
-#~ "Tienes razón, tenemos que ir a un lugar mejor. Nos has ayudado. ¿Podrías "
-#~ "ayudarnos de nuevo y escoltarnos hasta el puerto de Tirigaz?"
-
 #~ msgid "Yes, I need to ask for assistance from whole council.  I'm with you."
 #~ msgstr "Sí, necesito pedir ayuda a todo el concilio. Voy con vosotros"
-
-#~ msgid ""
-#~ "Excellent.  This is a dangerous journey, as we have to take a road near "
-#~ "the elvish forest.  This is the road near that yellow farm."
-#~ msgstr ""
-#~ "Excelente. Éste es un viaje peligroso porque tenemos que usar un camino "
-#~ "que bordea un bosque Élfico. Es el camino cerca de aquella granja "
-#~ "amarilla."
-
-#~ msgid ""
-#~ "Yes, but I can see that more are pouring from the forest.  We are not in "
-#~ "safety."
-#~ msgstr "Sí, pero no paran de surgir del bosque. No estamos seguros."
-
-#~ msgid ""
-#~ "You are right, we have to leave to a safer place.  You have helped us.  "
-#~ "Would you help us again and escort us to the Harbour of Tirigaz?"
-#~ msgstr ""
-#~ "Tienes razón, debemos ir a un lugar más seguro. Nos has ayudado. ¿Podrías "
-#~ "ayudarnos de nuevo y escoltarnos hasta el Puerto de Tirigaz?"
-
-#~ msgid ""
-#~ "Yes, I need to ask for assistance to the whole council.  I'm with you."
-#~ msgstr "Sí, necesito la ayuda de todo el concilio, voy con vosotros."
-
-#~ msgid ""
-#~ "Excellent.  This is a dangerous journey, as we have to take a road near "
-#~ "the elvish forest.  This is the road near this yellow farm."
-#~ msgstr ""
-#~ "Excelente. Este es un viaje peligroso porque tenemos que usar un camino "
-#~ "que bordea un bosque élfico. Es el camino cerca de aquella granja "
-#~ "amarilla."
-
-#~ msgid ""
-#~ "We're safe, finally.  Hurry up Kapou'e, come with us, we need to reach "
-#~ "Tirigaz as soon as possible."
-#~ msgstr ""
-#~ "Estamos a salvo por fin. Date prisa, Kapou'e, ven con nosotros, "
-#~ "necesitamos llegar a Tirigaz lo más rápido posible."
-
-#~ msgid ""
-#~ "At your service, Etheliel.  Let push these evil creatures back to their "
-#~ "quag!"
-#~ msgstr ""
-#~ "A vuestro servicio, Etheliel ¡Devolvamos a estas criaturas a sus ciénagas!"
 
 #~ msgid "To the harbour of Tirigaz"
 #~ msgstr "Hacia el puerto de Tirigaz"
@@ -8373,13 +8314,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "Shut up, I just heard something."
 #~ msgstr "Calla, he oído algo."
-
-#~ msgid ""
-#~ "You're right.  I can see something is moving in these hills.  Looks like "
-#~ "there are undead there."
-#~ msgstr ""
-#~ "Tienes razón, hay algo que se mueve en esas colinas. Parece que hay no "
-#~ "muertos cerca."
 
 #~ msgid "Excellent!  It is time for exercise!"
 #~ msgstr "¡Excelente! ¡Buen momento para hacer ejercicio!"
@@ -8438,30 +8372,8 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Brother Against Brother"
 #~ msgstr "Hermano contra Hermano"
 
-#~ msgid ""
-#~ "This land? Do you truly not know where we are? Then you are a greater "
-#~ "fool than I had thought."
-#~ msgstr ""
-#~ "¿Esta tierra? ¿Realmente no sabes dónde estamos? Entonces eres más idiota "
-#~ "de lo que pensaba."
-
 #~ msgid "Cease your blustering, fool, and prepare to die...again."
 #~ msgstr "Da igual, prepárate para morir... de nuevo."
-
-#~ msgid ""
-#~ "I will fight you with all my strength to prevent that, and I was always "
-#~ "the stronger of us. Flee now and save your miserable hide before I make "
-#~ "it a carpet."
-#~ msgstr ""
-#~ "Lucharé con todas mis fuerzas para evitarlo, yo siempre fui el más fuerte "
-#~ "de los dos. ¡Huye ahora antes de que me haga una alfombra con tu piel!"
-
-#~ msgid ""
-#~ "Don't be silly! I'm not hairy enough to be a carpet! But your scalp would "
-#~ "make a good pillow."
-#~ msgstr ""
-#~ "No seas estúpido, nunca he tenido suficiente pelo como para servir de "
-#~ "alfombra. Pero tu melena sí que me iría bien como relleno de un cojín."
 
 #~ msgid "What? I can't die! I already have! Noooo!"
 #~ msgstr "¿Qué? ¡No puedo morir... otra vez! ¡Noooo!"
@@ -8499,19 +8411,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Now you shall die!"
 #~ msgstr "¡Ahora morirás!"
 
-#~ msgid ""
-#~ "You miserable wretch, know that it is only by my mercy that you look upon "
-#~ "the sun again, for you shall die before it sets."
-#~ msgstr ""
-#~ "Miserable gusano, si aún vives es gracias a mi misericordia, pero antes "
-#~ "de que el sol se ponga, morirás."
-
-#~ msgid ""
-#~ "May I remind you that even as we speak, my undead legions are marching "
-#~ "towards you?"
-#~ msgstr ""
-#~ "¿Y si te recuerdo que mientras hablamos mis legiones marchan hacia ti?"
-
 #~ msgid "Confrontation"
 #~ msgstr "Enfrentamiento"
 
@@ -8520,12 +8419,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "I feel that it must be close. Could it be in that swamp?"
 #~ msgstr "Siento que está cerca. ¿Podría estar en ese pantano?"
-
-#~ msgid ""
-#~ "Blast it! However did the elves get a necromancer to march with them?"
-#~ msgstr ""
-#~ "¡Malditos elfos! ¿Cómo han podido convencer a un Nigromante para que "
-#~ "marche junto a ellos?"
 
 #~ msgid "I side not with either of you!"
 #~ msgstr "¡No estoy aliado con nadie!"
