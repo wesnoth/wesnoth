@@ -501,11 +501,12 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 
 			static const std::string menu_items[] =
 			                         {"scenario_objectives","recruit",
-	                                  "recall","unit_list","save_game",
-									  "preferences","end_turn",""};
+	                                  "recall","unit_list","status_table",
+			                          "save_game","preferences","end_turn",""};
 			static const std::string browse_menu_items[] =
 			                         {"scenario_objectives","unit_list",
-			                          "save_game","preferences",""};
+			                          "status_table","save_game","preferences",
+			                          ""};
 			std::vector<std::string> menu;
 
 			const std::string* items = browse ? browse_menu_items : menu_items;
@@ -548,6 +549,8 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 			}
 			else if(result == string_table["recruit"]) {
 				command = HOTKEY_RECRUIT;
+			} else if(result == string_table["status_table"]) {
+				command = HOTKEY_STATUS_TABLE;
 			} else if(result == string_table["unit_list"]) {
 				const std::string heading = string_table["name"] + "," +
 				                            string_table["hp"] + "," +
@@ -977,13 +980,39 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 	}
 
 	if(command == HOTKEY_LEADER) {
-		for(unit_map::const_iterator i = units.begin(); i != units.end();
-		    ++i) {
-			if(i->second.side() == team_num && i->second.can_recruit()) {
-				gui.scroll_to_tile(i->first.x,i->first.y,display::WARP);
-				break;
-			}
+		const unit_map::const_iterator i = team_leader(team_num,units);
+		if(i != units.end()) {
+			gui.scroll_to_tile(i->first.x,i->first.y,display::WARP);
 		}
+	}
+
+	if(command == HOTKEY_STATUS_TABLE) {
+		std::vector<std::string> items;
+		std::stringstream heading;
+		heading << string_table["leader"] << ","
+		        << string_table["gold"] << ","
+		        << string_table["villages"] << ","
+		        << string_table["units"] << ","
+		        << string_table["upkeep"] << ","
+		        << string_table["income"];
+
+		items.push_back(heading.str());
+
+		for(size_t n = 0; n != teams.size(); ++n) {
+			const team_data data = calculate_team_data(teams[n],n+1,units);
+
+			std::stringstream str;
+			str << team_name(n+1,units) << ","
+			    << (data.gold < 0 ? "#":"") << data.gold << ","
+			    << data.villages << ","
+			    << data.units << ","
+			    << data.upkeep << ","
+			    << (data.net_income < 0 ? "#":"") << data.net_income;
+
+			items.push_back(str.str());
+		}
+
+		gui::show_dialog(gui,NULL,"","",gui::MESSAGE,&items);
 	}
 
 	if(command == HOTKEY_TOGGLE_GRID) {

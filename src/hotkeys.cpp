@@ -49,6 +49,7 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		m.insert(val("recall",HOTKEY_RECALL));
 		m.insert(val("endturn",HOTKEY_ENDTURN));
 		m.insert(val("togglegrid",HOTKEY_TOGGLE_GRID));
+		m.insert(val("statustable",HOTKEY_STATUS_TABLE));
 	}
 
 	const std::map<std::string,HOTKEY_COMMAND>::const_iterator i = m.find(str);

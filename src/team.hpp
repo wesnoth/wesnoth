@@ -15,6 +15,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
+#include "unit.hpp"
 
 #include <cassert>
 #include <set>

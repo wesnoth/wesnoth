@@ -15,6 +15,7 @@
 
 #include "config.hpp"
 #include "map.hpp"
+#include "team.hpp"
 #include "unit_types.hpp"
 
 #include <set>
@@ -172,6 +173,16 @@ struct compare_unit_values
 
 typedef std::map<gamemap::location,unit> unit_map;
 
+int team_units(const unit_map& units, int team_num);
 int team_upkeep(const unit_map& units, int team_num);
+unit_map::const_iterator team_leader(int side, const unit_map& units);
+std::string team_name(int side, const unit_map& units);
+
+struct team_data
+{
+	int units, upkeep, villages, expenses, net_income, gold;
+};
+
+team_data calculate_team_data(const team& tm, int side, const unit_map& units);
 
 #endif

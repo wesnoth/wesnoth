@@ -15,6 +15,7 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "unit.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -673,6 +674,18 @@ int unit::upkeep() const
 	return loyal_ ? 1 : type().level();
 }
 
+int team_units(const unit_map& units, int side)
+{
+	int res = 0;
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.side() == side) {
+			++res;
+		}
+	}
+
+	return res;
+}
+
 int team_upkeep(const unit_map& units, int side)
 {
 	int res = 0;
@@ -682,5 +695,37 @@ int team_upkeep(const unit_map& units, int side)
 		}
 	}
 
+	return res;
+}
+
+unit_map::const_iterator team_leader(int side, const unit_map& units)
+{
+	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
+		if(i->second.can_recruit() && i->second.side() == side) {
+			return i;
+		}
+	}
+
+	return units.end();
+}
+
+std::string team_name(int side, const unit_map& units)
+{
+	const unit_map::const_iterator i = team_leader(side,units);
+	if(i != units.end())
+		return i->second.description();
+	else
+		return "-";
+}
+
+team_data calculate_team_data(const team& tm, int side, const unit_map& units)
+{
+	team_data res;
+	res.units = team_units(units,side);
+	res.upkeep = team_upkeep(units,side);
+	res.villages = tm.towers().size();
+	res.expenses = maximum<int>(0,res.upkeep - res.villages);
+	res.net_income = res.villages - res.expenses;
+	res.gold = tm.gold();
 	return res;
 }

@@ -551,17 +551,10 @@ void display::draw_game_status(int x, int y)
 		SDL_BlitSurface(background,&srcrect,screen,&gameStatusRect_);
 	}
 
-	int nunits = 0;
-	for(std::map<gamemap::location,unit>::const_iterator uit = units_.begin();
-	    uit != units_.end(); ++uit) {
-		if(size_t(uit->second.side()) == currentTeam_+1) {
-			++nunits;
-		}
-	}
-
 	std::stringstream details;
 
 	if(team_valid()) {
+		const int nunits = team_units(units_,currentTeam_+1);
 		const int upkeep = team_upkeep(units_,currentTeam_+1);
 
 		const int expenses = upkeep - teams_[currentTeam_].towers().size();
