@@ -39,7 +39,7 @@ SDL_Surface* current_background = NULL;
 
 SDL_Rect get_text_size(const std::string& msg)
 {
-	SDL_Rect area = {0,0,1024,768};
+	SDL_Rect area = {0,0,10000,10000};
 	return font::draw_text(NULL,area,font_size,font::BLACK_COLOUR,msg,0,0);
 }
 

@@ -70,20 +70,19 @@ private:
 
 	struct frame {
 		frame(int i1, int i2, const std::string& img, int offset)
-		      : start(i1), end(i2), xoffset(offset),
-		        image(&img), image_diagonal(NULL)
+		      : start(i1), end(i2), xoffset(offset), image(img)
 		{}
 
 		frame(int i1, int i2, const std::string& img, const std::string& diag,
 		      int offset)
 		      : start(i1), end(i2), xoffset(offset),
-		        image(&img), image_diagonal(&diag)
+		        image(img), image_diagonal(diag)
 		{}
 
 		int start, end;
 		int xoffset;
-		const std::string* image;
-		const std::string* image_diagonal;
+		std::string image;
+		std::string image_diagonal;
 	};
 
 	std::vector<frame> frames_[2];

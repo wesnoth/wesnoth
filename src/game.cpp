@@ -247,20 +247,33 @@ int play_game(int argc, char** argv)
  		resolution.first = 1024;
  		resolution.second = 768;
 
- 		const int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+ 		int bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+
+		if(bpp == 0) {
+			 //Attempt 1024x768.
+ 			resolution.first = 1024;
+ 			resolution.second = 768;
+			std::cerr << "1024x768x16 is not possible.\nAttempting 800x600x16...\n";
+
+			resolution.first = 800;
+			resolution.second = 600;
+
+			bpp = video.modePossible(resolution.first,resolution.second,16,video_flags);
+		}
+
  		if(bpp == 0) {
- 			//couldn't do 1024x768 either
+ 			//couldn't do 1024x768 or 800x600 either
 
 			std::cerr << "The required video mode, " << resolution.first
 			          << "x" << resolution.second << "x16 "
 			          << "is not supported\n";
 
 			if((video_flags&FULL_SCREEN) != 0 && argc == 0)
-				std::cerr << "Try running the program with the -windowed option "
+				std::cerr << "Try running the program with the --windowed option "
 				          << "using a 16bpp X windows setting\n";
 
 			if((video_flags&FULL_SCREEN) == 0 && argc == 0)
-				std::cerr << "Try running with the -fullscreen option\n";
+				std::cerr << "Try running with the --fullscreen option\n";
 
 			return 0;
 		}
@@ -463,6 +476,7 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::EDIT_PREFERENCES) {
 			const preferences::display_manager disp_manager(&disp);
 			preferences::show_preferences_dialog(disp);
+			disp.redraw_everything();
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(disp);

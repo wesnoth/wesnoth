@@ -849,7 +849,6 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					rect.w = 175;
 					rect.h = 175;
 					SDL_BlitSurface(mini, NULL, disp.video().getSurface(), &rect);
-					SDL_FreeSurface(mini);
 					update_rect(rect);
 				}
 			}else{

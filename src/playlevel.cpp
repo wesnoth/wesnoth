@@ -63,14 +63,15 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			}
 		}
 
-		std::string gold = (*ui)->values["gold"];
+		std::string gold = (**ui)["gold"];
 		if(gold.empty())
 			gold = "100";
 
 		int ngold = ::atoi(gold.c_str());
 		if(ui == unit_cfg.begin() && state_of_game.gold >= ngold &&
-		   (*level)["disallow_recall"] != "yes")
+		   (*level)["disallow_recall"] != "yes") {
 			ngold = state_of_game.gold;
+		}
 
 		const gamemap::location& start_pos = map.starting_position(new_unit.side());
 
@@ -376,12 +377,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 
 				//add all the units that survived the scenario
-				for(std::map<gamemap::location,unit>::iterator un =
-				    units.begin(); un != units.end(); ++un) {
+				for(std::map<gamemap::location,unit>::iterator un = units.begin(); un != units.end(); ++un) {
 					if(un->second.side() == 1) {
 						un->second.new_level();
-						state_of_game.available_units.
-						                push_back(un->second);
+						state_of_game.available_units.push_back(un->second);
 					}
 				}
 
@@ -390,8 +389,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 				}
 
 				const int remaining_gold = teams[0].gold();
-				const int finishing_bonus_per_turn =
-				      map.towers().size()*game_config::tower_income;
+				const int finishing_bonus_per_turn = map.towers().size()*game_config::tower_income + game_config::base_income;
 				const int turns_left = status.number_of_turns() - status.turn();
 				const int finishing_bonus = end_level.gold_bonus ?
 				              (finishing_bonus_per_turn * turns_left) : 0;

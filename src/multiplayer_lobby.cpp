@@ -18,6 +18,13 @@ namespace lobby {
 
 RESULT enter(display& disp, config& game_data)
 {
+	//prevent entry into the lobby if mode is less than 1024x768
+	//FIXME: the lobby should be fixed properly
+	if(disp.x() < 1024 || disp.y() < 768) {
+		gui::show_dialog(disp,NULL,"","You currently cannot enter the lobby with a resolution of less than 1024x768 (we're working on this)",gui::OK_ONLY);
+		return QUIT;
+	}
+
 	CKey key;
 
 	std::vector<std::string> messages;

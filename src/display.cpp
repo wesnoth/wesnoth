@@ -699,14 +699,26 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		details << translate_string_default("ability_" + *a, *a) << "\n";
 	}
 
+	//display in green/white/red depending on hitpoints
+	if(u.hitpoints() <= u.max_hitpoints()/3)
+		details << "#";
+	else if(u.hitpoints() > 2*(u.max_hitpoints()/3))
+		details << "@";
+
 	details << string_table["hp"] << ": " << u.hitpoints()
-			<< "/" << u.max_hitpoints() << "\n"
-			<< string_table["xp"] << ": ";
+			<< "/" << u.max_hitpoints() << "\n";
 	
-	if(u.type().advances_to().empty())
-		details << u.experience() << "/-";
-	else
-		details << u.experience() << "/" << u.max_experience();
+	if(u.type().advances_to().empty()) {
+		details << string_table["xp"] << ": " << u.experience() << "/-";
+	} else {
+		//if killing a unit the same level as us would level us up,
+		//then display in green
+		if(u.max_experience() - u.experience() < game_config::kill_experience) {
+			details << "@";
+		}
+
+		details << string_table["xp"] << ": " << u.experience() << "/" << u.max_experience();
+	}
 	
 	details << "\n"
 			<< string_table["moves"] << ": " << u.movement_left() << "/"
@@ -739,9 +751,12 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 		details << "\n\n";
 	}
 
-	description_rect =
-	    font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
-	                    details.str(),x,y);
+	//choose the font size based on how much room we have to play
+	//with on the right-side panel
+	const size_t font_size = this->y() >= 700 ? 13 : 10;
+
+	description_rect = font::draw_text(this,clipRect,font_size,font::NORMAL_COLOUR,
+	                                   details.str(),x,y);
 
 	update_rect(description_rect);
 
@@ -1132,8 +1147,13 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		assert(srcy >= 0);
 
 		surface_lock srclock(surface);
-		short* startsrc = srclock.pixels() + srcy*(surface->w+xpad) +
-		                  maximum<int>(xoffset,xsrc);
+		const int diff = maximum<int>(0,srcy*(surface->w+xpad) + maximum<int>(xoffset,xsrc));
+		short* startsrc = srclock.pixels() + diff;
+		len = minimum<int>(len,(surface->w+xpad)*surface->h - diff);
+		if(len <= 0) {
+			continue;
+		}
+
 		short* endsrc = startsrc + len;
 
 		if(!(startsrc >= srclock.pixels() &&
@@ -1713,8 +1733,7 @@ bool display::unit_attack_ranged(const gamemap::location& a,
 		}
 
 		if(!hide) {
-			SDL_Surface* const image = (unit_image == NULL) ?
-			                            NULL : image::get_image(*unit_image);
+			const scoped_sdl_surface image((unit_image == NULL) ? NULL : image::get_image(*unit_image));
 			draw_tile(a.x,a.y,image);
 		}
 

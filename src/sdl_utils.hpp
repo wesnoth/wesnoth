@@ -107,7 +107,6 @@ struct surface_lock
 			const int res = SDL_LockSurface(surface_);
 			if(res == 0) {
 				locked_ = true;
-				std::cerr << "locked surface\n";
 			}
 		}
 	}
@@ -115,7 +114,6 @@ struct surface_lock
 	~surface_lock()
 	{
 		if(locked_) {
-			std::cerr << "unlocking surface\n";
 			SDL_UnlockSurface(surface_);
 		}
 	}

@@ -143,10 +143,10 @@ const std::string* attack_type::get_frame(int milliseconds, int* xoff,
 				*xoff = i->xoffset;
 			}
 
-			if(dir == DIAGONAL && i->image_diagonal != NULL) {
-				return i->image_diagonal;
+			if(dir == DIAGONAL && i->image_diagonal != "") {
+				return &i->image_diagonal;
 			} else {
-				return i->image;
+				return &i->image;
 			}
 		}
 	}

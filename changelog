@@ -1,9 +1,26 @@
 Version 0.6.1:
+ * removed plague ability from Wraiths
+ * decreased Lich's melee damage by one
+ * hitpoints are displayed in red/white/green depending on 1/3, 2/3, full energy.
+ * display experience in green when unit is near advancement
+ * basic support for 800x600 resolution has been added, it still needs a lot work
+ * translated manuals:
+   * norwegian
+ * new translations:
+   * dutch
+ * autotools: enabled changing datadir name with ./configure
+ * autotools: configure stops and gives error messages if libs & includes aren't found
+ * fixed Crossroads scenario lacking victory and defeat conditions
+ * fixed 'A Choice Must Be Made' defeat conditions
  * fixed bug causing crash on scenario completion
  * fixed 'Storm Trident' mislocation on 'Bay of Pearls'
  * fixed resetting player starting gold, gold per village, player race, and player type when loading multiplayer game
- * change to the way images are handled to fix resizing (and other potential) bugs
- * enabled changing datadir name with ./configure
+ * change the way images are handled to fix resizing (and other potential) bugs
+ * fixed problem where gold was reset to 100 on some scenarios
+ * made it so both holy water items in the valley of death work properly
+ * fixed bug where using items such as the 'Storm Trident' and 'Sceptre of Fire' could crash the game
+ * fixed bug that occurred when the display was zoomed very far out
+ * fixed reference counting problem
  * code cleanups
 
 Version 0.6:

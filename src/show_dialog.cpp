@@ -371,9 +371,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 	                         padding_height + button_heights + menu_.height() +
 							 text_widget_height + check_button_height;
 
-	if(total_width > scr->w - 100 || total_height > scr->h - 100)
-		return 0;
-
 	int xloc = scr->w/2 - total_width/2;
 	int yloc = scr->h/2 - total_height/2;
 
@@ -388,16 +385,6 @@ int show_dialog(display& disp, SDL_Surface* image,
 			unitx = 10;
 
 		unity = yloc;
-	}
-
-	//make sure that the dialog doesn't overlap the right part of the screen
-	if(xloc + total_width+border_size >= disp.mapx()-1) {
-		std::cerr << "in if...\n";
-		xloc = disp.mapx()-(total_width+border_size+2);
-		if(xloc < 0) {
-			std::cerr << "dialog is too large to fit on-screen!\n";
-			return 0;
-		}
 	}
 
 	const int button_wpadding = total_width - button_widths;
@@ -675,7 +662,7 @@ TITLE_RESULT show_title(display& screen)
 	const int menu_xbase = screen.x() - (x + tutorial_button.width() + 20);
 	const int menu_xincr = 0;
 	const int menu_ybase = 120 + title_surface->h;
-	const int menu_yincr = 50;
+	const int menu_yincr = 44;
 	int bc = 0; //button count
 #define BUTTON_XY() (menu_xbase+(bc)*menu_xincr), (menu_ybase+(bc++)*menu_yincr)
 

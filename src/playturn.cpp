@@ -657,6 +657,7 @@ void turn_info::show_menu()
 		rename_unit();
 	} else if(result == string_table["preferences"]) {
 		preferences::show_preferences_dialog(gui_);
+		gui_.redraw_everything();
 	} else if(result == string_table["end_turn"]) {
 		end_turn();
 	} else if(result == string_table["scenario_objectives"]) {
@@ -1024,7 +1025,7 @@ void turn_info::save_game()
 	       << " " << status_.turn();
 	std::string label = stream.str();
 
-	const int res = dialogs::get_save_name(gui_,"",string_table["save_game_label"],&label);
+	const int res = dialogs::get_save_name(gui_,"",string_table["save_game_label"],&label,gui::OK_CANCEL);
 
 	if(res == 0) {
 		recorder.save_game(gameinfo_,label);
@@ -1112,6 +1113,11 @@ void turn_info::recruit()
 		            << prefix << type.cost() << " gold";
 		items.push_back(description.str());
 		sample_units.push_back(unit(&type,team_num_));
+	}
+
+	if(sample_units.empty()) {
+		gui::show_dialog(gui_,NULL,"",string_table["no_units_to_recruit"],gui::MESSAGE);
+		return;
 	}
 
 	const int recruit_res = gui::show_dialog(gui_,NULL,"",

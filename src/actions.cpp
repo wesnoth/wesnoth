@@ -401,9 +401,9 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(dies) {
-				attackerxp = 8*d->second.type().level();
+				attackerxp = game_config::kill_experience*d->second.type().level();
 				if(d->second.type().level() == 0)
-					attackerxp = 4;
+					attackerxp = game_config::kill_experience/2;
 
 				a->second.get_experience(attackerxp);
 				attackerxp = 0;
@@ -514,9 +514,9 @@ void attack(display& gui, const gamemap& map,
 			}
 
 			if(dies) {
-				defenderxp = 8*a->second.type().level();
+				defenderxp = game_config::kill_experience*a->second.type().level();
 				if(a->second.type().level() == 0)
-					defenderxp = 4;
+					defenderxp = game_config::kill_experience/2;
 
 				d->second.get_experience(defenderxp);
 				defenderxp = 0;

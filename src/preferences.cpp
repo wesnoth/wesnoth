@@ -105,8 +105,8 @@ std::pair<int,int> resolution()
 	const string_map::const_iterator y = prefs.values.find("yresolution");
 	if(x != prefs.values.end() && y != prefs.values.end() &&
 	   x->second.empty() == false && y->second.empty() == false) {
-		std::pair<int,int> res (maximum(atoi(x->second.c_str()),1024),
-		                        maximum(atoi(y->second.c_str()),768));
+		std::pair<int,int> res (maximum(atoi(x->second.c_str()),800),
+		                        maximum(atoi(y->second.c_str()),600));
 
 		//make sure resolutions are always divisible by 4
 		res.first &= ~3;
@@ -122,9 +122,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 	if(disp != NULL) {
 		std::pair<int,int> res = resolution;
 
-		//dimensions must be even
-		res.first &= ~1;
-		res.second &= ~1;
+		//make sure resolutions are always divisible by 4
+		res.first &= ~3;
+		res.second &= ~3;
 
 		CVideo& video = disp->video();
 		const int flags = fullscreen() ? FULL_SCREEN : 0;
@@ -358,6 +358,11 @@ void show_preferences_dialog(display& disp)
 	const int width = 600;
 	const int height = 400;
 
+	//make sure that the frame buffer is restored to its original state
+	//when the dialog closes
+	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
+	const surface_restorer restorer(disp.video().getSurface(),dialog_rect);
+
 	SDL_Rect clip_rect = {0,0,disp.x(),disp.y()};
 	SDL_Rect title_rect = font::draw_text(NULL,clip_rect,16,font::NORMAL_COLOUR,
 	                                      string_table["preferences"],0,0);
@@ -579,7 +584,7 @@ void show_video_mode_dialog(display& disp)
 	}
 
 	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= 1024 && modes[i]->h >= 768) {
+		if(modes[i]->w >= 800 && modes[i]->h >= 600) {
 			const std::pair<int,int> new_res(modes[i]->w,modes[i]->h);
 			if(std::count(resolutions.begin(),resolutions.end(),new_res) > 0)
 				continue;

@@ -18,12 +18,17 @@
 #include "key.hpp"
 #include "language.hpp"
 #include "show_dialog.hpp"
+#include "util.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
 
 #include <cstdlib>
 #include <sstream>
 #include <vector>
+
+namespace {
+	const int min_room_at_bottom = 150;
+}
 
 void show_intro(display& screen, const config& data)
 {
@@ -35,10 +40,10 @@ void show_intro(display& screen, const config& data)
 	gui::button next_button(screen,string_table["next_button"] + ">>>");
 	gui::button skip_button(screen,string_table["skip_button"]);
 
-	next_button.set_x(700);
-	next_button.set_y(500);
-	skip_button.set_x(700);
-	skip_button.set_y(550);
+	next_button.set_x(screen.x()-200);
+	next_button.set_y(screen.y()-150);
+	skip_button.set_x(screen.x()-200);
+	skip_button.set_y(screen.y()-100);
 
 	const config::child_list& parts = data.get_children("part");
 
@@ -62,14 +67,18 @@ void show_intro(display& screen, const config& data)
 			dstrect.w = image->w;
 			dstrect.h = image->h;
 
+			if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
+				dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
+			}
+
 			SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 
 			textx = dstrect.x;
 			texty = dstrect.y + dstrect.h + 10;
 
-			next_button.set_x(dstrect.x+dstrect.w);
+			next_button.set_x(dstrect.x+dstrect.w-40);
 			next_button.set_y(dstrect.y+dstrect.h+20);
-			skip_button.set_x(dstrect.x+dstrect.w);
+			skip_button.set_x(dstrect.x+dstrect.w-40);
 			skip_button.set_y(dstrect.y+dstrect.h+70);
 		}
 
@@ -194,6 +203,10 @@ void show_map_scene(display& screen, config& data)
 	dstrect.y = screen.y()/2 - image->h/2;
 	dstrect.w = image->w;
 	dstrect.h = image->h;
+
+	if(dstrect.y + dstrect.h > screen.y() - min_room_at_bottom) {
+		dstrect.y = maximum<int>(0,screen.y() - dstrect.h - min_room_at_bottom);
+	}
 
 	SDL_BlitSurface(image,NULL,screen.video().getSurface(),&dstrect);
 	update_whole_screen();

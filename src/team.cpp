@@ -14,6 +14,7 @@
 #include "game_config.hpp"
 #include "replay.hpp"
 #include "team.hpp"
+#include "util.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -107,8 +108,9 @@ team::team_info::team_info(const config& cfg)
 
 team::team(const config& cfg, int gold) : gold_(gold), info_(cfg)
 {
+	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
-		gold_ = ::atoi(info_.gold.c_str());
+		gold_ = maximum(gold,::atoi(info_.gold.c_str()));
 }
 
 void team::get_tower(const gamemap::location& loc)
