@@ -17,6 +17,7 @@
 #include "playlevel.hpp"
 #include "language.hpp"
 #include "sdl_utils.hpp"
+#include "tooltips.hpp"
 #include "widgets/button.hpp"
 #include "widgets/textbox.hpp"
 
@@ -667,9 +668,10 @@ int show_dialog(display& disp, SDL_Surface* image,
 		                yloc+top_padding+image->h-6, NULL);
 	}
 
+	const int unitw = 200;
+	const int unith = disp.y()/2;
+
 	if(!units.empty()) {
-		const int unitw = 200;
-		const int unith = disp.y()/2;
 		draw_solid_tinted_rectangle(unitx,unity,unitw,unith,
 		                            0,0,0,1.0,scr);
 		draw_rectangle(unitx,unity,unitw,unith,border_colour,scr);
@@ -764,9 +766,11 @@ int show_dialog(display& disp, SDL_Surface* image,
 					SDL_FillRect(screen,&unit_profile_rect,0);
 				}
 
+				SDL_Rect clip_rect = { unitx, unity, unitw, unith };
+
 				disp.draw_unit_details(unitx+left_padding,
 				   unity+top_padding, gamemap::location(), units[selection],
-				   unit_details_rect, unit_profile_rect);
+				   unit_details_rect, unit_profile_rect, &clip_rect);
 				disp.update_display();
 			}
 		}

@@ -18,6 +18,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "tooltips.hpp"
 
 #include <iostream>
 
@@ -83,6 +84,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	display gui(units,video,map,status,teams);
 	const preferences::display_manager prefs_disp_manager(&gui);
+	const tooltips::manager tooltips_manager(gui);
 
 	if(recorder.skipping() == false) {
 		for(std::vector<config*>::iterator story_i = story.begin();

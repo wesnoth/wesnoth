@@ -21,6 +21,7 @@
 #include "menu.hpp"
 #include "sdl_utils.hpp"
 #include "sound.hpp"
+#include "tooltips.hpp"
 #include "util.hpp"
 
 #include "SDL_image.h"
@@ -353,6 +354,8 @@ void display::redraw_everything()
 	if(update_locked())
 		return;
 
+	tooltips::clear_tooltips();
+
 	sideBarBgDrawn_ = false;
 	minimapDecorationsDrawn_ = false;
 	invalidate_all();
@@ -420,6 +423,10 @@ void display::draw(bool update,bool force)
 	}
 
 	draw_sidebar();
+
+	int mousex, mousey;
+	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
 	const int max_skips = 5;
 	const int time_between_draws = 20;
@@ -561,24 +568,18 @@ void display::draw_game_status(int x, int y)
 		details << "\n";
 	}
 
-	SDL_Rect clipRect;
-	clipRect.x = mapx();
-	clipRect.y = 0;
-	clipRect.w = this->x() - mapx();
-	clipRect.h = this->y();
+	SDL_Rect clipRect = screen_area();
 
 	gameStatusRect_ = font::draw_text(this,clipRect,14,font::NORMAL_COLOUR,
 	                                  details.str(),x,y);
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
-         const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect)
+         const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect,
+         SDL_Rect* clip_rect)
 {
-	SDL_Rect clipRect;
-	clipRect.x = this->mapx();
-	clipRect.y = 0;
-	clipRect.w = this->x();
-	clipRect.h = this->y();
+	SDL_Rect clipRect = clip_rect != NULL ? *clip_rect : screen_area();
+
 	SDL_Surface* const background = getImage("misc/rightside.png",UNSCALED);
 
 	if(background == NULL)
@@ -618,7 +619,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 	std::stringstream details;
 	details << "+" << u.description() << "\n"
 	        << "+" << u.type().language_name()
-			<< "\n-(" << string_table["level"] << ""
+			<< "\n-(" << string_table["level"] << " "
 			<< u.type().level() << ")\n"
 			<< status << "\n"
 			<< unit_type::alignment_description(u.type().alignment())

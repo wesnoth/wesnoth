@@ -96,7 +96,8 @@ public:
 	void remove_overlay(const gamemap::location& loc);
 
 	void draw_unit_details(int x, int y, const gamemap::location& loc,
-	        const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect);
+	        const unit& u, SDL_Rect& description_rect, SDL_Rect& profile_rect,
+	        SDL_Rect* clip_rect=NULL);
 
 	void update_display();
 

@@ -10,9 +10,12 @@
 
    See the COPYING file for more details.
 */
+
+#include "SDL_ttf.h"
+
 #include "config.hpp"
 #include "font.hpp"
-#include "SDL_ttf.h"
+#include "tooltips.hpp"
 
 #include <cstdio>
 #include <iostream>
@@ -103,11 +106,11 @@ manager::~manager()
 
 SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
                         COLOUR colour, const std::string& text, int x, int y,
-						SDL_Surface* bg)
+						SDL_Surface* bg, bool use_tooltips)
 {
 	static const SDL_Color colours[] =
-	//     neutral         good          bad
-	    { {0xFF,0xFF,0,0}, {0,0xFF,0,0}, {0xFF,0,0,0} };
+	//     neutral         good          bad           black
+	    { {0xFF,0xFF,0,0}, {0,0xFF,0,0}, {0xFF,0,0,0}, {0,0,0,0} };
 
 	const SDL_Color& col = colours[colour];
 	TTF_Font* const font = get_font(size);
@@ -133,6 +136,19 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 	dest.h = surface->h;
 
 	if(dest.x + dest.w > area.x + area.w) {
+
+		if(text.size() > 3) {
+			std::string txt = text;
+			if(std::count(txt.end()-3,txt.end(),'.') == 3) {
+				txt.erase(txt.end()-4);
+			} else {
+				tooltips::add_tooltip(dest,text);
+				std::fill(txt.end()-3,txt.end(),'.');
+			}
+
+			return draw_text_line(gui,area,size,colour,txt,x,y,bg,false);
+		}
+
 		dest.w = area.x + area.w - dest.x;
 	}
 
@@ -147,13 +163,17 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		SDL_BlitSurface(surface,&src,gui->video().getSurface(),&dest);
 	}
 
+	if(use_tooltips) {
+		tooltips::add_tooltip(dest,text);
+	}
+
 	return dest;
 }
 
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    COLOUR colour, const std::string& txt, int x, int y,
-                   SDL_Surface* bg)
+                   SDL_Surface* bg, bool use_tooltips)
 {
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
@@ -170,7 +190,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
 	for(;;) {
 		if(i1 != i2) {
-			COLOUR col = NORMAL_COLOUR;
+			COLOUR col = colour;
 			int sz = size;
 			if(*i1 == '#') {
 				col = BAD_COLOUR;
@@ -189,7 +209,8 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 			if(i1 != i2) {
 				const std::string new_string(i1,i2);
 				const SDL_Rect rect =
-				    draw_text_line(gui,area,sz,col,new_string,x,y,bg);
+				    draw_text_line(gui,area,sz,col,new_string,x,y,bg,
+				                   use_tooltips);
 				if(rect.w > res.w)
 					res.w = rect.w;
 				res.h += rect.h;
