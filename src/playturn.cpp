@@ -2082,13 +2082,26 @@ void turn_info::do_search(const std::string& new_search)
 	if(new_search.empty() == false && new_search != last_search_)
 		last_search_ = new_search;
 	
-	if(last_search_.empty() == false) {
-		//Scan the game map
-		gamemap::location loc = last_search_hit_;
+	if(last_search_.empty()) return;
+	
+	bool found = false;
+	gamemap::location loc = last_search_hit_;
+	//If this is a location search, just center on that location.
+	std::vector<std::string> args = config::split(last_search_,',');
+	if(args.size() == 2) {
+		int x, y;
+		x = lexical_cast_default<int>(args[0], 0)-1;
+		y = lexical_cast_default<int>(args[1], 0)-1;
+		if(x >= 0 && x < map_.x() && y >= 0 && y < map_.y()) {
+			loc = gamemap::location(x,y);
+			found = true;
+		}
+	}
+	if(found == false) {
+		//Otherwise, start scanning the game map
 		if(loc.valid() == false)
 			loc = gamemap::location(map_.x()-1,map_.y()-1);
 		gamemap::location start = loc;
-		bool found = false;
 		do {
 			//Move to the next location
 			loc.x = (loc.x + 1) % map_.x();
@@ -2115,20 +2128,19 @@ void turn_info::do_search(const std::string& new_search)
 				}
 			}
 		} while (loc != start && !found);
-		
-		if(found) {
-			last_search_hit_ = loc;
-			gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
-			gui_.highlight_hex(loc);
-		} else {
-			last_search_hit_ = gamemap::location();
-			//Not found, inform the player
-			string_map symbols;
-			symbols["search"] = last_search_;
-			const std::string msg = config::interpolate_variables_into_string(
-				string_table["search_string_not_found"],&symbols);
-			gui::show_dialog(gui_,NULL,"",msg);
-		}
+	}
+	if(found) {
+		last_search_hit_ = loc;
+		gui_.scroll_to_tile(loc.x,loc.y,display::WARP);
+		gui_.highlight_hex(loc);
+	} else {
+		last_search_hit_ = gamemap::location();
+		//Not found, inform the player
+		string_map symbols;
+		symbols["search"] = last_search_;
+		const std::string msg = config::interpolate_variables_into_string(
+			string_table["search_string_not_found"],&symbols);
+		gui::show_dialog(gui_,NULL,"",msg);
 	}
 }
 
