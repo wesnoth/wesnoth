@@ -44,7 +44,7 @@ namespace {
 	int commands_disabled = 0;
 }
 
-command_disabler::command_disabler(display* disp)
+command_disabler::command_disabler()
 {
 	++commands_disabled;
 }
@@ -1188,7 +1188,7 @@ void turn_info::undo()
 	if(undo_stack_.empty())
 		return;
 
-	const command_disabler disable_commands(&gui_);
+	const command_disabler disable_commands;
 
 	undo_action& action = undo_stack_.back();
 	if(action.is_recall()) {
@@ -1265,7 +1265,7 @@ void turn_info::redo()
 	if(redo_stack_.empty())
 		return;
 
-	const command_disabler disable_commands(&gui_);
+	const command_disabler disable_commands;
 
 	//clear routes, selected hex, etc
 	gui_.set_paths(NULL);

@@ -347,7 +347,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	LOG_AI << "ai_interface::move_unit " << (from.x + 1) << "," << (from.y + 1)
 		<< " -> " << (to.x + 1) << "," << (to.y + 1) << "\n";
 	//stop the user from issuing any commands while the unit is moving
-	const command_disabler disable_commands(&info_.disp);
+	const command_disabler disable_commands;
 
 	assert(info_.units.find(to) == info_.units.end() || from == to);
 
@@ -913,7 +913,7 @@ bool ai::do_combat(std::map<gamemap::location,paths>& possible_moves, const move
 void ai_interface::attack_enemy(const location& u, const location& target, int weapon)
 {
 	//stop the user from issuing any commands while the unit is attacking
-	const command_disabler disable_commands(&info_.disp);
+	const command_disabler disable_commands;
 
 	if(info_.units.count(u) && info_.units.count(target)) {
 		if(info_.units.find(target)->second.stone()) {

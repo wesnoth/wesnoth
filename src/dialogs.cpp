@@ -102,7 +102,7 @@ void advance_unit(const game_data& info,
 
 bool animate_unit_advancement(const game_data& info,unit_map& units, gamemap::location loc, display& gui, size_t choice)
 {
-	const command_disabler cmd_disabler(&gui);
+	const command_disabler cmd_disabler;
 	
 	std::map<gamemap::location,unit>::iterator u = units.find(loc);
 	if(u == units.end() || u->second.advances() == false) {

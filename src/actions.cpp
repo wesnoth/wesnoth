@@ -80,7 +80,7 @@ std::string recruit_unit(const gamemap& map, int side,
        std::map<gamemap::location,unit>& units, unit& new_unit,
        gamemap::location& recruit_location, display* disp, bool need_castle, bool full_movement)
 {
-	const command_disabler disable_commands(disp);
+	const command_disabler disable_commands;
 
 	LOG_NG << "recruiting unit for side " << side << "\n";
 	typedef std::map<gamemap::location,unit> units_map;
@@ -570,7 +570,7 @@ void attack(display& gui, const gamemap& map,
 			const game_data& info, bool player_is_attacker)
 {
 	//stop the user from issuing any commands while the units are fighting
-	const command_disabler disable_commands(&gui);
+	const command_disabler disable_commands;
 
 	std::map<gamemap::location,unit>::iterator a = units.find(attacker);
 	std::map<gamemap::location,unit>::iterator d = units.find(defender);
@@ -1578,7 +1578,7 @@ size_t move_unit(display* disp, const game_data& gamedata,
                  gamemap::location *next_unit, bool continue_move)
 {
 	//stop the user from issuing any commands while the unit is moving
-	const command_disabler disable_commands(disp);
+	const command_disabler disable_commands;
 
 	assert(!route.empty());
 

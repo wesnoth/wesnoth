@@ -53,7 +53,7 @@ private:
 
 struct command_disabler
 {
-	command_disabler(display* disp);
+	command_disabler();
 	~command_disabler();
 };
 
