@@ -42,7 +42,7 @@ do
     msgcat --use-first -F $tmp po/$DSTDOMAIN/$LANG.po.bak > po/$DSTDOMAIN/$LANG.po
 
     touch -d '1970-01-02' po/$DSTDOMAIN/$LANG.po
-    make -C po $DSTDOMAIN/$LANG.po
+    make -C po/$DSTDOMAIN $LANG.po
 
     # make sure the timestamp is fixed or cvs gets confused
     touch po/$DSTDOMAIN/$LANG.po
