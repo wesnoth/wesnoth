@@ -24,7 +24,7 @@ config construct_error(const std::string& msg)
 	return cfg;
 }
 
-int main()
+void run_server()
 {
 	const network::manager net_manager;
 	const network::server_manager server;
@@ -332,5 +332,14 @@ int main()
 		}
 
 		SDL_Delay(20);
+	}
+}
+
+int main()
+{
+	try {
+		run_server();
+	} catch(network::error& e) {
+		std::cerr << "error starting server: " << e.message << "\n";
 	}
 }
