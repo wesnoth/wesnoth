@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth.cpp.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-05 18:26+0200\n"
+"POT-Creation-Date: 2004-09-10 11:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,7 +207,7 @@ msgid ""
 "movement point to enter. Exactly how many movement points are spent entering "
 "a hex depends on the unit type - in forest, elvish units only spend 1 "
 "movement point, most human and orc units spend 2, while horsemen spend 3. "
-"You can learn how many unit points a unit requires to enter a certain "
+"You can learn how many movement points a unit requires to enter a certain "
 "terrain type by right-clicking on it, selecting Unit Description, and then "
 "clicking <italic>text='Terrain Modifiers'</italic>.\n"
 "\n"
@@ -2437,15 +2437,15 @@ msgstr ""
 #: data/units/Deathmaster.cfg:20 data/units/Drake_Beak.cfg:38
 #: data/units/Drake_Mage.cfg:20 data/units/Drake_Petit.cfg:38
 #: data/units/Drake_Slasher.cfg:76 data/units/Drake_Warmage.cfg:20
-#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:29
-#: data/units/Dwarvish_Fighter.cfg:44 data/units/Dwarvish_Runemaster.cfg:21
-#: data/units/Dwarvish_Steelclad.cfg:45 data/units/Elder_Mage.cfg:23
+#: data/units/Drake_Worker.cfg:20 data/units/Dwarvish_Dragonguard.cfg:21
+#: data/units/Dwarvish_Fighter.cfg:37 data/units/Dwarvish_Runemaster.cfg:21
+#: data/units/Dwarvish_Steelclad.cfg:43 data/units/Elder_Mage.cfg:23
 #: data/units/Elder_Wose.cfg:19 data/units/Elvish_Druid.cfg:23
-#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Shaman.cfg:25
-#: data/units/Elvish_Shaman.cfg:44 data/units/Elvish_Shyde.cfg:25
-#: data/units/Elvish_Shyde.cfg:51 data/units/Fire_Dragon.cfg:41
-#: data/units/Footpad.cfg:20 data/units/Footpad.cfg:38
-#: data/units/Galleon.cfg:17 data/units/Gate.cfg:24
+#: data/units/Elvish_Druid.cfg:42 data/units/Elvish_Lady.cfg:17
+#: data/units/Elvish_Shaman.cfg:25 data/units/Elvish_Shaman.cfg:44
+#: data/units/Elvish_Shyde.cfg:25 data/units/Elvish_Shyde.cfg:51
+#: data/units/Fire_Dragon.cfg:41 data/units/Footpad.cfg:20
+#: data/units/Footpad.cfg:38 data/units/Galleon.cfg:18 data/units/Gate.cfg:24
 #: data/units/Giant_Mudcrawler.cfg:22 data/units/Giant_Mudcrawler.cfg:35
 #: data/units/Giant_Scorpion.cfg:38 data/units/Goblin_Pillager.cfg:36
 #: data/units/Great_Mage.cfg:24 data/units/Great_Mage.cfg:100
@@ -2533,8 +2533,8 @@ msgid ""
 "their enemies from long range."
 msgstr ""
 
-#: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:28
-#: data/units/Dwarvish_Thunderguard.cfg:28 data/units/Mage.cfg:20
+#: data/units/Assassin.cfg:20 data/units/Dwarvish_Thunderer.cfg:20
+#: data/units/Dwarvish_Thunderguard.cfg:20 data/units/Mage.cfg:20
 #: data/units/Mage.cfg:87 data/units/Orcish_Archer.cfg:20
 #: data/units/Orcish_Assassin.cfg:19 data/units/Orcish_Shaman.cfg:18
 #: data/units/Orcish_Shaman.cfg:61 data/units/Orcish_Shaman.cfg:104
@@ -2558,11 +2558,11 @@ msgstr ""
 #: data/units/Drake_Fire.cfg:20 data/units/Drake_Hatchling.cfg:20
 #: data/units/Drake_Slasher.cfg:21 data/units/Drake_Slave.cfg:20
 #: data/units/Drake_Warrior.cfg:21 data/units/Duelist.cfg:21
-#: data/units/Dwarvish_Berserker.cfg:35 data/units/Dwarvish_Fighter.cfg:27
-#: data/units/Dwarvish_Lord.cfg:27 data/units/Dwarvish_Lord.cfg:44
-#: data/units/Dwarvish_Steelclad.cfg:28 data/units/Dwarvish_Thunderer.cfg:29
-#: data/units/Dwarvish_Thunderguard.cfg:29
-#: data/units/Dwarvish_Ulfserker.cfg:35 data/units/Elvish_Archer.cfg:22
+#: data/units/Dwarvish_Berserker.cfg:28 data/units/Dwarvish_Fighter.cfg:20
+#: data/units/Dwarvish_Lord.cfg:25 data/units/Dwarvish_Lord.cfg:42
+#: data/units/Dwarvish_Steelclad.cfg:26 data/units/Dwarvish_Thunderer.cfg:21
+#: data/units/Dwarvish_Thunderguard.cfg:21
+#: data/units/Dwarvish_Ulfserker.cfg:28 data/units/Elvish_Archer.cfg:22
 #: data/units/Elvish_Archer.cfg:101 data/units/Elvish_Avenger.cfg:24
 #: data/units/Elvish_Avenger.cfg:97 data/units/Elvish_Captain.cfg:24
 #: data/units/Elvish_Champion.cfg:22 data/units/Elvish_Fighter.cfg:24
@@ -2611,7 +2611,8 @@ msgstr ""
 msgid "blade"
 msgstr ""
 
-#: data/units/Assassin.cfg:25 data/units/Rogue.cfg:25 data/units/Thief.cfg:24
+#: data/units/Assassin.cfg:25 data/units/Nightgaunt.cfg:25
+#: data/units/Rogue.cfg:25 data/units/Shadow.cfg:25 data/units/Thief.cfg:24
 #: src/actions.cpp:487
 msgid "backstab"
 msgstr ""
@@ -2767,10 +2768,11 @@ msgstr ""
 #: data/units/Death_Knight.cfg:37 data/units/Dragoon.cfg:49
 #: data/units/Drake_Clasher.cfg:52 data/units/Drake_Guard.cfg:23
 #: data/units/Drake_Slasher.cfg:53 data/units/Duelist.cfg:32
-#: data/units/Dwarvish_Dragonguard.cfg:47 data/units/Dwarvish_Guardsman.cfg:40
-#: data/units/Dwarvish_Guardsman.cfg:53 data/units/Dwarvish_Stalwart.cfg:40
-#: data/units/Dwarvish_Stalwart.cfg:53 data/units/Dwarvish_Thunderer.cfg:49
-#: data/units/Dwarvish_Thunderguard.cfg:55 data/units/Elvish_Archer.cfg:39
+#: data/units/Dwarvish_Dragonguard.cfg:39 data/units/Dwarvish_Guardsman.cfg:26
+#: data/units/Dwarvish_Guardsman.cfg:39 data/units/Dwarvish_Sentinel.cfg:28
+#: data/units/Dwarvish_Sentinel.cfg:41 data/units/Dwarvish_Stalwart.cfg:28
+#: data/units/Dwarvish_Stalwart.cfg:41 data/units/Dwarvish_Thunderer.cfg:41
+#: data/units/Dwarvish_Thunderguard.cfg:47 data/units/Elvish_Archer.cfg:39
 #: data/units/Elvish_Archer.cfg:118 data/units/Elvish_Avenger.cfg:40
 #: data/units/Elvish_Avenger.cfg:113 data/units/Elvish_Captain.cfg:40
 #: data/units/Elvish_Champion.cfg:41 data/units/Elvish_Druid.cfg:62
@@ -2879,8 +2881,9 @@ msgstr ""
 
 #: data/units/Chocobone.cfg:20 data/units/Drake_Clasher.cfg:51
 #: data/units/Drake_Guard.cfg:22 data/units/Drake_Slasher.cfg:52
-#: data/units/Dwarvish_Guardsman.cfg:38 data/units/Dwarvish_Guardsman.cfg:52
-#: data/units/Dwarvish_Stalwart.cfg:38 data/units/Dwarvish_Stalwart.cfg:52
+#: data/units/Dwarvish_Guardsman.cfg:24 data/units/Dwarvish_Guardsman.cfg:38
+#: data/units/Dwarvish_Sentinel.cfg:26 data/units/Dwarvish_Sentinel.cfg:40
+#: data/units/Dwarvish_Stalwart.cfg:26 data/units/Dwarvish_Stalwart.cfg:40
 #: data/units/Horseman.cfg:20 data/units/Saurian.cfg:19
 #: data/units/Saurian.cfg:36 data/units/Saurian_Warrior.cfg:19
 #: data/units/Saurian_Warrior.cfg:36 data/units/Spearman.cfg:19
@@ -3021,8 +3024,8 @@ msgid ""
 "came back to this world as Death Knights."
 msgstr ""
 
-#: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:26
-#: data/units/Dwarvish_Steelclad.cfg:26
+#: data/units/Death_Knight.cfg:19 data/units/Dwarvish_Lord.cfg:24
+#: data/units/Dwarvish_Steelclad.cfg:24
 msgid "battle axe"
 msgstr ""
 
@@ -3211,17 +3214,17 @@ msgstr ""
 
 #: data/units/Dwarvish_Berserker.cfg:16
 msgid ""
-"Dwarves are an ancient race of powerful fighters. Their Berserkers forgo all "
-"defense in exchange for massive damage against their enemies. Once a battle "
-"is entered, Dwarvish Berserkers attack ferociously, continuing to push the "
-"attack until either they or their enemy lies dead."
+"Dwarves are an ancient race of powerful fighters. Their Berserkers forget "
+"all defense in exchange for massive damage against their enemies. Once a "
+"battle is entered, Dwarvish Berserkers attack ferociously, continuing to "
+"push the attack until either they or their enemy lies dead."
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:33 data/units/Dwarvish_Ulfserker.cfg:33
+#: data/units/Dwarvish_Berserker.cfg:26 data/units/Dwarvish_Ulfserker.cfg:26
 msgid "berserker frenzy"
 msgstr ""
 
-#: data/units/Dwarvish_Berserker.cfg:36 data/units/Dwarvish_Ulfserker.cfg:36
+#: data/units/Dwarvish_Berserker.cfg:29 data/units/Dwarvish_Ulfserker.cfg:29
 msgid "berserk"
 msgstr ""
 
@@ -3236,8 +3239,8 @@ msgid ""
 "of arcane Dwarvish technology."
 msgstr ""
 
-#: data/units/Dwarvish_Dragonguard.cfg:28
-#: data/units/Dwarvish_Dragonguard.cfg:46
+#: data/units/Dwarvish_Dragonguard.cfg:20
+#: data/units/Dwarvish_Dragonguard.cfg:38
 msgid "dragonstaff"
 msgstr ""
 
@@ -3253,12 +3256,12 @@ msgid ""
 "than compensate."
 msgstr ""
 
-#: data/units/Dwarvish_Fighter.cfg:26 data/units/Revenant.cfg:23
+#: data/units/Dwarvish_Fighter.cfg:19 data/units/Revenant.cfg:23
 #: data/units/Skeleton.cfg:24
 msgid "axe"
 msgstr ""
 
-#: data/units/Dwarvish_Fighter.cfg:43 data/units/Dwarvish_Steelclad.cfg:44
+#: data/units/Dwarvish_Fighter.cfg:36 data/units/Dwarvish_Steelclad.cfg:42
 msgid "hammer"
 msgstr ""
 
@@ -3266,12 +3269,12 @@ msgstr ""
 msgid "Dwarvish Guardsman"
 msgstr ""
 
-#: data/units/Dwarvish_Guardsman.cfg:29 data/units/Dwarvish_Stalwart.cfg:29
-#: src/actions.cpp:496
+#: data/units/Dwarvish_Guardsman.cfg:15 data/units/Dwarvish_Sentinel.cfg:17
+#: data/units/Dwarvish_Stalwart.cfg:17 src/actions.cpp:496
 msgid "steadfast"
 msgstr ""
 
-#: data/units/Dwarvish_Guardsman.cfg:35
+#: data/units/Dwarvish_Guardsman.cfg:21
 msgid ""
 "The most resiliant dwarves sometimes join the Dwarvish army as Guardsman. "
 "Slow and without a strong attack, they guard the Army's flank, soaking up "
@@ -3282,14 +3285,14 @@ msgstr ""
 msgid "Dwarvish Lord"
 msgstr ""
 
-#: data/units/Dwarvish_Lord.cfg:23
+#: data/units/Dwarvish_Lord.cfg:21
 msgid ""
 "Dwarvish Lords are kings under the mountains. Their skill with the battle "
 "axe is unmatched, and they are able to hit even enemies that are far away. "
 "Their fine armor is made of the strong alloys crafted by their kin."
 msgstr ""
 
-#: data/units/Dwarvish_Lord.cfg:43
+#: data/units/Dwarvish_Lord.cfg:41
 msgid "hatchet"
 msgstr ""
 
@@ -3313,11 +3316,21 @@ msgstr ""
 msgid "Lightning bolt"
 msgstr ""
 
+#: data/units/Dwarvish_Sentinel.cfg:3
+msgid "Dwarvish Sentinel"
+msgstr ""
+
+#: data/units/Dwarvish_Sentinel.cfg:23
+msgid ""
+"The Sentinel, with his tower shield and great courage, refuses to yeild "
+"under even the strongest of enemy attacks."
+msgstr ""
+
 #: data/units/Dwarvish_Stalwart.cfg:3
 msgid "Dwarvish Stalwart"
 msgstr ""
 
-#: data/units/Dwarvish_Stalwart.cfg:35
+#: data/units/Dwarvish_Stalwart.cfg:23
 msgid ""
 "Stalwarts, after years in battle, have fashioned new shields and strong "
 "armor from the ruins of their enemies. While slow, they are the feared for "
@@ -3328,7 +3341,7 @@ msgstr ""
 msgid "Dwarvish Steelclad"
 msgstr ""
 
-#: data/units/Dwarvish_Steelclad.cfg:23
+#: data/units/Dwarvish_Steelclad.cfg:21
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -3346,7 +3359,7 @@ msgid ""
 "their impact is unmatched."
 msgstr ""
 
-#: data/units/Dwarvish_Thunderer.cfg:48
+#: data/units/Dwarvish_Thunderer.cfg:40
 msgid "thunderstick"
 msgstr ""
 
@@ -3359,10 +3372,10 @@ msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
 "they are no faster than the more common Thunderers, their attack is much "
-"more deadly. "
+"more deadly."
 msgstr ""
 
-#: data/units/Dwarvish_Thunderguard.cfg:54
+#: data/units/Dwarvish_Thunderguard.cfg:46
 msgid "dragonstick"
 msgstr ""
 
@@ -3478,6 +3491,14 @@ msgstr ""
 msgid ""
 "Elvish High Lords are fearsome in combat, using the sword at close range and "
 "devastating balls of fire at long range."
+msgstr ""
+
+#: data/units/Elvish_Lady.cfg:4
+msgid "Elvish Lady"
+msgstr ""
+
+#: data/units/Elvish_Lady.cfg:16 data/units/Galleon.cfg:17
+msgid "dummy"
 msgstr ""
 
 #: data/units/Elvish_Lord.cfg:3
@@ -3667,10 +3688,6 @@ msgstr ""
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
-msgstr ""
-
-#: data/units/Galleon.cfg:16
-msgid "dummy"
 msgstr ""
 
 #: data/units/Gate.cfg:3
@@ -5008,35 +5025,35 @@ msgstr ""
 msgid "+Norwegian Translation"
 msgstr ""
 
-#: src/about.cpp:195
+#: src/about.cpp:196
 msgid "+Polish Translation"
 msgstr ""
 
-#: src/about.cpp:201
+#: src/about.cpp:202
 msgid "+Portuguese Translation"
 msgstr ""
 
-#: src/about.cpp:206
+#: src/about.cpp:207
 msgid "+Slovak Translation"
 msgstr ""
 
-#: src/about.cpp:210
+#: src/about.cpp:211
 msgid "+Spanish Translation"
 msgstr ""
 
-#: src/about.cpp:218
+#: src/about.cpp:219
 msgid "+Swedish Translation"
 msgstr ""
 
-#: src/about.cpp:223
+#: src/about.cpp:226
 msgid "+Contributors"
 msgstr ""
 
-#: src/about.cpp:231
+#: src/about.cpp:234
 msgid "+ Bots"
 msgstr ""
 
-#: src/about.cpp:258 src/help.cpp:2372 src/show_dialog.cpp:468
+#: src/about.cpp:261 src/help.cpp:2372 src/show_dialog.cpp:468
 msgid "Close"
 msgstr ""
 
@@ -5166,11 +5183,11 @@ msgstr ""
 msgid "#(Invalid)"
 msgstr ""
 
-#: src/dialogs.cpp:365 src/game.cpp:923
+#: src/dialogs.cpp:365 src/game.cpp:924
 msgid "Campaign"
 msgstr ""
 
-#: src/dialogs.cpp:367 src/game.cpp:970
+#: src/dialogs.cpp:367 src/game.cpp:971
 msgid "Multiplayer"
 msgstr ""
 
@@ -5190,7 +5207,7 @@ msgstr ""
 msgid "Scenario Start"
 msgstr ""
 
-#: src/dialogs.cpp:384 src/game.cpp:946
+#: src/dialogs.cpp:384 src/game.cpp:947
 msgid "Difficulty"
 msgstr ""
 
@@ -5301,74 +5318,74 @@ msgstr ""
 msgid "Do you want to save your game?"
 msgstr ""
 
-#: src/game.cpp:580
+#: src/game.cpp:581
 msgid "The Battle for Wesnoth"
 msgstr ""
 
-#: src/game.cpp:800 src/multiplayer_connect.cpp:104
+#: src/game.cpp:801 src/multiplayer_connect.cpp:104
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
+#: src/game.cpp:812 src/game.cpp:817 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
 msgid "The file you have tried to load is corrupt"
 msgstr ""
 
-#: src/game.cpp:916
+#: src/game.cpp:917
 msgid "There are no campaigns available"
 msgstr ""
 
-#: src/game.cpp:924
+#: src/game.cpp:925
 msgid "Choose the campaign you want to play:"
 msgstr ""
 
-#: src/game.cpp:947
+#: src/game.cpp:948
 msgid "Select difficulty level:"
 msgstr ""
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Join Official Server"
 msgstr ""
 
-#: src/game.cpp:965
+#: src/game.cpp:966
 msgid "Log on to the official Wesnoth multiplayer server"
 msgstr ""
 
-#: src/game.cpp:966 src/multiplayer_lobby.cpp:157
+#: src/game.cpp:967 src/multiplayer_lobby.cpp:157
 msgid "Join Game"
 msgstr ""
 
-#: src/game.cpp:966
+#: src/game.cpp:967
 msgid "Join a server or hosted game"
 msgstr ""
 
-#: src/game.cpp:967
+#: src/game.cpp:968
 msgid "Host Multiplayer Game"
 msgstr ""
 
-#: src/game.cpp:967
+#: src/game.cpp:968
 msgid "Host a game without using a server"
 msgstr ""
 
-#: src/game.cpp:970 src/multiplayer_client.cpp:269
+#: src/game.cpp:971 src/multiplayer_client.cpp:269
 msgid "Login"
 msgstr ""
 
-#: src/game.cpp:1050
+#: src/game.cpp:1051
 msgid "Language"
 msgstr ""
 
-#: src/game.cpp:1051
+#: src/game.cpp:1052
 msgid "Choose your preferred language"
 msgstr ""
 
-#: src/game.cpp:1136
+#: src/game.cpp:1137
 msgid "Could not initialize video. Exiting.\n"
 msgstr ""
 
-#: src/game.cpp:1138
+#: src/game.cpp:1139
 msgid "Could not initialize fonts. Exiting.\n"
 msgstr ""
 
@@ -5688,7 +5705,7 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/language.cpp:30
+#: src/language.cpp:31
 msgid "System default language"
 msgstr ""
 
@@ -6474,15 +6491,15 @@ msgstr ""
 msgid "strikes"
 msgstr ""
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "chaotic"
 msgstr ""
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "lawful"
 msgstr ""
 
-#: src/unit_types.cpp:878
+#: src/unit_types.cpp:886
 msgid "neutral"
 msgstr ""
 
