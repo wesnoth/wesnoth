@@ -4,15 +4,28 @@ CVS HEAD:
  * theme update
  * more unit graphics, animations, attack icons
  * resting implemented: units that don't do anything for a turn get few hitpoints back
+ * synced MANUAL with Wiki
+ * language fixes (english)
  * new translations:
    * brazilian
  * sea creatures in Ford of Abez do not attack Li'sar
- * you can now actually find the flaming sword
- * fixed illegal memory access
+ * made 'Mage of Light' give an advantage at dawn
+ * made energy bars fade out when a unit is killed
+ * made circles disappear after a unit is killed
+ * made recruiting update fog of war and shroud
+ * made it so you can't create units that are off the map
+ * fixed missing race=elf for 'Elvish Captain'
+ * fixed flaming sword not being found
+ * fixed need to be able to escape opening conversation (#7798)
+ * fixed problem where some menus would have scroll buttons displayed in top-left corner
+ * fixed problem with textbox not processing properly
  * fixed bug where Elf wouldn't do anything in 'Mages and Elves' scenario
+ * fixed illegal memory access
  * fixed flop() to work properly
  * workaround to SDL bug
  * removed definition of log2 which clashes with some compilers
+ * removed use of auto_ptr to help with compilation on older compilers
+ * added a draw_wrapped_text method font.[ch]pp
 
 Version 0.6.99.3:
  * data compression for network games
