@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "global.hpp"
+
 #include "config.hpp"
 #include "log.hpp"
 #include "serialization/binary_wml.hpp"

@@ -1,3 +1,5 @@
+#include "global.hpp"
+
 #include "cavegen.hpp"
 #include "log.hpp"
 #include "map_create.hpp"
