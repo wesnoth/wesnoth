@@ -61,18 +61,18 @@ void draw_unit_ellipse(SDL_Surface* target, short colour, const SDL_Rect& clip, 
 				xpos = behind->w - xpos - 1;
 
 			int ypos = yit - unity;
-			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos < behind->h &&
+			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
+				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h &&
 			    pixels[ypos*(behind->w+pad) + xpos] == 0) {
-				SDL_Rect rect = {xit,yit,1,1};
+				SDL_Rect rect = {xit,yit,1,2};
 				SDL_FillRect(target,&rect,colour);
 			}
 
 			yit = yloc+height/2+y;
 			ypos = yit - unity;
-			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit < clip.y + clip.h &&
-				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos < behind->h) {
-				SDL_Rect rect = {xit,yit,1,1};
+			if(xit >= clip.x && yit >= clip.y && xit < clip.x + clip.w && yit+1 < clip.y + clip.h &&
+				xpos >= 0 && ypos >= 0 && xpos < behind->w && ypos+1 < behind->h) {
+				SDL_Rect rect = {xit,yit,1,2};
 				SDL_FillRect(target,&rect,colour);
 			}
 		}
