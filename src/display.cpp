@@ -1204,10 +1204,11 @@ void display::draw_unit_on_tile(int x, int y, surface unit_image_override,
 		surface ellipse_back(NULL);
 
 		if(preferences::show_side_colours()) {
+			const char* const selected = selectedHex_ == loc ? "selected-" : "";
 			char buf[50];
-			sprintf(buf,"misc/ellipse-%d-top.png",team::get_side_colour_index(it->second.side()));
+			sprintf(buf,"misc/%sellipse-%d-top.png",selected,team::get_side_colour_index(it->second.side()));
 			ellipse_back.assign(image::get_image(buf));
-			sprintf(buf,"misc/ellipse-%d-bottom.png",team::get_side_colour_index(it->second.side()));
+			sprintf(buf,"misc/%sellipse-%d-bottom.png",selected,team::get_side_colour_index(it->second.side()));
 			ellipse_front.assign(image::get_image(buf));
 		}
 
