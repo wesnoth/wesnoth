@@ -82,7 +82,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names)
 			std::cerr << name_ << " " << d.name_ << ": ";
 		return std::cerr;
 	}
-};
+}
 
 scope_logger::scope_logger(log_domain const &domain, const std::string& str)
 	: ticks_(SDL_GetTicks()), str_(str), output_(info(domain, false))
