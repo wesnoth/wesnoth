@@ -134,9 +134,11 @@ bool show_intro_part(display& screen, const config& part,
 	const std::string& id = part["id"];
 	const std::string& lang_story = string_table[id];
 	const std::string& story = lang_story.empty() ? part["story"] : lang_story;
+	const std::vector<std::string> story_chars = split_utf8_string(story);
+
 	std::cerr << story << std::endl;
 
-	std::string::const_iterator j = story.begin();
+	std::vector<std::string>::const_iterator j = story_chars.begin();
 
 	bool skip = false, last_key = true;
 
@@ -145,63 +147,49 @@ bool show_intro_part(display& screen, const config& part,
 	//the maximum position that text can reach before wrapping
 	const int max_xpos = next_button.location().x - 10;
 	size_t height = 0;
-	std::string buf;
+	//std::string buf;
+	
 	for(;;) {
-		if(j != story.end()) {
-			unsigned char c = *j;
-			if(c == ' ') {
+		if(j != story_chars.end()) {
+			//unsigned char c = *j;
+			if(*j == " ") {
 				//we're at a space, so find the next space or end-of-text,
 				//to find out if the next word will fit, or if it has to be wrapped
-				std::string::const_iterator end_word = std::find(j+1,story.end(),' ');
-					const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),16,font::NORMAL_COLOUR,
-							std::string(j,end_word),xpos,ypos,NULL,
-							false,font::NO_MARKUP);
-					
-					if(xpos + rect.w >= max_xpos) {
-						xpos = textx;
-						ypos += height;
-						++j;
-							continue;
-					}
-			}
+				std::vector<std::string>::const_iterator end_word = std::find(j+1,story_chars.end()," ");
 
-			//how many bytes does the current utf8 character require?
-			int bytes = 1;
-			
-//				if(charset() == CHARSET_UTF8) {
-					if((unsigned)j[bytes-1] >= 0xC0U) 
-						bytes++;
-					if((unsigned)j[bytes-1] >= 0xE0U)
-						bytes++;
-					if((unsigned)j[bytes-1] >= 0xF0U)
-						bytes++;
-					if((unsigned)j[bytes-1] >= 0xF8U)
-						bytes++;
-					if((unsigned)j[bytes-1] >= 0xFCU)
-						bytes++;
-//				}
+				std::string word;
+				for(std::vector<std::string>::const_iterator k = j+1;
+						k != end_word; ++k) {
+					word += *k;
+				}
+				const SDL_Rect rect = font::draw_text(NULL,screen.screen_area(),
+						16,font::NORMAL_COLOUR,
+						word,xpos,ypos,NULL,
+						false,font::NO_MARKUP);
 
-			//copy the character
-			buf.resize(bytes);
-			for(int i = 0; i < bytes && j != story.end(); ++i) {
-				buf[i] = *j;
-				++j;
+				if(xpos + rect.w >= max_xpos) {
+					xpos = textx;
+					ypos += height;
+					++j;
+					continue;
+				}
 			}
 
 			// output the character
 			const SDL_Rect rect = font::draw_text(&screen,
 					screen.screen_area(),16,
-					font::NORMAL_COLOUR,buf,xpos,ypos,
+					font::NORMAL_COLOUR,*j,xpos,ypos,
 					NULL,false,font::NO_MARKUP);
 
-			buf = "";
 			if(rect.h > height)
 				height = rect.h;
 			xpos += rect.w; 
 			update_rect(rect);
 
-			if(j == story.end())
+			++j;
+			if(j == story_chars.end())
 				skip = true;
+
 		}
 
 		int mousex, mousey;
@@ -229,7 +217,7 @@ bool show_intro_part(display& screen, const config& part,
 		events::raise_draw_event();
 		screen.video().flip();
 
-		if(!skip || j == story.end())
+		if(!skip || j == story_chars.end())
 			SDL_Delay(20);
 	}
 	
