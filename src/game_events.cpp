@@ -839,7 +839,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			return rval;
 		}
 
-		std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
+		if(speaker != units->end()) {
+			std::cerr << "set speaker to '" << speaker->second.description() << "'\n";
+		} else {
+			std::cerr << "no speaker\n";
+		}
 
 		const std::string& sfx = cfg["sound"];
 		if(sfx != "") {
