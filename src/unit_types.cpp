@@ -33,6 +33,10 @@ attack_type::attack_type(const config& cfg)
 	name_ = cfg["name"];
 	type_ = cfg["type"];
 	special_ = cfg["special"];
+	icon_ = cfg["icon"];
+	if(icon_.empty())
+		icon_ = "misc/" + name_ + ".png";
+
 	range_ = cfg["range"] == "long" ? LONG_RANGE : SHORT_RANGE;
 	hexes_ = maximum<int>(1,atoi(cfg["hexes"].c_str()));
 	damage_ = atol(cfg["damage"].c_str());
@@ -91,6 +95,11 @@ const std::string& attack_type::type() const
 const std::string& attack_type::special() const
 {
 	return special_;
+}
+
+const std::string& attack_type::icon() const
+{
+	return icon_;
 }
 
 attack_type::RANGE attack_type::range() const

@@ -32,6 +32,7 @@ public:
 	const std::string& name() const;
 	const std::string& type() const;
 	const std::string& special() const;
+	const std::string& icon() const;
 	RANGE range() const;
 	int hexes() const;
 	int damage() const;
@@ -63,6 +64,7 @@ private:
 	std::string name_;
 	std::string type_;
 	std::string special_;
+	std::string icon_;
 	RANGE range_;
 	int hexes_;
 	int damage_;

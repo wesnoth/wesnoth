@@ -279,6 +279,27 @@ bool menu::double_clicked() const
 	return double_clicked_;
 }
 
+namespace {
+	const char ImagePrefix = '&';
+
+	SDL_Rect item_size(const std::string& item) {
+		SDL_Rect res = {0,0,0,0};
+		if(item.empty() == false && item[0] == ImagePrefix) {
+			const std::string image_name(item.begin()+1,item.end());
+			SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+			if(img != NULL) {
+				res.w = img->w;
+				res.h = img->h;
+			}
+		} else {
+			const SDL_Rect area = {0,0,10000,10000};
+			res = font::draw_text(NULL,area,menu_font_size,font::NORMAL_COLOUR,item,0,0);
+		}
+
+		return res;
+	}
+}
+
 const std::vector<int>& menu::column_widths() const
 {
 	if(column_widths_.empty()) {
@@ -286,9 +307,7 @@ const std::vector<int>& menu::column_widths() const
 			for(size_t col = 0; col != items_[row].size(); ++col) {
 				static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
-				const SDL_Rect res =
-					font::draw_text(NULL,area,menu_font_size,
-					          font::NORMAL_COLOUR,items_[row][col],x_,y_);
+				const SDL_Rect res = item_size(items_[row][col]);
 
 				if(col == column_widths_.size()) {
 					column_widths_.push_back(res.w + menu_cell_padding);
@@ -327,8 +346,18 @@ void menu::draw_item(int item)
 
 	int xpos = rect.x;
 	for(size_t i = 0; i != items_[item].size(); ++i) {
-		font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,
-		                items_[item][i],xpos,rect.y);
+		const std::string& str = items_[item][i];
+		if(str.empty() == false && str[0] == ImagePrefix) {
+			const std::string image_name(str.begin()+1,str.end());
+			SDL_Surface* const img = image::get_image(image_name,image::UNSCALED);
+			if(img != NULL && xpos+img->w < display_->x() && rect.y+img->h < display_->y()) {
+				SDL_Rect dest = {xpos,rect.y,img->w,img->h};
+				SDL_BlitSurface(img,NULL,display_->video().getSurface(),&dest);
+			}
+
+		} else {
+			font::draw_text(display_,area,menu_font_size,font::NORMAL_COLOUR,str,xpos,rect.y);
+		}
 		xpos += widths[i];
 	}
 }
@@ -378,10 +407,8 @@ SDL_Rect menu::get_item_rect(int item) const
 
 	SDL_Rect res = {x_,y,0,0};
 
-	//use the first field that is non-blank
 	for(size_t n = 0; n != items_[item].size(); ++n) {
-		SDL_Rect rect = font::draw_text(NULL,area,menu_font_size,
-			                   font::NORMAL_COLOUR,items_[item][n],x_,y);
+		SDL_Rect rect = item_size(items_[item][n]);
 		res.h = maximum<int>(rect.h,res.h);
 	}
 

@@ -314,8 +314,7 @@ int play_game(int argc, char** argv)
 	}
 
 	std::cerr << "setting mode to " << resolution.first << "x" << resolution.second << "\n";
-	const int res = video.setMode(resolution.first,resolution.second,
-	                              16,video_flags);
+	const int res = video.setMode(resolution.first,resolution.second,16,video_flags);
 	if(res != 16) {
 		std::cerr << "required video mode, " << resolution.first << "x"
 		          << resolution.second << "x16 is not supported\n";

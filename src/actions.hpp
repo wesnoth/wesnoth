@@ -51,6 +51,7 @@ struct battle_stats
 	std::string attack_type, defend_type;
 	std::string attack_special, defend_special;
 	std::string range;
+	std::string attack_icon, defend_icon;
 	int chance_to_hit_attacker, chance_to_hit_defender;
 	int damage_attacker_takes, damage_defender_takes;
 	int amount_attacker_drains, amount_defender_drains;

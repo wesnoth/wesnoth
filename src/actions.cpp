@@ -211,6 +211,7 @@ battle_stats evaluate_battle_stats(
 
 	if(include_strings) {
 		res.attack_special = attack.special();
+		res.attack_icon = attack.icon();
 
 		//don't show backstabbing unless it's actually happening
 		if(res.attack_special == "backstab" && !backstab)
@@ -262,6 +263,7 @@ battle_stats evaluate_battle_stats(
 
 		if(include_strings) {
 			res.defend_special = defender_attacks[defend].special();
+			res.defend_icon = defender_attacks[defend].icon();
 		}
 
 		//if the defender drains, and the attacker is a living creature, then

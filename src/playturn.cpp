@@ -432,7 +432,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			                    stats.range : lang_range;
 
 			std::stringstream att;
-			att << attack_name << " (" << attack_type
+			att << "&" << stats.attack_icon << "," << attack_name << " (" << attack_type
 			    << ") " << stats.damage_defender_takes << "-"
 				<< stats.nattacks << " " << range << " "
 				<< stats.chance_to_hit_defender
@@ -443,7 +443,7 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			    << ") " << stats.damage_attacker_takes << "-"
 				<< stats.ndefends << " "
 				<< stats.chance_to_hit_attacker
-			    << "%";
+			    << "%,&" << stats.defend_icon;
 
 			items.push_back(att.str());
 			units_list.push_back(enemy->second);
