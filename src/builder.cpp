@@ -101,6 +101,7 @@ void terrain_builder::rebuild_terrain(const gamemap::location &loc)
 void terrain_builder::rebuild_all() {
 	tile_map_.reset();
 	terrain_by_type_.clear();
+	terrain_by_type_border_.clear();
 	build_terrains();
 }
 
