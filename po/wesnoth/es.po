@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2005-03-14 02:09+0200\n"
+"PO-Revision-Date: 2005-03-15 17:08+0100\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -2272,6 +2272,15 @@ msgid ""
 "displayed on the status bar at the top after a picture of gold and then a "
 "red arrow."
 msgstr ""
+"Necesitas pagar por cada unidad que reclutas o reincorporas. El coste de "
+"reclutar una unidad aparece bajo su nombre. El coste de reincorporación "
+"siempre es de 20 piezas de oro por unidad. Una unidad también necesita oro "
+"cada turno que permanece bajo tu control. Este coste, llamado "
+"«mantenimiento», es igual al nivel de la unidad. Sin embargo, las unidades "
+"que no reclutas o reincorporas, como tu líder, no te costarán nada en "
+"absoluto. El coste total de mantenimiento de tus unidades se muestra en la "
+"barra de estado de la parte superior de la pantalla, a la derecha de un "
+"dibujo de unas piezas de oro y una flecha roja."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:111
 msgid "How do I get gold?"
@@ -2286,6 +2295,13 @@ msgid ""
 "you usually need more gold than that, you should flag villages, which give "
 "you 1 gold per turn."
 msgstr ""
+"Comienzas cada escenario con un porcentaje del oro del escenario anterior. "
+"Si ese valor es menor de 100 piezas de oro, entonces comenzarás con 100 "
+"piezas. La cantidad de oro que tienes se muestra en la barra de estado a la "
+"derecha de un dibujo de unas piezas de oro. Tras el comienzo de un "
+"escenario, recibirás 2 piezas de oro por turno. Como normalmente necesitarás "
+"más oro que eso, deberías conquistar aldeas, que te darán 1 pieza de oro por "
+"turno."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:120
 msgid ""
@@ -2458,6 +2474,8 @@ msgstr ""
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:193
 msgid "This potion increases the damage of all the drinker's attacks by four."
 msgstr ""
+"Esta poción incrementa el daño de todos los ataques del que la bebe en "
+"cuatro."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:199
 msgid ""
@@ -2469,7 +2487,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:199
 msgid "What kind of objects am I likely to encounter?"
-msgstr ""
+msgstr "¿Qué tipo de objetos puedo esperar encontrarme?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:200
 msgid "How long do these objects last?"
@@ -3443,6 +3461,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. (This "
 "doesn't work on Undead or units in villages.)"
 msgstr ""
+"Plaga:\n"
+"Cuando una unidad muere por un ataque de plaga, ésta será reemplazada por "
+"una unidad idéntica a ella pero del mismo bando que la unidad que la mató. "
+"(No funciona con unidades no muertas o que se encuentren en aldeas)"
 
 #: data/translations/english.cfg:117
 msgid ""
@@ -3879,6 +3901,9 @@ msgid ""
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
 msgstr ""
+"Armados con una pesada maza, los bandidos son expertos en robar y matar de "
+"noche. Cuando no pelean contra invasores, roban a los transeúntes que viven "
+"en su zona, gracias a la seguridad de sus capas oscuras."
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:62
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantryman.cfg:19
@@ -9180,15 +9205,6 @@ msgstr "neutral"
 #~ msgid "Move your fighter onto a village"
 #~ msgstr "Mueve a tu luchador a una aldea."
 
-#~ msgid ""
-#~ "Plague:\n"
-#~ "If this unit kills a living target and that unit was not stationed in a "
-#~ "village, the dead target's corpse will rise up and fight for you."
-#~ msgstr ""
-#~ "Plaga:\n"
-#~ "Si esta unidad mata a un enemigo vivo, y éste no estaba en una aldea, su "
-#~ "cuerpo se levantará y luchará para ti."
-
 #~ msgid "skirmisher,heals"
 #~ msgstr "hostigador, sana"
 
@@ -9252,7 +9268,6 @@ msgstr "neutral"
 #~ msgid ",Name,Version,Author,Downloads,Size"
 #~ msgstr ", Nombre, Versión, Autor, Descargas, Tamaño"
 
-# FIXME
 #~ msgid ""
 #~ "These elite undead archers strike terror in the hearts of their foes by "
 #~ "using the bones of the slain as weapons."
