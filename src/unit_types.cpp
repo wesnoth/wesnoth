@@ -591,7 +591,7 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 
 	//insert any traits that are just for this unit type
 	const config::child_list& unit_traits = cfg.get_children("trait");
-	possibleTraits_.insert(possibleTraits_.end(),traits.begin(),traits.end());
+	possibleTraits_.insert(possibleTraits_.end(),unit_traits.begin(),unit_traits.end());
 
 	abilities_ = utils::split(cfg_["ability"]);
 
