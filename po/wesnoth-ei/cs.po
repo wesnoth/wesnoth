@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:26+0100\n"
+"POT-Creation-Date: 2005-02-14 09:29+0100\n"
 "PO-Revision-Date: 2004-09-28 19:50+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -35,11 +35,11 @@ msgid "Swordsman"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
+msgid "Royal Guard"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "Royal Guard"
+msgid "(hardest)"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
@@ -169,7 +169,7 @@ msgstr "Ehm... ano."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:421
 #, fuzzy
-msgid "Shut up! That's it! I'm putting you in the high-security cave!"
+msgid "That's enough! I'm putting you in the high-security cave!"
 msgstr "Zmlkni! Tak to je! Vsadím vás do dobře střežené jeskyně!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:438
@@ -212,128 +212,120 @@ msgstr "Ti vězni nejvyšší důležitosti utíkají!"
 msgid "Kill them."
 msgstr "Zabte je."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:504
+#: data/scenarios/Eastern_Invasion/Captured.cfg:513
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Stráže jsou nepozorné. Nyní je čas uprchnout!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:509
-msgid "What the...? Who said that?"
+#: data/scenarios/Eastern_Invasion/Captured.cfg:518
+#, fuzzy
+msgid "Huh? Who's there, who said that?"
 msgstr "Co to...? Kdo to řekl?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:533
+#: data/scenarios/Eastern_Invasion/Captured.cfg:542
 msgid "So you are in this cell! Come on, we have to escape!"
 msgstr "Tak i tys v této cele! Pojď, musíme uprchnout!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:538
+#: data/scenarios/Eastern_Invasion/Captured.cfg:547
 msgid "Very well. I think the rest of the cells are further down this path."
 msgstr "Dobrá tedy. Řekl bych, že zbytek cel je dále po této cestě."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:549
+#: data/scenarios/Eastern_Invasion/Captured.cfg:558
 #, fuzzy
 msgid ""
-"So, they must have captured $R2.user_description ... Well, follow me. We "
-"have to get out of this dungeon."
+"So, they have captured some of our best fighters as well as me, Dacyn and "
+"Owaec. $R2.user_description. follow me! we must get out of this dungeon."
 msgstr ""
 "Tak! Kromě Dacyna, Owaeca a mě musel být zřejmě zajat i $R2."
 "user_description. Dobrá, následuj mne. Musíme se dostat z tohoto žaláře."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:559
+#: data/scenarios/Eastern_Invasion/Captured.cfg:568
 msgid ""
-" It is nice to have a $R1.type among us! My guess is $R1.user_description "
-"will be able to shoot these devils without them doing anything about it, "
-"since most orcs are melee."
+"Interesting, they put the most powerful of us in the high security prisons. "
+"Where are the others, I wonder?"
 msgstr ""
-"To je dobře, že je mezi námi $R1.type! Hádám, že $R1.user_description dokáže "
-"postřílet ty ďábly, než stačí cokoli udělat, protože většina skřetů bojuje "
-"zblízka."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:569
-msgid "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
-msgstr "Dacyne! Dobře, teď se musíme pokusit uniknout. Znáš nějakou cestu ven?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:574
+#: data/scenarios/Eastern_Invasion/Captured.cfg:578
 msgid ""
-"No, but I think I can be of some help. I think I have found out where the "
-"key to the door is!"
+"Dacyn! This looks like the last cell, so we should just get out of here now. "
+"But how can we do that?"
 msgstr ""
-"Ne, ale myslím, že mohu být užitečný. Zjistil jsem, kde je klíč od dveří!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:579
-msgid "Really? Where?"
-msgstr "Opravdu? Kde?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:584
+#: data/scenarios/Eastern_Invasion/Captured.cfg:582
 msgid ""
-"The wall of the northern part of my cell, and right outside of it, is "
-"thinner than everywhere else. I think there is a hidden door there. Come, "
-"let us see!"
+"Well, we could try going out the way we came in, but that door is probably "
+"locked."
 msgstr ""
-"Zeď v severní části mé kobky a zeď přímo na její vnější straně je tenčí než "
-"všude jinde. Myslím, že jsou tam skryté dveře. Pojďme, podíváme se!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:648
+#: data/scenarios/Eastern_Invasion/Captured.cfg:586
+msgid ""
+"The guard who took us down here went into a hidden room when he closed this "
+"door. It was right outside this cell. If we can find and kill this guard, "
+"the key should be nearby."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Captured.cfg:650
 #, fuzzy
 msgid ""
-"Here is the thin spot. Actually- wait a second- its not a thin spot at all! "
-"It's really a door!"
+"Here is the thin spot in the wall. Well, actually, no- its not a thin spot "
+"at all! It's really a door!"
 msgstr ""
 "Zde je to ztenčené místo. Vlastně, počkejte chvilku, není to vůbec ztenčené "
 "místo, ale skutečné dveře!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:661
-#, fuzzy
-msgid "Huh! A guard. Let's see how quickly we can kill it."
-msgstr "Jé! Stráž. Jak rychle ji dokážeme zneškodnit?"
+#: data/scenarios/Eastern_Invasion/Captured.cfg:663
+msgid ""
+"Huh! A guard. Once we kill him, we should b able to get out of these cells..."
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:686
+#: data/scenarios/Eastern_Invasion/Captured.cfg:688
 #, fuzzy
 msgid "I have found the key! Let's get out of here!"
 msgstr "Našel jsem ten klíč! Rychle pryč odsud!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:712
+#: data/scenarios/Eastern_Invasion/Captured.cfg:714
 #, fuzzy
 msgid "This is the right key! come on, let's open the door, quick!"
 msgstr "To je ten správný klíč! Otevři dveře, rychle!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:751
+#: data/scenarios/Eastern_Invasion/Captured.cfg:753
 msgid "Help us! The guards are planning to execute us tomorrow!"
 msgstr "Pomoz nám! Stráže nás hodlají zítra popravit!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:756
+#: data/scenarios/Eastern_Invasion/Captured.cfg:758
 msgid ""
 "Hah! Tomorrow? You make a big mistake if you believe you will live that long."
 msgstr "Che! Zítra? Děláš velkou chybu, pokud věříš, že budeš žít tak dlouho."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:761
+#: data/scenarios/Eastern_Invasion/Captured.cfg:763
 msgid ""
 "Right, boss, especially since they're invading, and we need to kill them now "
 "before they escape!"
 msgstr ""
 "Správně, šéfe, obzvlášť když nás napadají. Musíme je zabít teď, než utečou!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:776
+#: data/scenarios/Eastern_Invasion/Captured.cfg:778
 msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr "Á! Ale co, aspoň mé ohromné hordy vás zničí!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:822
+#: data/scenarios/Eastern_Invasion/Captured.cfg:824
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:234
 msgid "Holy Water"
 msgstr "Svěcená voda"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:825
+#: data/scenarios/Eastern_Invasion/Captured.cfg:827
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:237
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Tato voda posvětí zbraně po celý zbytek života."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:826
+#: data/scenarios/Eastern_Invasion/Captured.cfg:828
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "I am not suited to using this item! Let another take it."
 msgstr "Nedokáži použít tento předmět! Ať jej vezme někdo jiný."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:860
+#: data/scenarios/Eastern_Invasion/Captured.cfg:861
 #, fuzzy
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
@@ -646,7 +638,7 @@ msgstr ""
 "#Dacyn zemře nebo zůstane na serverní straně řeky\n"
 "#Owaec zemře nebo zůstane na serverní straně řeky"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:110
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:109
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
@@ -654,7 +646,7 @@ msgstr ""
 "Vše je ztraceno! Musíme utéci ze severních zemí tak rychle, jak to jen "
 "půjde. Běžte... Co to...?! A kdo jsi ty?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:115
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:113
 #, fuzzy
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
@@ -663,11 +655,11 @@ msgstr ""
 "Sem ženista. A řek bych, že 'cete kapku píchnout. Se vsadím, že by se vám "
 "šiklo odbouchnout támhleten most."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:120
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:117
 msgid "Why would we want to do that?!?"
 msgstr "Proč bychom to měli chtít?!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:121
 #, fuzzy
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
@@ -676,19 +668,19 @@ msgstr ""
 "Hele, vidím ty skřeťáky, co se za váma ženou, a jestli zruším ten most, "
 "nedostanou se přes řeku. Takže vám pomůžu zdrhnout."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:130
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid "Gweddry, he's actually right... we have to hire him. How much?"
 msgstr "Gweddry, on má vlastně pravdu -- musíme ho najmout. Kolik si žádáš?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:135
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:129
 msgid "Fifty gold pieces."
 msgstr "Padesát zlaťachů."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:140
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:133
 msgid "Very well, but you only get it once the bridge is down."
 msgstr "Dobrá, ale dostaneš je, až bude ten most v troskách."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:137
 #, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. That's where "
@@ -697,7 +689,7 @@ msgstr ""
 "Jasnačka. Akorát to můžu odpálit, až se dostanu k támhleté značce. Mám tam "
 "vercajk."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:150
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:141
 msgid ""
 "All right, now everyone across the bridge! Anyone left on this side when the "
 "bridge is exploded will be left to their own devices!"
@@ -705,41 +697,50 @@ msgstr ""
 "Ujednáno. A teď všichni přes most! Kdokoli, kdo zůstane na této straně řeky, "
 "až most vyletí do povětří, bude ponechán svému osudu!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:175
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:158
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Tak co, šéfe, mám teda zrušit ten most?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:182
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:162
+#, fuzzy
+msgid "Hm..."
+msgstr "Hm..."
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:164
+msgid "Yes, blow it up."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:168
 msgid "I believe you owe me some money first."
 msgstr "Řek bych, že bys mi moh' nejdřív zaplatit."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:187
-msgid "Yeah, here you go. Now blow this thing up."
-msgstr "Dobře, dobře, tady máš peníze. Teď to vyhoď do povětří."
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:172
+msgid "Here it is. Now blow collapse the bridge!"
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:202
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:186
 msgid "Alright! Blast'n time!"
 msgstr "OK! Bacha, prda!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:231
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:214
 msgid "BOOM!!!"
 msgstr "BUM!!!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:247
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:230
 msgid "Oops... I'm north of the bridge! That was bad planning on my part."
 msgstr ""
 "A sakra -- zůstal jsem na sever od mostu. To jsem to příliš dobře "
 "nenaplánoval."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:266
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:246
 msgid "You idiot! You left me north of the bridge!"
 msgstr "Hlupče! Nechal jsi mě na severní straně řeky!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:262
 msgid "I'm still north of the bridge, Gweddry! Why'd you blow it up!?!"
 msgstr "Gwedry, jsem stále na severní straně. Proč jsi dal ten most odpálit?!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:278
 msgid ""
 "Good, we have escaped from these orcs. Now we have to go south. I think the "
 "undead probably aren't as numerous this far west, so we won't get "
@@ -749,15 +750,23 @@ msgstr ""
 "daleko na západně nebude nemrtvých tak moc, a nebudeme tedy v mžiku zabiti, "
 "snad."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:320
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+msgid "I aint goin' to be going with yah. Best o' luck t'yah!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:303
+msgid "No, wait until later."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:307
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Né? Tak jo, necháme to na pak, jo?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:332
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:318
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "Nedokázali jsme zbořit most zavčas! Skřeti nás všechny zabijí!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:326
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as numerous this far west."
@@ -765,7 +774,7 @@ msgstr ""
 "Tedy, nakonec jsme nemuseli ten most vyhazovat do vzduchu, ale stejně musíme "
 "jít na jih. Doufejme, že takhle daleko na západě nebude nemrtvých tolik."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:330
 msgid "What? Y'got no need a me se'vices? I quit!"
 msgstr "Co? Moje služby sou vám na prd? Kašlu na vás."
 
@@ -2254,7 +2263,7 @@ msgstr ""
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
 "say. Apparently, these attacks were connected to similar ones that occurred "
-"earlier on the southern border, attacks by Undead. Dacyb outlined a plan to "
+"earlier on the southern border, attacks by Undead. Dacyn outlined a plan to "
 "combat these intrusions."
 msgstr ""
 
@@ -2293,11 +2302,49 @@ msgstr ""
 msgid ""
 "All went well once the King's forces arrived. There were no attacks for "
 "several weeks, and Gweddry's men started to grow uncautious. Then, at dawn "
-"one day, Gweddry and his men were roused by startled cry of the night "
+"one day, Gweddry and his men were roused by startled cries of the night "
 "watchmen..."
 msgstr ""
 "Když královy síly dorazily, všechno se zdálo v pořádku. Po několik týdnů "
 "nedošlo k žádnému útoku, a Gweddryho muži začali být neopatrní."
+
+#~ msgid ""
+#~ " It is nice to have a $R1.type among us! My guess is $R1.user_description "
+#~ "will be able to shoot these devils without them doing anything about it, "
+#~ "since most orcs are melee."
+#~ msgstr ""
+#~ "To je dobře, že je mezi námi $R1.type! Hádám, že $R1.user_description "
+#~ "dokáže postřílet ty ďábly, než stačí cokoli udělat, protože většina "
+#~ "skřetů bojuje zblízka."
+
+#~ msgid ""
+#~ "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
+#~ msgstr ""
+#~ "Dacyne! Dobře, teď se musíme pokusit uniknout. Znáš nějakou cestu ven?"
+
+#~ msgid ""
+#~ "No, but I think I can be of some help. I think I have found out where the "
+#~ "key to the door is!"
+#~ msgstr ""
+#~ "Ne, ale myslím, že mohu být užitečný. Zjistil jsem, kde je klíč od dveří!"
+
+#~ msgid "Really? Where?"
+#~ msgstr "Opravdu? Kde?"
+
+#~ msgid ""
+#~ "The wall of the northern part of my cell, and right outside of it, is "
+#~ "thinner than everywhere else. I think there is a hidden door there. Come, "
+#~ "let us see!"
+#~ msgstr ""
+#~ "Zeď v severní části mé kobky a zeď přímo na její vnější straně je tenčí "
+#~ "než všude jinde. Myslím, že jsou tam skryté dveře. Pojďme, podíváme se!"
+
+#, fuzzy
+#~ msgid "Huh! A guard. Let's see how quickly we can kill it."
+#~ msgstr "Jé! Stráž. Jak rychle ji dokážeme zneškodnit?"
+
+#~ msgid "Yeah, here you go. Now blow this thing up."
+#~ msgstr "Dobře, dobře, tady máš peníze. Teď to vyhoď do povětří."
 
 #~ msgid ""
 #~ "Good! We have managed to capture some Ogres. We can now recruit them into "

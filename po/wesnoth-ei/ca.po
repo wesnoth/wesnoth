@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:26+0100\n"
+"POT-Creation-Date: 2005-02-14 09:29+0100\n"
 "PO-Revision-Date: 2005-02-06 18:59+0100\n"
 "Last-Translator: Grup de traducció de LinUV <traduccio@linuv.uv.es>\n"
 "Language-Team: Català <wesnoth-ca@ettin.org>\n"
@@ -35,12 +35,12 @@ msgid "Swordsman"
 msgstr "Espadatxí"
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
-msgstr "(més difícil)"
-
-#: data/campaigns/Eastern_Invasion.cfg:12
 msgid "Royal Guard"
 msgstr "Guarda reial"
+
+#: data/campaigns/Eastern_Invasion.cfg:12
+msgid "(hardest)"
+msgstr "(més difícil)"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid ""
@@ -173,7 +173,7 @@ msgstr "Um...sí."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:421
 #, fuzzy
-msgid "Shut up! That's it! I'm putting you in the high-security cave!"
+msgid "That's enough! I'm putting you in the high-security cave!"
 msgstr "Calla! Això és! Et posaré en la [cova d'alta seguretat]!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:438
@@ -216,100 +216,91 @@ msgstr "Els [presoners d'alta seguretat] s'escapen!"
 msgid "Kill them."
 msgstr "Mateu-los."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:504
+#: data/scenarios/Eastern_Invasion/Captured.cfg:513
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Els guardes estan distrets. És la nostra oportunitat per escapar!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:509
-msgid "What the...? Who said that?"
+#: data/scenarios/Eastern_Invasion/Captured.cfg:518
+#, fuzzy
+msgid "Huh? Who's there, who said that?"
 msgstr "Què passa...? Qui ha dit això?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:533
+#: data/scenarios/Eastern_Invasion/Captured.cfg:542
 msgid "So you are in this cell! Come on, we have to escape!"
 msgstr "[] estàs en aquesta [cetla]! Vinga, hem d'escapar!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:538
+#: data/scenarios/Eastern_Invasion/Captured.cfg:547
 msgid "Very well. I think the rest of the cells are further down this path."
 msgstr "Molt bé. Pense que la resta de les [cetles] estan []."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:549
+#: data/scenarios/Eastern_Invasion/Captured.cfg:558
 #, fuzzy
 msgid ""
-"So, they must have captured $R2.user_description ... Well, follow me. We "
-"have to get out of this dungeon."
+"So, they have captured some of our best fighters as well as me, Dacyn and "
+"Owaec. $R2.user_description. follow me! we must get out of this dungeon."
 msgstr ""
 "Deuen haver capturat $R2.use_description... Bé, segueix-me. Hem de sortir "
 "d'aquest [calabós/masmorra]."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:559
+#: data/scenarios/Eastern_Invasion/Captured.cfg:568
 msgid ""
-" It is nice to have a $R1.type among us! My guess is $R1.user_description "
-"will be able to shoot these devils without them doing anything about it, "
-"since most orcs are melee."
+"Interesting, they put the most powerful of us in the high security prisons. "
+"Where are the others, I wonder?"
 msgstr ""
-"És [agradable] tindre un $R1.type [amb nosaltres]! [] és $R1."
-"user_description podrà [disparar] aquests dimonis sense què puguen fer res, "
-"ja que la majoria dels orcs [són de tipus melee]."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:569
-msgid "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
-msgstr "Dacyn! Bé, ara podem intentar escapar. Saps alguna manera de sortir?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:574
+#: data/scenarios/Eastern_Invasion/Captured.cfg:578
 msgid ""
-"No, but I think I can be of some help. I think I have found out where the "
-"key to the door is!"
+"Dacyn! This looks like the last cell, so we should just get out of here now. "
+"But how can we do that?"
 msgstr ""
-"No, però pense que puc ser d'alguna ajuda. Crec què he descobert on està la "
-"clau de la porta!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:579
-msgid "Really? Where?"
-msgstr "Deveres? On?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:584
+#: data/scenarios/Eastern_Invasion/Captured.cfg:582
 msgid ""
-"The wall of the northern part of my cell, and right outside of it, is "
-"thinner than everywhere else. I think there is a hidden door there. Come, "
-"let us see!"
+"Well, we could try going out the way we came in, but that door is probably "
+"locked."
 msgstr ""
-"La paret nord de la meua [cetlla], i [], és més prima que la resta. Pense "
-"que hi ha una porta [secreta/amagada] allí. Vinga, anem a veure!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:648
+#: data/scenarios/Eastern_Invasion/Captured.cfg:586
+msgid ""
+"The guard who took us down here went into a hidden room when he closed this "
+"door. It was right outside this cell. If we can find and kill this guard, "
+"the key should be nearby."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Captured.cfg:650
 #, fuzzy
 msgid ""
-"Here is the thin spot. Actually- wait a second- its not a thin spot at all! "
-"It's really a door!"
+"Here is the thin spot in the wall. Well, actually, no- its not a thin spot "
+"at all! It's really a door!"
 msgstr ""
 "Ací hi ha un [] prim. Actualment- espereu un segon- no és un []prim! És una "
 "porta!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:661
-#, fuzzy
-msgid "Huh! A guard. Let's see how quickly we can kill it."
-msgstr "Huh! Un guarda. Veiem com de depressa podem matar-lo."
+#: data/scenarios/Eastern_Invasion/Captured.cfg:663
+msgid ""
+"Huh! A guard. Once we kill him, we should b able to get out of these cells..."
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:686
+#: data/scenarios/Eastern_Invasion/Captured.cfg:688
 #, fuzzy
 msgid "I have found the key! Let's get out of here!"
 msgstr "He trobat la clau! Sortim d'ací!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:712
+#: data/scenarios/Eastern_Invasion/Captured.cfg:714
 #, fuzzy
 msgid "This is the right key! come on, let's open the door, quick!"
 msgstr "Aquesta és la clau [bona]! Obri la porta, ràpid!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:751
+#: data/scenarios/Eastern_Invasion/Captured.cfg:753
 msgid "Help us! The guards are planning to execute us tomorrow!"
 msgstr "Ajudeu-nos! Els guardes planegen executar-nos demà!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:756
+#: data/scenarios/Eastern_Invasion/Captured.cfg:758
 msgid ""
 "Hah! Tomorrow? You make a big mistake if you believe you will live that long."
 msgstr "Ja! Demà? Cometeu un gran error si penseu què viureu tant."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:761
+#: data/scenarios/Eastern_Invasion/Captured.cfg:763
 msgid ""
 "Right, boss, especially since they're invading, and we need to kill them now "
 "before they escape!"
@@ -317,17 +308,17 @@ msgstr ""
 "Correcte, cap, especialment ja que estan [invaint] i hem de matar-los ara "
 "abans de què escapen."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:776
+#: data/scenarios/Eastern_Invasion/Captured.cfg:778
 msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr "Argh! Bé, finalment les meues [] hordes us derrotaran!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:822
+#: data/scenarios/Eastern_Invasion/Captured.cfg:824
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:234
 msgid "Holy Water"
 msgstr "Aigua sagrada"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:825
+#: data/scenarios/Eastern_Invasion/Captured.cfg:827
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:237
 msgid "This water will make all of your weapons holy for your whole life!"
@@ -335,7 +326,7 @@ msgstr ""
 "Aquesta aigua farà sagrades totes les nostres armes [de per vida/ per a tota "
 "la vida]!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:826
+#: data/scenarios/Eastern_Invasion/Captured.cfg:828
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 msgid "I am not suited to using this item! Let another take it."
@@ -343,7 +334,7 @@ msgstr ""
 "No estic [preparat] per a usar aquest [objecte]! Que l[l'agafe/el prenga] un "
 "altre."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:860
+#: data/scenarios/Eastern_Invasion/Captured.cfg:861
 #, fuzzy
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
@@ -659,7 +650,7 @@ msgstr ""
 "#Mort de Dacyn o deixar-lo en la [orilla] nord del riu\n"
 "#Mort d'Owaec o deixar-lo en la [orilla] nord del riu"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:110
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:109
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
@@ -667,18 +658,18 @@ msgstr ""
 "Tot està perdut! Hem de deixar aquestes les terres del Nord tan ràpidament "
 "com siga possible! Correu per les vostres- Què...?! Qui eres tu?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:115
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:113
 #, fuzzy
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
 "gonna want me to blow up that bridge ov'r theah."
 msgstr "Sóc un enginyer. [Em pense] què necessiteu els meus servicis. []"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:120
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:117
 msgid "Why would we want to do that?!?"
 msgstr "Per què voldríem fer això?!?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:121
 #, fuzzy
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
@@ -687,19 +678,19 @@ msgstr ""
 "Bé, veig què eixos [orcs] us [atrapen], i si destruïsc el pont, no podran "
 "creuar. Us ajudarà a escapar."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:130
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid "Gweddry, he's actually right... we have to hire him. How much?"
 msgstr "Gweddry, ell està [].. Hem de []. Quant?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:135
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:129
 msgid "Fifty gold pieces."
 msgstr "Cinquanta peces d'or."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:140
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:133
 msgid "Very well, but you only get it once the bridge is down."
 msgstr "Molt bé, però només te les donarem quan el pont haja caigut."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:137
 #, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. That's where "
@@ -707,7 +698,7 @@ msgid ""
 msgstr ""
 "Bé. El derruiré una vegada vaja a aquell []. Allí està el meu equipament."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:150
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:141
 msgid ""
 "All right, now everyone across the bridge! Anyone left on this side when the "
 "bridge is exploded will be left to their own devices!"
@@ -715,39 +706,48 @@ msgstr ""
 "Perfecte, ara... que tothom creue el pont! Qualsevol que es quede en aquesta "
 "[vora] quan explote el pont serà abandonat a la seua sort!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:175
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:158
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Però, voleu destruïr el pont ja, capità?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:182
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:162
+#, fuzzy
+msgid "Hm..."
+msgstr "Hmm..."
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:164
+msgid "Yes, blow it up."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:168
 msgid "I believe you owe me some money first."
 msgstr "Crec que deurieu donar-me alguna quantitat [de diners] abans."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:187
-msgid "Yeah, here you go. Now blow this thing up."
-msgstr "És clar, ací tens. Ara destrueix aquesta cosa."
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:172
+msgid "Here it is. Now blow collapse the bridge!"
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:202
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:186
 msgid "Alright! Blast'n time!"
 msgstr "Correcte! Ha arribat l'hora de la destrucció!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:231
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:214
 msgid "BOOM!!!"
 msgstr "BOOM!!!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:247
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:230
 msgid "Oops... I'm north of the bridge! That was bad planning on my part."
 msgstr "Oops... Estic al nord del pont! Deuria haver-ho previst."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:266
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:246
 msgid "You idiot! You left me north of the bridge!"
 msgstr "Idiotes! M'heu deixat al nord del pont!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:262
 msgid "I'm still north of the bridge, Gweddry! Why'd you blow it up!?!"
 msgstr "Encara estic al nord del pont, Gweddy! Per què l'has destruït!?!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:278
 msgid ""
 "Good, we have escaped from these orcs. Now we have to go south. I think the "
 "undead probably aren't as numerous this far west, so we won't get "
@@ -757,15 +757,23 @@ msgstr ""
 "morts probablement no són tan nombrosos [tan a l'oest]així que no morirem "
 "immediatament, de totes formes."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:320
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+msgid "I aint goin' to be going with yah. Best o' luck t'yah!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:303
+msgid "No, wait until later."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:307
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Eh? Aleshores,[ esperem fins després/descansem una mica]?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:332
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:318
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr "No hem destruït el pont a temps! Els orcs ens mataran a tots!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:326
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as numerous this far west."
@@ -773,7 +781,7 @@ msgstr ""
 "Bé, no [havérem de destruïr] el pont després de tot, però encara hem d'anar "
 "al sud. Per sort els no-morts no són tan nombrosos [tan a l'oest]"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:330
 msgid "What? Y'got no need a me se'vices? I quit!"
 msgstr "Què? No necessiteu els meus servicis? Me'n vaig!"
 
@@ -2274,7 +2282,7 @@ msgstr ""
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
 "say. Apparently, these attacks were connected to similar ones that occurred "
-"earlier on the southern border, attacks by Undead. Dacyb outlined a plan to "
+"earlier on the southern border, attacks by Undead. Dacyn outlined a plan to "
 "combat these intrusions."
 msgstr ""
 
@@ -2305,9 +2313,48 @@ msgstr ""
 msgid ""
 "All went well once the King's forces arrived. There were no attacks for "
 "several weeks, and Gweddry's men started to grow uncautious. Then, at dawn "
-"one day, Gweddry and his men were roused by startled cry of the night "
+"one day, Gweddry and his men were roused by startled cries of the night "
 "watchmen..."
 msgstr ""
+
+#~ msgid ""
+#~ " It is nice to have a $R1.type among us! My guess is $R1.user_description "
+#~ "will be able to shoot these devils without them doing anything about it, "
+#~ "since most orcs are melee."
+#~ msgstr ""
+#~ "És [agradable] tindre un $R1.type [amb nosaltres]! [] és $R1."
+#~ "user_description podrà [disparar] aquests dimonis sense què puguen fer "
+#~ "res, ja que la majoria dels orcs [són de tipus melee]."
+
+#~ msgid ""
+#~ "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
+#~ msgstr ""
+#~ "Dacyn! Bé, ara podem intentar escapar. Saps alguna manera de sortir?"
+
+#~ msgid ""
+#~ "No, but I think I can be of some help. I think I have found out where the "
+#~ "key to the door is!"
+#~ msgstr ""
+#~ "No, però pense que puc ser d'alguna ajuda. Crec què he descobert on està "
+#~ "la clau de la porta!"
+
+#~ msgid "Really? Where?"
+#~ msgstr "Deveres? On?"
+
+#~ msgid ""
+#~ "The wall of the northern part of my cell, and right outside of it, is "
+#~ "thinner than everywhere else. I think there is a hidden door there. Come, "
+#~ "let us see!"
+#~ msgstr ""
+#~ "La paret nord de la meua [cetlla], i [], és més prima que la resta. Pense "
+#~ "que hi ha una porta [secreta/amagada] allí. Vinga, anem a veure!"
+
+#, fuzzy
+#~ msgid "Huh! A guard. Let's see how quickly we can kill it."
+#~ msgstr "Huh! Un guarda. Veiem com de depressa podem matar-lo."
+
+#~ msgid "Yeah, here you go. Now blow this thing up."
+#~ msgstr "És clar, ací tens. Ara destrueix aquesta cosa."
 
 #~ msgid ""
 #~ "Good! We have managed to capture some Ogres. We can now recruit them into "

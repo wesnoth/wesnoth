@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2005-02-12 15:26+0100\n"
+"POT-Creation-Date: 2005-02-14 09:29+0100\n"
 "PO-Revision-Date: 2004-10-15 23:00+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -33,11 +33,11 @@ msgid "Swordsman"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "(hardest)"
+msgid "Royal Guard"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:12
-msgid "Royal Guard"
+msgid "(hardest)"
 msgstr ""
 
 #: data/campaigns/Eastern_Invasion.cfg:13
@@ -169,7 +169,7 @@ msgstr "Øh... ja."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:421
 #, fuzzy
-msgid "Shut up! That's it! I'm putting you in the high-security cave!"
+msgid "That's enough! I'm putting you in the high-security cave!"
 msgstr "Klapp igjen! Det holder! Legg dem i høysikkerhetscellene!"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:438
@@ -209,101 +209,91 @@ msgstr "Høysikkerhetsfangene unnslipper!"
 msgid "Kill them."
 msgstr "Drep dem."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:504
+#: data/scenarios/Eastern_Invasion/Captured.cfg:513
 msgid "The guards are distracted! Now is the time to escape!"
 msgstr "Vaktene er avledet! Nå rømmer vi!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:509
+#: data/scenarios/Eastern_Invasion/Captured.cfg:518
 #, fuzzy
-msgid "What the...? Who said that?"
+msgid "Huh? Who's there, who said that?"
 msgstr "Hva er det?"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:533
+#: data/scenarios/Eastern_Invasion/Captured.cfg:542
 msgid "So you are in this cell! Come on, we have to escape!"
 msgstr "Så du er i denne cellen! Kom, vi må unnslippe!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:538
+#: data/scenarios/Eastern_Invasion/Captured.cfg:547
 msgid "Very well. I think the rest of the cells are further down this path."
 msgstr "Greit nok. Jeg tror resten av cellene er ned denne veien."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:549
+#: data/scenarios/Eastern_Invasion/Captured.cfg:558
 #, fuzzy
 msgid ""
-"So, they must have captured $R2.user_description ... Well, follow me. We "
-"have to get out of this dungeon."
+"So, they have captured some of our best fighters as well as me, Dacyn and "
+"Owaec. $R2.user_description. follow me! we must get out of this dungeon."
 msgstr ""
 "Så, de har tatt $R2.user_description til fange i tillegg til Dacyn, Owaec og "
 "meg. Vel, $R2.type, følg meg. Vi må komme oss ut herfra."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:559
+#: data/scenarios/Eastern_Invasion/Captured.cfg:568
 msgid ""
-" It is nice to have a $R1.type among us! My guess is $R1.user_description "
-"will be able to shoot these devils without them doing anything about it, "
-"since most orcs are melee."
+"Interesting, they put the most powerful of us in the high security prisons. "
+"Where are the others, I wonder?"
 msgstr ""
-"Det er gost å ha en $R1.type blant oss! $R1.user_description kan vel skyte "
-"disse djevlene på avstand uten at de kan gjøre noe, siden de fleste orker er "
-"nærkamp."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:569
-msgid "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
-msgstr "Dacyn! Flott, nå kan vi unnslippe. Vet du noen vei ut?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:574
+#: data/scenarios/Eastern_Invasion/Captured.cfg:578
 msgid ""
-"No, but I think I can be of some help. I think I have found out where the "
-"key to the door is!"
+"Dacyn! This looks like the last cell, so we should just get out of here now. "
+"But how can we do that?"
 msgstr ""
-"Nei, men jeg kan hjelpe likevel. Jeg tror jeg har funnet ut hvor nøkkelen "
-"til døra er!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:579
-msgid "Really? Where?"
-msgstr "Virkelig? Hvor?"
-
-#: data/scenarios/Eastern_Invasion/Captured.cfg:584
+#: data/scenarios/Eastern_Invasion/Captured.cfg:582
 msgid ""
-"The wall of the northern part of my cell, and right outside of it, is "
-"thinner than everywhere else. I think there is a hidden door there. Come, "
-"let us see!"
+"Well, we could try going out the way we came in, but that door is probably "
+"locked."
 msgstr ""
-"Veggen i nordre del av cellen min, rett utenfor er den tynnere enn noe sted. "
-"jeg tror det er en skjult dør der. La oss se!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:648
+#: data/scenarios/Eastern_Invasion/Captured.cfg:586
+msgid ""
+"The guard who took us down here went into a hidden room when he closed this "
+"door. It was right outside this cell. If we can find and kill this guard, "
+"the key should be nearby."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Captured.cfg:650
 #, fuzzy
 msgid ""
-"Here is the thin spot. Actually- wait a second- its not a thin spot at all! "
-"It's really a door!"
+"Here is the thin spot in the wall. Well, actually, no- its not a thin spot "
+"at all! It's really a door!"
 msgstr ""
 "Her er det tynne området. Faktisk- stopp en halv- det er egentlig en dør!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:661
-#, fuzzy
-msgid "Huh! A guard. Let's see how quickly we can kill it."
-msgstr "Høh. En vakt. La oss se hvor fort vi kan drepe den."
+#: data/scenarios/Eastern_Invasion/Captured.cfg:663
+msgid ""
+"Huh! A guard. Once we kill him, we should b able to get out of these cells..."
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:686
+#: data/scenarios/Eastern_Invasion/Captured.cfg:688
 #, fuzzy
 msgid "I have found the key! Let's get out of here!"
 msgstr "Javisst! La oss dra herfra!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:712
+#: data/scenarios/Eastern_Invasion/Captured.cfg:714
 #, fuzzy
 msgid "This is the right key! come on, let's open the door, quick!"
 msgstr "Dette er riktig nøkkel! La oss åpne døren, fort!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:751
+#: data/scenarios/Eastern_Invasion/Captured.cfg:753
 msgid "Help us! The guards are planning to execute us tomorrow!"
 msgstr "Hjelp oss! Vaktene har tenkt å henrette oss i morgen!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:756
+#: data/scenarios/Eastern_Invasion/Captured.cfg:758
 msgid ""
 "Hah! Tomorrow? You make a big mistake if you believe you will live that long."
 msgstr ""
 "Ha! I morgen? Dere gjør en stor feil hvis dere tror dere vil leve så lenge."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:761
+#: data/scenarios/Eastern_Invasion/Captured.cfg:763
 msgid ""
 "Right, boss, especially since they're invading, and we need to kill them now "
 "before they escape!"
@@ -311,31 +301,31 @@ msgstr ""
 "Riktig, sjef, spesielt siden de invaderer, og vi må drepe dem før vi "
 "unnslipper!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:776
+#: data/scenarios/Eastern_Invasion/Captured.cfg:778
 msgid "Argh! Oh well, at least my vast hordes will defeat you!"
 msgstr "Arg! Likevel vil hordene mine drepe dere!"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:822
+#: data/scenarios/Eastern_Invasion/Captured.cfg:824
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:166
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:234
 msgid "Holy Water"
 msgstr "Vievann"
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:825
+#: data/scenarios/Eastern_Invasion/Captured.cfg:827
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:169
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:237
 #, fuzzy
 msgid "This water will make all of your weapons holy for your whole life!"
 msgstr "Dette vannet vill gjøre nærkampsvåpen hellige i en kort stund."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:826
+#: data/scenarios/Eastern_Invasion/Captured.cfg:828
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:170
 #: data/scenarios/Eastern_Invasion/Tribal_Warfare.cfg:238
 #, fuzzy
 msgid "I am not suited to using this item! Let another take it."
 msgstr "La en annen ta denne, jeg er ikke verdig."
 
-#: data/scenarios/Eastern_Invasion/Captured.cfg:860
+#: data/scenarios/Eastern_Invasion/Captured.cfg:861
 #, fuzzy
 msgid ""
 "Good! We have escaped these accursed caves! Let's get out of these mountains "
@@ -649,7 +639,7 @@ msgstr ""
 "#Gweddry dør, eller er på feil side av brua#Dacyn dør, eller er på feil side "
 "av brua#Owaec dør, eller er på gal side av brua"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:110
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:109
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your - what the...?!? Who are you?"
@@ -657,7 +647,7 @@ msgstr ""
 "Alt er tapt! Vi må komme oss ut av Nordlandene så fort som mulig! Løp for "
 "liv - hva i...?!? Hvem er du?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:115
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:113
 #, fuzzy
 msgid ""
 "I'm an enginea'. I s'pect you'll have a need of me services. I bet you're "
@@ -666,11 +656,11 @@ msgstr ""
 "Jai vare insjenør. Jai tanke do vil trenge mine tenester. Jai vedder du vil "
 "ha mai til å sprenge den bru dar borte."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:120
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:117
 msgid "Why would we want to do that?!?"
 msgstr "Hvorfor skulle vi ville det?!?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:121
 #, fuzzy
 msgid ""
 "Well, I see those orcs are chasin' you, and if I blow up the bridge, they "
@@ -679,20 +669,20 @@ msgstr ""
 "Vel, jai se de årker jage dere, og hivs jai sprenge den bro, de ikke komme "
 "over. Det hjelpe dere unnslippe. Det er bra."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:130
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:125
 msgid "Gweddry, he's actually right... we have to hire him. How much?"
 msgstr "Gweddry, han har rett... vi må betale ham. Hvor mye?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:135
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:129
 #, fuzzy
 msgid "Fifty gold pieces."
 msgstr "Femti gule penge!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:140
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:133
 msgid "Very well, but you only get it once the bridge is down."
 msgstr "Greit nok, men bare etter at du sprenger brua."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:145
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:137
 #, fuzzy
 msgid ""
 "Deal. I c'n blow'er up once I get to that signpost ov'r 'ere. That's where "
@@ -701,7 +691,7 @@ msgstr ""
 "Det vare en avtale! Jai sprenge den bro når jai komme meg til den vaiskilt "
 "der borte. Der være mine sprengesaker!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:150
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:141
 msgid ""
 "All right, now everyone across the bridge! Anyone left on this side when the "
 "bridge is exploded will be left to their own devices!"
@@ -709,25 +699,33 @@ msgstr ""
 "Ja vel, alle over brua! Alle som er igjen når brua går i lufta vil måtte "
 "overleve på egen hånd!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:175
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:158
 #, fuzzy
 msgid "So, d'ya want me to blow up der bridge yet, Cap'n?"
 msgstr "Så, skal jai sprenge den bro nå, Gen'ral?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:182
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:162
+msgid "Hm..."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:164
+msgid "Yes, blow it up."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:168
 #, fuzzy
 msgid "I believe you owe me some money first."
 msgstr "Jai tro du skylle mai noe penge først."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:187
-msgid "Yeah, here you go. Now blow this thing up."
-msgstr "Greit, her har du de. Nå spreng den."
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:172
+msgid "Here it is. Now blow collapse the bridge!"
+msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:202
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:186
 msgid "Alright! Blast'n time!"
 msgstr "Hura hura! Det vare sprengetid!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:231
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:214
 #, fuzzy
 msgid "BOOM!!!"
 msgstr ""
@@ -735,20 +733,20 @@ msgstr ""
 "søster som blåser ut luft mellom leppene sine i et dårlig forsøk på å "
 "etterape en sprengelyd)"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:247
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:230
 msgid "Oops... I'm north of the bridge! That was bad planning on my part."
 msgstr ""
 "Oi sann... jeg er nord for brua! Det var litt dårlig planlegging for min del."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:266
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:246
 msgid "You idiot! You left me north of the bridge!"
 msgstr "Din idiot! Jeg er på nordsiden av brua!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:262
 msgid "I'm still north of the bridge, Gweddry! Why'd you blow it up!?!"
 msgstr "Jeg er fortsatt nord for brua, Gweddry? Hvorfor sprengte du den!?!"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:296
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:278
 msgid ""
 "Good, we have escaped from these orcs. Now we have to go south. I think the "
 "undead probably aren't as numerous this far west, so we won't get "
@@ -757,21 +755,29 @@ msgstr ""
 "Flott, vi har unnsluppet orkene. Nå må vi sydover. Jeg tror ikke de vandøde "
 "er så mange her i vest, så vi blir nok ikke drept momentant ihvertfall."
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:320
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:282
+msgid "I aint goin' to be going with yah. Best o' luck t'yah!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:303
+msgid "No, wait until later."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:307
 msgid "Neh? Alright then, we'll wait fa' later, eh?"
 msgstr "Næi? Javel, vi vente på senere, hva?"
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:332
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:318
 msgid "We have not thrown down the bridge in time! The orcs will kill us all!"
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:341
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:326
 msgid ""
 "Well, we didn't have to blow up the bridge after all, but we still have to "
 "go south. Hopefully the Undead are not as numerous this far west."
 msgstr ""
 
-#: data/scenarios/Eastern_Invasion/Evacuation.cfg:346
+#: data/scenarios/Eastern_Invasion/Evacuation.cfg:330
 msgid "What? Y'got no need a me se'vices? I quit!"
 msgstr ""
 
@@ -2049,7 +2055,7 @@ msgstr ""
 msgid ""
 "When the King received news of the problem, his advisor Dacyn had much to "
 "say. Apparently, these attacks were connected to similar ones that occurred "
-"earlier on the southern border, attacks by Undead. Dacyb outlined a plan to "
+"earlier on the southern border, attacks by Undead. Dacyn outlined a plan to "
 "combat these intrusions."
 msgstr ""
 
@@ -2080,9 +2086,47 @@ msgstr ""
 msgid ""
 "All went well once the King's forces arrived. There were no attacks for "
 "several weeks, and Gweddry's men started to grow uncautious. Then, at dawn "
-"one day, Gweddry and his men were roused by startled cry of the night "
+"one day, Gweddry and his men were roused by startled cries of the night "
 "watchmen..."
 msgstr ""
+
+#~ msgid ""
+#~ " It is nice to have a $R1.type among us! My guess is $R1.user_description "
+#~ "will be able to shoot these devils without them doing anything about it, "
+#~ "since most orcs are melee."
+#~ msgstr ""
+#~ "Det er gost å ha en $R1.type blant oss! $R1.user_description kan vel "
+#~ "skyte disse djevlene på avstand uten at de kan gjøre noe, siden de fleste "
+#~ "orker er nærkamp."
+
+#~ msgid ""
+#~ "Dacyn! Good, now we can try to escape. Do you know any way to get out?"
+#~ msgstr "Dacyn! Flott, nå kan vi unnslippe. Vet du noen vei ut?"
+
+#~ msgid ""
+#~ "No, but I think I can be of some help. I think I have found out where the "
+#~ "key to the door is!"
+#~ msgstr ""
+#~ "Nei, men jeg kan hjelpe likevel. Jeg tror jeg har funnet ut hvor nøkkelen "
+#~ "til døra er!"
+
+#~ msgid "Really? Where?"
+#~ msgstr "Virkelig? Hvor?"
+
+#~ msgid ""
+#~ "The wall of the northern part of my cell, and right outside of it, is "
+#~ "thinner than everywhere else. I think there is a hidden door there. Come, "
+#~ "let us see!"
+#~ msgstr ""
+#~ "Veggen i nordre del av cellen min, rett utenfor er den tynnere enn noe "
+#~ "sted. jeg tror det er en skjult dør der. La oss se!"
+
+#, fuzzy
+#~ msgid "Huh! A guard. Let's see how quickly we can kill it."
+#~ msgstr "Høh. En vakt. La oss se hvor fort vi kan drepe den."
+
+#~ msgid "Yeah, here you go. Now blow this thing up."
+#~ msgstr "Greit, her har du de. Nå spreng den."
 
 #~ msgid ""
 #~ "At first the settlers suspected raiders, but there was nothing east of "
