@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-31 02:21+0200\n"
-"PO-Revision-Date: 2004-09-29 18:04+0100\n"
+"PO-Revision-Date: 2004-10-31 12:17+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Einheiten"
 
 #: data/help.cfg:34 src/help.cpp:611
 msgid "Abilities"
-msgstr ""
+msgstr "Fertigkeiten"
 
 #: data/help.cfg:41
 msgid "Weapon Specials"
@@ -211,7 +211,6 @@ msgid "Movement"
 msgstr "Bewegungskosten"
 
 #: data/help.cfg:96
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -237,32 +236,32 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref>dst=ability_skirmish "
 "text='Skirmishers'</ref> can ignore zones of control."
 msgstr ""
-"Das Bewegen von Einheiten in \"Battle for Wesnoth\" ist einfach: Klicken Sie "
-"zuerst auf die zu bewegende Einheit, und dann auf das Ziel-Hexfeld. Wenn "
-"eine Einheit selektiert ist, werden alle erreichbaren Hexfelder "
-"hervorgehoben, und alle anderen bedeckt. Wenn Sie mit der Maus über ein "
-"entferntes Hexfeld fahren, wird angezeigt, wieviele Züge die Einheit bis "
-"dahin braucht. Wenn Sie das Feld anklicken, wird sich die Einheit schnellst "
-"möglich dort hin bewegen.\n"
+"Das Bewegen von Einheiten in Battle for Wesnoth ist einfach: Klickt zuerst "
+"auf die zu bewegende Einheit und danach auf das gewünschte Zielfeld. Wenn "
+"eine Einheit selektiert ist, werden alle erreichbaren Felder hervorgehoben "
+"und alle anderen bedeckt. Wenn Sie mit der Maus über ein entferntes Feld "
+"fahren, wird angezeigt, wieviele Züge die Einheit bis dahin benötigt. Wenn "
+"Ihr das Feld anklickt, wird sich die Einheit schnellst möglich dort hin "
+"bewegen.\n"
 "\n"
 "Jede Einheit hat eine bestimmte Anzahl an Bewegungspunkten (Abk. BP), die "
 "verbraucht werden, wenn die Einheit ein neues Feld betritt. Wieviele Punkte "
-"verbraucht werden, hängt vom der Art des zu betretenden <ref>dst=terrain "
+"verbraucht werden, hängt vom der Art des zu begehenden <ref>dst=terrain "
 "text='Geländes'</ref> ab. Das Betreten von Grasland kostet fast immer einen "
 "Bewegungspunkt. Die genauen Kosten hängen von der Einheitenart ab: Elfen "
 "verbrauchen im Wald nur jeweils einen Bewegungspunkt, die meisten Menschen "
-"und Orks brauchen zwei, und Reiter sogar drei. Sie können sich die "
-"Bewegungspunkt-Kosten für eine Einheit anschauen, wenn Sie auf die "
-"rechtsklicken, die Einheitenbeschreibung anzeigen lassen und dann auf "
-"<italic>text='Gelände-Modifikatioren'</italic> klicken.\n"
+"und Orks brauchen zwei, und Reiter sogar drei. Ihr könnt Euch die "
+"Bewegungskosten für eine Einheit anzeigen lassen, wenn Ihr auf diese "
+"rechtsklickt, danach »Einheitenbeschreibung« auswählt und Euch dann den "
+"Abschnitt <italic>text='Gelände Einschränkungen'</italic> anseht.\n"
 "\n"
-"Eine andere Sache, die Sie beim Bewegen der Einheiten beachten sollten, sind "
-"die <ref>dst=zones_of_control text='Kontrollzonen'</ref>. Jede Einheit "
+"Eine andere Sache, die Ihr beim Bewegen Eurer Einheiten beachten solltet, "
+"sind die <ref>dst=zones_of_control text='Kontrollzonen'</ref>. Jede Einheit "
 "verfügt über eine Kontrollzone, die aus den sie umgebenden Hexfeldern "
 "besteht. Wenn eine Einheit die Kontrollzone einer gegnerischen Einheit "
-"betritt, verliert sie sofort alle Bewegungspunkte. Sie sollten lernen, "
-"Kontrollzonen zu ihrem Vorteil zu nutzen. Lediglich "
-"<ref>dst=ability_skirmish text='Scharmützler'</ref> können Kontrollzonen "
+"betritt, verliert sie sofort alle Bewegungspunkte. Ihr solltet lernen, "
+"Kontrollzonen zu Eurem Vorteil zu nutzen. Lediglich "
+"<ref>dst=ability_skirmish text='Plänkler'</ref> können Kontrollzonen "
 "ignorieren."
 
 #: data/help.cfg:101
@@ -270,7 +269,6 @@ msgid "Combat"
 msgstr "Kampf"
 
 #: data/help.cfg:117
-#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -316,55 +314,57 @@ msgid ""
 "doubles the damage dealt by both attacker and defender when the unit with "
 "Charge attacks."
 msgstr ""
-"In \"Battle for Wesnoth\" werden zwei Arten des Kampfes unterschieden: "
-"Nahkampf und Fernkampf. Beide finden aber nur zwischen Einheiten auf "
-"benachbarten Hexfeldern statt. Im Nahkampf werden zumeist Waffen wie "
-"Schwerter, Äxte oder Klauen eingesetzt, im Fernkampf dagegen Bogen, Speere "
-"und Feuerbälle. Die Regeln sind relativ einfach: Angreifer und Verteidiger "
-"wechseln sich mit den Angriffen solange ab, bis jeder alle seine Angriffe "
-"verbraucht hat.\n"
+"In Battle for Wesnoth werden zwei Arten des Kampfes unterschieden: Nahkampf "
+"und Fernkampf. Beide finden aber nur zwischen Einheiten auf benachbarten "
+"Feldern statt. Im Nahkampf werden zumeist Waffen wie Schwerter, Äxte oder "
+"Klauen eingesetzt, wohingegen im Fernkampf dagegen Bögen, Speere oder "
+"Feuerbälle zum Einsatz kommen. Die Regeln sind relativ einfach: Angreifer "
+"und Verteidiger wechseln sich mit den Angriffen solange ab, bis jeder seine "
+"Angriffe verbraucht hat.\n"
 "\n"
 "<header>text='Reihenfolge und Anzahl von Angriffen'</header>\n"
 "\n"
 "Der Angreifer führt den ersten Angriff, danach kommt der Verteidiger. Das "
-"geht solange weiter, bis beide alle ihre Angriffe verbraucht haben. Die "
-"Anzahl der Angriffe, die einer Einheit zur Verfügung stehen variiert; Ein "
-"Elfen-Kämpfer mit einer 5-4-Schwert -Attacke kann viermal angreifen und dem "
-"Gegner jeweils 5 Schadenspunkte zufügen. Ein Ork-Grunzer mit einer 9-2-"
-"Attacke kann nur zweimal angreifen, dafür aber teilt er 9 Schadenspunkte "
-"aus.\n"
+"geht solange weiter, bis beide ihre Angriffe verbraucht haben. Die Anzahl "
+"der Angriffe, die einer Einheit zur Verfügung stehen variiert: Ein "
+"Elfenkriger mit einer 5-4 Schwertattacke kann viermal angreifen und dem "
+"Gegner jeweils 5 Schadenspunkte zufügen. Ein Orkgrunzer mit einer 9-2 "
+"Attacke kann nur zweimal angreifen, teilt dafür aber 9 Schadenspunkte aus.\n"
 "\n"
 "<header>text='Trefferwahrscheinlichkeit'</header>\n"
 "\n"
 "Von zwei Ausnahmen abgesehen, berechnet sich die Trefferwahrscheinlichkeit "
 "ausschließlich aus dem Verteidigungswert des <ref>dst=terrain "
-"text='Geländes'</ref>, in dem die Einheit gerade steht. Dieser Wert kann "
-"über einen Rechtsklick auf die Einheit, Auswahl von \"Einheitsbeschreibung\" "
-"und anschließendem Klick auf <italic>text='Geländemodifikatoren'</italic> "
-"eingesehen werden. Elfen haben zum Beispiel im Wald einen Verteidigungswert "
-"von 70%, ein Angreifer hat also nur eine 30%-Chance, die Einheit zu treffen. "
-"Umgekehrt funktioniert das genauso.\n"
+"text='Geländes'</ref>, in dem sich die Einheit gerade aufhällt. Dieser Wert "
+"kann über einen Rechtsklick auf die Einheit, Auswahl von "
+"»Einheitsbeschreibung« und anschließendem Klick auf "
+"<italic>text='Geländemodifikatoren'</italic> eingesehen werden. Elfen "
+"verfügen zum Beispiel im Wald einen Verteidigungswert von 70%. Ein Angreifer "
+"hat also nur eine 30%-Chance, eine elfische Einheit zu treffen. Umgekehrt "
+"funktioniert das genauso.\n"
 "Wie schon angedeutet gibt es zwei Ausnahmen zu dieser Regel: "
-"<ref>dst=magical_attacks text='Magische Angriffe'</ref> und "
-"<ref>dst=ability_marksman text='Scharfschützen'</ref>. Magische Angriffe "
-"haben immer eine 70%-Trefferwahrscheinlichkeit, und Scharfschützen haben "
+"<ref>dst=magical_attacks text='Magische Angriffe'</ref> und Angriffe bei "
+"denen die Fertigkeit <ref>dst=ability_marksman text='Schießkunst'</ref> eine "
+"Rolle spielt. Magische Angriffe haben grundsätzlich eine 70%-"
+"Trefferwahrscheinlichkeit. Durch die Schießkunst Ferigkeit haben Angriffe "
 "immer mindestens eine 60%-Trefferwahrscheinlichkeit, egal in welchem "
 "Gelände.\n"
 "\n"
-"<header>text=Damage</header>\n"
+"<header>text=Schaden</header>\n"
 "\n"
 "Jeder Angriff, der trifft, verursacht eine bestimmte Menge an Schaden, je "
-"nach Art des Angriffs. Ein Elfen-Kämpfer mit einer 5-4-Schwert-Attacke "
+"nach Art des Angriffs. Ein Elfenkrieger mit einer 5-4 Schwertattacke "
 "verursacht beispielsweise einen Grundschaden von 5 Punkten. Dieser Wert wird "
 "normalerweise noch von zwei Faktoren beeinflusst: "
 "<ref>dst=damage_type_and_resistance text='Resistenzen'</ref> und "
-"<ref>dst=time_of_day text='der Tageszeit'</ref>, die im Nachfolgend noch "
+"<ref>dst=time_of_day text='der Tageszeit'</ref>, die nachfolgend noch "
 "erklärt werden.\n"
 "\n"
-"Manche Einheiten haben spezielle Fähigkeiten, die den ausgeteilten Schaden "
-"beeinflussen. Die verbreitetste davon ist <ref>dst=ability_charge "
-"text=Sturmangriff</ref>, welche den ausgeteilten Schaden von Angreifer und "
-"Verteidiger verdoppelt, wenn die Einheit mit dieser Fähigkeit angreift."
+"Manche Einheiten verfügen über spezielle Fertigkeiten in Kombination mit "
+"ihrem Angriff, die den ausgeteilten Schaden beeinflussen. Die verbreitetste "
+"davon ist der <ref>dst=ability_charge text=Sturmangriff</ref>, welcher den "
+"ausgeteilten Schaden von Angreifer und Verteidiger verdoppelt, wenn eine "
+"Einheit mit dieser Fertigkeit angreift."
 
 #: data/help.cfg:122
 msgid "Damage Types and Resistance"
@@ -634,12 +634,10 @@ msgstr ""
 "\"Der Thronerbe\" wichtig ist. Viel Spaß dabei!"
 
 #: data/help.cfg:201 src/titlescreen.cpp:175
-#, fuzzy
 msgid "About"
-msgstr "Jüngling"
+msgstr "Das Team"
 
 #: data/help.cfg:245
-#, fuzzy
 msgid ""
 "Most units have two traits. Traits are attributes of the unit that modify "
 "its attributes slightly. They are assigned to a unit randomly when the unit "
@@ -701,7 +699,7 @@ msgid ""
 "a damaging stroke into a killing blow."
 msgstr ""
 "Die meisten Einheiten haben zwei Charakteristiken, durch die ihre Attribute "
-"leicht modifiziert werden. Eine Einheit bekommt sie zufällig bei der "
+"leicht modifiziert werden. Eine Einheit bekommt diese zufällig bei der "
 "Ausbildung zugewiesen.\n"
 "\n"
 "Es gibt im Moment folgende Charakteristiken:\n"
@@ -712,20 +710,20 @@ msgstr ""
 "Stufe aufzusteigen.\n"
 "\n"
 "Intelligente Einheiten sind vor allem am Anfang einer Kampagne nützlich, "
-"weil sie schnell aufsteigen und die hochstufigen Einheiten gebraucht werden. "
-"Später ist diese Charakteristik nicht mehr so nützlich, weil Sie dann genug "
-"hochstufige Einheiten haben werden und andere langfristigere "
-"Charakteristiken nützlicher sind.\n"
+"weil sie schnell eine neue Stufe erreichen und somit schneller hochstufige "
+"Einheiten verfügbar sind. Später ist diese Charakteristik nicht mehr so "
+"nützlich, weil Ihr dann über genug hochstufige Einheiten verfügen werdet und "
+"andere langfristigere Charakteristiken nützlicher sind.\n"
 "\n"
 "\n"
 "<header>text=Loyal</header>\n"
 "\n"
-"Die Unterhaltskosten loyale Einheiten betragen immer nur 1 Gold, egal auf "
+"Die Unterhaltskosten loyaler Einheiten betragen immer nur 1 Gold, egal auf "
 "welcher Stufe sie sind.\n"
 "\n"
-"Bei einer Einheit der Stufe eins hat Loyalitiät keine Auswirkung, was diese "
-"Charakteristik am Anfang der Kampagne nutzlos macht. Später können Sie mit "
-"loyalen Einheiten aber viel Geld sparen.\n"
+"Bei einer Einheit der Stufe Eins hat Loyalitiät keinerlei Auswirkung, was "
+"diese Charakteristik am Anfang der Kampagne recht nutzlos macht. Später "
+"könnt Ihr mit loyalen Einheiten aber viel Geld sparen.\n"
 "\n"
 "\n"
 "<header>text=Schnell</header>\n"
@@ -733,32 +731,32 @@ msgstr ""
 "Schnelle Einheiten haben einen Bewegungspunkt extra, dafür aber 10% weniger "
 "LP.\n"
 "\n"
-"Schnelligkeit ist eine recht sinnvolle Charakteristik, vor allem in "
-"langsamen Einheiten wie Trollen und schwerer Infantrie. In unwegsamem "
-"Gelände haben schnelle Einheiten oft eine viel höhere Mobilität, das sollten "
-"Sie beim Einsatz Ihrer Truppen beachten. Um Stellungen zu halten eignen sie "
-"sich allerdings nicht so gut aufgrund ihrer verminderten LP.\n"
+"Schnelligkeit ist eine recht sinnvolle Charakteristik, vor allem bei "
+"langsameren Einheiten wie Trollen und Schwerer Infantrie. In unwegsamem "
+"Gelände haben schnelle Einheiten oft eine viel höhere Mobilität, die Ihr "
+"beim Einsatz Eurer Truppen berücksichtigen solltet. Um Stellungen zu halten, "
+"eignen sie sich, aufgrund ihrer verminderten LP, allerdings weniger gut.\n"
 "\n"
 "\n"
 "<header>text=Robust</header>\n"
 "\n"
-"Robuste Einheiten haben 7 LP mehr als normal.\n"
+"Robuste Einheiten erhalten einen Bonus von 7 LP.\n"
 "\n"
-"Robuste Einheiten sind in allen Phasen des Spiels nützlich. Alle "
-"Einheitentypen profitieren davon, allerdings werden Sie es bei einigen mehr "
-"merken als bei anderen. Robuste Einheiten eignen sich besonders dafür, "
-"Stellungen zu halten.\n"
+"Robuste Einheiten sind in allen Phasen des Spiels nützlich. Auch wenn alle "
+"Einheiten hiervon profitieren, werdet Ihr schnell feststellen, dass es bei "
+"bestimmten Einheiten nützlicher ist, als bei anderen. Robuste Einheiten sind "
+"besonders gut geeignet, Stellungen zu halten.\n"
 "\n"
 "\n"
-"<header>text=Stark</header>\n"
+"<header>text=Kräftig</header>\n"
 "\n"
-"Starke Einheiten verursachen einen Schadenspunkt mehr pro Nahkampfattacke "
+"Kräftige Einheiten verursachen einen Schadenspunkt mehr pro Nahkampfattacke "
 "und haben zwei LP mehr.\n"
 "\n"
-"Obwohl Stärke für alle Nahkampfeinheiten nützlich ist, wirkt sie besonders "
-"bei Einheiten mit einer hohen Anzahl an Attacken, z.b. der Elfen-Kämpfer. "
-"Starke Einheiten können sehr nützlich sein, wenn nur wenige Schadenspunkte "
-"fehlen, um eine gegnerische Einheit mit einem Angriff zu töten."
+"Obwohl Kraft für alle Nahkampfeinheiten nützlich ist, entfaltet sich die "
+"Wirkung besonders bei Einheiten mit einer hohen Zahl  an Attacken. Kräftige "
+"Einheiten können sehr nützlich sein, wenn es darum geht, Einheiten in einer "
+"Kampfhandlung zu töten."
 
 #: data/items.cfg:264
 msgid ""
@@ -986,9 +984,8 @@ msgid "&dwarf-warrior.png,Dwarves"
 msgstr "&dwarf-lord.png,Zwerge"
 
 #: data/multiplayer.cfg:180
-#, fuzzy
 msgid "&saurian-soothsayer.png,Saurian"
-msgstr "Saurianischer Krieger"
+msgstr "&saurian-soothsayer.png,Saurianer"
 
 #: data/multiplayer.cfg:193
 msgid "Age of Heroes"
@@ -1038,7 +1035,7 @@ msgstr "Die heilige Quelle"
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
-msgstr ""
+msgstr "Blitz"
 
 #: data/scenarios/multiplayer/BrokenBridge.cfg:4
 msgid ""
@@ -1068,9 +1065,8 @@ msgstr "Zufallskarte"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:17
-#, fuzzy
 msgid "Random map (Desert)"
-msgstr "Zufallskarte"
+msgstr "Zufallskarte (Wüste)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Desert.cfg:5
 msgid ""
@@ -1081,9 +1077,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
-#, fuzzy
 msgid "Random map (Marsh)"
-msgstr "Zufallskarte"
+msgstr "Zufallskarte (Sumpf)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:5
 msgid ""
@@ -1094,9 +1089,8 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
-#, fuzzy
 msgid "Random map (Winter)"
-msgstr "Zufallskarte"
+msgstr "Zufallskarte (Winter)"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:4
 msgid ""
@@ -2335,23 +2329,20 @@ msgid "How do I play multiplayer?"
 msgstr "Wie kann ich ein Mehrspieler-Spiel spielen?"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:244
-#, fuzzy
 msgid ""
 "To play Wesnoth against other people, select 'Multiplayer'. Then select "
 "'Join Official Server'. This will connect you to the official Wesnoth "
 "server, where you can join a game by selecting it, then selecting 'Join "
 "Game'."
 msgstr ""
-"Um Wesnoth gegen andere Spieler zu spielen, wählt \"Mehrspieler\". Wenn Ihr "
-"die neueste Entwicklerversion von Wesnoth habt, wählt \"Offiziellen Server "
-"beitreten\". Wenn Ihr Version 1.0 habt, wählt \"Spiel beitreten\", und gebt "
-"'server.wesnoth.org' ein. Das wird euch mit dem offiziellen Wesnoth-Server "
-"verbinden, wo Ihr einem Spiel beitreten könnt, wenn ihr es auswählt und "
-"\"Spiel beitreten\" drückt."
+"Um Wesnoth gegen andere Spieler zu spielen, wählt »Mehrspieler«. Wählt nun "
+"»Offiziellen Server beitreten«, um Euch mit dem offiziellen Wesnoth Server "
+"zu verbinden. Hier könnt ihr einem Spiel betreten, indem Ihr das gewünschte "
+"Spiel auswählt und dann auf die Schaltfläche »Spiel beitreten« drückt."
 
 #: data/scenarios/tutorial/utils.cfg:11
 msgid "That was explained well! But.."
-msgstr ""
+msgstr "Das habe ich verstanden. Aber..."
 
 #: data/scenarios/tutorial/utils.cfg:44
 msgid ""
@@ -2407,7 +2398,7 @@ msgstr "Schleier der Finsternis"
 
 #: data/terrain.cfg:14
 msgid "Fog"
-msgstr ""
+msgstr "Nebel"
 
 #: data/terrain.cfg:21
 msgid "Deep Water"
@@ -2452,9 +2443,8 @@ msgid "Grassland"
 msgstr "Grassland"
 
 #: data/terrain.cfg:158
-#, fuzzy
 msgid "Snow"
-msgstr "Schatten"
+msgstr "Schnee"
 
 #: data/terrain.cfg:177 data/terrain.cfg:184
 msgid "Hills"
@@ -2469,9 +2459,8 @@ msgid "Forest"
 msgstr "Wald"
 
 #: data/terrain.cfg:216
-#, fuzzy
 msgid "Cave wall"
-msgstr "Höhlenwnad"
+msgstr "Höhlenwand"
 
 #: data/terrain.cfg:224
 msgid "Cave"
@@ -2486,9 +2475,8 @@ msgid "Encampment"
 msgstr "Lager"
 
 #: data/terrain.cfg:260
-#, fuzzy
 msgid "Dwarven castle"
-msgstr "Zwergische Einöde"
+msgstr "Zwergische Burg"
 
 #: data/terrain.cfg:270
 msgid "Keep"
@@ -2496,7 +2484,7 @@ msgstr "Bergfried"
 
 #: data/terrain.cfg:290
 msgid "Canyon"
-msgstr ""
+msgstr "Schlucht"
 
 #: data/themes/default.cfg:23 data/themes/default.cfg:359
 #: data/themes/default.cfg:697
@@ -2708,9 +2696,8 @@ msgstr ""
 "night, and as if it were day when it is dusk."
 
 #: data/translations/english.cfg:49
-#, fuzzy
 msgid "illuminates"
-msgstr "Dörfer"
+msgstr "Lichtaura"
 
 #: data/translations/english.cfg:54
 #, fuzzy
@@ -2765,6 +2752,10 @@ msgid ""
 "The unit will heal itself 8 hp per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Regeneration:\n"
+"Die Selbstheilungskräfte sind bei dieser Einheit so stark, dass sie 8 LP pro "
+"Runde zurück gewinnt. Falls die Einheit vergiftet sein sollte, wird die "
+"Wirkung des Giftes gestoppt."
 
 #: data/translations/english.cfg:71 data/units/Great_Troll.cfg:7
 #: data/units/Tentacle.cfg:7 data/units/Troll.cfg:7
@@ -2774,15 +2765,14 @@ msgid "regenerates"
 msgstr "Regeneration"
 
 #: data/translations/english.cfg:74
-#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all Enemy "
 "Zones of Control."
 msgstr ""
 "Plänkler:\n"
-"This unit is skilled in moving past enemies quickly, and ignores all Enemy "
-"Zones of Control."
+"Diese Fertigkeit ermöglicht es einer Einheit, durch feindliche Linien zu "
+"brechen, da sämtliche feindlichen Kontrollzonen ignoriert werden."
 
 #: data/translations/english.cfg:76 data/units/Assassin.cfg:16
 #: data/units/Duelist.cfg:16 data/units/Fencer.cfg:16
@@ -2801,21 +2791,21 @@ msgstr ""
 #: data/units/Dwarvish_Sentinel.cfg:17 data/units/Dwarvish_Stalwart.cfg:17
 #: data/units/Merman_Hoplite.cfg:13 src/actions.cpp:502
 msgid "steadfast"
-msgstr ""
+msgstr "Unerschütterlich"
 
 #: data/translations/english.cfg:84
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages instantly."
 msgstr ""
 "Teleportieren:\n"
-"This unit may teleport between any two friendly villages instantly."
+"Durch die Magie der Bewegung ist es möglich, im Bruchteil einer Sekunde "
+"zwischen zwei eigenen Dörfern hin und her zu wechseln."
 
 #: data/translations/english.cfg:86 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:160
 msgid "teleport"
-msgstr ""
+msgstr "Teleportation"
 
 #: data/translations/english.cfg:91
 msgid ""
@@ -2844,15 +2834,14 @@ msgstr ""
 "doppelten Schaden."
 
 #: data/translations/english.cfg:100
-#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals."
 msgstr ""
 "Lebensentzug:\n"
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals."
+"Durch die Macht der Schwarzen Magie wird bei Berührung des Opfers ein Teil "
+"der Lebenskraft auf den Berührenden übertragen, der dadurch geheilt wird."
 
 #: data/translations/english.cfg:103
 msgid ""
@@ -2865,6 +2854,9 @@ msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit."
 msgstr ""
+"Magisch:\n"
+"Angriffe, die magischer Natur sind, haben grundsätzlich eine 70% "
+"Trefferwahrscheinlichkeit."
 
 #: data/translations/english.cfg:109
 msgid ""
@@ -2899,6 +2891,11 @@ msgid ""
 "This attack turns the target to stone. Units that have been turned to stone "
 "may not move or attack."
 msgstr ""
+"Versteinern:\n"
+"Wenn ein solcher Angriff trifft, wird das unglückliche Opfer von einer "
+"Steinschicht überzogen, bis es schließlich vollkommen bewegungsunfähig wird "
+"und einer Statue gleicht. Ein solche Einheit kann sich weder bewegen noch "
+"einen Angriff ausführen."
 
 #: data/translations/english.cfg:124
 msgid "Elves"
@@ -3364,7 +3361,7 @@ msgstr "Kälteschock"
 #: data/units/Silver_Mage.cfg:96 data/units/Silver_Mage.cfg:183
 #: data/units/White_Mage.cfg:47 data/units/White_Mage.cfg:106
 msgid "magical"
-msgstr ""
+msgstr "Magisch"
 
 #: data/units/Ancient_Wose.cfg:3
 msgid "Ancient Wose"
@@ -3490,9 +3487,8 @@ msgid "fire"
 msgstr "Feuer"
 
 #: data/units/Arch_Mage.cfg:82
-#, fuzzy
 msgid "female^Arch Mage"
-msgstr "Erzmagier"
+msgstr "Erzmagierin"
 
 #: data/units/Assassin.cfg:3
 msgid "Assassin"
@@ -3631,28 +3627,25 @@ msgid "mace"
 msgstr "Streitkolben"
 
 #: data/units/Battle_Princess.cfg:3 data/units/Princess.cfg:3
-#, fuzzy
 msgid "female^Princess"
 msgstr "Prinzessin"
 
 #: data/units/Battle_Princess.cfg:18 data/units/Battle_Princess.cfg:56
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "Führungsqualitäten,Plänkler"
 
 #: data/units/Battle_Princess.cfg:20
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
 "great combatant and leader. Now battle-hardened and strong of will, they can "
 "now aid those around them in the art of combat."
 msgstr ""
-"Als Adlige haben Prinzessinnen den Schwertkampf bei den besten Generälen "
+"Als Adlige hat die Prinzessin den Schwertkampf bei den besten Generälen "
 "gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
 "verschiedenen Kampftaktiken unterrichtet. Dies macht sie zu guten Kämpfern "
-"und Anführern. Alle Einheiten, die eine geringere Stufe als die Prinzessin "
-"haben und auf einem benachbartem Feld stehen erhalten einen Bonus im Kampf. "
-"Die Prinzessin ignoriert Zonen der feindlichen Kontrolle."
+"und Anführern. Kampfgestärkt und mit starker Willenskraft ausgestattet, "
+"führt sie nun ihre Untergebenen in die Schlacht."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -3856,16 +3849,15 @@ msgid "Cavalier"
 msgstr "Kürassier"
 
 #: data/units/Cavalier.cfg:24
-#, fuzzy
 msgid ""
 "Only the most experienced and heroic Dragoons can achieve to ride the "
 "battlefield as Cavaliers. Armed with magical artifacts, keen swords and fine "
 "armours, they are one of the best mounted troops in all know world."
 msgstr ""
 "Nur die erfahrensten und heldenhaftesten Dragoner können eines Tages als "
-"Kürassiere über das Schlachtfeld reiten. Sie haben eine Magische Pistole, "
-"eine scharfe Klinge und eine gute Rüstung. Das macht sie zu einer der am "
-"besten ausgerüsteten Einheit in der ganzen bekannten Welt."
+"Kürassiere über das Schlachtfeld reiten. Ausgerüstet mit magischen "
+"Artefakten, einer scharfe Klinge und einer gute Rüstung zählen sie zu den am "
+"besten ausgerüsteten Einheiten in der bekannten Welt."
 
 #: data/units/Cavalier.cfg:48 data/units/Dragoon.cfg:48
 msgid "pistol"
@@ -4036,18 +4028,19 @@ msgstr "Tinte"
 
 #: data/units/Dark_Adept.cfg:3
 msgid "Dark Adept"
-msgstr "Dunkler Meister"
+msgstr "Dunkler Adept"
 
 #: data/units/Dark_Adept.cfg:19
-#, fuzzy
 msgid ""
 "Dark Adepts are psychotic fanatics who dabble in black magic, using its "
 "power to cause death and destruction. They devote themselves completely to "
 "the study of this magic, not bothering to learn how to defend themselves in "
 "close combat."
 msgstr ""
-"Dunkle Meister sind verrückte Fanatiker die sich mit schwarzer Magie "
-"beschäftigen um mit ihrer Hilfe Tod und Verwüstung herbeizuführen."
+"Dunkle Adepten sind verrückte Fanatiker, die sich mit Schwarzer Magie "
+"beschäftigen, um mit ihrer Hilfe Tod und Verwüstung herbeizuführen. Durch "
+"die absolute Hingabe für ihr Studium, vernachlässigen sie ihre "
+"Selbstverteidigung im Nahkampf vollends."
 
 #: data/units/Dark_Adept.cfg:22 data/units/Necromancer.cfg:35
 msgid "chill wave"
@@ -4300,9 +4293,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Glider.cfg:4
-#, fuzzy
 msgid "Drake Glider"
-msgstr "Drake Schlitzer"
+msgstr "Drake Gleiter"
 
 #: data/units/Drake_Glider.cfg:19
 msgid ""
@@ -4320,9 +4312,8 @@ msgid "slam"
 msgstr "Insel"
 
 #: data/units/Drake_Inferno.cfg:4
-#, fuzzy
 msgid "Inferno Drake"
-msgstr "Feuerdrache"
+msgstr "Infernodrake"
 
 #: data/units/Drake_Inferno.cfg:18
 msgid ""
@@ -4334,9 +4325,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Sky.cfg:3
-#, fuzzy
 msgid "Sky Drake"
-msgstr "Feuerdrache"
+msgstr "Himmelsdrake"
 
 #: data/units/Drake_Slasher.cfg:4
 msgid "Drake Slasher"
@@ -4372,16 +4362,15 @@ msgid "Duelist"
 msgstr "Duellant"
 
 #: data/units/Duelist.cfg:17
-#, fuzzy
 msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
 "crossbow in the other to shoot distant foes."
 msgstr ""
 "Duellanten sind Meister der Schwertkampfkunst. Ihr gutes Können mit dem "
-"Rapier erlaubt es ihnen mit einer Hand anzugreifen und abzuwehren, während "
-"sie in der anderen Hand eine Pistole halten mit der sie auf entfernte Gegner "
-"schießen können."
+"Rapier erlaubt es ihnen, mit einer Hand anzugreifen und abzuwehren, während "
+"sie in der anderen Hand eine Armbrust halten, mit der sie auf entfernte "
+"Gegner schießen können."
 
 #: data/units/Duelist.cfg:20 data/units/Fencer.cfg:20
 msgid "rapier"
@@ -4643,9 +4632,8 @@ msgstr ""
 "wichtiger Bestandteil der Elfentruppen."
 
 #: data/units/Elvish_Archer.cfg:82
-#, fuzzy
 msgid "female^Elvish Archer"
-msgstr "Elfenbogenschütze"
+msgstr "Elfenbogenschützin"
 
 #: data/units/Elvish_Avenger.cfg:3
 msgid "Elvish Avenger"
@@ -4664,9 +4652,8 @@ msgstr ""
 "Hinterhalt angreifen."
 
 #: data/units/Elvish_Avenger.cfg:76
-#, fuzzy
 msgid "female^Elvish Avenger"
-msgstr "Elfenrächer"
+msgstr "Elfenrächerin"
 
 #: data/units/Elvish_Captain.cfg:3
 msgid "Elvish Captain"
@@ -4697,7 +4684,6 @@ msgstr ""
 "sehr großen Schaden im Nahkampf wie im Fernkampf."
 
 #: data/units/Elvish_Druid.cfg:3
-#, fuzzy
 msgid "female^Elvish Druid"
 msgstr "Elfendruidin"
 
@@ -4721,7 +4707,6 @@ msgid "thorns"
 msgstr "Dornen"
 
 #: data/units/Elvish_Enchantress.cfg:3
-#, fuzzy
 msgid "female^Elvish Enchantress"
 msgstr "Elfenmystikerin"
 
@@ -4784,9 +4769,8 @@ msgstr ""
 "als auch mit verheerenden Feuerbällen aus der Distanz."
 
 #: data/units/Elvish_Lady.cfg:4
-#, fuzzy
 msgid "female^Elvish Lady"
-msgstr "Elfenbaron"
+msgstr "Elfenadlige"
 
 #: data/units/Elvish_Lady.cfg:17
 msgid ""
@@ -4842,9 +4826,8 @@ msgid "marksman"
 msgstr "Schießkunst"
 
 #: data/units/Elvish_Marksman.cfg:80
-#, fuzzy
 msgid "female^Elvish Marksman"
-msgstr "Elfenlangbogenschütze"
+msgstr "Elfenlangbogenschützin"
 
 #: data/units/Elvish_Marshal.cfg:3
 msgid "Elvish Marshal"
@@ -4896,9 +4879,8 @@ msgstr ""
 "Gegner auf einem benachbartem Feld befinden."
 
 #: data/units/Elvish_Ranger.cfg:79
-#, fuzzy
 msgid "female^Elvish Ranger"
-msgstr "Elfenwaldhüter"
+msgstr "Elfenwaldhüterin"
 
 #: data/units/Elvish_Rider.cfg:3
 msgid "Elvish Rider"
@@ -4927,7 +4909,6 @@ msgstr ""
 "es ihnen an können."
 
 #: data/units/Elvish_Shaman.cfg:3
-#, fuzzy
 msgid "female^Elvish Shaman"
 msgstr "Elfenschamanin"
 
@@ -4960,12 +4941,10 @@ msgstr ""
 "geeignet, Gegner auszulöschen die sich verschanzt haben."
 
 #: data/units/Elvish_Sharpshooter.cfg:82
-#, fuzzy
 msgid "female^Elvish Sharpshooter"
-msgstr "Elfenscharfschütze"
+msgstr "Elfenscharfschützin"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "female^Elvish Shyde"
 msgstr "Waldfee"
 
@@ -4985,7 +4964,6 @@ msgid "faerie touch"
 msgstr "Feenhauch"
 
 #: data/units/Elvish_Sorceress.cfg:3
-#, fuzzy
 msgid "female^Elvish Sorceress"
 msgstr "Elfenzauberin"
 
@@ -4998,7 +4976,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Elvish_Sylph.cfg:3
-#, fuzzy
 msgid "female^Elvish Sylph"
 msgstr "Sylphide"
 
@@ -5325,9 +5302,8 @@ msgstr ""
 "übersteigen sogar noch die der Erzmagier."
 
 #: data/units/Great_Mage.cfg:79
-#, fuzzy
 msgid "female^Great Mage"
-msgstr "Großmagier"
+msgstr "Großmagierin"
 
 #: data/units/Great_Troll.cfg:3
 msgid "Great Troll"
@@ -5431,9 +5407,8 @@ msgstr ""
 
 #: data/units/Horse_Lord.cfg:43 data/units/Mounted_Captain.cfg:43
 #: data/units/Mounted_Commander.cfg:43
-#, fuzzy
 msgid "morning star"
-msgstr "Vormittag"
+msgstr "Morgenstern"
 
 #: data/units/Horseman.cfg:3
 msgid "Horseman"
@@ -5596,7 +5571,7 @@ msgstr "Magiegeschoss"
 
 #: data/units/Mage.cfg:70
 msgid "female^Mage"
-msgstr ""
+msgstr "Magierin"
 
 #: data/units/Mage_of_Light.cfg:3
 msgid "Mage of Light"
@@ -5638,9 +5613,8 @@ msgid "holy"
 msgstr "Heilig"
 
 #: data/units/Mage_of_Light.cfg:66
-#, fuzzy
 msgid "female^Mage of Light"
-msgstr "Magier des Lichtes"
+msgstr "Magierin des Lichtes"
 
 #: data/units/Master_Bowman.cfg:3
 msgid "Master Bowman"
@@ -5712,9 +5686,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Mermaid_Siren.cfg:3
-#, fuzzy
 msgid "Siren"
-msgstr "Feuer"
+msgstr "Sirene"
 
 #: data/units/Mermaid_Siren.cfg:23
 #, fuzzy
@@ -5739,14 +5712,12 @@ msgid "Merman Entangler"
 msgstr "Verstrickung"
 
 #: data/units/Merman_Fighter.cfg:3
-#, fuzzy
 msgid "Merman Fighter"
-msgstr "Drake Kämpfer"
+msgstr "Wassermann Kämpfer"
 
 #: data/units/Merman_Hoplite.cfg:3
-#, fuzzy
 msgid "Merman Hoplite"
-msgstr "Wassermann"
+msgstr "Wassermann Hoplit"
 
 #: data/units/Merman_Hoplite.cfg:19
 msgid ""
@@ -5757,23 +5728,20 @@ msgid ""
 msgstr ""
 
 #: data/units/Merman_Hunter.cfg:3
-#, fuzzy
 msgid "Merman Hunter"
-msgstr "Wassermann"
+msgstr "Wassermann Jäger"
 
 #: data/units/Merman_Javelineer.cfg:3
 msgid "Merman Javelineer"
 msgstr ""
 
 #: data/units/Merman_Netcaster.cfg:3
-#, fuzzy
 msgid "Merman Netcaster"
-msgstr "Saurianischer Krieger"
+msgstr "Wassermann Netzwerfer"
 
 #: data/units/Merman_Spearman.cfg:3
-#, fuzzy
 msgid "Merman Spearman"
-msgstr "Speerträger"
+msgstr "Wassermann Speerträger"
 
 #: data/units/Merman_Triton.cfg:3
 #, fuzzy
@@ -5791,9 +5759,8 @@ msgstr ""
 "ist in ihr Gebiet einzudringen."
 
 #: data/units/Merman_Warrior.cfg:3
-#, fuzzy
 msgid "Merman Warrior"
-msgstr "Saurianischer Krieger"
+msgstr "Wassermann Krieger"
 
 #: data/units/Merman_Warrior.cfg:19
 msgid ""
@@ -6105,7 +6072,7 @@ msgstr ""
 
 #: data/units/Orcish_Shaman.cfg:89
 msgid "Old Orcish Shaman"
-msgstr "Alter Orkschaman"
+msgstr "Alter Orkschamane"
 
 #: data/units/Orcish_Shaman.cfg:101
 msgid ""
@@ -6197,9 +6164,8 @@ msgid "Outlaws fight better at night."
 msgstr "Geächtete kämpfen bei Nacht besser als am Tag."
 
 #: data/units/Outlaw.cfg:75
-#, fuzzy
 msgid "female^Outlaw"
-msgstr "Geächteter"
+msgstr "Geächtete"
 
 #: data/units/Outlaw.cfg:89
 msgid "Outlaws fight better at night. Female Outlaws look good while doing it."
@@ -6208,7 +6174,6 @@ msgstr ""
 "besonders guten Eindruck."
 
 #: data/units/Outlaw_Princess.cfg:4
-#, fuzzy
 msgid "female^Outlaw Princess"
 msgstr "Geächtete Prinzessin"
 
@@ -6226,13 +6191,12 @@ msgstr ""
 "Königreich zu gründen."
 
 #: data/units/Outlaw_Queen.cfg:3
-#, fuzzy
 msgid "female^Outlaw Queen"
 msgstr "Geächtete Königin"
 
 #: data/units/Outlaw_Queen.cfg:17
 msgid "skirmisher,leadership"
-msgstr ""
+msgstr "Plänkler,Führungsqualitäten"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid ""
@@ -6362,9 +6326,8 @@ msgstr ""
 "Mitstreiter."
 
 #: data/units/Red_Mage.cfg:72
-#, fuzzy
 msgid "female^Red Mage"
-msgstr "Roter Magier"
+msgstr "Rote Magierin"
 
 #: data/units/Revenant.cfg:3
 msgid "Revenant"
@@ -6438,9 +6401,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Icecaster.cfg:19 data/units/Saurian_Tribalist.cfg:20
-#, fuzzy
 msgid "skirmisher,heals"
-msgstr "Plänkler"
+msgstr "Plänkler,Heilen"
 
 #: data/units/Saurian_Icecaster.cfg:40 data/units/Saurian_Soothsayer.cfg:39
 #: data/units/Saurian_Tribalist.cfg:39
@@ -6448,9 +6410,8 @@ msgid "frost blast"
 msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:4
-#, fuzzy
 msgid "Saurian Soothsayer"
-msgstr "Saurianischer Krieger"
+msgstr "Saurianischer Wahrsager"
 
 #: data/units/Saurian_Soothsayer.cfg:18
 msgid ""
@@ -6460,14 +6421,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Saurian_Soothsayer.cfg:20
-#, fuzzy
 msgid "skirmisher,cures"
-msgstr "Plänkler"
+msgstr "Plänkler,Kurieren"
 
 #: data/units/Saurian_Tribalist.cfg:4
-#, fuzzy
 msgid "Saurian Tribalist"
-msgstr "Saurianischer Krieger"
+msgstr "Saurianischer Tribalist"
 
 #: data/units/Saurian_Tribalist.cfg:18
 msgid ""
@@ -6491,7 +6450,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Sea_Hag.cfg:3
-#, fuzzy
 msgid "female^Sea Hag"
 msgstr "Seefurie"
 
@@ -6592,9 +6550,8 @@ msgstr ""
 "Widerstandsfähig gegen die meisten magischen Angriffe."
 
 #: data/units/Silver_Mage.cfg:142
-#, fuzzy
 msgid "female^Silver Mage"
-msgstr "Silberner Magier"
+msgstr "Silberne Magierin"
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
@@ -6893,7 +6850,6 @@ msgstr ""
 "Fledermaus."
 
 #: data/units/Vampire_Lady.cfg:3
-#, fuzzy
 msgid "female^Vampire Lady"
 msgstr "Vampirin"
 
@@ -6929,7 +6885,7 @@ msgstr ""
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr ""
+msgstr "Plänkler,Regeneration"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -6985,9 +6941,8 @@ msgstr ""
 "mächtige Kämpfer die hohen Schaden anrichten."
 
 #: data/units/White_Mage.cfg:65
-#, fuzzy
 msgid "female^White Mage"
-msgstr "Weisser Magier"
+msgstr "Weisse Magierin"
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
@@ -7118,9 +7073,8 @@ msgid "+Scenario Designers"
 msgstr "+Szenarien"
 
 #: src/about.cpp:113
-#, fuzzy
 msgid "+Multiplayer Maps"
-msgstr "Mehrspieler"
+msgstr "+Mehrspielerkarten"
 
 #: src/about.cpp:118
 msgid "+Packagers"
@@ -7167,9 +7121,8 @@ msgid "+German Translation"
 msgstr "+Deutsche Übersetzung"
 
 #: src/about.cpp:189
-#, fuzzy
 msgid "+Greek Translation"
-msgstr "+Französische Übersetzung"
+msgstr "+Grichische Übersetzung"
 
 #: src/about.cpp:194
 msgid "+Hungarian Translation"
@@ -7500,7 +7453,7 @@ msgstr " ,Weitere Kampagnen..."
 
 #: src/game.cpp:944
 msgid "Download more campaigns from a server on Internet."
-msgstr ""
+msgstr "Ladet weitere Kampagnen von einem Server aus dem Internet herunter."
 
 #: src/game.cpp:954
 msgid "Choose the campaign you want to play:"
@@ -7536,7 +7489,7 @@ msgstr "Fehler"
 
 #: src/game.cpp:1025
 msgid "Awaiting response from server"
-msgstr ""
+msgstr "Warte auf Serverantwort..."
 
 #: src/game.cpp:1038
 msgid "Error communicating with the server."
@@ -7557,9 +7510,8 @@ msgid "Delete campaign: "
 msgstr "Kampagnen herunterladen"
 
 #: src/game.cpp:1071
-#, fuzzy
 msgid "There are no campaigns available for download from this server."
-msgstr "Es sind keine Kampagnen verfügabr"
+msgstr "Auf diesem Server sind keine Kampagnen zum Herunterladen verfügabr"
 
 #: src/game.cpp:1075
 msgid "Choose the campaign to download."
@@ -7630,31 +7582,28 @@ msgid "Join a server or hosted game"
 msgstr "Einem Server oder einer Mehrspielerpartie beitreten"
 
 #: src/game.cpp:1210
-#, fuzzy
 msgid "Host Networked Game"
-msgstr "Netzwerkspieler"
+msgstr "Netzwerkpartie eröffnen"
 
 #: src/game.cpp:1210
 msgid "Host a game without using a server"
 msgstr "Eine Mehrspielerpartie ohne Zuhilfenahme eines Servers eröffnen"
 
 #: src/game.cpp:1211
-#, fuzzy
 msgid "Hotseat Game"
-msgstr "Partie eröffnen"
+msgstr "Hotseat"
 
 #: src/game.cpp:1211
 msgid "Play a multiplayer game sharing the same machine"
 msgstr ""
 
 #: src/game.cpp:1212
-#, fuzzy
 msgid "Human vs AI"
-msgstr "Menschen"
+msgstr "Mensch gegen Computer"
 
 #: src/game.cpp:1212
 msgid "Play a game against AI opponents"
-msgstr ""
+msgstr "Eine Partie gegen den Computer eröffnen"
 
 #: src/game.cpp:1215 src/multiplayer_client.cpp:303
 msgid "Login"
@@ -7682,7 +7631,7 @@ msgstr ""
 
 #: src/help.cpp:631
 msgid "Alignment"
-msgstr ""
+msgstr "Tag-/Nacht-Einfluss"
 
 #: src/help.cpp:635
 msgid "Required XP"
@@ -7742,31 +7691,45 @@ msgstr "Verteidigung"
 
 #: src/help.cpp:869
 msgid "or"
-msgstr ""
+msgstr "oder"
 
 #: src/help.cpp:876
+#, fuzzy
 msgid "This terrain acts as $terrains for movement and defense purposes."
 msgstr ""
+"Dieses Gelände verhält sich wie das Gelände $terrains was Bewegungskosten "
+"und Verteidigung angeht."
 
 #: src/help.cpp:878
+#, fuzzy
 msgid "The terrain with the best modifier is chosen automatically."
-msgstr ""
+msgstr "Das Gelände mit den besten Modifikatoren wird automatisch ausgewählt."
 
 #: src/help.cpp:882
+#, fuzzy
 msgid ""
 "This terrain acts as keep, i.e., you can recruit units when a leader is in a "
 "location with this terrain."
 msgstr ""
+"Dieses Gelände verhält sich wie das Gelände Bergfried. Wenn sich ein "
+"Herrführer auf einem Feld mit diesem Geländetyp befindet, können Einheiten "
+"ausgebildet werden."
 
 #: src/help.cpp:884
+#, fuzzy
 msgid ""
 "This terrain acts as castle, i.e., you can recruit units onto a location "
 "with this terrain."
 msgstr ""
+"Dieses Gelände verhält sich wie das Gelände Burg. Auf einem Feld mit diesem "
+"Geländetyp können somit Einheiten ausgebildet werden."
 
 #: src/help.cpp:886
+#, fuzzy
 msgid "This terrain gives healing."
 msgstr ""
+"Dieses Gelände stellt die Gesundheit von Einheiten, die sich auf diesem Feld "
+"aufhalten, wieder her."
 
 #: src/help.cpp:1893
 msgid "< Back"
@@ -7969,7 +7932,7 @@ msgstr "Warnung"
 
 #: src/multiplayer_client.cpp:62
 msgid "Receiving game list..."
-msgstr ""
+msgstr "Partieliste wird empfangen..."
 
 #: src/multiplayer_client.cpp:124 src/multiplayer_connect.cpp:386
 #: src/multiplayer_connect.cpp:388 src/playlevel.cpp:780 src/playturn.cpp:1535
@@ -8154,7 +8117,7 @@ msgstr "Beenden"
 
 #: src/playlevel.cpp:699
 msgid "Game Over"
-msgstr ""
+msgstr "Spielende"
 
 #: src/playlevel.cpp:700
 msgid "The game is over."
@@ -8318,6 +8281,8 @@ msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
+"Diese Einheit ist sehr erfahren und ist bereits mindestens eine Stufe "
+"aufgestiegen. Wollt Ihr $noun wirklich entlassen?"
 
 #: src/playturn.cpp:1735
 msgid ""
@@ -8403,15 +8368,15 @@ msgstr "Verursachter Schaden"
 
 #: src/playturn.cpp:2081
 msgid "Damage Taken"
-msgstr "Erhaltener Schaden"
+msgstr "Erlittener Schaden"
 
 #: src/playturn.cpp:2087
 msgid "Damage Inflicted (EV)"
-msgstr ""
+msgstr "Verursachter Schaden (EV)"
 
 #: src/playturn.cpp:2094
 msgid "Damage Taken (EV)"
-msgstr ""
+msgstr "Erlittener Schaden (EV)"
 
 #: src/playturn.cpp:2100
 msgid "Statistics"
@@ -8474,12 +8439,17 @@ msgstr "hat das Spiel verlassen. Was wollt Ihr tun?"
 #: src/reports.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
+"Diese Einheit ist unsichtbar. Sie kann von Feinden weder gesehen noch "
+"angegriffen werden."
 
 #: src/reports.cpp:110
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
 msgstr ""
+"Diese Einheit wurde verlangsamt. Sie kann sich nur mit der Hälfte ihrer "
+"sonst üblichen BP bewegen. Ausserdem wird ihr zusätzlich eine Attacke pro "
+"Waffe abgezogen."
 
 #: src/reports.cpp:115
 msgid ""
@@ -8490,10 +8460,18 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"Diese Einheit ist vergiftet. Sie wird jede Runde 8 LP verlieren, bis sie "
+"entweder Heilung in einem Dorf sucht oder von einer verbündeten Einheit mit "
+"der »Kurieren« Fertigkeit versorgt wird.\n"
+"\n"
+"Durch Gift allein können Einheiten allerdings nicht sterben. Eine Vergiftung "
+"wird die LP einer Einheit nicht unter 1 reduzieren."
 
 #: src/reports.cpp:122
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr ""
+"Diese Einheit wurde zu Stein verwandelt. Sie kann sich weder bewegen noch "
+"angreifen."
 
 #: src/reports.cpp:232
 msgid "damage"
@@ -8501,7 +8479,7 @@ msgstr "Schaden"
 
 #: src/reports.cpp:237
 msgid "hexes"
-msgstr ""
+msgstr "Felder"
 
 #: src/reports.cpp:254
 msgid "Lawful units"
@@ -8625,11 +8603,25 @@ msgstr "neutral"
 
 #: src/widgets/file_chooser.cpp:30
 msgid "Delete File"
-msgstr ""
+msgstr "Datei löschen"
 
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr ""
+
+#~ msgid "Game"
+#~ msgstr "Spiel"
+
+#~ msgid "Scenario"
+#~ msgstr "Szenario"
+
+#~ msgid "Could not connect to the remote host"
+#~ msgstr ""
+#~ "Es konnte keine Verbindung mit dem entfernten Server/Gastgeber "
+#~ "hergestellt werden"
+
+#~ msgid "&misc/observer.png,Observer"
+#~ msgstr "&misc/observer.png,Beobachter"
 
 #~ msgid "Next unit"
 #~ msgstr "Nächste Einheit"
@@ -8732,51 +8724,3 @@ msgstr ""
 
 #~ msgid "Do you really want to quit?"
 #~ msgstr "Möchtet Ihr das Spiel wirklich beenden?"
-
-#~ msgid "Game"
-#~ msgstr "Spiel"
-
-#~ msgid "Scenario"
-#~ msgstr "Szenario"
-
-#~ msgid "Could not connect to the remote host"
-#~ msgstr ""
-#~ "Es konnte keine Verbindung mit dem entfernten Server/Gastgeber "
-#~ "hergestellt werden"
-
-#~ msgid "&misc/observer.png,Observer"
-#~ msgstr "&misc/observer.png,Beobachter"
-
-#, fuzzy
-#~ msgid "Swamp Water"
-#~ msgstr "Seichtes Wasser"
-
-#~ msgid "first strike"
-#~ msgstr "Erstschlag"
-
-#~ msgid "Tundra"
-#~ msgstr "Tundra"
-
-#~ msgid "Naga"
-#~ msgstr "Seeteufel"
-
-#~ msgid "Host Multiplayer Game"
-#~ msgstr "Mehrspielerpartie eröffnen"
-
-#~ msgid "TitleScreen button^About"
-#~ msgstr "Über uns"
-
-#~ msgid "sword "
-#~ msgstr "Schwert"
-
-#~ msgid "blade "
-#~ msgstr "Klinge"
-
-#~ msgid "spear "
-#~ msgstr "Speer"
-
-#~ msgid "pierce "
-#~ msgstr "Stich"
-
-#~ msgid "first strike "
-#~ msgstr "Erstschlag"
