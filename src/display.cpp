@@ -508,11 +508,11 @@ void display::draw_sidebar()
 		//otherwise we display the unit that is selected
 		std::map<gamemap::location,unit>::const_iterator i
 		                                = units_.find(mouseoverHex_);
-		if(i == units_.end() || shrouded(i->first.x,i->first.y)) {
+		if(i == units_.end() || fogged(i->first.x,i->first.y)) {
 			i = units_.find(selectedHex_);
 		}
 
-		if(i != units_.end() && !shrouded(i->first.x,i->first.y)) {
+		if(i != units_.end() && !fogged(i->first.x,i->first.y)) {
 			draw_unit_details(mapx()+SideBarText_x,SideBarUnit_y,selectedHex_,
 			                  i->second,unitDescriptionRect_,
 			                  mapx()+SideBarText_x,SideBarUnitProfile_y);
@@ -1431,7 +1431,6 @@ std::vector<SDL_Surface*> display::getAdjacentTerrain(int x, int y,
 SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type,
                                  int x, int y, const std::string& direction)
 {
-	const bool tower = (map_.underlying_terrain(terrain) == gamemap::TOWER);
 	std::string image = "terrain/" + (direction.empty() ?
 	                           map_.get_terrain_info(terrain).image(x,y) :
 	                           map_.get_terrain_info(terrain).default_image());

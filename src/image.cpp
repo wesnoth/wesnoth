@@ -249,7 +249,7 @@ SDL_Surface* get_image(const std::string& filename,TYPE type)
 SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 {
 	SDL_Surface* const surf = get_image(filename,UNSCALED);
-	if(surf != NULL && (surf->w != x || surf->h != y)) {
+	if(surf != NULL && (size_t(surf->w) != x || size_t(surf->h) != y)) {
 		SDL_Surface* const new_image = scale_surface(surf,x,y);
 		images_.erase(filename);
 		SDL_FreeSurface(surf);

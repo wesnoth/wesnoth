@@ -15,7 +15,6 @@
 //functions. They may have to be altered to port to new platforms
 #include <sys/types.h>
 
-
 //for mkdir
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -31,6 +30,8 @@
 #define mode_t int
 
 #else
+
+#include <unistd.h>
 
 #include <dirent.h>
 
@@ -269,3 +270,9 @@ bool file_exists(const std::string& name)
         return true;
 }
 
+time_t file_last_access(const std::string& fname)
+{
+	struct stat buf;
+	::stat(fname.c_str(),&buf);
+	return buf.st_atime;
+}

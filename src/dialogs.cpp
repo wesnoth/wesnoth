@@ -14,6 +14,7 @@
 #include "dialogs.hpp"
 #include "language.hpp"
 #include "replay.hpp"
+#include "show_dialog.hpp"
 
 #include <map>
 #include <string>
@@ -113,6 +114,36 @@ int get_save_name(display & disp,const std::string& caption, const std::string& 
 	return res;
 }
 
+std::string load_game_dialog(display& disp, bool* show_replay)
+{
+	const std::vector<std::string>& games = get_saves_list();
 
+	if(games.empty()) {
+		gui::show_dialog(disp,NULL,
+		                 string_table["no_saves_heading"],
+						 string_table["no_saves_message"],
+		                 gui::OK_ONLY);
+		return "";
+	}
+
+	//create an option for whether the replay should be shown or not
+	std::vector<gui::check_item> options;
+
+	if(show_replay != NULL)
+		options.push_back(gui::check_item(string_table["show_replay"],false));
+
+	const int res = gui::show_dialog(disp,NULL,
+					 string_table["load_game_heading"],
+					 string_table["load_game_message"],
+			         gui::OK_CANCEL,&games,NULL,"",NULL,NULL,&options);
+
+	if(res == -1)
+		return "";
+
+	if(show_replay != NULL)
+		*show_replay = options.front().checked;
+
+	return games[res];
+}
 
 } //end namespace dialogs

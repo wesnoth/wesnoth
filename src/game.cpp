@@ -289,31 +289,15 @@ int play_game(int argc, char** argv)
 		} else if(res == gui::LOAD_GAME) {
 			srand(SDL_GetTicks());
 
-			const std::vector<std::string>& games = get_saves_list();
+			bool show_replay;
 
-			if(games.empty()) {
-				gui::show_dialog(disp,NULL,
-				                 string_table["no_saves_heading"],
-								 string_table["no_saves_message"],
-				                 gui::OK_ONLY);
+			const std::string game = dialogs::load_game_dialog(disp,&show_replay);
+
+			if(game == "")
 				continue;
-			}
-
-			//create an option for whether the replay should be shown or not
-			std::vector<gui::check_item> options;
-			options.push_back(gui::check_item(string_table["show_replay"],false));
-			const int res = gui::show_dialog(disp,NULL,
-							 string_table["load_game_heading"],
-							 string_table["load_game_message"],
-					         gui::OK_CANCEL,&games,NULL,"",NULL,NULL,&options);
-
-			if(res == -1)
-				continue;
-
-			const bool show_replay = options.front().checked;
 
 			try {
-				load_game(units_data,games[res],state);
+				load_game(units_data,game,state);
 				if(state.version != game_config::version) {
 					const int res = gui::show_dialog(disp,NULL,"",
 					                      string_table["version_save_message"],

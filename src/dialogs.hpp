@@ -31,6 +31,12 @@ void show_objectives(display& disp, config& level_info);
 int get_save_name(display & disp, const std::string& caption, 
 				const std::string& message, std::string * name);
 
+//allow user to select the game they want to load. Returns the name
+//of the save they want to load. Stores whether the user wants to show
+//a replay of the game in show_replay. If show_replay is NULL, then
+//the user will not be asked if they want to show a replay.
+std::string load_game_dialog(display& disp, bool* show_replay);
+
 }
 
 #endif

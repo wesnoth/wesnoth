@@ -201,9 +201,9 @@ void turn_info::handle_event(const SDL_Event& event)
 				path_turns_ = new_path_turns;
 
 				unit_map::iterator u = units_.find(selected_hex_);
-				if(u == units_.end()) {
+				if(u == units_.end() || gui_.fogged(u->first.x,u->first.y)) {
 					u = units_.find(last_hex_);
-					if(u != units_.end() && u->second.side() == team_num_) {
+					if(u != units_.end() && (u->second.side() == team_num_ || gui_.fogged(u->first.x,u->first.y))) {
 						u = units_.end();
 					}
 				} else if(u->second.side() != team_num_) {
@@ -304,8 +304,6 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 {
 	if(commands_disabled)
 		return;
-
-	const team& current_team = teams_[team_num_-1];
 	
 	if(event.button == SDL_BUTTON_LEFT && event.state == SDL_PRESSED) {
 		left_click(event);
@@ -667,7 +665,8 @@ void turn_info::cycle_units()
 	if(it != units_.end()) {
 		for(++it; it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
-			   unit_can_move(it->first,units_,map_,teams_)) {
+			   unit_can_move(it->first,units_,map_,teams_) &&
+			   !gui_.fogged(it->first.x,it->first.y)) {
 				break;
 			}
 		}
@@ -676,7 +675,8 @@ void turn_info::cycle_units()
 	if(it == units_.end()) {
 		for(it = units_.begin(); it != units_.end(); ++it) {
 			if(it->second.side() == team_num_ &&
-			   unit_can_move(it->first,units_,map_,teams_)) {
+			   unit_can_move(it->first,units_,map_,teams_) &&
+			   !gui_.fogged(it->first.x,it->first.y)) {
 				break;
 			}
 		}
@@ -989,7 +989,7 @@ void turn_info::status_table()
 	const bool fog = teams_[team_num_-1].uses_fog() || teams_[team_num_-1].uses_shroud();
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(fog && team_num_-1 != n)
+		if(fog && team_num_-1 != int(n))
 			continue;
 
 		const team_data data = calculate_team_data(teams_[n],n+1,units_);

@@ -335,7 +335,7 @@ SDL_Rect menu::get_item_rect(int item) const
 	static const SDL_Rect area = {0,0,display_->x(),display_->y()};
 
 	//use the first field that is non-blank
-	int n;
+	size_t n;
 	for(n = 0; n != items_[item].size(); ++n) {
 		if(items_[item][n] != "")
 			break;
