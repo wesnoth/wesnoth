@@ -2,7 +2,7 @@ CVS HEAD:
  * campaign server stores size of campaigns
  * user interface improvements:
    * consistently compute minimum allowed zoom value according to screen size
-   * improved readability of chat messages on light backgrounds
+   * improved readability of chat messages on light backgrounds (#10900)
  * graphics improvements: 
    * portraits for all TRoW characters that speak in more than one scenario added
    * a portrait for Queen Asheviere in HttT
@@ -15,6 +15,9 @@ CVS HEAD:
    * Capture
  * scenario fixes for 'Son of the Black Eye' campaign:
    * Saving Inarix
+ * scenario fixes for 'The Rise of Wesnoth' campaign:
+   * The Vanguard, fixed chest placement
+   * make the chests squeak
  * scenario balancing for:
    * A Test of the Clans
    * Return to Wesnoth
@@ -47,15 +50,6 @@ CVS HEAD:
    * Naga Myrmidon
    * Saurian Flanker
    * Deathblade
- * Fix missing diagonal projectiles on:
-   * Elvish Druid
-   * Elvish Shyde
-   * Elvish Sorceress
-   * Elvish Enchantress
-   * Elvish Sylph
-   * Goblin Pillager
-   * Giant Spider
-   * Cuttle Fish
  * changed Dragoon's and Cavalier's pistol to crossbow.
  * renamed 'Saurian' to 'Saurian Skirmisher' and 'Saurian Warrior' to 'Saurian Ambusher'
  * fixed units incorrectly not using the spear icon
@@ -82,22 +76,21 @@ CVS HEAD:
  * give Woses, Saurians, Ogres, & Drakes names
  * give Saurians & Drakes traits
  * give the Drakes music in Multiplayer
- * make the chests in 'The Rise of Wesnoth' squeak
  * new rectangle syntax allowing width/height and relative positionning in themes
  * new --enable-tinygui configure flag for adventurous PDA users
+ * fixed missing diagonal projectiles on several units
+ * fixed Gwiti's animation (#10926)
  * fixed translations being searched for in installdir when running in builddir
  * added support for concatenating strings in wml files, for the benefit of i18n
- * fixed code for handling objects
- * fixed chest placement in 'The Rise of Wesnoth: The Vanguard'
+ * fixed code for handling objects (#10904, #10954, #10963)
  * fixed many untranslatable strings
  * fixed layering of desert and dirt
  * fixed multiplayer setup screen being broken on low resolutions
  * fixed resizing multiplayer lobby creating some graphic glitches
- * fixed background refreshing of campaign selection dialog
  * fixed --enable-lite for current image location
  * fixed wmlxgettext not working properly with msdos line-endings in multiline strings
- * fixed several divide by zero errors
- * fixed bug loading some multiplayer games
+ * fixed zoom behavior (#9890)
+ * fixed several crashes (#10959, #11102, #11115, #11158)
  * improved 320x240 resolution support
  * support for unrenamable units
  * install wmlxgettext so that it can be used by user campaigns
