@@ -3,21 +3,21 @@
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
-# Nobuhito Okada <okyada@gmail.com>, 2005
+# Nobuhito Okada <okyada@gmail.com>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-03-12 18:32+0100\n"
-"PO-Revision-Date: 2005-03-17 14:40+0900\n"
+"PO-Revision-Date: 2005-03-19 16:30+0900\n"
 "Last-Translator: Nobuhito Okada <okyada@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.0\n"
+"X-Generator: KBabel 1.9\n"
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
@@ -124,7 +124,6 @@ msgstr ""
 "Battle for Wesnothはとても難しいため、<italic>text=簡単</italic>なレベルから"
 "始めたいと思うかもしれません。"
 
-# プレイしている間、メニューバーの上に何度もマウスをのせると、その項目についての簡単な説明がポップアップされることを覚えておきましょう。これはあなたが新しい能力に始めて出会う時に特に便利です。
 #: data/help.cfg:73
 msgid ""
 "While playing, keep in mind that if you mouse-over many items on the menu "
@@ -946,7 +945,6 @@ msgstr "大量の金"
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "私はこの一枚の金貨が10倍になって返ってくる事を願います。"
 
-# Wesnoth全体の平和
 #: data/items.cfg:298
 msgid "Peace throughout Wesnoth."
 msgstr "Wesnoth全体の平和"
@@ -1191,7 +1189,7 @@ msgstr ""
 
 #: data/scenarios/multiplayer/Blitz.cfg:7
 msgid "Blitz"
-msgstr ""
+msgstr "ブリッツ"
 
 #: data/scenarios/multiplayer/Blitz.cfg:9
 #: data/scenarios/multiplayer/Charge.cfg:9
@@ -1228,11 +1226,11 @@ msgstr ""
 
 #: data/scenarios/multiplayer/ForestOfFear.cfg:3
 msgid "Forest of Fear"
-msgstr ""
+msgstr "畏敬の森"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:3
 msgid "Hexcake"
-msgstr ""
+msgstr "ヘクスケーキ"
 
 #: data/scenarios/multiplayer/Hexcake.cfg:5
 msgid "2 vs. 2 or 3 vs. 3 team game."
@@ -1263,8 +1261,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
-"主要な地形が砂のランダムマップ。注意：ランダムマップはバランスが悪いことがよ"
-"くありますが、時間があれば、良いものができるまで作り直すこともできます。"
+"主要な地形が砂のランダムマップ。 注意：ランダムマップはバランスが悪いことがよ"
+"くありますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Marsh.cfg:17
@@ -1277,6 +1275,8 @@ msgid ""
 "unbalanced, but if you have time, you can regenerate them until you get a "
 "good one."
 msgstr ""
+"主要な地形が沼地のランダムマップ。 注意：ランダムマップはバランスが悪いことが"
+"よくありますが、 時間をかけて良いものができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:3
 #: data/scenarios/multiplayer/Random_Scenario_Winter.cfg:17
@@ -1289,10 +1289,13 @@ msgid ""
 "terrains.  Note: random maps are often unbalanced, but if you have time, you "
 "can regenerate them until you get a good one."
 msgstr ""
+"秋から冬の移りかわりの設定で、 主要な地形は雪が積もっているランダムマップ。 "
+"注意：ランダムマップはバランスが悪いことがよくありますが、 時間をかけて良いも"
+"のができるまで 作り直してもよいでしょう。"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:3
 msgid "Wesbowl"
-msgstr ""
+msgstr "ウェスボウル"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:6
 msgid ""
@@ -1301,6 +1304,11 @@ msgid ""
 "blunt weapons, and healers are on hand, so when units are killed, they "
 "return to that player's end zone with an injury."
 msgstr ""
+"ウェスボウルでは、プレイヤーは 他のプレイヤーの最終ゾーンに ボールを入れなけ"
+"ればならない。 しかしながら、 他のプレイヤーはあなたのユニットを攻撃すること"
+"もできる。 ウェスボウルは鈍った武器を手にしてプレイされる。 治療者が待機して"
+"いるので、 ユニットが殺された時は、 そのプレイヤーの最終ゾーンに負傷して戻っ"
+"て来る。"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:11
 msgid ""
@@ -1312,6 +1320,12 @@ msgid ""
 "#Opponent moves the balls to your endzone more times than you move them to "
 "theirs"
 msgstr ""
+"\n"
+"勝利：\n"
+"@敵がボールをあなたの最終ゾーンに持ち込むよりも多くの回数で、どちらかのボール"
+"を敵の最終ゾーンに 持ち込む。敗北:\n"
+"#あなたがボールを敵の最終ゾーンに持ち込むよりも多くの回数で、敵がボールをあな"
+"たの最終ゾーンに 持ち込む。"
 
 #: data/scenarios/multiplayer/Wesbowl.cfg:199
 #: data/scenarios/multiplayer/Wesbowl.cfg:476
@@ -1434,9 +1448,10 @@ msgid ""
 "select Recruit, and select 'OK'. You can only recruit units on castle tiles "
 "connected to the keep your leader is on."
 msgstr ""
-"戦いに入る前には、必ずユニットを雇う必要がある。 ユニットを雇うには、 ユニッ"
-"トを配置したい城のタイルを右クリック、 そして「雇う」を選択し、「OK」を押"
-"す。 リーダーが主塔に存在する城タイル上でのみ、ユニットを雇うことができる。"
+"戦いに入る前には、必ずユニットを雇う必要があるぞ。 ユニットを雇うには、 ユ"
+"ニットを配置したい城のタイルを右クリック、 そして「雇う」を選択し、「OK」を押"
+"す。 リーダーが主塔に存在する城タイル上でのみ、ユニットを雇うことができるの"
+"だ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:55
 msgid "Recruit a unit"
@@ -1444,7 +1459,7 @@ msgstr "ユニットを雇う"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:61
 msgid "Excellent! You have recruited an Elvish Fighter."
-msgstr "素晴しい！ エルフ戦士を雇いました。"
+msgstr "よろしい！ お主はエルフ戦士を雇ったぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:63
 #: data/scenarios/tutorial/Basic_Training.cfg:87
@@ -1453,11 +1468,11 @@ msgstr "素晴しい！ エルフ戦士を雇いました。"
 #: data/scenarios/tutorial/Basic_Training.cfg:170
 #: data/scenarios/tutorial/Basic_Training.cfg:194
 msgid "What do I do next?"
-msgstr "次は何をすればよいのでしょうか？"
+msgstr "次は何をすればよいのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid "How do I recruit units?"
-msgstr "ユニットはどのようにして雇うのでしょうか？"
+msgstr "ユニットはどのようにして雇うのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
 msgid ""
@@ -1467,11 +1482,11 @@ msgid ""
 "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
-"ユニットを雇うには、 ユニットを雇いたい場所の城タイル上で右クリックして、そし"
-"て「雇う」を選択する(またはカーソルをあわせてからCtrl-Rを押す)。 次に雇いたい"
-"ユニットのタイプを選択して、「OK」をクリックする。より早く行うには、「Ctrl-"
-"Shift-R」を使用することもできる。 このときは最後に雇ったのと同じタイプが雇わ"
-"れる。"
+"ユニットを雇うには、 ユニットを雇いたい場所の城タイル上で 右クリックして、 そ"
+"して「雇う」を選択する (またはカーソルをあわせてからCtrl-Rを押す)。 次に雇い"
+"たいユニットのタイプを選択して、 「OK」をクリックする。 より早く行うには、"
+"「Ctrl-Shift-R」を使用することもできる。 このときは最後に雇ったのと同じタイプ"
+"が雇われる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid ""
@@ -1493,11 +1508,11 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:66
 msgid "What's a leader?"
-msgstr "リーダーとは何ですか？"
+msgstr "リーダーとは何か？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:67
 msgid "How should I choose what kind of units to recruit?"
-msgstr "雇うユニットの種類を どうやって選ぶべきですか？"
+msgstr "雇うユニットの種類を どうやって選ぶべきか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:67
 msgid ""
@@ -1511,7 +1526,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
 msgid "What happens when I recruit a unit?"
-msgstr "ユニットを雇うと、 何が起きますか？"
+msgstr "ユニットを雇うと 何が起きるか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:68
 msgid ""
@@ -1538,11 +1553,11 @@ msgstr "ターン終了"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:85
 msgid "You have successfully ended your turn."
-msgstr "あなたはあなたのターンを無事終えました。"
+msgstr "お前は自分のターンを無事終えた。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid "How do I end my turn?"
-msgstr "どうやって 私のターンを終了しますか？"
+msgstr "どうやって 自分のターンを終了するのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:89
 msgid ""
@@ -1556,7 +1571,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
 msgid "What happens when I end my turn?"
-msgstr "私がターンを終えると何が起こるのか？"
+msgstr "自分がターンを終えると何が起こるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:90
 msgid ""
@@ -1585,7 +1600,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:98
 msgid "Move your Elvish Fighter next to Merle"
-msgstr "エルフ戦士をMerieの隣に移動させて下さい。"
+msgstr "お前のエルフ戦士を Merieの隣に 移動させるのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
@@ -1603,7 +1618,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid "How far can my Elvish Fighter move?"
-msgstr "エルフ戦士はどこまで移動できますか？"
+msgstr "エルフ戦士はどこまで移動できるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:125
 msgid ""
@@ -1636,18 +1651,18 @@ msgid ""
 "movement. Zones of control can be used to block enemies from reaching your "
 "weak and wounded units."
 msgstr ""
-"ユニットの隣接ヘクスのすべてが支配ゾーンです。 ユニットは敵の支配ゾーンを通過"
-"することはできません。 そこへ入ることができるだけです。 このとき、 そのユニッ"
-"トは残りの移動力をすべて失います。 支配ゾーンは、 敵ユニットがあなたの弱いユ"
-"ニットや、 負傷したユニットへ攻撃するのを防ぐために使用できます。"
+"ユニットの隣接ヘクスのすべてが支配ゾーンとなる。 ユニットは敵の支配ゾーンを通"
+"過することはできない。 そこへ入ることができるだけだ。 このとき、 そのユニット"
+"は残りの移動力をすべて失う。 支配ゾーンは、 敵ユニットがお前の弱いユニット"
+"や、 負傷したユニットへ攻撃するのを防ぐために使用できる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:126
 msgid "What's the zone of control?"
-msgstr "支配ゾーンとは何ですか？"
+msgstr "支配ゾーンとは何か？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid "How do I tell who is allied and who is an enemy?"
-msgstr "どのようにしてユニットが敵か味方かを知るのか？"
+msgstr "どうすればユニットが敵か味方かわかるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:127
 msgid ""
@@ -1659,12 +1674,12 @@ msgid ""
 "Colors', in Preferences, causes the color of a unit's controller is "
 "displayed as a disc below the unit."
 msgstr ""
-"あなたが操作するユニットは、 ユニット横の垂直な体力バー上に、 緑か黄か赤の円"
-"のエナジー表示を持ちます。 ユニットの移動力が一杯なら緑、 少し移動すると黄、 "
-"移動力がなくなれば赤になります。 敵ユニットにはエナジー表示がありません。 私"
-"のようなユニットは同盟ユニットで、 これらは操作できません。 同盟ユニットは青"
-"のエナジー表示を持ちます。 また、設定で「チーム色表示」 オプションをオンにし"
-"ていると、 ユニット操作者の色のついた円が、 ユニット下に表示されます。"
+"お前が操作するユニットは、 ユニット横の垂直な体力バー上に、 緑か黄か赤の球の"
+"エナジー表示が現れる。 ユニットの移動力が一杯なら緑、 少し移動すると黄、 移動"
+"力がなくなれば赤となる。 敵ユニットにはエナジー表示が出ない。 わしのようなユ"
+"ニットは同盟ユニットで、 これらは操作できない。 同盟ユニットは青のエナジー表"
+"示がされる。 また、設定で「チーム色表示」 オプションをオンにしていると、 ユ"
+"ニット操作者の色のついた球が、 ユニット下に表示される。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:133
 msgid ""
@@ -1672,22 +1687,21 @@ msgid ""
 "then select its target, which must be next to the attacking unit. You will "
 "then see the attack options box, where you must select an attack to use."
 msgstr ""
-"あなたの戦士で攻撃をする必要があります。 攻撃のためには、 ユニットを選択し、 "
-"それから攻撃目標を選択します。 目標は隣接している必要があります。 そうすれ"
-"ば、 攻撃オプションウィンドウが表示されます。 ここから、 用いる攻撃を選択して"
-"下さい。"
+"お前の戦士で攻撃をする必要がある。 攻撃するには、 ユニットを選択し、 それから"
+"攻撃目標を選択する。 目標は隣接している必要がある。 そうすれば、 攻撃オプショ"
+"ンウィンドウが表示されるので、 ここで、用いる攻撃を選択する。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:135
 msgid "Attack Merle"
-msgstr "Merleへの攻撃"
+msgstr "Merleを攻撃"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:150
 msgid "You have successfully attacked Merle."
-msgstr "あなたはMerleを攻撃しました。"
+msgstr "お前はMerleを攻撃した。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid "Can Merle retaliate from my attack?"
-msgstr "Merleは攻撃の応酬をできるのか？"
+msgstr "Merleは攻撃に応酬できるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:154
 msgid ""
@@ -1704,6 +1718,15 @@ msgid ""
 "to retaliate at all. However ranged units cannot shoot across multiple "
 "hexes; this is one of the distinctive features of Wesnoth."
 msgstr ""
+"ユニットが攻撃さると必ず、 自分の武器の一つで応酬する。 これはすなわち 攻撃側"
+"からの各一撃の後で、 防御側も一撃仕返すということだ。 これは片方の攻撃回数が"
+"つきるまで続き、 この場合その相手のユニットは 同様に攻撃回数がなくなるまで攻"
+"撃を繰り返す。 しかしながら、 どのユニットも攻撃されたのと 同じ攻撃範囲の武器"
+"を使ってのみ 応酬できる。 つまり、遠距離攻撃は遠距離攻撃でのみ反撃され、 混戦"
+"は混戦でのみ反撃される。 ほとんどのユニットは 遠距離攻撃よりも 強力な混戦攻撃"
+"を持つ。 いくつかの遠距離攻撃をもたない混戦ユニットは、 全く応酬ができない。 "
+"しかしながら、 遠距離ユニットは複数ヘクスを越えて発射できず、 これは Wesnoth"
+"の特徴の一つである。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid ""
@@ -1717,12 +1740,11 @@ msgid ""
 "combat."
 msgstr ""
 "すべての攻撃は１回の命中ごとに決められた量のダメージがあり、 １回の戦闘で決め"
-"られた回数だけ攻撃を行います。 これらの値は、 攻撃のダメージと回数と言いま"
-"す。 これらはユニット状態表の攻撃名に下や、 攻撃オプションメニューでの攻撃名"
-"に隣に表示されています。 与えることができる最大のダメージ量をすぐに知るに"
-"は、 ダメージを攻撃回数で掛けて下さい。 例えば、 私の稲妻は１回で14ダメージ"
-"で、 ４回攻撃できますので、 １回の戦闘のダメージを最大56まで与えるかもしれま"
-"せん。"
+"られた回数だけ攻撃を行う。 これらの値は、 攻撃のダメージと回数と呼ばれる。 こ"
+"れらはユニット状態表の攻撃名に下や、 攻撃オプションメニューでの攻撃名に隣に表"
+"示されている。 与えることができる最大のダメージ量をすぐに知るには、 ダメージ"
+"を攻撃回数で掛ける。 例えば、 わしの稲妻は１回で14ダメージで、 ４回攻撃できる"
+"ため、 １回の戦闘のダメージを最大56まで与えることができる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:155
 msgid "How can you tell how powerful a unit's attacks are?"
@@ -1741,7 +1763,7 @@ msgstr "戦士の攻撃が命中する回数はどれくらいか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:162
 msgid "End your turn, and wait for Merle to attack you."
-msgstr "ターンを終えて、 Merleが攻撃するのを待って下さい。"
+msgstr "自分のターンを終えて、 Merleが攻撃するのを待つのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1749,9 +1771,9 @@ msgid ""
 "it gets experience from the combat. Once a unit gains enough experience, it "
 "advances to the next level, and becomes more powerful."
 msgstr ""
-"あなたの戦士は、 Merleの攻撃に生き残りました。 戦闘で生き残ったときはいつで"
-"も、 ユニットは経験値を得ます。 ユニットが十分な経験値を得たときは、 そのユ"
-"ニットはレベルアップして、 より強力になります。"
+"お前の戦士は Merleの攻撃に耐え抜いた。 戦闘で生き残ると、 そのユニットは経験"
+"値を得る。 ユニットが十分な経験値を得たときは、 そのユニットはレベルアップし"
+"て、 より強力になるのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:172
 msgid "What's experience?"
@@ -1765,9 +1787,9 @@ msgid ""
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
 msgstr ""
-"ユニットが別のユニットと戦闘したとき、 経験値が手に入ります。 取得する量は敵"
-"のレベルによります。 敵を倒したときはさらに多くの経験値が手に入ります。 これ"
-"は敵のレベルの８倍となります。"
+"ユニットが別のユニットと戦闘したとき、 経験値が手に入る。 獲得する量は敵のレ"
+"ベルによる。 敵を倒したときはさらに多くの経験値が手に入る。 これは敵のレベル"
+"の８倍となる。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:173
 msgid "What happens when a unit advances?"
@@ -1786,11 +1808,11 @@ msgstr ""
 #: data/scenarios/tutorial/Basic_Training.cfg:179
 #: data/scenarios/tutorial/Basic_Training.cfg:181
 msgid "Move your fighter onto a village."
-msgstr "戦士を村に移動させて下さい。"
+msgstr "戦士を村の一つに移動させるのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:192
 msgid "Villages heal the units on them."
-msgstr "ユニットは村で回復します。"
+msgstr "村にいるユニットは回復するのだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
 msgid "What happens when a unit moves onto a village?"
@@ -1827,11 +1849,12 @@ msgid ""
 "Now, you must defeat Merle by reducing her to 0 HP or lower. Just attack "
 "repeatedly."
 msgstr ""
-"MerleのHPを０以下に減らして、 倒して下さい。 ただ攻撃を繰り返して下さい。"
+"MerleのHPを０以下に減らして、 彼女を倒さなければならない。 ただ攻撃を繰り返す"
+"のだ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:205
 msgid "Defeat Merle"
-msgstr "Merleを倒しました"
+msgstr "Merleを倒した"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:220
 msgid ""
@@ -1851,8 +1874,8 @@ msgid ""
 "Unfortunately, you lost, because your leader was defeated. Hopefully you "
 "have gained wisdom from my teachings anyway."
 msgstr ""
-"残念ながら、 リーダーが倒されてしまったため、 あなたの負けです。 私が教えたこ"
-"とから、 学びとってくれることを期待します。"
+"残念なことに、 リーダーが倒されてしまったため お前の負けとなった。 とにか"
+"く、 わしが教えたことから 知恵を得てくれたことを 期待しておるぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:243
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:231
@@ -1860,19 +1883,22 @@ msgid ""
 "Unfortunately, you lost, because you ran out of time. Hopefully you have "
 "gained wisdom from my teachings anyway."
 msgstr ""
+"残念なことに、 時間切れのため お前の負けとなった。 とにかく、 わしが教えたこ"
+"とから 知恵を得てくれたことを 期待しておるぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:253
 msgid "You have successfully completed the first training scenario."
-msgstr "最初の訓練の目標を達成しました。"
+msgstr "最初の訓練シナリオの目標を達成したぞ。"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:255
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:243
 msgid "Hooray!"
-msgstr "やった！"
+msgstr "やった〜！"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:257
 msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr ""
+"どうやって、 シナリオの達成方法を知るのか？ あなたが常に教えてくれるのか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:257
 msgid ""
@@ -1900,7 +1926,7 @@ msgstr ""
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
 msgid "Do you want to review any of the skills learned in this scenario?"
-msgstr "このシナリオで学んだことを、 もう一度見ますか？"
+msgstr "このシナリオで学んだことを、 もう一度見直したいか？"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:266
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:254
@@ -1910,7 +1936,7 @@ msgstr "はい"
 #: data/scenarios/tutorial/Basic_Training.cfg:268
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:256
 msgid "I'm done reviewing skills!"
-msgstr "確認終了！"
+msgstr "能力の確認終了！"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:285
 msgid ""
@@ -1918,8 +1944,8 @@ msgid ""
 "over. We will now proceed to the next scenario, in which you will fight me "
 "in a mock battle."
 msgstr ""
-"最初の目標は達成しましたが、 訓練が終わったわけではありません。 次のシナリオ"
-"へ進んで、 模擬戦で私を倒して下さい。"
+"最初の目標は達成したが、 訓練が終わったわけではない。 次のシナリオへ進んで、 "
+"模擬戦でわしを倒すのだ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:3
 msgid "Traits and Specialties"
@@ -1929,7 +1955,7 @@ msgstr ""
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr "ここでは、 もう少し難しい訓練を行います。 模擬戦で私を倒して下さい。"
+msgstr "ここでは、 もう少し難しい訓練を行う。 模擬戦でわしを倒さねばならぬ。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:45
 msgid ""
@@ -1959,7 +1985,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:77
 msgid "You have successfully recalled your Elvish Fighter."
-msgstr "エルフ戦士を召還しました。"
+msgstr "エルフ戦士を召還した。"
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:79
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:93
@@ -8190,7 +8216,7 @@ msgstr "ゲームを終了します"
 
 #: src/titlescreen.cpp:230
 msgid "More"
-msgstr "続く"
+msgstr "次"
 
 #: src/titlescreen.cpp:240
 msgid "-- The Tome of Wesnoth"
