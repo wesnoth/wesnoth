@@ -280,7 +280,7 @@ battle_stats evaluate_battle_stats(
 
 	const int base_damage = d->second.damage_against(attack);
 	const int modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
-	res.damage_defender_takes = ((d->second.damage_against(attack) * (100 + modifier))/100)
+	res.damage_defender_takes = ((base_damage * (100 + modifier))/100)
 			                    * (charge ? 2 : 1) * (backstab ? 2 : 1);
 
 	if(under_leadership(units,attacker))

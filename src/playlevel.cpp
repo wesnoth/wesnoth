@@ -126,7 +126,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	}
 
 	const std::string& music = level->values["music"];
-	if(!music.empty()) {
+	if(music != "") {
 		sound::play_music(music);
 	}
 

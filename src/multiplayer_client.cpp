@@ -267,7 +267,8 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 		network_game_manager game_manager;
     
 		std::map<int,int> choice_map;
-		std::vector<std::string> choices;
+		std::vector<std::string> choices, race_names;
+		std::vector<bool> changes_allowed;
 		choices.push_back(string_table["observer"]);
     
 		std::vector<config*>& sides_list = sides.children["side"];
@@ -279,6 +280,9 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				choices.push_back((*s)->values["name"] + " - " +
 				                  (*s)->values["type"]);
 			}
+
+			race_names.push_back((*s)->values["name"]);
+			changes_allowed.push_back((*s)->values["allow_changes"] != "no");
 		}
     
 		const int choice = gui::show_dialog(disp,NULL,"","Choose side:",
@@ -289,6 +293,9 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
     
 		const int team_num = choice_map[choice];
 		const bool observer = choice == 0;
+
+		const std::string& default_race = race_names[team_num-1];
+		const bool allow_changes = changes_allowed[team_num-1];
     
 		//send our choice of team to the server
 		if(!observer) {
@@ -306,14 +313,24 @@ void play_multiplayer_client(display& disp, game_data& units_data, config& cfg,
 				return;
 			}
 
+			size_t choice = 0;
+
 			std::vector<std::string> choices;
 			for(std::vector<config*>::const_iterator side =
 			    possible_sides.begin(); side != possible_sides.end(); ++side) {
 				choices.push_back((**side)["name"]);
+
+				if(choices.back() == default_race)
+					choice = side - possible_sides.begin();
 			}
 
-			const size_t choice = size_t(gui::show_dialog(disp,NULL,"",
-			     string_table["client_choose_side"],gui::OK_ONLY,&choices));
+			//if the client is allowed to choose their team, instead of having
+			//it set by the server, do that here.
+			if(allow_changes) {
+				choice = size_t(gui::show_dialog(disp,NULL,"",
+				     string_table["client_choose_side"],gui::OK_ONLY,&choices));
+			}
+
 			assert(choice < possible_sides.size());
 
 			const config& chosen_side = *possible_sides[choice];
