@@ -306,7 +306,7 @@ Units cannot be killed by poison alone. The poison will not reduce it below 1 HP
 
 		if(map.is_village(mouseover)) {
 			const int owner = village_owner(mouseover,teams)+1;
-			if(owner == 0) {
+			if(owner == 0 || current_team.fogged(mouseover.x,mouseover.y)) {
 				str << _("Village");
 			} else if(owner == current_side) {
 				str << _("Owned village");
