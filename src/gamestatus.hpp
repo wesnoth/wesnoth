@@ -134,5 +134,7 @@ void load_game(game_data& data, const std::string& name, game_state& state);
 //throws gamestatus::save_game_failed
 void save_game(const game_state& state);
 
+//function to delete a save
+void delete_game(const std::string& name);
 
 #endif

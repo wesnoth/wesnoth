@@ -14,10 +14,12 @@
 #include "dialogs.hpp"
 #include "font.hpp"
 #include "language.hpp"
+#include "preferences.hpp"
 #include "replay.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"
 
+#include <cstdio>
 #include <map>
 #include <sstream>
 #include <string>
@@ -125,9 +127,65 @@ int get_save_name(display & disp,const std::string& caption, const std::string& 
 	return res;
 }
 
+//a class to handle deleting a saved game
+namespace {
+
+class delete_save : public gui::dialog_button_action
+{
+public:
+	delete_save(display& disp, std::vector<save_info>& saves) : disp_(disp), saves_(saves) {}
+private:
+	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
+
+	display& disp_;
+	std::vector<save_info>& saves_;
+};
+
+gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection)
+{
+	const size_t index = size_t(menu_selection);
+	if(index < saves_.size()) {
+
+		//see if we should ask the user for deletion confirmation
+		if(preferences::ask_delete_saves()) {
+			std::vector<gui::check_item> options;
+			options.push_back(gui::check_item(string_table["dont_ask_again"],false));
+
+			const int res = gui::show_dialog(disp_,NULL,"",string_table["really_delete_save"],gui::YES_NO,
+			                                 NULL,NULL,"",NULL,NULL,&options);
+
+			//see if the user doesn't want to be asked this again
+			assert(options.empty() == false);
+			if(options.front().checked) {
+				preferences::set_ask_delete_saves(false);
+			}
+
+			if(res != 0) {
+				return gui::dialog_button_action::NO_EFFECT;
+			}
+		}
+
+		//delete the file
+		delete_game(saves_[index].name);
+
+		//remove it from the list of saves
+		saves_.erase(saves_.begin() + index);
+		return gui::dialog_button_action::DELETE_ITEM;
+	} else {
+		return gui::dialog_button_action::NO_EFFECT;
+	}
+}
+
+} //end anon namespace
+
 std::string load_game_dialog(display& disp, bool* show_replay)
 {
-	const std::vector<save_info>& games = get_saves_list();
+	std::vector<save_info> games = get_saves_list();
+
+	delete_save save_deleter(disp,games);
+	gui::dialog_button delete_button(&save_deleter,string_table["delete_save"]);
+	std::vector<gui::dialog_button> buttons;
+	buttons.push_back(delete_button);
 
 	if(games.empty()) {
 		gui::show_dialog(disp,NULL,
@@ -162,7 +220,7 @@ std::string load_game_dialog(display& disp, bool* show_replay)
 	const int res = gui::show_dialog(disp,NULL,
 					 string_table["load_game_heading"],
 					 string_table["load_game_message"],
-			         gui::OK_CANCEL,&items,NULL,"",NULL,NULL,&options);
+			         gui::OK_CANCEL,&items,NULL,"",NULL,NULL,&options,-1,-1,NULL,&buttons);
 
 	if(res == -1)
 		return "";

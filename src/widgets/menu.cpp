@@ -143,6 +143,22 @@ void menu::change_item(int pos1, int pos2,std::string str)
 	items_[pos1][pos2] = str;
 }
 
+void menu::erase_item(size_t index)
+{
+	if(index < items_.size()) {
+		clear_item(items_.size()-1);
+		items_.erase(items_.begin() + index);
+		itemRects_.clear();
+		if(size_t(selected_) >= items_.size()) {
+			selected_ = int(items_.size()-1);
+		}
+
+		calculate_position();
+
+		drawn_ = false;
+	}
+}
+
 size_t menu::max_items_onscreen() const
 {
 	if(max_items_ != -1) {
@@ -176,7 +192,9 @@ void menu::calculate_position()
 	if(selected_ < first_item_on_screen_) {
 		first_item_on_screen_ = selected_;
 		itemRects_.clear();
-	} else if(selected_ >= first_item_on_screen_ + int(max_items_onscreen())) {
+	}
+	
+	if(selected_ >= first_item_on_screen_ + int(max_items_onscreen())) {
 		first_item_on_screen_ = selected_ - (max_items_onscreen() - 1);
 		itemRects_.clear();
 	}
@@ -438,7 +456,7 @@ const std::vector<int>& menu::column_widths() const
 	return column_widths_;
 }
 
-void menu::draw_item(int item)
+void menu::clear_item(int item)
 {
 	SDL_Rect rect = get_item_rect(item);
 	if(rect.w == 0) {
@@ -452,6 +470,16 @@ void menu::draw_item(int item)
 		SDL_BlitSurface(buffer_,&srcrect,
 		                display_->video().getSurface(),&dstrect);
 	}
+}
+
+void menu::draw_item(int item)
+{
+	SDL_Rect rect = get_item_rect(item);
+	if(rect.w == 0) {
+		return;
+	}
+
+	clear_item(item);
 
 	gui::draw_solid_tinted_rectangle(x_,rect.y,width()-scrollbar_.get_width(),rect.h,
 	                                 item == selected_ ? 150:0,0,0,

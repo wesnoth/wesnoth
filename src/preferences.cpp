@@ -350,6 +350,16 @@ bool show_side_colours()
 	return prefs["show_side_colours"] == "yes";
 }
 
+void set_ask_delete_saves(bool value)
+{
+	prefs["ask_delete"] = value ? "yes" : "no";
+}
+
+bool ask_delete_saves()
+{
+	return prefs["ask_delete"] != "no";
+}
+
 std::string client_type()
 {
 	if(prefs["client_type"] == "ai")

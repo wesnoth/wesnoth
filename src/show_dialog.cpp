@@ -645,7 +645,13 @@ int show_dialog(display& disp, SDL_Surface* image,
 				const size_t options_size = options == NULL ? 0 : options->size();
 				assert(action_buttons != NULL && action_buttons->size() > n - options_size);
 
-				(*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
+				const dialog_button_action::RESULT res = (*action_buttons)[n - options_size].handler->button_pressed(menu_.selection());
+				if(res == dialog_button_action::DELETE_ITEM) {
+					menu_.erase_item(menu_.selection());
+					if(menu_.nitems() == 0) {
+						return -1;
+					}
+				}
 			}
 		}
 

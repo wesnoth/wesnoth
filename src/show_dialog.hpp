@@ -63,7 +63,9 @@ class dialog_button_action
 public:
 	virtual ~dialog_button_action() {}
 
-	virtual void button_pressed(int menu_selection) = 0;
+	enum RESULT { DELETE_ITEM, NO_EFFECT };
+
+	virtual RESULT button_pressed(int menu_selection) = 0;
 };
 
 struct dialog_button

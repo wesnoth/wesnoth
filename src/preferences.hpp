@@ -79,6 +79,9 @@ namespace preferences {
 	void set_show_side_colours(bool value);
 	bool show_side_colours();
 
+	void set_ask_delete_saves(bool value);
+	bool ask_delete_saves();
+
 	std::string client_type();
 
 	void set_theme(const std::string& theme);

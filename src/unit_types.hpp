@@ -189,6 +189,8 @@ public:
 
 	const std::vector<config*>& possible_traits() const;
 
+	unit_race::GENDER gender() const;
+
 private:
 	const config& cfg_;
 
@@ -210,6 +212,8 @@ private:
 	unit_movement_type movementType_;
 
 	const std::vector<config*>& possibleTraits_;
+
+	unit_race::GENDER gender_;
 };
 
 struct game_data

@@ -258,6 +258,15 @@ bool save_game_exists(const std::string& name)
 	return file_exists(get_saves_dir() + "/" + fname);
 }
 
+void delete_game(const std::string& name)
+{
+	std::string modified_name = name;
+	std::replace(modified_name.begin(),modified_name.end(),' ','_');
+
+	remove((get_saves_dir() + "/" + name).c_str());
+	remove((get_saves_dir() + "/" + modified_name).c_str());
+}
+
 void load_game(game_data& data, const std::string& name, game_state& state)
 {
 	log_scope("load_game");

@@ -33,6 +33,10 @@ public:
 	
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,std::string str);
+
+	void erase_item(size_t index);
+
+	size_t nitems() const { return items_.size(); }
 	
 	int process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	            bool page_up, bool page_down, int select_item=-1);
@@ -75,6 +79,7 @@ private:
 
 	const std::vector<int>& column_widths() const;
 	void draw_item(int item);
+	void clear_item(int item);
 	void draw();
 	int hit(int x, int y) const;
 

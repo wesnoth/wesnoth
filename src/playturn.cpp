@@ -422,13 +422,13 @@ public:
 		: disp_(disp), stats_(stats)
 	{}
 
-	void button_pressed(int selection);
+	RESULT button_pressed(int selection);
 private:
 	display& disp_;
 	std::vector<battle_stats>& stats_;
 };
 
-void attack_calculations_displayer::button_pressed(int selection)
+gui::dialog_button_action::RESULT attack_calculations_displayer::button_pressed(int selection)
 {
 	const size_t index = size_t(selection);
 	if(index < stats_.size()) {
@@ -464,6 +464,8 @@ void attack_calculations_displayer::button_pressed(int selection)
 
 		gui::show_dialog(disp_,NULL,"",string_table["damage_calculations"],gui::OK_ONLY,&calcs);
 	}
+
+	return NO_EFFECT;
 }
 
 }
@@ -1466,6 +1468,59 @@ void turn_info::repeat_recruit()
 		do_recruit(last_recruit_);
 }
 
+//a class to handle deleting an item from the recall list
+namespace {
+
+class delete_recall_unit : public gui::dialog_button_action
+{
+public:
+	delete_recall_unit(display& disp, std::vector<unit>& units) : disp_(disp), units_(units) {}
+private:
+	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
+
+	display& disp_;
+	std::vector<unit>& units_;
+};
+
+gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
+{
+	const size_t index = size_t(menu_selection);
+	if(index < units_.size()) {
+		const unit& u = units_[index];
+
+		//if the unit is of level > 1, or is close to advancing, we warn the player
+		//about it
+		std::string message = "";
+		if(u.type().level() > 1) {
+			message = string_table["really_delete_veteran_unit"];
+		} else if(u.experience() > u.max_experience()/2) {
+			message = string_table["really_delete_xp_unit"];
+		}
+
+		if(message != "") {
+			const std::string replace_str("$noun");
+			const std::string::iterator itor = std::search(message.begin(),message.end(),replace_str.begin(),replace_str.end());
+			if(itor != message.end()) {
+				const std::string::size_type index = itor - message.begin();
+				message.erase(itor,itor+replace_str.size());
+				message.insert(index,string_table[u.type().gender() == unit_race::MALE ? "noun_male" : "noun_female"]);
+			}
+
+			const int res = gui::show_dialog(disp_,NULL,"",message,gui::YES_NO);
+			if(res != 0) {
+				return gui::dialog_button_action::NO_EFFECT;
+			}
+		}
+
+		units_.erase(units_.begin() + index);
+		return gui::dialog_button_action::DELETE_ITEM;
+	} else {
+		return gui::dialog_button_action::NO_EFFECT;
+	}
+}
+
+} //end anon namespace
+
 void turn_info::recall()
 {
 	if(browse_)
@@ -1511,10 +1566,16 @@ void turn_info::recall()
 			options.push_back(option.str());
 		}
 
+		delete_recall_unit recall_deleter(gui_,state_of_game_.available_units);
+		gui::dialog_button delete_button(&recall_deleter,string_table["delete_unit"]);
+		std::vector<gui::dialog_button> buttons;
+		buttons.push_back(delete_button);
+
 		const int res = gui::show_dialog(gui_,NULL,"",
 		                                 string_table["select_unit"] + ":\n",
 		                                 gui::OK_CANCEL,&options,
-		                                 &state_of_game_.available_units);
+		                                 &state_of_game_.available_units,"",NULL,
+										 NULL,NULL,-1,-1,NULL,&buttons);
 		if(res >= 0) {
 			const std::string err = recruit_unit(map_,team_num_,
 			                       units_,state_of_game_.available_units[res],
