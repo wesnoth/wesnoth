@@ -1,156 +1,176 @@
 
 
-Manual f√∂r Kampen om Wesnoth
+MANUAL F÷R KAMPEN OM WESNOTH
 
-Om du inte har spelat Kampen om Wesnoth f√∂rut, s√• vill du kanske f√∂rst l√§sa guiden GettingStarted.
-
-
-Kontroller:
-
- Piltangenter:   Scrollar slagf√§ltet
- V√§nsterklick:   V√§ljer trupp, flyttar trupp
- H√∂gerklick:     Huvudmenyn, avbryt
- Mittenklick:    Centrerar sk√§rmen till pekarpositionen
- Escape:         Avslutar spelet eller st√§nger menyn
- z:              Zoomar in
- x:              Zoomar ut
- c:              Standardzoomning
- u:              √Öngra sista f√∂rflyttningen (om den inte p√•verkat spelet)
- r:              G√∂r om √•ngrad f√∂rflyttning
- n:              Stegar igenom de trupper som fortfarande kan flytta
- 1-7:            Visar hur l√•ngt en trupp kan flytta p√• givet antal drag
- mellanslag:     Avslutar vald trupps tur och g√•r vidare till n√§sta trupp som fortfarande kan flytta
- l:              Centrerar runt ledaren
- ctrl-f:         V√§xlar mellan fullsk√§rmsl√§ge och f√∂nsterl√§ge
- ctrl-r:         Tar fram rekryteringsmenyn
- ctrl-shift-r:   Upprepar senaste rekryteringen
- ctrl-c:         √Öterkallar trupp
- ctrl-a:         V√§xlar mellan accelererad och normal spelhastighet
- d:              Visar beskrivningen f√∂r vald trupp
- ctrl-d:         Visar f√∂rsvarsstyrkan mot attacker f√∂r vald trupp
- ctrl-t:         Visar hur vald trupp beter sig i olika terr√§nger
- ctrl-s          Sparar spelet
- ctrl-l:         √ñppna sparat spel
+Om du inte har spelat Kampen om Wesnoth fˆrut, sÂ vill du kanske fˆrst l‰sa guiden GettingStarted (http://wesnoth.slack.it/?GettingStarted) .
 
 
-Sf√§rer
+KONTROLLER
 
-Ovanf√∂r energim√§taren som visas brevid alla dina trupper finns en sf√§r. Den sf√§ren √§r:
-
-    * gr√∂n om du kontrollerar truppen och den inte har flyttats detta drag
-    * gul om du kontrollerar truppen, du har flyttat den detta drag, men den kan flytta mer
-    * r√∂d om du kontrollerar truppen, men redan anv√§nt all dess f√∂rflyttning detta drag
-    * bl√• om truppen √§r allierad och du inte kan flytta den
-
-Fiendetrupper har ingen sf√§r ovanf√∂r sina energim√§tare. (I √§ldre versioner < 0.5.2 fanns d√§r en svart sf√§r)
-
-
-Beskrivning
-
-Spelet √§r en serie av slag, ofta kallade scenarier. Varje scenario st√§ller dina trupper mot motst√•ndartrupper. Varje sida b√∂rjar med en ledare i ett k√§rntorn.
-
-
-Guld
-
-Varje sida f√•r lite guld att b√∂rja med, och f√•r 2 guldstycken per drag, plus ett guldstycke f√∂r varje by sidan kontrollerar.
-
-Alla trupper kr√§ver underh√•ll. Underh√•llet √§r vanligtvis lika med truppens niv√• (men se 'Lojal' under karakt√§rsdrag nedan). Trupper som inte √§r √•terkallade eller rekryterade - d.v.s. ledare eller de som g√•tt med frivilligt - kr√§ver inget underh√•ll. Underh√•ll beh√∂ver endast betalas om den sammanlagda underh√•llskostnaden √§r st√∂rre √§n antalet byar som den sidan kontrollerar. Det utbetalda underh√•llet √§r mellanskillnaden mellan antalet byar och underh√•llskostnaden. S√•, formeln f√∂r att avg√∂ra inkomsten per drag √§r
-
- 2 + byar - maximum(0, underh√•ll - byar),
-
-d√§r underh√•llet √§r lika med summan av niv√•erna p√• alla trupper som blivit √•terkallade eller rekryterade.
-
-
-Rekrytering och √•terkallning
-
-Guld kan anv√§ndas f√∂r att rekrytera trupper s√• l√§nge ledaren √§r i ett k√§rntorn och det finns √•tminstone en ledig ruta i samma borg. H√∂gerklicka och v√§lj "Rekrytera" f√∂r att rekrytera nya trupper.
-
-N√§r du klarat av ett scenario, s√• kommer alla √∂verlevande trupper vara tillg√§ngliga i n√§sta scenario. H√∂gerklicka och v√§lj "√Öterkalla" f√∂r att omrekrytera trupper fr√•n tidigare scenarier. √Öterkallandet av en trupp kostar 20 guldstycken.
-
-Genom att markera en ledig ruta i borgen innan du v√§ljer "Rekrytera", kan du v√§lja var den rekryterade truppen hamnar, detta fungerar f√∂r b√•de rekrytering och √•terkallning.
-
-Du kan inte flytta en trupp samma drag som du rekryterat eller √•terkallat den.
+F1:             Visar hj‰lp fˆr Kampen om Wesnoth
+Piltangenter:   Scrollar slagf‰ltet
+V‰nsterklick:   V‰ljer trupp, flyttar trupp
+Hˆgerklick:     Huvudmenyn, avbryt
+Mittenklick:    Centrerar sk‰rmen till pekarpositionen
+Escape:         Avslutar spelet eller st‰nger menyn
+z:              Zoomar in
+x:              Zoomar ut
+c:              Standardzoomning
+u:              ≈ngra sista fˆrflyttningen (om den inte pÂverkat spelet)
+r:              Gˆr om Ângrad fˆrflyttning
+n:              Stegar igenom de trupper som fortfarande kan flytta
+1-7:            Visar hur lÂngt en trupp kan flytta pÂ givet antal drag
+ctrl-v:         Visar fiendens fˆrflyttning (vart en fiende kan flytta till n‰sta drag)
+mellanslag:     Avslutar vald trupps tur och gÂr vidare till n‰sta trupp som fortfarande kan flytta
+l:              Centrerar runt ledaren
+ctrl-f:         V‰xlar mellan fullsk‰rmsl‰ge och fˆnsterl‰ge
+ctrl-r:         Tar fram rekryteringsmenyn
+ctrl-shift-r:   Upprepar senaste rekryteringen
+alt-r:          ≈terkallar trupp
+ctrl-a:         V‰xlar mellan accelererad och normal spelhastighet
+d:              Visar beskrivningen fˆr vald trupp
+ctrl-d:         Visar fˆrsvarsstyrkan mot attacker fˆr vald trupp
+ctrl-s          Sparar spelet
+ctrl-l:         ÷ppna sparat spel
 
 
-Truppslagens egenskaper
+SFƒRER
+
+Ovanfˆr energim‰taren som visas brevid alla dina trupper finns en sf‰r. Den sf‰ren ‰r:
+
+  * grˆn om du kontrollerar truppen och den inte har flyttats detta drag
+  * gul om du kontrollerar truppen, du har flyttat den detta drag, men den kan flytta mer
+  * rˆd om du kontrollerar truppen, men redan anv‰nt all dess fˆrflyttning detta drag
+  * blÂ om truppen ‰r allierad och du inte kan flytta den
+
+Fiendetrupper har ingen sf‰r ovanfˆr sina energim‰tare. (I ‰ldre versioner < 0.5.2 fanns d‰r en svart sf‰r)
+
+
+BESKRIVNING
+
+Spelet ‰r en serie av slag, ofta kallade scenarier. Varje scenario st‰ller dina trupper mot motstÂndartrupper. Varje sida bˆrjar med en ledare i ett k‰rntorn.
+
+
+GULD
+
+Varje sida fÂr lite guld att bˆrja med, och fÂr 2 guldstycken per drag, plus ett guldstycke fˆr varje by sidan kontrollerar.
+
+Alla trupper kr‰ver underhÂll. UnderhÂllet ‰r vanligtvis lika med truppens nivÂ (men se 'Lojal' under karakt‰rsdrag nedan). Trupper som inte ‰r Âterkallade eller rekryterade - d.v.s. ledare eller de som gÂtt med frivilligt - kr‰ver inget underhÂll. UnderhÂll behˆver endast betalas om den sammanlagda underhÂllskostnaden ‰r stˆrre ‰n antalet byar som den sidan kontrollerar. Det utbetalda underhÂllet ‰r mellanskillnaden mellan antalet byar och underhÂllskostnaden. SÂ, formeln fˆr att avgˆra inkomsten per drag ‰r
+
+  2 + byar - maximum(0, underhÂll - byar),
+
+d‰r underhÂllet ‰r lika med summan av nivÂerna pÂ alla trupper som blivit Âterkallade eller rekryterade.
+
+
+REKRYTERING OCH ≈TERKALLNING
+
+Guld kan anv‰ndas fˆr att rekrytera trupper sÂ l‰nge ledaren ‰r i ett k‰rntorn och det finns Âtminstone en ledig ruta i samma borg. Hˆgerklicka och v‰lj "Rekrytera" fˆr att rekrytera nya trupper. N‰r du klarat av ett scenario, sÂ kommer alla ˆverlevande trupper vara tillg‰ngliga i n‰sta scenario. Hˆgerklicka och v‰lj "≈terkalla" fˆr att omrekrytera trupper frÂn tidigare scenarier. ≈terkallandet av en trupp kostar 20 guldstycken. Genom att markera en ledig ruta i borgen innan du v‰ljer "Rekrytera", kan du v‰lja var den rekryterade truppen hamnar, detta fungerar fˆr bÂde rekrytering och Âterkallning.
+
+Du kan inte flytta en trupp samma drag som du rekryterat eller Âterkallat den.
+
+
+TRUPPSLAGENS EGENSKAPER
 
 Varje truppslags egenskaper finns beskrivna under "Truppbeskrivning"  i spelet.
 
 
-Karakt√§rsdrag
+KARAKTƒRSDRAG
 
-Trupperna har drag som avspeglar deras karakt√§r. Karakt√§rsdragen delas ut slumpm√§ssigt n√§r trupperna skapas. Varje trupp f√•r tv√• karakt√§rsdrag. De olika karakt√§rsdragen √§r f√∂ljande:
+Trupperna har drag som avspeglar deras karakt‰r. Karakt‰rsdragen delas ut slumpm‰ssigt n‰r trupperna skapas. Varje trupp fÂr tvÂ karakt‰rsdrag. De olika karakt‰rsdragen ‰r fˆljande:
 
- Lojal:         Truppen kr√§ver aldrig mer underh√•ll √§n ett guldstycke.
- Stark:         Truppen g√∂r mer skada i n√§rstrid och har lite b√§ttre h√§lsa.
- Snabb:         Truppen f√∂rflyttar sig l√§ngre varje drag men har lite s√§mre h√§lsa.
- Strykt√•lig:    Truppen har b√§ttre h√§lsa.
- Intelligent:   Det kr√§vs f√§rre erfarenhetspo√§ng f√∂r att truppen ska befordras till n√§sta niv√•.
-
-
-F√∂rflyttning
-
-N√§r du klickar p√• en trupp, s√• blir de rutor dit truppen kan flytta ljusare √§n de andra, som blir skuggade. Klicka p√• den ruta du vill flytta truppen till. Om du flyttar in i en by som inte √§gs av dig s√• tar du √∂ver den. Klickar du p√• en ruta som √§r utom r√§ckh√•ll f√∂r truppen samma drag, s√• kommer truppen att f√∂rs√∂ka g√• dit automatiskt de f√∂ljande dragen. Du kan l√§tt avbryta den automatiska flyttningen genom att klicka p√• truppen och ge den andra order.
-
-Du f√•r inte passera genom de rutor som omger en fiende (deras kontrollzon) utan att stanna.
+  Lojal:         Truppen kr‰ver aldrig mer underhÂll ‰n ett guldstycke.
+  Stark:         Truppen gˆr mer skada i n‰rstrid och har lite b‰ttre h‰lsa.
+  Snabb:         Truppen fˆrflyttar sig l‰ngre varje drag men har lite s‰mre h‰lsa.
+  StryktÂlig:    Truppen har b‰ttre h‰lsa.
+  Intelligent:   Det kr‰vs f‰rre erfarenhetspo‰ng fˆr att truppen ska befordras till n‰sta nivÂ.
 
 
-Strid
+F÷RFLYTTNING
 
-Om du flyttar intill en fiendetrupp kan du attackera den. Klicka p√• din trupp som st√•r intill en fiendetrupp och klicka p√• fiendetruppen du vill attackera. Alla trupper har ett eller flera vapen de kan attackera med. Vissa vapen, som sv√§rd, √§r n√§rstridsvapen, och n√•gra vapen, som pilb√•gar, √§r distansvapen.
+N‰r du klickar pÂ en trupp, sÂ blir de rutor dit truppen kan flytta ljusare ‰n de andra, som blir skuggade. Klicka pÂ den ruta du vill flytta truppen till. Om du flyttar in i en by som inte ‰gs av dig sÂ tar du ˆver den. Klickar du pÂ en ruta som ‰r utom r‰ckhÂll fˆr truppen samma drag, sÂ kommer truppen att fˆrsˆka gÂ dit automatiskt de fˆljande dragen. Du kan l‰tt avbryta den automatiska flyttningen genom att klicka pÂ truppen och ge den andra order.
 
-Om du attackerar med ett n√§rstridsvapen s√• kommer fienden kunna sl√• tillbaka mot dig med sitt n√§rstridsvapen. Om du attackerar med ett distansvapen kommer fienden kunna attackera tillbaka med sitt distansvapen, om han/hon har n√•got.
-
-Olika vapen g√∂r olika mycket skada och ger olika antal utfall. T ex g√∂r en alvkrigare 5 skadepo√§ng med sitt sv√§rd varje g√•ng det tr√§ffar, och kan sl√• fyra g√•nger i varje attack. Detta skrivs vanligtvis 5-4.
-
-Alla truppers risk att bli tr√§ffade avg√∂rs av terr√§ngen de st√•r p√•. De flesta trupper i borgar och byar l√∂per mindre risk att bli tr√§ffade. Alver l√∂per liten risk att bli tr√§ffade i skogen.
+Du fÂr inte passera genom de rutor som omger en fiende (deras kontrollzon) utan att stanna.
 
 
-Livs√•sk√•dning
+STRID
 
-Alla trupper f√∂ljer en livs√•sk√•dning: lagenlig, neutral eller kaotisk. Deras livs√•sk√•dning p√•verkar hur de presterar under olika tider p√• dygnet. F√∂ljande tabell illustrerar hur de olika tiderna p√• dygnet skiljer sig:
+Om du flyttar intill en fiendetrupp kan du anfalla den. Klicka pÂ din trupp som stÂr intill en fiendetrupp och klicka pÂ fiendetruppen du vill anfalla. Alla trupper har ett eller flera vapen de kan attackera med. Vissa vapen, som sv‰rd, ‰r n‰rstridsvapen, och nÂgra vapen, som pilbÂgar, ‰r distansvapen.
 
- | drag | tid p√• dygnet |
- ------------------------
- |   1  |    gryning    |
- |   2  |    dag        |
- |   3  |    dag        |
- |   4  |    skymning   |
- |   5  |    natt       |
- |   6  |    natt       |
+Om du attackerar med ett n‰rstridsvapen sÂ kommer fienden kunna slÂ tillbaka mot dig med sitt n‰rstridsvapen. Om du attackerar med ett distansvapen kommer fienden kunna attackera tillbaka med sitt distansvapen, om han/hon har nÂgot.
 
-Lagenliga trupper g√∂r 25% mer skada p√• dagen och 25% mindre skada p√• natten. Kaotiska trupper g√∂r 25% mer skada p√• natten och 25% mindre skada p√• dagen. Neutrala trupper p√•verkas inte av dygnets v√§xlingar. L√§gg ocks√• m√§rke till att i spelet s√• delas dag upp i F√∂rmiddag och Eftermiddag, medan natt delas upp i F√∂rsta och Andra vakten.
+Olika vapen gˆr olika mycket skada och ger olika antal utfall. T ex gˆr en alvkrigare 5 skadepo‰ng med sitt sv‰rd varje gÂng det tr‰ffar, och kan slÂ fyra gÂnger i varje attack. Detta skrivs vanligtvis 5-4.
+
+Alla truppers risk att bli tr‰ffade avgˆrs av terr‰ngen de stÂr pÂ. T ex sÂ lˆper de flesta trupper i borgar och byar mindre risk att bli tr‰ffade, alver lˆper liten risk att bli tr‰ffade i skogen, etc. Fˆr att se hur v‰l en trupp kan fˆrsvara sig i olika sorters terr‰ng, sÂ v‰lj truppen genom att klicka pÂ den, och flytta sedan pekaren till den terr‰ng du vill undersˆka, och truppens fˆrsvarsprocent visas i ˆvre hˆgra hˆrnet.
 
 
-L√§kande
+LIVS≈SK≈DNING
 
-Skadade trupper som st√•r i byar kommer att √•terf√• √•tta h√§lsopo√§ng varje drag. Skadade trupper som st√•r intill en v√§nligt sinnad trupp med antingen f√∂rm√•gan "v√•rda" eller "bota" kommer ocks√• att bli friskare. Trupper intill en eller flera trupper med f√∂rm√•gan "v√•rda" kan √•terf√• max fyra h√§lsopo√§ng per drag, och max √•tta h√§lsopo√§ng per drag om truppen st√•r intill en eller flera trupper med f√∂rm√•gan "bota". Men ju fler trupper som st√•r intill en trupp som kan hela desto mindre helas varje enskild trupp. En trupp kan aldrig √•terf√• mer √§n 8 h√§lsopo√§ng per drag, och ett troll som st√•r i en by √•terf√•r s√•lunda endast 8 h√§lsopo√§ng per drag, inte 16. En trupp som st√•r i en by f√•r dessutom inte n√•gra extra h√§lsopo√§ng fr√•n en l√§kande trupp bredvid den.
+Alla trupper fˆljer en livsÂskÂdning: lagenlig, neutral eller kaotisk. Deras livsÂskÂdning pÂverkar hur de presterar under olika tider pÂ dygnet. Fˆljande tabell illustrerar hur de olika tiderna pÂ dygnet skiljer sig:
 
-"V√•rda" hindrar gift fr√•n att g√∂ra skada medan "botar" avgiftar truppen. Truppen √•terf√•r inga h√§lsopo√§ng samma drag som den blir avgiftad.
+| drag | tid pÂ dygnet |
+------------------------
+|   1  |    gryning    |
+|   2  |    dag        |
+|   3  |    dag        |
+|   4  |    skymning   |
+|   5  |    natt       |
+|   6  |    natt       |
+
+Lagenliga trupper gˆr 25% mer skada pÂ dagen och 25% mindre skada pÂ natten. Kaotiska trupper gˆr 25% mer skada pÂ natten och 25% mindre skada pÂ dagen. Neutrala trupper pÂverkas inte av dygnets v‰xlingar. L‰gg ocksÂ m‰rke till att i spelet sÂ delas dag upp i Fˆrmiddag och Eftermiddag, medan natt delas upp i Fˆrsta och Andra vakten, vilket visas av solens och mÂnens l‰ge pÂ bilden som visar vilken tid pÂ dygnet det ‰r.
 
 
-Erfarenhet
+LƒKANDE
 
-Trupper f√•r erfarenhet av att strida, och efter att ha f√•tt tillr√§ckligt med erfarenhet kommer truppen att befordras till en h√∂gre niv√• och bli m√§ktigare.
+Skadade trupper som stÂr i byar kommer att ÂterfÂ Âtta h‰lsopo‰ng varje drag. Skadade trupper som stÂr intill en v‰nligt sinnad trupp med antingen fˆrmÂgan "vÂrdar" eller "botar" kommer ocksÂ att bli friskare. En trupp som inte flyttar eller strider under ett drag 'vilar' och ÂterfÂr tvÂ h‰lsopo‰ng. Dessa h‰lsopo‰ng l‰ggs till de h‰lsopo‰ng som truppen eventuellt ÂterfÂr genom l‰kande eller regenerering.
+
+En trupp med fˆrmÂgan 'vÂrdar' kan l‰ka upp till 8 h‰lsopo‰ng per drag. En trupp med fˆrmÂgan 'botar', kan l‰ka upp till 18 h‰lsopo‰ng per drag.
+
+Trupper intill en eller flera trupper med fˆrmÂgan "vÂrdar" kan ÂterfÂ max fyra h‰lsopo‰ng per drag, och max Âtta h‰lsopo‰ng per drag om truppen stÂr intill en eller flera trupper med fˆrmÂgan "botar". Men ju fler trupper som stÂr intill en trupp som kan hela desto mindre helas varje enskild trupp. 
+
+Ett exempel av 'vÂrdar' med flera trupper bredvid: 
+
+TvÂ trupper bredvid en 'vÂrdare' fÂr 4 h‰lsopo‰ng var.
+
+Tre trupper bredvid en'vÂrdare' fÂr inte 4 h‰lsopo‰ng var; utan ist‰llet fÂr tvÂ stycken 3 h‰lsopo‰ng vardera och en trupp 2 h‰lsopo‰ng.
+
+En trupp kan aldrig ÂterfÂ mer ‰n 8 h‰lsopo‰ng per drag, plus eventuellt 2 h‰lsopo‰ng om den vilar. D‰rfˆr ÂterfÂr ett troll som stÂr i en by sÂlunda endast 8 h‰lsopo‰ng per drag, inte 16. En trupp som stÂr i en by fÂr dessutom inte nÂgra extra h‰lsopo‰ng frÂn en l‰kande trupp bredvid den.
+
+"VÂrdar" hindrar gift frÂn att gˆra skada medan "botar" avgiftar truppen. Det drag dÂ truppen antingen blir avgiftad, eller fÂr hj‰lp av en 'vÂrdare' att motverka giftet, sÂ vare sig fÂr eller fˆrlorar den nÂgra h‰lsopo‰ng.
 
 
-Gruppspel
+ERFARENHET
 
-Du kan vara v√§rd f√∂r ett gruppspel med din klient, eller ansluta till en spelserver och starta ditt spel d√§r. Om du √§r spelv√§rd med din klient, s√• m√•ste andra spelare kunna ansluta till port 15000 (TCP) p√• din dator.
+Trupper fÂr erfarenhet av att strida, och efter att ha fÂtt tillr‰ckligt med erfarenhet kommer truppen att befordras till en hˆgre nivÂ och bli m‰ktigare. Hur mycket erfarenhetspo‰ng en trupp fÂr beror pÂ fiendetruppens nivÂ och hur striden utfˆll: om en trupp dˆdar en fiendetrupp sÂ fÂr den 8 erfarenhetpo‰ng fˆr varje nivÂ som fiendetruppen hade (4 om fienden var nivÂ 0), medan trupper som ˆverlever en strid utan att dˆda sin motstÂndare fÂr 1 erfarenhetspo‰ng fˆr varje nivÂ som fiendetruppen har. Det vill s‰ga:
 
-Tillg√§ngliga spelservrar:
+| fiendens  | bonus fˆr | bonus fˆr att |
+|nivÂ       | att dˆda  | slÂss emot    |
+-----------------------------------------
+| 0         | 4         | 0             |
+| 1         | 8         | 1             |
+| 2         | 16        | 2             |
+| 3         | 24        | 3             |
+| 4         | 32        | 4             |
+| 5         | 40        | 5             |
+| 6         | 48        | 6             |
 
- server.wesnoth.org        f√∂r stabila versioner av spelet
- devsrv.wesnoth.org        f√∂r testversioner av spelet
- devsrv.wesnoth.org:14999  f√∂r CVS-versioner av spelet
+
+GRUPPSPEL
+
+Du kan vara v‰rd fˆr ett gruppspel med din klient, eller ansluta till en spelserver och starta ditt spel d‰r. Om du ‰r spelv‰rd med din klient, sÂ mÂste andra spelare kunna ansluta till port 15000 (TCP) pÂ din dator.
+
+Tillg‰ngliga spelservrar:
+
+  server.wesnoth.org        fˆr stabila versioner av spelet
+  devsrv.wesnoth.org        fˆr testversioner av spelet
+  devsrv.wesnoth.org:14999  fˆr CVS-versioner av spelet
 
 
 Att starta ett gruppspel
 
-Steg 1: v√§lj 'Gruppspel' i huvudmenyn och d√§refter antingen: a) 'Anslut till den officiella servern' och skapa spel d√§r, b) 'Anslut till spel' f√∂r att ansluta till annan server eller till spel som en annan spelare √§r v√§rd f√∂r, c) 'Var v√§rd f√∂r n√§tverksspel', d) 'Heta stolen-spel', allts√• ett gruppspel lokalt p√• din dator, eller e) 'M√§nniska mot dator' f√∂r att spela mot datorn.
+  Steg 1: v‰lj 'Gruppspel' i huvudmenyn och d‰refter antingen: a) 'Anslut till den officiella servern' och skapa spel d‰r, b) 'Anslut till spel' fˆr att ansluta till annan server eller till spel som en annan spelare ‰r v‰rd fˆr, c) 'Var v‰rd fˆr n‰tverksspel', d) 'Heta stolen-spel', alltsÂ ett gruppspel lokalt pÂ din dator, eller e) 'M‰nniska mot dator' fˆr att spela mot datorn.
 
-Steg 2: v√§lj karta och g√∂r inst√§llningar f√∂r spelet (stridsdimma, sl√∂ja, guld per by, osv.)
+  Steg 2: v‰lj karta och gˆr inst‰llningar fˆr spelet (stridsdimma, slˆja, guld per by, osv.)
 
-Steg 3: g√∂r inst√§llningar f√∂r spelare (lag/allianser, guld att starta med, grupp) och v√§nta sedan tills alla n√§tverksspelare har anslutit till spelet. Du ser ordet 'n√§tverksspelare' utbytt mot spelarens namn allt eftersom som de ansluter.
+  Steg 3: gˆr inst‰llningar fˆr spelare (lag/allianser, guld att starta med, grupp) och v‰nta sedan tills alla n‰tverksspelare har anslutit till spelet. Du ser ordet 'n‰tverksspelare' utbytt mot spelarens namn allt eftersom som de ansluter.
 
-Steg 4: klicka [Klar!].
+  Steg 4: klicka [Klar!].
