@@ -92,6 +92,34 @@ void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res)
 	res->y = a.y - (is_even(a.x) ? 1:0);
 }
 
+namespace {
+
+void get_tiles_radius_internal(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res, std::map<gamemap::location,int>& visited)
+{
+	visited[a] = radius;
+	res.insert(a);
+
+	if(radius == 0) {
+		return;
+	}
+
+	gamemap::location adj[6];
+	get_adjacent_tiles(a,adj);
+	for(size_t i = 0; i != 6; ++i) {
+		if(visited.count(adj[i]) == 0 || visited[adj[i]] < radius-1) {
+			get_tiles_radius_internal(adj[i],radius-1,res,visited);
+		}
+	}
+}
+
+}
+
+void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res)
+{
+	std::map<gamemap::location,int> visited;
+	get_tiles_radius_internal(a,radius,res,visited);
+}
+
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b)
 {
 	//two tiles are adjacent if y is different by 1, and x by 0, or if

@@ -32,6 +32,9 @@
 //res. res must point to an array of 6 location objects.
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 
+//function which, given a location, will find all tiles within 'radius' of that tile
+void get_tiles_radius(const gamemap::location& a, size_t radius, std::set<gamemap::location>& res);
+
 //function which tells if two locations are adjacent.
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 

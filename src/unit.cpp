@@ -363,7 +363,7 @@ bool unit::invisible(const std::string& terrain, int lawful_bonus,
 	bool is_inv = false;
 
 	static const std::string forest_invisible("ambush");
-	if(std::count(terrain.begin(),terrain.end(),gamemap::FOREST) && has_flag(forest_invisible)) {
+	if(std::count(terrain.begin(),terrain.end(),static_cast<gamemap::TERRAIN>(gamemap::FOREST)) && has_flag(forest_invisible)) {
 		is_inv = true;
 	}
 	static const std::string night_invisible("nightstalk");

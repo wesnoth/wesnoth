@@ -163,7 +163,7 @@ std::vector<std::string> parse_macro_arguments(const std::string& macro)
 	bool in_braces = false;
 	for(std::vector<std::string>::const_iterator i = args.begin()+1; i != args.end(); ++i) {
 		size_t begin = 0, end = i->size();
-		if((*i)[0] == '{') {
+		if((*i)[0] == '(') {
 			++begin;
 		}
 
@@ -171,7 +171,7 @@ std::vector<std::string> parse_macro_arguments(const std::string& macro)
 			res.push_back("");
 		}
 
-		if((*i)[i->size()-1] == '}') {
+		if((*i)[i->size()-1] == ')') {
 			in_braces = false;
 			--end;
 		}
@@ -622,7 +622,7 @@ void config::read(const std::string& data,
 
 					//see if this is a CVS list=CVS list style assignment (e.g. x,y=5,8)
 					std::vector<std::string> vars, values;
-					if(std::count(var.begin(),var.end(),',') > 1) {
+					if(std::count(var.begin(),var.end(),',') > 0) {
 						vars = config::split(var);
 						values = config::split(value);
 					} else {
@@ -1257,7 +1257,7 @@ namespace {
 
 bool not_id(char c)
 {
-	return !isalpha(c) && c != '.';
+	return !isalpha(c) && c != '.' && c != '_';
 }
 
 void do_interpolation(std::string& res, size_t npos, const string_map* m)

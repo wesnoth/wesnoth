@@ -105,13 +105,9 @@ bool conditional_passed(game_state& state_of_game,
 		}
 
 		const std::string& less_than = values["less_than"];
-		std::cerr << num_value << " < '" << less_than << "' ?\n";
 		if(less_than != "" && atof(less_than.c_str()) <= num_value){
-			std::cerr << "no\n";
 			return false;
 		}
-
-		std::cerr << "yes\n";
 
 		const std::string& greater_than_equal_to = values["greater_than_equal_to"];
 		if(greater_than_equal_to != "" && atof(greater_than_equal_to.c_str()) > num_value){
@@ -139,6 +135,8 @@ game_state* state_of_game = NULL;
 game_data* game_data_ptr = NULL;
 gamestatus* status_ptr = NULL;
 std::set<std::string> used_items;
+
+const size_t MaxLoop = 1024;
 
 bool events_init() { return screen != NULL; }
 
@@ -434,11 +432,8 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//setting a variable
 	else if(cmd == "set_variable") {
-		std::cerr << "setting variable\n";
 		const std::string& name = config::interpolate_variables_into_string(cfg.get_attribute("name"));
-		std::cerr << "name: '" << name << "'\n";
 		std::string& var = game_events::get_variable(name);
-		std::cerr << "got variable...\n";
 		const std::string& value = cfg["value"];
 		if(value.empty() == false) {
 			var = value;
@@ -447,6 +442,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		const std::string& format = config::interpolate_variables_into_string(cfg.get_attribute("format"));
 		if(format.empty() == false) {
 			var = format;
+		}
+
+		const std::string& to_variable = config::interpolate_variables_into_string(cfg.get_attribute("to_variable"));
+		if(to_variable.empty() == false) {
+			var = game_events::get_variable(to_variable);
 		}
 
 		const std::string& add = cfg["add"];
@@ -464,7 +464,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 			value = int(double(value) * atof(multiply.c_str()));
 			char buf[50];
 			sprintf(buf,"%d",value);
-			std::cerr << "'" << var << "' * '" << multiply << "' = '" << buf << "'\n";
 			var = buf;
 		}
 
@@ -536,14 +535,15 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 					break;
 				}
 			}
-			std::cerr << "(" << choice << ")" << random_value << " ";
+
 			var = random_value;
 		}
 	}
 
 	//conditional statements
 	else if(cmd == "if" || cmd == "while") {
-		const size_t max_iterations = (cmd == "if" ? 1 : 1024);
+		log_scope(cmd);
+		const size_t max_iterations = (cmd == "if" ? 1 : MaxLoop);
 		const std::string pass = (cmd == "if" ? "then" : "do");
 		const std::string fail = (cmd == "if" ? "else" : "");
 		for(size_t i = 0; i != max_iterations; ++i) {
@@ -650,15 +650,11 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 	//if we should spawn a new unit on the map somewhere
 	else if(cmd == "unit") {
-		std::cerr << "spawning unit...\n";
 		unit new_unit(*game_data_ptr,cfg);
 		gamemap::location loc(cfg);
 
-		std::cerr << "location: " << loc.x << "," << loc.y << "\n";
-
 		if(game_map->on_board(loc)) {
 			loc = find_vacant_tile(*game_map,*units,loc);
-			std::cerr << "found vacant tile: " << loc.x << "," << loc.y << "\n";
 			units->insert(std::pair<gamemap::location,unit>(loc,new_unit));
 			screen->invalidate(loc);
 		} else {
@@ -820,8 +816,6 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 
 		std::vector<std::string> options;
 		std::vector<config::const_child_itors> option_events;
-
-		std::cerr << "building menu items...\n";
 
 		const config::child_list& menu_items = cfg.get_children("option");
 		for(config::child_list::const_iterator mi = menu_items.begin();
@@ -991,6 +985,75 @@ bool event_handler::handle_event_command(const queued_event& event_info, const s
 		}
 	}
 
+	else if(cmd == "store_starting_location") {
+		const int side = lexical_cast_default<int>(cfg["side"]);
+		const gamemap::location& loc = game_map->starting_position(side);
+		static const std::string default_store = "location";
+		const std::string& store = cfg["variable"].empty() ? default_store : cfg["variable"];
+		loc.write(game_events::get_variable_cfg(store));
+	}
+
+	else if(cmd == "store_locations") {
+		log_scope("store_locations");
+		const std::string& variable = cfg["variable"];
+		const std::string& terrain = cfg["terrain"];
+		const config* const unit_filter = cfg.child("filter");
+
+		std::vector<gamemap::location> locs = parse_location_range(cfg["x"],cfg["y"]);
+		if(locs.size() > MaxLoop) {
+			locs.resize(MaxLoop);
+		}
+
+		const size_t radius = minimum<size_t>(MaxLoop,lexical_cast_default<size_t>(cfg["radius"]));
+		std::set<gamemap::location> res;
+		for(std::vector<gamemap::location>::const_iterator i = locs.begin(); i != locs.end(); ++i) {
+			get_tiles_radius(*i,radius,res);
+		}
+
+		size_t added = 0;
+		for(std::set<gamemap::location>::const_iterator j = res.begin(); j != res.end() && added != MaxLoop; ++j) {
+			if(game_map->on_board(*j)) {
+				if(terrain.empty() == false) {
+					const gamemap::TERRAIN c = game_map->get_terrain(*j);
+					if(std::find(terrain.begin(),terrain.end(),c) == terrain.end()) {
+						continue;
+					}
+				}
+
+				if(unit_filter != NULL) {
+					const unit_map::const_iterator u = units->find(*j);
+					if(u == units->end() || game_events::unit_matches_filter(u,*unit_filter) == false) {
+						continue;
+					}
+				}
+
+				j->write(state_of_game->variables.add_child(variable));
+				++added;
+			}
+		}
+	}
+
+	//command to take control of a village for a certain side
+	else if(cmd == "capture_village") {
+		const int side = lexical_cast_default<int>(cfg["side"]);
+
+		//if 'side' is 0, then it will become an invalid index, and so
+		//the village will become neutral.
+		const size_t team_num = size_t(side-1);
+
+		const gamemap::location loc(cfg);
+
+		if(game_map->is_village(loc)) {
+			get_village(loc,*teams,team_num,*units);
+		}
+	}
+
+	//command to remove a variable
+	else if(cmd == "clear_variable") {
+		state_of_game->variables.values.erase(cfg["name"]);
+		state_of_game->variables.clear_children(cfg["name"]);
+	}
+
 	else if(cmd == "endlevel") {
 		const std::string& next_scenario = cfg["next_scenario"];
 		if(next_scenario.empty() == false) {
@@ -1158,9 +1221,9 @@ void get_variable_internal(const std::string& key, config& cfg,
 			const std::string::iterator index_end = std::find(index_start,element.end(),']');
 			const std::string index_str(index_start+1,index_end);
 			index = size_t(atoi(index_str.c_str()));
-			if(index > 1024) {
+			if(index > MaxLoop) {
 				std::cerr << "ERROR: index greater than 1024: truncated\n";
-				index = 1024;
+				index = MaxLoop;
 			}
 
 			element = std::string(element.begin(),index_start);
@@ -1178,7 +1241,7 @@ void get_variable_internal(const std::string& key, config& cfg,
 				}
 			} else {
 				char buf[50];
-				sprintf(buf,"%d",minimum<int>(1024,int(items.size())));
+				sprintf(buf,"%d",minimum<int>(MaxLoop,int(items.size())));
 				((*items.back())["__length"] = buf);
 				if(varout != NULL) {
 					*varout = &(*items.back())["__length"];
@@ -1189,7 +1252,6 @@ void get_variable_internal(const std::string& key, config& cfg,
 		}
 		
 		while(cfg.get_children(element).size() <= index) {
-			std::cerr << "element '" << element << "', " << index << " not found -- adding\n";
 			cfg.add_child(element);
 		}
 

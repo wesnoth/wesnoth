@@ -290,7 +290,12 @@ gamemap::TERRAIN gamemap::get_terrain(const gamemap::location& loc) const
 
 const gamemap::location& gamemap::starting_position(int n) const
 {
-	return startingPositions_[n];
+	if(n < sizeof(startingPositions_)/sizeof(*startingPositions_)) {
+		return startingPositions_[n];
+	} else {
+		static const gamemap::location null_loc;
+		return null_loc;
+	}
 }
 
 int gamemap::num_valid_starting_positions() const

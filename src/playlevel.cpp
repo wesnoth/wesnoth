@@ -317,31 +317,32 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		gui.add_overlay(gamemap::location(**overlay),(**overlay)["image"]);
 	}
 
-	if(first_human_team != -1) {
-		clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
-		gui.scroll_to_tile(map.starting_position(first_human_team+1).x,map.starting_position(first_human_team+1).y,display::WARP);
-	}
-
-	gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
-
-	bool replaying = (recorder.at_end() == false);
-
-	//if a team is specified whose turn it is, it means we're loading a game
-	//instead of starting a fresh one
-	const bool loading_game = (*level)["playing_team"].empty() == false;
-	int first_player = atoi((*level)["playing_team"].c_str());
-	if(first_player < 0 || first_player >= int(teams.size())) {
-		first_player = 0;
-	}
-
-	int turn = 1;
-	std::cerr << "starting main loop\n";
-
-	int player_number = 0;
-
-	std::deque<config> data_backlog;
+	int turn = 1, player_number = 0;
 
 	try {
+		game_events::fire("prestart");
+
+		if(first_human_team != -1) {
+			clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
+			gui.scroll_to_tile(map.starting_position(first_human_team+1).x,map.starting_position(first_human_team+1).y,display::WARP);
+		}
+	
+		gui.scroll_to_tile(map.starting_position(1).x,map.starting_position(1).y,display::WARP);
+	
+		bool replaying = (recorder.at_end() == false);
+	
+		//if a team is specified whose turn it is, it means we're loading a game
+		//instead of starting a fresh one
+		const bool loading_game = (*level)["playing_team"].empty() == false;
+		int first_player = atoi((*level)["playing_team"].c_str());
+		if(first_player < 0 || first_player >= int(teams.size())) {
+			first_player = 0;
+		}
+
+		std::cerr << "starting main loop\n";
+
+		std::deque<config> data_backlog;
+		
 		for(bool first_time = true; true; first_time = false, first_player = 0) {
 			player_number = 0;
 
