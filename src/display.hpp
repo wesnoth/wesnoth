@@ -173,7 +173,7 @@ private:
 	void draw_unit_on_tile(int x, int y, SDL_Surface* unit_image=NULL,
 	                       double alpha=1.0, Uint32 blend_to=0);
 
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_TERRAIN, ADJACENT_FOG };
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND };
 	void draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE type);
 
 
@@ -338,6 +338,7 @@ private:
 	void bounds_check_position();
 
 	std::vector<shared_sdl_surface> getAdjacentTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
+	std::vector<shared_sdl_surface> getBuiltTerrain(int x, int y, image::TYPE type, ADJACENT_TERRAIN_TYPE terrain_type);
 
 	//this surface must be freed by the caller
 	SDL_Surface* getTerrain(gamemap::TERRAIN, image::TYPE type,

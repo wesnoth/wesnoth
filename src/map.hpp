@@ -125,6 +125,8 @@ public:
 	//other terrain types. Has no effect on gameplay, only display.
 	const std::vector<TERRAIN>& get_terrain_precedence() const;
 
+	bool is_built(const location& loc) const;
+
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, TERRAIN ter);
 private:

@@ -1247,7 +1247,15 @@ void display::draw_tile_adjacent(int x, int y, image::TYPE image_type, ADJACENT_
 	
 	const std::vector<shared_sdl_surface>& adj = getAdjacentTerrain(x,y,image_type,type);
 
-	for(std::vector<shared_sdl_surface>::const_iterator i = adj.begin(); i != adj.end(); ++i) {
+	std::vector<shared_sdl_surface>::const_iterator i;
+	for(i = adj.begin(); i != adj.end(); ++i) {
+		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+		SDL_BlitSurface(*i,NULL,dst,&dstrect);
+	}
+
+	const std::vector<shared_sdl_surface>& built = getBuiltTerrain(x,y,image_type,type);
+
+	for(i = built.begin(); i != built.end(); ++i) {
 		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
 		SDL_BlitSurface(*i,NULL,dst,&dstrect);
 	}
@@ -1257,7 +1265,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 {
 	if(updatesLocked_)
 		return;
-
+	
 	const gamemap::location loc(x,y);
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
@@ -1317,7 +1325,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 			SDL_BlitSurface(flag,NULL,dst,&dstrect);
 		}
 
-		draw_tile_adjacent(x,y,image_type,ADJACENT_TERRAIN);
+		draw_tile_adjacent(x,y,image_type,ADJACENT_BACKGROUND);
 
 		typedef std::multimap<gamemap::location,std::string>::const_iterator Itor;
 
@@ -1348,7 +1356,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 	draw_unit_on_tile(x,y,unit_image,alpha,blend_to);
 
 	if(!shrouded(x,y)) {
-		draw_tile_adjacent(x,y,image_type,ADJACENT_FOG);
+		draw_tile_adjacent(x,y,image_type,ADJACENT_FOREGROUND);
 	}
 
 	if(grid_) {
@@ -1450,19 +1458,22 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 }
 
 namespace {
-const std::string& get_direction(int n)
+const std::string& get_direction(size_t n)
 {
-	static std::map<int,std::string> dirs;
-	if(dirs.empty()) {
-		dirs[0] = "-n";
-		dirs[1] = "-ne";
-		dirs[2] = "-se";
-		dirs[3] = "-s";
-		dirs[4] = "-sw";
-		dirs[5] = "-nw";
-	}
+	const static std::string dirs[6] = {"-n","-ne","-se","-s","-sw","-nw"};
+	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
+}
 
-	return dirs[n];
+bool angle_is_northern(size_t n)
+{
+	const static bool results[6] = {true,false,false,false,false,true};
+	return results[n >= sizeof(results)/sizeof(*results) ? 0 : n];
+}
+
+const std::string& get_angle_direction(size_t n)
+{
+	const static std::string dirs[6] = {"-ne","-e","-se","-sw","-w","-nw"};
+	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
 }
@@ -1478,9 +1489,9 @@ std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image:
 	get_adjacent_tiles(loc,adjacent);
 	int tiles[6];
 	for(int i = 0; i != 6; ++i) {
-		if(terrain_type == ADJACENT_FOG && shrouded(adjacent[i].x,adjacent[i].y))
+		if(terrain_type == ADJACENT_FOREGROUND && shrouded(adjacent[i].x,adjacent[i].y))
 			tiles[i] = gamemap::VOID_TERRAIN;
-		else if(terrain_type == ADJACENT_FOG && !fogged(x,y) && fogged(adjacent[i].x,adjacent[i].y))
+		else if(terrain_type == ADJACENT_FOREGROUND && !fogged(x,y) && fogged(adjacent[i].x,adjacent[i].y))
 			tiles[i] = gamemap::FOGGED;
 		else
 			tiles[i] = map_.get_terrain(adjacent[i]);
@@ -1492,7 +1503,7 @@ std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image:
 		fog_shroud.push_back(gamemap::FOGGED);
 	}
 
-	const std::vector<gamemap::TERRAIN>& precedence = (terrain_type == ADJACENT_TERRAIN) ?
+	const std::vector<gamemap::TERRAIN>& precedence = (terrain_type == ADJACENT_BACKGROUND) ?
 	                                             map_.get_terrain_precedence() : fog_shroud;
 	std::vector<gamemap::TERRAIN>::const_iterator terrain =
 	       std::find(precedence.begin(),precedence.end(),current_terrain);
@@ -1547,6 +1558,68 @@ std::vector<shared_sdl_surface> display::getAdjacentTerrain(int x, int y, image:
 				i = (i+1)%6;
 			}
 		}
+	}
+
+	return res;
+}
+
+std::vector<shared_sdl_surface> display::getBuiltTerrain(int x, int y, image::TYPE image_type, ADJACENT_TERRAIN_TYPE terrain_type)
+{
+	std::vector<shared_sdl_surface> res;
+	gamemap::location loc(x,y);
+	
+	// If the current tile is a castle tile, or if any adjacent tile is, this tile will have
+	// some castle-wall adjustable decorations.
+	// For now, the type of tiles (castle, !castle) is built-in.
+
+	gamemap::location adjacent[6];
+	get_adjacent_tiles(loc,adjacent);
+	
+	char angle_type;
+	bool ti, tj, to;
+
+	// TODO: change this to something like map_.is_castle(blah) to support
+	// keeps, elven/orcish castles, etc.
+	gamemap::TERRAIN terrain = gamemap::CASTLE;
+	to = map_.is_built(loc);
+
+	for(int i = 0; i != 6; ++i) {
+		int j = i+1;
+		if(j == 6)
+			j = 0;
+		
+		ti = map_.is_built(adjacent[i]);
+		tj = map_.is_built(adjacent[j]);
+		
+		int ncastles = (to?1:0) + (ti?1:0) + (tj?1:0);
+		
+		if ((ti != to) && (tj != to)) {
+			angle_type = i;
+		} else if ((ti == to) && (tj != to)) {
+			angle_type = (i+4) % 6;
+		} else if ((ti != to) && (tj == to)) {
+			angle_type = (i+2) % 6;
+		} else {
+			angle_type = -1;
+		}
+
+		if(angle_type == -1) {
+			continue;
+		}
+
+		const bool angle_northern = angle_is_northern(i);
+		if(angle_northern && terrain_type == ADJACENT_FOREGROUND ||
+			!angle_northern && terrain_type == ADJACENT_BACKGROUND) {
+			continue;
+		}
+
+		std::ostringstream stream;
+		stream << get_angle_direction(angle_type) << 
+			(ncastles == 2? "-e" : "-i") << get_angle_direction(i);
+		const shared_sdl_surface surface(getTerrain(terrain,
+							    image_type,x,y,stream.str()));
+		if(surface != NULL)
+			res.push_back(surface);
 	}
 
 	return res;

@@ -559,8 +559,7 @@ int show_dialog(display& disp, SDL_Surface* image,
 			return ESCAPE_DIALOG;
 		}
 
-		if(!key_down && key[SDLK_ESCAPE] &&
-		   (type == YES_NO || type == OK_CANCEL)) {
+		if(!key_down && key[SDLK_ESCAPE]) {
 
 			if(menu_.height() == 0) {
 				return 1;

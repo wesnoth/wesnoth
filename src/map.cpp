@@ -295,6 +295,15 @@ const std::vector<gamemap::TERRAIN>& gamemap::get_terrain_precedence() const
 	return terrainPrecedence_;
 }
 
+bool gamemap::is_built(const location &loc) const
+{
+	gamemap::TERRAIN terrain = get_terrain(loc);
+	if((terrain == gamemap::CASTLE) || (terrain == gamemap::KEEP))
+		return true;
+	else
+		return false;
+}
+
 void gamemap::set_terrain(const gamemap::location& loc, gamemap::TERRAIN ter)
 {
 	if(!on_board(loc))
