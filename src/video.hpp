@@ -66,6 +66,13 @@ class CVideo {
 	char text_[256*8];
 };
 
+void allow_resizing(bool);
+
+struct resize_lock {
+	resize_lock();
+	~resize_lock();
+};
+
 void pump_events();
 
 #endif

@@ -212,6 +212,8 @@ void set_grid(bool ison)
 
 void show_preferences_dialog(display& disp)
 {
+	const resize_lock prevent_resizing;
+
 	const int xpos = disp.x()/2 - 300;
 	const int ypos = disp.y()/2 - 200;
 	const int width = 600;
@@ -366,6 +368,8 @@ void show_preferences_dialog(display& disp)
 
 void show_video_mode_dialog(display& disp)
 {
+	const resize_lock prevent_resizing;
+
 	std::vector<std::pair<int,int> > resolutions;
 	std::vector<std::string> options;
 

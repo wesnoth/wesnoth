@@ -23,7 +23,8 @@
 
 void show_intro(display& screen, config& data)
 {
-	update_locker lock(screen);
+	//stop the screen being resized while we're in this function
+	const resize_lock stop_resizing;
 
 	CKey key;
 
@@ -131,11 +132,13 @@ void show_intro(display& screen, config& data)
 
 void show_map_scene(display& screen, config& data)
 {
+	//stop the screen being resized while we're in this function
+	const resize_lock stop_resizing;
+
 	//clear the screen
 	gui::draw_solid_tinted_rectangle(0,0,screen.x()-1,screen.y()-1,0,0,0,1.0,
                                      screen.video().getSurface());
 
-	update_locker lock(screen);
 
 	std::vector<config*>& sequence = data.children["bigmap"];
 	if(sequence.empty()) {

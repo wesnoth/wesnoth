@@ -337,9 +337,25 @@ int CVideo::drawText(int x, int y, int pixel, int bg, const char* text, int sz)
 
 bool CVideo::isFullScreen() const { return fullScreen; }
 
+namespace {
+	int disallow_resize = 0;
+}
+
+resize_lock::resize_lock()
+{
+	++disallow_resize;
+}
+
+resize_lock::~resize_lock()
+{
+	--disallow_resize;
+}
+
 void pump_events()
 {
 	SDL_PumpEvents();
+
+	static std::pair<int,int> resize_dimensions(0,0);
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
@@ -347,11 +363,15 @@ void pump_events()
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize
 				              = reinterpret_cast<SDL_ResizeEvent*>(&event);
-				size_t newx = resize->w > 1024 ? resize->w : 1024;
-				size_t newy = resize->h > 768 ? resize->h : 768;
-
-				preferences::set_resolution(std::pair<int,int>(newx,newy));
+				resize_dimensions.first = resize->w > 1024 ? resize->w : 1024;
+				resize_dimensions.second = resize->h > 768 ? resize->h : 768;
 			}
 		}
+	}
+
+	if(resize_dimensions.first > 0 && disallow_resize == 0) {
+		preferences::set_resolution(resize_dimensions);
+		resize_dimensions.first = 0;
+		resize_dimensions.second = 0;
 	}
 }

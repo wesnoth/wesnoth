@@ -436,6 +436,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(disp.update_locked())
 		return -1;
 
+	const resize_lock prevent_resizing;
+
 	const std::vector<std::string>& menu_items =
 	   (menu_items_ptr == NULL) ? std::vector<std::string>() : *menu_items_ptr;
 	const std::vector<unit>& units =
@@ -805,6 +807,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 TITLE_RESULT show_title(display& screen)
 {
+	const resize_lock prevent_resizing;
+
 	SDL_Surface* const title_surface = screen.getImage("title.png",
 	                                                   display::UNSCALED);
 
