@@ -838,6 +838,8 @@ int main(int argc, char** argv)
 		std::cerr << "Could not create button: Image could not be found\n";
 	} catch(CVideo::quit&) {
 		//just means the game should quit
+	} catch(...) {
+		std::cerr << "Unhandled exception. Exiting\n";
 	}
 
 	return 0;
