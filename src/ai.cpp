@@ -775,6 +775,17 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 
 int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
+	int weighting_sum = 0, defense = 0;
+	const std::map<gamemap::TERRAIN,size_t>& terrain = map_.get_weighted_terrain_frequencies();
+	for(std::map<gamemap::TERRAIN,size_t>::const_iterator j = terrain.begin(); j != terrain.end(); ++j) {
+		defense += a.movement_type().defense_modifier(map_,j->first)*j->second;
+		weighting_sum += j->second;
+	}
+
+	defense /= weighting_sum;
+
+	std::cerr << "average defense of '" << a.name() << "': " << defense << "\n";
+
 	int sum = 0, weight_sum = 0;
 
 	const std::vector<attack_type>& attacks = b.attacks();
@@ -782,7 +793,7 @@ int ai::average_resistance_against(const unit_type& a, const unit_type& b) const
 		const int resistance = a.movement_type().resistance_against(*i);
 		const int weight = i->damage()*i->num_attacks();
 
-		sum += resistance*weight;
+		sum += defense*resistance*weight;
 		weight_sum += weight;
 	}
 
@@ -808,25 +819,53 @@ void ai::analyze_potential_recruit_combat()
 
 	log_scope("analyze_potential_recruit_combat()");
 
+	//records the best combat analysis for each usage type
+	std::map<std::string,int> best_usage;
+
 	const std::set<std::string>& recruits = current_team().recruits();
-	for(std::set<std::string>::const_iterator i = recruits.begin(); i != recruits.end(); ++i) {
+	std::set<std::string>::const_iterator i;
+	for(i = recruits.begin(); i != recruits.end(); ++i) {
 		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
-		if(info == gameinfo_.unit_types.end()) {
+		if(info == gameinfo_.unit_types.end() || not_recommended_units_.count(*i)) {
 			continue;
 		}
 
-		int score = 0;
+		int score = 0, weighting = 0;
 
 		for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 			if(j->second.can_recruit() || current_team().is_enemy(j->second.side()) == false) {
 				continue;
 			}
 
-			score += compare_unit_types(info->second,j->second.type());
+			weighting += j->second.type().cost();
+			score += compare_unit_types(info->second,j->second.type())*j->second.type().cost();
+		}
+
+		if(weighting != 0) {
+			score /= weighting;
 		}
 
 		std::cerr << "combat score of '" << *i << "': " << score << "\n";
 		unit_combat_scores_[*i] = score;
+
+		if(best_usage.count(info->second.usage()) == 0 || score > best_usage[info->second.usage()]) {
+			best_usage[info->second.usage()] = score;
+		}
+	}
+
+	//recommend not to use units of a certain usage type if they have a score more than 1000
+	//below the best unit of that usage type
+	for(i = recruits.begin(); i != recruits.end(); ++i) {
+		const game_data::unit_type_map::const_iterator info = gameinfo_.unit_types.find(*i);
+		if(info == gameinfo_.unit_types.end() || not_recommended_units_.count(*i)) {
+			continue;
+		}
+
+		if(unit_combat_scores_[*i] + 1000 < best_usage[info->second.usage()]) {
+			std::cerr << "recommending not to use '" << *i << "' because of poor combat performance "
+				      << unit_combat_scores_[*i] << "/" << best_usage[info->second.usage()] << "\n";
+			not_recommended_units_.insert(*i);
+		}
 	}
 }
 
@@ -1125,7 +1164,7 @@ int ai::rate_terrain(const unit& u, const gamemap::location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain)) {
+	if(map_.gives_healing(terrain) && u.type().regenerates() == false) {
 		rating += healing_value;
 	}
 

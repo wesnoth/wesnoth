@@ -371,3 +371,26 @@ std::vector<gamemap::location> parse_location_range(const std::string& x, const 
 
 	return res;
 }
+
+const std::map<gamemap::TERRAIN,size_t>& gamemap::get_weighted_terrain_frequencies() const
+{
+	if(terrainFrequencyCache_.empty() == false) {
+		return terrainFrequencyCache_;
+	}
+
+	const location center(x()/2,y()/2);
+
+	const size_t furthest_distance = distance_between(location(0,0),center);
+
+	const size_t weight_at_edge = 100;
+	const size_t additional_weight_at_center = 200;
+
+	for(size_t i = 0; i != x(); ++i) {
+		for(size_t j = 0; j != y(); ++j) {
+			const size_t distance = distance_between(location(i,j),center);
+			terrainFrequencyCache_[(*this)[i][j]] += weight_at_edge + (furthest_distance-distance)*additional_weight_at_center;
+		}
+	}
+
+	return terrainFrequencyCache_;
+}

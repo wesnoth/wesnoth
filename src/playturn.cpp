@@ -669,6 +669,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		                           gui::OK_CANCEL,&items,&units_list,"",NULL,NULL,NULL,-1,-1,
 								   NULL,&buttons);
 
+		cursor::set(cursor::NORMAL);
+
 		if(size_t(res) < attacks_in_range.size()) {
 			res = attacks_in_range[res];
 
@@ -732,6 +734,8 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		const size_t moves = move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_, &next_unit_);
+
+		cursor::set(cursor::NORMAL);
 
 		gui_.invalidate_game_status();
 

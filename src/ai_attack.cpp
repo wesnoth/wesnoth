@@ -40,7 +40,7 @@ void ai::do_attack_analysis(
 	//this function is called fairly frequently, so interact with the user here.
 	user_interact();
 
-	if(cur_analysis.movements.size() >= 4)
+	if(cur_analysis.movements.size() > 4)
 		return;
 
 	static double best_results[6];

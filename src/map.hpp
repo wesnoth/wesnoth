@@ -139,6 +139,10 @@ public:
 
 	//clobbers over the terrain at location 'loc', with the given terrain
 	void set_terrain(const location& loc, TERRAIN ter);
+
+	//function which returns a list of the frequencies of different terrain
+	//types on the map, with terrain nearer the center getting weighted higher
+	const std::map<TERRAIN,size_t>& get_weighted_terrain_frequencies() const;
 private:
 	int num_starting_positions() const;
 
@@ -151,6 +155,7 @@ private:
 	location startingPositions_[10];
 
 	mutable std::map<location,TERRAIN> borderCache_;
+	mutable std::map<TERRAIN,size_t> terrainFrequencyCache_;
 };
 
 //a utility function which parses ranges of locations
