@@ -137,6 +137,7 @@ std::vector<std::string> get_text() {
 		"+ ",
 
 		_("+Catalan Translation"),
+		"-   Carles Company (brrr)",
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
 		"+ ",
