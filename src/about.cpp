@@ -95,6 +95,7 @@ void show_about(display& disp)
 	text.push_back("-   Diego Brea (Cobretti)");
 	text.push_back("-   Gareth Miller (Gafgarion)");
 	text.push_back("-   James Barton (Sangel)");
+	text.push_back("-   Jetryl");
 	text.push_back("-   Jimmy Olsson (Azlan)");
  	text.push_back("-   Johanna Manninen (lohari)");
 	text.push_back("-   John Muccigrosso (Eponymous Archon)");
@@ -122,9 +123,10 @@ void show_about(display& disp)
  	text.push_back("+ ");
 
  	text.push_back("+Packagers");
- 	text.push_back("-   Marcin Konicki (ahwayakchih)");
  	text.push_back("-   Cyril Bouthors (CyrilB)");
  	text.push_back("-   Darryl Dixon");
+ 	text.push_back("-   Jay Hopping");
+ 	text.push_back("-   Marcin Konicki (ahwayakchih)");
  	text.push_back("-   Marcus Phillips (Sithrandel)");
  	text.push_back("-   Mark Michelsen (skovbaer)");
  	text.push_back("+ ");
@@ -221,7 +223,6 @@ void show_about(display& disp)
  	text.push_back("-   edge");
  	text.push_back("-   Frédéric Wagner");
  	text.push_back("-   Jan Zvánovec (jaz)");
- 	text.push_back("-   Jay Hopping");
  	text.push_back("+ ");
 
 	//substitute in the correct control characters for '+' and '-'
