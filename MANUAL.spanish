@@ -1,100 +1,144 @@
+Manual de La Batalla por Wesnoth
+
+Si eres nuevo a La Batalla por Wesnoth, te podría interesar leer la guía de Comienzo Rápido antes.
+
 Controles
 
-    * Arrow key: Scroll
-    * Left click: Select unit/move unit
-    * Right click: Menu principal, cancelar accion
-    * Escape: Salir del juego
-    * z: Aumentar zoom
-    * x: Disminuir zoom
-    * c: Nivel de zoom por defecto
-    * u: Desacer el ultimo movimiento (solo los movimientos deterministas pueden desacerse)
-    * r: Rehacer movimiento
-    * n: Cycle entre las unidades que aun tienen movimiento
-    * e: Finaliza el movimiento de una unidad y selecciona la siguiente unidad que pude mover
-    * l: Moverse hasta la unidad lider
-    * ctrl-f: Conmutar modo pantalla completa/ventana
-    * ctrl-r: Reclutar unidad
-    * ctrl-c: Llamar unidad
-    * ctrl-a: Conmutar modo de juego acelerado
-    * d: Describir unidad selecionada
-    * ctrl-d: Ver valores defensivos de la unidad selecionada contra ataques
-    * ctrl-t: Ver como la unidad selecionada se comporta en cada tipo de terreno
-    * ctrl-s: Salvar juego
+ Cursores:			Scroll
+ Botón izquierdo del ratón: 	Seleccionar o mover unidad
+ Botón derecho del ratón: 	Menu principal, cancelar acción
+ Botón medio del ratón:		Centrar en la localización del puntero
+ Escape: 			Salir del juego o del menú
+ z: 				Aumentar zoom
+ x: 				Disminuir zoom
+ c: 				Nivel de zoom por defecto
+ u: 				Deshacer el último movimiento (sólo los movimientos deterministas pueden deshacerse)
+ r: 				Rehacer movimiento
+ n: 				Alternar entre las unidades que aún tienen movimiento disponible.
+ 1-7:				Muestra la distancia a la que la unidad seleccionada puede mover en ese número de turnos
+ espacio:			Acaba el turno de la unidad y activa la siguiente unidad que tiene movimiento disponible.
+ l: 				Moverse hasta la unidad líder
+ ctrl-f: 			Conmutar modo pantalla completa/ventana
+ ctrl-r: 			Reclutar unidad
+ ctrl-shift-r:			Repetir el último reclutamiento
+ ctrl-c: 			Llamar unidad
+ ctrl-a: 			Conmutar modo de juego acelerado
+ d: 				Describir la unidad selecionada
+ ctrl-d: 			Ver valores defensivos de la unidad selecionada contra ataques
+ ctrl-t: 			Ver como la unidad selecionada se comporta en cada tipo de terreno
+ ctrl-s: 			Salvar juego
 
 
 
 Orbes
 
-How do I tell if a unit is a friend or an enemy? On the top of the energy bar shown next to each unit is an orb. This orb is:
+Hay un orbe en la parte superior de la barra de energía que se muestra junto a cada una de tus unidades. Este orbe es:
 
-    * green if you control the unit and it hasn't moved this turn
-    * yellow if you control the unit and it has moved this turn, but could still move further.
-    * red if you control this unit, but it has already used all its movement this turn
-    * blue if the unit is an ally, but not controlled by you
-    * black if the unit is an enemy unit 
+    * verde si controlas esta unidad y no ha movido en este turno.
+    * amarillo si controlas esta unidad y aunque ya ha movido en este turno, podría aún mover más lejos.
+    * rojo si controlas esta unidad, pero ya ha usado todo su movimiento en este turno.
+    * azul si la unidad es un aliado, pero no la controlas directamente.
 
+Las unidades enemigas no tienen orbe en la parte superior de la barra de energía. (En las versiones anteriores a 0.5.2 había un orbe negro sobre la barra de energía de las unidades enemigas)
 
+Descripción
 
-Descripcion
-
-The game takes place over a series of battles, or scenarios. Each scenario pits your troops against the troops of an adversary. Each side begins with one leader in their keep.
+El juego se desarrolla en una serie de batallas o escenarios. Cada escenario enfrenta tus tropas contra las tropas de un enemigo. Cada bando comienza con un líder en su fortaleza.
 
 Oro
 
-Each side is given some amount of gold to begin with, and receives 2 gold pieces per turn, plus 2 more gold pieces for every village that side controls. Each side must pay maintenance of 1 gold piece every turn for each unit they have fielded.
+Cada bando recibe una cierta cantidad de oro al comienzo y 2 piezas de oro por turno, más 1 pieza de oro por cada aldea que ese bando controle. 
+
+Cada unidad tiene también un coste de mantenimiento. El coste de mantenimiento es generalmente igual al nivel de esa unidad (ver rasgo 'Leal' más abajo). Las unidades que no se llaman ni se reclutan, es decir que lideran un bando o se unen voluntariamente, no tienen coste de mantenimiento asociado con ellas. El mantenimiento solamente se paga si el mantenimiento total de las unidades de un bando es mayor que el número de aldeas que ese bando controla. El mantenimiento pagado es la diferencia entre el número de aldeas y el coste de mantenimiento. Por tanto, la fórmula para determinar los ingresos por turno es,
+
+ 2 + aldeas - máximo(0, mantenimiento - aldeas)
+
+donde mantenimiento es igual a la suma de los niveles de todas las unidades que han sido llamadas o reclutadas.
 
 Reclutando y Llamando
 
-Units may be recruited for a price, as long as the leader is on a keep, and there is at least one vacant castle hex in the castle the leader is in. Right-click and select Recruit to recruit new troops.
+Se pueden reclutar más unidades con oro, siempre y cuando el líder esté en una fortaleza y haya al menos un hexágono libre en la fortaleza donde esté el líder. Pulsa el botón derecho del ratón y selecciona Reclutar para reclutar nuevas tropas.
 
-After you complete a scenario, all surviving will be available to you next scenario. Right-click and select Recall to re-recruit units from previous scenarios. Recalling costs 20 pieces of gold.
+Despues de completar un escenario, todas las tropas supervivientes estarán disponibles para el siguiente escenario. Pulsa el botón derecho del ratón y selecciona Llamar para reclutar de nuevo unidades de escenarios previos. Llamar tropas cuesta 20 piezas de oro.
 
-You can first highlight free castle tile and then proceed with recruit, this way you can choose the tile for recruited unit to appear, this works for recruiting and recalling.
+Puedes seleccionar primero un lugar libre en la fortaleza y entonces reclutar. De esta forma puedes elegir el lugar en el que aparecerá la unidad reclutada. Esto funciona para reclutar y para llamar.
 
-Unit specialties
+No se puede mover una unidad en el mismo turno en el que se recluta o se llama.
 
-Unit specialties are decribed under Unit Description in main menu.
+Especialidades de las unidades
+
+Las especialidades de las unidades se describen en Descripción de la Unidad dentro del juego.
+
+Rasgos
+
+Las unidades tienen rasgos que reflejan aspectos de su carácter. Los rasgos se asignan aleatoriamente a las unidades cuando se crean. Cada unidad recibe dos rasgos. Los rasgos posibles son los siguientes:
+
+ Leal:			La unidad nunca tiene un coste de mantenimiento superior a 1.
+ Fuerte:		La unidad hace daño extra en combate cerrado, y tiene algunos puntos de vida más.
+ Rápido:		La unidad tiene un punto de movimiento extra, pero algunos puntos de vida menos.
+ Resistente:		La unidad tiene más puntos de vida.
+ Inteligente:   	La unidad requiere menos experiencia para avanzar un nivel.
 
 Moviendo
 
-When a unit is clicked on, all the places it can move to on the current turn become lit up, while everywhere it can't move is greyed. You can then click on the hex you want it to move to. Moving onto a village that is neutral or owned by an enemy will take ownership of it. If you select destination which beyond reach in your turn the unit will enter 'goto-mode' and continue moving towards destination thru next turn(s). You can easily undo goto movements in the beginning of your turn, goto can be broken by selecting unit and choosing new destination.
+Cuando se selecciona una unidad, todos los lugares a los que puede mover en el turno actual aparecen iluminados en el mapa, mientras que todos los lugares a los que no puede mover se oscurecen. Entonces puedes seleccionar con el ratón el hexágono al que quieres mover esa unidad. Si mueves a una aldea que es neutral o que pertenece a un enemigo, tomarás posesión de ella. Si seleccionas un destino que está fuera del rango de movimiento para este turno, la unidad entrará en 'modo goto' y continuará moviendo hacia ese destino automáticamente en los siguientes turnos. Puedes deshacer fácilmente los movimientos automáticos al comienzo de tu turno, y se pueden cancelar seleccionando esa unidad y eligiendo un nuevo destino.
+
+No puedes moverte a través de los hexágonos adyacentes a los enemigos (su zona de control) si tener que pararte.
 
 Luchando
 
-If you move next to an enemy unit, you may attack them. Click on your unit that is next to an enemy unit, and click on the enemy you want to attack. Every unit has one or more weapons they can attack with. Some weapons, such as swords, are melee weapons, and some weapons, such as bows, are ranged weapons.
+Si mueves a una posición junto a una unidad enemiga, puedes atacarles. Selecciona tu unidad que está junto al enemigo y selecciona el enemigo al que quieres atacar. Cada unidad tiene una o más armas con las que puede atacar. Algunas armas, como las espadas, son armas de melee, y algunas armas como arcos, son armas de tiro.
 
-If you attack with a melee weapon, the enemy you attack will be able to strike back at you with its melee weapon. If you attack with a ranged weapon, the enemy will be able to attack back with its ranged weapon, if it has one.
+Si atacas con una arma de melee, el enemigo será capaz de contraatacar con su arma de melee. Si atacas con un arma de tiro, el enemigo será capaz de atacar de vuelta con su arma de tiro, si es que tiene una.
 
-Different types of attacks do different amounts of damage, and a certain number of strikes may be made with each weapon. For instance, an Elvish Fighter does 5 points of damage with his sword every time it hits, and he can strike 4 blows with it in one exchange. This is generally written as 5-4.
+Diferentes tipos de ataques hacen diferentes cantidades de daño, y se pueden hacer un número determinado de ataques con cada arma. Por ejemplo, un guerrero elfo hace 5 puntos de daño con su espada cada vez que acierta, y puede blandirla cuatro veces en un ataque. Esto generalmente se escribe de la forma 5-4.
 
-Every unit has a chance of being hit based on the terrain they are on. Units in castles and villages have a lower chance of being hit. Elves in forest have a low chance of being hit.
+Cada unidad tiene una cierta probabilidad de ser alcanzado basada en el terreno en el que está. Las unidades en castillos y aldeas tienen una menor probabilidad de ser alcanzado. Los elfos en el bosque tienen también menor probabilidad de ser alcanzados.
 
 Alineamiento
 
-Every unit has an alignment: lawful, neutral, or chaotic. Their alignment affects how they perform at different times of day. The following table illustrates the different times of the day:
+Cada unidad tiene un alineamiento: legal, neutral o caótico. Su alineamiento afecta como rinden en las distintas horas del día. La siguiente tabla ilustra las diferentes horas del día:
 
-  	
 
- | turno | fase de dia |
+ | turno | fase de día |
  -----------------------
  |   1   |   amanecer  |
- |   2   |     dia     |
- |   3   |     dia     |
+ |   2   |     día     |
+ |   3   |     día     |
  |   4   |    ocaso    |
  |   5   |    noche    |
  |   6   |    noche    |
 
-	  
 
 
-Las unidades que son Legales causan 25% mas dao de dia, y 25% menos de noche. Las unidades que son Caoticas causan 25% mas dao de noche, y 25% menos de dia. Las unidades Neutrales no se ven afectadas por los ciclos del dia y la noche.
+Las unidades que son legales causan un 25% más de daño de día, y un 25% menos de noche. Las unidades que son caóticas causan un 25% más de daño de noche, y 25% menos de día. Las unidades neutrales no se ven afectadas por los ciclos del día y la noche. Ten en cuenta que dentro del juego las dos fases de día y de noche se diferencian como Mañana, Tarde y Primera guardia, Segunda guardia.
 
-Curacion
+Curación
 
-Las unidades hericas que estan en Aldeas recobran 8 puntos de golpe cada turno. Injured units that are adjacent to units with the 'heal' or 'cure' abilities will also heal. Units next to units with the 'heal' ability will heal a maximum of 4 hitpoints per turn, and 8 hitpoints per turn for units with the 'cure' ability. However the more units around a unit that can heal, the less each one will be healed.
+Las unidades heridas que están en aldeas recobran 8 puntos de vida cada turno. Las unidades heridas que están adyacentes a unidades con las habilidades 'cura' y 'sana' también sanarán.  Las unidades junto a una que tenga la habilidad 'cura' recuperarán un máximo de 4 puntos de vida cada turno, y si la unidad tiene la habilidad 'sana', recuperarán 8 puntos de vida por turno. Sin embargo, cuantas más unidades haya alrededor de la unidad que puede curar, menos puntos de vida recuperará cada una. La curación máxima por unidad es 8 puntos de vida, y por tanto un Troll que esté en una aldea solamente recobrará 8 puntos de vida, no 16. Una unidad que esté en una aldea tampoco recibirá curación extra de sanadores que estén junto a él.
+
+'Cura' impide que el envenenamiento cause daño mientras que 'sana' elimina el envenenamiento. Cuando se cura el envenenamiento, la unidad no recibe puntos de vida en ese turno.
 
 Experiencia
 
-Las unidades son recompensadas con experiencia por luchar, y tras conseguir suficiente experiencian, avnzan un nivel y se volveran mas poderosas.
+Las unidades son recompensadas con experiencia por luchar, y tras conseguir suficiente experiencia, avanzan un nivel y se volverán más poderosas.
 
-/* $Id$ */
+Multijugador
+
+Puedes servir una partida multijugador con tu cliente o conectarte a un servidor wesnoth y configurar tu partida en él. Si sirves la partida con tu cliente, el resto de jugadores necesitará ser capaz de conectarse al puerto 15000 de tu máquina.
+
+Servidores públicos:
+
+ server.wesnoth.org		para versiones estables del juego
+ devsrv.wesnoth.org		para versiones de prueba del juego
+ devsrv.wesnoth.org:14999	para versiones del CVS del juego
+
+Configurando una partida multijugador
+
+Paso 1: Seleciona Multijugador en la pantalla principal. Selecciona servir una partida con tu cliente o conectarse a un servidor y crear la partida.
+
+Paso 2: Selecciona el Mapa y configura las opciones de juego (niebla de guerra, ocultación, oro por aldea)
+
+Paso 3: Configura los jugadores (equipos/alianzas, oro de comienzo, facción) y esperar a todos los jugadores dispuestos como 'jugador en red' a que se unan a la partida. Podrás ver el nombre 'jugador en red' reemplazado con el nombre del jugador cuando éstos se unan.
+
+Paso 4: Selecciona [Estoy Listo]
