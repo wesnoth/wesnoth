@@ -987,6 +987,7 @@ void mp_connect::update_network()
 				}
 
 				if(cfg["type"].empty() == false) {
+					pos->first->values["random_faction"] = "";
 					pos->first->values["type"] = cfg["type"];
 				}
 
