@@ -209,6 +209,7 @@ public:
 
 	ALIGNMENT alignment() const;
 	static const char* alignment_description(ALIGNMENT align);
+	static const char* alignment_id(ALIGNMENT align);
 
 	double alpha() const;
 

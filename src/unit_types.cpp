@@ -859,8 +859,14 @@ unit_type::ALIGNMENT unit_type::alignment() const
 
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align)
 {
-	static const char* aligns[] = { N_("Lawful"), N_("Neutral"), N_("Chaotic") };
+	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic") };
 	return (gettext(aligns[align]));
+}
+
+const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
+{
+	static const char* aligns[] = { "lawful", "neutral", "chaotic" };
+	return (aligns[align]);
 }
 
 double unit_type::alpha() const
