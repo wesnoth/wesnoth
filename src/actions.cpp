@@ -53,7 +53,6 @@ struct castle_cost_calculator : cost_calculator
 		if(!map_.is_castle(loc))
 			return 10000;
 
-			return (getNoPathValue());
 		return 1;
 	}
 

@@ -13,8 +13,7 @@ See the COPYING file for more details.
 
 #include "global.hpp"
 #include "astarnode.hpp"
-
-#include <cassert>
+#include "wassert.hpp"
 
 poss_a_star_node* SingletonPOSS_AStarNode = NULL;
 
@@ -51,7 +50,7 @@ poss_a_star_node::poss_a_star_node(void) :
 capacity(0), curIndex(0)
 {
 	nbElemByPage = size_t((4096 - 24) / sizeof(a_star_node));		
-	assert(nbElemByPage > 0);
+	wassert(nbElemByPage > 0);
 	addPage(); 
 	SingletonPOSS_AStarNode = this;	
 } 
@@ -68,8 +67,8 @@ void poss_a_star_node::addPage(void)
 a_star_node* poss_a_star_node::getAStarNode(void)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(capacity > 0);
-	assert(curIndex <= capacity);
+	wassert(capacity > 0);
+	wassert(curIndex <= capacity);
 	//---------------------------------------------------
 	a_star_node* locPageAStarNode;
 	
@@ -97,15 +96,15 @@ void poss_a_star_node::reduce(void)
 	}	
 	curIndex = 0;	
 	//----------------- POST_CONDITIONS -----------------
-	assert(capacity == nbElemByPage);
-	assert(vectPageAStarNode.size() == 1);
+	wassert(capacity == nbElemByPage);
+	wassert(vectPageAStarNode.size() == 1);
 	//---------------------------------------------------
 } 
 
 void a_star_world::resize_IFN(const size_t parWidth, const size_t parHeight)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(_nbNode == 0);
+	wassert(_nbNode == 0);
 	//---------------------------------------------------
 	_width = parWidth;
 	if (_vectAStarNode.size() != parWidth * parHeight)
@@ -143,8 +142,8 @@ bool a_star_world::reallyEmpty(void)
 void a_star_world::erase(gamemap::location const &loc)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(loc.valid());
-	assert(loc.x + (loc.y * _width) < _vectAStarNode.size());
+	wassert(loc.valid());
+	wassert(loc.x + (loc.y * _width) < _vectAStarNode.size());
 	//---------------------------------------------------
 	_vectAStarNode[loc.x + (loc.y * _width)] = NULL;
 }
@@ -152,7 +151,7 @@ void a_star_world::erase(gamemap::location const &loc)
 a_star_node* a_star_world::getNodeFromLocation(gamemap::location const &loc, bool& isCreated)
 {	
 	//----------------- PRE_CONDITIONS ------------------
-	assert(loc.valid());
+	wassert(loc.valid());
 	//---------------------------------------------------
 	a_star_node*		node;
 	size_t				index;
@@ -163,7 +162,7 @@ a_star_node* a_star_world::getNodeFromLocation(gamemap::location const &loc, boo
 	if (node == NULL)
 	{
 		isCreated = true;
-		assert(SingletonPOSS_AStarNode != NULL);
+		wassert(SingletonPOSS_AStarNode != NULL);
 		node = SingletonPOSS_AStarNode->getAStarNode();
 		_vectAStarNode[index] = node;	
 		++_nbNode;

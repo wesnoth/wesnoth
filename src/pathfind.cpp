@@ -18,8 +18,8 @@ See the COPYING file for more details.
 #include "pathfind.hpp"
 #include "util.hpp"
 #include "astarnode.hpp"
+#include "wassert.hpp"
 
-#include <cassert>
 #include <cmath>
 #include <iostream>
 
@@ -47,9 +47,9 @@ void a_star_init(gamemap::location const &src, gamemap::location const &dst,
 	bool						locIsCreated = false;
 	
 	aStarGameWorld.resize_IFN(parWidth, parHeight);
-	assert(aStarGameWorld.empty());
+	wassert(aStarGameWorld.empty());
 	locStartNode = aStarGameWorld.getNodeFromLocation(src, locIsCreated);
-	assert(locIsCreated);
+	wassert(locIsCreated);
 	locStartNode->initNode(src, dst, 0.0, NULL, teleports);	
 
 	const size_t locValueH = size_t(locStartNode->h);
@@ -98,19 +98,19 @@ void a_star_sort_and_merge(vector_a_star_node& openList, const size_t locNbAdded
 
 #ifdef _PARANO_ASTAR_
 	for (vector_a_star_node::iterator iter = openList.begin(); iter != openList.end(); ++iter)
-		assert((*iter)->isInCloseList == false);		
+		wassert((*iter)->isInCloseList == false);		
 	if (openList.size() > locNbAdded) {
 		for (vector_a_star_node::iterator iter = openList.begin() + 1; iter != openList.end() - locNbAdded; ++iter)
 		{
 			vector_a_star_node::iterator iterPrev = iter - 1;			
-			assert(compare_sup_equal_a_star_node(*iterPrev, *iter));
+			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));
 		}
 	}
 	if (locNbAdded > 0) {
 		for (vector_a_star_node::iterator iter = openList.end() - locNbAdded + 1; iter != openList.end(); ++iter)
 		{
 			vector_a_star_node::iterator iterPrev = iter - 1;			
-			assert(compare_sup_equal_a_star_node(*iterPrev, *iter));
+			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));
 		}
 	}
 #endif
@@ -123,10 +123,10 @@ void a_star_sort_and_merge(vector_a_star_node& openList, const size_t locNbAdded
 		for (iter = openList.begin() + 1; iter != openList.end(); ++iter)
 		{
 			vector_a_star_node::iterator iterPrev = iter - 1;			
-			assert(compare_sup_equal_a_star_node(*iterPrev, *iter));				
+			wassert(compare_sup_equal_a_star_node(*iterPrev, *iter));				
 		}
 		for (iter = openList.begin(); iter != openList.end(); ++iter)
-			assert((*iter)->isInCloseList == false);
+			wassert((*iter)->isInCloseList == false);
 	}
 #endif
 }
@@ -140,7 +140,7 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 															 a_star_node*	parCurNode, const size_t parNbTeleport)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(parCurNode != NULL);	
+	wassert(parCurNode != NULL);	
 	//---------------------------------------------------
 	
 	typedef std::pair<vector_a_star_node::iterator, vector_a_star_node::iterator> pair_node_iter;
@@ -156,14 +156,14 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 
 	if ((parNbTeleport > 0) && (teleports->count(parCurNode->loc) > 0))
 	{
-		assert(teleports != NULL);
-		assert(teleports->size() == parNbTeleport);
-		assert(vectLocation.size() == parNbTeleport + 6);
+		wassert(teleports != NULL);
+		wassert(teleports->size() == parNbTeleport);
+		wassert(vectLocation.size() == parNbTeleport + 6);
 		locSize = parNbTeleport + 6;
 	}
 	else
 	{
-		assert(vectLocation.size() >= 6);
+		wassert(vectLocation.size() >= 6);
 		locSize = 6;
 	}	
 
@@ -184,7 +184,7 @@ void a_star_explore_neighbours(gamemap::location const &dst, const double stop_a
 			}
 			else
 			{
-				assert(locNextNode->isInCloseList == false);
+				wassert(locNextNode->isInCloseList == false);
 				locNextNode->isInCloseList = true;
 			}
 		}
@@ -216,12 +216,12 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 														const size_t parHeight, std::set<gamemap::location> const *teleports)
 {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(parWidth > 0);
-	assert(parHeight > 0);
-	assert(src.valid());
-	assert(dst.valid());
-	assert(costCalculator != NULL);
-	assert(stop_at <= costCalculator->getNoPathValue());
+	wassert(parWidth > 0);
+	wassert(parHeight > 0);
+	wassert(src.valid());
+	wassert(dst.valid());
+	wassert(costCalculator != NULL);
+	wassert(stop_at <= costCalculator->getNoPathValue());
 	//---------------------------------------------------			
 	static a_star_world				aStarGameWorld;	
 	static poss_a_star_node	  POSS_AStarNode;
@@ -234,8 +234,8 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 	a_star_node*						locDestNode = NULL;
 	a_star_node*						locCurNode = NULL;
 	
-	assert(openList.empty());	
-	assert(aStarGameWorld.empty());
+	wassert(openList.empty());	
+	wassert(aStarGameWorld.empty());
 	assertParanoAstar(aStarGameWorld.reallyEmpty());	
 	
 	LOG_PF << "A* search: " << src.x << ", " << src.y << " -> " << dst.x << ", " << dst.y << "\n";
@@ -254,7 +254,7 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 	while (!openList.empty()) 
 	{
 		locCurNode = openList.back();
-		assert(locCurNode != NULL);		
+		wassert(locCurNode != NULL);		
 		
 		//if we have found a solution
 		if (locCurNode->loc == dst)
@@ -270,8 +270,8 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 			std::reverse(locRoute.steps.begin(), locRoute.steps.end());
 			locRoute.move_left = int(locDestNode->g);
 
-			assert(locRoute.steps.front() == src);
-			assert(locRoute.steps.back() == dst);
+			wassert(locRoute.steps.front() == src);
+			wassert(locRoute.steps.back() == dst);
 
 			LOG_PF << "exiting a* search (solved)\n";
 			goto label_AStarSearch_end;
@@ -279,7 +279,7 @@ paths::route a_star_search( gamemap::location const &src, gamemap::location cons
 
 		openList.pop_back();
 
-		assert(locCurNode->isInCloseList == false);
+		wassert(locCurNode->isInCloseList == false);
 		locCurNode->isInCloseList = true ;		
 		
 		locNbAdded = 0;
@@ -298,8 +298,8 @@ label_AStarSearch_end:
 	aStarGameWorld.clear();
 
 	//----------------- POST_CONDITIONS -----------------
-	assert(openList.empty());
-	assert(aStarGameWorld.empty());
+	wassert(openList.empty());
+	wassert(aStarGameWorld.empty());
 	assertParanoAstar(aStarGameWorld.reallyEmpty());	
 	//---------------------------------------------------
 	return (locRoute);
@@ -568,7 +568,7 @@ int route_turns_to_complete(const unit& u, const gamemap& map,
 	int turns = 0, movement = u.movement_left();
 	for(std::vector<gamemap::location>::const_iterator i = rt.steps.begin()+1;
 		i != rt.steps.end(); ++i) {
-			assert(map.on_board(*i));
+			wassert(map.on_board(*i));
 			const int move_cost = u.movement_cost(map,map[i->x][i->y]);
 			movement -= move_cost;
 			if(movement < 0) {
@@ -596,7 +596,7 @@ shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
 
 double shortest_path_calculator::cost(const gamemap::location& loc, const double so_far, const bool isDst) const
 {
-	assert(map_.on_board(loc));
+	wassert(map_.on_board(loc));
 
 	if (team_.shrouded(loc.x, loc.y))
 		return (getNoPathValue());

@@ -353,7 +353,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	//stop the user from issuing any commands while the unit is moving
 	const command_disabler disable_commands;
 
-	assert(info_.units.find(to) == info_.units.end() || from == to);
+	wassert(info_.units.find(to) == info_.units.end() || from == to);
 
 	info_.disp.select_hex(from);
 	info_.disp.update_display();
@@ -362,7 +362,7 @@ gamemap::location ai_interface::move_unit(location from, location to, std::map<l
 	unit_map::iterator u_it = info_.units.find(from);
 	if(u_it == info_.units.end()) {
 		lg::err(lg::ai) << "Could not find unit at " << from.x << ", " << from.y << "\n";
-		assert(false);
+		wassert(false);
 		return location();
 	}
 
@@ -1279,7 +1279,7 @@ bool ai::move_to_targets(std::map<gamemap::location,paths>& possible_moves, move
 		LOG_AI << "choosing move...\n";
 		std::pair<location,location> move = choose_move(targets,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc);
 		for(std::vector<target>::const_iterator ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-			assert(map_.on_board(ittg->loc));
+			wassert(map_.on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false) {
@@ -1625,7 +1625,7 @@ void ai::do_recruitment()
 	const std::vector<std::string>& options = current_team().recruitment_pattern();
 
 	if(options.empty()) {
-		assert(false);
+		wassert(false);
 		return;
 	}
 

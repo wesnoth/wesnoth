@@ -69,7 +69,7 @@ struct move_cost_calculator : cost_calculator
 		if (units_.count(loc))
 			res *= 4.0;
 
-		assert(res > 0);
+		wassert(res > 0);
 		return res;
 	}
 
@@ -112,7 +112,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 				}
 			}
 
-			assert(threats.empty() == false);
+			wassert(threats.empty() == false);
 
 			const double value = threat/double(threats.size());
 			for(std::set<gamemap::location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
@@ -124,7 +124,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 	if(has_leader && current_team().village_value() > 0.0) {
 		const std::vector<location>& villages = map_.villages();
 		for(std::vector<location>::const_iterator t = villages.begin(); t != villages.end(); ++t) {
-			assert(map_.on_board(*t));
+			wassert(map_.on_board(*t));
 			bool get_village = true;
 			for(size_t i = 0; i != teams_.size(); ++i) {
 				if(!current_team().is_enemy(i+1) && teams_[i].owns_village(*t)) {
@@ -147,7 +147,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 
 		//is an enemy leader
 		if(u->second.can_recruit() && current_team().is_enemy(u->second.side())) {
-			assert(map_.on_board(u->first));
+			wassert(map_.on_board(u->first));
 			targets.push_back(target(u->first,current_team().leader_value(),target::LEADER));
 		}
 
@@ -179,7 +179,7 @@ std::vector<ai::target> ai::find_targets(unit_map::const_iterator leader, const 
 		}
 	}
 
-	assert(new_values.size() == targets.size());
+	wassert(new_values.size() == targets.size());
 	for(size_t n = 0; n != new_values.size(); ++n) {
 		LOG_AI << "target value: " << targets[n].value << " -> " << new_values[n] << "\n";
 		targets[n].value = new_values[n];
@@ -387,7 +387,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	std::vector<target>::const_iterator ittg;
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map_.on_board(ittg->loc));
+		wassert(map_.on_board(ittg->loc));
 	}
 
 	paths::route best_route;
@@ -425,7 +425,7 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 		user_interact();
 
-		assert(map_.on_board(tg->loc));
+		wassert(map_.on_board(tg->loc));
 		const double locStopValue = minimum(tg->value / best_rating, 500.0);
 		paths::route cur_route = a_star_search(u->first, tg->loc, locStopValue, &cost_calc, map_.x(), map_.y());
 
@@ -561,10 +561,10 @@ std::pair<gamemap::location,gamemap::location> ai::choose_move(std::vector<targe
 
 	LOG_AI << "best unit: " << (best->first.x+1) << "," << (best->first.y+1) << "\n";
 
-	assert(best_target >= targets.begin() && best_target < targets.end());
+	wassert(best_target >= targets.begin() && best_target < targets.end());
 
 	for(ittg = targets.begin(); ittg != targets.end(); ++ittg) {
-		assert(map_.on_board(ittg->loc));
+		wassert(map_.on_board(ittg->loc));
 	}
 
 	//if our target is a position to support, then we
