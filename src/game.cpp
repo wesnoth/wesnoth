@@ -332,7 +332,7 @@ int play_game(int argc, char** argv)
 		display::unit_map u_map;
 		config dummy_cfg("");
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
-		             std::vector<team>());
+		             std::vector<team>(),dummy_cfg);
 
 		if(test_mode) {
 			state.campaign_type = "test";

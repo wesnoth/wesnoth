@@ -28,7 +28,7 @@
 #include <iostream>
 #include <iterator>
 
-LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
+LEVEL_RESULT play_level(game_data& gameinfo, config& game_config,
                         config* level, CVideo& video,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
@@ -46,7 +46,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		map_data = random_generate_map((*level)["map_generation"]);
 	}
 
-	gamemap map(terrain_config,map_data);
+	gamemap map(game_config,map_data);
 
 	CKey key;
 	unit_map units;
@@ -132,7 +132,9 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 		}
 	}
 
-	display gui(units,video,map,status,teams);
+	const config* const theme_cfg = game_config.child("theme");
+	const config dummy_cfg;
+	display gui(units,video,map,status,teams,theme_cfg != NULL ? *theme_cfg : dummy_cfg);
 
 	if(first_human_team != -1) {
 		gui.set_team(first_human_team);
@@ -270,7 +272,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						dialogs::show_objectives(gui,*level);
 					}
 
-					play_turn(gameinfo,state_of_game,status,terrain_config,
+					play_turn(gameinfo,state_of_game,status,game_config,
 					          level, video, key, gui, events_manager, map,
 							  teams, player_number, units);
 
@@ -308,7 +310,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 						config cfg;
 	
 						turn_info turn_data(gameinfo,state_of_game,status,
-						                    terrain_config,level,key,gui,
+						                    game_config,level,key,gui,
 						                    map,teams,player_number,units,true);
 
 						for(;;) {

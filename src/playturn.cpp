@@ -319,8 +319,9 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			show_menu();
 		}
 	} else if(event.button == SDL_BUTTON_MIDDLE && event.state == SDL_PRESSED) {
-		const int centerx = gui_.mapx()/2;
-		const int centery = gui_.y()/2;
+		const SDL_Rect& rect = gui_.map_area();
+		const int centerx = (rect.x + rect.w)/2;
+		const int centery = (rect.y + rect.h)/2;
 
 		const int xdisp = event.x - centerx;
 		const int ydisp = event.y - centery;

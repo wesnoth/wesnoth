@@ -13,12 +13,14 @@
 #ifndef DISPLAY_H_INCLUDED
 #define DISPLAY_H_INCLUDED
 
+#include "config.hpp"
 #include "gamestatus.hpp"
 #include "image.hpp"
 #include "key.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
 #include "team.hpp"
+#include "theme.hpp"
 #include "unit.hpp"
 #include "video.hpp"
 
@@ -49,7 +51,7 @@ public:
 
 	display(unit_map& units, CVideo& video,
 	        const gamemap& map, const gamestatus& status,
-			const std::vector<team>& t);
+			const std::vector<team>& t, const config& theme_cfg);
 	~display();
 
 	//new_turn should be called on every new turn, to update
@@ -105,6 +107,9 @@ public:
 	int x() const;
 	int mapx() const;
 	int y() const;
+
+	const SDL_Rect& map_area() const;
+	const SDL_Rect& minimap_area() const;
 
 	SDL_Rect screen_area() const;
 
@@ -345,7 +350,7 @@ private:
 
 	std::multimap<gamemap::location,std::string> overlays_;
 
-	bool sideBarBgDrawn_;
+	bool panelsDrawn_;
 
 	size_t currentTeam_, activeTeam_;
 
@@ -368,6 +373,8 @@ private:
 
 	bool turbo_, grid_;
 	double sidebarScaling_;
+
+	theme theme_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

@@ -82,25 +82,22 @@ namespace {
 	const size_t SideBarUnitProfile_y = 375;
 	const size_t SideBarGameStatus_x = 16;
 	const size_t SideBarGameStatus_y = 220;
-	const size_t Minimap_x = 13;
-	const size_t Minimap_y = 11;
-	const size_t Minimap_w = 119;
-	const size_t Minimap_h = 146;
 	const size_t TimeOfDay_x = 13;
 	const size_t TimeOfDay_y = 167;
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
-				 const gamestatus& status, const std::vector<team>& t)
+				 const gamestatus& status, const std::vector<team>& t, const config& theme_cfg)
 		             : screen_(video), xpos_(0.0), ypos_(0.0),
 					   zoom_(DefaultZoom), map_(map), units_(units),
 					   energy_bar_count_(-1,-1), minimap_(NULL),
 					   pathsList_(NULL), status_(status),
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
-					   invalidateGameStatus_(true), sideBarBgDrawn_(false),
+					   invalidateGameStatus_(true), panelsDrawn_(false),
 					   currentTeam_(0), activeTeam_(0), updatesLocked_(0),
-                       turbo_(false), grid_(false), sidebarScaling_(1.0)
+                       turbo_(false), grid_(false), sidebarScaling_(1.0),
+					   theme_(theme_cfg)
 {
 	new_turn();
 
@@ -164,6 +161,16 @@ int display::x() const { return screen_.getx(); }
 int display::mapx() const { return x() - 140; }
 int display::y() const { return screen_.gety(); }
 
+const SDL_Rect& display::map_area() const
+{
+	return theme_.main_map_location(screen_area());
+}
+
+const SDL_Rect& display::minimap_area() const
+{
+	return theme_.mini_map_location(screen_area());
+}
+
 SDL_Rect display::screen_area() const
 {
 	const SDL_Rect res = {0,0,x(),y()};
@@ -197,8 +204,13 @@ void display::highlight_hex(gamemap::location hex)
 
 gamemap::location display::hex_clicked_on(int xclick, int yclick)
 {
-	if(xclick > mapx())
+	const SDL_Rect& rect = map_area();
+	if(xclick < rect.x || xclick >= rect.x + rect.w ||
+	   yclick < rect.y || yclick >= rect.y + rect.h)
 		return gamemap::location();
+
+	xclick -= rect.x;
+	yclick -= rect.y;
 
 	const double xtile = xpos_/(zoom_*0.75) +
 			               static_cast<double>(xclick)/(zoom_*0.75) - 0.25;
@@ -210,7 +222,7 @@ gamemap::location display::hex_clicked_on(int xclick, int yclick)
 
 gamemap::location display::minimap_location_on(int x, int y)
 {
-	const SDL_Rect rect = {mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h};
+	const SDL_Rect rect = minimap_area();
 
 	if(x < rect.x || y < rect.y ||
 	   x >= rect.x + rect.w || y >= rect.y + rect.h) {
@@ -310,8 +322,9 @@ void display::scroll_to_tile(int x, int y, SCROLL_TYPE scroll_type)
 
 	const double speed = preferences::scroll_speed()*2.0;
 
-	const double desiredxpos = this->mapx()/2.0 - zoom_/2.0;
-	const double desiredypos = this->   y()/2.0 - zoom_/2.0;
+	const SDL_Rect& area = map_area();
+	const double desiredxpos = area.w/2.0 - zoom_/2.0;
+	const double desiredypos = area.h/2.0 - zoom_/2.0;
 
 	const double xmove = xpos - desiredxpos;
 	const double ymove = ypos - desiredypos;
@@ -360,7 +373,7 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 	const double diffx = fabs(xpos1 - xpos2);
 	const double diffy = fabs(ypos1 - ypos2);
 
-	if(diffx > mapx()/(zoom_*0.75) || diffy > y()/zoom_) {
+	if(diffx > map_area().w/(zoom_*0.75) || diffy > map_area().h/zoom_) {
 		scroll_to_tile(x1,y1,scroll_type);
 	} else {
 		scroll_to_tile((x1+x2)/2,(y1+y2)/2,scroll_type);
@@ -369,8 +382,8 @@ void display::scroll_to_tiles(int x1, int y1, int x2, int y2,
 
 void display::bounds_check_position()
 {
-	const double min_zoom1 = static_cast<double>(mapx()/(map_.x()*0.75 + 0.25));
-	const double min_zoom2 = static_cast<double>(y()/map_.y());
+	const double min_zoom1 = static_cast<double>(map_area().w/(map_.x()*0.75 + 0.25));
+	const double min_zoom2 = static_cast<double>(map_area().h/map_.y());
 	const double min_zoom = min_zoom1 > min_zoom2 ? min_zoom1 : min_zoom2;
 	const double max_zoom = 200.0;
 
@@ -389,11 +402,11 @@ void display::bounds_check_position()
 	const double xend = zoom_*map_.x()*0.75 + zoom_*0.25;
 	const double yend = zoom_*map_.y() + zoom_/2.0;
 
-	if(xpos_ + static_cast<double>(mapx()) > xend)
-		xpos_ -= xpos_ + static_cast<double>(mapx()) - xend;
+	if(xpos_ + static_cast<double>(map_area().w) > xend)
+		xpos_ -= xpos_ + static_cast<double>(map_area().w) - xend;
 
-	if(ypos_ + static_cast<double>(y()) > yend)
-		ypos_ -= ypos_ + static_cast<double>(y()) - yend;
+	if(ypos_ + static_cast<double>(map_area().h) > yend)
+		ypos_ -= ypos_ + static_cast<double>(map_area().h) - yend;
 
 	if(xpos_ < 0.0)
 		xpos_ = 0.0;
@@ -412,44 +425,67 @@ void display::redraw_everything()
 
 	tooltips::clear_tooltips();
 
-	sideBarBgDrawn_ = false;
+	panelsDrawn_ = false;
 	invalidate_all();
 	draw(true,true);
 }
 
-void display::draw(bool update,bool force)
+namespace {
+
+void draw_panel(SDL_Surface* target, const theme::panel& panel)
 {
-	if(!sideBarBgDrawn_ && !teams_.empty()) {
-		SDL_Surface* const screen = screen_.getSurface();
-		const scoped_sdl_surface image_top(image::get_image(game_config::rightside_image,image::UNSCALED));
+	scoped_sdl_surface surf(image::get_image(panel.image(),image::UNSCALED));
 
-		const scoped_sdl_surface image(image_top != NULL ?
-			image::get_image_dim(game_config::rightside_image_bot,image_top->w,screen->h-image_top->h) : NULL);
-		if(image_top != NULL && image != NULL && image_top->h < screen->h) {
+	const SDL_Rect screen = { 0, 0, target->w, target->h };
+	SDL_Rect& loc = panel.location(screen);
+	if(surf->w != loc.w || surf->h != loc.h) {
+		surf.assign(scale_surface(surf.get(),loc.w,loc.h));
+	}
 
-			SDL_Rect dstrect;
-			dstrect.x = mapx();
-			dstrect.y = 0;
-			dstrect.w = image_top->w;
-			dstrect.h = image_top->h;
+	SDL_BlitSurface(surf.get(),NULL,target,&loc);
+	update_rect(loc);
+}
 
-			if(dstrect.x + dstrect.w <= this->x() &&
-			   dstrect.y + dstrect.h <= this->y()) {
-				SDL_BlitSurface(image_top,NULL,screen,&dstrect);
+void draw_label(display& disp, SDL_Surface* target, const theme::label& label)
+{
+	const std::string& text = label.text();
+	const std::string& icon = label.icon();
+	SDL_Rect& loc = label.location(disp.screen_area());
 
-				dstrect.y = image_top->h;
-				dstrect.h = image->h;
-				if(dstrect.y + dstrect.h <= this->y()) {
-					SDL_BlitSurface(image,NULL,screen,&dstrect);
-				}
-			} else {
-				std::cout << (dstrect.x+dstrect.w) << " > " << this->x() << " or " << (dstrect.y + dstrect.h) << " > " << this->y() << "\n";
-			}
+	if(text.empty() == false) {
+		font::draw_text(&disp,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
+	}
+	
+	if(icon.empty() == false) {
+		scoped_sdl_surface surf(image::get_image(icon,image::UNSCALED));
+		if(surf->w != loc.w || surf->h != loc.h) {
+			surf.assign(scale_surface(surf.get(),loc.w,loc.h));
 		}
 
-		sideBarBgDrawn_ = true;
+		SDL_BlitSurface(surf.get(),NULL,target,&loc);
+	}
 
-		update_rect(mapx(),0,this->x()-mapx(),this->y());
+	update_rect(loc);
+}
+
+}
+
+void display::draw(bool update,bool force)
+{
+	if(!panelsDrawn_ && !teams_.empty()) {
+		SDL_Surface* const screen = screen_.getSurface();
+
+		const std::vector<theme::panel>& panels = theme_.panels();
+		for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
+			draw_panel(screen,*p);
+		}
+
+		const std::vector<theme::label>& labels = theme_.labels();
+		for(std::vector<theme::label>::const_iterator i = labels.begin(); i != labels.end(); ++i) {
+			draw_label(*this,screen,*i);
+		}
+
+		panelsDrawn_ = true;
 	}
 
 	if(invalidateAll_ && !map_.empty()) {
@@ -457,7 +493,8 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		draw_minimap(mapx()+Minimap_x,Minimap_y,Minimap_w,Minimap_h);
+		const SDL_Rect area = minimap_area();
+		draw_minimap(area.x,area.y,area.w,area.h);
 	} else if(!map_.empty()) {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -798,8 +835,8 @@ void display::draw_minimap(int x, int y, int w, int h)
 	const int xbox = static_cast<int>(xscaling*xpos_/(zoom_*0.75));
 	const int ybox = static_cast<int>(yscaling*ypos_/zoom_);
 
-	const int wbox = static_cast<int>(xscaling*mapx()/(zoom_*0.75) - xscaling);
-	const int hbox = static_cast<int>(yscaling*this->y()/zoom_ - yscaling);
+	const int wbox = static_cast<int>(xscaling*map_area().w/(zoom_*0.75) - xscaling);
+	const int hbox = static_cast<int>(yscaling*map_area().h/zoom_ - yscaling);
 
 	const Pixel boxcolour = Pixel(SDL_MapRGB(surface->format,0xFF,0xFF,0xFF));
 	SDL_Surface* const screen = screen_.getSurface();
@@ -885,27 +922,22 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	int xpos = int(get_location_x(loc));
 	int ypos = int(get_location_y(loc));
 
-	if(xpos > mapx() || ypos > this->y())
+	if(xpos >= int(map_area().x + map_area().w) || ypos >= int(map_area().y + map_area().h))
 		return;
 
 	int xend = xpos + static_cast<int>(zoom_);
 	int yend = int(get_location_y(gamemap::location(x,y+1)));
 
-	if(xend < 0 || yend < 0)
+	if(xend < int(map_area().x) || yend < int(map_area().y))
 		return;
 
-	const gamemap::location ne_loc(loc.get_direction(
-	                                  gamemap::location::NORTH_EAST));
-	const gamemap::location se_loc(loc.get_direction(
-	                                  gamemap::location::SOUTH_EAST));
+	const gamemap::location ne_loc(loc.get_direction(gamemap::location::NORTH_EAST));
+	const gamemap::location se_loc(loc.get_direction(gamemap::location::SOUTH_EAST));
 
-	//assert(tiles_adjacent(loc,ne_loc));
-	//assert(tiles_adjacent(loc,se_loc));
-
-	const int ne_xpos = (int)get_location_x(ne_loc);
-	const int ne_ypos = (int)get_location_y(ne_loc);
-	const int se_xpos = (int)get_location_x(se_loc);
-	const int se_ypos = (int)get_location_y(se_loc);
+	const int ne_xpos = int(get_location_x(ne_loc));
+	const int ne_ypos = int(get_location_y(ne_loc));
+	const int se_xpos = int(get_location_x(se_loc));
+	const int se_ypos = int(get_location_y(se_loc));
 
 	const bool is_shrouded = shrouded(x,y);
 	gamemap::TERRAIN terrain = gamemap::VOID_TERRAIN;
@@ -971,23 +1003,26 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 	}
 
 	int ysrc = 0, xsrc = 0;
-	if(ypos < 0) {
-		ysrc -= ypos;
-		ypos = 0;
+
+	if(xpos < int(map_area().x)) {
+		xsrc += map_area().x - xpos;
+		xpos = map_area().x;
 	}
 
-	if(xpos < 0) {
-		xsrc -= xpos;
-		xpos = 0;
+	if(ypos < int(map_area().y)) {
+		ysrc += map_area().y - ypos;
+		ypos = map_area().y;
 	}
 
-	if(xend >= mapx())
-		xend = mapx();
+	if(xend > map_area().x + map_area().w) {
+		xend = map_area().x + map_area().w;
+	}
 
-	if(yend >= this->y())
-		yend = this->y();
+	if(yend > map_area().y + map_area().h) {
+		yend = map_area().y + map_area().h;
+	}
 
-	if(xend < xpos || yend < ypos)
+	if(xend <= xpos || yend <= ypos)
 		return;
 
 	update_rect(xpos,ypos,xend-xpos,yend-ypos);
@@ -1116,13 +1151,17 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 
 	int j;
 	for(j = ypos; j != yend; ++j) {
+
+		//store the number of pixel-rows into the hex we are in yloc
 		const int yloc = ysrc+j-ypos;
 		const int xoffset = abs(yloc - static_cast<int>(zoom_/2.0))/2;
 
-		const int ne_yloc = ysrc+j-ne_ypos;
+		//store the number of pixels-rows we are into the north-east hex
+		const int ne_yloc = j-ne_ypos;
 		const int ne_xoffset = abs(ne_yloc - static_cast<int>(zoom_/2.0))/2;
 
-		const int se_yloc = ysrc+j-se_ypos;
+		//store the number of pixels-rows we are into the south-east hex
+		const int se_yloc = j-se_ypos;
 		const int se_xoffset = abs(se_yloc - static_cast<int>(zoom_/2.0))/2;
 
 		int xdst = xpos;
@@ -1182,7 +1221,7 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image_override,
 		//if the line didn't make it to the next hex, then fill in with the
 		//last pixel up to the next hex
 		if(ne_ypos > 0 && xdst + len < minoffset && len > 0) {
-			extra = minimum(minoffset-(xdst + len),mapx()-(xdst+len));
+			extra = minimum(minoffset-(xdst + len),map_area().x+map_area().w-(xdst+len));
 			std::fill(startdst+len,startdst+len+extra,startsrc[len-1]);
 		}
 
@@ -1383,7 +1422,7 @@ void display::draw_footstep(const gamemap::location& loc, int xloc, int yloc)
 	draw_unit(xloc,yloc,image,hflip,vflip,0.5);
 
 	if(show_time && route_.move_left > 0 && route_.move_left < 10) {
-		const SDL_Rect rect = {0,0,this->mapx(),this->y()};
+		const SDL_Rect& rect = map_area();
 		static std::string str(1,'x');
 		str[0] = '0' + route_.move_left + 1;
 		const SDL_Rect& text_area =
@@ -1642,12 +1681,12 @@ void display::move_unit(const std::vector<gamemap::location>& path, unit& u)
 
 double display::get_location_x(const gamemap::location& loc) const
 {
-	return static_cast<double>(loc.x)*zoom_*0.75 - xpos_;
+	return map_area().x + static_cast<double>(loc.x)*zoom_*0.75 - xpos_;
 }
 
 double display::get_location_y(const gamemap::location& loc) const
 {
-	return static_cast<double>(loc.y)*zoom_ - ypos_ +
+	return map_area().y + static_cast<double>(loc.y)*zoom_ - ypos_ +
 					         (is_odd(loc.x) ? zoom_/2.0 : 0.0);
 }
 
@@ -1860,21 +1899,22 @@ bool display::unit_attack(const gamemap::location& a,
 		//then recenter it on the unit
 		double oldxpos = xpos_;
 		double oldypos = ypos_;
-		if(xloc < side_threshhold) {
-			scroll(xloc - side_threshhold,0.0);
+		if(xloc < map_area().x + side_threshhold) {
+			scroll(xloc - side_threshhold - map_area().x,0.0);
 		}
 
-		if(yloc < side_threshhold) {
-			scroll(0.0,yloc - side_threshhold);
+		if(yloc < map_area().y + side_threshhold) {
+			scroll(0.0,yloc - side_threshhold - map_area().y);
 		}
 
-		if(xloc + zoom_ > this->mapx() - side_threshhold) {
+		if(xloc + zoom_ > map_area().x + map_area().w - side_threshhold) {
 			scroll(((xloc + zoom_) -
-			        (this->mapx() - side_threshhold)),0.0);
+			        (map_area().x + map_area().w - side_threshhold)),0.0);
 		}
 
-		if(yloc + zoom_ > this->y() - side_threshhold) {
-			scroll(0.0,((yloc + zoom_) - (this->y() - side_threshhold)));
+		if(yloc + zoom_ > map_area().y + map_area().h - side_threshhold) {
+			scroll(0.0,((yloc + zoom_) -
+			        (map_area().y + map_area().h - side_threshhold)));
 		}
 
 		if(oldxpos != xpos_ || oldypos != ypos_) {
@@ -2166,8 +2206,8 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 		return;
 	}
 
-	const int w = mapx()-1;
-	const int h = this->y()-1;
+	const int w = map_area().x + map_area().w;
+	const int h = map_area().y + map_area().h-1;
 	if(x > w || y > h)
 		return;
 
@@ -2188,18 +2228,17 @@ void display::draw_unit(int x, int y, SDL_Surface* image,
 
 	const int len = endx - x;
 
-	if(y < 0) {
-		//this is adding to src, since y is negative
-		src -= image_w*y;
-		y = 0;
+	if(y < map_area().y) {
+		src += image_w*(map_area().y - y);
+		y = map_area().y;
 		if(y >= endy)
 			return;
 	}
 
 	int xoffset = 0;
-	if(x < 0) {
-		xoffset = -x;
-		x = 0;
+	if(x < map_area().x) {
+		xoffset = map_area().x - x;
+		x = map_area().x;
 		if(x >= endx)
 			return;
 	}
@@ -2318,7 +2357,7 @@ void display::invalidate_all()
 {
 	invalidateAll_ = true;
 	invalidated_.clear();
-	update_rect(0,0,mapx(),y());
+	update_rect(map_area());
 }
 
 void display::invalidate_unit()
