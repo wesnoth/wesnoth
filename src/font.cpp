@@ -208,7 +208,11 @@ surface render_text_internal(TTF_Font* font,const std::string& str,
 	if(r.w > max_text_line_width)
 		return NULL;
 
-	return TTF_RenderUTF8_Blended(font,str.c_str(),colour);
+	// Validate the UTF-8 string: workaround a SDL_TTF bug that makes it
+	// crash when used with an invalid UTF-8 string
+	std::string fixed_str = wstring_to_string(string_to_wstring(str));
+
+	return TTF_RenderUTF8_Blended(font,fixed_str.c_str(),colour);
 
 }
 
