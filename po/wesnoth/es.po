@@ -1,14 +1,14 @@
 # Spanish translations for Battle for Wesnoth package.
-# Copyright (C) 2004 Wesnoth development team
+# Copyright (C) 2004,2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2004.
+# Automatically generated, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 0.8.9-CVS\n"
+"Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2005-02-27 20:52+0100\n"
-"PO-Revision-Date: 2004-11-12 02:00+0200\n"
+"PO-Revision-Date: 2005-02-28 02:46+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: David Martínez Moreno <ender@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/fonts.cfg:4
 msgid "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
-msgstr ""
+msgstr "Vera.ttf,Bepa-Roman.ttf,FreeSans.ttf"
 
 #: data/game.cfg:514 data/translations/english.cfg:61
 msgid "loyal"
@@ -817,12 +817,10 @@ msgid "flaming sword"
 msgstr "espada llameante"
 
 #: data/items.cfg:755
-#, fuzzy
 msgid "Scepter of Fire"
 msgstr "Cetro de fuego"
 
 #: data/items.cfg:758
-#, fuzzy
 msgid ""
 "This ancient Scepter was forged by the Dwarves. A symbol of the kingship of "
 "Wesnoth, the Scepter has the power to shoot fireballs at enemies of the "
@@ -832,13 +830,12 @@ msgstr ""
 "de Wesnoth y ¡permite al portador lanzar bolas de fuego a sus enemigos!"
 
 #: data/items.cfg:759
-#, fuzzy
 msgid ""
 "This is the Scepter of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
 "Este es el Cetro de Fuego. ¡Sólo un verdadero heredero al trono puede "
-"cogerlo!"
+"siquiera osar cogerlo!"
 
 #: data/items.cfg:812
 msgid "Zap~"
@@ -866,9 +863,8 @@ msgid "Rebels"
 msgstr "Rebeldes"
 
 #: data/multiplayer.cfg:56 data/multiplayer.cfg:247
-#, fuzzy
 msgid "Northerners"
-msgstr "El invierno norteño"
+msgstr "Norteños"
 
 #: data/multiplayer.cfg:69 data/multiplayer.cfg:158 data/multiplayer.cfg:260
 #: data/translations/english.cfg:129
@@ -900,9 +896,8 @@ msgid "Orcs"
 msgstr "Orcos"
 
 #: data/multiplayer.cfg:171
-#, fuzzy
 msgid "Dwarves"
-msgstr "Castillo enano"
+msgstr "Enanos"
 
 #: data/multiplayer.cfg:197 data/units/Saurian.cfg:5
 msgid "Saurian"
@@ -917,22 +912,19 @@ msgid "Great War"
 msgstr "La Gran Guerra"
 
 #: data/multiplayer.cfg:311
-#, fuzzy
 msgid "Alliance of Light"
-msgstr "Mago de la Luz"
+msgstr "Alianza de la Luz"
 
 #: data/multiplayer.cfg:324
-#, fuzzy
 msgid "Alliance of Darkness"
-msgstr "&undead-necromancer.png,Alianza de la Oscuridad"
+msgstr "Alianza de la Oscuridad"
 
 #: data/scenario-test.cfg:38
-#, fuzzy
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr ""
-"Puedes venir si lo deseas, pero el líder sólo es interesante para hablar con "
+"Puedes venir si lo deseas, pero el líder sólo está interesado en hablar con "
 "Baldras."
 
 #: data/scenarios/multiplayer/An_Island.cfg:7
@@ -981,7 +973,6 @@ msgid "Castle Hopping Isle"
 msgstr "Una isla de castillos escondidos"
 
 #: data/scenarios/multiplayer/CastleHoppingIsle.cfg:11
-#, fuzzy
 msgid ""
 "Many closely placed and strategically located castles. Small map for fast "
 "play. Recommended setting of 2 gold per village, and players 1, 3 vs players "
@@ -989,7 +980,8 @@ msgid ""
 msgstr ""
 "Muchos castillos cercanos unos de otros, y estratégicamente colocados. Es un "
 "mapa pequeño para partidas rápidas. Se recomienda la opción de 2 piezas de "
-"oro por aldea."
+"oro por aldea, y los jugadores 1 y 3 contra el 2 y el 4, de cara a un 2 "
+"contra 2."
 
 #: data/scenarios/multiplayer/Charge.cfg:7
 msgid "Charge"
@@ -1176,7 +1168,6 @@ msgid "The Valley of Death"
 msgstr "El Valle de la Muerte"
 
 #: data/scenarios/multiplayer/scenarios.cfg:240
-#, fuzzy
 msgid "Dwarven Wasteland"
 msgstr "Páramo de los Enanos"
 
@@ -1190,15 +1181,13 @@ msgstr "El rey de la colina"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:16
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:17
-#, fuzzy
 msgid "Konrad"
-msgstr "Señor"
+msgstr "Konrad"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:25
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:27
-#, fuzzy
 msgid "Delfador"
-msgstr "Defensor"
+msgstr "Delfador"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:49
 msgid ""
@@ -1209,7 +1198,6 @@ msgstr ""
 "experiencia que eres, seguro que me podrás explicar el arte del combate..."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:53
-#, fuzzy
 msgid ""
 "Before entering any battle, you need to recruit units. To recruit a unit, "
 "right click on the castle tile on which you wish to recruit the unit. Then "
@@ -1244,7 +1232,6 @@ msgid "How do I recruit units?"
 msgstr "¿Cómo recluto unidades?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:65
-#, fuzzy
 msgid ""
 "To recruit a unit, right click on the castle tile on which you wish to "
 "recruit the unit. Then select Recruit, or just hold your cursor over the "
@@ -1252,8 +1239,8 @@ msgid ""
 "recruit, and select 'OK'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
-"Para reclutar a una unidad, pulsa el botón derecho del ratón en la casilla "
-"del castillo en la que quieres que aparezca la unidad reclutada. Después, "
+"Para reclutar una unidad, pulsa el botón derecho del ratón en la casilla del "
+"castillo en la que quieres que aparezca la unidad reclutada. Después, "
 "selecciona «Reclutar», o simplemente mantén el cursor sobre la casilla y "
 "pulsa «Ctrl-R». Entonces, selecciona el tipo de unidad que quieres reclutar, "
 "y selecciona «Aceptar». Para reclutar más rápido, puedes usar «Ctrl-Mayús-R» "
@@ -1380,9 +1367,8 @@ msgstr "Mueve tu luchador elfo cerca de Merle."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:106
 #: data/scenarios/tutorial/Basic_Training.cfg:144
-#, fuzzy
 msgid "Merle"
-msgstr "Meleé"
+msgstr "Merle"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:121
 msgid ""
@@ -1625,7 +1611,6 @@ msgid "What happens when a unit moves onto a village?"
 msgstr "¿Qué sucede cuando una unidad entra en una aldea?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:196
-#, fuzzy
 msgid ""
 "Whenever a unit moves onto a village, he flags the village for his side. "
 "This action takes all of the unit's remaining movement. Villages flagged for "
@@ -1642,7 +1627,7 @@ msgstr ""
 "hayan sido conquistadas y por tanto pertenezcan a un bando le darán a ese "
 "bando varios beneficios, entre los que se incluyen una pieza de oro "
 "adicional por turno, y la reducción del coste de mantenimiento del total de "
-"unidades en un punto. Puedes ver el número total de aldeas que controla en "
+"unidades en un punto. Puedes ver el número total de aldeas que controlas en "
 "la barra de estado de la parte superior, al lado de un dibujo de una casa. "
 "Además de sus beneficios económicos, las aldeas también tienen usos en "
 "combate. Las aldeas sanan 8 PV por turno a las unidades que están sobre "
@@ -1653,7 +1638,6 @@ msgid "How do I heal when there aren't any villages nearby?"
 msgstr "¿Cómo puedo sanarme si no hay aldeas cerca?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:197
-#, fuzzy
 msgid ""
 "There are ways to heal even without villages. If a unit does not move or "
 "attack for 1 turn, he heals 2 HP from resting. However if an enemy attacks "
@@ -1662,7 +1646,7 @@ msgid ""
 "Elvish Shaman are healed 4 HP per turn. Finally, whenever you beat a "
 "scenario all of your units are fully healed."
 msgstr ""
-"También hay formas de curarse sin usar aldeas. Si una unidad no mueve ni "
+"También hay formas de curarse incluso sin aldeas. Si una unidad no mueve ni "
 "ataca durante un turno, recuperará 2 PV por el descanso. Sin embargo, si un "
 "enemigo la ataca, no podrá recuperar puntos de vida por descansar. Asimismo, "
 "hay algunas unidades que sanan a las unidades que están cerca. El chamán "
@@ -1726,7 +1710,6 @@ msgid "How do I know how to complete a scenario? Will you always tell me?"
 msgstr "¿Cómo sé cómo completar un escenario? ¿Siempre me lo dirás?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:257
-#, fuzzy
 msgid ""
 "Sometimes it is not clear how to win a scenario just by listening to the "
 "dialog. In this case you need to look at the scenario objectives, which "
@@ -1735,7 +1718,7 @@ msgid ""
 "conditions and defeat conditions, and when any of the conditions are met, "
 "the scenario is over. Hopefully, it was a victory condition that was met."
 msgstr ""
-"A veces no está muy claro cómo ganar en un escenario partiendo de los "
+"A veces no está muy claro cómo ganar en un escenario a partir de los "
 "diálogos entre personajes. En ese caso, necesitarás echar un ojo a los "
 "objetivos del escenario, que aparecerán después de los diálogos de "
 "introducción. También puedes acceder a ellos seleccionando «Objetivos» "
@@ -1759,12 +1742,11 @@ msgstr ""
 "Cuando ganas en un escenario, todas tus unidades vivas se recuperan por "
 "completo, y no tienes que pagarlas por los turnos restantes. Asimismo, si tu "
 "ejército se queda en el sitio donde tenía lugar el escenario, se considera "
-"que todas las aldeas se rinden ante ti inmediatamente después de ganr. Sin "
+"que todas las aldeas se rinden ante ti inmediatamente después de ganar. Sin "
 "embargo, perderás un 20% del oro al pasar de escenario."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:264
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:252
-#, fuzzy
 msgid "Do you want to review any of the skills learned in this scenario?"
 msgstr ""
 "¿Quieres volver a ver alguna de las habilidades que has aprendido en este "
@@ -1840,7 +1822,6 @@ msgstr "Has reincorporado correctamente a tu luchador elfo."
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:150
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:197
-#, fuzzy
 msgid "En garde!"
 msgstr "¡En guardia!"
 
@@ -2251,65 +2232,59 @@ msgstr "Pradera"
 
 #: data/terrain.cfg:156
 msgid "Savanna"
-msgstr ""
+msgstr "Sabana"
 
 #: data/terrain.cfg:218 data/terrain.cfg:229
-#, fuzzy
 msgid "Desert Village"
-msgstr "Aldea"
+msgstr "Aldea desértica"
 
 #: data/terrain.cfg:240
 msgid "Tropical Forest Village"
-msgstr ""
+msgstr "Aldea de bosque tropical"
 
 #: data/terrain.cfg:251
 msgid "Oasis"
-msgstr ""
+msgstr "Oasis"
 
 #: data/terrain.cfg:262
 msgid "Snow"
 msgstr "Nieve"
 
 #: data/terrain.cfg:270
-#, fuzzy
 msgid "Snow Village"
-msgstr "Aldea"
+msgstr "Aldea nevada"
 
 #: data/terrain.cfg:281
 msgid "Hills"
 msgstr "Colinas"
 
 #: data/terrain.cfg:288
-#, fuzzy
 msgid "Snow Hills"
 msgstr "Colinas nevadas"
 
 #: data/terrain.cfg:297
-#, fuzzy
 msgid "Desert Hills"
-msgstr "Borrar fichero"
+msgstr "Colinas desérticas"
 
 #: data/terrain.cfg:305
 msgid "Mountains"
 msgstr "Montañas"
 
 #: data/terrain.cfg:312
-#, fuzzy
 msgid "Desert Mountains"
-msgstr "Montañas"
+msgstr "Montañas desérticas"
 
 #: data/terrain.cfg:320
 msgid "Forest"
 msgstr "Bosque"
 
 #: data/terrain.cfg:328
-#, fuzzy
 msgid "Snow Forest"
 msgstr "Bosque nevado"
 
 #: data/terrain.cfg:336
 msgid "Tropical Forest"
-msgstr ""
+msgstr "Bosque tropical"
 
 #: data/terrain.cfg:344
 msgid "Cave wall"
@@ -2389,7 +2364,7 @@ msgstr "movimiento"
 
 #: data/themes/default.cfg:513
 msgid "Act."
-msgstr ""
+msgstr "Acc."
 
 #: data/themes/default.cfg:546
 msgid "short end-turn^End"
@@ -2465,7 +2440,6 @@ msgstr ""
 "conseguiréis unas tropas altamente competentes y experimentadas."
 
 #: data/tips.cfg:7
-#, fuzzy
 msgid ""
 "Units have a Zone of Control in each of the hexes next to them. If a unit "
 "moves into an enemy's Zone of Control, it may not move any further that "
@@ -2475,10 +2449,11 @@ msgstr ""
 "La virtud de la sutileza:\n"
 "Todas las tropas tienen una «zona de control» que abarca todas las casillas "
 "que les rodean. Si una unidad entra en una zona de control enemiga, no se "
-"podrá mover más durante ese turno."
+"podrá mover más durante ese turno. Las unidades de nivel 0 son demasiado "
+"inexpertas para controlar una zona, y las unidades hostigadoras poseen "
+"entrenamiento para ignorar laz zonas de control."
 
 #: data/tips.cfg:8
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain it is standing in, however magical attacks have a 70% "
@@ -2860,7 +2835,6 @@ msgid "illuminates"
 msgstr "ilumina"
 
 #: data/translations/english.cfg:54
-#, fuzzy
 msgid ""
 "Leadership:\n"
 "This unit can lead friendly units that are next to it, making them fight "
@@ -2875,7 +2849,10 @@ msgstr ""
 "Esta unidad puede liderar a las unidades amigas cercanas, haciendo que "
 "luchen mejor.\n"
 "\n"
-"Las unidades adyacentes de nivel inferior haran más daño en combate."
+"Las unidades adyacentes de nivel inferior haran más daño en combate. Cuando "
+"una unidad adyacente de menor nivel y en el mismo bando que la unidad con "
+"liderazgo entra en combate, sus ataques hacen un 25% adicional de daño por "
+"cada nivel que las separe."
 
 #: data/translations/english.cfg:56 data/units/Commander.cfg:11
 #: data/units/Commander.cfg:86 data/units/Death_Knight.cfg:16
@@ -2901,7 +2878,6 @@ msgstr ""
 "Su coste de mantenimiento siempre es 1."
 
 #: data/translations/english.cfg:66
-#, fuzzy
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -2910,18 +2886,18 @@ msgid ""
 "immediately after this unit has attacked, or if there are enemy units next "
 "to this unit."
 msgstr ""
-"Emboscar:\n"
+"Acecho nocturno:\n"
 "Esta unidad puede ocultarse en el bosque, y no ser detectada por sus "
 "enemigos.\n"
 "\n"
-"Las unidades enemigas no pueden ver o atacar esta unidad cuando se encuentra "
-"en un bosque, excepto en los turnos inmediatamente después de que haya "
-"atacado o si hay unidades enemigas junto a ella."
+"Las unidades enemigas no pueden ver o atacar esta unidad cuando es de noche, "
+"excepto en el turno inmediatamente después de que haya atacado, o si hay "
+"unidades enemigas junto a ella."
 
 #: data/translations/english.cfg:68 data/units/Nightgaunt.cfg:18
 #: data/units/Shadow.cfg:16
 msgid "nightstalk"
-msgstr ""
+msgstr "acecho nocturno"
 
 #: data/translations/english.cfg:71
 msgid ""
@@ -2975,14 +2951,14 @@ msgid "steadfast"
 msgstr "firme"
 
 #: data/translations/english.cfg:86
-#, fuzzy
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
 msgstr ""
 "Teletransporte:\n"
-"Esta unidad puede teletransportarse entre dos aldeas amigas instantáneamente."
+"Esta unidad puede teletransportarse entre dos aldeas amigas instantáneamente "
+"con uno de sus movimientos."
 
 #: data/translations/english.cfg:88 data/units/Silver_Mage.cfg:21
 #: data/units/Silver_Mage.cfg:150
@@ -2990,15 +2966,14 @@ msgid "teleport"
 msgstr "teletransporte"
 
 #: data/translations/english.cfg:93
-#, fuzzy
 msgid ""
 "Backstab:\n"
 "This attack deals double damage if a friendly unit is on the opposite side "
 "of the target. (This doesn't work with allied units.)"
 msgstr ""
 "Apuñalar:\n"
-"Este ataque causa el doble de daño si una unidad aliada está en el extremo "
-"opuesto del objetivo."
+"Este ataque causa el doble de daño si una unidad amiga está en el extremo "
+"opuesto del objetivo (esto no funciona con unidades aliadas)."
 
 #: data/translations/english.cfg:96
 msgid ""
@@ -3073,7 +3048,6 @@ msgstr ""
 "hasta que se las cure o sólo les quede 1 PV."
 
 #: data/translations/english.cfg:120
-#, fuzzy
 msgid ""
 "Slow:\n"
 "This attack slows the target. Slowed units move at half normal speed and "
@@ -3082,8 +3056,8 @@ msgid ""
 msgstr ""
 "Ralentiza:\n"
 "Este ataque ralentiza al objetivo. Las unidades ralentizadas se mueven a la "
-"mitad de su velocidad habitual y disponen de un ataque menos durante un "
-"turno."
+"mitad de su velocidad habitual y disponen de un ataque menos en combate "
+"hasta el final del turno de su bando."
 
 #: data/translations/english.cfg:123
 msgid ""
@@ -3097,11 +3071,11 @@ msgstr ""
 
 #: data/translations/english.cfg:132
 msgid "$name's Bridge,$name's Crossing"
-msgstr ""
+msgstr "Puente de $name,Cruce de $name"
 
 #: data/translations/english.cfg:133
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr ""
+msgstr "Paso alto de $name,Paso de $name,Ruta de $name"
 
 #: data/translations/english.cfg:134
 msgid "$name River,River $name"
@@ -3485,9 +3459,8 @@ msgid "poison"
 msgstr "veneno"
 
 #: data/units/Assassin.cfg:82
-#, fuzzy
 msgid "female^Assassin"
-msgstr "Asesino"
+msgstr "Asesina"
 
 #: data/units/Bandit.cfg:3
 msgid "Bandit"
@@ -3519,7 +3492,6 @@ msgid "leadership,skirmisher"
 msgstr "liderazgo,hostigadora"
 
 #: data/units/Battle_Princess.cfg:20
-#, fuzzy
 msgid ""
 "A noble at birth, the Princess has learnt swordplay with the greatest "
 "generals, and battle tactics with the greatest sages, making her both a "
@@ -3527,9 +3499,10 @@ msgid ""
 "now aid those around her in the art of combat."
 msgstr ""
 "Noble de nacimiento, la princesa ha aprendido esgrima con los más grandes "
-"generales, y tácticas con los más grandes sabios, convirtiéndola en una gran "
-"luchadora y líder. Curtida en la batalla y de voluntad fuerte, ayuda a "
-"aquellos que la rodean a combatir mejor gracias a su presencia."
+"generales, y tácticas de combate con los más grandes sabios, convirtiéndola "
+"en una gran luchadora y líder. Curtida en la batalla y de voluntad fuerte, "
+"puede ayudar a aquellos que la rodean a combatir mejor gracias a su "
+"presencia."
 
 #: data/units/Battle_Princess.cfg:23 data/units/Battle_Princess.cfg:61
 #: data/units/Bowman.cfg:20 data/units/Cavalier.cfg:27
@@ -3633,7 +3606,6 @@ msgid ""
 msgstr ""
 
 #: data/units/Bone_Shooter.cfg:24 data/units/Soul_Shooter.cfg:24
-#, fuzzy
 msgid "stab"
 msgstr "puñalada"
 
@@ -3886,14 +3858,13 @@ msgid "Cuttle Fish"
 msgstr "Sepia"
 
 #: data/units/Cuttle_Fish.cfg:16
-#, fuzzy
 msgid ""
 "Cuttle Fish are gigantic creatures of the seas. They can grab their "
 "opponents with strong tentacles, or spit a poisonous black ink from a "
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"Las Sepias son enormes criaturas marinas. Pueden atacar a sus enemigos con "
+"Las sepias son enormes criaturas marinas. Pueden atacar a sus enemigos con "
 "sus fuertes tentáculos, o lanzar una venenosa tinta negra a distancia. La "
 "mejor forma de sobrevivir a un encuentro con unas lindezas como estas es "
 "permanecer alejado de la costa."
@@ -3987,9 +3958,8 @@ msgid "battle axe"
 msgstr "hacha de batalla"
 
 #: data/units/Deathblade.cfg:4
-#, fuzzy
 msgid "Deathblade"
-msgstr "Maestro de la Muerte"
+msgstr "Maestro de hojas"
 
 #: data/units/Deathblade.cfg:17
 msgid ""
@@ -4983,9 +4953,8 @@ msgid "sling"
 msgstr "honda"
 
 #: data/units/Footpad.cfg:69
-#, fuzzy
 msgid "female^Footpad"
-msgstr "Salteador"
+msgstr "Salteadora"
 
 #: data/units/Galleon.cfg:4
 msgid "Galleon"
@@ -5036,7 +5005,6 @@ msgid "Ghost"
 msgstr "Fantasma"
 
 #: data/units/Ghost.cfg:16
-#, fuzzy
 msgid ""
 "Ghosts are the souls of warriors that died in agony centuries ago without "
 "leaving a corpse behind. Although their non-corporeal form allows them great "
@@ -5044,9 +5012,9 @@ msgid ""
 "easily cross running water."
 msgstr ""
 "Los fantasmas son las almas de guerreros que murieron agónicamente hace "
-"siglos, sin dejar su cadáver atrás. Al no estar limitados por un cuerpo, "
-"estos no muertos pueden volar rápidamente hacia sus enemigos. Incluso su "
-"forma ectoplásmica les permite atravesar lentamente obstáculos físicos."
+"siglos, sin dejar su cadáver atrás. Aunque su forma ectoplásmica les permite "
+"tener una gran libertad de movimientos y protección contra ataques físicos, "
+"los fantasmas pueden volar por encima del agua no sin gran dificultad."
 
 #: data/units/Ghoul.cfg:3
 msgid "Ghoul"
@@ -5273,12 +5241,10 @@ msgstr ""
 "desde el lomo de estas bestias voladoras."
 
 #: data/units/Halbardier.cfg:3
-#, fuzzy
 msgid "Halberdier"
 msgstr "Alabardero"
 
 #: data/units/Halbardier.cfg:18
-#, fuzzy
 msgid ""
 "The best of the soldiers are chosen to become Halberdiers. Their weapon, "
 "though a little slower than the sword, can strike with deadly force, and "
@@ -5290,7 +5256,9 @@ msgstr ""
 "Los mejores entre todos los soldados son promocionados a alabarderos. Aunque "
 "su arma es más lenta de manejar, es capaz de causar heridas letales, y "
 "debido a su longitud, los alabarderos siempre golpean primero en combate, "
-"incluso cuando se defienden."
+"incluso cuando se defienden. Los alabarderos pueden lidiar con facilidad con "
+"tropas que puedan mantener alejadas más allá del final de sus armas, pero "
+"encuentran dificultades en el combate cuerpo a cuerpo."
 
 #: data/units/Halbardier.cfg:21 data/units/Halbardier.cfg:39
 msgid "halberd"
@@ -5371,12 +5339,10 @@ msgstr ""
 "dominarían todo el continente."
 
 #: data/units/Javelineer.cfg:3
-#, fuzzy
 msgid "Javelineer"
-msgstr "Lanzador de jabalinas sirénido"
+msgstr "Lanzador de jabalinas"
 
 #: data/units/Javelineer.cfg:16
-#, fuzzy
 msgid ""
 "Javelineers have mastered the use of the pointy sticks they were given as "
 "recruits.  Dangerous in melee, they have also developed their skill at "
@@ -5384,10 +5350,11 @@ msgid ""
 "Because of the length of their spears, they strike first in melee, even when "
 "defending."
 msgstr ""
-"El lancero es la base de los ejércitos humanos. Estos jóvenes soldados "
-"reciben entrenamiento básico y se los usa en la primera línea de batalla "
-"como carne de cañón. Debido a la longitud de sus lanzas, siempre golpean "
-"primero en combate, incluso cuando se defienden."
+"El lanzador de jabalinas han conseguido dominar el uso de los palos afilados "
+"que se les dieron al entrar como reclutas. Son peligrosos en meleé, además "
+"de su habilidad para lanzar sus jabalinas, haciéndolos potentes en ambas "
+"especialidades de combate. Debido a la longitud de sus lanzas, siempre "
+"golpean primero en combate, incluso cuando se defienden."
 
 #: data/units/Knight.cfg:3
 msgid "Knight"
@@ -5717,14 +5684,12 @@ msgid ""
 msgstr ""
 
 #: data/units/Mounted_Fighter.cfg:3
-#, fuzzy
 msgid "Mounted Fighter"
-msgstr "Luchador noble"
+msgstr "Luchador montado"
 
 #: data/units/Mounted_Warrior.cfg:3
-#, fuzzy
 msgid "Mounted Warrior"
-msgstr "Guerrero sirénido"
+msgstr "Guerrero montado"
 
 #: data/units/Mounted_Warrior.cfg:17
 msgid ""
@@ -6329,9 +6294,8 @@ msgstr ""
 "atacan."
 
 #: data/units/Rogue.cfg:63
-#, fuzzy
 msgid "female^Rogue"
-msgstr "Maga Roja"
+msgstr "Pícara"
 
 #: data/units/Royal_Guard.cfg:3
 msgid "Royal Guard"
@@ -6747,9 +6711,8 @@ msgstr ""
 "luchan mejor de noche que de día."
 
 #: data/units/Thief.cfg:40
-#, fuzzy
 msgid "female^Thief"
-msgstr "Sirena"
+msgstr "Ladrona"
 
 #: data/units/Thug.cfg:3
 msgid "Thug"
@@ -6879,12 +6842,11 @@ msgid "female^Vampire Lady"
 msgstr "Dama vampiro"
 
 #: data/units/Vampire_Lady.cfg:17
-#, fuzzy
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appearance drinking "
 "the blood of the living."
 msgstr ""
-"Fría y bella, mantiene su juventud eterna bebiendo la sangre de los vivos."
+"Fría y bella, mantiene su eterna juventud bebiendo la sangre de los vivos."
 
 #: data/units/Vampire_Lady.cfg:20
 msgid "blood kiss"
@@ -7116,18 +7078,16 @@ msgid "+Miscellaneous"
 msgstr "+Varios"
 
 #: src/about.cpp:139
-#, fuzzy
 msgid "+Internationalization Managers"
-msgstr "+Responsable de internacionalizción"
+msgstr "+Responsables de internacionalización"
 
 #: src/about.cpp:146
 msgid "+Basque Translation"
 msgstr "+Traducción vasca"
 
 #: src/about.cpp:151
-#, fuzzy
 msgid "+Bulgarian Translation"
-msgstr "+Traducción húngara"
+msgstr "+Traducción búlgara"
 
 #: src/about.cpp:155
 msgid "+Catalan Translation"
@@ -7146,14 +7106,12 @@ msgid "+Dutch Translation"
 msgstr "+Traducción neerlandesa"
 
 #: src/about.cpp:182
-#, fuzzy
 msgid "+English (GB) Translation"
-msgstr "+Traducción polaca"
+msgstr "+Traducción británica"
 
 #: src/about.cpp:186
-#, fuzzy
 msgid "+Estonian Translation"
-msgstr "+Traducción húngara"
+msgstr "+Traducción estonia"
 
 #: src/about.cpp:190
 msgid "+Finnish Translation"
@@ -7180,9 +7138,8 @@ msgid "+Italian Translation"
 msgstr "+Traducción italiana"
 
 #: src/about.cpp:241
-#, fuzzy
 msgid "+Latin Translation"
-msgstr "+Traducción catalana"
+msgstr "+Traducción al latín"
 
 #: src/about.cpp:245
 msgid "+Norwegian Translation"
@@ -7197,9 +7154,8 @@ msgid "+Portuguese (Brazil) Translation"
 msgstr "+Traducción al portugués de Brasil"
 
 #: src/about.cpp:268
-#, fuzzy
 msgid "+Russian Translation"
-msgstr "+Traducción húngara"
+msgstr "+Traducción rusa"
 
 #: src/about.cpp:274
 msgid "+Slovak Translation"
@@ -7385,14 +7341,12 @@ msgid "Scenario Start"
 msgstr "Inicio del escenario"
 
 #: src/dialogs.cpp:384
-#, fuzzy
 msgid "Difficulty: "
-msgstr "Dificultad"
+msgstr "Dificultad: "
 
 #: src/dialogs.cpp:386
-#, fuzzy
 msgid "Version: "
-msgstr "Versión"
+msgstr "Versión: "
 
 #: src/dialogs.cpp:401
 msgid "No Saved Games"
@@ -7455,20 +7409,17 @@ msgid "level"
 msgstr "nivel"
 
 #: src/dialogs.cpp:663 src/display.cpp:972 src/help.cpp:1062
-#, fuzzy
 msgid "HP: "
-msgstr "PV"
+msgstr "PV: "
 
 #: src/dialogs.cpp:667 src/dialogs.cpp:675 src/display.cpp:976
 #: src/display.cpp:984 src/playturn.cpp:1942
-#, fuzzy
 msgid "XP: "
-msgstr "PX"
+msgstr "PX: "
 
 #: src/dialogs.cpp:680 src/display.cpp:988 src/help.cpp:1063
-#, fuzzy
 msgid "Moves: "
-msgstr "Movimientos"
+msgstr "Movimientos: "
 
 #: src/display.cpp:935
 msgid "healthy"
@@ -7720,18 +7671,16 @@ msgid "Play a game against AI opponents"
 msgstr "Jugar una partida contra oponentes con IA"
 
 #: src/game.cpp:1292 src/multiplayer.cpp:137
-#, fuzzy
 msgid "Login: "
-msgstr "Entrar"
+msgstr "Entrar: "
 
 #: src/game.cpp:1362
 msgid "Language"
 msgstr "Idioma"
 
 #: src/game.cpp:1363
-#, fuzzy
 msgid "Choose your preferred language:"
-msgstr "Elija su idioma preferido"
+msgstr "Elija su idioma preferido:"
 
 #: src/game.cpp:1402
 msgid "Error loading game configuration files: '"
@@ -7742,29 +7691,24 @@ msgid "' (The game will now exit)"
 msgstr "' (el juego finalizará en este momento)"
 
 #: src/game.cpp:1470
-#, fuzzy
 msgid "Battle for Wesnoth"
 msgstr "La Batalla por Wesnoth"
 
 #: src/help.cpp:1024
-#, fuzzy
 msgid "Advances to: "
-msgstr "Puede convertirse en"
+msgstr "Puede convertirse en: "
 
 #: src/help.cpp:1045
-#, fuzzy
 msgid "Abilities: "
-msgstr "Habilidades"
+msgstr "Habilidades: "
 
 #: src/help.cpp:1064
-#, fuzzy
 msgid "Alignment: "
-msgstr "Alineamiento"
+msgstr "Alineamiento: "
 
 #: src/help.cpp:1068
-#, fuzzy
 msgid "Required XP: "
-msgstr "PX requeridos"
+msgstr "PX requeridos: "
 
 #: src/help.cpp:1079 src/reports.cpp:234
 msgid "attacks"
@@ -7883,39 +7827,32 @@ msgid "Map Generator"
 msgstr "Generador de mapas"
 
 #: src/mapgen_dialog.cpp:82
-#, fuzzy
 msgid "Players:"
-msgstr "Jugadores"
+msgstr "Jugadores:"
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Width:"
-msgstr "Anchura"
+msgstr "Anchura:"
 
 #: src/mapgen_dialog.cpp:84
-#, fuzzy
 msgid "Height:"
-msgstr "Altura"
+msgstr "Altura:"
 
 #: src/mapgen_dialog.cpp:85
-#, fuzzy
 msgid "Iterations:"
-msgstr "Iteraciones"
+msgstr "Iteraciones:"
 
 #: src/mapgen_dialog.cpp:86
-#, fuzzy
 msgid "Bump Size:"
-msgstr "Elevación"
+msgstr "Elevación:"
 
 #: src/mapgen_dialog.cpp:87
-#, fuzzy
 msgid "Villages:"
 msgstr "Aldeas"
 
 #: src/mapgen_dialog.cpp:88
-#, fuzzy
 msgid "Landform:"
-msgstr "Perfil de"
+msgstr "Perfil de:"
 
 #: src/mapgen_dialog.cpp:194
 msgid "Roads Between Castles"
@@ -7942,9 +7879,8 @@ msgid "Connect to Host"
 msgstr "Conectar al servidor del juego"
 
 #: src/multiplayer.cpp:87
-#, fuzzy
 msgid "Choose host to connect to: "
-msgstr "Escoja servidor al que conectar"
+msgstr "Escoja servidor al que conectar:"
 
 #: src/multiplayer.cpp:112
 msgid "Connecting to remote host..."
@@ -7955,30 +7891,28 @@ msgid "You must log in to this server"
 msgstr "Debe entrar en el servidor"
 
 #: src/multiplayer_connect.cpp:263
-#, fuzzy
 msgid "(Vacant slot)"
-msgstr "Plaza libre"
+msgstr "(Plaza libre)"
 
 #: src/multiplayer_connect.cpp:269
 msgid "Anonymous local player"
-msgstr ""
+msgstr "Jugador local anónimo"
 
 #: src/multiplayer_connect.cpp:275
-#, fuzzy
 msgid "Computer player"
 msgstr "IA (computadora)"
 
 #: src/multiplayer_connect.cpp:278
 msgid "(Empty slot)"
-msgstr ""
+msgstr "(Puesto vacío)"
 
 #: src/multiplayer_connect.cpp:412
 msgid "No non-random sides in the current era"
-msgstr ""
+msgstr "No se permiten bandos no aleatorios en la era actual"
 
 #: src/multiplayer_connect.cpp:428
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "No se encontró un tipo de líder para la facción $faction"
 
 #: src/multiplayer_connect.cpp:442 src/multiplayer_connect.cpp:451
 msgid "Team"
@@ -7993,7 +7927,6 @@ msgid "Faction"
 msgstr "Bando"
 
 #: src/multiplayer_connect.cpp:452
-#, fuzzy
 msgid "Colour"
 msgstr "Color"
 
@@ -8002,9 +7935,8 @@ msgid "Gold"
 msgstr "Oro"
 
 #: src/multiplayer_connect.cpp:455
-#, fuzzy
 msgid "Computer vs Computer"
-msgstr " Ordenador contra Ordenador "
+msgstr "Ordenador contra Ordenador"
 
 #: src/multiplayer_connect.cpp:456
 msgid "I'm Ready"
@@ -8040,9 +7972,8 @@ msgid "Empty"
 msgstr "Vacío"
 
 #: src/multiplayer_connect.cpp:786
-#, fuzzy
 msgid "Era not available: "
-msgstr "Objetivos no disponibles"
+msgstr "Era no disponible: "
 
 #: src/multiplayer_connect.cpp:821
 msgid "Red"
@@ -8086,7 +8017,7 @@ msgstr "Ésta no es una partida guardada en modo multijugador."
 
 #: src/multiplayer_connect.cpp:921
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "No se encuentra la era $era"
 
 #: src/multiplayer_connect.cpp:939
 msgid ""
@@ -8097,24 +8028,20 @@ msgstr ""
 "@Derrota al/los líder/es enemigo/s"
 
 #: src/multiplayer_connect.cpp:975
-#, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Esperando a que se conecten jugadores..."
 
 #: src/multiplayer_create.cpp:39
-#, fuzzy
 msgid "Name of game:"
-msgstr "Nombre de la partida"
+msgstr "Nombre de la partida:"
 
 #: src/multiplayer_create.cpp:41
-#, fuzzy
 msgid "Era:"
-msgstr "Era"
+msgstr "Era:"
 
 #: src/multiplayer_create.cpp:42
-#, fuzzy
 msgid "Map to play:"
-msgstr "Mapa para jugar"
+msgstr "Mapa para jugar:"
 
 #: src/multiplayer_create.cpp:43
 msgid "Fog Of War"
@@ -8126,7 +8053,7 @@ msgstr "Observadores"
 
 #: src/multiplayer_create.cpp:47
 msgid "OK"
-msgstr ""
+msgstr "Aceptar"
 
 #: src/multiplayer_create.cpp:48
 msgid "Regenerate"
@@ -8180,7 +8107,7 @@ msgstr "No hay bandos."
 
 #: src/multiplayer_create.cpp:116
 msgid "No eras found"
-msgstr ""
+msgstr "No se han encontrado eras."
 
 #: src/multiplayer_create.cpp:125
 msgid "$login's game"
@@ -8188,36 +8115,31 @@ msgstr "La partida de $login"
 
 #: src/multiplayer_create.cpp:155
 msgid "Invalid era selected"
-msgstr ""
+msgstr "Era seleccionada inválida"
 
 #: src/multiplayer_create.cpp:186
 msgid "You must enter a name."
 msgstr "Debe tener un nombre."
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "Turns: "
-msgstr "Turnos"
+msgstr "Turnos: "
 
 #: src/multiplayer_create.cpp:197
-#, fuzzy
 msgid "Unlimited Turns"
-msgstr "Ilimitado"
+msgstr "Turnos ilimitados"
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Village Gold: "
-msgstr "Oro producido"
+msgstr "Oro por aldea: "
 
 #: src/multiplayer_create.cpp:210
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "Modificadores por terreno"
+msgstr "Modificador a la experiencia: "
 
 #: src/multiplayer_create.cpp:313
-#, fuzzy
 msgid "Players: "
-msgstr "Jugadores"
+msgstr "Jugadores: "
 
 #: src/multiplayer_create.cpp:373 src/multiplayer_lobby.cpp:28
 msgid "Create Game"
@@ -8256,19 +8178,16 @@ msgid "Getting game data..."
 msgstr "Obteniendo datos de la partida..."
 
 #: src/multiplayer_wait.cpp:177
-#, fuzzy
 msgid "No multiplayer sides available in this game"
-msgstr "No hay más bandos disponibles en este juego."
+msgstr "No hay más bandos de multijugador disponibles en este juego."
 
 #: src/multiplayer_wait.cpp:199
-#, fuzzy
 msgid "Era not available"
-msgstr "Objetivos no disponibles"
+msgstr "Era no disponible"
 
 #: src/multiplayer_wait.cpp:207
-#, fuzzy
 msgid "No multiplayer sides found"
-msgstr "No hay bandos."
+msgstr "No se han encontrado bandos multijugador"
 
 #: src/multiplayer_wait.cpp:227
 msgid "Choose your side:"
@@ -8299,33 +8218,28 @@ msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
 #: src/playlevel.cpp:808
-#, fuzzy
 msgid "Remaining gold: "
-msgstr "Oro restante"
+msgstr "Oro restante: "
 
 #: src/playlevel.cpp:811
-#, fuzzy
 msgid "Early finish bonus: "
-msgstr "Bonificación por rapidez"
+msgstr "Bonificación por finalizar antes: "
 
 #: src/playlevel.cpp:813
 msgid "per turn"
 msgstr "por turno"
 
 #: src/playlevel.cpp:814
-#, fuzzy
 msgid "Turns finished early: "
-msgstr "Turnos finalizados pronto"
+msgstr "Turnos finalizados pronto: "
 
 #: src/playlevel.cpp:816
-#, fuzzy
 msgid "Bonus: "
-msgstr "Bonificación"
+msgstr "Bonificación: "
 
 #: src/playlevel.cpp:818
-#, fuzzy
 msgid "Gold: "
-msgstr "Oro"
+msgstr "Oro: "
 
 #: src/playlevel.cpp:823
 #, no-c-format
@@ -8333,9 +8247,8 @@ msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% del oro se conserva para el siguiente escenario"
 
 #: src/playlevel.cpp:824
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "Oro conservado"
+msgstr "Oro conservado: "
 
 #: src/playlevel.cpp:829
 msgid "Victory"
@@ -8346,9 +8259,8 @@ msgid "You have emerged victorious!"
 msgstr "¡Has vencido!"
 
 #: src/playlevel.cpp:833
-#, fuzzy
 msgid "Scenario Report"
-msgstr "Inicio del escenario"
+msgstr "Informe del escenario"
 
 #: src/playlevel.cpp:854
 msgid ""
@@ -8383,9 +8295,8 @@ msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
 #: src/playturn.cpp:651
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "Escoger arma"
+msgstr "Escoger arma:"
 
 #: src/playturn.cpp:1250
 msgid ""
@@ -8457,9 +8368,8 @@ msgid "Recruit"
 msgstr "Reclutar"
 
 #: src/playturn.cpp:1783 src/playturn.cpp:1967
-#, fuzzy
 msgid "Select unit:"
-msgstr "Seleccionar unidad"
+msgstr "Seleccionar unidad:"
 
 #: src/playturn.cpp:1817
 msgid "You don't have enough gold to recruit that unit"
@@ -8507,9 +8417,8 @@ msgstr ""
 "Ha de tener por lo menos $cost piezas de oro para reincorporar a una unidad."
 
 #: src/playturn.cpp:1941
-#, fuzzy
 msgid "level: "
-msgstr "nivel"
+msgstr "nivel: "
 
 #: src/playturn.cpp:1954
 msgid "Dismiss Unit"
@@ -8520,9 +8429,8 @@ msgid "Recall"
 msgstr "Reincorporar"
 
 #: src/playturn.cpp:2011
-#, fuzzy
 msgid "Message:"
-msgstr "Mensaje"
+msgstr "Mensaje:"
 
 #: src/playturn.cpp:2011
 msgid "Send to allies only"
@@ -8601,9 +8509,8 @@ msgid "Place Label"
 msgstr "Poner etiqueta"
 
 #: src/playturn.cpp:2461
-#, fuzzy
 msgid "Label:"
-msgstr "Etiqueta"
+msgstr "Etiqueta:"
 
 #: src/playturn.cpp:2593
 msgid ""
@@ -8640,9 +8547,8 @@ msgstr ""
 "enemigas."
 
 #: src/reports.cpp:106
-#, fuzzy
 msgid "invisible: "
-msgstr "invisible"
+msgstr "invisible: "
 
 #: src/reports.cpp:111
 msgid ""
@@ -8653,9 +8559,8 @@ msgstr ""
 "tiene un ataque menos en combate."
 
 #: src/reports.cpp:111
-#, fuzzy
 msgid "slowed: "
-msgstr "ralentizado"
+msgstr "ralentizado: "
 
 #: src/reports.cpp:116
 msgid ""
@@ -8673,37 +8578,32 @@ msgstr ""
 "de 1 PV."
 
 #: src/reports.cpp:116
-#, fuzzy
 msgid "poisoned: "
-msgstr "envenenado"
+msgstr "envenenado: "
 
 #: src/reports.cpp:123
 msgid "This unit has been turned to stone. It may not move or attack."
-msgstr "Esta unidad se ha convertido en piedra. No se puede mover ni atacar."
+msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
 
 #: src/reports.cpp:123
-#, fuzzy
 msgid "stone: "
-msgstr "piedra"
+msgstr "petrificado: "
 
 #: src/reports.cpp:233
 msgid "damage"
 msgstr "daño"
 
 #: src/reports.cpp:251
-#, fuzzy
 msgid "Lawful units: "
-msgstr "Unidades legales"
+msgstr "Unidades legales: "
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Neutral units: "
-msgstr "Unidades neutrales"
+msgstr "Unidades neutrales: "
 
 #: src/reports.cpp:254
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "Unidades caóticas"
+msgstr "Unidades caóticas: "
 
 #: src/reports.cpp:308
 msgid "Owned village"
@@ -8718,9 +8618,8 @@ msgid "Allied village"
 msgstr "Aldea aliada"
 
 #: src/reports.cpp:372
-#, fuzzy
 msgid "Observers:"
-msgstr "Observadores"
+msgstr "Observadores:"
 
 #: src/titlescreen.cpp:182
 msgid "TitleScreen button^Tutorial"
