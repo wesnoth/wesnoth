@@ -717,8 +717,9 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
+		const std::vector<gamemap::location> steps = current_route_.steps;
 		const size_t moves = move_unit(&gui_,gameinfo_,status_,map_,units_,teams_,
-		                   current_route_.steps,&recorder,&undo_stack_,&next_unit_);
+		                   steps,&recorder,&undo_stack_,&next_unit_);
 
 		cursor::set(cursor::NORMAL);
 
@@ -736,14 +737,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 		redo_stack_.clear();
 
-		assert(moves <= current_route_.steps.size());
-		const gamemap::location& dst = current_route_.steps[moves-1];
+		assert(moves <= steps.size());
+		const gamemap::location& dst = steps[moves-1];
 		const unit_map::const_iterator u = units_.find(dst);
 
 		//u may be equal to units_.end() in the case of e.g. a [teleport]
 		if(u != units_.end()) {
 			//Reselect the unit if the move was interrupted
-			if(dst != current_route_.steps.back()) {
+			if(dst != steps.back()) {
 				selected_hex_ = dst;
 				gui_.select_hex(dst);
 			}
