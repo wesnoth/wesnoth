@@ -403,7 +403,6 @@ wesnothd_SOURCES = \
 	server/metrics.cpp \
 	server/player.cpp \
 	server/server.cpp \
-	server/variable.cpp \
 	config.cpp \
 	filesystem.cpp \
 	game_config.cpp \
@@ -417,7 +416,6 @@ wesnothd_SOURCES = \
 	serialization/string_utils.cpp \
 	zipios++/xcoll.cpp \
 	server/game.hpp \
-	variable.hpp \
 	server/input_stream.hpp \
 	server/metrics.hpp \
 	server/player.hpp \
@@ -442,7 +440,6 @@ wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 campaignd_SOURCES = \
 	campaign_server/campaign_server.cpp \
-	server/variable.cpp \
 	config.cpp \
 	filesystem.cpp \
 	game_config.cpp \
@@ -458,7 +455,6 @@ campaignd_SOURCES = \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
-	variable.hpp \
 	config.hpp \
 	filesystem.hpp \
 	game_config.hpp \
@@ -487,7 +483,6 @@ exploder_SOURCES = \
 	tools/exploder_utils.cpp \
 	tools/exploder_cutter.cpp \
 	tools/exploder_composer.cpp \
-	server/variable.cpp \
 	tools/dummy_video.cpp \
 	config.cpp \
 	filesystem.cpp \
@@ -500,7 +495,6 @@ exploder_SOURCES = \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
-	variable.hpp \
 	tools/exploder_composer.hpp \
 	tools/exploder_cutter.hpp \
 	tools/exploder_utils.hpp \
@@ -516,7 +510,6 @@ cutter_SOURCES = \
 	tools/cutter.cpp \
 	tools/exploder_utils.cpp \
 	tools/exploder_cutter.cpp \
-	server/variable.cpp \
 	tools/dummy_video.cpp \
 	config.cpp \
 	filesystem.cpp \
@@ -529,7 +522,6 @@ cutter_SOURCES = \
 	serialization/string_utils.cpp \
 	serialization/tokenizer.cpp \
 	zipios++/xcoll.cpp \
-	variable.hpp \
 	tools/exploder_composer.hpp \
 	tools/exploder_cutter.hpp \
 	tools/exploder_utils.hpp \
@@ -557,7 +549,6 @@ wesnoth_zip_SOURCES = \
 	log.cpp \
 	network.cpp \
 	tstring.cpp \
-	variable.hpp \
 	config.hpp \
 	gettext.hpp \
 	filesystem.hpp \
@@ -565,7 +556,6 @@ wesnoth_zip_SOURCES = \
 	log.hpp \
 	network.hpp \
 	tstring.hpp \
-	server/variable.cpp \
 	wesconfig.h
 
 wesnoth_zip_LDADD = @SDL_LIBS@ @SDL_NET_LIBS@

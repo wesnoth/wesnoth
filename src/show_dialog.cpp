@@ -386,8 +386,6 @@ int show_dialog(display& disp, surface image,
 			screen.getx() / 2,
 			screen.gety() / 2);
 
-	std::cerr << "Message is " << message << "\n";
-
 	SDL_Rect text_size = { 0, 0, 0, 0 };
 	if(!message.empty()) {
 		text_size = font::draw_text(NULL, clipRect, message_font_size,
