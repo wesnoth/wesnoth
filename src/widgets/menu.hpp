@@ -12,7 +12,7 @@
 
 #include "SDL.h"
 
-char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = '\t', IMAGE_PREFIX = '&';
+char const HELP_STRING_SEPARATOR = '|', DEFAULT_ITEM = '*', COLUMN_SEPARATOR = ',', IMAGE_PREFIX = '&';
 
 namespace gui {
 
