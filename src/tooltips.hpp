@@ -1,8 +1,7 @@
 #ifndef TOOLTIPS_HPP_INCLUDED
 #define TOOLTIPS_HPP_INCLUDED
 
-#include "font.hpp"
-#include "video.hpp"
+#include "display.hpp"
 
 #include "SDL.h"
 
