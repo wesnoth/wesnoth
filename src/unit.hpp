@@ -32,7 +32,7 @@ class unit
 public:
 	friend struct unit_movement_resetter;
 
-	unit(const game_data& data, const config& cfg, bool generate_description=false);
+	unit(const game_data& data, const config& cfg);
 	unit(const unit_type* t, int side, bool use_traits=false, bool dummy_unit=false, unit_race::GENDER gender=unit_race::MALE);
 
 	//a constructor used when advancing a unit
@@ -105,11 +105,8 @@ public:
 	 *
 	 * \param data The global game_data object
 	 * \param cfg  Configuration object from which to read the unit
-	 * \param generate_description If set to true, will try to generate a
-	 *               name from the unit if the cfg object does not specify
-	 *               one.
 	 */
-	void read(const game_data& data, const config& cfg, bool generate_description=false);
+	void read(const game_data& data, const config& cfg);
 
 	void write(config& cfg) const;
 

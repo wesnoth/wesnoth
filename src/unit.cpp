@@ -55,14 +55,14 @@ bool compare_unit_values::operator()(const unit& a, const unit& b) const
 }
 
 //constructor for reading a unit
-unit::unit(const game_data& data, const config& cfg, bool generate_description) : 
+unit::unit(const game_data& data, const config& cfg) : 
 	state_(STATE_NORMAL),
 	moves_(0), user_end_turn_(false), facingLeft_(true),
 	resting_(false),
 	recruit_(false),
 	guardian_(false), upkeep_(UPKEEP_FREE)
 {
-	read(data,cfg, generate_description);
+	read(data,cfg);
 }
 
 unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
@@ -596,7 +596,7 @@ const std::vector<std::string>& unit::overlays() const
 	return overlays_;
 }
 
-void unit::read(const game_data& data, const config& cfg, bool generate_description)
+void unit::read(const game_data& data, const config& cfg)
 {
 	std::map<std::string,unit_type>::const_iterator i = data.unit_types.find(cfg["type"]);
 	if(i != data.unit_types.end())
@@ -635,7 +635,7 @@ void unit::read(const game_data& data, const config& cfg, bool generate_descript
 	validate_side(side_);
 
 	description_ = cfg["user_description"];
-	if(description_.empty() && generate_description)
+	if(cfg["generate_description"] == "yes")
 		description_ = type_->generate_description();
 
 	underlying_description_ = cfg["description"];
