@@ -1275,8 +1275,11 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 		image_type = image::GREYED;
 	}
 
+	unit_map::iterator un = find_visible_unit(units_, loc, map_,
+		status_.get_time_of_day().lawful_bonus,teams_,teams_[currentTeam_]);
+
 	if(loc == mouseoverHex_ && map_.on_board(mouseoverHex_) ||
-	   loc == selectedHex_ && units_.count(gamemap::location(x,y)) == 1) {
+	   loc == selectedHex_ && (un != units_.end())) {
 		image_type = image::BRIGHTENED;
 	}
 
