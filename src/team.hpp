@@ -146,4 +146,8 @@ struct teams_manager {
 
 bool is_observer();
 
+//function which will validate a side. Throws gamestatus::game_error
+//if the side is invalid
+void validate_side(int side); //throw gamestatus::game_error
+
 #endif

@@ -635,6 +635,11 @@ int play_game(int argc, char** argv)
 				gui::show_dialog(disp,NULL,"",
 				           string_table["bad_save_message"],gui::OK_ONLY);
 				continue;
+			} catch(gamestatus::game_error& e) {
+				std::cerr << "caught game_error\n";
+				gui::show_dialog(disp,NULL,"",
+				           string_table["bad_save_message"],gui::OK_ONLY);
+				continue;
 			} catch(config::error& e) {
 				std::cerr << "caught config::error\n";
 				gui::show_dialog(disp,NULL,"",
@@ -690,10 +695,12 @@ int play_game(int argc, char** argv)
 					play_level(units_data,game_config,&starting_pos,video,state,story);
 					recorder.clear();
 				} catch(gamestatus::load_game_failed& e) {
+					gui::show_dialog(disp,NULL,"","error loading the game: " + e.message,gui::OK_ONLY);
 					std::cerr << "error loading the game: " << e.message
 					          << "\n";
 					return 0;
 				} catch(gamestatus::game_error& e) {
+					gui::show_dialog(disp,NULL,"","error while playing the game: " + e.message,gui::OK_ONLY);
 					std::cerr << "error while playing the game: "
 					          << e.message << "\n";
 					return 0;

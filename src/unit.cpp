@@ -71,6 +71,9 @@ unit::unit(const unit_type* t, int side, bool use_traits) :
 			   backupAttacks_(t->attacks()),
                guardian_(false), upkeep_(UPKEEP_FULL_PRICE)
 {
+
+	validate_side(side_);
+
 	if(use_traits) {
 		//units that don't have traits generated are just generic
 		//units, so they shouldn't get a description either.
@@ -100,6 +103,8 @@ unit::unit(const unit_type* t, const unit& u) :
 			   traitsDescription_(u.traitsDescription_),
                guardian_(false), upkeep_(u.upkeep_)
 {
+	validate_side(side_);
+
 	//apply modifications etc, refresh the unit
 	apply_modifications();
 	heal_all();
@@ -540,6 +545,8 @@ void unit::read(game_data& data, const config& cfg)
 	side_ = atoi(cfg["side"].c_str());
 	if(side_ <= 0)
 		side_ = 1;
+
+	validate_side(side_);
 
 	description_ = cfg["user_description"];
 	underlying_description_ = cfg["description"];

@@ -177,6 +177,10 @@ void find_routes(const gamemap& map, const gamestatus& status,
 				 std::vector<team>& teams,
 				 bool ignore_zocs, bool allow_teleport, int turns_left, bool starting_pos)
 {
+	if(size_t(u.side()-1) >= teams.size()) {
+		return;
+	}
+
 	team& current_team = teams[u.side()-1];
 
 	//find adjacent tiles

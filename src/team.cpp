@@ -368,10 +368,14 @@ const std::string& team::name() const
 
 bool team::is_enemy(int n) const
 {
+	const size_t index = size_t(n-1);
+	if(teams == NULL || index >= teams->size()) {
+		return false;
+	}
+
 	//if we have a team name, we are friends with anyone who has the same team name
 	if(info_.team_name.empty() == false) {
-		return teams != NULL && size_t(n-1) < teams->size() &&
-	           (*teams)[n-1].info_.team_name != info_.team_name;
+		return (*teams)[index].info_.team_name != info_.team_name;
 	}
 
 	//if enemies aren't listed, then everyone is an enemy
@@ -588,4 +592,16 @@ bool is_observer()
 	}
 
 	return true;
+}
+
+void validate_side(int side)
+{
+	if(teams == NULL) {
+		return;
+	}
+
+	if(side < 1 || side > int(teams->size())) {
+		std::cerr << "invalid side " << side << " throwing game_error\n";
+		throw gamestatus::game_error("invalid side found in unit definition");
+	}
 }

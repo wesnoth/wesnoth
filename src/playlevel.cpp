@@ -162,6 +162,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 	std::vector<team> teams;
 
+	const teams_manager team_manager(teams);
+
 	int first_human_team = -1;
 
 	const config::child_list& unit_cfg = level->get_children("side");
@@ -192,6 +194,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		}
 
 		std::cerr << "set gold to '" << ngold << "'\n";
+
+		teams.push_back(team(**ui,ngold));
 
 		//if this side tag describes the leader of the side
 		if((**ui)["no_leader"] != "yes") {
@@ -234,8 +238,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 			}
 		}
 
-		teams.push_back(team(**ui,ngold));
-
 		//if the game state specifies units that can be recruited for the player
 		//then add them
 		if(teams.size() == 1 && state_of_game.can_recruit.empty() == false) {
@@ -264,8 +266,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 			}
 		}
 	}
-
-	const teams_manager team_manager(teams);
 
 	const config* theme_cfg = NULL;
 	if((*level)["theme"] != "") {
