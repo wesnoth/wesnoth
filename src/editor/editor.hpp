@@ -192,6 +192,10 @@ private:
 	/// gets larger than the maximum size.
 	void add_undo_action(const map_undo_action &action);
 
+	/// Update the selection and highlightning of the hexes the mouse
+	/// currently is over.
+	void update_mouse_over_hexes(const gamemap::location mouse_over_hex);
+
 	display &gui_;
 	gamemap &map_;
 	gui::button tup_, tdown_;
@@ -216,6 +220,8 @@ private:
 	terrain_palette palette_;
 	brush_bar brush_;
 	std::vector<gamemap::location> starting_positions_;
+	std::set<gamemap::location> mouse_over_hexes_;
+	std::set<gamemap::location> selected_hexes_;
 };
 
 }

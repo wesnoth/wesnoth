@@ -400,6 +400,7 @@ void map_editor::invalidate_adjacent(const gamemap::location hex) {
 }
 
 void map_editor::invalidate_all_and_adjacent(const std::vector<gamemap::location> &hexes) {
+	/// XXX Change to use a set.
 	std::vector<gamemap::location> to_invalidate;
 	std::vector<gamemap::location>::const_iterator it;
 	for (it = hexes.begin(); it != hexes.end(); it++) {
@@ -538,9 +539,34 @@ void map_editor::recalculate_starting_pos_labels() {
 		}
 	}
 }
-  
+
+void map_editor::update_mouse_over_hexes(const gamemap::location mouse_over_hex) {
+	std::vector<gamemap::location> curr_locs =
+		get_tiles(map_, mouse_over_hex, brush_.selected_brush_size());
+	std::set<gamemap::location>::iterator it;
+	for (it = mouse_over_hexes_.begin(); it != mouse_over_hexes_.end(); it++) {
+		if (selected_hexes_.find(*it) == selected_hexes_.end()) {
+			// Only remove highlightning if the hex is not selected in
+			// an other way.
+			gui_.remove_highlighted_loc(*it);
+		}
+	}
+	mouse_over_hexes_.clear();
+	if (mouse_over_hex != gamemap::location()) {
+		// Only highlight if the mouse is on the map.
+		for (std::vector<gamemap::location>::iterator itv = curr_locs.begin();
+			 itv != curr_locs.end(); itv++) {
+			mouse_over_hexes_.insert(*itv);
+			gui_.add_highlighted_loc(*itv);
+		}
+	}
+	gui_.highlight_hex(mouse_over_hex);
+	selected_hex_ = mouse_over_hex;
+}
+
 void map_editor::main_loop() {
 	const int scroll_speed = preferences::scroll_speed();
+	int last_brush_size = brush_.selected_brush_size();
 	while (abort_ == DONT_ABORT) {
 		int mousex, mousey;
 		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
@@ -549,9 +575,12 @@ void map_editor::main_loop() {
 		const bool m_button_down = mouse_flags & SDL_BUTTON_MMASK;
 
 		const gamemap::location cur_hex = gui_.hex_clicked_on(mousex,mousey);
-		if (cur_hex != selected_hex_) {
-			gui_.highlight_hex(cur_hex);
-			selected_hex_ = cur_hex;
+		if (cur_hex != selected_hex_
+			|| last_brush_size != brush_.selected_brush_size()) {
+			// The mouse have moved or the brush size has changed,
+			// adjust the hexes the mouse is over.
+			update_mouse_over_hexes(cur_hex);
+			last_brush_size = brush_.selected_brush_size();
 		}
 		const theme::menu* const m = gui_.menu_pressed(mousex, mousey,
 													   mouse_flags & SDL_BUTTON_LMASK);
