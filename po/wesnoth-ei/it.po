@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-11-25 11:14+0100\n"
-"PO-Revision-Date: 2004-10-16 11:16+0100\n"
-"Last-Translator: RokStar <lcspra@tin.it>\n"
+"PO-Revision-Date: 2004-12-04 19:41+0100\n"
+"Last-Translator: DarkAmex <americo_iacovizzi@libero.it>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,23 +16,23 @@ msgstr "L'invasione dell'Est"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
 msgid "(easiest)"
-msgstr ""
+msgstr "(Facile)"
 
 #: data/campaigns/Eastern_Invasion.cfg:10
 msgid "Spearman"
-msgstr ""
+msgstr "Lanciere"
 
 #: data/campaigns/Eastern_Invasion.cfg:11
 msgid "Swordsman"
-msgstr ""
+msgstr "Spadaccino"
 
 #: data/campaigns/Eastern_Invasion.cfg:12
 msgid "(hardest)"
-msgstr ""
+msgstr "(Difficile)"
 
 #: data/campaigns/Eastern_Invasion.cfg:12
 msgid "Royal Guard"
-msgstr ""
+msgstr "Guardia Reale"
 
 #: data/campaigns/Eastern_Invasion.cfg:13
 msgid ""
@@ -224,13 +224,12 @@ msgstr ""
 "Molto bene. Penso che le celle rimanenti siano più avanti su questa strada."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:549
-#, fuzzy
 msgid ""
 "So, they must have captured $R2.user_description... Well, follow me. We have "
 "to get out of this dungeon."
 msgstr ""
-"Allora devono aver catturato $R2.user_desciption oltre a me, Dacyn ed Owaec. "
-"Bene, $R2.type, seguimi. Dobbiamo uscire da questo sotterraneo."
+"Allora devono aver catturato $R2.user_desciption... Bene, seguimi. Dobbiamo "
+"uscire da questo sotterraneo."
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:560
 msgid ""
@@ -945,7 +944,6 @@ msgid "Northern Outpost"
 msgstr "Avamposto del Nord"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:26
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -957,7 +955,7 @@ msgid ""
 msgstr ""
 "\n"
 "Vittoria:\n"
-"@Uccidi il Lich nemico\n"
+"@Trova il capo dei banditi nel villaggio ed uccidilo\n"
 "Sconfitta:\n"
 "#Morte di Gweddry\n"
 "#Morte di Dacyn\n"
@@ -983,6 +981,11 @@ msgid ""
 "get aid, and the bandits retreat into the villages. I cannot find a way to "
 "defeat them."
 msgstr ""
+"Non sono sicuro. Ci sono dei banditi in questa regione e mi è stato detto "
+"che è mio dovere sconfiggerli per proteggere il villaggi locali. Quando ho "
+"inviato le truppe per sconfiggerli, vennero spazzati prima di poter ricevere "
+"aiuto, e i banditi si son ritirati nei villaggi. Io non riesco a trovare un "
+"modo per sconfiggerli."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:126
 msgid ""
@@ -990,49 +993,63 @@ msgid ""
 "cast a spell that will reveal them if you enter the villages. However, I "
 "won't be able to help you in battle."
 msgstr ""
+"Credo di poterti aiutare. Sono un mago; Credo di poter pronuziare un "
+"incantesimo che possa rivelarli se entri nei villaggi. Comunque, non ti "
+"potrò aiutare nella battaglia."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:131
 msgid "It is time to drive out some bandits. Dacyn, go cast your spell!"
 msgstr ""
+"è tempo di spingere fuori qualche bandito. Dacyn, pronuncia il tuo "
+"incantesimo!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:136
 msgid ""
 "I believe there is a leader behind these outlaws; kill him, and we will have "
 "defeated these bandits."
 msgstr ""
+"Credo che ci sia un capo dietro a questi banditi; uccidiamolo ed avremo "
+"sconfitto anche loro"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:141
 msgid "Go, go far from here! But me and my kind will chase you, and kill you!"
 msgstr ""
+"Andiamo, andiamo lontano da qui! Ma io ed i miei compari ve la faremo pagare!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:191
 msgid "They're here!"
-msgstr ""
+msgstr "Sono qui!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:197
 msgid "No outlaws in this village."
-msgstr ""
+msgstr "Non c'è nessun bandito in questo villaggio."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:224
 msgid ""
 "So, you have found my hiding place. Very well, I guess I will have to kill "
 "you!"
 msgstr ""
+"E così avete trovato dove mi nascondevo. Molto bene, credo di essere "
+"costretto ad uccidervi!"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:228
 msgid "Thats the bandit leader! Kill him, and we will have fufilled our duty!"
 msgstr ""
+"E' il Capo dei banditi! Uccidiamolo ed avremo adempiuto al nostro dovere"
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:241
-#, fuzzy
 msgid "You have defeated me! I can terrorize the villagers no more..."
-msgstr "No! Mi avete sconfitto e potete rientrare a Wesnoth!"
+msgstr ""
+"No! Mi avete sconfitto! Non potrò più terrorizzare gli abitanti dei "
+"villaggi..."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:245
 msgid ""
 "I have fufilled me duty to the villages. Now I suppose I can join you in "
 "your quest."
 msgstr ""
+"Ho adempiuto al mio dovere nei confronti dei villaggi. Ora suppongo di "
+"potermi unire a voi nella vostra aventura."
 
 #: data/scenarios/Eastern_Invasion/Northern_Outpost.cfg:253
 msgid ""
@@ -1040,6 +1057,10 @@ msgid ""
 "we must get far away from these lands. I think we should go north, and try "
 "to reach Weldyn from a different route."
 msgstr ""
+"Buon lavoro! Ora noi dovremmo andare avanti, verso nord. L'esploratore non "
+"morto ci ha avvisato; dobbiamo mantenerci lontani da quelle terre. Credo che "
+"dovremmo andare a nord e cercare di raggiungere Weldyn percorrendo una "
+"strada differente."
 
 #: data/scenarios/Eastern_Invasion/Ogre_Training.cfg:4
 msgid "Training the Ogres"
@@ -2337,110 +2358,3 @@ msgid ""
 msgstr ""
 "Poi, al tramonto, un giorno, Gweddry ed i suoi uomini vennero svegliati dal "
 "pianto disperato della sentinella notturna..."
-
-#~ msgid ""
-#~ "&human-spearman.png,Spearman,(easiest);*&human-swordman.png,Swordsman;"
-#~ "&human-royalguard.png,Royal Guard,(hardest)"
-#~ msgstr ""
-#~ "&human-spearman.png,Arpionatore,(facile);*&human-swordman.png,Spadaccino;"
-#~ "&human-royalguard.png,Guardia Reale,(difficile)"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Find the thieves in the villages\n"
-#~ "@Kill the thieves and any other bandits that attack\n"
-#~ "@Reach the signpost near Owaec\n"
-#~ "Defeat:\n"
-#~ "#Death of Gweddry\n"
-#~ "#Death of Dacyn\n"
-#~ "#Death of Owaec"
-#~ msgstr ""
-#~ "\n"
-#~ "Vittoria:\n"
-#~ "@Trova i ladri nei villaggi\n"
-#~ "@Uccidi tutti i ladri ed ogni altro bandito che attacca\n"
-#~ "@Raggiungi il cartello vicino ad Owaec\n"
-#~ "Sconfitta:\n"
-#~ "#Morte di Gweddry\n"
-#~ "#Morte di Dacyn\n"
-#~ "#Morte di Owaec"
-
-#~ msgid ""
-#~ "I am not sure. There are bandits in this country, and it is they who rule "
-#~ "this land, not the king. My men are afraid of them, and refuse to come "
-#~ "out and fight. As you see, though I have many men, they stay penned up in "
-#~ "the keep. The thieves hide in the villages when we come out in groups, "
-#~ "and pick us off when we separate."
-#~ msgstr ""
-#~ "Non ne sono certo. Ci sono banditi in questo paese e sono loro a "
-#~ "controllare la zona, non il re. I miei uomini hanno paura di loro e si "
-#~ "rifiutano di uscire a combatterli. Come vedi, anche se ho molti uomini, "
-#~ "stanno riunchiusi nelle loro stanze. I ladri si nascondono nei villaggi "
-#~ "quando usciamo in ronda, e ci attaccano quando ci separiamo."
-
-#~ msgid ""
-#~ "Gweddry, I don't think we should try to regain our outpost. We need to go "
-#~ "directly to the king. We will see if we can get across to where you are "
-#~ "without thieves killing us. Also, we will try to go to the villages and "
-#~ "drive the thieves out. Onward, men!"
-#~ msgstr ""
-#~ "Gweddry, non credo che dovremmo provare a riprendere il nostro avamposto. "
-#~ "Dobbiamo andare direttamente dal re. Vedremo se potremo arrivare dove "
-#~ "siete senza farci uccidere dai ladri. Inoltre, proveremo ad entrare nei "
-#~ "villaggi e scacciare quei ladri. In marcia uomini!"
-
-#~ msgid "We have defeated these bandits. Dacyn, where should we go now?"
-#~ msgstr "Abbiamo sconfitto questi banditi! Dacyn, dove andiamo adesso?"
-
-#~ msgid ""
-#~ "Well, our outpost has been overrun by undead, and we can't go back there "
-#~ "safely. What about yours, Owaec? Have you encountered them?"
-#~ msgstr ""
-#~ "Il nostro avamposto è stato preso dai non-morti e non possiamo tornare "
-#~ "indietro. E tu Owaec? Li hai incontrati anche te?"
-
-#~ msgid ""
-#~ "No, I haven't seen any undead yet. However, if you say more undead are "
-#~ "coming, I believe you. I don't think me and my men could fight against "
-#~ "them, so we will come with you."
-#~ msgstr ""
-#~ "No, non ho ancora visto nessun non-morto. Ad ogni modo, se dici che altri "
-#~ "non-morti stanno arrivando, ti credo. Non penso che io ed i miei uomini "
-#~ "potremmo combatterli, perciò verremo con voi."
-
-#~ msgid ""
-#~ "Very well. We are going north right now, because there are too many "
-#~ "undead to the east and they have already passed us in the west and south."
-#~ msgstr ""
-#~ "Molto bene. Ci stiamo dirigendo a nord adesso, perché ci sono troppi non-"
-#~ "morti ad est e ci hanno già sorpassato ad ovest ed a sud."
-
-#~ msgid "Hahaha! I have found you, pesky humans! Prepare to die!"
-#~ msgstr "Hahaha! Vi ho trovati stupidi umani! Preparatevi a morire!"
-
-#~ msgid ""
-#~ "Oh no! The undead have come, and we have not had time to prepare for "
-#~ "them! We will all die now!"
-#~ msgstr ""
-#~ "Oh no! I non-morti sono arrivati e non abbiamo tempo per prepare una "
-#~ "contro offensiva. Moriremo tutti adesso!"
-
-#~ msgid ""
-#~ "You have gotten rid of some of these bandits, but I fear many still "
-#~ "remain. Keep searching."
-#~ msgstr ""
-#~ "Ti sei liberato di questi banditi ma ho paura che molti di loro siano in "
-#~ "zona. Continuiamo a cercare."
-
-#~ msgid ""
-#~ "Good work so far. I suspect we have significantly weakened the bandit's "
-#~ "number."
-#~ msgstr "Bel lavoro. Abbiamo di sicuro decimato il numero dei banditi."
-
-#~ msgid ""
-#~ "I think you have killed most of them. I hope those that are left don't "
-#~ "kill us."
-#~ msgstr ""
-#~ "Penso che tu ne abbia uccisa una gran parte. Spero che quelli rimasti non "
-#~ "ci uccidano."
