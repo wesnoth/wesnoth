@@ -28,7 +28,7 @@ namespace about
 {
 
 std::vector<std::string> get_text() {
-	static const std::string credits[] = {
+	static const char *credits[] = {
 		" ",
 		"- ",
 		" ",
@@ -42,15 +42,15 @@ std::vector<std::string> get_text() {
 		" ",
 		"- ",
 
-		_("+Core Developers"),
-		_("-   Main Developer"),
+		"_" N_("+Core Developers"),
+		"_" N_("-   Main Developer"),
 		"   David White (Sirp)",
 		"- ",
-		_("-   Artwork and graphics designer"),
+		"_" N_("-   Artwork and graphics designer"),
 		"   Francisco Muñoz (fmunoz)",
 		"+ ",
 
-		_("+Developers"),
+		"_" N_("+Developers"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"-   Cedric Duval",
 		"-   Cyril Bouthors (CyrilB)",
@@ -65,11 +65,11 @@ std::vector<std::string> get_text() {
 		"-   Zas",
 		"+ ",
 
-		_("+General Purpose Administrators"),
+		"_" N_("+General Purpose Administrators"),
 		"-   Crossbow/Miyo",
 		"+ ",
 
-		_("+Artwork and graphics designers"),
+		"_" N_("+Artwork and graphics designers"),
 		"-   Andrew James Patterson (Kamahawk)",
 		"-   antwerp",
 		"-   Christophe Anjard",
@@ -93,14 +93,14 @@ std::vector<std::string> get_text() {
 		"-   Svetac",
 		"+ ",
 
-		_("+Music"),
+		"_" N_("+Music"),
 		"-   Aleksi",
 		"-   Fredrik Lindroth",
 		"-   Joseph Toscano (zhaymusic.com)",
 		"-   Pau Congost",
 		"+ ",
 
-		_("+Scenario Designers"),
+		"_" N_("+Scenario Designers"),
 		"-   Benjamin Drieu",
 		"-   Dacyn",
 		"-   David White (Sirp)",
@@ -110,12 +110,12 @@ std::vector<std::string> get_text() {
 		"-   Justin Zaun (jzaun)",
 		"+ ",
 
-		_("+Multiplayer Maps"),
+		"_" N_("+Multiplayer Maps"),
 		"-   Peter Groen (pg)",
 		"-   Tom Chance (telex4)",
 		"+ ",
 
-		_("+Packagers"),
+		"_" N_("+Packagers"),
 		"-   Darryl Dixon",
 		"-   Jay Hopping",
 		"-   Marcin Konicki (ahwayakchih)",
@@ -123,26 +123,26 @@ std::vector<std::string> get_text() {
 		"-   Mark Michelsen (skovbaer)",
 		"+ ",
 
-		_("+Miscellaneous"),
+		"_" N_("+Miscellaneous"),
 		"-   Francesco Gigli (Jaramir)",
 		"-   Jordà Polo (ettin)",
 		"+ ",
 
-		_("+Internationalization Manager"),
+		"_" N_("+Internationalization Manager"),
 		"-   Mark Michelsen (skovbaer)",
 		"+ ",
 
-		_("+Basque Translation"),
+		"_" N_("+Basque Translation"),
 		"-   Alfredo Beaumont (ziberpunk)",
 		"+ ",
 
-		_("+Catalan Translation"),
+		"_" N_("+Catalan Translation"),
 		"-   Carles Company (brrr)",
 		"-   Dan Rosàs Garcia (focks)",
 		"-   Jordà Polo (ettin)",
 		"+ ",
 
-		_("+Czech Translation"),
+		"_" N_("+Czech Translation"),
 		"-   David Nečas (Yeti)",
 		"-   Mintaka",
 		"-   Petr Kopač (Ferda)",
@@ -151,21 +151,21 @@ std::vector<std::string> get_text() {
 		"-   Vít Krčál",
 		"+ ",
 
-		_("+Danish Translation"),
+		"_" N_("+Danish Translation"),
 		"-   Mark Michelsen (skovbaer)",
 		"-   Mathias Bundgaard Svensson (freaken)",
 		"+ ",
 
-		_("+Dutch Translation"),
+		"_" N_("+Dutch Translation"),
 		"-   Lala",
 		"-   Pieter Vermeylen (Onne)",
 		"+ ",
 
-		_("+Finnish Translation"),
+		"_" N_("+Finnish Translation"),
 		"-   paxed",
 		"+ ",
 
-		_("+French Translation"),
+		"_" N_("+French Translation"),
 		"-   Benoit Astruc",
 		"-   Cédric Duval",
 		"-   Guillaume Duwelz-Rebert",
@@ -177,7 +177,7 @@ std::vector<std::string> get_text() {
 		"-   Zas",
 		"+ ",
 
-		_("+German Translation"),
+		"_" N_("+German Translation"),
 		"-   Andre Schmidt",
 		"-   Boris Stumm",
 		"-   Christoph Berg",
@@ -187,17 +187,17 @@ std::vector<std::string> get_text() {
 		"-   Stephan Grochtmann",
 		"+ ",
 
-		_("+Greek Translation"),
+		"_" N_("+Greek Translation"),
 		"-   Katerina Sykioti",
 		"-   Konstantinos Karasavvas",
 		"+ ",
 
-		_("+Hungarian Translation"),
+		"_" N_("+Hungarian Translation"),
 		"-   Khiraly",
 		"-   Széll Tamás (TomJoad)",
 		"+ ",
 
-		_("+Italian Translation"),
+		"_" N_("+Italian Translation"),
 		"-   Alessio D'Ascanio (otaku)",
 		"-   Americo Iacovizzi (DarkAmex)",
 		"-   crys0000",
@@ -206,19 +206,19 @@ std::vector<std::string> get_text() {
 		"-   RokStar",
 		"+ ",
 
-		_("+Norwegian Translation"),
+		"_" N_("+Norwegian Translation"),
 		"-   Hallvard Norheim Bø (Lysander)",
 		"-   Erik J. Mesoy (Circon)",
 		"-   Susanne Mesoy (Rarlgland)",
 		"+ ",
 
-		_("+Polish Translation"),
+		"_" N_("+Polish Translation"),
 		"-   Artur R. Czechowski",
 		"-   methinks",
 		"-   BOrsuk",
 		"+ ",
 
-		_("+Portuguese (Brazil) Translation"),
+		"_" N_("+Portuguese (Brazil) Translation"),
 		"-   Ambra Viviani Loos",
 		"-   Celso Goya",
 		"-   Claus Aranha",
@@ -226,11 +226,11 @@ std::vector<std::string> get_text() {
 		"-   Renato Cunha",
 		"+ ",
 
-		_("+Slovak Translation"),
+		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
 		"+ ",
 
-		_("+Spanish Translation"),
+		"_" N_("+Spanish Translation"),
 		"-   David Martínez",
 		"-   Franciso Muñoz (fmunoz)",
 		"-   Gabriel Rodríguez (Chewie)",
@@ -238,14 +238,14 @@ std::vector<std::string> get_text() {
 		"-   Jose Manuel Gomez (joseg)",
 		"+ ",
 
-		_("+Swedish Translation"),
+		"_" N_("+Swedish Translation"),
 		"-   Alexander Kjäll (capitol)",
 		"-   Susanna Björverud (sanna)",
 		"-   Stefan Bergström (tephlon)",
 		"-   wint3r",
 		"+ ",
 		
-		_("+Contributors"),
+		"_" N_("+Contributors"),
 		"-   Cyril Bouthors (CyrilB)",
 		"-   edge",
 		"-   Frédéric Wagner",
@@ -253,12 +253,21 @@ std::vector<std::string> get_text() {
 		"-   Maksim Orlovich (SadEagle)",
 		"+ ",
 
-		_("+ Bots"),
+		"_" N_("+Bots"),
 		"-   wesbot",
 		"+ "
 	};
 
-	return std::vector<std::string>(credits, credits + sizeof(credits) / sizeof(*credits));
+	std::vector< std::string > res;
+	size_t len = sizeof(credits) / sizeof(*credits);
+	res.reserve(len);
+	for(size_t i = 0; i < len; ++i) {
+		const char *s = credits[i];
+		if (s[0] == '_')
+			s = gettext(s + 1);
+		res.push_back(s);
+	}
+	return res;
 }
 
 void show_about(display& disp)
