@@ -2653,22 +2653,26 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//make the player an AI, and redo this turn, in case
 		//it was the current player's team who has just changed into
 		//an AI.
-		if(action == 0) {
-			teams_[side].make_ai();
-			return PROCESS_RESTART_TURN;
-		} else if(action == 1) {
-			teams_[side].make_human();
-			return PROCESS_RESTART_TURN;
-		} else if(action > 2) {
-			const size_t index = size_t(action - 3);
-			if(index < observers.size()) {
-				change_side_controller(cfg["side_drop"],observers[index],true);
-			}
-
-			teams_[side].make_human();
-			return PROCESS_RESTART_TURN;
+		switch(action) {
+			case 0:
+				teams_[side].make_ai();
+				return PROCESS_RESTART_TURN;
+			case 1:
+				teams_[side].make_human();
+				return PROCESS_RESTART_TURN;
+			default:
+				if (action > 2) {
+					const size_t index = static_cast<size_t>(action - 3);
+					if (index < observers.size()) {
+						teams_[side].make_network();
+						change_side_controller(cfg["side_drop"], observers[index]);
+					} else {
+						teams_[side].make_ai();
+					}
+					return PROCESS_RESTART_TURN;
+				}
+				break;
 		}
-
 		throw network::error("");
 	}
 
