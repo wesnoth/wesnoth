@@ -443,6 +443,7 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		sliders_gold_.push_back(gui::slider(*disp_, r));
 		sliders_gold_.back().set_min(20);
 		sliders_gold_.back().set_max(1000);
+		sliders_gold_.back().set_increment(25);
 		sliders_gold_.back().set_value(lexical_cast_default<int>((**sd)["gold"],100));
 		r.w = 30;
 		r.x = left+603;

@@ -31,6 +31,8 @@ public:
 	void set_min(int value);
 	void set_max(int value);
 	void set_value(int value);
+	void set_increment(int increment);
+
 	int value() const;
 	int max_value() const;
 	int min_value() const;
@@ -44,6 +46,7 @@ private:
 	int min_;
 	int max_;
 	int value_;
+	int increment_;
 
 	bool highlight_;
 	bool clicked_;

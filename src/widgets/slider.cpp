@@ -27,8 +27,8 @@ namespace {
 namespace gui {
 
 slider::slider(display& d, const SDL_Rect& rect)
-	: widget(d, rect), min_(-100000), max_(100000), value_(0), highlight_(false), clicked_(true),
-	  dragging_(false)
+	: widget(d, rect), min_(-100000), max_(100000), increment_(1), 
+	  value_(0), highlight_(false), clicked_(true), dragging_(false)
 {
 	set_dirty(true);
 }
@@ -51,13 +51,26 @@ void slider::set_max(int value)
 
 void slider::set_value(int value)
 {
+	if (value == value_)
+		return;
+
 	value_ = value;
 	if (value_ > max_)
 		value_ = max_;
 	if (value_ < min_)
 		value_ = min_;
 
+	if (increment_ > 1) {
+		int hi = increment_ / 2;
+		value_ = ((value_ + hi) / increment_) * increment_;
+	}
+
 	set_dirty(true);
+}
+
+void slider::set_increment(int increment)
+{
+	increment_ = increment;
 }
 
 int slider::value() const
@@ -170,10 +183,14 @@ void slider::process()
 		new_value = (int)(tmp2 * (max_ - min_ + 0.0)) + min_;
 	}
 
+	set_value(new_value);
+
+#if 0
 	if(new_value != value_) {
 		value_ = new_value;
 		set_dirty(true);
 	}
+#endif
 
 	draw();
 }
