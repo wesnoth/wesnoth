@@ -45,4 +45,32 @@ T round(T n) { return floor(n + 0.5); }
 
 }
 
+struct bad_lexical_cast {};
+
+template<typename To, typename From>
+To lexical_cast(From a)
+{
+	To res;
+	std::stringstream str;
+	
+	if(!(str << a && str >> res)) {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+
+template<typename To, typename From>
+To lexical_cast_default(From a, To def=To())
+{
+	To res;
+	std::stringstream str;
+	
+	if(!(str << a && str >> res)) {
+		return def;
+	} else {
+		return res;
+	}
+}
+
 #endif

@@ -574,11 +574,10 @@ void attack(display& gui, const gamemap& map,
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
-				char buf[50];
-				sprintf(buf,"%d",stats.damage_defender_takes);
-				cfg["damage"] = buf;
-				sprintf(buf,"%d",stats.chance_to_hit_defender);
-				cfg["chance"] = buf;
+
+				cfg["damage"] = lexical_cast<std::string>(stats.damage_defender_takes);
+				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_defender);
+
 				set_random_results(cfg);
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
@@ -709,11 +708,9 @@ void attack(display& gui, const gamemap& map,
 				config cfg;
 				cfg["hits"] = (hits ? "yes" : "no");
 				cfg["dies"] = (dies ? "yes" : "no");
-				char buf[50];
-				sprintf(buf,"%d",stats.damage_attacker_takes);
-				cfg["damage"] = buf;
-				sprintf(buf,"%d",stats.chance_to_hit_attacker);
-				cfg["chance"] = buf;
+				cfg["damage"] = lexical_cast<std::string>(stats.damage_attacker_takes);
+				cfg["chance"] = lexical_cast<std::string>(stats.chance_to_hit_attacker);
+
 				set_random_results(cfg);
 			} else {
 				const bool results_dies = (*ran_results)["dies"] == "yes";
