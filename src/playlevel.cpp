@@ -446,7 +446,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 		if(first_human_team != -1) {
 			clear_shroud(gui,status,map,gameinfo,units,teams,first_human_team);
 			LOG_NG << "b " << (SDL_GetTicks() - ticks) << "\n";
-			gui.scroll_to_tile(map.starting_position(first_human_team+1).x,map.starting_position(first_human_team+1).y,display::WARP);
+			gui.scroll_to_tile(map.starting_position(first_human_team + 1).x,
+			                   map.starting_position(first_human_team + 1).y, display::WARP);
 			LOG_NG << "c " << (SDL_GetTicks() - ticks) << "\n";
 		}
 	
@@ -475,6 +476,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 				events::raise_draw_event();
 				if(!loading_game) {
 					game_events::fire("start");
+					game_events::set_variable("turn_number", "1");
 				}
 
 				gui.draw();
