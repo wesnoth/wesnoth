@@ -39,9 +39,11 @@ CVS HEAD:
    * Elvish High Lord
  * take advantage of libzipios++ if available, to read cfg files, maps,
    images, sound effects, and fonts from zip files
- * fixed missing Deathblade in multiplayer
  * downloaded campaigns no longer require a restart to be able to play them
- * multiplayer game settings (map name, gold per village, ...) are saved now
+ * multiplayer improvements
+   * multiplayer game settings (map name, gold per village, ...) are saved now
+   * fixed missing Deathblade in multiplayer
+   * Random Map (Desert) uses new desert environment; also tweaked
  * new units:
    * Javelineer
  * unit balancing:
@@ -54,9 +56,13 @@ CVS HEAD:
    * Saurian Skirmisher: Increase cost to 14 gold
    * Wraith, Spectre: reduce resistance to blade, pierce, impact by 20%, 
      increase HP by 10%
-   * Tentacle of the Deep: Change movement type to 'float'
    * Poacher: Reduce cost to 14
+   * Tentacle of the Deep: Change movement type to 'float'
+   * Flying creatures can now cross canyons
  * Scenario revisions in Heir to the Throne:
+   * fixed typo in HttT's Mountain Pass
+   * fixed misspelled description in 'Return to Wesnoth'
+   * fixed sign glitch in The Rise of Wesnoth
    * Blackwater Port- Make the port look like more of a port, other minor 
      changes that mute each other out
    * The Isle of Anduin- Extend shallow water around the Isle, remove the 
@@ -70,13 +76,14 @@ CVS HEAD:
    * The Crossroads- New map, weaker more diffuse ambushes, and less gold for 
      the Orcs 
    * The Princess of Wesnoth- Minor map changes, and made the scenario harder
+   * Set passive_leader=yes in 'The Princess of Wesnoth'
+   * Set result=continue in 'Plunging into the Darkness'
  * Scenario revisions in The Rise of Wesnoth:
    * Reduce the difficulty of TRoW on 'Hard' particularly, and reduce the
      difficulty slightly on 'Easy' & 'Normal'
    * A New Land - Sync with the map from Bay of Pearls
    * Cursed Isle- Sync with the map from Isle of the Damned, make the temples
      match locations
- * flying creatures can now cross canyons
  * updated unix manpages
  * "," is no longer the column separator, it does not have to be escaped
    anymore in some translations, "=" is the new separator
@@ -87,13 +94,8 @@ CVS HEAD:
  * fixed untranslatable strings
  * fixed "damage inflicted" statistic (incorrectly computed when defending)
  * fixed missing diagonal projectiles on many units
- * fixed sign glitch in The Rise of Wesnoth
- * fixed typo in HttT's Mountain Pass
  * fixed {CROSS} in 'Temple of the Deep'
  * fixed the description of the 'Ghost'
- * fixed misspelled description in 'Return to Wesnoth'
- * Set passive_leader=yes in 'The Princess of Wesnoth'
- * Set result=continue in 'Plunging into the Darkness'
  * remove obsolete tools: make_translation merge_translations
  * remove obsolete id= for messages in TRoW & HttT
  * remove old unused images:
