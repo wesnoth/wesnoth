@@ -25,18 +25,24 @@
 struct scope_logger
 {
 	scope_logger(const std::string& str) : ticks_(SDL_GetTicks()), str_(str) {
-		for(int i = 0; i != indent; ++i)
-			std::cerr << "  ";
-		++indent;
+		do_indent();
 		std::cerr << "BEGIN: " << str_ << "\n";
+		do_indent();
+		++indent;
 	}
 
 	~scope_logger() {
 		const int ticks = SDL_GetTicks() - ticks_;
 		--indent;
+		do_indent();
+		do_indent();
+		std::cerr << "END: " << str_ << " (took " << ticks << "ms)\n";
+	}
+
+	void do_indent()
+	{
 		for(int i = 0; i != indent; ++i)
 			std::cerr << "  ";
-		std::cerr << "END: " << str_ << " (took " << ticks << "ms)\n";
 	}
 
 private:

@@ -162,7 +162,7 @@ void turn_info::turn_slice()
 
 	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
-	const int scroll_threshold = preferences::fullscreen() ? 5 : 0;
+	const int scroll_threshold = 5;
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
 		gui_.scroll(0,-preferences::scroll_speed());

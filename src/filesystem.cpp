@@ -186,6 +186,8 @@ std::string get_dir(const std::string& dir_path)
 
 	if(dir == NULL)
 		return "";
+
+	closedir(dir);
 #endif
 
 	return dir_path;

@@ -67,8 +67,8 @@ unit_race::GENDER unit::generate_gender(const unit_type& type, bool gen)
 }
 
 //constructor for creating a new unit
-unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit) :
-               gender_(generate_gender(*t,use_traits)),
+unit::unit(const unit_type* t, int side, bool use_traits, bool dummy_unit, unit_race::GENDER gender) :
+               gender_(dummy_unit ? gender : generate_gender(*t,use_traits)),
                type_(t->get_gender_unit_type(gender_)), state_(STATE_NORMAL),
 			   hitpoints_(type_->hitpoints()),
 			   maxHitpoints_(type_->hitpoints()),
