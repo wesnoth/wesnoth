@@ -12,6 +12,7 @@
 */
 
 #include "game_config.hpp"
+#include "log.hpp"
 #include "sound.hpp"
 
 #include "SDL_mixer.h"

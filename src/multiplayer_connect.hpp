@@ -48,6 +48,8 @@ private:
 	game_state *state_;
 	config *level_;
 
+	config loaded_level_;
+
 	bool show_replay_;
 	bool save_;
 	int status_;
@@ -70,7 +72,7 @@ private:
 	gui::button launch_;
 	gui::button cancel_;
 
-	SDL_Surface *gold_bg_;
+	surface_restorer gold_bg_;
 };
 
 #endif

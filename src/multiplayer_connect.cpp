@@ -46,7 +46,7 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 	    combos_team_(), combos_color_(), sliders_gold_(),
 	    launch_(gui::button(disp, string_table["im_ready"])),
 	    cancel_(gui::button(disp, string_table["cancel"])),
-	    gold_bg_(NULL), width_(630), height_(290)
+	    width_(630), height_(290)
 {
 	// Send Initial information
 	config response;
@@ -58,8 +58,8 @@ mp_connect::mp_connect(display& disp, std::string game_name,
 int mp_connect::load_map(int map, int num_turns, int village_gold,
 			 bool fog_game, bool shroud_game)
 {
+	log_scope("load_map");
 	// Setup the game
-	config loaded_level;
 	config* level_ptr;
 
 	const config::child_list& levels = cfg_->get_children("multiplayer");
@@ -75,6 +75,10 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 			status_ = -1;
 			return status_;
 		}
+
+		log_scope("loading save");
+
+		std::cerr << "a\n";
 
 		load_game(*data_, game, *state_);
 
@@ -96,8 +100,8 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 			}
 		}
 
-		loaded_level = state_->starting_pos;
-		level_ptr= &loaded_level;
+		loaded_level_ = state_->starting_pos;
+		level_ptr= &loaded_level_;
 
 		//make all sides untaken
 		for(config::child_itors i = level_ptr->child_range("side");
@@ -111,14 +115,16 @@ int mp_connect::load_map(int map, int num_turns, int village_gold,
 		recorder = replay(state_->replay_data);
 
 		//if this is a snapshot save, we don't want to use the replay data
-		if(loaded_level["snapshot"] == "yes")
+		if(loaded_level_["snapshot"] == "yes")
 			recorder.set_to_end();
 
 		//add the replay data under the level data so clients can
 		//receive it
 		level_ptr->clear_children("replay");
 		level_ptr->add_child("replay") = state_->replay_data;
-	}else{
+
+		std::cerr << "b\n";
+	} else {
 		//Load a new map
 		level_ptr = levels[map];
 
@@ -319,7 +325,7 @@ void mp_connect::gui_init()
 		sliders_gold_.push_back(gui::slider(*disp_, rect, 0.0+((80.0)/979.0)));
 		rect.w = 30;
 		rect.x = (disp_->x()-width_)/2+603;
-		gold_bg_ = get_surface_portion(disp_->video().getSurface(), rect);
+		gold_bg_ = surface_restorer(&disp_->video(),rect);
 		font::draw_text(disp_, disp_->screen_area(), 12, font::GOOD_COLOUR,
 		                "100", rect.x, rect.y);
 	}
@@ -372,8 +378,8 @@ int mp_connect::gui_do()
 	SDL_Rect rect;
 	const config::child_list& possible_sides = cfg_->get_children("multiplayer_side");
 	const config::child_itors sides = level_->child_range("side");
-	int new_playergold;
-	int cur_playergold;
+	int new_playergold = -1;
+	int cur_playergold = -1;
 
 	for(;;) {
 		int mousex, mousey;
@@ -479,8 +485,7 @@ int mp_connect::gui_do()
 					rect.y = (disp_->y() - height_) / 2 + 55 + (30 * n);
 					rect.w = 30;
 					rect.h = launch_.height();
-					SDL_BlitSurface(gold_bg_, NULL,
-							disp_->video().getSurface(), &rect);
+					gold_bg_.restore();
 					font::draw_text(disp_, disp_->screen_area(), 12,
 							font::GOOD_COLOUR,
 					                (*sides.first[n])["gold"],

@@ -32,7 +32,7 @@ namespace {
 }
 
 theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
-                          last_screen_(empty_rect), xanchor_(), yanchor_()
+                          last_screen_(empty_rect), xanchor_(object::FIXED), yanchor_(object::FIXED)
 {}
 
 theme::object::object(const config& cfg)

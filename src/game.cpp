@@ -27,6 +27,7 @@
 #include "gamestatus.hpp"
 #include "key.hpp"
 #include "language.hpp"
+#include "log.hpp"
 #include "mapgen.hpp"
 #include "multiplayer.hpp"
 #include "multiplayer_client.hpp"
@@ -169,6 +170,7 @@ int play_game(int argc, char** argv)
 
 	CVideo video;
 	const font::manager font_manager;
+
 	const sound::manager sound_manager;
 	const preferences::manager prefs_manager;
 	const image::manager image_manager;
