@@ -1,9 +1,4 @@
 CVS HEAD:
- * The Rise of Wesnoth fixes:
-   * WML Plague is weaker in Temple of the Deep
-   * quartex's Clearwater Port dialogue changes
-   * Typo's and minor dialogue Tweaks and Fixes
-   * Please Note: Sign's and Dialogue featuring the 'Narrator' were broken in .8.1 so if you felt like you were missing something. . .
  * new and improved graphics: 
    * canyons
    * signpost
@@ -11,6 +6,11 @@ CVS HEAD:
  * made it possible to exit recruiting areas in 'The Eastern Invasion: The Arena' scenario
  * scenario balancing for 'The Eastern Invasion' campaign:
    * Weldyn under attack
+ * scenario balancing for 'The Rise of Wesnoth' campaign:
+   * Temple of the Deep
+   * Lizard Beach
+   * Sewer of Southbay
+   * A Harrowing Escape
  * increased damage Drake Slave and Drake Worker
  * new units
    * Drake Hatchling
@@ -25,7 +25,6 @@ CVS HEAD:
  * support for per-scenario configurable village flags, sample black-eyed banner for Son of the Black Eye campaign
  * support for relative {./includes} in WML files
  * added recruit event
- * fixed Messages by Narrator not appearing
  * fixed enemies being on wrong side in 'The Dark Hordes: A New Chance' scenario
  * fixed image::locator not building on MSVC6
  * fixed sending incorrect packet length causing wesnoth and wesnothd to abort
@@ -44,6 +43,7 @@ CVS HEAD:
  * fixed bugs in 'The Eastern Invasion: Evacuation' scenario
  * fixed holy water in 'Heir to the Throne: Valley of Death' scenario (#9930)
  * fixed a bug where a unit moving with [move_unit_fake] segfaulted the game
+ * fixed problems with cache invalidation
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
  * limited length of schema items in compressed WML to make a DoS attack harder to perform 
