@@ -217,7 +217,11 @@ void set_grid(bool ison)
 
 const std::string& network_host()
 {
-	return prefs["host"];
+	std::string& res = prefs["host"];
+	if(res.empty())
+		res = "server.wesnoth.org";
+
+	return res;
 }
 
 void set_network_host(const std::string& host)
