@@ -1867,14 +1867,10 @@ void turn_info::do_speak(const std::string& message, bool allies_only)
 		cfg["side"] = lexical_cast<std::string>(side);
 	}
 
-	bool private_message = false;
+	bool private_message = has_friends() && allies_only;
 
-	if(has_friends()) {
-		private_message = allies_only;
-		preferences::set_message_private(private_message);
-		if(private_message) {
-			cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
-		}
+	if(private_message) {
+		cfg["team_name"] = teams_[gui_.viewing_team()].team_name();
 	}
 
 	recorder.speak(cfg);
@@ -2393,7 +2389,11 @@ void turn_info::close_textbox()
 	if(textbox_.active() == false) {
 		return;
 	}
-
+	if(textbox_.check.get() != NULL) {
+		if(textbox_.mode == floating_textbox::TEXTBOX_MESSAGE) {
+			preferences::set_message_private(textbox_.check->checked());
+		}
+	}
 	textbox_.box.assign(NULL);
 	textbox_.check.assign(NULL);
 	font::remove_floating_label(textbox_.label);
