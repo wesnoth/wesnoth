@@ -2,12 +2,13 @@
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2004.
+# vim:set encoding=utf-8:
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-05 18:26+0200\n"
+"POT-Creation-Date: 2004-09-05 19:02+0200\n"
 "PO-Revision-Date: 2004-09-08 17:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  none\n"
@@ -247,6 +248,7 @@ msgid "Movement"
 msgstr "Movimiento"
 
 #: data/help.cfg:90
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -699,12 +701,12 @@ msgstr "Tridente de las tormentas"
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
-"¡Este tridente permite a un sireno lanzar descargas eléctricas a sus "
+"¡Este tridente permite a un sirénido lanzar descargas eléctricas a sus "
 "enemigos!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
-msgstr "¡Sólo los sirenos pueden usar este objeto!"
+msgstr "¡Sólo los sirénidos pueden usar este objeto!"
 
 #: data/items.cfg:669
 msgid "storm trident"
@@ -982,12 +984,6 @@ msgid ""
 "recruit, and select 'Ok'. In order to recruit faster, you can use 'Ctrl-"
 "Shift-R' to re-recruit the last type of unit you recruited."
 msgstr ""
-"Para reclutar una unidad, pulsa con el botón derecho en la casilla de "
-"castillo en la que desees que aparezca la unidad reclutada. Entonces, "
-"selecciona «Reclutar», o simplemente apunta al hexágono en cuestión y pulsa "
-"«Ctrl-R». Después, selecciona el tipo de unidad que quieres reclutar, y "
-"selecciona «Aceptar». Para reclutar más rápido, puedes utilizar «Ctrl-Mayús-"
-"R» para reclutar otra unidad del mismo tipo que la última vez que lo hiciste."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid ""
@@ -999,14 +995,6 @@ msgid ""
 "dies, you lose the game. You can win most scenarios by defeating all enemy "
 "leaders."
 msgstr ""
-"Un lídea es una unidad con la capacidad d reclutar. Eso significa que cuando "
-"tengas al líder en un torreón, podrá reclutar unidades en las casillas de "
-"castillo que lo rodean. Los líderes, normalmente, son unidades poderosas, "
-"por lo que cada bando sólo tiene uno. Además, tu líder es normalmente la "
-"primera unidad con la que aparece tu bando, y empieza en un torreón. Para "
-"seleccionar rápidamente a tu líder, pulsa la letra «l». Si éste llegase a "
-"morir, perderías la partida. De hecho, la mayoría de las misiones se ganan "
-"derrotando a los líderes enemigos."
 
 #: data/scenarios/tutorial/tutorial1.cfg:84
 msgid "What's a leader?"
@@ -1022,6 +1010,10 @@ msgid ""
 "of the unit selection box,  and cost, which is displayed after the name of "
 "the unit. You will learn more about these statistics throughout the tutorial."
 msgstr ""
+"Has de sopesar cuidadosamente sus habilidades, que se muestran en la "
+"izquierda de la ventana de selección de unidades, y su coste, que se muestra "
+"después del nombre de la unidad. Aprenderás más sobre las estadísticas a lo "
+"largo del tutorial."
 
 #: data/scenarios/tutorial/tutorial1.cfg:86
 msgid "What happens when I recruit a unit?"
@@ -1040,9 +1032,6 @@ msgid ""
 "turn. To do this, simply click the 'End Turn' button in the lower-right hand "
 "corner."
 msgstr ""
-"Como las unidades que acaban de reclutarse no pueden moverse, tienes que "
-"terminar tu turno. Para hacerlo, simplemente pulsa el botón «Fin de turno» "
-"que hay en el extremo inferior derecho de la pantalla."
 
 #: data/scenarios/tutorial/tutorial1.cfg:94
 msgid "End your turn"
@@ -3002,7 +2991,7 @@ msgstr "Princesa"
 
 #: data/units/Battle_Princess.cfg:17 data/units/Battle_Princess.cfg:55
 msgid "leadership,skirmisher"
-msgstr ""
+msgstr "liderazgo,hostigadora"
 
 #: data/units/Battle_Princess.cfg:19 data/units/Battle_Princess.cfg:57
 msgid ""
@@ -3606,6 +3595,7 @@ msgid "Dwarvish Berserker"
 msgstr "Enano berserker"
 
 #: data/units/Dwarvish_Berserker.cfg:16
+#, fuzzy
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Their Berserkers forgo all "
 "defense in exchange for massive damage against their enemies. Once a battle "
@@ -3779,6 +3769,7 @@ msgid "Dwarvish Thunderguard"
 msgstr "Guardián del Trueno enano"
 
 #: data/units/Dwarvish_Thunderguard.cfg:16
+#, fuzzy
 msgid ""
 "The famed Dwarvish Thunderguards wield mysterious and feared weapons forged "
 "by the Dwarf weapon-masters, experts in arcane Dwarvish technology. Although "
@@ -4047,21 +4038,19 @@ msgid "Elvish Sharpshooter"
 msgstr "Saetero elfo"
 
 #: data/units/Elvish_Shyde.cfg:3
-#, fuzzy
 msgid "Elvish Shyde"
 msgstr "Shyde elfa"
 
 #: data/units/Elvish_Shyde.cfg:20
-#, fuzzy
 msgid ""
 "Shydes are Elves that are devoted to nature and their faerie side. Dragonfly "
 "wings sprout from their backs and change them into beautiful creatures "
 "capable of gliding unencumbered through the Elven forests."
 msgstr ""
-"Las elfas cuya única pasión es la naturaleza y su lado más mágico se "
-"convierten lentamente en Shydes. Alas como de las de una libélula surgen en "
-"sus espaldas y se transformas en unas criaturas capaces de volar ágilmente "
-"en los bosques élficos."
+"Las elfas cuya única pasión es la naturaleza y su lado mágico se convierten "
+"lentamente en shydes. Alas de libélula surgen en sus espaldas y se "
+"transformas en unas criaturas capaces de volar ágilmente en los bosques "
+"élficos."
 
 #: data/units/Elvish_Shyde.cfg:24
 msgid "faerie touch"
@@ -4164,9 +4153,8 @@ msgid "Galleon"
 msgstr "Galeón"
 
 #: data/units/Galleon.cfg:16
-#, fuzzy
 msgid "dummy"
-msgstr "dummy"
+msgstr "ataque cualquiera"
 
 #: data/units/Gate.cfg:3
 msgid "Gate"
@@ -4232,7 +4220,7 @@ msgid ""
 "foes, or with fists of mud."
 msgstr ""
 "Los reptadores de barro gigantes son el tipo más grande de reptadores de "
-"barro que hay, y son construcciones mágicas de tierra y agua. Atacan con "
+"barro que hay, y son construcciones máquinas de tierra y agua. Atacan con "
 "chorros de agua hirviente a sus víctimas, o con sus puños de barro."
 
 #: data/units/Giant_Mudcrawler.cfg:20 data/units/Mudcrawler.cfg:20
@@ -4631,14 +4619,14 @@ msgstr ""
 
 #: data/units/Merman.cfg:3
 msgid "Merman"
-msgstr "Sireno"
+msgstr "Sirénido"
 
 #: data/units/Merman.cfg:16
 msgid ""
 "Skilled creatures of the sea, Mermen are powerful and quick in any watery "
 "environment, but struggle greatly to move on land."
 msgstr ""
-"Como diestra criatura de los mares que son, los sirenos son rápidos y "
+"Como diestra criatura de los mares que son, los sirénidos son rápidos y "
 "fuertes en cualquier ambiente acuático, pero son torpes en tierra firme."
 
 #: data/units/Merman.cfg:19 data/units/Merman_Lord.cfg:20
@@ -4648,15 +4636,13 @@ msgstr "tridente"
 
 #: data/units/Mudcrawler.cfg:3
 msgid "Mudcrawler"
-msgstr "Reptador de barro"
+msgstr ""
 
 #: data/units/Mudcrawler.cfg:16
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "spraying boiling water on their foes."
 msgstr ""
-"Los reptadores de barro son construcciones mágicas de tierra y agua. Atacan "
-"con chorros de agua hirviente a sus víctimas."
 
 #: data/units/Naga.cfg:3
 msgid "Naga"
@@ -4667,7 +4653,7 @@ msgid ""
 "Like the Mermen, Nagas are inhabitants of the seas. Smaller and more nimble "
 "than their counterparts, they share a distaste for dry land."
 msgstr ""
-"Las nagas, como los sirenos, habitan los mares. Aunque son más pequeñas y "
+"Las nagas, como los sirénidos, habitan los mares. Aunque son más pequeñas y "
 "hábiles que sus contrapartidas, comparten su aversión a la tierra firme."
 
 #: data/units/Necromancer.cfg:3
@@ -4680,7 +4666,7 @@ msgid ""
 "arts. By tapping into the power of the undead, Necromancers can cast spells "
 "that drain the lifeforce from their foes and add it to their own."
 msgstr ""
-"Un nigromante es un mago que ha decidido seguir los caminos de las artes "
+"Un Nigromante es un mago que ha decidido seguir los caminos de las artes "
 "oscuras. Usando los poderes de los no muertos, el nigromante es capaz de "
 "lanzar hechizos que drenan la fuerza vital de sus enemigos y se la dan a él."
 
@@ -4828,13 +4814,13 @@ msgid ""
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Los orcos poco entrenado forma la base de los ejércitos Orcos. Aunque son "
+"Los orcos poco entrenados forma la base de los ejércitos orcos. Aunque son "
 "más lentos que cualquier humano o elfo, pueden atacar mucho más fuertemente, "
 "y sufrir más daños antes de sucumbir."
 
 #: data/units/Orcish_Leader.cfg:3
 msgid "Orcish Leader"
-msgstr "Líder Orco"
+msgstr "Líder orco"
 
 #: data/units/Orcish_Leader.cfg:18 data/units/Orcish_Ruler.cfg:18
 msgid ""
@@ -4844,6 +4830,12 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"Los líderes orcos son los caciques de su tribu. Tomas las decisiones "
+"importantes y lideran a su gente en la batalla. Llevan un arco por si fuese "
+"necesario, pero se sienten mucho más cómodos con la espada; todo hay que "
+"decirlo, son guerreros poderosos. Su liderazgo natural los hace "
+"imprescindibles en la batalla: si se acaba con el jefe, se acaba con los "
+"orcos."
 
 #: data/units/Orcish_Ruler.cfg:3
 msgid "Orcish Ruler"
@@ -4922,23 +4914,20 @@ msgstr ""
 "fuerza se ha perdido un poco con la edad."
 
 #: data/units/Orcish_Slayer.cfg:3
-#, fuzzy
 msgid "Orcish Slayer"
-msgstr "Matador Orco"
+msgstr "Matador orco"
 
 #: data/units/Orcish_Slayer.cfg:16
-#, fuzzy
 msgid ""
 "Orcish Slayers are fast and nimble, competent in short- and long-ranged "
 "combat, and use a poison attack. They make formidable opponents."
 msgstr ""
-"Rápido y ágil, competente tanto a corto como largo alcance, usando ataques "
-"envenenados, el Matador Orco es un formidable enemigo."
+"Rápido y ágil, competente tanto a corto como largo alcance, y usando ataques "
+"con veneno, un matador orco es un formidable enemigo."
 
 #: data/units/Orcish_Sovereign.cfg:3
-#, fuzzy
 msgid "Orcish Sovereign"
-msgstr "Matador Orco"
+msgstr "Soberano orco"
 
 #: data/units/Orcish_Sovereign.cfg:18
 msgid ""
@@ -4948,6 +4937,12 @@ msgid ""
 "powerful fighters.  Their natural leadership skills make them very precious "
 "in the battle: if the Ruler is lost, so is the battle."
 msgstr ""
+"Los soberanos orcos son los caciques de su tribu. Tomas las decisiones "
+"importantes y lideran a su gente en la batalla. Llevan un arco por si fuese "
+"necesario, pero se sienten mucho más cómodos con la espada; todo hay que "
+"decirlo, son guerreros poderosos. Su liderazgo natural los hace "
+"imprescindibles en la batalla: si se acaba con el jefe, se acaba con los "
+"orcos."
 
 #: data/units/Orcish_Warlord.cfg:3
 msgid "Orcish Warlord"
@@ -4959,7 +4954,7 @@ msgid ""
 "Warlords. Skilled with both the sword and the bow, these beast-warriors lead "
 "the orcish fighting groups."
 msgstr ""
-"Sólo los Orcos con gran talento y fuerza pueden ser Señores de la Guerra. "
+"Sólo los orcos con gran talento y fuerza pueden ser Señores de la Guerra. "
 "Diestros tanto en la espada como en el arco, estos guerreros bestiales "
 "lideran los grupos de guerra orcos."
 
@@ -5006,9 +5001,8 @@ msgid "Outlaw Queen"
 msgstr ""
 
 #: data/units/Outlaw_Queen.cfg:17
-#, fuzzy
 msgid "skirmisher,leadership"
-msgstr "liderazgo"
+msgstr "hostigadora,liderazgo"
 
 #: data/units/Outlaw_Queen.cfg:20
 msgid ""
@@ -5120,20 +5114,18 @@ msgstr ""
 "valioso en casi cualquier situación."
 
 #: data/units/Revenant.cfg:3
-#, fuzzy
 msgid "Revenant"
 msgstr "Aparecido"
 
 #: data/units/Revenant.cfg:15
-#, fuzzy
 msgid ""
 "Revenants are undead creatures raised from once mighty warriors. While the "
 "warriors' will and soul are all but lost, their fighting skills certainly "
 "remain with the Revenant."
 msgstr ""
-"Un Revenant es un no muerto que en su vida anterior era un grandioso "
-"guerrero. Mientras que el alma y la fuerza de voluntad del guerrero se han "
-"perdido, las habilidades en la lucha ciertamente permanecen."
+"Un aparecido es un no muerto que en su vida anterior era un gran guerrero. "
+"Mientras que el alma y la voluntad del guerrero se han perdido, las "
+"habilidades en la lucha permanecen en tal aberración."
 
 #: data/units/Rogue.cfg:3
 msgid "Rogue"
@@ -5207,11 +5199,10 @@ msgid "Sea Serpent"
 msgstr "Serpiente marina"
 
 #: data/units/Sea_Serpent.cfg:16
-#, fuzzy
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
-"Las serpientes marinas son unos enormes monstruos, capaz de hacer zozobrar a "
+"Las serpientes marinas son unos enormes monstruos, capaz de hacer zozobrar "
 "cualquier barco."
 
 #: data/units/Sergeant.cfg:3
@@ -5249,9 +5240,9 @@ msgid ""
 "slowly, they are immensely powerful and therefore feared throughout Wesnoth "
 "and even into the lands beyond."
 msgstr ""
-"La Infantería de choque es la élite de los ejércitos de Wesnoth. Aunque se "
-"mueven lentamente, son inmensamente poderosos, y son temidos por todo "
-"Wesnoth y más allá."
+"La infantería de choque es la élite de los ejércitos de Wesnoth. Aunque se "
+"mueven lentamente, son inmensamente poderosos, y por ello se los teme en "
+"todo Wesnoth y más allá."
 
 #: data/units/Silver_Mage.cfg:3 data/units/Silver_Mage.cfg:90
 msgid "Silver Mage"
@@ -5270,26 +5261,25 @@ msgstr ""
 
 #: data/units/Skeletal_Dragon.cfg:3
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Dragón esquelético"
 
 #: data/units/Skeletal_Dragon.cfg:27
 msgid "jaw"
-msgstr ""
+msgstr "mordisco"
 
 #: data/units/Skeleton.cfg:3
 msgid "Skeleton"
 msgstr "Esqueleto"
 
 #: data/units/Skeleton.cfg:16
-#, fuzzy
 msgid ""
 "Skeletons are warriors who have been slain in battle and brought back by "
 "dark magics. Like all undead, they are especially vulnerable to fire and "
 "holy spells, but resistant to bladed weapons."
 msgstr ""
-"Un guerrero caído en la batalla y resucitado por las artes oscuras. Como "
-"todos los no muertos, son débiles a ataques sagrados y de fuego, y "
-"resistentes a las armas cortantes."
+"Un guerrero caído en la batalla y resucitado con artes oscuras. Como todos "
+"los no muertos, son débiles a ataques sagrados y de fuego, y resistentes a "
+"las armas cortantes."
 
 #: data/units/Skeleton_Archer.cfg:3
 msgid "Skeleton Archer"
@@ -5450,130 +5440,122 @@ msgid "Triton"
 msgstr "Tritón"
 
 #: data/units/Triton.cfg:16
-#, fuzzy
 msgid ""
 "Tritons are masters of the sea. Skilled in use of the trident, Tritons "
 "easily defeat any enemy foolish enough to wander into their preferred "
 "environment."
 msgstr ""
-"Los Tritones son los señores de los mares. Hábiles en el uso del tridente, "
+"Los tritones son los señores de los mares. Hábiles en el uso del tridente, "
 "son capaces de derrotar a cualquier enemigo lo suficientemente valiente (o "
 "loco) como para entrar en sus terrenos."
 
 #: data/units/Troll.cfg:3
-#, fuzzy
 msgid "Troll"
 msgstr "Troll"
 
 #: data/units/Troll.cfg:16
-#, fuzzy
 msgid ""
 "Trolls are strong and brutal humanoid monsters with the amazing ability to "
 "regenerate themselves, so that they recover from wounds on their own, even "
 "during battle."
 msgstr ""
-"Los Trolls son unos humanoides brutales y fuertes, capaces de regenerarse, "
-"recobrándose de las heridas en el fragor de la lucha."
+"Los trolls héroes son unos humanoides brutales y fuertes, capaces de "
+"regenerarse increíblemente rápido, recobrándose de las heridas en el fragor "
+"de la lucha."
 
 #: data/units/Troll_Hero.cfg:3
-#, fuzzy
 msgid "Troll Hero"
-msgstr "Troll Guerrero"
+msgstr "Troll héroe"
 
 #: data/units/Troll_Hero.cfg:16
-#, fuzzy
 msgid ""
 "Trolls hero are strong and brutal humanoid monsters with the amazing ability "
 "to regenerate themselves, so that they recover from wounds on their own, "
 "even during battle."
 msgstr ""
-"Los Trolls son unos humanoides brutales y fuertes, capaces de regenerarse, "
-"recobrándose de las heridas en el fragor de la lucha."
+"Los trolls héroes son unos humanoides brutales y fuertes, capaces de "
+"regenerarse increíblemente rápido, recobrándose de las heridas en el fragor "
+"de la lucha."
 
 #: data/units/Troll_Warrior.cfg:3
-#, fuzzy
 msgid "Troll Warrior"
-msgstr "Troll Guerrero"
+msgstr "Troll guerrero"
 
 #: data/units/Troll_Warrior.cfg:16
-#, fuzzy
 msgid ""
 "Hardened by battle, Troll Warriors can deliver deadly blows with a mace, and "
 "are able to regenerate, healing their own wounds during combat."
 msgstr ""
-"Endurecido en la batalla, el Troll Guerrero puede atacar con unos golpes "
-"mortales con su maza, además de ser capaz de regenerarse durante la batalla."
+"Endurecido tras varias batallas, un troll guerrero puede atacar con unos "
+"golpes mortales con su maza, además de ser capaz de regenerarse durante la "
+"batalla."
 
 #: data/units/Troll_Whelp.cfg:3
 msgid "Troll Whelp"
 msgstr "Cría de troll"
 
 #: data/units/Troll_Whelp.cfg:17
-#, fuzzy
 msgid ""
 "Trolls are humanoid monsters that have the amazing ability to regenerate, "
 "recovering from their wounds during battle. Although these Trolls are still "
 "weak whelps, their race is known for developing amazingly fast."
 msgstr ""
-"Los Trolls son unos humanoides brutales y fuertes, capaces de regenerarse, "
-"recobrándose de las heridas en el fragor de la batalla.\n"
-"\n"
-"Aunque este Troll es una débil cría, esta raza suele desarrollarse "
-"increíblemente rápido."
+"Los trolls son unos monstruos humanoides capaces de regenerarse, "
+"recobrándose de las heridas en el fragor de la batalla. Aunque este troll es "
+"una débil cría, esta raza es conocida por su increíblemente rápido "
+"desarrollo."
 
 #: data/units/Vampire_Bat.cfg:3
-#, fuzzy
 msgid "Vampire Bat"
-msgstr "Murciélago Vampiro"
+msgstr "Murciélago vampiro"
 
 #: data/units/Vampire_Bat.cfg:16
-#, fuzzy
 msgid ""
 "Vampire Bats are undead flying beasts that attack by biting their victims. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Una bestia No Muerta volante que ataca a sus víctimas mordiéndolas. Aunque "
-"sus colmillos no son muy peligrosos, pueden chupar la sangre de sus "
-"objetivos, dándole así cierta parte de su salud al monstruo."
+"Esta es una bestia no muerta voladora que ataca a sus víctimas mordiéndolas. "
+"Aunque sus colmillos no son muy peligrosos, pueden chupar la sangre de sus "
+"objetivos junto con su energía vital, dándole así su energía al murciélago."
 
 #: data/units/Vampire_Lady.cfg:3
 msgid "Vampire Lady"
-msgstr ""
+msgstr "Dama vampiro"
 
 #: data/units/Vampire_Lady.cfg:16
 msgid ""
 "Cold and beautiful, she maintains her eternal youthful appeareance drinking "
 "the blood of the living."
 msgstr ""
+"Fría y bella, mantiene su juventud eterna bebiendo la sangre de los vivos."
 
 #: data/units/Vampire_Lady.cfg:19
 msgid "blood kiss"
-msgstr ""
+msgstr "beso de sangre"
 
 #: data/units/Walking_Corpse.cfg:3
-#, fuzzy
 msgid "Walking Corpse"
-msgstr "Muerto Andante"
+msgstr "Muerto andante"
 
 #: data/units/Walking_Corpse.cfg:16
-#, fuzzy
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Although weak in combat, these zombies can spread their curse to those they "
 "kill, increasing the army of undead."
 msgstr ""
-"Éstos son muertos animados por magias oscuras. Aunque son débiles en el mano "
-"a mano, estos Muertos Andantes son capaces de esparcir su maldición a "
-"aquéllos que matan, incrementando el ejército no muerto."
+"Los muertos andantes son cadáveres que han sido animados con magia negra. "
+"Aunque son débiles en el mano a mano, los muertos andantes son capaces de "
+"esparcir su maldición a aquellos que matan, incrementando el ejército no "
+"muerto."
 
 #: data/units/Wall_Guard.cfg:3
 msgid "Wall Guard"
-msgstr ""
+msgstr "Guardia de la muralla"
 
 #: data/units/Wall_Guard.cfg:30
 msgid "skirmisher,regenerates"
-msgstr "hostigador,"
+msgstr "hostigador,regenera"
 
 #: data/units/Wall_Guard.cfg:32
 msgid ""
@@ -5625,21 +5607,21 @@ msgstr ""
 
 #: data/units/Wolf_Rider.cfg:3
 msgid "Wolf Rider"
-msgstr "Jinete de Lobo"
+msgstr "Jinete de lobo"
 
 #: data/units/Wolf_Rider.cfg:17
-#, fuzzy
 msgid ""
 "Smaller and weaker than the orcs, goblins have learned to train large wolves "
 "to serve as mounts, creating the awesome team of the Wolf Riders, who serve "
 "as fast scouts for the goblinoid army. Raised in the orcs' dark caverns, "
 "Wolf Riders can brave even the mountains, unlike most other mounted units."
 msgstr ""
-"Más pequeños que los Orcos, los goblins han aprendido a entrenar a unos "
+"Siendo más pequeños que los orcos, los goblins han aprendido a entrenar a "
 "grandes lobos para que les sirvan como monturas, creando así el fabuloso "
-"equipo de Jinetes de Lobos, que sirven como rápidos exploradores a los "
+"equipo de jinetes de lobos, que sirven como rápidos exploradores a los "
 "ejércitos goblins. Criados en las oscuras cavernas de los orcos, son "
-"competentes en las montañas, al contrario que las demás tropas montadas."
+"competentes incluso en las montañas, al contrario que las demás tropas "
+"montadas."
 
 #: data/units/Wose.cfg:3
 msgid "Wose"
@@ -5650,18 +5632,17 @@ msgid "Wraith"
 msgstr "Espectro"
 
 #: data/units/Wraith.cfg:16
-#, fuzzy
 msgid ""
 "Wraiths are some of the most powerful ghosts in the undead ranks. They can "
 "summon a spectral sword that drains the life out of their foes, thereby "
 "strengthening themselves. They also have a terrible wail that freezes the "
 "heart of the weak."
 msgstr ""
-"Los fantasmas más fuertes en las filas No Muertas pueden usar sus poderes "
-"para crear una espada espectral que drena la vida de sus enemigos, "
+"Los fantasmas más fuertes en las filas no muertas son los espectros. Pueden "
+"convocar una espada espectral que drena la vida de sus enemigos, "
 "fortaleciéndose a sí mismos. Además, pueden lanzar unos terribles lamentos "
-"que congelan los corazones de los débiles. Aquéllos muertos por el lamento  "
-"vuelven como Espectros para servir al que los mató."
+"que congelan los corazones de los débiles. Dicen que aquellos muertos por el "
+"lamento  vuelven como espectros para servir al que los mató."
 
 #: data/units/Yeti.cfg:3
 msgid "Yeti"
@@ -5777,35 +5758,35 @@ msgstr ""
 
 #: src/about.cpp:160
 msgid "+French Translation"
-msgstr "+Traducción francesa"
+msgstr ""
 
 #: src/about.cpp:171
 msgid "+German Translation"
-msgstr "+Traducción alemana"
+msgstr ""
 
 #: src/about.cpp:178
 msgid "+Hungarian Translation"
-msgstr "+Traducción húngara"
+msgstr ""
 
 #: src/about.cpp:183
 msgid "+Italian Translation"
-msgstr "+Traducción italiana"
+msgstr ""
 
 #: src/about.cpp:190
 msgid "+Norwegian Translation"
-msgstr "+Traducción noruega"
+msgstr ""
 
 #: src/about.cpp:195
 msgid "+Polish Translation"
-msgstr "+traducción polaca"
+msgstr ""
 
 #: src/about.cpp:201
 msgid "+Portuguese Translation"
-msgstr "+Traducción portuguesa"
+msgstr ""
 
 #: src/about.cpp:206
 msgid "+Slovak Translation"
-msgstr "+Traducción eslovaca"
+msgstr ""
 
 #: src/about.cpp:210
 msgid "+Spanish Translation"
@@ -6109,8 +6090,8 @@ msgstr ""
 "Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
-#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:533
-#: src/playlevel.cpp:747
+#: src/game.cpp:811 src/game.cpp:816 src/playlevel.cpp:535
+#: src/playlevel.cpp:749
 msgid "The file you have tried to load is corrupt"
 msgstr "El fichero que ha intentado cargar está corrompido."
 
@@ -6659,8 +6640,6 @@ msgid ""
 "The game was unable to bind to the port needed to host games over the "
 "network. Network players will be unable to connect to this game"
 msgstr ""
-"El juego ha sido incapaz de reservar el puerto necesario para albergar "
-"juegos en red. Los jugadores en red no podrán conectarse a este servidor."
 
 #: src/multiplayer.cpp:497
 msgid "Warning"
@@ -6675,7 +6654,7 @@ msgid "Receiving game list..."
 msgstr "Recibiendo lista de partidas..."
 
 #: src/multiplayer_client.cpp:95 src/multiplayer_connect.cpp:378
-#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:732 src/playturn.cpp:1484
+#: src/multiplayer_connect.cpp:380 src/playlevel.cpp:734 src/playturn.cpp:1484
 #: src/playturn.cpp:1489 src/playturn.cpp:1576
 msgid "Gold"
 msgstr "Oro"
@@ -6838,60 +6817,60 @@ msgstr "Observar juego"
 msgid "Quit"
 msgstr "Salir"
 
-#: src/playlevel.cpp:672
+#: src/playlevel.cpp:674
 msgid "Game Over"
 msgstr "Fin del juego"
 
-#: src/playlevel.cpp:673
+#: src/playlevel.cpp:675
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playlevel.cpp:686
+#: src/playlevel.cpp:688
 msgid "Defeat"
 msgstr "Derrota"
 
-#: src/playlevel.cpp:687
+#: src/playlevel.cpp:689
 msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
-#: src/playlevel.cpp:719
+#: src/playlevel.cpp:721
 msgid "Victory"
 msgstr "Victoria"
 
-#: src/playlevel.cpp:720
+#: src/playlevel.cpp:722
 msgid "You have emerged victorious!"
 msgstr "¡Has vencido!"
 
-#: src/playlevel.cpp:722
+#: src/playlevel.cpp:724
 msgid "Remaining gold"
 msgstr "Oro restante"
 
-#: src/playlevel.cpp:725
+#: src/playlevel.cpp:727
 msgid "Early finish bonus"
 msgstr "Bonificación por rapidez"
 
-#: src/playlevel.cpp:727
+#: src/playlevel.cpp:729
 msgid "per turn"
 msgstr "por turno"
 
-#: src/playlevel.cpp:728
+#: src/playlevel.cpp:730
 msgid "Turns finished early"
 msgstr "Turnos finalizados pronto"
 
-#: src/playlevel.cpp:730
+#: src/playlevel.cpp:732
 msgid "Bonus"
 msgstr "Bonificación"
 
-#: src/playlevel.cpp:737
+#: src/playlevel.cpp:739
 #, no-c-format
 msgid "80% of gold is retained for the next scenario"
 msgstr "El 80% del oro se conserva para el siguiente escenario"
 
-#: src/playlevel.cpp:738
+#: src/playlevel.cpp:740
 msgid "Retained Gold"
 msgstr "Oro conservado"
 
-#: src/playlevel.cpp:762
+#: src/playlevel.cpp:764
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
@@ -6961,8 +6940,6 @@ msgid ""
 "Save names may not contain colons, slashes, or backslashes. Please choose a "
 "different name."
 msgstr ""
-"Los nombres de las partidas guardadas no pueden contener el signo de dos "
-"puntos o barras inclinadas. Por favor, escoja un nombre diferente."
 
 #: src/playturn.cpp:1423
 msgid "Saved"
@@ -7182,9 +7159,8 @@ msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Esta unidad se ha convertido en piedra. No se puede mover ni atacar."
 
 #: src/reports.cpp:131 src/reports.cpp:142
-#, fuzzy
 msgid "_description"
-msgstr "Descripción de unidad"
+msgstr "_description"
 
 #: src/reports.cpp:232
 msgid "damage"
@@ -7326,6 +7302,13 @@ msgstr "Borrar fichero"
 msgid "Deletion of the file failed."
 msgstr "Ha habido algún fallo en el proceso de borrado."
 
+#, fuzzy
+#~ msgid "Dwarvish Sentinel"
+#~ msgstr "Guardián de Acero"
+
+#~ msgid "Elvish Lady"
+#~ msgstr "Dama elfa"
+
 #~ msgid "Captured"
 #~ msgstr "Capturado"
 
@@ -7361,6 +7344,9 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "Um... yes."
 #~ msgstr "Um... sí."
+
+#~ msgid "Shut up! Thats it! I'm putting you in the high-security cave!"
+#~ msgstr "¡Cállate! ¡Ya está! ¡Te pondré en la caverna más segura que tengo!"
 
 #~ msgid "Ugh..."
 #~ msgstr "Ugh..."
@@ -7437,6 +7423,12 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "You receive 200 pieces of gold!"
 #~ msgstr "¡Recibes 200 piezas de oro!"
 
+#~ msgid "Thank you, Princess. Come, men. Let us find the Scepter!"
+#~ msgstr "Gracias, princesa. ¡Soldados, vayamos a la búsqueda del Cetro!"
+
+#~ msgid "I can't believe it should end like this!"
+#~ msgstr "¡No puedo creer que esto termine así!"
+
 #~ msgid "High King at Sea"
 #~ msgstr "Emperador marino"
 
@@ -7446,23 +7438,495 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Very well. We will fight you."
 #~ msgstr "Muy bien. Lucharemos contra vosotros."
 
+#~ msgid "You can defeat me, but more will take my place!"
+#~ msgstr "¡Puedes derrotarme, pero otros tomarán mi lugar!"
+
+#~ msgid "See, you cannot defeat me. There are too many in my clan."
+#~ msgstr "Lo ves, no puedes derrotarme. Mi clan es demasiado numeroso."
+
+#~ msgid "Argh! This is how I die? Well, it was for the glory of the Clan."
+#~ msgstr "¡Argh! ¿Así es como muero? Bueno, fue por la gloria del Clan."
+
+#~ msgid "The clan rises. The more of us you kill, the stronger we get!"
+#~ msgstr "El clan crece. ¡Cuántos más de nosotros mates, más fuertes seremos!"
+
+#~ msgid ""
+#~ "Although I die, it is for the Clan. You shall be defeated, and I will be "
+#~ "right in saying you are no match for the Clan's might."
+#~ msgstr ""
+#~ "Aunque yo muera, es por el Clan. Serás derrotado, el poder del Clan es "
+#~ "muy superior al tuyo."
+
+#~ msgid ""
+#~ "Well said, brother. The warriors of the Clan hear you, and are come to "
+#~ "fight with us!"
+#~ msgstr ""
+#~ "Bien dicho, hermano. ¡Los guerreros del Clan te oyen y vienen a luchar "
+#~ "con nosotros!"
+
+#~ msgid "Home of the North Elves"
+#~ msgstr "El Hogar de los elfos del norte"
+
+#~ msgid ""
+#~ "There you are! You must come quickly to the home of the Elves in the east!"
+#~ msgstr "¡Aquí estáis! ¡Rápido, venid a nuestro hogar en el este!"
+
 #~ msgid "There they are! Charge!"
 #~ msgstr "¡Ahí están! ¡Cargad!"
+
+#~ msgid ""
+#~ "There are some Orcs! We must let them fight the men of Wesnoth, and avoid "
+#~ "engaging them at all costs!"
+#~ msgstr ""
+#~ "¡Allí hay algunos orcos! ¡Debemos evitarlos a toda costa y dejar que se "
+#~ "peleen con los hombres de Wesnoth!"
+
+#~ msgid ""
+#~ "At last, friends, we have almost reached the home of my people, the North "
+#~ "Elves."
+#~ msgstr ""
+#~ "Por fin, amigos, hemos llegado al hogar de mi gente, los elfos del norte."
+
+#~ msgid ""
+#~ "After being in this wilderness for so long, it will be good to get some "
+#~ "rest!"
+#~ msgstr ""
+#~ "Después de estar en el campo tanto tiempo, un descanso nos hará bien a "
+#~ "todos."
+
+#~ msgid ""
+#~ "But there is a great fog around us again! We don't know what dangers may "
+#~ "lie ahead!"
+#~ msgstr ""
+#~ "¡Otra vez nos rodea la niebla! ¡No sabemos qué peligros nos esperan!"
+
+#~ msgid ""
+#~ "So long as we move ahead with caution and prudence, I am sure we will "
+#~ "reach the safety and hospitality of the Elves."
+#~ msgstr ""
+#~ "Mientras nos movamos con precaución y prudencia, estoy seguro de que "
+#~ "llegaremos hasta la seguridad y hospitalidad de los elfos."
+
+#~ msgid "My lords! I have found you at last."
+#~ msgstr "¡Mis señores! ¡Por fin os he encontrado!"
+
+#~ msgid "Greetings, Eonihar, old friend! Why have you been searching for us?"
+#~ msgstr "¡Buenas, Eonihar, mi viejo amigo! ¿Por qué nos buscas?"
+
+#~ msgid ""
+#~ "When my lord learnt of your coming, he sent riders out looking for you! "
+#~ "There is trouble afoot!"
+#~ msgstr ""
+#~ "Cuando mi señor supo que veníais, mandó jinetes a buscaros. ¡Hay muchos "
+#~ "peligros en el camino!"
+
+#~ msgid "Trouble? What kind of trouble?"
+#~ msgstr "¿Peligro? ¿Qué tipo de peligro?"
+
+#~ msgid ""
+#~ "We have sighted a great host to the south, a host of the men of Wesnoth. "
+#~ "And we believe they are looking for you! There is not a moment to lose. "
+#~ "You must make haste to the Elven forest. Only there will you be safe!"
+#~ msgstr ""
+#~ "Hemos visto una hueste de hombres de Wesnoth al sur. ¡Y creemos que os "
+#~ "buscan! No hay tiempo que perder, debéis venir al bosque de los elfos. "
+#~ "¡Sólo allí estaréis seguros!"
+
+#~ msgid "I only hope we can avoid them. We will have to bear north-east."
+#~ msgstr "Espero que los podamos evitar si giramos hacia el noreste."
+
+#~ msgid ""
+#~ "That is not all, my lord. The foul Orcs have heard of the coming of these "
+#~ "men, and are even now gathering a great host to oppose them to the north! "
+#~ "It is now certain that there will be a great battle."
+#~ msgstr ""
+#~ "Mi señor, eso no es todo. ¡Los malditos orcos han oído que los hombres "
+#~ "venían y están reuniendo un gran contingente en el norte! Seguro que "
+#~ "habrá una gran batalla."
+
+#~ msgid ""
+#~ "This sounds very dangerous. Perhaps we should retreat to the West, and "
+#~ "hide until the battle is over?"
+#~ msgstr ""
+#~ "Eso suena muy peligroso... ¿Y si nos retiramos al oeste y esperamos hasta "
+#~ "que se acabe la batalla?"
+
+#~ msgid ""
+#~ "I think these wild lands are too dangerous for that! Anyhow...I expected "
+#~ "you to be on the side of Wesnoth, Princess?"
+#~ msgstr ""
+#~ "¡Estas tierras salvajes son demasiado peligrosas para poder hacer eso! De "
+#~ "todas formas...esperaba que estuvieras de lado de Wesnoth, Princesa."
+
+#~ msgid ""
+#~ "I am an honorable princess, not an imposter like you! I promised that I "
+#~ "would be on your side until we made it out of these lands, and I will "
+#~ "keep my promise!"
+#~ msgstr ""
+#~ "¡Soy una princesa con honor, no como tú, falso impostor! Juré que estaría "
+#~ "de tu lado hasta que consiguiésemos escapar de estas tierras, ¡y lo "
+#~ "mantendré!"
+
+#~ msgid ""
+#~ "Sir, madam, there is no time to lose! You must make it East, to the home "
+#~ "of my people. Only there will you be safe!"
+#~ msgstr ""
+#~ "Señor, señora, no hay tiempo que perder. ¡Venid al bosque de mi gente, "
+#~ "sólo allí estaréis seguros!"
 
 #~ msgid "Come then, Konrad, let us go."
 #~ msgstr "¡Vamos, Konrad, movámonos!"
 
+#~ msgid ""
+#~ "My lord has begun assembling a party of Elves to come and escort you into "
+#~ "the forest. Beware, for we are all in great danger!"
+#~ msgstr ""
+#~ "Mi señor ha empezado a reunir un grupo de elfos que os ayude en vuestro "
+#~ "camino hacia el bosque. ¡Pero cuidado, estamos todos en gran peligro!"
+
+#~ msgid ""
+#~ "Greetings, Elf-friend! Welcome to Emetria. You must take shelter here "
+#~ "until the battle passes. If you stay with me here for a little while, we "
+#~ "will all be safe."
+#~ msgstr ""
+#~ "¡Saludos, amigo de los elfos! Bienvenido a Emetria. Puedes refugiarte "
+#~ "hasta que la batalla amaine. Si estás conmigo durante un poco de tiempo "
+#~ "más, todos estaremos seguros."
+
+#~ msgid ""
+#~ "Thank you, Lord El'rien. The hospitality of the North Elves is as "
+#~ "generous as of your kin in the South! My men will help you hold out "
+#~ "against our enemies."
+#~ msgstr ""
+#~ "Gracias, señor El'rien. ¡La hospitalidad de los elfos del norte es tan "
+#~ "grande como la de los elfos del sur! Mis hombres os ayudarán en rechazar "
+#~ "a los invasores."
+
+#~ msgid ""
+#~ "We have not yet reached the forest, and the battle still rages. We will "
+#~ "never get there now! We have been defeated!"
+#~ msgstr ""
+#~ "No hemos alcanzado el bosque aún y la batalla aún sigue. ¡Nunca "
+#~ "llegaremos, hemos sido derrotados!"
+
+#~ msgid "Elf-friends, you have made it to safety!"
+#~ msgstr "¡Amigos de los elfos, lo habéis logrado!"
+
+#~ msgid ""
+#~ "El'rien, we have the Scepter of Fire with us! We must escort them to "
+#~ "Elensia!"
+#~ msgstr "El'rien, tenemos el Cetro de Fuego. ¡Debemos llevarlo a Elensia!"
+
+#~ msgid ""
+#~ "Indeed. We will escort you to our capital, where we will make Council."
+#~ msgstr ""
+#~ "Así sea. Os escoltaremos hasta la capital, donde se celebrará un Cónclave."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat enemy leader\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrotar al líder enemigo\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Fin de los turnos"
+
+#~ msgid ""
+#~ "This is no time to return to our vessel! We must take control of the "
+#~ "island!"
+#~ msgstr ""
+#~ "¡Este no es el momento para volver a nuestro barco! ¡Debemos controlar la "
+#~ "isla!"
+
+#~ msgid "And so the party landed on the Isle of Anduin."
+#~ msgstr "Y así llegó el grupo a la Isla..."
+
+#~ msgid "So this is Anduin. It looks a little...desolate"
+#~ msgstr "Así que esto es Anduin. Parece algo...desolado."
+
+#~ msgid ""
+#~ "I fear so, Konrad. It seems that the Orcs have come even here. Here to "
+#~ "the place where I was born, where I was trained."
+#~ msgstr ""
+#~ "Me temo, Konrad, que los orcos incluso han llegado hasta aquí. Aquí, el "
+#~ "lugar donde nací, donde me enseñaron."
+
+#~ msgid ""
+#~ "Who is that? Oh, a party of elves has landed. We shall drive them back "
+#~ "into the sea!"
+#~ msgstr "¿Quiénes son esos? ¡Eh, un grupo de elfos, echémoslos de aquí!"
+
+#~ msgid ""
+#~ "I did not think the Orcs would have come here. This island used to be so "
+#~ "beautiful. We must recapture it! To arms!"
+#~ msgstr ""
+#~ "Nunca pensé que los Orcos llegarían aquí. Esta isla era tan bonita..."
+#~ "¡debemos recapturarla! ¡Tomad las armas!"
+
+#~ msgid "I found someone hiding in the village!"
+#~ msgstr "¡Alguien se ocultaba en el pueblo!"
+
+#~ msgid ""
+#~ "My lords, I have been hiding in the village from the orcs, like many of "
+#~ "the other mages here. Perhaps we can work together to recapture the "
+#~ "island!"
+#~ msgstr ""
+#~ "Mis señores, he estado escondiéndome en el pueblo de los orcos, como "
+#~ "muchos otros magos. ¡Quizás podamos trabajar juntos para recapturar la "
+#~ "isla!"
+
+#~ msgid "Certainly, let us join together to fight the evil ones"
+#~ msgstr "¡Por supuesto, unámonos para luchar contra nuestro enemigo!"
+
 #~ msgid "You can now recruit mages"
 #~ msgstr "Ahora puedes reclutar magos."
+
+#~ msgid "Delfador, my old master! You have saved the island from the Orcs!"
+#~ msgstr "¡Delfador, mi viejo maestro! ¡Has salvado la isla de los orcos!"
+
+#~ msgid "My apprentice! How did the island fall to such as these?"
+#~ msgstr "¡Mi aprendiz! ¿Cómo cayó la isla frente a estos miserables?"
+
+#~ msgid ""
+#~ "You have not heard, master Delfador? Asheviere is trying to control the "
+#~ "entire western coast. She hired many Orcs and sent them here. They were "
+#~ "holding me until a ship could arrive to take me to Weldyn where I am to "
+#~ "stand trial for treason for training mages!"
+#~ msgstr ""
+#~ "¿No lo sabéis, maestro Delfador? Asheviere está intentando controlar toda "
+#~ "la costa occidental. Contrató muchos orcos y los envió hacia aquí. ¡Me "
+#~ "estaban reteniendo hasta que llegase un barco para llevarme a Weldyn y "
+#~ "allí juzgarme por traición al enseñar a magos!"
+
+#~ msgid ""
+#~ "We have come from fighting her forces at Blackwater. Where else has she "
+#~ "attacked?"
+#~ msgstr ""
+#~ "Venimos de luchar contra sus fuerzas en Aguasnegras. ¿Dónde más ha "
+#~ "atacado?"
+
+#~ msgid ""
+#~ "She has taken control of the Bay of Pearls, long held by the Mermen, and "
+#~ "has turned them into slaves. There they dive for pearls by which she "
+#~ "grows richer every day. There are even rumors that she may break the "
+#~ "ancient treaty and attack Elensefar!"
+#~ msgstr ""
+#~ "Se ha hecho con el control de la Bahía de las perlas, propiedad desde "
+#~ "hace tiempo de los sirénidos, y los ha hecho esclavos. Hace que busquen "
+#~ "perlas para ella y así aumentar su tesoro. ¡Incluso dicen que podría "
+#~ "romper el viejo Tratado y atacar Elensefar!"
+
+#~ msgid ""
+#~ "Can't we strike back at her? How many forces does she have at the Bay of "
+#~ "Pearls? Can we take it back from her?"
+#~ msgstr ""
+#~ "¿No podemos atacarla de nuevo? ¿Cuántas fuerzas tiene en la bahía? "
+#~ "¿Podríamos recuperarla?"
+
+#~ msgid ""
+#~ "We must indeed go there. Let us therefore rest here a little, and then "
+#~ "set sail for the Bay. Hopefully we will defeat her forces there!"
+#~ msgstr ""
+#~ "Sí, iremos allí. Descansemos aquí un poco, y pongamos velas hacia la "
+#~ "bahía. ¡Con un poco de suerte venceremos a sus fuerzas!"
 
 #~ msgid "Isle of the Damned"
 #~ msgstr "Isla de los Malditos"
 
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat both enemy leaders\n"
+#~ "@Resist until the end of the turns\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrota a los dos líderes enemigos\n"
+#~ "@Resiste hasta el final de los turnos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad"
+
+#~ msgid ""
+#~ "But the voyage did not go as smoothly as had been hoped. A storm blew up "
+#~ "and bore down on the ship. Though all hands were on deck working "
+#~ "desperately, a sudden gust of wind flung Konrad overboard as he attempted "
+#~ "to secure the sails..."
+#~ msgstr ""
+#~ "Pero el viaje no fue tan bien como se esperaba. Se desató una tormenta y "
+#~ "dañó el barco. Cuando estaban todos en cubierta trabajando "
+#~ "desesperadamente, una súbita corriente de aire lanzó a Konrad fuera del "
+#~ "barco mientras intentaba asegurar las velas..."
+
+#~ msgid ""
+#~ "The mermen finally saved Konrad from the sea, but were unable to get him "
+#~ "back to the ship. With great effort though, they reached a nearby "
+#~ "island..."
+#~ msgstr ""
+#~ "Los sirénidos finalmente salvaron a Konrad del mar, pero no pudieron "
+#~ "devolverlo al barco. Con grandes esfuerzos, lograron llevarlo a una isla "
+#~ "cercana..."
+
+#~ msgid "Whew, I survived. But now where am I? Is this island inhabited?"
+#~ msgstr "¡Guau, he sobrevivido! ¿Dónde estoy? ¿Está habitada la isla?"
+
+#~ msgid ""
+#~ "We have heard only the worst things about this place, my lord. It is said "
+#~ "that the fiends of the undead have come in great numbers and turned the "
+#~ "island into an ugly wasteland."
+#~ msgstr ""
+#~ "Todo lo que hemos oído de esta isla es malo, mi señor. Se cuenta que los "
+#~ "No Muertos la habitan en abundancia y han convertido la isla en un "
+#~ "horrible páramo."
+
+#~ msgid ""
+#~ "Let's hope these rumors are not true! I have none of my men with me! How "
+#~ "could I defend myself?"
+#~ msgstr ""
+#~ "¡Ojalá esos rumores no sean ciertos! ¡Pero no tengo a ninguno de mis "
+#~ "hombres conmigo! ¿Cómo podré defenderme?"
+
+#~ msgid ""
+#~ "There are still some bands of humans hiding on the island, my lord. If "
+#~ "you recruit some of them to help, we might have some hope of holding off "
+#~ "the undead hordes!"
+#~ msgstr ""
+#~ "Aún hay algunas bandas de humanos escondidas en esta isla, mi señor. "
+#~ "Quizá pueda reclutarlos. ¡De esa manera tendremos alguna posibilidad de "
+#~ "detener a los no muertos!"
+
+#~ msgid "Maybe we can make a deal! Help us defeat those evil creatures!"
+#~ msgstr "¡Hagamos un trato! ¡Ayúdanos a derrotar a esas malvadas criaturas!"
+
+#~ msgid ""
+#~ "There are some ancient temples to the south-west, I wonder what might be "
+#~ "inside them!"
+#~ msgstr ""
+#~ "Hay algunos templos antiguos al suroeste, me pregunto qué habrá dentro de "
+#~ "ellos."
+
+#~ msgid "Looks like there is somebody hidden in the temple."
+#~ msgstr "¡Parece que alguien está escondido en el templo!"
+
+#~ msgid ""
+#~ "I was hiding in this holy place, planning how to defeat the evil undeads. "
+#~ "Now with your help, I can destroy them."
+#~ msgstr ""
+#~ "Yo estaba escondido en este lugar sagrado, planeando cómo derrotar a los "
+#~ "No Muertos. Con vuestra ayuda, podré destruirlos."
+
+#~ msgid "Surprise! Searching for Mages, and all I get is these foul humans!"
+#~ msgstr ""
+#~ "¡Sorpresa! Buscando magos y todo lo que encuentro son estos estúpidos "
+#~ "humanos."
+
 #~ msgid "The temple seems to be empty."
 #~ msgstr "El templo parece estar vacío."
 
+#~ msgid "Fight on against the undead without me, friends!"
+#~ msgstr "¡Luchad contra los no muertos sin mí, amigos!"
+
+#~ msgid ""
+#~ "We have wrested control of the island from the evil undead! Now all we "
+#~ "have to do is wait for the ship to arrive, so we can make our way to "
+#~ "Elensefar!"
+#~ msgstr ""
+#~ "¡Hemos conseguido eliminar a los No muertos de la isla! ¡Ahora sólo "
+#~ "debemos esperar que nuestro barco llegue y podremos partir hacia "
+#~ "Elensefar!"
+
+#~ msgid ""
+#~ "Together we have vanquished the foul undead! Come, I will join you on "
+#~ "your noble quest."
+#~ msgstr ""
+#~ "¡Juntos hemos eliminado a los no muertos! Vamos, os seguiré en vuestra "
+#~ "noble misión."
+
+#~ msgid ""
+#~ "Thank goodness we have found you, sir! Come aboard quickly, we shall take "
+#~ "you away from this horrible island!"
+#~ msgstr ""
+#~ "¡Afortunadamente le hemos encontrado, señor! ¡Suba a bordo, le llevaremos "
+#~ "lejos de esta horrible isla!"
+
+#~ msgid ""
+#~ "It's a shame complete victory could not be ours, but thank goodness I am "
+#~ "rescued! On to Elensefar!"
+#~ msgstr ""
+#~ "¡Es una lástima que no se pudiera obtener una victoria completa, pero "
+#~ "afortunadamente he sido rescatado! ¡En marcha hacia Elensefar!"
+
+#~ msgid ""
+#~ "Thank you for your assistance here brothers. I will stay to continue "
+#~ "resisting the foul undead. May fate be with you in your noble quest, and "
+#~ "may we meet again some day!"
+#~ msgstr ""
+#~ "Gracias por vuestra ayuda hermanos. Yo continuaré luchando contra los no "
+#~ "muertos. Suerte en vuestra noble misión y espero que algun día nos "
+#~ "volvamos a encontrar."
+
 #~ msgid "Mountain Pass"
 #~ msgstr "El paso de la montaña"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Move Konrad to the end of the road in the north-west\n"
+#~ "@Defeat all enemies\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Mueve a Konrad hasta el final del camino, al noroeste\n"
+#~ "@Derrota a todos los enemigos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz"
+
+#~ msgid "Look, Konrad, before us lies the great road built by the dwarves!"
+#~ msgstr ""
+#~ "¡Mira, Konrad, delante nuestro está la gran calzada construida por los "
+#~ "enanos!"
+
+#~ msgid "But I can hardly see with all this mist around!"
+#~ msgstr "¡Pero si apenas puedo verme con toda esta niebla!"
+
+#~ msgid ""
+#~ "We must be wary...they say a wizard lives in these mountains, and he does "
+#~ "not take kindly to visitors. It is he who causes the mists, so that "
+#~ "travellers will lose their way and become prey for his creatures."
+#~ msgstr ""
+#~ "Debemos ser cautos...se cuenta que en estas montañas vive un mago, y que "
+#~ "no recibe muy amigablemente a los visitantes. Es él el que causa las "
+#~ "nieblas, para que los viajeros se pierdan, y entonces sus criaturas los "
+#~ "devoran."
+
+#~ msgid "His...creatures? We must keep to the road, men!"
+#~ msgstr "¿Sus...criaturas? ¡Más nos vale permanecer en la calzada, soldados!"
+
+#~ msgid ""
+#~ "He would be a mighty foe, Konrad. It is said when the dwarves built this "
+#~ "road, they disturbed the resting place of the ancient mage, and ever "
+#~ "since, he and his brother have traveled the mountain, wreacking havoc on "
+#~ "the dwarven villages."
+#~ msgstr ""
+#~ "Se dice que es un enemigo muy fuerte, Konrad. Cuenta la leyenda que "
+#~ "cuando los enanos construyeron esta calzada, ellos interrumpieron su "
+#~ "sueño, y desde entonces él y su hermano viajan por la montaña, "
+#~ "atormentando a las aldeas enanas."
 
 #~ msgid "Let us then go carefully...but quickly, men!"
 #~ msgstr ""
@@ -7528,6 +7992,35 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Muff Malal's Peninsula"
 #~ msgstr "La península de Muff Malal"
 
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat Muff Malal\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrota a Muff Malal\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Fin de los turnos"
+
+#~ msgid ""
+#~ "But the road to Elensefar was a treacherous one. Konrad and his men were "
+#~ "set upon by the fiends of the undead."
+#~ msgstr ""
+#~ "Pero el camino a Elensefar era traicionero, y Konrad y sus hombres fueron "
+#~ "descubiertos por los no muertos."
+
+#~ msgid "My lord! In yonder ruins there seems to be some movement!"
+#~ msgstr "¡Mi señor! ¡En aquellas ruinas parece haber movimiento!"
+
+#~ msgid "It looks like there are the undead there! Prepare for battle men!"
+#~ msgstr ""
+#~ "¡Parece que hay algunos no muertos! ¡Preparaos para la batalla, soldados!"
+
 #~ msgid "To arms!"
 #~ msgstr "¡Tomad las armas!"
 
@@ -7537,6 +8030,88 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgstr ""
 #~ "Ahh, un grupo de elfos se acerca. ¡Pronto tendremos zombis de elfos "
 #~ "sirviéndonos!"
+
+#~ msgid ""
+#~ "Victory is ours! Let us just hope that this delay will not hamper our "
+#~ "quest to save Elensefar. We must move onward with haste!"
+#~ msgstr ""
+#~ "¡La victoria es nuestra! ¡Esperemos que esto no nos retrase de tal manera "
+#~ "que sea imposible salvar Elensefar! ¡Debemos ir hacia allí lo más rápido "
+#~ "posible!"
+
+#~ msgid "Northern Winter"
+#~ msgstr "El invierno norteño"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat enemy leaders\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrotar a los líderes enemigos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz\n"
+#~ "#Fin de los turnos"
+
+#~ msgid ""
+#~ "This winter is bitterly cold! Perhaps we should stop here and rest a "
+#~ "while."
+#~ msgstr "¡Este invierno es muy frío! Tal vez deberíamos parar y descansar."
+
+#~ msgid ""
+#~ "Stop and rest? My lord, we must go hard after the Scepter of Fire, lest "
+#~ "it fall into the hands of our enemies!"
+#~ msgstr ""
+#~ "¿Parar y descansar? ¡Mi señor, debemos ir tras el Cetro de Fuego, no vaya "
+#~ "a ser que caiga en manos del enemigo!"
+
+#~ msgid ""
+#~ "We have had a hard march ever since we were besieged by the undead in "
+#~ "that foul valley. Now winter bears down upon us, and we have spent most "
+#~ "of our money. This land looks fertile enough. Surely we can settle here "
+#~ "for the winter!"
+#~ msgstr ""
+#~ "Hemos ido a marcha forzada desde que fuimos asediados por los no muertos "
+#~ "en aquel maldito valle. Ahora el invierno se nos echa encima, y hemos "
+#~ "gastado la mayoría de nuestros suministros. ¡Esta tierra parece bastante "
+#~ "fértil, asentémonos aquí durante el invierno!"
+
+#~ msgid ""
+#~ "Yes, let us rest a while! I am sure there are many challenges ahead, and "
+#~ "I do not think I could endure another like the fording of the river for "
+#~ "many days."
+#~ msgstr ""
+#~ "¡Sí, déjenos descansar! Estoy seguro que nos esperan muchos retos, y no "
+#~ "creo que pudiera superar otro como el de vadear el Gran Río durante "
+#~ "muchos días."
+
+#~ msgid ""
+#~ "We are chasing the Scepter of Fire, the fate of the realm is in our "
+#~ "hands, and you humans want to stop and rest? Onward, I say!"
+#~ msgstr ""
+#~ "Estamos tras el Cetro de Fuego, el destino del reino descansa en nuestras "
+#~ "manos, ¿y en todo lo que pensáis vosotros los humanos es en descansar? "
+#~ "¡Vamos!"
+
+#~ msgid ""
+#~ "They are right, Kalenz. I had wanted to acquire the Scepter within a "
+#~ "moon, but it is not to be. Our soldiers will begin to desert if they do "
+#~ "not rest soon. But in these wild north lands, we must fight even for the "
+#~ "right to rest. Look to the north! Those foul orcs will not allow us any "
+#~ "peace!"
+#~ msgstr ""
+#~ "Tienes razón, Kalenz. Me habría gustado obtener el Cetro en esta luna, "
+#~ "pero eso no ocurrirá. Nuestros soldados empezarán a desertar si no "
+#~ "descansamos pronto. Pero en estas tierras áridas debemos luchar hasta "
+#~ "para descansar. ¡Mira al norte! ¡Esos malditos orcos no nos dejan en paz!"
 
 #~ msgid "Then we shall wrest control of the land from them. To arms men!"
 #~ msgstr "Entonces lucharemos para controlar las tierras. ¡A las armas!"
@@ -7570,8 +8145,183 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Plunging into the Darkness"
 #~ msgstr "Sumergiéndose en la oscuridad"
 
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Find the Dwarves\n"
+#~ "Defeat\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Encuentra a los enanos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz"
+
+#~ msgid "It's so dark in here I can hardly see!"
+#~ msgstr "¡Está todo tan oscuro aquí dentro! ¡Apenas puedo ver!"
+
+#~ msgid ""
+#~ "It is dark indeed. We shall have to light torches, and tread slowly and "
+#~ "carefully. Hopefully there are still Dwarves down here who can aid us!"
+#~ msgstr ""
+#~ "Está realmente oscuro, sí. Tendremos que encender antorchas y avanzar "
+#~ "lentamente. ¡Con un poco de suerte, aún quedarán enanos para ayudarnos!"
+
+#~ msgid "Indeed. We Elves are not well skilled in these dark pits."
+#~ msgstr ""
+#~ "Así es. Además, nosotros los elfos no somos muy hábiles en estas cuevas "
+#~ "oscuras."
+
+#~ msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
+#~ msgstr ""
+#~ "¿Quiénes son los que se acercan? ¡Habitantes de la superficie! ¡Soldados, "
+#~ "en guardia!"
+
+#~ msgid "We come in peace, friends. We come in peace!"
+#~ msgstr "Venimos en son de paz, amigos. ¡Venimos en son de paz!"
+
+#~ msgid ""
+#~ "Oh, do you? I see that you are accompanied by Elves. Can we Dwarves not "
+#~ "live in peace without the treacherous Elves coming to bother us?"
+#~ msgstr ""
+#~ "¿Ah, sí? Veo que estáis acompañados por elfos. ¿No podemos vivir los "
+#~ "enanos sin que vengan los traicioneros elfos a molestarnos?"
+
+#~ msgid "Why such harsh words, Dwarf? Elves have never done you any harm."
+#~ msgstr ""
+#~ "¿A qué vienen esas palabras tan duras, enano? Los elfos nunca os hemos "
+#~ "hecho ningún daño."
+
+#~ msgid ""
+#~ "'Never done us any harm?' Why I was there myself, when the Elves did not "
+#~ "come to honor our alliance. Many Dwarves were slaughtered, and you "
+#~ "cowardly Elves did nothing to help!"
+#~ msgstr ""
+#~ "¿Nunca? Bueno, yo estaba allí cuando los elfos no cumplieron su pacto. "
+#~ "¡Muchos enanos murieron, y vosotros, cobardes elfos, no movísteis un dedo "
+#~ "por nosotros!"
+
+#~ msgid ""
+#~ "You go too far! I am Kalenz, a mighty Elvish lord! How dare such as you, "
+#~ "snivelling in his tunnel, call me a coward?"
+#~ msgstr ""
+#~ "¡Has ido muy lejos! ¡Yo soy Kalenz, un poderoso Señor elfo! ¿Cómo te "
+#~ "atreves tú, que te arrastras en estos túneles, a llamarme cobarde?"
+
+#~ msgid ""
+#~ "Peace, friends! Peace! The evil Orcs roam the lands above us, we must not "
+#~ "fight among ourselves."
+#~ msgstr ""
+#~ "¡Paz, amigos, paz! Los malvados orcos se pasean por encima en este "
+#~ "momento, ¿acaso debemos pelearnos entre nosotros?"
+
+#~ msgid ""
+#~ "Very well! Explain your presence here then, human. Who are you? Why have "
+#~ "you risked life and limb to come to Knalga, home of the Dwarves?"
+#~ msgstr ""
+#~ "¡Vale! ¿Quién eres tú? Explícame tu presencia aquí, humano. ¿Por qué "
+#~ "habéis venido a Knalga, hogar de los enanos, arriesgando vuestras vidas?"
+
+#~ msgid "Well, we...we..."
+#~ msgstr "Bueno, nosotros...ehhh...bueno..."
+
+#~ msgid ""
+#~ "We have come so that an heir may claim his inheritance, that a king may "
+#~ "claim his throne. We seek the Scepter of Fire."
+#~ msgstr ""
+#~ "Hemos venido para que un heredero pueda reclamar su herencia, su trono. "
+#~ "Buscamos el Cetro de Fuego."
+
+#~ msgid ""
+#~ "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
+#~ msgstr "¿El Cetro de Fuego? ¿Estáis locos? ¡Tenéis que estar de broma!"
+
+#~ msgid ""
+#~ "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
+#~ "Dwarves in finding it. But know that we will find it, whether you help us "
+#~ "or not."
+#~ msgstr ""
+#~ "No bromeamos, amigo. Buscamos el Cetro de Fuego. Buscamos la ayuda de los "
+#~ "enanos para encontrarlo. Elige si nos ayudas o no, pero lo encontraremos "
+#~ "igualmente."
+
+#~ msgid ""
+#~ "Your speech is like that of a fool. No-one even knows if the Scepter of "
+#~ "Fire exists. And who is this heir, this king that you speak of?"
+#~ msgstr ""
+#~ "Tú hablas como un loco o un tonto. Nadie sabe ni siquiera si el Cetro es "
+#~ "verdadero. ¿Y quién es ese heredero al trono, este rey, del que hablas?"
+
 #~ msgid "I am, sir."
 #~ msgstr "Soy yo, señor."
+
+#~ msgid ""
+#~ "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! "
+#~ "I haven't had such a laugh in a long time. And who are you, old man?"
+#~ msgstr ""
+#~ "¿¡TÚ!? ¡JAJAJAJAJA! ¿Este chico que está delante mío es el rey de "
+#~ "Wesnoth? ¡Jajaja! No me había reído tanto desde hace mucho tiempo. ¿Y "
+#~ "quién eres tú, viejo?"
+
+#~ msgid ""
+#~ "I am Delfador, Delfador the Great, Arch Mage to King Garard, and "
+#~ "Protector of his heir."
+#~ msgstr ""
+#~ "Yo soy Delfador, Delfador el Grande, Archimago del Rey Garard y Protector "
+#~ "de su heredero."
+
+#~ msgid ""
+#~ "You...you are Delfador? I saw Delfador when I was but a young Dwarf, and "
+#~ "I will tell you, old man, you are not Delfador. Men! Take these liars out "
+#~ "of my sight. Delfador perished many years ago."
+#~ msgstr ""
+#~ "¿Tú...vos sois Delfador? Vi a Delfador cuando no era sino un joven enano "
+#~ "y tú no eres Delfador, viejo. ¡Soldados, tomad a estos impostores y "
+#~ "alejadlos de mi vista! Delfador murió hace muchos años."
+
+#~ msgid "I am Delfador the Great! Any who dare oppose me shall perish!"
+#~ msgstr ""
+#~ "¡Yo soy Delfador el Grande! ¡Cualquiera que se enfrente a mí morirá!"
+
+#~ msgid ""
+#~ "You...you really are Delfador! But we had news that you were dead, years "
+#~ "ago!"
+#~ msgstr ""
+#~ "¡Tú...vos sois realmente Delfador! ¡Nos dijeron que habíais muerto, hace "
+#~ "ya muchos años!"
+
+#~ msgid "They thought I was dead. They hoped I was dead. Yet still I live."
+#~ msgstr ""
+#~ "Ellos pensaron que había muerto. Deseaban que hubiese muerto. Pero, aun "
+#~ "así, aquí estoy, vivo."
+
+#~ msgid "And you really think that you can find the Scepter of Fire?"
+#~ msgstr "¿Y realmente creéis que podéis encontrar el Cetro de Fuego?"
+
+#~ msgid ""
+#~ "Yes, I do. If you help us, friend, all the treasures of Knalga that we "
+#~ "find are yours. We want only the Scepter. It will be dangerous. Make no "
+#~ "mistake about that: Dwarves will be killed, perhaps many Dwarves. But "
+#~ "surely it is better than hiding from the Orcs like worms."
+#~ msgstr ""
+#~ "Sí, lo creo. Si tú nos ayudas, amigo, todos los tesoros de Knalga que "
+#~ "encontremos serán tuyos. Sólo queremos el Cetro, pero no te equivoques, "
+#~ "será peligroso, es más: es muy posible que mueran enanos, incluso muchos "
+#~ "enanos. Pero seguro que es mejor que esconderse de los orcos como gusanos."
+
+#~ msgid ""
+#~ "You are right, friend. I will put my best men at your disposal. We know "
+#~ "not where the Scepter is though. Legend says it is hidden in the eastern "
+#~ "tunnels."
+#~ msgstr ""
+#~ "Tenéis razón, amigo. Pondré mis mejores hombres a vuestra disposición. No "
+#~ "sabemos dónde está el Cetro, pero las leyendas dicen que está oculto en "
+#~ "los túneles orientales."
 
 #~ msgid "Then to the eastern tunnels we shall go!"
 #~ msgstr "¡Pues entonces dirijámonos a los túneles orientales!"
@@ -7581,6 +8331,38 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "The Princess of Wesnoth"
 #~ msgstr "La princesa de Wesnoth"
+
+#~ msgid ""
+#~ "...but one of the Orcs survived long enough to send the news to the "
+#~ "queen..."
+#~ msgstr ""
+#~ "...pero uno de los orcos sobrevivió lo suficiente para informar a la "
+#~ "reina..."
+
+#~ msgid "...and she sent her most able commander."
+#~ msgstr "...y ella envió a su comandante más hábil."
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Force Li'sar's surrender\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz\n"
+#~ "#Turns run out"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Forzar la rendición de Li'sar\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz\n"
+#~ "#Fin de los turnos"
+
+#~ msgid "Elmar's Crossing"
+#~ msgstr "Cruce de Elmar"
 
 #~ msgid "Elbridge"
 #~ msgstr "Puente"
@@ -7634,6 +8416,31 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ "Piensa acerca de la historia del viejo rey. Pregunta a alguien que lo "
 #~ "conociese."
 
+#~ msgid ""
+#~ "The old king? I have heard about that, but I know it is not true. My "
+#~ "mother told me."
+#~ msgstr ""
+#~ "¿El viejo rey? He oído algo de él, pero sé que no es cierto. Mi madre me "
+#~ "lo dijo."
+
+#~ msgid ""
+#~ "Your mother has lied to you, child. Now I suggest you reconsider, and "
+#~ "either join us, or flee an exile. There will be a great battle soon, and "
+#~ "if you are on the wrong side of it, we may not have the opportunity to "
+#~ "spare your life a second time."
+#~ msgstr ""
+#~ "Tu madre te ha mentido, pequeña. Ahora te sugiero que consideres si te "
+#~ "alías con nosotros o si huyes al exilio. Habrá una gran batalla pronto, y "
+#~ "si estás en el lado equivocado tal vez no podamos perdonarte la vida una "
+#~ "segunda vez."
+
+#~ msgid ""
+#~ "I am not a child, and I do not want to talk about it! You said you would "
+#~ "spare me, so be on your way. The northern road should be safe for you."
+#~ msgstr ""
+#~ "¡No soy un niña, y no quiero hablar de eso! Dijisteis que me "
+#~ "perdonaríais, así que idos. La calzada del norte debería ser segura."
+
 #~ msgid "Good day then, Princess. Come, men, to the northern road!"
 #~ msgstr ""
 #~ "Entonces, buenos días, princesa. ¡Soldados, venga, a la calzada del norte!"
@@ -7648,8 +8455,42 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Return to Wesnoth"
 #~ msgstr "Vuelta a Wesnoth"
 
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat all of the enemy leaders\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Li'sar\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrota a todos los líderes enemigos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Li'sar\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz"
+
 #~ msgid "Halt! Who goes there?"
 #~ msgstr "¡Alto! ¿Quién hay ahí?"
+
+#~ msgid ""
+#~ "Look! It is the traitor Li'sar, with the old mage and the filthy Elven "
+#~ "lord. Quickly, capture them! The Queen wishes to make them her prisoners."
+#~ msgstr ""
+#~ "¡Mira! Es la traidora Li'sar, con el viejo mago y el sucio señor elfo. "
+#~ "¡Rápido, capturadlos! La Reina desea hacerlos sus prisioneros."
+
+#~ msgid ""
+#~ "What? Me, a traitor? It is the Queen who is a traitor, for not obeying "
+#~ "the wishes of King Garard II. We have the Scepter of Fire, so let us in!"
+#~ msgstr ""
+#~ "¿Qué? ¿Yo una traidora? Es la Reina la que es una traidora, por no "
+#~ "obedecer los deseos del rey Garard II. Tenemos el Cetro de Fuego, "
+#~ "¡dejanos entrar!"
 
 #~ msgid "You leave us no choice but to kill you."
 #~ msgstr "No nos dejas otra opción que mataros."
@@ -7668,6 +8509,28 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "The Sceptre of Fire"
 #~ msgstr "El Cetro de Fuego"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Capture the Sceptre of Fire with Konrad or Li'sar\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz\n"
+#~ "#Death of Li'sar"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Captura el Cetro de Fuego con Konrad o Li'Sar\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz\n"
+#~ "#Muerte de Li'sar"
+
+#~ msgid "The Sceptre must be getting close now! Where shall we go?"
+#~ msgstr "¡El Cetro tiene que estar cerca! ¿Hacia dónde vamos ahora?"
 
 #~ msgid "Yes, I feel it is near here! We must search for it carefully."
 #~ msgstr "¡Sí, yo también lo presiento cerca! Busquémoslo cuidadosamente."
@@ -7700,11 +8563,45 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ "¡Bueno, mi primer uso para él será para ayudarnos a salir de este "
 #~ "agujero! ¡Espero que lo consideres sabio!"
 
+#~ msgid ""
+#~ "The Sceptre makes its wielder powerful, but hardly immortal, child. Use "
+#~ "it prudently. Now come, I believe there is an exit to the north!"
+#~ msgstr ""
+#~ "El Cetro hace a su dueño poderoso, pero no inmortal, muchacha. Úsalo con "
+#~ "prudencia. ¡Ahora ven, creo que hay una salida hacia el norte!"
+
 #~ msgid "I think I know what I'm doing. Come, let us go!"
 #~ msgstr "Creo que sé lo que estoy haciendo. ¡Venga, vamos!"
 
 #~ msgid "Snow Plains"
 #~ msgstr "Los Llanos nevados"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat enemy leader\n"
+#~ "Defeat\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Li'sar\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrotar al líder enemigo\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Li'sar\n"
+#~ "#Muerte de Kalenz"
+
+#~ msgid ""
+#~ "These fields of snow were once the home of my people. We left here "
+#~ "centuries ago. Legends say a great sword of fire was left behind."
+#~ msgstr ""
+#~ "Estos llanos nevados fueron en un origen el hogar de mis gentes. Los "
+#~ "abandonamos hace siglos, pero las leyendas cuentan que una gran espada de "
+#~ "fuego quedó atrás."
 
 #~ msgid ""
 #~ "This sword may prove useful on our journey ahead. I wonder where it could "
@@ -7715,6 +8612,25 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "Swamp Of Dread"
 #~ msgstr "El pantano del terror"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat all enemy leaders\n"
+#~ "Defeat\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Li'sar\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrotar a todos los líderes enemigos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Li'sar\n"
+#~ "#Muerte de Kalenz"
 
 #~ msgid ""
 #~ "This land is cursed. The Liches have lived here for years amassing great "
@@ -7732,6 +8648,23 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "The Lost General"
 #~ msgstr "El General perdido"
+
+#~ msgid ""
+#~ "\n"
+#~ "Victory:\n"
+#~ "@Defeat all enemy leaders\n"
+#~ "Defeat:\n"
+#~ "#Death of Konrad\n"
+#~ "#Death of Delfador\n"
+#~ "#Death of Kalenz"
+#~ msgstr ""
+#~ "\n"
+#~ "Victoria:\n"
+#~ "@Derrotar a todos los líderes enemigos\n"
+#~ "Derrota:\n"
+#~ "#Muerte de Konrad\n"
+#~ "#Muerte de Delfador\n"
+#~ "#Muerte de Kalenz"
 
 #~ msgid "These are some of the main Dwarvish caverns."
 #~ msgstr "Estas son algunas de las principales cavernas enanas."
@@ -8316,135 +9249,8 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "No! This is the end! We have been defeated!"
 #~ msgstr "¡No! ¡Esto es el final! ¡Hemos sido derrotados!"
 
-#~ msgid ""
-#~ "In the twenty-seventh year of the reign of Garard II, king of Wesnoth, "
-#~ "the kingdom was plunged into a bitter war with the Peoples of the North."
-#~ msgstr ""
-#~ "En el vigésimo séptimo año del reinado de Garard II, rey de Wesnoth, el "
-#~ "reino se vio hundido en una amarga guerra con las gentes del norte."
-
-#~ msgid ""
-#~ "The Northern host encamped at Galcadar, by the ford of Abez, and the king "
-#~ "led his forces to meet them. Splitting his army in two, he led one half "
-#~ "while his son, the crown prince Eldred, led the other."
-#~ msgstr ""
-#~ "Las gentes del norte acampaban en Galcadar, en el vado de Abez. El rey "
-#~ "llevó sus tropas hacia allí para encontrarlos, dividiendo su ejército en "
-#~ "dos: una mitad liderada por él mismo, y la otra por su hijo Eldred, el "
-#~ "heredero de la corona."
-
-#~ msgid ""
-#~ "Eldred was a brave and courageous warrior, able to lead his soldiers "
-#~ "well. Unfortunately for Garard, his son was also ambitious...and "
-#~ "treacherous. In the heat of battle,  Eldred's men turned on the king. And "
-#~ "so, Garard was slain in battle that day, along with his brother and all "
-#~ "his sons but Eldred."
-#~ msgstr ""
-#~ "Eldred era un guerrero valiente y valeroso, que podía liderar bien a sus "
-#~ "soldados. Desafortunadamente para el rey Garard, también era demasiado "
-#~ "ambicioso...y un traidor. En el fragor de la batalla, los hombres de "
-#~ "Eldred se volvieron contra su rey. Garard murió aquel día, junto con su "
-#~ "hermano, y todos sus hijos, salvo Eldred."
-
-#~ msgid ""
-#~ "Garard's queen, Asheviere, looked on with glee, having come to watch the "
-#~ "battle from a nearby hill. The rule of her son would surely satisfy her "
-#~ "lust for power far better than her husband's had."
-#~ msgstr ""
-#~ "La reina y esposa de Garard, Asheviere, observó con alegría lo sucedido "
-#~ "desde una colina cercana. Su hijo gobernaría mejor que su marido, "
-#~ "satisfaciendo por fin su sed de poder."
-
-#~ msgid ""
-#~ "In exchange for tribute, the Northern king happily made peace with "
-#~ "Eldred, who proclaimed himself king and led his army back to Weldyn."
-#~ msgstr ""
-#~ "El rey del norte, feliz, hizo la paz con Eldred a cambio de un tributo. "
-#~ "De esta manera Eldred se proclamó rey, y llevó a sus tropas de vuelta a "
-#~ "Weldyn."
-
-#~ msgid ""
-#~ "But Garard's arch-mage, Delfador, had escaped the battle and, riding with "
-#~ "haste, reached Weldyn first. He mustered a force of loyalists to fight "
-#~ "Eldred and avenge the king's death."
-#~ msgstr ""
-#~ "Pero el archimago de Garard, Delfador, escapó de la batalla, y, "
-#~ "cabalgando con rapidez, llegó antes a Weldyn. Reunió a un grupo de leales "
-#~ "soldados para luchar contra Eldred y vengar la muerte de su rey."
-
-#~ msgid ""
-#~ "Eldred made war upon Delfador and his forces with his mother's advice "
-#~ "ringing in his ears: 'Fight no one great or small except the old mage, "
-#~ "whose head should be severed from his shoulders.'"
-#~ msgstr ""
-#~ "Eldred empezó la batalla con el aviso de su madre en mente: «Evita la "
-#~ "lucha con cualquiera, hombre o mujer, fuerte o débil, excepto contra el "
-#~ "viejo mago. Quiero su cabeza."
-
-#~ msgid ""
-#~ "And Eldred did indeed meet Delfador face-to-face in battle that day. "
-#~ "Sword clashed against staff, as the wise old mage fought the brash young "
-#~ "warrior."
-#~ msgstr ""
-#~ "Y Eldred luchó cara a cara con Delfador. La espada golpeó el bastón, la "
-#~ "sabiduría del mago contra la juventud y la fuerza del guerrero."
-
-#~ msgid ""
-#~ "In the end Delfador's men were defeated and routed, but Asheviere found "
-#~ "her son's lifeless body, fixed to the ground by the great mage's staff."
-#~ msgstr ""
-#~ "Al final, los hombres de Delfador perdieron la batalla y huyeron, pero "
-#~ "Asheviere encontró el cuerpo de su hijo, clavado al suelo por el bastón "
-#~ "del gran mago."
-
-#~ msgid ""
-#~ "Asheviere herself then took command of the army, and led it back to "
-#~ "Weldyn. Knowing that the king's young nephews were next in line to the "
-#~ "throne, she ordered them all killed, and declared herself Queen of "
-#~ "Wesnoth."
-#~ msgstr ""
-#~ "Asheviere tomó el liderazgo de las tropas, y las llevó finalmente a "
-#~ "Weldyn. Al darse cuenta de que los jóvenes sobrinos del rey eran los "
-#~ "siguientes en la sucesión al trono, ordenó matarlos y se declaró ella "
-#~ "misma Reina Madre de Wesnoth."
-
-#~ msgid ""
-#~ "Soon after news of Asheviere's orders reached Delfador, he secretly "
-#~ "entered the palace and stole away Konrad, the youngest of Garard's "
-#~ "nephews, thereby saving him from death."
-#~ msgstr ""
-#~ "Escuchando las órdenes de Asheviere, Delfador entró oculto en el palacio, "
-#~ "y se llevó a Konrad, el más joven de los sobrinos de Garard, salvándolo "
-#~ "de la muerte."
-
-#~ msgid ""
-#~ "Fleeing to the forests of the West, Delfador raised the child Konrad "
-#~ "under the protection of the Elves, watching sadly as Asheviere's reign of "
-#~ "terror over the land began..."
-#~ msgstr ""
-#~ "Llevó al niño hacia los bosques del oeste, donde lo dejó bajo la "
-#~ "protección de los elfos, viendo cómo el terror del reinado de Asheviere "
-#~ "se empezaba a extender..."
-
 #~ msgid "Black Flag"
 #~ msgstr "La bandera negra"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat Slowhand\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Death of Grüü\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Derrota a Slowhand\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Muerte de Grüü\n"
-#~ "#Fin de los turnos"
 
 #~ msgid "Transport"
 #~ msgstr "Transporte"
@@ -8650,23 +9456,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Shan Taum The Smug"
 #~ msgstr "Shan Taum el Orgulloso"
 
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Survive the Shan Taum menace for 20 turns\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Death of Grüü\n"
-#~ "#Death of a shaman"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Sobrevive a Shant Taum\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Muerte de Grüü\n"
-#~ "#Muerte de un chamán"
-
 #~ msgid "At last, here are the mourned hills!  I hope everything will be OK."
 #~ msgstr "¡Por fin, las colinas de los lamentos! Espero que todo esté bien."
 
@@ -8744,246 +9533,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgstr "¿De verdad?  Pero mi gente ..."
 
 #~ msgid ""
-#~ "You don't understand.  Orcs have been divided for ages.  The only one who "
-#~ "gave us some unity was your father, Black Eye Karun.  Hearing rumors from "
-#~ "your exploits, we understood you are a worthy son of your father."
-#~ msgstr ""
-#~ "No lo entiendes.  Los orcos han estado divididos durante siglos.  El "
-#~ "único que consiguió unirnos fue tu padre, Black Eye Karun.  Al oir "
-#~ "rumores de tus hazañas, comprendimos que eras un hijo digno de tu padre."
-
-#~ msgid ""
-#~ "This is true.  Now we are pressured from all sides by humans and elves; "
-#~ "we need a leader that can unite all banners.  This one is YOU!"
-#~ msgstr ""
-#~ "Es cierto.  Humanos y elfos nos están presionando por todas partes; "
-#~ "necesitamos un líder que una todos los estandartes.  ¡Y ese eres TÚ!"
-
-#~ msgid "Well, I'm not sure I deserve that..."
-#~ msgstr "Bueno, no estoy seguro de que yo lo merezca..."
-
-#~ msgid "Did you hear?  There is a battle waiting for us at Prestim!"
-#~ msgstr "¿Has oido?  ¡Hay una batalla esperandonos en Prestim!"
-
-#~ msgid ""
-#~ "Kapou'e, if Prestim falls, humans will have a strong bridgehead on this "
-#~ "side of the river and your people won't be safe.  You are the only one "
-#~ "that can help us defend Prestim!"
-#~ msgstr ""
-#~ "Kapou'e, si Prestim cae, los humanos tendrán una fortaleza a este lado "
-#~ "del río y tu gente no estará segura.  ¡Eres el único que puede ayudarnos "
-#~ "a defender Prestim!"
-
-#~ msgid ""
-#~ "Leave your people here Kapou'e--they are safe for the moment--and go "
-#~ "defend Prestim.  In the meantime, now that the council is complete again, "
-#~ "we will decide if we have to form the Great Horde again and give you the "
-#~ "leadership on it."
-#~ msgstr ""
-#~ "Deja a tu gente aquí Kapou'e, estarán a salvo por el momento, y corre a "
-#~ "defender Prestim.  Mientras tanto, ahora que el concilio está completo de "
-#~ "nuevo, decidiremos si debemos formar la Gran Horda de nuevo y alzarte "
-#~ "como su líder."
-
-#~ msgid "Nooo!  Don't kill me, I surrender to you little earthworm."
-#~ msgstr "¡Nooo!  No me mates, me rindo ante tí, pequeño gusano."
-
-#~ msgid "Silent Forest"
-#~ msgstr "Bosque del Silencio"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Kill all elves of the Silent Forest\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Death of Grüü\n"
-#~ "#Death of a Shaman"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Mata a todos los elfos del bosque del Silencio\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Muerte de Grüü\n"
-#~ "#Muerte de un chamán"
-
-#~ msgid ""
-#~ "So here is the Silent Forest ... why is it named that way?  Is it really "
-#~ "that silent?"
-#~ msgstr ""
-#~ "Así que este es el Bosque del Silencio ... ¿por qué se llama así?  "
-#~ "¿Realmente es tan silencioso?"
-
-#~ msgid ""
-#~ "It has not always been that silent.  A lot of hunters from tribes used to "
-#~ "hunt there and fish in the Bork river.  But now, no one would enter there "
-#~ "unless forced."
-#~ msgstr ""
-#~ "No lo ha sido siempre.  Muchas cazadores de las tribus solían cazar aquí "
-#~ "y pescar en el río Bork.  Pero ahora nadie entraría salvo que estuviera "
-#~ "obligado."
-
-#~ msgid "Some people say these woods are haunted."
-#~ msgstr "Algunos dicen que estos bosques están encantados."
-
-#~ msgid ""
-#~ "The fact is that few people entered this forest and returned home safe.  "
-#~ "Most likely, this forest is full of elvish renegades."
-#~ msgstr ""
-#~ "El hecho es que poca gente ha entrado a este bosque y vuelto con vida.  "
-#~ "Aparentemente, este bosque está lleno de renegados élfos."
-
-#~ msgid ""
-#~ "Anyway, we need some rest.  We are sufficiently armed to cope with a "
-#~ "bunch of elvish poachers.  If we ever meet some, I'll push them into the "
-#~ "Bork river with great delight."
-#~ msgstr ""
-#~ "De todos modos, necesitamos algo de descanso.  Estamos lo suficientemente "
-#~ "armados como para poder ocuparnos de unos cuantos elfos.  Si nos "
-#~ "encontramos alguno estaré encantado de tirarlos al río Bork."
-
-#~ msgid ""
-#~ "What is that?  Orcs entering our forest?  Fools!  None of them will "
-#~ "return alive!"
-#~ msgstr ""
-#~ "¿Qué es esto?  Orcos entrando en nuestro bosque?  ¡Idiotas!  Ninguno de "
-#~ "ellos saldrá con vida."
-
-#~ msgid "I agree.  We'll attack them on both sides."
-#~ msgstr "Estoy de acuerdo.  Les atacaremos desde ambos lados."
-
-#~ msgid "No more elves?  Where are you cowards!?"
-#~ msgstr "¿No quedan más elfos?  ¿Dondé estáis?, ¡cobardes!"
-
-#~ msgid ""
-#~ "Don't shout that loud, stupid troll.  Do you remember we are in the "
-#~ "Silent Forest?  Perhaps there more are to come."
-#~ msgstr ""
-#~ "No grites tanto, troll estúpido.  ¿No recuerdas que estamos en el bosque "
-#~ "del Silencio?  Tal vez vengan más."
-
-#~ msgid ""
-#~ "I don't think so.  They must have fled.  Now that this forest has been "
-#~ "cleared of elves, we can have a rest and then continue our journey."
-#~ msgstr ""
-#~ "No creo.  Ellos han debido huir.  Ahora que no quedan elfos en el bosque "
-#~ "podremos descansar antes de continuar el viaje."
-
-#~ msgid "The Siege Of Barag Gór"
-#~ msgstr "El asedio de Barag Gór"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Rescue the Shamans\n"
-#~ "@Bring the Shamans and Kapou'e to the sign post\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Death of Grüü\n"
-#~ "#Death of a Shaman\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Rescata a los chamanes\n"
-#~ "@Lleva a los chamanes y a Kapou'e hasta la señal al oeste\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Muerte de Grüü\n"
-#~ "#Muerte de un chamán\n"
-#~ "#Fin de los turnos"
-
-#~ msgid "Here is Barag Gor."
-#~ msgstr "Aquí está Barag Gor."
-
-#~ msgid ""
-#~ "Oh no!  They are besieged by elves.  We must help our brothers to get rid "
-#~ "of this mob.  But these filthy elves are so numerous."
-#~ msgstr ""
-#~ "¡Oh no! Los elfos les asedian. Tenemos que ayudar a nuestros hermanos a "
-#~ "eliminar a esa plaga por muchos que sean."
-
-#~ msgid "I have a subtle plan, chief."
-#~ msgstr "Yo tengo un plan inteligente, jefe."
-
-#~ msgid "Which plan?"
-#~ msgstr "¿Qué plan?"
-
-#~ msgid "We go and we kill all of them.  What do you think?"
-#~ msgstr "Vamos y los matamos a todos  ¿Qué te parece?"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid ""
-#~ "Then, Kapou'e launched his desperate attack to stop the siege of Barag "
-#~ "Gor."
-#~ msgstr ""
-#~ "Entonces, Kapou'e lanzó su desesperado ataque para levantar el asedio de "
-#~ "Barag Gor."
-
-#~ msgid ""
-#~ "Freedom!  Many thanks, Son of The Black Eye.  I'm Jetto, master of "
-#~ "assassins, now you can count on the assassins guild to help you in your "
-#~ "quest!"
-#~ msgstr ""
-#~ "¡Libre! Muchas gracias, hijo de Black Eye. ¡Soy Jetto, maestro de "
-#~ "asesinos, el gremio de ladrones te ayudará en tus misiones!"
-
-#~ msgid "They are retreating at last!"
-#~ msgstr "¡Por fin se retiran!"
-
-#~ msgid ""
-#~ "We're not out of the woods yet.  I can see that more are pouring from the "
-#~ "forest.  We are not in safety."
-#~ msgstr ""
-#~ "Aún no estamos fuera del bosque, puedo ver más elfos surgir del bosque. "
-#~ "No estamos seguros."
-
-#~ msgid ""
-#~ "You are right, we have to go to a safer place.  You have helped us.  "
-#~ "Would you help us again and escort us to the Harbour of Tirigaz?"
-#~ msgstr ""
-#~ "Tienes razón, tenemos que ir a un lugar mejor. Nos has ayudado. ¿Podrías "
-#~ "ayudarnos de nuevo y escoltarnos hasta el puerto de Tirigaz?"
-
-#~ msgid "Yes, I need to ask for assistance from whole council.  I'm with you."
-#~ msgstr "Sí, necesito pedir ayuda a todo el concilio. Voy con vosotros"
-
-#~ msgid ""
-#~ "Excellent.  This is a dangerous journey, as we have to take a road near "
-#~ "the elvish forest.  This is the road near that yellow farm."
-#~ msgstr ""
-#~ "Excelente. Éste es un viaje peligroso porque tenemos que usar un camino "
-#~ "que bordea un bosque Élfico. Es el camino cerca de aquella granja "
-#~ "amarilla."
-
-#~ msgid ""
-#~ "Yes, but I can see that more are pouring from the forest.  We are not in "
-#~ "safety."
-#~ msgstr "Sí, pero no paran de surgir del bosque. No estamos seguros."
-
-#~ msgid ""
-#~ "You are right, we have to leave to a safer place.  You have helped us.  "
-#~ "Would you help us again and escort us to the Harbour of Tirigaz?"
-#~ msgstr ""
-#~ "Tienes razón, debemos ir a un lugar más seguro. Nos has ayudado. ¿Podrías "
-#~ "ayudarnos de nuevo y escoltarnos hasta el Puerto de Tirigaz?"
-
-#~ msgid ""
-#~ "Yes, I need to ask for assistance to the whole council.  I'm with you."
-#~ msgstr "Sí, necesito la ayuda de todo el concilio, voy con vosotros."
-
-#~ msgid ""
-#~ "Excellent.  This is a dangerous journey, as we have to take a road near "
-#~ "the elvish forest.  This is the road near this yellow farm."
-#~ msgstr ""
-#~ "Excelente. Este es un viaje peligroso porque tenemos que usar un camino "
-#~ "que bordea un bosque élfico. Es el camino cerca de aquella granja "
-#~ "amarilla."
-
-#~ msgid ""
 #~ "We're safe, finally.  Hurry up Kapou'e, come with us, we need to reach "
 #~ "Tirigaz as soon as possible."
 #~ msgstr ""
@@ -9011,25 +9560,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgstr "Hacia el puerto de Tirigaz"
 
 #~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Kill all enemy leaders\n"
-#~ "Defeat:\n"
-#~ "#Turns run out\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Death of Grüü\n"
-#~ "#Death of a Shaman"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Derrota a todos los líderes enemigos\n"
-#~ "Derrota:\n"
-#~ "#Fin de los turnos\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Muerte de Grüü\n"
-#~ "#Muerte de un Chamán"
-
-#~ msgid ""
 #~ "Ahhh, I'm so tired.  It was a good idea to halt in such a quiet place."
 #~ msgstr ""
 #~ "Ahhh, estoy tan cansado, fue una buena idea parar en un lugar tan "
@@ -9054,78 +9584,8 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Hmmm, what neat bottle!  What is it?"
 #~ msgstr "¡Hmmm... bonita botella! ¿Qué es?"
 
-#~ msgid "It is written H.O.L.Y W.A.T.E.R"
-#~ msgstr "Pone A.G.U.A. S.A.G.R.A.D.A."
-
-#~ msgid "I'm thirsty ... *gulp* *gulp*"
-#~ msgstr "Tengo sed... *gulp* *gulp*"
-
-#~ msgid "Ahhh, that was yummy!"
-#~ msgstr "¡Uhmmm, estaba buena!"
-
 #~ msgid "Toward Mountains of Haag"
 #~ msgstr "Hacia las montañas de Haag"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Move Kapou'e to the end of the mountains\n"
-#~ "Defeat:\n"
-#~ "#Death of Kapou'e\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Mueve a Kapou'e al final de las montañas\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Kapou'e\n"
-#~ "#Fin de los turnos"
-
-#~ msgid ""
-#~ "We have nearly crossed the mountains.  I feel the lands of the free "
-#~ "tribes are near now.  But beware, there are dwarves and wild trolls "
-#~ "around.  Hurry up!  I can see the sign post that indicates their land."
-#~ msgstr ""
-#~ "Casi hemos cruzado las montañas. Creo que las tierras de las tribus "
-#~ "libres están cerca, aunque debemos ser cuidadosos porque hay enanos y "
-#~ "trolls salvajes por la zona. ¡De prisa, ya veo la señal que marca el "
-#~ "camino hacia esas tierras!"
-
-#~ msgid "What are these orcs doing here?  They should be too tired to live."
-#~ msgstr "¿Qué hacen los orcos aquí? ¿Están cansados de vivir?."
-
-#~ msgid ""
-#~ "I've never pushed so far, we are crossing the border of the Black Eye "
-#~ "lands."
-#~ msgstr ""
-#~ "Nunca he ido tan lejos, estamos al borde de las tierras de Ojo Negro."
-
-#~ msgid "Look!  Dwarves are fighting against orcs!"
-#~ msgstr "¡Mira! ¡Enanos y orcos se pegan!"
-
-#~ msgid "Father, we should help them.  Orcs are our allies."
-#~ msgstr "Padre, debemos ir. Los orcos son amigos."
-
-#~ msgid ""
-#~ "I don't know if we should do that.  Orcs have been our allies in the "
-#~ "past, but they have always treated us as fools."
-#~ msgstr ""
-#~ "No sé si debemos. Los orcos han sido aliados en el pasado, pero nos han "
-#~ "tratado como tontos."
-
-#~ msgid ""
-#~ "But Father, we don't know what they are seeking there, maybe this is a "
-#~ "good occasion to get rid of these dwarves."
-#~ msgstr ""
-#~ "Pero padre, no sabemos qué buscan, tal vez sea un buen momento para matar "
-#~ "a los enanos."
-
-#~ msgid ""
-#~ "You are right, my son.  We will help our orcish friends.  But take care "
-#~ "of you ... I would be desperate if something would happen to you."
-#~ msgstr ""
-#~ "Tienes razón, hijo, les ayudaremos. Pero ten cuidado, me moriría si te "
-#~ "pasase algo."
 
 #~ msgid "Argh!  I'm done.  My people is dommed!"
 #~ msgstr "¡Argh! ¡Estoy acabado, mi gente está condenada!"
@@ -9207,171 +9667,14 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Argh!  I'm done.  My people is doomed!"
 #~ msgstr "¡Argh! Estoy acabado. ¡Mi gente está condenada!"
 
-#~ msgid ""
-#~ "Rahul I, King of Wesnoth, concluded peace with orcs in his 4th year of "
-#~ "reign.  He ended a 15 year war with Black Eye Karun, ruler of the orcs.  "
-#~ "A peace treaty defined which lands were devoted to orcs or humans.  Years "
-#~ "that followed peace were prosperous."
-#~ msgstr ""
-#~ "Rahul I, rey de Wesnoth, firmó la paz con los Orcos en su 4º año de "
-#~ "reinado. Acabó con una guerra que duraba ya 15 años con Black Eye Karun. "
-#~ "El tratado claramente señalaba cuáles eran los límites de cada "
-#~ "territorio, y los años que siguieron a este tratado fueron prósperos y "
-#~ "pacíficos."
-
-#~ msgid ""
-#~ "In the thirteenth year of Howgarth III, tension began to rise between "
-#~ "Orcish tribes and human northern earldoms.  Famine led humans to colonize "
-#~ "some orcish lands and to push orcs to desolated hills."
-#~ msgstr ""
-#~ "En el decimotercer año de reinado de Howgart III, empezaron a surgir "
-#~ "tensiones entre los orcos y los hombres. Los condados del norte se "
-#~ "lanzaron a la colonización de las tierras al norte de sus límites, "
-#~ "llevados por el hambre. Los orcos se vieron forzados a refugiarse en las "
-#~ "colinas."
-
-#~ msgid ""
-#~ "Of course, this caused violent orcish riots as orcs systematically "
-#~ "slaughtered human colonies and villages that were on their lands.  Then, "
-#~ "earl Lanbec'h decided to definitively address the Orcish menace and "
-#~ "conferred a small army to his son-in-law baron Albert."
-#~ msgstr ""
-#~ "Por supuesto, esto produjo fortísimos ataques por parte de los orcos, que "
-#~ "sistemáticamente masacraron todas las aldeas humanas y colonos en sus "
-#~ "tierras. Entonces, el conde Lanbec'h decidió acabar de una vez por todas "
-#~ "con la amenaza orca y envió un pequeño ejército al mando de su hijo "
-#~ "político, el barón Albert."
-
-#~ msgid ""
-#~ "Baron Albert personally led a small vanguard with the mission to "
-#~ "establish a bridgehead inside Orcish lands."
-#~ msgstr ""
-#~ "El barón Albert dirigió personalmente una pequeña avanzadilla para "
-#~ "establecer una pequeña fortaleza en territorio orco."
-
 #~ msgid "A New Chance"
 #~ msgstr "Una nueva oportunidad"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Clear the land of monsters\n"
-#~ "Defeat:\n"
-#~ "#Death of Gwiti Ha'atel\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Limpiar los terrenos de monstruos\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Gwiti Ha'atel\n"
-#~ "#Fin de los turnos"
-
-#~ msgid "Brother Against Brother"
-#~ msgstr "Hermano contra Hermano"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Defeat your brother Nati Ha'atel\n"
-#~ "Defeat:\n"
-#~ "#Death of Gwiti Ha'atel\n"
-#~ "#Turns run out"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Derrota a tu hermano Nati Ha'atel\n"
-#~ "Derrota:\n"
-#~ "#Muerte de Gwiti Ha'atel\n"
-#~ "#Fin de los turnos"
-
-#~ msgid ""
-#~ "As the sun set, Gwiti discovered that his arch-rival and brother, Nati, "
-#~ "had already ensconced himself nearby."
-#~ msgstr ""
-#~ "Mientras el sol se ponía, Gwiti descubrío que su archirrival y hermano, "
-#~ "Nati, se había escondido cerca."
-
-#~ msgid ""
-#~ "Ah, hated brother mine. Look well upon the setting sun, for you shall not "
-#~ "live to see another in this land."
-#~ msgstr ""
-#~ "Ah, mi odiado hermano. Mira bien el sol, es la última vez que lo verás "
-#~ "ponerse en esta tierra."
-
-#~ msgid ""
-#~ "This land? Do you truly not know where we are? Then you are a greater "
-#~ "fool than I had thought."
-#~ msgstr ""
-#~ "¿Esta tierra? ¿Realmente no sabes dónde estamos? Entonces eres más idiota "
-#~ "de lo que pensaba."
-
-#~ msgid "Cease your blustering, fool, and prepare to die...again."
-#~ msgstr "Da igual, prepárate para morir... de nuevo."
-
-#~ msgid ""
-#~ "I will fight you with all my strength to prevent that, and I was always "
-#~ "the stronger of us. Flee now and save your miserable hide before I make "
-#~ "it a carpet."
-#~ msgstr ""
-#~ "Lucharé con todas mis fuerzas para evitarlo, yo siempre fui el más fuerte "
-#~ "de los dos. ¡Huye ahora antes de que me haga una alfombra con tu piel!"
-
-#~ msgid ""
-#~ "Don't be silly! I'm not hairy enough to be a carpet! But your scalp would "
-#~ "make a good pillow."
-#~ msgstr ""
-#~ "No seas estúpido, nunca he tenido suficiente pelo como para servir de "
-#~ "alfombra. Pero tu melena sí que me iría bien como relleno de un cojín."
-
-#~ msgid "What? I can't die! I already have! Noooo!"
-#~ msgstr "¿Qué? ¡No puedo morir... otra vez! ¡Noooo!"
-
-#~ msgid ""
-#~ "Ha ha ha, did I not tell you it would be so? Perhaps I shall summon your "
-#~ "shade to serve me one day. Until then...farewell!"
-#~ msgstr ""
-#~ "¡Ja, ja, ja! ¡El que avisa no es traidor! Quizá algún día te invoque para "
-#~ "que me sirvas... hasta entonces, ¡adiós!"
-
-#~ msgid "It is over. I am doomed."
-#~ msgstr "Es el fin, estoy perdido."
-
-#~ msgid ""
-#~ "I...have failed to win this battle. I am defeated. I will not believe it."
-#~ msgstr "He...he fracasado. No me lo puedo creer."
-
-#~ msgid ""
-#~ "Die, yes, die, and go to the Land of the Dead. Perhaps one day you will "
-#~ "be back under my command!"
-#~ msgstr ""
-#~ "Muere, sí, muere y ve a la tierra de los muertos. Quizá algún día te "
-#~ "llamaré para que me sirvas..."
 
 #~ msgid "Didn't I tell you so?!"
 #~ msgstr "¿¡No te lo dije!?"
 
-#~ msgid "And by my own hands you died!"
-#~ msgstr "¡Y te he matado con mis propias manos!"
-
-#~ msgid "I am Gwiti the Mighty, prepare to die!"
-#~ msgstr "Soy Gwiti el Poderoso. ¡Prepárate a morir!"
-
 #~ msgid "Now you shall die!"
 #~ msgstr "¡Ahora morirás!"
-
-#~ msgid ""
-#~ "You miserable wretch, know that it is only by my mercy that you look upon "
-#~ "the sun again, for you shall die before it sets."
-#~ msgstr ""
-#~ "Miserable gusano, si aún vives es gracias a mi misericordia, pero antes "
-#~ "de que el sol se ponga, morirás."
-
-#~ msgid ""
-#~ "May I remind you that even as we speak, my undead legions are marching "
-#~ "towards you?"
-#~ msgstr ""
-#~ "¿Y si te recuerdo que mientras hablamos mis legiones marchan hacia ti?"
 
 #~ msgid "Confrontation"
 #~ msgstr "Enfrentamiento"
@@ -9379,75 +9682,14 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Crelanu's Book"
 #~ msgstr "El libro de Crelanu"
 
-#~ msgid "I feel that it must be close. Could it be in that swamp?"
-#~ msgstr "Siento que está cerca. ¿Podría estar en ese pantano?"
-
-#~ msgid ""
-#~ "Blast it! However did the elves get a necromancer to march with them?"
-#~ msgstr ""
-#~ "¡Malditos elfos! ¿Cómo han podido convencer a un Nigromante para que "
-#~ "marche junto a ellos?"
-
-#~ msgid "I side not with either of you!"
-#~ msgstr "¡No estoy aliado con nadie!"
-
-#~ msgid "A truce, then? I fear he will be the death of us both."
-#~ msgstr "¿Una tregua entonces? Me temo que te mataremos entre los dos."
-
-#~ msgid ""
-#~ "Very well. We have hated you Orcs for centuries, but the Undead are a "
-#~ "danger to all that live."
-#~ msgstr ""
-#~ "Muy bien. Os hemos odiado durante siglos, pero los no muertos son un "
-#~ "peligro para todo lo que vive."
-
-#~ msgid ""
-#~ "The book is not here, but these swamps contain enough corpses to suit my "
-#~ "purposes."
-#~ msgstr ""
-#~ "El libro no está aquí, pero estos pantanos contienen suficientes "
-#~ "cadáveres como para serme útiles a mis propósitos.."
-
 #~ msgid "What? I can't die! Noooo!"
 #~ msgstr "¿Qué? No puedo morir. ¡Nooooo!"
 
 #~ msgid "I die a terrible death... not knowing why."
 #~ msgstr "¡Qué muerte más terrible ... sin saber por qué!"
 
-#~ msgid "A curse upon that necromancer! Why did he have to come here?!"
-#~ msgstr "¡Una maldición sobre ese necromante! ¿Por qué tuvo que venir aquí?"
-
 #~ msgid "Inside the Tower"
 #~ msgstr "Dentro de la torre"
-
-#~ msgid ""
-#~ "\n"
-#~ "Victory:\n"
-#~ "@Find Crelanu's Book\n"
-#~ "Defeat\n"
-#~ "#Death of Gwiti Ha'atel"
-#~ msgstr ""
-#~ "\n"
-#~ "Victoria:\n"
-#~ "@Encuentra el libro de Crelanu\n"
-#~ "Derrota\n"
-#~ "#Muerte de Gwiti Ha'atel"
-
-#~ msgid ""
-#~ "If my memory serves, this tower should have three floors. I should be "
-#~ "able to find the Book in a few hours...!"
-#~ msgstr ""
-#~ "Si mi memoria no falla, esta torre tiene tres plantas. ¡Unas pocas horas "
-#~ "más y encontraremos el libro!"
-
-#~ msgid "Hayaargghh! We have arrived! Command us, Master!"
-#~ msgstr "¡Hayaargghh! ¡Hemos llegado! ¡Maestro, llévanos!"
-
-#~ msgid "There's a secret door here! This must be the library."
-#~ msgstr "¡Hay una puerta secreta aquí! ¡Esto debe ser la biblioteca!"
-
-#~ msgid "Well, well, well. Thirty-five pieces of gold were in this chest!"
-#~ msgstr "Bien, bien, bien, ¡hay 35 piezas de oro en este cofre!"
 
 #~ msgid "Blast it, the chest is empty!"
 #~ msgstr "¡Maldita sea, está vacío!"
@@ -9455,65 +9697,8 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "Twenty pieces of gold is a welcome gift."
 #~ msgstr "Veinte piezas de oro nunca hacen daño."
 
-#~ msgid "I suppose thirty copper coins should not be scorned..."
-#~ msgstr "Supongo que 30 piezas de cobre no deberían ser despreciadas..."
-
-#~ msgid ""
-#~ "The chest is empty save for a few trinkets. The magic has gone out of "
-#~ "them."
-#~ msgstr ""
-#~ "El cofre sólo contiene unos pocos trastos. Hace tiempo que la magia los "
-#~ "abandonó."
-
-#~ msgid "Gack! This chest contains holy water!"
-#~ msgstr "¡Agh! ¡Este cofre contiene agua sagrada!"
-
-#~ msgid "Look at what the mages were guarding!"
-#~ msgstr "¡Mira lo que habían guardado esos magos!"
-
-#~ msgid "Those mages had hidden away more than it seemed!"
-#~ msgstr "¡Estos magos guardaban más de lo que parecía!"
-
-#~ msgid "Two dozen gold. Plundering this tower is fun!"
-#~ msgstr "24 monedas de oro. ¡Saquear esta torre es divertido!"
-
-#~ msgid "A pile of assorted coins is here!"
-#~ msgstr "¡Mira, un montón de monedas!"
-
-#~ msgid "Haha, this chest holds scores of gold coins!"
-#~ msgstr "¡Jaja, dentro de este cofre había montones de oro!"
-
-#~ msgid ""
-#~ "This is not the tome Crelanu wrote...hmmm... but it contains its "
-#~ "whereabouts!"
-#~ msgstr ""
-#~ "Este no es el libro que escribió Crelanu... Mmmmm... ¡pero dice dónde "
-#~ "está el libro que buscamos!"
-
-#~ msgid "We're done in here! Let's go slay some more enemies."
-#~ msgstr "¡Hemos acabado aquí ya! ¡A matar a más enemigos!"
-
 #~ msgid "Mages and Elves"
 #~ msgstr "Magos y elfos"
-
-#~ msgid "Quirind, know that you have the Elves at your back."
-#~ msgstr "¡Quirind, los Elfos te apoyamos!"
-
-#~ msgid ""
-#~ "Foul sorcerer of death, go far from this place or we shall send you to "
-#~ "your own realm."
-#~ msgstr ""
-#~ "Horrible hechicero oscuro, huye de aquí o te devolveremos al reino del "
-#~ "que vienes."
-
-#~ msgid "Not born is the one that could challenge me!"
-#~ msgstr "¡Aún no ha nacido nadie capaz de desafiarme!"
-
-#~ msgid "Haha! I have gained entry to the tower!"
-#~ msgstr "¡Jaja! ¡He conseguido entrar en la torre!"
-
-#~ msgid "A curse upon that foul necromancer!"
-#~ msgstr "¡Maldito nigromante!"
 
 #~ msgid "The Skull of Agarash"
 #~ msgstr "La Calavera de Agarash"
@@ -9535,32 +9720,6 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 
 #~ msgid "The Vanguard"
 #~ msgstr "La vanguardia"
-
-#~ msgid ""
-#~ "The new Crown Prince departed, with the largest army ever assembled on "
-#~ "the Isle to make war with the Wesfolk. This where our story begins. . ."
-#~ msgstr ""
-#~ "El nuevo príncipe partió con el ejército más grande jamás visto en la "
-#~ "Isla para atacar a los Wesfolk. Aquí es donde nuestra historia comienza..."
-
-#~ msgid "With the plight of a different Prince on the same Isle. . ."
-#~ msgstr "Con las aventuras de otro príncipe en la misma isla..."
-
-#~ msgid ""
-#~ "For this is the story of Haldric the First, and the Rise of Wesnoth. . ."
-#~ msgstr "Esta es la historia de Haldric I y el despertar de Wesnoth..."
-
-#~ msgid "You retrieve {AMOUNT} pieces of gold."
-#~ msgstr "Obtienes {AMOUNT} monedas de oro."
-
-#~ msgid ""
-#~ "The video mode could not be changed. Your window manager must be set to "
-#~ "16 bits per pixel to run the game in windowed mode. Your display must "
-#~ "support 1024x768x16 to run the game full screen."
-#~ msgstr ""
-#~ "El modo de vídeo no ha podido cambiarse. Su escritorio debe estar en 16 "
-#~ "bits para poder funcionar en modo ventana. Su pantalla debe soportar una "
-#~ "resolución de 1024x768x16 para jugar a pantalla completa."
 
 #~ msgid "player"
 #~ msgstr "jugador"
@@ -9736,56 +9895,14 @@ msgstr "Ha habido algún fallo en el proceso de borrado."
 #~ msgid "File"
 #~ msgstr "Fichero"
 
-#~ msgid ""
-#~ "Bugg: Control of the seas! A small step for me, a great leap for all "
-#~ "goblinoids! *Glub*"
-#~ msgstr ""
-#~ "Bugg: ¡¡Controlad los mares!! ¡¡Un pequeño paso para mí, pero un gran "
-#~ "salto para los goblins!! *Glub*"
-
 #~ msgid "Race"
 #~ msgstr "Raza"
 
 #~ msgid "We will not join you."
 #~ msgstr "No te ayudaremos."
 
-#~ msgid ""
-#~ "Wait. We may join them. But only if they can prove they are worthy to "
-#~ "have us fight with them."
-#~ msgstr ""
-#~ "Esperad. Le ayudaremos. Pero sólo si demuestra que merece la pena luchar "
-#~ "por él."
-
-#~ msgid ""
-#~ "Yes. We will not join you unless you can prove yourself worthy by "
-#~ "defeating us in battle!"
-#~ msgstr ""
-#~ "Sí. ¡No te ayudaremos a no ser que demuestres tu valía derrotandonos en "
-#~ "combate!"
-
 #~ msgid "Very well."
 #~ msgstr "Muy bien."
-
-#~ msgid ""
-#~ "Remember, this is a fight to the death. If you cannot defeat us, you are "
-#~ "unworthy, and we shall slay you for that."
-#~ msgstr ""
-#~ "Recuerda, es una lucha a muerte. Si no puedes derrotarnos, te "
-#~ "aniquilaremos."
-
-#~ msgid ""
-#~ "Stop! Very well, you have defeated me, and proved yourself worthy for us "
-#~ "to help you. I will join you in fighting these foes of yours."
-#~ msgstr ""
-#~ "¡Para! Muy bien, me has derrotado y has demostrado tu valor. Te "
-#~ "seguiremos en la lucha contra tus enemigos."
-
-#~ msgid ""
-#~ "Thank you. We will now go onward, into the heart of Wesnoth, to defeat "
-#~ "Ashievere, my evil mother."
-#~ msgstr ""
-#~ "Gracias. Ahora podemos continuar nuestra camino hacia el corazón de "
-#~ "Wesnoth para derrotar a Ashievere."
 
 #~ msgid "You have reached the end of the currently playable levels"
 #~ msgstr "Ha finalizado todos los niveles jugables actualmente"
