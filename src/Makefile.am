@@ -415,7 +415,7 @@ wesnothd_SOURCES = \
 	serialization/string_utils.hpp \
 	zipios++/xcoll.hpp
 
-wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+wesnothd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 #############################################################################
 #    Campaign Server                                                        #
@@ -453,7 +453,7 @@ campaignd_SOURCES = \
 	thread.hpp \
 	zipios++/xcoll.hpp
 
-campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS)
+campaignd_LDADD = @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBZIPIOS) $(LIBINTL)
 
 #############################################################################
 #    Castle building helpers                                                #
