@@ -406,7 +406,6 @@ void replay::undo()
 	}
 
 	if(cmd.first != cmd.second) {
-		delete *(cmd.second-1);
 		cfg_.remove_child("command",cmd.second - cmd.first - 1);
 	}
 }

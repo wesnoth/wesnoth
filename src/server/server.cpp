@@ -323,7 +323,7 @@ void server::run()
 
 							const config::child_iterator desc = std::find(vg.first,vg.second,g->description());
 							if(desc != vg.second) {
-								delete gamelist->remove_child("game",desc - vg.first);
+								gamelist->remove_child("game",desc - vg.first);
 							}
 
 							//update the state of the lobby to players in it.
@@ -496,7 +496,6 @@ void server::delete_game(std::vector<game>::iterator i)
 	const config::child_list::iterator g = std::find(vg.first,vg.second,i->description());
 	if(g != vg.second) {
 		const size_t index = g - vg.first;
-		delete *g;
 		gamelist->remove_child("game",index);
 	}
 	
