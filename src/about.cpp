@@ -227,6 +227,11 @@ std::vector<std::string> get_text() {
 		"-   Renato Cunha",
 		"+ ",
 
+		"_" N_("+Russian Translation"),
+		"-   Alexandr Menovchicov",
+		"-   Azamat Hackimov",
+		"+ ",
+
 		"_" N_("+Slovak Translation"),
 		"-   Viliam Bur",
 		"+ ",
