@@ -379,6 +379,8 @@ int play_game(int argc, char** argv)
 			return 0;
 		}
 
+		//multiplayer mode skips straight into a multiplayer game, bypassing the main menu
+		//it is all handled inside this 'if' statement
 		if(multiplayer_mode) {
 
 			std::string scenario = "multiplayer_test";
@@ -475,7 +477,7 @@ int play_game(int argc, char** argv)
 				}
 
 				if(algorithm != side_algorithms.end()) {
-					(*itors.first)->values["ai_algorithm"] = controller->second;
+					(*itors.first)->values["ai_algorithm"] = algorithm->second;
 				}
 			}
 

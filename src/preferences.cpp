@@ -360,19 +360,24 @@ std::string client_type()
 
 const std::string& theme()
 {
-	std::string& res = prefs["theme"];
-	if(res.empty())
-		res = "Default";
+	if(non_interactive()) {
+		static const std::string null_theme = "null";
+		return null_theme;
+	}
 
-	if(non_interactive())
-		res = "null";
+	std::string& res = prefs["theme"];
+	if(res.empty()) {
+		res = "Default";
+	}
 
 	return res;
 }
 
 void set_theme(const std::string& theme)
 {
-	prefs["theme"] = theme;
+	if(theme != "null") {
+		prefs["theme"] = theme;
+	}
 }
 
 void show_preferences_dialog(display& disp)

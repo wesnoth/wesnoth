@@ -32,6 +32,9 @@ ai_interface* create_ai(const std::string& name, ai_interface::info& info)
 	//	return new my_ai(info);
 	//at the top of this function
 
+	if(name == "sample_ai")
+		return new sample_ai(info);
+
 	return new ai(info);
 }
 
@@ -41,17 +44,14 @@ ai::ai(ai_interface::info& info)
 		 consider_combat_(true)
 {}
 
-bool ai::recruit(const std::string& usage)
+bool ai::recruit_usage(const std::string& usage)
 {
 	const int min_gold = 0;
 	
 	log_scope("recruiting troops");
 	std::cerr << "recruiting " << usage << "\n";
 
-	std::vector<std::map<std::string,unit_type>::const_iterator> options;
-
-	//record the number of the recruit for replay recording
-	std::vector<int> option_numbers;
+	std::vector<std::string> options;
 
 	//find an available unit that can be recruited, matches the desired
 	//usage type, and comes in under budget
@@ -62,38 +62,54 @@ bool ai::recruit(const std::string& usage)
 		if(i->second.usage() == usage && recruits.count(i->second.name())
 		   && current_team().gold() - i->second.cost() > min_gold) {
 
-			options.push_back(i);
-			option_numbers.push_back(std::distance(recruits.begin(),
-			                                       recruits.find(i->first)));
+			options.push_back(i->second.name());
 		}
 	}
 
 	//from the available options, choose one at random
 	if(options.empty() == false) {
-		const gamemap::location loc = gamemap::location::null_location;
 		const int option = rand()%options.size();
-
-		//add the recruit conditionally. If recruiting fails,
-		//we will undo it.
-		recorder.add_recruit(option_numbers[option],loc);
-		replay_undo replay_guard(recorder);
-
-		const unit_type& u = options[option]->second;
-		unit new_unit(&u,team_num_,true);
-
-		//see if we can actually recruit (i.e. have enough room etc)
-		if(recruit_unit(map_,team_num_,units_,new_unit,loc,&disp_).empty()) {
-			current_team().spend_gold(u.cost());
-
-			//confirm the transaction - i.e. don't undo recruitment
-			replay_guard.confirm_transaction();
-			return true;
-		} else {
-			return false;
-		}
+		return recruit(options[option]);
 	}
 
 	return false;
+}
+
+bool ai_interface::recruit(const std::string& unit_name, location loc)
+{
+	const std::set<std::string>& recruits = current_team().recruits();
+	const std::set<std::string>::const_iterator i = std::find(recruits.begin(),recruits.end(),unit_name);
+	if(i == recruits.end()) {
+		return false;
+	}
+
+	const int num = std::distance(recruits.begin(),i);
+
+	recorder.add_recruit(num,loc);
+	replay_undo replay_guard(recorder);
+
+	game_data::unit_type_map::const_iterator u = info_.gameinfo.unit_types.find(unit_name);
+	if(u == info_.gameinfo.unit_types.end()) {
+		return false;
+	}
+
+	//check we have enough money
+	if(current_team().gold() < u->second.cost()) {
+		return false;
+	}
+
+	unit new_unit(&u->second,info_.team_num,true);
+
+	//see if we can actually recruit (i.e. have enough room etc)
+	if(recruit_unit(info_.map,info_.team_num,info_.units,new_unit,loc,&info_.disp).empty()) {
+		current_team().spend_gold(u->second.cost());
+
+		//confirm the transaction - i.e. don't undo recruitment
+		replay_guard.confirm_transaction();
+		return true;
+	} else {
+		return false;
+	}
 }
 
 team& ai_interface::current_team()
@@ -727,7 +743,7 @@ void ai::do_recruitment()
 
 	std::map<std::string,int> unit_types;
 	while(unit_types["scout"] < scouts_wanted) {
-		if(recruit("scout") == false)
+		if(recruit_usage("scout") == false)
 			break;
 
 		++unit_types["scout"];
@@ -741,7 +757,7 @@ void ai::do_recruitment()
 	}
 
 	//buy units as long as we have room and can afford it
-	while(recruit(options[rand()%options.size()])) {
+	while(recruit_usage(options[rand()%options.size()])) {
 	}
 }
 

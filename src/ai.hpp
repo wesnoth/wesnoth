@@ -85,7 +85,8 @@ protected:
 	///must be a valid weapon of the attacking unit
 	void attack_enemy(const location& attacking_unit, const location& target, int weapon);
 
-	///this function should be called to move a unit.
+	///this function should be called to move a unit. Once the unit has been moved, its
+	///movement allowance is set to 0.
 	///'from': the location of the unit being moved.
 	///'to': the location to be moved to. This must be a valid move for the unit
 	///'possible_moves': the map of possible moves, as obtained from 'calculate_possible_moves'
@@ -98,10 +99,19 @@ protected:
 	///'srcdst': a map of units to all their possible destinations
 	///'dstsrc': a map of destinations to all the units that can move to that destination
 	///'enemy': if true, a map of possible moves for enemies will be calculated. If false,
-	///a map of possible moves for units on the AI's side will be calculated
+	///a map of possible moves for units on the AI's side will be calculated. The AI's own
+	///leader will not be included in this map.
 	///'assume_full_movement': if true, the function will operate on the assumption that all
 	///units can move their full movement allotment.
 	void calculate_possible_moves(std::map<location,paths>& possible_moves, move_map& srcdst, move_map& dstsrc, bool enemy, bool assume_full_movement=false);
+
+	///this function is used to recruit a unit. It will recruit the unit with the given name,
+	///at the given location, or at an available location to recruit units if 'loc' is not
+	///a valid recruiting location.
+	///
+	///if recruitment cannot be performed, because there are no available tiles, or not enough
+	///money, then the function will return false
+	bool recruit(const std::string& unit_name, location loc=location());
 
 	///functions to retrieve the 'info' object. Used by derived classes to discover all
 	///necessary game information
@@ -114,6 +124,143 @@ private:
 
 ///this function is used to create a new AI object with the specified algorithm name
 ai_interface* create_ai(const std::string& algorithm_name, ai_interface::info& info);
+
+class sample_ai : public ai_interface {
+public:
+	sample_ai(info& i) : ai_interface(i) {}
+
+	void play_turn() {
+		do_attacks();
+		get_villages();
+		do_moves();
+		do_recruitment();
+	}
+
+private:
+	void do_attacks() {
+		std::map<location,paths> possible_moves;
+		move_map srcdst, dstsrc;
+		calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+
+		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+			if(current_team().is_enemy(i->second.side())) {
+				location adjacent_tiles[6];
+				get_adjacent_tiles(i->first,adjacent_tiles);
+
+				int best_defense = -1;
+				std::pair<location,location> best_movement;
+
+				for(size_t n = 0; n != 6; ++n) {
+					typedef move_map::const_iterator Itor;
+					std::pair<Itor,Itor> range = dstsrc.equal_range(adjacent_tiles[n]);
+					while(range.first != range.second) {
+						const location& dst = range.first->first;
+						const location& src = range.first->second;
+						const unit_map::const_iterator un = get_info().units.find(src);
+
+						const gamemap::TERRAIN terrain = get_info().map.get_terrain(dst);
+
+						const int chance_to_hit = un->second.defense_modifier(get_info().map,terrain);
+
+						if(best_defense == -1 || chance_to_hit < best_defense) {
+							best_defense = chance_to_hit;
+							best_movement = *range.first;
+                        }
+
+						++range.first;
+					}
+				}
+
+				if(best_defense != -1) {
+					move_unit(best_movement.second,best_movement.first,possible_moves);
+					const int weapon = choose_weapon(best_movement.first,i->first);
+					attack_enemy(best_movement.first,i->first,weapon);
+					do_attacks();
+					return;
+				}
+			}
+		}
+	}
+
+	int choose_weapon(const location& attacker, const location& defender) {
+		const unit_map::const_iterator att = get_info().units.find(attacker);
+        assert(att != get_info().units.end());
+        
+        const std::vector<attack_type>& attacks = att->second.attacks();
+
+        int best_attack_rating = -1;
+        int best_attack = -1;
+        for(int n = 0; n != attacks.size(); ++n) {
+			const battle_stats stats = evaluate_battle_stats(get_info().map,attacker,defender,n,get_info().units,get_info().state,get_info().gameinfo,0,false);
+			const int attack_rating = stats.damage_defender_takes*stats.nattacks*stats.chance_to_hit_defender;
+			if(best_attack == -1 || attack_rating > best_attack_rating) {
+                 best_attack = n;
+                 best_attack_rating = attack_rating;
+            }
+		}
+
+		return best_attack;
+	}
+
+	void get_villages() {
+        std::map<location,paths> possible_moves;
+        move_map srcdst, dstsrc;
+        calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+
+        for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+            if(get_info().map.underlying_terrain(get_info().map.get_terrain(i->first)) == gamemap::TOWER &&
+               current_team().owns_tower(i->first) == false) {
+                move_unit(i->second,i->first,possible_moves);
+                get_villages();
+                return;
+            }
+        }
+	}
+
+	void do_moves() {
+		unit_map::const_iterator leader;
+        for(leader = get_info().units.begin(); leader != get_info().units.end(); ++leader) {
+            if(leader->second.can_recruit() && current_team().is_enemy(leader->second.side())) {
+                break;
+            }
+        }
+
+        if(leader == get_info().units.end())
+            return;
+
+        std::map<location,paths> possible_moves;
+        move_map srcdst, dstsrc;
+        calculate_possible_moves(possible_moves,srcdst,dstsrc,false);
+
+        int closest_distance = -1;
+        std::pair<location,location> closest_move;
+
+        for(move_map::const_iterator i = dstsrc.begin(); i != dstsrc.end(); ++i) {
+            const int distance = distance_between(i->first,leader->first);
+            if(closest_distance == -1 || distance < closest_distance) {
+                closest_distance = distance;
+                closest_move = *i;
+            }
+        }
+
+        if(closest_distance != -1) {
+            move_unit(closest_move.second,closest_move.first,possible_moves);
+            do_moves();
+        }
+    }
+
+	void do_recruitment() {
+		const std::set<std::string>& options = current_team().recruits();
+        const int choice = (rand()%options.size());
+        std::set<std::string>::const_iterator i = options.begin();
+        std::advance(i,choice);
+
+		const bool res = recruit(*i);
+		if(res) {
+			do_recruitment();
+		}
+	}
+};
 
 class ai : public ai_interface {
 public:
@@ -140,7 +287,7 @@ private:
 	void move_leader_after_recruit(const move_map& enemy_dstsrc);
 	void leader_attack();
 
-	bool recruit(const std::string& usage);
+	bool recruit_usage(const std::string& usage);
 
 	struct attack_analysis
 	{

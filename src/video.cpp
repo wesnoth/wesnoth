@@ -127,7 +127,7 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
-	SDL_Surface* const fb = get_video_surface();
+	SDL_Surface* const fb = SDL_GetVideoSurface();
 	if(fb != NULL) {
 		if(rect.x < 0) {
 			if(rect.x*-1 > int(rect.w))
