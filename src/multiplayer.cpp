@@ -540,11 +540,17 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 				player_type.push_back(preferences::login());
 				player_type.push_back(string_table["network_controlled"]);
 				player_type.push_back(string_table["ai_controlled"]);
-				std::vector<std::string> player_race;
-				player_race.push_back(string_table["elves"]);
-				player_race.push_back(string_table["orcs"]);
-				player_race.push_back(string_table["humans"]);
-				player_race.push_back(string_table["undead"]);
+
+				//player_race is a list of the names of possible races in the current locale.
+				//internal_player_race is a list of the internally used races that have
+				//to be saved to work properly.
+				std::vector<std::string> player_race, internal_player_race;
+
+				for(std::vector<config*>::const_iterator race = possible_sides.begin(); race != possible_sides.end(); ++race) {
+					internal_player_race.push_back((**race)["name"]);
+					player_race.push_back(translate_string((**race)["name"]));
+				}
+
 				std::vector<std::string> player_team;
 				
 				for(sd = sides.begin(); sd != sides.end(); ++sd) {
@@ -595,6 +601,20 @@ int play_multiplayer(display& disp, game_data& units_data, config cfg,
 					combo_race.push_back(gui::combo(disp,player_race));
 					combo_race.back().set_xy((disp.x()-width)/2+145,
 							(disp.y()-height)/2+55+(30*side_num));
+
+					//if the race is specified in the configuration, set it
+					//to the default of the combo box
+					const std::string& race_name = (**sd)["name"];
+					if(race_name != "") {
+						const size_t race_pos = std::find(
+						                              internal_player_race.begin(),
+													  internal_player_race.end(),
+													  race_name) -
+													  internal_player_race.begin();
+						if(race_pos != internal_player_race.size())
+							combo_race.back().set_selected(race_pos);
+					}
+
 					combo_team.push_back(gui::combo(disp,player_team));
 					combo_team.back().set_xy((disp.x()-width)/2+260,
 							(disp.y()-height)/2+55+(30*side_num));

@@ -51,25 +51,25 @@ void combo::set_xy(int x, int y)
 
 void combo::set_selected(int val)
 {
-	selected_ = val;
-	const std::string& label = items_[selected_];
-	if(selected_ >= 0)
-		button_.set_label(label);
-	button_.draw();
+	const size_t index = size_t(val);
+	if(index < items_.size()) {
+		button_.set_label(items_[index]);
+		selected_ = val;
+		button_.draw();
+	}
 }
 
 bool combo::process(int x, int y, bool button)
 {
-	if(button_.process(x,y,button))
-	{
-		selected_ = gui::show_dialog(*display_,NULL,"","",
-				gui::MESSAGE,&items_);
-		const std::string& label = items_[selected_];
-		if(selected_ >= 0)
-			button_.set_label(label);
+	if(button_.process(x,y,button)) {
+		set_selected(gui::show_dialog(*display_,NULL,"","",
+				                      gui::MESSAGE,&items_));
+		
 		button_.draw();
+
 		return true;
 	}
+
 	return false;
 }
 
