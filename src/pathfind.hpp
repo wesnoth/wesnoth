@@ -28,6 +28,8 @@
 void get_adjacent_tiles(const gamemap::location& a, gamemap::location* res);
 bool tiles_adjacent(const gamemap::location& a, const gamemap::location& b);
 
+size_t distance_between(const gamemap::location& a, const gamemap::location& b);
+
 gamemap::location find_vacant_tile(const gamemap& map,
                                    const std::map<gamemap::location,unit>& un,
                                    const gamemap::location& loc,
@@ -75,9 +77,8 @@ namespace detail {
 struct node {
 	static double heuristic(const gamemap::location& src,
 	                        const gamemap::location& dst) {
-		return sqrt(pow(abs(dst.x-src.x),2) + pow(abs(dst.y-src.y),2));
+		return distance_between(src,dst);
 	}
-
 
 	node(const gamemap::location& pos, const gamemap::location& dst,
 	     double cost, node* parent,
@@ -86,6 +87,7 @@ struct node {
 	{
 
 		//if there are teleport locations, correct the heuristic to
+		//take them into account
 		if(teleports != NULL) {
 			double srch = h, dsth = h;
 			std::set<gamemap::location>::const_iterator i;
