@@ -16,6 +16,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
+#include "log.hpp"
 #include "network.hpp"
 #include "replay.hpp"
 #include "team.hpp"
@@ -24,6 +25,8 @@
 #include <algorithm>
 #include <cstdlib>
 #include <sstream>
+
+#define LOG_NG lg::info(lg::engine)
 
 namespace {
 	std::vector<team>* teams = NULL;
@@ -180,8 +183,8 @@ team::team_info::team_info(const config& cfg)
 	share_view = (cfg["share_view"] == "yes");
 	share_maps = !share_view && (cfg["share_maps"] != "no");
 
-	std::cerr << "team_info::team_info(...): team_name: " << team_name;
-	std::cerr << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
+	LOG_NG << "team_info::team_info(...): team_name: " << team_name
+	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
 	
 	music = cfg["music"];
 }
@@ -269,8 +272,8 @@ team::team(const config& cfg, int gold) : gold_(gold), auto_shroud_updates_(true
 	shroud_.set_enabled(cfg["shroud"] == "yes");
 	shroud_.read(cfg["shroud_data"]);	
 	
-	std::cerr << "team::team(...): team_name: " << info_.team_name;
-	std::cerr << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
+	LOG_NG << "team::team(...): team_name: " << info_.team_name
+	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
 	
 	//gold is the maximum of 'gold' and what is given in the config file
 	if(info_.gold.empty() == false)
@@ -380,7 +383,8 @@ void team::set_time_of_day(int turn, const time_of_day& tod)
 	aggression_ = lexical_cast_default<double>(aiparams_["aggression"],0.5);
 	caution_ = lexical_cast_default<double>(aiparams_["caution"],0.25);
 
-	std::cerr << "for turn " << turn << ", time of day '" << tod.id << "' set ai_params to: ---\n" << aiparams_.write() << "\n---\n";
+	LOG_NG << "for turn " << turn << ", time of day '" << tod.id << "' set ai_params to: ---\n"
+	       << aiparams_.write() << "\n---\n";
 }
 
 void team::spend_gold(int amount)
@@ -678,7 +682,6 @@ void validate_side(int side)
 	}
 
 	if(side < 1 || side > int(teams->size())) {
-		std::cerr << "invalid side " << side << " throwing game_error\n";
 		throw gamestatus::game_error("invalid side found in unit definition");
 	}
 }

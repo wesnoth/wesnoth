@@ -13,6 +13,7 @@
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED
 
+#include "log.hpp"
 #include "unit.hpp"
 #include "unit_types.hpp"
 
@@ -147,11 +148,10 @@ struct game_state
 
 	// Return the Nth player, or NULL if no such player exists
 	player_info* get_player(const std::string& id) {
-		std::cerr << "get_player('" << id << "')\n";
 		std::map<std::string, player_info>::iterator found=players.find(id);
 
 		if(found==players.end()) {
-			std::cerr << "WARNING: player " << id << " does not exist." << std::endl;
+			lg::warn(lg::engine) << "player " << id << " does not exist." << std::endl;
 			return NULL;
 		} else {
 			return &found->second;
