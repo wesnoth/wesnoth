@@ -835,6 +835,8 @@ size_t move_unit(display* disp, const gamemap& map,
 		steps.pop_back();
 	}
 
+	assert(steps.size() <= route.size());
+
 	//if we can't get all the way there and have to set a go-to
 	if(steps.size() != route.size()) {
 		ui->second.set_goto(route.back());
@@ -883,6 +885,8 @@ size_t move_unit(display* disp, const gamemap& map,
 		disp->set_route(NULL);
 		disp->draw();
 	}
+
+	assert(steps.size() <= route.size());
 
 	return steps.size();
 }

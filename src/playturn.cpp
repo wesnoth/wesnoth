@@ -443,12 +443,14 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 
 	//otherwise we're trying to move to a hex
 	else if(!browse_ && selected_hex_.valid() && selected_hex_ != hex &&
-		     units_.count(selected_hex_) &&
+		     units_.count(selected_hex_) && !enemy_paths_ &&
 		     enemy == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);
+		if(moves == 0)
+			return;
 
 		redo_stack_.clear();
 
