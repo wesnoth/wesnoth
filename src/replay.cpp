@@ -594,6 +594,11 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			replayer.set_skip(0);
+			const config current_stats = statistics::write_stats();
+			if(current_stats != statistics::replay_verify_stats) {
+				ERR_NW << "replay statistics verifaction failed\n";
+				if (!game_config::ignore_replay_errors) throw replay::error();
+			}
 			return false;
 		}
 

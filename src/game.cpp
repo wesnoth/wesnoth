@@ -101,10 +101,6 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			scenario = game_config.find_child(type,"id",state.scenario);
 			std::cerr << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
-
-		if(!recorder.at_end()) {
-			statistics::clear_current_scenario();
-		}
 	} else {
 		std::cerr << "loading snapshot...\n";
 		//load from a save-snapshot.
@@ -866,27 +862,35 @@ bool game_controller::load_game()
 	}
 
 	recorder = replay(state_.replay_data);
+	recorder.start_replay();
+	recorder.set_skip(0);
 
 	std::cerr << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
 
-	//only play replay data if the user has selected to view the replay,
-	//or if there is no starting position data to use.
-	if(!show_replay && state_.snapshot.child("side") != NULL) {
-		std::cerr << "setting replay to end...\n";
-		recorder.set_to_end();
-		if(!recorder.at_end()) {
-			std::cerr << "recorder is not at the end!!!\n";
-		}
-	} else {
-
-		recorder.start_replay();
-
-		//set whether the replay is to be skipped or not
-		if(show_replay) {
-			recorder.set_skip(0);
+	if(state_.snapshot.child("side") == NULL) {
+		// No snapshot; this is a start-of-scenario
+		if (show_replay) {
+			// There won't be any turns to replay, but the
+			// user gets to watch the intro sequence again ...
+			std::cerr << "replaying (start of scenario)\n";
 		} else {
 			std::cerr << "skipping...\n";
 			recorder.set_skip(-1);
+		}
+	} else {
+		// We have a snapshot. But does the user want to see a replay?
+		if(show_replay) {
+			// clear the stats for the current level
+			// they will be regenerated during the replay
+			statistics::replay_verify_stats = statistics::write_stats();
+			statistics::clear_current_scenario();
+			std::cerr << "replaying (snapshot)\n";
+		} else {
+			std::cerr << "setting replay to end...\n";
+			recorder.set_to_end();
+			if(!recorder.at_end()) {
+				std::cerr << "recorder is not at the end!!!\n";
+			}
 		}
 	}
 

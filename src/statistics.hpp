@@ -82,6 +82,8 @@ namespace statistics
 
 	std::vector<std::string> get_categories();
 	stats calculate_stats(int category, int side);
+	
+	extern config replay_verify_stats;
 }
 
 #endif

@@ -438,4 +438,5 @@ int sum_str_int_map(const stats::str_int_map& m)
 	return res;
 }
 
+config replay_verify_stats;
 }
