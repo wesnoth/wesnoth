@@ -149,7 +149,6 @@ theme::status_item::status_item(const config& cfg)
         : object(cfg),
 		  prefix_(string_table[cfg["prefix"]] + cfg["prefix_literal"]),
 		  postfix_(cfg["postfix_literal"] + string_table[cfg["postfix"]]),
-          context_(cfg["no_colouring"] != "true"),
           font_(atoi(cfg["font_size"].c_str()))
 {
 	if(font_ == 0)
@@ -169,11 +168,6 @@ const std::string& theme::status_item::prefix() const
 const std::string& theme::status_item::postfix() const
 {
 	return postfix_;
-}
-
-bool theme::status_item::context_colouring() const
-{
-	return context_;
 }
 
 const theme::label* theme::status_item::get_label() const

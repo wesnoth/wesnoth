@@ -72,12 +72,6 @@ public:
 		const std::string& prefix() const;
 		const std::string& postfix() const;
 
-		//function returns true if the colour of the label should depend
-		//upon whether it's good/bad or not. E.g. for hitpoints, whether
-		//the hitpoints should be displayed in different colours depending
-		//on whether they are high or low.
-		bool context_colouring() const;
-
 		//if the item has a label associated with it, show where the label is
 		const label* get_label() const;
 
@@ -85,7 +79,6 @@ public:
 
 	private:
 		std::string prefix_, postfix_;
-		bool context_;
 		label label_;
 		size_t font_;
 	};

@@ -867,6 +867,8 @@ void show_hotkeys_dialog (display & disp)
 				 	mod=event.key.keysym.mod;
 				};			
 				SDL_PollEvent(&event);
+				disp.video().flip();
+				SDL_Delay(10);
 			} while (event.type!=SDL_KEYUP);
 			restorer.restore();
 			disp.update_display();
