@@ -707,15 +707,6 @@ bool do_replay(display& disp, const gamemap& map, const game_data& gameinfo,
 				throw replay::error();
 			}
 
-			std::cerr << "recruiting unit from options: ";
-			for(std::set<std::string>::const_iterator r = recruits.begin(); r != recruits.end(); ++r) {
-				std::cerr << "'" << *r << "', ";
-			}
-
-			std::cerr << "\n";
-
-			std::cerr << "recruiting unit " << val << " '" << *itor << "'\n";
-
 			unit new_unit(&(u_type->second),team_num,true);
 			const std::string& res = recruit_unit(map,team_num,units,new_unit,loc);
 			if(!res.empty()) {

@@ -238,26 +238,28 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 
 		update_whole_screen();
 
-		bool old_enter = true, chat_invalidated = true;
+		bool old_enter = true;
+
+		size_t last_message = messages.size() < 50 ? 0 : messages.size() - 50;
 
 		for(;;) {
 
-			if(chat_invalidated) {
+			if(last_message < messages.size()) {
 				// Display Chats
 				std::stringstream text;
-				for(size_t n = messages.size() > 50 ? messages.size()-50 : 0;
-					n != messages.size(); ++n) {
-					text << messages[n] << "\n";
+				for(; last_message != messages.size(); ++last_message) {
+					text << messages[last_message];
+					if(last_message+1 != messages.size()) {
+						text << "\n";
+					}
 				}
 
-				chat_textbox.set_text(text.str());
+				chat_textbox.append_text(text.str());
 
 				chat_textbox.set_location(chat_area);
 				chat_textbox.set_wrap(true);
 				chat_textbox.scroll_to_bottom();
 				chat_textbox.set_dirty();
-
-				chat_invalidated = false;
 			}
 
 			int mousex, mousey;
@@ -318,7 +320,6 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 				std::stringstream message;
 				message << "<" << child["sender"] << ">  " << child["message"];
 				messages.push_back(message.str());
-				chat_invalidated = true;
 			}
 
 			if(last_escape == false && key[SDLK_ESCAPE] || dlg == NULL && quit_game.process(mousex,mousey,left_button)){
@@ -371,7 +372,6 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 					std::stringstream message;
 					message << "<" << msg["sender"] << ">  " << msg["message"];
 					messages.push_back(message.str());
-					chat_invalidated = true;
 				}
 			}
 

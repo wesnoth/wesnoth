@@ -236,14 +236,6 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
 
 		teams.push_back(team(**ui,ngold));
 
-		std::cerr << "team " << teams.size() << " can recruit: ";
-		const std::set<std::string>& recruits = teams.back().recruits();
-		for(std::set<std::string>::const_iterator r = recruits.begin(); r != recruits.end(); ++r) {
-			std::cerr << "'" << *r << "', ";
-		}
-
-		std::cerr << "\n";
-
 		//if this side tag describes the leader of the side
 		if((**ui)["no_leader"] != "yes" && (**ui)["controller"] != "null") {
 			unit new_unit(gameinfo, **ui);

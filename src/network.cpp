@@ -609,6 +609,7 @@ void queue_data(const config& cfg, connection connection_num)
 
 void process_send_queue(connection connection_num, size_t max_size)
 {
+	check_error();
 }
 
 void send_data_all_except(const config& cfg, connection connection_num, size_t max_size)

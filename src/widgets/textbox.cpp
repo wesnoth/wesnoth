@@ -52,7 +52,7 @@ const std::string textbox::text() const
 }
 
 // set_text does not respect max_size_
-void textbox::set_text(std::string text)
+void textbox::set_text(const std::string& text)
 {
 	text_ = string_to_wstring(text);
 	cursor_ = text_.size();
@@ -60,6 +60,34 @@ void textbox::set_text(std::string text)
 	selend_ = -1;
 	set_dirty(true);
 	update_text_cache(true);
+}
+
+void textbox::append_text(const std::string& text)
+{
+	if(text_image_.get() == NULL) {
+		set_text(text);
+		return;
+	}
+
+	const wide_string& wtext = string_to_wstring(text);
+
+	const surface new_text = add_text_line(wtext);
+	const surface new_surface = create_compatible_surface(text_image_,maximum<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
+
+	SDL_SetAlpha(new_text.get(),0,0);
+	SDL_SetAlpha(text_image_.get(),0,0);
+
+	SDL_BlitSurface(text_image_,NULL,new_surface,NULL);
+
+	SDL_Rect target = {0,text_image_->h,new_text->w,new_text->h};
+	SDL_BlitSurface(new_text,NULL,new_surface,&target);
+	text_image_.assign(new_surface);
+
+	text_.resize(text_.size() + wtext.size());
+	std::copy(wtext.begin(),wtext.end(),text_.end()-wtext.size());
+
+	set_dirty(true);
+	update_text_cache(false);
 }
 
 void textbox::clear()
@@ -259,75 +287,78 @@ void textbox::scroll(int pos)
 	set_dirty(true);
 }
 
+surface textbox::add_text_line(const wide_string& text)
+{
+	line_height_ = font::get_max_height(font_size);
+
+	if(char_y_.empty()) {
+		char_y_.push_back(0);
+	} else {
+		char_y_.push_back(char_y_.back() + line_height_);
+	}
+
+	char_x_.push_back(0);
+	
+	// Re-calculate the position of each glyph. We approximate this by asking the
+	// width of each substring, but this is a flawed assumption which won't work with
+	// some more complex scripts (that is, RTL languages). This part of the work should
+	// actually be done by the font-rendering system.
+	std::string visible_string;
+	wide_string wrapped_text;
+	 
+	wide_string::const_iterator backup_itor = text.end();
+	
+	wide_string::const_iterator itor = text.begin();
+	while(itor != text.end()) {
+		//If this is a space, save copies of the current state so we can roll back
+		if(char(*itor) == ' ') {
+			backup_itor = itor;
+		}
+		visible_string.append(wchar_to_string(*itor));
+
+		if(char(*itor) == '\n') {
+			backup_itor = text.end();
+			visible_string = "";
+		}
+
+		int w = font::line_width(visible_string, font_size);
+
+		if(wrap_ && w >= location().w - scrollbar_.get_max_width()) {
+			if(backup_itor != text.end()) {
+				int backup = itor - backup_itor;
+				itor = backup_itor + 1;
+				if(backup > 0) {
+					char_x_.erase(char_x_.end()-backup, char_x_.end());
+					char_y_.erase(char_y_.end()-backup, char_y_.end());
+					wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
+				}
+			}
+			backup_itor = text.end();
+			wrapped_text.push_back(wchar_t('\n'));
+			char_x_.push_back(0);
+			char_y_.push_back(char_y_.back() + line_height_);
+			visible_string = "";
+		} else {
+			wrapped_text.push_back(*itor);
+			char_x_.push_back(w);
+			char_y_.push_back(char_y_.back() + (char(*itor) == '\n' ? line_height_ : 0));
+			++itor;
+		}
+	}
+
+	const std::string s = wstring_to_string(wrapped_text);
+	const surface res(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
+
+	return res;
+}
+
 void textbox::update_text_cache(bool changed)
 {
 	if(changed) {
 		char_x_.clear();
 		char_y_.clear();
-		char_x_.push_back(0);
-		char_y_.push_back(0);
 
-		// Re-calculate the position of each glyph. We approximate this by asking the
-		// width of each substring, but this is a flawed assumption which won't work with
-		// some more complex scripts (that is, RTL languages). This part of the work should
-		// actually be done by the font-rendering system.
-		std::string visible_string;
-		wide_string wrapped_text;
-		 
-		wide_string::const_iterator backup_itor;
-		
-		wide_string::const_iterator itor = text_.begin();
-		while(itor != text_.end()) {
-			//If this is a space, save copies of the current state so we can roll back
-			if(char(*itor) == ' ') {
-				backup_itor = itor;
-			}
-			visible_string.append(wchar_to_string(*itor));
-
-			if(char(*itor) == '\n') {
-				backup_itor = text_.end();
-				visible_string = "";
-			}
-
-			int w = font::line_width(visible_string, font_size);
-
-			if(wrap_ && w >= location().w - scrollbar_.get_max_width()) {
-				if(backup_itor != text_.end()) {
-					int backup = itor - backup_itor;
-					itor = backup_itor + 1;
-					if(backup > 0) {
-						char_x_.erase(char_x_.end()-backup, char_x_.end());
-						char_y_.erase(char_y_.end()-backup, char_y_.end());
-						wrapped_text.erase(wrapped_text.end()-backup, wrapped_text.end());
-					}
-				}
-				backup_itor = text_.end();
-				wrapped_text.push_back(wchar_t('\n'));
-				char_x_.push_back(0);
-				char_y_.push_back(char_y_.back()+1);
-				visible_string = "";
-			} else {
-				wrapped_text.push_back(*itor);
-				char_x_.push_back(w);
-				char_y_.push_back(char_y_.back() + (char(*itor) == '\n' ? 1 : 0));
-				++itor;
-			}
-		}
-
-		text_size_.x = 0;
-		text_size_.y = 0;
-		const std::string s = wstring_to_string(wrapped_text);
-		text_size_.w = font::line_width(s, font_size);
-		text_size_.h = location().h;
-
-		text_image_.assign(font::get_rendered_text(s, font_size, font::NORMAL_COLOUR));		
-
-		//so far we've set char_y_ in terms of the line it's on, now set it in terms of proper y
-		//co-ordinates, by calculating the height of a line, and multiplying each member of char_y_ by that height
-		line_height_ = font::get_max_height(font_size);
-		for(std::vector<int>::iterator i = char_y_.begin(); i != char_y_.end(); ++i) {
-			*i = *i * line_height_;
-		}
+		text_image_.assign(add_text_line(text_));
 	}
 
 	int cursor_x = char_x_[cursor_];

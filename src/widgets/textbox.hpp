@@ -33,7 +33,8 @@ public:
 	textbox(display& d, int width, const std::string& text="", bool editable=true, size_t max_size = 256);
 
 	const std::string text() const;
-	void set_text(std::string text);
+	void set_text(const std::string& text);
+	void append_text(const std::string& text);
 	void clear();
 	void process();
 
@@ -72,7 +73,6 @@ private:
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
 	surface text_image_;
-	SDL_Rect text_size_;
 
 	//variables used for multi-line textboxes which support scrolling
 	scrollbar scrollbar_;
@@ -88,6 +88,7 @@ private:
 
 	void draw_cursor(int pos, display &disp) const;
 	void update_text_cache(bool reset = false);
+	surface add_text_line(const wide_string& text);
 	bool is_selection();
 	void erase_selection();
 

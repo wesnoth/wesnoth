@@ -241,11 +241,6 @@ bool ai::recruit_usage(const std::string& usage)
 bool ai_interface::recruit(const std::string& unit_name, location loc)
 {
 	const std::set<std::string>& recruits = current_team().recruits();
-	std::cerr << "recruits: ";
-	for(std::set<std::string>::const_iterator mi = recruits.begin(); mi != recruits.end(); ++mi) {
-		std::cerr << "'" << *mi << "', ";
-	}
-	std::cerr << "\n";
 
 	const std::set<std::string>::const_iterator i = recruits.find(unit_name);
 	if(i == recruits.end()) {
@@ -253,7 +248,6 @@ bool ai_interface::recruit(const std::string& unit_name, location loc)
 	}
 
 	const int num = std::distance(recruits.begin(),i);
-	std::cerr << "recruit '" << unit_name << "' number " << num << "\n";
 
 	recorder.add_recruit(num,loc);
 	replay_undo replay_guard(recorder);
