@@ -101,6 +101,11 @@ void scrollarea::set_full_size(unsigned h)
 	test_scrollbar();
 }
 
+void scrollarea::set_scroll_rate(unsigned r)
+{
+	scrollbar_.set_scroll_rate(r);
+}
+
 void scrollarea::process_event()
 {
 	int grip_position = scrollbar_.get_position();
@@ -131,9 +136,9 @@ void scrollarea::handle_event(const SDL_Event& event)
 	SDL_MouseButtonEvent const &e = event.button;
 	if (point_in_rect(e.x, e.y, inner_location()))
 		if (e.button == SDL_BUTTON_WHEELDOWN)
-			scrollbar_.move_position(1);
+			scrollbar_.move_position(scrollbar_.scroll_rate_);
 		else if (e.button == SDL_BUTTON_WHEELUP)
-			scrollbar_.move_position(-1);
+			scrollbar_.move_position(-scrollbar_.scroll_rate_);
 }
 
 }

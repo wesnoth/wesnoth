@@ -36,6 +36,7 @@ scrollpane::scrollpane(display& d) : scrollarea(d), border_(5)
 	content_pos_.x = 0;
 	content_pos_.y = 0;
 	update_content_size();
+	set_scroll_rate(40);
 }
 
 void scrollpane::clear()

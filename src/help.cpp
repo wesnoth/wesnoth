@@ -1607,7 +1607,9 @@ help_text_area::help_text_area(display &disp, const section &toplevel)
 	  title_spacing_(16), curr_loc_(0, 0),
 	  min_row_height_(font::get_max_height(normal_font_size)), curr_row_height_(min_row_height_),
 	  contents_height_(0)
-{}
+{
+	set_scroll_rate(40);
+}
 
 void help_text_area::set_inner_location(SDL_Rect const &rect) {
 	bg_register(rect);

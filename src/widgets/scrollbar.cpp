@@ -40,7 +40,8 @@ scrollbar::scrollbar(display &d)
 	: widget(d), mid_scaled_(NULL), groove_scaled_(NULL),
 	  uparrow_(d, "", button::TYPE_TURBO, "uparrow-button"),
 	  downarrow_(d, "", button::TYPE_TURBO, "downarrow-button"),
-	  state_(NORMAL), grip_position_(0), grip_height_(0), full_height_(0)
+	  state_(NORMAL),
+	  grip_position_(0), grip_height_(0), full_height_(0), scroll_rate_(1)
 {
 	static const surface img(image::get_image(scrollbar_mid, image::UNSCALED));
 	
@@ -124,12 +125,17 @@ void scrollbar::set_full_size(unsigned h)
 	set_dirty(true);
 }
 
+void scrollbar::set_scroll_rate(unsigned r)
+{
+	scroll_rate_ = r;
+}
+
 void scrollbar::process_event()
 {
 	if (uparrow_.pressed())
-		move_position(-1);
+		move_position(-scroll_rate_);
 	if (downarrow_.pressed())
-		move_position(1);
+		move_position(scroll_rate_);
 }
 
 SDL_Rect scrollbar::groove_area() const

@@ -54,6 +54,9 @@ public:
 	/// Set the relative size of the scrollbar.
 	void set_full_size(unsigned h);
 
+	/// Set scroll rate.
+	void set_scroll_rate(unsigned r);
+
 protected:
 	virtual void update_location(SDL_Rect const &rect);
 	virtual void handle_event(const SDL_Event& event);
@@ -72,7 +75,7 @@ private:
 
 	int minimum_grip_height_, mousey_on_grip_;
 	// Relative data
-	int grip_position_, old_position_, grip_height_, full_height_;
+	int grip_position_, old_position_, grip_height_, full_height_, scroll_rate_;
 
 	friend class scrollarea;
 };

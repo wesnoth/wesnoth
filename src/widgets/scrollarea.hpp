@@ -47,6 +47,7 @@ protected:
 	void move_position(int dep);
 	void set_shown_size(unsigned h);
 	void set_full_size(unsigned h);
+	void set_scroll_rate(unsigned r);
 	bool has_scrollbar() const;
 
 private:
