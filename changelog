@@ -1,11 +1,14 @@
 CVS HEAD:
  * added new help strings
+ * new attack dialog
+ * new load game dialog
  * made 'end turn for active unit' (pressing <space>) recoverable
  * tip of the day
  * load game
  * gamma correction
  * skip AI moves option
  * show haloing effects option
+ * continue no save
  * more halo effects
  * decreased size of saved games
  * improved and added new graphics: units, attacks animations, healing animations, attack icons, encampment, castle
@@ -19,6 +22,7 @@ CVS HEAD:
    * Ford of Abezz
    * Dwarven Doors
    * Northern Winter
+   * Valley of Statues
  * new units
    * Cavalier
    * Drake Burner
@@ -31,8 +35,10 @@ CVS HEAD:
    * Drake Warrior
    * Dwarvish Dragonguard
    * Dwarvish Runemaster
+   * Sergeant
    * Silver Mage
    * Vampire Lady
+   * Young Ogre
  * removed 'Dark Apprentice' and 'Evil Necromancer' as they are no longer used (replaced by Initiate and Deathmaster)
  * Yeti's race changed to monster
  * Renamed 'Cavalry' to 'Cavalryman'
@@ -99,6 +105,7 @@ CVS HEAD:
    * fixed a problem where the palettes in the editor would not refresh correctly after the windows was resized
    * fixed editor handing different color depths incorrectly
  * names for Nagas
+ * item: trapdoor
  * added WML feature to append an element to another using [+element] syntax
  * made userdata/data/utils loaded in early in game.cfg to allow scenario designers to define utility files
  * fixed multiline text box not wrapping lines at word boundaries
@@ -114,11 +121,13 @@ CVS HEAD:
  * fixed crash when undoing moves
  * fixed crash in wesnothd
  * made intro.cpp use the unicode routines in language.cpp to split UTF-8 sequences in character
+ * added support for animated on-map items
  * added support for different colour depths
  * added a cut_surface function in sdl_utils, that extracts a surface "subset" from another surface
  * improved terrain transition code
  * updated terrain-graphics.cfg file to use modules in sub-directory to reduce bloat in the main file
  * terrain builder code optimizations
+ * added macros so that keep graphics are now selected according to the adjacent castle tiles
  * added XCF source files and some tools for castle building, these can be found in tools/
  * moved weapon icons to their own hierarchy: images/attacks/
  * moved projectiles/missiles to their own hierarchy: images/projectiles/
