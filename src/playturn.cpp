@@ -209,6 +209,8 @@ void turn_info::handle_event(const SDL_Event& event)
 			hotkey::key_event(gui_,event.key,this);
 		} else if(event.key.keysym.sym == SDLK_ESCAPE) {
 			close_textbox();
+		} else if(event.key.keysym.sym == SDLK_TAB) {
+			tab_textbox();
 		} else if(event.key.keysym.sym == SDLK_RETURN) {
 			enter_textbox();
 		}
@@ -2718,6 +2720,72 @@ void turn_info::enter_textbox()
 	}
 
 	close_textbox();
+}
+
+void turn_info::tab_textbox()
+{
+	if(textbox_.active() == false) {
+		return;
+	}
+
+	switch(textbox_.mode) {
+	case floating_textbox::TEXTBOX_MESSAGE:
+	{
+		std::cerr << "Tab pressed in active textbox" << std::endl;
+		std::string text = textbox_.box->text();
+		std::cerr << "Current text: " << text << std::endl;
+		std::string semiword;
+	
+		const size_t last_space = text.rfind(" ");
+
+		//if last character is a space return
+		if(last_space == text.size() -1) {
+			return;
+		}
+
+		if(last_space == -1) {
+			semiword = text;	
+		}else{
+			semiword.assign(text,last_space+1,text.size());
+		}
+
+		std::cerr << "Semiword: " << semiword << std::endl;
+		std::string guess;
+
+		for(size_t n = 0; n != teams_.size(); ++n) {
+			if(teams_[n].is_empty()) {
+				continue;
+			}
+			const unit_map::const_iterator leader = team_leader(n+1,units_);
+			if(leader != units_.end()) {
+				const std::string name = leader->second.description();
+				if(name.find(semiword) == 0) {
+					if(guess.size() == 0) {
+						guess = name;
+					}else{
+						int i;
+						for(i=0; (i < guess.size()) || (i < name.size()); i++) {
+							if(guess[i] != name[i]) {
+								break;
+							}
+						}
+						guess.assign(guess,0,i);
+					}
+				}
+			}
+		}
+
+		std::cerr << "Guess: " << guess << std::endl;
+		if(guess.size() != 0) {
+			text.replace(last_space+1, semiword.size(), guess);
+			std::cerr << "Replaced text: " << text << std::endl;
+			textbox_.box->set_text(text);
+		}
+		break;
+	}
+	default:
+		lg::err(lg::display) << "unknown textbox mode\n";
+	}
 }
 
 const unit_map& turn_info::visible_units() const

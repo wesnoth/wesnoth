@@ -249,6 +249,7 @@ private:
 	void create_textbox(floating_textbox::MODE mode, const std::string& label, const std::string& check_label="", bool checked=false);
 	void close_textbox();
 	void enter_textbox();
+	void tab_textbox();
 
 	replay_network_sender& replay_sender_;
 };
