@@ -288,7 +288,16 @@ void internal_preprocess_data(const std::string& data,
 
 				internal_preprocess_data(str,defines_map,depth,res,NULL,line,fname,srcline);
 			} else if(depth < 20) {
-				internal_preprocess_file("data/" + newfilename,
+				std::string prefix;
+				std::string fname = newfilename;
+
+				//if the filename begins with a '~', then look in the user's data directory
+				if(newfilename != "" && fname[0] == '~') {
+					prefix = get_user_data_dir() + "/";
+					fname.erase(fname.begin(),fname.begin()+1);
+				}
+
+				internal_preprocess_file(prefix + "data/" + fname,
 				                       defines_map, depth+1,res,
 				                       lines_src,line);
 			} else {
@@ -426,13 +435,12 @@ void internal_preprocess_file(const std::string& fname,
 	if(is_directory(fname)) {
 
 		std::vector<std::string> files;
-		get_files_in_dir(fname,&files,NULL,ENTIRE_FILE_PATH);
+		get_files_in_dir(fname,&files,&files,ENTIRE_FILE_PATH);
 
 		for(std::vector<std::string>::const_iterator f = files.begin();
 		    f != files.end(); ++f) {
-			if(is_directory(*f) || (f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg"))) {
-				internal_preprocess_file(*f,defines_map,depth,res,
-				                         lines_src,line);
+			if(is_directory(*f) || f->size() > 4 && std::equal(f->end()-4,f->end(),".cfg")) {
+				internal_preprocess_file(*f,defines_map,depth,res,lines_src,line);
 			}
 		}
 

@@ -46,6 +46,7 @@
 
 #include "filesystem.hpp"
 #include "game_config.hpp"
+#include "util.hpp"
 
 namespace {
 	const mode_t AccessMode = 00770;
@@ -300,7 +301,7 @@ time_t data_tree_modified_time()
 {
 	static time_t cached_val = 0;
 	if(cached_val == 0) {
-		cached_val = file_tree_modified_time("data/");
+		cached_val = maximum<time_t>(file_tree_modified_time("data/"),file_tree_modified_time(get_user_data_dir() + "/data"));
 	}
 
 	return cached_val;
