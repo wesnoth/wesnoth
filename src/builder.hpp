@@ -126,7 +126,7 @@ private:
 	terrain_builder::building_rule rule_from_terrain_template(const terrain_builder::building_rule &tpl, const gamemap::TERRAIN terrain);
 	void parse_config(const config &cfg);
 	bool terrain_matches(gamemap::TERRAIN letter, const std::string &terrains);
-	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index);
+	bool rule_matches(const building_rule &rule, const gamemap::location &loc, int rule_index, bool check_loc);
 	void apply_rule(const building_rule &rule, const gamemap::location &loc);
 
 	int get_constraint_adjacents(const building_rule& rule, const gamemap::location& loc);

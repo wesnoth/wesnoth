@@ -511,7 +511,7 @@ bool terrain_builder::terrain_matches(gamemap::TERRAIN letter, const std::string
 	return !negative;
 }
 
-bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc, int rule_index)
+bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, const gamemap::location &loc, int rule_index, bool check_loc)
 {
 	matches++;
 
@@ -519,23 +519,22 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule, c
 		return false;
 	
 		
-	/*
-	for(constraint_set::const_iterator cons = rule.constraints.begin();
-	    cons != rule.constraints.end(); ++cons) {
-		
-		// translated location
-		const gamemap::location tloc = loc + cons->second.loc;
-	
-		if(!tile_map_.on_map(tloc))
-			return false;
-		
-		const tile& btile = tile_map_[tloc];
+	if(check_loc) {
+		for(constraint_set::const_iterator cons = rule.constraints.begin();
+				cons != rule.constraints.end(); ++cons) {
 
-		if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types))
-			return false;
+			// translated location
+			const gamemap::location tloc = loc + cons->second.loc;
+
+			if(!tile_map_.on_map(tloc))
+				return false;
+
+			const tile& btile = tile_map_[tloc];
+
+			if(!terrain_matches(map_.get_terrain(tloc), cons->second.terrain_types))
+				return false;
+		}
 	}
-	*/
-
 
 	if(rule.probability != -1) {
 		int random = (((loc.x+23293)^827634) * 7613863 + ((loc.y+19827)^87623) * 87987 + (rule_index^198729) * 89237) % 100;
@@ -749,7 +748,7 @@ void terrain_builder::build_terrains()
 		constraint_set::const_iterator smallest_constraint;
 		constraint_set::const_iterator constraint_most_adjacents;
 		int smallest_constraint_size = INT_MAX;
-		int bigger_constraint_adjacent = -1;
+		int biggest_constraint_adjacent = -1;
 		bool smallest_constraint_border = false;
 
 		for(constraint = rule->second.constraints.begin();
@@ -765,15 +764,15 @@ void terrain_builder::build_terrains()
 			}
 
 			int nadjacents = get_constraint_adjacents(rule->second, constraint->second.loc);
-			if(nadjacents > bigger_constraint_adjacent) {
-				bigger_constraint_adjacent = nadjacents;
+			if(nadjacents > biggest_constraint_adjacent) {
+				biggest_constraint_adjacent = nadjacents;
 				constraint_most_adjacents = constraint;
 			}
 		}
 
 		std::vector<std::string> adjacent_types(7);
 
-		if(bigger_constraint_adjacent > 0) {
+		if(biggest_constraint_adjacent > 0) {
 			gamemap::location loc[7];
 			loc[0] = constraint_most_adjacents->second.loc;
 			get_adjacent_tiles(loc[0], loc+1);
@@ -803,7 +802,7 @@ void terrain_builder::build_terrains()
 				for(std::vector<gamemap::location>::const_iterator itor = locations->begin();
 						itor != locations->end(); ++itor) {
 				
-					if(bigger_constraint_adjacent > 0) {
+					if(biggest_constraint_adjacent > 0) {
 						const gamemap::location pos = (*itor - loc) + aloc;
 						if(!tile_map_.on_map(pos))
 							continue;
@@ -819,20 +818,9 @@ void terrain_builder::build_terrains()
 						// propagates the break
 						if (i < 7)
 							continue;
-
-#if 0
-						// If we are here, we have a match. Dump some info
-						std::cerr << "MATCH! Adjacents are " << adjacents << ", types: ";
-						for(i = 0; i < 7; ++i) {
-							std::cerr << adjacent_types[i] << ", ";
-						}
-						std::cerr << "pos = (" << pos.x << ", " << pos.y << ")";
-						std::cerr << "aloc = (" << aloc.x << ", " << aloc.y << ")";
-						std::cerr << "\n";
-#endif
 					}
 
-					if(rule_matches(rule->second, *itor - loc, rule_index)) {
+					if(rule_matches(rule->second, *itor - loc, rule_index, (biggest_constraint_adjacent + 1) != rule->second.constraints.size())) {
 						apply_rule(rule->second, *itor - loc);
 					}
 				}
@@ -841,7 +829,7 @@ void terrain_builder::build_terrains()
 			for(int x = -1; x <= map_.x(); ++x) {
 				for(int y = -1; y <= map_.y(); ++y) {
 					const gamemap::location loc(x,y);
-					if(rule_matches(rule->second, loc, rule_index))
+					if(rule_matches(rule->second, loc, rule_index, true))
 						apply_rule(rule->second, loc);
 				}
 			}
