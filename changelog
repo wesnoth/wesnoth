@@ -1,16 +1,34 @@
 CVS HEAD:
- * image polishing
- * cave-based terrain generator
- * random map minimun size sanity
+ * polished and added new unit images and attack icons
+ * made the 'Sword of Fire' shoot fireballs instead of lightning bolt
+ * resting stacks with heal and cure
+ * shortcut keys are displayed next to menu items
+ * undo, redo and next unit added to context menu
+ * new minor terrain item: trash heap
  * village number slider in random map generation is now proportional
- * fight calculations
- * statistics
+ * added deleting saved games 
+ * added deleting units from recall list
+ * added cave-based terrain generator
+ * added fight calculations
+ * added some statistics
+ * new units
+   * Cockatrice
+ * new scenarios for 'Heir to the Throne' campaign:
+   * Return to Wesnoth
+   * Valley of Statues
+ * scenario balancing for 'Heir to the Throne' campaign:
+   * Hasty Alliance
  * updated translations:
    * hungarian
  * de-elvished Gryphon Rider description and set race to human
  * fixed minor glitch in tutorial id messages
+ * fixed random map generator creating invalid small maps
  * fixed result=continue showing victory message
+ * fixed units not getting resting if they ended turn with space
+ * fixed enemies getting healed after loading, resting serialized in unit
+ * fixed Merman Lord -> Triton in some scenarios
  * slacknoth now ignores an insignificant makefile error
+ * added [store_gold] tag to WML
 
 Version 0.7:
  * added new sounds, unit images and attack icons
