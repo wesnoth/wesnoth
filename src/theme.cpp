@@ -1,4 +1,5 @@
 #include "language.hpp"
+#include "sdl_utils.hpp"
 #include "theme.hpp"
 #include "util.hpp"
 
@@ -21,26 +22,33 @@ namespace {
 			rect.y = atoi(items[1].c_str());
 
 		if(items.size() >= 3)
-			rect.w = atoi(items[2].c_str());
+			rect.w = atoi(items[2].c_str()) - rect.x;
 
 		if(items.size() >= 4)
-			rect.h = atoi(items[3].c_str());
+			rect.h = atoi(items[3].c_str()) - rect.y;
 
 		return rect;
 	}
 }
 
-theme::object::object() : loc_(empty_rect),relative_loc_(empty_rect),xanchor_(), yanchor_()
+theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
+                          last_screen_(empty_rect), xanchor_(), yanchor_()
 {}
 
 theme::object::object(const config& cfg)
                    : loc_(read_rect(cfg)), relative_loc_(empty_rect),
+				     last_screen_(empty_rect),
                      xanchor_(read_anchor(cfg["xanchor"])),
 					 yanchor_(read_anchor(cfg["yanchor"]))
 {}
 
 SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 {
+	if(last_screen_ == screen)
+		return relative_loc_;
+
+	last_screen_ = screen;
+
 	switch(xanchor_) {
 	case FIXED:
 		relative_loc_.x = loc_.x;
@@ -48,7 +56,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.x = loc_.x;
-		relative_loc_.w = screen.w - (XDim - loc_.w) - loc_.x;
+		relative_loc_.w = screen.w - (XDim - loc_.w);
 		break;
 	case BOTTOM_ANCHORED:
 		relative_loc_.x = screen.w - (XDim - loc_.x);
@@ -69,7 +77,7 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 		break;
 	case TOP_ANCHORED:
 		relative_loc_.y = loc_.y;
-		relative_loc_.h = screen.h - (YDim - loc_.h) - loc_.h;
+		relative_loc_.h = screen.h - (YDim - loc_.h);
 		break;
 	case BOTTOM_ANCHORED:
 		relative_loc_.y = screen.h - (YDim - loc_.y);
@@ -186,8 +194,44 @@ const std::string& theme::panel::image() const
 	return image_;
 }
 
-theme::theme(const config& cfg)
+theme::theme(const config& cfg, const SDL_Rect& screen) : cfg_(cfg)
 {
+	set_resolution(screen);
+}
+
+bool theme::set_resolution(const SDL_Rect& screen)
+{
+	bool result = false;
+
+	const config::child_list& resolutions = cfg_.get_children("resolution");
+	int current_rating = 1000000;
+	config::child_list::const_iterator i, current = resolutions.end();
+	for(i = resolutions.begin(); i != resolutions.end(); ++i) {
+		const int width = atoi((**i)["width"].c_str());
+		const int height = atoi((**i)["height"].c_str());
+		if(screen.w >= width && screen.h >= height) {
+			std::cerr << "loading theme: " << width << "," << height << "\n";
+			current = i;
+			result = true;
+			break;
+		}
+
+		const int rating = width*height;
+		if(rating < current_rating) {
+			current = i;
+			current_rating = rating;
+		}
+	}
+
+	if(current == resolutions.end())
+		return false;
+
+	panels_.clear();
+	labels_.clear();
+	status_.clear();
+
+	const config& cfg = **current;
+
 	const config* const main_map_cfg = cfg.child("main_map");
 	if(main_map_cfg != NULL) {
 		main_map_ = object(*main_map_cfg);
@@ -213,9 +257,11 @@ theme::theme(const config& cfg)
 	}
 
 	const config::child_list& label_list = cfg.get_children("label");
-	for(config::child_list::const_iterator i = label_list.begin(); i != label_list.end(); ++i) {
-		labels_.push_back(label(**i));
+	for(config::child_list::const_iterator lb = label_list.begin(); lb != label_list.end(); ++lb) {
+		labels_.push_back(label(**lb));
 	}
+
+	return result;
 }
 
 const std::vector<theme::panel>& theme::panels() const

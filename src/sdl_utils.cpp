@@ -11,6 +11,7 @@
    See the COPYING file for more details.
 */
 
+#include <algorithm>
 #include <iostream>
 
 #include "game.hpp"
@@ -101,7 +102,7 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b)
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 {
-	if(area.x + area.w >= src->w || area.y + area.h >= src->h)
+	if(area.x + area.w > src->w || area.y + area.h > src->h)
 		return NULL;
 
 	const SDL_PixelFormat* const fmt = src->format;
@@ -114,6 +115,94 @@ SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& area)
 	SDL_BlitSurface(src,&area,dst,&dstarea);
 
 	return dst;
+}
+
+namespace {
+
+const unsigned short max_pixel = 0xFFFF;
+
+struct not_alpha
+{
+	not_alpha(SDL_PixelFormat& format) : fmt_(format) {}
+
+	bool operator()(unsigned short pixel) const {
+		return pixel != 0;
+	}
+
+private:
+	SDL_PixelFormat& fmt_;
+};
+
+}
+
+SDL_Rect get_non_transperant_portion(const SDL_Surface* surf)
+{
+	const not_alpha calc(*(surf->format));
+	const unsigned short* const pixels = reinterpret_cast<const unsigned short*>(surf->pixels);
+	const size_t padding = is_odd(surf->w) ? 1:0;
+	SDL_Rect res = {0,0,0,0};
+	size_t n;
+	for(n = 0; n != surf->h; ++n) {
+		const unsigned short* const start_row = pixels + n*(surf->w+padding);
+		const unsigned short* const end_row = start_row + surf->w;
+
+		if(std::find_if(start_row,end_row,calc) != end_row)
+			break;
+	}
+
+	res.y = n;
+
+	for(n = 0; n != surf->h-res.y; ++n) {
+		const unsigned short* const start_row = pixels + (surf->h-n-1)*(surf->w+padding);
+		const unsigned short* const end_row = start_row + surf->w;
+
+		if(std::find_if(start_row,end_row,calc) != end_row)
+			break;
+	}
+
+	//the height is the height of the surface, minus the distance from the top and the
+	//distance from the bottom
+	res.h = surf->h - res.y - n;
+
+	for(n = 0; n != surf->w; ++n) {
+		size_t y;
+		for(y = 0; y != surf->h; ++y) {
+			const unsigned short pixel = pixels[y*(surf->w+padding) + n];
+			if(calc(pixel))
+				break;
+		}
+
+		if(y != surf->h)
+			break;
+	}
+
+	res.x = n;
+
+	for(n = 0; n != surf->w-res.x; ++n) {
+		size_t y;
+		for(y = 0; y != surf->h; ++y) {
+			const unsigned short pixel = pixels[y*(surf->w+padding) + surf->w - n - 1];
+			if(calc(pixel))
+				break;
+		}
+
+		if(y != surf->h)
+			break;
+	}
+
+	res.w = surf->w - res.x - n;
+
+	return res;
+}
+
+bool operator==(const SDL_Rect& a, const SDL_Rect& b)
+{
+	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
+}
+
+bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
+{
+	return !operator==(a,b);
 }
 
 surface_restorer::surface_restorer(SDL_Surface* surface, SDL_Rect& rect)

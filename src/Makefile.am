@@ -55,6 +55,7 @@ wesnoth_SOURCES = about.cpp \
 		  preferences.cpp \
 		  race.cpp \
 		  replay.cpp \
+		  reports.cpp \
 		  sdl_utils.cpp \
 		  show_dialog.cpp \
 		  sound.cpp \
@@ -105,6 +106,7 @@ wesnoth_SOURCES = about.cpp \
 		  preferences.hpp \
 		  race.hpp \
 		  replay.hpp \
+		  reports.hpp \
 		  scoped_resource.hpp \
 		  sdl_utils.hpp \
 		  show_dialog.hpp \

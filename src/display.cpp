@@ -84,6 +84,8 @@ namespace {
 	const size_t SideBarGameStatus_y = 220;
 	const size_t TimeOfDay_x = 13;
 	const size_t TimeOfDay_y = 167;
+
+	const SDL_Rect empty_rect = {0,0,0,0};
 }
 
 display::display(unit_map& units, CVideo& video, const gamemap& map,
@@ -97,8 +99,10 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   invalidateGameStatus_(true), panelsDrawn_(false),
 					   currentTeam_(0), activeTeam_(0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0),
-					   theme_(theme_cfg)
+					   theme_(theme_cfg,screen_area())
 {
+	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
+
 	new_turn();
 
 	image::set_zoom(zoom_);
@@ -423,7 +427,17 @@ void display::redraw_everything()
 	if(update_locked() || teams_.empty())
 		return;
 
+	bounds_check_position();
+
+	for(size_t n = 0; n != reports::NUM_REPORTS; ++n) {
+		reportRects_[n] = empty_rect;
+		reportSurfaces_[n].assign(NULL);
+		reports_[n] = reports::report();
+	}
+
 	tooltips::clear_tooltips();
+
+	theme_.set_resolution(screen_area());
 
 	panelsDrawn_ = false;
 	invalidate_all();
@@ -441,6 +455,8 @@ void draw_panel(SDL_Surface* target, const theme::panel& panel)
 	if(surf->w != loc.w || surf->h != loc.h) {
 		surf.assign(scale_surface(surf.get(),loc.w,loc.h));
 	}
+
+	std::cerr << "drawing panel " << loc.x << "," << loc.y << "," << loc.w << "," << loc.h << "\n";
 
 	SDL_BlitSurface(surf.get(),NULL,target,&loc);
 	update_rect(loc);
@@ -551,9 +567,9 @@ void display::draw_sidebar()
 		}
 
 		if(i != units_.end() && !fogged(i->first.x,i->first.y)) {
-			draw_unit_details(mapx()+SideBarText_x,SideBarUnit_y,selectedHex_,
-			                  i->second,unitDescriptionRect_,
-			                  mapx()+SideBarText_x,SideBarUnitProfile_y);
+			for(size_t r = reports::UNIT_REPORTS_BEGIN; r != reports::UNIT_REPORTS_END; ++r) {
+				draw_report(reports::TYPE(r));
+			}
 		}
 
 		invalidateUnit_ = false;
@@ -570,6 +586,11 @@ void display::draw_game_status(int x, int y)
 	if(teams_.empty())
 		return;
 
+	for(size_t r = reports::STATUS_REPORTS_BEGIN; r != reports::STATUS_REPORTS_END; ++r) {
+		draw_report(reports::TYPE(r));
+	}
+	
+/*
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
@@ -673,6 +694,112 @@ void display::draw_game_status(int x, int y)
 	gameStatusRect_ = font::draw_text(this,clipRect,13,font::NORMAL_COLOUR,
 	                                  details.str(),x,y);
 	update_rect(gameStatusRect_);
+*/
+}
+
+void display::draw_report(reports::TYPE report_num)
+{
+	if(!team_valid())
+		return;
+
+	const theme::status_item* const item = theme_.get_status_item(reports::report_name(report_num));
+	if(item != NULL) {
+		const reports::report& report = reports::generate_report(report_num,map_,units_,
+		                                                         teams_[viewing_team()],currentTeam_+1,
+																 selectedHex_,mouseoverHex_,status_);
+
+		SDL_Rect& rect = reportRects_[report_num];
+		const SDL_Rect& new_rect = item->location(screen_area());
+
+		//report and its location is unchanged since last time. Do nothing.
+		if(rect == new_rect && reports_[report_num] == report)
+			return;
+
+		reports_[report_num] = report;
+
+		scoped_sdl_surface& surf = reportSurfaces_[report_num];
+
+		if(surf != NULL) {
+			SDL_BlitSurface(surf,NULL,screen_.getSurface(),&rect);
+			update_rect(rect);
+		}
+
+		//if the rectangle has just changed, assign the surface to it
+		if(new_rect != rect || surf == NULL) {
+			surf.assign(NULL);
+			rect = new_rect;
+
+			//if the rectangle is present, and we are blitting text, then
+			//we need to backup the surface. (Images generally won't need backing
+			//up unless they are transperant, but that is done later)
+			if(rect.w > 0 && rect.h > 0 && report.text.empty() == false) {
+				surf.assign(get_surface_portion(screen_.getSurface(),rect));
+				if(reportSurfaces_[report_num] == NULL) {
+					std::cerr << "Could not backup background for report!\n";
+				}
+			}
+
+			update_rect(rect);
+		}
+
+		tooltips::clear_tooltips(rect);
+
+		if(report.text.empty() == false) {
+			std::string str = item->prefix();
+
+			int nchop;
+
+			//if there are formatting directives on the front of the report,
+			//move them to the front of the string
+			for(nchop = 0; nchop != report.text.size() && font::is_format_char(report.text[nchop]); ++nchop) {
+				str.insert(str.begin(),report.text[0]);
+			}
+
+			str += report.text.substr(nchop) + item->postfix();
+
+			font::draw_text(this,rect,item->font_size(),font::NORMAL_COLOUR,str,rect.x,rect.y);
+		}
+
+		if(report.image.empty() == false) {
+
+			scoped_sdl_surface img(image::get_image(report.image,image::UNSCALED));
+			SDL_Rect visible_area = get_non_transperant_portion(img);
+			if(visible_area.x != 0 || visible_area.y != 0 || visible_area.w != img->w || visible_area.h != img->h) {
+				if(visible_area.w == 0 || visible_area.h == 0) {
+					return;
+				}
+
+				//since we're blitting a transperant image, we need to back up
+				//the surface for later restoration
+				surf.assign(get_surface_portion(screen_.getSurface(),rect));
+
+				SDL_Rect target = rect;
+				if(visible_area.w > rect.w || visible_area.h > rect.h) {
+					img.assign(get_surface_portion(img,visible_area));
+					img.assign(scale_surface(img,rect.w,rect.h));
+					visible_area.x = 0;
+					visible_area.y = 0;
+					visible_area.w = img->w;
+					visible_area.h = img->h;
+				} else {
+					target.x = rect.x + (rect.w - visible_area.w)/2;
+					target.y = rect.y + (rect.h - visible_area.h)/2;
+					target.w = visible_area.w;
+					target.h = visible_area.h;
+				}
+
+				SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+			} else {
+				if(img->w != rect.w || img->h != rect.h) {
+					img.assign(scale_surface(img,rect.w,rect.h));
+				}
+
+				SDL_BlitSurface(img,NULL,screen_.getSurface(),&rect);
+			}
+		}
+	} else {
+		reportSurfaces_[report_num].assign(NULL);
+	}
 }
 
 void display::draw_unit_details(int x, int y, const gamemap::location& loc,
@@ -681,6 +808,7 @@ void display::draw_unit_details(int x, int y, const gamemap::location& loc,
 {
 	if(teams_.empty())
 		return;
+
 
 	tooltips::clear_tooltips(description_rect);
 

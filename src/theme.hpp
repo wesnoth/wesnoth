@@ -32,6 +32,7 @@ class theme
 	private:
 		SDL_Rect loc_;
 		mutable SDL_Rect relative_loc_;
+		mutable SDL_Rect last_screen_;
 
 		ANCHORING xanchor_, yanchor_;
 
@@ -102,7 +103,8 @@ public:
 		std::string image_;
 	};
 
-	explicit theme(const config& cfg);
+	explicit theme(const config& cfg, const SDL_Rect& screen);
+	bool set_resolution(const SDL_Rect& screen);
 
 	const std::vector<panel>& panels() const;
 	const std::vector<label>& labels() const;
@@ -113,6 +115,7 @@ public:
 	const SDL_Rect& mini_map_location(const SDL_Rect& screen) const;
 
 private:
+	const config& cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 

@@ -47,7 +47,10 @@ void adjust_surface_colour(SDL_Surface* surface, int r, int g, int b);
 
 SDL_Surface* get_surface_portion(SDL_Surface* src, SDL_Rect& rect);
 
-SDL_Surface *rotate( SDL_Surface *s, float ang );
+SDL_Rect get_non_transperant_portion(const SDL_Surface* surf);
+
+bool operator==(const SDL_Rect& a, const SDL_Rect& b);
+bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
 struct pixel_data
 {

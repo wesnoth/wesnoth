@@ -19,6 +19,7 @@
 #include "key.hpp"
 #include "map.hpp"
 #include "pathfind.hpp"
+#include "reports.hpp"
 #include "team.hpp"
 #include "theme.hpp"
 #include "unit.hpp"
@@ -295,6 +296,11 @@ private:
 	SDL_Rect gameStatusRect_;
 	SDL_Rect unitDescriptionRect_;
 	SDL_Rect unitProfileRect_;
+
+	void draw_report(reports::TYPE report_num);
+	SDL_Rect reportRects_[reports::NUM_REPORTS];
+	scoped_sdl_surface reportSurfaces_[reports::NUM_REPORTS];
+	reports::report reports_[reports::NUM_REPORTS];
 
 	void bounds_check_position();
 

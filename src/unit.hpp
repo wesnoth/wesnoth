@@ -194,7 +194,7 @@ struct team_data
 	int units, upkeep, villages, expenses, net_income, gold;
 };
 
-team_data calculate_team_data(const team& tm, int side, const unit_map& units);
+team_data calculate_team_data(const class team& tm, int side, const unit_map& units);
 
 std::string get_team_name(int side, const unit_map& units);
 

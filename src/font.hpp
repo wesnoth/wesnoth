@@ -58,6 +58,8 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
                    int x, int y, SDL_Surface* bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
 
+bool is_format_char(char c);
+
 }
 
 #endif

@@ -67,7 +67,7 @@ public:
 	* @ param res This is the resource to be managed
 	* @ param rel This is the functor to release the object
   */
-	scoped_resource(resource_type res,release_type rel=release_type())
+	scoped_resource(resource_type res=resource_type(),release_type rel=release_type())
 			: resource(res), release(rel) {}
 
   /**

@@ -191,6 +191,7 @@ wesnoth_SOURCES = about.cpp \
 		  preferences.cpp \
 		  race.cpp \
 		  replay.cpp \
+		  reports.cpp \
 		  sdl_utils.cpp \
 		  show_dialog.cpp \
 		  sound.cpp \
@@ -241,6 +242,7 @@ wesnoth_SOURCES = about.cpp \
 		  preferences.hpp \
 		  race.hpp \
 		  replay.hpp \
+		  reports.hpp \
 		  scoped_resource.hpp \
 		  sdl_utils.hpp \
 		  show_dialog.hpp \
@@ -295,6 +297,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 preferences.cpp \
 			 race.cpp \
 			 replay.cpp \
+			 reports.cpp \
 			 sdl_utils.cpp \
 			 show_dialog.cpp \
 			 sound.cpp \
@@ -338,6 +341,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 preferences.hpp \
 			 race.hpp \
 			 replay.hpp \
+			 reports.hpp \
 			 sdl_utils.hpp \
 			 show_dialog.hpp \
 			 sound.hpp \
@@ -426,7 +430,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/network.Po ./$(DEPDIR)/pathfind.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/playlevel.Po ./$(DEPDIR)/playturn.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/preferences.Po ./$(DEPDIR)/race.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/sdl_utils.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/replay.Po ./$(DEPDIR)/reports.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/sdl_utils.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/show_dialog.Po ./$(DEPDIR)/slider.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/sound.Po ./$(DEPDIR)/team.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/terrain.Po ./$(DEPDIR)/textbox.Po \
