@@ -99,7 +99,7 @@ public:
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const gamemap::location& target, bool continue_move);
 	void start_interative_turn();
 
-	void save_game(const std::string& message);
+	void save_game(const std::string& message,gui::DIALOG_TYPE dialog_type);
 
 	enum PROCESS_DATA_RESULT { PROCESS_CONTINUE, PROCESS_RESTART_TURN, PROCESS_END_TURN };
 

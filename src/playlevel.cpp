@@ -654,7 +654,7 @@ redo_turn:
 					        game_config,level,key,gui,
 					        map,teams,player_number,units,true,textbox_info);
 
-		turn_data.save_game(string_table["save_game_error"]);
+		turn_data.save_game(string_table["save_game_error"],gui::YES_NO);
 		throw network::error();
 	}
 

@@ -1485,17 +1485,17 @@ void turn_info::rename_unit()
 
 void turn_info::save_game()
 {
-	save_game("");
+	save_game("",gui::OK_CANCEL);
 }
 
-void turn_info::save_game(const std::string& message)
+void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_type)
 {
 	std::stringstream stream;
 	stream << state_of_game_.label << " " << string_table["turn"]
 	       << " " << status_.turn();
 	std::string label = stream.str();
 
-	const int res = dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,gui::OK_CANCEL);
+	const int res = dialogs::get_save_name(gui_,message,string_table["save_game_label"],&label,dialog_type);
 
 	if(res == 0) {
 		config snapshot;
@@ -2273,7 +2273,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				turn_end = do_replay(gui_,map_,gameinfo_,units_,teams_,
 				team_num_,status_,state_of_game_,&replay_obj);
 			} catch(replay::error& e) {
-				save_game(string_table["network_sync_error"]);
+				save_game(string_table["network_sync_error"],gui::YES_NO);
 
 				//throw e;
 			}
