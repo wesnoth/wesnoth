@@ -1,0 +1,102 @@
+ Controlli
+
+    * Frecce: Scorrere la mappa
+    * Tasto sinistro del mouse: Selezionare/muovere le unità
+    * Tasto destro del mouse: Menu principale, annullare l'azione
+    * Escape: Uscire dal gioco
+    * z: Zoom in
+    * x: Zoom out
+    * c: Zoom di default
+    * u: Annulla l'ultima mossa (solo le mosse deterministici possano essere annullati)
+    * r: Riesegui una mossa annullata
+    * n: Passa alla prossima unità che può ancora muoversi
+    * : Finisce il turno dell'unità e passa alla prossima che può ancora muoversi
+    * l: Passa al comandante
+    * ctrl-f: Passa da modalità tutto schermo a finestra e viceversa
+    * ctrl-r: Recluta unità
+    * ctrl-c: Richiama unità
+    * ctrl-a: Attiva/disattiviva modalità accelerata
+    * d: Descrizione dell'unità corrent
+    * ctrl-d: Visualizza i valori di difesa dell'unità attacks
+    * ctrl-t: Visualizza comportamento dell'unità sui vari terreni
+    * ctrl-s: Salva la partita
+
+
+
+Sfere
+
+Come si può sapere se un'unità è amica o nemica? Sopra la barra dell'energia mostrata accanto ad ogni unitò c'è una sfera. La sfera è:
+
+    * verde se controlli l'unità e non ha ancora mosso
+    * gialla se controlli l'unità e si è mossa solo parzialmente
+    * rosso se controlli l'unità e ha sfruttato tutto il suo movimento
+    * blu se l'unità è amica ma non controllata da te
+    * nera se l'unità è nemica
+
+
+
+Descrizione
+
+Il gioco si dipana in una serie di battaglie o scenari. Ogni scenario catapulta le tue truppe contro
+quelle di un avversario. Ogni schieramento inizia con un comandante nel proprio rifugio
+
+Oro
+
+A ogni schieramento viene inizialmente assegnata una certa quantità di denaro e riceve due monete d'oro
+per turno più due monete per ogni villaggio che la fazione controlla. Ogni schieramento paga una moneta
+d'oro per il mantenumento di ogni unità ad ogni turno.
+
+Reclutamento e richiamo
+
+Le unità possono reclutato pagando un prezzo fino a che il comandante è nel rifugio ed è presente
+una casella libera nel castello nel quale si trova il comandante. Cliccare il tasto destro del mouse
+e selezionare Reclutamento per reclutare nuove truppe.
+
+Dopo aver completato uno scenario tutti i sopravvissuti saranno disponibile per il prossimo scenario.
+Cliccare con il destro e selezionare Richiama per ri-recrutare truppe dallo scenario precedente.
+Il richiamo costa 20 monete d'oro.
+
+Si può prima selezionare una casella libera nel castello e poi procedere al reclutamento, in questo modo si può scegliere la casella dove l'unità apparirò, questo funziona per il reclutamento e il richiamo.
+
+Specialità delle unità
+
+Le specialità delle unità sono descritte sotto "Descrizione unità" nel menu principale.
+
+Movimento
+
+Quando si clicca su un'unità si illuminano tutte le caselle che può raggiungere nel turno, quelle dove non può diventano grigie. A questo punto si può cliccare su una casella dove si vuole muovere. Muoversi in un villaggio neutrale o controllato da un nemico ne garantirà il controllo. Se selezioni una destinazione non raggiungibile nel turno l'unità entrerà in 'modalità-raggiungi' a continuerà a muoversi verso la destinazione nei prossimi turni. Si può uscire dalla 'modalità-raggiungi' a inizio turno selezionando una nuova destinazione per l'unità.
+
+Combattimento
+
+Se muovi vicino a unità nemica la puoi attaccare. Clicca sulla tua unità che è vicino al nemico e successivamente sull'unità che vuoi attaccare. Ogni unitò ha una o più armi che può usare per attaccare. Certe armi, come le spade, sono armi da mischia, altre, come gli altri, sono armi da lunga distanza.
+
+Se combatti con armi da mischio il nemico che attacchi sarò in grado di rispondere con le proprie armi da mischia. Se attacchi con armi da lunga distanza il nemico sarà in grado di rispondere con le sue armi a distanza se ne ha.
+
+Diversi tipi di attacco causano diverse quantià di danno e un certo numero di colpi può essere sferrato con ogni arma. Per esempio un guerriero elfico fa 5 punti di danno con la sua spada ogni volta che colpisce e può colpire fino a quattro volte per ogni scontro. In generale questo viene scritto come 5-4.
+
+Ogni unità ha una possibilità di venire colpita in base al terreno in cui si trova. Le unità nei castelli e nei villaggi hanno possibilità minore di essere colpite così come gli elfi che si trovino in una foresta.
+
+Allineamento
+
+Ogni unità ha un allineamento: legale, neutrale o caotico. L'allineamento incide sui loro valori a seconda del momento del giorno. La seguente tabella illustra i vari periodi:
+
+
+ | turno | periodo    |
+ ---------------------
+ |  1    |   alba     |
+ |  2    |   giorno   |
+ |  3    |   giorno   |
+ |  4    |   tramonto |
+ |  5    |   notte    |
+ |  6    |   notte    |
+
+
+Le unità di allineamento legale guadagno un 25% in più al danno di giorno, un 25% in meno di notte. Le unità di allineamento caotico guadagnano un 20% in più di notte e perdono un 25% di giorno. Le unità neutrali sono indifferenti ai vari periodi (le loro statistiche sono sempre le stesse).
+
+Guarigione
+
+Le unità ferite che si trovino nei villaggi recuperano 8 punti ferita ad ogni turno. Anche le unità ferite che sono adiacenti a unità con l'abilità 'cura' (cure)  o 'guarisci' (heal) saranno curate. Le unità vicino a unità con l'abilità 'guarisci' saranno curati fino a quattro punti ferita per turno, fino a otto per le unità adiacenti a unità con l'abilità 'cure'. Comunque più unità sono intorno ad una con capacità di cura, meno sarà curata ognuna di esse.
+
+Esperienza
+
+Le unità sono ricompensate per il combattimento con l'esperienza. Dopo averne ottenuta abbastanza possono avanzare di un livello diventando più potenti.
