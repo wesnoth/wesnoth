@@ -300,7 +300,8 @@ void mp_connect::lists_init()
 		player_teams_.push_back(_("Team") + std::string(" ") + team_name);
 		(**sd)["colour"] = lexical_cast_default<std::string>(team_num+1);
 
-		player_leaders_.push_back(leader_list_manager(possible_sides, data_));
+		if (!save_) 
+			player_leaders_.push_back(leader_list_manager(possible_sides, data_));
 	}
 
 	std::string prefix;
@@ -426,7 +427,9 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		combos_race_.back().set_location(left+145,top+55+(60*side_num));
 
 		//Player leader
-		combos_leader_.push_back(gui::combo(*disp_, std::vector<std::string>()));
+		std::vector<std::string> dummy_leaders;
+		dummy_leaders.push_back("-");
+		combos_leader_.push_back(gui::combo(*disp_, dummy_leaders));
 		combos_leader_.back().set_location(left+145,top+85+(60*side_num));
 
 		//Player team
@@ -456,13 +459,21 @@ void mp_connect::set_area(const SDL_Rect& rect)
 		gold_bg_.push_back(surface_restorer(&disp_->video(),r));
 		font::draw_text(disp_, disp_->screen_area(), font::SIZE_SMALL, font::GOOD_COLOUR,
 		                "100", r.x, r.y);
+
+		combos_race_.back().enable(!save_);
+		combos_leader_.back().enable(!save_);
+		combos_team_.back().enable(!save_);
+		combos_color_.back().enable(!save_);
 	}
 
+		
 	//Doing this after creating the combos, because growing vectors may
 	//move their elements in memory, and we need a stable pointer
-	for(sd = sides.first; sd != sides.second; ++sd) {
-		const int side_num = sd - sides.first;
-		player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
+	if (!save_) {
+		for(sd = sides.first; sd != sides.second; ++sd) {
+			const int side_num = sd - sides.first;
+			player_leaders_[side_num].set_combo(&combos_leader_[side_num]);
+		}
 	}
 
 	std::cerr << "done set_area()\n";
@@ -523,13 +534,16 @@ void mp_connect::gui_update()
 			if (side["name"] == player_races_[m]) {
 				if (combos_race_[n].selected() != m) {
 					combos_race_[n].set_selected(m);
-					player_leaders_[n].update_leader_list(m);
+
+					if (!save_)
+						player_leaders_[n].update_leader_list(m);
 				}
 			}
 		}
 
 		// Player leader
-		player_leaders_[n].set_leader(side["type"]);
+		if (!save_) 
+			player_leaders_[n].set_leader(side["type"]);
 
 		//Player Team
 		const std::string& team_name = side["team_name"];
@@ -643,12 +657,6 @@ lobby::RESULT mp_connect::process()
 		}
 
 			
-		//Player race
-		combos_race_[n].enable(!save_);
-		combos_leader_[n].enable(!save_);
-		combos_team_[n].enable(!save_);
-		combos_color_[n].enable(!save_);
-		
 		old_select = combos_race_[n].selected();
 		if(combos_race_[n].process(mousex, mousey, left_button)) {
 			const string_map& values =  possible_sides[combos_race_[n].selected()]->values;
@@ -659,6 +667,7 @@ lobby::RESULT mp_connect::process()
 			}
 			level_changed = true;
 
+			assert(!save_);
 			if (combos_race_[n].selected() != old_select) {
 				player_leaders_[n].update_leader_list(combos_race_[n].selected());
 			}
@@ -666,6 +675,7 @@ lobby::RESULT mp_connect::process()
 
 		//Player leader
 		if(combos_leader_[n].process(mousex, mousey, left_button)) {
+			assert(!save_);
 			std::stringstream str;
 			str << (combos_team_[n].selected()+1);
 			side["type"] = player_leaders_[n].get_leader();
