@@ -491,19 +491,19 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 		     current_route_.steps.front() == selected_hex_) {
 
 
-
 		const size_t moves = move_unit(&gui_,map_,units_,teams_,
 		                   current_route_.steps,&recorder,&undo_stack_);
-		if(moves == 0)
-			return;
-
-		redo_stack_.clear();
 
 		selected_hex_ = gamemap::location();
 		gui_.set_route(NULL);
 		gui_.select_hex(gamemap::location());
 		gui_.set_paths(NULL);
 		current_paths_ = paths();
+
+		if(moves == 0)
+			return;
+
+		redo_stack_.clear();
 
 		assert(moves <= current_route_.steps.size());
 		const gamemap::location& dst = current_route_.steps[moves-1];

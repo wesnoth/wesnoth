@@ -1426,9 +1426,10 @@ SDL_Surface* display::getTerrain(gamemap::TERRAIN terrain,image::TYPE image_type
 	                           map_.get_terrain_info(terrain).default_image());
 
 	if(tower) {
+		
 		size_t i;
 		for(i = 0; i != teams_.size(); ++i) {
-			if(teams_[i].owns_tower(gamemap::location(x,y))) {
+			if(teams_[i].owns_tower(gamemap::location(x,y)) && (!fogged(x,y) || i == currentTeam_)) {
 				char buf[50];
 				sprintf(buf,"-team%d",i+1);
 				image += buf;
