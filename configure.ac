@@ -245,7 +245,7 @@ int main (int argc, char **argv)
     [AC_MSG_RESULT(no)]
     [AC_MSG_ERROR([*** Please upgrade your SDL version])],
     [AC_MSG_RESULT[not tested in cross-compiling]])
-
+    rm -f conf.sdltest
 
     CFLAGS="$ac_save_CFLAGS"
     LIBS="$ac_save_LIBS"
