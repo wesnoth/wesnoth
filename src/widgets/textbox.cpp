@@ -105,26 +105,34 @@ void textbox::draw() const
 	disp_.video().flip();
 }
 
-void textbox::process()
+void textbox::handle_event(const SDL_Event& event)
 {
-	if(key_[KEY_LEFT] && !lastLArrow_ && cursor_ > 0) {
+	if(event.type != SDL_KEYDOWN)
+		return;
+
+	const SDL_keysym& key
+	           = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+	
+	int c = key.sym;
+
+	if(c == SDLK_LEFT && cursor_ > 0) {
 		--cursor_;
 		if(cursor_ < firstOnScreen_)
 			--firstOnScreen_;
 	}
 
-	if(key_[KEY_RIGHT] && !lastRArrow_ && cursor_ < text_.size()) {
+	if(c == SDLK_RIGHT && cursor_ < text_.size()) {
 		++cursor_;
 	}
 
-	if(key_[KEY_BACKSPACE] && !lastBackspace_ && cursor_ > 0) {
+	if(c == SDLK_BACKSPACE && cursor_ > 0) {
 		--cursor_;
 		text_.erase(text_.begin()+cursor_);
 		if(cursor_ < firstOnScreen_)
 			--firstOnScreen_;
 	}
 
-	if(key_[KEY_DELETE] && !lastDelete_ && !text_.empty()) {
+	if(c == SDLK_DELETE && !text_.empty()) {
 		if(cursor_ == text_.size()) {
 			text_.resize(text_.size()-1);
 			--cursor_;
@@ -133,26 +141,19 @@ void textbox::process()
 		}
 	}
 
-	lastLArrow_ = key_[KEY_LEFT];
-	lastRArrow_ = key_[KEY_RIGHT];
-	lastBackspace_ = key_[KEY_BACKSPACE];
-	lastDelete_ = key_[KEY_DELETE];
-
-	for(char c = INPUT_CHAR_START; c != INPUT_CHAR_END; ++c) {
-		char character = c;
-		if(islower(character) && (key_[KEY_LSHIFT] || key_[KEY_RSHIFT])) {
-			character = toupper(character);
+	if(c >= INPUT_CHAR_START && c < INPUT_CHAR_END) {
+		
+		if(islower(c) && (key_[SDLK_LSHIFT] || key_[SDLK_RSHIFT])) {
+			c = toupper(c);
 		}
 
-		const bool val = key_[c];
-		if(val && !previousKeyState_[c-INPUT_CHAR_START]) {
-			text_.insert(text_.begin()+cursor_,character);
-			++cursor_;
-		}
-
-		previousKeyState_[c-INPUT_CHAR_START] = val;
+		text_.insert(text_.begin()+cursor_,c);
+		++cursor_;
 	}
+}
 
+void textbox::process()
+{
 	draw();
 }
 

@@ -10,12 +10,16 @@
 
    See the COPYING file for more details.
 */
+
 #ifndef TEXTBOX_HPP_INCLUDED
 #define TEXTBOX_HPP_INCLUDED
 
 #include "../display.hpp"
+#include "../events.hpp"
 #include "../key.hpp"
 #include "../sdl_utils.hpp"
+
+#include "SDL.h"
 
 namespace gui {
 
@@ -23,7 +27,7 @@ namespace gui {
 #define INPUT_CHAR_END ('~' + 1)
 #define CHAR_LENGTH (INPUT_CHAR_END - INPUT_CHAR_START)
 
-class textbox
+class textbox : public events::handler
 {
 	display& disp_;
 	std::string text_;
@@ -37,6 +41,8 @@ class textbox
 	bool previousKeyState_[CHAR_LENGTH];
 
 	bool lastLArrow_, lastRArrow_, lastDelete_, lastBackspace_;
+
+	void handle_event(const SDL_Event& event);
 
 	void draw_cursor(int pos) const;
 

@@ -242,11 +242,8 @@ void do_move(display& disp, const gamemap& map, const game_data& gameinfo,
 			++num_units;
 		}
 
-		const int cash_flow = current_team.towers().size()*
-		                      game_config::tower_income +
-		                      game_config::base_income - num_units;
-
-		const int min_gold = 10 + (cash_flow < 0 ? -cash_flow*10 : 0);
+		//currently just spend all the gold we can!
+		const int min_gold = 0;
 
 		const int towers = map.towers().size();
 		int taken_towers = 0;

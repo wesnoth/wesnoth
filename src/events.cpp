@@ -4,7 +4,10 @@
 
 #include "SDL.h"
 
+#include <algorithm>
+#include <cassert>
 #include <utility>
+#include <vector>
 
 namespace events
 {
@@ -23,6 +26,25 @@ resize_lock::~resize_lock()
 	--disallow_resize;
 }
 
+std::vector<handler*> event_handlers;
+
+handler::handler()
+{
+	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+	event_handlers.push_back(this);
+}
+
+handler::~handler()
+{
+	assert(!event_handlers.empty());
+	if(event_handlers.back() == this) {
+		event_handlers.pop_back();
+	} else {
+		event_handlers.erase(std::find(event_handlers.begin(),
+		                               event_handlers.end(),this));
+	}
+}
+
 void pump()
 {
 	SDL_PumpEvents();
@@ -31,6 +53,11 @@ void pump()
 
 	SDL_Event event;
 	while(SDL_PollEvent(&event)) {
+		for(std::vector<handler*>::iterator i = event_handlers.begin();
+		    i != event_handlers.end(); ++i) {
+			(*i)->handle_event(event);
+		}
+
 		switch(event.type) {
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize

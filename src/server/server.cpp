@@ -118,6 +118,7 @@ int main()
 		} catch(network::error& e) {
 			if(!e.socket) {
 				std::cerr << "fatal network error: " << e.message << "\n";
+				break;
 			} else {
 				std::cerr << "socket closed: " << e.message << "\n";
 				
