@@ -367,10 +367,8 @@ int play_game(int argc, char** argv)
 		display disp(u_map,video,gamemap(dummy_cfg,"1"),gamestatus(dummy_cfg,0),
 		             std::vector<team>(),dummy_cfg,dummy_cfg);
 
-		//we don't have a translation loaded yet, so tell it what "Ok" should be.
-		string_table["ok_button"] = "Ok";
 		gui::show_dialog(disp,NULL,"","Error loading game configuration files: '" + e.message + "' (The game will now exit)",
-		                 gui::OK_ONLY);
+		                 gui::MESSAGE);
 		throw e;
 	}
 

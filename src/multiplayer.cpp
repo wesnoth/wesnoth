@@ -259,7 +259,7 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 				mp_connect connector(disp, name_entry.text(), cfg, units_data, state);
 
 				const int res = connector.load_map((*era_list[era_combo.selected()])["id"],
-				                                   maps_menu.selection(), cur_turns, cur_villagegold, cur_xpmod, fog_game.checked(), shroud_game.checked(), observers_game.checked());
+				                   maps_menu.selection(), cur_turns < 100 ? cur_turns : -1, cur_villagegold, cur_xpmod, fog_game.checked(), shroud_game.checked(), observers_game.checked());
 				if(res == -1)
 					return -1;
 
@@ -287,7 +287,13 @@ int play_multiplayer(display& disp, game_data& units_data, const config& cfg,
 		//Turns per game
 		cur_turns = turns_slider.value();
 		SDL_BlitSurface(village_bg, NULL, disp.video().getSurface(), &turns_rect);
-		sprintf(buf,"Turns: %d", cur_turns);
+
+		if(cur_turns < 100) {
+			sprintf(buf,"Turns: %d", cur_turns);
+		} else {
+			sprintf(buf,"Turns: %s", string_table["unlimited"].c_str());
+		}
+
 		font::draw_text(&disp,disp.screen_area(),12,font::GOOD_COLOUR,
 		                buf,turns_rect.x,turns_rect.y);
 		update_rect(turns_rect);

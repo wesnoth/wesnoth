@@ -537,7 +537,7 @@ void attack(display& gui, const gamemap& map,
 
 	const int orig_attacks = stats.nattacks;
 	const int orig_defends = stats.ndefends;
-	int to_the_death = stats.to_the_death ? 10 : 0;
+	int to_the_death = stats.to_the_death ? 30 : 0;
 
 	static const std::string poison_string("poison");
 

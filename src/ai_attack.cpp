@@ -69,12 +69,23 @@ void ai::do_attack_analysis(
 
 	for(size_t i = 0; i != units.size(); ++i) {
 		const location current_unit = units[i];
-		units.erase(units.begin() + i);
 
+		const unit_map::const_iterator unit_itor = units_.find(current_unit);
+		assert(unit_itor != units_.end());
+
+		double best_vulnerability = 0.0, best_support = 0.0;
+		int best_rating = 0;
+		int cur_position = -1;
+
+		//iterate over positions adjacent to the unit, finding the best rated one
 		for(int j = 0; j != 6; ++j) {
-			if(used_locations[j])
-				continue;
 
+			//if in this planned attack, a unit is already in this location
+			if(used_locations[j]) {
+				continue;
+			}
+
+			//see if the current unit can reach that position
 			typedef std::multimap<location,location>::const_iterator Itor;
 			std::pair<Itor,Itor> its = dstsrc.equal_range(tiles[j]);
 			while(its.first != its.second) {
@@ -83,40 +94,65 @@ void ai::do_attack_analysis(
 				++its.first;
 			}
 
-			if(its.first == its.second)
+			//if the unit can't move to this location
+			if(its.first == its.second) {
 				continue;
+			}
 
-			cur_analysis.movements.push_back(std::pair<location,location>(current_unit,tiles[j]));
+			//see if this position is the best rated we've seen so far
+			const int rating = rate_terrain(unit_itor->second,tiles[j]);
+			if(cur_position >= 0 && rating < best_rating) {
+				continue;
+			}
 
 			//find out how vulnerable we are to attack from enemy units in this hex
 			const double vulnerability = power_projection(tiles[j],enemy_srcdst,enemy_dstsrc);
-			cur_analysis.vulnerability += vulnerability;
 
 			//calculate how much support we have on this hex from allies. Support does not
 			//take into account terrain, because we don't want to move into a hex that is
 			//surrounded by good defensive terrain
 			const double support = power_projection(tiles[j],srcdst,dstsrc,false);
-			cur_analysis.support += support;
+
+			//if this is a position with equal defense to another position, but more vulnerability
+			//then we don't want to use it
+			if(cur_position >= 0 && rating == best_rating && vulnerability - support >= best_vulnerability - best_support) {
+				continue;
+			}
+
+			cur_position = j;
+			best_rating = rating;
+			best_vulnerability = vulnerability;
+			best_support = support;
+		}
+			
+		if(cur_position != -1) {
+			units.erase(units.begin() + i);
+
+			cur_analysis.movements.push_back(std::pair<location,location>(current_unit,tiles[cur_position]));
+
+			cur_analysis.vulnerability += best_vulnerability;
+
+			cur_analysis.support += best_support;
 
 			cur_analysis.analyze(map_,units_,state_,gameinfo_,50,*this);
 
 			if(cur_analysis.rating(0.0) > rating_to_beat) {
 
 				result.push_back(cur_analysis);
-				used_locations[j] = true;
+				used_locations[cur_position] = true;
 				do_attack_analysis(loc,srcdst,dstsrc,enemy_srcdst,enemy_dstsrc,
 				                   tiles,used_locations,
 				                   units,result,cur_analysis);
-				used_locations[j] = false;
+				used_locations[cur_position] = false;
 			}
 
-			cur_analysis.vulnerability -= vulnerability;
-			cur_analysis.support -= support;
+			cur_analysis.vulnerability -= best_vulnerability;
+			cur_analysis.support -= best_support;
 
 			cur_analysis.movements.pop_back();
-		}
 
-		units.insert(units.begin() + i, current_unit);
+			units.insert(units.begin() + i, current_unit);
+		}
 	}
 }
 

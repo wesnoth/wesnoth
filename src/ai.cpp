@@ -927,3 +927,33 @@ void ai::move_leader_after_recruit(const move_map& enemy_dstsrc)
 		}
 	}
 }
+
+int ai::rate_terrain(const unit& u, const gamemap::location& loc)
+{
+	const gamemap::TERRAIN terrain = map_.get_terrain(loc);
+	const int defense = u.defense_modifier(map_,terrain);
+	int rating = 100 - defense;
+
+	const int healing_value = 10;
+	const int friendly_village_value = 5;
+	const int neutral_village_value = 10;
+	const int enemy_village_value = 15;
+
+	if(map_.gives_healing(terrain)) {
+		rating += healing_value;
+	}
+
+	if(map_.is_village(terrain)) {
+		const int village_owner = tower_owner(loc,teams_);
+
+		if(village_owner == team_num_) {
+			rating += friendly_village_value;
+		} else if(village_owner == -1) {
+			rating += neutral_village_value;
+		} else {
+			rating += enemy_village_value;
+		}
+	}
+
+	return rating;
+}

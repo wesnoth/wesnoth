@@ -57,7 +57,7 @@ public:
 	const time_of_day& get_previous_time_of_day() const;
 	const time_of_day& get_time_of_day(bool illuminated, const gamemap::location& loc) const;
 	size_t turn() const;
-	size_t number_of_turns() const;
+	int number_of_turns() const;
 
 	//function to move to the next turn. Returns true iff time
 	//has expired.
@@ -100,7 +100,7 @@ private:
 	std::vector<area_time_of_day> areas_;
 
 	size_t turn_;
-	size_t numTurns_;
+	int numTurns_;
 };
 
 //object which holds all the data needed to start a scenario.

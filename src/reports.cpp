@@ -218,7 +218,13 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		return report("",tod.image,tooltip.str());
 	}
 	case TURN:
-		str << status.turn() << "/" << status.number_of_turns() << "\n";
+		str << status.turn();
+
+		if(status.number_of_turns() != -1) {
+			str << "/" << status.number_of_turns();
+		}
+
+		str << "\n";
 		break;
 	case GOLD:
 		str << (current_team.gold() < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << current_team.gold();

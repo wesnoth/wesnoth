@@ -180,7 +180,7 @@ size_t gamestatus::turn() const
 	return turn_;
 }
 
-size_t gamestatus::number_of_turns() const
+int gamestatus::number_of_turns() const
 {
 	return numTurns_;
 }
@@ -188,7 +188,7 @@ size_t gamestatus::number_of_turns() const
 bool gamestatus::next_turn()
 {
 	++turn_;
-	return turn_ <= numTurns_;
+	return numTurns_ == -1 || turn_ <= size_t(numTurns_);
 }
 
 game_state read_game(game_data& data, const config* cfg)

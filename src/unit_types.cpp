@@ -349,7 +349,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 	}
 
 	if(res < 0)
-		res = 100;
+		res = 50;
 
 	defenseMods_.insert(std::pair<gamemap::TERRAIN,int>(terrain,res));
 

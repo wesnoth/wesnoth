@@ -21,10 +21,16 @@
 
 //this module controls internationalization.
 
+struct symbol_table
+{
+	const std::string& operator[](const std::string& key) const;
+	const std::string& operator[](const char* key) const;
+};
+
 //table of strings which are displayed to the user. Maps ids -> text.
 //this table should be consulted whenever something is to be
 //displayed on screen.
-extern std::map<std::string,std::string> string_table;
+extern symbol_table string_table;
 
 //function which translates a string if the string is available in
 //the string table, and otherwise simply returns the string itself

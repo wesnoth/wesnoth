@@ -234,6 +234,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 	if(disp.update_locked())
 		return -1;
 
+	std::cerr << "showing dialog '" << caption << "' '" << msg << "'\n";
+
 	const events::event_context dialog_events_context;
 	const dialog_manager manager;
 

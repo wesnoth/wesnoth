@@ -24,11 +24,28 @@
 namespace {
 	CHARSET charset_used = CHARSET_LATIN1;
 	std::string current_language;
+	string_map strings_;
 }
 
 CHARSET charset() { return charset_used; }
 
-string_map string_table;
+symbol_table string_table;
+
+const std::string& symbol_table::operator[](const std::string& key) const
+{
+	const string_map::const_iterator i = strings_.find(key);
+	if(i != strings_.end()) {
+		return i->second;
+	} else {
+		static std::string empty_string;
+		return empty_string;
+	}
+}
+
+const std::string& symbol_table::operator[](const char* key) const
+{
+	return (*this)[std::string(key)];
+}
 
 const std::string& translate_string(const std::string& str)
 {
@@ -37,8 +54,8 @@ const std::string& translate_string(const std::string& str)
 
 const std::string& translate_string_default(const std::string& str, const std::string& default_val)
 {
-	const string_map::const_iterator i = string_table.find(str);
-	if(i != string_table.end() && i->second != "")
+	const string_map::const_iterator i = strings_.find(str);
+	if(i != strings_.end() && i->second != "")
 		return i->second;
 	else
 		return default_val;
@@ -125,7 +142,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 			}
 
 			for(string_map::const_iterator j = (*i)->values.begin(); j != (*i)->values.end(); ++j) {
-				string_table[j->first] = j->second;
+				strings_[j->first] = j->second;
 			}
 
 			hotkey::add_hotkeys(**i,false);
@@ -142,7 +159,7 @@ bool internal_set_language(const std::string& locale, config& cfg)
 
 bool set_language(const std::string& locale)
 {
-	string_table.clear();
+	strings_.clear();
 
 	std::string locale_lc;
 	locale_lc.resize(locale.size());

@@ -28,6 +28,7 @@
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "tooltips.hpp"
+#include "util.hpp"
 
 #include <iostream>
 #include <iterator>
@@ -100,6 +101,7 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
+	std::cerr << "starting level '" << string_table["defeat_message"] << "'\n";
 	//if the entire scenario should be randomly generated
 	if((*level)["scenario_generation"] != "") {
 		std::cerr << "randomly generating scenario...\n";
@@ -513,6 +515,7 @@ redo_turn:
 				}
 
 				game_events::fire("time over");
+
 				throw end_level_exception(DEFEAT);
 			}
 
@@ -571,7 +574,7 @@ redo_turn:
 
 				const int remaining_gold = teams[0].gold();
 				const int finishing_bonus_per_turn = map.towers().size()*game_config::tower_income + game_config::base_income;
-				const int turns_left = status.number_of_turns() - status.turn();
+				const int turns_left = maximum<int>(0,status.number_of_turns() - status.turn());
 				const int finishing_bonus = end_level.gold_bonus ?
 				              (finishing_bonus_per_turn * turns_left) : 0;
 				state_of_game.gold = ((remaining_gold+finishing_bonus)*80)/100;

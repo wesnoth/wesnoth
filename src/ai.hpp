@@ -380,6 +380,9 @@ private:
 
 	std::pair<location,location> choose_move(std::vector<target>& targets,const move_map& dstsrc, const move_map& enemy_srcdst, const move_map& enemy_dstsrc);
 
+	//function which rates the value of moving onto certain terrain for a unit
+	int rate_terrain(const unit& u, const location& loc);
+
 	display& disp_;
 	const gamemap& map_;
 	const game_data& gameinfo_;

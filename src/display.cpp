@@ -322,7 +322,6 @@ void display::zoom(double amount)
 	bounds_check_position();
 
 	if(zoom_ != prev_zoom) {
-		map_labels_.recalculate_labels();
 		xpos_ = orig_xpos;
 		ypos_ = orig_ypos;
 		zoom_ = orig_zoom;
@@ -332,6 +331,7 @@ void display::zoom(double amount)
 	energy_bar_rect_.x = -1;
 
 	image::set_zoom(zoom_);
+	map_labels_.recalculate_labels();
 	invalidate_all();
 }
 
