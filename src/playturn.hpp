@@ -71,6 +71,7 @@ public:
 	undo_list& undos() { return undo_stack_; }
 
 	bool can_execute_command(hotkey::HOTKEY_COMMAND command) const;
+	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	void save_game(const std::string& message);
 
@@ -115,7 +116,7 @@ private:
 	void mouse_press(const SDL_MouseButtonEvent& event);
 
 	void left_click(const SDL_MouseButtonEvent& event);
-	void show_menu(const std::vector<std::string>& items, int xloc, int yloc);
+	void show_menu(const std::vector<std::string>& items, int xloc, int yloc, bool context_menu);
 
 	void show_attack_options(unit_map::const_iterator u);
 

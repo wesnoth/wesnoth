@@ -175,7 +175,7 @@ void turn_info::turn_slice()
 	const theme::menu* const m = gui_.menu_pressed(mousex,mousey,mouse_flags&SDL_BUTTON_LMASK);
 	if(m != NULL) {
 		const SDL_Rect& menu_loc = m->location(gui_.screen_area());
-		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1);
+		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
 	}
 
 	if(key_[SDLK_UP] || mousey < scroll_threshold)
@@ -432,7 +432,7 @@ void turn_info::mouse_press(const SDL_MouseButtonEvent& event)
 			const theme::menu* const m = gui_.get_theme().context_menu();
 			if(m != NULL) {
 				std::cerr << "found context menu\n";
-				show_menu(m->items(),event.x,event.y);
+				show_menu(m->items(),event.x,event.y,true);
 			} else {
 				std::cerr << "no context menu found...\n";
 			}
@@ -823,6 +823,26 @@ void turn_info::show_attack_options(unit_map::const_iterator u)
 	}
 }
 
+// Indicates whether the command should be in the context menu or not.
+// Independant of whether or not we can actually execute the command.
+bool turn_info::in_context_menu(hotkey::HOTKEY_COMMAND command) const
+{
+	switch(command) {
+	//Only display these if the mouse is over a castle or keep tile
+	case hotkey::HOTKEY_RECRUIT:
+	case hotkey::HOTKEY_REPEAT_RECRUIT:
+	case hotkey::HOTKEY_RECALL: {
+		// last_hex_ is set by turn_info::mouse_motion
+		// Enable recruit/recall on castle/keep tiles
+		if(!map_.on_board(last_hex_)) return false;
+		char terrain = map_.underlying_terrain(map_[last_hex_.x][last_hex_.y]);
+		return terrain == gamemap::CASTLE || terrain == gamemap::KEEP;
+	}
+	default:
+		return true;
+	}
+}
+
 bool turn_info::can_execute_command(hotkey::HOTKEY_COMMAND command) const
 {
 	switch(command) {
@@ -893,12 +913,23 @@ namespace {
 	private:
 		const turn_info& info_;
 	};
+	
+	struct not_in_context_menu {
+		not_in_context_menu(const turn_info& info) : info_(info) {}
+		bool operator()(const std::string& str) const {
+			return !info_.in_context_menu(hotkey::string_to_command(str));
+		}
+	private:
+		const turn_info& info_;
+	};
 }
 
-void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc)
+void turn_info::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
 	std::vector<std::string> items = items_arg;
 	items.erase(std::remove_if(items.begin(),items.end(),cannot_execute(*this)),items.end());
+	if(context_menu)
+		items.erase(std::remove_if(items.begin(),items.end(),not_in_context_menu(*this)),items.end());
 	if(items.empty())
 		return;
 
