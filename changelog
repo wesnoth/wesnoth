@@ -1,27 +1,10 @@
-CVS HEAD:
+VS HEAD:
  * information about encountered terrain added in the help system
  * new and improved graphics:
-   * snow tiles and transitions
-   * cave walls and floors
-   * dwarves castles
-   * swamp transitions
-   * ice
-   * deep and shallow water
-   * snowy hills
-   * snowy forest
-   * bridges
-   * chest
-   * unit animations
-   * lava
-   * nest
-   * road
-   * dirt
-   * portraits
-   * forest
-   * bridges
- * new scenarios for 'The Rise of Wesnoth' campaign:
-   * The Vanguard
-   * Return of the Fleet
+   * dwarvish castle
+   * swamp, deep water, shallow water, snow, cave wall, cave floor, ice, lava, dirt, forest, bridge, road
+   * chest, nest
+   * portraits and unit animations
  * scenario balancing for 'The Dark Hordes' campaign:
    * Underground Pool
  * scenario balancing for 'The Eastern Invasion' campaign:
@@ -29,11 +12,18 @@ CVS HEAD:
    * Evacuation
    * Peasant Revolt
    * Weldyn Under Attack
+ * new scenarios for 'The Rise of Wesnoth' campaign:
+   * The Vanguard
+   * Return of the Fleet
+ * scenario balancing for 'The Rise of Wesnoth' campaign:
+   * Temple in the Deep
  * replaced Duelist's pistol with crossbow
  * hammer attack given to 'Dwarvish Fighter' and 'Dwarvish Steelclad'
  * increased 'Dwarvish Steelclad' required experience to level
  * reduced 'Bone Shooter' required experience to level
  * increased Soul Shooter ranged damage
+ * reduced Woses resistance to cold
+ * more female units
  * language fixes and polishing (english)
  * switched to using gettext, following languages have been converted:
    * catalan
@@ -68,6 +58,7 @@ CVS HEAD:
  * fixed floating labels sometimes not displaying on accelerated mode
  * fixed "drain" not working on final blow (#10038)
  * fixed bad victory conditions in 'The Rise of Wesnoth: The Dragon' scenario
+ * fixed some units shadows not being semi-transparent
  * changes in #ifdefs to prevent the game from using the X11 clipboard on MacOSX
  * fixed a little bug where a space could disappear near EOL in the help system
  * new file hierarchy for portraits
@@ -78,6 +69,7 @@ CVS HEAD:
  * added possiblity for terrains to be defined as 2-layered, with a base part and an overlay part
  * changed building static binary to use libtool when available
  * multiplayer file hierarchy cleanup
+ * optimized menu scrolling
 
 Version 0.8.2:
  * new and improved graphics: 
