@@ -475,7 +475,7 @@ std::string load_game_dialog(display& disp, const config& game_config, const gam
 
 			try {
 				summary["mod_time"] = str_cast(lexical_cast<int>(games[*s].time_modified));
-				load_game(data,games[*s].name,state);
+				load_game(data,games[*s].name,state,NULL);
 				extract_summary_data_from_save(state,summary);
 			} catch(io_exception&) {
 				summary["corrupt"] = "yes";

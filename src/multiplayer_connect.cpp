@@ -879,7 +879,13 @@ void connect::load_game()
 		}
 		
 		//state_.players.clear();
-		::load_game(game_data_, game, state_);
+		std::string error_log;
+		::load_game(game_data_, game, state_, &error_log);
+		if(!error_log.empty()) {
+			gui::show_error_message(disp(), 
+					_("The file you have tried to load is corrupt: '") +
+					error_log);
+		}
 
 		if(state_.campaign_type != "multiplayer") {
 			gui::show_dialog(disp(), NULL, "", _("This is not a multiplayer save"),

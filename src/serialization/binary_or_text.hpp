@@ -22,7 +22,7 @@ class config;
 //function which reads a file, and automatically detects whether it's compressed or not before
 //reading it. If it's not a valid file at all, it will throw an error as if it was trying to
 //read it as text WML. Returns true iff the format is compressed
-bool detect_format_and_read(config &cfg, std::istream &in); //throws config::error
+bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log=NULL); //throws config::error
 
 //function which writes a file, compressed or not depending on a flag
 void write_possibly_compressed(std::ostream &out, config &cfg, bool compress);

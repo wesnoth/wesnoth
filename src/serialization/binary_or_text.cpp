@@ -19,14 +19,14 @@
 
 #include <sstream>
 
-bool detect_format_and_read(config &cfg, std::istream &in)
+bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log)
 {
 	unsigned char c = in.peek();
 	if (c < 4) {
 		read_compressed(cfg, in);
 		return true;
 	} else {
-		read(cfg, in);
+		read(cfg, in, NULL, error_log);
 		return false;
 	}
 }

@@ -743,8 +743,17 @@ bool game_controller::load_game()
 		//to load a save file, we first load the file in, then we re-parse game
 		//data with the save's #defines, and then we finally parse the save file,
 		//with the game data ready to go.
+
 		config cfg;
-		read_save_file(game,cfg);
+		std::string error_log;
+		read_save_file(game,cfg,&error_log);
+		if(!error_log.empty()) {
+			// FIXME: fix this string after the string-freeze is
+			// over, to clearly state this is a warning.
+			gui::show_error_message(disp(), 
+					_("The file you have tried to load is corrupt: '") +
+					error_log);
+		}
 
 		defines_map_.clear();
 		defines_map_[cfg["difficulty"]] = preproc_define();
@@ -1382,6 +1391,8 @@ void game_controller::read_game_cfg(preproc_map& defines, std::vector<line_sourc
 				std::string error_log;
 				read(cfg, *stream, &line_src, &error_log);
 				if(!error_log.empty()) {
+					// FIXME: fix this string after the string-freeze is
+					// over, to clearly state this is a warning.
 					gui::show_error_message(disp(), 
 							_("Error loading game configuration files: '") +
 							error_log);
