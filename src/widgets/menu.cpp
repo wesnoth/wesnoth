@@ -101,6 +101,7 @@ void menu::update_size() {
 	if (max_width_ > 0 && rect.w > max_width_)
 		rect.w = max_width_;
 
+	update_scrollbar_grip_height();
 	set_location(rect);
 }
 
