@@ -4,10 +4,19 @@ CVS HEAD:
  * graphics improvements:
    * leadership frames
    * attack frames
- * tweaks for spirit movetype
- * 'undeadspirit' movetype
- * switched all ghosts using 'undeadspirit' movetype
+   * grassland-to-water transitions
+   * pier
+ * increased experience required to advance for Haldric and Jessica (both from The Rise of Wesnoth campaign)
  * reduced 'Elvish High Lord' movement to 6
+ * tweaks for 'spirit' movetype: increased resistance against blade, pierce and impact
+ * 'undeadspirit' movetype (copy of 'spirit' movetype with vulnerability to 'holy')
+ * switched all ghosts using 'undeadspirit' movetype
+ * unit balancing: 
+   * Ghost: switched movetype to 'undeadspirit', increased hitpoints
+   * Nightgaunt: switched movetype to 'undeadspirit', increased hitpoints
+   * Shadow: switched movetype to 'undeadspirit', increased hitpoints
+   * Spectre: switched movetype to 'undeadspirit', increased hitpoints
+   * Wraith: switched movetype to 'undeadspirit', increased hitpoints
  * new units:
    * Grand Marshal
  * language fixes and polishing (english)
@@ -15,6 +24,7 @@ CVS HEAD:
    * brazilian
    * catalan
    * danish
+   * greek
    * hungarian
    * italian
    * portuguese
@@ -42,6 +52,11 @@ CVS HEAD:
  * fixed compiling errors in the zip-directory (#10189, #10362)
  * fixed lag when chatting in multiplayer lobby
  * fixed --with-kde and --with-gnome
+ * fixed 'About' translations being duplicated for no real good reason
+ * fixed untranslatable strings in help
+ * fixed some abilities not being translatable
+ * fixed holywater bug in 'The Rise of Wesnoth: Cursed Isle'
+ * support for bridges ending on water.
  * switched using gettext-standard multi-textdomain
  * suppressed warnings from msgfmt 
  * po-header cleanups
