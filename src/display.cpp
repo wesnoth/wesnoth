@@ -82,12 +82,11 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
 					   invalidateAll_(true), invalidateUnit_(true),
 					   invalidateGameStatus_(true), sideBarBgDrawn_(false),
 					   lastTimeOfDay_(-1), currentTeam_(0), updatesLocked_(0),
-                       turbo_(false), grid_(false)
+                       turbo_(false), grid_(false), sidebarScaling_(1.0)
 {
 	gameStatusRect_.w = 0;
 	unitDescriptionRect_.w = 0;
 	unitProfileRect_.w = 0;
-
 
 	//clear the screen contents
 	SDL_Surface* const disp = screen_.getSurface();
@@ -333,8 +332,20 @@ void display::draw(bool update,bool force)
 {
 	if(!sideBarBgDrawn_) {
 		SDL_Surface* const screen = screen_.getSurface();
-		SDL_Surface* const image = getImage("misc/rightside.png",UNSCALED);
+		SDL_Surface* image = getImage("misc/rightside.png",UNSCALED);
 		if(image != NULL) {
+
+			if(image->h != screen->h) {
+				SDL_Surface* const new_image
+				                   = scale_surface(image,image->w,screen->h);
+				if(new_image != NULL) {
+					images_["misc/rightside.png"] = new_image;
+					SDL_FreeSurface(image);
+					image = new_image;
+					sidebarScaling_ = static_cast<double>(image->h)/768.0;
+				}
+			}
+
 			SDL_Rect dstrect;
 			dstrect.x = mapx();
 			dstrect.y = 0;
@@ -360,7 +371,7 @@ void display::draw(bool update,bool force)
 			for(int y = -1; y <= map_.y(); ++y)
 				draw_tile(x,y);
 		invalidateAll_ = false;
-		draw_minimap(mapx()+30,35,(this->x()-mapx())-60,120);
+		draw_minimap(mapx()+30,35,(this->x()-mapx())-60,120*sidebarScaling_);
 	} else {
 		for(std::set<gamemap::location>::const_iterator it =
 		    invalidated_.begin(); it != invalidated_.end(); ++it) {
@@ -416,13 +427,13 @@ void display::draw_sidebar()
 			i = units_.find(selectedHex_);
 
 		if(i != units_.end())
-			draw_unit_details(mapx()+2,390,selectedHex_,i->second,
-			                  unitDescriptionRect_,unitProfileRect_);
+			draw_unit_details(mapx()+2,390*sidebarScaling_,selectedHex_,
+			                  i->second,unitDescriptionRect_,unitProfileRect_);
 		invalidateUnit_ = false;
 	}
 
 	if(invalidateGameStatus_) {
-		draw_game_status(mapx()+2,258);
+		draw_game_status(mapx()+2,258*sidebarScaling_);
 		invalidateGameStatus_ = false;
 	}
 }
@@ -454,10 +465,10 @@ void display::draw_game_status(int x, int y)
 
 		if(tod_surface != NULL) {
 			//hardcoded values as to where the time of day image appears
-			blit_surface(mapx() + 21,196,tod_surface);
+			blit_surface(mapx() + 21,196*sidebarScaling_,tod_surface);
 			SDL_Rect update_area;
 			update_area.x = mapx() + 21;
-			update_area.y = 196;
+			update_area.y = 196*sidebarScaling_;
 			update_area.w = tod_surface->w;
 			update_area.h = tod_surface->h;
 			update_rect(update_area);

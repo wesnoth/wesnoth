@@ -220,6 +220,7 @@ private:
 	int updatesLocked_;
 
 	bool turbo_, grid_;
+	double sidebarScaling_;
 
 	//for debug mode
 	static std::map<gamemap::location,double> debugHighlights_;

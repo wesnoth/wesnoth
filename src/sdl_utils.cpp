@@ -10,6 +10,9 @@
 
    See the COPYING file for more details.
 */
+
+#include <iostream>
+
 #include "sdl_utils.hpp"
 
 SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
@@ -20,8 +23,10 @@ SDL_Surface* scale_surface(SDL_Surface* surface, int w, int h)
 										 surface->format->Gmask,
 										 surface->format->Bmask,
 										 surface->format->Amask);
-	if(dest == NULL)
+	if(dest == NULL) {
+		std::cerr << "Could not create surface to scale onto\n";
 		return NULL;
+	}
 
 	const double xratio = static_cast<double>(surface->w)/
 			              static_cast<double>(w);
