@@ -8,10 +8,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth\n"
+"Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2004-10-05 23:03+0200\n"
-"PO-Revision-Date: 2004-10-01 21:56+0200\n"
+"PO-Revision-Date: 2004-10-12 16:23+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Català\n"
 "MIME-Version: 1.0\n"
@@ -187,7 +187,6 @@ msgid "Movement"
 msgstr "Moviment"
 
 #: data/help.cfg:90
-#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple: Simply click on the unit you wish "
 "to move, then click on the hex you wish to move it to. When selected, all "
@@ -226,7 +225,7 @@ msgstr ""
 "unitat. Als boscos, els elfs només gasten 1 punt, la majoria de humans i "
 "orcs 2, i els genets 3. Podeu veure quants punts necessita una unitat per "
 "entrar en un determinat tipus de terreny fent-li clic amb el botó dret i "
-"seleccionant <italic>text='Descriu unitat'</italic>. \n"
+"seleccionant <italic>text='Descriu unitat'</italic>.\n"
 "\n"
 "Un altre factor a tenir en compte són les <ref>dst=zones_of_control "
 "text='Zones de control'</ref>. Cada unitat genera una zona de control sobre "
@@ -241,7 +240,6 @@ msgid "Combat"
 msgstr "Combat"
 
 #: data/help.cfg:111
-#, fuzzy
 msgid ""
 "There are two types of combat in Battle for Wesnoth, short- and long-ranged, "
 "but both of them take place between units in adjacent hexes. Short-range "
@@ -490,7 +488,7 @@ msgstr ""
 
 #: data/help.cfg:197
 msgid "About"
-msgstr ""
+msgstr "Quant a"
 
 #: data/help.cfg:242
 msgid ""
@@ -1265,22 +1263,22 @@ msgid ""
 "damage by the number of strikes. For example, my lightning attack does 14 "
 "damage per blow and has 4 blows, so it can deal up to 56 damage in a single "
 "combat."
-msgstr ""
+msgstr "Cada atac fa una certa quantitat de mal per cop, i pot repetir-se un determinat nombre de vegades per batalla. Aquests nombres es mostren en ordre sota el nom de l'atac a la descripció de la unitat. Per saber ràpidament el màxim mal que es pot fer amb un atac, multiplica el mal per el nombre de cops. Per exemple, el meu atac de llampec fa 14 de mal i el puc fer 4 vegades, per tant, puc fer fins a 56 punts de mal en un sol combat."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:151
 msgid "How can you tell how powerful a unit's attacks are?"
-msgstr ""
+msgstr "Com podeu dir com de poderosos són els atacs d'una unitat?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid ""
 "Units have the ability to block blows. The chance that a unit has to hit is "
 "based on the defender's skill at defending blows, and is listed on the "
 "attack options menu after the damage and strike numbers for the bow attack."
-msgstr ""
+msgstr "Les unitats tenen l'habilitat de blocar els cops. Les possibilitats de que això pasi es basen en l'habilitat d'aturar cops del defensor. Apareixen a la llista d'opcions d'atac després del mal i el nombre de cops."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:152
 msgid "Will my fighter hit every time when he attacks?"
-msgstr ""
+msgstr "Acertará el meu lluitador cada vegada que ataqui?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:158
 msgid "End your turn, and wait for Merle to attack you."
@@ -1299,7 +1297,7 @@ msgstr ""
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid "What's experience?"
-msgstr ""
+msgstr "Què és l'experiència?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:168
 msgid ""
@@ -1308,11 +1306,11 @@ msgid ""
 "which is usually a representation of that unit's power. However, much more "
 "experience is gained from defeating an enemy unit. The amount of XP gained "
 "from killing an enemy is equal to 8 times the enemy's level."
-msgstr ""
+msgstr "Quan una unitat lluita, guanya experiència (també denotada 'XP'). La quantitat d'experiència guanyada és igual al nivell de l'oponent que sol representar el poder de la unitat. Es guanya molta més experiència derrotant una unitat enemiga. En aquest cas la quantitat d'experiència guanyada serà de 8 vegades el nivell de la unitat."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid "What happens when a unit advances?"
-msgstr ""
+msgstr "Què passa quan una unitat avança?"
 
 #: data/scenarios/tutorial/Basic_Training.cfg:169
 msgid ""
@@ -1322,7 +1320,7 @@ msgid ""
 "usually more powerful and 1 level higher than they were originally. Also, "
 "when a unit advances, it is healed completely and any handicaps that have "
 "been cast on it are removed. This is known as 'advance-heal'."
-msgstr ""
+msgstr "Quan una unitat avança, es transforma en un altre tipus d'unitat. Aquest tipus dependrà del que era la unitat originalment, però normalment hi haurà més d'una possibilitat per triar. Les unitats que han avançat solen ser més fortes i d'un nivell més elevat. A més, quan una unitat avança, es cura completament de les seves ferides."
 
 #: data/scenarios/tutorial/Basic_Training.cfg:175
 msgid "Move your fighter onto a village."
@@ -1490,8 +1488,7 @@ msgstr "Trets i especialitats"
 msgid ""
 "Now you will be subject to a more difficult test. You must defeat me in mock "
 "battle."
-msgstr ""
-"Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
+msgstr "Ara sereu sotmès a una prova més dura. M'haureu de derrotar en una batalla."
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:43
 msgid ""
@@ -1756,8 +1753,7 @@ msgid "What are the different damage types?"
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:160
-msgid ""
-"Many units have a specialty which changes the rules of play in some way."
+msgid "Many units have a specialty which changes the rules of play in some way."
 msgstr ""
 
 #: data/scenarios/tutorial/Traits_and_Specialties.cfg:164
@@ -2216,8 +2212,7 @@ msgstr "Tria escenari"
 
 #: data/translations/english.cfg:84
 msgid "This terrain acts as $terrains for movement and defense purposes"
-msgstr ""
-"Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
+msgstr "Aquest terreny actua com $terrains pel que fa al moviment i la defensa."
 
 #: data/translations/english.cfg:85
 msgid "The terrain with the best modifier is chosen automatically"
@@ -2503,8 +2498,7 @@ msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
 msgstr ""
 
 #: data/translations/english.cfg:177
-msgid ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgid "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
 
 #: data/translations/english.cfg:179
@@ -2583,8 +2577,7 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:190
-msgid ""
-"Units stationed in villages heal 8 hitpoints at the beginning of their turn."
+msgid "Units stationed in villages heal 8 hitpoints at the beginning of their turn."
 msgstr ""
 
 #: data/translations/english.cfg:191
@@ -2633,8 +2626,7 @@ msgid ""
 msgstr ""
 
 #: data/translations/english.cfg:198
-msgid ""
-"Do not be afraid to retreat and regroup, it is often the key to victory."
+msgid "Do not be afraid to retreat and regroup, it is often the key to victory."
 msgstr ""
 
 #: data/translations/english.cfg:199
@@ -3046,7 +3038,7 @@ msgid ""
 "Armed with a heavy mace, Bandits are adept at robbing and killing at night. "
 "Wearing brown cloaks and black hoods, they steal from the peasants who live "
 "near them when not fighting against invaders."
-msgstr ""
+msgstr "Armat amb una maça pesada, els bandits són adeptes fent de les seves per la nit. Porten capes marrons i caputxes negres. Roben als camperols que viuen a prop seu quan no estan lluitant contra els invasors."
 
 #: data/units/Bandit.cfg:19 data/units/Drake_Gladiator.cfg:57
 #: data/units/Great_Troll.cfg:20 data/units/Heavy_Infantry.cfg:21
@@ -3123,7 +3115,7 @@ msgid ""
 "great combatant and leader. The units of lower level around the Princess "
 "will fight better due to her presence. The Princess is a skilled skirmisher, "
 "and ignores enemy zones of control."
-msgstr ""
+msgstr "Noble de naixement, la Princesa ha après l'art de l'espasa amb els més grans generals del Regne, així com les tàctiques de batalla amb els millors estrategues. Aquest fet la converteix en una gran combatent i líder. Les unitats de nivell baix que estiguin al seu voltant es veuran beneficiades per la seva presència. La Princesa, a més, ignora les zones de control."
 
 #: data/units/Battle_Princess.cfg:76 data/units/Commander.cfg:120
 #: data/units/Fighter.cfg:83 data/units/Lord.cfg:102
@@ -3344,7 +3336,7 @@ msgstr "carrega"
 
 #: data/units/Cockatrice.cfg:3
 msgid "Cockatrice"
-msgstr ""
+msgstr "Basilisc"
 
 #: data/units/Cockatrice.cfg:16
 msgid ""
@@ -3441,7 +3433,7 @@ msgstr "onada de fred"
 
 #: data/units/Dark_Queen.cfg:3
 msgid "Dark Queen"
-msgstr ""
+msgstr "Reina Obscura"
 
 #: data/units/Dark_Queen.cfg:15
 msgid ""
@@ -3456,7 +3448,7 @@ msgstr "ceptre"
 
 #: data/units/Dark_Spirit.cfg:3
 msgid "Dark Spirit"
-msgstr ""
+msgstr "Esperit fosc"
 
 #: data/units/Dark_Spirit.cfg:16
 msgid ""
@@ -3504,7 +3496,7 @@ msgstr "ballesta"
 
 #: data/units/Deathmaster.cfg:3
 msgid "Deathmaster"
-msgstr ""
+msgstr "Mestre de la mort"
 
 #: data/units/Deathmaster.cfg:16
 msgid ""
@@ -3516,7 +3508,7 @@ msgstr ""
 
 #: data/units/Demilich.cfg:3
 msgid "Demilich"
-msgstr ""
+msgstr "Semilich"
 
 #: data/units/Demilich.cfg:15
 msgid ""
@@ -3609,7 +3601,7 @@ msgstr ""
 
 #: data/units/Drake_Fighter.cfg:21
 msgid "scimitar"
-msgstr ""
+msgstr "simitarra"
 
 #: data/units/Drake_Fire.cfg:4
 msgid "Fire Drake"
@@ -3711,9 +3703,8 @@ msgid ""
 msgstr ""
 
 #: data/units/Drake_Warrior.cfg:4
-#, fuzzy
 msgid "Drake Warrior"
-msgstr "Troll Guerrer"
+msgstr ""
 
 #: data/units/Drake_Warrior.cfg:18
 msgid ""
@@ -3722,12 +3713,10 @@ msgid ""
 msgstr ""
 
 #: data/units/Duelist.cfg:3
-#, fuzzy
 msgid "Duelist"
 msgstr "Duelista"
 
 #: data/units/Duelist.cfg:17
-#, fuzzy
 msgid ""
 "Duelists are masters of the art of swordplay. Their skill with the rapier "
 "allows them to attack and parry with only one hand, while they wield a "
@@ -4184,14 +4173,13 @@ msgid "Elvish Outrider"
 msgstr "Escorta elf"
 
 #: data/units/Elvish_Outrider.cfg:20
-#, fuzzy
 msgid ""
 "Riding like the wind, Elvish Outriders breeze through the forests to strike "
 "at weaker units and exposed flanks. Equally skilled in both bow and sword, "
 "they strike hard before melting into the woods again to evade response."
 msgstr ""
-"L'Escorta, el més ràpid dels janets, és bo en el bosc i a camp obert. Usen "
-"l'arc a cavall, així com l'espasa."
+"L'escorta, el més ràpid dels janets, és bo en el bosc i a camp obert. Usen "
+"l'arc a cavall, així com l'espasa, abans de tornar a amagar-se entre els boscos."
 
 #: data/units/Elvish_Ranger.cfg:2 data/units/Elvish_Ranger.cfg:79
 msgid "Elvish Ranger"
@@ -4220,7 +4208,6 @@ msgid "Elvish Scout"
 msgstr "Explorador elf"
 
 #: data/units/Elvish_Scout.cfg:28
-#, fuzzy
 msgid ""
 "Elvish Scouts move swiftly through forest and grassland alike. Their skill "
 "on horseback is virtually unmatched, although they do lack power in combat."
@@ -4280,7 +4267,7 @@ msgstr ""
 
 #: data/units/Elvish_Sorceress.cfg:3
 msgid "Elvish Sorceress"
-msgstr "Arquer elf"
+msgstr ""
 
 #: data/units/Elvish_Sorceress.cfg:21
 msgid ""
@@ -4360,8 +4347,7 @@ msgid "Fireball"
 msgstr ""
 
 #: data/units/Fireball.cfg:16
-msgid ""
-"A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
+msgid "A Fireball. This is not to be used for anything else than a 'Move_Unit_Fake'!"
 msgstr ""
 
 #: data/units/Footpad.cfg:3
@@ -5514,10 +5500,8 @@ msgstr "Serp Marina"
 
 #: data/units/Sea_Serpent.cfg:16
 #, fuzzy
-msgid ""
-"Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
-msgstr ""
-"La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
+msgid "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
+msgstr "La Serp marina és un monstre enorme, capaç de sotsobrar qualsevol embarcació."
 
 #: data/units/Sergeant.cfg:3
 msgid "Sergeant"
@@ -6505,8 +6489,7 @@ msgid "Remote host disconnected."
 msgstr ""
 
 #: src/game.cpp:1096
-msgid ""
-"There was a problem creating the files necessary to install this campaign."
+msgid "There was a problem creating the files necessary to install this campaign."
 msgstr ""
 
 #: src/game.cpp:1108 src/game.cpp:1146 src/game.cpp:1170
@@ -7326,8 +7309,7 @@ msgid "Choose weapon"
 msgstr ""
 
 #: src/playturn.cpp:1125
-msgid ""
-"You have not started your turn yet.  Do you really want to end your turn?"
+msgid "You have not started your turn yet.  Do you really want to end your turn?"
 msgstr ""
 
 #: src/playturn.cpp:1134 src/playturn.cpp:1139
@@ -7687,14 +7669,3 @@ msgstr ""
 msgid "Deletion of the file failed."
 msgstr ""
 
-#~ msgid "sword "
-#~ msgstr "espasa"
-
-#~ msgid "blade "
-#~ msgstr "fulla"
-
-#~ msgid "spear "
-#~ msgstr "llança"
-
-#~ msgid "first strike "
-#~ msgstr "primer cop"
