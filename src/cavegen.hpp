@@ -53,7 +53,14 @@ private:
 
 	config res_;
 	const config* cfg_;
-	size_t width_, height_;
+	size_t width_, height_, village_density_;
+
+	//the scenario may have a chance to flip all x values or y values
+	//to make the scenario appear all random. This is kept track of here.
+	bool flipx_, flipy_;
+
+	size_t translate_x(size_t x) const;
+	size_t translate_y(size_t y) const;
 };
 
 #endif

@@ -3,7 +3,8 @@
 #include "util.hpp"
 
 cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('u'), village_('D'), castle_('C'),
-                                                            cfg_(cfg), width_(50), height_(50)
+                                                            cfg_(cfg), width_(50), height_(50), village_density_(0),
+															flipx_(false), flipy_(false)
 {
 	if(cfg_ == NULL) {
 		static const config default_cfg;
@@ -12,6 +13,35 @@ cave_map_generator::cave_map_generator(const config* cfg) : wall_('W'), clear_('
 
 	width_ = atoi((*cfg_)["map_width"].c_str());
 	height_ = atoi((*cfg_)["map_height"].c_str());
+	village_density_ = atoi((*cfg_)["village_density"].c_str());
+
+	const int r = rand()%100;
+	const int chance = atoi((*cfg_)["flipx_chance"].c_str());
+
+	flipx_ = r < chance;
+
+	std::cerr << "flipx: " << r << " < " << chance << " = " << (flipx_ ? "true" : "false") << "\n";
+	flipy_ = (rand()%100) < atoi((*cfg_)["flipy_chance"].c_str());
+
+
+}
+
+size_t cave_map_generator::translate_x(size_t x) const
+{
+	if(flipx_) {
+		x = width_ - x - 1;
+	}
+
+	return x;
+}
+
+size_t cave_map_generator::translate_y(size_t y) const
+{
+	if(flipy_) {
+		y = height_ - y - 1;
+	}
+
+	return y;
 }
 
 bool cave_map_generator::allow_user_config() const { return true; }
@@ -31,7 +61,12 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& args)
 	map_ = std::vector<std::vector<gamemap::TERRAIN> >(width_,std::vector<gamemap::TERRAIN>(height_,wall_));
 	chambers_.clear();
 	passages_.clear();
+
 	res_.clear();
+	const config* const settings = cfg_->child("settings");
+	if(settings != NULL) {
+		res_ = *settings;
+	}
 
 	std::cerr << "creating scenario....\n";
 	generate_chambers();
@@ -111,8 +146,8 @@ void cave_map_generator::generate_chambers()
 			}
 		}
 
-		const size_t x = min_xpos + (rand()%(max_xpos-min_xpos));
-		const size_t y = min_ypos + (rand()%(max_ypos-min_ypos));
+		const size_t x = translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
+		const size_t y = translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
 
 		const std::string& size = (**i)["size"];
 		size_t chamber_size = 3;
@@ -275,8 +310,12 @@ bool cave_map_generator::on_board(const gamemap::location& loc) const
 void cave_map_generator::set_terrain(gamemap::location loc, gamemap::TERRAIN t)
 {
 	if(on_board(loc)) {
+		if(t == clear_ && (rand()%1000) < village_density_) {
+			t = village_;
+		}
+
 		gamemap::TERRAIN& c = map_[loc.x][loc.y];
-		if(c == clear_ || c == wall_) {
+		if(c == clear_ || c == wall_ || c == village_) {
 			c = t;
 		}
 	}

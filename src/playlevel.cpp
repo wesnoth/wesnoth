@@ -100,6 +100,18 @@ LEVEL_RESULT play_level(game_data& gameinfo, const config& game_config,
                         game_state& state_of_game,
 						const std::vector<config*>& story)
 {
+	//if the entire scenario should be randomly generated
+	if((*level)["scenario_generation"] != "") {
+		std::cerr << "randomly generating scenario...\n";
+		const cursor::setter cursor_setter(cursor::WAIT);
+	
+		static config scenario;
+		scenario = random_generate_scenario((*level)["scenario_generation"],level->child("generator"));
+		level = &scenario;
+
+		state_of_game.starting_pos = scenario;
+	}
+	
 	std::string map_data = (*level)["map_data"];
 	if(map_data == "" && (*level)["map"] != "") {
 		map_data = read_file("data/maps/" + (*level)["map"]);
