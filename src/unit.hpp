@@ -185,4 +185,6 @@ struct team_data
 
 team_data calculate_team_data(const team& tm, int side, const unit_map& units);
 
+std::string get_team_name(int side, const unit_map& units);
+
 #endif

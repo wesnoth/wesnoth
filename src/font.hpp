@@ -27,13 +27,16 @@ struct manager {
 	~manager();
 };
 
-enum COLOUR { NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
-              BUTTON_COLOUR };
+const SDL_Color& get_side_colour(int side);
+
+extern const SDL_Color NORMAL_COLOUR, GOOD_COLOUR, BAD_COLOUR, BLACK_COLOUR,
+                       BUTTON_COLOUR;
 
 enum MARKUP { USE_MARKUP, NO_MARKUP };
 
-SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size, COLOUR colour,
-                   const std::string& text, int x, int y, SDL_Surface* bg=NULL,
+SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
+                   const SDL_Color& colour, const std::string& text,
+                   int x, int y, SDL_Surface* bg=NULL,
                    bool use_tooltips=false, MARKUP use_markup=USE_MARKUP);
 
 }

@@ -164,8 +164,8 @@ void process(int mousex, int mousey, bool lbutton)
 }
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
-                   font::COLOUR colour,
-                   const std::string& text, int x, int y, SDL_Surface* bg)
+                   const SDL_Color& colour, const std::string& text,
+                   int x, int y, SDL_Surface* bg)
 {
 	return font::draw_text(gui,area,size,colour,text,x,y,bg,true);
 }

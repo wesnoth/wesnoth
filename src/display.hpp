@@ -108,6 +108,7 @@ public:
 	gamemap::TERRAIN get_terrain_on(int palx, int paly, int x, int y);
 
 	void set_team(size_t team);
+	void set_playing_team(size_t team);
 
 	void set_advancing_unit(const gamemap::location& loc, double amount);
 
@@ -206,7 +207,7 @@ private:
 
 	bool sideBarBgDrawn_;
 
-	size_t currentTeam_;
+	size_t currentTeam_, activeTeam_;
 
 	//used to store a unit that is not drawn, because it's currently
 	//being moved or otherwise changed

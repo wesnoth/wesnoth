@@ -244,14 +244,3 @@ const std::string& team::music() const
 {
 	return info_.music;
 }
-
-std::string get_team_name(int side, const unit_map& units)
-{
-	for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
-		if(i->second.can_recruit() && i->second.side() == side) {
-			return i->second.description();
-		}
-	}
-
-	return "-";
-}

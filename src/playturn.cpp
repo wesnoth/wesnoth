@@ -1017,14 +1017,11 @@ bool turn_slice(game_data& gameinfo, game_state& state_of_game,
 		for(size_t n = 0; n != teams.size(); ++n) {
 			const team_data data = calculate_team_data(teams[n],n+1,units);
 
-			const bool on_side = n+1 == size_t(team_num) ||
-			                     !current_team.is_enemy(n+1);
-
 			std::stringstream str;
-			if(!on_side)
-				str << "#";
 
-			str << team_name(n+1,units) << ",";
+			//output the number of the side first, and this will
+			//cause it to be displayed in the correct colour
+			str << (char)(n+1) << team_name(n+1,units) << ",";
 
 			str << data.villages << ","
 			    << data.units << ","

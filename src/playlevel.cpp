@@ -40,6 +40,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 
 	std::vector<team> teams;
 
+	int first_human_team = -1;
+
 	std::vector<config*>& unit_cfg = level->children["side"];
 	for(std::vector<config*>::iterator ui = unit_cfg.begin();
 				ui != unit_cfg.end(); ++ui) {
@@ -69,6 +71,10 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 					     map.starting_position(new_unit.side()), new_unit));
 		teams.push_back(team(**ui,ngold));
 
+		if(first_human_team == -1 && teams.back().is_human()) {
+			first_human_team = teams.size()-1;
+		}
+
 		//if there are additional starting units on this side
 		std::vector<config*>& starting_units = (*ui)->children["unit"];
 		for(std::vector<config*>::iterator su = starting_units.begin();
@@ -87,6 +93,11 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 	}
 
 	display gui(units,video,map,status,teams);
+
+	if(first_human_team != -1) {
+		gui.set_team(first_human_team);
+	}
+
 	const preferences::display_manager prefs_disp_manager(&gui);
 	const tooltips::manager tooltips_manager(gui);
 
@@ -145,6 +156,8 @@ LEVEL_RESULT play_level(game_data& gameinfo, config& terrain_config,
 			for(std::vector<team>::iterator team_it = teams.begin();
 			    team_it != teams.end(); ++team_it) {
 				const int player_number = (team_it - teams.begin()) + 1;
+
+				gui.set_playing_team(size_t(player_number-1));
 
 				clear_shroud(gui,map,gameinfo,units,teams,player_number-1);
 

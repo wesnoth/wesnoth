@@ -23,6 +23,7 @@
 #include "sdl_utils.hpp"
 #include "show_dialog.hpp"
 #include "sound.hpp"
+#include "team.hpp"
 #include "tooltips.hpp"
 #include "util.hpp"
 
@@ -97,7 +98,7 @@ display::display(unit_map& units, CVideo& video, const gamemap& map,
                        teams_(t), lastDraw_(0), drawSkips_(0),
 					   invalidateAll_(true), invalidateUnit_(true),
 					   invalidateGameStatus_(true), sideBarBgDrawn_(false),
-					   currentTeam_(0), updatesLocked_(0),
+					   currentTeam_(0), activeTeam_(0), updatesLocked_(0),
                        turbo_(false), grid_(false), sidebarScaling_(1.0)
 {
 	gameStatusRect_.w = 0;
@@ -560,8 +561,8 @@ void display::draw_game_status(int x, int y)
 		const int expenses = upkeep - teams_[currentTeam_].towers().size();
 		const int income = teams_[currentTeam_].income() - maximum(expenses,0);
 
-		details << string_table["turn"] << ": " << status_.turn() << "/"
-				<< status_.number_of_turns() << "\n"
+		details << char(activeTeam_+1) << string_table["turn"] << ": "
+		        << status_.turn() << "/" << status_.number_of_turns() << "\n"
 		        << string_table["gold"] << ": "
 				<< teams_[currentTeam_].gold() << "\n"
 				<< string_table["villages"] << ": "
@@ -2380,6 +2381,13 @@ void display::set_team(size_t team)
 {
 	assert(team < teams_.size());
 	currentTeam_ = team;
+}
+
+void display::set_playing_team(size_t team)
+{
+	assert(team < teams_.size());
+	activeTeam_ = team;
+	invalidate_game_status();
 }
 
 void display::set_advancing_unit(const gamemap::location& loc, double amount)

@@ -591,13 +591,13 @@ TITLE_RESULT show_title(display& screen)
 	const std::string& version_str = string_table["version"] + " " +
 	                                 game_config::version;
 
-	const SDL_Rect version_area = draw_text(NULL,screen.screen_area(),10,
+	const SDL_Rect version_area = font::draw_text(NULL,screen.screen_area(),10,
 	                                    font::NORMAL_COLOUR,version_str,0,0);
 	const size_t versiony = screen.y() - version_area.h;
 
 	if(versiony < size_t(screen.y())) {
-		draw_text(&screen,screen.screen_area(),10,font::NORMAL_COLOUR,
-		          version_str,0,versiony);
+		font::draw_text(&screen,screen.screen_area(),10,font::NORMAL_COLOUR,
+		                version_str,0,versiony);
 	}
 
 	const int x = screen.x()/2 - title_surface->w/2;

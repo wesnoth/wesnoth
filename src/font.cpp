@@ -105,18 +105,36 @@ manager::~manager()
 	TTF_Quit();
 }
 
-SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
-                        COLOUR colour, const std::string& text, int x, int y,
-						SDL_Surface* bg, bool use_tooltips)
+const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
+                GOOD_COLOUR   = {0x00,0xFF,0x00,0},
+                BAD_COLOUR    = {0xFF,0x00,0x00,0},
+                BLACK_COLOUR  = {0x00,0x00,0x00,0},
+                BUTTON_COLOUR = {0xFF,0xFF,0x00,0};
+
+const SDL_Color& get_side_colour(int side)
 {
-	static const SDL_Color colours[] =
-	//     neutral            good           bad          black
-	    { {0xDD,0xDD,0xDD,0}, {0,0xFF,0,0}, {0xFF,0,0,0}, {0,0,0,0},
+	side -= 1;
 
-	//    button (yellow)
-	      {0xFF,0xFF,0,0} };
+	static const SDL_Color sides[] = { {0xAA,0x00,0x00,0},
+	                                   {0x00,0x00,0xFF,0},
+	                                   {0x00,0xFF,0x00,0},
+	                                   {0xFF,0xFF,0x00,0},
+	                                   {0xFF,0x55,0x55,0},
+	                                   {0xFF,0x55,0x55,0} };
 
-	const SDL_Color& col = colours[colour];
+	static const size_t nsides = sizeof(sides)/sizeof(*sides);
+
+	if(size_t(side) < nsides) {
+		return sides[side];
+	} else {
+		return BLACK_COLOUR;
+	}
+}
+
+SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
+                        const SDL_Color& colour, const std::string& text,
+                        int x, int y, SDL_Surface* bg, bool use_tooltips)
+{
 	TTF_Font* const font = get_font(size);
 	if(font == NULL) {
 		std::cerr << "Could not get font\n";
@@ -125,7 +143,7 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 		return res;
 	}
 
-	scoped_sdl_surface surface(TTF_RenderText_Blended(font,text.c_str(),col));
+	scoped_sdl_surface surface(TTF_RenderText_Blended(font,text.c_str(),colour));
 	if(surface == NULL) {
 		std::cerr << "Could not render ttf: '" << text << "'\n";
 		SDL_Rect res;
@@ -176,8 +194,9 @@ SDL_Rect draw_text_line(display* gui, const SDL_Rect& area, int size,
 
 
 SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
-                   COLOUR colour, const std::string& txt, int x, int y,
-                   SDL_Surface* bg, bool use_tooltips, MARKUP use_markup)
+                   const SDL_Color& colour, const std::string& txt,
+                   int x, int y, SDL_Surface* bg, bool use_tooltips,
+                   MARKUP use_markup)
 {
 	//make sure there's always at least a space, so we can ensure
 	//that we can return a rectangle for height
@@ -194,7 +213,7 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
 	for(;;) {
 		if(i1 != i2) {
-			COLOUR col = colour;
+			SDL_Color col = colour;
 			int sz = size;
 			if(use_markup == USE_MARKUP) {
 				if(*i1 == '#') {
@@ -208,6 +227,11 @@ SDL_Rect draw_text(display* gui, const SDL_Rect& area, int size,
 					++i1;
 				} else if(*i1 == '-') {
 					sz -= 2;
+					++i1;
+				}
+
+				if(i1 != i2 && *i1 >= 1 && *i1 <= 9) {
+					col = get_side_colour(*i1);
 					++i1;
 				}
 			}
