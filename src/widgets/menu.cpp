@@ -55,7 +55,7 @@ void menu::create_help_strings()
 	for(std::vector<std::vector<std::string> >::iterator i = items_.begin(); i != items_.end(); ++i) {
 		help_.resize(help_.size()+1);
 		for(std::vector<std::string>::iterator j = i->begin(); j != i->end(); ++j) {
-			if(std::find(j->begin(),j->end(),HELP_STRING_SEPERATOR) == j->end()) {
+			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPERATOR)) == j->end()) {
 				help_.back().push_back("");
 			} else {
 				const std::vector<std::string>& items = config::split(*j,HELP_STRING_SEPERATOR,0);
