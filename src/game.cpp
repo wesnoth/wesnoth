@@ -139,7 +139,7 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 						try {
 							config snapshot;
 
-							recorder.save_game(units_data,label,snapshot,state.starting_pos);
+							recorder.save_game(label, snapshot, state.starting_pos);
 						} catch(gamestatus::save_game_failed& e) {
 							e;
 							gui::show_dialog(disp,NULL,"",_("The game could not be saved"),gui::MESSAGE);

@@ -44,7 +44,8 @@ public:
 	void next_skip();
 	bool skipping() const;
 
-	void save_game(game_data& data, const std::string& label, const config& snapshot, const config& starting_pos, bool include_replay=true);
+	void save_game(const std::string& label, const config& snapshot,
+	               const config& starting_pos, bool include_replay = true);
 
 	void add_recruit(int unit_index, const gamemap::location& loc);
 	void add_recall(int unit_index, const gamemap::location& loc);

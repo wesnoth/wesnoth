@@ -226,8 +226,8 @@ bool replay::skipping() const
 	return at_end() == false && skip_ != 0;
 }
 
-void replay::save_game(game_data& data, const std::string& label, const config& snapshot,
-					   const config& starting_pos, bool include_replay)
+void replay::save_game(const std::string& label, const config& snapshot,
+                       const config& starting_pos, bool include_replay)
 {
 	log_scope("replay::save_game");
 	saveInfo_.snapshot = snapshot;

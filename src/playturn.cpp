@@ -1146,7 +1146,7 @@ void turn_info::end_turn()
 	write_game_snapshot(snapshot);
 	try {
 		config starting_pos;
-		recorder.save_game(gameinfo_,_("Auto-Save"),snapshot,state_of_game_.starting_pos);
+		recorder.save_game(_("Auto-Save"), snapshot, state_of_game_.starting_pos);
 	} catch(gamestatus::save_game_failed&) {
 		gui::show_dialog(gui_,NULL,"",_("Could not auto save the game. Please save the game manually."),gui::MESSAGE);
 		//do not bother retrying, since the user can just save the game
@@ -1399,7 +1399,7 @@ void turn_info::save_game(const std::string& message, gui::DIALOG_TYPE dialog_ty
 		config snapshot;
 		write_game_snapshot(snapshot);
 		try {
-			recorder.save_game(gameinfo_,label,snapshot,state_of_game_.starting_pos);
+			recorder.save_game(label, snapshot, state_of_game_.starting_pos);
 			if(dialog_type != gui::NULL_DIALOG) {
 				gui::show_dialog(gui_,NULL,_("Saved"),_("The game has been saved"), gui::OK_ONLY);
 			}
