@@ -268,54 +268,85 @@ battle_stats evaluate_battle_stats(
 		if(defender_attacks[defend].special() == magical_string)
 			res.chance_to_hit_attacker = 70;
 
-		const int base_damage = a->second.damage_against(defender_attacks[defend]);
-		const int modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
-		res.damage_attacker_takes = (base_damage * (100+modifier))/100;
+		int percent = 0;
+
+		const int base_damage = defender_attacks[defend].damage();
+		const int resistance_modifier = a->second.damage_against(defender_attacks[defend]);
+		
+		//res.damage_attacker_takes = (base_damage * (100+modifier))/100;
 
 		if(include_strings) {
 			std::stringstream str_base;
-			str_base << string_table["base_damage"] << ", ," << defender_attacks[defend].damage();
+			str_base << string_table["base_damage"] << "," << base_damage << ",";
 			res.defend_calculations.push_back(str_base.str());
+		}
 
+		const int resist = resistance_modifier - 100;
+		percent += resist;
+
+		if(include_strings && resist != 0) {
 			std::stringstream str_resist;
 
-			const int resist = a->second.type().movement_type().resistance_against(defender_attacks[defend]) - 100;
-			str_resist << string_table["attacker_resistance"] << " " << translate_string(defender_attacks[defend].type())
-			           << ",^" << (resist > 0 ? "+" : "") << resist << "%," << base_damage;
+			str_resist << string_table[resist < 0 ? "attacker_resistance" : "attacker_vulnerability"] << " " << translate_string(defender_attacks[defend].type())
+				<< ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 			res.defend_calculations.push_back(str_resist.str());
+		}
 
+		const int tod_modifier = combat_modifier(state,units,d->first,d->second.type().alignment());
+		percent += tod_modifier;
+
+		if(include_strings && tod_modifier != 0) {
 			std::stringstream str_mod;
 			const time_of_day& tod = timeofday_at(state,units,d->first);
-			str_mod << translate_string_default(tod.id,tod.name) << ",^"
-			        << (modifier > 0 ? "+" : "") << modifier << "%," << res.damage_attacker_takes;
+			str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+			        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 			res.defend_calculations.push_back(str_mod.str());
 		}
 
 		if(charge) {
-			res.damage_attacker_takes *= 2;
+			percent += 100;
+
 			if(include_strings) {
 				std::stringstream str;
-				str << translate_string("charge") << ",^+100%," << res.damage_attacker_takes;
+				str << translate_string("charge") << ", ,^+100%";
 				res.defend_calculations.push_back(str.str());
 			}
 		}
 
 		if(under_leadership(units,defender)) {
-			res.damage_attacker_takes += res.damage_attacker_takes/8 + 1;
+			percent += 25;
+
 			if(include_strings) {
 				std::stringstream str;
-				str << translate_string("leadership") << ",^+12.5%," << res.damage_attacker_takes;
+				str << translate_string("leadership") << ", ,^+25%";
 				res.defend_calculations.push_back(str.str());
 			}
 		}
 
-		if(res.damage_attacker_takes < 1) {
-			res.damage_attacker_takes = 1;
-			if(include_strings) {
-				std::stringstream str;
-				str << translate_string("minimum_damage") << ", ,1";
-				res.defend_calculations.push_back(str.str());
-			}
+		//we want to round the absolute value of the difference down
+		//at 0.5 and below
+		const int is_negative = percent < 0 ? -1 : 1;
+
+		if(percent < 0) {
+			percent *= -1;
+		}
+
+		int difference = percent*base_damage;
+
+		//round up if greater than half
+		if((difference%100) > 50) {
+			difference += 50;
+		}
+
+		difference /= 100*is_negative;
+
+		res.damage_attacker_takes = maximum<int>(1,base_damage + difference);
+
+		if(include_strings) {
+			std::stringstream str;
+			str << translate_string("total_damage") << "," << res.damage_attacker_takes
+				<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
+			res.defend_calculations.push_back(str.str());
 		}
 
 		res.ndefends = defender_attacks[defend].num_attacks();
@@ -348,64 +379,91 @@ battle_stats evaluate_battle_stats(
 	if(res.chance_to_hit_defender < 60 && attack.special() == marksman_string)
 		res.chance_to_hit_defender = 60;
 
-	const int base_damage = d->second.damage_against(attack);
-	const int modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
-	res.damage_defender_takes = ((base_damage * (100 + modifier))/100);
+	int percent = 0;
+
+	const int base_damage = attack.damage();
+	const int resistance_modifier = d->second.damage_against(attack);
 
 	if(include_strings) {
 		std::stringstream str_base;
 
-		str_base << string_table["base_damage"] << ", ," << attack.damage();
+		str_base << string_table["base_damage"] << "," << base_damage << ",";
 		res.attack_calculations.push_back(str_base.str());
+	}
 
+	const int resist = resistance_modifier - 100;
+	percent += resist;
+
+	if(include_strings && resist != 0) {
 		std::stringstream str_resist;
 
-		const int resist = d->second.type().movement_type().resistance_against(attack) - 100;
-		str_resist << string_table["defender_resistance"] << " " << translate_string(attack.type())
-			       << ",^" << (resist > 0 ? "+" : "") << resist << "%," << base_damage;
+		str_resist << string_table[resist < 0 ? "defender_resistance" : "defender_vulnerability"] << " " << translate_string(attack.type())
+			       << ", ,^" << (resist > 0 ? "+" : "") << resist << "%";
 		res.attack_calculations.push_back(str_resist.str());
+	}
 
+	const int tod_modifier = combat_modifier(state,units,a->first,a->second.type().alignment());
+
+	if(include_strings && tod_modifier != 0) {
 		std::stringstream str_mod;
 		const time_of_day& tod = timeofday_at(state,units,a->first);
-		str_mod << translate_string_default(tod.id,tod.name) << ",^"
-		        << (modifier > 0 ? "+" : "") << modifier << "%," << res.damage_defender_takes;
+		str_mod << translate_string_default(tod.id,tod.name) << ", ,^"
+		        << (tod_modifier > 0 ? "+" : "") << tod_modifier << "%";
 		res.attack_calculations.push_back(str_mod.str());
 	}
 
 	if(charge) {
-		res.damage_defender_takes *= 2;
+		percent += 100;
+
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("charge") << ",^+100%," << res.damage_defender_takes;
+			str << translate_string("charge") << ", ,^+100%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
 
 	if(backstab) {
-		res.damage_defender_takes *= 2;
+		percent += 100;
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("backstab") << ",^+100%," << res.damage_defender_takes;
+			str << translate_string("backstab") << ", ,^+100%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
 
 	if(under_leadership(units,attacker)) {
-		res.damage_defender_takes += res.damage_defender_takes/8 + 1;
+		percent += 25;
+		
 		if(include_strings) {
 			std::stringstream str;
-			str << translate_string("leadership") << ",^+12.5%," << res.damage_defender_takes;
+			str << translate_string("leadership") << ", ,^+25%";
 			res.attack_calculations.push_back(str.str());
 		}
 	}
 
-	if(res.damage_defender_takes < 1) {
-		res.damage_defender_takes = 1;
-		if(include_strings) {
-			std::stringstream str;
-			str << translate_string("minimum_damage") << ", ,1";
-			res.attack_calculations.push_back(str.str());
-		}
+	//we want to round the absolute value of the difference down
+	//at 0.5 and below
+	const int is_negative = percent < 0 ? -1 : 1;
+
+	if(percent < 0) {
+		percent *= -1;
+	}
+
+	int difference = percent*base_damage;
+
+	//round up if greater than half
+	if((difference%100) > 50) {
+		difference += 50;
+	}
+
+	difference /= 100*is_negative;
+
+	res.damage_defender_takes = maximum<int>(1,base_damage + difference);
+	if(include_strings) {
+		std::stringstream str;
+		str << translate_string("total_damage") << "," << res.damage_defender_takes
+			<< ",^" << (percent >= 0 ? "+" : "") << percent << "% (" << (difference >= 0 ? "+" : "") << difference << ")";
+		res.attack_calculations.push_back(str.str());
 	}
 
 	//if the attacker drains, and the defender is a living creature, then

@@ -792,6 +792,8 @@ void fade_logo(display& screen, int xpos, int ypos)
 
 TITLE_RESULT show_title(display& screen)
 {
+	cursor::set(cursor::NORMAL);
+
 	const events::resize_lock prevent_resizing;
 	
 	const scoped_sdl_surface title_surface_unscaled(image::get_image(game_config::game_title,image::UNSCALED));

@@ -325,8 +325,7 @@ int unit_movement_type::defense_modifier(const gamemap& map,
 
 int unit_movement_type::damage_against(const attack_type& attack) const
 {
-	const int resist = resistance_against(attack);
-	return (attack.damage()*resist)/100;
+	return resistance_against(attack);
 }
 
 int unit_movement_type::resistance_against(const attack_type& attack) const
