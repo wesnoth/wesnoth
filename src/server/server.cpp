@@ -890,6 +890,7 @@ int main(int argc, char** argv)
 		} else if(val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 				<< " [options]\n"
+				<< "  -d  --daemon               Runs wesnothd as a daemon\n"
 				<< "      --fifo file            Sets the path for the FIFO used to communicate with the server\n"
 				<< "  -m, --max_packet_size n    Sets the maximal packet size to n\n" 
 				<< "  -p, --port                 Binds the server to the specified port\n"
