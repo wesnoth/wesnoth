@@ -131,7 +131,6 @@ void set_resolution(const std::pair<int,int>& resolution)
 		if(video.modePossible(res.first,res.second,16,flags)) {
 
 			video.setMode(res.first,res.second,16,flags);
-
 			disp->redraw_everything();
 
 			char buf[50];

@@ -26,7 +26,7 @@ namespace {
 namespace gui {
 
 slider::slider(display& d, SDL_Rect& rect)
-	: widget(d, rect), highlight_(false), clicked_(true),
+	: widget(d, rect), min_(-100000), max_(100000), value_(0), highlight_(false), clicked_(true),
 	  dragging_(false)
 {
 	set_dirty(true);

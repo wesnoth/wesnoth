@@ -503,6 +503,12 @@ int play_game(int argc, char** argv)
 				state.difficulty = difficulties[res];
 				defines_map.clear();
 				defines_map[difficulties[res]] = preproc_define();
+
+				//lots of people seem to get 'NORMAL' and 'MEDIUM' mixed up,
+				//so we make it that if it's NORMAL, MEDIUM is also accepted
+				if(difficulties[res] == "NORMAL") {
+					defines_map["MEDIUM"] = preproc_define();
+				}
 			}
 		} else if(res == gui::MULTIPLAYER) {
 			state.campaign_type = "multiplayer";
