@@ -212,7 +212,7 @@ wesnoth_SOURCES = about.cpp \
 		  widgets/slider.cpp \
 		  widgets/textbox.cpp \
 		  widgets/widget.cpp \
-          about.hpp \
+		  about.hpp \
 		  actions.hpp \
 		  ai.hpp \
 		  ai_attack.hpp \
@@ -282,6 +282,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.cpp \
 			 ai_attack.cpp \
 			 ai_move.cpp \
+		 	 cavegen.cpp \
 			 config.cpp \
 			 cursor.cpp \
 			 dialogs.cpp \
@@ -331,6 +332,7 @@ wesnoth_editor_SOURCES = editor/editor.cpp \
 			 ai.hpp \
 			 ai_attack.hpp \
 			 ai_move.hpp \
+		 	 cavegen.hpp \
 			 config.hpp \
 			 cursor.hpp \
 			 dialogs.hpp \
@@ -415,21 +417,21 @@ wesnoth_DEPENDENCIES =
 wesnoth_LDFLAGS =
 am_wesnoth_editor_OBJECTS = editor.$(OBJEXT) actions.$(OBJEXT) \
 	ai.$(OBJEXT) ai_attack.$(OBJEXT) ai_move.$(OBJEXT) \
-	config.$(OBJEXT) cursor.$(OBJEXT) dialogs.$(OBJEXT) \
-	display.$(OBJEXT) events.$(OBJEXT) filesystem.$(OBJEXT) \
-	font.$(OBJEXT) game_config.$(OBJEXT) game_events.$(OBJEXT) \
-	gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) image.$(OBJEXT) \
-	intro.$(OBJEXT) key.$(OBJEXT) language.$(OBJEXT) log.$(OBJEXT) \
-	map.$(OBJEXT) mapgen.$(OBJEXT) mapgen_dialog.$(OBJEXT) \
-	mouse.$(OBJEXT) network.$(OBJEXT) pathfind.$(OBJEXT) \
-	playlevel.$(OBJEXT) playturn.$(OBJEXT) preferences.$(OBJEXT) \
-	race.$(OBJEXT) replay.$(OBJEXT) reports.$(OBJEXT) \
-	sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) sound.$(OBJEXT) \
-	statistics.$(OBJEXT) team.$(OBJEXT) terrain.$(OBJEXT) \
-	theme.$(OBJEXT) tooltips.$(OBJEXT) unit.$(OBJEXT) \
-	unit_types.$(OBJEXT) video.$(OBJEXT) button.$(OBJEXT) \
-	menu.$(OBJEXT) textbox.$(OBJEXT) scrollbar.$(OBJEXT) \
-	slider.$(OBJEXT) widget.$(OBJEXT)
+	cavegen.$(OBJEXT) config.$(OBJEXT) cursor.$(OBJEXT) \
+	dialogs.$(OBJEXT) display.$(OBJEXT) events.$(OBJEXT) \
+	filesystem.$(OBJEXT) font.$(OBJEXT) game_config.$(OBJEXT) \
+	game_events.$(OBJEXT) gamestatus.$(OBJEXT) hotkeys.$(OBJEXT) \
+	image.$(OBJEXT) intro.$(OBJEXT) key.$(OBJEXT) \
+	language.$(OBJEXT) log.$(OBJEXT) map.$(OBJEXT) mapgen.$(OBJEXT) \
+	mapgen_dialog.$(OBJEXT) mouse.$(OBJEXT) network.$(OBJEXT) \
+	pathfind.$(OBJEXT) playlevel.$(OBJEXT) playturn.$(OBJEXT) \
+	preferences.$(OBJEXT) race.$(OBJEXT) replay.$(OBJEXT) \
+	reports.$(OBJEXT) sdl_utils.$(OBJEXT) show_dialog.$(OBJEXT) \
+	sound.$(OBJEXT) statistics.$(OBJEXT) team.$(OBJEXT) \
+	terrain.$(OBJEXT) theme.$(OBJEXT) tooltips.$(OBJEXT) \
+	unit.$(OBJEXT) unit_types.$(OBJEXT) video.$(OBJEXT) \
+	button.$(OBJEXT) menu.$(OBJEXT) textbox.$(OBJEXT) \
+	scrollbar.$(OBJEXT) slider.$(OBJEXT) widget.$(OBJEXT)
 wesnoth_editor_OBJECTS = $(am_wesnoth_editor_OBJECTS)
 wesnoth_editor_LDADD = $(LDADD)
 wesnoth_editor_DEPENDENCIES =
