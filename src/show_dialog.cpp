@@ -515,8 +515,8 @@ int show_dialog(display& disp, SDL_Surface* image,
 
 
 	const int border_padding = 10;
-	int frame_width = maximum<int>(total_width + border_padding*2,above_left_preview_pane_width + above_right_preview_pane_width);
-	int frame_height = maximum<int>(int(preview_pane_height),total_height + border_padding*2);
+	int frame_width = maximum<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
+	int frame_height = maximum<int>(total_height,int(preview_pane_height));
 	int xframe = maximum<int>(0,xloc >= 0 ? xloc : scr->w/2 - (frame_width + left_preview_pane_width + right_preview_pane_width)/2);
 	int yframe = maximum<int>(0,yloc >= 0 ? yloc : scr->h/2 - (frame_height + above_preview_pane_height)/2);
 

@@ -194,12 +194,16 @@ bool gamestatus::next_turn()
 
 game_state read_game(const game_data& data, const config* cfg)
 {
+	std::cerr << "reading scenario: '" << cfg->write() << "'\n";
+
 	log_scope("read_game");
 	game_state res;
 	res.label = (*cfg)["label"];
 	res.version = (*cfg)["version"];
 	res.gold = atoi((*cfg)["gold"].c_str());
 	res.scenario = (*cfg)["scenario"];
+
+	std::cerr << "scenario: '" << res.scenario << "'\n";
 
 	res.difficulty = (*cfg)["difficulty"];
 	if(res.difficulty.empty())
@@ -365,6 +369,11 @@ void load_game(const game_data& data, const std::string& name, game_state& state
 	}
 
 	config cfg(file_data);
+
+	if(cfg.empty()) {
+		throw gamestatus::load_game_failed();
+	}
+	
 	state = read_game(data,&cfg);
 }
 

@@ -1047,6 +1047,19 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		terrain[x-1][y+1] = 'C';
 		terrain[x+1][y-1] = 'C';
 		terrain[x+1][y+1] = 'C';
+
+		//remove all labels under the castle tiles
+		if(labels != NULL) {
+			labels->erase(location(x-width/3,y-height/3);
+			labels->erase(location(x-1-width/3,y-height/3);
+			labels->erase(location(x+1-width/3,y-height/3);
+			labels->erase(location(x-width/3,y-1-height/3);
+			labels->erase(location(x-width/3,y+1-height/3);
+			labels->erase(location(x-1-width/3,y-1-height/3);
+			labels->erase(location(x-1-width/3,y+1-height/3);
+			labels->erase(location(x+1-width/3,y-1-height/3);
+			labels->erase(location(x+1-width/3,y+1-height/3);
+		}
 	}
 
 	std::cerr << "placed castles\n";

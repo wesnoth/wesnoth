@@ -1,4 +1,5 @@
 #include "statistics.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -269,8 +270,7 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res)
 	if(stats_disabled > 0)
 		return;
 
-	attacker_res.resize(attacker_res.size()+1);
-	attacker_res[attacker_res.size()-1] = (res == MISSES ? '0' : '1');
+	push_back(attacker_res,(res == MISSES ? '0' : '1'));
 
 	attacker_stats().damage_inflicted += bat_stats.damage_defender_takes;
 	defender_stats().damage_taken += bat_stats.damage_defender_takes;

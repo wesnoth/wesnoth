@@ -369,7 +369,6 @@ SDL_Rect draw_text_line(SDL_Surface *gui_surface, const SDL_Rect& area, int size
 	}
 	
 	if(dest.x + dest.w > area.x + area.w) {
-		std::cerr << "Error: text with ellipsis does not fit !\n";
 		dest.w = area.x + area.w - dest.x;
 	}
 

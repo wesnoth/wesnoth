@@ -80,7 +80,9 @@ LEVEL_RESULT play_game(display& disp, game_state& state, config& game_config,
 			starting_pos = state.starting_pos;
 			scenario = &starting_pos;
 		} else {
+			std::cerr << "loading scenario: '" << state.scenario << "'\n";
 			scenario = game_config.find_child(type,"id",state.scenario);
+			std::cerr << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
 		}
 
 		if(!recorder.at_end()) {
@@ -752,6 +754,9 @@ int play_game(int argc, char** argv)
 				gui::show_dialog(disp,NULL,"",
 				    string_table["bad_save_message"] + ": " + e.message + "\n",
 				    gui::OK_ONLY);
+				continue;
+			} catch(io_exception& e) {
+				gui::show_dialog(disp,NULL,"","File I/O Error while reading the game",gui::OK_ONLY);
 				continue;
 			}
 
