@@ -15,10 +15,10 @@
 
 #include "actions.hpp"
 #include "events.hpp"
+#include "gettext.hpp"
 #include "help.hpp"
 #include "hotkeys.hpp"
 #include "image.hpp"
-#include "language.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
 #include "mouse.hpp"

@@ -17,6 +17,7 @@
 #include "events.hpp"
 #include "font.hpp"
 #include "game_config.hpp"
+#include "gettext.hpp"
 #include "help.hpp"
 #include "image.hpp"
 #include "language.hpp"

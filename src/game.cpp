@@ -28,6 +28,7 @@
 #include "game_config.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
+#include "gettext.hpp"
 #include "hotkeys.hpp"
 #include "intro.hpp"
 #include "key.hpp"

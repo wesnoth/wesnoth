@@ -15,7 +15,7 @@
 
 #include "game_config.hpp"
 #include "gamestatus.hpp"
-#include "language.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "unit_types.hpp"
 #include "util.hpp"

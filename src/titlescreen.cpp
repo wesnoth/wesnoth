@@ -8,7 +8,7 @@
 #include "game_config.hpp"
 #include "hotkeys.hpp"
 #include "key.hpp"
-#include "language.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sdl_utils.hpp"

@@ -14,6 +14,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "gettext.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
 #include "util.hpp"

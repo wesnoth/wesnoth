@@ -18,7 +18,7 @@
 #include "config.hpp"
 #include "events.hpp"
 #include "hotkeys.hpp"
-#include "language.hpp"
+#include "gettext.hpp"
 #include "playlevel.hpp"
 #include "preferences.hpp"
 #include "show_dialog.hpp"

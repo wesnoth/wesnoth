@@ -19,7 +19,7 @@
 #include "../show_dialog.hpp"
 #include "../image.hpp"
 #include "../reports.hpp"
-#include "../language.hpp"
+#include "../gettext.hpp"
 #include "../util.hpp"
 #include "../wassert.hpp"
 

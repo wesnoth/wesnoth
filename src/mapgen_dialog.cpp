@@ -4,7 +4,7 @@
 
 #include "events.hpp"
 #include "font.hpp"
-#include "language.hpp"
+#include "gettext.hpp"
 #include "mapgen.hpp"
 #include "show_dialog.hpp"
 #include "util.hpp"

@@ -13,9 +13,6 @@
 #ifndef LANGUAGE_HPP_INCLUDED
 #define LANGUAGE_HPP_INCLUDED
 
-#include "config.hpp"
-#include "gettext.hpp"
-
 #include <map>
 #include <string>
 #include <vector>

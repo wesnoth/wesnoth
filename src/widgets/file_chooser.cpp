@@ -18,7 +18,7 @@
 #include "../events.hpp"
 #include "../filesystem.hpp"
 #include "../font.hpp"
-#include "../language.hpp"
+#include "../gettext.hpp"
 #include "../show_dialog.hpp"
 #include "../wml_separators.hpp"
 #include "file_chooser.hpp"

@@ -1,10 +1,12 @@
 #ifndef GETTEXT_HPP_INCLUDED
 #define GETTEXT_HPP_INCLUDED
 
+// gettext-related declarations
+
 #include "config.hpp"
 
-// gettext-related declarations
 #include <libintl.h>
+#include <string>
 
 const char* egettext (const char*);
 const char* sgettext (const char*);

@@ -17,7 +17,7 @@
 #include "font.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
-#include "language.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "sdl_utils.hpp"
 #include "team.hpp"
