@@ -47,8 +47,8 @@ public:
 	std::string get_selected_leader();
 
 private:
-	void draw_contents();
-	void process();
+	virtual void draw_contents();
+	virtual void process_event();
 
 	const config::child_list side_list_;
 	gui::combo leader_combo_; // Must appear before the leader_list_manager

@@ -77,7 +77,7 @@ public:
 			const std::string& team_leader)
 		: status(START_GAME), got_side(false), team(team_num),
 		  name(team_name), leader(team_leader), disp_(disp),
-		  game_config_(game_config), sides_(cfg), units_data_(data),
+		  sides_(cfg), units_data_(data), game_config_(game_config),
 		  cancel_button_(NULL), menu_(NULL)
 	{
 		SDL_Rect empty_rect = {0,0,0,0};
@@ -684,8 +684,10 @@ void leader_list_manager::set_leader(const std::string& leader)
 	int leader_index = 0;
 	for(std::vector<std::string>::const_iterator itor = leaders_.begin();
 			itor != leaders_.end(); ++itor) {
-		if (leader == *itor) 
+		if (leader == *itor) {
 			combo_->set_selected(leader_index);
+			return;
+		}
 		++leader_index;
 	}
 }
@@ -718,7 +720,7 @@ leader_preview_pane::leader_preview_pane(display& disp, const game_data* data,
 	set_location(leader_pane_position);
 }
 
-void leader_preview_pane::process()
+void leader_preview_pane::process_event()
 {
 	if (leader_combo_.changed()) {
 		set_dirty();
@@ -731,8 +733,9 @@ void leader_preview_pane::draw_contents()
 
 	surface const screen = disp().video().getSurface();
 
-	const SDL_Rect area = { location().x+leader_pane_border, location().y+leader_pane_border,
-	                        location().w-leader_pane_border*2, location().h-leader_pane_border*2 };
+	SDL_Rect const &loc = location();
+	const SDL_Rect area = { loc.x + leader_pane_border, loc.y + leader_pane_border,
+	                        loc.w - leader_pane_border * 2, loc.h - leader_pane_border * 2 };
 	SDL_Rect clip_area = area;
 	const clip_rect_setter clipper(screen,clip_area);
 
