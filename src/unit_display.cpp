@@ -303,7 +303,6 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 	int animation_time = attack_anim.get_animation_time();
 
 	while(animation_time < end_at) {
-		events::pump();
 
 		def->second.set_defending(true,hits,animation_time - missile_impact,attack_type::LONG_RANGE);
 
@@ -488,6 +487,7 @@ bool unit_attack_ranged(display& disp, unit_map& units, const gamemap& map,
 
 		attack_anim.update_current_frames();
 		animation_time = attack_anim.get_animation_time();
+		events::pump();
 		disp.update_display();
 	}
 
@@ -655,7 +655,6 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 	int animation_time = attack_anim.get_animation_time();
 	while(animation_time < end_at) {
-		events::pump();
 
 		def->second.set_defending(true,hits,animation_time,attack_type::SHORT_RANGE);
 
@@ -776,6 +775,7 @@ bool unit_attack(display& disp, unit_map& units, const gamemap& map,
 
 		attack_anim.update_current_frames();
 		animation_time = attack_anim.get_animation_time();
+		events::pump();
 		disp.update_display();
 	}
 

@@ -20,16 +20,16 @@
 //instead of playing with VC++'s crazy definitions of min and max,
 //just define our own
 template<typename T>
-T& minimum(T& a, T& b) { return a < b ? a : b; }
+inline T& minimum(T& a, T& b) { return a < b ? a : b; }
 
 template<typename T>
-const T& minimum(const T& a, const T& b) { return a < b ? a : b; }
+inline const T& minimum(const T& a, const T& b) { return a < b ? a : b; }
 
 template<typename T>
-T& maximum(T& a, T& b) { return a < b ? b : a; }
+inline T& maximum(T& a, T& b) { return a < b ? b : a; }
 
 template<typename T>
-const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
+inline const T& maximum(const T& a, const T& b) { return a < b ? b : a; }
 
 template<typename T>
 inline bool is_odd(T num) { return (static_cast<unsigned int>(num > 0 ? num : -num)&1) == 1; }

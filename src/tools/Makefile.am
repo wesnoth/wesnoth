@@ -5,11 +5,14 @@ if LIBPNG
 bin_PROGRAMS += exploder cutter
 endif
 
+localedir=$(datadir)/locale
+
 #############################################################################
 #    Translation Tools                                                      #
 #############################################################################
 
-AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ 
+AM_CXXFLAGS = @SDL_CFLAGS@ -DWESNOTH_PATH=\"$(pkgdatadir)\" -I../ \
+	      -DLOCALEDIR=\"$(localedir)\"
 AM_LDFLAGS = @SDL_LIBS@
 
 if LIBPNG
@@ -29,7 +32,8 @@ make_translation_SOURCES = make_translation.cpp \
 			   ../config.hpp \
 			   ../filesystem.hpp \
 			   ../game_config.hpp \
-			   ../log.hpp 
+			   ../log.hpp \
+		           ../gettext.cpp
 
 
 #############################################################################
@@ -45,7 +49,8 @@ merge_translations_SOURCES = merge_translations.cpp \
 			     ../config.hpp \
 			     ../filesystem.hpp \
 			     ../game_config.hpp \
-			     ../log.hpp 
+			     ../log.hpp \
+		             ../gettext.cpp
 
 #############################################################################
 #    Castle building helpers                                                #
@@ -66,7 +71,8 @@ exploder_SOURCES = exploder.cpp \
 		   ../log.cpp \
 		   exploder_composer.hpp \
 		   exploder_cutter.hpp \
-		   exploder_utils.hpp
+		   exploder_utils.hpp \
+		   ../gettext.cpp
 
  cutter_SOURCES = cutter.cpp \
 		   exploder_utils.cpp \
@@ -80,7 +86,8 @@ exploder_SOURCES = exploder.cpp \
 		   ../log.cpp \
 		   exploder_composer.hpp \
 		   exploder_cutter.hpp \
-		   exploder_utils.hpp
+		   exploder_utils.hpp \
+		   ../gettext.cpp
 
 
 exploder_LDFLAGS = @SDL_LIBS@ @SDL_IMAGE_LIBS@ @PNG_LIBS@
