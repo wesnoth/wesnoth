@@ -92,6 +92,7 @@ struct topic {
 		: title(_title), id(_id), text(g) {}
 	/// Two topics are equal if their IDs are equal.
 	bool operator==(const topic &) const;
+	bool operator!=(const topic &t) const { return !operator==(t); }
 	/// Comparison on the ID.
 	bool operator<(const topic &) const;
 	std::string title, id;
