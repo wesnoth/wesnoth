@@ -29,7 +29,7 @@ namespace game_config
 	bool debug = false;
 
 	std::string game_icon, game_title, game_logo, title_music;
-	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0;
+	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0;
 
 	std::string missile_n_image, missile_ne_image;
 
@@ -80,6 +80,7 @@ namespace game_config
 		title_logo_y = atoi(v["logo_y"].c_str());
 		title_buttons_x = atoi(v["buttons_x"].c_str());
 		title_buttons_y = atoi(v["buttons_y"].c_str());
+		title_buttons_padding = atoi(v["buttons_padding"].c_str());
 
 		map_image = v["map_image"];
 		rightside_image = v["sidebar_image"];

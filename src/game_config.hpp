@@ -42,7 +42,7 @@ namespace game_config
 					   foot_left_nw,foot_left_n,foot_right_nw,foot_right_n,
 					   missile_n_image,missile_ne_image;
 
-	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y;
+	extern int title_logo_x, title_logo_y, title_buttons_x, title_buttons_y, title_buttons_padding;
 
 	void load_config(const config* cfg);
 }

@@ -779,17 +779,18 @@ TITLE_RESULT show_title(display& screen)
 		                  10,font::NORMAL_COLOUR,version_str,0,versiony);
 	}
 
-	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
-	const int menu_xincr = 0;
-	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
-	const int menu_yincr = 40;
-
 	//members of this array must correspond to the enumeration TITLE_RESULT
 	static const std::string button_labels[] = { "tutorial_button", "campaign_button", "multiplayer_button",
 		"load_button", "language_button", "preferences", "about_button", "quit_button" };
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 
+	const int menu_xbase = (game_config::title_buttons_x*screen.x())/1024;
+	const int menu_xincr = 0;
+	const int menu_ybase = (game_config::title_buttons_y*screen.y())/768;
+	const int menu_yincr = 40;
+	const int padding = game_config::title_buttons_padding;
+	
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	for(b = 0; b != nbuttons; ++b) {
@@ -798,7 +799,6 @@ TITLE_RESULT show_title(display& screen)
 		max_width = maximum<size_t>(max_width,buttons.back().width());
 	}
 
-	const size_t padding = 10;
 	std::string style = "mainmenu";
 	draw_dialog_frame(menu_xbase-padding,menu_ybase-padding,max_width+padding*2,menu_yincr*(nbuttons-1)+buttons.back().height()+padding*2,screen,&style);
 
