@@ -2441,6 +2441,11 @@ void turn_info::do_command(const std::string& str)
 
 		units_.erase(last_hex_);
 		units_.insert(std::pair<gamemap::location,unit>(last_hex_,unit(&i->second,1,false)));
+		gui_.invalidate(last_hex_);
+		gui_.invalidate_unit();
+	} else if(game_config::debug && cmd == "gold") {
+		current_team().spend_gold(-lexical_cast_default<int>(data,1000));
+		gui_.redraw_everything();
 	}
 }
 
