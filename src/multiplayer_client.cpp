@@ -123,7 +123,7 @@ public:
 			str << description << "," << side_name << ",";
 			if(!leader_name.empty())
 				str << "(" << leader_name << ")";
-			str << "," << sd["gold"] << " " << _("unit^Gold") << "," << sd["team_name"];
+			str << "," << sd["gold"] << " " << sgettext("unit^Gold") << "," << sd["team_name"];
 			details.push_back(str.str());
 		}
 
