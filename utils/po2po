@@ -35,7 +35,7 @@ do
     msgattrib --no-obsolete po/$LANG/$DSTDOMAIN.po >$tmp
     msgcat --use-first -F $tmp po/$LANG/$DSTDOMAIN.po.bak > po/$LANG/$DSTDOMAIN.po
 
-    rm po/stamp-po 
-    make -C po
+    touch -d '1970-01-02' po/$LANG/$DSTDOMAIN.po
+    make -C po $LANG/$DSTDOMAIN.po
 done
 rm $tmp
