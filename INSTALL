@@ -1,6 +1,6 @@
-PREREQUISITES
+Prerequisites:
 
-You'll need to have these libraries (with equivalent devel versions) to build Wesnoth:
+You'll need to have these libraries (with equivalent devel versions) to build Wesnoth: 
 
  libsdl1.2
  libsdl-image1.2
@@ -11,41 +11,48 @@ You'll need to have these libraries (with equivalent devel versions) to build We
 These libraries can be found at http://www.libsdl.org
 
 
-SOURCECODE
+Sourcecode:
 
-You can get it here: http://www.wesnoth.org/downloads or check http://www.ventu.info/wesnoth/?WesnothCVS
+You can get it here:
+
+ http://www.wesnoth.org/downloads
+ http://www.ventu.info/wesnoth/?WesnothCVS
 
 
-COMPILING
+Compiling:
 
 First untar the package:
-
+  	
  $ tar xfzv wesnoth-0.x.tar.gz 
-	  
-then
 
+then
+  	
  $ cd wesnoth-0.x
 
 followed by
-
+  	
  $ make
+	  
 
-and finally
+Installing:
+  	
+ $ make install
+	  
 
- $ ./wesnoth 
+Relocating Data:
 
-to run the program. Have fun.
+By default game is installed to /usr/local. There is a way to get Wesnoth to locate its data and have the data files not under the executable. Variables with defaults are:
+
+ DESTDIR=/usr/local # base path for game binaries, pixmaps, and man pages
+ DATADIR=/usr/local # base path for wesnoth-data
+ SERVDIR=/usr/local # base path for server-binary
+
+These are given as args to make. To install wesnoth to /opt...
+
+ $ make DESTDIR=/opt/wesnoth-0.5.1-cvs DATADIR=/opt/wesnoth-0.5.1-cvs SERVDIR=/opt/wesnoth-server-0.5.1-cvs
+ $ make install DESTDIR=/opt/wesnoth-0.5.1-cvs DATADIR=/opt/wesnoth-0.5.1-cvs SERVDIR=/opt/wesnoth-server-0.5.1-cvs
 
 
-RELOCATING DATA
+Note:
 
-There is a way to get Wesnoth to locate its data and have the data files not under the executable. You just add the preprocessor symbol WESNOTH_PATH to point to the path the data is at. So when compiling add the flag,
-
- -DWESNOTH_PATH=\"/usr/share/wesnoth\" 
-
-and Wesnoth will look for its data under /usr/share/wesnoth.
-
-
-NOTE:
-
-Users compiling CVS sources should 'make clean' before 'make' after any tree update. 
+Users compiling CVS sources should 'make clean' before 'make' after any tree update.
