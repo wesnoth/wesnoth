@@ -209,10 +209,10 @@ report generate_report(TYPE type, const gamemap& map, const unit_map& units,
 		std::stringstream tooltip;
 		
 		tooltip << font::LARGE_TEXT << translate_string_default(tod.id,tod.name) << "\n"
-		        << translate_string("lawful") << " " << string_table["units"] << ": "
+		        << string_table["lawful_units"] << ": "
 				<< (tod.lawful_bonus > 0 ? "+" : "") << tod.lawful_bonus << "%\n"
-				<< translate_string("neutral") << " " << string_table["units"] << ": " << "0%\n"
-				<< translate_string("chaotic") << " " << string_table["units"] << ": "
+				<< string_table["neutral_units"] << ": " << "0%\n"
+				<< string_table["chaotic_units"] << ": "
 				<< (tod.lawful_bonus < 0 ? "+" : "") << (tod.lawful_bonus*-1) << "%";
 		
 		return report("",tod.image,tooltip.str());
