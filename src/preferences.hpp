@@ -78,6 +78,7 @@ namespace preferences {
 
 	void show_preferences_dialog(display& disp);
 	void show_video_mode_dialog(display& disp);
+	void show_hotkeys_dialog (display & disp);
 }
 
 #endif

@@ -23,6 +23,25 @@
 //refers to a hotkey command being executed.
 namespace hotkey {
 
+enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
+                      HOTKEY_UNDO, HOTKEY_REDO,
+                      HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
+                      HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
+                      HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
+                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
+                      HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
+                      HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE,
+                      HOTKEY_NULL };
+
+struct hotkey_item {
+	explicit hotkey_item(config& cfg);
+
+	HOTKEY_COMMAND action;
+	int keycode;
+	bool alt, ctrl, shift;
+	mutable bool lastres;
+};
+	
 //function to load a hotkey configuration object. hotkey configuration objects
 //are a list of nodes that look like:
 //[hotkey]
@@ -35,6 +54,20 @@ namespace hotkey {
 //where 'cmd' is a command name, and 'k' is a key. see hotkeys.cpp for the
 //valid command names.
 void add_hotkeys(config& cfg);
+
+void add_hotkeys(config& cfg, bool overwrite);
+
+void change_hotkey(hotkey_item& item);
+
+void save_hotkeys(config& cfg);
+
+// return list of current hotkeys
+std::vector<hotkey_item>  &get_hotkeys();
+
+// Return "name" of hotkey for example :"ctrl+alt+g"
+std::string get_hotkey_name(hotkey_item item);
+
+std::string command_to_string(const HOTKEY_COMMAND &command);
 
 //abstract base class for objects that implement the ability
 //to execute hotkey commands.

@@ -26,21 +26,13 @@
 #include <cstdlib>
 #include <map>
 
-namespace {
+namespace hotkey {
 
-enum HOTKEY_COMMAND { HOTKEY_CYCLE_UNITS, HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
-                      HOTKEY_UNDO, HOTKEY_REDO,
-                      HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
-                      HOTKEY_FULLSCREEN, HOTKEY_ACCELERATED,
-                      HOTKEY_TERRAIN_TABLE, HOTKEY_ATTACK_RESISTANCE,
-                      HOTKEY_UNIT_DESCRIPTION, HOTKEY_SAVE_GAME,
-                      HOTKEY_RECRUIT, HOTKEY_REPEAT_RECRUIT, HOTKEY_RECALL, HOTKEY_ENDTURN,
-                      HOTKEY_TOGGLE_GRID, HOTKEY_STATUS_TABLE,
-                      HOTKEY_NULL };
-
+static std::map<std::string,HOTKEY_COMMAND> m;
+	
+	
 HOTKEY_COMMAND string_to_command(const std::string& str)
 {
-	static std::map<std::string,HOTKEY_COMMAND> m;
 	if(m.empty()) {
 		typedef std::pair<std::string,HOTKEY_COMMAND> val;
 		m.insert(val("cycle",HOTKEY_CYCLE_UNITS));
@@ -72,14 +64,16 @@ HOTKEY_COMMAND string_to_command(const std::string& str)
 		return i->second;
 }
 
-struct hotkey_item {
-	explicit hotkey_item(config& cfg);
+std::string command_to_string(const HOTKEY_COMMAND &command)
+{
+	for(std::map<std::string,HOTKEY_COMMAND>::iterator i = m.begin();
+			i!=m.end();i++)
+	if (i!=m.end())
+	   if (i->second == command) return i->first;
+	std::cerr << "\n command_to_string: No matching command found...";
+	return "";
+}
 
-	HOTKEY_COMMAND action;
-	int keycode;
-	bool alt, ctrl, shift;
-	mutable bool lastres;
-};
 
 hotkey_item::hotkey_item(config& cfg) : lastres(false)
 {
@@ -103,14 +97,17 @@ bool operator!=(const hotkey_item& a, const hotkey_item& b)
 	return !(a == b);
 }
 
-std::vector<hotkey_item> hotkeys;
+}
+
+namespace {
+std::vector<hotkey::hotkey_item> hotkeys;
 
 }
 
 struct hotkey_pressed {
 	hotkey_pressed(const SDL_KeyboardEvent& event);
 
-	bool operator()(const hotkey_item& hk) const;
+	bool operator()(const hotkey::hotkey_item& hk) const;
 
 private:
 	int keycode_;
@@ -122,7 +119,7 @@ hotkey_pressed::hotkey_pressed(const SDL_KeyboardEvent& event)
          ctrl_(event.keysym.mod&KMOD_CTRL), alt_(event.keysym.mod&KMOD_ALT)
 {}
 
-bool hotkey_pressed::operator()(const hotkey_item& hk) const
+bool hotkey_pressed::operator()(const hotkey::hotkey_item& hk) const
 {
 	return hk.keycode == keycode_ && shift_ == hk.shift &&
 	       ctrl_ == hk.ctrl && alt_ == hk.alt;
@@ -130,22 +127,33 @@ bool hotkey_pressed::operator()(const hotkey_item& hk) const
 
 namespace {
 
-void add_hotkey(config& cfg)
+void add_hotkey(config& cfg,bool overwrite)
 {
-	const hotkey_item new_hotkey(cfg);
-	const std::vector<hotkey_item>::iterator i =
-	               std::find(hotkeys.begin(),hotkeys.end(),new_hotkey);
-	if(i != hotkeys.end()) {
-		*i = new_hotkey;
-	} else {
-		hotkeys.push_back(new_hotkey);
-	}
+	const hotkey::hotkey_item new_hotkey(cfg);
+	std::vector<hotkey::hotkey_item>::iterator i;
+	for(i=hotkeys.begin();i!=hotkeys.end();i++)
+		if(i->action == new_hotkey.action) {
+			if (overwrite)
+				*i=new_hotkey;	
+			return;
+		};	
+	hotkeys.push_back(new_hotkey);
 }
 
 }
 
 namespace hotkey {
 
+void change_hotkey(hotkey_item& item)
+{
+	for(std::vector<hotkey::hotkey_item>::iterator i =hotkeys.begin();
+		i!=hotkeys.end();i++)
+	{
+		if(item.action == i->action)
+			*i = item;	
+	}
+}
+	
 basic_handler::basic_handler(display& disp) : disp_(disp) {}
 
 void basic_handler::handle_event(const SDL_Event& event)
@@ -155,13 +163,61 @@ void basic_handler::handle_event(const SDL_Event& event)
 	}
 }
 
-void add_hotkeys(config& cfg)
+void add_hotkeys(config& cfg,bool overwrite)
 {
 	std::vector<config*>& children = cfg.children["hotkey"];
 	for(std::vector<config*>::iterator i = children.begin();
 	    i != children.end(); ++i) {
-		add_hotkey(**i);
+		add_hotkey(**i,overwrite);
 	}
+}
+
+void save_hotkeys(config& cfg)
+{
+	std::vector<config*> children = cfg.children["hotkey"];	
+	for(std::vector<hotkey_item>::iterator i = hotkeys.begin();
+			i != hotkeys.end();i++)
+	{
+		std::string action_name = command_to_string(i->action);
+		std::vector<config*>::iterator i2;
+		for(i2= children.begin();
+				i2!=children.end();i2++)
+		{
+			if((**i2)["command"]==action_name)
+			{
+				(*i2)->clear();
+				break;
+			};
+			
+		}
+		config * i3;
+		if (i2==children.end())
+			i3 = &cfg.add_child("hotkey");
+		else i3 = *i2;
+		(*i3)["command"]=action_name;
+		(*i3)["key"]=i->keycode;
+		if (i->alt) (*i3)["alt"]="yes";
+		if (i->ctrl) (*i3)["ctrl"]="yes";
+		if (i->shift) (*i3)["shift"]="yes";
+	}
+};
+
+std::vector<hotkey_item>& get_hotkeys()
+{
+	return hotkeys;
+}
+
+std::string get_hotkey_name(hotkey_item i)
+{
+ 	std::stringstream str;			
+	if (i.alt)
+ 	str << "alt+";
+	if (i.ctrl)
+	str << "ctrl+";
+ 	if (i.shift)
+	str << "shift+";
+	str << SDL_GetKeyName(SDLKey(i.keycode));
+	return str.str();
 }
 
 void key_event(display& disp, const SDL_KeyboardEvent& event,
@@ -257,10 +313,10 @@ void key_event(display& disp, const SDL_KeyboardEvent& event,
 			if(executor)
 				executor->recruit();
 			break;
-		case HOTKEY_REPEAT_RECRUIT:
+		case hotkey::HOTKEY_REPEAT_RECRUIT:
 			if(executor)
 				executor->repeat_recruit();
-			break;
+			break;	
 		default:
 			break;
 	}

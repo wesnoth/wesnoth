@@ -87,6 +87,18 @@ void menu::set_width(int w)
 	set_loc(x_, y_);
 }
 
+void menu::redraw()
+{
+	draw();
+	uparrow_.draw();
+	downarrow_.draw();
+}
+
+void menu::change_item(int pos1, int pos2,std::string str)
+{
+ items_[pos1][pos2] = str;
+}
+
 void menu::calculate_position()
 {
 	if(click_selects_)
