@@ -2397,7 +2397,9 @@ void turn_info::do_command(const std::string& str)
 		} else if (teams_[index].is_human()) {
 			teams_[index].make_ai();
 			close_textbox();
-			throw end_turn_exception(side);
+			if(team_num_ == side) {
+				throw end_turn_exception(side);
+			}
 		} else if (teams_[index].is_ai()) {
 			teams_[index].make_human();
 		}
