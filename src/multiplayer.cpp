@@ -31,6 +31,9 @@ namespace {
 class network_game_manager
 {
 public:
+	// Add this to avoid stupid warnings with somme versions of GCC
+	network_game_manager() {};
+
 	~network_game_manager()
 	{
 		if(network::nconnections() > 0) {
