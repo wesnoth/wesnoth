@@ -70,16 +70,17 @@ AC_SUBST([KDE_ICON])
 # Checks for types.                                                   #
 #######################################################################
 
-AC_LANG([C++])
-AC_MSG_CHECKING([if char is signed])
+# No need to chech anymore    
+#AC_LANG([C++])
+#AC_MSG_CHECKING([if char is signed])
 
-AC_COMPILE_IFELSE(
-	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
-	[AC_MSG_RESULT(yes)],
-	[AC_MSG_RESULT(no)] 
-	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
-chars. Try with another compiler (specify it using CXX environment variable.)
-If you use GCC, you can force signed chars with CXXFLAGS=-fsigned-char])])
+#AC_COMPILE_IFELSE(
+#	[[static int test_array [1 - 2 * !(((char) -1) < 0)];]],
+#	[AC_MSG_RESULT(yes)],
+#	[AC_MSG_RESULT(no)] 
+#	[AC_MSG_ERROR([*** char is unsigned. Wesnoth cannot work with unsigned 
+#chars. Try with another compiler (specify it using CXX environment variable.)
+#If you use GCC, you can force signed chars with CXXFLAGS=-fsigned-char])])
 
 #######################################################################
 # Checks for libraries.                                               #
