@@ -24,6 +24,7 @@
 #include "preferences.hpp"
 #include "replay.hpp"
 #include "sound.hpp"
+#include "tooltips.hpp"
 #include "util.hpp"
 
 #include <cmath>
@@ -143,7 +144,8 @@ void turn_info::turn_slice()
 	events::pump();
 
 	int mousex, mousey;
-	SDL_GetMouseState(&mousex,&mousey);
+	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
 
 	if(key_[KEY_UP] || mousey == 0)
 		gui_.scroll(0.0,-preferences::scroll_speed());

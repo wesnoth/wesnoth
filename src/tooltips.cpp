@@ -51,6 +51,8 @@ void clear_tooltip()
 	SDL_BlitSurface(current_background,NULL,video_->getSurface(),&current_rect);
 	SDL_FreeSurface(current_background);
 	current_background = NULL;
+
+	update_rect(current_rect);
 }
 
 void draw_tooltip()
@@ -76,6 +78,8 @@ void draw_tooltip()
 
 	font::draw_text(display_,text_area,font_size,font::BLACK_COLOUR,
 	                current_message,text_area.x,text_area.y);
+
+	update_rect(current_rect);
 }
 
 void show_tooltip(const tooltip& tip)

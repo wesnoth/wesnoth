@@ -458,10 +458,6 @@ void display::draw(bool update,bool force)
 		draw_sidebar();
 	}
 
-	int mousex, mousey;
-	const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
-	tooltips::process(mousex,mousey,mouse_flags & SDL_BUTTON_LMASK);
-
 	const int max_skips = 5;
 	const int time_between_draws = 20;
 	const int current_time = SDL_GetTicks();
