@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.3-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-08-26 10:13+0200\n"
-"PO-Revision-Date: 2004-08-26 16:00+0200\n"
+"POT-Creation-Date: 2004-08-24 23:24+0200\n"
+"PO-Revision-Date: 2004-08-27 01:16+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/game.cfg:257
 msgid "Heir to the Throne"
-msgstr "Heredero al Trono"
+msgstr "Heredero al trono"
 
 #: data/game.cfg:261
 msgid ""
@@ -49,12 +49,12 @@ msgid ""
 "&orcish-grunt.png,Grunt,(easiest);*&orcish-warrior.png,Warrior;&orcish-"
 "warlord.png,Warlord,(hardest)"
 msgstr ""
-"&orcish-grunt.png,Cobarde,(el más fácil);*&orcish-warrior.png,Guerrero;"
+"&orcish-grunt.png,Campesino,(el más fácil);*&orcish-warrior.png,Guerrero;"
 "&orcish-warlord.png,Señor de la Guerra,(el más difícil)"
 
 #: data/game.cfg:286
 msgid "The Eastern Invasion"
-msgstr "La invasión del Este"
+msgstr "La invasión del este"
 
 #: data/game.cfg:290
 msgid ""
@@ -104,7 +104,7 @@ msgstr "Juego"
 
 #: data/help.cfg:22 data/help.cfg:203
 msgid "Traits"
-msgstr ""
+msgstr "Rasgos"
 
 #: data/help.cfg:46
 msgid "Terrains"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: data/help.cfg:70
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Reclutar y reincorporar"
 
 #: data/help.cfg:80
 msgid ""
@@ -502,7 +502,7 @@ msgstr ""
 
 #: data/items.cfg:283
 msgid "Lots of gold"
-msgstr "Montones de oro"
+msgstr "Montones de oro."
 
 #: data/items.cfg:291
 msgid "I wish this single gold coin be returned ten-fold to me."
@@ -539,7 +539,7 @@ msgstr "Veneno"
 #: data/items.cfg:377
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
-"El veneno está entrando en las venasde esta unidad en este preciso momento."
+"El veneno está entrando en las venas de esta unidad en este preciso momento."
 
 #: data/items.cfg:412 data/scenarios/Eastern_Invasion/Captured.cfg:809
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:163
@@ -574,11 +574,11 @@ msgstr ""
 
 #: data/items.cfg:533
 msgid "Ring of Regeneration"
-msgstr ""
+msgstr "Anillo de regeneración"
 
 #: data/items.cfg:536
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
+msgstr "Este anillo sanará al que lo lleve un poco cada turno."
 
 #: data/items.cfg:556
 msgid "Can't set abilities yet, sorry."
@@ -586,11 +586,11 @@ msgstr ""
 
 #: data/items.cfg:577
 msgid "Ring of Slowness"
-msgstr ""
+msgstr "Anillo de lentitud"
 
 #: data/items.cfg:580
 msgid "The bearer of this ring is slowed."
-msgstr ""
+msgstr "El poseedor de este anillo se verá ralentizado."
 
 #: data/items.cfg:615
 msgid "Staff of Swiftness"
@@ -606,19 +606,21 @@ msgstr ""
 
 #: data/items.cfg:653
 msgid "Storm Trident"
-msgstr ""
+msgstr "Tridente de las tormentas"
 
 #: data/items.cfg:656
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr ""
+"¡Este tridente permite a un sirénido lanzar descargas eléctricas a sus "
+"enemigos!"
 
 #: data/items.cfg:657
 msgid "Only the mermen can use this item!"
-msgstr ""
+msgstr "¡Sólo los sirénidos pueden usar este objeto!"
 
 #: data/items.cfg:669
 msgid "storm trident"
-msgstr ""
+msgstr "tridente de tormentas"
 
 #: data/items.cfg:707
 msgid "Flaming Sword"
@@ -693,7 +695,7 @@ msgstr "&dwarf-lord.png,Alianza de Knalgan"
 
 #: data/multiplayer.cfg:83 data/multiplayer.cfg:158 data/multiplayer.cfg:233
 msgid "&drake-warrior.png,Drakes"
-msgstr "&drake-warrior.png,Dra"
+msgstr "&drake-warrior.png,Draconianos"
 
 #: data/multiplayer.cfg:95
 msgid "Classic"
@@ -790,7 +792,7 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Escapa de las prisiones Orcas\n"
+"@Escapa de las prisiones orcas\n"
 "Derrota:\n"
 "#Muerte de Gweddry\n"
 "#Muerte de Dacyn\n"
@@ -919,7 +921,7 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:580
 msgid "Really? Where?"
-msgstr ""
+msgstr "¿De verdad? ¿Dónde?"
 
 #: data/scenarios/Eastern_Invasion/Captured.cfg:585
 msgid ""
@@ -1193,6 +1195,8 @@ msgid ""
 "There is a great fortune in this chest of treasure! I can count two hundred "
 "pieces of gold!"
 msgstr ""
+"¡Hay una gran fortuna en este cofre de tesoro! ¡Puedo contar doscientas "
+"piezas de oro!"
 
 #: data/scenarios/Eastern_Invasion/Escape_Tunnel.cfg:278
 msgid "We have found you, human- Prepare to die!"
@@ -1575,6 +1579,64 @@ msgid ""
 "them."
 msgstr ""
 
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:3
+msgid "The Peasants Revolt"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:24
+#, fuzzy
+msgid ""
+"\n"
+"Victory:\n"
+"@Defeat enemy leader\n"
+"Defeat:\n"
+"#Death of Gweddry\n"
+"#Death of Dacyn\n"
+"#Death of Owaec\n"
+"#Death of Sudoc"
+msgstr ""
+"\n"
+"Victoria:\n"
+"@Llevar a Gweddry a Weldyn\n"
+"Derrota:\n"
+"#Muerte de Gweddry\n"
+"#Muerte de Dacyn\n"
+"#Muerte de Owaec\n"
+"#Muerte de Sudoc"
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:76
+msgid "Good! Finally some non-undead people are here!"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:81
+msgid "Uh... hello, Sudoc... why aren't you at your southern outpost?"
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:86
+msgid ""
+"It was captured and we were forced to come here. This is the only place left "
+"in Wesnoth where you can find non-undead, except for Weldyn. And Weldyn is "
+"besieged right now."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:91
+#, fuzzy
+msgid "What do the undead want you here for?"
+msgstr "¿Qué hace ésta aquí ahora?"
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:96
+msgid ""
+"We are slaves! The undead work us, mining and making weapons, and then, when "
+"they need to, kill us to add to their army! But I am leading a rebellion... "
+"unfortunately, its hard for our rapiers to do anything against these undead. "
+"We need outside help."
+msgstr ""
+
+#: data/scenarios/Eastern_Invasion/Peasant_Revolt.cfg:101
+msgid ""
+"I guess we'll have to help him. Maybe his fencers will prove useful later on."
+msgstr ""
+
 #: data/scenarios/Eastern_Invasion/Reject.cfg:3
 msgid "Weldyn Besieged"
 msgstr ""
@@ -1615,57 +1677,6 @@ msgstr ""
 
 #: data/scenarios/Eastern_Invasion/Reject.cfg:166
 msgid "They killed Konrad... now, even if save Weldyn, Wesnoth has fallen."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:3
-msgid "The Drowned Plains"
-msgstr "Los Llanos Hundidos"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:24
-msgid ""
-"\n"
-"Victory:\n"
-"@Defeat Khrakrahs the Skeletal Dragon\n"
-"Defeat:\n"
-"#Death of Gweddry\n"
-"#Death of Dacyn\n"
-"#Death of Owaec\n"
-"#Turns run out"
-msgstr ""
-"\n"
-"Victoria:\n"
-"@Derrotar a Khrakrahs, el Dragon esquelético\n"
-"Derrota:\n"
-"#Muerte de Gweddry\n"
-"#Muerte de Dacyn\n"
-"#Muerte de Owaec\n"
-"#Fin de los turnos"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:64
-msgid "What the... swamps? These were fertile plains when I was here last!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:68
-msgid ""
-"The lich-lord must have flooded the valley. The undead like the swamp. It is "
-"death, decay, everything that they are themselves."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:72
-msgid "I suppose we will have to wade across it... ugh."
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:76
-msgid "Die... die... my master is calling you... Die!"
-msgstr ""
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:88
-#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
-msgid "What is that?"
-msgstr "¿Qué es eso?"
-
-#: data/scenarios/Eastern_Invasion/The_Drowned_Plains.cfg:92
-msgid "I leave you to your doom."
 msgstr ""
 
 #: data/scenarios/Eastern_Invasion/The_Duel.cfg:3
@@ -3317,71 +3328,65 @@ msgstr "¡Vayamos al túnel, pues!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:168
 msgid "This old mine seems to be connected to the main tunnels."
-msgstr ""
+msgstr "Esta vieja mina parece estar conectada a los túneles principales."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:173
 msgid "I am hesitant to enter. It will be so difficult in the darkness!"
-msgstr ""
+msgstr "Me cuesta entrar. ¡Será todo tan díficil ahí dentro, en la oscuridad!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:178
-#, fuzzy
 msgid "There is no time for idle chatter or delay of any kind. Onward!"
-msgstr "¡No hay tiempo para charlar o retrasarse, en marcha!"
+msgstr "¡No hay tiempo para charla o retrasos de ningún tipo, en marcha!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:200
-#, fuzzy
 msgid ""
 "We have defeated the foul Orcs guarding this land, but we must continue "
 "without rest. More will surely come!"
-msgstr "Me cuesta entrar. ¡Será todo tan díficil ahí dentro!"
+msgstr ""
+"Hemos vencido a los orcos que guardaban esta tierra, pero debemos continuar "
+"sin descanso. ¡Es seguro que vendrán más!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:205
-#, fuzzy
 msgid ""
 "Indeed we must not delay. I remember now, the mines in the North-East are "
 "the best way to enter!"
 msgstr ""
-"En verdad no nos podemos retrasar. ¡Ya me acuerdo! ¡Las minas en el noreste "
+"En realidad, no nos podemos retrasar. ¡Ya recuerdo! ¡Las minas del noreste "
 "son la mejor manera de entrar!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:210
-#, fuzzy
 msgid "But Konrad's party was not alone in entering the mines..."
 msgstr "Pero el grupo de Konrad no era el único en entrar a las minas..."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:244
-#, fuzzy
 msgid ""
 "Whew! We make our way through the dangerous fog of the mountains, and now "
 "there is all this chaos before us! Come on, men! We must make it to the "
 "mines, which lie ahead of us!"
 msgstr ""
 "¡Buff! ¡Nos hemos abierto camino a través de la peligrosa niebla de las "
-"montañas, y ahora está todo este caos delante nuestra! ¡Vamos! ¡Debemos "
-"llegar a las minas, pues aún nos sacan un buen trecho!"
+"montañas, y ahora está todo este caos delante nuestro! ¡Vamos! ¡Debemos "
+"llegar a las minas, pues aún nos queda un buen trecho!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:256
-#, fuzzy
 msgid ""
 "The defense of the dwarves must have been strong. Look at those ruined "
 "towers!"
 msgstr ""
-"La defensa de los Enanos debió de ser muy fuerte. ¡Mira esas torres en "
+"La defensa de los enanos debió de ser muy fuerte. ¡Mira esas torres en "
 "ruinas!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:261
-#, fuzzy
 msgid ""
 "The battle outside was fierce, and lasted a full half-year. But the battles "
 "inside the tunnels were worse."
 msgstr ""
-"La batalla fuera fue furiosa y duró medio año, pero las batallas dentro de "
-"los túneles fueron peores."
+"La batalla en el exterior fue temible, y duró medio año, pero las batallas "
+"dentro de los túneles fueron peores."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:281
-#, fuzzy
 msgid "Ruarrrrr!!!"
-msgstr "¡¡¡Ruarrrrr!!!"
+msgstr "¡¡¡Roarrrrr!!!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:286
 #, fuzzy
@@ -3389,80 +3394,69 @@ msgid "A monster was hiding in that lake!"
 msgstr "¡Un monstruo se ocultaba en el lago!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:295
-#, fuzzy
 msgid ""
 "The legend was true! There are always tentacled creatures hiding in the "
 "lakes near the Dwarven Kingdoms"
 msgstr ""
-"¡La leyenda era cierta! ¡Hay criaturas submarinas escondidas en los lagos "
-"cercanos al Reino Enano!"
+"¡La leyenda era cierta! ¡Hay criaturas acuáticas escondidas en los lagos "
+"cercanos al reino enano!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:310
-#, fuzzy
 msgid "At last, this is the entrance to the Dwarven Kingdoms."
-msgstr "Por fin, ésta es la entrada al Reino Enano."
+msgstr "Por fin. Esta es la entrada al reino enano."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:315
-#, fuzzy
 msgid "All can I see are ruins and poor villages."
-msgstr "Todo lo que veo son pobres y asoladas aldeas."
+msgstr "Todo lo que veo son ruinas y aldeas asoladas."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:320
-#, fuzzy
 msgid ""
 "The poor villagers that once lived here and traded with the dwarves are now "
 "held in slavery by the orcs."
 msgstr ""
-"Los pobres aldeanos que vivían aquí comerciando con los Enanos han sido "
-"esclavizados por los Orcos."
+"Los pobres aldeanos que vivían aquí comerciando con los enanos han sido "
+"esclavizados por los orcos."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:325
-#, fuzzy
 msgid "Slaves to the evil orcs? We must liberate them!"
 msgstr "¿Esclavizados? ¡Debemos liberarlos!"
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:330
-#, fuzzy
 msgid ""
 "That would not be a wise choice, for our mission is to retreive the Scepter "
 "of Fire. If we tarry in this place, hordes of orcs will surround us."
 msgstr ""
-"No es una sabia opción, nuestra misión es conseguir el Cetro de Fuego. Si "
-"nos retrasamos, las hordas de los Orcos nos rodearán."
+"No es una sabia opción; nuestra misión es conseguir el Cetro de Fuego. Si "
+"nos retrasamos, nos rodearán hordas de orcos."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:335
-#, fuzzy
 msgid ""
 "Konrad, heed the words of Defaldor. We shall return to wrest the grip of the "
 "orcs from these lands."
 msgstr ""
-"Konrad, hazle caso a Delfador, volveremos más tarde y el yugo de los Orcos "
-"será eliminado de las tierras."
+"Konrad, haced caso a Delfador. Volveremos más tarde y el yugo de los orcos "
+"será eliminado de estas tierras."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:340
-#, fuzzy
 msgid "This does not please me, but I will listen to your advice."
-msgstr "No me gusta, pero comprendo qué es lo que debemos hacer."
+msgstr "No me gusta, pero comprendo que es lo que debemos hacer."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:359
-#, fuzzy
 msgid ""
 "My uncle used to smuggle...err...I mean...trade food for the Dwarves. He "
 "could get grain carts in under the very noses of those ugly orcs."
 msgstr ""
-"Mi tío solía vender de contrabando... err... quiero decir... legalmente "
-"comida a los Enanos. Podía llevar carros de grano por debajo de las narices "
-"de esos feos Orcos y no se daban cuenta."
+"Mi tío solía vender de contrabando...err...quiero decir...legalmente comida "
+"a los enanos. Podía llevar carros de grano por debajo de las narices de esos "
+"feos orcos y no se daban cuenta."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:364
-#, fuzzy
 msgid "He must be hiding in one of those villages."
 msgstr "Tiene que estar escondido en alguna aldea."
 
 #: data/scenarios/Heir_To_The_Throne/Dwarven_Doors.cfg:438
-#, fuzzy
 msgid "Haw! My niece's friends are mine friends too"
-msgstr "¡Haw! ¡Los amigos de mi sobrina son mis amigos!"
+msgstr "¡Ey! ¡Los amigos de mi sobrina son mis amigos!"
 
 #: data/scenarios/Heir_To_The_Throne/Elven_Council.cfg:3
 #, fuzzy
@@ -4082,8 +4076,11 @@ msgstr "¡Alto! ¡No pasaréis! ¡Rápido, refuerzos para proteger a la princesa
 msgid "Ruaarrrrrrrr!"
 msgstr "¡Ruaarrrrrrrr!"
 
+#: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:200
+msgid "What is that?"
+msgstr "¿Qué es eso?"
+
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:205
-#, fuzzy
 msgid ""
 "Creatures of the deep are upon us! This may be very dangerous. Be quick! We "
 "must get to the other side with all haste!"
@@ -4092,121 +4089,105 @@ msgstr ""
 "muy peligroso! ¡Rápido, debemos llegar a la otra orilla lo antes posible!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:222
-#, fuzzy
 msgid "We made it across the river safely! Where to now?"
 msgstr "¡Lo hemos cruzado sanos y salvos! ¿Adónde vamos ahora?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:228
-#, fuzzy
 msgid ""
 "If we are to have any hope of penetrating into Knalga, we must continue "
 "north to seek help from the northern Dwarves."
 msgstr ""
 "Debemos continuar al norte. Debemos buscar la ayuda de los Enanos del norte "
-"si queremos intentar entrar en Knalga."
+"si queremos tener alguna posibilidad de entrar en Knalga."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:234
-#, fuzzy
 msgid ""
 "I cannot believe it. They have made it away! We must make chase. After them, "
 "men! Let us cross the river too! We will meet again, foul imposter."
 msgstr ""
-"¡Lo han conseguido! ¡No me lo puedo creer! ¡Nos volveremos a encontrar, "
-"impostor!"
+"¡Lo han conseguido! ¡No me lo puedo creer! ¡Hay que perseguirlos! ¡Tras "
+"ellos! ¡Cruzaremos también el río! ¡Nos volveremos a encontrar, impostor!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:240
-#, fuzzy
 msgid "Do you think she's really going to chase us, Delfador?"
 msgstr "¿Crees que nos perseguirá, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:246
-#, fuzzy
 msgid ""
 "It surely looks like she will try, but the sea creatures will make it "
 "difficult for her. We must continue onward. If she makes it across before "
 "winter, then so be it!"
 msgstr ""
-"Seguro que lo intentará, pero los Orcos y las criaturas marinas se lo "
-"pondrán difícil. Debemos continuar al frente. ¡Si ella lo consigue, será lo "
-"que será!"
+"Seguro que lo intentará, pero las criaturas marinas se lo pondrán difícil. "
+"Debemos continuar. ¡Si ella lo consigue antes del invierno, que sea lo que "
+"los dioses quieran!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:266
-#, fuzzy
 msgid ""
 "This is the Ford of Abez. When we ford this river, we will be leaving "
 "Wesnoth, and entering the lands of the North. The Dwarves once ruled these "
 "lands, but they are now filled only with chaos. This is where your father "
 "and uncle were betrayed, almost nineteen years ago now, Konrad."
 msgstr ""
-"Este es el Vado de Abez. Cuando lo crucemos, abandonaremos Wesnoth, y "
+"Este es el vado de Abez. Cuando lo crucemos, abandonaremos Wesnoth, y "
 "entraremos en las tierras del Norte. Las tierras una vez gobernadas por "
-"Enanos, pero ahora sólo gobernadas por el caos. Aquí es donde tu padre y su "
-"tío fueron traicionados y asesinados, hace ya 19 años, Konrad..."
+"enanos, pero ahora sólo gobernadas por el caos. Aquí es donde tu padre y su "
+"tío fueron traicionados y asesinados, hace ya casi diecinueve años, Konrad."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:271
-#, fuzzy
 msgid "Really? So what happened, Delfador?"
 msgstr "¿De verdad? ¿Qué pasó, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:276
-#, fuzzy
 msgid ""
 "The forces of the king were encamped here, and the forces of the north were "
 "on the north side of the river. For three days and three nights the armies "
 "faced each other, neither willing to ford the river. On the fourth day, the "
 "northern armies crossed and attacked us."
 msgstr ""
-"Las fuerzas del Rey acamparon aquí. Las fuerzas del norte acamparon en la "
-"otra orilla. Por tres días y tres noches los ejércitos formaron, pero "
-"ninguno se atrevió a cruzar el río. Al cuarto día, ellos cruzaron el río y "
-"nos atacaron."
+"Las fuerzas del rey acamparon aquí. Las fuerzas del norte acamparon en la "
+"otra orilla. Durante tres días y tres noches los ejércitos formaron, pero "
+"ninguno se atrevió a cruzar el río. Al cuarto día, los del norte cruzaron el "
+"río y nos atacaron."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:281
-#, fuzzy
 msgid "And then...we were defeated?"
-msgstr "¿Y entonces... fuimos derrotados?"
+msgstr "Y entonces...¿fuimos derrotados?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:286
-#, fuzzy
 msgid "We were winning the battle. We were repelling them..."
-msgstr "Nosotros estábamos la batalla. Los estábamos rechazando."
+msgstr "Estábamos ganando la batalla. Los estábamos rechazando..."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:291
-#, fuzzy
 msgid "And then the king's son, in the heat of battle, turned upon the king!"
 msgstr "¡Hasta que el hijo del rey, en medio de la lucha, asesinó a su padre!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:296
-#, fuzzy
 msgid "But you avenged the murder. You killed the prince. Right, Delfador?"
-msgstr "¿Pero tú le vengaste, no?"
+msgstr "Pero tú lo vengaste. Mataste al príncipe, ¿no, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:301
-#, fuzzy
 msgid ""
 "When I saw the king betrayed and his banner fallen, I fled the battle. I "
 "know not now whether it was wisdom or cowardice, but I did flee, seeing no "
 "further hope on that day."
 msgstr ""
 "Cuando vi el estandarte real caer, huí de la batalla. Llámalo cobardía, "
-"llámalo sabiduría, huí, viendo que no había ninguna esperanza."
+"llámalo sabiduría, huí, viendo que no había ninguna esperanza ese día."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:306
-#, fuzzy
 msgid ""
 "Oh, but the Elves always told me that you killed the prince, Delfador, even "
 "though you never talked about it."
 msgstr ""
-"Oh, pero los Elfos me contaron que tú lo habías matado, Delfador, aunque "
+"Oh, pero los elfos me contaron que tú lo habías matado, Delfador, aunque "
 "nunca hablabas de ello."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:311
-#, fuzzy
 msgid "That foolish boy killed himself."
-msgstr "Ese estúpido se mató a sí mismo."
+msgstr "Ese estúpido chuquillo se mató a sí mismo."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:316
-#, fuzzy
 msgid "What do you mean?"
 msgstr "¿Qué quieres decir?"
 
@@ -4217,47 +4198,47 @@ msgid ""
 "the heat of battle, that boy, fool that he was, came charging at me, "
 "slashing wildly. I had little choice but to end his life."
 msgstr ""
+"Espoleé a los hombres para que luchasen contra el traidor al rey, y por "
+"supuesto contra Asheviere también, que era la que estaba detrás de todo. "
+"Estabámos superados en número, como cuatro a uno. En medio de la batalla, "
+"esemuchacho, completamente loco, vino cargando hacia mí, agitando "
+"salvajemente su espada. No tuve otra opción que acabar con su vida."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:326
-#, fuzzy
 msgid "So it is true, you did kill him?"
-msgstr "¿Así que es cierto, tú lo mataste?"
+msgstr "Así que es cierto, tú lo mataste."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:331
-#, fuzzy
 msgid ""
 "He did die in battle at my hand. It is sad that your brothers did not have "
 "the opportunity to experience such an honorable death, Konrad."
 msgstr ""
-"Él murió en la batalla, por mi mano. Es triste que tus hermanos no tuvieron "
-"una oportunidad de morir tan 'honarablemente', Konrad."
+"Él murió en la batalla, a mis manos. Es triste que tus hermanos no tuvieron "
+"una oportunidad de morir tan honorablemente, Konrad."
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:336
-#, fuzzy
 msgid ""
 "With all respect, my lords, we must make haste. We have to ford the river "
 "immediately. And, look! It seems that the guard-towers on the river banks "
 "are manned!"
 msgstr ""
 "Con todos mis respetos, señores, debemos apresurarnos. Debemos vadear el río "
-"urgentemente. ¡Mirad! ¡Parece que las torres de guardia están defendidas!"
+"urgentemente. ¡Mirad! ¡Parece que las torres de guardia en las riveras están "
+"defendidas!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:341
-#, fuzzy
 msgid ""
 "Look! Some of the southerners, men of Wesnoth, are trying to cross into our "
 "lands! We will slaughter them by the river's edge!"
 msgstr ""
-"¡Mirad! Algunos Sureños, hombres de Wesnoth, están intentando cruzar a "
-"nuestras tierras! ¡Detengámoslos!"
+"¡Mirad! Algunos sureños, hombres de Wesnoth, están intentando cruzar a "
+"nuestras tierras! ¡Acabaremos con ellos en la linde del río!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:346
-#, fuzzy
 msgid "Isn't there somewhere else we can cross? Maybe upstream?"
 msgstr "¿No podemos cruzar por otro lugar? ¿Tal vez río arriba?"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:351
-#, fuzzy
 msgid ""
 "Winter quickly bears down upon us. We have only a few days to make the "
 "crossing, and the nearest bridge is far upstream. To be trapped south of the "
@@ -4266,32 +4247,29 @@ msgid ""
 "full of soldiers! We must cross here, and quickly!"
 msgstr ""
 "El invierno se nos echa encima. Sólo tenemos unos pocos días para cruzar, y "
-"el puente más cercano está muy lejos. ¡Quedar atrapados cuando el invierno "
-"llegue sería un suicidio, pues Asheviere nos tendría atrapados como ratas! "
-"¡Mira al Oeste, Asheviere tiene un fuerte al Oeste, y está lleno de "
-"soldados! ¡Debemos cruzarlo, y ya!"
+"el puente más cercano está muy lejos, río arriba. Quedar atrapados al sur "
+"del río cuando el invierno llegue sería un suicidio, pues Asheviere nos "
+"tendría atrapados como ratas! ¡Mira al oeste, Asheviere tiene un fuerte al "
+"Oeste, y está lleno de soldados! ¡Debemos cruzarlo, y ya!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:356
-#, fuzzy
 msgid ""
 "There they are! So it is true, they foiled the undead. Now they are trying "
 "to leave Wesnoth. We can't let them cross the river. After them, men!"
 msgstr ""
-"¡Así que aquí están! Así pues es verdad, escaparon de los No Muertos, y "
-"ahora están intentando abandonar Wesnoth. ¡Tras ellos, soldados!"
+"¡Allí están! Así pues, es verdad, escaparon de los no muertos, y ahora están "
+"intentando abandonar Wesnoth. No los dejaremos atravesar el río. ¡Tras "
+"ellos, soldados!"
 
 #: data/scenarios/Heir_To_The_Throne/Ford_of_Abez.cfg:361
-#, fuzzy
 msgid "Not her again! Quickly! We must hurry!"
-msgstr "¡Ella otra vez! ¡Rápido, debemos cruzarlo ahora mismo!"
+msgstr "¡Ella otra vez no! ¡Rápido, debemos cruzar ahora mismo!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:3
-#, fuzzy
 msgid "Gryphon Mountain"
 msgstr "La Montaña de los Grifos"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:24
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4307,121 +4285,109 @@ msgstr ""
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
-"#Muerte de Kalenz\n"
-"#Muerte de Li'sar"
+"#Muerte de Kalenz"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:99
 msgid "Here are the mother Gryphon's eggs!"
-msgstr ""
+msgstr "¡Aquí están los huevos de la madre grifo!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:104
-#, fuzzy
 msgid "Excellent! We should be able to breed Gryphons for our own uses now!"
-msgstr "¡Aquí están los huevos!"
+msgstr ""
+"¡Excelente! ¡Seremos capaces de criar grifos para nuestro propio uso a "
+"partir de ahora!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:124
-#, fuzzy
 msgid ""
 "Ha ha! We have killed this foul beast of the air, and can deny the rebels "
 "its eggs!"
-msgstr "¡Excelente! ¡Podremos criar grifones a partir de ahora!"
+msgstr ""
+"¡Jaja! Hemos acabado con esa inmunda bestia aérea, y hemos conseguido además "
+"que los rebeldes no tengan sus huevos!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:165
-#, fuzzy
 msgid "What is this place? That is one big mountain!"
-msgstr "¿Dónde estamos? ¡Ésa sin duda es una enorme montaña!"
+msgstr "¿Dónde estamos? ¡Ésa sin duda es una montaña enorme!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:170
-#, fuzzy
 msgid "That is the fabled Gryphon Mountain."
-msgstr ""
-"¡Ésa es la famosa Montaña de los Grifos! Debemos andar con cuidado, pues "
-"despertar a los grifos sería peligroso."
+msgstr "Esa es la famosa Montaña de los Grifos."
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:175
-#, fuzzy
 msgid ""
 "Gryphon Mountain! Maybe we could steal some eggs from the gryphons and train "
 "the young to be flying mounts. Would that work, Delfador?"
 msgstr ""
-"¡Montaña de los Grifos! Quizá podamos robar algunos huevos a los grifos y "
-"entrenar a los jóvenes para que sirvan de montura ¿Serviría, Delfador?"
+"¡La Montaña de los grifos! Quizá podamos robar algunos huevos a los grifos y "
+"entrenar a los jóvenes para que sirvan de montura. ¿Serviría, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:180
-#, fuzzy
 msgid ""
 "We can try to do that, but we must be careful. To disturb the gryphons could "
 "prove dangerous...and yet such mounts could help us greatly later. Whatever "
 "we do, we must pass by this place."
 msgstr ""
-"Podríamos intentarlo, aunque será peligroso! Pero tal vez sea beneficioso "
-"luego. De todas formas, tenemos que pasar por ella de cualquier manera."
+"Podríamos intentarlo, aunque habría que tener mucho cuidado. Molestar a los "
+"grifos podría ser muy peligroso...pero aún así esas monturas podrían "
+"venirnos luego muy bien. De todas formas, tenemos que pasar por ella de "
+"cualquier manera."
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:185
-#, fuzzy
 msgid "Well, let's start climbing the mountain!"
-msgstr "¡Bueno, empecemos a escalarla pues!"
+msgstr "¡Bueno, empecemos a escalarla, pues!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:194
-#, fuzzy
 msgid ""
 "It appears that we are not the only ones are interested in this mountain. "
 "Once again the Queen opposes us!"
 msgstr ""
-"Parece que no somos los únicos con intereses en esta montaña.¡Otra vez más, "
-"la Reina se nos opone!"
+"Parece que no somos los únicos con intereses en esta montaña. ¡Otra vez más, "
+"la reina se nos opone!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:199
-#, fuzzy
 msgid "Quickly, men! Onward!"
 msgstr "¡Rápido, soldados! ¡Adelante!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:208
-#, fuzzy
 msgid "We have defeated them! Now what do we do?"
 msgstr "¡Los hemos derrotado! ¿Qué hacemos ahora?"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:213
-#, fuzzy
 msgid ""
 "We must continue north. It is too late to return to the safety of Elensefar "
 "or Anduin before winter falls. We must therefore cross the great river and "
 "continue toward the land of the Dwarves. Hurry, let us go!"
 msgstr ""
-"Debemos continuar adelante. Es demasiado tarde para volver a Elensefar o "
-"Anduin antes de que el invierno caiga sobre nosotros. Así que debemos cruzar "
-"el Gran Río y continuar hacia las tierras de los Enanos. ¡Vamos!"
+"Debemos continuar adelante, hacia el norte. Es demasiado tarde para volver a "
+"Elensefar o Anduin antes de que el invierno caiga sobre nosotros. Así que "
+"debemos cruzar el Gran Río y continuar hacia las tierras de los enanos. "
+"¡Vamos!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:224
-#, fuzzy
 msgid ""
 "With these gryphon eggs we should be able to breed gryphons that will serve "
 "us. Then we can hire gryphon riders!"
 msgstr ""
 "Con estos huevos, seremos capaces de criar grifos que nos servirán. ¡Eso nos "
-"permitirá reclutar Jinetes Grifos!"
+"permitirá reclutar jinetes de grifos!"
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:234
-#, fuzzy
 msgid ""
 "It is a shame we could not get those Gryphon eggs - they would surely have "
 "given us an advantage sometime. Still, we must continue."
 msgstr ""
-"Es una pena que no pudiéramos conseguir esos huevos de grifo - nos hubieran "
-"dado una gran ventaja. Aún así, debemos continuar."
+"Es una pena que no pudiéramos conseguir esos huevos de grifo; nos hubieran "
+"dado una gran ventaja más adelante. Aún así, debemos continuar."
 
 #: data/scenarios/Heir_To_The_Throne/Gryphon_Mountain.cfg:241
-#, fuzzy
 msgid "Let us continue onward!"
 msgstr "¡Continuemos!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:3
-#, fuzzy
 msgid "Hasty Alliance"
-msgstr "Alianza precipitada"
+msgstr "Una alianza precipitada"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:20
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -4442,75 +4408,66 @@ msgstr ""
 "#Muerte de Li'sar"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:84
-#, fuzzy
 msgid "Where are we? Which way now? I am tired of this darkness!"
-msgstr "¿Dónde estamos?¿Por dónde hay que ir?¡Estoy harto de esta oscuridad!"
+msgstr "¿Dónde estamos? ¿Por dónde hay que ir? ¡Estoy harto de esta oscuridad!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:89
-#, fuzzy
 msgid "I am not sure of the way. Let me think for a moment."
 msgstr "No estoy seguro. Dame unos minutos para pensarlo."
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:147
 msgid "En garde!"
-msgstr ""
+msgstr "¡En guardia!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:152
-#, fuzzy
 msgid "What in the world are you doing here?"
-msgstr "¿Qué hace ésta aquí ahora?"
+msgstr "¿Qué demonios estás haciendo aquí ahora?"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:157
-#, fuzzy
 msgid "Tracking you down, of course! You have escaped me for the last time!"
 msgstr ""
-"¡Seguirte y cazarte, por supuesto!¡Ésta es la última vez que te escapas!"
+"¡Seguirte y cazarte, por supuesto! ¡Ésta es la última vez que te me escapas!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:162
-#, fuzzy
 msgid ""
 "Foolish girl! We are in the deepest of caverns, probably surrounded by all "
 "manner of creatures, and you still want to fight us? You will bring us all "
 "to ruin!"
 msgstr ""
 "¡Estúpida! ¿Estamos en los abismos rodeados por todo tipo de criaturas "
-"horribles y tu aún piensas en luchar contra nosotros?¡Tú nos traerás la "
-"muerte a todos!"
+"horribles y tu aún piensas en luchar contra nosotros? ¡Nos traerás la muerte "
+"a todos!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:167
-#, fuzzy
 msgid ""
 "Don't try to trick me! I know why you have come here! But I will put an end "
 "to you and your treason here. Then I will get the Scepter, and return to the "
 "daylight again!"
 msgstr ""
-"¡No me intentes engañar! Yo sí que sé qué hacéis aquí! ¡Pero acabaré con "
+"¡No me intentes engañar! ¡Yo sí que sé qué hacéis aquí! ¡Pero acabaré con "
 "vuestra traición aquí, y luego encontraré el Cetro y volveré a la luz del "
 "sol!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:290
-#, fuzzy
 msgid "Surprise! Die, you sun-lovers!"
 msgstr ""
 "¡Sorpresa, sorpresa! ¡Buenos días, amantes del sol, preparaos para morir!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:295
-#, fuzzy
 msgid ""
 "Now we are surrounded! Do you still want to fight us, Princess? Surely that "
 "would lead to doom for us all!"
 msgstr ""
-"¡Ahora estamos rodeados, genial! ¿Aún intentas atacarnos, princesa? ¡Eso "
+"¡Ahora estamos rodeados! ¿Aún quieres luchar contra nosotros, princesa? ¡Eso "
 "sólo nos causará la perdición!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:300
-#, fuzzy
 msgid ""
 "I see we have little choice but to help each other. Let us fight together "
 "until we return to the surface. Agreed?"
 msgstr ""
-"Ya veo que no me queda otra alternativa que ayudarnos. Colaboraremos hasta "
-"que lleguemos a la superficie,¿vale?"
+"Ya veo que no nos queda otra alternativa que ayudarnos. Colaboraremos hasta "
+"que lleguemos a la superficie, ¿de acuerdo?"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:305
 #, fuzzy
@@ -4522,13 +4479,11 @@ msgstr ""
 "moriremos todos juntos!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:310
-#, fuzzy
 msgid "But once we escape from this hole, I have a score to settle with you!"
 msgstr ""
-"Pero una vez abandonemos este antro, tengo una cuenta que saldar contigo!"
+"Pero una vez abandonemos este agujero, ¡tengo una cuenta que saldar contigo!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:321
-#, fuzzy
 msgid ""
 "Well, we have helped each other survive so far, Princess. Now let's continue "
 "together. What do you say?"
@@ -4536,7 +4491,6 @@ msgstr ""
 "Bueno, nos hemos ayudado a sobrevivir, princesa. Continuemos juntos, ¿no?"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:326
-#, fuzzy
 msgid ""
 "Yes. We agreed to help each other get out of these pits alive, did we not? "
 "Let us continue to pool our resources. Here is my purse, full of gold."
@@ -4545,14 +4499,12 @@ msgstr ""
 "este agujero vivos ¿no? Juntemos nuestros recursos, aquí está mi dinero. "
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:331
-#, fuzzy
 msgid "You receive 200 pieces of gold!"
-msgstr "¡Recibes 500 monedas de oro!"
+msgstr "¡Recibes 200 piezas de oro!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:346
-#, fuzzy
 msgid "Thank you, Princess. Come, men. Let us find the Scepter!"
-msgstr "Gracias, princesa.¡Soldados, vayamos a la búsqueda del Cetro!"
+msgstr "Gracias, princesa. ¡Soldados, vayamos a la búsqueda del Cetro!"
 
 #: data/scenarios/Heir_To_The_Throne/Hasty_Alliance.cfg:369
 #: data/scenarios/Heir_To_The_Throne/deaths.cfg:25
@@ -5177,12 +5129,10 @@ msgid ""
 msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:3
-#, fuzzy
 msgid "Mountain Pass"
-msgstr "El Paso de la Montaña"
+msgstr "El paso de la montaña"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:27
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -5195,125 +5145,114 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Mueve a Konrad hasta el final del camino\n"
+"@Mueve a Konrad hasta el final del camino, al noroeste\n"
+"@Derrota a todos los enemigos\n"
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
 "#Muerte de Kalenz"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:104
-#, fuzzy
 msgid "Look, Konrad, before us lies the great road built by the dwarves!"
 msgstr ""
-"¡Mira, Konrad, delante nuestro está la gran calzada construída por los "
+"¡Mira, Konrad, delante nuestro está la gran calzada construida por los "
 "enanos!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:109
-#, fuzzy
 msgid "But I can hardly see with all this mist around!"
 msgstr "¡Pero si apenas puedo verme con toda esta niebla!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:114
-#, fuzzy
 msgid ""
 "We must be wary...they say a wizard lives in these mountains, and he does "
 "not take kindly to visitors. It is he who causes the mists, so that "
 "travellers will lose their way and become prey for his creatures."
 msgstr ""
-"Debemos ser cautos... se cuenta que en estas montañas vive un mago, y que no "
+"Debemos ser cautos...se cuenta que en estas montañas vive un mago, y que no "
 "recibe muy amigablemente a los visitantes. Es él el que causa las nieblas, "
 "para que los viajeros se pierdan, y entonces sus criaturas los devoran."
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:119
-#, fuzzy
 msgid "His...creatures? We must keep to the road, men!"
-msgstr "¿Sus... criaturas? ¡Más nos vale permanecer en la calzada, chicos!"
+msgstr "¿Sus...criaturas? ¡Más nos vale permanecer en la calzada, soldados!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:124
-#, fuzzy
 msgid ""
 "He would be a mighty foe, Konrad. It is said when the dwarves built this "
 "road, they disturbed the resting place of the ancient mage, and ever since, "
 "he and his brother have traveled the mountain, wreacking havoc on the "
 "dwarven villages."
 msgstr ""
-"Se dice que es un enemigo muy fuerte. Cuenta la leyenda que cuando los "
-"enanos construyeron esta calzada, ellos interrumpieron su sueño, y desde "
-"entonces él y su hermano atormentan a las aldeas enanas."
+"Se dice que es un enemigo muy fuerte, Konrad. Cuenta la leyenda que cuando "
+"los enanos construyeron esta calzada, ellos interrumpieron su sueño, y desde "
+"entonces él y su hermano viajan por la montaña, atormentando a las aldeas "
+"enanas."
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:129
-#, fuzzy
 msgid "Let us then go carefully...but quickly, men!"
 msgstr ""
-"¡Bueno, chicos, vayamos rápidamente calzada arriba, pero cautelosamente!"
+"¡Bueno, mis hombres, vayamos cautelosamente calzada arriba...pero rápido!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:170
-#, fuzzy
 msgid ""
 "Greetings, Travellers. I am Stalrag, chief of the these villages! I warn "
 "you, a great wizard and his trolls are in the mountains and will surely "
 "attack. I will summon my tribesmen to aid you!"
 msgstr ""
-"¡Buenas, viajeros, soy Stalrag, jefe de estas aldeas! ¡Os aviso, un gran "
-"mago y sus Trolls habitan en las montañas, y seguro que os atacarán! "
+"¡Saludos, viajeros! Soy Stalrag, jefe de estas aldeas. ¡Os aviso, un gran "
+"mago y sus trolls habitan en las montañas, y seguro que os atacarán. "
 "¡Convocaré a mis hombres para ayudaros!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:175
-#, fuzzy
 msgid ""
 "If this is true, Konrad, perhaps we should take another route and go around "
 "the mountain, rather then to try and defeat these new foes."
 msgstr ""
-"Si eso es verdad, Konrad, tal vez debiéramos tomar otra ruta y marchar "
-"alrededor de la montaña antes de intentar derrotar a estos nuevos enemigos."
+"Si eso es verdad, Konrad, tal vez deberíamos tomar otra ruta y rodear la "
+"montaña antes de intentar derrotar a estos nuevos enemigos."
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:180
-#, fuzzy
 msgid "What do you say, Delfador?"
 msgstr "¿Qué opinas, Delfador?"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:185
-#, fuzzy
 msgid ""
 "No! We do not have the time to waste. Let us make for the top of the pass, "
 "wary of mountain trolls, and taking care lest we come too close to the water!"
 msgstr ""
-"¡No! No tenemos ni un minuto de tiempo para perder ¡Iremos a través del "
-"paso, intentaremos permanecer alerta con los Trolls y alejados del agua!"
+"¡No! No tenemos ni un minuto que perder. ¡Iremos a través del paso, "
+"intentaremos permanecer alerta a los trolls y alejados del agua!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:190
-#, fuzzy
 msgid ""
 "The Shinsplitters will aid you in your quest. Look, they rise from the "
 "villages to the west, the mighty Shinsplitters! To battle!"
 msgstr ""
-"¡¡Los Moradores de las Piedras te ayudaremos en tu misión. ¡¡Mira, los "
-"grandiosos Moradores se alzan en armas en las aldeas del Este!! ¡¡A la "
-"batalla!!"
+"Los Moradores de las Piedras te ayudaremos en tu misión. ¡Mira, los "
+"poderosos Moradores se alzan en armas en las aldeas del oeste! ¡A la batalla!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:212
 msgid ""
 "Well, we have defeated our foes let us hope the mountain does not defeat us!"
 msgstr ""
+"Bueno, hemos derrotado a nuestros enemigos. ¡Esperemos que ahora no nos "
+"derrote la montaña!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:217
-#, fuzzy
 msgid ""
 "I wish you all the best on your journey, I must return to my village and "
 "take care of my family. Dwarven hospitality will welcome you wherever you "
 "go, friends!"
 msgstr ""
-"Os deseo lo mejor en vuestro viaje, debo retornar a mi aldea y cuidar de mis "
-"niños. ¡La hospitalidad enana os dará la bienvenida allá donde vayáis, "
+"Os deseo lo mejor en vuestro viaje. Debo retornar a mi aldea y cuidar de mi "
+"familia. ¡La hospitalidad enana os dará la bienvenida allá donde vayáis, "
 "amigos!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:222
-#, fuzzy
 msgid "Let us move onward!"
 msgstr "¡Venga, continuemos!"
 
 #: data/scenarios/Heir_To_The_Throne/Mountain_Pass.cfg:242
-#, fuzzy
 msgid "Aaargh! I am done for! Fight on without me, Brethren!"
 msgstr "¡Aaargh! ¡Estoy acabado! ¡Luchad sin mí, hermanos!"
 
@@ -5378,12 +5317,10 @@ msgstr ""
 "posible!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:3
-#, fuzzy
 msgid "Northern Winter"
-msgstr "Invierno Norteño"
+msgstr "El invierno norteño"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:24
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -5396,7 +5333,7 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Derrotar al líder enemigo\n"
+"@Derrotar a los líderes enemigos\n"
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
@@ -5404,45 +5341,40 @@ msgstr ""
 "#Fin de los turnos"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:100
-#, fuzzy
 msgid ""
 "This winter is bitterly cold! Perhaps we should stop here and rest a while."
 msgstr "¡Este invierno es muy frío! Tal vez deberíamos parar y descansar."
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:105
-#, fuzzy
 msgid ""
 "Stop and rest? My lord, we must go hard after the Scepter of Fire, lest it "
 "fall into the hands of our enemies!"
 msgstr ""
-"¿Parar y descansar? ¡Mi señor, debemos ir tras el Cetro, no vaya a ser que "
-"caiga en manos del enemigo!"
+"¿Parar y descansar? ¡Mi señor, debemos ir tras el Cetro de Fuego, no vaya a "
+"ser que caiga en manos del enemigo!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:110
-#, fuzzy
 msgid ""
 "We have had a hard march ever since we were besieged by the undead in that "
 "foul valley. Now winter bears down upon us, and we have spent most of our "
 "money. This land looks fertile enough. Surely we can settle here for the "
 "winter!"
 msgstr ""
-"Hemos ido a marchas forzadas desde que fuimos asediados por los No Muertos "
-"en aquel maldito valle. Ahora el invierno se nos echa encima, y hemos "
-"gastado la mayoría de nuestros recursos. ¡Esta tierra parece bastante "
-"fértil, asentémonos aquí durante el invierno!"
+"Hemos ido a marcha forzada desde que fuimos asediados por los no muertos en "
+"aquel maldito valle. Ahora el invierno se nos echa encima, y hemos gastado "
+"la mayoría de nuestros suministros. ¡Esta tierra parece bastante fértil, "
+"asentémonos aquí durante el invierno!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:115
-#, fuzzy
 msgid ""
 "Yes, let us rest a while! I am sure there are many challenges ahead, and I "
 "do not think I could endure another like the fording of the river for many "
 "days."
 msgstr ""
 "¡Sí, déjenos descansar! Estoy seguro que nos esperan muchos retos, y no creo "
-"que pudiera superar otro como el de vadear el Gran Río por muchos días."
+"que pudiera superar otro como el de vadear el Gran Río durante muchos días."
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:120
-#, fuzzy
 msgid ""
 "We are chasing the Scepter of Fire, the fate of the realm is in our hands, "
 "and you humans want to stop and rest? Onward, I say!"
@@ -5452,30 +5384,26 @@ msgstr ""
 "¡Vamos!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:125
-#, fuzzy
 msgid ""
 "They are right, Kalenz. I had wanted to acquire the Scepter within a moon, "
 "but it is not to be. Our soldiers will begin to desert if they do not rest "
 "soon. But in these wild north lands, we must fight even for the right to "
 "rest. Look to the north! Those foul orcs will not allow us any peace!"
 msgstr ""
-"Tienes razón, Kalenz. Me habría gustado obtener el Cetro en una luna, pero "
-"es imposible. Nuestros soldados empezarán a desertar si no descansamos "
+"Tienes razón, Kalenz. Me habría gustado obtener el Cetro en esta luna, pero "
+"eso no ocurrirá. Nuestros soldados empezarán a desertar si no descansamos "
 "pronto. Pero en estas tierras áridas debemos luchar hasta para descansar. "
-"¡Mira al norte! ¡Esos malditos Orcos no nos dejan ni descansar!"
+"¡Mira al norte! ¡Esos malditos orcos no nos dejan en paz!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:130
-#, fuzzy
 msgid "Then we shall wrest control of the land from them. To arms men!"
 msgstr "Entonces lucharemos para controlar las tierras. ¡A las armas!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:144
-#, fuzzy
 msgid "More snow is falling. We must finish this battle quickly. Onward men!"
 msgstr "Cae más nieve. Debemos acabar la batalla aprisa. ¡Soldados, avanzad!"
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:167
-#, fuzzy
 msgid ""
 "Victory is ours! We have secured the land from the Orcs. Now we can rest "
 "here while the cold winter passes."
@@ -5484,30 +5412,27 @@ msgstr ""
 "descansar mientras el frío invierno pasa."
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:172
-#, fuzzy
 msgid ""
 "Let us not rest for too long though, friends. We must still reach the "
 "ancient Dwarven lands before our foes do."
 msgstr ""
 "Descansemos, pero tampoco mucho, amigos: aún tenemos que llegar a las "
-"antiguas minas Enanas antes que nuestros enemigos."
+"antiguas minas enanas antes que nuestros enemigos."
 
 #: data/scenarios/Heir_To_The_Throne/Northern_Winter.cfg:177
-#, fuzzy
 msgid ""
 "And so after many days of rest, the party set out once again for the Dwarven "
 "kingdom..."
 msgstr ""
-"Y tras muchos días de descanso, el grupo puso rumbo otra vez hacia el Reino "
-"Enano..."
+"Y tras muchos días de descanso, el grupo puso rumbo otra vez hacia el reino "
+"enano..."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:3
 #, fuzzy
 msgid "Plunging into the Darkness"
-msgstr "Descendiendo en la Oscuridad"
+msgstr "Un descenso en la oscuridad"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:21
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -5519,228 +5444,205 @@ msgid ""
 msgstr ""
 "\n"
 "Victoria:\n"
-"@Encuentra a los Enanos\n"
+"@Encuentra a los enanos\n"
 "Derrota:\n"
 "#Muerte de Konrad\n"
 "#Muerte de Delfador\n"
 "#Muerte de Kalenz"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:200
-#, fuzzy
 msgid "It's so dark in here I can hardly see!"
 msgstr "¡Está todo tan oscuro aquí dentro! ¡Apenas puedo ver!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:205
-#, fuzzy
 msgid ""
 "It is dark indeed. We shall have to light torches, and tread slowly and "
 "carefully. Hopefully there are still Dwarves down here who can aid us!"
 msgstr ""
 "Está realmente oscuro, sí. Tendremos que encender antorchas y avanzar "
-"lentamente. ¡Con un poco de suerte, aún quedarán Enanos para ayudarnos!"
+"lentamente. ¡Con un poco de suerte, aún quedarán enanos para ayudarnos!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:210
-#, fuzzy
 msgid "Indeed. We Elves are not well skilled in these dark pits."
 msgstr ""
-"Así es. Además, nosotros los Elfos no somos muy hábiles en estas cuevas "
+"Así es. Además, nosotros los elfos no somos muy hábiles en estas cuevas "
 "oscuras."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:225
-#, fuzzy
 msgid "Who are these that approach? Surface-dwellers! On your guard, men!"
 msgstr ""
 "¿Quiénes son los que se acercan? ¡Habitantes de la superficie! ¡Soldados, en "
 "guardia!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:232
-#, fuzzy
 msgid "We come in peace, friends. We come in peace!"
 msgstr "Venimos en son de paz, amigos. ¡Venimos en son de paz!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:239
-#, fuzzy
 msgid ""
 "Oh, do you? I see that you are accompanied by Elves. Can we Dwarves not live "
 "in peace without the treacherous Elves coming to bother us?"
 msgstr ""
-"¿Ah, sí? Veo que estáis acompañados por Elfos. ¿No podemos vivir los Enanos "
-"sin que vengan los traicioneros Elfos a molestarnos?"
+"¿Ah, sí? Veo que estáis acompañados por elfos. ¿No podemos vivir los enanos "
+"sin que vengan los traicioneros elfos a molestarnos?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:246
-#, fuzzy
 msgid "Why such harsh words, Dwarf? Elves have never done you any harm."
 msgstr ""
-"¿A qué vienen esas palabras, Enano? Los Elfos nunca os hemos hecho ningún "
-"daño."
+"¿A qué vienen esas palabras tan duras, enano? Los elfos nunca os hemos hecho "
+"ningún daño."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:253
-#, fuzzy
 msgid ""
 "'Never done us any harm?' Why I was there myself, when the Elves did not "
 "come to honor our alliance. Many Dwarves were slaughtered, and you cowardly "
 "Elves did nothing to help!"
 msgstr ""
-"¿Nunca? Bueno, yo estaba allí cuando los Elfos no cumplieron el pacto. "
-"¡Muchos Enanos fueron masacrados, y vosotros los cobardes Elfos no movísteis "
-"un dedo por nosotros!"
+"¿Nunca? Bueno, yo estaba allí cuando los elfos no cumplieron su pacto. "
+"¡Muchos enanos murieron, y vosotros, cobardes elfos, no movísteis un dedo "
+"por nosotros!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:260
-#, fuzzy
 msgid ""
 "You go too far! I am Kalenz, a mighty Elvish lord! How dare such as you, "
 "snivelling in his tunnel, call me a coward?"
 msgstr ""
-"¡Has ido muy lejos! ¡Yo soy Kalenz, el todopoderoso Señor Elfo! ¿Cómo te "
-"atreves tú, que te arrastras en estos túneles, a llamarme cobarde?"
+"¡Has ido muy lejos! ¡Yo soy Kalenz, un poderoso Señor elfo! ¿Cómo te atreves "
+"tú, que te arrastras en estos túneles, a llamarme cobarde?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:267
-#, fuzzy
 msgid ""
 "Peace, friends! Peace! The evil Orcs roam the lands above us, we must not "
 "fight among ourselves."
 msgstr ""
-"¡Paz, amigos, paz! Los malvados Orcos se pasean por encima nuestro, ¿acaso "
-"debemos pelearnos entre nosotros?"
+"¡Paz, amigos, paz! Los malvados orcos se pasean por encima en este momento, "
+"¿acaso debemos pelearnos entre nosotros?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:274
-#, fuzzy
 msgid ""
 "Very well! Explain your presence here then, human. Who are you? Why have you "
 "risked life and limb to come to Knalga, home of the Dwarves?"
 msgstr ""
 "¡Vale! ¿Quién eres tú? Explícame tu presencia aquí, humano. ¿Por qué habéis "
-"venido a Knalga, hogar de los Enanos, arriesgando vuestras vidas?"
+"venido a Knalga, hogar de los enanos, arriesgando vuestras vidas?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:281
-#, fuzzy
 msgid "Well, we...we..."
-msgstr "Bueno, nosotros... ehhh... umm..."
+msgstr "Bueno, nosotros...ehhh...bueno..."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:288
-#, fuzzy
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Scepter of Fire."
 msgstr ""
-"Nosotros hemos venido para que el heredero al trono pueda reclamar su "
-"herencia, su trono. Buscamos el Cetro del Fuego."
+"Hemos venido para que un heredero pueda reclamar su herencia, su trono. "
+"Buscamos el Cetro de Fuego."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:295
-#, fuzzy
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
-msgstr "¿El Cetro del Fuego? ¿Estás loco? ¡Tienes que estar de broma!"
+msgstr "¿El Cetro de Fuego? ¿Estáis locos? ¡Tenéis que estar de broma!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:302
-#, fuzzy
 msgid ""
 "We jest not, friend. We seek the Scepter of Fire. We seek the help of the "
 "Dwarves in finding it. But know that we will find it, whether you help us or "
 "not."
 msgstr ""
-"No bromeamos, amigo. Buscamos el Cetro del Fuego. Buscamos la ayuda de los "
-"Enanos para encontrarlo. Elige si nos ayudas o no, lo encontraremos "
+"No bromeamos, amigo. Buscamos el Cetro de Fuego. Buscamos la ayuda de los "
+"enanos para encontrarlo. Elige si nos ayudas o no, pero lo encontraremos "
 "igualmente."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:309
-#, fuzzy
 msgid ""
 "Your speech is like that of a fool. No-one even knows if the Scepter of Fire "
 "exists. And who is this heir, this king that you speak of?"
 msgstr ""
 "Tú hablas como un loco o un tonto. Nadie sabe ni siquiera si el Cetro es "
-"verdadero. ¿Quién es este heredero al trono, este rey, del que hablas?"
+"verdadero. ¿Y quién es ese heredero al trono, este rey, del que hablas?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:316
-#, fuzzy
 msgid "I am, sir."
-msgstr "Soy yo, señor"
+msgstr "Soy yo, señor."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:323
-#, fuzzy
 msgid ""
 "You? Ha ha! This boy that stands before me is the king of Wesnoth? Ha ha! I "
 "haven't had such a laugh in a long time. And who are you, old man?"
 msgstr ""
 "¿¡TÚ!? ¡JAJAJAJAJA! ¿Este chico que está delante mío es el rey de Wesnoth? "
-"No me había reído tanto desde hace mucho tiempo. ¿Y quién eres tú, viejo?"
+"¡Jajaja! No me había reído tanto desde hace mucho tiempo. ¿Y quién eres tú, "
+"viejo?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:330
-#, fuzzy
 msgid ""
 "I am Delfador, Delfador the Great, Arch Mage to King Garard, and Protector "
 "of his heir."
 msgstr ""
-"¡Yo soy Delfador, Delfador el Grande, Archimago del Rey Garard y Protector "
-"de su heredero!"
+"Yo soy Delfador, Delfador el Grande, Archimago del Rey Garard y Protector de "
+"su heredero."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:337
-#, fuzzy
 msgid ""
 "You...you are Delfador? I saw Delfador when I was but a young Dwarf, and I "
 "will tell you, old man, you are not Delfador. Men! Take these liars out of "
 "my sight. Delfador perished many years ago."
 msgstr ""
-"¿Tú... tú eres Delfador? Yo vi a Delfador cuando no era sino un joven Enano "
-"y tú no eres Delfador. ¡Soldados, tomad a estos impostores y alejadlos de "
-"mí! Delfador murió hace muchos años."
+"¿Tú...vos sois Delfador? Vi a Delfador cuando no era sino un joven enano y "
+"tú no eres Delfador, viejo. ¡Soldados, tomad a estos impostores y alejadlos "
+"de mi vista! Delfador murió hace muchos años."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:376
-#, fuzzy
 msgid "I am Delfador the Great! Any who dare oppose me shall perish!"
 msgstr "¡Yo soy Delfador el Grande! ¡Cualquiera que se enfrente a mí morirá!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:383
-#, fuzzy
 msgid ""
 "You...you really are Delfador! But we had news that you were dead, years ago!"
 msgstr ""
-"¡Tú... tú eres realmente Delfador! ¡Nos dijeron que habías muerto, hace ya "
+"¡Tú...vos sois realmente Delfador! ¡Nos dijeron que habíais muerto, hace ya "
 "muchos años!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:390
-#, fuzzy
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr ""
-"Ellos pensaron que había muerto. Ellos desearon que muriese. Pero, aun así, "
-"aquí estoy vivo."
+"Ellos pensaron que había muerto. Deseaban que hubiese muerto. Pero, aun así, "
+"aquí estoy, vivo."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:397
-#, fuzzy
 msgid "And you really think that you can find the Scepter of Fire?"
-msgstr "¿Y realmente crees que puedes encontrar el Cetro de Fuego?"
+msgstr "¿Y realmente creéis que podéis encontrar el Cetro de Fuego?"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:404
-#, fuzzy
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Scepter. It will be dangerous. Make no mistake "
 "about that: Dwarves will be killed, perhaps many Dwarves. But surely it is "
 "better than hiding from the Orcs like worms."
 msgstr ""
-"Sí, lo haré. Si tú nos ayudas, amigo, todos los tesoros de Knalga serán "
-"tuyos. Sólo queremos el Cetro, pero no te equivoques, será peligroso, es "
-"más, es muy posible que mueran Enanos, incluso muchos Enanos. Pero seguro "
-"que es mejor que esconderse de los Orcos como gusanos."
+"Sí, lo creo. Si tú nos ayudas, amigo, todos los tesoros de Knalga que "
+"encontremos serán tuyos. Sólo queremos el Cetro, pero no te equivoques, será "
+"peligroso, es más: es muy posible que mueran enanos, incluso muchos enanos. "
+"Pero seguro que es mejor que esconderse de los orcos como gusanos."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:411
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
 msgstr ""
+"Tenéis razón, amigo. Pondré mis mejores hombres a vuestra disposición. No "
+"sabemos dónde está el Cetro, pero las leyendas dicen que está oculto en los "
+"túneles orientales."
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:418
 msgid "Then to the eastern tunnels we shall go!"
-msgstr ""
+msgstr "¡Pues entonces dirijámonos a los túneles orientales!"
 
 #: data/scenarios/Heir_To_The_Throne/Plunging_Into_the_Darkness.cfg:439
-#, fuzzy
 msgid "Hmm...there seems to be a secret passage behind these rocks!"
-msgstr "¡Hmm... parece que hay un pasadizo secreto tras estas rocas!"
+msgstr "¡Hmm...parece que hay un pasadizo secreto tras estas rocas!"
 
 #: data/scenarios/Heir_To_The_Throne/Princess_of_Wesnoth.cfg:3
-#, fuzzy
 msgid "The Princess of Wesnoth"
 msgstr "La princesa de Wesnoth"
 
@@ -5941,12 +5843,10 @@ msgstr ""
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:3
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:12
-#, fuzzy
 msgid "The Sceptre of Fire"
 msgstr "El Cetro de Fuego"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:30
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -5967,71 +5867,61 @@ msgstr ""
 "#Muerte de Li'sar"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:48
-#, fuzzy
 msgid "The Sceptre must be getting close now! Where shall we go?"
 msgstr "¡El Cetro tiene que estar cerca! ¿Hacia dónde vamos ahora?"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:53
-#, fuzzy
 msgid "Yes, I feel it is near here! We must search for it carefully."
-msgstr "¡Sí, yo también lo presiento cerca! ¡Busquémoslo cuidadosamente!"
+msgstr "¡Sí, yo también lo presiento cerca! Busquémoslo cuidadosamente."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:321
-#, fuzzy
 msgid "Here it is at last, I have the Sceptre!"
 msgstr "¡Aquí está por fin, tengo el Cetro!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:326
-#, fuzzy
 msgid "So it is in our hands! Now let us leave this stinking pit."
-msgstr "Así que está en nuestras manos! ¡Ahora vámonos de aquí!"
+msgstr "¡Así que está en nuestras manos! ¡Ahora vámonos de aquí!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:331
-#, fuzzy
 msgid ""
 "I think that if we travel just a little north, we might be able to get out."
 msgstr ""
 "Creo que si viajamos hacia el norte un poco más, podremos escapar de aquí."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:352
-#, fuzzy
 msgid "At last! I have the Sceptre!"
 msgstr "¡Por fin! ¡Tengo el Cetro!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:357
-#, fuzzy
 msgid "Indeed. You managed to reach it Li'sar. I hope you shall use it wisely."
 msgstr ""
 "Así es. Tú te las has arreglado para conseguirlo, Li'Sar. Ojalá lo uses "
 "sabiamente."
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:362
-#, fuzzy
 msgid ""
 "Well my first use for it is going to be to help us get out of this hole! I "
 "hope you consider that wise."
 msgstr ""
-"¡Bueno, mi primer uso para él será para salir de este agujero! ¡Espero que "
-"lo consideres sabio!"
+"¡Bueno, mi primer uso para él será para ayudarnos a salir de este agujero! "
+"¡Espero que lo consideres sabio!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:367
-#, fuzzy
 msgid ""
 "The Sceptre makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
 msgstr ""
-"El Cetro hace a su dueño poderoso, pero no inmortal, pequeña. Úsalo con "
+"El Cetro hace a su dueño poderoso, pero no inmortal, muchacha. Úsalo con "
 "prudencia. ¡Ahora ven, creo que hay una salida hacia el norte!"
 
 #: data/scenarios/Heir_To_The_Throne/Sceptre.cfg:372
-#, fuzzy
 msgid "I think I know what I'm doing. Come, let us go!"
 msgstr "Creo que sé lo que estoy haciendo. ¡Venga, vamos!"
 
 #: data/scenarios/Heir_To_The_Throne/Snow_Plains.cfg:3
 #, fuzzy
 msgid "Snow Plains"
-msgstr "Llanos Nevados"
+msgstr "Los Llanos nevados"
 
 #: data/scenarios/Heir_To_The_Throne/Snow_Plains.cfg:25
 #, fuzzy
@@ -6114,12 +6004,10 @@ msgstr ""
 "elección al venir por aquí."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:3
-#, fuzzy
 msgid "The Lost General"
-msgstr "El General Perdido"
+msgstr "El General perdido"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:21
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -6138,123 +6026,101 @@ msgstr ""
 "#Muerte de Kalenz"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:104
-#, fuzzy
 msgid "These are some of the main Dwarvish caverns."
-msgstr ""
-"Bien, Delfador, ahora que ya he conseguido el Cetro, voy a hacerte cumplir "
-"tu promesa."
+msgstr "Estas son algunas de las principales cavernas enanas."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:109
-#, fuzzy
 msgid ""
 "Underground roads once led to the differents parts of the complex, but now "
 "everything lies in ruins."
-msgstr "¿Cuál?"
+msgstr ""
+"Una vez hubo caminos bajo tierra que llevaban a las distintas partes del "
+"complejo, pero ahora todo está en ruinas."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:123
-#, fuzzy
 msgid "The sign says 'Guest quarters'."
-msgstr "La señal dice 'Habitaciones para los huéspedes'"
+msgstr "La señal dice «Habitaciones para huéspedes»."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:144
-#, fuzzy
 msgid "My uncle's family drowned after the orcs flooded that cavern..."
 msgstr ""
-"Muy bien, Konrad. Pero los Orcos habrán contactado con Asheviere "
-"informándola de nuestro paseo por las minas, y dudo que ella confie en ellos "
-"para hacer el trabajo. Así que aprisa, encarguémonos de éstas bestias, no "
-"vaya a ser que lleguen los refuerzos."
+"La familia de mi tío se ahogó cuando los orcos inundaron esta caverna..."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:158
-#, fuzzy
 msgid "These passages seem to have been used recently."
-msgstr "¡El humano y sus amigos han vuelto! ¡Acabaré con ellos yo solo!"
+msgstr "Estos túneles parecen haber sido usados recientemente."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:172
-#, fuzzy
 msgid "There is a big cave-in south of here."
-msgstr "Si tu estás seguro, jefe...."
+msgstr "Hay una gran caverna al sur."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:185
-#, fuzzy
 msgid "RUMBLE! RUMBLE! RUMBLE!"
-msgstr "¡POR SUPUESTO que lo estoy, gusano! ¡Haz lo que te he dicho!"
+msgstr "¡RrrrrrrrrRRRRRRRR! ¡RrrrrrrRRRRRr! ¡RRRRRRRRrrrrRRrrrRRRr!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:190
-#, fuzzy
 msgid "The rocks are moving!"
-msgstr "¡Vale, vale! ¡Como tú digas, jefe!"
+msgstr "¡Las rocas se están moviendo!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:252
-#, fuzzy
 msgid "Who goes there? Friend or foe?"
 msgstr "¿Quién va? ¿Amigo o enemigo?"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:257
-#, fuzzy
 msgid ""
 "We are desperately trying to rid these tunnels of the foul Orcs! Please help "
 "us in our quest."
 msgstr ""
 "¡Estamos intentando desesperadamente librar a estas cuevas de los malvados "
-"Orcos! Ayudadnos, por favor."
+"orcos! Ayudadnos, por favor."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:269
-#, fuzzy
 msgid "Ah, a foul Orc! Let us rid these tunnels of its kind!"
-msgstr "¡Oh, un Orco! ¡A por ellos!"
+msgstr "¡Oh, un orco! ¡Limpiemos estos túneles de ellos!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:281
-#, fuzzy
 msgid "I did not know that the undead were in these pits!"
-msgstr "¡Desconocía que los No Muertos también estaban por aquí!"
+msgstr "¡Desconocía que los no muertos también estaban por aquí!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:293
-#, fuzzy
 msgid "Who is this foul enemy that we fight?"
 msgstr "¿Quién es el malvado enemigo con el que luchamos?"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:298
-#, fuzzy
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
-msgstr "Soy Lionel, el General Perdido. ¡Yo voy a vengarme de vosotros!"
+msgstr "Soy Lionel, el general perdido. ¡Voy a vengarme de vosotros!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:303
-#, fuzzy
 msgid "Avenge? What have we done to you that you must avenge?"
 msgstr "¿Vengarse? ¿Qué hemos hecho que merezca tu venganza?"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:308
-#, fuzzy
 msgid "Lionel? A General? I remember that name..."
-msgstr "¿Lionel? ¿Un General? Me suena ese nombre..."
+msgstr "¿Lionel? ¿Un general? Me suena ese nombre..."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:313
-#, fuzzy
 msgid ""
 "Remember me, do you? Aye. I was the king's finest general, sent down to "
 "these pits to retrieve the Scepter. But the Orcs trapped me and my men in "
 "this cavern, to starve to death. The Dwarves were no help, leaving me to "
 "die. Now I will get revenge on you all!"
 msgstr ""
-"¿Me recuerdas, no? Yo era el mejor General del Rey, el cual me envió aquí "
-"para recuperar el Cetro, pero los Orcos me tendieron una trampa y nos "
+"¿Me recuerdas, no? Yo era el mejor general del rey, el cual me envió aquí "
+"para recuperar el Cetro, pero los orcos me tendieron una trampa y nos "
 "abandonaron a mis hombres y a mí en estas cuevas para morir de hambre, y los "
-"Enanos no se molestaron en ayudarnos. ¡Ahora me vengaré con vosotros!"
+"enanos no se molestaron en ayudarnos. ¡Ahora me vengaré con vosotros!"
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:338
-#, fuzzy
 msgid ""
 "Argh! I am vanquished! But at least by worthy foes, instead of those foul "
 "Orcs."
 msgstr ""
 "Argh! ¡He sido derrotado! ¡Pero al menos sois un enemigo valeroso, no como "
-"esos malvados Orcos."
+"esos malvados orcos."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:343
-#, fuzzy
 msgid "Rest in peace, Lionel. The poor, lost general."
-msgstr "Descansa en paz, Lionel, el pobre, perdido General."
+msgstr "Descansa en paz, Lionel. El pobre, perdido General."
 
 #: data/scenarios/Heir_To_The_Throne/The_Lost_General.cfg:348
 msgid ""
@@ -7959,12 +7825,10 @@ msgid "Err... well..."
 msgstr ""
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:5
-#, fuzzy
 msgid "Toward Mountains of Haag"
 msgstr "Hacia las montañas de Haag"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:26
-#, fuzzy
 msgid ""
 "\n"
 "Victory:\n"
@@ -7981,45 +7845,40 @@ msgstr ""
 "#Fin de los turnos"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:103
-#, fuzzy
 msgid ""
 "We have nearly crossed the mountains.  I feel the lands of the free tribes "
 "are near now.  But beware, there are dwarves and wild trolls around.  Hurry "
 "up!  I can see the sign post that indicates their land."
 msgstr ""
 "Casi hemos cruzado las montañas. Creo que las tierras de las tribus libres "
-"están cerca, aunque debemos ser cuidadosos porque hay Enanos y Trolls "
-"salvajes por la zona ¡De prisa, ya veo la señal que marca el camino hacia "
+"están cerca, aunque debemos ser cuidadosos porque hay enanos y trolls "
+"salvajes por la zona. ¡De prisa, ya veo la señal que marca el camino hacia "
 "esas tierras!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:108
-#, fuzzy
 msgid "What are these orcs doing here?  They should be too tired to live."
 msgstr "¿Qué hacen los orcos aquí? ¿Están cansados de vivir?."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:122
-#, fuzzy
 msgid ""
 "I've never pushed so far, we are crossing the border of the Black Eye lands."
 msgstr "Nunca he ido tan lejos, estamos al borde de las tierras de Ojo Negro."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:160
-#, fuzzy
 msgid "Look!  Dwarves are fighting against orcs!"
-msgstr "¡Mira! ¡Enanos y Orcos se pegan!"
+msgstr "¡Mira! ¡Enanos y orcos se pegan!"
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:165
-#, fuzzy
 msgid "Father, we should help them.  Orcs are our allies."
-msgstr "Padre, debemos ir. Orcos son amigos."
+msgstr "Padre, debemos ir. Los orcos son amigos."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:170
-#, fuzzy
 msgid ""
 "I don't know if we should do that.  Orcs have been our allies in the past, "
 "but they have always treated us as fools."
 msgstr ""
-"No sé si debemos. Orcos han sido aliados, pero nos han tratado como tontos."
+"No sé si debemos. Los orcos han sido aliados en el pasado, pero nos han "
+"tratado como tontos."
 
 #: data/scenarios/Son_Of_The_Black_Eye/Towards_Mountains_of_Haag.cfg:175
 #, fuzzy
@@ -8602,7 +8461,6 @@ msgid ""
 msgstr "Muero de forma terrible... y no sé por qué."
 
 #: data/scenarios/The_Dark_Hordes/Crelanus_Book.cfg:171
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:155
 #, fuzzy
 msgid "What? I can't die! Noooo!"
 msgstr "¡Maldito Nigromante! ¡¿Qué hace aquí?!"
@@ -8863,11 +8721,7 @@ msgstr "¡Maldito nigromante!"
 msgid "The Skull of Agarash"
 msgstr "La Calavera de Agarash"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:10
-msgid "Still fleeing from Wesnoth, Gwiti entered the lands of the Orcs."
-msgstr ""
-
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:52
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:24
 msgid ""
 "\n"
 "Victory:\n"
@@ -8883,7 +8737,7 @@ msgstr ""
 "#Muerte de Gwiti Ha'atel\n"
 "#Fin de los turnos"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:101
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:73
 msgid ""
 "After Gwiti destroyed his brother, he planned to march on Wesnoth to gain "
 "his revenge. But a Dark Spirit came to counsel him..."
@@ -8891,17 +8745,17 @@ msgstr ""
 "Tras destruir a su hermano, Gwiti planeó un ataque sobre Wesnoth para "
 "conseguir su venganza. Pero un Espíritu Oscuro vino a aconsejarle..."
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:121
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:93
 msgid "Gwitiii...Gwiti!"
 msgstr "¡Gwitiii...Gwiti!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:126
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:98
 msgid "A Dark Spirit? Surely this is a token of my mastery of the undead!"
 msgstr ""
 "¿Un Espíritu Oscuro? ¡Esto no es más que una demostración de mis poderes "
 "nigrománticos!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:131
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:103
 msgid ""
 "Gwiti, do not yet march in pursuit of your revenge. First, you shall go "
 "south, against the orcs, and there find the Skull of Agarash."
@@ -8909,27 +8763,30 @@ msgstr ""
 "Gwiti, no marches aún en pos de tu venganza. Ve antes hacia el sur, contra "
 "los Orcos, y allí podrás encontrar la Calavera de Aragash."
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:136
-#, fuzzy
-msgid "Speak on."
-msgstr "Hablar"
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:108
+msgid "What is the Skull of Agarash? Tell me more."
+msgstr "¿Qué es la Calavera de Agarash? Cuéntame más."
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:141
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:113
 #, fuzzy
 msgid ""
 "Do you see the three orc clans of this land? Their banners are topped with "
-"skulls, as is their custom. But one of these is the Skull of Agarash - Take "
-"it and your power will grow greater by far."
+"skulls, as is their custom. But one of these is the Skull of Agarash - which "
+"once was mine. Take it and your power will grow greater by far."
 msgstr ""
 "¿Ves los tres clanes Orcos? Sus estandartes tienen una calavera encima, "
 "según la costumbre Orca. Pero una de ellas es la calavera de Aragash, que  "
 "una vez fue mía. ¡Tómala y tu poder se centuplicará!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:173
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:127
+msgid "What? I can't die! I've done so already! Noooo!"
+msgstr "¿Qué? ¡No puede ser que vuelva a morir! ¡Ya lo he hecho! ¡Nooooo!"
+
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:145
 msgid "Oh, no! The undead hordes have taken my banner!"
 msgstr "¡Oh, no! ¡Los No Muertos han tomado mi estandarte!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:178
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:150
 msgid ""
 "It is not your banner, and it never was! That skull has marked it as mine "
 "since long ago."
@@ -8937,26 +8794,30 @@ msgstr ""
 "¡Éste nunca ha sido tu estandarte y nunca lo será! ¡Esa calavera lleva mi "
 "nombre desde hace mucho tiempo!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:183
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:155
 #, fuzzy
 msgid ""
 "Argh! This is only half of the skull, and near enough to powerless! Begone, "
 "Spirit!"
 msgstr "¡Argh! ¡Esto sólo es la mitad de la calavera!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:205
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:177
 msgid "Let us trample his banner into the ground! *smash*"
 msgstr ""
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:220
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:196
 msgid "That skull is powerless!"
 msgstr "¡Esta calavera no tiene ningún poder!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:232
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:208
 msgid "That is not the skull of Agarash!"
 msgstr "¡Esta no es la calavera de Agarash!"
 
-#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:244
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:221
+msgid "I am dying, and my army is defeated! This is the end..."
+msgstr "¡Me muero, y mi ejército está perdido! Es el fin..."
+
+#: data/scenarios/The_Dark_Hordes/The_Skull_of_Agarash.cfg:239
 msgid "It's been a long time since I fought anything myself!"
 msgstr "¡Hace ya mucho tiempo desde mi última batalla!"
 
@@ -12821,7 +12682,7 @@ msgstr "¡Sí!"
 #: data/scenarios/multiplayer/Wesbowl.cfg:361
 #: data/scenarios/multiplayer/Wesbowl.cfg:638
 #: data/scenarios/tutorial/tutorial1.cfg:278
-#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:450
+#: data/scenarios/tutorial/tutorial2.cfg:219 src/show_dialog.cpp:451
 msgid "No"
 msgstr "No"
 
@@ -12997,7 +12858,7 @@ msgid "Do you want to review any of the skills learned on this level?"
 msgstr "¿Quieres guardar la repetición de este escenario?"
 
 #: data/scenarios/tutorial/tutorial1.cfg:264
-#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:449
+#: data/scenarios/tutorial/tutorial2.cfg:206 src/show_dialog.cpp:450
 #, fuzzy
 msgid "Yes"
 msgstr "Sí"
@@ -17357,7 +17218,7 @@ msgstr ""
 "Hoy casi un niño, busca convertirse en Señor por su devoción a la Corona, "
 "para unirse a la elite de luchadores humanos."
 
-#: src/about.cpp:240 src/help.cpp:2363 src/show_dialog.cpp:469
+#: src/about.cpp:240 src/help.cpp:2363 src/show_dialog.cpp:470
 #, fuzzy
 msgid "Close"
 msgstr "Cerrar"
@@ -17470,242 +17331,204 @@ msgstr "¿En qué debe convertirse la unidad victoriosa?"
 msgid "No objectives available"
 msgstr "Objetivos no disponibles"
 
-#: src/dialogs.cpp:177
-#, fuzzy
+#: src/dialogs.cpp:178
 msgid "Save already exists. Do you want to overwrite it ?"
-msgstr "La partida ya existe. ¿Quieres sobreescribirla?"
+msgstr "La partida ya existe. ¿Quiere sobreescribirla?"
 
-#: src/dialogs.cpp:206 src/dialogs.cpp:443
-#, fuzzy
+#: src/dialogs.cpp:207 src/dialogs.cpp:446
 msgid "Don't ask me again!"
 msgstr "¡No me lo vuelvas a preguntar!"
 
-#: src/dialogs.cpp:208
-#, fuzzy
+#: src/dialogs.cpp:209
 msgid "Do you really want to delete this game?"
-msgstr "¿Estás seguro de que quieres borrarlo?"
+msgstr "¿Está seguro de que quiere borrarlo?"
 
-#: src/dialogs.cpp:347
-#, fuzzy
+#: src/dialogs.cpp:350
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
-#: src/dialogs.cpp:360
+#: src/dialogs.cpp:362
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Inválido)"
 
-#: src/dialogs.cpp:365 src/game.cpp:921
-#, fuzzy
+#: src/dialogs.cpp:368 src/game.cpp:921
 msgid "Campaign"
 msgstr "Campaña"
 
-#: src/dialogs.cpp:367 src/game.cpp:968
-#, fuzzy
+#: src/dialogs.cpp:370 src/game.cpp:968
 msgid "Multiplayer"
 msgstr "Multijugador"
 
-#: src/dialogs.cpp:369
-#, fuzzy
+#: src/dialogs.cpp:372
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/dialogs.cpp:377
+#: src/dialogs.cpp:380
 msgid "replay"
 msgstr "repetición"
 
-#: src/dialogs.cpp:379 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1382
-#, fuzzy
+#: src/dialogs.cpp:382 src/multiplayer_lobby.cpp:139 src/playturn.cpp:1381
 msgid "Turn"
 msgstr "Turno"
 
-#: src/dialogs.cpp:381
-#, fuzzy
+#: src/dialogs.cpp:384
 msgid "Scenario Start"
 msgstr "Inicio del escenario"
 
-#: src/dialogs.cpp:384 src/game.cpp:944
-#, fuzzy
+#: src/dialogs.cpp:387 src/game.cpp:944
 msgid "Difficulty"
 msgstr "Dificultad"
 
-#: src/dialogs.cpp:398
-#, fuzzy
+#: src/dialogs.cpp:401
 msgid "No Saved Games"
 msgstr "No hay ningún juego guardado."
 
-#: src/dialogs.cpp:399
-#, fuzzy
+#: src/dialogs.cpp:402
 msgid ""
 "There are no saved games to load.\n"
 "(Games are saved automatically when you complete a scenario)"
 msgstr ""
-"No hay juegos guardados para cargar.\n"
-"(Se guardan automáticamente cuando completas un escenario)"
+"No hay juegos guardados que cargar.\n"
+"(Se guardarán automáticamente cuando complete un escenario.)"
 
-#: src/dialogs.cpp:418
-#, fuzzy
+#: src/dialogs.cpp:421
 msgid "Delete Save"
 msgstr "Borrar partida"
 
-#: src/dialogs.cpp:433
+#: src/dialogs.cpp:436
 msgid "Import Saved Games"
 msgstr "Importar partidas grabadas"
 
-#: src/dialogs.cpp:434
-#, fuzzy
+#: src/dialogs.cpp:437
 msgid ""
 "Your saves directory contains some files from an old version of Battle for "
 "Wesnoth. Would you like to update these to the latest version? This may take "
 "some time."
 msgstr ""
-"Su directorio de partidas grabadas contiene algunos archivos que son "
-"anteriores a esta versión ¿Desea actualizarlos? Esto puede que necesite algo "
-"de tiempo."
+"Su directorio de partidas grabadas contiene algunos ficheros de una versión "
+"anterior de la Batalla de Wesnoth. ¿Desea actualizarlos? Esto puede llevar "
+"algo de tiempo..."
 
-#: src/dialogs.cpp:439
-#, fuzzy
+#: src/dialogs.cpp:442
 msgid ""
 "Your saves directory contains some files that don't appear to have been "
 "generated by this version of Battle for Wesnoth. Would you like to register "
 "these files with the game?"
 msgstr ""
-"Su directorio de partidas grabadas contiene algunos archivos que parece que "
-"no hayan sido generados por esta versión del juego ¿Desea registrar estos "
-"archivos dentro del juego?"
+"Su directorio de partidas grabadas contiene algunos ficheros que parece que "
+"no hayan sido generados por esta versión del juego. ¿Desea registrar estos "
+"ficheros dentro del juego?"
 
-#: src/dialogs.cpp:509
-#, fuzzy
+#: src/dialogs.cpp:512
 msgid "Show replay"
 msgstr "Muestra repetición"
 
-#: src/dialogs.cpp:512 src/hotkeys.cpp:133 src/multiplayer.cpp:82
+#: src/dialogs.cpp:515 src/hotkeys.cpp:133 src/multiplayer.cpp:82
 msgid "Load Game"
-msgstr "Cargar juego"
+msgstr "Cargar partida"
 
-#: src/dialogs.cpp:513
-#, fuzzy
+#: src/dialogs.cpp:516
 msgid "Choose the game to load"
-msgstr "Escoge juego a cargar"
+msgstr "Escoja partida a cargar"
 
-#: src/dialogs.cpp:567 src/multiplayer.cpp:121 src/show_dialog.cpp:443
-#: src/show_dialog.cpp:456
-#, fuzzy
+#: src/dialogs.cpp:570 src/multiplayer.cpp:121 src/show_dialog.cpp:444
+#: src/show_dialog.cpp:457
 msgid "Ok"
 msgstr "Aceptar"
 
-#: src/dialogs.cpp:568 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
-#: src/multiplayer_connect.cpp:50 src/show_dialog.cpp:457
-#: src/show_dialog.cpp:463
-#, fuzzy
+#: src/dialogs.cpp:571 src/multiplayer.cpp:120 src/multiplayer_client.cpp:117
+#: src/multiplayer_connect.cpp:49 src/show_dialog.cpp:458
+#: src/show_dialog.cpp:464
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/dialogs.cpp:617 src/dialogs.cpp:626
-#, fuzzy
+#: src/dialogs.cpp:620 src/dialogs.cpp:629
 msgid "Profile"
 msgstr "Perfil"
 
-#: src/dialogs.cpp:713 src/display.cpp:884 src/help.cpp:561
-#: src/playturn.cpp:1712
-#, fuzzy
+#: src/dialogs.cpp:716 src/display.cpp:884 src/help.cpp:561
+#: src/playturn.cpp:1711
 msgid "level"
 msgstr "nivel"
 
-#: src/dialogs.cpp:734 src/display.cpp:902 src/help.cpp:615
-#: src/playturn.cpp:1876 src/unit.cpp:1028
-#, fuzzy
+#: src/dialogs.cpp:737 src/display.cpp:902 src/help.cpp:615
+#: src/playturn.cpp:1875 src/unit.cpp:1028
 msgid "HP"
-msgstr "HP"
+msgstr "PG"
 
-#: src/dialogs.cpp:738 src/dialogs.cpp:746 src/display.cpp:906
-#: src/display.cpp:914 src/playturn.cpp:1714 src/playturn.cpp:1877
+#: src/dialogs.cpp:741 src/dialogs.cpp:749 src/display.cpp:906
+#: src/display.cpp:914 src/playturn.cpp:1713 src/playturn.cpp:1876
 #: src/unit.cpp:1087
-#, fuzzy
 msgid "XP"
-msgstr "XP"
+msgstr "PX"
 
-#: src/dialogs.cpp:751 src/display.cpp:918 src/help.cpp:616
-#: src/playturn.cpp:1878 src/unit.cpp:1064
-#, fuzzy
+#: src/dialogs.cpp:754 src/display.cpp:918 src/help.cpp:616
+#: src/playturn.cpp:1877 src/unit.cpp:1064
 msgid "Moves"
 msgstr "Movimientos"
 
-#: src/dialogs.cpp:764 src/display.cpp:935 src/help.cpp:693
-#: src/playturn.cpp:618 src/reports.cpp:229
-#, fuzzy
+#: src/dialogs.cpp:771 src/display.cpp:935 src/help.cpp:693
+#: src/playturn.cpp:616 src/reports.cpp:229
 msgid "melee"
-msgstr "melé"
+msgstr "meleé"
 
-#: src/dialogs.cpp:765 src/display.cpp:936 src/help.cpp:693
-#: src/playturn.cpp:618 src/reports.cpp:230
-#, fuzzy
+#: src/dialogs.cpp:772 src/display.cpp:936 src/help.cpp:693
+#: src/playturn.cpp:616 src/reports.cpp:230
 msgid "ranged"
 msgstr "distancia"
 
 #: src/display.cpp:865
-#, fuzzy
 msgid "healthy"
 msgstr "sano"
 
 #: src/display.cpp:870 src/reports.cpp:105
-#, fuzzy
 msgid "invisible"
 msgstr "invisible"
 
 #: src/game.cpp:135
-#, fuzzy
 msgid "Do you want to save a replay of this scenario?"
-msgstr "¿Quieres guardar la repetición de este escenario?"
+msgstr "¿Quiere guardar la repetición de este escenario?"
 
-#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1389
-#, fuzzy
+#: src/game.cpp:136 src/game.cpp:198 src/playturn.cpp:1388
 msgid "Name:"
 msgstr "Nombre:"
 
-#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1400
-#, fuzzy
+#: src/game.cpp:144 src/game.cpp:205 src/playturn.cpp:1399
 msgid "The game could not be saved"
 msgstr "La partida no ha podido ser guardada"
 
 #: src/game.cpp:197
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "¿Quieres guardar el juego?"
+msgstr "¿Quiere guardar el juego?"
 
 #: src/game.cpp:573
-#, fuzzy
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla por Wesnoth"
 
 #: src/game.cpp:793 src/multiplayer_connect.cpp:104
-#, fuzzy
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Esta partida guardada es de otra versión del juego. ¿Quieres intentar "
+"Esta partida guardada es de otra versión del juego. ¿Quiere intentar "
 "cargarla igualmente?"
 
 #: src/game.cpp:804 src/game.cpp:809 src/game.cpp:814 src/playlevel.cpp:533
 #: src/playlevel.cpp:747
-#, fuzzy
 msgid "The file you have tried to load is corrupt"
-msgstr "El archivo 'saves' es erróneo"
+msgstr "El fichero que ha intentado cargar está corrompido."
 
 #: src/game.cpp:914
-#, fuzzy
 msgid "There are no campaigns available"
 msgstr "No hay campañas disponibles"
 
 #: src/game.cpp:922
-#, fuzzy
 msgid "Choose the campaign you want to play:"
-msgstr "Selecciona la campaña que quieres jugar:"
+msgstr "Seleccione la campaña que quiera jugar:"
 
 #: src/game.cpp:945
-#, fuzzy
 msgid "Select difficulty level:"
-msgstr "Selecciona el nivel de dificultad:"
+msgstr "Seleccione el nivel de dificultad:"
 
 #: src/game.cpp:963
 msgid "Join Official Server"
@@ -17732,29 +17555,24 @@ msgid "Host a game without using a server"
 msgstr "Hospedar un juego sin usar un servidor remoto"
 
 #: src/game.cpp:968 src/multiplayer_client.cpp:267
-#, fuzzy
 msgid "Login"
 msgstr "Entrar"
 
 #: src/game.cpp:1048
-#, fuzzy
 msgid "Language"
 msgstr "Idioma"
 
 #: src/game.cpp:1049
-#, fuzzy
 msgid "Choose your preferred language"
-msgstr "Elija su lenguaje preferido"
+msgstr "Elija su idioma preferido"
 
 #: src/game.cpp:1096
-#, fuzzy
 msgid "The End"
 msgstr "Final"
 
 #: src/game.cpp:1097
-#, fuzzy
 msgid "You have reached the end of the currently playable levels"
-msgstr "Has finalizado todos los niveles jugables actualmente"
+msgstr "Ha finalizado todos los niveles jugables actualmente"
 
 #: src/game.cpp:1127
 msgid "Could not initialize video. Exiting.\n"
@@ -17765,42 +17583,34 @@ msgid "Could not initialize fonts. Exiting.\n"
 msgstr "No puedo iniciar tipografía. Saliendo.\n"
 
 #: src/help.cpp:568
-#, fuzzy
 msgid "Advances to"
-msgstr "Avanza a"
+msgstr "Puede convertirse en"
 
 #: src/help.cpp:594
-#, fuzzy
 msgid "Abilities"
-msgstr "habilidades"
+msgstr "Habilidades"
 
 #: src/help.cpp:617
-#, fuzzy
 msgid "Alignment"
-msgstr "alineación"
+msgstr "Alineamiento"
 
 #: src/help.cpp:622
-#, fuzzy
 msgid "Required XP"
-msgstr "XP requerida"
+msgstr "PX requeridos"
 
 #: src/help.cpp:632 src/reports.cpp:232
-#, fuzzy
 msgid "attacks"
 msgstr "ataques"
 
-#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1875
-#, fuzzy
+#: src/help.cpp:640 src/help.cpp:641 src/playturn.cpp:1874
 msgid "Name"
 msgstr "Nombre"
 
-#: src/help.cpp:644 src/help.cpp:645 src/playturn.cpp:1874
-#, fuzzy
+#: src/help.cpp:644 src/help.cpp:645 src/playturn.cpp:1873
 msgid "Type"
 msgstr "Tipo"
 
 #: src/help.cpp:648 src/help.cpp:649 src/unit_types.cpp:301
-#, fuzzy
 msgid "Dmg"
 msgstr "Daño"
 
@@ -17809,42 +17619,34 @@ msgid "Strikes"
 msgstr "Ataques"
 
 #: src/help.cpp:656 src/help.cpp:657
-#, fuzzy
 msgid "Range"
-msgstr "Rango"
+msgstr "Alcance"
 
 #: src/help.cpp:660 src/help.cpp:661
-#, fuzzy
 msgid "Special"
 msgstr "Especial"
 
 #: src/help.cpp:717
-#, fuzzy
 msgid "Resistances"
 msgstr "Resistencias"
 
 #: src/help.cpp:721 src/help.cpp:722
-#, fuzzy
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
 #: src/help.cpp:725 src/help.cpp:726
-#, fuzzy
 msgid "Resistance"
 msgstr "Resistencia"
 
 #: src/help.cpp:757
-#, fuzzy
 msgid "Terrain Modifiers"
 msgstr "Modificadores de terreno"
 
 #: src/help.cpp:761 src/help.cpp:762
-#, fuzzy
 msgid "Terrain"
 msgstr "Terreno"
 
 #: src/help.cpp:769 src/help.cpp:770
-#, fuzzy
 msgid "Defense"
 msgstr "Defensa"
 
@@ -17868,8 +17670,7 @@ msgstr "Siguiente unidad"
 msgid "End Unit Turn"
 msgstr "Finalizar turno de unidad"
 
-#: src/hotkeys.cpp:122 src/playturn.cpp:1458
-#, fuzzy
+#: src/hotkeys.cpp:122 src/playturn.cpp:1457
 msgid "Leader"
 msgstr "Líder"
 
@@ -17905,18 +17706,15 @@ msgstr "Acelerado"
 msgid "Unit Description"
 msgstr "Descripción de unidad"
 
-#: src/hotkeys.cpp:131 src/playturn.cpp:1358
-#, fuzzy
+#: src/hotkeys.cpp:131 src/playturn.cpp:1357
 msgid "Rename Unit"
 msgstr "Renombrar unidad"
 
 #: src/hotkeys.cpp:132
-#, fuzzy
 msgid "Save Game"
-msgstr "Guardar juego"
+msgstr "Guardar partida"
 
 #: src/hotkeys.cpp:134
-#, fuzzy
 msgid "Recruit"
 msgstr "Reclutar"
 
@@ -17925,7 +17723,6 @@ msgid "Repeat Recruit"
 msgstr "Repetir reclutamiento"
 
 #: src/hotkeys.cpp:136
-#, fuzzy
 msgid "Recall"
 msgstr "Reincorporar"
 
@@ -17934,7 +17731,6 @@ msgid "Toggle Grid"
 msgstr "Activar/desactivar rejilla"
 
 #: src/hotkeys.cpp:139
-#, fuzzy
 msgid "Status Table"
 msgstr "Tabla Estado"
 
@@ -17954,27 +17750,23 @@ msgstr "Crear unidad (¡depuración!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Cambiar bando de la unidad (¡depuración!)"
 
-#: src/hotkeys.cpp:144 src/preferences.cpp:920
-#, fuzzy
+#: src/hotkeys.cpp:144 src/preferences.cpp:910
 msgid "Preferences"
 msgstr "Preferencias"
 
 #: src/hotkeys.cpp:145
-#, fuzzy
 msgid "Scenario Objectives"
-msgstr "Objetivos escenario"
+msgstr "Objetivos del escenario"
 
-#: src/hotkeys.cpp:146 src/playturn.cpp:1927
-#, fuzzy
+#: src/hotkeys.cpp:146 src/playturn.cpp:1926
 msgid "Unit List"
-msgstr "Lista unidades"
+msgstr "Lista de unidades"
 
-#: src/hotkeys.cpp:147 src/playturn.cpp:2015
+#: src/hotkeys.cpp:147 src/playturn.cpp:1988
 msgid "Statistics"
 msgstr "Estadísticas"
 
 #: src/hotkeys.cpp:148
-#, fuzzy
 msgid "Quit Game"
 msgstr "Salir"
 
@@ -18048,7 +17840,7 @@ msgstr "Seleccionar todo"
 
 #: src/hotkeys.cpp:167
 msgid "Draw Terrain"
-msgstr ""
+msgstr "Dibujar terreno"
 
 #: src/hotkeys.cpp:168
 msgid "Delay Shroud Updates"
@@ -18063,7 +17855,6 @@ msgid "Continue Move"
 msgstr "Continuar moviendo"
 
 #: src/hotkeys.cpp:171
-#, fuzzy
 msgid "Find Label or Unit"
 msgstr "Buscar etiqueta o unidad"
 
@@ -18075,7 +17866,7 @@ msgstr "Hablar con aliados"
 msgid "Speak to All"
 msgstr "Hablar con todos"
 
-#: src/hotkeys.cpp:174 src/show_dialog.cpp:606
+#: src/hotkeys.cpp:174 src/show_dialog.cpp:608
 msgid "Help"
 msgstr "Ayuda"
 
@@ -18084,17 +17875,14 @@ msgid "View Chat Log"
 msgstr "Ver el registro de conversaciones"
 
 #: src/hotkeys.cpp:358 src/hotkeys.cpp:542
-#, fuzzy
 msgid "Do you really want to quit?"
-msgstr "¿Estás seguro de que quieres salir?"
+msgstr "¿Está seguro de que quieres salir?"
 
 #: src/intro.cpp:87
-#, fuzzy
 msgid "Next"
 msgstr "Siguiente"
 
 #: src/intro.cpp:88
-#, fuzzy
 msgid "Skip"
 msgstr "Saltar"
 
@@ -18102,156 +17890,127 @@ msgstr "Saltar"
 msgid "System default language"
 msgstr "Idioma predeterminado del sistema"
 
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
-#, fuzzy
+#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1010
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
 #: src/mapgen_dialog.cpp:72
-#, fuzzy
 msgid "Map Generator"
 msgstr "Generador de mapas"
 
 #: src/mapgen_dialog.cpp:77 src/multiplayer.cpp:478
-#, fuzzy
 msgid "Players"
 msgstr "Jugadores"
 
 #: src/mapgen_dialog.cpp:78
-#, fuzzy
 msgid "Width"
 msgstr "Anchura"
 
 #: src/mapgen_dialog.cpp:79
-#, fuzzy
 msgid "Height"
 msgstr "Altura"
 
 #: src/mapgen_dialog.cpp:80
-#, fuzzy
 msgid "Iterations"
 msgstr "Iteraciones"
 
 #: src/mapgen_dialog.cpp:81
-#, fuzzy
 msgid "Bump Size"
 msgstr "Elevación"
 
-#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1459
-#, fuzzy
+#: src/mapgen_dialog.cpp:82 src/playturn.cpp:1458
 msgid "Villages"
 msgstr "Aldeas"
 
 #: src/mapgen_dialog.cpp:83
-#, fuzzy
 msgid "Landform"
 msgstr "Perfil de"
 
-#: src/mapgen_dialog.cpp:182
-#, fuzzy
+#: src/mapgen_dialog.cpp:183
 msgid "Roads Between Castles"
 msgstr "Carreteras entre los castillos"
 
-#: src/mapgen_dialog.cpp:245
-#, fuzzy
+#: src/mapgen_dialog.cpp:246
 msgid "/1000 tiles"
 msgstr "/1000 casillas"
 
-#: src/mapgen_dialog.cpp:250
-#, fuzzy
+#: src/mapgen_dialog.cpp:251
 msgid "Coastal"
 msgstr "Costa"
 
-#: src/mapgen_dialog.cpp:250
-#, fuzzy
+#: src/mapgen_dialog.cpp:251
 msgid "Inland"
 msgstr "Interior"
 
-#: src/mapgen_dialog.cpp:250
-#, fuzzy
+#: src/mapgen_dialog.cpp:251
 msgid "Island"
 msgstr "Isla"
 
 #: src/multiplayer.cpp:94
-#, fuzzy
 msgid "The maximum turns the game will go for"
 msgstr "El máximo número de turnos que puede durar la partida"
 
 #: src/multiplayer.cpp:100
-#, fuzzy
 msgid "The amount of income each village yields per turn"
 msgstr "El número de piezas de oro que proporciona cada aldea por turno"
 
 #: src/multiplayer.cpp:106
-#, fuzzy
 msgid "The amount of experience a unit needs to advance"
-msgstr "Varía la cantidad de experiencia necesaria para poder subir de nivel"
+msgstr "La cantidad de experiencia necesaria para poder subir de nivel"
 
 #: src/multiplayer.cpp:108
-#, fuzzy
 msgid "Fog Of War"
-msgstr "Niebla de Guerra"
+msgstr "Niebla de guerra"
 
 #: src/multiplayer.cpp:110
-#, fuzzy
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "No se verá al enemigo hasta que esté dentro del movimiento de las tropas "
 "propias"
 
 #: src/multiplayer.cpp:112 src/multiplayer_lobby.cpp:127
-#, fuzzy
 msgid "Shroud"
 msgstr "Oculto"
 
 #: src/multiplayer.cpp:114
-#, fuzzy
 msgid "The map is unknown until your units explore it"
-msgstr "El mapa será desconocido hasta que sea explorado"
+msgstr "El mapa será desconocido hasta que se explore"
 
 #: src/multiplayer.cpp:116 src/reports.cpp:374
-#, fuzzy
 msgid "Observers"
 msgstr "Observadores"
 
 #: src/multiplayer.cpp:118
-#, fuzzy
 msgid "Allow users who are not playing to watch the game"
 msgstr "Permite a usuarios que no juegan ver la partida"
 
 #: src/multiplayer.cpp:123
-#, fuzzy
 msgid "Regenerate"
 msgstr "Regenerar"
 
 #: src/multiplayer.cpp:125
-#, fuzzy
 msgid "Settings..."
 msgstr "Ajustes..."
 
 #: src/multiplayer.cpp:129
-#, fuzzy
 msgid "Share View"
 msgstr "Compartir visión"
 
 #: src/multiplayer.cpp:130
-#, fuzzy
 msgid "Share Maps"
 msgstr "Compartir mapas"
 
 #: src/multiplayer.cpp:131
-#, fuzzy
 msgid "Share None"
-msgstr "No compartir"
+msgstr "No compartir nada"
 
 #: src/multiplayer.cpp:142 src/multiplayer_connect.cpp:177
-#, fuzzy
 msgid "No multiplayer sides."
 msgstr "No hay bandos."
 
 #: src/multiplayer.cpp:170 src/multiplayer_lobby.cpp:158
 msgid "Create Game"
-msgstr "Crear juego"
+msgstr "Crear partida"
 
 #: src/multiplayer.cpp:174
 msgid "Name of game"
@@ -18259,7 +18018,7 @@ msgstr "Nombre de la partida"
 
 #: src/multiplayer.cpp:175
 msgid "game name prefix^"
-msgstr ""
+msgstr "Juego de "
 
 #: src/multiplayer.cpp:175
 msgid "game name suffix^'s game"
@@ -18297,10 +18056,9 @@ msgstr "Conexión terminada"
 msgid "Receiving game list..."
 msgstr "Recibiendo lista de partidas..."
 
-#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:377
-#: src/multiplayer_connect.cpp:379 src/playlevel.cpp:732 src/playturn.cpp:1458
-#: src/playturn.cpp:1463 src/playturn.cpp:1550
-#, fuzzy
+#: src/multiplayer_client.cpp:93 src/multiplayer_connect.cpp:382
+#: src/multiplayer_connect.cpp:384 src/playlevel.cpp:732 src/playturn.cpp:1457
+#: src/playturn.cpp:1462 src/playturn.cpp:1549
 msgid "Gold"
 msgstr "Oro"
 
@@ -18317,9 +18075,8 @@ msgid "Connecting to remote host..."
 msgstr "Conectando al servidor remoto..."
 
 #: src/multiplayer_client.cpp:266
-#, fuzzy
 msgid "You must log in to this server"
-msgstr "Tú debes entrar en el servidor"
+msgstr "Debe entrar en el servidor"
 
 #: src/multiplayer_client.cpp:346
 msgid "Getting game data..."
@@ -18342,24 +18099,18 @@ msgid "The side you have chosen is no longer available"
 msgstr "El bando que ha escogido ya no está disponible."
 
 #: src/multiplayer_client.cpp:504
-#, fuzzy
 msgid "Show replay of game up to save point?"
-msgstr ""
-"¿Mostrar repetición del juego hasta el momento de ser\n"
-"guardado?"
+msgstr "¿Mostrar repetición del juego hasta el momento de ser guardado?"
 
 #: src/multiplayer_connect.cpp:48
-#, fuzzy
-msgid " Computer vs Computer "
-msgstr " Ordenador vs Ordenador "
-
-#: src/multiplayer_connect.cpp:49
-#, fuzzy
 msgid "I'm Ready"
 msgstr "Estoy listo"
 
+#: src/multiplayer_connect.cpp:50
+msgid " Computer vs Computer "
+msgstr " Ordenador contra Ordenador "
+
 #: src/multiplayer_connect.cpp:97
-#, fuzzy
 msgid "This is not a multiplayer save"
 msgstr "Ésta no es una partida guardada en modo multijugador."
 
@@ -18370,18 +18121,18 @@ msgid ""
 "@Defeat enemy leader(s)"
 msgstr ""
 "Victoria\n"
-"@Derrota a los líderes enemigos"
+"@Derrota al/los líder/es enemigo/s"
 
 #: src/multiplayer_connect.cpp:257
 msgid "Network Player"
-msgstr "Jugador de red"
+msgstr "Jugador en red"
 
 #: src/multiplayer_connect.cpp:258
 msgid "Local Player"
 msgstr "Jugador local"
 
-#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:466
-#: src/multiplayer_connect.cpp:580 src/multiplayer_connect.cpp:674
+#: src/multiplayer_connect.cpp:259 src/multiplayer_connect.cpp:475
+#: src/multiplayer_connect.cpp:589 src/multiplayer_connect.cpp:683
 msgid "Computer Player"
 msgstr "IA (computadora)"
 
@@ -18389,78 +18140,64 @@ msgstr "IA (computadora)"
 msgid "Empty"
 msgstr "Vacío"
 
-#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:367
-#: src/multiplayer_connect.cpp:370
-#, fuzzy
+#: src/multiplayer_connect.cpp:288 src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:375
 msgid "Team"
 msgstr "Equipo"
 
 #: src/multiplayer_connect.cpp:295
-#, fuzzy
 msgid "Red"
 msgstr "Rojo"
 
 #: src/multiplayer_connect.cpp:297
-#, fuzzy
 msgid "Blue"
 msgstr "Azul"
 
 #: src/multiplayer_connect.cpp:299
-#, fuzzy
 msgid "Green"
 msgstr "Verde"
 
 #: src/multiplayer_connect.cpp:301
-#, fuzzy
 msgid "Yellow"
 msgstr "Amarillo"
 
 #: src/multiplayer_connect.cpp:303
-#, fuzzy
 msgid "Purple"
 msgstr "Morado"
 
 #: src/multiplayer_connect.cpp:305
-#, fuzzy
 msgid "Orange"
 msgstr "Naranja"
 
 #: src/multiplayer_connect.cpp:307
-#, fuzzy
 msgid "Grey"
 msgstr "Gris"
 
 #: src/multiplayer_connect.cpp:309
-#, fuzzy
 msgid "White"
 msgstr "Blanco"
 
 #: src/multiplayer_connect.cpp:311
-#, fuzzy
 msgid "Brown"
 msgstr "Marrón"
 
-#: src/multiplayer_connect.cpp:356
-#, fuzzy
+#: src/multiplayer_connect.cpp:361
 msgid "Game Lobby"
-msgstr "Sala de Juego"
+msgstr "Sala de juego"
 
-#: src/multiplayer_connect.cpp:359 src/multiplayer_connect.cpp:361
-#, fuzzy
+#: src/multiplayer_connect.cpp:364 src/multiplayer_connect.cpp:366
 msgid "Player/Type"
 msgstr "Jugador/Tipo"
 
-#: src/multiplayer_connect.cpp:362 src/multiplayer_connect.cpp:365
-#, fuzzy
+#: src/multiplayer_connect.cpp:367 src/multiplayer_connect.cpp:370
 msgid "Race"
 msgstr "Raza"
 
-#: src/multiplayer_connect.cpp:372 src/multiplayer_connect.cpp:375
-#, fuzzy
+#: src/multiplayer_connect.cpp:377 src/multiplayer_connect.cpp:380
 msgid "Color"
 msgstr "Color"
 
-#: src/multiplayer_connect.cpp:529 src/multiplayer_connect.cpp:533
+#: src/multiplayer_connect.cpp:538 src/multiplayer_connect.cpp:542
 msgid "Waiting for network players to join"
 msgstr "Esperando a que se unan jugadores..."
 
@@ -18481,604 +18218,486 @@ msgid "Observe Game"
 msgstr "Observar juego"
 
 #: src/multiplayer_lobby.cpp:159
-#, fuzzy
 msgid "Quit"
 msgstr "Salir"
 
 #: src/playlevel.cpp:672
-#, fuzzy
 msgid "Game Over"
 msgstr "Fin del juego"
 
 #: src/playlevel.cpp:673
-#, fuzzy
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
 #: src/playlevel.cpp:686
-#, fuzzy
 msgid "Defeat"
 msgstr "Derrota"
 
 #: src/playlevel.cpp:687
-#, fuzzy
 msgid "You have been defeated!"
 msgstr "¡Has sido derrotado!"
 
 #: src/playlevel.cpp:719
-#, fuzzy
 msgid "Victory"
 msgstr "Victoria"
 
 #: src/playlevel.cpp:720
-#, fuzzy
 msgid "You have emerged victorious!"
 msgstr "¡Has vencido!"
 
 #: src/playlevel.cpp:722
-#, fuzzy
 msgid "Remaining gold"
 msgstr "Oro restante"
 
 #: src/playlevel.cpp:725
-#, fuzzy
 msgid "Early finish bonus"
 msgstr "Bonificación por rapidez"
 
 #: src/playlevel.cpp:727
-#, fuzzy
 msgid "per turn"
 msgstr "por turno"
 
 #: src/playlevel.cpp:728
-#, fuzzy
 msgid "Turns finished early"
 msgstr "Turnos finalizados pronto"
 
 #: src/playlevel.cpp:730
-#, fuzzy
 msgid "Bonus"
 msgstr "Bonificación"
 
 #: src/playlevel.cpp:737
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "80% of gold is retained for the next scenario"
-msgstr "El 50% del oro se conserva para el siguiente escenario"
+msgstr "El 80% del oro se conserva para el siguiente escenario"
 
 #: src/playlevel.cpp:738
-#, fuzzy
 msgid "Retained Gold"
 msgstr "Oro conservado"
 
 #: src/playlevel.cpp:762
-#, fuzzy
 msgid ""
 "A network disconnection has occured, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Ha ocurrido una desconexión en la red y el juego no puede continuar. "
-"¿Quieres guardar la partida?"
+"Se ha producido una desconexión en la red y el juego no puede continuar. "
+"¿Quiere guardar la partida?"
 
-#: src/playturn.cpp:78
-#, fuzzy
+#: src/playturn.cpp:79
 msgid "It is now your turn"
-msgstr "Es tu turno"
+msgstr "Es su turno."
 
-#: src/playturn.cpp:503
-#, fuzzy
+#: src/playturn.cpp:499
 msgid "Attacker"
 msgstr "Atacante"
 
-#: src/playturn.cpp:505
-#, fuzzy
+#: src/playturn.cpp:501
 msgid "Defender"
 msgstr "Defensor"
 
-#: src/playturn.cpp:529 src/playturn.cpp:652
-#, fuzzy
+#: src/playturn.cpp:525 src/playturn.cpp:650
 msgid "Damage Calculations"
 msgstr "Cálculos del daño"
 
-#: src/playturn.cpp:618
+#: src/playturn.cpp:616
 msgid "Melee"
 msgstr "Meleé"
 
-#: src/playturn.cpp:631 src/reports.cpp:209
-#, fuzzy
+#: src/playturn.cpp:629 src/reports.cpp:209
 msgid "vs"
 msgstr "contra"
 
-#: src/playturn.cpp:664
-#, fuzzy
+#: src/playturn.cpp:662
 msgid "Attack Enemy"
 msgstr "Atacar al enemigo"
 
-#: src/playturn.cpp:665
-#, fuzzy
+#: src/playturn.cpp:663
 msgid "Choose weapon"
 msgstr "Escoger arma"
 
-#: src/playturn.cpp:1145
-#, fuzzy
+#: src/playturn.cpp:1144
 msgid ""
 "You have not started your turn yet.  Do you really want to end your turn?"
-msgstr "Aún no ha empezado el turno ¿Está seguro de que quiere terminarlo?"
+msgstr "Aún no ha empezado el turno. ¿Está seguro de que quiere terminarlo?"
 
-#: src/playturn.cpp:1154 src/playturn.cpp:1159
-#, fuzzy
+#: src/playturn.cpp:1153 src/playturn.cpp:1158
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Algunas unidades todavía tienen movimientos. ¿Quieres finalizar tu turno?"
+"Algunas unidades todavía tienen puntos de movimiento. ¿Quiere finalizar su "
+"turno?"
 
-#: src/playturn.cpp:1175
-#, fuzzy
+#: src/playturn.cpp:1174
 msgid "Auto-Save"
-msgstr "Auto-Guardado"
+msgstr "Autoguardado"
 
-#: src/playturn.cpp:1177
-#, fuzzy
+#: src/playturn.cpp:1176
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
-"El juego no se ha podido guardar automáticamente. Por favor, guarda "
+"El juego no se ha podido guardar automáticamente. Por favor, guárdelo "
 "manualmente."
 
-#: src/playturn.cpp:1397
-#, fuzzy
+#: src/playturn.cpp:1396
 msgid "The game has been saved"
-msgstr "El juego ha sido guardado"
+msgstr "El juego ha sido guardado."
 
-#: src/playturn.cpp:1459
-#, fuzzy
+#: src/playturn.cpp:1458
 msgid "Units"
 msgstr "Unidades"
 
-#: src/playturn.cpp:1460
-#, fuzzy
+#: src/playturn.cpp:1459
 msgid "Income"
 msgstr "Ingresos"
 
-#: src/playturn.cpp:1460
-#, fuzzy
+#: src/playturn.cpp:1459
 msgid "Upkeep"
 msgstr "Mantenimiento"
 
-#: src/playturn.cpp:1556
-#, fuzzy
+#: src/playturn.cpp:1555
 msgid "You have no units available to recruit."
-msgstr "No tienes unidades disponibles para reclutar."
+msgstr "No tiene unidades disponibles para reclutar."
 
-#: src/playturn.cpp:1569
-#, fuzzy
+#: src/playturn.cpp:1568
 msgid "Recruit unit"
 msgstr "Reclutar unidad"
 
-#: src/playturn.cpp:1598
-#, fuzzy
+#: src/playturn.cpp:1597
 msgid "You don't have enough gold to recruit that unit"
-msgstr "No tienes suficiente oro para reclutar a esta unidad."
+msgstr "No tiene suficiente oro para reclutar a esta unidad."
 
-#: src/playturn.cpp:1656
-#, fuzzy
+#: src/playturn.cpp:1655
 msgid ""
 "My lord, this unit is an experienced one, having advanced levels! Do you "
 "really want to dismiss $noun?"
 msgstr ""
-"¡Mi señor, esta unidad es veterana y tiene \n"
-"experiencia! ¿Realmente quieres licenciar al $noun?"
+"¡Mi señor, esta unidad es veterana y tiene experiencia! ¿Realmente queréis "
+"licenciar a $noun?"
 
-#: src/playturn.cpp:1658
-#, fuzzy
+#: src/playturn.cpp:1657
 msgid ""
 "My lord, this unit is close to advancing a level! Do you really want to "
 "dismiss $noun?"
 msgstr ""
-"¡Mi señor, está unidad está a punto de subir de nivel! ¿Realmente quieres "
+"¡Mi señor, está unidad está a punto de subir de nivel! ¿Realmente queréis "
 "licenciar a $noun?"
 
-#: src/playturn.cpp:1663
-#, fuzzy
+#: src/playturn.cpp:1662
 msgid "her"
 msgstr "ella"
 
-#: src/playturn.cpp:1663
-#, fuzzy
+#: src/playturn.cpp:1662
 msgid "him"
 msgstr "él"
 
-#: src/playturn.cpp:1696
-#, fuzzy
+#: src/playturn.cpp:1695
 msgid "You are seperated from your soldiers and may not recall them"
-msgstr "Estás separado de tus soldados y no puedes reincorporarlos."
+msgstr "Está separado de sus soldados y no puede reincorporarlos."
 
-#: src/playturn.cpp:1698
-#, fuzzy
+#: src/playturn.cpp:1697
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"No hay tropas disponibles para reincorporar. \n"
-"(Debes tener veteranos supervivientes de escenarios previos)"
+"No hay tropas disponibles para reincorporar.\n"
+"(Debe tener veteranos supervivientes de escenarios previos.)"
 
-#: src/playturn.cpp:1702
-#, fuzzy
+#: src/playturn.cpp:1701
 msgid "You must have at least"
-msgstr "Debes tener al menos"
+msgstr "Debe tener al menos"
 
-#: src/playturn.cpp:1704
-#, fuzzy
+#: src/playturn.cpp:1703
 msgid "gold pieces to recall a unit"
-msgstr "monedas de oro para reincorporar a una unidad."
+msgstr "piezas de oro para reincorporar a una unidad."
 
-#: src/playturn.cpp:1727
-#, fuzzy
+#: src/playturn.cpp:1726
 msgid "Dismiss Unit"
 msgstr "Licenciar unidad"
 
-#: src/playturn.cpp:1740
-#, fuzzy
+#: src/playturn.cpp:1739
 msgid "Select unit"
 msgstr "Seleccionar unidad"
 
-#: src/playturn.cpp:1784
-#, fuzzy
+#: src/playturn.cpp:1783
 msgid "Message"
 msgstr "Mensaje"
 
-#: src/playturn.cpp:1784
-#, fuzzy
+#: src/playturn.cpp:1783
 msgid "Send to allies only"
 msgstr "Mandarlo sólo a aliados"
 
-#: src/playturn.cpp:1879
-#, fuzzy
+#: src/playturn.cpp:1878
 msgid "Location"
 msgstr "Lugar"
 
-#: src/playturn.cpp:1961 src/playturn.cpp:2021
-#, fuzzy
+#: src/playturn.cpp:1960 src/playturn.cpp:1994
 msgid "Recruits"
 msgstr "Reclutas"
 
-#: src/playturn.cpp:1967 src/playturn.cpp:2025
-#, fuzzy
+#: src/playturn.cpp:1966 src/playturn.cpp:1998
 msgid "Recalls"
 msgstr "Veteranos"
 
-#: src/playturn.cpp:1973 src/playturn.cpp:2029
-#, fuzzy
+#: src/playturn.cpp:1972 src/playturn.cpp:2002
 msgid "Advancements"
 msgstr "Avances"
 
-#: src/playturn.cpp:1979 src/playturn.cpp:2033
-#, fuzzy
+#: src/playturn.cpp:1978 src/playturn.cpp:2006
 msgid "Losses"
 msgstr "Pérdidas"
 
-#: src/playturn.cpp:1985 src/playturn.cpp:2037
-#, fuzzy
+#: src/playturn.cpp:1984 src/playturn.cpp:2010
 msgid "Kills"
 msgstr "Muertos"
 
-#: src/playturn.cpp:1991
-msgid "Damage Inflicted"
-msgstr ""
-
-#: src/playturn.cpp:1997
-msgid "Damage Taken"
-msgstr ""
-
-#: src/playturn.cpp:2003
-msgid "Damage Inflicted (EV)"
-msgstr ""
-
-#: src/playturn.cpp:2010
-msgid "Damage Taken (EV)"
-msgstr ""
-
-#: src/playturn.cpp:2052
-#, fuzzy
+#: src/playturn.cpp:2025
 msgid "Search"
 msgstr "Buscar"
 
-#: src/playturn.cpp:2062
+#: src/playturn.cpp:2035
 msgid "prompt^Command:"
-msgstr ""
+msgstr "Orden:"
 
-#: src/playturn.cpp:2073
-#, fuzzy
+#: src/playturn.cpp:2046
 msgid "Chat Log"
 msgstr "Registro de conversaciones"
 
-#: src/playturn.cpp:2138
+#: src/playturn.cpp:2111
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr ""
+msgstr "No se encontró una etiquieta o unidad con la cadena «$search»."
 
-#: src/playturn.cpp:2212
-#, fuzzy
+#: src/playturn.cpp:2184
 msgid "Place Label"
 msgstr "Poner etiqueta"
 
-#: src/playturn.cpp:2213
-#, fuzzy
+#: src/playturn.cpp:2185
 msgid "Label"
 msgstr "Etiqueta"
 
-#: src/playturn.cpp:2376
-#, fuzzy
+#: src/playturn.cpp:2348
 msgid ""
 "The games are out of sync and will have to exit. Do you want to save an "
 "error log of your game?"
 msgstr ""
-"El juego no está sincronizado y tendras que salir. ¿Quieres guardar un log "
-"de tu partida?"
+"El juego no está sincronizado y tendrá que salir. ¿Quiere guardar un "
+"registro de error de su partida?"
 
-#: src/playturn.cpp:2428
-#, fuzzy
+#: src/playturn.cpp:2400
 msgid "Replace with AI"
 msgstr "Reemplazar con IA"
 
-#: src/playturn.cpp:2429
-#, fuzzy
+#: src/playturn.cpp:2401
 msgid "Replace with local player"
 msgstr "Reemplazar con jugador local"
 
-#: src/playturn.cpp:2430
-#, fuzzy
+#: src/playturn.cpp:2402
 msgid "Abort game"
-msgstr "Abortar juego"
+msgstr "Terminar juego"
 
-#: src/playturn.cpp:2433
-#, fuzzy
+#: src/playturn.cpp:2405
 msgid "Replace with "
-msgstr "Reemplazar con IA"
+msgstr "Reemplazar con "
 
-#: src/playturn.cpp:2437
-#, fuzzy
+#: src/playturn.cpp:2409
 msgid "has left the game. What do you want to do?"
-msgstr " ha dejado el juego. ¿Qué quieres hacer?"
+msgstr "ha dejado el juego. ¿Qué quiere hacer?"
 
 #: src/preferences.cpp:142 src/preferences.cpp:188
-#, fuzzy
 msgid ""
 "The video mode could not be changed. Your window manager must be set to 16 "
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"El modo de vídeo no ha podido cambiarse. Tu escritorio debe estar en 16 bits "
-"para poder funcionar en modo ventana. Tu pantalla debe soportar una "
+"El modo de vídeo no ha podido cambiarse. Su escritorio debe estar en 16 bits "
+"para poder funcionar en modo ventana. Su pantalla debe soportar una "
 "resolución de 1024x768x16 para jugar a pantalla completa."
 
 #: src/preferences.cpp:360
 msgid "player"
 msgstr "jugador"
 
-#: src/preferences.cpp:637
-#, fuzzy
+#: src/preferences.cpp:627
 msgid "Full Screen"
 msgstr "Pantalla completa"
 
-#: src/preferences.cpp:638
-#, fuzzy
+#: src/preferences.cpp:628
 msgid "Accelerated Speed"
-msgstr "Velocidad Acelerada"
+msgstr "Velocidad acelerada"
 
-#: src/preferences.cpp:639
-#, fuzzy
+#: src/preferences.cpp:629
 msgid "Skip AI Moves"
 msgstr "Omitir los movimientos de la IA"
 
-#: src/preferences.cpp:640
-#, fuzzy
+#: src/preferences.cpp:630
 msgid "Show Grid"
 msgstr "Mostrar rejilla"
 
-#: src/preferences.cpp:641
-#, fuzzy
+#: src/preferences.cpp:631
 msgid "Show Floating Labels"
-msgstr "Mostrar "
+msgstr "Mostrar etiquetas flotantes"
 
-#: src/preferences.cpp:642
-#, fuzzy
+#: src/preferences.cpp:632
 msgid "Turn Dialog"
-msgstr "Diálogos"
+msgstr "Diálogo"
 
-#: src/preferences.cpp:643
-#, fuzzy
+#: src/preferences.cpp:633
 msgid "Turn Bell"
 msgstr "Campana"
 
-#: src/preferences.cpp:644
-#, fuzzy
+#: src/preferences.cpp:634
 msgid "Show Team Colors"
-msgstr "Muestra colores equipo"
+msgstr "Muestra colores de equipo"
 
-#: src/preferences.cpp:645
-#, fuzzy
+#: src/preferences.cpp:635
 msgid "Show Color Cursors"
 msgstr "Mostrar cursores coloreados"
 
-#: src/preferences.cpp:646
-#, fuzzy
+#: src/preferences.cpp:636
 msgid "Show Haloing Effects"
 msgstr "Mostrar halos"
 
-#: src/preferences.cpp:647
-#, fuzzy
+#: src/preferences.cpp:637
 msgid "Video Mode"
 msgstr "Modo de vídeo"
 
-#: src/preferences.cpp:648
-#, fuzzy
+#: src/preferences.cpp:638
 msgid "Hotkeys"
-msgstr "Teclado"
+msgstr "Accesos rápidos"
 
-#: src/preferences.cpp:649
-#, fuzzy
+#: src/preferences.cpp:639
 msgid "Adjust Gamma"
-msgstr "Ajustar el brillo "
+msgstr "Ajustar el brillo («gamma»)"
 
-#: src/preferences.cpp:650
-#, fuzzy
+#: src/preferences.cpp:640
 msgid "Music Volume:"
-msgstr "Volumen música:"
+msgstr "Volumen de música:"
 
-#: src/preferences.cpp:650
-#, fuzzy
+#: src/preferences.cpp:640
 msgid "SFX Volume:"
-msgstr "Volumen efectos:"
+msgstr "Volumen de efectos:"
 
-#: src/preferences.cpp:651
-#, fuzzy
+#: src/preferences.cpp:641
 msgid "Gamma:"
-msgstr "Brillo:"
+msgstr "Brillo («gamma»):"
 
-#: src/preferences.cpp:651
-#, fuzzy
+#: src/preferences.cpp:641
 msgid "Scroll Speed:"
-msgstr "Velocidad scroll:"
+msgstr "Velocidad desplazamiento:"
 
-#: src/preferences.cpp:663
-#, fuzzy
+#: src/preferences.cpp:653
 msgid "Change the sound effects volume"
 msgstr "Cambia el volumen de los sonidos"
 
-#: src/preferences.cpp:668
-#, fuzzy
+#: src/preferences.cpp:658
 msgid "Change the music volume"
 msgstr "Cambia el volumen de la música"
 
-#: src/preferences.cpp:673
-#, fuzzy
+#: src/preferences.cpp:663
 msgid "Change the speed of scrolling around the map"
 msgstr "Cambia la velocidad de desplazamiento del mapa"
 
-#: src/preferences.cpp:676 src/preferences.cpp:681
-#, fuzzy
+#: src/preferences.cpp:666 src/preferences.cpp:671
 msgid "Change the brightness of the display"
 msgstr "Cambia el brillo"
 
-#: src/preferences.cpp:684
-#, fuzzy
+#: src/preferences.cpp:674
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
 
-#: src/preferences.cpp:687
-#, fuzzy
+#: src/preferences.cpp:677
 msgid "Make units move and fight faster"
 msgstr "Las unidades se mueven y luchan más deprisa"
 
-#: src/preferences.cpp:690
-#, fuzzy
+#: src/preferences.cpp:680
 msgid "Do not animate AI units moving"
-msgstr "No anima el movimiento de las unidades controladas por la IA"
+msgstr "No animar el movimiento de las unidades controladas por la IA"
 
-#: src/preferences.cpp:693
-#, fuzzy
+#: src/preferences.cpp:683
 msgid "Overlay a grid onto the map"
 msgstr "Dibuja una rejilla por encima del mapa"
 
-#: src/preferences.cpp:696
-#, fuzzy
+#: src/preferences.cpp:686
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
-"Muestra un texto encima de la unidad cuando sufre daño para indicar cuanto "
+"Muestra un texto encima de la unidad cuando sufre daño para indicar cuánto "
 "ha recibido"
 
-#: src/preferences.cpp:698
-#, fuzzy
+#: src/preferences.cpp:688
 msgid "Change the resolution the game runs at"
-msgstr "Cambia la resolución enChange the resolution the game runs at"
+msgstr "Cambia la resolución en la que funciona el juego"
 
-#: src/preferences.cpp:701
-#, fuzzy
+#: src/preferences.cpp:691
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Anuncia con un diálogo el inicio del turno"
+msgstr "Anuncia con un diálogo el inicio de su turno"
 
-#: src/preferences.cpp:704
-#, fuzzy
+#: src/preferences.cpp:694
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Hace sonar una campana al inicio del turno"
+msgstr "Hace sonar una campana al inicio de su turno"
 
-#: src/preferences.cpp:707
-#, fuzzy
+#: src/preferences.cpp:697
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
 "Distingue a las unidades de cada bando dibujando un círculo de un "
-"determinado color a su base"
+"determinado color en su base"
 
-#: src/preferences.cpp:710
-#, fuzzy
+#: src/preferences.cpp:700
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Usa punteros coloreados (podría ser más lento)"
 
-#: src/preferences.cpp:713
-#, fuzzy
+#: src/preferences.cpp:703
 msgid "Use graphical special effects (may be slower)"
 msgstr "Usa efectos especiales (podría ser más lento)"
 
-#: src/preferences.cpp:715
-#, fuzzy
+#: src/preferences.cpp:705
 msgid "View and configure keyboard shortcuts"
 msgstr "Configura los accesos rápidos de teclado"
 
-#: src/preferences.cpp:908
+#: src/preferences.cpp:898
 msgid "Prefs section^General"
-msgstr ""
+msgstr "General"
 
-#: src/preferences.cpp:909
+#: src/preferences.cpp:899
 msgid "Prefs section^Display"
-msgstr ""
+msgstr "Vídeo"
 
-#: src/preferences.cpp:910
+#: src/preferences.cpp:900
 msgid "Prefs section^Sound"
-msgstr ""
+msgstr "Sonido"
 
-#: src/preferences.cpp:966
-#, fuzzy
+#: src/preferences.cpp:956
 msgid "There are no alternative video modes available"
-msgstr "No tienes modos de vídeo alternativos disponibles."
+msgstr "No tiene modos de vídeo alternativos disponibles."
 
-#: src/preferences.cpp:996
-#, fuzzy
+#: src/preferences.cpp:987
 msgid "Choose Resolution"
-msgstr "Selecciona Resolución"
+msgstr "Seleccione resolución"
 
-#: src/preferences.cpp:1024
-#, fuzzy
+#: src/preferences.cpp:1015
 msgid "Hotkey Settings"
-msgstr "Configuración Teclado"
+msgstr "Configuración de accesos rápidos"
 
-#: src/preferences.cpp:1028 src/preferences.cpp:1086
-#, fuzzy
+#: src/preferences.cpp:1019 src/preferences.cpp:1077
 msgid "Press desired HotKey"
-msgstr "Presiona la tecla deseada"
+msgstr "Presione la tecla deseada"
 
-#: src/preferences.cpp:1047
-#, fuzzy
+#: src/preferences.cpp:1038
 msgid "Change Hotkey"
-msgstr "Cambiar Tecla"
+msgstr "Cambiar acceso rápido"
 
-#: src/preferences.cpp:1050
-#, fuzzy
+#: src/preferences.cpp:1041
 msgid "Save Hotkeys"
-msgstr "Guardar teclas"
+msgstr "Guardar accesos rápidos"
 
-#: src/preferences.cpp:1119
-#, fuzzy
+#: src/preferences.cpp:1110
 msgid "This HotKey is already in use."
-msgstr "La tecla ya está siendo usada. No se han hecho cambios."
+msgstr "Esa combinación ya se está usando."
 
 #: src/reports.cpp:105
-#, fuzzy
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Esta unidad es invisible. No puede ser vista ni atacada por unidades "
 "enemigas."
 
 #: src/reports.cpp:110
-#, fuzzy
 msgid ""
 "This unit has been slowed. It moves at half normal speed and receives one "
 "less attack than normal in combat."
@@ -19087,7 +18706,6 @@ msgstr ""
 "tiene un ataque menos en combate."
 
 #: src/reports.cpp:115
-#, fuzzy
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -19096,39 +18714,33 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Esta unidad está envenenada. Perderá 8 HP cada turno hasta que encuentre una "
-"cura para el veneno en una aldea o una unidad amiga con la habilidad "
-"'sanar'.\n"
+"Esta unidad está envenenada. Perderá 8 PG cada turno hasta que encuentre una "
+"cura para el veneno en una aldea o una unidad amiga con la habilidad de "
+"«curar».\n"
 "Las unidades no pueden morir envenenadas. El veneno no afectará por debajo "
-"de 1 HP."
+"de 1 PG."
 
 #: src/reports.cpp:122
-#, fuzzy
 msgid "This unit has been turned to stone. It may not move or attack."
 msgstr "Esta unidad se ha convertido en piedra. No se puede mover ni atacar."
 
 #: src/reports.cpp:231
-#, fuzzy
 msgid "damage"
 msgstr "daño"
 
 #: src/reports.cpp:236
-#, fuzzy
 msgid "hexes"
 msgstr "hexágonos"
 
 #: src/reports.cpp:253
-#, fuzzy
 msgid "Lawful units"
 msgstr "Unidades legales"
 
 #: src/reports.cpp:255
-#, fuzzy
 msgid "Neutral units"
 msgstr "Unidades neutrales"
 
 #: src/reports.cpp:256
-#, fuzzy
 msgid "Chaotic units"
 msgstr "Unidades caóticas"
 
@@ -19144,88 +18756,79 @@ msgstr "Enemigo"
 msgid "Allied"
 msgstr "Aliado"
 
-#: src/show_dialog.cpp:931
+#: src/show_dialog.cpp:941
 msgid "KB"
 msgstr "KB"
 
 #: src/titlescreen.cpp:137
-#, fuzzy
 msgid "Version"
 msgstr "Versión"
 
 #: src/titlescreen.cpp:152
 msgid "TitleScreen button^Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #: src/titlescreen.cpp:153
 msgid "TitleScreen button^Campaign"
-msgstr ""
+msgstr "Campaña"
 
 #: src/titlescreen.cpp:154
 msgid "TitleScreen button^Multiplayer"
-msgstr ""
+msgstr "Multijugador"
 
 #: src/titlescreen.cpp:155
 msgid "TitleScreen button^Load"
-msgstr ""
+msgstr "Cargar"
 
 #: src/titlescreen.cpp:156
 msgid "TitleScreen button^Language"
-msgstr ""
+msgstr "Idioma"
 
 #: src/titlescreen.cpp:157
 msgid "TitleScreen button^Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: src/titlescreen.cpp:158
 msgid "TitleScreen button^About"
-msgstr ""
+msgstr "Acerca de Wesnoth"
 
 #: src/titlescreen.cpp:159
 msgid "TitleScreen button^Quit"
-msgstr ""
+msgstr "Salir"
 
 #: src/titlescreen.cpp:160
-#, fuzzy
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Juegue la tutorial para familiarizarse con el juego"
+msgstr "Jugar un tutorial para familiarizarse con el juego"
 
 #: src/titlescreen.cpp:161
-#, fuzzy
 msgid "Start a new single player campaign"
-msgstr "Empieza una nueva campaña"
+msgstr "Empieza una nueva campaña para un solo jugador"
 
 #: src/titlescreen.cpp:162
-#, fuzzy
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Juega en modo multijugador (varios jugadores, LAN, o Internet) o solo en un "
+"Juega en modo multijugador (varios jugadores, LAN, o Internet), o solo en un "
 "escenario contra la IA"
 
 #: src/titlescreen.cpp:163
-#, fuzzy
 msgid "Load a single player saved game"
 msgstr "Carga una partida grabada"
 
 #: src/titlescreen.cpp:164
-#, fuzzy
 msgid "Change the language"
 msgstr "Cambia el idioma"
 
 #: src/titlescreen.cpp:165
-#, fuzzy
 msgid "Configure the game's settings"
 msgstr "Configura los parámetros del juego"
 
 #: src/titlescreen.cpp:166
-#, fuzzy
 msgid "View the credits"
 msgstr "Muestra a los colaboradores"
 
 #: src/titlescreen.cpp:167
-#, fuzzy
 msgid "Quit the game"
 msgstr "Salir del juego"
 
@@ -19234,72 +18837,58 @@ msgid "More"
 msgstr "Más"
 
 #: src/titlescreen.cpp:197
-#, fuzzy
 msgid "-- The Tome of Wesnoth"
-msgstr "-- Guerra y Virtud"
+msgstr "-- Compendio de Guerra y Virtud"
 
 #: src/unit_types.cpp:313
-#, fuzzy
 msgid "strikes"
 msgstr "ataques"
 
 #: src/unit_types.cpp:862
-#, fuzzy
 msgid "Chaotic"
 msgstr "Caótico"
 
 #: src/unit_types.cpp:862
-#, fuzzy
 msgid "Lawful"
 msgstr "Legal"
 
 #: src/unit_types.cpp:862
-#, fuzzy
 msgid "Neutral"
 msgstr "Neutral"
 
 #: src/widgets/file_chooser.cpp:30
-#, fuzzy
 msgid "Delete File"
-msgstr "Borrar archivo"
+msgstr "Borrar fichero"
 
 #: src/widgets/file_chooser.cpp:173
-#, fuzzy
 msgid "Deletion of the file failed."
 msgstr "Ha habido algún fallo en el proceso de borrado."
 
-#, fuzzy
+#~ msgid "The Drowned Plains"
+#~ msgstr "Los Llanos Hundidos"
+
 #~ msgid ""
 #~ "\n"
 #~ "Victory:\n"
-#~ "@Defeat enemy leader\n"
+#~ "@Defeat Khrakrahs the Skeletal Dragon\n"
 #~ "Defeat:\n"
 #~ "#Death of Gweddry\n"
 #~ "#Death of Dacyn\n"
 #~ "#Death of Owaec\n"
-#~ "#Death of Sudoc"
+#~ "#Turns run out"
 #~ msgstr ""
 #~ "\n"
 #~ "Victoria:\n"
-#~ "@Llevar a Gweddry a Weldyn\n"
+#~ "@Derrotar a Khrakrahs, el Dragon esquelético\n"
 #~ "Derrota:\n"
 #~ "#Muerte de Gweddry\n"
 #~ "#Muerte de Dacyn\n"
 #~ "#Muerte de Owaec\n"
-#~ "#Muerte de Sudoc"
+#~ "#Fin de los turnos"
 
 #, fuzzy
-#~ msgid "What do the undead want you here for?"
-#~ msgstr "¿Qué hace ésta aquí ahora?"
-
-#~ msgid "What is the Skull of Agarash? Tell me more."
-#~ msgstr "¿Qué es la Calavera de Agarash? Cuéntame más."
-
-#~ msgid "What? I can't die! I've done so already! Noooo!"
-#~ msgstr "¿Qué? ¡No puede ser que vuelva a morir! ¡Ya lo he hecho! ¡Nooooo!"
-
-#~ msgid "I am dying, and my army is defeated! This is the end..."
-#~ msgstr "¡Me muero, y mi ejército está perdido! Es el fin..."
+#~ msgid "Speak on."
+#~ msgstr "Hablar"
 
 #, fuzzy
 #~ msgid ""
