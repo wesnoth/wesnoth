@@ -7,7 +7,9 @@
 # define VERSION "0.8.10-CVS"
 # define WESNOTH_DEFAULT_SERVER "devsrv.wesnoth.org:14999"
 # define PACKAGE "wesnoth"
-# define LOCALEDIR "po"
+# ifndef LOCALEDIR
+#  define LOCALEDIR "translations"
+# endif
 #endif
 
 
