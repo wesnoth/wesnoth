@@ -166,7 +166,7 @@ bool set_language(const language_def& locale)
 
 	config* langp = cfg.child("language");
 	if (langp == NULL) {
-	 	std::cerr << "No [language] block found in english.cfg";	
+	 	std::cerr << "No [language] block found in english.cfg\n";	
 		return false;
 	}
 
