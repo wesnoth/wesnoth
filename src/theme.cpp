@@ -19,6 +19,9 @@ namespace {
 
 	const size_t DefaultFontSize = font::SIZE_NORMAL;
 
+	typedef struct { size_t x1,y1,x2,y2; } _rect;
+	_rect ref_rect = { 0, 0, 0, 0 };
+
 	size_t compute(std::string expr, size_t ref1, size_t ref2=0 ) {
 		size_t ref = 0;
 		if (expr[0] == '=') {
@@ -31,27 +34,36 @@ namespace {
 		return ref + atoi(expr.c_str());
 	}
 
-	SDL_Rect read_rect(const config& cfg) {
-		SDL_Rect rect;
+	_rect read_rect(const config& cfg) {
+		_rect rect;
 		const std::vector<std::string> items = config::split(cfg["rect"].c_str());
 		if(items.size() >= 1)
-			rect.x = atoi(items[0].c_str());
+			rect.x1 = atoi(items[0].c_str());
 
 		if(items.size() >= 2)
-			rect.y = atoi(items[1].c_str());
+			rect.y1 = atoi(items[1].c_str());
 
 		if(items.size() >= 3)
-			rect.w = atoi(items[2].c_str()) - rect.x;
+			rect.x2 = atoi(items[2].c_str());
 
 		if(items.size() >= 4)
-			rect.h = atoi(items[3].c_str()) - rect.y;
+			rect.y2 = atoi(items[3].c_str());
 
 		return rect;
 	}
 
+	SDL_Rect read_sdl_rect(const config& cfg) {
+		SDL_Rect sdlrect;
+		const _rect rect = read_rect(cfg);
+		sdlrect.x = rect.x1;
+		sdlrect.y = rect.y1;
+		sdlrect.w = rect.x2 - rect.x1;
+		sdlrect.h = rect.y2 - rect.y1;
+
+		return sdlrect;
+	}
+
 	std::string resolve_rect(const std::string& rect_str) {
-		typedef struct { size_t x1,y1,x2,y2; } _rect;
-		static _rect ref_rect = { 0, 0, 0, 0 };
 		_rect rect;
 		std::stringstream resolved;
 		const std::vector<std::string> items = config::split(rect_str.c_str());
@@ -78,18 +90,58 @@ namespace {
 		return resolved.str();
 	}
 
-	config& resolve_rects(const config& cfg) {
+	const config find_ref(const std::string& id, const config& resol_cfg) {
+		for(config::all_children_iterator i = resol_cfg.ordered_begin();
+		    i != resol_cfg.ordered_end(); i++) {
+			//std::cerr << "Looking at " << *(*i).first << " " << (*(*i).second)["id"] << "\n";
+			if ((*(*i).second)["id"] == id) {
+				//std::cerr << "Found a " << *(*i).first << "\n";
+				return *(*i).second;
+			}
+			// recursively look in children
+			//std::cerr << "Looking in " << *(*i).first << " " << (*(*i).second)["id"] << "\n";
+			const config c = find_ref(id, *(*i).second);
+			if (!c["id"].empty()) {
+				return c;
+			}
+		}
+		// not found
+		return config();
+	}
+
+	config& resolve_rects(const config& cfg, config* resol_cfg = NULL, bool is_resolution = false) {
 		config* newcfg = new config();
+
+		// recursively resolve children
 		for(config::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i) {
 			const std::pair<const std::string*,const config*>& value = *i;
-			newcfg->add_child(*value.first,resolve_rects(*value.second));
+			newcfg->add_child(*value.first,
+					  resolve_rects(*value.second,
+							is_resolution ? newcfg : resol_cfg,
+							(*value.first=="resolution") ? true : false));
 		}
 
+		// copy all key/values
 		for(string_map::const_iterator j = cfg.values.begin(); j != cfg.values.end(); ++j) {
 			newcfg->values[j->first] = j->second;
 		}
 
-		if (cfg["rect"] != "") {
+		// override default reference rect with "ref" parameter if any
+		if (!cfg["ref"].empty()) {
+			//std::cerr << ">> Looking for " << cfg["ref"] << "\n";
+			const config ref = find_ref (cfg["ref"], *resol_cfg);
+
+			if (ref["id"].empty()) {
+				std::cerr << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
+			} else if (ref["rect"].empty()) {
+				std::cerr << "Reference to id \"" << cfg["ref"] <<
+					"\" which does not have a \"rect\"\n";
+			} else {
+				ref_rect = read_rect(ref);
+			}
+		}
+		// resolve the rect value to absolute coordinates
+		if (!cfg["rect"].empty()) {
 			newcfg->values["rect"] = resolve_rect(cfg["rect"]);
 		}
 
@@ -103,7 +155,7 @@ theme::object::object() : loc_(empty_rect), relative_loc_(empty_rect),
 {}
 
 theme::object::object(const config& cfg)
-                   : loc_(read_rect(cfg)), relative_loc_(empty_rect),
+                   : loc_(read_sdl_rect(cfg)), relative_loc_(empty_rect),
 				     last_screen_(empty_rect),
                      xanchor_(read_anchor(cfg["xanchor"])),
 					 yanchor_(read_anchor(cfg["yanchor"]))
