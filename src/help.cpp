@@ -1706,6 +1706,7 @@ void help_text_area::set_items(const std::vector<std::string> &parsed_items,
 	}
 	down_one_line(); // End the last line.
 	int h = height();
+	set_position(0);
 	set_full_size(contents_height_);
 	set_shown_size(h);
 }
