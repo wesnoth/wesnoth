@@ -1,23 +1,25 @@
 [unit]
-name=Knight
+name=Grand Knight
 race=human
-image=knight.png
-hitpoints=58
+image=grand-knight.png
+hitpoints=78
 movement_type=mounted
-movement=8
-experience=120
-level=2
+movement=7
+experience=500
+level=3
 alignment=lawful
-advanceto=Paladin,Grand Knight
-cost=40
+advanceto=null
+cost=100
 usage=fighter
-unit_description="Knights are skilled in use of both lance and sword. With the lance, they charges at enemies, taking and receiving double damage."
+ability=heals
+unit_description="The most powerful mounted warrior of any race, the Grand Knight has reached the epitome of skill with sword and lance."
 get_hit_sound=groan.wav
 	[attack]
 	name=sword
+	icon=misc/sword.png
 	type=blade
 	range=short
-	damage=8
+	damage=12
 	number=4
 		[sound]
 		time=-200
@@ -29,7 +31,7 @@ get_hit_sound=groan.wav
 	type=pierce
 	special=charge
 	range=short
-	damage=14
+	damage=17
 	number=2
 		[sound]
 		time=-200
