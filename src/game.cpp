@@ -238,7 +238,24 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
 				const std::string fname = cache + "/game.cfg-cache" + str.str();
-				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_modified_time()) {
+				const std::string fname_checksum = fname + ".checksum";
+
+				file_tree_checksum dir_checksum;
+				
+				if(use_cache) {
+					try {
+						if(file_exists(fname_checksum)) {
+							const config checksum_cfg(read_file(fname_checksum));
+							dir_checksum = file_tree_checksum(checksum_cfg);
+						}
+					} catch(config::error&) {
+						std::cerr << "cache checksum is corrupt\n";
+					} catch(io_exception&) {
+						std::cerr << "error reading cache checksum\n";
+					}
+				}
+
+				if(use_cache && file_exists(fname) && file_create_time(fname) > data_tree_checksum().modified && dir_checksum == data_tree_checksum()) {
 					std::cerr << "found valid cache at '" << fname << "' using it\n";
 					log_scope("read cache");
 					compression_schema schema;
@@ -260,6 +277,11 @@ void read_game_cfg(preproc_map& defines, std::vector<line_source>& line_src, con
 				try {
 					compression_schema schema;
 					write_file(fname,cfg.write_compressed(schema));
+
+					config checksum_cfg;
+					data_tree_checksum().write(checksum_cfg);
+					std::cerr << "wrote checksum: '" << checksum_cfg.write() << "'\n";
+					write_file(fname_checksum,checksum_cfg.write());
 				} catch(io_exception& e) {
 					std::cerr << "could not write to cache '" << fname << "'\n";
 				}
