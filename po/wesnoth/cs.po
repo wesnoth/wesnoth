@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-02 22:54+0200\n"
+"POT-Creation-Date: 2004-09-03 11:36+0200\n"
 "PO-Revision-Date: 2004-08-31 14:51+0200\n"
 "Last-Translator: David Nečas <yeti@physics.muni.cz>\n"
 "Language-Team: Czech\n"
@@ -17328,7 +17328,7 @@ msgstr "zdravý"
 msgid "invisible"
 msgstr "neviditelný"
 
-#: src/font.cpp:161
+#: src/font.cpp:163
 msgid "Vera.ttf"
 msgstr "Bepa-Roman.ttf"
 
@@ -17585,7 +17585,7 @@ msgstr "Vytvoř jednotku (Debug!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Změň stranu jednotky (Debug!)"
 
-#: src/hotkeys.cpp:144 src/preferences.cpp:920
+#: src/hotkeys.cpp:144
 msgid "Preferences"
 msgstr "Nastavení"
 
@@ -17737,7 +17737,7 @@ msgstr "Konec"
 msgid "System default language"
 msgstr "Implicitní jazyk"
 
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
+#: src/mapgen_dialog.cpp:69
 msgid "Close Window"
 msgstr "Zavři okno"
 
@@ -18384,197 +18384,6 @@ msgstr "Nahraď"
 msgid "has left the game. What do you want to do?"
 msgstr "opustil(a) hru. Co s tím chceš dělat?"
 
-#: src/preferences.cpp:142 src/preferences.cpp:188
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"Video mód nelze změnit. Tvůj správce oken musí být nastaven minimálně na 16 "
-"bpp (bitů na pixel), aby mohla hra běžet v okenním módu. Obrazovka musí "
-"zvládat rozlišení alespoň 1024x768x16, aby mohla hra běžet v "
-"celoobrazovkovém módu."
-
-#: src/preferences.cpp:360
-msgid "player"
-msgstr "hráč"
-
-#: src/preferences.cpp:637
-msgid "Full Screen"
-msgstr "Celá obrazovka"
-
-#: src/preferences.cpp:638
-msgid "Accelerated Speed"
-msgstr "Zrychleno"
-
-#: src/preferences.cpp:639
-msgid "Skip AI Moves"
-msgstr "Přeskakuj tahy počítače"
-
-#: src/preferences.cpp:640
-msgid "Show Grid"
-msgstr "Zobrazuj mřížku"
-
-#: src/preferences.cpp:641
-msgid "Show Floating Labels"
-msgstr "Zobrazuj plovoucí popisky"
-
-#: src/preferences.cpp:642
-msgid "Turn Dialog"
-msgstr "Dialog na konci kola"
-
-#: src/preferences.cpp:643
-msgid "Turn Bell"
-msgstr "Zvonek na konci kola"
-
-#: src/preferences.cpp:644
-msgid "Show Team Colors"
-msgstr "Zobrazuj barvy týmů"
-
-#: src/preferences.cpp:645
-msgid "Show Color Cursors"
-msgstr "Zobrazuj barevné kurzory"
-
-#: src/preferences.cpp:646
-msgid "Show Haloing Effects"
-msgstr "Zobrazuj halo efekty"
-
-#: src/preferences.cpp:647
-msgid "Video Mode"
-msgstr "Grafický mód"
-
-#: src/preferences.cpp:648
-msgid "Hotkeys"
-msgstr "Klávesové zkratky"
-
-#: src/preferences.cpp:649
-msgid "Adjust Gamma"
-msgstr "Gama korekce"
-
-#: src/preferences.cpp:650
-msgid "Music Volume:"
-msgstr "Hlasitost hudby:"
-
-#: src/preferences.cpp:650
-msgid "SFX Volume:"
-msgstr "Hlasitost zvuků:"
-
-#: src/preferences.cpp:651
-msgid "Gamma:"
-msgstr "Gama:"
-
-#: src/preferences.cpp:651
-msgid "Scroll Speed:"
-msgstr "Rychlost posouvání:"
-
-#: src/preferences.cpp:663
-msgid "Change the sound effects volume"
-msgstr "Změna hlasitosti zvukových efektů"
-
-#: src/preferences.cpp:668
-msgid "Change the music volume"
-msgstr "Změna hlasitosti hudebního doprovodu"
-
-#: src/preferences.cpp:673
-msgid "Change the speed of scrolling around the map"
-msgstr "Změna rychlosti posouvání mapy"
-
-#: src/preferences.cpp:676 src/preferences.cpp:681
-msgid "Change the brightness of the display"
-msgstr "Změna nastavení jasu"
-
-#: src/preferences.cpp:684
-msgid "Choose whether the game should run full screen or in a window"
-msgstr "Má-li hra běžet v okně, nebo přes celou obrazovku"
-
-#: src/preferences.cpp:687
-msgid "Make units move and fight faster"
-msgstr "Jednotky se pohybují a bojují rychleji"
-
-#: src/preferences.cpp:690
-msgid "Do not animate AI units moving"
-msgstr "Neanimuj jednotky ovládané počítačem"
-
-#: src/preferences.cpp:693
-msgid "Overlay a grid onto the map"
-msgstr "Nakresli přes mapu mřížku"
-
-#: src/preferences.cpp:696
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr "Ukazuj při zásahu nad jednotkou, jak velké zranění utrpěla"
-
-#: src/preferences.cpp:698
-msgid "Change the resolution the game runs at"
-msgstr "Změna rozlišení, ve kterém hra běží"
-
-#: src/preferences.cpp:701
-msgid "Display a dialog at the beginning of your turn"
-msgstr "Zobraz dialog na začátku každého kola"
-
-#: src/preferences.cpp:704
-msgid "Play a bell sound at the beginning of your turn"
-msgstr "Zvonek na začátku každého kola"
-
-#: src/preferences.cpp:707
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-"Zobrazuj pod jednotkou barevnou kružnici kolem ukazující, za kterou stranu "
-"hraje"
-
-#: src/preferences.cpp:710
-msgid "Use colored mouse cursors (may be slower)"
-msgstr "Používej barevné kursory myši (může zpomalovat)"
-
-#: src/preferences.cpp:713
-msgid "Use graphical special effects (may be slower)"
-msgstr "Používej speciální grafické efekty (může zpomalovat)"
-
-#: src/preferences.cpp:715
-msgid "View and configure keyboard shortcuts"
-msgstr "Zobraz a nastav klávesové zkratky"
-
-#: src/preferences.cpp:908
-msgid "Prefs section^General"
-msgstr "Obecné"
-
-#: src/preferences.cpp:909
-msgid "Prefs section^Display"
-msgstr "Zobrazení"
-
-#: src/preferences.cpp:910
-msgid "Prefs section^Sound"
-msgstr "Zvuky"
-
-#: src/preferences.cpp:966
-msgid "There are no alternative video modes available"
-msgstr "Žádné jiné grafické módy nejsou k dispozici."
-
-#: src/preferences.cpp:996
-msgid "Choose Resolution"
-msgstr "Vyber si rozlišení"
-
-#: src/preferences.cpp:1024
-msgid "Hotkey Settings"
-msgstr "Nastavení klávesových zkratek"
-
-#: src/preferences.cpp:1028 src/preferences.cpp:1086
-msgid "Press desired HotKey"
-msgstr "Stiskni klávesovou zkratku"
-
-#: src/preferences.cpp:1047
-msgid "Change Hotkey"
-msgstr "Změň klávesovou zkratku"
-
-#: src/preferences.cpp:1050
-msgid "Save Hotkeys"
-msgstr "Ulož klávesové zkratky"
-
-#: src/preferences.cpp:1119
-msgid "This HotKey is already in use."
-msgstr "Tato zkratka je již použita pro jinou akci."
-
 #: src/reports.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
@@ -18751,6 +18560,152 @@ msgstr "Smaž soubor"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Smazání souboru se nezdařilo."
+
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "Video mód nelze změnit. Tvůj správce oken musí být nastaven minimálně na "
+#~ "16 bpp (bitů na pixel), aby mohla hra běžet v okenním módu. Obrazovka "
+#~ "musí zvládat rozlišení alespoň 1024x768x16, aby mohla hra běžet v "
+#~ "celoobrazovkovém módu."
+
+#~ msgid "player"
+#~ msgstr "hráč"
+
+#~ msgid "Full Screen"
+#~ msgstr "Celá obrazovka"
+
+#~ msgid "Accelerated Speed"
+#~ msgstr "Zrychleno"
+
+#~ msgid "Skip AI Moves"
+#~ msgstr "Přeskakuj tahy počítače"
+
+#~ msgid "Show Grid"
+#~ msgstr "Zobrazuj mřížku"
+
+#~ msgid "Show Floating Labels"
+#~ msgstr "Zobrazuj plovoucí popisky"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "Dialog na konci kola"
+
+#~ msgid "Turn Bell"
+#~ msgstr "Zvonek na konci kola"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "Zobrazuj barvy týmů"
+
+#~ msgid "Show Color Cursors"
+#~ msgstr "Zobrazuj barevné kurzory"
+
+#~ msgid "Show Haloing Effects"
+#~ msgstr "Zobrazuj halo efekty"
+
+#~ msgid "Video Mode"
+#~ msgstr "Grafický mód"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Klávesové zkratky"
+
+#~ msgid "Adjust Gamma"
+#~ msgstr "Gama korekce"
+
+#~ msgid "Music Volume:"
+#~ msgstr "Hlasitost hudby:"
+
+#~ msgid "SFX Volume:"
+#~ msgstr "Hlasitost zvuků:"
+
+#~ msgid "Gamma:"
+#~ msgstr "Gama:"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Rychlost posouvání:"
+
+#~ msgid "Change the sound effects volume"
+#~ msgstr "Změna hlasitosti zvukových efektů"
+
+#~ msgid "Change the music volume"
+#~ msgstr "Změna hlasitosti hudebního doprovodu"
+
+#~ msgid "Change the speed of scrolling around the map"
+#~ msgstr "Změna rychlosti posouvání mapy"
+
+#~ msgid "Change the brightness of the display"
+#~ msgstr "Změna nastavení jasu"
+
+#~ msgid "Choose whether the game should run full screen or in a window"
+#~ msgstr "Má-li hra běžet v okně, nebo přes celou obrazovku"
+
+#~ msgid "Make units move and fight faster"
+#~ msgstr "Jednotky se pohybují a bojují rychleji"
+
+#~ msgid "Do not animate AI units moving"
+#~ msgstr "Neanimuj jednotky ovládané počítačem"
+
+#~ msgid "Overlay a grid onto the map"
+#~ msgstr "Nakresli přes mapu mřížku"
+
+#~ msgid "Show text above a unit when it is hit to display damage inflicted"
+#~ msgstr "Ukazuj při zásahu nad jednotkou, jak velké zranění utrpěla"
+
+#~ msgid "Change the resolution the game runs at"
+#~ msgstr "Změna rozlišení, ve kterém hra běží"
+
+#~ msgid "Display a dialog at the beginning of your turn"
+#~ msgstr "Zobraz dialog na začátku každého kola"
+
+#~ msgid "Play a bell sound at the beginning of your turn"
+#~ msgstr "Zvonek na začátku každého kola"
+
+#~ msgid ""
+#~ "Show a colored circle around the base of each unit to show which side it "
+#~ "is on"
+#~ msgstr ""
+#~ "Zobrazuj pod jednotkou barevnou kružnici kolem ukazující, za kterou "
+#~ "stranu hraje"
+
+#~ msgid "Use colored mouse cursors (may be slower)"
+#~ msgstr "Používej barevné kursory myši (může zpomalovat)"
+
+#~ msgid "Use graphical special effects (may be slower)"
+#~ msgstr "Používej speciální grafické efekty (může zpomalovat)"
+
+#~ msgid "View and configure keyboard shortcuts"
+#~ msgstr "Zobraz a nastav klávesové zkratky"
+
+#~ msgid "Prefs section^General"
+#~ msgstr "Obecné"
+
+#~ msgid "Prefs section^Display"
+#~ msgstr "Zobrazení"
+
+#~ msgid "Prefs section^Sound"
+#~ msgstr "Zvuky"
+
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "Žádné jiné grafické módy nejsou k dispozici."
+
+#~ msgid "Choose Resolution"
+#~ msgstr "Vyber si rozlišení"
+
+#~ msgid "Hotkey Settings"
+#~ msgstr "Nastavení klávesových zkratek"
+
+#~ msgid "Press desired HotKey"
+#~ msgstr "Stiskni klávesovou zkratku"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Změň klávesovou zkratku"
+
+#~ msgid "Save Hotkeys"
+#~ msgstr "Ulož klávesové zkratky"
+
+#~ msgid "This HotKey is already in use."
+#~ msgstr "Tato zkratka je již použita pro jinou akci."
 
 #~ msgid "Choose a File to Save As"
 #~ msgstr "Vyber soubor k uložení"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-02 22:54+0200\n"
+"POT-Creation-Date: 2004-09-03 11:36+0200\n"
 "PO-Revision-Date: 2004-08-24 07:17+0100\n"
 "Last-Translator: Erik <erikmesoy@yahoo.com>\n"
 "Language-Team: none\n"
@@ -17273,7 +17273,7 @@ msgstr "frisk"
 msgid "invisible"
 msgstr "usynlig"
 
-#: src/font.cpp:161
+#: src/font.cpp:163
 msgid "Vera.ttf"
 msgstr ""
 
@@ -17545,7 +17545,7 @@ msgstr ""
 msgid "Change Unit Side (Debug!)"
 msgstr ""
 
-#: src/hotkeys.cpp:144 src/preferences.cpp:920
+#: src/hotkeys.cpp:144
 #, fuzzy
 msgid "Preferences"
 msgstr "Preferanser"
@@ -17704,7 +17704,7 @@ msgstr "Slutt"
 msgid "System default language"
 msgstr ""
 
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
+#: src/mapgen_dialog.cpp:69
 #, fuzzy
 msgid "Close Window"
 msgstr "Lukk vindu"
@@ -18412,210 +18412,6 @@ msgstr "Erstatt med datastyrt spiller"
 msgid "has left the game. What do you want to do?"
 msgstr "har forlatt spillet. Hva vil du gjøre?"
 
-#: src/preferences.cpp:142 src/preferences.cpp:188
-#, fuzzy
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 bits "
-"per pixel for å kjøre dette spillet i vindumodus. Displayet må støtte "
-"1024x768x16 for å kunne kjøres med full skjerm."
-
-#: src/preferences.cpp:360
-msgid "player"
-msgstr "spiller"
-
-#: src/preferences.cpp:637
-#, fuzzy
-msgid "Full Screen"
-msgstr "Fullskjerm"
-
-#: src/preferences.cpp:638
-#, fuzzy
-msgid "Accelerated Speed"
-msgstr "Akselerert"
-
-#: src/preferences.cpp:639
-msgid "Skip AI Moves"
-msgstr ""
-
-#: src/preferences.cpp:640
-#, fuzzy
-msgid "Show Grid"
-msgstr "Vis rutenett"
-
-#: src/preferences.cpp:641
-msgid "Show Floating Labels"
-msgstr ""
-
-#: src/preferences.cpp:642
-msgid "Turn Dialog"
-msgstr "Dialogboks på ny runde"
-
-#: src/preferences.cpp:643
-msgid "Turn Bell"
-msgstr "Pling på ny runde"
-
-#: src/preferences.cpp:644
-msgid "Show Team Colors"
-msgstr "Vis lagenes farger"
-
-#: src/preferences.cpp:645
-msgid "Show Color Cursors"
-msgstr ""
-
-#: src/preferences.cpp:646
-msgid "Show Haloing Effects"
-msgstr ""
-
-#: src/preferences.cpp:647
-#, fuzzy
-msgid "Video Mode"
-msgstr "Video-modus"
-
-#: src/preferences.cpp:648
-#, fuzzy
-msgid "Hotkeys"
-msgstr "Hurtigtaster"
-
-#: src/preferences.cpp:649
-msgid "Adjust Gamma"
-msgstr ""
-
-#: src/preferences.cpp:650
-#, fuzzy
-msgid "Music Volume:"
-msgstr "Musikkvolum:"
-
-#: src/preferences.cpp:650
-#, fuzzy
-msgid "SFX Volume:"
-msgstr "Lydeffektvolum:"
-
-#: src/preferences.cpp:651
-msgid "Gamma:"
-msgstr ""
-
-#: src/preferences.cpp:651
-#, fuzzy
-msgid "Scroll Speed:"
-msgstr "Panoreringsfart:"
-
-#: src/preferences.cpp:663
-msgid "Change the sound effects volume"
-msgstr ""
-
-#: src/preferences.cpp:668
-msgid "Change the music volume"
-msgstr ""
-
-#: src/preferences.cpp:673
-msgid "Change the speed of scrolling around the map"
-msgstr ""
-
-#: src/preferences.cpp:676 src/preferences.cpp:681
-msgid "Change the brightness of the display"
-msgstr ""
-
-#: src/preferences.cpp:684
-msgid "Choose whether the game should run full screen or in a window"
-msgstr ""
-
-#: src/preferences.cpp:687
-msgid "Make units move and fight faster"
-msgstr ""
-
-#: src/preferences.cpp:690
-msgid "Do not animate AI units moving"
-msgstr ""
-
-#: src/preferences.cpp:693
-msgid "Overlay a grid onto the map"
-msgstr ""
-
-#: src/preferences.cpp:696
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-
-#: src/preferences.cpp:698
-msgid "Change the resolution the game runs at"
-msgstr ""
-
-#: src/preferences.cpp:701
-msgid "Display a dialog at the beginning of your turn"
-msgstr ""
-
-#: src/preferences.cpp:704
-msgid "Play a bell sound at the beginning of your turn"
-msgstr ""
-
-#: src/preferences.cpp:707
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-
-#: src/preferences.cpp:710
-msgid "Use colored mouse cursors (may be slower)"
-msgstr ""
-
-#: src/preferences.cpp:713
-msgid "Use graphical special effects (may be slower)"
-msgstr ""
-
-#: src/preferences.cpp:715
-msgid "View and configure keyboard shortcuts"
-msgstr ""
-
-#: src/preferences.cpp:908
-msgid "Prefs section^General"
-msgstr ""
-
-#: src/preferences.cpp:909
-msgid "Prefs section^Display"
-msgstr ""
-
-#: src/preferences.cpp:910
-msgid "Prefs section^Sound"
-msgstr ""
-
-#: src/preferences.cpp:966
-#, fuzzy
-msgid "There are no alternative video modes available"
-msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
-
-#: src/preferences.cpp:996
-#, fuzzy
-msgid "Choose Resolution"
-msgstr "Velg oppløsning"
-
-#: src/preferences.cpp:1024
-#, fuzzy
-msgid "Hotkey Settings"
-msgstr "Innstillinger for Hurtigtaster"
-
-#: src/preferences.cpp:1028 src/preferences.cpp:1086
-#, fuzzy
-msgid "Press desired HotKey"
-msgstr "Trykk ønsket hurtigtast"
-
-#: src/preferences.cpp:1047
-#, fuzzy
-msgid "Change Hotkey"
-msgstr "Endre hurtigtast"
-
-#: src/preferences.cpp:1050
-#, fuzzy
-msgid "Save Hotkeys"
-msgstr "Lagre hurtigtaster"
-
-#: src/preferences.cpp:1119
-#, fuzzy
-msgid "This HotKey is already in use."
-msgstr "Denne hurtigtasten er allerede i bruk. Ingen endringer ble gjort."
-
 #: src/reports.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
@@ -18794,6 +18590,88 @@ msgstr ""
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "Video-modusen kunne ikke endres. Vindu-manageren din må settes til 16 "
+#~ "bits per pixel for å kjøre dette spillet i vindumodus. Displayet må "
+#~ "støtte 1024x768x16 for å kunne kjøres med full skjerm."
+
+#~ msgid "player"
+#~ msgstr "spiller"
+
+#, fuzzy
+#~ msgid "Full Screen"
+#~ msgstr "Fullskjerm"
+
+#, fuzzy
+#~ msgid "Accelerated Speed"
+#~ msgstr "Akselerert"
+
+#, fuzzy
+#~ msgid "Show Grid"
+#~ msgstr "Vis rutenett"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "Dialogboks på ny runde"
+
+#~ msgid "Turn Bell"
+#~ msgstr "Pling på ny runde"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "Vis lagenes farger"
+
+#, fuzzy
+#~ msgid "Video Mode"
+#~ msgstr "Video-modus"
+
+#, fuzzy
+#~ msgid "Hotkeys"
+#~ msgstr "Hurtigtaster"
+
+#, fuzzy
+#~ msgid "Music Volume:"
+#~ msgstr "Musikkvolum:"
+
+#, fuzzy
+#~ msgid "SFX Volume:"
+#~ msgstr "Lydeffektvolum:"
+
+#, fuzzy
+#~ msgid "Scroll Speed:"
+#~ msgstr "Panoreringsfart:"
+
+#, fuzzy
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "Det finnes ingen alternative video-moduser tilgjengelig"
+
+#, fuzzy
+#~ msgid "Choose Resolution"
+#~ msgstr "Velg oppløsning"
+
+#, fuzzy
+#~ msgid "Hotkey Settings"
+#~ msgstr "Innstillinger for Hurtigtaster"
+
+#, fuzzy
+#~ msgid "Press desired HotKey"
+#~ msgstr "Trykk ønsket hurtigtast"
+
+#, fuzzy
+#~ msgid "Change Hotkey"
+#~ msgstr "Endre hurtigtast"
+
+#, fuzzy
+#~ msgid "Save Hotkeys"
+#~ msgstr "Lagre hurtigtaster"
+
+#, fuzzy
+#~ msgid "This HotKey is already in use."
+#~ msgstr "Denne hurtigtasten er allerede i bruk. Ingen endringer ble gjort."
 
 #, fuzzy
 #~ msgid ""

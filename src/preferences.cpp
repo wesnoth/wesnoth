@@ -11,6 +11,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "cursor.hpp"
 #include "events.hpp"
 #include "filesystem.hpp"
@@ -905,9 +907,9 @@ void show_preferences_dialog(display& disp)
 {
 	std::vector<std::string> items;
 
-	items.push_back(std::string("&icons/icon-general.png,") + sgettext("Prefs section^General"));
-	items.push_back(std::string("&icons/icon-display.png,") + sgettext("Prefs section^Display"));
-	items.push_back(std::string("&icons/icon-music.png,") + sgettext("Prefs section^Sound"));
+	items.push_back(std::string("&icons/icon-general.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^General"));
+	items.push_back(std::string("&icons/icon-display.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^Display"));
+	items.push_back(std::string("&icons/icon-music.png,") + dsgettext(GETTEXT_DOMAIN,"Prefs section^Sound"));
 	
 	for(;;) {
 		try {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.3-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2004-09-02 22:54+0200\n"
+"POT-Creation-Date: 2004-09-03 11:36+0200\n"
 "PO-Revision-Date: 2004-08-28 22:30+0200\n"
 "Last-Translator: David Martínez Moreno <ender@debian.org>\n"
 "Language-Team:  none\n"
@@ -17471,7 +17471,7 @@ msgstr "sano"
 msgid "invisible"
 msgstr "invisible"
 
-#: src/font.cpp:161
+#: src/font.cpp:163
 msgid "Vera.ttf"
 msgstr "Vera.ttf"
 
@@ -17728,7 +17728,7 @@ msgstr "Crear unidad (¡depuración!)"
 msgid "Change Unit Side (Debug!)"
 msgstr "Cambiar bando de la unidad (¡depuración!)"
 
-#: src/hotkeys.cpp:144 src/preferences.cpp:920
+#: src/hotkeys.cpp:144
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -17881,7 +17881,7 @@ msgstr "Final"
 msgid "System default language"
 msgstr "Idioma predeterminado del sistema"
 
-#: src/mapgen_dialog.cpp:69 src/preferences.cpp:1019
+#: src/mapgen_dialog.cpp:69
 msgid "Close Window"
 msgstr "Cerrar ventana"
 
@@ -18538,198 +18538,6 @@ msgstr "Reemplazar con "
 msgid "has left the game. What do you want to do?"
 msgstr "ha dejado el juego. ¿Qué quiere hacer?"
 
-#: src/preferences.cpp:142 src/preferences.cpp:188
-msgid ""
-"The video mode could not be changed. Your window manager must be set to 16 "
-"bits per pixel to run the game in windowed mode. Your display must support "
-"1024x768x16 to run the game full screen."
-msgstr ""
-"El modo de vídeo no ha podido cambiarse. Su escritorio debe estar en 16 bits "
-"para poder funcionar en modo ventana. Su pantalla debe soportar una "
-"resolución de 1024x768x16 para jugar a pantalla completa."
-
-#: src/preferences.cpp:360
-msgid "player"
-msgstr "jugador"
-
-#: src/preferences.cpp:637
-msgid "Full Screen"
-msgstr "Pantalla completa"
-
-#: src/preferences.cpp:638
-msgid "Accelerated Speed"
-msgstr "Velocidad acelerada"
-
-#: src/preferences.cpp:639
-msgid "Skip AI Moves"
-msgstr "Omitir los movimientos de la IA"
-
-#: src/preferences.cpp:640
-msgid "Show Grid"
-msgstr "Mostrar rejilla"
-
-#: src/preferences.cpp:641
-msgid "Show Floating Labels"
-msgstr "Mostrar etiquetas flotantes"
-
-#: src/preferences.cpp:642
-msgid "Turn Dialog"
-msgstr "Diálogo"
-
-#: src/preferences.cpp:643
-msgid "Turn Bell"
-msgstr "Campana"
-
-#: src/preferences.cpp:644
-msgid "Show Team Colors"
-msgstr "Muestra colores de equipo"
-
-#: src/preferences.cpp:645
-msgid "Show Color Cursors"
-msgstr "Mostrar cursores coloreados"
-
-#: src/preferences.cpp:646
-msgid "Show Haloing Effects"
-msgstr "Mostrar halos"
-
-#: src/preferences.cpp:647
-msgid "Video Mode"
-msgstr "Modo de vídeo"
-
-#: src/preferences.cpp:648
-msgid "Hotkeys"
-msgstr "Accesos rápidos"
-
-#: src/preferences.cpp:649
-msgid "Adjust Gamma"
-msgstr "Ajustar el brillo («gamma»)"
-
-#: src/preferences.cpp:650
-msgid "Music Volume:"
-msgstr "Volumen de música:"
-
-#: src/preferences.cpp:650
-msgid "SFX Volume:"
-msgstr "Volumen de efectos:"
-
-#: src/preferences.cpp:651
-msgid "Gamma:"
-msgstr "Brillo («gamma»):"
-
-#: src/preferences.cpp:651
-msgid "Scroll Speed:"
-msgstr "Velocidad desplazamiento:"
-
-#: src/preferences.cpp:663
-msgid "Change the sound effects volume"
-msgstr "Cambia el volumen de los sonidos"
-
-#: src/preferences.cpp:668
-msgid "Change the music volume"
-msgstr "Cambia el volumen de la música"
-
-#: src/preferences.cpp:673
-msgid "Change the speed of scrolling around the map"
-msgstr "Cambia la velocidad de desplazamiento del mapa"
-
-#: src/preferences.cpp:676 src/preferences.cpp:681
-msgid "Change the brightness of the display"
-msgstr "Cambia el brillo"
-
-#: src/preferences.cpp:684
-msgid "Choose whether the game should run full screen or in a window"
-msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
-
-#: src/preferences.cpp:687
-msgid "Make units move and fight faster"
-msgstr "Las unidades se mueven y luchan más deprisa"
-
-#: src/preferences.cpp:690
-msgid "Do not animate AI units moving"
-msgstr "No animar el movimiento de las unidades controladas por la IA"
-
-#: src/preferences.cpp:693
-msgid "Overlay a grid onto the map"
-msgstr "Dibuja una rejilla por encima del mapa"
-
-#: src/preferences.cpp:696
-msgid "Show text above a unit when it is hit to display damage inflicted"
-msgstr ""
-"Muestra un texto encima de la unidad cuando sufre daño para indicar cuánto "
-"ha recibido"
-
-#: src/preferences.cpp:698
-msgid "Change the resolution the game runs at"
-msgstr "Cambia la resolución en la que funciona el juego"
-
-#: src/preferences.cpp:701
-msgid "Display a dialog at the beginning of your turn"
-msgstr "Anuncia con un diálogo el inicio de su turno"
-
-#: src/preferences.cpp:704
-msgid "Play a bell sound at the beginning of your turn"
-msgstr "Hace sonar una campana al inicio de su turno"
-
-#: src/preferences.cpp:707
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-"Distingue a las unidades de cada bando dibujando un círculo de un "
-"determinado color en su base"
-
-#: src/preferences.cpp:710
-msgid "Use colored mouse cursors (may be slower)"
-msgstr "Usa punteros coloreados (podría ser más lento)"
-
-#: src/preferences.cpp:713
-msgid "Use graphical special effects (may be slower)"
-msgstr "Usa efectos especiales (podría ser más lento)"
-
-#: src/preferences.cpp:715
-msgid "View and configure keyboard shortcuts"
-msgstr "Configura los accesos rápidos de teclado"
-
-#: src/preferences.cpp:908
-msgid "Prefs section^General"
-msgstr "General"
-
-#: src/preferences.cpp:909
-msgid "Prefs section^Display"
-msgstr "Vídeo"
-
-#: src/preferences.cpp:910
-msgid "Prefs section^Sound"
-msgstr "Sonido"
-
-#: src/preferences.cpp:966
-msgid "There are no alternative video modes available"
-msgstr "No tiene modos de vídeo alternativos disponibles."
-
-#: src/preferences.cpp:996
-msgid "Choose Resolution"
-msgstr "Seleccione resolución"
-
-#: src/preferences.cpp:1024
-msgid "Hotkey Settings"
-msgstr "Configuración de accesos rápidos"
-
-#: src/preferences.cpp:1028 src/preferences.cpp:1086
-msgid "Press desired HotKey"
-msgstr "Presione la tecla deseada"
-
-#: src/preferences.cpp:1047
-msgid "Change Hotkey"
-msgstr "Cambiar acceso rápido"
-
-#: src/preferences.cpp:1050
-msgid "Save Hotkeys"
-msgstr "Guardar accesos rápidos"
-
-#: src/preferences.cpp:1119
-msgid "This HotKey is already in use."
-msgstr "Esa combinación ya se está usando."
-
 #: src/reports.cpp:105
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
@@ -18907,6 +18715,153 @@ msgstr "Borrar fichero"
 #: src/widgets/file_chooser.cpp:173
 msgid "Deletion of the file failed."
 msgstr "Ha habido algún fallo en el proceso de borrado."
+
+#~ msgid ""
+#~ "The video mode could not be changed. Your window manager must be set to "
+#~ "16 bits per pixel to run the game in windowed mode. Your display must "
+#~ "support 1024x768x16 to run the game full screen."
+#~ msgstr ""
+#~ "El modo de vídeo no ha podido cambiarse. Su escritorio debe estar en 16 "
+#~ "bits para poder funcionar en modo ventana. Su pantalla debe soportar una "
+#~ "resolución de 1024x768x16 para jugar a pantalla completa."
+
+#~ msgid "player"
+#~ msgstr "jugador"
+
+#~ msgid "Full Screen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "Accelerated Speed"
+#~ msgstr "Velocidad acelerada"
+
+#~ msgid "Skip AI Moves"
+#~ msgstr "Omitir los movimientos de la IA"
+
+#~ msgid "Show Grid"
+#~ msgstr "Mostrar rejilla"
+
+#~ msgid "Show Floating Labels"
+#~ msgstr "Mostrar etiquetas flotantes"
+
+#~ msgid "Turn Dialog"
+#~ msgstr "Diálogo"
+
+#~ msgid "Turn Bell"
+#~ msgstr "Campana"
+
+#~ msgid "Show Team Colors"
+#~ msgstr "Muestra colores de equipo"
+
+#~ msgid "Show Color Cursors"
+#~ msgstr "Mostrar cursores coloreados"
+
+#~ msgid "Show Haloing Effects"
+#~ msgstr "Mostrar halos"
+
+#~ msgid "Video Mode"
+#~ msgstr "Modo de vídeo"
+
+#~ msgid "Hotkeys"
+#~ msgstr "Accesos rápidos"
+
+#~ msgid "Adjust Gamma"
+#~ msgstr "Ajustar el brillo («gamma»)"
+
+#~ msgid "Music Volume:"
+#~ msgstr "Volumen de música:"
+
+#~ msgid "SFX Volume:"
+#~ msgstr "Volumen de efectos:"
+
+#~ msgid "Gamma:"
+#~ msgstr "Brillo («gamma»):"
+
+#~ msgid "Scroll Speed:"
+#~ msgstr "Velocidad desplazamiento:"
+
+#~ msgid "Change the sound effects volume"
+#~ msgstr "Cambia el volumen de los sonidos"
+
+#~ msgid "Change the music volume"
+#~ msgstr "Cambia el volumen de la música"
+
+#~ msgid "Change the speed of scrolling around the map"
+#~ msgstr "Cambia la velocidad de desplazamiento del mapa"
+
+#~ msgid "Change the brightness of the display"
+#~ msgstr "Cambia el brillo"
+
+#~ msgid "Choose whether the game should run full screen or in a window"
+#~ msgstr "Elija si el programa funciona a pantalla completa o en modo ventana"
+
+#~ msgid "Make units move and fight faster"
+#~ msgstr "Las unidades se mueven y luchan más deprisa"
+
+#~ msgid "Do not animate AI units moving"
+#~ msgstr "No animar el movimiento de las unidades controladas por la IA"
+
+#~ msgid "Overlay a grid onto the map"
+#~ msgstr "Dibuja una rejilla por encima del mapa"
+
+#~ msgid "Show text above a unit when it is hit to display damage inflicted"
+#~ msgstr ""
+#~ "Muestra un texto encima de la unidad cuando sufre daño para indicar "
+#~ "cuánto ha recibido"
+
+#~ msgid "Change the resolution the game runs at"
+#~ msgstr "Cambia la resolución en la que funciona el juego"
+
+#~ msgid "Display a dialog at the beginning of your turn"
+#~ msgstr "Anuncia con un diálogo el inicio de su turno"
+
+#~ msgid "Play a bell sound at the beginning of your turn"
+#~ msgstr "Hace sonar una campana al inicio de su turno"
+
+#~ msgid ""
+#~ "Show a colored circle around the base of each unit to show which side it "
+#~ "is on"
+#~ msgstr ""
+#~ "Distingue a las unidades de cada bando dibujando un círculo de un "
+#~ "determinado color en su base"
+
+#~ msgid "Use colored mouse cursors (may be slower)"
+#~ msgstr "Usa punteros coloreados (podría ser más lento)"
+
+#~ msgid "Use graphical special effects (may be slower)"
+#~ msgstr "Usa efectos especiales (podría ser más lento)"
+
+#~ msgid "View and configure keyboard shortcuts"
+#~ msgstr "Configura los accesos rápidos de teclado"
+
+#~ msgid "Prefs section^General"
+#~ msgstr "General"
+
+#~ msgid "Prefs section^Display"
+#~ msgstr "Vídeo"
+
+#~ msgid "Prefs section^Sound"
+#~ msgstr "Sonido"
+
+#~ msgid "There are no alternative video modes available"
+#~ msgstr "No tiene modos de vídeo alternativos disponibles."
+
+#~ msgid "Choose Resolution"
+#~ msgstr "Seleccione resolución"
+
+#~ msgid "Hotkey Settings"
+#~ msgstr "Configuración de accesos rápidos"
+
+#~ msgid "Press desired HotKey"
+#~ msgstr "Presione la tecla deseada"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Cambiar acceso rápido"
+
+#~ msgid "Save Hotkeys"
+#~ msgstr "Guardar accesos rápidos"
+
+#~ msgid "This HotKey is already in use."
+#~ msgstr "Esa combinación ya se está usando."
 
 #~ msgid "Which Player?"
 #~ msgstr "¿Qué jugador?"
