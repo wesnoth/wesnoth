@@ -66,7 +66,7 @@ namespace image {
 
 	//the surface returned must be freed by the user
 	SDL_Surface* getMinimap(int w, int h, const gamemap& map_, int lawful_bonus,
-			const team* tm=NULL, const unit_map* units=NULL, const std::vector<team>* teams=NULL);
+			const team* tm=NULL);
 }
 
 #endif

@@ -224,8 +224,7 @@ SDL_Surface* get_image_dim(const std::string& filename, size_t x, size_t y)
 }
 
 SDL_Surface* getMinimap(int w, int h, const gamemap& map, 
-		int lawful_bonus,
-		const team* tm, const unit_map* units, const std::vector<team>* teams)
+		int lawful_bonus, const team* tm)
 {
 	SDL_Surface* minimap = NULL;
 	if(minimap == NULL) {
