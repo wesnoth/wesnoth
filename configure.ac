@@ -15,8 +15,7 @@ AC_CONFIG_SRCDIR([src/actions.cpp])
 AC_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
-
-AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT
 
 #######################################################################
 # Checks for programs.                                                #
@@ -503,7 +502,10 @@ AC_SUBST([SOUND_FILES])
 AC_SUBST([UTIL_FILES])
 
 
-AC_CONFIG_FILES([Makefile po/Makefile.in m4/Makefile 
+AC_CONFIG_FILES([Makefile
+		 po/Makefile.in
+		 m4/Makefile
+		 intl/Makefile 
 		 icons/Makefile
 		 src/Makefile
 		 src/server/Makefile

@@ -1,5 +1,5 @@
 ISUBDIRS = icons
-SUBDIRS = m4  src $(ISUBDIRS)
+SUBDIRS = intl po m4 src $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
 
 dist_noinst_DATA = @MANUAL_FILES@ copyright changelog wesnoth.dsp wesnoth.dsw \
