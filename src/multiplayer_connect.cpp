@@ -437,6 +437,8 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 	level_(),
 	params_(params),
 
+	team_prefix_(_("Team ")),
+
 	waiting_label_(disp, _("")),
 	message_full_(false),
 	default_controller_(default_controller),
@@ -450,8 +452,7 @@ connect::connect(display& disp, const config& game_config, const game_data& data
 
 	ai_(disp, _("Computer vs Computer")),
 	launch_(disp, _("I'm Ready")),
-	cancel_(disp, _("Cancel")),
-	team_prefix_(_("Team "))
+	cancel_(disp, _("Cancel"))
 {
 	// Send Initial information
 	config response;
