@@ -1103,17 +1103,21 @@ void game_controller::download_campaigns()
 		std::vector<std::string> delete_options;
 
 		for(config::child_list::const_iterator i = cmps.begin(); i != cmps.end(); ++i) {
-			campaigns.push_back((**i)["name"]);
+			const std::string& name = (**i)["name"];
+			campaigns.push_back(name);
 			
-			std::string name = (**i)["name"];
-
 			if(std::count(publish_options.begin(),publish_options.end(),name) != 0) {
 				delete_options.push_back(name);
 			}
 
-			std::replace(name.begin(),name.end(),'_',' ');
+			std::string title = (**i)["title"];
+			if(title == "") {
+				title = name;
+				std::replace(title.begin(),title.end(),'_',' ');
+			}
+			
 			options.push_back(IMAGE_PREFIX + (**i)["icon"] + COLUMN_SEPARATOR +
-			                  name + COLUMN_SEPARATOR +
+			                  title + COLUMN_SEPARATOR +
 			                  (**i)["version"] + COLUMN_SEPARATOR +
 			                  (**i)["author"] + COLUMN_SEPARATOR +
 			                  (**i)["downloads"] + COLUMN_SEPARATOR +
