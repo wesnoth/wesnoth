@@ -277,7 +277,7 @@ void attack_context::attack_result(attack_context::ATTACK_RESULT res)
 
 	if(res == KILLS) {
 		attacker_stats().killed[defender_type]++;
-		defender_stats().deaths[attacker_type]++;
+		defender_stats().deaths[defender_type]++;
 	}
 }
 
@@ -293,7 +293,7 @@ void attack_context::defend_result(attack_context::ATTACK_RESULT res)
 	defender_stats().damage_inflicted += bat_stats.damage_defender_takes;
 
 	if(res == KILLS) {
-		attacker_stats().deaths[defender_type]++;
+		attacker_stats().deaths[attacker_type]++;
 		defender_stats().killed[attacker_type]++;
 	}
 }
