@@ -387,7 +387,8 @@ RESULT enter(display& disp, config& game_data, const config& terrain_data, dialo
 			}
 
 			if(disp.video().modeChanged()) {
-				dlg->clear_area();
+				if (dlg != NULL)
+					dlg->clear_area();
 				return CONTINUE;
 			}
 

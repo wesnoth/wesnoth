@@ -714,11 +714,8 @@ void leader_preview_pane::process()
 	}
 }
 
-void leader_preview_pane::draw()
+void leader_preview_pane::draw_contents()
 {
-	if(!dirty())
-		return;
-
 	bg_restore();
 
 	surface const screen = disp().video().getSurface();
@@ -779,9 +776,6 @@ void leader_preview_pane::draw()
 
 		leader_combo_.set_location(leader_rect.x + leader_rect.w + 10, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
 	}
-
-
-	set_dirty(false);
 }
 
 bool leader_preview_pane::show_above() const

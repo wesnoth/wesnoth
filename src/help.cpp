@@ -305,7 +305,7 @@ private:
 	void handle_jump_cfg(const config &cfg);
 	void handle_format_cfg(const config &cfg);
 
-	void draw();
+	void draw_contents();
 
 	/// Add an item with text. If ref_dst is something else than the
 	/// empty string, the text item will be underlined to show that it
@@ -2063,9 +2063,7 @@ int help_text_area::get_remaining_width() {
 	return total_w - curr_loc_.first;
 }
 
-void help_text_area::draw() {
-	if (!dirty())
-		return;
+void help_text_area::draw_contents() {
 	SDL_Rect const &loc = location();
 	SDL_Rect clip_rect = { loc.x, loc.y, text_width(), loc.h };
 	bg_restore(clip_rect);
@@ -2089,7 +2087,6 @@ void help_text_area::draw() {
 		}
 	}
 	update_rect(clip_rect);
-	set_dirty(false);
 }
 
 void help_text_area::scroll(int) {

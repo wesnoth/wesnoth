@@ -632,7 +632,7 @@ public:
 
 private:
 
-	void draw();
+	void draw_contents();
 	void process_event();
 	bool left_side() const { return false; }
 	void set_selection(int index);
@@ -820,11 +820,8 @@ void preferences_dialog::process_event()
 	set_gamma(gamma_slider_.value());
 }
 
-void preferences_dialog::draw()
+void preferences_dialog::draw_contents()
 {
-	if (!dirty())
-		return;
-
 	SDL_Rect const &loc = location();
 	if (tab_ == GENERAL_TAB) {
 		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, scroll_label_, loc.x, loc.y);
@@ -834,8 +831,6 @@ void preferences_dialog::draw()
 		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, music_label_, loc.x, loc.y);
 		font::draw_text(&disp(), loc, font::SIZE_NORMAL, font::NORMAL_COLOUR, sound_label_, loc.x, loc.y + 50);
 	}
-
-	set_dirty(false);
 }
 
 void preferences_dialog::set_selection(int index)

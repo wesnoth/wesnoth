@@ -47,7 +47,7 @@ public:
 	std::string get_selected_leader();
 
 private:
-	void draw();
+	void draw_contents();
 	void process();
 
 	const config::child_list side_list_;
