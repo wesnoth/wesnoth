@@ -24,11 +24,13 @@
 #include "../image.hpp"
 #include "../key.hpp"
 #include "../language.hpp"
+#include "../mapgen.hpp"
 #include "../widgets/menu.hpp"
 #include "../pathfind.hpp"
 #include "../playlevel.hpp"
 #include "../preferences.hpp"
 #include "../sdl_utils.hpp"
+#include "../widgets/slider.hpp"
 #include "../team.hpp"
 #include "../unit_types.hpp"
 #include "../unit.hpp"
@@ -51,10 +53,11 @@ namespace {
 }
 
 namespace map_editor {
-map_editor::map_editor(display &gui, gamemap &map, config &theme)
+map_editor::map_editor(display &gui, gamemap &map, config &theme, config &game_config)
 	: gui_(gui), map_(map), tup_(gui, "", gui::button::TYPE_PRESS, "uparrow-button"),
 	  tdown_(gui, "", gui::button::TYPE_PRESS, "downarrow-button"), abort_(DONT_ABORT),
-	  tstart_(0), num_operations_since_save_(0), theme_(theme), draw_terrain_(false),
+	  tstart_(0), num_operations_since_save_(0), theme_(theme),
+	  game_config_(game_config), draw_terrain_(false),
 	  minimap_dirty_(false) {
 
 	terrains_ = map_.get_terrain_precedence();
@@ -130,12 +133,183 @@ void map_editor::handle_mouse_button_event(const SDL_MouseButtonEvent &event,
 	}
 }
 
+std::string map_editor::new_map_dialog(display& disp)
+{
+	const events::resize_lock prevent_resizing;
+	const events::event_context dialog_events_context;
+
+	int map_width(40), map_height(40);
+	const int width = 600;
+	const int height = 400;
+	const int xpos = disp.x()/2 - width/2;
+	const int ypos = disp.y()/2 - height/2;
+	const int horz_margin = 5;
+	const int vertical_margin = 20;
+
+	SDL_Rect dialog_rect = {xpos-10,ypos-10,width+20,height+20};
+	surface_restorer restorer(&disp.video(),dialog_rect);
+
+	gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+
+	SDL_Rect title_rect = font::draw_text(NULL,disp.screen_area(),24,font::NORMAL_COLOUR,
+					      "Create New Map",0,0);
+
+	const std::string& width_label = string_table["map_width"] + ":";
+	const std::string& height_label = string_table["map_height"] + ":";
+
+	SDL_Rect width_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,0,0);
+	SDL_Rect height_rect = font::draw_text(NULL,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,0,0);
+
+	const int text_right = xpos + horz_margin +
+	        maximum<int>(width_rect.w,height_rect.w);
+
+	width_rect.x = text_right - width_rect.w;
+	height_rect.x = text_right - height_rect.w;
+	
+	width_rect.y = ypos + title_rect.h + vertical_margin*2;
+	height_rect.y = width_rect.y + width_rect.h + vertical_margin;
+
+	gui::button new_map_button(disp,"Generate New Map With Selected Terrain");
+	gui::button random_map_button(disp,"Generate Random Map");
+	gui::button random_map_setting_button(disp,"Random Generator Setting");
+	gui::button cancel_button(disp,"Cancel");
+
+	new_map_button.set_x(xpos + horz_margin);
+	new_map_button.set_y(height_rect.y + height_rect.h + vertical_margin);
+	random_map_button.set_x(xpos + horz_margin);
+	random_map_button.set_y(ypos + height - random_map_button.height()-14*2-vertical_margin);
+	random_map_setting_button.set_x(random_map_button.get_x() + random_map_button.width() + horz_margin);
+	random_map_setting_button.set_y(ypos + height - random_map_setting_button.height()-14*2-vertical_margin);
+	cancel_button.set_x(xpos + width - cancel_button.width() - horz_margin);
+	cancel_button.set_y(ypos + height - cancel_button.height()-14);
+
+	const int right_space = 100;
+
+	const int slider_left = text_right + 10;
+	const int slider_right = xpos + width - horz_margin - right_space;
+	SDL_Rect slider_rect = { slider_left,width_rect.y,slider_right-slider_left,width_rect.h};
+
+	const int min_width = 20;
+	const int max_width = 200;
+	const int max_height = 200;
+	
+	slider_rect.y = width_rect.y;
+	gui::slider width_slider(disp,slider_rect);
+	width_slider.set_min(min_width);
+	width_slider.set_max(max_width);
+	width_slider.set_value(map_width);
+
+	slider_rect.y = height_rect.y;
+	gui::slider height_slider(disp,slider_rect);
+	height_slider.set_min(min_width);
+	height_slider.set_max(max_height);
+	height_slider.set_value(map_height);
+
+ 	const config* const cfg = game_config_.find_child("multiplayer","id","ranmap")->child("generator");
+ 	util::scoped_ptr<map_generator> generator(NULL);
+ 	generator.assign(create_map_generator("", cfg));
+
+	for(bool draw = true;; draw = false) {
+		int mousex, mousey;
+		const int mouse_flags = SDL_GetMouseState(&mousex,&mousey);
+
+		const bool left_button = mouse_flags&SDL_BUTTON_LMASK;
+
+		if(cancel_button.process(mousex,mousey,left_button)) {
+			return "";
+		}
+
+		if(new_map_button.process(mousex,mousey,left_button)) {
+			int i;
+			std::stringstream str;
+			std::stringstream map_str;
+			for (i = 0; i < width_slider.value(); i++) {
+				str << selected_terrain_;
+			}
+			str << "\n";
+			for (i = 0; i < height_slider.value(); i++) {
+				map_str << str.str();
+			}
+			return map_str.str();
+		}
+		if(random_map_setting_button.process(mousex,mousey,left_button)) {
+			if (generator.get()->allow_user_config()) {
+				generator.get()->user_config(gui_);
+			}
+		}
+
+		if(random_map_button.process(mousex,mousey,left_button)) {
+			const std::string map = generator.get()->create_map(std::vector<std::string>());
+			if (map == "") {
+				gui::show_dialog(gui_, NULL, "",
+						 "Creation failed.", gui::OK_ONLY);
+			}
+			return map;
+		}
+		map_width = width_slider.value();
+		map_height = height_slider.value();
+
+		gui::draw_dialog_frame(xpos,ypos,width,height,disp);
+
+		width_slider.process();
+		height_slider.process();
+
+		width_slider.set_min(min_width);
+		height_slider.set_min(min_width);
+
+		events::raise_process_event();
+		events::raise_draw_event();
+
+		title_rect = font::draw_text(&disp,disp.screen_area(),24,font::NORMAL_COLOUR,
+                       "Create New Map",xpos+(width-title_rect.w)/2,ypos+10);
+
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
+
+		std::stringstream width_str;
+		width_str << map_width;
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,width_str.str(),
+		                slider_right+horz_margin,width_rect.y);
+
+		std::stringstream height_str;
+		height_str << map_height;
+		font::draw_text(&disp,disp.screen_area(),14,font::NORMAL_COLOUR,height_str.str(),
+		                slider_right+horz_margin,height_rect.y);
+		
+		new_map_button.draw();
+		random_map_button.draw();
+		random_map_setting_button.draw();
+		cancel_button.draw();
+
+		update_rect(xpos,ypos,width,height);
+
+		disp.update_display();
+		SDL_Delay(10);
+		events::pump();
+	}
+}
+
 void map_editor::edit_save_map() {
 	save_map("", true);
 }
 
 void map_editor::edit_quit() {
 	set_abort();
+}
+
+void map_editor::edit_new_map()
+{
+	const std::string map = new_map_dialog(gui_);
+ 	if (map != "") {
+		int res = 0;
+		if (num_operations_since_save_ != 0) {
+			res = gui::show_dialog(gui_, NULL, "",
+								   "The modification to the map will be discarded.  Continue?",
+								   gui::OK_CANCEL);
+		}
+		if (res == 0)
+			throw new_map_exception(map);
+	}
 }
 
 void map_editor::edit_save_as() {
@@ -194,6 +368,8 @@ bool map_editor::can_execute_command(hotkey::HOTKEY_COMMAND command) const {
 	case hotkey::HOTKEY_EDIT_SAVE_AS:
 	case hotkey::HOTKEY_EDIT_QUIT:
 	case hotkey::HOTKEY_EDIT_SET_START_POS:
+	case hotkey::HOTKEY_EDIT_NEW_MAP:
+	case hotkey::HOTKEY_EDIT_LOAD_MAP:
 		return true;
 	default:
 		return false;
@@ -516,42 +692,73 @@ void map_editor::main_loop() {
 	}
 }
 
-
-std::string get_filename_from_dialog(CVideo &video, config &cfg) {
-	const std::string path = game_config::path + "/data/maps/";
+void map_editor::edit_load_map()
+{
+	const std::string system_path = game_config::path + "/data/maps/";
 	
-	display::unit_map u_map;
-	config dummy_cfg("");
-  
-	config dummy_theme;
-	display disp(u_map, video, gamemap(dummy_cfg,"1"), gamestatus(dummy_cfg,0),
-				 std::vector<team>(), dummy_theme, cfg);
-  
 	std::vector<std::string> files;
-	get_files_in_dir(path,&files);
+	get_files_in_dir(system_path,&files);
+	files.push_back("Enter Path...");
+	files.push_back("Local Map...");
   
-	files.push_back("New Map...");
-  
-	const int res = gui::show_dialog(disp, NULL, "",
-									 "Choose map to edit:", gui::OK_CANCEL, &files);
-	if(res < 0) {
-		return "";
-	}
 	std::string filename;
+	const int res = gui::show_dialog(gui_, NULL, "",
+					 "Choose map to edit:", gui::OK_CANCEL, &files);
 	if(res == int(files.size()-1)) {
-		filename = "new-map";
-		gui::show_dialog(disp, NULL, "", "Create new map",
-						 gui::OK_ONLY, NULL, NULL, "", &filename);
-		if (filename == "") {
-			// If no name was given, return the empty filename; don't add
-			// the path.
-			return filename;
+		std::vector<std::string> user_files;
+		const std::string user_path = get_user_data_dir() + "/editor/maps/";
+		get_files_in_dir(user_path,&user_files);
+		const int res = gui::show_dialog(gui_, NULL, "",
+						 "Choose map to edit:", gui::OK_CANCEL, &user_files);
+		if (res < 0) {
+			return;
 		}
-	} else {
-		filename = files[res];
+		filename = user_path + user_files[res];
 	}
-	filename = path + filename;
-	return filename;
+	else if (res == int(files.size() - 2)) {
+		filename = get_user_data_dir() + "/editor/maps/";
+		const int res = gui::show_dialog(gui_, NULL, "",
+										 "Enter map to edit:", gui::OK_CANCEL,
+										 NULL, NULL, "", &filename);
+		if (res < 0) {
+			return;
+		}
+	}
+	else if(res < 0) {
+		return;
+	}
+	else {
+		filename = system_path + files[res];
+	}
+	std::string map;
+	bool load_successful = true;
+	std::string msg;
+	if (!file_exists(filename)) {
+		load_successful = false;
+		msg = filename + " does not exist.";
+	}
+	else {
+		try {
+			map = read_file(filename);
+		}
+		catch (io_exception e) {
+			load_successful = false;
+			msg = e.what();
+		}
+	}
+	if (!load_successful) {
+		gui::show_dialog(gui_, NULL, "", std::string("Load failed: ") + msg, gui::OK_ONLY);
+	}
+	else {
+		if (num_operations_since_save_ != 0) {
+			const int res = gui::show_dialog(gui_, NULL, "",
+											 "The modification to the map will be discarded.  Continue?",
+											 gui::OK_CANCEL);
+			if (res != 0)
+				return;
+		}
+		throw new_map_exception(map);
+	}
 }
 
 void drawbar(display& disp)
@@ -676,56 +883,63 @@ int main(int argc, char** argv)
 	set_language("English");
 
 	std::string filename;
-
-	if(argc == 1) {
-		filename = map_editor::get_filename_from_dialog(video, cfg);
-		if (filename == "") {
-			return 0;
-		}
-	} else if(argc == 2) {
-		filename = argv[1];
-	}
-  
 	std::string mapdata;
-	try {
-		mapdata = read_file(filename);
+
+	if(argc == 2) {
+		filename = argv[1];
+		try {
+			mapdata = read_file(filename);
+		}
+		catch (io_exception) {
+			std::cerr << "Could not read the map file, sorry." << std::endl;
+			return 1;
+		}
 	}
-	catch (io_exception) {
-		std::cerr << "Could not read the map file, sorry." << std::endl;
-		return 1;
+	else {
+		filename = "";
 	}
 	if(mapdata.empty()) {
-		for(int i = 0; i != 30; ++i) {
-			mapdata = mapdata + "gggggggggggggggggggggggggggggggggggggg\n";
+		for(int i = 0; i != 20; ++i) {
+			mapdata = mapdata + "gggggggggggggggggggg\n";
 		}
 	}
-	try {
-		gamemap map(cfg, mapdata);
-		gamestatus status(cfg, 0);
-		std::vector<team> teams;
 
-		config* const theme_cfg = cfg.find_child("theme", "name", "editor");
-		config dummy_theme;
-		if (!theme_cfg) {
-			std::cerr << "Editor theme could not be loaded." << std::endl;
-			*theme_cfg = dummy_theme;
-		}
-		std::map<gamemap::location,unit> units;
-		display gui(units, video, map, status, teams,
-					*theme_cfg, cfg);
-		gui.set_grid(preferences::grid());
+	bool done = false;
+	gamestatus status(cfg, 0);
+	std::vector<team> teams;
+	config* const theme_cfg = cfg.find_child("theme", "name", "editor");
+	config dummy_theme;
+	if (!theme_cfg) {
+		std::cerr << "Editor theme could not be loaded." << std::endl;
+		*theme_cfg = dummy_theme;
+	}
+	std::map<gamemap::location,unit> units;
+	while (! done) {
+		try {
+			gamemap map(cfg, mapdata);
+
+			display gui(units, video, map, status, teams,
+				    *theme_cfg, cfg);
+			gui.set_grid(preferences::grid());
 	
-		//Draw the nice background bar
-		map_editor::drawbar(gui);
+			//Draw the nice background bar
+			map_editor::drawbar(gui);
 
-		events::event_context ec;
-		map_editor::map_editor editor(gui, map, *theme_cfg);
-		editor.set_file_to_save_as(filename);
-		editor.main_loop();
-	}
-	catch (gamemap::incorrect_format_exception) {
-		std::cerr << "The map is not in a correct format, sorry." << std::endl;
-		return 1;
+			events::event_context ec;
+			map_editor::map_editor editor(gui, map, *theme_cfg, cfg);
+			editor.set_file_to_save_as(filename);
+			editor.main_loop();
+			done = true;
+		}
+		catch (map_editor::map_editor::new_map_exception &e) {
+			std::cerr << "new map " << e.new_map_ << std::endl;
+			mapdata = e.new_map_;
+			filename = "";
+		}
+		catch (gamemap::incorrect_format_exception) {
+			std::cerr << "The map is not in a correct format, sorry." << std::endl;
+			return 1;
+		}
 	}
 	return 0;
 }

@@ -58,7 +58,7 @@ enum ABORT_MODE {DONT_ABORT, ABORT_NORMALLY, ABORT_HARD};
 class map_editor : public events::handler,
 		   public hotkey::command_executor {
 public:
-	map_editor(display &gui, gamemap &map, config &theme);
+	map_editor(display &gui, gamemap &map, config &theme, config &game_config);
 	
 	/// Enter the main loop. The loop runs until set_abort() is called
 	/// to set an abort mode which makes the loop exit.
@@ -106,6 +106,8 @@ public:
 	virtual void undo();
 	virtual void redo();
 	virtual void edit_quit();
+	virtual void edit_new_map();
+	virtual void edit_load_map();
 	virtual void edit_save_map();
 	virtual void edit_save_as();
 	/// Display a dialog asking for a player number and set the starting
@@ -139,6 +141,11 @@ public:
 	virtual void show_enemy_moves(bool ignore_units) {}
 	virtual void edit_set_terrain() {}
 	
+	// exception thrown when new map is to be loaded.
+	struct new_map_exception {
+		new_map_exception(const std::string &new_map) : new_map_(new_map) {}
+		const std::string new_map_;
+	};
 	
 private:
 	/// Called in every iteration when the left mouse button is held
@@ -180,6 +187,9 @@ private:
 	// Invalidate the given hex and all the adjacent ones.
 	void invalidate_adjacent(const gamemap::location hex);
 
+	/// Shows dialog to create new map.
+	std::string new_map_dialog(display& disp);
+
 	display &gui_;
 	gamemap &map_;
 	std::vector<gamemap::TERRAIN> terrains_;
@@ -196,6 +206,7 @@ private:
 	int num_operations_since_save_;
 	size_specs size_specs_;
 	config &theme_;
+	config &game_config_;
 	bool draw_terrain_;
 	CKey key_;
 	gamemap::location selected_hex_;
