@@ -3,7 +3,11 @@ CVS HEAD::
  * tutorial objectives added
  * more unit graphics and animations
  * made it possible to recruit on any keep tile, not just a starting keeps
- * mountainfoot (Dwarves) forest movement ratio changed to 2 (faster) and village defense increased to 50
+ * mountainfoot (dwarves) forest movement ratio changed to 2 (faster) and village defense increased to 50
+ * undeadfoot (undead) swamp movement ratio changed to 2 (faster) and swamp defense to 60
+ * largefoot (trolls, ogre) hills movement ratio changed to 1 (faster)
+ * cloned smallfoot to orcishfoot (orcs, goblins) with movement ratio changes: hills 1 (faster) and mountain 2 (faster)
+ * woodland (elves) mountain movement ration changed to 3 (faster)
  * new units:
    * Outlaw
    * Bandit
@@ -20,7 +24,9 @@ CVS HEAD::
  * improved castle placement on random maps
  * fixed healing units that had full hitpoints (#7574)
  * fixed problem where [hide_unit] still displays unit's hitpoint bar
+ * fixed unit names being different in networked multiplayer games
  * attempt to fix hitpoint bars not displaying properly on OSX
+ * attempt to fix crash wit too-large dialogs
  * relocated images under misc/: flamesword, holywater, sceptreoffire, staff
 
 Version 0.6.99.2:
