@@ -422,13 +422,15 @@ void turn_info::left_click(const SDL_MouseButtonEvent& event)
 			gui_.invalidate_all();
 			gui_.draw();
 
+			const bool defender_human = teams_[enemy->second.side()-1].is_human();
+
 			recorder.add_attack(selected_hex_,hex,res);
 
 			attack(gui_,map_,selected_hex_,hex,res,units_,
 			       status_,gameinfo_,true);
 
 			dialogs::advance_unit(gameinfo_,units_,selected_hex_,gui_);
-			dialogs::advance_unit(gameinfo_,units_,hex,gui_);
+			dialogs::advance_unit(gameinfo_,units_,hex,gui_,!defender_human);
 
 			selected_hex_ = gamemap::location();
 			current_route_.steps.clear();
