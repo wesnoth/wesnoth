@@ -235,14 +235,21 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 
 		gui_.highlight_hex(new_hex);
 
+		if(enemy_paths_) {
+			enemy_paths_ = false;
+			current_paths_ = paths();
+			gui_.set_paths(NULL);
+		}
+		
 		if(new_hex == selected_hex_) {
 			current_route_.steps.clear();
 			gui_.set_route(NULL);
 		} else if(!enemy_paths_ && new_hex != last_hex_ &&
 		   !current_paths_.routes.empty() && map_.on_board(selected_hex_) &&
 		   map_.on_board(new_hex)) {
-			
+
 			const unit_map::const_iterator un = units_.find(selected_hex_);
+			
 			if(un != units_.end()) {
 				const shortest_path_calculator calc(un->second,current_team,
 				                                    units_,map_);
@@ -258,6 +265,17 @@ void turn_info::mouse_motion(const SDL_MouseMotionEvent& event)
 				      route_turns_to_complete(un->second,map_,current_route_);
 				gui_.set_route(&current_route_);
 			}
+		}
+
+		const unit_map::const_iterator un = units_.find(new_hex);
+
+		if(un != units_.end() && un->second.side() != team_num_) {
+			const bool ignore_zocs = un->second.type().is_skirmisher();
+			const bool teleport = un->second.type().teleports();
+			current_paths_ = paths(map_,gameinfo_,units_,new_hex,teams_,
+			                   ignore_zocs,teleport,path_turns_);
+			gui_.set_paths(&current_paths_);
+			enemy_paths_ = true;
 		}
 	}
 
