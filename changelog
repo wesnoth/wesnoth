@@ -58,6 +58,7 @@ Version 0.8.4:
  * updated translations:
    * basque
    * czech
+   * danish
    * finnish
    * french
    * german
@@ -98,8 +99,10 @@ Version 0.8.4:
  * fixed past-the-end issue on botched UTF-8 strings
  * fixed scroll_to_unit issues on 'The Rise of Wesnoth' campaign
  * fixed build procedure to not require having gettext installed
+ * fixed scanning enemy unit locations even when they are under the fog
  * workaround for Reiser4 feature bug (#10264)
  * workaround for BeOS gettext implementation
+ * workaround for Mac OS X gettext implementation
  * re-implemented enhanced sound quality fix
  * added error dialog when a campaign has corrupt WML
  * added better error messages for machines that cannot bind to local ports 
