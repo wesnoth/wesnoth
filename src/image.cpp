@@ -147,6 +147,7 @@ void set_zoom(double amount)
 		clear_surfaces(scaledImages_);
 		clear_surfaces(greyedImages_);
 		clear_surfaces(brightenedImages_);
+		clear_surfaces(unmaskedImages_);
 	}
 }
 

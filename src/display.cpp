@@ -1397,9 +1397,11 @@ void display::draw_tile(int x, int y, SDL_Surface* unit_image, double alpha, Uin
 			SDL_BlitSurface(tod_hex_mask2,NULL,dst,&dstrect);
 		}
 	} else if(mask != "") {
-		scoped_sdl_surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
-		SDL_Rect dstrect = { xpos, ypos, 0, 0 };
-		SDL_BlitSurface(img,NULL,dst,&dstrect);
+		const scoped_sdl_surface img(image::get_image(mask,image::UNMASKED,image::NO_ADJUST_COLOUR));
+		if(img != NULL) {
+			SDL_Rect dstrect = { xpos, ypos, 0, 0 };
+			SDL_BlitSurface(img,NULL,dst,&dstrect);
+		}
 	}
 
 	if(grid_) {
