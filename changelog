@@ -1,5 +1,6 @@
 CVS HEAD:
- * po-header cleanups
+ * made it so you can't see who owns a village that's under fog of war
+ * user interface tweaks
  * graphics improvements:
    * leadership frames
    * attack frames
@@ -11,12 +12,19 @@ CVS HEAD:
    * Grand Marshal
  * language fixes and polishing (english)
  * updated translations:
+   * brazilian
+   * danish
+   * hungarian
    * italian
+   * portuguese
    * spanish
    * swedish
  * multiplayer improvements
    * leader indicator
    * new lobby 
+   * random map generator improvements
+   * scrollbar for map selection
+   * multiplayer server threading to get rid of freezes
  * fixed scheduler textdomain
  * fixed villages being over tree tops
  * fixed 'Direwolf Rider' incorrectly having 'smallfoot' movetype
@@ -25,8 +33,18 @@ CVS HEAD:
  * fixed long names in lobby going over the reserved area (#10414)
  * fixed 'Duelist' white border problem
  * fixed untranslated female elvish marksman (#10599)
+ * fixed hex detection
+ * fixed multiplayer game aborting when player joined with "random" faction (#10604)
+ * fixed savegames for beginning of tutorial not loading
+ * fixed missing fire_Even in  'Son of the Black Eye: Saving Inarix'
+ * fixed Wesbowl
+ * fixed compiling errors in the zip-directory (#10189, #10362)
+ * fixed lag when chatting in multiplayer lobby
+ * switched using gettext-standard multi-textdomain
+ * po-header cleanups
  * suppressed warnings from msgfmt 
  * logging system improvements
+ * campaign images file hierarchy cleanup
  * code cleanups
 
 Version 0.8.5:
@@ -1403,7 +1421,7 @@ Version 0.6.99.5:
  * language fixes and polishing (english)
  * new translations:
    * finnish
-   * portuguese-Brazilian
+   * portuguese-brazilian
    * slovak
  * updated translations:
    * brazilian
