@@ -1240,7 +1240,7 @@ void ai::do_recruitment()
 			for(std::vector<team>::const_iterator i = teams_.begin(); i != teams_.end(); ++i) {
 				const int index = i - teams_.begin() + 1;
 				if(team_num_ != index) {
-					const gamemap::location& loc = map_.starting_position(index);
+					const gamemap::location& loc = nearest_keep(leader->first);
 					if(distance_between(loc,*v) < distance) {
 						closest = false;
 						break;
@@ -1290,7 +1290,7 @@ void ai::move_leader_to_keep(const move_map& enemy_dstsrc)
 
 	//find where the leader can move
 	const paths leader_paths(map_,state_,gameinfo_,units_,leader->first,teams_,false,false);
-	const gamemap::location& start_pos = map_.starting_position(leader->second.side());
+	const gamemap::location& start_pos = nearest_keep(leader->first);
 
 	std::map<gamemap::location,paths> possible_moves;
 	possible_moves.insert(std::pair<gamemap::location,paths>(leader->first,leader_paths));
