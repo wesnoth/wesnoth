@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "input_stream.hpp"
 
 #ifndef _WIN32

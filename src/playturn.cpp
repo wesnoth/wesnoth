@@ -1198,6 +1198,10 @@ void turn_info::undo()
 		} else {
 			// Undo a recall action
 			team& current_team = teams_[team_num_-1];
+			if(units_.count(action.recall_loc) == 0) {
+				return;
+			}
+
 			const unit& un = units_.find(action.recall_loc)->second;
 			statistics::un_recall_unit(un);
 			current_team.spend_gold(-game_config::recall_cost);
@@ -1214,7 +1218,8 @@ void turn_info::undo()
 		std::reverse(route.begin(),route.end());
 		const unit_map::iterator u = units_.find(route.front());
 		if(u == units_.end()) {
-			assert(false);
+			//this can actually happen if the scenario designer has abused the [allow_undo] command
+			lg::err(lg::engine) << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
 			return;
 		}
 	
@@ -2271,12 +2276,16 @@ void turn_info::do_command(const std::string& str)
 	}
 }
 
-void turn_info::change_side_controller(const std::string& side, const std::string& player)
+void turn_info::change_side_controller(const std::string& side, const std::string& player, bool orphan_side)
 {
 	config cfg;
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
+
+	if(orphan_side) {
+		change["orphan_side"] = "yes";
+	}
 
 	network::send_data(cfg);
 }
@@ -2496,9 +2505,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			teams_[side].make_human();
 			return PROCESS_RESTART_TURN;
 		} else if(action > 2) {
-			const size_t index = size_t(action - 2);
+			const size_t index = size_t(action - 3);
 			if(index < observers.size()) {
-				change_side_controller(cfg["side_drop"],observers[index]);
+				change_side_controller(cfg["side_drop"],observers[index],true);
 			}
 
 			teams_[side].make_human();

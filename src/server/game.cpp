@@ -1,4 +1,7 @@
+#include "../global.hpp"
+
 #include "game.hpp"
+#include "../util.hpp"
 
 #include <cassert>
 #include <iostream>
@@ -190,6 +193,16 @@ const std::string& game::transfer_side_control(const config& cfg)
 		return already;
 	}
 
+	if(cfg["orphan_side"] != "yes") {
+		const size_t nsides = level_.get_children("side").size();
+		const size_t active_side = end_turn_/nsides + 1;
+
+		if(lexical_cast_default<size_t>(side,0) == active_side) {
+			static const std::string not_during_turn = "You cannot change a side's controller during its turn";
+			return not_during_turn;
+		}
+	}
+
 	config response;
 	config& change = response.add_child("change_controller");
 
@@ -207,6 +220,11 @@ const std::string& game::transfer_side_control(const config& cfg)
 
 	sides_taken_.insert(side);
 	
+	//send everyone a message saying that the observer who is taking the side has quit
+	config observer_quit;
+	observer_quit.add_child("observer_quit").values["name"] = player;
+	send_data(observer_quit);
+
 	static const std::string success = "";
 	return success;
 }

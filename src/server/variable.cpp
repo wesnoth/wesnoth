@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "../game_events.hpp"
 
 //this is an 'identity' implementation of variables, that just returns the name

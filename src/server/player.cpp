@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "player.hpp"
 
 player::player(const std::string& n, config& cfg) : name_(n), cfg_(cfg)

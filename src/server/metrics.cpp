@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "metrics.hpp"
 
 #include <time.h>

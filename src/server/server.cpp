@@ -1,3 +1,5 @@
+#include "../global.hpp"
+
 #include "../config.hpp"
 #include "../game_config.hpp"
 #include "../network.hpp"
@@ -477,6 +479,8 @@ void server::run()
 							const config& msg = construct_server_message(result,*g);
 							network::send_data(msg,sock);
 						}
+
+						continue;
 					}
 
 					//if the owner is banning someone from the game
