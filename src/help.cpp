@@ -47,6 +47,7 @@ namespace {
 	const int menu_font_size = 14;
 	const int title_size = 18;
 	const int title2_size = 15;
+	const int box_width = 2;
 	const int normal_font_size = 12;
 	const unsigned max_history = 100;
 	const std::string topic_img = "help/topic.png";
@@ -139,25 +140,13 @@ namespace help {
 help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 	game_config = cfg == NULL ? &dummy_cfg : cfg;
 	game_info = gameinfo;
-	std::cerr << "Creating help manager" << std::endl;
 	if (game_config != NULL) {
 		const config *help_config = game_config->child("help");
 		if (help_config == NULL) {
 			help_config = &dummy_cfg;
 		}
 		try {
-			section_list::const_iterator ii;
-			std::cerr << "Parsing toplevel config, toplevel before:" << std::endl;
-			for (ii = toplevel.sections.begin();
-				 ii != toplevel.sections.end(); ii++) {
-				std::cerr << (*ii)->id << std::endl;
-			}
 			toplevel = parse_config(help_config);
-			std::cerr << "Toplevel after:" << std::endl;
-			for (ii = toplevel.sections.begin();
-				 ii != toplevel.sections.end(); ii++) {
-				std::cerr << (*ii)->id << std::endl;
-			}
 			// Create a config object that contains everything that is
 			// not referenced from the toplevel element. Read this
 			// config and save these sections and topics so that they
@@ -212,7 +201,6 @@ help_manager::help_manager(const config *cfg, game_data *gameinfo) {
 }
 
 help_manager::~help_manager() {
-	std::cerr << "Destroying help manager" << std::endl;
 	game_config = NULL;
 	game_info = NULL;
 	toplevel.clear();
@@ -729,7 +717,7 @@ void section::clear() {
 help_menu::help_menu(display& disp, const section &toplevel, int max_height)
 	: menu(disp, empty_string_vector, false, max_height), disp_(disp),
 	  toplevel_(toplevel), chosen_topic_(NULL), internal_width_(0), selected_item_(&toplevel, ""),
-	  clicked_(false) {
+	  selected_(false) {
 	bg_backup();
 	update_visible_items(toplevel_);
 	display_visible_items();
@@ -819,8 +807,14 @@ void help_menu::handle_event(const SDL_Event &event) {
 				if (mousex < get_rect().x + item_area_width()) {
 					// See to that only clicks on items are noticed, not
 					// scrollbar clicks.
-					clicked_ = true;
+					selected_ = true;
 				}
+			}
+		}
+		else if (event.type == SDL_KEYDOWN) {
+			if (event.key.keysym.sym == SDLK_RETURN) {
+				// Select items on return press too.
+				selected_ = true;
 			}
 		}
 		menu::handle_event(event);
@@ -888,8 +882,8 @@ int help_menu::process(int x, int y, bool button,bool up_arrow,bool down_arrow,
 	if (!visible_items_.empty() && selection() >= 0
 		&& (unsigned)selection() < visible_items_.size()) {
 		selected_item_ = visible_items_[selection()];
- 		if (clicked_) {
-			clicked_ = false;
+ 		if (selected_) {
+			selected_ = false;
  			if (selected_item_.sec != NULL) {
  				// Open or close a section if it is clicked.
  				expanded(*selected_item_.sec) ? contract(*selected_item_.sec)
@@ -971,21 +965,22 @@ void help_text_area::show_topic(const topic &t) {
 	
 help_text_area::item::item(shared_sdl_surface surface, int x, int y, const std::string _text,
 						   const std::string reference_to, bool _floating,
-						   ALIGNMENT alignment)
-	: surf(surface), text(_text), ref_to(reference_to), floating(_floating), align(alignment) {
+						   bool _box, ALIGNMENT alignment)
+	: surf(surface), text(_text), ref_to(reference_to), floating(_floating), box(_box),
+	  align(alignment) {
 	rect.x = x;
 	rect.y = y;
-	rect.w = surface->w;
-	rect.h = surface->h;
+	rect.w = box ? surface->w + box_width * 2 : surface->w;
+	rect.h = box ? surface->h + box_width * 2 : surface->h;
 }
 
 help_text_area::item::item(shared_sdl_surface surface, int x, int y, bool _floating,
-						   ALIGNMENT alignment)
-	: surf(surface), text(""), ref_to(""), floating(_floating), align(alignment) {
+						   bool _box, ALIGNMENT alignment)
+	: surf(surface), text(""), ref_to(""), floating(_floating), box(_box), align(alignment) {
 	rect.x = x;
 	rect.y = y;
-	rect.w = surface->w;
-	rect.h = surface->h;
+	rect.w = box ? surface->w + box_width * 2 : surface->w;
+	rect.h = box ? surface->h + box_width * 2 : surface->h;
 }
 
 void help_text_area::set_items(const std::vector<std::string> &parsed_items,
@@ -1096,10 +1091,14 @@ void help_text_area::handle_img_cfg(const config &cfg) {
 	const std::string src = cfg["src"];
 	const std::string align = cfg["align"];
 	const bool floating = get_bool(cfg["float"]);
+	bool box = true;
+	if (cfg["box"] != "" && !get_bool(cfg["box"])) {
+		box = false;
+	}
 	if (src == "") {
 		throw parse_error("Img markup must have src attribute.");
 	}
-	add_img_item(src, align, floating);
+	add_img_item(src, align, floating, box);
 }
 
 void help_text_area::handle_bold_cfg(const config &cfg) {
@@ -1288,7 +1287,7 @@ void help_text_area::add_text_item(const std::string text, const std::string ref
 }
 
 void help_text_area::add_img_item(const std::string path, const std::string alignment,
-								  const bool floating) {
+								  const bool floating, const bool box) {
 	shared_sdl_surface surf(image::get_image(path, image::UNSCALED));
 	if (surf == NULL) {
 		std::stringstream msg;
@@ -1301,6 +1300,7 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 		std::cerr << "Floating image with align HERE, aligning left." << std::endl;
 		align = LEFT;
 	}
+	const int width = surf->w + (box ? box_width * 2 : 0);
 	int xpos;
 	int ypos = curr_loc_.second;
 	switch (align) {
@@ -1311,25 +1311,25 @@ void help_text_area::add_img_item(const std::string path, const std::string alig
 		xpos = 0;
 		break;
 	case MIDDLE:
-		xpos = text_width() / 2 - surf->w / 2;
+		xpos = text_width() / 2 - width / 2 - (box ? box_width : 0);
 		break;
 	case RIGHT:
-		xpos = text_width() - surf->w;
+		xpos = text_width() - width - (box ? box_width * 2 : 0);
 		break;
 	}
 	if (curr_loc_.first != get_min_x(curr_loc_.second, curr_row_height_)
-		&& (xpos < curr_loc_.first || xpos + surf->w > text_width())) {
+		&& (xpos < curr_loc_.first || xpos + width > text_width())) {
 		down_one_line();
-		add_img_item(path, alignment, floating);
+		add_img_item(path, alignment, floating, box);
 	}
 	else {
 		if (!floating) {
 			curr_loc_.first = xpos;
 		}
 		else {
-			ypos = get_y_for_floating_img(surf->w, xpos, ypos);
+			ypos = get_y_for_floating_img(width, xpos, ypos);
 		}
-		add_item(item(surf, xpos, ypos, floating, align));
+		add_item(item(surf, xpos, ypos, floating, box, align));
 	}
 }
 
@@ -1338,9 +1338,9 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if ((itm.rect.x + itm.surf->w > x && itm.rect.x < x + width)
+			if ((itm.rect.x + itm.rect.w > x && itm.rect.x < x + width)
 				|| (itm.rect.x > x && itm.rect.x < x + width)) {
-				min_y = maximum<int>(min_y, itm.rect.y + itm.surf->h);
+				min_y = maximum<int>(min_y, itm.rect.y + itm.rect.h);
 			}
 		}
 	}
@@ -1352,8 +1352,8 @@ int help_text_area::get_min_x(const int y, const int height) {
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y && itm.align == LEFT) {
-				min_x = maximum<int>(min_x, itm.surf->w);
+			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y && itm.align == LEFT) {
+				min_x = maximum<int>(min_x, itm.rect.w + 5);
 			}
 		}
 	}
@@ -1365,12 +1365,12 @@ int help_text_area::get_max_x(const int y, const int height) {
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); it++) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.surf->h > y) {
+			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
 				if (itm.align == RIGHT) {
-					max_x = minimum<int>(max_x, text_width() - itm.surf->w);
+					max_x = minimum<int>(max_x, text_width() - itm.rect.w - 5);
 				}
 				if (itm.align == MIDDLE) {
-					max_x = minimum<int>(max_x, text_width() / 2 - itm.surf->w / 2);
+					max_x = minimum<int>(max_x, text_width() / 2 - itm.rect.w / 2 - 5);
 				}
 			}
 		}
@@ -1381,20 +1381,20 @@ int help_text_area::get_max_x(const int y, const int height) {
 void help_text_area::add_item(const item &itm) {
 	items_.push_back(itm);
 	if (!itm.floating) {
-		curr_loc_.first += itm.surf->w;
-		curr_row_height_ = maximum<int>(itm.surf->h, curr_row_height_);
+		curr_loc_.first += itm.rect.w;
+		curr_row_height_ = maximum<int>(itm.rect.h, curr_row_height_);
 		contents_height_ = maximum<int>(contents_height_, curr_loc_.second + curr_row_height_);
 		last_row_.push_back(&items_.back());
 	}
 	else {
 		if (itm.align == LEFT) {
-			curr_loc_.first = itm.surf->w;
+			curr_loc_.first = itm.rect.w + 5;
 		}
-		contents_height_ = maximum<int>(contents_height_, itm.rect.y + itm.surf->h);
+		contents_height_ = maximum<int>(contents_height_, itm.rect.y + itm.rect.h);
 	}
 }
 	
-
+	
 help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &s) {
 	const std::string cmp_str = to_lower(s);
 	if (cmp_str == "left") {
@@ -1423,7 +1423,7 @@ void help_text_area::down_one_line() {
 void help_text_area::adjust_last_row() {
 	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); it++) {
 		item &itm = *(*it);
-		const int gap = curr_row_height_ - itm.surf->h;
+		const int gap = curr_row_height_ - itm.rect.h;
 		itm.rect.y += gap / 2;
 	}
 }
@@ -1457,9 +1457,17 @@ void help_text_area::draw() {
 		for (it = items_.begin(); it != items_.end(); it++) {
 			SDL_Rect dst = (*it).rect;
 			dst.y -= get_scroll_offset();
-			if (dst.y < (int)height() && dst.y + (*it).surf->h > 0) {
+			if (dst.y < (int)height() && dst.y + (*it).rect.h > 0) {
 				dst.x += location().x;
 				dst.y += location().y;
+				if ((*it).box) {
+					for (int i = 0; i < box_width; i++) {
+						gui::draw_rectangle(dst.x, dst.y, (*it).rect.w - i * 2, (*it).rect.h - i * 2,
+											0, screen);
+						dst.x++;
+						dst.y++;
+					}
+				}
 				SDL_BlitSurface((*it).surf, NULL, screen, &dst);
 			}
 		}
