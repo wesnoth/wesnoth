@@ -171,7 +171,7 @@ void button::draw_contents()
 		image = greyscale_image(image);
 
 	disp().blit_surface(loc.x, loc.y, image);
-	const std::string etext = font::make_text_ellipsis(label_, font_size, width());
+	const std::string etext = font::make_text_ellipsis(label_, font_size, loc.w);
 	font::draw_text(&disp(), clipArea, font_size, font::BUTTON_COLOUR, etext, textx, texty);
 
 	update_rect(loc);
